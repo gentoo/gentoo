@@ -2565,7 +2565,7 @@ app-text/blogc 0.19.0 9999: A blog compiler
 app-text/bogosort 0.4.2-r1: A file sorting program which uses the bogosort algorithm
 app-text/build-docbook-catalog 1.21: DocBook XML catalog auto-updater
 app-text/c2ps 4.0: Generates a beautified ps document from a source file (c/c++)
-app-text/calibre 4.9.1-r2 4.17.0-r1 4.18.0 4.19.0 4.20.0: Ebook management application
+app-text/calibre 4.9.1-r3 4.17.0-r1 4.18.0 4.19.0 4.20.0: Ebook management application
 app-text/capyt 1.1.1: A python3 CLI utility to interface with cpy.pt paste service
 app-text/catdoc 0.95-r1: Converter for Microsoft Word, Excel, PowerPoint and RTF files to text
 app-text/cb2bib 1.9.8 1.9.9 2.0.0: Tool for extracting unformatted bibliographic references
@@ -10516,7 +10516,7 @@ dev-util/shadowman 2 9999: Unified compiler shadow link directory updater
 dev-util/shards 0.11.1: Dependency manager for the Crystal language
 dev-util/shc 3.9.6: A (shell-) script compiler/scrambler
 dev-util/shellcheck 0.7.1: Shell script analysis tool
-dev-util/shellcheck-bin 0.7.0 0.7.1: Shell script analysis tool (binary package)
+dev-util/shellcheck-bin 0.7.1: Shell script analysis tool (binary package)
 dev-util/shelltestrunner 1.9: A tool for testing command-line programs
 dev-util/shflags 1.0.3 1.2.3: Command-line flags module for Unix shell scripts
 dev-util/shtool 2.0.8-r1: Set of stable and portable shell scripts
@@ -17807,7 +17807,7 @@ www-client/opera-beta 70.0.3728.8 70.0.3728.21: A fast and secure web browser
 www-client/opera-developer 71.0.3735.0 71.0.3742.0: A fast and secure web browser
 www-client/otter 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
-www-client/qutebrowser 1.11.1-r1 1.12.0 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
+www-client/qutebrowser 1.12.0 1.13.0 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
 www-client/seamonkey 2.53.2 2.53.3: Seamonkey Web Browser
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
@@ -17967,7 +17967,7 @@ x11-base/xorg-drivers 1.20-r2 9999: Meta package containing deps on all xorg dri
 x11-base/xorg-proto 2020.1 9999: X.Org combined protocol headers
 x11-base/xorg-server 1.20.8 1.20.8-r1 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
-x11-drivers/nvidia-drivers 340.108 390.132-r1 390.132-r2 390.138 430.64-r5 435.21-r5 440.100-r1 450.51-r1: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 340.108 390.132-r1 390.132-r2 390.138 430.64-r5 435.21-r5 440.100-r1 450.57: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.2: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
