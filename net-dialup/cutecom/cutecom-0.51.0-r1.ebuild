@@ -1,11 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils eutils xdg
+inherit cmake desktop xdg
 
-DESCRIPTION="CuteCom is a serial terminal, like minicom, written in qt"
+DESCRIPTION="A serial terminal, like minicom, written in Qt"
 HOMEPAGE="https://gitlab.com/cutecom/cutecom"
 SRC_URI="https://gitlab.com/cutecom/cutecom/-/archive/v${PV}/cutecom-v${PV}.tar.bz2"
 
@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-qt/qtcore:5
+DEPEND="
+	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtserialport:5
@@ -24,19 +25,19 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}/cutecom-v${PV}"
 
-PATCHES=( "${FILESDIR}"/cutecom-0.51.0-fix-for-qt-5.15.0.patch )
+PATCHES=( "${FILESDIR}"/${P}-fix-for-qt-5.15.0.patch )
 
 src_prepare() {
+	cmake_src_prepare
+
 	sed -i \
 		-e '/Path/d' \
 		-e '/Terminal/s/0/false/' \
 		"${PN}.desktop" || die 'sed on desktop file failed'
-
-	cmake-utils_src_prepare
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	domenu "${PN}.desktop"
 	doicon "distribution/${PN}.png"
 }
