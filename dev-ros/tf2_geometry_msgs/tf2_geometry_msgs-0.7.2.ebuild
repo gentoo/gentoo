@@ -1,11 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 ROS_REPO_URI="https://github.com/ros/geometry2"
 KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
-PYTHON_COMPAT=( python2_7 )
 CATKIN_HAS_MESSAGES=yes
 
 inherit ros-catkin
@@ -21,6 +20,8 @@ RDEPEND="
 	dev-python/python_orocos_kdl[${PYTHON_USEDEP}]
 	dev-ros/tf2
 	sci-libs/orocos_kdl
-	dev-ros/geometry_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP},${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/geometry_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+"
