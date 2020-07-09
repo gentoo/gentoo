@@ -16,8 +16,6 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/roscpp
-	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/tf2
 	dev-ros/tf2_geometry_msgs
 	dev-ros/tf2_ros
@@ -29,6 +27,7 @@ RDEPEND="
 	dev-libs/boost:=[threads]
 "
 DEPEND="${RDEPEND}
+	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	test? ( dev-ros/rosunit )
 "
-PATCHES=( "${FILESDIR}/boost_signals.patch" )
