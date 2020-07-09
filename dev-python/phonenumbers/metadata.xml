@@ -5,6 +5,7 @@
 		<email>cedk@gentoo.org</email>
 		<name>Cédric Krier</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">phonenumbers</remote-id>
 		<remote-id type="github">daviddrysdale/python-phonenumbers</remote-id>
