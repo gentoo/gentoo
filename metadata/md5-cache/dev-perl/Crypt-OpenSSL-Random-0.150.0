@@ -5,10 +5,10 @@ DESCRIPTION=OpenSSL/LibreSSL pseudo-random number generator access
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/Crypt-OpenSSL-Random
 IUSE=libressl
-KEYWORDS=~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RU/RURBAN/Crypt-OpenSSL-Random-0.15.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=146e95eb257d78ffb8fd45d524d3eeed
+_md5_=48e8528793ec42e6e7670a07a1011fa5
