@@ -20,7 +20,7 @@ SLOT="0"
 IUSE="+alsa pulseaudio"
 REQUIRED_USE="|| ( alsa pulseaudio )"
 
-BDEPEND="dev-util/patchelf"
+BDEPEND=">=dev-util/patchelf-0.10"
 
 RDEPEND="
 	app-arch/snappy:0/1
