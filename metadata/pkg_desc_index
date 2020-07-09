@@ -12902,7 +12902,7 @@ media-libs/lsp-plugins 1.1.5-r2 1.1.7-r1 1.1.10 1.1.22 9999: Linux Studio Plugin
 media-libs/lv2 1.16.0-r1 1.18.0: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 20.0.8 20.1.1 20.1.2 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 20.0.8 20.1.1 20.1.2 20.1.3 9999: OpenGL-like graphic library for Linux
 media-libs/mlt 6.20.0 6.20.0-r2: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
@@ -15074,7 +15074,7 @@ net-p2p/classified-ads 0.13: Program for displaying classified advertisement ite
 net-p2p/cpuminer-opt 3.12.4.2 3.12.13 9999: Optimized multi algo CPU miner
 net-p2p/ctorrent 3.3.2-r4: Enhanced CTorrent is a BitTorrent console client written in C and C++
 net-p2p/dbhub 0.451-r1: Hub software for Direct Connect, fork of opendchub
-net-p2p/deluge 2.0.3-r4 2.0.3-r5 2.0.3-r6 2.0.3-r7 9999: BitTorrent client with a client/server model
+net-p2p/deluge 2.0.3-r4 2.0.3-r5 2.0.3-r6 2.0.3-r7 2.0.3-r8 9999: BitTorrent client with a client/server model
 net-p2p/ed2k_hash 0.4.0-r2: Tool for generating eDonkey2000 links
 net-p2p/eiskaltdcpp 2.2.10 9999: Qt/DC++ based client for DirectConnect and ADC protocols
 net-p2p/fms 0.3.82: A spam-resistant message board application for Freenet
