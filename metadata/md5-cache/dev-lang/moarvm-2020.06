@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure
+DEPEND=dev-libs/libatomic_ops >=dev-libs/libuv-1.26 dev-lang/lua:= dev-libs/libffi clang? ( >=sys-devel/clang-3.1 ) dev-lang/perl
+DESCRIPTION=A 6model-based VM for NQP and Rakudo Perl 6
+EAPI=7
+HOMEPAGE=http://moarvm.org
+IUSE=asan clang debug doc +jit optimize static-libs ubsan
+KEYWORDS=~amd64 ~x86
+LICENSE=Artistic-2
+RDEPEND=dev-libs/libatomic_ops >=dev-libs/libuv-1.26 dev-lang/lua:= dev-libs/libffi
+RESTRICT=test
+SLOT=0
+SRC_URI=http://moarvm.org/releases/MoarVM-2020.06.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=3422642396e91782b1c32e4d02beeae9
