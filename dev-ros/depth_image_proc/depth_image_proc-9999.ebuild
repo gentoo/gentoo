@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 ROS_REPO_URI="https://github.com/ros-perception/image_pipeline"
 KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
@@ -21,11 +21,12 @@ RDEPEND="
 	dev-ros/image_transport
 	dev-ros/message_filters
 	dev-ros/nodelet
-	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-ros/stereo_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/tf2
 	dev-ros/tf2_ros
 	dev-libs/boost:=
 	dev-libs/console_bridge:=
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/stereo_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+"
