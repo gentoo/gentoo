@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Thomas Deutschmann <whissi@gentoo.org> (2020-07-09)
+# media-video/pipewire:0/0.3 is currently masked
+www-client/firefox pipewire
+
 # Mart Raudsepp <leio@gentoo.org> (2020-06-28)
 # media-video/pipewire:0/0.3 is ongoing work, 0.2 on mutter-3.34
 # is not worth trying to get to work.
