@@ -20,6 +20,7 @@ DEPEND="virtual/pkgconfig
 
 PATCHES=(
 	"${FILESDIR}/libzbc-no-automagic-gtk-dep.patch"
+	"${FILESDIR}/${P}-gcc-10.patch"
 )
 
 src_prepare() {
