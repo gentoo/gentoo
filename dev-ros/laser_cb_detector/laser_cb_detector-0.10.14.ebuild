@@ -26,4 +26,4 @@ RDEPEND="
 	dev-ros/settlerlib
 "
 DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/gcc6.patch" )
+PATCHES=( "${FILESDIR}/gcc6.patch" "${FILESDIR}/boost170.patch" "${FILESDIR}/ocv4.patch" )
