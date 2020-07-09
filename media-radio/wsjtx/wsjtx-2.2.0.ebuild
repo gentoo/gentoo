@@ -40,7 +40,8 @@ S=${WORKDIR}/wsjtx
 PATCHES=( "${FILESDIR}/${PN}-2.0.1-hamlib.patch"
 		  "${FILESDIR}/${PN}-fix-unicode.patch"
 		  "${FILESDIR}/${PN}-drop-docs.patch"
-		  "${FILESDIR}/${PN}-2.1.2-qt_helpers.patch" )
+		  "${FILESDIR}/${PN}-2.1.2-qt_helpers.patch"
+		  "${FILESDIR}/${PN}-2.2.0-werror.patch" )
 
 DOCS=( AUTHORS BUGS NEWS README THANKS )
 
