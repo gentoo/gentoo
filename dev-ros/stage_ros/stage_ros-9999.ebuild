@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 ROS_REPO_URI="https://github.com/ros-simulation/stage_ros"
 KEYWORDS="~amd64"
@@ -24,8 +24,10 @@ RDEPEND="
 	dev-ros/tf
 	x11-libs/fltk
 	>=sci-electronics/Stage-4.3:=
-	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
 DEPEND="${RDEPEND}
+	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	test? ( dev-ros/rostest )
+"
+BDEPEND="
 	virtual/pkgconfig"
