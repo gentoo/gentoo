@@ -5,7 +5,7 @@ EAPI=7
 
 inherit toolchain-funcs
 
-DESCRIPTION="lightweight Linux console locking tool"
+DESCRIPTION="Lightweight Linux console locking tool"
 HOMEPAGE="https://github.com/muennich/physlock"
 SRC_URI="https://github.com/muennich/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
