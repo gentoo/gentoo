@@ -4688,7 +4688,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.24: Allows Tomcat to use certain native resources for better performance
-dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.103 7.0.104 8.5.56 8.5.57 9.0.36 9.0.37: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
+dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.103 7.0.104 7.0.105 8.5.56 8.5.57 9.0.36 9.0.37: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -5860,7 +5860,7 @@ dev-perl/DBD-mysql 4.44.0-r1 4.44.0-r2 4.50.0 4.50.0-r1: MySQL driver for the Pe
 dev-perl/DBI 1.637.0 1.643.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r2 11.960.0: Interactive command shell for the DBI
 dev-perl/DBICx-TestDatabase 0.50.0 0.50.0-r1: create a temporary database from a DBIx::Class::Schema
-dev-perl/DBIx-Class 0.82.841-r1: Extensible and flexible object <-> relational mapper
+dev-perl/DBIx-Class 0.82.841-r1 0.82.842: Extensible and flexible object <-> relational mapper
 dev-perl/DBIx-Class-DynamicDefault 0.40.0: Automatically set and update fields
 dev-perl/DBIx-Class-InflateColumn-Boolean 0.3.0: Auto-create boolean objects from columns
 dev-perl/DBIx-Class-InflateColumn-IP 0.20.30-r1: Auto-create NetAddr::IP objects from columns
@@ -6769,6 +6769,7 @@ dev-perl/SNMP_Session 1.13-r2: A SNMP Perl Module
 dev-perl/SOAP-Lite 1.260.0: Lightweight interface to the SOAP protocol both on client and server side
 dev-perl/SOAP-WSDL 3.3.0: SOAP with WSDL support
 dev-perl/SQL-Abstract 1.840.0: Generate SQL from Perl data structures
+dev-perl/SQL-Abstract-Classic 1.910.0: Generate SQL from Perl data structures with backwards/forwards compat
 dev-perl/SQL-Abstract-Limit 0.141.0-r1: Portable LIMIT emulation
 dev-perl/SQL-Statement 1.412.0: Small SQL parser and engine
 dev-perl/SQL-Translator 0.110.230: Manipulate structured data definitions (SQL and more)
@@ -9047,8 +9048,8 @@ dev-ros/collada_parser 1.12.10-r3 1.12.12 9999: C++ parser for the Collada robot
 dev-ros/collada_urdf 1.12.10-r1 1.12.12 9999: Convert Unified Robot Description Format (URDF) documents into COLLADA documents
 dev-ros/combined_robot_hw 0.19.1 9999: Combined Robot HW class
 dev-ros/combined_robot_hw_tests 0.19.1 9999: Combined Robot HW class tests
-dev-ros/compressed_depth_image_transport 1.9.5-r1 9999: Plugin to image_transport for transparently sending depth images using PNG compression
-dev-ros/compressed_image_transport 1.9.5-r1 9999: Plugin to image_transport for transparently sending images encoded as JPEG or PNG
+dev-ros/compressed_depth_image_transport 1.14.0 9999: Plugin for transparently sending depth images using PNG compression
+dev-ros/compressed_image_transport 1.14.0 9999: Plugin for transparently sending images encoded as JPEG or PNG
 dev-ros/console_bridge_vendor 1.2.0 9999: Wrapper around console_bridge
 dev-ros/control_msgs 1.4.0 9999: Base messages and actions useful for controlling robots
 dev-ros/control_toolbox 1.14.0 1.15.0 1.16.0 9999: Modules that are useful across all controllers
@@ -9070,7 +9071,7 @@ dev-ros/diagnostic_updater 1.8.8 1.8.9 1.8.10 1.9.0 1.9.2 1.9.3 9999: Tools for 
 dev-ros/driver_base 1.6.8 9999: Framework for writing drivers that helps with runtime reconfiguration, diagnostics and self-test
 dev-ros/dwa_local_planner 1.16.1 1.16.2 1.16.3 1.16.6 9999: Dynamic Window Approach to local robot navigation on a plane
 dev-ros/dynamic_reconfigure 1.5.48 1.5.49 1.6.0 9999: Provides a means to change node parameters at any time without having to restart the node
-dev-ros/eigen_conversions 1.11.9-r1 1.12.0 9999: Conversion functions between Eigen and KDL and Eigen and geometry_msgs
+dev-ros/eigen_conversions 1.13.2 9999: Conversion functions between Eigen and KDL and Eigen and geometry_msgs
 dev-ros/eigen_stl_containers 0.1.4 0.1.5 0.1.6 0.1.7 0.1.8 9999: Provides a set of typedef's that allow using Eigen datatypes in STL containers
 dev-ros/fake_localization 1.16.6 9999: A ROS node that simply forwards odometry information
 dev-ros/filters 1.8.1-r1 9999: Standardized interface for processing data as a sequence of filters
@@ -9125,7 +9126,7 @@ dev-ros/joint_limits_interface 0.19.1 9999: Interface for enforcing joint limits
 dev-ros/joint_state_publisher 1.15.0 9999: Tool for setting and publishing joint state values for a given URDF
 dev-ros/joint_state_publisher_gui 1.15.0 9999: Tool for setting and publishing joint state values for a given URDF
 dev-ros/joint_states_settler 0.10.14 9999: Reports how long a subset of joints has been settled
-dev-ros/kdl_conversions 1.11.9-r1 1.12.0 9999: Conversion functions between KDL and geometry_msgs types
+dev-ros/kdl_conversions 1.13.2 9999: Conversion functions between KDL and geometry_msgs types
 dev-ros/kdl_parser 1.12.10 1.13.0 1.13.1 9999: Constructs a KDL tree from an XML robot representation in URDF
 dev-ros/kdl_parser_py 1.12.10 1.13.0 1.13.1 9999: Python tools to construct a KDL tree from an XML robot representation in URDF
 dev-ros/laser_assembler 1.7.6 1.7.7 9999: Nodes to assemble point clouds from either LaserScan or PointCloud messages
@@ -9312,20 +9313,20 @@ dev-ros/test_rosmaster 1.15.7 9999: Unit tests for rosmaster
 dev-ros/test_rosparam 1.15.7 9999: Unit tests for rosparam
 dev-ros/test_rospy 1.15.7 9999: Unit tests for rospy
 dev-ros/test_rosservice 1.15.7 9999: Unit tests for rospy
-dev-ros/test_tf2 0.6.1 0.6.2 0.6.3 0.6.5 9999: TF2 unit tests
-dev-ros/tf 1.12.0 9999: Maintains the relationship between coordinate frames in a tree structure buffered in time
-dev-ros/tf2 0.6.5-r1 9999: The second generation Transform Library in ROS
-dev-ros/tf2_bullet 0.6.1 0.6.2 0.6.3 0.6.5 9999: TF2 bullet support
-dev-ros/tf2_eigen 0.6.1 0.6.2 0.6.3 0.6.5 9999: TF2 eigen support
-dev-ros/tf2_geometry_msgs 0.6.3 0.6.5 9999: The second generation Transform Library in ROS
-dev-ros/tf2_kdl 0.6.1-r1 0.6.2 0.6.3 0.6.5 9999: KDL binding for tf2
-dev-ros/tf2_msgs 0.6.1 0.6.2 0.6.3 0.6.5 9999: TF2 messages
-dev-ros/tf2_py 0.6.1 0.6.2 0.6.3 0.6.5 9999: TF2 python bindings
-dev-ros/tf2_ros 0.6.1 0.6.2 0.6.3 0.6.5 9999: ROS bindings for the tf2 library, for both Python and C++
-dev-ros/tf2_sensor_msgs 0.6.3 0.6.5 9999: Transform sensor_msgs with tf. Most notably, PointCloud2
-dev-ros/tf2_tools 0.6.1 0.6.2 0.6.3 0.6.5 9999: Tools for 2nd gen Transform library
-dev-ros/tf_conversions 1.11.9-r1 1.12.0 9999: Conversion functions to convert common tf datatypes into identical datatypes used by other libraries
-dev-ros/theora_image_transport 1.9.5-r1 9999: Plugin to image_transport for transparently sending an image stream encoded with the Theora codec
+dev-ros/test_tf2 0.7.2 9999: TF2 unit tests
+dev-ros/tf 1.13.2 9999: Maintains the relationship between frames in a tree structure over time
+dev-ros/tf2 0.7.2 9999: The second generation Transform Library in ROS
+dev-ros/tf2_bullet 0.7.2 9999: TF2 bullet support
+dev-ros/tf2_eigen 0.7.2 9999: TF2 eigen support
+dev-ros/tf2_geometry_msgs 0.7.2 9999: The second generation Transform Library in ROS
+dev-ros/tf2_kdl 0.7.2 9999: KDL binding for tf2
+dev-ros/tf2_msgs 0.7.2 9999: TF2 messages
+dev-ros/tf2_py 0.7.2 9999: TF2 python bindings
+dev-ros/tf2_ros 0.7.2 9999: ROS bindings for the tf2 library, for both Python and C++
+dev-ros/tf2_sensor_msgs 0.7.2 9999: Transform sensor_msgs with tf. Most notably, PointCloud2
+dev-ros/tf2_tools 0.7.2 9999: Tools for 2nd gen Transform library
+dev-ros/tf_conversions 1.13.2 9999: Functions to convert common tf datatypes into those used by other libraries
+dev-ros/theora_image_transport 1.14.0 9999: Plugin for transparently sending an image stream encoded with the Theora codec
 dev-ros/timestamp_tools 1.6.8 9999: Classes to help timestamp hardware events
 dev-ros/topic_tools 1.15.7 9999: Tools for directing, throttling and selecting ROS topics
 dev-ros/trajectory_msgs 1.13.0 9999: Messages for defining robot trajectories
@@ -15386,14 +15387,14 @@ ros-meta/driver_common 1.6.8 9999: Classes and tools that are useful throughout 
 ros-meta/executive_smach 2.0.0 2.0.1 9999: SMACH library and ROS SMACH integration packages
 ros-meta/gazebo_ros_pkgs 2.6.1 2.6.2 2.7.3 2.7.4 2.8.4 2.8.5 2.8.7 9999: Interface for using ROS with the gazebo simulator
 ros-meta/geographic_info 0.4.0 0.5.0 0.5.2 0.5.3 9999: Geographic information metapackage
-ros-meta/geometry 1.11.7 1.11.8 1.11.9 1.12.0 9999: Common geometric calculations
-ros-meta/geometry2 0.6.2 0.6.3 0.6.5 9999: The second generation Transform Library in ros
+ros-meta/geometry 1.11.7 1.11.8 1.11.9 1.12.0 1.13.2 9999: Common geometric calculations
+ros-meta/geometry2 0.6.2 0.6.3 0.6.5 0.7.2 9999: The second generation Transform Library in ros
 ros-meta/geometry_tutorials 0.2.2 0.2.3 9999: Metapackage of geometry tutorials ROS
 ros-meta/hector_localization 0.2.0 0.2.1 0.3.0 9999: Collection of packages, that provide the full 6DOF pose of a robot or platform
 ros-meta/hector_slam 0.3.3 0.3.4 0.3.5 0.4.0 9999: hector_mapping and related packages
 ros-meta/image_common 1.11.12 1.11.13 9999: Common code for working with images in ROS
 ros-meta/image_pipeline 1.12.19 1.12.20 1.12.21 1.12.22 1.12.23 1.13.0 9999: Fills the gap between getting raw images from a camera driver and higher-level vision processing
-ros-meta/image_transport_plugins 1.9.2 1.9.3 1.9.5 9999: Plugins for publishing and subscribing topics in representations other than raw pixel data
+ros-meta/image_transport_plugins 1.9.2 1.9.3 1.9.5 1.14.0 9999: Plugins for publishing and subscribing topics in representations other than raw pixel data
 ros-meta/imu_pipeline 0.2.1 0.2.2 0.2.3 9999: Tools for processing and pre-processing IMU messages for easier use by later subscribers
 ros-meta/imu_tools 1.1.5 1.2.0 1.2.1 9999: Various tools for IMU devices
 ros-meta/laser_pipeline 1.6.3 9999: Meta-package for processing laser data, e.g. converting laser data into 3D representations
@@ -17870,7 +17871,7 @@ www-servers/servefile 0.4.4_p20200211: Serve a single file via HTTP
 www-servers/sniproxy 0.5.0 0.6.0: Proxies incoming HTTP and TLS connections based on the hostname
 www-servers/spawn-fcgi 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
-www-servers/tomcat 7.0.104 8.5.56 8.5.57 9.0.36 9.0.37: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
+www-servers/tomcat 7.0.104 7.0.105 8.5.56 8.5.57 9.0.36 9.0.37: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
 www-servers/tornado 4.5.3 5.1-r1 6.0.3 6.0.4: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.18: uWSGI server for Python web applications
 www-servers/varnish 6.0.6 6.3.2 6.4.0: Varnish is a state-of-the-art, high-performance HTTP accelerator
