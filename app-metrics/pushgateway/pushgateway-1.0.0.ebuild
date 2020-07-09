@@ -2,23 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit user golang-build golang-vcs-snapshot systemd
+inherit go-module user systemd
 
-EGO_PN="github.com/prometheus/pushgateway"
 EGIT_COMMIT="v${PV/_rc/-rc.}"
 GIT_COMMIT="cc61f46"
-ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64"
 
 DESCRIPTION="Prometheus push acceptor for ephemeral and batch jobs"
 HOMEPAGE="https://github.com/prometheus/pushgateway"
-SRC_URI="${ARCHIVE_URI}"
+SRC_URI="https://github.com/prometheus/pushgateway/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND=">=dev-lang/go-1.12
-	>=dev-util/promu-0.3.0"
+BDEPEND=">=dev-util/promu-0.3.0"
 
 pkg_setup() {
 	enewgroup ${PN}
@@ -27,22 +25,17 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	sed -i -e "s/{{.Revision}}/${GIT_COMMIT}/" src/${EGO_PN}/.promu.yml || die
+	sed -i -e "s/{{.Revision}}/${GIT_COMMIT}/" .promu.yml || die
 }
 
 src_compile() {
-	export -n GOCACHE XDG_CACHE_HOME #672926
-	pushd src/${EGO_PN} || die
 	mkdir -p bin || die
-	GO111MODULE=on GOPATH="${S}" promu build -v --prefix bin || die
-	popd || die
+	promu build -v --prefix bin || die
 }
 
 src_install() {
-	pushd src/${EGO_PN} || die
-	dobin bin/pushgateway
+	dobin bin/*
 	dodoc {README,CHANGELOG,CONTRIBUTING}.md
-	popd || die
 	keepdir /var/lib/${PN} /var/log/${PN}
 	fowners ${PN}:${PN} /var/lib/${PN} /var/log/${PN}
 	newinitd "${FILESDIR}"/${PN}-1.initd ${PN}
