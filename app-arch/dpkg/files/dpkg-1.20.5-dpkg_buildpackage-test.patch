@@ -1,0 +1,10 @@
+--- a/scripts/Makefile.am
++++ b/scripts/Makefile.am
+@@ -264,7 +264,6 @@
+ 	t/Dpkg_Dist_Files.t \
+ 	t/dpkg_realpath.t \
+ 	t/dpkg_source.t \
+-	t/dpkg_buildpackage.t \
+ 	t/merge_changelogs.t \
+ 	t/mk.t \
+ 	$(nil)
