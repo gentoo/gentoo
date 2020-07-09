@@ -377,12 +377,6 @@ app-misc/ifp-line
 dev-util/cdiff
 
 # Sam James <sam@gentoo.org> (2020-06-04)
-# Large number of vulnerabilities (Bug #692398, Bug #664326)
-# Unmaintained.
-# Masked for removal in 30 days.
-www-apps/otrs
-
-# Sam James <sam@gentoo.org> (2020-06-04)
 # Multiple vulnerabilities (Bug #655176, Bug #701812)
 # Misc. other bugs, out of date, no maintainer.
 # Masked for removal in 30 days.
