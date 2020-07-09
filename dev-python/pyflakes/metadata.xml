@@ -13,6 +13,7 @@
 		to sit around for minutes waiting for the checker to run; it runs on
 		most large projects in only a few seconds.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">pyflakes</remote-id>
 		<remote-id type="github">PyCQA/pyflakes</remote-id>
