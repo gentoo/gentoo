@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit toolchain-funcs unpacker
 
 DESCRIPTION="object code file converted (COFF, ELF, OMF, MACHO)"
-HOMEPAGE="http://agner.org/optimize/#objconv"
+HOMEPAGE="https://agner.org/optimize/#objconv"
 # original URL is "http://agner.org/optimize/objconv.zip", but it's unversioned.
 # I copy those to distfiles time to time. last modified: 2018-Oct-07
 SRC_URI="https://dev.gentoo.org/~slyfox/distfiles/${P}.zip"
