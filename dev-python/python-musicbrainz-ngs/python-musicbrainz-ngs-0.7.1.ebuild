@@ -15,7 +15,7 @@ SRC_URI="https://github.com/alastair/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_PN}$
 
 LICENSE="BSD-2 ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="examples"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
