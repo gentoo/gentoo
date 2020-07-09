@@ -1,6 +1,5 @@
-BDEPEND=>=dev-lang/go-1.10 virtual/pkgconfig
-DEFINED_PHASES=compile install prepare setup test unpack
-DEPEND=>=dev-lang/go-1.12 >=dev-util/promu-0.3.0
+BDEPEND=>=dev-util/promu-0.3.0 >=dev-lang/go-1.12 app-arch/unzip virtual/pkgconfig
+DEFINED_PHASES=compile install postinst prepare setup unpack
 DESCRIPTION=Prometheus push acceptor for ephemeral and batch jobs
 EAPI=7
 HOMEPAGE=https://github.com/prometheus/pushgateway
@@ -9,5 +8,5 @@ LICENSE=Apache-2.0 BSD BSD-2 MIT
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/prometheus/pushgateway/archive/v1.0.0.tar.gz -> pushgateway-1.0.0.tar.gz
-_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
-_md5_=710f5a59c01a271665a042c579e598cb
+_eclasses_=go-module	45394825d9260b479aa1cf252ea58e01	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_md5_=5286aaed980f29e984e04ea23d6d1ba0

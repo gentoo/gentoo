@@ -1,0 +1,15 @@
+BDEPEND=>=dev-lang/go-1.13 >=dev-lang/go-1.12 app-arch/unzip virtual/pkgconfig
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=kube-apiserver? ( acct-group/kube-apiserver acct-user/kube-apiserver ) kube-controller-manager? ( acct-group/kube-controller-manager acct-user/kube-controller-manager ) kube-scheduler? ( acct-group/kube-scheduler acct-user/kube-scheduler )
+DESCRIPTION=production-grade container orchestration
+EAPI=7
+HOMEPAGE=https://kubernetes.io
+IUSE=hardened +kubelet +kubeadm +kubectl +kube-apiserver +kube-controller-manager +kube-proxy +kube-scheduler
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=kube-apiserver? ( acct-group/kube-apiserver acct-user/kube-apiserver ) kube-controller-manager? ( acct-group/kube-controller-manager acct-user/kube-controller-manager ) kube-scheduler? ( acct-group/kube-scheduler acct-user/kube-scheduler ) kube-proxy? ( net-firewall/conntrack-tools ) !sys-cluster/kubeadm !sys-cluster/kubectl !sys-cluster/kubelet !sys-cluster/kube-apiserver !sys-cluster/kube-controller-manager !sys-cluster/kube-proxy !sys-cluster/kube-scheduler
+RESTRICT=strip test
+SLOT=0
+SRC_URI=https://github.com/kubernetes/kubernetes/archive/v1.16.12.tar.gz -> kubernetes-1.16.12.tar.gz
+_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	go-module	45394825d9260b479aa1cf252ea58e01	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=730d4ad582ba135e1a7e4c86dba81169
