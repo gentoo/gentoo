@@ -871,7 +871,7 @@ app-crypt/asekey 3.7: ASEKey USB SIM Card Reader
 app-crypt/bcwipe 1.9.13: Secure file removal utility
 app-crypt/bsign 0.4.5-r1: embed secure hashes (SHA1) and digital signatures (GNU Privacy Guard) into files
 app-crypt/cardpeek 0.7.2 0.8.4: Tool to read the contents of smartcards
-app-crypt/ccid 1.4.30 1.4.31 1.4.32: CCID free software driver
+app-crypt/ccid 1.4.30 1.4.31 1.4.32 1.4.33: CCID free software driver
 app-crypt/ccrypt 1.11 1.11-r1: Encryption and decryption
 app-crypt/certbot 1.5.0 1.6.0 9999: Let's encrypt client to automate deployment of X.509 certificates
 app-crypt/certbot-apache 1.5.0 1.6.0 9999: Apache plugin for certbot (Let's Encrypt Client)
@@ -7736,8 +7736,8 @@ dev-python/docutils 0.16: Python Documentation Utilities
 dev-python/docutils-glep 1.2 9999: Gentoo GLEP support for docutils
 dev-python/dogpile-cache 0.7.1 0.9.1: A locking API for expiring values while a single thread generates a new value.
 dev-python/dogpile-core 0.4.1: Copy-on-write locking mechanism for expensive resources
-dev-python/doit 0.29.0 0.32.0 0.32.0-r1: Automation tool
-dev-python/doit-py 0.4.0 0.4.0-r1 0.4.0-r2: doit tasks for python stuff
+dev-python/doit 0.32.0-r1 0.32.0-r2: Automation tool
+dev-python/doit-py 0.4.0-r2 0.5.0: doit tasks for python stuff
 dev-python/dominate 2.3.1 2.4.0 2.5.1: Library for creating and manipulating HTML documents using an elegant DOM API
 dev-python/doublex 1.9.2: Python test doubles
 dev-python/doublex-expects 0.7.0_rc2-r1: Expects matchers for Doublex test doubles assertions
@@ -10317,7 +10317,7 @@ dev-util/cwdiff 0.2.8 0.3.0 0.3.1 0.4.0 9999: A script that wraps wdiff to suppo
 dev-util/d-feet 0.3.14-r1: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 19.04.0-r1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r4: Graphical front-end for command-line debuggers
-dev-util/debhelper 9.20160814 13 13.1: Collection of programs that can be used to automate common tasks in debian/rules
+dev-util/debhelper 9.20160814 13 13.1 13.2: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.115 1.0.116 1.0.117 1.0.123: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 4.15.0 4.15.1: Stand-alone debugedit from RPM
 dev-util/dejagnu 1.6 1.6.2: Framework for testing other programs
