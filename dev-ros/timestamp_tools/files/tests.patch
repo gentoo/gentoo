@@ -1,7 +1,7 @@
 Index: driver_common-1.6.8/timestamp_tools/CMakeLists.txt
 ===================================================================
---- driver_common-1.6.8.orig/timestamp_tools/CMakeLists.txt
-+++ driver_common-1.6.8/timestamp_tools/CMakeLists.txt
+--- driver_common-1.6.8.orig/CMakeLists.txt
++++ driver_common-1.6.8/CMakeLists.txt
 @@ -17,5 +17,7 @@ install(DIRECTORY include/${PROJECT_NAME
    DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
    FILES_MATCHING PATTERN "*.h")
