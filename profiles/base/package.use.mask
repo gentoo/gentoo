@@ -8,7 +8,7 @@
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-07-09)
 # media-video/pipewire:0/0.3 is currently masked
-www-client/firefox pipewire
+www-client/firefox screencast
 
 # Mart Raudsepp <leio@gentoo.org> (2020-06-28)
 # media-video/pipewire:0/0.3 is ongoing work, 0.2 on mutter-3.34
