@@ -16786,7 +16786,7 @@ sys-apps/usbredir 0.7.1_p20170503 0.7.1_p20180211 0.8.0 9999: TCP daemon and set
 sys-apps/usbutils 009 010-r1 012: USB enumeration utilities
 sys-apps/usermode-utilities 20070815-r3 20070815-r4: Tools for use with Usermode Linux virtual machines
 sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (login) info
-sys-apps/util-linux 2.33.2 2.34-r3 2.35.1-r2 2.35.2 2.36_rc1 9999: Various useful Linux utilities
+sys-apps/util-linux 2.33.2 2.34-r3 2.35.1-r2 2.35.2 2.36_rc2 9999: Various useful Linux utilities
 sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hw state (i.e. reinitialize video card)
 sys-apps/watchdog 5.15 5.16: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.21: Prints out location of specified executables that are in your path
@@ -17789,7 +17789,7 @@ www-client/elinks 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-esta
 www-client/epiphany 3.30.5 3.32.6 3.34.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 68.10.0 78.0.1-r1: Firefox Web Browser
+www-client/firefox 68.10.0 78.0.1-r1 78.0.2: Firefox Web Browser
 www-client/firefox-bin 68.10.0 78.0: Firefox Web Browser
 www-client/google-chrome 83.0.4103.116: The web browser from Google
 www-client/google-chrome-beta 84.0.4147.85: The web browser from Google
