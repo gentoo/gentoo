@@ -5854,7 +5854,7 @@ dev-perl/Curses-UI 0.960.900-r2 0.960.900-r3: Perl UI framework based on the cur
 dev-perl/CursesWidgets 1.997.0-r2 1.997.0-r3: Provide high level APIs for rapid user interface design on the console in Perl
 dev-perl/Cwd-Guard 0.50.0: Temporary changing working directory (chdir)
 dev-perl/DBD-MariaDB 1.210.0 1.210.0-r1: MariaDB and MySQL driver for the Perl5 Database Interface (DBI)
-dev-perl/DBD-Pg 3.5.3 3.6.2 3.7.0 3.10.0: PostgreSQL database driver for the DBI module
+dev-perl/DBD-Pg 3.5.3 3.6.2 3.7.0 3.10.0 3.13.0: PostgreSQL database driver for the DBI module
 dev-perl/DBD-SQLite 1.560.0 1.580.0: Self Contained RDBMS in a DBI Driver
 dev-perl/DBD-mysql 4.44.0-r1 4.44.0-r2 4.50.0: MySQL driver for the Perl5 Database Interface (DBI)
 dev-perl/DBI 1.637.0: Database independent interface for Perl
@@ -17803,7 +17803,7 @@ www-client/lynx 2.8.9_p1 2.9.0_pre4 2.9.0_pre5: An excellent console-based web b
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r1: a free, open source web browser
-www-client/opera 69.0.3686.36 69.0.3686.49: A fast and secure web browser
+www-client/opera 69.0.3686.57: A fast and secure web browser
 www-client/opera-beta 70.0.3728.8: A fast and secure web browser
 www-client/opera-developer 71.0.3735.0 71.0.3742.0: A fast and secure web browser
 www-client/otter 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
