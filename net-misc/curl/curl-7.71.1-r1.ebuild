@@ -18,7 +18,7 @@ IUSE+=" nghttp3 quiche"
 IUSE+=" elibc_Winnt"
 
 #lead to lots of false negatives, bug #285669
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 	brotli? ( app-arch/brotli:=[${MULTILIB_USEDEP}] )
