@@ -69,7 +69,6 @@ dev-perl/Template-Toolkit gd
 media-fonts/unifont utils fontforge
 media-video/vdrsync dvdr
 www-apps/bugzilla extras
-www-apps/otrs gd
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-07-16)
 # sci-libs/dcmtk is not stable
