@@ -1,15 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 ROS_REPO_URI="https://github.com/ros-perception/image_transport_plugins"
 KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
-PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 
-DESCRIPTION="Plugin to image_transport for transparently sending depth images using PNG compression"
+DESCRIPTION="Plugin for transparently sending depth images using PNG compression"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
