@@ -1,0 +1,11 @@
+--- ./bliss.cc.orig	2020-07-10 10:34:44.946000000 -0600
++++ ./bliss.cc	2020-07-10 10:35:36.076000000 -0600
+@@ -59,7 +59,7 @@
+   else program_name = argv0;  
+   if(!program_name or *program_name == 0) program_name = "bliss";
+ 
+-  fprintf(fp, "bliss version %s (compiled "__DATE__")\n", bliss::version);
++  fprintf(fp, "bliss version %s (compiled %s)\n", bliss::version, __DATE__);
+   fprintf(fp, "Copyright 2003-2015 Tommi Junttila\n");
+   fprintf(fp,
+ "\n"
