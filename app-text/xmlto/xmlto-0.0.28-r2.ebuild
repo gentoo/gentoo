@@ -22,7 +22,7 @@ RDEPEND=">=app-text/docbook-xsl-stylesheets-1.62.0-r1
 	|| ( sys-apps/util-linux app-misc/getopt )
 	sys-apps/which
 	text? ( || ( virtual/w3m www-client/lynx www-client/elinks ) )
-	latex? ( >=app-text/passivetex-1.25 >=dev-tex/xmltex-1.9-r2 )"
+	latex? ( >=app-text/passivetex-1.25 dev-texlive/texlive-formatsextra )"
 # We only depend on flex when we patch the imput lexer.
 DEPEND="${RDEPEND}"
 
