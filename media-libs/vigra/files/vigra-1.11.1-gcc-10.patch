@@ -1,0 +1,46 @@
+From dc730be49fc8def4304a651fa525e43b7754955e Mon Sep 17 00:00:00 2001
+From: Ullrich Koethe <ullrich.koethe@iwr.uni-heidelberg.de>
+Date: Tue, 16 Oct 2018 19:26:17 +0200
+Subject: [PATCH] fixed noexcept declaration
+
+---
+ include/vigra/separableconvolution.hxx | 6 +++---
+ include/vigra/stdconvolution.hxx       | 6 +++---
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/include/vigra/separableconvolution.hxx b/include/vigra/separableconvolution.hxx
+index 7ee33c09d..8fd120602 100644
+--- a/include/vigra/separableconvolution.hxx
++++ b/include/vigra/separableconvolution.hxx
+@@ -1409,10 +1409,10 @@ class Kernel1D
+         {}
+ 
+         ~InitProxy()
+-#ifndef _MSC_VER
+-            throw(PreconditionViolation)
+-#elif _MSC_VER >= 1900
++#if _MSC_VER >= 1900 || __cplusplus >= 201103L
+             noexcept(false)
++#else
++            throw(PreconditionViolation)
+ #endif
+         {
+             vigra_precondition(count_ == 1 || count_ == sum_,
+diff --git a/include/vigra/stdconvolution.hxx b/include/vigra/stdconvolution.hxx
+index 76d61a53f..657247259 100644
+--- a/include/vigra/stdconvolution.hxx
++++ b/include/vigra/stdconvolution.hxx
+@@ -792,10 +792,10 @@ public:
+         {}
+ 
+         ~InitProxy()
+-#ifndef _MSC_VER
+-            throw(PreconditionViolation)
+-#elif _MSC_VER >= 1900
++#if _MSC_VER >= 1900 || __cplusplus >= 201103L
+             noexcept(false)
++#else
++            throw(PreconditionViolation)
+ #endif
+         {
+             vigra_precondition(count_ == 1 || count_ == sum_,
