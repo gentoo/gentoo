@@ -62,6 +62,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-fix-incorrect-template-parameter-type.patch"
 	"${FILESDIR}/${P}-boost-python.patch"
 	"${FILESDIR}/${P}-python3.7.patch" # bug 701208
+	"${FILESDIR}/${P}-gcc-10.patch" # bug 723302
 	# TODO: upstream
 	"${FILESDIR}/${P}-lib_suffix.patch"
 	"${FILESDIR}/${P}-cmake-module-dir.patch"
