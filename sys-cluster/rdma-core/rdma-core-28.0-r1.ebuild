@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit cmake-utils python-single-r1 udev systemd
+inherit cmake python-single-r1 udev systemd
 
 DESCRIPTION="Userspace components for the Linux Kernel's drivers/infiniband subsystem"
 HOMEPAGE="https://github.com/linux-rdma/rdma-core"
@@ -84,11 +84,11 @@ src_configure() {
 		mycmakeargs+=( -DNO_PYVERBS=ON )
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	udev_dorules "${D}"/etc/udev/rules.d/70-persistent-ipoib.rules
 	rm -r "${D}"/etc/{udev,init.d} || die
