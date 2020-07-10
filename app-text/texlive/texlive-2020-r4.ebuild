@@ -71,7 +71,7 @@ RDEPEND="${DEPEND}
 	humanities? ( >=${TEXLIVE_CAT}/texlive-humanities-${PV} )
 	tex4ht? ( >=dev-tex/tex4ht-20090611_p1038-r3 )
 	xml? (
-		>=dev-tex/xmltex-1.9-r2
+		>=${TEXLIVE_CAT}/texlive-formatsextra-${PV}
 		app-text/passivetex
 	)
 	jadetex? ( >=app-text/jadetex-3.13-r2 )
