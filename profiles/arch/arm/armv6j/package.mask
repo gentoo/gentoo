@@ -3,6 +3,7 @@
 
 # Sam James <sam@gentoo.org> (2020-07-02)
 # Needs Rust, which is available here
+-dev-util/cargo-c
 -dev-util/cbindgen
 -media-video/rav1e
 -net-news/newsboat
