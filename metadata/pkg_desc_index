@@ -2721,7 +2721,7 @@ app-text/paperwork 1.3.1: a personal document manager for scanned documents (and
 app-text/paperwork-backend 1.3.1: Backend part of Paperwork (Python API, no UI)
 app-text/paps 0.6.8-r2: Unicode-aware text to PostScript converter
 app-text/par 1.52-r1 1.53.0: a paragraph reformatter, vaguely similar to fmt, but better
-app-text/passivetex 1.25-r1: A namespace-aware XML parser written in Tex
+app-text/passivetex 1.25-r2: A namespace-aware XML parser written in Tex
 app-text/pastebinit 1.5-r1 1.5.1: A software that lets you send anything you want directly to a pastebin
 app-text/pdf2djvu 0.9.8 0.9.11 0.9.12 0.9.15: A tool to create DjVu files from PDF files
 app-text/pdf2html 1.4: Converts pdf files to html files
@@ -2835,7 +2835,7 @@ app-text/xml2doc 20030510-r1: Tool to convert simple XML to a variety of formats
 app-text/xmldiff 1.1.1 2.3: A tool that figures out the differences between two similar XML files
 app-text/xmlformat 1.04: Reformat XML documents to your custom style
 app-text/xmlstarlet 1.6.1: A set of tools to transform, query, validate, and edit XML documents
-app-text/xmlto 0.0.28-r1: script for converting XML and DocBook documents to a variety of output formats
+app-text/xmlto 0.0.28-r2: script for converting XML and DocBook documents to a variety of output formats
 app-text/xournal 0.4.8.2016 9999: An application for notetaking, sketching, and keeping a journal using a stylus
 app-text/xournalpp 1.0.17 1.0.18 9999: Handwriting notetaking software with PDF annotation support
 app-text/xpdf 4.02-r4: The PDF viewer and tools
@@ -10161,7 +10161,7 @@ dev-texlive/texlive-context 2020: TeXLive ConTeXt and packages
 dev-texlive/texlive-fontsextra 2020: TeXLive Additional fonts
 dev-texlive/texlive-fontsrecommended 2020: TeXLive Recommended fonts
 dev-texlive/texlive-fontutils 2020: TeXLive Graphics and font utilities
-dev-texlive/texlive-formatsextra 2020: TeXLive Additional formats
+dev-texlive/texlive-formatsextra 2020-r1: TeXLive Additional formats
 dev-texlive/texlive-games 2020: TeXLive Games typesetting
 dev-texlive/texlive-humanities 2020: TeXLive Humanities packages
 dev-texlive/texlive-langarabic 2020: TeXLive Arabic
