@@ -11,7 +11,7 @@ SRC_URI="https://github.com/01org/thermal_daemon/archive/v${PV}.tar.gz -> ${P}.t
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
@@ -26,7 +26,6 @@ S=${WORKDIR}/thermal_daemon-${PV}
 DOCS=( thermal_daemon_usage.txt README.txt )
 
 src_prepare() {
-	eapply "${FILESDIR}/${P}-size_t-format.patch"
 	default
 	eautoreconf
 }
