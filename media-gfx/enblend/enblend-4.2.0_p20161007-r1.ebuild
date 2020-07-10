@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -49,6 +49,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.2-doc-install-dir-fix.patch
 	"${FILESDIR}"/${P}-cmake.patch
+	"${FILESDIR}"/${P}-gcc-10.patch
 )
 
 src_prepare() {
