@@ -114,6 +114,11 @@
       <role>Member (Gentoo/ARM Kernel)</role>
     </member>
     <member>
+      <email>sam@gentoo.org</email>
+      <name>Sam James</name>
+      <role>Gentoo/ARM</role>
+    </member>
+    <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
       <role>Member (Gentoo/ARM)</role>
