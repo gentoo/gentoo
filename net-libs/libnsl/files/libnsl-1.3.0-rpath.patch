@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/732100
+
+Remove invalid shell from config.rpath.
+--- a/config.rpath
++++ b/config.rpath
+@@ -216,9 +216,7 @@ if test "$with_gnu_ld" = yes; then
+       ;;
+     gnu* | linux* | tpf* | k*bsd*-gnu | kopensolaris*-gnu)
+       if $LD --help 2>&1 | grep ': supported targets:.* elf' > /dev/null; then
+-        if $libdir == /usr/lib | $libdir == /usr/lib64; then
+-		     hardcode_libdir_flag_spec=""
+-	     fi
++        :
+       else
+         ld_shlibs=no
+       fi
