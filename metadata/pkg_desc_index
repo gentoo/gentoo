@@ -5218,7 +5218,7 @@ dev-libs/mmtf-cpp 1.0.0: The pure C++ implementation of the MMTF API, decoder an
 dev-libs/mongo-c-driver 0.7.1-r1 0.8.1-r1 0.98.2 1.1.2-r1 1.1.10 1.3.5 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0-r1 1.13.1 1.14.0 1.15.1 1.16.2: Client library written in C for MongoDB
 dev-libs/mongo-cxx-driver 0.0.2.6.7-r1 1.0.0 1.0.5 1.1.2-r1: C++ Driver for MongoDB
 dev-libs/mpc 1.1.0-r1: A library for multiprecision complex arithmetic with exact rounding
-dev-libs/mpfr 4.0.2: library for multiple-precision floating-point computations with exact rounding
+dev-libs/mpfr 4.0.2 4.1.0: library for multiple-precision floating-point computations with exact rounding
 dev-libs/msgpack 1.1.0 3.1.1 3.2.0 3.2.1: MessagePack is a binary-based efficient data interchange format
 dev-libs/mxml 3.1: A small XML parsing library that you can use to read XML data files or strings
 dev-libs/nanomsg 1.1.5: High-performance messaging interface for distributed applications
@@ -10326,7 +10326,7 @@ dev-util/devhelp 3.34.0: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 150: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 150 151: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
