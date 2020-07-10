@@ -29,4 +29,5 @@
 			book server
 		</flag>
 	</use>
+	<stabilize-allarches/>
 </pkgmetadata>
