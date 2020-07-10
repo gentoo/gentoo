@@ -14149,7 +14149,7 @@ net-analyzer/zmap 2.1.1 9999: Fast network scanner designed for Internet-wide ne
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/accel-ppp 1.12.0 9999: High performance PPTP, PPPoE and L2TP server
 net-dialup/cistronradius 1.6.8-r2: Authentication and accounting server for terminal servers using RADIUS
-net-dialup/cutecom 0.51.0 0.51.0-r1: CuteCom is a serial terminal, like minicom, written in qt
+net-dialup/cutecom 0.51.0 0.51.0-r1: A serial terminal, like minicom, written in Qt
 net-dialup/dial 1.2-r2: A simple client for DWUN
 net-dialup/diald 1.0-r3: Daemon that provides on demand IP links via SLIP or PPP
 net-dialup/dwun 0.96e-r4: Dialer Without a Useful Name (DWUN)
