@@ -2374,7 +2374,7 @@ app-office/gtg 0.4.0: Personal organizer for the GNOME desktop environment
 app-office/homebank 5.2.2 5.2.8 5.3.2 5.4.2: Free, easy, personal accounting for everyone
 app-office/hourglass 0.7.2-r1: A PSP (personal software process) time tracking utility written in Java
 app-office/ical 3.0-r2: Tk-based Calendar program
-app-office/impressive 0.13.0_beta1 0.13.0_beta2: Stylish way of giving presentations with Python
+app-office/impressive 0.13.0_beta2: Stylish way of giving presentations with Python
 app-office/kexi 3.2.0-r1: Visual database applications creator
 app-office/kmymoney 5.0.8-r1 5.1.0: Personal finance manager based on KDE Frameworks
 app-office/kraft 0.90: Software to manage quotes and invoices in small enterprises
