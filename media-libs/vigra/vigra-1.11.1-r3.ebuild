@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="threads(+),xml"
-inherit cmake-utils python-r1
+inherit cmake python-r1
 
 DESCRIPTION="C++ computer vision library emphasizing customizable algorithms and structures"
 HOMEPAGE="https://ukoethe.github.io/vigra/"
@@ -81,7 +81,7 @@ src_prepare() {
 		fi
 	}
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	vigra_disable fftw fftw3
 	vigra_disable fftw fftw3f
@@ -111,7 +111,7 @@ src_configure() {
 			-DWITH_VALGRIND=$(usex valgrind)
 			-DWITH_VIGRANUMPY=$(usex python)
 		)
-		cmake-utils_src_configure
+		cmake_src_configure
 	}
 
 	if use python; then
@@ -124,7 +124,7 @@ src_configure() {
 src_compile() {
 	local VIGRA_BUILD_DIR
 	vigra_compile() {
-		cmake-utils_src_compile
+		cmake_src_compile
 		VIGRA_BUILD_DIR="${BUILD_DIR}"
 	}
 	if use python; then
@@ -136,17 +136,17 @@ src_compile() {
 
 src_install() {
 	if use python; then
-		python_foreach_impl cmake-utils_src_install
+		python_foreach_impl cmake_src_install
 		python_optimize
 	else
-		cmake-utils_src_install
+		cmake_src_install
 	fi
 }
 
 src_test() {
 	# perhaps disable tests (see #390447)
 	vigra_test() {
-		PYTHONPATH="${BUILD_DIR}/vigranumpy/vigra" cmake-utils_src_test
+		PYTHONPATH="${BUILD_DIR}/vigranumpy/vigra" cmake_src_test
 	}
 	if use python; then
 		python_foreach_impl vigra_test
