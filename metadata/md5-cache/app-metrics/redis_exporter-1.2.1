@@ -1,5 +1,5 @@
-BDEPEND=>=dev-lang/go-1.10 virtual/pkgconfig
-DEFINED_PHASES=compile install prepare setup test unpack
+BDEPEND=>=dev-lang/go-1.12 app-arch/unzip virtual/pkgconfig
+DEFINED_PHASES=compile install postinst prepare setup test unpack
 DESCRIPTION=Prometheus Exporter for Redis Metrics. Supports Redis 2.x, 3.x and 4.x
 EAPI=7
 HOMEPAGE=https://github.com/oliver006/redis_exporter
@@ -8,5 +8,5 @@ LICENSE=MIT Apache-2.0 BSD
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/oliver006/redis_exporter/archive/v1.2.1.tar.gz -> redis_exporter-1.2.1.tar.gz
-_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
-_md5_=e6a773cf5335c098a823c97c7e8dde6f
+_eclasses_=go-module	45394825d9260b479aa1cf252ea58e01	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_md5_=d672944c0e5649c377e9b7126f902151
