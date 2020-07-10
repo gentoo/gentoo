@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Kent Fredric <kentnl@gentoo.org> (2020-07-10)
+# No reverse dependencies, and Gtk2 support is becomming
+# obsolete in Gentoo.
+# Removal in 30 days
+dev-perl/gnome2-perl
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-07-09)
 # Dead upstream, no reverse dependencies.
 # Removal in 30 days.
