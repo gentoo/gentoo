@@ -8,15 +8,11 @@ KEYWORDS="~amd64 ~arm"
 
 inherit ros-catkin
 
-DESCRIPTION="Common interfaces for navigation specific robot actions"
+DESCRIPTION="Implementation of an efficient 3D voxel grid"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="
-	dev-ros/costmap_2d
-	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-ros/tf2_ros
-"
-DEPEND="${RDEPEND}"
+RDEPEND="dev-ros/roscpp"
+DEPEND="${RDEPEND}
+	test? ( dev-cpp/gtest )"
