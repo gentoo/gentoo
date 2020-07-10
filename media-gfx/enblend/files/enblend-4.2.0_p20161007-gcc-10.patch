@@ -1,0 +1,16 @@
+Fix build with GCC-10.
+
+Thanks-to: Walter Hüttenmeyer
+Bug: https://bugs.gentoo.org/724988
+
+--- a/src/minimizer.cc	2016-09-24 11:29:40.000000000 +0200
++++ b/src/minimizer.cc	2020-05-24 13:09:58.199170984 +0200
+@@ -19,7 +19,7 @@
+  */
+ 
+ #include <gsl/gsl_errno.h>
+-
++#include <limits>
+ #include "minimizer.h"
+ 
+ 
