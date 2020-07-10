@@ -1,11 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2020-07-02)
 # Packages which need Rust (only on >= 6j)
 # We unmask them for armv6j, armv7a elsewhere
-net-news/newsboat
 dev-util/cbindgen
+media-video/rav1e
+net-news/newsboat
 
 # Sam James <sam@gentoo.org> (2020-06-24)
 # Valgrind lacks support for < ARMv7
