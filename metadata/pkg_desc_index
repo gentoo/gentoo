@@ -15071,7 +15071,7 @@ net-p2p/bitcoind 0.16.3 0.19.1 0.20.0: Original Bitcoin crypto-currency wallet f
 net-p2p/bitflu 1.52: BitTorrent client, written in Perl and is designed to run as a daemon
 net-p2p/bittornado 0.4.1_p20160925-r2: John Hoffman's fork of the original bittorrent
 net-p2p/classified-ads 0.13: Program for displaying classified advertisement items
-net-p2p/cpuminer-opt 3.12.4.2 3.12.13 9999: Optimized multi algo CPU miner
+net-p2p/cpuminer-opt 3.14.3 9999: Optimized multi algo CPU miner
 net-p2p/ctorrent 3.3.2-r4: Enhanced CTorrent is a BitTorrent console client written in C and C++
 net-p2p/dbhub 0.451-r1: Hub software for Direct Connect, fork of opendchub
 net-p2p/deluge 2.0.3-r4 2.0.3-r5 2.0.3-r6 2.0.3-r7 2.0.3-r8 9999: BitTorrent client with a client/server model
