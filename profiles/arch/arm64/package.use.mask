@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2020-07-10)
+# Failed build with USE=tools
+# bug #732122
+dev-libs/xmlrpc-c tools
+
 # Sam James <sam@gentoo.org> (2020-07-09)
 # mariadb[rocksdb] fails to build on arm64
 # bug #731998
