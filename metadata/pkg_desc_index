@@ -9269,18 +9269,18 @@ dev-ros/rqt_publisher 0.4.7 0.4.8 9999: GUI plugin for publishing arbitrary mess
 dev-ros/rqt_py_common 0.4.7 0.5.0 9999: Common functionality for rqt plugins written in Python
 dev-ros/rqt_py_console 0.4.7 0.4.8 9999: Python GUI plugin providing an interactive Python console
 dev-ros/rqt_reconfigure 0.4.8 0.4.9 0.4.10 9999: Provides the way to view and edit the parameters that are accessible via dynamic_reconfigure
-dev-ros/rqt_robot_dashboard 0.5.6 0.5.7 9999: Infrastructure for building robot dashboard plugins in rqt
-dev-ros/rqt_robot_monitor 0.5.6 0.5.7 0.5.8 9999: Displays diagnostics_agg topics messages that are published by diagnostic_aggregator
-dev-ros/rqt_robot_steering 0.5.8 0.5.9 9999: GUI plugin for steering a robot using Twist messages
-dev-ros/rqt_runtime_monitor 0.5.6 0.5.7 9999: GUI plugin viewing DiagnosticsArray messages
-dev-ros/rqt_rviz 0.5.8-r1 0.5.9 0.6.0 9999: GUI plugin embedding RViz
-dev-ros/rqt_service_caller 0.4.7 0.4.8 9999: GUI plugin for calling arbitrary services
-dev-ros/rqt_shell 0.4.8 0.4.9 9999: GUI plugin providing an interactive shell
-dev-ros/rqt_srv 0.4.7 0.4.8 9999: GUI plugin for introspecting available ROS message types
-dev-ros/rqt_tf_tree 0.5.6 0.5.7 0.5.8 9999: GUI plugin for visualizing the ROS TF frame tree
-dev-ros/rqt_top 0.4.7 0.4.8 9999: RQT plugin for monitoring ROS processes
-dev-ros/rqt_topic 0.4.9 0.4.10 9999: GUI plugin for displaying debug information about ROS topics
-dev-ros/rqt_web 0.4.7 0.4.8 9999: Simple web content viewer for rqt
+dev-ros/rqt_robot_dashboard 0.5.8 9999: Infrastructure for building robot dashboard plugins in rqt
+dev-ros/rqt_robot_monitor 0.5.12 9999: Displays messages that are published by diagnostic_aggregator
+dev-ros/rqt_robot_steering 0.5.11 9999: GUI plugin for steering a robot using Twist messages
+dev-ros/rqt_runtime_monitor 0.5.8 9999: GUI plugin viewing DiagnosticsArray messages
+dev-ros/rqt_rviz 0.6.1 9999: GUI plugin embedding RViz
+dev-ros/rqt_service_caller 0.4.9 9999: GUI plugin for calling arbitrary services
+dev-ros/rqt_shell 0.4.10 9999: GUI plugin providing an interactive shell
+dev-ros/rqt_srv 0.4.8 9999: GUI plugin for introspecting available ROS message types
+dev-ros/rqt_tf_tree 0.6.1 9999: GUI plugin for visualizing the ROS TF frame tree
+dev-ros/rqt_top 0.4.9 9999: RQT plugin for monitoring ROS processes
+dev-ros/rqt_topic 0.4.12 9999: GUI plugin for displaying debug information about ROS topics
+dev-ros/rqt_web 0.4.9 9999: Simple web content viewer for rqt
 dev-ros/rviz 1.13.6-r1 1.14.0 9999: 3D visualization tool for ROS
 dev-ros/rviz_imu_plugin 1.2.2 9999: RVIZ plugin for IMU visualization
 dev-ros/rviz_plugin_tutorials 0.11.0 9999: Tutorials showing how to write plugins for RViz
@@ -15375,7 +15375,7 @@ perl-core/podlators 2.5.3: Format POD source into various output formats
 perl-core/version 0.990.800: Perl extension for Version Objects
 ros-meta/ament_cmake 0.8.1 9999: The entry point package for the ament buildsystem
 ros-meta/audio_common 0.3.1 0.3.2 0.3.3 9999: Common code for working with audio in ROS
-ros-meta/bond_core 1.8.2 1.8.3 1.8.5 9999: A bond allows two processes, A and B, to know when the other has terminated
+ros-meta/bond_core 1.8.5 9999: A bond allows two processes, A and B, to know when the other has terminated
 ros-meta/calibration 0.10.13 0.10.14 9999: Provides a toolchain running through the robot calibration process
 ros-meta/common_msgs 1.12.3 1.12.4 1.12.5 1.12.6 1.12.7 1.13.0 9999: Messages that are widely used by other ROS packages
 ros-meta/common_tutorials 0.1.8 0.1.10 0.1.11 0.1.12 9999: Metapackage that contains common tutorials
