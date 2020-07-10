@@ -59,7 +59,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=( "${FILESDIR}"/optional_pandoc.patch )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	use python && python-single-r1_pkg_setup
 
 }
 
