@@ -14,9 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="vim-syntax"
 
-DEPEND="~dev-util/colm-0.13.0.5"
+DEPEND="~dev-util/colm-0.13.0.7"
 RDEPEND="${DEPEND}"
-PATCHES=( "${FILESDIR}/${P}-use-pkginclude.patch" )
 
 src_prepare() {
 	default
