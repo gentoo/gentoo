@@ -37,8 +37,8 @@ src_configure() {
 
 src_install() {
 	# This should be fixed in the CMakeLists.txt to get this installed automatically
-	sed -e "s:/var/tmp/portage/dev-libs/${PF}/work/rocclr-${PV}_build:/usr/lib64:" -i "${BUILD_DIR}/amdrocclr_staticTargets.cmake"
-	insinto /usr/lib64/cmake/rocclr
+	sed -e "s:${BUILD_DIR}:/usr/$(get_libdir):" -i "${BUILD_DIR}/amdrocclr_staticTargets.cmake"
+	insinto /usr/$(get_libdir)/cmake/rocclr
 	doins "${BUILD_DIR}/amdrocclr_staticTargets.cmake"
 
 	cmake_src_install
