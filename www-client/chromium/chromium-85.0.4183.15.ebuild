@@ -13,7 +13,7 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
 XCB_PROTO_VERSION="1.14"
-PATCHSET="1"
+PATCHSET="2"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://files.pythonhosted.org/packages/ed/7b/bbf89ca71e722b7f9464ebffe4b5ee20a9e5c9a555a56e2d3914bb9119a6/setuptools-44.1.0.zip
@@ -42,6 +42,7 @@ COMMON_X_DEPEND="
 	x11-libs/libXrandr:=
 	x11-libs/libXrender:=
 	x11-libs/libXtst:=
+	x11-libs/libXScrnSaver:=
 	x11-libs/libxcb:=
 "
 
@@ -96,7 +97,6 @@ COMMON_DEPEND="
 		>=app-accessibility/at-spi2-core-2.26:2
 		>=dev-libs/atk-2.26
 		x11-libs/gtk+:3[X]
-		x11-libs/libXScrnSaver:=
 		${COMMON_X_DEPEND}
 	)
 "
@@ -185,7 +185,6 @@ in /etc/chromium/default.
 
 PATCHES=(
 	"${FILESDIR}/chromium-84-mediaalloc.patch"
-	"${FILESDIR}/chromium-85-ozone-include.patch"
 )
 
 pre_build_checks() {
