@@ -14,10 +14,9 @@ S=${WORKDIR}/${PN}
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
-IUSE=""
 
 RDEPEND="virtual/latex-base
-	>=dev-tex/xmltex-1.9"
+	dev-texlive/texlive-formatsextra"
 DEPEND="${RDEPEND}
 	app-arch/unzip"
 
