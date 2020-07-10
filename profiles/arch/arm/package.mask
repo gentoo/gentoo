@@ -4,6 +4,7 @@
 # Sam James <sam@gentoo.org> (2020-07-02)
 # Packages which need Rust (only on >= 6j)
 # We unmask them for armv6j, armv7a elsewhere
+dev-util/cargo-c
 dev-util/cbindgen
 media-video/rav1e
 net-news/newsboat
