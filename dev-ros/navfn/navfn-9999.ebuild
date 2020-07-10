@@ -1,17 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 ROS_REPO_URI="https://github.com/ros-planning/navigation"
 ROS_SUBDIR=${PN}
 KEYWORDS="~amd64 ~arm"
 CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/std_msgs dev-ros/geometry_msgs dev-ros/nav_msgs"
 CATKIN_HAS_MESSAGES=yes
-PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 
-DESCRIPTION="Fast interpolated navigation function that can be used to create plans for a mobile base"
+DESCRIPTION="Fast interpolated navigation function for creating plans for a mobile base"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
