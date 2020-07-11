@@ -2663,6 +2663,7 @@ dev-qt/qt-creator:android - Build plugin for Android devices
 dev-qt/qt-creator:autotest - Enable integration with popular unit testing frameworks (QtTest, Google Test, Boost.Test)
 dev-qt/qt-creator:autotools - Enable autotools project manager plugin
 dev-qt/qt-creator:baremetal - Build plugin for bare metal devices
+dev-qt/qt-creator:bazaar - Add support for GNU Bazaar version control system (requires manual installation of Bazaar client)
 dev-qt/qt-creator:beautifier - Build the beautifier plugin (supports astyle, clang-format, and uncrustify)
 dev-qt/qt-creator:boot2qt - Build plugin for Boot2Qt devices
 dev-qt/qt-creator:clang - Build clang-based plugins (code model, formatting, refactoring, static analysis)
