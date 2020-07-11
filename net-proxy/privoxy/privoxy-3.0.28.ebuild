@@ -9,7 +9,7 @@ inherit autotools systemd toolchain-funcs user
 	PRIVOXY_STATUS="beta" ||
 	PRIVOXY_STATUS="stable"
 
-HOMEPAGE="http://www.privoxy.org https://sourceforge.net/projects/ijbswa/"
+HOMEPAGE="https://www.privoxy.org https://sourceforge.net/projects/ijbswa/"
 DESCRIPTION="A web proxy with advanced filtering capabilities for enhancing privacy"
 SRC_URI="mirror://sourceforge/ijbswa/${P%_*}-${PRIVOXY_STATUS}-src.tar.gz"
 
