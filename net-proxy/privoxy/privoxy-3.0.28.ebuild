@@ -41,7 +41,10 @@ REQUIRED_USE="
 
 S="${WORKDIR}/${P%_*}-${PRIVOXY_STATUS}"
 
-PATCHES=( "${FILESDIR}"/${PN}-3.0.19-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.0.19-gentoo.patch
+	"${FILESDIR}"/${P}-no-var-run.patch
+)
 
 pkg_pretend() {
 	if ! use threads; then
