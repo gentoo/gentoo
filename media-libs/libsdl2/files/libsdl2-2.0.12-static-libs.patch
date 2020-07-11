@@ -1,3 +1,7 @@
+Fix --disable-static.
+
+Bug: https://bugzilla.libsdl.org/show_bug.cgi?id=1431
+
 --- SDL2-2.0.12/configure.ac
 +++ SDL2-2.0.12/configure.ac
 @@ -3751,7 +3751,7 @@
