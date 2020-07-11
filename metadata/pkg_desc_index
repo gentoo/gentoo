@@ -2049,7 +2049,7 @@ app-metrics/snmp_exporter 0.15.0: Prometheus exporter for snmp metrics
 app-metrics/uwsgi_exporter 0.7.0 0.8.0: uWSGI metrics exporter for prometheus.io
 app-metrics/vault_exporter 0.1.2: Vault exporter for Prometheus
 app-misc/abduco 0.5 0.6: lightweight session manager with {de,at}tach support
-app-misc/abook 0.6.1 0.6.1-r2: Abook is a text-based addressbook program designed to use with mutt mail client
+app-misc/abook 0.6.1-r2: Abook is a text-based addressbook program designed to use with mutt mail client
 app-misc/acdctl 1.1-r1: Apple Cinema Display Control
 app-misc/actkbd 0.2.8-r2: A keyboard shortcut daemon
 app-misc/aldo 0.7.7: A morse tutor
@@ -2491,7 +2491,7 @@ app-portage/tatt 0.7-r1 9999: arch testing tool
 app-portage/ufed 0.96 9999: Gentoo Linux USE flags editor
 app-portage/unsymlink-lib 17-r1 18 9999: Convert your system to SYMLINK_LIB=no
 app-shells/autojump 22.2.4-r4 22.5.1 22.5.3: change directory command that learns
-app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r2 4.4_p23-r1 5.0_p11 5.0_p16 5.0_p17: The standard GNU Bourne again shell
+app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r2 4.4_p23-r1 5.0_p11 5.0_p16 5.0_p17 5.0_p18: The standard GNU Bourne again shell
 app-shells/bash-completion 2.10 9999: Programmable Completion for bash
 app-shells/bashdb 4.4.1.0.1 5.0.1.1.0 5.0.1.1.2: bash source code debugging
 app-shells/bashish 2.2.4: Text console theme engine
@@ -8024,7 +8024,7 @@ dev-python/loguru 0.4.1 0.5.1: Python logging made (stupidly) simple
 dev-python/logutils 0.3.3-r1 0.3.5: The logutils package provides a set of handlers for the Python standard
 dev-python/loky 2.8.0-r1: Robust and reusable Executor for joblib
 dev-python/lunr 0.5.6: A Python implementation of Lunr.js
-dev-python/lxml 4.5.0 4.5.1: A Pythonic binding for the libxml2 and libxslt libraries
+dev-python/lxml 4.5.0 4.5.1 4.5.2: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.8.2 2.1.6 3.0.2: LZ4 Bindings for Python
 dev-python/m2crypto 0.31.0-r2 0.35.2: A Python crypto and SSL toolkit
 dev-python/m2r 0.2.1: Markdown to reStructuredText converter
@@ -8225,7 +8225,7 @@ dev-python/pep8 1.7.1: Python style guide checker
 dev-python/pew 1.1.1: tool to manage multiple virtualenvs written in pure python
 dev-python/pexpect 4.6.0 4.8.0: Python module for spawning child apps and responding to expected patterns
 dev-python/pgspecial 1.11.9: Python implementation of postgres meta commands
-dev-python/phonenumbers 8.10.22 8.12.2 8.12.4: Python port of Google's libphonenumber
+dev-python/phonenumbers 8.12.4: Python port of Google's libphonenumber
 dev-python/picklemagic 0.0_pre20160415: A library for analysing python pickles safely
 dev-python/pickleshare 0.7.4-r1 0.7.5: A small 'shelve' like datastore with concurrency support
 dev-python/pid 2.2.5: Pidfile featuring stale detection and file-locking
@@ -8554,7 +8554,7 @@ dev-python/python-sense-hat 2.2.0-r1: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-slugify 1.2.6 4.0.0 4.0.1: A Python Slugify application that handles Unicode
 dev-python/python-sshpubkeys 3.1.0: OpenSSH public key parser for Python
-dev-python/python-stdnum 1.12 1.13: A module to handle standardized numbers and codes
+dev-python/python-stdnum 1.13: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.7.0: Python bindings to the OpenStack Object Storage API
 dev-python/python-systemd 233 234: Python module for native access to the systemd facilities
 dev-python/python-termstyle 0.1.10: console colouring for python
