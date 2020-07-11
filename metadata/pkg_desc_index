@@ -14879,7 +14879,7 @@ net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netsed 0.01b-r1 0.01c: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
 net-misc/networkmanager 1.18.4-r3 1.18.6 1.20.12 1.22.10-r11 1.22.14 1.24.2: A set of co-operative tools that make networking simple and straightforward
-net-misc/nextcloud-client 2.5.2 2.6.4: Desktop Syncing Client for Nextcloud
+net-misc/nextcloud-client 2.5.2 2.6.4 2.6.5: Desktop Syncing Client for Nextcloud
 net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27.2 9999: NPAPI headers bundle
 net-misc/ntp 4.2.8_p14-r2 4.2.8_p15: Network Time Protocol suite/programs
