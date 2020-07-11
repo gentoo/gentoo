@@ -26,7 +26,7 @@ fi
 
 # TODO: unbundle sqlite
 
-QTC_PLUGINS=(android +autotest baremetal beautifier boot2qt
+QTC_PLUGINS=(android +autotest baremetal bazaar beautifier boot2qt
 	'+clang:clangcodemodel|clangformat|clangpchmanager|clangrefactoring|clangtools' clearcase
 	cmake:cmakeprojectmanager cppcheck ctfvisualizer cvs +designer git glsl:glsleditor +help ios
 	lsp:languageclient mcu:mcusupport mercurial modeling:modeleditor nim perforce perfprofiler python
