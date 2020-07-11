@@ -9,7 +9,7 @@ inherit autotools systemd toolchain-funcs user
 	PRIVOXY_STATUS="beta" ||
 	PRIVOXY_STATUS="stable"
 
-HOMEPAGE="http://www.privoxy.org https://sourceforge.net/projects/ijbswa/"
+HOMEPAGE="https://www.privoxy.org https://sourceforge.net/projects/ijbswa/"
 DESCRIPTION="A web proxy with advanced filtering capabilities for enhancing privacy"
 SRC_URI="mirror://sourceforge/ijbswa/${P%_*}-${PRIVOXY_STATUS}-src.tar.gz"
 
@@ -35,12 +35,16 @@ RDEPEND="${DEPEND}
 "
 REQUIRED_USE="
 	compression? ( zlib )
+	fuzz? ( zlib )
 	toggle? ( editor )
 "
 
 S="${WORKDIR}/${P%_*}-${PRIVOXY_STATUS}"
 
-PATCHES=( "${FILESDIR}"/${PN}-3.0.19-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.0.19-gentoo.patch
+	"${FILESDIR}"/${P}-no-var-run.patch
+)
 
 pkg_pretend() {
 	if ! use threads; then
