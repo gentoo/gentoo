@@ -35,6 +35,7 @@ RDEPEND="${DEPEND}
 "
 REQUIRED_USE="
 	compression? ( zlib )
+	fuzz? ( zlib )
 	toggle? ( editor )
 "
 
