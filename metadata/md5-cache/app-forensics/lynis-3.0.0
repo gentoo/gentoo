@@ -8,4 +8,4 @@ RDEPEND=app-shells/bash
 SLOT=0
 SRC_URI=https://cisofy.com/files/lynis-3.0.0.tar.gz
 _eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=6db65d0690f8689af4d766424eb35af9
+_md5_=29d148a41fe61c111b07d85c3aa9aac7
