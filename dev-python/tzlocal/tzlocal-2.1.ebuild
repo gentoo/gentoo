@@ -13,7 +13,7 @@ SRC_URI="https://github.com/regebro/tzlocal/archive/${PV}.tar.gz -> ${P}.gh.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE=""
 
 RDEPEND="dev-python/pytz[${PYTHON_USEDEP}]"
