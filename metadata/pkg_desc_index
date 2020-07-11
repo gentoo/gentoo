@@ -400,7 +400,7 @@ acct-user/x2gouser 0: User for net-misc/x2goserver
 acct-user/xrootd 0: User for the XRootD server
 acct-user/znc 0: User for net-irc/znc
 app-accessibility/SphinxTrain 1.0.8: Speech Recognition (Training Module)
-app-accessibility/accerciser 3.22.0: Interactive Python accessibility explorer
+app-accessibility/accerciser 3.22.0 3.36.2: Interactive Python accessibility explorer
 app-accessibility/at-spi2-atk 2.32.0 2.34.2: Gtk module for bridging AT-SPI to Atk
 app-accessibility/at-spi2-core 2.32.1 2.34.0 2.36.0: D-Bus accessibility specifications and registration daemon
 app-accessibility/brltty 5.2-r1 6.0-r1: Daemon that provides access to the Linux/Unix console for a blind person
@@ -8682,7 +8682,7 @@ dev-python/serpent 1.30: A simple serialization library based on ast.literal_eva
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.10-r1: Allow customization of the process title
-dev-python/setuptools 44.0.0 44.1.0 46.4.0-r1 47.1.1 47.3.1 49.1.0: Collection of extensions to Distutils
+dev-python/setuptools 44.0.0 44.1.0 46.4.0-r1 47.1.1 47.3.1 49.1.0 49.1.1: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 3.5.0 4.1.0 4.1.1 4.1.2: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.0 1.1: A setuptools_scm plugin for git archives
@@ -10336,7 +10336,7 @@ dev-util/distro-info-data 0.29 0.32 0.42: Information about the Debian distribut
 dev-util/dmake 4.12.2: Improved make
 dev-util/docker-distribution-pruner 0_p20170401: Clean all old container revisions from registry
 dev-util/docker-ls 0.3.1: Tools for browsing and manipulating docker registries
-dev-util/dogtail 0.9.10 0.9.11: GUI test tool and automation framework using accessibility framework
+dev-util/dogtail 0.9.11: GUI test tool and automation framework using accessibility framework
 dev-util/doxy-coverage 151229: Source Code Documentation Coverage Measurement
 dev-util/dput-ng 1.28-r1: Next generation Debian package upload tool
 dev-util/drone 0.8.9: A Continuous Delivery platform built on Docker, written in Go
