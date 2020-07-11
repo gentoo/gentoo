@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic readme.gentoo-r1 systemd
+inherit autotools flag-o-matic readme.gentoo-r1 systemd toolchain-funcs
 
 DESCRIPTION="Lightweight high-performance web server"
 HOMEPAGE="https://www.lighttpd.net https://github.com/lighttpd"
@@ -118,7 +118,9 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --libdir=/usr/$(get_libdir)/${PN} \
+	econf \
+		CC_FOR_BUILD=$(tc-getBUILD_CC) \
+		--libdir=/usr/$(get_libdir)/${PN} \
 		--enable-lfs \
 		$(use_enable ipv6) \
 		$(use_enable mmap) \
