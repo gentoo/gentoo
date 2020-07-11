@@ -17,5 +17,6 @@ IUSE=""
 DEPEND=">=dev-texlive/texlive-basic-2020
 >=dev-texlive/texlive-latex-2020
 dev-texlive/texlive-xetex
+!dev-tex/xmltex
 "
 RDEPEND="${DEPEND} "
