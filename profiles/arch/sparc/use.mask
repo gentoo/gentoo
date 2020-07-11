@@ -90,8 +90,6 @@ srtp
 tokyocabinet
 # bug 235685
 webkit
-# bug 359963
-webp
 
 # Gustavo Zacarias <gustavoz@gentoo.org> (2007-02-14)
 # Mono needs gcc4 and it's not yet stable
