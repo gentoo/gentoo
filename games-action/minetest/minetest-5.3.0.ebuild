@@ -12,8 +12,9 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1+ CC-BY-SA-3.0 OFL-1.1 Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+client +curl doc +leveldb ncurses nls postgres redis +server +sound spatial +truetype"
+IUSE="+client +curl doc +leveldb ncurses nls postgres redis +server +sound spatial test +truetype"
 REQUIRED_USE="|| ( client server )"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-db/sqlite:3
@@ -72,6 +73,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_CLIENT=$(usex client)
 		-DBUILD_SERVER=$(usex server)
+		-DBUILD_UNITTESTS=$(usex test)
 		-DCUSTOM_BINDIR="${EPREFIX}/usr/bin"
 		-DCUSTOM_DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
 		-DCUSTOM_EXAMPLE_CONF_DIR="${EPREFIX}/usr/share/doc/${PF}"
