@@ -43,7 +43,7 @@ REQUIRED_USE="
 "
 
 # minimum Qt version required
-QT_PV="5.12.3:5"
+QT_PV="5.14:5"
 
 BDEPEND="
 	>=dev-qt/linguist-tools-${QT_PV}
