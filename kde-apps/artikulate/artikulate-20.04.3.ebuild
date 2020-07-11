@@ -14,9 +14,7 @@ HOMEPAGE="https://kde.org/applications/education/org.kde.artikulate"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="+gstreamer qtmedia"
-
-REQUIRED_USE="|| ( gstreamer qtmedia )"
+IUSE="gstreamer"
 
 DEPEND="
 	>=dev-qt/qtdeclarative-${QTMIN}:5
@@ -34,14 +32,14 @@ DEPEND="
 	>=kde-frameworks/knewstuff-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	gstreamer? ( >=media-libs/qt-gstreamer-1.2.0[qt5(+)] )
-	qtmedia? ( >=dev-qt/qtmultimedia-${QTMIN}:5 )
+	!gstreamer? ( >=dev-qt/qtmultimedia-${QTMIN}:5 )
 "
 RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_GSTREAMER_PLUGIN=$(usex gstreamer)
-		-DBUILD_QTMULTIMEDIA_PLUGIN=$(usex qtmedia)
+		-DBUILD_QTMULTIMEDIA_PLUGIN=$(usex !gstreamer)
 	)
 
 	ecm_src_configure
