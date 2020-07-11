@@ -81,7 +81,6 @@ CDEPEND="
 		webengine? ( >=dev-qt/qtwebengine-${QT_PV}[widgets] )
 	)
 	perfprofiler? ( dev-libs/elfutils )
-	qbs? ( >=dev-util/qbs-1.13.1 )
 	serialterminal? ( >=dev-qt/qtserialport-${QT_PV} )
 	systemd? ( sys-apps/systemd:= )
 "
@@ -101,6 +100,7 @@ RDEPEND="${CDEPEND}
 	cvs? ( dev-vcs/cvs )
 	git? ( dev-vcs/git )
 	mercurial? ( dev-vcs/mercurial )
+	qbs? ( >=dev-util/qbs-1.15 )
 	qmldesigner? ( >=dev-qt/qtquicktimeline-${QT_PV} )
 	silversearcher? ( sys-apps/the_silver_searcher )
 	subversion? ( dev-vcs/subversion )
@@ -210,8 +210,6 @@ src_configure() {
 		KSYNTAXHIGHLIGHTING_INCLUDE_DIR="${EPREFIX}/usr/include/KF5/KSyntaxHighlighting" \
 		$(use clang && echo LLVM_INSTALL_DIR="$(get_llvm_prefix ${LLVM_MAX_SLOT})") \
 		$(use qbs && echo QBS_INSTALL_DIR="${EPREFIX}/usr") \
-		CONFIG+=qbs_disable_rpath \
-		CONFIG+=qbs_enable_project_file_updates \
 		$(use systemd && echo CONFIG+=journald) \
 		$(use test && echo BUILD_TESTS=1)
 }
