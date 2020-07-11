@@ -42,6 +42,8 @@ RDEPEND="${COMMON_DEPEND}
 	!dev-libs/botan[gmp(-)]
 "
 
+PATCHES=( "${FILESDIR}/${P}-fix-MultiFileCache.patch" ) # 2.2 branch
+
 src_prepare() {
 	ecm_src_prepare
 

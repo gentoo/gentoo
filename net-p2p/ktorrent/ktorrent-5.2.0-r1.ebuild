@@ -76,6 +76,11 @@ RDEPEND="${COMMON_DEPEND}
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-start-in-systray.patch" # 5.2 branch
+	"${FILESDIR}/${P}-taglib-linking.patch" # 5.2 branch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_BWSCHEDULER_PLUGIN=$(usex bwscheduler)
