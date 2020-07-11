@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/scponly/${P}.tgz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc sparc ~x86"
 IUSE="chroot +sftp scp winscp gftp rsync unison subversion wildcards quota passwd logging"
 REQUIRED_USE="
 	|| ( sftp scp winscp rsync unison subversion )
