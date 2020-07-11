@@ -14,6 +14,7 @@
 		<flag name="autotest">Enable integration with popular unit testing frameworks (QtTest, Google Test, Boost.Test)</flag>
 		<flag name="autotools">Enable autotools project manager plugin</flag>
 		<flag name="baremetal">Build plugin for bare metal devices</flag>
+		<flag name="bazaar">Add support for GNU Bazaar version control system (requires manual installation of Bazaar client)</flag>
 		<flag name="beautifier">Build the beautifier plugin (supports astyle, clang-format, and uncrustify)</flag>
 		<flag name="boot2qt">Build plugin for Boot2Qt devices</flag>
 		<flag name="clang">Build clang-based plugins (code model, formatting, refactoring, static analysis)</flag>
