@@ -16,7 +16,7 @@ SRC_URI="https://github.com/jmhodges/rchardet/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="LGPL-2.1"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
 all_ruby_prepare() {
