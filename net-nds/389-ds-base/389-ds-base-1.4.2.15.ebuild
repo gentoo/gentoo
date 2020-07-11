@@ -7,7 +7,7 @@ WANT_AUTOMAKE="1.16"
 
 inherit multilib flag-o-matic autotools systemd db-use
 
-DESCRIPTION="389 Directory Server (core librares and daemons)"
+DESCRIPTION="389 Directory Server (core libraries and daemons)"
 HOMEPAGE="https://directory.fedoraproject.org/"
 SRC_URI="https://releases.pagure.org/${PN}/${P}.tar.bz2"
 LICENSE="GPL-3+"
@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 IUSE="autobind auto-dn-suffix debug doc +pam-passthru +dna +ldapi +bitwise presence selinux systemd"
 
 COMMON_DEPEND="
-	>=sys-libs/db-4.2:=
+	>=sys-libs/db-4.7:=
 	>=dev-libs/cyrus-sasl-2.1.19
 	>=net-analyzer/net-snmp-5.1.2
 	>=dev-libs/icu-3.4:=
@@ -47,8 +47,6 @@ RDEPEND="${COMMON_DEPEND}
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-db-gentoo.patch"
 	eapply_user
-	# as per 389 documentation, when 64bit, export USE_64
-	use amd64 && export USE_64=1
 
 	eautoreconf
 
