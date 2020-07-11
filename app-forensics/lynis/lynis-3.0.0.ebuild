@@ -45,6 +45,6 @@ src_install() {
 
 pkg_postinst() {
 	einfo
-	einfo "A cron script has been installed to ${ROOT}etc/cron.daily/lynis."
+	einfo "A cron script has been installed to ${ROOT}/etc/cron.daily/lynis."
 	einfo
 }
