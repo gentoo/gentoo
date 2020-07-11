@@ -25,7 +25,6 @@ RDEPEND="caps? ( sys-libs/libcap )
 	tcpd? ( sys-apps/tcp-wrappers )
 	>=dev-libs/libconfig-1.5"
 DEPEND="${RDEPEND}
-	dev-util/conf2struct
 	dev-lang/perl
 	pcre? ( dev-libs/libpcre:= )"
 
