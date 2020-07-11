@@ -14326,7 +14326,7 @@ net-im/gitter-bin 3.1.0 4.1.0: Chat and network platform
 net-im/jabber-base 0.01-r1: Jabber servers and transports layout package
 net-im/kadu 4.3-r2: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
-net-im/libcommuni 3.5.0_p20190110-r1: A cross-platform IRC framework written with Qt
+net-im/libcommuni 3.5.0_p20190110-r1 3.5.0_p20200711: A cross-platform IRC framework written with Qt
 net-im/librvp 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
 net-im/mattermost-desktop-bin 4.4.0 4.5.0: Mattermost Desktop application
 net-im/mcabber 1.1.0-r1 1.1.0-r2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
