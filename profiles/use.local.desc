@@ -2947,8 +2947,6 @@ dev-util/google-perftools:debug - Build a set of libraries with debug support (s
 dev-util/google-perftools:largepages - Use (experimental) larger pages for tcmalloc, this increases memory usage, but should speed up the allocation/free operations.
 dev-util/google-perftools:minimal - Only build the tcmalloc_minimal library, ignoring the heap checker and the profilers.
 dev-util/google-perftools:optimisememory - To build libtcmalloc with smaller internal caches.
-dev-util/gtk-doc:highlight - Enable source code highlighting
-dev-util/gtk-doc:vim - Enable source code highlighting through app-editors/vim
 dev-util/heaptrack:gui - Install Qt5-based analyzer tool
 dev-util/idea-community:jbr11 - Install and use the Java 11 based version of JetBrains Runtime.
 dev-util/idea-community:jbr8 - Install and use the Java 8 based version of JetBrains Runtime.

@@ -10382,8 +10382,8 @@ dev-util/gource 0.51: A software version control visualization tool
 dev-util/gperf 3.1: A perfect hash function generator
 dev-util/gprof2dot 2013.05.17 2016.10.13 2017.09.19 2019.11.30: Converts profiling output to dot graphs
 dev-util/gtk-builder-convert 2.24.32: Converts Glade files to GtkBuilder XML format
-dev-util/gtk-doc 1.25-r1 1.32-r1: GTK+ Documentation Generator
-dev-util/gtk-doc-am 1.25-r1 1.32: Automake files from gtk-doc
+dev-util/gtk-doc 1.32-r1: GTK+ Documentation Generator
+dev-util/gtk-doc-am 1.32: Automake files from gtk-doc
 dev-util/gtk-update-icon-cache 3.24.16 3.24.20 3.24.21: GTK update icon cache
 dev-util/gyp 20170904022846-r1 99999999999999: GYP (Generate Your Projects) meta-build system
 dev-util/heaptrack 9999: Fast heap memory profiler
@@ -10693,7 +10693,7 @@ games-action/koth 0.8.0-r1: Multiplayer, networked game of little tanks with rea
 games-action/lugaru 20151204-r1: 3D arcade with unique fighting system and anthropomorphic characters
 games-action/luola 1.3.2-r1: A 2D multiplayer arcade game resembling V-Wing
 games-action/maelstrom 3.0.6-r3: An asteroids battle game
-games-action/minetest 5.2.0: A free open-source voxel game engine with easy modding and game creation
+games-action/minetest 5.3.0: A free open-source voxel game engine with easy modding and game creation
 games-action/moon-buggy 1.0.51-r1: A simple console game, where you drive a car across the moon's surface
 games-action/nighthawk 2.2-r1: A tribute to Paradroid by Andrew Braybrook
 games-action/noiz2sa 0.51a-r1: Abstract Shooting Game
@@ -14598,7 +14598,7 @@ net-libs/tox 0.2.10 0.2.11 0.2.12 9999: Encrypted P2P, messaging, and audio/vide
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.1: HTTP web service mocking library
 net-libs/wandio 1.0.5 4.0.0 4.1.2 4.2.0 4.2.1 4.2.3_p1-r1: C library for simple and efficient file IO
-net-libs/webkit-gtk 2.24.4 2.26.4-r1 2.28.2: Open source web browser engine
+net-libs/webkit-gtk 2.24.4 2.26.4-r1 2.28.2 2.28.3: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
 net-libs/xrootd 4.12.0 4.12.3 5.0.0: Extended ROOT remote file server
 net-libs/xrootd-ceph 4.12.0 4.12.3 5.0.0: xrootd OSS plug-in for interfacing with Ceph storage platform
