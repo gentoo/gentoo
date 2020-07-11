@@ -51,7 +51,6 @@ BDEPEND="
 	doc? ( >=dev-qt/qdoc-${QT_PV} )
 "
 CDEPEND="
-	>=dev-cpp/yaml-cpp-0.6.2:=
 	>=dev-qt/qtconcurrent-${QT_PV}
 	>=dev-qt/qtcore-${QT_PV}
 	>=dev-qt/qtdeclarative-${QT_PV}[widgets]
@@ -67,6 +66,7 @@ CDEPEND="
 	>=dev-qt/qtxml-${QT_PV}
 	kde-frameworks/syntax-highlighting:5
 	clang? (
+		>=dev-cpp/yaml-cpp-0.6.2:=
 		|| (
 			( sys-devel/clang:10
 				dev-libs/libclangformat-ide:10 )
@@ -142,7 +142,7 @@ src_prepare() {
 
 	# avoid building unused support libraries and tools
 	if ! use clang; then
-		sed -i -e '/clangsupport/d' src/libs/libs.pro || die
+		sed -i -e '/clangsupport\|yaml-cpp/d' src/libs/libs.pro || die
 		sed -i -e '/clang\(\|pchmanager\|refactoring\)backend/d' src/tools/tools.pro || die
 	fi
 	if ! use glsl; then
