@@ -14,6 +14,7 @@
 		With this library you can retrieve all kinds of music metadata from the MusicBrainz database.
 		The library can retrieve and submit both, the XML and JSON based webservice and provides the data in native Python.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">alastair/python-musicbrainz-ngs</remote-id>
 	</upstream>
