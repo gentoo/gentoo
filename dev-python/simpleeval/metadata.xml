@@ -8,6 +8,7 @@
 	<longdescription lang="en">
 		A simple, safe single expression evaluator library.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">simpleeval</remote-id>
 		<remote-id type="github">danthedeckie/simpleeval</remote-id>
