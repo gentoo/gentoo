@@ -28,10 +28,10 @@ fi
 
 QTC_PLUGINS=(android +autotest autotools:autotoolsprojectmanager baremetal bazaar beautifier boot2qt
 	'+clang:clangcodemodel|clangformat|clangpchmanager|clangrefactoring|clangtools' clearcase
-	cmake:cmakeprojectmanager cppcheck ctfvisualizer cvs +designer git glsl:glsleditor +help ios
+	cmake:cmakeprojectmanager cppcheck ctfvisualizer cvs +designer git glsl:glsleditor +help
 	lsp:languageclient mcu:mcusupport mercurial modeling:modeleditor nim perforce perfprofiler python
 	qbs:qbsprojectmanager +qmldesigner qmlprofiler qnx remotelinux scxml:scxmleditor serialterminal
-	silversearcher subversion valgrind webassembly winrt)
+	silversearcher subversion valgrind webassembly)
 IUSE="doc systemd test webengine ${QTC_PLUGINS[@]%:*}"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
@@ -138,7 +138,7 @@ src_prepare() {
 				src/plugins/plugins.pro || die "failed to disable ${plugin%:*} plugin"
 		fi
 	done
-	sed -i -e '/updateinfo/d' src/plugins/plugins.pro || die
+	sed -i -re '/\<(ios|updateinfo|winrt)\>/d' src/plugins/plugins.pro || die
 
 	# avoid building unused support libraries and tools
 	if ! use clang; then
