@@ -2776,7 +2776,7 @@
     <member>
       <email>alicef@gentoo.org</email>
       <name>Alice Ferrazzi</name>
-      <role>Mastodon (Admin), Twitter (Admin), Events, Slack (admin)</role>
+      <role>Mastodon (Admin), Twitter (Admin), Events</role>
     </member>
     <member>
       <email>dabbott@gentoo.org</email>
@@ -2795,7 +2795,7 @@
     <member is-lead="1">
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
-      <role>Cafepress store, Facebook (admin), Twitter, Telegram (admin), Slack (admin)</role>
+      <role>Cafepress store, Facebook (admin), Twitter, Telegram (admin)</role>
     </member>
     <member>
       <email>rich0@gentoo.org</email>
