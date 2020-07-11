@@ -4,6 +4,7 @@
   <maintainer type="person">
     <email>prometheanfire@gentoo.org</email>
   </maintainer>
+  <!-- ffi : not suitable for ALLARCHES -->
   <upstream>
     <remote-id type="pypi">python-augeas</remote-id>
     <remote-id type="github">hercules-team/python-augeas</remote-id>
