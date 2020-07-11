@@ -17,7 +17,7 @@ https://community.kde.org/Elisa"
 LICENSE="LGPL-3+"
 SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="mpris semantic-desktop vlc"
+IUSE="mpris semantic-desktop +vlc"
 
 BDEPEND="sys-devel/gettext"
 DEPEND="
