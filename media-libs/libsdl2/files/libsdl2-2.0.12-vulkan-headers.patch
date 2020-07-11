@@ -1,0 +1,17 @@
+Fix building against the latest Vulkan headers.
+
+Bug: https://bugs.gentoo.org/721954
+Bug: https://bugzilla.libsdl.org/show_bug.cgi?id=5227
+
+--- a/src/video/SDL_vulkan_utils.c      2020-03-10 21:36:18.000000000 -0400
++++ b/src/video/SDL_vulkan_utils.c      2020-06-14 21:49:15.780898839 -0400
+@@ -85,7 +85,9 @@
+     case VK_ERROR_INVALID_SHADER_NV:
+         return "VK_ERROR_INVALID_SHADER_NV";
+     case VK_RESULT_MAX_ENUM:
++#if VK_HEADER_VERSION < 140
+     case VK_RESULT_RANGE_SIZE:
++#endif
+         break;
+     }
+     if(result < 0)
