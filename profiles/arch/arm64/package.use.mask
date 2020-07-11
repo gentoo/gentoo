@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-07-11)
+# net-libs/libslirp is not yet keyworded on arm64, bug #732144
+app-emulation/qemu slirp
+
 # Sam James <sam@gentoo.org> (2020-07-10)
 # Failed build with USE=tools
 # bug #732122
