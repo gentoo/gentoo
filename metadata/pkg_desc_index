@@ -16633,7 +16633,7 @@ sys-apps/ipmicfg 1.31.0.200205: An in-band utility for configuring Supermicro IP
 sys-apps/ipmitool 1.8.17-r1 1.8.18-r1: Utility for controlling IPMI enabled devices.
 sys-apps/ipmiutil 3.0.6 3.0.9 3.1.5-r1 3.1.6: IPMI Management Utilities
 sys-apps/iproute2 4.19.0-r1 5.2.0-r1 5.4.0 5.6.0 5.7.0 9999: kernel routing and traffic control utilities
-sys-apps/irqbalance 1.5.0 1.6.0: Distribute hardware interrupts across processors on a multiprocessor system
+sys-apps/irqbalance 1.6.0-r1: Distribute hardware interrupts across processors on a multiprocessor system
 sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
 sys-apps/iucode_tool 2.3.1-r1: tool to manipulate Intel X86 and X86-64 processor microcode update collections
 sys-apps/kbd 2.0.4 2.0.4-r1 2.2.0-r2 2.3.0 9999: Keyboard and console utilities
@@ -17864,7 +17864,7 @@ www-servers/nginx 1.18.0-r1 1.19.0-r1 1.19.1: Robust, small and high performance
 www-servers/nginx-unit 1.17.0 1.18.0: Dynamic web and application server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
-www-servers/pshs 0.3.3 9999: Pretty small HTTP server -- a command-line tool to share files
+www-servers/pshs 0.3.3 0.3.4 9999: Pretty small HTTP server -- a command-line tool to share files
 www-servers/puma 3.12.4 4.3.3: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
 www-servers/resin 4.0.48-r1: A fast Servlet and JSP engine
 www-servers/servefile 0.4.4_p20200211: Serve a single file via HTTP
