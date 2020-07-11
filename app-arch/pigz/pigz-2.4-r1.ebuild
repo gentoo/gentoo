@@ -21,6 +21,8 @@ DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )
 	test? ( app-arch/ncompress )"
 
+PATCHES=( "${FILESDIR}/${PV}-trailing-junk.patch" )
+
 src_compile() {
 	use static && append-ldflags -static
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
