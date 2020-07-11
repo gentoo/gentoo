@@ -81,9 +81,7 @@ python_test() {
 }
 
 python_install_all() {
-	local DOCS=( {CHANGES,README,RELEASE}.txt )
 	distutils-r1_python_install_all
-	rm "${ED}/usr/bin/scons.bat" || die
 
 	use doc && dodoc "${DISTDIR}"/${P}-user.{pdf,html}
 }
