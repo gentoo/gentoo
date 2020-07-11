@@ -19,7 +19,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> net-ssh-git-${P
 
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 IUSE="ed25519 test"
 
 ruby_add_rdepend "virtual/ruby-ssl ed25519? ( >=dev-ruby/ed25519-1.2:1 dev-ruby/x25519 dev-ruby/bcrypt_pbkdf:1 )"
