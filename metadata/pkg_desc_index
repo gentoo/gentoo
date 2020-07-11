@@ -3505,7 +3505,7 @@ dev-go/go-tools 0_pre20190911 9999: Tools that support the Go programming langua
 dev-go/go-tour 0_pre20200201: A Tour of Go
 dev-go/godebug-pretty 0_p20170819: Pretty printing for Go
 dev-go/godep 74 9999: dependency tool for go
-dev-go/gogo-protobuf 0.4_p20170815: Protocol Buffers for Go with Gadgets
+dev-go/gogo-protobuf 1.3.1: Protocol Buffers for Go with Gadgets
 dev-go/golicense 0.2.0: detect licenses used in Go binaries
 dev-go/golint 0_pre20200301: a linter for Go
 dev-go/gom 0_pre20151110: Go Dependency management system similar to bundle for ruby
