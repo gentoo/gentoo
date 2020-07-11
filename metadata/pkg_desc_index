@@ -8846,7 +8846,7 @@ dev-python/txaio 2.9.0 20.4.1: Compatibility API between asyncio/Twisted/Trolliu
 dev-python/txgithub 15.0.0-r1: GitHub API client implemented using Twisted
 dev-python/txrequests 0.9.5-r1 0.9.6: Asynchronous Python HTTP for Humans
 dev-python/typed-ast 1.4.1: Python typed-ast backported
-dev-python/typing 3.7.4.1: Type Hints for Python
+dev-python/typing 3.7.4.1 3.7.4.2: Type Hints for Python
 dev-python/typing-extensions 3.7.4.1: Type Hint extensions from Python 3.7 backported to 3.5/3.6
 dev-python/tzlocal 2.0.0 2.1: tzinfo object for the local timezone
 dev-python/u-msgpack 2.5.2 2.6.0: A portable, lightweight MessagePack serializer and deserializer
@@ -9716,7 +9716,7 @@ dev-ruby/parallel 1.18.0 1.19.1 1.19.2: Run any code in parallel Processes or Th
 dev-ruby/paramesan 0.1.1: Parameterized tests in Ruby
 dev-ruby/parser 2.6.5.0 2.7.1.0 2.7.1.1 2.7.1.2 2.7.1.3 2.7.1.4: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.8.2: A small PEG based parser library
-dev-ruby/pastel 0.7.2 0.7.3 0.7.4: Terminal strings styling with intuitive and clean API
+dev-ruby/pastel 0.7.2 0.7.3 0.7.4 0.8.0: Terminal strings styling with intuitive and clean API
 dev-ruby/patch_finder 1.0.2: Generic Patch Finder
 dev-ruby/path_expander 1.0.3 1.0.4 1.0.5 1.1.0: Pre-process CLI arguments expanding directories into their constituent files
 dev-ruby/pathutil 0.16.2: Like Pathname but a little less insane
@@ -11413,7 +11413,7 @@ games-util/lutris 0.5.4-r1 0.5.6 0.5.7 9999: An open source gaming platform for 
 games-util/mcrcon 0.7.1: Remote connection client for Minecraft servers
 games-util/nml 0.4.5-r2: Compiler of NML files into GRF/NFO files
 games-util/pogo-manager-bin 0.1.6 0.1.7: Pokemon Go manager
-games-util/pyfa 2.20.3 2.21.0 2.22.0 9999: Python Fitting Assistant - a ship fitting application for EVE Online
+games-util/pyfa 2.22.0 2.22.1 9999: Python Fitting Assistant - a ship fitting application for EVE Online
 games-util/qjoypad 4.3.1: Translate gamepad/joystick input into key strokes/mouse actions in X
 games-util/qstat 2.11 2.14: Server statics collector supporting many FPS games
 games-util/slade 3.1.12a: Modern editor for Doom-engine based games and source ports
