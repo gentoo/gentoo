@@ -1685,7 +1685,7 @@ app-emulation/playonlinux 4.2.12 4.3.4-r1: Set of scripts to easily install and 
 app-emulation/protontricks 1.4.1 1.4.1-r1: app-emulation/winetricks wrapper for Proton (Steam Play) games
 app-emulation/punes 0.104 0.105: Nintendo Entertainment System (NES) emulator
 app-emulation/q4wine 1.3.12: Qt GUI configuration tool for Wine
-app-emulation/qemu 5.0.0 5.0.0-r1 9999: QEMU + Kernel-based Virtual Machine userland tools
+app-emulation/qemu 5.0.0 5.0.0-r1 5.0.0-r2 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 3.1.0 4.0.0 4.2.0-r1 5.0.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qemu-init-scripts 0.3.0 0.3.0-r1: Kvm and qemu init scripts
 app-emulation/qemu-riscv64-bin 3.1.0-r4 5.0.0: Statically linked x86-64 binary of app-emulation/qemu, riscv64 emulator
@@ -1795,7 +1795,7 @@ app-forensics/foremost 1.5.7-r3: A console program to recover files based on the
 app-forensics/galleta 20040505_p1: IE Cookie Parser
 app-forensics/honggfuzz 2.2-r1: A general purpose fuzzer with feedback support
 app-forensics/libewf 20171104: Implementation of the EWF (SMART and EnCase) image format
-app-forensics/lynis 2.7.5: Security and system auditing tool
+app-forensics/lynis 3.0.0: Security and system auditing tool
 app-forensics/mac-robber 1.02: mac-robber is a digital forensics and incident response tool that collects data
 app-forensics/magicrescue 1.1.10: Find deleted files in block devices
 app-forensics/memdump 1.01-r1: Simple memory dumper for UNIX-Like systems
@@ -8232,7 +8232,7 @@ dev-python/pickleshare 0.7.4-r1 0.7.5: A small 'shelve' like datastore with conc
 dev-python/pid 2.2.5: Pidfile featuring stale detection and file-locking
 dev-python/piexif 1.0.12 1.1.3: Exif manipulation with pure Python
 dev-python/pika 0.13.0: Pure-Python implementation of the AMQP
-dev-python/pikepdf 1.8.3 1.13.0 1.14.0 1.16.1: Python library to work with pdf files based on qpdf
+dev-python/pikepdf 1.8.3 1.13.0 1.14.0 1.16.1 1.17.0: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 6.2.2 7.0.0 7.1.2 7.2.0: Python Imaging Library (fork)
 dev-python/pip 9.0.1-r2 19.3.1-r2 20.0.2 20.1 20.1.1: Installs python packages -- replacement for easy_install
