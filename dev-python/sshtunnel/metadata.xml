@@ -5,4 +5,5 @@
 		<email>titanofold@gentoo.org</email>
 		<name>Aaron W. Swenson</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>
