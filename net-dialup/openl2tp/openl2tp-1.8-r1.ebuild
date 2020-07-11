@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit linux-info
 
 DESCRIPTION="Userspace tools for kernel L2TP implementation"
-HOMEPAGE="http://www.openl2tp.org/"
+HOMEPAGE="https://sourceforge.net/projects/openl2tp/"
 SRC_URI="mirror://sourceforge/openl2tp/${P}.tar.gz"
 
 LICENSE="GPL-2"
