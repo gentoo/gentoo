@@ -1,0 +1,11 @@
+--- privoxy-3.0.28-stable/GNUmakefile.in.orig	2020-07-11 12:03:38.784441229 +0300
++++ privoxy-3.0.28-stable/GNUmakefile.in	2020-07-11 12:04:16.148597612 +0300
+@@ -846,7 +846,7 @@
+ 	$(CHMOD) $(DIR_MODE) $(MKDIR)
+ 	@$(MKDIR) $(DESTDIR)$(SBIN_DEST) $(DESTDIR)$(prefix) $(DESTDIR)$(CONF_DEST) \
+ 		$(DESTDIR)$(CONF_DEST)/templates $(DESTDIR)$(SHARE_DEST) \
+-		$(DESTDIR)$(LOG_DEST) $(DESTDIR)$(PID_DEST)
++		$(DESTDIR)$(LOG_DEST)
+ 	@# Install the executable binary, strip if invoked as install-strip
+ 	@test -n "$(STRIP)" &&\
+ 	$(ECHO) Installing $(PROGRAM) stripped executable to $(SBIN_DEST) ||\
