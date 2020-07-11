@@ -34,5 +34,5 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 src_test() {
-	LANG="C" ecm_src_test #bug 665626
+	LC_TIME="C" ecm_src_test #bug 665626
 }
