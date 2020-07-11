@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Statically linked x86-64 binary of app-emulation/qemu, riscv64 emulator
+EAPI=7
+HOMEPAGE=http://www.qemu.org
+KEYWORDS=~amd64
+LICENSE=GPL-2 LGPL-2 BSD-2
+RDEPEND=!app-emulation/qemu[qemu_user_targets_riscv64]
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~dilfridge/distfiles/qemu-riscv64-bin-5.0.0.tar.xz
+_md5_=661e9c1aa3735c7bffc016e1794bccee
