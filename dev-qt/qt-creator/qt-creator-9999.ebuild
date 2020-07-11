@@ -26,7 +26,7 @@ fi
 
 # TODO: unbundle sqlite
 
-QTC_PLUGINS=(android +autotest baremetal beautifier boot2qt
+QTC_PLUGINS=(android +autotest baremetal bazaar beautifier boot2qt
 	'+clang:clangcodemodel|clangformat|clangpchmanager|clangrefactoring|clangtools' clearcase
 	cmake:cmakeprojectmanager cppcheck ctfvisualizer cvs +designer git glsl:glsleditor +help ios
 	lsp:languageclient mcu:mcusupport mercurial modeling:modeleditor nim perforce perfprofiler python
@@ -43,7 +43,7 @@ REQUIRED_USE="
 "
 
 # minimum Qt version required
-QT_PV="5.12.3:5"
+QT_PV="5.14:5"
 
 BDEPEND="
 	>=dev-qt/linguist-tools-${QT_PV}
