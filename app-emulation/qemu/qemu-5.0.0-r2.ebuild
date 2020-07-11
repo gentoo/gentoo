@@ -6,7 +6,7 @@ EAPI="7"
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 PYTHON_REQ_USE="ncurses,readline"
 
-PLOCALES="bg de_DE fr_FR hu it sv tr zh_CN"
+PLOCALES="bg de_DE fr_FR hu it tr zh_CN"
 
 FIRMWARE_ABI_VERSION="4.0.0-r50"
 
@@ -222,6 +222,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
 	"${FILESDIR}"/${PN}-4.0.0-mkdir_systemtap.patch #684902
 	"${FILESDIR}"/${PN}-4.2.0-cflags.patch
+	"${FILESDIR}"/${PN}-5.0.0-epoll-strace.patch
+	"${FILESDIR}"/${PN}-5.0.0-ipv6-slirp-CVE-2020-10756.patch #731992
 )
 
 QA_PREBUILT="
