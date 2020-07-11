@@ -1,6 +1,15 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2020-07-11)
+# Don't drag in qtwebengine for Plasma right now
+# Not going for nuclear option of general mask
+# (or dropping keywords) because unclear if it's caused
+# by the use of a linux32 chroot.
+# See bug #713900
+kde-plasma/libksysguard webengine
+kde-plasma/kdeplasma-addons webengine
+
 # Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
 # Mask io-uring & zbc pending keywording
 sys-block/fio io-uring zbc
