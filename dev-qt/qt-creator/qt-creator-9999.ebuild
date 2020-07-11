@@ -142,7 +142,7 @@ src_prepare() {
 
 	# avoid building unused support libraries and tools
 	if ! use clang; then
-		sed -i -e '/clangsupport\|yaml-cpp/d' src/libs/libs.pro || die
+		sed -i -e '/clangsupport\|sqlite\|yaml-cpp/d' src/libs/libs.pro || die
 		sed -i -e '/clang\(\|pchmanager\|refactoring\)backend/d' src/tools/tools.pro || die
 	fi
 	if ! use glsl; then
@@ -161,6 +161,7 @@ src_prepare() {
 		fi
 	fi
 	if ! use qmldesigner; then
+		sed -i -e '/advanceddockingsystem/d' src/libs/libs.pro || die
 		sed -i -e '/qml2puppet/d' src/tools/tools.pro || die
 		sed -i -e '/qmldesigner/d' tests/auto/qml/qml.pro || die
 	fi
