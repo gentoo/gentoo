@@ -43,6 +43,8 @@ S="${WORKDIR}/${P%_*}-${PRIVOXY_STATUS}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.19-gentoo.patch
+	"${FILESDIR}"/${P}-chdir.patch
+	"${FILESDIR}"/${P}-null-termination.patch
 )
 
 pkg_pretend() {
