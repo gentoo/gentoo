@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/projectm/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~arm arm64 ppc ppc64 sparc x86"
 IUSE="debug openmp video_cards_nvidia"
 
 RDEPEND="media-fonts/dejavu
