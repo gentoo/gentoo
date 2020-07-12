@@ -1,6 +1,5 @@
-diff -rau openl2tp-1.8.o/Makefile openl2tp-1.8/Makefile
---- openl2tp-1.8.o/Makefile	2011-06-03 18:21:09.000000000 +0200
-+++ openl2tp-1.8/Makefile	2011-06-03 18:54:43.000000000 +0200
+--- openl2tp-1.8/Makefile.orig	2020-07-12 12:53:31.484055262 +0300
++++ openl2tp-1.8/Makefile	2020-07-12 12:56:45.783822669 +0300
 @@ -197,7 +197,7 @@
  
  .PHONY:			$(SUBDIRS:%=subdir-%)
@@ -19,9 +18,19 @@ diff -rau openl2tp-1.8.o/Makefile openl2tp-1.8/Makefile
  			$(CC) -I. -MMD -w $(CFLAGS.optimize) -c -DYY_NO_UNPUT $<
  
  l2tp_config_parse.o:	l2tp_config_parse.c l2tp_config_parse.h
-@@ -271,7 +271,7 @@
- l2tpconfig:		$(L2TPCONFIG_SRCS.o)
- 			$(CC) $(LDFLAGS) -o $@ $^ $(LDFLAGS.l2tpconfig)
+@@ -265,13 +265,13 @@
+ 			@for d in $(SUBDIRS); do $(MAKE) -C $$d $(MFLAGS) $@; done
+ 			etags $(wildcard *.c) $(wildcard *.h)
+ 
+-openl2tpd:		$(L2TPD_SRCS.o)
+-			$(CC) $(LDFLAGS) -o $@ $^ $(LDFLAGS.l2tpd)
++openl2tpd:	generated-files $(SUBDIRS:%=subdir-%) 	$(L2TPD_SRCS.o)
++			$(CC) $(LDFLAGS) -o $@ $(L2TPD_SRCS.o) $(LDFLAGS.l2tpd)
+ 
+-l2tpconfig:		$(L2TPCONFIG_SRCS.o)
+-			$(CC) $(LDFLAGS) -o $@ $^ $(LDFLAGS.l2tpconfig)
++l2tpconfig:	openl2tpd	$(L2TPCONFIG_SRCS.o)
++			$(CC) $(LDFLAGS) -o $@ $(L2TPCONFIG_SRCS.o) $(LDFLAGS.l2tpconfig)
  
 -%.o:	%.c
 +%.o:	%.c generated-files
