@@ -5110,7 +5110,7 @@ dev-libs/libmoe 1.5.8-r3: Multi octet character encoding handling library
 dev-libs/libmowgli 1.0.0-r1 2.1.3 2.1.3-r1 9999: Useful set of performance and usability-oriented extensions to C
 dev-libs/libmspack 0.9.1_alpha-r1 9999: A library for Microsoft compression formats
 dev-libs/libnatspec 0.2.6-r1 0.3.0: library to smooth charset/localization issues
-dev-libs/libnfc 1.7.1 1.7.2 1.8.0: Near Field Communications (NFC) library
+dev-libs/libnfc 1.7.2 1.8.0: Near Field Communications (NFC) library
 dev-libs/libnl 1.1.4 1.1.4-r1 1.1.9999 3.4.0 3.5.0 99999999: Libraries providing APIs to netlink protocol based Linux kernel interfaces
 dev-libs/libnsfb 0.2.0-r1 0.2.1 0.2.2: C library for framebuffer abstraction
 dev-libs/libnsutils 0.0.5-r1 0.1.0: C library for base64 and time
@@ -7516,7 +7516,7 @@ dev-python/apipkg 1.5: Namespace control and lazy-import mechanism
 dev-python/apispec 3.3.0: A pluggable API specification generator.
 dev-python/appdirs 1.4.4: Module for determining appropriate platform-specific dirs
 dev-python/apsw 3.25.2_p1: APSW - Another Python SQLite Wrapper
-dev-python/argcomplete 1.11.1-r1: Bash tab completion for argparse
+dev-python/argcomplete 1.11.1-r1 1.12.0: Bash tab completion for argparse
 dev-python/argh 0.26.2-r2: A simple argparse wrapper
 dev-python/argon2-cffi 20.1.0: CFFI bindings to the Argon2 password hashing library
 dev-python/argparse-manpage 1.4: Automatically build man-pages for your Python project
@@ -8333,7 +8333,7 @@ dev-python/pydotplus 2.0.2: Improved version of the old pydot project
 dev-python/pyds9 1.8.1: Python interface to XPA to communicate with DS9
 dev-python/pyelftools 0.26: pure-Python library for analyzing ELF files and DWARF debugging information
 dev-python/pyenchant 2.0.0 3.1.0: Python bindings for the Enchant spellchecking system
-dev-python/pyfakefs 3.7.2 4.0.2: a fake file system that mocks the Python file system modules
+dev-python/pyfakefs 3.7.2 4.0.2 4.1.0: a fake file system that mocks the Python file system modules
 dev-python/pyfeyn 1.0.0-r2: Python package for drawing Feynman diagrams
 dev-python/pyflakes 2.1.1 2.2.0: Passive checker for Python programs
 dev-python/pyflann 1.9.1: Python bindings for FLANN artificial neural network library
@@ -8454,7 +8454,7 @@ dev-python/pytest-cov 2.8.1: py.test plugin for coverage reporting
 dev-python/pytest-describe 1.0.0: Describe-style plugin for pytest
 dev-python/pytest-django 3.9.0: A Django plugin for py.test
 dev-python/pytest-expect 1.1.0 1.1.0-r1: py.test plugin that stores test expectations by saving the set of failing tests
-dev-python/pytest-fixture-config 1.7.0 1.7.0-r1: Virtualenv fixture for py.test
+dev-python/pytest-fixture-config 1.7.0-r1: Virtualenv fixture for py.test
 dev-python/pytest-flake8 0.9.1: py.test plugin for flake8
 dev-python/pytest-flakes 4.0.0: Collection of small Python functions & classes
 dev-python/pytest-forked 1.1.3 1.2.0: run tests in isolated forked subprocesses
@@ -8465,7 +8465,7 @@ dev-python/pytest-httpbin 1.0.0: Easily test your HTTP library against a local c
 dev-python/pytest-lazy-fixture 0.6.3: It helps to use fixtures in pytest.mark.parametrize
 dev-python/pytest-localserver 0.5.0 0.5.0-r1: Py.test plugin to test server connections locally
 dev-python/pytest-metadata 1.8.0: A plugin for pytest that provides access to test session metadata
-dev-python/pytest-mock 1.11.2 2.0.0 3.1.1: Thin-wrapper around the mock package for easier use with pytest
+dev-python/pytest-mock 1.11.2 2.0.0 3.1.1 3.2.0: Thin-wrapper around the mock package for easier use with pytest
 dev-python/pytest-pep8 1.0.6-r1: pytest plugin to check PEP8 requirements
 dev-python/pytest-pylint 0.14.1: pytest plugin to check source code with pylint
 dev-python/pytest-qt 3.3.0: pytest plugin for PyQt4 or PyQt5 applications
@@ -8473,12 +8473,12 @@ dev-python/pytest-rerunfailures 8.0: pytest plugin to re-run tests to eliminate 
 dev-python/pytest-runner 5.2: Adds support for tests during installation of setup.py files
 dev-python/pytest-salt 2020.1.27: PyTest Salt Plugin
 dev-python/pytest-services 2.0.1 2.1.0: Collection of fixtures and utility functions to run service processes for pytest
-dev-python/pytest-shutil 1.7.0 1.7.0-r1: A goodie-bag of unix shell and environment tools for py.test
+dev-python/pytest-shutil 1.7.0-r1: A goodie-bag of unix shell and environment tools for py.test
 dev-python/pytest-subtesthack 0.1.1: A hack for test fixtures, needed for hypothesis inside py.test
 dev-python/pytest-tempdir 2019.10.12: Pytest plugin to support for a predictable and repeatable temporary directory
 dev-python/pytest-testmon 0.9.15: take TDD to a new level with py.test and testmon
 dev-python/pytest-timeout 1.3.4 1.4.1-r1: py.test plugin to abort hanging tests
-dev-python/pytest-virtualenv 1.2.11 1.7.0 1.7.0-r1: Virtualenv fixture for py.test
+dev-python/pytest-virtualenv 1.7.0-r1: Virtualenv fixture for py.test
 dev-python/pytest-xdist 1.23.2 1.28.0 1.31.0 1.32.0 1.33.0: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.13.1: Manage external processes across test runs
 dev-python/python-augeas 1.1.0: Python bindings for Augeas
@@ -8685,7 +8685,7 @@ dev-python/serpent 1.30: A simple serialization library based on ast.literal_eva
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.10-r1: Allow customization of the process title
-dev-python/setuptools 44.1.0 46.4.0-r1 49.1.1: Collection of extensions to Distutils
+dev-python/setuptools 44.1.0 46.4.0-r1 49.1.1 49.2.0: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 4.1.2: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.0 1.1: A setuptools_scm plugin for git archives
