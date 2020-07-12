@@ -37,6 +37,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-system-quazip.patch
 	"${FILESDIR}"/${P}-missing-translations.patch
+	"${FILESDIR}"/${P}-install.patch
 )
 
 src_configure() {
@@ -44,8 +45,6 @@ src_configure() {
 }
 
 src_install() {
-	dobin release/${PN}
-	dodoc ChangeLog TODO
-	doicon data/images/${PN}.png
-	domenu unix/chessx.desktop
+	emake INSTALL_ROOT="${D}" install
+	einstalldocs
 }
