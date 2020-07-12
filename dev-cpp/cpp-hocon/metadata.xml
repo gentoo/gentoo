@@ -8,7 +8,4 @@
 	<upstream>
 		<remote-id type="github">puppetlabs/cpp-hocon</remote-id>
 	</upstream>
-	<longdescription lang="en">
-		A C++ port of the Typesafe Config library.
-	</longdescription>
 </pkgmetadata>
