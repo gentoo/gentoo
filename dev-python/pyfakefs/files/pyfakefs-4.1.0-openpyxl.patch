@@ -1,0 +1,38 @@
+From 1d6fabcaccf8dc716f7a49a67f5342d83ef37976 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 12 Jul 2020 21:26:33 +0200
+Subject: [PATCH] Skip test_write_excel if openpyxl is not installed
+
+test_write_excel fails if pandas are installed but openpyxl is not.
+Adjust the condition around the case appropriately.
+---
+ pyfakefs/tests/patched_packages_test.py | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/pyfakefs/tests/patched_packages_test.py b/pyfakefs/tests/patched_packages_test.py
+index 05ed7ef..f8d8a1a 100644
+--- a/pyfakefs/tests/patched_packages_test.py
++++ b/pyfakefs/tests/patched_packages_test.py
+@@ -28,6 +28,11 @@ try:
+ except ImportError:
+     xlrd = None
+ 
++try:
++    import openpyxl
++except ImportError:
++    openpyxl = None
++
+ 
+ class TestPatchedPackages(fake_filesystem_unittest.TestCase):
+     def setUp(self):
+@@ -57,6 +62,7 @@ class TestPatchedPackages(fake_filesystem_unittest.TestCase):
+             df = pd.read_excel(path)
+             assert (df.columns == [1, 2, 3, 4]).all()
+ 
++    if pd is not None and openpyxl is not None:
+         def test_write_excel(self):
+             self.fs.create_dir('/foo')
+             path = '/foo/bar.xlsx'
+-- 
+2.27.0
+
