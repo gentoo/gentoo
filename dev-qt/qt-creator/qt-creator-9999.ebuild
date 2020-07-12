@@ -96,7 +96,7 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	sys-devel/gdb[client,python]
 	autotools? ( sys-devel/autoconf )
-	cmake? ( dev-util/cmake )
+	cmake? ( >=dev-util/cmake-3.14 )
 	cppcheck? ( dev-util/cppcheck )
 	cvs? ( dev-vcs/cvs )
 	git? ( dev-vcs/git )
