@@ -43,7 +43,6 @@ S="${WORKDIR}/${P%_*}-${PRIVOXY_STATUS}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.19-gentoo.patch
-	"${FILESDIR}"/${P}-no-var-run.patch
 )
 
 pkg_pretend() {
@@ -117,6 +116,8 @@ src_install() {
 		dobin tools/{privoxy-log-parser.pl,privoxy-regression-test.pl}
 		newbin tools/uagen.pl privoxy-uagen.pl
 	fi
+
+	rmdir "${ED}/var/run" || die
 }
 
 pkg_postinst() {
