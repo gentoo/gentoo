@@ -4,7 +4,7 @@
 EAPI=7
 
 PVCUT=$(ver_cut 1-2)
-inherit cmake kde.org
+inherit cmake kde.org xdg-utils
 
 DESCRIPTION="Breeze SVG icon theme"
 LICENSE="LGPL-3"
@@ -30,4 +30,12 @@ src_configure() {
 		-DBINARY_ICONS_RESOURCE=OFF
 	)
 	cmake_src_configure
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
