@@ -108,6 +108,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		AR="$(type -P $(tc-getAR))"
 		--prefix="${EPREFIX}"/usr
 		--sysconfdir=/etc/bind
 		--localstatedir=/var
@@ -159,8 +160,6 @@ src_install() {
 	dodoc CHANGES README
 
 	if use doc; then
-		dodoc doc/arm/Bv9ARM.pdf
-
 		docinto misc
 		dodoc -r doc/misc/
 
