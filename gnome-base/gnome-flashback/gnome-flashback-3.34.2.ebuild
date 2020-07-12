@@ -16,6 +16,7 @@ RDEPEND="
 	>=x11-libs/gdk-pixbuf-2.32.2:2
 	>=x11-libs/gtk+-3.22.0:3[X]
 	>=gnome-base/gnome-desktop-3.12.0:3=
+	<gnome-base/gnome-desktop-3.35.4
 	>=media-libs/libcanberra-0.13[gtk3]
 	>=dev-libs/glib-2.44.0:2
 	>=gnome-base/gsettings-desktop-schemas-3.31.0
