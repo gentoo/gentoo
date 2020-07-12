@@ -31,6 +31,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-libfmt-7.0.0.patch"
+	"${FILESDIR}/${P}-tests-fix.patch"
 )
 
 src_prepare() {
