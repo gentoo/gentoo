@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools systemd toolchain-funcs user
+inherit autotools systemd toolchain-funcs
 
 [ "${PV##*_}" = "beta" ] &&
 	PRIVOXY_STATUS="beta" ||
@@ -22,6 +22,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 LICENSE="GPL-2"
 
 DEPEND="
+	acct-group/privoxy
+	acct-user/privoxy
 	dev-libs/libpcre
 	zlib? ( sys-libs/zlib )
 "
@@ -43,7 +45,8 @@ S="${WORKDIR}/${P%_*}-${PRIVOXY_STATUS}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.19-gentoo.patch
-	"${FILESDIR}"/${P}-no-var-run.patch
+	"${FILESDIR}"/${P}-chdir.patch
+	"${FILESDIR}"/${P}-null-termination.patch
 )
 
 pkg_pretend() {
@@ -53,11 +56,6 @@ pkg_pretend() {
 		ewarn "See also http://www.privoxy.org/faq/trouble.html#GENTOO-RICERS"
 		ewarn
 	fi
-}
-
-pkg_setup() {
-	enewgroup privoxy
-	enewuser privoxy -1 -1 /etc/privoxy privoxy
 }
 
 src_prepare() {
@@ -117,6 +115,9 @@ src_install() {
 		dobin tools/{privoxy-log-parser.pl,privoxy-regression-test.pl}
 		newbin tools/uagen.pl privoxy-uagen.pl
 	fi
+
+	rmdir "${ED}/var/run" || die
+	chown privoxy:root "${ED}/etc/privoxy" || die
 }
 
 pkg_postinst() {
