@@ -11864,7 +11864,7 @@ kde-frameworks/baloo 5.70.0 5.72.0: Framework for searching and managing metadat
 kde-frameworks/bluez-qt 5.70.0 5.72.0: Qt wrapper for Bluez 5 DBus API
 kde-frameworks/breeze-icons 5.70.0 5.72.0: Breeze SVG icon theme
 kde-frameworks/breeze-icons-rcc 5.70.0 5.72.0: Breeze SVG icon theme binary resource
-kde-frameworks/extra-cmake-modules 5.70.0 5.72.0: Extra modules and scripts for CMake
+kde-frameworks/extra-cmake-modules 5.70.0 5.72.0 5.72.0-r1: Extra modules and scripts for CMake
 kde-frameworks/frameworkintegration 5.70.0 5.72.0: Framework for integrating Qt applications with KDE Plasma workspaces
 kde-frameworks/kactivities 5.70.0 5.72.0: Framework for working with KDE activities
 kde-frameworks/kactivities-stats 5.70.0 5.72.0: Framework for getting the usage statistics collected by the activities service
@@ -11968,7 +11968,7 @@ kde-misc/plasma-applet-weather-widget 1.6.10-r1: Plasma 5 applet for weather for
 kde-misc/plasma-pass 1.1.0: Plasma applet to access password from pass
 kde-misc/playbar2 2.5-r1: MPRIS2 client, written in QML for Plasma 5
 kde-misc/rsibreak 0.12.13: Small utility which bothers you at certain intervals
-kde-misc/skanlite 2.1.0.1-r1: Simple image scanning application based on libksane and KDE Frameworks
+kde-misc/skanlite 2.1.0.1-r1 2.2.0: Simple image scanning application based on libksane and KDE Frameworks
 kde-misc/tellico 3.2.3 3.3.1: Collection manager based on KDE Frameworks
 kde-misc/ultimate-gmail-feed 2.1: Plasma 5 widget showing your Gmail feed
 kde-misc/wacomtablet 3.2.0: System settings module for Wacom tablets
@@ -15788,7 +15788,7 @@ sci-geosciences/liblas 1.8.1-r3: C/C++ library for manipulating the LAS LiDAR fo
 sci-geosciences/libtcd 2.2.5_p2 2.2.7: Library for reading and writing Tide Constituent Database (TCD) files
 sci-geosciences/mapnik 3.0.9-r1 3.0.18: A Free Toolkit for developing mapping applications
 sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
-sci-geosciences/mapserver 7.2.2 7.6.0: Development environment for building spatially enabled webapps
+sci-geosciences/mapserver 7.6.0: Development environment for building spatially enabled webapps
 sci-geosciences/mc2bsbh 0.0.9: MapCal to BSBchart Header Utility
 sci-geosciences/merkaartor 0.18.4 9999: Qt based map editor for the openstreetmap.org project
 sci-geosciences/mtkbabel 0.8.2-r1 0.8.3.1-r1: MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger
@@ -17405,7 +17405,7 @@ sys-power/bbswitch 0.8-r2 0.8-r3 9999: Toggle discrete NVIDIA Optimus graphics c
 sys-power/cpupower 4.13.0 5.4: Shows and sets processor power related values
 sys-power/hibernate-script 2.0-r6: Hibernate script supporting multiple suspend methods
 sys-power/iasl 20200326: Intel ACPI Source Language (ASL) compiler
-sys-power/intel-undervolt 1.7 9999: Intel CPU undervolting and throttling configuration tool
+sys-power/intel-undervolt 1.7-r1 9999: Intel CPU undervolting and throttling configuration tool
 sys-power/ncpufreqd 2.4: Daemon controlling CPU speed and temperature
 sys-power/nut 2.7.4-r4 2.7.4-r5: Network-UPS Tools
 sys-power/nvclock 0.8_p20110102-r2: NVIDIA Overclocking Utility
