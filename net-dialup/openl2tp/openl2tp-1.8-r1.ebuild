@@ -48,6 +48,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-cflags.patch"
 	"${FILESDIR}/${P}-tirpc.patch"
 	"${FILESDIR}/${P}-native-tc.patch"
+	"${FILESDIR}/${P}-musl.patch"
 )
 
 src_prepare() {
