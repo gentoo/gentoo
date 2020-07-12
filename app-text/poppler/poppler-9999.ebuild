@@ -105,6 +105,7 @@ src_configure() {
 		$(cmake_use_find_package qt5 Qt5Core)
 		-DWITH_TIFF=$(usex tiff)
 		-DENABLE_UTILS=$(usex utils)
+		-DENABLE_QT6=OFF
 	)
 	use cairo && mycmakeargs+=( -DWITH_GObjectIntrospection=$(usex introspection) )
 
