@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~arm ~m68k ~mips ~s390 ~x86"
-	SRC_URI="https://github.com/yrutschle/sslh/archive/v${PV}.tar.gz"
+	SRC_URI="https://github.com/yrutschle/sslh/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	S=${WORKDIR}/${P}
 fi
 
