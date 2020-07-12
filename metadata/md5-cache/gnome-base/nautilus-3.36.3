@@ -1,0 +1,16 @@
+BDEPEND=>=dev-util/gdbus-codegen-2.51.2 dev-util/glib-utils gtk-doc? ( >=dev-util/gtk-doc-1.10 app-text/docbook-xml-dtd:4.1.2 ) >=sys-devel/gettext-0.19.8 virtual/pkgconfig x11-base/xorg-proto app-arch/xz-utils >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=>=dev-libs/glib-2.58.1:2 >=media-libs/gexiv2-0.10.0 gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 ) >=app-arch/gnome-autoar-0.2.1 >=gnome-base/gnome-desktop-3.0.0:3= >=x11-libs/gtk+-3.22.27:3[X,introspection?] >=x11-libs/pango-1.28.3 selinux? ( >=sys-libs/libselinux-2.0 ) >=app-misc/tracker-2.0:= x11-libs/libX11 >=dev-libs/libxml2-2.7.8:2 introspection? ( >=dev-libs/gobject-introspection-1.54:= ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Default file manager for the GNOME desktop
+EAPI=7
+HOMEPAGE=https://wiki.gnome.org/Apps/Nautilus
+IUSE=gnome +gstreamer gtk-doc +introspection +previewer selinux sendto test
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3+ LGPL-2.1+
+PDEPEND=gnome? ( x11-themes/adwaita-icon-theme ) previewer? ( >=gnome-extra/sushi-0.1.9 ) sendto? ( >=gnome-extra/nautilus-sendto-3.0.1 ) >=gnome-base/gvfs-1.14[gtk(+)]
+RDEPEND=>=dev-libs/glib-2.58.1:2 >=media-libs/gexiv2-0.10.0 gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 ) >=app-arch/gnome-autoar-0.2.1 >=gnome-base/gnome-desktop-3.0.0:3= >=x11-libs/gtk+-3.22.27:3[X,introspection?] >=x11-libs/pango-1.28.3 selinux? ( >=sys-libs/libselinux-2.0 ) >=app-misc/tracker-2.0:= x11-libs/libX11 >=dev-libs/libxml2-2.7.8:2 introspection? ( >=dev-libs/gobject-introspection-1.54:= ) sendto? ( !<gnome-extra/nautilus-sendto-3.0.1 ) gstreamer? ( !<media-video/totem-3.31.91[nautilus] ) >=app-misc/tracker-miners-2.0:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://gnome/sources/nautilus/3.36/nautilus-3.36.3.tar.xz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome.org	532d56d07b9eace4831aaa817d2b756a	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	meson	71d293a701d6362387e1214da368c848	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	virtualx	e49dbce7ac14426e1155497476915307	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=3fc452bf451238bf3c20b15fdabf156e
