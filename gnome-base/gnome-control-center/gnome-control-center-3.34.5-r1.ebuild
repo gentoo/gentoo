@@ -35,6 +35,7 @@ DEPEND="
 	>=x11-libs/gdk-pixbuf-2.23.0:2
 	>=dev-libs/glib-2.53.0:2
 	>=gnome-base/gnome-desktop-3.27.90:3=
+	<gnome-base/gnome-desktop-3.35.4
 	>=gnome-base/gnome-settings-daemon-3.27.90[colord,input_devices_wacom?]
 	>=gnome-base/gsettings-desktop-schemas-3.31.0
 	dev-libs/libxml2:2
