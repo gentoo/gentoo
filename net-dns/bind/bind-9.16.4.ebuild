@@ -108,6 +108,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		AR="$(type -P $(tc-getAR))"
 		--prefix="${EPREFIX}"/usr
 		--sysconfdir=/etc/bind
 		--localstatedir=/var
@@ -159,8 +160,6 @@ src_install() {
 	dodoc CHANGES README
 
 	if use doc; then
-		dodoc doc/arm/Bv9ARM.pdf
-
 		docinto misc
 		dodoc -r doc/misc/
 
@@ -193,7 +192,7 @@ src_install() {
 	newenvd "${FILESDIR}"/10bind.env 10bind
 
 	# Let's get rid of those tools and their manpages since they're provided by bind-tools
-	rm -f "${ED}"/usr/share/man/man1/{dig,host,nslookup}.1* || die
+	rm -f "${ED}"/usr/share/man/man1/{dig,host,nslookup,delv,nsupdate}.1* || die
 	rm -f "${ED}"/usr/share/man/man8/nsupdate.8* || die
 	rm -f "${ED}"/usr/bin/{dig,host,nslookup,nsupdate} || die
 	rm -f "${ED}"/usr/sbin/{dig,host,nslookup,nsupdate} || die
