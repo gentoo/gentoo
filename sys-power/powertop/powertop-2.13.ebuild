@@ -30,6 +30,7 @@ DEPEND="
 
 BDEPEND="
 	virtual/pkgconfig
+	sys-devel/autoconf-archive
 	>=sys-devel/gettext-0.20.2
 "
 RDEPEND="
