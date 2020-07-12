@@ -18,13 +18,12 @@ REQUIRED_USE="
 	flickr? ( gnome-online-accounts )
 	^^ ( elogind systemd )
 " # Theoretically "?? ( elogind systemd )" is fine too, lacking some functionality at runtime, but needs testing if handled gracefully enough
-KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
 
 # kerberos unfortunately means mit-krb5; build fails with heimdal
 # display panel requires colord and gnome-settings-daemon[colord]
 # wacom panel requires gsd-enums.h from gsd at build time, probably also runtime support
 # printer panel requires cups and smbclient (the latter is not patched yet to be separately optional)
-# >=polkit-0.114 for .policy files gettext ITS
 # First block is toplevel meson.build deps in order of occurrence (plus deeper deps if in same conditional). Second block is dependency() from subdir meson.builds, sorted by directory name occurrence order
 DEPEND="
 	>=gui-libs/libhandy-0.0.9:0.0=
@@ -33,17 +32,17 @@ DEPEND="
 	>=sys-apps/accountsservice-0.6.39
 	>=x11-misc/colord-0.1.34:0=
 	>=x11-libs/gdk-pixbuf-2.23.0:2
-	>=dev-libs/glib-2.53.0:2
+	>=dev-libs/glib-2.56.0:2
 	>=gnome-base/gnome-desktop-3.27.90:3=
-	<gnome-base/gnome-desktop-3.35.4
 	>=gnome-base/gnome-settings-daemon-3.27.90[colord,input_devices_wacom?]
 	>=gnome-base/gsettings-desktop-schemas-3.31.0
 	dev-libs/libxml2:2
 	>=sys-auth/polkit-0.114
 	>=sys-power/upower-0.99.8:=
-	dev-libs/libgudev
+	>=dev-libs/libgudev-232
 	x11-libs/libX11
 	>=x11-libs/libXi-1.2
+	media-libs/libepoxy
 	flickr? ( >=media-libs/grilo-0.3.0:0.3= )
 	>=x11-libs/gtk+-3.22.0:3[X,wayland=]
 	cups? (
@@ -125,13 +124,11 @@ BDEPEND="
 "
 
 PATCHES=(
-	# Patches from gnome-3-32 branch on top of 3.32.2
+	# Patches from gnome-3-36 branch on top of 3.36.4
 	# Makes some panels and dependencies optional
 	# https://bugzilla.gnome.org/686840, 697478, 700145
 	# Fix some absolute paths to be appropriate for Gentoo
 	"${WORKDIR}"/patches/
-
-	"${FILESDIR}"/${PN}-3.32.2-fix-gcc10-fno-common.patch # fixed in 3.35.90
 )
 
 python_check_deps() {
@@ -161,6 +158,9 @@ src_configure() {
 		$(meson_use ibus)
 		-Dkerberos=$(usex kerberos enabled disabled)
 		$(meson_use networkmanager network_manager)
+		-Dprivileged_group=wheel
+		-Dsnap=false
+		$(meson_use test tests)
 		$(meson_use debug tracing)
 		$(meson_use input_devices_wacom wacom)
 		#$(meson_use wayland) # doesn't do anything in 3.34 and 3.36 due to unified gudev handling code

@@ -16,26 +16,25 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.58.0
-	>=dev-libs/gobject-introspection-1.61.2:=
-
-	readline? ( sys-libs/readline:0= )
-	dev-lang/spidermonkey:68
 	dev-libs/libffi:=
+	>=dev-libs/gobject-introspection-1.61.2:=
+	dev-lang/spidermonkey:68
 	cairo? ( x11-libs/cairo[X] )
+	readline? ( sys-libs/readline:0= )
 "
 DEPEND="${RDEPEND}
 	sysprof? ( >=dev-util/sysprof-capture-3.33.2:3 )
 	virtual/pkgconfig
 	test? ( sys-apps/dbus
-		>=x11-libs/gtk+-3.20:3 )
+		>=x11-libs/gtk+-3.20:3[introspection] )
 "
 
 src_configure() {
 	# FIXME: add systemtap/dtrace support, like in glib:2
 	local emesonargs=(
 		$(meson_feature cairo)
-		$(meson_feature sysprof profiler)
 		$(meson_feature readline)
+		$(meson_feature sysprof profiler)
 		-Dinstalled_tests=false
 	)
 	meson_src_configure
