@@ -7476,7 +7476,7 @@ dev-python/PyQt5 5.14.2 5.15.0: Python bindings for the Qt framework
 dev-python/PyQt5-sip 4.19.22 4.19.23: Private sip module for PyQt5
 dev-python/PyQtWebEngine 5.14.0 5.15.0: Python bindings for QtWebEngine
 dev-python/PyRSS2Gen 1.1-r1: RSS feed generator written in Python
-dev-python/PySDL2 0.9.6: Python (ctypes) bindings for SDL2 libraries
+dev-python/PySDL2 0.9.6 0.9.7: Python (ctypes) bindings for SDL2 libraries
 dev-python/PySensors 0.0.4: Python bindings to libsensors (via ctypes)
 dev-python/PySocks 1.7.1: SOCKS client module
 dev-python/PyUtilib 5.7.2: A collection of Python utilities
@@ -10949,7 +10949,7 @@ games-emulation/libretro-nestopia 0.0.1_pre20180723 9999: Nestopia libretro port
 games-emulation/libretro-snes9x 0.0.1_pre20180723 9999: Snes9x libretro port
 games-emulation/libretro-twentyfortyeight 0.0.1_pre20180723 9999: Port of 2048 puzzle game to the libretro API
 games-emulation/lxdream 0.9.1-r3: An emulator for the Sega Dreamcast system
-games-emulation/m64py 0.2.4: A frontend for Mupen64Plus
+games-emulation/m64py 0.2.4 0.2.5: A frontend for Mupen64Plus
 games-emulation/mamory 0.2.25-r1: ROM management tools and library
 games-emulation/mastergear-bin 4.5: SEGA Master System / Game Gear emulator
 games-emulation/mednafen 0.9.46: Argument-driven multi-system emulator utilizing OpenGL and SDL
