@@ -34,7 +34,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}"/${P}-system-quazip.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-system-quazip.patch
+	"${FILESDIR}"/${P}-missing-translations.patch
+)
 
 src_configure() {
 	eqmake5
