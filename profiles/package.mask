@@ -461,10 +461,6 @@ dev-ruby/rack-mount
 # >=dev-db/mysql-5.7. Masked for removal in 30 days.
 <dev-db/mysql-5.7
 
-# Matt Turner <mattst88@gentoo.org> (2020-04-29)
-# Masked for testing
->=dev-libs/gjs-1.64
-
 # Michael Orlitzky <mjo@gentoo.org> (2020-04-19)
 # Stuck on Python 3.6, support for which already required
 # backporting patches to a release from 2014. Upstream's git
