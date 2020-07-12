@@ -16705,7 +16705,7 @@ sys-apps/pciutils 3.5.6-r1 3.6.4 3.7.0: Various utilities dealing with the PCI b
 sys-apps/pcmciautils 018_p8-r1: PCMCIA userspace utilities for Linux
 sys-apps/pcsc-lite 1.8.25-r1 1.8.26 1.9.0: PC/SC Architecture smartcard middleware library
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
-sys-apps/pcsc-tools 1.5.5 1.5.6: PC/SC Architecture smartcard tools
+sys-apps/pcsc-tools 1.5.5 1.5.6 1.5.7: PC/SC Architecture smartcard tools
 sys-apps/pick 3.0.1: a fuzzy search tool for the command-line
 sys-apps/pkgcore 0.10.12 0.10.13 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r5: Policy based mounter that gives the ability to mount removable devices as a user
