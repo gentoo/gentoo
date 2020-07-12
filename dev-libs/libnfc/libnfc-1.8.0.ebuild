@@ -39,5 +39,6 @@ src_compile() {
 src_install() {
 	default
 	use static-libs || find "${ED}" -name 'lib*.la' -delete
-	use doc && dohtml "${S}"/doc/html/*
+	use doc && HTML_DOCS=( "${S}"/doc/html/* )
+	einstalldocs
 }
