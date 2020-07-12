@@ -27,11 +27,11 @@ fi
 # TODO: unbundle sqlite
 
 QTC_PLUGINS=(android +autotest autotools:autotoolsprojectmanager baremetal bazaar beautifier boot2qt
-	'+clang:clangcodemodel|clangformat|clangpchmanager|clangrefactoring|clangtools' clearcase
-	cmake:cmakeprojectmanager cppcheck ctfvisualizer cvs +designer git glsl:glsleditor +help
-	lsp:languageclient mcu:mcusupport mercurial modeling:modeleditor nim perforce perfprofiler python
-	qbs:qbsprojectmanager +qmldesigner +qmljs:qmljseditor qmlprofiler qnx remotelinux scxml:scxmleditor
-	serialterminal silversearcher subversion valgrind webassembly)
+	'+clang:clangcodemodel|clangformat|clangtools' clearcase cmake:cmakeprojectmanager cppcheck
+	ctfvisualizer cvs +designer git glsl:glsleditor +help lsp:languageclient mcu:mcusupport mercurial
+	modeling:modeleditor nim perforce perfprofiler python qbs:qbsprojectmanager +qmldesigner
+	+qmljs:qmljseditor qmlprofiler qnx remotelinux scxml:scxmleditor serialterminal silversearcher
+	subversion valgrind webassembly)
 IUSE="doc systemd test webengine ${QTC_PLUGINS[@]%:*}"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
@@ -139,12 +139,13 @@ src_prepare() {
 				src/plugins/plugins.pro || die "failed to disable ${plugin%:*} plugin"
 		fi
 	done
-	sed -i -re '/\<(ios|updateinfo|winrt)\>/d' src/plugins/plugins.pro || die
+	sed -i -re '/\<(clangpchmanager|clangrefactoring|ios|updateinfo|winrt)\>/d' src/plugins/plugins.pro || die
+	sed -i -re '/clang(pchmanager|refactoring)backend/d' src/tools/tools.pro || die
 
 	# avoid building unused support libraries and tools
 	if ! use clang; then
 		sed -i -e '/clangsupport\|sqlite\|yaml-cpp/d' src/libs/libs.pro || die
-		sed -i -e '/clang\(\|pchmanager\|refactoring\)backend/d' src/tools/tools.pro || die
+		sed -i -e '/clangbackend/d' src/tools/tools.pro || die
 	fi
 	if ! use glsl; then
 		sed -i -e '/glsl/d' src/libs/libs.pro || die
