@@ -12,7 +12,7 @@ else
 	SRC_URI="https://stellar.cct.lsu.edu/files/${PN}_${PV}.tar.gz"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 fi
-inherit cmake fortran-2 python-single-r1 check-reqs
+inherit cmake fortran-2 python-single-r1 check-reqs multiprocessing
 
 DESCRIPTION="C++ runtime system for parallel and distributed applications"
 HOMEPAGE="https://stellar.cct.lsu.edu/tag/hpx/"
@@ -65,7 +65,7 @@ hpx_memory_requirement() {
 	if [[ -z ${MAKEOPTS} ]] ; then
 		echo "2G"
 	else
-		local jobs=`echo ${MAKEOPTS} | cut -d j -f 2`
+		local jobs=$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")
 		echo "${jobs}G"
 	fi
 }
