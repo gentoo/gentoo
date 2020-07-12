@@ -19,6 +19,12 @@ BDEPEND="
 	dev-qt/linguist-tools:5
 "
 COMMON_DEPEND="
+	app-crypt/qca:2[qt5(+)]
+	dev-cpp/lucene++
+	dev-cpp/sparsehash
+	dev-libs/boost:=
+	dev-libs/qtkeychain:=[qt5(+)]
+	>=dev-libs/quazip-0.7.2[qt5(+)]
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
@@ -29,12 +35,6 @@ COMMON_DEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
-	app-crypt/qca:2[qt5(+)]
-	dev-cpp/lucene++
-	dev-cpp/sparsehash
-	dev-libs/boost:=
-	dev-libs/qtkeychain:=[qt5(+)]
-	>=dev-libs/quazip-0.7.2[qt5(+)]
 	kde-frameworks/extra-cmake-modules:5
 	kde-frameworks/attica:5
 	>=media-libs/liblastfm-1.1.0_pre20150206
