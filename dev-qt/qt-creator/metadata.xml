@@ -17,7 +17,7 @@
 		<flag name="bazaar">Add support for GNU Bazaar version control system (requires manual installation of Bazaar client)</flag>
 		<flag name="beautifier">Build the beautifier plugin (supports astyle, clang-format, and uncrustify)</flag>
 		<flag name="boot2qt">Build plugin for Boot2Qt devices</flag>
-		<flag name="clang">Build clang-based plugins (code model, formatting, refactoring, static analysis)</flag>
+		<flag name="clang">Build clang-based plugins (code model, formatting, static analysis)</flag>
 		<flag name="clearcase">Add support for IBM ClearCase version control system (requires manual installation of ClearCase client)</flag>
 		<flag name="cmake">Build plugin for CMake-based projects</flag>
 		<flag name="cppcheck">Enable integration with <pkg>dev-util/cppcheck</pkg></flag>
