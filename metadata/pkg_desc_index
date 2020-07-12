@@ -135,6 +135,7 @@ acct-group/polkitd 0: System group: polkitd
 acct-group/postdrop 0: System group: postdrop
 acct-group/postfix 0: System group: postfix
 acct-group/postgres 0: PostgreSQL program group
+acct-group/privoxy 0: A privoxy: privacy oriented web proxy group
 acct-group/prometheus 0: System group: prometheus
 acct-group/puppet 0: System group: puppet
 acct-group/puppetdb 0: System group: puppetdb
@@ -331,6 +332,7 @@ acct-user/polkitd 0: System user: polkitd
 acct-user/postfix 0: user for postfix daemon
 acct-user/postgres 0: PostgreSQL program user
 acct-user/postmaster 0: Postmaster user
+acct-user/privoxy 0: A privoxy: privacy oriented web proxy user
 acct-user/prometheus 0: user for prometheus
 acct-user/puppet 0: user for puppet services
 acct-user/puppetdb 0: User for the puppetdb service
@@ -2738,7 +2740,7 @@ app-text/pep 2.8-r2: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5 0.6.10-r7 0.6.13 99999: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.47-r1 0.57 0.59.1: Tools to ease the translation of documentation
 app-text/podofo 0.9.6_p20180715 0.9.6_p20190928: PoDoFo is a C++ library to work with the PDF file format
-app-text/poppler 0.88.0-r1 0.89.0 0.90.0 9999: PDF rendering library based on the xpdf-3.0 code base
+app-text/poppler 0.88.0-r1 0.89.0 0.90.0 0.90.1 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.9: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
 app-text/ps2pkm 1.8_p20200406: Tool that converts a PostScript type1 font into a corresponding TeX PK font
@@ -15160,7 +15162,7 @@ net-proxy/obfs4proxy 0.0.11-r1: An obfuscating proxy supporting Tor's pluggable 
 net-proxy/pingtunnel 0.72: Tunnel TCP over ICMP
 net-proxy/piper 1.14: A tool for manipulating SOCKS5 servers
 net-proxy/polipo 1.1.1-r4 9999: A caching web proxy
-net-proxy/privoxy 3.0.26 3.0.28: A web proxy with advanced filtering capabilities for enhancing privacy
+net-proxy/privoxy 3.0.26 3.0.28-r1: A web proxy with advanced filtering capabilities for enhancing privacy
 net-proxy/redsocks 0.5 0.5-r1 9999: Transparent redirector of any TCP connection to proxy
 net-proxy/rejik 3.2.10: A squid redirector used for blocking unwanted content
 net-proxy/shadowsocks-libev 3.3.4: A lightweight secured SOCKS5 proxy for embedded devices and low end boxes
