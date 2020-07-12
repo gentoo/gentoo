@@ -9,9 +9,6 @@
   <email>sci-mathematics@gentoo.org</email>
   <name>Gentoo Mathematics Project</name>
 </maintainer>
-<longdescription lang="en">
-  A Python library for arbitrary-precision floating-point arithmetic
-</longdescription>
 <use>
   <flag name="matplotlib">Add support for <pkg>dev-python/matplotlib</pkg></flag>
 </use>
