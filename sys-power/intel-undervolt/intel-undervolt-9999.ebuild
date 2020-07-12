@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,6 +32,7 @@ src_configure() {
 	local myconf=(
 		# it's a non-standard build system
 		$(usex elogind --enable-elogind '')
+		$(usex elogind --eloginddir="${EPREFIX}/$(get_libdir)/elogind" '')
 		--enable-openrc
 		--enable-systemd
 		--unitdir="$(systemd_get_systemunitdir)"
