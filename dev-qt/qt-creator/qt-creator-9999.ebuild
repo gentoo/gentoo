@@ -30,8 +30,8 @@ QTC_PLUGINS=(android +autotest autotools:autotoolsprojectmanager baremetal bazaa
 	'+clang:clangcodemodel|clangformat|clangpchmanager|clangrefactoring|clangtools' clearcase
 	cmake:cmakeprojectmanager cppcheck ctfvisualizer cvs +designer git glsl:glsleditor +help
 	lsp:languageclient mcu:mcusupport mercurial modeling:modeleditor nim perforce perfprofiler python
-	qbs:qbsprojectmanager +qmldesigner qmlprofiler qnx remotelinux scxml:scxmleditor serialterminal
-	silversearcher subversion valgrind webassembly)
+	qbs:qbsprojectmanager +qmldesigner +qmljs:qmljseditor qmlprofiler qnx remotelinux scxml:scxmleditor
+	serialterminal silversearcher subversion valgrind webassembly)
 IUSE="doc systemd test webengine ${QTC_PLUGINS[@]%:*}"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
@@ -39,6 +39,7 @@ REQUIRED_USE="
 	clang? ( test? ( qbs ) )
 	mcu? ( cmake )
 	python? ( lsp )
+	qmldesigner? ( qmljs )
 	qnx? ( remotelinux )
 "
 
@@ -164,6 +165,9 @@ src_prepare() {
 		sed -i -e '/advanceddockingsystem/d' src/libs/libs.pro || die
 		sed -i -e '/qml2puppet/d' src/tools/tools.pro || die
 		sed -i -e '/qmldesigner/d' tests/auto/qml/qml.pro || die
+	fi
+	if ! use qmljs; then
+		sed -i -e '/qmleditorwidgets/d' src/libs/libs.pro || die
 	fi
 	if ! use valgrind; then
 		sed -i -e '/valgrindfake/d' src/tools/tools.pro || die
