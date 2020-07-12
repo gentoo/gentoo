@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,10 @@ DEPEND="${RDEPEND}
 
 DOCS="README.md"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.1.0-lzma.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.1.0-lzma.patch
+	"${FILESDIR}"/${PN}-fno-common.patch
+)
 
 src_prepare() {
 	sed '/^dist_bashcomp/d' -i Makefile.am || die
