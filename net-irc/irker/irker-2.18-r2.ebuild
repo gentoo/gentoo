@@ -11,7 +11,7 @@ DESCRIPTION="Submission tools for IRC notifications"
 HOMEPAGE="http://www.catb.org/esr/irker/"
 SRC_URI="http://www.catb.org/esr/${PN}/${P}.tar.gz"
 
-LICENSE="BSD"
+LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="socks5"
