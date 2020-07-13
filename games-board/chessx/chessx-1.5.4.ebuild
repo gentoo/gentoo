@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop qmake-utils
+inherit desktop qmake-utils xdg
 
 DESCRIPTION="Qt5-based Chess Database Utility"
 HOMEPAGE="http://chessx.sourceforge.net/"
@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
+	>=dev-libs/quazip-0.9.1
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
@@ -23,27 +24,27 @@ RDEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	sys-libs/zlib:="
+	sys-libs/zlib
+"
 DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5"
+	dev-qt/qtconcurrent:5
+"
+BDEPEND="
+	dev-qt/linguist-tools:5
+	virtual/pkgconfig
+"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.4.0-zlib.patch
-	"${FILESDIR}"/${P}-qt-5.11.patch
+	"${FILESDIR}"/${P}-system-quazip.patch
+	"${FILESDIR}"/${P}-missing-translations.patch
+	"${FILESDIR}"/${P}-install.patch
 )
-
-src_prepare() {
-	default
-	"$(qt5_get_bindir)/lrelease" i18n/* || die
-}
 
 src_configure() {
 	eqmake5
 }
 
 src_install() {
-	dobin release/${PN}
-	dodoc ChangeLog TODO
-	doicon data/images/${PN}.png
-	domenu unix/chessx.desktop
+	emake INSTALL_ROOT="${D}" install
+	einstalldocs
 }

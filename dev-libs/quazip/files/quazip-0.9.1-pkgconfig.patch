@@ -1,0 +1,31 @@
+From 94b18d81752490b694d262a4889085e9d55bc5d5 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 9 Jul 2020 23:08:22 +0200
+Subject: [PATCH] Fix pkgconfig include dir
+
+---
+ quazip.pc.cmakein | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/quazip.pc.cmakein b/quazip.pc.cmakein
+index e46d4c6..4cd8c86 100644
+--- a/quazip.pc.cmakein
++++ b/quazip.pc.cmakein
+@@ -1,12 +1,12 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=${prefix}
+ libdir=${prefix}/lib@LIB_SUFFIX@
+-includedir=${prefix}/include
++includedir=${prefix}/include/quazip@QUAZIP_LIB_VERSION_SUFFIX@
+ 
+ 
+ Name: Quazip
+ Description: Quazip Library
+ Version: @QUAZIP_LIB_VERSION@
+ Libs: -lquazip@QUAZIP_LIB_VERSION_SUFFIX@
+-Cflags:
++Cflags: -I${includedir}
+ Requires: Qt5Core
+-- 
+2.27.0
+
