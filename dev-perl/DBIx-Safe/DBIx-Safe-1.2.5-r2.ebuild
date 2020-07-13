@@ -5,7 +5,7 @@ EAPI=7
 
 DIST_AUTHOR=TURNSTEP
 DIST_VERSION=1.2.5
-inherit perl-module eutils
+inherit perl-module
 
 DESCRIPTION="Safer access to your database through a DBI database handle"
 
