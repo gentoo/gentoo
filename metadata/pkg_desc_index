@@ -22,6 +22,7 @@ acct-group/cadvisor 0: System group: cadvisor
 acct-group/carbon 0: System group: carbon
 acct-group/cdrom 0: System group: cdrom
 acct-group/ceph 0: System group: ceph
+acct-group/chronograf 0: System group: chronograf
 acct-group/cinder 0: System group: cinder
 acct-group/clair 0: System group: clair
 acct-group/clamav 0: System group: clamav
@@ -69,10 +70,12 @@ acct-group/i2pd 0: Group for the system-wide net-vpn/i2pd server
 acct-group/icinga 0: System group: icinga
 acct-group/icingacmd 0: System group: icingacmd
 acct-group/icingaweb2 0: System group: icingaweb2
+acct-group/influxdb 0: System group: influxdb
 acct-group/input 0: System group: input
 acct-group/inspircd 0: System group: inspircd
 acct-group/ipfs 0: Group for the system-wide net-p2p/go-ipfs-bin server
 acct-group/kafka 0: System group: kafka
+acct-group/kapacitor 0: System group: kapacitor
 acct-group/keystone 0: System group: keystone
 acct-group/kibana 0: Kibana program group
 acct-group/kmem 0: System group: kmem
@@ -232,6 +235,7 @@ acct-user/burp 0: User for the app-backup/burp server
 acct-user/cadvisor 0: User for cadvisor
 acct-user/carbon 0: User for graphite/carbon suite
 acct-user/ceph 0: User for ceph
+acct-user/chronograf 0: User for chronograf
 acct-user/cinder 0: user for the openstack cinder service
 acct-user/clair 0: User for clair
 acct-user/clamav 0: System user: clamav
@@ -273,10 +277,12 @@ acct-user/heat 0: user for the heat openstack service
 acct-user/i2p 0: User for system-wide net-vpn/i2p
 acct-user/i2pd 0: User for the system-wide net-vpn/i2pd server
 acct-user/icinga 0: Icinga User
+acct-user/influxdb 0: User for influxdb
 acct-user/inspircd 0: User for InspIRCd server daemon
 acct-user/ipfs 0: User for the system-wide net-p2p/go-ipfs-bin server
 acct-user/ippl 0: user for net-analyzer/ippl
 acct-user/kafka 0: User for kafka
+acct-user/kapacitor 0: User for kapacitor
 acct-user/keystone 0: user for the keystone openstack service
 acct-user/kibana 0: Kibana program user
 acct-user/knot 0: User for knot DNS server
@@ -3261,7 +3267,7 @@ dev-db/go-etcd 0_p20141013-r1 2.0.0 2.0.0-r1: Go client library for etcd
 dev-db/gqlplus 1.16: a front-end for Oracle program sqlplus with command-line editing
 dev-db/henplus 0.9.8-r1: Java-based multisession SQL shell for databases with JDBC support
 dev-db/hsqldb 1.8.1.3-r2: The leading SQL relational database engine written in Java
-dev-db/influxdb 1.5.1 1.6.3 1.6.4: Scalable datastore for metrics, events, and real-time analytics
+dev-db/influxdb 1.5.1 1.6.3 1.6.4 1.8.0: Scalable datastore for metrics, events, and real-time analytics
 dev-db/innotop 1.11.1 1.11.4 1.12.0: A text-mode MySQL and InnoDB monitor like mytop, but with many more features
 dev-db/kdb 3.2.0: Database connectivity and creation framework for various vendors
 dev-db/kyotocabinet 1.2.77: A straightforward implementation of DBM
@@ -13894,7 +13900,7 @@ net-analyzer/carl 0.9-r2 0.9-r3: An rsync logfile analyzer
 net-analyzer/cbm 0.1-r1 0.2: Color Bandwidth Meter
 net-analyzer/chaosreader 0.96: Trace TCP/UDP/... sessions and fetch application data.
 net-analyzer/check_mk_agent 1.2.8_p27 1.4.0_p31: Agent to report data to Check_MK for monitoring
-net-analyzer/chronograf 1.4.3.0 1.6.2 1.7.3: Monitoring, processing and alerting on time series data
+net-analyzer/chronograf 1.4.3.0 1.6.2 1.7.3 1.8.5: Monitoring, processing and alerting on time series data
 net-analyzer/cloudshark 1.0.2.174 1.0.3.180 1.0.4: Easily upload your wireshark captures to CloudShark
 net-analyzer/cnet 3.3.1 3.3.4: Network simulation tool
 net-analyzer/cryptcat 1.2.1-r2: netcat clone extended with twofish encryption
@@ -13960,7 +13966,7 @@ net-analyzer/isic 0.07-r1: IP Stack Integrity Checker
 net-analyzer/jffnms 0.9.4-r1: Network Management and Monitoring System
 net-analyzer/jmx2munin 1.0_p20120811-r1: JMX Monitoring plugin for Munin
 net-analyzer/jnettop 0.13.0-r1: A top like console network traffic visualiser
-net-analyzer/kapacitor 1.4.1-r1 1.5.1: Monitoring, processing and alerting on time series data
+net-analyzer/kapacitor 1.4.1-r1 1.5.1 1.5.5: Monitoring, processing and alerting on time series data
 net-analyzer/knocker 0.7.1-r3: Knocker is an easy to use security port scanner written in C
 net-analyzer/labrea 2.5-r2 2.5-r3: 'Sticky' Honeypot and IDS
 net-analyzer/lft 3.77 3.79 3.80 3.90 3.91-r1: Layer Four Traceroute (LFT) and WhoB
@@ -14119,7 +14125,7 @@ net-analyzer/tcpstat 1.5-r3 1.5_p8: Reports network interface statistics
 net-analyzer/tcptrace 6.6.7_p4_p1 6.6.7_p5: A Tool for analyzing network packet dumps
 net-analyzer/tcptraceroute 1.5_beta7-r2: tcptraceroute is a traceroute implementation using TCP packets
 net-analyzer/tcptrack 1.4.2: Passive per-connection tcp bandwidth monitor
-net-analyzer/telegraf 1.5.3 1.8.3 1.10.4 1.11.5 1.12.1 1.13.3: The plugin-driven server agent for collecting & reporting metrics.
+net-analyzer/telegraf 1.5.3 1.8.3 1.10.4 1.11.5 1.12.1 1.13.3 1.14.5: The plugin-driven server agent for collecting & reporting metrics.
 net-analyzer/testssl 3.0.2: Tool to check TLS/SSL cipher support
 net-analyzer/thc-ipv6 3.2-r1 9999: complete tool set to attack the inherent protocol weaknesses of IPV6 and ICMP6
 net-analyzer/thcrut 1.2.5-r1 1.2.5-r2: Network discovery and fingerprinting tool
