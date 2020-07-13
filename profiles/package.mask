@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-07-13)
+# Unmaintained.  Last release from 2018, still does not support py3.
+# Removal in 30 days.  Bug #732352.
+app-mobilephone/wammu
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2020-07-11)
 # Fails to build with recent glibc, bug 719968
 # Removal in 30 days
@@ -383,12 +388,6 @@ app-mobilephone/kannel-sqlbox
 dev-lang/ruby:2.4
 dev-ruby/did_you_mean:2.4
 
-# Mikle Kolyada <zlogene@gentoo.org> (2020-06-13)
-# multiple forks.
-# Merged into the app-text/texlive-core package
-# Removal in 30 days.
-app-text/xindy
-
 # Jonas Stein <jstein@gentoo.org> (2020-06-07)
 # Last rite unusable package.
 # Removal after 2020-08-01
@@ -400,55 +399,15 @@ app-misc/ifp-line
 # regarding runstatedir (not using /run).
 =net-misc/networkmanager-1.22.10-r11
 
-# Michał Górny <mgorny@gentoo.org> (2020-06-05)
-# Replaced by dev-util/ydiff, after upstream rename.
-# Removal in 30 days.  Bug #710538.
-dev-util/cdiff
-
-# Sam James <sam@gentoo.org> (2020-06-04)
-# Multiple vulnerabilities (Bug #655176, Bug #701812)
-# Misc. other bugs, out of date, no maintainer.
-# Masked for removal in 30 days.
-net-nds/389-ds-base
-dev-libs/389-adminutil
-dev-libs/svrcore
-
 # Stefan Strogin <steils@gentoo.org> (2020-06-03)
 # Masked for testing
 >=dev-libs/libressl-3.2.0
-
-# Michał Górny <mgorny@gentoo.org> (2020-06-03)
-# Very bad quality (upstream) package.  Stuck on py3.6.  No revdeps.
-# Removal in 30 days.  Bug #718762.
-dev-python/dnslib
-
-# Aaron Bauman <bman@gentoo.org> (2020-06-02)
-# py2 only. dead upstream. m-n.
-# Masked for removal in 30 days
-app-misc/webcomics-collector
-net-misc/pytvshows
-net-news/rawdog
 
 # Jonas Stein <jstein@gentoo.org> (2020-06-01)
 # Last rite package due to missing/unclear license.
 # Removal after 2020-08-01
 # Bug 687664
 app-dicts/stardict-quick-eng-fra
-
-# Michał Górny <mgorny@gentoo.org> (2020-06-01)
-# Effectively unmaintained, Python 2 only game and its dependencies.
-# Removal in 30 days.
-games-action/slune
-dev-python/editobj
-dev-python/py2play
-dev-python/pyopenal
-dev-python/soya
-
-# Hans de Graaff <graaff@gentoo.org> (2020-05-24)
-# No releases since 2011, upstream is gone, fails tests,
-# no reverse dependencies.
-# Masked for removal in 30 days.
-dev-ruby/rack-mount
 
 # Aaron W. Swenson <titanofold@gentoo.org> (2020-05-15)
 # PostgreSQL 9.4 series is EOL. Migrate your database cluster to a more recent
