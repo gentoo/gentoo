@@ -58,7 +58,8 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 PATCHES=(
 	"${FILESDIR}/${P}-fix-warning.patch"
 	"${FILESDIR}/${P}-cmakepolicy.patch" # bug 674826
-	"${FILESDIR}/${P}-qt-5.15.patch" # pending upstream
+	"${FILESDIR}/${P}-qt-5.15.patch" # git master
+	"${FILESDIR}/${P}-findtaglib.patch" # pending upstream
 )
 
 src_configure() {
