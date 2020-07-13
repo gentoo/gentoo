@@ -1678,7 +1678,7 @@ app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for l
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
 app-emulation/lxc 4.0.2-r2 4.0.3: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.4: Old style template scripts for LXC
-app-emulation/lxd 4.0.1 4.0.2: Fast, dense and secure container management
+app-emulation/lxd 4.0.1 4.0.2 4.0.2-r1: Fast, dense and secure container management
 app-emulation/nemu 2.2.1 9999: ncurses interface for QEMU
 app-emulation/open-vm-tools 11.0.1-r1 11.1.0: Opensourced tools for VMware guests
 app-emulation/pcem 16: A PC emulator that specializes in running old operating systems and software
@@ -7618,7 +7618,7 @@ dev-python/cheroot 8.3.0 8.3.0-r1: Cheroot is the high-performance, pure-Python 
 dev-python/cherrypy 3.8.0 18.5.0 18.6.0: CherryPy is a pythonic, object-oriented HTTP framework
 dev-python/chump 1.6.0: API wrapper for Pushover
 dev-python/citeproc-py 0.4.0-r1: Yet another Python CSL Processor
-dev-python/cjkwrap 2.2: A library for wrapping and filling UTF-8 CJK text
+dev-python/cjkwrap 2.2 2.2-r1: A library for wrapping and filling UTF-8 CJK text
 dev-python/clang-python 8.0.1 9.0.1 10.0.0 10.0.1_rc1 10.0.1_rc2 10.0.1_rc3 10.0.1_rc4 10.0.1.9999 11.0.0.9999: Python bindings for sys-devel/clang
 dev-python/cli_helpers 2.0.1 9999: Python helpers for common CLI tasks
 dev-python/cliapp 1.20180812.1: Framework for Unix-like command line programs
@@ -8809,7 +8809,7 @@ dev-python/testscenarios 0.5.0: A pyunit extension for dependency injection
 dev-python/testtools 2.4.0: Extensions to the Python standard library unit testing framework
 dev-python/text-unidecode 1.3: Tthe most basic port of the Text::Unidecode Perl library
 dev-python/textfsm 0.4.0: Python module for parsing semi-structured text into python tables.
-dev-python/texttable 1.6.2: Module for creating simple ASCII tables
+dev-python/texttable 1.6.2 1.6.2-r1: Module for creating simple ASCII tables
 dev-python/textx 1.4: Meta-language for DSL implementation inspired by Xtext
 dev-python/theano 1.0.4: Define and optimize multi-dimensional arrays mathematical expressions
 dev-python/threadpoolctl 2.0.0 2.1.0: Limit the number of threads used in native libs that have their own threadpool
@@ -17216,7 +17216,7 @@ sys-fs/lsscsi 0.31: SCSI sysfs query tool
 sys-fs/lufis 0.3 0.3-r1: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r4: User-mode filesystem implementation
 sys-fs/lvm2 2.02.187-r2 2.03.09: User-land utilities for LVM2 (device-mapper) software
-sys-fs/lxcfs 4.0.3 4.0.4-r1: FUSE filesystem for LXC
+sys-fs/lxcfs 4.0.3 4.0.4-r2: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1_p18: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
 sys-fs/mergerfs 2.28.3-r1 2.29.0: A featureful union filesystem

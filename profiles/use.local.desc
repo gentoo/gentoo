@@ -555,6 +555,7 @@ app-emulation/libvirt:zfs - Enable ZFS backend storage sys-fs/zfs
 app-emulation/lxc:apparmor - Enable AppArmor support
 app-emulation/lxc:templates - Install old style templates through app-emulation/lxc-templates
 app-emulation/lxc:tools - Build and install additional command line tools
+app-emulation/lxd:apparmor - Enable AppArmor support
 app-emulation/nemu:network-map - Adds possibility of exporting network map to SVG
 app-emulation/nemu:ovf - Adds support for OVA/OVF import
 app-emulation/nemu:savevm - Adds support for QEMU savevm snapshots (experimental, QEMU must be patched)
