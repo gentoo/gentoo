@@ -5868,10 +5868,10 @@ dev-perl/DBICx-TestDatabase 0.50.0 0.50.0-r1: create a temporary database from a
 dev-perl/DBIx-Class 0.82.841-r1 0.82.842: Extensible and flexible object <-> relational mapper
 dev-perl/DBIx-Class-DynamicDefault 0.40.0 0.40.0-r1: Automatically set and update fields
 dev-perl/DBIx-Class-InflateColumn-Boolean 0.3.0: Auto-create boolean objects from columns
-dev-perl/DBIx-Class-InflateColumn-IP 0.20.30-r1: Auto-create NetAddr::IP objects from columns
+dev-perl/DBIx-Class-InflateColumn-IP 0.20.30-r1 0.20.30-r2: Auto-create NetAddr::IP objects from columns
 dev-perl/DBIx-Class-InflateColumn-Object-Enum 0.60.0: Allows a DBIx::Class user to define a Object::Enum column
-dev-perl/DBIx-Class-UserStamp 0.110.0-r1: Automatically set update and create user id fields
-dev-perl/DBIx-ContextualFetch 1.30.0-r1: Add contextual fetches to DBI
+dev-perl/DBIx-Class-UserStamp 0.110.0-r1 0.110.0-r2: Automatically set update and create user id fields
+dev-perl/DBIx-ContextualFetch 1.30.0-r1 1.30.0-r2: Add contextual fetches to DBI
 dev-perl/DBIx-DBSchema 0.450.0: Database-independent schema objects
 dev-perl/DBIx-Migration 0.70.0: Seamless DB schema up- and downgrades
 dev-perl/DBIx-Safe 1.2.5-r1: Safer access to your database through a DBI database handle
@@ -14379,7 +14379,7 @@ net-irc/irccloud-desktop-bin 0.15.0: IRCCloud Desktop Client
 net-irc/ircii 20190117: An IRC and ICB client that runs under most UNIX platforms
 net-irc/ircmap 0.99-r1: Scripts to treate diagrams of IRC networks using the LINKS command
 net-irc/ircstats 1.2: IRCStats is a Linux log analyzer
-net-irc/irker 2.18-r2: Submission tools for IRC notifications
+net-irc/irker 2.18-r2 2.19: Submission tools for IRC notifications
 net-irc/iroffer-dinoex 3.30-r1 3.31 3.32: IRC fileserver using DCC
 net-irc/irssi 1.2.2 9999: A modular textUI IRC client with IPv6 support
 net-irc/irssi-xmpp 0.53 0.54: An irssi plugin providing Jabber/XMPP support
