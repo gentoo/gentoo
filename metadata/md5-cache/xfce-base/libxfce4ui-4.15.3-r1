@@ -12,4 +12,4 @@ REQUIRED_USE=vala? ( introspection )
 SLOT=0
 SRC_URI=https://archive.xfce.org/src/xfce/libxfce4ui/4.15/libxfce4ui-4.15.3.tar.bz2
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vala	5b72a65a36d681d65aef5f7b4b8b2cb6	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=c4d0548d9d7613f2d06046c294a209aa
+_md5_=00e5eec25dfc446c9407eab51d03bf2f
