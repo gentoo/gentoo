@@ -47,5 +47,5 @@ src_install() {
 
 	# Provide our own service file (copy of upstream) due to paths being different from upstream, 
 	# 728470
-	systemd_dounit "${FILESDIR}"/lxcfs.service
+	systemd_newunit "${FILESDIR}"/lxcfs-4.0.0.service lxcfs.service
 }
