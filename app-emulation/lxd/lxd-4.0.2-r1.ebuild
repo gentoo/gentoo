@@ -202,7 +202,6 @@ pkg_postinst() {
 	elog "including a Quick Start."
 	elog
 	elog "Optional features:"
-	optfeature "apparmor support" app-emulation/lxc[apparmor]
 	optfeature "btrfs storage backend" sys-fs/btrfs-progs
 	optfeature "lvm2 storage backend" sys-fs/lvm2
 	optfeature "zfs storage backend" sys-fs/zfs
