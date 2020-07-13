@@ -9,7 +9,7 @@ SRC_URI="https://www.colm.net/files/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc64 ~s390 ~x86 ~amd64-linux ~x86-linux"
 
 BDEPEND="app-text/asciidoc"
 
