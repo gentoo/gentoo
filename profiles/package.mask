@@ -388,12 +388,6 @@ app-mobilephone/kannel-sqlbox
 dev-lang/ruby:2.4
 dev-ruby/did_you_mean:2.4
 
-# Mikle Kolyada <zlogene@gentoo.org> (2020-06-13)
-# multiple forks.
-# Merged into the app-text/texlive-core package
-# Removal in 30 days.
-app-text/xindy
-
 # Jonas Stein <jstein@gentoo.org> (2020-06-07)
 # Last rite unusable package.
 # Removal after 2020-08-01
