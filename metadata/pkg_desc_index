@@ -1708,7 +1708,7 @@ app-emulation/simh 3.11.1: a simulator for historical computers such as Vax, PDP
 app-emulation/simplevirt 0.0_p20181012-r1: Simple virtual machine manager for Linux (QEMU/KVM)
 app-emulation/ski 1.3.2-r4: ia64 instruction set simulator
 app-emulation/skopeo 0.1.41 0.2.0 1.1.0: Command line utility foroperations on container images and image repositories
-app-emulation/slirp4netns 1.0.1 1.1.1 1.1.3: User-mode networking for unprivileged network namespaces
+app-emulation/slirp4netns 1.0.1 1.1.1 1.1.3 1.1.4: User-mode networking for unprivileged network namespaces
 app-emulation/softgun 0.21 0.22: ARM software emulator
 app-emulation/spectemu 0.99.3-r1: 48k ZX Spectrum Emulator
 app-emulation/spice 0.14.3 9999: SPICE server
@@ -16942,7 +16942,7 @@ sys-boot/netboot 0.10.2-r1: Allows to remote boot a computer over an IP network
 sys-boot/nettrom 2.3.3: NetWinder ARM bootloader and utilities
 sys-boot/os-prober 1.77: Utility to detect other OSs on a set of drives
 sys-boot/palo 2.12-r1 2.13 2.14 9999: PALO : PArisc Linux Loader
-sys-boot/plymouth 0.9.3-r1 0.9.3-r2 0.9.4-r1 0.9.5 9999: Graphical boot animation (splash) and logger
+sys-boot/plymouth 0.9.3-r1 0.9.3-r2 0.9.4-r1 0.9.5-r1 9999: Graphical boot animation (splash) and logger
 sys-boot/plymouth-openrc-plugin 0.1.3: Plymouth plugin for OpenRC
 sys-boot/raspberrypi-firmware 1.20190215 1.20190709 1.20190925 9999: Raspberry Pi (all versions) bootloader and GPU firmware
 sys-boot/refind 0.11.4 0.12.0: The UEFI Boot Manager by Rod Smith
