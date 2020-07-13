@@ -495,6 +495,6 @@ src_install() {
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		einfo "In order to use chronograf, you will need to configure"
-		einfo "the appropriate options in ${EROOT}etc/conf.d/chronograf"
+		einfo "the appropriate options in ${EROOT}/etc/conf.d/chronograf"
 	fi
 }
