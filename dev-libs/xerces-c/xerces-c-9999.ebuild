@@ -75,6 +75,7 @@ src_configure() {
 	# for interix maybe: transcoder="windows"
 
 	local mycmakeargs=(
+		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
 		-Dnetwork-accessor="${netaccessor}"
 		-Dmessage-loader="${msgloader}"
 		-Dtranscoder="${transcoder}"
