@@ -405,11 +405,6 @@ app-misc/ifp-line
 # regarding runstatedir (not using /run).
 =net-misc/networkmanager-1.22.10-r11
 
-# Michał Górny <mgorny@gentoo.org> (2020-06-05)
-# Replaced by dev-util/ydiff, after upstream rename.
-# Removal in 30 days.  Bug #710538.
-dev-util/cdiff
-
 # Stefan Strogin <steils@gentoo.org> (2020-06-03)
 # Masked for testing
 >=dev-libs/libressl-3.2.0
