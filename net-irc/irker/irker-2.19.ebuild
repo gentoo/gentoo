@@ -46,7 +46,7 @@ src_prepare() {
 src_install() {
 	default
 
-	python_doscript "${ED%/}/usr/bin/irkerd"
+	python_doscript "${ED}/usr/bin/irkerd"
 	# Not installed with the default Makefile
 	python_doscript irk irkerhook.py
 
