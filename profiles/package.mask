@@ -414,8 +414,6 @@ dev-util/cdiff
 # Multiple vulnerabilities (Bug #655176, Bug #701812)
 # Misc. other bugs, out of date, no maintainer.
 # Masked for removal in 30 days.
-net-nds/389-ds-base
-dev-libs/389-adminutil
 dev-libs/svrcore
 
 # Stefan Strogin <steils@gentoo.org> (2020-06-03)
