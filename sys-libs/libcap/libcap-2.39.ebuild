@@ -27,8 +27,8 @@ DEPEND="${RDEPEND}
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.34-build-system-fixes.patch
-	"${FILESDIR}"/${PN}-2.28-no_perl.patch
+	"${FILESDIR}"/${PN}-2.39-build-system-fixes.patch
+	"${FILESDIR}"/${PN}-2.38-no_perl.patch
 	"${FILESDIR}"/${PN}-2.25-ignore-RAISE_SETFCAP-install-failures.patch
 	"${FILESDIR}"/${PN}-2.21-include.patch
 )
