@@ -431,7 +431,6 @@ dev-python/dnslib
 # py2 only. dead upstream. m-n.
 # Masked for removal in 30 days
 app-misc/webcomics-collector
-net-misc/pytvshows
 
 # Jonas Stein <jstein@gentoo.org> (2020-06-01)
 # Last rite package due to missing/unclear license.
