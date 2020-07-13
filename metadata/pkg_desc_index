@@ -4938,7 +4938,7 @@ dev-libs/gf-complete 0.0.0 2.0.0 2.0.0-r1: A Comprehensive Open Source Library f
 dev-libs/gf2x 1.3.0: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.3.3 0.3.4 9999: UI library that focuses on simplicity and minimalism
 dev-libs/gjs 1.58.6 1.58.8 1.64.4: Javascript bindings for GNOME
-dev-libs/glib 2.62.6 2.64.3: The GLib library of C routines
+dev-libs/glib 2.62.6 2.64.4: The GLib library of C routines
 dev-libs/gmime 2.6.23-r1 3.2.7: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 6.2.0-r1: Library for arbitrary-precision arithmetic on different type of numbers
 dev-libs/gnulib 2019.03.17.09.24.57 9999-r1: Gnulib is a library of common routines intended to be shared at the source level
@@ -5872,7 +5872,7 @@ dev-perl/DBIx-Class-InflateColumn-IP 0.20.30-r1 0.20.30-r2: Auto-create NetAddr:
 dev-perl/DBIx-Class-InflateColumn-Object-Enum 0.60.0: Allows a DBIx::Class user to define a Object::Enum column
 dev-perl/DBIx-Class-UserStamp 0.110.0-r1 0.110.0-r2: Automatically set update and create user id fields
 dev-perl/DBIx-ContextualFetch 1.30.0-r1 1.30.0-r2: Add contextual fetches to DBI
-dev-perl/DBIx-DBSchema 0.450.0: Database-independent schema objects
+dev-perl/DBIx-DBSchema 0.450.0 0.450.0-r1: Database-independent schema objects
 dev-perl/DBIx-Migration 0.70.0: Seamless DB schema up- and downgrades
 dev-perl/DBIx-Safe 1.2.5-r1: Safer access to your database through a DBI database handle
 dev-perl/DBIx-SearchBuilder 1.670.0: Encapsulate SQL queries and rows in simple Perl objects
@@ -10362,7 +10362,7 @@ dev-util/ftjam 2.5.3_rc2-r2: A 100% compatible, enhanced implementation of the m
 dev-util/ftnchek 3.3.1-r2: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6-r1: Stress-tests programs by giving them random input
 dev-util/gcovr 4.2: A Python script for summarizing gcov data
-dev-util/gdbus-codegen 2.62.6 2.64.3: GDBus code and documentation generator
+dev-util/gdbus-codegen 2.62.6 2.64.4: GDBus code and documentation generator
 dev-util/geany 1.36 9999: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.36-r2: A collection of different plugins for Geany
 dev-util/gengetopt 2.23: A tool to write command line option parsing code for C programs
@@ -10370,7 +10370,7 @@ dev-util/gertty 1.6.0-r1 9999: Gertty is a console-based interface to the Gerrit
 dev-util/github-cli 0.8.0 0.9.0-r1 0.10.1 9999: GitHub CLI
 dev-util/gitlab-ci-linter 2.2.0: linter for .gitlab-ci.yml files
 dev-util/glade 3.22.2: A user interface designer for GTK+ and GNOME
-dev-util/glib-utils 2.62.6 2.64.3: Build utilities for GLib using projects
+dev-util/glib-utils 2.62.6 2.64.4: Build utilities for GLib using projects
 dev-util/global 6.3.1 6.5.7 6.6.4: tag system to find an object location in various sources
 dev-util/glslang 7.12.3353_pre20191027-r2 8.13.3559 8.13.3560_pre20200404 8.13.3743-r1 9999: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
 dev-util/gn 0.1463 0.1726: GN is a meta-build system that generates build files for Ninja
@@ -16994,7 +16994,7 @@ sys-cluster/kubeadm 1.15.10 1.15.11 1.15.12 1.16.7 1.16.8 1.17.3 1.17.4: CLI to 
 sys-cluster/kubectl 1.15.10 1.15.11 1.15.12 1.16.7 1.16.8 1.17.3 1.17.4: CLI to run commands against Kubernetes clusters
 sys-cluster/kubelet 1.15.10 1.15.11 1.15.12 1.16.7 1.16.8 1.17.3 1.17.4: Kubernetes Node Agent
 sys-cluster/kubeletctl 1.2 1.5: A client for kubelet
-sys-cluster/kubernetes 1.16.11 1.16.12 1.17.7 1.17.8 1.18.4 1.18.5: production-grade container orchestration
+sys-cluster/kubernetes 1.16.11 1.16.11-r1 1.16.12 1.16.12-r1 1.17.7 1.17.7-r1 1.17.8 1.17.8-r1 1.18.4 1.18.4-r1 1.18.5 1.18.5-r1: production-grade container orchestration
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18.05.0 18.12.0 19.06.0 9999: A data-centric parallel programming system
 sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1 0.3.0: API for distributing embarrassingly parallel workloads using self-stabilization
 sys-cluster/libqb 0.17.2 1.0.1 1.0.5 1.9.0: Library providing high performance logging, tracing, ipc, and poll
