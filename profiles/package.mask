@@ -422,11 +422,6 @@ dev-libs/svrcore
 # Masked for testing
 >=dev-libs/libressl-3.2.0
 
-# Michał Górny <mgorny@gentoo.org> (2020-06-03)
-# Very bad quality (upstream) package.  Stuck on py3.6.  No revdeps.
-# Removal in 30 days.  Bug #718762.
-dev-python/dnslib
-
 # Jonas Stein <jstein@gentoo.org> (2020-06-01)
 # Last rite package due to missing/unclear license.
 # Removal after 2020-08-01
