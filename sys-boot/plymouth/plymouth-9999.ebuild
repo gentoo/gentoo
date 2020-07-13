@@ -98,6 +98,9 @@ src_install() {
 	# this is not needed for systemd, same should hold for openrc
 	# so remove
 	rm -rf "${D}"/var/run
+
+	# fix broken symlink
+	dosym ../../bizcom.png /usr/share/plymouth/themes/spinfinity/header-image.png
 }
 
 pkg_postinst() {
