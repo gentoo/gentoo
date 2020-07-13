@@ -33,6 +33,10 @@ BDEPEND="dev-lang/perl
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-kb-shortcut.patch
+)
+
 src_prepare() {
 	# stupid vala.eclass...
 	default
