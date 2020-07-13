@@ -1,8 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python3_6 )
+EAPI=7
+PYTHON_COMPAT=( python3_{6,7,8} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -20,11 +21,13 @@ HOMEPAGE="https://github.com/wraeth/kcheck"
 LICENSE="MIT"
 SLOT="0"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="dev-python/configargparse[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/configargparse[${PYTHON_USEDEP}]
+	sys-apps/portage[${PYTHON_USEDEP}]"
 
 src_install() {
 	distutils-r1_src_install
-	mkdir "${D}"etc || die
-	mv -v "${D}"{usr/,}etc/kcheck.conf || die
+	mkdir "${D}"/etc || die
+	mv -v "${D}"/{usr/,}etc/kcheck.conf || die
+	rmdir -v "${D}"/usr/etc || die
 }
