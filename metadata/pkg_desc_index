@@ -2439,7 +2439,7 @@ app-pda/pilot-link 0.12.5-r2: Suite of tools for moving data between a Palm devi
 app-pda/usbmuxd 1.1.0 1.1.1_pre20200121: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-portage/cfg-update 1.8.9: Easy to use GUI & CLI alternative for etc-update
 app-portage/conf-update 1.0.3-r1: conf-update is a ncurses-based config management utility
-app-portage/cpuid2cpuflags 1 9 10 9999: Tool to guess CPU_FLAGS_* flags for the host
+app-portage/cpuid2cpuflags 1 9 10 11 9999: Tool to guess CPU_FLAGS_* flags for the host
 app-portage/deltup 0.4.6-r1: Delta-Update - patch system for updating source-archives.
 app-portage/demerge 0.047-r3: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r4 9999: A utility to maintain package.unmask entries up-to-date with masks
@@ -17688,7 +17688,7 @@ www-apache/mod_extract_forwarded 2.0.3_pre2015052015: Rewrites X-Forwarded-For t
 www-apache/mod_fastcgi_handler 0.6-r1: A simple FastCGI handler module
 www-apache/mod_fcgid 2.3.9-r1: Binary-compatible alternative to mod_fastcgi with better process management
 www-apache/mod_gnutls 0.8.2-r1 0.8.4 0.9.0: mod_gnutls uses GnuTLS for SSL/TLS encryption in Apache2 (compare to mod_ssl)
-www-apache/mod_h2 1.15.7 1.15.8 1.15.9 1.15.10 1.15.11 1.15.12 9999: HTTP/2 module for Apache
+www-apache/mod_h2 1.15.7 1.15.8 1.15.9 1.15.10 1.15.11 1.15.12 1.15.13 9999: HTTP/2 module for Apache
 www-apache/mod_jk 1.2.42: JK module for connecting Tomcat and Apache using the ajp13 protocol
 www-apache/mod_ldap_userdir 1.1.19: Look up Apache ~user directories in an LDAP directory
 www-apache/mod_limitipconn 0.24-r3: Limit the number of simultaneous apache connections
