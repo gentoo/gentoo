@@ -440,15 +440,6 @@ net-news/rawdog
 # Bug 687664
 app-dicts/stardict-quick-eng-fra
 
-# Michał Górny <mgorny@gentoo.org> (2020-06-01)
-# Effectively unmaintained, Python 2 only game and its dependencies.
-# Removal in 30 days.
-games-action/slune
-dev-python/editobj
-dev-python/py2play
-dev-python/pyopenal
-dev-python/soya
-
 # Aaron W. Swenson <titanofold@gentoo.org> (2020-05-15)
 # PostgreSQL 9.4 series is EOL. Migrate your database cluster to a more recent
 # version.
