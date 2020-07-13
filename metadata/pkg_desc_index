@@ -17322,7 +17322,7 @@ sys-libs/libaal 1.0.7-r1: library required by reiser4progs
 sys-libs/libapparmor 2.13.4: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r2: Library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libblockdev 2.23-r1 2.24 9999: A library for manipulating block devices
-sys-libs/libcap 2.26-r2 2.27 2.36 2.37 2.38: POSIX 1003.1e capabilities
+sys-libs/libcap 2.26-r2 2.27 2.38 2.39: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.10: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.1.5_rc2: Library for accessing chip cards via chip card readers (terminals)
 sys-libs/libcxx 8.0.1 9.0.1 10.0.0 10.0.1_rc1 10.0.1_rc2 10.0.1_rc3 10.0.1_rc4 10.0.1.9999 11.0.0.9999: New implementation of the C++ standard library, targeting C++11
