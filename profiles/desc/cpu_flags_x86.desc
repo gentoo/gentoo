@@ -21,6 +21,7 @@ mmxext - Use the Extended MMX instruction set (a subset of SSE) ([mmxext] or [ss
 padlock - Use VIA padlock instructions ([phe] in cpuinfo)
 pclmul - Use Carry-less Multiplication instructions ([pclmulqdq] in cpuinfo)
 popcnt - Enable popcnt instruction support ([abm] or [popcnt] in cpuinfo)
+rdrand - Use the RDRAND instruction for generating random numbers
 sha - Use the SHA-NI instruction set
 sse - Use the SSE instruction set
 sse2 - Use the SSE2 instruction set
