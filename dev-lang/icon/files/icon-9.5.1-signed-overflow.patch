@@ -1,0 +1,40 @@
+diff --git a/src/runtime/rlrgint.r b/src/runtime/rlrgint.r
+index ec1aaa4..826e8ca 100644
+--- a/src/runtime/rlrgint.r
++++ b/src/runtime/rlrgint.r
+@@ -1824,7 +1824,7 @@ word i;
+    if (i > 0) {
+       /* scan bits left to right.  skip leading 1. */
+       while (--n >= 0)
+-         if (i & ((word)1 << n))
++         if (i & ((uword)1 << n))
+ 	    break;
+       /* then, for each zero, square the partial result;
+          for each one, square it and multiply it by a */
+@@ -1832,7 +1832,7 @@ word i;
+       while (--n >= 0) {
+          if (bigmul(dx, dx, dx) == Error)
+ 	    return Error;
+-         if (i & ((word)1 << n))
++         if (i & ((uword)1 << n))
+             if (bigmul(dx, da, dx) == Error)
+ 	       return Error;
+          }
+@@ -1880,7 +1880,7 @@ dptr dx;
+ 
+       /* scan bits left to right.  skip leading 1. */
+       while (--n >= 0)
+-         if (i & ((word)1 << n))
++         if (i & ((uword)1 << n))
+ 	    break;
+       /* then, for each zero, square the partial result;
+          for each one, square it and multiply it by a */
+@@ -1901,7 +1901,7 @@ dptr dx;
+                isbig = (Type(*dx) == T_Lrgint);
+                }
+             }
+-         if (i & ((word)1 << n)) {
++         if (i & ((uword)1 << n)) {
+             if (isbig) {
+                if (bigmuli(dx, a, dx) == Error)
+ 		  return Error;

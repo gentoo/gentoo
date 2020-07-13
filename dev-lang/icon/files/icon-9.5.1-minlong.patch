@@ -1,0 +1,25 @@
+diff --git a/src/runtime/cnv.r b/src/runtime/cnv.r
+index 5661deb..4dea391 100644
+--- a/src/runtime/cnv.r
++++ b/src/runtime/cnv.r
+@@ -686,7 +686,6 @@ char *s;
+    {
+    register char *p;
+    long ival;
+-   static char *maxneg = MaxNegInt;
+ 
+    p = s + MaxCvtLen - 1;
+    ival = num;
+@@ -698,9 +697,9 @@ char *s;
+ 	 ival /= 10L;
+ 	 } while (ival != 0L);
+    else {
+-      if (ival == -ival) {      /* max negative value */
+-	 p -= strlen (maxneg);
+-	 sprintf (p, "%s", maxneg);
++      if (ival == MinLong) {
++	 p -= strlen (MaxNegInt);
++	 sprintf (p, MaxNegInt);
+          }
+       else {
+ 	ival = -ival;

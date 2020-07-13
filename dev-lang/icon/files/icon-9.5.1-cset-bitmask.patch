@@ -1,0 +1,19 @@
+diff --git a/src/h/rmacros.h b/src/h/rmacros.h
+index 7fdce7f..a5bfe37 100644
+--- a/src/h/rmacros.h
++++ b/src/h/rmacros.h
+@@ -213,12 +213,12 @@
+ /*
+  * Set bit b in cset c.
+  */
+-#define Setb(b,c)	(*CsetPtr(b,c) |= (01 << CsetOff(b)))
++#define Setb(b,c)	(*CsetPtr(b,c) |= (1u << CsetOff(b)))
+ 
+ /*
+  * Test bit b in cset c.
+  */
+-#define Testb(b,c)	((*CsetPtr(b,c) >> CsetOff(b)) & 01)
++#define Testb(b,c)	((*CsetPtr(b,c) >> CsetOff(b)) & 1u)
+ 
+ /*
+  * Check whether a set or table needs resizing.

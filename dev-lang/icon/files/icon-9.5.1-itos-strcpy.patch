@@ -1,0 +1,15 @@
+diff --git a/src/runtime/cnv.r b/src/runtime/cnv.r
+index 4dea391..ec67254 100644
+--- a/src/runtime/cnv.r
++++ b/src/runtime/cnv.r
+@@ -698,8 +698,8 @@ char *s;
+ 	 } while (ival != 0L);
+    else {
+       if (ival == MinLong) {
+-	 p -= strlen (MaxNegInt);
+-	 sprintf (p, MaxNegInt);
++         p -= strlen(MaxNegInt);
++         strcpy(p, MaxNegInt);
+          }
+       else {
+ 	ival = -ival;
