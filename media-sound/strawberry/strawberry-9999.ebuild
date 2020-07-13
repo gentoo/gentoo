@@ -5,7 +5,7 @@ EAPI=7
 
 inherit cmake flag-o-matic l10n virtualx xdg
 
-PLOCALES="de es fr id it nb ru"
+PLOCALES="cs de es fr hu id it ko nb pl ru"
 
 DESCRIPTION="Modern music player and library organizer based on Clementine and Qt"
 HOMEPAGE="https://www.strawbs.org/"
