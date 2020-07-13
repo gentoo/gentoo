@@ -32,6 +32,23 @@
 
 #--- END OF EXAMPLES ---
 
+# William Hubbs <williamh@gentoo.org> (2020-07-14)
+# The kubernetes split packages are old versions with known security
+# issues.
+#
+#If you haven't already, please upgrade and migrate to sys-cluster/kubernetes:
+#
+# https://www.gentoo.org/support/news-items/2020-04-03-kubernetes-moving-to-single-package.html
+#
+# Removal in 60 days. Bug #731804
+sys-cluster/kubeadm
+sys-cluster/kube-apiserver
+sys-cluster/kube-controller-manager
+sys-cluster/kubectl
+sys-cluster/kubelet
+sys-cluster/kube-proxy
+sys-cluster/kube-scheduler
+
 # Michał Górny <mgorny@gentoo.org> (2020-07-13)
 # These packages are mid-profile Python 2-only dependencies
 # of dev-python/pillow.  Since the last Pillow version to support
