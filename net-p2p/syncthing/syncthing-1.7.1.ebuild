@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit go-module systemd xdg-utils
+inherit desktop go-module systemd xdg-utils
 
 EGO_SUM=(
 	"cloud.google.com/go v0.26.0/go.mod"
@@ -538,6 +538,7 @@ src_install() {
 	einstalldocs
 
 	dobin bin/syncthing
+	domenu etc/linux-desktop/*.desktop
 	if use tools ; then
 		exeinto /usr/libexec/syncthing
 		local exe
@@ -572,4 +573,12 @@ src_install() {
 		newins "${FILESDIR}/stdiscosrv.logrotate" strelaysrv
 		newins "${FILESDIR}/strelaysrv.logrotate" strelaysrv
 	fi
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
