@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-07-13)
+# Unmaintained.  Last release from 2018, still does not support py3.
+# Removal in 30 days.  Bug #732352.
+app-mobilephone/wammu
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2020-07-11)
 # Fails to build with recent glibc, bug 719968
 # Removal in 30 days
