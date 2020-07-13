@@ -13815,7 +13815,7 @@ media-video/recordmydesktop 0.3.8.1-r6: A desktop session recorder producing Ogg
 media-video/rovclock 0.6e-r1: Overclocking utility for ATI Radeon cards
 media-video/rtmpdump 2.4_p20161210-r3 9999: RTMP client intended to stream audio or video flash content
 media-video/setpwc 1.3: Control various aspects of Philips (and compatible) webcams
-media-video/shotcut 19.12.31: A free, open source, cross-platform video editor
+media-video/shotcut 19.12.31 20.06.28: A free, open source, cross-platform video editor
 media-video/shrip 0.6.0-r1: Command line tool for ripping DVDs and encoding to AVI/OGM/MKV/MP4
 media-video/simplescreenrecorder 0.4.1 0.4.2 9999: A Simple Screen Recorder
 media-video/smplayer 20.4.2 20.6.0: Great Qt GUI front-end for mplayer/mpv
@@ -15090,7 +15090,7 @@ net-p2p/qbittorrent 4.2.1 4.2.3 4.2.5 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
 net-p2p/retroshare 0.6.5: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
-net-p2p/syncthing 1.3.4-r1 1.4.2 1.5.0 1.6.1 1.7.0: Open Source Continuous File Synchronization
+net-p2p/syncthing 1.3.4-r1 1.4.2 1.5.0 1.6.1 1.7.1: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6-r1 1.8.6-r2: A torrent file parser
 net-p2p/transmission 2.94-r1 3.00-r1 9999: A fast, easy, and free BitTorrent client

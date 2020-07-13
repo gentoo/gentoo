@@ -275,8 +275,8 @@ app-backup/duplicity:s3 - Support for backing up to the Amazon S3 system
 app-backup/rear:udev - Have ReaR start backup when attaching your USB drive.
 app-backup/snapper:lvm - Enable LVM thinprovisioned snapshots support sys-fs/lvm2
 app-backup/snapper:xattr - Add support for getting and setting POSIX extended attributes, through sys-apps/attr.
-app-backup/tsm:tsm_cit - IBM Tivoli Common Inventory Technology
-app-backup/tsm:tsm_hw - Difference snapshot support for NetApp and N-Series file servers
+app-backup/tsm:tsm-cit - IBM Tivoli Common Inventory Technology
+app-backup/tsm:tsm-hw - Difference snapshot support for NetApp and N-Series file servers
 app-backup/zbackup:tartool - Install tartool utility
 app-benchmarks/filebench:auto-completion - Enable command-line autocompletion using dev-libs/libtecla
 app-benchmarks/httperf:idleconn - Build with the idleconn program
