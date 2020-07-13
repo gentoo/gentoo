@@ -427,11 +427,6 @@ dev-libs/svrcore
 # Removal in 30 days.  Bug #718762.
 dev-python/dnslib
 
-# Aaron Bauman <bman@gentoo.org> (2020-06-02)
-# py2 only. dead upstream. m-n.
-# Masked for removal in 30 days
-app-misc/webcomics-collector
-
 # Jonas Stein <jstein@gentoo.org> (2020-06-01)
 # Last rite package due to missing/unclear license.
 # Removal after 2020-08-01
