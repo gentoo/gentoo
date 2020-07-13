@@ -14942,7 +14942,7 @@ net-misc/seafile-client 6.2.11 7.0.2 7.0.4 7.0.5: Seafile desktop client
 net-misc/secpanel 0.6.1-r1: Graphical frontend for managing and running SSH and SCP connections
 net-misc/selfdhcp 0.2a-r1: a small stealth network autoconfigure software
 net-misc/ser2net 2.10.0: Serial To Network Proxy
-net-misc/sgopherd 17.09 18.08: Small Gopher Server written in GNU Bash
+net-misc/sgopherd 18.08: Small Gopher Server written in GNU Bash
 net-misc/shigofumi 0.3-r1 9999: Command line client for ISDS
 net-misc/shmux 1.0.2 1.0.2-r1: run the same command across many hosts in parallel
 net-misc/sipcalc 1.1.6: Sipcalc is an advanced console-based IP subnet calculator
