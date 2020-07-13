@@ -28,7 +28,6 @@ networkmanager
 ocamlopt
 
 # not tested on ppc64
-capi
 xmms2
 
 # dietlibc
