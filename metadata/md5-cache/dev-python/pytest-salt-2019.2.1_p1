@@ -1,0 +1,15 @@
+BDEPEND=python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-python/setuptools[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] >=dev-python/pytest-2.8.1[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] >=dev-python/psutil-4.2.0[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
+DESCRIPTION=PyTest Salt Plugin
+EAPI=7
+HOMEPAGE=https://github.com/saltstack/pytest-salt
+IUSE=python_targets_python3_6
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=dev-python/setuptools[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] >=dev-python/pytest-2.8.1[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] >=dev-python/psutil-4.2.0[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
+REQUIRED_USE=|| ( python_targets_python3_6 )
+SLOT=0
+SRC_URI=mirror://pypi/p/pytest-salt/pytest-salt-2019.2.1.post1.tar.gz
+_eclasses_=distutils-r1	0dda1d9008ac0b2530588115a772d99d	multibuild	b2c915190b051f55a23b9354b9849847	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	79e26ce8f853c9daebe9a4956e37cc1b	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=27fb52299b91b1ed4440ceca4026fe88

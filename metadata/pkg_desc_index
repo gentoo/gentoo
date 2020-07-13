@@ -587,7 +587,7 @@ app-admin/rex 1.9.0 1.10.0 1.11.0 9999: (R)?ex, the friendly automation framewor
 app-admin/rsyslog 8.1911.0-r1 8.2004.0 8.2006.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 0.2.3-r1 1.0.0_rc3 1.0.0_rc3-r1: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
-app-admin/salt 3000.2-r4 3000.3: Salt is a remote execution and configuration manager
+app-admin/salt 2019.2.5-r1 3000.2-r4 3000.3: Salt is a remote execution and configuration manager
 app-admin/serf 0.8.1-r1: Service orchestration and management tool
 app-admin/setools 4.2.1 4.2.2 9999: Policy Analysis Tools for SELinux
 app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
@@ -8472,7 +8472,7 @@ dev-python/pytest-pylint 0.14.1: pytest plugin to check source code with pylint
 dev-python/pytest-qt 3.3.0: pytest plugin for PyQt4 or PyQt5 applications
 dev-python/pytest-rerunfailures 8.0: pytest plugin to re-run tests to eliminate flaky failures
 dev-python/pytest-runner 5.2: Adds support for tests during installation of setup.py files
-dev-python/pytest-salt 2020.1.27: PyTest Salt Plugin
+dev-python/pytest-salt 2019.2.1_p1 2020.1.27: PyTest Salt Plugin
 dev-python/pytest-services 2.0.1 2.1.0: Collection of fixtures and utility functions to run service processes for pytest
 dev-python/pytest-shutil 1.7.0-r1: A goodie-bag of unix shell and environment tools for py.test
 dev-python/pytest-subtesthack 0.1.1: A hack for test fixtures, needed for hypothesis inside py.test
