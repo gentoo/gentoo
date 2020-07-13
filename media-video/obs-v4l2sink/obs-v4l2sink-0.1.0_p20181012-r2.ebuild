@@ -26,6 +26,10 @@ RDEPEND="${DEPEND}"
 BDEPEND=""
 PDEPEND="media-video/v4l2loopback"
 
+PATCHES=(
+	"${FILESDIR}/${P}-installdirs.patch"
+)
+
 src_prepare() {
 	sed -i -e '/include(external\/FindLibObs.cmake)/d' -e 's#../UI#UI#' CMakeLists.txt
 	cmake_src_prepare
