@@ -14,13 +14,14 @@ if [[ "${PV}" == 9999 ]] ; then
 	EGIT_REPO_URI="git://git.claws-mail.org/claws.git"
 else
 	SRC_URI="https://www.claws-mail.org/download.php?file=releases/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 SLOT="0"
 LICENSE="GPL-3"
 
-IUSE="archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls +imap ipv6 ldap +libcanberra +libindicate +libnotify networkmanager nls nntp +notification pda pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
+IUSE="archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls +imap ipv6 ldap +libcanberra +libindicate +libnotify litehtml networkmanager nls nntp +notification pda pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
+
 REQUIRED_USE="libcanberra? ( notification )
 	libindicate? ( notification )
 	libnotify? ( notification )
@@ -55,6 +56,12 @@ COMMONDEPEND="
 	gnutls? ( >=net-libs/gnutls-3.0 )
 	imap? ( >=net-libs/libetpan-0.57 )
 	ldap? ( >=net-nds/openldap-2.0.7 )
+	litehtml? (
+		>=dev-libs/glib-2.36:2
+		>=dev-libs/gumbo-0.10
+		net-misc/curl
+		media-libs/fontconfig
+	)
 	nls? ( >=sys-devel/gettext-0.18 )
 	nntp? ( >=net-libs/libetpan-0.57 )
 	notification? (
@@ -72,17 +79,19 @@ COMMONDEPEND="
 	)
 	smime? ( >=app-crypt/gpgme-1.0.0 )
 	spam-report? ( >=net-misc/curl-7.9.7 )
-	spell? ( >=app-text/enchant-1.0.0:0= )
+	spell? ( >=app-text/enchant-2.0.0:2= )
 	startup-notification? ( x11-libs/startup-notification )
 	svg? ( >=gnome-base/librsvg-2.40.5 )
 	valgrind? ( dev-util/valgrind )
 "
 
 DEPEND="${COMMONDEPEND}
+	xface? ( >=media-libs/compface-1.4 )
+"
+BDEPEND="
 	app-arch/xz-utils
 	virtual/pkgconfig
-	xface? ( >=media-libs/compface-1.4 )"
-
+"
 RDEPEND="${COMMONDEPEND}
 	app-misc/mime-types
 	x11-misc/shared-mime-info
@@ -97,7 +106,12 @@ RDEPEND="${COMMONDEPEND}
 	rss? (
 		dev-libs/libxml2
 		net-misc/curl
-	)"
+	)
+"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-3.17.5-enchant-2_default.patch"
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -138,6 +152,7 @@ src_configure() {
 		$(use_enable gnutls)
 		$(use_enable ipv6)
 		$(use_enable ldap)
+		$(use_enable litehtml litehtml_viewer-plugin)
 		$(use_enable networkmanager)
 		$(use_enable nls)
 		$(use_enable notification notification-plugin)
@@ -200,18 +215,10 @@ src_install() {
 	rm -f "${ED}"/usr/lib*/claws-mail/plugins/*.{a,la}
 }
 
-pkg_preinst() {
-	xdg_pkg_preinst
-}
-
 pkg_postinst() {
 	ewarn "When upgrading from version 3.9.0 or below some changes have happened:"
 	ewarn "- There are no individual plugins in mail-client/claws-mail-* anymore, but they are integrated mostly controlled through USE flags"
 	ewarn "- Plugins with no special dependencies are just built and can be loaded through the interface"
 	ewarn "- The gtkhtml2 and trayicon plugins have been dropped entirely"
 	xdg_pkg_postinst
-}
-
-pkg_postrm() {
-	xdg_pkg_postrm
 }
