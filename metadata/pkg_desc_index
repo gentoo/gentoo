@@ -5880,10 +5880,10 @@ dev-perl/DBIx-DBSchema 0.450.0 0.450.0-r1: Database-independent schema objects
 dev-perl/DBIx-Migration 0.70.0 0.70.0-r1: Seamless DB schema up- and downgrades
 dev-perl/DBIx-Safe 1.2.5-r1 1.2.5-r2: Safer access to your database through a DBI database handle
 dev-perl/DBIx-SearchBuilder 1.670.0 1.680.0: Encapsulate SQL queries and rows in simple Perl objects
-dev-perl/DBIx-Simple 1.350.0-r1: Very complete easy-to-use OO interface to DBI
-dev-perl/DB_File-Lock 0.50.0-r1: Locking with flock wrapper for DB_File
+dev-perl/DBIx-Simple 1.350.0-r1 1.370.0: Very complete easy-to-use OO interface to DBI
+dev-perl/DB_File-Lock 0.50.0-r1 0.50.0-r2: Locking with flock wrapper for DB_File
 dev-perl/Daemon-Generic 0.850.0: Framework to provide start/stop/reload for a daemon
-dev-perl/Danga-Socket 1.610.0-r1: A non-blocking socket object; uses epoll()
+dev-perl/Danga-Socket 1.610.0-r1 1.620.0: A non-blocking socket object; uses epoll()
 dev-perl/Data-AMF 0.90.0-r1: (de)serializer perl module for Adobe's AMF (Action Message Format)
 dev-perl/Data-Buffer 0.40.0-r1: Read/write buffer class
 dev-perl/Data-Compare 1.250.0: Compare perl data structures
