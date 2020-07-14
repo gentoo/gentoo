@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Christoph Junghans <junghans@gentoo.org> (14 Jul 2020)
+# Unmaintained upstream and does not support systemd or firewalld. 
+# Please use net-analyzer/fail2ban instead. (bug #732076)
+# Removal in 30 days.
+app-admin/denyhosts
+
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # Icons look funny. E.g., the X (close) icon is wrong. I suspect files are
 # installed incorrectly
