@@ -17785,7 +17785,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.4.2: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 83.0.4103.116 84.0.4147.85 85.0.4183.15: Open-source version of Google Chrome web browser
+www-client/chromium 83.0.4103.116 84.0.4147.89 85.0.4183.15: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r3 3.1_p20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6 3.34.4: GNOME webbrowser based on Webkit
