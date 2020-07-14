@@ -2174,7 +2174,7 @@ app-misc/go-jira 1.0.23: A simple JIRA commandline client in Go
 app-misc/golly 3.3-r1 3.3-r3: simulator for Conway's Game of Life and other cellular automata
 app-misc/goobook 3.4-r1: Access your Google contacts from the command line
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
-app-misc/gramps 5.1.2-r1: Genealogical Research and Analysis Management Programming System
+app-misc/gramps 5.1.2-r1 5.1.2-r2: Genealogical Research and Analysis Management Programming System
 app-misc/graphlcd-base 1.0.2: Contains the lowlevel lcd drivers for GraphLCD
 app-misc/grc 1.11-r1 1.11.3: Generic Colouriser beautifies your logfiles or output of commands
 app-misc/gtk-sunlight 0.4.2: Real-time Sunlight Wallpaper
@@ -14578,7 +14578,7 @@ net-libs/osptoolkit 4.13.0: Open Settlement Protocol development kit
 net-libs/pacparser 1.3.7-r1: Library to parse proxy auto-config files
 net-libs/phodav 2.2: WebDav server implementation using libsoup
 net-libs/pjproject 2.7.1-r1 2.7.2-r2 2.9-r2: Open source SIP, Media, and NAT Traversal Library
-net-libs/quiche 0.1.0_alpha4_p20190912 0.1.0-r1 0.2.0 0.3.0 0.4.0 9999: Implementation of the QUIC transport protocol and HTTP/3
+net-libs/quiche 0.1.0_alpha4_p20190912 0.1.0-r1 0.2.0 0.3.0 0.4.0 0.5.0 9999: Implementation of the QUIC transport protocol and HTTP/3
 net-libs/qxmpp 1.2.0 9999: A cross-platform C++ XMPP client library based on the Qt framework
 net-libs/rabbitmq-c 0.10.0: RabbitMQ C client
 net-libs/rest 0.8.1: Helper library for RESTful services
