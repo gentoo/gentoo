@@ -42,6 +42,7 @@ acct-group/dnsdist 0: A group for net-dns/dnsdist
 acct-group/dnsmasq 0: System group: dnsmasq
 acct-group/dnsmasq_exporter 0: System group: dnsmasq_exporter
 acct-group/docker 0: System group: docker
+acct-group/docker_auth 0: System group: docker_auth
 acct-group/dovecot 0: System group: dovecot
 acct-group/dovenull 0: System group: dovenull
 acct-group/elasticsearch 0: Elasticsearch program group
@@ -253,6 +254,7 @@ acct-user/dnscrypt-proxy 0: User for net-dns/dnscrypt-proxy
 acct-user/dnsdist 0: A user for net-dns/dnsdist
 acct-user/dnsmasq 0: User for net-dns/dnsmasq
 acct-user/dnsmasq_exporter 0: user for dnsmasq_exporter
+acct-user/docker_auth 0: User for docker_auth
 acct-user/dovecot 0: user for dovecot daemon
 acct-user/dovenull 0: user for dovecot daemon
 acct-user/duende 0: System user: duende
@@ -2619,7 +2621,7 @@ app-text/dvipng 1.15-r1: Translate DVI files into PNG or GIF graphics
 app-text/dvipsk 2020.1_p20200406: DVI-to-PostScript translator
 app-text/dvisvgm 2.1.3 2.6.1 2.7: Converts DVI files to SVG
 app-text/ebook-tools 0.2.2-r1: Tools for accessing and converting various ebook file formats
-app-text/editorconfig-core-c 0.12.1 0.12.2 0.12.3-r1: EditorConfig core library written in C
+app-text/editorconfig-core-c 0.12.1 0.12.2 0.12.3-r1 0.12.3-r2: EditorConfig core library written in C
 app-text/enchant 1.6.1-r1 2.2.8: Spellchecker wrapping library
 app-text/enscript 1.6.6: Powerful text-to-postscript converter
 app-text/epspdf 0.6.0-r1 0.6.3-r1: GUI and command-line converter for [e]ps and pdf
@@ -3228,7 +3230,7 @@ dev-cpp/libxmlpp 2.40.1 3.0.1: C++ wrapper for the libxml2 XML parser library
 dev-cpp/libxsd-frontend 2.0.0: A compiler frontend for the W3C XML Schema definition language
 dev-cpp/lucene++ 3.0.7-r1 3.0.7-r2: C++ port of Lucene library, a high-performance, full-featured text search engine
 dev-cpp/metslib 0.5.3: Metaheuristic modeling framework and optimization toolkit
-dev-cpp/mm-common 1.0.0: Build infrastructure and utilities for GNOME C++ bindings
+dev-cpp/mm-common 1.0.0 1.0.1: Build infrastructure and utilities for GNOME C++ bindings
 dev-cpp/ms-gsl 2.0.0 2.1.0 3.1.0 9999: Guideline Support Library implementation by Microsoft
 dev-cpp/muParser 2.2.5 2.2.6.1: Library for parsing mathematical expressions
 dev-cpp/nlohmann_json 3.6.1-r1 3.7.0 3.7.3: JSON for Modern C++
@@ -11519,7 +11521,7 @@ gnome-extra/gnome-weather 3.34.2: A weather application for GNOME
 gnome-extra/gtkhtml 4.10.0-r2: Lightweight HTML rendering/printing/editing engine
 gnome-extra/gucharmap 3.0.1-r200 12.0.1 12.0.1-r1: Unicode character map viewer and library
 gnome-extra/libgda 5.2.8-r1: GNOME database access library
-gnome-extra/libgsf 1.14.46: The GNOME Structured File Library
+gnome-extra/libgsf 1.14.46 1.14.47: The GNOME Structured File Library
 gnome-extra/mousetweaks 3.32.0: Mouse accessibility enhancements for the GNOME desktop
 gnome-extra/nautilus-dropbox 2019.02.14: Dropbox Nautilus Extension
 gnome-extra/nautilus-sendto 3.8.6: A nautilus extension for sending files to locations
@@ -16800,7 +16802,7 @@ sys-apps/zorroutils 0.04 0.05: Zorro bus utility for Amigas running 2.1 and late
 sys-auth/AusweisApp2 1.20.1 9999: Official authentication app for German ID cards and residence permits
 sys-auth/authenticator 0.2.4-r1 9999: Two-factor authentication code generator for GNOME
 sys-auth/consolekit 0.4.6 1.1.0-r1 1.1.2 1.2.0 1.2.1 9999: Framework for defining and tracking users, login sessions and seats
-sys-auth/docker_auth 1.3.1 1.4.0: Docker Registry 2 authentication server
+sys-auth/docker_auth 1.3.1 1.4.0 1.5.0: Docker Registry 2 authentication server
 sys-auth/elogind 243.7: The systemd project's logind, extracted to a standalone package
 sys-auth/fingerprint-gui 1.09-r1: Use Fingerprint Devices with Linux
 sys-auth/fprintd 0.8.1 0.8.1-r1: D-Bus service to access fingerprint readers
@@ -18602,7 +18604,7 @@ x11-terms/xterm 337 351 353 357: Terminal Emulator for X Windows
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
 x11-themes/QGnomePlatform 0.6.0-r1 0.6.1-r1: A Qt Platform Theme aimed to accommodate GNOME settings
 x11-themes/adapta-gtk-theme 3.95.0.11: An adaptive Gtk+ theme based on Material Design Guidelines
-x11-themes/adwaita-icon-theme 3.32.0: GNOME default icon theme
+x11-themes/adwaita-icon-theme 3.32.0 3.36.1: GNOME default icon theme
 x11-themes/adwaita-qt 1.1.1 1.1.4: A style to bend Qt applications to look like they belong into GNOME Shell
 x11-themes/arc-icon-theme 20161122: Vertex icon theme
 x11-themes/arc-theme 20190330 20200502: A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell
