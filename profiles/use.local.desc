@@ -6249,7 +6249,7 @@ net-mail/notmuch:doc - Install API documentation
 net-mail/notmuch:emacs - Install Emacs UI (the main one)
 net-mail/notmuch:mutt - Install helper script for Mutt
 net-mail/notmuch:nmbug - Install experimental tag sharing / pseudo-bug-tracking script for Notmuch (see http://notmuchmail.org/nmbug/)
-net-mail/notmuch:valgrind - Depend on dev-util/vagrind for test suite
+net-mail/notmuch:valgrind - Depend on dev-util/valgrind for test suite
 net-mail/qmailadmin:maildrop - Filter spam using maildrop
 net-mail/tpop3d:authexternal - Enable authentication by an external program
 net-mail/tpop3d:flatfile - Enable authentication against /etc/passwd-style flat files
