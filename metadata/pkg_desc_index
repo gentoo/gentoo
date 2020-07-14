@@ -9399,7 +9399,7 @@ dev-ruby/ast 2.4.0 2.4.1: A library for working with abstract syntax trees
 dev-ruby/astrolabe 1.3.1: An object-oriented AST extension for Parser
 dev-ruby/async_sinatra 1.3.0: Asynchronous response API for Sinatra and Thin
 dev-ruby/atomic 1.1.101: An atomic reference implementation for JRuby, Rubinius, and MRI
-dev-ruby/autoprefixer-rails 7.2.6 8.6.5 9.6.5 9.7.6 9.8.1 9.8.2 9.8.4: Add vendor prefixes to CSS rules using values from the Can I Use website
+dev-ruby/autoprefixer-rails 7.2.6 8.6.5 9.6.5 9.7.6 9.8.1 9.8.2 9.8.4 9.8.5: Add vendor prefixes to CSS rules using values from the Can I Use website
 dev-ruby/aws-eventstream 1.0.3 1.1.0: Amazon Web Services event stream library
 dev-ruby/aws-partitions 1.248.0 1.281.0 1.297.0 1.298.0: Provides interfaces to enumerate AWS partitions, regions, and services
 dev-ruby/aws-s3 0.6.3: Client library for Amazon's Simple Storage Service's REST API
@@ -9501,7 +9501,7 @@ dev-ruby/diva 1.0.2 1.0.2-r1: Implementation of expression for handling things.
 dev-ruby/dnsruby 1.61.2 1.61.3: A pure Ruby DNS client library
 dev-ruby/docile 1.3.2: Turns any Ruby object into a DSL
 dev-ruby/domain_name 0.5.20180417 0.5.20190701: Domain Name manipulation library for Ruby
-dev-ruby/dotenv 2.7.3 2.7.4 2.7.5: Loads environment variables from .env into ENV
+dev-ruby/dotenv 2.7.3 2.7.4 2.7.5 2.7.6: Loads environment variables from .env into ENV
 dev-ruby/dust 0.1.7-r2: Descriptive block syntax definition for Test::Unit
 dev-ruby/ecma-re-validator 0.2.0 0.2.1: Validate a regular expression string against what ECMA-262 can actually do
 dev-ruby/ed25519 1.2.4: Library for the Ed25519 public-key signature system
