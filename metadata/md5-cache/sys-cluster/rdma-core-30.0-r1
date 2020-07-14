@@ -5,11 +5,11 @@ DESCRIPTION=Userspace components for the Linux Kernel's drivers/infiniband subsy
 EAPI=7
 HOMEPAGE=https://github.com/linux-rdma/rdma-core
 IUSE=neigh python static-libs systemd valgrind python_single_target_python3_6 python_single_target_python3_7
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86
 LICENSE=|| ( GPL-2 ( CC0-1.0 MIT BSD BSD-with-attribution ) )
 RDEPEND=virtual/libudev:= neigh? ( dev-libs/libnl:3 ) systemd? ( sys-apps/systemd:= ) valgrind? ( dev-util/valgrind ) python? ( python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) ) !sys-fabric/infiniband-diags !sys-fabric/libibverbs !sys-fabric/librdmacm !sys-fabric/libibumad !sys-fabric/ibacm !sys-fabric/libibmad !sys-fabric/srptools !sys-fabric/infinipath-psm !sys-fabric/libcxgb3 !sys-fabric/libcxgb4 !sys-fabric/libmthca !sys-fabric/libmlx4 !sys-fabric/libmlx5 !sys-fabric/libocrdma !sys-fabric/libnes
 REQUIRED_USE=python? ( ^^ ( python_single_target_python3_6 python_single_target_python3_7 ) )
 SLOT=0
 SRC_URI=https://github.com/linux-rdma/rdma-core/archive/v30.0.tar.gz -> rdma-core-30.0.tar.gz
 _eclasses_=cmake	19b0421555865baefd505831dd4303e3	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-single-r1	674c48c926cbb44e91b656e0399d8f54	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	udev	452708c3f55cf6e918b045adb949a9e6	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=2417d1dfad771b9adff54bc32e0fdf9a
+_md5_=69b1a7a25c9d172b4568cdc82c860775
