@@ -1,0 +1,29 @@
+From b239834faa093a972bd7ca33296484609f121a3b Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 14 Jul 2020 20:24:01 +0200
+Subject: [PATCH] Disable test dir based on BUILD_TESTING or unavailability of
+ Qt5::Test
+
+These tests are manual; an attempt to run them ended in failure.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ lib/CMakeLists.txt | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
+index a739c5c..92dd0be 100644
+--- a/lib/CMakeLists.txt
++++ b/lib/CMakeLists.txt
+@@ -39,4 +39,7 @@ install(TARGETS milou EXPORT MilouLibraryTargets ${KDE_INSTALL_TARGETS_DEFAULT_A
+ 
+ add_subdirectory(qml)
+ add_subdirectory(previews)
+-add_subdirectory(test)
++
++if(BUILD_TESTING AND TARGET Qt5::Test)
++  add_subdirectory(test)
++endif()
+-- 
+2.27.0
+
