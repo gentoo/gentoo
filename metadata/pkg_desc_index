@@ -1730,7 +1730,7 @@ app-emulation/virtualbox-bin 5.2.40.137108 5.2.42.137960 6.0.20.137117 6.0.22.13
 app-emulation/virtualbox-extpack-oracle 5.2.40.137108 5.2.42.137960 6.0.20.137117 6.0.22.137980 6.1.6.137129 6.1.10.138449: PUEL extensions for VirtualBox
 app-emulation/virtualbox-guest-additions 5.2.40 5.2.42 6.0.20 6.0.22 6.1.6 6.1.10: VirtualBox kernel modules and user-space tools for Gentoo guests
 app-emulation/virtualbox-modules 5.2.40 5.2.42 6.0.20 6.0.22 6.1.6 6.1.10: Kernel Modules for Virtualbox
-app-emulation/vkd3d 1.0 1.1 9999: D3D12 to Vulkan translation library
+app-emulation/vkd3d 1.0 1.1 1.1-r1 9999: D3D12 to Vulkan translation library
 app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1 2.47.1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0 4.7.1 4.7.3 4.7.5 4.8.0 4.8.1 4.8.3 4.9.0 4.9.2 4.9.3 4.9.4 5.0.0 5.1.0: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
@@ -17275,7 +17275,7 @@ sys-fs/zfs 0.8.4-r1 9999: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-auto-snapshot 1.2.4 9999: ZFS Automatic Snapshot Service for Linux
 sys-fs/zfs-kmod 0.8.4 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.14.138 4.14.143 4.14.144 4.14.145 4.14.146 4.14.147 4.14.148 4.14.149 4.14.150 4.19.66 4.19.72 4.19.73 4.19.74 4.19.75 4.19.76 4.19.77 4.19.78 4.19.79 4.19.80 5.2.13 5.2.14 5.2.15 5.2.16 5.2.17 5.2.18 5.2.19 5.2.20 5.3.0 5.3.1 5.3.2 5.3.4 5.3.5 5.3.6-r1 5.3.7: Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs5 support
-sys-kernel/bliss-initramfs 8.0.0 8.1.0: Boot your system's rootfs from OpenZFS/LUKS
+sys-kernel/bliss-initramfs 8.0.0 8.1.0 9.0.0: Boot your system's rootfs from Encrypted/OpenZFS.
 sys-kernel/bliss-kernel-bin 4.14.170 4.14.178 5.4.38: Precompiled Vanilla Kernel (Kernel Ready-to-Eat [KRE])
 sys-kernel/ck-sources 5.4.37 5.4.48: Gentoo's genpatches for Linux , with Con Kolivas' MuQSS process scheduler.
 sys-kernel/cryptodev 1.9 9999: device that allows access to Linux kernel cryptographic drivers
