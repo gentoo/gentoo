@@ -21,7 +21,7 @@ DEPEND="
 	dev-db/postgresql:*[uuid]
 	dev-libs/libgcrypt:0=
 	dev-libs/libical
-	>=net-analyzer/gvm-libs-11.0.0
+	>=net-analyzer/gvm-libs-11.0.1
 	net-libs/gnutls:=[tools]
 	extras?   (
 		app-text/xmlstarlet

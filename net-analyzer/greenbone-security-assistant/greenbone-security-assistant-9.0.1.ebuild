@@ -24,13 +24,13 @@ DEPEND="
 	dev-libs/libgcrypt:0=
 	dev-libs/libxml2
 	dev-libs/libxslt
-	>=net-analyzer/gvm-libs-10.0.1
+	>=net-analyzer/gvm-libs-11.0.1
 	net-libs/gnutls:=
 	net-libs/libmicrohttpd"
 
 RDEPEND="
 	${DEPEND}
-	>=net-analyzer/gvmd-9.0.0
+	>=net-analyzer/gvmd-9.0.1
 	net-analyzer/ospd-openvas"
 
 BDEPEND="

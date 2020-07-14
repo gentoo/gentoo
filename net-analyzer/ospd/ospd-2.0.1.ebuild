@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 inherit distutils-r1
 
 DESCRIPTION="Base class for scanner wrappers,communication protocol for GVM"
@@ -23,11 +23,6 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}"
-
-PATCHES=(
-	# fixes socket permissions see https://github.com/greenbone/ospd-openvas/issues/170
-	"${FILESDIR}/${P}-socket-permission.patch"
-)
 
 distutils_enable_tests unittest
 

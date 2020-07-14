@@ -18,6 +18,7 @@ IUSE=""
 
 DEPEND="
 	acct-user/gvm
+	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/redis-py[${PYTHON_USEDEP}]
 	net-analyzer/ospd[${PYTHON_USEDEP}]
