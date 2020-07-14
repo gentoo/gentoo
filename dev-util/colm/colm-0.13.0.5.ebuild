@@ -9,7 +9,7 @@ SRC_URI="https://www.colm.net/files/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm arm64 ~ia64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 arm arm64 ~ia64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 DEPEND="app-text/asciidoc"
