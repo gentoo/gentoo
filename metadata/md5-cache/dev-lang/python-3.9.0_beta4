@@ -11,6 +11,6 @@ PDEPEND=>=app-eselect/eselect-python-20140125-r1
 RDEPEND=app-arch/bzip2:= app-arch/xz-utils:= dev-libs/libffi:= sys-apps/util-linux:= >=sys-libs/zlib-1.1.3:= virtual/libcrypt:= virtual/libintl gdbm? ( sys-libs/gdbm:=[berkdb] ) ncurses? ( >=sys-libs/ncurses-5.2:= ) readline? ( >=sys-libs/readline-4.1:= ) sqlite? ( >=dev-db/sqlite-3.3.8:3= ) ssl? ( !libressl? ( dev-libs/openssl:= ) libressl? ( dev-libs/libressl:= ) ) tk? ( >=dev-lang/tcl-8.0:= >=dev-lang/tk-8.0:= dev-tcltk/blt:= dev-tcltk/tix ) xml? ( >=dev-libs/expat-2.1:= ) !build? ( app-misc/mime-types )
 RESTRICT=!test? ( test )
 SLOT=3.9
-SRC_URI=https://www.python.org/ftp/python/3.9.0/Python-3.9.0b4.tar.xz https://dev.gentoo.org/~mgorny/dist/python/python-gentoo-patches-3.9.0b3.tar.xz
+SRC_URI=https://www.python.org/ftp/python/3.9.0/Python-3.9.0b4.tar.xz https://dev.gentoo.org/~mgorny/dist/python/python-gentoo-patches-3.9.0b3-r1.tar.xz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=8b74e543343270b8055ae798825f3bba
+_md5_=62b94a1152ec0b1e7a42cbce9d8adaaa
