@@ -449,11 +449,6 @@ sys-boot/grub:2 test
 # Masked until system heimdal can finally be used with AD DC
 net-fs/samba system-heimdal
 
-# Magnus Granberg <zorry@gentoo.org> (2017-01-18)
-# Adding the mask so that end users and devlopers are notified of the removal and have some
-# time to migrate. There is no support for gcj in gcc-7
->=sys-devel/gcc-6.3.0 gcj
-
 # Robin H. Johnson <robbat2@gentoo.org> (2016-12-04)
 # Additional HAProxy functionality waiting for related stuff to land in the
 # tree.
