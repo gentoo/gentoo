@@ -5282,7 +5282,7 @@ dev-libs/quazip 0.8.1 0.9.1: Simple C++ wrapper over Gilles Vollant's ZIP/UNZIP 
 dev-libs/rapidjson 1.1.0 1.1.0-r1 1.1.0-r2 9999: A fast JSON parser/generator for C++ with both SAX/DOM style API
 dev-libs/rapidxml 1.13 1.13-r1: Fast XML parser
 dev-libs/rasqal 0.9.33: Library that handles Resource Description Framework (RDF)
-dev-libs/re2 0.2019.12.01 0.2020.04.01 0.2020.05.01 0.2020.06.01: An efficient, principled regular expression library
+dev-libs/re2 0.2019.12.01 0.2020.04.01 0.2020.05.01 0.2020.06.01 0.2020.07.06: An efficient, principled regular expression library
 dev-libs/redland 1.0.17-r2: High-level interface for the Resource Description Framework
 dev-libs/redland-bindings 1.0.14.1-r2 1.0.17.1 1.0.17.1-r1: Language bindings for Redland
 dev-libs/replicant 0.8.1: Hyperdex replicant support library
