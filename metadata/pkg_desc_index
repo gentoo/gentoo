@@ -18641,7 +18641,7 @@ x11-themes/gentoo-xcursors 0.3.2: A high quality set of animated mouse cursors
 x11-themes/gentoo10-backgrounds 20110309: Gentoo - 10 Years Compiling Background Artwork
 x11-themes/geramik 0.27-r1: GTK+1 and GTK+2 Geramik Themes
 x11-themes/gkrellm-themes 0.1-r1: A pack of ~200 themes for GKrellM
-x11-themes/gnome-backgrounds 3.34.0: A set of backgrounds packaged with the GNOME desktop
+x11-themes/gnome-backgrounds 3.34.0 3.36.0: A set of backgrounds packaged with the GNOME desktop
 x11-themes/gnome-colors-common 5.5.1-r1: Colorized icons shared between all gnome-colors iconsets
 x11-themes/gnome-colors-themes 5.5.1: Some gnome-colors iconsets including a Gentoo one
 x11-themes/gnome-icon-theme-extras 3.12.0: Extra GNOME icons for specific devices and file types
