@@ -4814,7 +4814,7 @@ dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.1 5.30.2 5.30.2-r1 5.30.2-r2 5.30.3 5.30.3-r1 5.30.3-r2: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 7.2.31 7.2.32 7.3.18 7.3.19 7.3.20 7.4.6 7.4.7 7.4.8: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6 5.8: Poly/ML is a full implementation of Standard ML
-dev-lang/python 2.7.18 3.6.10-r2 3.6.11-r1 3.7.7-r2 3.7.8-r1 3.8.2-r2 3.8.3-r1 3.9.0_beta3 3.9.0_beta4: An interpreted, interactive, object-oriented programming language
+dev-lang/python 2.7.18 3.6.10-r2 3.6.11-r1 3.7.7-r2 3.7.8-r1 3.8.2-r2 3.8.3-r1 3.8.4 3.9.0_beta3 3.9.0_beta4: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r1 9999: Python script wrapper
 dev-lang/qu-prolog 10.1 10.2 10.3 10.4 10.5: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2019.03 2019.11 2020.05.1 2020.06 9999: A compiler for the Perl 6 programming language
@@ -7469,7 +7469,7 @@ dev-python/3to2 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x synta
 dev-python/APScheduler 3.6.3: In-process task scheduler with Cron-like capabilities
 dev-python/Babel 2.8.0-r1: Collection of tools for internationalizing Python applications
 dev-python/BitVector 3.4.9: A pure-Python memory-efficient packed representation for bit arrays
-dev-python/GitPython 3.1.3 3.1.5: Library used to interact with Git repositories
+dev-python/GitPython 3.1.3 3.1.5 3.1.7: Library used to interact with Git repositories
 dev-python/GridDataFormats 0.4.0-r1: Reading and writing of data on regular grids in Python
 dev-python/HeapDict 1.0.0: Heap with decrease-key and increase-key operations
 dev-python/MechanicalSoup 0.12.0: A python library for automating interaction with websites
@@ -7639,7 +7639,7 @@ dev-python/cliff 3.1.0 3.3.0: Command Line Interface Formulation Framework
 dev-python/clint 0.5.1-r1: Python Command-line Application Tools
 dev-python/cloudlib 0.5.0: Cloud middleware for in application use.
 dev-python/cloudpickle 1.4.1 1.5.0: Extended pickling support for Python objects
-dev-python/cmd2 1.1.0: Extra features for standard library's cmd module
+dev-python/cmd2 1.1.0 1.2.0: Extra features for standard library's cmd module
 dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
 dev-python/colorama 0.4.3: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/colorclass 2.2.0-r1: Colorful worry-free console applications for multiple platforms
@@ -7907,7 +7907,7 @@ dev-python/humanize 2.4.0 2.4.1: Common humanization utilities
 dev-python/hyper-h2 3.2.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 19.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 4.50.8 4.57.1 5.16.0 5.16.3 5.19.0 5.19.1: A library for property based testing
+dev-python/hypothesis 4.50.8 4.57.1 5.16.0 5.16.3 5.19.0 5.19.1 5.19.2: A library for property based testing
 dev-python/icalendar 4.0.3 4.0.6: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.8 2.9 2.10: Internationalized Domain Names in Applications (IDNA)
@@ -7983,7 +7983,7 @@ dev-python/jsonrpclib 0.4.1 9999: python implementation of the JSON-RPC spec (1.
 dev-python/jsonschema 2.6.0 3.0.1 3.2.0: An implementation of JSON-Schema validation for Python
 dev-python/jsonxs 0.6: Get/set values in JSON and Python datastructures
 dev-python/jupyter 1.0.0-r2: Jupyter metapackage. Install all the Jupyter components in one go
-dev-python/jupyter_client 5.3.4 6.1.5: Jupyter protocol implementation and client libraries
+dev-python/jupyter_client 5.3.4 6.1.5 6.1.6: Jupyter protocol implementation and client libraries
 dev-python/jupyter_console 6.0.0 6.1.0: A terminal-based console frontend for Jupyter kernels
 dev-python/jupyter_core 4.6.1-r1 4.6.3: Core common functionality of Jupyter projects
 dev-python/jwcrypto 0.7.0: Implements JWK,JWS,JWE specifications using python-cryptography
@@ -8208,7 +8208,7 @@ dev-python/parso 0.5.2 0.6.1 0.7.0: a python parser that supports error recovery
 dev-python/partd 0.3.8 1.1.0: Appendable key-value storage
 dev-python/parver 0.3: Parse and manipulate version numbers
 dev-python/passlib 1.7.2: Password hashing framework supporting over 20 schemes
-dev-python/paste 3.4.1: Tools for using a Web Server Gateway Interface stack
+dev-python/paste 3.4.1 3.4.2: Tools for using a Web Server Gateway Interface stack
 dev-python/pastedeploy 2.1.0: Load, configure, and compose WSGI applications and servers
 dev-python/patch-ng 1.17.4: Library to parse and apply unified diffs, fork of dev-python/patch
 dev-python/path-and-address 2.0.1: Functions for server CLI applications used by humans
@@ -8783,7 +8783,7 @@ dev-python/stapler 1.0_pre20191215-r1: Suite of tools for PDF files manipulation
 dev-python/statsd 3.3.0: A simple statsd client
 dev-python/statsmodels 0.10.2 0.11.1 9999: Statistical computations and models for use with SciPy
 dev-python/stestr 2.1.0-r1: A parallel Python test runner built around subunit
-dev-python/stevedore 2.0.1 3.0.0: Manage dynamic plugins for Python applications
+dev-python/stevedore 2.0.1 3.0.0 3.1.0: Manage dynamic plugins for Python applications
 dev-python/strict-rfc3339 0.7-r1: Strict, simple, lightweight RFC3339 functions
 dev-python/stripe 2.46.0: Stripe python bindings
 dev-python/subprocess32 3.5.4: A backport of the subprocess module from Python 3.2/3.3 for use on 2.x
@@ -8852,7 +8852,7 @@ dev-python/txaio 20.4.1: Compatibility API between asyncio/Twisted/Trollius
 dev-python/txgithub 15.0.0-r1: GitHub API client implemented using Twisted
 dev-python/txrequests 0.9.6: Asynchronous Python HTTP for Humans
 dev-python/typed-ast 1.4.1: Python typed-ast backported
-dev-python/typing 3.7.4.1 3.7.4.2: Type Hints for Python
+dev-python/typing 3.7.4.1 3.7.4.2 3.7.4.3: Type Hints for Python
 dev-python/typing-extensions 3.7.4.1: Type Hint extensions from Python 3.7 backported to 3.5/3.6
 dev-python/tzlocal 2.1: tzinfo object for the local timezone
 dev-python/u-msgpack 2.6.0: A portable, lightweight MessagePack serializer and deserializer
