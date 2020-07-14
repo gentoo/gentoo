@@ -17725,7 +17725,7 @@ www-apps/bugzilla 4.4.12-r2 5.0.3-r2: Bugzilla is the Bug-Tracking System from t
 www-apps/cgisysinfo 0.4.1: A small cgi utility to show basic system information
 www-apps/cgit 1.2.1 1.2.3 9999: a fast web-interface for git repositories
 www-apps/cgp 1_p20181209: A graphical web-based front-end for visualizing RRD collected by collectd
-www-apps/chromedriver-bin 83.0.4103.39-r1: WebDriver for Chrome
+www-apps/chromedriver-bin 83.0.4103.39-r1 84.0.4147.30: WebDriver for Chrome
 www-apps/cvsweb 3.0.6-r1: WWW interface to a CVS tree
 www-apps/davical 1.1.9.3: A CalDAV and CardDAV Server
 www-apps/dokuwiki 20160626e 20170219e 20180422a 20180422b: DokuWiki is a simple to use Wiki aimed at a small company's documentation needs.
