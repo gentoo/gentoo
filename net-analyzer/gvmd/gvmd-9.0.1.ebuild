@@ -13,9 +13,10 @@ SRC_URI="https://github.com/greenbone/gvmd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SLOT="0"
 LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
-IUSE="extras +postgres sqlite"
+IUSE="extras +postgres sqlite test"
 # keep deprecated USE Flags for revdep of gvm
 REQUIRED_USE="postgres !sqlite"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-db/postgresql:*[uuid]
@@ -41,7 +42,8 @@ BDEPEND="
 		app-doc/xmltoman
 		app-text/htmldoc
 		dev-libs/libxslt
-	)"
+	)
+	test? ( dev-libs/cgreen )"
 
 src_prepare() {
 	cmake_src_prepare
@@ -78,6 +80,9 @@ src_compile() {
 	if use extras; then
 		cmake_build -C "${BUILD_DIR}" doc
 		cmake_build doc-full -C "${BUILD_DIR}" doc
+	fi
+	if use test; then
+		cmake_build tests
 	fi
 	cmake_build rebuild_cache
 }
