@@ -1,15 +1,15 @@
 BDEPEND=sys-devel/bison sys-devel/flex virtual/pkgconfig extras? ( app-doc/doxygen[dot] app-doc/xmltoman app-text/htmldoc dev-libs/libxslt ) sys-devel/make dev-util/cmake virtual/pkgconfig
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-db/postgresql:*[uuid] dev-libs/libgcrypt:0= dev-libs/libical >=net-analyzer/gvm-libs-11.0.0 net-libs/gnutls:=[tools] extras? ( app-text/xmlstarlet dev-texlive/texlive-latexextra )
+DEPEND=dev-db/postgresql:*[uuid] dev-libs/libgcrypt:0= dev-libs/libical >=net-analyzer/gvm-libs-11.0.1 net-libs/gnutls:=[tools] extras? ( app-text/xmlstarlet dev-texlive/texlive-latexextra )
 DESCRIPTION=Greenbone vulnerability manager, previously named openvas-manager
 EAPI=7
 HOMEPAGE=https://www.greenbone.net/en/
 IUSE=extras +postgres sqlite
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
-RDEPEND=dev-db/postgresql:*[uuid] dev-libs/libgcrypt:0= dev-libs/libical >=net-analyzer/gvm-libs-11.0.0 net-libs/gnutls:=[tools] extras? ( app-text/xmlstarlet dev-texlive/texlive-latexextra ) acct-user/gvm net-analyzer/ospd-openvas
+RDEPEND=dev-db/postgresql:*[uuid] dev-libs/libgcrypt:0= dev-libs/libical >=net-analyzer/gvm-libs-11.0.1 net-libs/gnutls:=[tools] extras? ( app-text/xmlstarlet dev-texlive/texlive-latexextra ) acct-user/gvm net-analyzer/ospd-openvas
 REQUIRED_USE=postgres !sqlite
 SLOT=0
-SRC_URI=https://github.com/greenbone/gvmd/archive/v9.0.0.tar.gz -> gvmd-9.0.0.tar.gz
+SRC_URI=https://github.com/greenbone/gvmd/archive/v9.0.1.tar.gz -> gvmd-9.0.1.tar.gz
 _eclasses_=cmake	19b0421555865baefd505831dd4303e3	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=38b087a477bd7f77f5835bf363b9975c
+_md5_=da5920aadca7da8d30c597ee8c5f69fd

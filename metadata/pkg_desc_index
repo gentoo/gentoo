@@ -13935,12 +13935,12 @@ net-analyzer/gnome-nettool 3.8.1: Graphical front-ends to various networking com
 net-analyzer/goaccess 1.2 1.3 9999: A real-time web log analyzer and interactive viewer that runs in a terminal
 net-analyzer/gr-fosphor 0.0_p20191202 0.0_p20200131 9999: gnuradio fosphor block (GPU spectrum display)
 net-analyzer/graphite-web 1.1.5-r1 1.1.7: Enterprise scalable realtime graphing
-net-analyzer/greenbone-security-assistant 8.0.1-r1 9.0.0: Greenbone Security Assistant
+net-analyzer/greenbone-security-assistant 8.0.1-r1 9.0.1: Greenbone Security Assistant
 net-analyzer/gspoof 3.2-r3: A simple GTK/command line TCP/IP packet generator
 net-analyzer/gvm 10.0.1 11.0.0: Greenbone Vulnerability Management,previously named OpenVAS
-net-analyzer/gvm-libs 10.0.1 11.0.0-r1: Greenbone vulnerability management libraries, previously named openvas-libraries
+net-analyzer/gvm-libs 10.0.1 11.0.1: Greenbone vulnerability management libraries, previously named openvas-libraries
 net-analyzer/gvm-tools 2.0.0-r1: Remote control for Greenbone Vulnerability Manager, previously named openvas-cli
-net-analyzer/gvmd 8.0.1 9.0.0: Greenbone vulnerability manager, previously named openvas-manager
+net-analyzer/gvmd 8.0.1 9.0.1: Greenbone vulnerability manager, previously named openvas-manager
 net-analyzer/hexinject 1.5 1.6 1.6-r1: Network packet sniffer and injector
 net-analyzer/hping 3_pre20051105-r6 3_pre20141226: A ping-like TCP/IP packet assembler/analyzer
 net-analyzer/httping 2.5 9999999: like ping but for HTTP requests
@@ -14049,10 +14049,10 @@ net-analyzer/nuttcp 8.1.4: Network performance measurement tool
 net-analyzer/odhcploc 20111021-r1: Open DHCP Locator
 net-analyzer/oinkmaster 2.0: Rule management for SNORT
 net-analyzer/openbsd-netcat 1.105 1.105-r1 1.190 1.195: The OpenBSD network swiss army knife
-net-analyzer/openvas-scanner 6.0.1 7.0.0: Open Vulnerability Assessment Scanner
+net-analyzer/openvas-scanner 6.0.1 7.0.1: Open Vulnerability Assessment Scanner
 net-analyzer/opsgenie-lamp 2.5.1_p20181102: command line client for the opsgenie service
-net-analyzer/ospd 2.0.0-r1: Base class for scanner wrappers,communication protocol for GVM
-net-analyzer/ospd-openvas 1.0.0: This is an OSP server implementation to allow GVM to remotely control OpenVAS
+net-analyzer/ospd 2.0.1: Base class for scanner wrappers,communication protocol for GVM
+net-analyzer/ospd-openvas 1.0.1: This is an OSP server implementation to allow GVM to remotely control OpenVAS
 net-analyzer/ossec-hids 3.1.0 3.2.0 3.2.0-r1 3.3.0 3.6.0: Open Source Host-based Intrusion Detection System
 net-analyzer/ostinato 0.9_p20180522: A packet generator and analyzer
 net-analyzer/p0f 3.09_beta: A tool to perform passive OS detection based on SYN packets
@@ -14072,7 +14072,7 @@ net-analyzer/prelude-lml 3.0.0 4.0.0 4.1.0 5.1.0: The prelude log analyzer
 net-analyzer/prelude-lml-rules 3.0.1 4.0.0 4.1.0 5.1.0: Prelude LML community ruleset
 net-analyzer/prettyping 1.0.1: Ping wrapper that produces coloured, easily readable output.
 net-analyzer/pypacker 2.9 4.6 4.7 4.8 4.9: Fast and simple packet creation and parsing library for Python
-net-analyzer/python-gvm 1.1.0 1.2.0: Greenbone Vulnerability Management Python Library
+net-analyzer/python-gvm 1.1.0 1.2.0 1.5.0: Greenbone Vulnerability Management Python Library
 net-analyzer/quidscor 1.2.48-r1: Qualys IDS Correlation Daemon
 net-analyzer/raddump 0.3.1: RADIUS packet interpreter
 net-analyzer/rain 1.2.9_beta1 1.2.9_beta1-r1: powerful tool for testing stability of utilizing IP protocols
