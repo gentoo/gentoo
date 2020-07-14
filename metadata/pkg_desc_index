@@ -16984,7 +16984,7 @@ sys-cluster/heat 14.0.0 2020.1.9999: A CloudFormation-compatible openstack-nativ
 sys-cluster/hpl 2.0-r3: Portable Implementation of the Linpack Benchmark for Distributed-Memory Clusters
 sys-cluster/hpx 1.4.1 9999: C++ runtime system for parallel and distributed applications
 sys-cluster/ipvsadm 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
-sys-cluster/k9scli 0.20.5: terminal based UI to manage kubernetes clusters
+sys-cluster/k9scli 0.20.5 0.21.2: terminal based UI to manage kubernetes clusters
 sys-cluster/keepalived 2.0.17 2.0.19 2.0.20 2.1.3: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.3 9999: High-Performance Intra-Node MPI Communication
 sys-cluster/kube-apiserver 1.15.10 1.15.11 1.15.12 1.16.7 1.16.8 1.17.3 1.17.4: Kubernetes API server
