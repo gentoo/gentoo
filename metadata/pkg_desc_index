@@ -8440,7 +8440,7 @@ dev-python/pyside2 5.14.2: Python bindings for the Qt framework
 dev-python/pysmi 0.3.4: Python Lex & Yacc
 dev-python/pysnmp 4.4.12-r1 999999: Python SNMP library
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
-dev-python/pysol_cards 0.8.9 0.8.18 0.10.1: Deal PySol FreeCell cards
+dev-python/pysol_cards 0.8.9 0.10.1: Deal PySol FreeCell cards
 dev-python/pyspectrum2 0.2.0: Implements a protobuf-based interface for Spectrum2 python-based backends
 dev-python/pyspf 2.0.14: Python implementation of the Sender Policy Framework (SPF)
 dev-python/pysrt 1.1.2 9999: Python library used to edit or create SubRip files
@@ -11865,7 +11865,7 @@ kde-frameworks/baloo 5.70.0 5.72.0: Framework for searching and managing metadat
 kde-frameworks/bluez-qt 5.70.0 5.72.0: Qt wrapper for Bluez 5 DBus API
 kde-frameworks/breeze-icons 5.70.0 5.72.0: Breeze SVG icon theme
 kde-frameworks/breeze-icons-rcc 5.70.0 5.72.0: Breeze SVG icon theme binary resource
-kde-frameworks/extra-cmake-modules 5.70.0 5.72.0 5.72.0-r1: Extra modules and scripts for CMake
+kde-frameworks/extra-cmake-modules 5.70.0 5.72.0-r1: Extra modules and scripts for CMake
 kde-frameworks/frameworkintegration 5.70.0 5.72.0: Framework for integrating Qt applications with KDE Plasma workspaces
 kde-frameworks/kactivities 5.70.0 5.72.0: Framework for working with KDE activities
 kde-frameworks/kactivities-stats 5.70.0 5.72.0: Framework for getting the usage statistics collected by the activities service
@@ -11922,7 +11922,7 @@ kde-frameworks/kplotting 5.70.0 5.72.0: Framework providing easy data-plotting f
 kde-frameworks/kpty 5.70.0 5.72.0: Framework for pseudo terminal devices and running child processes
 kde-frameworks/kquickcharts 5.70.0 5.72.0: QtQuick plugin providing high-performance charts
 kde-frameworks/kross 5.70.0 5.72.0: Framework for embedding scripting into applications
-kde-frameworks/krunner 5.70.0 5.72.0: Framework for providing different actions given a string query
+kde-frameworks/krunner 5.70.0 5.72.0-r1: Framework for providing different actions given a string query
 kde-frameworks/kservice 5.70.0 5.72.0: Advanced plugin and service introspection
 kde-frameworks/ktexteditor 5.70.1 5.72.0: Framework providing a full text editor component
 kde-frameworks/ktextwidgets 5.70.0 5.72.0: Framework providing an assortment of widgets for displaying and editing text
@@ -18285,7 +18285,7 @@ x11-misc/sisctrl 0.0.20051202 0.0.20051202-r1: tool that allows you to tune SiS 
 x11-misc/skippy 0.5.0-r1: A full-screen task-switcher providing Apple Expose-like functionality
 x11-misc/slim 1.3.6-r5 9999: Simple Login Manager
 x11-misc/slock 1.4: simple X display locker
-x11-misc/slop 7.4 7.5 9999: Application that queries the user for a selection for printing
+x11-misc/slop 7.5 9999: Application that queries the user for a selection for printing
 x11-misc/snixembed 0.2.2 0.3.0: Proxy StatusNotifierItems as XEmbedded systemtray-spec icons
 x11-misc/spacefm 1.0.6 9999: A multi-panel tabbed file manager
 x11-misc/splatmoji 1.0: Quickly look up and input emoji and/or emoticons
