@@ -5877,7 +5877,7 @@ dev-perl/DBIx-ContextualFetch 1.30.0-r1 1.30.0-r2: Add contextual fetches to DBI
 dev-perl/DBIx-DBSchema 0.450.0 0.450.0-r1: Database-independent schema objects
 dev-perl/DBIx-Migration 0.70.0 0.70.0-r1: Seamless DB schema up- and downgrades
 dev-perl/DBIx-Safe 1.2.5-r1 1.2.5-r2: Safer access to your database through a DBI database handle
-dev-perl/DBIx-SearchBuilder 1.670.0: Encapsulate SQL queries and rows in simple Perl objects
+dev-perl/DBIx-SearchBuilder 1.670.0 1.680.0: Encapsulate SQL queries and rows in simple Perl objects
 dev-perl/DBIx-Simple 1.350.0-r1: Very complete easy-to-use OO interface to DBI
 dev-perl/DB_File-Lock 0.50.0-r1: Locking with flock wrapper for DB_File
 dev-perl/Daemon-Generic 0.850.0: Framework to provide start/stop/reload for a daemon

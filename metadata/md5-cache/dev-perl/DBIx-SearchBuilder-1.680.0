@@ -1,0 +1,15 @@
+BDEPEND=>=dev-perl/Cache-Simple-TimedExpiry-0.210.0 dev-perl/Class-Accessor >=dev-perl/Class-ReturnValue-0.400.0 dev-perl/Clone dev-perl/DBI dev-perl/DBIx-DBSchema >=virtual/perl-Encode-1.990.0 virtual/perl-Scalar-List-Utils dev-perl/Want >=dev-perl/capitalization-0.30.0 >=virtual/perl-ExtUtils-MakeMaker-6.360.0 test? ( >=virtual/perl-Test-Simple-0.520.0 dev-perl/DBD-SQLite virtual/perl-File-Temp ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=Encapsulate SQL queries and rows in simple Perl objects
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/DBIx-SearchBuilder
+IUSE=test examples
+KEYWORDS=~amd64 ~hppa ~ppc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/Cache-Simple-TimedExpiry-0.210.0 dev-perl/Class-Accessor >=dev-perl/Class-ReturnValue-0.400.0 dev-perl/Clone dev-perl/DBI dev-perl/DBIx-DBSchema >=virtual/perl-Encode-1.990.0 virtual/perl-Scalar-List-Utils dev-perl/Want >=dev-perl/capitalization-0.30.0 dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/B/BP/BPS/DBIx-SearchBuilder-1.68.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=7cdf898c383a16c2efad15535f4ef338
