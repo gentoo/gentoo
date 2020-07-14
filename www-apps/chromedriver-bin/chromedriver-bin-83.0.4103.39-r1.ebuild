@@ -17,7 +17,7 @@ RESTRICT="bindist mirror strip"
 BDEPEND="app-arch/unzip"
 
 RDEPEND="!www-client/chromium
-	=www-client/google-chrome-$(ver_cut 1)*"
+	www-client/google-chrome"
 
 S="${WORKDIR}"
 QA_PREBUILT="usr/bin/chromedriver"
