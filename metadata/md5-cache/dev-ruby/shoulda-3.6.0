@@ -4,7 +4,7 @@ DESCRIPTION=Making tests easy on the fingers and eyes
 EAPI=6
 HOMEPAGE=http://thoughtbot.com/projects/shoulda
 IUSE=test ruby_targets_ruby24 ruby_targets_ruby25 ruby_targets_ruby26 test test
-KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc
 LICENSE=MIT
 RDEPEND=ruby_targets_ruby24? ( >=dev-ruby/shoulda-context-1.0.1[ruby_targets_ruby24(-)] dev-ruby/shoulda-matchers:3[ruby_targets_ruby24(-)] ) ruby_targets_ruby25? ( >=dev-ruby/shoulda-context-1.0.1[ruby_targets_ruby25(-)] dev-ruby/shoulda-matchers:3[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( >=dev-ruby/shoulda-context-1.0.1[ruby_targets_ruby26(-)] dev-ruby/shoulda-matchers:3[ruby_targets_ruby26(-)] ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24(-)] ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( virtual/rubygems[ruby_targets_ruby26(-)] )
 REQUIRED_USE=|| ( ruby_targets_ruby24 ruby_targets_ruby25 ruby_targets_ruby26 )
@@ -12,4 +12,4 @@ RESTRICT=test !test? ( test )
 SLOT=3
 SRC_URI=https://github.com/thoughtbot/shoulda/archive/v3.6.0.tar.gz -> shoulda-3.6.0.tar.gz
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	2477ebe553d3e4d2c606191fe6c33602	ruby-fakegem	6ee14a23a169409059ed36d4dddc3197	ruby-ng	a1c89995f9f6dd045e93d13a92ca81a9	ruby-utils	cdb4c1e4283adb7707b7dd48ccaa7ad2	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=289369bbf1963a02c0f3c9b4c8741fb6
+_md5_=2a6b9c02c6aca3a93eb3e33fa595f67e

@@ -4,10 +4,10 @@ DEPEND=dev-lang/perl
 DESCRIPTION=Read/write encrypted ASN.1 PEM files
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/Convert-PEM
-KEYWORDS=~alpha ~amd64 ~hppa ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Class-ErrorHandler >=dev-perl/Convert-ASN1-0.100.0 dev-perl/Crypt-DES_EDE3 virtual/perl-Digest-MD5 virtual/perl-MIME-Base64 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/B/BT/BTROTT/Convert-PEM-0.08.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=3187253a175d7f7cc4aa2e1109498498
+_md5_=c1e99752aa58da39846316371bd8b9d4

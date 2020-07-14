@@ -5,11 +5,11 @@ DESCRIPTION=DSA Signatures and Key Generation
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/Crypt-DSA
 IUSE=test
-KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~x86 ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~sparc ~x86 ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Data-Buffer-0.10.0 dev-perl/Digest-SHA1 virtual/perl-File-Spec >=dev-perl/File-Which-0.50.0 virtual/perl-MIME-Base64 >=virtual/perl-Math-BigInt-1.780.0 dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AD/ADAMK/Crypt-DSA-1.17.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=6ab5511e42e0e14b900e0159c40dc694
+_md5_=338bce993c4b251cbfb3f79582b85c32
