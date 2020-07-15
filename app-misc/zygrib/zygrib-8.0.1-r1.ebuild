@@ -41,6 +41,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 PATCHES=(
 	"${FILESDIR}/${P}-libs.patch"
 	"${FILESDIR}/${P}-proj-6.patch" # bug 686078
+	"${FILESDIR}/${P}-qt-5.15.patch" # bug 732732
 )
 
 src_prepare() {
