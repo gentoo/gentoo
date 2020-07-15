@@ -7641,7 +7641,7 @@ dev-python/cliff 3.1.0 3.3.0: Command Line Interface Formulation Framework
 dev-python/clint 0.5.1-r1: Python Command-line Application Tools
 dev-python/cloudlib 0.5.0: Cloud middleware for in application use.
 dev-python/cloudpickle 1.4.1 1.5.0: Extended pickling support for Python objects
-dev-python/cmd2 1.1.0 1.2.0: Extra features for standard library's cmd module
+dev-python/cmd2 1.1.0 1.2.0 1.2.1: Extra features for standard library's cmd module
 dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
 dev-python/colorama 0.4.3: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/colorclass 2.2.0-r1: Colorful worry-free console applications for multiple platforms
@@ -7817,7 +7817,7 @@ dev-python/flask-restful 0.3.8: Simple framework for creating REST APIs
 dev-python/flask-script 2.0.6: Flask support for writing external scripts
 dev-python/flask-security 3.0.0: Simple security for Flask apps
 dev-python/flask-sphinx-themes 1.0.2: Sphinx Themes for Flask related projects and Flask itself
-dev-python/flask-sqlalchemy 2.4.1-r1 2.4.3: SQLAlchemy support for Flask applications
+dev-python/flask-sqlalchemy 2.4.1-r1 2.4.3 2.4.4: SQLAlchemy support for Flask applications
 dev-python/flask-themes 0.1.3_p20180112: Infrastructure for theming support in Flask applications
 dev-python/flask-wtf 0.14.3: Simple integration of Flask and WTForms
 dev-python/flatbuffers 1.12: RFC 7049 - Concise Binary Object Representation
@@ -8835,7 +8835,7 @@ dev-python/toml 0.10.1: Python library for handling TOML files
 dev-python/toolz 0.9.0 0.10.0: List processing tools and functional utilities
 dev-python/tooz 1.60.1: Library centralizing the most common distributed primitives
 dev-python/towncrier 19.2.0: Building newsfiles for your project
-dev-python/tox 3.15.0 3.15.2 3.16.1: virtualenv-based automation of test activities
+dev-python/tox 3.15.0 3.15.2 3.16.1 3.17.0: virtualenv-based automation of test activities
 dev-python/tqdm 4.40.0 4.45.0 4.47.0 9999: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0: Backports of the traceback module
 dev-python/traitlets 4.3.2 4.3.3: A configuration system for Python applications
