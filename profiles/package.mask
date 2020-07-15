@@ -47,7 +47,7 @@ dev-perl/Data-Diver
 # In preparation; do not use yet.
 =dev-lang/perl-5.32*
 
-# Christoph Junghans <junghans@gentoo.org> (14 Jul 2020)
+# Christoph Junghans <junghans@gentoo.org> (2020-07-14)
 # Unmaintained upstream and does not support systemd or firewalld. 
 # Please use net-analyzer/fail2ban instead. (bug #732076)
 # Removal in 30 days.
