@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 ROS_REPO_URI="https://github.com/GT-RAIL/robot_pose_publisher"
 KEYWORDS="~amd64 ~arm"
 
@@ -15,6 +15,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/roscpp
 	dev-ros/tf
+"
+DEPEND="${RDEPEND}
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
-DEPEND="${RDEPEND}"
