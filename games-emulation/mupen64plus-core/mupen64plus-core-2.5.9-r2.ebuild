@@ -27,7 +27,9 @@ RDEPEND="media-libs/libpng:0=
 		virtual/opengl:0=
 		virtual/glu:0=
 	)"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
+	cpu_flags_x86_sse? ( dev-lang/nasm )
 	virtual/pkgconfig"
 
 REQUIRED_USE="gles2-only? ( !osd )"
