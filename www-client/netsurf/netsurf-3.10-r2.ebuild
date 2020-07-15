@@ -22,12 +22,12 @@ RDEPEND="
 	>=dev-libs/libcss-0.9
 	>=net-libs/libdom-0.3
 	>=net-libs/libhubbub-0.3
-	>=dev-libs/libnsutils-0.0.5
+	>=dev-libs/libnsutils-0.1.0
 	>=dev-libs/libutf8proc-2.4
 	dev-libs/libxml2:2
 	net-misc/curl
 	bmp? ( >=media-libs/libnsbmp-0.1 )
-	fbcon? ( >=dev-libs/libnsfb-0.2
+	fbcon? ( >=dev-libs/libnsfb-0.2.2
 		truetype? ( media-fonts/dejavu
 			>=media-libs/freetype-2.5.0.1 )
 	)
