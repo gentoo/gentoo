@@ -4,10 +4,10 @@ DESCRIPTION=Generates an init binary for s6-based init systems
 EAPI=7
 HOMEPAGE=https://www.skarnet.org/software/s6-linux-init/
 IUSE=static static-libs +sysv-utils
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~arm ~x86
 LICENSE=ISC
 RDEPEND=>=dev-lang/execline-2.5.3.0:=[static-libs?] >=dev-libs/skalibs-2.9.1.0:=[static-libs?] >=sys-apps/s6-2.9.0.1:=[static-libs?] sysv-utils? ( !sys-apps/systemd[sysv-utils] !sys-apps/sysvinit )
 REQUIRED_USE=static? ( static-libs )
 SLOT=0/1.0
 SRC_URI=https://www.skarnet.org/software/s6-linux-init/s6-linux-init-1.0.3.1.tar.gz
-_md5_=fcbee5095b2c68cbeb1ab778f989e8b5
+_md5_=4d4488fe1338b392ce18285a56914e7c
