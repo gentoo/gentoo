@@ -129,6 +129,7 @@ acct-group/opendkim 0: Group for OpenDKIM
 acct-group/openntpd 0: System group: openntpd
 acct-group/openrct2 0: A group for the OpenRCT2 dedicated server
 acct-group/openvpn 0: System group: openvpn
+acct-group/openvpn_exporter 0: System group: openvpn_exporter
 acct-group/ossec 0: Group for net-analyzer/ossec-hids
 acct-group/pcscd 0: System group: pcscd
 acct-group/pdns 0: System group: pdns
@@ -330,6 +331,7 @@ acct-user/opendkim 0: User for OpenDKIM
 acct-user/openntpd 0: user for openntpd daemon
 acct-user/openrct2 0: A user for the OpenRCT2 dedicated server
 acct-user/openvpn 0: User for net-vpn/openvpn
+acct-user/openvpn_exporter 0: user for openvpn_exporter
 acct-user/ossec 0: net-analyzer/ossec-hids (agentlessd, analysisd, monitord)
 acct-user/ossecm 0: net-analyzer/ossec-hids (csyslogd, maild)
 acct-user/ossecr 0: net-analyzer/ossec-hids (remoted)
@@ -2047,7 +2049,7 @@ app-metrics/mysqld_exporter 0.10.0-r1 0.11.0 0.12.1_p20200622: Prometheus export
 app-metrics/nginx-lua-prometheus 0.1_pre20170610: Library that exports Nginx metrics to Prometheus
 app-metrics/nginx-vts-exporter 0.10.3 0.10.7: Nginx virtual host traffic stats exporter for Prometheus
 app-metrics/node_exporter 0.18.1 1.0.0_rc0 1.0.0_rc0-r1: Prometheus exporter for machine metrics
-app-metrics/openvpn_exporter 0.2.1: Prometheus Exporter for OpenVPN
+app-metrics/openvpn_exporter 0.2.1 0.3.0: Prometheus Exporter for OpenVPN
 app-metrics/postfix_exporter 0.1.2: Prometheus Exporter for Postfix
 app-metrics/postgres_exporter 0.4.7: PostgreSQL stats exporter for Prometheus
 app-metrics/process-exporter 0.4.0 0.4.0-r1 0.7.1: Process exporter for prometheus
@@ -13034,7 +13036,7 @@ media-plugins/alsa-plugins 1.2.2: ALSA extra plugins
 media-plugins/alsaequal 0.7.1: A real-time adjustable equalizer plugin for ALSA
 media-plugins/amb-plugins 0.8.1-r1: AMB-plugins ladspa plugin package. Filters by Fons Adriaensen
 media-plugins/ams-lv2 1.1.0 1.2.1: A port of the AMS internal modules to LV2 plugins to create modular synthesizers
-media-plugins/audacious-plugins 3.10.1-r3 4.0.3 4.0.4 9999: Lightweight and versatile audio player
+media-plugins/audacious-plugins 3.10.1-r3 4.0.3 4.0.4 4.0.5 9999: Lightweight and versatile audio player
 media-plugins/calf 0.90.3 9999: A set of open source instruments and effects for digital audio workstations
 media-plugins/caps-plugins 0.9.24: The CAPS Audio Plugin Suite - LADSPA plugin suite
 media-plugins/fil-plugins 0.3.0-r1: FIL-plugins ladspa plugin package. Filters by Fons Adriaensen
@@ -13352,7 +13354,7 @@ media-sound/ario 1.6: GTK client for MPD inspired by Rhythmbox but much lighter 
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
 media-sound/asunder 2.9.3-r1 2.9.5 2.9.6: Graphical Audio CD ripper and encoder with support for many output formats
 media-sound/aucdtect 0.8.2-r1: Commandline FLAC CDDA authenticity verifier
-media-sound/audacious 3.10.1-r1 4.0.3 4.0.4 9999: Lightweight and versatile audio player
+media-sound/audacious 3.10.1-r1 4.0.3 4.0.4 4.0.5 9999: Lightweight and versatile audio player
 media-sound/audacity 2.2.2 2.3.2 2.3.3: Free crossplatform audio editor
 media-sound/audex 0.95_pre20190721: Tool for ripping compact discs
 media-sound/audicle 1.0.0.7-r2: A Context-sensitive, On-the-fly Audio Programming Environ/mentality
