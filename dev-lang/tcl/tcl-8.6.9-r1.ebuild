@@ -25,6 +25,7 @@ S="${SPARENT}"/unix
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.5.13-multilib.patch
 	"${FILESDIR}"/${PN}-8.6.8-conf.patch # Bug 125971
+	"${FILESDIR}"/${PN}-8.6.9-include-spec.patch # Bug 731120
 )
 
 src_prepare() {
