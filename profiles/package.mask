@@ -443,15 +443,6 @@ games-board/sirius
 # Masked for removal in 30 days.
 dev-embedded/gnome-avrdude
 
-# Michał Górny <mgorny@gentoo.org> (2020-06-14)
-# Unmaintained since at least 2014.  The current release is 1.5 dev
-# branch from 2010.  Upstream had a few stable 1.4 releases since
-# but 1.5 seems to be dead.  Multiple build failures reported,
-# and an ebuild vulnerability.
-# Removal in 30 days.  Bug #728186.
-app-mobilephone/kannel
-app-mobilephone/kannel-sqlbox
-
 # Hans de Graaff <graaff@gentoo.org> (2020-06-14)
 # Ruby 2.4 is no longer supported by upstream and no longer gets
 # security updates since the 2.4.10 release. Use ruby 2.5 or later
