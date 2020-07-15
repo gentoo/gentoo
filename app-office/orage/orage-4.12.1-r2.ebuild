@@ -18,7 +18,7 @@ RDEPEND=">=dev-libs/libical-0.48:=
 	dev-libs/popt:=
 	>=x11-libs/gtk+-2.10:2=
 	berkdb? ( >=sys-libs/db-4:= )
-	clock-panel-plugin? ( >=xfce-base/xfce4-panel-4.10:= )
+	clock-panel-plugin? ( <xfce-base/xfce4-panel-4.15:=[gtk2(+)] )
 	dbus? ( >=dev-libs/dbus-glib-0.100:= )
 	libnotify? ( >=x11-libs/libnotify-0.7:= )"
 DEPEND="${RDEPEND}
