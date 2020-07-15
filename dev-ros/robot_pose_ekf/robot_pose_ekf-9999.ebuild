@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-ROS_REPO_URI="https://github.com/ros-planning/navigation"
+ROS_REPO_URI="https://github.com/ros-planning/robot_pose_ekf"
 ROS_SUBDIR=${PN}
 KEYWORDS="~amd64 ~arm"
 CATKIN_HAS_MESSAGES=yes
