@@ -1,14 +1,14 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 inherit desktop qmake-utils
 
 DESCRIPTION="Crossplatform log viewer for Android, iOS and text files"
 HOMEPAGE="https://github.com/alopatindev/qdevicemonitor"
 
-if [[ ${PV} == "9999" ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/alopatindev/${PN}"
 else
@@ -21,10 +21,10 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
+	app-pda/usbmuxd
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
-	dev-util/android-tools
-	app-pda/usbmuxd"
+	dev-util/android-tools"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
