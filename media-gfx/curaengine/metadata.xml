@@ -21,6 +21,15 @@
 		<email>perlovka@gmail.com</email>
 		<name>Michael Perlov</name>
 	</maintainer>
+	<longdescription>
+		The CuraEngine is a C++ console application for 3D printing GCode generation.
+		It has been made as a better and faster alternative to the old Skeinforge engine.
+
+		This is just a console application for GCode generation.
+		For a full graphical application look at Cura which is the graphical frontend for CuraEngine.
+
+		The CuraEngine can be used seperately or in other applications. Feel free to add it to your application.
+	</longdescription>
 	<slots>
 		<subslots>soname major version number</subslots>
 	</slots>
