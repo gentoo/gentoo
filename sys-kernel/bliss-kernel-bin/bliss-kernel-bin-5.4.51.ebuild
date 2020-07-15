@@ -6,7 +6,7 @@ EAPI=7
 inherit kernel-install
 
 # Variables
-_LV="FC.01"                     # Local Version
+_LV="FB.01"                     # Local Version
 _PLV="${PV}-${_LV}"             # Package Version + Local Version (Module Dir)
 
 # Main
@@ -18,10 +18,6 @@ RESTRICT="strip test"
 LICENSE="GPL-2"
 SLOT="${_PLV}"
 KEYWORDS="-* ~amd64"
-
-# Unset 'initramfs' since 'bliss-kernel' doesn't need them
-# as an explicitly enabled IUSE from the kernel-install eclass.
-IUSE="-initramfs"
 
 S="${WORKDIR}"
 QA_PREBUILT="*"
