@@ -1,0 +1,15 @@
+BDEPEND=dev-perl/DateTime dev-perl/Any-Moose dev-perl/UNIVERSAL-require dev-perl/XML-LibXML test? ( dev-perl/YAML dev-perl/Spiffy virtual/perl-Test-Simple ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=(de)serializer perl module for Adobe's AMF (Action Message Format)
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/Data-AMF
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/DateTime dev-perl/Any-Moose dev-perl/UNIVERSAL-require dev-perl/XML-LibXML dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/T/TY/TYPESTER/Data-AMF-0.09.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=a6cb75f1145cfbaa36b3726a6cc54fa4

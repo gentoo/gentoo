@@ -5884,8 +5884,8 @@ dev-perl/DBIx-Simple 1.350.0-r1 1.370.0: Very complete easy-to-use OO interface 
 dev-perl/DB_File-Lock 0.50.0-r1 0.50.0-r2: Locking with flock wrapper for DB_File
 dev-perl/Daemon-Generic 0.850.0: Framework to provide start/stop/reload for a daemon
 dev-perl/Danga-Socket 1.610.0-r1 1.620.0: A non-blocking socket object; uses epoll()
-dev-perl/Data-AMF 0.90.0-r1: (de)serializer perl module for Adobe's AMF (Action Message Format)
-dev-perl/Data-Buffer 0.40.0-r1: Read/write buffer class
+dev-perl/Data-AMF 0.90.0-r1 0.90.0-r2: (de)serializer perl module for Adobe's AMF (Action Message Format)
+dev-perl/Data-Buffer 0.40.0-r1 0.40.0-r2: Read/write buffer class
 dev-perl/Data-Compare 1.250.0: Compare perl data structures
 dev-perl/Data-Diver 1.010.1: Simple, ad-hoc access to elements of deeply nested structures
 dev-perl/Data-Dump 1.230.0: Pretty printing of data structures
