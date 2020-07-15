@@ -241,7 +241,7 @@ multilib_src_configure() {
 		$(use_enable readline)
 	)
 	if use readline; then
-		options+=(--with-readline-inc="-I${EPREFIX}/usr/include/readline")
+		options+=(--with-readline-inc="-I${ESYSROOT}/usr/include/readline")
 	fi
 
 	# secure-delete USE flag.
