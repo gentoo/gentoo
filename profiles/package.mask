@@ -444,12 +444,6 @@ games-board/sirius
 dev-embedded/gnome-avrdude
 
 # Michał Górny <mgorny@gentoo.org> (2020-06-14)
-# Maintainer unresponsive.  Stuck on py3.6.  Pending version bump.
-# Failing tests.
-# Removal in 30 days.  Bug #718990.
-dev-python/hglib
-
-# Michał Górny <mgorny@gentoo.org> (2020-06-14)
 # Unmaintained since at least 2014.  The current release is 1.5 dev
 # branch from 2010.  Upstream had a few stable 1.4 releases since
 # but 1.5 seems to be dead.  Multiple build failures reported,
