@@ -425,10 +425,6 @@ dev-util/devhelp gedit
 # gobject-introspection[doctool], bug #411761
 dev-libs/gobject-introspection -doctool
 
-# Tobias Klausmann <klausman@gentoo.org> (2011-11-02)
-# libpcre jit is not supported on alpha
-dev-libs/libpcre jit
-
 # missing keywords
 media-plugins/gst-plugins-meta aac dts dv lame libvisual taglib vcd wavpack
 
