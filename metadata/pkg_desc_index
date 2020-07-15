@@ -14137,7 +14137,7 @@ net-analyzer/thcrut 1.2.5-r1 1.2.5-r2: Network discovery and fingerprinting tool
 net-analyzer/thrulay 0.9-r1: Measure the capacity of a network by sending a bulk TCP stream over it
 net-analyzer/tleds 1.05_beta11-r2: Blinks keyboard LEDs indicating outgoing and incoming network packets on selected network interface
 net-analyzer/tptest 3.1.7-r2: Internet bandwidth tester
-net-analyzer/tracebox 0.2: A Middlebox Detection Tool
+net-analyzer/tracebox 0.2 0.4.4: A Middlebox Detection Tool
 net-analyzer/traceproto 1.1.2_beta1: A traceroute-like utility that sends packets based on protocol
 net-analyzer/traceroute 2.1.0: Utility to trace the route of IP packets
 net-analyzer/traceroute-nanog 6.4.2-r1 6.4.2_p1: Traceroute with AS lookup, TOS support, MTU discovery and other features
@@ -14472,7 +14472,7 @@ net-libs/libbtbb 2018.08.1 2018.12.1 9999: A library to decode Bluetooth baseban
 net-libs/libcapi 3.0.7-r1: CAPI library used by AVM products
 net-libs/libcork 0.15.0-r1: A simple, easily embeddable cross-platform C library
 net-libs/libcorkipset 1.1.1.20150311_p8: A small C helper library for storing sets of IPv4 and IPv6 addresses
-net-libs/libcrafter 0.3 9999: a high level library for C++ designed to make easier the creation and decoding of network packets
+net-libs/libcrafter 0.3 0.3_p20171019 9999: a high level library for C++ designed to make easier the creation and decoding of network packets
 net-libs/libdmapsharing 2.9.39: A library that implements the DMAP family of protocols
 net-libs/libdom 0.3.3-r1 0.4.0 0.4.1: implementation of the W3C DOM, written in C
 net-libs/libecap 1.0.0: API for implementing ICAP content analysis and adaptation

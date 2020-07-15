@@ -5448,6 +5448,8 @@ net-analyzer/tcpdump:smi - Build with net-libs/libsmi to load MIBs on the fly to
 net-analyzer/tcpreplay:pcapnav - Enable if you want the jump to byte offset feature via net-libs/libpcapnav
 net-analyzer/tcpreplay:tcpdump - Use net-analyzer/tcpdump for packet decoding feature
 net-analyzer/testssl:bundled-openssl - Install precompiled versions of OpenSSL for greater testing coverage
+net-analyzer/tracebox:curl - Build the curl component for uploading capture files using net-misc/curl
+net-analyzer/tracebox:sniffer - Build the sniffer component using net-libs/libnetfilter_queue
 net-analyzer/wapiti:kerberos - Support Kerberos authentication
 net-analyzer/wapiti:ntlm - Support NTLM authentication
 net-analyzer/wireshark:androiddump - Install androiddump, an extcap interface to capture from Android devices

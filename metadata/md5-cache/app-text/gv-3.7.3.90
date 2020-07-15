@@ -5,10 +5,10 @@ DESCRIPTION=Viewer for PostScript and PDF documents using Ghostscript
 EAPI=7
 HOMEPAGE=https://www.gnu.org/software/gv/
 IUSE=xinerama
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~mips ~ppc ppc64 sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~mips ppc ppc64 sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=GPL-3
 RDEPEND=app-text/ghostscript-gpl x11-libs/libICE x11-libs/libSM x11-libs/libX11 >=x11-libs/libXaw3d-1.6-r1[unicode] x11-libs/libXext x11-libs/libXmu x11-libs/libXpm x11-libs/libXt xinerama? ( x11-libs/libXinerama )
 SLOT=0
 SRC_URI=mirror://gnu-alpha/gv/gv-3.7.3.90.tar.gz
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8
-_md5_=6358589c101b39dffabb207b0983fece
+_md5_=71bdab7aa51983e268f5701f4d8306c7
