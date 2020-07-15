@@ -38,7 +38,10 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
-PATCHES=( "${FILESDIR}/${P}-libs.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-libs.patch"
+	"${FILESDIR}/${P}-proj-6.patch" # bug 686078
+)
 
 src_prepare() {
 	sed -i 's,INSTALLDIR=$(HOME)/zyGrib,INSTALLDIR=$(DESTDIR)/opt/zyGrib,' Makefile || die
