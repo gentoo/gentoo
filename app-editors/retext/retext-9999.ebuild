@@ -28,7 +28,6 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="+spell"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -40,14 +39,8 @@ RDEPEND="
 	dev-python/python-markdown-math[${PYTHON_USEDEP}]
 	dev-python/PyQt5[gui,network,printsupport,widgets,${PYTHON_USEDEP}]
 	dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
-	spell? ( dev-python/pyenchant[${PYTHON_USEDEP}] )
 "
-DEPEND="
-	${RDEPEND}
-"
-BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-"
+DEPEND="${RDEPEND}"
 
 src_test() {
 	virtx distutils-r1_src_test
@@ -60,6 +53,8 @@ python_test() {
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
+
+	optfeature "dictionary support" dev-python/pyenchant
 
 	einfo "Starting with retext-7.0.4 the markdown-math plugin is installed."
 	einfo "Note that you can use different math delimiters, e.g. \(...\) for inline math."

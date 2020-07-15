@@ -7,7 +7,7 @@ EAPI=7
 # https://bitbucket.org/pypy/compatibility/wiki/Home#!gui-library-bindings
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit distutils-r1 virtualx xdg-utils
+inherit distutils-r1 eutils virtualx xdg-utils
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 MY_PN="ReText"
@@ -28,7 +28,6 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="+spell"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -40,14 +39,8 @@ RDEPEND="
 	dev-python/python-markdown-math[${PYTHON_USEDEP}]
 	dev-python/PyQt5[gui,network,printsupport,widgets,${PYTHON_USEDEP}]
 	dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
-	spell? ( dev-python/pyenchant[${PYTHON_USEDEP}] )
 "
-DEPEND="
-	${RDEPEND}
-"
-BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-"
+DEPEND="${RDEPEND}"
 
 src_test() {
 	virtx distutils-r1_src_test
@@ -60,6 +53,8 @@ python_test() {
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
+
+	optfeature "dictionary support" dev-python/pyenchant
 
 	einfo "Starting with retext-7.0.4 the markdown-math plugin is installed."
 	einfo "Note that you can use different math delimiters, e.g. \(...\) for inline math."
