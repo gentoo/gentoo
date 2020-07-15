@@ -24,6 +24,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		$(python_gen_impl_dep sqlite)
+		dev-python/freezegun[${PYTHON_USEDEP}]
 		dev-python/qrcode[${PYTHON_USEDEP}]
 		${RDEPEND}
 	)"
