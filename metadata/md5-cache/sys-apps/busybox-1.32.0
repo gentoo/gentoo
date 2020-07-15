@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare
+DEPEND=!static? ( selinux? ( sys-libs/libselinux ) ) pam? ( sys-libs/pam ) virtual/libcrypt:= static? ( virtual/libcrypt[static-libs] selinux? ( sys-libs/libselinux[static-libs(+)] ) ) >=sys-kernel/linux-headers-2.6.39
+DESCRIPTION=Utilities for rescue and embedded systems
+EAPI=7
+HOMEPAGE=https://www.busybox.net/
+IUSE=debug ipv6 livecd make-symlinks math mdev pam selinux sep-usr static syslog systemd savedconfig
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=!static? ( selinux? ( sys-libs/libselinux ) ) pam? ( sys-libs/pam ) virtual/libcrypt:= mdev? ( !<sys-apps/openrc-0.13 )
+REQUIRED_USE=pam? ( !static )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://www.busybox.net/downloads/busybox-1.32.0.tar.bz2
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	2477ebe553d3e4d2c606191fe6c33602	portability	e8f7ef3a41965b21a734550f8a94c1c6	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=947d77f488d19058c4f6b1707a8434d1
