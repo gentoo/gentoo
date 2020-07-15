@@ -3,9 +3,9 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{7,8,9} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
-DISTUTILS_USE_SETUPTOOLS=rdepend
 
 MY_PN="python-textile"
 MY_P="${MY_PN}-${PV}"
@@ -25,7 +25,6 @@ RDEPEND="
 	dev-python/regex[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
@@ -44,7 +43,7 @@ src_prepare() {
 	local my_drop_tests=(
 		test_getimagesize.py
 		test_imagesize.py
-    	test_textile.py
+		test_textile.py
 	)
 	for test in ${my_drop_tests[@]};
 		do rm "tests/$test" || die
