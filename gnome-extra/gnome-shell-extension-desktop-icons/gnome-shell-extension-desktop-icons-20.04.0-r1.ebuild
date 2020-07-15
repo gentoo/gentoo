@@ -10,7 +10,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="A GNOME Shell extension for providing desktop icons"
 HOMEPAGE="https://gitlab.gnome.org/World/ShellExtensions/desktop-icons"
 
-COMMIT="c2dfe4403c8b3bad25a2b41daa3c485e"
+COMMIT="2df80cf3c27bad3202ca184ea098c770"
 SRC_URI="https://gitlab.gnome.org/World/ShellExtensions/${MY_PN}/uploads/${COMMIT}/${MY_P}.tar.xz"
 
 LICENSE="GPL-3"
@@ -21,7 +21,7 @@ IUSE=""
 COMMON_DEPEND="dev-libs/glib:2"
 RDEPEND="${COMMON_DEPEND}
 	app-eselect/eselect-gnome-shell-extensions
-	=gnome-base/gnome-shell-3.34*
+	>=gnome-base/gnome-shell-3.34
 	>=gnome-base/nautilus-3.30.4
 	sys-apps/xdg-desktop-portal
 "
