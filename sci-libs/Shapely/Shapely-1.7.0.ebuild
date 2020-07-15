@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python3_{7..8} )
 inherit distutils-r1
 
 DESCRIPTION="Geometric objects, predicates, and operations"
-HOMEPAGE="https://pypi.org/project/Shapely/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${PN}-${PV}.tar.gz"
+HOMEPAGE="https://pypi.org/project/Shapely/ https://github.com/Toblerity/Shapely"
+SRC_URI="https://github.com/Toblerity/Shapely/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -26,7 +26,7 @@ BDEPEND="${RDEPEND}
 
 distutils_enable_tests pytest
 
-distutils_enable_sphinx docs
+distutils_enable_sphinx docs dev-python/matplotlib
 
 python_test() {
 	distutils_install_for_testing
