@@ -30,4 +30,5 @@ DEPEND="${RDEPEND}
 "
 PATCHES=(
 	"${FILESDIR}/libdir.patch"
+	"${FILESDIR}/sip.patch"
 )
