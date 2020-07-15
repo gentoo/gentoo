@@ -4813,7 +4813,7 @@ dev-lang/open-cobol 1.1: an open-source COBOL compiler
 dev-lang/orc 0.4.28-r1 0.4.29 0.4.31: The Oil Runtime Compiler, a just-in-time compiler for array operations
 dev-lang/parrot 7.1.0-r1 7.5.0-r1 7.11.0-r1 8.1.0-r1 8.1.0-r2: Virtual machine designed to compile and execute bytecode for dynamic languages
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
-dev-lang/perl 5.30.1 5.30.2 5.30.2-r1 5.30.2-r2 5.30.3 5.30.3-r1 5.30.3-r2: Larry Wall's Practical Extraction and Report Language
+dev-lang/perl 5.30.3 5.30.3-r1 5.30.3-r2 5.32.0: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 7.2.31 7.2.32 7.3.18 7.3.19 7.3.20 7.4.6 7.4.7 7.4.8: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6 5.8: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.18 3.6.10-r2 3.6.11-r1 3.7.7-r2 3.7.8-r1 3.8.2-r2 3.8.3-r1 3.8.4 3.9.0_beta3 3.9.0_beta4: An interpreted, interactive, object-oriented programming language
@@ -10484,8 +10484,8 @@ dev-util/premake 3.7 4.3-r1 4.4_beta5 5.0.0_alpha12: A makefile generation tool
 dev-util/pretrace 0.4-r1: start dynamically linked applications under debugging environment
 dev-util/promu 0.5.0: Prometheus Utility Tool
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
-dev-util/pycharm-community 2019.3.1 2019.3.2 2019.3.3 2019.3.4 2020.1 2020.1.1: Intelligent Python IDE with unique code assistance and analysis
-dev-util/pycharm-professional 2019.3.1 2019.3.2 2019.3.3 2019.3.4 2020.1 2020.1.1: Intelligent Python IDE with unique code assistance and analysis
+dev-util/pycharm-community 2019.3.1 2019.3.2 2019.3.3 2019.3.4 2020.1 2020.1.1 2020.1.3: Intelligent Python IDE with unique code assistance and analysis
+dev-util/pycharm-professional 2019.3.1 2019.3.2 2019.3.3 2019.3.4 2020.1 2020.1.1 2020.1.3: Intelligent Python IDE with unique code assistance and analysis
 dev-util/qbs 1.12.2 1.14.1 1.15.0 1.16.0: Modern build tool for software projects
 dev-util/qdevicemonitor 1.0.1-r2 9999: Crossplatform log viewer for Android, iOS and text files
 dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
@@ -17559,7 +17559,7 @@ virtual/perl-CPAN-Meta 2.150.10-r3: Virtual for CPAN-Meta
 virtual/perl-CPAN-Meta-Requirements 2.140.0-r5: Virtual for CPAN-Meta-Requirements
 virtual/perl-CPAN-Meta-YAML 0.18.0-r5: Virtual for CPAN-Meta-YAML
 virtual/perl-Carp 1.500.0-r2: Virtual for Carp
-virtual/perl-Compress-Raw-Bzip2 2.84.0-r1 2.89.0-r1: Virtual for Compress-Raw-Bzip2
+virtual/perl-Compress-Raw-Bzip2 2.89.0-r1: Virtual for Compress-Raw-Bzip2
 virtual/perl-Compress-Raw-Zlib 2.84.0: Virtual for Compress-Raw-Zlib
 virtual/perl-DB_File 1.843.0: Virtual for DB_File
 virtual/perl-Data-Dumper 2.174.0: Virtual for Data-Dumper
@@ -17597,7 +17597,7 @@ virtual/perl-Math-BigInt-FastCalc 0.500.800: Virtual for Math-BigInt-FastCalc
 virtual/perl-Math-BigRat 0.261.400: Virtual for Math-BigRat
 virtual/perl-Math-Complex 1.590.100-r3: Virtual for Math-Complex
 virtual/perl-Memoize 1.30.100_rc-r9: Virtual for Memoize
-virtual/perl-Module-CoreList 5.201.911.100 5.202.003.140 5.202.6.13.0_rc: Virtual for Module-CoreList
+virtual/perl-Module-CoreList 5.202.6.13.0_rc: Virtual for Module-CoreList
 virtual/perl-Module-Load 0.340.0: Virtual for Module-Load
 virtual/perl-Module-Load-Conditional 0.680.0-r3: Virtual for Module-Load-Conditional
 virtual/perl-Module-Loaded 0.80.0-r12: Virtual for Module-Loaded
