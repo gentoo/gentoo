@@ -21,7 +21,7 @@ IUSE=""
 COMMON_DEPEND="dev-libs/glib:2"
 RDEPEND="${COMMON_DEPEND}
 	app-eselect/eselect-gnome-shell-extensions
-	=gnome-base/gnome-shell-3.34*
+	>=gnome-base/gnome-shell-3.34
 	>=gnome-base/nautilus-3.30.4
 	sys-apps/xdg-desktop-portal
 "
