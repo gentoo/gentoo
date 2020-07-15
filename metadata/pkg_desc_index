@@ -5896,8 +5896,8 @@ dev-perl/Data-Float 0.13.0: details of the floating point data type
 dev-perl/Data-FormValidator 4.880.0: Validates user input (usually from an HTML form) based on input profile
 dev-perl/Data-GUID 0.49.0: Simple interface for generating and using globally unique identifiers
 dev-perl/Data-HexDump 0.20.0: A Simple Hexadecial Dumper
-dev-perl/Data-Hexify 1.0.0-r1: Perl extension for hexdumping arbitrary data
-dev-perl/Data-Hierarchy 0.340.0-r1: Data::Hierarchy - Handle data in a hierarchical structure
+dev-perl/Data-Hexify 1.0.0-r1 1.0.0-r2: Perl extension for hexdumping arbitrary data
+dev-perl/Data-Hierarchy 0.340.0-r1 0.340.0-r2: Handle data in a hierarchical structure
 dev-perl/Data-ICal 0.220.0: Generates iCalendar (RFC 2445) calendar files
 dev-perl/Data-IEEE754 0.20.0: Pack and unpack big-endian IEEE754 floats and doubles
 dev-perl/Data-ObjectDriver 0.150.0: Simple, transparent data interface, with caching
