@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 ROS_REPO_URI="https://github.com/RobotWebTools/rosbridge_suite"
 KEYWORDS="~amd64"
 ROS_SUBDIR=${PN}
@@ -16,6 +16,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/rosapi
 	dev-ros/rosbridge_library
+	dev-ros/rosbridge_msgs
 	dev-ros/rosbridge_server
 	"
 DEPEND=""
