@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit python-single-r1
 
@@ -25,6 +25,10 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
+
+PATCHES=(
+	"${FILESDIR}"/${P}-py38.patch
+)
 
 src_install() {
 	default
