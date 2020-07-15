@@ -6,16 +6,16 @@ EAPI=6
 inherit eutils alternatives flag-o-matic toolchain-funcs multilib multiprocessing
 
 PATCH_VER=1
-CROSS_VER=1.3.2
+CROSS_VER=1.3.4
 PATCH_BASE="perl-5.30.0-patches-${PATCH_VER}"
 PATCH_DEV=dilfridge
 
-DIST_AUTHOR=SHAY
+DIST_AUTHOR=XSAWYERX
 
 # Greatest first, don't include yourself
 # Devel point-releases are not ABI-intercompatible, but stable point releases are
 # BIN_OLDVERSEN is contains only C-ABI-intercompatible versions
-PERL_BIN_OLDVERSEN="5.30.0 5.30.1"
+PERL_BIN_OLDVERSEN=""
 
 if [[ "${PV##*.}" == "9999" ]]; then
 	DIST_VERSION=5.30.0
@@ -51,7 +51,8 @@ LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0/${SUBSLOT}"
 
 if [[ "${PV##*.}" != "9999" ]] && [[ "${PV/rc//}" == "${PV}" ]] ; then
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS=""
 fi
 
 IUSE="berkdb debug doc gdbm ithreads"
@@ -83,7 +84,7 @@ dual_scripts() {
 	src_remove_dual      perl-core/ExtUtils-ParseXS   3.400.0       xsubpp
 	src_remove_dual      perl-core/IO-Compress        2.84.0        zipdetails
 	src_remove_dual      perl-core/JSON-PP            4.20.0        json_pp
-	src_remove_dual      perl-core/Module-CoreList    5.202.003.140 corelist
+	src_remove_dual      perl-core/Module-CoreList    5.202.6.13.0_rc corelist
 	src_remove_dual      perl-core/Pod-Parser         1.630.0       pod2usage podchecker podselect
 	src_remove_dual      perl-core/Pod-Perldoc        3.280.100     perldoc
 	src_remove_dual      perl-core/Test-Harness       3.420.0       prove
