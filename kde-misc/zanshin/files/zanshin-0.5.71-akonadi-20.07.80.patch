@@ -1,0 +1,24 @@
+From d37e34f78b3cb3ec5890ce22b0d15ad6e639f9be Mon Sep 17 00:00:00 2001
+From: Volker Krause <vkrause@kde.org>
+Date: Sat, 20 Jun 2020 09:44:44 +0200
+Subject: [PATCH] Build against a recent Akonadi
+
+---
+ tests/testlib/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/testlib/CMakeLists.txt b/tests/testlib/CMakeLists.txt
+index 794ac2b2..9b786b77 100644
+--- a/tests/testlib/CMakeLists.txt
++++ b/tests/testlib/CMakeLists.txt
+@@ -21,6 +21,7 @@ target_link_libraries(testlib
+     KF5::AkonadiCore
+     KF5::AkonadiXml
+     KF5::CalendarCore
++    Qt5::DBus
+     Qt5::Test
+ )
+ 
+-- 
+GitLab
+
