@@ -14,9 +14,6 @@ S="${WORKDIR}"/${P/_p/-post}
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
-IUSE="test"
-RESTRICT="!test? ( test )"
-REQUIRED_USE="|| ( $(python_gen_useflags 'python*') )"
 
 RDEPEND="
 	>=dev-python/httplib2-0.9.1[${PYTHON_USEDEP}]
@@ -27,13 +24,14 @@ RDEPEND="
 	dev-python/keyring[${PYTHON_USEDEP}]
 	!<=dev-python/google-api-python-client-1.1[${PYTHON_USEDEP}]
 "
-BDEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( ${RDEPEND}
+BDEPEND="
+	test? (
 		dev-python/flask[${PYTHON_USEDEP}]
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
 	)
 "
+
+distutils_enable_tests nose
 
 PATCHES=(
 	"${FILESDIR}/oauth2client-4.1.3-py38.patch"
