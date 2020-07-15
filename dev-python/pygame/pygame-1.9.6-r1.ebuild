@@ -16,7 +16,7 @@ KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ppc ~ppc64 ~sparc x86"
 IUSE="doc examples midi opengl test X"
 RESTRICT="!test? ( test )"
 
-DEPEND="dev-python/numpy[${PYTHON_USEDEP}]
+RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]
 	>=media-libs/sdl-image-1.2.2[png,jpeg]
 	>=media-libs/sdl-mixer-1.2.4
 	>=media-libs/sdl-ttf-2.0.6
@@ -24,10 +24,20 @@ DEPEND="dev-python/numpy[${PYTHON_USEDEP}]
 	midi? ( media-libs/portmidi )
 	X? ( >=media-libs/libsdl-1.2.5[opengl?,video,X] )
 	!X? ( >=media-libs/libsdl-1.2.5 )"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	test? (
+		media-libs/sdl-image[gif,png,jpeg]
+		media-libs/sdl-mixer[mp3,vorbis,wav]
+	)"
+# fontconfig used for fc-list
+RDEPEND+="
+	media-libs/fontconfig"
 # util-linux provides script
 BDEPEND="
-	test? ( sys-apps/util-linux )"
+	test? (
+		media-libs/fontconfig
+		sys-apps/util-linux
+	)"
 
 src_prepare() {
 	# segfaults on Xvfb
