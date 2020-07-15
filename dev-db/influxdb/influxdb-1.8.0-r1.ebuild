@@ -6,7 +6,7 @@ EAPI=7
 DESCRIPTION="Scalable datastore for metrics, events, and real-time analytics"
 HOMEPAGE="https://www.influxdata.com"
 
-inherit go-module systemd user
+inherit go-module systemd
 
 EGO_PN="github.com/influxdata/${PN}"
 EGO_SUM=(
@@ -461,15 +461,15 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="doc"
 
-DEPEND="doc? (
+BDEPEND="doc? (
 	>=app-text/asciidoc-8.6.10
 	app-text/xmlto
 )"
-
-pkg_setup() {
-	enewgroup influxdb
-	enewuser influxdb -1 -1 /var/lib/influxdb influxdb
-}
+COMMON_DEPEND="
+	acct-group/influxdb
+	acct-user/influxdb"
+DEPEND="${COMMON_DEPEND}"
+RDEPEND="${COMMON_DEPEND}"
 
 src_compile() {
 	set -- env GOBIN="${S}/bin/" go install -a -installsuffix cgo \
@@ -477,7 +477,7 @@ src_compile() {
 		-v -work -x ./...
 	echo "$@"
 	"$@" || die "compile failed"
-	use doc && cd man && emake build
+	use doc && emake -C man build
 }
 
 src_install() {
