@@ -27,4 +27,6 @@ CONFIG_CHECK="
 
 src_install() {
 	newsbin src/chroot-wrapper chr
+	insinto /etc/chroot-wrapper
+	doins config.bash
 }
