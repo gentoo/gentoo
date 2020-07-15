@@ -7587,7 +7587,7 @@ dev-python/blosc 1.5.1 1.9.1-r1: High performance compressor optimized for binar
 dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutines
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
-dev-python/boto 2.49.0-r2: Amazon Web Services API
+dev-python/boto 2.49.0-r2 2.49.0-r3: Amazon Web Services API
 dev-python/boto3 1.13.26 1.14.20 9999: The AWS SDK for Python
 dev-python/botocore 1.16.26 1.17.20 9999: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.18: A fast and simple micro-framework for small web-applications
@@ -7789,6 +7789,7 @@ dev-python/fido2 0.7.3 0.8.1: Python based FIDO 2.0 library
 dev-python/fields 5.0.0-r2: Container class boilerplate killer
 dev-python/filelock 3.0.12: A platform independent file lock for Python
 dev-python/filetype 1.0.5: Small, dependency-free, fast Python package to infer binary file types checking
+dev-python/findimports 1.5.2: Python module import analysis tool
 dev-python/fitsio 0.9.11: Python library to read from and write to FITS files
 dev-python/fixtures 3.0.0: Fixtures, reusable state for writing clean tests and more
 dev-python/flake8 3.8.1: A wrapper around PyFlakes, pep8 & mccabe
