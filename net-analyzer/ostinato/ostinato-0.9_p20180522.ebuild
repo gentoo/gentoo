@@ -1,12 +1,12 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 COMMIT=9a4e7e7550c6b20a8f0f1393a55036492c1b7703
 inherit qmake-utils
 
-DESCRIPTION="A packet generator and analyzer"
+DESCRIPTION="Packet generator and analyzer"
 HOMEPAGE="https://ostinato.org/"
 SRC_URI="https://github.com/pstavirs/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
