@@ -1,26 +1,23 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PLOCALES="ca de el es et fr gl it ja kab ko nl pt ru uk zh_CN zh_TW"
-
 inherit l10n qmake-utils
 
 DESCRIPTION="A full featured webcam capture application"
 HOMEPAGE="https://webcamoid.github.io"
 SRC_URI="https://github.com/webcamoid/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 IUSE_AVKYS=( alsa coreaudio ffmpeg gstreamer jack libuvc oss pulseaudio qtaudio v4lutils videoeffects )
 IUSE="${IUSE_AVKYS[@]} debug headers v4l"
 
-REQUIRED_USE="
-	v4lutils? ( v4l )
-"
+REQUIRED_USE="v4lutils? ( v4l )"
 
 RDEPEND="
 	dev-qt/qtconcurrent:5
@@ -41,8 +38,10 @@ RDEPEND="
 	v4l? ( media-libs/libv4l )
 "
 DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
 	>=sys-kernel/linux-headers-3.6
+"
+BDEPEND="
+	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 "
 
