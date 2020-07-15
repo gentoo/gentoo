@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst
+DEPEND=dev-libs/glib:2
+DESCRIPTION=Show tooltip with full name and description
+EAPI=7
+HOMEPAGE=https://github.com/RaphaelRochet/applications-overview-tooltip
+KEYWORDS=~amd64 ~x86
+LICENSE=public-domain
+RDEPEND=dev-libs/glib:2 app-eselect/eselect-gnome-shell-extensions >=gnome-base/gnome-shell-3.36
+SLOT=0
+SRC_URI=https://github.com/RaphaelRochet/applications-overview-tooltip/archive/v8.tar.gz -> gnome-shell-extension-applications-overview-tooltip-8.tar.gz
+_md5_=a5d539df39e6e3a29a907d0986f3b9d7

@@ -1399,7 +1399,7 @@ app-editors/pluma 1.22.2 1.24.0: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
 app-editors/qhexedit2 0.8.6_p20190316: Hex editor library, Qt application written in C++ with Python bindings
 app-editors/qxmledit 0.9.12: Simple Qt-based XML editor
-app-editors/retext 7.0.4-r1 9999: Simple editor for Markdown and reStructuredText
+app-editors/retext 7.0.4-r1 7.1.0 9999: Simple editor for Markdown and reStructuredText
 app-editors/sandy 0.4 0.4-r1: an ncurses text editor with an easy-to-read, hackable C source
 app-editors/scite 4.1.3 4.2.0 4.2.1 4.3.2 4.3.3: A very powerful, highly configurable, small editor with syntax coloring
 app-editors/shed 1.15: Simple Hex EDitor
@@ -2758,7 +2758,7 @@ app-text/pspdftool 0.03: Tool for prepress preparation of PDF and PostScript doc
 app-text/pspresent 1.3-r1: A tool to display full-screen PostScript presentations
 app-text/pstotext 1.9-r4: Extract ASCII text from a PostScript or PDF file
 app-text/psutils 1.17-r3: PostScript Utilities
-app-text/pytextile 3.0.3: A Python port of Textile, A humane web text generator
+app-text/pytextile 3.0.3 4.0.1: A Python port of Textile, A humane web text generator
 app-text/q-text-as-data 2.0.10: A CLI tool that allows direct execution of SQL-like queries on text
 app-text/qpdf 9.0.2 9.1.1-r1 10.0.1-r1: Command-line tool for structural, content-preserving transformation of PDF files
 app-text/qpdfview 0.4.18: A tabbed document viewer
@@ -5887,7 +5887,7 @@ dev-perl/Danga-Socket 1.610.0-r1 1.620.0: A non-blocking socket object; uses epo
 dev-perl/Data-AMF 0.90.0-r1 0.90.0-r2: (de)serializer perl module for Adobe's AMF (Action Message Format)
 dev-perl/Data-Buffer 0.40.0-r1 0.40.0-r2: Read/write buffer class
 dev-perl/Data-Compare 1.250.0 1.270.0: Compare perl data structures
-dev-perl/Data-Diver 1.010.1: Simple, ad-hoc access to elements of deeply nested structures
+dev-perl/Data-Diver 1.010.1 1.10.100-r1: Simple, ad-hoc access to elements of deeply nested structures
 dev-perl/Data-Dump 1.230.0: Pretty printing of data structures
 dev-perl/Data-Dump-Streamer 2.400.0 2.400.0-r1: Accurately serialize a data structure as Perl code
 dev-perl/Data-DumpXML 1.60.0-r1: Dump arbitrary data structures as XML
@@ -7599,7 +7599,7 @@ dev-python/brython 3.7.3 3.7.4: A Python 3 implementation for client-side web pr
 dev-python/bsddb3 6.2.7: Python bindings for Berkeley DB
 dev-python/cached-property 1.5.1: A cached-property for decorating methods in classes
 dev-python/cachelib 0.1: Collection of cache libraries in the same API interface. Extracted from werkzeug
-dev-python/cachetools 3.1.1: Extensible memoizing collections and decorators
+dev-python/cachetools 3.1.1 4.1.1: Extensible memoizing collections and decorators
 dev-python/cairocffi 0.8.0-r1 0.9.0-r1 1.1.0: CFFI-based drop-in replacement for Pycairo
 dev-python/cangjie 1.3: Python wrapper for libcangjie
 dev-python/capturer 2.4: Easily capture stdout/stderr of the current process and subprocesses
@@ -7815,7 +7815,7 @@ dev-python/flask-paranoid 0.2.0-r1: Simple user session protection extension for
 dev-python/flask-principal 0.4.0-r1: Identity management for flask
 dev-python/flask-restful 0.3.8: Simple framework for creating REST APIs
 dev-python/flask-script 2.0.6: Flask support for writing external scripts
-dev-python/flask-security 3.0.0: Simple security for Flask apps
+dev-python/flask-security 3.0.0 3.4.3: Simple security for Flask apps
 dev-python/flask-sphinx-themes 1.0.2: Sphinx Themes for Flask related projects and Flask itself
 dev-python/flask-sqlalchemy 2.4.1-r1 2.4.3 2.4.4: SQLAlchemy support for Flask applications
 dev-python/flask-themes 0.1.3_p20180112: Infrastructure for theming support in Flask applications
@@ -8043,7 +8043,7 @@ dev-python/mando 0.6.4: Create Python CLI apps with little to no effort at all!
 dev-python/manuel 1.9.0: Manuel lets you build tested documentation
 dev-python/markdown 2.6.11 3.1.1-r1 3.2.2: Python implementation of the markdown markup language
 dev-python/markdown2 2.3.9: Python Markdown language reimplementation
-dev-python/markups 3.0.0: A wrapper around various text markups
+dev-python/markups 3.0.0 3.0.0-r1: A wrapper around various text markups
 dev-python/markupsafe 1.1.1: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/marshmallow 3.5.1: A lightweight library for converting complex datatypes to and from native Python datatypes.
 dev-python/matplotlib 2.2.2-r1 2.2.4 3.1.2 3.2.1 3.2.2: Pure python plotting library with matlab like syntax
@@ -8233,7 +8233,7 @@ dev-python/pep8 1.7.1: Python style guide checker
 dev-python/pew 1.1.1: tool to manage multiple virtualenvs written in pure python
 dev-python/pexpect 4.6.0 4.8.0: Python module for spawning child apps and responding to expected patterns
 dev-python/pgspecial 1.11.9: Python implementation of postgres meta commands
-dev-python/phonenumbers 8.12.4: Python port of Google's libphonenumber
+dev-python/phonenumbers 8.12.4 8.12.6: Python port of Google's libphonenumber
 dev-python/picklemagic 0.0_pre20160415: A library for analysing python pickles safely
 dev-python/pickleshare 0.7.5: A small 'shelve' like datastore with concurrency support
 dev-python/pid 2.2.5: Pidfile featuring stale detection and file-locking
@@ -8260,6 +8260,7 @@ dev-python/pockets 0.5.1 0.9.1: Collection of helpful Python tools
 dev-python/podcastparser 0.6.4: Podcast parser for the gpodder client
 dev-python/polib 1.1.0-r1: A library to manipulate gettext files (.po and .mo files)
 dev-python/polygon 3.0.7: Python package to handle polygonal shapes in 2D
+dev-python/pony 0.7.13: Python ORM with beautiful query syntax
 dev-python/portend 2.6: TCP port monitoring utilities
 dev-python/poyo 0.5.0: A lightweight YAML Parser for Python
 dev-python/precis-i18n 1.0.1: Internationalized Usernames and Passwords
@@ -8537,7 +8538,7 @@ dev-python/python-lzo 1.12-r1: Python interface to lzo
 dev-python/python-magic 0.4.18: Access the libmagic file type identification library
 dev-python/python-magnumclient 2.12.0: A client for the OpenStack Magnum API
 dev-python/python-manilaclient 1.27.0: A client for the OpenStack Manila API
-dev-python/python-markdown-math 0.6-r1: Math extension for Python-Markdown
+dev-python/python-markdown-math 0.6-r1 0.7: Math extension for Python-Markdown
 dev-python/python-memcached 1.59: Pure python memcached client
 dev-python/python-mimeparse 1.6.0-r1: Basic functions for handling mime-types in python
 dev-python/python-mistralclient 3.8.1: A client for the OpenStack Mistral API
@@ -11506,11 +11507,11 @@ gnome-extra/gnome-logs 3.34.0: Log viewer for the systemd journal
 gnome-extra/gnome-power-manager 3.32.0: GNOME power statistics
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extension-appindicator 33: Support Ubuntu AppIndicators and KStatusNotifierItems in Gnome
-gnome-extra/gnome-shell-extension-applications-overview-tooltip 7: Show tooltip with full name and description
-gnome-extra/gnome-shell-extension-bluetooth-quick-connect 10: Allow to connect bluetooth paired devices from gnome control panel
-gnome-extra/gnome-shell-extension-dash-to-panel 35 37: An icon taskbar for the Gnome Shell
-gnome-extra/gnome-shell-extension-desktop-icons 19.10.2 20.04.0: A GNOME Shell extension for providing desktop icons
-gnome-extra/gnome-shell-extension-gsconnect 33-r2: KDE Connect implementation for Gnome Shell
+gnome-extra/gnome-shell-extension-applications-overview-tooltip 7 8: Show tooltip with full name and description
+gnome-extra/gnome-shell-extension-bluetooth-quick-connect 10 13: Allow to connect bluetooth paired devices from gnome control panel
+gnome-extra/gnome-shell-extension-dash-to-panel 37 38: An icon taskbar for the Gnome Shell
+gnome-extra/gnome-shell-extension-desktop-icons 20.04.0-r1: A GNOME Shell extension for providing desktop icons
+gnome-extra/gnome-shell-extension-gsconnect 33-r2 39: KDE Connect implementation for Gnome Shell
 gnome-extra/gnome-shell-extensions 3.34.2 3.36.2: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons-plus 27: Moves legacy tray icons to top panel
 gnome-extra/gnome-shell-frippery 3.34.2: Unofficial extension pack providing GNOME 2-like features for GNOME 3
@@ -14224,7 +14225,7 @@ net-dns/maradns 2.0.16 3.5.0005: A security-aware DNS server
 net-dns/mdns-repeater 20110921: Multicast DNS repeater
 net-dns/mydns 1.2.8.31-r1 1.2.8.31-r2: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
-net-dns/nsd 4.2.4 4.3.0 4.3.1: An authoritative only, high performance, open source name server
+net-dns/nsd 4.2.4 4.3.1 4.3.2: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.9.0 3.9.2 3.10.0: A framework for managing DNS information
@@ -15827,7 +15828,7 @@ sci-geosciences/tcd-utils 20120115-r1: Utilities for working with Tidal Constitu
 sci-geosciences/viking 1.6.2-r2 1.7 1.7-r1: GPS data editor and analyzer
 sci-geosciences/xtide 2.15.1: XTide provides tide and current predictions in a wide variety of formats
 sci-libs/Rtree 0.8.3_p20180802: R-Tree spatial index for Python GIS
-sci-libs/Shapely 1.6.4_p2-r1: Geometric objects, predicates, and operations
+sci-libs/Shapely 1.6.4_p2-r1 1.7.0: Geometric objects, predicates, and operations
 sci-libs/ViSP 3.3.0: Visual Servoing Platform: visual tracking and visual servoing library
 sci-libs/adolc 2.4.1 2.6.3-r1 2.7.2 9999: Automatic differentiation system for C/C++
 sci-libs/alglib 3.10.0-r1: Numerical analysis and data processing library
@@ -17360,7 +17361,7 @@ sys-libs/libstdc++-v3 3.3.6-r2: Compatibility package for binaries linked agains
 sys-libs/libtermcap-compat 2.0.8-r4: Compatibility package for old termcap-based programs
 sys-libs/libudev-compat 186-r1: Wrapper around libudev.so.1 for packages needing the old libudev.so.0
 sys-libs/libunwind 1.4.0: Portable and efficient API to determine the call-chain of a program
-sys-libs/liburing 0.6 9999: Efficient I/O with io_uring
+sys-libs/liburing 0.6 0.7 9999: Efficient I/O with io_uring
 sys-libs/libutempter 1.1.6-r3 1.2.0 1.2.1: Library that allows non-privileged apps to write utmp (login) info
 sys-libs/libuuid 1.0.3: Portable uuid C library
 sys-libs/libvpd 2.2.6: Library implementation for listing vpds
