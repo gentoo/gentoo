@@ -66,9 +66,9 @@ src_configure() {
 }
 
 src_test() {
-	# some tests require D-Bus
+	# some tests require D-Bus, bug #732110
 	local myctestargs=(
-		-E "(BaseConnectionManager|BaseProtocol)"
+		-E "(BaseConnectionManager|BaseProtocol|StreamTubeHandlers)"
 	)
 	pushd "${BUILD_DIR}" > /dev/null || die
 	virtx cmake_src_test
