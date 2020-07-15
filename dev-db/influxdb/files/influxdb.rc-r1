@@ -1,6 +1,8 @@
 #!/sbin/openrc-run
 
 config="${config:-/etc/influxdb/influxdb.conf}"
+pidfile=${pidfile:-/var/run/influxd.pid}
+influxd_opts=${influxd_opts:-}
 
 supervisor="supervise-daemon"
 command=/usr/bin/influxd
@@ -19,20 +21,20 @@ rc_ulimit="-n 65536"
 
 start_pre() {
 	# Check if config file exist
-	if [ ! -r ${config} ]; then
+	if [ ! -r "${config}" ]; then
 		eerror "config file ${config} doesn't exist"
 	    return 1
 	fi
-	if [ ! -f "$error_log" ]; then
-		mkdir -p "$(dirname $error_log)"
+	if [ -n "${error_log}" ] && [ ! -e "${error_log}" ]; then
+		checkpath -d -o "${command_user}" "$(dirname "${error_log}")"
 	fi
-	if [ ! -f "$output_log" ]; then
-		mkdir -p "$(dirname $output_log)"
+	if [ -n "${output_log}" ] && [ ! -e "${output_log}" ]; then
+		checkpath -d -o "${command_user}" "$(dirname "${output_log}")"
 	fi
 	return 0
 }
 
-if [[ -n "${INFLUXDB_HEALTHCHECK_URI}" ]]; then
+if [ -n "${INFLUXDB_HEALTHCHECK_URI}" ]; then
         healthcheck_delay=300
         healthcheck_timer=60
 
