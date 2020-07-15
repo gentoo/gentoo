@@ -5886,7 +5886,7 @@ dev-perl/Daemon-Generic 0.850.0: Framework to provide start/stop/reload for a da
 dev-perl/Danga-Socket 1.610.0-r1 1.620.0: A non-blocking socket object; uses epoll()
 dev-perl/Data-AMF 0.90.0-r1 0.90.0-r2: (de)serializer perl module for Adobe's AMF (Action Message Format)
 dev-perl/Data-Buffer 0.40.0-r1 0.40.0-r2: Read/write buffer class
-dev-perl/Data-Compare 1.250.0: Compare perl data structures
+dev-perl/Data-Compare 1.250.0 1.270.0: Compare perl data structures
 dev-perl/Data-Diver 1.010.1: Simple, ad-hoc access to elements of deeply nested structures
 dev-perl/Data-Dump 1.230.0: Pretty printing of data structures
 dev-perl/Data-Dump-Streamer 2.400.0 2.400.0-r1: Accurately serialize a data structure as Perl code
