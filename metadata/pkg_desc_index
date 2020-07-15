@@ -2404,7 +2404,7 @@ app-office/moneydance 2017.10 2019.3.1880: A cross-platform personal finance app
 app-office/moneyguru 3.0.1-r2: Future-aware personal finances management
 app-office/multitalk 1.4-r1: A new type of presentation program
 app-office/openoffice-bin 4.1.7: Apache OpenOffice productivity suite
-app-office/orage 4.12.1-r1: A time managing application (and panel plug-in) for the Xfce desktop environment
+app-office/orage 4.12.1-r2: A time managing application (and panel plug-in) for the Xfce desktop environment
 app-office/pinpoint 0.1.8-r1: A tool for making hackers do excellent presentations
 app-office/plan 1.10: Motif based schedule planner
 app-office/planner 0.14.6_p20130520-r2: Project manager for Gnome
