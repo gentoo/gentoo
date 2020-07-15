@@ -43,7 +43,7 @@ IUSE="flash oslec"
 
 PATCHES=( "${WORKDIR}/dahdi-patchset" )
 
-CONFIG_CHECK="MODULES ~CRC_CCITT"
+CONFIG_CHECK="MODULES PCI ~CRC_CCITT"
 
 pkg_pretend() {
 	use oslec && CONFIG_CHECK+=" ECHO"
