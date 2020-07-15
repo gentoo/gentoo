@@ -1,21 +1,20 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
 ROS_REPO_URI="https://github.com/RobotWebTools/rosbridge_suite"
+CATKIN_HAS_MESSAGES=yes
+CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/std_msgs"
 KEYWORDS="~amd64"
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="JSON API to ROS functionality for non-ROS programs"
+DESCRIPTION="Package containing message files for rosbridge"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="
-	dev-ros/rosapi
-	dev-ros/rosbridge_library
-	dev-ros/rosbridge_server
-	"
-DEPEND=""
+RDEPEND=""
+DEPEND="${RDEPEND}"

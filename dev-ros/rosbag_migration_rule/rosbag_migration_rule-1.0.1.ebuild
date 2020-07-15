@@ -1,14 +1,14 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-ROS_REPO_URI="https://github.com/ros/roslint"
+EAPI=7
+
+ROS_REPO_URI="https://github.com/ros/rosbag_migration_rule"
 KEYWORDS="~amd64 ~arm"
-PYTHON_COMPAT=( python{2_7,3_6} pypy3 )
 
 inherit ros-catkin
 
-DESCRIPTION="Performs static checking of Python or C++ source code for errors and standards compliance"
+DESCRIPTION="Allows to export rosbag migration rule files without depending on rosbag"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
