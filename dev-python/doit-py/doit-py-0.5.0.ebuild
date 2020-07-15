@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	test? (
-		app-text/hunspell
+		app-text/hunspell[l10n_en]
 		dev-python/pyflakes[${PYTHON_USEDEP}]
 	)"
 RDEPEND="
