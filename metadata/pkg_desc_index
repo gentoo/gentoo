@@ -4893,6 +4893,7 @@ dev-libs/check 0.14.0-r2 0.15.0: A unit test framework for C
 dev-libs/chmlib 0.40-r1: Library for MS CHM (compressed html) file format
 dev-libs/cl 1.2.3 1.2.4 9999: OpenCL bindings for Erlang
 dev-libs/clhpp 2.0.11-r1 2.0.12: Khronos OpenCL C++ bindings
+dev-libs/clipper 6.4.2: Polygon and line clipping and offsetting library (C++, C#, Delphi)
 dev-libs/cloog 0.18.4 9999: A loop generator for scanning polyhedra
 dev-libs/collada-dom 2.5.0 9999: COLLADA Document Object Model (DOM) C++ Library
 dev-libs/concurrencykit 0.6.0 0.7.0: A library with concurrency related algorithms and data structures in C
@@ -9194,22 +9195,22 @@ dev-ros/pr2_description 1.12.0 1.12.1 1.12.2 1.12.3 1.12.4 9999: Description (me
 dev-ros/pr2_machine 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 1.12.0 1.12.1 1.12.2 1.12.3 1.12.4 9999: xxx.machine files that describe the different hosts a node can be spawned on
 dev-ros/pr2_msgs 1.12.0 1.12.1 1.12.2 1.12.3 1.12.4 9999: Messages for representing PR2 state, such as battery information and the PR2 fingertip sensors
 dev-ros/python_qt_binding 0.3.4 0.3.5-r1 9999: Infrastructure for an integrated graphical user interface based on Qt
-dev-ros/qt_dotgraph 0.2.29 0.2.30 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4 0.3.5 0.3.6 0.3.8 0.3.9 0.3.10 0.3.11 0.3.16 9999: Helpers to work with dot graphs
-dev-ros/qt_gui 0.3.4-r1 0.3.5 0.3.6 0.3.8 0.3.9 0.3.10 0.3.11 0.3.16 9999: ROS infrastructure for an integrated graphical user interface based on Qt
-dev-ros/qt_gui_app 0.2.29 0.2.30 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4 0.3.5 0.3.6 0.3.8 0.3.9 0.3.10 0.3.11 0.3.16 9999: Main to start an instance of the integrated graphical user interface provided by qt_gui
-dev-ros/qt_gui_cpp 0.3.16 9999: Foundation for C++-bindings for dev-ros/qt_gui and creates bindings for every generator available
-dev-ros/qt_gui_py_common 0.2.29 0.2.30 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4 0.3.5 0.3.6 0.3.8 0.3.9 0.3.10 0.3.11 0.3.16 9999: Common functionality for ROS RQT GUI plugins written in Python
-dev-ros/random_numbers 0.3.1 0.3.2 9999: Wrappers for generating floating point values, integers, quaternions using boost libraries
-dev-ros/realtime_tools 1.10.0 1.11.0 1.12.0 9999: Set of tools that can be used from a hard realtime thread, without breaking the realtime behavior
-dev-ros/resource_retriever 1.12.3 1.12.4 9999: Retrieves data from url-format files
-dev-ros/rgbd_launch 2.2.0 2.2.1 2.2.2 9999: Launch files to open an RGBD device
-dev-ros/robot_localization 2.5.2 2.6.2 9999: Package of nonlinear state estimation nodes
-dev-ros/robot_pose_ekf 1.14.0 1.14.2 1.15.1 1.15.2 9999: Estimate the 3D pose of a robot, based on (partial) pose measurements coming from different sources
+dev-ros/qt_dotgraph 0.4.1 9999: Helpers to work with dot graphs
+dev-ros/qt_gui 0.4.1 9999: ROS infrastructure for an integrated graphical user interface based on Qt
+dev-ros/qt_gui_app 0.4.1 9999: Instance of the integrated graphical user interface provided by qt_gui
+dev-ros/qt_gui_cpp 0.4.1 9999: C++-bindings for qt_gui and creates bindings for every generator available
+dev-ros/qt_gui_py_common 0.4.1 9999: Common functionality for ROS RQT GUI plugins written in Python
+dev-ros/random_numbers 0.3.2 9999: Wrappers for generating floating point values, integers and quaternions
+dev-ros/realtime_tools 1.16.0 9999: Set of tools that can be used from a hard realtime thread
+dev-ros/resource_retriever 1.12.6 9999: Retrieves data from url-format files
+dev-ros/rgbd_launch 2.3.0 9999: Launch files to open an RGBD device
+dev-ros/robot_localization 2.6.8 9999: Package of nonlinear state estimation nodes
+dev-ros/robot_pose_ekf 1.14.5 9999: Estimate the 3D pose of a robot from pose measurements from various sources
 dev-ros/robot_pose_publisher 0.2.4 9999: A Simple Node to Publish the Robot's Position Relative to the Map using TFs
-dev-ros/robot_state_publisher 1.13.5 1.13.6-r1 9999: Package for publishing the state of a robot to tf
-dev-ros/ros_environment 1.2.0-r1 9999: ROS environment variables
+dev-ros/robot_state_publisher 1.15.1 9999: Package for publishing the state of a robot to tf
+dev-ros/ros_environment 1.3.1 9999: ROS environment variables
 dev-ros/rosapi 0.11.9 9999: Service calls for getting ros meta-information
-dev-ros/rosauth 0.1.7 9999: Server Side tools for Authorization and Authentication of ROS Clients
+dev-ros/rosauth 1.0.1 9999: Server Side tools for Authorization and Authentication of ROS Clients
 dev-ros/rosbag 1.15.7 9999: Set of tools for recording from and playing back to ROS topics
 dev-ros/rosbag_migration_rule 1.0.1 9999: Allows to export rosbag migration rule files without depending on rosbag
 dev-ros/rosbag_storage 1.15.7 9999: Set of tools for recording from and playing back ROS message
@@ -15413,7 +15414,7 @@ ros-meta/nodelet_core 1.9.15 1.9.16 1.10.0 9999: Nodelet Core Metapackage
 ros-meta/perception 1.5.0 9999: Metapackage for ROS perception stack
 ros-meta/perception_pcl 1.5.4 1.6.1 1.6.2 1.7.0 1.7.1 9999: PCL (Point Cloud Library) ROS interface stack
 ros-meta/pr2_common 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 1.12.0 1.12.1 1.12.2 1.12.3 1.12.4 9999: URDF description and 3D models of robot components of the PR2 robot
-ros-meta/qt_gui_core 0.3.6 0.3.8 0.3.9 0.3.10 0.3.11 0.3.16 9999: Integration of the ROS package system and ROS-specific plugins for a Qt-based GUI
+ros-meta/qt_gui_core 0.3.6 0.3.8 0.3.9 0.3.10 0.3.11 0.3.16 0.4.1 9999: Integration of the ROS package system and ROS-specific plugins for a Qt-based GUI
 ros-meta/robot 1.5.0 9999: Metapackage which includes ROS libaries for any robot hardware
 ros-meta/robot_model 1.12.10 1.12.11 9999: Packages for modeling various aspects of robot information
 ros-meta/ros 1.14.1 1.14.2 1.14.3 1.14.4 1.14.6 1.14.7 1.15.5 9999: ROS packaging system
@@ -16020,7 +16021,7 @@ sci-libs/numkit 1.1.2: Numerical first aid kit (with numpy/scipy)
 sci-libs/o2scl 0.920: Object-oriented Scientific Computing Library
 sci-libs/oc 2.0: Network Data Access Protocol client C library
 sci-libs/oce 0.18.3-r2: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
-sci-libs/octomap 1.9.0 9999: An Efficient Probabilistic 3D Mapping Framework Based on Octrees
+sci-libs/octomap 1.9.0 1.9.5 9999: An Efficient Probabilistic 3D Mapping Framework Based on Octrees
 sci-libs/ogdi 4.1.0: Open Geographical Datastore Interface, a GIS support library
 sci-libs/openblas 0.3.9-r1: Optimized BLAS library based on GotoBLAS2
 sci-libs/opencascade 7.4.0-r2: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
@@ -18031,7 +18032,7 @@ x11-libs/gtksourceview 2.10.5-r3 3.24.11 4.4.0 4.6.1: A text widget implementing
 x11-libs/libFS 1.0.8: X.Org FS library
 x11-libs/libGLw 8.0.0-r1: Mesa GLw library
 x11-libs/libICE 1.0.10: X.Org Inter-Client Exchange library
-x11-libs/libQGLViewer 2.7.1: C++ library based on Qt that eases the creation of OpenGL 3D viewers
+x11-libs/libQGLViewer 2.7.1 2.7.2: C++ library based on Qt that eases the creation of OpenGL 3D viewers
 x11-libs/libSM 1.2.3: X.Org Session Management library
 x11-libs/libX11 1.6.9: X.Org X11 library
 x11-libs/libXScrnSaver 1.2.3: X.Org XScrnSaver library
