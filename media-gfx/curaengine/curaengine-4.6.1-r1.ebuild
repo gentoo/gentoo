@@ -18,7 +18,7 @@ IUSE="+arcus doc openmp test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-  ${PYTHON_DEPS}
+	${PYTHON_DEPS}
 	arcus? (
 		~dev-libs/libarcus-${PV}:*
 		dev-libs/protobuf:=
@@ -27,7 +27,7 @@ RDEPEND="
 	dev-libs/rapidjson
 	dev-libs/stb"
 BDEPEND="${RDEPEND}
-  || ( sys-devel/gcc sys-devel/clang )
+	|| ( sys-devel/gcc sys-devel/clang )
 	doc? ( app-doc/doxygen )
 	test? ( dev-cpp/gtest )
 "
@@ -40,7 +40,7 @@ src_prepare() {
 	# remove static linking
 	sed --in-place --expression="s/-static-libstdc++//g" CMakeLists.txt || die
 
-  if use test; then
+	if use test; then
 		find "${S}"/tests/arcus "${S}"/tests/integration "${S}"/tests/settings "${S}"/tests/utils \
 		 -type f -name '*.cpp' | xargs sed --in-place \
 			--expression='s <../src/utils/AABB.h> "../../src/utils/AABB.h" g'\
@@ -49,7 +49,7 @@ src_prepare() {
 			--expression='s <../src/utils/PolygonConnector.h> "../../src/utils/PolygonConnector.h" g'\
 			--expression='s <../src/utils/polygonUtils.h> "../../src/utils/polygonUtils.h" g'\
 			--expression='s <../src/utils/string.h> "../../src/utils/string.h" g' \
-      --expression='s#include "../src#include "../../src#g'|| die
+			--expression='s#include "../src#include "../../src#g'|| die
 	fi
 
 	cmake_src_prepare

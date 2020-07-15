@@ -30,6 +30,9 @@
 
 		The CuraEngine can be used seperately or in other applications. Feel free to add it to your application.
 	</longdescription>
+	<use>
+		<flag name="arcus">Build with support for communication library between internal components for Ultimaker software</flag>
+	</use>
 	<slots>
 		<subslots>soname major version number</subslots>
 	</slots>
