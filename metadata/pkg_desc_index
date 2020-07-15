@@ -9206,19 +9206,20 @@ dev-ros/robot_pose_ekf 1.14.0 1.14.2 1.15.1 1.15.2 9999: Estimate the 3D pose of
 dev-ros/robot_pose_publisher 0.2.4 9999: A Simple Node to Publish the Robot's Position Relative to the Map using TFs
 dev-ros/robot_state_publisher 1.13.5 1.13.6-r1 9999: Package for publishing the state of a robot to tf
 dev-ros/ros_environment 1.2.0-r1 9999: ROS environment variables
-dev-ros/rosapi 0.8.6 0.9.0 0.10.1 0.11.1 0.11.3 9999: Provides service calls for getting ros meta-information, like list of topics, services, params, etc.
+dev-ros/rosapi 0.11.9 9999: Service calls for getting ros meta-information
 dev-ros/rosauth 0.1.7 9999: Server Side tools for Authorization and Authentication of ROS Clients
 dev-ros/rosbag 1.15.7 9999: Set of tools for recording from and playing back to ROS topics
-dev-ros/rosbag_migration_rule 1.0.0 9999: Allows to export rosbag migration rule files without depending on rosbag
+dev-ros/rosbag_migration_rule 1.0.1 9999: Allows to export rosbag migration rule files without depending on rosbag
 dev-ros/rosbag_storage 1.15.7 9999: Set of tools for recording from and playing back ROS message
 dev-ros/rosbash 1.15.5 9999: Assorted shell commands for using ros with bash
 dev-ros/rosboost_cfg 1.15.5 9999: Tool for determining cflags/lflags/etc. of boost on your system
-dev-ros/rosbridge_library 0.8.6 0.9.0 0.10.1 0.11.1 0.11.3 9999: Core rosbridge package responsible for interpreting JSON and performing the appropriate ROS action
-dev-ros/rosbridge_server 0.11.1 0.11.3 9999: A WebSocket interface to rosbridge
-dev-ros/rosbuild 1.14.2 1.14.3 1.14.4 1.14.6 1.14.7 1.15.5 9999: Scripts for managing the CMake-based build system for ROS
+dev-ros/rosbridge_library 0.11.9 9999: Core rosbridge package for parsing JSON and performing the appropriate action
+dev-ros/rosbridge_msgs 0.11.9 9999: Package containing message files for rosbridge
+dev-ros/rosbridge_server 0.11.9 9999: A WebSocket interface to rosbridge
+dev-ros/rosbuild 1.15.5 9999: Scripts for managing the CMake-based build system for ROS
 dev-ros/rosclean 1.15.5 9999: Cleanup filesystem resources (e.g. log files)
-dev-ros/rosconsole 1.13.7 1.13.9 9999: ROS console output library
-dev-ros/rosconsole_bridge 0.5.2 9999: Connects console_bridge-based logging to rosconsole-based logging
+dev-ros/rosconsole 1.14.0 9999: ROS console output library
+dev-ros/rosconsole_bridge 0.5.4 9999: Connects console_bridge-based logging to rosconsole-based logging
 dev-ros/roscpp 1.15.7 9999: C++ implementation of ROS
 dev-ros/roscpp_serialization 0.7.2 9999: Code for serialization
 dev-ros/roscpp_traits 0.7.2 9999: Message traits code
@@ -9230,15 +9231,15 @@ dev-ros/rosgraph_msgs 1.11.3 9999: Messages relating to ROS comm
 dev-ros/roslang 1.15.5 9999: Common package for all ROS client libraries
 dev-ros/roslaunch 1.15.7 9999: Tool for easily launching multiple ROS nodes
 dev-ros/roslib 1.15.5 9999: Base dependencies and support libraries for ROS
-dev-ros/roslint 0.11.0 0.11.1 0.11.2 9999: Performs static checking of Python or C++ source code for errors and standards compliance
-dev-ros/roslisp 1.9.22 9999: Lisp client library for ROS
+dev-ros/roslint 0.12.0 9999: Static checking of Python or C++ source code for errors and standards compliance
+dev-ros/roslisp 1.9.24 9999: Lisp client library for ROS
 dev-ros/roslz4 1.15.7 9999: Python and C++ implementation of the LZ4 streaming format
 dev-ros/rosmake 1.15.5 9999: ROS dependency aware build tool
 dev-ros/rosmaster 1.15.7 9999: ROS Master implementation
 dev-ros/rosmsg 1.15.7 9999: Command-line tools for displaying information about message and services
 dev-ros/rosnode 1.15.7 9999: Command-line tool for displaying debug information about ROS nodes
 dev-ros/rosout 1.15.7 9999: System-wide logging mechanism for messages sent to the /rosout topic
-dev-ros/rospack 2.4.3 2.5.0 2.5.1 9999: Retrieves information about ROS packages available on the filesystem
+dev-ros/rospack 2.6.2 9999: Retrieves information about ROS packages available on the filesystem
 dev-ros/rosparam 1.15.7 9999: Command-line tool for getting and setting ROS Parameters on the parameter server
 dev-ros/rospy 1.15.7 9999: Python client library for ROS
 dev-ros/rospy_tutorials 0.10.1 9999: Attempts to show the features of ROS step-by-step
@@ -15419,7 +15420,7 @@ ros-meta/ros_comm 1.13.6 1.14.2 1.14.3 1.15.4 1.15.7 9999: ROS communications-re
 ros-meta/ros_control 0.14.1 0.14.2 0.15.0 0.15.1 0.19.1 9999: Controller interfaces, controller managers, transmissions, hardware_interfaces, control_toolbox
 ros-meta/ros_core 1.5.0 9999: Metapackage to aggregate the packages required to use core ROS concepts
 ros-meta/ros_tutorials 0.6.1 0.7.0 0.7.1 0.8.0 0.8.1 0.9.0 0.9.1 0.10.0 0.10.1 9999: Demonstrates various features of ROS, as well as support packages which help demonstrate them
-ros-meta/rosbridge_suite 0.9.0 0.10.1 0.11.1 0.11.3 9999: JSON API to ROS functionality for non-ROS programs
+ros-meta/rosbridge_suite 0.11.3 0.11.9 9999: JSON API to ROS functionality for non-ROS programs
 ros-meta/roscpp_core 0.6.5 0.6.7 0.6.8 0.6.9 0.6.10 0.6.11 0.6.12 0.6.13 0.7.2 9999: Underlying data libraries for roscpp messages
 ros-meta/rosserial 0.7.1 0.7.2 0.7.3 0.7.4 0.7.5 0.7.6 0.7.7 0.8.0 9999: Metapackage for core of rosserial
 ros-meta/rqt 0.5.2 9999: Qt-based framework for GUI development for ROS
