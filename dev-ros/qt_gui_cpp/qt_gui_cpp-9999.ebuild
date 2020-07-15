@@ -1,16 +1,15 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 ROS_REPO_URI="https://github.com/ros-visualization/qt_gui_core"
 KEYWORDS="~amd64"
-PYTHON_COMPAT=( python2_7 )
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Foundation for C++-bindings for dev-ros/qt_gui and creates bindings for every generator available"
+DESCRIPTION="C++-bindings for qt_gui and creates bindings for every generator available"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
