@@ -3247,7 +3247,7 @@ dev-cpp/range-v3 0.10.0-r1: Range library for C++14/17/20, basis for C++20's std
 dev-cpp/rttr 0.9.6: Run Time Type Reflection - library adding reflection to C++
 dev-cpp/sourcetrail 2018.3.55-r1 2019.1.11 2019.2.39 2019.3.46 2019.3.46-r2: A cross-platform source explorer for C/C++ and Java
 dev-cpp/sparsehash 2.0.3-r1: An extremely memory-efficient hash_map implementation
-dev-cpp/tbb 2019.8 2020.2: High level abstract threading library
+dev-cpp/tbb 2019.8 2020.2 2020.3: High level abstract threading library
 dev-cpp/tclap 1.2.1 1.2.2: Simple templatized C++ library for parsing command line arguments
 dev-cpp/tree 2.81: An STL-like tree class
 dev-cpp/waylandpp 0.2.3 0.2.4 0.2.5 0.2.6 0.2.7 0.2.8 9999: Wayland C++ bindings
@@ -4823,8 +4823,8 @@ dev-lang/qu-prolog 10.1 10.2 10.3 10.4 10.5: Extended Prolog supporting quantifi
 dev-lang/rakudo 2019.03 2019.11 2020.05.1 2020.06 9999: A compiler for the Perl 6 programming language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/ruby 2.4.10 2.5.8 2.5.8-r1 2.6.6 2.6.6-r1 2.6.6-r2 2.7.1 2.7.1-r1 2.7.1-r2: An object-oriented scripting language
-dev-lang/rust 1.41.1 1.42.0 1.43.1 1.44.0 1.44.1: Systems programming language from Mozilla
-dev-lang/rust-bin 1.41.1 1.42.0 1.43.1 1.44.0 1.44.1: Systems programming language from Mozilla
+dev-lang/rust 1.41.1 1.42.0 1.43.1 1.44.1: Systems programming language from Mozilla
+dev-lang/rust-bin 1.41.1 1.42.0 1.43.1 1.44.1: Systems programming language from Mozilla
 dev-lang/sassc 3.6.0: A libsass command line driver
 dev-lang/scala 2.12.4 2.12.10: The Scala Programming Language
 dev-lang/scala-bin 2.13.1: The Scala Programming Language
@@ -17665,7 +17665,7 @@ virtual/qmail 1.03: Virtual for qmail
 virtual/resolvconf 1: Virtual to select between different resolvconf providers
 virtual/ruby-ssl 11: Virtual ebuild for the Ruby OpenSSL bindings
 virtual/rubygems 15 16: Virtual ebuild for rubygems
-virtual/rust 1.41.1 1.42.0 1.43.1 1.44.0 1.44.1: Virtual for Rust language compiler
+virtual/rust 1.41.1 1.42.0 1.43.1 1.44.1: Virtual for Rust language compiler
 virtual/service-manager 0 1: Virtual for various service managers
 virtual/skkserv 0: Virtual for SKK server
 virtual/ssh 0: Virtual for SSH client and server
