@@ -40,6 +40,8 @@ RDEPEND="${CDEPEND}
 
 S=${WORKDIR}
 
+QA_PREBUILT="*"
+
 src_install() {
 	# conf.d
 	doconfd etc/default/puppet
