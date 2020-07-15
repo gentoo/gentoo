@@ -2359,8 +2359,6 @@ app-mobilephone/gammu 1.38.5 1.39.0-r1 1.40.0 1.41.0: A tool to handle your cell
 app-mobilephone/gnocky 0.0.7: GTK-2 version of gnokii
 app-mobilephone/gnokii 0.6.31-r1 0.6.31-r2 0.6.31-r3 9999: User space driver and tools for use with mobile phones
 app-mobilephone/heimdall 1.4.2 9999: Tool suite used to flash firmware onto Samsung Galaxy S devices
-app-mobilephone/kannel 1.5.0-r3 1.5.0-r4: Powerful SMS and WAP gateway
-app-mobilephone/kannel-sqlbox 1.5.0-r1: DB-Based Kannel Box for message queueing
 app-mobilephone/obexftp 0.24.2: File transfer over OBEX for mobile phones
 app-mobilephone/qtadb 0.8.1-r1: Android phone manager via ADB
 app-mobilephone/scmxx 0.9.0: Exchange data with Siemens phones
@@ -4612,8 +4610,8 @@ dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of obj
 dev-java/okio 1.11.0: A modern I/O API for Java
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/openjdk 8.252_p09 8.262_p10 11.0.7_p10 11.0.8_p10: Open source implementation of the Java programming language
-dev-java/openjdk-bin 8.252_p09 11.0.7_p10-r1: Prebuilt Java JDK binaries provided by AdoptOpenJDK
-dev-java/openjdk-jre-bin 8.252_p09 11.0.7_p10-r1: Prebuilt Java JRE binaries provided by AdoptOpenJDK
+dev-java/openjdk-bin 8.252_p09 11.0.7_p10-r1 11.0.8_p10: Prebuilt Java JDK binaries provided by AdoptOpenJDK
+dev-java/openjdk-jre-bin 8.252_p09 11.0.7_p10-r1 11.0.8_p10-r1: Prebuilt Java JRE binaries provided by AdoptOpenJDK
 dev-java/openjfx 11.0.7_p1 11.0.8_p2: Java OpenJFX client application platform
 dev-java/oracle-javamail 1.5.2 1.5.5 1.5.6: A Java-based framework to build multiplatform mail and messaging applications
 dev-java/oracle-jdk-bin 1.8.0.202 11.0.2: Oracle's Java SE Development Kit
@@ -4877,7 +4875,7 @@ dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures an
 dev-libs/boehm-gc 8.0.4: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.72.0-r1 1.73.0: Boost Libraries for C++
 dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL library
-dev-libs/botan 2.9.0 2.14.0-r1: C++ crypto library
+dev-libs/botan 2.9.0 2.14.0-r1 2.15.0: C++ crypto library
 dev-libs/boxfort 0.0.1_pre20200110: Convenient & cross-platform sandboxing C library
 dev-libs/busybee 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
 dev-libs/c-blosc 1.11.2 1.19.0: Blocking, shuffling and lossless compression library
@@ -7895,7 +7893,6 @@ dev-python/hacking 2.0.0: A client for the OpenStack Nova API
 dev-python/hcloud-python 1.6.3 1.6.3-r1 1.6.3-r2 1.7.0 1.8.1: Official Hetzner Cloud python library
 dev-python/helpdev 0.6.10: Helping users and developers to get information about the environment
 dev-python/hgdistver 0.25: utility lib to generate python package version infos from mercurial tags
-dev-python/hglib 2.1: Library for using the Mercurial Command Server from Python
 dev-python/hiredis 1.0.1: Python extension that wraps hiredis
 dev-python/hpack 3.0.0: Pure-Python HPACK header compression
 dev-python/html2text 2020.1.16-r1: Turn HTML into equivalent Markdown-structured text
@@ -14104,7 +14101,7 @@ net-analyzer/sinfo 0.0.48: A monitoring tool for networked computers
 net-analyzer/siphon 666-r1 666-r2: A portable passive network mapping suite
 net-analyzer/slurm 0.3.3-r2 0.4.3: Realtime network interface monitor based on FreeBSD's pppstatus
 net-analyzer/smokeping 2.6.9-r1 2.7.2 2.7.3: A powerful latency measurement tool
-net-analyzer/snallygaster 0.0.6: Finds file leaks and other security problems on HTTP servers
+net-analyzer/snallygaster 0.0.6 0.0.8: Finds file leaks and other security problems on HTTP servers
 net-analyzer/sngrep 1.4.6-r3 1.4.7: Ncurses SIP Messages flow viewer
 net-analyzer/sniffit 0.3.7-r4 0.4.0 0.5: Interactive Packet Sniffer
 net-analyzer/snmpclitools 0.6.4: Pure-Python SNMP management tools, formerly pysnmp-apps
