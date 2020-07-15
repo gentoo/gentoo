@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -26,7 +27,6 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-python/markdown[${PYTHON_USEDEP}]
 	dev-python/python-markdown-math[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
