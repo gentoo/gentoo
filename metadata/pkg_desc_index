@@ -2169,7 +2169,7 @@ app-misc/getopt 1.1.6-r1: getopt(1) replacement supporting GNU-style long option
 app-misc/glastree 1.04: glastree is a poor mans snapshot utility using hardlinks written in perl
 app-misc/glcdprocdriver 0.1.2: A glue between the graphlcd-base library from the GraphLCD project
 app-misc/glimpse 4.18.6-r1: A index/query system to search a large set of files quickly
-app-misc/gnote 3.36.1: Desktop note-taking application
+app-misc/gnote 3.36.1 3.36.2: Desktop note-taking application
 app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency of most daily tasks
 app-misc/gnutu 2.5-r1: GNU Student's Timetable for polish users
 app-misc/go-jira 1.0.23: A simple JIRA commandline client in Go
@@ -5888,7 +5888,7 @@ dev-perl/Data-AMF 0.90.0-r1 0.90.0-r2: (de)serializer perl module for Adobe's AM
 dev-perl/Data-Buffer 0.40.0-r1 0.40.0-r2: Read/write buffer class
 dev-perl/Data-Compare 1.250.0 1.270.0: Compare perl data structures
 dev-perl/Data-Diver 1.010.1 1.10.100-r1: Simple, ad-hoc access to elements of deeply nested structures
-dev-perl/Data-Dump 1.230.0: Pretty printing of data structures
+dev-perl/Data-Dump 1.230.0 1.230.0-r1: Pretty printing of data structures
 dev-perl/Data-Dump-Streamer 2.400.0 2.400.0-r1: Accurately serialize a data structure as Perl code
 dev-perl/Data-DumpXML 1.60.0-r1: Dump arbitrary data structures as XML
 dev-perl/Data-Dumper-Concise 2.23.0: Less indentation and newlines plus sub deparsing
@@ -14885,7 +14885,7 @@ net-misc/netpipe 1.0.0_beta2-r2: tool to reliably distribute binary data using U
 net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netsed 0.01b-r1 0.01c: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
-net-misc/networkmanager 1.18.4-r3 1.18.6 1.20.12 1.22.10-r11 1.22.14 1.24.2: A set of co-operative tools that make networking simple and straightforward
+net-misc/networkmanager 1.18.4-r3 1.18.6 1.20.12 1.22.10-r11 1.22.14 1.24.2 1.26.0: A set of co-operative tools that make networking simple and straightforward
 net-misc/nextcloud-client 2.5.2 2.6.4 2.6.5: Desktop Syncing Client for Nextcloud
 net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27.2 9999: NPAPI headers bundle
