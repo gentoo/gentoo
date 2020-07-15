@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-15)
+# Broken by scons-python3 for >1 year, depends on dead gnome-base/libgnomeui,
+# bugs #685576, #726818, no reverse dependencies. Removal in 30 days.
+app-text/glosung
+
 # Kent Fredric <kentnl@gentoo.org> (2020-07-15)
 # No LICENSE declaration by upstream, and no response from upstream
 # since at least 2013 as to what license to use (bug #732710)
