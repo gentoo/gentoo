@@ -1,11 +1,13 @@
-# logrotate for openvas
-/var/log/openvas/openvassd.log {
-        rotate 4
-        weekly
-        compress
-        delaycompress
-        missingok
-	postrotate
-	    /bin/kill -HUP `pidof openvassd`
-	endscript
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+# Daemon ignore HUP so we use 'copytruncate' instead of 'create' 
+# with safe file size to prevent losing log entries.
+
+/var/log/gvm/openvassd.log {
+	compress
+	missingok
+	notifempty
+	sharedscripts
+	copytruncate
+	maxsize 10M
 }

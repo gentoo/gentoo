@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit git-r3 systemd user
 
 DESCRIPTION="Console-based network traffic monitor that keeps statistics of network usage"
@@ -12,6 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="gd selinux test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	dev-db/sqlite
@@ -26,9 +27,9 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-vnstatd )
 "
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.17-conf.patch
-	"${FILESDIR}"/${PN}-1.17-drop-root.patch
-	"${FILESDIR}"/${PN}-1.17-run.patch
+	"${FILESDIR}"/${PN}-2.2-conf.patch
+	"${FILESDIR}"/${PN}-2.2-drop-root.patch
+	"${FILESDIR}"/${PN}-2.2-run.patch
 )
 
 pkg_setup() {
@@ -63,6 +64,6 @@ src_install() {
 	use gd && doman man/vnstati.1
 	doman man/vnstat.1 man/vnstatd.1
 
-	newdoc INSTALL README.setup
-	dodoc CHANGES README UPGRADE FAQ examples/vnstat.cgi
+	newdoc INSTALL.md README.setup
+	dodoc CHANGES README.md UPGRADE.md FAQ examples/vnstat.cgi
 }

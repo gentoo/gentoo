@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_REQ_USE=xml
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 DISTUTILS_SINGLE_IMPL=1
 
 inherit distutils-r1 gnome2-utils versionator xdg-utils
@@ -21,14 +21,13 @@ SLOT="1"
 KEYWORDS="amd64 x86"
 
 RDEPEND="
-	dev-python/httplib2[${PYTHON_USEDEP}]
-	dev-python/PyQt5[${PYTHON_USEDEP},svg,webkit]
-	dev-python/pyzmq[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
-	>=media-libs/libopenshot-0.1.8[python,${PYTHON_USEDEP}]
-"
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/httplib2[${PYTHON_MULTI_USEDEP}]
+		dev-python/PyQt5[${PYTHON_MULTI_USEDEP},svg,webkit]
+		dev-python/pyzmq[${PYTHON_MULTI_USEDEP}]
+		dev-python/requests[${PYTHON_MULTI_USEDEP}]
+	')
+	>=media-libs/libopenshot-0.1.8[python,${PYTHON_SINGLE_USEDEP}]
 "
 
 S="${WORKDIR}"

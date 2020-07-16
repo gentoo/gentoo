@@ -1,0 +1,50 @@
+From 27519e8018ee199219ab223e0b31b76b4e950a2a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 3 May 2020 11:23:33 +0200
+Subject: [PATCH] Increase pexpect timeouts to prevent tests from failing
+
+---
+ testing/acceptance_test.py | 2 +-
+ testing/test_looponfail.py | 6 ++++--
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/testing/acceptance_test.py b/testing/acceptance_test.py
+index b6a4a94..a089baa 100644
+--- a/testing/acceptance_test.py
++++ b/testing/acceptance_test.py
+@@ -332,7 +332,7 @@ class TestDistribution:
+                 time.sleep(10)
+         """
+         )
+-        child = testdir.spawn_pytest("-n1 -v")
++        child = testdir.spawn_pytest("-n1 -v", expect_timeout=30.0)
+         child.expect(".*test_sleep.*")
+         child.kill(2)  # keyboard interrupt
+         child.expect(".*KeyboardInterrupt.*")
+diff --git a/testing/test_looponfail.py b/testing/test_looponfail.py
+index 94fccd7..a6ebebe 100644
+--- a/testing/test_looponfail.py
++++ b/testing/test_looponfail.py
+@@ -284,7 +284,8 @@ class TestFunctional:
+         )
+         # p = testdir.mkdir("sub").join(p1.basename)
+         # p1.move(p)
+-        child = testdir.spawn_pytest("-f %s --traceconfig" % p)
++        child = testdir.spawn_pytest("-f %s --traceconfig" % p,
++                                     expect_timeout=30.0)
+         child.expect("def test_one")
+         child.expect("x == 1")
+         child.expect("1 failed")
+@@ -311,7 +312,8 @@ class TestFunctional:
+                 pass
+         """
+         )
+-        child = testdir.spawn_pytest("-f %s" % p)
++        child = testdir.spawn_pytest("-f %s" % p,
++                                     expect_timeout=30.0)
+         child.expect("1 xpass")
+         # child.expect("### LOOPONFAILING ####")
+         child.expect("waiting for changes")
+-- 
+2.26.2
+

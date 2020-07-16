@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,12 +8,12 @@ GNOME2_LA_PUNT="yes"
 inherit gnome2
 
 DESCRIPTION="ACL editor for GNOME, with Nautilus extension"
-HOMEPAGE="http://rofi.roger-ferrer.org/eiciel/"
-SRC_URI="http://rofi.roger-ferrer.org/eiciel/download/${P}.tar.bz2"
+HOMEPAGE="https://rofi.roger-ferrer.org/eiciel/"
+SRC_URI="https://rofi.roger-ferrer.org/eiciel/download/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="nautilus xattr"
 
 RDEPEND="

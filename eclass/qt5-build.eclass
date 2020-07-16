@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: qt5-build.eclass
@@ -6,18 +6,18 @@
 # qt@gentoo.org
 # @AUTHOR:
 # Davide Pesavento <pesa@gentoo.org>
-# @SUPPORTED_EAPIS: 6
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Eclass for Qt5 split ebuilds.
 # @DESCRIPTION:
 # This eclass contains various functions that are used when building Qt5.
-# Requires EAPI 6.
+# Requires EAPI 7.
 
 if [[ ${CATEGORY} != dev-qt ]]; then
 	die "qt5-build.eclass is only to be used for building Qt 5"
 fi
 
 case ${EAPI} in
-	6)	: ;;
+	7)	: ;;
 	*)	die "qt5-build.eclass: unsupported EAPI=${EAPI:-0}" ;;
 esac
 
@@ -57,7 +57,7 @@ esac
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
 : ${VIRTUALX_REQUIRED:=manual}
 
-inherit eapi7-ver estack flag-o-matic toolchain-funcs virtualx
+inherit estack flag-o-matic toolchain-funcs virtualx
 
 HOMEPAGE="https://www.qt.io/"
 LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
@@ -104,16 +104,13 @@ EGIT_REPO_URI=(
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Build directory for out-of-source builds.
-case ${QT5_BUILD_TYPE} in
-	live)    : ${QT5_BUILD_DIR:=${S}_build} ;;
-	release) : ${QT5_BUILD_DIR:=${S}} ;; # workaround for bug 497312
-esac
+: ${QT5_BUILD_DIR:=${S}_build}
 
 IUSE="debug test"
 
 [[ ${QT5_BUILD_TYPE} == release ]] && RESTRICT+=" test" # bug 457182
 
-DEPEND="
+BDEPEND="
 	dev-lang/perl
 	virtual/pkgconfig
 "
@@ -166,9 +163,9 @@ qt5-build_src_prepare() {
 			-e '/echo "Done."/a fi' configure || die "sed failed (skip qmake bootstrap)"
 
 		# Respect CC, CXX, *FLAGS, MAKEOPTS and EXTRA_EMAKE when bootstrapping qmake
-		sed -i -e "/outpath\/qmake\".*\"\$MAKE\")/ s:): \
+		sed -i -e "/outpath\/qmake\".*\"\$MAKE\")/ s|)| \
 			${MAKEOPTS} ${EXTRA_EMAKE} 'CC=$(tc-getCC)' 'CXX=$(tc-getCXX)' \
-			'QMAKE_CFLAGS=${CFLAGS}' 'QMAKE_CXXFLAGS=${CXXFLAGS}' 'QMAKE_LFLAGS=${LDFLAGS}'&:" \
+			'QMAKE_CFLAGS=${CFLAGS}' 'QMAKE_CXXFLAGS=${CXXFLAGS}' 'QMAKE_LFLAGS=${LDFLAGS}'&|" \
 			-e 's/\(setBootstrapVariable\s\+\|EXTRA_C\(XX\)\?FLAGS=.*\)QMAKE_C\(XX\)\?FLAGS_\(DEBUG\|RELEASE\).*/:/' \
 			configure || die "sed failed (respect env for qmake build)"
 		sed -i -e '/^CPPFLAGS\s*=/ s/-g //' \
@@ -177,12 +174,6 @@ qt5-build_src_prepare() {
 		# Respect CXX in bsymbolic_functions, fvisibility, precomp, and a few other tests
 		sed -i -e "/^QMAKE_CONF_COMPILER=/ s:=.*:=\"$(tc-getCXX)\":" \
 			configure || die "sed failed (QMAKE_CONF_COMPILER)"
-
-		if [[ ${QT5_MINOR_VERSION} -lt 12 ]]; then
-			# Don't add -O3 to CXXFLAGS (bug 549140)
-			sed -i -e '/CONFIG\s*+=/ s/optimize_full//' \
-				src/{corelib/corelib,gui/gui}.pro || die "sed failed (optimize_full)"
-		fi
 
 		# Respect build variables in configure tests (bug #639494)
 		sed -i -e "s|\"\$outpath/bin/qmake\" \"\$relpathMangled\" -- \"\$@\"|& $(qt5_qmake_args) |" configure || die
@@ -198,6 +189,9 @@ qt5-build_src_prepare() {
 qt5-build_src_configure() {
 	if [[ ${QT5_MODULE} == qtbase ]]; then
 		qt5_base_configure
+	fi
+	if [[ ${QT5_MINOR_VERSION} -ge 15 ]] && [[ ${QT5_MODULE} == qttools ]] && [[ -z ${QT5_TARGET_SUBDIRS[@]} ]]; then
+		qt5_tools_configure
 	fi
 
 	qt5_foreach_target_subdir qt5_qmake
@@ -256,10 +250,6 @@ qt5-build_src_install() {
 
 		popd >/dev/null || die
 
-		if [[ ${QT5_MINOR_VERSION} -lt 12 ]]; then
-			docompress -x "${QT5_DOCDIR#${EPREFIX}}"/global
-		fi
-
 		# install an empty Gentoo/gentoo-qconfig.h in ${D}
 		# so that it's placed under package manager control
 		> "${T}"/gentoo-qconfig.h
@@ -294,7 +284,7 @@ qt5-build_src_install() {
 	qt5_install_module_config
 
 	# prune libtool files
-	find "${D}" -name '*.la' -delete || die
+	find "${D}" -name '*.la' -type f -delete || die
 }
 
 # @FUNCTION: qt5-build_pkg_postinst
@@ -416,11 +406,7 @@ qt5_prepare_env() {
 	QT5_IMPORTDIR=${QT5_ARCHDATADIR}/imports
 	QT5_QMLDIR=${QT5_ARCHDATADIR}/qml
 	QT5_DATADIR=${QT5_PREFIX}/share/qt5
-	if [[ ${QT5_MINOR_VERSION} -lt 12 ]]; then
-		QT5_DOCDIR=${QT5_PREFIX}/share/doc/qt-${PV}
-	else
-		QT5_DOCDIR=${QT5_PREFIX}/share/qt5-doc
-	fi
+	QT5_DOCDIR=${QT5_PREFIX}/share/qt5-doc
 	QT5_TRANSLATIONDIR=${QT5_DATADIR}/translations
 	QT5_EXAMPLESDIR=${QT5_DATADIR}/examples
 	QT5_TESTSDIR=${QT5_DATADIR}/tests
@@ -578,9 +564,13 @@ qt5_base_configure() {
 		-no-libpng -no-libjpeg
 		-no-freetype -no-harfbuzz
 		-no-openssl -no-libproxy
+		-no-feature-gssapi
 		-no-xcb-xlib
-		$([[ ${QT5_MINOR_VERSION} -lt 12 ]] && echo -no-xinput2 -no-xkbcommon-x11 -no-xkbcommon-evdev)
-		$([[ ${QT5_MINOR_VERSION} -ge 12 ]] && echo -no-xcb-xinput -no-xkbcommon) # bug 672340
+
+		# bug 672340
+		-no-xkbcommon
+		$([[ ${QT5_MINOR_VERSION} -lt 15 ]] && echo -no-xcb-xinput)
+		$([[ ${QT5_MINOR_VERSION} -ge 15 ]] && echo -no-bundled-xcb-xinput)
 
 		# cannot use -no-gif because there is no way to override it later
 		#-no-gif
@@ -623,11 +613,11 @@ qt5_base_configure() {
 		$(tc-ld-is-gold && echo -use-gold-linker || echo -no-use-gold-linker)
 
 		# disable all platform plugins by default, override in qtgui
-		-no-xcb -no-eglfs -no-kms -no-gbm -no-directfb -no-linuxfb -no-mirclient
+		-no-xcb -no-eglfs -no-kms -no-gbm -no-directfb -no-linuxfb
 
 		# disable undocumented X11-related flags, override in qtgui
 		# (not shown in ./configure -help output)
-		-no-xkb
+		$([[ ${QT5_MINOR_VERSION} -lt 15 ]] && echo -no-xkb)
 
 		# always enable session management support: it doesn't need extra deps
 		# at configure time and turning it off is dangerous, see bug 518262
@@ -653,6 +643,9 @@ qt5_base_configure() {
 		# enable in respective modules to avoid poisoning QT.global_private.enabled_features
 		-no-gui -no-widgets
 
+		# QTBUG-76521, default will change to zstd in Qt6
+		-no-zstd
+
 		# module-specific options
 		"${myconf[@]}"
 	)
@@ -664,10 +657,41 @@ qt5_base_configure() {
 
 	# a forwarding header is no longer created since 5.8, causing the system
 	# config to always be used. bug 599636
-	cp src/corelib/global/qconfig.h include/QtCore/ || die
+	# ${S}/include does not exist in live sources
+	local basedir="${S}/"
+	[[ ${QT5_BUILD_TYPE} == live ]] && basedir=""
+	cp src/corelib/global/qconfig.h "${basedir}"include/QtCore/ || die
 
 	popd >/dev/null || die
 
+}
+
+# @FUNCTION: qt5_tools_configure
+# @INTERNAL
+# @DESCRIPTION:
+# Disables modules other than ${PN} belonging to qttools.
+qt5_tools_configure() {
+	# configure arguments
+	local qmakeargs=(
+		--
+		# not packaged in Gentoo
+		-no-feature-distancefieldgenerator
+		-no-feature-kmap2qmap
+		-no-feature-macdeployqt
+		-no-feature-makeqpf
+		-no-feature-qev
+		-no-feature-qtattributionsscanner
+		-no-feature-windeployqt
+		-no-feature-winrtrunner
+	)
+
+	local i
+	for i in assistant designer linguist pixeltool qdbus qdoc qtdiag qtpaths qtplugininfo; do
+		[[ ${PN} == ${i} ]] || qmakeargs+=( -no-feature-${i} )
+	done
+
+	# allow the ebuild to override what we set here
+	myqmakeargs=( "${qmakeargs[@]}" "${myqmakeargs[@]}" )
 }
 
 # @FUNCTION: qt5_qmake_args
@@ -821,18 +845,18 @@ qt5_install_module_config() {
 qt5_regenerate_global_configs() {
 	einfo "Regenerating gentoo-qconfig.h"
 
-	find "${ROOT%/}${QT5_HEADERDIR}"/Gentoo \
+	find "${ROOT}${QT5_HEADERDIR}"/Gentoo \
 		-name '*-qconfig.h' -a \! -name 'gentoo-qconfig.h' -type f \
 		-execdir cat '{}' + | sort -u > "${T}"/gentoo-qconfig.h
 
 	[[ -s ${T}/gentoo-qconfig.h ]] || ewarn "Generated gentoo-qconfig.h is empty"
-	mv -f "${T}"/gentoo-qconfig.h "${ROOT%/}${QT5_HEADERDIR}"/Gentoo/gentoo-qconfig.h \
+	cp "${T}"/gentoo-qconfig.h "${ROOT}${QT5_HEADERDIR}"/Gentoo/gentoo-qconfig.h \
 		|| eerror "Failed to install new gentoo-qconfig.h"
 
 	einfo "Updating QT_CONFIG in qconfig.pri"
 
-	local qconfig_pri=${ROOT%/}${QT5_ARCHDATADIR}/mkspecs/qconfig.pri
-	local qconfig_pri_orig=${ROOT%/}${QT5_ARCHDATADIR}/mkspecs/gentoo/qconfig-qtcore.pri
+	local qconfig_pri=${ROOT}${QT5_ARCHDATADIR}/mkspecs/qconfig.pri
+	local qconfig_pri_orig=${ROOT}${QT5_ARCHDATADIR}/mkspecs/gentoo/qconfig-qtcore.pri
 	if [[ -f ${qconfig_pri} ]]; then
 		local x qconfig_add= qconfig_remove=
 		local qt_config new_qt_config=
@@ -845,7 +869,7 @@ qt5_regenerate_global_configs() {
 		# generate list of QT_CONFIG entries from the existing list,
 		# appending QCONFIG_ADD and excluding QCONFIG_REMOVE
 		eshopts_push -s nullglob
-		for x in "${ROOT%/}${QT5_ARCHDATADIR}"/mkspecs/gentoo/*-qconfig.pri; do
+		for x in "${ROOT}${QT5_ARCHDATADIR}"/mkspecs/gentoo/*-qconfig.pri; do
 			qconfig_add+=" $(sed -n 's/^QCONFIG_ADD=\s*//p' "${x}")"
 			qconfig_remove+=" $(sed -n 's/^QCONFIG_REMOVE=\s*//p' "${x}")"
 		done
@@ -865,8 +889,8 @@ qt5_regenerate_global_configs() {
 
 	einfo "Updating QT.global_private in qmodule.pri"
 
-	local qmodule_pri=${ROOT%/}${QT5_ARCHDATADIR}/mkspecs/qmodule.pri
-	local qmodule_pri_orig=${ROOT%/}${QT5_ARCHDATADIR}/mkspecs/gentoo/qmodule-qtcore.pri
+	local qmodule_pri=${ROOT}${QT5_ARCHDATADIR}/mkspecs/qmodule.pri
+	local qmodule_pri_orig=${ROOT}${QT5_ARCHDATADIR}/mkspecs/gentoo/qmodule-qtcore.pri
 	if [[ -f ${qmodule_pri} && -f ${qmodule_pri_orig} ]]; then
 		local x
 		local qprivateconfig_enabled= qprivateconfig_disabled=
@@ -877,7 +901,7 @@ qt5_regenerate_global_configs() {
 		qprivateconfig_orig_enabled="$(sed -n 's/^QT.global_private.enabled_features\s=\s*//p' "${qmodule_pri_orig}")"
 		qprivateconfig_orig_disabled="$(sed -n 's/^QT.global_private.disabled_features\s=\s*//p' "${qmodule_pri_orig}")"
 		eshopts_push -s nullglob
-		for x in "${ROOT%/}${QT5_ARCHDATADIR}"/mkspecs/gentoo/*-qmodule.pri; do
+		for x in "${ROOT}${QT5_ARCHDATADIR}"/mkspecs/gentoo/*-qmodule.pri; do
 			qprivateconfig_enabled+=" $(sed -n 's/^QT.global_private.enabled_features\s=\s*//p' "${x}")"
 			qprivateconfig_disabled+=" $(sed -n 's/^QT.global_private.disabled_features\s=\s*//p' "${x}")"
 		done

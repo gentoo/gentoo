@@ -1,0 +1,36 @@
+diff --git a/Makefile.am b/Makefile.am
+index 47b091a..61192bf 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -9,9 +9,7 @@ SUBDIRS   = \
+ 	include \
+ 	man \
+ 	samples \
+-	src \
+-	tests
+-
++	src
+ ACLOCAL_AMFLAGS = -I m4
+ 
+ EXTRA_DIST = \
+diff --git a/configure.ac b/configure.ac
+index c7b4e98..8e6445b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -330,16 +330,6 @@ if test "x$GAWK" = "x"; then
+ 	AC_MSG_ERROR([gawk is required: gawk package])
+ fi
+ 
+-AC_PATH_PROG([SOCAT], socat)
+-if test "x$SOCAT" = "x"; then
+-	AC_MSG_ERROR([socat is required: socat package])
+-fi
+-
+-AC_PATH_PROG([PYTHON], python3)
+-if test "x$PYTHON" = "x"; then
+-	AC_MSG_ERROR([python3 is required])
+-fi
+-
+ AC_ARG_ENABLE([hardening],
+   AS_HELP_STRING([--disable-hardening], [Disable hardening flags]))
+ 

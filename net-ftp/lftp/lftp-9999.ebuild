@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,7 @@ RDEPEND="
 	idn? ( net-dns/libidn2:= )
 	socks5? (
 		>=net-proxy/dante-1.1.12
-		virtual/pam
+		sys-libs/pam
 	)
 	ssl? (
 		gnutls? ( >=net-libs/gnutls-1.2.3:0= )
@@ -53,11 +53,11 @@ DOCS=(
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.5.5-am_config_header.patch
 	"${FILESDIR}"/${PN}-4.7.5-libdir-expat.patch
-	"${FILESDIR}"/${PN}-4.7.5-libdir-readline.patch
 	"${FILESDIR}"/${PN}-4.8.2-libdir-configure.patch
 	"${FILESDIR}"/${PN}-4.8.2-libdir-libidn2.patch
 	"${FILESDIR}"/${PN}-4.8.2-libdir-openssl.patch
 	"${FILESDIR}"/${PN}-4.8.2-libdir-zlib.patch
+	"${FILESDIR}"/${PN}-9999-libdir-readline.patch
 )
 
 src_prepare() {

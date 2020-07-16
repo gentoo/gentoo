@@ -6,11 +6,11 @@ inherit multilib toolchain-funcs
 
 DESCRIPTION="File System Library for the Lua Programming Language"
 HOMEPAGE="https://keplerproject.github.com/luafilesystem/"
-SRC_URI="mirror://github/keplerproject/luafilesystem/${P}.tar.gz"
+SRC_URI="https://github.com/downloads/keplerproject/luafilesystem/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86"
 IUSE=""
 
 DEPEND=">=dev-lang/lua-5.1"

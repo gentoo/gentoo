@@ -1,0 +1,31 @@
+Description: ucontext constants in ptrace.h on ppc64el
+ Needs to include the mentioned header for ucontext.
+Author: Laszlo Boszormenyi (GCS) <gcs@debian.org>
+Bug-Debian: https://bugs.debian.org/894749
+Forwarded: no
+Last-Update: 2018-05-06
+
+---
+
+--- google-perftools-2.7.orig/m4/pc_from_ucontext.m4
++++ google-perftools-2.7/m4/pc_from_ucontext.m4
+@@ -55,7 +55,8 @@ AC_DEFUN([AC_PC_FROM_UCONTEXT],
+                         pc_field_found=true)
+        elif test "x$ac_cv_header_sys_ucontext_h" = xyes; then
+          AC_TRY_COMPILE([#define _GNU_SOURCE 1
+-                         #include <sys/ucontext.h>],
++                         #include <sys/ucontext.h>,
++                         #include <asm/ptrace.h>],
+                         [ucontext_t u; return u.$pc_field == 0;],
+                         AC_DEFINE_UNQUOTED(PC_FROM_UCONTEXT, $pc_field,
+                                            How to access the PC from a struct ucontext)
+--- google-perftools-2.7.orig/src/getpc.h
++++ google-perftools-2.7/src/getpc.h
+@@ -58,6 +58,7 @@
+ #include <string.h>         // for memcmp
+ #if defined(HAVE_SYS_UCONTEXT_H)
+ #include <sys/ucontext.h>
++#include <asm/ptrace.h>
+ #elif defined(HAVE_UCONTEXT_H)
+ #include <ucontext.h>       // for ucontext_t (and also mcontext_t)
+ #elif defined(HAVE_CYGWIN_SIGNAL_H)

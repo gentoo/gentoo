@@ -1,19 +1,18 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils git-r3 toolchain-funcs
+EAPI=7
+inherit flag-o-matic git-r3 toolchain-funcs
 
 DESCRIPTION="A console-based network monitoring utility"
-HOMEPAGE="http://fedorahosted.org/iptraf-ng/"
-EGIT_REPO_URI="https://git.fedorahosted.org/git/iptraf-ng.git"
+HOMEPAGE="https://github.com/iptraf-ng/iptraf-ng"
+EGIT_REPO_URI="https://github.com/iptraf-ng/iptraf-ng"
+EGIT_BRANCH="dev"
 
 LICENSE="GPL-2 doc? ( FDL-1.1 )"
 SLOT="0"
 KEYWORDS=""
 IUSE="doc"
-
-RESTRICT="test"
 
 RDEPEND="
 	>=sys-libs/ncurses-5.7-r7:0=
@@ -23,6 +22,7 @@ DEPEND="
 	virtual/os-headers
 	!net-analyzer/iptraf
 "
+RESTRICT="test"
 
 src_prepare() {
 	sed -i \
@@ -35,26 +35,27 @@ src_prepare() {
 		-e 's|IPTRAF|&-NG|g' \
 		-e 's|IPTraf|&-NG|g' \
 		-e 's|iptraf|&-ng|g' \
-		-e 's|rvnamed|&-ng|g' \
-		-e 's|RVNAMED|&-NG|g' \
 		src/*.8 || die
-}
 
-# configure does not do very much we do not already control
-src_configure() { :; }
-
-src_compile() {
-	tc-export CC
-	CFLAGS+=' -DLOCKDIR=\"/run/lock/iptraf-ng\"'
 	default
 }
 
+src_configure() {
+	# The configure script does not do very much we do not already control
+	append-cppflags '-DLOCKDIR=\"/run/lock/iptraf-ng\"'
+	tc-export CC
+}
+
 src_install() {
-	dosbin {iptraf,rvnamed}-ng
+	dosbin ${PN}
 
 	doman src/*.8
-	dodoc AUTHORS CHANGES FAQ README* RELEASE-NOTES
-	use doc && dohtml -a gif,html,png -r Documentation/*
+	dodoc AUTHORS CHANGES* FAQ README*
+
+	if use doc; then
+		docinto html
+		dodoc -r Documentation/*
+	fi
 
 	keepdir /var/{lib,log}/iptraf-ng #376157
 }

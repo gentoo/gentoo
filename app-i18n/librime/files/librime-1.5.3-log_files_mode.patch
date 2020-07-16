@@ -1,0 +1,14 @@
+https://github.com/rime/librime/issues/316
+https://github.com/rime/librime/commit/90839b0b3d47cbfef715ea5f061c7505666ff75d
+
+--- /src/rime/setup.cc
++++ /src/rime/setup.cc
+@@ -35,6 +35,8 @@
+ 
+ RIME_API void SetupLogging(const char* app_name) {
+ #ifdef RIME_ENABLE_LOGGING
++  // Do not allow other users to read/write log files created by current process.
++  FLAGS_logfile_mode = 0600;
+   google::InitGoogleLogging(app_name);
+ #endif  // RIME_ENABLE_LOGGING
+ }

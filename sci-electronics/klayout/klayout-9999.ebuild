@@ -1,13 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 RUBY_OPTIONAL=no
-USE_RUBY="ruby24"
+USE_RUBY="ruby25"
 # note: define maximally ONE implementation here
 
-PYTHON_COMPAT=( python{2_7,3_{5,6}} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit toolchain-funcs python-single-r1 ruby-ng
 
@@ -25,6 +25,7 @@ HOMEPAGE="https://www.klayout.de/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="
 	dev-qt/designer:5
@@ -77,7 +78,13 @@ each_ruby_install() {
 	cd "${T}/bin" || die
 
 	dodir "/usr/$(get_libdir)/klayout"
-	mv lib* "${ED}/usr/$(get_libdir)/klayout/" || die
+	mv lib* lay_plugins db_plugins "${ED}/usr/$(get_libdir)/klayout/" || die
+
+	mkdir -p "${D}/$(python_get_sitedir)" || die
+	mv pymod/* "${D}/$(python_get_sitedir)/" || die
+	rmdir pymod || die
 
 	dobin *
+
+	python_optimize
 }

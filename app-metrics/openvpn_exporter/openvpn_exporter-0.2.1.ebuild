@@ -23,7 +23,7 @@ DESCRIPTION="Prometheus Exporter for OpenVPN"
 HOMEPAGE="https://github.com/kumina/openvpn_exporter"
 SRC_URI="${ARCHIVE_URI}
 	${EGO_VENDOR_URI}"
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD MIT"
 SLOT="0"
 IUSE=""
 

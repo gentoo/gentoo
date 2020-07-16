@@ -1,0 +1,55 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,28 +1,7 @@
+ #need -O2 for io in beep.c
+-CFLAGS = -O2 -Wall
+-
+-#CC = gcc
+-#CC=/usr/local/bin/gcc
+-
+-SRC1 = \
+-subtitler-yuv.c \
+-color_processor.c \
+-frame_list.c \
+-load_font.c \
+-load_pictures.c \
+-load_ppml_file.c \
+-object_list.c \
+-parser.c \
+-text_processing.c \
+-external_programs.c \
+-x11.c
+-
+-SRC2 = \
+-process_wave.c
+-
++CFLAGS += -Wall
+ 
+ OBJECT1 = \
+-subtitler-yuv.o \
+ color_processor.o \
+ frame_list.o \
+ load_font.o \
+@@ -34,20 +13,11 @@
+ external_programs.o \
+ x11.o
+ 
+-OBJECT2 = \
+-process_wave.o
+-
+-LIBRARY1 = -lm -lXt -lXpm -lXaw
+-LIBRARY2 =
++LDLIBS = -lm -lXt -lX11 -lXaw
+ 
+ #$(XLIB) $(XAWLIB) $(XTOOLLIB) $(XLIB)
+ 
+-all:
+-	gcc $(CFLAGS) -c $(SRC1)
+-	gcc $(CFLAGS) -c $(SRC2)
+-
+-	gcc -o subtitler-yuv  -L/usr/X11R6/lib/ $(OBJECT1) $(LIBRARY1)
+-	gcc -o process_wave  -L/usr/X11R6/lib/ $(OBJECT2) $(LIBRARY2)
++subtitler-yuv: $(OBJECT1)
+ 
+ # DEPENDENCIES
+ 

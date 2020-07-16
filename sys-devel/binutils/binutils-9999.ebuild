@@ -1,17 +1,15 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils libtool flag-o-matic gnuconfig multilib versionator
+inherit eutils libtool flag-o-matic gnuconfig multilib toolchain-funcs
 
 DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
 LICENSE="GPL-3+"
-# USE="+cxx" is a transitional flag until llvm migrates to new flags:
-#    bug #677888
-IUSE="+cxx default-gold doc +gold multitarget +nls +plugins static-libs test"
-REQUIRED_USE="cxx? ( gold plugins ) default-gold? ( gold )"
+IUSE="default-gold doc +gold multitarget +nls +plugins static-libs test vanilla"
+REQUIRED_USE="default-gold? ( gold )"
 
 # Variables that can be set here:
 # PATCH_VER          - the patchset version
@@ -21,7 +19,7 @@ REQUIRED_USE="cxx? ( gold plugins ) default-gold? ( gold )"
 # PATCH_DEV          - Use download URI https://dev.gentoo.org/~{PATCH_DEV}/distfiles/...
 #                      for the patchsets
 
-PATCH_VER=4
+PATCH_VER=5
 PATCH_BINUTILS_VER=9999
 
 case ${PV} in
@@ -37,13 +35,15 @@ case ${PV} in
 		inherit git-r3
 		S=${WORKDIR}/binutils
 		EGIT_CHECKOUT_DIR=${S}
-		EGIT_BRANCH=$(get_version_component_range 1-2)
+		EGIT_BRANCH=$(ver_cut 1-2)
 		EGIT_BRANCH="binutils-${EGIT_BRANCH/./_}-branch"
-		SLOT=$(get_version_component_range 1-2)
+		SLOT=$(ver_cut 1-2)
 		;;
 	*)
 		SRC_URI="mirror://gnu/binutils/binutils-${PV}.tar.xz"
-		SLOT=$(get_version_component_range 1-2)
+		SLOT=$(ver_cut 1-2)
+		# live ebuild
+		#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
 		;;
 esac
 
@@ -74,13 +74,16 @@ RDEPEND="
 	>=sys-devel/binutils-config-3
 	sys-libs/zlib
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	doc? ( sys-apps/texinfo )
 	test? ( dev-util/dejagnu )
 	nls? ( sys-devel/gettext )
 	sys-devel/flex
 	virtual/yacc
 "
+
+RESTRICT="!test? ( test )"
 
 MY_BUILDDIR=${WORKDIR}/build
 
@@ -98,8 +101,10 @@ src_unpack() {
 
 src_prepare() {
 	if [[ ! -z ${PATCH_VER} ]] ; then
-		einfo "Applying binutils-${PATCH_BINUTILS_VER} patchset ${PATCH_VER}"
-		eapply "${WORKDIR}/patch"/*.patch
+		if ! use vanilla; then
+			einfo "Applying binutils-${PATCH_BINUTILS_VER} patchset ${PATCH_VER}"
+			eapply "${WORKDIR}/patch"/*.patch
+		fi
 	fi
 
 	# This check should probably go somewhere else, like pkg_pretend.
@@ -286,8 +291,7 @@ src_test() {
 	# bug 637066
 	filter-flags -Wall -Wreturn-type
 
-	# enable verbose test run and result logging
-	emake -k check RUNTESTFLAGS='-a -v' VERBOSE=1
+	emake -k check
 }
 
 src_install() {
@@ -333,7 +337,7 @@ src_install() {
 		objalloc.h
 		splay-tree.h
 	)
-	doins "${libiberty_headers[@]/#/${S}/include/}" || die
+	doins "${libiberty_headers[@]/#/${S}/include/}"
 	if [[ -d ${ED}/${LIBPATH}/lib ]] ; then
 		mv "${ED}"/${LIBPATH}/lib/* "${ED}"/${LIBPATH}/
 		rm -r "${ED}"/${LIBPATH}/lib

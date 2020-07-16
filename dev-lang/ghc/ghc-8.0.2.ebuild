@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,7 +18,7 @@ inherit autotools bash-completion-r1 eutils flag-o-matic ghc-package
 inherit multilib pax-utils toolchain-funcs versionator prefix
 inherit check-reqs
 DESCRIPTION="The Glasgow Haskell Compiler"
-HOMEPAGE="http://www.haskell.org/ghc/"
+HOMEPAGE="https://www.haskell.org/ghc/"
 
 # we don't have any binaries yet
 arch_binaries=""
@@ -60,7 +60,7 @@ GHC_PV=${PV}
 #GHC_PV=8.0.1.20161213 # uncomment only for -rc ebuilds
 GHC_P=${PN}-${GHC_PV} # using ${P} is almost never correct
 
-SRC_URI="!binary? ( http://downloads.haskell.org/~ghc/${PV/_rc/-rc}/${GHC_P}-src.tar.xz )"
+SRC_URI="!binary? ( https://downloads.haskell.org/~ghc/${PV/_rc/-rc}/${GHC_P}-src.tar.xz )"
 S="${WORKDIR}"/${GHC_P}
 
 [[ -n $arch_binaries ]] && SRC_URI+=" !ghcbootstrap? ( $arch_binaries )"
@@ -71,7 +71,7 @@ BUMP_LIBRARIES=(
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="alpha amd64 ia64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc ghcbootstrap ghcmakebinary +gmp +profile"
 IUSE+=" binary"
 
@@ -79,7 +79,7 @@ RDEPEND="
 	>=dev-lang/perl-5.6.1
 	dev-libs/gmp:0=
 	sys-libs/ncurses:0=[unicode]
-	!ghcmakebinary? ( virtual/libffi:= )
+	!ghcmakebinary? ( dev-libs/libffi:= )
 "
 
 # This set of dependencies is needed to run
@@ -181,7 +181,7 @@ update_SRC_URI() {
 		set -- $p
 		pn=$1 pv=$2
 
-		SRC_URI+=" mirror://hackage/package/${pn}/${pn}-${pv}.tar.gz"
+		SRC_URI+=" https://hackage.haskell.org/package/${pn}-${pv}/${pn}-${pv}.tar.gz"
 	done
 }
 
@@ -255,7 +255,7 @@ ghc_setup_cflags() {
 	fi
 
 	# prevent from failind building unregisterised ghc:
-	# http://www.mail-archive.com/debian-bugs-dist@lists.debian.org/msg171602.html
+	# https://www.mail-archive.com/debian-bugs-dist@lists.debian.org/msg171602.html
 	use ppc64 && append-ghc-cflags persistent compile -mminimal-toc
 }
 
@@ -293,6 +293,7 @@ relocate_ghc() {
 		# but then USE=binary would result in installing
 		# in '${bin_libdir}'
 		mv "${bin_ghc_prefix}/${bin_libdir}" "${bin_ghc_prefix}/$(get_libdir)" || die
+		bin_libpath=${bin_ghc_prefix}/$(get_libdir)
 
 		relocate_path "/usr/${bin_libdir}" "/usr/$(get_libdir)" \
 			"${WORKDIR}/usr/bin/$(cross)ghc-${GHC_PV}" \
@@ -550,7 +551,7 @@ src_configure() {
 			echo "utils/ghc-pkg_HC_OPTS += -DBOOTSTRAPPING" >> mk/build.mk
 		else
 			econf_args+=(--with-system-libffi)
-			econf_args+=(--with-ffi-includes=$(pkg-config libffi --cflags-only-I | sed -e 's@^-I@@'))
+			econf_args+=(--with-ffi-includes=$($(tc-getPKG_CONFIG) libffi --cflags-only-I | sed -e 's@^-I@@'))
 		fi
 
 		elog "Final mk/build.mk:"

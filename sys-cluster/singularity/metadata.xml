@@ -5,12 +5,11 @@
 		<email>jlec@gentoo.org</email>
 		<name>Justin Lecher</name>
 	</maintainer>
-	<upstream>
-		<remote-id type="github">singularityware/singularity</remote-id>
-	</upstream>
 	<use>
-		<flag name="slurm">
-			Compile spank plugin for <pkg>sys-cluster/slurm</pkg>
-		</flag>
+		<flag name="network">Install network plug-ins</flag>
+		<flag name="suid">Install SUID helper binary</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">sylabs/singularity</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ DESCRIPTION="A library for reading vector images in Microsoft's Windows Metafile
 HOMEPAGE="https://wvware.sourceforge.net/"
 SRC_URI="mirror://sourceforge/wvware/${P}.tar.gz"
 
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
 LICENSE="LGPL-2"
 SLOT="0"
 IUSE="debug doc expat X"
@@ -69,11 +69,11 @@ src_configure() {
 		$(use_with expat)
 		$(use_with !expat libxml2)
 		$(use_with X x)
-		--with-docdir="${EPREFIX%/}"/usr/share/doc/${PF}
-		--with-fontdir="${EPREFIX%/}"/usr/share/fonts/urw-fonts
+		--with-docdir="${EPREFIX}"/usr/share/doc/${PF}
+		--with-fontdir="${EPREFIX}"/usr/share/fonts/urw-fonts
 		--with-freetype
-		--with-gsfontdir="${EPREFIX%/}"/usr/share/fonts/urw-fonts
-		--with-gsfontmap="${EPREFIX%/}"/usr/share/ghostscript/9.21/Resource/Init/Fontmap
+		--with-gsfontdir="${EPREFIX}"/usr/share/fonts/urw-fonts
+		--with-gsfontmap="${EPREFIX}"/usr/share/ghostscript/9.21/Resource/Init/Fontmap
 		--with-jpeg
 		--with-layers
 		--with-png

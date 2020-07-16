@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ inherit haskell-cabal elisp-common
 
 DESCRIPTION="Source code suggestions"
 HOMEPAGE="https://github.com/ndmitchell/hlint#readme"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
@@ -26,6 +26,7 @@ RDEPEND=">=dev-haskell/ansi-terminal-0.6.2:=[profile?]
 	dev-haskell/transformers:=[profile?]
 	>=dev-haskell/uniplate-1.5:=[profile?]
 	>=dev-lang/ghc-7.4.1:=
+	emacs? ( >=app-editors/emacs-23.1:* )
 	gpl? ( >=dev-haskell/hscolour-1.21:=[profile?] )
 "
 DEPEND="${RDEPEND}

@@ -119,17 +119,9 @@ index 76df01cd..401130bb 100644
 +SUBDIRS = convert docs init ldap lua patches repute spec stats
  
  dist_doc_DATA = README
-diff --git a/contrib/OpenRC/.gitignore b/contrib/OpenRC/.gitignore
-new file mode 100644
-index 00000000..af0aa700
---- /dev/null
-+++ b/contrib/OpenRC/.gitignore
-@@ -0,0 +1,2 @@
-+opendkim.openrc
-+opendkim.openrc.in
 diff --git a/contrib/OpenRC/opendkim.openrc.in.in b/contrib/OpenRC/opendkim.openrc.in.in
 new file mode 100644
-index 00000000..d9631cdf
+index 00000000..4b783615
 --- /dev/null
 +++ b/contrib/OpenRC/opendkim.openrc.in.in
 @@ -0,0 +1,54 @@
@@ -137,7 +129,7 @@ index 00000000..d9631cdf
 +# Copyright 1999-2019 Gentoo Authors
 +# Distributed under the terms of the GNU General Public License v2
 +
-+CONFFILE="@SYSCONFDIR@/opendkim/${RC_SVCNAME}.conf"
++CONFFILE="@SYSCONFDIR@/${RC_SVCNAME}.conf"
 +required_files="${CONFFILE}"
 +
 +command="@SBINDIR@/opendkim"
@@ -287,7 +279,7 @@ index 735b924b..b70bfb46 100644
  Socket                  inet:8891@localhost
  
 +# To use a local socket instead, specify a path here. The "standard"
-+# location is under @runstatedir@/opendkim, and it's best to agree
++# location is under @RUNSTATEDIR@/opendkim, and it's best to agree
 +# on that directory so that various init systems can configure its
 +# permissions and ownership automatically.
 +#Socket                 local:@RUNSTATEDIR@/opendkim/opendkim.sock

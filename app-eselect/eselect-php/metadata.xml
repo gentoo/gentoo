@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>php-bugs@gentoo.org</email>
-		<name>PHP</name>
-	</maintainer>
-	<longdescription lang="en">PHP eselect module
-	</longdescription>
-	<use>
-		<flag name="fpm">Enable the FastCGI Process Manager SAPI</flag>
-	</use>
+  <maintainer type="project">
+    <email>php-bugs@gentoo.org</email>
+    <name>PHP</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+    <name>Michael Orlitzky</name>
+  </maintainer>
+  <longdescription lang="en">
+    PHP eselect module
+  </longdescription>
+  <use>
+    <flag name="fpm">Enable the FastCGI Process Manager SAPI</flag>
+  </use>
 </pkgmetadata>

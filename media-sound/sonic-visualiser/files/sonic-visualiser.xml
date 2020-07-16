@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+
+  <mime-type type="application/x-sonicvisualiser">
+    <comment>Sonic Visualiser session file</comment>
+    <generic-icon name="sv-icon"/>
+    <glob pattern="*.sv"/>
+  </mime-type>
+
+  <mime-type type="application/x-sonicvisualiser-layer">
+    <comment>Sonic Visualiser layer file</comment>
+    <generic-icon name="sv-icon"/>
+    <glob pattern="*.svl"/>
+  </mime-type>
+
+</mime-info>

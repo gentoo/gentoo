@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ inherit golang-build
 
 DESCRIPTION="Machine management for a container-centric world"
 HOMEPAGE="https://docs.docker.com/machine/"
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT MPL-2.0 ZLIB"
 SLOT="0"
 IUSE="hardened"
 RESTRICT="test"
@@ -30,7 +30,7 @@ src_prepare() {
 }
 
 src_compile() {
-	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" GOPATH="${WORKDIR}/${P}" emake build || die
+	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" GOPATH="${WORKDIR}/${P}" emake build
 }
 
 src_install() {

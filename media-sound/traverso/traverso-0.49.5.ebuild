@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils desktop flag-o-matic gnome2-utils xdg-utils
+inherit cmake-utils desktop flag-o-matic gnome2-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="Professional Audio Tools for GNU/Linux"
 HOMEPAGE="https://traverso-daw.org/"

@@ -5,7 +5,7 @@ diff -Nuar db-3.2.9.orig/include/db_cxx.h db-3.2.9/include/db_cxx.h
  // Forward declarations
  //
  
-+#if defined(__GNUC__) && (__GNUC__ == 4 && __GNUC_MINOR__ >= 2)
++#if defined(__GNUC__) && (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 2))
 +using namespace std;
 +#include <iostream>
 +#else

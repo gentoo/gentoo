@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit latex-package toolchain-funcs eutils
+inherit latex-package toolchain-funcs
 
 DESCRIPTION="A pretty printer for various programming languages with tex output."
-SRC_URI="mirror://gentoo/${PN}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~dilfridge/distfiles/${P}.tgz"
 
 LICENSE="BSD LGrind-Jacobson"
 SLOT="0"
@@ -15,12 +15,12 @@ IUSE="examples"
 
 S=${WORKDIR}/${PN}
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	echo 'CFLAGS+=-DDEFSFILE=\"$(DEFSFILE)\" -DVERSION=\"$(VERSION)\"' > source/Makefile
-	echo 'lgrind: lgrind.o lgrindef.o regexp.o' >>	source/Makefile
-	epatch "${FILESDIR}/${P}-fgets.patch"
+PATCHES=( "${FILESDIR}/${P}-fgets.patch" )
+
+src_prepare() {
+	echo 'CFLAGS+=-DDEFSFILE=\"$(DEFSFILE)\" -DVERSION=\"$(VERSION)\"' > source/Makefile || die "Fixing Makefile failed"
+	echo 'lgrind: lgrind.o lgrindef.o regexp.o' >>	source/Makefile || die "Fixing Makefile failed"
+	default
 }
 
 src_compile() {
@@ -28,7 +28,7 @@ src_compile() {
 
 	latex-package_src_compile
 	cd "${S}"/source
-	emake DEFSFILE="/usr/share/texmf/tex/latex/${PN}/lgrindef" VERSION="${PV}" || die
+	emake DEFSFILE="/usr/share/texmf/tex/latex/${PN}/lgrindef" VERSION="${PV}"
 }
 
 src_install() {
@@ -42,10 +42,12 @@ src_install() {
 
 	# and finally, the documentation
 	dodoc FAQ README
+
 	if use examples ; then
 		docinto examples
 		dodoc example/*
 	fi
+
 	cd "${S}"/source
 	doman lgrind.1 lgrindef.5
 }

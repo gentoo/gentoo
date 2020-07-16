@@ -1,47 +1,54 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit eutils
+inherit autotools
 
 DESCRIPTION="A tool for recording Flash SWF movies from VNC sessions"
-HOMEPAGE="http://www.unixuser.org/~euske/vnc2swf"
-SRC_URI="http://www.unixuser.org/~euske/vnc2swf/${P}.tar.gz"
+HOMEPAGE="https://www.unixuser.org/~euske/vnc2swf/"
+SRC_URI="https://www.unixuser.org/~euske/vnc2swf/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="x11vnc"
 
-RDEPEND="x11-libs/libX11
+RDEPEND="
+	sys-libs/zlib
+	x11-libs/libX11
 	x11-libs/libXaw
 	x11-libs/libXext
 	x11-libs/libXmu
-	x11-libs/libXt"
-DEPEND="${RDEPEND}
-	x11-base/xorg-proto
-	sys-apps/sed
-	sys-libs/zlib
+	x11-libs/libXt
 	x11vnc? ( x11-misc/x11vnc )"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	sed -ie "s:docs:html:" README || die
-	sed -ie "s:-mouse ::" recordwin.sh || die
+PATCHES=(
+	"${FILESDIR}"/${P}-respect-AR.patch # bug 726264
+)
+
+src_prepare() {
+	default
+	sed -i -e "s:docs:html:" README || die
+	sed -i -e "s:-mouse ::" -e "s:./vnc2swf:vnc2swf:" recordwin.sh || die
+
+	mv configure.{in,ac} || die
+	eautoconf
 }
 
 src_install() {
-	dobin vnc2swf || die
+	dobin vnc2swf
 	if use x11vnc; then
 		# this USE flag is needed because recordwin
 		# only works on x11vnc
 		newbin recordwin.sh recordwin
-		dosed "s:./vnc2swf:vnc2swf:" /usr/bin/recordwin || die
 	fi
 	insinto /etc/X11/app-defaults
-	newins Vnc2Swf.ad Vnc2Swf || die
-	dodoc README*  || die
-	dohtml -a html,swf docs/* || die
+	newins Vnc2Swf.ad Vnc2Swf
+	dodoc README*
+
+	docinto html
+	dodoc docs/*.{html,swf}
 }

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 
 inherit bash-completion-r1 python-r1 vcs-snapshot prefix
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/wting/${PN}/archive/release-v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~mips ~ppc ~ppc64 ~x86 ~x64-macos"
+KEYWORDS="amd64 ~hppa ~mips ~ppc ~ppc64 x86 ~x64-macos"
 IUSE="ipython test"
 REQUIRED_USE="ipython? ( ${PYTHON_REQUIRED_USE} )"
 

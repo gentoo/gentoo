@@ -1,5 +1,5 @@
---- Makefile
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -125,7 +125,7 @@
  
  ifeq ($(AS),/usr/bin/nasm)

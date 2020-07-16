@@ -1,0 +1,33 @@
+From d18d4c7a46539c37eec30fdbdbb7b56b08469f12 Mon Sep 17 00:00:00 2001
+From: mirabilos <tg@debian.org>
+Date: Sat, 25 Apr 2020 19:29:28 +0200
+Subject: [PATCH] Use newer AppStream metadata location
+
+---
+ Makefile.in | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 48bfae92..bbaed9df 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -216,15 +216,16 @@ install: noicon_install
+ 	install -m $(FILE_PERM) imgs/telegram22.png $(DESTDIR)$(DATA_ROOT_DIR_PURPLE)/pixmaps/pidgin/protocols/22/telegram.png
+ 	mkdir -m $(DIR_PERM) -p $(DESTDIR)$(DATA_ROOT_DIR_PURPLE)/pixmaps/pidgin/protocols/48
+ 	install -m $(FILE_PERM) imgs/telegram48.png $(DESTDIR)$(DATA_ROOT_DIR_PURPLE)/pixmaps/pidgin/protocols/48/telegram.png
+-	mkdir -m $(DIR_PERM) -p $(DESTDIR)$(datarootdir)/appdata
+-	install -m $(FILE_PERM) AppStream/telegram-purple.metainfo.xml $(DESTDIR)$(datarootdir)/appdata/telegram-purple.metainfo.xml
++	mkdir -m $(DIR_PERM) -p $(DESTDIR)$(datarootdir)/metainfo
++	install -m $(FILE_PERM) AppStream/telegram-purple.metainfo.xml $(DESTDIR)$(datarootdir)/metainfo/telegram-purple.metainfo.xml
+ 
+ .PHONY: uninstall
+ uninstall: noicon_uninstall
+ 	rm -f $(DESTDIR)$(DATA_ROOT_DIR_PURPLE)/pixmaps/pidgin/protocols/16/telegram.png
+ 	rm -f $(DESTDIR)$(DATA_ROOT_DIR_PURPLE)/pixmaps/pidgin/protocols/22/telegram.png
+ 	rm -f $(DESTDIR)$(DATA_ROOT_DIR_PURPLE)/pixmaps/pidgin/protocols/48/telegram.png
+-	rm -f $(DESTDIR)$(datarootdir)/appdata/telegram-purple.metainfo.xml
++	rm -f $(DESTDIR)$(datarootdir)/appdata/telegram-purple.metainfo.xml # old location
++	rm -f $(DESTDIR)$(datarootdir)/metainfo/telegram-purple.metainfo.xml # new location
+ 
+ 
+ ### == The local_{,un}install targets, in case you're not root. == ###

@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 VALA_USE_DEPEND="vapigen"
 
-inherit autotools eutils multilib-minimal vala xdg-utils
+inherit autotools eutils ltprune multilib-minimal vala xdg-utils
 
 DESCRIPTION="A library to allow applications to export a menu into the Unity Menu bar"
 HOMEPAGE="https://launchpad.net/libappindicator"
@@ -12,7 +12,7 @@ SRC_URI="https://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1 LGPL-3"
 SLOT="3"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc64 x86"
 IUSE="+introspection"
 
 RDEPEND="
@@ -26,7 +26,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	introspection? ( $(vala_depend) )
 	dev-util/gtk-doc-am
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 PATCHES=(

@@ -4,59 +4,51 @@
 # Unmask the flag which corresponds to ARCH.
 -mips
 
-# Andreas Sturmlechner <asturm@gentoo.org> (31 Mar 2019)
-# sys-auth/elogind is not yet keyworded here. bug #681200
-elogind
-
-# Matt Turner <mattst88@gentoo.org> (25 Mar 2018)
+# Matt Turner <mattst88@gentoo.org> (2018-03-25)
 # Unmask systemd since it is keyworded here.
 -systemd
 
-# Mart Raudsepp <leio@gentoo.org> (11 Feb 2018)
+# Mart Raudsepp <leio@gentoo.org> (2018-02-11)
 # dev-util/valgrind is not keyworded here yet,
 # though the MIPS platform is supported upstream
 valgrind
 
-# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-01-23)
 # net-misc/networkmanager is not keyworded here.
 networkmanager
 
-# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-01-23)
 # sci-geosciences/gpsd is not keyworded here.
 gps
 
-# Brian Evans <grknight@gentoo.org> (15 Jan 2018)
+# Brian Evans <grknight@gentoo.org> (2018-01-15)
 # Mask tcmalloc as dev-util/google-perftools is unavailable
 tcmalloc
 
-# James Le Cuirot <chewi@gentoo.org> (29 Jun 2017)
+# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
 # Unmask as this profile is big endian.
 -big-endian
 
-# Mart Raudsepp <leio@gentoo.org> (27 May 2017)
+# Mart Raudsepp <leio@gentoo.org> (2017-05-27)
 # media-libs/libmtp not tested
 mtp
 
-# Mart Raudsepp <leio@gentoo.org> (27 May 2017)
+# Mart Raudsepp <leio@gentoo.org> (2017-05-27)
 # net-libs/gnome-online-accounts not tested
 gnome-online-accounts
 
-# Mart Raudsepp <leio@gentoo.org> (27 May 2017)
+# Mart Raudsepp <leio@gentoo.org> (2017-05-27)
 # Keywords lost on net-fs/samba over time, use.mask until re-keyworded
 samba
 
-# Mart Raudsepp <leio@gentoo.org> (07 Feb 2017)
+# Mart Raudsepp <leio@gentoo.org> (2017-02-07)
 # dev-libs/libappindicator not tested
+appindicator
 ayatana
 
-# Anthony G. Basile <blueness@gentoo.org> (01 Aug 2015)
+# Anthony G. Basile <blueness@gentoo.org> (2015-08-01)
 # There is no luajit support on mips.  Bug #554376.
 luajittex
-
-# Markos Chandras <hwoarang@gentoo.org>
-# app-arch/lz4 does not seem to build on MIPS
-# Original bug report: #501600
-lz4
 
 # Markos Chandras <hwoarang@gentoo.org>
 # Profiles are ISA agnostic so these
@@ -75,7 +67,7 @@ m17n-lib
 # Needs sci-mathematics/glpk.
 lpsol
 
-# Kacper Kowalik <xarthisius@gentoo.org> (9 Aug 2010)
+# Kacper Kowalik <xarthisius@gentoo.org> (2010-08-09)
 # cblas-external as virtual/cblas is also masked
 cblas-external
 
@@ -117,7 +109,7 @@ cdb
 # it holds up stablizing ntfsprogs
 fuse
 
-# 2006/03/07 - Donnie Berkholz <dberkholz@gentoo.org>
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-03-07)
 # Modular X: mask for architectures lacking direct rendering
 dri
 
@@ -197,10 +189,6 @@ jack
 accessibility
 
 # Stephen P. Becker <geoman@gentoo.org>
-# masked because mozilla doesn't work on mips
-mozilla
-
-# Stephen P. Becker <geoman@gentoo.org>
 # masked because I say so, gnome--
 pda
 
@@ -225,7 +213,6 @@ eds
 acpi
 afs
 apm
-directfb
 dvdr
 ibm
 ggi
@@ -233,7 +220,7 @@ lirc
 smartcard
 
 #
-# Anthony G. Basile <blueness@gentoo.org> (18 Jul 2012)
+# Anthony G. Basile <blueness@gentoo.org> (2012-07-18)
 # php is an old mask which works now
 # pike is no longer a use flag
 #
@@ -249,50 +236,50 @@ timidity
 # We don't use smartcards, afaik
 pcsc-lite
 
-# Fernando J. Pereda <ferdy@gentoo.org> (20 Mar 2007)
+# Fernando J. Pereda <ferdy@gentoo.org> (2007-03-20)
 # New optional dependency of >=mail-client/mutt-1.5.14
 qdbm
 
-# Doug Goldstein <cardoe@gentoo.org> (08 May 2007)
+# Doug Goldstein <cardoe@gentoo.org> (2007-05-08)
 # no one in mips land has smartcard hardware to test with
 # see bug #162205 comment 10.
 smartcard
 openct
 
-# kumba (02 Jun 2007)
+# kumba (2007-06-02)
 # pulseaudio hasn't been tested on mips; maybe someday
 pulseaudio
 
-# kumba (01 Nov 2007)
+# kumba (2007-11-01)
 # mask ladspa USE
 # [22:30] <beandog> mips: plz to mask ladspa use flag
 ladspa
 
-# Matt Turner <mattst88@gentoo.org> (13 Dec 2010)
+# Matt Turner <mattst88@gentoo.org> (2010-12-13)
 # Dropping app-arch/rpm keywords, mask rpm USE accordingly
 rpm
 
-# Matt Turner <mattst88@gentoo.org> (13 Dec 2010)
+# Matt Turner <mattst88@gentoo.org> (2010-12-13)
 # We don't have net-libs/libsmi keyworded
 smi
 
-# Matt Turner <mattst88@gentoo.org> (13 Dec 2010)
+# Matt Turner <mattst88@gentoo.org> (2010-12-13)
 # We don't have sys-devel/llvm
 llvm
 
-# Matt Turner <mattst88@gentoo.org (14 Jun 2011)
+# Matt Turner <mattst88@gentoo.org (2011-06-14)
 # pdfannotextractor needs java
 pdfannotextractor
 
-# Matt Turner <mattst88@gentoo.org> (11 Jul 2011)
+# Matt Turner <mattst88@gentoo.org> (2011-07-11)
 # xemacs dependencies not keyworded
 xemacs
 
-# Matt Turner <mattst88@gentoo.org> (11 Jul 2011)
+# Matt Turner <mattst88@gentoo.org> (2011-07-11)
 # no native mips/linux code generation, see bug 319649
 ocamlopt
 
-# Michael Sterrett <mr_bones_@gentoo.org> (24 Aug 2012)
+# Michael Sterrett <mr_bones_@gentoo.org> (2012-08-24)
 # media-sound/fluidsynth isn't keyworded
 fluidsynth
 
@@ -300,10 +287,10 @@ fluidsynth
 -fixed-point
 -loongson2f
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-08-22)
 # virtual/opencl is not keyworded
 opencl
 
-# Ben de Groot <yngwin@gentoo.org> (01 Feb 2015)
+# Ben de Groot <yngwin@gentoo.org> (2015-02-01)
 # please remove when keyworded
 qt5

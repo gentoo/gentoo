@@ -1,0 +1,33 @@
+commit 1b88eda687913a3a355a010ed0483bfcfce28301
+Author: Tassilo Horn <tsdh@gnu.org>
+Date:   Fri May 17 22:07:10 2019 +0200
+
+    Fix autoload generation code (bug#35758)
+    
+    * Makefile.in (AUTOLOAD,PREVIEW_AUTOLOAD): Use arg instead of
+      generated-autoload-file (bug#35758).
+
+diff --git a/Makefile.in b/Makefile.in
+index 822eea9f..74659f7a 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -52,12 +52,15 @@ PACKAGE=auctex
+ PACKAGE_INFO=auctex preview-latex
+ EMACS=@EMACS@
+ ELCC=$(EMACS) -batch -q -no-site-file -no-init-file -l lpath.el
+-AUTOLOAD=--eval '(let ((generated-autoload-file (expand-file-name "$@"))) \
+-  (mapcar (function update-file-autoloads) command-line-args-left) \
++AUTOLOAD=--eval '(let ((autoload-file (expand-file-name "$@"))) \
++  (mapcar (lambda (file) \
++            (update-file-autoloads file nil autoload-file)) \
++          command-line-args-left) \
+   (save-buffers-kill-emacs t))'
+ 
+-PREVIEW_AUTOLOAD=--eval '(let ((generated-autoload-file (expand-file-name "$@"))) \
+-		(update-file-autoloads "preview.el")(save-buffers-kill-emacs t))'
++PREVIEW_AUTOLOAD=--eval '(let ((autoload-file (expand-file-name "$@"))) \
++  (update-file-autoloads "preview.el" nil autoload-file) \
++  (save-buffers-kill-emacs t))'
+ 
+ # Files and directories excluded from distributed tar ball.
+ EXCLUDEDFILES=autogen.sh .gitignore doc/.gitignore doc/tex-ref.log \

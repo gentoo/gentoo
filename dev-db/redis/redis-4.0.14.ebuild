@@ -10,8 +10,9 @@ HOMEPAGE="https://redis.io"
 SRC_URI="http://download.redis.io/releases/${P}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
+KEYWORDS="amd64 arm arm64 hppa ~ppc ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
 IUSE="+jemalloc tcmalloc luajit test"
+RESTRICT="!test? ( test )"
 SLOT="0"
 
 # Redis does NOT build with Lua 5.2 or newer at this time.

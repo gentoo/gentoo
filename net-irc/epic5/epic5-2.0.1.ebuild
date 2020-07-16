@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby23 ruby24"
+USE_RUBY="ruby24 ruby25 ruby26"
 
 inherit autotools ruby-single toolchain-funcs
 
@@ -12,7 +12,7 @@ HOMEPAGE="http://epicsol.org/"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 # Fails to build without ipv6
 IUSE="archive perl tcl ruby socks5 valgrind" #ipv6
@@ -58,7 +58,7 @@ src_compile() {
 	emake -j1
 }
 
-src_install () {
+src_install() {
 	default
 
 	dodoc BUG_FORM COPYRIGHT EPIC4-USERS-README README KNOWNBUGS VOTES

@@ -1,9 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Samuli Suominen <ssuominen@gentoo.org> (30 Oct 2012)
+# Samuli Suominen <ssuominen@gentoo.org> (2012-10-30)
 # Only gnome-base/gdm has stable keywording. If x11-misc/lightdm or kde-plasma/kdm gets
 # stable keyword, this line can be removed.
 x11-misc/xscreensaver gdm
-
-sys-firmware/seabios binary

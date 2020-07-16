@@ -1,0 +1,37 @@
+From 116aa55f5d1ae1f82604ae377e07a751f61bb651 Mon Sep 17 00:00:00 2001
+From: Matt Layman <matthewlayman@gmail.com>
+Date: Sat, 14 Dec 2019 21:20:22 -0500
+Subject: [PATCH] Use PyYAML safe loader and remove deprecation warning. (#103)
+
+Fixes #102
+---
+ setup.py    | 2 +-
+ tap/line.py | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 2d001da..4c59879 100644
+--- a/setup.py
++++ b/setup.py
+@@ -63,7 +63,7 @@ def run(self):
+         zip_safe=False,
+         platforms="any",
+         install_requires=[],
+-        extras_require={"yaml": ["more-itertools", "PyYAML"]},
++        extras_require={"yaml": ["more-itertools", "PyYAML>=5.1"]},
+         classifiers=[
+             "Development Status :: 5 - Production/Stable",
+             "Environment :: Console",
+diff --git a/tap/line.py b/tap/line.py
+index 0d44ff8..fc8f8e2 100644
+--- a/tap/line.py
++++ b/tap/line.py
+@@ -96,7 +96,7 @@ def yaml_block(self):
+         """
+         if LOAD_YAML and self._yaml_block is not None:
+             try:
+-                yaml_dict = yaml.load(self._yaml_block)
++                yaml_dict = yaml.load(self._yaml_block, Loader=yaml.SafeLoader)
+                 return yaml_dict
+             except yaml.error.YAMLError:
+                 print("Error parsing yaml block. Check formatting.")

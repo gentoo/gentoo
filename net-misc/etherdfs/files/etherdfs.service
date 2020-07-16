@@ -1,0 +1,10 @@
+[Unit]
+Description=etherdfs daemon
+After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/etherdfs
+ExecStart=/usr/bin/ethersrv-linux ${INTERFACE} ${STORAGEDIR}
+
+[Install]
+WantedBy=multi-user.target

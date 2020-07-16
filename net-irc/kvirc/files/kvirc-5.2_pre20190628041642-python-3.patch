@@ -1,0 +1,53 @@
+https://github.com/kvirc/KVIrc/pull/2269
+
+--- /CMakeLists.txt
++++ /CMakeLists.txt
+@@ -67,9 +67,6 @@
+ set(CMAKE_KVIRC_BUILD_COMPILER ${CMAKE_CXX_COMPILER})
+ set(CMAKE_KVIRC_BUILD_COMPILER_FLAGS ${CMAKE_CXX_FLAGS})
+ 
+-# Prefer Python 2.7 over 3.x (which is currently incompatible) - GitHub issue #2020
+-set(Python_ADDITIONAL_VERSIONS "2.7")
+-
+ # Suffix for GNU/Linux
+ set(LIB_SUFFIX
+ 	CACHE STRING "Define suffix of directory name (32/64)"
+@@ -751,10 +748,10 @@
+ # Check for Python support
+ option(WANT_PYTHON "Compile Python support" ON)
+ if(WANT_PYTHON)
+-	find_package(PythonLibs 2.7)
++	find_package(PythonLibs)
+ 	if(PYTHONLIBS_FOUND)
+ 		set(COMPILE_PYTHON_SUPPORT 1)
+-		set(CMAKE_STATUS_PYTHON_SUPPORT "Yes")
++		set(CMAKE_STATUS_PYTHON_SUPPORT "Yes, Python ${PYTHONLIBS_VERSION_STRING}")
+ 		list(APPEND LIBS ${PYTHON_LIBRARIES})
+ 		include_directories(${PYTHON_INCLUDE_DIRS})
+ 	else()
+--- /src/modules/pythoncore/kvircmodule.cpp
++++ /src/modules/pythoncore/kvircmodule.cpp
+@@ -413,7 +413,7 @@
+ 	else
+ 	{
+ 		// Create a CObject containing the API pointer array's address
+-		PyObject * pC_API_Object = PyCObject_FromVoidPtr(PyKVIrc_API, nullptr);
++		PyObject * pC_API_Object = PyCapsule_New((void *)PyKVIrc_API, "kvirc._C_API", nullptr);
+ 		if(pC_API_Object)
+ 			PyModule_AddObject(pModule, "_C_API", pC_API_Object);
+ 	}
+--- /src/modules/pythoncore/pythonheaderwrapper.h
++++ /src/modules/pythoncore/pythonheaderwrapper.h
+@@ -1,6 +1,12 @@
+ #ifndef _PYTHONHEADERWRAPPER_H_
+ #define _PYTHONHEADERWRAPPER_H_
+ 
++// As of Python 3, something inside <Python.h> defines a struct with a member
++// called "slots" which conflicts with the builtin Qt keyword. But since we
++// include stuff from KVIrc itself back into the python module, we can't just
++// use QT_NO_KEYWORDS.
++#undef slots
++
+ // See http://stackoverflow.com/questions/16200997/why-doesnt-include-python-h-work and http://stackoverflow.com/questions/19716859/puzzling-dependency-of-boost-python-1-54-debug-build-to-python27-lib-on-window
+ 
+ #if defined(_DEBUG) && defined(_MSC_VER)

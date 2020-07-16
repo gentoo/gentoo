@@ -1,0 +1,97 @@
+From 0b7cf9c0f11722c7cb8a816e9118602b43d9a3f5 Mon Sep 17 00:00:00 2001
+From: Zygo Blaxell <bees@furryterror.org>
+Date: Tue, 29 Oct 2019 23:34:36 -0400
+Subject: [PATCH 3/3] process: Fix gettid() ambiguity with glibc >= 2.30
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In version 2.30 glibc added it's own gettid() function. This resulted in
+"error: call of overloaded ‘gettid()’ is ambiguous" because gettid()
+now exists in both namespace crucible and std.
+
+For now, use explicit references to namespace crucible.  This continues
+to work with new and old libc without having to test specific library
+versions.
+
+At some point, glibc gettid() will be deployed widely enough that we can
+remove the crucible version entirely.
+
+Signed-off-by: Zygo Blaxell <bees@furryterror.org>
+---
+ include/crucible/lockset.h | 4 ++--
+ lib/chatter.cc             | 4 ++--
+ src/bees.cc                | 6 +++---
+ 3 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/include/crucible/lockset.h b/include/crucible/lockset.h
+index 856c55e..99500b7 100644
+--- a/include/crucible/lockset.h
++++ b/include/crucible/lockset.h
+@@ -117,7 +117,7 @@ namespace crucible {
+ 		while (full() || locked(name)) {
+ 			m_condvar.wait(lock);
+ 		}
+-		auto rv = m_set.insert(make_pair(name, gettid()));
++		auto rv = m_set.insert(make_pair(name, crucible::gettid()));
+ 		THROW_CHECK0(runtime_error, rv.second);
+ 	}
+ 
+@@ -129,7 +129,7 @@ namespace crucible {
+ 		if (full() || locked(name)) {
+ 			return false;
+ 		}
+-		auto rv = m_set.insert(make_pair(name, gettid()));
++		auto rv = m_set.insert(make_pair(name, crucible::gettid()));
+ 		THROW_CHECK1(runtime_error, name, rv.second);
+ 		return true;
+ 	}
+diff --git a/lib/chatter.cc b/lib/chatter.cc
+index cbd5adb..e5a24f9 100644
+--- a/lib/chatter.cc
++++ b/lib/chatter.cc
+@@ -69,14 +69,14 @@ namespace crucible {
+ 			DIE_IF_ZERO(strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S", &ltm));
+ 
+ 			header_stream << buf;
+-			header_stream << " " << getpid() << "." << gettid() << "<" << m_loglevel << ">";
++			header_stream << " " << getpid() << "." << crucible::gettid() << "<" << m_loglevel << ">";
+ 			if (!m_name.empty()) {
+ 				header_stream << " " << m_name;
+ 			}
+ 		} else {
+ 			header_stream << "<" << m_loglevel << ">";
+ 			header_stream << (m_name.empty() ? "thread" : m_name);
+-			header_stream << "[" << gettid() << "]";
++			header_stream << "[" << crucible::gettid() << "]";
+ 		}
+ 
+ 		header_stream << ": ";
+diff --git a/src/bees.cc b/src/bees.cc
+index 08c3fd7..aa55af0 100644
+--- a/src/bees.cc
++++ b/src/bees.cc
+@@ -115,9 +115,9 @@ BeesNote::~BeesNote()
+ 	tl_next = m_prev;
+ 	unique_lock<mutex> lock(s_mutex);
+ 	if (tl_next) {
+-		s_status[gettid()] = tl_next;
++		s_status[crucible::gettid()] = tl_next;
+ 	} else {
+-		s_status.erase(gettid());
++		s_status.erase(crucible::gettid());
+ 	}
+ }
+ 
+@@ -128,7 +128,7 @@ BeesNote::BeesNote(function<void(ostream &os)> f) :
+ 	m_prev = tl_next;
+ 	tl_next = this;
+ 	unique_lock<mutex> lock(s_mutex);
+-	s_status[gettid()] = tl_next;
++	s_status[crucible::gettid()] = tl_next;
+ }
+ 
+ void
+-- 
+2.23.0
+

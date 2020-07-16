@@ -56,15 +56,14 @@ src_configure() {
 	econf \
 		--disable-werror \
 		--disable-debug-symbols-framework \
-		$(use_enable nls) \
-		|| die
+		$(use_enable nls)
 }
 
 src_compile() {
 	# unable to work around parallel make issue
 	# ignore texinfo issues (version mismatch, to hard to fix or
 	# disable)
-	emake -j2 MAKEINFOFLAGS="--force" || die
+	emake -j2 MAKEINFOFLAGS="--force"
 }
 
 src_install() {

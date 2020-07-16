@@ -1,6 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Mike Gilbert <floppym@gentoo.org> (12 Mar 2018)
+# Michał Górny <mgorny@gentoo.org> (2019-11-03)
+# Satisfy REQUIRED_USE.
+xfce-base/xfce4-session policykit
+
+# Mike Gilbert <floppym@gentoo.org> (2018-03-12)
 # Satisfy REQUIRED_USE by default, bug 650030.
 net-nds/rpcbind warmstarts

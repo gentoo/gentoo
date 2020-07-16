@@ -11,7 +11,7 @@ SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2 -> ${P}-r
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 IUSE=""
 
 RDEPEND=">=dev-libs/glib-2.42:2=
@@ -26,6 +26,11 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig"
+
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete || die
+}
 
 pkg_postinst() {
 	xdg_icon_cache_update

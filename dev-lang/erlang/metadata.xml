@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!--maintainer-needed-->
+	<maintainer type="person">
+		<email>slyfox@gentoo.org</email>
+		<name>Sergei Trofimovich</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>arkamar@atlas.cz</email>
+		<name>Petr Vaněk</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
-		<flag name="compat-ethread">Enable compatibility with pre-pentium 4 CPUs in the ethread library.</flag>
-		<flag name="dirty-schedulers">Enable dirty schedulers</flag>
 		<flag name="hipe">HIgh Performance Erlang extension</flag>
 		<flag name="kpoll">Enable kernel polling support</flag>
 		<flag name="pgo">Build erts with profile-guided optimizations</flag>

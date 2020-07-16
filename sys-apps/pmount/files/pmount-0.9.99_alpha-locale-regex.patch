@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/416985
 
---- src/conffile.c
-+++ src/conffile.c
+--- a/src/conffile.c
++++ b/src/conffile.c
 @@ -372,7 +372,7 @@ static int cf_prepare_regexps()
    /* A regexp matching a boolean value*/
  

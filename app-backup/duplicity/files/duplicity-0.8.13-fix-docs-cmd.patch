@@ -1,0 +1,29 @@
+--- duplicity-0.8.13/setup.py	2020-06-02 16:19:25.127576334 -0400
++++ duplicity-0.8.13/setup.py	2020-06-02 16:20:33.730535892 -0400
+@@ -89,18 +89,6 @@
+                 u'bin/rdiffdir.1'
+                 ]
+             ),
+-            (u'share/doc/duplicity-%s' % Version,
+-                [
+-                u'AUTHORS',
+-                u'CHANGELOG',
+-                u'Changelog.GNU',
+-                u'COPYING',
+-                u'README',
+-                u'README-LOG',
+-                u'README-REPO',
+-                u'README-TESTING',
+-                ],
+-            ),
+         ]
+ 
+     if not os.environ.get(u'READTHEDOCS') == u'True':
+@@ -319,7 +307,6 @@
+         ],
+     test_suite=u"testing",
+     cmdclass={
+-        u"build_scripts": BSCommand,
+         u"install": InstallCommand,
+         u"sdist": SdistCommand,
+         u"test": TestCommand,

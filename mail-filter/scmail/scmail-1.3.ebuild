@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit fixheadtails
 
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~ia64 ~ppc x86"
 IUSE=""
 
-RDEPEND="dev-scheme/gauche"
+RDEPEND="dev-scheme/gauche:="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
@@ -39,4 +39,8 @@ src_install() {
 		DATADIR="${ED}/usr/share/doc/${P}" \
 		install
 	einstalldocs
+}
+
+src_test() {
+	emake -j1 -s check
 }

@@ -1,0 +1,3 @@
+# Please set the flags you wish to pass to dnsmasq_exporter in
+# command_args
+# command_args=""

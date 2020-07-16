@@ -224,8 +224,13 @@ java-ant_bsfix_files() {
 			files+=( -f "${file}" )
 		done
 
-		local rewriter3="${EPREFIX}/usr/$(get_libdir)/javatoolkit/bin/xml-rewrite-3.py"
-		local rewriter4="${EPREFIX}/usr/$(get_libdir)/javatoolkit/bin/build-xml-rewrite"
+		if [ -e "${EPREFIX}/usr/libexec/javatoolkit" ]; then
+			local rewriter3="${EPREFIX}/usr/libexec/javatoolkit/xml-rewrite-3.py"
+			local rewriter4="${EPREFIX}/usr/libexec/javatoolkit/build-xml-rewrite"
+		else
+			local rewriter3="${EPREFIX}/usr/$(get_libdir)/javatoolkit/bin/xml-rewrite-3.py"
+			local rewriter4="${EPREFIX}/usr/$(get_libdir)/javatoolkit/bin/build-xml-rewrite"
+		fi
 
 		if [[ -x ${rewriter4} && ${JAVA_ANT_ENCODING} ]]; then
 			[[ ${JAVA_ANT_REWRITE_CLASSPATH} ]] && local gcp="-g"
@@ -375,11 +380,11 @@ java-ant_ignore-system-classes() {
 # @DESCRIPTION:
 # Run the right xml-rewrite binary with the given arguments
 java-ant_xml-rewrite() {
-	local gen2="${EPREFIX}/usr/bin/xml-rewrite-2.py"
 	local gen2_1="${EPREFIX}/usr/$(get_libdir)/javatoolkit/bin/xml-rewrite-2.py"
+	local gen2_2="${EPREFIX}/usr/libexec/javatoolkit/xml-rewrite-2.py"
 	# gen1 is deprecated
-	if [[ -x "${gen2}" ]]; then
-		${gen2} "${@}" || die "${gen2} failed"
+	if [[ -x "${gen2_2}" ]]; then
+		${gen2_2} "${@}" || die "${gen2_2} failed"
 	elif [[ -x "${gen2_1}" ]]; then
 		${gen2_1} "${@}" || die "${gen2_1} failed"
 	else

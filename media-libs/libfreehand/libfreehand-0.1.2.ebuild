@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,8 +15,9 @@ HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libfreehand"
 LICENSE="MPL-2.0"
 SLOT="0"
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ppc ppc64 ~sparc x86"
 IUSE="doc static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/librevenge
@@ -32,6 +33,8 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	test? ( dev-util/cppunit )
 "
+
+PATCHES=( "${FILESDIR}/${P}-icu-65.patch" )
 
 src_prepare() {
 	default

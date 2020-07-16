@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.freedesktop.org/vdpau/${PN}/-/archive/${P}/${PN}-${P}.ta
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha amd64 arm64 x86"
 IUSE="doc dri"
 
 RDEPEND="
@@ -41,8 +41,7 @@ multilib_src_configure() {
 	append-cppflags -D_GNU_SOURCE
 	econf \
 		$(use dri || echo --disable-dri2) \
-		$(use_enable doc documentation) \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF}
+		$(use_enable doc documentation)
 }
 
 multilib_src_test() {

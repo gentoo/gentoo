@@ -1,0 +1,51 @@
+--- a/src/shell/notification.js.orig	2020-05-14 13:57:38.781404129 +0200
++++ b/src/shell/notification.js	2020-05-14 13:57:54.335642763 +0200
+@@ -200,20 +200,27 @@
+         this._notificationPending = true;
+         let notification = this._notifications[localId];
+ 
+-        // Check if @notificationParams represents an exact repeat
+-        let repeat = (
+-            notification &&
+-            notification.title === notificationParams.title.unpack() &&
+-            notification.bannerBodyText === notificationParams.body.unpack()
+-        );
+-
+-        // If it's a repeat, we still update the metadata
+-        if (repeat) {
+-            notification.deviceId = deviceId;
+-            notification.remoteId = remoteId;
++        // Check if this is a repeat
++        if (notification) {
+             notification.requestReplyId = requestReplyId;
+ 
+-        // Device Notification
++        // Bail early If @notificationParams represents an exact repeat
++        let title = notificationParams.title.unpack();
++        let body = notificationParams.body ?
++
++        notificationParams.body.unpack() :
++        null;
++
++        if (notification.title === title &&
++            notification.bannerBodyText === body) {
++            this._notificationPending = false;
++            return;
++        }
++
++        notification.title = title;
++        notification.bannerBodyText = body;
++
++       // Device Notification
+         } else if (idMatch) {
+             notification = new NotificationDaemon.GtkNotificationDaemonNotification(this, notificationParams);
+ 
+@@ -237,7 +244,7 @@
+             this._notifications[localId] = notification;
+         }
+ 
+-        if (showBanner && !repeat)
++        if (showBanner)
+             this.notify(notification);
+         else
+             this.pushNotification(notification);

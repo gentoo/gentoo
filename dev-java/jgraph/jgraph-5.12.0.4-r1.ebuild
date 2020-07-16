@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Open-source graph component for Java"
-SRC_URI="mirror://gentoo/${P}-lgpl-src.jar -> ${P}.jar"
+SRC_URI="mirror://gentoo/${P}.jar"
 HOMEPAGE="https://www.jgraph.com"
 IUSE="doc examples source"
 

@@ -8,4 +8,8 @@
 	<upstream>
 		<remote-id type="github">kergoth/tslib</remote-id>
 	</upstream>
+	<use>
+		<flag name="evdev">Build experimental input module</flag>
+		<flag name="uinput">Provide alternative ts_uinput evdev device</flag>
+	</use>
 </pkgmetadata>

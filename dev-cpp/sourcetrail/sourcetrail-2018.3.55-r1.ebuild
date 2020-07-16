@@ -9,18 +9,22 @@ DESCRIPTION="A cross-platform source explorer for C/C++ and Java"
 HOMEPAGE="https://www.sourcetrail.com/"
 SRC_URI="https://www.sourcetrail.com/downloads/${PV}/linux/64bit -> ${P}.tar.gz"
 
-LICENSE="Sourcetrail || ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3 BSD"
+LICENSE="Sourcetrail || ( GPL-2 GPL-3 LGPL-3 ) BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="examples selinux"
+RESTRICT="mirror bindist"
 
 DEPEND="dev-util/patchelf"
 
 RDEPEND="
-	=dev-libs/openssl-1.0*:*
+	|| (
+		dev-libs/openssl-compat:1.0.0
+		=dev-libs/openssl-1.0*:*
+	)
 	media-libs/fontconfig
 	media-libs/freetype
-	media-libs/libpng:1.2
+	media-libs/libpng-compat:1.2
 	sys-libs/libudev-compat
 	virtual/opengl
 	x11-libs/libdrm

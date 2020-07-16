@@ -1,11 +1,11 @@
 #!/sbin/openrc-run
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 description="libvirt virtual machine logging manager"
 command="/usr/sbin/virtlogd"
 command_args="-d"
-pidfile="/var/run/virtlogd.pid"
+pidfile="/run/virtlogd.pid"
 
 extra_started_commands="reload"
 description_reload="re-exec the daemon, while maintaining open connections"

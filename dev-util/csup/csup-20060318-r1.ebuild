@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,15 +11,14 @@ SRC_URI="http://mu.org/~mux/csup-snap-${PV}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 DEPEND="
 	sys-libs/zlib:0=
 	dev-libs/openssl:0="
 
 RDEPEND="
-	${DEPEND}
-	!>=sys-freebsd/freebsd-ubin-6.2_beta1"
+	${DEPEND}"
 
 DEPEND="
 	${DEPEND}

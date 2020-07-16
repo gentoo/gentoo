@@ -1,0 +1,64 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need localmount
+	after urandom
+	provide entropy
+}
+
+command="/usr/sbin/rngd"
+description="Check and feed random data from hardware device to kernel entropy pool."
+pidfile="/run/${RC_SVCNAME}.pid"
+command_args=""
+command_args_background="--pid-file ${pidfile} --background"
+start_stop_daemon_args="--wait 1000"
+retry="SIGKILL/5000"
+
+
+# Parse rngd confd file for extra command line arguments
+start_pre() {
+    for entsrc in ${INCLUDE_ENTROPY_SOURCES}; do
+	command_args="${command_args} -n ${entsrc}"
+    done
+
+    for entsrc in ${EXCLUDE_ENTROPY_SOURCES}; do
+	command_args="${command_args} -x ${entsrc}"
+    done
+
+    if [ "x${HWRNG_DEVICE}" != "x" ]; then
+	command_args="${command_args} --rng-device=${HWRNG_DEVICE}"
+    fi
+
+    for entsrc_opt in ${RDRAND_OPTIONS}; do
+	command_args="${command_args} -O rdrand:${entsrc_opt}"
+    done
+
+    for entsrc_opt in ${DARN_OPTIONS}; do
+	command_args="${command_args} -O darn:${entsrc_opt}"
+    done
+
+    for entsrc_opt in ${JITTER_OPTIONS}; do
+	command_args="${command_args} -O jitter:${entsrc_opt}"
+    done
+
+    for entsrc_opt in ${PKCS11_OPTIONS}; do
+	command_args="${command_args} -O pkcs11:${entsrc_opt}"
+    done
+
+    if [ "x${RANDOM_DEVICE}" != "x" ]; then
+	command_args="${command_args} --random-device=${RANDOM_DEVICE}"
+    fi
+
+    if [ "x${STEP}" != "x" ]; then
+	command_args="${command_args} --random-step=${STEP}"
+    fi
+
+    if [ "x${WATERMARK}" != "x" ]; then
+	command_args="${command_args} --fill-watermark=${WATERMARK}"
+    fi
+
+    command_args="${command_args} ${EXTRA_ARGS}"
+    return 0
+}

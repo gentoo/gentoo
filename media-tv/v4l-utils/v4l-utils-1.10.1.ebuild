@@ -1,16 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils flag-o-matic udev
 
 DESCRIPTION="Separate utilities ebuild from upstream v4l-utils package"
-HOMEPAGE="http://git.linuxtv.org/v4l-utils.git"
-SRC_URI="http://linuxtv.org/downloads/v4l-utils/${P}.tar.bz2"
+HOMEPAGE="https://git.linuxtv.org/v4l-utils.git"
+SRC_URI="https://linuxtv.org/downloads/v4l-utils/${P}.tar.bz2"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~hppa ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ppc ~ppc64 ~sparc x86"
 IUSE="qt5 udev"
 
 RDEPEND=">=media-libs/libv4l-${PV}

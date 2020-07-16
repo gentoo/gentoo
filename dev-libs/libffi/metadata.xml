@@ -35,5 +35,9 @@
 	</longdescription>
 	<use>
 		<flag name="pax_kernel">Use PaX emulated trampolines, for we can't use PROT_EXEC</flag>
+		<flag name="test-bhaible">Run extended regression tests (very slow).</flag>
 	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:libffi_project:libffi</remote-id>
+	</upstream>
 </pkgmetadata>

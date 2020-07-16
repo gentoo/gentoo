@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit check-reqs cuda toolchain-funcs unpacker versionator
+inherit check-reqs cuda eutils toolchain-funcs unpacker versionator
 
 MYD=$(get_version_component_range 1-2)
 DRIVER_PV="387.26"
@@ -16,6 +16,7 @@ LICENSE="NVIDIA-CUDA"
 SLOT="0/${PV}"
 KEYWORDS="-* ~amd64 ~amd64-linux"
 IUSE="debugger doc eclipse profiler"
+RESTRICT="bindist mirror"
 
 DEPEND=""
 RDEPEND="${DEPEND}
@@ -23,7 +24,7 @@ RDEPEND="${DEPEND}
 	>=x11-drivers/nvidia-drivers-${DRIVER_PV}[X,uvm]
 	debugger? (
 		sys-libs/libtermcap-compat
-		sys-libs/ncurses:5/5[tinfo]
+		sys-libs/ncurses-compat:5[tinfo]
 		)
 	eclipse? ( >=virtual/jre-1.6 )
 	profiler? ( >=virtual/jre-1.6 )"
@@ -47,6 +48,7 @@ src_unpack() {
 src_prepare() {
 	local cuda_supported_gcc
 
+	# ATTENTION: change requires revbump
 	cuda_supported_gcc="4.7 4.8 4.9 5.3 5.4 6.3 6.4"
 
 	sed \

@@ -13,7 +13,7 @@ SRC_URI="https://download.wiimm.de/source/wiimms-iso-tools/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+fuse +zlib"
 
 RDEPEND="
@@ -22,6 +22,7 @@ RDEPEND="
 	zlib? ( sys-libs/zlib:0= )
 "
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 DOCS="doc/*.txt"
 

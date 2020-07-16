@@ -66,6 +66,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# ld.gold fails to link yaboot as:
+	#  sorry, I can't find space in second/yaboot.chrp to put the note
+	# bug #678710
+	tc-ld-disable-gold
+
 	pushd "${WORKDIR}/${E2FS_P}" || die
 	econf \
 		--enable-libblkid \

@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
 
@@ -12,9 +12,9 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc test"
-REQUIRED_USE="test? ( doc )"
+KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
 	!~dev-python/pbr-2.1.0"
@@ -25,7 +25,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		>=dev-python/coverage-4.0[${PYTHON_USEDEP}]
 		!~dev-python/coverage-4.4[${PYTHON_USEDEP}]
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
-		>=dev-python/ordereddict-1.1[$(python_gen_usedep 'python2_7')]
 		>=dev-python/os-client-config-1.28.0[${PYTHON_USEDEP}]
 		>=dev-python/openstackdocstheme-1.18.1[${PYTHON_USEDEP}]
 		>=dev-python/reno-2.5.0[${PYTHON_USEDEP}]
@@ -34,11 +33,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
 		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
 		>=dev-python/requests-mock-1.2.0[${PYTHON_USEDEP}]
-	)
-	doc? (
-		>=dev-python/openstackdocstheme-1.18.1[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.6.2[${PYTHON_USEDEP}]
-		!~dev-python/sphinx-1.6.6[${PYTHON_USEDEP}]
 	)
 "
 RDEPEND="
@@ -57,22 +51,12 @@ RDEPEND="
 "
 
 python_prepare_all() {
-	sed -e 's:intersphinx_mapping:_&:' -i doc/source/conf.py || die
 	sed -i '/^hacking/d' test-requirements.txt || die
 	distutils-r1_python_prepare_all
 }
 
-python_compile_all() {
-	use doc && esetup.py build_sphinx
-}
-
 python_test() {
 	testr init
-	testr run || die "testsuite failed under python2.7"
+	testr run || die "testsuite failed under ${EPYTHON}"
 	flake8 tests && einfo "run flake8 over tests folder passed" || die
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( doc/build/html/. )
-	distutils-r1_python_install_all
 }

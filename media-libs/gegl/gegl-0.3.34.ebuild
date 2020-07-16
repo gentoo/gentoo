@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 # vala and introspection support is broken, bug #468208
 VALA_USE_DEPEND=vapigen
 
-inherit versionator gnome2-utils eutils autotools python-any-r1 vala
+inherit versionator gnome2-utils eutils autotools ltprune python-any-r1 vala
 
 if [[ ${PV} == *9999* ]]; then
 	inherit autotools git-r3
@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="http://download.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="A graph based image processing framework"
@@ -24,7 +24,8 @@ HOMEPAGE="http://www.gegl.org/"
 LICENSE="|| ( GPL-3 LGPL-3 )"
 SLOT="0.3"
 
-IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg +introspection jpeg2k lcms lensfun openexr raw sdl svg test tiff umfpack vala v4l webp"
+IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg +introspection lcms lensfun openexr raw sdl svg test tiff umfpack vala v4l webp"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	svg? ( cairo )
 	vala? ( introspection )
@@ -42,12 +43,9 @@ RDEPEND="
 	x11-libs/pango
 
 	cairo? ( >=x11-libs/cairo-1.12.2 )
-	ffmpeg? (
-		>=media-video/ffmpeg-2.8:0=
-	)
+	ffmpeg? ( >=media-video/ffmpeg-2.8:0= )
 	introspection? ( >=dev-libs/gobject-introspection-1.32:= )
 	virtual/jpeg:0=
-	jpeg2k? ( >=media-libs/jasper-1.900.1:= )
 	lcms? ( >=media-libs/lcms-2.8:2 )
 	lensfun? ( >=media-libs/lensfun-0.2.5 )
 	openexr? ( >=media-libs/openexr-1.6.1:= )
@@ -136,7 +134,6 @@ src_configure() {
 	econf \
 		--disable-docs \
 		--disable-profile \
-		--disable-silent-rules \
 		--disable-workshop \
 		--program-suffix=-${SLOT} \
 		--with-gdk-pixbuf \
@@ -151,7 +148,7 @@ src_configure() {
 		$(use_with ffmpeg libavformat) \
 		--without-gexiv2 \
 		--without-graphviz \
-		$(use_with jpeg2k jasper) \
+		--without-jasper \
 		$(use_with lcms) \
 		$(use_with lensfun) \
 		--without-lua \

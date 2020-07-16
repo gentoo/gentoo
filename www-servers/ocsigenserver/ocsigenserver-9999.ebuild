@@ -90,8 +90,8 @@ src_install() {
 	fi
 	emake logrotate
 
-	newinitd "${FILESDIR}"/ocsigenserver.initd ocsigenserver || die
-	newconfd "${FILESDIR}"/ocsigenserver.confd ocsigenserver || die
+	newinitd "${FILESDIR}"/ocsigenserver.initd ocsigenserver
+	newconfd "${FILESDIR}"/ocsigenserver.confd ocsigenserver
 
 	dodoc README.md
 

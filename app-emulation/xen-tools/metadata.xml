@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person">
+		<email>hydrapolic@gmail.com</email>
+		<name>Tomáš Mózes</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>xen@gentoo.org</email>
 		<name>Gentoo Xen Project</name>
@@ -12,7 +20,6 @@
 		<flag name="ipxe">Enable ipxe support</flag>
 		<flag name="ocaml">Enable support for the ocaml language</flag>
 		<flag name="ovmf">Enable support to boot UEFI guest vm, needed by hvm</flag>
-		<flag name="pam">Enable pam support</flag>
 		<flag name="pygrub">Install the pygrub boot loader</flag>
 		<flag name="qemu">Enable IOEMU support via the use of qemu-dm</flag>
 		<flag name="qemu-traditional">Build the old qemu traditional device model (useful only if you cannot change to the new device model e.g. Windows VMs)</flag>

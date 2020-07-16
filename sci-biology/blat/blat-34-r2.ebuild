@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,10 @@ DEPEND="app-arch/unzip"
 
 S=${WORKDIR}/${MY_PN}
 
-PATCHES=( "${FILESDIR}"/${PN}-34-fix-build-system.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-34-fix-build-system.patch
+	"${FILESDIR}"/${PN}-34-fno-common.patch
+)
 
 src_compile() {
 	tc-export AR CC

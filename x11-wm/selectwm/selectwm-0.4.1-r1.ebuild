@@ -10,7 +10,7 @@ SRC_URI="https://ordiluc.net/selectwm/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="2"
-KEYWORDS="amd64 ppc sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc sparc x86"
 IUSE="nls"
 
 DOCS=( AUTHORS README sample.xinitrc )

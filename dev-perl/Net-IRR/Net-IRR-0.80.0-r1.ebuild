@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,9 +11,11 @@ DESCRIPTION="Internet Route Registry daemon (IRRd) client"
 
 RDEPEND="virtual/perl-IO"
 DEPEND="virtual/perl-ExtUtils-MakeMaker
-	test? ( virtual/perl-Test-Simple )
 	${RDEPEND}"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
+
+src_test() {
+	einfo "Tests deactivated; need network connectivity"
+}

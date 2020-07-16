@@ -6,6 +6,8 @@
 		<name>Andreas Sturmlechner</name>
 	</maintainer>
 	<use>
-		<flag name="phonon">Use <pkg>media-libs/phonon</pkg> backend instead of <pkg>media-video/vlc</pkg></flag>
+		<flag name="mpv">Enable <pkg>media-video/mpv</pkg> backend</flag>
+		<flag name="phonon">Enable <pkg>media-libs/phonon</pkg> backend</flag>
+		<flag name="vlc">Enable <pkg>media-video/vlc</pkg> backend</flag>
 	</use>
 </pkgmetadata>

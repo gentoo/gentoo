@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ PARTS_P="${PN}-parts-${PV}"
 inherit qmake-utils
 
 DESCRIPTION="Electronic Design Automation"
-HOMEPAGE="http://fritzing.org/"
+HOMEPAGE="https://fritzing.org/"
 SRC_URI="https://github.com/fritzing/fritzing-app/archive/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/fritzing/fritzing-parts/archive/${PV}.tar.gz -> ${PARTS_P}.tar.gz"
 

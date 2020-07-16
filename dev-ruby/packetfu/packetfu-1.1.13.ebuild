@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 
 ruby_add_rdepend "
 	dev-ruby/network_interface:0
-	dev-ruby/pcaprub:0.12
+	dev-ruby/pcaprub:*
 "
 
 ruby_add_bdepend "test? ( >=dev-ruby/rspec-its-1.2.0:1 )
@@ -43,12 +43,4 @@ all_ruby_prepare() {
 		sed -i -e "/^group :development, :test do/,/^end$/d" Gemfile || die
 	#fi
 	sed -i -e '/[Cc]overalls/d' spec/spec_helper.rb || die
-}
-
-each_ruby_prepare() {
-	if [ -f Gemfile ]
-	then
-		BUNDLE_GEMFILE=Gemfile ${RUBY} -S bundle install --local || die
-		BUNDLE_GEMFILE=Gemfile ${RUBY} -S bundle check || die
-	fi
 }

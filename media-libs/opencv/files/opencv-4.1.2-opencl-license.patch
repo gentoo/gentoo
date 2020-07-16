@@ -1,0 +1,10 @@
+--- a/cmake/OpenCVDetectOpenCL.cmake.ORIG	2019-11-29 11:29:00.642852106 +0100
++++ b/cmake/OpenCVDetectOpenCL.cmake	2019-11-29 11:37:57.088822546 +0100
+@@ -5,7 +5,6 @@
+ else()
+   set(OPENCL_LIBRARY "" CACHE STRING "OpenCL library")
+   set(OPENCL_INCLUDE_DIR "${OpenCV_SOURCE_DIR}/3rdparty/include/opencl/1.2" CACHE PATH "OpenCL include directory")
+-  ocv_install_3rdparty_licenses(opencl-headers "${OpenCV_SOURCE_DIR}/3rdparty/include/opencl/LICENSE.txt")
+ endif()
+ mark_as_advanced(OPENCL_INCLUDE_DIR OPENCL_LIBRARY)
+ 

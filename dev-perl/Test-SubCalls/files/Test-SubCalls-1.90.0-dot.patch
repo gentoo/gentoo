@@ -1,7 +1,0 @@
---- a/Makefile.PL	2017-03-31 09:05:12.495038191 -0400
-+++ b/Makefile.PL	2017-03-31 09:05:22.634214621 -0400
-@@ -1,3 +1,4 @@
-+use lib '.';
- use inc::Module::Install::DSL 0.83;
- 
- all_from      lib/Test/SubCalls.pm

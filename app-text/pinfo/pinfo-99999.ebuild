@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ inherit autotools flag-o-matic git-r3
 
 DESCRIPTION="Hypertext info and man viewer based on (n)curses"
 HOMEPAGE="https://github.com/baszoetekouw/pinfo"
-EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_REPO_URI="https://github.com/baszoetekouw/pinfo.git"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -29,6 +29,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.9-GROFF_NO_SGR.patch
 	"${FILESDIR}"/${PN}-0.6.9-lzma-xz.patch
+	"${FILESDIR}"/${PN}-0.6.13-fno-common.patch
 )
 
 src_prepare() {

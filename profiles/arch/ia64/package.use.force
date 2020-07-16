@@ -1,7 +1,7 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Raúl Porcel <armin76@gentoo.org> (21 Oct 2007)
+# Raúl Porcel <armin76@gentoo.org> (2007-10-21)
 # It segfaults without debug use-flags
 # Remove when http://bugs.php.net/bug.php?id=42893 is fixed
 dev-lang/php debug

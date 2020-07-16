@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation.
+# Copyright 1999-2019 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
-# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (16 Nov 2011)
+# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (2011-11-16)
 # Rename STAGE1_USE to BOOTSTRAP_USE and stack it to the parent value
 BOOTSTRAP_USE="${BOOTSTRAP_USE} hardened pic xtpax -jit -orc"
 
@@ -14,8 +14,8 @@ USE="hardened pic xtpax -jit -orc"
 # of running hardened.
 PROFILE_IS_HARDENED=1
 
-# We set the default markings to XATTR_PAX
-PAX_MARKINGS="XT"
+# We set the default markings to none
+PAX_MARKINGS="none"
 USE="${USE} -ptpax"
 
 # Default starting set of USE flags for all default/linux profiles.

@@ -1,7 +1,0 @@
-# Copyright 1999-2018 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-# Andreas Sturmlechner <asturm@gentoo.org> (15 Jul 2018)
-# Unmask ICU 58 only for 13.0 based profiles
-<dev-libs/icu-59
-<dev-libs/icu-layoutex-59

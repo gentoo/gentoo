@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>opty@hotmail.fr</email>
-    <name>optyfr</name>
-  </maintainer>
-  <maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-  </maintainer>
+  <!--maintainer-needed-->
   <longdescription>
     JRomManager is a Rom manager made to work mostly anywhere, 
     with decent performance and minimal memory footprint, 

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~ppc ~x86"
 IUSE="doc mpir +ocamlopt"
 
 RDEPEND="
-	>=dev-lang/ocaml-4:=[ocamlopt?]
+	>=dev-lang/ocaml-4.05:=[ocamlopt?]
 	!mpir? ( dev-libs/gmp:0= )
 	mpir? ( sci-libs/mpir )"
 

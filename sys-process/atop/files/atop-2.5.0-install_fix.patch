@@ -1,0 +1,31 @@
+From 485a453d2ae5700874a57dffc297030254b5ae7c Mon Sep 17 00:00:00 2001
+From: BlackEagle <ike.devolder@gmail.com>
+Date: Mon, 4 Nov 2019 09:00:54 +0100
+Subject: [PATCH] DEFPATH not created so touch fails
+
+```
+touch               /build/atop/pkg/atop/etc/default/atop
+touch: cannot touch '/build/atop/pkg/atop/etc/default/atop': No such file or directory
+```
+
+Add DEFPATH mkdir in genericinstall to make sure the folder
+`$(DESTDIR)/etc/default` exits
+
+Signed-off-by: BlackEagle <ike.devolder@gmail.com>
+---
+ Makefile | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Makefile b/Makefile
+index 929b0d7..a662fd6 100644
+--- a/Makefile
++++ b/Makefile
+@@ -140,6 +140,8 @@ sysvinstall:	genericinstall
+ genericinstall:	atop atopacctd atopconvert
+ 		if [ ! -d $(DESTDIR)$(LOGPATH) ]; 		\
+ 		then	mkdir -p $(DESTDIR)$(LOGPATH); fi
++		if [ ! -d $(DESTDIR)$(DEFPATH) ]; 		\
++		then	mkdir -p $(DESTDIR)$(DEFPATH); fi
+ 		if [ ! -d $(DESTDIR)$(BINPATH) ]; 		\
+ 		then	mkdir -p $(DESTDIR)$(BINPATH); fi
+ 		if [ ! -d $(DESTDIR)$(SBINPATH) ]; 		\

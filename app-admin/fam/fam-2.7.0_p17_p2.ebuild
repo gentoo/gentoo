@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils flag-o-matic ltprune multilib-minimal
+inherit autotools eutils flag-o-matic ltprune multilib-minimal toolchain-funcs
 
 FAM_PV="${PV/_p*/}"
 DEBIAN_PATCH="${PV#*_p}"
@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE="static-libs"
 
 DEPEND="

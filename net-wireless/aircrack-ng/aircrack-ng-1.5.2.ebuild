@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,11 +14,10 @@ HOMEPAGE="http://www.aircrack-ng.org"
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/aircrack-ng/aircrack-ng.git"
-	KEYWORDS="amd64 arm x86"
 else
 	MY_PV=${PV/_/-}
 	SRC_URI="https://download.aircrack-ng.org/${P}.tar.gz"
-	KEYWORDS="amd64 arm ~ppc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 arm ~arm64 ~ppc x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="GPL-2"
@@ -27,7 +26,7 @@ SLOT="0"
 IUSE="+airdrop-ng +airgraph-ng kernel_linux kernel_FreeBSD libressl +netlink +pcre +sqlite +experimental"
 
 DEPEND="net-libs/libpcap
-	sys-apps/hwloc
+	sys-apps/hwloc:0=
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	netlink? ( dev-libs/libnl:3 )

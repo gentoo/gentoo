@@ -1,0 +1,33 @@
+From 259be1617f1b0b92e53440d95fa88aa4bf3fe25b Mon Sep 17 00:00:00 2001
+From: Jahn <jahnf@users.noreply.github.com>
+Date: Sun, 10 May 2020 19:34:19 +0200
+Subject: [PATCH] Make sure version_distance is always valid, fixes build with
+ not git available. #73
+
+---
+ cmake/modules/GitVersion.cmake | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/modules/GitVersion.cmake b/cmake/modules/GitVersion.cmake
+index 1cbbd09..fcb77bc 100644
+--- a/cmake/modules/GitVersion.cmake
++++ b/cmake/modules/GitVersion.cmake
+@@ -282,6 +282,7 @@ function(get_version_info prefix directory)
+   set(${prefix}_VERSION_MAJOR ${${prefix}_VERSION_MAJOR} PARENT_SCOPE)
+   set(${prefix}_VERSION_MINOR ${${prefix}_VERSION_MINOR} PARENT_SCOPE)
+   set(${prefix}_VERSION_PATCH ${${prefix}_VERSION_PATCH} PARENT_SCOPE)
++  set(${prefix}_VERSION_DISTANCE ${${prefix}_VERSION_DISTANCE} PARENT_SCOPE)
+ 
+   # Build version string...
+   set(VERSION_STRING "${${prefix}_VERSION_MAJOR}.${${prefix}_VERSION_MINOR}")
+@@ -412,8 +413,8 @@ function(add_version_info_custom_prefix target prefix directory)
+ 
+   get_target_property(type ${target} TYPE)
+   if(type STREQUAL "SHARED_LIBRARY")
+-     set_target_properties(${target} PROPERTIES SOVERSION "${VERSION_MAJOR}.${VERSION_MINOR}")
+-     set_property(TARGET ${target} PROPERTY VERSION "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}")
++    set_target_properties(${target} PROPERTIES SOVERSION "${VERSION_MAJOR}.${VERSION_MINOR}")
++    set_property(TARGET ${target} PROPERTY VERSION "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}")
+   endif()
+   set_property(TARGET ${target} APPEND PROPERTY SOURCES ${output_files})
+   target_include_directories(${target} PUBLIC $<BUILD_INTERFACE:${output_dir}>)

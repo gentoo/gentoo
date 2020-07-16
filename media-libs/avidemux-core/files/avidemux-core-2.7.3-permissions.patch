@@ -1,0 +1,28 @@
+From 7c5c267987b90cf0b61ca98e9f8b6db2c0cdb84f Mon Sep 17 00:00:00 2001
+From: Stefan Strogin <steils@gentoo.org>
+Date: Wed, 14 Aug 2019 03:35:01 +0300
+Subject: [PATCH] [cmake] Fix library permissions
+
+Upstream-Status: Submitted
+[https://github.com/mean00/avidemux2/pull/179]
+Signed-off-by: Stefan Strogin <steils@gentoo.org>
+---
+ cmake/admInstallDir.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/admInstallDir.cmake b/cmake/admInstallDir.cmake
+index ab16f283d..5af762626 100644
+--- a/cmake/admInstallDir.cmake
++++ b/cmake/admInstallDir.cmake
+@@ -55,7 +55,7 @@ ENDMACRO(ADM_INSTALL_LIB )
+ MACRO (ADM_INSTALL_LIB_FILES files)
+         INSTALL(FILES ${files} 
+                         DESTINATION ${AVIDEMUX_LIB_DIR}
+-                        PERMISSIONS WORLD_READ WORLD_EXECUTE OWNER_WRITE OWNER_READ OWNER_EXECUTE
++                        PERMISSIONS WORLD_READ WORLD_EXECUTE GROUP_READ GROUP_EXECUTE OWNER_WRITE OWNER_READ OWNER_EXECUTE
+                         COMPONENT  runtime
+                 )
+ ENDMACRO (ADM_INSTALL_LIB_FILES)
+-- 
+2.22.0
+

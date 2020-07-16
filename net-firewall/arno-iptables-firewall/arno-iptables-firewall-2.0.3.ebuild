@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit readme.gentoo-r1 systemd eapi7-ver
 
 DESCRIPTION="Arno's iptables firewall script"
-HOMEPAGE="http://rocky.eld.leidenuniv.nl"
+HOMEPAGE="https://rocky.eld.leidenuniv.nl"
 
 MY_PV=$(ver_rs 3 -)
 MY_PV=${MY_PV/rc/RC}
@@ -87,7 +87,7 @@ src_install() {
 		share/man/man8/"${PN}".8
 }
 
-pkg_postinst () {
+pkg_postinst() {
 	ewarn "When you stop this script, all firewall rules are flushed!"
 	ewarn "Make sure to not use multiple firewall scripts simultaneously"
 	ewarn "unless you know what you are doing!"

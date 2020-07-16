@@ -10,6 +10,6 @@ read only = yes
 
 # Simple example for enabling your own local rsync server
 #[gentoo-portage]
-#	path = @GENTOO_PORTAGE_EPREFIX@/usr/portage
-#	comment = Gentoo Portage tree
+#	path = @GENTOO_PORTAGE_EPREFIX@/var/db/repos/gentoo
+#	comment = Gentoo ebuild repository
 #	exclude = /distfiles /packages

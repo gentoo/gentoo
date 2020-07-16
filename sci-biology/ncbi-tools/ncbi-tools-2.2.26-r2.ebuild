@@ -114,7 +114,7 @@ src_install() {
 	dobin "${S}"/bin/*
 
 	for i in ${EXTRA_VIB}; do
-		dobin "${S}"/build/${i} || die "Failed to install binaries."
+		dobin "${S}"/build/${i}
 	done
 	use static-libs && dolib.a "${S}"/lib/*.a
 	mkdir -p "${ED}"/usr/include/ncbi

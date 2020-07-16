@@ -16,6 +16,7 @@
   attributes for different usages. They include some support for static
   inference and local name scopes. Furthermore, astng builds partial
   trees by inspecting living objects.</longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">astroid</remote-id>
     <remote-id type="bitbucket">logilab/astroid</remote-id>

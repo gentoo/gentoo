@@ -1,15 +1,14 @@
-# Matthew Thode <prometheanfire@gentoo.org> (30 Jul 2018)
-# sys-apps/bolt links against systemd, which gentoo SELinux does not support
-sys-apps/bolt
+# Copyright 2011-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
 
-# Göktürk Yüksek <gokturk@gentoo.org> (09 Nov 2016)
+# Göktürk Yüksek <gokturk@gentoo.org> (2016-11-09)
 # On behalf of proxy-maint
 # Mask due to the package requiring systemd
 # and causing unresolvable dep issues
 # See: https://github.com/gentoo/gentoo/pull/2262
 www-misc/profile-sync-daemon
 
-# Jason Zaman <perfinion@gentoo.org> (27 Jun 2015)
+# Jason Zaman <perfinion@gentoo.org> (2015-06-27)
 # SystemD has no support in the SELinux policy at the moment.
 # Please see: https://wiki.gentoo.org/wiki/SELinux/FAQ#Can_I_use_SELinux_with_SystemD.3F
 app-admin/systemdgenie
@@ -20,15 +19,20 @@ app-admin/calamares
 dev-python/python-systemd
 gnome-base/gdm
 gnome-base/gnome
+gnome-base/gnome-applets
 gnome-base/gnome-extra-apps
+gnome-base/gnome-flashback
 gnome-base/gnome-light
+gnome-base/gnome-panel
 gnome-base/gnome-shell
 gnome-extra/chrome-gnome-shell
 gnome-extra/gnome-logs
 gnome-extra/gnome-shell-extensions
 gnome-extra/gnome-shell-frippery
 gnome-extra/gnome-shell-extensions-topicons-plus
+gnome-extra/gnome-shell-extension-appindicator
 gnome-extra/gnome-shell-extension-applications-overview-tooltip
+gnome-extra/gnome-shell-extension-bluetooth-quick-connect
 gnome-extra/gnome-shell-extension-dash-to-panel
 gnome-extra/gnome-shell-extension-desktop-icons
 gnome-extra/gnome-shell-extension-gsconnect
@@ -36,17 +40,24 @@ gnome-extra/gnome-tweaks
 x11-themes/zukitwo-shell
 gnome-extra/office-runner
 gnome-extra/pch-session
-kde-misc/systemd-kcm
 net-firewall/firewalld
 sys-apps/gentoo-systemd-integration
 sys-apps/systemd-readahead
 sys-process/systemd-cron
 sys-apps/dbus-broker
+sys-kernel/installkernel-systemd-boot
 
-# Gilles Dartiguelongue <eva@gentoo.org> (24 May 2018)
+# Gilles Dartiguelongue <eva@gentoo.org> (2018-05-24)
 # Packages use systemd unconditionally for now
 >=app-admin/abrt-2.10
 app-admin/gnome-abrt
 >=dev-libs/libreport-2.9
 games-util/gamemode
 gnome-extra/gnome-user-share
+
+# Jason Zaman <perfinion@gentoo.org> (2019-12-01)
+# SELinux userspace 3.0 dropped python2_7 support
+# python2_7-only packages that depend on portage
+# cause unresolvable deps
+app-portage/distpatch
+app-portage/metagen

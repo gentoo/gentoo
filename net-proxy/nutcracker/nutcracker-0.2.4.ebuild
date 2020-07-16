@@ -25,7 +25,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use debug) || die "Econf failed"
+	econf $(use debug)
 }
 
 src_install() {

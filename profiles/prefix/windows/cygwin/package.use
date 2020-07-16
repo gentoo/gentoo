@@ -1,14 +1,14 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Michael Haubenwallner <haubi@gentoo.org> (14 May 2018)
+# Michael Haubenwallner <haubi@gentoo.org> (2018-05-14)
 # stack protector does not fully work on Cygwin yet
 sys-devel/gcc -ssp
 
-# Michael Haubenwallner <haubi@gentoo.org> (23 Mar 2017)
+# Michael Haubenwallner <haubi@gentoo.org> (2017-03-23)
 # Using nettle hides a conflict between wincrypt and openssl.
 app-arch/libarchive nettle
 
-# Michael Haubenwallner <haubi@gentoo.org> (18 Apr 2016)
+# Michael Haubenwallner <haubi@gentoo.org> (2016-04-18)
 # Cygwin coreutils provide kill as gkill
 sys-apps/coreutils kill

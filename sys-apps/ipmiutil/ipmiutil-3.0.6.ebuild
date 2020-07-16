@@ -39,7 +39,7 @@ src_compile() {
 	# and it doesn't even work.
 	# Please check on each bump if this workaround is still required.
 	pushd lib/lanplus &>/dev/null || die
-	emake || die "emake lanplus failed"
+	emake
 	cp libipmi_lanplus.a .. || die
 	popd &>/dev/null || die
 

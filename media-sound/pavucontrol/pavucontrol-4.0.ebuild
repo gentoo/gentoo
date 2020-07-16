@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ SRC_URI="https://freedesktop.org/software/pulseaudio/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm64 ~hppa ppc ~ppc64 ~sparc x86"
 IUSE="nls"
 
 RDEPEND="
@@ -33,7 +33,6 @@ src_configure() {
 	append-cxxflags -std=c++11 #567216
 	local myeconfargs=(
 		--disable-lynx
-		--docdir=/usr/share/doc/${PF}
 		$(use_enable nls)
 	)
 	econf "${myeconfargs[@]}"

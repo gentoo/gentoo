@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit linux-info readme.gentoo systemd
 
 DESCRIPTION="IBM ThinkPad Hard Drive Active Protection System (HDAPS) daemon"
-HOMEPAGE="https://github.com/evgeni/${PN}/"
+HOMEPAGE="https://github.com/evgeni/hdapsd/"
 SRC_URI="https://github.com/evgeni/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -27,7 +27,7 @@ pkg_setup() {
 	fi
 }
 
-src_configure(){
+src_configure() {
 	econf \
 		$(use_enable libconfig) \
 		--with-systemdsystemunitdir=$(systemd_get_unitdir) \
@@ -41,7 +41,7 @@ src_install() {
 	readme.gentoo_create_doc
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	[[ -z $(ls "${ROOT}"sys/block/*/queue/protect 2>/dev/null) ]] && \
 	[[ -z $(ls "${ROOT}"sys/block/*/device/unload_heads 2>/dev/null) ]] && \
 		ewarn "Your kernel does NOT support shock protection."
@@ -62,11 +62,11 @@ precedence over the latter if both are used.
 
 You can change the default sampling rate by modifing
 
-  /sys/devices/platform/hdaps/sampling_rate
+	/sys/devices/platform/hdaps/sampling_rate
 
 and you may need to enable shock protection manually by running
 
-  # echo -1 > /sys/block/<disk>/device/unload_heads
+	# echo -1 > /sys/block/<disk>/device/unload_heads
 
 as root.
 "

@@ -1,9 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy )
+DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 PYTHON_REQ_USE="xml(+),threads(+)"
 
 EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/gentoolkit.git"
@@ -20,23 +21,18 @@ IUSE=""
 KEYWORDS=""
 
 DEPEND="
-	|| (
-		sys-apps/portage[${PYTHON_USEDEP}]
-		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-	)"
+	sys-apps/portage[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
 	sys-apps/gawk
 	sys-apps/gentoo-functions"
+
+distutils_enable_tests setup.py
 
 python_prepare_all() {
 	python_setup
 	echo VERSION="${PVR}" "${PYTHON}" setup.py set_version
 	VERSION="${PVR}" "${PYTHON}" setup.py set_version
 	distutils-r1_python_prepare_all
-}
-
-python_install_all() {
-	distutils-r1_python_install_all
 }
 
 pkg_preinst() {
@@ -47,8 +43,8 @@ pkg_preinst() {
 
 pkg_postinst() {
 	# Create cache directory for revdep-rebuild
-	mkdir -p -m 0755 "${EROOT%/}"/var/cache
-	mkdir -p -m 0700 "${EROOT%/}"/var/cache/revdep-rebuild
+	mkdir -p -m 0755 "${EROOT}"/var/cache
+	mkdir -p -m 0700 "${EROOT}"/var/cache/revdep-rebuild
 
 	if [[ ${SHOW_GENTOOKIT_DEV_DEPRECATED_MSG} ]]; then
 		elog "Starting with version 0.4.0, ebump, ekeyword and imlate are now"

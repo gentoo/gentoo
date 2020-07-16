@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2012-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -8,11 +8,11 @@ inherit cmake-utils gnome2-utils
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://gitlab.com/fcitx/fcitx-libpinyin.git"
+	EGIT_REPO_URI="https://github.com/fcitx/fcitx-libpinyin"
 fi
 
 DESCRIPTION="Chinese LibPinyin input methods for Fcitx"
-HOMEPAGE="https://fcitx-im.org/ https://gitlab.com/fcitx/fcitx-libpinyin"
+HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx-libpinyin"
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	SRC_URI="https://download.fcitx-im.org/data/model.text.20161206.tar.gz -> fcitx-data-model.text.20161206.tar.gz"
 else

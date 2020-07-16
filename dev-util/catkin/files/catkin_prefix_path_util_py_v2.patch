@@ -1,0 +1,40 @@
+Author:  Eric Timmons 
+https://bugs.gentoo.org/show_bug.cgi?id=586104
+
+Index: catkin-0.7.17/cmake/templates/_setup_util.py.in
+===================================================================
+--- catkin-0.7.17.orig/cmake/templates/_setup_util.py.in
++++ catkin-0.7.17/cmake/templates/_setup_util.py.in
+@@ -264,7 +264,7 @@ if __name__ == '__main__':
+ 
+         if not args.local:
+             # environment at generation time
+-            CMAKE_PREFIX_PATH = '@CMAKE_PREFIX_PATH_AS_IS@'.split(';')
++            CMAKE_PREFIX_PATH = '@CATKIN_PREFIX_PATH@;@CMAKE_PREFIX_PATH_AS_IS@'.split(';')
+         else:
+             # don't consider any other prefix path than this one
+             CMAKE_PREFIX_PATH = []
+Index: catkin-0.7.17/python/catkin/builder.py
+===================================================================
+--- catkin-0.7.17.orig/python/catkin/builder.py
++++ catkin-0.7.17/python/catkin/builder.py
+@@ -1143,6 +1143,7 @@ _CATKIN_SETUP_DIR= . "{0}/setup.sh"
+                     'CATKIN_LIB_ENVIRONMENT_PATHS': "'lib'",
+                     'CATKIN_PKGCONFIG_ENVIRONMENT_PATHS': "os.path.join('lib', 'pkgconfig')",
+                     'CMAKE_PREFIX_PATH_AS_IS': ';'.join(os.environ['CMAKE_PREFIX_PATH'].split(os.pathsep)),
++                    'CATKIN_PREFIX_PATH': ';'.join(os.environ['CATKIN_PREFIX_PATH'].split(os.pathsep)),
+                     'PYTHON_EXECUTABLE': sys.executable,
+                     'PYTHON_INSTALL_DIR': get_python_install_dir(),
+                 }
+Index: catkin-0.7.17/test/unit_tests/test_setup_util.py
+===================================================================
+--- catkin-0.7.17.orig/test/unit_tests/test_setup_util.py
++++ catkin-0.7.17/test/unit_tests/test_setup_util.py
+@@ -14,6 +14,7 @@ data = configure_file(os.path.join(os.pa
+                           'PYTHON_EXECUTABLE': sys.executable,
+                           'PYTHON_INSTALL_DIR': 'pythonX.Y/packages',
+                           'CMAKE_PREFIX_PATH_AS_IS': '',
++                          'CATKIN_PREFIX_PATH':'',
+                       })
+ with tempfile.NamedTemporaryFile('w+') as setup_util_file:
+     setup_util_file.write(data)

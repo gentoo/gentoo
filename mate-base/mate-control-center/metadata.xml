@@ -6,7 +6,7 @@
 		<name>Gentoo MATE Desktop</name>
 	</maintainer>
 	<use>
-		<flag name="appindicator">Add support for AppIndicator</flag>
+		<flag name="accountsservice">Add support for AccountsService</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">mate-desktop/mate-control-center</remote-id>

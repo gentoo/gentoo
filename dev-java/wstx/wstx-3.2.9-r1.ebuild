@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -14,6 +14,7 @@ LICENSE="Apache-2.0"
 SLOT="3.2"
 KEYWORDS="amd64 ppc64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="
 	dev-java/sax:0
@@ -48,7 +49,7 @@ java_prepare() {
 
 EANT_GENTOO_CLASSPATH="sax,msv,relaxng-datatype"
 
-src_test(){
+src_test() {
 	java-pkg-2_src_test
 }
 

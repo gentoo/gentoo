@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,8 +11,9 @@ SRC_URI="https://www.freedesktop.org/software/${PN}/releases/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE="consolekit elogind examples gtk +introspection jit kde nls pam selinux systemd test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="^^ ( consolekit elogind systemd )"
 
@@ -35,7 +36,7 @@ DEPEND="
 	elogind? ( sys-auth/elogind )
 	pam? (
 		sys-auth/pambase
-		virtual/pam
+		sys-libs/pam
 	)
 	systemd? ( sys-apps/systemd:0=[policykit] )
 "

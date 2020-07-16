@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit java-pkg-opt-2 linux-info user
+inherit autotools java-pkg-opt-2 linux-info user
 
 DESCRIPTION="A transparent low-overhead system-wide profiler"
 HOMEPAGE="http://oprofile.sourceforge.net"
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 ~sparc x86"
 IUSE="java pch"
 
 RDEPEND=">=dev-libs/popt-1.7-r1
@@ -37,6 +37,12 @@ pkg_setup() {
 	enewuser ${PN} -1 -1 -1 ${PN}
 
 	use java && java-pkg_init
+}
+
+src_prepare() {
+	eapply "${FILESDIR}/binutils-2.34.patch"
+	java-pkg-opt-2_src_prepare
+	eautoreconf
 }
 
 src_configure() {

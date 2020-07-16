@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools git-r3 multilib-minimal
+inherit autotools git-r3 multilib-minimal toolchain-funcs
 
 DESCRIPTION="An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)"
 HOMEPAGE="https://www.gnu.org/software/libidn/#libidn2 https://gitlab.com/libidn/libidn2"
@@ -10,7 +10,7 @@ EGIT_REPO_URI="https://gitlab.com/libidn/libidn2.git/"
 SRC_URI="mirror://gnu/libunistring/libunistring-0.9.10.tar.gz"
 
 LICENSE="GPL-2+ LGPL-3+"
-SLOT="0"
+SLOT="0/2"
 KEYWORDS=""
 IUSE="static-libs"
 
@@ -33,8 +33,9 @@ src_unpack() {
 src_prepare() {
 	mv "${WORKDIR}"/libunistring-0.9.10 unistring || die
 
-	einfo "./bootstrap"
-	./bootstrap --gnulib-srcdir=gnulib --no-bootstrap-sync --no-git --skip-po || die
+	AUTORECONF=: sh bootstrap \
+		--gnulib-srcdir=gnulib --no-bootstrap-sync --no-git --skip-po \
+	|| die
 
 	default
 
@@ -52,8 +53,10 @@ src_prepare() {
 
 multilib_src_configure() {
 	econf \
+		CC_FOR_BUILD="$(tc-getBUILD_CC)" \
 		$(use_enable static-libs static) \
 		--disable-doc \
+		--disable-gcc-warnings \
 		--disable-gtk-doc
 }
 

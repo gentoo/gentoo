@@ -26,10 +26,9 @@ src_prepare() {
 }
 
 src_install() {
-	dosbin pop-before-smtp || die "dosbin failed"
+	dosbin pop-before-smtp
 	dodoc README ChangeLog TODO contrib/README.QUICKSTART
 	insinto /etc
-	doins pop-before-smtp-conf.pl || die "doins failed"
-	newinitd "${FILESDIR}/pop-before-smtp.init" pop-before.smtp \
-		|| die "newinitd failed"
+	doins pop-before-smtp-conf.pl
+	newinitd "${FILESDIR}/pop-before-smtp.init" pop-before.smtp
 }

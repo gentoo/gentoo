@@ -1,5 +1,5 @@
---- util/fbsetbg
-+++ util/fbsetbg
+--- a/util/fbsetbg
++++ b/util/fbsetbg
 @@ -356,7 +356,8 @@
              if [ ! "$wpsetter" = Esetroot ]; then
                  WPSETTER=$wpsetter

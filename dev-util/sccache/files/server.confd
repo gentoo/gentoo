@@ -4,17 +4,8 @@
 # Full path to config file. /etc/sccache/server.conf is default if not set.
 #SCCACHE_SERVER_CONF="/etc/sccache/server.conf"
 
-# logging is off by default, see https://docs.rs/env_logger for possible values
+# logging is off by default, possible values are: error warn info debug trace
 #SCCACHE_SERVER_LOGLEVEL=info
-
-# plain file (preferred), change logrotate file as well if you change this.
-#output_log=/var/log/"${RC_SVCNAME}.log"
-#error_log=/var/log/"${RC_SVCNAME}.error.log"
-
-# syslog support via LOGGER(1). Note this spawns logger processes per io stream
-#output_logger="logger -p daemon.none --"
-#error_logger="logger -p daemon.err --"
-
 
 # no limits set by default, see IONICE(1), NICE(1), START-STOP-DAEMON(8)
 #SSD_NICELEVEL=15

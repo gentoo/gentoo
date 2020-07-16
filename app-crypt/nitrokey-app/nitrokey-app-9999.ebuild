@@ -1,10 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
-inherit cmake-utils gnome2-utils
+inherit cmake-utils xdg-utils
 
 DESCRIPTION="Cross platform personalization tool for the Nitrokey"
 HOMEPAGE="https://github.com/Nitrokey/nitrokey-app"
@@ -17,14 +16,14 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_SUBMODULES=()
 else
 	SRC_URI="https://github.com/Nitrokey/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-3"
 SLOT="0"
 
 RDEPEND="
-	app-crypt/libnitrokey:=
+	>=app-crypt/libnitrokey-3.5:=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -32,14 +31,15 @@ RDEPEND="
 	dev-qt/qtwidgets:5"
 DEPEND="
 	${RDEPEND}
-	dev-libs/cppcodec
+	dev-libs/cppcodec"
+BDEPEND="
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig"
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

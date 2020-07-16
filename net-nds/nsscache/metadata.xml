@@ -6,6 +6,7 @@
 	</maintainer>
 	<use>
 		<flag name="nsscache">Depend on sys-auth/libnss-cache to handle flat files</flag>
+		<flag name="s3">Support for S3-based NSS sources</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">google/nsscache</remote-id>

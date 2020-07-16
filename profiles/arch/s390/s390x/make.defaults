@@ -7,7 +7,7 @@ ABI="${DEFAULT_ABI}"
 
 CHOST="s390x-ibm-linux-gnu"
 
-# Michał Górny <mgorny@gentoo.org> (01 Jul 2014)
+# Michał Górny <mgorny@gentoo.org> (2014-07-01)
 # Make the native ABI implicit so that MULTILIB_USEDEP can be satisfied
 # by non-multilib ebuilds when non-native ABIs are disabled.
 IUSE_IMPLICIT="abi_s390_64 -abi_s390_32"

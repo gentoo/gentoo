@@ -2,11 +2,11 @@
 # https://lwn.net/Articles/611162
 >=sys-libs/glibc-2.20
 
-# >=python-3.4 assumes F_DUPFD_CLOEXEC of fcntl,
-# which requires >=linux-2.6.24.
-# python-3.3 seems to be unconditionally using utimensat.
->=dev-lang/python-3
+# Benda Xu <heroxbd@gentoo.org> (2019-07-20)
+# openbsd-netcat-1.190 requires SOCK_NONBLOCK from socket,
+# which is available since Linux 2.6.27.
+>=net-analyzer/openbsd-netcat-1.190
 
-# Tupone Alfredo <tupone@gentoo.org> (4 Nov 2018)
+# Tupone Alfredo <tupone@gentoo.org> (2018-11-04)
 # require newer glibc
 dev-lang/gnat-gpl

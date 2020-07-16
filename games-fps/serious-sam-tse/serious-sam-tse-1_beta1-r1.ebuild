@@ -77,7 +77,7 @@ src_install() {
 
 	einfo "Copying from ${CDROM_ROOT}"
 	insinto "${dir}"
-	doins -r "${CDROM_ROOT}"/Install/* || die "doins CD failed"
+	doins -r "${CDROM_ROOT}"/Install/*
 
 	# Correct paths of copied resource files
 	mv "${D}/${dir}"/Locales/eng/Controls/* "${D}/${dir}"/Controls/ || die "Failed to move file"
@@ -105,8 +105,7 @@ src_install() {
 	mv Levels/Mods/Warped/ Mods/ || die "Failed to move file"
 	rmdir Levels/Mods/ || die "Failed to remove dir"
 
-	doins -r Bin Data Levels Mods *.txt README* \
-		|| die "doins main failed"
+	doins -r Bin Data Levels Mods *.txt README*
 
 	# Install bins last to ensure they are marked executable
 	exeinto "${dir}"

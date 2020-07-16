@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		Confuse is a configuration library for Python that uses YAML. It takes
+		care of defaults, overrides, type checking, command-line integration,
+		human-readable errors, and standard OS-specific locations.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">beetbox/confuse</remote-id>
+	</upstream>
+</pkgmetadata>

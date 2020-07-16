@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # @ECLASS: leechcraft.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # 0xd34df00d@gmail.com
 # NightNord@niifaq.ru
-# @SUPPORTED_EAPIS: 6
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Common functions and setup utilities for the LeechCraft app
 # @DESCRIPTION:
 # The leechcraft eclass contains a common set of functions and steps
@@ -22,24 +22,28 @@
 # Only EAPI >=6 is supported
 
 case ${EAPI:-0} in
-	6) ;;
+	6) inherit cmake-utils ;;
+	7) inherit cmake ;;
 	*) die "EAPI not supported, bug ebuild mantainer" ;;
 esac
-
-inherit cmake-utils
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/0xd34df00d/leechcraft.git"
 
 	inherit git-r3
 else
-	DEPEND="app-arch/xz-utils"
 	SRC_URI="https://dist.leechcraft.org/LeechCraft/${PV}/leechcraft-${PV}.tar.xz"
 	S="${WORKDIR}/leechcraft-${PV}"
 fi
 
 HOMEPAGE="https://leechcraft.org/"
 LICENSE="Boost-1.0"
+
+DEPEND="
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+"
+RDEPEND="${DEPEND}"
 
 # @ECLASS-VARIABLE: LEECHCRAFT_PLUGIN_CATEGORY
 # @DEFAULT_UNSET

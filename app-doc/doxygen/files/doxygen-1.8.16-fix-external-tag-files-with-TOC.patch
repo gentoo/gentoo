@@ -1,0 +1,50 @@
+From 4a72a9b07e805b4ba27560e8e921bcee0002ef4c Mon Sep 17 00:00:00 2001
+From: albert-github <albert.tests@gmail.com>
+Date: Mon, 9 Sep 2019 13:28:28 +0200
+Subject: [PATCH] issue #7248: Including external tag files with TOC produces a
+ broken index.qhp
+
+Ignore automatically generated anchor names when importing a tag file.
+
+Upstream: https://github.com/doxygen/doxygen/pull/7250
+---
+ src/tagreader.cpp | 19 ++++++++++++++++++-
+ 1 file changed, 18 insertions(+), 1 deletion(-)
+
+diff --git a/src/tagreader.cpp b/src/tagreader.cpp
+index 56dbe7df9..d79d9b5c5 100644
+--- a/src/tagreader.cpp
++++ b/src/tagreader.cpp
+@@ -494,6 +494,23 @@ class TagFileParser : public QXmlDefaultHandler
+ 
+     void endDocAnchor()
+     {
++      // Check whether or not the tag is automatically generate, in that case ignore the tag.
++      switch(m_state)
++      {
++        case InClass:
++        case InFile:
++        case InNamespace:
++        case InGroup:
++        case InPage:
++        case InMember:
++        case InPackage:
++        case InDir:
++          if (QString(m_curString).startsWith("autotoc_md")) return;
++          break;
++        default:
++          warn("Unexpected tag 'docanchor' found");
++          return;
++      }
+       switch(m_state)
+       {
+         case InClass:     m_curClass->docAnchors.append(new TagAnchorInfo(m_fileName,m_curString,m_title)); break;
+@@ -504,7 +521,7 @@ class TagFileParser : public QXmlDefaultHandler
+         case InMember:    m_curMember->docAnchors.append(new TagAnchorInfo(m_fileName,m_curString,m_title)); break;
+         case InPackage:   m_curPackage->docAnchors.append(new TagAnchorInfo(m_fileName,m_curString,m_title)); break;
+         case InDir:       m_curDir->docAnchors.append(new TagAnchorInfo(m_fileName,m_curString,m_title)); break;
+-        default:   warn("Unexpected tag 'docanchor' found"); break; 
++        default:   warn("Unexpected tag 'docanchor' found"); break;  // Not really necessary anymore
+       }
+     }
+ 

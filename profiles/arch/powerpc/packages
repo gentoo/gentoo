@@ -4,7 +4,7 @@
 *sys-fs/hfsutils
 *sys-fs/hfsplusutils
 
-# Brent Baude <ranger@gentoo.org> (29 Nov 2012)
+# Brent Baude <ranger@gentoo.org> (2012-11-29)
 # Removing kgcc64 from system packages now that toolchain is biarch
 -*sys-devel/kgcc64
 

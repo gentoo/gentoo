@@ -1,0 +1,17 @@
+diff --git a/Makefile b/Makefile
+index 9c9b93d..2eb8ab2 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -141,10 +141,9 @@ endif
+ 	install -m 0755 -d $(DESTDIR)/$(mandir)/man5
+ 	for man in $(MANPAGES); do \
+ 		rm -f $$man.gz; \
+-		gzip -9n $$man; \
+ 		case "$$man" in \
+-			*.1) install -c -m 0644 $$man.gz $(DESTDIR)/$(mandir)/man1/; ;; \
+-			*.5) install -c -m 0644 $$man.gz $(DESTDIR)/$(mandir)/man5/; ;; \
++			*.1) install -c -m 0644 $$man $(DESTDIR)/$(mandir)/man1/; ;; \
++			*.5) install -c -m 0644 $$man $(DESTDIR)/$(mandir)/man5/; ;; \
+ 		esac; \
+ 	done
+ 	rm -f $(MANPAGES) $(MANPAGES:%=%.gz)

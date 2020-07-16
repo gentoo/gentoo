@@ -1,0 +1,10 @@
+--- a/setup.py	2020-06-01 15:14:03.169026527 -0700
++++ b/setup.py	2020-06-01 15:17:38.619177059 -0700
+@@ -194,6 +194,7 @@
+         "buildbot.test",
+         "buildbot.test.util",
+         "buildbot.test.fake",
++        "buildbot.test.fakedb",
+         "buildbot.test.fuzz",
+         "buildbot.test.integration",
+         "buildbot.test.integration.interop",

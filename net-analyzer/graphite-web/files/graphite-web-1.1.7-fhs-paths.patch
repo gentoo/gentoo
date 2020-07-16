@@ -1,0 +1,63 @@
+Install FHS-style paths
+
+--- a/conf/graphite.wsgi.example
++++ b/conf/graphite.wsgi.example
+@@ -1,4 +1,4 @@
+ import sys
+-sys.path.append('/opt/graphite/webapp')
++sys.path.append('@GENTOO_PORTAGE_EPREFIX@/usr/share/graphite-web/webapp')
+ 
+ from graphite.wsgi import application
+--- a/setup.py
++++ b/setup.py
+@@ -115,8 +115,8 @@
+       ],
+       package_data={'graphite' :
+         ['templates/*', 'local_settings.py.example']},
+-      scripts=glob('bin/*'),
+-      data_files=list(webapp_content.items()) + storage_dirs + conf_files + examples,
++      scripts=['bin/graphite-web-build-index'],
++      data_files=list(webapp_content.items()),
+       install_requires=['Django>=1.8,<3.1', 'django-tagging==0.4.3', 'pytz',
+                         'pyparsing', 'cairocffi', 'urllib3', 'scandir', 'six'],
+       classifiers=[
+--- a/webapp/graphite/local_settings.py.example
++++ b/webapp/graphite/local_settings.py.example
+@@ -101,6 +101,7 @@
+ # Change only GRAPHITE_ROOT if your install is merely shifted from /opt/graphite
+ # to somewhere else
+ #GRAPHITE_ROOT = '/opt/graphite'
++GRAPHITE_ROOT = '@GENTOO_PORTAGE_EPREFIX@/usr/share/graphite-web'
+ 
+ # Most installs done outside of a separate tree such as /opt/graphite will
+ # need to change these settings. Note that the default settings for each
+@@ -110,6 +111,11 @@
+ #STATIC_ROOT = '/opt/graphite/static'
+ #LOG_DIR = '/opt/graphite/storage/log/webapp'
+ #INDEX_FILE = '/opt/graphite/storage/index'     # Search index file
++CONF_DIR = '@GENTOO_PORTAGE_EPREFIX@/etc/graphite-web'
++STORAGE_DIR = '@GENTOO_PORTAGE_EPREFIX@/var/lib/carbon'
++STATIC_ROOT = '@GENTOO_PORTAGE_EPREFIX@/usr/share/graphite-web/webapp/content'
++LOG_DIR = '@GENTOO_PORTAGE_EPREFIX@/var/log/graphite-web'
++INDEX_FILE = '@GENTOO_PORTAGE_EPREFIX@/var/lib/graphite-web/index'  # Search index file
+ 
+ # To further or fully customize the paths, modify the following. Note that the
+ # default settings for each of these are relative to CONF_DIR and STORAGE_DIR
+@@ -127,6 +133,8 @@
+ #CERES_DIR = '/opt/graphite/storage/ceres'
+ #WHISPER_DIR = '/opt/graphite/storage/whisper'
+ #RRD_DIR = '/opt/graphite/storage/rrd'
++WHISPER_DIR = '@GENTOO_PORTAGE_EPREFIX@/var/lib/carbon/whisper'
++RRD_DIR = '@GENTOO_PORTAGE_EPREFIX@/var/lib/carbon/rrd'
+ #
+ # Data directories using the "Standard" metrics finder (i.e. not Ceres)
+ #STANDARD_DIRS = [WHISPER_DIR, RRD_DIR] # Default: set from the above variables
+@@ -244,7 +244,7 @@
+ #
+ #DATABASES = {
+ #    'default': {
+-#        'NAME': '/opt/graphite/storage/graphite.db',
++#        'NAME': '@GENTOO_PORTAGE_EPREFIX@/var/lib/graphite-web/graphite.db',
+ #        'ENGINE': 'django.db.backends.sqlite3',
+ #        'USER': '',
+ #        'PASSWORD': '',

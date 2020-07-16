@@ -1,8 +1,9 @@
-# Copyright 2008-2019 Arfrever Frehtes Taifersar Arahesis and others
+# Copyright 2008-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=(python{2_7,3_5,3_6,3_7})
+PYTHON_COMPAT=(python{2_7,3_6,3_7,3_8})
+DISTUTILS_USE_SETUPTOOLS="manual"
 
 inherit distutils-r1
 
@@ -22,7 +23,7 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0/18"
+SLOT="0/23"
 KEYWORDS=""
 IUSE=""
 
@@ -58,5 +59,5 @@ python_test() {
 python_install_all() {
 	distutils-r1_python_install_all
 
-	find "${D}" -name "*.pth" -delete || die
+	find "${D}" -name "*.pth" -type f -delete || die
 }

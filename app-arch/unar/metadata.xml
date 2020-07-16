@@ -2,9 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>hanno@gentoo.org</email>
+		<email>soap@gentoo.org</email>
+		<name>David Seifert</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="google-code">theunarchiver</remote-id>
+		<remote-id type="github">MacPaw/XADMaster</remote-id>
 	</upstream>
 </pkgmetadata>

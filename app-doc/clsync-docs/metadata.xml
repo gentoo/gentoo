@@ -13,6 +13,6 @@
     <flag name="api">Install doxygen generated API docs.</flag>
   </use>
   <upstream>
-    <remote-id type="github">xaionaro/clsync</remote-id>
+    <remote-id type="github">clsync/clsync</remote-id>
   </upstream>
 </pkgmetadata>

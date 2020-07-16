@@ -1,0 +1,54 @@
+--- a/src/y.tab.c.bison	2020-03-08 20:05:00.750000000 +0300
++++ b/src/y.tab.c.bison	2020-03-08 20:04:42.160000000 +0300
+@@ -217,7 +217,7 @@
+ 
+ #include "sgEx.h"
+ 
+-FILE *yyin, *yyout;
++extern FILE *yyin, *yyout;
+ char *configFile;
+ 
+ int numTimeElements;
+--- a/src/sg.h.in	2020-03-08 20:02:46.900000000 +0300
++++ b/src/sg.h.in	2020-03-08 20:03:22.110000000 +0300
+@@ -115,7 +115,7 @@
+ #define REDIRECT_PERMANENT   "301:"
+ #define REDIRECT_TEMPORARILY "302:"
+ 
+-char *progname;
++extern char *progname;
+ 
+ struct LogFileStat {
+   char *name;
+@@ -337,7 +337,7 @@
+   struct AclDest *next;
+ };
+ 
+-int lineno;
++extern int lineno;
+ 
+ char   *sgParseRedirect	__P((char *, struct SquidInfo *, struct Acl *, struct AclDest *));
+ char   *sgAclAccess __P((struct Source *, struct Acl *, struct SquidInfo *));
+--- a/src/main.c.in	2020-03-08 20:10:55.650000000 +0300
++++ b/src/main.c.in	2020-03-08 20:11:13.590000000 +0300
+@@ -21,6 +21,9 @@
+ #include <syslog.h>
+ #endif
+ 
++char *progname;
++int lineno;
++
+ struct Setting *lastSetting = NULL;
+ struct Setting *Setting = NULL;                        /* linked list, Calloc */
+ 
+--- a/src/sg.y.in	2020-03-08 20:14:46.180000000 +0300
++++ b/src/sg.y.in	2020-03-08 20:14:57.110000000 +0300
+@@ -35,7 +35,7 @@
+ 
+ #include "sgEx.h"
+ 
+-FILE *yyin, *yyout;
++extern FILE *yyin, *yyout;
+ char *configFile;
+ 
+ int numTimeElements;

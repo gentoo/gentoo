@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="|| ( GPL-2 GPL-3 ) LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ia64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 arm64 ~hppa ~ia64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="cairo doc icu java jpeg lapack minimal nls openmp perl png prefix profile readline static-libs tiff tk X"
 REQUIRED_USE="png? ( || ( cairo X ) ) jpeg? ( || ( cairo X ) ) tiff? ( || ( cairo X ) )"
 
@@ -27,7 +27,7 @@ CDEPEND="
 	>=dev-libs/libpcre-8.35:3=
 	net-misc/curl
 	virtual/blas:0
-	|| ( >=sys-apps/coreutils-8.15 sys-freebsd/freebsd-bin app-misc/realpath )
+	|| ( >=sys-apps/coreutils-8.15 app-misc/realpath )
 	cairo? ( x11-libs/cairo:0=[X] x11-libs/pango:0= )
 	icu? ( dev-libs/icu:= )
 	jpeg? ( virtual/jpeg:0 )
@@ -133,7 +133,6 @@ src_configure() {
 		--enable-R-shlib \
 		--disable-R-framework \
 		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)" \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		rdocdir="${EPREFIX}/usr/share/doc/${PF}" \
 		$(use_enable java) \
 		$(use_enable nls) \

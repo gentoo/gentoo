@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,9 +15,8 @@ SLOT="0"
 KEYWORDS=""
 IUSE="zlib +ecm mpi"
 
-# some linking troubles with gwnum
 DEPEND="
-	ecm? ( sci-mathematics/gmp-ecm[-gwnum] )
+	ecm? ( sci-mathematics/gmp-ecm )
 	mpi? ( virtual/mpi )
 	zlib? ( sys-libs/zlib )"
 RDEPEND="${DEPEND}"
@@ -46,6 +45,6 @@ src_install() {
 	mkdir -p "${D}/usr/share/doc/${P}/"
 	cp include/* "${D}/usr/include/msieve" || die "Failed to install"
 	cp libmsieve.a "${D}/usr/lib/" || die "Failed to install"
-	dobin msieve || die "Failed to install"
+	dobin msieve
 	cp Readme* "${D}/usr/share/doc/${P}/" || die "Failed to install"
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="http://www.kiecza.net/daniel/linux/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc ~x86"
+KEYWORDS="amd64 ppc sparc x86"
 IUSE=""
 
 S="${WORKDIR}/${MY_P}"
@@ -37,7 +37,7 @@ src_prepare() {
 		-i Makefile.in || die
 }
 
-src_install () {
+src_install() {
 	HTML_DOCS=( cvoicecontrol/docs/en/*.html )
 	default
 }

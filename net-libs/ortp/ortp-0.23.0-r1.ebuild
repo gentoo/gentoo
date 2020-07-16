@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils
+inherit eutils ltprune
 
 DESCRIPTION="Open Real-time Transport Protocol (RTP, RFC3550) stack"
 HOMEPAGE="http://www.linphone.org/"
@@ -10,7 +10,7 @@ SRC_URI="mirror://nongnu/linphone/${PN}/sources/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/9"
-KEYWORDS="alpha amd64 ~arm64 ia64 ppc ppc64 sparc x86 ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm64 ~ia64 ppc ppc64 sparc x86 ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="debug doc examples ipv6 libressl minimal ntp-timestamp ssl srtp"
 
 RDEPEND="

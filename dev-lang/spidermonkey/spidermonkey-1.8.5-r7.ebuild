@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,8 +19,9 @@ SRC_URI="https://archive.mozilla.org/pub/js/${TARBALL_P}.tar.gz
 
 LICENSE="NPL-1.1"
 SLOT="0/mozjs185"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 x86 ~x64-macos"
 IUSE="debug minimal static-libs test"
+RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${MY_P}"
 BUILDDIR="${S}/js/src"
@@ -52,7 +53,7 @@ PATCHES=(
 DOCS=( ${S}/README )
 HTML_DOCS=( ${BUILDDIR}/README.html )
 
-pkg_setup(){
+pkg_setup() {
 	if [[ ${MERGE_TYPE} != "binary" ]]; then
 		export LC_ALL="C"
 	fi

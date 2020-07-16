@@ -1,11 +1,28 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# James Le Cuirot <chewi@gentoo.org> (09 Jan 2016)
+# Sam James <sam@gentoo.org> (2020-07-02)
+# Packages which need Rust (only on >= 6j)
+# We unmask them for armv6j, armv7a elsewhere
+dev-util/cargo-c
+dev-util/cbindgen
+media-video/rav1e
+net-news/newsboat
+
+# Sam James <sam@gentoo.org> (2020-06-24)
+# Valgrind lacks support for < ARMv7
+# https://valgrind.org/info/platforms.html
+dev-util/valgrind
+
+# James Le Cuirot <chewi@gentoo.org> (2016-01-09)
 # This is built for armv6 and will not work on earlier generations.
 dev-java/oracle-jdk-bin
 dev-java/oracle-jre-bin
 
-# James Le Cuirot <chewi@gentoo.org> (24 May 2015)
+# James Le Cuirot <chewi@gentoo.org> (2015-05-24)
 # This is built for armv7a and will not work on earlier generations.
 dev-java/icedtea-bin
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-22)
+# This is built for armv7a and will not work on earlier generations.
+dev-java/openjdk-bin:11

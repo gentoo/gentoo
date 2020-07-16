@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/686592
+
+In file included from /var/tmp/portage/sci-libs/dcmtk-3.6.3/work/dcmtk-3.6.3/ofstd/include/dcmtk/ofstd/variadic/variant.h:19,
+                 from /var/tmp/portage/sci-libs/dcmtk-3.6.3/work/dcmtk-3.6.3/ofstd/include/dcmtk/ofstd/ofvriant.h:379,
+                 from /var/tmp/portage/sci-libs/dcmtk-3.6.3/work/dcmtk-3.6.3/ofstd/tests/tvariant.cc:26:
+/var/tmp/portage/sci-libs/dcmtk-3.6.3/work/dcmtk-3.6.3/ofstd/include/dcmtk/ofstd/variadic/helpers.h:57:32: error: narrowing conversion of ‘-1’ from ‘int’ to ‘long unsigned int’ [-Wnarrowing]
+   57 | : OFintegral_constant<size_t,-1> {};
+      |
+
+--- a/ofstd/include/dcmtk/ofstd/variadic/helpers.h
++++ b/ofstd/include/dcmtk/ofstd/variadic/helpers.h
+@@ -14,6 +14,8 @@
+ #ifndef VARIADIC_HELPERS_H
+ #define VARIADIC_HELPERS_H
+ 
++#include <limits>
++
+ #include "dcmtk/config/osconfig.h"    /* make sure OS specific configuration is included first */
+ 
+ #include "dcmtk/ofstd/oftraits.h"
+@@ -54,7 +56,7 @@
+ 
+ template<size_t Index,typename T>
+ struct OFvariadic_find_type_t<Index,T>
+-: OFintegral_constant<size_t,-1> {};
++: OFintegral_constant<size_t,std::numeric_limits<size_t>::max()> {};
+ 
+ template<typename T,typename T0=OFvariadic_nil,typename T1=OFvariadic_nil,typename T2=OFvariadic_nil,typename T3=OFvariadic_nil,typename T4=OFvariadic_nil,typename T5=OFvariadic_nil,typename T6=OFvariadic_nil,typename T7=OFvariadic_nil,typename T8=OFvariadic_nil,typename T9=OFvariadic_nil,typename T10=OFvariadic_nil,typename T11=OFvariadic_nil,typename T12=OFvariadic_nil,typename T13=OFvariadic_nil,typename T14=OFvariadic_nil,typename T15=OFvariadic_nil,typename T16=OFvariadic_nil,typename T17=OFvariadic_nil,typename T18=OFvariadic_nil,typename T19=OFvariadic_nil,typename T20=OFvariadic_nil,typename T21=OFvariadic_nil,typename T22=OFvariadic_nil,typename T23=OFvariadic_nil,typename T24=OFvariadic_nil,typename T25=OFvariadic_nil,typename T26=OFvariadic_nil,typename T27=OFvariadic_nil,typename T28=OFvariadic_nil,typename T29=OFvariadic_nil,typename T30=OFvariadic_nil,typename T31=OFvariadic_nil,typename T32=OFvariadic_nil,typename T33=OFvariadic_nil,typename T34=OFvariadic_nil,typename T35=OFvariadic_nil,typename T36=OFvariadic_nil,typename T37=OFvariadic_nil,typename T38=OFvariadic_nil,typename T39=OFvariadic_nil,typename T40=OFvariadic_nil,typename T41=OFvariadic_nil,typename T42=OFvariadic_nil,typename T43=OFvariadic_nil,typename T44=OFvariadic_nil,typename T45=OFvariadic_nil,typename T46=OFvariadic_nil,typename T47=OFvariadic_nil,typename T48=OFvariadic_nil,typename T49=OFvariadic_nil>
+ struct OFvariadic_find_type

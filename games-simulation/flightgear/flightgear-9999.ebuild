@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils bash-completion-r1 toolchain-funcs git-r3
 
 DESCRIPTION="Open Source Flight Simulator"
-HOMEPAGE="http://www.flightgear.org/"
+HOMEPAGE="https://www.flightgear.org/"
 EGIT_REPO_URI="git://git.code.sf.net/p/${PN}/${PN}
 	git://mapserver.flightgear.org/${PN}"
 EGIT_BRANCH="next"
@@ -14,7 +14,7 @@ EGIT_BRANCH="next"
 LICENSE="GPL-2"
 KEYWORDS=""
 SLOT="0"
-IUSE="dbus debug examples gdal openmp qt5 +udev +utils vim-syntax"
+IUSE="cpu_flags_x86_sse2 dbus debug examples gdal openmp qt5 +udev +utils vim-syntax"
 
 # Needs --fg-root with path to flightgear-data passed to test runner passed,
 # not really worth patching
@@ -23,7 +23,7 @@ RESTRICT="test"
 # zlib is some strange auto-dep from simgear
 COMMON_DEPEND="
 	dev-db/sqlite:3
-	<dev-games/openscenegraph-3.5.6:=[jpeg,png]
+	dev-games/openscenegraph[jpeg,png]
 	~dev-games/simgear-${PV}[gdal=]
 	media-libs/openal
 	>=media-libs/speex-1.2.0:0
@@ -55,6 +55,7 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/boost-1.44
 	>=media-libs/plib-1.8.5
+	qt5? ( >=dev-qt/linguist-tools-5.7.1:5 )
 	utils? (
 		x11-libs/libXi
 		x11-libs/libXmu
@@ -63,6 +64,8 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	~games-simulation/${PN}-data-${PV}
 "
+
+PATCHES=("${FILESDIR}/${PN}-2018.3.2-cmake.patch")
 
 DOCS=(AUTHORS ChangeLog NEWS README Thanks)
 
@@ -73,11 +76,11 @@ pkg_pretend() {
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_AUTOTESTING=OFF
+		-DENABLE_COMPOSITOR=OFF
 		-DENABLE_FGCOM=$(usex utils)
 		-DENABLE_FGELEV=$(usex utils)
 		-DENABLE_FGJS=$(usex utils)
 		-DENABLE_FGVIEWER=$(usex utils)
-		-DENABLE_FLITE=OFF
 		-DENABLE_GDAL=$(usex gdal)
 		-DENABLE_GPSSMOOTH=$(usex utils)
 		-DENABLE_HID_INPUT=$(usex udev)
@@ -90,6 +93,8 @@ src_configure() {
 		-DENABLE_PROFILE=OFF
 		-DENABLE_QT=$(usex qt5)
 		-DENABLE_RTI=OFF
+		-DENABLE_SIMD=OFF # see CPU_FLAGS
+		-DENABLE_SIMD_CODE=$(usex cpu_flags_x86_sse2)
 		-DENABLE_STGMERGE=ON
 		-DENABLE_TERRASYNC=$(usex utils)
 		-DENABLE_TRAFFIC=$(usex utils)
@@ -102,8 +107,8 @@ src_configure() {
 		-DOSG_FSTREAM_EXPORT_FIXED=OFF # TODO also see simgear
 		-DSP_FDMS=ON
 		-DSYSTEM_CPPUNIT=OFF # NOTE we do not build tests anyway
-		-DSYSTEM_FLITE=ON
-		-DSYSTEM_HTS_ENGINE=ON
+		-DSYSTEM_FLITE=OFF
+		-DSYSTEM_HTS_ENGINE=OFF
 		-DSYSTEM_SPEEX=ON
 		-DSYSTEM_GSM=ON
 		-DSYSTEM_SQLITE=ON
@@ -111,6 +116,9 @@ src_configure() {
 		-DUSE_DBUS=$(usex dbus)
 		-DWITH_FGPANEL=$(usex utils)
 	)
+	if use cpu_flags_x86_sse2; then
+		append-flags -msse2 -mfpmath=sse
+	fi
 	if use gdal && use utils; then
 		mycmakeargs+=(-DENABLE_DEMCONVERT=ON)
 	else

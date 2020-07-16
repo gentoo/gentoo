@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit gnome2-utils pax-utils unpacker xdg-utils
+inherit eutils gnome2-utils pax-utils unpacker xdg-utils
 
 DESCRIPTION="Spotify is a social music platform"
 HOMEPAGE="https://www.spotify.com/ch-de/download/previews/"
@@ -28,7 +28,7 @@ RDEPEND="
 	media-libs/alsa-lib
 	media-libs/harfbuzz
 	media-libs/fontconfig
-	media-libs/mesa
+	media-libs/mesa[X(+)]
 	net-misc/curl[ssl,curl_ssl_openssl]
 	net-print/cups[ssl]
 	x11-libs/gtk+:2

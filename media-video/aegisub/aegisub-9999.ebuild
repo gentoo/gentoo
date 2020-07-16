@@ -54,6 +54,7 @@ REQUIRED_USE="|| ( alsa openal oss portaudio pulseaudio )"
 PATCHES=(
 	"${FILESDIR}/3.2.2_p20160518/${PN}-3.2.2_p20160518-fix-system-luajit-build.patch"
 	"${FILESDIR}/3.2.2_p20160518/${PN}-3.2.2_p20160518-respect-compiler-flags.patch"
+	"${FILESDIR}/3.2.2_p20160518/${PN}-3.2.2_p20160518-fix-boost170-build.patch"
 )
 
 src_prepare() {

@@ -1,0 +1,10 @@
+--- a/proc.h
++++ b/proc.h
+@@ -26,6 +26,7 @@
+ #include "config.h"
+ 
+ #include <sys/time.h>
++#include <unistd.h> /* pid_t */
+ 
+ #if defined(HAVE_LIBUNWIND)
+ # include <libunwind.h>

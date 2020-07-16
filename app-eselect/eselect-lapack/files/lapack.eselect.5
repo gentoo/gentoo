@@ -1,22 +1,22 @@
-.TH "ESELECT" "5" "June 2006" "Gentoo Linux" "eselect"
+.TH "ESELECT" "5" "June 2019" "Gentoo Linux" "eselect"
 .SH "NAME"
 lapack.eselect \- The LAPACK management module for Gentoo's eselect
 .SH "SYNOPSIS"
 \fBeselect lapack\fR [\fBhelp\fR|\fBusage\fR]
 .br 
-\fBeselect lapack\fR \fBlist\fR [\fIoptions\fR]
+\fBeselect lapack\fR \fBlist\fR [\fIlibdir\fR]
 .br 
 \fBeselect lapack\fR \fBadd\fR
 .br 
-\fBeselect lapack\fR \fBset\fR \fIimplementation\fR [\fIoptions\fR]
+\fBeselect lapack\fR \fBset\fR [\fIoptions\fR] \fIimplementation\fR
 .br 
-\fBeselect lapack\fR \fBshow\fR [\fIoptions\fR]
+\fBeselect lapack\fR \fBshow\fR [\fIlibdir\fR]
 
 .SH "DESCRIPTION"
 \fBeselect\fR is Gentoo's configuration and management tool. It features
 modules that care for the individual administrative tasks.
 .SH "ACTION: LIST"
-\fBeselect lapack list\fR [\fIoptions\fR]
+\fBeselect lapack list\fR [\fIlibdir\fR]
 .br 
 Displays an ordered list of installed LAPACK implementations. It distinguishes between versions with different
 Application Binary Interfaces (e.g. x86/AMD64). Furthermore, it also distinguishes
@@ -39,7 +39,7 @@ handle only certain ABI\-specific library directories. For example,
 lists only LAPACK implementations found in \fB/usr/lib64\fR.
 
 .SH "ACTION: SHOW"
-\fBeselect lapack show\fR [\fIoptions\fR]
+\fBeselect lapack show\fR [\fIlibdir\fR]
 .br 
 Shows your system's currently active LAPACK implementations.
 
@@ -59,7 +59,21 @@ The same \fIoptions\fR that apply to the \fBlist\fR action can be used
 with the \fBset\fR action to restrict it to given ABIs.
 
 phi / # eselect lapack set atlas
+
+.SH "ACTION: VALIDATE"
+\fBeselect lapack validate\fR
+.br
+Validates LAPACK candidates under the /etc/env.d directory and automatically
+remove the invalid ones.
+
+.SH "ACTION: ADD"
+\fBeselect lapack add\fR \fIlibdir\fR \fIdir\fR \fIimpl\fR
+.br
+Add a new LAPACK implementation.
+
 .SH "AUTHOR"
 Danny van Dyk <kugelfang@gentoo.org>
 .br
 Donnie Berkholz <spyderous@gentoo.org>
+.br
+Mo Zhou <lumin@debian.org>

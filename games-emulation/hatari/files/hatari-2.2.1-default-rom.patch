@@ -1,0 +1,16 @@
+Use etos512k.img from the emutos package rather than tos.img.
+
+diff -Naur a/src/configuration.c b/src/configuration.c
+--- a/src/configuration.c	2019-02-08 08:30:11.000000000 +0000
++++ b/src/configuration.c	2019-11-10 21:19:31.712605716 +0000
+@@ -841,8 +841,8 @@
+ 	ConfigureParams.Sound.YmVolumeMixing = YM_TABLE_MIXING;
+ 
+ 	/* Set defaults for Rom */
+-	sprintf(ConfigureParams.Rom.szTosImageFileName, "%s%ctos.img",
+-	        Paths_GetDataDir(), PATHSEP);
++	sprintf(ConfigureParams.Rom.szTosImageFileName, "%s%c..%cemutos%cetos512k.img",
++	        Paths_GetDataDir(), PATHSEP, PATHSEP, PATHSEP);
+ 	ConfigureParams.Rom.bPatchTos = true;
+ 	strcpy(ConfigureParams.Rom.szCartridgeImageFileName, "");
+ 

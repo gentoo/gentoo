@@ -7,5 +7,7 @@
   </maintainer>
   <use>
     <flag name="glade">Build support for Glade 3's GtkBuilder implementation</flag>
+    <flag name="gtk2">Build deprecated GTK+2 libxfce4ui-1 library.</flag>
+    <flag name="libgtop">Enable system information via <pkg>gnome-base/libgtop</pkg>.</flag>
   </use>
 </pkgmetadata>

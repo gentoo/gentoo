@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Console Mixer Program for OSS"
 HOMEPAGE="http://www.fh-worms.de/~inf222"
@@ -14,15 +14,24 @@ LICENSE="GPL-2"
 KEYWORDS="amd64 ~ppc sparc x86"
 IUSE="examples"
 
-DEPEND=">=sys-libs/ncurses-5.2"
+DEPEND=">=sys-libs/ncurses-5.2:0="
+BDEPEND="virtual/pkgconfig"
 
-src_compile() {
-	econf
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" || die "emake failed."
+PATCHES=(
+	"${FILESDIR}/${P}-tinfo.patch"
+)
+
+src_prepare() {
+	default
+	eautoreconf
 }
 
-src_install () {
-	emake DESTDIR="${D}" install || die "emake install failed."
+src_compile() {
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
+}
+
+src_install() {
+	emake DESTDIR="${D}" install
 	dodoc AUTHORS NEWS ChangeLog README
 
 	if use examples; then

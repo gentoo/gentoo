@@ -1,0 +1,25 @@
+From 55ce03222ee4c5ed2442278264028f6fb5bffa34 Mon Sep 17 00:00:00 2001
+From: David Seifert <david.seifert@gmail.com>
+Date: Sun, 03 May 2020 17:05:43 +0200
+Subject: [PATCH] Add compatibility workaround for GCC 6/7/8
+
+Bug: 819294
+Change-Id: I632c4ecf7d7f9876b37a6cff05c0408125656257
+---
+
+diff --git a/third_party/blink/renderer/platform/wtf/hash_table.h b/third_party/blink/renderer/platform/wtf/hash_table.h
+index 5a4468d..9dc95fa 100644
+--- a/third_party/blink/renderer/platform/wtf/hash_table.h
++++ b/third_party/blink/renderer/platform/wtf/hash_table.h
+@@ -673,7 +673,10 @@
+     return IsEmptyBucket(key) || IsDeletedBucket(key);
+   }
+   static bool IsEmptyOrDeletedBucketSafe(const Value& value) {
+-    alignas(std::max(alignof(Key), sizeof(size_t))) char buf[sizeof(Key)];
++    // GCC 6, 7 and 8 require this indirection due to a constexpr bug:
++    //   https://gcc.gnu.org/bugzilla/show_bug.cgi?id=94929
++    constexpr size_t kAlignment = std::max(alignof(Key), sizeof(size_t));
++    alignas(kAlignment) char buf[sizeof(Key)];
+     const Key& key = Extractor::ExtractSafe(value, &buf);
+     return IsEmptyBucket(key) || IsDeletedBucket(key);
+   }

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ MY_P="gnu.regexp-${PV}"
 
 DESCRIPTION="GNU regular expression package for Java"
 HOMEPAGE="https://savannah.gnu.org/projects/gnu-regexp"
-SRC_URI="mirror://gentoo/${MY_P}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="1"

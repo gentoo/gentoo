@@ -1,11 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_SINGLE_IMPL=1
 
+DISTUTILS_USE_SETUPTOOLS=no
 inherit gnome2 distutils-r1
 
 DESCRIPTION="A graphical tool for administering virtual machines"
@@ -18,22 +19,24 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/virt-manager/virt-manager.git"
 else
 	SRC_URI="http://virt-manager.org/download/sources/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="gnome-keyring gtk policykit sasl"
+IUSE="gtk policykit sasl"
 
 RDEPEND="!app-emulation/virtinst
 	${PYTHON_DEPS}
 	app-cdr/cdrtools
 	>=app-emulation/libvirt-glib-1.0.0[introspection]
-	dev-libs/libxml2[python,${PYTHON_USEDEP}]
-	dev-python/ipaddr[${PYTHON_USEDEP}]
-	dev-python/libvirt-python[${PYTHON_USEDEP}]
-	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-libs/libxml2[python,${PYTHON_MULTI_USEDEP}]
+		dev-python/argcomplete[${PYTHON_MULTI_USEDEP}]
+		dev-python/libvirt-python[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/requests[${PYTHON_MULTI_USEDEP}]
+	')
 	>=sys-libs/libosinfo-0.2.10[introspection]
 	gtk? (
 		gnome-base/dconf
@@ -41,8 +44,8 @@ RDEPEND="!app-emulation/virtinst
 		net-misc/spice-gtk[usbredir,gtk3,introspection,sasl?]
 		net-misc/x11-ssh-askpass
 		x11-libs/gtk+:3[introspection]
+		x11-libs/gtksourceview:4[introspection]
 		x11-libs/vte:2.91[introspection]
-		gnome-keyring? ( gnome-base/libgnome-keyring )
 		policykit? ( sys-auth/polkit[introspection] )
 	)
 "
@@ -57,17 +60,20 @@ src_prepare() {
 	distutils-r1_src_prepare
 }
 
-distutils-r1_python_compile() {
-	local defgraphics=
-
+python_configure() {
 	esetup.py configure \
 		--default-graphics=spice
 }
 
+python_install() {
+	esetup.py install
+}
+
 src_install() {
 	local mydistutilsargs=( --no-update-icon-cache --no-compile-schemas )
-
 	distutils-r1_src_install
+
+	python_fix_shebang "${ED}"/usr/share/virt-manager
 }
 
 pkg_preinst() {

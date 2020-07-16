@@ -1,0 +1,12 @@
+move dev-libs/range-v3 dev-cpp/range-v3
+move dev-python/neovim-python-client dev-python/pynvim
+move games-action/openastromenace games-action/astromenace
+move dev-python/matplotlib2tikz dev-python/tikzplotlib
+move dev-python/pep257 dev-python/pydocstyle
+move dev-python/pyzor mail-filter/pyzor
+move dev-python/python-sqlparse dev-python/sqlparse
+move dev-python/git-python dev-python/GitPython
+move www-servers/automx2 net-mail/automx2
+move dev-python/pysnmp-apps net-analyzer/snmpclitools
+move net-im/slack-bin net-im/slack
+slotmove sys-libs/libunwind 7 0

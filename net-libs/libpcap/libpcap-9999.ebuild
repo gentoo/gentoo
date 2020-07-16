@@ -1,36 +1,37 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools git-r3 multilib-minimal ltprune
+EAPI=7
+inherit autotools git-r3 multilib-minimal
 
 DESCRIPTION="A system-independent library for user-level network packet capture"
 EGIT_REPO_URI="https://github.com/the-tcpdump-group/libpcap"
 HOMEPAGE="
-	http://www.tcpdump.org/
-	${EGIT_REPO_URI}
+	https://www.tcpdump.org/
+	https://github.com/the-tcpdump-group/libpcap
 "
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="bluetooth dbus netlink static-libs usb"
+IUSE="bluetooth dbus netlink rdma -remote static-libs usb -yydebug"
 KEYWORDS=""
 
 RDEPEND="
 	bluetooth? ( net-wireless/bluez:=[${MULTILIB_USEDEP}] )
 	dbus? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	netlink? ( dev-libs/libnl:3[${MULTILIB_USEDEP}] )
+	rdma? ( sys-cluster/rdma-core )
 	usb? ( virtual/libusb:1[${MULTILIB_USEDEP}] )
 "
 DEPEND="
 	${RDEPEND}
 	sys-devel/flex
 	virtual/yacc
-	dbus? ( virtual/pkgconfig[${MULTILIB_USEDEP}] )
+	dbus? ( virtual/pkgconfig )
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.6.1-prefix-solaris.patch
+	"${FILESDIR}"/${PN}-1.9.1-pcap-config.patch
 	"${FILESDIR}"/${PN}-9999-prefix-darwin.patch
 )
 
@@ -45,8 +46,12 @@ multilib_src_configure() {
 	econf \
 		$(use_enable bluetooth) \
 		$(use_enable dbus) \
+		$(use_enable rdma) \
+		$(use_enable remote) \
 		$(use_enable usb) \
-		$(use_with netlink libnl)
+		$(use_enable yydebug) \
+		$(use_with netlink libnl) \
+		--enable-ipv6
 }
 
 multilib_src_compile() {
@@ -60,7 +65,8 @@ multilib_src_install_all() {
 	if ! use static-libs; then
 		find "${ED}" -name '*.a' -exec rm {} + || die
 	fi
-	prune_libtool_files
+
+	find "${ED}" -name '*.la' -delete || die
 
 	# We need this to build pppd on G/FBSD systems
 	if [[ "${USERLAND}" == "BSD" ]]; then

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXext
 	>=media-libs/glew-1.5.1:=
-	media-libs/mesa
+	media-libs/mesa[X(+)]
 	>=media-gfx/imagemagick-6.4:=
 	>=x11-misc/xscreensaver-5.08-r2
 	bzip2? ( app-arch/bzip2 )
@@ -59,7 +59,6 @@ src_configure() {
 		$(use_enable openal sound) \
 		$(use_with quesoglc) \
 		--bindir=/usr/$(get_libdir)/misc/xscreensaver \
-		--disable-dependency-tracking \
 		--enable-shared \
 		--with-configdir=/usr/share/xscreensaver/config
 }

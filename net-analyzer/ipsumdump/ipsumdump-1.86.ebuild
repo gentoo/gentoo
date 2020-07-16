@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Simple TCP/IP Dump summarizer/analyzer"
 HOMEPAGE="http://read.seas.harvard.edu/~kohler/ipsumdump/"
-SRC_URI="${HOMEPAGE}${P}.tar.gz"
+SRC_URI="http://read.seas.harvard.edu/~kohler/ipsumdump/${P}.tar.gz"
 
 LICENSE="the-Click-license"
 SLOT="0"
@@ -20,6 +20,7 @@ DEPEND="
 	dev-lang/perl
 	dev-libs/expat
 	sys-apps/texinfo
+	virtual/os-headers
 "
 DOCS=(
 	NEWS.md

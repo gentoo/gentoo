@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND+=">=app-crypt/gpgme-1.1.3"
+DEPEND+=">=app-crypt/gpgme-1.1.3 test? ( >=app-crypt/gpgme-1.13.0 )"
 RDEPEND+=">=app-crypt/gpgme-1.1.3"
 
 ruby_add_bdepend "test? ( dev-ruby/mocha:0.14 )"
@@ -47,7 +47,7 @@ each_ruby_configure() {
 }
 
 each_ruby_compile() {
-	emake V=1 -C ext archflag="${LDFLAGS}" || die "emake failed"
+	emake V=1 -C ext archflag="${LDFLAGS}"
 	cp -f "${S}/ext/gpgme_n.so" "${S}/lib" || die
 }
 

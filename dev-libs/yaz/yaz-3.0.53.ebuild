@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ SRC_URI="http://ftp.indexdata.dk/pub/${PN}/${P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sh ~sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sparc x86"
 IUSE="debug icu libressl tcpd ziffy"
 
 RDEPEND="dev-libs/libxml2
@@ -40,12 +40,12 @@ src_configure() {
 }
 
 src_compile() {
-	emake || die "emake failed"
+	emake
 }
 
 src_install() {
 	local docdir="/usr/share/doc/${PF}"
-	emake DESTDIR="${D}" docdir="${docdir}" install || die "install failed"
+	emake DESTDIR="${D}" docdir="${docdir}" install
 
 	dodir ${docdir}/html
 	mv -f "${D}"/${docdir}/*.{html,png} "${D}"/${docdir}/html/ || die "Failed to move HTML docs"

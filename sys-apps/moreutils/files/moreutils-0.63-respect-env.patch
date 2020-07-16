@@ -1,0 +1,23 @@
+diff --git a/is_utf8/Makefile b/is_utf8/Makefile
+index 4ebf8be..f0a111e 100644
+--- a/is_utf8/Makefile
++++ b/is_utf8/Makefile
+@@ -37,14 +37,14 @@ LINKERNAME = lib$(NAME).so
+ SONAME = $(LINKERNAME).$(VERSION)
+ REALNAME = $(SONAME).$(MINOR).$(RELEASE)
+ 
+-CC = gcc
+-CFLAGS = -O3 -Wextra -Wall -ansi -Wstrict-prototypes
++CC ?= gcc
++CFLAGS ?= -O3 -Wextra -Wall -ansi -Wstrict-prototypes
+ 
+ $(NAME): $(OBJ)
+-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
++	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LDFLAGS)
+ 
+ IS_UTF8_LIB:
+-	$(CC) --shared -fPIC $(CFLAGS) $(LIB_SRC) -o $(LINKERNAME)
++	$(CC) --shared -fPIC $(CFLAGS) $(LDFLAGS) $(LIB_SRC) -o $(LINKERNAME)
+ 
+ all:
+ 		@make $(NAME)

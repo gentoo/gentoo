@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,5 +32,5 @@ src_install() {
 	cmake-utils_src_install
 	dodoc README Changelog
 	# File collision with media-sound/wavbreaker, upstream informed
-	mv "${D}"/usr/bin/wavinfo{,-aften} || die
+	mv "${ED}"/usr/bin/wavinfo{,-aften} || die
 }

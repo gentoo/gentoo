@@ -10,7 +10,7 @@ SRC_URI="http://www.xml.com/ldd/chapter/book/pdf/ldd_book_pdf.zip
 
 LICENSE="FDL-1.1"
 SLOT="2"
-KEYWORDS="amd64 arm hppa ia64 ppc s390 x86"
+KEYWORDS="amd64 arm hppa ~ia64 ppc s390 x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"

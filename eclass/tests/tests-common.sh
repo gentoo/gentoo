@@ -103,3 +103,5 @@ PV="0"
 P="${PN}-${PV}"
 PF=${P}
 SLOT=0
+
+addwrite() { :; }

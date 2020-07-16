@@ -1,0 +1,15 @@
+[Unit]
+Description=Lightweight DHCP client daemon
+Wants=network.target
+Before=network.target network-online.target
+
+[Service]
+Type=forking
+ExecStart=/sbin/dhcpcd -q
+PIDFile=/run/dhcpcd/pid
+# Avoid duplicate output on stderr/syslog
+StandardOutput=null
+StandardError=null
+
+[Install]
+WantedBy=multi-user.target

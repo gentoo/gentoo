@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/strukturag/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Open h.265 video codec implementation"
@@ -20,12 +20,11 @@ HOMEPAGE="https://github.com/strukturag/libde265"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="cpu_flags_x86_sse debug libav qt5 static-libs"
+IUSE="cpu_flags_x86_sse debug qt5 static-libs"
 
 DEPEND="
 	media-libs/libsdl[${MULTILIB_USEDEP}]
-	!libav? ( media-video/ffmpeg:=[${MULTILIB_USEDEP}] )
-	libav? ( media-video/libav:=[${MULTILIB_USEDEP}] )
+	media-video/ffmpeg:=[${MULTILIB_USEDEP}]
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5

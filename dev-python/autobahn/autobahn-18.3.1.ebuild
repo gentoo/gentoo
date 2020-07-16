@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1 versionator
 
@@ -17,12 +17,11 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
 IUSE="crypt test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
-	$(python_gen_cond_dep '>=dev-python/trollius-2.0[${PYTHON_USEDEP}]' 'python2_7')
-	$(python_gen_cond_dep '>=dev-python/futures-3.0.4[${PYTHON_USEDEP}]' 'python2_7')
 	>=dev-python/cbor-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/lz4-0.7.0[${PYTHON_USEDEP}]
 	>=dev-python/py-ubjson-0.8.4[${PYTHON_USEDEP}]
@@ -48,6 +47,7 @@ DEPEND="${RDEPEND}
 		>=dev-python/pynacl-1.0.1[${PYTHON_USEDEP}]
 		>=dev-python/pytrie-0.2[${PYTHON_USEDEP}]
 		>=dev-python/pyqrcode-1.1.0[${PYTHON_USEDEP}]
+		dev-python/unittest2[${PYTHON_USEDEP}]
 	)"
 
 PATCHES=(
@@ -65,6 +65,7 @@ python_test() {
 	export USE_TWISTED=false
 	export USE_ASYNCIO=true
 	py.test -v autobahn/wamp/test/test_cryptosign.py || die
+	rm -r .pytest_cache || die
 }
 
 pkg_postinst() {

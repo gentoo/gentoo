@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-USE="colord -consolekit eds elogind evo gnome gnome-keyring gnome-online-accounts gstreamer introspection libsecret nautilus networkmanager pulseaudio tracker"
+USE="colord eds evo gnome gnome-keyring gnome-online-accounts gstreamer introspection libsecret nautilus networkmanager pulseaudio tracker"

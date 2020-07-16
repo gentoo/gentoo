@@ -1,12 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit eutils java-pkg-2 java-ant-2 versionator
+inherit java-pkg-2 java-ant-2
 
-MY_PV="$(delete_all_version_separators)"
-MY_P="${PN}${MY_PV}"
+MY_P="${PN}$(ver_rs 1- '')"
 
 DESCRIPTION="InterProlog is a Java front-end and enhancement for Prolog"
 HOMEPAGE="http://www.declarativa.com/interprolog/"
@@ -17,13 +16,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
-DEPEND=">=virtual/jdk-1.4
+RDEPEND=">=virtual/jdk-1.4:=
+	dev-java/junit:0"
+
+DEPEND="${RDEPEND}
 	app-arch/unzip
 	dev-java/ant-core
-	=dev-java/junit-3.8*"
-
-RDEPEND=">=virtual/jdk-1.4
-	=dev-java/junit-3.8*
 	|| (
 		dev-lang/xsb
 		dev-lang/swi-prolog
@@ -33,13 +31,11 @@ S="${WORKDIR}"/${MY_P}
 
 EANT_GENTOO_CLASSPATH="junit"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
+	eapply "${FILESDIR}"/${P}-java1.4.patch
+	eapply_user
 
-	epatch "${FILESDIR}"/${P}-java1.4.patch
-
-	cp "${FILESDIR}"/build.xml "${S}"
+	cp "${FILESDIR}"/build.xml "${S}" || die
 	mkdir "${S}"/src
 	mv "${S}"/com "${S}"/src
 	rm interprolog.jar junit.jar
@@ -55,8 +51,8 @@ src_install() {
 
 	if use doc ; then
 		java-pkg_dohtml -r docs/*
-		dohtml INSTALL.htm faq.htm prologAPI.htm
-		dohtml -r images
+		dodoc INSTALL.htm faq.htm prologAPI.htm
+		dodoc -r images
 		dodoc PaperEPIA01.doc
 	fi
 }

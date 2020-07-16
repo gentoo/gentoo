@@ -1,0 +1,55 @@
+From c8b35bf96af1859c0c254db34a16b9cc5a2aa46b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=D0=94=D0=B0=D0=BC=D1=98=D0=B0=D0=BD=20=D0=93=D0=B5=D0=BE?=
+ =?UTF-8?q?=D1=80=D0=B3=D0=B8=D0=B5=D0=B2=D1=81=D0=BA=D0=B8?=
+ <gdamjan@gmail.com>
+Date: Mon, 27 May 2019 18:22:14 +0200
+Subject: [PATCH] move setting the "systemdutildir" variable before it's used
+To: <initramfs@vger.kernel.org>
+
+on line 1086 it's used to check for the uefi_stub:
+"${systemdutildir}/boot/efi/linux${EFI_MACHINE_TYPE_NAME}.efi.stub"
+
+so it needs to be defined before that
+---
+ dracut.sh | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/dracut.sh b/dracut.sh
+index 183b892f..a3618f89 100755
+--- a/dracut.sh
++++ b/dracut.sh
+@@ -1009,6 +1009,16 @@ esac
+ 
+ abs_outfile=$(readlink -f "$outfile") && outfile="$abs_outfile"
+ 
++
++[[ -d $systemdutildir ]] \
++    || systemdutildir=$(pkg-config systemd --variable=systemdutildir 2>/dev/null)
++
++if ! [[ -d "$systemdutildir" ]]; then
++    [[ -e /lib/systemd/systemd-udevd ]] && systemdutildir=/lib/systemd
++    [[ -e /usr/lib/systemd/systemd-udevd ]] && systemdutildir=/usr/lib/systemd
++fi
++
++
+ if [[ $no_kernel != yes ]] && [[ -d $srcmods ]]; then
+     if ! [[ -f $srcmods/modules.dep ]]; then
+         if [[ -n "$(find "$srcmods" -name '*.ko*')" ]]; then
+@@ -1325,14 +1335,6 @@ if ! [[ -d "$udevdir" ]]; then
+     [[ -e /usr/lib/udev/ata_id ]] && udevdir=/usr/lib/udev
+ fi
+ 
+-[[ -d $systemdutildir ]] \
+-    || systemdutildir=$(pkg-config systemd --variable=systemdutildir 2>/dev/null)
+-
+-if ! [[ -d "$systemdutildir" ]]; then
+-    [[ -e /lib/systemd/systemd-udevd ]] && systemdutildir=/lib/systemd
+-    [[ -e /usr/lib/systemd/systemd-udevd ]] && systemdutildir=/usr/lib/systemd
+-fi
+-
+ [[ -d $systemdsystemunitdir ]] \
+     || systemdsystemunitdir=$(pkg-config systemd --variable=systemdsystemunitdir 2>/dev/null)
+ 
+-- 
+2.24.1
+

@@ -40,7 +40,7 @@ each_ruby_compile() {
 }
 
 each_ruby_test() {
-	virtx ${RUBY} test/run-test.rb || die
+	virtx ${RUBY} test/run-test.rb
 }
 
 each_ruby_install() {

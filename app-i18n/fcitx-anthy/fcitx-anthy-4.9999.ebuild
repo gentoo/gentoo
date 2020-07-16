@@ -1,18 +1,18 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2013-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit cmake-utils gnome2-utils
+inherit cmake-utils xdg-utils
 
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://gitlab.com/fcitx/fcitx-anthy.git"
+	EGIT_REPO_URI="https://github.com/fcitx/fcitx-anthy"
 fi
 
 DESCRIPTION="Japanese Anthy input methods for Fcitx"
-HOMEPAGE="https://fcitx-im.org/ https://gitlab.com/fcitx/fcitx-anthy"
+HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx-anthy"
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	SRC_URI=""
 else
@@ -24,18 +24,18 @@ SLOT="4"
 KEYWORDS=""
 IUSE=""
 
-RDEPEND=">=app-i18n/fcitx-4.2.9:4[X,xml]
+BDEPEND="virtual/pkgconfig"
+DEPEND=">=app-i18n/fcitx-4.2.9:4[X,xml]
 	app-i18n/anthy:=
 	virtual/libintl"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+RDEPEND="${DEPEND}"
 
 DOCS=(AUTHORS)
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

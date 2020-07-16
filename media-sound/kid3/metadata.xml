@@ -10,8 +10,8 @@
     <name>Gentoo Sound project</name>
   </maintainer>
   <use>
-    <flag name="acoustid">Enable support for acoustic fingerprinting plugin using
-      (<pkg>media-libs/chromaprint</pkg>)</flag>
+    <flag name="acoustid">Build acoustic fingerprinting plugin using <pkg>media-libs/chromaprint</pkg></flag>
+    <flag name="mpris">Enable support for MPRIS2 interface using <pkg>dev-qt/qtdbus</pkg></flag>
   </use>
   <upstream>
     <bugs-to>https://sourceforge.net/p/kid3/bugs/</bugs-to>

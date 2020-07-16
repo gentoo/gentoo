@@ -7,7 +7,6 @@ inherit autotools bash-completion-r1 git-r3
 DESCRIPTION="A fast unix command line interface to WWW"
 LICENSE="public-domain"
 HOMEPAGE="
-	http://surfraw.alioth.debian.org/
 	https://gitlab.com/surfraw/Surfraw
 "
 EGIT_REPO_URI="https://gitlab.com/surfraw/Surfraw.git"
@@ -42,7 +41,5 @@ src_install() {
 	bashcomp_alias ${PN} sr
 
 	docinto examples
-	dodoc examples/README
-	insinto /usr/share/doc/${PF}/examples
-	doins examples/uzbl_load_url_from_surfraw
+	dodoc examples/README examples/uzbl_load_url_from_surfraw
 }

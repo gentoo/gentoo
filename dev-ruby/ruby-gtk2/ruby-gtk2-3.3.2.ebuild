@@ -34,5 +34,5 @@ all_ruby_prepare() {
 }
 
 each_ruby_test() {
-	virtx ${RUBY} test/run-test.rb || die
+	virtx ${RUBY} test/run-test.rb
 }

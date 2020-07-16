@@ -19,6 +19,7 @@
 		</flag>
 	</use>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:adiscon:liblogging</remote-id>
 		<remote-id type="github">rsyslog/liblogging</remote-id>
 	</upstream>
 </pkgmetadata>

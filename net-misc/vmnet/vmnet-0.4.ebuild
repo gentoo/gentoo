@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit eutils flag-o-matic
+inherit flag-o-matic
 
 DESCRIPTION="A simple virtual networking program - SLIP over stdin/out"
 HOMEPAGE="ftp://ftp.xos.nl/pub/linux/vmnet/"
@@ -12,28 +12,28 @@ HOMEPAGE="ftp://ftp.xos.nl/pub/linux/vmnet/"
 # http://ftp.debian.org/debian/pool/main/${PN:0:1}/${PN}/${P/-/_}.orig.tar.gz
 # We use the debian patch anyway
 SRC_URI="ftp://ftp.xos.nl/pub/linux/${PN}/${P}.tar.gz
-		mirror://debian/pool/main/${PN:0:1}/${PN}/${P/-/_}-1.diff.gz"
+	mirror://debian/pool/main/${PN:0:1}/${PN}/${P/-/_}-1.diff.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
 IUSE=""
 
-DEPEND="sys-apps/net-tools"
+RDEPEND="sys-apps/net-tools"
+DEPEND=${RDEPEND}
 
-src_unpack() {
-	unpack ${P}.tar.gz
-	epatch "${DISTDIR}"/${P/-/_}-1.diff.gz
-}
+PATCHES=(
+	"${WORKDIR}"/${P/-/_}-1.diff
+)
 
 src_compile() {
 	append-ldflags -Wl,-z,now
-	emake || die "Emake failed"
+	emake
 }
 
 src_install() {
-	dobin ${PN} || die "dobin"
-	fperms 4711 /usr/bin/${PN} || die "fperms"
+	dobin ${PN}
+	fperms 4711 /usr/bin/${PN}
 
 	doman ${PN}.1
 	dodoc README debian/${PN}.sgml

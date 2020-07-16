@@ -21,10 +21,7 @@ IUSE=""
 RESTRICT=test # tests are broken: need path to ebuild tree
 
 RDEPEND="
-	|| (
-		sys-apps/portage-mgorny
-		app-portage/repoman
-	)
+	app-portage/repoman
 	dev-haskell/async:=
 	dev-haskell/base16-bytestring:=
 	dev-haskell/base64-bytestring:=

@@ -1,10 +1,6 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Fabian Groffen <grobian@gentoo.org> (07 Dec 2016)
-# unkeyworded notmuch dependency, bug #587560
-mail-client/mutt notmuch
-
-# Mike Frysinger <vapier@gentoo.org> (21 Oct 2014)
+# Mike Frysinger <vapier@gentoo.org> (2014-10-21)
 # This target supports ASAN/etc... #504200.
 sys-devel/gcc -sanitize

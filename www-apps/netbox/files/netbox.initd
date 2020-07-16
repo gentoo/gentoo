@@ -7,4 +7,6 @@ command=/usr/bin/gunicorn
 command_args="-c /etc/netbox/gunicorn_config.py netbox.wsgi"
 command_user=netbox:netbox
 directory=/opt/netbox/netbox
+error_log=/var/log/netbox/"${RC_SVCNAME}".log
+output_log=/var/log/netbox/"${RC_SVCNAME}".log
 supervisor=supervise-daemon

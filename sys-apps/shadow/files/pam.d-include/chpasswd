@@ -1,0 +1,3 @@
+#%PAM-1.0
+
+password   include	system-auth

@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/722040
+--- a/configure.ac
++++ b/configure.ac
+@@ -104,8 +104,8 @@ AC_PROG_CPP
+ AC_PROG_CXX
+ AC_PROG_YACC
+ AM_PROG_LEX
+-AC_PATH_PROG(AR, ar)
+-AC_PATH_PROG(AR, gar)
++AC_CHECK_TOOL(AR, ar)
++AC_CHECK_TOOL(AR, gar)
+ 
+ if test "x$AR" = "x"; then
+ 	   AC_MSG_ERROR([*** 'ar' and 'gar' missing, please install one of them or fix your \$PATH ***])

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,6 +13,7 @@ SLOT="0"
 LICENSE="Apache-2.0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-libs/protobuf
@@ -30,5 +31,5 @@ src_install() {
 	# silly upstream!
 	mkdir -p "${D}/usr/bin"
 	cp "${S}/bin/lmctfy/cli/lmctfy" "${D}/usr/bin/" || die "Failed to copy cli binary"
-	dolib.a "${S}/bin/liblmctfy.a" || die "Failed to copy library"
+	dolib.a "${S}/bin/liblmctfy.a"
 }

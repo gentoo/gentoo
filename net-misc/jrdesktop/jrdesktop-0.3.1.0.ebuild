@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 JAVA_PKG_IUSE="source doc"
 
 inherit java-pkg-2 java-ant-2
 
-DESCRIPTION="Java Remote Desktop (jrdesktop) software for viewing and/or controlling a distance PC"
+DESCRIPTION="Java Remote Desktop (jrdesktop) for viewing and/or controlling a distance PC"
 HOMEPAGE="http://jrdesktop.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${PN}-source-${PV}.tar.gz"
 
@@ -16,10 +16,10 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-S="${WORKDIR}/${PN}"
-
 DEPEND=">=virtual/jdk-1.6"
 RDEPEND=">=virtual/jre-1.6"
+
+S="${WORKDIR}/${PN}"
 
 EANT_EXTRA_ARGS="-Djnlp.enabled=false"
 

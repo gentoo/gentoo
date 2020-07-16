@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils flag-o-matic git-r3 pax-utils toolchain-funcs xdg
+inherit cmake flag-o-matic git-r3 toolchain-funcs xdg
 
 EGIT_REPO_URI="https://github.com/darktable-org/${PN}.git"
 
@@ -13,13 +13,13 @@ HOMEPAGE="https://www.darktable.org/"
 LICENSE="GPL-3 CC-BY-3.0"
 SLOT="0"
 #KEYWORDS="~amd64 ~x86"
-LANGS=" ca cs da de es fr he hu it ja nl pl ru sk sl sv uk"
+LANGS=" af ca cs da de el es fi fr gl he hu it ja nb nl pl pt-BR pt-PT ro ru sk sl sq sv th uk zh-CN zh-TW"
 # TODO add lua once dev-lang/lua-5.2 is unmasked
 IUSE="colord cups cpu_flags_x86_sse3 doc flickr geolocation gnome-keyring gphoto2 graphicsmagick jpeg2k kwallet
-nls opencl openmp openexr pax_kernel webp
-${LANGS// / l10n_}"
+	lto nls opencl openmp openexr tools webp
+	${LANGS// / l10n_}"
 
-BDEPEND="
+BDEPEND=">=dev-python/jsonschema-3.2.0
 	dev-util/intltool
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
@@ -28,7 +28,7 @@ COMMON_DEPEND="
 	dev-db/sqlite:3
 	dev-libs/json-glib
 	dev-libs/libxml2:2
-	dev-libs/pugixml:0=
+	>=dev-libs/pugixml-1.8:0=
 	gnome-base/librsvg:2
 	>=media-gfx/exiv2-0.25-r2:0=[xmp]
 	media-libs/lcms:2
@@ -40,7 +40,7 @@ COMMON_DEPEND="
 	sys-libs/zlib:=
 	virtual/jpeg:0
 	x11-libs/cairo
-	>=x11-libs/gtk+-3.14:3
+	>=x11-libs/gtk+-3.22:3
 	x11-libs/pango
 	colord? ( x11-libs/colord-gtk:0= )
 	cups? ( net-print/cups )
@@ -64,22 +64,39 @@ RDEPEND="${COMMON_DEPEND}
 	kwallet? ( >=kde-frameworks/kwallet-5.34.0-r1 )
 "
 
+PATCHES=(
+	"${FILESDIR}"/"${PN}"-find-opencl-header.patch
+)
+
 pkg_pretend() {
-	if use openmp ; then
-		tc-has-openmp || die "Please switch to an openmp compatible compiler"
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		# Bug #695658
+		if tc-is-gcc; then
+			test-flags-CC -floop-block &> /dev/null || \
+				die "Please switch to a gcc version built with USE=graphite"
+		fi
+
+		if use openmp ; then
+			tc-has-openmp || die "Please switch to an openmp compatible compiler"
+		fi
 	fi
 }
 
 src_prepare() {
 	use cpu_flags_x86_sse3 && append-flags -msse3
 
-	cmake-utils_src_prepare
+	sed -i -e 's:/appdata:/metainfo:g' data/CMakeLists.txt || die
+
+	cmake_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_PRINT=$(usex cups)
+		-DBUILD_CURVE_TOOLS=$(usex tools)
+		-DBUILD_NOISE_TOOLS=$(usex tools)
 		-DCUSTOM_CFLAGS=ON
+		-DRAWSPEED_ENABLE_LTO=$(usex lto)
 		-DUSE_CAMERA_SUPPORT=$(usex gphoto2)
 		-DUSE_COLORD=$(usex colord)
 		-DUSE_FLICKR=$(usex flickr)
@@ -96,25 +113,18 @@ src_configure() {
 		-DUSE_WEBP=$(usex webp)
 	)
 	CMAKE_BUILD_TYPE="RELWITHDEBINFO"
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	use doc && dodoc "${DISTDIR}"/${PN}-usermanual-${DOC_PV}.pdf
 
-	for lang in ${LANGS} ; do
-		if ! use l10n_${lang}; then
-			rm -r "${ED}"/usr/share/locale/${lang/-/_} || die
-		fi
-	done
-
-	if use pax_kernel && use opencl ; then
-		pax-mark Cm "${ED}"/usr/bin/${PN} || die
-		eqawarn "USE=pax_kernel is set meaning that ${PN} will be run"
-		eqawarn "under a PaX enabled kernel. To do so, the ${PN} binary"
-		eqawarn "must be modified and this *may* lead to breakage! If"
-		eqawarn "you suspect that ${PN} is broken by this modification,"
-		eqawarn "please open a bug."
+	if use nls ; then
+		for lang in ${LANGS} ; do
+			if ! use l10n_${lang}; then
+				rm -r "${ED}"/usr/share/locale/${lang/-/_} || die
+			fi
+		done
 	fi
 }

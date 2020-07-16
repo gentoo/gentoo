@@ -1,2 +1,0 @@
-# Set the default nice priority level.  See NICE(1) for more information.
-NICE="-5"

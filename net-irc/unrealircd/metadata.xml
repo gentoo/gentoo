@@ -13,6 +13,5 @@
 		<flag name="operoverride">Enable OperOverride extension</flag>
 		<flag name="usermod">Enable /set* and /chg* commands</flag>
 		<flag name="shunnotices">Enable notifying a user when un-shunned</flag>
-		<flag name="topicisnuhost">Enable displaying nick!user@host as topic setter</flag>
 	</use>
 </pkgmetadata>

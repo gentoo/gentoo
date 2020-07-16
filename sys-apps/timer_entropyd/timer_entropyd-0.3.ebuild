@@ -25,14 +25,14 @@ src_compile() {
 	use debug && append-cppflags -D_DEBUG
 
 	tc-export CC
-	emake DEBUG= || die
+	emake DEBUG=
 }
 
 src_install() {
 	exeinto /usr/libexec
 	doexe ${PN}
 	dodoc Changes readme.txt
-	newinitd "${FILESDIR}/timer_entropyd.initd.1" ${PN} || die
+	newinitd "${FILESDIR}/timer_entropyd.initd.1" ${PN}
 }
 
 pkg_postinst() {

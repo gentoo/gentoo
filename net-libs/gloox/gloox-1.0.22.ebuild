@@ -10,14 +10,14 @@ SRC_URI="https://camaya.net/download/${MY_P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0/17"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~ia64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug gnutls idn libressl ssl static-libs test zlib"
 
 DEPEND="idn? ( net-dns/libidn:= )
 	gnutls? ( net-libs/gnutls )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
 	)
 	zlib? ( sys-libs/zlib )"
 

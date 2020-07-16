@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>hilobakho@gmail.com</email>
-		<name>Mykyta Holubakha</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Gentoo Proxy Maintainers Project</name>
-	</maintainer>
-	<upstream>
-		<remote-id type="github">eXeC64/imv</remote-id>
-	</upstream>
+<maintainer type='person'><email>jer@gentoo.org</email></maintainer>
+<use>
+<flag name='freeimage'>Use <pkg>media-libs/freeimage</pkg> as image library</flag>
+<flag name='libnsgif'>Use <pkg>media-libs/libnsgif</pkg> as image library</flag>
+</use>
+<upstream>
+<remote-id type="github">eXeC64/imv</remote-id>
+</upstream>
 </pkgmetadata>

@@ -1,28 +1,22 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Felix Janda <felix.janda@posteo.de> (24 Sep 2016)
+# Felix Janda <felix.janda@posteo.de> (2016-09-24)
 # net-libs/libnetfilter_conntrack is not keyworded on mips
 net-dns/dnsmasq conntrack
 
-# Thomas Deutschmann <whissi@gentoo.org> (23 Aug 2016)
+# Thomas Deutschmann <whissi@gentoo.org> (2016-08-23)
 # net-libs/openpgm is not keyworded on mips
 net-libs/zeromq pgm
 
-# Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
+# Davide Pesavento <pesa@gentoo.org> (2015-10-26)
 # Tests require non-keyworded qt5
 dev-qt/qtchooser test
 
-# Matthias Maier <tamiko@gentoo.org> (24 Dec 2014)
+# Matthias Maier <tamiko@gentoo.org> (2014-12-24)
 # sys-devel/clang is not keyworded on mips.
 app-doc/doxygen clang
 
-# Matthias Maier <tamiko@gentoo.org> (17 Oct 2014)
+# Matthias Maier <tamiko@gentoo.org> (2014-10-17)
 # virtual/jre is not keyworded on mips.
 net-print/cups java
-
-# Vicente Olivert Riera <vincent@gentoo.org> (11 Sep 2014)
-# www-client/midori[jit] depends on net-libs/webkit-gtk[jit]
-# which is masked on base/package.use.mask and not unmasked
-# on arch/mips/package.use.mask by "net-libs/webkit-gtk -jit"
-www-client/midori jit

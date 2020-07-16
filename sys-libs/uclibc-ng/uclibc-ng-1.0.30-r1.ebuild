@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -18,7 +18,7 @@ HOMEPAGE="https://uclibc-ng.org/"
 if [[ ${PV} != "9999" ]] ; then
 	PATCH_VER=""
 	SRC_URI="https://downloads.uclibc-ng.org/releases/${PV}/${MY_P}.tar.bz2"
-	KEYWORDS="-* amd64 arm ~mips ppc x86"
+	KEYWORDS="-* arm"
 fi
 
 LICENSE="LGPL-2"
@@ -400,6 +400,4 @@ pkg_postinst() {
 	[ "${ROOT}" != "/" ] && return 0
 	# update cache before reloading init
 	ldconfig
-	# reload init ...
-	/sbin/telinit U 2>/dev/null
 }

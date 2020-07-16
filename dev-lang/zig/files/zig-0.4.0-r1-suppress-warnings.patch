@@ -1,0 +1,31 @@
+Don't attempt to look for static libraries that we're not going to use.
+The warnings are only triggered when building with portage.
+
+--- a/cmake/Findllvm.cmake
++++ b/cmake/Findllvm.cmake
+@@ -50,25 +50,6 @@
+     endif()
+ endfunction(NEED_TARGET)
+ 
+-if(NOT(CMAKE_BUILD_TYPE STREQUAL "Debug") OR ZIG_STATIC)
+-  execute_process(
+-      COMMAND ${LLVM_CONFIG_EXE} --libfiles --link-static
+-      OUTPUT_VARIABLE LLVM_LIBRARIES_SPACES
+-      OUTPUT_STRIP_TRAILING_WHITESPACE)
+-  string(REPLACE " " ";" LLVM_LIBRARIES "${LLVM_LIBRARIES_SPACES}")
+-
+-  execute_process(
+-      COMMAND ${LLVM_CONFIG_EXE} --system-libs --link-static
+-      OUTPUT_VARIABLE LLVM_SYSTEM_LIBS_SPACES
+-      OUTPUT_STRIP_TRAILING_WHITESPACE)
+-  string(REPLACE " " ";" LLVM_SYSTEM_LIBS "${LLVM_SYSTEM_LIBS_SPACES}")
+-
+-  execute_process(
+-      COMMAND ${LLVM_CONFIG_EXE} --libdir --link-static
+-      OUTPUT_VARIABLE LLVM_LIBDIRS_SPACES
+-      OUTPUT_STRIP_TRAILING_WHITESPACE)
+-  string(REPLACE " " ";" LLVM_LIBDIRS "${LLVM_LIBDIRS_SPACES}")
+-endif()
+ if(NOT LLVM_LIBRARIES)
+   execute_process(
+       COMMAND ${LLVM_CONFIG_EXE} --libs

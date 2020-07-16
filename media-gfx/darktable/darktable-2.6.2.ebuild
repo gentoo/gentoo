@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils flag-o-matic pax-utils toolchain-funcs xdg
+inherit cmake flag-o-matic pax-utils toolchain-funcs xdg
 
 DOC_PV="2.6.0"
 MY_PV="${PV/_/}"
@@ -12,12 +12,13 @@ MY_P="${P/_/.}"
 DESCRIPTION="A virtual lighttable and darkroom for photographers"
 HOMEPAGE="https://www.darktable.org/"
 SRC_URI="https://github.com/darktable-org/${PN}/releases/download/release-${MY_PV}/${MY_P}.tar.xz
+	https://dev.gentoo.org/~asturm/distfiles/${P}-gcc9.patch.tar.xz
 	doc? ( https://github.com/darktable-org/${PN}/releases/download/release-${DOC_PV}/${PN}-usermanual.pdf -> ${PN}-usermanual-${DOC_PV}.pdf )"
 
 LICENSE="GPL-3 CC-BY-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-LANGS=" ca de es fi fr hu ja nb nl pl pt-BR ru sl"
+KEYWORDS="amd64 x86"
+LANGS=" ca cs de es fi fr hu ja nb nl pl pt-BR ru sl"
 # TODO add lua once dev-lang/lua-5.2 is unmasked
 IUSE="colord cups cpu_flags_x86_sse3 doc flickr geolocation gnome-keyring gphoto2 graphicsmagick jpeg2k kwallet
 nls opencl openmp openexr pax_kernel webp
@@ -68,7 +69,11 @@ RDEPEND="${COMMON_DEPEND}
 	kwallet? ( >=kde-frameworks/kwallet-5.34.0-r1 )
 "
 
-PATCHES=( "${FILESDIR}"/"${PN}"-find-opencl-header.patch )
+PATCHES=(
+	"${FILESDIR}"/"${PN}"-find-opencl-header.patch
+	"${WORKDIR}"/"${P}"-gcc9.patch
+	"${FILESDIR}"/"${P}"-exiv2-0.27.patch
+)
 
 S="${WORKDIR}/${P/_/~}"
 
@@ -81,7 +86,7 @@ pkg_pretend() {
 src_prepare() {
 	use cpu_flags_x86_sse3 && append-flags -msse3
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -104,18 +109,20 @@ src_configure() {
 		-DUSE_WEBP=$(usex webp)
 	)
 	CMAKE_BUILD_TYPE="RELWITHDEBINFO"
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	use doc && dodoc "${DISTDIR}"/${PN}-usermanual-${DOC_PV}.pdf
 
-	for lang in ${LANGS} ; do
-		if ! use l10n_${lang}; then
-			rm -r "${ED}"/usr/share/locale/${lang/-/_} || die
-		fi
-	done
+	if use nls ; then
+		for lang in ${LANGS} ; do
+			if ! use l10n_${lang}; then
+				rm -r "${ED}"/usr/share/locale/${lang/-/_} || die
+			fi
+		done
+	fi
 
 	if use pax_kernel && use opencl ; then
 		pax-mark Cm "${ED}"/usr/bin/${PN} || die

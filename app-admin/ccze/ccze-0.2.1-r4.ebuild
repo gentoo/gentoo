@@ -13,7 +13,7 @@ RESTRICT="test"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ppc x86"
 IUSE=""
 
 DEPEND="dev-libs/libpcre

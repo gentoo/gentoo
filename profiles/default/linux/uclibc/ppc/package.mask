@@ -1,5 +1,0 @@
-# Copyright 1999-2017 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-# Fails to find openssl headers, bug #517160
-net-misc/openssh

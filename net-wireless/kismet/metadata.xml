@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="client">Build the ncurses-based user interface</flag>
+		<flag name="libusb">Support libusb based capture sources such as mousejack, cc2540(ble), and nrf51822(ble)</flag>
 		<flag name="suid">
 			Install a setuid root helper binary with limited functionality;
 			this allows running kismet as a normal user, significantly
@@ -21,6 +22,8 @@
 		<flag name="plugin-ptw">Build the ptw plugin</flag>
 		<flag name="plugin-spectools">Build the spectools plugin. This uses <pkg>net-wireless/spectools</pkg></flag>
 		<flag name="plugin-syslog">Build the syslog plugin.</flag>
+		<flag name="rtlsdr">Enable rtlsdr based kismet capture sources</flag>
 		<flag name="ruby">Build extras which are written in ruby, example plugins and the like.</flag>
+		<flag name="ubertooth">Enable capture source for ubertooth to sniff bluetooth low energy</flag>
 	</use>
 </pkgmetadata>

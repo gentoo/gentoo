@@ -7,7 +7,7 @@ inherit autotools-utils
 
 DESCRIPTION="Blind-ID library for user identification using RSA blind signatures"
 HOMEPAGE="http://git.xonotic.org/?p=xonotic/d0_blind_id.git;a=summary"
-SRC_URI="mirror://github/divVerent/d0_blind_id/${P}.tar.gz"
+SRC_URI="https://github.com/downloads/divVerent/d0_blind_id/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

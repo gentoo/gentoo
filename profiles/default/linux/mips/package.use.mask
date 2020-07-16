@@ -1,6 +1,0 @@
-# Copyright 1999-2016 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-# Fabian Groffen <grobian@gentoo.org> (07 Dec 2016)
-# unkeyworded notmuch dependency, bug #587560
-mail-client/mutt notmuch

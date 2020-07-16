@@ -1,0 +1,22 @@
+--- a/libs/libmythtv/eitfixup.cpp
++++ b/libs/libmythtv/eitfixup.cpp
+@@ -842,7 +842,7 @@ void EITFixUp::SetUKSubtitle(DBEventEIT &event) const
+ void EITFixUp::FixUK(DBEventEIT &event) const
+ {
+     int position1;
+-    int position2;
++    int position2 = 0;
+     QString strFull;
+ 
+     bool isMovie = event.m_category.startsWith("Movie",Qt::CaseInsensitive) ||
+--- a/libs/libmythui/mythuitext.cpp
++++ b/libs/libmythui/mythuitext.cpp
+@@ -1058,7 +1058,7 @@ int MythUIText::MoveCursor(int lines)
+     int lineCount = 0;
+     int currPos = 0;
+     int layoutStartPos = 0;
+-    int xPos;
++    int xPos = 0;
+ 
+     for (int x = 0; x < m_Layouts.count(); x++)
+     {

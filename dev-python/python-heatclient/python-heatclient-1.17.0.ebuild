@@ -1,19 +1,20 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
 
 DESCRIPTION="OpenStack Orchestration API Client Library"
-HOMEPAGE="http://www.openstack.org/"
+HOMEPAGE="https://www.openstack.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
 	!~dev-python/pbr-2.1.0[${PYTHON_USEDEP}]"
@@ -32,14 +33,6 @@ DEPEND="
 		>=dev-python/stestr-2.0.0[${PYTHON_USEDEP}]
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
 		>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
-	)
-	doc? (
-		>=dev-python/openstackdocstheme-1.18.1[${PYTHON_USEDEP}]
-		>=dev-python/sphinxcontrib-httpdomain-1.3.0[${PYTHON_USEDEP}]
-		>=dev-python/reno-2.5.0[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.6.2[${PYTHON_USEDEP}]
-		!~dev-python/sphinx-1.6.6[${PYTHON_USEDEP}]
-		!~dev-python/sphinx-1.6.7[${PYTHON_USEDEP}]
 	)
 "
 
@@ -71,19 +64,9 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-python_compile_all() {
-	use doc && esetup.py build_sphinx
-}
-
 python_test() {
 	rm -rf .testrepository || die "couldn't remove '.testrepository' under ${EPYTHON}"
 
 	testr init
 	testr run || die "testsuite failed under ${EPYTHON}"
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( doc/build/html/. )
-
-	distutils-r1_python_install_all
 }

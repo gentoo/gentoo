@@ -1,5 +1,5 @@
---- Makefile
-+++ Makefile	2003-10-12 02:25:31.000000000 +0000
+--- a/Makefile
++++ b/Makefile	2003-10-12 02:25:31.000000000 +0000
 @@ -4,7 +4,7 @@
  
  ### Sources
@@ -20,8 +20,8 @@
  file_io.o : s_types.h file_io.h file_io.c
  in_buffer.o : s_types.h file_io.h in_buffer.h in_buffer.c
  main.o : s_types.h file_io.h vstrip.h main.c
---- dvd2avi_plugin.c
-+++ dvd2avi_plugin.c	2003-10-12 02:29:23.000000000 +0000
+--- a/dvd2avi_plugin.c
++++ b/dvd2avi_plugin.c	2003-10-12 02:29:23.000000000 +0000
 @@ -6,13 +6,17 @@
    
  *************************************************************************/
@@ -50,8 +50,8 @@
  		
  		lba = (dword)(fposition / fio_SECTOR_SIZE);
  		_close(fp);
---- file_io.c
-+++ file_io.c	2003-10-12 02:24:46.000000000 +0000
+--- a/file_io.c
++++ b/file_io.c	2003-10-12 02:24:46.000000000 +0000
 @@ -32,7 +32,7 @@
  		fp = _open(name, _O_BINARY | _O_RDONLY); // check size
  		if (fp != -1)

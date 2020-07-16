@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e46d921..13e4ffa 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -32,7 +32,7 @@ SET( SEARCH_LIBS
+ 
+ SET( wxWidgets_USE_LIBS base core adv net html xml aui qa )
+ 
+-FIND_PACKAGE( wxWidgets )
++FIND_PACKAGE( wxWidgets COMPONENTS base core adv net html xml aui qa REQUIRED )
+ 
+ IF( NOT wxWidgets_FOUND)
+     MESSAGE( FATAL_ERROR "wxWidgets not found!" )

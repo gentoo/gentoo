@@ -1,0 +1,54 @@
+From f100d07d923b5db60d42dc2453485fa0dba69a79 Mon Sep 17 00:00:00 2001
+From: Petr Vorel <petr.vorel@gmail.com>
+Date: Mon, 18 Nov 2019 08:58:36 -0500
+Subject: [PATCH] mountd: Add check for 'struct file_handle'
+
+From: Maxime Hadjinlian <maxime.hadjinlian@gmail.com>
+
+The code to check if name_to_handle_at() is implemented generates only a
+warning but with some toolchain it doesn't fail to link (the function must be
+implemented somewhere).
+However the "struct file_handle" type is not available.
+
+So, this patch adds a check for this struct.
+
+Patch taken from buildroot distribution.
+
+Signed-off-by: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
+[ pvorel: rebased from nfs-utils-1-3-4 ]
+Signed-off-by: Petr Vorel <petr.vorel@gmail.com>
+Signed-off-by: Maxime Hadjinlian <maxime.hadjinlian@gmail.com>
+Signed-off-by: Steve Dickson <steved@redhat.com>
+---
+ configure.ac         | 1 +
+ utils/mountd/cache.c | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 9ba9d4b..949ff9f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -510,6 +510,7 @@ AC_TYPE_PID_T
+ AC_TYPE_SIZE_T
+ AC_HEADER_TIME
+ AC_STRUCT_TM
++AC_CHECK_TYPES([struct file_handle])
+ 
+ dnl *************************************************************
+ dnl Check for functions
+diff --git a/utils/mountd/cache.c b/utils/mountd/cache.c
+index 3861f84..31e9507 100644
+--- a/utils/mountd/cache.c
++++ b/utils/mountd/cache.c
+@@ -446,7 +446,7 @@ static int same_path(char *child, char *parent, int len)
+ 	if (count_slashes(p) != count_slashes(parent))
+ 		return 0;
+ 
+-#if HAVE_NAME_TO_HANDLE_AT
++#if defined(HAVE_NAME_TO_HANDLE_AT) && defined(HAVE_STRUCT_FILE_HANDLE)
+ 	struct {
+ 		struct file_handle fh;
+ 		unsigned char handle[128];
+-- 
+1.8.3.1
+

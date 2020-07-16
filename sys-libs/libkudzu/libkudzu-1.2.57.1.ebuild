@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ SRC_URI="mirror://gentoo/kudzu-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 -mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 -mips ppc ppc64 sparc x86"
 IUSE="zlib"
 
 DEPEND="
@@ -27,6 +27,8 @@ RDEPEND="
 S=${WORKDIR}/kudzu-${PV}
 
 src_prepare() {
+	sed -i -e 's/-fpic/-fPIC/g' Makefile || die
+
 	epatch \
 		"${FILESDIR}"/kudzu-${PV}-sbusfix.patch \
 		"${FILESDIR}"/kudzu-${PV}-sparc-keyboard.patch

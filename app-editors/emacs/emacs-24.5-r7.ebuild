@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools elisp-common eutils flag-o-matic multilib readme.gentoo-r1
+inherit autotools elisp-common flag-o-matic readme.gentoo-r1
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
@@ -12,17 +12,17 @@ SRC_URI="mirror://gnu/emacs/${P}.tar.xz
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="24"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ~ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="acl alsa aqua athena dbus games gconf gfile gif gpm gsettings gtk gtk2 gzip-el imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm zlib"
 REQUIRED_USE="?? ( aqua X )"
 
-RDEPEND="sys-libs/ncurses:0=
-	>=app-eselect/eselect-emacs-1.16
-	>=app-emacs/emacs-common-gentoo-1.5[games?,X?]
+RDEPEND=">=app-emacs/emacs-common-gentoo-1.5[games?,X?]
 	net-libs/liblockfile
+	sys-libs/ncurses:0=
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( sys-apps/dbus )
+	games? ( acct-group/gamestat )
 	gpm? ( sys-libs/gpm )
 	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
 	kerberos? ( virtual/krb5 )
@@ -86,15 +86,15 @@ RDEPEND="sys-libs/ncurses:0=
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
 
-BDEPEND="virtual/pkgconfig
+BDEPEND="app-eselect/eselect-emacs
+	virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )"
-#	pax_kernel? ( sys-apps/attr )
 
 RDEPEND="${RDEPEND}
-	!<app-editors/emacs-vcs-${PV}"
+	app-eselect/eselect-emacs"
 
-EMACS_SUFFIX="${PN/emacs/emacs-${SLOT}}"
-SITEFILE="20${PN}-${SLOT}-gentoo.el"
+EMACS_SUFFIX="emacs-${SLOT}"
+SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
 # FULL_VERSION keeps the full version number, which is needed in
 # order to determine some path information correctly for copy/move
 # operations later on
@@ -118,9 +118,7 @@ src_configure() {
 	filter-flags -pie					#526948
 	append-ldflags $(test-flags -no-pie)	#639570
 
-	if use sh; then
-		replace-flags "-O[1-9]" -O0		#262359
-	elif use ia64; then
+	if use ia64; then
 		replace-flags "-O[2-9]" -O1		#325373
 	else
 		replace-flags "-O[3-9]" -O2
@@ -230,7 +228,7 @@ src_compile() {
 	emake RUN_TEMACS="SANDBOX_ON=0 LD_PRELOAD= env ./temacs"
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" NO_BIN_LINK=t install
 
 	mv "${ED}"/usr/bin/{emacs-${FULL_VERSION}-,}${EMACS_SUFFIX} \
@@ -275,16 +273,16 @@ src_install () {
 
 	sed -e "${cdir:+#}/^Y/d" -e "s/^[XY]//" >"${T}/${SITEFILE}" <<-EOF || die
 	X
-	;;; ${PN}-${SLOT} site-lisp configuration
+	;;; ${EMACS_SUFFIX} site-lisp configuration
 	X
 	(when (string-match "\\\\\`${FULL_VERSION//./\\\\.}\\\\>" emacs-version)
 	Y  (setq find-function-C-source-directory
 	Y	"${EPREFIX}${cdir}")
 	X  (let ((path (getenv "INFOPATH"))
 	X	(dir "${EPREFIX}/usr/share/info/${EMACS_SUFFIX}")
-	X	(re "\\\\\`${EPREFIX}/usr/share/info\\\\>"))
+	X	(re "\\\\\`${EPREFIX}/usr/share\\\\>"))
 	X    (and path
-	X	 ;; move Emacs Info dir before anything else in /usr/share/info
+	X	 ;; move Emacs Info dir before anything else in /usr/share
 	X	 (let* ((p (cons nil (split-string path ":" t))) (q p))
 	X	   (while (and (cdr q) (not (string-match re (cadr q))))
 	X	     (setq q (cdr q)))
@@ -297,15 +295,15 @@ src_install () {
 
 	if use aqua; then
 		dodir /Applications/Gentoo
-		rm -rf "${ED}"/Applications/Gentoo/Emacs${EMACS_SUFFIX#emacs}.app
+		rm -rf "${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app
 		mv nextstep/Emacs.app \
-			"${ED}"/Applications/Gentoo/Emacs${EMACS_SUFFIX#emacs}.app || die
+			"${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app || die
 	fi
 
-	DOC_CONTENTS="You can set the version to be started by /usr/bin/emacs
-		through the Emacs eselect module, which also redirects man and info
-		pages. Therefore, several Emacs versions can be installed at the
-		same time. \"man emacs.eselect\" for details.
+	local DOC_CONTENTS="You can set the version to be started by
+		/usr/bin/emacs through the Emacs eselect module, which also
+		redirects man and info pages. Therefore, several Emacs versions can
+		be installed at the same time. \"man emacs.eselect\" for details.
 		\\n\\nIf you upgrade from Emacs version 24.2 or earlier, then it is
 		strongly recommended that you use app-admin/emacs-updater to rebuild
 		all byte-compiled elisp files of the installed Emacs packages."
@@ -314,7 +312,7 @@ src_install () {
 		machine would satisfy basic Emacs requirements under X11.
 		See also https://wiki.gentoo.org/wiki/Xft_support_for_GNU_Emacs
 		for how to enable anti-aliased fonts."
-	use aqua && DOC_CONTENTS+="\\n\\nEmacs${EMACS_SUFFIX#emacs}.app is in
+	use aqua && DOC_CONTENTS+="\\n\\n${EMACS_SUFFIX^}.app is in
 		\"${EPREFIX}/Applications/Gentoo\". You may want to copy or symlink
 		it into /Applications by yourself."
 	readme.gentoo_create_doc
@@ -322,19 +320,8 @@ src_install () {
 
 pkg_preinst() {
 	# move Info dir file to correct name
-	local infodir=/usr/share/info/${EMACS_SUFFIX} f
-	if [[ -f ${ED}${infodir}/dir.orig ]]; then
-		mv "${ED}"${infodir}/dir{.orig,} || die "moving info dir failed"
-	elif [[ -d "${ED}"${infodir} ]]; then
-		# this should not happen in EAPI 4
-		ewarn "Regenerating Info directory index in ${infodir} ..."
-		rm -f "${ED}"${infodir}/dir{,.*}
-		for f in "${ED}"${infodir}/*; do
-			if [[ ${f##*/} != *-[0-9]* && -e ${f} ]]; then
-				install-info --info-dir="${ED}"${infodir} "${f}" \
-					|| die "install-info failed"
-			fi
-		done
+	if [[ -d ${ED}/usr/share/info ]]; then
+		mv "${ED}"/usr/share/info/${EMACS_SUFFIX}/dir{.orig,} || die
 	fi
 }
 

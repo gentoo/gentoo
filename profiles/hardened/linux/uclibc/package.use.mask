@@ -1,6 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 
-# Anthony G. Basile <blueness@gentoo.org> (12 Dec 2017)
+# Anthony G. Basile <blueness@gentoo.org> (2017-12-12)
 # masked in base, unmask for hardened/uclibc
 sys-devel/gcc -pie

@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}-src.zip"
 
 LICENSE="ZLIB 7z? ( LGPL-2.1 )"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="7z zopfli"
 
 RDEPEND="media-libs/libpng:0=[apng]

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-EGIT_REPO_URI="git://git.code.sf.net/p/accel-ppp/code"
+EGIT_REPO_URI="https://git.code.sf.net/p/accel-ppp/code"
 inherit cmake-utils flag-o-matic git-r3 linux-info linux-mod
 
 DESCRIPTION="High performance PPTP, PPPoE and L2TP server"
@@ -19,7 +19,7 @@ RDEPEND="lua? ( dev-lang/lua:0 )
 	postgres? ( dev-db/postgresql:* )
 	snmp? ( net-analyzer/net-snmp )
 	dev-libs/libpcre
-	dev-libs/openssl:0"
+	dev-libs/openssl:0="
 DEPEND="${RDEPEND}
 	valgrind? ( dev-util/valgrind )"
 PDEPEND="net-dialup/ppp-scripts"
@@ -64,7 +64,7 @@ src_configure() {
 		-DBUILD_VLAN_MON_DRIVER="$(usex ipoe)"
 		-DCRYPTO=OPENSSL
 		-DLOG_PGSQL="$(usex postgres)"
-		-DLUA="$(usex lua)"
+		-DLUA="$(usex lua TRUE FALSE)"
 		-DMEMDEBUG="$(usex debug)"
 		-DNETSNMP="$(usex snmp)"
 		-DRADIUS="$(usex radius)"

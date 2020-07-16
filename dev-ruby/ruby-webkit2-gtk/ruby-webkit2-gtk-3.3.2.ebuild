@@ -37,7 +37,7 @@ each_ruby_compile() {
 }
 
 each_ruby_test() {
-	DCONF_PROFILE="${T}" virtx ${RUBY} test/run-test.rb || die
+	DCONF_PROFILE="${T}" virtx ${RUBY} test/run-test.rb
 }
 
 each_ruby_install() {

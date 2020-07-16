@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>sheepduke@gmail.com</email>
+    <name>YUE Daian</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+    Roswell is the de facto full-stack environment for Common Lisp
+    development. It serves as a Lisp implementation installer, manager,
+    launcher etc.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">roswell/roswell</remote-id>
+  </upstream>
+</pkgmetadata>

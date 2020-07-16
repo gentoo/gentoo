@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -8,7 +8,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3 autotools
 	EGIT_REPO_URI="https://anongit.freedesktop.org/git/libqmi.git"
 else
-	KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 x86"
+	KEYWORDS="amd64 arm arm64 ~mips ppc ppc64 x86"
 	SRC_URI="https://www.freedesktop.org/software/libqmi/${P}.tar.xz"
 fi
 
@@ -20,7 +20,7 @@ SLOT="0/5.1"	# soname of libqmi-glib.so
 IUSE="doc +mbim static-libs"
 
 RDEPEND=">=dev-libs/glib-2.32
-	virtual/libgudev
+	dev-libs/libgudev
 	mbim? ( >=net-libs/libmbim-1.14.0 )"
 DEPEND="${RDEPEND}
 	doc? ( dev-util/gtk-doc )

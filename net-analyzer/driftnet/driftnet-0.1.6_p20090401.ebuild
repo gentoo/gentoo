@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="A program which listens to network traffic and picks out images from TCP streams it observes"
 HOMEPAGE="http://www.ex-parrot.com/~chris/driftnet/"
-SRC_URI="mirror://github/rbu/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/downloads/rbu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ppc -sparc x86"
@@ -48,7 +48,7 @@ src_compile() {
 	emake
 }
 
-src_install () {
+src_install() {
 	dosbin driftnet
 	doman driftnet.1
 

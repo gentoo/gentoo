@@ -2,7 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>slis@gentoo.org</email>
+    <email>kurt@kmk-computers.de</email>
+    <name>Kurt Kanzenbach</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
   </maintainer>
   <longdescription>
     LibGeoDecomp (Library for Geometric Decomposition codes) is an
@@ -29,9 +34,6 @@
     </flag>
     <flag name="hpx">
       Enables HPX backend
-    </flag>
-    <flag name="visit">
-      Enables VisIt related code
     </flag>
   </use>
 </pkgmetadata>

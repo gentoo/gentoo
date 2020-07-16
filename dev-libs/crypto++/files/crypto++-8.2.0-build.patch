@@ -1,0 +1,271 @@
+--- a/config.h	2019-07-02 19:25:10.448720035 +0300
++++ a/config.h	2019-07-02 19:25:25.785455586 +0300
+@@ -514,7 +514,7 @@ NAMESPACE_END
+ #endif
+ 
+ // 32-bit SunCC does not enable SSE2 by default.
+-#if !defined(CRYPTOPP_DISABLE_ASM) && (defined(_MSC_VER) || CRYPTOPP_GCC_VERSION >= 30300 || defined(__SSE2__) || (__SUNPRO_CC >= 0x5100))
++#if !defined(CRYPTOPP_DISABLE_ASM) && !defined(CRYPTOPP_DISABLE_SSE2) && (defined(_MSC_VER) || CRYPTOPP_GCC_VERSION >= 30300 || defined(__SSE2__) || (__SUNPRO_CC >= 0x5100))
+ 	#define CRYPTOPP_SSE2_INTRIN_AVAILABLE 1
+ #endif
+ 
+From fbbf0a08e8cf4faca661b0f75f806ea652abea70 Mon Sep 17 00:00:00 2001
+From: Jeffrey Walton <noloader@gmail.com>
+Date: Tue, 2 Jul 2019 16:55:00 -0400
+Subject: [PATCH] Add missing XOP header for blake2b_simd.cpp (GH #859) The
+ Gentoo folks caught a bug at https://bugs.gentoo.org/689162. The 689162 bug
+ uses -march=bdver1 -msse4.1 on a AMD Bulldozer machine.
+
+Investigating the issue we are missing the XOP header blake2b_simd.cpp. However, adding the XOP header is not enough for this particular config. Four source files fail to compile with the expected headers. We are waiting on the GCC folks to get back to us with a fix.
+---
+ blake2b_simd.cpp  | 5 +++++
+ keccak_simd.cpp   | 5 +++++
+ simon128_simd.cpp | 1 +
+ speck128_simd.cpp | 1 +
+ 4 files changed, 12 insertions(+)
+
+diff --git a/blake2b_simd.cpp b/blake2b_simd.cpp
+index ff138321..b246824c 100644
+--- a/blake2b_simd.cpp
++++ b/blake2b_simd.cpp
+@@ -32,6 +32,11 @@
+ # undef CRYPTOPP_ALTIVEC_AVAILABLE
+ #endif
+ 
++#if defined(__XOP__)
++# include <immintrin.h>
++# include <ammintrin.h>
++#endif
++
+ #if (CRYPTOPP_SSE41_AVAILABLE)
+ # include <emmintrin.h>
+ # include <tmmintrin.h>
+diff --git a/keccak_simd.cpp b/keccak_simd.cpp
+index 45674ac2..ae2f2095 100644
+--- a/keccak_simd.cpp
++++ b/keccak_simd.cpp
+@@ -26,6 +26,11 @@
+ # include <tmmintrin.h>
+ #endif
+ 
++#if defined(__XOP__)
++# include <immintrin.h>
++# include <ammintrin.h>
++#endif
++
+ // Squash MS LNK4221 and libtool warnings
+ extern const char KECCAK_SIMD_FNAME[] = __FILE__;
+ 
+diff --git a/simon128_simd.cpp b/simon128_simd.cpp
+index 5331c351..4b551f8f 100644
+--- a/simon128_simd.cpp
++++ b/simon128_simd.cpp
+@@ -23,6 +23,7 @@
+ #endif
+ 
+ #if defined(__XOP__)
++# include <immintrin.h>
+ # include <ammintrin.h>
+ #endif
+ 
+diff --git a/speck128_simd.cpp b/speck128_simd.cpp
+index 2c356346..fb3eb1e6 100644
+--- a/speck128_simd.cpp
++++ b/speck128_simd.cpp
+@@ -23,6 +23,7 @@
+ #endif
+ 
+ #if defined(__XOP__)
++# include <immintrin.h>
+ # include <ammintrin.h>
+ #endif
+ 
+-- 
+2.21.0
+
+From eeb7dadc76572b7061922ca6ac5f247bdfd985ad Mon Sep 17 00:00:00 2001
+From: Jeffrey Walton <noloader@gmail.com>
+Date: Tue, 2 Jul 2019 19:10:11 -0400
+Subject: [PATCH] Fix missing _mm_roti_epi32 and _mm_roti_epi64 under GCC (GH
+ #859)
+
+---
+ blake2b_simd.cpp  | 4 +++-
+ blake2s_simd.cpp  | 7 +++++++
+ chacha_simd.cpp   | 3 +++
+ cham_simd.cpp     | 3 +++
+ keccak_simd.cpp   | 4 +++-
+ lea_simd.cpp      | 3 +++
+ simeck_simd.cpp   | 3 +++
+ simon128_simd.cpp | 4 +++-
+ simon64_simd.cpp  | 3 +++
+ speck128_simd.cpp | 4 +++-
+ speck64_simd.cpp  | 3 +++
+ 11 files changed, 37 insertions(+), 4 deletions(-)
+
+diff --git a/blake2b_simd.cpp b/blake2b_simd.cpp
+index b246824c..6803d0ae 100644
+--- a/blake2b_simd.cpp
++++ b/blake2b_simd.cpp
+@@ -33,8 +33,10 @@
+ #endif
+ 
+ #if defined(__XOP__)
+-# include <immintrin.h>
+ # include <ammintrin.h>
++# if defined(__GNUC__)
++#  include <x86intrin.h>
++# endif
+ #endif
+ 
+ #if (CRYPTOPP_SSE41_AVAILABLE)
+diff --git a/blake2s_simd.cpp b/blake2s_simd.cpp
+index f02b9771..4b6d1bd6 100644
+--- a/blake2s_simd.cpp
++++ b/blake2s_simd.cpp
+@@ -42,6 +42,13 @@
+ # undef CRYPTOPP_ALTIVEC_AVAILABLE
+ #endif
+ 
++#if defined(__XOP__)
++# include <ammintrin.h>
++# if defined(__GNUC__)
++#  include <x86intrin.h>
++# endif
++#endif
++
+ #if (CRYPTOPP_SSE41_AVAILABLE)
+ # include <emmintrin.h>
+ # include <tmmintrin.h>
+diff --git a/chacha_simd.cpp b/chacha_simd.cpp
+index a983ab69..5a63ecee 100644
+--- a/chacha_simd.cpp
++++ b/chacha_simd.cpp
+@@ -46,6 +46,9 @@
+ 
+ #if defined(__XOP__)
+ # include <ammintrin.h>
++# if defined(__GNUC__)
++#  include <x86intrin.h>
++# endif
+ #endif
+ 
+ // C1189: error: This header is specific to ARM targets
+diff --git a/cham_simd.cpp b/cham_simd.cpp
+index 7fcaece1..e102a877 100644
+--- a/cham_simd.cpp
++++ b/cham_simd.cpp
+@@ -24,6 +24,9 @@
+ 
+ #if defined(__XOP__)
+ # include <ammintrin.h>
++# if defined(__GNUC__)
++#  include <x86intrin.h>
++# endif
+ #endif
+ 
+ #if defined(__AVX512F__)
+diff --git a/keccak_simd.cpp b/keccak_simd.cpp
+index ae2f2095..194291a0 100644
+--- a/keccak_simd.cpp
++++ b/keccak_simd.cpp
+@@ -27,8 +27,10 @@
+ #endif
+ 
+ #if defined(__XOP__)
+-# include <immintrin.h>
+ # include <ammintrin.h>
++# if defined(__GNUC__)
++#  include <x86intrin.h>
++# endif
+ #endif
+ 
+ // Squash MS LNK4221 and libtool warnings
+diff --git a/lea_simd.cpp b/lea_simd.cpp
+index b4180e34..ee2a5697 100644
+--- a/lea_simd.cpp
++++ b/lea_simd.cpp
+@@ -24,6 +24,9 @@
+ 
+ #if defined(__XOP__)
+ # include <ammintrin.h>
++# if defined(__GNUC__)
++#  include <x86intrin.h>
++# endif
+ #endif
+ 
+ #if defined(__AVX512F__)
+diff --git a/simeck_simd.cpp b/simeck_simd.cpp
+index 2a9efc99..f92a53d7 100644
+--- a/simeck_simd.cpp
++++ b/simeck_simd.cpp
+@@ -24,6 +24,9 @@
+ 
+ #if defined(__XOP__)
+ # include <ammintrin.h>
++# if defined(__GNUC__)
++#  include <x86intrin.h>
++# endif
+ #endif
+ 
+ // Squash MS LNK4221 and libtool warnings
+diff --git a/simon128_simd.cpp b/simon128_simd.cpp
+index 4b551f8f..cb16fa8d 100644
+--- a/simon128_simd.cpp
++++ b/simon128_simd.cpp
+@@ -23,8 +23,10 @@
+ #endif
+ 
+ #if defined(__XOP__)
+-# include <immintrin.h>
+ # include <ammintrin.h>
++# if defined(__GNUC__)
++#  include <x86intrin.h>
++# endif
+ #endif
+ 
+ #if defined(__AVX512F__)
+diff --git a/simon64_simd.cpp b/simon64_simd.cpp
+index eb5a1757..fcbe1342 100644
+--- a/simon64_simd.cpp
++++ b/simon64_simd.cpp
+@@ -25,6 +25,9 @@
+ 
+ #if defined(__XOP__)
+ # include <ammintrin.h>
++# if defined(__GNUC__)
++#  include <x86intrin.h>
++# endif
+ #endif
+ 
+ // C1189: error: This header is specific to ARM targets
+diff --git a/speck128_simd.cpp b/speck128_simd.cpp
+index fb3eb1e6..0c0f389e 100644
+--- a/speck128_simd.cpp
++++ b/speck128_simd.cpp
+@@ -23,8 +23,10 @@
+ #endif
+ 
+ #if defined(__XOP__)
+-# include <immintrin.h>
+ # include <ammintrin.h>
++# if defined(__GNUC__)
++#  include <x86intrin.h>
++# endif
+ #endif
+ 
+ #if defined(__AVX512F__)
+diff --git a/speck64_simd.cpp b/speck64_simd.cpp
+index 0a720fb3..0b43c175 100644
+--- a/speck64_simd.cpp
++++ b/speck64_simd.cpp
+@@ -25,6 +25,9 @@
+ 
+ #if defined(__XOP__)
+ # include <ammintrin.h>
++# if defined(__GNUC__)
++#  include <x86intrin.h>
++# endif
+ #endif
+ 
+ // C1189: error: This header is specific to ARM targets

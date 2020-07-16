@@ -8,4 +8,7 @@
   <upstream>
     <remote-id type="github">Ardour/ardour</remote-id>
   </upstream>
+  <use>
+    <flag name="phonehome">contact ardour.org at startup for new announcements</flag>
+  </use>
 </pkgmetadata>

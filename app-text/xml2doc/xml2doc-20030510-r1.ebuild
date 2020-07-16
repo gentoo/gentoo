@@ -1,59 +1,50 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Tool to convert simple XML to a variety of formats (pdf, html, txt, manpage)"
-
 HOMEPAGE="http://xml2doc.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
-IUSE=""
 SLOT="0"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
 
-KEYWORDS="alpha amd64 ~hppa ia64 ~mips ppc ppc64 sparc x86"
-
-DEPEND=">=dev-libs/libxml2-2.5"
+DEPEND="dev-libs/libxml2:2"
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${PN}
+S="${WORKDIR}/${PN}"
 
-src_prepare() {
-	# Fix pointer-related bug detected by a QA notice.
-	epatch "${FILESDIR}/${PN}-pointer_fix.patch"
-
+PATCHES=(
+	# Fix pointer-related bug detected by a QA notice
+	"${FILESDIR}"/${PN}-pointer_fix.patch
 	# Don't strip symbols from binary (bug #152266)
-	sed -i -e '/^\s*strip/d' \
-		-e 's/^\t$(CC) $(LFLAGS).*/\t$(LINK.o) $(L_PDF) $^ -lxml2 -o $(BIN)/' \
-		-e '/^\t$(CC) $(CFLAGS) /d' \
-		src/Makefile.in
-}
+	"${FILESDIR}"/${P}-makefile.patch
+	# fix GCC 10 -fno-common change
+	"${FILESDIR}"/${P}-gcc10-no-common.patch
+)
 
 src_configure() {
+	tc-export CC
 	econf --disable-pdf
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)"
+	default
 
-	cd "${S}/doc"
+	cd doc || die
 	"${S}"/src/xml2doc -oM manpage.xml xml2doc.1 || die
 }
 
 src_install() {
-	# xml2doc's make install is unfortunately broken
+	dobin src/xml2doc
 
-	# binary
-	dobin src/xml2doc || die
-
-	# documentation
-	dodoc BUGS README TODO || die
+	einstalldocs
 	docinto examples
-	dodoc examples/*.{xml,png} || die
+	dodoc examples/*.{xml,png}
 
-	# manpage
-	doman doc/xml2doc.1 || die
+	doman doc/xml2doc.1
 }

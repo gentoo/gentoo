@@ -12,7 +12,6 @@
     <remote-id type="cpan-module">Boulder::Blast::NCBI</remote-id>
     <remote-id type="cpan-module">Boulder::Blast::WU</remote-id>
     <remote-id type="cpan-module">Boulder::Genbank</remote-id>
-    <remote-id type="cpan-module">Boulder::Labbase</remote-id>
     <remote-id type="cpan-module">Boulder::LocusLink</remote-id>
     <remote-id type="cpan-module">Boulder::Medline</remote-id>
     <remote-id type="cpan-module">Boulder::Omim</remote-id>
@@ -35,4 +34,9 @@
     <remote-id type="cpan-module">UnigeneAccessor</remote-id>
     <remote-id type="cpan-module">Yank</remote-id>
   </upstream>
+  <use>
+    <flag name="genbank">Provide support with Boulder::Genbank for decoding Genbank data records</flag>
+    <flag name="store">Provide support with Boulder::Store for persisting Stone objects</flag>
+  </use>
+
 </pkgmetadata>

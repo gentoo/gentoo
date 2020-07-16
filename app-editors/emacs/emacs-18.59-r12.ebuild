@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,15 +9,14 @@ DESCRIPTION="The extensible self-documenting text editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 SRC_URI="ftp://ftp.gnu.org/old-gnu/emacs/${P}.tar.gz
 	ftp://ftp.splode.com/pub/users/friedman/emacs/${P}-linux22x-elf-glibc21.diff.gz
-	https://dev.gentoo.org/~ulm/emacs/${P}-patches-11.tar.xz"
+	https://dev.gentoo.org/~ulm/emacs/${P}-patches-12.tar.xz"
 
 LICENSE="GPL-1+ GPL-2+ BSD HPND"
 SLOT="18"
 KEYWORDS="amd64 x86"
 IUSE="abi_x86_x32 X"
 
-RDEPEND=">=app-eselect/eselect-emacs-1.16
-	sys-libs/ncurses:0=
+RDEPEND="sys-libs/ncurses:0=
 	amd64? (
 		abi_x86_x32? ( >=sys-libs/ncurses-5.9-r3:0=[abi_x86_x32(-)?] )
 		!abi_x86_x32? ( >=sys-libs/ncurses-5.9-r3:0=[abi_x86_32(-)] )
@@ -29,7 +28,12 @@ DEPEND="${RDEPEND}
 		x11-base/xorg-proto
 		x11-misc/xbitmaps
 	)"
-BDEPEND="virtual/pkgconfig"
+
+BDEPEND="app-eselect/eselect-emacs
+	virtual/pkgconfig"
+
+RDEPEND="${RDEPEND}
+	app-eselect/eselect-emacs"
 
 PATCHES="../${P}-linux22x-elf-glibc21.diff ../patch"
 
@@ -83,7 +87,7 @@ src_configure() {
 }
 
 src_compile() {
-	addpredict /var/lib/emacs/lock
+	addpredict /var/lib/emacs/lock		#nowarn
 	emake --jobs=1 \
 		CC="$(tc-getCC)" CFLAGS="${CFLAGS} -Demacs" \
 		LD="$(tc-getCC) -nostdlib" LDFLAGS="${LDFLAGS}"

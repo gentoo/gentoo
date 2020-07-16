@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Spiffy Perl Interface Framework For You"
 
 SLOT="0"
-KEYWORDS="~amd64 hppa ia64 ~ppc ppc64 sparc x86"
+KEYWORDS="~amd64 hppa ~ia64 ~ppc ppc64 sparc x86"
 IUSE=""
 
 SRC_TEST="do"

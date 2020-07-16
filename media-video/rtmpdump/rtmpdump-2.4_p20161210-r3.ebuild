@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -11,10 +11,13 @@ HOMEPAGE="https://rtmpdump.mplayerhq.hu/"
 # the library is LGPL-2.1, the command is GPL-2
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-IUSE="gnutls ssl libressl"
+IUSE="gnutls ssl static-libs libressl"
 
 DEPEND="ssl? (
-		gnutls? ( >=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP},nettle(+)] )
+		gnutls? (
+			>=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP},nettle(+)]
+			dev-libs/nettle:0=[${MULTILIB_USEDEP}]
+		)
 		!gnutls? (
 			!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
 			libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
@@ -29,12 +32,11 @@ PATCHES=(
 )
 
 if [[ ${PV} == *9999 ]] ; then
-	KEYWORDS=""
 	SRC_URI=""
 	EGIT_REPO_URI="https://git.ffmpeg.org/rtmpdump.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 arm arm64 hppa ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux"
 	SRC_URI="https://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
 fi
 
@@ -83,7 +85,7 @@ multilib_src_compile() {
 	if ! multilib_is_native_abi; then
 		cd librtmp || die
 	fi
-	emake CC="$(tc-getCC)" LD="$(tc-getLD)" \
+	emake CC="$(tc-getCC)" LD="$(tc-getLD)" AR="$(tc-getAR)" \
 		OPT="${CFLAGS}" XLDFLAGS="${LDFLAGS}" CRYPTO="${crypto}" SYS=posix
 }
 
@@ -96,4 +98,6 @@ multilib_src_install() {
 	fi
 	emake DESTDIR="${D}" prefix="${EPREFIX}/usr" mandir='$(prefix)/share/man' \
 		CRYPTO="${crypto}" install
+	find "${D}" -name '*.la' -delete || die
+	use static-libs || find "${D}" -name '*.a' -delete || die
 }

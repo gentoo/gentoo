@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{3_5,3_6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1
 
@@ -17,6 +17,7 @@ LICENSE="MIT Apache-2.0 CC0-1.0 public-domain"
 SLOT="0"
 KEYWORDS="amd64"
 IUSE="assets charts ghpages hyphenation ipython jinja watchdog webmedia websocket"
+REQUIRED_USE="ipython? ( || ( $(python_gen_useflags -3) ) )"
 RESTRICT="test" # needs coveralls
 
 DEPEND=">=dev-python/docutils-0.12[${PYTHON_USEDEP}]" # needs rst2man to build manpage
@@ -40,9 +41,11 @@ RDEPEND="${DEPEND}
 	dev-python/cloudpickle[${PYTHON_USEDEP}]
 	assets? ( >=dev-python/webassets-0.10.1[${PYTHON_USEDEP}] )
 	charts? ( >=dev-python/pygal-2.0.1[${PYTHON_USEDEP}] )
-	ghpages? ( >=dev-python/ghp-import-0.4.1[${PYTHON_USEDEP}] )
+	ghpages? ( >=dev-vcs/ghp-import-0.4.1[${PYTHON_USEDEP}] )
 	hyphenation? ( >=dev-python/pyphen-0.9.1[${PYTHON_USEDEP}] )
-	ipython? ( >=dev-python/ipython-2.0.0[notebook,${PYTHON_USEDEP}] )
+	ipython? (
+		>=dev-python/ipython-2.0.0[notebook,${PYTHON_USEDEP}]
+	)
 	jinja? ( >=dev-python/jinja-2.7.2[${PYTHON_USEDEP}] )
 	watchdog? ( ~dev-python/watchdog-0.8.3[${PYTHON_USEDEP}] )
 	webmedia? ( >=dev-python/micawber-0.3.0[${PYTHON_USEDEP}] )

@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 WX_GTK_VER="3.0"
 
-inherit toolchain-funcs wxwidgets
+inherit eutils toolchain-funcs wxwidgets
 
 DESCRIPTION="Port of 7-Zip archiver for Unix"
 HOMEPAGE="http://p7zip.sourceforge.net/"
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}_src_all.tar.bz2"
 
 LICENSE="LGPL-2.1 rar? ( unRAR )"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ppc ppc64 ~s390 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris"
+KEYWORDS="~alpha amd64 ~arm arm64 hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris"
 IUSE="abi_x86_x32 doc kde +pch rar static wxwidgets"
 
 REQUIRED_USE="kde? ( wxwidgets )"
@@ -44,11 +44,11 @@ src_prepare() {
 	fi
 
 	sed \
-		-e 's:-m32 ::g' \
-		-e 's:-m64 ::g' \
-		-e 's:-pipe::g' \
-		-e '/ALLFLAGS/s:-s ::' \
-		-e "/OPTFLAGS=/s:=.*:=${CXXFLAGS}:" \
+		-e 's|-m32 ||g' \
+		-e 's|-m64 ||g' \
+		-e 's|-pipe||g' \
+		-e '/ALLFLAGS/s|-s ||' \
+		-e "/OPTFLAGS=/s|=.*|=${CXXFLAGS}|" \
 		-i makefile* || die
 
 	# remove non-free RAR codec

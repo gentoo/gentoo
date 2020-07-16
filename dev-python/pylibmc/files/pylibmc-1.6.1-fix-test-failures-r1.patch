@@ -1,0 +1,16 @@
+diff --git a/src/_pylibmcmodule.c b/src/_pylibmcmodule.c
+index 5324d1d..70c18cb 100644
+--- a/src/_pylibmcmodule.c
++++ b/src/_pylibmcmodule.c
+@@ -600,6 +600,11 @@ static PyObject *_PylibMC_parse_memcached_value(PylibMC_Client *self,
+     }
+ #endif
+
++	/* make sure we don't pass a null pointer to _PylibMC_deserialize_native */
++    if (value == NULL) {
++        value = "";
++    }
++
+     if (self->native_deserialization) {
+         retval = _PylibMC_deserialize_native(self, NULL, value, size, flags);
+     } else {

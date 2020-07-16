@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -9,20 +9,23 @@ DESCRIPTION="An interpreter for Psion 5(MX) file formats"
 HOMEPAGE="http://huizen.dds.nl/~frodol/psiconv"
 SRC_URI="http://huizen.dds.nl/~frodol/${PN}/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-IUSE="static-libs"
+SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc ~sparc ~x86"
 
-src_prepare() {
-	tc-export AR
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc10-fno-common.patch
+	"${FILESDIR}"/${P}-Wimplicit-function-declaration.patch
+)
 
 src_configure() {
-	econf $(use_enable static-libs static)
+	tc-export AR
+	econf --disable-static
 }
 
 src_install() {
 	default
-	use static-libs || rm -fr "${D}"usr/lib*/lib${PN}.la
+
+	# no static archives
+	find "${D}" -name '*.la' -delete || die
 }

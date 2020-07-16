@@ -4,9 +4,6 @@
 	<use>
 		<flag name="bson">Support BSON file format for package DB</flag>
 	</use>
-	<maintainer type="person">
-		<email>dolsen@gentoo.org</email>
-	</maintainer>
 	<maintainer type="project">
 		<email>layman@gentoo.org</email>
 		<name>Gentoo Layman team</name>

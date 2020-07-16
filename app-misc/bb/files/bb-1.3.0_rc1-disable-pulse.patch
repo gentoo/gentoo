@@ -1,6 +1,4 @@
 https://bugs.gentoo.org/516964
-diff --git a/main.c b/main.c
-index c0648b4..a9fac57 100644
 --- a/main.c
 +++ b/main.c
 @@ -160,6 +160,17 @@ main (int argc, char *argv[])

@@ -4,8 +4,8 @@
 
 diff --git a/vmd-1.9.1/src/CUDAMarchingCubes.cu b/vmd-1.9.1/src/CUDAMarchingCubes.cu
 index 5bfe7bf..36faaf0 100755
---- a/vmd-1.9.1/src/CUDAMarchingCubes.cu
-+++ b/vmd-1.9.1/src/CUDAMarchingCubes.cu
+--- a/src/CUDAMarchingCubes.cu
++++ b/src/CUDAMarchingCubes.cu
 @@ -45,6 +45,7 @@
  #include "CUDAMarchingCubes.h"
  #include <thrust/scan.h>
@@ -16,8 +16,8 @@ index 5bfe7bf..36faaf0 100755
  // (limited by shared memory size)
 diff --git a/vmd-1.9.1/src/CUDAQuickSurf.cu b/vmd-1.9.1/src/CUDAQuickSurf.cu
 index a21ebde..56a42c8 100755
---- a/vmd-1.9.1/src/CUDAQuickSurf.cu
-+++ b/vmd-1.9.1/src/CUDAQuickSurf.cu
+--- a/src/CUDAQuickSurf.cu
++++ b/src/CUDAQuickSurf.cu
 @@ -22,6 +22,7 @@
  #include <stdlib.h>
  #include <string.h>

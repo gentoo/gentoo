@@ -16,7 +16,7 @@ SRC_URI="https://repo1.maven.org/maven2/xerces/${MY_PN}/${PV}/${MY_P}-sources.ja
 
 LICENSE="Apache-2.0"
 SLOT="2"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 CDEPEND="
 	dev-java/xjavac:1

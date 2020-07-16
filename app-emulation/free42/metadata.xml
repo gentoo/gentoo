@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>nimiux@gentoo.org</email>
-    <name>Chema Alonso</name>
+    <email>voyageur@gentoo.org</email>
+    <name>Bernard Cafarelli</name>
   </maintainer>
   <longdescription lang="en">
      An HP-42S Calculator Simulator
@@ -11,9 +11,7 @@
   <longdescription lang="es">
     Un simulador de la calculadora HP-42S
   </longdescription>
-  <use>
-    <flag name="alsa">
-      Adds support for Advanced Linux Sound Architecture
-    </flag>
-  </use>
+  <upstream>
+    <remote-id type="github">thomasokken/free42</remote-id>
+  </upstream>
 </pkgmetadata>

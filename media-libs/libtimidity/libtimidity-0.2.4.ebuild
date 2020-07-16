@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/2"
-KEYWORDS="amd64 ~arm64 hppa ppc ppc64 sparc ~x86"
+KEYWORDS="amd64 ~arm64 hppa ppc ppc64 sparc x86"
 IUSE="ao debug"
 
 RDEPEND="ao? ( >=media-libs/libao-1.1.0-r2[${MULTILIB_USEDEP}] )"

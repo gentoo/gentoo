@@ -1,5 +1,5 @@
---- src/ucs2any.agriffis	2001-02-17 12:34:50.000000000 -0500
-+++ src/ucs2any	2006-01-11 10:53:15.000000000 -0500
+--- a/src/ucs2any
++++ b/src/ucs2any
 @@ -225,12 +225,7 @@
  	    if (!is_control($ucs)) {
  		if ($startchar{$ucs}) {

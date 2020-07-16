@@ -1,0 +1,963 @@
+From e812d3cf1b67cc73841b41e690d53c74e5077a05 Mon Sep 17 00:00:00 2001
+From: Kunal Tyagi <tyagi.kunal@live.com>
+Date: Wed, 6 May 2020 08:41:07 +0900
+Subject: [PATCH] Changes in preparation for PCL 1.11 (#273)
+
+* Deriving typedef from pcl type
+
+* Explicit boost shared_ptr for function parameters
+
+* Use boost::shared_ptr instead of PCL::Ptr
+
+* Implementing boost-std compatibility
+
+* Using the compatibility layer
+---
+ pcl_ros/include/pcl_ros/features/feature.h    |  14 +-
+ pcl_ros/include/pcl_ros/filters/filter.h      |   4 +-
+ pcl_ros/include/pcl_ros/pcl_nodelet.h         |   9 +-
+ pcl_ros/include/pcl_ros/point_cloud.h         | 121 ++++++++++++++++++
+ .../extract_polygonal_prism_data.h            |   4 +-
+ .../pcl_ros/segmentation/sac_segmentation.h   |  12 +-
+ .../segmentation/segment_differences.h        |   4 +-
+ pcl_ros/include/pcl_ros/surface/convex_hull.h |   4 +-
+ .../pcl_ros/surface/moving_least_squares.h    |   4 +-
+ pcl_ros/src/pcl_ros/features/boundary.cpp     |  10 +-
+ pcl_ros/src/pcl_ros/features/fpfh.cpp         |  10 +-
+ pcl_ros/src/pcl_ros/features/fpfh_omp.cpp     |  10 +-
+ .../pcl_ros/features/moment_invariants.cpp    |   8 +-
+ pcl_ros/src/pcl_ros/features/normal_3d.cpp    |   8 +-
+ .../src/pcl_ros/features/normal_3d_omp.cpp    |   8 +-
+ .../src/pcl_ros/features/normal_3d_tbb.cpp    |   4 +-
+ pcl_ros/src/pcl_ros/features/pfh.cpp          |  10 +-
+ .../pcl_ros/features/principal_curvatures.cpp |  10 +-
+ pcl_ros/src/pcl_ros/features/shot.cpp         |  10 +-
+ pcl_ros/src/pcl_ros/features/shot_omp.cpp     |  10 +-
+ pcl_ros/src/pcl_ros/features/vfh.cpp          |  10 +-
+ .../pcl_ros/segmentation/extract_clusters.cpp |   4 +-
+ .../extract_polygonal_prism_data.cpp          |   6 +-
+ .../pcl_ros/segmentation/sac_segmentation.cpp |   6 +-
+ .../segmentation/segment_differences.cpp      |   8 +-
+ pcl_ros/src/pcl_ros/surface/convex_hull.cpp   |   8 +-
+ .../pcl_ros/surface/moving_least_squares.cpp  |  10 +-
+ pcl_ros/tools/pointcloud_to_pcd.cpp           |   2 +-
+ 28 files changed, 225 insertions(+), 103 deletions(-)
+
+diff --git a/pcl_ros/include/pcl_ros/features/feature.h b/pcl_ros/include/pcl_ros/features/feature.h
+index 26bcfe6b..098c20bc 100644
+--- a/pcl_ros/include/pcl_ros/features/feature.h
++++ b/pcl_ros/include/pcl_ros/features/feature.h
+@@ -69,11 +69,11 @@ namespace pcl_ros
+       typedef pcl::KdTree<pcl::PointXYZ>::Ptr KdTreePtr;
+ 
+       typedef pcl::PointCloud<pcl::PointXYZ> PointCloudIn;
+-      typedef PointCloudIn::Ptr PointCloudInPtr;
+-      typedef PointCloudIn::ConstPtr PointCloudInConstPtr;
++      typedef boost::shared_ptr<PointCloudIn> PointCloudInPtr;
++      typedef boost::shared_ptr<const PointCloudIn> PointCloudInConstPtr;
+ 
+-      typedef boost::shared_ptr <std::vector<int> > IndicesPtr;
+-      typedef boost::shared_ptr <const std::vector<int> > IndicesConstPtr;
++      typedef pcl::IndicesPtr IndicesPtr;
++      typedef pcl::IndicesConstPtr IndicesConstPtr;
+ 
+       /** \brief Empty constructor. */
+       Feature () : /*input_(), indices_(), surface_(), */tree_(), k_(0), search_radius_(0),
+@@ -152,7 +152,7 @@ namespace pcl_ros
+         indices.header.stamp = pcl_conversions::fromPCL(input->header).stamp;
+         PointCloudIn cloud;
+         cloud.header.stamp = input->header.stamp;
+-        nf_pc_.add (cloud.makeShared ());
++        nf_pc_.add (ros_ptr(cloud.makeShared ()));
+         nf_pi_.add (boost::make_shared<PointIndices> (indices));
+       }
+ 
+@@ -190,8 +190,8 @@ namespace pcl_ros
+       typedef sensor_msgs::PointCloud2 PointCloud2;
+ 
+       typedef pcl::PointCloud<pcl::Normal> PointCloudN;
+-      typedef PointCloudN::Ptr PointCloudNPtr;
+-      typedef PointCloudN::ConstPtr PointCloudNConstPtr;
++      typedef boost::shared_ptr<PointCloudN> PointCloudNPtr;
++      typedef boost::shared_ptr<const PointCloudN> PointCloudNConstPtr;
+ 
+       FeatureFromNormals () : normals_() {};
+ 
+diff --git a/pcl_ros/include/pcl_ros/filters/filter.h b/pcl_ros/include/pcl_ros/filters/filter.h
+index 94c1e883..b4e79538 100644
+--- a/pcl_ros/include/pcl_ros/filters/filter.h
++++ b/pcl_ros/include/pcl_ros/filters/filter.h
+@@ -58,8 +58,8 @@ namespace pcl_ros
+     public:
+       typedef sensor_msgs::PointCloud2 PointCloud2;
+ 
+-      typedef boost::shared_ptr <std::vector<int> > IndicesPtr;
+-      typedef boost::shared_ptr <const std::vector<int> > IndicesConstPtr;
++      typedef pcl::IndicesPtr IndicesPtr;
++      typedef pcl::IndicesConstPtr IndicesConstPtr;
+ 
+       Filter () {}
+ 
+diff --git a/pcl_ros/include/pcl_ros/pcl_nodelet.h b/pcl_ros/include/pcl_ros/pcl_nodelet.h
+index f12e62d7..279d6730 100644
+--- a/pcl_ros/include/pcl_ros/pcl_nodelet.h
++++ b/pcl_ros/include/pcl_ros/pcl_nodelet.h
+@@ -48,6 +48,7 @@
+ // PCL includes
+ #include <pcl_msgs/PointIndices.h>
+ #include <pcl_msgs/ModelCoefficients.h>
++#include <pcl/pcl_base.h>
+ #include <pcl/point_types.h>
+ #include <pcl_conversions/pcl_conversions.h>
+ #include "pcl_ros/point_cloud.h"
+@@ -75,8 +76,8 @@ namespace pcl_ros
+       typedef sensor_msgs::PointCloud2 PointCloud2;
+ 
+       typedef pcl::PointCloud<pcl::PointXYZ> PointCloud;
+-      typedef PointCloud::Ptr PointCloudPtr;
+-      typedef PointCloud::ConstPtr PointCloudConstPtr;
++      typedef boost::shared_ptr<PointCloud> PointCloudPtr;
++      typedef boost::shared_ptr<const PointCloud> PointCloudConstPtr;
+ 
+       typedef pcl_msgs::PointIndices PointIndices;
+       typedef PointIndices::Ptr PointIndicesPtr;
+@@ -86,8 +87,8 @@ namespace pcl_ros
+       typedef ModelCoefficients::Ptr ModelCoefficientsPtr;
+       typedef ModelCoefficients::ConstPtr ModelCoefficientsConstPtr;
+ 
+-      typedef boost::shared_ptr <std::vector<int> > IndicesPtr;
+-      typedef boost::shared_ptr <const std::vector<int> > IndicesConstPtr;
++      typedef pcl::IndicesPtr IndicesPtr;
++      typedef pcl::IndicesConstPtr IndicesConstPtr;
+ 
+       /** \brief Empty constructor. */
+       PCLNodelet () : use_indices_ (false), latched_indices_ (false),
+diff --git a/pcl_ros/include/pcl_ros/point_cloud.h b/pcl_ros/include/pcl_ros/point_cloud.h
+index bbf30ad1..93df7365 100644
+--- a/pcl_ros/include/pcl_ros/point_cloud.h
++++ b/pcl_ros/include/pcl_ros/point_cloud.h
+@@ -270,4 +270,125 @@ namespace ros
+ 
+ } // namespace ros
+ 
++// test if testing machinery can be implemented
++#if defined(__cpp_rvalue_references) && defined(__cpp_constexpr)
++#define ROS_POINTER_COMPATIBILITY_IMPLEMENTED 1
++#else
++#define ROS_POINTER_COMPATIBILITY_IMPLEMENTED 0
++#endif
++
++#if ROS_POINTER_COMPATIBILITY_IMPLEMENTED
++#include <type_traits>  // for std::is_same
++#include <memory>       // for std::shared_ptr
++
++#include <pcl/pcl_config.h>
++#if PCL_VERSION_COMPARE(>=, 1, 11, 0)
++#include <pcl/memory.h>
++#elif PCL_VERSION_COMPARE(>=, 1, 10, 0)
++#include <pcl/make_shared.h>
++#endif
++#endif
++
++namespace pcl
++{
++  namespace detail
++  {
++#if ROS_POINTER_COMPATIBILITY_IMPLEMENTED
++#if PCL_VERSION_COMPARE(>=, 1, 10, 0)
++    template <class T>
++    constexpr static bool pcl_uses_boost = std::is_same<boost::shared_ptr<T>,
++                                                        pcl::shared_ptr<T>>::value;
++#else
++    template <class T>
++    constexpr static bool pcl_uses_boost = true;
++#endif
++
++    template<class SharedPointer> struct Holder
++    {
++      SharedPointer p;
++
++      Holder(const SharedPointer &p) : p(p) {}
++      Holder(const Holder &other) : p(other.p) {}
++      Holder(Holder &&other) : p(std::move(other.p)) {}
++
++      void operator () (...) { p.reset(); }
++    };
++
++    template<class T>
++    inline std::shared_ptr<T> to_std_ptr(const boost::shared_ptr<T> &p)
++    {
++        typedef Holder<std::shared_ptr<T>> H;
++        if(H *h = boost::get_deleter<H>(p))
++        {
++            return h->p;
++        }
++        else
++        {
++            return std::shared_ptr<T>(p.get(), Holder<boost::shared_ptr<T>>(p));
++        }
++    }
++
++    template<class T>
++    inline boost::shared_ptr<T> to_boost_ptr(const std::shared_ptr<T> &p)
++    {
++        typedef Holder<boost::shared_ptr<T>> H;
++        if(H * h = std::get_deleter<H>(p))
++        {
++            return h->p;
++        }
++        else
++        {
++            return boost::shared_ptr<T>(p.get(), Holder<std::shared_ptr<T>>(p));
++        }
++    }
++#endif
++  } // namespace pcl::detail
++
++// add functions to convert to smart pointer used by ROS
++  template <class T>
++  inline boost::shared_ptr<T> ros_ptr(const boost::shared_ptr<T> &p)
++  {
++      return p;
++  }
++
++#if ROS_POINTER_COMPATIBILITY_IMPLEMENTED
++  template <class T>
++  inline boost::shared_ptr<T> ros_ptr(const std::shared_ptr<T> &p)
++  {
++      return detail::to_boost_ptr(p);
++  }
++
++// add functions to convert to smart pointer used by PCL, based on PCL's own pointer
++  template <class T, class = typename std::enable_if<!detail::pcl_uses_boost<T>>::type>
++  inline std::shared_ptr<T> pcl_ptr(const std::shared_ptr<T> &p)
++  {
++      return p;
++  }
++
++  template <class T, class = typename std::enable_if<!detail::pcl_uses_boost<T>>::type>
++  inline std::shared_ptr<T> pcl_ptr(const boost::shared_ptr<T> &p)
++  {
++      return detail::to_std_ptr(p);
++  }
++
++  template <class T, class = typename std::enable_if<detail::pcl_uses_boost<T>>::type>
++  inline boost::shared_ptr<T> pcl_ptr(const std::shared_ptr<T> &p)
++  {
++      return detail::to_boost_ptr(p);
++  }
++
++  template <class T, class = typename std::enable_if<detail::pcl_uses_boost<T>>::type>
++  inline boost::shared_ptr<T> pcl_ptr(const boost::shared_ptr<T> &p)
++  {
++      return p;
++  }
++#else
++  template <class T>
++  inline boost::shared_ptr<T> pcl_ptr(const boost::shared_ptr<T> &p)
++  {
++      return p;
++  }
++#endif
++} // namespace pcl
++
+ #endif
+diff --git a/pcl_ros/include/pcl_ros/segmentation/extract_polygonal_prism_data.h b/pcl_ros/include/pcl_ros/segmentation/extract_polygonal_prism_data.h
+index 7134f905..13b85316 100644
+--- a/pcl_ros/include/pcl_ros/segmentation/extract_polygonal_prism_data.h
++++ b/pcl_ros/include/pcl_ros/segmentation/extract_polygonal_prism_data.h
+@@ -64,8 +64,8 @@ namespace pcl_ros
+   class ExtractPolygonalPrismData : public PCLNodelet
+   {
+     typedef pcl::PointCloud<pcl::PointXYZ> PointCloud;
+-    typedef PointCloud::Ptr PointCloudPtr;
+-    typedef PointCloud::ConstPtr PointCloudConstPtr;
++    typedef boost::shared_ptr<PointCloud> PointCloudPtr;
++    typedef boost::shared_ptr<const PointCloud> PointCloudConstPtr;
+ 
+     protected:
+        /** \brief The output PointIndices publisher. */
+diff --git a/pcl_ros/include/pcl_ros/segmentation/sac_segmentation.h b/pcl_ros/include/pcl_ros/segmentation/sac_segmentation.h
+index af2c9126..9243e363 100644
+--- a/pcl_ros/include/pcl_ros/segmentation/sac_segmentation.h
++++ b/pcl_ros/include/pcl_ros/segmentation/sac_segmentation.h
+@@ -61,8 +61,8 @@ namespace pcl_ros
+   class SACSegmentation : public PCLNodelet
+   {
+     typedef pcl::PointCloud<pcl::PointXYZ> PointCloud;
+-    typedef PointCloud::Ptr PointCloudPtr;
+-    typedef PointCloud::ConstPtr PointCloudConstPtr;
++    typedef boost::shared_ptr<PointCloud> PointCloudPtr;
++    typedef boost::shared_ptr<const PointCloud> PointCloudConstPtr;
+ 
+     public:
+       /** \brief Constructor. */
+@@ -181,12 +181,12 @@ namespace pcl_ros
+   class SACSegmentationFromNormals: public SACSegmentation
+   {
+     typedef pcl::PointCloud<pcl::PointXYZ> PointCloud;
+-    typedef PointCloud::Ptr PointCloudPtr;
+-    typedef PointCloud::ConstPtr PointCloudConstPtr;
++    typedef boost::shared_ptr<PointCloud> PointCloudPtr;
++    typedef boost::shared_ptr<const PointCloud> PointCloudConstPtr;
+ 
+     typedef pcl::PointCloud<pcl::Normal> PointCloudN;
+-    typedef PointCloudN::Ptr PointCloudNPtr;
+-    typedef PointCloudN::ConstPtr PointCloudNConstPtr;
++    typedef boost::shared_ptr<PointCloudN> PointCloudNPtr;
++    typedef boost::shared_ptr<const PointCloudN> PointCloudNConstPtr;
+ 
+     public:
+       /** \brief Set the input TF frame the data should be transformed into before processing, if input.header.frame_id is different.
+diff --git a/pcl_ros/include/pcl_ros/segmentation/segment_differences.h b/pcl_ros/include/pcl_ros/segmentation/segment_differences.h
+index 4914bc86..da767ab3 100644
+--- a/pcl_ros/include/pcl_ros/segmentation/segment_differences.h
++++ b/pcl_ros/include/pcl_ros/segmentation/segment_differences.h
+@@ -60,8 +60,8 @@ namespace pcl_ros
+   class SegmentDifferences : public PCLNodelet
+   {
+     typedef pcl::PointCloud<pcl::PointXYZ> PointCloud;
+-    typedef PointCloud::Ptr PointCloudPtr;
+-    typedef PointCloud::ConstPtr PointCloudConstPtr;
++    typedef boost::shared_ptr<PointCloud> PointCloudPtr;
++    typedef boost::shared_ptr<const PointCloud> PointCloudConstPtr;
+ 
+     public:
+       /** \brief Empty constructor. */
+diff --git a/pcl_ros/include/pcl_ros/surface/convex_hull.h b/pcl_ros/include/pcl_ros/surface/convex_hull.h
+index e419c0f8..54a1f367 100644
+--- a/pcl_ros/include/pcl_ros/surface/convex_hull.h
++++ b/pcl_ros/include/pcl_ros/surface/convex_hull.h
+@@ -53,8 +53,8 @@ namespace pcl_ros
+   class ConvexHull2D : public PCLNodelet
+   {
+     typedef pcl::PointCloud<pcl::PointXYZ> PointCloud;
+-    typedef PointCloud::Ptr PointCloudPtr;
+-    typedef PointCloud::ConstPtr PointCloudConstPtr;
++    typedef boost::shared_ptr<PointCloud> PointCloudPtr;
++    typedef boost::shared_ptr<const PointCloud> PointCloudConstPtr;
+ 
+     private:
+       /** \brief Nodelet initialization routine. */
+diff --git a/pcl_ros/include/pcl_ros/surface/moving_least_squares.h b/pcl_ros/include/pcl_ros/surface/moving_least_squares.h
+index b909edf8..e90f562a 100644
+--- a/pcl_ros/include/pcl_ros/surface/moving_least_squares.h
++++ b/pcl_ros/include/pcl_ros/surface/moving_least_squares.h
+@@ -62,8 +62,8 @@ namespace pcl_ros
+     typedef pcl::PointNormal NormalOut;
+ 
+     typedef pcl::PointCloud<PointIn> PointCloudIn;
+-    typedef PointCloudIn::Ptr PointCloudInPtr;
+-    typedef PointCloudIn::ConstPtr PointCloudInConstPtr;
++    typedef boost::shared_ptr<PointCloudIn> PointCloudInPtr;
++    typedef boost::shared_ptr<const PointCloudIn> PointCloudInConstPtr;
+     typedef pcl::PointCloud<NormalOut> NormalCloudOut;
+ 
+     typedef pcl::KdTree<PointIn> KdTree;
+diff --git a/pcl_ros/src/pcl_ros/features/boundary.cpp b/pcl_ros/src/pcl_ros/features/boundary.cpp
+index 9334641a..26ee07c1 100644
+--- a/pcl_ros/src/pcl_ros/features/boundary.cpp
++++ b/pcl_ros/src/pcl_ros/features/boundary.cpp
+@@ -43,7 +43,7 @@ pcl_ros::BoundaryEstimation::emptyPublish (const PointCloudInConstPtr &cloud)
+ {
+   PointCloudOut output;
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ void
+@@ -57,17 +57,17 @@ pcl_ros::BoundaryEstimation::computePublish (const PointCloudInConstPtr &cloud,
+   impl_.setRadiusSearch (search_radius_);
+ 
+   // Set the inputs
+-  impl_.setInputCloud (cloud);
++  impl_.setInputCloud (pcl_ptr(cloud));
+   impl_.setIndices (indices);
+-  impl_.setSearchSurface (surface);
+-  impl_.setInputNormals (normals);
++  impl_.setSearchSurface (pcl_ptr(surface));
++  impl_.setInputNormals (pcl_ptr(normals));
+   // Estimate the feature
+   PointCloudOut output;
+   impl_.compute (output);
+ 
+   // Enforce that the TF frame and the timestamp are copied
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ typedef pcl_ros::BoundaryEstimation BoundaryEstimation;
+diff --git a/pcl_ros/src/pcl_ros/features/fpfh.cpp b/pcl_ros/src/pcl_ros/features/fpfh.cpp
+index 3f698aad..53be549c 100644
+--- a/pcl_ros/src/pcl_ros/features/fpfh.cpp
++++ b/pcl_ros/src/pcl_ros/features/fpfh.cpp
+@@ -43,7 +43,7 @@ pcl_ros::FPFHEstimation::emptyPublish (const PointCloudInConstPtr &cloud)
+ {
+   PointCloudOut output;
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ void 
+@@ -57,10 +57,10 @@ pcl_ros::FPFHEstimation::computePublish (const PointCloudInConstPtr &cloud,
+   impl_.setRadiusSearch (search_radius_);
+ 
+   // Set the inputs
+-  impl_.setInputCloud (cloud);
++  impl_.setInputCloud (pcl_ptr(cloud));
+   impl_.setIndices (indices);
+-  impl_.setSearchSurface (surface);
+-  impl_.setInputNormals (normals);
++  impl_.setSearchSurface (pcl_ptr(surface));
++  impl_.setInputNormals (pcl_ptr(normals));
+   // Estimate the feature
+   PointCloudOut output;
+   impl_.compute (output);
+@@ -68,7 +68,7 @@ pcl_ros::FPFHEstimation::computePublish (const PointCloudInConstPtr &cloud,
+   // Publish a Boost shared ptr const data
+   // Enforce that the TF frame and the timestamp are copied
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ typedef pcl_ros::FPFHEstimation FPFHEstimation;
+diff --git a/pcl_ros/src/pcl_ros/features/fpfh_omp.cpp b/pcl_ros/src/pcl_ros/features/fpfh_omp.cpp
+index 58dd911f..e4adcabb 100644
+--- a/pcl_ros/src/pcl_ros/features/fpfh_omp.cpp
++++ b/pcl_ros/src/pcl_ros/features/fpfh_omp.cpp
+@@ -43,7 +43,7 @@ pcl_ros::FPFHEstimationOMP::emptyPublish (const PointCloudInConstPtr &cloud)
+ {
+   PointCloudOut output;
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ void 
+@@ -57,10 +57,10 @@ pcl_ros::FPFHEstimationOMP::computePublish (const PointCloudInConstPtr &cloud,
+   impl_.setRadiusSearch (search_radius_);
+ 
+   // Set the inputs
+-  impl_.setInputCloud (cloud);
++  impl_.setInputCloud (pcl_ptr(cloud));
+   impl_.setIndices (indices);
+-  impl_.setSearchSurface (surface);
+-  impl_.setInputNormals (normals);
++  impl_.setSearchSurface (pcl_ptr(surface));
++  impl_.setInputNormals (pcl_ptr(normals));
+   // Estimate the feature
+   PointCloudOut output;
+   impl_.compute (output);
+@@ -68,7 +68,7 @@ pcl_ros::FPFHEstimationOMP::computePublish (const PointCloudInConstPtr &cloud,
+   // Publish a Boost shared ptr const data
+   // Enforce that the TF frame and the timestamp are copied
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ typedef pcl_ros::FPFHEstimationOMP FPFHEstimationOMP;
+diff --git a/pcl_ros/src/pcl_ros/features/moment_invariants.cpp b/pcl_ros/src/pcl_ros/features/moment_invariants.cpp
+index d0ec3441..a6e2249a 100644
+--- a/pcl_ros/src/pcl_ros/features/moment_invariants.cpp
++++ b/pcl_ros/src/pcl_ros/features/moment_invariants.cpp
+@@ -43,7 +43,7 @@ pcl_ros::MomentInvariantsEstimation::emptyPublish (const PointCloudInConstPtr &c
+ {
+   PointCloudOut output;
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ void 
+@@ -56,9 +56,9 @@ pcl_ros::MomentInvariantsEstimation::computePublish (const PointCloudInConstPtr
+   impl_.setRadiusSearch (search_radius_);
+ 
+   // Set the inputs
+-  impl_.setInputCloud (cloud);
++  impl_.setInputCloud (pcl_ptr(cloud));
+   impl_.setIndices (indices);
+-  impl_.setSearchSurface (surface);
++  impl_.setSearchSurface (pcl_ptr(surface));
+   // Estimate the feature
+   PointCloudOut output;
+   impl_.compute (output);
+@@ -66,7 +66,7 @@ pcl_ros::MomentInvariantsEstimation::computePublish (const PointCloudInConstPtr
+   // Publish a Boost shared ptr const data
+   // Enforce that the TF frame and the timestamp are copied
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ typedef pcl_ros::MomentInvariantsEstimation MomentInvariantsEstimation;
+diff --git a/pcl_ros/src/pcl_ros/features/normal_3d.cpp b/pcl_ros/src/pcl_ros/features/normal_3d.cpp
+index 9e700f78..042186a9 100644
+--- a/pcl_ros/src/pcl_ros/features/normal_3d.cpp
++++ b/pcl_ros/src/pcl_ros/features/normal_3d.cpp
+@@ -43,7 +43,7 @@ pcl_ros::NormalEstimation::emptyPublish (const PointCloudInConstPtr &cloud)
+ {
+   PointCloudOut output;
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ void 
+@@ -56,9 +56,9 @@ pcl_ros::NormalEstimation::computePublish (const PointCloudInConstPtr &cloud,
+   impl_.setRadiusSearch (search_radius_);
+ 
+   // Set the inputs
+-  impl_.setInputCloud (cloud);
++  impl_.setInputCloud (pcl_ptr(cloud));
+   impl_.setIndices (indices);
+-  impl_.setSearchSurface (surface);
++  impl_.setSearchSurface (pcl_ptr(surface));
+   // Estimate the feature
+   PointCloudOut output;
+   impl_.compute (output);
+@@ -66,7 +66,7 @@ pcl_ros::NormalEstimation::computePublish (const PointCloudInConstPtr &cloud,
+   // Publish a Boost shared ptr const data
+   // Enforce that the TF frame and the timestamp are copied
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ typedef pcl_ros::NormalEstimation NormalEstimation;
+diff --git a/pcl_ros/src/pcl_ros/features/normal_3d_omp.cpp b/pcl_ros/src/pcl_ros/features/normal_3d_omp.cpp
+index a741c052..3e92d2f2 100644
+--- a/pcl_ros/src/pcl_ros/features/normal_3d_omp.cpp
++++ b/pcl_ros/src/pcl_ros/features/normal_3d_omp.cpp
+@@ -43,7 +43,7 @@ pcl_ros::NormalEstimationOMP::emptyPublish (const PointCloudInConstPtr &cloud)
+ {
+   PointCloudOut output;
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ void 
+@@ -56,9 +56,9 @@ pcl_ros::NormalEstimationOMP::computePublish (const PointCloudInConstPtr &cloud,
+   impl_.setRadiusSearch (search_radius_);
+ 
+   // Set the inputs
+-  impl_.setInputCloud (cloud);
++  impl_.setInputCloud (pcl_ptr(cloud));
+   impl_.setIndices (indices);
+-  impl_.setSearchSurface (surface);
++  impl_.setSearchSurface (pcl_ptr(surface));
+   // Estimate the feature
+   PointCloudOut output;
+   impl_.compute (output);
+@@ -66,7 +66,7 @@ pcl_ros::NormalEstimationOMP::computePublish (const PointCloudInConstPtr &cloud,
+   // Publish a Boost shared ptr const data
+   // Enforce that the TF frame and the timestamp are copied
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ typedef pcl_ros::NormalEstimationOMP NormalEstimationOMP;
+diff --git a/pcl_ros/src/pcl_ros/features/normal_3d_tbb.cpp b/pcl_ros/src/pcl_ros/features/normal_3d_tbb.cpp
+index a4a8581e..680a4a02 100644
+--- a/pcl_ros/src/pcl_ros/features/normal_3d_tbb.cpp
++++ b/pcl_ros/src/pcl_ros/features/normal_3d_tbb.cpp
+@@ -45,7 +45,7 @@ pcl_ros::NormalEstimationTBB::emptyPublish (const PointCloudInConstPtr &cloud)
+ {
+   PointCloud output;
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ void 
+@@ -71,7 +71,7 @@ pcl_ros::NormalEstimationTBB::computePublish (const PointCloudInConstPtr &cloud,
+   // Publish a Boost shared ptr const data
+   // Enforce that the TF frame and the timestamp are copied
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ typedef pcl_ros::NormalEstimationTBB NormalEstimationTBB;
+diff --git a/pcl_ros/src/pcl_ros/features/pfh.cpp b/pcl_ros/src/pcl_ros/features/pfh.cpp
+index 38b4d19c..dd8409e2 100644
+--- a/pcl_ros/src/pcl_ros/features/pfh.cpp
++++ b/pcl_ros/src/pcl_ros/features/pfh.cpp
+@@ -43,7 +43,7 @@ pcl_ros::PFHEstimation::emptyPublish (const PointCloudInConstPtr &cloud)
+ {
+   PointCloudOut output;
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ void 
+@@ -57,10 +57,10 @@ pcl_ros::PFHEstimation::computePublish (const PointCloudInConstPtr &cloud,
+   impl_.setRadiusSearch (search_radius_);
+ 
+   // Set the inputs
+-  impl_.setInputCloud (cloud);
++  impl_.setInputCloud (pcl_ptr(cloud));
+   impl_.setIndices (indices);
+-  impl_.setSearchSurface (surface);
+-  impl_.setInputNormals (normals);
++  impl_.setSearchSurface (pcl_ptr(surface));
++  impl_.setInputNormals (pcl_ptr(normals));
+   // Estimate the feature
+   PointCloudOut output;
+   impl_.compute (output);
+@@ -68,7 +68,7 @@ pcl_ros::PFHEstimation::computePublish (const PointCloudInConstPtr &cloud,
+   // Publish a Boost shared ptr const data
+   // Enforce that the TF frame and the timestamp are copied
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ typedef pcl_ros::PFHEstimation PFHEstimation;
+diff --git a/pcl_ros/src/pcl_ros/features/principal_curvatures.cpp b/pcl_ros/src/pcl_ros/features/principal_curvatures.cpp
+index 113124dc..501d686e 100644
+--- a/pcl_ros/src/pcl_ros/features/principal_curvatures.cpp
++++ b/pcl_ros/src/pcl_ros/features/principal_curvatures.cpp
+@@ -43,7 +43,7 @@ pcl_ros::PrincipalCurvaturesEstimation::emptyPublish (const PointCloudInConstPtr
+ {
+   PointCloudOut output;
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ void 
+@@ -57,10 +57,10 @@ pcl_ros::PrincipalCurvaturesEstimation::computePublish (const PointCloudInConstP
+   impl_.setRadiusSearch (search_radius_);
+ 
+   // Set the inputs
+-  impl_.setInputCloud (cloud);
++  impl_.setInputCloud (pcl_ptr(cloud));
+   impl_.setIndices (indices);
+-  impl_.setSearchSurface (surface);
+-  impl_.setInputNormals (normals);
++  impl_.setSearchSurface (pcl_ptr(surface));
++  impl_.setInputNormals (pcl_ptr(normals));
+   // Estimate the feature
+   PointCloudOut output;
+   impl_.compute (output);
+@@ -68,7 +68,7 @@ pcl_ros::PrincipalCurvaturesEstimation::computePublish (const PointCloudInConstP
+   // Publish a Boost shared ptr const data
+   // Enforce that the TF frame and the timestamp are copied
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ typedef pcl_ros::PrincipalCurvaturesEstimation PrincipalCurvaturesEstimation;
+diff --git a/pcl_ros/src/pcl_ros/features/shot.cpp b/pcl_ros/src/pcl_ros/features/shot.cpp
+index d051ab0f..ed6ba44b 100644
+--- a/pcl_ros/src/pcl_ros/features/shot.cpp
++++ b/pcl_ros/src/pcl_ros/features/shot.cpp
+@@ -42,7 +42,7 @@ pcl_ros::SHOTEstimation::emptyPublish (const PointCloudInConstPtr &cloud)
+ {
+   PointCloudOut output;
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ void 
+@@ -56,10 +56,10 @@ pcl_ros::SHOTEstimation::computePublish (const PointCloudInConstPtr &cloud,
+   impl_.setRadiusSearch (search_radius_);
+ 
+   // Set the inputs
+-  impl_.setInputCloud (cloud);
++  impl_.setInputCloud (pcl_ptr(cloud));
+   impl_.setIndices (indices);
+-  impl_.setSearchSurface (surface);
+-  impl_.setInputNormals (normals);
++  impl_.setSearchSurface (pcl_ptr(surface));
++  impl_.setInputNormals (pcl_ptr(normals));
+   // Estimate the feature
+   PointCloudOut output;
+   impl_.compute (output);
+@@ -67,7 +67,7 @@ pcl_ros::SHOTEstimation::computePublish (const PointCloudInConstPtr &cloud,
+   // Publish a Boost shared ptr const data
+   // Enforce that the TF frame and the timestamp are copied
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ typedef pcl_ros::SHOTEstimation SHOTEstimation;
+diff --git a/pcl_ros/src/pcl_ros/features/shot_omp.cpp b/pcl_ros/src/pcl_ros/features/shot_omp.cpp
+index 1ac1b065..4563f123 100644
+--- a/pcl_ros/src/pcl_ros/features/shot_omp.cpp
++++ b/pcl_ros/src/pcl_ros/features/shot_omp.cpp
+@@ -42,7 +42,7 @@ pcl_ros::SHOTEstimationOMP::emptyPublish (const PointCloudInConstPtr &cloud)
+ {
+   PointCloudOut output;
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ void 
+@@ -56,10 +56,10 @@ pcl_ros::SHOTEstimationOMP::computePublish (const PointCloudInConstPtr &cloud,
+   impl_.setRadiusSearch (search_radius_);
+ 
+   // Set the inputs
+-  impl_.setInputCloud (cloud);
++  impl_.setInputCloud (pcl_ptr(cloud));
+   impl_.setIndices (indices);
+-  impl_.setSearchSurface (surface);
+-  impl_.setInputNormals (normals);
++  impl_.setSearchSurface (pcl_ptr(surface));
++  impl_.setInputNormals (pcl_ptr(normals));
+   // Estimate the feature
+   PointCloudOut output;
+   impl_.compute (output);
+@@ -67,7 +67,7 @@ pcl_ros::SHOTEstimationOMP::computePublish (const PointCloudInConstPtr &cloud,
+   // Publish a Boost shared ptr const data
+   // Enforce that the TF frame and the timestamp are copied
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ typedef pcl_ros::SHOTEstimationOMP SHOTEstimationOMP;
+diff --git a/pcl_ros/src/pcl_ros/features/vfh.cpp b/pcl_ros/src/pcl_ros/features/vfh.cpp
+index 9d0fe361..ece448fd 100644
+--- a/pcl_ros/src/pcl_ros/features/vfh.cpp
++++ b/pcl_ros/src/pcl_ros/features/vfh.cpp
+@@ -43,7 +43,7 @@ pcl_ros::VFHEstimation::emptyPublish (const PointCloudInConstPtr &cloud)
+ {
+   PointCloudOut output;
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ void 
+@@ -57,10 +57,10 @@ pcl_ros::VFHEstimation::computePublish (const PointCloudInConstPtr &cloud,
+   impl_.setRadiusSearch (search_radius_);
+ 
+   // Set the inputs
+-  impl_.setInputCloud (cloud);
++  impl_.setInputCloud (pcl_ptr(cloud));
+   impl_.setIndices (indices);
+-  impl_.setSearchSurface (surface);
+-  impl_.setInputNormals (normals);
++  impl_.setSearchSurface (pcl_ptr(surface));
++  impl_.setInputNormals (pcl_ptr(normals));
+   // Estimate the feature
+   PointCloudOut output;
+   impl_.compute (output);
+@@ -68,7 +68,7 @@ pcl_ros::VFHEstimation::computePublish (const PointCloudInConstPtr &cloud,
+   // Publish a Boost shared ptr const data
+   // Enforce that the TF frame and the timestamp are copied
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ typedef pcl_ros::VFHEstimation VFHEstimation;
+diff --git a/pcl_ros/src/pcl_ros/segmentation/extract_clusters.cpp b/pcl_ros/src/pcl_ros/segmentation/extract_clusters.cpp
+index 17adec46..5599b408 100644
+--- a/pcl_ros/src/pcl_ros/segmentation/extract_clusters.cpp
++++ b/pcl_ros/src/pcl_ros/segmentation/extract_clusters.cpp
+@@ -202,7 +202,7 @@ pcl_ros::EuclideanClusterExtraction::input_indices_callback (
+   if (indices)
+     indices_ptr.reset (new std::vector<int> (indices->indices));
+ 
+-  impl_.setInputCloud (cloud);
++  impl_.setInputCloud (pcl_ptr(cloud));
+   impl_.setIndices (indices_ptr);
+ 
+   std::vector<pcl::PointIndices> clusters;
+@@ -239,7 +239,7 @@ pcl_ros::EuclideanClusterExtraction::input_indices_callback (
+       header.stamp += ros::Duration (i * 0.001);
+       toPCL(header, output.header);
+       // Publish a Boost shared ptr const data
+-      pub_output_.publish (output.makeShared ());
++      pub_output_.publish (ros_ptr(output.makeShared ()));
+       NODELET_DEBUG ("[segmentAndPublish] Published cluster %zu (with %zu values and stamp %f) on topic %s",
+                      i, clusters[i].indices.size (), header.stamp.toSec (), pnh_->resolveName ("output").c_str ());
+     }
+diff --git a/pcl_ros/src/pcl_ros/segmentation/extract_polygonal_prism_data.cpp b/pcl_ros/src/pcl_ros/segmentation/extract_polygonal_prism_data.cpp
+index 0185bfbe..ff823b19 100644
+--- a/pcl_ros/src/pcl_ros/segmentation/extract_polygonal_prism_data.cpp
++++ b/pcl_ros/src/pcl_ros/segmentation/extract_polygonal_prism_data.cpp
+@@ -189,16 +189,16 @@ pcl_ros::ExtractPolygonalPrismData::input_hull_indices_callback (
+       pub_output_.publish (inliers);
+       return;
+     }
+-    impl_.setInputPlanarHull (planar_hull.makeShared ());
++    impl_.setInputPlanarHull (pcl_ptr(planar_hull.makeShared ()));
+   }
+   else
+-    impl_.setInputPlanarHull (hull);
++    impl_.setInputPlanarHull (pcl_ptr(hull));
+ 
+   IndicesPtr indices_ptr;
+   if (indices && !indices->header.frame_id.empty ())
+     indices_ptr.reset (new std::vector<int> (indices->indices));
+ 
+-  impl_.setInputCloud (cloud);
++  impl_.setInputCloud (pcl_ptr(cloud));
+   impl_.setIndices (indices_ptr);
+ 
+   // Final check if the data is empty (remember that indices are set to the size of the data -- if indices* = NULL)
+diff --git a/pcl_ros/src/pcl_ros/segmentation/sac_segmentation.cpp b/pcl_ros/src/pcl_ros/segmentation/sac_segmentation.cpp
+index b73dd3fd..bc7b97e7 100644
+--- a/pcl_ros/src/pcl_ros/segmentation/sac_segmentation.cpp
++++ b/pcl_ros/src/pcl_ros/segmentation/sac_segmentation.cpp
+@@ -324,7 +324,7 @@ pcl_ros::SACSegmentation::input_indices_callback (const PointCloudConstPtr &clou
+   if (indices && !indices->header.frame_id.empty ())
+     indices_ptr.reset (new std::vector<int> (indices->indices));
+ 
+-  impl_.setInputCloud (cloud_tf);
++  impl_.setInputCloud (pcl_ptr(cloud_tf));
+   impl_.setIndices (indices_ptr);
+ 
+   // Final check if the data is empty (remember that indices are set to the size of the data -- if indices* = NULL)
+@@ -651,8 +651,8 @@ pcl_ros::SACSegmentationFromNormals::input_normals_indices_callback (
+     return;
+   }
+ 
+-  impl_.setInputCloud (cloud);
+-  impl_.setInputNormals (cloud_normals);
++  impl_.setInputCloud (pcl_ptr(cloud));
++  impl_.setInputNormals (pcl_ptr(cloud_normals));
+ 
+   IndicesPtr indices_ptr;
+   if (indices && !indices->header.frame_id.empty ())
+diff --git a/pcl_ros/src/pcl_ros/segmentation/segment_differences.cpp b/pcl_ros/src/pcl_ros/segmentation/segment_differences.cpp
+index 4c934152..e3979549 100644
+--- a/pcl_ros/src/pcl_ros/segmentation/segment_differences.cpp
++++ b/pcl_ros/src/pcl_ros/segmentation/segment_differences.cpp
+@@ -115,7 +115,7 @@ pcl_ros::SegmentDifferences::input_target_callback (const PointCloudConstPtr &cl
+     NODELET_ERROR ("[%s::input_indices_callback] Invalid input!", getName ().c_str ());
+     PointCloud output;
+     output.header = cloud->header;
+-    pub_output_.publish (output.makeShared ());
++    pub_output_.publish (ros_ptr(output.makeShared ()));
+     return;
+   }
+ 
+@@ -126,13 +126,13 @@ pcl_ros::SegmentDifferences::input_target_callback (const PointCloudConstPtr &cl
+                  cloud->width * cloud->height, pcl::getFieldsList (*cloud).c_str (), fromPCL(cloud->header).stamp.toSec (), cloud->header.frame_id.c_str (), pnh_->resolveName ("input").c_str (),
+                  cloud_target->width * cloud_target->height, pcl::getFieldsList (*cloud_target).c_str (), fromPCL(cloud_target->header).stamp.toSec (), cloud_target->header.frame_id.c_str (), pnh_->resolveName ("target").c_str ());
+ 
+-  impl_.setInputCloud (cloud);
+-  impl_.setTargetCloud (cloud_target);
++  impl_.setInputCloud (pcl_ptr(cloud));
++  impl_.setTargetCloud (pcl_ptr(cloud_target));
+ 
+   PointCloud output;
+   impl_.segment (output);
+ 
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+   NODELET_DEBUG ("[%s::segmentAndPublish] Published PointCloud2 with %zu points and stamp %f on topic %s", getName ().c_str (),
+                      output.points.size (), fromPCL(output.header).stamp.toSec (), pnh_->resolveName ("output").c_str ());
+ }
+diff --git a/pcl_ros/src/pcl_ros/surface/convex_hull.cpp b/pcl_ros/src/pcl_ros/surface/convex_hull.cpp
+index 4b7eeaf5..75903889 100644
+--- a/pcl_ros/src/pcl_ros/surface/convex_hull.cpp
++++ b/pcl_ros/src/pcl_ros/surface/convex_hull.cpp
+@@ -121,7 +121,7 @@ void
+     NODELET_ERROR ("[%s::input_indices_callback] Invalid input!", getName ().c_str ());
+     // Publish an empty message
+     output.header = cloud->header;
+-    pub_output_.publish (output.makeShared ());
++    pub_output_.publish (ros_ptr(output.makeShared ()));
+     return;
+   }
+   // If indices are given, check if they are valid
+@@ -130,7 +130,7 @@ void
+     NODELET_ERROR ("[%s::input_indices_callback] Invalid indices!", getName ().c_str ());
+     // Publish an empty message
+     output.header = cloud->header;
+-    pub_output_.publish (output.makeShared ());
++    pub_output_.publish (ros_ptr(output.makeShared ()));
+     return;
+   }
+ 
+@@ -150,7 +150,7 @@ void
+   if (indices)
+     indices_ptr.reset (new std::vector<int> (indices->indices));
+ 
+-  impl_.setInputCloud (cloud);
++  impl_.setInputCloud (pcl_ptr(cloud));
+   impl_.setIndices (indices_ptr);
+ 
+   // Estimate the feature
+@@ -194,7 +194,7 @@ void
+   }
+   // Publish a Boost shared ptr const data
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+ }
+ 
+ typedef pcl_ros::ConvexHull2D ConvexHull2D;
+diff --git a/pcl_ros/src/pcl_ros/surface/moving_least_squares.cpp b/pcl_ros/src/pcl_ros/surface/moving_least_squares.cpp
+index b9a01e64..99e5d481 100644
+--- a/pcl_ros/src/pcl_ros/surface/moving_least_squares.cpp
++++ b/pcl_ros/src/pcl_ros/surface/moving_least_squares.cpp
+@@ -141,7 +141,7 @@ pcl_ros::MovingLeastSquares::input_indices_callback (const PointCloudInConstPtr
+   {
+     NODELET_ERROR ("[%s::input_indices_callback] Invalid input!", getName ().c_str ());
+     output.header = cloud->header;
+-    pub_output_.publish (output.makeShared ());
++    pub_output_.publish (ros_ptr(output.makeShared ()));
+     return;
+   }
+   // If indices are given, check if they are valid
+@@ -149,7 +149,7 @@ pcl_ros::MovingLeastSquares::input_indices_callback (const PointCloudInConstPtr
+   {
+     NODELET_ERROR ("[%s::input_indices_callback] Invalid indices!", getName ().c_str ());
+     output.header = cloud->header;
+-    pub_output_.publish (output.makeShared ());
++    pub_output_.publish (ros_ptr(output.makeShared ()));
+     return;
+   }
+ 
+@@ -166,7 +166,7 @@ pcl_ros::MovingLeastSquares::input_indices_callback (const PointCloudInConstPtr
+   ///
+ 
+   // Reset the indices and surface pointers
+-  impl_.setInputCloud (cloud);
++  impl_.setInputCloud (pcl_ptr(cloud));
+ 
+   IndicesPtr indices_ptr;
+   if (indices)
+@@ -182,9 +182,9 @@ pcl_ros::MovingLeastSquares::input_indices_callback (const PointCloudInConstPtr
+   // Publish a Boost shared ptr const data
+   // Enforce that the TF frame and the timestamp are copied
+   output.header = cloud->header;
+-  pub_output_.publish (output.makeShared ());
++  pub_output_.publish (ros_ptr(output.makeShared ()));
+   normals->header = cloud->header;
+-  pub_normals_.publish (normals);
++  pub_normals_.publish (ros_ptr(normals));
+ }
+ 
+ //////////////////////////////////////////////////////////////////////////////////////////////
+diff --git a/pcl_ros/tools/pointcloud_to_pcd.cpp b/pcl_ros/tools/pointcloud_to_pcd.cpp
+index 484113da..fb149b46 100644
+--- a/pcl_ros/tools/pointcloud_to_pcd.cpp
++++ b/pcl_ros/tools/pointcloud_to_pcd.cpp
+@@ -78,7 +78,7 @@ class PointCloudToPCD
+     ////////////////////////////////////////////////////////////////////////////////
+     // Callback
+     void
+-      cloud_cb (const pcl::PCLPointCloud2::ConstPtr& cloud)
++      cloud_cb (const boost::shared_ptr<const pcl::PCLPointCloud2>& cloud)
+     {
+       if ((cloud->width * cloud->height) == 0)
+         return;

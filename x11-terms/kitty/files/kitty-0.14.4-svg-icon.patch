@@ -1,0 +1,16 @@
+Use SVG icon instead of PNG.
+
+--- kitty-0.14.4/setup.py
++++ kitty-0.14.4/setup.py
+@@ -710,9 +710,9 @@
+         run_tool(['make', 'docs'])
+     copy_man_pages(ddir)
+     copy_html_docs(ddir)
+-    icdir = os.path.join(ddir, 'share', 'icons', 'hicolor', '256x256', 'apps')
++    icdir = os.path.join(ddir, 'share', 'icons', 'hicolor', 'scalable', 'apps')
+     safe_makedirs(icdir)
+-    shutil.copy2('logo/kitty.png', icdir)
++    shutil.copy2('logo/kitty.svg', icdir)
+     deskdir = os.path.join(ddir, 'share', 'applications')
+     safe_makedirs(deskdir)
+     with open(os.path.join(deskdir, 'kitty.desktop'), 'w') as f:

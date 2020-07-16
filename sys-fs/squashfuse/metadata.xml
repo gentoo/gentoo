@@ -11,7 +11,4 @@
 		<email>zmedico@gentoo.org</email>
 		<name>Zac Medico</name>
 	</maintainer>
-	<use>
-		<flag name="lz4">Enable support for lz4 compression</flag>
-	</use>
 </pkgmetadata>

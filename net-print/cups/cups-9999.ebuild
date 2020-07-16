@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools flag-o-matic linux-info xdg multilib-minimal pam user systemd toolchain-funcs
+inherit autotools flag-o-matic linux-info xdg multilib-minimal pam systemd toolchain-funcs
 
 MY_PV="${PV/_rc/rc}"
 MY_PV="${MY_PV/_beta/b}"
@@ -21,7 +21,7 @@ else
 	#SRC_URI="https://github.com/apple/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	SRC_URI="https://github.com/apple/cups/releases/download/v${MY_PV}/${MY_P}-source.tar.gz"
 	if [[ "${PV}" != *_beta* ]] && [[ "${PV}" != *_rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~m68k-mint"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~m68k-mint"
 	fi
 fi
 
@@ -44,7 +44,7 @@ CDEPEND="
 	dbus? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 	!lprng-compat? ( !net-print/lprng )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	ssl? ( >=net-libs/gnutls-2.12.23-r6:0=[${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd )
 	usb? ( virtual/libusb:1 )
@@ -55,10 +55,14 @@ CDEPEND="
 
 DEPEND="${CDEPEND}"
 BDEPEND="
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	acct-group/lp
+	acct-group/lpadmin
+	virtual/pkgconfig
 "
 
 RDEPEND="${CDEPEND}
+	acct-group/lp
+	acct-group/lpadmin
 	selinux? ( sec-policy/selinux-cups )
 "
 
@@ -73,7 +77,6 @@ RESTRICT="test"
 
 # systemd-socket.patch from Fedora
 PATCHES=(
-	"${FILESDIR}/${PN}-2.2.0-dont-compress-manpages.patch"
 	"${FILESDIR}/${PN}-2.2.6-fix-install-perms.patch"
 	"${FILESDIR}/${PN}-1.4.4-nostrip.patch"
 	"${FILESDIR}/${PN}-2.0.2-rename-systemd-service-files.patch"
@@ -87,9 +90,10 @@ MULTILIB_CHOST_TOOLS=(
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
-	enewgroup lp
-	enewuser lp -1 -1 -1 lp
-	enewgroup lpadmin 106
+	#enewgroup lp -> acct-group/lp
+	# user lp already provided by baselayout
+	#enewuser lp -1 -1 -1 lp
+	#enewgroup lpadmin 106
 
 	if use kernel_linux; then
 		linux-info_pkg_setup
@@ -131,6 +135,10 @@ src_prepare() {
 
 	# Fix install-sh, posix sh does not have 'function'.
 	sed 's#function gzipcp#gzipcp()#g' -i "${S}/install-sh"
+
+	# Do not add -Werror even for live ebuilds
+	sed '/WARNING_OPTIONS/s@-Werror@@' \
+		-i config-scripts/cups-compiler.m4 || die
 
 	AT_M4DIR=config-scripts eaclocal
 	eautoconf
@@ -234,10 +242,11 @@ multilib_src_install_all() {
 	rm -rf "${ED}"/etc/{init.d/cups,rc*,pam.d/cups}
 
 	# install our init script
-	local neededservices
-	use zeroconf && neededservices+=" avahi-daemon"
-	use dbus && neededservices+=" dbus"
-	[[ -n ${neededservices} ]] && neededservices="need${neededservices}"
+	local neededservices=(
+		$(usex zeroconf avahi-daemon '')
+		$(usex dbus dbus '')
+	)
+	[[ -n ${neededservices[@]} ]] && neededservices="need ${neededservices[@]}"
 	cp "${FILESDIR}"/cupsd.init.d-r3 "${T}"/cupsd || die
 	sed -i \
 		-e "s/@neededservices@/${neededservices}/" \
@@ -256,7 +265,7 @@ multilib_src_install_all() {
 		grep -w 'disable' "${ED}"/etc/xinetd.d/cups-lpd || \
 			{ sed -i -e "s:}:\tdisable = yes\n}:" "${ED}"/etc/xinetd.d/cups-lpd || die ; }
 		# write permission for file owner (root), bug #296221
-		fperms u+w /etc/xinetd.d/cups-lpd || die "fperms failed"
+		fperms u+w /etc/xinetd.d/cups-lpd
 	else
 		# always configure with --with-xinetd= and clean up later,
 		# bug #525604

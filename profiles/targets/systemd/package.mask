@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Pacho Ramos <pacho@gentoo.org> (21 Apr 2015)
+# Pacho Ramos <pacho@gentoo.org> (2015-04-21)
 # This is for running sys-apps/systemd and also helps
 # portage to not try to pull in other providers leading to
 # strange blockers.

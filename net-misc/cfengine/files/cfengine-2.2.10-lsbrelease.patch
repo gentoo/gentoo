@@ -1,0 +1,24 @@
+Newer GCC mis-compiles the lsb_release reader function.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+--- cfengine-2.2.10/src/misc.c	2009-02-10 21:55:36.000000000 -0800
++++ cfengine-2.2.10/src/misc.c	2020-01-06 17:58:07.049226386 -0800
+@@ -1187,6 +1187,7 @@ if ((fp = cfpopen(VBUFF, "r")) == NULL)
+ 
+ if (ReadLine(VBUFF, CF_BUFSIZE, fp))
+    {
++   Debug4("(%s)",VBUFF);
+    char * buffer = VBUFF;
+    strsep(&buffer, ":");
+    
+@@ -1198,7 +1199,8 @@ if (ReadLine(VBUFF, CF_BUFSIZE, fp))
+    info = buffer;
+    while((*buffer != '\0') && !isspace(*buffer))
+       {
+-      *buffer = tolower(*buffer++);
++      *buffer = tolower(*buffer);
++      buffer++;
+       }
+    
+    *buffer = '\0';

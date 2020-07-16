@@ -1,0 +1,39 @@
+diff -Naur free42-nologo-2.5.16.orig/gtk/Makefile free42-nologo-2.5.16/gtk/Makefile
+--- free42-nologo-2.5.16.orig/gtk/Makefile	2020-01-25 05:16:45.000000000 +0100
++++ free42-nologo-2.5.16/gtk/Makefile	2020-02-02 20:18:50.460458652 +0100
+@@ -15,7 +15,7 @@
+ # along with this program; if not, see http://www.gnu.org/licenses/.
+ ###############################################################################
+ 
+-CFLAGS = -MMD \
++CFLAGS := -MMD \
+ 	 -Wall \
+ 	 -Wno-parentheses \
+ 	 -Wno-write-strings \
+@@ -34,12 +34,14 @@
+ 	 -DDECIMAL_GLOBAL_ROUNDING=1 \
+ 	 -DDECIMAL_GLOBAL_ROUNDING_ACCESS_FUNCTIONS=1 \
+ 	 -DDECIMAL_GLOBAL_EXCEPTION_FLAGS=1 \
+-	 -DDECIMAL_GLOBAL_EXCEPTION_FLAGS_ACCESS_FUNCTIONS=1
++	 -DDECIMAL_GLOBAL_EXCEPTION_FLAGS_ACCESS_FUNCTIONS=1 \
++	 ${CFLAGS}
+ 
+-CXXFLAGS = $(CFLAGS) \
++CXXFLAGS := $(CFLAGS) \
+ 	 -fno-exceptions \
+ 	 -fno-rtti \
+-	 -D_WCHAR_T_DEFINED
++	 -D_WCHAR_T_DEFINED \
++	 ${CXXFLAGS}
+ 
+ LIBS = gcc111libbid.a $(shell pkg-config --libs gtk+-3.0)
+ 
+@@ -114,7 +116,7 @@
+ 	./keymap2cc
+ 
+ gcc111libbid.a:
+-	sh ./build-intel-lib.sh
++	+sh ./build-intel-lib.sh
+ 	ln -s IntelRDFPMathLib20U1/TESTS/readtest.c
+ 
+ symlinks:

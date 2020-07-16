@@ -2,20 +2,17 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>gentoo@retornaz.com</email>
-		<name>Quentin Retornaz</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
 	</maintainer>
 	<use>
 		<flag name="stubby">Add Stubby DNS Privacy Deamon</flag>
-		<flag name="getdns_query">Add getdns_query tool</flag>
-		<flag name="getdns_server_mon">Add getdns_server_mon tool</flag>
+		<flag name="getdns-query">Add getdns_query tool</flag>
+		<flag name="getdns-server-mon">Add getdns_server_mon tool</flag>
 		<flag name="unbound">Enable <pkg>net-dns/unbound</pkg> libraries support</flag>
 		<flag name="libevent">Enable <pkg>dev-libs/libevent</pkg> support</flag>
 		<flag name="libev">Enable <pkg>dev-libs/libev</pkg> support</flag>
 		<flag name="libuv">Enable <pkg>dev-libs/libuv</pkg> support</flag>
+		<flag name="nettle">Use <pkg>dev-libs/nettle</pkg> as crypto backend</flag>
 	</use>
 </pkgmetadata>

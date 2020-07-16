@@ -12,6 +12,6 @@
 		wrap libraries that are themselves based on GLib.
 	</longdescription>
 	<use>
-		<flag name="closure_signals">Use the the GClosure-based signals implementation.</flag>
+		<flag name="closure-signals">Use the the GClosure-based signals implementation.</flag>
 	</use>
 </pkgmetadata>

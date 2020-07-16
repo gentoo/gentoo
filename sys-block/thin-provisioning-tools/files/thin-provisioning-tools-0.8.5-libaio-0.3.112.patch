@@ -1,0 +1,84 @@
+From 6332962ee866f5289de87ab70cd3db863298982c Mon Sep 17 00:00:00 2001
+From: Joe Thornber <ejt@redhat.com>
+Date: Wed, 5 Jun 2019 15:02:05 +0100
+Subject: [PATCH] [ft-lib/bcache] rename raise() -> raise_()
+
+Name clash with signal.h on Debian and Gentoo.
+---
+ ft-lib/bcache.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/ft-lib/bcache.c b/ft-lib/bcache.c
+index 0dca5031..ee5b6c59 100644
+--- a/ft-lib/bcache.c
++++ b/ft-lib/bcache.c
+@@ -31,7 +31,7 @@ static void warn(const char *fmt, ...)
+ }
+ 
+ // FIXME: raise a condition somehow?
+-static void raise(const char *fmt, ...)
++static void raise_(const char *fmt, ...)
+ {
+ 	va_list ap;
+ 
+@@ -51,7 +51,7 @@ static inline struct list_head *list_pop(struct list_head *head)
+ 	struct list_head *l;
+ 
+ 	if (head->next == head)
+-		raise("list is empty\n");
++		raise_("list is empty\n");
+ 
+ 	l = head->next;
+ 	list_del(l);
+@@ -98,7 +98,7 @@ static struct cb_set *cb_set_create(unsigned nr)
+ static void cb_set_destroy(struct cb_set *cbs)
+ {
+ 	if (!list_empty(&cbs->allocated))
+-		raise("async io still in flight");
++		raise_("async io still in flight");
+ 
+ 	free(cbs->vec);
+ 	free(cbs);
+@@ -713,13 +713,13 @@ struct bcache *bcache_simple(const char *path, unsigned nr_cache_blocks)
+ 	uint64_t s;
+ 
+ 	if (fd < 0) {
+-		raise("couldn't open cache file");
++		raise_("couldn't open cache file");
+ 		return NULL;
+ 	}
+ 
+ 	r = fstat(fd, &info);
+ 	if (r < 0) {
+-		raise("couldn't stat cache file");
++		raise_("couldn't stat cache file");
+ 		return NULL;
+ 	}
+ 
+@@ -751,7 +751,7 @@ void bcache_destroy(struct bcache *cache)
+ static void check_index(struct bcache *cache, block_address index)
+ {
+ 	if (index >= cache->nr_data_blocks)
+-		raise("block out of bounds (%llu >= %llu)",
++		raise_("block out of bounds (%llu >= %llu)",
+ 		      (unsigned long long) index,
+ 		      (unsigned long long) cache->nr_data_blocks);
+ }
+@@ -802,7 +802,7 @@ static struct block *lookup_or_read_block(struct bcache *cache,
+ 		// FIXME: this is insufficient.  We need to also catch a read
+ 		// lock of a write locked block.  Ref count needs to distinguish.
+ 		if (b->ref_count && (flags & (GF_DIRTY | GF_ZERO)))
+-			raise("concurrent write lock attempt");
++			raise_("concurrent write lock attempt");
+ 
+ 		if (test_flags(b, BF_IO_PENDING)) {
+ 			miss(cache, flags);
+@@ -858,7 +858,7 @@ struct block *get_block(struct bcache *cache, block_address index, unsigned flag
+ 		return b;
+ 	}
+ 
+-	raise("couldn't get block");
++	raise_("couldn't get block");
+ 	return NULL;
+ }
+ 

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,8 +11,9 @@ DESCRIPTION="High speed arbitrary size integer math"
 
 SLOT="0"
 LICENSE="LGPL-2"
-KEYWORDS="alpha amd64 hppa ~mips ppc x86"
+KEYWORDS="~alpha amd64 hppa ~mips ppc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-AutoLoader

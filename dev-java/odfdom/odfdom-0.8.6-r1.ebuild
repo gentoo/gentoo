@@ -59,6 +59,6 @@ src_test() {
 src_install() {
 	java-pkg_dojar target/odfdom.jar
 
-	dodoc README.txt LICENSE.txt || die
+	dodoc README.txt LICENSE.txt
 	use doc && java-pkg_dojavadoc target/site/apidocs
 }

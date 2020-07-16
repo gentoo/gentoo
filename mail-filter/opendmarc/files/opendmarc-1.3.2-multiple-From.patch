@@ -1,0 +1,35 @@
+From f6b615e345037408b88b2ffd1acd03239af8a858 Mon Sep 17 00:00:00 2001
+From: Marcin Seremak <panpilkarz@protonmail.com>
+Date: Tue, 30 Jul 2019 08:05:28 +0200
+Subject: [PATCH] Fix multiple addresses in From vulnerability
+
+---
+ libopendmarc/tests/test_finddomain.c | 1 +
+ opendmarc/opendmarc.c                | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/libopendmarc/tests/test_finddomain.c b/libopendmarc/tests/test_finddomain.c
+index 50cf405..8447463 100644
+--- a/libopendmarc/tests/test_finddomain.c
++++ b/libopendmarc/tests/test_finddomain.c
+@@ -23,6 +23,7 @@ main(int argc, char **argv)
+ 		/* 11 */ {"(,) joe@joe.com", "joe.com"},
+ 		/* 12 */ {"\"( bob@bob.com)\" joe@joe.com", "joe.com"},
+ 		/* 12 */ {"From: Davide D'Marco <user@blah.com>", "blah.com"},
++		/* 13 */ {"blah.com", "blah.com"},
+ 			 {NULL, NULL},
+ 	};
+ 	u_char dbuf[256];
+diff --git a/opendmarc/opendmarc.c b/opendmarc/opendmarc.c
+index 419c15a..9b7fe3a 100644
+--- a/opendmarc/opendmarc.c
++++ b/opendmarc/opendmarc.c
+@@ -2193,7 +2193,7 @@ mlfi_eom(SMFICTX *ctx)
+ 	strncpy(dfc->mctx_fromdomain, domain, sizeof dfc->mctx_fromdomain - 1);
+ 
+ 	ostatus = opendmarc_policy_store_from_domain(cc->cctx_dmarc,
+-	                                             from->hdr_value);
++	                                             dfc->mctx_fromdomain);
+ 	if (ostatus != DMARC_PARSE_OKAY)
+ 	{
+ 		if (conf->conf_dolog)

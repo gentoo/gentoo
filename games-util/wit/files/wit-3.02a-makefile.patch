@@ -1,5 +1,5 @@
 Don't link libdl into wfuse as it's unnecessary, use system bzip2, respect user
-CFLAGS, and use verbose build output.
+CFLAGS, use pkgconfig to determine ncurses libs, and use verbose build output.
 
 --- wiimms-iso-tools.source-3.02a/Makefile
 +++ wiimms-iso-tools.source-3.02a/Makefile
@@ -40,7 +40,7 @@ CFLAGS, and use verbose build output.
   LIBS		+= -lz
  endif
 -LIBS		+= -lm -lncurses $(XLIBS)
-+LIBS		+= -lm -lncurses -lbz2 $(XLIBS)
++LIBS		+= -lm $(shell pkg-config --libs ncurses) -lbz2 $(XLIBS)
  
  DISTRIB_RM	= ./wit-v$(VERSION)-r
  DISTRIB_BASE	= wit-v$(VERSION)-r$(REVISION_NEXT)

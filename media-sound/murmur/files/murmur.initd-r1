@@ -13,7 +13,7 @@ depend() {
 }
 
 start_pre() {
-	checkpath -d -o ${MURMUR_USER} ${pidfile%/*}
+	checkpath -q -d -o ${MURMUR_USER} ${pidfile%/*}
 }
 
 reload() {

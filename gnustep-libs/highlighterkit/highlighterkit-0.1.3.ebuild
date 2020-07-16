@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ MY_P="HighlighterKit-${PV}"
 
 DESCRIPTION="Syntax highlighter framework"
 HOMEPAGE="http://wiki.gnustep.org/index.php/HighlighterKit"
-SRC_URI="http://download.gna.org/gnustep-nonfsf/${MY_P}.tar.gz"
+SRC_URI="mirror://nongnu/gnustep-nonfsf/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

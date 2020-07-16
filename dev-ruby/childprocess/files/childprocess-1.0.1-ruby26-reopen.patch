@@ -1,0 +1,23 @@
+diff --git a/lib/childprocess/unix/fork_exec_process.rb b/lib/childprocess/unix/fork_exec_process.rb
+index 5ed2a79..cc7a850 100644
+--- a/lib/childprocess/unix/fork_exec_process.rb
++++ b/lib/childprocess/unix/fork_exec_process.rb
+@@ -29,8 +29,16 @@ module ChildProcess
+           exec_r.close
+           set_env
+ 
+-          STDOUT.reopen(stdout || "/dev/null")
+-          STDERR.reopen(stderr || "/dev/null")
++          if stdout
++            STDOUT.reopen(stdout)
++          else
++            STDOUT.reopen("/dev/null", "a+")
++          end
++          if stderr
++            STDERR.reopen(stderr)
++          else
++            STDERR.reopen("/dev/null", "a+")
++          end
+ 
+           if duplex?
+             STDIN.reopen(reader)

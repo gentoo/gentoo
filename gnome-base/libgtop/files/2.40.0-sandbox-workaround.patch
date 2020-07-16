@@ -1,0 +1,27 @@
+From 9a0067e0fa4636efa37212d7d56376f8ec02a802 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Sat, 21 Mar 2020 18:40:09 +0200
+Subject: [PATCH] build: Workaround chmod on root filesystem sandbox issue
+
+Just delete this again, but keep the server enabling from
+commit ec662d01dac16b81; the suid part has to be handled at
+package level instead.
+---
+ libgtop-sysdeps.m4 | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/libgtop-sysdeps.m4 b/libgtop-sysdeps.m4
+index b363dae0..81aa5350 100644
+--- a/libgtop-sysdeps.m4
++++ b/libgtop-sysdeps.m4
+@@ -36,7 +36,6 @@ AC_DEFUN([GNOME_LIBGTOP_SYSDEPS],[
+ 	  libgtop_need_server=yes
+ 	  libgtop_sysdeps_private_mountlist=yes
+ 	  libgtop_sysdeps_private_fsusage=yes
+-	  libgtop_postinstall='chown root $(bindir)/libgtop_server2 && chmod 4755 $(bindir)/libgtop_server2'
+ 	  ;;
+ 	netbsd*|bsdi*)
+ 	  libgtop_sysdeps_dir=bsd
+-- 
+2.20.1
+

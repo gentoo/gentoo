@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/intel/intel-vaapi-driver"
 if [[ ${PV} != *9999* ]] ; then
 	SRC_URI="https://github.com/intel/${MY_PN}/releases/download/${PV}/${MY_PN}-${PV}.tar.bz2"
 	S="${WORKDIR}/${MY_PN}-${PV}"
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="MIT"

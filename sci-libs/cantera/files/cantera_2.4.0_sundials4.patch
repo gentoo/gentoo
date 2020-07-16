@@ -1,0 +1,207 @@
+diff -Naur a/SConstruct b/SConstruct
+--- a/SConstruct	2020-04-21 13:55:06.000000000 +0300
++++ b/SConstruct	2020-04-21 13:55:54.000000000 +0300
+@@ -1013,23 +1013,29 @@
+ 
+ import SCons.Conftest, SCons.SConf
+ context = SCons.SConf.CheckContext(conf)
+-ret = SCons.Conftest.CheckLib(context,
+-                              ['sundials_cvodes'],
+-                              header='#include "cvodes/cvodes.h"',
+-                              language='C++',
+-                              call='CVodeCreate(CV_BDF, CV_NEWTON);',
+-                              autoadd=False,
+-                              extra_libs=env['blas_lapack_libs'])
+-if ret:
++
++# Check initially for Sundials<=3.2 and then for Sundials>=4.0
++for cvode_call in ['CVodeCreate(CV_BDF, CV_NEWTON);','CVodeCreate(CV_BDF);']:
++    ret = SCons.Conftest.CheckLib(context,
++                                  ['sundials_cvodes'],
++                                  header='#include "cvodes/cvodes.h"',
++                                  language='C++',
++                                  call=cvode_call,
++                                  autoadd=False,
++                                  extra_libs=env['blas_lapack_libs'])
+     # CheckLib returns False to indicate success
++    if not ret:
++        if env['system_sundials'] == 'default':
++            env['system_sundials'] = 'y'
++        break
++
++# Execute if the cycle ends without 'break'
++else:
+     if env['system_sundials'] == 'default':
+         env['system_sundials'] = 'n'
+     elif env['system_sundials'] == 'y':
+         config_error('Expected system installation of Sundials, but it could '
+                      'not be found.')
+-elif env['system_sundials'] == 'default':
+-    env['system_sundials'] = 'y'
+-
+ 
+ # Checkout Sundials submodule if needed
+ if (env['system_sundials'] == 'n' and
+@@ -1066,13 +1072,14 @@
+ 
+     # Ignore the minor version, e.g. 2.4.x -> 2.4
+     env['sundials_version'] = '.'.join(sundials_version.split('.')[:2])
+-    if env['sundials_version'] not in ('2.4','2.5','2.6','2.7','3.0','3.1','3.2'):
++    sundials_ver = LooseVersion(env['sundials_version'])
++    if sundials_ver < LooseVersion('2.4') or sundials_ver >= LooseVersion('6.0'):
+         print("""ERROR: Sundials version %r is not supported.""" % env['sundials_version'])
+         sys.exit(1)
+     print("""INFO: Using system installation of Sundials version %s.""" % sundials_version)
+ 
+     #Determine whether or not Sundials was built with BLAS/LAPACK
+-    if LooseVersion(env['sundials_version']) < LooseVersion('2.6'):
++    if sundials_ver < LooseVersion('2.6'):
+         # In Sundials 2.4 / 2.5, SUNDIALS_BLAS_LAPACK is either 0 or 1
+         sundials_blas_lapack = get_expression_value(['"sundials/sundials_config.h"'],
+                                                        'SUNDIALS_BLAS_LAPACK')
+@@ -1690,7 +1697,7 @@
+ 
+ if env['system_sundials'] == 'y':
+     env['sundials_libs'] = ['sundials_cvodes', 'sundials_ida', 'sundials_nvecserial']
+-    if env['use_lapack'] and LooseVersion(env['sundials_version']) >= LooseVersion('3.0'):
++    if env['use_lapack'] and sundials_ver >= LooseVersion('3.0'):
+         if env.get('has_sundials_lapack'):
+             env['sundials_libs'].extend(('sundials_sunlinsollapackdense',
+                                          'sundials_sunlinsollapackband'))
+diff -Naur a/include/cantera/numerics/CVodesIntegrator.h b/include/cantera/numerics/CVodesIntegrator.h
+--- a/include/cantera/numerics/CVodesIntegrator.h	2018-08-24 16:24:45.000000000 +0300
++++ b/include/cantera/numerics/CVodesIntegrator.h	2020-04-21 13:55:54.000000000 +0300
+@@ -49,7 +49,6 @@
+         m_maxord = n;
+     }
+     virtual void setMethod(MethodType t);
+-    virtual void setIterator(IterType t);
+     virtual void setMaxStepSize(double hmax);
+     virtual void setMinStepSize(double hmin);
+     virtual void setMaxSteps(int nmax);
+diff -Naur a/include/cantera/numerics/Integrator.h b/include/cantera/numerics/Integrator.h
+--- a/include/cantera/numerics/Integrator.h	2018-08-24 16:24:45.000000000 +0300
++++ b/include/cantera/numerics/Integrator.h	2020-04-21 13:55:54.000000000 +0300
+@@ -34,17 +34,6 @@
+     Adams_Method //! Adams
+ };
+ 
+-//! Specifies the method used for iteration.
+-/*!
+- * Not all methods are supported by all integrators.
+- */
+-enum IterType {
+-    //!  Newton Iteration
+-    Newton_Iter,
+-    //! Functional Iteration
+-    Functional_Iter
+-};
+-
+ //!  Abstract base class for ODE system integrators.
+ /*!
+  *  @ingroup odeGroup
+@@ -163,11 +152,6 @@
+         warn("setMethodType");
+     }
+ 
+-    //! Set the linear iterator.
+-    virtual void setIterator(IterType t) {
+-        warn("setInterator");
+-    }
+-
+     //! Set the maximum step size
+     virtual void setMaxStepSize(double hmax) {
+         warn("setMaxStepSize");
+diff -Naur a/src/kinetics/ImplicitSurfChem.cpp b/src/kinetics/ImplicitSurfChem.cpp
+--- a/src/kinetics/ImplicitSurfChem.cpp	2018-08-24 16:24:45.000000000 +0300
++++ b/src/kinetics/ImplicitSurfChem.cpp	2020-04-21 13:55:54.000000000 +0300
+@@ -79,7 +79,6 @@
+     // numerically, and use a Newton linear iterator
+     m_integ->setMethod(BDF_Method);
+     m_integ->setProblemType(DENSE + NOJAC);
+-    m_integ->setIterator(Newton_Iter);
+     m_work.resize(ntmax);
+ }
+ 
+diff -Naur a/src/numerics/CVodesIntegrator.cpp b/src/numerics/CVodesIntegrator.cpp
+--- a/src/numerics/CVodesIntegrator.cpp	2018-08-24 16:24:45.000000000 +0300
++++ b/src/numerics/CVodesIntegrator.cpp	2020-04-21 13:55:54.000000000 +0300
+@@ -88,7 +88,6 @@
+     m_type(DENSE+NOJAC),
+     m_itol(CV_SS),
+     m_method(CV_BDF),
+-    m_iter(CV_NEWTON),
+     m_maxord(0),
+     m_reltol(1.e-9),
+     m_abstols(1.e-15),
+@@ -218,17 +217,6 @@
+     }
+ }
+ 
+-void CVodesIntegrator::setIterator(IterType t)
+-{
+-    if (t == Newton_Iter) {
+-        m_iter = CV_NEWTON;
+-    } else if (t == Functional_Iter) {
+-        m_iter = CV_FUNCTIONAL;
+-    } else {
+-        throw CanteraError("CVodesIntegrator::setIterator", "unknown iterator");
+-    }
+-}
+-
+ void CVodesIntegrator::sensInit(double t0, FuncEval& func)
+ {
+     m_np = func.nparams();
+@@ -284,7 +272,11 @@
+     //! Specify the method and the iteration type. Cantera Defaults:
+     //!        CV_BDF  - Use BDF methods
+     //!        CV_NEWTON - use Newton's method
+-    m_cvode_mem = CVodeCreate(m_method, m_iter);
++    #if CT_SUNDIALS_VERSION < 40
++        m_cvode_mem = CVodeCreate(m_method, CV_NEWTON);
++    #else
++        m_cvode_mem = CVodeCreate(m_method);
++    #endif
+     if (!m_cvode_mem) {
+         throw CanteraError("CVodesIntegrator::initialize",
+                            "CVodeCreate failed.");
+@@ -394,7 +386,11 @@
+         #if CT_SUNDIALS_VERSION >= 30
+             SUNLinSolFree((SUNLinearSolver) m_linsol);
+             SUNMatDestroy((SUNMatrix) m_linsol_matrix);
+-            m_linsol_matrix = SUNBandMatrix(N, nu, nl, nu+nl);
++            #if CT_SUNDIALS_VERSION < 40
++                m_linsol_matrix = SUNBandMatrix(N, nu, nl, nu+nl);
++            #else
++                m_linsol_matrix = SUNBandMatrix(N, nu, nl);
++            #endif
+             #if CT_SUNDIALS_USE_LAPACK
+                 m_linsol = SUNLapackBand(m_y, (SUNMatrix) m_linsol_matrix);
+             #else
+diff -Naur a/src/numerics/IDA_Solver.cpp b/src/numerics/IDA_Solver.cpp
+--- a/src/numerics/IDA_Solver.cpp	2018-08-24 16:24:45.000000000 +0300
++++ b/src/numerics/IDA_Solver.cpp	2020-04-21 13:55:54.000000000 +0300
+@@ -442,7 +442,11 @@
+         #if CT_SUNDIALS_VERSION >= 30
+             SUNLinSolFree((SUNLinearSolver) m_linsol);
+             SUNMatDestroy((SUNMatrix) m_linsol_matrix);
+-            m_linsol_matrix = SUNBandMatrix(N, nu, nl, nu+nl);
++            #if CT_SUNDIALS_VERSION < 40
++                m_linsol_matrix = SUNBandMatrix(N, nu, nl, nu+nl);
++            #else
++                m_linsol_matrix = SUNBandMatrix(N, nu, nl);
++            #endif
+             #if CT_SUNDIALS_USE_LAPACK
+                 m_linsol = SUNLapackBand(m_y, (SUNMatrix) m_linsol_matrix);
+             #else
+diff -Naur a/src/zeroD/ReactorNet.cpp b/src/zeroD/ReactorNet.cpp
+--- a/src/zeroD/ReactorNet.cpp	2018-08-24 16:24:45.000000000 +0300
++++ b/src/zeroD/ReactorNet.cpp	2020-04-21 13:55:54.000000000 +0300
+@@ -28,7 +28,6 @@
+     // numerically, and use a Newton linear iterator
+     m_integ->setMethod(BDF_Method);
+     m_integ->setProblemType(DENSE + NOJAC);
+-    m_integ->setIterator(Newton_Iter);
+ }
+ 
+ void ReactorNet::setInitialTime(double time)

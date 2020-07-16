@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -7,14 +7,14 @@ inherit toolchain-funcs eutils flag-o-matic multilib
 MY_P=${PN}.${PV}
 
 DESCRIPTION="A set of tools for creating TeX documents with graphics"
-HOMEPAGE="http://www.xfig.org/"
+HOMEPAGE="https://www.xfig.org/"
 SRC_URI="mirror://sourceforge/mcj/${MY_P}.tar.gz
 	mirror://gentoo/fig2mpdf-1.1.2.tar.bz2
 	https://dev.gentoo.org/~mgorny/dist/${P}-gentoo-patchset.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE=""
 
 RDEPEND="x11-libs/libXpm
@@ -54,6 +54,7 @@ src_prepare() {
 	epatch "${WORKDIR}/${P}-gentoo-patchset"/${PN}-3.2.5e-typos.patch
 	epatch "${WORKDIR}/${P}-gentoo-patchset"/${PN}-3.2.5e-man-hyphen.patch
 	epatch "${WORKDIR}/${P}-gentoo-patchset"/${PN}-3.2.5e-fprintf_format_warnings.patch
+	epatch "${FILESDIR}"/${PN}-3.2.5e-gcc10-fno-common.patch
 
 	sed -e 's:-L$(ZLIBDIR) -lz::' \
 		-e 's: -lX11::' \
@@ -81,7 +82,7 @@ src_install() {
 	newins "${WORKDIR}/${P}-gentoo-patchset/transfig-ru_RU.KOI8-R.ps" ru_RU.KOI8-R.ps
 	newins "${WORKDIR}/${P}-gentoo-patchset/transfig-uk_UA.KOI8-U.ps" uk_UA.KOI8-U.ps
 
-	dohtml "${WORKDIR}/fig2mpdf/doc/"* || die
+	dohtml "${WORKDIR}/fig2mpdf/doc/"*
 
 	mv "${ED}"/usr/bin/fig2ps2tex{.sh,} || die #338295
 

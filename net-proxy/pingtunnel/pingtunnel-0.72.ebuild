@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Tunnel TCP over ICMP"
 HOMEPAGE="https://www.cs.uit.no/~daniels/PingTunnel"
@@ -11,27 +11,26 @@ SRC_URI="https://www.cs.uit.no/~daniels/PingTunnel/PingTunnel-${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~sh ~x86"
-IUSE="doc selinux"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
+IUSE="selinux"
 
-DEPEND="
+RDEPEND="
 	net-libs/libpcap
-	selinux? ( sys-libs/libselinux )
-"
-RDEPEND="${DEPEND}"
+	selinux? ( sys-libs/libselinux )"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"/PingTunnel
 
-src_prepare(){
-	epatch "${FILESDIR}"/${P}_makefile.patch
+PATCHES=(
+	"${FILESDIR}"/${P}_makefile.patch
+	"${FILESDIR}"/${P}-musl.patch
+)
+HTML_DOCS=( web/. )
+
+src_configure() {
+	tc-export CC
 }
 
 src_compile() {
-	tc-export CC
-	emake $(usex selinux "SELINUX=1" "SELINUX=0")
-}
-
-src_install() {
-	default
-	use doc && dohtml web/*
+	emake SELINUX=$(usex selinux 1 0)
 }

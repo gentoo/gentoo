@@ -1,0 +1,30 @@
+From 17d3d5060160169706a9a0847aa15c068484fe5e Mon Sep 17 00:00:00 2001
+From: Alexander Tsoy <alexander@tsoy.me>
+Date: Thu, 19 Mar 2020 21:17:22 +0300
+Subject: [PATCH] Fix desktop file
+
+---
+ gtick.desktop | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/gtick.desktop b/gtick.desktop
+index 05cf5ed..a31dee3 100644
+--- a/gtick.desktop
++++ b/gtick.desktop
+@@ -5,9 +5,10 @@ Name=GTick
+ Comment=a GTK-based metronome
+ Comment[pt]=Um metrônomo baseado em GTK
+ Comment[pt-br]=Um metrônomo baseado em GTK
+-Exec=/usr/bin/gtick
+-Icon=/usr/share/icons/hicolor/64x64/apps/gtick.xpm
++Exec=gtick
++Icon=gtick
+ Terminal=false
+ Type=Application
+ Categories=GTK;AudioVideo;Audio;
+-GenericName[pt_BR]=
++GenericName=Graphical Metronome
++StartupNotify=true
+-- 
+2.26.2
+

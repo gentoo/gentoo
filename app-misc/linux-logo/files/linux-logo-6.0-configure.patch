@@ -1,0 +1,78 @@
+diff -Naur linux_logo-6.0.orig/configure linux_logo-6.0/configure
+--- linux_logo-6.0.orig/configure	2020-05-08 07:37:08.000000000 +0200
++++ linux_logo-6.0/configure	2020-05-11 19:00:57.894062221 +0200
+@@ -41,31 +41,8 @@
+    XGETTEXT=xgettext
+ fi
+ 
+-which gcc
+-GCC_MISSING=$?
+-
+-if [ $GCC_MISSING -eq 1 ]; then
+-   which cc
+-   CC_MISSING=$?
+-   if [ $CC_MISSING -eq 1 ]; then
+-      echo "C compiler not found!"
+-   else
+-      CC=cc   
+-   fi
+-else
+-   CC=gcc
+-fi
+-
+ LIBSYSINFO=libsysinfo-0.3.0
+ 
+-LDFLAGS=""
+-
+-if [ $CC = gcc ]; then
+-   CFLAGS="-Wall -O2"
+-else
+-   CFLAGS="-O2"
+-fi   
+-
+ $CROSS$CC $CFLAGS -c intl_test.c 
+ INTL_MISSING=$?
+ 
+diff -Naur linux_logo-6.0.orig/libsysinfo-0.3.0/configure linux_logo-6.0/libsysinfo-0.3.0/configure
+--- linux_logo-6.0.orig/libsysinfo-0.3.0/configure	2020-05-08 07:37:08.000000000 +0200
++++ linux_logo-6.0/libsysinfo-0.3.0/configure	2020-05-11 19:01:09.551071479 +0200
+@@ -15,39 +15,6 @@
+ PREFIX=/usr/local
+ INSTALL=`which install`
+ 
+-which gcc
+-GCC_MISSING=$?
+-
+-if [ $GCC_MISSING -eq 1 ]; then
+-   which cc
+-   CC_MISSING=$?
+-   if [ $CC_MISSING -eq 1 ]; then
+-      echo "C compiler not found!"
+-   else
+-      CC=cc   
+-   fi
+-else
+-   CC=gcc
+-fi
+-
+-which ar
+-AR_MISSING=$?
+-
+-if [ $AR_MISSING -eq 0 ]; then
+-   AR=ar
+-fi
+-
+-
+-if [ $OS = SunOS ]; then
+-   AR=/usr/ccs/bin/ar
+-fi
+-   
+-if [ $CC = gcc ]; then
+-   CFLAGS="-Wall -O2"
+-else
+-   CFLAGS="-O2"
+-fi   
+-
+ LIBSYSINFO_INCLUDE="-I.."
+ LFLAGS=""
+ 

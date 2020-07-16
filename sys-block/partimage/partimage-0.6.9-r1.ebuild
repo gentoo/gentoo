@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE="nls nologin pam ssl static"
 
 LIBS_DEPEND="app-arch/bzip2
@@ -18,7 +18,7 @@ LIBS_DEPEND="app-arch/bzip2
 	>=sys-libs/slang-2
 	sys-libs/zlib:=
 	ssl? ( dev-libs/openssl:0= )"
-PAM_DEPEND="!static? ( pam? ( virtual/pam ) )"
+PAM_DEPEND="!static? ( pam? ( sys-libs/pam ) )"
 RDEPEND="${PAM_DEPEND}
 	!static? ( ${LIBS_DEPEND} )"
 DEPEND="${PAM_DEPEND}
@@ -54,13 +54,11 @@ src_configure() {
 	fi
 
 	econf \
-		--docdir="${EPREFIX%/}"/usr/share/doc/${PF} \
-		--sysconfdir="${EPREFIX%/}"/etc \
 		$(use_enable nls) \
 		$(use_enable ssl) \
 		--disable-pam \
 		$(use_enable static all-static) \
-		--with-log-dir="${EPREFIX%/}"/var/log/partimage \
+		--with-log-dir="${EPREFIX}"/var/log/partimage \
 		${myconf}
 }
 

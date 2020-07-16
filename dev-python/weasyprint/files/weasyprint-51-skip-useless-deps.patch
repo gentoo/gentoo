@@ -1,0 +1,30 @@
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -40,7 +40,6 @@
+ [options]
+ packages = find:
+ zip_safe = false
+-setup_requires = pytest-runner
+ install_requires = 
+ 	setuptools>=39.2.0
+ 	cffi>=0.6
+@@ -50,11 +49,6 @@
+ 	cssselect2>=0.1
+ 	CairoSVG>=2.4.0
+ 	Pyphen>=0.9.1
+-tests_require = 
+-	pytest-runner
+-	pytest-cov
+-	pytest-flake8
+-	pytest-isort
+ python_requires = >= 3.5
+ 
+ [options.entry_points]
+@@ -86,7 +80,6 @@
+ test = pytest
+ 
+ [tool:pytest]
+-addopts = --flake8 --isort
+ norecursedirs = build dist .cache .eggs .git
+ 
+ [coverage:run]

@@ -1,0 +1,38 @@
+From 5814507706210031432a4ff727231bb1082576d5 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 28 Jun 2020 21:43:09 +0200
+Subject: [PATCH 2/3] Drop unused Qt5Xml dependency
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/signond/signond.pro               | 1 -
+ tests/signond-tests/signond-tests.pri | 1 -
+ 2 files changed, 2 deletions(-)
+
+diff --git a/src/signond/signond.pro b/src/signond/signond.pro
+index 60ee5e7..211dab6 100644
+--- a/src/signond/signond.pro
++++ b/src/signond/signond.pro
+@@ -4,7 +4,6 @@ TEMPLATE = app
+ TARGET = signond
+ QT += core \
+     sql \
+-    xml \
+     network \
+     dbus
+ 
+diff --git a/tests/signond-tests/signond-tests.pri b/tests/signond-tests/signond-tests.pri
+index 1bbd5a1..950baaa 100644
+--- a/tests/signond-tests/signond-tests.pri
++++ b/tests/signond-tests/signond-tests.pri
+@@ -6,7 +6,6 @@ CONFIG += \
+ QT += core \
+     sql \
+     testlib \
+-    xml \
+     network \
+     dbus
+ 
+-- 
+2.27.0
+

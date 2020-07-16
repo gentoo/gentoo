@@ -1,84 +1,113 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-CMAKE_MAKEFILE_GENERATOR="ninja"
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python3_{6..8} )
 
-if [ ${PV} == 9999 ] ; then
+if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/STEllAR-GROUP/hpx.git"
 else
-	SRC_URI="http://stellar.cct.lsu.edu/files/${PN}_${PV}.tar.gz"
+	SRC_URI="https://stellar.cct.lsu.edu/files/${PN}_${PV}.tar.gz"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-	S="${WORKDIR}/${PN}_${PV}"
 fi
-
-inherit cmake-utils fortran-2 multilib python-any-r1
+inherit cmake fortran-2 python-single-r1 check-reqs
 
 DESCRIPTION="C++ runtime system for parallel and distributed applications"
-HOMEPAGE="http://stellar.cct.lsu.edu/tag/hpx/"
+HOMEPAGE="https://stellar.cct.lsu.edu/tag/hpx/"
 
 SLOT="0"
 LICENSE="Boost-1.0"
-IUSE="doc examples jemalloc papi +perftools tbb test"
+IUSE="doc examples jemalloc mpi papi +perftools tbb test"
+RESTRICT="!test? ( test )"
 
-RDEPEND="
-	tbb? ( dev-cpp/tbb )
-	>=dev-libs/boost-1.49
-	papi? ( dev-libs/papi )
-	perftools? ( >=dev-util/google-perftools-1.7.1 )
-	>=sys-apps/hwloc-1.8
-	>=sys-libs/libunwind-1
-	sys-libs/zlib
-"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	test? ( ${PYTHON_DEPS} )
-	doc? ( >=dev-libs/boost-1.56.0-r1:=[tools] )
-"
 REQUIRED_USE="
-	jemalloc? ( !perftools !tbb )
-	perftools? ( !jemalloc !tbb )
-	tbb? ( !jemalloc !perftools )
-	"
+	${PYTHON_REQUIRED_USE}
+	?? ( jemalloc perftools tbb )
+"
+
+BDEPEND="
+	virtual/pkgconfig
+	doc? (
+		${PYTHON_DEPS}
+		app-doc/doxygen
+		$(python_gen_cond_dep '
+			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
+			dev-python/sphinx_rtd_theme[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/breathe-4.14[${PYTHON_MULTI_USEDEP}]
+		')
+	)
+	test? ( ${PYTHON_DEPS} )
+"
+RDEPEND="
+	${PYTHON_DEPS}
+	dev-libs/boost:=
+	sys-apps/hwloc
+	sys-libs/zlib
+	mpi? ( virtual/mpi )
+	papi? ( dev-libs/papi )
+	perftools? ( dev-util/google-perftools )
+	tbb? ( dev-cpp/tbb )
+"
+DEPEND="${RDEPEND}"
+
+hpx_memory_requirement() {
+	# HPX needs enough main memory for compiling
+	# rule of thumb: 1G per job
+	if [[ -z ${MAKEOPTS} ]] ; then
+		echo "2G"
+	else
+		local jobs=`echo ${MAKEOPTS} | cut -d j -f 2`
+		echo "${jobs}G"
+	fi
+}
+
+pkg_pretend() {
+	local CHECKREQS_MEMORY=$(hpx_memory_requirement)
+	check-reqs_pkg_setup
+}
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	local CHECKREQS_MEMORY=$(hpx_memory_requirement)
+	check-reqs_pkg_setup
+	python-single-r1_pkg_setup
 }
 
 src_configure() {
-	CMAKE_BUILD_TYPE=Release
 	local mycmakeargs=(
-		-DHPX_BUILD_EXAMPLES=OFF
-		-DHPX_MALLOC=system
-		-DLIB=$(get_libdir)
-		-Dcmake_dir=cmake
-		-DHPX_BUILD_DOCUMENTATION=$(usex doc)
-		-DHPX_JEMALLOC=$(usex jemalloc)
+		-DHPX_WITH_EXAMPLES=OFF
+		-DHPX_WITH_DOCUMENTATION=$(usex doc)
+		-DHPX_WITH_PARCELPORT_MPI=$(usex mpi)
+		-DHPX_WITH_PAPI=$(usex papi)
+		-DHPX_WITH_GOOGLE_PERFTOOLS=$(usex perftools)
 		-DBUILD_TESTING=$(usex test)
-		-DHPX_GOOGLE_PERFTOOLS=$(usex perftools)
-		-DHPX_PAPI=$(usex papi)
 	)
+	if use jemalloc; then
+		mycmakeargs+=( -DHPX_WITH_MALLOC=jemalloc )
+	elif use perftools; then
+		mycmakeargs+=( -DHPX_WITH_MALLOC=tcmalloc )
+	elif use tbb; then
+		mycmakeargs+=( -DHPX_WITH_MALLOC=tbbmalloc )
+	else
+		mycmakeargs+=( -DHPX_WITH_MALLOC=system )
+	fi
 
-	use perftools && mycmakeargs+=( -DHPX_MALLOC=tcmalloc )
-	use jemalloc && mycmakeargs+=( -DHPX_MALLOC=jemalloc )
-	use tbb && mycmakeargs+=( -DHPX_MALLOC=tbbmalloc )
+	cmake_src_configure
+}
 
-	cmake-utils_src_configure
+src_compile() {
+	cmake_src_compile
+	use test && cmake_build tests
 }
 
 src_test() {
 	# avoid over-suscribing
-	cmake-utils_src_make -j1 tests
+	cmake_src_test -j1
 }
 
 src_install() {
-	cmake-utils_src_install
-	mv "${D}/usr/bin/spin" "${D}/usr/bin/hpx_spin"
-	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r examples
-	fi
+	cmake_src_install
+	use examples && dodoc -r examples/
+	python_fix_shebang "${ED}"
 }

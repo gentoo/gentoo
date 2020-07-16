@@ -1,0 +1,12 @@
+cmake does not provide 'LIBSUFFIX' variables, but provides 'LIB_SUFFIX'.
+https://bugs.gentoo.org/730722
+--- a/capstone.pc.in
++++ b/capstone.pc.in
+@@ -1,6 +1,6 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=${prefix}
+-libdir=${prefix}/lib@LIBSUFFIX@
++libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
+ includedir=${prefix}/include/capstone
+ 
+ Name: capstone

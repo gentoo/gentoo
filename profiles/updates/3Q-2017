@@ -5,7 +5,6 @@ move app-i18n/libtomoe-gtk app-i18n/tomoe-gtk
 move dev-libs/libchewing app-i18n/libchewing
 move media-gfx/pydot dev-python/pydot
 move x11-plugins/wmMoonClock x11-plugins/wmmoonclock
-move dev-python/crossbar net-misc/crossbar
 slotmove app-i18n/fcitx 0 4
 slotmove app-i18n/fcitx-anthy 0 4
 slotmove app-i18n/fcitx-chewing 0 4

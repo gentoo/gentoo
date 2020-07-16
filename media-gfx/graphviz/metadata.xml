@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>graphics@gentoo.org</email>
-		<name>Gentoo Graphics Project</name>
+	<maintainer type="person">
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>soap@gentoo.org</email>
+		<name>David Seifert</name>
 	</maintainer>
 	<longdescription>
 		graphviz is a set of graph drawing tools for Unix or MS-Windows
@@ -34,7 +38,7 @@
 		<flag name="devil">Enables DevIL output plugin -Tdevil</flag>
 		<flag name="gdk-pixbuf">Enables gdk-pixbuf2 plugin</flag>
 		<flag name="gtk">Enables gtk+ output plugin -Tgtk (needs cairo)</flag>
-		<flag name="gts">Enables support for gts</flag>
+		<flag name="gts">Enables support for GNU Triangulated Surface Library (required for sfdp to work)</flag>
 		<flag name="lasi">Enables PostScript output via <pkg>media-libs/lasi</pkg>, for plugin -Tlasi (needs cairo)</flag>
 		<flag name="X">Builds lefty front-end, builds plugin -Txlib, and enables support for x11 in various other modules (needs cairo)</flag>
 	</use>

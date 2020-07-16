@@ -1,0 +1,12 @@
+--- a/usr/sbin/start_pms
++++ b/usr/sbin/start_pms
+@@ -4,7 +4,8 @@
+ export PLEX_MEDIA_SERVER_INFO_VENDOR="$(grep ^NAME= /etc/os-release|awk -F= '{print $2}'|tr -d \" )"
+ export PLEX_MEDIA_SERVER_INFO_DEVICE="PC"
+ export PLEX_MEDIA_SERVER_INFO_MODEL="$(uname -m)"
+-export PLEX_MEDIA_SERVER_INFO_PLATFORM_VERSION="$(grep ^VERSION= /etc/os-release|awk -F= '{print $2}'|tr -d \" )"
++GENTOO_PROFILE="`readlink /etc/portage/make.profile`"
++export PLEX_MEDIA_SERVER_INFO_PLATFORM_VERSION="${GENTOO_PROFILE#.*/profiles/}"
+ 
+ # change these parameters in /etc/plex/plexmediaserver
+ export PLEX_MEDIA_SERVER_MAX_PLUGIN_PROCS=6

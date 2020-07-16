@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -50,7 +50,7 @@ src_prepare() {
 	default
 }
 
-src_configure () {
+src_configure() {
 	echo "CONFIG_TUP_USE_SYSTEM_SQLITE=y" >> tup.config
 }
 
@@ -88,6 +88,7 @@ src_test() {
 	t4131-proc-self-exe.sh
 	t4132-proc-meminfo.sh
 	t4171-dev-null.sh
+	t4202-clang.sh
 	t4200-ccache.sh
 	t5083-symlink-fullpath.sh
 	t5084-symlink-fullpath2.sh

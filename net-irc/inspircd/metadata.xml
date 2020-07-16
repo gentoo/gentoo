@@ -12,16 +12,18 @@
 		para ser estable, moderno y ligero.
 	</longdescription>
 	<use>
-		<flag name="geoip">Add geoip support for country and city lookup based on IPs</flag>
 		<flag name="gnutls">Enable TLS support</flag>
-		<flag name="ipv6">Enable support for IP version 6</flag>
 		<flag name="ldap">Enable LDAP support</flag>
+		<flag name="maxminddb">Add support for geolocation using libMaxMindDB</flag>
+		<flag name="mbedtls">Add support for TLS using the mbedTLS library</flag>
 		<flag name="mysql">Enable MySQL database backend</flag>
-		<flag name="pcre">Adds support for Perl Compatible Regular Expressions</flag>
-		<flag name="posix">Adds support for POSIX-compatible functions</flag>
 		<flag name="postgres">Enable PostgreSQL database backend</flag>
+		<flag name="re2">Add support for Google RE2 regular expressions library</flag>
+		<flag name="regex-posix">Add support for POSIX Regular Expressions</flag>
+		<flag name="regex-stdlib">Add support for C++ stdlib regular expressions</flag>
 		<flag name="sqlite">Enable Sqlite database backend</flag>
 		<flag name="ssl">Enable SSL support</flag>
+		<flag name="sslrehashsignal">Enable rehashing SSL module by SIGUSR1</flag>
 		<flag name="tre">Enable support for TRE, a lightweight, robust, and efficient POSIX compliant regexp matching library</flag>
 	</use>
 	<upstream>

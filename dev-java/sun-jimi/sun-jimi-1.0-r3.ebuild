@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,7 +20,7 @@ RDEPEND=">=virtual/jre-1.3"
 DEPEND=">=virtual/jdk-1.3
 	app-arch/unzip"
 
-RESTRICT="fetch"
+RESTRICT="bindist fetch"
 
 S=${WORKDIR}/Jimi
 

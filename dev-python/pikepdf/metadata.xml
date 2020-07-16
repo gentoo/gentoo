@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>grozin@gentoo.org</email>
+    <name>Andrey Grozin</name>
+  </maintainer>
+  <longdescription lang="en">
+    pikepdf is a Python library for reading and writing PDF files.
+    pikepdf is based on QPDF, a powerful PDF manipulation and repair library.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">pikepdf</remote-id>
+    <remote-id type="github">pikepdf/pikepdf</remote-id>
+  </upstream>
+</pkgmetadata>

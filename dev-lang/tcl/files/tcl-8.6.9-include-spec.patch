@@ -1,0 +1,12 @@
+This resolves https://bugs.gentoo.org/731120
+--- a/unix/configure.in
++++ b/unix/configure.in
+@@ -895,7 +895,7 @@ TCL_BUILD_STUB_LIB_PATH="`pwd`/${TCL_STUB_LIB_FILE}"
+ TCL_STUB_LIB_PATH="${TCL_STUB_LIB_DIR}/${TCL_STUB_LIB_FILE}"
+ 
+ # Install time header dir can be set via --includedir
+-eval "TCL_INCLUDE_SPEC=\"-I${includedir}\""
++eval "TCL_INCLUDE_SPEC=\"\""
+ 
+ #------------------------------------------------------------------------
+ # tclConfig.sh refers to this by a different name

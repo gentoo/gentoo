@@ -1,22 +1,59 @@
-# Copyright 1999-2018 Gentoo Authors.
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-04-11)
+# musl has no support for prelinked sections, bug #717020
+sys-devel/prelink
+
+# Ulrich Müller (2020-03-31)
+# Not ported to musl, bug #715642.
+# See https://wiki.gentoo.org/wiki/Project:Emacs/Emacs-like_editors
+# for alternatives.
+app-editors/jasspa-microemacs
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-03-21)
+# musl has no support for nss subsystem.
+sys-auth/libnss-nis
+sys-auth/libnss-compat
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-03-21)
+# Needs a port no musl. Uses glibc-specific termio and __getppid.
+app-emulation/ski
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-03-21)
+# In ::gentoo dev-libs/elfutils needs an upstream port to
+# musl: #602126, #701478
+# - https://sourceware.org/PR21002
+# - https://sourceware.org/PR21008
+# - https://sourceware.org/PR21010
+dev-libs/elfutils
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-03-21)
+# Linux debugger needs a port to musl.
+app-emulation/dosemu
 
 sys-libs/uclibc-ng
 sys-libs/glibc
 
-# 0.40 is broken on musl, 0.38 and 0.41 are okay
-=sys-apps/openrc-0.40*
-
 # We use eudev which is tested on both uclibc and musl
+=virtual/libudev-232-r1
 sys-apps/systemd
 sys-fs/udev
 
-# dev-libs/elfutils needs a port to musl, bug #602126
-dev-libs/elfutils
->virtual/libelf-2
+# systemd sources fail to build without glibc
+sys-boot/systemd-boot
 
 # Ian Stakenvicius, 2017-06-14
 # on behalf of mozilla@gentoo.org
 # Mask firefox-54 and above as it requires rust
 # now, and rust reportedly will not build yet.
 >=www-client/firefox-54.0
+
+# rust-bin requires a glibc system
+dev-lang/rust-bin
+mail-client/thunderbird-bin
+www-client/firefox-bin
+
+# Mikle Kolyada <zlogene@gentoo.org> (2020-03-20)
+#  No source builds for musl
+app-emulation/firecracker

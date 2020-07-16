@@ -6,7 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
-		<flag name="template_haskell">Enable Template Haskell support.</flag>
+		<flag name="template-haskell">Enable Template Haskell support.</flag>
 	</use>
 	<longdescription>
 		This package uses template-haskell for determining source code locations of messages.

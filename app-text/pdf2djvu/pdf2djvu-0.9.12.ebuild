@@ -15,6 +15,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+graphicsmagick nls openmp test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=app-text/djvu-3.5.21:=
@@ -33,10 +34,14 @@ DEPEND="${RDEPEND}
 	)
 "
 
-REQUIRED_USE="test? ( graphicsmagick ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="test? ( graphicsmagick )"
 
 DOCS=(
 	doc/{changelog,credits,djvudigital,README}
+)
+
+PATCHES=(
+	"${FILESDIR}"/${P}-poppler-0.76-{1,2,3}.patch
 )
 
 pkg_setup() {

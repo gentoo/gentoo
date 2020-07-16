@@ -1,0 +1,50 @@
+From 8b3f1117be1e90866747fa9c9e7ae1c5812ba918 Mon Sep 17 00:00:00 2001
+From: Daniel van Vugt <daniel.van.vugt@canonical.com>
+Date: Thu, 14 May 2020 18:13:56 +0800
+Subject: [PATCH] backend-x11: Reintroduce XInitThreads
+
+It was removed in 3.34 as part of 6ed5d2e2. And we thought that was the
+only thread that might exist and use X11. But the top gnome-shell crasher
+in 3.36 seems to suggest otherwise.
+
+We don't know what or where the offending thread is, but since:
+
+ 1. We used XInitThreads for years already prior to 3.34; and
+
+ 2. Extensions or any change to mutter/gnome-shell could conceivably use
+    threads to make X calls, directly or indirectly,
+
+it's probably a good idea to reintroduce XInitThreads. The failing assertion
+in libx11 is also accompanied by a strong hint:
+
+```
+fprintf(stderr, "[xcb] Most likely this is a multi-threaded client " \
+                "and XInitThreads has not been called\n");
+```
+
+https://bugs.launchpad.net/bugs/1877075
+
+Closes: https://gitlab.gnome.org/GNOME/mutter/-/issues/1252
+
+https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1256
+
+(cherry picked from commit 1d5f9b6917517d6e777a652cfa5e648794dc632a)
+---
+ src/backends/x11/meta-backend-x11.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/backends/x11/meta-backend-x11.c b/src/backends/x11/meta-backend-x11.c
+index 225d14d33..539ca5348 100644
+--- a/src/backends/x11/meta-backend-x11.c
++++ b/src/backends/x11/meta-backend-x11.c
+@@ -859,6 +859,7 @@ meta_backend_x11_class_init (MetaBackendX11Class *klass)
+ static void
+ meta_backend_x11_init (MetaBackendX11 *x11)
+ {
++  XInitThreads ();
+ }
+ 
+ Display *
+-- 
+2.20.1
+

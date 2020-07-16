@@ -1,0 +1,12 @@
+diff --git a/utilities/CMakeLists.txt b/utilities/CMakeLists.txt
+index c855f8ab..0ebef451 100644
+--- a/utilities/CMakeLists.txt
++++ b/utilities/CMakeLists.txt
+@@ -27,6 +27,7 @@ IF(NOT CMAKE_CROSSCOMPILING)
+     comp_err.cc
+     COMPONENT Server
+     LINK_LIBRARIES mysys
++    SKIP_INSTALL
+     )
+ ENDIF()
+ 

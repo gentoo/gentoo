@@ -1,0 +1,36 @@
+From cb1f0653c45d9c4a9a855119c85a1d4bfcc9b3b2 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Thu, 14 Nov 2019 16:15:00 +0100
+Subject: [PATCH] build: Fix compilation with --enable-threads
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Previously failed with:
+
+havegetune.c:190:12: error: ‘BUILD_THREAD’ undeclared (first use in this function); did you mean ‘BUILD_THREADS’?
+  190 |    *bp++ = BUILD_THREAD;
+      |            ^~~~~~~~~~~~
+      |            BUILD_THREADS
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ src/havegetune.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/havegetune.c b/src/havegetune.c
+index de39c53..6f14476 100644
+--- a/src/havegetune.c
++++ b/src/havegetune.c
+@@ -187,7 +187,7 @@ void havege_tune(          /* RETURN: none               */
+    *bp++ = BUILD_CPUID;
+ #endif
+ #if NUMBER_CORES>1
+-   *bp++ = BUILD_THREAD;
++   *bp++ = BUILD_THREADS;
+ #endif
+ #ifdef ONLINE_TESTS_ENABLE
+    *bp++ = BUILD_OLT;
+-- 
+2.24.0
+

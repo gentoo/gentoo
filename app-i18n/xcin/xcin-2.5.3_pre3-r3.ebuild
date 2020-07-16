@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -13,7 +13,7 @@ SRC_URI="mirror://debian/pool/main/x/${PN}/${MY_P}.orig.tar.gz
 
 LICENSE="XCIN GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ppc x86"
 IUSE="debug nls unicode"
 
 RDEPEND=">=sys-libs/db-4.5
@@ -52,14 +52,14 @@ src_configure() {
 }
 
 src_compile() {
-	emake -j1 || die "emake failed."
+	emake -j1
 }
 
 src_install() {
 	emake \
 		prefix="${ED}/usr" \
 		program_prefix="${D}" \
-		install || die
+		install
 
 	find "${ED}" -name "*.la" -type f -delete || die
 

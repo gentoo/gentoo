@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata
-  SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
 	<maintainer type="person">
 		<email>gnu_andrew@member.fsf.org</email>
@@ -34,7 +33,6 @@
 		<flag name="sctp">Build the SCTP NIO channel implementation against lksctp</flag>
 		<flag name="shenandoah">Include the Shenandoah ultra-low pause time garbage collector (-XX:+UseShenandoahGC) (arm64 and x86_64 only)</flag>
 		<flag name="smartcard">Build the PCSC driver against pcsc-lite</flag>
-		<flag name="sunec">Build the SunEC provider against system NSS</flag>
 		<flag name="system-lcms">Build against the system LCMS installation rather than the in-tree copy.</flag>
 		<flag name="zero">Enable Zero assembler port (usually for non-HotSpot architectures)</flag>
 		<flag name="webstart">Enable Web Start support (via NetX).</flag>

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ DESCRIPTION="Monitor whether or not a host is blacklisted"
 HOMEPAGE="https://github.com/matteocorti/check_rbl"
 
 MY_P="${P/nagios-/}"
-SRC_URI="${HOMEPAGE}/releases/download/v${PV}/${MY_P}.tar.gz"
+SRC_URI="https://github.com/matteocorti/check_rbl/releases/download/v${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

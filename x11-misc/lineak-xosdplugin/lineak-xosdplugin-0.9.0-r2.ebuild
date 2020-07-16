@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/lineak/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="debug"
 
 DEPEND="
@@ -29,7 +29,10 @@ PATCHES=(
 )
 
 src_configure() {
-	econf $(use_enable debug) --with-x
+	econf \
+		$(use_enable debug) \
+		--with-lineak-plugindir="${EROOT}/usr/$(get_libdir)/lineakd" \
+		--with-x
 }
 
 src_compile() {

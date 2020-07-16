@@ -1,0 +1,18 @@
+Index: visp-3.2.0/CMakeLists.txt
+===================================================================
+--- visp-3.2.0.orig/CMakeLists.txt
++++ visp-3.2.0/CMakeLists.txt
+@@ -574,12 +574,7 @@ if(USE_CXX11 AND NOT USE_PTHREAD)
+   endif()
+ endif()
+ VP_OPTION(USE_XML2        XML2        ""    "Include xml support"          "" ON IF NOT WINRT)
+-if(CMAKE_TOOLCHAIN_FILE)
+-  # Find opencv2.framework for ios and naoqi
+-  VP_OPTION(USE_OPENCV      "MyOpenCV" QUIET "Include OpenCV support" "OpenCV_DIR;OpenCV_FOUND;OPENCV_FOUND" ON)
+-else()
+-  VP_OPTION(USE_OPENCV      "OpenCV;MyOpenCV" QUIET "Include OpenCV support" "OpenCV_DIR;OpenCV_FOUND;OPENCV_FOUND" ON)
+-endif()
++VP_OPTION(USE_OPENCV      "OpenCV;MyOpenCV" QUIET "Include OpenCV support" "OpenCV_DIR;OpenCV_FOUND;OPENCV_FOUND" ON)
+ VP_OPTION(USE_ZLIB        "ZLIB;MyZLIB" ""  "Include zlib support"         "" ON IF NOT WINRT AND NOT IOS)
+ VP_OPTION(USE_X11         X11         ""    "Include X11 support"          "" ON IF NOT WINRT AND NOT IOS)
+ # The native FindGTK2.cmake doesn't consider libgobject-2.0 that is

@@ -5,9 +5,6 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
-<use>
-	<flag name="perl">Install the cpupcstat tool and some perl modules</flag>
-</use>
 <upstream>
 	<remote-id type="github">libhugetlbfs/libhugetlbfs</remote-id>
 	<remote-id type="sourceforge">libhugetlbfs</remote-id>

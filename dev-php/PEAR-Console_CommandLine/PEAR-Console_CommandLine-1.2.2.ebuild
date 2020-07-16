@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,12 +7,13 @@ MY_PN="${PN/PEAR-/}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A full-featured command-line options and arguments parser"
-HOMEPAGE="https://pear.php.net/package/${MY_PN}"
+HOMEPAGE="https://pear.php.net/package/Console_CommandLine"
 SRC_URI="http://download.pear.php.net/package/${MY_P}.tgz"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="examples test"
+RESTRICT="!test? ( test )"
 
 # Only needs PEAR_Exception (not yet packaged) -- not all of PEAR-PEAR.
 RDEPEND="dev-lang/php:*

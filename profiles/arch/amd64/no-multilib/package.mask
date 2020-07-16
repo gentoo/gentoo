@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# David Seifert <soap@gentoo.org> (03 Jan 2018)
+# David Seifert <soap@gentoo.org> (2018-01-03)
 # Requires 32-bit multilib compatibility
 sys-block/megamgr
 
-# James Le Cuirot <chewi@gentoo.org> (13 Aug 2016)
+# James Le Cuirot <chewi@gentoo.org> (2016-08-13)
 # Steam requires amd64 multilib. These are steam-overlay packages.
 dev-util/adobe-air-runtime
 games-util/steam-client-meta
@@ -19,17 +19,15 @@ mail-client/novell-groupwise-client
 
 # AMD64 Team <amd64@gentoo.org>
 # Mask packages that rely on amd64 multilib
->=app-i18n/atokx3-3.0.0
 app-accessibility/mbrola
-app-accessibility/perlbox-voice
 app-arch/stuffit
 app-benchmarks/cpuburn
 app-editors/emacs:18
 app-emulation/crossover-bin
 app-emulation/playonlinux
+app-emulation/protontricks
 app-emulation/q4wine
 app-emulation/winetricks
-app-office/ooextras
 dev-embedded/libftd2xx
 dev-embedded/openocd
 dev-util/android-ndk
@@ -38,21 +36,19 @@ dev-util/biew
 games-action/badland
 games-action/beathazardultra
 games-action/brutal-legend
+games-action/crimsonland
 games-action/cs2d
 games-action/descent3
 games-action/descent3-demo
+games-action/guacamelee
 games-action/heretic2
 games-action/heretic2-demo
 games-action/hotline-miami
 games-action/intrusion2
 games-action/lugaru
-games-action/mutantstorm-demo
-games-action/phobiaii
-games-action/rune
 games-action/shadowgrounds-bin
 games-action/shadowgrounds-survivor-bin
 games-action/solar2
-games-action/spacetripper-demo
 games-action/swordandsworcery
 games-action/trine-enchanted-edition
 games-action/trine2
@@ -68,42 +64,14 @@ games-emulation/pcsx2
 games-emulation/zinc
 games-emulation/zsnes
 games-fps/avp
-games-fps/doom3
-games-fps/doom3-cdoom
-games-fps/doom3-chextrek
-games-fps/doom3-data
-games-fps/doom3-demo
-games-fps/doom3-ducttape
-games-fps/doom3-eventhorizon
-games-fps/doom3-hellcampaign
-games-fps/doom3-inhell
-games-fps/doom3-lms
-games-fps/doom3-mitm
-games-fps/doom3-roe
-games-fps/enemy-territory
-games-fps/enemy-territory-etpro
-games-fps/enemy-territory-omnibot
-games-fps/enemy-territory-truecombat
 games-fps/etqw-bin
 games-fps/etqw-data
 games-fps/etqw-demo
 games-fps/glxquake-bin
 games-fps/legends
-games-fps/postal2
-games-fps/quake3-bin
-games-fps/quake3-demo
-games-fps/quake3-ra3
-games-fps/quake4-bin
-games-fps/quake4-data
-games-fps/quake4-demo
-games-fps/rtcw
-games-fps/rtcwmp-demo
-games-fps/rtcwsp-demo
 games-fps/sauerbraten
-games-fps/serious-sam-tfe
 games-fps/serious-sam-tse
 games-fps/soldieroffortune
-games-fps/unreal-tournament
 games-fps/ut2003
 games-fps/ut2003-demo
 games-fps/ut2004-demo
@@ -112,24 +80,21 @@ games-misc/papers-please
 games-puzzle/triptych
 games-roguelike/adom
 games-rpg/baldurs-gate-ee
+games-rpg/costume-quest
 games-rpg/dear-esther
 games-rpg/dungeon-defenders
 games-rpg/eschalon-book-1-demo
 games-rpg/wasteland2
 games-server/etqw-ded
-games-server/nwn-ded
 games-simulation/bcs-demo
 games-strategy/darwinia
 games-strategy/darwinia-demo
 games-strategy/defcon-demo
 games-strategy/dominions2
-games-strategy/heroes3
 games-strategy/knights-demo
 games-strategy/majesty-demo
-games-strategy/smac
 games-strategy/spaz
 media-sound/aucdtect
-media-sound/ventrilo-server-bin
 media-video/binkplayer
 media-video/tsmuxer
 net-misc/icaclient
@@ -140,4 +105,3 @@ sci-biology/foldingathome
 sci-chemistry/cara-bin
 sci-chemistry/mars
 sci-electronics/eagle
-sys-libs/lib-compat-loki

@@ -1,0 +1,44 @@
+Fix pkgconfig libdir paths.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -336,7 +336,7 @@
+ set(VERSION "${PROJECT_VERSION}")
+ set(prefix "${CMAKE_INSTALL_PREFIX}")
+ set(exec_prefix "\${prefix}")
+-set(libdir "\${exec_prefix}/lib")
++set(libdir "${LIB_INSTALL_DIR}")
+ set(includedir "\${prefix}/include")
+ set(PTHREAD_LIBS "${CMAKE_THREAD_LIBS_INIT}")
+ 
+--- a/libical.pc.in
++++ b/libical.pc.in
+@@ -8,7 +8,7 @@
+ Name: libical
+ Description: An implementation of basic iCAL protocols
+ Version: @LIBICAL_LIB_VERSION_STRING@
+-Libs: -L${libdir} -lical -licalss -licalvcal
++Libs: -lical -licalss -licalvcal
+ Libs.private: @PTHREAD_LIBS@
+ @REQUIRES_PRIVATE_ICU@
+ Cflags: -I${includedir}
+--- a/src/libical-glib/CMakeLists.txt
++++ b/src/libical-glib/CMakeLists.txt
+@@ -233,7 +233,7 @@
+ 
+ set(prefix "${CMAKE_INSTALL_PREFIX}")
+ set(exec_prefix "\${prefix}")
+-set(libdir "\${exec_prefix}/lib")
++set(libdir "${LIB_INSTALL_DIR}")
+ set(includedir "\${prefix}/include")
+ 
+ configure_file(
+--- a/src/libical-glib/libical-glib.pc.in
++++ b/src/libical-glib/libical-glib.pc.in
+@@ -8,4 +8,4 @@
+ Version: @LIBICAL_LIB_VERSION_STRING@
+ Requires: glib-2.0, gobject-2.0, libical
+ Cflags: -I${includedir}
+-Libs: -L${libdir} -lical-glib
++Libs: -lical-glib
+ 

@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
+	<maintainer type="person">
+		<name>Jonas Licht</name>
+		<email>jonas.licht@gmail.com</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		A extension of nautilus to display the sync state of an Dropbox folder and add a right click menu to mange files in the Dropbox folder.
+	</longdescription>
 </pkgmetadata>

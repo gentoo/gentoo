@@ -1,0 +1,33 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -57,6 +57,7 @@
+ FL_DSO_VERSION=${FL_MAJOR_VERSION}.${FL_MINOR_VERSION}
+ FL_ABI_VERSION=${FL_MAJOR_VERSION}.${FL_MINOR_VERSION}.0
+ FL_VERSION=${FL_MAJOR_VERSION}.${FL_MINOR_VERSION}.${FL_PATCH_VERSION}
++FLTK_VERSION_FULL=${FL_VERSION}
+ 
+ AC_SUBST(FL_MAJOR_VERSION)
+ AC_SUBST(FL_MINOR_VERSION)
+@@ -64,6 +65,7 @@
+ AC_SUBST(FL_DSO_VERSION)
+ AC_SUBST(FL_ABI_VERSION)
+ AC_SUBST(FL_VERSION)
++AC_SUBST(FLTK_VERSION_FULL)
+ 
+ AC_SUBST(ARCHFLAGS)
+ AC_SUBST(OPTIM)
+@@ -1576,10 +1578,13 @@
+ BINARY_DIR=
+ AC_SUBST(BINARY_DIR)
+ 
++INCLUDE_DIRS="${includedir}"
++AC_SUBST(INCLUDE_DIRS)
++
+ dnl Write all of the files...
+ AC_CONFIG_HEADER(config.h:configh.in)
+ AC_CONFIG_HEADER(FL/abi-version.h:abi-version.in)
+-AC_CONFIG_FILES([makeinclude fltk.list fltk-config fltk.spec FL/Makefile])
++AC_CONFIG_FILES([makeinclude fltk.list fltk-config fltk.spec FL/Makefile CMake/FLTKConfig.cmake])
+ AC_OUTPUT
+ 
+ dnl Make sure the fltk-config script is executable...

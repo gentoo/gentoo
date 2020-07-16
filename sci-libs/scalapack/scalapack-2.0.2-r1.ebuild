@@ -1,18 +1,19 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils fortran-2
+inherit cmake-utils fortran-2 toolchain-funcs
 
 DESCRIPTION="Subset of LAPACK routines redesigned for heterogenous (MPI) computing"
 HOMEPAGE="https://www.netlib.org/scalapack/"
-SRC_URI="${HOMEPAGE}/${P}.tgz"
+SRC_URI="https://www.netlib.org/scalapack/${P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/lapack

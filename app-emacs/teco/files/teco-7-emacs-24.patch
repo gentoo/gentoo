@@ -1,5 +1,5 @@
---- teco.el
-+++ teco.el
+--- a/teco.el
++++ b/teco.el
 @@ -312,7 +312,7 @@
    "Return string describing the version of Teco.  When called interactively,
  displays the version."

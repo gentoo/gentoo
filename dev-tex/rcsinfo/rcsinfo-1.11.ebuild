@@ -1,22 +1,27 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 inherit latex-package
 
-S="${WORKDIR}/${PN}"
-LICENSE="LPPL-1.2"
 DESCRIPTION="A LaTeX module to acces RCS/CVS version info"
-HOMEPAGE="http://www.ctan.org/pkg/rcsinfo"
+HOMEPAGE="https://www.ctan.org/pkg/rcsinfo"
 # downloaded from
 # http://mirrors.ctan.org/macros/latex/contrib/rcsinfo.zip
 SRC_URI="mirror://gentoo/${P}.zip"
+
+KEYWORDS="~amd64 ~x86"
+
+LICENSE="LPPL-1.2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
 IUSE=""
 
-DOCS="README-1.9 README"
 RDEPEND=""
 DEPEND="dev-tex/latex2html
-	app-arch/unzip"
+	app-arch/unzip
+"
+
+DOCS=( "README-1.9 README" )
+
+S="${WORKDIR}/${PN}"

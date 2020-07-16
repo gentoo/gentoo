@@ -21,7 +21,7 @@ DEPEND="
 	png? ( media-libs/libpng:0= )
 	tiff? ( media-libs/tiff:0 )
 	doc? ( dev-texlive/texlive-latexextra )
-	emacs? ( virtual/emacs )"
+	emacs? ( >=app-editors/emacs-23.1:* )"
 
 RDEPEND="${DEPEND}
 	app-text/ghostscript-gpl

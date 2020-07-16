@@ -1,0 +1,22 @@
+From: =?utf-8?q?Ond=C5=99ej_Sur=C3=BD?= <ondrej@sury.org>
+Date: Wed, 22 Jun 2016 10:28:48 +0200
+Subject: Don't undef bool, it's needed
+
+---
+ perl/CORE_wrap.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/perl/CORE_wrap.c b/perl/CORE_wrap.c
+index 46c2a46..4eb3785 100644
+--- a/perl/CORE_wrap.c
++++ b/perl/CORE_wrap.c
+@@ -1432,9 +1432,6 @@ SWIG_Perl_SetModule(swig_module_info *module) {
+ #ifdef eof
+   #undef eof
+ #endif
+-#ifdef bool
+-  #undef bool
+-#endif
+ #ifdef close
+   #undef close
+ #endif

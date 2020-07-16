@@ -1,0 +1,30 @@
+1. Support user-provided values of CC, CFLAGS and LDFLAGS
+2. Do not force the use of a static version of libsodium
+
+--- a/Makefile
++++ b/Makefile
+@@ -54,20 +54,20 @@
+ endif
+ 
+ # Compiler options
+-CC       = gcc
++CC       := $(CC)
+ # compiling flags here
+-CFLAGS   = -g -std=c99 -I$(SRCDIR) -I$(LIBDIR)  -Wall -Wextra
++CFLAGS   := $(CFLAGS) -g -std=c99 -I$(SRCDIR) -I$(LIBDIR)  -Wall -Wextra
+ ifndef MAC_OS
+ 	CFLAGS += $(shell pkg-config --cflags libsecret-1)
+ endif
+ TEST_CFLAGS = $(CFLAGS) -I.
+ 
+ # Linker options
+-LINKER   = gcc
++LINKER   := $(CC)
+ ifdef MAC_OS
+ LFLAGS   = -lsodium -largp
+ else
+-LFLAGS   = -l:libsodium.a -lseccomp
++LFLAGS   := $(LDFLAGS) -lsodium -lseccomp
+ endif
+ ifdef HAS_CJSON
+ 	LFLAGS += -lcjson

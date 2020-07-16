@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,12 +6,12 @@ EAPI=6
 inherit autotools flag-o-matic toolchain-funcs multilib-minimal
 
 DESCRIPTION="ILM's OpenEXR high dynamic-range image file format libraries"
-HOMEPAGE="http://openexr.com/"
+HOMEPAGE="https://www.openexr.com/"
 SRC_URI="https://github.com/openexr/openexr/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/24" # based on SONAME
-KEYWORDS="amd64 -arm arm64 ~hppa ~ia64 ~ppc ~ppc64 sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
+KEYWORDS="amd64 -arm arm64 hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
 IUSE="cpu_flags_x86_avx examples static-libs"
 
 RDEPEND="
@@ -20,7 +20,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-archive-2016.09.16
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 RESTRICT="test" # Tests broken upstream doesn't really care about them, bug #656680
@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.2.0-fix-config.h-collision.patch"
 	"${FILESDIR}/${PN}-2.2.0-Install-missing-header-files.patch"
 	"${FILESDIR}/${P}-fix-build-system.patch"
+	"${FILESDIR}/${P}-fix-bashisms.patch"
 	# From Debian
 	"${FILESDIR}/${PN}-2.3.0-tests-32bits.patch"
 	"${FILESDIR}/${PN}-2.3.0-skip-bogus-tests.patch"

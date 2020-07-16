@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,10 +7,10 @@ MY_PN="${PN/PEAR-/}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="PEAR Base System"
-HOMEPAGE="https://pear.php.net/package/${MY_PN}"
+HOMEPAGE="https://pear.php.net/package/PEAR"
 SRC_URI="https://pear.php.net/get/${MY_P}.tgz"
 LICENSE="MIT"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 SLOT="0"
 IUSE=""
 
@@ -164,14 +164,14 @@ pkg_postinst() {
 
 	# Register the package from the package.xml file
 	# It is not critical to complete so only warn on failure
-	if [[ -f "${EROOT}usr/share/php/.packagexml/${MY_P}.xml" ]] ; then
-		"${EROOT}usr/bin/peardev" install -nrO --force \
-			"${EROOT}usr/share/php/.packagexml/${MY_P}.xml" 2> /dev/null \
+	if [[ -f "${EROOT}/usr/share/php/.packagexml/${MY_P}.xml" ]] ; then
+		"${EROOT}/usr/bin/peardev" install -nrO --force \
+			"${EROOT}/usr/share/php/.packagexml/${MY_P}.xml" 2> /dev/null \
 			|| ewarn "Failed to insert package into local PEAR database"
 	fi
 }
 
 pkg_prerm() {
 	# Uninstall known dependency
-	"${EROOT}usr/bin/peardev" uninstall -nrO "pear.php.net/PEAR"
+	"${EROOT}/usr/bin/peardev" uninstall -nrO "pear.php.net/PEAR"
 }

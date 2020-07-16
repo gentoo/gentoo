@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-	<upstream>
-		<remote-id type="pypi">parse</remote-id>
-		<remote-id type="github">r1chardj0n3s/parse</remote-id>
-	</upstream>
-</pkgmetadata>

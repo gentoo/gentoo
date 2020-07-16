@@ -1,7 +1,0 @@
-# Copyright 1999-2017 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License, v2
-
-# Michał Górny <mgorny@gentoo.org> (26 Jan 2017)
-# Preserve the old defaults on *BSD systems.
-sys-libs/libcxx -libcxxabi libcxxrt -libunwind
-sys-libs/libcxxrt -libunwind

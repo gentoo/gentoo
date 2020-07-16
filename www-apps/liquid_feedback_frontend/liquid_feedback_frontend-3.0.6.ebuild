@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 inherit eutils toolchain-funcs
 
@@ -10,8 +10,8 @@ PV_F=v${PV}
 MY_P=${PN}-v${PV}
 
 DESCRIPTION="Internet platforms for proposition development and decision making"
-HOMEPAGE="http://www.public-software-group.org/liquid_feedback"
-SRC_URI="http://www.public-software-group.org/pub/projects/liquid_feedback/frontend/v${PV}/${MY_P}.tar.gz"
+HOMEPAGE="https://www.public-software-group.org/liquid_feedback"
+SRC_URI="https://www.public-software-group.org/pub/projects/liquid_feedback/frontend/v${PV}/${MY_P}.tar.gz"
 
 LICENSE="HPND CC-BY-2.5"
 SLOT="0"
@@ -37,7 +37,7 @@ src_install() {
 
 	insinto /etc/${PN}
 	doins "${FILESDIR}"/myconfig.lua config/*
-	dosym /etc/${PN} /var/lib/${PN}/config
+	dosym ../../../etc/${PN} /var/lib/${PN}/config
 
 	insinto /usr/share/${PN}
 	doins "${FILESDIR}"/lqfb-apache.conf

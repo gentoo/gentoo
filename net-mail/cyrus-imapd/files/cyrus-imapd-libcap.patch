@@ -1,0 +1,64 @@
+Bug: https://bugs.gentoo.org/713728
+From f712d1268d5288e7f955567a07e99f409aba3e4a Mon Sep 17 00:00:00 2001
+From: Jakob Gahde <j5lx@fmail.co.uk>
+Date: Sat, 15 Feb 2020 17:18:16 +0100
+Subject: [PATCH] Add compatibility with recent versions of libcap
+
+---
+ lib/util.c      | 6 +++---
+ master/master.c | 4 ++--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/lib/util.c b/lib/util.c
+index 5f3cb1933..1256671f6 100644
+--- a/lib/util.c
++++ b/lib/util.c
+@@ -579,7 +579,7 @@ EXPORTED int set_caps(int stage __attribute__((unused)),
+ }
+ #endif
+ 
+-static int cap_setuid(int uid, int is_master)
++static int cyrus_cap_setuid(int uid, int is_master)
+ {
+     int r;
+ 
+@@ -599,7 +599,7 @@ EXPORTED int become_cyrus(int is_master)
+     int result;
+     static uid_t uid = 0;
+ 
+-    if (uid) return cap_setuid(uid, is_master);
++    if (uid) return cyrus_cap_setuid(uid, is_master);
+ 
+     const char *cyrus = cyrus_user();
+     const char *mail = cyrus_group();
+@@ -645,7 +645,7 @@ EXPORTED int become_cyrus(int is_master)
+         return -1;
+     }
+ 
+-    result = cap_setuid(newuid, is_master);
++    result = cyrus_cap_setuid(newuid, is_master);
+ 
+     /* Only set static uid if successful, else future calls won't reset gid */
+     if (result == 0)
+diff --git a/master/master.c b/master/master.c
+index 9c4d6f097..57f49f84a 100644
+--- a/master/master.c
++++ b/master/master.c
+@@ -285,7 +285,7 @@ static void get_statsock(int filedes[2])
+         fatalf(1, "unable to set close-on-exec: %m");
+ }
+ 
+-static int cap_bind(int socket, struct sockaddr *addr, socklen_t length)
++static int cyrus_cap_bind(int socket, struct sockaddr *addr, socklen_t length)
+ {
+     int r;
+ 
+@@ -643,7 +643,7 @@ static void service_create(struct service *s)
+ #endif
+ 
+         oldumask = umask((mode_t) 0); /* for linux */
+-        r = cap_bind(s->socket, res->ai_addr, res->ai_addrlen);
++        r = cyrus_cap_bind(s->socket, res->ai_addr, res->ai_addrlen);
+         umask(oldumask);
+         if (r < 0) {
+             syslog(LOG_ERR, "unable to bind to %s/%s socket: %m",

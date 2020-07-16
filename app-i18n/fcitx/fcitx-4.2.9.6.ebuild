@@ -1,18 +1,18 @@
-# Copyright 2003-2018 Arfrever Frehtes Taifersar Arahesis and others
+# Copyright 2003-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit cmake-utils gnome2-utils xdg-utils
+inherit cmake gnome2-utils xdg-utils
 
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://gitlab.com/fcitx/fcitx.git"
+	EGIT_REPO_URI="https://github.com/fcitx/fcitx"
 fi
 
 DESCRIPTION="Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework"
-HOMEPAGE="https://fcitx-im.org/ https://gitlab.com/fcitx/fcitx"
+HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx"
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	SRC_URI="https://download.fcitx-im.org/data/pinyin.tar.gz -> fcitx-data-pinyin.tar.gz
 		https://download.fcitx-im.org/data/table.tar.gz -> fcitx-data-table.tar.gz
@@ -25,11 +25,17 @@ fi
 
 LICENSE="BSD-1 GPL-2+ LGPL-2+ MIT"
 SLOT="4"
-KEYWORDS="amd64 ~hppa ppc ppc64 x86"
+KEYWORDS="amd64 ~arm64 ~hppa ppc ppc64 x86"
 IUSE="+X +autostart +cairo debug +enchant gtk2 +gtk3 +introspection lua nls opencc +pango static-libs +table test +xml"
 REQUIRED_USE="cairo? ( X ) pango? ( cairo )"
+RESTRICT="!test? ( test )"
 
-RDEPEND="dev-libs/glib:2
+BDEPEND="dev-util/glib-utils
+	kde-frameworks/extra-cmake-modules:5
+	virtual/pkgconfig
+	introspection? ( dev-libs/gobject-introspection )
+	nls? ( sys-devel/gettext )"
+DEPEND="dev-libs/glib:2
 	sys-apps/dbus
 	sys-apps/util-linux
 	virtual/libiconv
@@ -54,18 +60,14 @@ RDEPEND="dev-libs/glib:2
 	enchant? ( app-text/enchant:0= )
 	gtk2? ( x11-libs/gtk+:2 )
 	gtk3? ( x11-libs/gtk+:3 )
-	introspection? ( dev-libs/gobject-introspection )
 	lua? ( dev-lang/lua:= )
 	nls? ( sys-devel/gettext )
-	opencc? ( app-i18n/opencc:= )
+	opencc? ( app-i18n/opencc:0= )
 	xml? (
 		app-text/iso-codes
 		dev-libs/libxml2
 	)"
-DEPEND="${RDEPEND}
-	dev-util/glib-utils
-	kde-frameworks/extra-cmake-modules:5
-	virtual/pkgconfig"
+RDEPEND="${DEPEND}"
 
 DOCS=(AUTHORS ChangeLog THANKS)
 
@@ -78,7 +80,7 @@ src_prepare() {
 		ln -s "${DISTDIR}/fcitx-data-en_dict-20121020.tar.gz" src/module/spell/dict/en_dict-20121020.tar.gz || die
 	fi
 
-	# https://gitlab.com/fcitx/fcitx/issues/250
+	# https://github.com/fcitx/fcitx/issues/250
 	sed \
 		-e "/find_package(XkbFile REQUIRED)/i\\    if(ENABLE_X11)" \
 		-e "/find_package(XkbFile REQUIRED)/s/^/    /" \
@@ -86,47 +88,46 @@ src_prepare() {
 		-e "/^find_package(XKeyboardConfig REQUIRED)/,+1d" \
 		-i CMakeLists.txt
 
-	cmake-utils_src_prepare
-	xdg_environment_reset
+	cmake_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DLIB_INSTALL_DIR="${EPREFIX}/usr/$(get_libdir)"
 		-DSYSCONFDIR="${EPREFIX}/etc"
-		-DENABLE_CAIRO=$(usex cairo)
-		-DENABLE_DEBUG=$(usex debug)
-		-DENABLE_ENCHANT=$(usex enchant)
-		-DENABLE_GETTEXT=$(usex nls)
-		-DENABLE_GIR=$(usex introspection)
-		-DENABLE_GTK2_IM_MODULE=$(usex gtk2)
-		-DENABLE_GTK3_IM_MODULE=$(usex gtk3)
-		-DENABLE_LIBXML2=$(usex xml)
-		-DENABLE_LUA=$(usex lua)
-		-DENABLE_OPENCC=$(usex opencc)
-		-DENABLE_PANGO=$(usex pango)
+		-DENABLE_CAIRO=$(usex cairo ON OFF)
+		-DENABLE_DEBUG=$(usex debug ON OFF)
+		-DENABLE_ENCHANT=$(usex enchant ON OFF)
+		-DENABLE_GETTEXT=$(usex nls ON OFF)
+		-DENABLE_GIR=$(usex introspection ON OFF)
+		-DENABLE_GTK2_IM_MODULE=$(usex gtk2 ON OFF)
+		-DENABLE_GTK3_IM_MODULE=$(usex gtk3 ON OFF)
+		-DENABLE_LIBXML2=$(usex xml ON OFF)
+		-DENABLE_LUA=$(usex lua ON OFF)
+		-DENABLE_OPENCC=$(usex opencc ON OFF)
+		-DENABLE_PANGO=$(usex pango ON OFF)
 		-DENABLE_QT=OFF
 		-DENABLE_QT_GUI=OFF
 		-DENABLE_QT_IM_MODULE=OFF
-		-DENABLE_SNOOPER=$(if use gtk2 || use gtk3; then echo yes; else echo no; fi)
-		-DENABLE_STATIC=$(usex static-libs)
-		-DENABLE_TABLE=$(usex table)
-		-DENABLE_TEST=$(usex test)
-		-DENABLE_X11=$(usex X)
-		-DENABLE_XDGAUTOSTART=$(usex autostart)
+		-DENABLE_SNOOPER=$(if use gtk2 || use gtk3; then echo ON; else echo OFF; fi)
+		-DENABLE_STATIC=$(usex static-libs ON OFF)
+		-DENABLE_TABLE=$(usex table ON OFF)
+		-DENABLE_TEST=$(usex test ON OFF)
+		-DENABLE_X11=$(usex X ON OFF)
+		-DENABLE_XDGAUTOSTART=$(usex autostart ON OFF)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
-	rm -r "${ED}usr/share/doc/${PN}"
+	cmake_src_install
+	rm -r "${ED}/usr/share/doc/${PN}"
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 	use gtk2 && gnome2_query_immodules_gtk2
 	use gtk3 && gnome2_query_immodules_gtk3
@@ -138,8 +139,8 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 	use gtk2 && gnome2_query_immodules_gtk2
 	use gtk3 && gnome2_query_immodules_gtk3

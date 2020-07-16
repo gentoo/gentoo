@@ -1,0 +1,27 @@
+Add missing headers required during non-unified build.
+
+Unified build happens to get them included by the other sources unified
+into same source file, thus didn't fail.
+
+diff -urNp a/Source/JavaScriptCore/bytecompiler/NodesCodegen.cpp b/Source/JavaScriptCore/bytecompiler/NodesCodegen.cpp
+--- a/Source/JavaScriptCore/bytecompiler/NodesCodegen.cpp
++++ b/Source/JavaScriptCore/bytecompiler/NodesCodegen.cpp
+@@ -30,6 +30,7 @@
+ 
+ #include "BuiltinNames.h"
+ #include "BytecodeGenerator.h"
++#include "BytecodeStructs.h"
+ #include "CallFrame.h"
+ #include "JIT.h"
+ #include "JSCInlines.h"
+diff -urNp a/Source/JavaScriptCore/heap/MachineStackMarker.cpp b/Source/JavaScriptCore/heap/MachineStackMarker.cpp
+--- a/Source/JavaScriptCore/heap/MachineStackMarker.cpp
++++ b/Source/JavaScriptCore/heap/MachineStackMarker.cpp
+@@ -23,6 +23,7 @@
+ #include "MachineStackMarker.h"
+ 
+ #include "ConservativeRoots.h"
++#include "CPU.h"
+ #include "MachineContext.h"
+ #include <setjmp.h>
+ #include <stdlib.h>

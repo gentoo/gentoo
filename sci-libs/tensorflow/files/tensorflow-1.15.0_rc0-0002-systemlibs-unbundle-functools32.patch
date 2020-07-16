@@ -1,0 +1,61 @@
+From 05f57f785aeb58146b3873d4a0c614d897c56293 Mon Sep 17 00:00:00 2001
+From: Jason Zaman <jason@perfinion.com>
+Date: Wed, 11 Sep 2019 18:18:42 +0800
+Subject: [PATCH 2/2] systemlibs: unbundle functools32
+
+Signed-off-by: Jason Zaman <jason@perfinion.com>
+---
+ tensorflow/workspace.bzl                     |  1 +
+ third_party/systemlibs/functools32.BUILD     | 15 +++++++++++++++
+ third_party/systemlibs/syslibs_configure.bzl |  1 +
+ 3 files changed, 17 insertions(+)
+ create mode 100644 third_party/systemlibs/functools32.BUILD
+
+diff --git a/tensorflow/workspace.bzl b/tensorflow/workspace.bzl
+index d9fadc1030..760b7cd905 100755
+--- a/tensorflow/workspace.bzl
++++ b/tensorflow/workspace.bzl
+@@ -325,6 +325,7 @@ def tf_repositories(path_prefix = "", tf_repo_name = ""):
+         build_file = clean_dep("//third_party:functools32.BUILD"),
+         sha256 = "f6253dfbe0538ad2e387bd8fdfd9293c925d63553f5813c4e587745416501e6d",
+         strip_prefix = "functools32-3.2.3-2",
++        system_build_file = clean_dep("//third_party/systemlibs:functools32.BUILD"),
+         urls = [
+             "https://storage.googleapis.com/mirror.tensorflow.org/pypi.python.org/packages/c5/60/6ac26ad05857c601308d8fb9e87fa36d0ebf889423f47c3502ef034365db/functools32-3.2.3-2.tar.gz",
+             "https://pypi.python.org/packages/c5/60/6ac26ad05857c601308d8fb9e87fa36d0ebf889423f47c3502ef034365db/functools32-3.2.3-2.tar.gz",
+diff --git a/third_party/systemlibs/functools32.BUILD b/third_party/systemlibs/functools32.BUILD
+new file mode 100644
+index 0000000000..5567ef6943
+--- /dev/null
++++ b/third_party/systemlibs/functools32.BUILD
+@@ -0,0 +1,15 @@
++# Description:
++#   functools32 provides a backport of the functools module for Python 2.
++
++licenses(["notice"])  # Python 2.0
++
++package(default_visibility = ["//visibility:public"])
++
++filegroup(
++    name = "LICENSE",
++)
++
++py_library(
++    name = "functools32",
++    srcs_version = "PY2AND3",
++)
+diff --git a/third_party/systemlibs/syslibs_configure.bzl b/third_party/systemlibs/syslibs_configure.bzl
+index f83c0dd3d5..0884be8416 100644
+--- a/third_party/systemlibs/syslibs_configure.bzl
++++ b/third_party/systemlibs/syslibs_configure.bzl
+@@ -22,6 +22,7 @@ VALID_LIBS = [
+     "double_conversion",
+     "enum34_archive",
+     "flatbuffers",
++    "functools32_archive",
+     "gast_archive",
+     "gif_archive",
+     "grpc",
+-- 
+2.21.0
+

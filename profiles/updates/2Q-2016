@@ -3,7 +3,6 @@ move kde-base/khelpcenter kde-apps/khelpcenter
 move kde-plasma/khelpcenter kde-apps/khelpcenter
 move dev-perl/set-scalar dev-perl/Set-Scalar
 move dev-perl/string-crc32 dev-perl/String-CRC32
-move app-admin/packagekit-qt4 app-admin/packagekit-qt
 move net-im/ktp-common-internals kde-apps/ktp-common-internals
 move net-im/ktp-accounts-kcm kde-apps/ktp-accounts-kcm
 move net-im/ktp-approver kde-apps/ktp-approver
@@ -34,7 +33,6 @@ slotmove >=dev-php/pecl-rrd-2.0 0 7
 slotmove >=dev-php/pecl-oauth-2.0 0 7
 move sys-infiniband/dapl sys-fabric/dapl
 move sys-infiniband/ibacm sys-fabric/ibacm
-move sys-infiniband/ibutils sys-fabric/ibutils
 move sys-infiniband/infiniband-diags sys-fabric/infiniband-diags
 move sys-infiniband/infinipath-psm sys-fabric/infinipath-psm
 move sys-infiniband/libcxgb3 sys-fabric/libcxgb3

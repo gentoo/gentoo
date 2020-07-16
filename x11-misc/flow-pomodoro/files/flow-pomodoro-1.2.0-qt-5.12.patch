@@ -1,0 +1,33 @@
+From 53dfa7dd18290225a62b1cfd10b5566ab90a3fe8 Mon Sep 17 00:00:00 2001
+From: Sergio Martins <iamsergio@gmail.com>
+Date: Fri, 17 Aug 2018 16:22:04 +0100
+Subject: [PATCH] Fix popups with Qt 5.12 (QTBUG-70031)
+
+---
+ src/qml/ChoicePopup.qml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/qml/ChoicePopup.qml b/src/qml/ChoicePopup.qml
+index b66359d..6418b54 100644
+--- a/src/qml/ChoicePopup.qml
++++ b/src/qml/ChoicePopup.qml
+@@ -92,7 +92,7 @@ Item {
+                 radius: 2 * _controller.dpiFactor
+ 
+                 Column {
+-                    id: column
++                    id: column1
+                     anchors.fill: parent
+ 
+                     Rectangle {
+@@ -136,8 +136,8 @@ Item {
+                         model: root.model
+                         Choice {
+                             objectName: "taskMenuChoice"
+-                            anchors.left: column.left
+-                            anchors.right: column.right
++                            anchors.left: column1.left
++                            anchors.right: column1.right
+                             topLineVisible: index > 0
+                             height: root.delegateHeight
+                             fontAwesomeIconCode: iconRole

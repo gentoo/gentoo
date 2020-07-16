@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,18 +6,17 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="File comparision, ignoring small numeric differences and formats"
-HOMEPAGE="http://www.nongnu.org/numdiff/"
-SRC_URI="http://savannah.nongnu.org/download/numdiff/${P}.tar.gz"
+HOMEPAGE="https://www.nongnu.org/numdiff/"
+SRC_URI="https://savannah.nongnu.org/download/numdiff/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+nls +gmp"
 
 RDEPEND="
 	gmp? ( dev-libs/gmp:0= )
-	nls? ( sys-devel/gettext )
-	!dev-util/ndiff"
+	nls? ( sys-devel/gettext )"
 DEPEND="${RDEPEND}"
 
 PATCHES=(

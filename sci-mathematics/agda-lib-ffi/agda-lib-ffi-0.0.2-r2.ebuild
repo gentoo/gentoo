@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ AGDA_PV="2.4.2.3"
 AGDA_P="${AGDA_PN}-${AGDA_PV}"
 
 DESCRIPTION="Auxiliary Haskell code used by Agda's standard library"
-HOMEPAGE="http://wiki.portal.chalmers.se/agda/"
+HOMEPAGE="https://wiki.portal.chalmers.se/agda/"
 SRC_URI="https://github.com/agda/${AGDA_PN}/archive/${AGDA_PV}.tar.gz -> ${AGDA_P}.tar.gz"
 
 LICENSE="MIT"

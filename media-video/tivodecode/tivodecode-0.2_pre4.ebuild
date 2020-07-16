@@ -1,26 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit eutils versionator
-
-MY_PV="$(delete_version_separator '_')"
-
+MY_P=${P/_/}
 DESCRIPTION="TiVo File Decoder"
 HOMEPAGE="http://tivodecode.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}-${MY_PV}.tar.gz"
-LICENSE="BSD"
+SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-DEPEND=""
-RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${PN}-${MY_PV}"
-
-src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
-	dodoc README ChangeLog
-}
+S="${WORKDIR}/${MY_P}"

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit linux-info autotools python-single-r1 user
 
@@ -13,7 +13,7 @@ SRC_URI="https://www.sourceware.org/${PN}/ftp/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE="libvirt selinux sqlite +ssl zeroconf"
 
 RDEPEND=">=dev-libs/elfutils-0.142
@@ -103,4 +103,9 @@ src_configure() {
 	)
 	PYTHON3="${PYTHON}" \
 	econf "${myeconfargs[@]}"
+}
+
+src_install() {
+	default
+	python_optimize
 }

@@ -15,7 +15,8 @@ inherit autotools
 EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install src_test
 
 case ${EAPI:-0} in
-	6|7) ;;
+	6) inherit eapi7-ver ;;
+	7) ;;
 	*)
 		die "${ECLASS} is not compatible with EAPI=${EAPI}"
 esac
@@ -80,9 +81,9 @@ esac
 # This allows ordering of extensions such that one is loaded before
 # or after another.  Defaults to the PHP_EXT_NAME.
 # Example (produces 40-foo.ini file):
-# @CODE@
+# @CODE
 # PHP_INI_NAME="40-foo"
-# @CODE@
+# @CODE
 : ${PHP_INI_NAME:=${PHP_EXT_NAME}}
 
 # @ECLASS-VARIABLE: PHP_EXT_NEEDED_USE
@@ -183,10 +184,18 @@ php-ext-source-r3_phpize() {
 		# WANT_AUTOMAKE (see bugs #329071 and #549268).
 		autotools_run_tool "${PHPIZE}"
 
-		# Force libtoolize to run and regenerate autotools files (bug
-		# #220519).
-		rm aclocal.m4 || die "failed to remove aclocal.m4"
-		eautoreconf
+		# PHP >=7.4 no longer works with eautoreconf
+		if ver_test $PHP_CURRENTSLOT -ge 7.4 ; then
+			rm -fr aclocal.m4 autom4te.cache config.cache \
+				configure main/php_config.h.in || die
+			eautoconf --force
+			eautoheader
+		else
+			# Force libtoolize to run and regenerate autotools files (bug
+			# #220519).
+			rm aclocal.m4 || die "failed to remove aclocal.m4"
+			eautoreconf
+		fi
 	fi
 }
 
@@ -357,7 +366,7 @@ php-ext-source-r3_createinifiles() {
 			inidir="${file/${PHP_INI_NAME}.ini/}"
 			inidir="${inidir/ext/ext-active}"
 			dodir "/${inidir}"
-			dosym "/${file}" "/${file/ext/ext-active}"
+			dosym "../ext/${PHP_INI_NAME}.ini" "/${file/ext/ext-active}"
 		done
 	done
 

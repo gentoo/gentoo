@@ -14,8 +14,8 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 IUSE="
-	256-color blink fading-colors +font-styles iso14755 +mousewheel +perl
-	pixbuf startup-notification unicode3 +utmp +wtmp xft
+	256-color blink fading-colors +font-styles gdk-pixbuf iso14755 +mousewheel
+	+perl startup-notification unicode3 +utmp +wtmp xft
 "
 RESTRICT="test"
 
@@ -24,9 +24,9 @@ RDEPEND="
 	media-libs/fontconfig
 	x11-libs/libX11
 	x11-libs/libXrender
+	gdk-pixbuf? ( x11-libs/gdk-pixbuf )
 	kernel_Darwin? ( dev-perl/Mac-Pasteboard )
 	perl? ( dev-lang/perl:= )
-	pixbuf? ( x11-libs/gdk-pixbuf x11-libs/gtk+:2 )
 	startup-notification? ( x11-libs/startup-notification )
 	xft? ( x11-libs/libXft )
 "
@@ -66,10 +66,10 @@ src_configure() {
 		$(use_enable blink text-blink) \
 		$(use_enable fading-colors fading) \
 		$(use_enable font-styles) \
+		$(use_enable gdk-pixbuf pixbuf) \
 		$(use_enable iso14755) \
 		$(use_enable mousewheel) \
 		$(use_enable perl) \
-		$(use_enable pixbuf) \
 		$(use_enable startup-notification) \
 		$(use_enable unicode3) \
 		$(use_enable utmp) \

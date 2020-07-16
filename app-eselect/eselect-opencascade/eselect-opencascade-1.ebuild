@@ -24,5 +24,5 @@ src_install() {
 }
 
 pkg_postrm() {
-	rm -v "${EROOT}"etc/env.d/51opencascade
+	rm -v "${EROOT}"/etc/env.d/51opencascade
 }

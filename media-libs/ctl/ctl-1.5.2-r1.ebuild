@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,11 +7,11 @@ inherit cmake-utils
 
 DESCRIPTION="AMPAS' Color Transformation Language"
 HOMEPAGE="https://github.com/ampas/CTL"
-SRC_URI="${HOMEPAGE}/archive/ctl-${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ampas/CTL/archive/${P}.tar.gz"
 
 LICENSE="AMPAS"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ia64 ~ppc ~ppc64 sparc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 hppa ~ia64 ppc ppc64 sparc x86"
 
 RDEPEND="media-libs/ilmbase:=
 	media-libs/openexr:=

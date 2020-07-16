@@ -1,7 +1,7 @@
-# Copyright 2008-2019 Arfrever Frehtes Taifersar Arahesis and others
+# Copyright 2008-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-pkg-simple
@@ -22,12 +22,13 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0/18"
+SLOT="0/23"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="~dev-libs/protobuf-${PV}
+BDEPEND="~dev-libs/protobuf-${PV}
 	>=virtual/jdk-1.7"
+DEPEND=">=virtual/jdk-1.7"
 RDEPEND=">=virtual/jre-1.7
 	!<dev-libs/protobuf-3[java(-)]"
 
@@ -43,7 +44,7 @@ src_prepare() {
 }
 
 src_compile() {
-	"${EPREFIX}/usr/bin/protoc" --java_out=core/src/main/java -I../src ../src/google/protobuf/descriptor.proto || die
+	"${BROOT}/usr/bin/protoc" --java_out=core/src/main/java -I../src ../src/google/protobuf/descriptor.proto || die
 	JAVA_SRC_DIR="core/src/main/java" JAVA_JAR_FILENAME="protobuf.jar" java-pkg-simple_src_compile
 }
 

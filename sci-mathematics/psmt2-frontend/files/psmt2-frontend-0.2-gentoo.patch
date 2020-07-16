@@ -1,0 +1,22 @@
+--- a/Makefile.in	2019-07-20 19:20:06.818740706 +0200
++++ b/Makefile.in	2019-07-20 19:21:33.437581073 +0200
+@@ -18,7 +18,7 @@
+ libdir=@libdir@
+ # exec_prefix=@exec_prefix@
+ # BINDIR=$(DESTDIR)@bindir@
+-LIBDIR=$(prefix)$(libdir)
++LIBDIR=$(libdir)
+ # DATADIR=$(DESTDIR)@datadir@/psmt2-frontend
+ 
+ # where to install the man page
+@@ -119,8 +119,8 @@
+ ##############
+ 
+ install: all META
+-	mkdir -p $(DESTDIR)$(LIBDIR)
+-	OCAMLFIND_DESTDIR=$(DESTDIR)$(LIBDIR) \
++	mkdir -p $(DESTDIR)$(OCAMLLIB)
++	OCAMLFIND_DESTDIR=$(DESTDIR)$(OCAMLLIB) \
+ 	  ocamlfind install psmt2-frontend src/$(LIBNAME).* src/*.mli META
+ 
+ 

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_{5,6}} )
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+PYTHON_COMPAT=( python3_6 )
+USE_RUBY="ruby21 ruby22 ruby23 ruby24 ruby25"
 DISTUTILS_OPTIONAL=1
 
 inherit autotools distutils-r1 ruby-single

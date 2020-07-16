@@ -1,0 +1,89 @@
+# patch scripts location (bug #407185). partially backported from upstream.
+diff -Nur -u Xastir-Release-2.1.2.orig/scripts/coord-convert.pl Xastir-Release-2.1.2/scripts/coord-convert.pl
+--- Xastir-Release-2.1.2.orig/scripts/coord-convert.pl	2010-07-03 22:09:48.000000000 +0000
++++ Xastir-Release-2.1.2/scripts/coord-convert.pl	2012-03-07 15:46:01.000000000 +0000
+@@ -26,7 +26,7 @@
+ #
+ 
+ 
+-use lib "${prefix}/lib";
++use lib /usr/share/xastir/scripts;
+ use Coordinate;         # WE7U's Coordinate.pm module
+ 
+ 
+diff -Nur -u Xastir-Release-2.1.2.orig/scripts/permutations.pl Xastir-Release-2.1.2/scripts/permutations.pl
+--- Xastir-Release-2.1.2.orig/scripts/permutations.pl	2010-07-03 22:09:48.000000000 +0000
++++ Xastir-Release-2.1.2/scripts/permutations.pl	2012-03-07 15:42:34.000000000 +0000
+@@ -34,7 +34,7 @@
+ #
+ 
+ 
+-use lib "/usr/local/lib";
++use lib "/usr/share/xastir/scripts";
+ use Coordinate;         # WE7U's Coordinate.pm module
+ 
+ 
+diff -Nur -u Xastir-Release-2.1.2.orig/scripts/test_coord.pl Xastir-Release-2.1.2/scripts/test_coord.pl
+--- Xastir-Release-2.1.2.orig/scripts/test_coord.pl	2010-01-31 02:12:23.000000000 +0000
++++ Xastir-Release-2.1.2/scripts/test_coord.pl	2012-03-07 15:42:34.000000000 +0000
+@@ -33,7 +33,7 @@
+ 
+ #------------------------------------------------------------------------------------------------
+ 
+-use lib "/usr/local/lib";
++use lib "/usr/share/xastir/scripts";
+ use Coordinate;		# Snag WE7U's Coordinate module
+ 
+ 
+diff -Nur -u Xastir-Release-2.1.2.orig/scripts/toporama250k.pl Xastir-Release-2.1.2/scripts/toporama250k.pl
+--- Xastir-Release-2.1.2.orig/scripts/toporama250k.pl	2010-01-31 02:12:23.000000000 +0000
++++ Xastir-Release-2.1.2/scripts/toporama250k.pl	2012-03-07 15:46:49.000000000 +0000
+@@ -28,14 +28,14 @@
+ # map files for the whole of Canada!
+ #
+ #
+-# - "cd /usr/local/share/xastir/maps"
++# - "cd /usr/share/xastir/maps"
+ #
+ # - Assure you have write privileges in the directory above either
+ #   by becoming root using the "su" command, using "sudo", or
+ #   temporarily changing ownership and/or privileges on the
+ #   "maps" directory.
+ #
+-# - "/usr/local/lib/xastir/toporama250k.pl"
++# - "/usr/share/xastir/scripts/toporama250k.pl"
+ #
+ # - The script will create/populate this directory heirarchy:
+ #   .../maps/toporama/images/
+diff -Nur -u Xastir-Release-2.1.2.orig/scripts/toporama50k.pl Xastir-Release-2.1.2/scripts/toporama50k.pl
+--- Xastir-Release-2.1.2.orig/scripts/toporama50k.pl	2010-01-31 02:12:23.000000000 +0000
++++ Xastir-Release-2.1.2/scripts/toporama50k.pl	2012-03-07 15:47:01.000000000 +0000
+@@ -27,14 +27,14 @@
+ # map files for the whole of Canada!
+ #
+ #
+-# - "cd /usr/local/share/xastir/maps"
++# - "cd /usr/share/xastir/maps"
+ #
+ # - Assure you have write privileges in the directory above either
+ #   by becoming root using the "su" command, using "sudo", or
+ #   temporarily changing ownership and/or privileges on the
+ #   "maps" directory.
+ #
+-# - "/usr/local/lib/xastir/toporama50k.pl"
++# - "/usr/share/xastir/scripts/toporama50k.pl"
+ #
+ # - The script will create/populate this directory heirarchy:
+ #   .../maps/toporama/images/
+diff -Nur -u Xastir-Release-2.1.2.orig/scripts/get-NWSdata.in Xastir-Release-2.1.2/scripts/get-NWSdata.in
+--- Xastir-Release-2.1.2.orig/scripts/get-NWSdata.in	2010-01-31 02:12:23.000000000 +0000
++++ Xastir-Release-2.1.2/scripts/get-NWSdata.in	2012-03-07 15:47:01.000000000 +0000
+@@ -123,7 +123,7 @@
+     echo
+     echo $e.dbf
+     # Run in a separate shell so we don't mess up the current directory for the -e test above
+-    (cd /usr/local/share/xastir; /usr/local/bin/testdbfawk -D config -d Counties/$e.dbf 2>&1 | head -3 | tail -1)
++    (cd /usr/share/xastir; /usr/bin/testdbfawk -D config -d Counties/$e.dbf 2>&1 | head -3 | tail -1)
+  
+   fi
+ done

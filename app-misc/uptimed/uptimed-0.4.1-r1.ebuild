@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/rpodgorny/uptimed/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ~ppc ~ppc64 sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm hppa ~mips ppc ppc64 sparc x86"
 IUSE="static-libs"
 
 pkg_setup() {
@@ -49,7 +49,7 @@ pkg_postinst() {
 		einfo "Fixing permissions in ${spooldir}"
 		find ${spooldir} -type f -links 1 \
 			\( -name records -o -name records.old \) \
-			| xargs chown uptimed:uptimed || die
+			| xargs --no-run-if-empty chown uptimed:uptimed || die
 	fi
 	echo
 	elog "Start uptimed with '/etc/init.d/uptimed start' (for openRC)"

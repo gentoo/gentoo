@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,14 +12,13 @@ SRC_URI="https://www.cybercom.net/~dcoffin/dcraw/archive/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 LANGS=" ca cs de da eo es fr hu it nl pl pt ru sv zh_CN zh_TW"
-IUSE="nls gimp jpeg jpeg2k lcms"
+IUSE="nls gimp jpeg lcms"
 
 COMMON_DEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	lcms? ( media-libs/lcms:2 )
-	jpeg2k? ( media-libs/jasper:= )
 	gimp? ( media-gfx/gimp )
 "
 DEPEND="${COMMON_DEPEND}"
@@ -61,12 +60,11 @@ src_prepare() {
 }
 
 src_compile() {
-	local ECFLAGS="-O2" # Without optimisation build fails
+	local ECFLAGS="-O2 -DNO_JASPER=yes" # Without optimisation build fails
 	local ELIBS="-lm"
 
 	use lcms && ELIBS="-llcms2 ${ELIBS}" || ECFLAGS+=" -DNO_LCMS=yes"
 	use jpeg && ELIBS="-ljpeg ${ELIBS}" || ECFLAGS+=" -DNO_JPEG=yes"
-	use jpeg2k && ELIBS="-ljasper ${ELIBS}" || ECFLAGS+=" -DNO_JASPER=yes"
 	use nls && ECFLAGS+=" -DLOCALEDIR=\"/usr/share/locale/\""
 
 	run_build $(tc-getCC) ${ECFLAGS} ${CFLAGS} ${LDFLAGS} -o dcraw dcraw.c ${ELIBS}
@@ -106,7 +104,7 @@ src_install() {
 			if has ${lang} ${LINGUAS-${lang}}; then
 				[[ -f dcraw.${lang}.1 ]] && doman dcraw.${lang}.1
 				insinto /usr/share/locale/${lang}/LC_MESSAGES
-				newins dcraw_${lang}.mo dcraw.mo || die "failed to install dcraw_${lang}.mo"
+				newins dcraw_${lang}.mo dcraw.mo
 			fi
 		done
 	fi

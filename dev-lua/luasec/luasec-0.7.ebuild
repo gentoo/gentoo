@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/brunoos/luasec/archive/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 arm x86"
 	S=${WORKDIR}/${PN}-${P}
 fi
 
@@ -25,8 +25,8 @@ RDEPEND="
 	>=dev-lang/lua-5.1:0[deprecated]
 	dev-lua/luasocket
 	!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
@@ -36,8 +36,7 @@ src_prepare() {
 
 src_compile() {
 	emake \
-		CC="$(tc-getCC)" \
-		LD="$(tc-getCC)" \
+		CC="$(tc-getCC)" LD="$(tc-getCC)" LIB_PATH="" \
 		linux
 }
 

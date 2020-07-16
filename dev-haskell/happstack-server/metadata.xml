@@ -10,6 +10,6 @@
 	</longdescription>
 	<use>
 		<flag name="network-uri">Get Network.URI from the network-uri package</flag>
-		<flag name="template_haskell">Description: Template Haskell is available on this system</flag>
+		<flag name="template-haskell">Description: Template Haskell is available on this system</flag>
 	</use>
 </pkgmetadata>

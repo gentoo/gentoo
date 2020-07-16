@@ -14,9 +14,8 @@ EGIT_REPO_URI="https://anongit.gentoo.org/git/repo/gentoo.git
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 
-DEPEND="sys-apps/gawk"
+BDEPEND="sys-apps/gawk"
 
 src_unpack() {
 	git-r3_fetch
@@ -31,5 +30,5 @@ src_compile() {
 }
 
 src_install() {
-	emake install ECLASSDIR=eclass DESTDIR="${D}" PREFIX=/usr
+	emake install ECLASSDIR=eclass DESTDIR="${D}" PREFIX="${EPREFIX}/usr"
 }

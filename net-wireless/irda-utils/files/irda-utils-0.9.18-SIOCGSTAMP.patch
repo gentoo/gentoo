@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/692428
+--- a/irdadump/irdadump.c
++++ b/irdadump/irdadump.c
+@@ -27,6 +27,7 @@
+ #include <sys/types.h>
+ #include <sys/time.h>
+ #include <sys/ioctl.h>
++#include <linux/sockios.h> /* SIOCGSTAMP */
+ 
+ #include <net/if_arp.h>
+ #include <net/if_packet.h>

@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>tupone@gentoo.org</email>
-		<name>Tupone Alfredo</name>
+	<maintainer type="project">
+		<email>ada@gentoo.org</email>
 	</maintainer>
-	<use>
-		<flag name="gnat_2016">Compile with dev-lang/gnat-gpl-2016</flag>
-		<flag name="gnat_2017">Compile with dev-lang/gnat-gpl-2017</flag>
-		<flag name="gnat_2018">Compile with dev-lang/gnat-gpl-2018</flag>
-	</use>
 	<longdescription lang="en">
 		AWS is a complete framework to develop Web based applications. The main part
 		of the framework is the embedded Web server. This small yet powerful Web

@@ -7,7 +7,6 @@
   </maintainer>
   <use>
     <flag name="html">Install HTML formatted documentation</flag>
-    <flag name="drivingdistance">Enable to calculate driving distance</flag>
   </use>
   <upstream>
     <remote-id type="github">pgRouting/pgrouting</remote-id>

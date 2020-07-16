@@ -39,7 +39,7 @@ java_prepare() {
 src_install() {
 	java-pkg_dojar "lib/${PN}.jar"
 
-	dohtml README.html || die
+	dohtml README.html
 	use doc && java-pkg_dojavadoc doc/api
 	use source && java-pkg_dosrc src/*
 }

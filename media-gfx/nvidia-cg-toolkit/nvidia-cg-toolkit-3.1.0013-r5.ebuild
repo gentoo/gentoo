@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="NVIDIA-r1"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples multilib"
 
 RESTRICT="strip"
@@ -128,12 +128,4 @@ multilib_src_install_all() {
 		"${FILESDIR}"/80cgc-opt-2 > "${T}"/80cgc-opt || die
 	eprefixify "${T}"/80cgc-opt
 	doenvd "${T}"/80cgc-opt
-}
-
-pkg_postinst() {
-	if [[ ${REPLACING_VERSIONS} < 2.1.0016 ]]; then
-		einfo "Starting with ${CATEGORY}/${PN}-2.1.0016, ${PN} is installed in"
-		einfo "${DEST}. Packages might have to add something like:"
-		einfo "  append-cppflags -I${DEST}/include"
-	fi
 }

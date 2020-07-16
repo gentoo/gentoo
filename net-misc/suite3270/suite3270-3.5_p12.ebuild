@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -21,7 +21,7 @@ SRC_URI="mirror://sourceforge/x3270/${MY_P}-src.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~s390 ~sparc ~x86"
+KEYWORDS="amd64 ppc s390 sparc x86"
 IUSE="cjk doc ncurses ssl tcl X"
 
 RDEPEND="ssl? ( dev-libs/openssl:0= )
@@ -41,7 +41,7 @@ DEPEND="${RDEPEND}
 		x11-base/xorg-proto
 		x11-misc/xbitmaps
 		app-text/rman
-		x11-apps/mkfontdir
+		>=x11-apps/mkfontscale-1.2.0
 		x11-apps/bdftopcf
 	)"
 

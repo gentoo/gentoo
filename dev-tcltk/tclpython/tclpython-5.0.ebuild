@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit multilib python-single-r1 toolchain-funcs
 
@@ -25,30 +25,19 @@ RDEPEND="${DEPEND}"
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_compile() {
-	if python_is_python3; then
-		PKG_NAME=tclpython3
-	else
-		PKG_NAME=tclpython
-	fi
-	emake PKG_NAME=${PKG_NAME} CC=$(tc-getCC)
+	emake PKG_NAME=tclpython3 CC=$(tc-getCC) \
+		MYCFLAGS="${CFLAGS}" MYLDFLAGS="${LDFLAGS}"
 }
 
 src_test() {
-	emake PKG_NAME=${PKG_NAME} CC=$(tc-getCC) test
+	emake PKG_NAME=tclpython3 CC=$(tc-getCC) test
 }
 
 src_install() {
-	if python_is_python3; then
-		insinto /usr/$(get_libdir)
-		doins -r build/tclpython3/tclpython3
-		fperms 775 /usr/$(get_libdir)/tclpython3/tclpython3.so.${PV}
-		dosym tclpython3.so.${PV} /usr/$(get_libdir)/tclpython3/tclpython3.so
-	else
-		insinto /usr/$(get_libdir)
-		doins -r build/tclpython/tclpython
-		fperms 775 /usr/$(get_libdir)/tclpython/tclpython.so.${PV}
-		dosym tclpython.so.${PV} /usr/$(get_libdir)/tclpython/tclpython3.so
-	fi
+	insinto /usr/$(get_libdir)
+	doins -r build/tclpython3/tclpython3
+	fperms 775 /usr/$(get_libdir)/tclpython3/tclpython3.so.${PV}
+	dosym tclpython3.so.${PV} /usr/$(get_libdir)/tclpython3/tclpython3.so
 
 	dodoc README.md VERSION.md
 }

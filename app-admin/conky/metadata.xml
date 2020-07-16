@@ -16,6 +16,7 @@
 	<longdescription>Conky is a system monitor that sits in the corner of your desktop. It is a fork of Torsmo that is actually maintained.</longdescription>
 	<use>
 		<flag name="apcupsd">Enable support for <pkg>sys-power/apcupsd</pkg></flag>
+		<flag name="bundled-toluapp">Enable support for bundled toluapp. This only makes sense in combination with the lua-* flags</flag>
 		<flag name="cmus">Enable monitoring of music played by <pkg>media-sound/cmus</pkg></flag>
 		<flag name="eve">Enable support for the eve-online skill monitor</flag>
 		<flag name="ical">Enable support for events from iCalendar (RFC 5545) files using <pkg>dev-libs/libical</pkg></flag>

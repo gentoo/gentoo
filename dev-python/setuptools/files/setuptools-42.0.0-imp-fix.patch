@@ -1,0 +1,51 @@
+From bbf825eee764cae0bc44077ccc957a733d53d095 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ond=C5=99ej=20S=C3=BAkup?=
+ <mimi1vx@users.noreply.github.com>
+Date: Fri, 15 Nov 2019 08:52:35 +0100
+Subject: [PATCH] Fix _imp module behaviour if is defined paths in find_spec
+ call
+
+fixes #1896
+---
+ setuptools/_imp.py | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/setuptools/_imp.py b/setuptools/_imp.py
+index a3cce9b28..6ccec5799 100644
+--- a/setuptools/_imp.py
++++ b/setuptools/_imp.py
+@@ -19,7 +19,10 @@
+ 
+ def find_module(module, paths=None):
+     """Just like 'imp.find_module()', but with package support"""
+-    spec = importlib.util.find_spec(module, paths)
++    if isinstance(paths, list):
++        spec = importlib.machinery.PathFinder().find_spec(module, paths)
++    else:
++        spec = importlib.util.find_spec(module, paths)
+     if spec is None:
+         raise ImportError("Can't find %s" % module)
+     if not spec.has_location and hasattr(spec, 'submodule_search_locations'):
+@@ -60,14 +63,20 @@ def find_module(module, paths=None):
+ 
+ 
+ def get_frozen_object(module, paths=None):
+-    spec = importlib.util.find_spec(module, paths)
++    if isinstance(paths, list):
++        spec = importlib.machinery.PathFinder().find_spec(module, paths)
++    else:
++        spec = importlib.util.find_spec(module, paths)
+     if not spec:
+         raise ImportError("Can't find %s" % module)
+     return spec.loader.get_code(module)
+ 
+ 
+ def get_module(module, paths, info):
+-    spec = importlib.util.find_spec(module, paths)
++    if isinstance(paths, list):
++        spec = importlib.machinery.PathFinder().find_spec(module, paths)
++    else:
++        spec = importlib.util.find_spec(module, paths)
+     if not spec:
+         raise ImportError("Can't find %s" % module)
+     return module_from_spec(spec)

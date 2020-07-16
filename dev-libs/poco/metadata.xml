@@ -24,7 +24,6 @@ done quickly and working on the features that make their application unique.
 	</upstream>
 	<use>
 		<flag name="7z">Add Support for the 7z archive format</flag>
-		<flag name="apache">Enable support to write Apache modules using POCO</flag>
 		<flag name="cppparser">Build and install a minimal C++ parser</flag>
 		<flag name="crypto">Encryption and digital signing classes</flag>
 		<flag name="data">Database abstraction layer to easily send/retrieve data to/from various databases</flag>

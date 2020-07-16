@@ -1,7 +1,0 @@
-diff --git a/src/client/Makefile.am b/src/client/Makefile.am
-index 454bdeb..fd391fd 100644
---- a/src/client/Makefile.am
-+++ b/src/client/Makefile.am
-@@ -46 +46 @@ dist_bashcompletion_DATA = lldpcli.bash-completion
--zshcompletiondir = $(datadir)/zsh/vendor-completions
-+zshcompletiondir = $(datadir)/zsh/site-functions

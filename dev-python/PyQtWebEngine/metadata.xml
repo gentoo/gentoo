@@ -6,12 +6,8 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<maintainer type="person">
-		<email>stefan.strogin@gmail.com</email>
+		<email>steils@gentoo.org</email>
 		<name>Stefan Strogin</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
 		PyQtWebEngine is a set of Python bindings for The Qt Company's
@@ -24,7 +20,6 @@
 			<email>phil@riverbankcomputing.com</email>
 			<name>Phil Thompson</name>
 		</maintainer>
-		<changelog>https://www.riverbankcomputing.com/static/Downloads/PyQtWebEngine/ChangeLog</changelog>
 		<doc>https://www.riverbankcomputing.com/static/Docs/PyQt5/</doc>
 		<bugs-to>mailto:pyqt@riverbankcomputing.com</bugs-to>
 		<remote-id type="pypi">PyQtWebEngine</remote-id>

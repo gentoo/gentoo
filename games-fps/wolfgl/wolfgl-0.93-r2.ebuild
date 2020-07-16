@@ -35,7 +35,7 @@ PATCHES=(
 )
 
 src_compile() {
-	emake -j1 CFLAGS="${CFLAGS}" DATADIR="/usr/share/${PN}" || die "emake failed"
+	emake -j1 CFLAGS="${CFLAGS}" DATADIR="/usr/share/${PN}"
 }
 
 src_install() {

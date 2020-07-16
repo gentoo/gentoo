@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,8 +13,9 @@ SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=net-im/pidgin-2.7[dbus]
@@ -28,10 +29,8 @@ DEPEND="${RDEPEND}
 	dev-util/glib-utils
 	virtual/pkgconfig
 	test? (
-		|| (
-			$(python_gen_any_dep 'dev-python/twisted[${PYTHON_USEDEP}]')
-			$(python_gen_any_dep 'dev-python/twisted-words[${PYTHON_USEDEP}]')
-		)
+		dev-python/pygobject:2
+		$(python_gen_any_dep 'dev-python/twisted[${PYTHON_USEDEP}]')
 	)
 "
 
@@ -46,8 +45,7 @@ PATCHES=(
 
 python_check_deps() {
 	if use test ; then
-		has_version "dev-python/twisted[${PYTHON_USEDEP}]" \
-			|| has_version "dev-python/twisted-words[${PYTHON_USEDEP}]"
+		has_version "dev-python/twisted[${PYTHON_USEDEP}]"
 	fi
 }
 

@@ -1,28 +1,30 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
-inherit autotools eutils python-single-r1
+inherit autotools eutils ltprune python-single-r1
 
 DESCRIPTION="Provides a generic and flexible way to access and interact with USB HID devices"
-HOMEPAGE="http://libhid.alioth.debian.org/"
-SRC_URI="http://beta.magicaltux.net/${P}.tar.gz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="https://alioth-archive.debian.org/releases/${PN}/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="doc python static-libs"
 
 RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	virtual/libusb:0
 "
+
 DEPEND="
 	${RDEPEND}
 	doc? ( app-doc/doxygen )
 	python? ( dev-lang/swig )
 "
+
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 src_prepare() {

@@ -1,13 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 WX_GTK_VER="3.0-gtk3"
-inherit autotools git-r3 wxwidgets xdg-utils
+inherit autotools desktop git-r3 wxwidgets xdg-utils
 
 DESCRIPTION="Utility for viewing Compiled HTML Help (CHM) files"
 HOMEPAGE="https://github.com/rzvncj/xCHM/"
-EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_REPO_URI="https://github.com/rzvncj/xCHM/"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -25,7 +25,6 @@ DEPEND="
 "
 
 src_prepare() {
-	setup-wxwidgets
 	default
 	eautoreconf
 }
@@ -35,13 +34,9 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 
 	dodoc AUTHORS README ChangeLog
-
-	cp "${D}"/usr/share/pixmaps/xchm-32.xpm "${D}"/usr/share/pixmaps/xchm.xpm
-	rm -f "${D}"/usr/share/pixmaps/xchm-*.xpm
-	rm -f "${D}"/usr/share/pixmaps/xchmdoc*.xpm
 
 	domenu "${FILESDIR}"/xchm.desktop
 	insinto /usr/share/mime/packages
@@ -50,10 +45,12 @@ src_install() {
 
 pkg_postinst() {
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 }

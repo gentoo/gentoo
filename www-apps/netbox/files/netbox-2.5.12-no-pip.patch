@@ -1,0 +1,27 @@
+diff --git a/upgrade.sh b/upgrade.sh
+index 24e79f5b..248e1cb5 100755
+--- a/upgrade.sh
++++ b/upgrade.sh
+@@ -8,22 +8,6 @@
+ PYTHON="python3"
+ PIP="pip3"
+ 
+-# TODO: Remove this in v2.6 as it is no longer needed under Python 3
+-# Delete stale bytecode
+-COMMAND="find . -name \"*.pyc\" -delete"
+-echo "Cleaning up stale Python bytecode ($COMMAND)..."
+-eval $COMMAND
+-
+-# Uninstall any Python packages which are no longer needed
+-COMMAND="${PIP} uninstall -r old_requirements.txt -y"
+-echo "Removing old Python packages ($COMMAND)..."
+-eval $COMMAND
+-
+-# Install any new Python packages
+-COMMAND="${PIP} install -r requirements.txt --upgrade"
+-echo "Updating required Python packages ($COMMAND)..."
+-eval $COMMAND
+-
+ # Apply any database migrations
+ COMMAND="${PYTHON} netbox/manage.py migrate"
+ echo "Applying database migrations ($COMMAND)..."

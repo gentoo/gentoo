@@ -18,11 +18,11 @@ RDEPEND=""
 DEPEND="${RDEPEND}"
 
 src_compile() {
-	emake CC="$(tc-getCC) ${CFLAGS} ${LDFLAGS}" || die "emake failed"
+	emake CC="$(tc-getCC) ${CFLAGS} ${LDFLAGS}"
 }
 
 src_install() {
-	dobin pipeworks || die "dobin failed"
+	dobin pipeworks
 	doman pipeworks.1
 	dodoc Changelog README
 }

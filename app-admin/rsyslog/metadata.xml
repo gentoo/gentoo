@@ -12,13 +12,12 @@
 		<flag name="elasticsearch">Build the Elasticsearch output module (requires <pkg>net-misc/curl</pkg>)</flag>
 		<flag name="gcrypt">Add support for encrypted log files using <pkg>dev-libs/libgcrypt</pkg></flag>
 		<flag name="gnutls">Build the GnuTLS network stream driver (requires <pkg>net-libs/gnutls</pkg>)</flag>
-		<flag name="grok">Build the grok modify module (requires <pkg>dev-libs/grok</pkg>)</flag>
 		<flag name="kafka">Build the Apache Kafka input/output module (requires <pkg>dev-libs/librdkafka</pkg>)</flag>
 		<flag name="kerberos">Build the GSSAPI input and output module (requires <pkg>virtual/krb5</pkg>)</flag>
 		<flag name="kubernetes">Build the kubernetes modify plugin (requires <pkg>net-misc/curl</pkg>)</flag>
 		<flag name="libressl">Use <pkg>dev-libs/libressl</pkg> instead of <pkg>dev-libs/openssl</pkg> (you still need to enable functionality which requires OpenSSL)</flag>
 		<flag name="mdblookup">Build the MaxMind DB lookup message modify plugin using <pkg>dev-libs/libmaxminddb</pkg></flag>
-		<flag name="mongodb">Build the MongoDB output module (requires <pkg>dev-libs/libmongo-client</pkg>)</flag>
+		<flag name="mongodb">Build the MongoDB output module (requires <pkg>dev-libs/mongo-c-driver</pkg>)</flag>
 		<flag name="mysql">Build the MySQL database output module (requires <pkg>virtual/mysql</pkg>)</flag>
 		<flag name="normalize">Build the normalize modify module (requires <pkg>dev-libs/libee</pkg> and <pkg>dev-libs/liblognorm</pkg>)</flag>
 		<flag name="omhttp">Build the http output module (requires <pkg>net-misc/curl</pkg>)</flag>

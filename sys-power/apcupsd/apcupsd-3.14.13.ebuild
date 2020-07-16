@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,13 +11,11 @@ SRC_URI="mirror://sourceforge/apcupsd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ppc x86"
 IUSE="snmp +usb cgi nls gnome kernel_linux"
 
 DEPEND="
-	||	( >=sys-apps/util-linux-2.23[tty-helpers(-)]
-		  sys-freebsd/freebsd-ubin
-		)
+	>=sys-apps/util-linux-2.23[tty-helpers(-)]
 	cgi? ( >=media-libs/gd-1.8.4 )
 	nls? ( sys-devel/gettext )
 	snmp? ( >=net-analyzer/net-snmp-5.7.2 )
@@ -74,7 +72,7 @@ src_compile() {
 	# the text files in the distribution, but I wouldn't count on them
 	# doing that anytime soon.
 	MANPAGER=$(type -p cat) \
-		emake || die "emake failed"
+		emake
 }
 
 src_install() {

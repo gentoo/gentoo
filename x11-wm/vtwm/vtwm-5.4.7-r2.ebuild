@@ -11,7 +11,7 @@ SRC_URI="http://www.vtwm.org/downloads/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ppc sparc x86"
 IUSE="rplay"
 
 RDEPEND="x11-libs/libX11

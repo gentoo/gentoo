@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,18 +9,15 @@ EGIT_COMMIT="800d6949bd96847b4d5c400e261b18386ea2226f"
 inherit golang-build golang-vcs-snapshot
 
 ARCHIVE_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64"
 
 DESCRIPTION="Command-line interface for Drone"
 HOMEPAGE="https://github.com/drone/drone-cli"
 SRC_URI="${ARCHIVE_URI}"
+
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE=""
-
+KEYWORDS="~amd64"
 RESTRICT="test"
-
-RDEPEND="!!<dev-util/drone-0.7"
 
 src_compile() {
 	pushd src || die

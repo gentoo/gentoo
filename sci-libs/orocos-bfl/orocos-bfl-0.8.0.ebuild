@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,13 +6,14 @@ EAPI=5
 inherit cmake-utils
 
 DESCRIPTION="Bayesian Filtering Library"
-HOMEPAGE="http://orocos.org/bfl"
-SRC_URI="http://people.mech.kuleuven.be/~tdelaet/bfl_tar/${P}-src.tar.bz2"
+HOMEPAGE="https://orocos.org/bfl"
+SRC_URI="https://people.mech.kuleuven.be/~tdelaet/bfl_tar/${P}-src.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm"
 IUSE="doc examples static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/boost:="
 DEPEND="${RDEPEND}

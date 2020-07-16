@@ -1,0 +1,19 @@
+Index: google-glog-0.3.2/src/signalhandler_unittest.sh
+===================================================================
+--- google-glog-0.3.2.orig/src/signalhandler_unittest.sh	2013-03-13 13:49:37.820188111 -0400
++++ google-glog-0.3.2/src/signalhandler_unittest.sh	2013-03-13 14:07:11.980204520 -0400
+@@ -65,10 +65,10 @@
+   exit 0
+ fi
+ 
+-# The PC cannot be obtained in signal handlers on PowerPC correctly.
+-# We just skip the test for PowerPC.
+-if [ x`uname -p` = x"powerpc" ]; then
+-  echo "PASS (We don't test the signal handler on PowerPC.)"
++# This test only works correctly on i386 and amd64.
++# We just skip the test when not on those platforms.
++if [ x`uname -m` != x"x86_64" -a x`uname -m` != x"i686" ]; then
++  echo "PASS (We only test the signal handler on i386 or amd64.)"
+   exit 0
+ fi
+ 

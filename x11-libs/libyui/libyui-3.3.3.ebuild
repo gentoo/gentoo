@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,7 +36,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DDOC_DIR="${EPREFIX%/}/usr/share/doc/${PF}"
+		-DDOC_DIR="${EPREFIX}/usr/share/doc/${PF}"
 		-DENABLE_STATIC=$(usex static-libs)
 		-DENABLE_WERROR=OFF
 		-DRESPECT_FLAGS=ON

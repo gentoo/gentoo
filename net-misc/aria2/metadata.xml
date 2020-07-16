@@ -2,19 +2,16 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>dev-zero@gentoo.org</email>
-		<name>Tiziano Müller</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
 	<use>
 		<flag name="bittorrent">Enable support for the bittorrent protocol.</flag>
+		<flag name="gnutls">Use <pkg>net-libs/gnutls</pkg> as TLS provider (preferred). Otherwise, <pkg>dev-libs/openssl</pkg> will be used as TLS provider. Both apply only with USE=ssl.</flag>
 		<flag name="libuv">Use <pkg>dev-libs/libuv</pkg> backend.</flag>
 		<flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> for XML parsing (preferred) instead of <pkg>dev-libs/expat</pkg>.</flag>
-		<flag name="nettle">Use <pkg>dev-libs/nettle</pkg> and <pkg>dev-libs/gmp</pkg> for bittorrent/metalink crypto instead of <pkg>dev-libs/libgcrypt</pkg> (when <pkg>dev-libs/openssl</pkg> is not being used).</flag>
 		<flag name="metalink">Enable support for metalink.</flag>
+		<flag name="nettle">Use <pkg>dev-libs/nettle</pkg> for message digests, plus <pkg>dev-libs/gmp</pkg> for bittorrent (if enabled). If this flag is disabled, <pkg>dev-libs/libgcrypt</pkg> is used instead. This flag is ignored if <pkg>dev-libs/openssl</pkg> is used.</flag>
 		<flag name="scripts">Install additional scripts which use aria2's xmlrpc functionality.</flag>
 		<flag name="ssh">Enable SFTP support.</flag>
 	</use>

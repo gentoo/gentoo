@@ -1,0 +1,56 @@
+Ripped from Debian
+
+http://lists.gnu.org/archive/html/bug-bash/2004-08/msg00008.html
+
+From: Enrique Perez-Terron <enrio@online.no>
+To: bug-bash@gnu.org
+Subject: When using HISTTIMEFORMAT, the date and the command are run
+	together.
+Date: Sun, 01 Aug 2004 18:36:45 +0200
+
+Configuration Information [Automatically generated, do not change]:
+Machine: i586
+OS: linux-gnu
+Compiler: gcc
+Compilation CFLAGS:  -DPROGRAM='bash' -DCONF_HOSTTYPE='i586'
+-DCONF_OSTYPE='linux-gnu' -DCONF_MACHTYPE='i586-pc-linux-gnu'
+-DCONF_VENDOR='pc' -DLOCALEDIR='/usr/local/share/locale'
+-DPACKAGE='bash' -DSHELL -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib  
+-g -O2
+uname output: Linux arabia.home.lan 2.6.6-1.435.2.3 #1 Thu Jul 1
+09:11:28 EDT 2004 i586 i586 i386 GNU/Linux
+Machine Type: i586-pc-linux-gnu
+
+# DP: Add space separating the time and the command in the
+# DP: output from the history builtin command.
+
+Bash Version: 3.0
+Patch Level: 0
+Release Status: release
+
+Description:
+	There is no space separating the time and the command in the 
+	output from the history builtin command.
+
+Repeat-By:
+	$ export HISTTIMEFORMAT=_A_format_string_
+	$ history 3
+	  997  _A_format_string_echo $BASH_VERSION
+	  998  _A_format_string_export HISTTIMEFORMAT=_A_format_string_
+	  999  _A_format_string_history 3
+
+Fix:
+--- ./builtins/history.def.orig	2003-12-20 00:02:09.000000000 +0100
++++ ./builtins/history.def	2004-08-01 18:18:02.652720102 +0200
+@@ -287,9 +287,10 @@
+ 	  QUIT;
+ 
+ 	  timestr = (histtimefmt && *histtimefmt) ? histtime (hlist[i], histtimefmt) : (char *)NULL;
+-	  printf ("%5d%c %s%s\n", i + history_base,
++	  printf ("%5d%c %s%s%s\n", i + history_base,
+ 		  histdata(i) ? '*' : ' ',
+ 		  ((timestr && *timestr) ? timestr : ""),
++		  ((timestr && *timestr) ? " " : ""),
+ 		  histline(i));
+ 	  i++;
+ 	}

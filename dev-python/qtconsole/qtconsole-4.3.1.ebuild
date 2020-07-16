@@ -1,10 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1 virtualx
 
@@ -16,6 +17,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/ipykernel[${PYTHON_USEDEP}]
@@ -30,7 +32,6 @@ DEPEND="${RDEPEND}
 		>=dev-python/sphinx-1.3.1-r1[${PYTHON_USEDEP}]
 	)
 	test? (
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' 'python2*')
 		>=dev-python/nose-0.10.1[${PYTHON_USEDEP}]
 		dev-python/PyQt5[${PYTHON_USEDEP},svg,testlib]
 	)

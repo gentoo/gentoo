@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ MY_P=HepPDT-${PV}
 
 DESCRIPTION="Data about each particle from the Review of Particle Properties"
 HOMEPAGE="http://lcgapp.cern.ch/project/simu/HepPDT/"
-SRC_URI="${HOMEPAGE}/download/${MY_P}.tar.gz"
+SRC_URI="http://lcgapp.cern.ch/project/simu/HepPDT/download/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

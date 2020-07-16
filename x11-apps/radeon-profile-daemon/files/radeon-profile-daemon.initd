@@ -1,9 +1,0 @@
-#!/sbin/openrc-run
-# Copyright 1999-2019 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-description="Daemon for radeon-profile GUI"
-
-command="/usr/sbin/radeon-profile-daemon"
-command_background="true"
-pidfile="/run/${SVCNAME}.pid"

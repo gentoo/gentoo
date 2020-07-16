@@ -9,7 +9,7 @@ DESCRIPTION="Prometheus exporter for memcached"
 HOMEPAGE="https://github.com/prometheus/memcached_exporter"
 SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 

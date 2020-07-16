@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,6 +16,8 @@ else
 	MY_P=${PN}-${MY_PV}
 fi
 
+RESTRICT="!test? ( test )"
+
 S_BASE="${WORKDIR}/${MY_P}"
 S="${S_BASE}/build_unix"
 DESCRIPTION="Oracle Berkeley DB"
@@ -27,7 +29,7 @@ done
 
 LICENSE="AGPL-3"
 SLOT="$(get_version_component_range 1-2)"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="doc java cxx tcl test"
 
 REQUIRED_USE="test? ( tcl )"
@@ -50,7 +52,7 @@ PATCHES=(
 
 	# use the includes from the prefix
 	"${FILESDIR}"/${PN}-6.2-jni-check-prefix-first.patch
-	"${FILESDIR}"/${PN}-4.3-listen-to-java-options.patch
+	"${FILESDIR}"/${PN}-4.2-listen-to-java-options.patch
 
 	# sqlite configure call has an extra leading ..
 	# upstreamed:5.2.36, missing in 5.3.x/6.x

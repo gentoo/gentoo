@@ -5,9 +5,6 @@
     <email>prometheanfire@gentoo.org</email>
     <name>Matthew Thode</name>
   </maintainer>
-  <longdescription lang="en">
-    An openstack meta package to allow for easier installation of openstack.
-  </longdescription>
   <use>
     <flag name="keystone">Installs Openstack Keystone</flag>
     <flag name="swift">Installs Openstack Swift</flag>
@@ -16,7 +13,7 @@
     <flag name="neutron">Installs Openstack Neutron</flag>
     <flag name="nova">Installs Openstack Nova</flag>
     <flag name="heat">Installs Openstack Heat</flag>
-		<flag name="placement">Installs Openstack Placement</flag>
+    <flag name="placement">Installs Openstack Placement</flag>
     <!-- <flag name="horizon">Installs Openstack Horizon</flag> -->
   </use>
 </pkgmetadata>

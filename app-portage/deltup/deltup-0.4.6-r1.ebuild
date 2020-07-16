@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,11 +31,11 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.4.6-cxx.patch
 )
 
-src_compile () {
+src_compile() {
 	emake CXX=$(tc-getCXX)
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" PREFIX=/usr install
 	dodoc "${S}"/../{README,ChangeLog}
 	doman "${S}"/../deltup.1

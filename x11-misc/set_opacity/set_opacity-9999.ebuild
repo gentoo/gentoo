@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-
-EGIT_REPO_URI="https://github.com/XVilka/set_opacity.git"
+EAPI=7
 
 inherit git-r3 toolchain-funcs
+
+EGIT_REPO_URI="https://github.com/XVilka/set_opacity.git"
 
 DESCRIPTION="Tool for set real compositing for windows through window's id, process' pid etc."
 HOMEPAGE="https://github.com/XVilka/set_opacity"

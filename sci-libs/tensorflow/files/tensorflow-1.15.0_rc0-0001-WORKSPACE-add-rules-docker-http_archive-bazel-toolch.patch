@@ -1,0 +1,38 @@
+From 9a44d8e10d726cae992e611575b9dcb1627beede Mon Sep 17 00:00:00 2001
+From: Jason Zaman <jason@perfinion.com>
+Date: Wed, 11 Sep 2019 12:08:34 +0800
+Subject: [PATCH 1/2] WORKSPACE: add rules-docker http_archive,
+ bazel-toolchains uses git_repo
+
+git_repository() rules cannot pull from --distdir and fail when building
+without internet access. Use http_archive instead and pin the sha256
+hash as well.
+
+Signed-off-by: Jason Zaman <jason@perfinion.com>
+---
+ WORKSPACE | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/WORKSPACE b/WORKSPACE
+index 74ea14d0fd..ccff2ba30f 100644
+--- a/WORKSPACE
++++ b/WORKSPACE
+@@ -12,6 +12,15 @@ http_archive(
+     ],
+ )
+ 
++http_archive(
++    name = "io_bazel_rules_docker",
++    sha256 = "7d453450e1eb70e238eea6b31f4115607ec1200e91afea01c25f9804f37e39c8",
++    strip_prefix = "rules_docker-0.10.0",
++    urls = [
++        "https://github.com/bazelbuild/rules_docker/releases/download/v0.10.0/rules_docker-v0.10.0.tar.gz",
++    ],
++)
++
+ # Load tf_repositories() before loading dependencies for other repository so
+ # that dependencies like com_google_protobuf won't be overridden.
+ load("//tensorflow:workspace.bzl", "tf_repositories")
+-- 
+2.21.0
+

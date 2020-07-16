@@ -1,15 +1,17 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+inherit toolchain-funcs
+
 DESCRIPTION="PAM base configuration files"
-HOMEPAGE="https://gentoo.org/"
+HOMEPAGE="https://github.com/gentoo/pambase"
 SRC_URI="https://github.com/gentoo/pambase/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 -x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="consolekit +cracklib debug elogind minimal mktemp +nullok pam_krb5 pam_ssh passwdqc securetty selinux +sha512 systemd"
 
 RESTRICT="binchecks"
@@ -19,16 +21,13 @@ REQUIRED_USE="?? ( consolekit elogind systemd )"
 MIN_PAM_REQ=1.1.3
 
 RDEPEND="
-	|| (
-		>=sys-libs/pam-${MIN_PAM_REQ}
-		( sys-auth/openpam sys-freebsd/freebsd-pam-modules )
-	)
+	>=sys-libs/pam-${MIN_PAM_REQ}
 	consolekit? ( sys-auth/consolekit[pam] )
-	cracklib? ( sys-libs/pam[cracklib] )
+	cracklib? ( sys-libs/pam[cracklib(+)] )
 	elogind? ( sys-auth/elogind[pam] )
 	mktemp? ( sys-auth/pam_mktemp )
 	pam_krb5? (
-		|| ( >=sys-libs/pam-${MIN_PAM_REQ} sys-auth/openpam )
+		>=sys-libs/pam-${MIN_PAM_REQ}
 		sys-auth/pam_krb5
 	)
 	pam_ssh? ( sys-auth/pam_ssh )
@@ -65,6 +64,7 @@ src_compile() {
 
 	emake \
 		GIT=true \
+		CPP="$(tc-getPROG CPP cpp)" \
 		$(use_var debug) \
 		$(use_var cracklib) \
 		$(use_var passwdqc) \

@@ -4,4 +4,8 @@
 <maintainer type="project">
 	<email>media-video@gentoo.org</email>
 </maintainer>
+<maintainer type="person">
+	<email>marecki@gentoo.org</email>
+	<name>Marek Szuba</name>
+</maintainer>
 </pkgmetadata>

@@ -1,22 +1,24 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Yixun Lan <dlan@gentoo.org> (12 Jul 2017)
+# Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
+# PPS should work on all arches, but only keyworded on some arches
+>=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
+
+# Yixun Lan <dlan@gentoo.org> (2017-07-12)
 # GLEP 73 Immutability, USE=ovmf requires hvm
 app-emulation/xen-tools ovmf
 
-# NP-Hardass <NP-Hardass@gentoo.org> (11 Jul 2017)
+# NP-Hardass <NP-Hardass@gentoo.org> (2017-07-11)
 # GLEP 73 Immutability, USE=test requires
 # abi_x86_32 at this time.
 app-emulation/wine-vanilla test
 app-emulation/wine-staging test
-app-emulation/wine-d3d9 test
-app-emulation/wine-any test
 
-# Mike Frysinger <vapier@gentoo.org> (12 Aug 2016)
+# Mike Frysinger <vapier@gentoo.org> (2016-08-12)
 # Requires sys-boot/grub:0 which is masked here.
 sys-apps/memtest86+ floppy
 
-# Alexis Ballier <aballier@gentoo.org> (13 Aug 2009)
+# Alexis Ballier <aballier@gentoo.org> (2009-08-13)
 # Requires wine
 media-sound/lmms vst

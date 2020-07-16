@@ -1,9 +1,9 @@
-# Copyright 2012-2019 Gentoo Authors
+# Copyright 2012-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 
 inherit bash-completion-r1 elisp-common python-any-r1 toolchain-funcs
 
@@ -11,11 +11,8 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/ninja-build/ninja.git"
 else
-	KITWARE_VERSION="1.9.0.g99df1.kitware.dyndep-1.jobserver-1"
-	MY_P="ninja-${KITWARE_VERSION}"
-	S="${WORKDIR}/${MY_P}"
-	SRC_URI="https://github.com/Kitware/ninja/archive/v${KITWARE_VERSION}.tar.gz -> ${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
+	SRC_URI="https://github.com/ninja-build/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
 fi
 
 DESCRIPTION="A small build system similar to make"
@@ -25,6 +22,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 
 IUSE="doc emacs test vim-syntax"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	${PYTHON_DEPS}
@@ -37,7 +35,7 @@ BDEPEND="
 	test? ( dev-cpp/gtest )
 "
 RDEPEND="
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	vim-syntax? (
 		|| (
 			app-editors/vim
@@ -45,6 +43,10 @@ RDEPEND="
 		)
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/ninja-cflags.patch
+)
 
 run_for_build() {
 	if tc-is-cross-compiler; then
@@ -61,8 +63,8 @@ run_for_build() {
 src_compile() {
 	tc-export AR CXX
 
-	# configure.py uses CFLAGS instead of CXXFLAGS
-	export CFLAGS=${CXXFLAGS}
+	# configure.py appends CFLAGS to CXXFLAGS
+	unset CFLAGS
 
 	run_for_build ${EPYTHON} configure.py --bootstrap --verbose || die
 
@@ -93,7 +95,7 @@ src_test() {
 }
 
 src_install() {
-	dodoc README HACKING.md
+	dodoc README.md CONTRIBUTING.md
 	if use doc; then
 		docinto html
 		dodoc -r doc/doxygen/html/.

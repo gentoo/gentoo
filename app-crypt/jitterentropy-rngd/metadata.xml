@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>tamiko@gentoo.org</email>
+	<name>Matthias Maier</name>
+</maintainer>
+<longdescription>
+	The Jitter RNG daemon provides an entropy source that feeds into the
+	Linux /dev/random device if its entropy runs low. It updates the
+	/dev/random entropy estimator such that the newly provided entropy
+	unblocks /dev/random.
+</longdescription>
+<upstream>
+	<remote-id type="github">smuellerDD/jitterentropy-rngd</remote-id>
+</upstream>
+</pkgmetadata>

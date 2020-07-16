@@ -1,0 +1,50 @@
+--- gtkada-gpl-2016-src/Makefile.in.old	2017-01-21 22:42:18.319969095 +0100
++++ gtkada-gpl-2016-src/Makefile.in	2017-01-21 22:42:33.989700236 +0100
+@@ -60,30 +60,33 @@
+ LIBRARY_TYPE_FOR_TOOLS=static
+ endif
+ 
+-all: tools tests
++all: tools
+ static: build_library_type/static
+ relocatable: build_library_type/relocatable
+ 
+ tools:
+ 	@echo "====== Building tools ====="
+-	${GPRBUILD_FULL} -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) -Psrc/tools/tools.gpr
++	${GPRBUILD_FULL} -v -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) \
++	  -Psrc/tools/tools.gpr -cargs:Ada $(ADAFLAGS)
+ 
+ build_library_type/%:  src/gtkada-intl.adb
+ 	@echo "====== Building $(@F) libraries ====="
+-	${GPRBUILD_FULL} -XLIBRARY_TYPE=$(@F) -Psrc/gtkada.gpr
++	${GPRBUILD_FULL} -v -XLIBRARY_TYPE=$(@F) -Psrc/gtkada.gpr \
++	  -cargs:Ada $(ADAFLAGS) -cargs:C $(CFLAGS)
+ ifeq (${HAVE_OPENGL}, True)
+ 	${GPRBUILD_FULL} -XLIBRARY_TYPE=$(@F) -Psrc/opengl/gtkada_gl.gpr
+ endif
+ 
+ src/gtkada-intl.adb: src/gtkada-intl.gpb Makefile
+ 	gnatprep -DGETTEXT_INTL=$(GETTEXT_INTL) -DHAVE_GETTEXT=$(HAVE_GETTEXT) src/gtkada-intl.gpb $@
+ 
+ testgtk/opengl/view_gl.adb: testgtk/opengl/view_gl.gpb Makefile
+ 	gnatprep -r -c -DHAVE_GL=${HAVE_OPENGL} -DWIN32=False testgtk/opengl/view_gl.gpb $@
+ 
+ tests: testgtk/opengl/view_gl.adb
+ 	@echo "====== Building tests ====="
+-	cd testgtk; ${GPRBUILD_FULL} -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) -Ptestgtk.gpr -aP ../src
++	cd testgtk; ${GPRBUILD_FULL} -v -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) \
++	  -Ptestgtk.gpr -aP ../src -cargs:Ada $(ADAFLAGS)
+ 
+ install/%: force
+ 	${GPRINSTALL_FULL} -XLIBRARY_TYPE=$(@F) --build-name=$(@F) \
+@@ -121,9 +121,6 @@
+ install: install-clean
+ 	${GPRINSTALL_FULL} -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) \
+ 		--mode=usage -Psrc/tools/tools.gpr
+-	cd testgtk; ${GPRINSTALL_FULL} -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) \
+-		--mode=usage --exec-subdir=${DESTDIR}${exampledir} \
+-		-Ptestgtk.gpr -aP ../src
+ 
+ 	@echo '-----------------------------------------------------------------------'
+ 	@echo '--  GtkAda has now been installed.                                   --'

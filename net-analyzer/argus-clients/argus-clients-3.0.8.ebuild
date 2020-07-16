@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit autotools eutils toolchain-funcs
 
 DESCRIPTION="Clients for net-analyzer/argus"
-HOMEPAGE="http://www.qosient.com/argus/"
-SRC_URI="http://qosient.com/argus/dev/${P}.tar.gz"
+HOMEPAGE="https://www.qosient.com/argus/"
+SRC_URI="https://qosient.com/argus/dev/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

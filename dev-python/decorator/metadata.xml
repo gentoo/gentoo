@@ -11,6 +11,7 @@
 		usage giving examples of useful decorators, such as memoize, tracing,
 		redirecting_stdout, locked, etc.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">decorator</remote-id>
 		<remote-id type="github">micheles/decorator</remote-id>

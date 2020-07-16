@@ -1,7 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit autotools toolchain-funcs
 
 MY_P="${PN}-${PV/_p/-cbiere-r}"
@@ -17,20 +18,19 @@ IUSE="+sdlaudio"
 RDEPEND="
 	virtual/jpeg:0
 	media-libs/libsdl[joystick,video]
-	sdlaudio? ( media-libs/libsdl[sound] )
-"
-RDEPEND="${DEPEND}"
+	sdlaudio? ( media-libs/libsdl[sound] )"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-autoconf.patch
+	"${FILESDIR}"/${P}-automake.patch
+	"${FILESDIR}"/${P}-gcc.patch
+)
+
 src_prepare() {
 	default
-	eapply \
-		"${FILESDIR}"/${P}-configure.patch \
-		"${FILESDIR}"/${P}-underlink.patch \
-		"${FILESDIR}"/${P}-inline.patch
-
-	sed -i -e 's/@GTK_CFLAGS@//g' main/Makefile.am || die
 	eautoreconf
 }
 
@@ -43,12 +43,9 @@ src_configure() {
 		$(use_with sdlaudio sdl-audio)
 }
 
-src_compile() {
-	[[ -f Makefile ]] && emake clean
-	emake -j1
-}
-
 src_install() {
 	dobin main/generator-sdl
-	dodoc AUTHORS ChangeLog NEWS README TODO docs/*
+
+	einstalldocs
+	dodoc -r docs/.
 }

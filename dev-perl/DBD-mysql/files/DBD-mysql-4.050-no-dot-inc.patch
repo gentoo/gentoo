@@ -1,0 +1,166 @@
+From 4e5417cbdd97bfc6dd53130de69f9173af59c273 Mon Sep 17 00:00:00 2001
+From: Pali <pali@cpan.org>
+Date: Mon, 17 Apr 2017 21:38:58 +0200
+Subject: Fix tests on Perl On 5.25.10 or greater with
+ -Ddefault_inc_excludes_dot
+
+Some tests do not include dot in %INC and fails with error:
+Can't locate t/lib.pl in @INC
+
+Fixes: https://rt.cpan.org/Public/Bug/Display.html?id=120709
+---
+ t/40server_prepare_crash.t             | 3 ++-
+ t/lib.pl                               | 5 +++--
+ t/rt110983-valid-mysqlfd.t             | 3 ++-
+ t/rt118977-zerofill.t                  | 2 +-
+ t/rt25389-bin-case.t                   | 3 ++-
+ t/rt50304-column_info_parentheses.t    | 3 ++-
+ t/rt61849-bind-param-buffer-overflow.t | 3 ++-
+ t/rt75353-innodb-lock-timeout.t        | 3 ++-
+ t/rt83494-quotes-comments.t            | 3 ++-
+ 9 files changed, 18 insertions(+), 10 deletions(-)
+
+diff --git a/t/40server_prepare_crash.t b/t/40server_prepare_crash.t
+index 103276d..80bc9b7 100644
+--- a/t/40server_prepare_crash.t
++++ b/t/40server_prepare_crash.t
+@@ -5,7 +5,8 @@ use Test::More;
+ use DBI;
+ 
+ use vars qw($test_dsn $test_user $test_password);
+-require "t/lib.pl";
++use lib 't', '.';
++require "lib.pl";
+ 
+ my $dbh = eval { DBI->connect($test_dsn, $test_user, $test_password, { PrintError => 1, RaiseError => 1, AutoCommit => 0, mysql_server_prepare => 1, mysql_server_prepare_disable_fallback => 1 }) };
+ plan skip_all => "no database connection" if $@ or not $dbh;
+diff --git a/t/lib.pl b/t/lib.pl
+index 2221c40..0c756a0 100644
+--- a/t/lib.pl
++++ b/t/lib.pl
+@@ -2,6 +2,7 @@ use strict;
+ use warnings;
+ 
+ use Test::More;
++use File::Spec ();
+ use DBI::Const::GetInfoType;
+ use vars qw($mdriver $dbdriver $childPid $test_dsn $test_user $test_password);
+ 
+@@ -31,7 +32,7 @@ if (-f ($file = "t/$dbdriver.dbtest")  ||
+     -f ($file = "$dbdriver.dbtest")    ||
+     -f ($file = "../tests/$dbdriver.dbtest")  ||
+     -f ($file = "tests/$dbdriver.dbtest")) {
+-    eval { require $file; };
++    eval { require File::Spec->rel2abs($file); };
+     if ($@) {
+ 	print STDERR "Cannot execute $file: $@.\n";
+ 	print "1..0\n";
+@@ -45,7 +46,7 @@ if (-f ($file = "t/$mdriver.mtest")  ||
+     -f ($file = "$mdriver.mtest")    ||
+     -f ($file = "../tests/$mdriver.mtest")  ||
+     -f ($file = "tests/$mdriver.mtest")) {
+-    eval { require $file; };
++    eval { require File::Spec->rel2abs($file); };
+     if ($@) {
+ 	print STDERR "Cannot execute $file: $@.\n";
+ 	print "1..0\n";
+diff --git a/t/rt110983-valid-mysqlfd.t b/t/rt110983-valid-mysqlfd.t
+index c5af2fa..a6ec8fb 100644
+--- a/t/rt110983-valid-mysqlfd.t
++++ b/t/rt110983-valid-mysqlfd.t
+@@ -5,7 +5,8 @@ use Test::More;
+ use DBI;
+ 
+ use vars qw($test_dsn $test_user $test_password);
+-require "t/lib.pl";
++use lib 't', '.';
++require "lib.pl";
+ 
+ my $dbh = eval { DBI->connect($test_dsn, $test_user, $test_password, { RaiseError => 1, AutoCommit => 0 }) };
+ plan skip_all => "no database connection" if $@ or not $dbh;
+diff --git a/t/rt118977-zerofill.t b/t/rt118977-zerofill.t
+index 27ba1b7..86edb8e 100644
+--- a/t/rt118977-zerofill.t
++++ b/t/rt118977-zerofill.t
+@@ -5,7 +5,7 @@ use Test::More;
+ use DBI;
+ 
+ use vars qw($test_dsn $test_user $test_password);
+-require "t/lib.pl";
++require "./t/lib.pl";
+ 
+ my $dbh = eval { DBI->connect($test_dsn, $test_user, $test_password, { PrintError => 1, RaiseError => 1 }) };
+ plan skip_all => "no database connection" if $@ or not $dbh;
+diff --git a/t/rt25389-bin-case.t b/t/rt25389-bin-case.t
+index 37bffb9..9d091b3 100644
+--- a/t/rt25389-bin-case.t
++++ b/t/rt25389-bin-case.t
+@@ -4,7 +4,8 @@ use warnings;
+ use DBI;
+ 
+ use vars qw($test_dsn $test_user $test_password);
+-require "t/lib.pl";
++use lib 't', '.';
++require "lib.pl";
+ 
+ use Test::More;
+ 
+diff --git a/t/rt50304-column_info_parentheses.t b/t/rt50304-column_info_parentheses.t
+index 28b2128..e03e332 100644
+--- a/t/rt50304-column_info_parentheses.t
++++ b/t/rt50304-column_info_parentheses.t
+@@ -4,7 +4,8 @@ use warnings;
+ use DBI;
+ 
+ use vars qw($test_dsn $test_user $test_password $state);
+-require "t/lib.pl";
++use lib 't', '.';
++require "lib.pl";
+ 
+ use Test::More;
+ 
+diff --git a/t/rt61849-bind-param-buffer-overflow.t b/t/rt61849-bind-param-buffer-overflow.t
+index f1fb254..a457d57 100644
+--- a/t/rt61849-bind-param-buffer-overflow.t
++++ b/t/rt61849-bind-param-buffer-overflow.t
+@@ -5,7 +5,8 @@ use Test::More;
+ use DBI;
+ 
+ use vars qw($test_dsn $test_user $test_password);
+-require "t/lib.pl";
++use lib 't', '.';
++require "lib.pl";
+ 
+ my $INSECURE_VALUE_FROM_USER = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+ 
+diff --git a/t/rt75353-innodb-lock-timeout.t b/t/rt75353-innodb-lock-timeout.t
+index 9c97d60..35fa5a7 100644
+--- a/t/rt75353-innodb-lock-timeout.t
++++ b/t/rt75353-innodb-lock-timeout.t
+@@ -5,7 +5,8 @@ use Test::More;
+ use DBI;
+ 
+ use vars qw($test_dsn $test_user $test_password);
+-require "t/lib.pl";
++use lib 't', '.';
++require "lib.pl";
+ 
+ my $dbh1 = eval { DBI->connect($test_dsn, $test_user, $test_password, { RaiseError => 1, AutoCommit => 0 }) };
+ plan skip_all => "no database connection" if $@ or not $dbh1;
+diff --git a/t/rt83494-quotes-comments.t b/t/rt83494-quotes-comments.t
+index 9df0d90..c42afe4 100644
+--- a/t/rt83494-quotes-comments.t
++++ b/t/rt83494-quotes-comments.t
+@@ -9,7 +9,8 @@ use DBI;
+ use Test::More;
+ 
+ use vars qw($test_dsn $test_user $test_password $state);
+-require "t/lib.pl";
++use lib 't', '.';
++require "lib.pl";
+ 
+ my $dbh;
+ eval {$dbh= DBI->connect($test_dsn, $test_user, $test_password,
+-- 
+2.23.0
+

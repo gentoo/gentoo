@@ -1,0 +1,21 @@
+--- a/CMakeLists.txt	2019-07-24 16:42:07.128890166 +0200
++++ b/CMakeLists.txt	2019-07-24 16:42:40.001023963 +0200
+@@ -1493,18 +1493,6 @@
+   )
+ 
+ install (FILES
+-  README
+-  COPYING
+-  AUTHORS
+-  THANKS
+-  NEWS
+-  INSTALL
+-  BUGS
+-  DESTINATION ${CMAKE_INSTALL_DOCDIR}
+-  #COMPONENT runtime
+-  )
+-
+-install (FILES
+   contrib/Ephemeris/JPLEPH
+   DESTINATION ${CMAKE_INSTALL_DATADIR}/${CMAKE_PROJECT_NAME}
+   #COMPONENT runtime

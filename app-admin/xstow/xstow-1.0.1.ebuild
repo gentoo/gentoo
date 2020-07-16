@@ -34,7 +34,7 @@ src_install() {
 	dodir /var/lib/xstow
 
 	# install env.d file to add STOWDIR to PATH and LDPATH
-	doenvd "${FILESDIR}/99xstow" || die "doenvd failed"
+	doenvd "${FILESDIR}/99xstow"
 }
 
 pkg_postinst() {

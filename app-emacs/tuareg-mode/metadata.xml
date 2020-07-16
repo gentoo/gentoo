@@ -5,10 +5,6 @@
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
-<maintainer type="project">
-  <email>ml@gentoo.org</email>
-  <name>Gentoo ML Project</name>
-</maintainer>
 <longdescription>
   Tuareg is an Object Caml/Camllight mode for Emacs. It handles automatic
   indentation and syntax highlighting of code. It also supports an interactive

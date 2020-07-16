@@ -7,5 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">Flask-Themes</remote-id>
+		<remote-id type="github">maxcountryman/flask-themes</remote-id>
+		<bugs-to>https://github.com/maxcountryman/flask-themes/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

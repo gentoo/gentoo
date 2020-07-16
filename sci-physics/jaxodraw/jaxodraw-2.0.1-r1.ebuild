@@ -33,7 +33,7 @@ src_install() {
 
 	use source && java-pkg_dosrc src/main/java/net
 
-	dodoc src/doc/BUGS src/doc/CHANGELOG src/doc/README src/doc/TODO || die
+	dodoc src/doc/BUGS src/doc/CHANGELOG src/doc/README src/doc/TODO
 	use doc && java-pkg_dojavadoc build/javadoc
 
 	java-pkg_dolauncher "${PN}"

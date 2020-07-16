@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/pjdelport/backports.os/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="PYTHON"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 DEPEND=""
@@ -36,6 +36,6 @@ python_test() {
 python_install() {
 	distutils-r1_python_install
 	# main namespace provided by dev-python/backports
-	rm "${ED}/$(python_get_sitedir)"/backports/__init__.py* || die
-	rm -rf "${ED}/$(python_get_sitedir)"/backports/__pycache__ || die
+	rm "${D}/$(python_get_sitedir)"/backports/__init__.py* || die
+	rm -rf "${D}/$(python_get_sitedir)"/backports/__pycache__ || die
 }

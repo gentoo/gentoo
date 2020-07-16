@@ -1,0 +1,9 @@
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# This file contains descriptions of ABI_RISCV USE_EXPAND flags.
+
+# Keep it sorted. Please do not add anything without prior discussion
+# on gentoo-dev.
+lp64d - 64-bit (rv64) double hard-float libraries
+lp64 - 64-bit (rv64) soft-float libraries

@@ -1,0 +1,125 @@
+From d2e4cdc91e3100a6a6598eff93df1b24c6ce661c Mon Sep 17 00:00:00 2001
+From: sgtell <sgtell@9168a026-1b44-0410-911b-d774ca5fe8d3>
+Date: Thu, 11 Apr 2019 20:52:12 +0000
+Subject: [PATCH 2/2] message typo fixes and Makefile.am improvements
+ contributed by Ahmed El-Mahmoudy Don't monkey with _LDFLAGS when _LDADD will
+ do; fixes -Wl,--as-needed
+
+git-svn-id: https://svn.code.sf.net/p/gwave/code/branches/no-ggp-branch@271 9168a026-1b44-0410-911b-d774ca5fe8d3
+---
+ spicefile/Makefile.am | 12 +++++-------
+ spicefile/ss_hspice.c | 10 +++++-----
+ spicefile/ss_spice3.c |  2 +-
+ src/Makefile.am       |  5 +----
+ 4 files changed, 12 insertions(+), 17 deletions(-)
+
+diff --git a/spicefile/Makefile.am b/spicefile/Makefile.am
+index 83f7508..3b69fbb 100644
+--- a/spicefile/Makefile.am
++++ b/spicefile/Makefile.am
+@@ -9,12 +9,10 @@ libspicefile_a_SOURCES = spicestream.c ss_cazm.c ss_hspice.c ss_spice3.c ss_spic
+ AM_CFLAGS = @GTK_CFLAGS@
+ 
+ noinst_PROGRAMS = test_read
+-test_read_SOURCES =  test_read.c
+-test_read_LDFLAGS = @GTK_LIBS@
+-test_read_LDADD = libspicefile.a
++test_read_SOURCES = test_read.c
++test_read_LDADD = libspicefile.a  @GTK_LIBS@
+ 
+-bin_PROGRAMS=sp2sp
+-sp2sp_SOURCES=sp2sp.c
+-sp2sp_LDFLAGS= @GTK_LIBS@
+-sp2sp_LDADD= libspicefile.a
++bin_PROGRAMS = sp2sp
++sp2sp_SOURCES = sp2sp.c
++sp2sp_LDADD = libspicefile.a @GTK_LIBS@
+ 
+diff --git a/spicefile/ss_hspice.c b/spicefile/ss_hspice.c
+index 421be14..722eaa4 100644
+--- a/spicefile/ss_hspice.c
++++ b/spicefile/ss_hspice.c
+@@ -316,7 +316,7 @@ sf_rdhdr_hsbin(char *name, FILE *fp)
+ 		swap_gint32((gint32*)&hh, sizeof(hh)/sizeof(gint32));
+ 	}
+ 	if(hh.h1 != 4 || hh.h3 != 4) {
+-		ss_msg(DBG, "sf_rdhdr_hsbin", "unexepected values in data block header");
++		ss_msg(DBG, "sf_rdhdr_hsbin", "unexpected values in data block header");
+ 		goto fail;
+ 	}
+ 
+@@ -574,7 +574,7 @@ sf_getval_hsbin(SpiceStream *sf, double *dvalp)
+ 			sf->flags &= ~SSF_ESWAP;
+ 		}
+ 		if(hh.h1 != 0x00000004 || hh.h3 != 0x00000004) {
+-			ss_msg(ERR, "sf_getval_hsbin", "unexepected values in block header at offset 0x%lx", pos);
++			ss_msg(ERR, "sf_getval_hsbin", "unexpected values in block header at offset 0x%lx", pos);
+ 			return -1;
+ 		}
+ 		sf->expected_vals = hh.block_nbytes / sf->floatsize;
+@@ -584,7 +584,7 @@ sf_getval_hsbin(SpiceStream *sf, double *dvalp)
+ 	if(sf->floatsize == 4) {
+ 		if(fread(&fval, sizeof(float), 1, sf->fp) != 1) {
+ 			pos = ftello64(sf->fp);
+-			ss_msg(ERR, "sf_getval_hsbin", "unexepected EOF in data at offset 0x%lx", (long) pos);
++			ss_msg(ERR, "sf_getval_hsbin", "unexpected EOF in data at offset 0x%lx", (long) pos);
+ 			return 0;
+ 		}
+ 		if(sf->flags & SSF_ESWAP) {
+@@ -594,7 +594,7 @@ sf_getval_hsbin(SpiceStream *sf, double *dvalp)
+ 	} else if(sf->floatsize == 8) {
+ 		if(fread(&dval, sf->floatsize, 1, sf->fp) != 1) {
+ 			pos = ftello64(sf->fp);
+-			ss_msg(ERR, "sf_getval_hsbin", "unexepected EOF in data at offset 0x%lx", (long) pos);
++			ss_msg(ERR, "sf_getval_hsbin", "unexpected EOF in data at offset 0x%lx", (long) pos);
+ 			return 0;
+ 		}
+ 		if(sf->flags & SSF_ESWAP) {
+@@ -652,7 +652,7 @@ sf_getval_hsascii(SpiceStream *sf, double *val)
+ 	if(strlen(vbuf) != sf->avalsize) {
+ 		/* incomplete float value - probably truncated or
+ 		   partialy-written file */
+-		ss_msg(ERR, "sf_getval_hsascii", "unexepected number \"%s\" near offset 0x%lx", vbuf, (long)ftello64(sf->fp));
++		ss_msg(ERR, "sf_getval_hsascii", "unexpected number \"%s\" near offset 0x%lx", vbuf, (long)ftello64(sf->fp));
+ 		
+ 		return 0;
+ 	}
+diff --git a/spicefile/ss_spice3.c b/spicefile/ss_spice3.c
+index f95b997..4dfd5b9 100644
+--- a/spicefile/ss_spice3.c
++++ b/spicefile/ss_spice3.c
+@@ -352,7 +352,7 @@ sf_getval_s3bin(SpiceStream *sf, double *dval)
+ 	}
+ 	if(fread(&val, sizeof(double), 1, sf->fp) != 1) {
+ 		pos = ftello64(sf->fp);
+-		ss_msg(ERR, "sf_getval_s3bin", "unexepected EOF in data at offset 0x%lx", (long) pos);
++		ss_msg(ERR, "sf_getval_s3bin", "unexpected EOF in data at offset 0x%lx", (long) pos);
+ 		return -1;
+ 	}
+ 	sf->read_vals++;
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 6efba55..7933bfc 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -15,8 +15,7 @@ gwave_SOURCES = cmd.c wavewin.c draw.c gwave.c event.c \
+ 	rgeval.c xgserver.c measurebtn.c measurebtn.h \
+ 	GtkTable_indel.c GtkTable_indel.h  xsnarf.h
+ 
+-gwave_LDADD = ../spicefile/libspicefile.a @GTK_LIBS@ -lm
+-gwave_LDFLAGS =  @GUILE_LDFLAGS@
++gwave_LDADD = ../spicefile/libspicefile.a @GTK_LIBS@ @GUILE_LIBS@ -lm
+ 
+ AM_CFLAGS = @GTK_CFLAGS@ @GUILE_CFLAGS@ \
+ 	-DDATADIR=\"$(datadir)\" -DBINGWAVE=\"$(bindir)/gwave\"
+@@ -29,8 +28,6 @@ DOT_DOC_FILES = gwave.doc cmd.doc wavewin.doc wavelist.doc scwm_guile.doc \
+ 
+ BUILT_SOURCES=init_scheme_string.c $(DOT_X_FILES) 
+ 
+-#$(DOT_DOC_FILES)
+-
+ init_scheme_string.c: $(top_srcdir)/scheme/minimal.scm
+ 	echo "char *init_scheme_string = " > $@
+ 	sed -e 's/;.*$$//g' -e 's/"/\\"/g' -e "s/'/\\\\'/g" -e 's/$$/\\n"/' -e 's/^/"/g' < $(top_srcdir)/scheme/minimal.scm >> $@
+-- 
+2.21.0
+

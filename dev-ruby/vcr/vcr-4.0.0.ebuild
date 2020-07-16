@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby22 ruby23 ruby24 ruby25"
+USE_RUBY="ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md CONTRIBUTING.md README.md Upgrade.md"
@@ -16,8 +16,10 @@ LICENSE="MIT"
 
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86"
 SLOT="3"
-IUSE="test"
+IUSE="json test"
 
 # Tests require all supported HTTP libraries to be present, and it is
 # not possible to avoid some of them without very extensive patches.
 RESTRICT="test"
+
+ruby_add_rdepend "json? ( dev-ruby/multi_json )"

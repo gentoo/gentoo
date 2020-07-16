@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit xdg cmake-utils desktop
+inherit xdg cmake desktop
 
 DESCRIPTION="Alf's PDF Viewer Like Vim"
 HOMEPAGE="https://naihe2010.github.com/apvlv/"
@@ -44,10 +44,10 @@ src_configure() {
 		-DAPVLV_WITH_DJVU=$(usex djvu)
 		-DAPVLV_ENABLE_DEBUG=$(usex debug)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	newicon -s 32 icons/pdf.png ${PN}.png
 }

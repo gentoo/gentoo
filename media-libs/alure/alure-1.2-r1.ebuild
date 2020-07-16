@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="The OpenAL Utility Toolkit"
 HOMEPAGE="https://kcat.strangesoft.net/alure.html"
@@ -16,7 +16,7 @@ IUSE="dumb examples flac fluidsynth mp3 sndfile static-libs vorbis"
 
 RDEPEND="
 	>=media-libs/openal-1.1
-	dumb? ( media-libs/dumb )
+	dumb? ( =media-libs/dumb-0.9*:= )
 	flac? ( media-libs/flac )
 	fluidsynth? ( >=media-sound/fluidsynth-1.1.1:= )
 	mp3? ( media-sound/mpg123 )
@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}"
 PATCHES=( "${FILESDIR}/${P}-include-unistd.patch" )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -i -e "/DESTINATION/s:doc/alure:doc/${PF}:" CMakeLists.txt || die
 }
@@ -46,5 +46,5 @@ src_configure() {
 		-DVORBIS=$(usex vorbis)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

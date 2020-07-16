@@ -1,0 +1,130 @@
+From 82e7a6b68d81ca2be0fdc3fc13cd5ca5f5e03e81 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 7 May 2020 16:18:13 +0200
+Subject: [PATCH] Add FindXorgServer.cmake and use it for touchpad KCM
+
+Summary:
+x11 backend of the touchpad KCM uses xserver-properties.h that is part of
+xorg-server package. As XORG_INCLUDE_DIRS seems to be empty, so far, it was
+relying on Synaptics_INCLUDE_DIRS implicitly and worked only if the header
+happened to be in the same directory as Synaptics' which is the case most of
+the time.
+
+FindXorgServer.cmake is just a copy of FindXorgLibinput, adapted accordingly.
+
+Test Plan:
+Pointed Synaptics_INCLUDE_DIRS somewhere else than /usr/include/xorg and build
+succeeded.
+
+Reviewers: #plasma, zzag
+
+Reviewed By: #plasma, zzag
+
+Subscribers: broulik, plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D29514
+---
+ CMakeLists.txt                     |  4 +++
+ cmake/modules/FindXorgServer.cmake | 45 ++++++++++++++++++++++++++++++
+ kcms/CMakeLists.txt                |  2 +-
+ kcms/touchpad/src/backends/x11.cmake   |  2 +-
+ 4 files changed, 51 insertions(+), 2 deletions(-)
+ create mode 100644 cmake/modules/FindXorgServer.cmake
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fbdd95433..64e8bbd60 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -133,6 +133,10 @@ find_package(Synaptics)
+ set_package_properties(Synaptics PROPERTIES TYPE OPTIONAL)
+ add_feature_info("Synaptics" SYNAPTICS_FOUND "Synaptics libraries needed for touchpad KCM")
+ 
++find_package(XorgServer)
++set_package_properties(XorgServer PROPERTIES TYPE OPTIONAL)
++add_feature_info("XorgServer" XORGSERVER_FOUND "XServer header needed for touchpad KCM (X11 backend)")
++
+ find_package(XorgLibinput)
+ set_package_properties(XorgLibinput PROPERTIES TYPE OPTIONAL)
+ add_feature_info("XorgLibinput" XORGLIBINPUT_FOUND "Libinput driver headers needed for mouse and touchpad KCM")
+diff --git a/cmake/modules/FindXorgServer.cmake b/cmake/modules/FindXorgServer.cmake
+new file mode 100644
+index 000000000..5248c6d25
+--- /dev/null
++++ b/cmake/modules/FindXorgServer.cmake
+@@ -0,0 +1,45 @@
++# - Find xorg-server's headers.
++# This module defines the following variables:
++#
++#  XORGSERVER_FOUND        - true if xserver was found
++#  XORGSERVER_INCLUDE_DIRS - include path for xserver
++#  There are no libraries, just a header file
++#
++# Copyright (c) 2020 Andreas Sturmlechner <asturm@gentoo.org>
++#
++# Redistribution and use in source and binary forms, with or without
++# modification, are permitted provided that the following conditions
++# are met:
++# 1. Redistributions of source code must retain the above copyright
++#    notice, this list of conditions and the following disclaimer.
++# 2. Redistributions in binary form must reproduce the above copyright
++#    notice, this list of conditions and the following disclaimer in the
++#    documentation and/or other materials provided with the distribution.
++# 3. Neither the name of the University nor the names of its contributors
++#    may be used to endorse or promote products derived from this software
++#    without specific prior written permission.
++#
++# THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
++# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++# ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
++# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
++# OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
++# HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
++# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
++# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
++# SUCH DAMAGE.
++
++find_package(PkgConfig)
++pkg_check_modules(PC_XORGSERVER xorg-server)
++
++find_path(XORGSERVER_INCLUDE_DIRS
++    NAMES xserver-properties.h
++    HINTS ${PC_XORGSERVER_INCLUDE_DIRS} ${PC_XORGSERVER_INCLUDEDIR}
++)
++
++include(FindPackageHandleStandardArgs)
++find_package_handle_standard_args(XORGSERVER REQUIRED_VARS XORGSERVER_INCLUDE_DIRS)
++
++mark_as_advanced(XORGSERVER_INCLUDE_DIRS)
+diff --git a/kcms/CMakeLists.txt b/kcms/CMakeLists.txt
+index 7ab966e8e..ce730f537 100644
+--- a/kcms/CMakeLists.txt
++++ b/kcms/CMakeLists.txt
+@@ -58,7 +58,7 @@ if(X11_Xcursor_FOUND)
+     add_subdirectory(cursortheme)
+ endif()
+ 
+-if (SYNAPTICS_FOUND AND X11_Xinput_FOUND)
++if (XORGSERVER_FOUND AND SYNAPTICS_FOUND AND X11_Xinput_FOUND)
+     add_subdirectory(touchpad)
+ endif()
+ 
+diff --git a/kcms/touchpad/src/backends/x11.cmake b/kcms/touchpad/src/backends/x11.cmake
+index 9248eff7c..8a584e939 100644
+--- a/kcms/touchpad/src/backends/x11.cmake
++++ b/kcms/touchpad/src/backends/x11.cmake
+@@ -11,7 +11,7 @@ endif()
+ include_directories(${X11_Xinput_INCLUDE_PATH}
+                     ${X11_X11_INCLUDE_PATH}
+                     ${Synaptics_INCLUDE_DIRS}
+-                    ${XORG_INCLUDE_DIRS}
++                    ${XORGSERVER_INCLUDE_DIRS}
+ )
+ 
+ SET(backend_SRCS
+-- 
+2.26.2
+

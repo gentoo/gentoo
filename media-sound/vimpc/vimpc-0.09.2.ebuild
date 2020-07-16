@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/boysetsfrog/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="boost taglib"
 
 RDEPEND="dev-libs/libpcre
@@ -31,8 +31,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable boost) \
-		$(use_enable taglib) \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF}
+		$(use_enable taglib)
 }
 
 src_install() {

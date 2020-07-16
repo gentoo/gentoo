@@ -1,0 +1,21 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ec806fe..4101c09 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -19,11 +19,11 @@ endif ()
+ set (BUILD_SHARED_LIBS yes CACHE BOOL "Build shared library or not")
+ set (BUILD_TESTING no CACHE BOOL "Build tests or not")
+ 
+-if (NOT (CMAKE_BUILD_TYPE STREQUAL "Debug" OR
+-        CMAKE_BUILD_TYPE STREQUAL "Release"))
+-    message("${CMAKE_BUILD_TYPE}")
+-    message(FATAL_ERROR "CMAKE_BUILD_TYPE must be one of: Debug, Release (current value: '${CMAKE_BUILD_TYPE}')")
+-endif ()
++# if (NOT (CMAKE_BUILD_TYPE STREQUAL "Debug" OR
++#         CMAKE_BUILD_TYPE STREQUAL "Release"))
++#     message("${CMAKE_BUILD_TYPE}")
++#     message(FATAL_ERROR "CMAKE_BUILD_TYPE must be one of: Debug, Release (current value: '${CMAKE_BUILD_TYPE}')")
++# endif ()
+ 
+ if ("${CMAKE_SIZEOF_VOID_P}" STREQUAL "8")
+     set (PLATFORM "x64")

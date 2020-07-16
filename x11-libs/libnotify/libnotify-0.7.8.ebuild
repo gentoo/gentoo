@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,20 +10,23 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/libnotify"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
-IUSE="+introspection test"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+IUSE="gtk-doc +introspection test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-eselect/eselect-notify-send
 	>=dev-libs/glib-2.26:2[${MULTILIB_USEDEP}]
 	x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
-	introspection? ( >=dev-libs/gobject-introspection-1.32:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	>=dev-libs/gobject-introspection-common-1.32
 	dev-util/glib-utils
 	virtual/pkgconfig
+	gtk-doc? ( dev-util/gtk-doc
+		app-text/docbook-xml-dtd:4.1.2 )
 	test? ( x11-libs/gtk+:3[${MULTILIB_USEDEP}] )
 "
 PDEPEND="virtual/notification-daemon"
@@ -37,7 +40,7 @@ multilib_src_configure() {
 	local emesonargs=(
 		-Dtests="$(usex test true false)"
 		-Dintrospection="$(multilib_native_usex introspection enabled disabled)"
-		-Dgtk_doc=false
+		-Dgtk_doc=$(multilib_native_usex gtk-doc true false)
 		-Ddocbook_docs=disabled
 	)
 	meson_src_configure

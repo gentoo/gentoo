@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils flag-o-matic multilib
+inherit eutils flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="A native Prolog compiler with constraint solving over finite domains (FD)"
 HOMEPAGE="http://www.gprolog.org/"
@@ -30,6 +30,9 @@ src_prepare() {
 
 src_configure() {
 	CFLAGS_MACHINE="`get-flag -march` `get-flag -mcpu` `get-flag -mtune`"
+
+	# Work around -fno-common ( GCC10 default ), bug #71202
+	append-flags -fcommon
 
 	append-flags -fno-strict-aliasing
 	use debug && append-flags -DDEBUG

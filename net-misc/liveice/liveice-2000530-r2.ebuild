@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Live Source Client For IceCast"
 HOMEPAGE="http://star.arm.ac.uk/~spm/software/liveice.html"
-SRC_URI="http://star.arm.ac.uk/~spm/software/liveice.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

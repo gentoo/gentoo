@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -12,9 +12,9 @@ SRC_URI="http://download.camlcity.org/download/${MY_P}.tar.gz"
 
 LICENSE="ZLIB GPL-2+"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="gtk kerberos tk httpd +ocamlopt +pcre ssl zip"
-RESTRICT="installsources"
+RESTRICT="installsources strip"
 
 # the auth-dh compile flag has been disabled as well, since it depends on
 # ocaml-cryptgps, which is not available.
@@ -69,9 +69,4 @@ src_compile() {
 	if use ocamlopt; then
 		emake -j1 opt
 	fi
-}
-
-src_install() {
-	export STRIP_MASK="*/bin/*"
-	findlib_src_install
 }

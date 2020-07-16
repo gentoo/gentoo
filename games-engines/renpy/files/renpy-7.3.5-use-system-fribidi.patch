@@ -1,0 +1,42 @@
+diff '--color=auto' -Naurd renpy-7.3.5-source.orig/module/renpybidicore.c renpy-7.3.5-source/module/renpybidicore.c
+--- renpy-7.3.5-source.orig/module/renpybidicore.c	2018-10-12 08:37:06.000000000 +0300
++++ renpy-7.3.5-source/module/renpybidicore.c	2020-05-09 12:46:30.811881811 +0300
+@@ -1,5 +1,5 @@
+ #include <Python.h>
+-#include <fribidi-src/lib/fribidi.h>
++#include <fribidi.h>
+ #include <stdlib.h>
+ 
+ #ifndef alloca
+--- renpy-7.3.5-source.orig/module/setup.py	2019-08-09 05:11:58.000000000 +0300
++++ renpy-7.3.5-source/module/setup.py	2020-05-09 12:46:46.463942266 +0300
+@@ -119,28 +119,13 @@
+     sdl + [ png, 'z', 'm' ])
+ 
+ FRIBIDI_SOURCES = """
+-fribidi-src/lib/fribidi.c
+-fribidi-src/lib/fribidi-arabic.c
+-fribidi-src/lib/fribidi-bidi.c
+-fribidi-src/lib/fribidi-bidi-types.c
+-fribidi-src/lib/fribidi-deprecated.c
+-fribidi-src/lib/fribidi-joining.c
+-fribidi-src/lib/fribidi-joining-types.c
+-fribidi-src/lib/fribidi-mem.c
+-fribidi-src/lib/fribidi-mirroring.c
+-fribidi-src/lib/fribidi-run.c
+-fribidi-src/lib/fribidi-shape.c
+ renpybidicore.c
+ """.split()
+ cython(
+     "_renpybidi",
+     FRIBIDI_SOURCES,
+-    includes=[
+-        BASE + "/fribidi-src/",
+-        BASE + "/fribidi-src/lib/",
+-        ],
++    libs=["fribidi"],
+     define_macros=[
+-        ("FRIBIDI_ENTRY", ""),
+         ("HAVE_CONFIG_H", "1"),
+         ])
+ 

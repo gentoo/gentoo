@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,11 +10,14 @@ SRC_URI="mirror://sourceforge/libircclient/${P}.tar.gz"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="doc ipv6 ssl static-libs threads"
+KEYWORDS="amd64 ppc ppc64 sparc x86"
+IUSE="doc ipv6 libressl ssl static-libs threads"
 
-DEPEND="ssl? ( dev-libs/openssl:0 )"
-RDEPEND=${DEPEND}
+DEPEND="ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)"
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.8-build.patch

@@ -11,7 +11,7 @@ SRC_URI="https://people.freedesktop.org/~berniet/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="static-libs test-program"
 
 RDEPEND="virtual/libusb:0="

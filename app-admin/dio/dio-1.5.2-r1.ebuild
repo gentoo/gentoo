@@ -9,7 +9,7 @@ DESCRIPTION="A device I/O monitoring tool"
 HOMEPAGE="https://github.com/donaldmcintosh/dio"
 SRC_URI="https://github.com/donaldmcintosh/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="MIT"
 SLOT="0"
 

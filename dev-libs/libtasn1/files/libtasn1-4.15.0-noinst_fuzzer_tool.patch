@@ -1,0 +1,35 @@
+From 49d6e3f0a4b5fd4da31228d23ae9efabef20c1ca Mon Sep 17 00:00:00 2001
+From: Nikos Mavrogiannopoulos <nmav@gnutls.org>
+Date: Thu, 21 Nov 2019 16:09:20 +0100
+Subject: [PATCH] fuzz: do not install generated fuzzers and tools
+
+Signed-off-by: Nikos Mavrogiannopoulos <nmav@gnutls.org>
+---
+ fuzz/Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/fuzz/Makefile.am b/fuzz/Makefile.am
+index ae6616b..aa621ce 100644
+--- a/fuzz/Makefile.am
++++ b/fuzz/Makefile.am
+@@ -38,7 +38,7 @@ FUZZERS = \
+ 
+ if FUZZING
+   # fuzzing mode, enabled with ./configure --enable-fuzzing
+-  bin_PROGRAMS = $(FUZZERS)
++  noinst_PROGRAMS = $(FUZZERS)
+   AM_LDFLAGS += -fsanitize=fuzzer
+   MAIN = fuzzer.h
+ else
+@@ -47,7 +47,7 @@ else
+   TESTS = $(FUZZERS)
+   check_PROGRAMS = $(FUZZERS)
+ 
+-  bin_PROGRAMS = corpus2array
++  noinst_PROGRAMS = corpus2array
+   corpus2array_SOURCES = corpus2array.c
+ endif
+ 
+-- 
+2.22.2
+

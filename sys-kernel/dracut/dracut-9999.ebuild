@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]] ; then
 else
 	[[ "${PV}" = *_rc* ]] || \
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-	SRC_URI="https://github.com/dracutdevs/dracut/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://www.kernel.org/pub/linux/utils/boot/${PN}/${P}.tar.xz"
 fi
 
 DESCRIPTION="Generic initramfs generation tool"
@@ -31,19 +31,24 @@ RDEPEND="
 	>=sys-apps/kmod-23[tools]
 	|| (
 		>=sys-apps/sysvinit-2.87-r3
+		sys-apps/openrc[sysv-utils(-),selinux?]
 		sys-apps/systemd[sysv-utils]
 	)
 	>=sys-apps/util-linux-2.21
 	virtual/pkgconfig
 	virtual/udev
 
+	elibc_musl? ( sys-libs/fts-standalone )
 	selinux? (
 		sec-policy/selinux-dracut
 		sys-libs/libselinux
 		sys-libs/libsepol
 	)
-	"
-DEPEND=">=sys-apps/kmod-23"
+"
+DEPEND="
+	>=sys-apps/kmod-23
+	elibc_musl? ( sys-libs/fts-standalone )
+"
 
 BDEPEND="
 	app-text/asciidoc
@@ -51,14 +56,15 @@ BDEPEND="
 	>=app-text/docbook-xsl-stylesheets-1.75.2
 	>=dev-libs/libxslt-1.1.26
 	virtual/pkgconfig
-	"
+"
 
-DOCS=( AUTHORS HACKING NEWS README README.generic README.kernel README.modules
+DOCS=( AUTHORS HACKING NEWS README.md README.generic README.kernel README.modules
 	README.testsuite TODO )
 
 QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 
 PATCHES=(
+	"${FILESDIR}"/050-gentoo-ldconfig-paths.patch
 )
 
 src_configure() {
@@ -74,7 +80,7 @@ src_configure() {
 	echo ./configure "${myconf[@]}"
 	./configure "${myconf[@]}" || die
 
-	if [[ ${PV} != 9999 ]] ; then
+	if [[ ${PV} != 9999 && ! -f dracut-version.sh ]] ; then
 		# Source tarball from github doesn't include this file
 		echo "DRACUT_VERSION=${PV}" > dracut-version.sh || die
 	fi
@@ -150,4 +156,7 @@ pkg_postinst() {
 		"Install ssh and scp along with config files and specified keys" \
 		net-misc/openssh
 	optfeature "Enable logging with rsyslog" app-admin/rsyslog
+	optfeature \
+		"Enable rngd service to help generating entropy early during boot" \
+		sys-apps/rng-tools
 }

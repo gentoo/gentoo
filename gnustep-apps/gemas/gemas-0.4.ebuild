@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ inherit eutils gnustep-2
 MY_P=${P/g/G}
 DESCRIPTION="a simple code editor for GNUstep"
 HOMEPAGE="http://wiki.gnustep.org/index.php/Gemas.app"
-SRC_URI="http://download.gna.org/gnustep-nonfsf/${MY_P}.tar.gz"
+SRC_URI="mirror://nongnu/gnustep-nonfsf/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,10 @@ IUSE=""
 DEPEND="
 	app-text/psutils
 	dev-python/dbus-python[${PYTHON_USEDEP}]
-	dev-python/numpy[${PYTHON_USEDEP}]
+	|| (
+		dev-python/numpy-python2[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+	)
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pyglet[${PYTHON_USEDEP}]
 	dev-python/pyserial[${PYTHON_USEDEP}]
@@ -34,7 +37,7 @@ PATCHES=(
 	"${WORKDIR}/${PN}-gtk3.patch"
 )
 
-src_unpack(){
+src_unpack() {
 	default_src_unpack
 	git-r3_src_unpack
 }

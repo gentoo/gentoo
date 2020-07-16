@@ -11,7 +11,7 @@ SRC_URI="https://www.nasm.us/pub/nasm/releasebuilds/${PV/_}/${P/_}.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 x86 ~x64-cygwin ~amd64-fbsd ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 ~arm64 ~ia64 ~ppc64 x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="doc"
 
 RDEPEND=""

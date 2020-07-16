@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>vdupras@gentoo.org</email>
-    <name>Virgil Dupras</name>
-  </maintainer>
-  <maintainer type="project">
-    <email>games@gentoo.org</email>
-    <name>Gentoo Games Project</name>
-  </maintainer>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="kiosk">Enable kiosk mode by default (for use by small children or on a self-service host machine)</flag>
+	</use>
 </pkgmetadata>

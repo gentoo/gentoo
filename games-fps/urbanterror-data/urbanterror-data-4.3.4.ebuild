@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -30,6 +30,7 @@ unset MY_CTR
 LICENSE="Q3AEULA-20000111 urbanterror-4.2-maps"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+RESTRICT="bindist"
 DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/${MY_PN}43"

@@ -1,5 +1,5 @@
---- data/beaver.desktop
-+++ data/beaver.desktop
+--- a/data/beaver.desktop
++++ b/data/beaver.desktop
 @@ -1,5 +1,4 @@
  [Desktop Entry]
 -Encoding=UTF-8

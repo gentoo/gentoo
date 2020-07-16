@@ -1,0 +1,32 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -59,7 +59,6 @@
+ AC_DEFINE_UNQUOTED(DEFAULT_ARGV, "$DEFAULT_ARGV" , [ The default argv ])
+ 
+ AC_PROG_INTLTOOL()
+-AM_GLIB_GNU_GETTEXT
+ PKG_PROG_PKG_CONFIG
+ 
+ PKG_CHECK_MODULES(modules, [imlib2 x11])
+--- a/etc/wbar.cfg.in
++++ b/etc/wbar.cfg.in
+@@ -2,8 +2,3 @@
+ c: @PACKAGE_NAME@ @DEFAULT_ARGV@
+ t: none
+ 
+-i: @PIXMAPDIR@/@PACKAGE_NAME@/wbar.png
+-c: wbar-config
+-t: Config
+-
+-
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -51,7 +51,7 @@
+ $(top_srcdir)/src/utils/i18n.h
+ 
+ wbar_CXXFLAGS = @modules_CFLAGS@
+-wbar_LDADD = @modules_LIBS@ @INTLLIBS@
++wbar_LDADD = @modules_LIBS@ 
+ 
+ if WBAR_CONFIG
+ wbar_config_CXXFLAGS = @gui_modules_CFLAGS@

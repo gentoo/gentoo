@@ -1,42 +1,42 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{5,6,7} )
-inherit fcaps flag-o-matic git-r3 multilib python-r1 qmake-utils user xdg-utils cmake-utils
+PYTHON_COMPAT=( python3_{6,7} )
+inherit fcaps flag-o-matic git-r3 multilib python-any-r1 qmake-utils user xdg-utils cmake
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
 EGIT_REPO_URI="https://code.wireshark.org/review/wireshark"
-
 LICENSE="GPL-2"
+
 SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="
-	adns androiddump bcg729 brotli +capinfos +captype ciscodump +dftest doc
-	dpauxmon +dumpcap +editcap kerberos libxml2 lua lz4 maxminddb +mergecap
-	+netlink nghttp2 +plugins plugin_ifdemo +pcap +qt5 +randpkt +randpktdump
+	androiddump bcg729 brotli +capinfos +captype ciscodump +dftest doc dpauxmon
+	+dumpcap +editcap http2 kerberos libxml2 lua lz4 maxminddb +mergecap
+	+minizip +netlink +plugins plugin-ifdemo +pcap +qt5 +randpkt +randpktdump
 	+reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl sdjournal
-	+text2pcap tfshark +tshark +udpdump zlib
+	test +text2pcap tfshark +tshark +udpdump zlib
 "
-
 S=${WORKDIR}/${P/_/}
 
 CDEPEND="
 	>=dev-libs/glib-2.32:2
+	>=net-dns/c-ares-1.5
 	dev-libs/libgcrypt:0
-	adns? ( >=net-dns/c-ares-1.5 )
 	bcg729? ( media-libs/bcg729 )
 	brotli? ( app-arch/brotli )
 	ciscodump? ( >=net-libs/libssh-0.6 )
 	filecaps? ( sys-libs/libcap )
+	http2? ( net-libs/nghttp2 )
 	kerberos? ( virtual/krb5 )
 	libxml2? ( dev-libs/libxml2 )
 	lua? ( >=dev-lang/lua-5.1:* )
 	lz4? ( app-arch/lz4 )
 	maxminddb? ( dev-libs/libmaxminddb )
+	minizip? ( sys-libs/zlib[minizip] )
 	netlink? ( dev-libs/libnl:3 )
-	nghttp2? ( net-libs/nghttp2 )
 	pcap? ( net-libs/libpcap )
 	qt5? (
 		dev-qt/qtcore:5
@@ -62,8 +62,6 @@ DEPEND="
 	${PYTHON_DEPS}
 "
 BDEPEND="
-	!<perl-core/Pod-Simple-3.170
-	!<virtual/perl-Pod-Simple-3.170
 	dev-lang/perl
 	sys-devel/bison
 	sys-devel/flex
@@ -75,6 +73,10 @@ BDEPEND="
 	qt5? (
 		dev-qt/linguist-tools:5
 	)
+	test? (
+		dev-python/pytest
+		dev-python/pytest-xdist
+	)
 "
 RDEPEND="
 	${CDEPEND}
@@ -82,15 +84,10 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-wireshark )
 "
 REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
-	plugin_ifdemo? ( plugins )
+	plugin-ifdemo? ( plugins )
 "
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.4-androiddump.patch
 	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
-	"${FILESDIR}"/${PN}-2.9.0-tfshark-libm.patch
-	"${FILESDIR}"/${PN}-99999999-androiddump-wsutil.patch
-	"${FILESDIR}"/${PN}-99999999-qtsvg.patch
 	"${FILESDIR}"/${PN}-99999999-ui-needs-wiretap.patch
 )
 
@@ -119,7 +116,7 @@ src_configure() {
 		append-cxxflags -fPIC -DPIC
 	fi
 
-	python_setup 'python3*'
+	python_setup
 
 	mycmakeargs+=(
 		$(use androiddump && use pcap && echo -DEXTCAP_ANDROIDDUMP_LIBPCAP=yes)
@@ -148,22 +145,22 @@ src_configure() {
 		-DBUILD_tshark=$(usex tshark)
 		-DBUILD_udpdump=$(usex udpdump)
 		-DBUILD_wireshark=$(usex qt5)
-		-DCMAKE_INSTALL_DOCDIR="/usr/share/doc/${PF}"
+		-DCMAKE_INSTALL_DOCDIR="${EROOT}/usr/share/doc/${PF}"
 		-DDISABLE_WERROR=yes
 		-DENABLE_BCG729=$(usex bcg729)
 		-DENABLE_BROTLI=$(usex brotli)
 		-DENABLE_CAP=$(usex filecaps caps)
-		-DENABLE_CARES=$(usex adns)
 		-DENABLE_GNUTLS=$(usex ssl)
 		-DENABLE_KERBEROS=$(usex kerberos)
 		-DENABLE_LIBXML2=$(usex libxml2)
 		-DENABLE_LUA=$(usex lua)
 		-DENABLE_LZ4=$(usex lz4)
+		-DENABLE_MINIZIP=$(usex minizip)
 		-DENABLE_NETLINK=$(usex netlink)
-		-DENABLE_NGHTTP2=$(usex nghttp2)
+		-DENABLE_NGHTTP2=$(usex http2)
 		-DENABLE_PCAP=$(usex pcap)
 		-DENABLE_PLUGINS=$(usex plugins)
-		-DENABLE_PLUGIN_IFDEMO=$(usex plugin_ifdemo)
+		-DENABLE_PLUGIN_IFDEMO=$(usex plugin-ifdemo)
 		-DENABLE_SBC=$(usex sbc)
 		-DENABLE_SMI=$(usex smi)
 		-DENABLE_SNAPPY=$(usex snappy)
@@ -171,15 +168,18 @@ src_configure() {
 		-DENABLE_ZLIB=$(usex zlib)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
-	cmake-utils_src_test
+	cmake_build test-programs
+
+	myctestargs=( --disable-capture --skip-missing-programs=all --verbose )
+	cmake_src_test
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	# FAQ is not required as is installed from help/faq.txt
 	dodoc AUTHORS ChangeLog NEWS README* doc/randpkt.txt doc/README*
@@ -220,6 +220,10 @@ src_install() {
 			insinto /usr/share/icons/hicolor/${s}x${s}/mimetypes
 			newins image/WiresharkDoc-${s}.png application-vnd.tcpdump.pcap.png
 		done
+	fi
+
+	if [[ -d "${D}"/usr/share/appdata ]]; then
+		rm -r "${D}"/usr/share/appdata || die
 	fi
 }
 

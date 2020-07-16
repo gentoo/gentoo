@@ -24,7 +24,7 @@ src_prepare() {
 }
 
 src_install() {
-	emake install || die
+	emake install
 }
 
 pkg_postinst() {

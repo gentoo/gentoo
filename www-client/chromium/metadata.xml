@@ -5,12 +5,13 @@
 		<email>chromium@gentoo.org</email>
 		<name>Chromium in Gentoo Project</name>
 	</maintainer>
-	<longdescription>Chromium is the open-source web browser project behind Google Chrome</longdescription>
 	<use>
 		<flag name="closure-compile">Enable closure type-checking for Chrome's web technology-based UI. Requires Java.</flag>
+		<flag name="js-type-check">Enable JavaScript type-checking for Chrome's web technology-based UI. Requires Java.</flag>
 		<flag name="component-build">Split build into more shared libraries to speed up linking. Mostly intended for debugging and development, NOT RECOMMENDED for general use.</flag>
+		<flag name="headless">Build Ozone only with headless backend, NOT RECOMMENDED for general use.</flag>
 		<flag name="hangouts">Enable support for Google Hangouts features such as screen sharing</flag>
-		<flag name="jumbo-build">Combine source files to speed up build process.</flag>
+		<flag name="ozone">Enable Ozone platform abstraction layer with X11 backend.</flag>
 		<flag name="pic">Disable optimized assembly code that is not PIC friendly</flag>
 		<flag name="proprietary-codecs">Enable proprietary codecs like H.264, MP3</flag>
 		<flag name="suid">Build the SUID sandbox, which is only needed on CONFIG_USER_NS=n kernels</flag>
@@ -18,6 +19,7 @@
 		<flag name="system-icu">Use system icu instead of the bundled one</flag>
 		<flag name="system-libvpx">Use system libvpx instead of the bundled one</flag>
 		<flag name="tcmalloc">Use bundled tcmalloc instead of system malloc</flag>
+		<flag name="wayland">Enable Wayland backend for Ozone.</flag>
 		<flag name="widevine">Unsupported closed-source DRM capability (required by Netflix VOD)</flag>
 	</use>
 </pkgmetadata>

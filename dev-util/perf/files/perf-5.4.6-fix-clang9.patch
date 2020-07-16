@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/695726
+Created-By: Maciej S. Szmigiero <mail@maciej.szmigiero.name>
+Created-By: Dennis Schridde <devurandom@gmx.net>
+--- a/tools/perf/util/c++/clang.cpp.orig	2019-12-20 16:39:21.015363866 +0100
++++ b/tools/perf/util/c++/clang.cpp	2019-12-20 16:40:04.051639185 +0100
+@@ -71,7 +71,11 @@
+ 	CompilerInstance Clang;
+ 	Clang.createDiagnostics();
+ 
++#if CLANG_VERSION_MAJOR < 9
+ 	Clang.setVirtualFileSystem(&*VFS);
++#else
++	Clang.createFileManager(&*VFS);
++#endif
+ 
+ #if CLANG_VERSION_MAJOR < 4
+ 	IntrusiveRefCntPtr<CompilerInvocation> CI =

@@ -1,0 +1,20 @@
+Fix the expected data output for the shuffle test.
+
+--- a/csvfix/tests/correct/shuffle.test
++++ b/csvfix/tests/correct/shuffle.test
+@@ -5,10 +5,10 @@
+ "Oscar","Wilde","M"
+ "Charles","Dickens","M"
+ "George","Elliot","F"
+-"Charles","Dickens","M"
+-"Austen","F","Jane"
++"Charles","M","Dickens"
++"Jane","F","Austen"
+ "Herman","M","Melville"
+ "M","Flann","O'Brien"
+-"Elliot","George","F"
+-"Virginia","Woolf","F"
+-"M","Wilde","Oscar"
++"George","F","Elliot"
++"Woolf","F","Virginia"
++"Wilde","M","Oscar"

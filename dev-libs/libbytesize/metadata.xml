@@ -5,6 +5,9 @@
     <email>polynomial-c@gentoo.org</email>
     <name>Lars Wendler</name>
   </maintainer>
+  <use>
+    <flag name="tools">Build bscalc python CLI tool</flag>
+  </use>
   <upstream>
     <remote-id type="github">rhinstaller/libbytesize</remote-id>
   </upstream>

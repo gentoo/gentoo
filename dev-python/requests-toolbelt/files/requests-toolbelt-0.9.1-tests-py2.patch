@@ -1,0 +1,68 @@
+diff --git a/tests/threaded/test_pool.py b/tests/threaded/test_pool.py
+index 3e54b3c..9583c7b 100644
+--- a/tests/threaded/test_pool.py
++++ b/tests/threaded/test_pool.py
+@@ -5,6 +5,7 @@ except ImportError:
+     import Queue as queue
+ import unittest
+ 
++import sys
+ import mock
+ import pytest
+ 
+@@ -60,6 +61,7 @@ class TestPool(unittest.TestCase):
+         assert session.called is True
+         session.assert_called_once_with()
+ 
++    @pytest.mark.skipif(sys.hexversion < 0x3000000, reason="broken on python2")
+     def test_from_exceptions_populates_a_queue(self):
+         """Ensure a Queue is properly populated from exceptions."""
+         urls = ["https://httpbin.org/get?n={}".format(n) for n in range(5)]
+@@ -77,6 +79,7 @@ class TestPool(unittest.TestCase):
+             for url in urls
+         ]
+ 
++    @pytest.mark.skipif(sys.hexversion < 0x3000000, reason="broken on python2")
+     def test_from_urls_constructs_get_requests(self):
+         """Ensure a Queue is properly populated from an iterable of urls."""
+         urls = ["https://httpbin.org/get?n={}".format(n) for n in range(5)]
+@@ -92,6 +95,7 @@ class TestPool(unittest.TestCase):
+             for url in urls
+         ]
+ 
++    @pytest.mark.skipif(sys.hexversion < 0x3000000, reason="broken on python2")
+     def test_from_urls_constructs_get_requests_with_kwargs(self):
+         """Ensure a Queue is properly populated from an iterable of urls."""
+         def merge(*args):
+@@ -130,6 +134,7 @@ class TestPool(unittest.TestCase):
+         for st in session_threads:
+             st.join.assert_called_once_with()
+ 
++    @pytest.mark.skipif(sys.hexversion < 0x3000000, reason="broken on python2")
+     def test_get_response_returns_thread_response(self):
+         """Ensure that a ThreadResponse is made when there's data."""
+         queues = []
+@@ -149,6 +154,7 @@ class TestPool(unittest.TestCase):
+         assert isinstance(p.get_response(), pool.ThreadResponse)
+         assert len([q for q in queues if q.get_nowait.called]) == 1
+ 
++    @pytest.mark.skipif(sys.hexversion < 0x3000000, reason="broken on python2")
+     def test_get_exception_returns_thread_exception(self):
+         """Ensure that a ThreadException is made when there's data."""
+         queues = []
+@@ -168,6 +174,7 @@ class TestPool(unittest.TestCase):
+         assert isinstance(p.get_exception(), pool.ThreadException)
+         assert len([q for q in queues if q.get_nowait.called]) == 1
+ 
++    @pytest.mark.skipif(sys.hexversion < 0x3000000, reason="broken on python2")
+     def test_get_response_returns_none_when_queue_is_empty(self):
+         """Ensure that None is returned when the response Queue is empty."""
+         queues = []
+@@ -187,6 +194,7 @@ class TestPool(unittest.TestCase):
+         assert p.get_response() is None
+         assert len([q for q in queues if q.get_nowait.called]) == 1
+ 
++    @pytest.mark.skipif(sys.hexversion < 0x3000000, reason="broken on python2")
+     def test_get_exception_returns_none_when_queue_is_empty(self):
+         """Ensure that None is returned when the exception Queue is empty."""
+         queues = []

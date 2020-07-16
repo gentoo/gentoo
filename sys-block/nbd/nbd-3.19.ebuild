@@ -10,7 +10,7 @@ if [[ "${PV}" = 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/NetworkBlockDevice/nbd.git"
 else
 	SRC_URI="mirror://sourceforge/nbd/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 ~sparc x86"
 fi
 LICENSE="GPL-2"
 SLOT="0"

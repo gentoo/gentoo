@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>nimiux@gentoo.org</email>
-		<name>Chema Alonso</name>
+		<email>monsieurp@gentoo.org</email>
+		<name>Patrice Clement</name>
 	</maintainer>
 	<longdescription>
 	Vifm is a ncurses based file manager with vi like keybindings. If you
@@ -20,10 +20,7 @@
 		<flag name="developer">Enable features of interest to developers</flag>
 		<flag name="extended-keys">Support for extended keys (arrows, home etc)</flag>
 		<flag name="gtk">Use gtk+ to determine mimetypes</flag>
-		<flag name="magic">Use libmagic to determine mimetypes</flag>
 		<flag name="vim">Install the vifm vim plugin and vim-compatible documentation</flag>
-		<flag name="vim-syntax">Pulls in related vim syntax scripts</flag>
-		<flag name="X">Add support for X11</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">vifm</remote-id>

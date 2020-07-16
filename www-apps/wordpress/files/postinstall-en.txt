@@ -25,13 +25,6 @@ Wordpress has had a history of serious security flaws. Any application
 with less widespread use but the same amount of security issues would
 have been removed from the tree.
 
-After a short period of being in the unstable tree we once again decided
-that we hard mask the package.
-
-THIS MEANS THAT THERE IS NO GUARANTEE WHATSOEVER THAT THE PACKAGE WILL
-GET UPGRADED WITHIN A REASONABLE AMOUNT OF TIME EVEN IN THE CASE OF
-SEVERE SECURITY ISSUES.
-
 We consider installing this package a severe risk to your system and 
 you should keep a close eye on the common security trackers so
 that you are able to fix problems with your installation yourself if

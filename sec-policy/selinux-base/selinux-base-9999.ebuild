@@ -16,7 +16,7 @@ else
 	KEYWORDS="~amd64 -arm ~arm64 ~mips ~x86"
 fi
 
-IUSE="doc +open_perms +peer_perms systemd +ubac +unconfined"
+IUSE="doc +unknown-perms systemd +ubac +unconfined"
 
 DESCRIPTION="Gentoo base policy for SELinux"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:SELinux"
@@ -48,14 +48,11 @@ src_configure() {
 
 	# Update the SELinux refpolicy capabilities based on the users' USE flags.
 
-	if ! use peer_perms; then
-		sed -i -e '/network_peer_controls/d' \
-			"${S}/refpolicy/policy/policy_capabilities" || die
-	fi
-
-	if ! use open_perms; then
-		sed -i -e '/open_perms/d' \
-			"${S}/refpolicy/policy/policy_capabilities" || die
+	if use unknown-perms; then
+		sed -i -e '/^UNK_PERMS/s/deny/allow/' "${S}/refpolicy/build.conf" \
+			|| die "Failed to allow Unknown Permissions Handling"
+		sed -i -e '/^UNK_PERMS/s/deny/allow/' "${S}/refpolicy/Makefile" \
+			|| die "Failed to allow Unknown Permissions Handling"
 	fi
 
 	if ! use ubac; then
@@ -72,7 +69,7 @@ src_configure() {
 
 	# Prepare initial configuration
 	cd "${S}/refpolicy" || die
-	emake conf || die "Make conf failed"
+	emake conf
 
 	# Setup the policies based on the types delivered by the end user.
 	# These types can be "targeted", "strict", "mcs" and "mls".
@@ -125,11 +122,8 @@ src_install() {
 	for i in ${POLICY_TYPES}; do
 		cd "${S}/${i}" || die
 
-		emake DESTDIR="${D}" install \
-			|| die "${i} install failed."
-
-		emake DESTDIR="${D}" install-headers \
-			|| die "${i} headers install failed."
+		emake DESTDIR="${D}" install
+		emake DESTDIR="${D}" install-headers
 
 		echo "run_init_t" > "${D}/etc/selinux/${i}/contexts/run_init_type" || die
 

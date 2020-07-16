@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ CABAL_FEATURES="bin"
 inherit haskell-cabal elisp-common
 
 DESCRIPTION="Agda standard library"
-HOMEPAGE="http://wiki.portal.chalmers.se/agda/"
+HOMEPAGE="https://wiki.portal.chalmers.se/agda/"
 SRC_URI="https://github.com/agda/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"

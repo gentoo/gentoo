@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ MY_P=${PN}-${MY_PV}
 inherit user
 
 DESCRIPTION="UDP packets forwarder and duplicator"
-HOMEPAGE="https://github.com/sleinen/${PN}"
+HOMEPAGE="https://github.com/sleinen/samplicator"
 SRC_URI="https://github.com/sleinen/${PN}/releases/download/${MY_PV}/${MY_P}.tar.gz"
 
 LICENSE="Artistic GPL-2"

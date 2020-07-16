@@ -1,0 +1,23 @@
+From 90b5f71f3803747a788c693d4bcb7e3b60bb4911 Mon Sep 17 00:00:00 2001
+From: Thomas Parmelan <36071478+tompar28@users.noreply.github.com>
+Date: Sat, 3 Aug 2019 20:02:34 +0200
+Subject: [PATCH] Fix issue #91 (See
+ https://github.com/sukria/Backup-Manager/issues/91#issuecomment-381925277)
+ (#120)
+
+---
+ backup-manager | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/backup-manager b/backup-manager
+index 331cfa9..53e622a 100755
+--- a/backup-manager
++++ b/backup-manager
+@@ -34,7 +34,6 @@ vardir="/var/lib/backup-manager"
+ bindir="/usr/bin"
+ bmu="$bindir/backup-manager-upload"
+ bmp="$bindir/backup-manager-purge"
+-export BM_BMP_PATH=$bmp
+ 
+ # Find which lockfile to use
+ # If we are called by an unprivileged user, use a lockfile inside the user's home;

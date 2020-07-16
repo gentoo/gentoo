@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,9 @@ DESCRIPTION="Simple DNS resolver with caching"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+# License note: says 'perl 5.8.8 or any later' bug #718946
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-perl/AnyEvent

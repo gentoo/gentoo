@@ -2,12 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>ck+gentoo@bl4ckb0x.de</email>
+		<email>conikost@gentoo.org</email>
 		<name>Conrad Kostecki</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
 		ClamTk is a frontend for ClamAV (Clam Antivirus).
@@ -21,7 +17,7 @@
 		<flag name="thunar">Install the Thunar plugin.</flag>
 	</use>
 	<upstream>
-		<bugs-to>https://github.com/dave-theunsub/clamtk/issues</bugs-to>
-		<remote-id type="github">dave-theunsub/clamtk</remote-id>
+		<bugs-to>https://gitlab.com/dave_m/clamtk/issues</bugs-to>
+		<remote-id type="gitlab">dave_m/clamtk</remote-id>
 	</upstream>
 </pkgmetadata>

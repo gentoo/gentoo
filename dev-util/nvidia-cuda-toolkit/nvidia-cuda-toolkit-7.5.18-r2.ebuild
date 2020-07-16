@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit check-reqs cuda unpacker versionator
+inherit check-reqs cuda eutils toolchain-funcs unpacker versionator
 
 MYD=$(get_version_component_range 1-2)
 
@@ -15,6 +15,7 @@ SLOT="0/${PV}"
 LICENSE="NVIDIA-CUDA"
 KEYWORDS="-* ~amd64 ~amd64-linux"
 IUSE="debugger doc eclipse profiler"
+RESTRICT="bindist mirror"
 
 DEPEND=""
 RDEPEND="${DEPEND}
@@ -47,6 +48,7 @@ src_unpack() {
 src_prepare() {
 	local cuda_supported_gcc
 
+	# ATTENTION: change requires revbump
 	cuda_supported_gcc="4.7 4.8 4.9"
 
 	sed \

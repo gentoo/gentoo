@@ -2,9 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>sping@gentoo.org</email>
+		<email>torokhov-s-a@yandex.ru</email>
+		<name>Sergey Torokhov</name>
 	</maintainer>
-	<use>
-		<flag name='cpu_flags_x86_f16c'>Take advantage of CPU feature f16c</flag>
-	</use>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 </pkgmetadata>

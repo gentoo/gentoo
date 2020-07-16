@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="cache">Enable tags caching support</flag>
-		<flag name="magic">Use libmagic to determine mimetypes</flag>
 		<flag name="sid">Build with SID (Commodore 64 Audio) support</flag>
 		<flag name="tremor">Build vorbis support using an integer implementation
 			of the vorbis library (<pkg>media-libs/tremor</pkg>)</flag>

@@ -1,0 +1,26 @@
+From ab5ba061c9beecb00064cb5698f1196d38cf0b6d Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 24 Jul 2019 10:07:44 +0200
+Subject: [PATCH] Fix desktop icon name
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ cyacas/yacas-gui/yacas-gui.desktop | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cyacas/yacas-gui/yacas-gui.desktop b/cyacas/yacas-gui/yacas-gui.desktop
+index b7d44574..ab509a2c 100644
+--- a/cyacas/yacas-gui/yacas-gui.desktop
++++ b/cyacas/yacas-gui/yacas-gui.desktop
+@@ -2,7 +2,7 @@
+ Name=yacas-gui
+ Comment=Yacas GUI
+ Exec=yacas-gui
+-Icon=yacas_gui
++Icon=yacas-gui
+ Terminal=false
+ Type=Application
+ Categories=Science;Math
+-- 
+2.22.0
+

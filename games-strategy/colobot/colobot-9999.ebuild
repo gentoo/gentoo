@@ -1,27 +1,26 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils desktop
+inherit cmake desktop git-r3 xdg-utils
 
-DESCRIPTION="Colobot is an educational real-time strategy video game featuring 3D graphics"
+DESCRIPTION="A real-time strategy game, where you can program your bots"
 HOMEPAGE="https://colobot.info/"
+EGIT_REPO_URI="https://github.com/colobot/colobot"
+EGIT_SUBMODULES=()
 
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/colobot/colobot"
-	EGIT_SUBMODULES=()
-	inherit git-r3
-else
-	SRC_URI="https://github.com/colobot/colobot/archive/${PN}-gold-${PV}-alpha.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
-	S="${WORKDIR}/${PN}-${PN}-gold-${PV}-alpha"
-fi
-
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
-IUSE="devbuild test tools doc +openal"
+KEYWORDS=""
+IUSE="devbuild doc +openal test tools"
+RESTRICT="!test? ( test )"
 
+# perl for pod2man
+BDEPEND="
+	app-text/po4a
+	dev-lang/perl
+	sys-devel/gettext"
 DEPEND="
 	dev-games/physfs
 	dev-libs/boost:=
@@ -34,10 +33,17 @@ DEPEND="
 	media-libs/sdl2-image
 	media-libs/sdl2-ttf
 	media-sound/vorbis-tools
-	sys-devel/gettext
 	openal? ( media-libs/openal )"
 RDEPEND="${DEPEND}
 	games-strategy/colobot-data"
+
+src_prepare() {
+	cmake_src_prepare
+
+	# we need to call it explicitly to help Ninja figure out the deps
+	cd desktop || die
+	po4a po4a.cfg || die
+}
 
 src_configure() {
 	local mycmakeargs=(
@@ -49,10 +55,13 @@ src_configure() {
 		-DCOLOBOT_INSTALL_BIN_DIR="${EPREFIX}"/usr/bin
 		-DCOLOBOT_INSTALL_LIB_DIR="${EPREFIX}"/usr/$(get_libdir)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
-src_install() {
-	cmake-utils_src_install
-	doicon -s 256 desktop/colobot.ico
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }

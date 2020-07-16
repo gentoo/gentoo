@@ -1,0 +1,94 @@
+From 68601675d13bdf44248991a56e888093e58c56c3 Mon Sep 17 00:00:00 2001
+From: Filip Fila <filipfila.kde@gmail.com>
+Date: Wed, 13 May 2020 18:08:27 +0200
+Subject: [sddm-theme] Prevent the logo from leaking in after a fadeout
+
+Summary:
+Even when the vendor logo is turned off it can be briefly seen when the login screen changes from the fadeout state back into normal.
+
+Comments in other code say that "OpacityAnimator when starting from 0 is buggy (it shows one frame with opacity 1)" so this patch replaces it with NumberAnimation.
+
+There's also a minor fix included - placing the drop shadow sooner in the hierarchy because it should be drawn underneath an object, not in front of it.
+
+Test Plan:
+Reduce the fadeout time to something small and then:
+
+`sddm-greeter --test-mode --theme /usr/share/sddm/themes/breeze`
+
+Reviewers: ngraham, cblack, #plasma, mart
+
+Reviewed By: ngraham, #plasma, mart
+
+Subscribers: mart, plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D29351
+---
+ sddm-theme/Main.qml | 44 +++++++++++++++++++++++---------------------
+ 1 file changed, 23 insertions(+), 21 deletions(-)
+
+diff --git a/sddm-theme/Main.qml b/sddm-theme/Main.qml
+index 6746238..9910e7f 100644
+--- a/sddm-theme/Main.qml
++++ b/sddm-theme/Main.qml
+@@ -411,26 +411,6 @@ PlasmaCore.ColorScope {
+             }
+         }
+ 
+-        Image {
+-            id: logo
+-            visible: config.showlogo == "shown"
+-            source: config.logo
+-            anchors.horizontalCenter: parent.horizontalCenter
+-            anchors.bottom: footer.top
+-            anchors.bottomMargin: units.largeSpacing
+-            asynchronous: true
+-            sourceSize.height: height
+-            opacity: loginScreenRoot.uiVisible ? 0 : 1
+-            fillMode: Image.PreserveAspectFit
+-            height: Math.round(units.gridUnit * 3.5)
+-            Behavior on opacity {
+-                OpacityAnimator {
+-                    duration: units.longDuration
+-                    easing.type: Easing.InOutQuad
+-                }
+-            }
+-        }
+-
+         DropShadow {
+             id: logoShadow
+             anchors.fill: logo
+@@ -444,7 +424,29 @@ PlasmaCore.ColorScope {
+             color: "black" // matches Breeze window decoration and desktopcontainment
+             opacity: loginScreenRoot.uiVisible ? 0 : 1
+             Behavior on opacity {
+-                OpacityAnimator {
++                //OpacityAnimator when starting from 0 is buggy (it shows one frame with opacity 1)"
++                NumberAnimation {
++                    duration: units.longDuration
++                    easing.type: Easing.InOutQuad
++                }
++            }
++        }
++
++        Image {
++            id: logo
++            visible: config.showlogo == "shown"
++            source: config.logo
++            anchors.horizontalCenter: parent.horizontalCenter
++            anchors.bottom: footer.top
++            anchors.bottomMargin: units.largeSpacing
++            asynchronous: true
++            sourceSize.height: height
++            opacity: loginScreenRoot.uiVisible ? 0 : 1
++            fillMode: Image.PreserveAspectFit
++            height: Math.round(units.gridUnit * 3.5)
++            Behavior on opacity {
++                // OpacityAnimator when starting from 0 is buggy (it shows one frame with opacity 1)"
++                NumberAnimation {
+                     duration: units.longDuration
+                     easing.type: Easing.InOutQuad
+                 }
+-- 
+cgit v1.1

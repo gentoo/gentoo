@@ -7,7 +7,7 @@ inherit autotools-utils eutils
 
 DESCRIPTION="Tool for extracting data from graphs"
 HOMEPAGE="https://github.com/pn2200/g3data"
-SRC_URI="mirror://github/pn2200/g3data/${P}.tar.gz"
+SRC_URI="https://github.com/downloads/pn2200/g3data/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

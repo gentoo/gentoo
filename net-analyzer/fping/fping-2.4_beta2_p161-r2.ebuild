@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ HOMEPAGE="http://fping.sourceforge.net/ https://packages.qa.debian.org/f/fping.h
 
 SLOT="0"
 LICENSE="fping"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~alpha amd64 hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="ipv6"
 
 S="${WORKDIR}/fping-2.4b2_to-ipv6"
@@ -48,7 +48,7 @@ src_compile() {
 	fi
 }
 
-src_install () {
+src_install() {
 	dosbin "${S}"/${PN}
 	if use ipv6; then
 		newsbin "${S}"-6/fping fping6

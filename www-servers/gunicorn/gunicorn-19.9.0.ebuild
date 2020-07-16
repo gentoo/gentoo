@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -12,38 +12,27 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT PSF-2 doc? ( BSD )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="doc test"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 RDEPEND="dev-python/setproctitle[${PYTHON_USEDEP}]"
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+BDEPEND="
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		dev-python/unittest2[${PYTHON_USEDEP}]
 	)"
 
 DOCS="README.rst"
 
-python_prepare_all() {
-	sed -ie "s/..\/bin/\/usr\/bin\//" docs/Makefile || die
+distutils_enable_sphinx 'docs/source' --no-autodoc
+distutils_enable_tests pytest
 
-	distutils-r1_python_prepare_all
-}
-
-python_compile_all() {
-	use doc && emake -C docs html
-}
-
-python_test() {
-	py.test -v || die "Testing failed with ${EPYTHON}"
+src_prepare() {
+	sed -e 's:--cov=gunicorn --cov-report=xml::' -i setup.cfg || die
+	distutils-r1_src_prepare
 }
 
 python_install_all() {
-	use doc && local HTML_DOCS=( docs/build/html/. )
+	use doc && local HTML_DOCS=( docs/source/_build/html/. )
 
 	distutils-r1_python_install_all
 }

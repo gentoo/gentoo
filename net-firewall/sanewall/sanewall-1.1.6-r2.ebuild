@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -38,10 +38,6 @@ pkg_setup() {
 		CONFIG_CHECK="~NF_CONNTRACK_ENABLED ${KCONFIG_OPTS}"
 	fi
 	linux-info_pkg_setup
-}
-
-src_configure() {
-	econf --docdir="/usr/share/doc/${PF}"
 }
 
 src_install() {

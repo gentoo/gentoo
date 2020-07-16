@@ -1,0 +1,32 @@
+commit 39fb5fb9586e9974c2bf4772e18c86b07e3a4a41
+Author: Alexey Sokolov <sokolov@google.com>
+Date:   Fri May 1 20:38:00 2020 +0100
+
+    Install AppStream data as .metainfo.xml
+    
+    Following advice from https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html
+
+diff --git a/setup.py b/setup.py
+index 7c54977e..38a819a9 100755
+--- a/setup.py
++++ b/setup.py
+@@ -72,7 +72,7 @@ class BuildData(build):
+           [file_data.write(line.lstrip('_')) for line in file_in]
+ 
+       appdata_in='data/terminator.appdata.xml.in'
+-      appdata_data='data/terminator.appdata.xml'
++      appdata_data='data/terminator.metainfo.xml'
+       rc = os.system ("C_ALL=C " + INTLTOOL_MERGE + " -x -u -c " + TOP_BUILDDIR +
+                  "/po/.intltool-merge-cache " + TOP_BUILDDIR + "/po " +
+                  appdata_in + " " + appdata_data)
+@@ -205,9 +205,9 @@ setup(name=APP_NAME,
+       license='GNU GPL v2',
+       scripts=['terminator', 'remotinator'],
+       data_files=[
+                   ('bin', ['terminator.wrapper']),
+-                  ('share/appdata', ['data/terminator.appdata.xml']),
+                   ('share/applications', ['data/terminator.desktop']),
++                  ('share/metainfo', ['data/terminator.metainfo.xml']),
+                   (os.path.join(man_dir, 'man1'), ['doc/terminator.1']),
+                   (os.path.join(man_dir, 'man5'), ['doc/terminator_config.5']),
+                   ('share/pixmaps', ['data/icons/hicolor/48x48/apps/terminator.png']),

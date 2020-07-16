@@ -1,0 +1,22 @@
+--- a/scripts/vmd/vmdinit.tcl~	2016-10-27 05:46:34.000000000 +0200
++++ b/scripts/vmd/vmdinit.tcl	2019-12-03 16:29:01.894002827 +0100
+@@ -197,7 +197,7 @@
+       set env(TMPDIR) /tmp
+     }
+     default {
+-      set env(TMPDIR) /usr/tmp
++      set env(TMPDIR) /tmp
+     }
+   }
+ }
+--- a/scripts/vmd/chemical2vmd~	2000-07-03 19:30:23.000000000 +0200
++++ b/scripts/vmd/chemical2vmd	2019-12-03 16:28:49.316861178 +0100
+@@ -61,7 +61,7 @@
+ 
+ 
+ # Make a temp. file to store the load command
+-$ENV{'TMPDIR'} = '/usr/tmp' if !$ENV{'TMPDIR'};
++$ENV{'TMPDIR'} = '/tmp' if !$ENV{'TMPDIR'};
+ sub tmpfile {
+     local ($tempfile) = $ENV{'TMPDIR'} . '/chemical2vmd.' . $$;
+     local ($i);

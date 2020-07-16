@@ -9,4 +9,4 @@ inherit sword-module
 DESCRIPTION="The Pilgrim's Progress by John Bunyan (1628-1688)"
 HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Pilgrim"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"

@@ -2,8 +2,8 @@ fix not founded path to some progs
 
 Joerg Bornkessel <hd_brummy@gentoo.org> ( 29 May 2005 )
 
---- vdrsync.pl.orig	2006-05-29 19:10:25.146198500 +0200
-+++ vdrsync.pl	2006-05-29 19:09:06.937310750 +0200
+--- a/vdrsync.pl	2006-05-29 19:10:25.146198500 +0200
++++ b/vdrsync.pl	2006-05-29 19:09:06.937310750 +0200
 @@ -37,19 +37,19 @@
  # Hash that lists potential helper Programs
  #########################################################################

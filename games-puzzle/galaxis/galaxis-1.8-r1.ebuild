@@ -1,7 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="Curses-based clone of the nifty little Macintosh freeware game Galaxis"
 HOMEPAGE="http://www.catb.org/~esr/galaxis/"
@@ -14,8 +16,14 @@ IUSE=""
 
 DEPEND=">=sys-libs/ncurses-5.3:0="
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+
+src_compile() {
+	local PKGCONFIG="$(tc-getPKG_CONFIG)"
+	emake TERMLIB="$(${PKGCONFIG} --libs ncurses)"
+}
 
 src_install() {
 	dobin galaxis

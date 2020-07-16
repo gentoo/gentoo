@@ -4,13 +4,14 @@
 EAPI=6
 
 DESCRIPTION="userspace RCU (read-copy-update) library"
-HOMEPAGE="http://lttng.org/urcu"
-SRC_URI="http://lttng.org/files/urcu/${P}.tar.bz2"
+HOMEPAGE="https://liburcu.org/"
+SRC_URI="https://lttng.org/files/urcu/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0/6" # subslot = soname version
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="static-libs regression-test test"
+RESTRICT="!test? ( test )"
 
 DEPEND="test? ( sys-process/time )"
 

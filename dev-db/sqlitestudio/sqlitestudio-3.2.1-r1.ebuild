@@ -1,10 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PLOCALES="de es fr it pl pt_BR ro_RO ru sk zh_CN"
-
 inherit desktop l10n qmake-utils xdg
 
 DESCRIPTION="Powerful cross-platform SQLite database manager"
@@ -17,6 +16,7 @@ SLOT="0"
 IUSE="cli cups tcl test"
 
 REQUIRED_USE="test? ( cli )"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-db/sqlite:3
@@ -36,6 +36,10 @@ DEPEND="${RDEPEND}
 	dev-qt/qtconcurrent:5
 	test? ( dev-qt/qttest:5 )
 "
+BDEPEND="
+	dev-qt/linguist-tools:5
+"
+
 PATCHES=( "${FILESDIR}"/${P}-libressl.patch )
 
 S="${WORKDIR}"

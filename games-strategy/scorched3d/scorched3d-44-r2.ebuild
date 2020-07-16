@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -85,9 +85,9 @@ src_install() {
 
 	# remove bundled fonts
 	rm "${ED%/}"/usr/share/${PN}/data/fonts/* || die
-	dosym /usr/share/fonts/dejavu/DejaVuSans.ttf /usr/share/${PN}/data/fonts/dejavusans.ttf
-	dosym /usr/share/fonts/dejavu/DejaVuSansCondensed-Bold.ttf /usr/share/${PN}/data/fonts/dejavusconbd.ttf
-	dosym /usr/share/fonts/dejavu/DejaVuSansMono-Bold.ttf /usr/share/${PN}/data/fonts/dejavusmobd.ttf
+	dosym ../../../fonts/dejavu/DejaVuSans.ttf /usr/share/${PN}/data/fonts/dejavusans.ttf
+	dosym ../../../fonts/dejavu/DejaVuSansCondensed-Bold.ttf /usr/share/${PN}/data/fonts/dejavusconbd.ttf
+	dosym ../../../fonts/dejavu/DejaVuSansMono-Bold.ttf /usr/share/${PN}/data/fonts/dejavusmobd.ttf
 
 	if ! use dedicated; then
 		newicon data/images/tank-old.bmp ${PN}.bmp

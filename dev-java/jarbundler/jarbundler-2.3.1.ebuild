@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,8 +8,8 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Jar Bundler Ant Task"
-HOMEPAGE="http://www.loomcom.com/jarbundler/"
-SRC_URI="http://downloads.sourceforge.net/project/jarbundler/JarBundler/v${PV}/${PN}.zip"
+HOMEPAGE="https://github.com/UltraMixer/JarBundler"
+SRC_URI="mirror://gentoo/${P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

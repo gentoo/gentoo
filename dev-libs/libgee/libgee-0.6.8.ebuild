@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,7 +11,7 @@ HOMEPAGE="https://live.gnome.org/Libgee"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 ~sh sparc x86 ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ppc ppc64 sparc x86 ~x86-linux"
 IUSE="+introspection"
 
 RDEPEND=">=dev-libs/glib-2.12:2

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.src.tar.gz"
 
 LICENSE="HPND MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="doc static-libs"
 
 RDEPEND="
@@ -35,9 +35,10 @@ DEPEND="${RDEPEND}
 DOCS=( BUILDNOTES FAQ HISTORY README RELEASE TODO )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.9.2-asneeded.patch
-	"${FILESDIR}"/${PN}-1.9.4-remove-abs-fabs.patch
-	"${FILESDIR}"/${PN}-1.9.4-libfl.patch
+	"${FILESDIR}/${PN}-1.9.2-asneeded.patch"
+	"${FILESDIR}/${P}-remove-abs-fabs.patch"
+	"${FILESDIR}/${P}-libfl.patch"
+	"${FILESDIR}/${P}-fno-config.patch"
 )
 
 src_prepare() {

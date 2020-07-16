@@ -1,9 +1,9 @@
-# Copyright 2019 Sony Interactive Entertainment Inc.
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_7 )
+PYTHON_COMPAT=( python3_7 )
 inherit distutils-r1
 
 DESCRIPTION="High-level SASL client written in pure Python"
@@ -21,7 +21,6 @@ DEPEND="${RDEPEND}
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep dev-python/unittest2 'python2*')
 	)"
 
 # tests aren't in dist tarball

@@ -5,4 +5,13 @@
 		<email>johu@gentoo.org</email>
 		<name>Johannes Huber</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		CPUID dumps detailed information about the CPUs gathered from the CPUID instruction,
+		and also determines the exact model of CPUs. It supports Intel, AMD, and VIA CPUs,
+		as well as older Transmeta, Cyrix, UMC, NexGen, Rise, and SiS CPUs.
+	</longdescription>
 </pkgmetadata>

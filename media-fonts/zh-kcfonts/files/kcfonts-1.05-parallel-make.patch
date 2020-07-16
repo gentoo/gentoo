@@ -1,5 +1,5 @@
---- Makefile.orig	2009-01-01 10:45:14.000000000 +0900
-+++ Makefile	2009-01-01 10:45:32.000000000 +0900
+--- a/Makefile
++++ b/Makefile
 @@ -31,7 +31,7 @@
  	$(CC) $(CFLAGS) tran.o kc24f.o -o $@
  kc15f:		tran.o kc15f.o

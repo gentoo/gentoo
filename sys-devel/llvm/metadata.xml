@@ -17,5 +17,6 @@
 		<flag name="ncurses">Support querying terminal properties using ncurses' terminfo</flag>
 		<flag name="xar">Support dumping LLVM bitcode sections in Mach-O files
 			(uses <pkg>app-arch/xar</pkg>)</flag>
+		<flag name="z3">Enable support for <pkg>sci-mathematics/z3</pkg> constraint solver</flag>
 	</use>
 </pkgmetadata>

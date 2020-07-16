@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: ${AUTOMX2_CONF:="/etc/${RC_SVCNAME}.conf"}
+: ${AUTOMX2_USER:="automx2"}
+: ${AUTOMX2_ARGS:="--port 4243"}
+
+command="/usr/bin/python"
+command_args="/usr/bin/flask run ${AUTOMX2_ARGS}"
+command_background="true"
+command_user="${AUTOMX2_USER}"
+pidfile="/run/${RC_SVCNAME}.pid"
+required_files="${AUTOMX2_CONF}"
+
+depend() {
+	use logger net
+	before nginx
+}
+
+start_pre() {
+	export AUTOMX2_CONF
+	export EPYTHON="@EPYTHON@"
+	export FLASK_APP="automx2.server:app"
+	export FLASK_ENV="production"
+}

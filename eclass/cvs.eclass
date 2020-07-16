@@ -1,9 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cvs.eclass
 # @MAINTAINER:
 # vapier@gentoo.org (and anyone who wants to help)
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: This eclass provides generic cvs fetching functions
 # @DESCRIPTION:
 # This eclass provides the generic cvs fetching functions. To use this from an
@@ -14,8 +15,6 @@
 
 if [[ -z ${_CVS_ECLASS} ]]; then
 _CVS_ECLASS=1
-
-inherit eutils
 
 # TODO:
 
@@ -174,21 +173,11 @@ inherit eutils
 # Set this to get a clean copy when updating (passes the
 # -C option to cvs update)
 
-# @ECLASS-VARIABLE: ECVS_RUNAS
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# Specifies an alternate (non-root) user to use to run cvs.  Currently
-# b0rked and wouldn't work with portage userpriv anyway without
-# special magic.
-
-# : ${ECVS_RUNAS:=$(whoami)}
+PROPERTIES+=" live"
 
 # add cvs to deps
 # ssh is used for ext auth
-# sudo is used to run as a specified user
 DEPEND="dev-vcs/cvs"
-
-[[ -n ${ECVS_RUNAS} ]] && DEPEND+=" app-admin/sudo"
 
 if [[ ${ECVS_AUTH} == "ext" ]] ; then
 	#default to ssh
@@ -199,10 +188,14 @@ if [[ ${ECVS_AUTH} == "ext" ]] ; then
 	DEPEND+=" net-misc/openssh"
 fi
 
+case ${EAPI:-0} in
+	4|5|6) ;;
+	7) BDEPEND="${DEPEND}"; DEPEND="" ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} is not supported" ;;
+esac
+
 # called from cvs_src_unpack
 cvs_fetch() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
-
 	# Make these options local variables so that the global values are
 	# not affected by modifications in this function.
 
@@ -250,15 +243,6 @@ cvs_fetch() {
 		ECVS_UP_OPTS+=" -D ${ECVS_DATE}"
 	fi
 
-	# It would be easiest to always be in "run-as mode", logic-wise,
-	# if sudo didn't ask for a password even when sudo'ing to `whoami`.
-
-	if [[ -z ${ECVS_RUNAS} ]] ; then
-		run=""
-	else
-		run="sudo -u ${ECVS_RUNAS}"
-	fi
-
 	# Create the top dir if needed
 
 	if [[ ! -d ${ECVS_TOP_DIR} ]] ; then
@@ -274,7 +258,7 @@ cvs_fetch() {
 		debug-print "${FUNCNAME}: checkout mode. creating cvs directory"
 		addwrite /foobar
 		addwrite /
-		${run} mkdir -p "/${ECVS_TOP_DIR}"
+		mkdir -p "/${ECVS_TOP_DIR}"
 		export SANDBOX_WRITE="${SANDBOX_WRITE//:\/foobar:\/}"
 	fi
 
@@ -286,11 +270,6 @@ cvs_fetch() {
 
 	# Disable the sandbox for this dir
 	addwrite "${ECVS_TOP_DIR}"
-
-	# Chown the directory and all of its contents
-	if [[ -n ${ECVS_RUNAS} ]] ; then
-		${run} chown -R "${ECVS_RUNAS}" "/${ECVS_TOP_DIR}"
-	fi
 
 	# Determine the CVS command mode (checkout or update)
 	if [[ ! -d ${ECVS_TOP_DIR}/${ECVS_LOCALNAME}/CVS ]] ; then
@@ -313,13 +292,13 @@ cvs_fetch() {
 	# Switch servers automagically if needed
 	if [[ ${mode} == "update" ]] ; then
 		cd "/${ECVS_TOP_DIR}/${ECVS_LOCALNAME}"
-		local oldserver=$(${run} cat CVS/Root)
+		local oldserver=$(cat CVS/Root)
 		if [[ ${server} != "${oldserver}" ]] ; then
 			einfo "Changing the CVS server from ${oldserver} to ${server}:"
 			debug-print "${FUNCNAME}: Changing the CVS server from ${oldserver} to ${server}:"
 
 			einfo "Searching for CVS directories ..."
-			local cvsdirs=$(${run} find . -iname CVS -print)
+			local cvsdirs=$(find . -iname CVS -print)
 			debug-print "${FUNCNAME}: CVS directories found:"
 			debug-print "${cvsdirs}"
 
@@ -327,7 +306,7 @@ cvs_fetch() {
 			local x
 			for x in ${cvsdirs} ; do
 				debug-print "In ${x}"
-				${run} echo "${server}" > "${x}/Root"
+				echo "${server}" > "${x}/Root"
 			done
 		fi
 	fi
@@ -336,9 +315,6 @@ cvs_fetch() {
 	# mess with ~/.cvspass
 	touch "${T}/cvspass"
 	export CVS_PASSFILE="${T}/cvspass"
-	if [[ -n ${ECVS_RUNAS} ]] ; then
-		chown "${ECVS_RUNAS}" "${T}/cvspass"
-	fi
 
 	# The server string with the password in it, for login (only used for pserver)
 	cvsroot_pass=":${connection}:${ECVS_USER}:${ECVS_PASS}@${ECVS_SERVER}"
@@ -352,9 +328,9 @@ cvs_fetch() {
 	fi
 
 	# Commands to run
-	cmdlogin=( ${run} ${ECVS_CVS_COMMAND} -d "${cvsroot_pass}" login )
-	cmdupdate=( ${run} ${ECVS_CVS_COMMAND} -d "${cvsroot_nopass}" update ${ECVS_UP_OPTS} ${ECVS_LOCALNAME} )
-	cmdcheckout=( ${run} ${ECVS_CVS_COMMAND} -d "${cvsroot_nopass}" checkout ${ECVS_CO_OPTS} ${ECVS_MODULE} )
+	cmdlogin=( ${ECVS_CVS_COMMAND} -d "${cvsroot_pass}" login )
+	cmdupdate=( ${ECVS_CVS_COMMAND} -d "${cvsroot_nopass}" update ${ECVS_UP_OPTS} ${ECVS_LOCALNAME} )
+	cmdcheckout=( ${ECVS_CVS_COMMAND} -d "${cvsroot_nopass}" checkout ${ECVS_CO_OPTS} ${ECVS_MODULE} )
 
 	# Execute commands
 
@@ -482,13 +458,6 @@ EOF
 			unset DISPLAY
 		fi
 	fi
-
-	# Restore ownership.  Not sure why this is needed, but someone
-	# added it in the orig ECVS_RUNAS stuff.
-	if [[ -n ${ECVS_RUNAS} ]] ; then
-		chown $(whoami) "${T}/cvspass"
-	fi
-
 }
 
 # @FUNCTION: cvs_src_unpack
@@ -508,7 +477,6 @@ cvs_src_unpack() {
 	ECVS_PASS=${ECVS_PASS}
 	ECVS_MODULE=${ECVS_MODULE}
 	ECVS_LOCAL=${ECVS_LOCAL}
-	ECVS_RUNAS=${ECVS_RUNAS}
 	ECVS_LOCALNAME=${ECVS_LOCALNAME}"
 
 	[[ -z ${ECVS_MODULE} ]] && die "ERROR: CVS module not set, cannot continue."
@@ -560,18 +528,6 @@ cvs_src_unpack() {
 	if [[ $(ls -A "${ECVS_TOP_DIR}/${ECVS_LOCALNAME}") == "CVS" ]] ; then
 		debug-print "${FUNCNAME}: removing empty CVS directory ${ECVS_LOCALNAME}"
 		rm -rf "${ECVS_TOP_DIR}/${ECVS_LOCALNAME}"
-	fi
-
-	# Implement some of base_src_unpack's functionality; note however
-	# that base.eclass may not have been inherited!
-	if [[ -n ${PATCHES} ]] ; then
-		debug-print "${FUNCNAME}: PATCHES=${PATCHES}, S=${S}, autopatching"
-		cd "${S}"
-		epatch ${PATCHES}
-		# Make sure we don't try to apply patches more than once,
-		# since cvs_src_unpack is usually called several times from
-		# e.g. kde-source_src_unpack
-		export PATCHES=""
 	fi
 
 	einfo "CVS module ${ECVS_MODULE} is now in ${WORKDIR}"

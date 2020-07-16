@@ -6,7 +6,6 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="sound">Enable sound</flag>
 		<flag name="physfs">Use <pkg>dev-games/physfs</pkg> instead of <pkg>dev-libs/libzip</pkg> to load compressed data</flag>
 	</use>
 </pkgmetadata>

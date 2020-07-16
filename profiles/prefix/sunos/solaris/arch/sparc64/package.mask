@@ -4,6 +4,6 @@
 # All the Solaris profiles inherit from their matching arch profile here.
 
 
-# Fabian Groffen <grobian@gentoo.org> (30 Dec 2011)
+# Fabian Groffen <grobian@gentoo.org> (2011-12-30)
 # Does not support Solaris/SPARC, http://mj.ucw.cz/pciutils.html
 sys-apps/pciutils

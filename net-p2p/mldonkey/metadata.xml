@@ -1,17 +1,13 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>ml@gentoo.org</email>
-    <name>Gentoo ML Project</name>
-  </maintainer>
+  <!-- maintainer-needed -->
   <longdescription>An ocaml client to access the eDonkey network.</longdescription>
   <use>
     <flag name="bittorrent">enable bittorrent support</flag>
     <flag name="fasttrack">enable fasttrack support</flag>
     <flag name="gnutella">enable gnutella and gnutella2 support</flag>
     <flag name="guionly">enable client build only</flag>
-    <flag name="magic">enable use of libmagic</flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">mldonkey</remote-id>

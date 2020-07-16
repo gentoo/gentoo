@@ -1,0 +1,40 @@
+From b2388765e0c4405442faa13845419f6a35d0134c Mon Sep 17 00:00:00 2001
+From: Phil Sutter <phil@nwl.cc>
+Date: Mon, 2 Dec 2019 18:29:56 +0100
+Subject: tests: flowtable: Don't check NFTNL_FLOWTABLE_SIZE
+
+Marshalling code around that attribute has been dropped by commit
+d1c4b98c733a5 ("flowtable: remove NFTA_FLOWTABLE_SIZE") so it's value is
+lost during the test.
+
+Assuming that NFTNL_FLOWTABLE_SIZE will receive kernel support at a
+later point, leave the test code in place but just comment it out.
+
+Fixes: d1c4b98c733a5 ("flowtable: remove NFTA_FLOWTABLE_SIZE")
+Signed-off-by: Phil Sutter <phil@nwl.cc>
+Acked-by: Pablo Neira Ayuso <pablo@netfilter.org>
+---
+ tests/nft-flowtable-test.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+(limited to 'tests/nft-flowtable-test.c')
+
+diff --git a/tests/nft-flowtable-test.c b/tests/nft-flowtable-test.c
+index 3edb00d..8ab8d4c 100644
+--- a/tests/nft-flowtable-test.c
++++ b/tests/nft-flowtable-test.c
+@@ -33,9 +33,11 @@ static void cmp_nftnl_flowtable(struct nftnl_flowtable *a, struct nftnl_flowtabl
+ 	if (nftnl_flowtable_get_u32(a, NFTNL_FLOWTABLE_USE) !=
+ 	    nftnl_flowtable_get_u32(b, NFTNL_FLOWTABLE_USE))
+ 		print_err("Flowtable use mismatches");
++#if 0
+ 	if (nftnl_flowtable_get_u32(a, NFTNL_FLOWTABLE_SIZE) !=
+ 	    nftnl_flowtable_get_u32(b, NFTNL_FLOWTABLE_SIZE))
+ 		print_err("Flowtable size mismatches");
++#endif
+ 	if (nftnl_flowtable_get_u32(a, NFTNL_FLOWTABLE_FLAGS) !=
+ 	    nftnl_flowtable_get_u32(b, NFTNL_FLOWTABLE_FLAGS))
+ 		print_err("Flowtable flags mismatches");
+-- 
+cgit v1.2.1
+

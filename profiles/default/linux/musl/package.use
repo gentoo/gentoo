@@ -1,7 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 
-# Anthony G. Basile <blueness@gentoo.org> (14 Jul 2016)
+# Anthony G. Basile <blueness@gentoo.org> (2016-07-14)
 # We need this to break a circular dependency with
 # 'sys-libs/libcap pam' in stage3 catalyst builds
 sys-libs/pam -filecaps

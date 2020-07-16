@@ -1,0 +1,114 @@
+# Copyright 2019-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Lars Wendler <polynomial-c@gentoo.org> (2020-06-25)
+# Missing keyword. Requires dev-util/cmake which also lacks keyword and
+# possibly a whole bunch of its deps as well
+# See https://bugs.gentoo.org/729582
+>=net-misc/rsync-3.2.0 lz4
+
+# Lars Wendler <polynomial-c@gentoo.org> (2020-05-10)
+# Missing keyword
+media-libs/freetype brotli
+
+# Zac Medico <zmedico@gentoo.org> (2020-05-09)
+# Mask until app-arch/lz4 is keyworded
+app-arch/zstd lz4
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-05-07)
+# Mask until app-arch/zstd is keyworded
+sys-devel/gcc zstd
+
+# Patrick McLean <chutzpah@gentoo.org> (2020-04-16)
+# Lots of python dependencies, mask to facilitate keywording
+# keywording dev-libs/libfido2
+dev-libs/libcbor doc
+
+# Joonas Niilola <juippis@gentoo.org> (2020-03-26)
+# Dependency not keyworded on ~riscv
+dev-libs/libpipeline test
+sys-apps/kbd test
+
+# Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
+# Mask until dev-libs/libfido2 is keyworded
+net-misc/openssh security-key
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-02-15)
+# dev-libs/xxhash is not keyworded on riscv, bug #709696
+sys-devel/gdb xxhash
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
+# media-libs/gd is not keyworded on riscv
+sys-libs/glibc gd
+
+# Dependency resolution is broken because
+# sys-fs/lvm2 has no riscv keyword
+sys-fs/e2fsprogs cron
+
+# This doesn't work for (any) riscv yet.
+dev-libs/libpcre2 jit
+dev-libs/libpcre jit
+dev-vcs/git pcre-jit
+
+# Not yet tested / unkeyworded dependencies
+# This includes also packages which do not support python-3 or
+# do not support python-3.7 yet.
+
+app-admin/syslog-ng amqp dbi geoip geoip2 json kafka mongodb python redis spoof-source smtp snmp test
+app-admin/sysstat lm-sensors
+app-arch/libarchive lz4 lzo zstd
+app-arch/unzip natspec
+app-crypt/gnupg smartcard tofu wks-server
+app-crypt/mit-krb5 doc test xinetd
+app-crypt/pinentry fltk gnome-keyring
+app-doc/doxygen latex dot
+app-editors/emacs alsa json lcms mailutils
+app-misc/pax-utils python
+app-text/asciidoc graphviz test
+app-text/po4a test
+app-text/xmlto text
+dev-lang/python tk
+dev-libs/boost mpi numpy zstd
+dev-libs/check doc subunit
+dev-libs/glib gtk-doc test
+dev-libs/icu doc
+dev-libs/iniparser doc
+dev-libs/libgcrypt doc
+dev-libs/libnl python
+dev-libs/libusb doc
+dev-libs/libxslt python
+dev-libs/libyaml doc
+dev-python/cython doc test
+dev-python/lxml test
+dev-python/pygments doc test
+dev-python/setuptools test
+dev-python/snakeoil test
+dev-util/catalyst iso
+dev-util/meson test
+dev-util/ninja doc test
+dev-util/patchutils test
+dev-util/pkgconf test
+dev-util/strace unwind
+dev-vcs/git cvs highlight gnome-keyring subversion tk xinetd
+media-libs/freetype harfbuzz png
+media-libs/tiff jbig jpeg test webp zstd
+net-fs/nfs-utils nfsv41
+net-libs/gnutls doc test-full
+net-libs/ldns doc python
+net-libs/libpcap rdma
+net-misc/curl brotli curl_ssl_libressl curl_ssl_mbedtls curl_ssl_nss http2 rtmp ssh
+net-misc/ntp openntpd snmp vim-syntax zeroconf
+net-nds/openldap cxx kerberos sasl
+sys-apps/kmod doc
+sys-apps/portage apidoc
+sys-apps/rng-tools nistbeacon pkcs11
+sys-auth/pambase pam_krb5 pam_ssh passwdqc mktemp
+sys-block/thin-provisioning-tools test
+sys-devel/automake test
+sys-devel/gdb source-highlight
+sys-devel/gettext cvs
+sys-fs/squashfs-tools lz4 lzma lzo zstd
+sys-libs/libcap-ng python
+sys-process/audit gssapi python
+sys-process/procps test
+sys-fs/squashfs-tools-ng lz4 lzo zstd
