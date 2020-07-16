@@ -8,7 +8,7 @@ KEYWORDS="~amd64 ~arm"
 
 inherit ros-catkin
 
-DESCRIPTION="CMake Modules which are not distributed with CMake but are commonly used by ROS packages"
+DESCRIPTION="CMake Modules which are commonly used by ROS packages"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
