@@ -1799,7 +1799,7 @@ app-eselect/eselect-wxwidgets 20140423 20180529: Eselect module and wrappers for
 app-eselect/eselect-xvmc 0.4: Manages XvMC implementations
 app-forensics/afflib 3.7.18: Library that implements the AFF image standard
 app-forensics/afl 2.52b 2.55b 2.56b: american fuzzy lop - compile-time instrumentation fuzzer
-app-forensics/aide 0.16-r1: AIDE (Advanced Intrusion Detection Environment) is a file integrity checker
+app-forensics/aide 0.16-r1 0.16.2_p20200614: AIDE (Advanced Intrusion Detection Environment) is a file integrity checker
 app-forensics/air 2.0.0-r2: A GUI front-end to dd/dc3dd
 app-forensics/chkrootkit 0.52 0.53: Tool to locally check for signs of a rootkit
 app-forensics/cmospwd 5.1-r1: CmosPwd decrypts password stored in cmos used to access BIOS SETUP
@@ -5378,7 +5378,7 @@ dev-lisp/ecls 16.1.3 20.4.24: ECL is an embeddable Common Lisp implementation
 dev-lisp/flexi-streams 1.0.16 1.0.17: Flexible bivalent streams for Common Lisp
 dev-lisp/gcl 2.6.10 2.6.12: GNU Common Lisp
 dev-lisp/hyperspec 7.0-r1: Common Lisp ANSI-standard Hyperspec
-dev-lisp/roswell 19.08.10.101 19.09.12.102 19.12.13.103 20.01.14.104: A lisp installer and launcher for major environment
+dev-lisp/roswell 19.08.10.101 19.09.12.102 19.12.13.103 20.01.14.104 20.04.14.105 20.05.14.106: A lisp installer and launcher for major environment
 dev-lisp/sbcl 1.3.11 1.4.9 1.5.6 1.5.7 1.5.8 2.0.0 2.0.1 2.0.3 2.0.4 2.0.5: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
 dev-lisp/trivial-gray-streams 20170830 99999999: A thin compatibility layer between Gray Stream Common Lisp implementations
 dev-lisp/uiop 3.1.5 3.3.1 3.3.2: UIOP is a portability layer spun off ASDF3
@@ -10293,7 +10293,7 @@ dev-util/colm 0.13.0.4 0.13.0.5 0.13.0.6 0.13.0.6-r1 0.13.0.7: COmputer Language
 dev-util/colorgcc 1.3.2-r7: Perl script to colorise the gcc output.
 dev-util/comparator 2.10 2.12: ESR's utility for making fast comparisons among large source trees
 dev-util/complexity 1.10: a tool designed for analyzing the complexity of C program functions
-dev-util/conan 1.23.0 1.24.1: Distributed C/C++ package manager
+dev-util/conan 1.23.0 1.24.1 1.26.1: Distributed C/C++ package manager
 dev-util/conf2struct 1.0 9999: Create C parsers for libconfig and command-line
 dev-util/confix 2.3.5-r2 2.3.5-r3 9999: Confix: A Build Tool on Top of GNU Automake
 dev-util/confix-wrapper 1: Wrapper to select either confix1.py or confix2.py
@@ -11594,7 +11594,7 @@ gnustep-libs/performance 0.5.0: Help improve the performance of GNUstep applicat
 gnustep-libs/renaissance 0.9.0-r1: GNUstep Renaissance allows to describe user interfaces XML files
 gnustep-libs/sope 4.1.1: A set of frameworks forming a complete Web application server environment
 gnustep-libs/sqlclient 1.8.1-r1: GNUstep lightweight database abstraction layer
-gui-apps/grim 1.2.0 9999: Grab images from a Wayland compositor.
+gui-apps/grim 1.2.0 1.3.0 9999: Grab images from a Wayland compositor.
 gui-apps/gtkgreet 0.6 9999: gtk based greeter for greetd
 gui-apps/kanshi 1.1.0 9999: dynamic display configuration (autorandr for wayland)
 gui-apps/lavalauncher 1.7.1 9999: simple launcher for wayland
@@ -11617,11 +11617,11 @@ gui-libs/libhandy 0.0.13: Library with GTK widgets for mobile phones
 gui-libs/libwpe 1.4.0.1: Platform-agnostic interfaces for WPE WebKit
 gui-libs/tepl 4.2.1: GtkSourceView-based text editors and IDE helper library
 gui-libs/wf-config 0.4.1 9999: library for managing wayfire configuration files
-gui-libs/wlroots 0.10.0 0.10.1 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
+gui-libs/wlroots 0.10.0 0.10.1 0.11.0 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
 gui-libs/wpebackend-fdo 1.4.0: WPE backend designed for Linux desktop systems
 gui-libs/xdg-desktop-portal-wlr 9999: xdg-desktop-portal backend for wlroots
 gui-wm/hikari 1.2.0 2.0.2: wayland compositor inspired by CWM
-gui-wm/sway 1.4-r2 1.5_rc1 9999: i3-compatible Wayland window manager
+gui-wm/sway 1.4-r2 1.5 9999: i3-compatible Wayland window manager
 gui-wm/wayfire 0.4.0-r2 9999: compiz like 3D wayland compositor
 java-virtuals/ejb-api 0: Virtual for Enterprise JavaBeans API (javax.ejb)
 java-virtuals/interceptor-api 0: Virtual for Interceptor API (javax.interceptor)
@@ -15463,7 +15463,7 @@ sci-astronomy/sextractor 2.19.5 2.19.5-r1: Extract catalogs of sources from astr
 sci-astronomy/skycat 3.1.2-r2 3.1.3: ESO astronomical image visualizer with catalog access
 sci-astronomy/skymaker 3.10.5: Program that simulates astronomical images
 sci-astronomy/sofa_c 20150209a 20160503c 20170420: Library for algorithms for models in fundamental astronomy
-sci-astronomy/stellarium 0.19.3 0.20.1: 3D photo-realistic skies in real time
+sci-astronomy/stellarium 0.19.3 0.20.1 0.20.2: 3D photo-realistic skies in real time
 sci-astronomy/stiff 2.4.0: Converts astronomical FITS images to the TIFF format
 sci-astronomy/stuff 1.26.0: Tool for automatic generation of astronomical catalogs
 sci-astronomy/swarp 2.38.0: Resample and coadd astronomical FITS images
@@ -16563,7 +16563,7 @@ sys-apps/dmapi 2.2.12-r1: XFS data management API library
 sys-apps/dmidecode 3.1 3.2: DMI (Desktop Management Interface) table related utilities
 sys-apps/dnotify 0.18.0: Execute a command when the contents of a directory change
 sys-apps/dog 1.7-r6: Dog is better than cat
-sys-apps/dstat 0.7.3 0.7.4 0.7.4-r1: Versatile replacement for vmstat, iostat and ifstat
+sys-apps/dstat 0.7.3 0.7.4 0.7.4-r1 0.7.4-r2: Versatile replacement for vmstat, iostat and ifstat
 sys-apps/dtc 1.5.0 1.5.0-r2 1.6.0 9999: Open Firmware device tree compiler
 sys-apps/duc 1.4.1-r1 1.4.3-r1 9999: A library and suite of tools for inspecting disk usage
 sys-apps/earlyoom 1.3 9999: Early OOM Daemon for Linux
@@ -17035,7 +17035,7 @@ sys-cluster/resource-agents 3.9.6 4.0.1: Resources pack for Heartbeat / Pacemake
 sys-cluster/sanlock 3.6.0 3.8.0: shared storage lock manager
 sys-cluster/singularity 2.6.1 3.5.3-r1: Application containers for Linux
 sys-cluster/slurm 20.02.3.1: A Highly Scalable Resource Manager
-sys-cluster/spark-bin 2.3.1-r1 2.4.5: Lightning-fast unified analytics engine
+sys-cluster/spark-bin 2.4.6: Lightning-fast unified analytics engine
 sys-cluster/swift 2.25.0 2020.1.9999: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/teleport 4.0.9 4.0.10 4.1.1 4.1.4 9999: Modern SSH server for teams managing distributed infrastructure
 sys-cluster/torque 4.1.7-r1 4.2.10-r1 6.0.4-r1: Resource manager and queuing system based on OpenPBS
@@ -17739,7 +17739,7 @@ www-apps/dokuwiki 20160626e 20170219e 20180422a 20180422b: DokuWiki is a simple 
 www-apps/dotproject 2.1.7-r1: dotProject is a PHP web-based project management framework
 www-apps/drupal 7.72 8.8.8 8.9.1 9.0.1: PHP-based open-source platform and content management system
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
-www-apps/gitea 1.11.6 9999: A painless self-hosted Git service
+www-apps/gitea 1.11.8 1.12.1 9999: A painless self-hosted Git service
 www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
 www-apps/grafana-bin 6.7.4: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hugo 0.69.0: The world's fastest framework for building websites

@@ -725,7 +725,9 @@ app-eselect/eselect-php:fpm - Enable the FastCGI Process Manager SAPI
 app-forensics/afflib:fuse - Enable extra fuse thingies
 app-forensics/afflib:qemu - Enable qemu stuff
 app-forensics/afflib:s3 - Enable support for Amazon S3
+app-forensics/aide:curl - Use curl for http,https and ftp backends
 app-forensics/aide:e2fs - Enable support for checking file attributes on ext2/ext3/ext4 filesystems
+app-forensics/aide:postgres - Use postgresql library for storing databases
 app-forensics/aide:prelink - Bypass prelinking when calculating checksums
 app-forensics/chkrootkit:cron - Install cron script for weekly rootkit scans
 app-forensics/libewf:bfio - Enables libbfio for chaining file in file handling
@@ -7167,6 +7169,7 @@ sci-astronomy/predict:xplanet - Project predict data onto world maps generated b
 sci-astronomy/psfex:plplot - Build with sci-libs/plplot to allow diagnostic plots during processing
 sci-astronomy/scamp:plplot - Build with sci-libs/plplot to allow diagnostic plots during processing
 sci-astronomy/sextractor:modelfit - Enable profile model fitting, needs sci-libs/atlas and sci-libs/fftw
+sci-astronomy/stellarium:deep-sky - Install extra deep sky objects catalog (may affect performance)
 sci-astronomy/stellarium:media - Enable sound and video support
 sci-astronomy/stellarium:stars - Install extra star catalogs
 sci-astronomy/wcslib:fits - Enable support for the FITS format through sci-libs/cfitsio
