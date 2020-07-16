@@ -53,4 +53,3 @@ multilib_src_install_all() {
 multilib_src_test() {
 	emake V=1 runtests
 }
-
