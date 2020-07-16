@@ -1,3 +1,4 @@
+BDEPEND=dev-qt/linguist-tools:5
 DEFINED_PHASES=configure install postinst postrm prepare
 DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtsingleapplication[qt5(+),X] dev-qt/qtwidgets:5 dev-qt/qtsvg:5 dev-qt/qtnetwork:5 dev-qt/qtdbus:5 sys-apps/dbus
 DESCRIPTION=Powerful yet simple to use screenshot software
@@ -9,4 +10,4 @@ RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtsingleapplication[qt5(+),X] dev-
 SLOT=0
 SRC_URI=https://github.com/lupoDharkael/flameshot/archive/v0.6.0.tar.gz -> flameshot-0.6.0.tar.gz
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	estack	686eaab303305a908fd57b2fd7617800	multilib	2477ebe553d3e4d2c606191fe6c33602	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=3e908c25e1f3f2a8532ab4dccff8d45c
+_md5_=fc4f41ff36b7398ec4c9746b0aff9326
