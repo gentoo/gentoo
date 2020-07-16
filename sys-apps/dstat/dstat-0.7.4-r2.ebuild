@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}/dstat-${PV}-skip-non-sandbox-tests.patch"
 	"${FILESDIR}/fix-collections-deprecation-warning.patch"
-	"${FILESDIR}/fix-csv-output.patch"
+	"${FILESDIR}/dstat-0.7.4-fix-csv-output.patch"
 )
 
 src_prepare() {
