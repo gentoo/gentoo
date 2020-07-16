@@ -10,10 +10,6 @@
 kde-plasma/libksysguard webengine
 kde-plasma/kdeplasma-addons webengine
 
-# Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
-# Mask io-uring & zbc pending keywording
-sys-block/fio io-uring zbc
-
 # Sam James <sam@gentoo.org> (2020-06-27)
 # Tests require Valgrind, not available on <armv7a
 dev-libs/rapidjson test
