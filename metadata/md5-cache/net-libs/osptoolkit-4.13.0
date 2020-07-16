@@ -3,10 +3,10 @@ DEPEND=dev-libs/openssl:0=
 DESCRIPTION=Open Settlement Protocol development kit
 EAPI=6
 HOMEPAGE=http://www.transnexus.com/OSP%20Toolkit/OSP%20Toolkit%20Documents/OSP%20Toolkit%20Documents.htm
-KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+KEYWORDS=~amd64 ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=BSD
 RDEPEND=dev-libs/openssl:0=
 SLOT=0
 SRC_URI=mirror://sourceforge/osp-toolkit/OSPToolkit-4.13.0.tar.gz
 _eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=4e6be9f858cceb46d2a0948c7c02aa19
+_md5_=2b98e91fb66a7a906cbbccbac11f0698

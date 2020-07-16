@@ -4,10 +4,10 @@ DESCRIPTION=eXtensible Markup Language parser library designed for Jabber applic
 EAPI=6
 HOMEPAGE=https://github.com/meduketto/iksemel
 IUSE=ssl static-libs
-KEYWORDS=amd64 ppc ~ppc64 x86
+KEYWORDS=amd64 ~arm64 ppc ~ppc64 x86
 LICENSE=LGPL-2.1
 RDEPEND=ssl? ( net-libs/gnutls:= )
 SLOT=0
 SRC_URI=https://iksemel.googlecode.com/files/iksemel-1.4.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=650a326fd8b5f54127f4f6522a57ba6e
+_md5_=66cf7226b10173f2d74585ea6260d55e

@@ -4771,7 +4771,7 @@ dev-lang/gforth 0.7.3-r1: GNU Forth is a fast and portable implementation of the
 dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5 8.8.1 8.8.2 8.8.3 8.10.1: The Glasgow Haskell Compiler
 dev-lang/gnat-gpl 2016-r4 2017-r1 2018-r3 2019-r2: GNAT Ada Compiler - GPL version
 dev-lang/gnuprologjava 0.2.6: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
-dev-lang/go 1.12.17 1.13.10 1.13.12 1.14.2 1.14.4 9999: A concurrent garbage collected and typesafe programming language
+dev-lang/go 1.12.17 1.13.10 1.13.12 1.13.13 1.14.2 1.14.4 1.14.5 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/go-bootstrap 1.13.6: Bootstrap package for dev-lang/go
 dev-lang/gprolog 1.4.4 1.4.5: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/helium 1.8.1: The Helium Compiler
@@ -9019,8 +9019,9 @@ dev-qt/qtwidgets 5.14.2 5.15.0: Set of components for creating classic desktop-s
 dev-qt/qtx11extras 5.14.2 5.15.0: Linux/X11-specific support library for the Qt5 framework
 dev-qt/qtxml 5.14.2 5.15.0: Implementation of SAX and DOM for the Qt5 framework
 dev-qt/qtxmlpatterns 5.14.2 5.15.0: XPath, XQuery, XSLT, and XML Schema validation library for the Qt5 framework
-dev-ros/actionlib 1.11.13 1.11.14 1.11.15 9999: Provides a standardized interface for interfacing with preemptable tasks
+dev-ros/actionlib 1.13.1 9999: Provides a standardized interface for interfacing with preemptable tasks
 dev-ros/actionlib_msgs 1.13.0 9999: Common messages to interact with an action server and an action client
+dev-ros/actionlib_tools 1.13.1 9999: Tools for dealing with actionlib
 dev-ros/actionlib_tutorials 0.1.12 9999: Actionlib tutorials
 dev-ros/amcl 1.17.0 9999: Probabilistic localization system for a robot moving in 2D
 dev-ros/ament_cmake_core 0.8.1 9999: The core of the ament buildsystem in CMake
@@ -9037,10 +9038,10 @@ dev-ros/ament_cmake_python 0.8.1-r1 9999: The ability to use Python in the ament
 dev-ros/ament_cmake_target_dependencies 0.8.1 9999: Add defs, include dirs and libs to a target in the ament buildsystem
 dev-ros/ament_cmake_test 0.8.1 9999: The ability to add tests in the ament buildsystem
 dev-ros/ament_cmake_version 0.8.1 9999: Override the exported package version in the ament buildsystem
-dev-ros/angles 1.9.11 9999: Set of simple math utilities to work with angles
-dev-ros/audio_capture 0.3.1 0.3.2 0.3.3 9999: Transports audio from a source to a destination
-dev-ros/audio_common_msgs 0.3.1 0.3.2 0.3.3 9999: Messages for transmitting audio via ROS
-dev-ros/audio_play 0.3.1 0.3.2 0.3.3 9999: Outputs audio to a speaker from a source node
+dev-ros/angles 1.9.13 9999: Set of simple math utilities to work with angles
+dev-ros/audio_capture 0.3.6 9999: Transports audio from a source to a destination
+dev-ros/audio_common_msgs 0.3.6 9999: Messages for transmitting audio via ROS
+dev-ros/audio_play 0.3.6 9999: Outputs audio to a speaker from a source node
 dev-ros/base_local_planner 1.17.0 9999: Trajectory Rollout and Dynamic Window approaches to robot navigation on a plane
 dev-ros/bond 1.8.5 9999: A bond allows two processes, A and B, to know when the other has terminated
 dev-ros/bondcpp 1.8.5 9999: C++ implementation of bond, for checking when another process has terminated
@@ -9053,57 +9054,57 @@ dev-ros/camera_calibration 1.15.2 9999: Calibration of monocular or stereo camer
 dev-ros/camera_calibration_parsers 1.12.0 9999: Routines for reading and writing camera calibration parameters
 dev-ros/camera_info_manager 1.12.0 9999: C++ interface for camera calibration information
 dev-ros/carrot_planner 1.17.0 9999: Attempts to find a legal place to put a carrot for the robot to follow
-dev-ros/class_loader 0.4.1-r1 9999: ROS-independent package for loading plugins
+dev-ros/class_loader 0.5.0 9999: ROS-independent package for loading plugins
 dev-ros/clear_costmap_recovery 1.17.0 9999: Recovery behavior that attempts reverting the costmaps to the static map
-dev-ros/cmake_modules 0.4.2 0.5.0 9999: CMake Modules which are not distributed with CMake but are commonly used by ROS packages
-dev-ros/collada_parser 1.12.10-r3 1.12.12 9999: C++ parser for the Collada robot description format
-dev-ros/collada_urdf 1.12.10-r1 1.12.12 9999: Convert Unified Robot Description Format (URDF) documents into COLLADA documents
+dev-ros/cmake_modules 0.5.0 9999: CMake Modules which are commonly used by ROS packages
+dev-ros/collada_parser 1.12.13 9999: C++ parser for the Collada robot description format
+dev-ros/collada_urdf 1.12.13 9999: Convert Unified Robot Description Format (URDF) documents into COLLADA documents
 dev-ros/combined_robot_hw 0.19.1 9999: Combined Robot HW class
 dev-ros/combined_robot_hw_tests 0.19.1 9999: Combined Robot HW class tests
 dev-ros/compressed_depth_image_transport 1.14.0 9999: Plugin for transparently sending depth images using PNG compression
 dev-ros/compressed_image_transport 1.14.0 9999: Plugin for transparently sending images encoded as JPEG or PNG
 dev-ros/console_bridge_vendor 1.2.0 9999: Wrapper around console_bridge
-dev-ros/control_msgs 1.4.0 9999: Base messages and actions useful for controlling robots
-dev-ros/control_toolbox 1.14.0 1.15.0 1.16.0 9999: Modules that are useful across all controllers
+dev-ros/control_msgs 1.5.2 9999: Base messages and actions useful for controlling robots
+dev-ros/control_toolbox 1.18.2 9999: Modules that are useful across all controllers
 dev-ros/controller_interface 0.19.1 9999: Interface base class for controllers
 dev-ros/controller_manager 0.19.1 9999: The controller manager
 dev-ros/controller_manager_msgs 0.19.1 9999: The controller manager
 dev-ros/controller_manager_tests 0.19.1 9999: Tests for the controller manager
-dev-ros/convex_decomposition 0.1.10 0.1.11 0.1.12 9999: Convex Decomposition Tool for Robot Model
+dev-ros/convex_decomposition 0.1.12 9999: Convex Decomposition Tool for Robot Model
 dev-ros/costmap_2d 1.17.0 9999: Creates a 2D costmap from sensor data
 dev-ros/cpp_common 0.7.2 9999: C++ code for doing things that are not necessarily ROS related
 dev-ros/cv_bridge 1.15.0 9999: Converts between ROS Image messages and OpenCV images
 dev-ros/depth_image_proc 1.15.2 9999: Nodelets for processing depth images such as those produced by OpenNI camera
-dev-ros/depthimage_to_laserscan 1.0.7-r2 9999: Converts a depth image to a laser scan for use with navigation and localization
+dev-ros/depthimage_to_laserscan 1.0.8 9999: Converts a depth image to a laser scan for use with navigation and localization
 dev-ros/diagnostic_aggregator 1.9.4 9999: Aggregates ROS diagnostics
 dev-ros/diagnostic_analysis 1.9.4 9999: Converts diagnostics data into a series of CSV files
 dev-ros/diagnostic_common_diagnostics 1.9.4 9999: Generic nodes for monitoring a linux host
 dev-ros/diagnostic_msgs 1.13.0 9999: Standardized interface for the diagnostic and runtime monitoring systems in ROS
 dev-ros/diagnostic_updater 1.9.4 9999: Tools for updating diagnostics
-dev-ros/driver_base 1.6.8 9999: Framework for writing drivers that helps with runtime reconfiguration, diagnostics and self-test
+dev-ros/driver_base 1.6.8 9999: Framework for writing drivers
 dev-ros/dwa_local_planner 1.17.0 9999: Dynamic Window Approach to local robot navigation on a plane
-dev-ros/dynamic_reconfigure 1.5.48 1.5.49 1.6.0 9999: Provides a means to change node parameters at any time without having to restart the node
+dev-ros/dynamic_reconfigure 1.7.0 9999: Provides a means to change node parameters at runtime
 dev-ros/eigen_conversions 1.13.2 9999: Conversion functions between Eigen and KDL and Eigen and geometry_msgs
-dev-ros/eigen_stl_containers 0.1.4 0.1.5 0.1.6 0.1.7 0.1.8 9999: Provides a set of typedef's that allow using Eigen datatypes in STL containers
+dev-ros/eigen_stl_containers 0.1.8 9999: Provides a set of typedef's that allow using Eigen datatypes in STL containers
 dev-ros/fake_localization 1.17.0 9999: A ROS node that simply forwards odometry information
-dev-ros/filters 1.8.1-r1 9999: Standardized interface for processing data as a sequence of filters
-dev-ros/gazebo_dev 2.7.3 2.7.4 2.8.4 2.8.5 2.8.7 9999: Provides a cmake config for the default version of Gazebo for the ROS distribution.
-dev-ros/gazebo_msgs 2.6.2 2.7.3 2.7.4 2.8.4 2.8.5 2.8.7 9999: Message and service data structures for interacting with Gazebo from ROS
-dev-ros/gazebo_plugins 2.8.7 9999: Robot-independent Gazebo plugins
-dev-ros/gazebo_ros 2.6.2 2.7.3 2.7.4 2.8.4 2.8.5 2.8.7 9999: ROS plugins that offer message and service publishers for interfacing with gazebo
-dev-ros/gazebo_ros_control 2.6.2-r1 2.7.3 2.7.4 2.8.4 2.8.5 2.8.7 9999: ROS control plugins for gazebo
+dev-ros/filters 1.9.0 9999: Standardized interface for processing data as a sequence of filters
+dev-ros/gazebo_dev 2.9.1 9999: Cmake config for the default version of Gazebo for the ROS distribution
+dev-ros/gazebo_msgs 2.9.1 9999: Message and service data structures for interacting with Gazebo from ROS
+dev-ros/gazebo_plugins 2.9.1 9999: Robot-independent Gazebo plugins
+dev-ros/gazebo_ros 2.9.1 9999: ROS plugins that offer messages and services for interfacing with gazebo
+dev-ros/gazebo_ros_control 2.9.1 9999: ROS control plugins for gazebo
 dev-ros/gencpp 0.6.5 9999: ROS C++ message definition and serialization generators
 dev-ros/geneus 3.0.0 9999: EusLisp ROS message and service generators
 dev-ros/genlisp 0.4.18 9999: Common-Lisp ROS message and service generators
 dev-ros/genmsg 0.5.16 9999: Python library for generating ROS message and service data structures
 dev-ros/gennodejs 2.0.1 9999: Javascript ROS message and service generators
 dev-ros/genpy 0.6.11 9999: Python ROS message and service generators
-dev-ros/geodesy 0.5.2 0.5.3 9999: Python and C++ interfaces for manipulating geodetic coordinates
-dev-ros/geographic_msgs 0.5.0 0.5.2 0.5.3 9999: ROS messages for Geographic Information Systems
-dev-ros/geometric_shapes 0.6.1 9999: Generic definitions of geometric shapes and bodies
+dev-ros/geodesy 0.5.2 0.5.3 0.5.5 9999: Python and C++ interfaces for manipulating geodetic coordinates
+dev-ros/geographic_msgs 0.5.0 0.5.2 0.5.3 0.5.5 9999: ROS messages for Geographic Information Systems
+dev-ros/geometric_shapes 0.7.0 9999: Generic definitions of geometric shapes and bodies
 dev-ros/geometry_msgs 1.13.0 9999: Messages for common geometric primitives such as points, vectors, and poses
 dev-ros/global_planner 1.17.0 9999: Path planner library and node
-dev-ros/gmapping 1.3.10 1.4.0 9999: ROS wrapper for OpenSlam's Gmapping
+dev-ros/gmapping 1.4.1 9999: ROS wrapper for OpenSlam's Gmapping
 dev-ros/hardware_interface 0.19.1 9999: Hardware Interface base class
 dev-ros/hector_compressed_map_transport 0.4.1 9999: Means for transporting compressed map data through the use of image_transport
 dev-ros/hector_geotiff 0.4.1 9999: Saves occupancy grid map, robot trajectory and object data to GeoTiff images
@@ -11462,7 +11463,7 @@ gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
 gnome-base/gnome-panel 3.34.1 3.36.2: The GNOME Flashback Panel
 gnome-base/gnome-session 3.34.2 3.36.0: Gnome session manager
 gnome-base/gnome-settings-daemon 3.34.2 3.36.1: Gnome Settings Daemon
-gnome-base/gnome-shell 3.34.5 3.36.4 3.36.4-r1: Provides core UI functions for the GNOME 3 desktop
+gnome-base/gnome-shell 3.34.5 3.36.4 3.36.4-r1 3.36.4-r2: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
 gnome-base/gsettings-desktop-schemas 3.34.0 3.36.1: Collection of GSettings schemas for GNOME desktop
 gnome-base/gvfs 1.42.2: Virtual filesystem implementation for GIO
@@ -15383,7 +15384,7 @@ perl-core/parent 0.228-r1: Establish an ISA relationship with base classes at co
 perl-core/podlators 2.5.3: Format POD source into various output formats
 perl-core/version 0.990.800: Perl extension for Version Objects
 ros-meta/ament_cmake 0.8.1 9999: The entry point package for the ament buildsystem
-ros-meta/audio_common 0.3.1 0.3.2 0.3.3 9999: Common code for working with audio in ROS
+ros-meta/audio_common 0.3.1 0.3.2 0.3.3 0.3.6 9999: Common code for working with audio in ROS
 ros-meta/bond_core 1.8.5 9999: A bond allows two processes, A and B, to know when the other has terminated
 ros-meta/calibration 0.10.13 0.10.14 9999: Provides a toolchain running through the robot calibration process
 ros-meta/common_msgs 1.12.3 1.12.4 1.12.5 1.12.6 1.12.7 1.13.0 9999: Messages that are widely used by other ROS packages
@@ -15393,8 +15394,8 @@ ros-meta/desktop_full 1.5.0 9999: Metapackage for ROS complete desktop install
 ros-meta/diagnostics 1.8.8 1.8.9 1.8.10 1.9.0 1.9.2 1.9.3 1.9.4 9999: Packages related to gathering, viewing, and analyzing diagnostics data from robots
 ros-meta/driver_common 1.6.8 9999: Classes and tools that are useful throughout the driver stacks
 ros-meta/executive_smach 2.0.0 2.0.1 2.5.0 9999: SMACH library and ROS SMACH integration packages
-ros-meta/gazebo_ros_pkgs 2.6.1 2.6.2 2.7.3 2.7.4 2.8.4 2.8.5 2.8.7 9999: Interface for using ROS with the gazebo simulator
-ros-meta/geographic_info 0.4.0 0.5.0 0.5.2 0.5.3 9999: Geographic information metapackage
+ros-meta/gazebo_ros_pkgs 2.6.1 2.6.2 2.7.3 2.7.4 2.8.4 2.8.5 2.8.7 2.9.1 9999: Interface for using ROS with the gazebo simulator
+ros-meta/geographic_info 0.4.0 0.5.0 0.5.2 0.5.3 0.5.5 9999: Geographic information metapackage
 ros-meta/geometry 1.11.7 1.11.8 1.11.9 1.12.0 1.13.2 9999: Common geometric calculations
 ros-meta/geometry2 0.6.2 0.6.3 0.6.5 0.7.2 9999: The second generation Transform Library in ros
 ros-meta/geometry_tutorials 0.2.2 0.2.3 9999: Metapackage of geometry tutorials ROS
@@ -17793,7 +17794,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.4.2: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 83.0.4103.116 84.0.4147.89 85.0.4183.15: Open-source version of Google Chrome web browser
+www-client/chromium 83.0.4103.116 84.0.4147.89 85.0.4183.26: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r3 3.1_p20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6 3.34.4: GNOME webbrowser based on Webkit
@@ -17803,7 +17804,7 @@ www-client/firefox 68.10.0 78.0.2: Firefox Web Browser
 www-client/firefox-bin 68.10.0 78.0.2: Firefox Web Browser
 www-client/google-chrome 84.0.4147.89: The web browser from Google
 www-client/google-chrome-beta 84.0.4147.89: The web browser from Google
-www-client/google-chrome-unstable 85.0.4183.15: The web browser from Google
+www-client/google-chrome-unstable 85.0.4183.26: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.20.2 2.20.2-r1: A fast and lightweight web browser running in both graphics and text mode
@@ -17847,7 +17848,7 @@ www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution 
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/adobe-flash 32.0.0.403: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 84.0.4147.89_beta 84.0.4147.89 85.0.4183.15_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 84.0.4147.89_beta 84.0.4147.89 85.0.4183.26_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
