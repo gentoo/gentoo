@@ -8,7 +8,7 @@ inherit autotools python-r1
 
 DESCRIPTION="Support library to communicate with Apple iPhone/iPod Touch devices"
 HOMEPAGE="https://www.libimobiledevice.org/"
-SRC_URI="https://www.libimobiledevice.org/downloads/${P}.tar.bz2"
+SRC_URI="https://github.com/libimobiledevice/libimobiledevice/releases/download/${PV}/${P}.tar.bz2"
 
 # While COPYING* doesn't mention 'or any later version', all the headers do, hence use +
 LICENSE="GPL-2+ LGPL-2.1+"
