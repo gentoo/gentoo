@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	MY_PV=${PV/_rc/-rc}
 	SRC_URI="https://github.com/swaywm/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	#KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
@@ -47,7 +47,8 @@ if [[ ${PV} == 9999 ]]; then
 	DEPEND+="~gui-libs/wlroots-9999:=[elogind=,systemd=,X=]"
 else
 	DEPEND+="
-		~gui-libs/wlroots-9999:=[elogind=,systemd=,X=]
+		>=gui-libs/wlroots-0.11.0:=[elogind=,systemd=,X=]
+		<gui-libs/wlroots-0.12.0:=[elogind=,systemd=,X=]
 	"
 fi
 RDEPEND="
@@ -56,6 +57,7 @@ RDEPEND="
 "
 BDEPEND="
 	>=dev-libs/wayland-protocols-1.14
+	>=dev-util/meson-0.53.0
 	virtual/pkgconfig
 "
 if [[ ${PV} == 9999 ]]; then
