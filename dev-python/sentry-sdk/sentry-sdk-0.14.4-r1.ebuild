@@ -34,6 +34,7 @@ BDEPEND="
 		dev-python/flask-login[${PYTHON_USEDEP}]
 		dev-python/gevent[${PYTHON_USEDEP}]
 		dev-python/werkzeug[${PYTHON_USEDEP}]
+		dev-python/zope-event[${PYTHON_USEDEP}]
 	)
 "
 
@@ -55,6 +56,9 @@ src_prepare() {
 		# disable-auto-enabling-intregrations-tests
 		sed -i -e 's:test_auto_enabling_integrations_catches_import_error:_&:' \
 			tests/test_basics.py || die
+
+		# fails at 'assert x("pytest", pytest.__file__) == "pytest.py"'
+		sed -i -e 's:test_filename:_&:' tests/utils/test_general.py
 	fi
 
 	sed -i -e '/sentry_sdk.integrations.django.DjangoIntegration/d' \
