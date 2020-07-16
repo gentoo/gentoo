@@ -23,5 +23,7 @@ RDEPEND="
 	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}
+	dev-cpp/eigen:3
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	test? ( dev-ros/rostest[${PYTHON_USEDEP}] )"
+PATCHES=( "${FILESDIR}/eigen.patch" )
