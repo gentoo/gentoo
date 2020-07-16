@@ -1,0 +1,112 @@
+From e910d08976e00bc12b5a516daa9e6a6d42d48354 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 19 Feb 2020 07:27:32 +0100
+Subject: [PATCH] Skip broken tests on Gentoo
+
+---
+ psutil/tests/test_linux.py   | 8 ++++++++
+ psutil/tests/test_posix.py   | 1 +
+ psutil/tests/test_process.py | 2 ++
+ psutil/tests/test_system.py  | 1 +
+ 4 files changed, 12 insertions(+)
+
+diff --git a/psutil/tests/test_linux.py b/psutil/tests/test_linux.py
+index e51f8bd5..48527ccb 100755
+--- a/psutil/tests/test_linux.py
++++ b/psutil/tests/test_linux.py
+@@ -17,5 +17,6 @@ import re
+ import shutil
+ import socket
+ import struct
++import sys
+ import textwrap
+ import time
+@@ -381,6 +382,8 @@ class TestSystemVirtualMemory(unittest.TestCase):
+                 ret = psutil.virtual_memory()
+             assert m.called
+             self.assertEqual(ret.available, 2057400 * 1024 + 4818144 * 1024)
++            if sys.version_info < (3,):
++                return
+             w = ws[0]
+             self.assertIn(
+                 "inactive memory stats couldn't be determined", str(w.message))
+@@ -411,6 +414,8 @@ class TestSystemVirtualMemory(unittest.TestCase):
+                     ret = psutil.virtual_memory()
+                     self.assertEqual(
+                         ret.available, 2057400 * 1024 + 4818144 * 1024)
++                    if sys.version_info < (3,):
++                        return
+                     w = ws[0]
+                     self.assertIn(
+                         "inactive memory stats couldn't be determined",
+@@ -882,6 +887,7 @@ class TestLoadAvg(unittest.TestCase):
+ @unittest.skipIf(not LINUX, "LINUX only")
+ class TestSystemNetIfAddrs(unittest.TestCase):
+ 
++    @unittest.skip("broken on Gentoo")
+     def test_ips(self):
+         for name, addrs in psutil.net_if_addrs().items():
+             for addr in addrs:
+@@ -1364,7 +1370,8 @@ class TestMisc(unittest.TestCase):
+             psutil.PROCFS_PATH = "/proc"
+             os.rmdir(tdir)
+ 
+     @retry_on_failure()
++    @unittest.skip("broken on Gentoo")
+     def test_issue_687(self):
+         # In case of thread ID:
+         # - pid_exists() is supposed to return False
+@@ -2073,6 +2080,7 @@ class TestProcessAgainstStatus(unittest.TestCase):
+         value = self.read_status_file("nonvoluntary_ctxt_switches:")
+         self.assertEqual(self.proc.num_ctx_switches().involuntary, value)
+ 
++    @unittest.skip("broken on Gentoo")
+     def test_cpu_affinity(self):
+         value = self.read_status_file("Cpus_allowed_list:")
+         if '-' in str(value):
+diff --git a/psutil/tests/test_posix.py b/psutil/tests/test_posix.py
+index a96b310f..70199203 100755
+--- a/psutil/tests/test_posix.py
++++ b/psutil/tests/test_posix.py
+@@ -364,6 +364,7 @@ class TestSystemAPIs(unittest.TestCase):
+                     "couldn't find %s nic in 'ifconfig -a' output\n%s" % (
+                         nic, output))
+ 
++    @unittest.skip("broken on Gentoo")
+     @unittest.skipIf(CI_TESTING and not psutil.users(), "unreliable on CI")
+     @retry_on_failure()
+     def test_users(self):
+diff --git a/psutil/tests/test_process.py b/psutil/tests/test_process.py
+index 987bdf38..cb04f3ef 100755
+--- a/psutil/tests/test_process.py
++++ b/psutil/tests/test_process.py
+@@ -350,6 +350,7 @@ class TestProcess(unittest.TestCase):
+             self.assertGreaterEqual(io2[i], 0)
+             self.assertGreaterEqual(io2[i], 0)
+ 
++    @unittest.skip("fails if builder is ioniced already")
+     @unittest.skipIf(not HAS_IONICE, "not supported")
+     @unittest.skipIf(not LINUX, "linux only")
+     def test_ionice_linux(self):
+@@ -1495,6 +1496,7 @@ class TestProcess(unittest.TestCase):
+         d2 = clean_dict(os.environ.copy())
+         self.assertEqual(d1, d2)
+ 
++    @unittest.skip("broken by sandbox")
+     @unittest.skipIf(not HAS_ENVIRON, "not supported")
+     @unittest.skipIf(not POSIX, "POSIX only")
+     def test_weird_environ(self):
+diff --git a/psutil/tests/test_system.py b/psutil/tests/test_system.py
+index 3834209f..b07b5883 100755
+--- a/psutil/tests/test_system.py
++++ b/psutil/tests/test_system.py
+@@ -215,6 +215,7 @@ class TestMiscAPIs(unittest.TestCase):
+         self.assertGreater(bt, 0)
+         self.assertLess(bt, time.time())
+ 
++    @unittest.skip("broken on Gentoo")
+     @unittest.skipIf(CI_TESTING and not psutil.users(), "unreliable on CI")
+     def test_users(self):
+         users = psutil.users()
+-- 
+2.25.1
