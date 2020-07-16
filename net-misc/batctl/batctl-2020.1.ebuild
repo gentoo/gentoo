@@ -19,10 +19,8 @@ RDEPEND="dev-libs/libnl:3"
 DEPEND="${RDEPEND}"
 
 pkg_setup() {
-	if ( linux_config_exists && linux_chkconfig_present BATMAN_ADV ) \
-		|| ! has_version net-misc/batman-adv ; then
-		ewarn "You need the batman-adv kernel module,"
-		ewarn "either from the kernel tree or via net-misc/batman-adv"
+	if ! linux_config_exists || ! linux_chkconfig_present BATMAN_ADV; then
+		ewarn "batctl requires batman-adv kernel support"
 	fi
 }
 
