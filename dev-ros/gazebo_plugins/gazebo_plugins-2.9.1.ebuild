@@ -52,4 +52,3 @@ DEPEND="${RDEPEND}
 	dev-ros/trajectory_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/moveit_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
-PATCHES=( "${FILESDIR}/ocv4.patch" )
