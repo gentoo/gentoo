@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,17 +16,17 @@ src_compile() {
 	emake clean
 	emake \
 		CC="$(tc-getCC)" \
-		LD="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
-	    LDFLAGS="${LDFLAGS}" \
+		LD="$(tc-getCC)" \
+		LDFLAGS="${LDFLAGS}" \
 		prefix="${EPREFIX}/usr" \
 		all
 }
 
 src_install() {
 	emake \
-		DESTDIR="${D}" \
 		BINDIR="${EPREFIX}/usr/bin" \
+		DESTDIR="${D}" \
 		MANDIR="${EPREFIX}/usr/share/man" \
 		prefix="${EPREFIX}/usr" \
 		install
