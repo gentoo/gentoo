@@ -65,11 +65,6 @@ app-admin/syslog-ng test
 # PPS should work on all arches, but only keyworded on some arches
 >=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-28)
-# >=sci-libs/vtk-8 is not keyworded, bug #649054
-media-libs/opencv vtk
-sci-libs/pcl vtk
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-10-29)
 # Neither sys-apps/bolt nor kde-plasma/plasma-thunderbolt are keyworded
 kde-plasma/plasma-meta thunderbolt
