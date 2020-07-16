@@ -5,8 +5,8 @@ EAPI=7
 
 inherit meson
 
-DESCRIPTION="Select a region in a Wayland compositor and print it to the standard output."
-HOMEPAGE="https://github.com/emersion/slurp"
+DESCRIPTION="Grab images from a Wayland compositor."
+HOMEPAGE="https://github.com/emersion/grim"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -18,20 +18,25 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+man"
+IUSE="+man jpeg"
 
 DEPEND="
 	>=dev-libs/wayland-protocols-1.14
 	dev-libs/wayland
-	x11-libs/cairo
-	x11-libs/libxcb"
+	jpeg? ( virtual/jpeg )
+	x11-libs/cairo"
 
 RDEPEND="${DEPEND}"
 
-BDEPEND="man? ( ~app-text/scdoc-9999 )"
+if [[ ${PV} == 9999 ]]; then
+	BDEPEND+="man? ( ~app-text/scdoc-9999 )"
+else
+	BDEPEND+="man? ( app-text/scdoc )"
+fi
 
 src_configure() {
 	local emesonargs=(
+		$(meson_feature jpeg)
 		$(meson_feature man man-pages)
 		"-Dwerror=false"
 	)

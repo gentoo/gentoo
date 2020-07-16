@@ -2,70 +2,45 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
-if [[ ${PV} != 9999* ]] ; then
-	SCM="golang-vcs-snapshot"
-else
-	SCM="git-r3"
-fi
-
-inherit fcaps golang-base tmpfiles systemd ${SCM}
-unset SCM
-
-EGO_PN="code.gitea.io/gitea"
+inherit fcaps go-module tmpfiles systemd
+MY_PV="${PV/_rc/-rc}"
 
 DESCRIPTION="A painless self-hosted Git service"
 HOMEPAGE="https://gitea.io"
 
 if [[ ${PV} != 9999* ]] ; then
-	SRC_URI="https://github.com/go-gitea/gitea/releases/download/v${PV}/gitea-src-${PV}.tar.gz"
+	SRC_URI="https://github.com/go-gitea/gitea/releases/download/v${MY_PV}/gitea-src-${MY_PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64"
+	S="${WORKDIR}"
 else
 	EGIT_REPO_URI="https://github.com/go-gitea/gitea"
-	EGIT_CHECKOUT_DIR="${WORKDIR}/${P}/src/${EGO_PN}"
-	has test ${FEATURES} && EGIT_MIN_CLONE_TYPE="mirror"
+	inherit git-r3
+	S="${WORKDIR}/${P}"
 fi
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
 IUSE="+acct build-client pam sqlite"
 
-BDEPEND="dev-lang/go
-	build-client? ( >=net-libs/nodejs-10[npm] )"
-DEPEND="pam? ( sys-libs/pam )"
-RDEPEND="${DEPEND}
+BDEPEND="build-client? ( >=net-libs/nodejs-10[npm] )"
+COMMON_DEPEND="
 	acct? (
 		acct-group/git
-		acct-user/git[gitea]
-	)
+		acct-user/git[gitea] )
+	pam? ( sys-libs/pam )"
+DEPEND="${COMMON_DEPEND}"
+RDEPEND="${COMMON_DEPEND}
 	dev-vcs/git"
 
-DOCS=( custom/conf/app.ini.sample CONTRIBUTING.md README.md )
-FILECAPS=( cap_net_bind_service+ep usr/bin/gitea )
-S="${WORKDIR}/${P}/src/${EGO_PN}"
-
-PATCHES=( "${FILESDIR}/gitea-logflags.patch" )
-
-gitea_make() {
-	local gitea_tags=(
-		bindata
-		$(usev pam)
-		$(usex sqlite 'sqlite sqlite_unlock_notify' '')
-	)
-	local gitea_settings=(
-		"-X code.gitea.io/gitea/modules/setting.CustomConf=${EPREFIX}/etc/gitea/app.ini"
-		"-X code.gitea.io/gitea/modules/setting.CustomPath=${EPREFIX}/var/lib/gitea/custom"
-		"-X code.gitea.io/gitea/modules/setting.AppWorkPath=${EPREFIX}/var/lib/gitea"
-	)
-	local makeenv=(
-		TAGS="${gitea_tags[@]}"
-		LDFLAGS="-extldflags \"${LDFLAGS}\" ${gitea_settings[@]}"
-		GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)"
-	)
-	[[ ${PV} != 9999* ]] && makeenv+=("DRONE_TAG=${PV}")
-
-	env "${makeenv[@]}" emake -j1 "$@"
-}
+DOCS=(
+	custom/conf/app.ini.sample CONTRIBUTING.md README.md
+)
+FILECAPS=(
+	cap_net_bind_service+ep usr/bin/gitea
+)
+PATCHES=(
+	"${FILESDIR}/1.12-fix-vendoring.patch"
+)
 
 src_prepare() {
 	default
@@ -89,31 +64,41 @@ src_prepare() {
 		sed -i -e "s#^DB_TYPE = .*#DB_TYPE = sqlite3#" custom/conf/app.ini.sample || die
 	fi
 
+	einfo "Remove tests which are known to fail with network-sandbox enabled."
+	rm ./modules/migrations/github_test.go || die
+
+	einfo "Remove tests which depend on gitea git-repo."
+	rm ./modules/git/blob_test.go || die
+	rm ./modules/git/repo_test.go || die
+
 	# Remove already build assets (like frontend part)
-	use build-client && gitea_make clean-all
+	use build-client && emake clean-all
 }
 
 src_compile() {
-	if use build-client ; then
-		gitea_make build
+	local gitea_tags=(
+		bindata
+		$(usev pam)
+		$(usex sqlite 'sqlite sqlite_unlock_notify' '')
+	)
+	local gitea_settings=(
+		"-X code.gitea.io/gitea/modules/setting.CustomConf=${EPREFIX}/etc/gitea/app.ini"
+		"-X code.gitea.io/gitea/modules/setting.CustomPath=${EPREFIX}/var/lib/gitea/custom"
+		"-X code.gitea.io/gitea/modules/setting.AppWorkPath=${EPREFIX}/var/lib/gitea"
+	)
+	local makeenv=(
+		TAGS="${gitea_tags[@]}"
+		LDFLAGS="-extldflags \"${LDFLAGS}\" ${gitea_settings[@]}"
+	)
+	[[ ${PV} != 9999* ]] && makeenv+=("DRONE_TAG=${MY_PV}")
+
+	if use build-client; then
+		# -j1 as Makefile doesn't handle dependancy correctly, and is not
+		# useful as golang compiler don't use this info.
+		env "${makeenv[@]}" emake -j1 build
 	else
-		gitea_make backend
+		env "${makeenv[@]}" emake backend
 	fi
-}
-
-src_test() {
-	if has network-sandbox ${FEATURES}; then
-		einfo "Remove tests which are known to fail with network-sandbox enabled."
-		rm ./modules/migrations/github_test.go || die
-	fi
-
-	if [[ ${PV} != 9999* ]] ; then
-		einfo "Remove tests which depend on gitea git-repo."
-		rm ./modules/git/blob_test.go || die
-		rm ./modules/git/repo_test.go || die
-	fi
-
-	default
 }
 
 src_install() {
