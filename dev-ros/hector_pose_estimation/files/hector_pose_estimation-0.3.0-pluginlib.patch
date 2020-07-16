@@ -9,8 +9,8 @@ Subject: [PATCH] update to use non deprecated pluginlib macro
 
 diff --git a/hector_pose_estimation/src/pose_estimation_nodelet.cpp b/hector_pose_estimation/src/pose_estimation_nodelet.cpp
 index 7da3ca6..97ba5b0 100644
---- a/hector_pose_estimation/src/pose_estimation_nodelet.cpp
-+++ b/hector_pose_estimation/src/pose_estimation_nodelet.cpp
+--- hector_pose_estimation/src/pose_estimation_nodelet.cpp
++++ hector_pose_estimation/src/pose_estimation_nodelet.cpp
 @@ -55,4 +55,4 @@ class PoseEstimationNodelet : public PoseEstimationNode, public nodelet::Nodelet
  } // namespace hector_pose_estimation
  
