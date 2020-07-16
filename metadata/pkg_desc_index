@@ -4611,8 +4611,8 @@ dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of obj
 dev-java/okio 1.11.0: A modern I/O API for Java
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/openjdk 8.252_p09 8.262_p10 11.0.7_p10 11.0.8_p10: Open source implementation of the Java programming language
-dev-java/openjdk-bin 8.252_p09 11.0.7_p10-r1 11.0.8_p10: Prebuilt Java JDK binaries provided by AdoptOpenJDK
-dev-java/openjdk-jre-bin 8.252_p09 11.0.7_p10-r1 11.0.8_p10-r1: Prebuilt Java JRE binaries provided by AdoptOpenJDK
+dev-java/openjdk-bin 8.252_p09 8.262_p10 11.0.7_p10-r1 11.0.8_p10: Prebuilt Java JDK binaries provided by AdoptOpenJDK
+dev-java/openjdk-jre-bin 8.252_p09 8.262_p10 11.0.7_p10-r1 11.0.8_p10-r1: Prebuilt Java JRE binaries provided by AdoptOpenJDK
 dev-java/openjfx 11.0.7_p1 11.0.8_p2: Java OpenJFX client application platform
 dev-java/oracle-javamail 1.5.2 1.5.5 1.5.6: A Java-based framework to build multiplatform mail and messaging applications
 dev-java/oracle-jdk-bin 1.8.0.202 11.0.2: Oracle's Java SE Development Kit
