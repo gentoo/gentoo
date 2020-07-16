@@ -5902,7 +5902,7 @@ dev-perl/Data-Hexify 1.0.0-r1 1.0.0-r2: Perl extension for hexdumping arbitrary 
 dev-perl/Data-Hierarchy 0.340.0-r1 0.340.0-r2: Handle data in a hierarchical structure
 dev-perl/Data-ICal 0.220.0 0.240.0: Generates iCalendar (RFC 2445) calendar files
 dev-perl/Data-IEEE754 0.20.0: Pack and unpack big-endian IEEE754 floats and doubles
-dev-perl/Data-ObjectDriver 0.150.0: Simple, transparent data interface, with caching
+dev-perl/Data-ObjectDriver 0.150.0 0.190.0: Simple, transparent data interface, with caching
 dev-perl/Data-OptList 0.110.0: parse and validate simple name/value option pairs
 dev-perl/Data-Page 2.20.0-r1: help when paging through sets of results
 dev-perl/Data-Page-Pageset 1.20.0-r1: change long page list to be shorter and well navigate
