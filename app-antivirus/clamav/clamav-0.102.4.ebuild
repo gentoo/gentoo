@@ -51,7 +51,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.101.2-tinfo.patch" #670729
 	"${FILESDIR}/${PN}-0.102.1-libxml2_pkgconfig.patch" #661328
 	"${FILESDIR}/${PN}-0.102.2-fix-curl-detection.patch" #709616
-	"${FILESDIR}/${P}-system-tomsfastmath.patch" # 649394
+	"${FILESDIR}/${PN}-0.102.3-system-tomsfastmath.patch" # 649394
 )
 
 src_prepare() {
