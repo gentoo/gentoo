@@ -4432,7 +4432,7 @@ dev-java/jarbundler 1.8.1-r2 2.3.1: Jar Bundler Ant Task
 dev-java/jargs 1.0: Command-line argument parsing library in Java
 dev-java/jarjar 1.4: Tool for repackaging third-party jars
 dev-java/java-apicheck 0_p20150907: Command line tool to check Java packages for API compatibility
-dev-java/java-config 2.2.0-r4 2.3.1: Java environment configuration query tool
+dev-java/java-config 2.2.0-r4 2.3.1 9999: Java environment configuration query tool
 dev-java/java-dep-check 0.3-r1 0.4: Java Dependency checker
 dev-java/java-getopt 1.0.14: Java command line option parser
 dev-java/java-sdk-docs 1.8.0.202 9.0.4 11.0.5: Oracle's documentation bundle (including API) for Java SE
@@ -5311,7 +5311,7 @@ dev-libs/smack 0.5.0: low-level IO storage which packs data into sorted compress
 dev-libs/snowball-stemmer 0.20140325: All you need to include the snowball stemming algorithms into a C project
 dev-libs/softhsm 2.5.0: A software PKCS#11 implementation
 dev-libs/sord 0.16.4: Library for storing RDF data in memory
-dev-libs/spdlog 1.5.0-r1 1.6.1 1.6.1-r1 9999: Very fast, header only, C++ logging library
+dev-libs/spdlog 1.5.0-r1 1.6.1 1.6.1-r1 1.7.0 9999: Very fast, header only, C++ logging library
 dev-libs/spsdeclib 5.1-r1: Kryoflux SPS Decoder Library
 dev-libs/squareball 0.2.0 9999: A general-purpose library for C99
 dev-libs/starpu 1.2.6: Unified runtime system for heterogeneous multicore architectures
