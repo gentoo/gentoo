@@ -2178,7 +2178,6 @@ dev-libs/libevent:debug - Support for running in debug mode
 dev-libs/libevent:malloc-replacement - Support for replacing the memory management functions
 dev-libs/libevent:verbose-debug - Support for verbose debug logging
 dev-libs/libffi:pax_kernel - Use PaX emulated trampolines, for we can't use PROT_EXEC
-dev-libs/libffi:test-bhaible - Run extended regression tests (very slow).
 dev-libs/libffi-compat:pax_kernel - Use PaX emulated trampolines, for we can't use PROT_EXEC
 dev-libs/libflatarray:cuda - Enables plugins for NVIDIA GPUs (e.g. CUDAAllocator)
 dev-libs/libgcrypt:o-flag-munging - Enable O-flag mangling during build
