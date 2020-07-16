@@ -2,6 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2020-06-29)
+# Pulls in too many yet unstable versions of
+# e.g. matplotlib
+# bug #732492
+app-portage/nattka depgraph-order
+
+# Sam James <sam@gentoo.org> (2020-06-29)
 # Deps not yet stable
 dev-python/pymongo test
 app-shells/bash-completion test
