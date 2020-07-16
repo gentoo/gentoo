@@ -27,6 +27,7 @@ RDEPEND="
 BDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
 	!~dev-python/pbr-2.1.0
 	test? (
+		dev-python/sphinx[${PYTHON_USEDEP}]
 		>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
 	)
