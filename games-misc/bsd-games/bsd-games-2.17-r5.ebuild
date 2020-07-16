@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ inherit eutils toolchain-funcs games
 
 DEB_PATCH_VER=22
 DESCRIPTION="collection of games from NetBSD"
-HOMEPAGE="http://www.advogato.org/proj/bsd-games/"
-SRC_URI="ftp://metalab.unc.edu/pub/Linux/games/${P}.tar.gz
+HOMEPAGE="https://www.polyomino.org.uk/computer/software/bsd-games/"
+SRC_URI="https://www.polyomino.org.uk/computer/software/bsd-games/${P}.tar.gz
 	mirror://debian/pool/main/b/bsdgames/bsdgames_${PV}-${DEB_PATCH_VER}.debian.tar.xz"
 
 LICENSE="BSD"

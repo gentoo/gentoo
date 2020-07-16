@@ -1,0 +1,73 @@
+From ed205512dd05a7dd4b0dab8af760d13e9efbbb25 Mon Sep 17 00:00:00 2001
+From: Fred Wright <fw@fwright.net>
+Date: Sat, 7 Oct 2017 19:54:55 -0700
+Subject: [PATCH] Fixes SConstruct for SCons 3.0.0.
+
+SCons 3.0.0 introduced a bug where the print_funtion future import is
+inflicted on the SConstruct script, making 'print' as a statement
+illegal.  This is expected to be fixed in SCons 3.0.1, but in the
+meantime it's necessary to switch to the print_function mode for
+compatibility.  Fortunately, there were only three print statements in
+the whole file.
+
+This is not a complete Python 3 fix; it simply restores correct
+operation when running SCons under Python 2.
+
+TESTED:
+Arraged to test all three print() instances under OSX.
+Tested "scons build-all check" under OSX, Ubuntu, CentOS, Fedora,
+FreeBSD, OpenBSD, and NetBSD.
+---
+ SConstruct | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/SConstruct b/SConstruct
+index 4923ad8cdae3..040103cff387 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -23,6 +23,13 @@
+ # * Out-of-directory builds: see http://www.scons.org/wiki/UsingBuildDir
+ # * Coveraging mode: gcc "-coverage" flag requires a hack
+ #   for building the python bindings
++# * Python 3 compatibility in this recipe
++
++# Since SCons 3.0.0 forces print_function on us, it needs to be unconditional.
++# This is recognized to be a bug in SCons, but we need to live with it for now,
++# and we'll need this for eventual Python 3 compatibility, anyway.
++# Python requires this to precede any non-comment code.
++from __future__ import print_function
+ 
+ # Release identification begins here
+ gpsd_version = "3.18~dev"
+@@ -375,7 +382,7 @@ if env.GetOption("silent"):
+ 
+ def announce(msg):
+     if not env.GetOption("silent"):
+-        print msg
++        print(msg)
+ 
+ # DESTDIR environment variable means user prefix the installation root.
+ DESTDIR = os.environ.get('DESTDIR', '')
+@@ -1546,8 +1553,8 @@ def substituter(target, source, env):
+         content = content.replace(s, t)
+     m = re.search("@[A-Z]+@", content)
+     if m and m.group(0) not in map(lambda x: x[0], substmap):
+-        print >>sys.stderr, "Unknown subst token %s in %s." \
+-            % (m.group(0), sfp.name)
++        print("Unknown subst token %s in %s." % (m.group(0), sfp.name),
++              file=sys.stderr)
+     tfp = open(str(target[0]), "w")
+     tfp.write(content)
+     tfp.close()
+@@ -2191,7 +2198,7 @@ def validation_list(target, source, env):
+         if '-head' not in page:
+             fp = open(page)
+             if "Valid HTML" in fp.read():
+-                print os.path.join(website, os.path.basename(page))
++                print(os.path.join(website, os.path.basename(page)))
+             fp.close()
+ Utility("validation-list", [www], validation_list)
+ 
+-- 
+2.19.1
+

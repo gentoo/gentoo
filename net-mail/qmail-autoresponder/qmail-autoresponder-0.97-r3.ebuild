@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="http://untroubled.org/qmail-autoresponder/archive/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 hppa ~mips ppc ~sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~mips ppc ~sparc x86"
 IUSE="mysql"
 
 DEPEND=">=dev-libs/bglibs-1.106
@@ -42,7 +42,7 @@ src_compile() {
 	fi
 }
 
-src_install () {
+src_install() {
 	dobin qmail-autoresponder
 	doman qmail-autoresponder.1
 	if use mysql; then

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ ROS_SUBDIR=${PN}
 inherit ros-catkin
 
 DESCRIPTION="ROS wrapper for OpenSlam's Gmapping"
-LICENSE="CC-BY-NC-SA-2.5"
+LICENSE="BSD"
 SLOT="0"
 IUSE=""
 

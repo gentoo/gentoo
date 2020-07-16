@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,9 +17,13 @@ DEPEND=">=x11-libs/libdockapp-0.7:=
 
 S=${WORKDIR}/dockapps
 
+PATCHES=(
+	"${FILESDIR}"/${P}-makefile.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+	)
+
 src_prepare() {
 	default
-	eapply "${FILESDIR}"/${P}-makefile.patch
 
 	sed -e 's#<dockapp.h>#<libdockapp/dockapp.h>#' -i *.c || die
 }

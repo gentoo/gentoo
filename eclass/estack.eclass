@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: estack.eclass
@@ -115,7 +115,8 @@ evar_pop() {
 	local cnt=${1:-bad}
 	case $# in
 	0) cnt=1 ;;
-	1) isdigit "${cnt}" || die "${FUNCNAME}: first arg must be a number: $*" ;;
+	1) [[ -z ${cnt//[0-9]} ]] \
+		|| die "${FUNCNAME}: first arg must be a number: $*" ;;
 	*) die "${FUNCNAME}: only accepts one arg: $*" ;;
 	esac
 
@@ -153,12 +154,13 @@ evar_pop() {
 #		eshopts_pop
 # @CODE
 eshopts_push() {
+	# Save both "shopt" and "set -o" option sets, because otherwise
+	# restoring posix would disable expand_aliases by side effect. #662586
+	estack_push eshopts "$(shopt -p -o) $(shopt -p)"
 	if [[ $1 == -[su] ]] ; then
-		estack_push eshopts "$(shopt -p)"
-		[[ $# -eq 0 ]] && return 0
+		[[ $# -le 1 ]] && return 0
 		shopt "$@" || die "${FUNCNAME}: bad options to shopt: $*"
 	else
-		estack_push eshopts "$(shopt -p -o)"
 		[[ $# -eq 0 ]] && return 0
 		set "$@" || die "${FUNCNAME}: bad options to set: $*"
 	fi
@@ -194,18 +196,6 @@ eumask_pop() {
 	local s
 	estack_pop eumask s || die "${FUNCNAME}: unbalanced push"
 	umask ${s} || die "${FUNCNAME}: sanity: could not restore umask: ${s}"
-}
-
-# @FUNCTION: isdigit
-# @USAGE: <number> [more numbers]
-# @DESCRIPTION:
-# Return true if all arguments are numbers.
-isdigit() {
-	local d
-	for d ; do
-		[[ ${d:-bad} == *[!0-9]* ]] && return 1
-	done
-	return 0
 }
 
 _ESTACK_ECLASS=1

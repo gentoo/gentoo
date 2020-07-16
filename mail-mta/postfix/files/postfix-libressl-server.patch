@@ -1,0 +1,14 @@
+see https://bugs.gentoo.org/678874
+
+--- a/src/tls/tls_server.c.orig	2018-12-26 19:21:49 UTC
++++ b/src/tls/tls_server.c
+@@ -518,7 +518,9 @@ TLS_APPL_STATE *tls_server_init(const TL
+ 	 * ticket decryption callback already (since 2.11) asks OpenSSL to
+ 	 * avoid issuing new tickets when the presented ticket is re-usable.
+ 	 */
++#ifndef LIBRESSL_VERSION_NUMBER
+ 	SSL_CTX_set_num_tickets(server_ctx, 1);
++#endif
+     }
+ #endif
+     if (!ticketable)

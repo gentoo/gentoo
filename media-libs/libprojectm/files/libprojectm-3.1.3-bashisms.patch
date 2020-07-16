@@ -1,0 +1,47 @@
+From 8a522d975890a4512be0f04285f356c6db653a57 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Thu, 14 May 2020 11:46:50 +0200
+Subject: [PATCH] configure.ac: Avoid bashisms
+
+or else we end up like this:
+
+  ./configure: 18902: ./configure: Syntax error: redirection unexpected
+
+or
+
+  ./configure: 20152: ./configure: my_CFLAGS+=-DDATADIR_PATH=\""$(pkgdatadir)"\" : not found
+  ./configure: 20153: ./configure: my_CFLAGS+=-I$(top_srcdir)/vendor : not found
+
+Gentoo-bug: https://bugs.gentoo.org/714098
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ configure.ac | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 5fa53eca5..ecf85e076 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -163,7 +163,7 @@ AC_PREFIX_DEFAULT([/usr/local])
+ 
+ AC_PROG_MKDIR_P
+ 
+-AS_IF([grep android <<< ${host}], [],
++AS_IF([echo ${host} | grep -Fq android], [],
+   [AX_CHECK_COMPILE_FLAG([-stdlib=libc++], [
+                         CXXFLAGS="$CXXFLAGS -stdlib=libc++"])
+ ])
+@@ -237,10 +237,10 @@ AM_CONDITIONAL([ENABLE_EMSCRIPTEN], [test "x$enable_emscripten" = "xyes"])
+ AM_CONDITIONAL([ENABLE_PRESET_SUBDIRS], [test "x$enable_preset_subdirs" = "xyes"])
+ 
+ 
+-my_CFLAGS="-Wall -Wchar-subscripts -Wformat-security -Wpointer-arith -Wshadow -Wsign-compare -Wtype-limits "
++my_CFLAGS="-Wall -Wchar-subscripts -Wformat-security -Wpointer-arith -Wshadow -Wsign-compare -Wtype-limits"
+ #my_CFLAGS+="-fsanitize=address -fno-omit-frame-pointer "
+-my_CFLAGS+='-DDATADIR_PATH=\""$(pkgdatadir)"\" '
+-my_CFLAGS+='-I$(top_srcdir)/vendor '
++my_CFLAGS="${my_CFLAGS} -DDATADIR_PATH=\\\"\"\$(pkgdatadir)\\\"\""
++my_CFLAGS="${my_CFLAGS} -I\$(top_srcdir)/vendor"
+ AC_SUBST([my_CFLAGS])
+ 
+ 

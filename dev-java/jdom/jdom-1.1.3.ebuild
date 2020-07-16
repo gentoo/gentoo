@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ SRC_URI="http://www.jdom.org/dist/binary/archive/${P}.tar.gz"
 HOMEPAGE="http://www.jdom.org"
 LICENSE="JDOM"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 IUSE=""
 
 RDEPEND=">=virtual/jre-1.6"
@@ -42,7 +42,7 @@ EANT_BUILD_TARGET="package"
 
 src_install() {
 	java-pkg_dojar build/*.jar
-	dodoc CHANGES.txt COMMITTERS.txt README.txt TODO.txt || die
+	dodoc CHANGES.txt COMMITTERS.txt README.txt TODO.txt
 	use doc && java-pkg_dojavadoc build/apidocs
 	use examples && java-pkg_doexamples samples
 	use source && java-pkg_dosrc src/java/org

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/Farstream"
 SRC_URI="https://freedesktop.org/software/farstream/releases/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="+introspection test upnp"
 SLOT="0.2/5" # .so version
 
@@ -43,6 +43,10 @@ DEPEND="${COMMONDEPEND}
 		media-libs/gst-plugins-base:1.0[vorbis]
 		media-libs/gst-plugins-good:1.0 )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.2.8-make43.patch # remove when bumping and switching to Meson
+)
 
 pkg_setup() {
 	python-any-r1_pkg_setup

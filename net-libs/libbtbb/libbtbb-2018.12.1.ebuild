@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ else
 	MY_PV=${MY_PV/./-R}
 	S=${WORKDIR}/${PN}-${MY_PV}
 	SRC_URI="https://github.com/greatscottgadgets/${PN}/archive/${MY_PV}.tar.gz -> ${PN}-${MY_PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 arm x86"
 fi
 
 LICENSE="GPL-2"
@@ -49,7 +49,7 @@ which_plugins() {
 	fi
 }
 
-src_prepare(){
+src_prepare() {
 	CMAKE_USE_DIR="${S}"
 	BUILD_DIR="${S}"_build
 	cmake-utils_src_prepare
@@ -97,7 +97,7 @@ src_configure() {
 	fi
 }
 
-src_compile(){
+src_compile() {
 	CMAKE_USE_DIR="${S}"
 	BUILD_DIR="${S}"_build
 	cmake-utils_src_compile
@@ -116,7 +116,7 @@ src_compile(){
 	fi
 }
 
-src_test(){
+src_test() {
 	CMAKE_USE_DIR="${S}"
 	BUILD_DIR="${S}"_build
 	cmake-utils_src_test
@@ -135,7 +135,7 @@ src_test(){
 	fi
 }
 
-src_install(){
+src_install() {
 	CMAKE_USE_DIR="${S}"
 	BUILD_DIR="${S}"_build
 	cmake-utils_src_install

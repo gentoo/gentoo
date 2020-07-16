@@ -1,0 +1,32 @@
+--- a/efaxos.h
++++ b/efaxos.h
+@@ -13,7 +13,6 @@
+ 
+ /* Bit order reversal table. */
+ 
+-extern unsigned char normalbits [ ] ;
+ 
+ typedef enum ttymodes		/* serial port modes:  */
+ {
+--- a/efaxlib.h
++++ b/efaxlib.h
+@@ -208,7 +208,7 @@
+ /* Bit reversal lookup tables (note that the `normalbits' array
+    is the one actually used for the bit reversal.  */
+ 
+-uchar reversebits [ 256 ], normalbits [ 256 ] ;
++extern uchar reversebits [ 256 ], normalbits [ 256 ] ;
+ 
+ void initbittab(void) ;
+ 
+--- a/efaxlib.c
++++ b/efaxlib.c
+@@ -25,6 +25,8 @@
+ 
+ short short256 = 256 ;		/* for endian-ness detection */
+ 
++uchar reversebits [ 256 ], normalbits [ 256 ] ;
++
+ /* Make sure printf strings have only %d escapes and n or fewer
+    of them.  Returns 0 if OK, 1 on error. */
+ 

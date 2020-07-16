@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: multilib.eclass
@@ -294,10 +294,21 @@ get_modname() {
 }
 
 # This is for the toolchain to setup profile variables when pulling in
-# a crosscompiler (and thus they aren't set in the profile)
+# a crosscompiler (and thus they aren't set in the profile).
 multilib_env() {
 	local CTARGET=${1:-${CTARGET}}
 	local cpu=${CTARGET%%*-}
+
+	if [[ ${CTARGET} = *-musl* ]]; then
+		# musl has no multilib support and can run only in 'lib':
+		# - https://bugs.gentoo.org/675954
+		# - https://gcc.gnu.org/PR90077
+		# - https://github.com/gentoo/musl/issues/245
+		: ${MULTILIB_ABIS=default}
+		: ${DEFAULT_ABI=default}
+		export MULTILIB_ABIS DEFAULT_ABI
+		return
+	fi
 
 	case ${cpu} in
 		aarch64*)
@@ -385,6 +396,20 @@ multilib_env() {
 			: ${MULTILIB_ABIS=ppc64 ppc}
 			: ${DEFAULT_ABI=ppc64}
 		;;
+		riscv64*)
+			export CFLAGS_lp64d=${CFLAGS_lp64d--mabi=lp64d}
+			export CHOST_lp64d=${CTARGET}
+			export CTARGET_lp64d=${CTARGET}
+			export LIBDIR_lp64d="lib64/lp64d"
+
+			export CFLAGS_lp64=${CFLAGS_lp64--mabi=lp64}
+			export CHOST_lp64=${CTARGET}
+			export CTARGET_lp64=${CTARGET}
+			export LIBDIR_lp64="lib64/lp64"
+
+			: ${MULTILIB_ABIS=lp64d lp64}
+			: ${DEFAULT_ABI=lp64d}
+		;;
 		s390x*)
 			export CFLAGS_s390=${CFLAGS_s390--m31} # the 31 is not a typo
 			export CHOST_s390=${CTARGET/s390x/s390}
@@ -431,9 +456,30 @@ multilib_toolchain_setup() {
 
 	export ABI=$1
 
+	local save_restore_variables=(
+		CBUILD
+		CHOST
+		AR
+		CC
+		CXX
+		F77
+		FC
+		LD
+		NM
+		OBJDUMP
+		PKG_CONFIG
+		RANLIB
+		READELF
+		STRINGS
+		STRIP
+		PKG_CONFIG_LIBDIR
+		PKG_CONFIG_PATH
+		PKG_CONFIG_SYSTEM_LIBRARY_PATH
+	)
+
 	# First restore any saved state we have laying around.
 	if [[ ${_DEFAULT_ABI_SAVED} == "true" ]] ; then
-		for v in CHOST CBUILD AS CC CXX F77 FC LD PKG_CONFIG_{LIBDIR,PATH} ; do
+		for v in "${save_restore_variables[@]}" ; do
 			vv="_abi_saved_${v}"
 			[[ ${!vv+set} == "set" ]] && export ${v}="${!vv}" || unset ${v}
 			unset ${vv}
@@ -441,11 +487,9 @@ multilib_toolchain_setup() {
 		unset _DEFAULT_ABI_SAVED
 	fi
 
-	# We want to avoid the behind-the-back magic of gcc-config as it
-	# screws up ccache and distcc.  See #196243 for more info.
 	if [[ ${ABI} != ${DEFAULT_ABI} ]] ; then
 		# Back that multilib-ass up so we can restore it later
-		for v in CHOST CBUILD AS CC CXX F77 FC LD PKG_CONFIG_{LIBDIR,PATH} ; do
+		for v in "${save_restore_variables[@]}" ; do
 			vv="_abi_saved_${v}"
 			[[ ${!v+set} == "set" ]] && export ${vv}="${!v}" || unset ${vv}
 		done
@@ -458,15 +502,28 @@ multilib_toolchain_setup() {
 
 		# Set the CHOST native first so that we pick up the native
 		# toolchain and not a cross-compiler by accident #202811.
+		#
+		# Make sure ${save_restore_variables[@]} list matches below.
 		export CHOST=$(get_abi_CHOST ${DEFAULT_ABI})
+
+		export AR="$(tc-getAR)" # Avoid 'ar', use '${CHOST}-ar'
 		export CC="$(tc-getCC) $(get_abi_CFLAGS)"
 		export CXX="$(tc-getCXX) $(get_abi_CFLAGS)"
 		export F77="$(tc-getF77) $(get_abi_CFLAGS)"
 		export FC="$(tc-getFC) $(get_abi_CFLAGS)"
 		export LD="$(tc-getLD) $(get_abi_LDFLAGS)"
+		export NM="$(tc-getNM)" # Avoid 'nm', use '${CHOST}-nm'
+		export OBJDUMP="$(tc-getOBJDUMP)" # Avoid 'objdump', use '${CHOST}-objdump'
+		export PKG_CONFIG="$(tc-getPKG_CONFIG)"
+		export RANLIB="$(tc-getRANLIB)" # Avoid 'ranlib', use '${CHOST}-ranlib'
+		export READELF="$(tc-getREADELF)" # Avoid 'readelf', use '${CHOST}-readelf'
+		export STRINGS="$(tc-getSTRINGS)" # Avoid 'strings', use '${CHOST}-strings'
+		export STRIP="$(tc-getSTRIP)" # Avoid 'strip', use '${CHOST}-strip'
+
 		export CHOST=$(get_abi_CHOST $1)
 		export PKG_CONFIG_LIBDIR=${EPREFIX}/usr/$(get_libdir)/pkgconfig
 		export PKG_CONFIG_PATH=${EPREFIX}/usr/share/pkgconfig
+		export PKG_CONFIG_SYSTEM_LIBRARY_PATH=${EPREFIX}/usr/$(get_libdir)
 	fi
 }
 

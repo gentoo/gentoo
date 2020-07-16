@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit multilib-minimal python-any-r1
 
@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}
 	test? ( ${PYTHON_DEPS} )
 	app-arch/xz-utils
 	>=dev-util/gtk-doc-am-1.14
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 # Tests seem to hang forever

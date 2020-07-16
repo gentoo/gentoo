@@ -1,0 +1,251 @@
+From 5c38f7c8ba23813b475dcb24fa66ed3fc52d1658 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mat=C4=9Bj=20Cepl?= <mcepl@cepl.eu>
+Date: Mon, 13 Jan 2020 15:07:46 +0100
+Subject: [PATCH 1/4] Use .is_alive method instead of a deprecated .isAlive in
+ threading.Thread
+
+---
+ ropetest/type_hinting_test.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/ropetest/type_hinting_test.py b/ropetest/type_hinting_test.py
+index 7cc02bb1..afb98e19 100644
+--- a/ropetest/type_hinting_test.py
++++ b/ropetest/type_hinting_test.py
+@@ -198,18 +198,18 @@ def test_hint_parametrized_iterable(self):
+                + self._make_class_hint('collections.Iterable[threading.Thread]') + \
+                '    def a_method(self):\n' \
+                '        for i in self.a_attr:\n' \
+-               '            i.isA'
++               '            i.is_a'
+         result = self._assist(code)
+-        self.assert_completion_in_result('isAlive', 'attribute', result)
++        self.assert_completion_in_result('is_alive', 'attribute', result)
+ 
+     def test_hint_parametrized_iterator(self):
+         code = 'class Sample(object):\n' \
+                + self._make_class_hint('collections.Iterator[threading.Thread]') + \
+                '    def a_method(self):\n' \
+                '        for i in self.a_attr:\n' \
+-               '            i.isA'
++               '            i.is_a'
+         result = self._assist(code)
+-        self.assert_completion_in_result('isAlive', 'attribute', result)
++        self.assert_completion_in_result('is_alive', 'attribute', result)
+ 
+     def test_hint_parametrized_dict_key(self):
+         code = 'class Sample(object):\n' \
+
+From df3567f2afac8b5c5b50f8b7a01e21259e397f81 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mat=C4=9Bj=20Cepl?= <mcepl@cepl.eu>
+Date: Mon, 13 Jan 2020 15:29:14 +0100
+Subject: [PATCH 2/4] Direct import from collections is getting deprecated.
+
+---
+ rope/base/utils/datastructures.py | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/rope/base/utils/datastructures.py b/rope/base/utils/datastructures.py
+index 0cb16cf2..3790a6e1 100644
+--- a/rope/base/utils/datastructures.py
++++ b/rope/base/utils/datastructures.py
+@@ -1,10 +1,13 @@
+ # this snippet was taken from this link
+ # http://code.activestate.com/recipes/576694/
+ 
+-import collections
++try:
++    from collections import MutableSet
++except ImportError:
++    from collections.abc import MutableSet
+ 
+ 
+-class OrderedSet(collections.MutableSet):
++class OrderedSet(MutableSet):
+ 
+     def __init__(self, iterable=None):
+         self.end = end = []
+
+From fa5626ea99a6cac4780184d708108a98bd7e6095 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mat=C4=9Bj=20Cepl?= <mcepl@cepl.eu>
+Date: Mon, 13 Jan 2020 16:36:01 +0100
+Subject: [PATCH 3/4] Don't use underscored _ast, but use ast instead
+
+---
+ rope/base/ast.py            | 15 ++++++++-------
+ rope/base/utils/pycompat.py |  6 +++---
+ 2 files changed, 11 insertions(+), 10 deletions(-)
+
+diff --git a/rope/base/ast.py b/rope/base/ast.py
+index d43c83c5..d24524e7 100644
+--- a/rope/base/ast.py
++++ b/rope/base/ast.py
+@@ -1,5 +1,6 @@
+-import _ast
+-from _ast import *
++from __future__ import absolute_import
++import ast
++from ast import *
+ 
+ from rope.base import fscommands
+ 
+@@ -18,7 +19,7 @@ def parse(source, filename='<string>'):
+     if not source.endswith(b'\n'):
+         source += b'\n'
+     try:
+-        return compile(source, filename, 'exec', _ast.PyCF_ONLY_AST)
++        return ast.parse(source, filename='<unknown>')
+     except (TypeError, ValueError) as e:
+         error = SyntaxError()
+         error.lineno = 1
+@@ -32,7 +33,7 @@ def walk(node, walker):
+     method_name = '_' + node.__class__.__name__
+     method = getattr(walker, method_name, None)
+     if method is not None:
+-        if isinstance(node, _ast.ImportFrom) and node.module is None:
++        if isinstance(node, ast.ImportFrom) and node.module is None:
+             # In python < 2.7 ``node.module == ''`` for relative imports
+             # but for python 2.7 it is None. Generalizing it to ''.
+             node.module = ''
+@@ -42,7 +43,7 @@ def walk(node, walker):
+ 
+ 
+ def get_child_nodes(node):
+-    if isinstance(node, _ast.Module):
++    if isinstance(node, ast.Module):
+         return node.body
+     result = []
+     if node._fields is not None:
+@@ -50,9 +51,9 @@ def get_child_nodes(node):
+             child = getattr(node, name)
+             if isinstance(child, list):
+                 for entry in child:
+-                    if isinstance(entry, _ast.AST):
++                    if isinstance(entry, ast.AST):
+                         result.append(entry)
+-            if isinstance(child, _ast.AST):
++            if isinstance(child, ast.AST):
+                 result.append(child)
+     return result
+ 
+diff --git a/rope/base/utils/pycompat.py b/rope/base/utils/pycompat.py
+index 1214658f..de7cf2e4 100644
+--- a/rope/base/utils/pycompat.py
++++ b/rope/base/utils/pycompat.py
+@@ -1,5 +1,5 @@
+ import sys
+-import _ast
++import ast
+ # from rope.base import ast
+ 
+ PY2 = sys.version_info[0] == 2
+@@ -15,7 +15,7 @@
+     str = str
+     string_types = (str,)
+     import builtins
+-    ast_arg_type = _ast.arg
++    ast_arg_type = ast.arg
+ 
+     def execfile(fn, global_vars=None, local_vars=None):
+         with open(fn) as f:
+@@ -34,7 +34,7 @@ def get_ast_with_items(node):
+ 
+     string_types = (basestring,)
+     builtins = __import__('__builtin__')
+-    ast_arg_type = _ast.Name
++    ast_arg_type = ast.Name
+     execfile = execfile
+ 
+     def get_ast_arg_arg(node):
+
+From 431d35d3e7ed2286bea2d13908cd80a0e42a9b13 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mat=C4=9Bj=20Cepl?= <mcepl@cepl.eu>
+Date: Tue, 14 Jan 2020 15:00:36 +0100
+Subject: [PATCH 4/4] Work with deprecated types and using aliased ones.
+
+Fixes #247
+---
+ rope/base/oi/type_hinting/utils.py | 50 ++++++++++++++++++++----------
+ 1 file changed, 34 insertions(+), 16 deletions(-)
+
+diff --git a/rope/base/oi/type_hinting/utils.py b/rope/base/oi/type_hinting/utils.py
+index aec82ac0..ce90dfeb 100644
+--- a/rope/base/oi/type_hinting/utils.py
++++ b/rope/base/oi/type_hinting/utils.py
+@@ -1,8 +1,12 @@
+-import rope.base.builtins
++import logging
++try:
++    from typing import Union, Optional
++except ImportError:
++    pass
+ import rope.base.utils as base_utils
+ from rope.base.evaluate import ScopeNameFinder
+ from rope.base.exceptions import AttributeNotFoundError
+-from rope.base.pyobjects import PyClass, PyFunction
++from rope.base.pyobjects import PyClass, PyDefinedObject, PyFunction, PyObject
+ from rope.base.utils import pycompat
+ 
+ 
+@@ -66,33 +70,47 @@ def get_lineno_for_node(assign_node):
+ 
+ def get_mro(pyclass):
+     # FIXME: to use real mro() result
+-    l = [pyclass]
+-    for cls in l:
++    class_list = [pyclass]
++    for cls in class_list:
+         for super_cls in cls.get_superclasses():
+-            if isinstance(super_cls, PyClass) and super_cls not in l:
+-                l.append(super_cls)
+-    return l
++            if isinstance(super_cls, PyClass) and super_cls not in class_list:
++                class_list.append(super_cls)
++    return class_list
+ 
+ 
+ def resolve_type(type_name, pyobject):
++    # type: (str, Union[PyDefinedObject, PyObject]) -> Optional[PyDefinedObject, PyObject]
+     """
+-    :type type_name: str
+-    :type pyobject: rope.base.pyobjects.PyDefinedObject | rope.base.pyobjects.PyObject
+-    :rtype: rope.base.pyobjects.PyDefinedObject | rope.base.pyobjects.PyObject or None
++    Find proper type object from its name.
+     """
++    deprecated_aliases = {'collections': 'collections.abc'}
++    ret_type = None
++    logging.debug('Looking for %s', type_name)
+     if '.' not in type_name:
+         try:
+-            return pyobject.get_module().get_scope().get_name(type_name).get_object()
+-        except Exception:
+-            pass
++            ret_type = pyobject.get_module().get_scope().get_name(
++                type_name).get_object()
++        except AttributeNotFoundError:
++            logging.exception('Cannot resolve type %s', type_name)
+     else:
+         mod_name, attr_name = type_name.rsplit('.', 1)
+         try:
+             mod_finder = ScopeNameFinder(pyobject.get_module())
+             mod = mod_finder._find_module(mod_name).get_object()
+-            return mod.get_attribute(attr_name).get_object()
+-        except Exception:
+-            pass
++            ret_type = mod.get_attribute(attr_name).get_object()
++        except AttributeNotFoundError:
++            if mod_name in deprecated_aliases:
++                try:
++                    logging.debug('Looking for %s in %s',
++                                  attr_name, deprecated_aliases[mod_name])
++                    mod = mod_finder._find_module(
++                        deprecated_aliases[mod_name]).get_object()
++                    ret_type = mod.get_attribute(attr_name).get_object()
++                except AttributeNotFoundError:
++                    logging.exception('Cannot resolve type %s in %s',
++                                      attr_name, dir(mod))
++    logging.debug('ret_type = %s', ret_type)
++    return ret_type
+ 
+ 
+ class ParametrizeType(object):

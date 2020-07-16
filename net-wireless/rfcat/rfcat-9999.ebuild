@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="The swiss army knife of subGHz"
-HOMEPAGE="https://bitbucket.org/atlas0fd00m/rfcat/"
+HOMEPAGE="https://github.com/atlas0fd00m/rfcat.git"
 
 if [ "${PV}" = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/atlas0fd00m/rfcat.git"
@@ -16,13 +16,14 @@ if [ "${PV}" = "9999" ]; then
 else
 	DATE="170508"
 	FIRMWARE_DATE="170313"
-	SRC_URI="https://bitbucket.org/atlas0fd00m/rfcat/downloads/rfcat_${DATE}.tgz \
+	COMMIT="109f887fc816021a2cb2875dce62ab9cad02c5f3"
+	SRC_URI="https://github.com/atlas0fd00m/rfcat/archive/${COMMIT}.tar.gz -> ${P}.tar.gz \
 		https://bitbucket.org/atlas0fd00m/rfcat/downloads/immeSniff-${DATE}.hex \
 		https://bitbucket.org/atlas0fd00m/rfcat/downloads/RfCatChronosCCBootloader-${FIRMWARE_DATE}.hex \
 		https://bitbucket.org/atlas0fd00m/rfcat/downloads/RfCatDonsCCBootloader-${FIRMWARE_DATE}.hex \
 		https://bitbucket.org/atlas0fd00m/rfcat/downloads/RfCatYS1CCBootloader-${FIRMWARE_DATE}.hex"
 	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/${PN}_${DATE}"
+	S="${WORKDIR}/${PN}_${COMMIT}"
 fi
 
 LICENSE="BSD"
@@ -31,6 +32,7 @@ IUSE=""
 
 #DEPEND="dev-embedded/sdcc"
 #RDEPEND="${DEPEND}"
+PDEPEND="dev-python/future[${PYTHON_USEDEP}]"
 
 src_install() {
 	distutils-r1_src_install

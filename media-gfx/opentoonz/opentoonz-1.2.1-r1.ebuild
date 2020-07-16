@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -53,8 +53,8 @@ src_configure()
 {
 	local mycmakeargs=(
 		-DTIFF_LIBRARY="${S}/thirdparty/tiff-4.0.3/libtiff/.libs/libtiff.a"
-		-DSUPERLU_INCLUDE_DIR="${EPREFIX%/}/usr/include/superlu"
-		-DLZO_INCLUDE_DIR="${EPREFIX%/}/usr/include/lzo"
+		-DSUPERLU_INCLUDE_DIR="${EPREFIX}/usr/include/superlu"
+		-DLZO_INCLUDE_DIR="${EPREFIX}/usr/include/lzo"
 		-DCMAKE_SKIP_RPATH=ON
 	)
 

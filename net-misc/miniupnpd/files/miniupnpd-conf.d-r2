@@ -1,0 +1,16 @@
+# /etc/conf.d/miniupnpd: Configuration for miniupnpd init script
+
+# extra arguments to be passed to the command
+#extra_args=""
+
+# the location of the configuration file
+#config_file="/etc/miniupnpd/miniupnpd.conf"
+
+# enable manipulating iptables on start/stop
+iptables_scripts=1
+
+# enable manipulating ip6tables on start/stop
+ip6tables_scripts=1
+
+# enable manipulating nftables on start/stop (for USE=nftables)
+nftables_scripts=1

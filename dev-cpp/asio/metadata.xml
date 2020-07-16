@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person">
+		<email>alexey+gentoo@asokolov.org</email>
+		<name>Alexey Sokolov</name>
+	</maintainer>
 	<maintainer type="project">
-		<email>cpp@gentoo.org</email>
-		<name>Gentoo C++ Project</name>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">asio</remote-id>
+		<remote-id type="github">chriskohlhoff/asio</remote-id>
 	</upstream>
 </pkgmetadata>

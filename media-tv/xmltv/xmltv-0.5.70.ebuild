@@ -13,9 +13,9 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc x86 ~x86-linux"
 
-IUSE="ar ch_search dk dtvla es_laguiatv eu_dotmedia eu_epg fi fi_sv
-fr fr_kazer huro il is it na_dd na_dtv na_tvmedia nl no_gf pt_meo se_swedb
-se_tvzon tr uk_bleb uk_tvguide tv_check tv_combiner tv_pick_cgi zz_sdjson"
+IUSE="ar ch-search dk dtvla es-laguiatv eu-dotmedia eu-epg fi fi-sv
+fr fr-kazer huro il is it na-dd na-dtv na-tvmedia nl no-gf pt-meo se-swedb
+se-tvzon tr uk-bleb uk-tvguide tv-check tv-combiner tv-pick-cgi zz-sdjson"
 
 RDEPEND=">=dev-perl/libwww-perl-5.65
 	>=dev-perl/XML-Parser-2.34
@@ -36,30 +36,30 @@ RDEPEND=">=dev-perl/libwww-perl-5.65
 "
 DEPEND="${RDEPEND}
 	ar? ( dev-perl/HTML-Tree >=dev-perl/HTML-Parser-3.34 dev-perl/HTTP-Cookies dev-perl/TimeDate )
-	ch_search? ( dev-perl/HTML-Tree >=dev-perl/HTML-Parser-3.34 )
+	ch-search? ( dev-perl/HTML-Tree >=dev-perl/HTML-Parser-3.34 )
 	dk? ( dev-perl/JSON dev-perl/IO-stringy dev-perl/DateTime )
 	dtvla? ( dev-perl/HTML-Tree dev-perl/HTTP-Cookies dev-perl/TimeDate )
-	es_laguiatv? ( dev-perl/HTML-Tree )
-	eu_dotmedia? ( dev-perl/XML-LibXML dev-perl/IO-stringy dev-perl/HTTP-Cache-Transparent )
-	eu_epg? ( dev-perl/Archive-Zip dev-perl/DateTime-Format-Strptime >=dev-perl/HTML-Parser-3.34 dev-perl/IO-stringy )
+	es-laguiatv? ( dev-perl/HTML-Tree )
+	eu-dotmedia? ( dev-perl/XML-LibXML dev-perl/IO-stringy dev-perl/HTTP-Cache-Transparent )
+	eu-epg? ( dev-perl/Archive-Zip dev-perl/DateTime-Format-Strptime >=dev-perl/HTML-Parser-3.34 dev-perl/IO-stringy )
 	fi? ( dev-perl/HTML-Tree )
-	fi_sv? ( dev-perl/IO-stringy dev-perl/HTML-Tree dev-perl/DateTime )
+	fi-sv? ( dev-perl/IO-stringy dev-perl/HTML-Tree dev-perl/DateTime )
 	fr? ( dev-perl/DateTime-TimeZone dev-perl/HTML-Tree dev-perl/DateTime >=dev-perl/HTML-Parser-3.34 )
 	huro? ( dev-perl/HTML-Tree )
 	is? ( dev-perl/XML-DOM dev-perl/XML-LibXSLT )
-	na_dd? ( dev-perl/SOAP-Lite )
-	na_dtv? ( >=dev-perl/HTML-Parser-3.34 dev-perl/DateTime dev-perl/HTTP-Cookies )
-	na_tvmedia? ( dev-perl/XML-LibXML )
+	na-dd? ( dev-perl/SOAP-Lite )
+	na-dtv? ( >=dev-perl/HTML-Parser-3.34 dev-perl/DateTime dev-perl/HTTP-Cookies )
+	na-tvmedia? ( dev-perl/XML-LibXML )
 	nl? ( dev-perl/HTTP-Cache-Transparent dev-perl/HTML-Tree dev-perl/DateTime >=dev-perl/HTML-Parser-3.34 dev-perl/TimeDate )
-	pt_meo? ( dev-perl/XML-LibXML dev-perl/DateTime )
-	se_swedb? ( dev-perl/XML-LibXML dev-perl/IO-stringy dev-perl/HTTP-Cache-Transparent )
-	se_tvzon? ( dev-perl/XML-LibXML dev-perl/IO-stringy dev-perl/HTTP-Cache-Transparent )
+	pt-meo? ( dev-perl/XML-LibXML dev-perl/DateTime )
+	se-swedb? ( dev-perl/XML-LibXML dev-perl/IO-stringy dev-perl/HTTP-Cache-Transparent )
+	se-tvzon? ( dev-perl/XML-LibXML dev-perl/IO-stringy dev-perl/HTTP-Cache-Transparent )
 	tr? ( dev-perl/URI dev-perl/HTTP-Cache-Transparent dev-perl/DateTime dev-perl/HTTP-Cookies dev-perl/TimeDate )
-	uk_bleb? ( dev-perl/IO-stringy dev-perl/Archive-Zip )
-	uk_tvguide? ( dev-perl/HTML-Tree dev-perl/URI dev-perl/HTTP-Cache-Transparent dev-perl/DateTime dev-perl/TimeDate )
-	zz_sdjson? ( dev-perl/DateTime-Format-ISO8601 virtual/perl-Digest-SHA dev-perl/JSON dev-perl/List-MoreUtils dev-perl/libwww-perl virtual/perl-Storable dev-perl/Try-Tiny )
-	tv_check? ( dev-perl/Tk dev-perl/Tk-TableMatrix )
-	tv_combiner? ( dev-perl/XML-LibXML )
+	uk-bleb? ( dev-perl/IO-stringy dev-perl/Archive-Zip )
+	uk-tvguide? ( dev-perl/HTML-Tree dev-perl/URI dev-perl/HTTP-Cache-Transparent dev-perl/DateTime dev-perl/TimeDate )
+	zz-sdjson? ( dev-perl/DateTime-Format-ISO8601 virtual/perl-Digest-SHA dev-perl/JSON dev-perl/List-MoreUtils dev-perl/libwww-perl virtual/perl-Storable dev-perl/Try-Tiny )
+	tv-check? ( dev-perl/Tk dev-perl/Tk-TableMatrix )
+	tv-combiner? ( dev-perl/XML-LibXML )
 "
 
 PREFIX="/usr"
@@ -88,25 +88,25 @@ src_configure() {
 		# Enable Agentina
 		usex ar
 		# Enable Switzerland Search
-		usex ch_search
+		usex ch-search
 		# Enable Denmark
 		usex dk
 		# Enable Latin America
 		usex dtvla
 		# Enable Spain
-		usex es_laguiatv
+		usex es-laguiatv
 		# Enable EU xmltv.se
-		usex eu_dotmedia
+		usex eu-dotmedia
 		# Enable EU epgdata.com
-		usex eu_epg
+		usex eu-epg
 		# Enable Finland
 		usex fi
 		# Enable Swedish listings in Finland
-		usex fi_sv
+		usex fi-sv
 		# Enable France
 		usex fr
 		# Enable France EPG from kazer.org
-		usex fr_kazer
+		usex fr-kazer
 		# Enable Hungary and Romania
 		usex huro
 		# Enable Israel
@@ -118,35 +118,35 @@ src_configure() {
 		# Enable Italy from DVB-S stream
 		echo "no" # missing Linux::DVB
 		# Enable North America using DataDirect
-		usex na_dd
+		usex na-dd
 		# Enable North America from directv.com
-		usex na_dtv
+		usex na-dtv
 		# Enable North America XMLTVListings.com
-		usex na_tvmedia
+		usex na-tvmedia
 		# Enable Netherlands
 		usex nl
 		# Enable Portugal EPG from sappo.pt
-		usex pt_meo
+		usex pt-meo
 		# Enable Sweden
-		usex se_swedb
+		usex se-swedb
 		# Enable Sweeden Alternative
-		usex se_tvzon
+		usex se-tvzon
 		# Enable Turkey
 		usex tr
 		# Enable UK fast alternative grabber
-		usex uk_bleb
+		usex uk-bleb
 		# Enable UK/Ireland TV Guide
-		usex uk_tvguide
+		usex uk-tvguide
 		# Enable Schedules Direct JSON
-		usex zz_sdjson
+		usex zz-sdjson
 		# Enable Schedules Direct JSON (SQLite version)
 		echo "no" # TODO
 		# Enable GUI checking.
-		usex tv_check
+		usex tv-check
 		# Enable combiner
-		usex tv_combiner
+		usex tv-combiner
 		# Enable CGI support
-		usex tv_pick_cgi
+		usex tv-pick-cgi
 	}
 
 	pm_echovar=`make_config`
@@ -169,13 +169,13 @@ src_install() {
 		sed -e "s:${D}::g" -i "${i}" || die
 	done
 
-	if use tv_pick_cgi; then
+	if use tv-pick-cgi; then
 		dobin choose/tv_pick/tv_pick_cgi
 	fi
 }
 
 pkg_postinst() {
-	if use tv_pick_cgi; then
+	if use tv-pick-cgi; then
 		elog "To use tv_pick_cgi, please link it from /usr/bin/tv_pick_cgi"
 		elog "to where the ScriptAlias directive is configured."
 	fi

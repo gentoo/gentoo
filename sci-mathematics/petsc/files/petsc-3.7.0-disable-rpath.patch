@@ -1,0 +1,18 @@
+diff --git a/config/BuildSystem/config/setCompilers.py b/config/BuildSystem/config/setCompilers.py
+index 219a35b..ad2ed8c 100644
+--- a/config/BuildSystem/config/setCompilers.py
++++ b/config/BuildSystem/config/setCompilers.py
+@@ -1385,12 +1385,7 @@ class Configure(config.base.Configure):
+     for language in languages:
+       flag = '-L'
+       self.pushLanguage(language)
+-      # test '-R' before '-rpath' as sun compilers [c,fortran] don't give proper errors with wrong options.
+-      if not Configure.isDarwin(self.log):
+-        testFlags = ['-Wl,-rpath,', '-R','-rpath ' , '-Wl,-R,']
+-      else:
+-        testFlags = ['-Wl,-rpath,']
+-      # test '-R' before '-Wl,-rpath' for SUN compilers [as cc on linux accepts -Wl,-rpath, but  f90 & CC do not.
++      testFlags = []
+       if self.isSun(self.framework.getCompiler(), self.log):
+         testFlags.insert(0,'-R')
+       for testFlag in testFlags:

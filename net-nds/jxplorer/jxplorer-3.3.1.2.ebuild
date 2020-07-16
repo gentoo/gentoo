@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,7 +26,7 @@ RDEPEND="
 
 DEPEND="
 	${CDEPEND}
-	>=virtual/jdk-1.5
+	virtual/jdk:1.8
 	test? ( dev-java/junit:0 )"
 
 S="${WORKDIR}/${PN}"
@@ -58,7 +58,7 @@ src_install() {
 	insinto /usr/share/${PN}
 	doins -r icons images htmldocs language templates plugins security.default csvconfig.txt.default
 
-	dodoc README*.TXT || die
+	dodoc README*.TXT
 
 	# By default the config dir is ${HOME}/jxplorer
 	java-pkg_dolauncher ${PN} \

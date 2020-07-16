@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2-utils python-single-r1
+inherit eutils gnome2-utils python-single-r1
 
 MY_PN="PlayOnLinux"
 
@@ -25,12 +25,14 @@ RDEPEND="${PYTHON_DEPS}
 	app-arch/unzip
 	app-crypt/gnupg
 	virtual/wine
-	dev-python/wxpython:3.0[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/wxpython:3.0[${PYTHON_MULTI_USEDEP}]
+	')
 	net-misc/wget
 	x11-apps/mesa-progs
 	x11-terms/xterm
 	media-gfx/icoutils
-	|| ( net-analyzer/netcat net-analyzer/netcat6 )
+	net-analyzer/netcat
 	virtual/imagemagick-tools
 	winbind? ( net-fs/samba[winbind] )
 "

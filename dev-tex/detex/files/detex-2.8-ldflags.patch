@@ -4,8 +4,8 @@ bug #209731
 
 Index: detex-2.8/Makefile
 ===================================================================
---- detex-2.8.orig/Makefile
-+++ detex-2.8/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -104,7 +104,7 @@ D_OBJ	= detex.o
  all:	${PROGS}
  

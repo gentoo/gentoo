@@ -27,9 +27,7 @@ run when their window is currently not visible and even when the whole screen
 session is detached from the users terminal.
 </longdescription>
   <use>
-    <flag name="multiuser">Enable multiuser support (by setting correct
-    permissions)</flag>
+    <flag name="multiuser">Enable multiuser support (by setting correct permissions)</flag>
     <flag name="nethack">Express error messages in nethack style</flag>
-    <flag name="utmp">Include utmp support</flag>
   </use>
 </pkgmetadata>

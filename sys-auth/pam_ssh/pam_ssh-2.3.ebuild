@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,18 +11,19 @@ SRC_URI="mirror://sourceforge/pam-ssh/${P}.tar.xz"
 
 LICENSE="BSD-2 BSD ISC"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE=""
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
 
 # Only supports OpenSSH via `ssh-agent` #282993
-DEPEND="virtual/pam
+DEPEND="sys-libs/pam
 	dev-libs/openssl:0="
+
 RDEPEND="${DEPEND}
 	net-misc/openssh"
 
 PATCHES=(
 	# 503424#c5
 	"${FILESDIR}"/${PN}-2.1-dot-ssh-check.patch
+	"${FILESDIR}"/${PN}-gcc10-fix.patch
 )
 
 src_configure() {
@@ -34,6 +35,9 @@ src_configure() {
 	# Set the cache var so the configure script doesn't go probing hardcoded
 	# file system paths and picking up the wrong thing.
 	export ac_cv_openssldir=''
+
+	# not needed now
+	export ac_cv_exeext=no
 
 	# Avoid cross-compiling funkiness and requiring openssh at build time.
 	export PATH_SSH_AGENT="${EPREFIX}/usr/bin/ssh-agent"

@@ -1,0 +1,35 @@
+From 5dbe98184278878746a5f548fead1d2ef1e98dbe Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Tue, 26 May 2020 16:44:54 -0700
+Subject: [PATCH] 0.8.4 initconfdir
+
+fix for https://github.com/openzfs/zfs/issues/10375
+
+---
+ etc/zfs/Makefile.am | 1 +
+ etc/zfs/Makefile.in | 9 +++++----
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/etc/zfs/Makefile.am b/openzfs/etc/zfs/Makefile.am
+index 81567a4..5370f41 100644
+--- a/etc/zfs/Makefile.am
++++ b/etc/zfs/Makefile.am
+@@ -1,4 +1,5 @@
+ pkgsysconfdir = $(sysconfdir)/zfs
++initconfdir = $(DEFAULT_INITCONF_DIR)
+ 
+ pkgsysconf_DATA = \
+ 	vdev_id.conf.alias.example \
+diff --git a/etc/zfs/Makefile.in b/etc/zfs/Makefile.in
+index fb02811..795d3b1 100644
+@@ -571,6 +571,7 @@ udevdir = @udevdir@
+ udevruledir = @udevruledir@
+ zfsexecdir = @zfsexecdir@
+ pkgsysconfdir = $(sysconfdir)/zfs
++initconfdir = $(DEFAULT_INITCONF_DIR)
+ pkgsysconf_DATA = \
+ 	vdev_id.conf.alias.example \
+ 	vdev_id.conf.sas_direct.example \
+-- 
+2.26.2
+

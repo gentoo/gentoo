@@ -1,0 +1,26 @@
+diff --git a/make_cffi.py b/make_cffi.py
+index 0db4f71..4fe9cc4 100644
+--- a/make_cffi.py
++++ b/make_cffi.py
+@@ -8,6 +8,7 @@ from __future__ import absolute_import
+ 
+ import cffi
+ import distutils.ccompiler
++import distutils.sysconfig
+ import os
+ import re
+ import subprocess
+@@ -75,10 +76,12 @@ compiler = distutils.ccompiler.new_compiler()
+ if hasattr(compiler, "initialize"):
+     compiler.initialize()
+ 
++distutils.sysconfig.customize_compiler(compiler)
++
+ # Distutils doesn't set compiler.preprocessor, so invoke the preprocessor
+ # manually.
+ if compiler.compiler_type == "unix":
+-    args = list(compiler.executables["compiler"])
++    args = compiler.compiler
+     args.extend(
+         ["-E", "-DZSTD_STATIC_LINKING_ONLY", "-DZDICT_STATIC_LINKING_ONLY",]
+     )

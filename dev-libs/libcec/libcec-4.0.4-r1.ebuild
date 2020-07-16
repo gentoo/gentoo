@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 MY_PV=${PV/_p/-}
 MY_P=${PN}-${MY_PV}
 
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/Pulse-Eight/${PN}/archive/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="cubox exynos python raspberry-pi +xrandr"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

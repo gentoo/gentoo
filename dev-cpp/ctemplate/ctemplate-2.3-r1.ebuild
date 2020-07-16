@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ IUSE="doc emacs vim-syntax static-libs test"
 
 DEPEND="test? ( ${PYTHON_DEPS} )"
 RDEPEND="
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	vim-syntax? ( >=app-editors/vim-core-7 )"
 
 SITEFILE="70ctemplate-gentoo.el"

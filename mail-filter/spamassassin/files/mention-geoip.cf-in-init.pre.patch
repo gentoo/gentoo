@@ -1,0 +1,11 @@
+--- Mail-SpamAssassin-3.4.4/rules/init.pre	2019-10-23 20:22:15.000000000 -0400
++++ Mail-SpamAssassin-3.4.4/rules/init.pre	2020-05-20 19:59:42.239544414 -0400
+@@ -17,7 +17,7 @@
+ # RelayCountry - add metadata for Bayes learning, marking the countries
+ # a message was relayed through
+ #
+-# Note: This requires the Geo::IP Perl module
++# Note: This requires geoip.cf to be edited.
+ #
+ # loadplugin Mail::SpamAssassin::Plugin::RelayCountry
+ 

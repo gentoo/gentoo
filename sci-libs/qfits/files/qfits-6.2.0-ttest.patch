@@ -1,5 +1,5 @@
---- test/test_tfits.c	2006-04-27 14:08:43.000000000 +0100
-+++ test/test_tfits.c.new	2007-02-23 00:29:41.000000000 +0000
+--- a/test/test_tfits.c
++++ b/test/test_tfits.c
 @@ -322,7 +322,7 @@
       *    Test on BINARY tables
       */

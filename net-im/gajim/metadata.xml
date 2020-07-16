@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>aidecoe@gentoo.org</email>
+    <email>hanno@gentoo.org</email>
   </maintainer>
   <longdescription>
     A fully featured and easy to use GTK+ Jabber client written in PyGTK.
@@ -11,17 +11,11 @@
     <flag name="crypt">End to end encryption and GPG encryption</flag>
     <flag name="geolocation">Sharing your location</flag>
     <flag name="jingle">Audio and video calls</flag>
-    <flag name="keyring">Saving your password to your system keyring</flag>
     <flag name="networkmanager">Network lose detection using NetworkManager</flag>
     <flag name="remote">Controling Gajim instance from command line with gajim-remote</flag>
     <flag name="rst">Generating XHTML output from RST code</flag>
     <flag name="spell">Spellchecking of composed messages</flag>
     <flag name="upnp">Ability to request your router to forward port for file transfer</flag>
     <flag name="webp">Support WebP avatars</flag>
-    <flag name="zeroconf">Serverless chatting with autodetected clients in a local network</flag>
-
-    <flag name="idle">Enable idle module</flag>
-    <flag name="srv">SRV capabilities</flag>
-    <flag name="xhtml">Enable XHTML support</flag>
   </use>
 </pkgmetadata>

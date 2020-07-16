@@ -1,0 +1,11 @@
+--- tcsh-6.21.00/configure.ac
++++ tcsh-6.21.00/configure.ac
+@@ -317,7 +317,7 @@
+ dnl Checks for libraries
+ AC_SEARCH_LIBS(crypt, crypt)
+ AC_SEARCH_LIBS(getspnam, sec)
+-AC_SEARCH_LIBS([tgetent], [termlib tinfo termcap curses ncurses], [], [
++AC_SEARCH_LIBS([tgetent], [tinfo ncurses], [], [
+    AC_MSG_ERROR([unable to find the tgetent() function])
+ ])
+ AC_SEARCH_LIBS(gethostbyname, nsl)

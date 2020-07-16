@@ -1,10 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python3_{6,7} )
+EAPI=7
 
-inherit python-single-r1 toolchain-funcs gnome2-utils
+PYTHON_COMPAT=( python3_{7,8} )
+
+inherit eutils python-single-r1 toolchain-funcs xdg
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/kovidgoyal/kitty.git"
@@ -19,41 +20,45 @@ HOMEPAGE="https://github.com/kovidgoyal/kitty"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="debug doc imagemagick wayland"
+IUSE="debug wayland"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-COMMON_DEPS="
+RDEPEND="
 	${PYTHON_DEPS}
+	media-libs/fontconfig
+	media-libs/freetype:2
 	>=media-libs/harfbuzz-1.5.0:=
+	media-libs/libcanberra
+	media-libs/libpng:0=
 	sys-apps/dbus
 	sys-libs/zlib
-	media-libs/libpng:0=
-	media-libs/freetype:2
-	media-libs/fontconfig
+	x11-libs/libxcb[xkb]
 	x11-libs/libXcursor
-	x11-libs/libXrandr
 	x11-libs/libXi
 	x11-libs/libXinerama
 	x11-libs/libxkbcommon[X]
-	x11-libs/libxcb[xkb]
+	x11-libs/libXrandr
+	x11-terms/kitty-terminfo
 	wayland? (
 		dev-libs/wayland
 		>=dev-libs/wayland-protocols-1.17
 	)
 "
-RDEPEND="
-	${COMMON_DEPS}
-	imagemagick? ( virtual/imagemagick-tools )
-"
+
 DEPEND="${RDEPEND}
+	media-libs/mesa[X(+)]
 	sys-libs/ncurses
-	virtual/pkgconfig
 "
-[[ ${PV} == *9999 ]] && DEPEND+=" >=dev-python/sphinx-1.7[${PYTHON_USEDEP}]"
+
+BDEPEND="virtual/pkgconfig"
+
+[[ ${PV} == *9999 ]] && BDEPEND+="
+	$(python_gen_cond_dep '>=dev-python/sphinx-1.7[${PYTHON_MULTI_USEDEP}]')"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.13.2-flags.patch
-	"${FILESDIR}"/${PN}-0.11.0-svg-icon.patch
+	"${FILESDIR}"/kitty-0.17.2-flags.patch
+	"${FILESDIR}"/kitty-0.16.0-remove-terminfo.patch
+	"${FILESDIR}"/${PN}-0.14.4-svg-icon.patch
 )
 
 src_prepare() {
@@ -65,21 +70,16 @@ src_prepare() {
 	fi
 
 	# respect doc dir
-	sed -i "/htmldir =/s/appname/'${PF}'/" setup.py
+	sed -i "/htmldir =/s/appname/'${PF}'/" setup.py || die
 
 	tc-export CC
 }
 
-doecho() {
-	echo "$@"
-	"$@" || die
-}
-
 src_compile() {
-	doecho "${EPYTHON}" setup.py \
+	"${EPYTHON}" setup.py \
 		--verbose $(usex debug --debug "") \
 		--libdir-name $(get_libdir) \
-		linux-package
+		linux-package || die "Failed to compile kitty."
 }
 
 src_test() {
@@ -88,19 +88,17 @@ src_test() {
 }
 
 src_install() {
-	mkdir -p "${ED}"usr || die
-	cp -r linux-package/* "${ED}usr" || die
+	insinto /usr
+	doins -r linux-package/*
+	dobin linux-package/bin/kitty
 	python_fix_shebang "${ED}"
-
-	if ! use doc; then
-		rm -r "${ED}"/usr/share/doc || die
-	fi
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
+	optfeature "Displaying images in the terminal" virtual/imagemagick-tools
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

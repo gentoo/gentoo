@@ -1,29 +1,28 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit eutils toolchain-funcs
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="Convert png images to MS ico format"
 HOMEPAGE="https://www.kernel.org/pub/software/graphics/pngtoico/"
-SRC_URI="mirror://kernel/software/graphics/pngtoico/${P}.tar.bz2"
+SRC_URI="https://www.kernel.org/pub/software/graphics/pngtoico/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE=""
 
-RDEPEND=">=media-libs/libpng-1.4"
+RDEPEND="media-libs/libpng:="
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-Makefile.patch \
-		"${FILESDIR}"/${P}-libpng15.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-Makefile.patch
+	"${FILESDIR}"/${P}-libpng15.patch
+)
 
-src_compile() {
-	emake CC="$(tc-getCC)" || die
+src_configure() {
+	tc-export CC
 }
 
 src_install() {

@@ -1,0 +1,11 @@
+--- a/datovka.pro	2020-04-01 09:22:29.110403965 +0200
++++ b/datovka.pro	2020-04-01 09:24:11.984441796 +0200
+@@ -72,7 +72,7 @@
+ 	desktop.path = "$${DATADIR}/applications"
+ 	desktop.files += deployment/datovka.desktop
+ 
+-	appdata.path = "$${DATADIR}/appdata"
++	appdata.path = "$${DATADIR}/metainfo"
+ 	appdata.files += deployment/datovka.appdata.xml
+ 
+ 	icon16.path = "$${DATADIR}/icons/hicolor/16x16/apps"

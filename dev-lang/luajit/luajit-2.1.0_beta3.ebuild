@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,6 +18,8 @@ LICENSE="MIT"
 SLOT="2"
 KEYWORDS=""
 IUSE="lua52compat static-libs"
+
+PATCHES=( "${FILESDIR}/${PN}-2-ldconfig.patch" )
 
 S="${WORKDIR}/${MY_P}"
 
@@ -42,7 +44,7 @@ src_compile() {
 	_emake XCFLAGS="$(usex lua52compat "-DLUAJIT_ENABLE_LUA52COMPAT" "")"
 }
 
-src_install(){
+src_install() {
 	_emake install
 
 	pax-mark m "${ED}usr/bin/luajit-${MY_PV}"

@@ -1,68 +1,52 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit toolchain-funcs bash-completion-r1
-
-if [[ ${PV} == 9999* ]] ; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/herbstluftwm/herbstluftwm.git"
-	EXTRA_DEPEND="app-text/asciidoc"
-else
-	SRC_URI="https://herbstluftwm.org/tarballs/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-	EXTRA_DEPEND=""
-fi
+EAPI=7
+inherit git-r3 toolchain-funcs cmake-utils
 
 DESCRIPTION="A manual tiling window manager for X"
 HOMEPAGE="https://herbstluftwm.org/"
+EGIT_REPO_URI="https://github.com/herbstluftwm/herbstluftwm"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="examples xinerama zsh-completion"
+IUSE="doc examples"
 
-CDEPEND=">=dev-libs/glib-2.24:2
+DEPEND="
 	x11-libs/libX11
 	x11-libs/libXext
-	xinerama? ( x11-libs/libXinerama )"
-RDEPEND="${CDEPEND}
+	x11-libs/libXinerama
+	x11-libs/libXrandr
+"
+RDEPEND="
+	${DEPEND}
 	app-shells/bash
-	zsh-completion? ( app-shells/zsh )"
-DEPEND="${CDEPEND}
-	${EXTRA_DEPEND}
-	virtual/pkgconfig"
+"
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( app-text/asciidoc )
+"
 
-src_compile() {
-	tc-export CC LD CXX
+src_prepare() {
+	sed -i \
+		-e '/^install.*LICENSEDIR/d' \
+		-e '/set(DOCDIR / s#.*#set(DOCDIR ${CMAKE_INSTALL_DOCDIR})#' \
+		CMakeLists.txt || die
+	cmake-utils_src_prepare
+}
 
-	emake LDXX="$(tc-getCXX)" COLOR=0 VERBOSE= \
-		$(use xinerama || echo XINERAMAFLAGS= XINERAMALIBS= )
+src_configure() {
+	mycmakeargs=(
+		-DWITH_DOCUMENTATION=$(usex doc)
+	)
+
+	cmake-utils_src_configure
 }
 
 src_install() {
-	dobin herbstluftwm herbstclient
-	dodoc BUGS MIGRATION NEWS README.md
+	cmake-utils_src_install
 
-	doman doc/{herbstluftwm,herbstclient}.1
-
-	exeinto /etc/xdg/herbstluftwm
-	doexe share/{autostart,panel.sh,restartpanels.sh}
-
-	insinto /usr/share/xsessions
-	doins share/herbstluftwm.desktop
-
-	newbashcomp share/herbstclient-completion herbstclient
-
-	if use zsh-completion ; then
-		insinto /usr/share/zsh/site-functions
-		doins share/_herbstclient
-	fi
-
-	if use examples ; then
-		exeinto /usr/share/doc/${PF}/examples
-		doexe scripts/*.sh
-		docinto examples
-		dodoc scripts/README
-		docompress -x /usr/share/doc/${PF}/examples
+	if ! use examples; then
+		rm -r "${ED}"/usr/share/doc/${PF}/examples || die
 	fi
 }

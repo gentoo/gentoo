@@ -73,15 +73,15 @@ src_prepare() {
 #		-e "/^export APR_HEADERS=/s,/.*,${APR_HEADERS}," \
 #		-e "/^export LIBXML2_HEADERS=/s,/.*,${LIBXML2_HEADERS}," \
 #		install.conf
-#	emake verbose || die "Failed to build"
+#	emake verbose
 #}
 src_configure() {
 	APXS2_INSTALL="-i" \
 	econf \
 		--with-apxs=/usr/sbin/apxs2 \
 		--sysconfdir=/etc/opensrf \
-		--localstatedir=/var \
-		|| die "econf failed"
+		--localstatedir=/var
+
 	cd "${PERL_S}" && S="${PERL_S}" perl-module_src_configure || die "perl-module_src_configure failed"
 }
 
@@ -92,7 +92,7 @@ src_compile() {
 
 src_install() {
 	einfo "Doing src_install"
-	#emake install-verbose DESTDIR="${D}" || die "Failed to install"
+	#emake install-verbose DESTDIR="${D}"
 	emake install DESTDIR="${D}" APXS2_INSTALL="-i"
 	apache-module_src_install || die "apache-module_src_install failed"
 	cd "${PERL_S}" && S="${PERL_S}" perl-module_src_install || die "perl-module_src_install failed"

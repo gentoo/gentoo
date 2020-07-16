@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>robbat2@gentoo.org</email>
+		<name>Robin H. Johnson</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>ruby@gentoo.org</email>
+		<name>Gentoo Ruby Project</name>
+	</maintainer>
+	<longdescription>
+		A Ruby client for the letsencrypt's ACME protocol.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">unixcharles/acme-client</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,56 @@
+same as 4.7, but retargetted to apply with eapply
+
+forward-ported from v58.2 to v64.2
+
+--- a/config/mh-darwin
++++ b/config/mh-darwin
+@@ -6,6 +6,12 @@
+ ## Copyright (c) 1999-2012 International Business Machines Corporation and
+ ## others. All Rights Reserved.
+ 
++SO_TARGET = $(LIBDIR)/$(LIBICU)$(TARGET_STUBNAME)$(ICULIBSUFFIX).$(SO)
++FINAL_SO_TARGET = $(LIBDIR)/$(LIBICU)$(TARGET_STUBNAME)$(ICULIBSUFFIX).$(SO_TARGET_VERSION).$(SO)
++MIDDLE_SO_TARGET = $(LIBDIR)/$(LIBICU)$(TARGET_STUBNAME)$(ICULIBSUFFIX).$(SO_TARGET_VERSION_MAJOR).$(SO)
++
++IS_DARWIN = yes
++
+ ## Flags for position independent code
+ SHAREDLIBCFLAGS = -dynamic
+ SHAREDLIBCXXFLAGS = -dynamic
+@@ -33,7 +39,7 @@
+ ifeq ($(ENABLE_RPATH),YES)
+ LD_SONAME = -Wl,-compatibility_version -Wl,$(SO_TARGET_VERSION_MAJOR) -Wl,-current_version -Wl,$(SO_TARGET_VERSION) -install_name $(libdir)/$(notdir $(MIDDLE_SO_TARGET))
+ else
+-LD_SONAME = -Wl,-compatibility_version -Wl,$(SO_TARGET_VERSION_MAJOR) -Wl,-current_version -Wl,$(SO_TARGET_VERSION) -install_name $(notdir $(MIDDLE_SO_TARGET)) $(PKGDATA_TRAILING_SPACE)
++LD_SONAME = -Wl,-compatibility_version -Wl,$(SO_TARGET_VERSION_MAJOR) -Wl,-current_version -Wl,$(SO_TARGET_VERSION) -install_name $(libdir)/$(notdir $(MIDDLE_SO_TARGET)) $(PKGDATA_TRAILING_SPACE)
+ endif
+ 
+ ## Compiler switch to embed a runtime search path
+--- a/stubdata/Makefile.in
++++ b/stubdata/Makefile.in
+@@ -34,7 +34,11 @@
+ 
+ 
+ ifneq ($(ENABLE_SHARED),)
++ifeq ($(IS_DARWIN),)
+ SO_TARGET = $(STUBDATA_LIBDIR)$(LIBICU)$(TARGET_STUBNAME)$(ICULIBSUFFIX)$(STUB_SUFFIX).$(SO)
++else
++SO_TARGET = $(LIBDIR)/$(STUBDATA_LIBDIR)$(LIBICU)$(TARGET_STUBNAME)$(ICULIBSUFFIX)$(STUB_SUFFIX).$(SO)
++endif
+ ALL_SO_TARGETS = $(FINAL_SO_TARGET) $(MIDDLE_SO_TARGET) $(SO_TARGET) $(BATCH_STUB_TARGET) $(SHARED_OBJECT)
+ endif
+ 
+--- a/tools/ctestfw/Makefile.in
++++ b/tools/ctestfw/Makefile.in
+@@ -33,7 +33,11 @@
+ endif
+ 
+ ifneq ($(ENABLE_SHARED),)
++ifeq ($(IS_DARWIN),)
+ SO_TARGET = $(LIBICU)$(TARGET_STUBNAME)$(ICULIBSUFFIX).$(SO)
++else
++SO_TARGET = $(LIBDIR)/$(LIBICU)$(TARGET_STUBNAME)$(ICULIBSUFFIX).$(SO)
++endif
+ ALL_SO_TARGETS = $(SO_TARGET) $(MIDDLE_SO_TARGET) $(FINAL_SO_TARGET) $(SHARED_OBJECT)
+ endif
+ 

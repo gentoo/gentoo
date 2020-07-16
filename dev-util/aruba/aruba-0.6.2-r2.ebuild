@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_RECIPE_TEST="cucumber"
@@ -16,7 +16,7 @@ DESCRIPTION="Cucumber steps for driving out command line applications"
 HOMEPAGE="https://github.com/cucumber/aruba"
 LICENSE="MIT"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 arm ~arm64 hppa ppc ppc64 s390 sparc x86"
 SLOT="0"
 IUSE=""
 
@@ -28,7 +28,7 @@ ruby_add_rdepend "
 	>=dev-ruby/rspec-expectations-2.7:2
 	>=dev-util/cucumber-1.1.1"
 
-ruby_add_bdepend "test? ( >=dev-ruby/rspec-2.11:2 >=dev-ruby/bcat-0.6.1 )"
+ruby_add_bdepend "test? ( >=dev-ruby/rspec-2.11:2 )"
 
 all_ruby_prepare() {
 	# Remove bundler-related code.

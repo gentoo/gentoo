@@ -1,0 +1,26 @@
+https://github.com/RadeonOpenCompute/ROCm-CompilerSupport/pull/16
+
+From 09eb70afa22e2d6066a5f29888158c6005170ca6 Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Wed, 31 Jul 2019 10:13:30 -0400
+Subject: [PATCH] Find Clang avoiding the system (non-ROC) LLVM
+
+Use NO_DEFAULT_PATH to avoid finding the system (non-ROC) LLVM.
+Use /opt/rocm/llvm as an additional hint to be consistent with the build systems of other ROC projects (such as ROCm-OpenCL-Driver)
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 454b830..8642c98 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -13,7 +13,7 @@ endif()
+ 
+ project(code_object_manager)
+ 
+-find_package(Clang REQUIRED CONFIG)
++find_package(Clang REQUIRED CONFIG PATHS ${LLVM_DIR} "/opt/rocm/llvm" NO_DEFAULT_PATH)
+ add_definitions(${LLVM_DEFINITIONS})
+ include_directories(${LLVM_INCLUDE_DIRS})
+ link_directories(${LLVM_LIBRARY_DIRS})

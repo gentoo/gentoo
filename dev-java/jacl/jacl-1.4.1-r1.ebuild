@@ -48,5 +48,5 @@ src_compile() {
 src_install() {
 	java-pkg-simple_src_install
 	java-pkg_dolauncher jaclsh --main tcl.lang.Shell
-	dodoc README ChangeLog known_issues.txt || die
+	dodoc README ChangeLog known_issues.txt
 }

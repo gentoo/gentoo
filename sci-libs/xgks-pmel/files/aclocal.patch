@@ -1,5 +1,5 @@
---- port/aclocal.m4.orig	2009-04-26 13:33:51.434402251 -0700
-+++ port/aclocal.m4	2009-04-26 13:43:33.466651210 -0700
+--- a/port/aclocal.m4
++++ b/port/aclocal.m4
 @@ -582,26 +582,6 @@
  ])])
  
@@ -122,8 +122,8 @@
  # Check for udres(3) library.
  #
  define([UC_LIB_UDRES], [dnl
---- port/configure.in.orig	2009-04-26 13:34:08.430308009 -0700
-+++ port/configure.in	2009-04-26 13:44:26.218430537 -0700
+--- a/port/configure.in
++++ b/port/configure.in
 @@ -24,8 +24,6 @@
  UC_PROG_FORTC
  UC_PROG_NEQN
@@ -133,8 +133,8 @@
  UC_PROG_INSTALL
  
  UC_UDPOSIX
---- port/master.mk.in.orig	2009-04-26 13:34:18.848400960 -0700
-+++ port/master.mk.in	2009-04-26 13:45:03.187651071 -0700
+--- a/port/master.mk.in
++++ b/port/master.mk.in
 @@ -19,8 +19,6 @@
  INSTALL_DATA	= @INSTALL_DATA@
  INSTALL_PROGRAM	= @INSTALL_PROGRAM@

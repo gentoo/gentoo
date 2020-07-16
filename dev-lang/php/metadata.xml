@@ -5,6 +5,10 @@
     <email>php-bugs@gentoo.org</email>
     <name>PHP</name>
   </maintainer>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+    <name>Michael Orlitzky</name>
+  </maintainer>
   <use>
     <flag name="argon2">Enable password hashing algorithm from <pkg>app-crypt/argon2</pkg></flag>
     <flag name="bcmath">Add support for libbcmath</flag>
@@ -16,6 +20,7 @@
     <flag name="ctype">Enable ctype functions</flag>
     <flag name="embed">Enable embed SAPI </flag>
     <flag name="enchant">Add supports Enchant spelling library. </flag>
+    <flag name="ffi"> Add foreign function interface (ffi extension) support</flag>
     <flag name="fileinfo"> Add fileinfo extension support</flag>
     <flag name="filter">Add filter extension support</flag>
     <flag name="flatfile">Add dbm support for flat files</flag>
@@ -25,9 +30,6 @@
     <flag name="inifile">Add dbm support for .ini files</flag>
     <flag name="json">Enable JSON support</flag>
     <flag name="ldap-sasl">Add SASL support for the PHP LDAP extension</flag>
-    <flag name="libmysqlclient">
-      Use libmyslclient driver for mysql, mysqli, PDO_Mysql (not recommended)
-    </flag>
     <flag name="lmdb">Enable support for <pkg>dev-db/lmdb</pkg> db backend</flag>
     <flag name="intl">
       Enables the intl extension for extended internalization support
@@ -51,7 +53,6 @@
     <flag name="sodium">
       Enable support for crypto through <pkg>dev-libs/libsodium</pkg>
     </flag>
-    <flag name="sybase-ct">Add support for Sybase-CT</flag>
     <flag name="sysvipc">
       Support for System V-compatible inter-process communication
     </flag>
@@ -61,7 +62,6 @@
     <flag name="xmlreader">Enable XMLReader support</flag>
     <flag name="xmlwriter">Enable XMLWriter support</flag>
     <flag name="xslt">Enable the XSL extension</flag>
-    <flag name="vpx">Enable webp support for GD in php-5.x</flag>
     <flag name="wddx">Add support for Web Distributed Data eXchange</flag>
     <flag name="webp">Enable webp support for GD in php-7.x</flag>
     <flag name="zip-encryption">Enable ZIP file encryption from <pkg>dev-libs/libzip</pkg></flag>

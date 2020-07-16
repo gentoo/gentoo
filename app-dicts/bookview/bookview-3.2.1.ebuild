@@ -1,9 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="NDTP client written in Tcl/Tk"
 HOMEPAGE="http://www.sra.co.jp/people/m-kasahr/bookview/"
@@ -12,23 +10,16 @@ SRC_URI="ftp://ftp.sra.co.jp/pub/net/ndtp/bookview/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
-IUSE=""
 
-RDEPEND=">=dev-lang/tk-8.3"
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4"
+RDEPEND="dev-lang/tk:0"
+DEPEND="${RDEPEND}"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}/bookview"
-	epatch "${FILESDIR}/${P}-gentoo.diff"
-}
+PATCHES=( "${FILESDIR}"/${P}-gentoo.diff )
 
 src_install() {
-	make DESTDIR="${D}" install || die
+	default
+	dodoc ChangeLog.0
 
 	insinto /etc/X11/app-defaults
 	newins "${FILESDIR}/Bookview.ad" Bookview
-
-	dodoc AUTHORS ChangeLog* INSTALL NEWS README
 }

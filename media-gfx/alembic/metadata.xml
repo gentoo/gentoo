@@ -26,10 +26,6 @@
 	<flag name="prman">
 		Compile Alembic plugin for Renderman (experimental)
 	</flag>
-	<flag name="pyalembic">
-		<!-- renamed to python in 1.7.9 -->
-		Build pyalembic python bindings (needs <pkg>dev-python/pyilmbase</pkg>)
-	</flag>
 	<flag name="python">
 		Build pyalembic python bindings (needs <pkg>dev-python/pyilmbase</pkg>)
 	</flag>

@@ -11,6 +11,7 @@ DESCRIPTION="Code coverage metrics for Perl"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="minimal test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-perl/B-Debug

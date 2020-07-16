@@ -1,8 +1,8 @@
 * revert old 1.5 behaviour
 
---- libtool-2.4.6/m4/libtool.m4
-+++ libtool-2.4.6/m4/libtool.m4
-@@ -2272,7 +2272,7 @@
+--- a/m4/libtool.m4
++++ b/m4/libtool.m4
+@@ -2641,7 +2641,7 @@
    version_type=darwin
    need_lib_prefix=no
    need_version=no

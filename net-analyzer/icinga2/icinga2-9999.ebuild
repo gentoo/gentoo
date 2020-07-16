@@ -1,16 +1,15 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 if [[ ${PV} != 9999 ]]; then
-	inherit cmake-utils depend.apache eutils systemd toolchain-funcs user wxwidgets
+	inherit cmake-utils depend.apache eutils systemd toolchain-funcs wxwidgets
 	SRC_URI="https://github.com/Icinga/icinga2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 else
-	inherit cmake-utils depend.apache eutils git-r3 systemd toolchain-funcs user wxwidgets
+	inherit cmake-utils depend.apache eutils git-r3 systemd toolchain-funcs wxwidgets
 	EGIT_REPO_URI="https://github.com/Icinga/icinga2.git"
 	EGIT_BRANCH="master"
-	KEYWORDS=""
 fi
 
 DESCRIPTION="Distributed, general purpose, network monitoring engine"
@@ -18,13 +17,13 @@ HOMEPAGE="http://icinga.org/icinga2"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="classicui console libressl lto mail mariadb minimal +mysql nano-syntax +plugins postgres systemd +vim-syntax"
+IUSE="console libressl lto mail mariadb minimal +mysql nano-syntax +plugins postgres systemd +vim-syntax"
 WX_GTK_VER="3.0"
 
 CDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
-	>=dev-libs/boost-1.58-r1
+	>=dev-libs/boost-1.66:=[context]
 	console? ( dev-libs/libedit )
 	mariadb? ( dev-db/mariadb-connector-c:= )
 	mysql? ( dev-db/mysql-connector-c:= )
@@ -43,7 +42,10 @@ RDEPEND="
 		net-analyzer/nagios-plugins
 	) )
 	mail? ( virtual/mailx )
-	classicui? ( net-analyzer/icinga[web] )"
+	acct-user/icinga
+	acct-group/icinga
+	acct-group/icingacmd
+	acct-group/nagios"
 
 REQUIRED_USE="!minimal? ( || ( mariadb mysql postgres ) )"
 
@@ -51,10 +53,6 @@ want_apache2
 
 pkg_setup() {
 	depend.apache_pkg_setup
-	enewgroup icinga
-	enewgroup icingacmd
-	enewgroup nagios  # for plugins
-	enewuser icinga -1 -1 /var/lib/icinga2 "icinga,icingacmd,nagios"
 }
 
 src_configure() {
@@ -63,7 +61,6 @@ src_configure() {
 		-DICINGA2_UNITY_BUILD=FALSE
 		-DCMAKE_VERBOSE_MAKEFILE=ON
 		-DCMAKE_BUILD_TYPE=None
-		-DCMAKE_INSTALL_PREFIX=/usr
 		-DCMAKE_INSTALL_SYSCONFDIR=/etc
 		-DCMAKE_INSTALL_LOCALSTATEDIR=/var
 		-DICINGA2_SYSCONFIGFILE=/etc/conf.d/icinga2
@@ -71,6 +68,7 @@ src_configure() {
 		-DICINGA2_USER=icinga
 		-DICINGA2_GROUP=icingacmd
 		-DICINGA2_COMMAND_GROUP=icingacmd
+		-DICINGA2_RUNDIR=/run
 		-DINSTALL_SYSTEMD_SERVICE_AND_INITSCRIPT=yes
 		-DUSE_SYSTEMD=$(usex systemd ON OFF)
 		-DLOGROTATE_HAS_SU=ON
@@ -136,7 +134,7 @@ src_install() {
 	keepdir /var/lib/icinga2/api/log
 	keepdir /var/spool/icinga2/perfdata
 
-	rm -r "${D}/var/run" || die "failed to remove /var/run"
+	rm -r "${D}/run" || die "failed to remove /run"
 	rm -r "${D}/var/cache" || die "failed to remove /var/cache"
 
 	fowners root:icinga /etc/icinga2

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools user
+inherit autotools
 
 DESCRIPTION="mount and unmount removable devices without a password"
 HOMEPAGE="https://ignorantguru.github.com/udevil/"
@@ -14,7 +14,9 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND=">=app-shells/bash-4.0:*
+RDEPEND="
+	acct-group/plugdev
+	>=app-shells/bash-4.0:*
 	dev-libs/glib:2
 	sys-apps/util-linux
 	virtual/acl
@@ -23,10 +25,6 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig"
-
-pkg_setup(){
-	enewgroup plugdev
-}
 
 PATCHES=(
 	# This works for 0.4.4 too, no sense copying the patch

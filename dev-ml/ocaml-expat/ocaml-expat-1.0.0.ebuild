@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,6 +6,7 @@ EAPI=5
 inherit findlib eutils
 
 IUSE="doc +ocamlopt test"
+RESTRICT="!test? ( test )"
 
 DESCRIPTION="OCaml bindings for expat"
 SRC_URI="https://github.com/whitequark/ocaml-expat/archive/v${PV}.tar.gz -> ${P}.tar.gz"

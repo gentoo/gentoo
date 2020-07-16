@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -11,8 +11,9 @@ SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="sys-libs/ncurses:=
 	dev-libs/glib:2
@@ -25,5 +26,5 @@ DEPEND="
 
 src_configure() {
 	append-ldflags -L/usr/$(get_libdir)/hamlib
-	econf --docdir=/usr/share/doc/${PF} --enable-hamlib --enable-fldigi-xmlrpc
+	econf --enable-hamlib --enable-fldigi-xmlrpc
 }

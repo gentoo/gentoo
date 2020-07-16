@@ -1,0 +1,16 @@
+- Use the Gentoo pool
+- Use the server directive instead of the pool directive so we get four time
+  sources and not twelve.
+
+--- a/examples/chrony.conf.example1
++++ b/examples/chrony.conf.example1
+@@ -1,5 +1,8 @@
+ # Use public NTP servers from the pool.ntp.org project.
+-pool pool.ntp.org iburst
++server 0.gentoo.pool.ntp.org iburst
++server 1.gentoo.pool.ntp.org iburst
++server 2.gentoo.pool.ntp.org iburst
++server 3.gentoo.pool.ntp.org iburst
+ 
+ # Record the rate at which the system clock gains/losses time.
+ driftfile /var/lib/chrony/drift

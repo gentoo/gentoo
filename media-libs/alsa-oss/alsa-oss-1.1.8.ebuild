@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,11 +10,11 @@ S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Advanced Linux Sound Architecture OSS compatibility layer"
 HOMEPAGE="https://alsa-project.org/"
-SRC_URI="mirror://alsaproject/oss-lib/${MY_P}.tar.bz2"
+SRC_URI="https://www.alsa-project.org/files/pub/oss-lib/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="static-libs"
 
 RDEPEND=">=media-libs/alsa-lib-${PV}[${MULTILIB_USEDEP}]"
@@ -41,5 +41,5 @@ multilib_src_install_all() {
 		find "${ED}" -name '*.a' -delete || die
 	fi
 	find "${ED}" -name '*.la' -delete || die
-	sed -e 's:\${exec_prefix}/\\$LIB/::' -i "${ED%/}/usr/bin/aoss" || die
+	sed -e 's:\${exec_prefix}/\\$LIB/::' -i "${ED}/usr/bin/aoss" || die
 }

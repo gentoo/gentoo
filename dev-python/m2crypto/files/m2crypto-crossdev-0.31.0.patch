@@ -1,0 +1,12 @@
+--- a/setup.py
++++ b/setup.py
+@@ -50,7 +50,8 @@
+                                 '*Visual*', 'VC', 'include')
+         err = glob.glob(globmask)
+     else:
+-        pid = subprocess.Popen(['cpp', '-Wp,-v', '-'],
++        pid = subprocess.Popen(os.environ.get('CPP', 'cpp').split() +
++                               ['-Wp,-v', '-'],
+                                stdin=open(os.devnull, 'r'),
+                                stdout=subprocess.PIPE,
+                                stderr=subprocess.PIPE)

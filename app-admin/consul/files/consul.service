@@ -5,12 +5,13 @@ After=network-online.target
 
 [Service]
 User=consul
-Environment=GOMAXPROCS=2
+Group=consul
 Environment=CONSUL_AGENT_OPTS="-config-dir=/etc/consul.d"
 ExecStart=/usr/bin/consul agent $CONSUL_AGENT_OPTS
-Restart=on-failure
-KillSignal=SIGINT
 ExecReload=/usr/bin/consul reload
+KillMode=process
+Restart=on-failure
+LimitNOFILE=65536
 
 [Install]
 WantedBy=default.target

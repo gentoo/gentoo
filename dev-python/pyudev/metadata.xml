@@ -10,7 +10,6 @@
 		and service found in modern linux systems.
 	</longdescription>
 	<use>
-		<flag name="pygobject">Install PyGobject bindings</flag>
 		<flag name="qt5">Install PyQt5 bindings</flag>
 	</use>
 	<upstream>

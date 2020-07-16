@@ -1,0 +1,20 @@
+--- a/Makefile	2019-04-19 16:16:08.354994946 +0200
++++ b/Makefile	2019-04-19 16:18:30.711734410 +0200
+@@ -56,7 +56,7 @@
+ 		endif
+ else ifeq ($(USE_PA), YES)
+ 		CFLAGS:=$(CFLAGS) -D PA -pthread
+-		LDFLAGS:=$(LDFLAGS) -lpthread -lpulse-simple -lpulse -lncurses
++		LDFLAGS:=$(LDFLAGS) -lpthread -lpulse-simple -lpulse $(shell pkg-config ncurses --libs)
+ 		OBJECTS=qrq.o pulseaudio.o
+ else ifeq ($(USE_WIN32), YES)
+ 		CFLAGS:=$(CFLAGS) -D WIN32 -Iinclude -Iinclude/ncursesw
+@@ -64,7 +64,7 @@
+ 		OBJECTS=qrq.o qrq.res lib/libncursesw.a
+ else
+ 		OBJECTS=qrq.o oss.o
+-		LDFLAGS:=$(LDFLAGS) -lpthread -lncurses
++		LDFLAGS:=$(LDFLAGS) -lpthread $(shell pkg-config ncurses --libs)
+ 		CFLAGS:=$(CFLAGS) -D OSS
+ endif
+ 

@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs flag-o-matic multilib
 
@@ -9,8 +9,8 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/shemminger/iproute2.git"
 	inherit git-r3
 else
-	SRC_URI="mirror://kernel/linux/utils/net/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	SRC_URI="https://www.kernel.org/pub/linux/utils/net/${PN}/${P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 DESCRIPTION="kernel routing and traffic control utilities"
@@ -35,18 +35,19 @@ RDEPEND="
 # We require newer linux-headers for ipset support #549948 and some defines #553876
 DEPEND="
 	${RDEPEND}
+	>=sys-kernel/linux-headers-3.16
+"
+BDEPEND="
 	app-arch/xz-utils
-	iptables? ( virtual/pkgconfig )
 	>=sys-devel/bison-2.4
 	sys-devel/flex
-	>=sys-kernel/linux-headers-3.16
 	virtual/pkgconfig
-	elibc_glibc? ( >=sys-libs/glibc-2.7 )
 "
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.0-mtu.patch #291907
 	"${FILESDIR}"/${PN}-4.20.0-configure-nomagic.patch # bug 643722
+	"${FILESDIR}"/${PN}-5.1.0-portability.patch
 )
 
 src_prepare() {
@@ -58,19 +59,16 @@ src_prepare() {
 
 	default
 
+	# echo -n is not POSIX compliant
+	sed 's@echo -n@printf@' -i configure || die
+
 	sed -i \
 		-e '/^CC :\?=/d' \
 		-e "/^LIBDIR/s:=.*:=/$(get_libdir):" \
-		-e "s:-O2:${CFLAGS} ${CPPFLAGS}:" \
+		-e "s|-O2|${CFLAGS} ${CPPFLAGS}|" \
 		-e "/^HOSTCC/s:=.*:= $(tc-getBUILD_CC):" \
 		-e "/^DBM_INCLUDE/s:=.*:=${T}:" \
 		Makefile || die
-
-	# Use /run instead of /var/run.
-	sed -i \
-		-e 's:/var/run:/run:g' \
-		include/namespace.h \
-		man/man8/ip-netns.8 || die
 
 	# build against system headers
 	rm -r include/netinet || die #include/linux include/ip{,6}tables{,_common}.h include/libiptc
@@ -116,7 +114,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake V=1
+	emake V=1 NETNS_RUN_DIR=/run/netns
 }
 
 src_install() {
@@ -129,16 +127,17 @@ src_install() {
 
 	emake \
 		DESTDIR="${D}" \
-		LIBDIR="${EPREFIX%/}"/$(get_libdir) \
-		SBINDIR="${EPREFIX%/}"/sbin \
-		CONFDIR="${EPREFIX%/}"/etc/iproute2 \
-		DOCDIR="${EPREFIX%/}"/usr/share/doc/${PF} \
-		MANDIR="${EPREFIX%/}"/usr/share/man \
-		ARPDDIR="${EPREFIX%/}"/var/lib/arpd \
+		PREFIX="${EPREFIX}/usr" \
+		LIBDIR="${EPREFIX}"/$(get_libdir) \
+		SBINDIR="${EPREFIX}"/sbin \
+		CONFDIR="${EPREFIX}"/etc/iproute2 \
+		DOCDIR="${EPREFIX}"/usr/share/doc/${PF} \
+		MANDIR="${EPREFIX}"/usr/share/man \
+		ARPDDIR="${EPREFIX}"/var/lib/arpd \
 		install
 
 	dodir /bin
-	mv "${ED%/}"/{s,}bin/ip || die #330115
+	mv "${ED}"/{s,}bin/ip || die #330115
 
 	dolib.a lib/libnetlink.a
 	insinto /usr/include
@@ -146,12 +145,14 @@ src_install() {
 	# This local header pulls in a lot of linux headers it
 	# doesn't directly need.  Delete this header that requires
 	# linux-headers-3.8 until that goes stable.  #467716
-	sed -i '/linux\/netconf.h/d' "${ED%/}"/usr/include/libnetlink.h || die
+	sed -i '/linux\/netconf.h/d' "${ED}"/usr/include/libnetlink.h || die
 
 	if use berkdb ; then
 		keepdir /var/lib/arpd
 		# bug 47482, arpd doesn't need to be in /sbin
 		dodir /usr/bin
-		mv "${ED%/}"/sbin/arpd "${ED%/}"/usr/bin/ || die
+		mv "${ED}"/sbin/arpd "${ED}"/usr/bin/ || die
+	elif [[ -d "${ED}"/var/lib/arpd ]]; then
+		rmdir --ignore-fail-on-non-empty -p "${ED}"/var/lib/arpd || die
 	fi
 }

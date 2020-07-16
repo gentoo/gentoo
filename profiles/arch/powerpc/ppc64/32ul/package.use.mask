@@ -1,7 +1,15 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (16 Feb 2019)
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
+# media-libs/libheif is not keyworded
+media-gfx/gimp heif
+
+# Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
+# PPS should work on all arches, but only keyworded on some arches
+>=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
 # app-text/libwpd and app-text/libwpg are not keyworded
 media-gfx/inkscape cdr visio wpg
 

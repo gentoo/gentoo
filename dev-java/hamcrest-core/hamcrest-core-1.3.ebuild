@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -17,7 +17,7 @@ SRC_URI="https://${MY_PN}.googlecode.com/files/${MY_P}.tgz"
 
 LICENSE="BSD-2"
 SLOT="${PV}"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 x86 ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~ppc-macos ~x64-macos ~x86-macos"
 
 DEPEND=">=virtual/jdk-1.5
 	~dev-java/hamcrest-generator-${PV}

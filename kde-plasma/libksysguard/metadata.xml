@@ -7,6 +7,5 @@
 	</maintainer>
 	<use>
 		<flag name="webengine">Enable display of detailed memory information using <pkg>dev-qt/qtwebengine</pkg>.</flag>
-		<flag name="webkit">Enable display of detailed memory information using <pkg>dev-qt/qtwebkit</pkg>.</flag>
 	</use>
 </pkgmetadata>

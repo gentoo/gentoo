@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-PYTHON_COMPAT=( python{3_5,3_6} )
+PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="xml"
 
 inherit multilib python-r1 toolchain-funcs bash-completion-r1
@@ -15,7 +15,7 @@ SEMNG_VER="${PV}"
 SELNX_VER="${PV}"
 SEPOL_VER="${PV}"
 
-IUSE="audit pam dbus"
+IUSE="audit dbus pam split-usr"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DESCRIPTION="SELinux core utilities"
@@ -31,7 +31,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://github.com/SELinuxProject/selinux/releases/download/${MY_RELEASEDATE}/${MY_P}.tar.gz
 		https://dev.gentoo.org/~perfinion/distfiles/policycoreutils-extra-${EXTRAS_VER}.tar.bz2"
-	KEYWORDS="~amd64 ~arm64 ~mips ~x86"
+	KEYWORDS="amd64 ~arm64 ~mips x86"
 	S1="${WORKDIR}/${MY_P}"
 	S2="${WORKDIR}/policycoreutils-extra"
 	S="${S1}"
@@ -42,7 +42,7 @@ SLOT="0"
 
 DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python,${PYTHON_USEDEP}]
 	>=sys-libs/libcap-1.10-r10:=
-	>=sys-libs/libsemanage-${SEMNG_VER}:=[python,${PYTHON_USEDEP}]
+	>=sys-libs/libsemanage-${SEMNG_VER}:=[python(+),${PYTHON_USEDEP}]
 	sys-libs/libcap-ng:=
 	>=sys-libs/libsepol-${SEPOL_VER}:=
 	>=app-admin/setools-4.2.0[${PYTHON_USEDEP}]
@@ -155,7 +155,8 @@ src_install() {
 	rm -fR "${D}/etc/rc.d" || die
 
 	# compatibility symlinks
-	dosym /sbin/setfiles /usr/sbin/setfiles
+	use split-usr && dosym ../../sbin/setfiles /usr/sbin/setfiles
+
 	bashcomp_alias setsebool getsebool
 
 	# location for policy definitions

@@ -7,6 +7,6 @@
 </maintainer>
 <upstream>
 	<remote-id type="pypi">IntelHex</remote-id>
-	<remote-id type="github">bialix/intelhex</remote-id>
+	<remote-id type="github">python-intelhex/intelhex</remote-id>
 </upstream>
 </pkgmetadata>

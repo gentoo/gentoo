@@ -5,7 +5,7 @@ EAPI=5
 
 AUTOTOOLS_AUTORECONF=1
 FORTRAN_STANDARD=90
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python2_7 )
 
 inherit autotools-utils fortran-2 python-any-r1
 

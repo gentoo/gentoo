@@ -6,7 +6,6 @@
 <name>Gentoo Desktop Miscellaneous Project</name>
 </maintainer>
 <use>
-<flag name="indicator">Build support for application indicators using <pkg>dev-libs/libappindicator</pkg></flag>
 <flag name="plugins">Build support for plugins using <pkg>net-libs/rest</pkg></flag>
 </use>
 <upstream>

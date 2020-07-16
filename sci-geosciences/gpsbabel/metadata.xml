@@ -8,7 +8,4 @@
 	<upstream>
 		<remote-id type="github">gpsbabel/gpsbabel</remote-id>
 	</upstream>
-	<use>
-		<flag name="gui">Enable the graphical user interface (requires <pkg>dev-qt/qtwebengine</pkg>)</flag>
-	</use>
 </pkgmetadata>

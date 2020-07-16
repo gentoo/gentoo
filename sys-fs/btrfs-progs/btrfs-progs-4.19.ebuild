@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 2008-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit bash-completion-r1 python-single-r1
 
@@ -12,7 +12,7 @@ libbtrfs_soname=0
 if [[ ${PV} != 9999 ]]; then
 	MY_PV="v${PV/_/-}"
 	[[ "${PV}" = *_rc* ]] || \
-	KEYWORDS="alpha amd64 arm ~arm64 ~ia64 ~mips ppc ppc64 ~sparc x86"
+	KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ~mips ppc ppc64 ~sparc x86"
 	SRC_URI="https://www.kernel.org/pub/linux/kernel/people/kdave/${PN}/${PN}-${MY_PV}.tar.xz"
 	S="${WORKDIR}"/${PN}-${MY_PV}
 else
@@ -50,7 +50,11 @@ DEPEND="${RDEPEND}
 	>=app-text/asciidoc-8.6.0
 	app-text/docbook-xml-dtd:4.5
 	app-text/xmlto
-	python? ( dev-python/setuptools[${PYTHON_USEDEP}] )
+	python? (
+		$(python_gen_cond_dep '
+			dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 	static? (
 		dev-libs/lzo:2[static-libs(+)]
 		sys-apps/util-linux:0[static-libs(+)]

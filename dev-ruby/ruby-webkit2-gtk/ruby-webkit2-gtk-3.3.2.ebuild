@@ -7,7 +7,7 @@ USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 inherit virtualx ruby-ng-gnome2
 
 DESCRIPTION="Ruby WebKitGtk+ for Gtk 3.0 bindings"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE=""
 
 DEPEND+=" net-libs/webkit-gtk:4"
@@ -37,7 +37,7 @@ each_ruby_compile() {
 }
 
 each_ruby_test() {
-	DCONF_PROFILE="${T}" virtx ${RUBY} test/run-test.rb || die
+	DCONF_PROFILE="${T}" virtx ${RUBY} test/run-test.rb
 }
 
 each_ruby_install() {

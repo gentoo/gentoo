@@ -5,9 +5,5 @@
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
-<maintainer type="project">
-  <email>ml@gentoo.org</email>
-  <name>Gentoo ML Project</name>
-</maintainer>
 <stabilize-allarches/>
 </pkgmetadata>

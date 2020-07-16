@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,9 +9,9 @@ MY_P=${P/gnum/GNUM}
 S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="A fully featured mail application for GNUstep"
-HOMEPAGE="http://www.nongnu.org/gnustep-nonfsf/gnumail/index.html"
+HOMEPAGE="http://www.nongnu.org/gnustep-nonfsf/gnumail/"
 SRC_URI="mirror://nongnu/gnustep-nonfsf/${MY_P}.tar.gz"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"
 LICENSE="GPL-2"
 SLOT="0"
 

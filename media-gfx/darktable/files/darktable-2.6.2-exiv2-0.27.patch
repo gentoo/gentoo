@@ -1,0 +1,21 @@
+From 556887d7a973bdf0611fcc57231e107b503d9949 Mon Sep 17 00:00:00 2001
+From: Bertrand Antoine <nexus6b@gmail.com>
+Date: Wed, 22 May 2019 21:49:59 +0200
+Subject: [PATCH] Fix build with exif2 >= 0.27
+
+---
+ tools/basecurve/exif-wrapper.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tools/basecurve/exif-wrapper.cpp b/tools/basecurve/exif-wrapper.cpp
+index 72550721f6..f4d4d46e12 100644
+--- a/tools/basecurve/exif-wrapper.cpp
++++ b/tools/basecurve/exif-wrapper.cpp
+@@ -17,6 +17,7 @@
+ */
+ 
+ #include <exiv2/exif.hpp>
++#include <exiv2/error.hpp>
+ #include <exiv2/image.hpp>
+ 
+ #include <cstdio>

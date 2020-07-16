@@ -6,6 +6,7 @@
     <name>Openstack</name>
   </maintainer>
   <upstream>
+    <remote-id type="github">FSX/misaka</remote-id>
     <remote-id type="pypi">misaka</remote-id>
   </upstream>
 </pkgmetadata>

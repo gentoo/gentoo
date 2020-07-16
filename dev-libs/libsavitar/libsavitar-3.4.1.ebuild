@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 inherit cmake-utils python-single-r1
 
 MY_PN="libSavitar"
@@ -20,7 +20,9 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/pugixml
-	dev-python/sip[${PYTHON_USEDEP}]"
+	$(python_gen_cond_dep '
+		dev-python/sip[${PYTHON_MULTI_USEDEP}]
+	')"
 
 DEPEND="${RDEPEND}"
 

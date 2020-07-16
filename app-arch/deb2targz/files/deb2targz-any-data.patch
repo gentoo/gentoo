@@ -1,6 +1,6 @@
 Support any/all compression formats for data.tar
---- deb2targz
-+++ deb2targz
+--- a/deb2targz
++++ b/deb2targz
 @@ -47,10 +47,11 @@
  	($header, $data) = ($data =~ /(.*?)\n(.*)/s);
  	my($name, $num1, $num2, $num3, $num4, $len) = split /\s+/, $header;

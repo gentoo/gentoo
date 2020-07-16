@@ -9,10 +9,13 @@
     <remote-id type="cpan">Data-ICal</remote-id>
     <remote-id type="cpan-module">Data::ICal</remote-id>
     <remote-id type="cpan-module">Data::ICal::Entry</remote-id>
+    <remote-id type="cpan-module">Data::ICal::Entry::Alarm</remote-id>
     <remote-id type="cpan-module">Data::ICal::Entry::Alarm::Audio</remote-id>
     <remote-id type="cpan-module">Data::ICal::Entry::Alarm::Display</remote-id>
     <remote-id type="cpan-module">Data::ICal::Entry::Alarm::Email</remote-id>
+    <remote-id type="cpan-module">Data::ICal::Entry::Alarm::None</remote-id>
     <remote-id type="cpan-module">Data::ICal::Entry::Alarm::Procedure</remote-id>
+    <remote-id type="cpan-module">Data::ICal::Entry::Alarm::URI</remote-id>
     <remote-id type="cpan-module">Data::ICal::Entry::Event</remote-id>
     <remote-id type="cpan-module">Data::ICal::Entry::FreeBusy</remote-id>
     <remote-id type="cpan-module">Data::ICal::Entry::Journal</remote-id>

@@ -7,7 +7,7 @@ USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 inherit virtualx ruby-ng-gnome2
 
 DESCRIPTION="Ruby VTE bindings"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE=""
 
 DEPEND+=" x11-libs/vte:2.91"
@@ -32,7 +32,7 @@ each_ruby_compile() {
 }
 
 each_ruby_test() {
-	virtx ${RUBY} test/run-test.rb || die
+	virtx ${RUBY} test/run-test.rb
 }
 
 each_ruby_install() {

@@ -1,0 +1,142 @@
+--- gsoap-2.8/configure.ac
++++ gsoap-2.8/configure.ac
+@@ -17,7 +17,7 @@
+ AC_PROG_YACC
+ AC_PROG_CPP
+ AC_PROG_RANLIB
+-#AM_PROG_LIBTOOL
++AM_PROG_LIBTOOL
+ AC_PROG_LN_S
+ AC_PROG_AWK
+ AC_PROG_INSTALL
+@@ -307,15 +307,17 @@
+     WSDL2H_EXTRA_LIBS="${WSDL2H_EXTRA_LIBS} -lgnutls -lgcrypt -lgpg-error -lz"
+     SAMPLE_INCLUDES=
+     SAMPLE_SSL_LIBS="-lgnutls -lgcrypt -lgpg-error -lz"
+-    WSDL2H_SOAP_CPP_LIB="libgsoapssl++.a"
++    WSDL2H_SOAP_CPP_STATIC_LIB="libgsoapssl++.a"
++    WSDL2H_SOAP_CPP_SHARED_LIB="libgsoapssl++.la"
+   else
+     AC_MSG_RESULT(no)
+     WSDL2H_EXTRA_FLAGS="-DWITH_OPENSSL -DWITH_GZIP"
+     # compile with wsdl2h when OPENSSL is available
+-    WSDL2H_EXTRA_LIBS="${WSDL2H_EXTRA_LIBS} -lssl -lcrypto -lz"
++    WSDL2H_EXTRA_LIBS="${WSDL2H_EXTRA_LIBS} -lcrypto"
+     SAMPLE_INCLUDES=
+     SAMPLE_SSL_LIBS="-lssl -lcrypto -lz"
+-    WSDL2H_SOAP_CPP_LIB="libgsoapssl++.a"
++    WSDL2H_SOAP_CPP_STATIC_LIB="libgsoapssl++.a"
++    WSDL2H_SOAP_CPP_SHARED_LIB="libgsoapssl++.la"
+   fi
+   if test -n "$ZLIB"; then
+     WSDL2H_EXTRA_FLAGS="-I${ZLIB}/include ${WSDL2H_EXTRA_FLAGS}"
+@@ -334,7 +336,8 @@
+   WSDL2H_EXTRA_FLAGS=
+   SAMPLE_SSL_LIBS=
+   SAMPLE_INCLUDES=
+-  WSDL2H_SOAP_CPP_LIB="libgsoap++.a"
++  WSDL2H_SOAP_CPP_STATIC_LIB="libgsoap++.a"
++  WSDL2H_SOAP_CPP_SHARED_LIB="libgsoapssl++.la"
+ fi
+ AM_CONDITIONAL(WITH_OPENSSL, test "x$with_openssl" = "xyes" -a "x$with_gnutls" != "xyes")
+ AC_SUBST(WITH_OPENSSL)
+@@ -342,7 +345,8 @@
+ AC_SUBST(WSDL2H_EXTRA_LIBS)
+ AC_SUBST(SAMPLE_INCLUDES)
+ AC_SUBST(SAMPLE_SSL_LIBS)
+-AC_SUBST(WSDL2H_SOAP_CPP_LIB)
++AC_SUBST(WSDL2H_SOAP_CPP_SHARED_LIB)
++AC_SUBST(WSDL2H_SOAP_CPP_STATIC_LIB)
+ 
+ # enable the compile of the samples
+ AC_ARG_ENABLE(samples,
+--- gsoap-2.8/gsoap/Makefile.am
++++ gsoap-2.8/gsoap/Makefile.am
+@@ -49,6 +49,29 @@
+ libgsoapssl___a_SOURCES = stdsoap2_ssl_cpp.cpp dom_cpp.cpp
+ libgsoapssl___a_CXXFLAGS = $(SOAPCPP2_DEBUG) $(SOAPCPP2_NONAMESPACES) $(SOAPCPP2_NO_C_LOCALE) $(SOAPCPP2_IPV6) $(SOAPCPP2_IPV6_V6ONLY) -D$(platform) $(WSDL2H_EXTRA_FLAGS) -DWITH_DOM -DWITH_COOKIES
+ 
++lib_LTLIBRARIES = libgsoap.la libgsoap++.la libgsoapck.la libgsoapck++.la libgsoapssl.la libgsoapssl++.la
++SOVERSION = 0
++libgsoap_la_SOURCES = stdsoap2.c dom.c
++libgsoap_la_CFLAGS = $(SOAPCPP2_DEBUG) $(SOAPCPP2_NONAMESPACES) $(SOAPCPP2_IPV6) -D$(platform)
++libgsoap_la_LDFLAGS = -version-info $(SOVERSION)
++libgsoap___la_SOURCES = stdsoap2_cpp.cpp dom_cpp.cpp
++libgsoap___la_CXXFLAGS = $(SOAPCPP2_DEBUG) $(SOAPCPP2_NONAMESPACES) $(SOAPCPP2_IPV6) -D$(platform)
++libgsoap___la_LDFLAGS = -version-info $(SOVERSION)
++libgsoapck_la_SOURCES = stdsoap2_ck.c dom.c
++libgsoapck_la_CFLAGS = $(SOAPCPP2_DEBUG) $(SOAPCPP2_NONAMESPACES) $(SOAPCPP2_IPV6) -D$(platform) -DWITH_COOKIES
++libgsoapck_la_LDFLAGS = -version-info $(SOVERSION)
++libgsoapck___la_SOURCES = stdsoap2_ck_cpp.cpp dom_cpp.cpp
++libgsoapck___la_CXXFLAGS = $(SOAPCPP2_DEBUG) $(SOAPCPP2_NONAMESPACES) $(SOAPCPP2_IPV6) -D$(platform) -DWITH_COOKIES
++libgsoapck___la_LDFLAGS = -version-info $(SOVERSION)
++libgsoapssl_la_SOURCES = stdsoap2_ssl.c dom.c
++libgsoapssl_la_CFLAGS = $(SOAPCPP2_DEBUG) $(SOAPCPP2_NONAMESPACES) $(SOAPCPP2_IPV6) -D$(platform) $(WSDL2H_EXTRA_FLAGS) -DWITH_DOM -DWITH_COOKIES
++libgsoapssl_la_LDFLAGS = -version-info $(SOVERSION)
++libgsoapssl_la_LIBADD = -lssl -lcrypto -lz
++libgsoapssl___la_SOURCES = stdsoap2_ssl_cpp.cpp dom_cpp.cpp
++libgsoapssl___la_CXXFLAGS = $(SOAPCPP2_DEBUG) $(SOAPCPP2_NONAMESPACES) $(SOAPCPP2_IPV6) -D$(platform) $(WSDL2H_EXTRA_FLAGS) -DWITH_DOM -DWITH_COOKIES
++libgsoapssl___la_LDFLAGS = -version-info $(SOVERSION)
++libgsoapssl___la_LIBADD = -lssl -lcrypto -lz
++
+ BUILT_SOURCES = stdsoap2_cpp.cpp dom_cpp.cpp stdsoap2_ck.c stdsoap2_ck_cpp.cpp stdsoap2_ssl.c stdsoap2_ssl_cpp.cpp
+ 
+ include_HEADERS = stdsoap2.h
+--- gsoap-2.8/gsoap/samples/autotest/Makefile.am
++++ gsoap-2.8/gsoap/samples/autotest/Makefile.am
+@@ -14,7 +14,7 @@
+ WSDLINPUT=$(top_srcdir)/gsoap/samples/autotest/examples.wsdl
+ SOAPHEADER=$(top_srcdir)/gsoap/samples/autotest/examples.h
+ SOAP_CPP_SRC=soapC.cpp soapServer.cpp
+-SOAP_CPP_LIB=$(top_builddir)/gsoap/libgsoap++.a
++SOAP_CPP_SHARED_LIB=$(top_builddir)/gsoap/libgsoap++.a
+ 
+ $(SOAP_CPP_SRC) : $(WSDLINPUT)
+ 	$(WSDL) $(WSDL_FLAGS) $(WSDLINPUT)
+@@ -40,6 +40,6 @@
+ autotest_CPPFLAGS=$(C_DEBUG_FLAGS) -D$(platform)
+ autotest_CXXFLAGS=$(WSDL2H_EXTRA_FLAGS)
+ autotest_SOURCES=$(SOAP_CPP_SRC) soapTester.cpp duration.cpp long_time.cpp struct_tm.cpp struct_tm_date.cpp
+-autotest_LDADD=$(SOAP_CPP_LIB) $(SAMPLE_EXTRA_LIBS)
++autotest_LDADD=$(SOAP_CPP_SHARED_LIB) $(SAMPLE_EXTRA_LIBS)
+ 
+ CLEANFILES= *~ *.h *.cpp *.xml *.log *.nsmap
+--- gsoap-2.8/gsoap/samples/databinding/Makefile.am
++++ gsoap-2.8/gsoap/samples/databinding/Makefile.am
+@@ -14,7 +14,7 @@
+ WSDLINPUT=$(top_srcdir)/gsoap/samples/databinding/address.xsd
+ SOAPHEADER=$(top_srcdir)/gsoap/samples/databinding/address.h
+ SOAP_CPP_SRC=addressC.cpp
+-SOAP_CPP_LIB=$(top_builddir)/gsoap/libgsoap++.a
++SOAP_CPP_SHARED_LIB=$(top_builddir)/gsoap/libgsoap++.a
+ 
+ $(SOAP_CPP_SRC) : $(WSDLINPUT)
+ 	$(WSDL) $(WSDL_FLAGS) $(WSDLINPUT)
+@@ -28,6 +28,6 @@
+ address_CPPFLAGS=$(C_DEBUG_FLAGS) -D$(platform)
+ address_CXXFLAGS=$(WSDL2H_EXTRA_FLAGS)
+ address_SOURCES=$(SOAP_CPP_SRC) address.cpp
+-address_LDADD=$(SOAP_CPP_LIB)
++address_LDADD=$(SOAP_CPP_SHARED_LIB)
+ 
+ CLEANFILES= *~ address.h *C.cpp *H.h *Stub.h *.nsmap
+--- gsoap-2.8/gsoap/wsdl/Makefile.am
++++ gsoap-2.8/gsoap/wsdl/Makefile.am
+@@ -10,7 +10,7 @@
+ AM_LDFLAGS=-L$(top_srcdir)/gsoap/wsdl -I$(top_srcdir)/gsoap -I$(top_srcdir)/gsoap/plugin
+ AM_CPPFLAGS=-I$(top_srcdir)/gsoap -I$(top_srcdir)/gsoap/plugin
+ SOAP=$(top_builddir)/gsoap/src/soapcpp2$(EXEEXT)
+-SOAP_CPP_LIB=$(top_builddir)/gsoap/$(WSDL2H_SOAP_CPP_LIB)
++SOAP_CPP_SHARED_LIB=$(top_builddir)/gsoap/$(WSDL2H_SOAP_CPP_SHARED_LIB)
+ SOAP_CPP_SRC=wsdlC.cpp
+ SOAPHEADER=$(top_srcdir)/gsoap/wsdl/wsdl.h
+ SOAP_FLAGS=-SC -pwsdl -I$(top_srcdir)/gsoap/wsdl -I$(top_srcdir)/gsoap/import
+@@ -29,7 +29,7 @@
+ wsdl2h_CXXFLAGS=$(C_DEBUG_FLAGS) $(SOAPCPP2_INCLUDE_XLOCALE) $(SOAPCPP2_NO_C_LOCALE) $(WSDL2H_EXTRA_FLAGS) $(WSDL2H_IMPORTPATH)
+ wsdl2h_CPPFLAGS=$(AM_CPPFLAGS) $(SOAPCPP2_NONAMESPACES) -D$(platform)
+ wsdl2h_SOURCES=wsdl2h.cpp wsdl.cpp wadl.cpp schema.cpp types.cpp service.cpp soap.cpp mime.cpp wsp.cpp bpel.cpp $(SOAP_CPP_SRC)
+-wsdl2h_LDADD=$(SOAP_CPP_LIB) $(WSDL2H_EXTRA_LIBS)
++wsdl2h_LDADD=$(SOAP_CPP_SHARED_LIB) $(WSDL2H_EXTRA_LIBS)
+ if WITH_OPENSSL
+ wsdl2h_SOURCES+=$(top_srcdir)/gsoap/plugin/httpda.c $(top_srcdir)/gsoap/plugin/smdevp.c
+ wsdl2h_LDADD+=-lpthread

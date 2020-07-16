@@ -5,7 +5,7 @@ EAPI="6"
 
 DESCRIPTION="Official ODBC driver for PostgreSQL"
 HOMEPAGE="https://www.postgresql.org/"
-SRC_URI="mirror://postgresql/odbc/versions/src/${P}.tar.gz"
+SRC_URI="https://ftp.postgresql.org/pub/odbc/versions/src/${P}.tar.gz"
 SLOT="0"
 LICENSE="LGPL-2"
 KEYWORDS="amd64 x86"

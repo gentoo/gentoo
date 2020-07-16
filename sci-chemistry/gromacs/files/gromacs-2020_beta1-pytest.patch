@@ -1,0 +1,12 @@
+diff -urN gromacs-2020-beta1/python_packaging/src/CMakeLists.txt gromacs-2020-beta1-py/python_packaging/src/CMakeLists.txt
+--- gromacs-2020-beta1/python_packaging/src/CMakeLists.txt	2019-09-12 05:48:57.000000000 +0300
++++ gromacs-2020-beta1-py/python_packaging/src/CMakeLists.txt	2019-10-09 17:01:30.845304765 +0300
+@@ -201,5 +201,7 @@
+ # to the `check` target. Normal usage is to first install the Python package,
+ # then run `pytest` on the `tests` directory. Refer to gmxapi package documentation.
+ if(NOT GMXAPI_MASTER_PROJECT)
+-    add_subdirectory(test)
++	if (GMX_BUILD_TESTING)
++		add_subdirectory(test)
++	endif()
+ endif()

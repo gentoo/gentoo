@@ -5,8 +5,8 @@
 command=/usr/bin/karma
 command_args="--config.file /etc/karma/karma.yaml ${command_args}"
 command_background=yes
-command_group=karma
-command_user=karma
+command_group=${group:-karma}
+command_user=${user:-karma}:${command_group}
 error_log=/var/log/karma/karma.log
 output_log=/var/log/karma/karma.log
 pidfile=/var/run/karma.pid

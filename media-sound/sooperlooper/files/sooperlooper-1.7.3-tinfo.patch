@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/683738
+
+Thanks-to: Jeroen Roovers <jer@gentoo.org>
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -214,10 +216,11 @@
+     AC_SUBST(LOSC_CFLAGS)
+ 
+     dnl curses
+-    AC_CHECK_LIB(ncurses,initscr,have_ncurses=yes,[AC_MSG_WARN([******** you don't have the ncurses library correctly installed])])
+-
+-    NCURSES_LIBS=-lncurses
+-    AC_SUBST(NCURSES_LIBS)
++    PKG_CHECK_MODULES([NCURSES], [ncurses], [have_ncurses=yes],
++		      AC_CHECK_LIB(ncurses, initscr, have_ncurses=yes,
++		    		   [AC_MSG_WARN([******** you don't have the ncurses library correctly installed])]
++		    		  )
++		     )
+ 
+     dnl sigc++
+     PKG_CHECK_MODULES(SIGCPP, sigc++-2.0 >= 2.2.10)

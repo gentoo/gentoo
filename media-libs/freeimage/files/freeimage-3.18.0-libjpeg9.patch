@@ -1,0 +1,24 @@
+Bug: https://bugs.gentoo.org/647422
+Upstream Patch: https://sourceforge.net/p/freeimage/patches/130/
+
+diff -Naur a/Source/FreeImage.h b/Source/FreeImage.h
+--- a/Source/FreeImage.h	2018-03-24 23:24:11.066695395 -0400
++++ b/Source/FreeImage.h	2018-03-24 23:26:35.945391182 -0400
+@@ -117,12 +117,17 @@
+ #ifndef _WINDOWS_
+ #define _WINDOWS_
+ 
++#if JPEG_LIB_VERSION < 90
++
+ #ifndef FALSE
+ #define FALSE 0
+ #endif
+ #ifndef TRUE
+ #define TRUE 1
+ #endif
++
++#endif
++
+ #ifndef NULL
+ #define NULL 0
+ #endif

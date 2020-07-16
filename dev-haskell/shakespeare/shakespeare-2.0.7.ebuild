@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,12 +10,13 @@ inherit haskell-cabal
 
 DESCRIPTION="A toolkit for making compile-time interpolated templates"
 HOMEPAGE="https://www.yesodweb.com/book/shakespearean-templates"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="test_coffee test_export test_roy"
+IUSE="test-coffee test-export test-roy"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-haskell/aeson:=[profile?]
 	dev-haskell/blaze-html:=[profile?]
@@ -37,7 +38,7 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	haskell-cabal_src_configure \
-		$(cabal_flag test_coffee test_coffee) \
-		$(cabal_flag test_export test_export) \
-		$(cabal_flag test_roy test_roy)
+		$(cabal_flag test-coffee test_coffee) \
+		$(cabal_flag test-export test_export) \
+		$(cabal_flag test-roy test_roy)
 }

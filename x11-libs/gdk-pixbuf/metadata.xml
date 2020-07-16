@@ -8,4 +8,7 @@
 <use>
 	<flag name="X">Build and install the legacy gdk_pixbuf_xlib-2.0 library</flag>
 </use>
+<upstream>
+	<remote-id type="cpe">cpe:/a:gnome:gdk-pixbuf</remote-id>
+</upstream>
 </pkgmetadata>

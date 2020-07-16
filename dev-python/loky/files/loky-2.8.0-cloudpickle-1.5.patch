@@ -1,0 +1,39 @@
+From 0e930389f4785f9d311b090f92057563e22b9768 Mon Sep 17 00:00:00 2001
+From: tomMoral <thomas.moreau.2010@gmail.com>
+Date: Thu, 2 Jul 2020 13:37:14 +0200
+Subject: [PATCH] FIX cloudpickle customization mechanism
+
+---
+ loky/backend/reduction.py | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/loky/backend/reduction.py b/loky/backend/reduction.py
+index 0bad5f63..d87fbdff 100644
+--- a/loky/backend/reduction.py
++++ b/loky/backend/reduction.py
+@@ -189,6 +189,10 @@ def __init__(self, writer, reducers=None, protocol=HIGHEST_PROTOCOL):
+                 self.dispatch = self._dispatch.copy()
+             else:
+                 if getattr(self, "dispatch_table", None) is not None:
++                    # Make sure dispatch table is an instance level field
++                    # as it is not the case for isntance for cloudpickle1.5+
++                    # see joblib/loky#259
++                    self.dispatch_table = self.dispatch_table.copy()
+                     self.dispatch_table.update(self._dispatch_table.copy())
+                 else:
+                     self.dispatch_table = self._dispatch_table.copy()
+@@ -202,10 +206,10 @@ def register(self, type, reduce_func):
+             if sys.version_info < (3,):
+                 # Python 2 pickler dispatching is not explicitly customizable.
+                 # Let us use a closure to workaround this limitation.
+-                    def dispatcher(self, obj):
+-                        reduced = reduce_func(obj)
+-                        self.save_reduce(obj=obj, *reduced)
+-                    self.dispatch[type] = dispatcher
++                def dispatcher(self, obj):
++                    reduced = reduce_func(obj)
++                    self.save_reduce(obj=obj, *reduced)
++                self.dispatch[type] = dispatcher
+             else:
+                 self.dispatch_table[type] = reduce_func
+ 

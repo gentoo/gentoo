@@ -1,0 +1,33 @@
+diff -Naur gnustep-base-1.26.0.orig/Tools/Makefile.postamble gnustep-base-1.26.0/Tools/Makefile.postamble
+--- gnustep-base-1.26.0.orig/Tools/Makefile.postamble	2019-01-06 23:33:45.000000000 +0100
++++ gnustep-base-1.26.0/Tools/Makefile.postamble	2019-04-16 11:20:16.972915636 +0200
+@@ -50,8 +50,6 @@
+ 	for file in $(MAN1_PAGES) __done; do \
+ 	  if [ $$file != __done ]; then \
+ 	    $(INSTALL_DATA) $$file $(GNUSTEP_DOC_MAN)/man1/$$file; \
+-	    which gzip && rm -f $(GNUSTEP_DOC_MAN)/man1/$$file.gz \
+-		&& gzip -9 $(GNUSTEP_DOC_MAN)/man1/$$file; \
+ 	  fi; \
+ 	done; \
+ 	if [ ! -f $(GNUSTEP_DOC_MAN)/man8 ]; then \
+@@ -59,8 +57,6 @@
+ 	fi; \
+ 	for file in $(MAN8_PAGES); do \
+ 	  $(INSTALL_DATA) $$file $(GNUSTEP_DOC_MAN)/man8/$$file; \
+-	    which gzip && rm -f $(GNUSTEP_DOC_MAN)/man8/$$file.gz \
+-		&& gzip -9 $(GNUSTEP_DOC_MAN)/man8/$$file; \
+ 	done$(END_ECHO)
+ ifeq ($(GNUSTEP_GDOMAP_PORT_OVERRIDE),no)
+ ifeq ($(GNUSTEP_INSTALL_GDOMAP_AS_SETUID),no)
+diff -Naur gnustep-base-1.26.0.orig/Tools/make_strings/GNUmakefile.postamble gnustep-base-1.26.0/Tools/make_strings/GNUmakefile.postamble
+--- gnustep-base-1.26.0.orig/Tools/make_strings/GNUmakefile.postamble	2019-01-06 23:33:45.000000000 +0100
++++ gnustep-base-1.26.0/Tools/make_strings/GNUmakefile.postamble	2019-04-16 11:20:20.756920017 +0200
+@@ -44,8 +44,6 @@
+ 	for file in $(MAN1_PAGES) __done; do \
+ 	  if [ $$file != __done ]; then \
+ 	    $(INSTALL_DATA) $$file $(GNUSTEP_DOC_MAN)/man1/$$file; \
+-	    which gzip && rm -f $(GNUSTEP_DOC_MAN)/man1/$$file.gz \
+-		&& gzip -9 $(GNUSTEP_DOC_MAN)/man1/$$file; \
+ 	  fi; \
+ 	done; \
+ 

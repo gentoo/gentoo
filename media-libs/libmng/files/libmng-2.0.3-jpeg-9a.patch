@@ -28,13 +28,17 @@ https://bugs.gentoo.org/578744
 
 --- a/libmng_types.h	2015-04-20 21:17:32.000000000 +0200
 +++ b/libmng_types.h	2018-09-06 22:56:57.153190623 +0200
-@@ -201,9 +201,6 @@
+@@ -200,13 +200,6 @@
+ #undef FAR                             /* possibly defined by zlib or lcms */
  #endif
  #define JPEG_INTERNAL_OPTIONS          /* for RGB_PIXELSIZE */
- /* There has been a change in jpeg-9 : */
+-/* There has been a change in jpeg-9 : */
 -#if !defined(HAVE_BOOLEAN) && !defined(_WIN32)
 -#define HAVE_BOOLEAN
 -#endif
- #ifndef _WIN32
- typedef int boolean;
- #endif
+-#ifndef _WIN32
+-typedef int boolean;
+-#endif
+ /* For jpegsrc.v09a: */
+ #include <stdio.h>
+ #include <jpeglib.h>

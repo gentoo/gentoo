@@ -9,8 +9,13 @@ SRC_URI="mirror://sourceforge/libwpd/${P}.tar.xz"
 
 LICENSE="|| ( LGPL-2.1 MPL-2.0 )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-linux ~x86-solaris"
+KEYWORDS="amd64 x86 ~x86-linux ~x86-solaris"
 IUSE="abiword +cdr debug ebook epub freehand gsf keynote +mspub +mwaw pagemaker qxp +visio +wpd +wpg +wps zmf"
+
+# configure fails if no import library is selected...
+REQUIRED_USE="
+	|| ( abiword cdr ebook freehand keynote mspub mwaw pagemaker qxp visio wpd wpg wps zmf )
+"
 
 # FIXME: librvngabw
 BDEPEND="
@@ -39,10 +44,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-REQUIRED_USE="
-	|| ( abiword cdr ebook freehand keynote mspub mwaw pagemaker qxp visio wpd wpg wps zmf )
-"
-# configure fails if no import library is selected...
+PATCHES=( "${FILESDIR}/${P}-gsf-buildfix.patch" )
 
 src_configure() {
 	local myeconfargs=(

@@ -9,7 +9,7 @@ HOMEPAGE="http://hengband.sourceforge.jp/en/"
 SRC_URI="mirror://sourceforge.jp/hengband/10331/${P}.tar.bz2
 	mirror://gentoo/${P}-mispellings.patch.gz"
 
-KEYWORDS="~x86 ~x86-fbsd"
+KEYWORDS="~x86"
 LICENSE="Moria"
 SLOT="0"
 IUSE="X l10n_ja"

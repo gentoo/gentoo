@@ -1,9 +1,23 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Benda Xu <heroxbd@gentoo.org> (2019-08-20)
+# Migrated from features/prefix:
+# USE flags inherited by the base/use.defaults file that shouldn't be
+# in Prefix rpath.
+cups
+# USE=pam just does not make sense in Gentoo Prefix. Should be using the host
+# auth system.
+pam
+# USE=udev just does not make sense in Gentoo Prefix. bug 293480
+udev
+
+# Benda Xu <heroxbd@gentoo.org> (2019-06-26)
+# Not supported
+eselect-ldso
 
 # prefix-guest USE flag should be set in prefix rpath profiles
 -prefix-guest
 
 # multilib is never going to work as expected in Prefix rpath
 multilib
-

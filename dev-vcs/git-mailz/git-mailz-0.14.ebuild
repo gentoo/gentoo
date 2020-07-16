@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ SRC_URI="http://codex.sigpipe.cz/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND=""
 
@@ -23,6 +23,6 @@ RDEPEND="
 	app-shells/zsh
 "
 
-src_install(){
+src_install() {
 	emake PREFIX="${ED}/usr" install
 }

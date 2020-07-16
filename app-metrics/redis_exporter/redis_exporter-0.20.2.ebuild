@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ KEYWORDS="~amd64"
 DESCRIPTION="Prometheus Exporter for Redis Metrics. Supports Redis 2.x, 3.x and 4.x"
 HOMEPAGE="https://github.com/oliver006/redis_exporter"
 SRC_URI="${ARCHIVE_URI}"
-LICENSE="MIT"
+LICENSE="MIT Apache-2.0 BSD"
 SLOT="0"
 IUSE=""
 
@@ -30,6 +30,7 @@ src_prepare() {
 }
 
 src_compile() {
+	export -n GOCACHE XDG_CACHE_HOME #684052
 	pushd src/${EGO_PN} || die
 	GOPATH="${S}" \
 		go install -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}"

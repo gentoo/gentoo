@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="A return-value object that lets you treat it as as a boolean, array or object"
 
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ppc sparc x86"
 IUSE=""
 
 RDEPEND="dev-perl/Devel-StackTrace"

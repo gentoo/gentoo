@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -40,7 +40,7 @@ S="${WORKDIR}/${PN}-code"
 
 LICENSE="BSD GPL-2"
 SLOT="0/1"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~s390 ~sparc x86"
 
 IUSE="httpd cgi-lua cgi-php static static-libs doc"
 
@@ -119,7 +119,7 @@ use_flag_config() {
 			config/.config || die
 	fi
 
-	yes "n" | emake -j1 oldconfig > /dev/null || die
+	emake -j1 oldconfig < <(yes n) > /dev/null
 }
 
 multilib_src_configure() {
@@ -139,7 +139,7 @@ multilib_src_configure() {
 			ewarn "No saved config, seeding with the default"
 			cp "${FILESDIR}"/config config/.config || die
 		fi
-		yes "" | emake -j1 oldconfig > /dev/null || die
+		emake -j1 oldconfig < <(yes '') > /dev/null
 	else
 		use_flag_config
 	fi

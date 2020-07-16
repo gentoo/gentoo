@@ -6,6 +6,7 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:libmtp_project:libmtp</remote-id>
 		<remote-id type="sourceforge">libmtp</remote-id>
 	</upstream>
 </pkgmetadata>

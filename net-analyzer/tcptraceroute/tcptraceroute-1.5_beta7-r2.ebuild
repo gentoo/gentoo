@@ -12,7 +12,7 @@ SRC_URI="https://codeload.github.com/mct/${PN}/tar.gz/${MY_P} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 
 DEPEND="
 	net-libs/libnet:1.1

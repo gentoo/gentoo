@@ -1,16 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit linux-info toolchain-funcs
 
 DESCRIPTION="Pipe Viewer: a tool for monitoring the progress of data through a pipe"
-HOMEPAGE="http://www.ivarch.com/programs/pv.shtml"
-SRC_URI="http://www.ivarch.com/programs/sources/${P}.tar.bz2"
+HOMEPAGE="https://www.ivarch.com/programs/pv.shtml"
+SRC_URI="https://www.ivarch.com/programs/sources/${P}.tar.bz2"
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc64-solaris ~x86-solaris"
 IUSE="debug nls"
 
 PV_LINGUAS=( de fr pl pt )

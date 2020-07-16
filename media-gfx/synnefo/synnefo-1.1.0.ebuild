@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/oyranos-cms/Synnefo.git"
 	inherit git-r3

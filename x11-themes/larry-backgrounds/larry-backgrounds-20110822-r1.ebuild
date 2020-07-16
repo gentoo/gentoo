@@ -62,21 +62,22 @@ src_install() {
 	local backdrops='/usr/share/xfce4/backdrops'
 	local share_home='backgrounds/larry-the-cow'
 
+	cd "${DISTDIR}" || die
 	insinto /usr/share/${share_home}/
-	( cd "${DISTDIR}" && doins ${A} ) || die
+	doins ${A}
 
 	# Integrate with KDE 4
-	dosym ../${share_home} /usr/share/wallpapers/larry-the-cow || die
+	dosym ../${share_home} /usr/share/wallpapers/larry-the-cow
 
 	# Integrate with XFCE 4
-	dodir ${backdrops}/ || die
-	dosym ../../${share_home}/gentoo-abducted-1600x1200.png ${backdrops}/gentoo-abducted-4:3.png || die
-	dosym ../../${share_home}/gentoo-abducted-1280x1024.png ${backdrops}/gentoo-abducted-5:4.png || die
-	dosym ../../${share_home}/gentoo-abducted-1680x1050.png ${backdrops}/gentoo-abducted-8:5.png || die
-	dosym ../../${share_home}/gentoo-cow-gdm-remake-1600x1200.png ${backdrops}/gentoo-cow-gdm-remake-4:3.png || die
-	dosym ../../${share_home}/gentoo-cow-gdm-remake-1280x1024.png ${backdrops}/gentoo-cow-gdm-remake-5:4.png || die
-	dosym ../../${share_home}/gentoo-cow-gdm-remake-1680x1050.png ${backdrops}/gentoo-cow-gdm-remake-8:5.png || die
+	dodir ${backdrops}/
+	dosym ../../${share_home}/gentoo-abducted-1600x1200.png ${backdrops}/gentoo-abducted-4:3.png
+	dosym ../../${share_home}/gentoo-abducted-1280x1024.png ${backdrops}/gentoo-abducted-5:4.png
+	dosym ../../${share_home}/gentoo-abducted-1680x1050.png ${backdrops}/gentoo-abducted-8:5.png
+	dosym ../../${share_home}/gentoo-cow-gdm-remake-1600x1200.png ${backdrops}/gentoo-cow-gdm-remake-4:3.png
+	dosym ../../${share_home}/gentoo-cow-gdm-remake-1280x1024.png ${backdrops}/gentoo-cow-gdm-remake-5:4.png
+	dosym ../../${share_home}/gentoo-cow-gdm-remake-1680x1050.png ${backdrops}/gentoo-cow-gdm-remake-8:5.png
 	for ratio in 4-3 5-4 16-9 16-10 ; do
-		dosym ../../${share_home}/gentoo-larry-bg-${ratio}.svg ${backdrops}/gentoo-larry-bg-${ratio/-/:}.svg || die
+		dosym ../../${share_home}/gentoo-larry-bg-${ratio}.svg ${backdrops}/gentoo-larry-bg-${ratio/-/:}.svg
 	done
 }

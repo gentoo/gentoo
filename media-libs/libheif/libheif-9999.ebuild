@@ -1,43 +1,46 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit autotools multilib-minimal
+inherit autotools xdg-utils multilib-minimal
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/strukturag/${PN}.git"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/strukturag/${PN}/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
 DESCRIPTION="ISO/IEC 23008-12:2017 HEIF file format decoder and encoder"
 HOMEPAGE="https://github.com/strukturag/libheif"
 
 LICENSE="GPL-3"
-SLOT="0/1.3.9999"
-IUSE="static-libs +threads"
+SLOT="0/1.6"
+IUSE="static-libs test +threads"
 
-# Doesn't yet support libjpeg-turbo-2, https://github.com/strukturag/libheif/issues/70
+RESTRICT="!test? ( test )"
+
+BDEPEND="test? ( dev-lang/go )"
 DEPEND="
 	media-libs/libde265:=[${MULTILIB_USEDEP}]
 	media-libs/libpng:0=[${MULTILIB_USEDEP}]
 	media-libs/x265:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	virtual/jpeg:0=[${MULTILIB_USEDEP}]
-	!>=media-libs/libjpeg-turbo-2
 "
 RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default
 
-	sed -i -e 's:-Werror::' \
-		configure.ac || die
+	sed -i -e 's:-Werror::' configure.ac || die
 
 	eautoreconf
+
+	# prevent "stat heif-test.go: no such file or directory"
+	multilib_copy_sources
 }
 
 multilib_src_configure() {
@@ -53,4 +56,12 @@ multilib_src_install_all() {
 	if ! use static-libs ; then
 		find "${ED}" -name "*.a" -delete || die
 	fi
+}
+
+pkg_postinst() {
+	xdg_mimeinfo_database_update
+}
+
+pkg_postrm() {
+	xdg_mimeinfo_database_update
 }

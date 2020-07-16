@@ -6,7 +6,7 @@ EAPI="6"
 inherit multilib toolchain-funcs multilib-minimal
 
 MY_P="${P//_/-}"
-MY_RELEASEDATE="20190315"
+MY_RELEASEDATE="20191204"
 
 DESCRIPTION="SELinux binary policy representation library"
 HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
@@ -38,6 +38,10 @@ src_prepare() {
 
 multilib_src_compile() {
 	tc-export CC AR RANLIB
+
+	# https://bugs.gentoo.org/706730
+	local -x CFLAGS="${CFLAGS} -fcommon"
+
 	emake \
 		LIBDIR="\$(PREFIX)/$(get_libdir)" \
 		SHLIBDIR="/$(get_libdir)"

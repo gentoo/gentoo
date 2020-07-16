@@ -1,4 +1,4 @@
-# Copyright 2017-2018 Gentoo Authors
+# Copyright 2017-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: meson.eclass
@@ -23,9 +23,9 @@
 #
 # src_configure() {
 # 	local emesonargs=(
-# 		-Dqt4=$(usex qt4 true false)
-# 		-Dthreads=$(usex threads true false)
-# 		-Dtiff=$(usex tiff true false)
+# 		$(meson_use qt4)
+# 		$(meson_feature threads)
+# 		$(meson_use bindist official_branding)
 # 	)
 # 	meson_src_configure
 # }
@@ -41,7 +41,11 @@ esac
 
 if [[ -z ${_MESON_ECLASS} ]]; then
 
-inherit ninja-utils python-utils-r1 toolchain-funcs
+inherit multiprocessing ninja-utils python-utils-r1 toolchain-funcs
+
+if [[ ${EAPI} == 6 ]]; then
+	inherit eapi7-ver
+fi
 
 fi
 
@@ -50,8 +54,8 @@ EXPORT_FUNCTIONS src_configure src_compile src_test src_install
 if [[ -z ${_MESON_ECLASS} ]]; then
 _MESON_ECLASS=1
 
-MESON_DEPEND=">=dev-util/meson-0.48.2
-	>=dev-util/ninja-1.7.2"
+MESON_DEPEND=">=dev-util/meson-0.54.0
+	>=dev-util/ninja-1.8.2"
 
 if [[ ${EAPI:-0} == [6] ]]; then
 	DEPEND=${MESON_DEPEND}
@@ -78,6 +82,17 @@ fi
 # Optional meson arguments as Bash array; this should be defined before
 # calling meson_src_configure.
 
+# @VARIABLE: emesontestargs
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Optional meson test arguments as Bash array; this should be defined before
+# calling meson_src_test.
+
+# @VARIABLE: MYMESONARGS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# User-controlled environment variable containing arguments to be passed to
+# meson in meson_src_configure.
 
 read -d '' __MESON_ARRAY_PARSER <<"EOF"
 import shlex
@@ -114,17 +129,17 @@ _meson_env_array() {
 	python -c "${__MESON_ARRAY_PARSER}" "$@"
 }
 
-# @FUNCTION: _meson_create_cross_file
+# @FUNCTION: _meson_get_machine_info
+# @USAGE: <tuple>
+# @RETURN: system/cpu_family/cpu variables
 # @INTERNAL
 # @DESCRIPTION:
-# Creates a cross file. meson uses this to define settings for
-# cross-compilers. This function is called from meson_src_configure.
-_meson_create_cross_file() {
-	# Reference: http://mesonbuild.com/Cross-compilation.html
+# Translate toolchain tuple into machine values for meson.
+_meson_get_machine_info() {
+	local tuple=$1
 
 	# system roughly corresponds to uname -s (lowercase)
-	local system=unknown
-	case ${CHOST} in
+	case ${tuple} in
 		*-aix*)          system=aix ;;
 		*-cygwin*)       system=cygwin ;;
 		*-darwin*)       system=darwin ;;
@@ -134,26 +149,41 @@ _meson_create_cross_file() {
 		*-solaris*)      system=sunos ;;
 	esac
 
-	local cpu_family=$(tc-arch)
+	cpu_family=$(tc-arch "${tuple}")
 	case ${cpu_family} in
 		amd64) cpu_family=x86_64 ;;
 		arm64) cpu_family=aarch64 ;;
 	esac
 
 	# This may require adjustment based on CFLAGS
-	local cpu=${CHOST%%-*}
+	cpu=${tuple%%-*}
+}
 
-	cat > "${T}/meson.${CHOST}.${ABI}" <<-EOF
+# @FUNCTION: _meson_create_cross_file
+# @RETURN: path to cross file
+# @INTERNAL
+# @DESCRIPTION:
+# Creates a cross file. meson uses this to define settings for
+# cross-compilers. This function is called from meson_src_configure.
+_meson_create_cross_file() {
+	local system cpu_family cpu
+	_meson_get_machine_info "${CHOST}"
+
+	local fn=${T}/meson.${CHOST}.${ABI}.ini
+
+	cat > "${fn}" <<-EOF
 	[binaries]
 	ar = $(_meson_env_array "$(tc-getAR)")
 	c = $(_meson_env_array "$(tc-getCC)")
 	cpp = $(_meson_env_array "$(tc-getCXX)")
 	fortran = $(_meson_env_array "$(tc-getFC)")
 	llvm-config = '$(tc-getPROG LLVM_CONFIG llvm-config)'
+	nm = $(_meson_env_array "$(tc-getNM)")
 	objc = $(_meson_env_array "$(tc-getPROG OBJC cc)")
 	objcpp = $(_meson_env_array "$(tc-getPROG OBJCXX c++)")
 	pkgconfig = '$(tc-getPKG_CONFIG)'
 	strip = $(_meson_env_array "$(tc-getSTRIP)")
+	windres = $(_meson_env_array "$(tc-getRC)")
 
 	[properties]
 	c_args = $(_meson_env_array "${CFLAGS} ${CPPFLAGS}")
@@ -166,13 +196,68 @@ _meson_create_cross_file() {
 	objc_link_args = $(_meson_env_array "${OBJCFLAGS} ${LDFLAGS}")
 	objcpp_args = $(_meson_env_array "${OBJCXXFLAGS} ${CPPFLAGS}")
 	objcpp_link_args = $(_meson_env_array "${OBJCXXFLAGS} ${LDFLAGS}")
+	needs_exe_wrapper = true
+	sys_root = '${SYSROOT}'
+	pkg_config_libdir = '${PKG_CONFIG_LIBDIR:-${EPREFIX}/usr/$(get_libdir)/pkgconfig}'
 
 	[host_machine]
 	system = '${system}'
 	cpu_family = '${cpu_family}'
 	cpu = '${cpu}'
-	endian = '$(tc-endian)'
+	endian = '$(tc-endian "${CHOST}")'
 	EOF
+
+	echo "${fn}"
+}
+
+# @FUNCTION: _meson_create_native_file
+# @RETURN: path to native file
+# @INTERNAL
+# @DESCRIPTION:
+# Creates a native file. meson uses this to define settings for
+# native compilers. This function is called from meson_src_configure.
+_meson_create_native_file() {
+	local system cpu_family cpu
+	_meson_get_machine_info "${CBUILD}"
+
+	local fn=${T}/meson.${CBUILD}.${ABI}.ini
+
+	cat > "${fn}" <<-EOF
+	[binaries]
+	ar = $(_meson_env_array "$(tc-getBUILD_AR)")
+	c = $(_meson_env_array "$(tc-getBUILD_CC)")
+	cpp = $(_meson_env_array "$(tc-getBUILD_CXX)")
+	fortran = $(_meson_env_array "$(tc-getBUILD_PROG FC gfortran)")
+	llvm-config = '$(tc-getBUILD_PROG LLVM_CONFIG llvm-config)'
+	nm = $(_meson_env_array "$(tc-getBUILD_NM)")
+	objc = $(_meson_env_array "$(tc-getBUILD_PROG OBJC cc)")
+	objcpp = $(_meson_env_array "$(tc-getBUILD_PROG OBJCXX c++)")
+	pkgconfig = '$(tc-getBUILD_PKG_CONFIG)'
+	strip = $(_meson_env_array "$(tc-getBUILD_STRIP)")
+	windres = $(_meson_env_array "$(tc-getBUILD_PROG RC windres)")
+
+	[properties]
+	c_args = $(_meson_env_array "${BUILD_CFLAGS} ${BUILD_CPPFLAGS}")
+	c_link_args = $(_meson_env_array "${BUILD_CFLAGS} ${BUILD_LDFLAGS}")
+	cpp_args = $(_meson_env_array "${BUILD_CXXFLAGS} ${BUILD_CPPFLAGS}")
+	cpp_link_args = $(_meson_env_array "${BUILD_CXXFLAGS} ${BUILD_LDFLAGS}")
+	fortran_args = $(_meson_env_array "${BUILD_FCFLAGS}")
+	fortran_link_args = $(_meson_env_array "${BUILD_FCFLAGS} ${BUILD_LDFLAGS}")
+	objc_args = $(_meson_env_array "${BUILD_OBJCFLAGS} ${BUILD_CPPFLAGS}")
+	objc_link_args = $(_meson_env_array "${BUILD_OBJCFLAGS} ${BUILD_LDFLAGS}")
+	objcpp_args = $(_meson_env_array "${BUILD_OBJCXXFLAGS} ${BUILD_CPPFLAGS}")
+	objcpp_link_args = $(_meson_env_array "${BUILD_OBJCXXFLAGS} ${BUILD_LDFLAGS}")
+	needs_exe_wrapper = false
+	pkg_config_libdir = '${BUILD_PKG_CONFIG_LIBDIR:-${EPREFIX}/usr/$(get_libdir)/pkgconfig}'
+
+	[build_machine]
+	system = '${system}'
+	cpu_family = '${cpu_family}'
+	cpu = '${cpu}'
+	endian = '$(tc-endian "${CBUILD}")'
+	EOF
+
+	echo "${fn}"
 }
 
 # @FUNCTION: meson_use
@@ -208,59 +293,133 @@ meson_feature() {
 meson_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	# Common args
+	local BUILD_CFLAGS=${BUILD_CFLAGS}
+	local BUILD_CPPFLAGS=${BUILD_CPPFLAGS}
+	local BUILD_CXXFLAGS=${BUILD_CXXFLAGS}
+	local BUILD_FCFLAGS=${BUILD_FCFLAGS}
+	local BUILD_OBJCFLAGS=${BUILD_OBJCFLAGS}
+	local BUILD_OBJCXXFLAGS=${BUILD_OBJCXXFLAGS}
+	local BUILD_LDFLAGS=${BUILD_LDFLAGS}
+	local BUILD_PKG_CONFIG_LIBDIR=${BUILD_PKG_CONFIG_LIBDIR}
+	local BUILD_PKG_CONFIG_PATH=${BUILD_PKG_CONFIG_PATH}
+
+	if tc-is-cross-compiler; then
+		: ${BUILD_CFLAGS:=-O1 -pipe}
+		: ${BUILD_CXXFLAGS:=-O1 -pipe}
+		: ${BUILD_FCFLAGS:=-O1 -pipe}
+		: ${BUILD_OBJCFLAGS:=-O1 -pipe}
+		: ${BUILD_OBJCXXFLAGS:=-O1 -pipe}
+	else
+		: ${BUILD_CFLAGS:=${CFLAGS}}
+		: ${BUILD_CPPFLAGS:=${CPPFLAGS}}
+		: ${BUILD_CXXFLAGS:=${CXXFLAGS}}
+		: ${BUILD_FCFLAGS:=${FCFLAGS}}
+		: ${BUILD_LDFLAGS:=${LDFLAGS}}
+		: ${BUILD_OBJCFLAGS:=${OBJCFLAGS}}
+		: ${BUILD_OBJCXXFLAGS:=${OBJCXXFLAGS}}
+		: ${BUILD_PKG_CONFIG_LIBDIR:=${PKG_CONFIG_LIBDIR}}
+		: ${BUILD_PKG_CONFIG_PATH:=${PKG_CONFIG_PATH}}
+	fi
+
 	local mesonargs=(
+		meson setup
 		--buildtype plain
 		--libdir "$(get_libdir)"
 		--localstatedir "${EPREFIX}/var/lib"
 		--prefix "${EPREFIX}/usr"
 		--sysconfdir "${EPREFIX}/etc"
 		--wrap-mode nodownload
-		)
+		--build.pkg-config-path "${BUILD_PKG_CONFIG_PATH}${BUILD_PKG_CONFIG_PATH:+:}${EPREFIX}/usr/share/pkgconfig"
+		--pkg-config-path "${PKG_CONFIG_PATH}${PKG_CONFIG_PATH:+:}${EPREFIX}/usr/share/pkgconfig"
+		--native-file "$(_meson_create_native_file)"
+	)
 
-	if tc-is-cross-compiler || [[ ${ABI} != ${DEFAULT_ABI-${ABI}} ]]; then
-		_meson_create_cross_file || die "unable to write meson cross file"
-		mesonargs+=( --cross-file "${T}/meson.${CHOST}.${ABI}" )
+	if tc-is-cross-compiler; then
+		mesonargs+=( --cross-file "$(_meson_create_cross_file)" )
 	fi
+
+	BUILD_DIR="${BUILD_DIR:-${WORKDIR}/${P}-build}"
+
+	# Handle quoted whitespace
+	eval "local -a MYMESONARGS=( ${MYMESONARGS} )"
+
+	mesonargs+=(
+		# Arguments from ebuild
+		"${emesonargs[@]}"
+
+		# Arguments passed to this function
+		"$@"
+
+		# Arguments from user
+		"${MYMESONARGS[@]}"
+
+		# Source directory
+		"${EMESON_SOURCE:-${S}}"
+
+		# Build directory
+		"${BUILD_DIR}"
+	)
+
+	# Used by symbolextractor.py
+	# https://bugs.gentoo.org/717720
+	tc-export NM
+	tc-getPROG READELF readelf >/dev/null
 
 	# https://bugs.gentoo.org/625396
 	python_export_utf8_locale
 
-	# Append additional arguments from ebuild
-	mesonargs+=("${emesonargs[@]}")
+	# https://bugs.gentoo.org/721786
+	local -x BOOST_INCLUDEDIR="${BOOST_INCLUDEDIR-${EPREFIX}/usr/include}"
+	local -x BOOST_LIBRARYDIR="${BOOST_LIBRARYDIR-${EPREFIX}/usr/$(get_libdir)}"
 
-	BUILD_DIR="${BUILD_DIR:-${WORKDIR}/${P}-build}"
-	set -- meson "${mesonargs[@]}" "$@" \
-		"${EMESON_SOURCE:-${S}}" "${BUILD_DIR}"
-	echo "$@"
-	tc-env_build "$@" || die
+	(
+		export -n {C,CPP,CXX,F,OBJC,OBJCXX,LD}FLAGS PKG_CONFIG_{LIBDIR,PATH}
+		echo "${mesonargs[@]}" >&2
+		"${mesonargs[@]}"
+	) || die
 }
 
 # @FUNCTION: meson_src_compile
+# @USAGE: [extra ninja arguments]
 # @DESCRIPTION:
 # This is the meson_src_compile function.
 meson_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	eninja -C "${BUILD_DIR}"
+	eninja -C "${BUILD_DIR}" "$@"
 }
 
 # @FUNCTION: meson_src_test
+# @USAGE: [extra meson test arguments]
 # @DESCRIPTION:
 # This is the meson_src_test function.
 meson_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	eninja -C "${BUILD_DIR}" test
+	local mesontestargs=(
+		-C "${BUILD_DIR}"
+	)
+	[[ -n ${NINJAOPTS} || -n ${MAKEOPTS} ]] &&
+		mesontestargs+=(
+			--num-processes "$(makeopts_jobs ${NINJAOPTS:-${MAKEOPTS}})"
+		)
+
+	# Append additional arguments from ebuild
+	mesontestargs+=("${emesontestargs[@]}")
+
+	set -- meson test "${mesontestargs[@]}" "$@"
+	echo "$@" >&2
+	"$@" || die "tests failed"
 }
 
 # @FUNCTION: meson_src_install
+# @USAGE: [extra ninja install arguments]
 # @DESCRIPTION:
 # This is the meson_src_install function.
 meson_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	DESTDIR="${D}" eninja -C "${BUILD_DIR}" install
+	DESTDIR="${D}" eninja -C "${BUILD_DIR}" install "$@"
 	einstalldocs
 }
 

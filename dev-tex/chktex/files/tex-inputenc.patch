@@ -1,0 +1,14 @@
+Description: Specify the input encoding, fixing FTBFS with TeX Live 2018
+Author: Adrian Bunk <bunk@debian.org>
+Bug-Debian: https://bugs.debian.org/896178
+
+--- chktex-1.7.6.orig/ChkTeX.tex.in
++++ chktex-1.7.6/ChkTeX.tex.in
+@@ -37,6 +37,7 @@
+ 
+ \documentclass[a4paper]{article}
+ %latex
++\usepackage[latin1]{inputenc}
+ \usepackage{array, tabularx, verbatim, multicol}
+ \usepackage[T1]{fontenc}
+ \nonfrenchspacing

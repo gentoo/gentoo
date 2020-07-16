@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://www.gentoo.org/~grobian/distfiles/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~ppc-macos ~x86-macos ~x64-macos"
+KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
 IUSE=""
 
 src_compile() {

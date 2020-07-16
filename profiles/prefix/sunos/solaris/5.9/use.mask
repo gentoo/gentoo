@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Fabian Groffen <grobian@gentoo.org> (22 Aug 2017)
+# Fabian Groffen <grobian@gentoo.org> (2017-08-22)
 # PIE is basically not supported on non-Linux
 # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=57409
 pie

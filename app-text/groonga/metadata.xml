@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-<email>grknight@gentoo.org</email>
-</maintainer>
 <use>
    <flag name="abort">Enable query abortion</flag>
    <flag name="benchmark">Build benchmark programs</flag>
@@ -18,6 +15,5 @@
    <flag name="sphinx">Enable document generation by <pkg>app-misc/sphinx</pkg></flag>
    <flag name="uyield">Build for detecting race conditions</flag>
    <flag name="zeromq">Enable <pkg>net-libs/zeromq</pkg> used for suggestion</flag>
-   <flag name="zstd">Utilize <pkg>app-arch/zstd</pkg> for Zstandard compression</flag>
 </use>
 </pkgmetadata>

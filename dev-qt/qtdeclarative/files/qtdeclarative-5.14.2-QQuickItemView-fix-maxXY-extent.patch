@@ -1,0 +1,42 @@
+From cc5387ad22ca503d167fd66e2429107d45b937af Mon Sep 17 00:00:00 2001
+From: David Redondo <qt@david-redondo.de>
+Date: Wed, 13 May 2020 11:04:23 +0200
+Subject: [PATCH] QQuickItemView: Fix max(X/Y)Extent()
+
+QQuickFlickable maxXExtent() and maxYExtent() return the amount of space
+that is not shown when inside a ScrollView. QQuickItemView however just
+returned width() if vertical and height() if horizontal. In these cases
+just defer to the QQuickFlickable base implementation like minXExtent()
+and minYExtent() already do.
+
+Fixes: QTBUG-83890
+Pick-to: 5.15
+Change-Id: I7f4060c2f46ae07611bedceca0d322c5f7f6affb
+---
+ src/quick/items/qquickitemview.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/quick/items/qquickitemview.cpp b/src/quick/items/qquickitemview.cpp
+index 7fb392233e4..ab130ac6857 100644
+--- a/src/quick/items/qquickitemview.cpp
++++ b/src/quick/items/qquickitemview.cpp
+@@ -1393,7 +1393,7 @@ qreal QQuickItemView::maxYExtent() const
+ {
+     Q_D(const QQuickItemView);
+     if (d->layoutOrientation() == Qt::Horizontal)
+-        return height();
++        return QQuickFlickable::maxYExtent();
+ 
+     if (d->vData.maxExtentDirty) {
+         d->maxExtent = d->maxExtentForAxis(d->vData, false);
+@@ -1421,7 +1421,7 @@ qreal QQuickItemView::maxXExtent() const
+ {
+     Q_D(const QQuickItemView);
+     if (d->layoutOrientation() == Qt::Vertical)
+-        return width();
++        return QQuickFlickable::maxXExtent();
+ 
+     if (d->hData.maxExtentDirty) {
+         d->maxExtent = d->maxExtentForAxis(d->hData, true);
+-- 
+2.16.3

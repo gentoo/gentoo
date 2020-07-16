@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,11 +11,11 @@ DESCRIPTION="Digital Audio Workstation"
 HOMEPAGE="http://ardour.org/"
 
 if [[ ${PV} == *9999* ]]; then
-	EGIT_REPO_URI="http://git.ardour.org/ardour/ardour.git"
+	EGIT_REPO_URI="https://git.ardour.org/ardour/ardour.git"
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="mirror://gentoo/Ardour-${PV}.0.tar.bz2 -> ${P}.tar.bz2"
+	SRC_URI="mirror://gentoo/${P}.tar.bz2"
 	S="${WORKDIR}/Ardour-${PV}.0"
 fi
 
@@ -50,12 +50,11 @@ RDEPEND="
 	net-misc/curl
 	sys-libs/readline:0=
 	sci-libs/fftw:3.0[threads]
-	virtual/libusb:0
+	virtual/libusb:1
 	x11-libs/cairo
 	>=x11-libs/gtk+-2.8.1:2
 	x11-libs/pango
 	jack? ( virtual/jack )
-	>=media-libs/slv2-0.6.1
 	media-libs/lilv
 	media-libs/sratom
 	dev-libs/sord
@@ -76,7 +75,7 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
-src_prepare(){
+src_prepare() {
 	eapply_user
 	if ! [[ ${PV} == *9999* ]]; then
 		eapply "${FILESDIR}"/${PN}-4.x-revision-naming.patch
@@ -113,15 +112,14 @@ src_configure() {
 	tc-export CC CXX
 	mkdir -p "${D}"
 	waf-utils_src_configure \
-		--destdir="${D}" \
-		--prefix=/usr \
-		--configdir=/etc \
-		--nls \
-		--optimize \
-		--lv2 \
-		$(usex jack "--with-backends=alsa,jack" "--with-backends=alsa  --libjack=weak") \
-		$(usex doc "--docs" '') \
-		$({ use altivec || use cpu_flags_x86_sse; } && echo "--fpu-optimization" || echo "--no-fpu-optimization")
+                $(usex doc "--docs" '') \
+                $({ use altivec || use cpu_flags_x86_sse; } && echo "--fpu-optimization" || echo "--no-fpu-optimization") \
+                $(usex jack "--with-backends=alsa,jack" "--with-backends=alsa  --libjack=weak") \
+                --destdir="${D}" \
+                --prefix=/usr \
+                --configdir=/etc \
+                --nls \
+                --optimize
 }
 
 src_install() {
@@ -133,8 +131,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "If you are using Ardour and want to keep its development alive"
-	elog "then please consider to make a donation upstream at ${HOMEPAGE}."
 	elog "Please do _not_ report problems with the package to ${PN} upstream."
 	elog "If you think you've found a bug, check the upstream binary package"
 	elog "before you report anything to upstream."

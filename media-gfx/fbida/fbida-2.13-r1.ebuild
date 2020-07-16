@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="
 "
 LICENSE="GPL-2 IJG"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="curl fbcon ghostscript +gif lirc +png scanner +tiff X +webp"
 REQUIRED_USE="
 	ghostscript? ( tiff )
@@ -25,7 +25,7 @@ CDEPEND="
 	>=media-libs/freetype-2.0
 	media-libs/libepoxy
 	media-libs/libexif
-	media-libs/mesa
+	media-libs/mesa[X(+)]
 	virtual/jpeg:*
 	virtual/ttf-fonts
 	x11-libs/cairo[opengl]

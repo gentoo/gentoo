@@ -1,0 +1,50 @@
+diff --git a/tests/test_from_source.py b/tests/test_from_source.py
+index 39d7c05..76834f7 100644
+--- a/tests/test_from_source.py
++++ b/tests/test_from_source.py
+@@ -40,6 +40,7 @@ def test_use_from_source_sdist(sdist, tmp_path, clean_python, monkeypatch, call_
+     )
+ 
+ 
++@pytest.mark.skip(reason="needs internet access")
+ def test_use_from_wheel(tmp_path, extracted_wheel, clean_python, monkeypatch, call_subprocess):
+     """test that we can create a virtual environment by feeding to a clean python the wheels content"""
+     virtualenv_file = extracted_wheel / "virtualenv.py"
+diff --git a/tests/test_source_content.py b/tests/test_source_content.py
+index 8eae6bc..06763ee 100644
+--- a/tests/test_source_content.py
++++ b/tests/test_source_content.py
+@@ -41,6 +41,7 @@ def test_sdist_contains(sdist):
+     assert not extra, " | ".join(extra)
+ 
+ 
++@pytest.mark.skip(reason="needs internet access")
+ def test_wheel_contains(extracted_wheel):
+     content = set(extracted_wheel.iterdir())
+ 
+diff --git a/tests/test_zipapp.py b/tests/test_zipapp.py
+index d084af6..93d29e1 100644
+--- a/tests/test_zipapp.py
++++ b/tests/test_zipapp.py
+@@ -51,11 +51,13 @@ def call_wheel(tmp_path_factory, call_subprocess):
+     return wheel_make_env
+ 
+ 
++@pytest.mark.skip(reason="needs internet access")
+ @pytest.mark.skipif(six.PY2, reason="seems to be broken on python2")
+ def test_zipapp_basic_invocation(call_zipapp, tmp_path):
+     _test_basic_invocation(call_zipapp, tmp_path)
+ 
+ 
++@pytest.mark.skip(reason="needs internet access")
+ @pytest.mark.skipif(six.PY2, reason="seems to be broken on python2")
+ def test_wheel_basic_invocation(call_wheel, tmp_path):
+     _test_basic_invocation(call_wheel, tmp_path)
+@@ -97,6 +99,7 @@ def test_zipapp_invocation_dash_p(call_zipapp, tmp_path):
+     _test_invocation_dash_p(call_zipapp, tmp_path)
+ 
+ 
++@pytest.mark.skip(reason="needs internet access")
+ @pytest.mark.skipif(six.PY2, reason="seems to be broken on python2")
+ @pytest.mark.skipif(sys.platform == "win32" and six.PY2, reason="no python 3 for windows on CI")
+ def test_wheel_invocation_dash_p(call_wheel, tmp_path):

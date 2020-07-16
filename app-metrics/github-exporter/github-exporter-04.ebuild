@@ -26,7 +26,7 @@ HOMEPAGE="https://github.com/infinityworks/github-exporter"
 SRC_URI="https://${EGO_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
 
-LICENSE="MIT"
+LICENSE="MIT Apache-2.0 BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 

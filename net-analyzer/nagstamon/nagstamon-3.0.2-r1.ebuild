@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit eutils python-r1 distutils-r1
 
@@ -32,8 +32,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/secretstorage[${PYTHON_USEDEP}]
 	>=dev-python/python-xlib-0.19[${PYTHON_USEDEP}]
-	dev-python/requests-kerberos[${PYTHON_USEDEP}]
-	virtual/python-typing[${PYTHON_USEDEP}]"
+	dev-python/requests-kerberos[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 

@@ -1,23 +1,21 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
-
-IUSE=""
+EAPI=7
 
 DESCRIPTION="A bunch of sounds for WindowMaker Sound Server"
-SRC_URI="http://largo.windowmaker.org/files/worms2sounds.tar.gz
-		http://largo.windowmaker.org/files/wmsdefault.tar.gz"
 HOMEPAGE="http://largo.windowmaker.org/"
+SRC_URI="
+	http://largo.windowmaker.org/files/worms2sounds.tar.gz
+	http://largo.windowmaker.org/files/wmsdefault.tar.gz"
 
-DEPEND=">=x11-wm/windowmaker-0.80.2-r2"
-
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ~ppc amd64 sparc"
+SLOT="0"
+KEYWORDS="amd64 ~ppc sparc x86"
 
-S1=${WORKDIR}/Sounds
-S2=${WORKDIR}/SoundSets
+RDEPEND=">=x11-wm/windowmaker-0.80.2-r2"
+
+S="${WORKDIR}"
 
 src_install() {
 	insinto /usr/share/WindowMaker/Defaults
@@ -32,11 +30,9 @@ src_install() {
 	insinto /usr/share/WindowMaker/SoundSets/Default
 	doins "${FILESDIR}"/wmsound-soundset
 
-	cd "${S1}"
 	insinto /usr/share/WindowMaker/Sounds
-	doins *.wav
+	doins Sounds/*.wav
 
-	cd "${S2}"
 	insinto /usr/share/WindowMaker/SoundSets
-	doins Worms2
+	doins SoundSets/Worms2
 }

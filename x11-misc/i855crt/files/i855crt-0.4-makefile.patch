@@ -1,0 +1,16 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,11 +1,6 @@
+-i855crt: i855crt.o vmodes.o
+-	gcc $(LDFLAGS) -o i855crt i855crt.o vmodes.o -L /usr/X11R6/lib -lXext -lXv
++LDLIBS = -lXv -lX11
+ 
+-i855crt.o: i855crt.c i855crt.h vmodes.h hw.h
+-	gcc $(CFLAGS) -c i855crt.c
+-
+-vmodes.o: vmodes.c vmodes.h
+-	gcc $(CFLAGS) -c vmodes.c
++i855crt: vmodes.o
+ 
+ clean:
+ 	rm *.o -f

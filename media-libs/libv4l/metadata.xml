@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>andrey_utkin@gentoo.org</email>
-		<name>Andrey Utkin</name>
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
 	</maintainer>
 	<longdescription lang="en">
 	libv4l is a collection of libraries which adds a thin abstraction layer	on

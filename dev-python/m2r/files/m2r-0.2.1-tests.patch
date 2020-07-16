@@ -1,0 +1,65 @@
+From 77968c4574cb121737a2017b936870603664be39 Mon Sep 17 00:00:00 2001
+From: miyakogi <miyako.dev@gmail.com>
+Date: Tue, 4 Jun 2019 19:13:26 +0900
+Subject: [PATCH] Fix test
+
+---
+ tests/test_renderer.py | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/tests/test_renderer.py b/tests/test_renderer.py
+index 5c6f915..4c7ebba 100644
+--- a/tests/test_renderer.py
++++ b/tests/test_renderer.py
+@@ -43,6 +43,7 @@ def check_rst(self, rst):
+ class TestBasic(RendererTestBase):
+     def test_fail_rst(self):
+         with self.assertRaises(AssertionError):
++            # This check should be failed and report warning
+             self.check_rst('```')
+ 
+     def test_simple_paragraph(self):
+@@ -709,7 +710,6 @@ def test_footnote(self):
+             '',
+             '.. [#a] note rst',  # one empty line inserted...
+             '',
+-            '',
+             '.. [#fn-1] note 1',
+             '.. [#fn-2] note 2',
+             '.. [#fn-ref] note ref',
+@@ -719,22 +719,22 @@ def test_footnote(self):
+     def test_sphinx_ref(self):
+         src = 'This is a sphinx [ref]_ global ref.\n\n.. [ref] ref text'
+         out = self.conv(src)
+-        self.assertEqual(out, '\n' + src + '\n')
++        self.assertEqual(out, '\n' + src)
+ 
+ 
+ class TestDirective(RendererTestBase):
+     def test_comment_oneline(self):
+         src = '.. a'
+         out = self.conv(src)
+-        self.assertEqual(out, '\n.. a\n')
++        self.assertEqual(out, '\n.. a')
+ 
+     def test_comment_indented(self):
+         src = '    .. a'
+         out = self.conv(src)
+-        self.assertEqual(out, '\n    .. a\n')
++        self.assertEqual(out, '\n    .. a')
+ 
+     def test_comment_newline(self):
+-        src = '..\n\n   comment\nnewline'
++        src = '..\n\n   comment\n\nnewline'
+         out = self.conv(src)
+         self.assertEqual(out, '\n..\n\n   comment\n\nnewline\n')
+ 
+@@ -748,7 +748,7 @@ def test_comment_multiline(self):
+             '\n\n')
+         src = comment + '`eoc`'
+         out = self.conv(src)
+-        self.assertEqual(out, '\n' + comment + '\n``eoc``\n')
++        self.assertEqual(out, '\n' + comment + '``eoc``\n')
+ 
+ 
+ class TestRestCode(RendererTestBase):

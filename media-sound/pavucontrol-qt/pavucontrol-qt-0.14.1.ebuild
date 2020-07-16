@@ -3,17 +3,17 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="A Pulseaudio mixer in Qt (port of pavucontrol)"
-HOMEPAGE="https://lxqt.org/"
+HOMEPAGE="https://lxqt.github.io/"
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/lxqt/${PN}.git"
 else
 	SRC_URI="https://downloads.lxqt.org/downloads/${PN}/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~hppa x86"
 fi
 
 LICENSE="GPL-2+"

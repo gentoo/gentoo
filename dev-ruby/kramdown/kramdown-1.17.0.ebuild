@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_EXTRADOC="README.md AUTHORS CONTRIBUTERS"
 
@@ -21,7 +21,7 @@ IUSE="latex"
 
 LATEX_DEPS="latex? ( dev-texlive/texlive-latex dev-texlive/texlive-latexextra )"
 RDEPEND+=" ${LATEX_DEPS}"
-DEPEND+=" test? ( ${LATEX_DEPS} app-text/htmltidy )"
+DEPEND+=" test? ( ${LATEX_DEPS} app-text/tidy-html5 )"
 
 ruby_add_rdepend "dev-ruby/prawn:2
 	>=dev-ruby/prawn-table-0.2.2 =dev-ruby/prawn-table-0.2*

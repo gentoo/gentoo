@@ -4,11 +4,29 @@
 # Unmask the flag which corresponds to ARCH.
 -m68k
 
-# Andreas Sturmlechner <asturm@gentoo.org> (31 Mar 2019)
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-04-23)
+# dev-libs/libressl has no m68k keywords.
+libressl
+curl_ssl_libressl
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-04-23)
+# valgrind has no m68k port.
+valgrind
+
+# Matt Turner <mattst88@gentoo.org> (2019-12-05)
+# media-libs/libglvnd is not keyworded
+libglvnd
+
+# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
+# Dependencies not keyworded.
+appindicator
+ayatana
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-03-31)
 # sys-auth/elogind is not keyworded here.
 elogind
 
-# James Le Cuirot <chewi@gentoo.org> (29 Jun 2017)
+# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
 # Unmask as this profile is big endian.
 -big-endian
 
@@ -39,11 +57,9 @@ slang
 diet
 gtk
 mono
-python
 cairo
 svg
 X
-crypt
 mysql
 samba
 dbus
@@ -69,7 +85,7 @@ tk
 clang
 
 # USE=audit masked prior to testing on alpha, arm, hppa, ppc64, s390, sh.
-# Bug #184563, 18 Sep 2007 
+# Bug #184563, (2007-09-18)
 # Robin H. Johnson <robbat2@gentoo.org>
 audit
 
@@ -82,10 +98,9 @@ gnome-keyring
 pango
 
 # Masking since net-dns/avahi and net-misc/mDNSResponder are masked
-avahi
 zeroconf
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-08-22)
 # virtual/opencl is not keyworded
 opencl
 

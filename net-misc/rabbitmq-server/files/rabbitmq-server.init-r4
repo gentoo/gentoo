@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net epmd
+	use dns
+}
+
+start() {
+	ebegin "Starting RabbitMQ"
+	/sbin/start-stop-daemon \
+		--start --background \
+		--pidfile /var/run/rabbitmq.pid --make-pidfile \
+		--stdout /var/log/rabbitmq/startup.log \
+		--stderr /var/log/rabbitmq/startup.err \
+		--exec /usr/sbin/rabbitmq-server
+	/usr/sbin/rabbitmqctl -q wait /var/run/rabbitmq.pid
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping RabbitMQ"
+	/usr/sbin/rabbitmqctl stop /var/run/rabbitmq.pid >> /var/log/rabbitmq/shutdown.log 2>> /var/log/rabbitmq/shutdown.err
+	eend $?
+}

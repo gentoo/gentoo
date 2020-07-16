@@ -1,14 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 EGIT_REPO_URI="https://github.com/buildbot/${PN}.git"
 
-[[ ${PV} == *9999 ]] && inherit git-r3
-inherit readme.gentoo-r1 user systemd distutils-r1
+DISTUTILS_USE_SETUPTOOLS="rdepend"
+
+inherit git-r3
+inherit readme.gentoo-r1 systemd distutils-r1
 
 MY_PV="${PV/_p/.post}"
 MY_P="${PN}-${MY_PV}"
@@ -19,15 +21,13 @@ HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pyp
 
 LICENSE="GPL-2"
 SLOT="0"
-if [[ ${PV} == *9999 ]]; then
-	KEYWORDS=""
-else
-	KEYWORDS="~amd64"
-fi
+KEYWORDS=""
 
 IUSE="crypt doc docker examples irc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
+	acct-user/buildbot
 	>=dev-python/jinja-2.1[${PYTHON_USEDEP}]
 	>=dev-python/twisted-17.9.0[${PYTHON_USEDEP}]
 	>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
@@ -37,12 +37,13 @@ RDEPEND="
 	>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
 	>=dev-python/txaio-2.2.2[${PYTHON_USEDEP}]
 	dev-python/pyjwt[${PYTHON_USEDEP}]
+	dev-python/pyyaml[${PYTHON_USEDEP}]
 	>=dev-python/zope-interface-4.1.1[${PYTHON_USEDEP}]
 	~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
 	crypt? (
 		>=dev-python/twisted-17.9.0[${PYTHON_USEDEP},crypt]
 		>=dev-python/pyopenssl-16.0.0[${PYTHON_USEDEP}]
-		dev-python/idna[${PYTHON_USEDEP}]
+		<dev-python/idna-2.9[${PYTHON_USEDEP}]
 		dev-python/service_identity[${PYTHON_USEDEP}]
 	)
 	irc? (
@@ -50,46 +51,46 @@ RDEPEND="
 	)
 	docker? (
 		>=dev-python/docker-py-2.2.0[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
 	)
 "
 DEPEND="${RDEPEND}
-	>=dev-python/setuptools-21.2.1[${PYTHON_USEDEP}]
 	doc? (
 		>=dev-python/sphinx-1.4.3[${PYTHON_USEDEP}]
+		<dev-python/sphinx-2.1.0[${PYTHON_USEDEP}]
 		dev-python/sphinxcontrib-blockdiag[${PYTHON_USEDEP}]
 		dev-python/sphinxcontrib-spelling[${PYTHON_USEDEP}]
 		dev-python/pyenchant[${PYTHON_USEDEP}]
-		>=dev-python/docutils-0.8[${PYTHON_USEDEP}]
-		<dev-python/docutils-0.13.0[${PYTHON_USEDEP}]
+		dev-python/docutils[${PYTHON_USEDEP}]
 		dev-python/sphinx-jinja[${PYTHON_USEDEP}]
+		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 	)
 	test? (
-		>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 		dev-python/moto[${PYTHON_USEDEP}]
-		dev-python/boto3[${PYTHON_USEDEP}]
-		dev-python/pyjade[${PYTHON_USEDEP}]
-		dev-python/txgithub[${PYTHON_USEDEP}]
+		>=dev-python/boto3-1.12.48[${PYTHON_USEDEP}]
+		dev-python/parameterized[${PYTHON_USEDEP}]
+		dev-python/pypugjs[${PYTHON_USEDEP}]
 		dev-python/txrequests[${PYTHON_USEDEP}]
 		dev-python/lz4[${PYTHON_USEDEP}]
 		dev-python/treq[${PYTHON_USEDEP}]
 		dev-python/setuptools_trial[${PYTHON_USEDEP}]
-		~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
-		>=dev-python/docker-py-2.2.0[${PYTHON_USEDEP}]
+		dev-util/buildbot-pkg[${PYTHON_USEDEP}]
+		dev-util/buildbot-worker[${PYTHON_USEDEP}]
+		dev-util/buildbot-www[${PYTHON_USEDEP}]
+		crypt? (
+			>=dev-python/twisted-17.9.0[${PYTHON_USEDEP},crypt]
+			>=dev-python/pyopenssl-16.0.0[${PYTHON_USEDEP}]
+			<dev-python/idna-2.9[${PYTHON_USEDEP}]
+			dev-python/service_identity[${PYTHON_USEDEP}]
+		)
 	)"
 
-S=${WORKDIR}/${MY_P}
-[[ ${PV} == *9999 ]] && S=${S}/master
+S=${S}/master
 
-if [[ ${PV} != *9999 ]]; then
-	PATCHES=(
-		"${FILESDIR}/Remove-distro-version-test.patch"
-	)
-fi
+distutils_enable_tests setup.py
 
 pkg_setup() {
-	enewuser buildbot
-
 	DOC_CONTENTS="The \"buildbot\" user and the \"buildmaster\" init script has been added
 		to support starting buildbot through Gentoo's init system. To use this,
 		execute \"emerge --config =${CATEGORY}/${PF}\" to create a new instance.
@@ -114,7 +115,7 @@ src_install() {
 	doman docs/buildbot.1
 
 	if use doc; then
-		dohtml -r docs/_build/html/
+		HTML_DOCS=( docs/_build/html/ )
 		# TODO: install man pages
 	fi
 
@@ -130,12 +131,6 @@ src_install() {
 	systemd_install_serviced "${FILESDIR}/buildmaster_at.service.conf" "buildmaster@.service"
 
 	readme.gentoo_create_doc
-}
-
-python_test() {
-	distutils_install_for_testing
-
-	esetup.py test || die "Tests failed under ${EPYTHON}"
 }
 
 pkg_postinst() {
@@ -193,7 +188,7 @@ pkg_config() {
 		mkdir --parents "${buildmaster_path}" || die "Unable to create directory ${buildmaster_path}"
 	fi
 	"${buildbot}" create-master "${instance_path}" &>/dev/null || die "Creating instance failed"
-	chown --recursive buildbot "${instance_path}" || die "Setting permissions for instance failed"
+	chown --recursive buildbot:buildbot "${instance_path}" || die "Setting permissions for instance failed"
 	mv "${instance_path}/master.cfg.sample" "${instance_path}/master.cfg" \
 		|| die "Moving sample configuration failed"
 	ln --symbolic --relative "/etc/init.d/buildmaster" "/etc/init.d/buildmaster.${instance_name}" \
@@ -201,6 +196,8 @@ pkg_config() {
 
 	if [[ ! -d "${instance_log_path}" ]]; then
 		mkdir --parents "${instance_log_path}" || die "Unable to create directory ${instance_log_path}"
+		chown --recursive buildbot:buildbot "${instance_log_path}" \
+			|| die "Setting permissions for instance failed"
 	fi
 	ln --symbolic --relative "${instance_log_path}/twistd.log" "${instance_path}/twistd.log" \
 		|| die "Unable to create link to log file"

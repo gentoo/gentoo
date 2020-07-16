@@ -1,20 +1,18 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Like cowsay, but different because it involves robots and kittens"
 HOMEPAGE="http://www.robotfindskitten.org/"
-#SRC_URI="http://www.redhotlunix.com/${PN}.tar.gz"
-SRC_URI="mirror://gentoo/${PN}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-lang/perl"
-RDEPEND="${DEPEND}"
+RDEPEND="dev-lang/perl"
 
 S=${WORKDIR}
 

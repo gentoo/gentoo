@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
+	</maintainer>
+	<maintainer type="person">
+		<name>Stefan Briesenick</name>
+		<email>gentoo@sbriesen.de</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		loudness-scanner is a tool that scans your music files according
+		to the EBU R128 standard for loudness normalisation. It optionally
+		adds ReplayGain compatible tags to the files.
+	</longdescription>
+	<use>
+		<flag name="mpg123">build the mpg123 plugin</flag>
+		<flag name="musepack">build the musepack plugin</flag>
+		<flag name="sndfile">build the sndfile plugin</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">jiixyj/loudness-scanner</remote-id>
+	</upstream>
+</pkgmetadata>

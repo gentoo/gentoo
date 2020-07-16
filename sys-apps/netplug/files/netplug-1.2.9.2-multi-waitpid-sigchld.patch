@@ -1,0 +1,65 @@
+# Rework SIGCHLD handler to anticipate multiple children dying while the
+# handler is being executed.
+#
+# Without the patch if multiple SIGCHLD signals are received while the signal
+# handler is being executed, the first will be left in pending state and the
+# extra discarded. Due to the children processing logic in netplugd, the ones
+# which were missed will never be waited, left as zombies.
+#
+# Implementation of the signal handler is following suggested handling in
+# https://www.gnu.org/software/libc/manual/html_node/Merged-Signals.html
+#
+# The patch strives to change only the children wait logic in the signal
+# handler, it doesn't try to enhance write call error handling or the unsafe
+# call to exit/do_log. Also the formatting is left as it was in the original
+# code.
+
+--- a/main.c
++++ b/main.c
+@@ -153,17 +153,29 @@ static int child_handler_pipe[2];
+ static void
+ child_handler(int sig, siginfo_t *info, void *v)
+ {
+-    struct child_exit ce;
+-    int ret;
+-    ssize_t s = 0;
++    int old_errno = errno;
+ 
+     assert(sig == SIGCHLD);
+ 
+-    ce.pid = info->si_pid;
+-    ret = waitpid(info->si_pid, &ce.status, 0);
+-    if (ret == info->si_pid)
++    while (1)
+     {
+-        s = write(child_handler_pipe[1], &ce, sizeof(ce));
++        pid_t pid;
++        int status;
++
++        do
++        {
++            errno = 0;
++            pid = waitpid(WAIT_ANY, &status, WNOHANG);
++        } while (pid <= 0 && errno == EINTR);
++
++        if (pid <= 0)
++        {
++            break;
++        }
++
++        struct child_exit ce = { .pid = pid, .status = status };
++
++        ssize_t s = write(child_handler_pipe[1], &ce, sizeof(ce));
+ 
+ 	if (s == -1)
+ 	{
+@@ -171,6 +183,9 @@ child_handler(int sig, siginfo_t *info, void *v)
+ 	    exit(1);
+ 	}
+     }
++
++    errno = old_errno;
++    return;
+ }
+ 
+ /* Poll the existing interface state, so we can catch any state

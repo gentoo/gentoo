@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
+	</maintainer>
+	<use>
+		<flag name="glade">Install module and catalog for <pkg>dev-util/glade</pkg></flag>
+	</use>
+	<longdescription>libhandy is a collection of GTK+ widgets for applications
+		targeting mobile phones.</longdescription>
+</pkgmetadata>

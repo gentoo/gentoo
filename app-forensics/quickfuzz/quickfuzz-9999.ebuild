@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ MY_PN="QuickFuzz"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="An experimental grammar fuzzer in Haskell using QuickCheck"
-HOMEPAGE="http://quickfuzz.org/"
+HOMEPAGE="http://quickfuzz.cifasis-conicet.gov.ar/"
 EGIT_REPO_URI="https://github.com/CIFASIS/QuickFuzz.git"
 
 LICENSE="GPL-3"

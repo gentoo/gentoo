@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,8 +11,8 @@ inherit haskell-cabal
 AGDA_P="lib-0.7"
 
 DESCRIPTION="Auxiliary Haskell code used by Agda's standard library"
-HOMEPAGE="http://wiki.portal.chalmers.se/agda/"
-SRC_URI="http://www.cse.chalmers.se/~nad/software/${AGDA_P}.tar.gz"
+HOMEPAGE="https://wiki.portal.chalmers.se/agda/"
+SRC_URI="https://www.cse.chalmers.se/~nad/software/${AGDA_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"

@@ -1,16 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils toolchain-funcs
 
-DESCRIPTION="Advanced parallized login hacker"
+DESCRIPTION="Parallelized network login hacker"
 HOMEPAGE="http://www.thc.org/thc-hydra/"
 SRC_URI="http://freeworld.thc.org/releases/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="firebird gtk idn mysql ncp oracle pcre postgres ssl subversion"
 
 RDEPEND="

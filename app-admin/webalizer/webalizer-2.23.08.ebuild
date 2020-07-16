@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # uses webapp.eclass to create directories with right permissions
@@ -27,7 +27,7 @@ SRC_URI="ftp://ftp.mrunix.net/pub/webalizer/${MY_P}-src.tar.bz2
 	${GEODB_URL}/webalizer-geodb-${GEODB_DATE}.tgz"
 
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 ~arm ~hppa ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 ~sparc x86"
 IUSE="bzip2 xtended geoip nls"
 SLOT="0"
 
@@ -76,8 +76,7 @@ src_configure() {
 		${myconf} \
 		$(use_enable geoip) \
 		$(use_enable bzip2 bz2) \
-		--with-geodb=${GEODB_DIR} \
-		|| die "econf failed"
+		--with-geodb=${GEODB_DIR}
 }
 
 src_install() {

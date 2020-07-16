@@ -1,0 +1,45 @@
+commit 78ba2ba7e42d06e64a7a10915259a4e419aa4ce4
+Merge: 4e53477 bb9ba6a
+Author: fafounet <fafounet@gmail.com>
+Date:   Sat Feb 27 13:10:59 2016 +0100
+
+    Merge pull request #104 from robblanco/string-literals
+    
+    Add string literals from proper character groups
+
+commit bb9ba6a57969c9eeab5841923ca822756860163c
+Author: Rob Blanco <roberto.blanco@inria.fr>
+Date:   Wed Feb 24 19:01:06 2016 +0100
+
+    Add string literals from proper character groups
+    
+    Escape prefixes were included in the strings being passed to the
+    character composition functions, resulting in incorrect characters
+    being generated (in the case of control characters) or exceptions
+    being thrown (in octal and hex literals, in combination with the
+    OCaml-specific prefixes).
+
+diff --git a/source/compiler/lplex.mll b/source/compiler/lplex.mll
+index 6cb28cd..6b2576a 100644
+--- a/source/compiler/lplex.mll
++++ b/source/compiler/lplex.mll
+@@ -215,11 +215,14 @@ and stringstate = parse
+ | "\\\""        {addChar '"'; stringstate lexbuf}
+ | "\"\""        {addChar '"'; stringstate lexbuf}
+ 
+-| "\\^"['@'-'z'] as text            {addControl text; stringstate lexbuf}
+-| "\\" OCTAL as text                {addOctal text; stringstate lexbuf}
+-| "\\" (OCTAL OCTAL OCTAL) as text  {addOctal text; stringstate lexbuf}
+-| "\\x" HEX as text                 {addHex text; stringstate lexbuf}
+-| "\\x" (HEX HEX) as text           {addHex text; stringstate lexbuf}
++| "\\^" (['@'-'z'] as text)         {addControl (String.make 1 text);
++                                     stringstate lexbuf}
++| "\\" (OCTAL as text)              {addOctal (String.make 1 text);
++                                     stringstate lexbuf}
++| "\\" (OCTAL OCTAL OCTAL as text)  {addOctal text; stringstate lexbuf}
++| "\\x" (HEX as text)               {addHex (String.make 1 text);
++                                     stringstate lexbuf}
++| "\\x" (HEX HEX as text)           {addHex text; stringstate lexbuf}
+ 
+ | "\\x" _         {Errormsg.error lexbuf.lex_curr_p 
+                     "Illegal hex character specification";

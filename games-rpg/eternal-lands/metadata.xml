@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>rich0@gentoo.org</email>
-		<name>Richard Freeman</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<longdescription>
-		Eternal Lands is a FREE MMORPG (massively multiplayer online role playing game)
+		Eternal Lands is a free 3D fantasy MMORPG (massively multiplayer online role playing game)
 	</longdescription>
 </pkgmetadata>

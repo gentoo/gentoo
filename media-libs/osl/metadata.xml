@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>dracwyrm@gentoo.org</email>
-		<name>Jonathan Scruggs</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>agrigo2001@yahoo.com.au</email>
 		<name>Adrian Grigo</name>
 	</maintainer>
@@ -19,13 +15,8 @@
 		lights, displacement, and pattern generation.
 	</longdescription>
 	<use>
-		<flag name="cpu_flags_x86_avx512f" restrict="&gt;=media-libs/osl-1.9.0">
-			SIMD Optimization
-		</flag>
-		<flag name="cpu_flags_x86_f16c" restrict="&gt;=media-libs/osl-1.9.0">
-			SIMD Optimization
-		</flag>
 		<flag name="partio">Use <pkg>media-libs/partio</pkg></flag>
+		<flag name="qt5">Build the osltoy binary</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">imageworks/OpenShadingLanguage</remote-id>

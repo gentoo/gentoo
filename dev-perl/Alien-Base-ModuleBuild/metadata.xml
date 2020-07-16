@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>titanofold@gentoo.org</email>
+    <name>Aaron W. Swenson</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Alien-Base-ModuleBuild</remote-id>
+    <remote-id type="cpan-module">Alien::Base::ModuleBuild</remote-id>
+    <remote-id type="cpan-module">Alien::Base::ModuleBuild::Cabinet</remote-id>
+    <remote-id type="cpan-module">Alien::Base::ModuleBuild::File</remote-id>
+    <remote-id type="cpan-module">Alien::Base::ModuleBuild::Repository</remote-id>
+    <remote-id type="cpan-module">Alien::Base::ModuleBuild::Repository::FTP</remote-id>
+    <remote-id type="cpan-module">Alien::Base::ModuleBuild::Repository::HTTP</remote-id>
+    <remote-id type="cpan-module">Alien::Base::ModuleBuild::Repository::Local</remote-id>
+    <remote-id type="cpan-module">Alien::Base::ModuleBuild::Utils</remote-id>
+  </upstream>
+</pkgmetadata>

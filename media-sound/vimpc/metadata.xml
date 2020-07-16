@@ -6,12 +6,8 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<maintainer type="person">
-		<email>stefan.strogin@gmail.com</email>
+		<email>steils@gentoo.org</email>
 		<name>Stefan Strogin</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
 		<flag name="boost">Use boost instead of C++11 libraries</flag>

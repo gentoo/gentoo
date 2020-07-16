@@ -67,11 +67,11 @@ src_compile() {
 src_install() {
 	local exdir=/usr/share/doc/${P}
 
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 
 	newinitd "${FILESDIR}"/gmond.rc-2 gmond
-	doman {mans/*.1,gmond/*.5} || die "Failed to install manpages"
-	dodoc AUTHORS INSTALL NEWS README || die
+	doman {mans/*.1,gmond/*.5}
+	dodoc AUTHORS INSTALL NEWS README
 
 	dodir /etc/ganglia/conf.d
 	use python && dodir /usr/$(get_libdir)/ganglia/python_modules

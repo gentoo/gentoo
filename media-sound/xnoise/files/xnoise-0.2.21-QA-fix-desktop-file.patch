@@ -1,0 +1,54 @@
+--- a/data/misc/xnoise.desktop.in
++++ b/data/misc/xnoise.desktop.in
+@@ -16,24 +16,19 @@
+ [Desktop Action Play]
+ _Name=Play/Pause
+ Exec=xnoise --play-pause
+-OnlyShowIn=Unity;
+ 
+ [Desktop Action Stop]
+ _Name=Stop
+ Exec=xnoise --stop
+-OnlyShowIn=Unity;
+ 
+ [Desktop Action Next]
+ _Name=Goto next track
+ Exec=xnoise --next
+-OnlyShowIn=Unity;
+ 
+ [Desktop Action Previous]
+ _Name=Goto previous track
+ Exec=xnoise --previous
+-OnlyShowIn=Unity;
+ 
+ [Desktop Action Quit]
+ _Name=Quit application
+ Exec=xnoise --quit
+-OnlyShowIn=Unity;
+--- a/data/misc/xnoise.desktop.in.in
++++ b/data/misc/xnoise.desktop.in.in
+@@ -16,24 +16,19 @@
+ [Desktop Action Play]
+ _Name=Play/Pause
+ Exec=xnoise --play-pause
+-OnlyShowIn=Unity;
+ 
+ [Desktop Action Stop]
+ _Name=Stop
+ Exec=xnoise --stop
+-OnlyShowIn=Unity;
+ 
+ [Desktop Action Next]
+ _Name=Goto next track
+ Exec=xnoise --next
+-OnlyShowIn=Unity;
+ 
+ [Desktop Action Previous]
+ _Name=Goto previous track
+ Exec=xnoise --previous
+-OnlyShowIn=Unity;
+ 
+ [Desktop Action Quit]
+ _Name=Quit application
+ Exec=xnoise --quit
+-OnlyShowIn=Unity;

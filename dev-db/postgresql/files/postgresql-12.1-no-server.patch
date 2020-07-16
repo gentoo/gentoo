@@ -1,0 +1,143 @@
+--- a/contrib/Makefile
++++ b/contrib/Makefile
+@@ -5,56 +5,9 @@
+ include $(top_builddir)/src/Makefile.global
+ 
+ SUBDIRS = \
+-		adminpack	\
+-		amcheck		\
+-		auth_delay	\
+-		auto_explain	\
+-		bloom		\
+-		btree_gin	\
+-		btree_gist	\
+-		citext		\
+-		cube		\
+-		dblink		\
+-		dict_int	\
+-		dict_xsyn	\
+-		earthdistance	\
+-		file_fdw	\
+-		fuzzystrmatch	\
+-		hstore		\
+-		intagg		\
+-		intarray	\
+-		isn		\
+-		lo		\
+-		ltree		\
+ 		oid2name	\
+-		pageinspect	\
+-		passwordcheck	\
+-		pg_buffercache	\
+-		pg_freespacemap \
+-		pg_prewarm	\
+-		pg_standby	\
+-		pg_stat_statements \
+-		pg_trgm		\
+-		pgcrypto	\
+-		pgrowlocks	\
+-		pgstattuple	\
+-		pg_visibility	\
+-		postgres_fdw	\
+-		seg		\
+-		spi		\
+-		tablefunc	\
+-		tcn		\
+-		test_decoding	\
+-		tsm_system_rows \
+-		tsm_system_time \
+-		unaccent	\
+ 		vacuumlo
+ 
+-ifeq ($(with_openssl),yes)
+-SUBDIRS += sslinfo
+-else
+-ALWAYS_SUBDIRS += sslinfo
+-endif
+ 
+ ifneq ($(with_uuid),no)
+ SUBDIRS += uuid-ossp
+--- a/src/backend/Makefile
++++ b/src/backend/Makefile
+@@ -53,7 +53,7 @@
+ 
+ ##########################################################################
+ 
+-all: submake-libpgport submake-catalog-headers submake-utils-headers postgres $(POSTGRES_IMP)
++all: generated-headers
+ 
+ ifneq ($(PORTNAME), cygwin)
+ ifneq ($(PORTNAME), win32)
+@@ -192,23 +192,7 @@
+ 
+ ##########################################################################
+ 
+-install: all installdirs install-bin
+-ifeq ($(PORTNAME), cygwin)
+-ifeq ($(MAKE_DLL), true)
+-	$(INSTALL_DATA) libpostgres.a '$(DESTDIR)$(libdir)/libpostgres.a'
+-endif
+-endif
+-ifeq ($(PORTNAME), win32)
+-ifeq ($(MAKE_DLL), true)
+-	$(INSTALL_DATA) libpostgres.a '$(DESTDIR)$(libdir)/libpostgres.a'
+-endif
+-endif
+-	$(MAKE) -C catalog install-data
+-	$(MAKE) -C tsearch install-data
+-	$(MAKE) -C utils install-data
+-	$(INSTALL_DATA) $(srcdir)/libpq/pg_hba.conf.sample '$(DESTDIR)$(datadir)/pg_hba.conf.sample'
+-	$(INSTALL_DATA) $(srcdir)/libpq/pg_ident.conf.sample '$(DESTDIR)$(datadir)/pg_ident.conf.sample'
+-	$(INSTALL_DATA) $(srcdir)/utils/misc/postgresql.conf.sample '$(DESTDIR)$(datadir)/postgresql.conf.sample'
++install:
+ 
+ ifeq ($(with_llvm), yes)
+ install-bin: install-postgres-bitcode
+--- a/src/bin/Makefile
++++ b/src/bin/Makefile
+@@ -14,20 +14,8 @@
+ include $(top_builddir)/src/Makefile.global
+ 
+ SUBDIRS = \
+-	initdb \
+-	pg_archivecleanup \
+-	pg_basebackup \
+-	pg_checksums \
+ 	pg_config \
+-	pg_controldata \
+-	pg_ctl \
+ 	pg_dump \
+-	pg_resetwal \
+-	pg_rewind \
+-	pg_test_fsync \
+-	pg_test_timing \
+-	pg_upgrade \
+-	pg_waldump \
+ 	pgbench \
+ 	psql \
+ 	scripts
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -15,21 +15,12 @@
+ SUBDIRS = \
+ 	common \
+ 	port \
+-	timezone \
+ 	backend \
+-	backend/utils/mb/conversion_procs \
+-	backend/snowball \
+ 	include \
+ 	interfaces \
+-	backend/replication/libpqwalreceiver \
+-	backend/replication/pgoutput \
+ 	fe_utils \
+ 	bin \
+-	pl \
+-	makefiles \
+-	test/regress \
+-	test/isolation \
+-	test/perl
++	makefiles
+ 
+ ifeq ($(with_llvm), yes)
+ SUBDIRS += backend/jit/llvm

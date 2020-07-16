@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,7 @@ DOCS=( NEWS README.rst )
 
 # No tests on x86 because tests require dev-db/mongodb which don't support
 # x86 anymore (bug #645994)
-RESTRICT="x86? ( test )"
+RESTRICT="!test? ( test ) x86? ( test )"
 
 src_prepare() {
 	rm -r src/libbson || die
@@ -42,11 +42,11 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --with-libbson=system \
+	econf \
+		--with-libbson=system \
 		--disable-optimizations \
 		--disable-shm-counters \
 		--disable-examples \
-		--docdir="${EPREFIX}/usr/share/doc/${P}" \
 		$(use_enable sasl) \
 		$(use_enable ssl ssl $(usex libressl libressl openssl)) \
 		$(use_enable debug) \

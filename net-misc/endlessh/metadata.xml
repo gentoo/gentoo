@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>gyakovlev@gentoo.org</email>
-		<name>Georgy Yakovlev</name>
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
 	</maintainer>
 	<longdescription lang="en">
 		Endlessh is an SSH tarpit that very slowly sends an endless, random SSH banner.
@@ -17,7 +17,4 @@
 	<upstream>
 		<remote-id type="github">skeeto/endlessh</remote-id>
 	</upstream>
-	<use>
-		<flag name="tools">Install additional python script which can be used to parse logs and save summary to sqlite database</flag>
-	</use>
 </pkgmetadata>

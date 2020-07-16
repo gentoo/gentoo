@@ -11,7 +11,7 @@ LICENSE="GPL-2"
 
 SRC_URI="https://www.lesbonscomptes.com/upmpdcli/downloads/${P}.tar.gz"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="thirdparty"
 
 DEPEND="

@@ -1,18 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # All the Mac OS X profiles inherit from their matching arch profile here.
 
 
-# Alexandre Rostovtsev <tetromono@gentoo.org> (09 Jan 2012)
-# jsc JIT compilation is supported only on amd64/arm/x86 and their prefixes, so
-# it's masked in base profile and unmasked here (bug #396313).
-net-libs/webkit-gtk -jit
-
-# Jeremy Olexa <darkside@gentoo.org> (29 Jul 2010)
+# Jeremy Olexa <darkside@gentoo.org> (2010-07-29)
 # Relocation issues on 32-bit OSX, bug #329859
 media-sound/mpg123 cpu_flags_x86_mmx cpu_flags_x86_sse
 
-# Fabian Groffen <grobian@gentoo.org> (01 Feb 2009)
+# Fabian Groffen <grobian@gentoo.org> (2009-02-01)
 # Doesn't compile, bug #257225
 media-video/ffmpeg cpu_flags_x86_mmx

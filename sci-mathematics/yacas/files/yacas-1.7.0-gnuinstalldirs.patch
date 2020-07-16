@@ -1,0 +1,219 @@
+From f1665438b617e312d96fbe771603424cbebeee4e Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 16 Jul 2019 23:25:12 +0200
+Subject: [PATCH] Use GNUInstallDirs
+
+---
+ CMakeLists.txt                            |  5 +--
+ cyacas/libyacas/CMakeLists.txt            |  8 +++--
+ cyacas/libyacas_mp/CMakeLists.txt         |  8 +++--
+ cyacas/yacas-gui/CMakeLists.txt           |  4 +--
+ cyacas/yacas-gui/resources/CMakeLists.txt | 40 +++++++++++------------
+ cyacas/yacas-kernel/CMakeLists.txt        |  2 +-
+ cyacas/yacas/CMakeLists.txt               |  2 +-
+ docs/CMakeLists.txt                       |  2 +-
+ tests/CMakeLists.txt                      |  4 +--
+ 9 files changed, 40 insertions(+), 35 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9982f519..596cec3c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -30,12 +30,13 @@ if (ENABLE_JYACAS)
+     set (LANGUAGES ${LANGUAGES} Java)
+ endif ()
+ 
+-project (YACAS VERSION 1.7.0 LANGUAGES ${LANGUAGES})
++project (yacas VERSION 1.7.0 LANGUAGES ${LANGUAGES})
+ 
+ set (CMAKE_CXX_STANDARD 17)
+ set (CMAKE_CXX_STANDARD_REQUIRED ON)
+ set (CMAKE_CXX_EXTENSIONS OFF)
+ 
++include (GNUInstallDirs)
+ include (CTest)
+ 
+ set (YACAS_SCRIPTS
+@@ -251,7 +252,7 @@ set (YACAS_SCRIPTS
+     scripts/yacasinit.ys)
+ 
+ if (ENABLE_CYACAS)
+-    install (DIRECTORY scripts/ DESTINATION share/yacas/scripts COMPONENT app)
++    install (DIRECTORY scripts/ DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/scripts COMPONENT app)
+ endif ()
+ 
+ if (ENABLE_DOCS)
+diff --git a/cyacas/libyacas/CMakeLists.txt b/cyacas/libyacas/CMakeLists.txt
+index 14841f60..6839bb0a 100644
+--- a/cyacas/libyacas/CMakeLists.txt
++++ b/cyacas/libyacas/CMakeLists.txt
+@@ -94,9 +94,11 @@ set_target_properties (libyacas PROPERTIES OUTPUT_NAME "yacas")
+ target_include_directories (libyacas PUBLIC include "${CMAKE_CURRENT_BINARY_DIR}/config")
+ target_link_libraries (libyacas libyacas_mp)
+ 
+-install (TARGETS libyacas LIBRARY DESTINATION lib ARCHIVE DESTINATION lib RUNTIME DESTINATION bin COMPONENT app)
+-install (DIRECTORY include/ DESTINATION include COMPONENT dev)
+-install (FILES "${CMAKE_CURRENT_BINARY_DIR}/config/yacas/yacas_version.h" DESTINATION include/yacas COMPONENT dev)
++install (TARGETS libyacas LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++                          ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++                          RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT app)
++install (DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} COMPONENT dev)
++install (FILES "${CMAKE_CURRENT_BINARY_DIR}/config/yacas/yacas_version.h" DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/yacas COMPONENT dev)
+ 
+ # if (APPLE)
+ #   add_library (libyacas_framework SHARED ${SOURCES} ${HEADERS})
+diff --git a/cyacas/libyacas_mp/CMakeLists.txt b/cyacas/libyacas_mp/CMakeLists.txt
+index 06a3fc9d..3ebabfe6 100644
+--- a/cyacas/libyacas_mp/CMakeLists.txt
++++ b/cyacas/libyacas_mp/CMakeLists.txt
+@@ -29,8 +29,10 @@ add_library (libyacas_mp ${SOURCES} ${HEADERS})
+ set_target_properties (libyacas_mp PROPERTIES OUTPUT_NAME "yacas_mp")
+ target_include_directories (libyacas_mp PUBLIC include)
+ 
+-install (TARGETS libyacas_mp LIBRARY DESTINATION lib ARCHIVE DESTINATION lib RUNTIME DESTINATION bin COMPONENT app)
+-install (DIRECTORY include/ DESTINATION include COMPONENT dev)
++install (TARGETS libyacas_mp LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++                             ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++                             RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT app)
++install (DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} COMPONENT dev)
+ 
+ # if (APPLE)
+ #   add_library (libyacas_mp_framework SHARED ${SOURCES} ${HEADERS})
+@@ -48,4 +50,4 @@ endif ()
+ 
+ if (ENABLE_CYACAS_UNIT_TESTS)
+     add_subdirectory (test)
+-endif ()
+\ No newline at end of file
++endif ()
+diff --git a/cyacas/yacas-gui/CMakeLists.txt b/cyacas/yacas-gui/CMakeLists.txt
+index 981de305..ed5550b7 100644
+--- a/cyacas/yacas-gui/CMakeLists.txt
++++ b/cyacas/yacas-gui/CMakeLists.txt
+@@ -121,11 +121,11 @@ add_subdirectory (resources)
+ if (APPLE)
+     install (TARGETS yacas-gui BUNDLE DESTINATION ${CMAKE_INSTALL_BUNDLE_PREFIX})
+ else ()
+-    install (TARGETS yacas-gui DESTINATION bin)
++    install (TARGETS yacas-gui DESTINATION ${CMAKE_INSTALL_BINDIR})
+ endif ()
+ 
+ if (${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
+-    install (PROGRAMS yacas-gui.desktop PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ DESTINATION share/applications)
++    install (PROGRAMS yacas-gui.desktop PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
+ endif ()
+ 
+ if (WIN32)
+diff --git a/cyacas/yacas-gui/resources/CMakeLists.txt b/cyacas/yacas-gui/resources/CMakeLists.txt
+index dbdedcfa..a7d8d305 100644
+--- a/cyacas/yacas-gui/resources/CMakeLists.txt
++++ b/cyacas/yacas-gui/resources/CMakeLists.txt
+@@ -42,24 +42,24 @@ ExternalProject_Add (yacas-gui_delanuay
+     BUILD_COMMAND ""
+     INSTALL_COMMAND "")
+ 
+-install (FILES ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_delanuay/delaunay.js DESTINATION share/yacas/resources/plot3d)
++install (FILES ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_delanuay/delaunay.js DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/plot3d)
+ 
+ if (NOT APPLE)
+-    install (FILES plot3d/plot3d.js DESTINATION share/yacas/resources/plot3d)
+-    install (DIRECTORY jquery DESTINATION share/yacas/resources)
+-    install (DIRECTORY webchannel DESTINATION share/yacas/resources)
+-    install (DIRECTORY mathbar DESTINATION share/yacas/resources)
+-    install (DIRECTORY yacas_gui DESTINATION share/yacas/resources)
+-    install (FILES yacas_gui.html DESTINATION share/yacas/resources)
+-    install (DIRECTORY pixmaps DESTINATION share)
+-    install (DIRECTORY icons DESTINATION share)
++    install (FILES plot3d/plot3d.js DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/plot3d)
++    install (DIRECTORY jquery DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources)
++    install (DIRECTORY webchannel DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources)
++    install (DIRECTORY mathbar DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources)
++    install (DIRECTORY yacas_gui DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources)
++    install (FILES yacas_gui.html DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources)
++    install (DIRECTORY pixmaps DESTINATION ${CMAKE_INSTALL_DATAROOTDIR})
++    install (DIRECTORY icons DESTINATION ${CMAKE_INSTALL_DATAROOTDIR})
+ 
+-    install (DIRECTORY ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_codemirror/lib DESTINATION share/yacas/resources/codemirror)
+-    install (DIRECTORY ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_codemirror/mode/yacas DESTINATION share/yacas/resources/codemirror/mode)
+-    install (DIRECTORY ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_codemirror/addon/edit DESTINATION share/yacas/resources/codemirror/addon)
+-    install (DIRECTORY ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_codemirror/addon/hint DESTINATION share/yacas/resources/codemirror/addon)
++    install (DIRECTORY ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_codemirror/lib DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/codemirror)
++    install (DIRECTORY ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_codemirror/mode/yacas DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/codemirror/mode)
++    install (DIRECTORY ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_codemirror/addon/edit DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/codemirror/addon)
++    install (DIRECTORY ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_codemirror/addon/hint DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/codemirror/addon)
+ 
+-    install (FILES ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_flot/jquery.flot.js ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_flot/jquery.flot.resize.js DESTINATION share/yacas/resources/flot)
++    install (FILES ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_flot/jquery.flot.js ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_flot/jquery.flot.resize.js DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/flot)
+ 
+     install (FILES
+             ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_three/build/three.min.js
+@@ -68,12 +68,12 @@ if (NOT APPLE)
+             ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_three/examples/js/renderers/CanvasRenderer.js
+             ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_three/examples/js/renderers/Projector.js
+             ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_three/examples/js/utils/SceneUtils.js
+-            DESTINATION share/yacas/resources/three)
++            DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/three)
+ 
+-    install (FILES ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_vis/dist/vis.min.css ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_vis/dist/vis.min.js DESTINATION share/yacas/resources/vis)
++    install (FILES ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_vis/dist/vis.min.css ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_vis/dist/vis.min.js DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/vis)
+ 
+-    install (DIRECTORY ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_mathjax/fonts/HTML-CSS/STIX-Web/otf DESTINATION share/yacas/resources/mathjax/fonts/HTML-CSS/STIX-Web)
+-    install (DIRECTORY ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_mathjax/fonts/HTML-CSS/STIX-Web/woff DESTINATION share/yacas/resources/mathjax/fonts/HTML-CSS/STIX-Web)
+-    install (DIRECTORY ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_mathjax/fonts/HTML-CSS/TeX/otf DESTINATION share/yacas/resources/mathjax/fonts/HTML-CSS/TeX)
+-    install (DIRECTORY ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_mathjax/unpacked DESTINATION share/yacas/resources/mathjax)
++    install (DIRECTORY ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_mathjax/fonts/HTML-CSS/STIX-Web/otf DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/mathjax/fonts/HTML-CSS/STIX-Web)
++    install (DIRECTORY ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_mathjax/fonts/HTML-CSS/STIX-Web/woff DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/mathjax/fonts/HTML-CSS/STIX-Web)
++    install (DIRECTORY ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_mathjax/fonts/HTML-CSS/TeX/otf DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/mathjax/fonts/HTML-CSS/TeX)
++    install (DIRECTORY ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_mathjax/unpacked DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/mathjax)
+ endif ()
+diff --git a/cyacas/yacas-kernel/CMakeLists.txt b/cyacas/yacas-kernel/CMakeLists.txt
+index ae2c7298..1e6c4cf1 100644
+--- a/cyacas/yacas-kernel/CMakeLists.txt
++++ b/cyacas/yacas-kernel/CMakeLists.txt
+@@ -33,4 +33,4 @@ include_directories (include)
+ add_executable (yacas-kernel src/main.cpp src/yacas_kernel.cpp src/yacas_engine.cpp src/hmac_sha256.cpp)
+ target_link_libraries (yacas-kernel libyacas ${ZMQPP_LIBRARY} ${ZEROMQ_LIBRARY} ${JSONCPP_LIBRARY} ${OPENSSL_CRYPTO_LIBRARY} ${Boost_LIBRARIES} pthread)
+ 
+-install (TARGETS yacas-kernel DESTINATION bin)
+\ No newline at end of file
++install (TARGETS yacas-kernel DESTINATION ${CMAKE_INSTALL_BINDIR})
+diff --git a/cyacas/yacas/CMakeLists.txt b/cyacas/yacas/CMakeLists.txt
+index 3bdc3563..5e97c0af 100644
+--- a/cyacas/yacas/CMakeLists.txt
++++ b/cyacas/yacas/CMakeLists.txt
+@@ -36,4 +36,4 @@ if (WIN32)
+   target_link_libraries (yacas wsock32 ws2_32 shlwapi)
+ endif()
+ 
+-install (TARGETS yacas RUNTIME DESTINATION bin COMPONENT app)
++install (TARGETS yacas RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT app)
+diff --git a/docs/CMakeLists.txt b/docs/CMakeLists.txt
+index 869cd57c..f69d9740 100644
+--- a/docs/CMakeLists.txt
++++ b/docs/CMakeLists.txt
+@@ -38,6 +38,6 @@ add_custom_target(yacas_docs ALL
+     COMMENT "Building HTML documentation with Sphinx")
+ 
+ install (DIRECTORY "${SPHINX_SINGLEHTML_DIR}"
+-         DESTINATION share/yacas/documentation
++         DESTINATION ${CMAKE_INSTALL_DOCDIR}
+          COMPONENT doc
+          PATTERN ".buildinfo" EXCLUDE)
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 55ba67ef..9bb9c0e2 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -55,8 +55,8 @@ set (YACAS_TESTS
+   transforms.yts)
+ 
+ 
+-install (FILES ${YACAS_TESTS} DESTINATION share/yacas/tests COMPONENT app)
+-install (PROGRAMS ${TEST_YACAS_CMD} DESTINATION share/yacas/tests COMPONENT app)
++install (FILES ${YACAS_TESTS} DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/tests COMPONENT app)
++install (PROGRAMS ${TEST_YACAS_CMD} DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/tests COMPONENT app)
+ 
+ if (ENABLE_CYACAS_CONSOLE)
+     foreach (_test ${YACAS_TESTS})
+-- 
+2.22.0
+

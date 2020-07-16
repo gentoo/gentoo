@@ -5,12 +5,7 @@
 		<email>zmedico@gentoo.org</email>
 		<name>Zac Medico</name>
 	</maintainer>
-	<use>
-		<flag name="ostree">
-			Enables dependencies for handling of OSTree images.
-		</flag>
-	</use>
 	<upstream>
-		<remote-id type="github">projectatomic/buildah</remote-id>
+		<remote-id type="github">containers/buildah</remote-id>
 	</upstream>
 </pkgmetadata>

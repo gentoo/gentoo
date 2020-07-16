@@ -1,0 +1,59 @@
+From 46c7d3ea88dd77223f25c48ce4a8688db71c489b Mon Sep 17 00:00:00 2001
+From: "commit-queue@webkit.org"
+ <commit-queue@webkit.org@268f45cc-cd09-0410-ab3c-d52691b4dbfc>
+Date: Thu, 7 May 2020 19:30:28 +0000
+Subject: [PATCH] REGRESSION(r251875): Crash in JSC::StructureIDTable::get on
+ ppc64le: gcSafeMemcpy broken on JSVALUE64 platforms other than x86_64 and
+ aarch64 https://bugs.webkit.org/show_bug.cgi?id=210685
+
+Patch by Daniel Kolesa <daniel@octaforge.org> on 2020-05-07
+Reviewed by Michael Catanzaro.
+
+Fix gcSafeMemcpy on non-x86_64/aarch64 64-bit architectures.
+
+We were hitting an incorrect x86_64 assertion on values larger than
+mediumCutoff on JSVALUE64 architectures other than x86_64 and aarch64,
+as the control flow is wrong.
+
+* heap/GCMemoryOperations.h:
+(JSC::gcSafeMemcpy):
+
+git-svn-id: https://svn.webkit.org/repository/webkit/trunk@261326 268f45cc-cd09-0410-ab3c-d52691b4dbfc
+---
+ Source/JavaScriptCore/heap/GCMemoryOperations.h | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/Source/JavaScriptCore/heap/GCMemoryOperations.h b/Source/JavaScriptCore/heap/GCMemoryOperations.h
+index f2b9e385bc9..ff66071db20 100644
+--- a/Source/JavaScriptCore/heap/GCMemoryOperations.h
++++ b/Source/JavaScriptCore/heap/GCMemoryOperations.h
+@@ -53,7 +53,7 @@ ALWAYS_INLINE void gcSafeMemcpy(T* dst, T* src, size_t bytes)
+             bitwise_cast<volatile uint64_t*>(dst)[i] = bitwise_cast<volatile uint64_t*>(src)[i];
+     };
+ 
+-#if COMPILER(GCC_COMPATIBLE) && USE(JSVALUE64)
++#if COMPILER(GCC_COMPATIBLE) && (CPU(X86_64) || CPU(ARM64))
+     if (bytes <= smallCutoff)
+         slowPathForwardMemcpy();
+     else if (isARM64() || bytes <= mediumCutoff) {
+@@ -121,8 +121,6 @@ ALWAYS_INLINE void gcSafeMemcpy(T* dst, T* src, size_t bytes)
+             :
+             : "d0", "d1", "memory"
+         );
+-#else
+-    slowPathForwardMemcpy();
+ #endif // CPU(X86_64)
+     } else {
+         RELEASE_ASSERT(isX86_64());
+@@ -139,7 +137,7 @@ ALWAYS_INLINE void gcSafeMemcpy(T* dst, T* src, size_t bytes)
+     }
+ #else
+     slowPathForwardMemcpy();
+-#endif // COMPILER(GCC_COMPATIBLE)
++#endif // COMPILER(GCC_COMPATIBLE) && (CPU(X86_64) || CPU(ARM64))
+ #else
+     memcpy(dst, src, bytes);
+ #endif // USE(JSVALUE64)
+-- 
+2.20.1
+

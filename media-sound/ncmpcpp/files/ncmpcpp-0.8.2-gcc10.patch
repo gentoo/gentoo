@@ -1,0 +1,26 @@
+From 399e0f47008b487df3505476c959b4f42d8bc1b1 Mon Sep 17 00:00:00 2001
+From: Louis Sautier <sautier.louis@gmail.com>
+Date: Sat, 9 May 2020 14:31:52 +0200
+Subject: [PATCH] Fix build with GCC 10 by adding missing include
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fixes the following error:
+./mpdpp.h:438:15: error: ‘runtime_error’ is not a member of ‘std’
+---
+ src/mpdpp.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/mpdpp.h b/src/mpdpp.h
+index a2bb79eb..abd3666c 100644
+--- a/src/mpdpp.h
++++ b/src/mpdpp.h
+@@ -25,6 +25,7 @@
+ #include <exception>
+ #include <random>
+ #include <set>
++#include <stdexcept>
+ #include <vector>
+ 
+ #include <mpd/client.h>

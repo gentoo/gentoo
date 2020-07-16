@@ -10,7 +10,7 @@ SRC_URI="
 	x86? ( https://justgetflux.com/linux/${PN}-pre.tgz -> ${P}.tar.gz )
 "
 
-KEYWORDS="-* amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 LICENSE="f.lux"
 SLOT="0"
 

@@ -1,18 +1,18 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python3_6 )
 inherit distutils-r1 eutils
 
 DESCRIPTION="Tool suite for analysis and visualization of DNS and DNSSEC"
-HOMEPAGE="http://dnsviz.net/"
+HOMEPAGE="https://dnsviz.net/"
 SRC_URI="https://github.com/dnsviz/dnsviz/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

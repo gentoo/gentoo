@@ -7,7 +7,7 @@
   </maintainer>
   <use>
     <flag name="cscope">Enable cscope interface</flag>
-    <flag name="gtk3">Enable GTK+3 interface</flag>
+    <flag name="gtk2">Enable GTK+2 interface</flag>
     <flag name="netbeans">Include netbeans external editor integration support</flag>
     <flag name="racket">Enable support for Scheme using <pkg>dev-scheme/racket</pkg></flag>
   </use>

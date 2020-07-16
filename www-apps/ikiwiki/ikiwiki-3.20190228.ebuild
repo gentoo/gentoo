@@ -12,7 +12,8 @@ SRC_URI="mirror://debian/pool/main/i/ikiwiki/${PN}_${PV}.orig.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="extras minimal test"
-KEYWORDS="~amd64 ~x86"
+RESTRICT="!test? ( test )"
+KEYWORDS="amd64 ~x86"
 
 S=${WORKDIR}/IkiWiki-${PV}
 

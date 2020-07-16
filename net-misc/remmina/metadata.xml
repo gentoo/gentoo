@@ -2,14 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>sir.suriv@gmail.com</email>
-		<name>Diogo Pereira</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>bkohler@gentoo.org</email>
 		<name>Ben Kohler</name>
 	</maintainer>
@@ -22,6 +14,7 @@
 		Currently RDP, VNC, SPICE, NX, XDMCP and SSH are supported.
 	</longdescription>
 	<use>
+		<flag name="kwallet">Enable KDE Wallet plugin</flag>
 		<flag name="spice">Support connecting to SPICE-enabled virtual machines</flag>
 		<flag name="ssh">Enable support for SSH/SFTP protocol</flag>
 		<flag name="telepathy">Enable telepathy support</flag>

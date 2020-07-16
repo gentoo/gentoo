@@ -1,11 +1,11 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 MAKE_MAKEFILE_GENERATOR="ninja"
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit cmake-utils python-r1
 
@@ -34,7 +34,7 @@ src_configure() {
 	my_impl_src_configure() {
 		local mycmakeargs=(
 			-DCMAKE_STRIP="${EPREFIX}/bin/true"
-			-DCMAKE_INSTALL_PREFIX="${ED%/}/usr"
+			-DCMAKE_INSTALL_PREFIX="${ED}/usr"
 			-DPYTHON_EXECUTABLE="${EPREFIX}/usr/bin/${EPYTHON}"
 			-DGMXAPI_INSTALL_PATH="${EPREFIX}/usr/$(get_libdir)/${EPYTHON}/site-packages/gmx"
 		)

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,10 +12,10 @@ SRC_URI="https://dev.gentoo.org/~pacho/maintainer-needed/${P}.tar.xz"
 LICENSE="Apache-1.1"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="mod_proxy"
+IUSE="mod-proxy"
 
 DEPEND=""
-RDEPEND="mod_proxy? ( www-servers/apache[apache2_modules_proxy_connect] )"
+RDEPEND="mod-proxy? ( www-servers/apache[apache2_modules_proxy_connect] )"
 
 APACHE2_MOD_CONF="98_${PN}"
 APACHE2_MOD_DEFINE="EXTRACT_FORWARDED"
@@ -23,7 +23,7 @@ APACHE2_MOD_DEFINE="EXTRACT_FORWARDED"
 need_apache2_4
 
 src_prepare() {
-	if ! use mod_proxy; then
+	if ! use mod-proxy; then
 		sed -i -e 's:#define USING_proxy_http_module .*::' mod_extract_forwarded.c || die
 	fi
 }

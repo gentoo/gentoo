@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>waebbl@gmail.com</email>
+		<name>Bernd Waibel</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<description>Gentoo Science Project</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<description>Gentoo Proxy Maintainers</description>
+	</maintainer>
+	<use>
+		<flag name="hdf5-16-api">
+			Use -DH5_USE_16_API to build the package against old 1.6 API of HDF5
+		</flag>
+	</use>
+</pkgmetadata>

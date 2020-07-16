@@ -1,0 +1,25 @@
+diff -Naur devedeng-4.14.0.orig/setup.py devedeng-4.14.0/setup.py
+--- devedeng-4.14.0.orig/setup.py	2019-02-04 23:15:33.000000000 +0100
++++ devedeng-4.14.0/setup.py	2019-04-15 19:44:50.048675427 +0200
+@@ -26,7 +26,7 @@
+         (os.path.join('share', 'devedeng', 'backgrounds'),
+          glob('data/pixmaps/backgrounds/*')),
+         (os.path.join('share', 'doc', 'devedeng', 'html'), glob('doc/*')),
+-        (os.path.join('share', 'man', 'man1'), ['data/devede.1.gz'])
++        (os.path.join('share', 'man', 'man1'), ['data/devede.1'])
+     ]
+ 
+     for lang_name in [f for f in os.listdir('locale')]:
+@@ -73,12 +73,6 @@
+ except:
+     print("Failed to generate the translations")
+ 
+-try:
+-    if os.path.isfile('data/devede.1'):
+-        os.system("gzip -c data/devede.1 > data/devede.1.gz")
+-except:
+-    pass
+-
+ #here = os.path.abspath(os.path.dirname(__file__))
+ 
+ setup(

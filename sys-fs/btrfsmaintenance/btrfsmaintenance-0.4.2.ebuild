@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,13 +11,13 @@ SRC_URI="https://github.com/kdave/btrfsmaintenance/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="systemd"
 
 RDEPEND="
 	sys-fs/btrfs-progs
-	virtual/cron
 	systemd? ( sys-apps/systemd )
+	!systemd? ( virtual/cron )
 "
 
 src_prepare() {
@@ -41,9 +41,9 @@ src_install() {
 pkg_postinst() {
 	elog "Installing default btrfsmaintenance scripts"
 	if use systemd; then
-		"${EROOT%/}"/usr/share/btrfsmaintenance/btrfsmaintenance-refresh-cron.sh systemd-timer || die
+		"${EROOT}"/usr/share/btrfsmaintenance/btrfsmaintenance-refresh-cron.sh systemd-timer || die
 	else
-		"${EROOT%/}"/usr/share/btrfsmaintenance/btrfsmaintenance-refresh-cron.sh || die
+		"${EROOT}"/usr/share/btrfsmaintenance/btrfsmaintenance-refresh-cron.sh || die
 	fi
 	elog "Now edit cron periods and mount points in /etc/default/btrfsmaintenance "
 	elog "then run /usr/share/btrfsmaintenance/btrfsmaintenance-refresh-cron.sh to"
@@ -57,6 +57,6 @@ pkg_postinst() {
 pkg_prerm() {
 	if [[ -z ${REPLACED_BY_VERSION} ]] ; then
 		elog "Removing symlinks from btrfsmaintenance cron tasks"
-		"${EROOT%/}"/usr/share/btrfsmaintenance/btrfsmaintenance-refresh-cron.sh uninstall || die
+		"${EROOT}"/usr/share/btrfsmaintenance/btrfsmaintenance-refresh-cron.sh uninstall || die
 	fi
 }

@@ -1,0 +1,11 @@
+--- a/ipl/Makefile
++++ b/ipl/Makefile
+@@ -39,7 +39,7 @@ endif
+ VPATH=../lib:.
+ 
+ AFLAGS	= -I../lib
+-CFLAGS	= -DIPL_LOADER -I. -I../lib -I../include -O2 -mdisable-fpregs -Wall -fno-delete-null-pointer-checks
++CFLAGS	= -DIPL_LOADER -I. -I../lib -I../include -O2 -mdisable-fpregs -Wall -fno-delete-null-pointer-checks -fno-builtin
+ LDFLAGS  = -N --section-start .init=0x60000 -e '$$START$$'
+ 
+ all:	iplelf

@@ -1,0 +1,92 @@
+--- a/configure
++++ b/configure
+@@ -1230,7 +1230,7 @@
+ def_param format_nice n
+ def_param id_ext y
+ def_param use_bufinfo y
+-def_param use_egd y
++def_param use_egd n
+ def_param enable_remove_trailingspaces n
+ def_param menu_thin_frame n
+ def_param emacs_like_lineedit $include_opt
+--- a/istream.c
++++ b/istream.c
+@@ -770,7 +770,11 @@
+ 	gn = sk_GENERAL_NAME_value(alt, i);
+ 
+ 	if (gn->type == GEN_DNS) {
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 	  char *sn = ASN1_STRING_data(gn->d.ia5);
++#else
++	  char *sn = ASN1_STRING_get0_data(gn->d.ia5);
++#endif
+ 	  int sl = ASN1_STRING_length(gn->d.ia5);
+ 
+ 	  if (!seen_dnsname)
+--- a/url.c
++++ b/url.c
+@@ -20,8 +20,8 @@
+ #include "regex.h"
+ 
+ #ifdef USE_SSL
+-#ifndef SSLEAY_VERSION_NUMBER
+-#include <crypto.h>		/* SSLEAY_VERSION_NUMBER may be here */
++#ifndef OPENSSL_VERSION_NUMBER
++#include <crypto.h>		/* OPENSSL_VERSION_NUMBER may be here */
+ #endif
+ #include <err.h>
+ #endif
+@@ -126,7 +126,7 @@
+     ssl_accept_this_site(NULL);
+ }
+ 
+-#if SSLEAY_VERSION_NUMBER >= 0x00905100
++#if OPENSSL_VERSION_NUMBER >= 0x00905100
+ #include <rand.h>
+ static void
+ init_PRNG()
+@@ -154,7 +154,7 @@
+     if (file)
+ 	RAND_write_file(file);
+ }
+-#endif				/* SSLEAY_VERSION_NUMBER >= 0x00905100 */
++#endif				/* OPENSSL_VERSION_NUMBER >= 0x00905100 */
+ 
+ static SSL *
+ openSSLHandle(int sock, char *hostname, char **p_cert)
+@@ -188,12 +188,16 @@
+ #endif				/* defined(USE_SSL_VERIFY) */
+     if (ssl_ctx == NULL) {
+ 	int option;
+-#if SSLEAY_VERSION_NUMBER < 0x0800
++#if OPENSSL_VERSION_NUMBER < 0x0800
+ 	ssl_ctx = SSL_CTX_new();
+ 	X509_set_default_verify_paths(ssl_ctx->cert);
+-#else				/* SSLEAY_VERSION_NUMBER >= 0x0800 */
++#else				/* OPENSSL_VERSION_NUMBER >= 0x0800 */
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 	SSLeay_add_ssl_algorithms();
+ 	SSL_load_error_strings();
++#else
++    OPENSSL_init_ssl(0, NULL);
++#endif
+ 	if (!(ssl_ctx = SSL_CTX_new(SSLv23_client_method())))
+ 	    goto eend;
+ 	option = SSL_OP_ALL;
+@@ -233,13 +237,13 @@
+ 	if (SSL_CTX_load_verify_locations(ssl_ctx, ssl_ca_file, ssl_ca_path))
+ #endif				/* defined(USE_SSL_VERIFY) */
+ 	    SSL_CTX_set_default_verify_paths(ssl_ctx);
+-#endif				/* SSLEAY_VERSION_NUMBER >= 0x0800 */
++#endif				/* OPENSSL_VERSION_NUMBER >= 0x0800 */
+     }
+     handle = SSL_new(ssl_ctx);
+     SSL_set_fd(handle, sock);
+-#if SSLEAY_VERSION_NUMBER >= 0x00905100
++#if OPENSSL_VERSION_NUMBER >= 0x00905100
+     init_PRNG();
+-#endif				/* SSLEAY_VERSION_NUMBER >= 0x00905100 */
++#endif				/* OPENSSL_VERSION_NUMBER >= 0x00905100 */
+     if (SSL_connect(handle) > 0) {
+ 	Str serv_cert = ssl_get_certificate(handle, hostname);
+ 	if (serv_cert) {

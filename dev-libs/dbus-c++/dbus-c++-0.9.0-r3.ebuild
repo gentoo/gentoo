@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
 AUTOTOOLS_PRUNE_LIBTOOL_FILES="modules"
 
-inherit autotools-multilib
+inherit autotools-multilib eutils
 
 DESCRIPTION="Provides a C++ API for D-BUS"
 HOMEPAGE="https://sourceforge.net/projects/dbus-cplusplus/ https://sourceforge.net/apps/mediawiki/dbus-cplusplus/index.php?title=Main_Page"
@@ -13,8 +13,9 @@ SRC_URI="mirror://sourceforge/dbus-cplusplus/lib${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="doc ecore glib static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="sys-apps/dbus[${MULTILIB_USEDEP}]
 	ecore? ( dev-libs/efl )

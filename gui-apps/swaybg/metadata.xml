@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>speedjack95@gmail.com</email>
+		<name>Niccolò Scatena</name>
+	</maintainer>
+	<longdescription lang="en">
+		Sway's wallpaper utility, compatible with any Wayland compositor
+		which implements the wlr-layer-shell, xdg-output and xdg-shell protocols.
+	</longdescription>
+	<use>
+		<flag name="man">Build and install man pages</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">swaywm/swaybg</remote-id>
+		<maintainer status="active">
+			<email>sir@cmpwn.com</email>
+			<name>Drew DeVault</name>
+		</maintainer>
+		<bugs-to>https://github.com/swaywm/swaybg/issues</bugs-to>
+		<changelog>https://github.com/swaywm/swaybg/releases</changelog>
+	</upstream>
+</pkgmetadata>

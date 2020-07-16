@@ -1,6 +1,6 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Michael Haubenwallner <haubi@gentoo.org> (13 Feb 2019)
+# Michael Haubenwallner <haubi@gentoo.org> (2019-02-13)
 # A little less broken on Cygwin than openssl-1.1.0j.
 =dev-libs/openssl-1.1.1*

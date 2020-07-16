@@ -13,8 +13,7 @@
   1995. In 1995, this engine was among the top 3 evaluated by UNLV. It was
   open-sourced by HP and UNLV in 2005.</longdescription>
   <upstream>
-    <remote-id type="google-code">tesseract-ocr</remote-id>
-    <remote-id type="github">tesseract-ocr/tessdata</remote-id>
+    <remote-id type="github">tesseract-ocr/tesseract</remote-id>
   </upstream>
   <use>
     <flag name="math"> Enable support for recognition of equations.</flag>

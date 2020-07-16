@@ -12,10 +12,10 @@ DESCRIPTION="Highly flexible server for git directory version tracker"
 HOMEPAGE="https://github.com/sitaramc/gitolite"
 if [[ ${PV} != *9999 ]]; then
 	SRC_URI="https://github.com/sitaramc/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 arm x86"
 else
 	SRC_URI=""
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 arm x86"
 fi
 
 LICENSE="GPL-2"

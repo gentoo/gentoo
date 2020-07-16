@@ -19,37 +19,37 @@ USE="${USE} fortran openmp"
 # Security ftw.
 USE="${USE} seccomp"
 
-# 2010/10/21 - Ole Markus With <olemarkus@gentoo.org>
+# Ole Markus With <olemarkus@gentoo.org> (2010-10-21)
 # These USE flags were originally inserted here because of PHP
 # and were later removed by me. Reinserting the USE flags again because they are
 # global USE flags that may be expected to be set by other packages.
 USE="${USE} cli pcre"
 
-# 2006/03/07 - Donnie Berkholz <dberkholz@gentoo.org>
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-03-07)
 # Modular X: Support direct rendering by default
-# 2013/01/21 - Andreas K. Huettel <dilfridge@gentoo.org>
+# Andreas K. Huettel <dilfridge@gentoo.org> (2013-01-21)
 # Re-added following discussion with chithead
 USE="${USE} dri"
 
-# 2006/10/28 - Luca Barbato <lu_zero@gentoo.org>
+# Luca Barbato <lu_zero@gentoo.org> (2006-10-28)
 # on glibc system you cannot turn it off
 USE="${USE} iconv"
 
-# 2017/01/17 - Matt Turner <mattst88@gentoo.org>
+# Matt Turner <mattst88@gentoo.org> (2017-01-17)
 # Sane defaults for input drivers
 INPUT_DEVICES="libinput"
 
-# 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
 # Lowest common denominator defaults for video drivers,
 # except hppa, which lacks v4l so removes it in the hppa profile
 VIDEO_CARDS="dummy fbdev v4l"
 
-# 2008/07/09 - Doug Goldstein <cardoe@gentoo.org>
+# Doug Goldstein <cardoe@gentoo.org> (2008-07-09)
 # Adding LDFLAGS="-Wl,-O1 for all Linux profiles by default
 # after discussion on the gentoo-dev ML. As we bang out a clear
 # direction with how LDFLAGS will be set by default, this entry
 # may move.
-# 2010/07/12 - Samuli Suominen <ssuominen@gentoo.org>
+# Samuli Suominen <ssuominen@gentoo.org> (2010-07-12)
 # Note that adding LDFLAGS="-Wl,-O1 ${LDFLAGS}" breaks dev-util/boost-build
 # because of whitespace.
 LDFLAGS="-Wl,-O1 -Wl,--as-needed"

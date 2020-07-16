@@ -1,0 +1,24 @@
+From 205f9336485b161bedb0f4fc4292247040166111 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sat, 20 Apr 2019 23:18:17 +0200
+Subject: [PATCH] Add kcmaudiocd doc subdir only if KF5DocTools_FOUND
+
+---
+ kcmaudiocd/CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/kcmaudiocd/CMakeLists.txt b/kcmaudiocd/CMakeLists.txt
+index 2e0ce60..7b94b46 100644
+--- a/kcmaudiocd/CMakeLists.txt
++++ b/kcmaudiocd/CMakeLists.txt
+@@ -26,4 +26,6 @@ install(FILES audiocd.desktop  DESTINATION  ${SERVICES_INSTALL_DIR})
+ 
+ ########### add handbook ################
+ 
+-add_subdirectory(doc)
++if(KF5DocTools_FOUND)
++    add_subdirectory(doc)
++endif()
+-- 
+2.21.0
+

@@ -1,0 +1,15 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3371dae..a6edf0f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -380,10 +380,6 @@ if (ENABLE_MONGOC)
+ 
+ endif ()
+ 
+-install (FILES COPYING NEWS README.rst THIRD_PARTY_NOTICES
+-   DESTINATION ${CMAKE_INSTALL_DATADIR}/mongo-c-driver
+-)
+-
+ if (ENABLE_UNINSTALL)
+    if (WIN32)
+       if (ENABLE_MONGOC)

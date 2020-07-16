@@ -1,2 +1,0 @@
-# arguments for gitea
-command_args="--config /var/lib/gitea/conf/app.ini"

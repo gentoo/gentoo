@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -53,7 +53,6 @@ src_configure() {
 	fi
 
 	econf ${fficonf} \
-		--disable-dependency-tracking \
 		$(use_enable debug trace) \
 		--libdir="${EPREFIX}"/usr/$(get_libdir)/${PN} \
 		--includedir="${EPREFIX}"/usr/include/${PN} \
@@ -86,10 +85,10 @@ src_install() {
 	dosym /usr/bin/jamvm ${JDK_DIR}/bin/java
 	for files in ${CLASSPATH_DIR}/g*; do
 		if [ $files = "${CLASSPATH_DIR}/bin/gjdoc" ] ; then
-			dosym $files ${JDK_DIR}/bin/javadoc || die
+			dosym $files ${JDK_DIR}/bin/javadoc
 		else
 			dosym $files \
-				${JDK_DIR}/bin/$(echo $files|sed "s#$(dirname $files)/g##") || die
+				${JDK_DIR}/bin/$(echo $files|sed "s#$(dirname $files)/g##")
 		fi
 	done
 

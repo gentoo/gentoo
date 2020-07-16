@@ -4,8 +4,4 @@
 <maintainer type="person">
   <email>robbat2@gentoo.org</email>
 </maintainer>
-<maintainer type="project">
-  <email>graphics@gentoo.org</email>
-  <name>Gentoo Graphics Project</name>
-</maintainer>
 </pkgmetadata>

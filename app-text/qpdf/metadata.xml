@@ -9,6 +9,7 @@
 		<flag name="perl">Install fix-qdf tool (for reverting PDF edits) written in perl</flag>
 	</use>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:qpdf_project:qpdf</remote-id>
 		<remote-id type="sourceforge">qpdf</remote-id>
 	</upstream>
 </pkgmetadata>

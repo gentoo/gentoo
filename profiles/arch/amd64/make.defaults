@@ -10,7 +10,7 @@ CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"
 FCFLAGS="${CFLAGS}"
 
-# 2006/06/07 - Danny van Dyk <kugelfang@gentoo.org>
+# Danny van Dyk <kugelfang@gentoo.org> (2006-06-07)
 # Multilib settings for all amd64 subprofiles.
 MULTILIB_ABIS="amd64 x86"
 DEFAULT_ABI="amd64"
@@ -37,33 +37,33 @@ CFLAGS_x32="-mx32"
 LDFLAGS_x32="-m elf32_x86_64"
 CHOST_x32="x86_64-pc-linux-gnux32"
 
-# 2006/10/24 - Simon Stelling <blubb@gentoo.org>
+# Simon Stelling <blubb@gentoo.org> (2006-10-24)
 # They are masked, but we can enable them anyway for those who have 
 # >=portage-2.1.2_pre3-r4
 CPU_FLAGS_X86="mmx mmxext sse sse2"
 
-# Michał Górny <mgorny@gentoo.org> (03 Sep 2013)
+# Michał Górny <mgorny@gentoo.org> (2013-09-03)
 # Enable abi_x86_64 for packages that don't have it forced.
 ABI_X86="64"
 
-# 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
 # Defaults for video drivers
 VIDEO_CARDS="amdgpu fbdev intel nouveau radeon radeonsi vesa"
 
-# 2006/12/22 - Danny van Dyk <kugelfang@gentoo.org>
+# Danny van Dyk <kugelfang@gentoo.org> (2006-12-22)
 # Default for ALSA_CARDS USE_EXPAND variable.
 ALSA_CARDS="ali5451 als4000 atiixp atiixp-modem bt87x ca0106 cmipci emu10k1x ens1370 ens1371 es1938 es1968 fm801 hda-intel intel8x0 intel8x0m maestro3 trident usb-audio via82xx via82xx-modem ymfpci"
 
-# Michał Górny <mgorny@gentoo.org> (26 Jan 2013)
+# Michał Górny <mgorny@gentoo.org> (2013-01-26)
 # Unhide the x86-specific USE_EXPANDs.
 USE_EXPAND_HIDDEN="-ABI_X86 -CPU_FLAGS_X86"
 
-# Michał Górny <mgorny@gentoo.org> (25 Jun 2014)
+# Michał Górny <mgorny@gentoo.org> (2014-06-25)
 # Make the native ABI implicit so that MULTILIB_USEDEP can be satisfied
 # by non-multilib ebuilds when non-native ABIs are disabled.
 IUSE_IMPLICIT="abi_x86_64"
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2 Jun 2017)
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-06-02)
 # Enable USE=libtirpc by default, to ease dependency resolution during
 # the stabilization of glibc-2.26. Bug 657148
 USE="libtirpc"

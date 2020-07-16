@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name='client'>Enable iwctl client tool</flag>
+		<flag name='crda'>Use net-wireless/crda for regulatory domain loading instead of in-kernel (4.15+) support</flag>
 		<flag name='monitor'>Enable iwmon monitor tool</flag>
 		<flag name='ofono'>Enable support for oFono SIM authentication</flag>
 		<flag name='wired'>Enable ethernet authentication daemon</flag>

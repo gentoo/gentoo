@@ -1,0 +1,43 @@
+--- a/CMakeLists.txt	2019-07-09 14:47:12.552425226 +0200
++++ b/CMakeLists.txt	2019-07-09 14:50:02.595001358 +0200
+@@ -143,7 +143,7 @@
+ 
+ # Note: Module CodeCoverage requires the name of the debug build to conform
+ #       to cmake standards (first letter uppercase).
+-set(BUILD_TYPES Production Debug Testing Competition)
++set(BUILD_TYPES Production Debug Testing Competition Gentoo)
+ 
+ if(ENABLE_ASAN)
+ #_cmake_modify_IGNORE   set(CMAKE_BUILD_TYPE Debug)
+@@ -166,12 +166,10 @@
+ endif()
+ 
+ message(STATUS "Building ${CMAKE_BUILD_TYPE} build")
+-include(Config${CMAKE_BUILD_TYPE})
+ 
+ #-----------------------------------------------------------------------------#
+ # Compiler flags
+ 
+-add_check_c_cxx_flag("-O${OPTIMIZATION_LEVEL}")
+ add_check_c_cxx_flag("-Wall")
+ add_check_c_flag("-fexceptions")
+ add_check_c_cxx_flag("-Wno-deprecated")
+--- a/test/regress/CMakeLists.txt	2019-07-14 09:49:38.429990489 +0200
++++ b/test/regress/CMakeLists.txt	2019-07-14 09:50:28.854234838 +0200
+@@ -1810,7 +1810,7 @@
+   regress4/C880mul.miter.shuffled-as.sat03-348.smt
+   regress4/NEQ016_size5.smt
+   regress4/bug143.smt
+-  regress4/comb2.shuffled-as.sat03-420.smt
++  #regress4/comb2.shuffled-as.sat03-420.smt
+   regress4/hole10.cvc
+   regress4/instance_1151.smt
+ )
+--- a/src/CMakeLists.txt	2019-07-18 08:56:47.923025745 +0200
++++ b/src/CMakeLists.txt	2019-07-18 08:58:10.584750385 +0200
+@@ -915,4 +915,4 @@
+ # Note: This is a temporary fix until the new C++ API is in place.
+ install(CODE "execute_process(COMMAND
+                 ${CMAKE_CURRENT_LIST_DIR}/fix-install-headers.sh
+-                ${CMAKE_INSTALL_PREFIX})")
++                \$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX})")

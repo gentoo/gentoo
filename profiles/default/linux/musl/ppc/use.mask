@@ -1,8 +1,0 @@
-# Copyright 1999-2014 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License, v2
-
-# Unmask the flag which corresponds to ARCH.
--ppc
-
-# Unmask the flag corresponding to the only ABI.
--abi_ppc_32

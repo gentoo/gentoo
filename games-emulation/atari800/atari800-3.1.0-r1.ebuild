@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit desktop autotools
 
 DESCRIPTION="Atari 800 emulator"
-HOMEPAGE="http://atari800.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
-	mirror://sourceforge/${PN}/xf25.zip"
+HOMEPAGE="https://atari800.github.io/"
+SRC_URI="https://sourceforge.net/projects/${PN}/files/${PN}/${PV}/${P}.tar.gz
+	https://sourceforge.net/projects/${PN}/files/ROM/Original%20XL%20ROM/xf25.zip"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -79,7 +79,7 @@ src_compile() {
 	emake -C src
 }
 
-src_install () {
+src_install() {
 	dobin src/atari800
 	newman src/atari800.man atari800.6
 	dodoc README.1ST DOC/*

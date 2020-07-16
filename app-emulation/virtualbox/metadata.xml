@@ -6,6 +6,7 @@
     <name>Lars Wendler</name>
   </maintainer>
   <use>
+  <flag name="dtrace">Install dtrace Extension Pack</flag>
   <flag name="headless">Build without any graphic frontend</flag>
   <flag name="lvm">Build VBoxVolInfo that needs devicemapper from <pkg>sys-fs/lvm2</pkg>.</flag>
   <flag name="pax_kernel">Apply patch needed for pax enabled kernels.</flag>

@@ -1,0 +1,11 @@
+--- a/src/libcuecue/cuecue_internal.h
++++ b/src/libcuecue/cuecue_internal.h
+@@ -57,7 +57,7 @@
+ typedef int (*FUNC_DECODER)(char* file_source, char* file_destination, PROGRESS_CALLBACK callback);
+ 
+ #define CUECUE_ERROR_LENGTH 1024
+-char cuecue_error[CUECUE_ERROR_LENGTH];
++extern char cuecue_error[CUECUE_ERROR_LENGTH];
+ 
+ #endif /* __CUECUE_INTERNAL__ */
+ 

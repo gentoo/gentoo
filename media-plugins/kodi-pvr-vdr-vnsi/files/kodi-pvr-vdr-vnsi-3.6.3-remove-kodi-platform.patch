@@ -1,0 +1,52 @@
+https://github.com/kodi-pvr/pvr.vdr.vnsi/pull/123
+
+From 7a19dc72df0a299887d08b27973de599dfc39f9e Mon Sep 17 00:00:00 2001
+From: Olaf Hering <olaf@aepfle.de>
+Date: Thu, 2 May 2019 13:33:41 +0200
+Subject: [PATCH] [cmake] remove usage of kodi-platform
+
+The pvr.vdr.vnsi binary addon does not use kodi-platform.
+Remove existing references from CMakeLists.txt and debian/control.
+Add dependency to libp8-platform-dev because libkodiplatform-dev
+pulled that dependency in as a side effect. Fix that bug too by
+adding an explicit dependency.
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
+ CMakeLists.txt | 2 --
+ debian/control | 2 +-
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bb35dc1..356d4f7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,7 +4,6 @@ project(pvr.vdr.vnsi)
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR})
+ 
+ find_package(Kodi REQUIRED)
+-find_package(kodiplatform REQUIRED)
+ find_package(p8-platform REQUIRED)
+ 
+ add_definitions(-DUSE_DEMUX)
+@@ -78,7 +77,6 @@ endif()
+ message(STATUS "Configured render system: ${APP_RENDER_SYSTEM}")
+ 
+ include_directories(${INCLUDES}
+-                    ${kodiplatform_INCLUDE_DIRS}
+                     ${p8-platform_INCLUDE_DIRS}
+                     ${KODI_INCLUDE_DIR}/..) # Hack way with "/..", need bigger Kodi cmake rework to match right include ways
+ 
+diff --git a/debian/control b/debian/control
+index 45fa8d8..1f0ae38 100644
+--- a/debian/control
++++ b/debian/control
+@@ -2,7 +2,7 @@ Source: kodi-pvr-vdr-vnsi
+ Priority: extra
+ Maintainer: fernetmenta <fernetmenta@kodi.tv>
+ Build-Depends: debhelper (>= 9.0.0), cmake, libtinyxml-dev,
+-               libkodiplatform-dev (>= 17.1.0), kodi-addon-dev,
++               libp8-platform-dev, kodi-addon-dev,
+                libgles2-mesa-dev [arm], libgl1-mesa-dev [i386 amd64], pkg-config
+ Standards-Version: 3.9.4
+ Section: libs

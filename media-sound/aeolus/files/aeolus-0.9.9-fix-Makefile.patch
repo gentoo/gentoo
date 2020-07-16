@@ -1,0 +1,22 @@
+diff --git a/source/Makefile b/source/Makefile
+index 756c603..4275ca2 100644
+--- a/source/Makefile
++++ b/source/Makefile
+@@ -25,7 +25,7 @@ LIBDIR ?= $(PREFIX)/lib$(SUFFIX)
+ 
+ VERSION = 0.9.9
+ CPPFLAGS += -MMD -MP -DVERSION=\"$(VERSION)\" -DLIBDIR=\"$(LIBDIR)\"
+-CXXFLAGS += -O2 -Wall
++CXXFLAGS += -Wall
+ CXXFLAGS += -march=native
+ 
+ 
+@@ -75,7 +75,7 @@ install:	aeolus aeolus_x11.so aeolus_txt.so
+ 	install -m 755 aeolus $(DESTDIR)$(BINDIR)
+ 	install -m 755 aeolus_x11.so $(DESTDIR)$(LIBDIR)
+ 	install -m 755 aeolus_txt.so $(DESTDIR)$(LIBDIR)
+-	ldconfig $(PREFIX)/$(LIBDIR)
++	true $(PREFIX)/$(LIBDIR)
+ 
+ 
+ clean:

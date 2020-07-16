@@ -10,7 +10,7 @@ SRC_URI="https://www.aelius.com/${PN}/${P}.tar.gz"
 
 LICENSE="Primate-Plunge"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="mirror bindist" #465850
 

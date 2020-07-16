@@ -1,21 +1,20 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+EAPI="7"
+USE_RUBY="ruby24 ruby25 ruby26"
 RUBY_OPTIONAL="yes"
 
 inherit autotools java-pkg-opt-2 perl-functions ruby-ng
 
-IUSE="bzip2 debug java lzo mecab perl ruby +zlib"
-
 DESCRIPTION="a full-text search system for communities"
-HOMEPAGE="http://fallabs.com/hyperestraier/"
-SRC_URI="http://fallabs.com/hyperestraier/${P}.tar.gz"
+HOMEPAGE="https://fallabs.com/hyperestraier/"
+SRC_URI="https://fallabs.com/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ppc ppc64 sparc x86"
 SLOT="0"
+IUSE="bzip2 debug java lzo mecab perl ruby static-libs +zlib"
 
 RDEPEND="dev-db/qdbm
 	bzip2? ( app-arch/bzip2 )
@@ -25,8 +24,8 @@ RDEPEND="dev-db/qdbm
 	perl? ( dev-lang/perl )
 	ruby? ( $(ruby_implementations_depend) )
 	zlib? ( sys-libs/zlib )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig
 	java? ( >=virtual/jdk-1.4:* )"
 S="${WORKDIR}/all/${P}"
 
@@ -186,6 +185,7 @@ src_install() {
 	emake DESTDIR="${D}" MYDOCS= install
 	einstalldocs
 	he_foreach_api
+	use static-libs || find "${ED}" -name '*.a' -delete || die
 
 	if use perl; then
 		perl_delete_module_manpages

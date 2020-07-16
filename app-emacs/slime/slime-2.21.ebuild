@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/slime/slime/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 xref? ( xref.lisp )"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE="doc xref"
 RESTRICT=test # tests fail to contact sbcl
 
@@ -32,11 +32,11 @@ src_prepare() {
 }
 
 src_compile() {
-	elisp-compile *.el || die
+	elisp-compile *.el
 	BYTECOMPFLAGS="${BYTECOMPFLAGS} -L contrib -l slime" \
-		elisp-compile contrib/*.el lib/*.el || die
+		elisp-compile contrib/*.el lib/*.el
 
-	emake -C doc slime.info || die
+	emake -C doc slime.info
 	if use doc ; then
 		VARTEXFONTS="${T}"/fonts \
 			emake -C doc all
@@ -45,19 +45,18 @@ src_compile() {
 
 src_install() {
 	# Install core
-	elisp-install ${PN} *.{el,elc,lisp} || die "Cannot install SLIME core"
+	elisp-install ${PN} *.{el,elc,lisp}
 
 	# Install contribs
-	elisp-install ${PN}/contrib/ contrib/*.{el,elc,lisp,scm,goo} \
-		|| die "Cannot install contribs"
+	elisp-install ${PN}/contrib/ contrib/*.{el,elc,lisp,scm,goo}
 
 	# Install lib
-	elisp-install ${PN}/lib/ lib/*.{el,elc} || die "Cannot install libs"
+	elisp-install ${PN}/lib/ lib/*.{el,elc}
 
 	# Install swank
-	elisp-install ${PN}/swank/ swank/*.lisp || die "Cannot install swank"
+	elisp-install ${PN}/swank/ swank/*.lisp
 
-	elisp-site-file-install "${FILESDIR}"/${SITEFILE} || die "Cannon install site file"
+	elisp-site-file-install "${FILESDIR}"/${SITEFILE}
 	# Install docs
 	dodoc README.md CONTRIBUTING.md NEWS PROBLEMS
 	newdoc contrib/README.md README-contrib.md

@@ -7,7 +7,7 @@ USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 inherit ruby-ng-gnome2
 
 DESCRIPTION="Ruby poppler-glib bindings"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE=""
 
 RDEPEND+=" app-text/poppler[cairo]"

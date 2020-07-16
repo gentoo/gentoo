@@ -1,0 +1,20 @@
+Hide
+
+> grep: /etc/rpm: No such file or directory
+> grep: /usr/lib/rpm: No such file or directory
+
+errors.
+
+Bug: https://bugs.gentoo.org/656446
+
+--- keyutils-1.6.1/Makefile
++++ keyutils-1.6.1/Makefile
+@@ -267,7 +267,7 @@
+ ZSRCBALL := rpmbuild/SOURCES/$(ZTARBALL)
+ 
+ BUILDID	:= .local
+-dist	:= $(word 2,$(shell grep -r "^%dist" /etc/rpm /usr/lib/rpm))
++dist	:= $(word 2,$(shell grep -r "^%dist" /etc/rpm /usr/lib/rpm 2>/dev/null))
+ release3:= $(word 2,$(shell grep ^Release: $(SPECFILE)))
+ release2:= $(subst %{?dist},$(dist),$(release3))
+ release1:= $(subst %{?buildid},$(BUILDID),$(release2))

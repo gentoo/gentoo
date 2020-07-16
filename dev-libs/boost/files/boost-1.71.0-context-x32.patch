@@ -1,0 +1,38 @@
+--- a/libs/context/src/asm/jump_i386_sysv_elf_gas.S
++++ b/libs/context/src/asm/jump_i386_sysv_elf_gas.S
+@@ -24,6 +24,10 @@
+  *                                                                                      *
+  ****************************************************************************************/
+ 
++#ifdef __x86_64__
++#include "jump_x86_64_sysv_elf_gas.S"
++#else
++
+ .file "jump_i386_sysv_elf_gas.S"
+ .text
+ .globl jump_fcontext
+@@ -81,3 +85,5 @@
+ 
+ /* Mark that we don't need executable stack.  */
+ .section .note.GNU-stack,"",%progbits
++
++#endif
+--- a/libs/context/src/asm/make_i386_sysv_elf_gas.S
++++ b/libs/context/src/asm/make_i386_sysv_elf_gas.S
+@@ -24,6 +24,10 @@
+  *                                                                                      *
+  ****************************************************************************************/
+ 
++#ifdef __x86_64__
++#include "make_x86_64_sysv_elf_gas.S"
++#else
++
+ .file "make_i386_sysv_elf_gas.S"
+ .text
+ .globl make_fcontext
+@@ -105,3 +109,5 @@
+ 
+ /* Mark that we don't need executable stack.  */
+ .section .note.GNU-stack,"",%progbits
++
++#endif

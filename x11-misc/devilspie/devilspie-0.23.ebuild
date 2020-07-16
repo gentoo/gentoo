@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ SRC_URI="http://www.burtonini.com/computing/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ppc sparc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="

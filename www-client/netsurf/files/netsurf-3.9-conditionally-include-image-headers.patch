@@ -1,0 +1,35 @@
+diff -rup a/content/handlers/image/image.c b/content/handlers/image/image.c
+--- a/content/handlers/image/image.c	2019-07-17 10:28:13.000000000 +0000
++++ b/content/handlers/image/image.c	2019-09-27 15:09:03.860000000 +0000
+@@ -27,15 +27,31 @@
+ #include "netsurf/content.h"
+ #include "desktop/gui_internal.h"
+
++#ifdef WITH_BMP
+ #include "image/bmp.h"
++#endif
++#ifdef WITH_GIF
+ #include "image/gif.h"
++#endif
+ #include "image/ico.h"
++#ifdef WITH_JPEG
+ #include "image/jpeg.h"
++#endif
++#ifdef WITH_NSSPRITE
+ #include "image/nssprite.h"
++#endif
++#ifdef WITH_PNG
+ #include "image/png.h"
++#endif
++#ifdef WITH_RSVG
+ #include "image/rsvg.h"
++#endif
++#ifdef WITH_NS_SVG
+ #include "image/svg.h"
++#endif
++#ifdef WITH_WEBP
+ #include "image/webp.h"
++#endif
+ #include "image/image.h"
+
+ /**

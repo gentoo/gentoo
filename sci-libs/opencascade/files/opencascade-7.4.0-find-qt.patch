@@ -1,0 +1,85 @@
+From 7304c888e57a581e9dc8ef2005e960ec579d58f4 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Sat, 9 Nov 2019 17:15:27 +0100
+Subject: [PATCH] Gentoo-specific: disable internal 3RDPARTY_QT_DIR
+
+The patch disables searching for internal 3rd-party Qt. Instead
+system installed Qt is used. The call to find_package uses REQUIRED
+flag for this.
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ adm/cmake/qt.cmake       | 24 ++++++++++++------------
+ adm/cmake/qt_macro.cmake |  6 +++---
+ 2 files changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/adm/cmake/qt.cmake b/adm/cmake/qt.cmake
+index 6958bab5..b6a9b794 100644
+--- a/adm/cmake/qt.cmake
++++ b/adm/cmake/qt.cmake
+@@ -3,27 +3,27 @@
+ # Qt is searched manually first (just determine root)
+ message (STATUS "Processing Qt 3-rd party")
+ 
+-if (NOT DEFINED ${3RDPARTY_QT_DIR} AND ${3RDPARTY_QT_DIR} STREQUAL "")
+-  FIND_PRODUCT_DIR ("${3RDPARTY_DIR}" Qt 3RDPARTY_QT_DIR_NAME)
++#if (NOT DEFINED ${3RDPARTY_QT_DIR} AND ${3RDPARTY_QT_DIR} STREQUAL "")
++#  FIND_PRODUCT_DIR ("${3RDPARTY_DIR}" Qt 3RDPARTY_QT_DIR_NAME)
+ 
+-  if (NOT DEFINED ${3RDPARTY_QT_DIR_NAME} AND ${3RDPARTY_QT_DIR_NAME} STREQUAL "")
+-    message (FATAL_ERROR "... Qt root directory was not found")
+-  endif()
++#  if (NOT DEFINED ${3RDPARTY_QT_DIR_NAME} AND ${3RDPARTY_QT_DIR_NAME} STREQUAL "")
++#    message (FATAL_ERROR "... Qt root directory was not found")
++#  endif()
+ 
+   # Combine directory name with absolute path and show in GUI
+-  set (3RDPARTY_QT_DIR "${3RDPARTY_DIR}/${3RDPARTY_QT_DIR_NAME}" CACHE PATH "The directory containing Qt" FORCE)
+-  message (STATUS "Info: Qt is used from folder: ${3RDPARTY_QT_DIR}")
+-endif()
++#  set (3RDPARTY_QT_DIR "${3RDPARTY_DIR}/${3RDPARTY_QT_DIR_NAME}" CACHE PATH "The directory containing Qt" FORCE)
++#  message (STATUS "Info: Qt is used from folder: ${3RDPARTY_QT_DIR}")
++#endif()
+ 
+-set (USED_3RDPARTY_QT_DIR "${3RDPARTY_QT_DIR}")
++#set (USED_3RDPARTY_QT_DIR "${3RDPARTY_QT_DIR}")
+ 
+ # Now set CMAKE_PREFIX_PATH to point to local Qt installation.
+ # Without this setting find_package() will not work
+-set(CMAKE_PREFIX_PATH ${3RDPARTY_QT_DIR})
++#set(CMAKE_PREFIX_PATH ${3RDPARTY_QT_DIR})
+ 
+ # Now we can apply standard CMake finder for Qt5. We do this mostly
+ # to have qt5_wrap_cpp() function available and Qt5_FOUND variable filled
+-find_package(Qt5 QUIET COMPONENTS Widgets Quick Xml PATHS ${3RDPARTY_QT_DIR} NO_DEFAULT_PATH)
++find_package(Qt5 COMPONENTS Widgets Quick Xml REQUIRED)
+ if (NOT ${Qt5_FOUND})
+   # Now we can apply standard CMake finder for Qt. We do this mostly
+   # to have qt4_wrap_cpp() function available
+@@ -31,4 +31,4 @@ if (NOT ${Qt5_FOUND})
+   #message (STATUS "Qt4 cmake configuration")
+ else()
+   #message (STATUS "Qt5 cmake configuration")
+-endif()
+\ No newline at end of file
++endif()
+diff --git a/adm/cmake/qt_macro.cmake b/adm/cmake/qt_macro.cmake
+index ec897384..8bd314a4 100644
+--- a/adm/cmake/qt_macro.cmake
++++ b/adm/cmake/qt_macro.cmake
+@@ -2,9 +2,9 @@
+ 
+ macro (FIND_QT_PACKAGE PROJECT_LIBRARIES_DEBUG PROJECT_LIBRARIES_RELEASE PROJECT_INCLUDES)
+ 
+-  if ("${3RDPARTY_QT_DIR}" STREQUAL "")
+-    message (FATAL_ERROR "Empty Qt dir")
+-  endif()
++#  if ("${3RDPARTY_QT_DIR}" STREQUAL "")
++#    message (FATAL_ERROR "Empty Qt dir")
++#  endif()
+ 
+   if (${Qt5_FOUND})
+     #message (STATUS "Qt5 cmake configuration")
+-- 
+2.23.0
+

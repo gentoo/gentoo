@@ -1,9 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-SDCC_DEPEND=">=dev-embedded/sdcc-2.9.0[device-lib(+),mcs51(+)]"
+SDCC_DEPEND=">=dev-embedded/sdcc-3.4.0[device-lib(+),mcs51(+),sdcpp(+)]
+	<dev-embedded/sdcc-3.8.6"
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"

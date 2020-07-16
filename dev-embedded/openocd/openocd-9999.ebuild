@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit eutils multilib flag-o-matic toolchain-funcs udev user
+inherit eutils multilib flag-o-matic toolchain-funcs udev
 
 # One ebuild to rule them all
 if [[ ${PV} == *9999 ]] ; then
@@ -25,9 +25,11 @@ SLOT="0"
 IUSE="+cmsis-dap dummy +ftdi +jlink parport +usb verbose-io"
 RESTRICT="strip" # includes non-native binaries
 
-RDEPEND=">=dev-lang/jimtcl-0.76:0=
+RDEPEND="
+	acct-group/plugdev
+	>=dev-lang/jimtcl-0.76:0=
 	cmsis-dap? ( dev-libs/hidapi )
-	jlink? ( dev-embedded/libjaylink )
+	jlink? ( >=dev-embedded/libjaylink-0.2 )
 	usb? (
 		virtual/libusb:0
 		virtual/libusb:1
@@ -37,10 +39,6 @@ RDEPEND=">=dev-lang/jimtcl-0.76:0=
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 [[ ${PV} == "9999" ]] && DEPEND+=" >=sys-apps/texinfo-5" #549946
-
-pkg_setup() {
-	enewgroup plugdev
-}
 
 src_prepare() {
 	default
@@ -136,7 +134,7 @@ src_configure() {
 
 src_install() {
 	default
-	dostrip "${ED}"/usr/bin
+	dostrip /usr/bin
 	udev_dorules "${D}"/usr/share/${PN}/contrib/*.rules
 }
 

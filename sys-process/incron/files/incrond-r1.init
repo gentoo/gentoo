@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+INCROND_BINARY=${INCROND_BINARY:-"/usr/sbin/incrond"}
+INCROND_CONFFILE=${INCROND_CONFFILE:-"/etc/incron.conf"}
+INCROND_PIDFILE=${INCROND_PIDFILE:-"/var/run/incrond.pid"}
+INCROND_SSDARGS=${INCROND_SSDARGS:-"--wait 1000"}
+INCROND_TERMTIMEOUT=${INCROND_TERMTIMEOUT:-"TERM/25/KILL/5"}
+INCROND_OPTS=${INCROND_OPTS:-""}
+
+command=${INCROND_BINARY}
+command_args="${INCROND_OPTS} -f \"${INCROND_CONFFILE}\""
+start_stop_daemon_args="${INCROND_SSDARGS}"
+pidfile="${INCROND_PIDFILE}"
+retry="${INCROND_TERMTIMEOUT}"
+
+required_files="${INCROND_CONFFILE}"
+
+name="incron daemon"
+description="inotify cron daemon monitors filesystem events and executes commands defined in system and user tables"
+
+depend() {
+	use clock logger
+	need localmount
+}

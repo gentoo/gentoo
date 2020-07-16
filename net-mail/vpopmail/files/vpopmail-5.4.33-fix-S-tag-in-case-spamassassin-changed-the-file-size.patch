@@ -1,0 +1,96 @@
+From fd0a1034e3842ceb573851e62547b26a2b389263 Mon Sep 17 00:00:00 2001
+From: Rolf Eike Beer <eike@sf-mail.de>
+Date: Thu, 21 Aug 2014 18:48:52 +0200
+Subject: [PATCH 5/5] fix ,S= tag in case spamassassin changed the file size
+
+---
+ vdelivermail.c | 24 +++++++++++++++++++++---
+ 1 file changed, 21 insertions(+), 3 deletions(-)
+
+diff --git a/vpopmail-5.4.33/vdelivermail.c b/vpopmail-5.4.33/vdelivermail.c
+index 2ad2e12..3631c3c 100644
+--- a/vdelivermail.c
++++ b/vdelivermail.c
+@@ -351,6 +351,12 @@ static pid_t qmail_inject_open(char *address)
+     return(pid);
+ }
+ 
++/**
++ * @returns if delivery worked
++ * @retval 0 message was delivered as is
++ * @retval 1 the file has changed the size during delivery
++ * @retval -1 error
++ */
+ static int fdcopy (int write_fd, int read_fd, const char *extra_headers, size_t headerlen, char *address)
+ {
+   char msgbuf[4096];
+@@ -360,6 +366,7 @@ static int fdcopy (int write_fd, int read_fd, const char *extra_headers, size_t
+   long unsigned pid;
+   int  pim[2];
+ #endif
++  int has_changed_size = 0;
+ 
+     /* write the Return-Path: and Delivered-To: headers */
+     if (headerlen > 0) {
+@@ -399,6 +406,7 @@ static int fdcopy (int write_fd, int read_fd, const char *extra_headers, size_t
+           close(pim[1]);
+           dup2(pim[0], 0);
+           close(pim[0]);
++          has_changed_size = 1;
+         }
+     }
+ #endif
+@@ -431,7 +439,7 @@ static int fdcopy (int write_fd, int read_fd, const char *extra_headers, size_t
+         if ( write(write_fd, msgbuf, file_count) == -1 ) return -1;
+     }
+     
+-    return 0;
++    return has_changed_size;
+ }
+ 
+ void read_quota_from_maildir (const char *maildir, char *qbuf, size_t qlen)
+@@ -493,6 +501,7 @@ int deliver_to_maildir (
+   size_t headerlen;
+   int write_fd;
+   char quota[80];
++  int fdr;
+ 
+     headerlen = strlen (extra_headers);
+     msgsize += headerlen;
+@@ -518,7 +527,8 @@ int deliver_to_maildir (
+     }
+ 
+     local = 1;
+-    if (fdcopy(write_fd, read_fd, extra_headers, headerlen, maildir_to_email(maildir)) != 0) {
++    fdr = fdcopy(write_fd, read_fd, extra_headers, headerlen, maildir_to_email(maildir));
++    if (fdr < 0) {
+         /* Did the write fail because we were over quota? */
+         if ( errno == EDQUOT ) {
+             close(write_fd);
+@@ -530,6 +540,14 @@ int deliver_to_maildir (
+             unlink (local_file_tmp);
+             return -2;
+         }
++    } else if (fdr == 1) {
++       /* the file has changed it's size during delivery, e.g. because
++        * SpamAssassin has written it's report to it. */
++        struct stat st;
++
++        if (fstat(write_fd, &st) == 0 && st.st_size != msgsize)
++            snprintf(local_file_new, sizeof(local_file_new), "%snew/%lu.%lu.%.32s,S=%lu",
++                maildir, tm, pid, hostname, (long unsigned) st.st_size);
+     }
+ 
+     /* completed write to tmp directory, now move it into the new directory */
+@@ -777,7 +795,7 @@ void deliver_mail(char *address, char *quota)
+       }
+       
+       local = 0;
+-      if (fdcopy (fdm, 0, DeliveredTo, strlen(DeliveredTo), address) != 0) {
++      if (fdcopy (fdm, 0, DeliveredTo, strlen(DeliveredTo), address) < 0) {
+           printf ("write to qmail-inject failed: %d\n", errno);
+           close(fdm);
+           waitpid(inject_pid,&child,0);
+-- 
+1.8.4.5
+

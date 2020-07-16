@@ -31,7 +31,7 @@ start() {
 
 	ebegin "Starting dnsdist (${DNSDIST_INSTANCE})"
 	start-stop-daemon --start --exec $DNSDIST --pidfile ${PIDFILE} \
-		-b -- -u ${DNSDIST_USER} -g ${DNSDIST_GROUP} \
+		-b -- --supervised -u ${DNSDIST_USER} -g ${DNSDIST_GROUP} \
 		-C $DNSDIST_CONFFILE ${DNSDIST_OPTIONS}
 	eend $?
 }

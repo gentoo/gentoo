@@ -6,7 +6,6 @@
     <name>Alexis Ballier</name>
   </maintainer>
   <use>
-    <flag name="egl">Enables EGL support.</flag>
     <flag name="drm">Enables VA/DRM API support.</flag>
     <flag name="utils">Install VA-API utility programs.</flag>
   </use>

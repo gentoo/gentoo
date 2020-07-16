@@ -1,0 +1,2 @@
+# pass the --record option if sqlite is enabled and you wish store events in sqlite
+#RASDAEMON_ARGS=--record

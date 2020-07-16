@@ -1,9 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
+
 AUTOTOOLS_AUTO_DEPEND=no
-inherit autotools gnome2-utils
+inherit autotools xdg
 
 DESCRIPTION="The default OpenSolaris theme (GTK+ 2.x engine, icon- and metacity theme)"
 HOMEPAGE="http://dlc.sun.com/osol/jds/downloads/extras/nimbus/"
@@ -11,50 +12,49 @@ SRC_URI="http://dlc.sun.com/osol/jds/downloads/extras/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="gtk minimal"
 
-COMMON_DEPEND="gtk? ( x11-libs/gtk+:2 )"
-RDEPEND="${COMMON_DEPEND}
-	!minimal? ( || ( x11-themes/adwaita-icon-theme x11-themes/tango-icon-theme ) )"
-DEPEND="${COMMON_DEPEND}
+DEPEND="gtk? ( x11-libs/gtk+:2 )"
+RDEPEND="
+	${DEPEND}
+	!minimal? (
+		|| (
+			x11-themes/adwaita-icon-theme
+			x11-themes/tango-icon-theme
+		)
+	)"
+BDEPEND="
 	dev-util/intltool
 	virtual/pkgconfig
-	>=x11-misc/icon-naming-utils-0.8.90
-	!gtk? ( ${AUTOTOOLS_DEPEND} )
-	elibc_Interix? ( ${AUTOTOOLS_DEPEND} )"
+	x11-misc/icon-naming-utils
+	!gtk? ( ${AUTOTOOLS_DEPEND} )"
+
+PATCHES=( "${FILESDIR}"/${PN}-0.1.7-fix-themes.patch )
 
 src_prepare() {
-	# Tango is deprecated
-	sed -i -e '/^Inherits/s:Tango:gnome,&:' icons/index.theme.in || die
+	xdg_src_prepare
 
-	# Encoding= key is obsolete
-	sed -i -e '/^Encoding/d' *.theme.in || die
+	echo light-index.theme.in >> po/POTFILES.skip || die
+	echo dark-index.theme.in >> po/POTFILES.skip || die
 
-	use gtk || { sed -i \
-		-e '/^gtk-engine/d' -e '/GTK2/d' -e '/^SUBDIRS/s:gtk-engine ::' \
-		configure.in Makefile.am || die; }
-
-	local f=po/POTFILES.skip
-	echo light-index.theme.in >> ${f}
-	echo dark-index.theme.in >> ${f}
-
-	if [[ ${CHOST} == *-interix* ]] || ! use gtk; then
+	if ! use gtk; then
+		sed -e '/GTK2/d' \
+			-e '/^gtk-engine/d' \
+			-e '/^SUBDIRS/s:gtk-engine ::' \
+			-i configure.in Makefile.am || die
+		mv configure.{in,ac} || die
 		eautoreconf
 	fi
 }
 
 src_configure() {
-	econf $(use gtk && echo --disable-static)
+	econf --disable-static
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc AUTHORS ChangeLog
+	default
 
-	use gtk && find "${ED}"/usr -name libnimbus.la -exec rm -f {} +
+	# no static archives
+	find "${D}" -name '*.la' -delete || die
 }
-
-pkg_preinst() { gnome2_icon_savelist; }
-pkg_postinst() { gnome2_icon_cache_update; }
-pkg_postrm() { gnome2_icon_cache_update; }

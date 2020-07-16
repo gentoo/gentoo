@@ -5,10 +5,6 @@
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>vmware@gentoo.org</email>
-		<name>Gentoo VMware Project</name>
-	</maintainer>
 	<longdescription>
 		The Open Virtual Machine Tools (open-vm-tools) are the open source
 		implementation of VMware Tools. They are a set of guest operating system
@@ -20,7 +16,6 @@
 		<flag name="dnet">Enable support for nicinfo</flag>
 		<flag name="doc">Generate API documentation</flag>
 		<flag name="fuse">Enable vmblock-fuse/vmhgfs-fuse</flag>
-		<flag name="grabbitmqproxy">Build grabbitmqproxy plugin</flag>
 		<flag name="gtkmm">Compile with Gtkmm and sigc++ (Recommended)</flag>
 		<flag name="multimon">Enable multimon (Requires X)</flag>
 		<flag name="resolutionkms">Build the linux/unix resolutionkms module</flag>

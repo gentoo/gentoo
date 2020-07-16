@@ -1,16 +1,16 @@
 [Unit]
-Description=OpenVAS Scanner
+Description=Open Vulnerability Assessment Scanner
 After=network.target
-Before=openvasmd.service
+After=redis.service
+Before=gvmd.service
+Requires=redis.service
 
 [Service]
-EnvironmentFile=-/etc/openvas/openvassd-daemon.conf
-ExecStart=/usr/sbin/openvassd -f ${SCANNER_PORT} ${SCANNER_LISTEN} ${SCANNER_SRCIP} ${SCANNER_EXTRA_ARGS}
-Restart=always
-RestartSec=1
-User=root
-Group=root
-TimeoutSec=1200
+Type=forking
+EnvironmentFile=-/etc/openvas/sysconfig/openvassd-daemon.conf
+ExecStart=/usr/bin/openvassd $OPENVAS_SCANNER_OPTIONS $OPENVAS_SCANNER_LISTEN_SOCKET $OPENVAS_SCANNER_LISTEN_OWNER $OPENVAS_SCANNER_LISTEN_GROUP $OPENVAS_SCANNER_LISTEN_MODE
+Restart=on-failure
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target

@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit autotools toolchain-funcs
 
 MY_P=${P/graphicsm/GraphicsM}
@@ -16,11 +16,11 @@ if [[ ${PV} == "9999" ]] ; then
 	EHG_REPO_URI="http://hg.code.sf.net/p/${PN}/code"
 else
 	SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 
-IUSE="bzip2 cxx debug fpx imagemagick jbig jpeg jpeg2k lcms lzma modules openmp
-	perl png postscript q16 q32 static-libs svg test threads tiff truetype
+IUSE="bzip2 +cxx debug fpx imagemagick jbig jpeg lcms lzma modules openmp
+	perl png postscript q16 q32 static-libs svg threads tiff truetype
 	webp wmf X zlib"
 
 RDEPEND="dev-libs/libltdl:0
@@ -29,11 +29,10 @@ RDEPEND="dev-libs/libltdl:0
 	imagemagick? ( !media-gfx/imagemagick )
 	jbig? ( media-libs/jbigkit )
 	jpeg? ( virtual/jpeg:0 )
-	jpeg2k? ( media-libs/jasper:= )
 	lcms? ( media-libs/lcms:2 )
 	lzma? ( app-arch/xz-utils )
-	perl? ( dev-lang/perl )
-	png? ( media-libs/libpng:0 )
+	perl? ( dev-lang/perl:= )
+	png? ( media-libs/libpng:0= )
 	postscript? ( app-text/ghostscript-gpl )
 	svg? ( dev-libs/libxml2 )
 	tiff? ( media-libs/tiff:0 )
@@ -48,9 +47,7 @@ RDEPEND="dev-libs/libltdl:0
 		x11-libs/libXext
 		)
 	zlib? ( sys-libs/zlib )"
-# corefonts are required because needed arial font (bug #588398).
-DEPEND="${RDEPEND}
-	test? ( media-fonts/corefonts )"
+DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}
 
@@ -92,11 +89,10 @@ src_configure() {
 		$(use_with bzip2 bzlib)
 		$(use_with postscript dps)
 		$(use_with fpx)
-		--without-gslib
 		$(use_with jbig)
 		$(use_with webp)
 		$(use_with jpeg)
-		$(use_with jpeg2k jp2)
+		--without-jp2
 		$(use_with lcms lcms2)
 		$(use_with lzma)
 		$(use_with png)

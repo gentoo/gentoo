@@ -1,0 +1,21 @@
+--- a/Makefile
++++ b/Makefile
+@@ -2,16 +2,12 @@
+ # $Id: Makefile,v 1.4 2007/04/04 00:00:00 root Exp $
+ #
+ 
+-CFLAGS	= -Wall -O3 -fomit-frame-pointer -funroll-loops \
+-		  -fforce-addr -falign-functions=4 -msse
++CFLAGS	+= -Wall
+ TTAENC	= ttaenc
+ INSDIR	= /usr/bin
+ 
+ ttaenc: $(patsubst %.c, %.o, $(wildcard *.c))
+-	gcc $^ -o $@ $(CFLAGS)
+-
+-%.o:	%.c
+-	gcc -c $(CFLAGS) $<
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
+ 
+ install:
+ 	[ -d "$(INSDIR)" ] || mkdir $(INSDIR)

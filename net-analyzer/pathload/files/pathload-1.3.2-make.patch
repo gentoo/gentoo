@@ -9,11 +9,11 @@
  
  pathload_snd: $(SOBJS)
 -	 $(CC) $(SOBJS) -o pathload_snd $(LIBS) $(LDFLAGS) $(CFLAGS)
-+	 $(CC) $(LDFLAGS) $(CFLAGS) $(SOBJS) -o pathload_snd $(LIBS)
++	 $(CC) $(CFLAGS) $(LDFLAGS) $(SOBJS) -o pathload_snd $(LIBS)
  
  pathload_rcv: $(ROBJS)
 -	 $(CC) $(ROBJS) -o pathload_rcv $(LIBS) $(LDFLAGS) $(CFLAGS)
-+	 $(CC) $(LDFLAGS) $(CFLAGS) $(ROBJS) -o pathload_rcv $(LIBS)
++	 $(CC) $(CFLAGS) $(LDFLAGS) $(ROBJS) -o pathload_rcv $(LIBS)
  
  pathload_rcv.o pathload_rcv_func.o: pathload_gbls.h pathload_rcv.h
  

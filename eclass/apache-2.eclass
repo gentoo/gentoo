@@ -418,6 +418,9 @@ apache-2_pkg_setup() {
 	if use userland_BSD; then
 		elog "On BSD systems you need to add the following line to /boot/loader.conf:"
 		elog "  accf_http_load=\"YES\""
+		if use ssl ; then
+			elog "  accf_data_load=\"YES\""
+		fi
 		elog
 	fi
 }

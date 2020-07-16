@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>mrueg@gentoo.org</email>
-		<name>Manuel Rüger</name>
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">prometheus/prometheus</remote-id>

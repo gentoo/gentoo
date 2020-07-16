@@ -3,8 +3,11 @@
 <pkgmetadata>
 <maintainer type="project">
 <email>netmon@gentoo.org</email>
-<name>Gentoo network monitoring and analysis project</name>
 </maintainer>
-<longdescription>Advanced parallized login hacker</longdescription>
-<use><flag name="ncp">NCP protocol (NetWare) support through <pkg>net-fs/ncpfs</pkg></flag></use>
+<use>
+<flag name="gcrypt">Enable radmin2 support through <pkg>dev-libs/libgcrypt</pkg></flag>
+<flag name="libssh">Enable SSH support through <pkg>net-libs/libssh</pkg></flag>
+<flag name="mongodb">MongoDB support through <pkg>dev-libs/mongo-c-driver</pkg></flag>
+<flag name="ncp">NCP protocol (NetWare) support through <pkg>net-fs/ncpfs</pkg></flag>
+</use>
 </pkgmetadata>

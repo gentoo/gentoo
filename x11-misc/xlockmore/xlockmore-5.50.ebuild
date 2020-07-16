@@ -1,16 +1,19 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools eutils flag-o-matic pam
 
 DESCRIPTION="Just another screensaver application for X"
-HOMEPAGE="http://www.sillycycle.com/xlockmore.html"
-SRC_URI="http://www.sillycycle.com/xlock/${P}.tar.xz"
+HOMEPAGE="https://www.sillycycle.com/xlockmore.html"
+SRC_URI="
+	https://www.sillycycle.com/xlock/${P}.tar.xz
+	https://www.sillycycle.com/xlock/recent-releases/${P}.tar.xz
+"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm hppa ppc ppc64 sparc x86"
 IUSE="crypt debug gtk imagemagick motif nas opengl pam truetype xinerama xlockrc vtlock"
 
 REQUIRED_USE="
@@ -28,7 +31,7 @@ RDEPEND="
 		virtual/glu
 		truetype? ( >=media-libs/ftgl-2.1.3_rc5 )
 	)
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	truetype? ( media-libs/freetype:2 )
 	x11-libs/libX11
 	x11-libs/libXext

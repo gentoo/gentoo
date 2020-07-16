@@ -1,0 +1,7 @@
+diff --git a/clang_delta/CMakeLists.txt b/clang_delta/CMakeLists.txt
+index a94ec0d..764af02 100644
+--- a/clang_delta/CMakeLists.txt
++++ b/clang_delta/CMakeLists.txt
+@@ -263 +263 @@ add_executable(clang_delta
+-target_link_libraries(clang_delta ${CLANG_LIBS})
++target_link_libraries(clang_delta ${CLANG_LIBS} ${LLVM_LIBS})

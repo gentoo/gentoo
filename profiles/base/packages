@@ -46,6 +46,7 @@
 *sys-process/procps
 *sys-process/psmisc
 *sys-apps/sed
+*sys-apps/shadow
 *sys-apps/which
 *sys-devel/binutils
 *sys-devel/gcc
@@ -62,5 +63,4 @@
 *virtual/package-manager
 *virtual/pager
 *virtual/service-manager
-*virtual/shadow
 *virtual/ssh

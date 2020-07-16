@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>wraeth@gentoo.org</email>
-		<name>Sam Jorna (wraeth)</name>
+		<name>Sam Jorna</name>
 	</maintainer>
 	<upstream>
 		<bugs-to>https://github.com/wraeth/kcheck/issues</bugs-to>

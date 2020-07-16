@@ -1,0 +1,10 @@
+--- a/src/VBox/Frontends/VirtualBox/src/widgets/graphics/UIGraphicsScrollBar.cpp 2020-05-30 00:40:22.314155286 +0300
++++ b/src/VBox/Frontends/VirtualBox/src/widgets/graphics/UIGraphicsScrollBar.cpp 2020-05-30 00:41:56.544157111 +0300
+@@ -28,6 +28,7 @@
+ #include <QStyleOptionGraphicsItem>
+ #include <QTimer>
+ #include <QTimerEvent>
++#include <QPainterPath>
+ 
+ /* GUI includes: */
+ #include "UIGraphicsButton.h"

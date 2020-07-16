@@ -1,0 +1,33 @@
+From 3b4f3ffbc9fedff83a0618f3dd3c6aafced3e72a Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Wed, 31 Jul 2019 18:07:33 +0200
+Subject: [PATCH] configure.ac: respect user CFLAGS
+
+Do not override user CFLAGS. Do not unconditionally add -g to CFLAGS.
+
+Gentoo-bug: https://bugs.gentoo.org/691142
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ configure.ac | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 6bf6401..0f5ed2f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -72,9 +72,9 @@ if test "$enable_code_coverage" = yes; then
+ fi
+ 
+ case "$GCC,$ac_cv_prog_cc_g" in
+-	yes,yes) CFLAGS="-g $CC_O_LEVEL $FORTIFY_SOURCE" ;;
+-	yes,)    CFLAGS="$CC_O_LEVEL $FORTIFY_SOURCE" ;;
+-	   ,yes) CFLAGS="-g" ;;
++	yes,yes) CFLAGS="$CC_O_LEVEL $FORTIFY_SOURCE $CFLAGS" ;;
++	yes,)    CFLAGS="$CC_O_LEVEL $FORTIFY_SOURCE $CFLAGS" ;;
++	   ,yes) CFLAGS="$CFLAGS" ;;
+ esac
+ 
+ CC_CHECK_CFLAGS_APPEND([\
+-- 
+2.22.0
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -9,8 +9,8 @@ MY_PN=modsecurity
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Application firewall and intrusion detection for Apache"
-HOMEPAGE="http://www.modsecurity.org/"
-SRC_URI="http://www.modsecurity.org/tarball/${PV}/${MY_P}.tar.gz"
+HOMEPAGE="https://www.modsecurity.org/"
+SRC_URI="https://www.modsecurity.org/tarball/${PV}/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

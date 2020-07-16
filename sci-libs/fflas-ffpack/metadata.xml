@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+  <!--
+      mjo: François maintained this package in the sage-on-gentoo overlay
+      long before I moved it into ::gentoo. You don't need an ACK from me
+      to merge his changes.
+  -->
+  <maintainer type="person">
+    <email>frp.bissey@gmail.com</email>
+    <name>François Bissey</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+
+  <longdescription lang="en">
+    FFLAS-FFPACK is a library for basic linear algebra operations over
+    a finite field. It is inspired by the BLAS interface (Basic Linear
+    Algebra Subprograms) and the LAPACK library for numerical linear
+    algebra, and shares part of their design. Yet it differs in many
+    aspects due to the specifics of computing over a finite field: it
+    is generic with respect to the finite field, so as to accommodate
+    a large variety of field sizes and implementations; consequently,
+    all routines use C++ template generics and the library is
+    primarily meant to be used as a source code library, to be
+    included and compiled in the user's software.
+  </longdescription>
+
+  <upstream>
+    <remote-id type="github">linbox-team/fflas-ffpack</remote-id>
+  </upstream>
+</pkgmetadata>

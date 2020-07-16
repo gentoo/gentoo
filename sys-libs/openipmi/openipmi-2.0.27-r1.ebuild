@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit autotools python-single-r1
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~x86"
+KEYWORDS="amd64 hppa ~ia64 ppc x86"
 IUSE="crypt snmp perl python static-libs tcl"
 S="${WORKDIR}/${MY_P}"
 RESTRICT='test'
@@ -27,7 +27,7 @@ RDEPEND="
 	sys-libs/readline:0=
 	crypt? ( dev-libs/openssl:0= )
 	snmp? ( net-analyzer/net-snmp )
-	perl? ( dev-lang/perl )
+	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	tcl? ( dev-lang/tcl:0= )"
 DEPEND="${RDEPEND}

@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-<email>vdr@gentoo.org</email>
-<name>Gentoo VDR Project</name>
-</maintainer>
-<use>
-	<flag name="yaepg">Enables full support for the output format of
-		vdr-yaepg</flag>
-</use>
+	<maintainer type="person">
+		<email>martin.dummer@gmx.net</email>
+		<name>Martin Dummer</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>vdr@gentoo.org</email>
+		<name>Gentoo VDR Project</name>
+	</maintainer>
 </pkgmetadata>

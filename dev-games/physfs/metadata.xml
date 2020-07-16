@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-<email>games@gentoo.org</email>
-<name>Gentoo Games Project</name>
-</maintainer>
-<longdescription>
-PhysicsFS is a library to provide abstract access to various archives. It is 
-intended for use in video games, and the design was somewhat inspired by Quake 3's 
-file subsystem. The programmer defines a "write directory" on the physical 
-filesystem. No file writing done through the PhysicsFS API can leave that write 
-directory, for security. For example, an embedded scripting language cannot write 
-outside of this path if it uses PhysFS for all of its I/O, which means that 
-untrusted scripts can run more safely. Symbolic links can be disabled as well, for 
-added safety. For file reading, the programmer lists directories and archives that 
-form a "search path". Once the search path is defined, it becomes a single, 
-transparent hierarchical filesystem. This makes for easy access to ZIP files in the 
-same way as you access a file directly on the disk, and it makes it easy to ship a 
-new archive that will override a previous archive on a per-file basis. Finally, 
-PhysicsFS gives you platform-abstracted means to determine if CD-ROMs are available, 
-the user's home directory, where in the real filesystem your program is running, 
-etc.
-</longdescription>
-<use>
-<flag name="7zip">Enable 7zip/lzma archive support</flag>
-<flag name="grp">Enable Build Engine GRP archive support</flag>
-<flag name="hog">Enable Descent I/II HOG archive support</flag>
-<flag name="iso">Enable ISO9660 file support</flag>
-<flag name="mvl">Enable Descent I/II MVL archive support</flag>
-<flag name="slb">Enable Independence War SLB archive support</flag>
-<flag name="vdf">Enable Gothic/Gothic II VDF archive support</flag>
-<flag name="wad">Enable Doom WAD archive support</flag>
-<flag name="qpak">Enable Quake I/II QPAK archive support</flag>
-</use>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription>
+		PhysicsFS is a library to provide abstract access to various archives. It is
+		intended for use in video games, and the design was somewhat inspired by Quake 3's
+		file subsystem. The programmer defines a "write directory" on the physical
+		filesystem. No file writing done through the PhysicsFS API can leave that write
+		directory, for security. For example, an embedded scripting language cannot write
+		outside of this path if it uses PhysFS for all of its I/O, which means that
+		untrusted scripts can run more safely. Symbolic links can be disabled as well, for
+		added safety. For file reading, the programmer lists directories and archives that
+		form a "search path". Once the search path is defined, it becomes a single,
+		transparent hierarchical filesystem. This makes for easy access to ZIP files in the
+		same way as you access a file directly on the disk, and it makes it easy to ship a
+		new archive that will override a previous archive on a per-file basis. Finally,
+		PhysicsFS gives you platform-abstracted means to determine if CD-ROMs are available,
+		the user's home directory, where in the real filesystem your program is running,
+		etc.
+	</longdescription>
+	<use>
+		<flag name="7zip">Enable 7zip/lzma archive support</flag>
+		<flag name="grp">Enable Build Engine GRP archive support</flag>
+		<flag name="hog">Enable Descent I/II HOG archive support</flag>
+		<flag name="iso">Enable ISO9660 file support</flag>
+		<flag name="mvl">Enable Descent I/II MVL archive support</flag>
+		<flag name="slb">Enable Independence War SLB archive support</flag>
+		<flag name="vdf">Enable Gothic/Gothic II VDF archive support</flag>
+		<flag name="wad">Enable Doom WAD archive support</flag>
+		<flag name="qpak">Enable Quake I/II QPAK archive support</flag>
+	</use>
 </pkgmetadata>

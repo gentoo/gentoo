@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="http://offog.org/files/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="+ao audiofile flac jack libav mad modplug opus vorbis"
+IUSE="+ao audiofile flac jack mad modplug opus vorbis"
 
 RDEPEND="
 	x11-libs/gtk+:2
@@ -21,8 +21,7 @@ RDEPEND="
 	audiofile? ( media-libs/audiofile )
 	flac? ( media-libs/flac )
 	jack? ( media-sound/jack-audio-connection-kit )
-	libav? ( media-video/libav:= )
-	!libav? ( >=media-video/ffmpeg-2.8:0= )
+	>=media-video/ffmpeg-2.8:0=
 	mad? ( media-libs/libmad )
 	modplug? ( media-libs/libmodplug )
 	opus? ( media-libs/opusfile )

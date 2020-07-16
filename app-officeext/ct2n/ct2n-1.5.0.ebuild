@@ -13,4 +13,4 @@ SRC_URI="https://extensions.libreoffice.org/extensions/ct2n-convert-text-to-numb
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"

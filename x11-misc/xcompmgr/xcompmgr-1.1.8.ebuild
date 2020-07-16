@@ -10,7 +10,7 @@ inherit xorg-3
 DESCRIPTION="X Compositing manager"
 
 LICENSE="BSD"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="

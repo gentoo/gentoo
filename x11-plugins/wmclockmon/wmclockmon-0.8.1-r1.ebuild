@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,8 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 	x11-libs/libXt"
 
-PATCHES=( "${FILESDIR}"/${P}-gtk.patch )
+PATCHES=( "${FILESDIR}"/${P}-gtk.patch
+	"${FILESDIR}"/${P}-gcc-10.patch )
 
 DOCS=( AUTHORS BUGS ChangeLog NEWS README THANKS TODO \
 	doc/sample2.wmclockmonrc doc/sample1.wmclockmonrc )

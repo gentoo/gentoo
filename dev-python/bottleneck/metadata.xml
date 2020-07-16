@@ -5,10 +5,6 @@
     <email>sci-mathematics@gentoo.org</email>
     <name>Gentoo Mathematics Project</name>
   </maintainer>
-  <longdescription>
-  Bottleneck is a collection of fast NumPy array functions written in
-  Cython.
-</longdescription>
   <upstream>
     <remote-id type="pypi">Bottleneck</remote-id>
   </upstream>

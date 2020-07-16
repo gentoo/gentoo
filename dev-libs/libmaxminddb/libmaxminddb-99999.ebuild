@@ -6,7 +6,7 @@ inherit autotools git-r3
 
 DESCRIPTION="C library for the MaxMind DB file format"
 HOMEPAGE="https://github.com/maxmind/libmaxminddb"
-EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_REPO_URI="https://github.com/maxmind/libmaxminddb.git"
 
 LICENSE="Apache-2.0"
 SLOT="0/0.0.7"

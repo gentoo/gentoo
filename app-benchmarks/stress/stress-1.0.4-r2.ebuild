@@ -9,7 +9,7 @@ SRC_URI="https://people.seas.harvard.edu/~apw/${PN}/${P}.tar.gz -> ${P}-r1.tar.g
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 sparc ~x86"
+KEYWORDS="amd64 arm ~mips ppc ppc64 sparc x86"
 IUSE="static"
 
 src_configure() {

@@ -22,7 +22,6 @@ RDEPEND="
 	>=net-print/cups-1.1.17
 	~net-print/cndrvcups-common-lb-${PV}
 	>=x11-libs/gtk+-2.4:2
-	virtual/jpeg:62[abi_x86_32(-)]
 "
 DEPEND="${DEPEND}"
 

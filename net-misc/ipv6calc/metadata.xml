@@ -5,4 +5,7 @@
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">pbiering/ipv6calc</remote-id>
+	</upstream>
 </pkgmetadata>

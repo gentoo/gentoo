@@ -9,7 +9,7 @@ inherit ruby-ng-gnome2
 RUBY_S="ruby-gnome2-all-${PV}/cairo-gobject"
 
 DESCRIPTION="Ruby cairo-gobject bindings"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE=""
 
 DEPEND+=" x11-libs/cairo"

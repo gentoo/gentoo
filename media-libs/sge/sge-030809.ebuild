@@ -11,7 +11,7 @@ SRC_URI="http://www.etek.chalmers.se/~e8cal1/sge/files/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ~ia64 ppc x86"
 IUSE="doc examples image truetype"
 
 RDEPEND="media-libs/libsdl

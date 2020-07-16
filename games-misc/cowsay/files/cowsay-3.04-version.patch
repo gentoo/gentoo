@@ -1,0 +1,20 @@
+--- rank-amateur-cowsay-cowsay-3.04/cowsay.orig	2019-10-19 08:44:59.442928870 +0200
++++ rank-amateur-cowsay-cowsay-3.04/cowsay	2019-10-19 08:45:16.165928638 +0200
+@@ -1,7 +1,7 @@
+ #!/usr/bin/perl
+ 
+ ##
+-## Cowsay 3.03
++## Cowsay 3.04
+ ##
+ ## This file is part of cowsay.  (c) 1999-2000 Tony Monroe.
+ ##
+@@ -19,7 +19,7 @@
+     eval { $_ = Encode::decode_utf8($_,1) } for @ARGV;
+ }
+ 
+-$VERSION = "3.03";
++$VERSION = "3.04";
+ $progname = basename($0);
+ $eyes = "oo";
+ $tongue = "  ";

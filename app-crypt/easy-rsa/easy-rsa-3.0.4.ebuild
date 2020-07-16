@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,13 +11,12 @@ SRC_URI="https://github.com/OpenVPN/easy-rsa/releases/download/v${PV}/${MY_P}.tg
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ppc ~ppc64 ~s390 ~sh ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ppc ~ppc64 ~s390 ~sparc x86"
 IUSE="libressl"
 
 DEPEND="!libressl? ( >=dev-libs/openssl-0.9.6:0 )
 	libressl? ( dev-libs/libressl )"
-RDEPEND="${DEPEND}
-	!<net-vpn/openvpn-2.3"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 

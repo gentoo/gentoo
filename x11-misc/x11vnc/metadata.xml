@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>alexander@tsoy.me</email>
+		<name>Alexander Tsoy</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription>
 		The primary goal of this program is to create a portable and
 		simple command-line server utility that allows a VNC viewer
@@ -11,7 +18,6 @@
 		<flag name="xdamage">Enable support for the Xdamage library</flag>
 		<flag name="xfixes">Enable support for the Xfixes library</flag>
 		<flag name="xrandr">Enable support for the X xrandr extension</flag>
-		<flag name="xtrap">Enable support for the XTrap library</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">libvncserver</remote-id>

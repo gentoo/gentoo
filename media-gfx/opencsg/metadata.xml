@@ -2,8 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>mattm@gentoo.org</email>
-		<name>Matthew Marlowe</name>
+		<email>waebbl@gmail.com</email>
+		<name>Bernd Waibel</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<description>Gentoo Proxy Maintainer Team</description>
 	</maintainer>
 	<longdescription>
 		OpenCSG is a library that does image-based CSG rendering using

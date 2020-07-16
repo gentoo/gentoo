@@ -1,0 +1,111 @@
+From ef74da31208f1390bbc17d4c455c821f141ec78b Mon Sep 17 00:00:00 2001
+From: "Zachary P. Landau" <zlandau@jellofund.net>
+Date: Wed, 5 Feb 2020 23:17:50 -0800
+Subject: [PATCH 2/4] Fixes for -Wall warnings
+
+---
+ src/files.c   | 10 +++++-----
+ src/http.c    |  4 ----
+ src/methods.c |  4 ++--
+ 3 files changed, 7 insertions(+), 11 deletions(-)
+
+diff --git a/src/files.c b/src/files.c
+index 1068616..92d45ac 100644
+--- a/src/files.c
++++ b/src/files.c
+@@ -70,7 +70,7 @@ char **textlist(char *textfile) {
+ 
+ 	/* MEMWATCH: this isnt freed, why? */
+ 	wordlist[count] = malloc_w(sizeof(NULL));
+-	wordlist[count] = (char)NULL;
++	wordlist[count] = NULL;
+ 
+ 	fclose(fp);
+ 
+@@ -83,7 +83,7 @@ char **copy_list(char **list) {
+ 	char **n_list; /* new list */
+ 
+ 	/* find num of elements */
+-	while (list[i] != (char)NULL) 
++	while (list[i] != NULL)
+ 		i++;
+ 	/* plus one for NULL */
+ 	i++;
+@@ -91,12 +91,12 @@ char **copy_list(char **list) {
+ 	n_list = malloc_w(i*sizeof(char*));
+ 
+ 	i=0;
+-	while (list[i] != (char)NULL) {
++	while (list[i] != NULL) {
+ 		n_list[i] = (char*)strdup_w(list[i]);
+ 		i++;
+ 	}
+ 
+-	n_list[i] = (char)NULL;
++	n_list[i] = NULL;
+ 
+ 	return (n_list);
+ }
+@@ -104,7 +104,7 @@ char **copy_list(char **list) {
+ void free_list(char **list) {
+ 	int i=0;
+ 
+-	while (list[i] != (char)NULL) {
++	while (list[i] != NULL) {
+ 		free(list[i]);
+ 		i++;
+ 	}
+diff --git a/src/http.c b/src/http.c
+index 88acdfc..397ac1f 100644
+--- a/src/http.c
++++ b/src/http.c
+@@ -40,7 +40,6 @@ int submit(char *username, char *password) {
+ 	CURLcode result;
+ 	char error[CURL_ERROR_SIZE] = "";
+ 	char authstring[92];
+-	time_t before, after;
+ 
+ 	
+ 	num_connects++;
+@@ -59,8 +58,6 @@ int submit(char *username, char *password) {
+ 	} else
+ 		printf("trying %s->%s\n", username, password);
+ 
+-	before = time(0);
+-
+ 	if (curl) {
+ 		curl_easy_setopt(curl, CURLOPT_URL, url);
+ 		curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, error);
+@@ -79,7 +76,6 @@ int submit(char *username, char *password) {
+ 		result = curl_easy_perform(curl);
+ 	}
+ 
+-	after = time(0);
+ 	/* num_connects jumps the gun earlier on */
+ //	acs = stats(acs, after-before, num_connects-1);
+ 
+diff --git a/src/methods.c b/src/methods.c
+index 3c74c65..bdb6efc 100644
+--- a/src/methods.c
++++ b/src/methods.c
+@@ -76,7 +76,7 @@ char *transform(char *username, char *password) {
+ 
+ 	strncpy(old_password, password, sizeof(char)*41);
+ 
+-	while ((cur_element = elements[i]) != (char)NULL) {
++	while ((cur_element = elements[i]) != NULL) {
+ 		if (!strcmp(password, "{username}"))
+ 			strncpy(insertion, username, sizeof(insertion));
+ 		else if (!strcmp(password, "{emanresu}"))
+@@ -120,7 +120,7 @@ void common_pairs(void) {
+ 	}
+ 
+ 	while (1) {
+-		if (common_pairs_list[i] == (char)NULL)
++		if (common_pairs_list[i] == NULL)
+ 			break;
+ 		strncpy(username, common_pairs_list[i], sizeof(char)*81);
+ 		password = extract(username, ':');
+-- 
+2.25.0
+

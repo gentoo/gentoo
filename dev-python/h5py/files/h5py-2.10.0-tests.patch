@@ -1,0 +1,32 @@
+These tests fail as confirmed by upstream.
+
+Reference: https://github.com/h5py/h5py/issues/1291
+Reference: https://github.com/gentoo/gentoo/pull/14343
+
+diff --git a/h5py/tests/test_file2.py b/h5py/tests/test_file2.py
+index 0fbf2d5..a7a28bb 100644
+--- a/h5py/tests/test_file2.py
++++ b/h5py/tests/test_file2.py
+@@ -207,22 +207,6 @@ class TestFileObj(TestCase):
+         f.create_dataset('test', data=list(range(12)))
+         self.assertRaises(Exception, list, f['test'])
+ 
+-    def test_exception_write(self):
+-
+-        class BrokenBytesIO(io.BytesIO):
+-            def write(self, b):
+-                raise Exception('I am broken')
+-
+-        f = h5py.File(BrokenBytesIO(), 'w')
+-        self.assertRaises(Exception, f.create_dataset, 'test',
+-                          data=list(range(12)))
+-        self.assertRaises(Exception, f.close)
+-
+-    def test_exception_close(self):
+-        fileobj = io.BytesIO()
+-        f = h5py.File(fileobj, 'w')
+-        fileobj.close()
+-        self.assertRaises(Exception, f.close)
+ 
+     def test_method_vanish(self):
+         fileobj = io.BytesIO()

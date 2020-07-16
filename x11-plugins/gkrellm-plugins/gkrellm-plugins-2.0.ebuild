@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,6 @@ IUSE="wifi"
 
 RDEPEND="!<app-admin/gkrellm-2
 	>=x11-plugins/gkrellaclock-0.3.2
-	x11-plugins/gkrellflynn
 	>=x11-plugins/gkrellkam-2.0.0
 	>=x11-plugins/gkrellm-leds-0.8.0
 	>=x11-plugins/gkrellm-volume-2.1.4

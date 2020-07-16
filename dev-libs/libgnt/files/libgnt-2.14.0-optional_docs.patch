@@ -1,0 +1,15 @@
+--- libgnt-2.14.0/meson.build
++++ libgnt-2.14.0/meson.build
+@@ -231,4 +231,6 @@
+ 
+ subdir('wms')
+ subdir('test')
+-subdir('doc')
++if get_option('doc')
++    subdir('doc')
++endif
+--- libgnt-2.14.0/meson_options.txt
++++ libgnt-2.14.0/meson_options.txt
+@@ -0,0 +1,2 @@
++option('doc', type : 'boolean', value : true,
++       description : 'build documentation with gtk-doc')

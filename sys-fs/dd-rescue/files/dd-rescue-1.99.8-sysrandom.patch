@@ -1,0 +1,27 @@
+Use sys/random.h for getrandom() decl if present.
+
+--- a/configure.in
++++ b/configure.in
+@@ -6,7 +6,7 @@ AC_C_INLINE
+ AC_HEADER_STDC
+ #AC_PROG_INSTALL
+ #CFLAGS="$CFLAGS -DHAVE_CONFIG_H"
+-AC_CHECK_HEADERS([fallocate.h dlfcn.h unistd.h sys/xattr.h sys/acl.h sys/ioctl.h sys/reg.h endian.h linux/fs.h linux/fiemap.h stdint.h lzo/lzo1x.h openssl/evp.h linux/random.h malloc.h sched.h sys/statvfs.h])
++AC_CHECK_HEADERS([fallocate.h dlfcn.h unistd.h sys/xattr.h sys/acl.h sys/ioctl.h sys/reg.h endian.h linux/fs.h linux/fiemap.h stdint.h lzo/lzo1x.h openssl/evp.h linux/random.h sys/random.h malloc.h sched.h sys/statvfs.h])
+ AC_CHECK_FUNCS([ffs ffsl basename fallocate64 splice getopt_long open64 pread pread64 lseek64 stat64 posix_fadvise posix_fadvise64 __builtin_prefetch htobe64 feof_unlocked getline getentropy getrandom posix_memalign valloc sched_yield fstatvfs __builtin_cpu_supports])
+ AC_CHECK_LIB(dl,dlsym)
+ AC_CHECK_LIB(fallocate,linux_fallocate64)
+--- a/random.c
++++ b/random.c
+@@ -23,6 +23,10 @@ typedef unsigned int __u32;
+ #include <linux/random.h>
+ #endif
+ 
++#ifdef HAVE_SYS_RANDOM_H
++#include <sys/random.h>
++#endif
++
+ static void msleep(unsigned int msecs)
+ {
+ 	struct timespec ts1, ts2;
+ 

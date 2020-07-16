@@ -3,14 +3,14 @@
 
 # USE flags masked because providing packages have ABI=x86
 
-# 2007/08/29 Christoph Mende <angelos@gentoo.org>
+# Christoph Mende <angelos@gentoo.org> (2007-08-29)
 # app-accessibility/mbrola is x86 only
 mbrola
 
-# 2008/02/13 - Chris Gianelloni <wolf31o2@gentoo.org>
+# Chris Gianelloni <wolf31o2@gentoo.org> (2008-02-13)
 # Mask multilib, since we cannot use it.
 multilib
 
-# Michał Górny <mgorny@gentoo.org> (26 Jan 2013)
+# Michał Górny <mgorny@gentoo.org> (2013-01-26)
 # Mask the multilib flags back for non-multilib profile.
 abi_x86_32

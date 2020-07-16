@@ -1,13 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-USE_RUBY="ruby22 ruby23 ruby24"
+EAPI="7"
+USE_RUBY="ruby24 ruby25 ruby26"
 
 inherit ruby-ng toolchain-funcs
 
 if [[ ${PV} == "9999" ]]; then
-	EHG_REPO_URI="http://hg.subforge.org/subtle"
+	EHG_REPO_URI="https://hg.subforge.org/subtle"
 	EHG_CHECKOUT_DIR=${S}/all
 	inherit mercurial
 else
@@ -16,11 +16,12 @@ else
 fi
 
 DESCRIPTION="A manual tiling window manager"
-HOMEPAGE="http://subforge.org/projects/subtle/wiki"
+HOMEPAGE="https://subforge.org/projects/subtle/wiki"
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug doc +xft xinerama xpm +xrandr +xtest"
+RESTRICT="!test? ( test )"
 
 RDEPEND="x11-libs/libX11
 	xft? ( x11-libs/libXft )
@@ -28,8 +29,8 @@ RDEPEND="x11-libs/libX11
 	xpm? ( x11-libs/libXpm )
 	xtest? ( x11-libs/libXtst )
 	xrandr? ( x11-libs/libXrandr )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 ruby_add_rdepend "dev-ruby/archive-tar-minitar"
 ruby_add_bdepend "dev-ruby/rake doc? ( dev-ruby/rdoc )"
@@ -79,7 +80,7 @@ all_ruby_install() {
 
 	dodoc AUTHORS NEWS
 
-	use doc && dohtml -r html/*
+	use doc && dodoc -r html
 }
 
 pkg_postinst() {

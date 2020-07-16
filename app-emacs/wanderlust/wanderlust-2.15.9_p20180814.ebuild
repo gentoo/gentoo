@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit elisp
 DESCRIPTION="Yet Another Message Interface on Emacsen"
 HOMEPAGE="https://github.com/wanderlust/wanderlust"
 GITHUB_SHA1="395826e99b84051396d503392f52462b6cb683a5"
-SRC_URI="${HOMEPAGE}/archive/${GITHUB_SHA1}.tar.gz -> ${P}-git.tar.gz"
+SRC_URI="https://github.com/wanderlust/wanderlust/archive/${GITHUB_SHA1}.tar.gz -> ${P}-git.tar.gz"
 S="${WORKDIR}/${PN}-${GITHUB_SHA1}"
 
 LICENSE="GPL-2+"
@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="bbdb ssl l10n_ja"
 
 DEPEND=">=app-emacs/apel-10.6
-	virtual/emacs-flim
+	app-emacs/flim
 	app-emacs/semi
 	bbdb? ( app-emacs/bbdb )"
 RDEPEND="${DEPEND}"

@@ -1,34 +1,34 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+EAPI="7"
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 EGIT_REPO_URI="https://github.com/buildbot/buildbot.git"
 
-[[ ${PV} == *9999 ]] && inherit git-r3
-inherit readme.gentoo-r1 user distutils-r1
+DISTUTILS_USE_SETUPTOOLS="rdepend"
+
+inherit git-r3
+inherit readme.gentoo-r1 distutils-r1
 
 DESCRIPTION="BuildBot Worker (slave) Daemon"
 HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.org/project/buildbot-worker/"
 
 MY_V="${PV/_p/.post}"
 MY_P="${PN}-${MY_V}"
-[[ ${PV} == *9999 ]] || SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-if [[ ${PV} == *9999 ]]; then
-	KEYWORDS=""
-else
-	KEYWORDS="~amd64"
-fi
-IUSE="test"
+KEYWORDS=""
 
-RDEPEND=">=dev-python/setuptools-21.2.1[${PYTHON_USEDEP}]
+IUSE="test"
+RESTRICT="!test? ( test )"
+
+RDEPEND="
+	acct-user/buildbot
 	>=dev-python/twisted-17.9.0[${PYTHON_USEDEP}]
 	dev-python/future[${PYTHON_USEDEP}]
-	!<dev-util/buildbot-0.9.7
+	!<dev-util/buildbot-1.0.0
 "
 DEPEND="${RDEPEND}
 	test? (
@@ -37,26 +37,19 @@ DEPEND="${RDEPEND}
 	)
 "
 
-S="${WORKDIR}/${MY_P}"
-[[ ${PV} == *9999 ]] && S=${S}/worker
+S="${S}/worker"
 
 pkg_setup() {
-	enewuser buildbot
-
 	DOC_CONTENTS="The \"buildbot\" user and the \"buildbot_worker\" init script has been added
 		to support starting buildbot_worker through Gentoo's init system. To use this,
 		execute \"emerge --config =${CATEGORY}/${PF}\" to create a new instance.
 		Set up your build worker following the documentation, make sure the
 		resulting directories are owned by the \"buildbot\" user and point
-		\"${ROOT}etc/conf.d/buildbot_worker.myinstance\" at the right location.
+		\"${ROOT}/etc/conf.d/buildbot_worker.myinstance\" at the right location.
 		The scripts can	run as a different user if desired."
 }
 
-python_test() {
-	distutils_install_for_testing
-
-	esetup.py test || die "Tests failed under ${EPYTHON}"
-}
+distutils_enable_tests setup.py
 
 python_install_all() {
 	distutils-r1_python_install_all
@@ -77,8 +70,8 @@ pkg_postinst() {
 
 	if [[ -n ${REPLACING_VERSIONS} ]]; then
 		ewarn
-		ewarn "Starting with buildbot-worker-0.9.10-r1, more than one instance of a buildbot_worker"
-		ewarn "can be run simultaneously. Note that \"BASEDIR\" in the buildbot_worker configuration file"
+		ewarn "More than one instance of a buildbot_worker can be run simultaneously."
+		ewarn " Note that \"BASEDIR\" in the buildbot_worker configuration file"
 		ewarn "is now the common base directory for all instances. If you are migrating from an older"
 		ewarn "version, make sure that you copy the current contents of \"BASEDIR\" to a subdirectory."
 		ewarn "The name of the subdirectory corresponds to the name of the buildbot_worker instance."
@@ -116,7 +109,7 @@ pkg_config() {
 	if [[ ! -d "${instance_path}" ]]; then
 		mkdir --parents "${instance_path}" || die "Unable to create directory ${buildworker_path}"
 	fi
-	chown --recursive buildbot "${instance_path}" || die "Setting permissions for instance failed"
+	chown --recursive buildbot:buildbot "${instance_path}" || die "Setting permissions for instance failed"
 	cp "${buildworker_path}/buildbot.tac.sample" "${instance_path}/buildbot.tac" \
 		|| die "Moving sample configuration failed"
 	ln --symbolic --relative "/etc/init.d/buildbot_worker" "/etc/init.d/buildbot_worker.${instance_name}" \
@@ -124,6 +117,8 @@ pkg_config() {
 
 	if [[ ! -d "${instance_log_path}" ]]; then
 		mkdir --parents "${instance_log_path}" || die "Unable to create directory ${instance_log_path}"
+		chown --recursive buildbot:buildbot "${instance_log_path}" \
+			|| die "Setting permissions for instance failed"
 	fi
 	ln --symbolic --relative "${instance_log_path}/twistd.log" "${instance_path}/twistd.log" \
 		|| die "Unable to create link to log file"

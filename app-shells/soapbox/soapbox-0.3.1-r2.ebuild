@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,7 +11,7 @@ SRC_URI="http://dag.wieers.com/home-made/soapbox/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ~ppc ~ppc64"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE=""
 
 src_prepare() {
@@ -29,12 +29,11 @@ src_compile() {
 		CC="$(tc-getCC)" \
 		LD="$(tc-getCC)" \
 		CFLAGS="${CFLAGS} -fPIC" \
-		LDFLAGS="${LDFLAGS}" \
-		|| die "emake failed"
+		LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
-	dolib.so libsoapbox.so || die "soapsox.so"
-	newbin soapbox.sh soapbox || die "soapbox"
+	dolib.so libsoapbox.so
+	newbin soapbox.sh soapbox
 	dodoc AUTHORS BUGS ChangeLog README THANKS TODO
 }

@@ -10,6 +10,6 @@
     <name>Gentoo Chemistry Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">orbeckst/GromacsWrapper</remote-id>
+    <remote-id type="github">Becksteinlab/GromacsWrapper</remote-id>
   </upstream>
 </pkgmetadata>

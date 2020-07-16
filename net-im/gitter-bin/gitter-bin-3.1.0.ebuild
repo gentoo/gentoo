@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="
 	x86? ( https://update.gitter.im/linux32/${MY_PN}_${PV}_i386.deb )"
 LICENSE="MIT no-source-code"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 -*"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 RESTRICT="bindist mirror"
 

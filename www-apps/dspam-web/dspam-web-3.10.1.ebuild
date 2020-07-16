@@ -10,7 +10,7 @@ HOMEPAGE="http://dspam.nuclearelephant.com/"
 SRC_URI="http://dspam.nuclearelephant.com/sources/dspam-${PV}.tar.gz"
 
 LICENSE="AGPL-3"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 RDEPEND=">=mail-filter/dspam-${PV}[-user-homedirs]

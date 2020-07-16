@@ -7,23 +7,31 @@ inherit toolchain-funcs
 
 DESCRIPTION="Credential Validation Modules by Bruce Guenter"
 HOMEPAGE="http://untroubled.org/cvm/"
-SRC_URI="${HOMEPAGE}archive/${P}.tar.gz"
+SRC_URI="http://untroubled.org/cvm/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ppc ~sparc ~x86"
 IUSE="mysql postgres test vpopmail"
+RESTRICT="!test? ( test )"
 
-RDEPEND="dev-db/cdb"
+RDEPEND="
+	dev-db/cdb:=
+	>=dev-libs/bglibs-1.041:="
 DEPEND="${RDEPEND}
-		>=dev-libs/bglibs-1.041
-		mysql? ( dev-db/mysql-connector-c:0= )
-		postgres? ( dev-db/postgresql[server] )
-		vpopmail? ( net-mail/vpopmail )
-		test? ( app-editors/vim dev-db/cdb )"
-# some of the testcases use ex/vi/xxd and cdbmake
+	mysql? ( dev-db/mysql-connector-c:0= )
+	postgres? ( dev-db/postgresql[server] )
+	vpopmail? ( net-mail/vpopmail )
+	test? (
+		app-editors/vim
+		dev-db/sqlite
+	)"
+# some of the testcases use
+# - ex/vi/xxd
+# - cdbmake
+# - sqlite
 
-MAKEOPTS="${MAKEOPTS} -j1" #310843
+PATCHES=( "${FILESDIR}"/${PN}-0.96-fix-test-padding.patch )
 
 src_prepare() {
 	default
@@ -48,45 +56,54 @@ src_prepare() {
 }
 
 src_configure() {
-	echo "/usr/include/bglibs" > conf-bgincs
-	echo "/usr/$(get_libdir)/bglibs" > conf-bglibs
-	echo "/usr/include" > conf-include
-	echo "/usr/$(get_libdir)" > conf-lib
-	echo "/usr/bin" > conf-bin
-	echo "$(tc-getCC) ${CFLAGS}" > conf-cc
-	echo "$(tc-getCC) ${LDFLAGS} -lcrypt" > conf-ld
+	echo "/usr/include/bglibs" > conf-bgincs || die
+	echo "/usr/$(get_libdir)/bglibs" > conf-bglibs || die
+	echo "/usr/include" > conf-include || die
+	echo "/usr/$(get_libdir)" > conf-lib || die
+	echo "/usr/bin" > conf-bin || die
+	echo "$(tc-getCC) ${CFLAGS}" > conf-cc || die
+	echo "$(tc-getCC) ${LDFLAGS} -lcrypt" > conf-ld || die
 }
 
 src_compile() {
-	emake
+	emake -j1
 
 	if use mysql; then
 		einfo "Building MySQL support"
-		emake mysql
+		emake -j1 mysql
 	fi
 
 	if use postgres; then
 		einfo "Building Postgresql support"
-		emake pgsql
+		emake -j1 pgsql
 	fi
 
 	if use vpopmail; then
 		einfo "Building vpopmail support"
-		emake cvm-vchkpw
+		emake -j1 cvm-vchkpw
 	fi
+}
+
+src_test() {
+	# bug 624384
+	# the test suite tests stuff that isn't potentially enabled
+	emake -j1 sqlite
+	sh tests.sh || die "Testing Failed"
 }
 
 src_install() {
 	# Upstreams installer is incredibly broken
 	dolib.a .libs/*.a
 	dolib.so .libs/*.so.*
-	for i in a so ; do
+
+	local i
+	for i in a so; do
 		dosym libcvm-v2client.${i} /usr/$(get_libdir)/libcvm-client.${i}
 	done
 
 	for i in {bench,test}client chain checkpassword pwfile qmail unix \
 			vmailmgr{,-local,-udp} v1{benchclient,checkpassword,testclient} \
-			; do
+		; do
 			dobin .libs/cvm-${i}
 	done
 	use mysql && dobin .libs/cvm-mysql{,-local,-udp}
@@ -103,8 +120,4 @@ src_install() {
 	dodoc TODO VERSION ChangeLog*
 	docinto html
 	dodoc *.html
-}
-
-src_test() {
-	sh tests.sh || die "Testing Failed"
 }

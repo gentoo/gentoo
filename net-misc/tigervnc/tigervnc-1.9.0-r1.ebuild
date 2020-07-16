@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/TigerVNC/tigervnc/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="dri3 +drm gnutls java libressl nls +opengl pam server xinerama +xorgmodule"
 
 CDEPEND="
@@ -25,7 +25,7 @@ CDEPEND="
 	>=x11-libs/fltk-1.3.1
 	gnutls? ( net-libs/gnutls:= )
 	nls? ( virtual/libiconv )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXrender
@@ -85,12 +85,17 @@ src_prepare() {
 		cp -r "${WORKDIR}"/xorg-server-${XSERVER_VERSION}/. unix/xserver || die
 	fi
 
+	# do not rely on the build system to install docs
+	sed -i 's:^\(install(.* DESTINATION ${DOC_DIR})\):#\1:' \
+		cmake/BuildPackages.cmake || die
+
 	cmake-utils_src_prepare
 
 	if use server ; then
 		cd unix/xserver || die
 		eapply "${FILESDIR}"/xserver120.patch
 		eapply "${FILESDIR}"/xserver120-drmfourcc-header.patch
+		sed -i -e 's/"gl >= .*"/"gl"/' configure.ac || die
 		eautoreconf
 	fi
 }
@@ -126,7 +131,6 @@ src_configure() {
 			--disable-linux-acpi \
 			--disable-record \
 			--disable-selective-werror \
-			--disable-silent-rules \
 			--disable-static \
 			--disable-unit-tests \
 			--disable-xephyr \

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>bircoph@gentoo.org</email>
+		<name>Andrew Savchenko</name>
+	</maintainer>
+	<longdescription>
+		Unrpyc is a script to decompile Ren'Py (http://www.renpy.org/) compiled
+		.rpyc script files. It will not extract files from .rpa archives.
+		For that, use <pkg>app-arch/unrpa</pkg>.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">CensoredUsername/unrpyc</remote-id>
+	</upstream>
+	<use>
+		<flag name="module">Build un.rpyc module for run-time decompiling</flag>
+		<flag name="proto0">Use pickle protocol 0 for un-rpyc module. May be usefule for very old games</flag>
+		<flag name="proto1">Use pickle protocol 1 for un-rpyc module. Default if no protocol is selected</flag>
+		<flag name="proto2">Use pickle protocol 2 for un-rpyc module</flag>
+	</use>
+</pkgmetadata>

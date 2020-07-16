@@ -13,4 +13,7 @@
 		<remote-id type="github">KiCad/kicad</remote-id>
 		<remote-id type="launchpad">kicad</remote-id>
 	</upstream>
+	<use>
+		<flag name="minimal">Do not install extra data like 3D packages and templates.</flag>
+	</use>
 </pkgmetadata>

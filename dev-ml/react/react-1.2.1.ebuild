@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,13 +6,14 @@ EAPI="5"
 inherit opam
 
 DESCRIPTION="OCaml module for functional reactive programming"
-HOMEPAGE="http://erratique.ch/software/react https://github.com/dbuenzli/react"
-SRC_URI="http://erratique.ch/software/react/releases/${P}.tbz"
+HOMEPAGE="https://erratique.ch/software/react https://github.com/dbuenzli/react"
+SRC_URI="https://erratique.ch/software/react/releases/${P}.tbz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=""
 DEPEND="${RDEPEND}

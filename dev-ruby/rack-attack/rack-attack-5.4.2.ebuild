@@ -11,6 +11,8 @@ RUBY_FAKEGEM_TASK_TEST="test:units"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
+RUBY_FAKEGEM_BINWRAP=""
+
 inherit ruby-fakegem
 
 DESCRIPTION="A DSL for blocking & throttling abusive clients"

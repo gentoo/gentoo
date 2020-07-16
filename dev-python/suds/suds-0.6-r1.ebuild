@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 DISTUTILS_IN_SOURCE_BUILD=1
 
 inherit distutils-r1
@@ -16,6 +16,7 @@ LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="doc? ( $(python_gen_useflags python2_7) )"
 

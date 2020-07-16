@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,12 +10,13 @@ inherit haskell-cabal
 
 DESCRIPTION="Conversion of LaTeX math formulas to MathML or OMML"
 HOMEPAGE="https://github.com/jgm/texmath"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="cgi test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-haskell/pandoc-types:=[profile?]
 	>=dev-haskell/parsec-3:=[profile?]

@@ -1,9 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-inherit multilib
 
 DESCRIPTION="A PAM module that can mount volumes for a user session"
 HOMEPAGE="http://pam-mount.sourceforge.net"
@@ -18,7 +16,7 @@ IUSE="crypt ssl selinux"
 COMMON_DEPEND=">=sys-libs/pam-0.99
 	>=sys-libs/libhx-3.12.1
 	>=dev-libs/libxml2-2.6
-	crypt? ( >=sys-fs/cryptsetup-1.1.0 )
+	crypt? ( >=sys-fs/cryptsetup-1.1.0:= )
 	ssl? ( dev-libs/openssl:0= )
 	selinux? ( sys-libs/libselinux )"
 DEPEND="${COMMON_DEPEND}

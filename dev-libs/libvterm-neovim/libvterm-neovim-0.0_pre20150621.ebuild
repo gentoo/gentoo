@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils flag-o-matic multilib
+inherit eutils flag-o-matic ltprune multilib
 
 DESCRIPTION="An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator"
 HOMEPAGE="http://www.leonerd.org.uk/code/libvterm/"

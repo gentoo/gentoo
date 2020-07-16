@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit findlib
 
 DESCRIPTION="The transitory OCaml software packager"
-HOMEPAGE="http://erratique.ch/software/topkg https://github.com/dbuenzli/topkg"
+HOMEPAGE="https://erratique.ch/software/topkg https://github.com/dbuenzli/topkg"
 SRC_URI="https://github.com/dbuenzli/topkg/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC"

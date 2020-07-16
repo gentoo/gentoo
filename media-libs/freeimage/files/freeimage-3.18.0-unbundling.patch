@@ -1,0 +1,724 @@
+From 03a713e62529d1bcb45aedf767c7cb33ddd6e1a7 Mon Sep 17 00:00:00 2001
+From: Patrick Nicolas <xytovl@laposte.net>
+Date: Tue, 13 Nov 2018 19:40:58 +0100
+Subject: [PATCH 1/4] unbundling
+
+diff --git a/Makefile.fip b/Makefile.fip
+index b59c419..c6b82bb 100644
+--- a/Makefile.fip
++++ b/Makefile.fip
+@@ -11,7 +11,26 @@ INSTALLDIR ?= $(DESTDIR)/usr/lib
+ # Converts cr/lf to just lf
+ DOS2UNIX = dos2unix
+ 
+-LIBRARIES = -lstdc++
++PKG_CONFIG ?= pkg-config
++
++USE_EXR ?= yes
++USE_JPEG ?= yes
++USE_JPEG2K ?= yes
++USE_MNG ?= yes
++USE_PNG ?= yes
++USE_TIFF ?= yes
++USE_RAW ?= yes
++USE_WEBP ?= yes
++
++LIBRARIES-yes = $(shell $(PKG_CONFIG) --libs zlib)
++LIBRARIES-$(USE_EXR)    += $(shell $(PKG_CONFIG) --libs OpenEXR)
++LIBRARIES-$(USE_JPEG)   += -ljpeg
++LIBRARIES-$(USE_JPEG2K) += $(shell $(PKG_CONFIG) --libs libopenjp2)
++LIBRARIES-$(USE_MNG)    += -lmng
++LIBRARIES-$(USE_PNG)    += $(shell $(PKG_CONFIG) --libs libpng)
++LIBRARIES-$(USE_TIFF)   += $(shell $(PKG_CONFIG) --libs libtiff-4 IlmBase)
++LIBRARIES-$(USE_RAW)    += $(shell $(PKG_CONFIG) --libs libraw)
++LIBRARIES-$(USE_WEBP)    += $(shell $(PKG_CONFIG) --libs libwebp libwebpmux)
+ 
+ MODULES = $(SRCS:.c=.o)
+ MODULES := $(MODULES:.cpp=.o)
+@@ -68,16 +87,18 @@ $(STATICLIB): $(MODULES)
+ 	$(AR) r $@ $(MODULES)
+ 
+ $(SHAREDLIB): $(MODULES)
+-	$(CC) -s -shared -Wl,-soname,$(VERLIBNAME) $(LDFLAGS) -o $@ $(MODULES) $(LIBRARIES)
++	$(CXX) $(CXXFLAGS) -shared -Wl,-soname,$(VERLIBNAME) $(LDFLAGS) -o $@ $(MODULES) $(LIBRARIES-yes)
+ 
+ install:
+ 	install -d $(INCDIR) $(INSTALLDIR)
+-	install -m 644 -o root -g root $(HEADER) $(INCDIR)
+-	install -m 644 -o root -g root $(HEADERFIP) $(INCDIR)
+-	install -m 644 -o root -g root $(STATICLIB) $(INSTALLDIR)
+-	install -m 755 -o root -g root $(SHAREDLIB) $(INSTALLDIR)
++	install -m 644 $(HEADER) $(INCDIR)
++	install -m 644 $(HEADERFIP) $(INCDIR)
++ifneq ($(STATICLIB),)
++	install -m 644 $(STATICLIB) $(INSTALLDIR)
++endif
++	install -m 755 $(SHAREDLIB) $(INSTALLDIR)
+ 	ln -sf $(SHAREDLIB) $(INSTALLDIR)/$(VERLIBNAME)
+-	ln -sf $(VERLIBNAME) $(INSTALLDIR)/$(LIBNAME)	
++	ln -sf $(VERLIBNAME) $(INSTALLDIR)/$(LIBNAME)
+ 
+ clean:
+ 	rm -f core Dist/*.* u2dtmp* $(MODULES) $(STATICLIB) $(SHAREDLIB) $(LIBNAME)
+diff --git a/Makefile.gnu b/Makefile.gnu
+index 92f6358..345f0db 100644
+--- a/Makefile.gnu
++++ b/Makefile.gnu
+@@ -11,7 +11,26 @@ INSTALLDIR ?= $(DESTDIR)/usr/lib
+ # Converts cr/lf to just lf
+ DOS2UNIX = dos2unix
+ 
+-LIBRARIES = -lstdc++
++PKG_CONFIG ?= pkg-config
++
++USE_EXR ?= yes
++USE_JPEG ?= yes
++USE_JPEG2K ?= yes
++USE_MNG ?= yes
++USE_PNG ?= yes
++USE_TIFF ?= yes
++USE_RAW ?= yes
++USE_WEBP ?= yes
++
++LIBRARIES-yes = $(shell $(PKG_CONFIG) --libs zlib)
++LIBRARIES-$(USE_EXR)    += $(shell $(PKG_CONFIG) --libs OpenEXR)
++LIBRARIES-$(USE_JPEG)   += -ljpeg
++LIBRARIES-$(USE_JPEG2K) += $(shell $(PKG_CONFIG) --libs libopenjp2)
++LIBRARIES-$(USE_MNG)    += -lmng
++LIBRARIES-$(USE_PNG)    += $(shell $(PKG_CONFIG) --libs libpng)
++LIBRARIES-$(USE_TIFF)   += $(shell $(PKG_CONFIG) --libs libtiff-4 IlmBase)
++LIBRARIES-$(USE_RAW)    += $(shell $(PKG_CONFIG) --libs libraw)
++LIBRARIES-$(USE_WEBP)    += $(shell $(PKG_CONFIG) --libs libwebp libwebpmux)
+ 
+ MODULES = $(SRCS:.c=.o)
+ MODULES := $(MODULES:.cpp=.o)
+@@ -67,13 +86,15 @@ $(STATICLIB): $(MODULES)
+ 	$(AR) r $@ $(MODULES)
+ 
+ $(SHAREDLIB): $(MODULES)
+-	$(CC) -s -shared -Wl,-soname,$(VERLIBNAME) $(LDFLAGS) -o $@ $(MODULES) $(LIBRARIES)
++	$(CXX) $(CXXFLAGS) -shared -Wl,-soname,$(VERLIBNAME) $(LDFLAGS) -o $@ $(MODULES) $(LIBRARIES-yes)
+ 
+ install:
+ 	install -d $(INCDIR) $(INSTALLDIR)
+-	install -m 644 -o root -g root $(HEADER) $(INCDIR)
+-	install -m 644 -o root -g root $(STATICLIB) $(INSTALLDIR)
+-	install -m 755 -o root -g root $(SHAREDLIB) $(INSTALLDIR)
++	install -m 644 $(HEADER) $(INCDIR)
++ifneq ($(STATICLIB),)
++	install -m 644 $(STATICLIB) $(INSTALLDIR)
++endif
++	install -m 755 $(SHAREDLIB) $(INSTALLDIR)
+ 	ln -sf $(SHAREDLIB) $(INSTALLDIR)/$(VERLIBNAME)
+ 	ln -sf $(VERLIBNAME) $(INSTALLDIR)/$(LIBNAME)	
+ #	ldconfig
+diff --git a/Makefile.srcs b/Makefile.srcs
+index de25754..cb41903 100644
+--- a/Makefile.srcs
++++ b/Makefile.srcs
+@@ -1,6 +1,15 @@
++USE_EXR ?= yes
++USE_JPEG ?= yes
++USE_JPEG2K ?= yes
++USE_MNG ?= yes
++USE_PNG ?= yes
++USE_TIFF ?= yes
++USE_RAW ?= yes
++USE_WEBP ?= yes
++
+ VER_MAJOR = 3
+ VER_MINOR = 18.0
+-SRCS = \
++SRCS-yes = \
+ 	Source/FreeImage/BitmapAccess.cpp \
+ 	Source/FreeImage/ColorLookup.cpp \
+ 	Source/FreeImage/ConversionRGBA16.cpp \
+@@ -12,39 +21,80 @@ SRCS = \
+ 	Source/FreeImage/LFPQuantizer.cpp \
+ 	Source/FreeImage/MemoryIO.cpp \
+ 	Source/FreeImage/PixelAccess.cpp \
++
++SRCS-$(USE_JPEG2K) += \
+ 	Source/FreeImage/J2KHelper.cpp \
++
++SRCS-$(USE_MNG) += \
+ 	Source/FreeImage/MNGHelper.cpp \
++
++SRCS-yes += \
+ 	Source/FreeImage/Plugin.cpp \
+ 	Source/FreeImage/PluginBMP.cpp \
+ 	Source/FreeImage/PluginCUT.cpp \
+ 	Source/FreeImage/PluginDDS.cpp \
++
++SRCS-$(USE_EXR) += \
+ 	Source/FreeImage/PluginEXR.cpp \
++
++SRCS-$(USE_TIFF) += \
+ 	Source/FreeImage/PluginG3.cpp \
++
++SRCS-yes += \
+ 	Source/FreeImage/PluginGIF.cpp \
+ 	Source/FreeImage/PluginHDR.cpp \
+ 	Source/FreeImage/PluginICO.cpp \
+ 	Source/FreeImage/PluginIFF.cpp \
++
++SRCS-$(USE_JPEG2K) += \
+ 	Source/FreeImage/PluginJ2K.cpp \
++
++SRCS-$(USE_MNG) += \
+ 	Source/FreeImage/PluginJNG.cpp \
++
++SRCS-$(USE_JPEG2K) += \
+ 	Source/FreeImage/PluginJP2.cpp \
++
++SRCS-$(USE_JPEG) += \
+ 	Source/FreeImage/PluginJPEG.cpp \
+-	Source/FreeImage/PluginJXR.cpp \
++
++SRCS-yes += \
+ 	Source/FreeImage/PluginKOALA.cpp \
++
++SRCS-$(USE_MNG) += \
+ 	Source/FreeImage/PluginMNG.cpp \
++
++SRCS-yes += \
+ 	Source/FreeImage/PluginPCD.cpp \
+ 	Source/FreeImage/PluginPCX.cpp \
+ 	Source/FreeImage/PluginPFM.cpp \
+ 	Source/FreeImage/PluginPICT.cpp \
++
++SRCS-$(USE_PNG) += \
+ 	Source/FreeImage/PluginPNG.cpp \
++
++SRCS-yes += \
+ 	Source/FreeImage/PluginPNM.cpp \
+ 	Source/FreeImage/PluginPSD.cpp \
+ 	Source/FreeImage/PluginRAS.cpp \
++
++SRCS-$(USE_RAW) += \
+ 	Source/FreeImage/PluginRAW.cpp \
++
++SRCS-yes += \
+ 	Source/FreeImage/PluginSGI.cpp \
+ 	Source/FreeImage/PluginTARGA.cpp \
++
++SRCS-$(USE_TIFF) += \
+ 	Source/FreeImage/PluginTIFF.cpp \
++
++SRCS-yes += \
+ 	Source/FreeImage/PluginWBMP.cpp \
++
++SRCS-$(USE_WEBP) += \
+ 	Source/FreeImage/PluginWebP.cpp \
++
++SRCS-yes += \
+ 	Source/FreeImage/PluginXBM.cpp \
+ 	Source/FreeImage/PluginXPM.cpp \
+ 	Source/FreeImage/PSDParser.cpp \
+@@ -78,7 +128,11 @@ SRCS = \
+ 	Source/Metadata/IPTC.cpp \
+ 	Source/Metadata/TagConversion.cpp \
+ 	Source/Metadata/TagLib.cpp \
++
++SRCS-$(USE_TIFF) += \
+ 	Source/Metadata/XTIFF.cpp \
++
++SRCS-yes += \
+ 	Source/FreeImageToolkit/Background.cpp \
+ 	Source/FreeImageToolkit/BSplineRotate.cpp \
+ 	Source/FreeImageToolkit/Channels.cpp \
+@@ -87,11 +141,19 @@ SRCS = \
+ 	Source/FreeImageToolkit/CopyPaste.cpp \
+ 	Source/FreeImageToolkit/Display.cpp \
+ 	Source/FreeImageToolkit/Flip.cpp \
++
++SRCS-$(USE_JPEG) += \
+ 	Source/FreeImageToolkit/JPEGTransform.cpp \
++
++SRCS-yes += \
+ 	Source/FreeImageToolkit/MultigridPoissonSolver.cpp \
+ 	Source/FreeImageToolkit/Rescale.cpp \
+ 	Source/FreeImageToolkit/Resize.cpp \
+ 
++SRCS-$(USE_JPEG) += \
++	Source/transupp.c
++SRCS = $(SRCS-yes)
++
+ INCLS = Dist/FreeImage.h \
+ 	Examples/OpenGL/TextureManager/TextureManager.h \
+ 	Examples/Plugin/PluginCradle.h \
+@@ -117,7 +179,18 @@ INCLS = Dist/FreeImage.h \
+ 	Wrapper/FreeImagePlus/test/fipTest.h \
+ 	TestAPI/TestSuite.h
+ 
+-INCLUDE = -I. \
++INCLUDE-yes = -I. \
+ 	-ISource \
+ 	-ISource/Metadata \
+ 	-ISource/FreeImageToolkit \
++
++INCLUDE-yes += $(shell $(PKG_CONFIG) --cflags-only-I zlib)
++INCLUDE-$(USE_EXR)    += -DUSE_EXR    $(shell $(PKG_CONFIG) --cflags-only-I OpenEXR)
++INCLUDE-$(USE_JPEG)   += -DUSE_JPEG
++INCLUDE-$(USE_JPEG2K) += -DUSE_JPEG2K $(shell $(PKG_CONFIG) --cflags-only-I libopenjp2)
++INCLUDE-$(USE_MNG)    += -DUSE_MNG
++INCLUDE-$(USE_PNG)    += -DUSE_PNG    $(shell $(PKG_CONFIG) --cflags-only-I libpng)
++INCLUDE-$(USE_TIFF)   += -DUSE_TIFF   $(shell $(PKG_CONFIG) --cflags-only-I libtiff-4 IlmBase)
++INCLUDE-$(USE_RAW)    += -DUSE_RAW    $(shell $(PKG_CONFIG) --cflags-only-I libraw)
++INCLUDE-$(USE_WEBP)   += -DUSE_WEBP   $(shell $(PKG_CONFIG) --cflags-only-I libwebp libwebpmux)
++INCLUDE = $(INCLUDE-yes)
+diff --git a/Source/FreeImage/J2KHelper.cpp b/Source/FreeImage/J2KHelper.cpp
+index 1776c3b..538f1c5 100644
+--- a/Source/FreeImage/J2KHelper.cpp
++++ b/Source/FreeImage/J2KHelper.cpp
+@@ -21,7 +21,7 @@
+ 
+ #include "FreeImage.h"
+ #include "Utilities.h"
+-#include "../LibOpenJPEG/openjpeg.h"
++#include <openjpeg.h>
+ #include "J2KHelper.h"
+ 
+ // --------------------------------------------------------------------------
+diff --git a/Source/FreeImage/Plugin.cpp b/Source/FreeImage/Plugin.cpp
+index 11e7294..7768a32 100644
+--- a/Source/FreeImage/Plugin.cpp
++++ b/Source/FreeImage/Plugin.cpp
+@@ -238,23 +238,33 @@ FreeImage_Initialise(BOOL load_local_plugins_only) {
+ 			*/
+ 			s_plugins->AddNode(InitBMP);
+ 			s_plugins->AddNode(InitICO);
++#ifdef USE_JPEG
+ 			s_plugins->AddNode(InitJPEG);
++#endif
++#ifdef USE_MNG
+ 			s_plugins->AddNode(InitJNG);
++#endif
+ 			s_plugins->AddNode(InitKOALA);
+ 			s_plugins->AddNode(InitIFF);
++#ifdef USE_MNG
+ 			s_plugins->AddNode(InitMNG);
++#endif
+ 			s_plugins->AddNode(InitPNM, NULL, "PBM", "Portable Bitmap (ASCII)", "pbm", "^P1");
+ 			s_plugins->AddNode(InitPNM, NULL, "PBMRAW", "Portable Bitmap (RAW)", "pbm", "^P4");
+ 			s_plugins->AddNode(InitPCD);
+ 			s_plugins->AddNode(InitPCX);
+ 			s_plugins->AddNode(InitPNM, NULL, "PGM", "Portable Greymap (ASCII)", "pgm", "^P2");
+ 			s_plugins->AddNode(InitPNM, NULL, "PGMRAW", "Portable Greymap (RAW)", "pgm", "^P5");
++#ifdef USE_PNG
+ 			s_plugins->AddNode(InitPNG);
++#endif
+ 			s_plugins->AddNode(InitPNM, NULL, "PPM", "Portable Pixelmap (ASCII)", "ppm", "^P3");
+ 			s_plugins->AddNode(InitPNM, NULL, "PPMRAW", "Portable Pixelmap (RAW)", "ppm", "^P6");
+ 			s_plugins->AddNode(InitRAS);
+ 			s_plugins->AddNode(InitTARGA);
++#ifdef USE_TIFF
+ 			s_plugins->AddNode(InitTIFF);
++#endif
+ 			s_plugins->AddNode(InitWBMP);
+ 			s_plugins->AddNode(InitPSD);
+ 			s_plugins->AddNode(InitCUT);
+@@ -263,16 +273,26 @@ FreeImage_Initialise(BOOL load_local_plugins_only) {
+ 			s_plugins->AddNode(InitDDS);
+ 	        s_plugins->AddNode(InitGIF);
+ 	        s_plugins->AddNode(InitHDR);
++#ifdef USE_TIFF
+ 			s_plugins->AddNode(InitG3);
++#endif
+ 			s_plugins->AddNode(InitSGI);
++#ifdef USE_EXR
+ 			s_plugins->AddNode(InitEXR);
++#endif
++#ifdef USE_JPEG2K
+ 			s_plugins->AddNode(InitJ2K);
+ 			s_plugins->AddNode(InitJP2);
++#endif
+ 			s_plugins->AddNode(InitPFM);
+ 			s_plugins->AddNode(InitPICT);
++#ifdef USE_RAW
+ 			s_plugins->AddNode(InitRAW);
++#endif
++#ifdef USE_WEBP
+ 			s_plugins->AddNode(InitWEBP);
+-#if !(defined(_MSC_VER) && (_MSC_VER <= 1310))
++#endif
++#if 0
+ 			s_plugins->AddNode(InitJXR);
+ #endif // unsupported by MS Visual Studio 2003 !!!
+ 			
+diff --git a/Source/FreeImage/PluginEXR.cpp b/Source/FreeImage/PluginEXR.cpp
+index b286430..faa8037 100644
+--- a/Source/FreeImage/PluginEXR.cpp
++++ b/Source/FreeImage/PluginEXR.cpp
+@@ -28,16 +28,16 @@
+ #pragma warning (disable : 4800) // ImfVersion.h - 'const int' : forcing value to bool 'true' or 'false' (performance warning)
+ #endif 
+ 
+-#include "../OpenEXR/IlmImf/ImfIO.h"
+-#include "../OpenEXR/Iex/Iex.h"
+-#include "../OpenEXR/IlmImf/ImfOutputFile.h"
+-#include "../OpenEXR/IlmImf/ImfInputFile.h"
+-#include "../OpenEXR/IlmImf/ImfRgbaFile.h"
+-#include "../OpenEXR/IlmImf/ImfChannelList.h"
+-#include "../OpenEXR/IlmImf/ImfRgba.h"
+-#include "../OpenEXR/IlmImf/ImfArray.h"
+-#include "../OpenEXR/IlmImf/ImfPreviewImage.h"
+-#include "../OpenEXR/Half/half.h"
++#include <ImfIO.h>
++#include <Iex.h>
++#include <ImfOutputFile.h>
++#include <ImfInputFile.h>
++#include <ImfRgbaFile.h>
++#include <ImfChannelList.h>
++#include <ImfRgba.h>
++#include <ImfArray.h>
++#include <ImfPreviewImage.h>
++#include <half.h>
+ 
+ 
+ // ==========================================================
+diff --git a/Source/FreeImage/PluginG3.cpp b/Source/FreeImage/PluginG3.cpp
+index 0a083b4..b3a9bd7 100644
+--- a/Source/FreeImage/PluginG3.cpp
++++ b/Source/FreeImage/PluginG3.cpp
+@@ -20,7 +20,7 @@
+ // Use at your own risk!
+ // ==========================================================
+ 
+-#include "../LibTIFF4/tiffiop.h"
++#include "tiffiop.h"
+ 
+ #include "FreeImage.h"
+ #include "Utilities.h"
+diff --git a/Source/FreeImage/PluginJ2K.cpp b/Source/FreeImage/PluginJ2K.cpp
+index b8bcfc8..621a903 100644
+--- a/Source/FreeImage/PluginJ2K.cpp
++++ b/Source/FreeImage/PluginJ2K.cpp
+@@ -21,7 +21,7 @@
+ 
+ #include "FreeImage.h"
+ #include "Utilities.h"
+-#include "../LibOpenJPEG/openjpeg.h"
++#include <openjpeg.h>
+ #include "J2KHelper.h"
+ 
+ // ==========================================================
+diff --git a/Source/FreeImage/PluginJP2.cpp b/Source/FreeImage/PluginJP2.cpp
+index 742fe2c..c57f626 100644
+--- a/Source/FreeImage/PluginJP2.cpp
++++ b/Source/FreeImage/PluginJP2.cpp
+@@ -21,7 +21,7 @@
+ 
+ #include "FreeImage.h"
+ #include "Utilities.h"
+-#include "../LibOpenJPEG/openjpeg.h"
++#include <openjpeg.h>
+ #include "J2KHelper.h"
+ 
+ // ==========================================================
+diff --git a/Source/FreeImage/PluginJPEG.cpp b/Source/FreeImage/PluginJPEG.cpp
+index 8db177d..dd97e63 100644
+--- a/Source/FreeImage/PluginJPEG.cpp
++++ b/Source/FreeImage/PluginJPEG.cpp
+@@ -35,11 +35,15 @@ extern "C" {
+ #undef FAR
+ #include <setjmp.h>
+ 
+-#include "../LibJPEG/jinclude.h"
+-#include "../LibJPEG/jpeglib.h"
+-#include "../LibJPEG/jerror.h"
++#include <string.h>
++#include <stdio.h>
++#include <jconfig.h>
++#include <jpeglib.h>
++#include <jerror.h>
+ }
+ 
++#define SIZEOF(object)        ((size_t) sizeof(object))
++
+ #include "FreeImage.h"
+ #include "Utilities.h"
+ 
+diff --git a/Source/FreeImage/PluginPNG.cpp b/Source/FreeImage/PluginPNG.cpp
+index 661f160..504fafe 100644
+--- a/Source/FreeImage/PluginPNG.cpp
++++ b/Source/FreeImage/PluginPNG.cpp
+@@ -40,8 +40,8 @@
+ 
+ // ----------------------------------------------------------
+ 
+-#include "../ZLib/zlib.h"
+-#include "../LibPNG/png.h"
++#include <zlib.h>
++#include <png.h>
+ 
+ // ----------------------------------------------------------
+ 
+diff --git a/Source/FreeImage/PluginRAW.cpp b/Source/FreeImage/PluginRAW.cpp
+index e9bd5bf..680e634 100644
+--- a/Source/FreeImage/PluginRAW.cpp
++++ b/Source/FreeImage/PluginRAW.cpp
+@@ -19,7 +19,7 @@
+ // Use at your own risk!
+ // ==========================================================
+ 
+-#include "../LibRawLite/libraw/libraw.h"
++#include <libraw.h>
+ 
+ #include "FreeImage.h"
+ #include "Utilities.h"
+diff --git a/Source/FreeImage/PluginTIFF.cpp b/Source/FreeImage/PluginTIFF.cpp
+index 67fab0b..36f99e8 100644
+--- a/Source/FreeImage/PluginTIFF.cpp
++++ b/Source/FreeImage/PluginTIFF.cpp
+@@ -37,9 +37,9 @@
+ 
+ #include "FreeImage.h"
+ #include "Utilities.h"
+-#include "../LibTIFF4/tiffiop.h"
++#include "tiffiop.h"
+ #include "../Metadata/FreeImageTag.h"
+-#include "../OpenEXR/Half/half.h"
++#include <half.h>
+ 
+ #include "FreeImageIO.h"
+ #include "PSDParser.h"
+diff --git a/Source/FreeImage/PluginWebP.cpp b/Source/FreeImage/PluginWebP.cpp
+index 7c9f62f..c401447 100644
+--- a/Source/FreeImage/PluginWebP.cpp
++++ b/Source/FreeImage/PluginWebP.cpp
+@@ -24,9 +24,9 @@
+ 
+ #include "../Metadata/FreeImageTag.h"
+ 
+-#include "../LibWebP/src/webp/decode.h"
+-#include "../LibWebP/src/webp/encode.h"
+-#include "../LibWebP/src/webp/mux.h"
++#include <webp/decode.h>
++#include <webp/encode.h>
++#include <webp/mux.h>
+ 
+ // ==========================================================
+ // Plugin Interface
+diff --git a/Source/FreeImage/ZLibInterface.cpp b/Source/FreeImage/ZLibInterface.cpp
+index 3ab6d32..7e32110 100644
+--- a/Source/FreeImage/ZLibInterface.cpp
++++ b/Source/FreeImage/ZLibInterface.cpp
+@@ -19,10 +19,10 @@
+ // Use at your own risk!
+ // ==========================================================
+ 
+-#include "../ZLib/zlib.h"
++#include <zlib.h>
+ #include "FreeImage.h"
+ #include "Utilities.h"
+-#include "../ZLib/zutil.h"	/* must be the last header because of error C3163 in VS2008 (_vsnprintf defined in stdio.h) */
++#define OS_CODE 0x03
+ 
+ /**
+ Compresses a source buffer into a target buffer, using the ZLib library. 
+diff --git a/Source/FreeImageToolkit/JPEGTransform.cpp b/Source/FreeImageToolkit/JPEGTransform.cpp
+index 6f9ba8e..988d777 100644
+--- a/Source/FreeImageToolkit/JPEGTransform.cpp
++++ b/Source/FreeImageToolkit/JPEGTransform.cpp
+@@ -26,10 +26,11 @@ extern "C" {
+ #undef FAR
+ #include <setjmp.h>
+ 
+-#include "../LibJPEG/jinclude.h"
+-#include "../LibJPEG/jpeglib.h"
+-#include "../LibJPEG/jerror.h"
+-#include "../LibJPEG/transupp.h"
++#include <string.h>
++#include <stdio.h>
++#include <jpeglib.h>
++#include <jerror.h>
++#include "transupp.h"
+ }
+ 
+ #include "FreeImage.h"
+diff --git a/Source/Metadata/XTIFF.cpp b/Source/Metadata/XTIFF.cpp
+index d5be902..7f2be42 100644
+--- a/Source/Metadata/XTIFF.cpp
++++ b/Source/Metadata/XTIFF.cpp
+@@ -29,7 +29,7 @@
+ #pragma warning (disable : 4786) // identifier was truncated to 'number' characters
+ #endif
+ 
+-#include "../LibTIFF4/tiffiop.h"
++#include "tiffiop.h"
+ 
+ #include "FreeImage.h"
+ #include "Utilities.h"
+diff --git a/Source/tiffiop.h b/Source/tiffiop.h
+index 2fe7556..1642582 100644
+--- a/Source/tiffiop.h
++++ b/Source/tiffiop.h
+@@ -28,7 +28,10 @@
+  * ``Library-private'' definitions.
+  */
+ 
+-#include "tif_config.h"
++#include <tiffconf.h>
++#define HAVE_SEARCH_H
++#define HAVE_FCNTL_H
++#define HAVE_SNPRINTF
+ 
+ #ifdef HAVE_FCNTL_H
+ # include <fcntl.h>
+diff --git a/Source/transupp.c b/Source/transupp.c
+index d10f57b..d50216c 100644
+--- a/Source/transupp.c
++++ b/Source/transupp.c
+@@ -15,8 +15,7 @@
+ /* Although this file really shouldn't have access to the library internals,
+  * it's helpful to let it call jround_up() and jcopy_block_row().
+  */
+-#define JPEG_INTERNALS
+-
++#include <jerror.h>
+ #include "jinclude.h"
+ #include "jpeglib.h"
+ #include "transupp.h"		/* My own external interface */
+diff --git a/fipMakefile.srcs b/fipMakefile.srcs
+index d271b4b..e58f046 100644
+--- a/fipMakefile.srcs
++++ b/fipMakefile.srcs
+@@ -1,6 +1,15 @@
++USE_EXR ?= yes
++USE_JPEG ?= yes
++USE_JPEG2K ?= yes
++USE_MNG ?= yes
++USE_PNG ?= yes
++USE_TIFF ?= yes
++USE_RAW ?= yes
++USE_WEBP ?= yes
++
+ VER_MAJOR = 3
+ VER_MINOR = 18.0
+-SRCS = \
++SRCS-yes = \
+ 	Source/FreeImage/BitmapAccess.cpp \
+ 	Source/FreeImage/ColorLookup.cpp \
+ 	Source/FreeImage/ConversionRGBA16.cpp \
+@@ -12,39 +21,80 @@ SRCS = \
+ 	Source/FreeImage/LFPQuantizer.cpp \
+ 	Source/FreeImage/MemoryIO.cpp \
+ 	Source/FreeImage/PixelAccess.cpp \
++
++SRCS-$(USE_JPEG2K) += \
+ 	Source/FreeImage/J2KHelper.cpp \
++
++SRCS-$(USE_MNG) += \
+ 	Source/FreeImage/MNGHelper.cpp \
++
++SRCS-yes += \
+ 	Source/FreeImage/Plugin.cpp \
+ 	Source/FreeImage/PluginBMP.cpp \
+ 	Source/FreeImage/PluginCUT.cpp \
+ 	Source/FreeImage/PluginDDS.cpp \
++
++SRCS-$(USE_EXR) += \
+ 	Source/FreeImage/PluginEXR.cpp \
++
++SRCS-$(USE_TIFF) += \
+ 	Source/FreeImage/PluginG3.cpp \
++
++SRCS-yes += \
+ 	Source/FreeImage/PluginGIF.cpp \
+ 	Source/FreeImage/PluginHDR.cpp \
+ 	Source/FreeImage/PluginICO.cpp \
+ 	Source/FreeImage/PluginIFF.cpp \
++
++SRCS-$(USE_JPEG2K) += \
+ 	Source/FreeImage/PluginJ2K.cpp \
++
++SRCS-$(USE_MNG) += \
+ 	Source/FreeImage/PluginJNG.cpp \
++
++SRCS-$(USE_JPEG2K) += \
+ 	Source/FreeImage/PluginJP2.cpp \
++
++SRCS-$(USE_JPEG) += \
+ 	Source/FreeImage/PluginJPEG.cpp \
+-	Source/FreeImage/PluginJXR.cpp \
++
++SRCS-yes += \
+ 	Source/FreeImage/PluginKOALA.cpp \
++
++SRCS-$(USE_MNG) += \
+ 	Source/FreeImage/PluginMNG.cpp \
++
++SRCS-yes += \
+ 	Source/FreeImage/PluginPCD.cpp \
+ 	Source/FreeImage/PluginPCX.cpp \
+ 	Source/FreeImage/PluginPFM.cpp \
+ 	Source/FreeImage/PluginPICT.cpp \
++
++SRCS-$(USE_PNG) += \
+ 	Source/FreeImage/PluginPNG.cpp \
++
++SRCS-yes += \
+ 	Source/FreeImage/PluginPNM.cpp \
+ 	Source/FreeImage/PluginPSD.cpp \
+ 	Source/FreeImage/PluginRAS.cpp \
++
++SRCS-$(USE_RAW) += \
+ 	Source/FreeImage/PluginRAW.cpp \
++
++SRCS-yes += \
+ 	Source/FreeImage/PluginSGI.cpp \
+ 	Source/FreeImage/PluginTARGA.cpp \
++
++SRCS-$(USE_TIFF) += \
+ 	Source/FreeImage/PluginTIFF.cpp \
++
++SRCS-yes += \
+ 	Source/FreeImage/PluginWBMP.cpp \
++
++SRCS-$(USE_WEBP) += \
+ 	Source/FreeImage/PluginWebP.cpp \
++
++SRCS-yes += \
+ 	Source/FreeImage/PluginXBM.cpp \
+ 	Source/FreeImage/PluginXPM.cpp \
+ 	Source/FreeImage/PSDParser.cpp \
+@@ -78,7 +128,11 @@ SRCS = \
+ 	Source/Metadata/IPTC.cpp \
+ 	Source/Metadata/TagConversion.cpp \
+ 	Source/Metadata/TagLib.cpp \
++
++SRCS-$(USE_TIFF) += \
+ 	Source/Metadata/XTIFF.cpp \
++
++SRCS-yes += \
+ 	Source/FreeImageToolkit/Background.cpp \
+ 	Source/FreeImageToolkit/BSplineRotate.cpp \
+ 	Source/FreeImageToolkit/Channels.cpp \
+@@ -87,7 +141,11 @@ SRCS = \
+ 	Source/FreeImageToolkit/CopyPaste.cpp \
+ 	Source/FreeImageToolkit/Display.cpp \
+ 	Source/FreeImageToolkit/Flip.cpp \
++
++SRCS-$(USE_JPEG) += \
+ 	Source/FreeImageToolkit/JPEGTransform.cpp \
++
++SRCS-yes += \
+ 	Source/FreeImageToolkit/MultigridPoissonSolver.cpp \
+ 	Source/FreeImageToolkit/Rescale.cpp \
+ 	Source/FreeImageToolkit/Resize.cpp \
+@@ -98,6 +156,11 @@ SRCS = \
+ 	Wrapper/FreeImagePlus/src/fipTag.cpp \
+ 	Wrapper/FreeImagePlus/src/fipWinImage.cpp \
+ 	Wrapper/FreeImagePlus/src/FreeImagePlus.cpp 
++
++SRCS-$(USE_JPEG) += \
++	Source/transupp.c
++
++SRCS = $(SRCS-yes)
+ INCLUDE = -I. \
+ 	-ISource \
+ 	-ISource/Metadata \
+-- 
+2.19.1
+

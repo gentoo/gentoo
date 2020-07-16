@@ -7,7 +7,6 @@
   </maintainer>
   <use>
     <flag name="client">Build the main game client</flag>
-    <flag name="editor">Build the map editor and compiler</flag>
     <flag name="server">Build the dedicated server</flag>
   </use>
   <upstream>

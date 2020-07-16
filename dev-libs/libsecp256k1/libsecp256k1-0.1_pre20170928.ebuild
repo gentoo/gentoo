@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,20 +7,21 @@ inherit autotools eutils
 
 MyPN=secp256k1
 DESCRIPTION="Optimized C library for EC operations on curve secp256k1"
-HOMEPAGE="https://github.com/bitcoin-core/${MyPN}"
+HOMEPAGE="https://github.com/bitcoin-core/secp256k1"
 COMMITHASH="7a78f60598a6aeb635ef227ead50fb44a209c363"
 SRC_URI="https://github.com/bitcoin-core/${MyPN}/archive/${COMMITHASH}.tar.gz -> ${PN}-v${PV}.tgz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="+asm ecdh endomorphism experimental gmp java +recovery test test_openssl"
+IUSE="+asm ecdh endomorphism experimental gmp java +recovery test test-openssl"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	asm? ( || ( amd64 arm ) arm? ( experimental ) )
 	ecdh? ( experimental )
 	java? ( ecdh )
-	test_openssl? ( test )
+	test-openssl? ( test )
 "
 RDEPEND="
 	gmp? ( dev-libs/gmp:0= )
@@ -28,7 +29,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	java? ( virtual/jdk )
-	test_openssl? ( dev-libs/openssl:0 )
+	test-openssl? ( dev-libs/openssl:0 )
 "
 
 S="${WORKDIR}/${MyPN}-${COMMITHASH}"
@@ -54,7 +55,7 @@ src_configure() {
 		$(use_enable experimental) \
 		$(use_enable java jni) \
 		$(use_enable test tests) \
-		$(use_enable test_openssl openssl-tests) \
+		$(use_enable test-openssl openssl-tests) \
 		$(use_enable ecdh module-ecdh) \
 		$(use_enable endomorphism)  \
 		--with-asm=$asm_opt \

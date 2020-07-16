@@ -1,2 +1,0 @@
-CHOST="armv7a-hardfloat-linux-gnueabi"
-CHOST_arm="${CHOST}"

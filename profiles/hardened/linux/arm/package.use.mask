@@ -1,6 +1,0 @@
-# Copyright 1999-2016 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-# Magnus Granberg <zorry@gentoo.org> (30 Sep 2016)
-# This target supports VTV #547040.
->=sys-devel/gcc-6 -vtv

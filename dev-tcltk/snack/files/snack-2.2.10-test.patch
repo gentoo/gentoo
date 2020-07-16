@@ -20,3 +20,59 @@
  
  test power-1.2 {power command} {
    set s [snack::sound snd -load ex1.wav]
+--- a/tests/mixer.test	2019-05-15 08:41:24.761148030 +0200
++++ b/tests/mixer.test	2019-05-15 08:41:37.902919720 +0200
+@@ -13,12 +13,6 @@
+   set msg
+ } {bad option "junk": must be devices, select, input, inputs, output, outputs, channels, volume, lines, or update}
+ 
+-test mixer-1.2 {snack::mixer devices command} {
+-  set devs [snack::mixer devices]
+-  set res [expr [string length $devs] > 0]
+-  set res
+-} 1
+-
+ test mixer-1.3 {snack::mixer select command} {
+   catch {snack::mixer select junk} msg
+   set msg
+--- a/tests/audio.test	2019-06-22 19:02:01.803975186 +0200
++++ b/tests/audio.test	2019-06-22 19:04:12.368034556 +0200
+@@ -13,38 +13,16 @@
+   set msg
+ } {bad option "junk": must be outputDevices, inputDevices, selectOutput, selectInput, formats, frequencies, active, play_gain, record_gain, elapsedTime, currentSound, playLatency, scaling, encodings, rates, play, stop, or pause}
+ 
+-test audio-1.2 {snack::audio outputDevices command} {
+-  set devs [snack::audio outputDevices]
+-  set res [expr [string length $devs] > 0]
+-  set res
+-} 1
+-
+-test audio-1.3 {snack::audio inputDevices command} {
+-  set devs [snack::audio inputDevices]
+-  set res [expr [string length $devs] > 0]
+-  set res
+-} 1
+-
+ test audio-1.4 {snack::audio selectOutput command} {
+   catch {snack::audio selectOutput junk} msg
+   set msg
+ } {No such device: junk}
+ 
+-test audio-1.5 {snack::audio selectOutput command} {
+-  set dev [lindex [snack::audio outputDevices] 0]
+-  catch {snack::audio selectOutput $dev}
+-} 0
+-
+ test audio-1.6 {snack::audio selectInput command} {
+   catch {snack::audio selectInput junk} msg
+   set msg
+ } {No such device: junk}
+ 
+-test audio-1.7 {snack::audio selectInput command} {
+-  set dev [lindex [snack::audio inputDevices] 0]
+-  catch {snack::audio selectInput $dev}
+-} 0
+-
+ # cleanup
+ ::tcltest::cleanupTests
+ return

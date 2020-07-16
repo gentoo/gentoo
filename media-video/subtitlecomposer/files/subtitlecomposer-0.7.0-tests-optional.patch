@@ -1,0 +1,9 @@
+--- a/src/core/CMakeLists.txt	2019-07-04 21:15:26.000891815 +0200
++++ b/src/core/CMakeLists.txt	2019-07-04 21:15:26.005891858 +0200
+@@ -13,4 +13,6 @@
+ 	CACHE INTERNAL EXPORTEDVARIABLE
+ )
+ 
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()

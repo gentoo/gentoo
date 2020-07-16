@@ -1,23 +1,25 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Library parsing QuarkXpress documents"
-HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/${PN}"
+HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libqxp"
 SRC_URI="https://dev-www.libreoffice.org/src/${PN}/${P}.tar.xz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ppc ppc64 x86"
 IUSE="debug doc test tools"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-libs/librevenge
 	dev-libs/icu:=
+	dev-libs/librevenge
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost
+	test? ( dev-util/cppunit )
 "
 BDEPEND="
 	virtual/pkgconfig
@@ -37,5 +39,5 @@ src_configure() {
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -delete || die
+	find "${D}" -name '*.la' -type f -delete || die
 }

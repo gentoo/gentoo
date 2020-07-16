@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/bbtools/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 RDEPEND="
@@ -33,7 +33,7 @@ src_prepare() {
 	eautoreconf
 }
 
-src_install () {
+src_install() {
 	default
 	dobin scripts/bbmailparsefm.pl
 }

@@ -1,0 +1,143 @@
+From b2ba8d5ade0f9d55c2b51ca41d9c9604662452ad Mon Sep 17 00:00:00 2001
+From: Robert Norris <rw_norris@hotmail.com>
+Date: Mon, 12 Feb 2018 14:16:17 -0800
+Subject: [PATCH] SConstruct: Allow building for Python 3
+
+Still usable with Python 2
+
+Tested:
+scons build-all check
+
+Debian Unstable with python 2.7.14
+OpenSUSE Tumbleweed with python 3.6.4
+---
+ SConstruct | 30 ++++++++++++++++--------------
+ 1 file changed, 16 insertions(+), 14 deletions(-)
+
+diff --git a/SConstruct b/SConstruct
+index c6a309ec3c30..17b47e21342f 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -370,7 +370,7 @@ for flag in ["LDFLAGS", "SHLINKFLAGS", "CPPFLAGS"]:
+ 
+ 
+ # Keep scan-build options in the environment
+-for key, value in os.environ.iteritems():
++for key, value in os.environ.items():
+     if key.startswith('CCC_'):
+         env.Append(ENV={key: value})
+ 
+@@ -476,6 +476,8 @@ if env['sysroot']:
+     env.MergeFlags({"LINKFLAGS": ["--sysroot=%s" % env['sysroot']]})
+ 
+ # Build help
++def cmp(a, b):
++    return (a > b) - (a < b)
+ 
+ Help("""Arguments may be a mixture of switches and targets in any order.
+ Switches apply to the entire build regardless of where they are in the order.
+@@ -859,9 +861,9 @@ else:
+         "dbus_export": ["libdbus-1"],
+     }
+ 
+-    keys = map(lambda x: (x[0], x[2]), boolopts)  \
+-        + map(lambda x: (x[0], x[2]), nonboolopts) \
+-        + map(lambda x: (x[0], x[2]), pathopts)
++    keys = list(map(lambda x: (x[0], x[2]), boolopts))  \
++        + list(map(lambda x: (x[0], x[2]), nonboolopts)) \
++        + list(map(lambda x: (x[0], x[2]), pathopts))
+     keys.sort()
+     for (key, help) in keys:
+         value = env[key]
+@@ -998,7 +1000,7 @@ else:
+ if env['python']:  # May have been turned off by error
+     env['PYTHON'] = target_python_path
+     env['ENV']['PYTHON'] = target_python_path  # For regress-driver
+-    py_config_vars = ast.literal_eval(py_config_text)
++    py_config_vars = ast.literal_eval(py_config_text.decode())
+     py_config_vars = [[] if x is None else x for x in py_config_vars]
+     python_config = dict(zip(PYTHON_CONFIG_NAMES, py_config_vars))
+ 
+@@ -1387,7 +1389,7 @@ else:
+ 
+     python_objects = {}
+     python_compiled_libs = {}
+-    for ext, sources in python_extensions.iteritems():
++    for ext, sources in python_extensions.items():
+         python_objects[ext] = []
+         for src in sources:
+             python_objects[ext].append(
+@@ -1417,7 +1419,7 @@ Platform: UNKNOWN
+     python_egg_info = python_env.Textfile(target="gps-%s.egg-info"
+                                           % (gpsd_version, ),
+                                           source=python_egg_info_source)
+-    python_built_extensions = python_compiled_libs.values()
++    python_built_extensions = list(python_compiled_libs.values())
+     python_targets = python_built_extensions + [python_egg_info]
+ 
+ env.Command(target="packet_names.h", source="packet_states.h", action="""
+@@ -1624,14 +1626,14 @@ if env['xgps']:
+         "xgpsspeed.1": "gps.xml",
+         "xgps.1": "gps.xml",
+     })
+-all_manpages = base_manpages.keys() + python_manpages.keys()
++all_manpages = list(base_manpages.keys()) + list(python_manpages.keys())
+ 
+ man_env = env.Clone()
+ if man_env.GetOption('silent'):
+     man_env['SPAWN'] = filtered_spawn  # Suppress stderr chatter
+ manpage_targets = []
+ if manbuilder:
+-    for (man, xml) in base_manpages.items() + python_manpages.items():
++    for (man, xml) in list(base_manpages.items()) + list(python_manpages.items()):
+         manpage_targets.append(man_env.Man(source=xml, target=man))
+ 
+ # Where it all comes together
+@@ -1682,7 +1684,7 @@ if ((not env['debug'] and not env['profiling'] and not env['nostrip']
+ if not env['python']:
+     python_install = []
+ else:
+-    python_module_dir = python_libdir + os.sep + 'gps'
++    python_module_dir = str(python_libdir) + os.sep + 'gps'
+     python_extensions_install = python_env.Install(DESTDIR + python_module_dir,
+                                                    python_built_extensions)
+     if ((not env['debug'] and not env['profiling']
+@@ -1695,7 +1697,7 @@ else:
+     python_progs_install = python_env.Install(installdir('bindir'),
+                                               python_progs)
+ 
+-    python_egg_info_install = python_env.Install(DESTDIR + python_libdir,
++    python_egg_info_install = python_env.Install(DESTDIR + str(python_libdir),
+                                                  python_egg_info)
+     python_install = [python_extensions_install,
+                       python_modules_install,
+@@ -1712,7 +1714,7 @@ if qt_env:
+ 
+ 
+ maninstall = []
+-for manpage in base_manpages.keys() + python_manpages.keys():
++for manpage in list(base_manpages.keys()) + list(python_manpages.keys()):
+     if not manbuilder and not os.path.exists(manpage):
+         continue
+     section = manpage.split(".")[1]
+@@ -2198,7 +2200,7 @@ htmlpages = Split('''
+     www/writing-a-driver.html
+     ''')
+ 
+-webpages = htmlpages + asciidocs + map(lambda f: f[:-3], glob.glob("www/*.in"))
++webpages = htmlpages + asciidocs + list(map(lambda f: f[:-3], glob.glob("www/*.in")))
+ 
+ www = env.Alias('www', webpages)
+ 
+@@ -2376,7 +2378,7 @@ if os.path.exists("gpsd.c") and os.path.exists(".gitignore"):
+     if ".gitignore" in distfiles:
+         distfiles.remove(".gitignore")
+     distfiles += generated_sources
+-    distfiles += base_manpages.keys() + python_manpages.keys()
++    distfiles += list(base_manpages.keys()) + list(python_manpages.keys())
+     if "packaging/rpm/gpsd.spec" not in distfiles:
+         distfiles.append("packaging/rpm/gpsd.spec")
+ 
+-- 
+2.19.1
+

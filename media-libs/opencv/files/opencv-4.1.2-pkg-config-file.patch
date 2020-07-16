@@ -1,0 +1,11 @@
+--- a/cmake/templates/opencv-XXX.pc.in	2019-12-04 21:28:09.686525699 +0100
++++ b/cmake/templates/opencv-XXX.pc.in	2019-12-04 21:29:21.319265154 +0100
+@@ -3,7 +3,7 @@
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+ libdir=@libdir@
+-includedir_old=@includedir@/opencv
++includedir_old=@includedir@/opencv2
+ includedir_new=@includedir@
+ 
+ Name: OpenCV

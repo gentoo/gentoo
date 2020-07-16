@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-  <!-- maintainer-needed -->
-  <upstream>
-    <remote-id type="github">stefanfoulis/django-phonenumber-field</remote-id>
-    <remote-id type="pypi">django-phonenumber-field</remote-id>
-  </upstream>
-</pkgmetadata>

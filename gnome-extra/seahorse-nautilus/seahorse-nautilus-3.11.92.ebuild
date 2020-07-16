@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI="6"
 GNOME2_LA_PUNT="yes"
+GNOME2_EAUTORECONF="yes"
 
 inherit gnome2
 
@@ -44,6 +44,10 @@ src_prepare() {
 	# Fix icon location, upstream bug #719763
 	sed -i 's/pixmaps\/seahorse-plugins\/48x48/pixmaps\/cryptui\/48x48/' \
 		tool/seahorse-notification.c || die
+
+	# Doesn't really need libgnome-keyring (from Fedora, fixed in
+	# 'master')
+	eapply "${FILESDIR}"/${P}-remove-libgnome-keyring.patch # needs eautoreconf
 
 	gnome2_src_prepare
 }

@@ -1,0 +1,40 @@
+From 6175f89cb618fef83882ed86ab049a7fd1035770 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bo=20=C3=98rsted=20Andresen?= <zlin@exherbo.org>
+Date: Tue, 23 Jul 2019 00:16:19 +0200
+Subject: [PATCH] Fix handling of bpaste urls.
+
+---
+ wgetpaste | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/wgetpaste b/wgetpaste
+index 585fcd9..99eb7f1 100755
+--- a/wgetpaste
++++ b/wgetpaste
+@@ -181,7 +181,8 @@ xml+cheetah xml+django xml+evoque xml+lasso xml+mako xml+myghty xml+php xml+erb
+ xml+velocity xml xquery xslt xtend yaml"
+ EXPIRATIONS_pinnwand="1day 1week 1month never"
+ POST_pinnwand="submit=Paste! % % lexer expiry % code"
+-REGEX_RAW_pinnwand='s|^\(https\?://[^/]*/\)show\(/[[:alnum:]]*/\?\)$|\1raw\2|'
++REGEX_LOC_pinnwand="\(/show/[^ ]*\).*$|https://bpaste.net\1"
++REGEX_RAW_pinnwand='s|^\(https\?://[^/]*/\)show\(/[^ ]*/\?\)$|\1raw\2|'
+ 
+ ### errors
+ die() {
+@@ -550,11 +551,15 @@ postdata() {
+ 
+ # get url from response from server
+ geturl() {
+-	local regex
++	local regex location
+ 	regex=REGEX_URL_$ENGINE
++	location=REGEX_LOC_$ENGINE
+ 	if [[ -n ${!regex} ]]; then
+ 		[[ needstdout = $1 ]] && return 0
+ 		sed -n -e "${!regex}" <<< "$*"
++	elif [[ -n ${!location} ]]; then
++		[[ needstdout = $1 ]] && return 1
++		sed -n -e "s|^.*Location: ${!location}|p" <<< "$*"
+ 	else
+ 		[[ needstdout = $1 ]] && return 1
+ 		sed -n -e 's|^.*Location: \(https\{0,1\}://[^ ]*\).*$|\1|p' <<< "$*"

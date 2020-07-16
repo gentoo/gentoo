@@ -1,0 +1,10 @@
+[Unit]
+Description=ethflopd daemon
+After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/ethflopd
+ExecStart=/usr/bin/ethflopd ${INTERFACE} ${STORAGEDIR}
+
+[Install]
+WantedBy=multi-user.target

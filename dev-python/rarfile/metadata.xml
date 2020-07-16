@@ -5,7 +5,6 @@
     <email>thev00d00@gentoo.org</email>
     <name>Ian Whyman</name>
   </maintainer>
-  <longdescription>This is Python module for RAR archive reading. The interface is made as zipfile like as possible.</longdescription>
   <use>
     <flag name="compressed">Enables the module to support compressed v3 archives by calling the <pkg>app-arch/unrar</pkg>.</flag>
   </use>

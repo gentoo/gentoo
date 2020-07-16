@@ -1,21 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-if [[ ${PV} = *9999* ]]; then
-	EGIT_REPO_URI="https://github.com/jjwhitney/BDelta.git"
-	UNPACKER_ECLASS="git-2"
-	LIVE_EBUILD=yes
-else
-	UNPACKER_ECLASS="vcs-snapshot"
-fi
-
-inherit toolchain-funcs ${UNPACKER_ECLASS}
+inherit toolchain-funcs vcs-snapshot
 
 if [[ -z ${LIVE_EBUILD} ]]; then
 	KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~x86-linux"
-	SRC_URI="https://github.com/jjwhitney/BDelta/tarball/v${PV} -> ${P}.tar.gz"
+	SRC_URI="https://github.com/jjwhitney/BDelta/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 DESCRIPTION="Binary Delta - Efficient difference algorithm and format"

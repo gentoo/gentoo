@@ -111,7 +111,7 @@ hprefixify() {
 }
 
 # @FUNCTION: prefixify_ro
-# @USAGE: prefixify_ro <file>.
+# @USAGE: <file>
 # @DESCRIPTION:
 # prefixify a read-only file.
 # copies the files to ${T}, prefixies it, echos the new file.

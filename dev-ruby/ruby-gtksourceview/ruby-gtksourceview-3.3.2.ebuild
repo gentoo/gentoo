@@ -11,7 +11,7 @@ inherit virtualx ruby-ng-gnome2
 RUBY_S=ruby-gnome2-all-${PV}/gtksourceview2
 
 DESCRIPTION="Ruby bindings for gtksourceview"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE=""
 
 RDEPEND+=" x11-libs/gtksourceview:2.0"
@@ -28,5 +28,5 @@ all_ruby_prepare() {
 }
 
 each_ruby_test() {
-	virtx ${RUBY} test/run-test.rb || die
+	virtx ${RUBY} test/run-test.rb
 }

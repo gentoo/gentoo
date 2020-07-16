@@ -7,34 +7,34 @@ port						= 3306
 socket						= @GENTOO_PORTAGE_EPREFIX@/var/run/mysqld/mysqld.sock
 
 [mysql]
-character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mysql/charsets
+character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mariadb/charsets
 default-character-set=utf8
 
 [mysqladmin]
-character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mysql/charsets
+character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mariadb/charsets
 default-character-set=utf8
 
 [mysqlcheck]
-character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mysql/charsets
+character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mariadb/charsets
 default-character-set=utf8
 
 [mysqldump]
-character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mysql/charsets
+character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mariadb/charsets
 default-character-set=utf8
 
 [mysqlimport]
-character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mysql/charsets
+character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mariadb/charsets
 default-character-set=utf8
 
 [mysqlshow]
-character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mysql/charsets
+character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mariadb/charsets
 default-character-set=utf8
 
 [myisamchk]
-character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mysql/charsets
+character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mariadb/charsets
 
 [myisampack]
-character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mysql/charsets
+character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mariadb/charsets
 
 # use [safe_mysqld] with mysql-3
 [mysqld_safe]
@@ -59,7 +59,7 @@ net_buffer_length 			= 8K
 read_buffer_size 			= 256K
 read_rnd_buffer_size 		= 512K
 myisam_sort_buffer_size 	= 8M
-lc_messages_dir			= @GENTOO_PORTAGE_EPREFIX@/usr/share/mysql
+lc_messages_dir			= @GENTOO_PORTAGE_EPREFIX@/usr/share/mariadb
 #Set this to your desired error message language
 lc_messages			= en_US
 

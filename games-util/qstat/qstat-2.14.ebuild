@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,6 +17,10 @@ IUSE="debug"
 DEPEND="!sys-cluster/torque"
 
 DOCS=( CHANGES.txt COMPILE.txt template/README.txt )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc-10.patch
+)
 
 src_prepare() {
 	default

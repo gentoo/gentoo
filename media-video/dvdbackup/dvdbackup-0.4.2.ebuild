@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,10 +16,10 @@ RDEPEND=">=media-libs/libdvdread-4.2.0_pre
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
+PATCHES=( "${FILESDIR}/libdvdread-6.1.0.diff" )
 
 src_configure() {
 	econf \
 		$(use_enable nls) \
-		--disable-rpath \
-		--docdir=/usr/share/doc/${PF}
+		--disable-rpath
 }

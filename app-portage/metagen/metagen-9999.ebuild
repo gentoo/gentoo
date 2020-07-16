@@ -1,14 +1,14 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-PYTHON_COMPAT=( python2_7 )
+EAPI="7"
+PYTHON_COMPAT=( python3_{6,7,8} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="metadata.xml generator for ebuilds"
 HOMEPAGE="https://cgit.gentoo.org/proj/metagen.git"
-SRC_URI=""
 EGIT_REPO_URI="git://anongit.gentoo.org/proj/metagen.git"
 
 LICENSE="GPL-2"
@@ -16,21 +16,20 @@ SLOT="0"
 KEYWORDS=""
 
 IUSE=""
-DEPEND=">=dev-python/jaxml-3.01[${PYTHON_USEDEP}]
-	|| (
-		( >=sys-apps/portage-2.3.0_rc1[${PYTHON_USEDEP}] app-portage/repoman[${PYTHON_USEDEP}] )
-		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-	)"
+DEPEND="dev-python/lxml[${PYTHON_USEDEP}]
+	sys-apps/portage[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
-
-python_install() {
-	distutils-r1_python_install
-	python_newscript metagen/main.py metagen
-}
 
 python_install_all() {
 	distutils-r1_python_install_all
 	doman docs/metagen.1
+}
+
+src_install() {
+	distutils-r1_src_install
+
+	# Address expected path warning for /usr/share/doc/metagen-<not-9999>
+	mv "${D}"/usr/share/doc/metagen-{*,${PV}}/ || die
 }
 
 python_test() {

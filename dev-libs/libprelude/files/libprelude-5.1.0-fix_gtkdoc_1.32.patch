@@ -1,0 +1,13 @@
+--- a/docs/api/libprelude-docs.xml
++++ b/docs/api/libprelude-docs.xml
+@@ -51,10 +51,6 @@
+     <xi:include href="xml/idmef-value.xml"/>
+ 
+   </chapter>
+-  <chapter id="object-tree">
+-    <title>Object Hierarchy</title>
+-     <xi:include href="xml/tree_index.sgml"/>
+-  </chapter>
+   <index id="api-index-full">
+     <title>API Index</title>
+     <xi:include href="xml/api-index-full.xml"><xi:fallback /></xi:include>

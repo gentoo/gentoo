@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Tests for compliance with X RENDER extension"
 HOMEPAGE="https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/test/rendercheck"
-SRC_URI="mirror://xorg/app/${P}.tar.bz2"
+SRC_URI="https://www.x.org/releases/individual/app/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"

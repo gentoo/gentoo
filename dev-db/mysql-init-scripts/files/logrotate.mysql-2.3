@@ -9,6 +9,9 @@ size 5M
 sharedscripts
 missingok
 postrotate
-  /bin/kill -HUP $(cat $(my_print_defaults server mysqld mariadb | grep 'pid[_-]file' | cut -d = -f 2))
+	pidfile=$(my_print_defaults server mysqld mariadb | grep 'pid[_-]file' | tail -n 1 | cut -d = -f 2)
+	if [ -s "${pidfile}" ] ; then
+		/bin/kill -HUP $(cat "${pidfile}")
+	fi
 endscript
 }

@@ -1,1 +1,0 @@
-d /run/rethinkdb 0755 rethinkdb rethinkdb -

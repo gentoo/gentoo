@@ -1,23 +1,24 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python3_{6,7} )
+EGIT_REPO_URI="https://github.com/MeVisLab/pythonqt.git"
 
-MY_P=${PN}${PV}
-
-inherit qmake-utils python-single-r1 subversion
+inherit git-r3 qmake-utils python-single-r1 virtualx
 
 DESCRIPTION="A dynamic Python binding for the Qt framework"
-HOMEPAGE="http://pythonqt.sourceforge.net/"
+HOMEPAGE="https://mevislab.github.io/pythonqt"
 SRC_URI=""
-ESVN_REPO_URI="https://pythonqt.svn.sourceforge.net/svnroot/pythonqt/trunk"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc +extensions webkit"
+IUSE="debug doc examples +extensions test"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RESTRICT="!test? ( test )"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-qt/qtcore:5
@@ -34,29 +35,31 @@ RDEPEND="${PYTHON_DEPS}
 		dev-qt/qtsvg:5
 		dev-qt/qtxml:5
 		dev-qt/qtxmlpatterns:5
-		webkit? ( dev-qt/qtwebkit:5 )
 	)"
 DEPEND="${RDEPEND}
 	dev-qt/qtxml:5
+	test? ( dev-qt/qttest:5 )"
+BDEPEND="app-arch/unzip
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
-
-S="${WORKDIR}/${MY_P}"
-
-REQUIRED_USE="webkit? ( extensions ) ${PYTHON_REQUIRED_USE}"
 
 src_prepare() {
 	default
 
+	if ! use examples ; then
+		sed -i '/SUBDIRS/s/examples//' PythonQt.pro || die "sed for examples"
+	fi
 	if ! use extensions ; then
 		sed -i '/SUBDIRS/s/extensions//' PythonQt.pro || die "sed for extensions"
 	fi
-	if ! use webkit ; then
-		# Remove webkit support if not used
-		sed -i '/qtHaveModule(webkit):CONFIG += PythonQtWebKit/d' \
-			extensions/PythonQt_QtAll/PythonQt_QtAll.pro \
-			|| die "sed for webkit"
+	if ! use test ; then
+		sed -i '/SUBDIRS/s/tests//' PythonQt.pro || die "sed for test"
 	fi
+
+	# Remove webkit support if not used
+	sed -i '/qtHaveModule(webkit):CONFIG += PythonQtWebKit/d' \
+		extensions/PythonQt_QtAll/PythonQt_QtAll.pro \
+		|| die "sed for webkit"
 
 	# Unset python version to use python-config
 	sed -i "/unix:PYTHON_VERSION=/s/2.7//" build/python.prf \
@@ -64,7 +67,12 @@ src_prepare() {
 }
 
 src_configure() {
-	eqmake5 PREFIX="${ED%/}"/usr
+	eqmake5 CONFIG+="$(usex debug debug release '' '')" PREFIX="${ED}"/usr
+}
+
+src_test() {
+	LD_PRELOAD="${S}"/lib/libPythonQt-Qt5-Python"$(usex debug _d '' '' '')".so.3 \
+		virtx ./lib/PythonQtTest"$(usex debug _d '' '' '')"
 }
 
 src_install() {

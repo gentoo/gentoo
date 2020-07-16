@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<use>
+		<flag name="apng">support unofficial APNG (Animated PNG) spec</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:libpng:libpng</remote-id>
+		<remote-id type="sourceforge">apng</remote-id>
+	</upstream>
+	<slots>
+		<slot name="0">For building against. This is the only slot
+			that provides headers and command line tools.</slot>
+		<slot name="1.2">For binary compatibility, provides libpng12.so.0
+			only.</slot>
+		<slot name="1.5">For binary compatibility, provides libpng15.so.15
+			only.</slot>
+		<subslots>Reflect ABI compatibility for libpng.so.</subslots>
+	</slots>
+</pkgmetadata>

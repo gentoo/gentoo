@@ -1,0 +1,27 @@
+From e5b2ada1a6f06e0eea76af1f26ff4c0c4aad8497 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Manuel=20R=C3=BCger?= <manuel@rueg.eu>
+Date: Thu, 23 Jan 2020 11:00:06 +0100
+Subject: ColorScheme: Fix DarkBackground Detection
+
+Luminance is a value between 0 and 100.
+
+https://bugs.kde.org/show_bug.cgi?id=416638
+---
+ src/ColorScheme.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/ColorScheme.cpp b/src/ColorScheme.cpp
+index 1693c22..5d6b408 100644
+--- a/src/ColorScheme.cpp
++++ b/src/ColorScheme.cpp
+@@ -403,7 +403,7 @@ bool ColorScheme::hasDarkBackground() const
+     const double g = backgroundColor().greenF();
+     const double b = backgroundColor().blueF();
+     rgb2hsluv(r, g, b, &h, &s, &l);
+-    return l < 0.5;
++    return l < 50;
+ }
+ 
+ void ColorScheme::setOpacity(qreal opacity)
+-- 
+cgit v1.1

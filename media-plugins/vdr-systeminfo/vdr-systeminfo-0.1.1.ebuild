@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,12 +11,12 @@ SRC_URI="http://firefly.vdr-developer.org/systeminfo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=">=media-video/vdr-1.4.7"
 
-RDEPEND="sys-apps/lm_sensors
+RDEPEND="sys-apps/lm-sensors
 		app-admin/hddtemp"
 
 src_install() {

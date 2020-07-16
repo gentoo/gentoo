@@ -121,7 +121,7 @@ start() {
 #	local startup_early_timeout=${STARTUP_EARLY_TIMEOUT:-1000}
 	local tmpnice="${NICE:+"--nicelevel "}${NICE}"
 	local tmpionice="${IONICE:+"--ionice "}${IONICE}"
-	supervise-daemon \
+	supervise-daemon "${SVCNAME}" \
 		${DEBUG:+"--verbose"} \
 		--pidfile "/run/${SVCNAME}.pid" \
 		${tmpnice} \
@@ -146,7 +146,7 @@ stop() {
 
 	ebegin "Stopping $(mysql_svcname)"
 
-	supervise-daemon \
+	supervise-daemon "${SVCNAME}" \
 		${DEBUG:+"--verbose"} \
 		--stop \
 		--pidfile "/run/${SVCNAME}.pid"

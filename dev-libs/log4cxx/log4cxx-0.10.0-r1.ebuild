@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,12 +6,12 @@ EAPI=6
 MY_P=apache-${P}
 
 DESCRIPTION="Library of C++ classes for logging to files, syslog and other destinations"
-HOMEPAGE="http://logging.apache.org/log4cxx/"
+HOMEPAGE="https://logging.apache.org/log4cxx/"
 SRC_URI="mirror://apache/logging/${PN}/${PV}/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~ppc-macos"
 IUSE="iodbc unicode odbc smtp"
 
 RDEPEND="dev-libs/apr:1

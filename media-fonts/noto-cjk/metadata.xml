@@ -6,10 +6,6 @@
 		<name>Fonts</name>
 	</maintainer>
 	<maintainer type="person">
-		<email>floppym@gentoo.org</email>
-		<name>Mike Gilbert</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>pacho@gentoo.org</email>
 		<name>Pacho Ramos</name>
 	</maintainer>

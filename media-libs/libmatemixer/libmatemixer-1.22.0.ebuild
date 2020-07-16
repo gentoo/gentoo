@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,11 +6,11 @@ EAPI=6
 inherit mate
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="Mixer library for MATE Desktop"
-LICENSE="LGPL-2 GPL-2"
+LICENSE="LGPL-2+"
 SLOT="0"
 
 IUSE="+alsa oss pulseaudio"

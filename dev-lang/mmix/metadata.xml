@@ -5,4 +5,8 @@
 		<email>tamiko@gentoo.org</email>
 		<name>Matthias Maier</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>slyfox@gentoo.org</email>
+		<name>Sergei Trofimovich</name>
+	</maintainer>
 </pkgmetadata>

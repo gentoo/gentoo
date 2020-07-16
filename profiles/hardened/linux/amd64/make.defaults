@@ -1,9 +1,0 @@
-# Copyright 1999-2012 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License v2
-
-USE="-pic"
-
-CFLAGS="-O2 -pipe"
-CXXFLAGS="${CFLAGS}"
-FFLAGS="${CFLAGS}"
-FCFLAGS="${CFLAGS}"

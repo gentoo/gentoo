@@ -1,0 +1,30 @@
+From 3b83adc89771000eb95fcd87bb675f771ba85aaf Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sun, 29 Mar 2020 16:36:14 -0400
+Subject: [PATCH] Avoid integer size conflict when setting stylemap
+
+stylemap is a 16-bit integer, but hexmap writes 32-bits.
+
+Bug: https://bugs.gentoo.org/642756
+---
+ fontforge/sfd.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/fontforge/sfd.c b/fontforge/sfd.c
+index 9517d8cb1..b638fe447 100644
+--- a/fontforge/sfd.c
++++ b/fontforge/sfd.c
+@@ -8104,7 +8104,9 @@ bool SFD_GetFontMetaData( FILE *sfd,
+     }
+     else if ( strmatch(tok,"StyleMap:")==0 )
+     {
+-    gethex(sfd,(uint32 *)&sf->pfminfo.stylemap);
++	uint32 u;
++	gethex(sfd,&u);
++	sf->pfminfo.stylemap = u;
+     }
+     /* Legacy attribute for StyleMap. Deprecated. */
+     else if ( strmatch(tok,"OS2StyleName:")==0 )
+-- 
+2.26.0.rc2
+

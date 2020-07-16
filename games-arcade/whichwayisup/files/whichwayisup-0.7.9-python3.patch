@@ -1,0 +1,470 @@
+Author: Reiner Herrmann <reiner@reiner-h.de>
+Description: Port game to python3
+Bug-Debian: https://bugs.debian.org/912500
+
+--- a/run_game.py
++++ b/run_game.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/env python3
+ 
+ import sys
+ import os
+--- a/lib/util.py
++++ b/lib/util.py
+@@ -113,12 +113,12 @@
+   try:
+     conffile = codecs.open(file_path, "w", "utf_8")
+     for world in WORLDS:
+-      print >> conffile, "unlocked\t%(world)s\t%(unlocked)s" % {"world": world, "unlocked": Variables.vdict["unlocked" + world]}
+-      print >> conffile, "hiscore\t%(world)s\t%(hiscore)s" % {"world": world, "hiscore": Variables.vdict["hiscore" + world]}
+-      print >> conffile, "besttime\t%(world)s\t%(besttime)s" % {"world": world, "besttime": Variables.vdict["besttime" + world]}
+-    print >> conffile, "sound\t%s" % bool_to_str(Variables.vdict["sound"])
+-    print >> conffile, "dialogue\t%s" % bool_to_str(Variables.vdict["dialogue"])
+-    print >> conffile, "fullscreen\t%s" % bool_to_str(Variables.vdict["fullscreen"])
++      print("unlocked\t%(world)s\t%(unlocked)s" % {"world": world, "unlocked": Variables.vdict["unlocked" + world]}, file=conffile)
++      print("hiscore\t%(world)s\t%(hiscore)s" % {"world": world, "hiscore": Variables.vdict["hiscore" + world]}, file=conffile)
++      print("besttime\t%(world)s\t%(besttime)s" % {"world": world, "besttime": Variables.vdict["besttime" + world]}, file=conffile)
++    print("sound\t%s" % bool_to_str(Variables.vdict["sound"]), file=conffile)
++    print("dialogue\t%s" % bool_to_str(Variables.vdict["dialogue"]), file=conffile)
++    print("fullscreen\t%s" % bool_to_str(Variables.vdict["fullscreen"]), file=conffile)
+   except:
+     error_message("Could not write configuration file to " + file_path)
+     return False
+@@ -136,13 +136,13 @@
+       count += 1
+       if count > MAX_OLD_LOG_LINES:
+         break
+-  if Variables.vdict.has_key("log"):
++  if "log" in Variables.vdict:
+     try:
+       conffile = codecs.open(file_path, "w", "utf_8")
+-      print >> conffile, "Log updated " + str(datetime.date.today())
+-      print >> conffile, Variables.vdict["log"]
+-      print >> conffile, ""
+-      print >> conffile, old_log
++      print("Log updated " + str(datetime.date.today()), file=conffile)
++      print(Variables.vdict["log"], file=conffile)
++      print("", file=conffile)
++      print(old_log, file=conffile)
+     except:
+       error_message("Could not write log file to " + file_path)
+       return False
+@@ -166,7 +166,7 @@
+ The constant colors can be found from locals.py.
+ '''
+ def render_text(string, color = COLOR_GUI, bgcolor = COLOR_GUI_BG):
+-  if Util.cached_text_images.has_key(string + str(color) + str(bgcolor)):
++  if (string + str(color) + str(bgcolor)) in Util.cached_text_images:
+     final_image = Util.cached_text_images[string + str(color) + str(bgcolor)]
+   else:
+     text_image_bg = Util.smallfont.render(string, True, bgcolor)
+@@ -200,8 +200,8 @@
+   rendered_string = string[0:phase]
+   string_image = render_text(rendered_string)
+   string_rect = string_image.get_rect()
+-  string_rect.centerx = SCREEN_WIDTH / 2
+-  string_rect.centery = SCREEN_HEIGHT / 2
++  string_rect.centerx = SCREEN_WIDTH // 2
++  string_rect.centery = SCREEN_HEIGHT // 2
+ 
+   if key == "p":
+     skip_image = Util.cached_images["key_p"]
+@@ -209,7 +209,7 @@
+     skip_image = Util.cached_images["key_z"]
+ 
+   skip_rect = skip_image.get_rect()
+-  skip_rect.centerx = SCREEN_WIDTH / 2
++  skip_rect.centerx = SCREEN_WIDTH // 2
+   skip_rect.top = string_rect.bottom + 5
+ 
+   bg_rect = pygame.Rect(string_rect.left - 10, string_rect.top - 5, string_rect.width + 20, string_rect.height + skip_rect.height + 15)
+--- a/lib/animation.py
++++ b/lib/animation.py
+@@ -58,9 +58,9 @@
+             self.finished = True
+           else:
+             self.i = 0
+-        if Animation.cached_frames.has_key(self.cache_name + str(self.i)):
++        if (self.cache_name + str(self.i)) in Animation.cached_frames:
+           self.image = Animation.cached_frames[self.cache_name + str(self.i)]
+         else:
+           self.image = (self.frames[self.i]).get_image()
+           Animation.cached_frames[self.cache_name + str(self.i)] = self.image
+-    return self.image
+\ No newline at end of file
++    return self.image
+--- a/lib/edit_utils.py
++++ b/lib/edit_utils.py
+@@ -16,23 +16,23 @@
+     return
+ 
+   def update(self, inputs):
+-    if inputs.has_key("REMOVE_TILE"):
++    if "REMOVE_TILE" in inputs:
+       return Change("remove", self.cursor)
+-    if inputs.has_key("ADD_TILE_WALL"):
++    if "ADD_TILE_WALL" in inputs:
+       return Change("W", self.cursor)
+-    if inputs.has_key("ADD_TILE_SPIKES"):
++    if "ADD_TILE_SPIKES" in inputs:
+       return Change("S", self.cursor)
+-    if inputs.has_key("ADD_TILE_BARS"):
++    if "ADD_TILE_BARS" in inputs:
+       return Change("B", self.cursor)
+-    if inputs.has_key("SAVE_TILES"):
++    if "SAVE_TILES" in inputs:
+       return Change("save", (0, 0))
+-    if inputs.has_key("EDIT_RIGHT") and self.cursor[0] < (TILES_HOR - 1):
++    if "EDIT_RIGHT" in inputs and self.cursor[0] < (TILES_HOR - 1):
+       self.cursor[0] += 1
+-    if inputs.has_key("EDIT_LEFT") and self.cursor[0] > 0:
++    if "EDIT_LEFT" in inputs and self.cursor[0] > 0:
+       self.cursor[0] -= 1
+-    if inputs.has_key("EDIT_DOWN") and self.cursor[1] < (TILES_VER - 1):
++    if "EDIT_DOWN" in inputs and self.cursor[1] < (TILES_VER - 1):
+       self.cursor[1] += 1
+-    if inputs.has_key("EDIT_UP") and self.cursor[1] > 0:
++    if "EDIT_UP" in inputs and self.cursor[1] > 0:
+       self.cursor[1] -= 1
+     return None
+ 
+--- a/lib/game.py
++++ b/lib/game.py
+@@ -265,7 +265,7 @@
+     trigger = None
+ 
+     if scripted_event_on:
+-      if inputs.has_key("JUMP") or inputs.has_key("DOWN"):
++      if "JUMP" in inputs or "DOWN" in inputs:
+         cleared = True
+ 
+     moved = False
+@@ -277,20 +277,20 @@
+       #There isn't anything special going on: player can control the character
+       #Translates input to commands to the player object
+       add_time = True
+-      if inputs.has_key("LEFT"):
++      if "LEFT" in inputs:
+         player.move((-PLAYER_MAX_ACC, 0))
+         moved = True
+ 
+-      if inputs.has_key("RIGHT"):
++      if "RIGHT" in inputs:
+         player.move((PLAYER_MAX_ACC, 0))
+         moved = True
+ 
+-      if inputs.has_key("JUMP"):
++      if "JUMP" in inputs:
+         if (player.on_ground):
+           count = 0
+           while (count < 5):
+             count += 1
+-            particles.append(Particle(screen, 10, player.rect.centerx - player.dx / 4 + random.uniform(-3, 3), player.rect.bottom, -player.dx * 0.1, -0.5, 0.3, level.dust_color, 4))
++            particles.append(Particle(screen, 10, player.rect.centerx - player.dx // 4 + random.uniform(-3, 3), player.rect.bottom, -player.dx * 0.1, -0.5, 0.3, level.dust_color, 4))
+           player.jump()
+ 
+           #The blobs always try to jump when the player jumps
+@@ -299,10 +299,10 @@
+             if o.itemclass == "blob":
+               o.jump()
+ 
+-      if inputs.has_key("UP") and not player.on_ground:
++      if "UP" in inputs and not player.on_ground:
+         player.jump()
+ 
+-      if inputs.has_key("DOWN"):
++      if "DOWN" in inputs:
+         pick_up_item = level.pick_up(player.x, player.y)
+         if pick_up_item != None:
+           play_sound("coins")
+@@ -314,10 +314,10 @@
+           trigger = level.trigger(player.x, player.y)
+ 
+       #Debug command for flipping:
+-      if inputs.has_key("SPECIAL"):
++      if "SPECIAL" in inputs:
+         trigger = Trigger(TRIGGER_FLIP, player.x, player.y)
+ 
+-    if inputs.has_key("PAUSE") and player.current_animation != "dying":
++    if "PAUSE" in inputs and player.current_animation != "dying":
+       paused = not paused
+ 
+     #Decelerates the player, if he doesn't press any movement keys or when he is dead and on the ground
+@@ -344,7 +344,7 @@
+     #Dust effect rising from the character's feet:
+ 
+     if (player.current_animation == "walking"):
+-      particles.append(Particle(screen, 10, player.rect.centerx - player.dx / 2 + random.uniform(-2, 2), player.rect.bottom, -player.dx * 0.1, 0.1, 0.3, level.dust_color))
++      particles.append(Particle(screen, 10, player.rect.centerx - player.dx // 2 + random.uniform(-2, 2), player.rect.bottom, -player.dx * 0.1, 0.1, 0.3, level.dust_color))
+ 
+     #Updating level and objects:
+ 
+@@ -455,7 +455,7 @@
+             player.orientation = current_scripted_event_element.orientation
+           current_scripted_event_element.finished = True
+         elif current_scripted_event_element.event_type == "change_level":
+-          score.score += (5 + score_mod) * ((player.life + 4) / 5 + 12)
++          score.score += (5 + score_mod) * ((player.life + 4) // 5 + 12)
+           score.levels += 1
+           current_scripted_event_element.finished = True
+           if player.current_animation != "gone":
+--- a/lib/level.py
++++ b/lib/level.py
+@@ -129,8 +129,8 @@
+     self.bg_animations["default"] = Animation(self.set + "_background", "static")
+     self.current_animation = "default"
+     self.rect = (self.bg_animations[self.current_animation].update_and_get_image()).get_rect()
+-    self.rect.centerx = SCREEN_WIDTH / 2
+-    self.rect.centery = SCREEN_HEIGHT / 2
++    self.rect.centerx = SCREEN_WIDTH // 2
++    self.rect.centery = SCREEN_HEIGHT // 2
+ 
+     self.reset_active_tiles()
+     return
+@@ -217,7 +217,7 @@
+ 
+   #Checks the point for solid ground
+   def ground_check(self, x, y):
+-    if self.cached_ground_check.has_key(str(x) + "_" +  str(y)):
++    if (str(x) + "_" +  str(y)) in self.cached_ground_check:
+       return self.cached_ground_check[str(x) + "_" +  str(y)]
+     else:
+       if x > SCREEN_WIDTH or y > SCREEN_HEIGHT or x < 0 or y < 0:
+@@ -333,7 +333,7 @@
+   def remove_tile(self, coords):
+     """Remove a tile from the level with coordinates relative to the corner of the area currently visible."""
+     for t in self.active_tiles:
+-      if t.rect.collidepoint(coords[0]*TILE_DIM + TILE_DIM / 2, coords[1]*TILE_DIM + TILE_DIM / 2):
++      if t.rect.collidepoint(coords[0]*TILE_DIM + TILE_DIM // 2, coords[1]*TILE_DIM + TILE_DIM // 2):
+         self.active_tiles.remove(t)
+         self.tiles.remove(t)
+         self.edited = True
+--- a/lib/log.py
++++ b/lib/log.py
+@@ -15,7 +15,7 @@
+     """Add a message to the message log, which can be written on disk later."""
+ 
+     #Multiple messages of the same type aren't added to the log:
+-    if Variables.vdict.has_key("last_log_message"):
++    if "last_log_message" in Variables.vdict:
+       if string == Variables.vdict["last_log_message"]:
+         return
+         
+@@ -24,9 +24,9 @@
+ 
+     Variables.vdict["last_log_message"] = string
+ 
+-    if Variables.vdict.has_key("log"):
++    if "log" in Variables.vdict:
+         Variables.vdict["log"] = string + "\n" + Variables.vdict["log"]
+     else:
+         Variables.vdict["log"] = string
+ 
+-    return
+\ No newline at end of file
++    return
+--- a/lib/sound.py
++++ b/lib/sound.py
+@@ -25,7 +25,7 @@
+   if not Variables.vdict["sound"]:
+     return
+   snd = None
+-  if (not sounds.has_key(sound_id)):
++  if sound_id not in sounds:
+     try:
+       sound_path = data.filepath(os.path.join("sounds", sound_id + ".ogg"))
+       snd = sounds[sound_id] = pygame.mixer.Sound(sound_path)
+--- a/lib/visibleobject.py
++++ b/lib/visibleobject.py
+@@ -27,9 +27,9 @@
+     self.x = x
+     self.y = y
+     if (self.x == None):
+-      self.x = SCREEN_WIDTH / 2
++      self.x = SCREEN_WIDTH // 2
+     if (self.y == None):
+-      self.y = SCREEN_HEIGHT / 2
++      self.y = SCREEN_HEIGHT // 2
+ 
+     self.flipping = False
+     self.flipcounter = 0
+@@ -122,7 +122,7 @@
+ 
+   def die(self):
+     """Make the object die - if the object has a death animation, it will be played first."""
+-    if self.animations.has_key("dying"):
++    if "dying" in self.animations:
+       self.current_animation = "dying"
+     else:
+       self.dead = True
+--- a/lib/player.py
++++ b/lib/player.py
+@@ -79,7 +79,7 @@
+ 
+     blood = []
+ 
+-    if collision_type > 0:
++    if collision_type and collision_type > 0:
+       blood = self.take_damage(collision_type)
+       if self.current_animation != "dying":
+         self.dy -= collision_type*PLAYER_JUMP_ACC / 4.5
+--- a/lib/object.py
++++ b/lib/object.py
+@@ -34,7 +34,7 @@
+     self.initial_y = y
+     self.gravity = gravity
+     self.colliding = colliding
+-    self.active = (self.x + self.rect.width / 2 > 0) and (self.y + self.rect.height / 2 > 0)
++    self.active = (self.x + self.rect.width // 2 > 0) and (self.y + self.rect.height // 2 > 0)
+ 
+     self.on_ground = False
+ 
+@@ -76,7 +76,7 @@
+     VisibleObject.update(self)
+ 
+     if self.flip_finished and self.itemclass != "player":
+-      self.active = (self.x + self.rect.width / 2 > 0) and (self.y + self.rect.height / 2 > 0)
++      self.active = (self.x + self.rect.width // 2 > 0) and (self.y + self.rect.height // 2 > 0)
+ 
+     if self.flipping:
+       return
+@@ -101,9 +101,9 @@
+     """Make the object flip with the level to either direction"""
+     if VisibleObject.flip(self, flip_direction):
+       if flip_direction == CLOCKWISE:
+-        self.initial_x, self.initial_y = -self.initial_y + PLAY_AREA_WIDTH / TILES_HOR * (TILES_HOR*2 - FULL_TILES_HOR), self.initial_x
++        self.initial_x, self.initial_y = -self.initial_y + PLAY_AREA_WIDTH // TILES_HOR * (TILES_HOR*2 - FULL_TILES_HOR), self.initial_x
+       else:
+-        self.initial_x, self.initial_y = self.initial_y, -self.initial_x + PLAY_AREA_WIDTH / TILES_HOR * (TILES_HOR*2 - FULL_TILES_HOR)
++        self.initial_x, self.initial_y = self.initial_y, -self.initial_x + PLAY_AREA_WIDTH // TILES_HOR * (TILES_HOR*2 - FULL_TILES_HOR)
+     return
+ 
+   def check_collisions(self, level):
+@@ -116,25 +116,25 @@
+ 
+     self.on_ground = False
+ 
+-    if self.x < 0 + self.rect.width / 2:
+-      self.x = 0 + self.rect.width  / 2
++    if self.x < 0 + self.rect.width // 2:
++      self.x = 0 + self.rect.width  // 2
+       self.dx = 0
+       collision_type = 0
+ 
+-    if self.x > PLAY_AREA_WIDTH - self.rect.width  / 2:
+-      self.x = PLAY_AREA_WIDTH - self.rect.width  / 2
++    if self.x > PLAY_AREA_WIDTH - self.rect.width  // 2:
++      self.x = PLAY_AREA_WIDTH - self.rect.width  // 2
+       self.dx = 0
+       collision_type = 0
+ 
+     # The commented block is the collision code for the upper edge of the screen.
+     # The spiders and projectiles might need this, but they use simplified
+     # collision detection for better performance anyway.
+-    '''if self.y < 0 + self.rect.height / 2:
+-      self.y = 0 + self.rect.height  / 2
++    '''if self.y < 0 + self.rect.height // 2:
++      self.y = 0 + self.rect.height  // 2
+       self.dy = 0'''
+ 
+-    if self.y > PLAY_AREA_HEIGHT - self.rect.height / 2:
+-      self.y = PLAY_AREA_HEIGHT - self.rect.height  / 2
++    if self.y > PLAY_AREA_HEIGHT - self.rect.height // 2:
++      self.y = PLAY_AREA_HEIGHT - self.rect.height  // 2
+       self.dy = 0
+       self.on_ground = True
+       collision_type = 0
+--- a/lib/locals.py
++++ b/lib/locals.py
+@@ -16,8 +16,8 @@
+ 
+ TILE_DIM = 40
+ 
+-PLAY_AREA_CENTER_X = (-FULL_TILES_HOR / 2 + TILES_HOR) * TILE_DIM
+-PLAY_AREA_CENTER_Y = (-FULL_TILES_VER / 2 + TILES_VER) * TILE_DIM
++PLAY_AREA_CENTER_X = (-FULL_TILES_HOR // 2 + TILES_HOR) * TILE_DIM
++PLAY_AREA_CENTER_Y = (-FULL_TILES_VER // 2 + TILES_VER) * TILE_DIM
+ 
+ GRAVITY = 1.0
+ GRAVITY_PARTICLE = 0.5
+--- a/lib/mainmenu.py
++++ b/lib/mainmenu.py
+@@ -73,19 +73,19 @@
+ 
+     menu_image = render_text("World " + str(self.world.number) + ": " + self.world.name, COLOR_GUI)
+     rect = menu_image.get_rect()
+-    rect.centerx = SCREEN_WIDTH / 2
++    rect.centerx = SCREEN_WIDTH // 2
+     rect.top = GUI_MENU_TOP - 75
+     self.bgscreen.blit(menu_image, rect)
+ 
+     menu_image = render_text(score_text, COLOR_GUI)
+     rect = menu_image.get_rect()
+-    rect.centerx = SCREEN_WIDTH / 2
++    rect.centerx = SCREEN_WIDTH // 2
+     rect.top = GUI_MENU_TOP - 50
+     self.bgscreen.blit(menu_image, rect)
+ 
+     menu_image = render_text(time_text, COLOR_GUI)
+     rect = menu_image.get_rect()
+-    rect.centerx = SCREEN_WIDTH / 2
++    rect.centerx = SCREEN_WIDTH // 2
+     rect.top = GUI_MENU_TOP - 30
+     self.bgscreen.blit(menu_image, rect)
+     
+--- a/lib/menu.py
++++ b/lib/menu.py
+@@ -91,14 +91,14 @@
+ 
+       menu_bg = pygame.image.load(data.picpath("menu", "bg")).convert_alpha()
+       rect = menu_bg.get_rect()
+-      rect.centerx = SCREEN_WIDTH / 2
++      rect.centerx = SCREEN_WIDTH // 2
+       rect.top = GUI_MENU_TOP
+       self.screen.blit(menu_bg, rect)
+ 
+       if self.heading_text != None:
+         menu_head = render_text(self.heading_text)
+         rect = menu_head.get_rect()
+-        rect.centerx = SCREEN_WIDTH / 2
++        rect.centerx = SCREEN_WIDTH // 2
+         rect.top = GUI_MENU_TOP + 50 + menu_offset
+         self.screen.blit(menu_head, rect)
+ 
+@@ -120,7 +120,7 @@
+         else:
+           menu_image = render_text(m, COLOR_GUI)
+         rect = menu_image.get_rect()
+-        rect.centerx = SCREEN_WIDTH / 2
++        rect.centerx = SCREEN_WIDTH // 2
+         rect.top = GUI_MENU_TOP + 60 + (menu_visible + 1) * 20 + menu_offset
+         self.screen.blit(menu_image, rect)
+         current_menu_index += 1
+--- a/lib/particle.py
++++ b/lib/particle.py
+@@ -28,9 +28,9 @@
+     self.radius = radius
+     self.gravity = gravity
+     if (self.x == None):
+-      self.x = SCREEN_WIDTH / 2
++      self.x = SCREEN_WIDTH // 2
+     if (self.y == None):
+-      self.y = SCREEN_HEIGHT / 2
++      self.y = SCREEN_HEIGHT // 2
+     if (self.dx == None):
+       self.dx = 0.0
+     if (self.dy == None):
+--- a/lib/tile.py
++++ b/lib/tile.py
+@@ -47,8 +47,8 @@
+   def realign(self):
+     self.rect.centerx = self.x
+     self.rect.centery = self.y
+-    self.x = round((float(self.rect.right)/float(TILE_DIM)), 0)*TILE_DIM - self.rect.width / 2
+-    self.y = round((float(self.rect.bottom)/float(TILE_DIM)), 0)*TILE_DIM - self.rect.height / 2
++    self.x = round((float(self.rect.right)/float(TILE_DIM)), 0)*TILE_DIM - self.rect.width // 2
++    self.y = round((float(self.rect.bottom)/float(TILE_DIM)), 0)*TILE_DIM - self.rect.height // 2
+     if self.rect.height % 2 == 1:
+        self.y -= 1
+     if self.rect.width % 2 == 1:

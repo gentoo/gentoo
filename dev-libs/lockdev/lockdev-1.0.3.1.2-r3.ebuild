@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 GENTOO_DEPEND_ON_PERL="no"
-inherit toolchain-funcs perl-module eutils versionator autotools multilib-minimal
+inherit toolchain-funcs perl-module eutils versionator autotools ltprune multilib-minimal
 
 MAJOR=$(get_major_version)
 MY_PV=$(get_version_component_range 1-3)
@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ppc ppc64 ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~s390 ~sparc x86"
 IUSE="perl"
 
 DEPEND=""

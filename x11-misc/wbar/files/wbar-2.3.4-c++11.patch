@@ -1,0 +1,54 @@
+--- a/src/config/Functions.cc
++++ b/src/config/Functions.cc
+@@ -11,7 +11,7 @@
+ #include "Run.h"
+ #include "OptParser.h"
+ 
+-#define ICON_DEFAULT PIXMAPDIR"/"PACKAGE_NAME".png"
++#define ICON_DEFAULT PIXMAPDIR "/" PACKAGE_NAME ".png"
+ 
+ static const gchar *authors[] =
+ {
+@@ -304,7 +304,7 @@
+         
+         if (command.empty())
+         {
+-            command = PACKAGE_NAME" "DEFAULT_ARGV;
++            command = PACKAGE_NAME " " DEFAULT_ARGV;
+         }
+ 
+         if (argc <= 1 || tmpoptparser.isSet( OptParser::CONFIG ))
+--- a/src/config/Run.cc
++++ b/src/config/Run.cc
+@@ -125,9 +125,9 @@
+ 
+ bool Run::start(std::string command)
+ {
+-    if (system ((PACKAGE_NAME" " + command + " &").c_str()) != 0)
++    if (system ((PACKAGE_NAME " " + command + " &").c_str()) != 0)
+     {
+-        std::cout << _("Error run program: ") << PACKAGE_NAME" " + command << std::endl;
++        std::cout << _("Error run program: ") << PACKAGE_NAME " " + command << std::endl;
+     }
+     return Run::getPID() > 0;
+ }
+@@ -136,7 +136,7 @@
+ {
+     if (Run::getPID() > 0)
+     {
+-        if (system ("killall "PACKAGE_NAME) != 0)
++        if (system ("killall " PACKAGE_NAME) != 0)
+         {
+             std::cout << _("Error kill program: ") << PACKAGE_NAME << std::endl;
+         }
+--- a/src/core/Main.cc
++++ b/src/core/Main.cc
+@@ -81,7 +81,7 @@
+ 
+         if (command.empty())
+         {
+-            command = PACKAGE_NAME" "DEFAULT_ARGV;
++            command = PACKAGE_NAME " " DEFAULT_ARGV;
+         }
+ 
+         if (argc <= 1 || tmpoptparser.isSet( OptParser::CONFIG ))

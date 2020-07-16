@@ -1,0 +1,9 @@
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Force the flag corresponding to the default ABI.
+abi_riscv_lp64d
+
+# Right now we have only one Python available, so we must use it
+python_targets_python3_7
+python_single_target_python3_7

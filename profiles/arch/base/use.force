@@ -1,6 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# James Le Cuirot <chewi@gentoo.org> (29 Jun 2017)
+# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
 # Forced and masked by default. Unmask where necessary.
 big-endian

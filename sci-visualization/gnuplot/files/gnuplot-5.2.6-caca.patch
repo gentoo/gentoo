@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/690014
+https://sourceforge.net/p/gnuplot/mailman/message/34342174/
+
+--- gnuplot-5.2.6-orig/configure.ac
++++ gnuplot-5.2.6/configure.ac
+@@ -1224,6 +1224,7 @@
+ if test "${enable_qt_ok}" = yes \
+   || test "${enable_wxwidgets_ok}" = yes \
+   || test "$GGI_SUPPORT" = yes \
++  || test "$with_caca" = yes \
+   || test "$no_x" != yes; then
+     enable_mouse=yes;
+ fi

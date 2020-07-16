@@ -1,16 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit toolchain-funcs
+inherit toolchain-funcs xdg-utils
 
 DESCRIPTION="A fast, light, simple to use micro-browser using WebKit and Lua"
 HOMEPAGE="https://luakit.github.io/luakit"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/luakit/luakit.git"
+	EGIT_REPO_URI="https://github.com/luakit/luakit.git"
 else
 	SRC_URI="https://github.com/luakit/luakit/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
@@ -19,6 +19,7 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="doc luajit test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-db/sqlite:3
@@ -40,11 +41,9 @@ DEPEND="${RDEPEND}
 src_compile() {
 	emake \
 		CC=$(tc-getCC) \
-		PREFIX="${EPREFIX}/usr" \
-		DOCDIR="${EPREFIX}/usr/share/doc/${PF}" \
-		XDGPREFIX="${EPREFIX}/etc/xdg" \
 		LUA_PKG_NAME=$(usex luajit 'luajit' 'lua') \
 		LUA_BIN_NAME=$(usex luajit 'luajit' 'lua') \
+		PREFIX="${EPREFIX}/usr" \
 		all
 
 	use doc && emake doc
@@ -57,14 +56,22 @@ src_test() {
 }
 
 src_install() {
+	sed -i 's/install -m644 luakit.1.gz/install -m644 luakit.1/g' Makefile || die
+
 	emake \
 		DESTDIR="${D}" \
 		PREFIX="${EPREFIX}/usr" \
-		DOCDIR="${ED}/usr/share/doc/${PF}" \
-		XDGPREFIX="${ED}/etc/xdg" \
+		DOCDIR="${EPREFIX}/usr/share/doc/${PF}" \
+		XDGPREFIX="${EPREFIX}/etc/xdg" \
 		install
 
 	rm "${ED}/usr/share/doc/${PF}/COPYING.GPLv3" || die
 
 	use doc && dodoc -r doc/html
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+	xdg_mimeinfo_database_update
 }

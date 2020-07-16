@@ -1,8 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils toolchain-funcs
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="Console mode MIDI player with builtin userland OPL2 driver"
 HOMEPAGE="https://bisqwit.iki.fi/source/fmdrv.html"
@@ -10,25 +11,23 @@ SRC_URI="https://bisqwit.iki.fi/src/arch/${P}.tar.bz2"
 
 LICENSE="fmdrv GPL-2" # GPL-2 only
 SLOT="0"
-KEYWORDS="x86 amd64"
+KEYWORDS="amd64 x86"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-ioperm.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-ioperm.patch
+	"${FILESDIR}"/${P}-fix-makefile.patch
+)
 
-src_configure() { :; } # it is a fake
+DOCS=( README )
+HTML_DOCS=( README.html )
 
-src_compile() {
-	emake fmdrv \
-		CC="$(tc-getCC)" CXX="$(tc-getCXX)" \
-		CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}" \
-		LDFLAGS="${LDFLAGS}"
+src_configure() {
+	tc-export AR CC CXX
 }
 
 src_install() {
 	dobin fmdrv
-	dodoc README
-	dohtml README.html
+	einstalldocs
 }
 
 pkg_postinst() {

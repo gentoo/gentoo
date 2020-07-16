@@ -35,7 +35,7 @@ src_compile() {
 }
 
 src_install() {
-	newbin swaks swaks || die "newbin failed"
-	doman swaks.1 || die
-	dodoc README doc/*.txt || die
+	newbin swaks swaks
+	doman swaks.1
+	dodoc README doc/*.txt
 }

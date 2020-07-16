@@ -1,20 +1,20 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit vdr-plugin-2
 
 DESCRIPTION="VDR plugin: allows using a joystick as a remote control for VDR"
-HOMEPAGE="http://www.powarman.de/vdr_plugins.htm"
-SRC_URI="http://home.arcor.de/andreas.regel/files/joystick/${P}.tgz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="http://vdr.websitec.de/download/${PN}/${P}.tgz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=">=media-video/vdr-1.4.6"
+DEPEND="media-video/vdr"
 RDEPEND="${DEPEND}"
 
 src_install() {
@@ -27,9 +27,8 @@ src_install() {
 pkg_postinst() {
 	vdr-plugin-2_pkg_postinst
 
-	echo
-	elog "To use the plugin your joystick has to be connected to your game port and its kernel module has to be loaded."
+	elog "To use the plugin your joystick has to be connected to your"
+	elog "game port and its kernel module has to be loaded."
 	elog "Check configuration file:"
-	elog "/etc/vdr/plugins/joystick/mapping.conf"
-	echo
+	elog "/etc/vdr/plugins/joystick/mapping.conf\n"
 }

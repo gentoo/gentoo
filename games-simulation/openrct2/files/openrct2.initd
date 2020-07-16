@@ -1,0 +1,41 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+if [ "${SVCNAME}" = "openrct2" ]; then
+	instance="main"
+else
+	instance="${SVCNAME#*.}"
+fi
+
+openrct2_command="/usr/bin/openrct2-cli"
+openrct2_path="/var/lib/openrct2"
+openrct2_path_instance="${openrct2_path}/${instance}"
+openrct2_path_scenario="${openrct2_path_instance}/scenario"
+name="OpenRCT2 server (${instance})"
+pidfile="/run/openrct2-cli.${instance}.pid"
+start_stop_daemon_args="--chdir ${openrct2_path_instance}"
+
+command="/usr/bin/openrct2-cli"
+command_args="host \"${openrct2_path_scenario}/${OPENRCT2_SCENARIO_FILE}\" --headless --user-data-path ${openrct2_path_instance} ${OPENRCT2_OPTS}"
+command_background="true"
+command_group="openrct2"
+command_user="openrct2"
+
+depend() {
+	use net
+}
+
+start_pre() {
+	checkpath -d -o "${command_user}:${command_group}" -q "${openrct2_path}" "${openrct2_path_instance}" "${openrct2_path_scenario}"
+
+	if [ ! -f "${openrct2_path_scenario}/${OPENRCT2_SCENARIO_FILE}" ]; then
+		eerror "The scenario ${openrct2_path_scenario}/${OPENRCT2_SCENARIO_FILE} could not be found!"
+		eerror "An OpenRCT2 scenario file is needed by the dedicated server."
+		eerror "Please check, if OPENRCT2_SCENARIO is configured correctly."
+		return 1
+	else
+		checkpath -f -o "${command_user}:${command_group}" -q "${openrct2_path_scenario}/${OPENRCT2_SCENARIO_FILE}"
+		return 0
+	fi
+}

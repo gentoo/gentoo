@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -33,7 +33,9 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MYP}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.6.3-looptools.patch
+	epatch \
+		"${FILESDIR}"/${PN}-2.6.3-looptools.patch \
+		"${FILESDIR}"/${PN}-2.7.1-fix-boost-1.67.patch
 	# fixes bug 570458, which is due to an outdated bundled boost.m4
 	rm m4/boost.m4 || die
 	find -name 'Makefile.am' -exec \

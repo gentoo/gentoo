@@ -1,0 +1,11 @@
+diff --git a/data/qalculate-gtk.desktop.in b/data/qalculate-gtk.desktop.in
+index fdefbf9..68b32b4 100644
+--- a/data/qalculate-gtk.desktop.in
++++ b/data/qalculate-gtk.desktop.in
+@@ -9,5 +9,5 @@ Terminal=false
+ Type=Application
+ StartupNotify=true
+ StartupWMClass=qalculate-gtk
+-Categories=GTK;Application;Utility;Calculator;Science;Math;
++Categories=GTK;Utility;Calculator;Science;Math;
+ 

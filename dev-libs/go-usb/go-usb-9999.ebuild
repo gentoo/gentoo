@@ -24,7 +24,7 @@ GO_PN="/usr/lib/go/src/github.com/hanwen/usb"
 
 src_install() {
 	insinto "${GO_PN}"
-	doins *.go LICENSE || die "Install failed"
+	doins *.go LICENSE
 }
 
 src_test() {

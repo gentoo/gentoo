@@ -37,16 +37,17 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
 	<use>
-		<flag name="jsoncpp">Enable using a system-wide JSONCPP</flag>
+		<flag name="client">Build Minetest client</flag>
 		<flag name="leveldb">Enable LevelDB backend</flag>
-		<flag name="postgres">Optionally use PostgreSQL as map backend</flag>
-		<flag name="redis">Enable redis backend via
-			<pkg>dev-libs/hiredis</pkg>
-		</flag>
+		<flag name="redis">Enable redis backend via <pkg>dev-libs/hiredis</pkg></flag>
+		<flag name="server">Build Minetest server</flag>
 		<flag name="spatial">Enable SpatialIndex AreaStore backend
 		</flag>
-		<flag name="server">Build minetest server</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://github.com/minetest/minetest/issues</bugs-to>

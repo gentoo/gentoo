@@ -33,12 +33,12 @@ src_prepare() {
 }
 
 src_compile() {
-	emake RUNDIR=/usr/$(get_libdir)/paxtest || die
+	emake RUNDIR=/usr/$(get_libdir)/paxtest
 }
 
 src_install() {
-	emake DESTDIR="${D}" BINDIR=/usr/bin RUNDIR=/usr/$(get_libdir)/paxtest install || die
+	emake DESTDIR="${D}" BINDIR=/usr/bin RUNDIR=/usr/$(get_libdir)/paxtest install
 
-	newman debian/manpage.1.ex paxtest.1 || die
-	dodoc ChangeLog README || die
+	newman debian/manpage.1.ex paxtest.1
+	dodoc ChangeLog README
 }

@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>zoltan@sinustrom.info</email>
-		<name>Zoltan Puskas</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<upstream>
 		<maintainer status="active">
 			<email>trizenx@gmail.com</email>
@@ -18,7 +11,8 @@
 		<remote-id type="github">trizen/youtube-viewer</remote-id>
 	</upstream>
 	<use>
-		<flag name="gtk">Install the gtk GUI, called gtk-youtube-viewer</flag>
+		<flag name="gtk">Install the gtk3 GUI</flag>
+		<flag name="gtk2">Use the old gtk2 GUI instead of the gtk3 one</flag>
 	</use>
 	<longdescription lang="en">
 		Youtube Viewer is a CLI application dedicated for searching and

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,8 +13,9 @@ SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-linux"
 IUSE="gnutls +jingle libressl plugins test"
+RESTRICT="!test? ( test )"
 
 # Prevent false positives due nested configure
 QA_CONFIGURE_OPTIONS=".*"
@@ -56,12 +57,7 @@ DEPEND="${RDEPEND}
 # pygobject:2 is needed by twisted-17 for gtk2reactor usage by gabble
 #test? (
 #	dev-python/pygobject:2
-#	|| (
 #	>=dev-python/twisted-16.0.0
-#	(	>=dev-python/twisted-core-0.8.2
-#		>=dev-python/twisted-words-0.8.2
-#		>=dev-python/dbus-python-0.83
-#	) )
 #)
 
 PATCHES=(

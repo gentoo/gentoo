@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ HOMEPAGE="http://www.all-day-breakfast.com/wm2/"
 SRC_URI="http://www.all-day-breakfast.com/wm2/${P}.tar.gz"
 
 SLOT="0"
-LICENSE="freedist"
+LICENSE="wm2 HPND"
 KEYWORDS="amd64 ppc x86"
 IUSE=""
 

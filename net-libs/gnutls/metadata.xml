@@ -2,16 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
-    <email>crypto@gentoo.org</email>
-    <name>Crypto</name>
+    <email>base-system@gentoo.org</email>
   </maintainer>
   <use>
     <flag name="dane">
       Build libgnutls-dane, implementing DNS-based Authentication of
       Named Entities. Requires <pkg>net-dns/unbound</pkg>
-    </flag>
-    <flag name="openpgp">
-      Enable openpgp support
     </flag>
     <flag name="openssl">
       Build openssl compatibility libraries
@@ -41,4 +37,7 @@
   <slots>
    <subslots>Reflect ABI compatibility of libgnutls.so</subslots>
   </slots>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:gnu:gnutls</remote-id>
+  </upstream>
 </pkgmetadata>

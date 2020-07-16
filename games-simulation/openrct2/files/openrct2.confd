@@ -1,0 +1,11 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Name of the OpenRCT2 scenario file,
+# which will be used by the dedicated server.
+# It needs to be placed in '/var/lib/openrct2/<instance>/scenario'.
+# The default instance is 'main'.
+OPENRCT2_SCENARIO_FILE="scenario.sc6"
+
+# Options, which can be passed to the dedicated server.
+OPENRCT2_OPTS="--port 11753"

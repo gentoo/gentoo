@@ -1,0 +1,16 @@
+These functions are only built when enabling assembly on ARM; use proper check
+to avoid undefined symbols.
+
+Index: source/common/primitives.cpp
+===================================================================
+--- old/common/primitives.cpp
++++ new/common/primitives.cpp
+@@ -270,7 +270,7 @@ void PFX(cpu_emms)(void) {}
+ void PFX(cpu_cpuid)(uint32_t, uint32_t *eax, uint32_t *, uint32_t *, uint32_t *) { *eax = 0; }
+ void PFX(cpu_xgetbv)(uint32_t, uint32_t *, uint32_t *) {}
+ 
+-#if X265_ARCH_ARM == 0
++#if X265_ARCH_ARM == 0 || !defined(ENABLE_ASSEMBLY)
+ void PFX(cpu_neon_test)(void) {}
+ int PFX(cpu_fast_neon_mrc_test)(void) { return 0; }
+ #endif // X265_ARCH_ARM

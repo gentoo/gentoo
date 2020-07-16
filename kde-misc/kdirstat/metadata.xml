@@ -6,6 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="bitbucket">jeromerobert/k4dirstat</remote-id>
+		<remote-id type="github">jeromerobert/k4dirstat</remote-id>
 	</upstream>
 </pkgmetadata>

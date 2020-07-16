@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="docs/*.md README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="EventMachine is a fast, simple event-processing library for Ruby programs"
-HOMEPAGE="http://rubyeventmachine.com"
+HOMEPAGE="https://github.com/eventmachine/eventmachine"
 SRC_URI="https://github.com/eventmachine/eventmachine/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 Ruby )"
@@ -74,7 +74,7 @@ each_ruby_compile() {
 	for extdir in ext ext/fastfilereader; do
 		pushd $extdir
 		# both extensions use C++, so use the CXXFLAGS not the CFLAGS
-		emake V=1 CFLAGS="${CXXFLAGS} -fPIC" archflag="${LDFLAGS}" || die "emake failed for ${extdir}"
+		emake V=1 CFLAGS="${CXXFLAGS} -fPIC" archflag="${LDFLAGS}"
 		popd
 		cp $extdir/*.so lib/ || die "Unable to copy extensions for ${extdir}"
 	done
@@ -88,5 +88,5 @@ all_ruby_install() {
 	all_fakegem_install
 
 	insinto /usr/share/doc/${PF}/
-	doins -r examples || die "Failed to install examples"
+	doins -r examples
 }

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
 inherit distutils-r1 flag-o-matic virtualx toolchain-funcs prefix
@@ -18,19 +18,16 @@ SLOT="0"
 # matplotlib/backends/qt4_editor: MIT
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 x86"
-IUSE="cairo doc excel examples gtk2 gtk3 latex qt5 test tk wxwidgets"
+KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 x86"
+IUSE="cairo doc excel examples gtk3 latex qt5 test tk wxwidgets"
+RESTRICT="!test? ( test )"
 
 PY2_FLAGS="|| ( $(python_gen_useflags python2_7) )"
 REQUIRED_USE="
 	doc? ( ${PY2_FLAGS} )
 	excel? ( ${PY2_FLAGS} )
-	gtk2? ( ${PY2_FLAGS} )
 	wxwidgets? ( ${PY2_FLAGS} )
-	test? (
-		cairo latex qt5 tk wxwidgets
-		|| ( gtk2 gtk3 )
-		)"
+	test? ( cairo gtk3 latex qt5 tk wxwidgets )"
 
 # #456704 -- a lot of py2-only deps
 PY2_USEDEP=$(python_gen_usedep python2_7)
@@ -50,11 +47,6 @@ COMMON_DEPEND="
 	>=media-libs/qhull-2013
 	>=dev-python/kiwisolver-1.0.0[${PYTHON_USEDEP}]
 	cairo? ( dev-python/cairocffi[${PYTHON_USEDEP}] )
-	gtk2? (
-		dev-libs/glib:2=
-		x11-libs/gdk-pixbuf
-		x11-libs/gtk+:2
-		dev-python/pygtk[${PY2_USEDEP}] )
 	wxwidgets? ( >=dev-python/wxpython-2.8:*[${PY2_USEDEP}] )"
 
 # internal copy of pycxx highly patched
@@ -84,7 +76,7 @@ DEPEND="${COMMON_DEPEND}
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 		>=dev-python/nose-0.11.1[${PYTHON_USEDEP}]
-		)"
+	)"
 
 RDEPEND="${COMMON_DEPEND}
 	${PY2_DEPEND}
@@ -92,7 +84,8 @@ RDEPEND="${COMMON_DEPEND}
 	excel? ( dev-python/xlwt[${PYTHON_USEDEP}] )
 	gtk3? (
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
-		x11-libs/gtk+:3[introspection] )
+		x11-libs/gtk+:3[introspection]
+	)
 	latex? (
 		virtual/latex-base
 		app-text/ghostscript-gpl
@@ -200,7 +193,8 @@ python_configure() {
 		EOF
 	else
 		cat >> "${BUILD_DIR}"/setup.cfg <<-EOF || die
-			$(use_setup gtk2 gtk)
+			gtk = False
+			gtkagg = False
 			$(use_setup wxwidgets wx)
 		EOF
 	fi

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,11 +9,11 @@ PATCHSET_VER="5"
 MY_P="mozart-${PV}.20080704"
 
 DESCRIPTION="Advanced development platform for intelligent, distributed applications"
-HOMEPAGE="http://www.mozart-oz.org/"
+HOMEPAGE="https://mozart.github.io/ https://github.com/mozart/mozart"
 SRC_URI="
-	http://www.mozart-oz.org/download/mozart-ftp/store/1.4.0-2008-07-02-tar/mozart-1.4.0.20080704-src.tar.gz
+	mirror://sourceforge/project/mozart-oz/v1/1.4.0-2008-07-02-tar/${MY_P}-src.tar.gz
 	mirror://gentoo/${P}-gentoo-patchset-${PATCHSET_VER}.tar.gz
-	doc? ( http://www.mozart-oz.org/download/mozart-ftp/store/1.4.0-2008-07-02-tar/mozart-1.4.0.20080704-doc.tar.gz )"
+	doc? ( mirror://sourceforge/project/mozart-oz/v1/1.4.0-2008-07-02-tar/${MY_P}-doc.tar.gz )"
 
 SLOT="0"
 LICENSE="Mozart"
@@ -24,7 +24,7 @@ RDEPEND="
 	dev-lang/perl
 	dev-libs/gmp:0=
 	sys-libs/zlib
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	gdbm? ( sys-libs/gdbm  )
 	tcl? (
 		tk? (

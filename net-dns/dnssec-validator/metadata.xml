@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<use>
-	<flag name="ecdsa-check">Requires openssl[-bindist]</flag>
-</use>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		A tool which can display the sequence of queries and their results
+		used to validate a DNS query. The stderr output of this command can
+		serve as input to the drawvalmap tool.
+	</longdescription>
+	<use>
+		<flag name="dlv">Enable support for the DNSSEC look-aside validation</flag>
+		<flag name="nsec3">Enable support for the NSEC3 Resource Record</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/dnssec-tools/dnssec-tools/issues</bugs-to>
+		<remote-id type="github">DNSSEC-Tools/DNSSEC-Tools</remote-id>
+	</upstream>
 </pkgmetadata>

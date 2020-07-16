@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ MY_PV=$(ver_rs 2 '-')
 
 DESCRIPTION="Small and highly customizable twin-panel file manager with plugin-support"
 HOMEPAGE="https://github.com/MeanEYE/Sunflower
-	http://sunflower-fm.org/"
+	https://sunflower-fm.org/"
 SRC_URI="https://github.com/MeanEYE/${MY_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
@@ -24,7 +24,10 @@ DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
 	>=dev-python/pygtk-2.15.0:2[${PYTHON_USEDEP}]
 	>=dev-python/notify-python-0.1[${PYTHON_USEDEP}]
-	gnome-base/librsvg:2"
+	gnome-base/librsvg:2
+	dev-python/chardet[${PYTHON_USEDEP}]
+	dev-python/pycairo[${PYTHON_USEDEP}]
+"
 
 S=${WORKDIR}/${MY_PN}-$MY_PV
 

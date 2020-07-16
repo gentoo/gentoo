@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,8 +13,9 @@ SRC_URI="https://tktray.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="tcltk"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc ~sparc x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE="debug threads test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-lang/tcl-8.4:0=

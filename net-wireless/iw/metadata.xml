@@ -5,4 +5,7 @@
 		<email>zerochaos@gentoo.org</email>
 		<name>Rick Farina</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:kernel:iw</remote-id>
+	</upstream>
 </pkgmetadata>

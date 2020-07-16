@@ -9,10 +9,6 @@
 		<email>netmon@gentoo.org</email>
 		<name>Gentoo network monitoring and analysis project</name>
 	</maintainer>
-	<use>
-		<flag name="pyx">Enable <pkg>dev-python/pyx</pkg> support for psdump/pdfdump commands</flag>
-		<flag name="tcpreplay">Enable <pkg>net-analyzer/tcpreplay</pkg> support for fast packet replay</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">secdev/scapy</remote-id>
 	</upstream>

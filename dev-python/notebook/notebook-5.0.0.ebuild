@@ -1,21 +1,22 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
 
 DESCRIPTION="Jupyter Interactive Notebook"
-HOMEPAGE="http://jupyter.org"
+HOMEPAGE="https://jupyter.org"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/mathjax-2.4
 	dev-python/jinja[${PYTHON_USEDEP}]
@@ -32,7 +33,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' 'python2*')
 		>=dev-python/nose-0.10.1[${PYTHON_USEDEP}]
 		dev-python/nose_warnings_filters[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]

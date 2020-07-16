@@ -15,10 +15,11 @@ ABI="${DEFAULT_ABI}"
 LIBDIR_arm="lib"
 CHOST_arm="${CHOST}"
 
-# 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
 # Defaults for video drivers
 VIDEO_CARDS="exynos fbdev omap"
 
-# Michał Górny <mgorny@gentoo.org> (14 Mar 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-03-14)
 # Unhide the ARM-specific USE_EXPANDs.
 USE_EXPAND_HIDDEN="-CPU_FLAGS_ARM"
+

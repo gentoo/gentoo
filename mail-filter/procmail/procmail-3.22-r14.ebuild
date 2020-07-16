@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="http://www.procmail.org/${P}.tar.gz"
 
 LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
 IUSE="mbox selinux"
 
 DEPEND="virtual/mta"
@@ -21,7 +21,7 @@ src_prepare() {
 	# disable flock, using both fcntl and flock style locking
 	# doesn't work with NFS with 2.6.17+ kernels, bug #156493
 
-	sed -e "s:/\*#define NO_flock_LOCK:#define NO_flock_LOCK:" \
+	sed -e "s|/\*#define NO_flock_LOCK|#define NO_flock_LOCK|" \
 		-i config.h || die "sed failed"
 
 	if ! use mbox ; then
@@ -69,15 +69,13 @@ src_compile() {
 	# To work around this, we append -fno-inline-functions to CFLAGS
 	# Since GCC 4.7 we also need -fno-ipa-cp-clone (bug #466552)
 	# If it's clang, ignore -fno-ipa-cp-clone, as clang doesn't support this
-	case "$(tc-getCC)" in
-		"clang") append-flags -fno-inline-functions ;;
-		"gcc"|*) append-flags -fno-inline-functions -fno-ipa-cp-clone ;;
-	esac
+	append-flags -fno-inline-functions
+	tc-is-clang || append-flags -fno-ipa-cp-clone
 
-	sed -e "s:CFLAGS0 = -O:CFLAGS0 = ${CFLAGS}:" \
-		-e "s:LDFLAGS0= -s:LDFLAGS0 = ${LDFLAGS}:" \
-		-e "s:LOCKINGTEST=__defaults__:#LOCKINGTEST=__defaults__:" \
-		-e "s:#LOCKINGTEST=/tmp:LOCKINGTEST=/tmp:" \
+	sed -e "s|CFLAGS0 = -O|CFLAGS0 = ${CFLAGS}|" \
+		-e "s|LDFLAGS0= -s|LDFLAGS0 = ${LDFLAGS}|" \
+		-e "s|LOCKINGTEST=__defaults__|#LOCKINGTEST=__defaults__|" \
+		-e "s|#LOCKINGTEST=/tmp|LOCKINGTEST=/tmp|" \
 		-i Makefile || die "sed failed"
 
 	emake CC="$(tc-getCC)"

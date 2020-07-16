@@ -1,0 +1,20 @@
+diff --git a/tests/test_ext_marshmallow_openapi.py b/tests/test_ext_marshmallow_openapi.py
+index ab1b0b8..d151a32 100644
+--- a/tests/test_ext_marshmallow_openapi.py
++++ b/tests/test_ext_marshmallow_openapi.py
+@@ -454,6 +454,7 @@ class TestNesting:
+         assert "breed" not in category_props
+ 
+ 
++@pytest.mark.skip("test requires extra dependencies")
+ def test_openapi_tools_validate_v2():
+     ma_plugin = MarshmallowPlugin()
+     spec = APISpec(
+@@ -512,6 +513,7 @@ def test_openapi_tools_validate_v2():
+         pytest.fail(str(error))
+ 
+ 
++@pytest.mark.skip("test requires extra dependencies")
+ def test_openapi_tools_validate_v3():
+     ma_plugin = MarshmallowPlugin()
+     spec = APISpec(

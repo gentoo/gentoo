@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,12 +10,12 @@ CABAL_FEATURES="test-suite"
 inherit autotools haskell-cabal
 
 DESCRIPTION="Alex is a tool for generating lexical analysers in Haskell"
-HOMEPAGE="http://www.haskell.org/alex/"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+HOMEPAGE="https://www.haskell.org/alex/"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="doc"
 
 RDEPEND=">=dev-haskell/quickcheck-2:2=
@@ -70,7 +70,7 @@ src_compile() {
 
 src_test() {
 	# workaround https://github.com/haskell/cabal/issues/2398
-	emake -k -C tests all || die
+	emake -k -C tests all
 }
 
 src_install() {

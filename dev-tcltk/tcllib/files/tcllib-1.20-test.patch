@@ -1,0 +1,101 @@
+--- a/modules/devtools/testutilities.tcl	2020-04-16 21:57:11.915653960 +0200
++++ b/modules/devtools/testutilities.tcl	2020-04-16 22:11:05.621829465 +0200
+@@ -229,6 +229,10 @@
+     ::tcltest::testConstraint tcl8.6plus \
+ 	[expr {[package vsatisfies [package provide Tcl] 8.6]}]
+ 
++    ::tcltest::testConstraint tcl8.6.8 \
++	[expr { [package vsatisfies [package provide Tcl] 8.6.8] &&
++	       ![package vsatisfies [package provide Tcl] 8.6.9]}]
++
+     ::tcltest::testConstraint tcl8.6not10 \
+ 	[expr { [package vsatisfies [package provide Tcl] 8.6] &&
+ 	       ![package vsatisfies [package provide Tcl] 8.6.10]}]
+--- a/modules/hook/hook.test	2020-04-16 21:59:22.708326030 +0200
++++ b/modules/hook/hook.test	2020-04-16 22:09:18.055740312 +0200
+@@ -436,6 +436,7 @@
+ } -cleanup {
+     cleanup
+ } -result [tcltest::byConstraint {
++    tcl8.6.8 {{{S1 <H1> {} O1} {simulated error} {-code 1 -level 0 -errorstack {INNER {error {simulated error}} UP 1 CALL {::hook::call S1 <H1>}} -errorcode NONE}}}
+     tcl8.6.10plus {{{S1 <H1> {} O1} {simulated error} {-code 1 -level 0 -errorstack {INNER {error {simulated error}} UP 1 CALL {::hook::call S1 <H1>}} -errorcode NONE}}}
+     tcl8.6not10   {{{S1 <H1> {} O1} {simulated error} {-code 1 -level 0 -errorstack {INNER {error {simulated error}} UP 1 CALL {call S1 <H1>}} -errorcode NONE}}}
+     tcl8.5minus   {{{S1 <H1> {} O1} {simulated error} {-code 1 -level 0 -errorcode NONE}}}
+@@ -452,6 +453,7 @@
+ } -cleanup {
+     cleanup
+ } -result [tcltest::byConstraint {
++    tcl8.6.8 {{{S1 <H1> O1 {}} {S1 <H1> O3 {}}} {{{S1 <H1> {} O2} {simulated error} {-code 1 -level 0 -errorstack {INNER {error {simulated error}} UP 1 CALL {::hook::call S1 <H1>}} -errorcode NONE}}}}
+     tcl8.6.10plus {{{S1 <H1> O1 {}} {S1 <H1> O3 {}}} {{{S1 <H1> {} O2} {simulated error} {-code 1 -level 0 -errorstack {INNER {error {simulated error}} UP 1 CALL {::hook::call S1 <H1>}} -errorcode NONE}}}}
+     tcl8.6not10   {{{S1 <H1> O1 {}} {S1 <H1> O3 {}}} {{{S1 <H1> {} O2} {simulated error} {-code 1 -level 0 -errorstack {INNER {error {simulated error}} UP 1 CALL {call S1 <H1>}} -errorcode NONE}}}}
+     tcl8.5minus   {{{S1 <H1> O1 {}} {S1 <H1> O3 {}}} {{{S1 <H1> {} O2} {simulated error} {-code 1 -level 0 -errorcode NONE}}}}
+--- a/modules/http/autoproxy.test	2020-04-16 22:48:04.645153193 +0200
++++ b/modules/http/autoproxy.test	2020-04-16 22:48:30.710701582 +0200
+@@ -179,20 +179,6 @@
+     autoproxy::configure -tls_package dummy
+ } -result "Invalid TLS package option 'dummy'. Must be 'tls' or 'twapi'" -returnCodes error
+ 
+-test autoproxy-2.0.0 "autoproxy::tls_socket (tls) with proxy" -constraints {
+-    have_tls
+-} -setup {
+-    packageReset
+-    package require http
+-    autoproxy::configure -proxy_host $proxy_host -proxy_port $proxy_port
+-} -body {
+-    http::register https 443 autoproxy::tls_socket
+-    set tok [http::geturl https://www.example.com]
+-    http::status $tok
+-} -cleanup {
+-    http::cleanup $tok
+-} -result ok
+-
+ test autoproxy-2.0.1 "autoproxy::tls_socket (twapi) with proxy" -constraints {
+     have_twapi
+ } -setup {
+@@ -202,20 +188,6 @@
+ } -body {
+     http::register https 443 autoproxy::tls_socket
+     set tok [http::geturl https://www.example.com]
+-    http::status $tok
+-} -cleanup {
+-    http::cleanup $tok
+-} -result ok
+-
+-test autoproxy-2.1.0 "autoproxy::tls_socket (tls) without proxy" -constraints {
+-    have_tls
+-} -setup {
+-    packageReset
+-    package require http
+-    autoproxy::configure -proxy_host "" -proxy_port $proxy_port
+-} -body {
+-    http::register https 443 autoproxy::tls_socket
+-    set tok [http::geturl https://www.example.com]
+     http::status $tok
+ } -cleanup {
+     http::cleanup $tok
+--- a/modules/string/token_shell.test	2020-04-17 08:40:44.813030086 +0200
++++ b/modules/string/token_shell.test	2020-04-17 08:44:03.066752545 +0200
+@@ -26,6 +26,7 @@
+ test string-token-shell-1.0 "string token shell, wrong#args, not enough" -body {
+     string token shell
+ } -returnCodes error -result [tcltest::byConstraint {
++    tcl8.6.8 {wrong # args: should be "::string::token::shell ?-indices? ?-partial? ?--? text"}
+     tcl8.6.10plus {wrong # args: should be "::string::token::shell ?-indices? ?-partial? ?--? text"}
+     tcl8.6not10   {wrong # args: should be "shell ?-indices? ?-partial? ?--? text"}
+     tcl8.5minus   {wrong # args: should be "::string::token::shell ?-indices? ?-partial? ?--? text"}
+@@ -34,6 +35,7 @@
+ test string-token-shell-1.1 "string token shell, wrong#args, too many" -body {
+     string token shell T X
+ } -returnCodes error -result [tcltest::byConstraint {
++    tcl8.6.8 {wrong # args: should be "::string::token::shell ?-indices? ?-partial? ?--? text"}
+     tcl8.6.10plus {wrong # args: should be "::string::token::shell ?-indices? ?-partial? ?--? text"}
+     tcl8.6not10   {wrong # args: should be "shell ?-indices? ?-partial? ?--? text"}
+     tcl8.5minus   {wrong # args: should be "::string::token::shell ?-indices? ?-partial? ?--? text"}
+@@ -46,6 +48,7 @@
+ test string-token-shell-1.3 "string token shell, wrong#args, too many" -body {
+     string token shell -- T X
+ } -returnCodes error -result [tcltest::byConstraint {
++    tcl8.6.8 {wrong # args: should be "::string::token::shell ?-indices? ?-partial? ?--? text"}
+     tcl8.6.10plus {wrong # args: should be "::string::token::shell ?-indices? ?-partial? ?--? text"}
+     tcl8.6not10   {wrong # args: should be "shell ?-indices? ?-partial? ?--? text"}
+     tcl8.5minus   {wrong # args: should be "::string::token::shell ?-indices? ?-partial? ?--? text"}

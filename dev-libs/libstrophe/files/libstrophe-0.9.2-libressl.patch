@@ -1,0 +1,20 @@
+--- a/src/tls_openssl.c
++++ b/src/tls_openssl.c
+@@ -51,7 +51,7 @@
+ 
+ void tls_initialize(void)
+ {
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || (defined(LIBRESSL_VERSION_NUMBER) && LIBRESSL_VERSION_NUMBER < 0x2070000fL)
+     SSL_library_init();
+     SSL_load_error_strings();
+ #else
+@@ -120,7 +120,7 @@
+         /* Trust server's certificate when user sets the flag explicitly. */
+         mode = conn->tls_trust ? SSL_VERIFY_NONE : SSL_VERIFY_PEER;
+         SSL_set_verify(tls->ssl, mode, 0);
+-#if OPENSSL_VERSION_NUMBER >= 0x10002000L
++#if OPENSSL_VERSION_NUMBER >= 0x10002000L && (defined(LIBRESSL_VERSION_NUMBER) && LIBRESSL_VERSION_NUMBER >= 0x2070000fL)
+         /* Hostname verification is supported in OpenSSL 1.0.2 and newer. */
+         X509_VERIFY_PARAM *param = SSL_get0_param(tls->ssl);
+ 

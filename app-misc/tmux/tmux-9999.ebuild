@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ if [[ "${PV}" == 9999 ]] ; then
 else
 	SRC_URI="https://github.com/tmux/tmux/releases/download/$(ver_cut 1-2)/${P/_/-}.tar.gz"
 	[[ "${PV}" == *_rc* ]] || \
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 	S="${WORKDIR}/${P/_/-}"
 fi
 
@@ -25,20 +25,20 @@ IUSE="debug selinux utempter vim-syntax kernel_FreeBSD kernel_linux"
 DEPEND="
 	dev-libs/libevent:0=
 	sys-libs/ncurses:0=
-	utempter? (
-		kernel_linux? ( sys-libs/libutempter )
-		kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-lib-9.0 sys-libs/libutempter ) )
-	)"
+	utempter? ( sys-libs/libutempter )
+"
 
 BDEPEND="
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	virtual/yacc
+"
 
 RDEPEND="
 	${DEPEND}
 	selinux? ( sec-policy/selinux-screen )
 	vim-syntax? ( app-vim/vim-tmux )"
 
-DOCS=( CHANGES README TODO )
+DOCS=( CHANGES README )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.4-flags.patch"

@@ -1,0 +1,26 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -468,7 +468,6 @@
+ fi
+ 
+ if test $have_libpcap != yes; then
+-  AC_CONFIG_SUBDIRS(libpcap)
+   if test "${LIBPCAP_INC+set}" = "set"; then
+     CPPFLAGS="$CPPFLAGS -I$LIBPCAP_INC"
+   else
+@@ -611,7 +610,6 @@
+   fi
+ 
+   if test $have_libz != yes; then
+-    AC_CONFIG_SUBDIRS(libz)
+     # TODO: This doesn't work because libssh2's configure script is looking for
+     # already-built libs.  Giving up for now: build libz first or install
+     # headers/libs on your own if you want compression support for SSH.
+@@ -697,7 +695,6 @@
+   # If we still don't have it, we use our own
+   if test $have_libssh2 != yes; then
+     have_libssh2=yes
+-    AC_CONFIG_SUBDIRS(libssh2)
+     CPPFLAGS="-I\$(top_srcdir)/$LIBSSH2DIR/include $CPPFLAGS"
+     LIBSSH2_LIBS="$LIBSSH2DIR/lib/libssh2.a"
+     LIBSSH2_BUILD="build-libssh2"

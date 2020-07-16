@@ -1,0 +1,51 @@
+diff -urN a/lib/FusionInventory/Agent/Config.pm b/lib/FusionInventory/Agent/Config.pm
+--- a/lib/FusionInventory/Agent/Config.pm	2020-05-27 11:09:31.969999393 -0000
++++ b/lib/FusionInventory/Agent/Config.pm	2020-05-27 11:09:39.833332729 -0000
+@@ -67,7 +67,7 @@
+     my ($class, %params) = @_;
+ 
+     my $self = {
+-        '_confdir' => undef, # SYSCONFDIR replaced here from Makefile
++        '_confdir' => '/etc/fusioninventory', # SYSCONFDIR replaced here from Makefile
+     };
+     bless $self, $class;
+     $self->_loadDefaults();
+diff -urN a/lib/setup.pm b/lib/setup.pm
+--- a/lib/setup.pm	2020-05-27 11:09:31.989999393 -0000
++++ b/lib/setup.pm	2020-05-27 11:11:02.233332727 -0000
+@@ -11,9 +11,9 @@
+ our @EXPORT = ('%setup');
+ 
+ our %setup = (
+-    datadir => './share',
++    datadir => '/usr/share/fusioninventory',
+     libdir  => './lib',
+-    vardir  => './var',
++    vardir  => '/var/lib/fusioninventory',
+ );
+ 
+ # Compute directly libdir from this setup file as it should be installed
+diff -urN a/Makefile.PL b/Makefile.PL
+--- a/Makefile.PL	2020-05-27 11:09:31.966666059 -0000
++++ b/Makefile.PL	2020-05-27 11:09:39.833332729 -0000
+@@ -170,18 +170,15 @@
+         INSTALLSCRIPT        => '$(PREFIX)/bin',
+         INSTALLSITESCRIPT    => '$(PREFIX)/bin',
+         INSTALLVENDORSCRIPT  => '$(PREFIX)/bin',
+-        INSTALLLIB           => '$(DATADIR)/lib',
+-        INSTALLSITELIB       => '$(DATADIR)/lib',
+-        INSTALLVENDORLIB     => '$(DATADIR)/lib',
+         INSTALLMAN1DIR       => '$(PREFIX)/share/man/man1',
+         INSTALLSITEMAN1DIR   => '$(PREFIX)/share/man/man1',
+         INSTALLVENDORMAN1DIR => '$(PREFIX)/share/man/man1',
+         INSTALLMAN3DIR       => '$(PREFIX)/share/man/man3',
+         INSTALLSITEMAN3DIR   => '$(PREFIX)/share/man/man3',
+         INSTALLVENDORMAN3DIR => '$(PREFIX)/share/man/man3',
+-        SYSCONFDIR           => '$(PREFIX)/etc/fusioninventory',
++        SYSCONFDIR           => '/etc/fusioninventory',
+         DATADIR              => '$(PREFIX)/share/fusioninventory',
+-        LOCALSTATEDIR        => '$(PREFIX)/var/fusioninventory',
++        LOCALSTATEDIR        => '/var/lib/fusioninventory',
+     );
+ 
+     # allow variables defined on command line to override defaults

@@ -1,9 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="Trick Or Treat Daemon, a DNS proxy for 6to4"
 HOMEPAGE="http://www.dillema.net/software/totd.html"
@@ -12,14 +10,11 @@ SRC_URI="http://www.dillema.net/software/${PN}/${P}.tar.gz"
 LICENSE="totd BSD BSD-4"
 SLOT="0"
 KEYWORDS="~amd64 x86"
-IUSE=""
 
-DEPEND=""
-RDEPEND=""
-
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-no_werror.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-no_werror.patch
+	"${FILESDIR}"/${P}-fix-CC.patch
+)
 
 src_configure() {
 	econf \

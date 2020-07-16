@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="https://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1 LGPL-3"
 SLOT="3"
-KEYWORDS="alpha amd64 ~arm ~hppa ~mips ~ppc ~ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ~ppc ~ppc64 sparc x86"
 IUSE="gtk +introspection"
 
 RESTRICT="test" # consequence of the -no-mono.patch
@@ -37,7 +37,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-0.6.1-no-mono.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.6.1-no-mono.patch
+	"${FILESDIR}"/${PN}-12.10.1-werror.patch
+)
 
 src_prepare() {
 	default
@@ -57,7 +60,6 @@ src_configure() {
 
 	# python bindings are only for GTK+-2.x
 	econf \
-		--disable-silent-rules \
 		--disable-static \
 		$(use_enable gtk) \
 		$(use_enable introspection) \

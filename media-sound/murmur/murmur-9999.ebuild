@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit qmake-utils systemd user readme.gentoo-r1
+inherit qmake-utils systemd readme.gentoo-r1
 
 DESCRIPTION="Mumble is an open source, low-latency, high quality voice chat software"
 HOMEPAGE="https://wiki.mumble.info"
@@ -20,7 +20,8 @@ else
 	else
 		MY_PV="${PV/_/-}"
 		MY_P="${MY_PN}-${MY_PV}"
-		SRC_URI="https://github.com/mumble-voip/mumble/releases/download/${MY_PV}/${MY_P}.tar.gz"
+		SRC_URI="https://github.com/mumble-voip/mumble/releases/download/${MY_PV}/${MY_P}.tar.gz
+			https://dl.mumble.info/${MY_P}.tar.gz"
 		S="${WORKDIR}/${MY_PN}-${PV/_*}"
 	fi
 	KEYWORDS="~amd64 ~arm ~x86"
@@ -31,6 +32,8 @@ SLOT="0"
 IUSE="+dbus debug +ice pch zeroconf"
 
 RDEPEND="
+	acct-group/murmur
+	acct-user/murmur
 	>=dev-libs/openssl-1.0.0b:0=
 	>=dev-libs/protobuf-2.2.0:=
 	dev-qt/qtcore:5
@@ -51,7 +54,17 @@ DEPEND="${RDEPEND}
 	>=dev-libs/boost-1.41.0
 "
 BDEPEND="
-	virtual/pkgconfig"
+	acct-group/murmur
+	acct-user/murmur
+	virtual/pkgconfig
+"
+
+if [[ "${PV}" == *9999 ]] ; then
+	# Required for the mkini.sh script which calls perl multiple times
+	BDEPEND+="
+		dev-lang/perl
+	"
+fi
 
 DOC_CONTENTS="
 	Useful scripts are located in /usr/share/doc/${PF}/scripts.\n
@@ -63,18 +76,23 @@ DOC_CONTENTS="
 	registration will fail.
 "
 
-pkg_setup() {
-	enewgroup murmur
-	enewuser murmur -1 -1 /var/lib/murmur murmur
-}
-
 src_prepare() {
 	default
+
+	if [[ "${PV}" == *9999 ]] ; then
+		pushd scripts &>/dev/null || die
+		./mkini.sh || die
+		popd &>/dev/null || die
+	fi
 
 	sed \
 		-e 's:mumble-server:murmur:g' \
 		-e 's:/var/run:/run:g' \
-		-i "${S}"/scripts/murmur.{conf,ini} || die
+		-i "${S}"/scripts/murmur.{conf,ini.system} || die
+
+	# Adjust systemd service file to our config location #689208
+	sed "s@/etc/${PN}\.ini@/etc/${PN}/${PN}.ini@" \
+		-i scripts/${PN}.service || die
 }
 
 src_configure() {
@@ -102,15 +120,12 @@ src_install() {
 	dodoc -r scripts/server
 	docompress -x /usr/share/doc/${PF}/scripts
 
-	local dir=release
-	if use debug; then
-		dir=debug
-	fi
-
+	local dir="$(usex debug debug release)"
 	dobin "${dir}"/murmurd
 
-	insinto /etc/murmur/
-	doins scripts/murmur.ini
+	local etcdir="/etc/murmur"
+	insinto ${etcdir}
+	newins scripts/${PN}.ini.system ${PN}.ini
 
 	insinto /etc/logrotate.d/
 	newins "${FILESDIR}"/murmur.logrotate murmur
@@ -124,12 +139,8 @@ src_install() {
 	newinitd "${FILESDIR}"/murmur.initd-r1 murmur
 	newconfd "${FILESDIR}"/murmur.confd murmur
 
-	if use dbus; then
-		systemd_newunit "${FILESDIR}"/murmurd-dbus.service "${PN}".service
-		systemd_newtmpfilesd "${FILESDIR}"/murmurd-dbus.tmpfiles "${PN}".conf
-	else
-		systemd_newunit "${FILESDIR}"/murmurd-no-dbus.service "${PN}".service
-	fi
+	systemd_dounit scripts/${PN}.service
+	systemd_newtmpfilesd "${FILESDIR}"/murmurd-dbus.tmpfiles "${PN}".conf
 
 	keepdir /var/lib/murmur /var/log/murmur
 	fowners -R murmur /var/lib/murmur /var/log/murmur
@@ -137,8 +148,8 @@ src_install() {
 
 	# Fix permissions on config file as it might contain passwords.
 	# (bug #559362)
-	fowners root:murmur /etc/murmur/murmur.ini
-	fperms 640 /etc/murmur/murmur.ini
+	fowners root:murmur ${etcdir}/murmur.ini
+	fperms 640 ${etcdir}/murmur.ini
 
 	doman man/murmurd.1
 

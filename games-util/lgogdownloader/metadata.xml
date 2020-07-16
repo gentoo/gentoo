@@ -12,6 +12,9 @@
 	<upstream>
 		<remote-id type="github">Sude-/lgogdownloader</remote-id>
 	</upstream>
+	<use>
+		<flag name="gui">Enable GUI login support for passing reCAPTCHA</flag>
+	</use>
 	<longdescription>
 		LGOGDownloader is open source downloader to GOG.com for Linux
 		users using the same API as the official GOGDownloader.

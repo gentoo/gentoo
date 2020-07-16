@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools cvs eutils
+EAPI=7
+inherit autotools cvs desktop vcs-clean
 
 DESCRIPTION="rxvt clone with xft and unicode support"
 HOMEPAGE="http://software.schmorp.de/pkg/rxvt-unicode.html"
@@ -14,19 +14,19 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 IUSE="
-	256-color blink fading-colors +font-styles iso14755 +mousewheel +perl
-	pixbuf startup-notification xft unicode3
+	256-color blink fading-colors +font-styles gdk-pixbuf iso14755 +mousewheel
+	+perl startup-notification unicode3 +utmp +wtmp xft
 "
 RESTRICT="test"
 
 RDEPEND="
+	>=sys-libs/ncurses-5.7-r6:=
 	media-libs/fontconfig
-	sys-libs/ncurses:*
 	x11-libs/libX11
 	x11-libs/libXrender
+	gdk-pixbuf? ( x11-libs/gdk-pixbuf )
 	kernel_Darwin? ( dev-perl/Mac-Pasteboard )
 	perl? ( dev-lang/perl:= )
-	pixbuf? ( x11-libs/gdk-pixbuf x11-libs/gtk+:2 )
 	startup-notification? ( x11-libs/startup-notification )
 	xft? ( x11-libs/libXft )
 "
@@ -35,42 +35,45 @@ DEPEND="
 	virtual/pkgconfig
 	x11-base/xorg-proto
 "
-
-S=${WORKDIR}/${PN}
-PATCHES=(
-	"${FILESDIR}"/${PN}-9.06-case-insensitive-fs.patch
-	"${FILESDIR}"/${PN}-9.21-xsubpp.patch
-
+DOCS=(
+	Changes
+	README.FAQ
+	doc/README.xvt
+	doc/changes.txt
+	doc/etc/${PN}.term{cap,info}
+	doc/rxvt-tabbed
 )
+S=${WORKDIR}/${PN}
 
 src_prepare() {
 	ecvs_clean
-
-	# kill the rxvt-unicode terminfo file - #192083
-	sed -i -e "/rxvt-unicode.terminfo/d" doc/Makefile.in || die
+	eapply \
+		"${FILESDIR}"/${PN}-9.06-case-insensitive-fs.patch \
+		"${FILESDIR}"/${PN}-9.21-xsubpp.patch
 
 	eapply_user
+
+	# kill the rxvt-unicode terminfo file - #192083
+	sed -i -e "/rxvt-unicode.terminfo/d" doc/Makefile.in || die "sed failed"
 
 	eautoreconf
 }
 
 src_configure() {
-	local myconf=''
-
-	use iso14755 || myconf='--disable-iso14755'
-
 	# --enable-everything goes first: the order of the arguments matters
 	econf --enable-everything \
 		$(use_enable 256-color) \
 		$(use_enable blink text-blink) \
 		$(use_enable fading-colors fading) \
 		$(use_enable font-styles) \
+		$(use_enable gdk-pixbuf pixbuf) \
 		$(use_enable iso14755) \
 		$(use_enable mousewheel) \
 		$(use_enable perl) \
-		$(use_enable pixbuf) \
 		$(use_enable startup-notification) \
 		$(use_enable unicode3) \
+		$(use_enable utmp) \
+		$(use_enable wtmp) \
 		$(use_enable xft)
 }
 
@@ -84,9 +87,6 @@ src_compile() {
 
 src_install() {
 	default
-
-	dodoc \
-		README.FAQ Changes doc/README* doc/changes.txt doc/etc/* doc/rxvt-tabbed
 
 	make_desktop_entry urxvt rxvt-unicode utilities-terminal \
 		"System;TerminalEmulator"

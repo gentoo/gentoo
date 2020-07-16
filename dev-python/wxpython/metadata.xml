@@ -13,6 +13,6 @@
 		<flag name="examples">Install interactive demo module browser and sample applets.</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">wxpython</remote-id>
+		<remote-id type="github">wxWidgets/Phoenix</remote-id>
 	</upstream>
 </pkgmetadata>

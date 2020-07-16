@@ -1,9 +1,10 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit gnome2-utils xdg-utils
+# eutils required for strip-linguas
+inherit eutils xdg
 
 LANGS="ar ast be bg ca cs de el en_GB es et eu fa fi fr gl he hi hu id it ja kk ko lb lt mn nl nn pl pt pt_BR ro ru sk sl sr sv tr uk vi zh_CN ZH_TW"
 NOSHORTLANGS="en_GB zh_CN zh_TW"
@@ -14,8 +15,9 @@ if [[ "${PV}" = 9999* ]] ; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/geany/geany.git"
 else
+	[[ "${PV}" == *_pre* ]] && inherit autotools
 	SRC_URI="https://download.geany.org/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 LICENSE="GPL-2+ HPND"
 SLOT="0"
@@ -41,7 +43,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
+	xdg_src_prepare #588570
 
 	# Syntax highlighting for Portage
 	sed -i -e "s:*.sh;:*.sh;*.ebuild;*.eclass;:" \
@@ -55,8 +57,7 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		--disable-html-docs
-		--disable-dependency-tracking
-		--docdir="${EPREFIX}/usr/share/doc/${PF}"
+		--disable-pdf-docs
 		$(use_enable gtk3)
 		$(use_enable vte)
 	)
@@ -68,14 +69,14 @@ src_install() {
 	find "${ED}" \( -name '*.a' -o -name '*.la' \) -delete || die
 }
 
-pkg_preinst() { gnome2_icon_savelist; }
+pkg_preinst() {
+	xdg_pkg_preinst
+}
 
 pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postrm
 }

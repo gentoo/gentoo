@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}-src-v${PV}.tar.gz"
 HOMEPAGE="http://www.jconfig.org/"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 CDEPEND="java-virtuals/jmx"
@@ -39,7 +39,7 @@ JAVA_ANT_ENCODING="ISO-8859-1"
 src_install() {
 	java-pkg_dojar dist/jconfig.jar
 
-	dodoc README || die
+	dodoc README
 
 	use doc && java-pkg_dojavadoc javadoc
 	use source && java-pkg_dosrc src/*

@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 python3_7 )
+PYTHON_COMPAT=( python3_6 python3_7 )
 
 inherit distutils-r1
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]"
@@ -22,7 +22,6 @@ RDEPEND="
 	${CDEPEND}
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
 	>=dev-python/monotonic-0.6[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
 	>=dev-python/contextlib2-0.4.0[${PYTHON_USEDEP}]
 	>=dev-python/prettytable-0.7.1[${PYTHON_USEDEP}]
 	<dev-python/prettytable-0.8[${PYTHON_USEDEP}]"

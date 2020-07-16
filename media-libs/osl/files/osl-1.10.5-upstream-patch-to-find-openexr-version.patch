@@ -1,0 +1,76 @@
+From 9efdcfafcdfbb7666171b6016b725183a71fceb0 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Tue, 25 Jun 2019 19:44:14 +0200
+Subject: [PATCH] src/cmake/modules/FindOpenEXR.cmake: patch to find openexr
+
+This upstream patch (see
+https://github.com/imageworks/OpenShadingLanguage/pull/1022/files)
+uses pkg-config variables to get the correct versions for openexr
+on multilib installations.
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ src/cmake/modules/FindOpenEXR.cmake | 20 +++++++++++++++-----
+ 1 file changed, 15 insertions(+), 5 deletions(-)
+
+diff --git a/src/cmake/modules/FindOpenEXR.cmake b/src/cmake/modules/FindOpenEXR.cmake
+index 6c6b39c..4a9de4b 100644
+--- a/src/cmake/modules/FindOpenEXR.cmake
++++ b/src/cmake/modules/FindOpenEXR.cmake
+@@ -25,8 +25,12 @@ endif ()
+ # Attempt to find OpenEXR with pkgconfig
+ find_package(PkgConfig)
+ if (PKG_CONFIG_FOUND)
+-    pkg_check_modules(_ILMBASE QUIET IlmBase>=2.0.0)
+-    pkg_check_modules(_OPENEXR QUIET OpenEXR>=2.0.0)
++    if (NOT ILMBASE_ROOT_DIR)
++        pkg_check_modules(_ILMBASE QUIET QUIET IlmBase>=2.0.0)
++    endif()
++    if (NOT OPENEXR_ROOT_DIR)
++        pkg_check_modules(_OPENEXR QUIET OpenEXR>=2.0.0)
++    endif()
+ endif (PKG_CONFIG_FOUND)
+ 
+ # List of likely places to find the headers -- note priority override of
+@@ -60,7 +64,11 @@ find_path (OPENEXR_INCLUDE_PATH OpenEXR/OpenEXRConfig.h
+ find_path (OPENEXR_INCLUDE_PATH OpenEXR/OpenEXRConfig.h)
+ 
+ # Try to figure out version number
+-if (EXISTS "${OPENEXR_INCLUDE_PATH}/OpenEXR/ImfMultiPartInputFile.h")
++if (DEFINED _OPENEXR_VERSION AND NOT "${_OPENEXR_VERSION}" STREQUAL "")
++    set (OPENEXR_VERSION "${_OPENEXR_VERSION}")
++    string (REGEX REPLACE "([0-9]+)\\.[0-9\\.]+" "\\1" OPENEXR_VERSION_MAJOR "${_OPENEXR_VERSION}")
++    string (REGEX REPLACE "[0-9]+\\.([0-9]+)(\\.[0-9]+)?" "\\1" OPENEXR_VERSION_MINOR "${_OPENEXR_VERSION}")
++elseif (EXISTS "${OPENEXR_INCLUDE_PATH}/OpenEXR/ImfMultiPartInputFile.h")
+     # Must be at least 2.0
+     file(STRINGS "${OPENEXR_INCLUDE_PATH}/OpenEXR/OpenEXRConfig.h" TMP REGEX "^#define OPENEXR_VERSION_STRING .*$")
+     string (REGEX MATCHALL "[0-9]+[.0-9]+" OPENEXR_VERSION ${TMP})
+@@ -93,6 +101,8 @@ set (GENERIC_LIBRARY_PATHS
+     /opt/local/lib
+     $ENV{PROGRAM_FILES}/OpenEXR/lib/static )
+ 
++# message (STATUS "Generic lib paths: ${GENERIC_LIBRARY_PATHS}")
++
+ # Handle request for static libs by altering CMAKE_FIND_LIBRARY_SUFFIXES.
+ # We will restore it at the end of this file.
+ set (_openexr_orig_suffixes ${CMAKE_FIND_LIBRARY_SUFFIXES})
+@@ -114,14 +124,14 @@ foreach (COMPONENT ${_openexr_components})
+     # First try with the version embedded
+     set (FULL_COMPONENT_NAME ${COMPONENT}-${OPENEXR_VERSION_MAJOR}_${OPENEXR_VERSION_MINOR})
+     find_library (OPENEXR_${UPPERCOMPONENT}_LIBRARY ${FULL_COMPONENT_NAME}
+-                  PATHS ${OPENEXR_LIBRARY_DIR}
++                  PATHS ${OPENEXR_LIBRARY_DIR} $ENV{OPENEXR_LIBRARY_DIR}
+                         ${GENERIC_LIBRARY_PATHS} NO_DEFAULT_PATH)
+     # Again, with no directory restrictions
+     find_library (OPENEXR_${UPPERCOMPONENT}_LIBRARY ${FULL_COMPONENT_NAME})
+     # Try again without the version
+     set (FULL_COMPONENT_NAME ${COMPONENT})
+     find_library (OPENEXR_${UPPERCOMPONENT}_LIBRARY ${FULL_COMPONENT_NAME}
+-                  PATHS ${OPENEXR_LIBRARY_DIR}
++                  PATHS ${OPENEXR_LIBRARY_DIR} $ENV{OPENEXR_LIBRARY_DIR}
+                         ${GENERIC_LIBRARY_PATHS} NO_DEFAULT_PATH)
+     # One more time, with no restrictions
+     find_library (OPENEXR_${UPPERCOMPONENT}_LIBRARY ${FULL_COMPONENT_NAME})
+-- 
+2.22.0
+

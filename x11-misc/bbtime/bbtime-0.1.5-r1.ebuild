@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/bbtools/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc x86 ~x86-fbsd"
+KEYWORDS="~amd64 ppc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libX11"
@@ -26,7 +26,7 @@ src_prepare() {
 	eautoreconf
 }
 
-src_install () {
+src_install() {
 	default
 	rm "${ED%/}"/usr/share/bbtools/README.bbtime || die
 	# since multiple bbtools packages provide this file, install

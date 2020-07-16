@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,11 +11,11 @@ if [ "${PV}" = "9999" ]; then
 else
 	SRC_URI="https://gitweb.gentoo.org/proj/${OLD_PN}.git/snapshot/${OLD_P}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${OLD_P}"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 s390 ~sh ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv s390 ~sparc ~x86"
 fi
 
 DESCRIPTION="udev startup scripts for openrc"
-HOMEPAGE="https://www.gentoo.org"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -25,13 +25,18 @@ RESTRICT="test"
 RDEPEND=">=virtual/udev-217
 	!<sys-apps/openrc-0.14"
 
+src_install() {
+	local -x SYSCONFDIR="${EPREFIX}/etc"
+	default
+}
+
 pkg_postinst() {
 	# Add udev and udev-trigger to the sysinit runlevel automatically.
 	for f in udev udev-trigger; do
-		if [[ -x ${ROOT%/}/etc/init.d/${f} &&
-			-d ${ROOT%/}/etc/runlevels/sysinit &&
-			! -L "${ROOT%/}/etc/runlevels/sysinit/${f}" ]]; then
-			ln -snf /etc/init.d/${f} "${ROOT%/}"/etc/runlevels/sysinit/${f}
+		if [[ -x "${EROOT}/etc/init.d/${f}" &&
+			-d "${EROOT}/etc/runlevels/sysinit" &&
+			! -L "${EROOT}/etc/runlevels/sysinit/${f}" ]]; then
+			ln -snf "${EPREFIX}/etc/init.d/${f}" "${EROOT}/etc/runlevels/sysinit/${f}"
 			ewarn "Adding ${f} to the sysinit runlevel"
 		fi
 	done

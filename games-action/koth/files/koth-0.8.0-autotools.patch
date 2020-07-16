@@ -1,0 +1,20 @@
+--- a/configure.in
++++ b/configure.in
+@@ -4,15 +4,14 @@
+ AM_CONFIG_HEADER(config.h)
+ AC_PROG_MAKE_SET
+ 
+-USER_CFLAGS=$CFLAGS
+-
+ dnl Checks for programs.
+ AC_PROG_CC
+ AC_ISC_POSIX
++AM_PROG_AR
+ AC_PROG_RANLIB
+ 
+ 
+-CFLAGS="-g -O2 -Wall -Wimplicit $USER_CFLAGS"
++CFLAGS="${CFLAGS} -Wall -Wimplicit"
+ dnl Checks for library functions.
+ AC_ARG_ENABLE(client, [  --disable-client        disable libggi detection (can only build server)],
+ 			if test $enableval == no; then 

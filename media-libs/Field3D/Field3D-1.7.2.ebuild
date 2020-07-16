@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="A library for storing voxel data"
 HOMEPAGE="http://opensource.imageworks.com/?p=field3d"
@@ -11,18 +11,25 @@ SRC_URI="https://github.com/imageworks/Field3D/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
+IUSE="mpi"
 
+BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	>=dev-libs/boost-1.62:=
 	>=media-libs/ilmbase-2.2.0:=
 	sci-libs/hdf5:=
-	virtual/mpi"
+	mpi? ( virtual/mpi )
+"
+DEPEND="${RDEPEND}"
 
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+PATCHES=( "${FILESDIR}/${P}-Use-PkgConfig-for-IlmBase.patch" )
 
-PATCHES=( "${FILESDIR}/Field3D-1.7.2-Use-PkgConfig-for-IlmBase.patch" )
-
-# Docs are not finished yet.
-mycmakeargs=( -DINSTALL_DOCS=OFF )
+src_configure() {
+	local mycmakeargs=(
+		-DINSTALL_DOCS=OFF # Docs are not finished yet.
+		-DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=ON
+		$(cmake_use_find_package mpi MPI)
+	)
+	cmake_src_configure
+}

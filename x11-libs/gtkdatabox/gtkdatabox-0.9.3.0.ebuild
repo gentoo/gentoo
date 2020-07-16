@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils
+inherit eutils ltprune
 
 DESCRIPTION="Gtk+ Widgets for live display of large amounts of fluctuating numerical data"
 HOMEPAGE="https://sourceforge.net/projects/gtkdatabox/"
@@ -11,8 +11,9 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="examples +glade static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="x11-libs/cairo
 	x11-libs/gtk+:2
@@ -38,7 +39,6 @@ src_configure() {
 		--disable-glade \
 		$(use_enable static-libs static) \
 		$(use_enable test gtktest) \
-		--disable-dependency-tracking \
 		--enable-libtool-lock
 }
 

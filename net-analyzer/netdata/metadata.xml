@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <maintainer type="person">
-        <email>candrews@gentoo.org</email>
-        <name>Craig Andrews</name>
-    </maintainer>
-    <use>
-        <flag name="compression">Enable compression via zlib</flag>
-        <flag name="ipmi">Install <pkg>sys-apps/ipmitool</pkg> required for monitoring IPMI sensors.</flag>
-        <flag name="nfacct">Enable the nfacct plugin</flag>
-        <flag name="nodejs">Enable use of nodejs (which some plugins use)</flag>
-        <flag name="tor">Enable monitoring of tor</flag>
-    </use>
-    <upstream>
-        <remote-id type="github">netdata/netdata</remote-id>
-    </upstream>
-    <longdescription lang="en">
+  <maintainer type="person">
+    <email>candrews@gentoo.org</email>
+    <name>Craig Andrews</name>
+  </maintainer>
+  <use>
+    <flag name="compression">Enable compression via zlib</flag>
+    <flag name="dbengine">Enable the Netdata database engine</flag>
+    <flag name="ipmi">Install <pkg>sys-apps/ipmitool</pkg> required for monitoring IPMI sensors.</flag>
+    <flag name="jsonc">Enable optimization of JSON using <pkg>dev-libs/json-c</pkg></flag>
+    <flag name="kinesis">Enable support for Amazon Kenesis as a backend</flag>
+    <flag name="mongodb">Enable support for the mongodb backend</flag>
+    <flag name="nfacct">Enable the nfacct plugin</flag>
+    <flag name="nodejs">Enable use of nodejs (which some plugins use)</flag>
+    <flag name="prometheus">Enable support for the Prometheus remote write backend</flag>
+    <flag name="tor">Enable monitoring of tor</flag>
+    <flag name="xen">Enable monitoring of xen</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">netdata/netdata</remote-id>
+  </upstream>
+  <longdescription lang="en">
         Linux real time system monitoring web interface
     </longdescription>
 </pkgmetadata>

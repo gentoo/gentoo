@@ -1,0 +1,28 @@
+Description: Disable nagging suggestion to upgrade using pip
+Author: Sebastien Badia <sbadia@debian.org>
+Bug-Debian: https://bugs.debian.org/877127
+Forwarded: not-needed
+Last-Update: 2019-02-07
+
+--- a/glances/standalone.py
++++ b/glances/standalone.py
+@@ -92,9 +92,6 @@
+             # Init screen
+             self.screen = GlancesCursesStandalone(config=config, args=args)
+ 
+-        # Check the latest Glances version
+-        self.outdated = Outdated(config=config, args=args)
+-
+     @property
+     def quiet(self):
+         return self._quiet
+@@ -156,9 +153,3 @@
+ 
+         # Exit from export modules
+         self.stats.end()
+-
+-        # Check Glances version versus PyPI one
+-        if self.outdated.is_outdated():
+-            print("You are using Glances version {}, however version {} is available.".format(
+-                self.outdated.installed_version(), self.outdated.latest_version()))
+-            print("You should consider upgrading using: pip install --upgrade glances")

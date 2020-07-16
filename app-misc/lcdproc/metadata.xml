@@ -2,12 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>ck+gentoo@bl4ckb0x.de</email>
+		<email>conikost@gentoo.org</email>
 		<name>Conrad Kostecki</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
 		LCDproc is a piece of open source software that displays real-time system information
@@ -21,14 +17,10 @@
 		<flag name="ethlcd">Enable support for ethlcd in the hd44780 driver.</flag>
 		<flag name="extra-charmaps">Enable extra language specific charmaps.</flag>
 		<flag name="freetype">Enable support for <pkg>media-libs/freetype</pkg> in the glcd driver.</flag>
-		<flag name="ftdi">Enable support for <pkg>dev-embedded/libftdi</pkg> in the glcd,hd44780,i2500vfd,lis and ula200 driver.</flag>
-		<flag name="hid">Enable support for <pkg>dev-libs/libhid</pkg> in the cfontz,cfontzpacket,cwlnx,glcd,lb216,mdm166a,mtc_s16209x and noritakevfd driver.</flag>
-		<flag name="irman">Enable support for <pkg>media-libs/libirman</pkg> in the irman driver.</flag>
 		<flag name="menu">Enable menu support in the lcdproc client.</flag>
 		<flag name="nfs">Display NFS filesystem stats in the lcdproc client.</flag>
 		<flag name="png">Enable support for <pkg>media-libs/libpng</pkg> in the glcd driver.</flag>
 		<flag name="samba">Display SMBFS filesystem stats in the lcdproc client.</flag>
-		<flag name="seamless-hbars">Don't produce any gaps in horizontal bar graphs, if hardware supports it.</flag>
 		<flag name="test-menu">Enable test menu support for the lcdproc server.</flag>
 	</use>
 	<upstream>

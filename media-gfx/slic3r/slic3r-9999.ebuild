@@ -8,12 +8,13 @@ inherit eutils git-r3 perl-module
 DESCRIPTION="A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)"
 HOMEPAGE="https://slic3r.org"
 SRC_URI=""
-EGIT_REPO_URI="https://github.com/alexrj/Slic3r.git"
+EGIT_REPO_URI="https://github.com/Slic3r/Slic3r.git"
 
 LICENSE="AGPL-3 CC-BY-3.0"
 SLOT="0"
 KEYWORDS=""
 IUSE="+gui test"
+RESTRICT="!test? ( test )"
 
 # check Build.PL for dependencies
 RDEPEND="!=dev-lang/perl-5.16*

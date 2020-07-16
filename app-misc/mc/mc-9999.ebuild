@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,11 +11,9 @@ fi
 
 inherit flag-o-matic ${LIVE_ECLASSES}
 
-MY_P=${P/_/-}
-
 if [[ -z ${LIVE_EBUILD} ]]; then
-	SRC_URI="http://ftp.midnight-commander.org/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
+	SRC_URI="http://ftp.midnight-commander.org/${P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="GNU Midnight Commander is a text based file manager"
@@ -23,7 +21,7 @@ HOMEPAGE="https://www.midnight-commander.org"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+edit gpm mclib nls samba sftp +slang spell test unicode X +xdg"
+IUSE="+edit gpm nls samba sftp +slang spell test unicode X +xdg"
 
 REQUIRED_USE="spell? ( edit )"
 
@@ -47,6 +45,8 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/check )
 	"
 
+RESTRICT="!test? ( test )"
+
 pkg_pretend() {
 	if use slang && use unicode ; then
 		ewarn "\"unicode\" USE flag only takes effect when the \"slang\" USE flag is disabled."
@@ -63,14 +63,16 @@ src_configure() {
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags "-lnsl -lsocket"
 
 	local myeconfargs=(
-		--disable-dependency-tracking
-		--disable-silent-rules
 		--enable-charset
 		--enable-vfs
 		--with-homedir=$(usex xdg 'XDG' '.mc')
 		--with-screen=$(usex slang 'slang' "ncurses$(usex unicode 'w' '')")
 		$(use_enable kernel_linux vfs-undelfs)
-		$(use_enable mclib)
+		# Today mclib does not expose any headers and is linked to
+		# single 'mc' binary. Thus there is no advantage of having
+		# a library. Let's avoid shared library altogether
+		# as it also conflicts with sci-libs/mc: bug #685938
+		--disable-mclib
 		$(use_enable nls)
 		$(use_enable samba vfs-smb)
 		$(use_enable sftp vfs-sftp)
@@ -103,7 +105,7 @@ src_install() {
 
 	if ! use xdg ; then
 		sed 's@MC_XDG_OPEN="xdg-open"@MC_XDG_OPEN="/bin/false"@' \
-			-i "${ED%/}"/usr/libexec/mc/ext.d/*.sh || die
+			-i "${ED}"/usr/libexec/mc/ext.d/*.sh || die
 	fi
 }
 

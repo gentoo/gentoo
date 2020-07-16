@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1 git-r3
 
@@ -16,15 +16,18 @@ SLOT="0"
 LICENSE="MIT"
 KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-python/docopt-0.6.2
-	>=dev-python/pyyaml-3.11
-	>=dev-python/python-dateutil-2.4.2
+	>=dev-python/docopt-0.6.2[${PYTHON_USEDEP}]
+	>=dev-python/pyyaml-3.11[${PYTHON_USEDEP}]
+	>=dev-python/python-dateutil-2.4.2[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}
+DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
+		${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/testfixtures[${PYTHON_USEDEP}]
 	)
@@ -33,5 +36,5 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}"/${PN}-1.4.0-S.patch )
 
 python_test() {
-	py.test || die
+	pytest -vv || die
 }

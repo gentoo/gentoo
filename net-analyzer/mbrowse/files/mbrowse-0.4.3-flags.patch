@@ -1,0 +1,16 @@
+--- acinclude.m4
++++ b/acinclude.m4
+@@ -277,13 +277,11 @@
+     echo "***   --with-snmp-lib=DIR"
+     echo "***"
+     CFLAGS="$ac_save_CFLAGS"
+-    LDFLAGS="$ac_save_LDFLAGS"
+     LIBS="$ac_save_LIBS"
+     ifelse([$3], ,:,[$3])
+   fi
+ 
+   CFLAGS="$ac_save_CFLAGS"
+-  LDFLAGS="$ac_save_LDFLAGS"
+   LIBS="$ac_save_LIBS"
+ 
+   AC_SUBST(SNMP_CFLAGS)

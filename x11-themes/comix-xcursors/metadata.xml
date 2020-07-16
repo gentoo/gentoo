@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!--maintainer-needed-->
 	<use>
 		<flag name="lefthanded">Install lefthanded version of theme in addition to default one</flag>
 		<flag name="opaque">Install non-transparent version of theme in addition to default one</flag>

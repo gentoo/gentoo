@@ -1,0 +1,12 @@
+diff -up a/common/game.h.me b/common/game.h
+--- a/common/game.h.me	2020-02-06 12:05:24.472403768 +0100
++++ b/common/game.h	2020-02-06 12:05:45.662644226 +0100
+@@ -137,7 +137,7 @@ typedef enum {
+ typedef void (*WriteLineFunc) (gpointer user_data, const gchar *);
+ 
+ /** Default style for a player. */
+-const gchar *default_player_style;
++extern const gchar *default_player_style;
+ 
+ GameParams *params_new(void);
+ GameParams *params_copy(const GameParams * params);

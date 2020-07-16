@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,8 +11,9 @@ inherit perl-module
 DESCRIPTION="Event based transparent Client/Server RPC framework"
 
 SLOT="0"
-KEYWORDS="amd64 ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 ~ia64 ppc ppc64 ~sparc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 # Note: Storable not listed in final alternation like it is
 # upstream as storable alone is inherently insecure, so we force

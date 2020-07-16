@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+  <maintainer type="person">
+    <email>mgorny@gentoo.org</email>
+    <name>Michał Górny</name>
+  </maintainer>
   <maintainer type="project">
     <email>games@gentoo.org</email>
     <name>Gentoo Games Project</name>
@@ -25,5 +29,6 @@ ways :
 </longdescription>
   <upstream>
     <remote-id type="sourceforge">atari800</remote-id>
+    <remote-id type="github">atari800/atari800</remote-id>
   </upstream>
 </pkgmetadata>

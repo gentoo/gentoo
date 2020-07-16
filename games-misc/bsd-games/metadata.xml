@@ -5,4 +5,7 @@
 	<email>games@gentoo.org</email>
 	<name>Gentoo Games Project</name>
 </maintainer>
+<upstream>
+	<remote-id type="github">jsm28/bsd-games</remote-id>
+</upstream>
 </pkgmetadata>

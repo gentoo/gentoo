@@ -1,0 +1,139 @@
+
+#Patch to make gitea logging less verbose.
+
+diff --git a/modules/log/flags.go b/modules/log/flags.go
+index 992fc62dd..5578a1b6b 100644
+--- a/modules/log/flags.go
++++ b/modules/log/flags.go
+@@ -31,7 +31,7 @@ const (
+ 	Lmedfile = Lshortfile | Llongfile
+ 
+ 	// LstdFlags is the initial value for the standard logger
+-	LstdFlags = Ldate | Ltime | Lmedfile | Lshortfuncname | Llevelinitial
++	LstdFlags = Ldate | Ltime | Llevelinitial
+ )
+ 
+ var flagFromString = map[string]int{
+
+
+#Just patching the tests to keep working with the patch above (avoid using LstdFlags)
+
+diff --git a/modules/log/conn_test.go b/modules/log/conn_test.go
+index cc3d758fa..295bee37f 100644
+--- a/modules/log/conn_test.go
++++ b/modules/log/conn_test.go
+@@ -40,7 +40,7 @@ func TestConnLogger(t *testing.T) {
+ 
+ 	prefix := "TestPrefix "
+ 	level := INFO
+-	flags := LstdFlags | LUTC | Lfuncname
++    flags :=  Ldate | Ltime | Lmedfile | Lshortfuncname | Llevelinitial | LUTC | Lfuncname
+ 
+ 	logger := NewConn()
+ 	connLogger := logger.(*ConnLogger)
+@@ -112,7 +112,7 @@ func TestConnLoggerCloseBeforeSend(t *testing.T) {
+ 
+ 	prefix := "TestPrefix "
+ 	level := INFO
+-	flags := LstdFlags | LUTC | Lfuncname
++    flags :=  Ldate | Ltime | Lmedfile | Lshortfuncname | Llevelinitial | LUTC | Lfuncname
+ 
+ 	logger := NewConn()
+ 
+@@ -126,7 +126,7 @@ func TestConnLoggerFailConnect(t *testing.T) {
+ 
+ 	prefix := "TestPrefix "
+ 	level := INFO
+-	flags := LstdFlags | LUTC | Lfuncname
++    flags :=  Ldate | Ltime | Lmedfile | Lshortfuncname | Llevelinitial | LUTC | Lfuncname
+ 
+ 	logger := NewConn()
+ 
+@@ -169,7 +169,7 @@ func TestConnLoggerClose(t *testing.T) {
+ 
+ 	prefix := "TestPrefix "
+ 	level := INFO
+-	flags := LstdFlags | LUTC | Lfuncname
++    flags :=  Ldate | Ltime | Lmedfile | Lshortfuncname | Llevelinitial | LUTC | Lfuncname
+ 
+ 	logger := NewConn()
+ 	connLogger := logger.(*ConnLogger)
+diff --git a/modules/log/console_test.go b/modules/log/console_test.go
+index a028b5b87..e4fec760a 100644
+--- a/modules/log/console_test.go
++++ b/modules/log/console_test.go
+@@ -33,7 +33,7 @@ func TestConsoleLoggerMinimalConfig(t *testing.T) {
+ 			},
+ 		}
+ 		prefix := ""
+-		flags := LstdFlags
++        flags := LstdFlags
+ 
+ 		cw := NewConsoleLogger()
+ 		realCW := cw.(*ConsoleLogger)
+@@ -64,7 +64,7 @@ func TestConsoleLogger(t *testing.T) {
+ 	}
+ 	prefix := "TestPrefix "
+ 	level := INFO
+-	flags := LstdFlags | LUTC | Lfuncname
++    flags :=  Ldate | Ltime | Lmedfile | Lshortfuncname | Llevelinitial | LUTC | Lfuncname
+ 
+ 	cw := NewConsoleLogger()
+ 	realCW := cw.(*ConsoleLogger)
+diff --git a/modules/log/file_test.go b/modules/log/file_test.go
+index 38279315a..dc8d291ed 100644
+--- a/modules/log/file_test.go
++++ b/modules/log/file_test.go
+@@ -24,7 +24,7 @@ func TestFileLoggerFails(t *testing.T) {
+ 
+ 	prefix := "TestPrefix "
+ 	level := INFO
+-	flags := LstdFlags | LUTC | Lfuncname
++    flags :=  Ldate | Ltime | Lmedfile | Lshortfuncname | Llevelinitial | LUTC | Lfuncname
+ 	//filename := filepath.Join(tmpDir, "test.log")
+ 
+ 	fileLogger := NewFileLogger()
+@@ -52,7 +52,7 @@ func TestFileLogger(t *testing.T) {
+ 
+ 	prefix := "TestPrefix "
+ 	level := INFO
+-	flags := LstdFlags | LUTC | Lfuncname
++    flags :=  Ldate | Ltime | Lmedfile | Lshortfuncname | Llevelinitial | LUTC | Lfuncname
+ 	filename := filepath.Join(tmpDir, "test.log")
+ 
+ 	fileLogger := NewFileLogger()
+@@ -155,7 +155,7 @@ func TestCompressFileLogger(t *testing.T) {
+ 
+ 	prefix := "TestPrefix "
+ 	level := INFO
+-	flags := LstdFlags | LUTC | Lfuncname
++    flags :=  Ldate | Ltime | Lmedfile | Lshortfuncname | Llevelinitial | LUTC | Lfuncname
+ 	filename := filepath.Join(tmpDir, "test.log")
+ 
+ 	fileLogger := NewFileLogger()
+diff --git a/modules/log/smtp_test.go b/modules/log/smtp_test.go
+index 216d55521..15075dd41 100644
+--- a/modules/log/smtp_test.go
++++ b/modules/log/smtp_test.go
+@@ -17,7 +17,7 @@ import (
+ func TestSMTPLogger(t *testing.T) {
+ 	prefix := "TestPrefix "
+ 	level := INFO
+-	flags := LstdFlags | LUTC | Lfuncname
++    flags :=  Ldate | Ltime | Lmedfile | Lshortfuncname | Llevelinitial | LUTC | Lfuncname
+ 	username := "testuser"
+ 	password := "testpassword"
+ 	host := "testhost"
+diff --git a/modules/log/writer_test.go b/modules/log/writer_test.go
+index 886dd58fb..df2f6e698 100644
+--- a/modules/log/writer_test.go
++++ b/modules/log/writer_test.go
+@@ -41,7 +41,7 @@ func TestBaseLogger(t *testing.T) {
+ 	b := WriterLogger{
+ 		out:    c,
+ 		Level:  INFO,
+-		Flags:  LstdFlags | LUTC,
++		Flags:  Ldate | Ltime | Lmedfile | Lshortfuncname | Llevelinitial | LUTC,
+ 		Prefix: prefix,
+ 	}
+ 	location, _ := time.LoadLocation("EST")

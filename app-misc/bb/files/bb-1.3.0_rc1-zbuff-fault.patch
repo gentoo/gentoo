@@ -20,8 +20,6 @@ Valgrind says:
 ==4525==    by 0x4031BC: bb (bb.c:325)
 ==4525==    by 0x407C56: main (main.c:202)
 
-diff --git a/tex.c b/tex.c
-index 9f2f99d..b390510 100644
 --- a/tex.c
 +++ b/tex.c
 @@ -92,7 +92,7 @@ void unset_zbuff()

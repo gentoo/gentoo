@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,11 +6,9 @@ EAPI=7
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/tdf/libcmis.git"
 	inherit git-r3
-elif [[ ${PV} = *_pre* ]]; then
-	COMMIT=738528d790b2b1d52d9b72d673842969a852815d
-	SRC_URI="https://github.com/tdf/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 else
 	SRC_URI="https://github.com/tdf/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 fi
 inherit autotools flag-o-matic
 
@@ -20,18 +18,8 @@ HOMEPAGE="https://github.com/tdf/libcmis"
 LICENSE="|| ( GPL-2 LGPL-2 MPL-1.1 )"
 SLOT="0.5"
 
-# Don't move KEYWORDS on the previous line or ekeyword won't work # 399061
-[[ ${PV} == 9999 ]] || \
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+IUSE="man static-libs test tools"
 
-IUSE="man static-libs test"
-
-RDEPEND="
-	dev-libs/boost:=
-	dev-libs/libxml2
-	net-misc/curl
-"
-DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	man? (
@@ -43,10 +31,14 @@ BDEPEND="
 		dev-util/cppunit
 	)
 "
+DEPEND="
+	dev-libs/boost:=
+	dev-libs/libxml2
+	net-misc/curl
+"
+RDEPEND="${DEPEND}"
 
 RESTRICT="test"
-
-[[ ${PV} = *_pre* ]] && S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_prepare() {
 	default
@@ -63,7 +55,7 @@ src_configure() {
 		$(use_with man)
 		$(use_enable static-libs static)
 		$(use_enable test tests)
-		--enable-client
+		$(use_enable tools client)
 	)
 	econf "${myeconfargs[@]}"
 }

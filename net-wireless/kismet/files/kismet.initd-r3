@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="kismet"
+command="/usr/bin/kismet"
+command_args="--no-ncurses ${KISMET_SERVER_OPTIONS}"
+supervisor="supervise-daemon"
+output_log="/var/log/kismet.log"
+error_log="${output_log}"
+pidfile="/run/kismet.pid"

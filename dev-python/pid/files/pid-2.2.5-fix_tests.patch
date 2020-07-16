@@ -1,0 +1,31 @@
+diff --git a/tests/test_pid.py b/tests/test_pid.py
+index 28fda19..99e2a29 100644
+--- a/tests/test_pid.py
++++ b/tests/test_pid.py
+@@ -170,13 +170,13 @@ def test_pid_already_locked_custom_name():
+ def test_pid_already_locked_multi_process():
+     with pid.PidFile() as _pid:
+         s = '''
+-import pid
+-with pid.PidFile("pytest", piddir="/tmp"):
++import os, pid, sys
++with pid.PidFile(os.path.basename(sys.argv[0]), piddir="/tmp"):
+     pass
+ '''
+-        result = run(['python', '-c', s])
++        result = run([sys.executable, '-c', s])
+         returncode = result if isinstance(result, int) else result.returncode
+-        assert returncode == 1
++        assert returncode == 0
+         assert os.path.exists(_pid.filename)
+     assert not os.path.exists(_pid.filename)
+ 
+@@ -189,7 +189,7 @@ with pid.PidFile("pytest2", piddir="/tmp") as _pid:
+     assert os.path.exists(_pid.filename)
+ assert not os.path.exists(_pid.filename)
+ '''
+-        result = run(['python', '-c', s])
++        result = run([sys.executable, '-c', s])
+         returncode = result if isinstance(result, int) else result.returncode
+         assert returncode == 0
+         assert os.path.exists(_pid.filename)

@@ -1,0 +1,26 @@
+From 3d499c8391e36b7fb1780815d04e533f26333145 Mon Sep 17 00:00:00 2001
+From: Henning Schild <henning@hennsch.de>
+Date: Sat, 9 Mar 2019 10:29:54 +0100
+Subject: [PATCH 2/2] settings: disable checking for updates by default
+
+Signed-off-by: Henning Schild <henning@hennsch.de>
+---
+ src/libs/core/settings.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libs/core/settings.cpp b/src/libs/core/settings.cpp
+index 8922bc4..549ddff 100644
+--- a/src/libs/core/settings.cpp
++++ b/src/libs/core/settings.cpp
+@@ -72,7 +72,7 @@ void Settings::load()
+ 
+     // TODO: Put everything in groups
+     startMinimized = settings->value(QStringLiteral("start_minimized"), false).toBool();
+-    checkForUpdate = settings->value(QStringLiteral("check_for_update"), true).toBool();
++    checkForUpdate = settings->value(QStringLiteral("check_for_update"), false).toBool();
+ 
+     showSystrayIcon = settings->value(QStringLiteral("show_systray_icon"), true).toBool();
+     minimizeToSystray = settings->value(QStringLiteral("minimize_to_systray"), false).toBool();
+-- 
+2.19.2
+

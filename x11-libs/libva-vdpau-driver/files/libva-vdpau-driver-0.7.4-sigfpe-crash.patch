@@ -1,0 +1,21 @@
+Description: Fix a crash if a heap is destroyed before being initialized
+Author: Sebastian Ramacher <sramacher@debian.org>
+Bug: https://bugs.freedesktop.org/show_bug.cgi?id=58836
+Bug-Debian: http://bugs.debian.org/748294
+Last-Update: 2014-06-02
+
+--- vdpau-video-0.7.4.orig/src/object_heap.c
++++ vdpau-video-0.7.4/src/object_heap.c
+@@ -272,8 +272,10 @@ object_heap_destroy(object_heap_p heap)
+         ASSERT(obj->next_free != ALLOCATED);
+     }
+ 
+-    for (i = 0; i < heap->heap_size / heap->heap_increment; i++) {
+-        free(heap->bucket[i]);
++    if (heap->bucket) {
++        for (i = 0; i < heap->heap_size / heap->heap_increment; i++) {
++            free(heap->bucket[i]);
++        }
+     }
+ 
+     pthread_mutex_destroy(&heap->mutex);

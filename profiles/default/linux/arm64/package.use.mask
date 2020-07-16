@@ -1,14 +1,14 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Patrick McLean <chutzpah@gentoo.org> (26 Mar 2019)
+# Patrick McLean <chutzpah@gentoo.org> (2019-03-26)
 # Some test deps aren't keyworded on arm64
 dev-python/kazoo test
 
-# Mike Frysinger <vapier@gentoo.org> (08 May 2016)
+# Mike Frysinger <vapier@gentoo.org> (2016-05-08)
 # This target supports VTV #547040.
 >=sys-devel/gcc-6 -vtv
 
-# Mike Frysinger <vapier@gentoo.org> (22 Mar 2016)
+# Mike Frysinger <vapier@gentoo.org> (2016-03-22)
 # This target supports ASAN/etc... #504200.
 >=sys-devel/gcc-5 -sanitize

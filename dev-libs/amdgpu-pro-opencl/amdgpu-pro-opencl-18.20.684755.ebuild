@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,12 +16,11 @@ SRC_URI="${SUPER_PN}-${MY_PV}-ubuntu-16.04.tar.xz"
 
 LICENSE="AMD-GPU-PRO-EULA"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
-RESTRICT="mirror fetch strip"
+RESTRICT="bindist mirror fetch strip"
 
-COMMON="app-eselect/eselect-opencl
-	dev-libs/ocl-icd"
+COMMON=">=virtual/opencl-3"
 DEPEND="${COMMON}"
 RDEPEND="${COMMON}"
 
@@ -75,5 +74,8 @@ pkg_postinst() {
 		ewarn "has become officially supported by Gentoo."
 	fi
 
-	"${ROOT}"/usr/bin/eselect opencl set --use-old ocl-icd
+	elog ""
+	elog "This package is now DEPRECATED on amd64 in favour of dev-libs/rocm-opencl-runtime."
+	elog "Moreover, it only provides legacy AMDGPU-Pro OpenCL libraries which are not compatible with Vega 10 and newer GPUs."
+	elog ""
 }

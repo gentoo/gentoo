@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -17,12 +17,12 @@ PHP_EXT_OPTIONAL_USE="php"
 inherit java-pkg-opt-2 php-ext-source-r3 python-r1 toolchain-funcs
 
 DESCRIPTION="SWIG and JNI bindings for Xapian"
-HOMEPAGE="http://www.xapian.org/"
-SRC_URI="http://oligarchy.co.uk/xapian/${PV}/${P}.tar.xz"
+HOMEPAGE="https://www.xapian.org/"
+SRC_URI="https://oligarchy.co.uk/xapian/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~ia64 ~mips ppc ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~ia64 ~mips ppc ppc64 ~sparc ~x86"
 #IUSE="java lua mono perl php python ruby tcl"
 #REQUIRED_USE="|| ( java lua mono perl php python ruby tcl )"
 IUSE="java lua perl php python ruby tcl"
@@ -156,7 +156,7 @@ src_test() {
 	fi
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" install
 
 	if use java; then

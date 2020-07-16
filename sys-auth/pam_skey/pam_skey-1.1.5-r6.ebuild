@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,11 +8,11 @@ inherit eutils pam autotools multilib readme.gentoo-r1
 DESCRIPTION="PAM interface for the S/Key authentication system"
 HOMEPAGE="http://freshmeat.net/projects/pam_skey/"
 SRC_URI="http://dkorunic.net/tarballs/${P}.tar.gz
-	https://dev.gentoo.org/~ulm/distfiles/${P}-patches-6.tar.xz"
+	https://dev.gentoo.org/~ulm/distfiles/${P}-patches-7.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="net-libs/libnsl:0=
 	>=sys-libs/pam-0.78-r3

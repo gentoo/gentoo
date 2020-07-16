@@ -1,21 +1,19 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit vdr-plugin-2
 
 DESCRIPTION="VDR Plugin: Scan for channels on DVB-? and on PVR*-Cards"
-HOMEPAGE="http://wirbel.htpc-forum.de/wirbelscan/index2.html"
+HOMEPAGE="https://github.com/CvH/vdr-plugin-wirbelscan"
 SRC_URI="http://wirbel.htpc-forum.de/wirbelscan/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND=">=media-video/vdr-2"
-RDEPEND="${DEPEND}"
 
 src_prepare() {
 	# remove untranslated po files
@@ -24,7 +22,7 @@ src_prepare() {
 	# new Makefile handling
 	cp "${FILESDIR}/wirbelscan.mk" "${S}/Makefile"
 
-	epatch "${FILESDIR}/receiver-api-fixes.patch"
+	eapply "${FILESDIR}/receiver-api-fixes.patch"
 
 	vdr-plugin-2_src_prepare
 

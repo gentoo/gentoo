@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		A utility for accessing various RIO media players.
+
+		Following players are supported:
+		- Rio 600 (all sizes)
+		- Rio 800 (all sizes)
+		- Rio 900 (all sizes)
+		- Nike psa [Play (Diamond MM version)]
+		- Rio S-Series
+		- Rio Fuse/Chiba/Cali 
+		- Rio Nitrus (Should mostly work)
+		- Rio Riot (No download support)
+		- Future flash players (Experimental)
+
+		Following players are unsupported:
+		- Rio 500
+		- Rio One
+		- Rio Karma
+		- Phillips PSA
+	</longdescription>
 	<upstream>
-		<remote-id type="sourceforge">rioutil</remote-id>
+		<bugs-to>https://github.com/hjelmn/rioutil/issues</bugs-to>
+		<remote-id type="github">hjelmn/rioutil</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,0 +1,10 @@
+--- a/src/civetweb/src/civetweb.c	2017-11-02 10:58:06.000000000 -0700
++++ b/src/civetweb/src/civetweb.c	2019-04-11 17:23:30.736346783 -0700
+@@ -851,6 +851,7 @@
+ #include <openssl/crypto.h>
+ #include <openssl/x509.h>
+ #include <openssl/pem.h>
++#include <openssl/engine.h>
+ #else
+ /* SSL loaded dynamically from DLL.
+  * I put the prototypes here to be independent from OpenSSL source

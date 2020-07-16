@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">FrodeSolheim/fs-uae-launcher</remote-id>
+	</upstream>
+	<use>
+		<flag name="lha">Enable LHA archive support</flag>
+	</use>
+</pkgmetadata>

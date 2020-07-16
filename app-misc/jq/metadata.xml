@@ -2,13 +2,18 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>radhermit@gentoo.org</email>
-		<name>Tim Harder</name>
+		<email>vpayno+gentoo@gmail.com</email>
+		<name>Victor Payno</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
 	</maintainer>
 	<use>
 		<flag name="oniguruma">Use dev-libs/oniguruma for regular expression support</flag>
 	</use>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:jq_project:jq</remote-id>
 		<remote-id type="github">stedolan/jq</remote-id>
 	</upstream>
 </pkgmetadata>

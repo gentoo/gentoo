@@ -39,7 +39,7 @@ index 77a1827d4b..255603967f 100644
          if (hasattr(sys, 'pypy_version_info') and
              not name.endswith(('_user', '_home'))):
 -            name = 'pypy'
-+            if self.install_base == os.path.normpath('@EPREFIX@/usr/lib/pypy3.5'):
++            if self.install_base == os.path.normpath('@EPREFIX@/usr/lib/pypy3.6'):
 +                # override paths for system-wide install
 +                name = 'gentoo'
 +            else:

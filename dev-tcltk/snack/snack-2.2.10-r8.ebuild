@@ -1,20 +1,21 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python2_7 )
 
-inherit autotools distutils-r1 multilib virtualx
+inherit autotools distutils-r1 multilib toolchain-funcs virtualx
 
 DESCRIPTION="The Snack Sound Toolkit (Tcl)"
 HOMEPAGE="http://www.speech.kth.se/snack/"
 SRC_URI="http://www.speech.kth.se/snack/dist/${PN}${PV}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 SLOT="0"
 IUSE="alsa examples python vorbis"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-lang/tcl:0=
@@ -41,7 +42,7 @@ src_prepare() {
 
 	sed \
 		-e "s:ar cr:$(tc-getAR) cr:g" \
-		-e "s:-O:${CFLAGS}:g" \
+		-e "s|-O|${CFLAGS}|g" \
 		-i Makefile.in || die
 
 	cd ..
@@ -77,7 +78,8 @@ src_compile() {
 }
 
 src_test() {
-	TCLLIBPATH=${S} virtx default | grep FAILED && die
+	TCLLIBPATH=${S} virtx default | tee snack.testResult
+	grep -q FAILED snack.testResult && die
 }
 
 src_install() {

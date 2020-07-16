@@ -7,5 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="igbinary">Enables igbinary serialisation support</flag>
+		<flag name="json">Enables json serializer support</flag>
 	</use>
 </pkgmetadata>

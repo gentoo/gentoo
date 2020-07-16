@@ -1,18 +1,23 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Michael Haubenwallner <haubi@gentoo.org> (27 Feb 2019)
-# Cygwin does not provide this new version yet in it's repo.
->=sys-devel/gcc-7.4
+# Michael Haubenwallner <haubi@gentoo.org> (2019-06-07)
+# Breaks due to weak functions and object file order on linkline,
+# see https://cygwin.com/ml/cygwin/2019-06/msg00092.html
+>=app-portage/portage-utils-0.80_pre
 
-# Michael Haubenwallner <haubi@gentoo.org> (13 Feb 2019)
+# Michael Haubenwallner <haubi@gentoo.org> (2019-06-07)
+# Cygwin does not provide this new version yet in it's repo.
+>=sys-devel/gcc-8.4
+
+# Michael Haubenwallner <haubi@gentoo.org> (2019-02-13)
 # see upstream report https://savannah.gnu.org/bugs/index.php?55708
 =sys-apps/groff-1.22.4
 
-# Michael Haubenwallner <haubi@gentoo.org> (30 Jan 2019)
+# Michael Haubenwallner <haubi@gentoo.org> (2019-01-30)
 # Cygwin does not have updated patches yet, is not trivial
 >=sys-apps/coreutils-8.30
 
-# Michael Haubenwallner <haubi@gentoo.org> (20 May 2016)
+# Michael Haubenwallner <haubi@gentoo.org> (2016-05-20)
 # Does not work with Cygwin.
 sys-apps/man-db

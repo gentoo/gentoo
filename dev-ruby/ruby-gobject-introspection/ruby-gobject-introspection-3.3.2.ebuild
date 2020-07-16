@@ -9,7 +9,7 @@ inherit ruby-ng-gnome2
 RUBY_S=ruby-gnome2-all-${PV}/gobject-introspection
 
 DESCRIPTION="Ruby GObjectIntrospection bindings"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE=""
 
 DEPEND+=" dev-libs/gobject-introspection"

@@ -1,0 +1,13 @@
+Avoid installing headers with mode 700.
+
+--- a/CMake/utility.cmake
++++ b/CMake/utility.cmake
+@@ -165,7 +165,7 @@
+     getNameOfDir(CMAKE_CURRENT_SOURCE_DIR DIRNAME)
+     if (${shouldInstall})
+       if (NOT ${FULL_HEADER_PATH} MATCHES ".*_p.h$") # we don't want to install header files which are marked as private
+-        install(FILES ${FULL_HEADER_PATH} DESTINATION "include/${DIRNAME}/${REL_PATH}" PERMISSIONS OWNER_READ)
++        install(FILES ${FULL_HEADER_PATH} DESTINATION "include/${DIRNAME}/${REL_PATH}")
+       endif()
+     endif()
+   endforeach()

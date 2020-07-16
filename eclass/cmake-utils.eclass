@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cmake-utils.eclass
@@ -12,6 +12,7 @@
 # @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: common ebuild functions for cmake-based packages
 # @DESCRIPTION:
+# DEPRECATED: This no longer receives any changes. Everyone must port to cmake.eclass.
 # The cmake-utils eclass makes creating ebuilds for cmake-based packages much easier.
 # It provides all inherited features (DOCS, HTML_DOCS, PATCHES) along with out-of-source
 # builds (default), in-source builds and an implementation of the well-known use_enable
@@ -338,6 +339,18 @@ cmake-utils_use_find_package() {
 	_cmake_use_me_now_inverted CMAKE_DISABLE_FIND_PACKAGE_ "$@" ;
 }
 
+# @FUNCTION: cmake_use_find_package
+# @USAGE: <USE flag> <package name>
+# @DESCRIPTION:
+# Alias for cmake-utils_use_find_package.
+cmake_use_find_package() {
+	if [[ "$#" != 2 ]] ; then
+		die "Usage: cmake_use_find_package <USE flag> <package name>"
+	fi
+
+	cmake-utils_use_find_package "$@" ;
+}
+
 # @FUNCTION: cmake-utils_use_disable
 # @USAGE: <USE flag> [flag name]
 # @DESCRIPTION:
@@ -419,13 +432,17 @@ _cmake_modify-cmakelists() {
 	grep -qs "<<< Gentoo configuration >>>" "${CMAKE_USE_DIR}"/CMakeLists.txt && return 0
 
 	# Comment out all set (<some_should_be_user_defined_variable> value)
-	# TODO Add QA checker - inform when variable being checked for below is set in CMakeLists.txt
-	find "${CMAKE_USE_DIR}" -name CMakeLists.txt \
-		-exec sed -i -e '/^[[:space:]]*[sS][eE][tT][[:space:]]*([[:space:]]*CMAKE_BUILD_TYPE.*)/{s/^/#IGNORE /g}' {} + \
-		-exec sed -i -e '/^[[:space:]]*[sS][eE][tT][[:space:]]*([[:space:]]*CMAKE_COLOR_MAKEFILE.*)/{s/^/#IGNORE /g}' {} + \
-		-exec sed -i -e '/^[[:space:]]*[sS][eE][tT][[:space:]]*([[:space:]]*CMAKE_INSTALL_PREFIX.*)/{s/^/#IGNORE /g}' {} + \
-		-exec sed -i -e '/^[[:space:]]*[sS][eE][tT][[:space:]]*([[:space:]]*CMAKE_VERBOSE_MAKEFILE.*)/{s/^/#IGNORE /g}' {} + \
-		|| die "${LINENO}: failed to disable hardcoded settings"
+	find "${CMAKE_USE_DIR}" -name CMakeLists.txt -exec sed \
+		-e '/^[[:space:]]*set[[:space:]]*([[:space:]]*CMAKE_BUILD_TYPE\([[:space:]].*)\|)\)/I{s/^/#_cmake_modify_IGNORE /g}' \
+		-e '/^[[:space:]]*set[[:space:]]*([[:space:]]*CMAKE_COLOR_MAKEFILE[[:space:]].*)/I{s/^/#_cmake_modify_IGNORE /g}' \
+		-e '/^[[:space:]]*set[[:space:]]*([[:space:]]*CMAKE_INSTALL_PREFIX[[:space:]].*)/I{s/^/#_cmake_modify_IGNORE /g}' \
+		-e '/^[[:space:]]*set[[:space:]]*([[:space:]]*CMAKE_VERBOSE_MAKEFILE[[:space:]].*)/I{s/^/#_cmake_modify_IGNORE /g}' \
+		-i {} + || die "${LINENO}: failed to disable hardcoded settings"
+	local x
+	for x in $(find "${CMAKE_USE_DIR}" -name CMakeLists.txt -exec grep -l "^#_cmake_modify_IGNORE" {} +;); do
+		einfo "Hardcoded definition(s) removed in $(echo "${x}" | cut -c $((${#CMAKE_USE_DIR}+2))-):"
+		einfo "$(grep -se '^#_cmake_modify_IGNORE' ${x} | cut -c 22-99)"
+	done
 
 	# NOTE Append some useful summary here
 	cat >> "${CMAKE_USE_DIR}"/CMakeLists.txt <<- _EOF_ || die
@@ -608,7 +625,7 @@ cmake-utils_src_configure() {
 		fi
 	fi
 
-	if [[ ${EPREFIX} ]]; then
+	if use prefix-guest; then
 		cat >> "${build_rules}" <<- _EOF_ || die
 			# in Prefix we need rpath and must ensure cmake gets our default linker path
 			# right ... except for Darwin hosts
@@ -645,7 +662,7 @@ cmake-utils_src_configure() {
 	if [[ ${EAPI} != [56] ]]; then
 		cat >> "${common_config}" <<- _EOF_ || die
 			SET (CMAKE_INSTALL_DOCDIR "${EPREFIX}/usr/share/doc/${PF}" CACHE PATH "")
-			SET (BUILD_SHARED_LIBS ON CACHE BOOLEAN "")
+			SET (BUILD_SHARED_LIBS ON CACHE BOOL "")
 		_EOF_
 	fi
 

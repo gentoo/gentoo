@@ -1,6 +1,7 @@
-diff --exclude='*~' -Naur jpeg2ps-1.9.orig/asc85ec.c jpeg2ps-1.9/asc85ec.c
---- jpeg2ps-1.9.orig/asc85ec.c	2005-09-10 23:02:15.000000000 -0300
-+++ jpeg2ps-1.9/asc85ec.c	2005-09-10 23:08:08.000000000 -0300
+https://bugs.gentoo.org/105561
+
+--- jpeg2ps-1.9.orig/asc85ec.c
++++ jpeg2ps-1.9/asc85ec.c
 @@ -3,6 +3,7 @@
  
  #include <stdio.h>

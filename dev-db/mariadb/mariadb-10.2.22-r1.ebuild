@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -35,14 +35,14 @@ IUSE="+backup bindist client-libs cracklib debug extraengine galera innodb-lz4
 	test tokudb xml yassl"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
-RESTRICT="!bindist? ( bindist ) libressl? ( test )"
+RESTRICT="!bindist? ( bindist ) !test? ( test ) libressl? ( test )"
 
 REQUIRED_USE="jdbc? ( extraengine server !static )
 	server? ( tokudb? ( jemalloc !tcmalloc ) )
 	?? ( tcmalloc jemalloc )
 	static? ( yassl !pam )"
 
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -103,7 +103,7 @@ COMMON_DEPEND="
 		mroonga? ( app-text/groonga-normalizer-mysql >=app-text/groonga-7.0.4 )
 		numa? ( sys-process/numactl )
 		oqgraph? ( >=dev-libs/boost-1.40.0:0= dev-libs/judy:0= )
-		pam? ( virtual/pam:0= )
+		pam? ( sys-libs/pam:0= )
 		systemd? ( sys-apps/systemd:= )
 		tokudb? ( app-arch/snappy )
 	)
@@ -309,7 +309,7 @@ src_prepare() {
 	java-pkg-opt-2_src_prepare
 }
 
-src_configure(){
+src_configure() {
 	# bug 508724 mariadb cannot use ld.gold
 	tc-ld-disable-gold
 	# Bug #114895, bug #110149
@@ -326,7 +326,6 @@ src_configure(){
 	mycmakeargs=(
 		-DCMAKE_C_FLAGS_RELWITHDEBINFO="$(usex debug '' '-DNDEBUG')"
 		-DCMAKE_CXX_FLAGS_RELWITHDEBINFO="$(usex debug '' '-DNDEBUG')"
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
 		-DMYSQL_DATADIR="${EPREFIX}/var/lib/mysql"
 		-DSYSCONFDIR="${EPREFIX}/etc/mysql"
 		-DINSTALL_BINDIR=bin
@@ -813,11 +812,11 @@ pkg_config() {
 
 		unset tmp_mysqld_password_source
 	fi
-	MYSQL_TMPDIR="$(_getoptval mysqld tmpdir)"
+	MYSQL_TMPDIR="$(_getoptval mysqld tmpdir | tail -n1)"
 	# These are dir+prefix
-	MYSQL_RELAY_LOG="$(_getoptval mysqld relay-log)"
+	MYSQL_RELAY_LOG="$(_getoptval mysqld relay-log | tail -n1)"
 	MYSQL_RELAY_LOG=${MYSQL_RELAY_LOG%/*}
-	MYSQL_LOG_BIN="$(_getoptval mysqld log-bin)"
+	MYSQL_LOG_BIN="$(_getoptval mysqld log-bin | tail -n1)"
 	MYSQL_LOG_BIN=${MYSQL_LOG_BIN%/*}
 
 	if [[ ! -d "${ROOT}/$MYSQL_TMPDIR" ]]; then

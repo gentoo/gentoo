@@ -15,12 +15,9 @@
 	</maintainer>
 	<longdescription lang="en">
 		Translate Shell (formerly Google Translate CLI) is a command-line
-		translator powered by Google Translate (default), Bing Translator, and
-		Yandex.Translate.
+		translator powered by Google Translate (default), Bing Translator,
+		Yandex.Translate and Apertium.
 	</longdescription>
-	<use>
-		<flag name="tts">Enable text-to-speech support</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">soimort/translate-shell</remote-id>
 	</upstream>

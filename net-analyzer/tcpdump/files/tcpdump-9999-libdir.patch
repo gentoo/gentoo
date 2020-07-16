@@ -1,0 +1,19 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -371,7 +371,7 @@
+ 
+ if test "$ipv6" = "yes" -a "$ipv6lib" != "none"; then
+ 	if test -d $ipv6libdir -a -f $ipv6libdir/lib$ipv6lib.a; then
+-		LIBS="-L$ipv6libdir -l$ipv6lib $LIBS"
++		LIBS="-l$ipv6lib $LIBS"
+ 		echo "You have $ipv6lib library, using it"
+ 	else
+ 		if test "$ipv6trylibc" = "yes"; then
+@@ -891,7 +891,6 @@
+ 		# at the front of the header and library search path.
+ 		#
+ 		CFLAGS="-I$withval/include $CFLAGS"
+-		LIBS="-L$withval/lib $LIBS"
+ 	fi
+ ],[
+ 	#

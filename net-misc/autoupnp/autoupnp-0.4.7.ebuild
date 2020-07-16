@@ -1,13 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="Automatic open port forwarder using UPnP"
-HOMEPAGE="https://bitbucket.org/mgorny/autoupnp/"
-SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
+HOMEPAGE="https://github.com/mgorny/autoupnp/"
+SRC_URI="https://github.com/mgorny/autoupnp/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
@@ -28,5 +26,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }

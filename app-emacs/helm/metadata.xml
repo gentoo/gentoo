@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  Helm is an Emacs framework for incremental completions and narrowing
+  selections. It provides an easy-to-use API for developers wishing to
+  build their own Helm applications in Emacs, powerful search tools and
+  dozens of already built-in commands providing completion to almost
+  everything. It is a must-have for anyone using Emacs as a main work
+  environment. Helm has been widely adopted by many Emacs power-users.
+</longdescription>
+<stabilize-allarches/>
+<upstream>
+  <remote-id type="github">emacs-helm/helm</remote-id>
+</upstream>
+</pkgmetadata>

@@ -1,7 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
 inherit autotools gnome2 python-single-r1 versionator vcs-snapshot
@@ -16,8 +17,9 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 
 # dbus support looks to be used only for trying to use panel applets on gnome3!
-IUSE="ayatana doc gnome gstreamer introspection mate nls pulseaudio test xfce"
-REQUIRED_USE="ayatana? ( introspection ) ${PYTHON_REQUIRED_USE}"
+IUSE="appindicator doc gnome gstreamer introspection mate nls pulseaudio test xfce"
+RESTRICT="!test? ( test )"
+REQUIRED_USE="appindicator? ( introspection ) ${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	>=dev-libs/glib-2.28.0:2
@@ -25,7 +27,7 @@ RDEPEND="
 	>=dev-cpp/gtkmm-3.18.0:3.0
 	>=dev-cpp/glibmm-2.28.0:2
 	>=dev-libs/libsigc++-2.2.4.2:2
-	ayatana? (
+	appindicator? (
 		>=dev-libs/libdbusmenu-0.4[gtk3,introspection]
 		>=dev-libs/libindicator-0.4:3 )
 	gnome? ( >=gnome-base/gnome-shell-3.6.2 )
@@ -92,7 +94,7 @@ src_configure() {
 		--disable-gnome2 \
 		--disable-static \
 		--disable-xml \
-		$(use_enable ayatana indicator) \
+		$(use_enable appindicator indicator) \
 		$(use_enable doc manual) \
 		$(use_enable gnome gnome3) \
 		$(use_enable gstreamer) \

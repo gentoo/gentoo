@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,7 +18,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE="cddb"
 
 RDEPEND="${PYTHON_DEPS}
-	cddb? ( dev-python/cddb-py[${PYTHON_USEDEP}] )
+	cddb? (
+		$(python_gen_cond_dep 'dev-python/cddb-py[${PYTHON_MULTI_USEDEP}]')
+	)
 	media-sound/cd-discid"
 DEPEND=""
 
@@ -32,11 +34,11 @@ src_prepare() {
 }
 
 src_compile() {
-	emake prefix="${D}"/usr target=/usr || die
+	emake prefix="${D}"/usr target=/usr
 }
 
 src_install() {
-	emake prefix="${D}"/usr docdir="${D}"/usr/share/doc/${PF} install || die
+	emake prefix="${D}"/usr docdir="${D}"/usr/share/doc/${PF} install
 
 	python_fix_shebang "${D}"
 

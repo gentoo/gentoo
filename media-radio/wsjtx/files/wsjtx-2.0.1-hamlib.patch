@@ -1,0 +1,12 @@
+# use only installed hamlib version
+--- a/CMakeLists.txt	2019-04-10 15:47:58.372519159 +0200
++++ b/CMakeLists.txt	2019-04-10 15:48:07.576949145 +0200
+@@ -848,7 +848,7 @@
+ find_package (hamlib 3 REQUIRED)
+ find_program (RIGCTL_EXE rigctl)
+ find_program (RIGCTLD_EXE rigctld)
+-find_program (RIGCTLCOM_EXE rigctlcom)
++#find_program (RIGCTLCOM_EXE rigctlcom)
+ 
+ message (STATUS "hamlib_INCLUDE_DIRS: ${hamlib_INCLUDE_DIRS}")
+ message (STATUS "hamlib_LIBRARIES: ${hamlib_LIBRARIES}")

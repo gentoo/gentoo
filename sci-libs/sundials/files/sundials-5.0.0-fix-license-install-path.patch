@@ -1,0 +1,16 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d5436bf..76b27c5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1122,9 +1122,9 @@ endif()
+ # install license and notice files
+ install(
+   FILES ${PROJECT_SOURCE_DIR}/LICENSE
+-  DESTINATION include/sundials
++  DESTINATION share/doc/sundials-5.0.0
+   )
+ install(
+   FILES ${PROJECT_SOURCE_DIR}/NOTICE
+-  DESTINATION include/sundials
++  DESTINATION share/doc/sundials-5.0.0
+   )

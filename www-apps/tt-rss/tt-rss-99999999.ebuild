@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit git-r3 prefix user webapp
 
@@ -16,8 +16,8 @@ REQUIRED_USE="|| ( mysqli postgres )"
 DEPEND="daemon? ( acl? ( sys-apps/acl ) )"
 
 RDEPEND="${DEPEND}
-	daemon? ( dev-lang/php:*[mysqli?,postgres?,curl,cli,pcntl,pdo] )
-	!daemon? ( dev-lang/php:*[mysqli?,postgres?,curl,pdo] )
+	daemon? ( dev-lang/php:*[mysqli?,postgres?,curl,cli,intl,pcntl,pdo] )
+	!daemon? ( dev-lang/php:*[mysqli?,postgres?,curl,intl,pdo] )
 	virtual/httpd-php:*"
 
 DEPEND="!vhosts? ( ${DEPEND} )"

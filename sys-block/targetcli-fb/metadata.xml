@@ -9,12 +9,12 @@
 	<email>proxy-maint@gentoo.org</email>
 	<name>Proxy Maintainers</name>
 </maintainer>
-<longdescription lang="en">
-	targetcli-fb is a command-line interface for configuring
-	the Linux-IO generic SCSI target.
-</longdescription>
 <upstream>
 	<maintainer status="active">
+		<email>mlombard@redhat.com</email>
+		<name>Maurizio Lombardi</name>
+	</maintainer>
+	<maintainer>
 		<email>agrover@redhat.com</email>
 		<name>Andy Grover</name>
 	</maintainer>

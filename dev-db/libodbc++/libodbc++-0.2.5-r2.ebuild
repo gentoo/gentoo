@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -74,8 +74,7 @@ src_configure() {
 		#--without-qt \
 		econf \
 			${commonconf} \
-			${commonconf2} \
-			|| die "econf failed"
+			${commonconf2}
 	done
 }
 
@@ -91,7 +90,7 @@ src_compile() {
 	[ -n "${failures}" ] && die "Failures: ${failures}"
 }
 
-src_install () {
+src_install() {
 	dodoc AUTHORS BUGS ChangeLog NEWS README THANKS TODO
 
 	buildlist="${SB} ${SB_MT}"

@@ -14,7 +14,7 @@ USE_PHP="php7-1 php7-2 php7-3"
 inherit php-ext-pecl-r3
 
 HOMEPAGE="https://www.swoole.co.uk"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DESCRIPTION="Event-driven asynchronous & concurrent & coroutine networking engine"
 LICENSE="Apache-2.0"
@@ -44,7 +44,7 @@ IUSE="debug http2 libressl mysql sockets ssl"
 
 src_configure() {
 	# PostgreSQL disabled due to Gentoo's slot system
-	# JEMalloc not included as it refuses to find a ${EROOT}usr/includes/jemalloc subdirectory
+	# JEMalloc not included as it refuses to find a ${EROOT}/usr/includes/jemalloc subdirectory
 	local PHP_EXT_ECONF_ARGS=(
 		--enable-swoole
 		--disable-coroutine-postgresql
@@ -52,7 +52,7 @@ src_configure() {
 		$(use_enable http2)
 		$(use_enable mysql mysqlnd)
 		$(use_enable ssl openssl)
-		$(use_with ssl openssl-dir "${EROOT%/}/usr")
+		$(use_with ssl openssl-dir "${EROOT}/usr")
 		$(use_enable sockets)
 	)
 

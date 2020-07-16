@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -8,8 +8,8 @@ JAVA_PKG_IUSE="doc"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A parser generator for many languages"
-HOMEPAGE="http://www.antlr2.org/"
-SRC_URI="http://www.antlr2.org/download/${P}.tar.gz"
+HOMEPAGE="https://www.antlr2.org/"
+SRC_URI="https://www.antlr2.org/download/${P}.tar.gz"
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="amd64 ~arm ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"

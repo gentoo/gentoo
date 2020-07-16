@@ -1,0 +1,35 @@
+From 1e09b211a000c649aae6eea736647daa650141bc Mon Sep 17 00:00:00 2001
+From: William Breathitt Gray <vilhelm.gray@gmail.com>
+Date: Sat, 31 Aug 2019 21:23:23 +0900
+Subject: [PATCH] Introduce the BUILD_NONFREE option
+
+This allow users to disable building nonfree components (brightmaps.pk3
+and game_support.pk3) if they so desire.
+---
+ CMakeLists.txt | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2019-10-20 15:16:08.000000000 +0100
++++ b/CMakeLists.txt	2019-10-24 21:27:58.104006569 +0100
+@@ -444,10 +444,15 @@
+ add_subdirectory( libraries/wildmidi )
+ add_subdirectory( libraries/oplsynth )
+ add_subdirectory( libraries/zmusic )
++
+ add_subdirectory( wadsrc )
+-add_subdirectory( wadsrc_bm )
+ add_subdirectory( wadsrc_lights )
+-add_subdirectory( wadsrc_extra )
++option (BUILD_NONFREE "Build nonfree components" ON)
++if( BUILD_NONFREE )
++	add_subdirectory( wadsrc_bm )
++	add_subdirectory( wadsrc_extra )
++endif()
++
+ add_subdirectory( src )
+ 
+ if( NOT CMAKE_CROSSCOMPILING )
+-- 
+2.23.0
+

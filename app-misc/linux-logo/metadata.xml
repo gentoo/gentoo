@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-  <email>nimiux@gentoo.org</email>
-  <name>Chema Alonso</name>
-</maintainer>
-<longdescription lang="en">
-  A utility that displays an ANSI/ASCII logo and some system information
-</longdescription>
-<longdescription lang="es">
-  Una utilidad que muestra un logotipo ANSI/ASCII e información del sistema
-</longdescription>
+	<maintainer type="person">
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
+	<longdescription lang="en">A utility that displays an ANSI/ASCII logo and some system information</longdescription>
+	<longdescription lang="es">Una utilidad que muestra un logotipo ANSI/ASCII e información del sistema</longdescription>
 </pkgmetadata>

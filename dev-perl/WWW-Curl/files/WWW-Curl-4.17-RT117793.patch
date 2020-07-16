@@ -1,0 +1,25 @@
+From 292c05a8aa9c18bd27d0aaff0b4ee601d9b87b92 Mon Sep 17 00:00:00 2001
+From: Slaven Rezic <cpansand@cvrsnica-freebsd-101.herceg.de>
+Date: Sun, 16 Apr 2017 22:17:00 +0200
+Subject: [PATCH] compilation fixes for curl 7.50.2 and newer (RT #117793)
+
+---
+ Makefile.PL | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index f9170bb..bb852e4 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -127,7 +127,7 @@ if (!defined($curl_h)) {
+     close H;
+ 
+     for my $e (sort @syms) {
+-       if($e =~ /(OBSOLETE|^CURL_EXTERN|_LAST\z|_LASTENTRY\z)/) {
++       if($e =~ /(OBSOLETE|^CURL_EXTERN|^CURL_STRICTER\z|^CURL_DID_MEMORY_FUNC_TYPEDEFS\z|_LAST\z|_LASTENTRY\z)/) {
+           next;
+        }
+        my ($group) = $e =~ m/^([^_]+_)/;
+-- 
+2.1.2
+

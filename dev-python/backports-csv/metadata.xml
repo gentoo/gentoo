@@ -5,6 +5,9 @@
     <email>grknight@gentoo.org</email>
     <name>Brian Evans</name>
   </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+  </maintainer>
   <upstream>
     <remote-id type="github">ryanhiebert/backports.csv</remote-id>
     <remote-id type="pypi">backports.csv</remote-id>

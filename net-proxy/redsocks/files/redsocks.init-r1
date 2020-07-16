@@ -1,0 +1,43 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command=${REDSOCKS_BINARY:=/usr/sbin/redsocks}
+: ${REDSOCKS_CONFIG:=/etc/redsocks.conf}
+pidfile=${REDSOCKS_PIDFILE:=/run/redsocks/redsocks.pid}
+command_args="-p ${pidfile} -c ${REDSOCKS_CONFIG}"
+
+extra_commands="checkconfig"
+extra_started_commands="reload"
+
+depend() {
+	need localmount
+	use dns
+}
+
+checkconfig() {
+	if [ ! -f "${REDSOCKS_CONFIG}" ] ; then
+		eerror "No ${REDSOCKS_CONFIG} file exists!"
+		return 1
+	fi
+
+        "${command}" -t -c ${REDSOCKS_CONFIG} || return 1
+}
+
+start_pre() {
+        checkconfig || return 1
+}
+
+stop_pre() {
+        if [ "${RC_CMD}" = "restart" ] ; then
+                checkconfig || return 1
+        fi
+}
+
+reload() {
+        checkconfig || return 1
+
+        ebegin "Reloading ${SVCNAME}"
+        start-stop-daemon --signal HUP --pidfile "${pidfile}"
+        eend $?
+}

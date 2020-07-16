@@ -4,10 +4,6 @@
 	<maintainer type="person">
 		<email>robbat2@gentoo.org</email>
 	</maintainer>
-	<maintainer type="project">
-		<email>cpp@gentoo.org</email>
-		<name>Gentoo C++ Project</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">libodbcxx</remote-id>
 	</upstream>

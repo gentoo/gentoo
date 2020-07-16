@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-PYTHON_COMPAT=( python3_{4,5,6} )
-
+EAPI=7
+PYTHON_COMPAT=( python3_{6,7,8} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
 DESCRIPTION="Generate a tarball of differences between two tarballs"
@@ -14,7 +14,6 @@ LICENSE="Apache-2.0"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE=""
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 src_prepare() {
 	sed -i "s:^\(__version__ =\).*:\\1 \"${PV}\":" src/${PN}.py || die

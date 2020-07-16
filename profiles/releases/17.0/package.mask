@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Andreas K. Huettel <dilfridge@gentoo.org> (27 May 2017)
+# Andreas K. Huettel <dilfridge@gentoo.org> (2017-05-27)
 # In the 17.0 profiles we assume that our system compiler uses C++14
 # or later as default language setting. This means it has to be at
 # least GCC 6. If you need an older compiler for specific purposes,
@@ -9,7 +9,7 @@
 # packages is neither recommended nor supported in any way.
 <sys-devel/gcc-6
 
-# Andreas K. Huettel <dilfridge@gentoo.org> (1 Dec 2017)
+# Andreas K. Huettel <dilfridge@gentoo.org> (2017-12-01)
 # The following packages require GCC 5 or earlier and are therefore
 # masked in the 17.0 profiles.
 dev-java/ecj-gcj

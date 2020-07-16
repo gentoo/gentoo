@@ -8,11 +8,11 @@ MY_P="${P/1.0/9libs}"
 
 DESCRIPTION="An emulation of ACME, Plan9's hybrid window system, shell and editor"
 HOMEPAGE="https://www.netlib.org/research/9libs/"
-SRC_URI="${HOMEPAGE}${MY_P}.tar.gz"
+SRC_URI="https://www.netlib.org/research/9libs/${MY_P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="
 	dev-libs/9libs

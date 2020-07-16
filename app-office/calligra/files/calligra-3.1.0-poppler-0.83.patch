@@ -1,0 +1,69 @@
+Source: Timo Gurr <tgurr@exherbo.org>
+Upstream: Reported, https://bugs.kde.org/show_bug.cgi?id=414795
+Reason: Fix build with poppler 0.83.0
+
+diff -Naur calligra-3.1.0/filters/karbon/pdf/PdfImport.cpp calligra-3.1.0.new/filters/karbon/pdf/PdfImport.cpp
+--- calligra-3.1.0/filters/karbon/pdf/PdfImport.cpp	2019-12-04 12:41:13.000000000 +0100
++++ calligra-3.1.0.new/filters/karbon/pdf/PdfImport.cpp	2019-12-04 12:39:03.000000000 +0100
+@@ -60,19 +60,17 @@
+     }
+ 
+     // read config file
+-    globalParams = new GlobalParams();
++    globalParams.reset(new GlobalParams());
+     if (! globalParams)
+         return KoFilter::NotImplemented;
+ 
+     GooString * fname = new GooString(QFile::encodeName(m_chain->inputFile()).data());
+     PDFDoc * pdfDoc = new PDFDoc(fname, 0, 0, 0);
+     if (! pdfDoc) {
+-        delete globalParams;
+         return KoFilter::StupidError;
+     }
+ 
+     if (! pdfDoc->isOk()) {
+-        delete globalParams;
+         delete pdfDoc;
+         return KoFilter::StupidError;
+     }
+@@ -99,7 +97,6 @@
+ 
+     delete dev;
+     delete pdfDoc;
+-    delete globalParams;
+     globalParams = 0;
+ 
+     return KoFilter::OK;
+diff -Naur calligra-3.1.0/filters/karbon/pdf/SvgOutputDev.cpp calligra-3.1.0.new/filters/karbon/pdf/SvgOutputDev.cpp
+--- calligra-3.1.0/filters/karbon/pdf/SvgOutputDev.cpp	2019-12-04 12:41:14.000000000 +0100
++++ calligra-3.1.0.new/filters/karbon/pdf/SvgOutputDev.cpp	2019-12-04 12:35:30.000000000 +0100
+@@ -172,7 +172,7 @@
+     *d->body << "/>" << endl;
+ }
+ 
+-QString SvgOutputDev::convertPath(GfxPath *path)
++QString SvgOutputDev::convertPath(const GfxPath *path)
+ {
+     if (! path)
+         return QString();
+@@ -180,7 +180,7 @@
+     QString output;
+ 
+     for (int i = 0; i < path->getNumSubpaths(); ++i) {
+-        GfxSubpath * subpath = path->getSubpath(i);
++        const GfxSubpath * subpath = path->getSubpath(i);
+         if (subpath->getNumPoints() > 0) {
+             output += QString("M%1 %2").arg(subpath->getX(0)).arg(subpath->getY(0));
+             int j = 1;
+diff -Naur calligra-3.1.0/filters/karbon/pdf/SvgOutputDev.h calligra-3.1.0.new/filters/karbon/pdf/SvgOutputDev.h
+--- calligra-3.1.0/filters/karbon/pdf/SvgOutputDev.h	2019-12-04 12:41:14.000000000 +0100
++++ calligra-3.1.0.new/filters/karbon/pdf/SvgOutputDev.h	2019-12-04 12:30:41.000000000 +0100
+@@ -83,7 +83,7 @@
+     /// Dumps content to svg file
+     void dumpContent();
+ private:
+-    QString convertPath(GfxPath *path);
++    QString convertPath(const GfxPath *path);
+     QString convertMatrix(const QMatrix &matrix);
+     QString convertMatrix(const double * matrix);
+     QString printFill();

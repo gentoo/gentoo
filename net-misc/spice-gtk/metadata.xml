@@ -6,11 +6,7 @@
 		<name>Gentoo Virtualization Project</name>
 	</maintainer>
 	<use>
-		<flag name="dbus">Support for desktop integration such as
-			automounting and other APIs exposed by your DE via D-Bus</flag>
 		<flag name="gtk3">Build the spice client (spicy), requires <pkg>x11-libs/gtk+</pkg>:3</flag>
-		<flag name="lz4">Enable support for LZ4 compression using
-			<pkg>app-arch/lz4</pkg></flag>
 		<flag name="policykit">Enable <pkg>sys-auth/polkit</pkg> support for the
 			usbredir acl helper</flag>
 		<flag name="usbredir">Use <pkg>sys-apps/usbredir</pkg> to redirect USB
@@ -18,7 +14,5 @@
 		<flag name="mjpeg">Enable builtin mjpeg video decoder</flag>
 		<flag name="webdav">Support for folder-sharing between guest and client
 			using <pkg>net-libs/phodav</pkg></flag>
-		<flag name="gstaudio">Using gstreamer backend as audio decodec support</flag>
-		<flag name="gstvideo">Using gstreamer backend as video decodec support</flag>
 	</use>
 </pkgmetadata>

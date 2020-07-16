@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="command line date and time utilities"
-HOMEPAGE="https://hroptatyr.github.com/dateutils/"
+HOMEPAGE="https://www.fresse.org/dateutils/"
 SRC_URI="https://bitbucket.org/hroptatyr/${PN}/downloads/${P}.tar.xz"
 
 LICENSE="BSD"
@@ -17,9 +17,7 @@ DEPEND="app-arch/xz-utils
 # bug 429810
 RDEPEND="!sys-fabric/dapl"
 
-src_configure() {
-	econf --docdir=/usr/share/doc/${PF}
-}
+PATCHES=( "${FILESDIR}"/${P}-unportable-sys-sysctl_h.patch )
 
 src_compile() {
 	emake CFLAGS="${CFLAGS}"

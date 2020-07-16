@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,13 +10,13 @@ LICENSE="GPL-2"
 SRC_URI="mirror://sourceforge/squid-graph/${P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND="dev-perl/GD[png]"
 
 S=${WORKDIR}/${PN}
 
-src_install () {
+src_install() {
 	dobin apacheconv generate.cgi squid-graph timeconv
 	dodoc README
 }

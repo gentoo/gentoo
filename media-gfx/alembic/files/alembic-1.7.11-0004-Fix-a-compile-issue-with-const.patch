@@ -1,0 +1,27 @@
+From d1895084e41970c8f91e9357fcb739ac29c47109 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Sat, 15 Jun 2019 16:19:30 +0200
+Subject: [PATCH 4/5] WriteGeo.cpp: Fix a compile issue, where an invalid
+ conversion from char* to const char* took place.
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ prman/Procedural/WriteGeo.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/prman/Procedural/WriteGeo.cpp b/prman/Procedural/WriteGeo.cpp
+index 95b4867..5ad0b71 100644
+--- a/prman/Procedural/WriteGeo.cpp
++++ b/prman/Procedural/WriteGeo.cpp
+@@ -898,7 +898,7 @@ void ProcessCurves( ICurves &curves, ProcArgs &args )
+ void WriteIdentifier( const ObjectHeader &ohead )
+ {
+     std::string name = ohead.getFullName();
+-    char* nameArray[] = { const_cast<char*>( name.c_str() ), RI_NULL };
++    const char* nameArray[] = { const_cast<char*>( name.c_str() ), RI_NULL };
+ 
+     RiAttribute(const_cast<char*>( "identifier" ), const_cast<char*>( "name" ),
+                 nameArray, RI_NULL );
+-- 
+2.22.0
+

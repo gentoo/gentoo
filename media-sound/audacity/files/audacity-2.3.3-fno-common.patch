@@ -1,0 +1,62 @@
+From bcb460e5a9af2088d8081577b324ec20d0069ed8 Mon Sep 17 00:00:00 2001
+From: Leland Lucius <github@homerow.net>
+Date: Mon, 16 Dec 2019 00:59:33 -0600
+Subject: [PATCH] Misc changes to get new Nyquist to build
+
+[backport of bd6ec9c0ed9fe94ae2f6e171969ae8a9fe45c11d]
+---
+ lib-src/libnyquist/nyquist/cmt/cmtio.h   | 4 ++--
+ lib-src/libnyquist/nyquist/cmt/userio.c  | 4 ++++
+ lib-src/libnyquist/nyquist/sys/unix/io.c | 6 +++---
+ 3 files changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/lib-src/libnyquist/nyquist/cmt/cmtio.h b/lib-src/libnyquist/nyquist/cmt/cmtio.h
+index 3e50ad957..232862b50 100644
+--- a/lib-src/libnyquist/nyquist/cmt/cmtio.h
++++ b/lib-src/libnyquist/nyquist/cmt/cmtio.h
+@@ -1,7 +1,7 @@
+ #define NOCHAR -2
+ 
+-int IOinputfd;
+-int IOnochar;
++extern int IOinputfd;
++extern int IOnochar;
+ 
+ int IOsetup(int inputfd);
+ int IOcleanup(void);
+diff --git a/lib-src/libnyquist/nyquist/cmt/userio.c b/lib-src/libnyquist/nyquist/cmt/userio.c
+index f442376c5..a33ac98c9 100644
+--- a/lib-src/libnyquist/nyquist/cmt/userio.c
++++ b/lib-src/libnyquist/nyquist/cmt/userio.c
+@@ -153,6 +153,10 @@ extern int debug;
+ #include "xlisp.h"
+ #endif
+ 
++int     IOinputfd;      /* input file descriptor (usually 0) */
++
++int     IOnochar;       /* Value to be returned by IOgetchar()
++                           where there is no input to be had */
+ 
+ /****************************************************************************
+ *
+diff --git a/lib-src/libnyquist/nyquist/sys/unix/io.c b/lib-src/libnyquist/nyquist/sys/unix/io.c
+index 21b2abed8..f3e499c0d 100644
+--- a/lib-src/libnyquist/nyquist/sys/unix/io.c
++++ b/lib-src/libnyquist/nyquist/sys/unix/io.c
+@@ -16,10 +16,10 @@
+ #include <sgtty.h>
+ #include "cext.h"
+ 
+-int     IOinputfd;      /* input file descriptor (usually 0) */
++extern int     IOinputfd;      /* input file descriptor (usually 0) */
+ 
+-int     IOnochar;       /* Value to be returned by IOgetchar()
+-                   where there is no input to be had */
++extern int     IOnochar;       /* Value to be returned by IOgetchar()
++                                  where there is no input to be had */
+ 
+ static  struct sgttyb IOoldmodes, IOcurrentmodes;
+                 /* Initial and current tty modes */
+-- 
+2.24.1
+

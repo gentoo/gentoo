@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/ygrek/mldonkey/releases/download/release-$(replace_a
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~sparc ~x86"
 
 RDEPEND="dev-lang/perl
 	dev-ml/camlp4:=
@@ -26,6 +26,8 @@ RDEPEND="dev-lang/perl
 
 DEPEND="${RDEPEND}
 	>=dev-lang/ocaml-3.10.2[ocamlopt?]"
+
+RESTRICT="!ocamlopt? ( strip )"
 
 MLUSER="p2p"
 
@@ -109,7 +111,6 @@ src_compile() {
 src_install() {
 	local myext=""
 	use ocamlopt || myext=".byte"
-	use ocamlopt || export STRIP_MASK="*/bin/*"
 	if ! use guionly; then
 		for i in mlnet mld_hash get_range copysources subconv; do
 			newbin $i$myext $i

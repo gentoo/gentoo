@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Hardware Probe Tool is a tool to probe for hardware,
+		check it's operability and find drivers.
+		The probes are uploaded to the Linux hardware database.
+		See https://linux-hardware.org for more information.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/linuxhw/hw-probe/issues</bugs-to>
+		<remote-id type="github">linuxhw/hw-probe</remote-id>
+	</upstream>	
+</pkgmetadata>

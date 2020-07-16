@@ -1,0 +1,25 @@
+https://github.com/ar-/incron/pull/56
+
+From 0a8cb83983394c2bd36105fcae5c56f89e931686 Mon Sep 17 00:00:00 2001
+From: Philippe Kueck <bqobccy6ejnq2bqvmebqiwqha4cs4@protected32.unixadm.org>
+Date: Thu, 14 Mar 2019 16:00:39 +0100
+Subject: [PATCH] use execl() instead of system() as system() returns, which
+ results in additional processes
+
+---
+ usertable.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/usertable.cpp b/usertable.cpp
+index 11fd04b..f8b157a 100644
+--- a/usertable.cpp
++++ b/usertable.cpp
+@@ -471,7 +471,7 @@ void UserTable::OnEvent(InotifyEvent& rEvt)
+ 
+     // for system table
+     if (m_fSysTable) {
+-      if (system(cmd.c_str()) != 0) // exec failed
++      if (execl("/bin/sh","sh", "-c", cmd.c_str(), (char *)0) != 0) // exec failed
+       {
+         syslog(LOG_ERR, "cannot exec process: %s", strerror(errno));
+         _exit(1);

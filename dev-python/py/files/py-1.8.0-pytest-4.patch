@@ -1,0 +1,580 @@
+From f4ed62ad39f289d09b3efdfed7305f935ce60bfc Mon Sep 17 00:00:00 2001
+From: Stanislav Levin <slev@altlinux.org>
+Date: Tue, 4 Jun 2019 14:33:36 +0300
+Subject: [PATCH] Fix Pytest4.x compatibility errors
+
+This patch should fix such errors/warnings as:
+
+- raises / warns with a string as the second argument
+Deprecated since version 4.1.
+
+- pytest_funcarg__ prefix
+Removed in version 4.0.
+
+- getfuncargvalue
+
+- Metafunc.addcall
+Removed in version 4.0.
+
+Fixes: https://github.com/pytest-dev/py/issues/209
+Signed-off-by: Stanislav Levin <slev@altlinux.org>
+---
+ doc/faq.txt                                  | 14 -------------
+ testing/code/test_assertion.py               |  9 +++------
+ testing/code/test_code.py                    |  3 ++-
+ testing/code/test_excinfo.py                 | 12 ++++++-----
+ testing/code/test_source.py                  | 18 ++++++++---------
+ testing/io_/test_capture.py                  | 15 +++++++++-----
+ testing/io_/test_terminalwriter.py           | 17 ++++++++--------
+ testing/io_/test_terminalwriter_linewidth.py |  6 ++++++
+ testing/log/test_log.py                      |  6 ++++--
+ testing/path/common.py                       |  7 ++++---
+ testing/path/conftest.py                     | 16 +++++++--------
+ testing/path/test_cacheutil.py               |  6 ++++--
+ testing/path/test_svnauth.py                 |  6 ++++--
+ testing/path/test_svnurl.py                  | 21 +++++++++++++-------
+ testing/path/test_svnwc.py                   | 17 ++++++++++------
+ testing/root/test_builtin.py                 |  6 ++++--
+ testing/root/test_std.py                     |  3 ++-
+ 17 files changed, 100 insertions(+), 82 deletions(-)
+
+diff --git a/doc/faq.txt b/doc/faq.txt
+index 52cb4b3f..cac83b2c 100644
+--- a/doc/faq.txt
++++ b/doc/faq.txt
+@@ -98,20 +98,6 @@ in a managed class/module/function scope.
+ .. _`xUnit style setup`: test/xunit_setup.html
+ .. _`pytest_nose`: test/plugin/nose.html
+ 
+-.. _`why pytest_pyfuncarg__ methods?`:
+-
+-Why the ``pytest_funcarg__*`` name for funcarg factories?
+----------------------------------------------------------------
+-
+-When experimenting with funcargs an explicit registration mechanism
+-was considered.  But lacking a good use case for this indirection and
+-flexibility we decided to go for `Convention over Configuration`_ and
+-allow to directly specify the factory.  Besides removing the need
+-for an indirection it allows to "grep" for ``pytest_funcarg__MYARG``
+-and will safely find all factory functions for the ``MYARG`` function
+-argument.  It helps to alleviate the de-coupling of function
+-argument usage and creation.
+-
+ .. _`Convention over Configuration`: http://en.wikipedia.org/wiki/Convention_over_Configuration
+ 
+ Can I yield multiple values from a factory function?
+diff --git a/testing/code/test_assertion.py b/testing/code/test_assertion.py
+index e2a7f903..4cb39fe2 100644
+--- a/testing/code/test_assertion.py
++++ b/testing/code/test_assertion.py
+@@ -18,15 +18,12 @@ def test_assert():
+ 
+ 
+ def test_assert_within_finally():
+-    excinfo = py.test.raises(ZeroDivisionError, """
++    with py.test.raises(ZeroDivisionError,
++                        match=".*division.* by zero"):
+         try:
+-            1/0
++            1 / 0
+         finally:
+             i = 42
+-    """)
+-    s = excinfo.exconly()
+-    assert re.search("ZeroDivisionError:.*division", s) is not None
+-
+ 
+ def test_assert_multiline_1():
+     try:
+diff --git a/testing/code/test_code.py b/testing/code/test_code.py
+index 28ec628b..65328bb7 100644
+--- a/testing/code/test_code.py
++++ b/testing/code/test_code.py
+@@ -18,7 +18,8 @@ def test_code_gives_back_name_for_not_existing_file():
+ def test_code_with_class():
+     class A:
+         pass
+-    py.test.raises(TypeError, "py.code.Code(A)")
++    with py.test.raises(TypeError):
++        py.code.Code(A)
+ 
+ if True:
+     def x():
+diff --git a/testing/code/test_excinfo.py b/testing/code/test_excinfo.py
+index c148ab8c..05ec3d9c 100644
+--- a/testing/code/test_excinfo.py
++++ b/testing/code/test_excinfo.py
+@@ -145,7 +145,8 @@ def test_traceback_cut(self):
+ 
+     def test_traceback_cut_excludepath(self, testdir):
+         p = testdir.makepyfile("def f(): raise ValueError")
+-        excinfo = py.test.raises(ValueError, "p.pyimport().f()")
++        with py.test.raises(ValueError) as excinfo:
++            p.pyimport().f()
+         basedir = py.path.local(py.test.__file__).dirpath()
+         newtraceback = excinfo.traceback.cut(excludepath=basedir)
+         for x in newtraceback:
+@@ -273,8 +274,8 @@ def test_tbentry_reinterpret():
+ def test_excinfo_exconly():
+     excinfo = py.test.raises(ValueError, h)
+     assert excinfo.exconly().startswith('ValueError')
+-    excinfo = py.test.raises(ValueError,
+-        "raise ValueError('hello\\nworld')")
++    with py.test.raises(ValueError) as excinfo:
++        raise ValueError('hello\\nworld')
+     msg = excinfo.exconly(tryshort=True)
+     assert msg.startswith('ValueError')
+     assert msg.endswith("world")
+@@ -350,10 +351,11 @@ def test_codepath_Queue_example():
+ 
+ 
+ class TestFormattedExcinfo:
+-    def pytest_funcarg__importasmod(self, request):
++    @pytest.fixture
++    def importasmod(self, request):
+         def importasmod(source):
+             source = py.code.Source(source)
+-            tmpdir = request.getfuncargvalue("tmpdir")
++            tmpdir = request.getfixturevalue("tmpdir")
+             modpath = tmpdir.join("mod.py")
+             tmpdir.ensure("__init__.py")
+             modpath.write(source)
+diff --git a/testing/code/test_source.py b/testing/code/test_source.py
+index 3492761a..676dcb0a 100644
+--- a/testing/code/test_source.py
++++ b/testing/code/test_source.py
+@@ -272,7 +272,8 @@ def test_compile_and_getsource(self):
+         co = self.source.compile()
+         py.builtin.exec_(co, globals())
+         f(7)
+-        excinfo = py.test.raises(AssertionError, "f(6)")
++        with py.test.raises(AssertionError) as excinfo:
++            f(6)
+         frame = excinfo.traceback[-1].frame
+         stmt = frame.code.fullsource.getstatement(frame.lineno)
+         #print "block", str(block)
+@@ -326,14 +327,13 @@ def __init__(self, *args):
+ 
+ def test_getline_finally():
+     def c(): pass
+-    excinfo = py.test.raises(TypeError, """
+-           teardown = None
+-           try:
+-                c(1)
+-           finally:
+-                if teardown:
+-                    teardown()
+-    """)
++    with py.test.raises(TypeError) as excinfo:
++       teardown = None
++       try:
++            c(1)
++       finally:
++            if teardown:
++                teardown()
+     source = excinfo.traceback[-1].statement
+     assert str(source).strip() == 'c(1)'
+ 
+diff --git a/testing/io_/test_capture.py b/testing/io_/test_capture.py
+index b5fedd0a..652c8b7f 100644
+--- a/testing/io_/test_capture.py
++++ b/testing/io_/test_capture.py
+@@ -1,6 +1,7 @@
+ from __future__ import with_statement
+ 
+ import os, sys
++import pytest
+ import py
+ 
+ needsdup = py.test.mark.skipif("not hasattr(os, 'dup')")
+@@ -45,7 +46,8 @@ def test_unicode_and_str_mixture(self):
+         f = py.io.TextIO()
+         if sys.version_info >= (3,0):
+             f.write("\u00f6")
+-            py.test.raises(TypeError, "f.write(bytes('hello', 'UTF-8'))")
++            with py.test.raises(TypeError):
++                f.write(bytes('hello', 'UTF-8'))
+         else:
+             f.write(unicode("\u00f6", 'UTF-8'))
+             f.write("hello") # bytes
+@@ -56,7 +58,8 @@ def test_unicode_and_str_mixture(self):
+ def test_bytes_io():
+     f = py.io.BytesIO()
+     f.write(tobytes("hello"))
+-    py.test.raises(TypeError, "f.write(totext('hello'))")
++    with py.test.raises(TypeError):
++        f.write(totext('hello'))
+     s = f.getvalue()
+     assert s == tobytes("hello")
+ 
+@@ -70,8 +73,9 @@ def test_dontreadfrominput():
+     py.test.raises(ValueError, f.fileno)
+     f.close() # just for completeness
+ 
+-def pytest_funcarg__tmpfile(request):
+-    testdir = request.getfuncargvalue("testdir")
++@pytest.fixture
++def tmpfile(request):
++    testdir = request.getfixturevalue("testdir")
+     f = testdir.makepyfile("").open('wb+')
+     request.addfinalizer(f.close)
+     return f
+@@ -315,7 +319,8 @@ def test_stdin_nulled_by_default(self):
+         print ("XXX which indicates an error in the underlying capturing")
+         print ("XXX mechanisms")
+         cap = self.getcapture()
+-        py.test.raises(IOError, "sys.stdin.read()")
++        with py.test.raises(IOError):
++            sys.stdin.read()
+         out, err = cap.reset()
+ 
+     def test_suspend_resume(self):
+diff --git a/testing/io_/test_terminalwriter.py b/testing/io_/test_terminalwriter.py
+index 1eef7f7d..2953dfff 100644
+--- a/testing/io_/test_terminalwriter.py
++++ b/testing/io_/test_terminalwriter.py
+@@ -107,14 +107,11 @@ def test_unicode_on_file_with_ascii_encoding(tmpdir, monkeypatch, encoding):
+ 
+ win32 = int(sys.platform == "win32")
+ class TestTerminalWriter:
+-    def pytest_generate_tests(self, metafunc):
+-        if "tw" in metafunc.funcargnames:
+-            metafunc.addcall(id="path", param="path")
+-            metafunc.addcall(id="stringio", param="stringio")
+-            metafunc.addcall(id="callable", param="callable")
+-    def pytest_funcarg__tw(self, request):
++
++    @pytest.fixture(params=["path", "stringio", "callable"])
++    def tw(self, request):
+         if request.param == "path":
+-            tmpdir = request.getfuncargvalue("tmpdir")
++            tmpdir = request.getfixturevalue("tmpdir")
+             p = tmpdir.join("tmpfile")
+             f = codecs.open(str(p), 'w+', encoding='utf8')
+             tw = py.io.TerminalWriter(f)
+@@ -182,8 +179,10 @@ def test_markup(self, tw):
+             for color in ("red", "green"):
+                 text2 = tw.markup("hello", **{color: True, 'bold': bold})
+                 assert text2.find("hello") != -1
+-        py.test.raises(ValueError, "tw.markup('x', wronkw=3)")
+-        py.test.raises(ValueError, "tw.markup('x', wronkw=0)")
++        with py.test.raises(ValueError):
++            tw.markup('x', wronkw=3)
++        with py.test.raises(ValueError):
++            tw.markup('x', wronkw=0)
+ 
+     def test_line_write_markup(self, tw):
+         tw.hasmarkup = True
+diff --git a/testing/io_/test_terminalwriter_linewidth.py b/testing/io_/test_terminalwriter_linewidth.py
+index e6d84fbf..1fe2810e 100644
+--- a/testing/io_/test_terminalwriter_linewidth.py
++++ b/testing/io_/test_terminalwriter_linewidth.py
+@@ -1,6 +1,8 @@
+ # coding: utf-8
+ from __future__ import unicode_literals
+ 
++import pytest
++
+ from py._io.terminalwriter import TerminalWriter
+ 
+ 
+@@ -31,6 +33,10 @@ def test_terminal_writer_line_width_update_with_wide_text():
+     assert tw.width_of_current_line == 21  # 5*2 + 1 + 5*2
+ 
+ 
++@pytest.mark.skipif(
++    'sys.version_info > (3,)',
++    reason='Bytes are not accepted'
++           ' https://github.com/pytest-dev/pytest/issues/4861')
+ def test_terminal_writer_line_width_update_with_wide_bytes():
+     tw = TerminalWriter()
+     tw.write('乇乂ㄒ尺卂 ㄒ卄丨匚匚'.encode('utf-8'))
+diff --git a/testing/log/test_log.py b/testing/log/test_log.py
+index 5c706d9b..ebf12705 100644
+--- a/testing/log/test_log.py
++++ b/testing/log/test_log.py
+@@ -89,8 +89,10 @@ def test_simple_consumer_match_2(self):
+ 
+     def test_no_auto_producer(self):
+         p = py.log.Producer('x')
+-        py.test.raises(AttributeError, "p._x")
+-        py.test.raises(AttributeError, "p.x_y")
++        with py.test.raises(AttributeError):
++            p._x
++        with py.test.raises(AttributeError):
++            p.x_y
+ 
+     def test_setconsumer_with_producer(self):
+         l = []
+diff --git a/testing/path/common.py b/testing/path/common.py
+index d69a1c39..14558222 100644
+--- a/testing/path/common.py
++++ b/testing/path/common.py
+@@ -155,8 +155,8 @@ def test_listdir(self, path1):
+         l = path1.listdir()
+         assert path1.join('sampledir') in l
+         assert path1.join('samplefile') in l
+-        py.test.raises(py.error.ENOTDIR,
+-                       "path1.join('samplefile').listdir()")
++        with py.test.raises(py.error.ENOTDIR):
++            path1.join('samplefile').listdir()
+ 
+     def test_listdir_fnmatchstring(self, path1):
+         l = path1.listdir('s*dir')
+@@ -300,7 +300,8 @@ def test_mtime(self, path1):
+         assert url.mtime() > 0
+ 
+     def test_relto_wrong_type(self, path1):
+-        py.test.raises(TypeError, "path1.relto(42)")
++        with py.test.raises(TypeError):
++            path1.relto(42)
+ 
+     def test_load(self, path1):
+         p = path1.join('samplepickle')
+diff --git a/testing/path/conftest.py b/testing/path/conftest.py
+index 84fb5c82..015bd039 100644
+--- a/testing/path/conftest.py
++++ b/testing/path/conftest.py
+@@ -1,20 +1,19 @@
+ import py
+ import sys
++import pytest
+ from py._path import svnwc as svncommon
+ 
+ svnbin = py.path.local.sysfind('svn')
+ repodump = py.path.local(__file__).dirpath('repotest.dump')
+ from py.builtin import print_
+ 
+-def pytest_funcarg__repowc1(request):
++@pytest.fixture
++def repowc1(request):
+     if svnbin is None:
+         py.test.skip("svn binary not found")
+ 
+-    tmpdir = request.getfuncargvalue("tmpdir")
+-    repo, repourl, wc = request.cached_setup(
+-        setup=lambda: getrepowc(tmpdir, "path1repo", "path1wc"),
+-        scope="module",
+-    )
++    tmpdir = request.getfixturevalue("tmpdir")
++    repo, repourl, wc = getrepowc(tmpdir, "path1repo", "path1wc")
+     for x in ('test_remove', 'test_move', 'test_status_deleted'):
+         if request.function.__name__.startswith(x):
+             #print >>sys.stderr, ("saving repo", repo, "for", request.function)
+@@ -22,8 +21,9 @@ def pytest_funcarg__repowc1(request):
+             request.addfinalizer(lambda: restore_repowc(_savedrepowc))
+     return repo, repourl, wc
+ 
+-def pytest_funcarg__repowc2(request):
+-    tmpdir = request.getfuncargvalue("tmpdir")
++@pytest.fixture
++def repowc2(request):
++    tmpdir = request.getfixturevalue("tmpdir")
+     name = request.function.__name__
+     repo, url, wc = getrepowc(tmpdir, "%s-repo-2" % name, "%s-wc-2" % name)
+     return repo, url, wc
+diff --git a/testing/path/test_cacheutil.py b/testing/path/test_cacheutil.py
+index c9fc0746..76023a04 100644
+--- a/testing/path/test_cacheutil.py
++++ b/testing/path/test_cacheutil.py
+@@ -12,12 +12,14 @@ def test_getorbuild(self):
+         assert val == 42
+ 
+     def test_cache_get_key_error(self):
+-        pytest.raises(KeyError, "self.cache._getentry(-23)")
++        with pytest.raises(KeyError):
++            self.cache._getentry(-23)
+ 
+     def test_delentry_non_raising(self):
+         self.cache.getorbuild(100, lambda: 100)
+         self.cache.delentry(100)
+-        pytest.raises(KeyError, "self.cache._getentry(100)")
++        with pytest.raises(KeyError):
++            self.cache._getentry(100)
+ 
+     def test_delentry_raising(self):
+         self.cache.getorbuild(100, lambda: 100)
+diff --git a/testing/path/test_svnauth.py b/testing/path/test_svnauth.py
+index 654f0332..d24028dd 100644
+--- a/testing/path/test_svnauth.py
++++ b/testing/path/test_svnauth.py
+@@ -2,6 +2,7 @@
+ from py.path import SvnAuth
+ import time
+ import sys
++import pytest
+ 
+ svnbin = py.path.local.sysfind('svn')
+ 
+@@ -261,7 +262,8 @@ def test_propget(self):
+         u.propget('foo')
+         assert '--username="foo" --password="bar"' in u.commands[0]
+ 
+-def pytest_funcarg__setup(request):
++@pytest.fixture
++def setup(request):
+     return Setup(request)
+ 
+ class Setup:
+@@ -271,7 +273,7 @@ def __init__(self, request):
+         if not request.config.option.runslowtests:
+             py.test.skip('use --runslowtests to run these tests')
+ 
+-        tmpdir = request.getfuncargvalue("tmpdir")
++        tmpdir = request.getfixturevalue("tmpdir")
+         repodir = tmpdir.join("repo")
+         py.process.cmdexec('svnadmin create %s' % repodir)
+         if sys.platform == 'win32':
+diff --git a/testing/path/test_svnurl.py b/testing/path/test_svnurl.py
+index 15fbea50..7cea4f2b 100644
+--- a/testing/path/test_svnurl.py
++++ b/testing/path/test_svnurl.py
+@@ -2,10 +2,12 @@
+ from py._path.svnurl import InfoSvnCommand
+ import datetime
+ import time
++import pytest
+ from svntestbase import CommonSvnTests
+ 
+-def pytest_funcarg__path1(request):
+-    repo, repourl, wc = request.getfuncargvalue("repowc1")
++@pytest.fixture
++def path1(request):
++    repo, repourl, wc = request.getfixturevalue("repowc1")
+     return py.path.svnurl(repourl)
+ 
+ class TestSvnURLCommandPath(CommonSvnTests):
+@@ -20,10 +22,12 @@ def test_visit_ignore(self, path1):
+         super(TestSvnURLCommandPath, self).test_visit_ignore(path1)
+ 
+     def test_svnurl_needs_arg(self, path1):
+-        py.test.raises(TypeError, "py.path.svnurl()")
++        with py.test.raises(TypeError):
++            py.path.svnurl()
+ 
+     def test_svnurl_does_not_accept_None_either(self, path1):
+-        py.test.raises(Exception, "py.path.svnurl(None)")
++        with py.test.raises(Exception):
++            py.path.svnurl(None)
+ 
+     def test_svnurl_characters_simple(self, path1):
+         py.path.svnurl("svn+ssh://hello/world")
+@@ -32,7 +36,8 @@ def test_svnurl_characters_at_user(self, path1):
+         py.path.svnurl("http://user@host.com/some/dir")
+ 
+     def test_svnurl_characters_at_path(self, path1):
+-        py.test.raises(ValueError, 'py.path.svnurl("http://host.com/foo@bar")')
++        with py.test.raises(ValueError):
++            py.path.svnurl("http://host.com/foo@bar")
+ 
+     def test_svnurl_characters_colon_port(self, path1):
+         py.path.svnurl("http://host.com:8080/some/dir")
+@@ -45,7 +50,8 @@ def test_svnurl_characters_colon_path(self, path1):
+         # colons are allowed on win32, because they're part of the drive
+         # part of an absolute path... however, they shouldn't be allowed in
+         # other parts, I think
+-        py.test.raises(ValueError, 'py.path.svnurl("http://host.com/foo:bar")')
++        with py.test.raises(ValueError):
++            py.path.svnurl("http://host.com/foo:bar")
+ 
+     def test_export(self, path1, tmpdir):
+         tmpdir = tmpdir.join("empty")
+@@ -92,4 +98,5 @@ def test_svn_1_3_b(self):
+         assert info.kind == 'dir'
+ 
+ def test_badchars():
+-    py.test.raises(ValueError, "py.path.svnurl('http://host/tmp/@@@:')")
++    with py.test.raises(ValueError):
++        py.path.svnurl('http://host/tmp/@@@:')
+diff --git a/testing/path/test_svnwc.py b/testing/path/test_svnwc.py
+index c643d998..25a3650c 100644
+--- a/testing/path/test_svnwc.py
++++ b/testing/path/test_svnwc.py
+@@ -30,8 +30,9 @@ def test_make_repo(path1, tmpdir):
+     rev = wc.commit()
+     assert rev is None
+ 
+-def pytest_funcarg__path1(request):
+-    repo, repourl, wc = request.getfuncargvalue("repowc1")
++@pytest.fixture
++def path1(request):
++    repo, repourl, wc = request.getfixturevalue("repowc1")
+     return wc
+ 
+ class TestWCSvnCommandPath(CommonSvnTests):
+@@ -346,7 +347,8 @@ def test_lock_unlock(self, path1):
+         somefile = root.join('somefile')
+         somefile.ensure(file=True)
+         # not yet added to repo
+-        py.test.raises(Exception, 'somefile.lock()')
++        with py.test.raises(Exception):
++            somefile.lock()
+         somefile.write('foo')
+         somefile.commit('test')
+         assert somefile.check(versioned=True)
+@@ -357,13 +359,15 @@ def test_lock_unlock(self, path1):
+             assert locked[0].basename == somefile.basename
+             assert locked[0].dirpath().basename == somefile.dirpath().basename
+             #assert somefile.locked()
+-            py.test.raises(Exception, 'somefile.lock()')
++            with py.test.raises(Exception):
++                somefile.lock()
+         finally:
+             somefile.unlock()
+         #assert not somefile.locked()
+         locked = root.status().locked
+         assert locked == []
+-        py.test.raises(Exception, 'somefile,unlock()')
++        with py.test.raises(Exception):
++            somefile,unlock()
+         somefile.remove()
+ 
+     def test_commit_nonrecursive(self, path1):
+@@ -481,7 +485,8 @@ def test_svn_1_3(self, path1):
+ 
+ 
+ def test_characters_at():
+-    py.test.raises(ValueError, "py.path.svnwc('/tmp/@@@:')")
++    with py.test.raises(ValueError):
++        py.path.svnwc('/tmp/@@@:')
+ 
+ def test_characters_tilde():
+     py.path.svnwc('/tmp/test~')
+diff --git a/testing/root/test_builtin.py b/testing/root/test_builtin.py
+index 287c60d5..b2881de4 100644
+--- a/testing/root/test_builtin.py
++++ b/testing/root/test_builtin.py
+@@ -56,7 +56,8 @@ def test_frozenset():
+ 
+ def test_print_simple():
+     from py.builtin import print_
+-    py.test.raises(TypeError, "print_(hello=3)")
++    with py.test.raises(TypeError):
++        print_(hello=3)
+     f = py.io.TextIO()
+     print_("hello", "world", file=f)
+     s = f.getvalue()
+@@ -133,7 +134,8 @@ def test_reraise():
+         raise Exception()
+     except Exception:
+         cls, val, tb = sys.exc_info()
+-    excinfo = py.test.raises(Exception, "_reraise(cls, val, tb)")
++    with py.test.raises(Exception):
++        _reraise(cls, val, tb)
+ 
+ def test_exec():
+     l = []
+diff --git a/testing/root/test_std.py b/testing/root/test_std.py
+index 143556a0..dca0c671 100644
+--- a/testing/root/test_std.py
++++ b/testing/root/test_std.py
+@@ -6,7 +6,8 @@ def test_os():
+     assert py.std.os is os
+ 
+ def test_import_error_converts_to_attributeerror():
+-    py.test.raises(AttributeError, "py.std.xyzalskdj")
++    with py.test.raises(AttributeError):
++        py.std.xyzalskdj
+ 
+ def test_std_gets_it():
+     for x in py.std.sys.modules:

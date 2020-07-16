@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://git.zx2c4.com/password-store/snapshot/password-store-${PV}.tar.
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~arm ~ppc64 x86 ~x86-macos"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86 ~x86-macos"
 IUSE="+git X zsh-completion fish-completion emacs dmenu importers elibc_Darwin"
 
 RDEPEND="
@@ -24,7 +24,7 @@ RDEPEND="
 	zsh-completion? ( app-shells/gentoo-zsh-completions )
 	fish-completion? ( app-shells/fish )
 	dmenu? ( x11-misc/dmenu x11-misc/xdotool )
-	emacs? ( virtual/emacs >=app-emacs/f-0.11.0 >=app-emacs/s-1.9.0 >=app-emacs/with-editor-2.5.11 )
+	emacs? ( >=app-editors/emacs-23.1:* >=app-emacs/f-0.11.0 >=app-emacs/s-1.9.0 >=app-emacs/with-editor-2.5.11 )
 "
 
 S="${WORKDIR}/password-store-${PV}"

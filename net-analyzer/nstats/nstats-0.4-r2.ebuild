@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -24,7 +24,7 @@ DEPEND="
 
 DOCS=( BUGS doc/TODO doc/ChangeLog )
 
-src_prepare(){
+src_prepare() {
 	epatch \
 		"${FILESDIR}"/${P}-glibc24.patch \
 		"${FILESDIR}"/${P}-makefile.patch \

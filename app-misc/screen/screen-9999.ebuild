@@ -1,56 +1,54 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools eutils flag-o-matic pam tmpfiles toolchain-funcs user
+inherit autotools flag-o-matic pam tmpfiles toolchain-funcs
 
 DESCRIPTION="screen manager with VT100/ANSI terminal emulation"
 HOMEPAGE="https://www.gnu.org/software/screen/"
 
 if [[ "${PV}" != 9999 ]] ; then
 	SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/screen.git"
 	EGIT_CHECKOUT_DIR="${WORKDIR}/${P}" # needed for setting S later on
-	S="${WORKDIR}"/${P}/src
+	S="${WORKDIR}/${P}/src"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug nethack pam selinux multiuser utmp"
+IUSE="debug nethack pam selinux multiuser"
 
 CDEPEND="
 	>=sys-libs/ncurses-5.2:0=
-	pam? ( virtual/pam )"
+	pam? ( sys-libs/pam )"
 RDEPEND="${CDEPEND}
-	selinux? ( sec-policy/selinux-screen )
-	utmp? (
-		kernel_linux? ( sys-libs/libutempter )
-		kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-lib-9.0 sys-libs/libutempter ) )
-	)
-"
+	acct-group/utmp
+	selinux? ( sec-policy/selinux-screen )"
 DEPEND="${CDEPEND}
 	sys-apps/texinfo"
 
-RESTRICT="test"
-
-pkg_setup() {
-	# Make sure utmp group exists, as it's used later on.
-	enewgroup utmp 406
-}
+PATCHES=(
+	# Don't use utempter even if it is found on the system.
+	"${FILESDIR}"/${PN}-4.3.0-no-utempter.patch
+	"${FILESDIR}"/${PN}-4.6.2-utmp-exit.patch
+)
 
 src_prepare() {
-	default
+	if [[ "${PV}" != *9999 ]] ; then
+		default
+	else
+		eapply_user
+	fi
 
 	# sched.h is a system header and causes problems with some C libraries
 	mv sched.h _sched.h || die
-	sed -i \
-		-e '/include/ s:sched.h:_sched.h:' \
-		screen.h winmsg.c canvas.h sched.c || die
-	sed -i -e 's:sched.h:_sched.h:g' Makefile.in || die
+	sed -i '/include/ s:sched\.h:_sched.h:' \
+		screen.h winmsg.c window.h sched.c canvas.h || die
+	sed -i 's@[[:space:]]sched\.h@ _sched.h@' Makefile.in || die
 
 	# Fix manpage.
 	sed -i \
@@ -58,10 +56,15 @@ src_prepare() {
 		-e "s:/usr/local/screens:${EPREFIX}/tmp/screen:g" \
 		-e "s:/local/etc/screenrc:${EPREFIX}/etc/screenrc:g" \
 		-e "s:/etc/utmp:${EPREFIX}/var/run/utmp:g" \
-		-e 's:/local/screens/S\\-:'"${EPREFIX}"'/tmp/screen/S\\-:g' \
-		-e 's:/usr/tmp/screens/:'"${EPREFIX}"'/tmp/screen/:g' \
-		doc/screen.1 \
-		|| die
+		-e "s:/local/screens/S\\\-:${EPREFIX}/tmp/screen/S\\\-:g" \
+		doc/screen.1 || die
+
+	if [[ ${CHOST} == *-darwin* ]] || use elibc_musl ; then
+		sed -i -e '/^#define UTMPOK/s/define/undef/' acconfig.h || die
+	fi
+
+	# disable musl dummy headers for utmp[x]
+	use elibc_musl && append-cppflags "-D_UTMP_H -D_UTMPX_H"
 
 	# reconfigure
 	eautoreconf
@@ -70,19 +73,24 @@ src_prepare() {
 src_configure() {
 	append-cppflags "-DMAXWIN=${MAX_SCREEN_WINDOWS:-100}"
 
-	[[ ${CHOST} == *-solaris* ]] && append-libs -lsocket -lnsl
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# enable msg_header by upping the feature standard compatible
+		# with c99 mode
+		append-cppflags -D_XOPEN_SOURCE=600
+	fi
 
 	use nethack || append-cppflags "-DNONETHACK"
 	use debug && append-cppflags "-DDEBUG"
 
-	econf \
-		--enable-socket-dir="${EPREFIX}/tmp/screen" \
-		--with-system_screenrc="${EPREFIX}/etc/screenrc" \
-		--with-pty-mode=0620 \
-		--with-pty-group=5 \
-		--enable-telnet \
-		$(use_enable pam) \
-		$(use_enable utmp)
+	local myeconfargs=(
+		--enable-socket-dir="${EPREFIX}/tmp/${PN}"
+		--with-system_screenrc="${EPREFIX}/etc/screenrc"
+		--with-pty-mode=0620
+		--with-pty-group=5
+		--enable-telnet
+		$(use_enable pam)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
@@ -98,25 +106,24 @@ src_install() {
 		doc/{FAQ,README.DOTSCREEN,fdpat.ps,window_to_display.ps}
 	)
 
-	emake DESTDIR="${D}" SCREEN=screen-${PV} install
+	emake DESTDIR="${D}" SCREEN="${P}" install
 
 	local tmpfiles_perms tmpfiles_group
 
-	if use multiuser || use prefix
-	then
-		fperms 4755 /usr/bin/screen-${PV}
+	if use multiuser || use prefix ; then
+		fperms 4755 /usr/bin/${P}
 		tmpfiles_perms="0755"
 		tmpfiles_group="root"
 	else
-		fowners root:utmp /usr/bin/screen-${PV}
-		fperms 2755 /usr/bin/screen-${PV}
+		fowners root:utmp /usr/bin/${P}
+		fperms 2755 /usr/bin/${P}
 		tmpfiles_perms="0775"
 		tmpfiles_group="utmp"
 	fi
 
 	newtmpfiles - screen.conf <<<"d /tmp/screen ${tmpfiles_perms} root ${tmpfiles_group}"
 
-	insinto /usr/share/screen
+	insinto /usr/share/${PN}
 	doins terminfo/{screencap,screeninfo.src}
 
 	insinto /etc
@@ -137,7 +144,7 @@ pkg_postinst() {
 
 	# Add /tmp/screen in case it doesn't exist yet. This should solve
 	# problems like bug #508634 where tmpfiles.d isn't in effect.
-	local rundir="${EROOT%/}/tmp/screen"
+	local rundir="${EROOT}/tmp/${PN}"
 	if [[ ! -d ${rundir} ]] ; then
 		if use multiuser || use prefix ; then
 			tmpfiles_group="root"

@@ -1,0 +1,67 @@
+From 993e6449e3f5f3532f6f5426b824718435ce6c6d Mon Sep 17 00:00:00 2001
+From: Mike Bayer <mike_mp@zzzcomputing.com>
+Date: Thu, 12 Mar 2020 19:44:37 -0400
+Subject: [PATCH] Dont raise on pytest deprecation warnings
+
+py.test 5.4.0 emits deprecation warnings for pytest.Class.
+make sure we don't raise for these, and log the code that will
+be used for 5.4.0 when we bump requirements.
+
+Fixes: #5201
+Change-Id: I83e0402c4a6b2365a63b58d052c6989df3a37328
+---
+ lib/sqlalchemy/testing/plugin/pytestplugin.py | 13 +++++++++++++
+ lib/sqlalchemy/testing/warnings.py            |  9 +++++++++
+ 3 files changed, 29 insertions(+)
+
+diff --git a/lib/sqlalchemy/testing/plugin/pytestplugin.py b/lib/sqlalchemy/testing/plugin/pytestplugin.py
+index c39f9f32e..f2e7d706f 100644
+--- a/lib/sqlalchemy/testing/plugin/pytestplugin.py
++++ b/lib/sqlalchemy/testing/plugin/pytestplugin.py
+@@ -160,6 +160,11 @@ def pytest_collection_modifyitems(session, config, items):
+             if sub_cls is not test_class.cls:
+                 per_cls_dict = rebuilt_items[test_class.cls]
+ 
++                # in pytest 5.4.0
++                # for inst in pytest.Class.from_parent(
++                #     test_class.parent.parent, name=sub_cls.__name__
++                # ).collect():
++
+                 for inst in pytest.Class(
+                     sub_cls.__name__, parent=test_class.parent.parent
+                 ).collect():
+@@ -188,6 +193,14 @@ def pytest_collection_modifyitems(session, config, items):
+ def pytest_pycollect_makeitem(collector, name, obj):
+ 
+     if inspect.isclass(obj) and plugin_base.want_class(name, obj):
++
++        # in pytest 5.4.0
++        # return [
++        #     pytest.Class.from_parent(collector,
++        # name=parametrize_cls.__name__)
++        #     for parametrize_cls in _parametrize_cls(collector.module, obj)
++        # ]
++
+         return [
+             pytest.Class(parametrize_cls.__name__, parent=collector)
+             for parametrize_cls in _parametrize_cls(collector.module, obj)
+diff --git a/lib/sqlalchemy/testing/warnings.py b/lib/sqlalchemy/testing/warnings.py
+index cc11e556c..6b42c98cb 100644
+--- a/lib/sqlalchemy/testing/warnings.py
++++ b/lib/sqlalchemy/testing/warnings.py
+@@ -34,6 +34,15 @@ def setup_filters():
+     # ignore 2.0 warnings unless we are explicitly testing for them
+     warnings.filterwarnings("ignore", category=sa_exc.RemovedIn20Warning)
+ 
++    try:
++        import pytest
++    except ImportError:
++        pass
++    else:
++        warnings.filterwarnings(
++            "once", category=pytest.PytestDeprecationWarning
++        )
++
+ 
+ def assert_warnings(fn, warning_msgs, regex=False):
+     """Assert that each of the given warnings are emitted by fn.

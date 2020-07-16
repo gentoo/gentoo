@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<bugs-to>https://github.com/brocode/fblog/issues</bugs-to>
+		<remote-id type="github">brocode/fblog</remote-id>
+	</upstream>
+</pkgmetadata>

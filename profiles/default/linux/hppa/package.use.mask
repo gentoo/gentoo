@@ -3,11 +3,11 @@
 
 # DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.
 
-# Jeroen Roovers <jer@gentoo.org> (1 Sep 2011)
+# Jeroen Roovers <jer@gentoo.org> (2011-09-01)
 # No hardware support for NUMA (bug #381313)
 sys-apps/hwloc numa
 
-# Jeroen Roovers <jer@gentoo.org> (15 Aug 2008)
+# Jeroen Roovers <jer@gentoo.org> (2008-08-15)
 # HPPA still isn't supported with anything but -O0.
 www-client/firefox custom-optimization
 

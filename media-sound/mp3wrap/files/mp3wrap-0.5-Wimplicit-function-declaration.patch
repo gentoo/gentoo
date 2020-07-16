@@ -1,0 +1,10 @@
+--- a/wrap.c
++++ b/wrap.c
+@@ -26,6 +26,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <strings.h>
++#include <string.h>
+ 
+ #include "wrap.h"
+ #include "mp3wrap.h"

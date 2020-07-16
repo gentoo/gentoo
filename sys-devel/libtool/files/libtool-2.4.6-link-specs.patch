@@ -10,15 +10,10 @@ https://bugzilla.redhat.com/show_bug.cgi?id=985592
 to the linker, Fedora uses this option for hardening.
 
 Signed-off-by: Pavel Raiskup <praiskup@redhat.com>
----
- build-aux/ltmain.in | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/build-aux/ltmain.in b/build-aux/ltmain.in
-index d5cf07a..0c40da0 100644
 --- a/build-aux/ltmain.in
 +++ b/build-aux/ltmain.in
-@@ -5360,10 +5360,12 @@ func_mode_link ()
+@@ -5360,10 +5360,12 @@
        # -tp=*                Portland pgcc target processor selection
        # --sysroot=*          for sysroot support
        # -O*, -g*, -flto*, -fwhopr*, -fuse-linker-plugin GCC link-time optimization
@@ -32,13 +27,9 @@ index d5cf07a..0c40da0 100644
          func_quote_for_eval "$arg"
  	arg=$func_quote_for_eval_result
          func_append compile_command " $arg"
-
-patch the generated file too to keep help2man from generating man pages
-https://bugs.gentoo.org/556512
-
 --- a/build-aux/ltmain.sh
 +++ b/build-aux/ltmain.sh
-@@ -5360,10 +5360,12 @@ func_mode_link ()
+@@ -7272,10 +7272,12 @@
        # -tp=*                Portland pgcc target processor selection
        # --sysroot=*          for sysroot support
        # -O*, -g*, -flto*, -fwhopr*, -fuse-linker-plugin GCC link-time optimization
@@ -52,6 +43,3 @@ https://bugs.gentoo.org/556512
          func_quote_for_eval "$arg"
  	arg=$func_quote_for_eval_result
          func_append compile_command " $arg"
--- 
-2.6.2
-

@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-WANT_AUTOMAKE="1.10"
+
 inherit autotools eutils gnome2-utils
 
 DESCRIPTION="model-airplane flight simulation program"
@@ -35,11 +35,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		--datadir="/usr/share" \
-		--datarootdir="${EPREFIX%/}/usr/share" \
-		--docdir="${EPREFIX%/}/usr/share/doc/${PF}" \
-		$(use_with portaudio)
+	econf $(use_with portaudio)
 }
 
 src_install() {

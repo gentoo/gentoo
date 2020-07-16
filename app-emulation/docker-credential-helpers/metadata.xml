@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		A suite of programs to use native stores to keep Docker credentials
+		safe.  Currently provides docker-credential-secretservice to use the
+		D-Bus secret service APIs, and docker-credential-pass to use the
+		pass framework.
+	</longdescription>
+	<maintainer type="person">
+		<email>rkitover@gmail.com</email>
+		<name>Rafael Kitover</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="gnome-keyring">
+			Build secretservice helper which works with gnome-keyring or kwallet
+			using D-Bus.
+		</flag>
+		<flag name="pass">
+			Build pass helper for the pass utility.
+		</flag>
+	</use>
+</pkgmetadata>

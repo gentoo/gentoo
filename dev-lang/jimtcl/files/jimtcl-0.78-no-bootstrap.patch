@@ -1,0 +1,35 @@
+From f59809579339c0a16fb2519e590b98b611438064 Mon Sep 17 00:00:00 2001
+From: Eugene Bright <eugene@bright.gdn>
+Date: Sat, 20 Jul 2019 21:00:54 +0300
+Subject: [PATCH] autosetup/autosetup-find-tclsh: Rely on tclsh
+
+Never try to compile jimsh0. Use tclsh as build time dependency.
+---
+ autosetup/autosetup-find-tclsh | 12 ++----------
+ 1 file changed, 2 insertions(+), 10 deletions(-)
+
+diff --git a/autosetup/autosetup-find-tclsh b/autosetup/autosetup-find-tclsh
+index dfe70f8..78b521e 100755
+--- a/autosetup/autosetup-find-tclsh
++++ b/autosetup/autosetup-find-tclsh
+@@ -3,15 +3,7 @@
+ # If not found, builds a bootstrap jimsh from source
+ # Prefer $autosetup_tclsh if is set in the environment
+ d=`dirname "$0"`
+-{ "$d/jimsh0" "$d/autosetup-test-tclsh"; } 2>/dev/null && exit 0
+ PATH="$PATH:$d"; export PATH
+-for tclsh in $autosetup_tclsh jimsh tclsh tclsh8.5 tclsh8.6; do
+-	{ $tclsh "$d/autosetup-test-tclsh"; } 2>/dev/null && exit 0
+-done
+-echo 1>&2 "No installed jimsh or tclsh, building local bootstrap jimsh0"
+-for cc in ${CC_FOR_BUILD:-cc} gcc; do
+-	{ $cc -o "$d/jimsh0" "$d/jimsh0.c"; } 2>/dev/null || continue
+-	"$d/jimsh0" "$d/autosetup-test-tclsh" && exit 0
+-done
+-echo 1>&2 "No working C compiler found. Tried ${CC_FOR_BUILD:-cc} and gcc."
++tclsh "$d/autosetup-test-tclsh" 2>/dev/null && exit 0
++echo 1>&2 "Please install dev-lang/tcl:0"
+ echo false
+-- 
+2.20.1
+

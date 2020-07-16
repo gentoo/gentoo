@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils multilib-minimal python-single-r1
+inherit autotools eutils ltprune multilib-minimal python-single-r1
 
 DESCRIPTION="LASH Audio Session Handler"
 HOMEPAGE="http://www.nongnu.org/lash/"
@@ -13,7 +13,7 @@ SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 hppa ppc ppc64 sparc x86"
 IUSE="alsa debug gtk python static-libs" # doc
 
 RDEPEND="dev-libs/libxml2

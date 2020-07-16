@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ SRC_URI="http://download.mpsna.de/opensource/demerge/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ppc ~ppc64 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm ~ia64 ppc ~ppc64 sparc x86"
 IUSE=""
 
 DEPEND="dev-lang/perl
@@ -17,10 +17,7 @@ DEPEND="dev-lang/perl
 		dev-perl/TermReadKey
 		dev-perl/Shell-EnvImporter"
 RDEPEND="${DEPEND}
-		|| (
-			sys-apps/portage
-			sys-apps/portage-mgorny
-		)"
+		sys-apps/portage"
 
 src_prepare() {
 	# Fix path for new make.conf location
@@ -29,7 +26,7 @@ src_prepare() {
 }
 
 src_install() {
-	dobin demerge || die
+	dobin demerge
 	dodoc Changelog
 	doman demerge.3
 }

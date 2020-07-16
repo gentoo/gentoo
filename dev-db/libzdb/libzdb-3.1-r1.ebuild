@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,12 +6,12 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="A thread safe high level multi-database connection pool library"
-HOMEPAGE="http://www.tildeslash.com/libzdb/"
-SRC_URI="http://www.tildeslash.com/${PN}/dist/${P}.tar.gz"
+HOMEPAGE="https://www.tildeslash.com/libzdb/"
+SRC_URI="https://www.tildeslash.com/${PN}/dist/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug doc mysql postgres +sqlite ssl static-libs"
 REQUIRED_USE=" || ( postgres mysql sqlite )"
 
@@ -36,11 +36,8 @@ src_configure() {
 	## TODO: check what --enable-optimized actually does
 	## TODO: find someone with oracle db to add oci8 support
 	myconf=""
-	if  [[ $(gcc-version) < 4.1 ]];then
-		myconf="${myconf} --disable-protected"
-	else
-		myconf="${myconf} --enable-protected"
-	fi
+	# enable default hidden visibility
+	myconf="${myconf} --enable-protected"
 
 	if use sqlite; then
 		myconf="${myconf} --with-sqlite=${EPREFIX}/usr/ --enable-sqliteunlock"

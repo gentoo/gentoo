@@ -1,7 +1,0 @@
-# Copyright 1999-2015 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License v2
-
-# Ulrich Müller <ulm@gentoo.org> (18 Mar 2013)
-# Packages that rely on multilib
-app-editors/emacs:18
-net-misc/icaclient

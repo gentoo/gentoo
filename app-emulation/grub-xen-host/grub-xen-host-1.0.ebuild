@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,22 +18,18 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"
 
-STRIP_MASK="usr/libexec/xen/bin/grub-x86_64-xen.bin"
-QA_EXECSTACK="usr/libexec/xen/bin/grub-x86_64-xen.bin"
-QA_WX_LOAD="usr/libexec/xen/bin/grub-x86_64-xen.bin"
-QA_PRESTRIPPED="usr/libexec/xen/bin/grub-x86_64-xen.bin"
-RESTRICT="test"
+RESTRICT="binchecks strip test"
 
 src_configure() {
 	:
 }
 
 src_compile() {
-	cat > "${S}/grub-bootstrap.cfg" <<- EOF
+	cat > "${S}/grub-bootstrap.cfg" <<- EOF || die
 		normal (memdisk)/grub.cfg
 	EOF
 
-	cat > "${S}/grub.cfg" <<- EOF
+	cat > "${S}/grub.cfg" <<- EOF || die
 		if search -s -f /boot/xen/pvboot-x86_64.elf ; then
 			echo "Chainloading (${root})/boot/xen/pvboot-x86_64.elf"
 			multiboot "/boot/xen/pvboot-x86_64.elf"

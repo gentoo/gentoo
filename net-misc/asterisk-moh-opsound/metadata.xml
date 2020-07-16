@@ -2,14 +2,18 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>chainsaw@gentoo.org</email>
-		<name>Tony Vroon</name>
+		<email>jaco@uls.co.za</email>
+		<name>Jaco Kroon</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
 		<flag name="alaw">Install the sounds files for the alaw codec.</flag>
 		<flag name="g722">Install the sounds files for the g722 codec.</flag>
 		<flag name="g729">Install the sounds files for the g729 codec.</flag>
-		<flag name="gsm">Install the sounds files for the +gsm codec.</flag>
+		<flag name="gsm">Install the sounds files for the gsm codec.</flag>
 		<flag name="siren7">Install the sounds files for the siren7 codec.</flag>
 		<flag name="siren14">Install the sounds files for the siren14 codec.</flag>
 		<flag name="sln16">Install the sounds files for the sln16 codec.</flag>

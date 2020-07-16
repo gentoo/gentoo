@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit opam
 
 DESCRIPTION="File system paths for OCaml"
-HOMEPAGE="http://erratique.ch/software/fpath https://github.com/dbuenzli/fpath"
-SRC_URI="http://erratique.ch/software/fpath/releases/${P}.tbz"
+HOMEPAGE="https://erratique.ch/software/fpath https://github.com/dbuenzli/fpath"
+SRC_URI="https://erratique.ch/software/fpath/releases/${P}.tbz"
 
 LICENSE="ISC"
 SLOT="0/${PV}"

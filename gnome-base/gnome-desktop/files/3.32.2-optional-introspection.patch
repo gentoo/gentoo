@@ -1,0 +1,48 @@
+From 1b8fb6b0fd155975f64b5e2ef03bece96a5e3340 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Wed, 18 Sep 2019 22:28:21 +0300
+Subject: [PATCH] build: Add optionality for introspection
+
+---
+ libgnome-desktop/meson.build | 2 ++
+ meson_options.txt            | 4 ++++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/libgnome-desktop/meson.build b/libgnome-desktop/meson.build
+index c365b448..a7355f31 100644
+--- a/libgnome-desktop/meson.build
++++ b/libgnome-desktop/meson.build
+@@ -96,6 +96,7 @@ libgnome_desktop_dep = declare_dependency(
+   link_with: libgnome_desktop
+ )
+ 
++if get_option('introspection')
+ gnome.generate_gir(libgnome_desktop,
+   sources: introspection_sources + libgnome_desktop_headers,
+   export_packages: 'gnome-desktop-3.0',
+@@ -107,6 +108,7 @@ gnome.generate_gir(libgnome_desktop,
+   symbol_prefix: 'gnome',
+   install: true
+ )
++endif
+ 
+ desktop_pc = pkg.generate(
+   libraries: libgnome_desktop,
+diff --git a/meson_options.txt b/meson_options.txt
+index e3402a11..7efe43ce 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -17,6 +17,10 @@ option('debug_tools',
+   type: 'boolean', value: true, description: 'Build debug tools'
+ )
+ 
++option('introspection',
++  type: 'boolean', value: true, description: 'Whether to build introspection files'
++)
++
+ option('udev',
+   type: 'feature', description: 'Udev support'
+ )
+-- 
+2.20.1
+

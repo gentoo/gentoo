@@ -2,13 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>radhermit@gentoo.org</email>
-		<name>Tim Harder</name>
+		<email>grknight@gentoo.org</email>
+		<name>Brian Evans</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>perl@gentoo.org</email>
 		<name>Gentoo Perl Project</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="cpan">ack</remote-id>
 		<remote-id type="cpan-module">App::Ack</remote-id>

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="7"
 
-USE_PHP="php5-6 php7-0 php7-1 php7-2"
+USE_PHP="php7-2 php7-3 php7-4"
 
 inherit php-ext-pecl-r3 git-r3
 
@@ -14,7 +14,7 @@ LICENSE="BSD"
 SLOT="0"
 IUSE="czmq"
 
-RDEPEND="net-libs/zeromq czmq? ( <net-libs/czmq-3 )"
+RDEPEND="net-libs/zeromq czmq? ( net-libs/czmq:= )"
 DEPEND="${RDEPEND} virtual/pkgconfig"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/mkoppanen/php-zmq.git"

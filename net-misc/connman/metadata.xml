@@ -18,5 +18,9 @@
 		<flag name="tools">Enable testing tools.</flag>
 		<flag name="vpnc">Use <pkg>net-vpn/vpnc</pkg> for cisco VPN support.</flag>
 		<flag name="wispr">Enable support for WISPr hotspot logins.</flag>
+		<flag name="wireguard">Enable WireGuard VPN support.</flag>
 	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:intel:connman</remote-id>
+	</upstream>
 </pkgmetadata>

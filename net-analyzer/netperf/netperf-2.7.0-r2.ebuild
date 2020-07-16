@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit eutils flag-o-matic user
 
 DESCRIPTION="Network performance benchmark"
 SRC_URI="ftp://ftp.netperf.org/${PN}/${P}.tar.bz2"
-KEYWORDS="alpha amd64 arm64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm64 hppa ~ia64 ppc ppc64 sparc x86"
 
 HOMEPAGE="http://www.netperf.org/"
 LICENSE="netperf"
@@ -39,20 +39,22 @@ src_prepare() {
 		doc/examples/udp_stream_script \
 		|| die
 
-	# netlib.c:2292:5: warning: implicit declaration of function ‘sched_setaffinity’
-	# nettest_omni.c:2943:5: warning: implicit declaration of function ‘splice’
-	append-cppflags -D_GNU_SOURCE
-
 	eapply_user
 }
 
 src_configure() {
+	append-cflags -fcommon
+
+	# netlib.c:2292:5: warning: implicit declaration of function ‘sched_setaffinity’
+	# nettest_omni.c:2943:5: warning: implicit declaration of function ‘splice’
+	append-cppflags -D_GNU_SOURCE
+
 	econf \
 		$(use_enable demo) \
 		$(use_enable sctp)
 }
 
-src_install () {
+src_install() {
 	default
 
 	# move netserver into sbin as we had it before 2.4 was released with its

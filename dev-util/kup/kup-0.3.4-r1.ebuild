@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="kernel.org uploader tool"
 HOMEPAGE="https://www.kernel.org/pub/software/network/kup"
-SRC_URI="mirror://kernel/software/network/kup/${P}.tar.gz"
+SRC_URI="https://www.kernel.org/pub/software/network/kup/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
