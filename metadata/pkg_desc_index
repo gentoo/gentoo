@@ -667,7 +667,7 @@ app-arch/innoextract 1.7 1.8: A tool to unpack installers created by Inno Setup
 app-arch/ipkg-utils 1.7.050831-r3: Tools for working with the ipkg binary package format
 app-arch/lbzip2 2.5_p20181227-r1: Parallel bzip2 utility
 app-arch/lcab 1.0_beta12: CAB file creation tool
-app-arch/lha 114i-r9 114i_p20201004: Utility for creating and opening lzh archives
+app-arch/lha 114i_p20201004: Utility for creating and opening lzh archives
 app-arch/libarchive 3.4.2 3.4.3: Multi-format archive and compression library
 app-arch/libpar2 0.4: A library for par2, extracted from par2cmdline
 app-arch/lrzip 0.631_p20190619: Long Range ZIP or Lzma RZIP optimized for compressing large files
@@ -12484,7 +12484,7 @@ media-gfx/gphoto2 2.5.20: Free, redistributable digital camera software applicat
 media-gfx/gphotofs 0.5-r1: FUSE file system for interfacing with digital cameras using gphoto2
 media-gfx/gpicview 0.2.5 0.2.5-r1: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r2: A GTK-based image browser
-media-gfx/graphicsmagick 1.3.35 1.3.35-r1 9999: Collection of tools and libraries for many image formats
+media-gfx/graphicsmagick 1.3.35-r1 9999: Collection of tools and libraries for many image formats
 media-gfx/graphite2 1.3.14: Library providing rendering capabilities for complex non-Roman writing systems
 media-gfx/graphviz 2.42.3 2.44.0: Open Source Graph Visualization Software
 media-gfx/grub-splashes 20091109: Collection of grub splashes
@@ -12651,7 +12651,7 @@ media-libs/alure 1.2-r1 1.2-r2: The OpenAL Utility Toolkit
 media-libs/ampache_browser 1.0.1 1.0.2: Ampache desktop client library
 media-libs/aribb24 1.0.3 1.0.3-r1 1.0.3-r2: Library for decoding ARIB STD-B24 subtitles
 media-libs/assimp 5.0.1: Importer library to import assets from 3D files
-media-libs/aubio 0.4.7-r1 0.4.8 0.4.9: Library for audio labelling
+media-libs/aubio 0.4.9: Library for audio labelling
 media-libs/audiofile 0.3.6-r3: An elegant API for accessing audio files
 media-libs/avidemux-core 2.7.3-r1 2.7.4-r1: Core libraries for simple video cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.7.3 2.7.4: Plugins for the video editor media-video/avidemux
@@ -12738,7 +12738,7 @@ media-libs/intel-mediasdk 18.3.0 18.4.1 9999: Intel Media SDK
 media-libs/jbig2dec 0.14 0.17-r1: A decoder implementation of the JBIG2 image compression format
 media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
-media-libs/jpeg 6b-r12 8d-r2 9c 9d: Library to load, handle and manipulate images in the JPEG format
+media-libs/jpeg 9d: Library to load, handle and manipulate images in the JPEG format
 media-libs/kodi-platform 18.0_pre20180301 18.0_pre20190429 9999: Kodi platform support library
 media-libs/kvazaar 1.2.0-r1 9999: Open-source HEVC encoder
 media-libs/ladspa-cmt 1.16-r4 1.17: CMT (computer music toolkit) LADSPA library plugins
@@ -12784,7 +12784,7 @@ media-libs/libdvdcss 1.4.2: A portable abstraction library for DVD decryption
 media-libs/libdvdnav 6.0.0 6.0.1 6.1.0 9999: Library for DVD navigation tools
 media-libs/libdvdread 6.0.0 6.0.1 6.0.2 6.1.1 9999: Library for DVD navigation tools
 media-libs/libebur128 1.2.4: A library implementing the EBU R128 loudness standard
-media-libs/libemf 1.0.4-r1 1.0.7 1.0.12 1.0.13: Library implementation of ECMA-234 API for the generation of enhanced metafiles
+media-libs/libemf 1.0.13: Library implementation of ECMA-234 API for the generation of enhanced metafiles
 media-libs/libeot 0.01 9999: Library for parsing Embedded OpenType files (Microsoft embedded font 'standard')
 media-libs/libepoxy 1.5.4 9999: Library for handling OpenGL function pointer management
 media-libs/libexif 0.6.22: Library for parsing, editing, and saving EXIF data

@@ -5,11 +5,11 @@ DESCRIPTION=eXtensible Data Model and Format
 EAPI=7
 HOMEPAGE=http://xdmf.org/index.php/Main_Page
 IUSE=doc test
-KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=~amd64 ~arm ~x86 ~amd64-linux ~x86-linux
 LICENSE=VTK
 RDEPEND=dev-libs/boost:= dev-libs/libxml2:2 sci-libs/hdf5:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jlec/distfiles/xdmf2-1.0_p141226.tar.xz
 _eclasses_=cmake	19b0421555865baefd505831dd4303e3	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=d168a1ed48784a5985048e6f12039a07
+_md5_=4bd33a9a8f71f0519fcff11aa892cb19
