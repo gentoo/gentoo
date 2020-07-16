@@ -1,16 +1,16 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils bash-completion-r1 toolchain-funcs
+EAPI=7
+inherit bash-completion-r1 git-r3 toolchain-funcs
 
 DESCRIPTION="program for making large letters out of ordinary text"
 HOMEPAGE="http://www.figlet.org/"
-SRC_URI="ftp://ftp.figlet.org/pub/figlet/program/unix/${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/cmatsuoka/figlet"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS=""
 
 src_compile() {
 	emake clean
