@@ -3,10 +3,12 @@
 
 EAPI=7
 
-CRATES=""
+CRATES="
+"
 
 MY_PV="${PV//_rc/-rc}"
-PYTHON_COMPAT=( python3_{7,8} ) # https://bugs.gentoo.org/725962
+# https://bugs.gentoo.org/725962
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit bash-completion-r1 cargo desktop python-any-r1
 
@@ -29,7 +31,6 @@ IUSE="wayland +X"
 REQUIRED_USE="|| ( wayland X )"
 
 DEPEND="${PYTHON_DEPS}"
-BDEPEND="dev-util/cmake"
 
 COMMON_DEPEND="
 	media-libs/fontconfig:=
@@ -49,7 +50,7 @@ RDEPEND="${COMMON_DEPEND}
 	)
 "
 
-DOCS=( CHANGELOG.md docs/ansicode.txt INSTALL.md README.md alacritty.yml )
+BDEPEND="dev-util/cmake"
 
 QA_FLAGS_IGNORED="usr/bin/alacritty"
 
@@ -100,6 +101,11 @@ src_install() {
 	insinto /usr/share/alacritty/scripts
 	doins -r scripts/*
 
+	local DOCS=(
+		alacritty.yml
+		CHANGELOG.md INSTALL.md README.md
+		docs/{ansicode.txt,escape_support.md}
+	)
 	einstalldocs
 }
 
