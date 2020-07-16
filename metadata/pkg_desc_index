@@ -492,7 +492,7 @@ app-admin/emacs-updater 1.16: Rebuild Emacs packages
 app-admin/entr 4.3 4.4 4.5: Run arbitrary commands when files change
 app-admin/eselect 1.4.15 1.4.16 9999: Gentoo's multi-purpose configuration and management tool
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
-app-admin/exo 1.11.0: Command-line tool for everything at Exoscale: compute, storage, dns.
+app-admin/exo 1.14.0: Command-line tool for everything at Exoscale: compute, storage, dns.
 app-admin/fam 2.7.0_p17_p2 2.7.0_p17_p3: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.4-r1: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1-r1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
@@ -9050,8 +9050,8 @@ dev-ros/calibration_launch 0.10.14 9999: Launch files for configuring the calibr
 dev-ros/calibration_msgs 0.10.14 9999: Messages for storing calibration samples to be used in calibration procedures
 dev-ros/calibration_setup_helper 0.10.14 9999: Script to generate calibration launch and configurationfiles for your robot
 dev-ros/camera_calibration 1.15.2 9999: Calibration of monocular or stereo cameras
-dev-ros/camera_calibration_parsers 1.11.13-r1 9999: Routines for reading and writing camera calibration parameters
-dev-ros/camera_info_manager 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 1.11.13 9999: C++ interface for camera calibration information
+dev-ros/camera_calibration_parsers 1.12.0 9999: Routines for reading and writing camera calibration parameters
+dev-ros/camera_info_manager 1.12.0 9999: C++ interface for camera calibration information
 dev-ros/carrot_planner 1.17.0 9999: Attempts to find a legal place to put a carrot for the robot to follow
 dev-ros/class_loader 0.4.1-r1 9999: ROS-independent package for loading plugins
 dev-ros/clear_costmap_recovery 1.17.0 9999: Recovery behavior that attempts reverting the costmaps to the static map
@@ -9072,7 +9072,7 @@ dev-ros/controller_manager_tests 0.19.1 9999: Tests for the controller manager
 dev-ros/convex_decomposition 0.1.10 0.1.11 0.1.12 9999: Convex Decomposition Tool for Robot Model
 dev-ros/costmap_2d 1.17.0 9999: Creates a 2D costmap from sensor data
 dev-ros/cpp_common 0.7.2 9999: C++ code for doing things that are not necessarily ROS related
-dev-ros/cv_bridge 1.13.0 9999: Converts between ROS Image messages and OpenCV images
+dev-ros/cv_bridge 1.15.0 9999: Converts between ROS Image messages and OpenCV images
 dev-ros/depth_image_proc 1.15.2 9999: Nodelets for processing depth images such as those produced by OpenNI camera
 dev-ros/depthimage_to_laserscan 1.0.7-r2 9999: Converts a depth image to a laser scan for use with navigation and localization
 dev-ros/diagnostic_aggregator 1.9.4 9999: Aggregates ROS diagnostics
@@ -9120,18 +9120,18 @@ dev-ros/hector_pose_estimation_core 0.3.0-r1 9999: Extended Kalman Filter (EKF) 
 dev-ros/hector_slam_launch 0.3.3 0.3.4 0.3.5 0.4.0 9999: Launch files for launching hector_slam with different robot systems/setups/postprocessing scenarios
 dev-ros/hector_trajectory_server 0.3.5 0.4.0 9999: Keeps track of tf trajectories and makes this data accessible via a service and topic
 dev-ros/image_cb_detector 0.10.14-r1 9999: Extracts checkerboard corners from ROS images
-dev-ros/image_geometry 1.12.3 1.12.4 1.12.5 1.12.7 1.12.8 1.13.0 9999: C++ and Python libraries for interpreting images geometrically
+dev-ros/image_geometry 1.15.0 9999: C++ and Python libraries for interpreting images geometrically
 dev-ros/image_proc 1.15.2 9999: Single image rectification and color processing
 dev-ros/image_publisher 1.15.2 9999: Publish an image stream from single image file or avi file.
 dev-ros/image_rotate 1.15.2 9999: Rotates an image minimizing the angle between a vector and the camera frame
-dev-ros/image_transport 1.11.13-r2 9999: Transparent support for transporting images in low-bandwidth compressed formats
+dev-ros/image_transport 1.12.0 9999: Transparent support for transporting images in low-bandwidth compressed formats
 dev-ros/image_view 1.15.2 9999: Simple viewer for ROS image topics
 dev-ros/imu_complementary_filter 1.2.2 9999: Fuses angular velocities, accelerations, and magnetic readings from an IMU
 dev-ros/imu_filter_madgwick 1.2.2 9999: Fuses angular velocities, accelerations, and magnetic readings from an IMU
 dev-ros/imu_processors 0.2.1 0.2.2 0.2.3 9999: Processors for sensor_msgs::Imu data
 dev-ros/imu_transformer 0.2.2-r1 0.2.3 9999: Node/nodelet combination to transform sensor_msgs::Imu data from one frame into another
 dev-ros/interactive_marker_tutorials 0.11.0 9999: Interactive marker tutorials
-dev-ros/interactive_markers 1.11.3 1.11.4 9999: 3D interactive marker communication library for RViz and similar tools
+dev-ros/interactive_markers 1.12.0 9999: 3D interactive marker communication library for RViz and similar tools
 dev-ros/interval_intersection 0.10.14 9999: Tools for calculating the intersection of interval messages
 dev-ros/ivcon 0.1.5 0.1.6 0.1.7 9999: Mesh Conversion Utility
 dev-ros/joint_limits_interface 0.19.1 9999: Interface for enforcing joint limits
@@ -9168,31 +9168,31 @@ dev-ros/moveit_msgs 0.9.1 0.10.0 9999: Messages, services and actions used by Mo
 dev-ros/nav_core 1.17.0 9999: Common interfaces for navigation specific robot actions
 dev-ros/nav_msgs 1.13.0 9999: Common messages used to interact with the navigation stack
 dev-ros/navfn 1.17.0 9999: Fast interpolated navigation function for creating plans for a mobile base
-dev-ros/nmea_msgs 1.0.0 9999: Messages related to data in the NMEA format
+dev-ros/nmea_msgs 1.1.0 9999: Messages related to data in the NMEA format
 dev-ros/nodelet 1.10.0 9999: Runs multiple algorithms in the same process with zero copy transport
 dev-ros/nodelet_topic_tools 1.10.0 9999: Common nodelet tools such as a mux, demux and throttle
 dev-ros/nodelet_tutorial_math 0.1.12 9999: Nodelet tutorial
 dev-ros/object_recognition_msgs 0.4.1 9999: ROS message and the actionlib definition used in object_recognition_core
 dev-ros/octomap_msgs 0.3.3 9999: Messages and serializations / conversion for the OctoMap library
-dev-ros/octomap_ros 0.4.0-r1 9999: Conversion functions between ROS / PCL and OctoMap's native types
+dev-ros/octomap_ros 0.4.1 9999: Conversion functions between ROS / PCL and OctoMap's native types
 dev-ros/opencv_apps 2.0.1 9999: OpenCV applications for ROS
-dev-ros/opencv_tests 1.12.1-r1 1.12.2 1.12.3 1.12.4 1.12.5 1.12.7 1.12.8 1.13.0 9999: Tests for ROS OpenCV integration
-dev-ros/openni2_camera 0.3.0-r1 0.4.0 0.4.2 9999: ROS drivers for the Asus Xtion and Primesense Devices
-dev-ros/openni2_launch 0.4.0 0.4.2 9999: Launch files to start the openni2_camera drivers using rgbd_launch
-dev-ros/openslam_gmapping 0.1.1 0.1.2 9999: ROS-ified version of gmapping SLAM
+dev-ros/opencv_tests 1.15.0 9999: Tests for ROS OpenCV integration
+dev-ros/openni2_camera 0.3.0-r1 0.4.0 0.4.2 1.4.2 9999: ROS drivers for the Asus Xtion and Primesense Devices
+dev-ros/openni2_launch 1.4.2 9999: Launch files to start the openni2_camera drivers using rgbd_launch
+dev-ros/openslam_gmapping 0.2.1 9999: ROS-ified version of gmapping SLAM
 dev-ros/pcl_conversions 1.7.1 9999: Provides conversions from PCL data types and ROS message types
 dev-ros/pcl_msgs 0.2.0 9999: PCL (Point Cloud Library)-related ROS messages
 dev-ros/pcl_ros 1.7.1 9999: PCL (Point Cloud Library) ROS interface stack
-dev-ros/pluginlib 1.12.0-r1 1.12.1 9999: Provides tools for writing and dynamically loading plugins using the ROS build infrastructure
+dev-ros/pluginlib 1.13.0 9999: Tools for writing and dynamically loading plugins using the ROS infrastructure
 dev-ros/pluginlib_tutorials 0.1.12 9999: Pluginlib tutorials
 dev-ros/poco_vendor 1.2.0 9999: CMake shim over the poco library
-dev-ros/pointcloud_to_laserscan 1.4.0-r1 9999: Converts a 3D Point Cloud into a 2D laser scan
-dev-ros/polled_camera 1.11.12 1.11.13 9999: C++ helper classes for implementing a polled camera driver node and requesting images from it
-dev-ros/pr2_dashboard_aggregator 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 1.12.0 1.12.1 1.12.2 1.12.3 1.12.4 9999: Aggregates all of the topics that a 'pr2_dashboard' app might be interested in
-dev-ros/pr2_description 1.12.0 1.12.1 1.12.2 1.12.3 1.12.4 9999: Description (mechanical, kinematic, visual, etc.) of the PR2 robot
-dev-ros/pr2_machine 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 1.12.0 1.12.1 1.12.2 1.12.3 1.12.4 9999: xxx.machine files that describe the different hosts a node can be spawned on
-dev-ros/pr2_msgs 1.12.0 1.12.1 1.12.2 1.12.3 1.12.4 9999: Messages for representing PR2 state, such as battery information and the PR2 fingertip sensors
-dev-ros/python_qt_binding 0.3.4 0.3.5-r1 9999: Infrastructure for an integrated graphical user interface based on Qt
+dev-ros/pointcloud_to_laserscan 1.4.1 9999: Converts a 3D Point Cloud into a 2D laser scan
+dev-ros/polled_camera 1.12.0 9999: C++ classes for implementing a polled camera driver node
+dev-ros/pr2_dashboard_aggregator 1.12.4 9999: Aggregates all of the topics that a 'pr2_dashboard' app might be interested in
+dev-ros/pr2_description 1.12.4 9999: Description (mechanical, kinematic, visual, etc.) of the PR2 robot
+dev-ros/pr2_machine 1.12.4 9999: xxx.machine files that describe the different hosts a node can be spawned on
+dev-ros/pr2_msgs 1.12.4 9999: Messages for representing PR2 state
+dev-ros/python_qt_binding 0.4.3 9999: Infrastructure for an integrated graphical user interface based on Qt
 dev-ros/qt_dotgraph 0.4.1 9999: Helpers to work with dot graphs
 dev-ros/qt_gui 0.4.1 9999: ROS infrastructure for an integrated graphical user interface based on Qt
 dev-ros/qt_gui_app 0.4.1 9999: Instance of the integrated graphical user interface provided by qt_gui
@@ -9294,7 +9294,7 @@ dev-ros/rqt_tf_tree 0.6.1 9999: GUI plugin for visualizing the ROS TF frame tree
 dev-ros/rqt_top 0.4.9 9999: RQT plugin for monitoring ROS processes
 dev-ros/rqt_topic 0.4.12 9999: GUI plugin for displaying debug information about ROS topics
 dev-ros/rqt_web 0.4.9 9999: Simple web content viewer for rqt
-dev-ros/rviz 1.13.6-r1 1.14.0 9999: 3D visualization tool for ROS
+dev-ros/rviz 1.14.1 9999: 3D visualization tool for ROS
 dev-ros/rviz_imu_plugin 1.2.2 9999: RVIZ plugin for IMU visualization
 dev-ros/rviz_plugin_tutorials 0.11.0 9999: Tutorials showing how to write plugins for RViz
 dev-ros/rviz_python_tutorial 0.11.0 9999: Tutorials showing how to call into rviz internals from python scripts
@@ -14026,7 +14026,7 @@ net-analyzer/nessus-agent-bin 7.7.0: A remote security scanner for Linux - agent
 net-analyzer/nessus-bin 8.10.1: A remote security scanner for Linux
 net-analyzer/net-snmp 5.8-r3 5.8-r4 5.8-r5 5.8.1_pre1-r1 5.8.1_pre2 99999999: Software for generating and retrieving SNMP data
 net-analyzer/netcat 110-r9 110.20180111: the network swiss army knife
-net-analyzer/netdata 1.21.1-r1 1.22.0-r1 1.22.1-r1 1.23.0 1.23.1 9999: Linux real time system monitoring, done right!
+net-analyzer/netdata 1.23.2 9999: Linux real time system monitoring, done right!
 net-analyzer/netdiscover 0.3_beta6-r3 0.3_beta6-r4: An active/passive address reconnaissance tool
 net-analyzer/nethogs 0.8.5-r1: A small 'net top' tool, grouping bandwidth by process
 net-analyzer/neti 2.0-r1: NETI@Home research project from GATech
@@ -14476,7 +14476,7 @@ net-libs/libbtbb 2018.08.1 2018.12.1 9999: A library to decode Bluetooth baseban
 net-libs/libcapi 3.0.7-r1: CAPI library used by AVM products
 net-libs/libcork 0.15.0-r1: A simple, easily embeddable cross-platform C library
 net-libs/libcorkipset 1.1.1.20150311_p8: A small C helper library for storing sets of IPv4 and IPv6 addresses
-net-libs/libcrafter 0.3 0.3_p20171019 9999: a high level library for C++ designed to make easier the creation and decoding of network packets
+net-libs/libcrafter 0.3 0.3_p20171019 1.0 9999: A high level C++ network packet sniffing and crafting library
 net-libs/libdmapsharing 2.9.39: A library that implements the DMAP family of protocols
 net-libs/libdom 0.3.3-r1 0.4.0 0.4.1: implementation of the W3C DOM, written in C
 net-libs/libecap 1.0.0: API for implementing ICAP content analysis and adaptation
@@ -15400,7 +15400,7 @@ ros-meta/geometry2 0.6.2 0.6.3 0.6.5 0.7.2 9999: The second generation Transform
 ros-meta/geometry_tutorials 0.2.2 0.2.3 9999: Metapackage of geometry tutorials ROS
 ros-meta/hector_localization 0.2.0 0.2.1 0.3.0 9999: Collection of packages, that provide the full 6DOF pose of a robot or platform
 ros-meta/hector_slam 0.3.3 0.3.4 0.3.5 0.4.0 9999: hector_mapping and related packages
-ros-meta/image_common 1.11.12 1.11.13 9999: Common code for working with images in ROS
+ros-meta/image_common 1.11.12 1.11.13 1.12.0 9999: Common code for working with images in ROS
 ros-meta/image_pipeline 1.12.19 1.12.20 1.12.21 1.12.22 1.12.23 1.13.0 1.15.2 9999: Fills the gap between getting raw images from a camera driver and higher-level vision processing
 ros-meta/image_transport_plugins 1.9.2 1.9.3 1.9.5 1.14.0 9999: Plugins for publishing and subscribing topics in representations other than raw pixel data
 ros-meta/imu_pipeline 0.2.1 0.2.2 0.2.3 9999: Tools for processing and pre-processing IMU messages for easier use by later subscribers
@@ -15411,7 +15411,7 @@ ros-meta/navigation 1.15.1 1.15.2 1.16.0 1.16.1 1.16.2 1.16.3 1.16.6 1.17.0 9999
 ros-meta/nodelet_core 1.9.15 1.9.16 1.10.0 9999: Nodelet Core Metapackage
 ros-meta/perception 1.5.0 9999: Metapackage for ROS perception stack
 ros-meta/perception_pcl 1.5.4 1.6.1 1.6.2 1.7.0 1.7.1 9999: PCL (Point Cloud Library) ROS interface stack
-ros-meta/pr2_common 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 1.12.0 1.12.1 1.12.2 1.12.3 1.12.4 9999: URDF description and 3D models of robot components of the PR2 robot
+ros-meta/pr2_common 1.12.4 9999: URDF description and 3D models of robot components of the PR2 robot
 ros-meta/qt_gui_core 0.3.6 0.3.8 0.3.9 0.3.10 0.3.11 0.3.16 0.4.1 9999: Integration of the ROS package system and ROS-specific plugins for a Qt-based GUI
 ros-meta/robot 1.5.0 9999: Metapackage which includes ROS libaries for any robot hardware
 ros-meta/robot_model 1.12.10 1.12.11 9999: Packages for modeling various aspects of robot information
@@ -15430,7 +15430,7 @@ ros-meta/rqt_robot_plugins 0.5.6 0.5.7 9999: Metapackage of rqt plugins that are
 ros-meta/simulators 1.5.0 9999: Metapackage for ROS simulation packages
 ros-meta/slam_gmapping 1.3.10 1.4.0 9999: ROS wrapper for OpenSlam's Gmapping
 ros-meta/unique_identifier 1.0.5 1.0.6 9999: ROS messages and interfaces for universally unique identifiers
-ros-meta/vision_opencv 1.12.4 1.12.5 1.12.7 1.12.8 1.13.0 9999: Converts between ROS Image messages and OpenCV images
+ros-meta/vision_opencv 1.12.4 1.12.5 1.12.7 1.12.8 1.13.0 1.15.0 9999: Converts between ROS Image messages and OpenCV images
 ros-meta/vision_visp 0.9.3 0.10.0 0.11.1 9999: Virtual package providing ViSP related packages
 ros-meta/visualization_tutorials 0.9.2 0.10.1 0.10.2 0.10.3 0.11.0 9999: Metapackage referencing tutorials related to rviz and visualization
 ros-meta/viz 1.5.0 9999: Metapackage for ROS visualization packages
@@ -17294,7 +17294,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.9-r1 9999: Gentoo automatic kernel building scr
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 5.4.40 5.4.46 5.4.47 5.4.48 5.4.49 5.4.50 5.4.51 5.6.18 5.6.19 5.7.4 5.7.5 5.7.6 5.7.7 5.7.8: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.40 5.4.46 5.4.47 5.4.48 5.4.49 5.4.50 5.4.51 5.6.18 5.6.19 5.7.4 5.7.5 5.7.6 5.7.7 5.7.8: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.221 4.4.228 4.4.229 4.4.230 4.9.221 4.9.228 4.9.229 4.9.230 4.14.178 4.14.185 4.14.186 4.14.187 4.14.188 4.19.120 4.19.129 4.19.130 4.19.131 4.19.132 4.19.133 5.4.38 5.4.48 5.4.49 5.4.50 5.4.51 5.6.19 5.7.4 5.7.5 5.7.6 5.7.7 5.7.8: Full sources including the Gentoo patchset for the 5.7 kernel tree
+sys-kernel/gentoo-sources 4.4.221 4.4.228 4.4.229 4.4.230 4.9.221 4.9.228 4.9.229 4.9.230 4.14.178 4.14.185 4.14.186 4.14.187 4.14.188 4.19.120 4.19.129 4.19.130 4.19.131 4.19.132 4.19.133 5.4.38 5.4.48 5.4.49 5.4.50 5.4.51 5.4.52 5.6.19 5.7.4 5.7.5 5.7.6 5.7.7 5.7.8 5.7.9: Full sources including the Gentoo patchset for the 5.7 kernel tree
 sys-kernel/git-sources 5.8_rc1 5.8_rc2 5.8_rc3 5.8_rc4 5.8_rc5: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
@@ -17812,7 +17812,7 @@ www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r2: a free, open source web browser
 www-client/opera 69.0.3686.77: A fast and secure web browser
-www-client/opera-beta 70.0.3728.8 70.0.3728.21: A fast and secure web browser
+www-client/opera-beta 70.0.3728.8 70.0.3728.21 70.0.3728.46: A fast and secure web browser
 www-client/opera-developer 71.0.3735.0 71.0.3742.0 71.0.3749.0: A fast and secure web browser
 www-client/otter 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
