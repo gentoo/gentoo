@@ -36,6 +36,8 @@ src_configure() {
 		$(meson_feature readline)
 		$(meson_feature sysprof profiler)
 		-Dinstalled_tests=false
+		$(meson_use !test skip_dbus_tests)
+		$(meson_use !test skip_gtk_tests)
 	)
 	meson_src_configure
 }
