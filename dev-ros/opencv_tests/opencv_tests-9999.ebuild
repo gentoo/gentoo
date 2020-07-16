@@ -1,11 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 ROS_REPO_URI="https://github.com/ros-perception/vision_opencv"
 KEYWORDS="~amd64 ~arm"
-# Be careful: It needs opencv with python support but opencv is python-single-r1
-PYTHON_COMPAT=( python2_7 )
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin
