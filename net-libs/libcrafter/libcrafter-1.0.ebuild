@@ -36,5 +36,7 @@ src_configure() {
 src_install() {
 	default
 
+	dodoc "${WORKDIR}"/${PN}-version-${PV}/README
+
 	find "${ED}" -name '*.la' -delete || die
 }
