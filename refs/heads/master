@@ -1,19 +1,13 @@
 certificate version 0.1
-pusher DF84256885283521 1594926042 +0200
-pushee git.gentoo.org:repo/gentoo.git
-nonce 1594926042-43703249b47a0fcff96b3d417895c5cfe091d4f9
+pusher 0xB17E3E84E6103C9B 1594927463 +0000
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1594927463-fbce23c84e8f64a9cf8df1032f7162b6b31771cd
 
-7ec8929d96d22493420580adf66d5cbde2d409c2 afdabf28d766bea36180c8a1e1e8bb2ca93e83aa refs/heads/master
+afdabf28d766bea36180c8a1e1e8bb2ca93e83aa 8947e26a4d6241df3d8d8278607c0ae10f5721c3 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQGTBAABCgB9FiEEx2qEUJQJjSjMiybFY5ra4jKeJA4FAl8Qo9pfFIAAAAAALgAo
-aXNzdWVyLWZwckBub3RhdGlvbnMub3BlbnBncC5maWZ0aGhvcnNlbWFuLm5ldEM3
-NkE4NDUwOTQwOThEMjhDQzhCMjZDNTYzOUFEQUUyMzI5RTI0MEUACgkQY5ra4jKe
-JA4/XQgAsnCVjFsppwByL1Mfehlw9JTWkahEE5u1PgxLq/7YuSDcO3yz92HGWrsB
-Jbzva02JcSLUGBIGN+ZKKjqm+JZyvzhKn61mJkJ2eqaaDdv8kCs+pvbuGP12Lgeo
-yuRJZhht3Pu0cJb+XrTWb1uasZbD8amhYHsL2NREjvHphj904rpi910Avib/rDm3
-tcynHMVatY8rTfhOdCM61zsBkB3N/5J2TbdDw8NdXGC9w5IFz/WoaSbbEZo8f8Ns
-YnU0Y4FDg8Nd18MMVWHhASiwtwLyDbrEZ2iR0f/C6+ZhjiJmuGt63P7OiOdVqVfW
-knTF11Y09duB0Je0JkmRx7dWwj/bog==
-=garI
+iHUEABYIAB0WIQSONjK3ErBA5VvN3hCxfj6E5hA8mwUCXxCpZwAKCRCxfj6E5hA8
+m1y6AP0cgRz67ak9bwvmaEq8kJjbDK56J2CN15ZbgiGTs25EZgEA/9a3Kme5puQz
+8t9EU/9xa5cmtbmeqtslGls0GIK0ZQg=
+=UtG0
 -----END PGP SIGNATURE-----
