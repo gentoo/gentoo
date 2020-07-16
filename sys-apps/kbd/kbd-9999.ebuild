@@ -26,7 +26,9 @@ HOMEPAGE="http://kbd-project.org/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="nls pam test"
-RESTRICT="!test? ( test )"
+#RESTRICT="!test? ( test )"
+# Upstream has strange assumptions how to run tests (see bug #732868)
+RESTRICT="test"
 
 RDEPEND="
 	app-arch/gzip
@@ -65,6 +67,8 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		# USE="test" installs .a files
+		--disable-static
 		$(use_enable nls)
 		$(use_enable pam vlock)
 		$(use_enable test tests)
@@ -77,4 +81,7 @@ src_install() {
 	docinto html
 	dodoc docs/doc/*.html
 	use pam && pamd_mimic_system vlock auth account
+
+	# USE="test" installs .la files
+	find "${ED}" -type f -name "*.la" -delete || die
 }
