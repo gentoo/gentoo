@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools git-r3
+inherit autotools
 
 DESCRIPTION="A high level C++ network packet sniffing and crafting library"
 HOMEPAGE="https://github.com/pellegre/libcrafter"
-EGIT_REPO_URI="https://github.com/pellegre/${PN}"
+SRC_URI="https://github.com/pellegre/${PN}/archive/version-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="static-libs"
 
 RDEPEND="
@@ -22,7 +22,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3_p20171019-libpcap.patch
 )
-S=${WORKDIR}/${P}/${PN}
+S=${WORKDIR}/${PN}-version-${PV}/${PN}
 
 src_prepare() {
 	default
@@ -36,7 +36,7 @@ src_configure() {
 src_install() {
 	default
 
-	dodoc "${WORKDIR}"/${P}/README
+	dodoc "${WORKDIR}"/${PN}-version-${PV}/README
 
 	find "${ED}" -name '*.la' -delete || die
 }

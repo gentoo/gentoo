@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 ROS_REPO_URI="https://github.com/ros-perception/perception_pcl"
 KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
@@ -32,8 +32,9 @@ RDEPEND="
 	sci-libs/pcl:=[qhull]
 	>=dev-ros/pcl_conversions-0.2.1-r1
 	dev-libs/boost:=[threads]
+"
+DEPEND="${RDEPEND}
 	dev-ros/pcl_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
-DEPEND="${RDEPEND}"
