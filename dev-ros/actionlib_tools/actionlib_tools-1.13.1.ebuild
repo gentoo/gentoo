@@ -10,19 +10,17 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Provides a standardized interface for interfacing with preemptable tasks"
+DESCRIPTION="Tools for dealing with actionlib"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-libs/boost:=[threads]
-	dev-ros/roscpp
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	"
-DEPEND="${RDEPEND}
-	dev-ros/rosunit[${PYTHON_USEDEP}]
-	test? ( dev-ros/rostest[${PYTHON_USEDEP}] )"
+RDEPEND=""
+DEPEND="${RDEPEND}"
 RDEPEND="${RDEPEND}
-	dev-ros/roslib[${PYTHON_USEDEP}]
+	dev-ros/rospy[${PYTHON_USEDEP}]
 	dev-ros/rostopic[${PYTHON_USEDEP}]
+	dev-ros/roslib[${PYTHON_USEDEP}]
+	dev-ros/actionlib[${PYTHON_USEDEP}]
+	dev-ros/actionlib_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
