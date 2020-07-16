@@ -1,14 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 ROS_REPO_URI="https://github.com/ros-perception/imu_pipeline"
 KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Node/nodelet combination to transform sensor_msgs::Imu data from one frame into another"
+DESCRIPTION="Transforms sensor_msgs::Imu data from one frame into another"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
@@ -23,8 +23,9 @@ RDEPEND="
 	dev-ros/tf2_ros
 	dev-ros/topic_tools
 	dev-ros/tf2_sensor_msgs
-	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-libs/boost:=
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+"
