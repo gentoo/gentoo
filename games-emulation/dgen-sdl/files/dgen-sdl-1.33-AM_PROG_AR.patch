@@ -1,0 +1,10 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -25,6 +25,7 @@
+ AC_PROG_CXXCPP
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
++AM_PROG_AR
+ AC_PROG_RANLIB
+ 
+ dnl Set the value of make, if make doesn't already.

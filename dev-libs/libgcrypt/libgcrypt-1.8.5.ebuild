@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic multilib-minimal
+inherit autotools flag-o-matic multilib-minimal toolchain-funcs
 
 DESCRIPTION="General purpose crypto library based on the code used in GnuPG"
 HOMEPAGE="http://www.gnupg.org/"
@@ -40,6 +40,7 @@ multilib_src_configure() {
 		append-cflags -Wa,--divide
 	fi
 	local myeconfargs=(
+		CC_FOR_BUILD=$(tc-getBUILD_CC)
 		--enable-noexecstack
 		$(use_enable o-flag-munging O-flag-munging)
 		$(use_enable static-libs static)

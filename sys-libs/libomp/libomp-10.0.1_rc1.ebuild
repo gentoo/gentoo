@@ -3,8 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
-inherit cmake-multilib linux-info llvm.org multiprocessing python-any-r1
+CMAKE_ECLASS=cmake
+PYTHON_COMPAT=( python3_{6..9} )
+inherit cmake-multilib linux-info llvm.org python-any-r1
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
 HOMEPAGE="https://openmp.llvm.org"
@@ -32,14 +33,11 @@ RDEPEND="
 # - sys-devel/clang provides the compiler to run tests
 DEPEND="${RDEPEND}"
 BDEPEND="dev-lang/perl
-	offload? ( virtual/pkgconfig[${MULTILIB_USEDEP}] )
+	offload? ( virtual/pkgconfig )
 	test? (
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 		>=sys-devel/clang-6
 	)"
-
-# least intrusive of all
-CMAKE_BUILD_TYPE=RelWithDebInfo
 
 python_check_deps() {
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
@@ -90,17 +88,17 @@ multilib_src_configure() {
 	use test && mycmakeargs+=(
 		# this project does not use standard LLVM cmake macros
 		-DOPENMP_LLVM_LIT_EXECUTABLE="${EPREFIX}/usr/bin/lit"
-		-DOPENMP_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
+		-DOPENMP_LIT_ARGS="$(get_lit_flags)"
 
 		-DOPENMP_TEST_C_COMPILER="$(type -P "${CHOST}-clang")"
 		-DOPENMP_TEST_CXX_COMPILER="$(type -P "${CHOST}-clang++")"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
 
-	cmake-utils_src_make check-libomp
+	cmake_build check-libomp
 }

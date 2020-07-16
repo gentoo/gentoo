@@ -84,7 +84,13 @@ RDEPEND="
 QA_PREBUILT="opt/* usr/lib*"
 S=${WORKDIR}/
 NV_KV_MAX_PLUS="5.5"
-CONFIG_CHECK="!DEBUG_MUTEXES ~!LOCKDEP ~MTRR ~SYSVIPC ~ZONE_DMA"
+CONFIG_CHECK="
+	!DEBUG_MUTEXES
+	~!LOCKDEP
+	~DRM
+	~DRM_KMS_HELPER
+	~SYSVIPC
+"
 
 pkg_pretend() {
 	use x86 && CONFIG_CHECK+=" ~HIGHMEM"
@@ -200,6 +206,7 @@ src_compile() {
 
 		emake -C "${S}"/nvidia-settings-${PV}/src \
 			CC="$(tc-getCC)" \
+			OBJCOPY="$(tc-getOBJCOPY)" \
 			DO_STRIP= \
 			GTK3_AVAILABLE=$(usex gtk3 1 0) \
 			LD="$(tc-getCC)" \

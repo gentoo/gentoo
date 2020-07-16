@@ -12,7 +12,6 @@ declare -A QT5_DOCS=(
 	[assistant]="qtassistant"
 	[bluetooth]="qtbluetooth"
 	[concurrent]="qtconcurrent"
-	[core]="qtcore qmake qtdoc"
 	[dbus]="qtdbus"
 	[declarative]="qtqml qtqmltest qtquick qtquickdialogs qtquickextras"
 	[designer]="qtdesigner qtuitools"
@@ -56,15 +55,19 @@ LICENSE="FDL-1.3"
 SLOT="5"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
-IUSE="charts datavis +html networkauth +qch script virtualkeyboard webengine"
+IUSE="charts datavis +html networkauth +qch script timeline virtualkeyboard webengine"
 REQUIRED_USE="|| ( html qch )"
 
 SRC_URI="
+	${BASE_URI}/${PV_FULL}qmake-documentation.7z
+	${BASE_URI}/${PV_FULL}qtcore-documentation.7z
+	${BASE_URI}/${PV_FULL}qtdoc-documentation.7z
 	charts? ( ${BASE_URI}.qtcharts/${PV_FULL}qtcharts-documentation.7z )
 	datavis? ( ${BASE_URI}.qtdatavis3d/${PV_FULL}qtdatavisualization-documentation.7z )
 	networkauth? ( ${BASE_URI}.qtnetworkauth/${PV_FULL}qtnetworkauth-documentation.7z )
 	script? ( ${BASE_URI}.qtscript/${PV_FULL}qtscript-documentation.7z
 		${BASE_URI}.qtscript/${PV_FULL}qtscripttools-documentation.7z )
+	timeline? ( ${BASE_URI}.qtquicktimeline/${PV_FULL}qtquicktimeline-documentation.7z )
 	virtualkeyboard? ( ${BASE_URI}.qtvirtualkeyboard/${PV_FULL}qtvirtualkeyboard-documentation.7z )
 	webengine? ( ${BASE_URI}.qtwebengine/${PV_FULL}qtwebengine-documentation.7z )
 "

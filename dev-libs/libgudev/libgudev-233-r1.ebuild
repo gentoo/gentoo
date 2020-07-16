@@ -26,7 +26,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.18
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 # Needs multilib dev-util/umockdev

@@ -173,6 +173,8 @@ src_configure() {
 
 src_test() {
 	cmake_build test-programs
+
+	myctestargs=( --disable-capture --skip-missing-programs=all --verbose )
 	cmake_src_test
 }
 

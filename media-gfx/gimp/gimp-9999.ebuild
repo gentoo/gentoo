@@ -5,8 +5,10 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 GNOME2_EAUTORECONF=yes
+VALA_MIN_API_VERSION="0.40"
+VALA_USE_DEPEND=vapigen
 
-inherit autotools git-r3 gnome2 python-single-r1 virtualx
+inherit autotools git-r3 gnome2 python-single-r1 vala virtualx
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
@@ -29,16 +31,16 @@ COMMON_DEPEND="
 	>=app-text/poppler-0.69[cairo]
 	>=app-text/poppler-data-0.4.9
 	>=dev-libs/atk-2.4.0
-	>=dev-libs/glib-2.56.0:2
+	>=dev-libs/glib-2.56.2:2
 	>=dev-libs/json-glib-1.2.6
 	dev-libs/libxml2
 	dev-libs/libxslt
 	>=gnome-base/librsvg-2.40.6:2
 	>=media-gfx/mypaint-brushes-1.3.0
-	>=media-libs/babl-0.1.74[introspection]
+	>=media-libs/babl-0.1.78[introspection,lcms,vala]
 	>=media-libs/fontconfig-2.12.4
 	>=media-libs/freetype-2.1.7
-	>=media-libs/gegl-0.4.20:0.4[cairo,introspection]
+	>=media-libs/gegl-0.4.24:0.4[cairo,introspection,lcms,vala]
 	>=media-libs/gexiv2-0.10.6
 	>=media-libs/harfbuzz-0.9.19
 	>=media-libs/lcms-2.8:2
@@ -99,6 +101,7 @@ DEPEND="
 		>=dev-util/gtk-doc-1.0
 		dev-util/gtk-doc-am
 	)
+	$(vala_depend)
 "
 
 DOCS=( "AUTHORS" "HACKING" "NEWS" "README" "README.i18n" )
@@ -124,6 +127,8 @@ src_prepare() {
 	fi
 
 	gnome2_src_prepare  # calls eautoreconf
+
+	vala_src_prepare
 
 	sed 's:-DGIMP_protect_DISABLE_DEPRECATED:-DGIMP_DISABLE_DEPRECATED:g' -i configure || die #615144
 	fgrep -q GIMP_DISABLE_DEPRECATED configure || die #615144, self-test
@@ -156,6 +161,7 @@ src_configure() {
 		--with-appdata-test
 		--with-bug-report-url=https://bugs.gentoo.org/
 		--with-xmc
+		--with-vala
 		--without-libbacktrace
 		--without-webkit
 		--without-xvfb-run

@@ -38,6 +38,7 @@ esac
 EXPORT_FUNCTIONS pkg_setup
 
 # @ECLASS-VARIABLE: ADA_DEPS
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated Ada dependency string for all
 # implementations listed in ADA_COMPAT.

@@ -9,8 +9,8 @@ PYTHON_REQ_USE="threads(+)"
 inherit waf-utils multilib-minimal python-single-r1
 
 DESCRIPTION="A simple database API"
-HOMEPAGE="http://tdb.samba.org/"
-SRC_URI="http://samba.org/ftp/tdb/${P}.tar.gz"
+HOMEPAGE="https://tdb.samba.org/"
+SRC_URI="https://samba.org/ftp/tdb/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

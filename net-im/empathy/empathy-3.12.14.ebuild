@@ -3,7 +3,7 @@
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6..8} )
 
 inherit gnome2 python-any-r1 virtualx
 

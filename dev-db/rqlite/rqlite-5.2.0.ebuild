@@ -6,7 +6,7 @@ inherit go-module
 EGIT_COMMIT=77863e5a13110f1fca87b6fce84a7169c3aa58f5
 
 DESCRIPTION="Replicated SQLite using the Raft consensus protocol"
-HOMEPAGE="https://github.com/rqlite/rqlite http://www.philipotoole.com/tag/rqlite/"
+HOMEPAGE="https://github.com/rqlite/rqlite https://www.philipotoole.com/tag/rqlite/"
 
 EGO_SUM=(
 	"github.com/Bowery/prompt v0.0.0-20190916142128-fa8279994f75"

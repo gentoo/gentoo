@@ -24,7 +24,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 BDEPEND="
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 src_prepare() {

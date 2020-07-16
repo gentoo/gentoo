@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="examples opengl"
 
 RDEPEND="
@@ -28,7 +28,13 @@ RDEPEND="
 	>=virtual/opencl-2"
 DEPEND="${RDEPEND}"
 
-distutils_enable_tests pytest
+# The test suite fails if there are no OpenCL platforms available, and
+# even if there is one (which requires the presence of both an OpenCL
+# runtime *and* hardware supported by it - simply emerging any runtime
+# is not enough) the vast majority of tests end up skipped because by
+# default the portage user hasn't got sufficient privileges to talk
+# to the GPU.
+RESTRICT="test"
 
 python_configure_all() {
 	local myconf=()
@@ -39,11 +45,6 @@ python_configure_all() {
 	"${EPYTHON}" configure.py \
 		--cl-pretend-version=1.2 \
 		"${myconf[@]}"
-}
-
-python_test() {
-	cd "${S}/test" || die
-	pytest -vv || die "Testsuite failed under ${EPYTHON}"
 }
 
 python_install_all() {

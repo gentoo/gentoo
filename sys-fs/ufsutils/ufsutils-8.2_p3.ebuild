@@ -3,7 +3,7 @@
 
 EAPI=4
 
-inherit eutils toolchain-funcs
+inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="FFS/UFS/UFS2 filesystem utilities from FreeBSD"
 HOMEPAGE="http://packages.debian.org/source/sid/ufsutils"
@@ -38,6 +38,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# globals are defined in header files and reused in multiple final
+	# binaries. bug #706696
+	append-cflags -fcommon
+
 	tc-export AR CC
 }
 

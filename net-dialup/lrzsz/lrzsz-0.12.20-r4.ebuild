@@ -22,6 +22,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-automake-1.12.patch
 	"${FILESDIR}"/${P}-automake-1.13.patch
 	"${FILESDIR}"/${P}-gettext-0.20.patch
+	"${FILESDIR}"/${P}-AR.patch
 )
 
 DOCS=( AUTHORS COMPATABILITY ChangeLog NEWS \

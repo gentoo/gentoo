@@ -32,6 +32,7 @@ RESTRICT="test"
 RDEPEND="
 	!app-admin/eselect-boost
 	!dev-libs/boost-numpy
+	!<dev-libs/leatherman-1.12.0-r1
 	bzip2? ( app-arch/bzip2:=[${MULTILIB_USEDEP}] )
 	icu? ( >=dev-libs/icu-3.6:=[${MULTILIB_USEDEP}] )
 	!icu? ( virtual/libiconv[${MULTILIB_USEDEP}] )

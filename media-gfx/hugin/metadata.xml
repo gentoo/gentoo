@@ -5,6 +5,10 @@
 		<email>dilfridge@gentoo.org</email>
 		<name>Andreas K. Huettel</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>maekke@gentoo.org</email>
+		<name>Markus Meier</name>
+	</maintainer>
 	<use>
 		<flag name="sift">automatically align images with <pkg>media-gfx/autopano-sift-C</pkg></flag>
 	</use>

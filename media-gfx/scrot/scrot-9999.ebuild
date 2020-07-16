@@ -15,7 +15,7 @@ KEYWORDS=""
 RDEPEND="
 	>=media-libs/giblib-1.2.3
 	x11-libs/libX11
-	x11-libs/libXcursor
+	x11-libs/libXcomposite
 	x11-libs/libXfixes
 	|| (
 		media-libs/imlib2[gif]

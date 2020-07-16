@@ -92,8 +92,8 @@ src_unpack() {
 
 		if use fcitx4; then
 			local EGIT_SUBMODULES=()
-			git-r3_fetch https://gitlab.com/fcitx/mozc.git refs/heads/fcitx
-			git-r3_checkout https://gitlab.com/fcitx/mozc.git "${WORKDIR}/fcitx-mozc"
+			git-r3_fetch https://github.com/fcitx/mozc refs/heads/fcitx
+			git-r3_checkout https://github.com/fcitx/mozc "${WORKDIR}/fcitx-mozc"
 		fi
 	else
 		unpack ${P}.tar.gz

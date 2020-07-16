@@ -14,6 +14,7 @@ DESCRIPTION="Multi-Language Management"
 HOMEPAGE="http://libre.adacore.com/"
 SRC_URI="
 	https://community.download.adacore.com/v1/408ec35c3bb86bd227db3da55d3e1e0c572a56e3?filename=${MYP}.tar.gz
+		-> ${MYP}.tar.gz
 	https://community.download.adacore.com/v1/c799502295baf074ad17b48c50f621879c392c57?filename=${XMLADA}.tar.gz
 		-> ${XMLADA}.tar.gz"
 LICENSE="GPL-3"

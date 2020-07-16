@@ -1,10 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
-
 inherit cmake desktop qmake-utils xdg
 
 DESCRIPTION="Video editor designed for simple cutting, filtering and encoding tasks"
@@ -17,7 +16,8 @@ SLOT="2.7"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug nls nvenc opengl qt5 sdl vaapi vdpau xv"
 
-COMMON_DEPEND="
+BDEPEND="qt5? ( dev-qt/linguist-tools:5 )"
+DEPEND="
 	~media-libs/avidemux-core-${PV}:${SLOT}[nls?,sdl?,vaapi?,vdpau?,xv?,nvenc?]
 	nvenc? ( amd64? ( media-video/nvidia_video_sdk:0 ) )
 	opengl? ( virtual/opengl:0 )
@@ -30,10 +30,7 @@ COMMON_DEPEND="
 	)
 	vaapi? ( x11-libs/libva:0= )
 "
-DEPEND="${COMMON_DEPEND}
-	qt5? ( dev-qt/linguist-tools:5 )
-"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	nls? ( virtual/libintl:0 )
 	!<media-video/avidemux-${PV}
 "
@@ -42,6 +39,8 @@ PDEPEND="~media-libs/avidemux-plugins-${PV}:${SLOT}[opengl?,qt5?]"
 S="${WORKDIR}/avidemux2-${PV}"
 
 src_prepare() {
+	eapply "${FILESDIR}"/${P}-qt-5.15.patch
+
 	processes="buildCli:avidemux/cli"
 	use qt5 && processes+=" buildQt4:avidemux/qt4"
 

@@ -1,0 +1,42 @@
+Makes the test suite run in src_test(), not src_compile(). Note that
+at the moment all the output from the test runner goes into the CTest log
+and all that src_test() shows is the overall status of the execution
+of the runner.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,8 +1,6 @@
+ cmake_minimum_required (VERSION 3.1 FATAL_ERROR)
+ 
+-if (NOT DEFINED RUN_TEST_SUITE)
+-option (RUN_TEST_SUITE "run test suite after install" ON)
+-endif (NOT DEFINED RUN_TEST_SUITE)
++include(CTest)
+ 
+ add_subdirectory(Source/GmmLib)
+ 
+--- a/Source/GmmLib/CMakeLists.txt
++++ b/Source/GmmLib/CMakeLists.txt
+@@ -495,7 +495,7 @@
+ 		_X64)
+ endif()
+ 
+-if(NOT DEFINED RUN_TEST_SUITE OR RUN_TEST_SUITE)
++if(BUILD_TESTING)
+     add_subdirectory(ULT)
+ endif()
+ 
+--- a/Source/GmmLib/ULT/CMakeLists.txt
++++ b/Source/GmmLib/ULT/CMakeLists.txt
+@@ -151,9 +151,7 @@
+ 
+ add_custom_target(Run_ULT ALL DEPENDS GMMULT)
+ 
+-add_custom_command(
+-    TARGET Run_ULT
+-    POST_BUILD
+-    COMMAND echo running ULTs
++add_test(
++    NAME Run_ULT
+     COMMAND "${CMAKE_COMMAND}" -E env "LD_LIBRARY_PATH=$<TARGET_FILE_DIR:igfx_gmmumd_dll>" ${CMAKE_CFG_INTDIR}/${EXE_NAME} --gtest_filter=CTest*
+ )

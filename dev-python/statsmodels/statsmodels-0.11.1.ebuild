@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1 eutils
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
@@ -59,12 +59,19 @@ python_prepare_all() {
 	export VARTEXFONTS="${T}"/fonts
 	export MPLCONFIGDIR="${T}"
 	printf -- 'backend : Agg\n' > "${MPLCONFIGDIR}"/matplotlibrc || die
+
+	# these tests require internet
+	sed -i -e 's:test_results_on_the:_&:' \
+		statsmodels/stats/tests/test_dist_dependant_measures.py || die
+
 	distutils-r1_python_prepare_all
 }
 
 python_test() {
 	pushd "${BUILD_DIR}" >/dev/null || die
-	"${EPYTHON}" -c 'import statsmodels; statsmodels.test()' \
+	"${EPYTHON}" -c '
+import statsmodels
+statsmodels.test(extra_args=["-vv"], exit=True)' \
 		|| die "tests fail with ${EPYTHON}"
 	popd >/dev/null || die
 }

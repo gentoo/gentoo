@@ -14,8 +14,14 @@ SRC_URI="https://aubio.org/pub/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0/5"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ppc64 sparc x86"
 IUSE="doc double-precision examples ffmpeg fftw jack libsamplerate sndfile python test"
+
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	?? ( double-precision libsamplerate )
+	doc? ( python )
+"
+
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -29,14 +35,12 @@ RDEPEND="
 	)
 	sndfile? ( media-libs/libsndfile )
 "
+
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	app-text/txt2man
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
-"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	?? ( double-precision libsamplerate )
 "
 
 DOCS=( AUTHORS ChangeLog README.md )
@@ -48,7 +52,10 @@ PATCHES=(
 
 src_prepare() {
 	default
+
 	sed -e "s:doxygen:doxygen_disabled:" -i wscript || die
+
+	sed -e "s/, 'sphinx.ext.intersphinx'//" -i doc/conf.py || die
 
 	if ! use test; then
 		sed -e "/bld.*tests/d" -i wscript || die
@@ -81,14 +88,20 @@ src_configure() {
 src_compile() {
 	waf-utils_src_compile --notests
 
-	if use doc; then
-		cd "${S}"/doc || die
-		emake dirhtml
-	fi
-
 	if use python ; then
 		cd "${PYTHON_SRC_DIR}" || die
 		distutils-r1_src_compile
+
+		if use doc ; then
+			# No API function like distutils_install_for_testing available for this use case
+			pushd "${S}"/doc &>/dev/null || die
+			python_setup
+			LD_LIBRARY_PATH="${S}/build/src" \
+			PYTHONPATH="${S%%/}-${EPYTHON/./_}/lib${PYTHONPATH:+:${PYTHONPATH}}" \
+			emake dirhtml
+		fi
+
+		cd "${S}" || die
 	fi
 }
 

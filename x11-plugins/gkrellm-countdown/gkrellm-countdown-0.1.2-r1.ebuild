@@ -7,7 +7,7 @@ inherit gkrellm-plugin toolchain-funcs
 
 DESCRIPTION="A simple countdown clock for GKrellM2"
 SRC_URI="http://oss.pugsplace.net/${P}.tar.gz"
-HOMEPAGE="http://freecode.com/projects/gkrellm-countdown"
+HOMEPAGE="http://freshmeat.sourceforge.net/projects/gkrellm-countdown"
 
 LICENSE="GPL-2"
 SLOT="0"

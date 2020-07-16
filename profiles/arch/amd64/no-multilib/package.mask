@@ -19,7 +19,6 @@ mail-client/novell-groupwise-client
 
 # AMD64 Team <amd64@gentoo.org>
 # Mask packages that rely on amd64 multilib
->=app-i18n/atokx3-3.0.0
 app-accessibility/mbrola
 app-arch/stuffit
 app-benchmarks/cpuburn

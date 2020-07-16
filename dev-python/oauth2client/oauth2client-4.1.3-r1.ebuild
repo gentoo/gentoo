@@ -2,21 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
 DESCRIPTION="Library for accessing resources protected by OAuth 2.0"
-HOMEPAGE="https://github.com/google/oauth2client"
-SRC_URI="https://github.com/google/oauth2client/archive/v${PV/_p/-post}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/googleapis/oauth2client"
+SRC_URI="https://github.com/googleapis/oauth2client/archive/v${PV/_p/-post}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/${P/_p/-post}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="test"
-RESTRICT="!test? ( test )"
-REQUIRED_USE="|| ( $(python_gen_useflags 'python*') )"
+KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	>=dev-python/httplib2-0.9.1[${PYTHON_USEDEP}]
@@ -27,12 +24,14 @@ RDEPEND="
 	dev-python/keyring[${PYTHON_USEDEP}]
 	!<=dev-python/google-api-python-client-1.1[${PYTHON_USEDEP}]
 "
-BDEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( ${RDEPEND}
+BDEPEND="
+	test? (
+		dev-python/flask[${PYTHON_USEDEP}]
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
 	)
 "
+
+distutils_enable_tests nose
 
 PATCHES=(
 	"${FILESDIR}/oauth2client-4.1.3-py38.patch"

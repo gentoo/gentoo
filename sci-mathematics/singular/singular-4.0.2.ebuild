@@ -14,9 +14,9 @@ MY_DIR=$(replace_all_version_separators '-' ${MY_DIR2})
 MY_SHARE_DIR="${WORKDIR}"/share/
 
 DESCRIPTION="Computer algebra system for polynomial computations"
-HOMEPAGE="http://www.singular.uni-kl.de/"
-SRC_URI="http://www.mathematik.uni-kl.de/ftp/pub/Math/${MY_PN}/SOURCES/${MY_DIR}/${PN}-${MY_PV}.tar.gz
-		 http://www.mathematik.uni-kl.de/ftp/pub/Math/${MY_PN}/SOURCES/${MY_DIR}/${PN}-${MY_PV}-share.tar.gz"
+HOMEPAGE="https://www.singular.uni-kl.de/"
+SRC_URI="https://www.mathematik.uni-kl.de/ftp/pub/Math/${MY_PN}/SOURCES/${MY_DIR}/${PN}-${MY_PV}.tar.gz
+		 https://www.mathematik.uni-kl.de/ftp/pub/Math/${MY_PN}/SOURCES/${MY_DIR}/${PN}-${MY_PV}-share.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

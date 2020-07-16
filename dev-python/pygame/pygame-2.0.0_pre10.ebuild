@@ -22,7 +22,7 @@ IUSE="doc examples midi opengl test X"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]
-	>=media-libs/sdl2-image-1.2.2[jpeg,png]
+	>=media-libs/sdl2-image-1.2.2
 	>=media-libs/sdl2-mixer-1.2.4
 	>=media-libs/sdl2-ttf-2.0.6
 	>=media-libs/smpeg2-0.4.4-r1
@@ -34,9 +34,15 @@ DEPEND="${RDEPEND}
 		media-libs/sdl2-image[gif,jpeg,png]
 		media-libs/sdl2-mixer[mp3,vorbis,wav]
 	)"
+# fontconfig used for fc-list
+RDEPEND+="
+	media-libs/fontconfig"
 # util-linux provides script
 BDEPEND="
-	test? ( sys-apps/util-linux )"
+	test? (
+		media-libs/fontconfig
+		sys-apps/util-linux
+	)"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-py39.patch

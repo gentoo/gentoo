@@ -17,8 +17,10 @@ LICENSE="MIT"
 
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 SLOT="$(ver_cut 1)"
-IUSE="test"
+IUSE="json test"
 
 # Tests require all supported HTTP libraries to be present, and it is
 # not possible to avoid some of them without very extensive patches.
 RESTRICT="test"
+
+ruby_add_rdepend "json? ( dev-ruby/multi_json )"

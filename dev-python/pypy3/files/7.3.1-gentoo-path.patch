@@ -18,7 +18,7 @@ index 6fe62be..a4e9f0d 100644
 +    'gentoo': {
 +        'purelib': '$base/site-packages',
 +        'platlib': '$base/site-packages',
-+        'headers': '$base/include',
++        'headers': '$base/include/$dist_name',
 +        'scripts': '@EPREFIX@/usr/bin',
 +        'data'   : '@EPREFIX@/usr',
 +        },

@@ -12,10 +12,10 @@ IUSE="nls minimal pax_kernel xen doc"
 inherit autotools eutils linux-info mono-env flag-o-matic pax-utils multilib-minimal
 
 DESCRIPTION="Mono runtime and class libraries, a C# compiler/interpreter"
-HOMEPAGE="http://www.mono-project.com/Main_Page"
+HOMEPAGE="https://mono-project.com"
 LICENSE="MIT LGPL-2.1 GPL-2 BSD-4 NPL-1.1 Ms-PL GPL-2-with-linking-exception IDPL"
 
-SRC_URI="http://download.mono-project.com/sources/mono/${P}.tar.xz"
+SRC_URI="https://download.mono-project.com/sources/mono/${P}.tar.xz"
 
 #Note: mono works incorrect with older versions of libgdiplus
 #details on dotnet overlay issue: https://github.com/gentoo/dotnet/issues/429

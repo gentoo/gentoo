@@ -109,7 +109,10 @@ RDEPEND="${COMMON_DEPEND}
 RESTRICT+=" test"
 # bug 366505
 
-PATCHES=( "${FILESDIR}/${PN}-6.3.0-cmake.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-6.3.0-cmake.patch"
+	"${FILESDIR}/${P}-qt-5.15.patch" # bug 730298
+)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp

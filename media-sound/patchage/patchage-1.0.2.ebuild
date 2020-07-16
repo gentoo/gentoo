@@ -19,7 +19,7 @@ RDEPEND=">=dev-cpp/glibmm-2.14:2
 	>=dev-cpp/gtkmm-2.11.12:2.4
 	>=dev-cpp/libglademm-2.6.0:2.4
 	dev-cpp/libgnomecanvasmm:2.6
-	>=media-libs/ganv-1.4.0
+	>=media-libs/ganv-1.5.2
 	virtual/jack
 	alsa? ( media-libs/alsa-lib )
 	jack-dbus? ( dev-libs/dbus-glib
@@ -30,6 +30,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=( AUTHORS NEWS README.md )
+
+#PATCHES=(
+#	"${FILESDIR}/${P}-string.patch"
+#)
 
 src_configure() {
 	waf-utils_src_configure \

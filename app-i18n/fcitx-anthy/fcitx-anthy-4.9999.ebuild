@@ -1,4 +1,4 @@
-# Copyright 2013-2019 Gentoo Authors
+# Copyright 2013-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -8,11 +8,11 @@ inherit cmake-utils xdg-utils
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://gitlab.com/fcitx/fcitx-anthy.git"
+	EGIT_REPO_URI="https://github.com/fcitx/fcitx-anthy"
 fi
 
 DESCRIPTION="Japanese Anthy input methods for Fcitx"
-HOMEPAGE="https://fcitx-im.org/ https://gitlab.com/fcitx/fcitx-anthy"
+HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx-anthy"
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	SRC_URI=""
 else

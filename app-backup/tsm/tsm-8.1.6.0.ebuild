@@ -34,8 +34,8 @@ LICENSE="Apache-1.1 Apache-2.0 JDOM BSD-2 CC-PD Boost-1.0 MIT CPL-1.0 HPND Exola
 	|| ( BSD GPL-2+ ) gSOAP libpng tsm"
 
 SLOT="0"
-#KEYWORDS="-* ~amd64"
-IUSE="acl java +tsm_cit +tsm_hw"
+KEYWORDS="-* ~amd64"
+IUSE="acl java +tsm-cit +tsm-hw"
 QA_PREBUILT="*"
 
 # not available (yet?)
@@ -86,10 +86,10 @@ src_unpack() {
 	for rpm in *.rpm; do
 		case ${rpm} in
 			TIVsm-APIcit.*|TIVsm-BAcit.*)
-				use tsm_cit && rpms="${rpms} ./${rpm}"
+				use tsm-cit && rpms="${rpms} ./${rpm}"
 				;;
 			TIVsm-BAhdw.*)
-				use tsm_hw && rpms="${rpms} ./${rpm}"
+				use tsm-hw && rpms="${rpms} ./${rpm}"
 				;;
 			TIVsm-JBB.*|*-filepath-*)
 				# "journal based backup" for all filesystems

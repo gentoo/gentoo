@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
-inherit cmake-utils llvm llvm.org multilib-minimal multiprocessing \
-	pax-utils python-single-r1 toolchain-funcs
+PYTHON_COMPAT=( python3_{6..9} )
+inherit cmake llvm llvm.org multilib-minimal pax-utils \
+	python-single-r1 toolchain-funcs
 
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
@@ -15,8 +15,6 @@ LLVM_TEST_COMPONENTS=(
 	llvm/utils/{lit,llvm-lit,unittest}
 )
 llvm.org_set_globals
-# We need extra level of indirection for CLANG_RESOURCE_DIR
-S=${WORKDIR}/x/y/clang
 
 # Keep in sync with sys-devel/llvm
 ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC AVR VE )
@@ -45,7 +43,7 @@ RDEPEND="
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	doc? ( dev-python/sphinx )
+	dev-python/sphinx
 	xml? ( virtual/pkgconfig )
 	${PYTHON_DEPS}"
 RDEPEND="${RDEPEND}
@@ -56,9 +54,6 @@ PDEPEND="
 	~sys-devel/clang-runtime-${PV}
 	default-compiler-rt? ( =sys-libs/compiler-rt-${PV%_*}* )
 	default-libcxx? ( >=sys-libs/libcxx-${PV} )"
-
-# least intrusive of all
-CMAKE_BUILD_TYPE=RelWithDebInfo
 
 # Multilib notes:
 # 1. ABI_* flags control ABIs libclang* is built for only.
@@ -71,17 +66,25 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 # Therefore: use sys-devel/clang[${MULTILIB_USEDEP}] only if you need
 # multilib clang* libraries (not runtime, not wrappers).
 
+PATCHES=(
+	# fix simultaneous linking to .a and dylib
+	"${FILESDIR}"/10.0.1/0003-clang-tools-extra-Prevent-linking-to-duplicate-.a-li.patch
+	"${FILESDIR}"/10.0.1/0004-clang-Avoid-linking-c-index-test-to-duplicate-librar.patch
+)
+
 pkg_setup() {
 	LLVM_MAX_SLOT=${SLOT} llvm_pkg_setup
 	python-single-r1_pkg_setup
 }
 
-src_unpack() {
-	# create extra parent dir for CLANG_RESOURCE_DIR
+src_prepare() {
+	# create extra parent dir for relative CLANG_RESOURCE_DIR access
 	mkdir -p x/y || die
-	cd x/y || die
-	llvm.org_src_unpack
-	mv clang-tools-extra clang/tools/extra || die
+	BUILD_DIR=${WORKDIR}/x/y/clang
+
+	llvm.org_src_prepare
+
+	mv ../clang-tools-extra tools/extra || die
 }
 
 check_distribution_components() {
@@ -104,6 +107,14 @@ check_distribution_components() {
 						;;
 					# static libraries
 					clang*|findAllSymbols)
+						continue
+						;;
+					# headers for clang-tidy static library
+					clang-tidy-headers)
+						continue
+						;;
+					# conditional to USE=doc
+					docs-clang-html|docs-clang-tools-html)
 						continue
 						;;
 				esac
@@ -184,13 +195,15 @@ get_distribution_components() {
 			find-all-symbols
 			modularize
 			pp-trace
+
+			# manpages
+			docs-clang-man
+			docs-clang-tools-man
 		)
 
 		use doc && out+=(
 			docs-clang-html
-			docs-clang-man
 			docs-clang-tools-html
-			docs-clang-tools-man
 		)
 
 		use static-analyzer && out+=(
@@ -239,18 +252,16 @@ multilib_src_configure() {
 		-DCLANG_ENABLE_STATIC_ANALYZER=$(usex static-analyzer)
 	)
 	use test && mycmakeargs+=(
-		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/x/y/llvm"
-		-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
+		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
+		-DLLVM_LIT_ARGS="$(get_lit_flags)"
 	)
 
 	if multilib_is_native_abi; then
 		mycmakeargs+=(
 			# normally copied from LLVM_INCLUDE_DOCS but the latter
 			# is lacking value in stand-alone builds
-			-DCLANG_INCLUDE_DOCS=$(usex doc)
-			-DCLANG_TOOLS_EXTRA_INCLUDE_DOCS=$(usex doc)
-		)
-		use doc && mycmakeargs+=(
+			-DCLANG_INCLUDE_DOCS=ON
+			-DCLANG_TOOLS_EXTRA_INCLUDE_DOCS=ON
 			-DLLVM_BUILD_DOCS=ON
 			-DLLVM_ENABLE_SPHINX=ON
 			-DCLANG_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
@@ -278,15 +289,19 @@ multilib_src_configure() {
 		)
 	fi
 
+	# LLVM can have very high memory consumption while linking,
+	# exhausting the limit on 32-bit linker executable
+	use x86 && local -x LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory"
+
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
-	cmake-utils_src_configure
+	cmake_src_configure
 
 	multilib_is_native_abi && check_distribution_components
 }
 
 multilib_src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	# provide a symlink for tests
 	if [[ ! -L ${WORKDIR}/lib/clang ]]; then
@@ -298,9 +313,9 @@ multilib_src_compile() {
 multilib_src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
-	cmake-utils_src_make check-clang
+	cmake_build check-clang
 	multilib_is_native_abi &&
-		cmake-utils_src_make check-clang-tools check-clangd
+		cmake_build check-clang-tools check-clangd
 }
 
 src_install() {
@@ -356,7 +371,7 @@ src_install() {
 }
 
 multilib_src_install() {
-	DESTDIR=${D} cmake-utils_src_make install-distribution
+	DESTDIR=${D} cmake_build install-distribution
 
 	# move headers to /usr/include for wrapping & ABI mismatch checks
 	# (also drop the version suffix from runtime headers)

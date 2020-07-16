@@ -1,0 +1,11 @@
+--- a/include/os.h
++++ b/include/os.h
+@@ -254,7 +254,7 @@
+ typedef int                     int32_t;
+ typedef unsigned int            u_int32_t;
+ 
+-# if __GNUC__ >= 2
++# if __GLIBC__ >= 2
+ 
+ #  ifndef int64_t
+ typedef long long               int64_t;

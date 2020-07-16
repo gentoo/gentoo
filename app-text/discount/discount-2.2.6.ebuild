@@ -15,6 +15,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="minimal test"
 RESTRICT="!test? ( test )"
 
+PATCHES=( "${FILESDIR}"/gethopt-undefined.patch )
+
 src_prepare() {
 	default
 

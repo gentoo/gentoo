@@ -143,8 +143,8 @@ acct-user_add_deps() {
 # << Helper functions >>
 
 # @FUNCTION: eislocked
-# @INTERNAL
 # @USAGE: <user>
+# @INTERNAL
 # @DESCRIPTION:
 # Check whether the specified user account is currently locked.
 # Returns 0 if it is locked, 1 if it is not, 2 if the platform
@@ -176,8 +176,8 @@ eislocked() {
 }
 
 # @FUNCTION: elockuser
-# @INTERNAL
 # @USAGE: <user>
+# @INTERNAL
 # @DESCRIPTION:
 # Lock the specified user account, using the available platform-specific
 # functions.  This should prevent any login to the account.
@@ -221,8 +221,8 @@ elockuser() {
 }
 
 # @FUNCTION: eunlockuser
-# @INTERNAL
 # @USAGE: <user>
+# @INTERNAL
 # @DESCRIPTION:
 # Unlock the specified user account, using the available platform-
 # specific functions.

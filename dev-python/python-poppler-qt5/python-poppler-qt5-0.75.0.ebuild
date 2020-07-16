@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="Python binding for libpoppler-qt5"
-HOMEPAGE="https://github.com/wbsoft/python-poppler-qt5"
-SRC_URI="https://github.com/wbsoft/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/frescobaldi/python-poppler-qt5"
+SRC_URI="https://github.com/frescobaldi/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

@@ -1,11 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 ROS_REPO_URI="https://github.com/ros-visualization/visualization_tutorials"
 KEYWORDS="~amd64"
 ROS_SUBDIR=${PN}
-PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 
@@ -17,10 +16,12 @@ IUSE=""
 RDEPEND="
 	dev-ros/roscpp
 	dev-ros/interactive_markers
-	dev-ros/visualization_msgs[${CATKIN_MESSAGES_CXX_USEDEP},${CATKIN_MESSAGES_PYTHON_USEDEP}]
+	dev-ros/visualization_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/tf[${PYTHON_USEDEP}]
 	dev-ros/rospy[${PYTHON_USEDEP}]
 	dev-ros/roslib[${PYTHON_USEDEP}]
 	dev-libs/boost:=
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-ros/visualization_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+"

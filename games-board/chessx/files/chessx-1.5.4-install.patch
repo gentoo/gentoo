@@ -1,0 +1,27 @@
+Index: chessx-1.5.4/chessx.pro
+===================================================================
+--- chessx-1.5.4.orig/chessx.pro
++++ chessx-1.5.4/chessx.pro
+@@ -546,6 +546,22 @@ macx {
+     data/timeseal/mac/timeseal
+ }
+ 
++unix:!macx {
++  isEmpty(PREFIX) {
++    PREFIX = /usr
++  }
++  target.path = $$PREFIX/bin
++  desktop.path = $$PREFIX/share/applications
++  desktop.files = unix/chessx.desktop
++  icon.path = $$PREFIX/share/pixmaps
++  icon.files = data/images/chessx.png
++  data.path = $$PREFIX/share/chessx
++  data.files = data
++  lang.path = $$PREFIX/share/chessx/data/lang
++  lang.files = i18n/*.qm
++  INSTALLS += target desktop icon data lang
++}
++
+ win32 {
+   OTHER_FILES += \
+     src/chessx.rc \

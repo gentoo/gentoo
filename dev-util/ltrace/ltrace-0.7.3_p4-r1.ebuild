@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ppc ~ppc64 ~sparc x86"
 IUSE="debug selinux test unwind"
 
 RDEPEND="virtual/libelf:=
@@ -45,6 +45,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.7.3-no-error.h-2.patch #713428
 	"${FILESDIR}"/${PN}-0.7.3-no-REG_NOERROR.patch #713428
 	"${FILESDIR}"/${PN}-0.7.3-pid_t.patch #713428
+	"${FILESDIR}"/${PN}-0.7.3-tuple-tests.patch
+	"${FILESDIR}"/${PN}-0.7.3-CXX-for-tests.patch
 )
 
 src_prepare() {

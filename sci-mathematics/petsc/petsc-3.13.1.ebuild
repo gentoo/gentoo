@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit flag-o-matic fortran-2 python-any-r1 toolchain-funcs
 
 DESCRIPTION="Portable, Extensible Toolkit for Scientific Computation"
-HOMEPAGE="http://www.mcs.anl.gov/petsc/"
+HOMEPAGE="https://www.mcs.anl.gov/petsc/"
 SRC_URI="http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${P}.tar.gz"
 
 LICENSE="BSD-2"

@@ -14,22 +14,21 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
 	app-arch/unzip
 	test? (
-		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/pip[${PYTHON_USEDEP}]
-		>=dev-python/pytest-3.7.0[${PYTHON_USEDEP}]
-		dev-python/pytest-fixture-config[${PYTHON_USEDEP}]
-		dev-python/pytest-virtualenv[${PYTHON_USEDEP}]
-		dev-python/wheel[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
-			dev-python/futures[${PYTHON_USEDEP}]
-		' -2)
+			dev-python/mock[${PYTHON_USEDEP}]
+			dev-python/pip[${PYTHON_USEDEP}]
+			>=dev-python/pytest-3.7.0[${PYTHON_USEDEP}]
+			dev-python/pytest-fixture-config[${PYTHON_USEDEP}]
+			dev-python/pytest-virtualenv[${PYTHON_USEDEP}]
+			dev-python/wheel[${PYTHON_USEDEP}]
+		' -3)
 	)
 "
 PDEPEND="
@@ -63,6 +62,11 @@ python_prepare_all() {
 }
 
 python_test() {
+	if ! python_is_python3; then
+		einfo "Tests are skipped on py2 to untangle deps"
+		return
+	fi
+
 	distutils_install_for_testing
 	# test_easy_install raises a SandboxViolation due to ${HOME}/.pydistutils.cfg
 	# It tries to sandbox the test in a tempdir

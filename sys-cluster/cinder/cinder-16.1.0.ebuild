@@ -17,7 +17,7 @@ if [[ ${PV} == *9999 ]];then
 else
 	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/cinder/ussuri/cinder.conf.sample -> cinder.conf.sample-${PV}
 	https://tarballs.openstack.org/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 LICENSE="Apache-2.0"

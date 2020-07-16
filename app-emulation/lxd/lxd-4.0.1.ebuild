@@ -12,7 +12,7 @@ SRC_URI="https://linuxcontainers.org/downloads/${PN}/${P}.tar.gz"
 # Needs to include licenses for all bundled programs.
 LICENSE="Apache-2.0 BSD BSD-2 LGPL-3 MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="+ipv6 nls"
 
 DEPEND="app-arch/xz-utils
@@ -66,6 +66,8 @@ QA_PREBUILT="/usr/lib/lxd/libdqlite.so.0.0.1
 
 EGO_PN="github.com/lxc/lxd"
 GOPATH="${S}/_dist" # this seems to reset every now and then, though
+
+PATCHES=( "${FILESDIR}"/lxd-4.0.1-clang.patch )
 
 common_op() {
 	local i

@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit autotools
+
 DESCRIPTION="A mouse friendly tiling window manager"
 HOMEPAGE="https://www.hzog.net/index.php/Main_Page"
 SRC_URI="http://www.hzog.net/pub/${PN}-1.9.9-r1.tar.gz"
@@ -27,6 +29,11 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=x11-base/xcb-proto-1.12-r2
 	x11-base/xorg-proto"
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_install() {
 	default

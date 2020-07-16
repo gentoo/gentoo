@@ -105,6 +105,7 @@ src_configure() {
 		$(use_enable debug debugging)
 		$(use_enable profile profiling)
 	)
+	export VARTEXFONTS="${T}/fonts"  # https://bugs.gentoo.org/692010
 
 	econf "${myeconfargs[@]}"
 }

@@ -5,7 +5,7 @@ EAPI=7
 
 XORG_DOC=doc
 XORG_EAUTORECONF="yes"
-inherit xorg-3 multilib flag-o-matic
+inherit xorg-3 multilib flag-o-matic toolchain-funcs
 EGIT_REPO_URI="https://gitlab.freedesktop.org/xorg/xserver.git"
 
 DESCRIPTION="X.Org X servers"
@@ -15,7 +15,7 @@ if [[ ${PV} != 9999* ]]; then
 fi
 
 IUSE_SERVERS="dmx kdrive wayland xephyr xnest xorg xvfb"
-IUSE="${IUSE_SERVERS} debug elogind ipv6 libressl +libglvnd minimal selinux +suid systemd +udev unwind xcsecurity"
+IUSE="${IUSE_SERVERS} debug +elogind ipv6 libressl +libglvnd minimal selinux suid systemd +udev unwind xcsecurity"
 
 CDEPEND="libglvnd? (
 		media-libs/libglvnd[X]
@@ -162,10 +162,7 @@ pkg_setup() {
 		$(use_enable udev config-udev)
 		$(use_with doc doxygen)
 		$(use_with doc xmlto)
-		$(usex !elogind $(use_enable systemd systemd-logind) '--enable-systemd-logind')
 		$(use_with systemd systemd-daemon)
-		$(usex suid $(use_enable systemd suid-wrapper) '--disable-suid-wrapper')
-		$(usex suid $(use_enable !systemd install-setuid) '--disable-install-setuid')
 		--enable-libdrm
 		--sysconfdir="${EPREFIX}"/etc/X11
 		--localstatedir="${EPREFIX}"/var
@@ -176,7 +173,22 @@ pkg_setup() {
 		--without-dtrace
 		--without-fop
 		--with-sha1=libcrypto
+		CPP="$(tc-getPROG CPP cpp)"
 	)
+
+	if use systemd || use elogind; then
+		XORG_CONFIGURE_OPTIONS+=(
+			"--enable-systemd-logind"
+			"--disable-install-setuid"
+			"$(use_enable suid suid-wrapper)"
+		)
+	else
+		XORG_CONFIGURE_OPTIONS+=(
+			"--disable-systemd-logind"
+			"--disable-suid-wrapper"
+			"$(use_enable suid install-setuid)"
+		)
+	fi
 }
 
 src_install() {

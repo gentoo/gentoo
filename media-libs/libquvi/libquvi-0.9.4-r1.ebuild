@@ -25,7 +25,7 @@ RDEPEND="!<media-libs/quvi-0.4.0
 	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.9.1-headers-reinstall.patch )

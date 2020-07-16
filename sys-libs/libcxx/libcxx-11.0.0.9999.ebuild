@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
-inherit cmake-multilib llvm llvm.org multiprocessing python-any-r1 \
-	toolchain-funcs
+CMAKE_ECLASS=cmake
+PYTHON_COMPAT=( python3_{6..9} )
+inherit cmake-multilib llvm llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
 HOMEPAGE="https://libcxx.llvm.org/"
@@ -34,15 +34,6 @@ BDEPEND="
 
 DOCS=( CREDITS.TXT )
 
-PATCHES=(
-	# Add link flag "-Wl,-z,defs" to avoid underlinking; this is needed in a
-	# out-of-tree build.
-	"${FILESDIR}/${PN}-3.9-cmake-link-flags.patch"
-)
-
-# least intrusive of all
-CMAKE_BUILD_TYPE=RelWithDebInfo
-
 python_check_deps() {
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
@@ -57,6 +48,14 @@ pkg_setup() {
 		eerror "and try again."
 		die
 	fi
+}
+
+src_prepare() {
+	# Add link flag "-Wl,-z,defs" to avoid underlinking; this is needed in a
+	# out-of-tree build.
+	eapply "${FILESDIR}/${PN}-3.9-cmake-link-flags.patch"
+
+	llvm.org_src_prepare
 }
 
 test_compiler() {
@@ -127,21 +126,19 @@ multilib_src_configure() {
 
 	if use test; then
 		local clang_path=$(type -P "${CHOST:+${CHOST}-}clang" 2>/dev/null)
-		local jobs=${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}
-
 		[[ -n ${clang_path} ]] || die "Unable to find ${CHOST}-clang for tests"
 
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
-			-DLLVM_LIT_ARGS="-vv;-j;${jobs};--param=cxx_under_test=${clang_path}"
+			-DLLVM_LIT_ARGS="$(get_lit_flags);--param=cxx_under_test=${clang_path}"
 		)
 	fi
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_test() {
 	local -x LIT_PRESERVES_TMP=1
-	cmake-utils_src_make check-cxx
+	cmake_build check-cxx
 }
 
 # Usage: deps
@@ -187,7 +184,7 @@ gen_shared_ldscript() {
 }
 
 multilib_src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	gen_shared_ldscript
 	use static-libs && gen_static_ldscript
 }

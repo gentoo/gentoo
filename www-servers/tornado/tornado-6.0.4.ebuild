@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~s390 sparc x86"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
@@ -43,6 +43,7 @@ src_prepare() {
 
 python_test() {
 	local -x ASYNC_TEST_TIMEOUT=60
+	cd "${BUILD_DIR}/lib" || die
 	"${PYTHON}" -m tornado.test.runtests --verbose ||
 		die "tests failed under ${EPYTHON}"
 }

@@ -13,7 +13,7 @@ DESCRIPTION="REINER SCT cyberJack USB chipcard reader user space driver"
 HOMEPAGE="https://www.reiner-sct.de/"
 SRC_URI="http://kernelport.com/reiner-sct/SP$(ver_cut 5)/${MY_P}.tar.bz2"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
 IUSE="static-libs threads tools +udev +usb xml"
@@ -31,13 +31,7 @@ BDEPEND="virtual/pkgconfig"
 S="${WORKDIR}/${MY_P/_/-}"
 
 CONFIG_CHECK="~USB_SERIAL_CYBERJACK"
-
-pkg_setup() {
-	# Add workaround for GCC-10,
-	# by defining narrowing as warning like GCC-9 did.
-	# Upstream is working on that.
-	append-cxxflags -Wno-narrowing
-}
+PATCHES="${FILESDIR}/${P}-gcc10.patch"
 
 src_prepare() {
 	default

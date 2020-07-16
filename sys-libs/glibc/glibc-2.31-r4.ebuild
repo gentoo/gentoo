@@ -98,7 +98,6 @@ BDEPEND="
 	${PYTHON_DEPS}
 	>=app-misc/pax-utils-0.1.10
 	sys-devel/bison
-	!<sys-devel/bison-2.7
 	doc? ( sys-apps/texinfo )
 "
 COMMON_DEPEND="

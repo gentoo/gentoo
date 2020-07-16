@@ -30,7 +30,10 @@ DEPEND="${RDEPEND}"
 
 DOCS=( CREDITS.md README.md )
 
-PATCHES=( "${FILESDIR}/${P}-appdata-path.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-appdata-path.patch"
+	"${FILESDIR}/${P}-qt-5.15.patch" # git master
+)
 
 src_prepare() {
 	default

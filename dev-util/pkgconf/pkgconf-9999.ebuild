@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib-minimal
+inherit multilib multilib-minimal
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit autotools git-r3
@@ -38,7 +38,7 @@ RDEPEND="
 "
 
 MULTILIB_CHOST_TOOLS=(
-	/usr/bin/pkgconf
+	/usr/bin/pkgconf$(get_exeext)
 )
 
 src_prepare() {
@@ -47,7 +47,7 @@ src_prepare() {
 	[[ ${PV} == "9999" ]] && eautoreconf
 	if use pkg-config; then
 		MULTILIB_CHOST_TOOLS+=(
-			/usr/bin/pkg-config
+			/usr/bin/pkg-config$(get_exeext)
 		)
 	fi
 }
@@ -66,7 +66,7 @@ multilib_src_install() {
 	default
 
 	if use pkg-config; then
-		dosym pkgconf /usr/bin/pkg-config
+		dosym pkgconf$(get_exeext) /usr/bin/pkg-config$(get_exeext)
 		dosym pkgconf.1 /usr/share/man/man1/pkg-config.1
 	else
 		rm "${ED}"/usr/share/aclocal/pkg.m4 || die

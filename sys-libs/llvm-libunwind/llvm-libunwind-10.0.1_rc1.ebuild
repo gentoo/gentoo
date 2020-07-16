@@ -3,8 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
-inherit cmake-multilib llvm llvm.org multiprocessing python-any-r1
+CMAKE_ECLASS=cmake
+PYTHON_COMPAT=( python3_{6..9} )
+inherit cmake-multilib llvm llvm.org python-any-r1
 
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
 HOMEPAGE="https://github.com/llvm-mirror/libunwind"
@@ -25,9 +26,6 @@ DEPEND="
 BDEPEND="
 	test? ( >=sys-devel/clang-3.9.0
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )"
-
-# least intrusive of all
-CMAKE_BUILD_TYPE=RelWithDebInfo
 
 python_check_deps() {
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
@@ -52,18 +50,16 @@ multilib_src_configure() {
 	)
 	if use test; then
 		local clang_path=$(type -P "${CHOST:+${CHOST}-}clang" 2>/dev/null)
-		local jobs=${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}
-
 		[[ -n ${clang_path} ]] || die "Unable to find ${CHOST}-clang for tests"
 
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
-			-DLLVM_LIT_ARGS="-vv;-j;${jobs};--param=cxx_under_test=${clang_path}"
+			-DLLVM_LIT_ARGS="$(get_lit_flags);--param=cxx_under_test=${clang_path}"
 			-DLIBUNWIND_LIBCXX_PATH="${WORKDIR}/libcxx"
 		)
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 build_libcxxabi() {
@@ -81,8 +77,8 @@ build_libcxxabi() {
 		-DLIBCXXABI_LIBUNWIND_INCLUDES="${S}"/include
 	)
 
-	cmake-utils_src_configure
-	cmake-utils_src_compile
+	cmake_src_configure
+	cmake_src_compile
 }
 
 build_libcxx() {
@@ -103,8 +99,8 @@ build_libcxx() {
 		-DLIBCXX_INCLUDE_TESTS=OFF
 	)
 
-	cmake-utils_src_configure
-	cmake-utils_src_compile
+	cmake_src_configure
+	cmake_src_compile
 }
 
 multilib_src_test() {
@@ -115,11 +111,11 @@ multilib_src_test() {
 	mv "${BUILD_DIR}"/libcxx*/lib/libc++* "${BUILD_DIR}/$(get_libdir)/" || die
 
 	local -x LIT_PRESERVES_TMP=1
-	cmake-utils_src_make check-unwind
+	cmake_build check-unwind
 }
 
 multilib_src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	# install headers like sys-libs/libunwind
 	doheader "${S}"/include/*.h

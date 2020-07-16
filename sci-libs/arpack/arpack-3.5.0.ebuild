@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools eutils flag-o-matic fortran-2 toolchain-funcs
+inherit autotools flag-o-matic fortran-2 toolchain-funcs
 
 DESCRIPTION="Arnoldi package library to solve large scale eigenvalue problems"
 HOMEPAGE="http://www.caam.rice.edu/software/ARPACK/ https://github.com/opencollab/arpack-ng"
@@ -22,8 +22,8 @@ RDEPEND="
 	virtual/blas
 	virtual/lapack
 	mpi? ( virtual/mpi[fortran] )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${PN}-ng-${PV}"
 
@@ -33,7 +33,9 @@ src_prepare() {
 }
 
 src_configure() {
-	append-fflags -fallow-argument-mismatch
+	test-flag-FC -fallow-argument-mismatch &&
+		append-fflags -fallow-argument-mismatch
+
 	econf \
 		--disable-static \
 		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)" \
@@ -48,10 +50,9 @@ src_install() {
 	newdoc DOCUMENTS/README README.doc
 	use doc && dodoc "${WORKDIR}"/*.ps
 	if use examples; then
-		docinto /usr/share/doc/${PF}
 		dodoc -r EXAMPLES
 		if use mpi; then
-			docinto /usr/share/doc/${PF}/EXAMPLES/PARPACK
+			docinto EXAMPLES/PARPACK
 			dodoc -r PARPACK/EXAMPLES/MPI
 		fi
 	fi

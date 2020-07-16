@@ -1,0 +1,13 @@
+diff --git a/build.xml b/build.xml
+index 9ba357b..352e141 100644
+--- a/build.xml
++++ b/build.xml
+@@ -2716,7 +2716,7 @@ Read the Building page on the Apache Tomcat documentation site for details on ho
+       <bndfiles >
+         <pathelement location="${tomcat.bnd}/${filename}.tmp.bnd" ></pathelement>
+       </bndfiles>
+-    <classpath path="${gentoo.classpath}" ></classpath></bnd>
++    </bnd>
+     <delete file="${jarfile}" ></delete>
+     <move file="${jarfile}.tmp" tofile="${jarfile}" ></move>
+   </target>

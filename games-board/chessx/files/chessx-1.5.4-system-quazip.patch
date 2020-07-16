@@ -1,0 +1,73 @@
+Index: chessx.pro
+===================================================================
+--- a/chessx.pro
++++ b/chessx.pro
+@@ -39,7 +39,6 @@ static { # Everything below takes effect
+     message("Static build.")
+ }
+ 
+-DEFINES += QUAZIP_STATIC
+ DEFINES += QT_NO_CAST_TO_ASCII
+ DEFINES *= QT_USE_QSTRINGBUILDER
+ 
+@@ -156,22 +155,6 @@ HEADERS += src/database/board.h \
+     src/gui/engineoptionlist.h \
+     src/gui/helpbrowser.h \
+     src/database/downloadmanager.h \
+-    src/quazip/zip.h \
+-    src/quazip/unzip.h \
+-    src/quazip/quazipnewinfo.h \
+-    src/quazip/quazipfileinfo.h \
+-    src/quazip/quazipfile.h \
+-    src/quazip/quazipdir.h \
+-    src/quazip/quazip.h \
+-    src/quazip/quazip_global.h \
+-    src/quazip/quaziodevice.h \
+-    src/quazip/quagzipfile.h \
+-    src/quazip/quacrc32.h \
+-    src/quazip/quachecksum32.h \
+-    src/quazip/quaadler32.h \
+-    src/quazip/JlCompress.h \
+-    src/quazip/ioapi.h \
+-    src/quazip/crypt.h \
+     src/gui/toolmainwindow.h \
+     src/gui/playerlistwidget.h \
+     src/gui/qled.h \
+@@ -321,16 +304,6 @@ SOURCES += src/database/board.cpp \
+     src/gui/engineoptionlist.cpp \
+     src/gui/helpbrowser.cpp \
+     src/database/downloadmanager.cpp \
+-    src/quazip/quazipnewinfo.cpp \
+-    src/quazip/quazipfile.cpp \
+-    src/quazip/quazipdir.cpp \
+-    src/quazip/quazip.cpp \
+-    src/quazip/quaziodevice.cpp \
+-    src/quazip/quagzipfile.cpp \
+-    src/quazip/quacrc32.cpp \
+-    src/quazip/quaadler32.cpp \
+-    src/quazip/qioapi.cpp \
+-    src/quazip/JlCompress.cpp \
+     src/gui/toolmainwindow.cpp \
+     src/gui/playerlistwidget.cpp \
+     src/gui/qled.cpp \
+@@ -401,8 +374,6 @@ SOURCES += src/database/board.cpp \
+     src/gui/historylabel.cpp \
+     src/database/streamdatabase.cpp \
+     src/database/refcount.cpp \
+-    src/quazip/unzip.cpp \
+-    src/quazip/zip.cpp \
+     src/database/arenabook.cpp \
+     src/gui/gamelistsortmodel.cpp \
+     src/gui/listwidgetex.cpp
+@@ -412,8 +383,9 @@ INCLUDEPATH += src/database
+ INCLUDEPATH += src/guess
+ INCLUDEPATH += src/gui
+ INCLUDEPATH += src/dialogs
+-INCLUDEPATH += src/quazip
+-INCLUDEPATH += $$[QT_INSTALL_PREFIX]/src/3rdparty/zlib
++
++CONFIG += link_pkgconfig
++PKGCONFIG += quazip
+ 
+ win32 {
+     # DEFINES += ZLIB_WINAPI

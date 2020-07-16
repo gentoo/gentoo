@@ -17,11 +17,14 @@
 
 #--- END OF EXAMPLES ---
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-02-22)
-# virtual/libstdc++ has only one sys-libs/libstdc++-v3 provider.
-# Use that instead. Or even better use none of them. It's a
-# library from 2005.
-virtual/libstdc++
+# Joonas Niilola <juippis@gentoo.org> (2020-07-13)
+# Abandoned upstream, switch to dev-python/mysqlclient which is a maintained 
+# fork. #710024
+dev-python/mysql-python
+
+# Mart Raudsepp <leio@gentoo.org> (2020-07-04)
+# Port to gtk+:3 using wxGTK:3.0-gtk3 SLOT
+x11-libs/wxGTK:3.0
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-05-17)
 # Abandoned upstream, countless bugs. Removal tracked in bug #659616
@@ -48,7 +51,7 @@ dev-python/pytest-runner
 
 # Matt Turner <mattst88@gentoo.org> (2020-03-17)
 # Deprecated GNOME 2 era packages
-# Bugs #640022, #713010, #726784
+# Bugs #640022, #713010, #726784, #728956
 dev-python/pygobject:2
 gnome-base/gnome-vfs
 gnome-base/libbonobo
@@ -112,8 +115,8 @@ dev-java/oracle-jre-bin
 # app-editors/emacs package, which makes the virtual unnecessary.
 # Packages should depend on >=app-editors/emacs-23.1:* instead.
 # See the documentation of elisp-common.eclass for details.
-# Removal (without prior masking) after the release of Emacs 27.1,
-# but not later than 2020-06-18. Bug #291296.
+# Removal (without prior masking) after ~app-editors/emacs-27.1
+# is marked stable. Bug #291296.
 virtual/emacs
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-09)
@@ -122,7 +125,6 @@ virtual/emacs
 # systems need to be fixed to work without them.
 dev-python/nose-cover3
 dev-python/nosexcover
-dev-python/pytest-cov
 
 # Zac Medico <zmedico@gentoo.org> (2019-12-06)
 # These golang libraries should be vendored either by upstream or via

@@ -7,8 +7,6 @@ RUBY_OPTIONAL="yes"
 
 inherit autotools java-pkg-opt-2 perl-functions ruby-ng
 
-IUSE="bzip2 debug java lzo mecab perl ruby +zlib"
-
 DESCRIPTION="a full-text search system for communities"
 HOMEPAGE="https://fallabs.com/hyperestraier/"
 SRC_URI="https://fallabs.com/${PN}/${P}.tar.gz"
@@ -16,6 +14,7 @@ SRC_URI="https://fallabs.com/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ppc ppc64 sparc x86"
 SLOT="0"
+IUSE="bzip2 debug java lzo mecab perl ruby static-libs +zlib"
 
 RDEPEND="dev-db/qdbm
 	bzip2? ( app-arch/bzip2 )
@@ -186,6 +185,7 @@ src_install() {
 	emake DESTDIR="${D}" MYDOCS= install
 	einstalldocs
 	he_foreach_api
+	use static-libs || find "${ED}" -name '*.a' -delete || die
 
 	if use perl; then
 		perl_delete_module_manpages

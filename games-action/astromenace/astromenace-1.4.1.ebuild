@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils desktop xdg-utils
+inherit cmake desktop xdg-utils
 
 DESCRIPTION="Hardcore 3D space scroll-shooter with spaceship upgrade possibilities"
 HOMEPAGE="https://viewizard.com"
@@ -26,7 +26,7 @@ DEPEND="media-libs/freealut
 RDEPEND=${DEPEND}
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# no messing with CXXFLAGS please.
 	sed -i -e '/-Os/d' CMakeLists.txt || die
@@ -35,11 +35,11 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=( -DDATADIR="${EPREFIX}/usr/share/${PN}" )
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 }
 
 src_install() {
@@ -51,7 +51,7 @@ src_install() {
 	newicon -s 128 share/astromenace_128.png ${PN}.png
 	newicon -s 64 share/astromenace_64.png ${PN}.png
 
-	dodoc CHANGELOG.md README.md
+	einstalldocs
 
 	make_desktop_entry "${PN}" AstroMenace
 }

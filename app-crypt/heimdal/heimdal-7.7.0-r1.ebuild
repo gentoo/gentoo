@@ -45,7 +45,7 @@ CDEPEND="
 DEPEND="${CDEPEND}
 	${PYTHON_DEPS}
 	dev-perl/JSON
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	>=sys-devel/autoconf-2.62
 	test? ( X? ( ${VIRTUALX_DEPEND} ) )"
 

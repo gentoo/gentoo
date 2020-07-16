@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
-inherit cmake-utils llvm.org multilib-minimal multiprocessing \
-	pax-utils python-any-r1 toolchain-funcs
+PYTHON_COMPAT=( python3_{6..9} )
+inherit cmake llvm.org multilib-minimal pax-utils python-any-r1 \
+	toolchain-funcs
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
@@ -58,12 +58,11 @@ BDEPEND="
 		<sys-libs/libcxx-$(ver_cut 1-3).9999
 		>=sys-devel/binutils-apple-5.1
 	)
-	doc? ( $(python_gen_any_dep '
-		dev-python/recommonmark[${PYTHON_USEDEP}]
-		dev-python/sphinx[${PYTHON_USEDEP}]
-	') )
 	libffi? ( virtual/pkgconfig )
-	${PYTHON_DEPS}"
+	$(python_gen_any_dep '
+		dev-python/sphinx[${PYTHON_USEDEP}]
+		doc? ( dev-python/recommonmark[${PYTHON_USEDEP}] )
+	')"
 # There are no file collisions between these versions but having :0
 # installed means llvm-config there will take precedence.
 RDEPEND="${RDEPEND}
@@ -71,13 +70,17 @@ RDEPEND="${RDEPEND}
 PDEPEND="sys-devel/llvm-common
 	gold? ( >=sys-devel/llvmgold-${SLOT} )"
 
-# least intrusive of all
-CMAKE_BUILD_TYPE=RelWithDebInfo
+PATCHES=(
+	# Fix linking to dylib and .a libs simultaneously
+	"${FILESDIR}"/10.0.1/0001-llvm-Avoid-linking-llvm-cfi-verify-to-duplicate-libs.patch
+	"${FILESDIR}"/10.0.1/0002-llvm-Disable-linking-llvm-exegesis-to-dylib.patch
+)
 
 python_check_deps() {
-	use doc || return 0
-
-	has_version -b "dev-python/recommonmark[${PYTHON_USEDEP}]" &&
+	if use doc; then
+		has_version -b "dev-python/recommonmark[${PYTHON_USEDEP}]" ||
+			return 1
+	fi
 	has_version -b "dev-python/sphinx[${PYTHON_USEDEP}]"
 }
 
@@ -138,6 +141,10 @@ check_distribution_components() {
 					distribution|llvm-libraries)
 						continue
 						;;
+					# used only w/ USE=doc
+					docs-llvm-html)
+						continue
+						;;
 				esac
 
 				all_targets+=( "${l}" )
@@ -180,11 +187,15 @@ src_prepare() {
 	# Update config.guess to support more systems
 	cp "${BROOT}/usr/share/gnuconfig/config.guess" cmake/ || die
 
-	# User patches + QA
-	cmake-utils_src_prepare
+	# manpages don't use markdown
+	if ! use doc; then
+		sed -i -e '/source_parsers/d' docs/conf.py || die
+	fi
 
 	# Verify that the live ebuild is up-to-date
 	check_live_ebuild
+
+	llvm.org_src_prepare
 }
 
 # Is LLVM being linked against libc++?
@@ -299,12 +310,13 @@ get_distribution_components() {
 
 			# python modules
 			opt-viewer
-		)
 
-		use doc && out+=(
+			# manpages
 			docs-dsymutil-man
 			docs-llvm-dwarfdump-man
 			docs-llvm-man
+		)
+		use doc && out+=(
 			docs-llvm-html
 		)
 
@@ -381,18 +393,16 @@ multilib_src_configure() {
 #	fi
 
 	use test && mycmakeargs+=(
-		-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
+		-DLLVM_LIT_ARGS="$(get_lit_flags)"
 	)
 
 	if multilib_is_native_abi; then
 		mycmakeargs+=(
-			-DLLVM_BUILD_DOCS=$(usex doc)
+			-DLLVM_BUILD_DOCS=ON
 			-DLLVM_ENABLE_OCAMLDOC=OFF
-			-DLLVM_ENABLE_SPHINX=$(usex doc)
+			-DLLVM_ENABLE_SPHINX=ON
 			-DLLVM_ENABLE_DOXYGEN=OFF
 			-DLLVM_INSTALL_UTILS=ON
-		)
-		use doc && mycmakeargs+=(
 			-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/llvm/${SLOT}/share/man"
 			-DLLVM_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
 			-DSPHINX_WARNINGS_AS_ERRORS=OFF
@@ -422,15 +432,19 @@ multilib_src_configure() {
 		local CXXFLAGS="${CXXFLAGS} -mno-bmi"
 	fi
 
+	# LLVM can have very high memory consumption while linking,
+	# exhausting the limit on 32-bit linker executable
+	use x86 && local -x LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory"
+
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
-	cmake-utils_src_configure
+	cmake_src_configure
 
 	multilib_is_native_abi && check_distribution_components
 }
 
 multilib_src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	pax-mark m "${BUILD_DIR}"/bin/llvm-rtdyld
 	pax-mark m "${BUILD_DIR}"/bin/lli
@@ -446,7 +460,7 @@ multilib_src_compile() {
 multilib_src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
-	cmake-utils_src_make check
+	cmake_build check
 }
 
 src_install() {
@@ -466,7 +480,7 @@ src_install() {
 }
 
 multilib_src_install() {
-	DESTDIR=${D} cmake-utils_src_make install-distribution
+	DESTDIR=${D} cmake_build install-distribution
 
 	# move headers to /usr/include for wrapping
 	rm -rf "${ED}"/usr/include || die

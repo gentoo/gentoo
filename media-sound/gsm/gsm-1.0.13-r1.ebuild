@@ -38,14 +38,14 @@ src_configure() {
 
 multilib_src_compile() {
 	emake -j1 CCFLAGS="${CFLAGS} -c -DNeedFunctionPrototypes=1" \
-		LD="$(tc-getCC)" AR="$(tc-getAR)" CC="$(tc-getCC)"
+		LD="$(tc-getCC)" AR="$(tc-getAR)" CC="$(tc-getCC)" RANLIB="$(tc-getRANLIB)"
 }
 
 multilib_src_install() {
 	dodir /usr/bin /usr/$(get_libdir) /usr/include/gsm /usr/share/man/man{1,3}
 
 	emake -j1 INSTALL_ROOT="${ED}"/usr \
-		LD="$(tc-getCC)" AR="$(tc-getAR)" CC="$(tc-getCC)" \
+		LD="$(tc-getCC)" AR="$(tc-getAR)" CC="$(tc-getCC)" RANLIB="$(tc-getRANLIB)" \
 		GSM_INSTALL_LIB="${ED}"/usr/$(get_libdir) \
 		GSM_INSTALL_INC="${ED}"/usr/include/gsm \
 		GSM_INSTALL_MAN="${ED}"/usr/share/man/man3 \

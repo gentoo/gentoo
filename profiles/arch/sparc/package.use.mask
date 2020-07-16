@@ -1,6 +1,14 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
+# Mask io-uring & zbc pending keywording
+sys-block/fio -io-uring -zbc
+
+# Michał Górny <mgorny@gentoo.org> (2020-06-14)
+# Requires dev-python/networkx.
+app-portage/nattka depgraph-order
+
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
 # clisp is keyworded on sparc
 app-text/texlive-core -xindy
@@ -24,10 +32,6 @@ dev-python/urllib3 test
 # Requires www-client/firefox which isn't available on sparc
 dev-ruby/capybara test
 
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-27)
-# app-shells/fish dependency is broken on sparc, bug #709662
-dev-python/argcomplete test
-
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-26)
 # tests optionally depend on dev-ruby/coffee-script needing nodejs
 dev-ruby/tilt test
@@ -38,7 +42,6 @@ dev-python/pyopengl test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-23)
 # don't bother keywording old versions
-<dev-qt/qtgui-5.14.2 wayland
 <net-analyzer/rrdtool-1.7.2 ruby
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-22)

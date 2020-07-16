@@ -14,7 +14,7 @@ SRC_URI="https://github.com/max-moser/${MY_PN}/archive/${EGIT_COMMIT}.tar.gz -> 
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+gtk +nls"
 
 RDEPEND="

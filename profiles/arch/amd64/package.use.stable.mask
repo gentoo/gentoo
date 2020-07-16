@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2020-06-21)
+# sys-apps/apparmor doesn't have stable keywords.
+app-emulation/lxc apparmor
+
 # Thomas Deutschmann <whissi@gentoo.org> (2019-10-28)
 # net-libs/quiche is an early HTTP/3 implementation
 # not yet ready for everyone.

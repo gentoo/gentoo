@@ -85,9 +85,9 @@ src_compile() {
 
 src_install() {
 	installit() {
-		python_export PYTHON_SITEDIR
 		emake \
 			DESTDIR="${D}" \
+			PYTHON_SITEDIR="$(python_get_sitedir)" \
 			PYTHONVERS="${EPYTHON}" \
 			install
 		python_optimize

@@ -4,6 +4,8 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7} )
+DISTUTILS_SINGLE_IMPL=yes
+DISTUTILS_USE_SETUPTOOLS=rdepend
 EGIT_REPO_URI="https://github.com/dbcli/mycli.git"
 inherit distutils-r1 git-r3
 
@@ -16,20 +18,26 @@ SLOT="0"
 KEYWORDS=""
 IUSE="ssh test"
 RESTRICT="!test? ( test )"
-RDEPEND="
-	>=dev-python/cli_helpers-1.1.0[${PYTHON_USEDEP}]
-	>=dev-python/click-7.0[${PYTHON_USEDEP}]
-	>=dev-python/configobj-5.0.6[${PYTHON_USEDEP}]
-	>=dev-python/cryptography-1.0.0[${PYTHON_USEDEP}]
-	>=dev-python/prompt_toolkit-2.0.6[${PYTHON_USEDEP}]
-	>=dev-python/pygments-2.0[${PYTHON_USEDEP}]
-	>=dev-python/pymysql-0.9.2[${PYTHON_USEDEP}]
-	>=dev-python/sqlparse-0.3.0[${PYTHON_USEDEP}]
-	<dev-python/sqlparse-0.4.0[${PYTHON_USEDEP}]
-	ssh? ( dev-python/paramiko[${PYTHON_USEDEP}] )
+RDEPEND="$(python_gen_cond_dep '
+	>=dev-python/cli_helpers-1.1.0[${PYTHON_MULTI_USEDEP}]
+	>=dev-python/click-7.0[${PYTHON_MULTI_USEDEP}]
+	>=dev-python/configobj-5.0.6[${PYTHON_MULTI_USEDEP}]
+	>=dev-python/cryptography-1.0.0[${PYTHON_MULTI_USEDEP}]
+	>=dev-python/prompt_toolkit-3.0.0[${PYTHON_MULTI_USEDEP}]
+	<dev-python/prompt_toolkit-4.0.0[${PYTHON_MULTI_USEDEP}]
+	>=dev-python/pygments-2.0[${PYTHON_MULTI_USEDEP}]
+	>=dev-python/pymysql-0.9.2[${PYTHON_MULTI_USEDEP}]
+	>=dev-python/sqlparse-0.3.0[${PYTHON_MULTI_USEDEP}]
+	<dev-python/sqlparse-0.4.0[${PYTHON_MULTI_USEDEP}]
+	ssh? ( dev-python/paramiko[${PYTHON_MULTI_USEDEP}] )')
 "
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] ${RDEPEND} )"
+DEPEND="${RDEPEND}"
+
+distutils_enable_tests pytest
+
+BDEPEND="test? ( $(python_gen_cond_dep 'dev-python/mock[${PYTHON_MULTI_USEDEP}]') )"
+
+PATCHES=( "${FILESDIR}/mycli-1.21.1-fix-test-install.patch" )
 
 python_test() {
 	pytest --capture=sys \

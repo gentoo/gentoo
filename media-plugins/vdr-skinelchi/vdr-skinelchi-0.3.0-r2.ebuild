@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit vdr-plugin-2
+inherit flag-o-matic vdr-plugin-2
 
 DESCRIPTION="VDR Skin Plugin: skinelchi"
 HOMEPAGE="http://firefly.vdr-developer.org/skinelchi"

@@ -11,10 +11,9 @@ HOMEPAGE="https://www.wireguard.com/"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.zx2c4.com/wireguard-tools"
-	KEYWORDS=""
 else
 	SRC_URI="https://git.zx2c4.com/wireguard-tools/snapshot/wireguard-tools-${PV}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 fi
 
 LICENSE="GPL-2"
@@ -55,6 +54,7 @@ pkg_setup() {
 		wg_quick_optional_config_nob NETFILTER_XT_MARK
 		wg_quick_optional_config_nob NETFILTER_XT_CONNMARK
 		wg_quick_optional_config_nob NETFILTER_XT_MATCH_COMMENT
+		wg_quick_optional_config_nob NETFILTER_XT_MATCH_ADDRTYPE
 		wg_quick_optional_config_nob IP6_NF_RAW
 		wg_quick_optional_config_nob IP_NF_RAW
 		wg_quick_optional_config_nob IP6_NF_FILTER

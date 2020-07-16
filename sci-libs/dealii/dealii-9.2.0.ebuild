@@ -11,7 +11,7 @@ inherit cmake-utils eutils multilib
 CMAKE_REMOVE_MODULES_LIST=""
 
 DESCRIPTION="Solving partial differential equations with the finite element method"
-HOMEPAGE="http://www.dealii.org/"
+HOMEPAGE="https://www.dealii.org/"
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3

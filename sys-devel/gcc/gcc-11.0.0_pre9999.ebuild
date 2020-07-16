@@ -4,7 +4,7 @@
 EAPI="7"
 
 PATCH_GCC_VER="11.0.0"
-PATCH_VER="1"
+PATCH_VER="2"
 
 inherit toolchain
 

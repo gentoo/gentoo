@@ -13,7 +13,7 @@ SRC_URI="https://s3.amazonaws.com/json-c_releases/releases/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0/5"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="doc static-libs threads"
+IUSE="cpu-flags-x86-rdrand doc static-libs threads"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.14-cmake-static-libs.patch"
@@ -34,6 +34,7 @@ multilib_src_configure() {
 		-DBUILD_DOCUMENTATION=$(multilib_native_usex doc)
 		-DBUILD_STATIC_LIBS=$(usex static-libs)
 		-DDISABLE_WERROR=ON
+		-DENABLE_RDRAND=$(usex cpu-flags-x86-rdrand)
 		-DENABLE_THREADING=$(usex threads)
 	)
 

@@ -217,8 +217,8 @@ escons() {
 }
 
 # @FUNCTION: _scons_clean_makeopts
-# @INTERNAL
 # @USAGE: [makeflags] [...]
+# @INTERNAL
 # @DESCRIPTION:
 # Strip the supplied makeflags (or ${MAKEOPTS} if called without
 # an argument) of options not supported by SCons and make sure --jobs

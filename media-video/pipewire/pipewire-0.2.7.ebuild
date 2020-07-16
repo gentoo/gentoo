@@ -44,6 +44,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-fno-common.patch" )
+
 src_prepare() {
 	spa_use() {
 		if ! use ${1}; then

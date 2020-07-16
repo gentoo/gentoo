@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-single-r1 toolchain-funcs
 
 if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/yasm/yasm.git"
@@ -60,6 +60,8 @@ src_configure() {
 	use python && python_setup
 
 	local myconf=(
+		CC_FOR_BUILD=$(tc-getBUILD_CC) \
+		CCLD_FOR_BUILD=$(tc-getBUILD_CC) \
 		--disable-warnerror
 		$(use_enable python)
 		$(use_enable python python-bindings)

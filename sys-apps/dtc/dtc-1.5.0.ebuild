@@ -47,7 +47,7 @@ src_prepare() {
 		-e "/^LIBDIR =/s:=.*:= \$(PREFIX)/$(get_libdir):" \
 		Makefile || die
 
-	tc-export AR CC
+	tc-export AR CC PKG_CONFIG
 	export V=1
 }
 

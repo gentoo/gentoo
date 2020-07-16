@@ -37,7 +37,7 @@ BDEPEND="
 		app-text/docbook-xml-dtd:4.2 )
 	dev-libs/libxslt
 	app-text/docbook-xsl-stylesheets
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	!connman? ( !networkmanager? ( kernel_linux? ( sys-kernel/linux-headers ) ) )
 	vala? ( $(vala_depend)
 		>=net-libs/gssdp-1.1.3:0[vala]

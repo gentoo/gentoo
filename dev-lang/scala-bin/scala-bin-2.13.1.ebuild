@@ -16,7 +16,7 @@ SRC_URI="http://downloads.lightbend.com/${MY_PN}/${PV}/${MY_P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
 RDEPEND="
@@ -34,7 +34,7 @@ src_prepare() {
 	ebegin 'Patching SCALA_HOME variable in bin/ directory'
 	local f
 	for f in bin/*; do
-		sed -i -e 's#\(SCALA_HOME\)=.*#\1=/usr/share/scala-bin#' $f || die
+		sed -i -e 's#\(SCALA_HOME\)=.*#\1=/usr/share/scala-bin#' "$f" || die
 	done
 	eend $?
 }
@@ -49,6 +49,7 @@ src_install() {
 	eend $?
 
 	ebegin 'Installing jar files'
+
 	cd lib/ || die
 
 	# Unversion those libs.

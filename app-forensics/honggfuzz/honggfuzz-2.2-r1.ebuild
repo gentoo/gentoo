@@ -33,6 +33,12 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.0-no-werror.patch
 )
 
+pkg_pretend() {
+	if tc-is-clang; then
+		die "${P} does not work on clang due to incomplete -fblock support: https://bugs.gentoo.org/729256. Please try gcc."
+	fi
+}
+
 src_prepare() {
 	default
 	tc-export AR CC

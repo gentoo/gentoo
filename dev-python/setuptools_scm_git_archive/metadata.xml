@@ -5,4 +5,5 @@
 		<email>pacho@gentoo.org</email>
 		<name>Pacho Ramos</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>

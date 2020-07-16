@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.12
 	sys-devel/bison
 	sys-devel/flex
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
 # gtk-doc-am to install API docs

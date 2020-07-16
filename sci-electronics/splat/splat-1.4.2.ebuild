@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="RF Signal Propagation, Loss, And Terrain analysis tool"
-HOMEPAGE="http://www.qsl.net/kd2bd/splat.html"
-SRC_URI="http://www.qsl.net/kd2bd/${P}.tar.bz2"
+HOMEPAGE="https://www.qsl.net/kd2bd/splat.html"
+SRC_URI="https://www.qsl.net/kd2bd/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

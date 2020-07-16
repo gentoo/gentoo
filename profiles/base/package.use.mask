@@ -6,6 +6,33 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2020-07-13)
+# Requires vulnerable dev-python/pillow version.
+sci-libs/scipy python_targets_python2_7
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-07-09)
+# media-video/pipewire:0/0.3 is currently masked
+www-client/firefox screencast
+
+# Mart Raudsepp <leio@gentoo.org> (2020-06-28)
+# media-video/pipewire:0/0.3 is ongoing work, 0.2 on mutter-3.34
+# is not worth trying to get to work.
+x11-wm/mutter screencast
+
+# Stephan Hartmann <stha09@googlemail.com> (2020-06-28)
+# Mostly intended for development and not for general use.
+>=www-client/chromium-84 headless
+
+# Mikle Kolyada <zlogene@gentoo.org> (2020-06-21)
+# Multiple runtime crashes, see bug #724672
+media-gfx/inkscape jemalloc
+
+# Stephan Hartmann <stha09@googlemail.com> (2020-16-06)
+# Mostly intended for debugging and development,
+# not recommended for general use. Build is also often
+# broken.
+www-client/chromium component-build
+
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
 # requires clisp whichis keyworded on fewer arches
 app-text/texlive-core xindy
@@ -13,6 +40,7 @@ app-text/texlive-core xindy
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-05-04)
 # Broken error[E0478]: lifetime bound not satisfied
 =dev-lang/rust-1.44.0 miri
+=dev-lang/rust-1.44.1 miri
 
 # Ben Kohler <bkohler@gentoo.org> (2020-04-29)
 # Dependency pam_wrapper missing for tests, and RESTRICT=test is already set
@@ -112,10 +140,6 @@ net-im/spectrum2 test
 # dev-python/pyzmq USE=doc deps are not met with python2_7
 dev-python/pyzmq doc
 
-# Michał Górny <mgorny@gentoo.org> (2020-02-24)
-# app-admin/packagekit* are masked for removal.
-kde-frameworks/frameworkintegration appstream
-
 # Michał Górny <mgorny@gentoo.org> (2020-02-08)
 # The dependency is python-single-r1 while the package (and its revdeps)
 # are python-r1.
@@ -200,7 +224,6 @@ sys-block/open-isns slp
 # Mask USE until they are fixed
 =dev-libs/xapian-bindings-1.2.25 php
 media-gfx/exact-image php
-sci-geosciences/mapserver php
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-28)
 # media-fonts/hkscs-ming is slated for removal.
@@ -422,19 +445,9 @@ sys-devel/gcc pie
 # Multiple test failures.
 sys-boot/grub:2 test
 
-# Ian Stakenvicius (2017-01-25)
-# rust on mozilla packages is experimental
-www-client/firefox rust
-mail-client/thunderbird rust
-
 # Lars Wendler <polynomial-c@gentoo.org> (2017-01-19)
 # Masked until system heimdal can finally be used with AD DC
 net-fs/samba system-heimdal
-
-# Magnus Granberg <zorry@gentoo.org> (2017-01-18)
-# Adding the mask so that end users and devlopers are notified of the removal and have some
-# time to migrate. There is no support for gcj in gcc-7
->=sys-devel/gcc-6.3.0 gcj
 
 # Robin H. Johnson <robbat2@gentoo.org> (2016-12-04)
 # Additional HAProxy functionality waiting for related stuff to land in the
@@ -484,12 +497,6 @@ sys-devel/gcc vtv
 # Upstream supports using Clang's address sanitizer, but apparently
 # invokes it wrong.
 dev-lang/moarvm asan
-
-# Ian Stakenvicius <axs@gentoo.org> (2016-04-28)
-# system-cairo support causes lots of crashing in mozilla pkgs
-# (see bug #556378 and others)
-www-client/firefox system-cairo
-mail-client/thunderbird system-cairo
 
 # James Le Cuirot <chewi@gentoo.org> (2016-04-10)
 # Slower and less reliable than HotSpot and we don't support Java on

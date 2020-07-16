@@ -31,6 +31,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-qt-5.11.patch
 	"${FILESDIR}"/${P}-crash-after-fresh-install.patch
 	"${FILESDIR}"/${P}-screen-geometry-is-deprecated.patch
+	"${FILESDIR}"/${P}-endl-is-deprecated.patch
 )
 
 src_configure() {

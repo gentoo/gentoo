@@ -54,5 +54,9 @@ src_configure() {
 
 src_install() {
 	default
+
+	# See bug #637598.
+	epatch "${FILESDIR}/${P}-echo-printf.patch"
+
 	use pam && pamd_mimic_system vlock auth
 }

@@ -11,12 +11,10 @@ inherit flag-o-matic python-r1 waf-utils systemd
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/NTPsec/ntpsec.git"
-	BDEPEND=""
-	KEYWORDS=""
 else
 	SRC_URI="ftp://ftp.ntpsec.org/pub/releases/${PN}-${PV}.tar.gz"
 	RESTRICT="mirror"
-	BDEPEND=""
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 DESCRIPTION="The NTP reference implementation, refactored"
@@ -36,7 +34,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE} nist? ( rclock_local )"
 
 # net-misc/pps-tools oncore,pps
 CDEPEND="${PYTHON_DEPS}
-	${BDEPEND}
 	sys-libs/libcap
 	dev-python/psutil[${PYTHON_USEDEP}]
 	libbsd? ( dev-libs/libbsd:0= )

@@ -3,14 +3,14 @@
 
 EAPI=7
 
-inherit cmake xdg-utils readme.gentoo-r1
+inherit cmake flag-o-matic xdg-utils readme.gentoo-r1
 
 DESCRIPTION="Open source reimplementation of TES III: Morrowind"
-HOMEPAGE="https://openmw.org/"
+HOMEPAGE="https://openmw.org/ https://gitlab.com/OpenMW/openmw"
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI=${EGIT_REPO_URI:-"https://github.com/OpenMW/openmw.git"}
+	EGIT_REPO_URI="https://github.com/OpenMW/openmw.git"
 else
 	SRC_URI="https://github.com/OpenMW/openmw/archive/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
@@ -19,7 +19,7 @@ fi
 
 LICENSE="GPL-3 MIT BitstreamVera ZLIB"
 SLOT="0"
-IUSE="doc devtools test +qt5"
+IUSE="doc devtools +osg-fork test +qt5"
 RESTRICT="!test? ( test )"
 
 # FIXME: Unbundle dev-games/openscenegraph-qt in extern/osgQt directory,
@@ -27,7 +27,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-games/mygui
-	>=dev-games/openscenegraph-3.5.5:=[ffmpeg,jpeg,png,sdl,svg,truetype,zlib]
+	dev-games/recastnavigation
 	dev-libs/boost:=[threads]
 	dev-libs/tinyxml[stl]
 	media-libs/libsdl2[joystick,opengl,video]
@@ -35,6 +35,8 @@ RDEPEND="
 	media-video/ffmpeg:=
 	>=sci-physics/bullet-2.86:=
 	virtual/opengl
+	osg-fork? ( dev-games/openscenegraph-openmw:=[ffmpeg,jpeg,png,sdl,svg,truetype,zlib] )
+	!osg-fork? ( >=dev-games/openscenegraph-3.5.5:=[ffmpeg,jpeg,png,sdl,svg,truetype,zlib] )
 	qt5? (
 		app-arch/unshield
 		dev-qt/qtcore:5
@@ -58,19 +60,27 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/openmw-0.46.0-mygui-license.patch
+	"${FILESDIR}"/openmw-0.46.0-recastnavigation.patch
+)
+
 src_prepare() {
 	cmake_src_prepare
 
-	# We don't install license files
-	sed -i '/LICDIR/d' CMakeLists.txt || die
-
 	# Use the system tinyxml headers
 	rm -v extern/oics/tiny{str,xml}* || die
+
+	# Unbundle recastnavigation
+	rm -vr extern/recastnavigation || die
+	sed -i "s#GENTOO_RECAST_LIBDIR#${EPREFIX}/usr/$(get_libdir)#" CMakeLists.txt || die
 }
 
 src_configure() {
 	use devtools && ! use qt5 && \
 		elog "'qt5' USE flag is disabled, 'openmw-cs' will not be installed"
+
+	append-cxxflags "-I${EPREFIX}/usr/include/recastnavigation"
 
 	local mycmakeargs=(
 		-DBUILD_BSATOOL=$(usex devtools)
@@ -81,9 +91,9 @@ src_configure() {
 		-DBUILD_OPENCS=$(usex devtools $(usex qt5))
 		-DBUILD_WIZARD=$(usex qt5)
 		-DBUILD_UNITTESTS=$(usex test)
-		-DGLOBAL_DATA_PATH=/usr/share
-		-DICONDIR="/usr/share/icons/hicolor/256x256/apps"
-		-DMORROWIND_DATA_FILES="/usr/share/morrowind-data"
+		-DGLOBAL_DATA_PATH="${EPREFIX}/usr/share"
+		-DICONDIR="${EPREFIX}/usr/share/icons/hicolor/256x256/apps"
+		-DMORROWIND_DATA_FILES="${EPREFIX}/usr/share/morrowind-data"
 		-DUSE_SYSTEM_TINYXML=ON
 		-DDESIRED_QT_VERSION=5
 	)

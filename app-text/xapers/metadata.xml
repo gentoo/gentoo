@@ -9,9 +9,6 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy maintainers</name>
   </maintainer>
-  <longdescription>
-    Xapers is a personal document indexing system, geared towards academic journal articles.
-  </longdescription>
   <upstream>
     <maintainer status="active">
       <name>Jameson Graef Rollins</name>

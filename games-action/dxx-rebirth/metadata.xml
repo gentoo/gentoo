@@ -20,14 +20,22 @@
 		DXX-Rebirth.
 	</longdescription>
 	<use>
-		<flag name="data">Install data files</flag>
-		<flag name="descent1">Install Descent 1 resources and executable</flag>
-		<flag name="descent2">Install Descent 2 resources and executable</flag>
+		<flag name="d1x">Install Descent 1 resources and executable</flag>
+		<flag name="d2x">Install Descent 2 resources and executable</flag>
+		<flag name="descent1">Install Descent 1 resources and executable (used prior to version 0.61)</flag>
+		<flag name="descent2">Install Descent 2 resources and executable (used prior to version 0.61)</flag>
+		<flag name="data">Ensure some game levels are present; if the full game's level data is not already installed then install the playable demo data (i.e. shareware levels)</flag>
+		<flag name="debug">Enable various debugging code paths and sanity checks, not just output. Some of these checks date back to the retail build, and choke on some custom levels because the game was never coded to sufficiently distrust inputs</flag>
+		<flag name="editor">Enable level editor support</flag>
 		<flag name="l10n_de">Provides German translations for the game's briefings, robot descriptions, and outro of the original campaign</flag>
+		<flag name="midi">Enforce that SDL-mixer is used and has midi support</flag>
 		<flag name="music">Enable music support</flag>
 		<flag name="opl3-musicpack">Include alternate version of the game's music, recorded with the Yamaha YMF262 OPL3 soundchip</flag>
 		<flag name="sc55-musicpack">Include alternate version of the game's music, recorded with the Roland Sound Canvas SC-55 MIDI module</flag>
-		<flag name="textures">Include high resolution (640x480) backgrounds, briefing images and fonts (Descent 1)</flag>
+		<flag name="sdl2">Use libSDL2, SDL2-mixer instead of libSDL-1* and SDL-mixer-1*</flag>
+		<flag name="tracker">Enable support for the PHP-based multiplayer game tracker</flag>
+		<flag name="textures">Include high resolution (640x480) backgrounds, briefing images and fonts (for Descent 1)</flag>
+		<flag name="valgrind">Include a Valgrind header in build in order to support Memcheck client requests</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">dxx-rebirth/dxx-rebirth</remote-id>

@@ -1,10 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit xdg-utils qmake-utils
 
-DESCRIPTION="A small, lightweight file manager for desktops based on pure Qt"
+inherit qmake-utils xdg-utils
+
+DESCRIPTION="Small, lightweight file manager based on pure Qt"
 HOMEPAGE="https://qtfm.eu/"
 SRC_URI="https://github.com/rodlie/qtfm/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -13,6 +14,10 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="+dbus shared"
 
+BDEPEND="
+	app-arch/unzip
+	dev-qt/linguist-tools:5
+"
 RDEPEND="
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
@@ -22,11 +27,9 @@ RDEPEND="
 	sys-apps/file
 	dbus? ( dev-qt/qtdbus:5 )
 "
-DEPEND="
-	${RDEPEND}
-	app-arch/unzip
-	dev-qt/linguist-tools:5
-"
+DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}"/${P}-qt-5.15.patch )
 
 src_configure() {
 	eqmake5 \

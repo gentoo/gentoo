@@ -27,6 +27,7 @@ DEPEND="${RDEPEND}
 	python? ( >=dev-lang/swig-1.3.40 )
 	ruby? ( dev-lang/swig )
 "
+RESTRICT="test"  # Upstream does not provide tests #730112
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.21-python.patch"

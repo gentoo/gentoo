@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
 #IUSE="test"
 # The tests are impossible to appease.  Please run them externally
 # via tox.  Or fix the ebuild if you have hours of time to spend
@@ -23,9 +23,9 @@ RESTRICT="test"
 
 #BDEPEND="
 #	test? (
-#		dev-python/coverage[${PYTHON_USEDEP}]
 #		dev-python/PyContracts[${PYTHON_USEDEP}]
 #		dev-python/flaky[${PYTHON_USEDEP}]
+#		dev-python/hypothesis[${PYTHON_USEDEP}]
 #		dev-python/mock[${PYTHON_USEDEP}]
 #		dev-python/pytest[${PYTHON_USEDEP}]
 #		>=dev-python/unittest-mixins-1.4[${PYTHON_USEDEP}]

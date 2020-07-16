@@ -3,9 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
-inherit check-reqs cmake-utils flag-o-matic llvm llvm.org \
-	multiprocessing python-any-r1
+PYTHON_COMPAT=( python3_{6..9} )
+inherit check-reqs cmake flag-o-matic llvm llvm.org python-any-r1
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="https://llvm.org/"
@@ -34,9 +33,6 @@ BDEPEND="
 		=sys-devel/clang-${PV%_*}*:${CLANG_SLOT}
 		sys-libs/compiler-rt:${SLOT} )
 	${PYTHON_DEPS}"
-
-# least intrusive of all
-CMAKE_BUILD_TYPE=RelWithDebInfo
 
 python_check_deps() {
 	use test || return 0
@@ -89,7 +85,7 @@ src_configure() {
 		mycmakeargs+=(
 			-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
-			-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
+			-DLLVM_LIT_ARGS="$(get_lit_flags)"
 
 			# they are created during src_test()
 			-DCOMPILER_RT_TEST_COMPILER="${BUILD_DIR}/lib/llvm/${CLANG_SLOT}/bin/clang"
@@ -110,7 +106,7 @@ src_configure() {
 		)
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 
 	if use test; then
 		local sys_dir=( "${EPREFIX}"/usr/lib/clang/${SLOT}/lib/* )
@@ -142,5 +138,5 @@ src_test() {
 	# wipe LD_PRELOAD to make ASAN happy
 	local -x LD_PRELOAD=
 
-	cmake-utils_src_make check-all
+	cmake_build check-all
 }

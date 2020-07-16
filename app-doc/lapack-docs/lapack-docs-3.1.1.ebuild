@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Documentation reference and man pages for lapack implementations"
-HOMEPAGE="http://www.netlib.org/lapack"
+HOMEPAGE="https://www.netlib.org/lapack"
 SRC_URI="mirror://gentoo/lapack-man-${PV}.tgz
 	http://www.netlib.org/lapack/lapackqref.ps"
 

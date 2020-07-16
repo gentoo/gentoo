@@ -18,7 +18,7 @@ else
 	DIST_NAME=Rex
 	KEYWORDS="~amd64 ~x86"
 fi
-inherit perl-module ${VCS_ECLASS}
+inherit bash-completion-r1 perl-module ${VCS_ECLASS}
 
 DESCRIPTION="(R)?ex, the friendly automation framework"
 
@@ -182,4 +182,13 @@ src_prepare() {
 	fi
 	cd "${S}" || die "Can't enter build dir"
 	perl-module_src_prepare
+}
+
+src_install() {
+	newbashcomp "share/${PN}-tab-completion.bash" "${PN}"
+
+	insinto /usr/share/zsh/site-functions
+	newins "share/${PN}-tab-completion.zsh" "_${PN}"
+
+	perl-module_src_install
 }

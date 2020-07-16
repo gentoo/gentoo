@@ -6,8 +6,8 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="GTK+ linux weather satellite APT image decoder software"
-HOMEPAGE="http://www.qsl.net/5b4az/pages/apt.html"
-SRC_URI="http://www.qsl.net/5b4az/pkg/apt/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://www.qsl.net/5b4az/pages/apt.html"
+SRC_URI="https://www.qsl.net/5b4az/pkg/apt/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

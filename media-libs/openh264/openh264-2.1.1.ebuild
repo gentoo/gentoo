@@ -13,7 +13,7 @@ SRC_URI="https://github.com/cisco/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="BSD"
 SLOT="0/6" # subslot = openh264 soname version
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="cpu_flags_x86_avx2 +plugin utils"
+IUSE="cpu_flags_arm_neon cpu_flags_x86_avx2 +plugin utils"
 
 RESTRICT="bindist test"
 
@@ -28,6 +28,10 @@ PATCHES=( "${FILESDIR}/${PN}-2.1.0-pkgconfig-pathfix.patch" )
 src_prepare() {
 	default
 
+	sed -i -e 's/ | generate-version//g' Makefile || die
+	sed -e 's|$FULL_VERSION|""|g' codec/common/inc/version_gen.h.template > \
+		codec/common/inc/version_gen.h
+
 	multilib_copy_sources
 }
 
@@ -36,24 +40,29 @@ multilib_src_configure() {
 }
 
 emakecmd() {
-	CC="$(tc-getCC)" CXX="$(tc-getCXX)" LD="$(tc-getLD)" \
+	CC="$(tc-getCC)" CXX="$(tc-getCXX)" LD="$(tc-getLD)" AR="$(tc-getAR)" \
 	emake V=Yes CFLAGS_M32="" CFLAGS_M64="" CFLAGS_OPT="" \
 		PREFIX="${EPREFIX}/usr" \
 		LIBDIR_NAME="$(get_libdir)" \
 		SHAREDLIB_DIR="${EPREFIX}/usr/$(get_libdir)" \
 		INCLUDES_DIR="${EPREFIX}/usr/include/${PN}" \
 		HAVE_AVX2=$(usex cpu_flags_x86_avx2 Yes No) \
+		ARCH="$(tc-arch)" \
 		$@
 }
 
 multilib_src_compile() {
-	local mybits="ENABLE64BIT=No"
+	local myopts="ENABLE64BIT=No"
 	case "${ABI}" in
-		s390x|alpha|*64) mybits="ENABLE64BIT=Yes";;
+		s390x|alpha|*64) myopts="ENABLE64BIT=Yes";;
 	esac
 
-	emakecmd ${mybits}
-	use plugin && emakecmd ${mybits} plugin
+	if use arm; then
+		myopts+=" USE_ASM=$(usex cpu_flags_arm_neon Yes No)"
+	fi
+
+	emakecmd ${myopts}
+	use plugin && emakecmd ${myopts} plugin
 }
 
 multilib_src_install() {
@@ -65,7 +74,7 @@ multilib_src_install() {
 	fi
 
 	if use plugin; then
-		local plugpath="${EROOT}/usr/$(get_libdir)/nsbrowser/plugins/gmp-gmp${PN}/system-installed"
+		local plugpath="${ROOT}/usr/$(get_libdir)/nsbrowser/plugins/gmp-gmp${PN}/system-installed"
 		insinto "${plugpath}"
 		doins libgmpopenh264.so* gmpopenh264.info
 		echo "MOZ_GMP_PATH=\"${plugpath}\"" >"${T}"/98-moz-gmp-${PN}

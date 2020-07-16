@@ -3,6 +3,9 @@
 
 EAPI=7
 
+# Grab only the major version number.
+MAJOR_PV=${PV%%.*}
+
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml"
 BACKPORTS="03f44039848bd09444ff4baa8dc158bd61454079"
@@ -53,7 +56,7 @@ DEPEND="
 		>=sys-libs/libraw1394-1.2.0
 	)
 	libass? ( >=media-libs/libass-0.9.11:= )
-	=media-tv/mythtv-${PV}*[alsa?,cdda?,cdr?,exif?,fftw?,ieee1394?,libass?,opengl?,python,raw?,xml?,xvid]
+	=media-tv/mythtv-${MAJOR_PV}*[alsa?,cdda?,cdr?,exif?,fftw?,ieee1394?,libass?,opengl?,python,raw?,xml?,xvid]
 	mytharchive? (
 		app-cdr/dvd+rw-tools
 		$(python_gen_cond_dep '

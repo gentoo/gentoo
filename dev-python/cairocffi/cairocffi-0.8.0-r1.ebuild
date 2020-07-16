@@ -28,7 +28,6 @@ RDEPEND="
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
@@ -38,15 +37,8 @@ PATCHES=( "${FILESDIR}"/${P}-tests.patch )
 
 S="${WORKDIR}/${MY_P}"
 
-python_compile_all() {
-	use doc && esetup.py build_sphinx
-}
+distutils_enable_sphinx docs
 
 python_test() {
 	virtx py.test -v --pyargs cairocffi
-}
-
-python_install_all() {
-	use doc && HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
 }

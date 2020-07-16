@@ -19,9 +19,7 @@ RDEPEND=">=virtual/jre-1.8
 
 RESTRICT="mirror strip"
 
-QA_PREBUILT="opt/${PN}/bin/fsnotifier
-	opt/${PN}/bin/fsnotifier64
-	opt/${PN}/bin/fsnotifier-arm"
+QA_PREBUILT="*"
 
 MY_PN=${PN/-community/}
 

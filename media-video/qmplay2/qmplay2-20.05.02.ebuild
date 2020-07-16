@@ -52,7 +52,7 @@ RDEPEND="
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-sound/pulseaudio )
 	sid? ( media-libs/libsidplayfp )
-	shaders? ( media-libs/shaderc )
+	shaders? ( >=media-libs/shaderc-2020.1 )
 	vaapi? (
 		>=media-video/ffmpeg-4.1.3[vaapi]
 		x11-libs/libva[drm,opengl]

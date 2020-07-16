@@ -3,8 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_IN_SOURCE_BUILD=1
+DISTUTILS_USE_SETUPTOOLS=no
 
 inherit bash-completion-r1 distutils-r1 eutils linux-info systemd
 

@@ -8,7 +8,7 @@ inherit eutils libtool flag-o-matic gnuconfig multilib toolchain-funcs
 DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
 LICENSE="GPL-3+"
-IUSE="default-gold doc +gold multitarget +nls +plugins static-libs test"
+IUSE="default-gold doc +gold multitarget +nls +plugins static-libs test vanilla"
 REQUIRED_USE="default-gold? ( gold )"
 
 # Variables that can be set here:
@@ -101,8 +101,10 @@ src_unpack() {
 
 src_prepare() {
 	if [[ ! -z ${PATCH_VER} ]] ; then
-		einfo "Applying binutils-${PATCH_BINUTILS_VER} patchset ${PATCH_VER}"
-		eapply "${WORKDIR}/patch"/*.patch
+		if ! use vanilla; then
+			einfo "Applying binutils-${PATCH_BINUTILS_VER} patchset ${PATCH_VER}"
+			eapply "${WORKDIR}/patch"/*.patch
+		fi
 	fi
 
 	# This check should probably go somewhere else, like pkg_pretend.

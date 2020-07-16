@@ -30,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-99999999-Debian.patch
 	"${FILESDIR}"/${PN}-99999999-desktop.patch
 	"${FILESDIR}"/${PN}-99999999-fno-common.patch
+	"${FILESDIR}"/${PN}-99999999-strncat.patch
 )
 
 src_configure() {

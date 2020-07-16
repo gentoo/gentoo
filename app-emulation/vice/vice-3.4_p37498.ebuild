@@ -8,7 +8,7 @@ inherit autotools multibuild
 MY_P="vice-emu-code-r${PV##*_p}-trunk-vice"
 
 DESCRIPTION="The Versatile Commodore Emulator"
-HOMEPAGE="http://vice-emu.sourceforge.net/"
+HOMEPAGE="https://vice-emu.sourceforge.io/"
 #SRC_URI="mirror://sourceforge/vice-emu/releases/${P}.tar.gz"
 SRC_URI="https://sourceforge.net/code-snapshots/svn/v/vi/vice-emu/code/${MY_P}.zip"
 

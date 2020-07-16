@@ -475,6 +475,7 @@ SRC_URI="https://github.com/hashicorp/consul/archive/v${PV}.tar.gz -> ${P}.tar.g
 	${EGO_SUM_SRC_URI}"
 
 LICENSE="MPL-2.0 Apache-2.0 BSD BSD-2 CC0-1.0 ISC MIT"
+RESTRICT+=" test"
 SLOT="0"
 KEYWORDS="~amd64"
 

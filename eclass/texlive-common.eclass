@@ -39,7 +39,7 @@ texlive-common_handle_config_files() {
 	[[ -d ${ED}${TEXMF_PATH} ]] || return
 	cd "${ED}${TEXMF_PATH}" || die
 
-	while read -r -d '' i; do
+	while read -r f; do
 		if [[ ${f#*config} != ${f} || ${f#doc} != ${f} || ${f#source} != ${f} || ${f#tex} != ${f} ]] ; then
 			continue
 		fi
