@@ -14,7 +14,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="dev-libs/re2"
+DEPEND="dev-libs/re2:="
 RDEPEND="${DEPEND}"
 
 distutils_enable_tests setup.py
