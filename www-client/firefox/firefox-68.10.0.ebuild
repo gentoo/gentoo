@@ -146,6 +146,7 @@ DEPEND="${CDEPEND}
 	sys-apps/findutils
 	virtual/pkgconfig
 	>=virtual/rust-1.34.0
+	<virtual/rust-1.45.0
 	|| (
 		(
 			sys-devel/clang:10
