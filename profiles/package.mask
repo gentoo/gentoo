@@ -39,6 +39,13 @@ dev-ruby/i18n:0.9
 dev-ruby/net-ssh:4
 dev-ruby/zeitwerk:1
 
+# Jaco Kroon <jaco@uls.co.za> (2020-07-19)
+# Asterisk 11 is EOL.  All users should migrate to asterisk 13.
+# Removal unspecified, will remain for the foreseeable future.  If you need
+# help migrating, contact jkroon in #gentoo-voip on freenode.
+=net-misc/asterisk-11*
+=net-misc/asterisk-g729-11*
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-07-19)
 # Unmaintained upstream and broken by ECM 5.72.0, masked for removal in 30 days.
 media-video/plasma-mediacenter

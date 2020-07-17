@@ -1,15 +1,15 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils linux-info multilib user systemd
+inherit autotools linux-info systemd
 
 MY_P="${PN}-${PV/_/-}"
 
 DESCRIPTION="Asterisk: A Modular Open Source PBX System"
 HOMEPAGE="http://www.asterisk.org/"
 SRC_URI="http://downloads.asterisk.org/pub/telephony/asterisk/releases/${MY_P}.tar.gz
-	 mirror://gentoo/gentoo-asterisk-patchset-3.17.tar.bz2"
+	mirror://gentoo/gentoo-asterisk-patchset-3.17.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
@@ -19,7 +19,7 @@ IUSE_VOICEMAIL_STORAGE="
 	voicemail_storage_odbc
 	voicemail_storage_imap
 "
-IUSE="${IUSE_VOICEMAIL_STORAGE} alsa bluetooth calendar +caps cluster curl dahdi debug doc freetds gtalk http iconv ilbc xmpp ldap libedit libressl lua mysql newt +samples odbc osplookup oss portaudio postgres radius selinux snmp span speex srtp static syslog vorbis"
+IUSE="${IUSE_VOICEMAIL_STORAGE} alsa bluetooth calendar +caps cluster curl dahdi debug doc freetds gtalk http iconv ilbc xmpp ldap libedit libressl lua mysql newt +samples odbc oss portaudio postgres radius selinux snmp span speex srtp static syslog vorbis"
 IUSE_EXPAND="VOICEMAIL_STORAGE"
 REQUIRED_USE="gtalk? ( xmpp )
 	^^ ( ${IUSE_VOICEMAIL_STORAGE/+/} )
@@ -29,18 +29,22 @@ REQUIRED_USE="gtalk? ( xmpp )
 EPATCH_SUFFIX="patch"
 PATCHES=( "${WORKDIR}/asterisk-patchset" )
 
-CDEPEND="dev-db/sqlite:3
+CDEPEND="acct-user/asterisk
+	acct-group/asterisk
+	dev-db/sqlite:3
 	dev-libs/popt
 	dev-libs/libxml2
-	!libressl? ( dev-libs/openssl:0= )
+	!libressl? ( =dev-libs/openssl-1.0*:0= )
 	libressl? ( dev-libs/libressl:0= )
 	sys-libs/ncurses:*
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
 	bluetooth? ( net-wireless/bluez )
-	calendar? ( net-libs/neon
-		 dev-libs/libical
-		 dev-libs/iksemel )
+	calendar? (
+		dev-libs/iksemel
+		dev-libs/libical
+		net-libs/neon
+	)
 	caps? ( sys-libs/libcap )
 	cluster? ( sys-cluster/corosync )
 	curl? ( net-misc/curl )
@@ -58,7 +62,6 @@ CDEPEND="dev-db/sqlite:3
 	mysql? ( virtual/mysql )
 	newt? ( dev-libs/newt )
 	odbc? ( dev-db/unixODBC )
-	osplookup? ( net-libs/osptoolkit )
 	portaudio? ( media-libs/portaudio )
 	postgres? ( dev-db/postgresql:* )
 	radius? ( net-dialup/freeradius-client )
@@ -91,10 +94,6 @@ pkg_setup() {
 	have reported that this module dropped critical SIP packets in their deployments. You
 	may want to disable it if you see such problems."
 	check_extra_config
-
-	enewgroup asterisk
-	enewgroup dialout 20
-	enewuser asterisk -1 -1 /var/lib/asterisk "asterisk,dialout"
 }
 
 src_prepare() {
@@ -181,7 +180,6 @@ src_configure() {
 	use_select lua			pbx_lua
 	use_select mysql		app_mysql cdr_mysql res_config_mysql
 	use_select odbc			cdr_adaptive_odbc res_config_odbc {cdr,cel,res,func}_odbc
-	use_select osplookup		app_osplookup
 	use_select oss			chan_oss
 	use_select postgres		{cdr,cel}_pgsql res_config_pgsql
 	use_select radius		{cdr,cel}_radius
@@ -246,8 +244,8 @@ src_install() {
 	diropts -m 0750 -o asterisk -g asterisk
 	keepdir /var/log/asterisk/{cdr-csv,cdr-custom}
 
-	newinitd "${FILESDIR}"/1.8.0/asterisk.initd8 asterisk
-	newconfd "${FILESDIR}"/1.8.0/asterisk.confd asterisk
+	newinitd "${FILESDIR}"/initd-13.32.0-r1 asterisk
+	newconfd "${FILESDIR}"/confd-13.32.0 asterisk
 
 	systemd_dounit "${FILESDIR}"/asterisk.service
 	systemd_newtmpfilesd "${FILESDIR}"/asterisk.tmpfiles.conf asterisk.conf
@@ -264,13 +262,6 @@ src_install() {
 		dodoc doc/*.txt
 		dodoc doc/*.pdf
 	fi
-
-	# install SIP scripts; bug #300832
-	#
-	dodoc "${FILESDIR}/1.6.2/sip_calc_auth"
-	dodoc "${FILESDIR}/1.8.0/find_call_sip_trace.sh"
-	dodoc "${FILESDIR}/1.8.0/find_call_ids.sh"
-	dodoc "${FILESDIR}/1.6.2/call_data.txt"
 
 	# install logrotate snippet; bug #329281
 	#
