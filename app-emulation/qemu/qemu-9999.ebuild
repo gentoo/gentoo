@@ -411,6 +411,7 @@ qemu_src_configure() {
 		--with-confsuffix=/qemu
 		--localstatedir=/var
 		--disable-bsd-user
+		--disable-containers # bug #732972
 		--disable-guest-agent
 		--disable-strip
 		--disable-werror
