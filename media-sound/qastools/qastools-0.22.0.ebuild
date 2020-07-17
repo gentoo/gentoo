@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.com/sebholt/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 BDEPEND="
