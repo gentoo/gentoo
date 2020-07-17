@@ -18,7 +18,7 @@ REQUIRED_USE="regex"
 RDEPEND="
 	>=dev-libs/boehm-gc-7.0:=[threads?]
 	dev-libs/gmp:=
-	virtual/libffi:=
+	dev-libs/libffi:=
 	dev-libs/libltdl:=
 	dev-libs/libunistring:0=
 	sys-devel/libtool
