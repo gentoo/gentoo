@@ -10,8 +10,7 @@ inherit bash-completion-r1 desktop toolchain-funcs python-single-r1 xdg-utils
 
 DESCRIPTION="Ebook management application"
 HOMEPAGE="https://calibre-ebook.com/"
-SRC_URI="https://download.calibre-ebook.com/${PV}/${P}.tar.xz
-	https://github.com/kovidgoyal/calibre/commit/db7007a25faefb0cc90e64dda1c0793393b9512d.patch -> calibre-4.17.0-qt-5.15-fontconfig-bug-725020.patch"
+SRC_URI="https://download.calibre-ebook.com/${PV}/${P}.tar.xz"
 
 LICENSE="
 	GPL-3+
@@ -76,7 +75,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	')
 	dev-qt/qtcore:5=
 	dev-qt/qtdbus:5=
-	dev-qt/qtgui:5=
+	dev-qt/qtgui:5=[jpeg]
 	>=dev-qt/qtwebengine-5.12
 	dev-qt/qtwidgets:5=
 	dev-util/desktop-file-utils

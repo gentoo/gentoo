@@ -37,7 +37,7 @@ IUSE="accessibility +aio alsa bzip2 capstone +caps +curl debug doc
 	jemalloc +jpeg kernel_linux
 	kernel_FreeBSD lzo ncurses nfs nls numa opengl +oss +pin-upstream-blobs
 	plugins +png pulseaudio python rbd sasl +seccomp sdl sdl-image selinux
-	slirp
+	+slirp
 	smartcard snappy spice ssh static static-user systemtap tci test usb
 	usbredir vde +vhost-net vhost-user-fs virgl virtfs +vnc vte xattr xen
 	xfs +xkb zstd"
