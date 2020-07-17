@@ -49,6 +49,7 @@ sys-libs/glibc -static-pie
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-03-11)
 # Encrypted Media Extensions (eme-free) can be disabled on x86
+mail-client/thunderbird -eme-free
 www-client/firefox -eme-free
 
 # Mart Raudsepp <leio@gentoo.org> (2020-03-01)
