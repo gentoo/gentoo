@@ -1,0 +1,84 @@
+From 7987e30c99edddab8acbf567bad0ebf2d1c3381d Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Mon, 17 Aug 2020 21:28:03 +0200
+Subject: [PATCH] Python 3.8 fixes for endpoint and tests (#37)
+
+* fix endpoint exception lists for Python 3.8
+Author: @maximbaz according to #33
+
+* fix test_writer_bad_message
+not only windows can have problems with serializing datetime
+
+Co-authored-by: Carlos Cordoba <ccordoba12@gmail.com>
+Co-authored-by: Marko Bakovic <delta003@users.noreply.github.com>
+---
+ pyls_jsonrpc/endpoint.py |  1 +
+ test/test_endpoint.py    |  4 ++--
+ test/test_streams.py     | 19 +++++++++----------
+ 3 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/pyls_jsonrpc/endpoint.py b/pyls_jsonrpc/endpoint.py
+index e8bfb5b..0caf612 100644
+--- a/pyls_jsonrpc/endpoint.py
++++ b/pyls_jsonrpc/endpoint.py
+@@ -236,6 +236,7 @@ class Endpoint(object):
+         if error is not None:
+             log.debug("Received error response to message %s: %s", msg_id, error)
+             request_future.set_exception(JsonRpcException.from_dict(error))
++            return
+ 
+         log.debug("Received result for message %s: %s", msg_id, result)
+         request_future.set_result(result)
+diff --git a/test/test_endpoint.py b/test/test_endpoint.py
+index 47a038b..b954732 100644
+--- a/test/test_endpoint.py
++++ b/test/test_endpoint.py
+@@ -115,9 +115,9 @@ def test_request_cancel(endpoint, consumer):
+         'params': {'id': MSG_ID}
+     })
+ 
+-    with pytest.raises(exceptions.JsonRpcException) as exc_info:
++    with pytest.raises((exceptions.JsonRpcException, futures.CancelledError)) as exc_info:
+         assert future.result(timeout=2)
+-    assert exc_info.type == exceptions.JsonRpcRequestCancelled
++    assert exc_info.type in (exceptions.JsonRpcRequestCancelled, futures.CancelledError)
+ 
+ 
+ def test_consume_notification(endpoint, dispatcher):
+diff --git a/test/test_streams.py b/test/test_streams.py
+index 8c2e93e..480a73b 100644
+--- a/test/test_streams.py
++++ b/test/test_streams.py
+@@ -97,7 +97,8 @@ def test_writer(wfile, writer):
+ 
+ def test_writer_bad_message(wfile, writer):
+     # A datetime isn't serializable(or poorly serializable),
+-    # ensure the write method doesn't throw
++    # ensure the write method doesn't throw, but the result could be empty
++    # or the correct datetime
+     import datetime
+     writer.write(datetime.datetime(
+         year=2019,
+@@ -108,12 +109,10 @@ def test_writer_bad_message(wfile, writer):
+         second=1,
+     ))
+ 
+-    if os.name == 'nt':
+-        assert wfile.getvalue() == b''
+-    else:
+-        assert wfile.getvalue() == (
+-            b'Content-Length: 10\r\n'
+-            b'Content-Type: application/vscode-jsonrpc; charset=utf8\r\n'
+-            b'\r\n'
+-            b'1546304461'
+-        )
++    assert wfile.getvalue() in [
++        b'',
++        b'Content-Length: 10\r\n'
++        b'Content-Type: application/vscode-jsonrpc; charset=utf8\r\n'
++        b'\r\n'
++        b'1546304461'
++    ]
+-- 
+2.26.2
+

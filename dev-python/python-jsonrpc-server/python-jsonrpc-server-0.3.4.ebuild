@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_7 )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit distutils-r1
 
@@ -26,6 +26,9 @@ DEPEND="test? (
 	dev-python/pylint[${PYTHON_USEDEP}]
 )"
 
-PATCHES=( "${FILESDIR}/${P}-remove-pytest-cov-dep.patch" )
+PATCHES=(
+	"${FILESDIR}"/${P}-remove-pytest-cov-dep.patch
+	"${FILESDIR}"/${P}-Python-3.8-fixes-for-endpoint-and-tests-37.patch
+)
 
 distutils_enable_tests pytest
