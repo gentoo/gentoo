@@ -20,7 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND=">=dev-libs/glib-2.24.0:2
 	dev-lang/python-exec:2
-	libffi? ( virtual/libffi:= )
+	libffi? ( dev-libs/libffi:= )
 	${PYTHON_DEPS}
 "
 DEPEND="${COMMON_DEPEND}
