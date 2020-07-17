@@ -183,4 +183,7 @@ multilib_src_install() {
 	doins target/release/quiche.pc
 	doheader -r include/*
 	dolib.so "target/$(rust_abi)/release/libquiche.so"
+	QA_FLAGS_IGNORED+=" usr/$(get_libdir)/libquiche.so" # rust libraries don't use LDFLAGS
+	QA_SONAME+=" usr/$(get_libdir)/libquiche.so" # https://github.com/cloudflare/quiche/issues/165
+
 }
