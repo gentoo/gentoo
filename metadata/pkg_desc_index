@@ -8429,6 +8429,7 @@ dev-python/pyqrcode 1.2.1-r1: A pure Python QR code generator with SVG, EPS, PNG
 dev-python/pyqt-distutils 0.3.0: distutils extension to work with PyQt applications and UI files
 dev-python/pyqtgraph 0.10.0-r2 0.11.0_rc0: A pure-python graphics and GUI library built on PyQt and numpy
 dev-python/pyquery 1.4.1-r1: A jQuery-like library for python
+dev-python/pyre2 1.0.7: Python bindings for dev-libs/re2
 dev-python/pyrex 0.9.9-r1: A language for writing Python extension modules
 dev-python/pyrfc3339 1.1: Generates and parses RFC 3339 timestamps
 dev-python/pyro 4.80: Distributed object middleware for Python (RPC)
