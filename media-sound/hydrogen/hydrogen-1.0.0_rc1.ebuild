@@ -21,8 +21,9 @@ fi
 
 LICENSE="GPL-2 ZLIB"
 SLOT="0"
-IUSE="alsa +archive doc jack ladspa lash osc oss portaudio portmidi pulseaudio"
+IUSE="alsa +archive doc jack ladspa lash osc oss portaudio portmidi pulseaudio test"
 
+RESTRICT="!test? ( test )"
 REQUIRED_USE="lash? ( alsa )"
 
 BDEPEND="
@@ -30,7 +31,7 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
-DEPEND="
+CDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
@@ -49,7 +50,11 @@ DEPEND="
 	portmidi? ( media-libs/portmidi )
 	pulseaudio? ( media-sound/pulseaudio )
 "
-RDEPEND="${DEPEND}"
+DEPEND="
+	${CDEPEND}
+	test? ( dev-qt/qttest:5 )
+"
+RDEPEND="${CDEPEND}"
 
 DOCS=( AUTHORS ChangeLog DEVELOPERS README.txt )
 
