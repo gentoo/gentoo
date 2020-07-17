@@ -146,6 +146,7 @@ DEPEND="${CDEPEND}
 	sys-apps/findutils
 	virtual/pkgconfig
 	>=virtual/rust-1.34.0
+	<virtual/rust-1.45.0
 	|| (
 		(
 			sys-devel/clang:10
@@ -295,6 +296,12 @@ src_prepare() {
 		-e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
 		"${S}"/build/moz.configure/toolchain.configure \
 		|| die "sed failed to set num_cores"
+
+	# sed-in toolchain prefix
+	sed -i \
+		-e "s/objdump/${CHOST}-objdump/" \
+		"${S}"/python/mozbuild/mozbuild/configure/check_debug_ranges.py \
+		|| die "sed failed to set toolchain prefix"
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
