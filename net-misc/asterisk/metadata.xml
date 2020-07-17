@@ -16,7 +16,6 @@
 		<flag name="http">Enable embedded web server</flag>
 		<flag name="ilbc">Enable the Internet Low Bitrate Codec (iLBC)</flag>
 		<flag name="newt">Include additional tools that require redhats windowing toolkit</flag>
-		<flag name="osplookup">Support secure peering using the Open Settlement Protocol</flag>
 		<flag name="pjproject">Enable support for pjproject (pjsip)</flag>
 		<flag name="samples">Install sample sound and configuration files (default: on)</flag>
 		<flag name="span">Enable support for the spandsp codec</flag>
