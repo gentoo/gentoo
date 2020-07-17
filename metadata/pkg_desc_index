@@ -632,7 +632,7 @@ app-admin/whowatch 1.8.5 1.8.6: Displays information about users currently logge
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yadm 2.4.0: A dotfile manager for the config files in your home folder
-app-antivirus/clamav 0.102.3 0.102.4: Clam Anti-Virus Scanner
+app-antivirus/clamav 0.102.4: Clam Anti-Virus Scanner
 app-antivirus/clamtk 6.03 6.03-r1: A graphical front-end for ClamAV
 app-antivirus/fangfrisch 1.2.0-r1: Update and verify unofficial Clam Anti-Virus signatures
 app-arch/advancecomp 2.2_pre20190301: Recompress ZIP, PNG and MNG, considerably improving compression
