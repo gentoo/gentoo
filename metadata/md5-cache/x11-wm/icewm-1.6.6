@@ -5,7 +5,7 @@ DESCRIPTION=Ice Window Manager with Themes
 EAPI=7
 HOMEPAGE=https://ice-wm.org/ https://github.com/ice-wm/icewm
 IUSE=+alsa ao bidi debug +gdk-pixbuf nls truetype uclibc xinerama
-KEYWORDS=~amd64 ppc ~sparc ~x86
+KEYWORDS=~amd64 ppc sparc ~x86
 LICENSE=GPL-2
 RDEPEND=media-libs/fontconfig x11-libs/libX11 x11-libs/libXcomposite x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXrender x11-libs/libICE x11-libs/libSM x11-libs/libXft x11-libs/libXpm x11-libs/libXrandr alsa? ( media-libs/alsa-lib media-libs/libsndfile[alsa] ) ao? ( media-libs/libao media-libs/libsndfile ) bidi? ( dev-libs/fribidi ) gdk-pixbuf? ( x11-libs/gdk-pixbuf:2[X] ) !gdk-pixbuf? ( media-libs/libpng:0= virtual/jpeg ) xinerama? ( x11-libs/libXinerama )
 REQUIRED_USE=|| ( alsa ao )
@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/ice-wm/icewm/releases/download/1.6.6/icewm-1.6.6.tar.lz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	unpacker	8ee8c1a2f31437d1766aac890d07a7f4
-_md5_=58eff5db48671bbfc2e62605a11add20
+_md5_=d09199e69014ad5ba2d73aaf40b4e755

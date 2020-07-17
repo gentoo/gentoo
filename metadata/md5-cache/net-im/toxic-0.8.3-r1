@@ -5,11 +5,11 @@ DESCRIPTION=A curses-based client for Tox
 EAPI=7
 HOMEPAGE=https://github.com/JFreegman/toxic
 IUSE=notification python qrcode +sound +video +X python_single_target_python3_6 python_single_target_python3_7
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-3+
 RDEPEND=>=net-libs/tox-0.2.8:* net-misc/curl sys-libs/ncurses:* notification? ( x11-libs/libnotify ) python? ( python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) ) qrcode? ( media-gfx/qrencode ) sound? ( media-libs/freealut media-libs/openal net-libs/tox[av] ) video? ( media-libs/libvpx net-libs/tox[av] x11-libs/libX11 )
 REQUIRED_USE=python? ( ^^ ( python_single_target_python3_6 python_single_target_python3_7 ) )
 SLOT=0
 SRC_URI=https://github.com/JFreegman/toxic/archive/v0.8.3.tar.gz -> toxic-0.8.3.tar.gz
 _eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	python-single-r1	674c48c926cbb44e91b656e0399d8f54	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=1c7deceeb84aa9fdb8a9f09222868f8e
+_md5_=ac711e09a0f45b1936870f5867a5a251
