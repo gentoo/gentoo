@@ -14,7 +14,6 @@ LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 # Tests fail under network-sandbox.
 RESTRICT+=" test"
 
