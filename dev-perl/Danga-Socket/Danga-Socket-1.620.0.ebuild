@@ -23,6 +23,7 @@ RDEPEND="
 BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
+		dev-perl/Test-TCP
 		virtual/perl-Test-Simple
 	)
 "
