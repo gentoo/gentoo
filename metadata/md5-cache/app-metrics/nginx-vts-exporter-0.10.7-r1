@@ -1,0 +1,14 @@
+BDEPEND=dev-util/promu >=dev-lang/go-1.12 app-arch/unzip
+DEFINED_PHASES=compile install postinst prepare unpack
+DEPEND=acct-group/nginx-vts-exporter acct-user/nginx-vts-exporter
+DESCRIPTION=Nginx virtual host traffic stats exporter for Prometheus
+EAPI=7
+HOMEPAGE=https://github.com/hnlq715/nginx-vts-exporter
+KEYWORDS=~amd64
+LICENSE=MIT Apache-2.0 BSD
+RDEPEND=acct-group/nginx-vts-exporter acct-user/nginx-vts-exporter
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/hnlq715/nginx-vts-exporter/archive/v0.10.7.tar.gz -> nginx-vts-exporter-0.10.7.tar.gz
+_eclasses_=go-module	45394825d9260b479aa1cf252ea58e01
+_md5_=967377a43cf695ca5509aa6e6cd824ef

@@ -2047,7 +2047,7 @@ app-metrics/memcached_exporter 0.5.0 0.6.0: Prometheus exporter for memcached
 app-metrics/mongodb_exporter 0.6.2-r1 0.11.0: Prometheus exporter for MongoDB
 app-metrics/mysqld_exporter 0.10.0-r1 0.11.0 0.12.1_p20200622: Prometheus exporter for MySQL server metrics
 app-metrics/nginx-lua-prometheus 0.1_pre20170610: Library that exports Nginx metrics to Prometheus
-app-metrics/nginx-vts-exporter 0.10.3 0.10.7: Nginx virtual host traffic stats exporter for Prometheus
+app-metrics/nginx-vts-exporter 0.10.3 0.10.7 0.10.7-r1: Nginx virtual host traffic stats exporter for Prometheus
 app-metrics/node_exporter 0.18.1 1.0.0_rc0 1.0.0_rc0-r1: Prometheus exporter for machine metrics
 app-metrics/openvpn_exporter 0.2.1 0.3.0: Prometheus Exporter for OpenVPN
 app-metrics/postfix_exporter 0.1.2: Prometheus Exporter for Postfix
