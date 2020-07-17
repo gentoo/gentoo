@@ -15223,7 +15223,7 @@ net-vpn/protonvpn-cli 2.2.0 2.2.2: A VPN command-line tool from protonvpn - pyth
 net-vpn/strongswan 5.8.1 5.8.2 5.8.4: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tailscale 0.98 0.98_p0: Tailscale vpn client
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17-r1: tinc is an easy to configure VPN implementation
-net-vpn/tor 0.4.2.7 0.4.3.5 0.4.4.1_alpha: Anonymizing overlay network for TCP
+net-vpn/tor 0.4.2.7 0.4.2.8 0.4.3.6 0.4.4.2_alpha: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550-r1: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
