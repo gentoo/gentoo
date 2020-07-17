@@ -129,8 +129,10 @@ dev-python/twisted soap
 sci-physics/root cudnn
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-03-11)
+# Sam James <sam@gentoo.org> (2020-07-17)
 # Encrypted Media Extensions (eme-free) can't be disabled everywhere
 www-client/firefox eme-free
+mail-client/thunderbird eme-free
 
 # Michał Górny <mgorny@gentoo.org> (2020-03-03)
 # Tests require py2 sleekxmpp and they are restricted anyway.
