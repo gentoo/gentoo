@@ -12,7 +12,7 @@ SRC_URI="http://download.drobilla.net/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="alsa debug jack-dbus session"
 
 RDEPEND=">=dev-cpp/glibmm-2.14:2
