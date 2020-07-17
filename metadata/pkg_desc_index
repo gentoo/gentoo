@@ -8486,7 +8486,7 @@ dev-python/pytest-shutil 1.7.0-r1: A goodie-bag of unix shell and environment to
 dev-python/pytest-subtesthack 0.1.1: A hack for test fixtures, needed for hypothesis inside py.test
 dev-python/pytest-tempdir 2019.10.12: Pytest plugin to support for a predictable and repeatable temporary directory
 dev-python/pytest-testmon 0.9.15: take TDD to a new level with py.test and testmon
-dev-python/pytest-timeout 1.3.4 1.4.1-r1: py.test plugin to abort hanging tests
+dev-python/pytest-timeout 1.3.4 1.4.1-r1 1.4.2: py.test plugin to abort hanging tests
 dev-python/pytest-virtualenv 1.7.0-r1: Virtualenv fixture for py.test
 dev-python/pytest-xdist 1.23.2 1.28.0 1.31.0 1.32.0 1.33.0: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.13.1: Manage external processes across test runs
@@ -8707,7 +8707,7 @@ dev-python/shutilwhich 1.1.0: A copy & paste backport of Python 3.3's shutil.whi
 dev-python/simplebayes 1.5.7: memory-based, optional-persistence naive bayesian text classifier
 dev-python/simpleeval 0.9.10: A simple, safe single expression evaluator library
 dev-python/simplegeneric 0.8.1-r1: Simple generic functions for Python
-dev-python/simplejson 3.17.0: Simple, fast, extensible JSON encoder/decoder for Python
+dev-python/simplejson 3.17.0 3.17.2: Simple, fast, extensible JSON encoder/decoder for Python
 dev-python/simplekml 1.3.1: enables you to generate KML with as little effort as possible
 dev-python/simplesoapy 1.5.1-r1 9999: Simple pythonic wrapper for SoapySDR library
 dev-python/simplespectral 1.0.0 9999: Heavily simplified scipy.signal.spectral module
@@ -8839,8 +8839,8 @@ dev-python/toml 0.10.1: Python library for handling TOML files
 dev-python/toolz 0.9.0 0.10.0: List processing tools and functional utilities
 dev-python/tooz 1.60.1: Library centralizing the most common distributed primitives
 dev-python/towncrier 19.2.0: Building newsfiles for your project
-dev-python/tox 3.15.0 3.15.2 3.16.1 3.17.0: virtualenv-based automation of test activities
-dev-python/tqdm 4.40.0 4.45.0 4.47.0 9999: Add a progress meter to your loops in a second
+dev-python/tox 3.15.0 3.15.2 3.16.1 3.17.0 3.17.1: virtualenv-based automation of test activities
+dev-python/tqdm 4.40.0 4.45.0 4.47.0 4.48.0 9999: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0: Backports of the traceback module
 dev-python/traitlets 4.3.2 4.3.3: A configuration system for Python applications
 dev-python/transitions 0.7.1 0.8.1: A lightweight, object-oriented state machine implementation in Python
@@ -8886,7 +8886,7 @@ dev-python/vdirsyncer 0.16.8: Synchronize calendars and contacts
 dev-python/verboselogs 1.7: Verbose logging for Python's logging module
 dev-python/versioneer 0.18 0.18-r1: Easy VCS-based management of project version strings
 dev-python/vine 1.3.0: Python Promises
-dev-python/virtualenv 16.0.0 16.7.9-r1 16.7.10 20.0.23 20.0.26: Virtual Python Environment builder
+dev-python/virtualenv 16.0.0 16.7.9-r1 16.7.10 20.0.23 20.0.26 20.0.27: Virtual Python Environment builder
 dev-python/virtualenv-clone 0.5.3: A script for cloning a non-relocatable virtualenv
 dev-python/virtualenvwrapper 4.8.4-r1: Set of extensions to Ian Bicking's virtualenv tool
 dev-python/visitor 0.1.3: A tiny pythonic visitor implementation
@@ -8907,7 +8907,7 @@ dev-python/websocket-client 0.57.0: WebSocket client for python with hybi13 supp
 dev-python/websockets 8.1: Library for building WebSocket servers and clients in Python
 dev-python/websockify 0.9.0: WebSockets support for any application/server
 dev-python/webtest 2.0.33 2.0.35: Helper to test WSGI applications
-dev-python/werkzeug 0.16.0 0.16.1 1.0.1: Collection of various utilities for WSGI applications
+dev-python/werkzeug 1.0.1: Collection of various utilities for WSGI applications
 dev-python/wheel 0.34.2: A built-package format for Python
 dev-python/whelk 2.7.1: Pretending python is a shell
 dev-python/whichcraft 0.6.1: Cross-platform cross-python shutil.which functionality
