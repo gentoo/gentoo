@@ -16,7 +16,7 @@ RDEPEND="
 	>=dev-perl/Scope-Guard-0.210.0
 	>=virtual/perl-version-0.770.0
 "
-BEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		>=dev-perl/IPC-System-Simple-1.250.0
