@@ -1690,7 +1690,7 @@ app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for l
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
 app-emulation/lxc 4.0.2-r2 4.0.3: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.4: Old style template scripts for LXC
-app-emulation/lxd 4.0.1 4.0.2 4.0.2-r1: Fast, dense and secure container management
+app-emulation/lxd 4.0.1 4.0.2-r1: Fast, dense and secure container management
 app-emulation/nemu 2.2.1 9999: ncurses interface for QEMU
 app-emulation/open-vm-tools 11.0.1-r1 11.1.0: Opensourced tools for VMware guests
 app-emulation/pcem 16: A PC emulator that specializes in running old operating systems and software
@@ -5811,7 +5811,7 @@ dev-perl/Const-Fast 0.14.0-r1 0.14.0-r2: Facility for creating read-only scalars
 dev-perl/Context-Preserve 0.20.0 0.30.0: Return chained, modified values from subs, without losing context
 dev-perl/Contextual-Return 0.4.14: Create context-sensitive return values
 dev-perl/Convert-ASCII-Armour 1.400.0-r1 1.400.0-r2: Convert binary octets into ASCII armoured messages
-dev-perl/Convert-ASN1 0.270.0 0.270.0-r1: Standard en/decode of ASN.1 structures
+dev-perl/Convert-ASN1 0.270.0-r1: Standard en/decode of ASN.1 structures
 dev-perl/Convert-BER 1.320.0-r1 1.320.0-r2: Class for encoding/decoding BER messages
 dev-perl/Convert-BinHex 1.125.0: Extract data from Macintosh BinHex files
 dev-perl/Convert-Binary-C 0.780.0-r1 0.790.0: Binary Data Conversion using C Types
@@ -5910,7 +5910,7 @@ dev-perl/Data-Perl 0.2.9-r1 0.2.11: Base classes wrapping fundamental Perl data 
 dev-perl/Data-Printer 0.400.0: Colored pretty-print of Perl data structures and objects
 dev-perl/Data-Random 0.120.0 0.130.0: A module used to generate random data
 dev-perl/Data-Section 0.200.7: read multiple hunks of data out of your DATA section
-dev-perl/Data-Serializer 0.600.0-r1: Modules that serialize data structures
+dev-perl/Data-Serializer 0.600.0-r1 0.650.0: Modules that serialize data structures
 dev-perl/Data-ShowTable 4.600.0: routines to display tabular data in several formats
 dev-perl/Data-Stag 0.140.0-r1: Structured Tags datastructures
 dev-perl/Data-Stream-Bulk 0.110.0-r1: N at a time iteration API
