@@ -50,6 +50,13 @@ src_unpack() {
 	unpack "${WORKDIR}/${MY_P}/src/wsjtx.tgz"
 }
 
+src_prepare() {
+	sed -i -e "s/COMMAND \${GZIP_EXECUTABLE}/#  COMMAND/" \
+								manpages/CMakeLists.txt || die
+	eapply_user
+	cmake_src_prepare
+}
+
 src_configure() {
 	cmake_comment_add_subdirectory debian
 
@@ -67,5 +74,5 @@ src_compile() {
 src_install() {
 	cmake_src_install
 	rm "${D}"/usr/bin/rigctl{,d}-wsjtx || die
-	rm "${D}"/usr/share/man/man1/rigctl{,d,com}-wsjtx.1.gz || die
+	rm "${D}"/usr/share/man/man1/rigctl{,d,com}-wsjtx.1 || die
 }
