@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit autotools flag-o-matic linux-info python-single-r1 systemd
 
@@ -65,7 +65,7 @@ pkg_pretend() {
 		fi
 
 		CONFIG_CHECK="~XDP_SOCKETS"
-		ERROR_XDP_SOCKETS="CONFIG_XDP_SOCKETS is not set, making it impossible for Suricata will to load XDP programs. "
+		ERROR_XDP_SOCKETS="CONFIG_XDP_SOCKETS is not set, making it impossible for Suricata to load XDP programs. "
 		ERROR_XDP_SOCKETS+="Other eBPF features should work normally."
 		check_extra_config
 	fi
