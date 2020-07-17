@@ -351,6 +351,13 @@ src_prepare() {
 	sed -i -e "s@check_prog('RUSTFMT', add_rustup_path('rustfmt')@check_prog('RUSTFMT', add_rustup_path('rustfmt_do_not_use')@" \
 		"${S}"/build/moz.configure/rust.configure || die
 
+	if has_version ">=virtual/rust-1.45.0" ; then
+		einfo "Unbreak build with >=rust-1.45.0, bmo#1640982 ..."
+		sed -i \
+			-e 's/\(^cargo_rustc_flags +=.* \)-Clto\( \|$\)/\1/' \
+			"${S}/config/makefiles/rust.mk" || die
+	fi
+
 	# Autotools configure is now called old-configure.in
 	# This works because there is still a configure.in that happens to be for the
 	# shell wrapper configure script
