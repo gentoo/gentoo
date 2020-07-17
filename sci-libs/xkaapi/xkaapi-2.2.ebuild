@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,7 +21,7 @@ IUSE="blas cxx fortran gpu openmp static-libs"
 
 RDEPEND="
 	sys-apps/hwloc
-	virtual/libffi
+	dev-libs/libffi
 "
 DEPEND="${RDEPEND}
 "
