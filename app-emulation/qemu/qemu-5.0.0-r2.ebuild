@@ -68,7 +68,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	qemu_softmmu_targets_riscv64? ( fdt )
 	static? ( static-user !alsa !gtk !opengl !pulseaudio !plugins !rbd !snappy )
 	static-user? ( !plugins )
-	virtfs? ( xattr )
+	virtfs? ( caps xattr )
 	vte? ( gtk )
 	plugins? ( !static !static-user )
 "
@@ -413,6 +413,7 @@ qemu_src_configure() {
 		--with-confsuffix=/qemu
 		--localstatedir=/var
 		--disable-bsd-user
+		--disable-containers # bug #732972
 		--disable-guest-agent
 		--disable-strip
 		--disable-werror
