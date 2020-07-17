@@ -5904,7 +5904,7 @@ dev-perl/Data-ICal 0.220.0 0.240.0: Generates iCalendar (RFC 2445) calendar file
 dev-perl/Data-IEEE754 0.20.0: Pack and unpack big-endian IEEE754 floats and doubles
 dev-perl/Data-ObjectDriver 0.150.0 0.190.0: Simple, transparent data interface, with caching
 dev-perl/Data-OptList 0.110.0: parse and validate simple name/value option pairs
-dev-perl/Data-Page 2.20.0-r1: help when paging through sets of results
+dev-perl/Data-Page 2.20.0-r1 2.30.0: help when paging through sets of results
 dev-perl/Data-Page-Pageset 1.20.0-r1: change long page list to be shorter and well navigate
 dev-perl/Data-Perl 0.2.9-r1: Base classes wrapping fundamental Perl data types
 dev-perl/Data-Printer 0.400.0: Colored pretty-print of Perl data structures and objects
@@ -18805,7 +18805,7 @@ x11-wm/xpra 3.0.2-r1 3.0.5-r1: X Persistent Remote Apps (xpra) and Partitioning 
 xfce-base/exo 0.12.11 4.15.1: Extensions, widgets and framework library with session support for Xfce
 xfce-base/garcon 0.6.4-r2 0.7.0: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.14.1 4.15.2 4.15.3-r1: Unified widget and session management libs for Xfce
-xfce-base/libxfce4util 4.14.0 4.15.0 4.15.1: A basic utility library for the Xfce desktop environment
+xfce-base/libxfce4util 4.14.0 4.15.0 4.15.1 4.15.2: A basic utility library for the Xfce desktop environment
 xfce-base/thunar 1.8.12 1.8.14 1.8.15 4.15.0 4.15.1: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.14.0 4.15.0: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.14-r2: The Xfce Desktop Environment (meta package)
