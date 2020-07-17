@@ -43,12 +43,6 @@ src_prepare() {
 		done
 	fi
 
-	# bug #531032
-	if $(has_version sys-process/dcron); then
-		einfo dcron found, mangling crontab file
-		sed -i 's/@CRON_OWNER@ //' cron/sysstat.crond.in || die 'sed failed'
-	fi
-
 	default
 }
 
@@ -84,4 +78,15 @@ src_install() {
 	systemd_dounit ${PN}.service
 
 	rm "${D}"/usr/share/doc/${PF}/COPYING || die
+}
+
+pkg_postinst() {
+	# bug #531032
+	if $(has_version sys-process/dcron); then
+		ewarn 'You have sys-process/dcron installed. The cron scripts from'
+		ewarn 'by this package are incompatible with dcron.'
+		ewarn 'To avoid lots of email messages about failed cron jobs,'
+		ewarn 'edit /etc/cron.d/sysstat and remove the word `root\''
+		ewarn 'See bug #531032 for more information'
+	fi
 }

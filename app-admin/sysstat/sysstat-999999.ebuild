@@ -79,3 +79,14 @@ src_install() {
 
 	rm "${D}"/usr/share/doc/${PF}/COPYING || die
 }
+
+pkg_postinst() {
+	# bug #531032
+	if $(has_version sys-process/dcron); then
+		ewarn 'You have sys-process/dcron installed. The cron scripts from'
+		ewarn 'by this package are incompatible with dcron.'
+		ewarn 'To avoid lots of email messages about failed cron jobs,'
+		ewarn 'edit /etc/cron.d/sysstat and remove the word `root\''
+		ewarn 'See bug #531032 for more information'
+	fi
+}
