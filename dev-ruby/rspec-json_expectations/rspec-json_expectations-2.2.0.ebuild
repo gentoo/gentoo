@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/waterlink/rspec-json_expectations"
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/rspec dev-util/cucumber )"
