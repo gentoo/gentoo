@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 x86 ~amd64-linux"
 IUSE="+jpeg +opencv plugins raw tiff zip"
 
 REQUIRED_USE="
