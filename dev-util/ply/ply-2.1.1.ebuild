@@ -23,6 +23,7 @@ pkg_pretend() {
 
 src_prepare() {
 	sed -i "/^AC_INIT/c\AC_INIT(${PN}, ${PV}," configure.ac || die
+	eapply "${FILESDIR}/${P}-arm-build-fix.patch"
 	eapply_user
 	eautoreconf
 }
