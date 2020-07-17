@@ -21,13 +21,7 @@ case ${PV}  in
 	case ${PV} in
 	*_beta*|*_rc*) ;;
 	*)
-		KEYWORDS="-* amd64 ~arm arm64 ppc64 ~s390 x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
-		# The upstream tests fail under portage but pass if the build is
-		# run according to their documentation [1].
-		# I am restricting the tests on released versions until this is
-		# solved.
-		# [1] https://golang.org/issues/18442
-		RESTRICT="test"
+		KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc64 ~s390 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
 		;;
 	esac
 esac
@@ -43,16 +37,8 @@ BDEPEND="|| (
 		dev-lang/go-bootstrap )"
 RDEPEND="!<dev-go/go-tools-0_pre20150902"
 
-# These test data objects have writable/executable stacks.
-QA_EXECSTACK="
-	usr/lib/go/src/debug/elf/testdata/*.obj
-	usr/lib/go/src/*.gox
-	"
-
 # Do not complain about CFLAGS, etc, since Go doesn't use them.
 QA_FLAGS_IGNORED='.*'
-
-REQUIRES_EXCLUDE="/usr/lib/go/src/debug/elf/testdata/*"
 
 # The tools in /usr/lib/go should not cause the multilib-strict check to fail.
 QA_MULTILIB_PATHS="usr/lib/go/pkg/tool/.*/.*"
@@ -161,6 +147,9 @@ src_test()
 	cd src
 	PATH="${GOBIN}:${PATH}" \
 	./run.bash -no-rebuild || die "tests failed"
+	cd ..
+	rm -fr pkg/*_race || die
+	rm -fr pkg/obj/go-build || die
 }
 
 src_install()
@@ -176,6 +165,8 @@ src_install()
 	#
 	# deliberately use cp to retain permissions
 	cp -R api bin doc lib pkg misc src test "${ED}"/usr/lib/go
+	# testdata directories are not needed on the installed system
+	rm -fr $(find "${ED}"/usr/lib/go -iname testdata -type d -print)
 	if go_cross_compile; then
 		bin_path="bin/$(go_tuple)"
 	else
