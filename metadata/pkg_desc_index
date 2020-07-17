@@ -17931,7 +17931,7 @@ x11-apps/xdm 1.1.12: X.Org xdm application
 x11-apps/xdpyinfo 1.3.2: Display information utility for X
 x11-apps/xdriinfo 1.0.6: query configuration information of DRI drivers
 x11-apps/xedit 1.2.2: simple text editor for X
-x11-apps/xev 1.2.3: Print contents of X events
+x11-apps/xev 1.2.3 1.2.4: Print contents of X events
 x11-apps/xeyes 1.1.2: X.Org xeyes application
 x11-apps/xf86dga 1.0.3: Test program for the XFree86-DGA extension
 x11-apps/xfd 1.1.3: X.Org xfd application
