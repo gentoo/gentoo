@@ -18,7 +18,7 @@ IUSE_VOICEMAIL_STORAGE="
 	voicemail_storage_odbc
 	voicemail_storage_imap
 "
-IUSE="${IUSE_VOICEMAIL_STORAGE} alsa bluetooth calendar +caps cluster curl dahdi debug doc freetds gtalk http iconv ilbc ldap libressl lua mysql newt odbc osplookup oss pjproject portaudio postgres radius selinux snmp span speex srtp +ssl static statsd syslog vorbis xmpp"
+IUSE="${IUSE_VOICEMAIL_STORAGE} alsa bluetooth calendar +caps cluster curl dahdi debug doc freetds gtalk http iconv ilbc ldap libressl lua mysql newt odbc oss pjproject portaudio postgres radius selinux snmp span speex srtp +ssl static statsd syslog vorbis xmpp"
 IUSE_EXPAND="VOICEMAIL_STORAGE"
 REQUIRED_USE="gtalk? ( xmpp )
 	^^ ( ${IUSE_VOICEMAIL_STORAGE/+/} )
@@ -64,7 +64,6 @@ DEPEND="acct-user/asterisk
 	mysql? ( dev-db/mysql-connector-c:= )
 	newt? ( dev-libs/newt )
 	odbc? ( dev-db/unixODBC )
-	osplookup? ( net-libs/osptoolkit )
 	pjproject? ( net-libs/pjproject )
 	portaudio? ( media-libs/portaudio )
 	postgres? ( dev-db/postgresql:* )
@@ -195,7 +194,6 @@ src_configure() {
 	use_select lua          pbx_lua
 	use_select mysql        app_mysql cdr_mysql res_config_mysql
 	use_select odbc         cdr_adaptive_odbc res_config_odbc {cdr,cel,res,func}_odbc
-	use_select osplookup    app_osplookup
 	use_select oss          chan_oss
 	use_select postgres     {cdr,cel}_pgsql res_config_pgsql
 	use_select radius       {cdr,cel}_radius
