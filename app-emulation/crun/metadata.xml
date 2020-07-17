@@ -26,5 +26,6 @@
 		<flag name="bpf">Enable in Kernel, eBPF (enhanced Berkley Packet Filter)
 			support for managing device controllers.
 		</flag>
+		<flag name="man">Build and install man pages</flag>
 	</use>
 </pkgmetadata>
