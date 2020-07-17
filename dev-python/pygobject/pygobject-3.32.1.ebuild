@@ -20,7 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}
 	>=dev-libs/glib-2.48:2
 	>=dev-libs/gobject-introspection-1.54:=
-	virtual/libffi:=
+	dev-libs/libffi:=
 	cairo? (
 		>=dev-python/pycairo-1.11.1[${PYTHON_USEDEP}]
 		x11-libs/cairo[glib] )
