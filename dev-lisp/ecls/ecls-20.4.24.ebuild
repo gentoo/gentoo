@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils multilib
+inherit autotools
 
 # test phase only works if ecls already installed #516876
 RESTRICT="test"
@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="cxx debug emacs gengc precisegc cpu_flags_x86_sse +threads +unicode +libatomic X"
 
 CDEPEND="dev-libs/gmp:0
-		virtual/libffi
+		dev-libs/libffi
 		libatomic? ( dev-libs/libatomic_ops )
 		>=dev-libs/boehm-gc-7.1[threads?]
 		>=dev-lisp/asdf-2.33-r3:="
@@ -31,9 +31,12 @@ RDEPEND="${CDEPEND}"
 
 S="${WORKDIR}"/${MY_P}
 
+DOCS=( "${FILESDIR}"/README.Gentoo README.md CHANGELOG )
+
 PATCHES=(
 	"${FILESDIR}/${PN}-16.1.3-headers-gentoo.patch"
 	"${FILESDIR}/${PN}-16.1.3-build.patch"
+	"${FILESDIR}/${PN}-20.4.24-donotcompressinfo.patch"
 )
 
 pkg_setup() {
@@ -48,13 +51,16 @@ pkg_setup() {
 src_prepare() {
 	default
 	cp "${EPREFIX}"/usr/share/common-lisp/source/asdf/build/asdf.lisp contrib/asdf/ || die
+	cd src
+	eautoreconf
 }
 
 src_configure() {
+	# maxima won't start without defsystem
 	econf \
-		--with-system-gmp \
+		--enable-gmp=system \
 		--enable-boehm=system \
-		--enable-longdouble=yes \
+		--with-defsystem \
 		--with-dffi \
 		$(use_with cxx) \
 		$(use_enable gengc) \
@@ -63,9 +69,7 @@ src_configure() {
 		$(use_enable libatomic libatomic system) \
 		$(use_with cpu_flags_x86_sse sse) \
 		$(use_enable threads) \
-		$(use_with threads __thread) \
 		$(use_enable unicode) \
-		$(use_with unicode unicode-names) \
 		$(use_with X x)
 }
 
@@ -80,15 +84,12 @@ src_compile() {
 		touch build/TAGS
 	fi
 
-	#parallel make fails
-	emake -j1
+	emake
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 
-	dodoc README.md CHANGELOG
-	dodoc "${FILESDIR}"/README.Gentoo
 	pushd build/doc
 	newman ecl.man ecl.1
 	newman ecl-config.man ecl-config.1
