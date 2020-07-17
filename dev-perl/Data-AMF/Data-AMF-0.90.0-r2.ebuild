@@ -23,6 +23,7 @@ BDEPEND="${RDEPEND}
 	test? (
 		dev-perl/YAML
 		dev-perl/Spiffy
+		dev-perl/Test-Base
 		virtual/perl-Test-Simple
 	)
 "
