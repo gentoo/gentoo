@@ -18,7 +18,7 @@
 		<name>Lars Wendler</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">sstephenson/bats</remote-id>
+		<remote-id type="github">bats-core/bats-core</remote-id>
 	</upstream>
 	<longdescription lang="en">
 		Bats is a TAP-compliant testing framework for Bash. It provides a simple
