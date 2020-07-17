@@ -5911,7 +5911,7 @@ dev-perl/Data-Printer 0.400.0: Colored pretty-print of Perl data structures and 
 dev-perl/Data-Random 0.120.0 0.130.0: A module used to generate random data
 dev-perl/Data-Section 0.200.7: read multiple hunks of data out of your DATA section
 dev-perl/Data-Serializer 0.600.0-r1 0.650.0: Modules that serialize data structures
-dev-perl/Data-ShowTable 4.600.0: routines to display tabular data in several formats
+dev-perl/Data-ShowTable 4.600.0 4.600.0-r1: routines to display tabular data in several formats
 dev-perl/Data-Stag 0.140.0-r1: Structured Tags datastructures
 dev-perl/Data-Stream-Bulk 0.110.0-r1: N at a time iteration API
 dev-perl/Data-Structure-Util 0.160.0: Change nature of data within a structure
