@@ -42,13 +42,19 @@ src_configure() {
 		append-ldflags -no-pie
 	fi
 
+	if tc-is-gcc && ! use x86; then
+		gprolog_use_regs=yes
+	else
+		gprolog_use_regs=no
+	fi
+
 	cd "${S}"/src
 	econf \
 		CFLAGS_MACHINE="${CFLAGS_MACHINE}" \
 		--with-c-flags="${CFLAGS}" \
 		--with-install-dir="${EPREFIX}"/usr/$(get_libdir)/${P} \
 		--with-links-dir="${EPREFIX}"/usr/bin \
-		$(use_enable !x86 regs) \
+		--enable-regs=$gprolog_use_regs \
 		$(use_with doc doc-dir "${EPREFIX}"/usr/share/doc/${PF}) \
 		$(use_with doc html-dir "${EPREFIX}"/usr/share/doc/${PF}/html) \
 		$(use_with examples examples-dir "${EPREFIX}"/usr/share/doc/${PF}/examples)
