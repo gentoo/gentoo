@@ -1,0 +1,72 @@
+From 9eb24ca5c194482faf86e68d93527707fa01a78e Mon Sep 17 00:00:00 2001
+From: Ilya Fedin <fedin-ilja2010@ya.ru>
+Date: Thu, 16 Jul 2020 18:54:29 +0400
+Subject: [PATCH] QtWaylandClient contains QtXkbCommonSupport includes
+
+---
+ external/qt/CMakeLists.txt | 25 +++++++++++++++++++++++++
+ external/qt/package.cmake  |  1 +
+ 2 files changed, 26 insertions(+)
+
+diff --git a/external/qt/CMakeLists.txt b/external/qt/CMakeLists.txt
+index 25b662a..490d13b 100644
+--- a/cmake/external/qt/CMakeLists.txt
++++ b/cmake/external/qt/CMakeLists.txt
+@@ -57,6 +57,15 @@ if (DESKTOP_APP_USE_PACKAGED)
+         )
+     endif()
+ 
++    if (Qt5XkbCommonSupport_FOUND)
++        target_link_libraries(external_qt INTERFACE Qt5::XkbCommonSupport)
++
++        target_include_directories(external_qt
++        INTERFACE
++            ${Qt5XkbCommonSupport_PRIVATE_INCLUDE_DIRS}
++        )
++    endif()
++
+     if (Qt5WaylandClient_FOUND)
+         target_link_libraries(external_qt INTERFACE Qt5::WaylandClient)
+ 
+@@ -97,6 +106,15 @@ else()
+         )
+     endif()
+ 
++    if (Qt5XkbCommonSupport_FOUND)
++        target_include_directories(external_qt SYSTEM
++        INTERFACE
++            ${qt_loc}/include/QtXkbCommonSupport
++            ${qt_loc}/include/QtXkbCommonSupport/${qt_version}
++            ${qt_loc}/include/QtXkbCommonSupport/${qt_version}/QtXkbCommonSupport
++        )
++    endif()
++
+     if (LINUX)
+         target_include_directories(external_qt SYSTEM
+         INTERFACE
+@@ -129,6 +147,13 @@ else()
+         )
+     endif()
+ 
++    if (Qt5XkbCommonSupport_FOUND)
++        target_compile_definitions(external_qt
++        INTERFACE
++            QT_XKBCOMMON_SUPPORT_LIB
++        )
++    endif()
++
+     if (LINUX)
+         target_compile_definitions(external_qt
+         INTERFACE
+diff --git a/external/qt/package.cmake b/external/qt/package.cmake
+index 4e97717..ac40f05 100644
+--- a/cmake/external/qt/package.cmake
++++ b/cmake/external/qt/package.cmake
+@@ -25,6 +25,7 @@ find_package(Qt5Gui COMPONENTS QWebpPlugin REQUIRED)
+ 
+ if (LINUX)
+     find_package(Qt5 COMPONENTS WaylandClient REQUIRED)
++    find_package(Qt5 COMPONENTS XkbCommonSupport)
+ 
+     if (NOT DESKTOP_APP_USE_PACKAGED)
+         find_package(Qt5 COMPONENTS Svg X11Extras REQUIRED)
