@@ -5693,7 +5693,7 @@ dev-perl/CDDB 1.222.0-r2: high-level interface to cddb/freedb protocol
 dev-perl/CDDB-File 1.50.0-r1 1.50.0-r2: Parse a CDDB/freedb data file
 dev-perl/CDDB_get 2.280.0-r1 2.280.0-r2: Read the CDDB entry for an audio CD in your drive
 dev-perl/CGI 4.220.0 4.400.0 4.470.0 4.500.0: Simple Common Gateway Interface Class
-dev-perl/CGI-Ajax 0.707.0 0.707.0-r1: a perl-specific system for writing Asynchronous web applications
+dev-perl/CGI-Ajax 0.707.0-r1: a perl-specific system for writing Asynchronous web applications
 dev-perl/CGI-Builder 1.360.0-r2: Framework to build simple or complex web-apps
 dev-perl/CGI-Compile 0.220.0 0.240.0: Compile .cgi scripts to a code reference like ModPerl::Registry
 dev-perl/CGI-Emulate-PSGI 0.230.0: PSGI adapter for CGI
@@ -5703,7 +5703,7 @@ dev-perl/CGI-FormBuilder 3.100.0 3.100.0-r1: Extremely fast, reliable form gener
 dev-perl/CGI-PSGI 0.150.0-r1 0.150.0-r2: Adapt CGI.pm to the PSGI protocol
 dev-perl/CGI-Session 4.480.0-r2 4.480.0-r3: persistent session data in CGI applications
 dev-perl/CGI-Simple 1.115.0 1.250.0: A Simple totally OO CGI interface that is CGI.pm compliant
-dev-perl/CHI 0.600.0 0.600.0-r1: Unified cache handling interface
+dev-perl/CHI 0.600.0-r1: Unified cache handling interface
 dev-perl/CPAN-Changes 0.400.2 0.400.2-r1: Read and write Changes files
 dev-perl/CPAN-Checksums 2.120.0: Write a CHECKSUMS file for a directory as on CPAN
 dev-perl/CPAN-DistnameInfo 0.120.0-r2: Extract distribution name and version from a distribution filename
@@ -5712,10 +5712,10 @@ dev-perl/CPAN-Mini 1.111.16: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.350.0: Inject modules into a CPAN::Mini mirror
 dev-perl/CPAN-Perl-Releases 3.760.0 5.202.3.200 5.202.4.280 5.202.6.200: Mapping Perl releases on CPAN to the location of the tarballs
 dev-perl/CPAN-Uploader 0.103.13 0.103.14: upload things to the CPAN
-dev-perl/CQL-Parser 1.130.0 1.130.0-r1: compiles CQL strings into parse trees of Node subtypes
-dev-perl/CSS-Minifier 0.10.0-r1 0.10.0-r2: Perl extension for minifying CSS
+dev-perl/CQL-Parser 1.130.0-r1: compiles CQL strings into parse trees of Node subtypes
+dev-perl/CSS-Minifier 0.10.0-r2: Perl extension for minifying CSS
 dev-perl/CSS-Minifier-XS 0.90.0-r1 0.90.0-r2: XS based CSS minifier
-dev-perl/CSS-Packer 2.50.0 2.70.0: Another CSS minifier
+dev-perl/CSS-Packer 2.70.0: Another CSS minifier
 dev-perl/CSS-Squish 0.100.0-r1 0.100.0-r2: Compact many CSS files into one big file
 dev-perl/CSS-Tiny 1.200.0: Read/Write .css files with as little code as possible
 dev-perl/Cache 2.110.0: the Cache interface
@@ -5728,12 +5728,12 @@ dev-perl/Cairo 1.106.0 1.107.0 1.107.0-r1: Perl interface to the cairo library
 dev-perl/Cairo-GObject 1.4.0-r1 1.5.0 1.5.0-r1: Integrate Cairo into the Glib type system
 dev-perl/Calendar-Simple 1.230.0 2.0.0: Perl extension to create simple calendars
 dev-perl/Canary-Stability 2012.0.0 2013.0.0: Canary to check perl compatibility for schmorp's modules
-dev-perl/Capture-Tiny 0.460.0 0.480.0: Capture STDOUT and STDERR from Perl, XS or external programs
+dev-perl/Capture-Tiny 0.480.0: Capture STDOUT and STDERR from Perl, XS or external programs
 dev-perl/Carp-Always 0.130.0 0.160.0: Warns and dies noisily with stack backtraces
 dev-perl/Carp-Assert 0.210.0 0.210.0-r1: Executable comments in carp
 dev-perl/Carp-Assert-More 1.160.0 1.200.0: convenience wrappers around Carp::Assert
 dev-perl/Carp-Clan 6.60.0 6.80.0: Report errors from perspective of caller of a clan of modules
-dev-perl/Chart 2.4.10 2.4.10-r1: The Perl Chart Module
+dev-perl/Chart 2.4.10-r1: The Perl Chart Module
 dev-perl/Chart-Math-Axis 1.60.0-r2 1.60.0-r3: Implements an algorithm to find good values for chart axis
 dev-perl/Chatbot-Eliza 1.80.0: A clone of the classic Eliza program
 dev-perl/Cisco-IPPhone 0.50.0-r2: Cisco IP Phone interface using XML Objects
@@ -5742,9 +5742,9 @@ dev-perl/Class-Accessor 0.340.0-r1 0.500.0 0.510.0: Automated accessor generatio
 dev-perl/Class-Accessor-Chained 0.10.0-r1 0.10.0-r2: Perl module to make chained class accessors
 dev-perl/Class-Accessor-Grouped 0.100.120 0.100.140: Lets you build groups of accessors
 dev-perl/Class-Accessor-Lite 0.80.0 0.80.0-r1: A minimalistic variant of Class::Accessor
-dev-perl/Class-Adapter 1.80.0-r1 1.90.0: Implementation of the 'Adapter' Design Pattern
+dev-perl/Class-Adapter 1.90.0: Implementation of the 'Adapter' Design Pattern
 dev-perl/Class-Autouse 2.10.0-r2 2.10.0-r3: Runtime aspect loading of one or more classes
-dev-perl/Class-Base 0.80.0 0.90.0: Useful base class for deriving other modules
+dev-perl/Class-Base 0.90.0: Useful base class for deriving other modules
 dev-perl/Class-C3 0.330.0 0.340.0: A pragma to use the C3 method resolution order algortihm
 dev-perl/Class-C3-Componentised 1.1.0-r1 1.1.2: Load mix-ins or components to your C3-based class
 dev-perl/Class-C3-XS 0.140.0 0.150.0 0.150.0-r1: XS speedups for Class::C3
