@@ -130,6 +130,7 @@ sci-physics/root cudnn
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-03-11)
 # Encrypted Media Extensions (eme-free) can't be disabled everywhere
+mail-client/thunderbird eme-free
 www-client/firefox eme-free
 
 # Michał Górny <mgorny@gentoo.org> (2020-03-03)
