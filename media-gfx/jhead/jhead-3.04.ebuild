@@ -9,7 +9,7 @@ SRC_URI="http://www.sentex.net/~mwandel/${PN}/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ppc ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 ~sparc x86"
 
 PATCHES=( "${FILESDIR}/${P}-mkstemp-fix-makefile.patch" )
 
