@@ -1,6 +1,12 @@
 # Unmask the flag which corresponds to ARCH.
 -ppc
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-07-18)
+# net-libs/webkit-gtk has no ppc keywords
+webkit
+# net-libs/gnome-online-accounts depends on net-libs/webkit-gtk
+gnome-online-accounts
+
 # James Le Cuirot <chewi@gentoo.org> (2015-01-12)
 # Java is no longer supported on ppc.
 java
