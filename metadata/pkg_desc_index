@@ -2437,9 +2437,9 @@ app-pda/ideviceinstaller 1.1.0: A tool to interact with the installation_proxy o
 app-pda/ifuse 1.1.3: Mount Apple iPhone/iPod Touch file systems for backup purposes
 app-pda/iripdb 0.1.3b: Allows generating the DB files necessary for the iRiver iHP-1xx
 app-pda/jpilot 1.8.2-r1: Desktop Organizer Software for the Palm Pilot
-app-pda/libimobiledevice 1.2.0-r1 1.2.1_pre20200220 1.3.0: Support library to communicate with Apple iPhone/iPod Touch devices
-app-pda/libplist 2.1.0 2.2.0: Support library to deal with Apple Property Lists (Binary & XML)
-app-pda/libusbmuxd 1.0.10-r1 2.0.1 2.0.2: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
+app-pda/libimobiledevice 1.2.0-r1 1.2.1_pre20200220 1.3.0-r1: Support library to communicate with Apple iPhone/iPod Touch devices
+app-pda/libplist 2.1.0 2.2.0-r1: Support library to deal with Apple Property Lists (Binary & XML)
+app-pda/libusbmuxd 1.0.10-r1 2.0.1 2.0.2-r1: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-pda/pilot-link 0.12.5-r2: Suite of tools for moving data between a Palm device and a desktop
 app-pda/usbmuxd 1.1.0 1.1.1_pre20200121 1.1.1: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-portage/cfg-update 1.8.9: Easy to use GUI & CLI alternative for etc-update
@@ -11444,7 +11444,7 @@ games-util/xgame 1.7.1-r1: Run games in a separate X session
 games-util/xgame-gtk2 2.0.2-r1: Run games in a separate X session
 games-util/xgamer 0.6.2: A launcher for starting games in a second X session
 games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
-gnome-base/dconf 0.32.0-r2 0.34.0: Simple low-level configuration system
+gnome-base/dconf 0.32.0-r2 0.34.0 0.36.0: Simple low-level configuration system
 gnome-base/dconf-editor 3.34.4: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r4: GNOME configuration system and daemon
 gnome-base/gdm 3.34.1 3.36.2 3.36.3: GNOME Display Manager for managing graphical display servers and user logins
@@ -11459,7 +11459,7 @@ gnome-base/gnome-extra-apps 3.34.4: Sub-meta package for the applications of GNO
 gnome-base/gnome-flashback 3.34.2 3.36.3: GNOME Flashback session
 gnome-base/gnome-keyring 3.31.91-r1 3.34.0: Password and keyring managing daemon
 gnome-base/gnome-light 3.34.4: Meta package for GNOME-Light, merge this package to install
-gnome-base/gnome-menus 3.32.0: Library and layout configuration for the Desktop Menu fd.o specification
+gnome-base/gnome-menus 3.32.0 3.36.0: Library and layout configuration for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
 gnome-base/gnome-panel 3.34.1 3.36.2: The GNOME Flashback Panel
 gnome-base/gnome-session 3.34.2 3.36.0: Gnome session manager

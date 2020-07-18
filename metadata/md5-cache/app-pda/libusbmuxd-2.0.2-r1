@@ -8,7 +8,7 @@ IUSE=static-libs
 KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2+ LGPL-2.1+
 RDEPEND=>=app-pda/libplist-2.2.0:=
-SLOT=0/6
+SLOT=0/2.0-6
 SRC_URI=https://cgit.libimobiledevice.org/libusbmuxd.git/snapshot/libusbmuxd-2.0.2.tar.bz2
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=2b3c5e786b113eca40c163c5d463f01e
+_md5_=279070c97b9f929aa121707ef60e0b8e
