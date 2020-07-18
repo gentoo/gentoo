@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-19)
+# Unmaintained upstream and broken by ECM 5.72.0, masked for removal in 30 days.
+media-video/plasma-mediacenter
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-07-18)
 # Stuck on Python 2, depends on deprecated dev-python/pygtk, bug #708162.
 # Needs a maintainer and >=2.0.1 version bump. Masked for removal in 30 days.
