@@ -48,7 +48,7 @@ BDEPEND="
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
 	>=sys-devel/gettext-0.19.8
-	gtk-doc? ( >=dev-util/gtk-doc-1.20
+	gtk-doc? ( >=dev-util/gtk-doc-1.32-r2
 		app-text/docbook-xml-dtd:4.2
 		app-text/docbook-xml-dtd:4.5 )
 	systemtap? ( >=dev-util/systemtap-1.3 )
