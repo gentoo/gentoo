@@ -13,7 +13,7 @@ SRC_URI="https://github.com/libimobiledevice/libimobiledevice/releases/download/
 # While COPYING* doesn't mention 'or any later version', all the headers do, hence use +
 LICENSE="GPL-2+ LGPL-2.1+"
 
-SLOT="0/6" # based on SONAME of libimobiledevice.so
+SLOT="0/1.0-6" # based on SONAME of libimobiledevice-1.0.so
 
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="doc gnutls libressl python static-libs"
