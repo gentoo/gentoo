@@ -10,5 +10,5 @@ RDEPEND=!sys-kernel/vanilla-kernel-bin:5.4.52 || ( sys-kernel/installkernel-gent
 RESTRICT=!test? ( test ) test? ( userpriv )
 SLOT=5.4.52
 SRC_URI=test? ( amd64? ( https://dev.gentoo.org/~mgorny/dist/tinycorelinux-10.1-amd64.qcow2 ) x86? ( https://dev.gentoo.org/~mgorny/dist/tinycorelinux-10.1-x86.qcow2 ) ) https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.52.tar.xz amd64? ( https://src.fedoraproject.org/rpms/kernel/raw/2809b7faa6a8cb232cd825096c146b7bdc1e08ea/f/kernel-x86_64.config -> kernel-x86_64.config.5.4.21 ) x86? ( https://src.fedoraproject.org/rpms/kernel/raw/2809b7faa6a8cb232cd825096c146b7bdc1e08ea/f/kernel-i686.config -> kernel-i686.config.5.4.21 )
-_eclasses_=kernel-build	43d32565dd9cb9407e8012847c57e035	kernel-install	aa03731232b5b5a2ae49e85cb2f65400	mount-boot	20014ae7a3e81eb2c65a4d4d86d2560d	multilib	2477ebe553d3e4d2c606191fe6c33602	portability	e8f7ef3a41965b21a734550f8a94c1c6	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=kernel-build	43d32565dd9cb9407e8012847c57e035	kernel-install	f449bbcb4318bced8ce33865bbbfaa2c	mount-boot	20014ae7a3e81eb2c65a4d4d86d2560d	multilib	2477ebe553d3e4d2c606191fe6c33602	portability	e8f7ef3a41965b21a734550f8a94c1c6	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=fca6ff1d0067edd16aadae2dd9ffdf10
