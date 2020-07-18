@@ -1334,6 +1334,7 @@ dev-db/aerospike-server-community:tools - Install extra tools
 dev-db/etcd:server - Installs etcd daemon
 dev-db/firebird:server - Install the server components of Firebird, not just the client
 dev-db/firebird:xinetd - Install ClassicServer
+dev-db/influxdb:man - Build and install man pages
 dev-db/mariadb:backup - Build mariadb-backup which supports SST and hot backup of InnoDB, Aria and MyISAM including compression and encryption
 dev-db/mariadb:client-libs - Build the client libraries from the server package instead of the C Connector packages
 dev-db/mariadb:extraengine - Add support for alternative storage engines (Archive, CSV, Blackhole, Federated(X), Partition)
