@@ -3,12 +3,13 @@
 
 EAPI=7
 
-inherit flag-o-matic vcs-snapshot
+inherit flag-o-matic
+
+MY_P=${P/_/-}
 
 DESCRIPTION="GNU Midnight Commander is a text based file manager"
 HOMEPAGE="https://www.midnight-commander.org"
-#SRC_URI="http://ftp.midnight-commander.org/${P}.tar.xz"
-SRC_URI="https://www.midnight-commander.org/nopaste/tarball/mc-4.8.24-163-g171957980.tar.xz -> ${P}.tar.xz"
+SRC_URI="http://ftp.midnight-commander.org/${MY_P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -38,6 +39,8 @@ DEPEND="${RDEPEND}
 	"
 
 RESTRICT="!test? ( test )"
+
+S=${WORKDIR}/${MY_P}
 
 pkg_pretend() {
 	if use slang && use unicode ; then
