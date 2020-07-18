@@ -7,7 +7,8 @@ inherit autotools linux-info
 
 DESCRIPTION="Dynamic instrumentation of the Linux kernel with BPF and kprobes"
 HOMEPAGE="https://github.com/iovisor/ply"
-SRC_URI="https://github.com/iovisor/ply/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/iovisor/ply/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/iovisor/ply/commit/1bc183af8703023e377f92716ecd3f339ffffd11.patch -> ${P}-arm-build-fix.patch"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -23,7 +24,7 @@ pkg_pretend() {
 
 src_prepare() {
 	sed -i "/^AC_INIT/c\AC_INIT(${PN}, ${PV}," configure.ac || die
-	eapply "${FILESDIR}/${P}-arm-build-fix.patch"
+	eapply "${DISTDIR}/${P}-arm-build-fix.patch"
 	eapply_user
 	eautoreconf
 }
