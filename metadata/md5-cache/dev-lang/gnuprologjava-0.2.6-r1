@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install preinst prepare setup
+DEPEND=>=virtual/jdk-1.6:= dev-java/ant-core >=dev-java/java-config-2.2.0-r3 >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
+DESCRIPTION=GNU Prolog for Java is an implementation of ISO Prolog as a Java library
+EAPI=7
+HOMEPAGE=https://www.gnu.org/software/gnuprologjava
+IUSE=doc elibc_FreeBSD elibc_FreeBSD
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-3+
+RDEPEND=>=virtual/jdk-1.6:= >=dev-java/java-config-2.2.0-r3
+SLOT=0
+SRC_URI=mirror://gnu/gnuprologjava/gnuprologjava-0.2.6-src.zip
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	java-ant-2	8d9cb415f1ca9fc7ebc5a74bacec300c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	16d46032afaca1d6d0621f82084880cb	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=35716cecfbc929de0b44d0562ad9f0ab
