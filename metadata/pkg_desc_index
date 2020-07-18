@@ -5916,7 +5916,7 @@ dev-perl/Data-Stag 0.140.0-r1 0.140.0-r2: Structured Tags datastructures
 dev-perl/Data-Stream-Bulk 0.110.0-r1 0.110.0-r2: N at a time iteration API
 dev-perl/Data-Structure-Util 0.160.0 0.160.0-r1: Change nature of data within a structure
 dev-perl/Data-Types 0.90.0 0.170.0: Validate and convert data types.
-dev-perl/Data-URIEncode 0.110.0-r1: Allow complex data structures to be encoded using flat URIs
+dev-perl/Data-URIEncode 0.110.0-r1 0.110.0-r2: Allow complex data structures to be encoded using flat URIs
 dev-perl/Data-UUID 1.221.0: Generate Globally/Universally Unique Identifiers (GUIDs/UUIDs)
 dev-perl/Data-Uniqid 0.120.0-r1: Perl extension for simple generating of unique ids
 dev-perl/Data-Utilities 0.40.0-r1: Merge nested Perl data structures
@@ -17306,7 +17306,7 @@ sys-kernel/kpatch 0.6.3 0.7.1 9999: Dynamic kernel patching for Linux
 sys-kernel/linux-docs 4.19.114 5.4.39: Developer documentation generated from the Linux kernel
 sys-kernel/linux-firmware 20200316 20200421 20200519 20200619 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.14-r1 4.19 5.4 5.4-r1 5.5 5.6 5.7: Linux system headers
-sys-kernel/mips-sources 4.4.196 4.9.196 4.14.149 4.18.20 4.19.79 4.20.17: Kernel.org sources for MIPS-based machines
+sys-kernel/mips-sources 4.4.230 4.9.230 4.14.188 4.18.20 4.19.133 4.20.17: Kernel.org sources for MIPS-based machines
 sys-kernel/pf-sources 5.6_p8 5.7_p1 5.7_p2 5.7_p3 5.7_p4: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p20190925 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
