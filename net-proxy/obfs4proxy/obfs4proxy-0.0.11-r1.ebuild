@@ -39,13 +39,13 @@ go-module_set_globals
 SRC_URI="https://gitlab.com/yawning/obfs4/-/archive/${P}/obfs4-${P}.tar.gz -> ${P}.tar.gz
 	${EGO_SUM_SRC_URI}"
 
-LICENSE="BSD BSD-2 CC0-1.0 BZIP2 GPL-3+ MIT public-domain"
+LICENSE="BSD CC0-1.0 BZIP2 GPL-3+ MIT public-domain"
 SLOT="0"
 KEYWORDS="amd64 arm x86"
 
 S="${WORKDIR}/obfs4-${P}"
 
-DOCS=( README.md ChangeLog doc/obfs4-spec.txt )
+DOCS=( README.md ChangeLog LICENSE-GPL3.txt doc/obfs4-spec.txt )
 
 src_compile() {
 	go build -o ${PN}/${PN} ./${PN} || die
