@@ -3,10 +3,10 @@ DEPEND=!<dev-perl/libwww-perl-6 >=dev-perl/HTTP-Message-6.0.0 dev-lang/perl
 DESCRIPTION=HTTP content negotiation
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/HTTP-Negotiate
-KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=!<dev-perl/libwww-perl-6 >=dev-perl/HTTP-Message-6.0.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/G/GA/GAAS/HTTP-Negotiate-6.01.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=711112f5c11a183953e2173bdfdcaecc
+_md5_=2d56790c43acc2b23e77169d5cea520e
