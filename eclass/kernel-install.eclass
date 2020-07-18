@@ -49,7 +49,7 @@ SRC_URI+="
 			https://dev.gentoo.org/~mgorny/dist/tinycorelinux-${TCL_VER}-amd64.qcow2
 		)
 		x86? (
-				https://dev.gentoo.org/~mgorny/dist/tinycorelinux-${TCL_VER}-x86.qcow2
+			https://dev.gentoo.org/~mgorny/dist/tinycorelinux-${TCL_VER}-x86.qcow2
 		)
 	)"
 
@@ -231,6 +231,7 @@ kernel-install_test() {
 	cat > run.sh <<-EOF || die
 		#!/bin/sh
 		exec qemu-system-${qemu_arch} \
+			-cpu max \
 			-m 256M \
 			-display none \
 			-no-reboot \
