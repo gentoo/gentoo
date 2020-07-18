@@ -434,11 +434,9 @@ dev-tex/feynmf
 # Games depending on dead gnome-base/libgnomeui.
 # games-board/gnono: Bug #726788, last release 2007, abandoned upstream.
 # games-puzzle/gtetrinet: Bug #726798 last release 2006, abandoned upstream.
-# games-board/mt_gtk_client: Bug #726808, last commit 17 years ago.
 # Masked for removal in 30 days.
 games-board/gnono
 games-puzzle/gtetrinet
-games-board/mt_gtk_client
 
 # Hans de Graaff <graaff@gentoo.org> (2020-06-14)
 # Ruby 2.4 is no longer supported by upstream and no longer gets
