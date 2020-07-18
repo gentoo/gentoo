@@ -76,6 +76,7 @@ BDEPEND="
 
 PATCHES=(
 	"${WORKDIR}"/patches
+	"${FILESDIR}"/libplist-2.2.patch
 )
 
 src_configure() {
