@@ -17326,7 +17326,7 @@ sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify so
 sys-libs/freeipmi 1.5.7 1.6.4 1.6.5: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.13-r2 1.14.1 1.17 1.18 1.18.1: Standard GNU database libraries
-sys-libs/glibc 2.19-r2 2.25-r11 2.30-r8 2.30-r9 2.31-r4 2.31-r5 9999: GNU libc C library
+sys-libs/glibc 2.19-r2 2.25-r11 2.30-r8 2.30-r9 2.31-r4 2.31-r5 2.31-r6 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 5.1.2: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.1.0: Library for managing partitions
