@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure install
+DEPEND=dev-libs/capstone:0= ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
+DESCRIPTION=unix-like reverse engineering framework and commandline tools
+EAPI=7
+HOMEPAGE=http://www.radare.org
+IUSE=ssl libressl
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/capstone:0= ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
+SLOT=0
+SRC_URI=https://github.com/radareorg/radare2/archive/4.5.0.tar.gz -> radare2-4.5.0.tar.gz
+_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=819c22b39b3ee99483a4b7627880b556

@@ -446,7 +446,7 @@ app-admin/abrt 2.12.0-r2 2.14.0 2.14.1: Automatic bug detection and reporting to
 app-admin/aerospike-amc-community 3.6.13-r2 4.0.19-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0.13: A webserver log analyzer
-app-admin/ansible 2.9.7 2.9.9 2.9.10 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.9.9 2.9.10 9999: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-cmdb 1.28: Ansible Configuration Management Database
 app-admin/ansible-lint 4.0.1 4.1.0: Checks ansible playbooks for practices and behaviour that can be improved
 app-admin/apache-tools 2.4.41 2.4.43: Useful Apache tools - htdigest, htpasswd, ab, htdbm
@@ -10496,7 +10496,7 @@ dev-util/qdevicemonitor 1.0.1-r2 9999: Crossplatform log viewer for Android, iOS
 dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
 dev-util/qstlink2 1.2.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.66 9999: quilt patch manager
-dev-util/radare2 4.4.0-r1 9999: unix-like reverse engineering framework and commandline tools
+dev-util/radare2 4.4.0-r1 4.5.0 9999: unix-like reverse engineering framework and commandline tools
 dev-util/ragel 6.7-r1 6.8 6.9 6.10 7.0.0.9 7.0.0.10 7.0.0.10-r1 7.0.0.10-r2 7.0.0.12: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 1.0.2 1.0.3: Command line tools for use with Review Board
@@ -13951,7 +13951,7 @@ net-analyzer/httping 2.5 9999999: like ping but for HTTP requests
 net-analyzer/hunt 1.5-r1 1.5-r3 1.5_p6_p1: tool for checking well known weaknesses in the TCP/IP protocol
 net-analyzer/hydra 8.1 8.9.1 9.0 9.0-r1 9999999: Parallelized network login hacker
 net-analyzer/ibmonitor 1.4 1.4-r1: Interactive bandwidth monitor
-net-analyzer/icinga2 2.11.3 2.11.4 9999: Distributed, general purpose, network monitoring engine
+net-analyzer/icinga2 2.11.4 9999: Distributed, general purpose, network monitoring engine
 net-analyzer/ifmetric 0.3-r2: Set metrics of all IPv4 routes attached to a given network interface at once
 net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for snmp targets
 net-analyzer/ifstatus 1.1.0-r2 2.0.0: A simple CLI program for displaying network statistics in real time
