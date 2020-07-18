@@ -47,7 +47,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "Version 9.0.0 is a BREAKING CHANGE! bliss-initramfs now has native"
+	elog "Version >=9.0.0 is a BREAKING CHANGE! bliss-initramfs now has native"
 	elog "zfs encryption support, and LUKS has been completely removed. If you"
 	elog "are using LUKS, please stay on version 8.1.0 since that is the last"
 	elog "version to support LUKS!\n"
