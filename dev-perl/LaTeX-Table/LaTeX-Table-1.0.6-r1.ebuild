@@ -12,7 +12,7 @@ DESCRIPTION="Perl extension for the automatic generation of LaTeX tables"
 
 LICENSE="|| ( GPL-1+ Artistic )"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc ppc64 x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm arm64 ppc ppc64 x86 ~ppc-aix ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
