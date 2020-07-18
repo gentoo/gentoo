@@ -12,7 +12,7 @@ HOMEPAGE="https://git.gnome.org/browse/libzapojit"
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="+introspection"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~sparc x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.28:2
