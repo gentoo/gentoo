@@ -3385,7 +3385,6 @@ dev-embedded/dfu-programmer 0.7.2-r1: A Device Firmware Update based USB program
 dev-embedded/esptool 2.8: Utility to communicate with the ROM bootloader in Espressif ESP8266 and ESP32
 dev-embedded/freaklabs-boards 1.0.0: Arduino hardware definitions for freaklabs boards
 dev-embedded/ftdi_eeprom 0.3-r1 1.0: Utility to program external EEPROM for FTDI USB chips
-dev-embedded/gnome-avrdude 0.1: GNOME GUI for avrdude
 dev-embedded/gnusim8085 1.3.7: A GTK2 8085 Simulator
 dev-embedded/gpsim 0.29.0 0.30.0: A simulator for the Microchip PIC microcontrollers
 dev-embedded/gputils 1.5.0: Tools including assembler, linker and librarian for PIC microcontrollers
@@ -10884,7 +10883,6 @@ games-board/gnome-chess 3.34.0: Play the classic two-player boardgame of chess
 games-board/gnome-hearts 0.3.1-r2: A clone of classic hearts card game
 games-board/gnome-mahjongg 3.34.0: Disassemble a pile of tiles by removing matching pairs
 games-board/gnome-mines 3.34.0: Clear hidden mines from a minefield
-games-board/gnono 1.9.1-r1: A rewrite for GNOME of the Windows card game WUNO
 games-board/gnubg 1.06.002-r1: GNU BackGammon
 games-board/gnuchess 6.2.7: Console based chess interface
 games-board/gnuchess-book 1.02-r1: Opening book for gnuchess
@@ -10900,7 +10898,6 @@ games-board/mah-jong 1.14-r1: A networked Mah Jong program, together with a comp
 games-board/maitretarot 0.1.98-r1: server for the french tarot game maitretarot
 games-board/megamek 0.34.10-r1: an unofficial, online version of the Classic BattleTech board game
 games-board/mt_dolphin_ia 0.1.98-r1: client for the french tarot game maitretarot
-games-board/mt_gtk_client 0.1.98-r1: client for the french tarot game maitretarot
 games-board/mt_ncurses_client 0.1.98-r1: client for the french tarot game maitretarot
 games-board/natch 2.4-r1: A program to solve chess proof games
 games-board/openyahtzee 1.9.3: A full-featured wxWidgets version of the classic dice game Yahtzee
@@ -10915,7 +10912,6 @@ games-board/pychess 1.0.0 1.0.2: A chess client for GNOME
 games-board/pysolfc 2.6.4-r1: An exciting collection of more than 1000 solitaire card games
 games-board/scid 4.6.2-r1: a free chess database application
 games-board/simsu 1.3.9: Basic sudoku game
-games-board/sirius 0.8.0-r1: A program for playing the game of othello/reversi
 games-board/sjeng 11.2-r2: Console based chess interface
 games-board/spider 1.2_p4-r2: Spider Solitaire
 games-board/stockfish 10 11: Free UCI chess engine, claimed to be the strongest in the world
@@ -11183,7 +11179,6 @@ games-puzzle/gnurobbo 0.66-r1: Robbo, a popular Atari XE/XL game ported to Linux
 games-puzzle/gottet 1.1.9: Tetris clone based on Qt5
 games-puzzle/greedy 0.2.0-r1: fun little ncurses puzzle game
 games-puzzle/groundhog 1.4-r1: Put the balls in the pockets of the same color by manipulating a maze of tubes
-games-puzzle/gtetrinet 0.7.11-r3: Tetrinet Clone for GNOME
 games-puzzle/gtkballs 3.1.5-r2: An entertaining game based on the old DOS game lines
 games-puzzle/gweled 0.9.1-r2: Bejeweled clone game
 games-puzzle/hangman 0.9.2-r1: The classic word guessing game
@@ -14793,7 +14788,7 @@ net-misc/exabgp 3.4.28-r2 4.2.7-r3: The BGP swiss army knife of networking
 net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
 net-misc/fatrat 1.2.0_beta2_p20161204: Qt5-based download/upload manager
 net-misc/felix 3.1.3: Calico's per-host agent, responsible for programming routes and security policy
-net-misc/freerdp 2.1.1-r1 2.1.2-r1 2.9999 9999: Free implementation of the Remote Desktop Protocol
+net-misc/freerdp 2.1.2-r1 2.9999 9999: Free implementation of the Remote Desktop Protocol
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.0 3.1.1 4.0.3-r1 4.0.4 4.3.0: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.34: A daemon to serve the gopher protocol
@@ -15110,7 +15105,7 @@ net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
 net-p2p/syncthing 1.3.4-r1 1.4.2 1.5.0 1.6.1 1.7.1: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6-r1 1.8.6-r2: A torrent file parser
-net-p2p/transmission 2.94-r1 3.00-r1 9999: A fast, easy, and free BitTorrent client
+net-p2p/transmission 3.00-r1 9999: A fast, easy, and free BitTorrent client
 net-p2p/transmission-remote-gtk 1.3.1 1.4.1: GTK+ client for management of the Transmission BitTorrent client, over HTTP RPC
 net-p2p/tremc 0.9.2: Ncurses interface for the Transmission BitTorrent client
 net-p2p/tvrss 1.8_beta: TV RSS is a tool for automating torrent downloads
