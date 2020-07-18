@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND=">=app-pda/libimobiledevice-1.1.4:=
 	>=app-pda/libplist-1.8:=
-	>=sys-fs/fuse-2.7.0:="
+	sys-fs/fuse:0="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
