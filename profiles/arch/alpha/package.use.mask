@@ -1,6 +1,17 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-07-18)
+# net-libs/webkit-gtk has no alpha keywords
+app-editors/emacs xwidgets
+gnome-extra/evolution-data-server oauth
+# needs mail-client/evolution, depends on net-libs/webkit-gtk
+app-office/planner eds
+# needs gnome-extra/sushi, depends on net-libs/webkit-gtk
+gnome-base/nautilus previewer
+# needs libgdata[gnome-online-accounts], depends on net-libs/webkit-gtk
+gnome-base/gvfs google
+
 # Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
 # Mask io-uring & zbc pending keywording
 sys-block/fio -io-uring zbc

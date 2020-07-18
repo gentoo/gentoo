@@ -71,6 +71,8 @@ DEPEND="${RDEPEND}"
 # tests need network access
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}/${P}-kf-5.72-findtaglib.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_Csv=ON
