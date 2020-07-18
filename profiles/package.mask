@@ -51,6 +51,9 @@ dev-perl/Data-Diver
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2020-07-15)
 # In preparation; do not use yet.
 =dev-lang/perl-5.32*
+~virtual/perl-Archive-Tar-2.360.0
+~virtual/perl-autodie-2.320.0
+~virtual/perl-Compress-Raw-Bzip2-2.93.0
 
 # Christoph Junghans <junghans@gentoo.org> (2020-07-14)
 # Unmaintained upstream and does not support systemd or firewalld. 
