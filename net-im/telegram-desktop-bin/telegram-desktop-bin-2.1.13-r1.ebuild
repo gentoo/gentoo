@@ -23,12 +23,16 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/gobject-introspection
 	>=media-libs/fontconfig-2.13
-	>=sys-apps/dbus-1.4.20
-	x11-libs/libX11
-	>=x11-libs/libxcb-1.10[xkb]
+	media-libs/freetype:2
 	media-libs/libglvnd[X]
+	>=sys-apps/dbus-1.4.2[X]
+	sys-libs/zlib
 	x11-libs/libSM
 	x11-libs/libdrm
+	x11-libs/libICE
+	x11-libs/libSM
+	x11-libs/libX11
+	>=x11-libs/libxcb-1.10[xkb]
 "
 
 S="${WORKDIR}/Telegram"

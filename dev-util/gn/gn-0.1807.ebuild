@@ -1,18 +1,19 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2018-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit ninja-utils python-any-r1 toolchain-funcs
 
 DESCRIPTION="GN is a meta-build system that generates build files for Ninja"
 HOMEPAGE="https://gn.googlesource.com/"
-SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+IUSE="vim-syntax"
 
 BDEPEND="
 	${PYTHON_DEPS}
@@ -20,7 +21,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/gn-gen-r1.patch
+	"${FILESDIR}"/gn-gen-r4.patch
 )
 
 pkg_setup() {
@@ -30,12 +31,14 @@ pkg_setup() {
 src_configure() {
 	python_setup
 	tc-export AR CC CXX
-	set -- ${EPYTHON} build/gen.py --no-sysroot --no-last-commit-position
-	echo "$@"
+	unset CFLAGS
+	set -- ${EPYTHON} build/gen.py --no-last-commit-position --no-strip --no-static-libstdc++
+	echo "$@" >&2
 	"$@" || die
 	cat >out/last_commit_position.h <<-EOF || die
 	#ifndef OUT_LAST_COMMIT_POSITION_H_
 	#define OUT_LAST_COMMIT_POSITION_H_
+	#define LAST_COMMIT_POSITION_NUM ${PV##0.}
 	#define LAST_COMMIT_POSITION "${PV}"
 	#endif  // OUT_LAST_COMMIT_POSITION_H_
 	EOF
@@ -53,4 +56,9 @@ src_test() {
 src_install() {
 	dobin out/gn
 	einstalldocs
+
+	if use vim-syntax; then
+		insinto /usr/share/vim/vimfiles
+		doins -r misc/vim/{autoload,ftdetect,ftplugin,syntax}
+	fi
 }
