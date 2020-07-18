@@ -1,0 +1,13 @@
+--- tuprolog-3.1.0.orig/test/unit/alice/tuprolog/TuPrologTestSuite.java	2020-07-18 15:41:48.236891336 +0200
++++ tuprolog-3.1.0/test/unit/alice/tuprolog/TuPrologTestSuite.java	2020-07-18 15:42:11.458890364 +0200
+@@ -22,10 +22,8 @@
+ 				ParserTestCase.class,
+ 				SpyEventTestCase.class, 
+ 				VarTestCase.class, 
+-				TestVarIsEqual.class, 
+ 				JavaDynamicClassLoaderTestCase.class,
+ 				ISOIOLibraryTestCase.class,
+-				SocketLibTestCase.class,
+ 				ThreadLibraryTestCase.class
+ })
+ public class TuPrologTestSuite {}
