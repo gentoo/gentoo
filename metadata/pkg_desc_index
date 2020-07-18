@@ -7996,7 +7996,7 @@ dev-python/kaptan 0.5.12-r1: Configuration manager in your pocket
 dev-python/kazoo 2.6.1 2.7.0: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/kconfiglib 14.1.0: A flexible Python Kconfig implementation
 dev-python/keyring 21.2.1: Provides access to the system keyring service
-dev-python/keystoneauth 4.0.0 4.0.1: This package contains tools for authenticating to an OpenStack-based cloud.
+dev-python/keystoneauth 4.0.1: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 7.0.1: A middleware for the OpenStack Keystone API
 dev-python/kiwisolver 1.0.1 1.2.0: An efficient C++ implementation of the Cassowary constraint solving algorithm
 dev-python/klein 19.6.0: micro-framework for developing production-ready web services with Python
@@ -8156,7 +8156,7 @@ dev-python/olefile 0.46: Python package to parse, read and write Microsoft OLE2 
 dev-python/onkyo-eiscp 1.2.7: Control Onkyo A/V receivers over the network
 dev-python/openpyxl 3.0.0 3.0.3 9999: Pure python reader and writer of Excel OpenXML files
 dev-python/openstackdocstheme 1.18.1: Theme and extension support for Sphinx documentation
-dev-python/openstacksdk 0.36.0 0.46.0: A collection of libraries for building applications to work with OpenStack.
+dev-python/openstacksdk 0.46.0: A collection of libraries for building applications to work with OpenStack.
 dev-python/opt-einsum 3.0.1: Optimized Einsum: A tensor contraction order optimizer
 dev-python/ordered-set 4.0.1: A mutable set that remembers the order of its entries
 dev-python/os-brick 2.8.2 3.0.1: OpenStack Cinder brick library for managing local volume attaches
@@ -8170,7 +8170,7 @@ dev-python/os-traits 2.3.0: os-traits is a library containing standardized trait
 dev-python/os-vif 1.15.2: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-win 4.2.0: Windows / Hyper-V library for OpenStack projects.
 dev-python/os-xenapi 0.3.4: XenAPI library for OpenStack projects
-dev-python/osc-lib 1.12.1 2.0.0: A package of common support modules for writing OSC plugins.
+dev-python/osc-lib 2.0.0: A package of common support modules for writing OSC plugins.
 dev-python/oslo-cache 2.3.0: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 4.0.2: library for running multi-thread, multi-process applications
 dev-python/oslo-config 8.0.3: Oslo Configuration API
@@ -8178,7 +8178,7 @@ dev-python/oslo-context 2.22.1: Helpers to maintain useful information about a r
 dev-python/oslo-db 8.1.0: OpenStack Common DB Code
 dev-python/oslo-i18n 3.23.1: Oslo i18n library
 dev-python/oslo-log 4.1.2: OpenStack logging config library, configuration for all openstack projects.
-dev-python/oslo-messaging 10.2.0 12.1.0 12.1.1: Messaging API for RPC and notifications over different messaging transports
+dev-python/oslo-messaging 12.1.1: Messaging API for RPC and notifications over different messaging transports
 dev-python/oslo-middleware 4.0.2: Components injected into wsgi pipelines to intercept request/response flows.
 dev-python/oslo-policy 3.1.1: Support for RBAC policy enforcement across all OpenStack services
 dev-python/oslo-privsep 1.33.3: OpenStack library for privilege separation.
@@ -8188,7 +8188,7 @@ dev-python/oslo-serialization 3.1.1: Oslo Serialization library
 dev-python/oslo-service 2.1.1: Library for running OpenStack services
 dev-python/oslo-sphinx 4.18.0: OpenStack Sphinx Extensions and Theme
 dev-python/oslo-upgradecheck 1.0.1: Oslo i18n library
-dev-python/oslo-utils 3.41.5 4.1.1 4.1.2: Oslo Utility library
+dev-python/oslo-utils 4.1.2: Oslo Utility library
 dev-python/oslo-versionedobjects 2.0.2: A library that provides a generic versioned and RPC-friendly object model.
 dev-python/oslo-vmware 2.32.2 3.3.1: Oslo VMware library for OpenStack projects
 dev-python/oslotest 3.7.1: Oslo test framework
@@ -8528,7 +8528,7 @@ dev-python/python-ironicclient 4.1.0: Python bindings for the Ironic API
 dev-python/python-iwscan 20080402-r1: A Python extension for iwscan access
 dev-python/python-jose 3.1.0: A JavaScript Object Signing and Encryption (JOSE) implementation in Python
 dev-python/python-jsonrpc-server 0.3.4: A Python 2 and 3 asynchronous JSON RPC server
-dev-python/python-keystoneclient 3.21.0 4.0.0: Client Library for OpenStack Identity
+dev-python/python-keystoneclient 4.0.0: Client Library for OpenStack Identity
 dev-python/python-language-server 0.31.10 0.32.0 0.34.1: An implementation of the Language Server Protocol for Python
 dev-python/python-ldap 3.2.0 9999: Various LDAP-related Python modules
 dev-python/python-levenshtein 0.12.0: Functions for fast computation of Levenshtein distance, and edit operations
@@ -8550,11 +8550,11 @@ dev-python/python-musicbrainz-ngs 0.7.1: Python bindings for the MusicBrainz NGS
 dev-python/python-nbxmpp 0.6.10-r1 1.0.0: Python library to use Jabber/XMPP networks in a non-blocking way
 dev-python/python-netlink 0.1: Pure-Python client for the Linux NetLink interface
 dev-python/python-neutronclient 6.12.1 7.1.1: A client for the OpenStack Quantum API
-dev-python/python-novaclient 13.0.2 17.0.0: A client for the OpenStack Nova API
+dev-python/python-novaclient 17.0.0: A client for the OpenStack Nova API
 dev-python/python-ntpdshm 0.2.1: Python interface to ntpd shared memory driver 28
 dev-python/python-octaviaclient 1.8.0: A client for the OpenStack Zun API
 dev-python/python-openid 2.2.5-r1: OpenID support for servers and consumers
-dev-python/python-openstackclient 3.18.1 5.2.1: A client for the OpenStack APIs
+dev-python/python-openstackclient 5.2.1: A client for the OpenStack APIs
 dev-python/python-podman 1.6.0: A library to interact with a Podman server
 dev-python/python-poppler-qt5 0.75.0: Python binding for libpoppler-qt5
 dev-python/python-prctl 1.7: Control process attributes through prctl
@@ -16715,7 +16715,7 @@ sys-apps/pmount 0.9.99_alpha-r5: Policy based mounter that gives the ability to 
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
 sys-apps/policycoreutils 2.9 3.0 9999: SELinux core utilities
-sys-apps/portage 2.3.99-r2 2.3.100-r1 2.3.101-r2 2.3.102 2.3.103 9999: Portage is the package management and distribution system for Gentoo
+sys-apps/portage 2.3.99-r2 2.3.103 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r3: PowerPC utilities including nvsetenv, and additional OldWorld apps
 sys-apps/prctl 1.6-r1: Tool to query and modify process behavior
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
