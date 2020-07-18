@@ -2434,11 +2434,11 @@ app-pda/dynamite 0.1.1_p20120512: A tool for decompressing data compressed with 
 app-pda/gnupod 0.99.8-r2: A collection of Perl-scripts for iPod
 app-pda/gtkpod 2.1.5: A graphical user interface to the Apple productline
 app-pda/ideviceinstaller 1.1.0: A tool to interact with the installation_proxy of an Apple's iDevice
-app-pda/ifuse 1.1.3: Mount Apple iPhone/iPod Touch file systems for backup purposes
+app-pda/ifuse 1.1.3-r1: Mount Apple iPhone/iPod Touch file systems for backup purposes
 app-pda/iripdb 0.1.3b: Allows generating the DB files necessary for the iRiver iHP-1xx
 app-pda/jpilot 1.8.2-r1: Desktop Organizer Software for the Palm Pilot
 app-pda/libimobiledevice 1.2.0-r1 1.2.1_pre20200220 1.3.0-r1: Support library to communicate with Apple iPhone/iPod Touch devices
-app-pda/libplist 2.1.0 2.2.0-r1: Support library to deal with Apple Property Lists (Binary & XML)
+app-pda/libplist 2.1.0 2.2.0-r1 2.2.0-r2: Support library to deal with Apple Property Lists (Binary & XML)
 app-pda/libusbmuxd 1.0.10-r1 2.0.1 2.0.2-r1: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-pda/pilot-link 0.12.5-r2: Suite of tools for moving data between a Palm device and a desktop
 app-pda/usbmuxd 1.1.0 1.1.1_pre20200121 1.1.1: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
