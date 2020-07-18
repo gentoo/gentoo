@@ -14,7 +14,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="strip"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 
 RDEPEND="
 	${PYTHON_DEPS}
@@ -53,4 +53,9 @@ pkg_postinst() {
 	elog "an alternate configuration path.\n"
 	elog "For a full list of changes, please read the release info located here:"
 	elog "https://github.com/fearedbliss/bliss-initramfs/releases/tag/8.1.0"
+	elog ""
+	elog "Also, 8.1.0 is the last version to include support for LUKS! Starting with"
+	elog "version 9.0.0, bliss-initramfs only contains support for ZFS' Native Encryption."
+	elog "If you are a LUKS/OpenZFS user, please stay on 8.1.0 until you migrate over to"
+	elog "the native encryption."
 }
