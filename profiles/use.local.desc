@@ -7840,7 +7840,6 @@ sys-apps/flashrom:usbblaster-spi - Enable support for Altera USB-Blaster dongles
 sys-apps/flashrom:wiki - Enable wiki informations, like supported devices etc.
 sys-apps/fwupd:agent - Enable update notification agent
 sys-apps/fwupd:amt - Build and install Intel AMT plugin
-sys-apps/fwupd:colorhug - Enable ColorHug support throughx11-misc/colord package
 sys-apps/fwupd:consolekit - Use sys-auth/consolekit for session tracking
 sys-apps/fwupd:dell - Enable Dell-specific support.
 sys-apps/fwupd:gpg - Enable GPG support.

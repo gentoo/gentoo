@@ -471,7 +471,7 @@ app-admin/clustershell 1.8.3: Python framework for efficient cluster administrat
 app-admin/conky 1.10.8-r9 1.11.5: An advanced, highly configurable system monitor for X
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.2.3 8.2.4 8.2.5: Serial Console Manager
-app-admin/consul 1.7.2 1.7.3 1.7.4 1.8.0: A tool for service discovery, monitoring and configuration
+app-admin/consul 1.7.4 1.8.0: A tool for service discovery, monitoring and configuration
 app-admin/consul-replicate 0.2.0: Consul cross-DC KV replication daemon
 app-admin/consul-template 0.25.0: Generic template rendering and notifications with Consul
 app-admin/cpulimit 1.8 2.2 2.4: Limits the CPU usage of a process
@@ -1746,7 +1746,7 @@ app-emulation/winetricks 20190912 20191224 20200412 99999999: Easy way to instal
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
-app-emulation/xen 4.12.3-r1 4.12.3-r2 4.13.1-r2 4.14.0_rc3: The Xen virtual machine monitor
+app-emulation/xen 4.12.3-r2 4.13.1-r2 4.14.0_rc3: The Xen virtual machine monitor
 app-emulation/xen-pvgrub 4.12.2 4.12.3 4.13.1 4.14.0_rc3: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
 app-emulation/xen-tools 4.12.3-r1 4.12.3-r2 4.13.1-r2 4.14.0_rc3: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r5: Radio Shack TRS-80 emulator
@@ -2666,7 +2666,7 @@ app-text/htmlmin 0.1.12: A configurable HTML Minifier with safety features
 app-text/htmlrecode 1.3.1-r1: Recodes HTML file using a new character set
 app-text/htmltidy 20090325-r2: Tidy the layout and correct errors in HTML and XML documents
 app-text/htp 1.16-r1 1.19: An HTML preprocessor
-app-text/hunspell 1.7.0-r1 1.7.0-r2: Hunspell spell checker - an improved replacement for myspell in OOo
+app-text/hunspell 1.7.0-r2: Hunspell spell checker - an improved replacement for myspell in OOo
 app-text/hyperestraier 1.4.13: a full-text search system for communities
 app-text/iso-codes 4.4: ISO language, territory, currency, script codes and their translations
 app-text/itex2mml 1.5.6: A LaTeX into XHTML/MathML converter
@@ -4377,7 +4377,7 @@ dev-java/gnu-crypto 2.0.1-r3: GNU Crypto cryptographic primitives for Java
 dev-java/gnu-hylafax 1.0.3-r2: Java API designed to implement the client protocol portion of the hfaxd server
 dev-java/gnu-jaf 1.1.1-r1 1.1.2: GNU implementation of the JavaBeans Activation Framework
 dev-java/gnu-regexp 1.1.4-r3: GNU regular expression package for Java
-dev-java/gradle-bin 3.3 3.4.1 5.2.1 6.3: A project automation and build tool with a Groovy based DSL
+dev-java/gradle-bin 6.3: A project automation and build tool with a Groovy based DSL
 dev-java/gson 2.3.1 2.6.2 2.7: Java library to convert JSON to Java objects and vice-versa
 dev-java/guava 20.0: A collection of Google's core Java libraries
 dev-java/guice 4.1: A lightweight dependency injection framework for Java 5 and above
@@ -4935,7 +4935,7 @@ dev-libs/ffcall 2.1: Build foreign function call interfaces in embedded interpre
 dev-libs/flatbuffers 1.12.0: Memory efficient serialization library
 dev-libs/folks 0.13.1: Library for aggregating people from multiple sources
 dev-libs/foma 0.9.18: A set of utilities for constructing finite-state automata and transducers
-dev-libs/freexl 1.0.1 1.0.2 1.0.5: Simple XLS data extraction library
+dev-libs/freexl 1.0.5: Simple XLS data extraction library
 dev-libs/fribidi 1.0.9: A free implementation of the unicode bidirectional algorithm
 dev-libs/fstrm 0.3.0: Frame Streams implementation in C
 dev-libs/gdl 3.28.0: GNOME docking library
@@ -4971,7 +4971,7 @@ dev-libs/icu-le-hb 1.0.3-r1: ICU Layout Engine API on top of HarfBuzz shaping li
 dev-libs/igraph 0.7.1-r2: Creating and manipulating undirected and directed graphs
 dev-libs/iksemel 1.4-r1: eXtensible Markup Language parser library designed for Jabber applications
 dev-libs/ilbc-rfc3951 0-r1 0-r2: iLBC is a speech codec suitable for robust voice communication over IP
-dev-libs/iniparser 3.1-r1 3.1-r2 4.1: A free stand-alone ini file parsing library
+dev-libs/iniparser 3.1-r2 4.1: A free stand-alone ini file parsing library
 dev-libs/injeqt 1.2.0: Dependency injection framework for Qt5
 dev-libs/input-pad 1.0.99_pre20140916: On-screen input pad to send characters with mouse
 dev-libs/intel-neo 20.16.16582: Intel Graphics Compute Runtime for L0 and OpenCL, for Broadwell and beyond
@@ -5333,7 +5333,7 @@ dev-libs/ucommon 6.0.3 6.5.7 7.0.0: Portable C++ runtime for threads and sockets
 dev-libs/udis86 1.7-r2 1.7.2: Disassembler library for the x86/-64 architecture sets
 dev-libs/unibilium 2.0.0: A very basic terminfo library
 dev-libs/unittest++ 1.6.1 2.0.0: A lightweight unit testing framework for C++
-dev-libs/univalue 1.0.2 1.0.3 1.0.4 1.0.5 9999: C++ universal value object and JSON library
+dev-libs/univalue 1.0.5 9999: C++ universal value object and JSON library
 dev-libs/urdfdom 1.0.0-r1 1.0.3 9999: URDF (U-Robot Description Format) library
 dev-libs/urdfdom_headers 1.0.2 1.0.3 1.0.4 9999: URDF (U-Robot Description Format) headers
 dev-libs/uriparser 0.9.1 0.9.3 0.9.4: Uriparser is a strictly RFC 3986 compliant URI parsing library in C
@@ -10725,7 +10725,7 @@ games-action/super-hexagon 20160217: A minimal action game by Terry Cavanagh, wi
 games-action/supermariowar 2.0_beta1-r1: Fan-made multiplayer Super Mario Bros. style deathmatch game
 games-action/supertuxkart 1.1: A kart racing game starring Tux, the linux penguin (TuxKart fork)
 games-action/swordandsworcery 1.02: An exploratory action adventure game with an emphasis on audiovisual style
-games-action/teeworlds 0.6.4 0.7.5: Online multi-player platform 2D shooter
+games-action/teeworlds 0.7.5: Online multi-player platform 2D shooter
 games-action/towbowl-tactics 0.5: Tow Bowl Tactics is a game based on Games Workshop's Blood Bowl
 games-action/transcend 0.3-r1: Retro-style, abstract, 2D shooter
 games-action/trine 1.08-r3: A physics-based action game with character-dependent solutions to challenges
@@ -14062,7 +14062,7 @@ net-analyzer/openvas-scanner 6.0.1 7.0.1: Open Vulnerability Assessment Scanner
 net-analyzer/opsgenie-lamp 2.5.1_p20181102: command line client for the opsgenie service
 net-analyzer/ospd 2.0.1: Base class for scanner wrappers,communication protocol for GVM
 net-analyzer/ospd-openvas 1.0.1: This is an OSP server implementation to allow GVM to remotely control OpenVAS
-net-analyzer/ossec-hids 3.1.0 3.2.0 3.2.0-r1 3.3.0 3.6.0: Open Source Host-based Intrusion Detection System
+net-analyzer/ossec-hids 3.6.0: Open Source Host-based Intrusion Detection System
 net-analyzer/ostinato 0.9_p20180522: A packet generator and analyzer
 net-analyzer/p0f 3.09_beta: A tool to perform passive OS detection based on SYN packets
 net-analyzer/packit 1.6.1 1.7 9999: network packet generator and capture tool
@@ -16595,7 +16595,7 @@ sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from
 sys-apps/flashrom 1.2-r1 9999: Utility for reading, writing, erasing and verifying flash ROM chips
 sys-apps/frandom 1.1: Fast kernel-land pseudo-random number generator using the RC4 algorithm
 sys-apps/fwts 20.05.00: Firmware Test Suite
-sys-apps/fwupd 1.2.11 1.3.10 1.3.11 1.4.2 1.4.4: Aims to make updating firmware on Linux automatic, safe and reliable
+sys-apps/fwupd 1.3.10 1.3.11 1.4.2 1.4.4: Aims to make updating firmware on Linux automatic, safe and reliable
 sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 4.2.1-r1 5.0.1 5.1.0: GNU awk pattern-matching language
 sys-apps/gcp 0.2.1: File copying utility with progress and I/O indicator
@@ -17828,7 +17828,7 @@ www-client/vivaldi 3.1.1929.45_p1: A browser for our friends
 www-client/vivaldi-snapshot 3.2.1957.9_p1 3.2.1959.3_p1 3.2.1964.3_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
-www-misc/awstats 7.4 7.8 7.8-r1: AWStats is short for Advanced Web Statistics
+www-misc/awstats 7.8-r1: AWStats is short for Advanced Web Statistics
 www-misc/bookmarksync 0.3.4-r3: bookmarksync synchronizes various browser bookmark files
 www-misc/buku 4.3: Powerful command-line bookmark manager
 www-misc/fcgiwrap 1.1.0-r1 9999: Simple FastCGI wrapper for CGI scripts (CGI support for nginx)
@@ -17857,7 +17857,7 @@ www-plugins/passff 1.9.1: zx2c4 pass manager extension for Firefox
 www-plugins/passff-host 1.2.1 1.2.1-r1: Host app for the PassFF WebExtension
 www-plugins/pdfjs 1.9.426 2.1.266 2.4.456: A PDF reader in JavaScript
 www-servers/adsf 1.4.1 1.4.2 1.4.3: A Dead Simple Fileserver is a static file server that can launch in a directory
-www-servers/apache 2.4.41 2.4.43: The Apache Web Server
+www-servers/apache 2.4.43: The Apache Web Server
 www-servers/boa 0.94.14_rc21-r2: A very small and very fast http daemon
 www-servers/bozohttpd 20190228: bozohttpd is a small and secure http server
 www-servers/caddy 2.0.0: Fast, cross-platform HTTP/2 web server with automatic HTTPS
