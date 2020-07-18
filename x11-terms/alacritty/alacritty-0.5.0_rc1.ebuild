@@ -273,7 +273,7 @@ HOMEPAGE="https://github.com/alacritty/alacritty"
 
 if [ ${PV} == "9999" ] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/jwilm/alacritty"
+	EGIT_REPO_URI="https://github.com/alacritty/alacritty"
 else
 	SRC_URI="https://github.com/alacritty/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
