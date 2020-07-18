@@ -4,11 +4,11 @@ DESCRIPTION=DNSSEC extensions to Net::DNS
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Net-DNS-SEC
 IUSE=test
-KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=MIT
 RDEPEND=>=dev-perl/Crypt-OpenSSL-Bignum-0.50.0 >=dev-perl/Crypt-OpenSSL-RSA-0.280.0 >=virtual/perl-File-Spec-0.860.0 >=virtual/perl-MIME-Base64-2.110.0 >=dev-perl/Net-DNS-1.10.0 >=virtual/perl-Digest-SHA-5.230.0 dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/N/NL/NLNETLABS/Net-DNS-SEC-1.03.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=7700cf3215854e09d84320ad9d9562cf
+_md5_=c055f64f85edc1a80b48d65656a36588
