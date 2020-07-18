@@ -4839,7 +4839,7 @@ dev-lang/tcc 0.9.27 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9-r1: Tool Command Language
 dev-lang/teyjus 2.1 2.1-r1: Higher-order logic programming language Lambda Prolog
 dev-lang/tk 8.5.17-r1 8.6.8 8.6.9 8.6.9.1: Tk Widget Set
-dev-lang/tuprolog 2.9.2 3.0.1 3.1.0: tuProlog is a light-weight Prolog for Internet applications and infrastructures
+dev-lang/tuprolog 2.9.2 3.0.1 3.1.0 3.1.0-r1: tuProlog is a light-weight Prolog for Internet applications and infrastructures
 dev-lang/vala 0.36.20 0.40.20 0.40.23 0.44.11 0.46.7 0.46.10 0.46.11 0.48.6 0.48.7: Compiler for the GObject type system
 dev-lang/whitespace 0.4: Whitespace, an esoteric programming language
 dev-lang/xsb 3.6.0 3.6.0-r1 3.7.0-r1 3.8.0: XSB is a logic programming and deductive database system
