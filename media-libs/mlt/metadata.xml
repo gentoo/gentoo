@@ -17,7 +17,6 @@
 		<flag name="opencv">Build motion tracking module using <pkg>media-libs/opencv</pkg></flag>
 		<flag name="python">Build SWIG bindings for Python</flag>
 		<flag name="rtaudio">Builds rtaudio consumer for native audio support on multiple platforms.</flag>
-		<flag name="ruby">Build SWIG bindings for Ruby</flag>
 		<flag name="vidstab">Enabled video stabilization with <pkg>media-libs/vidstab</pkg>.</flag>
 		<!--
 		<flag name="swfdec">Use <pkg>media-libs/swfdec</pkg> for reading .swf files (Macromedia Flash) instead of libavformat.</flag>
