@@ -2226,7 +2226,7 @@ app-misc/logserial 0.4.2: A tool for logging raw data from a serial device
 app-misc/lsx 0.1-r1: list executables
 app-misc/ltunify 0.2-r2: Tool for working with Logitech Unifying receivers and devices
 app-misc/lxsplit 0.2.4-r1: Command-line file splitter/joiner for Linux
-app-misc/mc 4.8.24 4.8.25_rc1 9999: GNU Midnight Commander is a text based file manager
+app-misc/mc 4.8.24 4.8.25 9999: GNU Midnight Commander is a text based file manager
 app-misc/media-player-info 24: Repository of data files describing media player capabilities
 app-misc/mediacrush-cli 1.1.2 9999: A bash script for working with MediaCrush from a shell
 app-misc/mencal 3.0: Calendar to track menstruation cycles
