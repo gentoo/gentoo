@@ -1,37 +1,50 @@
-From 6f870ba1f4054674024cc3d3faf18d8b1e3676f6 Mon Sep 17 00:00:00 2001
-From: Jakov Smolic <jakov.smolic@sartura.hr>
-Date: Fri, 17 Jul 2020 09:10:45 +0200
-Subject: [PATCH] Fix armv7a build crash
+From 1bc183af8703023e377f92716ecd3f339ffffd11 Mon Sep 17 00:00:00 2001
+From: Tobias Waldekranz <tobias@waldekranz.com>
+Date: Sat, 18 Jul 2020 18:14:50 +0200
+Subject: [PATCH] configure: map all arm* toolchain prefixes to arm
 Bug: https://bugs.gentoo.org/732902
-Upstream: https://github.com/iovisor/ply/pull/60
 
-Signed-off-by: Jakov Smolic <jakov.smolic@sartura.hr>
+Particularly for ARM, toolchains can have a variety of names for the
+CPU part of the triplet. "arm", "armhf", "armv7", "armv7l", "armv7a",
+etc. etc. etc. This breaks the build as a direct mapping from CPU name
+to architecture name in src/libply/arch/ is assumed.
+
+Insert a mangling step in which arm* can all be mapped to arm. We can
+extend this in the future for other architectures if necessary.
 ---
- src/libply/Makefile.am   | 1 +
- src/libply/arch/armv7a.c | 1 +
- 2 files changed, 2 insertions(+)
- create mode 120000 src/libply/arch/armv7a.c
+ configure.ac           | 6 +++++-
+ src/libply/Makefile.am | 2 +-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
 
+diff --git a/configure.ac b/configure.ac
+index 3c814bf..65387d6 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -35,6 +35,10 @@ AC_CONFIG_LIBOBJ_DIR(lib)
+ AC_REPLACE_FUNCS(qsort_r)
+ 
+ AC_CANONICAL_HOST
+-AC_SUBST(host_cpu, $host_cpu)
++AC_SUBST(arch)
++
++AS_CASE($host_cpu,
++	arm*, arch=arm,
++	arch=$host_cpu)
+ 
+ AC_OUTPUT
 diff --git a/src/libply/Makefile.am b/src/libply/Makefile.am
-index 3c83bb4..3a7c747 100644
+index 3c83bb4..05e8082 100644
 --- a/src/libply/Makefile.am
 +++ b/src/libply/Makefile.am
-@@ -10,6 +10,7 @@ AM_LFLAGS = --header-file=lexer.h
- EXTRA_DIST = grammar.c grammar.h lexer.c lexer.h \
- 	arch/aarch64.c \
- 	arch/arm.c     \
-+	arch/armv7a.c \
- 	arch/powerpc.c \
- 	arch/x86_64.c
+@@ -16,7 +16,7 @@ EXTRA_DIST = grammar.c grammar.h lexer.c lexer.h \
+ BUILT_SOURCES = grammar.h lexer.h
  
-diff --git a/src/libply/arch/armv7a.c b/src/libply/arch/armv7a.c
-new file mode 120000
-index 0000000..980a6a5
---- /dev/null
-+++ b/src/libply/arch/armv7a.c
-@@ -0,0 +1 @@
-+arm.c
-\ No newline at end of file
+ libply_la_SOURCES     = 	\
+-	arch/@host_cpu@.c	\
++	arch/@arch@.c		\
+ 	\
+ 	aux/kallsyms.c		\
+ 	aux/perf_event.c	\
 -- 
 2.26.2
 
