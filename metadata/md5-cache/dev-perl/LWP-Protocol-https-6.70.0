@@ -4,11 +4,11 @@ DESCRIPTION=Provide https support for LWP::UserAgent
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/LWP-Protocol-https
 IUSE=test
-KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=app-misc/ca-certificates >=dev-perl/IO-Socket-SSL-1.540.0 >=dev-perl/libwww-perl-6.60.0 >=dev-perl/Net-HTTP-6 dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/O/OA/OALDERS/LWP-Protocol-https-6.07.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=c1daa2930bb5b1cd2bcebfa0ade30367
+_md5_=4bdc1ac63aad4080061be509ddf2de6e
