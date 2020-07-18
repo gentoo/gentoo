@@ -60,7 +60,7 @@ src_configure() {
 			--testuser=test \
 			--testpassword=test"
 	fi
-	myconf+=" --${impl}_config=${EROOT%/}/usr/bin/${impl}_config"
+	myconf+=" --${impl}_config=${EROOT}/usr/bin/${impl}_config"
 	perl-module_src_configure
 }
 
