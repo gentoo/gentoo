@@ -5,8 +5,8 @@ EAPI=7
 HOMEPAGE=https://desktop.telegram.org
 KEYWORDS=-* ~amd64 ~x86
 LICENSE=GPL-3-with-openssl-exception
-RDEPEND=dev-libs/glib:2 dev-libs/gobject-introspection >=media-libs/fontconfig-2.13 >=sys-apps/dbus-1.4.20 x11-libs/libX11 >=x11-libs/libxcb-1.10[xkb] media-libs/libglvnd[X] x11-libs/libSM x11-libs/libdrm
+RDEPEND=dev-libs/glib:2 dev-libs/gobject-introspection >=media-libs/fontconfig-2.13 media-libs/freetype:2 media-libs/libglvnd[X] >=sys-apps/dbus-1.4.2[X] sys-libs/zlib x11-libs/libSM x11-libs/libdrm x11-libs/libICE x11-libs/libSM x11-libs/libX11 >=x11-libs/libxcb-1.10[xkb]
 SLOT=0
 SRC_URI=https://github.com/telegramdesktop/tdesktop/archive/v2.1.13.tar.gz -> tdesktop-2.1.13.tar.gz amd64? ( https://updates.tdesktop.com/tlinux/tsetup.2.1.13.tar.xz ) x86? ( https://updates.tdesktop.com/tlinux32/tsetup32.2.1.13.tar.xz )
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=64c7f9b8beab1e6d5fa12c087b8fba5a
+_md5_=c391a05df099c2e52c0a319f0d21a3bb
