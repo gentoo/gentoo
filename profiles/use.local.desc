@@ -4361,7 +4361,6 @@ media-libs/mlt:melt - Build the melt commandline tool
 media-libs/mlt:opencv - Build motion tracking module using media-libs/opencv
 media-libs/mlt:python - Build SWIG bindings for Python
 media-libs/mlt:rtaudio - Builds rtaudio consumer for native audio support on multiple platforms.
-media-libs/mlt:ruby - Build SWIG bindings for Ruby
 media-libs/mlt:vidstab - Enabled video stabilization with media-libs/vidstab.
 media-libs/netpbm:rle - Build converters for the RLE format (utah raster toolkit)
 media-libs/opencv:contrib - Install user contributed scripts from opencv_contrib (Experimental!)

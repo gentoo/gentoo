@@ -2373,7 +2373,7 @@ app-office/abiword-docs 3.0.2: Fully featured yet light and fast cross platform 
 app-office/auto-multiple-choice 1.3.0-r1: Create and manage multiple choice questionnaries, including automated marking
 app-office/borg 1.7.4-r3: Calendar and task tracker, written in Java
 app-office/calcurse 4.4.0-r1: a text-based calendar and scheduling application
-app-office/calligra 3.1.0-r4 3.2.1: KDE Office Suite
+app-office/calligra 3.2.1: KDE Office Suite
 app-office/calligraplan 3.2.2: Project management application
 app-office/dia 0.97.3-r1: Diagram/flowchart creation program
 app-office/dia2code 1.0.0: Convert UML diagrams produced with Dia to various source code flavours
@@ -2411,7 +2411,7 @@ app-office/plan 1.10: Motif based schedule planner
 app-office/planner 0.14.6_p20130520-r2: Project manager for Gnome
 app-office/projectlibre-bin 1.6.2: An open source desktop alternative to Microsoft Project
 app-office/sc 7.16-r2: Spreadsheet Calculator
-app-office/scribus 1.5.5-r1 1.5.5_p20200626 9999: Desktop publishing (DTP) and layout program
+app-office/scribus 1.5.5_p20200626 9999: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.22.1: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.6: Simple personal tasks and todo lists manager
 app-office/texmacs 1.99.6-r2 1.99.9 1.99.10 1.99.11: Wysiwyg text processor with high-quality maths
@@ -11497,10 +11497,10 @@ gnome-extra/filemanager-actions 3.2.4 3.4: File manager extension which offers u
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
 gnome-extra/gnome-boxes 3.34.4: Simple GNOME 3 application to access remote or virtual systems
 gnome-extra/gnome-calculator 3.34.1: A calculator application for GNOME
-gnome-extra/gnome-calendar 3.34.2: Manage your online calendars with simple and modern interface
+gnome-extra/gnome-calendar 3.34.2 3.36.2: Manage your online calendars with simple and modern interface
 gnome-extra/gnome-characters 3.34.0: Unicode character map viewer and library
 gnome-extra/gnome-clocks 3.34.0 3.36.2: Clocks application for GNOME
-gnome-extra/gnome-color-manager 3.32.0: GNOME color profile tools
+gnome-extra/gnome-color-manager 3.32.0 3.36.0: GNOME color profile tools
 gnome-extra/gnome-commander 1.10.3: A graphical, full featured, twin-panel file manager
 gnome-extra/gnome-contacts 3.30.2 3.34.1 3.36.2: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.11: Thumbnail generator for directories
@@ -11508,7 +11508,7 @@ gnome-extra/gnome-documents 3.34.0: A document manager application for GNOME
 gnome-extra/gnome-dvb-daemon 0.2.90-r1: Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer
 gnome-extra/gnome-getting-started-docs 3.34.2: Help a new user get started in GNOME
 gnome-extra/gnome-integration-spotify 20140907-r1: GNOME integration for Spotify
-gnome-extra/gnome-logs 3.34.0: Log viewer for the systemd journal
+gnome-extra/gnome-logs 3.34.0 3.36.0: Log viewer for the systemd journal
 gnome-extra/gnome-power-manager 3.32.0: GNOME power statistics
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extension-appindicator 33: Support Ubuntu AppIndicators and KStatusNotifierItems in Gnome
@@ -12448,7 +12448,7 @@ media-gfx/esci-interpreter-gt-s80 0.2.1.1: Epson GT-S50 and GT-S80 scanner plugi
 media-gfx/evoluspencil 3.1.0-r1: A simple GUI prototyping tool to create mockups
 media-gfx/exact-image 0.8.1-r3 1.0.2: A fast, modern and generic image processing library
 media-gfx/exif 0.6.21 0.6.22: Small CLI util to show EXIF infos hidden in JPEG files
-media-gfx/exiv2 0.27.2 0.27.3: EXIF, IPTC and XMP metadata C++ library and command line utility
+media-gfx/exiv2 0.27.3: EXIF, IPTC and XMP metadata C++ library and command line utility
 media-gfx/farbfeld 4 9999: farbfeld simple image format tools
 media-gfx/fbgrab 1.3 1.3.3: Framebuffer screenshot utility
 media-gfx/fbida 2.12 2.13-r1 2.14 9999: Image viewers for the framebuffer console (fbi) and X11 (ida)
@@ -12544,7 +12544,7 @@ media-gfx/mscgen 0.20: A message sequence chart generator
 media-gfx/mypaint 1.2.1-r5: fast and easy graphics application for digital painters
 media-gfx/mypaint-brushes 1.3.0-r1: Default MyPaint brushes
 media-gfx/netpaint 1.1.2: curses-based drawing tool
-media-gfx/nomacs 3.12 3.14.2: Qt-based image viewer
+media-gfx/nomacs 3.14.2: Qt-based image viewer
 media-gfx/nvidia-cg-toolkit 3.1.0013-r5: NVIDIA's C graphics compiler toolkit
 media-gfx/nvidia-texture-tools 2.0.8-r4: A set of cuda-enabled texture tools and compressors
 media-gfx/openclipart 0.20: Open Clip Art Library (openclipart.org)
@@ -12917,7 +12917,7 @@ media-libs/lv2 1.18.0: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 20.0.8 20.1.1 20.1.2 20.1.3 9999: OpenGL-like graphic library for Linux
-media-libs/mlt 6.20.0 6.20.0-r2: Open source multimedia framework for television broadcasting
+media-libs/mlt 6.20.0-r2: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.43.0 1.44.0: Audio metadata tag reader and writer implemented in pure Python
@@ -13478,7 +13478,7 @@ media-sound/jackbeat 0.7.6: An audio sequencer for Linux
 media-sound/jalv 1.6.4: Simple but fully featured LV2 host for Jack
 media-sound/jamin 0.95.0-r3: JAMin is the JACK Audio Connection Kit (JACK) Audio Mastering interface
 media-sound/justeport 0.2: Stream audio to your AirPort Express
-media-sound/kid3 3.8.2-r1 3.8.3: Simple tag editor based on Qt
+media-sound/kid3 3.8.3: Simple tag editor based on Qt
 media-sound/klick 0.12.2-r2: An advanced command-line based metronome for JACK
 media-sound/kmetronome 1.0.1: MIDI based metronome using ALSA sequencer
 media-sound/lame 3.100-r1 3.100-r2: LAME Ain't an MP3 Encoder
@@ -13584,7 +13584,7 @@ media-sound/pulseaudio-modules-bt 1.3-r2 1.4 9999: PulseAudio modules for LDAC, 
 media-sound/pulseeffects 4.7.2-r1 4.7.3 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pulsemixer 1.5.1 9999: CLI and curses mixer for PulseAudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
-media-sound/qastools 0.21.0 0.22.0: Qt5 GUI ALSA tools: mixer, configuration browser
+media-sound/qastools 0.22.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.6.2 9999: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiarp 0.6.4-r1: Arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
@@ -14163,7 +14163,7 @@ net-analyzer/zmap 2.1.1 9999: Fast network scanner designed for Internet-wide ne
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/accel-ppp 1.12.0 9999: High performance PPTP, PPPoE and L2TP server
 net-dialup/cistronradius 1.6.8-r2: Authentication and accounting server for terminal servers using RADIUS
-net-dialup/cutecom 0.51.0 0.51.0-r1: A serial terminal, like minicom, written in Qt
+net-dialup/cutecom 0.51.0-r1: A serial terminal, like minicom, written in Qt
 net-dialup/dial 1.2-r2: A simple client for DWUN
 net-dialup/diald 1.0-r3: Daemon that provides on demand IP links via SLIP or PPP
 net-dialup/dwun 0.96e-r4: Dialer Without a Useful Name (DWUN)
@@ -15777,7 +15777,7 @@ sci-geosciences/foxtrotgps 1.2.0: Easy to use, fast and lightweight mapping appl
 sci-geosciences/gdal-grass 2.1.3: GDAL plugin to access GRASS data
 sci-geosciences/geocode-glib 3.26.2: GLib helper library for geocoding services
 sci-geosciences/gmt 4.5.18-r1 5.4.4: Powerful map generator
-sci-geosciences/gnome-maps 3.34.3: A map application for GNOME
+sci-geosciences/gnome-maps 3.34.3 3.36.4: A map application for GNOME
 sci-geosciences/gpsbabel 1.5.4-r1 9999: GPS waypoints, tracks and routes converter
 sci-geosciences/gpscorrelate 1.6.1-r1: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
 sci-geosciences/gpsd 3.17-r3 3.17-r4 3.18.1 3.19 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
@@ -16601,7 +16601,7 @@ sys-apps/gawk 4.2.1-r1 5.0.1 5.1.0: GNU awk pattern-matching language
 sys-apps/gcp 0.2.1: File copying utility with progress and I/O indicator
 sys-apps/gentoo-functions 0.12 0.13 9999: base functions required by all Gentoo systems
 sys-apps/gentoo-systemd-integration 7 8 9999: systemd integration files for Gentoo
-sys-apps/gnome-disk-utility 3.34.5: Disk Utility for GNOME using udisks
+sys-apps/gnome-disk-utility 3.34.5 3.36.1: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
 sys-apps/gptfdisk 1.0.4 1.0.5: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201603152148 3.1.201607172312 3.1.201608131257 3.1.201708012022 3.1.201903191516: Administrative interface for the grsecurity Role Based Access Control system
