@@ -35,6 +35,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-devel/automake:1.11"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.12.21-mono-ambiguous-range.patch"
+)
+
 src_prepare() {
 	base_src_prepare
 	eautoreconf
