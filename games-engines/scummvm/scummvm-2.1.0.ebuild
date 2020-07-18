@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ SRC_URI="https://scummvm.org/frs/scummvm/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2.1 BSD GPL-3-with-font-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="a52 aac alsa debug flac fluidsynth jpeg lua mpeg2 mp3 net opengl png speech theora truetype unsupported vorbis zlib"
 RESTRICT="test"  # it only looks like there's a test there #77507
 
