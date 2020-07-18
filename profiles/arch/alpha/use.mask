@@ -4,7 +4,7 @@
 # Unmask the flag which corresponds to ARCH.
 -alpha
 
-# Trofimovich <slyfox@gentoo.org> (2020-07-18)
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-07-18)
 # net-libs/webkit-gtk has no alpha keywords
 webkit
 # net-libs/gnome-online-accounts depends on net-libs/webkit-gtk
