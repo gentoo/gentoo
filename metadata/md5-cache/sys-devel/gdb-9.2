@@ -5,7 +5,7 @@ DESCRIPTION=GNU debugger
 EAPI=7
 HOMEPAGE=https://sourceware.org/gdb/
 IUSE=+client lzma multitarget nls +python +server source-highlight test vanilla xml xxhash python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2 LGPL-2
 RDEPEND=client? ( dev-libs/mpfr:0= >=sys-libs/ncurses-5.2-r2:0= >=sys-libs/readline-7:0= lzma? ( app-arch/xz-utils ) python? ( python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) ) xml? ( dev-libs/expat ) sys-libs/zlib ) source-highlight? ( dev-util/source-highlight ) xxhash? ( dev-libs/xxhash )
 REQUIRED_USE=python? ( ^^ ( python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 ) ) || ( client server )
@@ -13,4 +13,4 @@ RESTRICT=hppa? ( test ) ia64? ( test ) !test? ( test )
 SLOT=0
 SRC_URI=mirror://gnu/gdb/gdb-9.2.tar.xz ftp://sourceware.org/pub/gdb/releases/gdb-9.2.tar.xz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	2477ebe553d3e4d2c606191fe6c33602	python-single-r1	674c48c926cbb44e91b656e0399d8f54	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=9c24b87fb3b0df25f978eb124dfa3b32
+_md5_=f67d3aad10a47c38f377a668f7602382
