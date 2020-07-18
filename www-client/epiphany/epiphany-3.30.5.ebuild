@@ -12,7 +12,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~sparc ~x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.52.0:2
