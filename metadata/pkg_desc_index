@@ -5915,7 +5915,7 @@ dev-perl/Data-ShowTable 4.600.0 4.600.0-r1: routines to display tabular data in 
 dev-perl/Data-Stag 0.140.0-r1 0.140.0-r2: Structured Tags datastructures
 dev-perl/Data-Stream-Bulk 0.110.0-r1 0.110.0-r2: N at a time iteration API
 dev-perl/Data-Structure-Util 0.160.0 0.160.0-r1: Change nature of data within a structure
-dev-perl/Data-Types 0.90.0: Validate and convert data types.
+dev-perl/Data-Types 0.90.0 0.170.0: Validate and convert data types.
 dev-perl/Data-URIEncode 0.110.0-r1: Allow complex data structures to be encoded using flat URIs
 dev-perl/Data-UUID 1.221.0: Generate Globally/Universally Unique Identifiers (GUIDs/UUIDs)
 dev-perl/Data-Uniqid 0.120.0-r1: Perl extension for simple generating of unique ids
