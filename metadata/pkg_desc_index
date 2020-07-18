@@ -4805,7 +4805,7 @@ dev-lang/mono-basic 4.8: Visual Basic Compiler and Runtime
 dev-lang/mozart 1.4.0-r3 1.4.0-r4 2.0.1: Advanced development platform for intelligent, distributed applications
 dev-lang/mozart-stdlib 1.4.0-r2 2.0.1: The Mozart Standard Library
 dev-lang/mujs 1.0.6 1.0.7: An embeddable Javascript interpreter in C.
-dev-lang/nasm 2.14.02 2.15.02: groovy little assembler
+dev-lang/nasm 2.14.02 2.15.02 2.15.03: groovy little assembler
 dev-lang/nim 1.2.4: compiled, garbage-collected systems programming language
 dev-lang/nqp 2019.03-r1 2019.07.1 2019.11 2020.05 2020.06 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler

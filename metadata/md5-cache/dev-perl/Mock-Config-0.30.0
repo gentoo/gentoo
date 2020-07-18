@@ -4,11 +4,11 @@ DESCRIPTION=Temporarily set Config or XSConfig values
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Mock-Config
 IUSE=test
-KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=Artistic-2
 RDEPEND=dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RU/RURBAN/Mock-Config-0.03.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=f06b948933dc50e95bd9aaeee784dc14
+_md5_=148c070adb78fd4d0f5656a5c957ea12
