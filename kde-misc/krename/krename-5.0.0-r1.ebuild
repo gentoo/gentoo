@@ -45,7 +45,10 @@ RDEPEND="${DEPEND}
 	!kde-misc/krename:4
 "
 
-PATCHES=( "${FILESDIR}/${P}-exiv2-0.27.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-exiv2-0.27.patch"
+	"${FILESDIR}/${P}-kf-5.72-findtaglib.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(

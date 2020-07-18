@@ -1,0 +1,36 @@
+From c1e0259445f32516785a6cb6e82e7cb401b6df37 Mon Sep 17 00:00:00 2001
+From: Jonathan Riddell <jr@jriddell.org>
+Date: Fri, 19 Jun 2020 16:44:47 +0100
+Subject: [PATCH] use local cmake modules first, fixes build failure
+
+---
+ CMakeLists.txt | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 602129b..4550621 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,7 +3,7 @@ project(krename)
+ cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
+ # search packages used by KDE
+ find_package(ECM 0.0.11 REQUIRED NO_MODULE)
+-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
++set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
+ 
+ include(KDEInstallDirs)
+ include(ECMInstallIcons)
+@@ -28,8 +28,8 @@ find_package(KF5 REQUIRED COMPONENTS
+     XmlGui
+ )
+ # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/ is checked
+-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH}
+-                      ${CMAKE_SOURCE_DIR}/cmake/modules)
++set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules
++                      ${CMAKE_MODULE_PATH})
+ 
+ add_definitions(
+     -DQT_DEPRECATED_WARNINGS
+-- 
+GitLab
+
