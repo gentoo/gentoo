@@ -1,0 +1,15 @@
+--- seamonkey-2.53.3/mozilla/config/rules.mk
++++ seamonkey-2.53.3/mozilla/config/rules.mk
+@@ -871,12 +871,6 @@
+ # These flags are passed via `cargo rustc` and only apply to the final rustc
+ # invocation (i.e., only the top-level crate, not its dependencies).
+ cargo_rustc_flags = $(CARGO_RUSTCFLAGS)
+-ifndef DEVELOPER_OPTIONS
+-ifndef MOZ_DEBUG_RUST
+-# Enable link-time optimization for release builds.
+-cargo_rustc_flags += -C lto
+-endif
+-endif
+ 
+ rustflags_override = RUSTFLAGS='$(MOZ_RUST_DEFAULT_FLAGS) $(RUSTFLAGS)'
+ 
