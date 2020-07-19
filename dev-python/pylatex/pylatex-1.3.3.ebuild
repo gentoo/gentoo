@@ -27,12 +27,12 @@ distutils_enable_tests nose
 
 BDEPEND+="
 	test? (
-	dev-python/quantities[${PYTHON_USEDEP}]
-	dev-python/matplotlib[${PYTHON_USEDEP}]
-	dev-python/numpy[${PYTHON_USEDEP}]
-	app-text/texlive
-	dev-texlive/texlive-latexextra
-)"
+		dev-python/quantities[${PYTHON_USEDEP}]
+		dev-python/matplotlib[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+		app-text/texlive
+		dev-texlive/texlive-latexextra
+	)"
 
 S="${WORKDIR}/${MY_P}"
 
