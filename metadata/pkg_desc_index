@@ -10489,7 +10489,7 @@ dev-util/pkgconf 1.6.3 1.7.2 1.7.3 9999: pkg-config compatible replacement with 
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgdiff 1.7.2 9999: Package Changes Analyzer (pkgdiff)
 dev-util/plan9port 0_pre20200526 9999: Port of many Plan 9 programs and libraries
-dev-util/ply 2.1.1: Dynamic instrumentation of the Linux kernel with BPF and kprobes
+dev-util/ply 2.1.1-r1: Dynamic instrumentation of the Linux kernel with BPF and kprobes
 dev-util/premake 3.7 4.3-r1 4.4_beta5 5.0.0_alpha12: A makefile generation tool
 dev-util/pretrace 0.4-r1: start dynamically linked applications under debugging environment
 dev-util/promu 0.5.0: Prometheus Utility Tool
@@ -15028,7 +15028,7 @@ net-misc/whois 5.4.3 5.5.5 5.5.6-r1 9999: improved Whois Client
 net-misc/wol 0.7.1-r2: Implements Wake On LAN (Magic Paket) functionality in a small program
 net-misc/wput 0.6.1-r1 0.6.2: Tiny program like wget, to upload files/whole directories via FTP
 net-misc/x11-ssh-askpass 1.2.4.1-r2: X11-based passphrase dialog for use with OpenSSH
-net-misc/x2goclient 4.1.2.1 4.1.2.1-r1 4.1.2.2: The X2Go Qt client
+net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1355-r1 0.4.1432: utility to download media contents from the web
