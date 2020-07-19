@@ -23,17 +23,8 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-no-static-lib.patch"
-	"${FILESDIR}/${P}-pkgconfig.patch"
+	"${FILESDIR}/${P}-gnuinstalldirs.patch"
 )
-
-src_configure() {
-	local libdir=$(get_libdir)
-
-	local mycmakeargs=(
-		-DLIB_SUFFIX=${libdir/lib/}
-	)
-	cmake_src_configure
-}
 
 src_install() {
 	cmake_src_install
