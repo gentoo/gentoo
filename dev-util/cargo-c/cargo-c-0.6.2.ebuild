@@ -153,7 +153,7 @@ RESTRICT="mirror"
 # use cargo-license for a more accurate license picture
 LICENSE="Apache-2.0 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="libressl"
 
 DEPEND=""
