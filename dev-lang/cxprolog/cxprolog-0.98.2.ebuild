@@ -90,7 +90,11 @@ cxprolog_src_test() {
 }
 
 src_test() {
-	virtx cxprolog_src_test
+	if use java || use wxwidgets; then
+		virtx cxprolog_src_test
+	else
+		cxprolog_src_test
+	fi
 
 	grep -q "ALL THE TESTS PASSED" "${S}"/cxprolog_test.log \
 		|| die "cxprolog unit tests failed"
