@@ -7591,8 +7591,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r2 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.13.26 1.14.20 9999: The AWS SDK for Python
-dev-python/botocore 1.16.26 1.17.20 9999: Low-level, data-driven core of boto 3.
+dev-python/boto3 1.13.26 1.14.20 1.14.23 9999: The AWS SDK for Python
+dev-python/botocore 1.16.26 1.17.20 1.17.23 9999: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.18: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.2.1-r1 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.19: Syntax highlighting and autocompletion for the Python interpreter
@@ -7737,7 +7737,7 @@ dev-python/django_polymorphic 2.1.2: Seamless Polymorphic Inheritance for Django
 dev-python/djangorestframework 3.11.0: Web APIs with django made easy
 dev-python/dkimpy 1.0.4: DKIM and ARC email signing and verification library
 dev-python/dns-lexicon 3.3.4: Manipulate DNS records on various DNS providers in a standardized/agnostic way
-dev-python/dnspython 1.16.0-r1: DNS toolkit for Python
+dev-python/dnspython 1.16.0-r1 2.0.0: DNS toolkit for Python
 dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
 dev-python/docker-py 4.2.0-r1 4.2.1 4.2.2: Python client for Docker
 dev-python/docker-pycreds 0.4.0: Python bindings for the docker credentials store API
@@ -7912,7 +7912,7 @@ dev-python/humanize 2.4.0 2.4.1: Common humanization utilities
 dev-python/hyper-h2 3.2.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 19.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 4.50.8 4.57.1 5.16.0 5.16.3 5.19.0 5.19.1 5.19.2: A library for property based testing
+dev-python/hypothesis 4.50.8 4.57.1 5.16.0 5.16.3 5.19.0 5.19.1 5.19.2 5.20.2: A library for property based testing
 dev-python/icalendar 4.0.3 4.0.6: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.8 2.9 2.10: Internationalized Domain Names in Applications (IDNA)
@@ -7941,7 +7941,7 @@ dev-python/ipaddr 2.2.0: Python IP address manipulation library
 dev-python/ipaddress 1.0.23: IPv4/IPv6 manipulation library, backport of the ipaddress module
 dev-python/ipdb 0.10.3: IPython-enabled pdb
 dev-python/ipy 1.00: Class and tools for handling of IPv4 and IPv6 addresses and networks
-dev-python/ipykernel 5.1.4 5.3.0 5.3.2: IPython Kernel for Jupyter
+dev-python/ipykernel 5.1.4 5.3.0 5.3.2 5.3.3: IPython Kernel for Jupyter
 dev-python/ipynb 0.5.1: Package/Module importer for importing code from Jupyter Notebook files
 dev-python/ipyparallel 6.2.3 6.3.0: Interactive Parallel Computing with IPython
 dev-python/ipython 7.5.0 7.16.1: Advanced interactive shell for Python
@@ -8889,7 +8889,7 @@ dev-python/vdirsyncer 0.16.8: Synchronize calendars and contacts
 dev-python/verboselogs 1.7: Verbose logging for Python's logging module
 dev-python/versioneer 0.18 0.18-r1: Easy VCS-based management of project version strings
 dev-python/vine 1.3.0: Python Promises
-dev-python/virtualenv 16.0.0 16.7.9-r1 16.7.10 20.0.23 20.0.26 20.0.27: Virtual Python Environment builder
+dev-python/virtualenv 16.7.10 20.0.27: Virtual Python Environment builder
 dev-python/virtualenv-clone 0.5.3: A script for cloning a non-relocatable virtualenv
 dev-python/virtualenvwrapper 4.8.4-r1: Set of extensions to Ian Bicking's virtualenv tool
 dev-python/visitor 0.1.3: A tiny pythonic visitor implementation
@@ -11350,7 +11350,7 @@ games-sports/trigger 0.6.1-r1: Free OpenGL rally car racing game
 games-sports/trophy 2.0.3-r1: 2D Racing Game
 games-sports/ultimatestunts 0.7.7-r1: Remake of the famous Stunts game
 games-sports/vdrift 20120722: A driving simulation made with drift racing in mind
-games-sports/xmoto 0.6.0: A challenging 2D motocross platform game, where physics play an important role
+games-sports/xmoto 0.6.1: A challenging 2D motocross platform game, where physics play an important role
 games-strategy/0ad 0.0.23_alpha 0.0.23b_alpha: A free, real-time strategy game
 games-strategy/0ad-data 0.0.23_alpha 0.0.23b_alpha: Data files for 0ad
 games-strategy/asc 2.6.0.0-r2: turn based strategy game designed in the tradition of the Battle Isle series
@@ -14359,7 +14359,7 @@ net-im/signal-desktop-bin 1.34.4-r1: Allows you to send and receive messages of 
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.59.0.77 8.60.0.76 8.61.0.77 8.61.0.95 8.62.0.83: Instant messaging client, with support for audio and video
 net-im/slack 4.3.2-r2 4.4.2 4.4.3: Team collaboration tool
-net-im/spectrum2 2.0.12-r2: An open source instant messaging transport
+net-im/spectrum2 2.0.12-r2 2.0.13: An open source instant messaging transport
 net-im/swift 4.0.2-r1: An elegant, secure, adaptable and intuitive XMPP Client
 net-im/teams 1.3.00.958 1.3.00.5153 1.3.00.16851: Microsoft Teams, an Office 365 multimedia collaboration client, pre-release
 net-im/telegram-desktop 2.1.13 2.1.20: Official desktop client for Telegram
