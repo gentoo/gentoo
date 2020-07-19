@@ -5,10 +5,10 @@ DESCRIPTION=Linux Trace Toolkit - UST library
 EAPI=7
 HOMEPAGE=https://lttng.org
 IUSE=examples numa
-KEYWORDS=amd64 arm arm64 ~hppa ~ia64 ppc ppc64 x86
+KEYWORDS=amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/userspace-rcu:= numa? ( sys-process/numactl )
 SLOT=0/2.11
 SRC_URI=https://lttng.org/files/lttng-ust/lttng-ust-2.11.0.tar.bz2
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=5f461715282ebadfaaf00dc70ace08ce
+_md5_=d0b24bfb5a7efda026c57a607f8e0f3f

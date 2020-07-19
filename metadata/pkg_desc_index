@@ -10252,6 +10252,7 @@ dev-util/bpftrace 0.9.2 0.9.3 0.9.4 0.10.0-r1 0.11.0 9999: High-level tracing la
 dev-util/bsdiff 4.3-r4: bsdiff: Binary Differencer using a suffix alg
 dev-util/btyacc 3.0-r3: Backtracking YACC - modified from Berkeley YACC
 dev-util/build 0.3.10: A massively-parallel software build system implemented on top of GNU make
+dev-util/build2 0.13.0_alpha0_pre20200718101251: cross-platform toolchain for building and packaging C++ code
 dev-util/buildbot 2.7.0 2.8.0 2.8.2 9999: BuildBot build automation system
 dev-util/buildbot-badges 2.8.0 2.8.2: Buildbot badges plugin produces an image in SVG or PNG format...
 dev-util/buildbot-console-view 2.7.0 2.8.0 2.8.2: Buildbot console-view plugin
@@ -14091,7 +14092,7 @@ net-analyzer/sarg 2.4.0: Squid Analysis Report Generator
 net-analyzer/sbd 1.37-r1: Netcat-clone, designed to be portable and offer strong encryption
 net-analyzer/scanlogd 2.2.7: a port scan detection tool
 net-analyzer/scanssh 2.1 2.1-r2: network scanner that gathers info on SSH protocols and versions
-net-analyzer/scapy 2.4.2 2.4.3 9999: A Python interactive packet manipulation program for mastering the network
+net-analyzer/scapy 2.4.2 2.4.3 2.4.4_rc1 9999: A Python interactive packet manipulation program for mastering the network
 net-analyzer/scli 0.4.0-r1: SNMP Command Line Interface
 net-analyzer/sec 2.7.6-r1 2.8.1 2.8.2 2.8.3: Simple Event Correlator
 net-analyzer/sflowtool 3.34 3.41 5.02 5.04: sflowtool is a utility for collecting and processing sFlow data
