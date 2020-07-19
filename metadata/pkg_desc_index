@@ -14534,7 +14534,7 @@ net-libs/libpcapnav 0.8: Libpcap wrapper library to navigate to arbitrary packet
 net-libs/libpri 1.6.0: Primary Rate ISDN (PRI) library
 net-libs/libprotoident 2.0.12 2.0.13 2.0.14_p1 9999: A library that performs application layer protocol identification for flows
 net-libs/libproxy 0.4.15-r1: Library for automatic proxy configuration management
-net-libs/libpsl 0.21.0: C library for the Public Suffix List
+net-libs/libpsl 0.21.0 0.21.1: C library for the Public Suffix List
 net-libs/libqmi 1.12.6 1.14.0 1.16.0 1.16.2 1.16.4 1.18.0 1.18.2 1.20.0 1.20.2 1.22.2 9999: Qualcomm MSM (Mobile Station Modem) Interface (QMI) modem protocol helper library
 net-libs/librouteros 1.1.2: Library for accessing MikroTik's RouterOS via its API
 net-libs/librsync 0.9.7-r3 2.0.1-r1 2.0.2 2.1.0 2.2.1 2.3.0 2.3.1: Remote delta-compression library
