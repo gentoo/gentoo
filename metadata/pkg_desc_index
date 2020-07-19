@@ -4756,6 +4756,7 @@ dev-lang/clojure 1.8.0 1.9.0-r1 1.10.0: General-purpose programming language wit
 dev-lang/closure-compiler-bin 20170218: JavaScript optimizing compiler
 dev-lang/coffee-script 1.9.3-r1 1.12.5 2.3.2: A little language that compiles into javascript
 dev-lang/crystal 0.35.1: The Crystal Programming Language
+dev-lang/cxprolog 0.98.2: A WAM based Prolog system
 dev-lang/duktape 2.4.0 2.5.0-r1: Embeddable Javascript engine
 dev-lang/elixir 1.9.4 1.10.3 1.10.4: Elixir programming language
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
@@ -14153,7 +14154,7 @@ net-analyzer/wireshark 3.2.5 99999999: A network protocol analyzer formerly know
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2 9999: A framework for layer 2 attacks
-net-analyzer/zabbix 3.0.31 4.0.20 4.0.21 4.0.22 4.4.8 4.4.9 4.4.10 5.0.0 5.0.1 5.0.2: ZABBIX is software for monitoring of your applications, network and servers
+net-analyzer/zabbix 3.0.31 4.0.21 4.0.22 4.4.9 4.4.10 5.0.1 5.0.2: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 2.1.1 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/accel-ppp 1.12.0 9999: High performance PPTP, PPPoE and L2TP server
