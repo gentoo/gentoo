@@ -5,7 +5,7 @@ EAPI=7
 inherit go-module systemd
 MY_PV="${PV/_rc/-rc.}"
 COMMIT=e77ce3d1
-BRANCH=HEAD
+BRANCH=release-1.14
 VERSION=v${MY_PV}
 
 DESCRIPTION="The plugin-driven server agent for collecting & reporting metrics."
@@ -915,7 +915,7 @@ src_compile() {
 	unset LDFLAGS
 	emake \
 		COMMIT=${COMMIT} \
-		BRANCH=HEAD \
+		BRANCH=${BRANCH} \
 		VERSION=v${MY_PV} \
 		telegraf
 }
