@@ -36,7 +36,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/${P}-test-suite.patch
 	eapply_user
 
-	cp "${FILESDIR}"/build-${PV}.xml "${S}"/build.xml || die
+	cp "${FILESDIR}"/build-3.x.xml "${S}"/build.xml || die
 }
 
 src_compile() {

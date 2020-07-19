@@ -1,13 +1,16 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit eutils java-pkg-2 java-ant-2
 
+PATCHSET_VER="0"
+
 DESCRIPTION="tuProlog is a light-weight Prolog for Internet applications and infrastructures"
 HOMEPAGE="http://tuprolog.unibo.it/"
-SRC_URI="mirror://gentoo/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~keri/distfiles/tuprolog/${P}.tar.gz
+	https://dev.gentoo.org/~keri/distfiles/tuprolog/${P}-gentoo-patchset-${PATCHSET_VER}.tar.gz"
 
 LICENSE="LGPL-3 BSD"
 SLOT="0"
@@ -16,8 +19,9 @@ IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=virtual/jdk-1.8:=
-	 dev-java/javassist:3
-	 dev-java/commons-lang:3.1"
+	dev-java/javassist:3
+	dev-java/commons-lang:3.1
+	dev-java/gson:2.6"
 
 DEPEND="${RDEPEND}
 	dev-java/ant-core
@@ -29,11 +33,12 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}"/${P}
 
-EANT_GENTOO_CLASSPATH="javassist:3,commons-lang-3.1"
+EANT_GENTOO_CLASSPATH="javassist:3,commons-lang:3.1,gson:2.6"
+
+PATCHES=( "${WORKDIR}/${PV}" )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-no-ikvm.patch
-	epatch "${FILESDIR}"/${P}-oolibrary-unit-test.patch
+	default
 
 	cp "${FILESDIR}"/build-3.x.xml "${S}"/build.xml || die
 }
@@ -60,7 +65,7 @@ src_install() {
 	fi
 
 	if use examples ; then
-		insinto /usr/share/doc/${PF}/examples
-		doins doc/examples/*.pl
+		docinto examples
+		dodoc doc/examples/*.pl
 	fi
 }
