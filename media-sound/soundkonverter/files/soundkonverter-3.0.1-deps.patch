@@ -1,0 +1,30 @@
+From 0eda1978640dda400ca02172abeeacbb725f7b7c Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 19 Jul 2020 11:43:30 +0200
+Subject: [PATCH] Consolidate find_package calls inside CMakeLists.txt
+
+- Drop unused Qt5Network
+- Search for Qt5Xml once instead of in most plugins
+- KF5WidgetsAddons and KF5KIO were already being searched for
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                                             | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 521d0da..7e578f0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -30,7 +30,7 @@ include(CMakePackageConfigHelpers)
+ include(ECMInstallIcons)
+ include(FeatureSummary)
+ 
+-find_package(Qt5 REQUIRED COMPONENTS Network Core Widgets)
++find_package(Qt5 REQUIRED COMPONENTS Core Widgets Xml)
+ find_package(KF5 REQUIRED COMPONENTS I18n XmlGui KIO Solid Config ConfigWidgets WidgetsAddons KDELibs4Support)
+ find_package(KF5Cddb)
+ find_package(Phonon4Qt5 REQUIRED)
+-- 
+2.27.0
+
