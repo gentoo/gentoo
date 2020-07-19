@@ -16,11 +16,10 @@ IUSE="html twoside"
 # texlive-latexextra for chngcntr, isodate, leaflet, marginnote,
 #   paralist, tocbibind
 # texlive-mathscience for algorithm, algorithmic
-BDEPEND="|| ( >=dev-texlive/texlive-latexextra-2020-r1 dev-tex/leaflet )
-	dev-texlive/texlive-bibtexextra
+BDEPEND="dev-texlive/texlive-bibtexextra
 	dev-texlive/texlive-fontsrecommended
 	dev-texlive/texlive-latex
-	dev-texlive/texlive-latexextra
+	>=dev-texlive/texlive-latexextra-2020-r2
 	dev-texlive/texlive-latexrecommended
 	dev-texlive/texlive-mathscience
 	html? (
