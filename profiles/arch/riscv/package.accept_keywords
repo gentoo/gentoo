@@ -5,6 +5,3 @@
 # we need specific versions / patches for riscv!
 sys-devel/gcc -amd64 -~amd64
 sys-libs/glibc -amd64 -~amd64
-
-# For the stages and qemu, we need static qemu *from* ~amd64
-app-emulation/qemu-riscv64-bin ~amd64
