@@ -15099,7 +15099,7 @@ net-p2p/litecoind 0.10.4.0: P2P Internet currency based on Bitcoin but easier to
 net-p2p/mktorrent 1.0-r1 1.1_p20180912: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mldonkey 3.1.5-r1 3.1.6 3.1.6-r1: Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface
 net-p2p/ncdc 1.20 1.21 9999: ncurses directconnect client
-net-p2p/nicotine+ 1.4.1-r2: A fork of nicotine, a Soulseek client in Python
+net-p2p/nicotine+ 2.0.1: A fork of nicotine, a Soulseek client in Python
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
 net-p2p/qbittorrent 4.2.1 4.2.3 4.2.5 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
