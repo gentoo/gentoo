@@ -68,6 +68,15 @@ python_test() {
 	unset suite
 }
 
+python_compile_all() {
+	default_python_compile_all
+	# Generate man page. only required for 9999
+	if [[ ${PV} == *9999 ]] ; then
+		# override MAKEOPTS to prevent build failure
+		emake -j1 -C doc
+	fi
+}
+
 python_install_all() {
 	distutils-r1_python_install_all
 
