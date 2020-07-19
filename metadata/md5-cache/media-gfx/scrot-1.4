@@ -1,0 +1,13 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=install prepare
+DEPEND=>=media-libs/giblib-1.2.3 x11-libs/libX11 x11-libs/libXcomposite x11-libs/libXfixes || ( media-libs/imlib2[gif] media-libs/imlib2[jpeg] media-libs/imlib2[png] media-libs/imlib2[tiff] ) x11-base/xorg-proto
+DESCRIPTION=Screen capture utility using imlib2 library
+EAPI=7
+HOMEPAGE=https://github.com/resurrecting-open-source-projects/scrot
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=feh LGPL-2+
+RDEPEND=>=media-libs/giblib-1.2.3 x11-libs/libX11 x11-libs/libXcomposite x11-libs/libXfixes || ( media-libs/imlib2[gif] media-libs/imlib2[jpeg] media-libs/imlib2[png] media-libs/imlib2[tiff] )
+SLOT=0
+SRC_URI=https://github.com/resurrecting-open-source-projects/scrot/archive/1.4.tar.gz -> scrot-1.4.tar.gz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=14435dac319ca2f8024952e1ab2175b2
