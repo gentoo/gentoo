@@ -3217,7 +3217,7 @@ dev-cpp/gflags 2.2.0 2.2.1 2.2.1-r1 9999: Google's C++ argument parsing library
 dev-cpp/glibmm 2.62.0 2.64.2: C++ interface for glib2
 dev-cpp/glog 0.3.4-r1 0.4.0: Google's C++ logging library
 dev-cpp/gstreamermm 1.10.0: C++ interface for GStreamer
-dev-cpp/gtest 1.8.0 1.8.0-r1 1.8.1 1.8.1-r1 1.9.0_pre20190607 1.10.0 9999: Google C++ Testing Framework
+dev-cpp/gtest 1.9.0_pre20190607 1.10.0_p20200702 9999: Google C++ Testing Framework
 dev-cpp/gtkmm 2.24.5 3.24.2: C++ interface for GTK+
 dev-cpp/gtksourceviewmm 2.10.3-r1 3.18.0: C++ bindings for gtksourceview
 dev-cpp/htmlcxx 0.87: A simple non-validating CSS 1 and HTML parser for C++
@@ -5263,7 +5263,7 @@ dev-libs/papi 5.3.0 5.4.0 5.5.1: Performance Application Programming Interface
 dev-libs/pcc-libs 1.1.0 9999: pcc compiler support libs
 dev-libs/pcl 1.12-r1: Portable Coroutine Library
 dev-libs/pegtl 2.8.3: Header-only library for creating parsers according to Parsing Expression Grammar
-dev-libs/pigpio 76: A library for the Raspberry which allows control of the GPIOs
+dev-libs/pigpio 76 77: A library for the Raspberry which allows control of the GPIOs
 dev-libs/pkcs11-helper 1.25.1: PKCS#11 helper library
 dev-libs/plasma-wayland-protocols 1.0: Plasma Specific Protocols for Wayland
 dev-libs/poco 1.9.0-r2: C++ libraries for building network-based applications
@@ -8376,6 +8376,7 @@ dev-python/pykka 2.0.2: A Python implementation of the actor model
 dev-python/pykwalify 1.7.0 9999: Python lib/cli for JSON/YAML schema validation
 dev-python/pylama 7.7.1: Code audit tool for python
 dev-python/pylast 1.9.0 3.2.1: Python interface to last.fm and other api-compatible websites
+dev-python/pylatex 1.3.3: A Python library for creating LaTeX files and snippets
 dev-python/pylibacl 0.5.3 0.5.4_p20191217: POSIX ACLs (Access Control Lists) for Python
 dev-python/pylibmc 1.6.1-r1: Libmemcached wrapper written as a Python extension
 dev-python/pylint 2.4.4-r1 2.5.3: Python code static checker
@@ -8609,6 +8610,7 @@ dev-python/qscintilla-python 2.11.4 2.11.5: Python bindings for QScintilla
 dev-python/qtawesome 0.7.2: Enables iconic fonts such as Font Awesome in PyQt
 dev-python/qtconsole 4.3.1 4.7.4 4.7.5: Qt-based console for Jupyter with support for rich media output
 dev-python/qtsass 0.3.0: Compile SASS files to Qt stylesheets
+dev-python/quantities 0.12.4: Support for physical quantities with units, based on numpy
 dev-python/quex 0.65.4: Mode Oriented Directly Coded Lexical Analyser Generator
 dev-python/radon 4.1.0: Code Metrics in Python
 dev-python/raet 0.6.8-r1: Reliable Asynchronous Event Transport Protocol
@@ -14126,7 +14128,7 @@ net-analyzer/tcpdump 4.9.3 4.9.3-r1 9999: A Tool for network monitoring and data
 net-analyzer/tcpflow 1.5.2-r1: A tool for monitoring, capturing and storing TCP connections flows
 net-analyzer/tcping 1.3.5-r1 1.3.6: Check if a desired port is reachable via TCP
 net-analyzer/tcpreen 1.4.4: TCP network re-engineering tool
-net-analyzer/tcpreplay 4.3.2 4.3.3 999999: utilities for editing and replaying previously captured network traffic
+net-analyzer/tcpreplay 4.3.3 999999: utilities for editing and replaying previously captured network traffic
 net-analyzer/tcpslice 1.2a_p3-r1 1.2a_p3_p4: Extract and concatenate portions of pcap files
 net-analyzer/tcpstat 1.5-r3 1.5_p8: Reports network interface statistics
 net-analyzer/tcptrace 6.6.7_p4_p1 6.6.7_p5: A Tool for analyzing network packet dumps
