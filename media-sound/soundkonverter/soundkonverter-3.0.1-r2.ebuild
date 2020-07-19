@@ -45,7 +45,7 @@ RDEPEND="${DEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.0.0-deps.patch"
+	"${FILESDIR}/${P}-deps.patch" # pending upstream
 	"${FILESDIR}/${P}-fix-add-dirs.patch"
 	"${FILESDIR}/${P}-metainfodir.patch"
 )
