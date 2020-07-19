@@ -11054,7 +11054,7 @@ games-fps/tenebrae 1.04-r1: adds stencil shadows and per pixel lights to quake
 games-fps/transfusion-bin 1.01-r1: Blood remake
 games-fps/tribes2 25034: Tribes 2 - Team Combat on an Epic Scale
 games-fps/turtlearena 0.6.1-r1: A turtle featuring free and open source third-person action game (ioq3 engine)
-games-fps/urbanterror 4.3.4_p20180708: Hollywood tactical shooter based on the ioquake3 engine
+games-fps/urbanterror 4.3.4_p20200519: Hollywood tactical shooter based on the ioquake3 engine
 games-fps/urbanterror-data 4.3.4: Data files for UrbanTerror
 games-fps/ut2003 2225-r6: Sequel to the 1999 Game of the Year multi-player first-person shooter
 games-fps/ut2003-bonuspack-cm 1: Community Bonus Pack for UT2003
@@ -12692,7 +12692,7 @@ media-libs/fontconfig-infinality 20130404: Configuration for freetype-infinality
 media-libs/fontconfig-ultimate 2015.04 2015.08.01: A set of font rendering and replacement rules for fontconfig-infinality
 media-libs/freealut 1.1.0-r3: The OpenAL Utility Toolkit
 media-libs/freeglut 3.2.1: A free OpenGL utility toolkit, the open-sourced alternative to the GLUT library
-media-libs/freeimage 3.18.0-r1: Image library supporting many formats
+media-libs/freeimage 3.18.0-r1 3.18.0-r2: Image library supporting many formats
 media-libs/freetype 2.9.1-r3 2.9.1-r4 2.10.1 2.10.2-r1 9999: A high-quality and portable font engine
 media-libs/freeverb3 3.2.1-r2: Reverb and Impulse Response Convolution plug-ins (Audacious/JACK)
 media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
@@ -14413,7 +14413,7 @@ net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/scrollz 2.3: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0-r2: Full-featured IRC connection manager for Telepathy
-net-irc/unrealircd 4.2.4.1 5.0.5.1: An advanced Internet Relay Chat daemon
+net-irc/unrealircd 4.2.4.1 5.0.5.1 5.0.6: An advanced Internet Relay Chat daemon
 net-irc/weechat 2.8 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.7.5 1.8.1 9999: An advanced IRC Bouncer
