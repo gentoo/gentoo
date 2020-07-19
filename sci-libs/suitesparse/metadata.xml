@@ -32,9 +32,6 @@
   <flag name="cuda">
     Enable nvidia cuda toolkit for speeding up computations
   </flag>
-  <flag name="metis">
-    Enable the Partition module to cholmod using <pkg>sci-libs/metis</pkg>
-  </flag>
   <flag name="partition">
     Enable graph partitioning and graph-partition-based orderings
     through <pkg>sci-libs/metis</pkg> or <pkg>sci-libs/parmetis</pkg>
