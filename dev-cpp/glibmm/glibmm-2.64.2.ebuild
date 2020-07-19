@@ -33,6 +33,9 @@ BDEPEND="
 src_prepare() {
 	default
 
+	# giomm_tls_client requires FEATURES=-network-sandbox and glib-networking rdep
+	sed -i -e '/giomm_tls_client/d' tests/meson.build || die
+
 	if ! use test; then
 		sed -i -e "/^subdir('tests')/d" meson.build || die
 	fi
