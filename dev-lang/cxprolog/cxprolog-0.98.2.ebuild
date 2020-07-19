@@ -3,7 +3,7 @@
 
 EAPI=7
 
-WX_GTK_VER="3.0"
+WX_GTK_VER="3.0-gtk3"
 VIRTUALX_REQUIRED="manual"
 
 inherit flag-o-matic java-pkg-opt-2 java-ant-2 toolchain-funcs virtualx wxwidgets
