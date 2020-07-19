@@ -1398,6 +1398,7 @@ app-editors/notepadqq 2.0.0_beta 9999: Notepad++-like editor for Linux
 app-editors/okteta 0.26.3: Hex editor by KDE
 app-editors/padre 1.0.0-r1: Perl Application Development and Refactoring Environment
 app-editors/pluma 1.22.2 1.24.0: Pluma text editor for the MATE desktop
+app-editors/pyvim 3.0.2: An implementation of Vim in Python
 app-editors/qemacs 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
 app-editors/qhexedit2 0.8.6_p20190316: Hex editor library, Qt application written in C++ with Python bindings
 app-editors/qxmledit 0.9.12: Simple Qt-based XML editor
@@ -18608,7 +18609,7 @@ x11-terms/st 0.8.4 9999: simple terminal implementation for X
 x11-terms/terminator 1.92-r1: Multiple GNOME terminals in one window
 x11-terms/terminology 1.7.0-r1: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/tilda 1.4.1 1.5.0 1.5.2: A drop down terminal, similar to the consoles found in first person shooters
-x11-terms/xfce4-terminal 0.8.9.1 0.8.9.2: A terminal emulator for the Xfce desktop environment
+x11-terms/xfce4-terminal 0.8.9.2: A terminal emulator for the Xfce desktop environment
 x11-terms/xterm 337 351 353 357: Terminal Emulator for X Windows
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
 x11-themes/QGnomePlatform 0.6.0-r1 0.6.1-r1: A Qt Platform Theme aimed to accommodate GNOME settings
@@ -18629,7 +18630,7 @@ x11-themes/e-flat-theme 0_pre20200602: A modern, flat theme for Enlightenment WM
 x11-themes/e-gtk-theme 0.19.3: A GTK theme to match Enlightenment WM's default theme
 x11-themes/e16-themes 1.0.2: All the official E16 themes
 x11-themes/echo-icon-theme 0.3.89.0_pre20081031: SVG icon theme from the Echo Icon project
-x11-themes/elementary-xfce-icon-theme 0.15 0.15.1: Elementary icons forked from upstream, extended and maintained for Xfce
+x11-themes/elementary-xfce-icon-theme 0.15.1: Elementary icons forked from upstream, extended and maintained for Xfce
 x11-themes/experience 3.04-r1: GTK+2 themes which copy and improve the look of XP Luna
 x11-themes/faenza-icon-theme 1.3.1: A scalable icon theme called Faenza
 x11-themes/fedora-backgrounds 27.0.1 28.1.5 29.1.3 30.1.2 31.0.4 32.2.2: A set of default and supplemental wallpapers for Fedora
@@ -18803,14 +18804,14 @@ x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
 x11-wm/xpra 3.0.2-r1 3.0.5-r1: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.12.11 4.15.1: Extensions, widgets and framework library with session support for Xfce
 xfce-base/garcon 0.6.4-r2 0.7.0: Xfce's freedesktop.org specification compatible menu implementation library
-xfce-base/libxfce4ui 4.14.1 4.15.2 4.15.3-r1: Unified widget and session management libs for Xfce
-xfce-base/libxfce4util 4.14.0 4.15.0 4.15.1 4.15.2: A basic utility library for the Xfce desktop environment
-xfce-base/thunar 1.8.12 1.8.14 1.8.15 4.15.0 4.15.1: File manager for the Xfce desktop environment
+xfce-base/libxfce4ui 4.14.1 4.15.3-r1: Unified widget and session management libs for Xfce
+xfce-base/libxfce4util 4.14.0 4.15.2: A basic utility library for the Xfce desktop environment
+xfce-base/thunar 1.8.14 1.8.15 4.15.1: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.14.0 4.15.0: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.14-r2: The Xfce Desktop Environment (meta package)
-xfce-base/xfce4-panel 4.14.3 4.14.4 4.15.2 4.15.3: Panel for the Xfce desktop environment
+xfce-base/xfce4-panel 4.14.4 4.15.3: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.14.1 4.14.2: A session manager for the Xfce desktop environment
-xfce-base/xfce4-settings 4.14.2 4.14.3 4.15.0 4.15.1-r1: Configuration system for the Xfce desktop environment
+xfce-base/xfce4-settings 4.14.3 4.15.1-r1: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.14.1 4.14.3 4.15.0: A configuration management system for Xfce
 xfce-base/xfdesktop 4.14.2 4.15.0: Desktop manager for the Xfce desktop environment
 xfce-base/xfwm4 4.14.0-r1 4.14.2: Window manager for the Xfce desktop environment
@@ -18818,7 +18819,7 @@ xfce-extra/eatmonkey 0.1.4-r1: A download manager that works exclusively with ar
 xfce-extra/multiload-nandhp 0.3-r4: A port of the GNOME multiload applet for the Xfce panel
 xfce-extra/thunar-archive-plugin 0.4.0: Archive plug-in for the Thunar filemanager
 xfce-extra/thunar-media-tags-plugin 0.3.0: Adds special features for media files to the Thunar File Manager
-xfce-extra/thunar-shares-plugin 0.3.0 0.3.1: Thunar plugin to share files using Samba
+xfce-extra/thunar-shares-plugin 0.3.1: Thunar plugin to share files using Samba
 xfce-extra/thunar-vcs-plugin 0.2.0: Adds Subversion and GIT actions to the context menu of thunar
 xfce-extra/thunar-volman 0.9.5: Daemon that enforces volume-related policies
 xfce-extra/transd 0_p20120503-r1: A small daemon to watch for window creation and set window transparency values
@@ -18844,12 +18845,12 @@ xfce-extra/xfce4-mount-plugin 1.1.3: An mount plug-in for the Xfce panel
 xfce-extra/xfce4-mpc-plugin 0.5.2: Music Player Daemon (mpd) panel plugin
 xfce-extra/xfce4-netload-plugin 1.3.2: A network load plug-in for the Xfce panel
 xfce-extra/xfce4-notes-plugin 1.8.1-r4: Xfce4 panel sticky notes plugin
-xfce-extra/xfce4-notifyd 0.4.4 0.6.0 0.6.1: Notification daemon for the Xfce desktop environment
+xfce-extra/xfce4-notifyd 0.6.1: Notification daemon for the Xfce desktop environment
 xfce-extra/xfce4-panel-profiles 1.0.10: Simple application to manage Xfce panel layouts
 xfce-extra/xfce4-places-plugin 1.8.1: A panel plug-in to provide quick access to files, folders and removable media
 xfce-extra/xfce4-power-manager 1.6.6 1.7.0: Power manager for the Xfce desktop environment
-xfce-extra/xfce4-pulseaudio-plugin 0.4.2 0.4.3: A panel plug-in for PulseAudio volume control
-xfce-extra/xfce4-screensaver 0.1.8 0.1.10: Screen saver and locker (port of MATE screensaver)
+xfce-extra/xfce4-pulseaudio-plugin 0.4.3: A panel plug-in for PulseAudio volume control
+xfce-extra/xfce4-screensaver 0.1.10: Screen saver and locker (port of MATE screensaver)
 xfce-extra/xfce4-screenshooter 1.9.7: Xfce4 screenshooter application and panel plugin
 xfce-extra/xfce4-sensors-plugin 1.3.0-r1 1.3.92-r1: A panel plug-in for acpi, lm-sensors and hddtemp sensors
 xfce-extra/xfce4-smartbookmark-plugin 0.5.1: Smart bookmark plug-in for the Xfce desktop environment
@@ -18863,7 +18864,7 @@ xfce-extra/xfce4-verve-plugin 2.0.0: A comfortable command line plugin for the X
 xfce-extra/xfce4-volumed-pulse 0.2.3: Daemon to control volume up/down and mute keys for pulseaudio
 xfce-extra/xfce4-wavelan-plugin 0.6.1: A panel plug-in to display wireless interface statistics
 xfce-extra/xfce4-weather-plugin 0.10.1: A weather plug-in for the Xfce desktop environment
-xfce-extra/xfce4-whiskermenu-plugin 2.4.3 2.4.4: Alternate application launcher for Xfce
+xfce-extra/xfce4-whiskermenu-plugin 2.4.4: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.4.6-r3: Xfce plugin puts the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-xkb-plugin 0.8.1: XKB layout switching panel plug-in for the Xfce desktop environment
 xfce-extra/xfdashboard 0.7.5: Maybe a GNOME shell like dashboard for the Xfce desktop environment
