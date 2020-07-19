@@ -25,7 +25,7 @@ RDEPEND="
 	mp3? ( media-libs/libmad )
 	mpeg2? ( media-libs/libmpeg2 )
 	net? ( media-libs/sdl2-net )
-	opengl? ( virtual/opengl )
+	opengl? ( || ( virtual/opengl media-libs/mesa[gles2] media-libs/mesa[gles1] ) )
 	png? ( media-libs/libpng:0 )
 	speech? ( app-accessibility/speech-dispatcher )
 	truetype? ( media-libs/freetype:2 )
