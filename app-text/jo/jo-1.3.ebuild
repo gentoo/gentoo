@@ -19,5 +19,5 @@ src_configure() {
 
 src_install() {
 	default
-	mv $(get_bashcompdir)/jo{.bash,} || die
+	mv "${D}"$(get_bashcompdir)/jo{.bash,} || die
 }
