@@ -12955,7 +12955,6 @@ media-libs/portaudio 19.06.00-r1 19.06.00-r2 19.06.00-r3: A free, cross-platform
 media-libs/portmidi 217-r3: Library for real time MIDI input and output
 media-libs/ptex 2.3.2: Per-Face Texture Mapping for Production Rendering
 media-libs/pulseaudio-qt 1.2: Qt bindings for libpulse
-media-libs/pymemphis 0.2.1-r3: Python bindings for the libmemphis library
 media-libs/qhull 2015.2: Geometry library
 media-libs/qt-gstreamer 1.2.0-r4: C++ bindings for GStreamer with a Qt-style API
 media-libs/qtav 1.12.0-r2: Multimedia playback framework based on Qt + FFmpeg
@@ -17212,7 +17211,7 @@ sys-fs/fuse-convmvfs 0.2.6-r1: FUSE file system to convert filename charset
 sys-fs/fuse-exfat 1.3.0: exFAT filesystem FUSE module
 sys-fs/fuse-overlayfs 0.7.8 1.0.0 1.1.1: FUSE implementation for overlayfs
 sys-fs/fuse-zip 0.7.0: FUSE file system to navigate, extract, create and modify ZIP archives
-sys-fs/fuseiso 20070708-r2: Fuse module to mount ISO9660
+sys-fs/fuseiso 20070708-r2 20070708-r3: Fuse module to mount ISO9660
 sys-fs/genext2fs 1.4.1: generate ext2 file systems
 sys-fs/go-mtpfs 9999: a simple FUSE filesystem for mounting Android devices as a MTP device
 sys-fs/growpart 0.0.1 0.0.30: A script that can grow your rootfs on first boot
