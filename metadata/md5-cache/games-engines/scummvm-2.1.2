@@ -1,0 +1,15 @@
+BDEPEND=app-arch/xz-utils truetype? ( virtual/pkgconfig ) x86? ( dev-lang/nasm )
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=media-libs/libsdl2-2.0.0[sound,joystick,video] a52? ( media-libs/a52dec ) aac? ( media-libs/faad2 ) alsa? ( media-libs/alsa-lib ) flac? ( media-libs/flac ) fluidsynth? ( media-sound/fluidsynth ) jpeg? ( virtual/jpeg:0 ) mp3? ( media-libs/libmad ) mpeg2? ( media-libs/libmpeg2 ) net? ( media-libs/sdl2-net ) opengl? ( || ( virtual/opengl media-libs/mesa[gles2] media-libs/mesa[gles1] ) ) png? ( media-libs/libpng:0 ) speech? ( app-accessibility/speech-dispatcher ) truetype? ( media-libs/freetype:2 ) theora? ( media-libs/libtheora ) vorbis? ( media-libs/libogg media-libs/libvorbis ) zlib? ( sys-libs/zlib:= ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Reimplementation of the SCUMM game engine used in Lucasarts adventures
+EAPI=7
+HOMEPAGE=https://www.scummvm.org/
+IUSE=a52 aac alsa debug flac fluidsynth jpeg lua mpeg2 mp3 net opengl png speech theora truetype unsupported vorbis zlib
+KEYWORDS=~amd64 ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2+ LGPL-2.1 BSD GPL-3-with-font-exception
+RDEPEND=>=media-libs/libsdl2-2.0.0[sound,joystick,video] a52? ( media-libs/a52dec ) aac? ( media-libs/faad2 ) alsa? ( media-libs/alsa-lib ) flac? ( media-libs/flac ) fluidsynth? ( media-sound/fluidsynth ) jpeg? ( virtual/jpeg:0 ) mp3? ( media-libs/libmad ) mpeg2? ( media-libs/libmpeg2 ) net? ( media-libs/sdl2-net ) opengl? ( || ( virtual/opengl media-libs/mesa[gles2] media-libs/mesa[gles1] ) ) png? ( media-libs/libpng:0 ) speech? ( app-accessibility/speech-dispatcher ) truetype? ( media-libs/freetype:2 ) theora? ( media-libs/libtheora ) vorbis? ( media-libs/libogg media-libs/libvorbis ) zlib? ( sys-libs/zlib:= )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://scummvm.org/frs/scummvm/2.1.2/scummvm-2.1.2.tar.xz
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=39698911f3f9b5279f743dbd88cab1df
