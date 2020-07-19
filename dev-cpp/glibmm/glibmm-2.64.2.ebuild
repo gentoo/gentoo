@@ -20,8 +20,14 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
 	>=dev-cpp/mm-common-1.0.0
+	sys-devel/m4
+	dev-lang/perl
+	doc? (
+		app-doc/doxygen
+		dev-libs/libxslt
+		media-gfx/graphviz
+	)
 "
 
 src_prepare() {
@@ -34,7 +40,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local emesonargs=(
-		-Dmaintainer-mode=true
+		-Dmaintainer-mode=true # Set false and drop mm-common dep once tarballs are made with meson/ninja
 		-Dwarnings=min
 		-Dbuild-deprecated-api=true
 		-Dbuild-documentation=$(usex doc true false)
