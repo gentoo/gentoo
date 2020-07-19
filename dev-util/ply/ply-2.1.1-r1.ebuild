@@ -14,6 +14,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 ~x86"
 IUSE="static-libs"
+# Bug 733248 file collisions with sys-boot/plymouth:
+# /usr/lib64/libply.la
+# /usr/lib64/libply.so
+RDEPEND="!sys-boot/plymouth"
 
 pkg_pretend() {
 	local CONFIG_CHECK="~BPF ~BPF_SYSCALL ~NET_CLS_BPF ~NET_ACT_BPF
