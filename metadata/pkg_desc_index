@@ -12864,7 +12864,7 @@ media-libs/libopusenc 0.2.1: High-level API for encoding .opus files
 media-libs/libpagemaker 0.0.4 9999: C++ Library that parses the file format of Aldus/Adobe PageMaker documents
 media-libs/libpano13 2.9.19: Helmut Dersch's panorama toolbox library
 media-libs/libpgf 6.12.27: Library to load, handle and manipulate images in the PGF format
-media-libs/libplacebo 1.21.0-r1 1.29.1 2.43.0 2.72.0 9999: Reusable library for GPU-accelerated image processing primitives
+media-libs/libplacebo 2.43.0 2.72.0 9999: Reusable library for GPU-accelerated image processing primitives
 media-libs/libpng 1.6.37: Portable Network Graphics library
 media-libs/libpng-compat 1.2.59 1.5.30: Portable Network Graphics library
 media-libs/libpqstego 0.0.1: Library for Perturbed Quantization Steganography
