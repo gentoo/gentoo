@@ -6200,13 +6200,9 @@ net-libs/tox:log-trace - Log level: 5
 net-libs/tox:log-warn - Log level: 2
 net-libs/udns:tools - Build and install dnsget, ex-rdns and rblcheck tools
 net-libs/wandio:http - Build support for reading files over HTTP using net-misc/curl
-net-libs/webkit-gtk:coverage - Enable code coverage support
 net-libs/webkit-gtk:egl - Enable EGL support
 net-libs/webkit-gtk:geolocation - Enable geolocation support through app-misc/geoclue
-net-libs/webkit-gtk:gles2 - Enable GLESv2 support
 net-libs/webkit-gtk:jumbo-build - Combine source files to speed up build process
-net-libs/webkit-gtk:nsplugin - Enable full nsplugin support (GTK2 plugins)
-net-libs/webkit-gtk:webgl - Build support for the WebGL HTML API using virtual/opengl
 net-libs/wvstreams:boost - Use dev-libs/boost to provide TR1-compatible functional interface. This USE flag is only needed with GCC earlier than version 4.1, or with other compilares not providing said interface.
 net-libs/xrootd:fuse - Enable the sys-fs/fuse filesystem driver
 net-libs/xrootd:http - Enable http protocol support
