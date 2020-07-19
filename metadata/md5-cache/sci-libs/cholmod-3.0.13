@@ -5,10 +5,10 @@ DESCRIPTION=Sparse Cholesky factorization and update/downdate library
 EAPI=7
 HOMEPAGE=http://faculty.cse.tamu.edu/davis/suitesparse.html
 IUSE=cuda doc +lapack +matrixops +modify +partition static-libs
-KEYWORDS=amd64 ~arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos
+KEYWORDS=amd64 ~arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-macos
 LICENSE=LGPL-2.1+ modify? ( GPL-2+ ) matrixops? ( GPL-2+ )
 RDEPEND=>=sci-libs/amd-2.4 >=sci-libs/colamd-2.9 cuda? ( x11-drivers/nvidia-drivers dev-util/nvidia-cuda-toolkit ) lapack? ( virtual/lapack ) partition? ( >=sci-libs/camd-2.4 >=sci-libs/ccolamd-2.9 || ( >=sci-libs/metis-5.1.0 sci-libs/parmetis ) )
 SLOT=0
 SRC_URI=http://202.36.178.9/sage/cholmod-3.0.13.tar.bz2
 _eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=4e8b2ecab2e5043e2be085af0e53c9aa
+_md5_=d8e6d2b4c3abc446cfd6822c5cf4358b
