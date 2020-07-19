@@ -4816,7 +4816,7 @@ dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.3 5.30.3-r1 5.30.3-r2 5.32.0: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 7.2.31 7.2.32 7.3.18 7.3.19 7.3.20 7.4.6 7.4.7 7.4.8-r1: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6 5.8: Poly/ML is a full implementation of Standard ML
-dev-lang/python 2.7.18 3.6.10-r2 3.6.11-r1 3.7.7-r2 3.7.8-r1 3.8.2-r2 3.8.3-r1 3.8.4 3.9.0_beta3 3.9.0_beta4: An interpreted, interactive, object-oriented programming language
+dev-lang/python 2.7.18 2.7.18-r1 3.6.10-r2 3.6.11-r1 3.6.11-r2 3.7.7-r2 3.7.8-r1 3.7.8-r2 3.8.2-r2 3.8.3-r1 3.8.4 3.8.4-r1 3.9.0_beta3 3.9.0_beta4 3.9.0_beta4-r1: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r1 9999: Python script wrapper
 dev-lang/qu-prolog 10.1 10.2 10.3 10.4 10.5: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2019.03 2019.11 2020.05.1 2020.06 9999: A compiler for the Perl 6 programming language
