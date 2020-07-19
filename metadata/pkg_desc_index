@@ -8348,7 +8348,7 @@ dev-python/pyflakes 2.1.1 2.2.0: Passive checker for Python programs
 dev-python/pyflann 1.9.1: Python bindings for FLANN artificial neural network library
 dev-python/pyfltk 1.3.3: Python interface to Fltk library
 dev-python/pyformance 0.4-r1: Performance metrics, based on Coda Hale's Yammer metrics
-dev-python/pyftpdlib 1.5.5-r1 1.5.6: Python FTP server library
+dev-python/pyftpdlib 1.5.6: Python FTP server library
 dev-python/pygal 2.4.0-r1: A python SVG charts generator
 dev-python/pygame 1.9.6-r1 2.0.0_pre10 9999: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.12.4-r2 6.99.12.4-r3 7.3.5: Reimplementation of portions of the pygame API using SDL2
@@ -8464,7 +8464,7 @@ dev-python/pytest-catchlog 1.2.2: py.test plugin to catch log messages, fork of 
 dev-python/pytest-cov 2.8.1: py.test plugin for coverage reporting
 dev-python/pytest-describe 1.0.0: Describe-style plugin for pytest
 dev-python/pytest-django 3.9.0: A Django plugin for py.test
-dev-python/pytest-expect 1.1.0 1.1.0-r1: py.test plugin that stores test expectations by saving the set of failing tests
+dev-python/pytest-expect 1.1.0-r1: py.test plugin that stores test expectations by saving the set of failing tests
 dev-python/pytest-fixture-config 1.7.0-r1: Virtualenv fixture for py.test
 dev-python/pytest-flake8 0.9.1: py.test plugin for flake8
 dev-python/pytest-flakes 4.0.0: Collection of small Python functions & classes
@@ -8792,7 +8792,7 @@ dev-python/stapler 1.0_pre20191215-r1: Suite of tools for PDF files manipulation
 dev-python/statsd 3.3.0: A simple statsd client
 dev-python/statsmodels 0.10.2 0.11.1 9999: Statistical computations and models for use with SciPy
 dev-python/stestr 2.1.0-r1: A parallel Python test runner built around subunit
-dev-python/stevedore 2.0.1 3.0.0 3.1.0: Manage dynamic plugins for Python applications
+dev-python/stevedore 2.0.1 3.0.0 3.1.0 3.2.0: Manage dynamic plugins for Python applications
 dev-python/strict-rfc3339 0.7-r1: Strict, simple, lightweight RFC3339 functions
 dev-python/stripe 2.46.0: Stripe python bindings
 dev-python/subprocess32 3.5.4: A backport of the subprocess module from Python 3.2/3.3 for use on 2.x
@@ -8812,7 +8812,7 @@ dev-python/tappy 2.4-r1 2.6.2 3.0: Test Anything Protocol (TAP) tools
 dev-python/taskflow 4.1.0: A library to do [jobs, tasks, flows] in a HA manner using different backends
 dev-python/tblib 1.6.0: Traceback fiddling library for Python
 dev-python/tempita 0.5.3-r2: A very small text templating language
-dev-python/tempora 3.0.0: Objects and routines pertaining to date and time
+dev-python/tempora 3.0.0 4.0.0: Objects and routines pertaining to date and time
 dev-python/tenacity 6.1.0: General-purpose retrying library
 dev-python/termcolor 1.1.0-r2: ANSII Color formatting for output in terminal
 dev-python/terminado 0.8.3: Terminals served to term.js using Tornado websockets
@@ -11506,7 +11506,7 @@ gnome-extra/gnome-contacts 3.34.1 3.36.2: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.11: Thumbnail generator for directories
 gnome-extra/gnome-documents 3.34.0: A document manager application for GNOME
 gnome-extra/gnome-dvb-daemon 0.2.90-r1: Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer
-gnome-extra/gnome-getting-started-docs 3.34.2: Help a new user get started in GNOME
+gnome-extra/gnome-getting-started-docs 3.34.2 3.36.2: Help a new user get started in GNOME
 gnome-extra/gnome-integration-spotify 20140907-r1: GNOME integration for Spotify
 gnome-extra/gnome-logs 3.34.0 3.36.0: Log viewer for the systemd journal
 gnome-extra/gnome-power-manager 3.32.0: GNOME power statistics
@@ -11523,7 +11523,7 @@ gnome-extra/gnome-shell-frippery 3.34.2: Unofficial extension pack providing GNO
 gnome-extra/gnome-software 3.34.2 3.36.1: Gnome install & update software
 gnome-extra/gnome-system-monitor 3.32.1: The Gnome System Monitor
 gnome-extra/gnome-tweaks 3.34.0: Customize advanced GNOME 3 options
-gnome-extra/gnome-user-docs 3.34.2: GNOME end user documentation
+gnome-extra/gnome-user-docs 3.34.2 3.36.2: GNOME end user documentation
 gnome-extra/gnome-user-share 3.34.0: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
 gnome-extra/gnome-weather 3.34.2: A weather application for GNOME
@@ -16524,7 +16524,7 @@ sys-apps/apply-default-acl 0.4.2 0.4.4: Apply default POSIX ACLs to files and di
 sys-apps/arrayprobe 2.0-r2: Utility to report status of an HP (Compaq) array controller (both IDA & CCISS)
 sys-apps/attr 2.4.48-r3 9999: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
-sys-apps/baobab 3.34.0: Disk usage browser for GNOME
+sys-apps/baobab 3.34.0 3.34.1: Disk usage browser for GNOME
 sys-apps/bar 1.11.1: Console Progress Bar
 sys-apps/baselayout 2.4.1-r2 2.6-r1 2.7 9999: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0-r1: Baselayout for Java
