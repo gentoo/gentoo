@@ -18,7 +18,7 @@ DEPEND="
 	test? (
 		dev-python/pyflakes[${PYTHON_USEDEP}]
 		dev-python/coverage[${PYTHON_USEDEP}]
-		app-text/hunspell
+		app-text/hunspell[l10n_en]
 	)"
 RDEPEND="
 	dev-python/configclass[${PYTHON_USEDEP}]"

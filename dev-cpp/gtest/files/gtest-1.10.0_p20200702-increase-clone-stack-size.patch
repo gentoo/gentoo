@@ -1,5 +1,4 @@
-Bug: https://bugs.gentoo.org/629620
-Upstream PR: https://github.com/google/googletest/pull/1274
+Bug: https://bugs.gentoo.org/692464
 
 --- a/googletest/src/gtest-death-test.cc
 +++ b/googletest/src/gtest-death-test.cc
@@ -7,8 +6,8 @@ Upstream PR: https://github.com/google/googletest/pull/1274
  
    if (!use_fork) {
      static const bool stack_grows_down = StackGrowsDown();
--    const size_t stack_size = getpagesize();
-+    const size_t stack_size = getpagesize() * 10;
+-    const auto stack_size = static_cast<size_t>(getpagesize() * 2);
++    const auto stack_size = static_cast<size_t>(getpagesize() * 10);
      // MMAP_ANONYMOUS is not defined on Mac, so we use MAP_ANON instead.
      void* const stack = mmap(NULL, stack_size, PROT_READ | PROT_WRITE,
                               MAP_ANON | MAP_PRIVATE, -1, 0);
