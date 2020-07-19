@@ -18,7 +18,7 @@ DOCS=( AUTHORS )
 
 DEPEND="app-text/asciidoc
 	sys-fs/e2fsprogs
-	!sys-fs/eudev[-kmod,modutils]
+	!sys-fs/eudev[-kmod]
 	selinux? ( sys-libs/libselinux )"
 RDEPEND="${DEPEND}
 	!sys-kernel/genkernel
