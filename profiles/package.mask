@@ -55,6 +55,13 @@ dev-ruby/zeitwerk:1
 # Unmaintained upstream and broken by ECM 5.72.0, masked for removal in 30 days.
 media-video/plasma-mediacenter
 
+# Jaco Kroon <jaco@uls.co.za> (2020-07-17)
+# net-misc/asterisk was only consumer, dependency now removed (due to failures
+# in osptoolkit build).  No known users of USE=osplookup in net-misc/asterisk,
+# and unknown usefulnes.  bugs #674346, #731250
+# Removal in 30 days.
+net-libs/osptoolkit
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-07-15)
 # Broken by scons-python3 for >1 year, depends on dead gnome-base/libgnomeui,
 # bugs #685576, #726818, no reverse dependencies. Removal in 30 days.
