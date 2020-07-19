@@ -100,13 +100,13 @@ src_configure() {
 	cmake-utils_src_configure
 
 	sed -i \
-		-e "s:@CC@:$(tc-getCC):g" \
-		-e "s:@CXX@:$(tc-getCXX):g" \
-		-e "s:@CFLAGS@:${CFLAGS}:g" \
-		-e "s:@CPPFLAGS@:${CPPFLAGS}:g" \
-		-e "s:@CXXFLAGS@:${CXXFLAGS}:g" \
-		-e "s:@LDFLAGS@:${LDFLAGS}:g" \
-		-e "s:@PV@:${PV}:g" \
+		-e "s|@CC@|$(tc-getCC)|g" \
+		-e "s|@CXX@|$(tc-getCXX)|g" \
+		-e "s|@CFLAGS@|${CFLAGS}|g" \
+		-e "s|@CPPFLAGS@|${CPPFLAGS}|g" \
+		-e "s|@CXXFLAGS@|${CXXFLAGS}|g" \
+		-e "s|@LDFLAGS@|${LDFLAGS}|g" \
+		-e "s|@PV@|${PV}|g" \
 		build.ninja || die
 }
 
