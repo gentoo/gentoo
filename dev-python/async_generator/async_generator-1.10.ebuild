@@ -17,4 +17,9 @@ KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 
 DOCS=( README.rst )
 
-distutils_enable_tests pytest
+python_test() {
+	pushd "${BUILD_DIR}/lib" >/dev/null || die
+	pytest -vv || die "Tests fail with ${EPYTHON}"
+	rm -rf .pytest_cache || die
+	popd >/dev/null || die
+}
