@@ -3,15 +3,15 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1 git-r3 readme.gentoo-r1
+inherit distutils-r1 readme.gentoo-r1
 
 DESCRIPTION="A Python interactive packet manipulation program for mastering the network"
 HOMEPAGE="https://scapy.net/ https://github.com/secdev/scapy"
-EGIT_REPO_URI="https://github.com/secdev/${PN}"
+SRC_URI="https://github.com/secdev/${PN}/archive/v${PV/_/}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	net-analyzer/tcpdump
 "
