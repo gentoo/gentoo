@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=~dev-lang/mercury-20.01.2 cairo? ( >=x11-libs/cairo-1.10.0 ) gmp? ( dev-libs/gmp:0 ) glut? ( media-libs/freeglut ) odbc? ( dev-db/unixODBC ) iodbc? ( dev-db/libiodbc ) tommath? ( dev-libs/libtommath ) ncurses? ( sys-libs/ncurses:= ) opengl? ( virtual/opengl virtual/glu ) tk? ( dev-lang/tcl:0 dev-lang/tk:0 ) X? ( x11-libs/libX11 )
+DESCRIPTION=Additional libraries and tools that are not part of the Mercury standard library
+EAPI=7
+HOMEPAGE=https://www.mercurylang.org/index.html
+IUSE=cairo examples glut gmp iodbc ncurses odbc opengl ssl tk tommath X xml
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 LGPL-2
+RDEPEND=~dev-lang/mercury-20.01.2 cairo? ( >=x11-libs/cairo-1.10.0 ) gmp? ( dev-libs/gmp:0 ) glut? ( media-libs/freeglut ) odbc? ( dev-db/unixODBC ) iodbc? ( dev-db/libiodbc ) tommath? ( dev-libs/libtommath ) ncurses? ( sys-libs/ncurses:= ) opengl? ( virtual/opengl virtual/glu ) tk? ( dev-lang/tcl:0 dev-lang/tk:0 ) X? ( x11-libs/libX11 )
+REQUIRED_USE=?? ( odbc iodbc )
+SLOT=0
+SRC_URI=https://dl.mercurylang.org/release/mercury-srcdist-20.01.2.tar.gz https://dev.gentoo.org/~keri/distfiles/mercury-extras/mercury-extras-20.01.2-gentoo-patchset-0.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=844152d43ab0fa575ebb0c3c42318d52

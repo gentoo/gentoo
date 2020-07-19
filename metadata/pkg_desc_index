@@ -1781,7 +1781,7 @@ app-eselect/eselect-pdftex 0.3: pdftex module for eselect
 app-eselect/eselect-php 0.9.4-r5 0.9.5 0.9.6 9999: PHP eselect module
 app-eselect/eselect-pinentry 0.7: Manage /usr/bin/pinentry symlink
 app-eselect/eselect-postgresql 2.4: Utility to select the default PostgreSQL slot
-app-eselect/eselect-python 20190417 99999999: Eselect module for management of multiple Python versions
+app-eselect/eselect-python 20190417 20200719 99999999: Eselect module for management of multiple Python versions
 app-eselect/eselect-rails 0.24: Manages Ruby on Rails symlinks
 app-eselect/eselect-renpy 0.7: Manages renpy symlink
 app-eselect/eselect-repository 7: Manage repos.conf via eselect
@@ -4795,8 +4795,8 @@ dev-lang/logtalk 3.18.0 3.36.0: Open source object-oriented logic programming la
 dev-lang/lua 5.1.5-r4 5.1.5-r5 5.1.5-r100 5.1.5-r101 5.1.5-r102 5.1.5-r103 5.2.3 5.2.3-r1 5.2.3-r2 5.2.3-r3 5.2.4 5.2.4-r1 5.2.4-r2 5.3.3 5.3.3-r1 5.3.3-r2 5.3.5 5.3.5-r1 5.3.5-r2: A powerful light-weight programming language designed for extending applications
 dev-lang/luajit 2.0.5-r1 2.1.0_beta3: Just-In-Time Compiler for the Lua programming language
 dev-lang/maude 2.7: High-level specification language for equational and logic programming
-dev-lang/mercury 14.01.1-r1 20.01 20.01.1: Mercury is a modern general-purpose logic/functional programming language
-dev-lang/mercury-extras 14.01.1 20.01 20.01.1: Additional libraries and tools that are not part of the Mercury standard library
+dev-lang/mercury 14.01.1-r1 20.01 20.01.1 20.01.2: Mercury is a modern general-purpose logic/functional programming language
+dev-lang/mercury-extras 14.01.1 20.01 20.01.1 20.01.2: Additional libraries and tools that are not part of the Mercury standard library
 dev-lang/micropython 1.11: Python implementation for microcontrollers
 dev-lang/mlton 20130715 20180207: Standard ML optimizing compiler and libraries
 dev-lang/mmix 20160804-r1: Donald Knuth's MMIX Assembler and Simulator
@@ -8585,7 +8585,7 @@ dev-python/python-zunclient 4.0.1: A client for the OpenStack Zun API
 dev-python/python3-lxc 3.0.2: Python bindings for LXC
 dev-python/python3-saml 1.9.0: OneLogin's SAML Python Toolkit
 dev-python/python_orocos_kdl 1.4.0-r1 9999: Python bindings for KDL
-dev-python/pythondialog 3.3.0 3.5.1: A Python module for making simple text/console-mode user interfaces
+dev-python/pythondialog 3.5.1: A Python module for making simple text/console-mode user interfaces
 dev-python/pythonutils 0.4.0-r1: Voidspace Python modules
 dev-python/pythonz-bd 1.11.4: Manage python installations in your system, berdario's shallow fork
 dev-python/pytidylib 0.3.2: Python wrapper for HTML Tidy (tidylib)
