@@ -1,0 +1,15 @@
+diff -ruN genkernel-next-70.orig/genkernel.conf genkernel-next-70/genkernel.conf
+--- genkernel-next-70.orig/genkernel.conf	2018-12-22 10:41:23.000000000 +0100
++++ genkernel-next-70/genkernel.conf	2020-07-14 00:43:24.924488277 +0200
+@@ -304,3 +304,11 @@
+ #
+ # Specify a default for real_root=
+ #REAL_ROOT="/dev/one/two/gentoo"
++
++################################################
++## genkernel-next-70 uses old busybox
++## See https://bugs.gentoo.org/719968#c9
++BUSYBOX_VER="1.32.0"
++BUSYBOX_SRCTAR="/usr/portage/distfiles/busybox-1.32.0.tar.bz2"
++#################################################
++
