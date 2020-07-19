@@ -421,11 +421,6 @@ sci-chemistry/relax
 # library from 2005. Removal in 30 days.
 virtual/libstdc++
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-06-20)
-# Stuck on Python 2, depends on deprecated dev-python/pygobject:2
-# Masked for removal in 30 days.
-media-libs/pymemphis
-
 # Ulrich Müller <ulm@gentoo.org> (2020-06-20)
 # Unmaintained upstream, included with TeX Live.
 # Use >=dev-texlive/texlive-metapost-2020-r1 as replacement.
