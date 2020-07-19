@@ -1,0 +1,110 @@
+<?xml version="1.0" ?><project default="jar" name="tuprolog">
+
+	<!-- some properties -->
+	<property name="src.dir" value="src"/>
+	<property name="build.dir" value="build"/>
+	<property name="docs.dir" value="docs"/>
+	<property name="dist.dir" value="dist"/>
+	<property name="test.dir" value="test"/>
+	<property name="test.build.dir" value="test.build"/>
+	<property name="jarfile" value="${ant.project.name}.jar"/>
+	<property file="build.properties"/>
+
+	<path id="compile.classpath">
+		<fileset dir="lib" includes="*.jar"/>
+		<pathelement path="${gentoo.classpath}"/>
+	</path>
+
+	<!-- init -->
+	<target name="init">
+		<tstamp/>
+		<mkdir dir="${dist.dir}"/>
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${docs.dir}"/>
+		<mkdir dir="${test.build.dir}"/>
+	</target>	
+
+	<!-- compile everything -->
+	<target depends="init" name="compile">
+		<javac deprecation="off"
+			destdir="${build.dir}"
+			encoding="ISO-8859-1"
+			srcdir="${src.dir}"
+			source="1.8"
+			target="1.8">
+			<classpath>
+				<path refid="compile.classpath"/>
+			</classpath>
+		</javac>
+		<copy todir="${build.dir}">
+			<fileset dir="${src.dir}">
+				<exclude name="**/*.java"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- build the jar file -->
+	<target depends="compile" name="jar">
+		<jar basedir="${build.dir}" jarfile="${dist.dir}/${jarfile}"/>
+		<jar basedir="${build.dir}" jarfile="${dist.dir}/2p.jar">
+			<manifest>
+				<attribute name="Main-Class" value="alice.tuprologx.ide.GUILauncher"/>
+				<attribute name="Class-Path" value="."/>
+			</manifest>
+			<zipgroupfileset dir="lib" includes="*.jar"/>
+		</jar>
+	</target>
+
+	<!-- generate javadocs -->
+	<target depends="init" name="javadoc">
+		<javadoc
+			author="false"
+			destdir="${docs.dir}"
+			encoding="ISO-8859-1"
+			breakiterator="yes"
+			packagenames="alice.*"
+			sourcepath="${src.dir}"
+			use="true"
+			version="true"
+			verbose="no"
+			windowtitle="${ant.project.name} API">
+			<classpath>
+				<path refid="compile.classpath"/>
+			</classpath>
+		</javadoc>
+	</target>
+
+	<!-- clean up -->
+	<target name="clean">
+		<delete dir="${build.dir}"/>
+		<delete dir="${dist.dir}"/>
+		<delete dir="${docs.dir}"/>
+		<delete dir="${test.build.dir}"/>
+	</target>
+
+	<!-- run testsuite -->
+	<target name="test">
+		<path id="dist.classpath">
+			<fileset dir="${dist.dir}">
+				<include name="*.jar"/>
+			</fileset>
+		</path>
+		<javac classpathref="dist.classpath"
+			deprecation="off"
+			destdir="${test.build.dir}"
+			encoding="ISO-8859-1"
+			srcdir="${test.dir}/unit"
+			source="1.8"
+			target="1.8"/>
+		<junit fork="yes" failureproperty="test.failed" printsummary="yes">
+			<classpath>
+				<path refid="dist.classpath"/>
+				<pathelement path="${test.build.dir}"/>
+			</classpath>
+			<formatter type="xml"/>
+			<test name="alice.tuprolog.TuPrologTestSuite" todir="${test.build.dir}"/>
+			<test name="alice.tuprolog.ExceptionsTestSuite" todir="${test.build.dir}"/>
+		</junit>
+		<fail message="Test failure(s) detected" if="test.failed" />
+	</target>
+</project>
