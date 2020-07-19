@@ -46,6 +46,7 @@ RDEPEND="${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${P}-deps.patch" # pending upstream
+	"${FILESDIR}/${P}-kf-5.72-findtaglib.patch" # pending upstream
 	"${FILESDIR}/${P}-fix-add-dirs.patch"
 	"${FILESDIR}/${P}-metainfodir.patch"
 )
