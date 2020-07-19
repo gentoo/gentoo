@@ -4,8 +4,8 @@
 EAPI=7
 
 SRC_URI="https://github.com/Sabayon/genkernel-next/archive/v${PV}.tar.gz -> ${P}.tar.gz
-         https://www.busybox.net/downloads/busybox-1.32.0.tar.bz2"
-         
+	 https://www.busybox.net/downloads/busybox-1.32.0.tar.bz2"
+
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 inherit bash-completion-r1
 
