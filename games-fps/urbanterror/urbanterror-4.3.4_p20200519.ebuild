@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/mickael9/ioq3.git"
 	EGIT_BRANCH="urt"
 else
-	COMMIT_ID="167cb6b611ad27f30787a2fe204a7c65ec1fa18e"
+	COMMIT_ID="58d8e9942101e0ca28a434b92e1d45d42eb2bd9a"
 	SRC_URI="https://github.com/mickael9/ioq3/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/ioq3-${COMMIT_ID}"
 	KEYWORDS="~amd64 ~x86"
