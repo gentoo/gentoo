@@ -12,6 +12,6 @@
 	</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">naev</remote-id>
+		<remote-id type="github">naev/naev</remote-id>
 	</upstream>
 </pkgmetadata>
