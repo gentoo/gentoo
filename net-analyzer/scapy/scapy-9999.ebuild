@@ -31,7 +31,8 @@ Scapy has optional support for the following packages:
 "
 
 src_prepare() {
-	echo ${PV/_/} > ${PN}/VERSION
+	echo ${PV/_/} > ${PN}/VERSION || die
+
 	distutils-r1_src_prepare
 }
 
