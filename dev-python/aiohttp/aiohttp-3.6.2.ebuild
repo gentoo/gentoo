@@ -29,6 +29,7 @@ DEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	test? (
 		${COMMON_DEPEND}
+		!!dev-python/pytest-aiohttp
 		dev-python/async_generator[${PYTHON_USEDEP}]
 		dev-python/brotlipy[${PYTHON_USEDEP}]
 		dev-python/freezegun[${PYTHON_USEDEP}]
@@ -111,6 +112,9 @@ python_prepare_all() {
 	sed -e 's|^def test_aiohttp_plugin_async_fixture(|@pytest.mark.xfail\n\0|' \
 		-i tests/test_pytest_plugin.py || die
 
+	sed -e 's|^def test_static(|@pytest.mark.xfail\n\0|' \
+		-i tests/test_route_def.py || die
+
 	sed -e 's|^async def test_mixed_middleware(|@pytest.mark.xfail\n\0|' \
 		-e 's|^async def test_new_style_middleware_class(|@pytest.mark.xfail\n\0|' \
 		-e 's|^async def test_new_style_middleware_method(|@pytest.mark.xfail\n\0|' \
@@ -120,6 +124,9 @@ python_prepare_all() {
 
 	sed -e 's|^async def test_client_disconnect(|@pytest.mark.xfail\n\0|' \
 		-i tests/test_web_protocol.py || die
+
+	sed -e 's|^async def test_static_file_range(|@pytest.mark.xfail\n\0|' \
+		-i tests/test_web_sendfile_functional.py || die
 
 	sed -e 's|^async def test_partially_applied_handler(|@pytest.mark.xfail\n\0|' \
 		-i tests/test_web_urldispatcher.py || die
@@ -134,5 +141,9 @@ python_prepare_all() {
 }
 
 python_test() {
-	pytest -vv "${S}/tests" || die "Tests fail with ${EPYTHON}"
+	pushd "${BUILD_DIR}/lib" >/dev/null || die
+	ln -snf "${S}/tests" tests || die
+	pytest -vv || die "Tests fail with ${EPYTHON}"
+	rm -rf .pytest_cache tests || die
+	popd >/dev/null || die
 }
