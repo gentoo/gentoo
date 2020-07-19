@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_8 )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit distutils-r1 xdg-utils
 
@@ -33,5 +33,9 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
 	xdg_icon_cache_update
 }
