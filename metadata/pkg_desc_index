@@ -7525,7 +7525,7 @@ dev-python/aodhclient 1.2.0: A client for the OpenStack Aodh API
 dev-python/apipkg 1.5: Namespace control and lazy-import mechanism
 dev-python/apispec 3.3.0: A pluggable API specification generator.
 dev-python/appdirs 1.4.4: Module for determining appropriate platform-specific dirs
-dev-python/apsw 3.25.2_p1: APSW - Another Python SQLite Wrapper
+dev-python/apsw 3.25.2_p1 3.32.2_p1: APSW - Another Python SQLite Wrapper
 dev-python/argcomplete 1.11.1-r1 1.12.0: Bash tab completion for argparse
 dev-python/argh 0.26.2-r2: A simple argparse wrapper
 dev-python/argon2-cffi 20.1.0: CFFI bindings to the Argon2 password hashing library
