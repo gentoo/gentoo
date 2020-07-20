@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 SLOT="0"
 LICENSE="Apache-2.0"
-KEYWORDS="amd64 arm ~arm64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 x86 ~amd64-linux ~x86-linux"
 
 DEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
