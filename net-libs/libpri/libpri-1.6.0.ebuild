@@ -14,7 +14,7 @@ SRC_URI="http://downloads.asterisk.org/pub/telephony/${PN}/releases/${MY_P}.tar.
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc x86"
 IUSE=""
 
 PATCHES=(
