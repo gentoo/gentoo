@@ -70,6 +70,10 @@ DOCS=( README.md doc/AUTHORS )
 
 S="${WORKDIR}/${PN}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.2.2-no_compress_man.patch" #733284
+)
+
 src_configure() {
 	local mycmakeargs+=(
 		-DUSE_WERROR=FALSE
