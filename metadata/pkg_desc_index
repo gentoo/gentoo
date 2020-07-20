@@ -2063,6 +2063,7 @@ app-metrics/redis_exporter 0.20.2 1.1.1 1.2.0 1.2.1: Prometheus Exporter for Red
 app-metrics/snmp_exporter 0.15.0: Prometheus exporter for snmp metrics
 app-metrics/uwsgi_exporter 0.7.0 0.8.0: uWSGI metrics exporter for prometheus.io
 app-metrics/vault_exporter 0.1.2: Vault exporter for Prometheus
+app-misc/OpenRGB 0.2: Open source RGB lighting control that doesn't depend on manufacturer software
 app-misc/abduco 0.5 0.6: lightweight session manager with {de,at}tach support
 app-misc/abook 0.6.1-r2: Abook is a text-based addressbook program designed to use with mutt mail client
 app-misc/acdctl 1.1-r1: Apple Cinema Display Control
