@@ -1,0 +1,123 @@
+Patch from Alt Linux as provided in https://bugs.gentoo.org/723432
+
+diff --git a/library/forms/swig/mforms.i b/library/forms/swig/mforms.i
+index cb74ba41..05535e56 100644
+--- a/library/forms/swig/mforms.i
++++ b/library/forms/swig/mforms.i
+@@ -3,6 +3,7 @@
+ #pragma SWIG nowarn=401,402,509
+ 
+ %{
++#include <boost/bind.hpp>
+ #include <boost/signals2/signal.hpp>
+ #include <sstream>
+ #include <frameobject.h>
+diff --git a/modules/db.mysql.sqlparser/src/mysql_invalid_sql_parser.cpp b/modules/db.mysql.sqlparser/src/mysql_invalid_sql_parser.cpp
+index 24db3d63..d997c410 100644
+--- a/modules/db.mysql.sqlparser/src/mysql_invalid_sql_parser.cpp
++++ b//modules/db.mysql.sqlparser/src/mysql_invalid_sql_parser.cpp
+@@ -31,6 +31,7 @@
+ #include "base/string_utilities.h"
+ #include <sstream>
+ #include <boost/lambda/bind.hpp>
++#include <boost/bind.hpp>
+ 
+ using namespace grt;
+ using namespace base;
+diff --git a/modules/db.mysql.sqlparser/src/mysql_sql_inserts_loader.cpp b/modules/db.mysql.sqlparser/src/mysql_sql_inserts_loader.cpp
+index 3da58757..a9b082ac 100644
+--- a/modules/db.mysql.sqlparser/src/mysql_sql_inserts_loader.cpp
++++ b/modules/db.mysql.sqlparser/src/mysql_sql_inserts_loader.cpp
+@@ -27,6 +27,7 @@
+ 
+ #include "mysql_sql_inserts_loader.h"
+ #include "mysql_sql_parser_utils.h"
++#include <boost/bind.hpp>
+ #include <boost/foreach.hpp>
+ 
+ using namespace grt;
+diff --git a/modules/db.mysql.sqlparser/src/mysql_sql_normalizer.cpp b/modules/db.mysql.sqlparser/src/mysql_sql_normalizer.cpp
+index 0c0f72bc..baf3d897 100644
+--- a/modules/db.mysql.sqlparser/src/mysql_sql_normalizer.cpp
++++ b/modules/db.mysql.sqlparser/src/mysql_sql_normalizer.cpp
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include <glib.h>
++#include <boost/bind.hpp>
+ #include <boost/signals2.hpp>
+ #include <cctype>
+ 
+diff --git a/modules/db.mysql.sqlparser/src/mysql_sql_parser.cpp b/modules/db.mysql.sqlparser/src/mysql_sql_parser.cpp
+index ef51d77c..68f397ae 100644
+--- a/modules/db.mysql.sqlparser/src/mysql_sql_parser.cpp
++++ b/modules/db.mysql.sqlparser/src/mysql_sql_parser.cpp
+@@ -39,6 +39,7 @@
+ #include "base/string_utilities.h"
+ #include <sstream>
+ #include <iterator>
++#include <boost/bind.hpp>
+ #include <boost/lambda/bind.hpp>
+ 
+ using namespace grt;
+diff --git a/modules/db.mysql.sqlparser/src/mysql_sql_parser_utils.h b/modules/db.mysql.sqlparser/src/mysql_sql_parser_utils.h
+index 9e790dfb..2addd87e 100644
+--- a/modules/db.mysql.sqlparser/src/mysql_sql_parser_utils.h
++++ b/modules/db.mysql.sqlparser/src/mysql_sql_parser_utils.h
+@@ -30,6 +30,8 @@
+ 
+ #include "base/string_utilities.h"
+ 
++#include <boost/bind.hpp>
++
+ using namespace grt;
+ 
+ template <typename T>
+diff --git a/modules/db.mysql.sqlparser/src/mysql_sql_schema_rename.cpp b/modules/db.mysql.sqlparser/src/mysql_sql_schema_rename.cpp
+index 617487b5..9614ad9c 100644
+--- a/modules/db.mysql.sqlparser/src/mysql_sql_schema_rename.cpp
++++ b/modules/db.mysql.sqlparser/src/mysql_sql_schema_rename.cpp
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include <glib.h>
++#include <boost/bind.hpp>
+ #include <boost/signals2.hpp>
+ 
+ #include "mysql_sql_schema_rename.h"
+diff --git a/modules/db.mysql.sqlparser/src/mysql_sql_specifics.cpp b/modules/db.mysql.sqlparser/src/mysql_sql_specifics.cpp
+index bbbb733a..51c3215d 100644
+--- a/modules/db.mysql.sqlparser/src/mysql_sql_specifics.cpp
++++ b/modules/db.mysql.sqlparser/src/mysql_sql_specifics.cpp
+@@ -28,6 +28,7 @@
+ #include "mysql_sql_parser_fe.h"
+ #include "grtdb/charset_utils.h"
+ #include "base/string_utilities.h"
++#include <boost/bind.hpp>
+ #include <boost/scoped_array.hpp>
+ #include <sstream>
+ 
+diff --git a/modules/db.mysql.sqlparser/src/mysql_sql_statement_decomposer.cpp b/modules/db.mysql.sqlparser/src/mysql_sql_statement_decomposer.cpp
+index b87535a0..3900b7a8 100644
+--- a/modules/db.mysql.sqlparser/src/mysql_sql_statement_decomposer.cpp
++++ b/modules/db.mysql.sqlparser/src/mysql_sql_statement_decomposer.cpp
+@@ -29,6 +29,7 @@
+ #include "mysql_sql_parser_fe.h"
+ #include "base/string_utilities.h"
+ #include <boost/foreach.hpp>
++#include <boost/bind.hpp>
+ #include <boost/lambda/bind.hpp>
+ 
+ using namespace grt;
+diff --git a/modules/db.mysql.sqlparser/src/mysql_sql_syntax_check.cpp b/modules/db.mysql.sqlparser/src/mysql_sql_syntax_check.cpp
+index 0f9f80ad..1cb5f78a 100644
+--- a/modules/db.mysql.sqlparser/src/mysql_sql_syntax_check.cpp
++++ b/modules/db.mysql.sqlparser/src/mysql_sql_syntax_check.cpp
+@@ -28,6 +28,7 @@
+ #include "mysql_sql_parser_fe.h"
+ #include "grtdb/charset_utils.h"
+ #include "base/string_utilities.h"
++#include <boost/bind.hpp>
+ #include <boost/lambda/bind.hpp>
+ 
+ using namespace grt;
