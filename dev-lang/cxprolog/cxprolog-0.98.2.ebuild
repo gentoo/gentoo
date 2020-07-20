@@ -37,6 +37,7 @@ src_prepare() {
 
 	sed -i -e "s|lib/cxprolog|$(get_libdir)/cxprolog|" "${S}"/src/FileSys.c || die
 	cp "${FILESDIR}"/build.xml "${S}"/build.xml || die
+	cp "${FILESDIR}"/cx_dev_boot.pl "${S}"/cx_dev_boot.pl || die
 	rm -f "${S}"/pl/test_file_io_1.txt
 
 	use wxwidgets && setup-wxwidgets
@@ -83,8 +84,8 @@ cxprolog_src_test() {
 	cd "${S}"/pl
 
 	LD_LIBRARY_PATH="${S}" \
-	PREFIX="${S}" \
 		"${S}"/cxprolog_shared \
+		--boot "${S}"/cx_dev_boot.pl \
 		--script "${S}"/pl/test_all.pl \
 		| tee "${S}"/cxprolog_test.log
 }
