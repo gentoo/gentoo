@@ -29,7 +29,7 @@ DEPEND="
 	dev-qt/qtsingleapplication
 	dev-qt/qtwidgets:5
 "
-REPEND="${DEPEND}
+RDEPEND="${DEPEND}
 	dev-lang/nasm
 	sys-devel/gdb
 "
