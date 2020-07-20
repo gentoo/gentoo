@@ -32,7 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
-# Hans de Graaff <graaff@gentoo.org) (2020-07-20)
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-07-20)
+# Old erlang version. Removal in 30 days. bug #732188
+=dev-lang/erlang-21*
+<net-misc/rabbitmq-server-3.7.24
+
+# Hans de Graaff <graaff@gentoo.org> (2020-07-20)
 # Mask old obsolete slots for removal in 30 days.
 # Use a newer slot of the same package instead.
 dev-ruby/i18n:0.9
@@ -62,7 +67,7 @@ dev-perl/Data-Diver
 ~virtual/perl-Compress-Raw-Bzip2-2.93.0
 
 # Christoph Junghans <junghans@gentoo.org> (2020-07-14)
-# Unmaintained upstream and does not support systemd or firewalld. 
+# Unmaintained upstream and does not support systemd or firewalld.
 # Please use net-analyzer/fail2ban instead. (bug #732076)
 # Removal in 30 days.
 app-admin/denyhosts
