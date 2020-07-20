@@ -81,6 +81,11 @@ PATCHES=(
 	"${FILESDIR}/${P}-taglib-linking.patch" # 5.2 branch
 )
 
+src_prepare() {
+	ecm_src_prepare
+	ecm_punt_bogus_dep Qt Script
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_BWSCHEDULER_PLUGIN=$(usex bwscheduler)
