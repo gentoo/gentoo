@@ -1741,8 +1741,8 @@ app-emulation/vkd3d 1.0 1.1 1.1-r1 9999: D3D12 to Vulkan translation library
 app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1 2.47.1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0 4.7.1 4.7.3 4.7.5 4.8.0 4.8.1 4.8.3 4.9.0 4.9.2 4.9.3 4.9.4 5.0.0 5.1.0: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
-app-emulation/wine-staging 5.9 5.10-r1 5.11 5.12 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
-app-emulation/wine-vanilla 4.0.3 5.0.1 5.9 5.10 5.11 5.12 9999: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-staging 5.10-r1 5.11 5.12 5.13 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
+app-emulation/wine-vanilla 4.0.3 5.0.1 5.10 5.11 5.12 5.13 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20190912 20191224 20200412 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
@@ -7611,7 +7611,7 @@ dev-python/case 1.5.3: Python unittest Utilities
 dev-python/castellan 1.2.2: Generic Key Manager interface for OpenStack
 dev-python/casttube 0.2.0: casttube provides a way to interact with the Youtube Chromecast api.
 dev-python/catkin_pkg 0.4.20 9999: Standalone Python library for the catkin package system
-dev-python/cbor 1.0.0: RFC 7049 - Concise Binary Object Representation
+dev-python/cbor 1.0.0-r1: RFC 7049 - Concise Binary Object Representation
 dev-python/cbor2 5.1.0: Pure Python CBOR (de)serializer with extensive tag support
 dev-python/cddb-py 1.4-r1: CDDB Module for Python
 dev-python/celery 4.3.0: Asynchronous task queue/job queue based on distributed message passing
