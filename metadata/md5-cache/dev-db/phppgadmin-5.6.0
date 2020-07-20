@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prerm setup
+DEPEND=>=app-admin/webapp-config-1.50.15
+DESCRIPTION=Web-based administration for Postgres database in php
+EAPI=7
+HOMEPAGE=http://phppgadmin.sourceforge.net/
+IUSE=vhosts
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=dev-lang/php[postgres,session] >=app-admin/webapp-config-1.50.15
+SLOT=5.6.0
+SRC_URI=https://github.com/phppgadmin/phppgadmin/releases/download/REL_5-6-0/phpPgAdmin-5.6.0.tar.bz2
+_eclasses_=webapp	16783e418aca3ffa461d68310bf7ab12
+_md5_=09646c47f0ba2de3c85d0301979ce10a
