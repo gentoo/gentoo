@@ -15,7 +15,7 @@ SRC_URI="https://github.com/containers/${PN}/releases/download/${PV}/${P}.tar.gz
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="bpf +caps doc seccomp systemd static-libs"
+IUSE="bpf +caps man seccomp systemd static-libs"
 
 DEPEND="
 	dev-libs/yajl
@@ -26,7 +26,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
-	doc? ( dev-go/go-md2man )
+	man? ( dev-go/go-md2man )
 "
 
 # the crun test suite is comprehensive to the extent that tests will fail
@@ -39,31 +39,33 @@ DOCS=( README.md )
 src_prepare() {
 	default
 	eautoreconf
+	cp -v ${DISTDIR}/libcrun.lds ${S}/ || die "libcrun.lds could not be copied"
 }
 
 src_configure() {
-	econf \
+	local myeconfargs=(
 		--disable-criu \
 		$(use_enable bpf) \
 		$(use_enable caps) \
 		$(use_enable seccomp) \
 		$(use_enable systemd) \
 		$(usex static-libs '--enabled-shared  --enabled-static' '--enable-shared --disable-static' '' '')
+	)
 
-	cp -v ${DISTDIR}/libcrun.lds ${S}/
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
 	emake -C libocispec
 	emake crun
-	if use doc ; then
+	if use man ; then
 		emake generate-man
 	fi
 }
 
 src_install() {
 	emake "DESTDIR=${D}" install-exec
-	if use doc ; then
+	if use man ; then
 		emake "DESTDIR=${D}" install-man
 	fi
 
