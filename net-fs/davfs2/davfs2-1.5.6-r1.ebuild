@@ -18,7 +18,7 @@ RDEPEND="dev-libs/libxml2
 	sys-libs/zlib
 	nls? ( virtual/libintl virtual/libiconv )
 "
-DEPEND="${REPEND}
+DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 "
 RDEPEND="${RDEPEND}
