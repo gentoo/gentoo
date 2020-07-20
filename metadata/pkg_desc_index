@@ -2176,7 +2176,7 @@ app-misc/glcdprocdriver 0.1.2: A glue between the graphlcd-base library from the
 app-misc/glimpse 4.18.6-r1: A index/query system to search a large set of files quickly
 app-misc/gnote 3.36.1 3.36.2: Desktop note-taking application
 app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency of most daily tasks
-app-misc/gnutu 2.5-r1: GNU Student's Timetable for polish users
+app-misc/gnutu 2.9: GNU Student's Timetable for polish users
 app-misc/go-jira 1.0.23: A simple JIRA commandline client in Go
 app-misc/golly 3.3-r1 3.3-r3: simulator for Conway's Game of Life and other cellular automata
 app-misc/goobook 3.4-r1: Access your Google contacts from the command line
@@ -5891,7 +5891,7 @@ dev-perl/Daemon-Generic 0.850.0: Framework to provide start/stop/reload for a da
 dev-perl/Danga-Socket 1.610.0-r1 1.620.0: A non-blocking socket object; uses epoll()
 dev-perl/Data-AMF 0.90.0-r1 0.90.0-r2: (de)serializer perl module for Adobe's AMF (Action Message Format)
 dev-perl/Data-Buffer 0.40.0-r1 0.40.0-r2: Read/write buffer class
-dev-perl/Data-Compare 1.250.0 1.270.0: Compare perl data structures
+dev-perl/Data-Compare 1.250.0 1.270.0-r1: Compare perl data structures
 dev-perl/Data-Diver 1.010.1 1.10.100-r1: Simple, ad-hoc access to elements of deeply nested structures
 dev-perl/Data-Dump 1.230.0 1.230.0-r1: Pretty printing of data structures
 dev-perl/Data-Dump-Streamer 2.400.0 2.400.0-r1: Accurately serialize a data structure as Perl code
@@ -10033,7 +10033,7 @@ dev-ruby/xmlrpc 0.3.0: XMLRPC is a lightweight protocol that enables remote proc
 dev-ruby/xpath 2.1.0 3.2.0: XPath is a Ruby DSL around a subset of XPath 1.0
 dev-ruby/yajl-ruby 1.4.1: Ruby C bindings to the Yajl JSON stream-based parser library
 dev-ruby/yard 0.9.20 0.9.24 0.9.25: Documentation generation tool for the Ruby programming language
-dev-ruby/zeitwerk 1.4.3 2.1.10 2.2.1 2.2.2 2.3.0 2.3.1 2.4.0: Efficient and thread-safe code loader for Ruby
+dev-ruby/zeitwerk 1.4.3 2.3.1 2.4.0: Efficient and thread-safe code loader for Ruby
 dev-ruby/zentest 4.12.0: Testing tools: zentest, unit_diff, autotest, multiruby, and Test::Rails
 dev-scheme/bytestructures 1.0.1: Structured access to bytevector contents
 dev-scheme/c-wrapper 0.6.1-r1: Foreign function interface for C and Objective-C libraries
@@ -10661,7 +10661,7 @@ dev-vcs/svneverever 1.3.2 1.4.2 1.5.0: Tool collecting path entries across SVN h
 dev-vcs/svnmailer 1.0.9-r2: A subversion commit notifier written in Python
 dev-vcs/tig 2.3.3 2.4.1 2.5.0 2.5.1 9999: text mode interface for git
 dev-vcs/tkcvs 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
-dev-vcs/topgit 0.9-r1: A different patch queue manager
+dev-vcs/topgit 0.9-r1 0.19.12: A different patch queue manager
 dev-vcs/tortoisehg 5.3.2 5.4.1 9999: Set of graphical tools for Mercurial
 dev-vcs/vcsh 1.20151229.1: Manage config files in $HOME via fake bare git repositories
 games-action/0verkill 0.16-r4: A bloody 2D action deathmatch-like game in ASCII-ART
@@ -15614,7 +15614,7 @@ sci-biology/vienna-rna 2.1.8: RNA secondary structure prediction and comparison
 sci-biology/wgs-assembler 7.0-r2: The Celera de novo whole-genome shotgun DNA sequence assembler, aka CABOG
 sci-biology/wise 2.4.0_alpha: Intelligent algorithms for DNA searches
 sci-biology/yass 1.14-r2: Genomic similarity search with multiple transition constrained spaced seeds
-sci-calculators/bc-gh 2.7.2: Implementation of POSIX bc with GNU extensions
+sci-calculators/bc-gh 2.7.2 3.1.3: Implementation of POSIX bc with GNU extensions
 sci-calculators/calcoo 1.3.18-r1: Scientific calculator designed to provide maximum usability
 sci-calculators/datamash 1.4 1.5 1.6 1.7: command-line program for basic numeric, textual and statistical operations
 sci-calculators/galculator 2.1.4: GTK+ based algebraic and RPN calculator
