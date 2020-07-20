@@ -2526,6 +2526,8 @@ dev-python/QtPy:printsupport - Build bindings for the QtPrintSupport module
 dev-python/QtPy:svg - Build bindings for the QtSvg module
 dev-python/QtPy:testlib - Build bindings for the QtTest module
 dev-python/QtPy:webengine - Build bindings for the QtWebEngine module
+dev-python/autobahn:scram - Add support for WAMP-SCRAM authentication
+dev-python/autobahn:xbr - Add support for XBR decentralized data markets and etherium blockchain
 dev-python/cryptography:idna - enable support for the old, deprecated IDNA specification (RFC 3490)
 dev-python/ctypescrypto:gost - Build with support for GOST Message Authentication Code
 dev-python/cvxopt:dsdp - Use interior point library sci-libs/dsdp

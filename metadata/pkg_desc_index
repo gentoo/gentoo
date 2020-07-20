@@ -7548,7 +7548,7 @@ dev-python/attrs 19.3.0: Attributes without boilerplate
 dev-python/audioread 2.1.8-r2: Wrapper for audio file decoding using FFmpeg or GStreamer
 dev-python/authheaders 0.13.0: A library wrapping email authentication header verification and generation.
 dev-python/authres 1.2.0: Parse and generate Authentication-Results headers
-dev-python/autobahn 18.3.1 20.4.3: WebSocket and WAMP for Twisted and Asyncio
+dev-python/autobahn 20.4.3 20.7.1: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automat 20.2.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 1.12.1: Friendly state machines for python.
 dev-python/autopep8 1.4.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
