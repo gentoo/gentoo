@@ -9,7 +9,7 @@ SRC_URI="http://superb-dca2.dl.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 x86"
 
 RDEPEND="sys-fs/fuse:0=
 	sys-libs/zlib
