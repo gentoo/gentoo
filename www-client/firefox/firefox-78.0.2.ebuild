@@ -226,43 +226,51 @@ llvm_check_deps() {
 }
 
 pkg_pretend() {
-	if use pgo ; then
-		if ! has usersandbox $FEATURES ; then
-			die "You must enable usersandbox as X server can not run as root!"
+	if [[ ${MERGE_TYPE} != binary ]] ; then
+		if use pgo ; then
+			if ! has usersandbox $FEATURES ; then
+				die "You must enable usersandbox as X server can not run as root!"
+			fi
 		fi
-	fi
 
-	# Ensure we have enough disk space to compile
-	if use pgo || use lto || use debug || use test ; then
-		CHECKREQS_DISK_BUILD="10G"
-	else
-		CHECKREQS_DISK_BUILD="5G"
-	fi
+		# Ensure we have enough disk space to compile
+		if use pgo || use lto || use debug || use test ; then
+			CHECKREQS_DISK_BUILD="10G"
+		else
+			CHECKREQS_DISK_BUILD="5G"
+		fi
 
-	check-reqs_pkg_pretend
+		check-reqs_pkg_pretend
+	fi
 }
 
 pkg_setup() {
 	moz_pkgsetup
 
-	# Ensure we have enough disk space to compile
-	if use pgo || use lto || use debug || use test ; then
-		CHECKREQS_DISK_BUILD="10G"
-	else
-		CHECKREQS_DISK_BUILD="5G"
+	if [[ ${MERGE_TYPE} != binary ]] ; then
+		# Ensure we have enough disk space to compile
+		if use pgo || use lto || use debug || use test ; then
+			CHECKREQS_DISK_BUILD="10G"
+		else
+			CHECKREQS_DISK_BUILD="5G"
+		fi
+
+		check-reqs_pkg_setup
+
+		# Avoid PGO profiling problems due to enviroment leakage
+		# These should *always* be cleaned up anyway
+		unset DBUS_SESSION_BUS_ADDRESS \
+			DISPLAY \
+			ORBIT_SOCKETDIR \
+			SESSION_MANAGER \
+			XDG_CACHE_HOME \
+			XDG_SESSION_COOKIE \
+			XAUTHORITY
+
+		addpredict /proc/self/oom_score_adj
+
+		llvm_pkg_setup
 	fi
-
-	check-reqs_pkg_setup
-
-	# Avoid PGO profiling problems due to enviroment leakage
-	# These should *always* be cleaned up anyway
-	unset DBUS_SESSION_BUS_ADDRESS \
-		DISPLAY \
-		ORBIT_SOCKETDIR \
-		SESSION_MANAGER \
-		XDG_CACHE_HOME \
-		XDG_SESSION_COOKIE \
-		XAUTHORITY
 
 	if ! use bindist ; then
 		einfo
@@ -271,10 +279,6 @@ pkg_setup() {
 		elog "a legal problem with Mozilla Foundation."
 		elog "You can disable it by emerging ${PN} _with_ the bindist USE-flag."
 	fi
-
-	addpredict /proc/self/oom_score_adj
-
-	llvm_pkg_setup
 }
 
 src_unpack() {
