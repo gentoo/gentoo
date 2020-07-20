@@ -15,13 +15,13 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	>=dev-perl/Clone-0.430.0
 	>=dev-perl/File-Find-Rule-0.100.0
 	virtual/perl-Scalar-List-Utils
 "
 BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
-		>=dev-perl/Clone-0.430.0
 		dev-perl/Scalar-Properties
 		>=virtual/perl-Test-Simple-0.880.0
 	)
