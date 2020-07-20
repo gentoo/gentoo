@@ -372,13 +372,16 @@ multilib_src_configure() {
 		fi
 	fi
 
-	emesonargs+=( -Dplatforms=$(use X && echo "x11,")$(use wayland && echo "wayland,")$(use gbm && echo "drm,")surfaceless )
+	local platforms
+	use X && platforms+="x11"
+	use wayland && platforms+=",wayland"
+	[[ -n $platforms ]] && emesonargs+=(-Dplatforms=${platforms#,})
 
 	if use gallium; then
 		emesonargs+=(
-			$(meson_use llvm)
-			$(meson_use lm-sensors lmsensors)
-			$(meson_use unwind libunwind)
+			$(meson_feature llvm)
+			$(meson_feature lm-sensors lmsensors)
+			$(meson_feature unwind libunwind)
 		)
 
 		if use video_cards_iris ||
@@ -395,34 +398,34 @@ multilib_src_configure() {
 		if use video_cards_r600 ||
 		   use video_cards_radeonsi ||
 		   use video_cards_nouveau; then
-			emesonargs+=($(meson_use vaapi gallium-va))
+			emesonargs+=($(meson_feature vaapi gallium-va))
 			use vaapi && emesonargs+=( -Dva-libs-path="${EPREFIX}"/usr/$(get_libdir)/va/drivers )
 		else
-			emesonargs+=(-Dgallium-va=false)
+			emesonargs+=(-Dgallium-va=disabled)
 		fi
 
 		if use video_cards_r300 ||
 		   use video_cards_r600 ||
 		   use video_cards_radeonsi ||
 		   use video_cards_nouveau; then
-			emesonargs+=($(meson_use vdpau gallium-vdpau))
+			emesonargs+=($(meson_feature vdpau gallium-vdpau))
 		else
-			emesonargs+=(-Dgallium-vdpau=false)
+			emesonargs+=(-Dgallium-vdpau=disabled)
 		fi
 
 		if use video_cards_freedreno ||
 		   use video_cards_nouveau ||
 		   use video_cards_vmware; then
-			emesonargs+=($(meson_use xa gallium-xa))
+			emesonargs+=($(meson_feature xa gallium-xa))
 		else
-			emesonargs+=(-Dgallium-xa=false)
+			emesonargs+=(-Dgallium-xa=disabled)
 		fi
 
 		if use video_cards_r600 ||
 		   use video_cards_nouveau; then
-			emesonargs+=($(meson_use xvmc gallium-xvmc))
+			emesonargs+=($(meson_feature xvmc gallium-xvmc))
 		else
-			emesonargs+=(-Dgallium-xvmc=false)
+			emesonargs+=(-Dgallium-xvmc=disabled)
 		fi
 
 		if use video_cards_freedreno ||
@@ -490,15 +493,15 @@ multilib_src_configure() {
 	emesonargs+=(
 		$(meson_use test build-tests)
 		-Dglx=$(usex X dri disabled)
-		-Dshared-glapi=true
-		$(meson_use dri3)
-		$(meson_use egl)
-		$(meson_use gbm)
-		$(meson_use gles1)
-		$(meson_use gles2)
+		-Dshared-glapi=enabled
+		$(meson_feature dri3)
+		$(meson_feature egl)
+		$(meson_feature gbm)
+		$(meson_feature gles1)
+		$(meson_feature gles2)
 		$(meson_use libglvnd glvnd)
 		$(meson_use selinux)
-		$(meson_use zstd)
+		$(meson_feature zstd)
 		-Dvalgrind=$(usex valgrind auto false)
 		-Ddri-drivers=$(driver_list "${DRI_DRIVERS[*]}")
 		-Dgallium-drivers=$(driver_list "${GALLIUM_DRIVERS[*]}")
