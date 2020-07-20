@@ -78,7 +78,7 @@ src_configure() {
 
 	[ "${videnable}" = "--enable-video" ] && append-cflags -DPJMEDIA_HAS_VIDEO=1
 
-	econf \
+	LD="$(tc-getCC)" econf \
 		--enable-shared \
 		--with-external-srtp \
 		${videnable} \
@@ -101,8 +101,8 @@ src_configure() {
 }
 
 src_compile() {
-	emake dep
-	emake
+	emake dep LD="$(tc-getCC)"
+	emake LD="$(tc-getCC)"
 }
 
 src_install() {
