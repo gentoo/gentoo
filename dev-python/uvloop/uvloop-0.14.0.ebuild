@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python3_{6..8} )
 inherit distutils-r1
 
 DESCRIPTION="Ultra-fast implementation of asyncio event loop on top of libuv"
@@ -19,7 +19,6 @@ RESTRICT="!test? ( test )"
 RDEPEND=">=dev-libs/libuv-1.11.0:="
 DEPEND="
 	${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
 		>=dev-python/alabaster-0.6.2[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
@@ -30,6 +29,10 @@ DEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-asyncio-test-hang.patch
+)
+
 python_prepare_all() {
 	cat <<EOF >> setup.cfg || die
 [build_ext]
@@ -38,6 +41,9 @@ EOF
 
 	# flake8 only
 	rm tests/test_sourcecode.py || die
+
+	sed -i -e 's:test_write_to_closed_transport:_&:' \
+		tests/test_tcp.py || die
 
 	distutils-r1_python_prepare_all
 }
