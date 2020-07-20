@@ -229,6 +229,15 @@ llvm_check_deps() {
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]] ; then
+		local rustc_version=( $(eselect --brief rust show 2>/dev/null) )
+		rustc_version=${rustc_version[0]/rust-bin-/}
+		rustc_version=${rustc_version/rust-/}
+		[[ -z "${rustc_version}" ]] && die "Failed to determine rustc version!"
+
+		if ver_test "${rustc_version}" -ge "1.45.0" ; then
+			die "Rust >=1.45.0 is not supported. Please use 'eselect rust' to switch to <rust-1.45.0!"
+		fi
+
 		if use pgo ; then
 			if ! has usersandbox $FEATURES ; then
 				die "You must enable usersandbox as X server can not run as root!"
