@@ -13314,9 +13314,9 @@ media-radio/cwdaemon 0.10.2: A morse daemon for the parallel or serial port
 media-radio/direwolf 1.4: Decoded Information from Radio Emissions for Windows Or Linux Fans
 media-radio/dxcc 20190309 20191204: A ham radio callsign DXCC lookup utility
 media-radio/flamp 2.2.03 2.2.05: Fldigi helper for transferring files
-media-radio/fldigi 4.1.09 4.1.11 4.1.12 4.1.14: Sound card based multimode software modem for Amateur Radio use
+media-radio/fldigi 4.1.12 4.1.14: Sound card based multimode software modem for Amateur Radio use
 media-radio/flmsg 4.0.3 4.0.14: Fldigi helper for creating radiograms
-media-radio/flrig 1.3.46 1.3.48 1.3.49 1.3.50: Transceiver control program for Amateur Radio use
+media-radio/flrig 1.3.50: Transceiver control program for Amateur Radio use
 media-radio/fsync-mdc1200-decode 1.0 9999: Linux Fleetsync / MDC1200 decoder
 media-radio/gpredict 2.2.1: Real-time satellite tracking and orbit prediction application
 media-radio/grig 0.8.1: A tool for controlling amateur radios
@@ -13325,12 +13325,12 @@ media-radio/js8call 1.0.0 1.1.0 2.0.0-r1 2.1.0 2.1.1 2.2.0: Weak signal ham radi
 media-radio/qrq 0.3.3: Yet another CW trainer for Linux/Unix
 media-radio/qsstv 9.4.4: Amateur radio SSTV software
 media-radio/svxlink 17.12.1 17.12.2: Multi Purpose Voice Services System, including Qtel for EchoLink
-media-radio/tlf 1.3.2 1.4.0 1.4.1: Console-mode amateur radio contest logger
+media-radio/tlf 1.4.1: Console-mode amateur radio contest logger
 media-radio/tqsl 2.3.1 2.4.1 2.4.3 2.5.1: ARRL Logbook of the World
 media-radio/tucnak 4.20 4.21: Amateur Radio VHF Contest Logbook
-media-radio/unixcw 3.5.1 3.5.1-r1: A package of programs that fit together to form a morse code tutor program
+media-radio/unixcw 3.5.1-r1: A package of programs that fit together to form a morse code tutor program
 media-radio/wsjtx 2.1.2 2.2.0 2.2.2: Weak signal ham radio communication
-media-radio/xastir 2.1.4 2.1.6: X Amateur Station Tracking and Information Reporting
+media-radio/xastir 2.1.6: X Amateur Station Tracking and Information Reporting
 media-radio/xdx 2.5.0: a GTK+ TCP/IP DX-cluster and ON4KST chat client
 media-radio/xlog 2.0.17 2.0.19: An amateur radio logging program
 media-radio/xwxapt 3.4.2: GTK+ linux weather satellite APT image decoder software
