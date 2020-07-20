@@ -78,7 +78,7 @@ src_compile() {
 	python_compile() {
 		emake -C "${BUILD_DIR}"/cython \
 			VPATH="${S}/cython:$1/cython" \
-			imobiledevice_la_LIBADD="$1/src/libimobiledevice.la"
+			imobiledevice_la_LIBADD="$1/src/libimobiledevice-1.0.la"
 	}
 
 	emake -C "${BUILD_DIR}"
