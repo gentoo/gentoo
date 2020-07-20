@@ -35,6 +35,10 @@ DEPEND=">=sys-libs/libsepol-${SEPOL_VER}
 
 RDEPEND=">=sys-libs/libsemanage-${SEMNG_VER}"
 
+PATCHES=(
+	"${FILESDIR}/{$PN}-2.9-and-3.0-fix-fno-common.patch"
+)
+
 src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
