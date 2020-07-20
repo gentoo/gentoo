@@ -173,6 +173,9 @@ RESTRICT="test? ( userpriv )"
 # distribution tarball does not include everything needed for tests
 RESTRICT+=" test"
 
+# create a non-debug release
+CMAKE_BUILD_TYPE=RelWithDebInfo
+
 # false positives unless all USE flags are on
 CMAKE_WARN_UNUSED_CLI=no
 
