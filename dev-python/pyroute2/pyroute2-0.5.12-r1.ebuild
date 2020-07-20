@@ -18,6 +18,7 @@ KEYWORDS="amd64 ~arm64 x86"
 IUSE="test"
 
 BDEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/psutil[${PYTHON_USEDEP}]
 	)
