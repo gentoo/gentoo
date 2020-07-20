@@ -7581,7 +7581,7 @@ dev-python/bibtexparser 1.1.0: A BibTeX parser written in python
 dev-python/billiard 3.6.0.0: Python multiprocessing fork
 dev-python/binaryornot 0.4.4: Ultra-lightweight pure Python package to guess whether a file is binary or text
 dev-python/bitarray 0.8.3: efficient arrays of booleans -- C extension
-dev-python/bitstring 3.1.6: A pure Python module for creation and analysis of binary data
+dev-python/bitstring 3.1.6 3.1.7: A pure Python module for creation and analysis of binary data
 dev-python/black 19.10_beta0: The uncompromising Python code formatter
 dev-python/bleach 3.1.5: an easy whitelist-based HTML-sanitizing tool
 dev-python/blessed 1.17.8: Library for making terminal apps using colors, keyboard input and positioning
