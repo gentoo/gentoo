@@ -21,10 +21,10 @@ KEYWORDS="~amd64 ~x86"
 RESTRICT="bindist mirror fetch strip"
 
 BDEPEND="dev-util/patchelf"
-COMMON=">=virtual/opencl-3"
-DEPEND="${COMMON}"
-RDEPEND="${COMMON}
-	!media-libs/mesa[opencl]" # Bug #686790
+COMMON_DEPEND=">=virtual/opencl-3"
+DEPEND="${COMMON_DEPEND}"
+RDEPEND="${COMMON_DEPEND}
+	!media-libs/mesa[opencl]"
 
 QA_PREBUILT="/opt/amdgpu/lib*/*"
 
