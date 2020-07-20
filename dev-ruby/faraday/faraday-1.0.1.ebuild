@@ -41,6 +41,9 @@ all_ruby_prepare() {
 	sed -e '/[Cc]overall/ s:^:#:' \
 		-e '/lib\/\*\*/ s:^:#:' \
 		-e '3igem "rack", "<2.1"' \
+		-e '/simplecov/ s:^:#:' \
+		-e '/SimpleCov/,/end/ s:^:#:' \
+		-e '/pry/ s:^:#:' \
 		-i spec/spec_helper.rb || die
 
 	# The proxy server is already killed, may be OS X vs Linux issue.
