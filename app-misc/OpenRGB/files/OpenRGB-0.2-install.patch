@@ -1,0 +1,23 @@
+diff --git a/OpenRGB.pro b/OpenRGB.pro
+index 9553b1f..fb4e4be 100644
+--- a/OpenRGB.pro
++++ b/OpenRGB.pro
+@@ -389,3 +389,18 @@ unix:SOURCES +=                                                         \
+     RGBController/OpenRazerDetect.cpp                                   \
+     RGBController/RGBController_Faustus.cpp                             \
+     RGBController/RGBController_OpenRazer.cpp                           \
++
++    #-------------------------------------------------------------------#
++    # Set up install paths                                              #
++    # These install paths are used for AppImage and .deb packaging      #
++    #-------------------------------------------------------------------#
++    isEmpty(PREFIX) {
++        PREFIX = /usr
++    }
++
++    target.path=$$PREFIX/bin/
++    desktop.path=$$PREFIX/share/applications/
++    desktop.files+=qt/OpenRGB.desktop
++    pixmap.path=$$PREFIX/share/pixmaps/
++    pixmap.files+=qt/OpenRGB.png
++    INSTALLS += target desktop pixmap
