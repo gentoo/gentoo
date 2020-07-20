@@ -11,7 +11,7 @@ SRC_URI="https://www.gnome-look.org/content/files/39179-rezlooks-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="x11-libs/gtk+:2"
 DEPEND="${RDEPEND}"
