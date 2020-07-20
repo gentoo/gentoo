@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=(python{2_7,3_6,3_7,3_8})
+PYTHON_COMPAT=(python{2_7,3_{6..9}})
 DISTUTILS_USE_SETUPTOOLS="manual"
 
 inherit distutils-r1
