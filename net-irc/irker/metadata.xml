@@ -9,4 +9,5 @@
 		<email>patrick@gentoo.org</email>
 		<name>Patrick Lauer</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>
