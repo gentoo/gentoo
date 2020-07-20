@@ -9,4 +9,8 @@
 		<email>patrick@gentoo.org</email>
 		<name>Patrick Lauer</name>
 	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="gitlab">esr/irker</remote-id>
+	</upstream>
 </pkgmetadata>
