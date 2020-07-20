@@ -1,0 +1,98 @@
+From eea2e6c35c0962ca559a96f37ab4eada126da5de Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <dolsen@gentoo.org>
+Date: Sun, 19 Jul 2020 17:56:19 -0700
+Subject: [PATCH] Replace deprecated logger.warn() with logger.warning()
+
+---
+ cbor/tests/test_cbor.py    |  4 ++--
+ cbor/tests/test_usage.py   | 10 +++++-----
+ cbor/tests/test_vectors.py |  2 +-
+ 4 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/cbor/tests/test_cbor.py b/cbor/tests/test_cbor.py
+index 78b3ddb..14ddf69 100644
+--- a/cbor/tests/test_cbor.py
++++ b/cbor/tests/test_cbor.py
+@@ -27,7 +27,7 @@ try:
+     from cbor._cbor import load as cload
+ except ImportError:
+     # still test what we can without C fast mode
+-    logger.warn('testing without C accelerated CBOR', exc_info=True)
++    logger.warning('testing without C accelerated CBOR', exc_info=True)
+     cdumps, cloads, cdump, cload = None, None, None, None
+ 
+ 
+@@ -62,7 +62,7 @@ class TestRoot(object):
+     def testable(cls):
+         ok = (cls._ld[0] is not None) and (cls._ld[1] is not None) and (cls._ld[3] is not None) and (cls._ld[4] is not None)
+         if not ok:
+-            logger.warn('non-testable case %s skipped', cls.__name__)
++            logger.warning('non-testable case %s skipped', cls.__name__)
+         return ok
+ 
+ # Can't set class level function pointers, because then they expect a
+diff --git a/cbor/tests/test_usage.py b/cbor/tests/test_usage.py
+index d72f2e8..9d7e6a1 100644
+--- a/cbor/tests/test_usage.py
++++ b/cbor/tests/test_usage.py
+@@ -22,7 +22,7 @@ try:
+     from cbor._cbor import load as cload
+ except ImportError:
+     # still test what we can without C fast mode
+-    logger.warn('testing without C accelerated CBOR', exc_info=True)
++    logger.warning('testing without C accelerated CBOR', exc_info=True)
+     cdumps, cloads, cdump, cload = None, None, None, None
+ 
+ 
+@@ -48,7 +48,7 @@ class TestUsage(unittest.TestCase):
+         repeatedly serialize, check that usage doesn't go up
+         '''
+         if cdumps is None:
+-            logger.warn('no C dumps(), skipping test_dumps_usage')
++            logger.warning('no C dumps(), skipping test_dumps_usage')
+             return
+         start_usage = resource.getrusage(resource.RUSAGE_SELF)
+         usage_history = [start_usage]
+@@ -76,7 +76,7 @@ class TestUsage(unittest.TestCase):
+         repeatedly serialize, check that usage doesn't go up
+         '''
+         if (cdumps is None) or (cloads is None):
+-            logger.warn('no C fast CBOR, skipping test_loads_usage')
++            logger.warning('no C fast CBOR, skipping test_loads_usage')
+             return
+         ## Just a string passes!
+         #ob = 'sntaoheusnatoheusnaotehuasnoetuhaosentuhaoesnth'
+@@ -113,7 +113,7 @@ class TestUsage(unittest.TestCase):
+         it, checking usage all along the way.
+         '''
+         if cdump is None:
+-            logger.warn('no C dump(), skipping test_tempfile')
++            logger.warning('no C dump(), skipping test_tempfile')
+             return
+         with tempfile.NamedTemporaryFile() as ntf:
+             # first, write a bunch to temp file
+@@ -168,7 +168,7 @@ class TestUsage(unittest.TestCase):
+     def test_stringio_usage(self):
+         '''serialize data to StringIO, read it back'''
+         if cdump is None:
+-            logger.warn('no C dump(), skipping test_tempfile')
++            logger.warning('no C dump(), skipping test_tempfile')
+             return
+ 
+         # warmup the rusage, allocate everything!
+diff --git a/cbor/tests/test_vectors.py b/cbor/tests/test_vectors.py
+index f4d8ca9..afed311 100644
+--- a/cbor/tests/test_vectors.py
++++ b/cbor/tests/test_vectors.py
+@@ -27,7 +27,7 @@ try:
+     from cbor._cbor import loads as cloads
+ except ImportError:
+     # still test what we can without C fast mode
+-    logger.warn('testing without C accelerated CBOR', exc_info=True)
++    logger.warning('testing without C accelerated CBOR', exc_info=True)
+     #cdumps, cloads = None, None
+     cloads = None
+ from cbor import Tag
+--
+libgit2 1.0.1
+
