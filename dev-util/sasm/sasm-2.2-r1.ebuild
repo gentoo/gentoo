@@ -26,7 +26,7 @@ DEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 "
-REPEND="${DEPEND}
+RDEPEND="${DEPEND}
 	dev-lang/nasm
 	sys-devel/gdb
 "

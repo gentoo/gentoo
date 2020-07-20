@@ -36,7 +36,7 @@ BDEPEND="virtual/fortran
 	doc? ( app-doc/doxygen[dot] )
 	test? ( sci-libs/coinor-sample )"
 DEPEND="sci-libs/coinor-utils:="
-REPEND="${DEPEND}"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_PN}-releases-${PV}/${MY_PN}"
 
