@@ -7629,7 +7629,7 @@ dev-python/chardet 3.0.4: Universal encoding detector
 dev-python/cheetah 2.4.4-r1: Python-powered template engine and code generator
 dev-python/cheetah-docs 0.9.16_alpha1: Documentation for Cheetah templates
 dev-python/cheetah3 3.2.4: Python-powered template engine and code generator
-dev-python/cheroot 8.3.0 8.3.0-r1: Cheroot is the high-performance, pure-Python HTTP server used by CherryPy.
+dev-python/cheroot 8.3.0 8.3.0-r1 8.3.1: Cheroot is the high-performance, pure-Python HTTP server used by CherryPy.
 dev-python/cherrypy 3.8.0 18.5.0 18.6.0: CherryPy is a pythonic, object-oriented HTTP framework
 dev-python/chump 1.6.0: API wrapper for Pushover
 dev-python/citeproc-py 0.4.0-r1: Yet another Python CSL Processor
@@ -7957,6 +7957,7 @@ dev-python/itsdangerous 1.1.0: Various helpers to pass trusted data to untrusted
 dev-python/itypes 1.1.0: basic immutable container types for python
 dev-python/jaraco-classes 2.0-r1 3.1.0: Classes used by other projects by developer jaraco
 dev-python/jaraco-collections 3.0.0: Models and classes to supplement the stdlib collections module
+dev-python/jaraco-context 3.0.0: Context managers by jaraco
 dev-python/jaraco-envs 2.0.0: Classes for orchestrating Python (virtual) environments.
 dev-python/jaraco-functools 3.0.1: Additional functions used by other projects by developer jaraco
 dev-python/jaraco-itertools 4.4.2 5.0.0: Tools for working with iterables. Complements itertools and more_itertools
@@ -14776,7 +14777,7 @@ net-misc/dleyna-server 0.6.0: Service that allows to discover and manipulate DLN
 net-misc/dmr_utils 9999: Python utilities for working with DMR
 net-misc/drive 0.3.9.1 0.3.9.1-r1: Google Drive client for the commandline
 net-misc/dropbear 2019.78 2020.80 2020.80-r1: small SSH 2 client/server designed for small memory environments
-net-misc/dropbox 98.4.158 99.4.501 100.4.409: Dropbox daemon (pretends to be GUI-less)
+net-misc/dropbox 98.4.158 99.4.501 100.4.409 101.4.434: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 19 2020.03.04: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/econnman 1.1-r1: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a-r4 0.9a_p19_p1: A simple fax program for single-user systems
