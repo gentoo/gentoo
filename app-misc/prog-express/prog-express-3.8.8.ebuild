@@ -12,7 +12,7 @@ SRC_URI="
 	x86? ( https://www.batronix.com/exe/Batronix/Prog-Express/deb/${P}-1.i386.deb )
 "
 
-KEYWORDS="-* ~amd64 x86"
+KEYWORDS="-* amd64 x86"
 LICENSE="prog-express"
 SLOT="0"
 
