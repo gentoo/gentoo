@@ -216,43 +216,60 @@ llvm_check_deps() {
 }
 
 pkg_pretend() {
-	if use pgo ; then
-		if ! has usersandbox $FEATURES ; then
-			die "You must enable usersandbox as X server can not run as root!"
+	if [[ ${MERGE_TYPE} != binary ]] ; then
+		local rustc_version=( $(eselect --brief rust show 2>/dev/null) )
+		rustc_version=${rustc_version[0]/rust-bin-/}
+		rustc_version=${rustc_version/rust-/}
+		[[ -z "${rustc_version}" ]] && die "Failed to determine rustc version!"
+
+		if ver_test "${rustc_version}" -ge "1.45.0" ; then
+			die "Rust >=1.45.0 is not supported. Please use 'eselect rust' to switch to <rust-1.45.0!"
 		fi
-	fi
 
-	# Ensure we have enough disk space to compile
-	if use pgo || use lto || use debug || use test ; then
-		CHECKREQS_DISK_BUILD="8G"
-	else
-		CHECKREQS_DISK_BUILD="4500M"
-	fi
+		if use pgo ; then
+			if ! has usersandbox $FEATURES ; then
+				die "You must enable usersandbox as X server can not run as root!"
+			fi
+		fi
 
-	check-reqs_pkg_pretend
+		# Ensure we have enough disk space to compile
+		if use pgo || use lto || use debug || use test ; then
+			CHECKREQS_DISK_BUILD="8G"
+		else
+			CHECKREQS_DISK_BUILD="4500M"
+		fi
+
+		check-reqs_pkg_pretend
+	fi
 }
 
 pkg_setup() {
 	moz_pkgsetup
 
-	# Ensure we have enough disk space to compile
-	if use pgo || use lto || use debug || use test ; then
-		CHECKREQS_DISK_BUILD="8G"
-	else
-		CHECKREQS_DISK_BUILD="4500M"
+	if [[ ${MERGE_TYPE} != binary ]] ; then
+		# Ensure we have enough disk space to compile
+		if use pgo || use lto || use debug || use test ; then
+			CHECKREQS_DISK_BUILD="8G"
+		else
+			CHECKREQS_DISK_BUILD="4500M"
+		fi
+
+		check-reqs_pkg_setup
+
+		# Avoid PGO profiling problems due to enviroment leakage
+		# These should *always* be cleaned up anyway
+		unset DBUS_SESSION_BUS_ADDRESS \
+			DISPLAY \
+			ORBIT_SOCKETDIR \
+			SESSION_MANAGER \
+			XDG_CACHE_HOME \
+			XDG_SESSION_COOKIE \
+			XAUTHORITY
+
+		addpredict /proc/self/oom_score_adj
+
+		llvm_pkg_setup
 	fi
-
-	check-reqs_pkg_setup
-
-	# Avoid PGO profiling problems due to enviroment leakage
-	# These should *always* be cleaned up anyway
-	unset DBUS_SESSION_BUS_ADDRESS \
-		DISPLAY \
-		ORBIT_SOCKETDIR \
-		SESSION_MANAGER \
-		XDG_CACHE_HOME \
-		XDG_SESSION_COOKIE \
-		XAUTHORITY
 
 	if ! use bindist ; then
 		einfo
@@ -261,10 +278,6 @@ pkg_setup() {
 		elog "a legal problem with Mozilla Foundation."
 		elog "You can disable it by emerging ${PN} _with_ the bindist USE-flag."
 	fi
-
-	addpredict /proc/self/oom_score_adj
-
-	llvm_pkg_setup
 }
 
 src_unpack() {
