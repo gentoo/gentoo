@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PATCHSET_VER="2"
+PATCHSET_VER="3"
 
 inherit autotools java-pkg-opt-2
 
