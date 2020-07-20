@@ -1165,6 +1165,7 @@ app-text/evince:postscript - Enable support for PostScript and Adobe Illustrator
 app-text/evince:spell - Enable inline spell check for annotations via app-text/gspell
 app-text/evince:t1lib - Enable the Type-1 fonts for the built-in DVI viewer (media-libs/t1lib)
 app-text/evince:xps - Enable XPS viewer using app-text/libgxps
+app-text/foliate:handy - Use gui-libs/libhandy
 app-text/ghostscript-gpl:unicode - Add support for unicode passwords via net-dns/libidn
 app-text/groonga:abort - Enable query abortion
 app-text/groonga:benchmark - Build benchmark programs
