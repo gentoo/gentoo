@@ -7,7 +7,7 @@ inherit multilib
 
 MAIN_PV="$(ver_cut 1-3)"
 if [[ ${PV} = *_beta* ]] || [[ ${PV} = *_rc* ]] ; then
-	MY_PV="${MAIN_PV}_$(ver_cut 5-6)"
+	MY_PV="${MAIN_PV}_$(ver_cut 5)"
 	DEP_PV="${MY_PV}"
 	MY_PV="${MY_PV/beta/BETA}"
 	MY_PV="${MY_PV/rc/RC}"
@@ -23,10 +23,9 @@ DESCRIPTION="PUEL extensions for VirtualBox"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.vbox-extpack -> ${MY_P}.tar.gz"
 
-LICENSE="PUEL-10"
+LICENSE="PUEL"
 SLOT="0"
-[[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="bindist mirror strip"
 

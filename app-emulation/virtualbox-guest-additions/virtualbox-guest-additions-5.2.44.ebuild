@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-mod systemd toolchain-funcs
+inherit linux-mod systemd user toolchain-funcs
 
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
@@ -11,19 +11,14 @@ MY_P="VirtualBox-${MY_PV}"
 DESCRIPTION="VirtualBox kernel modules and user-space tools for Gentoo guests"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-6.0.20-patches-01.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-5.2.44-patches-01.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-[[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
 KEYWORDS="~amd64 ~x86"
 IUSE="X"
 
-# automount Error: VBoxServiceAutoMountWorker: Group "vboxsf" does not exist
 RDEPEND="
-	acct-group/vboxguest
-	acct-group/vboxsf
-	acct-user/vboxguest
 	X? ( x11-apps/xrandr
 		x11-apps/xrefresh
 		x11-libs/libXmu
@@ -52,42 +47,53 @@ BUILD_TARGETS="all"
 BUILD_TARGET_ARCH="${ARCH}"
 
 S="${WORKDIR}/${MY_P}"
-VBOX_MOD_SRC_DIR="${S}/out/linux.${ARCH}/release/bin/additions/src"
 
 pkg_setup() {
 	export DISTCC_DISABLE=1 #674256
-	MODULE_NAMES="vboxguest(misc:${VBOX_MOD_SRC_DIR}/vboxguest:${VBOX_MOD_SRC_DIR}/vboxguest)
-		vboxsf(misc:${VBOX_MOD_SRC_DIR}/vboxsf:${VBOX_MOD_SRC_DIR}/vboxsf)"
-	use X && MODULE_NAMES+=" vboxvideo(misc:${VBOX_MOD_SRC_DIR}/vboxvideo::${VBOX_MOD_SRC_DIR}/vboxvideo)"
+	MODULE_NAMES="vboxguest(misc:${WORKDIR}/vboxguest:${WORKDIR}/vboxguest)
+		vboxsf(misc:${WORKDIR}/vboxsf:${WORKDIR}/vboxsf)"
+	use X && MODULE_NAMES+=" vboxvideo(misc:${WORKDIR}/vboxvideo::${WORKDIR}/vboxvideo)"
 
 	linux-mod_pkg_setup
-	BUILD_PARAMS="KERN_DIR=/lib/modules/${KV_FULL}/build KERNOUT=${KV_OUT_DIR}"
+	BUILD_PARAMS="KERN_DIR=/lib/modules/${KV_FULL}/build KERNOUT=${KV_OUT_DIR} KBUILD_EXTRA_SYMBOLS=${S}/Module.symvers"
+}
+
+src_unpack() {
+	unpack ${A}
+
+	# Create and unpack a tarball with the sources of the Linux guest
+	# kernel modules, to include all the needed files
+	"${S}"/src/VBox/Additions/linux/export_modules.sh "${WORKDIR}/vbox-kmod.tar.gz"
+	unpack ./vbox-kmod.tar.gz
+
+	# Remove shipped binaries (kBuild,yasm), see bug #232775
+	cd "${S}"
+	rm -rf kBuild/bin tools
 }
 
 src_prepare() {
-	# Remove shipped binaries (kBuild,yasm), see bug #232775
-	rm -r kBuild/bin tools || die
-
-	# Provide kernel sources
-	pushd src/VBox/Additions &>/dev/null || die
-	ebegin "Extracting guest kernel module sources"
-	kmk GuestDrivers-src vboxguest-src vboxsf-src vboxvideo-src &>/dev/null || die
-	eend
-	popd &>/dev/null || die
-
 	# PaX fixes (see bug #298988)
-	pushd "${VBOX_MOD_SRC_DIR}" &>/dev/null || die
-	eapply "${FILESDIR}"/vboxguest-6.0.6-log-use-c99.patch
+	pushd "${WORKDIR}" &>/dev/null || die
+	eapply "${FILESDIR}"/vboxguest-4.1.0-log-use-c99.patch
 	popd &>/dev/null || die
 
 	# Disable things unused or splitted into separate ebuilds
 	cp "${FILESDIR}/${PN}-5-localconfig" LocalConfig.kmk || die
 	use X || echo "VBOX_WITH_X11_ADDITIONS :=" >> LocalConfig.kmk
 
+	# stupid new header references...
+	local vboxheader mdir
+	for vboxheader in {product,revision,version}-generated.h ; do
+		for mdir in vbox{guest,sf} ; do
+			ln -sf "${S}"/out/linux.${ARCH}/release/${vboxheader} \
+				"${WORKDIR}/${mdir}/${vboxheader}"
+		done
+	done
+
 	# Remove pointless GCC version check
 	sed -e '/^check_gcc$/d' -i configure || die
 
-	rm "${WORKDIR}/patches/010_virtualbox-5.2.12-qt511.patch" || die
+	rm "${WORKDIR}/patches/008_virtualbox-4.3.14-missing_define.patch" || die
 	eapply "${WORKDIR}/patches"
 
 	eapply_user
@@ -115,8 +121,11 @@ src_configure() {
 }
 
 src_compile() {
-	MAKE="kmk" \
-	emake TOOL_YASM_AS=yasm \
+	MAKE="kmk" emake\
+	VBOX_BUILD_PUBLISHER=_Gentoo \
+	TOOL_GXX3_CC="$(tc-getCC)" TOOL_GXX3_CXX="$(tc-getCXX)" \
+	TOOL_GXX3_LD="$(tc-getCXX)" VBOX_GCC_OPT="${CXXFLAGS}" \
+	TOOL_YASM_AS=yasm \
 	VBOX_ONLY_ADDITIONS=1 \
 	KBUILD_VERBOSE=2
 
@@ -176,6 +185,13 @@ src_install() {
 	docompress -x "${ED}"/usr/share/doc/${PF}/xorg.conf.vbox
 
 	systemd_dounit "${FILESDIR}/${PN}.service"
+}
+
+pkg_preinst() {
+	enewgroup vboxguest
+	enewuser vboxguest -1 /bin/sh /dev/null vboxguest
+	# automount Error: VBoxServiceAutoMountWorker: Group "vboxsf" does not exist
+	enewgroup vboxsf
 }
 
 pkg_postinst() {

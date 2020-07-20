@@ -6,26 +6,28 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 inherit desktop flag-o-matic java-pkg-opt-2 linux-info pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg
 
+MY_PN="VirtualBox"
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
-MY_P=VirtualBox-${MY_PV}
+MY_P=${MY_PN}-${MY_PV}
+[[ "${PV}" == *a ]] && DIR_PV="$(ver_cut 1-3)"
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/"
-SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-6.0.20-patches-01.tar.xz"
+SRC_URI="https://download.virtualbox.org/virtualbox/${DIR_PV:-${MY_PV}}/${MY_P}.tar.bz2
+	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-6.1.12-patches-01.tar.xz"
 
 LICENSE="GPL-2 dtrace? ( CDDL )"
 SLOT="0"
 [[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="alsa debug doc dtrace headless java libressl lvm +opus pam pax_kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
 
 CDEPEND="
 	${PYTHON_DEPS}
 	!app-emulation/virtualbox-bin
 	acct-group/vboxusers
-	~app-emulation/virtualbox-modules-${PV}
+	~app-emulation/virtualbox-modules-${DIR_PV:-${PV}}
 	dev-libs/libIDL
 	>=dev-libs/libxslt-1.1.19
 	net-misc/curl
@@ -125,7 +127,7 @@ QA_TEXTRELS_x86="usr/lib/virtualbox-ose/VBoxGuestPropSvc.so
 	usr/lib/virtualbox/VBoxNetDHCP.so
 	usr/lib/virtualbox/VBoxNetNAT.so"
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/${MY_PN}-${DIR_PV:-${MY_PV}}"
 
 REQUIRED_USE="
 	java? ( sdk )
@@ -167,7 +169,7 @@ src_prepare() {
 
 	# Replace pointless GCC version check with something less stupid.
 	# This is needed for the qt5 version check.
-	sed -e 's@^check_gcc$@cc_maj="$(gcc -dumpversion | cut -d. -f1)" ; cc_min="$(gcc -dumpversion | cut -d. -f2)"@' \
+	sed -e 's@^check_gcc$@cc_maj="$(${CC} -dumpversion | cut -d. -f1)" ; cc_min="$(${CC} -dumpversion | cut -d. -f2)"@' \
 		-i configure || die
 
 	# Disable things unused or split into separate ebuilds
@@ -207,9 +209,6 @@ src_prepare() {
 		eapply "${FILESDIR}"/virtualbox-5.2.8-paxmark-bldprogs.patch
 	fi
 
-	eapply "${FILESDIR}"/${P}-qt-5.15.patch # TODO: upstream, bug #726154
-
-	rm "${WORKDIR}/patches/010_virtualbox-5.2.12-qt511.patch" || die
 	eapply "${WORKDIR}/patches"
 
 	eapply_user
@@ -264,12 +263,10 @@ src_compile() {
 	MAKEOPTS="${MAKEJOBS} ${MAKELOAD}"
 	MAKE="kmk" emake \
 		VBOX_BUILD_PUBLISHER=_Gentoo \
-		TOOL_GCC3_CC="$(tc-getCC)" TOOL_GCC3_CXX="$(tc-getCXX)" \
-		TOOL_GCC3_AS="$(tc-getCC)" TOOL_GCC3_AR="$(tc-getAR)" \
-		TOOL_GCC3_LD="$(tc-getCXX)" TOOL_GCC3_LD_SYSMOD="$(tc-getLD)" \
-		TOOL_GCC3_CFLAGS="${CFLAGS}" TOOL_GCC3_CXXFLAGS="${CXXFLAGS}" \
-		VBOX_GCC_OPT="${CXXFLAGS}" \
+		TOOL_GXX3_CC="$(tc-getCC)" TOOL_GXX3_CXX="$(tc-getCXX)" \
+		TOOL_GXX3_LD="$(tc-getCXX)" VBOX_GCC_OPT="${CXXFLAGS}" \
 		TOOL_YASM_AS=yasm KBUILD_VERBOSE=2 \
+		VBOX_WITH_VBOXIMGMOUNT=1 \
 		all
 }
 
@@ -311,12 +308,7 @@ src_install() {
 	insinto ${vbox_inst_path}
 	doins -r components
 
-	# *.rc files for x86_64 are only available on multilib systems
-	local rcfiles="*.rc"
-	if use amd64 && ! has_multilib_profile ; then
-		rcfiles=""
-	fi
-	for each in VBox{Autostart,BalloonCtrl,BugReport,CpuReport,ExtPackHelperApp,Manage,SVC,Tunctl,VMMPreload,XPCOMIPCD} *so *r0 ${rcfiles} iPxeBaseBin ; do
+	for each in VBox{Autostart,BalloonCtrl,BugReport,CpuReport,ExtPackHelperApp,Manage,SVC,Tunctl,VMMPreload,XPCOMIPCD} vboximg-mount *so *r0 iPxeBaseBin ; do
 		vbox_inst ${each}
 	done
 
@@ -341,6 +333,7 @@ src_install() {
 		dosym ${vbox_inst_path}/VBox /usr/bin/${each}
 	done
 	dosym ${vbox_inst_path}/VBoxTunctl /usr/bin/VBoxTunctl
+	dosym ${vbox_inst_path}/vboximg-mount /usr/bin/vboximg-mount
 
 	if use pam ; then
 		# VRDPAuth only works with this (bug #351949)
@@ -437,6 +430,9 @@ src_install() {
 		newconfd "${FILESDIR}"/vboxwebsrv-confd vboxwebsrv
 	fi
 
+	# Remove dead symlinks (bug #715338)
+	find "${ED}"/usr/$(get_libdir)/${PN} -xtype l -delete || die
+
 	# Fix version string in extensions or else they don't get accepted
 	# by the virtualbox host process (see bug #438930)
 	find ExtensionPacks -type f -name "ExtPack.xml" -print0 \
@@ -482,7 +478,7 @@ pkg_postinst() {
 	elog "You must be in the vboxusers group to use VirtualBox."
 	elog ""
 	elog "The latest user manual is available for download at:"
-	elog "http://download.virtualbox.org/virtualbox/${PV}/UserManual.pdf"
+	elog "http://download.virtualbox.org/virtualbox/${DIR_PV:-${PV}}/UserManual.pdf"
 	elog ""
 	elog "For advanced networking setups you should emerge:"
 	elog "net-misc/bridge-utils and sys-apps/usermode-utilities"

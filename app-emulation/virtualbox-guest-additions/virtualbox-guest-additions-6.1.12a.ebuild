@@ -5,13 +5,16 @@ EAPI=7
 
 inherit linux-mod systemd toolchain-funcs
 
+MY_PN="VirtualBox"
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
-MY_P="VirtualBox-${MY_PV}"
+MY_P="${MY_PN}-${MY_PV}"
+[[ "${PV}" == *a ]] && DIR_PV="$(ver_cut 1-3)"
+
 DESCRIPTION="VirtualBox kernel modules and user-space tools for Gentoo guests"
 HOMEPAGE="https://www.virtualbox.org/"
-SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-6.1.0_rc1-patches-01.tar.xz"
+SRC_URI="https://download.virtualbox.org/virtualbox/${DIR_PV:-${MY_PV}}/${MY_P}.tar.bz2
+	https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-6.1.12-patches-01.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -51,7 +54,7 @@ PDEPEND="
 BUILD_TARGETS="all"
 BUILD_TARGET_ARCH="${ARCH}"
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/${MY_PN}-${DIR_PV:-${PV}}"
 VBOX_MOD_SRC_DIR="${S}/out/linux.${ARCH}/release/bin/additions/src"
 
 pkg_setup() {
@@ -61,7 +64,7 @@ pkg_setup() {
 	use X && MODULE_NAMES+=" vboxvideo(misc:${VBOX_MOD_SRC_DIR}/vboxvideo::${VBOX_MOD_SRC_DIR}/vboxvideo)"
 
 	linux-mod_pkg_setup
-	BUILD_PARAMS="KERN_DIR=/lib/modules/${KV_FULL}/build KERNOUT=${KV_OUT_DIR}"
+	BUILD_PARAMS="KERN_DIR=/lib/modules/${KV_FULL}/build KERNOUT=${KV_OUT_DIR} KBUILD_EXTRA_SYMBOLS=${S}/Module.symvers"
 }
 
 src_prepare() {
@@ -114,8 +117,11 @@ src_configure() {
 }
 
 src_compile() {
-	MAKE="kmk" \
-	emake TOOL_YASM_AS=yasm \
+	MAKE="kmk" emake \
+	VBOX_BUILD_PUBLISHER=_Gentoo \
+	TOOL_GXX3_CC="$(tc-getCC)" TOOL_GXX3_CXX="$(tc-getCXX)" \
+	TOOL_GXX3_LD="$(tc-getCXX)" VBOX_GCC_OPT="${CXXFLAGS}" \
+	TOOL_YASM_AS=yasm \
 	VBOX_ONLY_ADDITIONS=1 \
 	KBUILD_VERBOSE=2
 
