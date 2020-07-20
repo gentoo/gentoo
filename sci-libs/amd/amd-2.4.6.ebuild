@@ -17,7 +17,7 @@ IUSE="doc fortran static-libs"
 BDEPEND="virtual/pkgconfig
 	doc? ( virtual/latex-base )"
 DEPEND=">=sci-libs/suitesparseconfig-5.4.0"
-REPEND="${DEPEND}"
+RDEPEND="${DEPEND}"
 
 src_configure() {
 	econf \
