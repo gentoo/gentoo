@@ -4,10 +4,10 @@ DEPEND=x11-libs/gtk+:2
 DESCRIPTION=Rezlooks GTK+ Engine
 EAPI=7
 HOMEPAGE=https://www.gnome-look.org/content/show.php?content=39179
-KEYWORDS=~amd64 x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=x11-libs/gtk+:2
 SLOT=0
 SRC_URI=https://www.gnome-look.org/content/files/39179-rezlooks-0.6.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=743e3199af6d821860046214e75e6fba
+_md5_=5748e24e55a5e9e40a4f0005bffed9cb
