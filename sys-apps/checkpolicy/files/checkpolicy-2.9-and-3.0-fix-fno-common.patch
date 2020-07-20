@@ -1,0 +1,24 @@
+Fix compile with -fno-common by deleting unused te_assertions
+This was done upstream already: https://github.com/SELinuxProject/selinux/commit/4d330d0d3155211f119b3082f728ae42dcc01e96
+
+--- a/checkpolicy.h
++++ b/checkpolicy.h
+@@ -3,18 +3,6 @@
+ 
+ #include <sepol/policydb/ebitmap.h>
+ 
+-typedef struct te_assert {
+-	ebitmap_t stypes;
+-	ebitmap_t ttypes;
+-	ebitmap_t tclasses;
+-	int self;
+-	sepol_access_vector_t *avp;
+-	unsigned long line;
+-	struct te_assert *next;
+-} te_assert_t;
+-
+-te_assert_t *te_assertions;
+-
+ extern unsigned int policyvers;
+ 
+ #endif
