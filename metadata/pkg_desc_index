@@ -14207,7 +14207,7 @@ net-dns/dnscap 1.10.2 1.10.3: Network capture utility designed specifically for 
 net-dns/dnscrypt-proxy 2.0.41 2.0.42 2.0.43 2.0.44 9999: A flexible DNS proxy, with support for encrypted DNS protocols
 net-dns/dnsdist 1.3.3-r1 1.4.0: A highly DNS-, DoS- and abuse-aware loadbalancer
 net-dns/dnshijacker 1.3-r2: a libnet/libpcap based packet sniffer and spoofer
-net-dns/dnsmasq 2.81: Small forwarding DNS server
+net-dns/dnsmasq 2.81 2.82: Small forwarding DNS server
 net-dns/dnssec-check 2.2: Tests local resolver for support of DNSSEC validation
 net-dns/dnssec-root 20181220-r1: The DNSSEC root key(s)
 net-dns/dnssec-tools 2.2.3-r1: Tools to ease the deployment of DNSSEC related technologies
