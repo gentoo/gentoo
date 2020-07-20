@@ -7670,7 +7670,6 @@ sci-physics/herwig++:fastjet - Adds support for sci-physics/fastjet
 sci-physics/lammps:cuda - Enable cuda non-bonded kernels
 sci-physics/lammps:kokkos - Enable kokkos non-bonded kernels
 sci-physics/lammps:lammps-memalign - Enables the use of the posix_memalign() call instead of malloc() when large chunks or memory are allocated by LAMMPS. Aliengnment is on 16 byte boundaries.
-sci-physics/lhapdf:octave - Add bindings for sci-mathematics/octave
 sci-physics/pythia:fastjet - Build jets using the sci-physics/fastjet package
 sci-physics/pythia:hepmc - Adds support for High Energy Physics Monte Carlo Generators sci-physics/hepmc
 sci-physics/pythia:lhapdf - Support the use of external PDF sets via sci-physics/lhapdf

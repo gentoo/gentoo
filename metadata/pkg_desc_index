@@ -2262,7 +2262,7 @@ app-misc/physlock 11-r1 13 13-r1: Lightweight Linux console locking tool
 app-misc/pip 1.2-r3: Wrapper around programs that don't support stdin/stdout
 app-misc/pipeworks 0.4-r1: A small utility that measures throughput between stdin and stdout
 app-misc/plod 1.9-r2: A tool to help administrators keep track of daily activities
-app-misc/prog-express 3.8.5 3.8.8: A modern and intuitive control software for the Batronix USB programming devices
+app-misc/prog-express 3.8.8: A modern and intuitive control software for the Batronix USB programming devices
 app-misc/ps3pf_utils 2.3: Utilities to set the ps3 specific features
 app-misc/pwsafe 0.2.0-r4: A Password Safe compatible command-line password manager
 app-misc/qcma 0.4.1 0.4.2_pre20181227 9999: Cross-platform content manager assistant for the PS Vita
@@ -10504,7 +10504,7 @@ dev-util/qdevicemonitor 1.0.1-r2 9999: Crossplatform log viewer for Android, iOS
 dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
 dev-util/qstlink2 1.2.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.66 9999: quilt patch manager
-dev-util/radare2 4.4.0-r1 4.5.0 9999: unix-like reverse engineering framework and commandline tools
+dev-util/radare2 4.5.0 9999: unix-like reverse engineering framework and commandline tools
 dev-util/ragel 6.7-r1 6.8 6.9 6.10 7.0.0.9 7.0.0.10 7.0.0.10-r1 7.0.0.10-r2 7.0.0.12: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 1.0.2 1.0.3: Command line tools for use with Review Board
@@ -14065,7 +14065,7 @@ net-analyzer/opsgenie-lamp 2.5.1_p20181102: command line client for the opsgenie
 net-analyzer/ospd 2.0.1: Base class for scanner wrappers,communication protocol for GVM
 net-analyzer/ospd-openvas 1.0.1: This is an OSP server implementation to allow GVM to remotely control OpenVAS
 net-analyzer/ossec-hids 3.6.0: Open Source Host-based Intrusion Detection System
-net-analyzer/ostinato 0.9_p20180522: A packet generator and analyzer
+net-analyzer/ostinato 0.9_p20180522: Packet generator and analyzer
 net-analyzer/p0f 3.09_beta: A tool to perform passive OS detection based on SYN packets
 net-analyzer/packit 1.6.1 1.7 9999: network packet generator and capture tool
 net-analyzer/pathload 1.3.2-r1: Non-intrusive utility for estimation of available bandwidth of Internet paths
@@ -14500,7 +14500,7 @@ net-libs/libiio 0.15-r1 9999: Library for interfacing with IIO devices
 net-libs/libircclient 1.8 1.10: Small but powerful library implementing the client-server IRC protocol
 net-libs/libiscsi 1.18.0 9999: iscsi client library and utilities
 net-libs/libisds 0.10.6 0.10.7 0.10.8 0.11 9999: Client library for accessing ISDS Soap services
-net-libs/libktorrent 2.1.1 2.2.0-r1: BitTorrent library based on KDE Frameworks
+net-libs/libktorrent 2.2.0-r1: BitTorrent library based on KDE Frameworks
 net-libs/libkvkontakte 5.0.0-r1: Library for accessing the features of social networking site vkontakte.ru
 net-libs/liblockfile 1.16: Implements functions designed to lock the standard mailboxes
 net-libs/libmbim 1.6.0 1.10.0 1.12.2 1.12.4 1.14.0 1.14.4 1.16.0 1.16.2 1.18.0: Mobile Broadband Interface Model (MBIM) modem protocol helper library
@@ -15098,7 +15098,7 @@ net-p2p/go-ipfs 0.4.23 0.5.1: Main implementation of IPFS
 net-p2p/go-ipfs-bin 0.4.19 0.4.20 0.4.22: Main implementation of IPFS
 net-p2p/gtk-gnutella 1.1.15: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
-net-p2p/ktorrent 5.1.2-r2 5.2.0-r1: Powerful BitTorrent client based on KDE Frameworks
+net-p2p/ktorrent 5.2.0-r1: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/litecoind 0.10.4.0: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/mktorrent 1.0-r1 1.1_p20180912: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mldonkey 3.1.5-r1 3.1.6 3.1.6-r1: Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface
@@ -15768,7 +15768,7 @@ sci-electronics/splat 1.4.2: RF Signal Propagation, Loss, And Terrain analysis t
 sci-electronics/systemc 2.3.1-r1: A C++ based modeling platform for VLSI and system-level co-design
 sci-electronics/vbs 1.4.0: vbs - the Verilog Behavioral Simulator
 sci-electronics/voacapl 0.6.7 0.7.2: HF propagation prediction tool
-sci-electronics/xcircuit 3.7.48 3.8.83 3.9.73: Circuit drawing and schematic capture program
+sci-electronics/xcircuit 3.9.73: Circuit drawing and schematic capture program
 sci-electronics/xnec2c 3.5.1: A GTK+ graphical interactive version of nec2c
 sci-electronics/xoscope 2.0 2.1: Soundcard Oscilloscope for X
 sci-geosciences/GeographicLib 1.50.1: C++ classes for performing conversions between geographic coordinates
@@ -15827,7 +15827,7 @@ sci-geosciences/opencpn-plugin-weatherfax 1.3.20180316 9999: Weatherfax Plugin f
 sci-geosciences/opencpn-plugins-meta 4.2.0-r3: Meta ebuild to pull in opencpn plugins
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.96.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
-sci-geosciences/qgis 3.10.2-r1 3.10.7 9999: User friendly Geographic Information System
+sci-geosciences/qgis 3.10.7 9999: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.14.0 1.15.0: GPS mapping utility
 sci-geosciences/readosm 1.0.0e-r1: Library to extract valid data from an Open Street Map input file
 sci-geosciences/routino 3.1.1 3.2 3.3.2: Routing application based on openstreetmap data
@@ -16041,7 +16041,7 @@ sci-libs/plplot 5.15.0-r1: Multi-language scientific plotting library
 sci-libs/primegen 0.97-r2: Small, fast library to generate primes in order
 sci-libs/profnet 1.0.22: Neural network architecture for profacc
 sci-libs/profphd-utils 1.0.10 1.0.10-r1: Additional utils for profphd
-sci-libs/proj 6.2.1 6.3.0 7.0.1: PROJ coordinate transformation software
+sci-libs/proj 7.0.1: PROJ coordinate transformation software
 sci-libs/punc 1.5: Portable Understructure for Numerical Computing
 sci-libs/pyshp 1.2.0 2.1.0 9999: Pure Python read/write support for ESRI Shapefile format
 sci-libs/qd 2.3.17 2.3.22: Quad-double and double-double float arithmetics
@@ -16208,7 +16208,7 @@ sci-physics/herwig 6.5.21-r1: High Energy Physics Event Generator
 sci-physics/herwig++ 2.7.1-r1: High-Energy Physics event generator
 sci-physics/jaxodraw 2.0.1-r1: Java program for drawing Feynman diagrams
 sci-physics/lammps 20180117 20180222 20180308 20180316 20180822 20181212 20190605 20190807 20190807-r1 20200303: Large-scale Atomic/Molecular Massively Parallel Simulator
-sci-physics/lhapdf 5.9.1 6.2.3: Les Houches Parton Density Function unified library
+sci-physics/lhapdf 6.2.3: Les Houches Parton Density Function unified library
 sci-physics/looptools 2.8 2.12 2.13: Tools for evaluation of scalar and tensor one-loop integrals
 sci-physics/paw 2.14.04-r4 2.14.04-r5: CERN's Physics Analysis Workstation data analysis program
 sci-physics/pythia 6.4.28 6.4.28-r1 8.1.86 8.1.86-r1 8.2.10 8.2.26: Lund Monte Carlo high-energy physics event generator
@@ -18175,7 +18175,7 @@ x11-misc/dzen 0.9.5-r1 0.9.5_p1: A general purpose messaging, notification and m
 x11-misc/e16-keyedit 0.9: Key binding editor for Enlightenment DR16
 x11-misc/e16menuedit2 0.0.3: Menu editor for Enlightenment DR16 written in GTK2
 x11-misc/easystroke 0.6.0-r3: a gesture-recognition application for X11
-x11-misc/efax-gtk 3.2.9 3.2.14 3.2.15: A graphical frontend for the 'efax' application
+x11-misc/efax-gtk 3.2.14 3.2.15: A graphical frontend for the 'efax' application
 x11-misc/evolvotron 0.7.1: Generative art image evolver
 x11-misc/fbdesk 1.4.1: fluxbox-util application that creates and manage icons on your Fluxbox desktop
 x11-misc/fbpager 20090221-r1: A Pager for fluxbox
@@ -18675,7 +18675,7 @@ x11-themes/gtk-engines-murrine 0.98.2-r1: Murrine GTK+2 Cairo Engine
 x11-themes/gtk-engines-nodoka 0.7.5: GTK+ engine and themes developed by the Fedora Project
 x11-themes/gtk-engines-qtpixmap 0.28-r2: Theme engine based on GTK pixmap engine using the Plasma color scheme
 x11-themes/gtk-engines-quartz 0.2: OSX GTK+ Theme Engine
-x11-themes/gtk-engines-rezlooks 0.6 0.6-r1: Rezlooks GTK+ Engine
+x11-themes/gtk-engines-rezlooks 0.6-r1: Rezlooks GTK+ Engine
 x11-themes/gtk-engines-ubuntulooks 0.9.12-r3: A derivative of the standard Clearlooks GTK+ 2.x engine with more orange feel
 x11-themes/gtk-engines-unico 1.0.3_pre20121212 1.0.3_pre20140109: The Unico GTK+ 3.x theming engine
 x11-themes/gtk-theme-switch 2.1.0-r1: Utility to switch and preview GTK+ theme
