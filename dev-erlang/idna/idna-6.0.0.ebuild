@@ -12,7 +12,7 @@ SRC_URI="https://github.com/benoitc/erlang-idna/archive/${PV}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
 
 DEPEND=">=dev-lang/erlang-21.0"
 
