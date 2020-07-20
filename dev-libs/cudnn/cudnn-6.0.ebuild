@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,8 +16,8 @@ LICENSE="NVIDIA-cuDNN"
 
 S="${WORKDIR}"
 
-DEPENDS="=dev-util/nvidia-cuda-toolkit-${CUDA_PV}*"
-RDEPENDS="${DEPENDS}"
+DEPEND="=dev-util/nvidia-cuda-toolkit-${CUDA_PV}*"
+RDEPEND="${DEPEND}"
 
 src_install() {
 	insinto /opt
