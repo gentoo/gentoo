@@ -17,7 +17,7 @@ S=${WORKDIR}/cbor_py-${EGIT_COMMIT}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 x86 ~amd64-linux ~x86-linux"
 
 # upstream PR: https://github.com/brianolson/cbor_py/pull/19
 # upstream PR: https://github.com/brianolson/cbor_py/pull/11
