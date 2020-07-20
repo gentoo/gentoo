@@ -1794,7 +1794,7 @@ app-eselect/eselect-timezone 0.2: Manages timezone selection
 app-eselect/eselect-timidity 20110513: Manages configuration of TiMidity++ patchsets
 app-eselect/eselect-unison 0.4: unison module for eselect
 app-eselect/eselect-vdr 0.0.3 0.0.4: Manages the VDR plugins
-app-eselect/eselect-vi 1.1.9 1.1.9-r1: Manages the /usr/bin/vi symlink
+app-eselect/eselect-vi 1.1.9 1.1.9-r1 1.2: Manages the /usr/bin/vi symlink
 app-eselect/eselect-wine 1.2.2: Manage active wine version
 app-eselect/eselect-wxwidgets 20140423 20180529: Eselect module and wrappers for wxWidgets
 app-eselect/eselect-xvmc 0.4: Manages XvMC implementations
@@ -4434,7 +4434,7 @@ dev-java/jarbundler 1.8.1-r2 2.3.1: Jar Bundler Ant Task
 dev-java/jargs 1.0: Command-line argument parsing library in Java
 dev-java/jarjar 1.4: Tool for repackaging third-party jars
 dev-java/java-apicheck 0_p20150907: Command line tool to check Java packages for API compatibility
-dev-java/java-config 2.2.0-r4 2.3.1 9999: Java environment configuration query tool
+dev-java/java-config 2.3.1 9999: Java environment configuration query tool
 dev-java/java-dep-check 0.3-r1 0.4: Java Dependency checker
 dev-java/java-getopt 1.0.14: Java command line option parser
 dev-java/java-sdk-docs 1.8.0.202 9.0.4 11.0.5: Oracle's documentation bundle (including API) for Java SE
@@ -4822,7 +4822,7 @@ dev-lang/php 7.2.31 7.2.32 7.3.18 7.3.19 7.3.20 7.4.6 7.4.7 7.4.8-r1: The PHP la
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6 5.8: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.18 2.7.18-r1 3.6.10-r2 3.6.11-r1 3.6.11-r2 3.7.7-r2 3.7.8-r1 3.7.8-r2 3.8.2-r2 3.8.3-r1 3.8.4 3.8.4-r1 3.9.0_beta3 3.9.0_beta4 3.9.0_beta4-r1: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r1 9999: Python script wrapper
-dev-lang/qu-prolog 10.1 10.2 10.3 10.4 10.5: Extended Prolog supporting quantifiers, object-variables and substitutions
+dev-lang/qu-prolog 10.4 10.5: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2019.03 2019.11 2020.05.1 2020.06 9999: A compiler for the Perl 6 programming language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/ruby 2.4.10 2.5.8 2.5.8-r1 2.6.6 2.6.6-r1 2.6.6-r2 2.7.1 2.7.1-r1 2.7.1-r2: An object-oriented scripting language
