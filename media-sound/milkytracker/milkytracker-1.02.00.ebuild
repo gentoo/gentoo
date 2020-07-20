@@ -1,13 +1,18 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit cmake desktop
 
+# This commit is needed so the milkytrace binary is linked properly, bug 711564
+# It is also ~40kb so it is better to fetch it rather than ship it in-tree
+COMMIT="2b145b074581ddf3b4ad78a402cdf5fab500b125"
+
 DESCRIPTION="FastTracker 2 inspired music tracker"
 HOMEPAGE="https://milkytracker.titandemo.org/"
-SRC_URI="https://github.com/milkytracker/MilkyTracker/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/milkytracker/MilkyTracker/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/milkytracker/MilkyTracker/commit/${COMMIT}.patch -> ${P}-cmake.patch"
 
 LICENSE="|| ( GPL-3 MPL-1.1 ) AIFFWriter.m BSD GPL-3 GPL-3+ LGPL-2.1+ MIT"
 SLOT="0"
@@ -23,8 +28,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-docdir.patch
-	"${FILESDIR}"/${P}-cmake.patch
+	"${DISTDIR}/${P}-cmake.patch"
+	"${FILESDIR}/${P}-CVE-2019-14464.patch"
+	"${FILESDIR}/${P}-CVE-2019-1449x.patch"
+	"${FILESDIR}/${P}-CVE-2020-15569.patch"
 )
 
 S="${WORKDIR}/MilkyTracker-${PV}"
