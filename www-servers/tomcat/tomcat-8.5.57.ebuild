@@ -31,6 +31,10 @@ DEPEND="${COMMON_DEP}
 	app-admin/pwgen
 	>=dev-java/ant-core-1.9.13
 	virtual/jdk:1.8
+	doc? (
+		dev-java/glassfish-xmlrpc-api:0
+		dev-java/wsdl4j:0
+	)
 	test? (
 		>=dev-java/ant-junit-1.9:0
 		dev-java/easymock:3.2
@@ -76,7 +80,8 @@ IM_REV="-r2"
 INIT_REV="-r1"
 
 src_compile() {
-	EANT_GENTOO_CLASSPATH_EXTRA+=":$(java-pkg_getjar --build-only ant-core ant.jar)"
+	EANT_GENTOO_CLASSPATH_EXTRA+=":$(java-pkg_getjar --build-only ant-core ant.jar):$(java-pkg_getjar --build-only glassfish-xmlrpc-api glassfish-xmlrpc-api.jar)"
+	use doc && EANT_GENTOO_CLASSPATH_EXTRA+=":$(java-pkg_getjar --build-only glassfish-xmlrpc-api glassfish-xmlrpc-api.jar):$(java-pkg_getjar --build-only wsdl4j wsdl4j.jar)"
 	java-pkg-2_src_compile
 }
 

@@ -1,5 +1,5 @@
 diff --git a/build.xml b/build.xml
-index 348487c..04e40fa 100644
+index 348487c..d0b8b81 100644
 --- a/build.xml
 +++ b/build.xml
 @@ -762,25 +762,28 @@
@@ -106,14 +106,14 @@ index 348487c..04e40fa 100644
  
      <antcall target="downloadfile">
        <param name="sourcefile" value="${jaxrpc-lib.loc}"/>
-@@ -1874,6 +1879,7 @@ Apache Tomcat ${version} native binaries for Win64 AMD64/EMT64 platform.
- 
-   <target name="javadoc" depends="dist-source,extras-webservices-prepare"
-     description="Create the Tomcat javadoc" >
+@@ -1895,6 +1900,7 @@ Apache Tomcat ${version} native binaries for Win64 AMD64/EMT64 platform.
+         <path location="${ant.core.lib}"/>
+       </classpath>
+     </javadoc>
 +<!--
-     <javadoc packagenames="javax.annotation.*"
+     <javadoc packagenames="javax.servlet.*"
+       excludepackagenames="javax.servlet.jsp.*"
        sourcepath="${tomcat.dist}/src/java"
-       destdir="${tomcat.dist}/webapps/docs/annotationapi"
 @@ -1962,6 +1968,7 @@ Apache Tomcat ${version} native binaries for Win64 AMD64/EMT64 platform.
          <path location="${ant.core.lib}"/>
        </classpath>
@@ -122,7 +122,7 @@ index 348487c..04e40fa 100644
      <javadoc packagenames="javax.websocket.*"
        sourcepath="${tomcat.dist}/src/java"
        destdir="${tomcat.dist}/webapps/docs/websocketapi"
-@@ -2025,9 +2032,11 @@ Apache Tomcat ${version} native binaries for Win64 AMD64/EMT64 platform.
+@@ -2025,13 +2032,17 @@ Apache Tomcat ${version} native binaries for Win64 AMD64/EMT64 platform.
          <path location="${ant.core.lib}"/>
        </classpath>
        <link href="../annotationapi"/>
@@ -133,8 +133,14 @@ index 348487c..04e40fa 100644
 +-->
        <link href="../websocketapi"/>
        <link href="../jaspicapi"/>
++<!--
        <link href="https://docs.oracle.com/javase/7/docs/api/"/>
-@@ -2759,7 +2768,7 @@ skip.installer property in build.properties" />
+       <link href="https://docs.oracle.com/javaee/7/api/"/>
++-->
+       <packageset dir="${tomcat.dist}/src/java/">
+         <include name="org/**"/>
+         <exclude name="org/apache/el/parser/**"/>
+@@ -2759,7 +2770,7 @@ skip.installer property in build.properties" />
    </target>
  
    <target name="download-compile"
@@ -143,7 +149,7 @@ index 348487c..04e40fa 100644
  
      <!-- Download Commons Daemon -->
      <antcall target="downloadgz-2">
-@@ -2795,7 +2804,7 @@ skip.installer property in build.properties" />
+@@ -2795,7 +2806,7 @@ skip.installer property in build.properties" />
    </target>
  
    <target name="download-test-compile"
@@ -152,7 +158,7 @@ index 348487c..04e40fa 100644
  
      <antcall target="downloadfile">
        <param name="sourcefile" value="${junit.loc}"/>
-@@ -2873,7 +2882,7 @@ skip.installer property in build.properties" />
+@@ -2873,7 +2884,7 @@ skip.installer property in build.properties" />
    </target>
  
    <target name="download-dist"
@@ -161,7 +167,7 @@ index 348487c..04e40fa 100644
  
      <antcall target="downloadfile-2">
        <param name="sourcefile.1" value="${tomcat-native.loc.1}"/>
-@@ -2928,13 +2937,13 @@ skip.installer property in build.properties" />
+@@ -2928,13 +2939,13 @@ skip.installer property in build.properties" />
  
    <!-- =============== Utility Targets to support downloads ================ -->
  
@@ -177,7 +183,7 @@ index 348487c..04e40fa 100644
      <echo message="Testing  for ${destfile}"/>
      <available file="${destfile}" property="exist"/>
    </target>
-@@ -3056,7 +3065,7 @@ skip.installer property in build.properties" />
+@@ -3056,7 +3067,7 @@ skip.installer property in build.properties" />
      </sequential>
    </macrodef>
  
@@ -186,7 +192,7 @@ index 348487c..04e40fa 100644
      <!-- Download and extract the package -->
      <local name="temp.file"/>
      <mkdir dir="${base.path}"/>
-@@ -3073,7 +3082,7 @@ skip.installer property in build.properties" />
+@@ -3073,7 +3084,7 @@ skip.installer property in build.properties" />
      <delete file="${temp.file}.tar.gz"/>
    </target>
  
@@ -195,7 +201,7 @@ index 348487c..04e40fa 100644
      <!-- Download and extract the package from the two alternative locations -->
      <local name="temp.file"/>
      <mkdir dir="${base.path}"/>
-@@ -3098,7 +3107,7 @@ skip.installer property in build.properties" />
+@@ -3098,7 +3109,7 @@ skip.installer property in build.properties" />
      <delete file="${temp.file}.tar.gz"/>
    </target>
  
@@ -204,7 +210,7 @@ index 348487c..04e40fa 100644
      <!-- Download and extract the package -->
      <local name="temp.file"/>
      <mkdir dir="${base.path}"/>
-@@ -3114,7 +3123,7 @@ skip.installer property in build.properties" />
+@@ -3114,7 +3125,7 @@ skip.installer property in build.properties" />
      <delete file="${temp.file}"/>
    </target>
  
@@ -213,7 +219,7 @@ index 348487c..04e40fa 100644
      <!-- Download and extract the package from the two alternative locations -->
      <local name="temp.file"/>
      <mkdir dir="${base.path}"/>
-@@ -3138,7 +3147,7 @@ skip.installer property in build.properties" />
+@@ -3138,7 +3149,7 @@ skip.installer property in build.properties" />
      <delete file="${temp.file}"/>
    </target>
  
@@ -222,7 +228,7 @@ index 348487c..04e40fa 100644
      <!-- Download the file -->
      <local name="temp.file"/>
      <mkdir dir="${base.path}"/>
-@@ -3153,7 +3162,7 @@ skip.installer property in build.properties" />
+@@ -3153,7 +3164,7 @@ skip.installer property in build.properties" />
      <move file="${temp.file}" tofile="${destfile}"/>
    </target>
  
@@ -231,7 +237,7 @@ index 348487c..04e40fa 100644
      <!-- Download the file from the two alternative locations -->
      <local name="temp.file"/>
      <mkdir dir="${base.path}"/>
-@@ -3181,7 +3190,7 @@ skip.installer property in build.properties" />
+@@ -3181,7 +3192,7 @@ skip.installer property in build.properties" />
      <move file="${temp.file}" tofile="${destfile}"/>
    </target>
  
@@ -240,7 +246,7 @@ index 348487c..04e40fa 100644
      <condition property="trydownload.run">
        <and>
          <not>
-@@ -3192,7 +3201,7 @@ skip.installer property in build.properties" />
+@@ -3192,7 +3203,7 @@ skip.installer property in build.properties" />
      </condition>
    </target>
  
@@ -249,7 +255,7 @@ index 348487c..04e40fa 100644
      <!-- Downloads a file if not yet downloaded and the source URL is available -->
      <get src="${sourcefile}" httpusecaches="${trydownload.httpusecaches}" dest="${destfile}" />
    </target>
-@@ -3203,7 +3212,7 @@ skip.installer property in build.properties" />
+@@ -3203,7 +3214,7 @@ skip.installer property in build.properties" />
  
    <target name="ide-eclipse"
            depends="download-compile, extras-webservices-prepare, download-test-compile"
