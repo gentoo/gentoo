@@ -27,7 +27,6 @@ REQUIRED_USE="gtalk? ( xmpp )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-historic-no-var-run-install.patch"
-	"${FILESDIR}/${PN}-13.33.0-nossl.patch"
 )
 
 DEPEND="acct-user/asterisk
@@ -110,10 +109,6 @@ src_prepare() {
 	AT_M4DIR="autoconf third-party third-party/pjproject third-party/jansson" eautoreconf
 }
 
-function menuselect() {
-	menuselect/menuselect "$@" || die "menuselect $* failed."
-}
-
 src_configure() {
 	local vmst
 
@@ -135,6 +130,20 @@ src_configure() {
 		$(use_with ssl) \
 		$(use_with unbound)
 
+	_menuselect() {
+		menuselect/menuselect "$@" || die "menuselect $* failed."
+	}
+
+	_use_select() {
+		local state=$(use "$1" && echo enable || echo disable)
+		shift # remove use from parameters
+
+		while [[ -n $1 ]]; do
+			_menuselect --${state} "$1" menuselect.makeopts
+			shift
+		done
+	}
+
 	# Blank out sounds/sounds.xml file to prevent
 	# asterisk from installing sounds files (we pull them in via
 	# asterisk-{core,extra}-sounds and asterisk-moh-opsound.
@@ -147,80 +156,70 @@ src_configure() {
 	emake NOISY_BUILD=yes menuselect.makeopts
 
 	# Disable BUILD_NATIVE (bug #667498)
-	menuselect --disable build_native menuselect.makeopts
+	_menuselect --disable build_native menuselect.makeopts
 
 	# Broken functionality is forcibly disabled (bug #360143)
-	menuselect --disable chan_misdn menuselect.makeopts
-	menuselect --disable chan_ooh323 menuselect.makeopts
+	_menuselect --disable chan_misdn menuselect.makeopts
+	_menuselect --disable chan_ooh323 menuselect.makeopts
 
 	# Utility set is forcibly enabled (bug #358001)
-	menuselect --enable smsq menuselect.makeopts
-	menuselect --enable streamplayer menuselect.makeopts
-	menuselect --enable aelparse menuselect.makeopts
-	menuselect --enable astman menuselect.makeopts
+	_menuselect --enable smsq menuselect.makeopts
+	_menuselect --enable streamplayer menuselect.makeopts
+	_menuselect --enable aelparse menuselect.makeopts
+	_menuselect --enable astman menuselect.makeopts
 
 	# this is connected, otherwise it would not find
 	# ast_pktccops_gate_alloc symbol
-	menuselect --enable chan_mgcp menuselect.makeopts
-	menuselect --enable res_pktccops menuselect.makeopts
+	_menuselect --enable chan_mgcp menuselect.makeopts
+	_menuselect --enable res_pktccops menuselect.makeopts
 
 	# SSL is forcibly enabled, IAX2 & DUNDI are expected to be available
-	menuselect --enable pbx_dundi menuselect.makeopts
-	menuselect --enable func_aes menuselect.makeopts
-	menuselect --enable chan_iax2 menuselect.makeopts
+	_menuselect --enable pbx_dundi menuselect.makeopts
+	_menuselect --enable func_aes menuselect.makeopts
+	_menuselect --enable chan_iax2 menuselect.makeopts
 
 	# SQlite3 is now the main database backend, enable related features
-	menuselect --enable cdr_sqlite3_custom menuselect.makeopts
-	menuselect --enable cel_sqlite3_custom menuselect.makeopts
+	_menuselect --enable cdr_sqlite3_custom menuselect.makeopts
+	_menuselect --enable cel_sqlite3_custom menuselect.makeopts
 
 	# The others are based on USE-flag settings
-	use_select() {
-		local state=$(use "$1" && echo enable || echo disable)
-		shift # remove use from parameters
-
-		while [[ -n $1 ]]; do
-			menuselect --${state} "$1" menuselect.makeopts
-			shift
-		done
-	}
-
-	use_select alsa         chan_alsa
-	use_select bluetooth    chan_mobile
-	use_select calendar     res_calendar res_calendar_{caldav,ews,exchange,icalendar}
-	use_select cluster      res_corosync
-	use_select curl         func_curl res_config_curl res_curl
-	use_select dahdi        app_dahdiras app_meetme chan_dahdi codec_dahdi res_timing_dahdi
-	use_select freetds      {cdr,cel}_tds
-	use_select gtalk        chan_motif
-	use_select http         res_http_post
-	use_select iconv        func_iconv
-	use_select ilbc         codec_ilbc format_ilbc
-	use_select ldap         res_config_ldap
-	use_select lua          pbx_lua
-	use_select mysql        app_mysql cdr_mysql res_config_mysql
-	use_select odbc         cdr_adaptive_odbc res_config_odbc {cdr,cel,res,func}_odbc
-	use_select oss          chan_oss
-	use_select postgres     {cdr,cel}_pgsql res_config_pgsql
-	use_select radius       {cdr,cel}_radius
-	use_select snmp         res_snmp
-	use_select span         res_fax_spandsp
-	use_select speex        {codec,func}_speex
-	use_select srtp         res_srtp
-	use_select statsd       res_statsd res_{endpoint,chan}_stats
-	use_select syslog       cdr_syslog
-	use_select vorbis       format_ogg_vorbis
-	use_select xmpp         res_xmpp
+	_use_select alsa         chan_alsa
+	_use_select bluetooth    chan_mobile
+	_use_select calendar     res_calendar res_calendar_{caldav,ews,exchange,icalendar}
+	_use_select cluster      res_corosync
+	_use_select curl         func_curl res_config_curl res_curl
+	_use_select dahdi        app_dahdiras app_meetme chan_dahdi codec_dahdi res_timing_dahdi
+	_use_select freetds      {cdr,cel}_tds
+	_use_select gtalk        chan_motif
+	_use_select http         res_http_post
+	_use_select iconv        func_iconv
+	_use_select ilbc         codec_ilbc format_ilbc
+	_use_select ldap         res_config_ldap
+	_use_select lua          pbx_lua
+	_use_select mysql        app_mysql cdr_mysql res_config_mysql
+	_use_select odbc         cdr_adaptive_odbc res_config_odbc {cdr,cel,res,func}_odbc
+	_use_select oss          chan_oss
+	_use_select postgres     {cdr,cel}_pgsql res_config_pgsql
+	_use_select radius       {cdr,cel}_radius
+	_use_select snmp         res_snmp
+	_use_select span         res_fax_spandsp
+	_use_select speex        {codec,func}_speex
+	_use_select srtp         res_srtp
+	_use_select statsd       res_statsd res_{endpoint,chan}_stats
+	_use_select syslog       cdr_syslog
+	_use_select vorbis       format_ogg_vorbis
+	_use_select xmpp         res_xmpp
 
 	# Voicemail storage ...
 	for vmst in ${IUSE_VOICEMAIL_STORAGE/+/}; do
 		if use ${vmst}; then
-			menuselect --enable $(echo ${vmst##*_} | tr '[:lower:]' '[:upper:]')_STORAGE menuselect.makeopts
+			_menuselect --enable $(echo ${vmst##*_} | tr '[:lower:]' '[:upper:]')_STORAGE menuselect.makeopts
 		fi
 	done
 
 	if use debug; then
 		for o in DONT_OPTIMIZE DEBUG_THREADS BETTER_BACKTRACES; do
-			menuselect --enable "${o}" menuselect.makeopts
+			_menuselect --enable "${o}" menuselect.makeopts
 		done
 	fi
 }
