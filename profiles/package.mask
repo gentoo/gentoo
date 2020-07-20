@@ -32,6 +32,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2020-07-20)
+# Serious security vulnerabilities, including
+# remote code execution. Upstream have not yet
+# made a stable release in response to numerous
+# CVEs. Applying patches is not a workable
+# solution for now because of the fragility
+# of reverse dependencies.
+# Indefinitely masking until we have a solution
+# for this.
+# bug #719084
+net-analyzer/ntopng
+net-analyzer/pmacct
+net-libs/nDPI
+
 # Jaco Kroon <jaco@uls.co.za> (2020-07-20)
 # net-misc/asterisk was only consumer, dependency now removed (due to failures
 # in osptoolkit build). No known users of USE=osplookup in net-misc/asterisk,
