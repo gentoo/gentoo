@@ -39,7 +39,7 @@ RDEPEND="
 		>=dev-python/pynacl-1.0.1[${PYTHON_USEDEP}]
 		>=dev-python/pytrie-0.2[${PYTHON_USEDEP}]
 		>=dev-python/pyqrcode-1.1.0[${PYTHON_USEDEP}]
-		>=dev-python/service_identity-18.1.0
+		>=dev-python/service_identity-18.1.0[${PYTHON_USEDEP}]
 	)
 	"
 DEPEND="${RDEPEND}
