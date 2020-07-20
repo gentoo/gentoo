@@ -4,10 +4,10 @@ DESCRIPTION=Kernel Modules for Virtualbox
 EAPI=7
 HOMEPAGE=https://www.virtualbox.org/
 IUSE=pax_kernel kernel_linux kernel_linux
-KEYWORDS=~amd64
+KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=!=app-emulation/virtualbox-9999 kernel_linux? ( virtual/modutils )
 SLOT=0
-SRC_URI=https://dev.gentoo.org/~polynomial-c/virtualbox/vbox-kernel-module-src-6.1.6.tar.xz
+SRC_URI=https://dev.gentoo.org/~polynomial-c/virtualbox/vbox-kernel-module-src-6.0.24.tar.xz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	linux-mod	9991808b521b5a8c569c9c4ccf8893f6	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=e126f8852456082b546554b39e18f34a
+_md5_=0146a46d0d0c2aa2f1397910dfd2039a
