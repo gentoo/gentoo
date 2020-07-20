@@ -14718,7 +14718,7 @@ net-misc/apt-cacher-ng 3.3.1_p2 3.4_p1 3.5_p1-r1 9999999: Yet another caching HT
 net-misc/aria2 1.34.0-r2: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
 net-misc/arpsponge 3.12.2 3.17.11: Sweeps up stray ARP queries from a peering LAN
-net-misc/asterisk 11.25.3 13.33.0 13.34.0 16.10.0 16.11.1: Asterisk: A Modular Open Source PBX System
+net-misc/asterisk 11.25.3-r1 13.33.0 13.34.0 13.35.0 16.10.0 16.11.1: Asterisk: A Modular Open Source PBX System
 net-misc/asterisk-core-sounds 1.4.21-r1 1.4.22 1.6.1 1.6.1-r1: Core sounds for asterisk
 net-misc/asterisk-extra-sounds 1.4.11-r1 1.5.2: Extra sounds for asterisk
 net-misc/asterisk-g729 11.0.3.1.9 13.0.3.1.9 16.0.3.1.9: G.729 codec and supporting files for asterisk

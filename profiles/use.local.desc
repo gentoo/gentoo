@@ -6277,7 +6277,6 @@ net-misc/asterisk:gtalk - Enable support for Google Talk services
 net-misc/asterisk:http - Enable embedded web server
 net-misc/asterisk:ilbc - Enable the Internet Low Bitrate Codec (iLBC)
 net-misc/asterisk:newt - Include additional tools that require redhats windowing toolkit
-net-misc/asterisk:osplookup - Support secure peering using the Open Settlement Protocol
 net-misc/asterisk:pjproject - Enable support for pjproject (pjsip)
 net-misc/asterisk:samples - Install sample sound and configuration files (default: on)
 net-misc/asterisk:span - Enable support for the spandsp codec
