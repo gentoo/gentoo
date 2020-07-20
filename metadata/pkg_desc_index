@@ -1003,7 +1003,7 @@ app-crypt/tc-play 2.0-r1: a free, pretty much fully featured and stable TrueCryp
 app-crypt/tpm-emulator 0.7.5-r1: Emulator driver for tpm
 app-crypt/tpm-tools 1.3.9.1-r1: TrouSerS' support tools for the Trusted Platform Modules
 app-crypt/tpm2-abrmd 2.1.1-r2 2.3.1: TPM2 Access Broker & Resource Manager
-app-crypt/tpm2-pkcs11 1.2.0: A PKCS#11 interface for TPM2 hardware
+app-crypt/tpm2-pkcs11 1.3.0: A PKCS#11 interface for TPM2 hardware
 app-crypt/tpm2-tools 4.2.1: Tools for the TPM 2.0 TSS
 app-crypt/tpm2-totp 0.2.1-r1: Attest the trustworthiness of a device against a human using time-based OTP
 app-crypt/tpm2-tss 2.4.1: TCG Trusted Platform Module 2.0 Software Stack
@@ -4221,33 +4221,33 @@ dev-java/airline 0.7-r1: Java annotation-based framework for parsing Git like co
 dev-java/android-util 4.1.1.4: Library providing APIs for applications written for Google Android
 dev-java/animal-sniffer-annotations 1.15: Java annotations for marking methods that Animal Sniffer should ignore
 dev-java/annogen 0.1.0-r3: A tool which helps you work with JSR175 annotations
-dev-java/ant 1.10.7 1.10.8: Java-based build tool similar to 'make' that uses XML configuration files
-dev-java/ant-antlr 1.10.7 1.10.8: Apache Ant's optional tasks for Antlr
-dev-java/ant-apache-bcel 1.10.7 1.10.8: Apache Ant's optional tasks depending on bcel
-dev-java/ant-apache-bsf 1.10.7 1.10.8: Apache Ant's optional tasks depending on bsf-2.3
-dev-java/ant-apache-log4j 1.10.7 1.10.8: Apache Ant's optional tasks depending on log4j
-dev-java/ant-apache-oro 1.10.7 1.10.8: Apache Ant's optional tasks depending on jakarta-oro-2.0
-dev-java/ant-apache-regexp 1.10.7 1.10.8: Apache Ant's optional tasks depending on jakarta-regexp-1.4
-dev-java/ant-apache-resolver 1.10.7 1.10.8: Apache Ant's optional tasks depending on xml-commons-resolver
-dev-java/ant-apache-xalan2 1.10.7 1.10.8: Apache Ant's optional tasks depending on xalan
-dev-java/ant-commons-logging 1.10.7 1.10.8: Apache Ant's optional tasks depending on commons-logging
-dev-java/ant-commons-net 1.10.7 1.10.8: Apache Ant's optional tasks depending on commons-net
+dev-java/ant 1.10.8: Java-based build tool similar to 'make' that uses XML configuration files
+dev-java/ant-antlr 1.10.8: Apache Ant's optional tasks for Antlr
+dev-java/ant-apache-bcel 1.10.8: Apache Ant's optional tasks depending on bcel
+dev-java/ant-apache-bsf 1.10.8: Apache Ant's optional tasks depending on bsf-2.3
+dev-java/ant-apache-log4j 1.10.8: Apache Ant's optional tasks depending on log4j
+dev-java/ant-apache-oro 1.10.8: Apache Ant's optional tasks depending on jakarta-oro-2.0
+dev-java/ant-apache-regexp 1.10.8: Apache Ant's optional tasks depending on jakarta-regexp-1.4
+dev-java/ant-apache-resolver 1.10.8: Apache Ant's optional tasks depending on xml-commons-resolver
+dev-java/ant-apache-xalan2 1.10.8: Apache Ant's optional tasks depending on xalan
+dev-java/ant-commons-logging 1.10.8: Apache Ant's optional tasks depending on commons-logging
+dev-java/ant-commons-net 1.10.8: Apache Ant's optional tasks depending on commons-net
 dev-java/ant-contrib 1.0_beta3-r2: A collection of tasks for Apache Ant
-dev-java/ant-core 1.10.7 1.10.7-r1 1.10.8: Java-based build tool similar to 'make' that uses XML configuration files
+dev-java/ant-core 1.10.8: Java-based build tool similar to 'make' that uses XML configuration files
 dev-java/ant-eclipse-ecj 4.2.1 4.4.2 4.5.1 4.10-r1 4.13: Ant Compiler Adapter for Eclipse Java Compiler
 dev-java/ant-ivy 1.4.1-r1 2.3.0-r2: Ivy is a free java based dependency manager
-dev-java/ant-jai 1.10.7 1.10.8: Apache Ant's optional tasks depending on sun-jai-bin
-dev-java/ant-javamail 1.10.7 1.10.8: Apache Ant's optional tasks depending on gnu-jaf-1
-dev-java/ant-jdepend 1.10.7 1.10.8: Apache Ant's optional tasks depending on jdepend
-dev-java/ant-jmf 1.10.7 1.10.8: Apache Ant's optional tasks for the Java Media Framework (JMF)
-dev-java/ant-jsch 1.10.7 1.10.8: Apache Ant's optional tasks depending on jsch
-dev-java/ant-junit 1.10.7 1.10.8: Apache Ant's optional tasks depending on junit
-dev-java/ant-junit4 1.10.7 1.10.8: Apache Ant's optional tasks depending on junit-4
-dev-java/ant-junitlauncher 1.10.7 1.10.8: Apache Ant's optional tasks depending on
+dev-java/ant-jai 1.10.8: Apache Ant's optional tasks depending on sun-jai-bin
+dev-java/ant-javamail 1.10.8: Apache Ant's optional tasks depending on gnu-jaf-1
+dev-java/ant-jdepend 1.10.8: Apache Ant's optional tasks depending on jdepend
+dev-java/ant-jmf 1.10.8: Apache Ant's optional tasks for the Java Media Framework (JMF)
+dev-java/ant-jsch 1.10.8: Apache Ant's optional tasks depending on jsch
+dev-java/ant-junit 1.10.8: Apache Ant's optional tasks depending on junit
+dev-java/ant-junit4 1.10.8: Apache Ant's optional tasks depending on junit-4
+dev-java/ant-junitlauncher 1.10.8: Apache Ant's optional tasks depending on
 dev-java/ant-owanttask 1.3.2: ObjectWeb's Ant tasks
-dev-java/ant-swing 1.10.7 1.10.8: Apache Ant's optional tasks for Swing
-dev-java/ant-testutil 1.10.7 1.10.8: Apache Ant's optional test utility classes
-dev-java/ant-xz 1.10.7 1.10.8: Apache Ant's optional tasks for XZ compression
+dev-java/ant-swing 1.10.8: Apache Ant's optional tasks for Swing
+dev-java/ant-testutil 1.10.8: Apache Ant's optional test utility classes
+dev-java/ant-xz 1.10.8: Apache Ant's optional tasks for XZ compression
 dev-java/antlr 2.7.7-r7 2.7.7-r8 3.2 3.5.2 4.5.1 4.5.3: A parser generator for many languages
 dev-java/aopalliance 1.0-r2: Aspect-Oriented Programming (AOP) Alliance classes
 dev-java/appframework 1.03-r5: Set of Java classes to build desktop applications easily
@@ -10330,7 +10330,7 @@ dev-util/cucumber-tag_expressions 1.1.1: Cucumber tag expressions for ruby
 dev-util/cucumber-wire 0.0.1-r1: Executable feature scenarios
 dev-util/cunit 2.1_p3: C Unit Test Framework
 dev-util/cutils 1.6-r4: C language utilities
-dev-util/cutter 1.8.2 1.9.0 1.10.1 1.10.3: A Qt and C++ GUI for radare2 reverse engineering framework
+dev-util/cutter 1.10.3: A Qt and C++ GUI for radare2 reverse engineering framework
 dev-util/cvise 1.1.0: Super-parallel Python port of the C-Reduce
 dev-util/cwdiff 0.2.8 0.3.0 0.3.1 0.4.0 9999: A script that wraps wdiff to support directories and colorize the output
 dev-util/d-feet 0.3.14-r1: D-Feet is a powerful D-Bus debugger
@@ -10509,7 +10509,7 @@ dev-util/rats 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 1.0.2 1.0.3: Command line tools for use with Review Board
 dev-util/re2c 1.3-r1: tool for generating C-based recognizers from regular expressions
 dev-util/rebar 2.6.4 2.6.4-r1: A sophisticated build-tool for Erlang projects that follows OTP principles
-dev-util/rebar-bin 3.6.2: A sophisticated build-tool for Erlang projects that follows OTP principles
+dev-util/rebar-bin 3.6.2 3.13.2: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/redo 0.42-r1 0.42a 0.42c 99999: Smaller, easier, more powerful, and more reliable than make
 dev-util/regexxer 0.10: An interactive tool for performing search and replace operations
 dev-util/rej 0.16-r1: A utility for solving diff/patch rejects
@@ -14889,7 +14889,7 @@ net-misc/netkit-telnetd 0.17-r10 0.17-r12: Standard Linux telnet client and serv
 net-misc/netkit-timed 0.17-r10: Netkit - timed
 net-misc/netpipe 1.0.0_beta2-r2: tool to reliably distribute binary data using UDP broadcasting techniques
 net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
-net-misc/netsed 0.01b-r1 0.01c: Small tool for altering forwarded network data in real time
+net-misc/netsed 0.01b-r1 1.3: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
 net-misc/networkmanager 1.18.4-r3 1.18.6 1.20.12 1.22.10-r11 1.22.14 1.24.2 1.26.0: A set of co-operative tools that make networking simple and straightforward
 net-misc/nextcloud-client 2.5.2 2.6.4 2.6.5: Desktop Syncing Client for Nextcloud

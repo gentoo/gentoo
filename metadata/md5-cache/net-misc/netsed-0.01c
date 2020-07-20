@@ -1,9 +1,0 @@
-DEFINED_PHASES=compile install
-DESCRIPTION=Small tool for altering forwarded network data in real time
-EAPI=7
-HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
-KEYWORDS=~amd64 ~x86
-LICENSE=LGPL-2
-SLOT=0
-SRC_URI=http://lcamtuf.coredump.cx/soft/obsolete/netsed.tgz -> netsed-0.01c.tgz
-_md5_=be3d6a777fe83cf3cda35eb7d7d5cbf4
