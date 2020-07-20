@@ -32,6 +32,7 @@ ruby_add_rdepend "
 # Bundler must be used because the optional dependencies have different
 # version requirements that must be resolved.
 ruby_add_bdepend "test? (
+	>=dev-ruby/brotli-0.1.8
 	dev-ruby/bundler
 	dev-ruby/addressable
 	>=dev-ruby/rake-12.3.3
