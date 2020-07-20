@@ -13500,7 +13500,7 @@ media-sound/mcdp 0.4b: A very small console cd player
 media-sound/meterbridge 0.9.3: Software meterbridge for the UNIX based JACK audio system
 media-sound/mhwaveedit 1.4.23: GTK+ Sound file editor (wav, and a few others.)
 media-sound/mikmod 3.2.8: A console MOD-Player based on libmikmod
-media-sound/milkytracker 1.0.0: FastTracker 2 inspired music tracker
+media-sound/milkytracker 1.02.00: FastTracker 2 inspired music tracker
 media-sound/mixxx 2.2.3-r2 2.2.4 9999: Advanced Digital DJ tool based on Qt
 media-sound/mmix 0.3-r1: A soundcard mixer for the OSS driver
 media-sound/moc 2.5.2-r1 2.6_alpha3-r1: Music On Console - ncurses interface for playing audio files
