@@ -13,7 +13,7 @@ SRC_URI="https://github.com/hunterhacker/${PN}/archive/${MY_P}.tar.gz"
 HOMEPAGE="http://www.jdom.org"
 LICENSE="Apache-1.1"
 SLOT="2"
-KEYWORDS="amd64 ~arm ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
