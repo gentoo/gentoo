@@ -16,9 +16,8 @@ RDEPEND="
 	>=dev-lang/mono-1.2.5.1-r1
 	>=dev-dotnet/gtk-sharp-2.12.21
 "
-BEPEND="${RDEPEND}
-	sys-devel/gettext
-"
+DEPEND="${RDEPEND}"
+BDEPEND="sys-devel/gettext"
 
 src_prepare() {
 	# Remove deprecated Application tag from .desktop file
