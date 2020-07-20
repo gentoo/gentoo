@@ -21,9 +21,8 @@ fi
 
 LICENSE="GPL-2 ZLIB"
 SLOT="0"
-IUSE="alsa +archive doc jack ladspa lash osc oss portaudio portmidi pulseaudio test"
+IUSE="alsa +archive doc jack ladspa lash osc oss portaudio portmidi pulseaudio"
 
-RESTRICT="!test? ( test )"
 REQUIRED_USE="lash? ( alsa )"
 
 BDEPEND="
@@ -52,7 +51,7 @@ CDEPEND="
 "
 DEPEND="
 	${CDEPEND}
-	test? ( dev-qt/qttest:5 )
+	dev-qt/qttest:5
 "
 RDEPEND="${CDEPEND}"
 
