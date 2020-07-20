@@ -4906,7 +4906,7 @@ dev-libs/crc32c 1.0.6: CRC32C implementation with support for CPU-specific accel
 dev-libs/criterion 2.3.3 2.4_pre20200110: Cross platform unit testing framework for C and C++
 dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID library
 dev-libs/crypto++ 5.6.5-r1 7.0.0-r3 8.2.0 8.2.0-r2: C++ class library of cryptographic schemes
-dev-libs/cudnn 6.0 7.0.5-r1 7.1.4 7.4.1.5 7.4.2.24 7.5.0.56 7.6.0.64 7.6.1.34 7.6.2.24 7.6.5.32 7.6.5.32-r2: NVIDIA Accelerated Deep Learning on GPU library
+dev-libs/cudnn 7.0.5-r1 7.1.4 7.4.1.5 7.4.2.24 7.5.0.56 7.6.0.64 7.6.1.34 7.6.2.24 7.6.5.32 7.6.5.32-r2: NVIDIA Accelerated Deep Learning on GPU library
 dev-libs/cvector 1.0.3.1: An ANSI C implementation of dynamic arrays (approximation of C++ vectors)
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p14: REINER SCT cyberJack USB chipcard reader user space driver
