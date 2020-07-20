@@ -9,6 +9,9 @@
     Supported formats:
     epub, epub3, azw, azw3, mobi, fb2, fb2.zip, cbr, cbz, cbt, cb7, txt
   </longdescription>
+  <use>
+    <flag name="handy">Use <pkg>gui-libs/libhandy</pkg></flag>
+  </use>
   <upstream>
     <remote-id type="github">johnfactotum/foliate</remote-id>
   </upstream>
