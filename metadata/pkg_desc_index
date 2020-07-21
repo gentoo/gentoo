@@ -715,7 +715,7 @@ app-arch/unadf 0.7.12-r1: Extract files from Amiga adf disk images
 app-arch/unar 1.10.7: Unpacker for various archiving formats, e.g. rar v3
 app-arch/unarj 2.65: Utility for opening arj archives
 app-arch/unmakeself 1.1: Makeself archive extractor
-app-arch/unp 2.0_pre7_p1-r1: Script for unpacking various file formats
+app-arch/unp 2.0_pre7_p1-r1 2.0_pre8: Script for unpacking various file formats
 app-arch/unrar 5.9.2 5.9.3 5.9.4: Uncompress rar files
 app-arch/unrpa 2.3.0: Ren'Py's RPA data file extractor
 app-arch/unshield 1.4.3: InstallShield CAB file extractor
@@ -3331,7 +3331,7 @@ dev-db/pgrouting 2.6.2-r1: pgRouting extends PostGIS and PostgreSQL with geospat
 dev-db/pgtap 0.99.0: Unit testing for PostgreSQL
 dev-db/pgxnclient 1.3-r2: PostgreSQL Extension Network Client
 dev-db/phpmyadmin 4.9.5 5.0.2: Web-based administration for MySQL database in PHP
-dev-db/phppgadmin 5.6.0: Web-based administration for Postgres database in php
+dev-db/phppgadmin 5.6.0 7.12.1: Web-based administration for Postgres database in php
 dev-db/plr 8.3.0.17: R language extension for postgresql database
 dev-db/postgis 2.5.3-r1 2.5.4 3.0.0-r1 3.0.1 9999: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.4.26 9.5.21 9.5.22 9.6.17 9.6.18 10.12 10.13 11.7 11.8 12.2 12.3 13_beta2 9999: PostgreSQL RDBMS
@@ -10507,7 +10507,7 @@ dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
 dev-util/qstlink2 1.2.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.66 9999: quilt patch manager
 dev-util/radare2 4.5.0 9999: unix-like reverse engineering framework and commandline tools
-dev-util/ragel 6.7-r1 6.8 6.9 6.10 7.0.0.9 7.0.0.10 7.0.0.10-r1 7.0.0.10-r2 7.0.0.12: Compiles finite state machines from regular languages into executable code
+dev-util/ragel 6.10 7.0.0.9 7.0.0.10 7.0.0.10-r1 7.0.0.10-r2 7.0.0.12: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 1.0.2 1.0.3: Command line tools for use with Review Board
 dev-util/re2c 1.3-r1 2.0: tool for generating C-based recognizers from regular expressions
@@ -16060,7 +16060,7 @@ sci-libs/scikits_optimization 0.3-r1: Python module for numerical optimization
 sci-libs/scikits_timeseries 0.91.3-r2: SciPy module for manipulating, reporting, and plotting time series
 sci-libs/scipy 1.1.0 1.4.1 1.5.0 1.5.1: Scientific algorithms library for Python
 sci-libs/scipy-python2 1.1.0 1.2.3: Scientific algorithms library for Python (py2 version)
-sci-libs/scotch 5.1.12b 6.0.0 6.0.4 6.0.4-r1 6.0.4-r2: Software for graph, mesh and hypergraph partitioning
+sci-libs/scotch 5.1.12b 6.0.4-r2: Software for graph, mesh and hypergraph partitioning
 sci-libs/shapelib 1.5.0: Library for manipulating ESRI Shapefiles
 sci-libs/shogun 5.0.0-r1: Large Scale Machine Learning Toolbox
 sci-libs/silo 4.10.2-r1: A mesh and field I/O library and scientific database
