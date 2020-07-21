@@ -11,7 +11,8 @@ MY_PN="${PN/pyw/PyW}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Discrete Wavelet Transforms in Python"
-HOMEPAGE="https://pywavelets.readthedocs.io/en/latest/"
+HOMEPAGE="https://pywavelets.readthedocs.io/en/latest/
+	https://github.com/PyWavelets/pywt"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
@@ -45,8 +46,8 @@ python_install_all() {
 	use doc && local HTML_DOCS=( doc/build/html/. )
 	distutils-r1_python_install_all
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins -r demo/*
+		docinto examples
+		dodoc -r demo
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
 }
