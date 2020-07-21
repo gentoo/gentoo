@@ -1,0 +1,24 @@
+From 66aea36411477f284fa8a379b3bde282385d281c Mon Sep 17 00:00:00 2001
+From: Jan Tojnar <jtojnar@gmail.com>
+Date: Wed, 8 Apr 2020 16:41:32 +0200
+Subject: [PATCH] Remove forgotten libcanberra include
+
+---
+ src/gcm-viewer.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/gcm-viewer.c b/src/gcm-viewer.c
+index 77463af5..d778877d 100644
+--- a/src/gcm-viewer.c
++++ b/src/gcm-viewer.c
+@@ -12,7 +12,6 @@
+ #include <gdk/gdkx.h>
+ #include <glib/gstdio.h>
+ #include <locale.h>
+-#include <canberra-gtk.h>
+ #include <colord.h>
+ #include <math.h>
+ 
+-- 
+2.20.1
+
