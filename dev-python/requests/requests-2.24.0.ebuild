@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
 DESCRIPTION="HTTP library for human beings"
-HOMEPAGE="http://python-requests.org/"
+HOMEPAGE="https://requests.readthedocs.io/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
