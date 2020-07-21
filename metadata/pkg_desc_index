@@ -2493,7 +2493,7 @@ app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugrepo
 app-portage/pfl 3.1: Searchable online file/package database for Gentoo
 app-portage/portage-utils 0.80 0.87 0.88 9999: Small and fast Portage helper tools written in C
 app-portage/porticron 0.7.1: cron script to sync portage and send update mails to root
-app-portage/portpeek 2.1.27-r1 2.1.29 3.0.0: A helper program for maintaining the package.keyword and package.unmask files
+app-portage/portpeek 2.1.27-r1 2.1.29 3.0.1: A helper program for maintaining the package.keyword and package.unmask files
 app-portage/pqlop 0.02-r1: emerge.log parser written in python
 app-portage/pram 8 9: Tool to ease merging Pull Requests and git patches
 app-portage/prefix-toolkit 8 9: Utilities for users of Gentoo Prefix
@@ -14670,7 +14670,7 @@ net-mail/mswatch 1.2.0-r1: A utility to watch mailstores for changes and initiat
 net-mail/mu 1.4.1 1.4.4 1.4.10: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/muchsync 5: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
-net-mail/notmuch 0.29.3 0.29.3-r1 0.29.3-r2 0.30: Thread-based e-mail indexer, supporting quick search and tagging
+net-mail/notmuch 0.29.3-r2 0.30: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/pflogsumm 1.1.5-r1 1.1.5-r2: Pflogsumm is a log analyzer for Postfix logs
 net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Postfix queued messages
 net-mail/pop-before-smtp 1.42: a simple daemon to allow email relay control based on successful POP or IMAP logins
