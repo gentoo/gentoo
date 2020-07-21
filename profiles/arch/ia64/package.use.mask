@@ -238,10 +238,6 @@ media-sound/rhythmbox upnp-av
 >=app-editors/gedit-3.20 spell
 >=app-text/evince-3.30 spell
 
-# Justin Lecher <jlec@gentoo.org> (2016-02-22)
-# Missing test deps keyword #575366
-dev-cpp/eigen test
-
 # Pacho Ramos <pacho@gentoo.org> (2016-01-31)
 # Missing keywords, bug #560382
 media-video/ffmpeg snappy
