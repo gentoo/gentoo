@@ -15852,15 +15852,15 @@ sci-libs/blis 0.5.2 0.6.0: BLAS-like Library Instantiation Software Framework
 sci-libs/bliss 0.73-r1 0.73-r2: Compute Automorphism Groups and Canonical Labelings of Graphs
 sci-libs/bmrblib 1.0.3 1.0.4: API abstracting the BioMagResBank (BMRB) NMR-STAR format
 sci-libs/brial 1.2.8: A C++ library for polynomials over boolean rings
-sci-libs/btf 1.2.0 1.2.6: Algorithm for matrix permutation into block triangular form
+sci-libs/btf 1.2.6: Algorithm for matrix permutation into block triangular form
 sci-libs/buddy 2.4-r1: Binary Decision Diagram Package
 sci-libs/camd 2.3.1 2.4.6: Library to order a sparse matrix prior to Cholesky factorization
-sci-libs/cantera 2.4.0-r1 2.4.0-r4 2.4.0-r5: Object-oriented tool suite for chemical kinetics, thermodynamics, and transport
+sci-libs/cantera 2.4.0-r4 2.4.0-r5: Object-oriented tool suite for chemical kinetics, thermodynamics, and transport
 sci-libs/cartopy 0.18.0_beta1 0.18.0: Python package for geospatial data processing and analysis
 sci-libs/cbflib 0.9.3.3: Library providing a simple mechanism for accessing CBF files and imgCIF files
 sci-libs/cblas-reference 20030223-r6 20151113-r2 20161223: C wrapper interface to the F77 reference BLAS implementation
 sci-libs/ccfits 2.4-r1 2.5: C++ interface for cfitsio
-sci-libs/ccolamd 2.8.0 2.9.6: Constrained Column approximate minimum degree ordering algorithm
+sci-libs/ccolamd 2.9.6: Constrained Column approximate minimum degree ordering algorithm
 sci-libs/cdd+ 077a: Another implementation of the double description method
 sci-libs/cddlib 094j: C library implementing the Double Description Method
 sci-libs/cdf 3.4.1 3.5.0.2: Common Data Format I/O library for multi-dimensional data sets
@@ -15905,7 +15905,7 @@ sci-libs/coinor-vol 1.5.4: COIN-OR volume algorithm linear program solver
 sci-libs/colamd 2.8.0 2.9.6: Column approximate minimum degree ordering algorithm
 sci-libs/colpack 1.0.10: C++ algorithms for specialized vertex coloring problems
 sci-libs/cqrlib 1.1.3: Utility library for quaternion arithmetic / rotation math (ANSI C implemented)
-sci-libs/cxsparse 3.1.2-r1 3.2.0: Extended sparse matrix package
+sci-libs/cxsparse 3.2.0: Extended sparse matrix package
 sci-libs/dcmtk 3.6.3 3.6.4-r1 3.6.5: The DICOM Toolkit
 sci-libs/dealii 9.1.1 9.2.0 9999: Solving partial differential equations with the finite element method
 sci-libs/djbfft 0.76-r2: Extremely fast library for floating-point convolution
@@ -15953,10 +15953,10 @@ sci-libs/jama 1.2.5: Java-like matrix C++ templates
 sci-libs/keras-applications 1.0.7 1.0.8: Keras deep learning library reference implementations of deep learning models
 sci-libs/keras-preprocessing 1.0.9 1.1.0: Easy data preprocessing and data augmentation for deep learning models
 sci-libs/kim-api 2.1.3-r1: Application Programming Interface for atomistic simulations
-sci-libs/klu 1.2.1 1.3.9: Sparse LU factorization for circuit simulation
+sci-libs/klu 1.3.9: Sparse LU factorization for circuit simulation
 sci-libs/lapack 3.8.0 3.8.0-r1: BLAS,CBLAS,LAPACK,LAPACKE reference implementations
 sci-libs/lapack-reference 3.2.1-r4 3.6.0 3.7.0: Reference implementation of LAPACK
-sci-libs/ldl 2.1.0 2.2.6: Simple but educational LDL^T matrix factorization algorithm
+sci-libs/ldl 2.2.6: Simple but educational LDL^T matrix factorization algorithm
 sci-libs/lemon 1.3.1: C++ template static library of common data structures and algorithms
 sci-libs/levmar 2.6: Levenberg-Marquardt nonlinear least squares C library
 sci-libs/libaec 0.3.2 1.0.0 1.0.1 1.0.2: Adaptive Entropy Coding library
@@ -16004,7 +16004,7 @@ sci-libs/mathgl 2.4.1-r2: Math Graphics Library
 sci-libs/matio 1.5.17: Library for reading and writing matlab files
 sci-libs/mc 1.5: 2D/3D AFEM code for nonlinear geometric PDE
 sci-libs/med 4.0.0-r1 4.0.0-r2: A library to store and exchange meshed data or computation results
-sci-libs/metis 4.0.3-r1 4.0.3-r2 5.1.0-r2 5.1.0-r3 5.1.0-r4: A package for unstructured serial graph partitioning
+sci-libs/metis 4.0.3-r1 4.0.3-r2 5.1.0-r4: A package for unstructured serial graph partitioning
 sci-libs/minfx 1.0.3-r1 1.0.4_pre98 1.0.4 1.0.5 1.0.6 1.0.10 1.0.11: Numerical optimisation library
 sci-libs/minuit 5.34.14: A C++ physics analysis tool for function minimization
 sci-libs/mkl 10.0.5.025-r1: Intel(R) Math Kernel Library: linear algebra, fft, math functions
@@ -16063,10 +16063,10 @@ sci-libs/shapelib 1.5.0: Library for manipulating ESRI Shapefiles
 sci-libs/shogun 5.0.0-r1: Large Scale Machine Learning Toolbox
 sci-libs/silo 4.10.2-r1: A mesh and field I/O library and scientific database
 sci-libs/spglib 1.14.1: Spglib is a C library for finding and handling crystal symmetries
-sci-libs/spqr 1.2.3-r1 1.3.1 2.0.9: Multithreaded multifrontal sparse QR factorization library
+sci-libs/spqr 2.0.9: Multithreaded multifrontal sparse QR factorization library
 sci-libs/spr 3.3.2: Statistical analysis and machine learning library
-sci-libs/suitesparse 4.0.2 4.2.1 5.4.0: Metapackage for a suite of sparse matrix tools
-sci-libs/suitesparseconfig 4.2.1-r1 5.4.0: Common configurations for all packages in suitesparse
+sci-libs/suitesparse 5.4.0: Metapackage for a suite of sparse matrix tools
+sci-libs/suitesparseconfig 5.4.0: Common configurations for all packages in suitesparse
 sci-libs/sundials 3.2.1 4.0.2 4.1.0 5.0.0 5.1.0 5.2.0: Suite of nonlinear solvers
 sci-libs/superlu 4.3-r1 5.2.1-r1: Sparse LU factorization library
 sci-libs/superlu_mt 3.1: Multithreaded sparse LU factorization library
@@ -16082,7 +16082,7 @@ sci-libs/tnt 3.0.12: Template Numerical Toolkit: C++ headers for array and matri
 sci-libs/trilinos 12.14.1 12.18.1: Scientific library collection for large scale problems
 sci-libs/udunits 2.1.24-r1 2.2.20: Library for manipulating units of physical quantities
 sci-libs/ufconfig 3.7.1: Common configuration scripts for the SuiteSparse libraries
-sci-libs/umfpack 5.6.2 5.7.9: Unsymmetric multifrontal sparse LU factorization library
+sci-libs/umfpack 5.7.9: Unsymmetric multifrontal sparse LU factorization library
 sci-libs/volk 2.3.0-r1: vector optimized library of kernels
 sci-libs/voro++ 0.4.6-r1: A 3D Voronoi cell software library
 sci-libs/votca-tools 1.4 1.4.1 1.5 1.5.1 1.6_rc1 1.6 1.6.1 9999: Votca tools library
