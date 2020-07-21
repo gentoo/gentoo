@@ -1,0 +1,23 @@
+diff --git a/xcffib/testing.py b/xcffib/testing.py
+index ef0268a..0662fcf 100644
+--- a/xcffib/testing.py
++++ b/xcffib/testing.py
+@@ -31,11 +31,14 @@ def lock_path(display):
+ def find_display():
+     display = 10
+     while True:
+-        f = open(lock_path(display), "w+")
+         try:
+-            fcntl.flock(f.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+-        except OSError:
+-            f.close()
++            f = open(lock_path(display), "w+")
++            try:
++                fcntl.flock(f.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
++            except:
++                f.close()
++                raise
++        except OSError:
+             display += 1
+             continue
+         return display, f
