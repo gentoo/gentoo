@@ -5,9 +5,6 @@
 		<email>3dprint@gentoo.org</email>
 		<name>Gentoo 3D print</name>
 	</maintainer>
-	<longdescription>
-		Extensible framework for robust spatial indexing
-	</longdescription>
 	<slots>
 		<subslots>Soname version number of libspatialindex</subslots>
 	</slots>
