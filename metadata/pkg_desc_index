@@ -11609,7 +11609,7 @@ gui-apps/slurp 1.2.0 9999: Select a region in a Wayland compositor and print it 
 gui-apps/swaybg 1.0 9999: A wallpaper utility for Wayland
 gui-apps/swayidle 1.6 9999: Idle management daemon for Wayland
 gui-apps/swaylock 1.3 1.4 1.5 9999: Screen locker for Wayland
-gui-apps/tuigreet 0_pre20200702: TUI greeter for greetd login manager
+gui-apps/tuigreet 0.1.1: TUI greeter for greetd login manager
 gui-apps/waybar 0.8.0 9999: Highly customizable Wayland bar for Sway and Wlroots based compositors.
 gui-apps/wcm 0.4.0-r1 9999: Wayfire Config Manager
 gui-apps/wf-recorder 0.2.1-r1 9999: Screen recorder for wlroots-based compositors
@@ -12271,7 +12271,7 @@ media-fonts/font-sun-misc 1.0.3-r1: X.Org Sun fonts
 media-fonts/font-util 1.3.2-r1: X.Org font utilities
 media-fonts/font-winitzki-cyrillic 1.0.3-r1: X.Org Winitzki cyrillic font
 media-fonts/font-xfree86-type1 1.0.4-r1: X.Org XFree86 Type 1 font
-media-fonts/fontawesome 4.7.0 5.1.0 5.11.2 5.13.0 5.13.1 9999: The iconic font
+media-fonts/fontawesome 4.7.0 5.1.0 5.11.2 5.13.0 5.13.1 5.14.0 9999: The iconic font
 media-fonts/free-bangla-font 0.2: Unicode compliant Open Type Bangla fonts
 media-fonts/freefont 20120503: OpenType and TrueType Unicode fonts from the Free UCS Outline Fonts Project
 media-fonts/freefonts 0.10-r4: A Collection of Free Type1 Fonts
