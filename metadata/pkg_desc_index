@@ -14418,7 +14418,7 @@ net-irc/scrollz 2.3: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0-r2: Full-featured IRC connection manager for Telepathy
 net-irc/unrealircd 4.2.4.1 5.0.5.1 5.0.6: An advanced Internet Relay Chat daemon
-net-irc/weechat 2.8 9999: Portable and multi-interface IRC client
+net-irc/weechat 2.8 2.9 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.7.5 1.8.1 9999: An advanced IRC Bouncer
 net-libs/NativeThread 0_pre20190914: NativeThread for priorities on linux for freenet
