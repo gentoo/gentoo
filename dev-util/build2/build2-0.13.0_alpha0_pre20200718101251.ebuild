@@ -103,5 +103,5 @@ src_test() {
 src_install() {
 	b install
 	mkdir -p "${ED}"/usr/share/doc/${PF}/html || die
-	mv -f "${ED}"/usr/share/doc/${PF}/*.xhtml "${ED}"/usr/share/doc/${PF}/html
+	mv -f "${ED}"/usr/share/doc/${PF}/*.xhtml "${ED}"/usr/share/doc/${PF}/html || die
 }
