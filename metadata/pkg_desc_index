@@ -2414,7 +2414,7 @@ app-office/planner 0.14.6_p20130520-r2: Project manager for Gnome
 app-office/projectlibre-bin 1.6.2: An open source desktop alternative to Microsoft Project
 app-office/sc 7.16-r2: Spreadsheet Calculator
 app-office/scribus 1.5.5_p20200626 9999: Desktop publishing (DTP) and layout program
-app-office/skrooge 2.22.1: Personal finances manager, aiming at being simple and intuitive
+app-office/skrooge 2.22.1 2.23.0: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.6: Simple personal tasks and todo lists manager
 app-office/texmacs 1.99.6-r2 1.99.9 1.99.10 1.99.11: Wysiwyg text processor with high-quality maths
 app-office/texmaker 5.0.3 5.0.4: A nice LaTeX-IDE
@@ -8555,7 +8555,7 @@ dev-python/python-mistralclient 3.8.1: A client for the OpenStack Mistral API
 dev-python/python-monascaclient 1.15.0: A client for the OpenStack Monasca API
 dev-python/python-mpd 1.0.0: Python MPD client library
 dev-python/python-musicbrainz-ngs 0.7.1: Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices
-dev-python/python-nbxmpp 0.6.10-r1 1.0.0: Python library to use Jabber/XMPP networks in a non-blocking way
+dev-python/python-nbxmpp 0.6.10-r1 1.0.0 1.0.1: Python library to use Jabber/XMPP networks in a non-blocking way
 dev-python/python-netlink 0.1: Pure-Python client for the Linux NetLink interface
 dev-python/python-neutronclient 6.12.1 7.1.1: A client for the OpenStack Quantum API
 dev-python/python-novaclient 17.0.0: A client for the OpenStack Nova API
@@ -14337,7 +14337,7 @@ net-im/ejabberd 17.04-r2 20.03 20.04: Robust, scalable and extensible XMPP serve
 net-im/ekg2 0.4_pre20190315 9999: Text-based, multi-protocol instant messenger
 net-im/empathy 3.12.14: Telepathy instant messaging and video/audio call client for GNOME
 net-im/err 5.2.0-r1: Multiprotocol chatbot designed to be easily deployable and maintainable
-net-im/gajim 1.1.3-r1 1.1.3-r2 1.2.0: Jabber client written in PyGTK
+net-im/gajim 1.1.3-r1 1.1.3-r2 1.2.0 1.2.1: Jabber client written in PyGTK
 net-im/gg-transport 2.2.6: Gadu-Gadu transport for Jabber
 net-im/gitter-bin 3.1.0 4.1.0: Chat and network platform
 net-im/jabber-base 0.01-r1: Jabber servers and transports layout package
