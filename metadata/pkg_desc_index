@@ -1316,7 +1316,7 @@ app-doc/eclass-manpages 20200213 20200704 99999999: Collection of Gentoo eclass 
 app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5 25.3 26.3: The GNU Emacs Lisp Reference Manual
 app-doc/geant-docs 4.10.05 4.10.5_p2 4.10.6: User documentation for Geant4 physics simulation toolkit
 app-doc/gimp-help 2.8.2 2.10.0: GNU Image Manipulation Program help files
-app-doc/gnucash-docs 3.8b: Documentation package for GnuCash
+app-doc/gnucash-docs 3.8b 4.0: Documentation package for GnuCash
 app-doc/halibut 1.1 1.2: yet another free document preparation system
 app-doc/jargon 4.4.7-r1: A compendium of hacker slang illuminating many aspects of hackish tradition
 app-doc/kicad-doc 4.0.7 4.0.7-r1 5.1.5 5.1.6: Electronic Schematic and PCB design tools manuals
@@ -2381,7 +2381,7 @@ app-office/dia 0.97.3-r1: Diagram/flowchart creation program
 app-office/dia2code 1.0.0: Convert UML diagrams produced with Dia to various source code flavours
 app-office/glabels 3.4.1: Program for creating labels and business cards
 app-office/gnome-todo 3.28.1-r1: Personal task manager
-app-office/gnucash 3.8b 3.8b-r1: A personal finance manager
+app-office/gnucash 3.8b 3.8b-r1 4.0: A personal finance manager
 app-office/gnumeric 1.12.47: The GNOME Spreadsheet
 app-office/grisbi 1.2.2: Grisbi is a personal accounting application for Linux
 app-office/gtg 0.4.0: Personal organizer for the GNOME desktop environment
@@ -15232,7 +15232,7 @@ net-vpn/vpnc 0.5.3_p550-r1: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
 net-vpn/wireguard-modules 1.0.20200712 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
-net-vpn/wireguard-tools 1.0.20200319 1.0.20200513: Required tools for WireGuard, such as wg(8) and wg-quick(8)
+net-vpn/wireguard-tools 1.0.20200513: Required tools for WireGuard, such as wg(8) and wg-quick(8)
 net-wireless/aircrack-ng 1.5.2 1.6-r1 1.6_p20200519 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airpwn 1.4-r2: Tool for generic packet injection on 802.11
 net-wireless/airspy 1.0.9 9999: Usemode driver and associated tools for airspy
