@@ -242,10 +242,6 @@ sci-mathematics/flint ntl
 # unmask scanner for net-print/hplip, bug #518456
 media-sound/moc timidity
 
-# Justin Lecher <jlec@gentoo.org> (2016-02-22)
-# Missing test deps keyword #575366
-dev-cpp/eigen test
-
 # James Le Cuirot <chewi@gentoo.org> (2016-01-30)
 # scrollview requires SWT, which is currently unsupported on ARM.
 app-text/tesseract scrollview
