@@ -3213,7 +3213,7 @@ dev-cpp/commoncpp2 1.8.1-r4: C++ library offering portable support for system-re
 dev-cpp/cpp-hocon 0.2.1 0.3.0: Provides C++ support for the HOCON configuration file format
 dev-cpp/cpp-taskflow 2.4.0-r1: Modern C++ Parallel Task Programming
 dev-cpp/ctemplate 2.3-r1: A simple but powerful template language for C++
-dev-cpp/eigen 3.3.7: C++ template library for linear algebra
+dev-cpp/eigen 3.3.7 3.3.7-r1: C++ template library for linear algebra
 dev-cpp/gconfmm 2.28.3-r1: C++ bindings for GConf
 dev-cpp/gflags 2.2.0 2.2.1 2.2.1-r1 9999: Google's C++ argument parsing library
 dev-cpp/glibmm 2.62.0 2.64.2: C++ interface for glib2
