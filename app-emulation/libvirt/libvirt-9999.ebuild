@@ -20,7 +20,7 @@ else
 fi
 
 DESCRIPTION="C toolkit to manipulate virtual machines"
-HOMEPAGE="http://www.libvirt.org/"
+HOMEPAGE="https://www.libvirt.org/"
 LICENSE="LGPL-2.1"
 IUSE="
 	apparmor audit +caps +dbus dtrace firewalld fuse glusterfs iscsi
@@ -124,8 +124,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-6.2.0-do-not-use-sysconfig.patch
 	"${FILESDIR}"/${PN}-6.0.0-fix_paths_in_libvirt-guests_sh.patch
+	"${FILESDIR}"/${PN}-6.5.0-do-not-use-sysconfig.patch
 )
 
 pkg_setup() {

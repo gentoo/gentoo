@@ -10,8 +10,6 @@ inherit autotools out-of-source bash-completion-r1 eutils linux-info python-any-
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://libvirt.org/git/libvirt.git"
-	SRC_URI=""
-	KEYWORDS=""
 	SLOT="0"
 else
 	SRC_URI="https://libvirt.org/sources/${P}.tar.xz"
@@ -20,7 +18,7 @@ else
 fi
 
 DESCRIPTION="C toolkit to manipulate virtual machines"
-HOMEPAGE="http://www.libvirt.org/"
+HOMEPAGE="https://www.libvirt.org/"
 LICENSE="LGPL-2.1"
 IUSE="
 	apparmor audit +caps +dbus dtrace firewalld fuse glusterfs iscsi
@@ -77,7 +75,6 @@ RDEPEND="
 	iscsi-direct? ( >=net-libs/libiscsi-1.18.0 )
 	libssh? ( net-libs/libssh )
 	lvm? ( >=sys-fs/lvm2-2.02.48-r2[-device-mapper-only(-)] )
-	lxc? ( !sys-apps/systemd[-cgroup-hybrid(+)] )
 	nfs? ( net-fs/nfs-utils )
 	numa? (
 		>sys-process/numactl-2.0.2
@@ -125,9 +122,9 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-6.0.0-do-not-use-sysconf.patch
 	"${FILESDIR}"/${PN}-6.0.0-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-6.1.0-fix-paths-for-apparmor.patch
+	"${FILESDIR}"/${PN}-6.5.0-do-not-use-sysconfig.patch
 )
 
 pkg_setup() {
@@ -219,7 +216,7 @@ src_prepare() {
 	default
 
 	# Tweak the init script:
-	cp "${FILESDIR}/libvirtd.init-r18" "${S}/libvirtd.init" || die
+	cp "${FILESDIR}/libvirtd.init-r19" "${S}/libvirtd.init" || die
 	sed -e "s/USE_FLAG_FIREWALLD/$(usex firewalld 'need firewalld' '')/" \
 		-i "${S}/libvirtd.init" || die "sed failed"
 
@@ -328,8 +325,8 @@ my_src_install() {
 
 	newinitd "${S}/libvirtd.init" libvirtd
 	newinitd "${FILESDIR}/libvirt-guests.init-r4" libvirt-guests
-	newinitd "${FILESDIR}/virtlockd.init-r1" virtlockd
-	newinitd "${FILESDIR}/virtlogd.init-r1" virtlogd
+	newinitd "${FILESDIR}/virtlockd.init-r2" virtlockd
+	newinitd "${FILESDIR}/virtlogd.init-r2" virtlogd
 
 	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd
 	newconfd "${FILESDIR}/libvirt-guests.confd" libvirt-guests
