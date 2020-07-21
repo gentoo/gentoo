@@ -10,7 +10,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
 DESCRIPTION="A full-featured template engine for Python"
-HOMEPAGE="http://jinja.pocoo.org/ https://pypi.org/project/Jinja2/"
+HOMEPAGE="https://jinja.palletsprojects.com/ https://pypi.org/project/Jinja2/"
 # pypi tarball is missing tests
 SRC_URI="https://github.com/pallets/jinja/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
