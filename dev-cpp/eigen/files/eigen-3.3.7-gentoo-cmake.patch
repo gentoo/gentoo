@@ -1,0 +1,24 @@
+Let us properly override with CMAKE_BUILD_TYPE=Gentoo
+
+--- a/CMakeLists.txt	2018-12-11 18:57:55.000000000 +0100
++++ b/CMakeLists.txt	2020-07-21 16:43:33.467680534 +0200
+@@ -14,18 +14,7 @@
+ set(Eigen_BINARY_DIR ${Eigen3_BINARY_DIR})
+ 
+ # guard against bad build-type strings
+-
+-if (NOT CMAKE_BUILD_TYPE)
+-  set(CMAKE_BUILD_TYPE "Release")
+-endif()
+-
+-string(TOLOWER "${CMAKE_BUILD_TYPE}" cmake_build_type_tolower)
+-if(    NOT cmake_build_type_tolower STREQUAL "debug"
+-   AND NOT cmake_build_type_tolower STREQUAL "release"
+-   AND NOT cmake_build_type_tolower STREQUAL "relwithdebinfo")
+-  message(FATAL_ERROR "Unknown build type \"${CMAKE_BUILD_TYPE}\". Allowed values are Debug, Release, RelWithDebInfo (case-insensitive).")
+-endif()
+-
++# yeah no.
+ 
+ #############################################################################
+ # retrieve version infomation                                               #
