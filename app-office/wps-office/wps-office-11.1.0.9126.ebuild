@@ -7,11 +7,11 @@ inherit unpacker xdg
 MY_PV="$(ver_cut 4)"
 
 DESCRIPTION="WPS Office is an office productivity suite"
-HOMEPAGE="http://www.wps.cn/product/wpslinux/ http://wps-community.org/"
+HOMEPAGE="https://www.wps.cn/product/wpslinux/ http://wps-community.org/"
 
 KEYWORDS="~amd64"
 
-SRC_URI="http://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/${MY_PV}/${PN}_${PV}.XA_amd64.deb"
+SRC_URI="https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/${MY_PV}/${PN}_${PV}.XA_amd64.deb"
 
 SLOT="0"
 RESTRICT="strip mirror" # mirror as explained at bug #547372

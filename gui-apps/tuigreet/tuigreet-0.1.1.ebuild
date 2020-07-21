@@ -4,15 +4,19 @@
 EAPI=7
 
 CRATES="
+ahash-0.3.8
 autocfg-1.0.0
 bitflags-1.2.1
 cassowary-0.3.0
 cc-1.0.55
 cfg-if-0.1.10
 chrono-0.4.11
+dlv-list-0.2.2
 either-1.5.3
 getopts-0.2.21
+getrandom-0.1.14
 greetd_ipc-0.6.0
+hashbrown-0.7.2
 itertools-0.9.0
 itoa-0.4.6
 libc-0.2.71
@@ -20,10 +24,17 @@ nix-0.17.0
 num-integer-0.1.43
 num-traits-0.2.12
 numtoa-0.1.0
+ordered-multimap-0.2.4
+ppv-lite86-0.2.8
 proc-macro2-1.0.18
 quote-1.0.7
+rand-0.7.3
+rand_chacha-0.2.2
+rand_core-0.5.1
+rand_hc-0.2.0
 redox_syscall-0.1.56
 redox_termios-0.1.1
+rust-ini-0.15.3
 ryu-1.0.5
 serde-1.0.114
 serde_derive-1.0.114
@@ -39,6 +50,7 @@ unicode-segmentation-1.6.0
 unicode-width-0.1.7
 unicode-xid-0.2.1
 void-1.0.2
+wasi-0.9.0+wasi-snapshot-preview1
 winapi-0.3.9
 winapi-i686-pc-windows-gnu-0.4.0
 winapi-x86_64-pc-windows-gnu-0.4.0
@@ -50,10 +62,8 @@ inherit cargo
 DESCRIPTION="TUI greeter for greetd login manager"
 HOMEPAGE="https://github.com/apognu/tuigreet"
 
-COMMIT="f2ec800eed121d13c6ae247fab34b603a61bcca7"
-SRC_URI="https://github.com/apognu/tuigreet/archive/${COMMIT}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/apognu/tuigreet/archive/${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
-S="${WORKDIR}/${PN}-${COMMIT}"
 
 QA_FLAGS_IGNORED="usr/bin/tuigreet"
 

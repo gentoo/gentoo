@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (2020-07-20)
+# continuous version constraints causing issues
+# Cisco images are rare to find that are supported
+# dropping to p-m. Removal in 30 days
+net-misc/gns3-gui
+net-misc/gns3-server
+net-misc/ubridge
+
 # Sam James <sam@gentoo.org> (2020-07-20)
 # Serious security vulnerabilities, including
 # remote code execution. Upstream have not yet
