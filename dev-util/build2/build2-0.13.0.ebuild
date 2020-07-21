@@ -3,12 +3,11 @@
 
 EAPI=7
 
-COMMIT="64a2db402f5e"
 MY_PN=build2-toolchain
-MY_P="${MY_PN}-$(ver_cut 1-3)-a.$(ver_cut 5).$(ver_cut 7).${COMMIT}"
+MY_P="${MY_PN}-${PV}"
 
 inherit toolchain-funcs multiprocessing
-SRC_URI="https://stage.build2.org/0/$(ver_cut 1-3)-a.$(ver_cut 5)/${MY_P}.tar.xz"
+SRC_URI="https://download.build2.org/${PV}/${MY_P}.tar.xz"
 KEYWORDS="~amd64 ~x86"
 DESCRIPTION="cross-platform toolchain for building and packaging C++ code"
 HOMEPAGE="https://build2.org"
@@ -19,10 +18,12 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	~dev-cpp/libodb-2.5.0_beta19
+	~dev-cpp/libodb-sqlite-2.5.0_beta19
 	dev-db/sqlite:3
 "
-DEPEND="virtual/pkgconfig
-	${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.13.0_alpha0_pre20200710-nousrlocal.patch
@@ -49,6 +50,24 @@ src_prepare() {
 		|| die
 	sed \
 		-e 's:libsqlite3[/]\?::' \
+		-i buildfile build/bootstrap.build \
+		|| die
+
+	for i in build2/build2/buildfile build2/libbuild2/buildfile; do
+		printf 'cxx.libs += %s\ncxx.poptions += %s\n' \
+			   "$($(tc-getPKG_CONFIG) libodb --libs)" \
+			   "$($(tc-getPKG_CONFIG) libodb --cflags)" >> \
+			   "${i}" \
+			|| die
+		printf 'cxx.libs += %s\ncxx.poptions += %s\n' \
+			   "$($(tc-getPKG_CONFIG) libodb-sqlite --libs)" \
+			   "$($(tc-getPKG_CONFIG) libodb-sqlite --cflags)" >> \
+			   "${i}" \
+			|| die
+	done
+	sed \
+		-e 's:libodb[/]\?::' \
+		-e 's:libodb-sqlite[/]\?::' \
 		-i buildfile build/bootstrap.build \
 		|| die
 

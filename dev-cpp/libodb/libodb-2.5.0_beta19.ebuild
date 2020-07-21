@@ -3,31 +3,32 @@
 
 EAPI=7
 
-COMMIT="64a2db402f5e"
-MY_PN=build2-toolchain
-MY_P="${MY_PN}-$(ver_cut 1-3)-a.$(ver_cut 5).$(ver_cut 7).${COMMIT}"
+MY_P="${PN}-$(ver_cut 1-3)-b.$(ver_cut 5)"
+
+BUILD2_PN=build2-toolchain
+BUILD2_PV="0.13.0"
+BUILD2_P="${BUILD2_PN}-${BUILD2_PV}"
 
 inherit toolchain-funcs multiprocessing
-SRC_URI="https://stage.build2.org/0/$(ver_cut 1-3)-a.$(ver_cut 5)/${MY_P}.tar.xz"
+SRC_URI="https://pkg.cppget.org/1/beta/odb/${MY_P}.tar.gz
+	https://download.build2.org/${BUILD2_PV}/${BUILD2_P}.tar.xz"
 KEYWORDS="~amd64 ~x86"
-DESCRIPTION="cross-platform toolchain for building and packaging C++ code"
-HOMEPAGE="https://build2.org"
+DESCRIPTION="Common ODB runtime library"
+HOMEPAGE="https://codesynthesis.com/products/odb/"
 
-LICENSE="MIT"
+LICENSE="|| ( Code-Synthesis-ODB GPL-2 )"
 SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	dev-db/sqlite:3
+DEPEND="
 "
-DEPEND="virtual/pkgconfig
-	${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+RDEPEND="${DEPEND}
+	!<dev-util/build2-0.13.0
+"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.13.0_alpha0_pre20200710-nousrlocal.patch
-)
-
+BS="${WORKDIR}/${BUILD2_P}"
 S="${WORKDIR}/${MY_P}"
 
 b() {
@@ -35,13 +36,15 @@ b() {
 		--jobs $(makeopts_jobs)
 		--verbose 3
 	)
-	export LD_LIBRARY_PATH="${S}/libbutl/libbutl:${S}/build2/libbuild2:${S}/build2/libbuild2/bash:${S}/build2/libbuild2/in:${S}/build2/libbuild2/bin:${S}/build2/libbuild2/c:${S}/build2/libbuild2/cc:${S}/build2/libbuild2/cxx:${S}/build2/libbuild2/version:${S}/libpkgconf/libpkgconf:${LD_LIBRARY_PATH}"
-	set -- "${S}"/build2/build2/b-boot "${@}" "${myargs[@]}"
+	export LD_LIBRARY_PATH="${BS}/libbutl/libbutl:${BS}/build2/libbuild2:${BS}/build2/libbuild2/bash:${BS}/build2/libbuild2/in:${BS}/build2/libbuild2/bin:${BS}/build2/libbuild2/c:${BS}/build2/libbuild2/cc:${BS}/build2/libbuild2/cxx:${BS}/build2/libbuild2/version:${BS}/libpkgconf/libpkgconf:${LD_LIBRARY_PATH}"
+	set -- "${BS}"/build2/build2/b-boot "${@}" "${myargs[@]}"
 	echo "${@}"
 	"${@}" || die "${@} failed"
 }
 
 src_prepare() {
+	pushd "${BS}" || die
+	eapply "${FILESDIR}"/build2-0.13.0_alpha0_pre20200710-nousrlocal.patch
 	printf 'cxx.libs += %s\ncxx.poptions += %s\n' \
 		"-L${EPREFIX}/usr/$(get_libdir) $($(tc-getPKG_CONFIG) sqlite3 --libs)" \
 		"$($(tc-getPKG_CONFIG) sqlite3 --cflags)" >> \
@@ -65,15 +68,18 @@ src_prepare() {
 			-i buildfile build/bootstrap.build \
 			|| die
 	fi
+	popd || die
 
 	default
 }
 
 src_configure() {
+	pushd "${BS}" || die
 	emake -C build2 -f bootstrap.gmake \
 		CXX=$(tc-getCXX) \
 		CXXFLAGS="${CXXFLAGS}" \
 		LDFLAGS="${LDFLAGS}"
+	popd || die
 
 	b configure \
 		config.cxx="$(tc-getCXX)" \
@@ -102,6 +108,4 @@ src_test() {
 
 src_install() {
 	b install
-	mkdir -p "${ED}"/usr/share/doc/${PF}/html || die
-	mv -f "${ED}"/usr/share/doc/${PF}/*.xhtml "${ED}"/usr/share/doc/${PF}/html || die
 }
