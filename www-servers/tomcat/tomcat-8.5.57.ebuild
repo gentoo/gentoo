@@ -80,7 +80,7 @@ IM_REV="-r2"
 INIT_REV="-r1"
 
 src_compile() {
-	EANT_GENTOO_CLASSPATH_EXTRA+=":$(java-pkg_getjar --build-only ant-core ant.jar):$(java-pkg_getjar --build-only glassfish-xmlrpc-api glassfish-xmlrpc-api.jar)"
+	EANT_GENTOO_CLASSPATH_EXTRA+=":$(java-pkg_getjar --build-only ant-core ant.jar)"
 	use doc && EANT_GENTOO_CLASSPATH_EXTRA+=":$(java-pkg_getjar --build-only glassfish-xmlrpc-api glassfish-xmlrpc-api.jar):$(java-pkg_getjar --build-only wsdl4j wsdl4j.jar)"
 	java-pkg-2_src_compile
 }
