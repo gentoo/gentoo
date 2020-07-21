@@ -543,7 +543,6 @@ app-emulation/libvirt:numa - Use NUMA for memory segmenting via sys-process/numa
 app-emulation/libvirt:openvz - Support management of OpenVZ virtualisation (openvz-sources)
 app-emulation/libvirt:parted - Allow using real disk partitions as pool for disk image storage, using sys-block/parted to create, resize and delete them.
 app-emulation/libvirt:pcap - Support auto learning IP addreses for routing
-app-emulation/libvirt:phyp - Support IBM HMC / IVM hypervisor via PHYP protocol
 app-emulation/libvirt:qemu - Support management of QEMU virtualisation (app-emulation/qemu)
 app-emulation/libvirt:rbd - Enable rados block device support via sys-cluster/ceph
 app-emulation/libvirt:vepa - Virtual Ethernet Port Aggregator (VEPA) / 802.1Qbg support. Relies on macvtap support.
