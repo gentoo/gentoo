@@ -113,9 +113,9 @@ src_install() {
 }
 
 pkg_postinst() {
-        gnome2_schemas_update
+	gnome2_schemas_update
 }
 
 pkg_postrm() {
-        gnome2_schemas_update
+	gnome2_schemas_update
 }
