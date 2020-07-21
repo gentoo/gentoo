@@ -9,9 +9,7 @@ inherit autotools out-of-source bash-completion-r1 eutils linux-info python-any-
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://gitlab.com/libvirt/libvirt.git"
-	SRC_URI=""
-	KEYWORDS=""
+	EGIT_REPO_URI="https://libvirt.org/git/libvirt.git"
 	SLOT="0"
 else
 	SRC_URI="https://libvirt.org/sources/${P}.tar.xz"
@@ -125,6 +123,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.0-fix_paths_in_libvirt-guests_sh.patch
+	"${FILESDIR}"/${PN}-6.1.0-fix-paths-for-apparmor.patch
 	"${FILESDIR}"/${PN}-6.5.0-do-not-use-sysconfig.patch
 )
 
