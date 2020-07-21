@@ -17358,7 +17358,7 @@ sys-libs/libomp 8.0.1 9.0.1 10.0.0 10.0.1_rc1 10.0.1_rc2 10.0.1_rc3 10.0.1_rc4 1
 sys-libs/libosinfo 1.6.0: GObject library for managing information about real and virtual OSes
 sys-libs/libraw1394 2.1.2-r1: Library that provides direct access to the IEEE 1394 bus
 sys-libs/librtas 2.0.2 2.0.2-r1: A set of libraries for userspace access to RTAS on the PowerPC platform(s)
-sys-libs/libseccomp 2.4.2-r1 2.4.3: high level interface to Linux seccomp filter
+sys-libs/libseccomp 2.4.3 2.5.0 9999: high level interface to Linux seccomp filter
 sys-libs/libselinux 2.9-r1 3.0 9999: SELinux userland library
 sys-libs/libsemanage 2.9 3.0 3.0-r1 9999: SELinux kernel and policy management library
 sys-libs/libsepol 2.9 3.0 9999: SELinux binary policy representation library
