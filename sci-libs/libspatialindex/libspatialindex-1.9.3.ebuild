@@ -5,18 +5,18 @@ EAPI=7
 
 inherit cmake
 
-MY_PN="spatialindex-src"
-MY_P="${MY_PN}-${PV}"
+MY_P="spatialindex-src-${PV}"
 
-DESCRIPTION="General framework for developing spatial indices"
+DESCRIPTION="C++ implementation of R*-tree, an MVR-tree and a TPR-tree with C API"
 HOMEPAGE="https://libspatialindex.org/
 	https://github.com/libspatialindex/libspatialindex"
 SRC_URI="https://github.com/libspatialindex/${PN}/releases/download/${PV}/${MY_P}.tar.bz2"
-LICENSE="MIT"
 
-KEYWORDS="~amd64 ~x86"
+LICENSE="MIT"
 SLOT="0/6"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 S=${WORKDIR}/${MY_P}
 
