@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://stage.build2.org/0/0.13.0-a.0/build2-toolchain-0.13.0-a.0.20200718101251.64a2db402f5e.tar.xz
 _eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=e9f157e829e6c4fbac20e404c3e496f4
+_md5_=149a963410aba573af23591e229922a3
