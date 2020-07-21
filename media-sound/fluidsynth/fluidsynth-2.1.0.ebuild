@@ -12,7 +12,7 @@ SRC_URI="https://github.com/FluidSynth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="LGPL-2.1+"
 SLOT="0/2"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 hppa ppc ppc64 sparc x86"
 IUSE="alsa dbus debug examples ipv6 jack ladspa lash network oss portaudio pulseaudio +readline sdl +sndfile systemd threads"
 
 BDEPEND="
