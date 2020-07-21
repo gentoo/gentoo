@@ -9001,6 +9001,9 @@ x11-misc/wbar:gtk - Enables the gtk-based wbar-config GUI
 x11-misc/x11vnc:xdamage - Enable support for the Xdamage library
 x11-misc/x11vnc:xfixes - Enable support for the Xfixes library
 x11-misc/x11vnc:xrandr - Enable support for the X xrandr extension
+x11-misc/xkbd:evdev - Enable dev-libs/libevdev support for xtg
+x11-misc/xkbd:xi - Enable XInput2 support through x11-libs/libXi
+x11-misc/xkbd:xrandr - Enable XRandR support through x11-libs/libXrandr
 x11-misc/xkbset:tk - Install the dev-perl/Tk based xkbset-gui utility
 x11-misc/xlockmore:vtlock - Enables support for virtual terminal locking
 x11-misc/xlockmore:xlockrc - Enables xlockrc for people without PAM
