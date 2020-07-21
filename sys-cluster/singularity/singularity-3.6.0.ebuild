@@ -7,7 +7,7 @@ inherit linux-info
 
 DESCRIPTION="Application containers for Linux"
 HOMEPAGE="https://sylabs.io"
-SRC_URI="https://github.com/sylabs/${PN}/releases/download/v${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/hpcng/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"
