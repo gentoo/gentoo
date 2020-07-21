@@ -9,7 +9,10 @@ all of the lowlevel privileged hardware accesses. The user interface tools are
 "razercfg", a commandline tool; and "qrazercfg", a Qt based graphical device
 configuration tool.
 </longdescription>
-<!-- maintainer-needed -->
+<maintainer type="person">
+	<email>kaikaikai@yandex.ru</email>
+	<name>Alexey Korepanov</name>
+</maintainer>
 <use>
 	<flag name="pm-utils">Installs the pm-utils hooks for suspend/resume and
 		requires <pkg>sys-power/pm-utils</pkg></flag>
