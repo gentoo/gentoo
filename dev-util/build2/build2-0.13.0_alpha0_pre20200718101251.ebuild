@@ -43,21 +43,27 @@ b() {
 
 src_prepare() {
 	printf 'cxx.libs += %s\ncxx.poptions += %s\n' \
-		"-L${EPREFIX}/usr/$(get_libdir) $($(tc-getPKG_CONFIG) sqlite3 --libs)" "$($(tc-getPKG_CONFIG) sqlite3 --cflags)" >> \
-		libodb-sqlite/buildfile
+		"-L${EPREFIX}/usr/$(get_libdir) $($(tc-getPKG_CONFIG) sqlite3 --libs)" \
+		"$($(tc-getPKG_CONFIG) sqlite3 --cflags)" >> \
+		libodb-sqlite/buildfile \
+		|| die
 	sed \
 		-e 's:libsqlite3[/]\?::' \
-		-i buildfile build/bootstrap.build
+		-i buildfile build/bootstrap.build \
+		|| die
 
 	if has_version dev-util/pkgconf; then
-		for i in build2/buildfile libbuild2/buildfile; do
+		for i in build2/build2/buildfile build2/libbuild2/buildfile; do
 			printf 'cxx.libs += %s\ncxx.poptions += %s\n' \
-				"$($(tc-getPKG_CONFIG) libpkgconf --libs)" "$($(tc-getPKG_CONFIG) libpkgconf --cflags)" >> \
-				"${i}"
+				"$($(tc-getPKG_CONFIG) libpkgconf --libs)" \
+				"$($(tc-getPKG_CONFIG) libpkgconf --cflags)" >> \
+				"${i}" \
+				|| die
 		done
 		sed \
 			-e 's:libpkgconf[/]\?::' \
-			-i buildfile build/bootstrap.build
+			-i buildfile build/bootstrap.build \
+			|| die
 	fi
 
 	default
@@ -65,9 +71,9 @@ src_prepare() {
 
 src_configure() {
 	emake -C build2 -f bootstrap.gmake \
-		  CXX=$(tc-getCXX) \
-		  CXXFLAGS="${CXXFLAGS}" \
-		  LDFLAGS="${LDFLAGS}"
+		CXX=$(tc-getCXX) \
+		CXXFLAGS="${CXXFLAGS}" \
+		LDFLAGS="${LDFLAGS}"
 
 	b configure \
 		config.cxx="$(tc-getCXX)" \
@@ -96,6 +102,6 @@ src_test() {
 
 src_install() {
 	b install
-	mkdir -p "${ED}"/usr/share/doc/${PF}/html
+	mkdir -p "${ED}"/usr/share/doc/${PF}/html || die
 	mv -f "${ED}"/usr/share/doc/${PF}/*.xhtml "${ED}"/usr/share/doc/${PF}/html
 }
