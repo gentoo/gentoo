@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Extensible and flexible object <-> relational mapper"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~ppc-aix"
+KEYWORDS="~amd64 ~x86"
 IUSE="test admin admin-script deploy replicated"
 RESTRICT="!test? ( test )"
 

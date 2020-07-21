@@ -3,9 +3,9 @@
 
 EAPI=7
 
-inherit rpm pax-utils systemd
+inherit rpm systemd
 
-MY_P="Nessus-${PV}-es7"
+MY_P="Nessus-${PV}-es8"
 
 DESCRIPTION="A remote security scanner for Linux"
 HOMEPAGE="https://www.tenable.com/"
@@ -22,6 +22,7 @@ QA_PREBUILT="opt/nessus/bin/nasl
 	opt/nessus/bin/nessus-mkrand
 	opt/nessus/lib/nessus/libjemalloc.so.2
 	opt/nessus/lib/nessus/libnessus-glibc-fix.so
+	opt/nessus/lib/nessus/iconv/*.so
 	opt/nessus/sbin/nessus-service
 	opt/nessus/sbin/nessuscli
 	opt/nessus/sbin/nessusd"
@@ -36,8 +37,6 @@ pkg_nofetch() {
 src_install() {
 	# Using doins -r would strip executable bits from all binaries
 	cp -pPR "${S}"/opt "${D}"/ || die "Failed to copy files"
-
-	pax-mark m "${D}"/opt/nessus/sbin/nessusd
 
 	# Make sure these originally empty directories do not vanish,
 	# Nessus will not run properly without them
