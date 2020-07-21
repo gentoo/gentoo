@@ -5,6 +5,10 @@
 		<email>jlec@gentoo.org</email>
 		<name>Justin Lecher</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
 	<use>
 		<flag name="network">Install network plug-ins</flag>
 		<flag name="suid">Install SUID helper binary</flag>
