@@ -10422,7 +10422,7 @@ dev-util/imediff2 1.1.2-r5: An interactive, user friendly 2-way merge tool in te
 dev-util/include-what-you-use 10.0: Find unused include directives in C/C++ programs
 dev-util/indent 2.2.11-r1 2.2.11_p5 2.2.12: Indent program source files
 dev-util/intel-graphics-compiler 1.0.4111: LLVM-based OpenCL compiler targetting Intel Gen graphics hardware
-dev-util/intel-ocl-sdk 2.0.31360 4.4.0.117-r1 4.4.0.117-r2: Intel's implementation of the OpenCL standard
+dev-util/intel-ocl-sdk 4.4.0.117-r2: Intel's implementation of the OpenCL standard
 dev-util/intltool 0.51.0-r2: Internationalization Tool Collection
 dev-util/its4 1.1.1-r1: ITS4: Software Security Tool
 dev-util/itstool 2.0.6-r1: Translation tool for XML documents that uses gettext files and ITS rules

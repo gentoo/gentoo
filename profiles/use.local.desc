@@ -2958,7 +2958,6 @@ dev-util/intel-ocl-sdk:android - Install android related files
 dev-util/intel-ocl-sdk:system-boost - Use system boost (dev-libs/boost) instead of bundled one
 dev-util/intel-ocl-sdk:system-clang - Use system clang (sys-devel/clang) instead of bundled one
 dev-util/intel-ocl-sdk:system-tbb - Use system Thread Building Blocks (dev-cpp/tbb) instead of bundled one
-dev-util/intel-ocl-sdk:tools - Install Intel Offline Compiler
 dev-util/kdevelop:gdbui - Enable GUI for attaching GDB to a running process
 dev-util/kdevelop:hex - Enable hex editor plugin via app-editors/okteta
 dev-util/kdevelop:qmake - Enable support for QMake build system
