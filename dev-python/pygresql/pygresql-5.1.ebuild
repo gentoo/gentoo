@@ -11,7 +11,7 @@ inherit distutils-r1 postgres
 MY_P="PyGreSQL-${PV}"
 
 DESCRIPTION="A Python interface for the PostgreSQL database"
-HOMEPAGE="http://www.pygresql.org/"
+HOMEPAGE="https://pygresql.org/"
 SRC_URI="mirror://pypi/P/PyGreSQL/${MY_P}.tar.gz"
 
 LICENSE="POSTGRESQL"
