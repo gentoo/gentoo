@@ -3070,7 +3070,7 @@ app-xemacs/dictionary 1.16 1.18: Interface to RFC2229 dictionary servers
 app-xemacs/dired 1.17 1.19 1.20 1.22: Manage file systems
 app-xemacs/docbookide 0.08 0.10: DocBook editing support
 app-xemacs/easypg 1.02 1.03-r1 1.05: GnuPG interface for Emacs
-app-xemacs/ebuild-mode 1.50: Emacs modes for editing ebuilds and other Gentoo specific files
+app-xemacs/ebuild-mode 1.50 1.51: Emacs modes for editing ebuilds and other Gentoo specific files
 app-xemacs/ecb 1.25: Emacs source code browser
 app-xemacs/ecrypto 0.20 0.21 0.23: Crypto functionality in Emacs Lisp
 app-xemacs/ede 1.07: Emacs Development Environment

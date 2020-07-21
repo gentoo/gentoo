@@ -1,0 +1,11 @@
+BDEPEND=>=app-editors/xemacs-21.4.20-r5 app-xemacs/sh-script
+DEFINED_PHASES=compile install
+DESCRIPTION=Emacs modes for editing ebuilds and other Gentoo specific files
+EAPI=7
+HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Emacs
+KEYWORDS=~amd64 ~hppa ~x86
+LICENSE=GPL-2+
+RDEPEND=>=app-editors/xemacs-21.4.20-r5 app-xemacs/sh-script
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~ulm/emacs/ebuild-mode-1.51.tar.xz
+_md5_=b288d83c02d668c56858745182ff40ea
