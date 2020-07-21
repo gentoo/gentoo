@@ -26,6 +26,6 @@ src_prepare() {
 
 pkg_postinst() {
 	optfeature "CPU Temperature support" sys-apps/lm-sensors
-	optfeature "Update news and Theme Downlaod feature" net-misc/curl
+	optfeature "Update news and Download Themes" net-misc/curl
 	optfeature "Disk Stats support" app-admin/sysstat
 }
