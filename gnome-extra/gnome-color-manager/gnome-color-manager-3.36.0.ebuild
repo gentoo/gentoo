@@ -30,6 +30,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-remove-libcanberra-include.patch # should be in next upstream release
+)
+
 src_configure() {
 	# Always enable tests since they are check_PROGRAMS anyway
 	local emesonargs=(
