@@ -740,7 +740,7 @@ app-backup/backintime 1.2.1 9999: Backup system inspired by TimeVault and FlyBac
 app-backup/backup-manager 0.7.14 0.7.14-r1: Backup Manager is a command line backup tool for GNU/Linux
 app-backup/backupninja 1.0.1-r1 1.1.0: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
-app-backup/bacula 9.4.4-r2 9.4.4-r3 9.6.3 9.6.3-r1 9.6.5: Featureful client/server network backup suite
+app-backup/bacula 9.6.5: Featureful client/server network backup suite
 app-backup/bareos 17.2.9 18.2.8 19.2.7: Featureful client/server network backup suite
 app-backup/borgbackup 1.1.11-r2 1.1.13 9999: Deduplicating backup program with compression and authenticated encryption
 app-backup/borgmatic 1.5.6 1.5.8: Automatically create, prune and verify backups with borgbackup
@@ -8023,7 +8023,7 @@ dev-python/libnacl 1.6.1: Python ctypes wrapper for libsodium
 dev-python/libpillowfight 0.3.0: Small library containing various image processing algorithms
 dev-python/libsass 0.20.0: A straightforward binding of libsass for Python
 dev-python/libtmux 0.8.2-r1 0.8.2-r2: python api for tmux
-dev-python/libvirt-python 6.0.0 6.1.0 6.2.0 9999: libvirt Python bindings
+dev-python/libvirt-python 6.2.0 9999: libvirt Python bindings
 dev-python/line_profiler 3.0.2: Line-by-line profiler
 dev-python/linecache2 1.0.0: Backports of the linecache module
 dev-python/lit 8.0.1 9.0.1 10.0.0 10.0.1_rc1 10.0.1_rc2 10.0.1_rc3 10.0.1_rc4 10.0.1.9999 11.0.0.9999 12.0.0.9999: A stand-alone install of the LLVM suite testing tool
@@ -8373,7 +8373,7 @@ dev-python/pyh2o 9999: Python API for sci-libs/libh2o
 dev-python/pyhamcrest 1.9.0-r1 1.10.1 2.0.2: Hamcrest framework for matcher objects
 dev-python/pyicu 2.4.3 2.5: Python bindings for dev-libs/icu
 dev-python/pyid3lib 0.5.1-r2: Module for manipulating ID3 tags in Python
-dev-python/pyilmbase 2.3.0-r2: IlmBase Python bindings
+dev-python/pyilmbase 2.3.0-r2 2.5.2: IlmBase Python bindings
 dev-python/pyinotify 0.9.6: Python module used for monitoring filesystems events
 dev-python/pyinsane 2.0.13: Python implementation of the Sane API and abstration layer
 dev-python/pyjwt 1.7.1-r1: JSON Web Token implementation in Python
@@ -12738,7 +12738,7 @@ media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing
 media-libs/icc-profiles-openicc 1.3.1: ICC color profiles by OpenICC
 media-libs/icclib 2.14: Library for reading and writing ICC color profile files
 media-libs/id3lib 3.8.3-r8: Id3 library for C/C++
-media-libs/ilmbase 2.3.0: OpenEXR ILM Base libraries
+media-libs/ilmbase 2.3.0 2.5.2: OpenEXR ILM Base libraries
 media-libs/imlib 1.9.15-r5: Image loading and rendering library
 media-libs/imlib2 1.6.1: Version 2 of an advanced replacement library for libraries like libXpm
 media-libs/intel-mediasdk 18.3.0 18.4.1 9999: Intel Media SDK
@@ -12936,7 +12936,7 @@ media-libs/opencolorio 1.1.0-r4: A color management framework for visual effects
 media-libs/opencore-amr 0.1.3-r1 0.1.4 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
 media-libs/opencv 4.1.2-r3: A collection of algorithms and sample code for various computer vision problems
-media-libs/openexr 2.3.0: ILM's OpenEXR high dynamic-range image file format libraries
+media-libs/openexr 2.3.0 2.5.2: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openglide 0.09_rc9_p20191120: A Glide to OpenGL wrapper
 media-libs/openh264 1.7.0-r1 2.1.0 2.1.1: Cisco OpenH264 library and Gecko Media Plugin for Mozilla packages
@@ -15457,7 +15457,7 @@ sci-astronomy/gasgano 2.4.8: ESO astronomical data file organizer
 sci-astronomy/gnuastro 0.3: GNU Astronomy Utilities
 sci-astronomy/healpix 3.30 3.31: Hierarchical Equal Area isoLatitude Pixelization of a sphere
 sci-astronomy/idlastro 20161220 99999999: Astronomical user routines for IDL
-sci-astronomy/kstars 3.3.9 3.4.2: Desktop Planetarium
+sci-astronomy/kstars 3.3.9 3.4.2 3.4.3: Desktop Planetarium
 sci-astronomy/missfits 2.8.0: Performs basic maintenance and packaging tasks on FITS files
 sci-astronomy/montage 4.1 5.0: Toolkit for assembling FITS images into mosaics
 sci-astronomy/pal 0.9.7: Positional Astronomy Library
@@ -17441,6 +17441,7 @@ sys-process/anacron 2.3-r4: a periodic command scheduler
 sys-process/at 3.1.23 3.2.1: Queues jobs for later execution
 sys-process/atop 2.3.0-r1 2.4.0 2.5.0-r1: Resource-specific view of processes
 sys-process/audit 2.6.4 2.7.1 2.8.2 2.8.3 2.8.4 2.8.5 2.8.5-r1: Userspace utilities for storing and processing auditing records
+sys-process/bashtop 0.9.23: Resource monitor that shows usage and stats
 sys-process/bcron 0.10 0.11: A new cron system designed with secure operations in mind by Bruce Guenter
 sys-process/criu 3.6 3.11 3.12 3.14: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds

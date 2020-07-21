@@ -1,0 +1,10 @@
+DEFINED_PHASES=postinst prepare
+DESCRIPTION=Resource monitor that shows usage and stats
+EAPI=7
+HOMEPAGE=https://github.com/aristocratos/bashtop
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+SLOT=0
+SRC_URI=https://github.com/aristocratos/bashtop/archive/v0.9.23.tar.gz -> bashtop-0.9.23.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5
+_md5_=6356f9bff7b0975ed6b1b0b812cc0ed7
