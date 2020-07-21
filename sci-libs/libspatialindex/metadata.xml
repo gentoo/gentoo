@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+	<maintainer type="project">
+		<email>3dprint@gentoo.org</email>
+		<name>Gentoo 3D print</name>
+	</maintainer>
+	<longdescription>
+		Extensible framework for robust spatial indexing
+	</longdescription>
+	<slots>
+		<subslots>Soname version number of libspatialindex</subslots>
+	</slots>
+	<upstream>
+		<remote-id type="github">libspatialindex/libspatialindex</remote-id>
+	</upstream>
 </pkgmetadata>
