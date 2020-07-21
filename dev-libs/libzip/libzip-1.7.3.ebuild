@@ -37,6 +37,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-missing-header.patch ) # bug 733326
+
 pkg_setup() {
 	# Upstream doesn't support building dynamic & static
 	# simultaneously: https://github.com/nih-at/libzip/issues/76
