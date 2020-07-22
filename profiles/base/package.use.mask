@@ -7,6 +7,11 @@
 # mask everywhere, unmask on arch/*) use arch/base.
 
 # Michał Górny <mgorny@gentoo.org> (2020-07-25)
+# Requires Python 2 support in xapian-bindings which in turn require
+# Python 2 in dev-python/sphinx.
+<www-apps/roundup-3 xapian
+
+# Michał Górny <mgorny@gentoo.org> (2020-07-25)
 # Requires dev-python/beautifulsoup with py2 support.
 <=sys-cluster/charm-6.8.2 doc
 
