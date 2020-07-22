@@ -1,6 +1,6 @@
-BDEPEND=virtual/pkgconfig
+BDEPEND=virtual/pkgconfig virtual/pkgconfig
 DEFINED_PHASES=prepare
-DEPEND=>=sys-apps/systemd-207 virtual/pkgconfig
+DEPEND=>=sys-apps/systemd-207
 DESCRIPTION=systemd integration files for Gentoo
 EAPI=7
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Systemd
@@ -10,4 +10,4 @@ RDEPEND=>=sys-apps/systemd-207 !sys-fs/eudev !sys-fs/udev
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~mgorny/dist/gentoo-systemd-integration-8.tar.bz2
 _eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=6fe6d238a5fa79127474e27a34f7bf26
+_md5_=3eb72b1c63155e8f2abbea0a0286032f
