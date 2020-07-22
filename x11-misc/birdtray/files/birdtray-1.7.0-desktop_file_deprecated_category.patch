@@ -1,9 +1,0 @@
---- a/src/res/com.ulduzsoft.Birdtray.desktop
-+++ b/src/res/com.ulduzsoft.Birdtray.desktop
-@@ -28,5 +28,5 @@
- X-MultipleArgs=false
- Type=Application
- Icon=com.ulduzsoft.Birdtray
--Categories=Application;Network;Email;
-+Categories=Network;Email;
- StartupNotify=true
