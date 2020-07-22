@@ -10,12 +10,11 @@ LICENSE="MIT"
 
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ppc ppc64 sparc x86"
-IUSE="doc +gtk gtk2 ipv6 gssapi"
 SRC_URI="
 	https://dev.gentoo.org/~jer/${PN}-icons.tar.bz2
 	https://the.earth.li/~sgtatham/${PN}/${PV}/${P}.tar.gz
 "
-
+IUSE="doc +gtk gtk2 ipv6 gssapi"
 RDEPEND="
 	!net-misc/pssh
 	gtk? (
@@ -30,8 +29,13 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+"
+BDEPEND="
 	dev-lang/perl
 	virtual/pkgconfig
+"
+REQUIRED_USE="
+	gtk2? ( gtk )
 "
 
 src_prepare() {

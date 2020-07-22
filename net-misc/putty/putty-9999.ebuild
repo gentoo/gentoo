@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,9 +28,14 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+"
+BDEPEND="
 	app-doc/halibut
 	dev-lang/perl
 	virtual/pkgconfig
+"
+REQUIRED_USE="
+	gtk2? ( gtk )
 "
 
 src_unpack() {
