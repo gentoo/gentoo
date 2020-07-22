@@ -184,6 +184,7 @@ in /etc/chromium/default.
 "
 
 PATCHES=(
+	"${FILESDIR}/chromium-84-pipewire.patch"
 	"${FILESDIR}/chromium-84-mediaalloc.patch"
 )
 
