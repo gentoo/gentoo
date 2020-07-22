@@ -35,6 +35,7 @@
 # Hans de Graaff <graaff@gentoo.org> (2020-07-22)
 # Mask old obsolete slots for removal in 30 days.
 # Use a newer slot of the same package instead.
+dev-ruby/pcabrub:0.12
 dev-ruby/rack-protection:1
 dev-ruby/rainbow:0
 dev-ruby/rainbow:2
