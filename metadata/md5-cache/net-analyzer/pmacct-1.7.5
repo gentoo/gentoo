@@ -1,0 +1,15 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
+DEPEND=net-libs/libpcap geoip? ( dev-libs/geoip ) geoipv2? ( dev-libs/libmaxminddb ) jansson? ( dev-libs/jansson ) kafka? ( dev-libs/librdkafka ) mysql? ( dev-db/mysql-connector-c:0= ) ndpi? ( >=net-libs/nDPI-3.2:= ) nflog? ( net-libs/libnetfilter_log ) postgres? ( dev-db/postgresql:* ) rabbitmq? ( net-libs/rabbitmq-c ) sqlite? ( =dev-db/sqlite-3* ) zmq? ( >=net-libs/zeromq-4.2.0:= ) virtual/pkgconfig
+DESCRIPTION=A network tool to gather IP traffic information
+EAPI=7
+HOMEPAGE=http://www.pmacct.net/
+IUSE=+bgp-bins +bmp-bins geoip geoipv2 jansson kafka +l2 mysql ndpi nflog plabel postgres rabbitmq sqlite +st-bins +traffic-bins zmq
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=net-libs/libpcap geoip? ( dev-libs/geoip ) geoipv2? ( dev-libs/libmaxminddb ) jansson? ( dev-libs/jansson ) kafka? ( dev-libs/librdkafka ) mysql? ( dev-db/mysql-connector-c:0= ) ndpi? ( >=net-libs/nDPI-3.2:= ) nflog? ( net-libs/libnetfilter_log ) postgres? ( dev-db/postgresql:* ) rabbitmq? ( net-libs/rabbitmq-c ) sqlite? ( =dev-db/sqlite-3* ) zmq? ( >=net-libs/zeromq-4.2.0:= )
+REQUIRED_USE=?? ( geoip geoipv2 ) kafka? ( jansson ) rabbitmq? ( jansson )
+SLOT=0
+SRC_URI=https://github.com/pmacct/pmacct/archive/v1.7.5.tar.gz -> pmacct-1.7.5.tar.gz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=8a09da44c2ab395d5eb4e414b22281b2

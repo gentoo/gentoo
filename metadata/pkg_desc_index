@@ -5100,7 +5100,7 @@ dev-libs/libixion 0.15.0 9999: General purpose formula parser & interpreter
 dev-libs/libjcat 0.1.3 0.1.3-r1: Library and tool for reading and writing Jcat files
 dev-libs/libkpass 6-r1: Libkpass is a C implementation to access KeePass 1.x format password databases
 dev-libs/libksba 1.3.5-r1 1.3.5-r2 1.4.0: X.509 and CMS (PKCS#7) library
-dev-libs/liblinear 210-r1 221 230: A Library for Large Linear Classification
+dev-libs/liblinear 210-r1 221 230 240: A Library for Large Linear Classification
 dev-libs/liblist 2.4: Generic linked-list manipulation routines, plus queues and stacks
 dev-libs/liblogging 1.0.6: Liblogging is an easy to use, portable, open source library for system logging
 dev-libs/liblognorm 2.0.6: Fast samples-based log normalization library
@@ -13974,7 +13974,7 @@ net-analyzer/ipguard 1.04-r1: Tool designed to protect LAN IP adress space by AR
 net-analyzer/iplog 2.2.3-r2: iplog is a TCP/IP traffic logger
 net-analyzer/ippl 1.4.14-r6: A daemon which logs TCP/UDP/ICMP packets
 net-analyzer/ipsumdump 1.85 1.86 1.86-r1: Simple TCP/IP Dump summarizer/analyzer
-net-analyzer/iptraf-ng 1.1.4-r1 1.1.4-r2 1.1.4-r3 1.2.0-r1 9999: A console-based network monitoring utility
+net-analyzer/iptraf-ng 1.1.4-r1 1.2.0-r1 1.2.1 9999: A console-based network monitoring utility
 net-analyzer/iptstate 2.2.5 2.2.6: IP Tables State displays states being kept by iptables in a top-like format
 net-analyzer/ipv6toolkit 2.1_p20190919 2.1_p20200412 99999999: Set of IPv6 security/trouble-shooting tools to send arbitrary IPv6-based packets
 net-analyzer/isic 0.07-r1: IP Stack Integrity Checker
@@ -14075,7 +14075,7 @@ net-analyzer/pbgpp 0.2.10: PCAP BGP Parser
 net-analyzer/pbnj 2.04 2.04-r1: A tool for running Nmap scans and diff'ing the results
 net-analyzer/pinger 0.32e 0.33: Cyclic multi ping utility for selected adresses using GTK/ncurses
 net-analyzer/pktstat 1.8.5-r1: A network monitoring tool with bandwidth tracking
-net-analyzer/pmacct 1.6.2 1.7.1-r1 1.7.2-r1 1.7.3-r2 1.7.4 1.7.4_p1 999999: A network tool to gather IP traffic information
+net-analyzer/pmacct 1.6.2 1.7.1-r1 1.7.2-r1 1.7.3-r2 1.7.4 1.7.4_p1 1.7.5 999999: A network tool to gather IP traffic information
 net-analyzer/pnp4nagios 0.6.26-r9: A performance data analyzer for nagios
 net-analyzer/poink 2.03: TCP/IP-based ping implementation
 net-analyzer/portmon 2.0 2.0-r1: Portmon is a network service monitoring daemon
@@ -14580,7 +14580,7 @@ net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP pr
 net-libs/nghttp2 1.41.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 8.12.0 10.19.0 10.20.1 10.21.0 12.16.1 12.16.2 12.16.3 12.17.0 14.2.0 14.3.0 14.4.0 14.5.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 8.12.0 10.19.0 10.20.1 10.21.0 12.16.1 12.16.2 12.16.3 12.17.0 14.2.0 14.3.0 14.4.0 14.5.0 14.6.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.7.1 1.7.4 3.0 3.2: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -18382,7 +18382,7 @@ x11-misc/xkblayout-state 0_p20180118 9999: A small program to get/set the curren
 x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.29 2.30 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2 2.47_p7: GUI frontend to xmodmap
-x11-misc/xlockmore 5.50 5.62 5.63 5.64 5.65_alpha0: Just another screensaver application for X
+x11-misc/xlockmore 5.50 5.62 5.63 5.64 5.65: Just another screensaver application for X
 x11-misc/xmobar 0.24.3-r1: A Minimalistic Text Based Status Bar
 x11-misc/xmonad-log-applet 2.0.0-r301: Gnome and XFCE applet for displaying XMonad log
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
