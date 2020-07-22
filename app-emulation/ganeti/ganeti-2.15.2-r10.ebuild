@@ -259,28 +259,30 @@ src_prepare() {
 	# 24618882737fd7c189adf99f4acc767d48f572c3
 	sed -i \
 		-e '/QuickCheck/s,< 2.8,< 2.8.3,g' \
-		cabal/ganeti.template.cabal
+		cabal/ganeti.template.cabal || die
 	# Neuter -Werror
 	sed -i \
 		-e '/^if DEVELOPER_MODE/,/^endif/s/-Werror//' \
-		Makefile.am
+		Makefile.am || die
 
 	# not sure why these tests are failing
 	# should remove this on next version bump if possible
 	for testfile in test/py/import-export_unittest.bash; do
-		printf '#!/bin/bash\ntrue\n' > "${testfile}"
+		printf '#!/bin/bash\ntrue\n' > "${testfile}" || die
 	done
 
 	# take the sledgehammer approach to bug #526270
-	grep -lr '/bin/sh' "${S}" | xargs -r -- sed -i 's:/bin/sh:/bin/bash:g'
+	grep -lr '/bin/sh' "${S}" | xargs -r -- sed -i 's:/bin/sh:/bin/bash:g' || die
 
 	sed "s:%LIBDIR%:$(get_libdir):g" "${FILESDIR}/ganeti.initd-r4" \
-		> "${T}/ganeti.initd"
+		> "${T}/ganeti.initd" || die
 
 	eapply_user
 
-	[[ ${PV} =~ [9]{4,} ]] && ./autogen.sh
-	rm autotools/missing
+	if [[ ${PV} =~ [9]{4,} ]]; then
+		./autogen.sh || die
+	fi
+	rm autotools/missing || die
 	eautoreconf
 }
 
@@ -329,9 +331,9 @@ src_install() {
 	fi
 
 	# ganeti installs it's own docs in a generic location
-	rm -rf "${D}"/{usr/share/doc/${PN},run}
+	rm -rf "${D}"/{usr/share/doc/${PN},run} || die
 
-	sed -i "s:/usr/$(get_libdir)/${PN}/tools/burnin:burnin:" doc/examples/bash_completion
+	sed -i "s:/usr/$(get_libdir)/${PN}/tools/burnin:burnin:" doc/examples/bash_completion || die
 	newbashcomp doc/examples/bash_completion gnt-instance
 	bashcomp_alias gnt-instance burnin ganeti-{cleaner,confd} \
 		h{space,check,scan,info,ail,arep,roller,squeeze,bal} \
