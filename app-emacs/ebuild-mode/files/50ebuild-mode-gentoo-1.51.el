@@ -12,7 +12,7 @@
 	       . gentoo-newsitem-mode))
 (add-to-list 'auto-mode-alist '("/glep.*\\.rst\\'" . glep-mode))
 (add-to-list 'auto-mode-alist
-	     '("/\\(package\\.\\(use\\|env\
+	     '("/\\(package\\.\\(mask\\|unmask\\|use\\|env\
 \\|license\\|properties\\|accept_\\(keywords\\|restrict\\)\\)\
 \\|\\(package\\.\\)?use.\\(stable\\.\\)?\\(force\\|mask\\)\\)\\'"
 	       . conf-mode))
