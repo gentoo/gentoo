@@ -44,25 +44,31 @@ src_prepare() {
 }
 
 src_compile() {
-	local CXPROLOG_EXT_LIBS
+	local CX_EXT_DEFINES
+	local CX_EXT_CFLAGS
+	local CX_EXT_LDFLAGS
+	local CX_EXT_LIBS
 
 	if use readline; then
-		append-cflags "-DUSE_READLINE"
-		CXPROLOG_EXT_LIBS="$CXPROLOG_EXT_LIBS -lreadline"
+		CX_EXT_DEFINES="$CX_EXT_DEFINES -DUSE_READLINE"
+		CX_EXT_LIBS="$CX_EXT_LIBS -lreadline"
 	fi
 
 	if use java; then
 		local java_arch
 		use x86 && java_arch=i386
 		use amd64 && java_arch=amd64
-		CXPROLOG_JVM="${JAVA_HOME}/jre/lib/${java_arch}/server"
-		append-cflags "-DUSE_JAVA $(java-pkg_get-jni-cflags) -Wl,-rpath,${CXPROLOG_JVM}"
-		CXPROLOG_EXT_LIBS="$CXPROLOG_EXT_LIBS -L${CXPROLOG_JVM} -ljvm -Wl,-rpath,${CXPROLOG_JVM}"
+		CX_JVM="${JAVA_HOME}/jre/lib/${java_arch}/server"
+		CX_EXT_DEFINES="$CX_EXT_DEFINES -DUSE_JAVA"
+		CX_EXT_CFLAGS="$CX_EXT_CFLAGS $(java-pkg_get-jni-cflags)"
+		CX_EXT_LDFLAGS="$CX_EXT_LDFLAGS -Wl,-rpath,${CX_JVM}"
+		CX_EXT_LIBS="$CX_EXT_LIBS -L${CX_JVM} -ljvm"
 	fi
 
 	if use wxwidgets; then
-		append-cflags "-DUSE_WXWIDGETS $(${WX_CONFIG} --cflags)"
-		CXPROLOG_EXT_LIBS="$CXPROLOG_EXT_LIBS $(${WX_CONFIG} --libs)"
+		CX_EXT_DEFINES="$CX_EXT_DEFINES -DUSE_WXWIDGETS"
+		CX_EXT_CFLAGS="$CX_EXT_CFLAGS $(${WX_CONFIG} --cflags)"
+		CX_EXT_LIBS="$CX_EXT_LIBS $(${WX_CONFIG} --libs)"
 	fi
 
 	emake lib \
@@ -71,8 +77,12 @@ src_compile() {
 		CC=$(tc-getCC) \
 		CPP=$(tc-getCXX) \
 		LD=$(tc-getLD) \
-		CFLAGS="-g -Wall ${CFLAGS}" \
-		EXT_LIBS="${CXPROLOG_EXT_LIBS}"
+		CFLAGS="${CFLAGS}" \
+		LDFLAGS="${LDFLAGS}" \
+		EXT_DEFINES="${CX_EXT_DEFINES}" \
+		EXT_CFLAGS="-Wall ${CX_EXT_CFLAGS}" \
+		EXT_LDFLAGS="${CX_EXT_LDFLAGS}" \
+		EXT_LIBS="${CX_EXT_LIBS}"
 
 	if use java; then
 		JAVA_SRC_DIR="${S}/lib/cxprolog/java"
