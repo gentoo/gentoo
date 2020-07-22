@@ -20,8 +20,8 @@ fi
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-IUSE="+crypt doc examples libressl slz net_ns +pcre pcre-jit pcre2 pcre2-jit ssl
-systemd +threads tools vim-syntax +zlib lua device-atlas 51degrees wurfl"
+IUSE="+crypt doc examples libressl slz +net_ns +pcre pcre-jit pcre2 pcre2-jit prometheus-exporter
+ssl systemd +threads tools vim-syntax +zlib lua device-atlas 51degrees wurfl"
 REQUIRED_USE="pcre-jit? ( pcre )
 	pcre2-jit? ( pcre2 )
 	pcre? ( !pcre2 )
@@ -74,9 +74,7 @@ pkg_setup() {
 src_compile() {
 	local -a args=(
 		V=1
-		TARGET=linux2628
-		USE_GETADDRINFO=1
-		USE_TFO=1
+		TARGET=linux-glibc
 	)
 
 	# TODO: PCRE2_WIDTH?
@@ -99,7 +97,17 @@ src_compile() {
 	# For now, until the strict-aliasing breakage will be fixed
 	append-cflags -fno-strict-aliasing
 
-	emake CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) ${args[@]}
+	# Bug #668002
+	if use ppc || use arm || use hppa; then
+		TARGET_LDFLAGS=-latomic
+	fi
+
+	if use prometheus-exporter; then
+		EXTRA_OBJS="contrib/prometheus-exporter/service-prometheus.o"
+	fi
+
+	# HAProxy really needs some of those "SPEC_CFLAGS", like -fno-strict-aliasing
+	emake CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) EXTRA_OBJS="${EXTRA_OBJS}" TARGET_LDFLAGS="${TARGET_LDFLAGS}" ${args[@]}
 	emake -C contrib/systemd SBINDIR=/usr/sbin
 
 	if use tools ; then
@@ -148,12 +156,12 @@ src_install() {
 	if use examples ; then
 		docinto examples
 		dodoc examples/*.cfg
-		dodoc examples/seamless_reload.txt
+		dodoc doc/seamless_reload.txt
 	fi
 
 	if use vim-syntax ; then
 		insinto /usr/share/vim/vimfiles/syntax
-		doins examples/haproxy.vim
+		doins contrib/syntax-highlight/haproxy.vim
 	fi
 }
 
