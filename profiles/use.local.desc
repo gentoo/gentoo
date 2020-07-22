@@ -4079,6 +4079,7 @@ media-gfx/exiv2:webready - Support reading metadata over the internet
 media-gfx/fbida:X - Install the Motif based image viewer "ida"
 media-gfx/fbida:fbcon - Install the framebuffer image viewer "fbi"
 media-gfx/fbida:ghostscript - Install the framebuffer ghostscript viewer "fbgs"
+media-gfx/fdm-materials:embedded - Build for Ultimaker Embedded software
 media-gfx/fim:bmp - Enable BMP file support
 media-gfx/fim:dia - Enable DIA file support via app-office/dia
 media-gfx/fim:imagemagick - Use convert from media-gfx/imagemagick as fallback file opener

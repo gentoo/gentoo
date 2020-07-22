@@ -4797,7 +4797,7 @@ dev-lang/lfe 0.7 0.10.1 1.0 1.1.1: Lisp-flavoured Erlang
 dev-lang/lisaac 0.13.1-r2: An object prototype based language
 dev-lang/logtalk 3.18.0 3.36.0: Open source object-oriented logic programming language
 dev-lang/lua 5.1.5-r4 5.1.5-r5 5.1.5-r100 5.1.5-r101 5.1.5-r102 5.1.5-r103 5.2.3 5.2.3-r1 5.2.3-r2 5.2.3-r3 5.2.4 5.2.4-r1 5.2.4-r2 5.3.3 5.3.3-r1 5.3.3-r2 5.3.5 5.3.5-r1 5.3.5-r2: A powerful light-weight programming language designed for extending applications
-dev-lang/luajit 2.0.5-r1 2.1.0_beta3: Just-In-Time Compiler for the Lua programming language
+dev-lang/luajit 2.0.5-r1 2.0.5-r2 2.1.0_beta3 2.1.0_beta3-r1: Just-In-Time Compiler for the Lua programming language
 dev-lang/maude 2.7: High-level specification language for equational and logic programming
 dev-lang/mercury 14.01.1-r1 20.01 20.01.1 20.01.2: Mercury is a modern general-purpose logic/functional programming language
 dev-lang/mercury-extras 14.01.1 20.01 20.01.1 20.01.2: Additional libraries and tools that are not part of the Mercury standard library
@@ -12457,7 +12457,7 @@ media-gfx/exiv2 0.27.3: EXIF, IPTC and XMP metadata C++ library and command line
 media-gfx/farbfeld 4 9999: farbfeld simple image format tools
 media-gfx/fbgrab 1.3 1.3.3: Framebuffer screenshot utility
 media-gfx/fbida 2.12 2.13-r1 2.14 9999: Image viewers for the framebuffer console (fbi) and X11 (ida)
-media-gfx/fdm-materials 3.4.1 3.6.0 4.2.0 4.3.0 4.6.1: FDM materials for media-gfx/cura
+media-gfx/fdm-materials 3.4.1 3.6.0 4.2.0 4.3.0 4.6.1 4.6.1-r1: FDM materials for media-gfx/cura
 media-gfx/feh 3.3 3.4 3.4.1: A fast, lightweight imageviewer using imlib2
 media-gfx/figurine 1.0.5-r1: A vector based graphics editor similar to xfig, but simpler
 media-gfx/fim 0.5_rc3: Fbi-IMproved is a framebuffer image viewer based on Fbi and inspired from Vim
@@ -14239,7 +14239,7 @@ net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.9.0 3.9.2 3.10.0: A framework for managing DNS information
 net-dns/pdns 4.1.13 4.2.0 4.2.1 4.2.1-r1 4.2.2 4.3.0: The PowerDNS Daemon
-net-dns/pdns-recursor 4.3.1 4.3.1-r1 4.3.2 4.3.3: The PowerDNS Recursor
+net-dns/pdns-recursor 4.3.2 4.3.3: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1 1.2.9a-r2: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998b-r2: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.5 1.1.6: Wrapper for DNS name resolving or DNS faking
