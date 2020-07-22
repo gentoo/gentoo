@@ -312,6 +312,7 @@ sci-chemistry/pymol-plugins-promol
 sci-chemistry/relax
 sci-chemistry/sparky
 www-apps/viewvc
+www-misc/surl
 x11-misc/nts
 
 # Stephan Hartmann <stha09@googlemail.com> (2020-06-29)
