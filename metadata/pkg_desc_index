@@ -4982,7 +4982,7 @@ dev-libs/input-pad 1.0.99_pre20140916: On-screen input pad to send characters wi
 dev-libs/intel-neo 20.16.16582: Intel Graphics Compute Runtime for L0 and OpenCL, for Broadwell and beyond
 dev-libs/isl 0.22.1: A library for manipulating integer points bounded by linear constraints
 dev-libs/ivykis 0.42.2 0.42.3-r1 0.42.4: Library for asynchronous I/O readiness notification
-dev-libs/jansson 2.10 2.11 2.12 2.13.1: C library for encoding, decoding and manipulating JSON data
+dev-libs/jansson 2.12 2.13.1: C library for encoding, decoding and manipulating JSON data
 dev-libs/jemalloc 3.6.0 4.4.0 4.5.0 5.0.1 5.1.0 5.2.0 5.2.1: Jemalloc is a general-purpose scalable concurrent allocator
 dev-libs/jerasure 2.0.0-r1 2.0.0-r2: A Library in C Facilitating Erasure Coding for Storage Applications
 dev-libs/json-c 0.12 0.13.1-r1 0.14-r3 9999: A JSON implementation in C
