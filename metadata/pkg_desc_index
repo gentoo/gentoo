@@ -505,7 +505,7 @@ app-admin/gamin 0.1.10-r1: Meta package providing the File Alteration Monitor AP
 app-admin/genromfs 0.5.2: Create space-efficient, small, read-only romfs filesystems
 app-admin/gentoo-perl-helpers 0.3.1-r1 0.4.0: Introspection and Upgrade Assistance tools for Gentoo Perl
 app-admin/gentoo-rsync-mirror 1.0-r5: Ebuild for setting up a Gentoo rsync mirror
-app-admin/github-backup-utils 2.10.0 2.10.0-r1 2.11.0 2.11.0-r1 2.11.1 2.11.1-r1 2.11.2 2.11.2-r1 2.13.0 2.13.2 2.14.2 2.15.0 2.15.1 2.16.1 2.17.0 2.18.0 2.19.1 2.20.2: Backup and recovery utilities for GitHub Enterprise
+app-admin/github-backup-utils 2.10.0 2.10.0-r1 2.11.0 2.11.0-r1 2.11.1 2.11.1-r1 2.11.2 2.11.2-r1 2.13.0 2.13.2 2.14.2 2.15.0 2.15.1 2.16.1 2.17.0 2.18.0 2.19.1 2.20.2 2.21.0: Backup and recovery utilities for GitHub Enterprise
 app-admin/gixy 0.1.20: Nginx configuration static analyzer
 app-admin/gkrellm 2.3.10-r2 2.3.11 2.3.11-r1 9999: Single process stack of various system monitors
 app-admin/glance 20.0.0 2020.1.9999: Services for discovering, registering, and retrieving VM images
@@ -602,7 +602,7 @@ app-admin/sshguard 2.4.0 99999: protects hosts from brute force attacks against 
 app-admin/stow 2.2.2-r1 2.3.1: GNU Stow is a symlink farm manager
 app-admin/su-exec 0.2: Switch user and group id and exec
 app-admin/sud 1.3-r1: A daemon to execute processes with special privileges in a nosuid environment
-app-admin/sudo 1.8.31 1.8.31_p1 1.9.0-r1 1.9.1 1.9.2_rc2 9999: Allows users or groups to run commands as other users
+app-admin/sudo 1.8.31 1.8.31_p1 1.9.0-r1 1.9.1 1.9.2 9999: Allows users or groups to run commands as other users
 app-admin/superadduser 1.0.9 1.15: Interactive adduser script from Slackware
 app-admin/supervisor 4.0.4 4.1.0 4.2.0: A system for controlling process state under UNIX
 app-admin/swatchdog 3.2.4-r1: Simple log watcher
@@ -12921,7 +12921,7 @@ media-libs/lsp-plugins 1.1.5-r2 1.1.7-r1 1.1.10 1.1.22 9999: Linux Studio Plugin
 media-libs/lv2 1.18.0: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 20.0.8 20.1.1 20.1.2 20.1.3 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 20.0.8 20.1.1 20.1.2 20.1.3 20.1.4 9999: OpenGL-like graphic library for Linux
 media-libs/mlt 6.20.0-r2: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
