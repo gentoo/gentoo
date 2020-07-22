@@ -6,7 +6,7 @@ EAPI=7
 # Not all modules needed by py script are packaged in Gentoo
 #PYTHON_COMPAT=( python3_{6..9} )
 
-inherit autotools flag-o-matic gnome2-utils #python-single-r1
+inherit autotools flag-o-matic gnome2-utils xdg #python-single-r1
 
 DESCRIPTION="A graphical user interface to the Apple productline"
 HOMEPAGE="http://www.gtkpod.org/"
@@ -64,7 +64,7 @@ DEPEND="${COMMON_DEPEND}
 "
 
 src_prepare() {
-	default
+	xdg_src_prepare
 
 	eapply "${FILESDIR}"/${PN}-2.1.3-gold.patch
 	eapply "${FILESDIR}"/${PN}-2.1.5-m4a.patch
@@ -114,8 +114,10 @@ src_install() {
 
 pkg_postinst() {
 	gnome2_schemas_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
 	gnome2_schemas_update
+	xdg_pkg_postrm
 }
