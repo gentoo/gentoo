@@ -34,5 +34,11 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_with ftdi) --with-sdl \
-		--with-png --without-bfd
+		--with-png --without-bfd \
+		--disable-static
+}
+
+src_install() {
+	emake DESTDIR="${D}" install
+	find "${D}" -name '*.la' -type f -delete || die
 }
