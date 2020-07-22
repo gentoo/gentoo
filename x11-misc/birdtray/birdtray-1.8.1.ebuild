@@ -28,7 +28,8 @@ RDEPEND="dev-db/sqlite:=
 	dev-qt/qtx11extras:5
 	x11-libs/libX11"
 
-DEPEND="${RDEPEND}"
+DEPEND="dev-qt/linguist-tools:5
+	${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}_qt515.patch
