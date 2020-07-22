@@ -77,7 +77,6 @@ DEPEND="
 		dev-python/pycurl[${PYTHON_MULTI_USEDEP}]
 		dev-python/ipaddr[${PYTHON_MULTI_USEDEP}]
 		dev-python/bitarray[${PYTHON_MULTI_USEDEP}]
-		dev-python/docutils[${PYTHON_MULTI_USEDEP}]
 		dev-python/fdsend[${PYTHON_MULTI_USEDEP}]
 	')
 	|| (
@@ -158,10 +157,6 @@ RDEPEND="${DEPEND}
 	!app-emulation/ganeti-htools"
 DEPEND+="
 	sys-devel/m4
-	app-text/pandoc
-	$(python_gen_cond_dep '
-		dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
-	')
 	media-fonts/urw-fonts
 	media-gfx/graphviz
 	>=dev-haskell/test-framework-0.6:0=
@@ -316,7 +311,12 @@ src_configure() {
 		$(usex haskell-daemons "--enable-confd=haskell" '' '' '') \
 		--with-haskell-flags="-optl -Wl,-z,relro -optl -Wl,--as-needed" \
 		--enable-socat-escape \
-		--enable-socat-compress
+		--enable-socat-compress \
+		SPHINX= \
+		PANDOC=
+
+	touch man/*.gen || die
+	touch man/*.in || die
 }
 
 src_install() {
