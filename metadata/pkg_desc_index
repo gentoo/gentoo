@@ -4853,7 +4853,7 @@ dev-lang/yap 6.3.3-r1: YAP is a high-performance Prolog compiler
 dev-lang/yasm 1.2.0-r1 1.3.0 9999: An assembler for x86 and x86_64 instruction sets
 dev-lang/zig 0.4.0-r1 0.5.0 9999: A robust, optimal, and maintainable programming language
 dev-libs/9libs 1.0-r4: A package of Plan 9 compatibility libraries
-dev-libs/Ice 3.6.4-r1 3.6.5 3.6.5-r1: ICE middleware C++ library and generator tools
+dev-libs/Ice 3.6.5 3.6.5-r1: ICE middleware C++ library and generator tools
 dev-libs/OpenNI 1.5.7.10 1.5.7.10-r1 9999: OpenNI SDK
 dev-libs/OpenNI2 2.2_beta2 9999: OpenNI2 SDK
 dev-libs/OpenSRF 2.1.1: Framework for the high-level development of the Evergreen ILS software
@@ -14906,7 +14906,7 @@ net-misc/nxplayer 5.1.24.1: Client for NoMachine remote servers
 net-misc/nyx 2.0.4 2.1.0-r1: Utility to monitor real time Tor status information
 net-misc/ofono 1.16 1.30 1.31: Open Source mobile telephony (GSM/UMTS) daemon
 net-misc/oidc-agent 3.3.1: oidc-agent for managing OpenID Connect tokens on the command line
-net-misc/oidentd 2.4.0 2.5.0: Another (RFC1413 compliant) ident daemon
+net-misc/oidentd 2.5.0: Another (RFC1413 compliant) ident daemon
 net-misc/olsrd 0.9.6.1 0.9.6.1-r1 0.9.7 0.9.8: An implementation of the Optimized Link State Routing protocol
 net-misc/omniORB 4.1.4-r2 4.2.2: A robust, high-performance CORBA 2 ORB
 net-misc/omnisync 1.0_p20200130: A driver for NTPd for people who are firewall-challenged
@@ -17301,7 +17301,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.9-r1 4.0.10 9999: Gentoo automatic kernel build
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 5.4.40 5.4.46 5.4.47 5.4.48 5.4.49 5.4.50 5.4.51 5.4.52 5.6.18 5.6.19 5.7.4 5.7.5 5.7.6 5.7.7 5.7.8 5.7.9: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.40 5.4.46 5.4.47 5.4.48 5.4.49 5.4.50 5.4.51 5.4.52 5.6.18 5.6.19 5.7.4 5.7.5 5.7.6 5.7.7 5.7.8 5.7.9: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.221 4.4.228 4.4.229 4.4.230 4.4.231 4.9.221 4.9.228 4.9.229 4.9.230 4.9.231 4.14.178 4.14.185 4.14.186 4.14.187 4.14.188 4.14.189 4.19.120 4.19.129 4.19.130 4.19.131 4.19.132 4.19.133 4.19.134 5.4.38 5.4.48 5.4.49 5.4.50 5.4.51 5.4.52 5.4.53 5.6.19 5.7.4 5.7.5 5.7.6 5.7.7 5.7.8 5.7.9 5.7.10: Full sources including the Gentoo patchset for the 5.7 kernel tree
+sys-kernel/gentoo-sources 4.4.221 4.4.228 4.4.229 4.4.230 4.4.231 4.9.221 4.9.228 4.9.229 4.9.230 4.9.231 4.14.178 4.14.185 4.14.186 4.14.187 4.14.188 4.14.189 4.19.120 4.19.129 4.19.130 4.19.131 4.19.132 4.19.133 4.19.134 5.4.38 5.4.48 5.4.49 5.4.50 5.4.51 5.4.52 5.4.53 5.7.4 5.7.5 5.7.6 5.7.7 5.7.8 5.7.9 5.7.10: Full sources including the Gentoo patchset for the 5.7 kernel tree
 sys-kernel/git-sources 5.8_rc1 5.8_rc2 5.8_rc3 5.8_rc4 5.8_rc5 5.8_rc6: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
