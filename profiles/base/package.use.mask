@@ -311,10 +311,6 @@ app-admin/conserver freeipmi
 # (bug #674364)
 sys-apps/memtest86+ floppy
 
-# Brian Evans <grknight@gentoo.org> (2019-01-11)
-# Depend on the EOL PHP 7.0
-=dev-libs/Ice-3.6.4-r1 php
-
 # Michał Górny <mgorny@gentoo.org> (2018-11-28)
 # Requires last-rited games-server/ut2003-ded.
 games-fps/ut2003 dedicated
