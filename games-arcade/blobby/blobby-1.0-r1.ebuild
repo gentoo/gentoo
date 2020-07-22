@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils desktop
+inherit cmake desktop
 
 DESCRIPTION="Beach ball game with blobs of goo"
 HOMEPAGE="https://sourceforge.net/projects/blobby/"
@@ -16,11 +16,14 @@ IUSE=""
 
 RDEPEND="
 	>=dev-games/physfs-2[zip]
-	media-libs/libsdl[sound,joystick,opengl,video,X]
-	virtual/opengl"
+	media-libs/libsdl2[sound,joystick,opengl,video]
+	virtual/opengl
+"
 DEPEND="${RDEPEND}
-	app-arch/zip
 	dev-libs/boost
+"
+BDEPEND="
+	app-arch/zip
 	virtual/pkgconfig
 "
 
@@ -31,7 +34,7 @@ PATCHES=(
 )
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	newicon data/Icon.bmp ${PN}.bmp
 	make_desktop_entry ${PN} "Blobby Volley" /usr/share/pixmaps/${PN}.bmp

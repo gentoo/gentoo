@@ -14,16 +14,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="media-libs/freealut
+DEPEND="
+	media-libs/freealut
 	media-libs/freetype:2
 	media-libs/libogg
-	media-libs/libsdl[joystick,video,X]
+	media-libs/libsdl2[joystick,video]
 	media-libs/libvorbis
 	media-libs/openal
 	virtual/glu
 	virtual/opengl
 	x11-libs/libXinerama"
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	cmake_src_prepare
