@@ -26,7 +26,10 @@ CDEPEND="
 	${PYTHON_DEPS}
 	plugins? ( x11-libs/gtk+:2 media-libs/libsndfile )
 "
-DEPEND="${CDEPEND}"
+DEPEND="
+	${CDEPEND}
+	doc? ( dev-python/markdown )
+"
 RDEPEND="
 	${CDEPEND}
 	$(python_gen_cond_dep '
