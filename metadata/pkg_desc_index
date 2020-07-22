@@ -14228,7 +14228,7 @@ net-dns/https_dns_proxy 9999: A lightweight DNS-over-HTTPS proxy.
 net-dns/idnkit 1.0-r2 2.3: Toolkit for Internationalized Domain Names (IDN)
 net-dns/knot 2.8.5 2.9.5: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.7.0-r1 1.7.1: Set of utilities to simplify various dns(sec) tasks
-net-dns/libidn 1.35: Internationalized Domain Names (IDN) implementation
+net-dns/libidn 1.35 1.36: Internationalized Domain Names (IDN) implementation
 net-dns/libidn2 2.3.0 99999: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
 net-dns/maradns 2.0.16 3.5.0005: A security-aware DNS server
 net-dns/mdns-repeater 20110921: Multicast DNS repeater
@@ -15071,7 +15071,7 @@ net-nntp/leafnode 1.11.11: A USENET software package designed for small sites
 net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
 net-nntp/nzbget 20.0 21.0_pre2302 21.0: A command-line based binary newsgrabber supporting .nzb files
 net-nntp/pan 0.145: A newsreader for GNOME
-net-nntp/sabnzbd 2.3.9-r1 3.0.0_rc1: Binary newsgrabber with web-interface
+net-nntp/sabnzbd 2.3.9-r1 3.0.0_rc1 3.0.0_rc2: Binary newsgrabber with web-interface
 net-nntp/slrn 1.0.2 1.0.3: A s-lang based newsreader
 net-nntp/sn 0.3.8: Hassle-free Usenet news system for small sites
 net-nntp/suck 4.3.3-r1 4.3.4: Grab news from a remote NNTP server and feed them to another
