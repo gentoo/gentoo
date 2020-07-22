@@ -11,4 +11,4 @@ REQUIRED_USE=initramfs? ( redistributable )
 RESTRICT=binchecks strip unknown-license? ( bindist )
 SLOT=0
 _eclasses_=git-r3	8ec5b53812bce105ae7943930e4660f8	mount-boot	20014ae7a3e81eb2c65a4d4d86d2560d	portability	e8f7ef3a41965b21a734550f8a94c1c6	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd
-_md5_=8e670022d8bc850ded728d5acaf22920
+_md5_=ad8fbdbeb319855cc0bf018a4a622617
