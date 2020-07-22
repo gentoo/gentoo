@@ -18,7 +18,7 @@ DEPEND="
 	media-libs/freealut
 	media-libs/freetype:2
 	media-libs/libogg
-	media-libs/libsdl2[joystick,video,X]
+	media-libs/libsdl2[joystick,video]
 	media-libs/libvorbis
 	media-libs/openal
 	virtual/glu
