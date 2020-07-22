@@ -9784,7 +9784,7 @@ dev-ruby/railties 5.2.4.3 6.0.3.2: Tools for creating, working with, and running
 dev-ruby/rainbow 1.1.4-r1 2.2.2 3.0.0: Colorize printed text on ANSI terminals
 dev-ruby/rake 12.3.3 13.0.0 13.0.1: Make-like scripting in Ruby
 dev-ruby/rake-compiler 1.0.7 1.1.0 1.1.1: Provide a standard and simplified way to build and package Ruby extensions
-dev-ruby/rake-remote_task 2.4.3 2.4.3-r1: Extends Rake with remote task goodness
+dev-ruby/rake-remote_task 2.4.3-r1: Extends Rake with remote task goodness
 dev-ruby/rantly 2.0.0: Ruby Imperative Random Data Generator and Quickcheck
 dev-ruby/rash 0.4.0-r2: Rash is an extension to Hashie
 dev-ruby/rash_alt 0.4.7 0.4.8: Rash alt version for Hashie's own Rash
@@ -10022,7 +10022,7 @@ dev-ruby/web-console 3.7.0 4.0.1 4.0.2: A debugging tool for your Ruby on Rails 
 dev-ruby/webmock 3.7.6 3.8.1 3.8.2 3.8.3: Allows stubbing HTTP requests and setting expectations on HTTP requests
 dev-ruby/webrobots 0.1.2-r1: A library to help write robots.txt compliant web robots
 dev-ruby/websocket 1.2.8: Universal Ruby library to handle WebSocket protocol
-dev-ruby/websocket-driver 0.6.5 0.7.0 0.7.1 0.7.2 0.7.3: A complete implementation of the WebSocket protocols
+dev-ruby/websocket-driver 0.6.5 0.7.2 0.7.3: A complete implementation of the WebSocket protocols
 dev-ruby/websocket-extensions 0.1.4 0.1.5: Generic extension manager for WebSocket connections
 dev-ruby/whole_history_rating 0.1.2 0.1.2-r1: A pure ruby implementation of Remi Coulom's Whole-History Rating algorithm
 dev-ruby/will_paginate 3.2.1 3.3.0: Most awesome pagination solution for Ruby
@@ -15164,7 +15164,7 @@ net-proxy/adzapper 20110915-r2: Redirector for squid to intercept advertising, p
 net-proxy/cntlm 0.93_beta5-r2: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
 net-proxy/dante 1.4.1-r2: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.17: The dnsproxy daemon is a proxy for DNS queries
-net-proxy/haproxy 1.8.25-r1 1.9.15-r1 1.9.9999 2.0.14 2.0.14-r1 2.0.15 2.0.9999 2.1.4 2.1.4-r1 2.1.7 2.1.9999 2.2.0 2.2.9999: A TCP/HTTP reverse proxy for high availability environments
+net-proxy/haproxy 1.8.25-r1 2.0.14 2.0.14-r1 2.0.15 2.0.16 2.0.9999 2.1.4 2.1.4-r1 2.1.7 2.1.9999 2.2.0 2.2.9999: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/hatop 0.7.7: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/mitmproxy 5.1.1: An interactive, SSL-capable, man-in-the-middle HTTP proxy
@@ -17727,7 +17727,7 @@ www-apache/mod_xsendfile 1.0_beta1: Apache module that processes X-SENDFILE head
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
 www-apache/modsecurity-crs 3.0.2 3.1.0: Core Rule Set for ModSecurity
 www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
-www-apache/passenger 6.0.2 6.0.4 6.0.5 6.0.6: Passenger makes deployment of Ruby on Rails applications a breeze
+www-apache/passenger 6.0.4 6.0.5 6.0.6: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/agendav 2.2.0: multilanguage CalDAV web client
@@ -17861,7 +17861,7 @@ www-plugins/lightspark 0.8.2-r1: High performance flash player
 www-plugins/passff 1.9.1: zx2c4 pass manager extension for Firefox
 www-plugins/passff-host 1.2.1 1.2.1-r1: Host app for the PassFF WebExtension
 www-plugins/pdfjs 1.9.426 2.1.266 2.4.456: A PDF reader in JavaScript
-www-servers/adsf 1.4.1 1.4.2 1.4.3: A Dead Simple Fileserver is a static file server that can launch in a directory
+www-servers/adsf 1.4.3: A Dead Simple Fileserver is a static file server that can launch in a directory
 www-servers/apache 2.4.43: The Apache Web Server
 www-servers/boa 0.94.14_rc21-r2: A very small and very fast http daemon
 www-servers/bozohttpd 20190228: bozohttpd is a small and secure http server
