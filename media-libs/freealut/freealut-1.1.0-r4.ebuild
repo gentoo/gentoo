@@ -7,7 +7,7 @@ inherit autotools multilib-minimal
 
 DESCRIPTION="The OpenAL Utility Toolkit"
 HOMEPAGE="https://www.openal.org/"
-SRC_URI="http://connect.creativelabs.com/openal/Downloads/ALUT/${P}.tar.gz"
+SRC_URI="http://http.debian.net/debian/pool/main/f/${PN}/${PN}_${PV}.orig.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
