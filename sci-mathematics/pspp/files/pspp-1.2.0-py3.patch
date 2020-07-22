@@ -1,0 +1,38 @@
+Upstream: https://git.savannah.gnu.org/cgit/pspp.git/commit/?id=123c3f55a80630655e84f97c9df558d988fa0055
+
+commit 123c3f55a80630655e84f97c9df558d988fa0055
+Author: Ben Pfaff <blp@cs.stanford.edu>
+Date:   Mon Nov 19 08:35:23 2018 -0800
+
+    test-date-input.py: Make compatible with Python 3.
+
+diff --git a/tests/data/test-date-input.py b/tests/data/test-date-input.py
+index 6ccc2f8f4..cdab260d6 100644
+--- a/tests/data/test-date-input.py
++++ b/tests/data/test-date-input.py
+@@ -50,8 +50,8 @@ def print_all_formats(date, template, formatted, exp_y, exp_m, exp_d,
+         global n
+         n += 1
+         year, month, day, julian, hour, minute, second = date
+-        quarter = (month - 1) / 3 + 1
+-        week = (julian - 1) / 7 + 1
++        quarter = (month - 1) // 3 + 1
++        week = (julian - 1) // 7 + 1
+         if year >= 1930 and year < 2030:
+             years = ('%d' % year, '%d' % (year % 100))
+         else:
+@@ -163,10 +163,10 @@ def print_all_formats(date, template, formatted, exp_y, exp_m, exp_d,
+         EPOCH = -577734         # 14 Oct 1582
+         expected = (EPOCH - 1
+                     + 365 * (exp_y - 1)
+-                    + (exp_y - 1) / 4
+-                    - (exp_y - 1) / 100
+-                    + (exp_y - 1) / 400
+-                    + (367 * exp_m - 362) / 12
++                    + (exp_y - 1) // 4
++                    - (exp_y - 1) // 100
++                    + (exp_y - 1) // 400
++                    + (367 * exp_m - 362) // 12
+                     + (0 if exp_m <= 2
+                        else -1 if exp_m >= 2 and is_leap_year(exp_y)
+                        else -2)
