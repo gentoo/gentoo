@@ -23,7 +23,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 arm64 ~x86"
-IUSE="+closure-compile component-build cups cpu_flags_arm_neon +hangouts headless kerberos ozone pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-icu +system-libvpx +tcmalloc wayland widevine"
+IUSE="+closure-compile component-build cups cpu_flags_arm_neon +hangouts headless kerberos ozone pic +proprietary-codecs pulseaudio screencast selinux +suid +system-ffmpeg +system-icu +system-libvpx +tcmalloc wayland widevine"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 REQUIRED_USE="
 	component-build? ( !suid )
@@ -714,6 +714,11 @@ src_configure() {
 		else
 			myconf_gn+=" ozone_platform=\"headless\""
 		fi
+	fi
+
+	if use screencast; then
+		myconf_gn+=" rtc_use_pipewire=true rtc_link_pipewire=true"
+		myconf_gn+=" rtc_use_pipewire_version=\"0.3\""
 	fi
 
 	einfo "Configuring Chromium..."
