@@ -17301,7 +17301,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.9-r1 4.0.10 9999: Gentoo automatic kernel build
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 5.4.40 5.4.46 5.4.47 5.4.48 5.4.49 5.4.50 5.4.51 5.4.52 5.6.18 5.6.19 5.7.4 5.7.5 5.7.6 5.7.7 5.7.8 5.7.9: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.40 5.4.46 5.4.47 5.4.48 5.4.49 5.4.50 5.4.51 5.4.52 5.6.18 5.6.19 5.7.4 5.7.5 5.7.6 5.7.7 5.7.8 5.7.9: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.221 4.4.228 4.4.229 4.4.230 4.9.221 4.9.228 4.9.229 4.9.230 4.14.178 4.14.185 4.14.186 4.14.187 4.14.188 4.19.120 4.19.129 4.19.130 4.19.131 4.19.132 4.19.133 5.4.38 5.4.48 5.4.49 5.4.50 5.4.51 5.4.52 5.6.19 5.7.4 5.7.5 5.7.6 5.7.7 5.7.8 5.7.9: Full sources including the Gentoo patchset for the 5.7 kernel tree
+sys-kernel/gentoo-sources 4.4.221 4.4.228 4.4.229 4.4.230 4.4.231 4.9.221 4.9.228 4.9.229 4.9.230 4.9.231 4.14.178 4.14.185 4.14.186 4.14.187 4.14.188 4.14.189 4.19.120 4.19.129 4.19.130 4.19.131 4.19.132 4.19.133 4.19.134 5.4.38 5.4.48 5.4.49 5.4.50 5.4.51 5.4.52 5.4.53 5.6.19 5.7.4 5.7.5 5.7.6 5.7.7 5.7.8 5.7.9 5.7.10: Full sources including the Gentoo patchset for the 5.7 kernel tree
 sys-kernel/git-sources 5.8_rc1 5.8_rc2 5.8_rc3 5.8_rc4 5.8_rc5 5.8_rc6: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
