@@ -2827,7 +2827,7 @@ app-text/vgrep 2.3.1 2.3.3: A pager for grep, git-grep and similar grep implemen
 app-text/vilistextum 2.6.9-r1 2.8.0.20191023-r1: HTML to ASCII converter programmed to handle incorrect html
 app-text/vlna 1.5: Add nonbreakable spaces after some prepositions in Czech texts
 app-text/wdiff 1.2.2 1.2.2-r1: Create a diff disregarding formatting
-app-text/webgen 1.7.0: A template-based static website generator
+app-text/webgen 1.7.0 1.7.1: A template-based static website generator
 app-text/wgetpaste 2.29-r1: Command-line interface to various pastebins
 app-text/wiki2beamer 0.9.5-r1 0.10.0: Tool to produce LaTeX Beamer code from wiki-like input
 app-text/writerperfect 0.9.6: Various formats to Open document format converter
@@ -9430,7 +9430,7 @@ dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
 dev-ruby/barby 0.6.8: Ruby barcode generator that doesn't rely on 3rd party libraries
 dev-ruby/base32 0.3.2: A library which provides base32 decoding and encoding
 dev-ruby/bcat 0.6.2-r3: Pipe to browser utility for use at the shell and within editors
-dev-ruby/bcrypt-ruby 3.1.11-r1 3.1.12 3.1.13: An easy way to keep your users' passwords secure
+dev-ruby/bcrypt-ruby 3.1.12 3.1.13 3.1.15: An easy way to keep your users' passwords secure
 dev-ruby/bcrypt_pbkdf 1.0.0 1.0.1: Implements bcrypt_pdkfd (a variant of PBKDF2 with bcrypt-based PRF)
 dev-ruby/best_in_place 3.1.1: In-place editor helper for Rails 3
 dev-ruby/bindata 2.4.1 2.4.4 2.4.5 2.4.6 2.4.7: Parsing Binary Data in Ruby
@@ -9911,7 +9911,7 @@ dev-ruby/sassc-rails 2.1.2-r1: Integrate SassC-Ruby with Rails
 dev-ruby/sawyer 0.8.2: Secret User Agent of HTTP
 dev-ruby/sdoc 1.0.0: rdoc generator html with javascript search index
 dev-ruby/seed-fu 2.3.9: Advanced seed data handling for Rails
-dev-ruby/selenium-webdriver 2.53.4-r1 3.142.6 3.142.7: This gem provides Ruby bindings for WebDriver
+dev-ruby/selenium-webdriver 2.53.4-r1 3.142.6 3.142.7 3.142.7-r1: This gem provides Ruby bindings for WebDriver
 dev-ruby/semantic_puppet 1.0.2: Library of tools for working with Semantic Versions and module dependencies
 dev-ruby/semver2 3.4.2: maintain versions as per http://semver.org
 dev-ruby/serialport 1.3.1: a library for serial port (rs232) access in ruby
