@@ -1,13 +1,13 @@
 BDEPEND=dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install postinst postrm prepare test
-DEPEND=media-libs/freealut media-libs/freetype:2 media-libs/libogg media-libs/libsdl[joystick,video,X] media-libs/libvorbis media-libs/openal virtual/glu virtual/opengl x11-libs/libXinerama
+DEPEND=media-libs/freealut media-libs/freetype:2 media-libs/libogg media-libs/libsdl2[joystick,video] media-libs/libvorbis media-libs/openal virtual/glu virtual/opengl x11-libs/libXinerama
 DESCRIPTION=Hardcore 3D space scroll-shooter with spaceship upgrade possibilities
 EAPI=7
 HOMEPAGE=https://viewizard.com
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3 GPL-3+ CC-BY-SA-4.0 OFL-1.1
-RDEPEND=media-libs/freealut media-libs/freetype:2 media-libs/libogg media-libs/libsdl[joystick,video,X] media-libs/libvorbis media-libs/openal virtual/glu virtual/opengl x11-libs/libXinerama
+RDEPEND=media-libs/freealut media-libs/freetype:2 media-libs/libogg media-libs/libsdl2[joystick,video] media-libs/libvorbis media-libs/openal virtual/glu virtual/opengl x11-libs/libXinerama
 SLOT=0
 SRC_URI=https://github.com/viewizard/astromenace/archive/v1.4.1.tar.gz -> astromenace-1.4.1.tar.gz
 _eclasses_=cmake	19b0421555865baefd505831dd4303e3	desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=7a2ff1c6f562c360289124b0ad4852b3
+_md5_=51f4004b15aaf0d0ae3b256acd9b95f1

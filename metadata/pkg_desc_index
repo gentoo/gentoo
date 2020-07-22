@@ -10672,7 +10672,7 @@ games-action/abuse 0.9_p20181213-r1: Port of Abuse by Crack Dot Com
 games-action/apotheon 1.26v: Heroic action game set within the vibrant world of Ancient Greek Mythology
 games-action/armagetronad 0.2.8.3.3-r1: Fast-paced 3D lightcycle game based on Tron
 games-action/assault-android-cactus+ 200507: Arcade style twin stick shooter set in a vivid sci-fi universe
-games-action/astromenace 1.4.1: Hardcore 3D space scroll-shooter with spaceship upgrade possibilities
+games-action/astromenace 1.4.1-r1: Hardcore 3D space scroll-shooter with spaceship upgrade possibilities
 games-action/atanks 6.4-r1: Worms and Scorched Earth-like game
 games-action/badland 121-r1: Atmospheric side-scrolling action adventure platformer set in a gorgeous forest
 games-action/barrage 1.0.4-r1: A violent point-and-click shooting game
@@ -10761,7 +10761,7 @@ games-arcade/barbarian-bin 1.01-r1: Save Princess Mariana through one-on-one bat
 games-arcade/batrachians 0.1.6-r1: A fly-eating frog video game
 games-arcade/berusky 1.7.1-r1: Free logic game based on an ancient puzzle named Sokoban
 games-arcade/betna 0.9.7: Defend your volcano from the attacking ants by firing rocks/bullets at them
-games-arcade/blobby 1.0: Beach ball game with blobs of goo
+games-arcade/blobby 1.0-r1: Beach ball game with blobs of goo
 games-arcade/blobwars 2.00 2.00-r1: Platform game about a blob and his quest to rescue MIAs from an alien invader
 games-arcade/blockrage 0.2.3: Falling-blocks arcade game with a 2-player hotseat mode
 games-arcade/bomns 0.99.2: A fast-paced multiplayer deathmatch arcade game
@@ -12697,7 +12697,7 @@ media-libs/fluidsynth-dssi 1.0.0-r1: DSSI Soft Synth Interface
 media-libs/fontconfig 2.12.6 2.13.0-r4 2.13.1-r2: A library for configuring and customizing font access
 media-libs/fontconfig-infinality 20130404: Configuration for freetype-infinality subpixel hinting
 media-libs/fontconfig-ultimate 2015.04 2015.08.01: A set of font rendering and replacement rules for fontconfig-infinality
-media-libs/freealut 1.1.0-r3: The OpenAL Utility Toolkit
+media-libs/freealut 1.1.0-r3 1.1.0-r4: The OpenAL Utility Toolkit
 media-libs/freeglut 3.2.1: A free OpenGL utility toolkit, the open-sourced alternative to the GLUT library
 media-libs/freeimage 3.18.0-r1 3.18.0-r2: Image library supporting many formats
 media-libs/freetype 2.9.1-r3 2.9.1-r4 2.10.1 2.10.2-r1 9999: A high-quality and portable font engine
