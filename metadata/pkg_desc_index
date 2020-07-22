@@ -2420,7 +2420,7 @@ app-office/texmacs 1.99.6-r2 1.99.9 1.99.10 1.99.11: Wysiwyg text processor with
 app-office/texmaker 5.0.3 5.0.4: A nice LaTeX-IDE
 app-office/texstudio 2.12.16 2.12.22 3.0.0_pre20200601 9999: Free cross-platform LaTeX editor (fork from texmakerX)
 app-office/unoconv 0.8.2 0.9 0.9.0: Convert between document formats supported by LibreOffice
-app-office/upwork 5.3.3.860: Project collaboration and tracking software for upwork.com
+app-office/upwork 5.3.3.860 5.4.2.8: Project collaboration and tracking software for upwork.com
 app-office/worklog-assistant-bin 2.1.3580: Hassle-free time tracking for JIRA self-hosted and OnDemand
 app-office/wps-office 11.1.0.9126 11.1.0.9505: WPS Office is an office productivity suite
 app-officeext/barcode 1.3.5.0-r1: Extension for reading barcodes
@@ -18091,7 +18091,7 @@ x11-libs/libtinynotify-systemwide 0.1 9999: A system-wide notifications module f
 x11-libs/libva 2.5.0-r1 2.6.1 2.7.1 2.8.0 9999: Video Acceleration (VA) API for Linux
 x11-libs/libva-compat 1.8.3: Video Acceleration (VA) API for Linux
 x11-libs/libva-intel-driver 2.3.0 2.4.0_pre1 2.4.1 9999: HW video decode support for Intel integrated graphics
-x11-libs/libva-intel-media-driver 18.3.0 18.4.1 20.1.1 9999: Intel Media Driver for VAAPI (iHD)
+x11-libs/libva-intel-media-driver 18.3.0 18.4.1 20.1.1 20.2.0 9999: Intel Media Driver for VAAPI (iHD)
 x11-libs/libva-vdpau-driver 0.7.4-r5: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.2 1.3 1.4 99999: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.30.0: A window navigation construction kit
