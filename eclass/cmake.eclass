@@ -470,6 +470,7 @@ cmake_src_configure() {
 		SET (CMAKE_USER_MAKE_RULES_OVERRIDE "${build_rules}" CACHE FILEPATH "Gentoo override rules")
 		SET (CMAKE_INSTALL_DOCDIR "${EPREFIX}/usr/share/doc/${PF}" CACHE PATH "")
 		SET (BUILD_SHARED_LIBS ON CACHE BOOL "")
+		SET (CMAKE_PLATFORM_DISABLE_DETECTION ON CACHE BOOL "")
 	_EOF_
 	if [[ "${NOCOLOR}" = true || "${NOCOLOR}" = yes ]]; then
 		echo 'SET (CMAKE_COLOR_MAKEFILE OFF CACHE BOOL "pretty colors during make" FORCE)' >> "${common_config}" || die
