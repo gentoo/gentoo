@@ -38,6 +38,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc6.patch
+	"${FILESDIR}"/${P}-g++.patch
 )
 
 src_prepare() {
