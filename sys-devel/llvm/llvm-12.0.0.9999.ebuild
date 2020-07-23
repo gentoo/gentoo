@@ -263,6 +263,7 @@ get_distribution_components() {
 			llvm-install-name-tool
 			llvm-jitlink
 			llvm-lib
+			llvm-libtool-darwin
 			llvm-link
 			llvm-lipo
 			llvm-lto
