@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
+BDEPEND="app-arch/unzip"
 RDEPEND=">=virtual/jdk-1.6:="
 DEPEND="${RDEPEND}
 	dev-java/ant-core"
