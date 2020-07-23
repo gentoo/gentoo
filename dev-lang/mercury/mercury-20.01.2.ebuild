@@ -63,7 +63,8 @@ src_configure() {
 
 src_compile() {
 	# Prepare mmake flags
-	echo "EXTRA_CFLAGS  = ${CFLAGS}"  >> Mmake.params
+	echo "EXTRA_CFLAGS = ${CFLAGS}"  >> Mmake.params
+	echo "EXTRA_LDFLAGS = ${LDFLAGS}" >> Mmake.params
 	echo "EXTRA_LD_LIBFLAGS = ${LDFLAGS}" >> Mmake.params
 	echo "EXTRA_MLFLAGS = --no-strip" >> Mmake.params
 
