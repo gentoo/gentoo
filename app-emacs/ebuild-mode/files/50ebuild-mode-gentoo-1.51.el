@@ -18,7 +18,7 @@
 	     '("/\\(package\\.\\(mask\\|unmask\\|use\\|env\
 \\|license\\|properties\\|accept_\\(keywords\\|restrict\\)\\)\
 \\|\\(package\\.\\)?use.\\(stable\\.\\)?\\(force\\|mask\\)\\)\\'"
-	       . conf-mode))
+	       . conf-space-mode))
 (add-to-list 'interpreter-mode-alist '("openrc-run" . sh-mode))
 (add-to-list 'interpreter-mode-alist '("runscript" . sh-mode))
 (modify-coding-system-alist 'file "\\.\\(ebuild\\|eclass\\)\\'" 'utf-8)
