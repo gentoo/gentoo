@@ -4,11 +4,11 @@ DESCRIPTION=Pure-Perl OpenPGP-compatible PGP implementation
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Crypt-OpenPGP
 IUSE=test
-KEYWORDS=amd64 x86 ~x86-solaris
+KEYWORDS=amd64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Crypt-RSA dev-perl/Crypt-Blowfish dev-perl/Crypt-CAST5_PP dev-perl/Crypt-DES_EDE3 dev-perl/Crypt-DSA dev-perl/Crypt-IDEA dev-perl/Crypt-RIPEMD160 dev-perl/Crypt-Rijndael >=dev-perl/Crypt-Twofish-2.00 virtual/perl-Digest-MD5 virtual/perl-Digest-SHA dev-perl/File-HomeDir virtual/perl-IO-Compress dev-perl/libwww-perl virtual/perl-MIME-Base64 virtual/perl-Math-BigInt dev-perl/TermReadKey dev-perl/URI >=dev-perl/Data-Buffer-0.04 dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SR/SROMANOV/Crypt-OpenPGP-1.12.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=21b324ac179c044d56eb8363c74b7674
+_md5_=907848cbf28d39b95fb493ba4524a4e2

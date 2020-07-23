@@ -4,11 +4,11 @@ DESCRIPTION=Standalone, extensible Perl module installer
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Module-Install
 IUSE=test
-KEYWORDS=~alpha amd64 ~arm hppa ~ia64 ~ppc ~ppc64 sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=~alpha amd64 ~arm hppa ~ia64 ~ppc ~ppc64 sparc x86 ~amd64-linux
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=virtual/perl-CPAN-Meta-1.441.300 >=virtual/perl-Devel-PPPort-3.160.0 >=virtual/perl-ExtUtils-Install-1.520.0 >=virtual/perl-ExtUtils-MakeMaker-6.590.0 >=virtual/perl-ExtUtils-ParseXS-2.190.0 >=dev-perl/File-Remove-1.420.0 >=virtual/perl-File-Spec-3.280.0 >=dev-perl/Module-Build-0.290.0 >=virtual/perl-Module-CoreList-2.170.0 >=dev-perl/Module-ScanDeps-1.90.0 >=virtual/perl-Parse-CPAN-Meta-1.441.300 >=dev-perl/YAML-Tiny-1.380.0 >=dev-perl/Archive-Zip-1.370.0 >=dev-perl/File-HomeDir-1 >=dev-perl/JSON-MaybeXS-1.3.3 >=dev-perl/libwww-perl-6 >=dev-perl/PAR-Dist-0.290.0 dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/Module-Install-1.18.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=aa910c2c1e82530f73c917d4729383e2
+_md5_=e6b54a5c2885402e3789beb2ca7fb51c
