@@ -8673,7 +8673,7 @@ dev-python/routes 2.4.1-r1: A re-implementation of Rails routes system, mapping 
 dev-python/rply 0.7.7: Pure python parser generator that also works with RPython
 dev-python/rpy 2.9.0: Python interface to the R Programming Language
 dev-python/rpyc 4.1.4: Remote Python Call (RPyC), a transparent and symmetric RPC library
-dev-python/rq 1.3.0: simple, lightweight library for creating and processing background jobs
+dev-python/rq 1.3.0 1.4.3: simple, lightweight library for creating and processing background jobs
 dev-python/rsa 3.4.2-r1 4.2: Pure-Python RSA implementation
 dev-python/rst-linker 1.11 2.0.0: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rtimulib 7.2.1-r1: Python Binding for RTIMULib, a versatile IMU library
@@ -14027,7 +14027,7 @@ net-analyzer/nagios-core 4.4.6: Nagios core - monitoring daemon, web GUI, and do
 net-analyzer/nagios-icinga-openvpn 0.0.1-r1: A Nagios plugin to check whether an OpenVPN server is alive
 net-analyzer/nagios-plugin-check_lm_sensors 4.1.1_p20191028: Nagios plugin to monitor the values of onboard sensors and disk temperatures
 net-analyzer/nagios-plugin-check_raid 4.0.8 4.0.10: Nagios/Icinga plugin to check current server's RAID status
-net-analyzer/nagios-plugins 2.2.1-r3 2.2.1-r4 2.3.1-r1: Official plugins for Nagios
+net-analyzer/nagios-plugins 2.2.1-r3 2.3.1-r1: Official plugins for Nagios
 net-analyzer/nagios-plugins-flameeyes 9999: Flameeyes's custom Nagios/Icinga plugins
 net-analyzer/nagios-plugins-linux-madrisan 25-r1 26-r1: Additional and alternative Nagios plugins for Linux
 net-analyzer/nagios-plugins-snmp 0.6.0-r2: Additional Nagios plugins for monitoring SNMP capable devices
