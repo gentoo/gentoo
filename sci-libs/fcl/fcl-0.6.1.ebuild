@@ -26,7 +26,8 @@ RDEPEND="
 	dev-libs/boost:=[threads]
 	sci-libs/flann
 	sci-libs/libccd[double-precision]
-	octomap? ( sci-libs/octomap )"
+	octomap? ( sci-libs/octomap )
+"
 
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
@@ -36,6 +37,11 @@ BDEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_configure() {
+	# Upstream issue:
+	# https://github.com/flexible-collision-library/fcl/issues/485
+	rm "${S}"/test/narrowphase/detail/convexity_based_algorithm/test_gjk_libccd-inl_gjk_doSimplex2.cpp
+	sed -i -e 's/test_gjk_libccd-inl_gjk_doSimplex2.cpp//' "${S}"/test/narrowphase/detail/convexity_based_algorithm/CMakeLists.txt || die could not disable failing test
+
 	sed -i -e "s/include(CompilerSettings)//" "${S}"/CMakeLists.txt || die "failed to remove compiler flags override"
 
 	local mycmakeargs=(
