@@ -30,7 +30,7 @@ ruby_add_rdepend "
 	>=dev-ruby/thor-0.19:0
 	>=dev-util/cucumber-1.3.19"
 
-ruby_add_bdepend "test? ( dev-ruby/rspec:3 >=dev-ruby/bcat-0.6.2 )"
+ruby_add_bdepend "test? ( dev-ruby/rspec:3 )"
 
 all_ruby_prepare() {
 	# Remove bundler-related code.
@@ -43,8 +43,10 @@ all_ruby_prepare() {
 	rm -f features/support/simplecov_setup.rb || die
 	sed -i -e '1i require "time"' spec/spec_helper.rb || die
 
+	sed -i -e '/Use .aruba. with .Minitest./i@wip' features/01_getting_started_with_aruba/supported_testing_frameworks.feature || die
 	sed -i -e '/Scenario: Default value/i@wip' features/02_configure_aruba/home_directory.feature || die
 	sed -i -e '/Use ~ in path/i@wip' features/04_aruba_api/core/expand_path.feature || die
+	sed -i -e '/Create files for Minitest/i@wip' features/06_use_aruba_cli/initialize_project_with_aruba.feature || die
 }
 
 each_ruby_test() {
