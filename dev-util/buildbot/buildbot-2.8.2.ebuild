@@ -28,7 +28,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	acct-user/buildbot
 	>=dev-python/jinja-2.1[${PYTHON_USEDEP}]
-	>=dev-python/twisted-17.9.0[${PYTHON_USEDEP}]
+	>=dev-python/twisted-17.9.0[${PYTHON_USEDEP},crypt?]
 	>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-0.8[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-migrate-0.9[${PYTHON_USEDEP}]
@@ -40,9 +40,8 @@ RDEPEND="
 	>=dev-python/zope-interface-4.1.1[${PYTHON_USEDEP}]
 	~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
 	crypt? (
-		>=dev-python/twisted-17.9.0[${PYTHON_USEDEP},crypt]
 		>=dev-python/pyopenssl-16.0.0[${PYTHON_USEDEP}]
-		<dev-python/idna-2.9[${PYTHON_USEDEP}]
+		dev-python/idna[${PYTHON_USEDEP}]
 		dev-python/service_identity[${PYTHON_USEDEP}]
 	)
 	irc? (
@@ -77,12 +76,6 @@ DEPEND="${RDEPEND}
 		~dev-util/buildbot-pkg-${PV}[${PYTHON_USEDEP}]
 		~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
 		~dev-util/buildbot-www-${PV}[${PYTHON_USEDEP}]
-		crypt? (
-			>=dev-python/twisted-17.9.0[${PYTHON_USEDEP},crypt]
-			>=dev-python/pyopenssl-16.0.0[${PYTHON_USEDEP}]
-			<dev-python/idna-2.9[${PYTHON_USEDEP}]
-			dev-python/service_identity[${PYTHON_USEDEP}]
-		)
 	)"
 
 S=${WORKDIR}/${MY_P}
