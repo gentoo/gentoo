@@ -15164,7 +15164,7 @@ net-proxy/adzapper 20110915-r2: Redirector for squid to intercept advertising, p
 net-proxy/cntlm 0.93_beta5-r2: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
 net-proxy/dante 1.4.1-r2: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.17: The dnsproxy daemon is a proxy for DNS queries
-net-proxy/haproxy 1.8.25-r1 2.0.14 2.0.14-r1 2.0.15 2.0.16 2.0.9999 2.1.4 2.1.4-r1 2.1.7 2.1.9999 2.2.0 2.2.9999: A TCP/HTTP reverse proxy for high availability environments
+net-proxy/haproxy 1.8.25-r1 2.0.14 2.0.14-r1 2.0.15 2.0.16 2.0.9999 2.1.4 2.1.4-r1 2.1.7 2.1.9999 2.2.0 2.2.1 2.2.9999: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/hatop 0.7.7: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/mitmproxy 5.1.1: An interactive, SSL-capable, man-in-the-middle HTTP proxy
@@ -17077,7 +17077,7 @@ sys-devel/dev86 0.16.21-r3: Bruce's C compiler - Simple C compiler to generate 8
 sys-devel/distcc 3.3.3-r1: Distribute compilation of C code across several machines on a network
 sys-devel/dwz 0.12-r1: DWARF optimization and duplicate removal tool
 sys-devel/flex 2.6.1 2.6.3 2.6.3-r1 2.6.4 2.6.4-r1: The Fast Lexical Analyzer
-sys-devel/gcc 4.9.4-r1 5.5.0 6.5.0-r1 6.5.0-r2 6.5.0-r3 7.5.0 7.5.0-r1 8.4.0 8.4.0-r1 9.2.0-r2 9.2.0-r4 9.3.0 9.3.0-r1 10.1.0-r2 10.1.1_pre9999 11.0.0_pre9999: The GNU Compiler Collection
+sys-devel/gcc 4.9.4-r1 5.5.0 6.5.0-r1 6.5.0-r2 6.5.0-r3 7.5.0 7.5.0-r1 8.4.0 8.4.0-r1 9.2.0-r2 9.2.0-r4 9.3.0 9.3.0-r1 10.1.0-r2 10.2.0 10.2.1_pre9999 11.0.0_pre9999: The GNU Compiler Collection
 sys-devel/gcc-apple 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection, Developer Tools 4.0
 sys-devel/gcc-config 2.3 2.3.1 9999: Utility to manage compilers
 sys-devel/gdb 9.1 9.2 9999: GNU debugger
@@ -17085,7 +17085,7 @@ sys-devel/gdb-apple 1752: Apple branch of the GNU Debugger, Developer Tools 4.3
 sys-devel/gettext 0.20.1 0.20.2 0.21_rc1: GNU locale utilities
 sys-devel/gnuconfig 20190912 20200621 99999999: Updated config.sub and config.guess file from GNU
 sys-devel/icecream 0.9.7-r1 1.0.0-r1 1.0.0-r2: Distributed compiling of C(++) code across several machines; based on distcc
-sys-devel/kgcc64 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.4 4.7.3 4.7.4 4.8.3 4.8.5 4.9.4 5.4.0 6.3.0 6.4.0 7.2.0 7.3.0 8.2.0 8.3.0 9.1.0 9.2.0 9.3.0-r1 10.1.0: 64bit kernel compiler
+sys-devel/kgcc64 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.4 4.7.3 4.7.4 4.8.3 4.8.5 4.9.4 5.4.0 6.3.0 6.4.0 7.2.0 7.3.0 8.2.0 8.3.0 9.1.0 9.2.0 9.3.0-r1 10.1.0 10.2.0: 64bit kernel compiler
 sys-devel/libtool 2.4.6-r6 9999: A shared library tool for developers
 sys-devel/lld 8.0.1 9.0.1 10.0.0 10.0.1_rc1 10.0.1_rc2 10.0.1_rc3 10.0.1_rc4 10.0.1 10.0.1.9999 11.0.0.9999 12.0.0.9999: The LLVM linker (link editor)
 sys-devel/llvm 8.0.1 9.0.1 10.0.0 10.0.1_rc1 10.0.1_rc2 10.0.1_rc3 10.0.1_rc4 10.0.1 10.0.1.9999 11.0.0.9999 12.0.0.9999: Low Level Virtual Machine
