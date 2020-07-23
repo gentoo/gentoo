@@ -6,15 +6,12 @@ EAPI=7
 CMAKE_ECLASS=cmake
 inherit cmake-multilib flag-o-matic xdg
 
-if [[ ${PV} = 9999 ]]; then
-	inherit git-r3
-fi
-
 DESCRIPTION="A Simple Screen Recorder"
 HOMEPAGE="https://www.maartenbaert.be/simplescreenrecorder"
 LICENSE="GPL-3"
 PKGNAME="ssr"
 if [[ ${PV} = 9999 ]] ; then
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/MaartenBaert/${PKGNAME}.git"
 	EGIT_BOOTSTRAP=""
 else
@@ -32,11 +29,13 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	media-libs/alsa-lib:0=
-	media-libs/mesa[${MULTILIB_USEDEP},X(+)]
+	media-libs/libglvnd[${MULTILIB_USEDEP},X]
 	media-video/ffmpeg[vorbis?,vpx?,x264?,mp3?,theora?]
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXext
 	x11-libs/libXfixes[${MULTILIB_USEDEP}]
+	x11-libs/libXi
+	x11-libs/libXinerama
 	virtual/glu[${MULTILIB_USEDEP}]
 	jack? ( virtual/jack )
 	pulseaudio? ( media-sound/pulseaudio )
