@@ -7482,7 +7482,6 @@ dev-python/GitPython 3.1.3 3.1.5 3.1.7: Library used to interact with Git reposi
 dev-python/GridDataFormats 0.4.0-r1: Reading and writing of data on regular grids in Python
 dev-python/HeapDict 1.0.0: Heap with decrease-key and increase-key operations
 dev-python/MechanicalSoup 0.12.0: A python library for automating interaction with websites
-dev-python/Numdifftools 0.9.17-r1: Solves automatic numerical differentiation problems in one or more variables
 dev-python/PyContracts 1.8.14: Declare constraints on function parameters and return values
 dev-python/PyECLib 1.6.0: Messaging API for RPC and notifications over different messaging transports
 dev-python/PyGithub 1.51: Python library to access the Github API v3
@@ -8444,7 +8443,6 @@ dev-python/pyroute2 0.5.12-r1: A pure Python netlink and Linux network configura
 dev-python/pyrqlite 2.0 9999: Python client for rqlite
 dev-python/pyrsistent 0.15.6 0.16.0: Persistent/Functional/Immutable data structures
 dev-python/pysaml2 4.6.5-r1: Python implementation of SAML Version 2 to be used in a WSGI environment
-dev-python/pyscaffold 2.4.4: Tool for easily putting up the scaffold of a Python project
 dev-python/pyscard 1.9.9: Smart cards support in python
 dev-python/pysendfile 2.0.1-r1: A python interface to the sendfile(2) system call
 dev-python/pyserial 3.4: Python Serial Port extension
@@ -10143,7 +10141,6 @@ dev-tex/dvipost 1.1-r3: post processor for dvi files
 dev-tex/ellipsis 1.6: Simple package that fixes the way LaTeX centers ellipses
 dev-tex/envlab 1.2-r1: A LaTeX module to format envelopes
 dev-tex/europecv 20060424-r2: LaTeX class for the standard model for curricula vitae as recommended by the EC
-dev-tex/feynmf 1.08-r6: Combined LaTeX/Metafont package for drawing of Feynman diagrams
 dev-tex/flabels 1.0: Macros for typesetting lables for the back of files or binders
 dev-tex/floatflt 1.31a-r1: LaTeX package used to warp text around figures
 dev-tex/foiltex 2.1.4b: LaTeX package used to create foils and slides
@@ -15713,7 +15710,6 @@ sci-chemistry/pymol-plugins-emovie 1.0.4: PyMOL plugin for convinient movie crea
 sci-chemistry/pymol-plugins-promol 3.0.2-r1: Fast and accurate regognition of active sites
 sci-chemistry/rasmol 2.7.5.2-r2: Molecular Graphics Visualisation Tool
 sci-chemistry/raster3d 3.0.2 3.0.3: Generation high quality raster images of proteins or other molecules
-sci-chemistry/relax 4.0.0-r4: Molecular dynamics by NMR data analysis
 sci-chemistry/sparky 3.115-r2: Graphical NMR assignment and integration program for large polymers
 sci-chemistry/suitename 0.3.070628: The ROC RNA Ontology nomenclature and conformer-list development
 sci-chemistry/surf 1.0: Solvent accesible Surface calculator
