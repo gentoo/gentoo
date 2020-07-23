@@ -15,6 +15,7 @@ SRC_URI="https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/${MY_
 
 SLOT="0"
 RESTRICT="strip mirror" # mirror as explained at bug #547372
+QA_PREBUILT="*"
 LICENSE="WPS-EULA"
 IUSE=""
 
