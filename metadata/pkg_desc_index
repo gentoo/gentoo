@@ -1473,7 +1473,7 @@ app-emacs/doctest-mode 0.4: An Emacs major mode for editing Python source
 app-emacs/doxymacs 1.8.0-r3: Doxygen editing minor mode
 app-emacs/dropdown-list 20120329: Drop-down menu interface
 app-emacs/dts-mode 0.1.0_pre20161103: Emacs major mode for devicetree sources
-app-emacs/ebuild-mode 1.50 1.51-r1: Emacs modes for editing ebuilds and other Gentoo specific files
+app-emacs/ebuild-mode 1.50 1.51-r3: Emacs modes for editing ebuilds and other Gentoo specific files
 app-emacs/ecb 2.50_pre20170728: Source code browser for Emacs
 app-emacs/edb 1.32: EDB, The Emacs Database
 app-emacs/edit-list 0.3: Edit a single list
@@ -13838,7 +13838,7 @@ media-video/rtmpdump 2.4_p20161210-r3 9999: RTMP client intended to stream audio
 media-video/setpwc 1.3: Control various aspects of Philips (and compatible) webcams
 media-video/shotcut 19.12.31 20.06.28: A free, open source, cross-platform video editor
 media-video/shrip 0.6.0-r1: Command line tool for ripping DVDs and encoding to AVI/OGM/MKV/MP4
-media-video/simplescreenrecorder 0.4.1 0.4.2 9999: A Simple Screen Recorder
+media-video/simplescreenrecorder 0.4.2 9999: A Simple Screen Recorder
 media-video/smplayer 20.4.2 20.6.0: Great Qt GUI front-end for mplayer/mpv
 media-video/smtube 20.1.0: YouTube Browser for SMPlayer
 media-video/snappy 1.0-r1: A simple media player written using GStreamer and Clutter
