@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
-inherit cmake-utils python-any-r1
+inherit cmake python-any-r1
 
 ROS_PN="ament_cmake"
 if [ "${PV#9999}" != "${PV}" ] ; then
