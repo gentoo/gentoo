@@ -10,7 +10,7 @@ VALA_USE_DEPEND=vapigen
 inherit gnome2-utils eutils autotools python-any-r1 vala
 
 SRC_URI="http://download.gimp.org/pub/${PN}/$(ver_cut 1-2)/${P}.tar.bz2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 DESCRIPTION="A graph based image processing framework"
 HOMEPAGE="http://www.gegl.org/"
