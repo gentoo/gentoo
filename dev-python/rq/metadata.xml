@@ -8,4 +8,8 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
 </pkgmetadata>
