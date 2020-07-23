@@ -1,0 +1,12 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=install prepare unpack
+DEPEND=sys-libs/ncurses:0= virtual/pkgconfig
+DESCRIPTION=Displays information about users currently logged on in real time
+EAPI=7
+HOMEPAGE=http://wizard.ae.krakow.pl/~mike/ https://github.com/mtsuszycki/whowatch/
+LICENSE=GPL-2
+PROPERTIES=live
+RDEPEND=sys-libs/ncurses:0=
+SLOT=0
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	git-r3	8ec5b53812bce105ae7943930e4660f8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=23e76e7cc6f994b4ea4f46dc400e2010
