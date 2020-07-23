@@ -492,12 +492,6 @@ dev-python/pytest-runner
 # library from 2005. Removal in 30 days.
 virtual/libstdc++
 
-# Ulrich Müller <ulm@gentoo.org> (2020-06-20)
-# Unmaintained upstream, included with TeX Live.
-# Use >=dev-texlive/texlive-metapost-2020-r1 as replacement.
-# Removal in 30 days. Bug #728904.
-dev-tex/feynmf
-
 # Hans de Graaff <graaff@gentoo.org> (2020-06-14)
 # Ruby 2.4 is no longer supported by upstream and no longer gets
 # security updates since the 2.4.10 release. Use ruby 2.5 or later
