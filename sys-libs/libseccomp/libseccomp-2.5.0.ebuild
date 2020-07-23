@@ -27,7 +27,10 @@ IUSE="python static-libs"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	python? ( static-libs )"
 
-BDEPEND="python? ( ${PYTHON_DEPS} )"
+BDEPEND="
+	dev-util/gperf
+	python? ( ${PYTHON_DEPS} )
+"
 DEPEND="${BDEPEND}"
 RDEPEND="${DEPEND}"
 
