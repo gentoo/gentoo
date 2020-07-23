@@ -76,6 +76,9 @@ src_install() {
 	# install prebuilt bin
 	dobin bin/$(usex x86 i386 ${ARCH})/makemkvcon
 
+	# additional tool is actually part of makemkvcon
+	dosym makemkvcon /usr/bin/sdftool
+
 	# install profiles and locales
 	insinto /usr/share/MakeMKV
 	doins src/share/*
