@@ -24,6 +24,7 @@ S="${WORKDIR}/${P}/src"
 
 PATCHES=(
 	"${FILESDIR}/libbpf-0.0.7-paths.patch"
+	"${FILESDIR}/libbpf-0.0.9-fix-hashmap-on-lp32.patch"
 )
 
 src_compile() {
