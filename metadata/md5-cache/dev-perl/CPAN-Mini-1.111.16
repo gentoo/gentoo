@@ -4,11 +4,11 @@ DESCRIPTION=Create a minimal mirror of CPAN
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/CPAN-Mini
 IUSE=test
-KEYWORDS=amd64 x86 ~ppc-aix
+KEYWORDS=amd64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp >=dev-perl/File-HomeDir-0.570.0 >=virtual/perl-File-Path-2.40.0 virtual/perl-File-Spec virtual/perl-File-Temp virtual/perl-Getopt-Long >=virtual/perl-IO-Compress-1.20 >=dev-perl/libwww-perl-5 >=dev-perl/URI-1 dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/CPAN-Mini-1.111016.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=8a26d89308cb150ff04007545a062a29
+_md5_=6bfd9c129d946b20da5cde1d3752e8f3
