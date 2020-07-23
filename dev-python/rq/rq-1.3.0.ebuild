@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_6 python3_7 )
 inherit distutils-r1
 
 DESCRIPTION="simple, lightweight library for creating and processing background jobs"
-HOMEPAGE="https://github.com/rq/rq"
+HOMEPAGE="https://python-rq.org https://github.com/rq/rq"
 SRC_URI="mirror://pypi/${PN:0:1}"/${PN}/${P}.tar.gz
 
 LICENSE="BSD"
