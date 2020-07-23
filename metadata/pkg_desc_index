@@ -7631,7 +7631,7 @@ dev-python/chardet 3.0.4: Universal encoding detector
 dev-python/cheetah 2.4.4-r1: Python-powered template engine and code generator
 dev-python/cheetah-docs 0.9.16_alpha1: Documentation for Cheetah templates
 dev-python/cheetah3 3.2.4: Python-powered template engine and code generator
-dev-python/cheroot 8.3.0 8.3.0-r1 8.3.1: Cheroot is the high-performance, pure-Python HTTP server used by CherryPy.
+dev-python/cheroot 8.3.0 8.3.0-r1 8.3.1 8.4.0: Cheroot is the high-performance, pure-Python HTTP server used by CherryPy.
 dev-python/cherrypy 3.8.0 18.5.0 18.6.0: CherryPy is a pythonic, object-oriented HTTP framework
 dev-python/chump 1.6.0: API wrapper for Pushover
 dev-python/citeproc-py 0.4.0-r1: Yet another Python CSL Processor
@@ -7731,7 +7731,7 @@ dev-python/django-pglocks 1.0.4: PostgreSQL locking context managers and functio
 dev-python/django-prometheus 2.0.0: Library to export django metrics for prometheus
 dev-python/django-redis 4.10.0: Full featured redis cache backend for Django.
 dev-python/django-rq 2.3.0: An app that provides django integration for RQ (Redis Queue)
-dev-python/django-sortedm2m 2.0.0: Drop-in replacement for django's many to many field with sorted relations
+dev-python/django-sortedm2m 2.0.0 3.0.1: Drop-in replacement for django's many to many field with sorted relations
 dev-python/django-tables2 2.2.1: Table/data-grid framework for Django
 dev-python/django-tagging 0.5.0: Generic tagging application for Django
 dev-python/django-taggit 1.2.0: simple tagging for django
@@ -7916,7 +7916,7 @@ dev-python/humanize 2.4.0 2.4.1: Common humanization utilities
 dev-python/hyper-h2 3.2.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 19.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 4.50.8 4.57.1 5.16.0 5.16.3 5.19.0 5.19.1 5.19.2 5.20.2: A library for property based testing
+dev-python/hypothesis 4.50.8 4.57.1 5.16.0 5.16.3 5.19.0 5.19.1 5.19.2 5.20.2 5.20.3: A library for property based testing
 dev-python/icalendar 4.0.3 4.0.6: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.8 2.9 2.10: Internationalized Domain Names in Applications (IDNA)
@@ -7928,7 +7928,7 @@ dev-python/imagesize 1.1.0: Pure Python module for getting image size from png/j
 dev-python/imapclient 2.1.0: easy-to-use, pythonic, and complete IMAP client library
 dev-python/iminuit 1.3.8: Minuit numerical function minimization in Python
 dev-python/immutables 0.11 0.14: A high-performance immutable mapping type for Python
-dev-python/importlib_metadata 1.4.0 1.6.1 1.7.0-r1: Read metadata from Python packages
+dev-python/importlib_metadata 1.6.1 1.7.0-r1: Read metadata from Python packages
 dev-python/importlib_resources 1.5.0-r1 3.0.0-r1: Read resources from Python packages
 dev-python/incremental 17.5.0: Incremental is a small library that versions your Python projects
 dev-python/indexed_gzip 0.8.10: Fast random access of gzip files in Python
@@ -7945,7 +7945,7 @@ dev-python/ipaddr 2.2.0: Python IP address manipulation library
 dev-python/ipaddress 1.0.23: IPv4/IPv6 manipulation library, backport of the ipaddress module
 dev-python/ipdb 0.10.3: IPython-enabled pdb
 dev-python/ipy 1.00: Class and tools for handling of IPv4 and IPv6 addresses and networks
-dev-python/ipykernel 5.1.4 5.3.0 5.3.2 5.3.3: IPython Kernel for Jupyter
+dev-python/ipykernel 5.1.4 5.3.0 5.3.2 5.3.3 5.3.4: IPython Kernel for Jupyter
 dev-python/ipynb 0.5.1: Package/Module importer for importing code from Jupyter Notebook files
 dev-python/ipyparallel 6.2.3 6.3.0: Interactive Parallel Computing with IPython
 dev-python/ipython 7.5.0 7.16.1: Advanced interactive shell for Python
@@ -8148,7 +8148,7 @@ dev-python/ntlm-auth 1.5.0: Calculates NTLM Authentication codes
 dev-python/ntplib 0.3.3: Python NTP library
 dev-python/nuitka 0.6.8: Python to native compiler
 dev-python/numexpr 2.6.9 2.7.1: Fast numerical array expression evaluator for Python and NumPy
-dev-python/numpy 1.16.5-r1 1.17.4-r3 1.18.5 1.19.0: Fast array and numerical python library
+dev-python/numpy 1.16.5-r1 1.17.4-r3 1.18.5 1.19.0 1.19.1: Fast array and numerical python library
 dev-python/numpy-python2 1.16.6: Fast array and numerical python library
 dev-python/numpydoc 0.9.1 1.1.0: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth 1.0.1-r1: Python OAuth module
@@ -8218,7 +8218,7 @@ dev-python/parso 0.5.2 0.6.1 0.7.0: a python parser that supports error recovery
 dev-python/partd 0.3.8 1.1.0: Appendable key-value storage
 dev-python/parver 0.3: Parse and manipulate version numbers
 dev-python/passlib 1.7.2: Password hashing framework supporting over 20 schemes
-dev-python/paste 3.4.1 3.4.2: Tools for using a Web Server Gateway Interface stack
+dev-python/paste 3.4.1 3.4.2 3.4.3: Tools for using a Web Server Gateway Interface stack
 dev-python/pastedeploy 2.1.0: Load, configure, and compose WSGI applications and servers
 dev-python/patch-ng 1.17.4: Library to parse and apply unified diffs, fork of dev-python/patch
 dev-python/path-and-address 2.0.1: Functions for server CLI applications used by humans
@@ -8881,7 +8881,7 @@ dev-python/uranium 4.6.1: A Python framework for building 3D printing related ap
 dev-python/urdf_parser_py 0.4.3: URDF parser for Python
 dev-python/uritemplate 3.0.1-r1: Python implementation of RFC6570, URI Template
 dev-python/urlgrabber 3.10.1-r1: Python module for downloading files
-dev-python/urllib3 1.24.2 1.25.8 1.25.9: HTTP library with thread-safe connection pooling, file post, and more
+dev-python/urllib3 1.24.2 1.25.8 1.25.9 1.25.10: HTTP library with thread-safe connection pooling, file post, and more
 dev-python/urwid 2.1.0: Curses-based user interface library for Python
 dev-python/urwidtrees 1.0.2-r1: Tree widgets for urwid
 dev-python/utidylib 0.6: TidyLib Python wrapper
