@@ -27,7 +27,7 @@ DEPEND="
 	dev-libs/libconfig
 	net-misc/lksctp-tools
 	net-libs/mbedtls:=
-	sci-libs/fftw:*
+	sci-libs/fftw:3.0=
 	bladerf? ( net-wireless/bladerf:= )
 	simcard? ( sys-apps/pcsc-lite )
 	soapysdr? ( net-wireless/soapysdr:= )
