@@ -5,7 +5,7 @@ EAPI=7
 
 inherit cmake-utils vcs-snapshot
 
-MY_PV=${PV/./_}
+MY_PV=${PV//./_}
 
 DESCRIPTION="Open source SDR LTE software suite from Software Radio Systems"
 HOMEPAGE="http://www.softwareradiosystems.com"
