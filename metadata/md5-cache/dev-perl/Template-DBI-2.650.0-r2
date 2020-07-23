@@ -4,11 +4,11 @@ DESCRIPTION=DBI plugin for the Template Toolkit
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Template-DBI
 IUSE=test
-KEYWORDS=amd64 ~arm arm64 ppc ppc64 x86 ~ppc-aix ~x86-solaris
+KEYWORDS=amd64 ~arm arm64 ppc ppc64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/DBI-1.612 >=dev-perl/Template-Toolkit-2.22 dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RE/REHSACK/Template-DBI-2.65.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=ae432050489b899bc5c00bf6aaf19cdc
+_md5_=2ec3f1b20babe2000350bc87c67ea725
