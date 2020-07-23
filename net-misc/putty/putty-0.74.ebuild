@@ -60,6 +60,11 @@ src_compile() {
 	emake -C "${S}"/unix AR=$(tc-getAR) $(usex ipv6 '' COMPAT=-DNO_IPV6)
 }
 
+src_test() {
+	emake -C unix cgtest
+	unix/cgtest || die
+}
+
 src_install() {
 	dodoc doc/puttydoc.txt
 
