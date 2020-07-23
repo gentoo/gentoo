@@ -12,7 +12,7 @@ HOMEPAGE="https://netfilter.org/projects/nftables/"
 
 if [[ ${PV} =~ ^[9]{4,}$ ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://git.netfilter.org/nftables"
+	EGIT_REPO_URI="https://git.netfilter.org/${PN}"
 
 	BDEPEND="
 		sys-devel/bison
@@ -24,7 +24,7 @@ else
 fi
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="0/1"
 IUSE="debug doc +gmp json +modern-kernel python +readline static-libs xtables"
 
 RDEPEND="
@@ -33,7 +33,7 @@ RDEPEND="
 	json? ( dev-libs/jansson )
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:0= )
-	>=net-libs/libnftnl-1.1.7:0=
+	>=net-libs/libnftnl-1.1.8:0=
 	xtables? ( >=net-firewall/iptables-1.6.1 )
 "
 
