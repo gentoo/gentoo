@@ -97,15 +97,15 @@ check_distribution_components() {
 					clang-libraries|distribution)
 						continue
 						;;
+					# headers for clang-tidy static library
+					clang-tidy-headers)
+						continue
+						;;
 					# tools
 					clang|clangd|clang-*)
 						;;
 					# static libraries
 					clang*|findAllSymbols)
-						continue
-						;;
-					# headers for clang-tidy static library
-					clang-tidy-headers)
 						continue
 						;;
 					# conditional to USE=doc
@@ -168,7 +168,6 @@ get_distribution_components() {
 			c-index-test
 			clang
 			clang-format
-			clang-import-test
 			clang-offload-bundler
 			clang-offload-wrapper
 			clang-refactor
