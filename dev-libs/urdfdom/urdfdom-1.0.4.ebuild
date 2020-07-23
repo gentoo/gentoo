@@ -30,6 +30,7 @@ RDEPEND=">=dev-libs/urdfdom_headers-1.0.0
 	dev-libs/tinyxml
 	dev-libs/boost:=[threads]"
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/cb.patch" )
 
 src_prepare() {
 	sed -i -e 's/set(CMAKE_INSTALL_LIBDIR/#/' CMakeLists.txt || die
