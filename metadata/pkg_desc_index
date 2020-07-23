@@ -14523,7 +14523,7 @@ net-libs/libnetfilter_log 1.0.1: interface to packets that have been logged by t
 net-libs/libnetfilter_queue 1.0.3 1.0.4 1.0.5: API to packets that have been queued by the kernel packet filter
 net-libs/libnfnetlink 1.0.1: the low-level library for netfilter related kernel/userspace communication
 net-libs/libnfsidmap 0.27: NFSv4 ID <-> name mapping library
-net-libs/libnftnl 1.1.3 1.1.4 1.1.5 1.1.6 1.1.7: Netlink API to the in-kernel nf_tables subsystem
+net-libs/libnftnl 1.1.3 1.1.4 1.1.5 1.1.6 1.1.7 9999: Netlink API to the in-kernel nf_tables subsystem
 net-libs/libnice 0.1.13 0.1.15: An implementation of the Interactice Connectivity Establishment standard (ICE)
 net-libs/libnids 1.24-r6: an implementation of an E-component of Network Intrusion Detection System
 net-libs/libnipper 0.12.6-r1: A router configuration security analysis library
@@ -15233,7 +15233,7 @@ net-vpn/vpncwatch 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
 net-vpn/wireguard-modules 1.0.20200712 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-vpn/wireguard-tools 1.0.20200513: Required tools for WireGuard, such as wg(8) and wg-quick(8)
-net-wireless/aircrack-ng 1.5.2 1.6-r1 1.6_p20200519 9999: WLAN tools for breaking 802.11 WEP/WPA keys
+net-wireless/aircrack-ng 1.5.2 1.6-r1 1.6_p20200722 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airpwn 1.4-r2: Tool for generic packet injection on 802.11
 net-wireless/airspy 1.0.9 9999: Usemode driver and associated tools for airspy
 net-wireless/airtraf 1.1-r3 1.1-r4: AirTraf 802.11b Wireless traffic sniffer
@@ -15329,7 +15329,7 @@ net-wireless/soapysdr 0.7.1 9999: vendor and platform neutral SDR support librar
 net-wireless/soapysdrplay 0.1.0 0.2.0 9999: Soapy SDR plugin for SDRPlay
 net-wireless/soapyuhd 0.3.6 9999: Soapy SDR plugins for UHD supported SDR devices
 net-wireless/spectools 2016.01.1 9999: Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware
-net-wireless/srslte 19.09: Open source SDR LTE software suite from Software Radio Systems
+net-wireless/srslte 20.04.1: Open source SDR LTE software suite from Software Radio Systems
 net-wireless/tempestsdr 0.0_p20200221 9999: Remote video eavesdropping using a software-defined radio platform
 net-wireless/ubertooth 2018.12.1 9999: open source wireless development platform suitable for Bluetooth experimentation
 net-wireless/uhd 3.15.0.0-r1 3.15.0.0-r100: Universal Software Radio Peripheral (USRP) Hardware Driver
