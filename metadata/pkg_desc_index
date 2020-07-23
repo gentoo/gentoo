@@ -4902,7 +4902,7 @@ dev-libs/cloog 0.18.4 9999: A loop generator for scanning polyhedra
 dev-libs/collada-dom 2.5.0 9999: COLLADA Document Object Model (DOM) C++ Library
 dev-libs/concurrencykit 0.6.0 0.7.0: A library with concurrency related algorithms and data structures in C
 dev-libs/confuse 3.0 3.2.2: a configuration file parser library
-dev-libs/console_bridge 0.4.3 0.4.4 9999: A ROS-independent package for logging into rosconsole/rosout
+dev-libs/console_bridge 1.0.1 9999: A ROS-independent package for logging into rosconsole/rosout
 dev-libs/cppcodec 0.2 9999: C++11 library to encode/decode base64, base64url, base32, base32hex and hex
 dev-libs/crc32c 1.0.6: CRC32C implementation with support for CPU-specific acceleration instructions
 dev-libs/criterion 2.3.3 2.4_pre20200110: Cross platform unit testing framework for C and C++
@@ -5339,8 +5339,8 @@ dev-libs/udis86 1.7-r2 1.7.2: Disassembler library for the x86/-64 architecture 
 dev-libs/unibilium 2.0.0: A very basic terminfo library
 dev-libs/unittest++ 1.6.1 2.0.0: A lightweight unit testing framework for C++
 dev-libs/univalue 1.0.5 9999: C++ universal value object and JSON library
-dev-libs/urdfdom 1.0.0-r1 1.0.3 9999: URDF (U-Robot Description Format) library
-dev-libs/urdfdom_headers 1.0.2 1.0.3 1.0.4 9999: URDF (U-Robot Description Format) headers
+dev-libs/urdfdom 1.0.4 9999: URDF (U-Robot Description Format) library
+dev-libs/urdfdom_headers 1.0.5 9999: URDF (U-Robot Description Format) headers
 dev-libs/uriparser 0.9.1 0.9.3 0.9.4: Uriparser is a strictly RFC 3986 compliant URI parsing library in C
 dev-libs/userspace-rcu 0.9.1 0.9.2 0.10.1 0.10.2 0.11.1 0.12.1: userspace RCU (read-copy-update) library
 dev-libs/ustr 1.0.4-r5 1.0.4-r7 1.0.4-r8: Low-overhead managed string library for C
@@ -7516,7 +7516,7 @@ dev-python/alabaster 0.7.12: A configurable sidebar-enabled Sphinx theme
 dev-python/alagitpull 0.0.23: alabaster sub-theme used on git-pull docs
 dev-python/alembic 1.4.2: database migrations tool, written by the author of SQLAlchemy
 dev-python/algopy 0.5.3: Taylor Arithmetic Computation and Algorithmic Differentiation
-dev-python/ament_package 0.8.8: Parser for the manifest files in the ament buildsystem
+dev-python/ament_package 0.9.2: Parser for the manifest files in the ament buildsystem
 dev-python/amodem 1.15.0: Transmit data between two computers using audio
 dev-python/aniso8601 8.0.0: A library for parsing ISO 8601 strings
 dev-python/ansi 0.1.5: ANSI cursor movement and graphics in Python
@@ -7614,7 +7614,7 @@ dev-python/carbon 1.1.5: Backend data caching and persistence daemon for Graphit
 dev-python/case 1.5.3: Python unittest Utilities
 dev-python/castellan 1.2.2: Generic Key Manager interface for OpenStack
 dev-python/casttube 0.2.0: casttube provides a way to interact with the Youtube Chromecast api.
-dev-python/catkin_pkg 0.4.20 9999: Standalone Python library for the catkin package system
+dev-python/catkin_pkg 0.4.20 0.4.22 9999: Standalone Python library for the catkin package system
 dev-python/cbor 1.0.0-r1: RFC 7049 - Concise Binary Object Representation
 dev-python/cbor2 5.1.0: Pure Python CBOR (de)serializer with extensive tag support
 dev-python/cddb-py 1.4-r1: CDDB Module for Python
@@ -9033,20 +9033,31 @@ dev-ros/actionlib_msgs 1.13.0 9999: Common messages to interact with an action s
 dev-ros/actionlib_tools 1.13.1 9999: Tools for dealing with actionlib
 dev-ros/actionlib_tutorials 0.1.12 9999: Actionlib tutorials
 dev-ros/amcl 1.17.0 9999: Probabilistic localization system for a robot moving in 2D
-dev-ros/ament_cmake_core 0.8.1 9999: The core of the ament buildsystem in CMake
-dev-ros/ament_cmake_export_definitions 0.8.1 9999: Export definitions to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_export_dependencies 0.8.1 9999: Export dependencies to downstream packages in the ament buildsystem in CMake
-dev-ros/ament_cmake_export_include_directories 0.8.1 9999: Export include directories to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_export_interfaces 0.8.1 9999: Export interfaces to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_export_libraries 0.8.1 9999: Export libraries to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_export_link_flags 0.8.1 9999: Export link flags to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_gtest 0.8.1 9999: The ability to add gtest-based tests in the ament buildsystem
-dev-ros/ament_cmake_include_directories 0.8.1 9999: Export include directories to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_libraries 0.8.1 9999: The functionality to deduplicate libraries in the ament buildsystem
-dev-ros/ament_cmake_python 0.8.1-r1 9999: The ability to use Python in the ament buildsystem
-dev-ros/ament_cmake_target_dependencies 0.8.1 9999: Add defs, include dirs and libs to a target in the ament buildsystem
-dev-ros/ament_cmake_test 0.8.1 9999: The ability to add tests in the ament buildsystem
-dev-ros/ament_cmake_version 0.8.1 9999: Override the exported package version in the ament buildsystem
+dev-ros/ament_cmake_copyright 0.9.5 9999: The auto-magic functions for ease to use of the ament linters
+dev-ros/ament_cmake_core 0.9.6 9999: The core of the ament buildsystem in CMake
+dev-ros/ament_cmake_export_definitions 0.9.6 9999: Export definitions to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_dependencies 0.9.6 9999: Export dependencies to downstream packages in the ament buildsystem in CMake
+dev-ros/ament_cmake_export_include_directories 0.9.6 9999: Export include directories to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_interfaces 0.9.6 9999: Export interfaces to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_libraries 0.9.6 9999: Export libraries to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_link_flags 0.9.6 9999: Export link flags to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_targets 0.9.6 9999: Export targets to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_gtest 0.9.6 9999: The ability to add gtest-based tests in the ament buildsystem
+dev-ros/ament_cmake_include_directories 0.9.6 9999: Export include directories to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_libraries 0.9.6 9999: The functionality to deduplicate libraries in the ament buildsystem
+dev-ros/ament_cmake_lint_cmake 0.9.5 9999: The CMake API for ament_lint_cmake to lint CMake code using cmakelint
+dev-ros/ament_cmake_python 0.9.6 9999: The ability to use Python in the ament buildsystem
+dev-ros/ament_cmake_target_dependencies 0.9.6 9999: Add defs, include dirs and libs to a target in the ament buildsystem
+dev-ros/ament_cmake_test 0.9.6 9999: The ability to add tests in the ament buildsystem
+dev-ros/ament_cmake_version 0.9.6 9999: Override the exported package version in the ament buildsystem
+dev-ros/ament_cmake_xmllint 0.9.5 9999: he CMake API for ament_xmllint to check XML file using xmmlint
+dev-ros/ament_copyright 0.9.5 9999: The ability to check source files for copyright and license information.
+dev-ros/ament_flake8 0.9.5 9999: The ability to check code for style and syntax conventions with flake8
+dev-ros/ament_lint 0.9.5 9999: Common API for ament linter packages
+dev-ros/ament_lint_auto 0.9.5 9999: The auto-magic functions for ease to use of the ament linters
+dev-ros/ament_lint_cmake 0.9.5 9999: Lint CMake code using cmakelint and generate xUnit test result files
+dev-ros/ament_pep257 0.9.5 9999: Checks code against style conventions in PEP 8 and generate test result files
+dev-ros/ament_xmllint 0.9.5 9999: Checks XML files like the package manifest using xmllint
 dev-ros/angles 1.9.13 9999: Set of simple math utilities to work with angles
 dev-ros/audio_capture 0.3.6 9999: Transports audio from a source to a destination
 dev-ros/audio_common_msgs 0.3.6 9999: Messages for transmitting audio via ROS
@@ -9072,7 +9083,7 @@ dev-ros/combined_robot_hw 0.19.1 9999: Combined Robot HW class
 dev-ros/combined_robot_hw_tests 0.19.1 9999: Combined Robot HW class tests
 dev-ros/compressed_depth_image_transport 1.14.0 9999: Plugin for transparently sending depth images using PNG compression
 dev-ros/compressed_image_transport 1.14.0 9999: Plugin for transparently sending images encoded as JPEG or PNG
-dev-ros/console_bridge_vendor 1.2.0 9999: Wrapper around console_bridge
+dev-ros/console_bridge_vendor 1.2.1 9999: Wrapper around console_bridge
 dev-ros/control_msgs 1.5.2 9999: Base messages and actions useful for controlling robots
 dev-ros/control_toolbox 1.18.2 9999: Modules that are useful across all controllers
 dev-ros/controller_interface 0.19.1 9999: Interface base class for controllers
@@ -9108,8 +9119,8 @@ dev-ros/genlisp 0.4.18 9999: Common-Lisp ROS message and service generators
 dev-ros/genmsg 0.5.16 9999: Python library for generating ROS message and service data structures
 dev-ros/gennodejs 2.0.1 9999: Javascript ROS message and service generators
 dev-ros/genpy 0.6.11 9999: Python ROS message and service generators
-dev-ros/geodesy 0.5.2 0.5.3 0.5.5 9999: Python and C++ interfaces for manipulating geodetic coordinates
-dev-ros/geographic_msgs 0.5.0 0.5.2 0.5.3 0.5.5 9999: ROS messages for Geographic Information Systems
+dev-ros/geodesy 0.5.5 9999: Python and C++ interfaces for manipulating geodetic coordinates
+dev-ros/geographic_msgs 0.5.5 9999: ROS messages for Geographic Information Systems
 dev-ros/geometric_shapes 0.7.0 9999: Generic definitions of geometric shapes and bodies
 dev-ros/geometry_msgs 1.13.0 9999: Messages for common geometric primitives such as points, vectors, and poses
 dev-ros/global_planner 1.17.0 9999: Path planner library and node
@@ -9769,7 +9780,7 @@ dev-ruby/pusher-client 0.6.2: Client for consuming WebSockets from http://pusher
 dev-ruby/pygments_rb 1.2.1-r1: Pygments syntax highlighting in ruby
 dev-ruby/qed 2.9.2: QED (Quality Ensured Demonstrations) is a TDD/BDD framework
 dev-ruby/racc 1.4.14 1.4.16-r1: A LALR(1) parser generator for Ruby
-dev-ruby/rack 1.6.12 2.0.9 2.1.3 2.1.4 2.2.2 2.2.3: A modular Ruby webserver interface
+dev-ruby/rack 1.6.12 2.0.9 2.1.4 2.2.3: A modular Ruby webserver interface
 dev-ruby/rack-attack 5.4.2 6.2.2 6.3.1: A DSL for blocking & throttling abusive clients
 dev-ruby/rack-cache 1.9.0 1.10.0 1.11.0 1.11.1 1.12.0: Enable HTTP caching for Rack-based applications that produce freshness info
 dev-ruby/rack-openid 1.4.2: Provides a more HTTPish API around the ruby-openid library
@@ -9796,7 +9807,7 @@ dev-ruby/rbnacl 4.0.2-r1 5.0.0-r1 6.0.1 7.0.0 7.1.0 7.1.1: Provides a high-level
 dev-ruby/rbpdf 1.20.1-r2: Ruby on Rails RBPDF plugin
 dev-ruby/rbpdf-font 1.19.1: Font files for the Ruby on Rails RBPDF plugin
 dev-ruby/rbst 0.5.1: A simple Ruby wrapper for processing rST via docutils
-dev-ruby/rcairo 1.16.2 1.16.4 1.16.5: Ruby bindings for cairo
+dev-ruby/rcairo 1.16.2 1.16.4 1.16.5 1.16.6: Ruby bindings for cairo
 dev-ruby/rchardet 1.8.0: Character encoding auto-detection in Ruby
 dev-ruby/rdiscount 2.2.0.1: Implementation of John Gruber's Markdown
 dev-ruby/rdoc 6.1.2 6.2.0: An extended version of the RDoc library from Ruby 1.8
@@ -9971,7 +9982,7 @@ dev-ruby/test_declarative 0.0.6: Simply adds a declarative test method syntax to
 dev-ruby/text 1.3.1: A collection of text algorithms
 dev-ruby/text-hyphen 1.4.1-r2: Hyphenates words according to the rules of the language the word is written in
 dev-ruby/textpow 1.4.0: A library to parse and process Textmate bundles
-dev-ruby/thor 0.20.3: A scripting framework that replaces rake and sake
+dev-ruby/thor 0.20.3 0.20.3-r1 1.0.1: A scripting framework that replaces rake and sake
 dev-ruby/thread_order 1.1.1: Test helper for ordering threaded code
 dev-ruby/thread_safe 0.3.6: A collection of thread-safe versions of common core Ruby classes
 dev-ruby/tidy-ext 0.1.14-r3: W3C HTML Tidy library implemented as a Ruby extension
@@ -10232,7 +10243,7 @@ dev-util/appinventor 1.1: MIT App Inventor Setup package
 dev-util/archdiff 1.1.6: Utility to view the differences between two source code archives
 dev-util/argouml 0.34: Modelling tool that helps you do your design using UML
 dev-util/artifactory-bin 6.3.3: The world's most advanced repository manager for maven
-dev-util/aruba 0.6.2-r2 0.14.12 0.14.14: Cucumber steps for driving out command line applications
+dev-util/aruba 0.6.2-r2 0.14.14 1.0.2: Cucumber steps for driving out command line applications
 dev-util/astyle 3.0.1-r1 3.1-r2: Artistic Style is a re-indenter and reformatter for C++, C and Java source code
 dev-util/autodia 2.140.0-r2: Parses source code, XML or data and produces an XML document in Dia format
 dev-util/autoproject 0.20_p5: Start a programming project using autotools and a command line parser generator
@@ -13767,7 +13778,7 @@ media-video/dvdstyler 3.0.4: A cross-platform free DVD authoring application
 media-video/dvgrab 3.5-r1: Digital Video (DV) grabber for GNU/Linux
 media-video/ffcast 2.4.8: Record screencasts using ffmpeg
 media-video/ffdiaporama 2.2_pre20140701-r2: Movie creator from photos and video clips
-media-video/ffmpeg 3.4.6-r1 4.2.3 4.2.4 4.3 4.3-r1 9999: Complete solution to record/convert/stream audio and video. Includes libavcodec
+media-video/ffmpeg 3.4.6-r1 4.2.3 4.2.4 4.3 4.3.1 9999: Complete solution to record/convert/stream audio and video. Includes libavcodec
 media-video/ffmpeg2theora 0.30: A simple converter to create Ogg Theora files
 media-video/ffmpegthumbnailer 2.2.0-r1: Lightweight video thumbnailer that can be used by file managers
 media-video/flvstreamer 2.1c: Open source command-line RTMP client intended to stream audio or video flash content
@@ -15388,7 +15399,7 @@ perl-core/libnet 1.270.0: A URI Perl Module
 perl-core/parent 0.228-r1: Establish an ISA relationship with base classes at compile time
 perl-core/podlators 2.5.3: Format POD source into various output formats
 perl-core/version 0.990.800: Perl extension for Version Objects
-ros-meta/ament_cmake 0.8.1 9999: The entry point package for the ament buildsystem
+ros-meta/ament_cmake 0.9.6 9999: The entry point package for the ament buildsystem
 ros-meta/audio_common 0.3.1 0.3.2 0.3.3 0.3.6 9999: Common code for working with audio in ROS
 ros-meta/bond_core 1.8.5 9999: A bond allows two processes, A and B, to know when the other has terminated
 ros-meta/calibration 0.10.13 0.10.14 9999: Provides a toolchain running through the robot calibration process
