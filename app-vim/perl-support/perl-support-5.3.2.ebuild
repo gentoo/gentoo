@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: Perl-IDE - Write and run Perl scripts using menus and hotkeys"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=556"
 LICENSE="GPL-2 GPL-2+"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
 
 VIM_PLUGIN_HELPFILES="perlsupport.txt"
 
