@@ -71,6 +71,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.31-pragma.patch
 	"${FILESDIR}"/${PN}-5.44-blurb-hndl-test-passwd.patch
 	"${FILESDIR}"/${PN}-5.44-gentoo.patch
+	"${FILESDIR}"/${PN}-5.44-gcc.patch
 )
 
 src_prepare() {
