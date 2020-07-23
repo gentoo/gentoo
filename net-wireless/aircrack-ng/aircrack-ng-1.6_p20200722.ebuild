@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/aircrack-ng/aircrack-ng.git"
 else
 	#SRC_URI="https://download.aircrack-ng.org/${P}.tar.gz"
-	COMMIT="225993949cd1c8228227ab4e6d315538a908c101"
+	COMMIT="5a02ac4818b30d2e87b3e18e497a5f9e5319394f"
 	SRC_URI="https://github.com/aircrack-ng/aircrack-ng/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux"
