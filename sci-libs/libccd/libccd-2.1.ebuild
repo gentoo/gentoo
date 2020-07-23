@@ -28,6 +28,15 @@ DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx )
 "
 
+src_prepare() {
+	# upstream issue 72
+	# https://github.com/danfis/libccd/issues/72
+	sed -i -e "s \${CMAKE_INSTALL_DATAROOTDIR}/doc/ccd \${CMAKE_INSTALL_DATAROOTDIR}/doc/${PF} g" \
+	CMakeLists.txt doc/CMakeLists.txt || die
+
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_DOCUMENTATION=$(usex doc ON OFF)
