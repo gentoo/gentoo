@@ -7410,7 +7410,9 @@ sci-libs/lapack:lapacke - Build LAPACKE
 sci-libs/lapack-reference:deprecated - Build deprecated routines
 sci-libs/lemon:coin - Enable the sci-libs/coinor-clp and sci-libs/coinor-cbc graph algorithms
 sci-libs/lemon:glpk - Enable GNU Linear Programming Kit sci-mathematics/glpk support
-sci-libs/libccd:double - Use double precision floats.
+sci-libs/libccd:double - Use double precision floats
+sci-libs/libccd:double-precision - More precise calculations at the expense of speed
+sci-libs/libccd:shared - Build shared library
 sci-libs/libgeodecomp:cuda - Enables plugins for NVIDIA GPUs
 sci-libs/libgeodecomp:hpx - Enables HPX backend
 sci-libs/libgeodecomp:opencl - Enables OpenCL backend

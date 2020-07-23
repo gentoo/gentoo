@@ -15964,7 +15964,7 @@ sci-libs/levmar 2.6: Levenberg-Marquardt nonlinear least squares C library
 sci-libs/libaec 0.3.2 1.0.0 1.0.1 1.0.2: Adaptive Entropy Coding library
 sci-libs/libbraiding 1.0: Expose the functionality of cbraid as a shared library
 sci-libs/libbufr 000405: ECMWF BUFR library - includes both C and Fortran example utilities
-sci-libs/libccd 2.0 9999: Library for collision detection between two convex shapes
+sci-libs/libccd 2.0 2.1 9999: Library for collision detection between two convex shapes
 sci-libs/libcerf 1.5: Efficient and accurate implementation of complex error functions
 sci-libs/libcmatrix 3.11.0-r1: lite version of pNMRsim
 sci-libs/libdap 3.18.1: Implementation of a C++ SDK for DAP 2.0 and 3.2
