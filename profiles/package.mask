@@ -486,37 +486,11 @@ dev-tex/dot2texi
 # Removal in 30 days.  Bug #729376.
 dev-python/pytest-runner
 
-# Michał Górny <mgorny@gentoo.org> (2020-06-23)
-# Python 2 only.
-#
-# Relax involves implementation conflicts between dependencies.  Even
-# if you can get past them, it requires Numdifftools, and...
-#
-# Numdifftools fails with modern versions of setuptools, most likely
-# because it uses pyscaffold that is broken.  There are newer versions
-# that removed pyscaffold support but they have new dependencies that
-# do not support py2 and porting them back is just not worth the effort.
-# Its only revdep is relax.
-#
-# Pyscaffold is just broken and required only by old versions
-# of Numdifftools.
-#
-# Removal in 30 days.  Bug #704032.
-dev-python/Numdifftools
-dev-python/pyscaffold
-sci-chemistry/relax
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-06-21)
 # virtual/libstdc++ has only one sys-libs/libstdc++-v3 provider.
 # Use that instead. Or even better use none of them. It's a
 # library from 2005. Removal in 30 days.
 virtual/libstdc++
-
-# Ulrich Müller <ulm@gentoo.org> (2020-06-20)
-# Unmaintained upstream, included with TeX Live.
-# Use >=dev-texlive/texlive-metapost-2020-r1 as replacement.
-# Removal in 30 days. Bug #728904.
-dev-tex/feynmf
 
 # Hans de Graaff <graaff@gentoo.org> (2020-06-14)
 # Ruby 2.4 is no longer supported by upstream and no longer gets
