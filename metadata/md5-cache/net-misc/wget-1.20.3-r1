@@ -4,7 +4,7 @@ DESCRIPTION=Network utility to retrieve files from the WWW
 EAPI=6
 HOMEPAGE=https://www.gnu.org/software/wget/
 IUSE=debug gnutls idn ipv6 libressl nls ntlm pcre +ssl static test uuid zlib
-KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux
 LICENSE=GPL-3
 RDEPEND=!static? ( idn? ( >=net-dns/libidn2-0.14:= ) pcre? ( dev-libs/libpcre2 ) ssl? ( gnutls? ( net-libs/gnutls:0= ) !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ) uuid? ( sys-apps/util-linux ) zlib? ( sys-libs/zlib ) )
 REQUIRED_USE=ntlm? ( !gnutls ssl ) gnutls? ( ssl )
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://gnu/wget/wget-1.20.3.tar.gz
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	2477ebe553d3e4d2c606191fe6c33602	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=4786424d1f27e3faf6dc7d0043840b76
+_md5_=2fb555877c86ee6c32482149ddaba38e
