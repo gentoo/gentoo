@@ -36,6 +36,12 @@ RESTRICT="test"
 
 DOCS=( README.md )
 
+src_unpack() {
+	# dont' try to unpack the .lds file
+	A=( ${A[@]/libcrun.lds} )
+	unpack ${A}
+}
+
 src_prepare() {
 	default
 	eautoreconf
