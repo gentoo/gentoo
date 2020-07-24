@@ -1,0 +1,16 @@
+diff -Naur pacemaker-Pacemaker-2.0.4.orig/extra/resources/pingd pacemaker-Pacemaker-2.0.4/extra/resources/pingd
+--- pacemaker-Pacemaker-2.0.4.orig/extra/resources/pingd	2020-07-13 22:30:01.503255159 +0200
++++ pacemaker-Pacemaker-2.0.4/extra/resources/pingd	2020-07-13 22:33:27.434714056 +0200
+@@ -25,8 +25,10 @@
+ : ${OCF_RESKEY_interval:="1"}
+ : ${OCF_RESKEY_CRM_meta_interval:=0}
+ 
+-ocf_log err "This agent (ocf:pacemaker:pingd) is deprecated, does not work, and"
+-ocf_log err "will be removed in a future release (use ocf:pacemaker:ping instead)"
++if [ "$__OCF_ACTION" != "meta-data" ]; then
++    ocf_log err "This agent (ocf:pacemaker:pingd) is deprecated, does not work, and"
++    ocf_log err "will be removed in a future release (use ocf:pacemaker:ping instead)"
++fi
+ 
+ case "$__OCF_ACTION" in
+     start|monitor)
