@@ -410,13 +410,6 @@ media-sound/rgain
 # Masked for removal in 30 days.
 x11-misc/nts
 
-# Michał Górny <mgorny@gentoo.org> (2020-06-24)
-# A thin wrapper to run pytest via setup.py that must not be used
-# in Gentoo packages.  Calling 'setup.py test' is deprecated upstream
-# anyway.  Just call 'pytest' directly.  The last revdep is last rited.
-# Removal in 30 days.  Bug #729376.
-dev-python/pytest-runner
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-06-21)
 # virtual/libstdc++ has only one sys-libs/libstdc++-v3 provider.
 # Use that instead. Or even better use none of them. It's a
