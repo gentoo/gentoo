@@ -2784,7 +2784,7 @@ app-text/scdoc 1.9.3-r1 1.10.0 1.10.1 1.11.0 9999: Standalone tool for generatin
 app-text/scrollkeeper-dtd 1.0-r1: DTD from the Scrollkeeper package
 app-text/sdcv 0.5.2: Console version of Stardict program
 app-text/sgml-common 0.6.3-r7: Base ISO character entities and utilities for SGML
-app-text/sgmltools-lite 3.0.3-r15: Python interface to SGML software in a DocBook/OpenJade env
+app-text/sgmltools-lite 3.0.3-r16: Python interface to SGML software in a DocBook/OpenJade env
 app-text/sgrep 1.94a: Use structural criteria to grep and index text, SGML, XML and HTML and filter
 app-text/sigil 0.9.16-r1 1.2.1-r1: Multi-platform WYSIWYG ebook editor for ePub format
 app-text/silvercity 0.9.7-r1: A lexical analyser for many languages
