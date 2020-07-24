@@ -69,6 +69,9 @@ python_prepare_all() {
 		-e '/cfn-lint/ d' \
 		-i setup.py moto.egg-info/requires.txt || die
 
+	sed -e 's|idna<2.9,>=2.5|idna>=2.5|' \
+		-i setup.py moto.egg-info/requires.txt || die
+
 	# Disable tests that fail with network-sandbox.
 	sed -e 's|^\(def \)\(test_context_manager()\)|\1_\2|' \
 		-e 's|^\(def \)\(test_decorator_start_and_stop()\)|\1_\2|' \
