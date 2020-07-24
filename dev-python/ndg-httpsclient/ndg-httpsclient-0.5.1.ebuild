@@ -28,16 +28,15 @@ DEPEND="${RDEPEND}
 	test? (
 		!!<dev-python/ndg-httpsclient-0.4.2-r1
 		dev-libs/openssl:0
-		sys-libs/libfaketime
 	)"
+
+PATCHES=(
+	"${FILESDIR}/${P}-expiration-test-fix.patch"
+)
 
 distutils_enable_tests unittest
 
 src_test() {
-	# bundled certificates expired, so we need a time machine
-	local -x FAKETIME="@2019-12-01 12:00:00"
-	local -x LD_PRELOAD="libfaketime.so:${LD_PRELOAD}"
-
 	# we need to start a fake https server for tests to connect to
 	( cd ndg/httpsclient/test && sh ./scripts/openssl_https_server.sh ) &
 	local server_pid=${!}
