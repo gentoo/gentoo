@@ -23,7 +23,7 @@ RDEPEND="${PYTHON_DEPS}
 	app-text/docbook-sgml-dtd:3.1
 	app-text/docbook-dsssl-stylesheets
 	app-text/openjade
-	jadetex? ( app-text/jadetex )
+	jadetex? ( dev-texlive/texlive-formatsextra )
 	|| (
 		www-client/w3m
 		www-client/lynx
