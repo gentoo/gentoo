@@ -10,4 +10,4 @@ RDEPEND=virtual/libelf !<=dev-util/bcc-0.7.0
 SLOT=0/0.0.9
 SRC_URI=https://github.com/libbpf/libbpf/archive/v0.0.9.tar.gz -> libbpf-0.0.9.tar.gz
 _eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=040ff528327b9e841bd7ad26d2ed94be
+_md5_=8a70efe3b5b9b3299c04dd11259b1304
