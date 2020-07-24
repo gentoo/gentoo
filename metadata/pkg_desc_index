@@ -5751,13 +5751,13 @@ dev-perl/Class-Adapter 1.90.0: Implementation of the 'Adapter' Design Pattern
 dev-perl/Class-Autouse 2.10.0-r2 2.10.0-r3: Runtime aspect loading of one or more classes
 dev-perl/Class-Base 0.90.0: Useful base class for deriving other modules
 dev-perl/Class-C3 0.330.0 0.340.0: A pragma to use the C3 method resolution order algortihm
-dev-perl/Class-C3-Componentised 1.1.0-r1 1.1.2: Load mix-ins or components to your C3-based class
+dev-perl/Class-C3-Componentised 1.1.2: Load mix-ins or components to your C3-based class
 dev-perl/Class-C3-XS 0.140.0 0.150.0 0.150.0-r1: XS speedups for Class::C3
 dev-perl/Class-Container 0.120.0-r2 0.130.0: Glue object frameworks together transparently
 dev-perl/Class-DBI 3.0.17-r2: Simple Database Abstraction
-dev-perl/Class-DBI-AbstractSearch 0.70.0-r1 0.70.0-r2: Abstract Class::DBI's SQL with SQL::Abstract::Limit
-dev-perl/Class-DBI-Plugin 0.30.0 0.30.0-r1: Abstract base class for Class::DBI plugins
-dev-perl/Class-DBI-Plugin-DeepAbstractSearch 0.80.0 0.80.0-r1: deep_search_where() method for Class::DBI
+dev-perl/Class-DBI-AbstractSearch 0.70.0-r2: Abstract Class::DBI's SQL with SQL::Abstract::Limit
+dev-perl/Class-DBI-Plugin 0.30.0-r1: Abstract base class for Class::DBI plugins
+dev-perl/Class-DBI-Plugin-DeepAbstractSearch 0.80.0-r1: deep_search_where() method for Class::DBI
 dev-perl/Class-DBI-mysql 1.0.0-r2 1.0.0-r3: Extensions to Class::DBI for MySQL
 dev-perl/Class-Data-Accessor 0.40.40-r2: Inheritable, overridable class and instance data accessor creation
 dev-perl/Class-Data-Inheritable 0.80.0-r2 0.80.0-r3: Inheritable, overridable class data
@@ -5771,15 +5771,15 @@ dev-perl/Class-Load 0.240.0 0.250.0: A working (require q{Class::Name}) and more
 dev-perl/Class-Load-XS 0.100.0 0.100.0-r1: XS implementation of parts of Class::Load
 dev-perl/Class-Loader 2.30.0-r1 2.30.0-r2: Load modules and create objects on demand
 dev-perl/Class-MakeMethods 1.10.0-r1 1.10.0-r2: Automated method creation module for Perl
-dev-perl/Class-Member 1.600.0-r1 1.600.0-r2: A set of modules to make the module developement easier
+dev-perl/Class-Member 1.600.0-r2: A set of modules to make the module developement easier
 dev-perl/Class-Method-Modifiers 2.120.0 2.130.0: provides Moose-like method modifiers
 dev-perl/Class-MethodMaker 2.240.0 2.240.0-r1 2.240.0-r2: Create generic methods for OO Perl
 dev-perl/Class-Mix 0.6.0 0.6.0-r1: dynamic class mixing
 dev-perl/Class-ReturnValue 0.550.0-r1 0.550.0-r2: A return-value object that lets you treat it as as a boolean, array or object
 dev-perl/Class-Singleton 1.500.0 1.500.0-r1: Implementation of a Singleton class
-dev-perl/Class-Spiffy 0.150.0-r1 0.150.0-r2: Spiffy Perl Interface Framework For You
+dev-perl/Class-Spiffy 0.150.0-r2: Spiffy Perl Interface Framework For You
 dev-perl/Class-Std 0.13.0: Support for creating standard "inside-out" classes
-dev-perl/Class-Std-Fast 0.0.8-r1 0.0.8-r2: Faster but less secure than Class::Std
+dev-perl/Class-Std-Fast 0.0.8-r2: Faster but less secure than Class::Std
 dev-perl/Class-Tiny 1.6.0: Minimalist class construction
 dev-perl/Class-Trigger 0.140.0-r1 0.150.0: Mixin to add / call inheritable triggers
 dev-perl/Class-Unload 0.110.0: Unload a class
@@ -17304,7 +17304,7 @@ sys-kernel/ck-sources 5.4.37 5.4.48: Gentoo's genpatches for Linux , with Con Ko
 sys-kernel/cryptodev 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 048-r1 049-r3 050 050-r1 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
-sys-kernel/genkernel 3.5.3.3 4.0.10 9999: Gentoo automatic kernel building scripts
+sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.0_beta1 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 5.4.40 5.4.46 5.4.47 5.4.48 5.4.49 5.4.50 5.4.51 5.4.52 5.6.18 5.6.19 5.7.4 5.7.5 5.7.6 5.7.7 5.7.8 5.7.9: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.40 5.4.46 5.4.47 5.4.48 5.4.49 5.4.50 5.4.51 5.4.52 5.6.18 5.6.19 5.7.4 5.7.5 5.7.6 5.7.7 5.7.8 5.7.9: Pre-built Linux kernel with genpatches
