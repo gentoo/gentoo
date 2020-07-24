@@ -35,6 +35,7 @@
 # Joonas Niilola <juippis@gentoo.org> (2020-07-24)
 # Unmaintained in Gentoo, broken, multiple bugs open.
 # Removal in ~30 days. #733324
+dev-util/cutter
 
 # Michał Górny <mgorny@gentoo.org> (2020-07-22)
 # Python 2 only.  No revdeps.
