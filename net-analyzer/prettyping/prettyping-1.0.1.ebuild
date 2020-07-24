@@ -9,7 +9,7 @@ SRC_URI="https://github.com/denilsonsa/prettyping/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 ~arm ~arm64"
 
 RDEPEND="app-shells/bash
 	net-misc/iputils
