@@ -4773,7 +4773,7 @@ dev-lang/ferite 1.1.17-r1: A clean, lightweight, object oriented scripting langu
 dev-lang/fpc 2.6.4 3.0.0 3.0.2 3.0.2-r1 3.0.4: Free Pascal Compiler
 dev-lang/gdl 0.9.6-r3: GNU Data Language
 dev-lang/gforth 0.7.3-r1: GNU Forth is a fast and portable implementation of the ANSI Forth language
-dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5 8.8.1 8.8.2 8.8.3 8.10.1: The Glasgow Haskell Compiler
+dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5 8.8.1 8.8.2 8.8.3 8.8.4 8.10.1: The Glasgow Haskell Compiler
 dev-lang/gnat-gpl 2016-r4 2017-r1 2018-r3 2019-r2: GNAT Ada Compiler - GPL version
 dev-lang/gnuprologjava 0.2.6 0.2.6-r1: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
 dev-lang/go 1.12.17 1.13.13 1.13.14 1.14.5 1.14.6 9999: A concurrent garbage collected and typesafe programming language
@@ -5064,7 +5064,7 @@ dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for 
 dev-libs/libffi 3.3-r1 3.3-r2: a portable, high level programming interface to various calling conventions
 dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to various calling conventions
 dev-libs/libfido2 1.3.1 1.4.0: Provides library functionality for FIDO 2.0
-dev-libs/libfilezilla 0.20.2 0.21.0 0.22.0: C++ library offering some basic functionality for platform-independent programs
+dev-libs/libfilezilla 0.20.2 0.21.0 0.22.0 0.23.0: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.4.0_pre20200314: Struct of arrays library with object oriented interface for C++
 dev-libs/libfmt 6.1.2 6.2.0-r1 6.2.1 7.0.0 7.0.1 9999: Small, safe and fast formatting library
 dev-libs/libfstrcmp 0.7 0.7-r1: Make fuzzy comparisons of strings and byte arrays
@@ -5930,7 +5930,7 @@ dev-perl/Data-Validate-IP 0.270.0: Lightweight IPv4 and IPv6 validation module
 dev-perl/Data-Visitor 0.300.0-r1 0.300.0-r2: Visitor style traversal of Perl data structures
 dev-perl/Date-Calc 6.400.0 6.400.0-r1: Gregorian calendar date calculations
 dev-perl/Date-Extract 0.60.0: Extract probable dates from strings
-dev-perl/Date-ICal 2.678.0-r1: ICal format date base module for Perl
+dev-perl/Date-ICal 2.678.0-r1 2.678.0-r2: ICal format date base module for Perl
 dev-perl/Date-Leapyear 1.720.0-r1: Simple Perl module that tracks Gregorian leap years
 dev-perl/Date-Manip 6.600.0: Perl date manipulation routines
 dev-perl/Date-Pcalc 6.100.0-r1: Gregorian calendar date calculations
@@ -14038,7 +14038,7 @@ net-analyzer/ndoutils 2.1.3-r2: Nagios addon to store Nagios data in a MySQL dat
 net-analyzer/ndsad 1.33-r1 1.33-r2: Cisco netflow probe from libpcap, ULOG, tee/divert sources
 net-analyzer/nessus-agent-bin 7.7.0-r1: A remote security scanner for Linux - agent component
 net-analyzer/nessus-bin 8.11.0: A remote security scanner for Linux
-net-analyzer/net-snmp 5.8-r3 5.8-r4 5.8-r5 5.8.1_pre1-r1 5.8.1_pre2 99999999: Software for generating and retrieving SNMP data
+net-analyzer/net-snmp 5.8-r3 5.8-r4 5.8-r5 5.8.1_pre1-r1 5.8.1_pre2 5.8.1_rc1 99999999: Software for generating and retrieving SNMP data
 net-analyzer/netcat 110-r9 110.20180111: the network swiss army knife
 net-analyzer/netdata 1.23.2 9999: Linux real time system monitoring, done right!
 net-analyzer/netdiscover 0.3_beta6-r3 0.3_beta6-r4: An active/passive address reconnaissance tool
@@ -14311,7 +14311,7 @@ net-fs/sshfs 3.7.0: Fuse-filesystem utilizing the sftp service
 net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subversion repositories
 net-ftp/atftp 0.7.2-r1: Advanced TFTP implementation client/server
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
-net-ftp/filezilla 3.47.2.1 3.48.0 3.48.1: FTP client with lots of useful features and an intuitive interface
+net-ftp/filezilla 3.47.2.1 3.48.0 3.48.1 3.49.1: FTP client with lots of useful features and an intuitive interface
 net-ftp/frox 0.7.18-r5 0.7.18-r6: A transparent ftp proxy
 net-ftp/ftp 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r3: FTP layout package
@@ -18429,7 +18429,7 @@ x11-misc/xwrits 2.26-r1: Reminds you to take wrist breaks to help you prevent re
 x11-misc/xxkb 1.11.1 1.11.1-r1: eXtended XKB - assign different keymaps to different windows
 x11-misc/xystray 1.0: A simple implementation of freedesktop.org notification area for X
 x11-misc/yabar 0.4.0_p20190316-r1: A modern and lightweight status bar for X window managers
-x11-misc/zim 0.73.1: A desktop wiki
+x11-misc/zim 0.73.1 0.73.2: A desktop wiki
 x11-plugins/allin1 0.5.0-r2: All in one monitoring dockapp: RAM, CPU, Net, Power, df, seti
 x11-plugins/asapm 3.1-r1: APM monitor for AfterStep
 x11-plugins/asclock 2.0.12-r3: Clock applet for AfterStep
