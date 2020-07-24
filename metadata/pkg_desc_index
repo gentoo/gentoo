@@ -5923,8 +5923,8 @@ dev-perl/Data-Structure-Util 0.160.0 0.160.0-r1: Change nature of data within a 
 dev-perl/Data-Types 0.90.0 0.170.0: Validate and convert data types.
 dev-perl/Data-URIEncode 0.110.0-r1 0.110.0-r2: Allow complex data structures to be encoded using flat URIs
 dev-perl/Data-UUID 1.221.0 1.226.0: Generate Globally/Universally Unique Identifiers (GUIDs/UUIDs)
-dev-perl/Data-Uniqid 0.120.0-r1: Perl extension for simple generating of unique ids
-dev-perl/Data-Utilities 0.40.0-r1: Merge nested Perl data structures
+dev-perl/Data-Uniqid 0.120.0-r1 0.120.0-r2: Perl extension for simple generating of unique ids
+dev-perl/Data-Utilities 0.40.0-r1 0.40.0-r2: Merge nested Perl data structures
 dev-perl/Data-Validate-Domain 0.140.0: Domain and host name validation
 dev-perl/Data-Validate-IP 0.270.0: Lightweight IPv4 and IPv6 validation module
 dev-perl/Data-Visitor 0.300.0-r1: Visitor style traversal of Perl data structures
@@ -18870,7 +18870,7 @@ xfce-extra/xfce4-statusnotifier-plugin 0.2.2: A panel area for fd.o Status Notif
 xfce-extra/xfce4-systemload-plugin 1.2.3: System load plug-in for Xfce panel
 xfce-extra/xfce4-taskmanager 1.2.2 1.2.3: Easy to use task manager
 xfce-extra/xfce4-time-out-plugin 1.1.0 1.1.1: A panel plug-in to take periodical breaks from the computer
-xfce-extra/xfce4-timer-plugin 1.7.0: A simple timer plug-in for the Xfce desktop environment
+xfce-extra/xfce4-timer-plugin 1.7.0 1.7.1: A simple timer plug-in for the Xfce desktop environment
 xfce-extra/xfce4-vala 4.10.3-r7: Vala bindings for the Xfce desktop environment
 xfce-extra/xfce4-verve-plugin 2.0.0: A comfortable command line plugin for the Xfce panel
 xfce-extra/xfce4-volumed-pulse 0.2.3: Daemon to control volume up/down and mute keys for pulseaudio
