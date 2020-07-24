@@ -16,8 +16,7 @@ if [[ $PV == *9999 ]]; then
 	EGIT_REPO_URI="git://xenbits.xen.org/${REPO}"
 	S="${WORKDIR}/${REPO}"
 else
-	#KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	KEYWORDS=""
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 	UPSTREAM_VER=
 	SECURITY_VER=
 	# xen-tools's gentoo patches tarball
@@ -276,6 +275,11 @@ src_prepare() {
 		cp "${WORKDIR}/patches-gentoo/xen-tools-4.13.0-ipxe-gcc10.patch" tools/firmware/etherboot/patches/ipxe-gcc10.patch || die
 		echo ipxe-gcc10.patch >> tools/firmware/etherboot/patches/series || die
 	fi
+
+	# gcc 10
+	# libxlu_pci.c:32:18: error: 'func' may be used uninitialized in this function
+	sed -e '/CFLAGS/s/Werror/Wno-error/g' \
+		-i tools/libxl/Makefile || die
 
 	mv tools/qemu-xen/qemu-bridge-helper.c tools/qemu-xen/xen-bridge-helper.c || die
 
