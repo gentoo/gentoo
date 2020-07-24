@@ -14,8 +14,8 @@ https://bugs.gentoo.org/show_bug.cgi?id=275244
 pva@gentoo.org
 
 === modified file 'fileio.c'
---- fileio.c	2010-12-22 13:02:43 +0000
-+++ fileio.c	2010-12-22 13:03:00 +0000
+--- a/fileio.c
++++ b/fileio.c
 @@ -929,7 +929,7 @@
    }
    if ((zname = in2ex(iname)) == NULL)
@@ -27,8 +27,8 @@ pva@gentoo.org
  #else
 
 === modified file 'globals.c'
---- globals.c	2010-12-22 13:02:43 +0000
-+++ globals.c	2010-12-22 13:03:00 +0000
+--- a/globals.c
++++ b/globals.c
 @@ -32,7 +32,7 @@
  int scanimage = 1;      /* 1=scan through image files */
  #endif
@@ -40,8 +40,8 @@ pva@gentoo.org
  int filesync = 0;       /* 1=file sync, delete entries not on file system */
 
 === modified file 'unix/Makefile'
---- unix/Makefile	2010-12-22 13:02:43 +0000
-+++ unix/Makefile	2010-12-22 15:43:40 +0000
+--- a/unix/Makefile
++++ b/unix/Makefile
 @@ -38,7 +38,7 @@
  MANFLAGS = 644
  
@@ -73,8 +73,8 @@ pva@gentoo.org
  zipsplit$E: $(OBJS)
 
 === modified file 'unix/osdep.h'
---- unix/osdep.h	2010-12-22 13:02:43 +0000
-+++ unix/osdep.h	2010-12-22 15:45:29 +0000
+--- a/unix/osdep.h
++++ b/unix/osdep.h
 @@ -78,3 +78,6 @@
  #if !defined(NO_EF_UT_TIME) && !defined(USE_EF_UT_TIME)
  #  define USE_EF_UT_TIME
@@ -84,8 +84,8 @@ pva@gentoo.org
 +#  define OS_CODE  0xb00
 
 === modified file 'unix/unix.c'
---- unix/unix.c	2010-12-22 13:02:43 +0000
-+++ unix/unix.c	2010-12-22 13:03:00 +0000
+--- a/unix/unix.c
++++ b/unix/unix.c
 @@ -14,6 +14,11 @@
  
  #include <time.h>
@@ -153,8 +153,8 @@ pva@gentoo.org
  #else
 
 === modified file 'zip.c'
---- zip.c	2010-12-22 13:02:43 +0000
-+++ zip.c	2010-12-22 13:03:00 +0000
+--- a/zip.c
++++ b/zip.c
 @@ -2025,6 +2025,7 @@
  #endif /* ?MACOS */
      {"J",  "junk-sfx",    o_NO_VALUE,       o_NOT_NEGATABLE, 'J',  "strip self extractor from archive"},
@@ -183,8 +183,8 @@ pva@gentoo.org
          case o_ll:
 
 === modified file 'zipnote.c'
---- zipnote.c	2010-12-22 13:02:43 +0000
-+++ zipnote.c	2010-12-22 15:42:45 +0000
+--- a/zipnote.c
++++ b/zipnote.c
 @@ -21,6 +21,11 @@
  #include "revision.h"
  #include <signal.h>
