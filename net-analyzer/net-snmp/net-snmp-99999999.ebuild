@@ -20,7 +20,7 @@ SRC_URI="
 
 # GPL-2 for the init scripts
 LICENSE="HPND BSD GPL-2"
-SLOT="0/35"
+SLOT="0/40"
 KEYWORDS=""
 IUSE="
 	X bzip2 doc elf kmem ipv6 libressl lm-sensors mfd-rewrites minimal mysql
