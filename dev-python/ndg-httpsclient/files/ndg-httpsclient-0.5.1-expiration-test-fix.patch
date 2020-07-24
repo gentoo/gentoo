@@ -1,3 +1,8 @@
+Patch is from upstream:
+https://github.com/cedadev/ndg_httpsclient/commit/370c1ec9713e68f8d9f2cd9984cb42a269cea384
+
+Note that we drop the useless gen-csr.sh script for now, as it doesn't do everything
+we'd need it to anyway.
 diff --git a/ndg/httpsclient/test/pki/ca/7e15277f.0 b/ndg/httpsclient/test/pki/ca/7e15277f.0
 index b9b6ac9..9a4ab56 100644
 --- a/ndg/httpsclient/test/pki/ca/7e15277f.0
