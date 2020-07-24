@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-2
 RDEPEND=sys-fs/fuse:0= >=x11-libs/libX11-1.6.5
 SLOT=0
-SRC_URI=https://github.com/gerstner-hub/xwmfs/releases/download/v0.85/xwmfs-0.85-dist.tar.gz -> xwmfs-0.85.tar.gz
+SRC_URI=https://github.com/gerstner-hub/xwmfs/releases/download/v0.86/xwmfs-0.86-dist.tar.gz -> xwmfs-0.86.tar.gz
 _md5_=57880a8ce13d788698aa4e853adebe22

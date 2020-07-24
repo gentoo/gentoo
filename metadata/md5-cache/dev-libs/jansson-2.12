@@ -1,4 +1,4 @@
-BDEPEND=doc? ( >=dev-python/sphinx-1.0.4 )
+BDEPEND=doc? ( <dev-python/sphinx-3.0.0 )
 DEFINED_PHASES=compile configure install test
 DESCRIPTION=C library for encoding, decoding and manipulating JSON data
 EAPI=7
@@ -9,4 +9,4 @@ LICENSE=MIT
 SLOT=0
 SRC_URI=http://www.digip.org/jansson/releases/jansson-2.12.tar.gz
 _eclasses_=multibuild	b2c915190b051f55a23b9354b9849847	multilib	2477ebe553d3e4d2c606191fe6c33602	multilib-build	8ad5b5535b73a8971881f09277b939f4	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=b5e66f84c2de4e8048efd2a4598e0ada
+_md5_=0a63caca08475e76f1b679237bf78173
