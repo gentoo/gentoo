@@ -17,6 +17,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND=">=sys-apps/systemd-217
 	sys-apps/debianutils
+	!sys-process/cronie[anacron]
 	!etc-crontab-systemd? ( !sys-process/dcron )
 	${PYTHON_DEPS}
 	sys-process/cronbase"
