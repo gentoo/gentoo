@@ -2613,7 +2613,7 @@ app-text/djview 4.10.6-r2: Portable DjVu viewer using Qt
 app-text/djvu 3.5.27-r2: DjVu viewers, encoders and utilities
 app-text/docbook-dsssl-stylesheets 1.79-r4: DSSSL Stylesheets for DocBook
 app-text/docbook-sgml-dtd 3.0-r4 3.1-r4 4.0-r4 4.1-r4 4.2-r3 4.3-r3 4.4-r1 4.5-r1: Docbook SGML DTD 4.5
-app-text/docbook-sgml-utils 0.6.14-r3: Shell scripts to manage DocBook documents
+app-text/docbook-sgml-utils 0.6.14-r4: Shell scripts to manage DocBook documents
 app-text/docbook-xml-dtd 4.1.2-r7 4.2-r3 4.3-r2 4.4-r3 4.5-r2: Docbook DTD for XML
 app-text/docbook-xml-simple-dtd 1.0-r3 4.1.2.4-r4 4.1.2.5-r3: Simplified Docbook DTD for XML
 app-text/docbook-xsl-ns-stylesheets 1.78.0 1.79.1: XSL Stylesheets for Docbook
@@ -8484,7 +8484,6 @@ dev-python/pytest-pep8 1.0.6-r1 1.0.6-r2: pytest plugin to check PEP8 requiremen
 dev-python/pytest-pylint 0.14.1: pytest plugin to check source code with pylint
 dev-python/pytest-qt 3.3.0: pytest plugin for PyQt4 or PyQt5 applications
 dev-python/pytest-rerunfailures 8.0: pytest plugin to re-run tests to eliminate flaky failures
-dev-python/pytest-runner 5.2: Adds support for tests during installation of setup.py files
 dev-python/pytest-salt 2019.2.1_p1 2020.1.27: PyTest Salt Plugin
 dev-python/pytest-services 2.0.1 2.1.0: Collection of fixtures and utility functions to run service processes for pytest
 dev-python/pytest-shutil 1.7.0-r1: A goodie-bag of unix shell and environment tools for py.test
@@ -10335,7 +10334,7 @@ dev-util/devhelp 3.34.0: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 151 152: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 151 152 153: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
