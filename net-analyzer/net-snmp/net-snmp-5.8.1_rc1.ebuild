@@ -9,19 +9,21 @@ WANT_AUTOMAKE=none
 PATCHSET=3
 GENTOO_DEPEND_ON_PERL=no
 
-inherit autotools distutils-r1 git-r3 perl-module systemd
+inherit autotools distutils-r1 perl-module systemd
 
 DESCRIPTION="Software for generating and retrieving SNMP data"
 HOMEPAGE="http://www.net-snmp.org/"
-EGIT_REPO_URI="https://github.com/net-snmp/net-snmp"
 SRC_URI="
+	mirror://sourceforge/project/${PN}/${PN}/${PV/_rc*/}-pre-releases/${P/_rc/.rc}.tar.gz
 	https://dev.gentoo.org/~jer/${PN}-5.7.3-patches-3.tar.xz
 "
+
+S=${WORKDIR}/${P/_/.}
 
 # GPL-2 for the init scripts
 LICENSE="HPND BSD GPL-2"
 SLOT="0/40"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="
 	X bzip2 doc elf kmem ipv6 libressl lm-sensors mfd-rewrites minimal mysql
 	netlink pcap pci perl python rpm selinux smux ssl tcpd ucd-compat zlib
@@ -69,8 +71,7 @@ RDEPEND="
 	)
 	selinux? ( sec-policy/selinux-snmp )
 "
-S=${WORKDIR}/${P/_/.}
-S=${WORKDIR}/${P/_p*/}
+S=${WORKDIR}/${P/_rc/.rc}
 RESTRICT=test
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.7.3-include-limits.patch
@@ -82,11 +83,6 @@ PATCHES=(
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
-}
-
-src_unpack() {
-	default
-	git-r3_src_unpack
 }
 
 src_prepare() {
@@ -149,7 +145,7 @@ src_compile() {
 	use doc && emake docsdox
 }
 
-src_install() {
+src_install () {
 	# bug #317965
 	emake -j1 DESTDIR="${D}" install
 
