@@ -1253,7 +1253,6 @@ app-text/texlive:extra - Add support for extra TeXLive packages
 app-text/texlive:games - Add typesetting support for games (chess, etc.) (dev-texlive/texlive-games)
 app-text/texlive:graphics - Add support for several graphics packages (pgf, tikz,...)
 app-text/texlive:humanities - Add LaTeX support for the humanities (dev-texlive/texlive-humanities)
-app-text/texlive:jadetex - Add support for app-text/jadetex (for processing tex files produced by the TeX backend of Jade)
 app-text/texlive:luatex - Add extra support for luatex
 app-text/texlive:metapost - Add support for metapost: A tool for creating graphics in scalable PostScript
 app-text/texlive:music - Add support for music typesetting (dev-texlive/texlive-music)
