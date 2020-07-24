@@ -23,3 +23,15 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
 BDEPEND=""
+
+src_install() {
+	dodoc README.md
+
+	cd "${BUILD_DIR}"
+
+	insinto /usr/$(get_libdir)/lv2/
+	doins -r bin/rnnoise.lv2
+
+	insinto /usr/$(get_libdir)/ladspa/
+	doins bin/ladspa/librnnoise_ladspa.so
+}
