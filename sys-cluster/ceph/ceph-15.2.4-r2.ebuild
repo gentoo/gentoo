@@ -248,7 +248,7 @@ ceph_src_configure() {
 		-DWITH_CEPHFS=$(usex cephfs)
 		-DWITH_CEPHFS_SHELL=$(usex cephfs)
 		-DWITH_DPDK=$(usex dpdk)
-		-DWITH_DPDK=$(usex spdk)
+		-DWITH_SPDK=$(usex spdk)
 		-DWITH_FUSE=$(usex fuse)
 		-DWITH_LTTNG=$(usex lttng)
 		-DWITH_GSSAPI=$(usex kerberos)
