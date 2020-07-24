@@ -5931,7 +5931,7 @@ dev-perl/Data-Visitor 0.300.0-r1 0.300.0-r2: Visitor style traversal of Perl dat
 dev-perl/Date-Calc 6.400.0 6.400.0-r1: Gregorian calendar date calculations
 dev-perl/Date-Extract 0.60.0: Extract probable dates from strings
 dev-perl/Date-ICal 2.678.0-r1 2.678.0-r2: ICal format date base module for Perl
-dev-perl/Date-Leapyear 1.720.0-r1: Simple Perl module that tracks Gregorian leap years
+dev-perl/Date-Leapyear 1.720.0-r1 1.720.0-r2: Simple Perl module that tracks Gregorian leap years
 dev-perl/Date-Manip 6.600.0: Perl date manipulation routines
 dev-perl/Date-Pcalc 6.100.0-r1: Gregorian calendar date calculations
 dev-perl/Date-Simple 3.30.0-r1: A simple date object
