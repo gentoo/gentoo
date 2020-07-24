@@ -1,5 +1,5 @@
 BDEPEND=dev-util/ninja dev-util/cmake
-DEFINED_PHASES=compile configure install prepare test
+DEFINED_PHASES=compile configure install prepare test unpack
 DESCRIPTION=A real-time noise suppression plugin for voice
 EAPI=7
 HOMEPAGE=https://github.com/werman/noise-suppression-for-voice
@@ -7,5 +7,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3+
 SLOT=0
 SRC_URI=https://github.com/werman/noise-suppression-for-voice/archive/453a8af82a31a5361f6a13bf95c97686f0a2acd1.tar.gz -> noise-suppression-for-voice-0.9_p20200705.tar.gz
-_eclasses_=cmake	19b0421555865baefd505831dd4303e3	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=2c0b4d208f4d4b5f03dfcbbc17f083b4
+_eclasses_=cmake	19b0421555865baefd505831dd4303e3	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=c3441af46b01646b4fef3efb016ee3fb
