@@ -1,6 +1,6 @@
-BDEPEND=nls? ( >=sys-devel/gettext-0.18.1.1 ) filecaps? ( sys-libs/libcap )
+BDEPEND=nls? ( >=sys-devel/gettext-0.18.1.1 ) x11-misc/makedepend filecaps? ( sys-libs/libcap )
 DEFINED_PHASES=compile configure install postinst prepare
-DEPEND=acl? ( virtual/acl ) caps? ( sys-libs/libcap ) nls? ( virtual/libintl ) !app-cdr/cdrkit selinux? ( sec-policy/selinux-cdrecord ) x11-misc/makedepend sys-devel/gnuconfig
+DEPEND=acl? ( virtual/acl ) caps? ( sys-libs/libcap ) nls? ( virtual/libintl ) !app-cdr/cdrkit selinux? ( sec-policy/selinux-cdrecord ) sys-devel/gnuconfig
 DESCRIPTION=A set of tools for CD/DVD reading and recording, including cdrecord
 EAPI=7
 HOMEPAGE=https://sourceforge.net/projects/cdrtools/
@@ -11,4 +11,4 @@ RDEPEND=acl? ( virtual/acl ) caps? ( sys-libs/libcap ) nls? ( virtual/libintl ) 
 SLOT=0
 SRC_URI=mirror://sourceforge/cdrtools/alpha/cdrtools-3.02a09.tar.bz2
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	fcaps	da689a8e04bbbb3518888ff668fee45b	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	gnuconfig	b8ec1c34be4ff9dac7ad4034d277936b	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=e5285fb451cc74e6bcca23e4e2be1735
+_md5_=0cbb57b3947f9dd470121a46caf4cfe6
