@@ -232,10 +232,10 @@ pkg_pretend() {
 		local rustc_version=( $(eselect --brief rust show 2>/dev/null) )
 		rustc_version=${rustc_version[0]/rust-bin-/}
 		rustc_version=${rustc_version/rust-/}
-		[[ -z "${rustc_version}" ]] && die "Failed to determine rustc version!"
-
-		if ver_test "${rustc_version}" -ge "1.45.0" ; then
-			die "Rust >=1.45.0 is not supported. Please use 'eselect rust' to switch to <rust-1.45.0!"
+		if [[ -n "${rustc_version}" ]] ; then
+			if ver_test "${rustc_version}" -ge "1.45.0" ; then
+				die "Rust >=1.45.0 is not supported. Please use 'eselect rust' to switch to <rust-1.45.0!"
+			fi
 		fi
 
 		if use pgo ; then
@@ -259,6 +259,15 @@ pkg_setup() {
 	moz_pkgsetup
 
 	if [[ ${MERGE_TYPE} != binary ]] ; then
+		local rustc_version=( $(eselect --brief rust show 2>/dev/null) )
+		rustc_version=${rustc_version[0]/rust-bin-/}
+		rustc_version=${rustc_version/rust-/}
+		[[ -z "${rustc_version}" ]] && die "Failed to determine rustc version!"
+
+		if ver_test "${rustc_version}" -ge "1.45.0" ; then
+			die "Rust >=1.45.0 is not supported. Please use 'eselect rust' to switch to <rust-1.45.0!"
+		fi
+
 		# Ensure we have enough disk space to compile
 		if use pgo || use lto || use debug || use test ; then
 			CHECKREQS_DISK_BUILD="8G"
