@@ -7970,7 +7970,7 @@ dev-python/jdcal 1.4 1.4.1: Julian dates from proleptic Gregorian and Julian cal
 dev-python/jedi 0.14.1 0.15.2 0.17.0 0.17.1-r1 0.17.2: Autocompletion library for Python
 dev-python/jeepney 0.4.3: Low-level, pure Python DBus protocol wrapper
 dev-python/jellyfish 0.8.2: Python module for doing approximate and phonetic matching of strings
-dev-python/jikanpy 3.4.2: Python wrapper for jikan.moe API.
+dev-python/jikanpy 3.4.2 4.2.1: Python wrapper for jikan.moe API.
 dev-python/jinja 2.11.2: A full-featured template engine for Python
 dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
 dev-python/jinja2_pluralize 0.3.0: Jinja2 pluralize filters
