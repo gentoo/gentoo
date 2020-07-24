@@ -59,12 +59,7 @@ DEPEND="
 	imagemagick? ( media-gfx/imagemagick:= )
 	jack? ( virtual/jack )
 	luajit? ( dev-lang/luajit:2 )
-	nvenc? (
-		|| (
-			<media-video/ffmpeg-4[nvenc]
-			>=media-video/ffmpeg-4[video_cards_nvidia]
-		)
-	)
+	nvenc? ( >=media-video/ffmpeg-4[video_cards_nvidia] )
 	pulseaudio? ( media-sound/pulseaudio )
 	python? ( ${PYTHON_DEPS} )
 	speex? ( media-libs/speexdsp )
