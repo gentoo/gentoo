@@ -9614,7 +9614,7 @@ dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response pa
 dev-ruby/httparty 0.17.1 0.17.3 0.18.0 0.18.1: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpauth 0.2.1: Library implementing the full HTTP Authentication protocol (RFC 2617)
 dev-ruby/httpclient 2.8.3: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
-dev-ruby/i18n 0.7.0-r3 0.9.5-r1 1.7.1 1.8.0 1.8.1 1.8.2 1.8.2-r1 1.8.3 1.8.4: Add Internationalization support to your Ruby application
+dev-ruby/i18n 0.7.0-r3 0.9.5-r1 1.7.1 1.8.0 1.8.1 1.8.2 1.8.2-r1 1.8.3 1.8.4 1.8.5: Add Internationalization support to your Ruby application
 dev-ruby/ice_nine 0.11.2: Deep Freeze Ruby Objects
 dev-ruby/idn-ruby 0.1.0: LibIDN Ruby Bindings
 dev-ruby/image_processing 1.10.3 1.11.0: High-level image processing helper methods with libvips and ImageMagick
@@ -14131,7 +14131,7 @@ net-analyzer/squid-graph 3.2-r1: Squid logfile analyzer and traffic grapher
 net-analyzer/squidsites 1.01-r2: A tool that parses Squid access log file and generates a report of the most visited sites
 net-analyzer/squidview 0.86: Interactive console program to analyse squid logs
 net-analyzer/ssldump 0.9_beta3: An SSLv3/TLS network protocol analyzer
-net-analyzer/sslscan 1.11.12 1.11.13 1.11.13-r1: Fast SSL configuration scanner
+net-analyzer/sslscan 1.11.12 1.11.13 1.11.13-r1 2.0.0: Fast SSL configuration scanner
 net-analyzer/sslsplit 0.5.4 0.5.5 9999: Transparent SSL/TLS interception
 net-analyzer/ssmping 0.9.1: Tool for testing multicast connectivity
 net-analyzer/suricata 5.0.3: High performance Network IDS, IPS and Network Security Monitoring engine
