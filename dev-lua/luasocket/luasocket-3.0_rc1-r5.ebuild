@@ -43,7 +43,7 @@ multilib_src_install() {
 	local luav=$($(tc-getPKG_CONFIG) --variable V lua)
 	emake \
 		DESTDIR="${D}" \
-		LUAPREFIX_linux=/usr \
+		LUAPREFIX_linux="${EPREFIX}/usr" \
 		LUAV=${luav} \
 		CDIR_linux=$(get_libdir)/lua/${luav} \
 		install-unix
