@@ -338,7 +338,7 @@ x11-misc/nts
 # Dev channel releases are only for people who
 # are developers or want more experimental features
 # and accept a more unstable release.
->=www-client/chromium-85
+>=www-client/chromium-86
 
 # Michał Górny <mgorny@gentoo.org> (2020-06-29)
 # Unmaintained in Gentoo.  Multiple unresolved vulnerabilities.
