@@ -36,7 +36,7 @@ RDEPEND="
 BDEPEND="
 	${RDEPEND}
 	app-arch/unzip
-	>=dev-python/cython-0.29.15[${PYTHON_USEDEP}]
+	>=dev-python/cython-0.29.21[${PYTHON_USEDEP}]
 	lapack? ( virtual/pkgconfig )
 	test? (
 		>=dev-python/hypothesis-5.8.0[${PYTHON_USEDEP}]
