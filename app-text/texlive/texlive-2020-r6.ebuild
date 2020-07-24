@@ -10,7 +10,7 @@ LICENSE="metapackage"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="cjk context detex dvi2tty extra epspdf games graphics
-humanities jadetex luatex metapost music pdfannotextractor png pstricks publishers
+humanities luatex metapost music pdfannotextractor png pstricks publishers
 science tex4ht texi2html truetype xetex xml X"
 
 LANGS="af ar as bg bn br ca cs cy da de el en eo es et eu fa fi fr ga gl gu he
@@ -70,11 +70,7 @@ RDEPEND="${DEPEND}
 	games? ( >=${TEXLIVE_CAT}/texlive-games-${PV} )
 	humanities? ( >=${TEXLIVE_CAT}/texlive-humanities-${PV} )
 	tex4ht? ( >=dev-tex/tex4ht-20090611_p1038-r3 )
-	xml? (
-		>=${TEXLIVE_CAT}/texlive-formatsextra-${PV}
-		app-text/passivetex
-	)
-	jadetex? ( >=app-text/jadetex-3.13-r2 )
+	xml? ( >=${TEXLIVE_CAT}/texlive-formatsextra-${PV} )
 	l10n_af?    ( >=${TEXLIVE_CAT}/texlive-langother-${PV} )
 	l10n_ar?    ( >=${TEXLIVE_CAT}/texlive-langarabic-${PV} )
 	l10n_fa?    ( >=${TEXLIVE_CAT}/texlive-langarabic-${PV} )
