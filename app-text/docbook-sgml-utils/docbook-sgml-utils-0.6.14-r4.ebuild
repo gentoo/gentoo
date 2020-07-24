@@ -29,7 +29,7 @@ DEPEND=">=dev-lang/perl-5
 	~app-text/docbook-sgml-dtd-4.1
 	~app-text/docbook-sgml-dtd-4.2
 	~app-text/docbook-sgml-dtd-4.4
-	jadetex? ( app-text/jadetex )
+	jadetex? ( dev-texlive/texlive-formatsextra )
 	userland_GNU? ( sys-apps/which )
 	|| (
 		www-client/lynx
