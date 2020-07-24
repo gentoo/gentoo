@@ -79,6 +79,8 @@ src_install() {
 		SYSTEMDUNITDIR="$(systemd_get_systemunitdir)" \
 		PREFIX="${EPREFIX}/usr" \
 		-C src install
+
+	use wg-quick && newinitd "${FILESDIR}/wireguard.init" wireguard
 }
 
 pkg_postinst() {
@@ -98,4 +100,12 @@ pkg_postinst() {
 	einfo
 	einfo "More info on getting started can be found at: https://www.wireguard.com/quickstart/"
 	einfo
+	if use wg-quick; then
+		einfo "To use the wireguard init script, create a config for 'wg-quick', and create"
+		einfo "a symlink to the wireguard init script using the config name - like so:"
+		einfo "  ${EDITOR##*/} /etc/wireguard/foo.conf"
+		einfo "  ln -s wireguard /etc/init.d/wireguard.foo"
+		einfo "You can then treat 'wireguard.foo' like any other service."
+		einfo
+	fi
 }

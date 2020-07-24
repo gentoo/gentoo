@@ -1,0 +1,27 @@
+#!/sbin/openrc-run
+
+VPN="${SVCNAME#*.}"
+
+depend() {
+	need localmount net
+	use dns
+	after bootmisc
+}
+
+start() {
+	# Make sure WireGuard is available
+	if [ ! -e "/sys/module/wireguard" ]; then
+		ebegin "Loading WireGuard module"
+		modprobe wireguard &> /dev/null
+		eend $? || return 1
+	fi
+	ebegin "Starting ${SVCNAME}"
+	[ -e "/sys/class/net/${VPN}" ] || wg-quick up "${VPN}" &> /dev/null
+	eend $? "Try starting manually with 'wg-quick up ${VPN}'" || return 1
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	[ ! -e "/sys/class/net/${VPN}" ] || wg-quick down "${VPN}" &> /dev/null
+	eend $? "Try stopping manually with 'wg-quick down ${VPN}'" || return 1
+}
