@@ -14,7 +14,6 @@
 		<flag name="games">Add typesetting support for games (chess, etc.) (<pkg>dev-texlive/texlive-games</pkg>)</flag>
 		<flag name="graphics">Add support for several graphics packages (pgf, tikz,...)</flag>
 		<flag name="humanities">Add LaTeX support for the humanities (<pkg>dev-texlive/texlive-humanities</pkg>)</flag>
-		<flag name="jadetex">Add support for <pkg>app-text/jadetex</pkg> (for processing tex files produced by the TeX backend of Jade)</flag>
 		<flag name="luatex">Add extra support for luatex</flag>
 		<flag name="metapost">Add support for metapost: A tool for creating graphics in scalable PostScript</flag>
 		<flag name="music">Add support for music typesetting (<pkg>dev-texlive/texlive-music</pkg>)</flag>
