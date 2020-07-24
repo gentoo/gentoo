@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,10 +21,9 @@ RDEPEND=""
 DEPEND="${RDEPEND}
 	doc? (
 		app-doc/doxygen
-		|| (
-			dev-texlive/texlive-latex
-			dev-tex/floatflt
-		)
+		dev-texlive/texlive-latex
+		dev-texlive/texlive-latexextra
+		dev-texlive/texlive-latexrecommended
 	)"
 
 S="${WORKDIR}/${MYP}"
