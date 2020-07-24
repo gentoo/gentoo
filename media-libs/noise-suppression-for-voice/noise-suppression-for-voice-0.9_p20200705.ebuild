@@ -28,7 +28,7 @@ BDEPEND=""
 src_install() {
 	dodoc README.md
 
-	cd ${BUILD_DIR}
+	cd "${BUILD_DIR}"
 
 	insinto /usr/$(get_libdir)/lv2/
 	doins -r bin/rnnoise.lv2
