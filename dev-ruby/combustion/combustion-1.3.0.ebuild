@@ -20,5 +20,5 @@ IUSE=""
 ruby_add_rdepend "
 	>=dev-ruby/activesupport-3.0.0:*
 	>=dev-ruby/railties-3.0.0:*
-	>=dev-ruby/thor-0.14.6
+	>=dev-ruby/thor-0.14.6:*
 "
