@@ -21,6 +21,7 @@ RDEPEND="
 	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
+	dev-qt/qtspeech:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
