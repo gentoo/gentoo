@@ -57,7 +57,7 @@ BDEPEND="
 		app-text/poppler[utils]
 		app-text/tesseract[-opencl,osd(+),tiff]
 		app-text/unpaper
-		media-gfx/imagemagick[djvu,png,tiff,perl]
+		media-gfx/imagemagick[djvu,png,tiff,perl,postscript]
 		media-gfx/sane-backends[sane_backends_test]
 		media-gfx/sane-frontends
 	)"
@@ -84,6 +84,15 @@ pkg_postrm() {
 }
 
 src_test() {
+	echo "Using:"
+	echo "  $(best_version app-text/djvu)"
+	echo "  $(best_version app-text/poppler)"
+	echo "  $(best_version app-text/tesseract)"
+	echo "  $(best_version dev-perl/Image-Sane)"
+	echo "  $(best_version media-gfx/imagemagick)"
+	echo "  $(best_version media-gfx/sane-backends)"
+	echo "  $(best_version media-libs/tiff)"
+
 	local confdir="${HOME}/.config/ImageMagick"
 	mkdir -p "${confdir}" || die
 	cat > "${confdir}/policy.xml" <<-EOT || die
