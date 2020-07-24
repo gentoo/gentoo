@@ -32,6 +32,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-07-24)
+# Both packages is a part of the texlive-formatsextra.collection
+# (or dev-texlive/texlive-formatsextra package).
+# jadetex abuses kpathsea configuration.
+# Both were last released in 2002.
+# Removal in 30 days.
+app-text/jadetex
+app-text/passivetex
+
 # Joonas Niilola <juippis@gentoo.org> (2020-07-24)
 # Unmaintained in Gentoo, broken, multiple bugs open.
 # Removal in ~30 days. #733324
