@@ -79,10 +79,13 @@ src_configure() {
 }
 
 python_test() {
-	# TODO: fix/skip with more granularity tests on pypy3
-	if has "${EPYTHON}" pypy3 python2.7; then
-		einfo "Skipping broken tests on pypy3"
-		continue
+	if ! python_is_python3; then
+		ewarn "Tests are skipped on py2, please test externally"
+		return
+	elif [[ ${EPYTHON} == pypy3 ]]; then
+		# TODO: skip with better granularity
+		ewarn "Skipping broken tests on pypy3"
+		return
 	fi
 
 	distutils_install_for_testing
