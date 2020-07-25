@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools systemd user
+inherit autotools systemd
 
 DESCRIPTION="Network backup and restore client and server for Unix and Windows"
 HOMEPAGE="https://burp.grke.org/"
@@ -11,12 +11,14 @@ SRC_URI="https://github.com/grke/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="acl ipv6 libressl test xattr"
 
 RESTRICT="!test? ( test )"
 
-CDEPEND="dev-libs/uthash
+CDEPEND=" acct-group/burp
+	acct-user/burp
+	dev-libs/uthash
 	net-libs/librsync
 	sys-libs/ncurses:0=
 	sys-libs/zlib
@@ -35,11 +37,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.20-protocol1_by_default.patch
 	"${FILESDIR}"/${PN}-2.0.54-server_user.patch
 )
-
-pkg_setup() {
-	enewgroup "${PN}"
-	enewuser "${PN}" -1 "" "" "${PN}"
-}
 
 src_prepare() {
 	default
@@ -78,6 +75,12 @@ src_install() {
 }
 
 pkg_postinst() {
+	ewarn
+	ewarn "You are installing a development version of burp. These versions contain"
+	ewarn "new features but might have unexpected issues. It is recommended by upstream"
+	ewarn "to use the current stable version (i.e. currently the 2.2 branch) instead."
+	ewarn
+
 	elog "Burp ebuilds now support the autoupgrade mechanism in both"
 	elog "client and server mode. In both cases it is disabled by"
 	elog "default. You almost certainly do NOT want to enable it in"
