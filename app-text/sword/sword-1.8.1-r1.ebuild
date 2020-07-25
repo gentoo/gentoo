@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit flag-o-matic cmake-utils
 
 DESCRIPTION="Library for Bible reading software"
-HOMEPAGE="http://www.crosswire.org/sword/"
-SRC_URI="http://www.crosswire.org/ftpmirror/pub/${PN}/source/v${PV%.*}/${P}.tar.gz"
+HOMEPAGE="https://www.crosswire.org/sword/"
+SRC_URI="https://www.crosswire.org/ftpmirror/pub/${PN}/source/v${PV%.*}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
