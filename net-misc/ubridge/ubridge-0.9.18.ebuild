@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit fcaps toolchain-funcs user
+inherit fcaps toolchain-funcs
 
 DESCRIPTION="Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces"
 HOMEPAGE="https://github.com/GNS3/ubridge"
@@ -11,21 +11,18 @@ SRC_URI="https://github.com/GNS3/ubridge/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 
 RDEPEND="
-	net-libs/libpcap
-	dev-libs/iniparser:4="
+	acct-group/ubridge
+	dev-libs/iniparser:4=
+	net-libs/libpcap"
 
 DEPEND="${RDEPEND}"
 
 # Bugs: https://bugs.gentoo.org/647588
 #       https://github.com/GNS3/ubridge/issues/60
-PATCHES=( "${FILESDIR}/${P}_add_slotted_iniparser-4.1+_support.patch" )
-
-pkg_setup() {
-	enewgroup ubridge
-}
+PATCHES=( "${FILESDIR}/${PN}-0.9.16_add_slotted_iniparser-4.1+_support.patch" )
 
 src_compile() {
 	emake \
