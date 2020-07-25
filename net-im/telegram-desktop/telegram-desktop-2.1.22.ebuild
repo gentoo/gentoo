@@ -24,7 +24,6 @@ RDEPEND="
 	app-arch/xz-utils
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
-	dev-libs/wayland
 	dev-libs/xxhash
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5[dbus?,jpeg,png,wayland,X(-)?]
@@ -32,7 +31,6 @@ RDEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5[png,X(-)?]
-	dev-qt/qtx11extras:5
 	media-fonts/open-sans
 	media-libs/fontconfig:=
 	~media-libs/libtgvoip-2.4.4_p20200704[alsa?,pulseaudio?]
@@ -41,6 +39,7 @@ RDEPEND="
 	media-video/ffmpeg:=[alsa?,opus,pulseaudio?]
 	sys-libs/zlib[minizip]
 	virtual/libiconv
+	x11-libs/libxcb:=
 	dbus? (
 		dev-qt/qtdbus:5
 		dev-libs/libdbusmenu-qt[qt5(+)]
@@ -76,8 +75,6 @@ REQUIRED_USE="
 "
 
 S="${WORKDIR}/${MY_P}"
-
-PATCHES=( "${FILESDIR}/${PV}-qt-includes.patch" )
 
 pkg_pretend() {
 	if has ccache ${FEATURES}; then
