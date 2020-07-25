@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7,8,9} )
 inherit qmake-utils xdg-utils python-single-r1
 
 DESCRIPTION="A Qt and C++ GUI for radare2 reverse engineering framework"
-HOMEPAGE="https://www.radare.org"
+HOMEPAGE="https://www.radare.org https://github.com/radareorg/cutter/"
 SRC_URI="https://github.com/radareorg/cutter/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
