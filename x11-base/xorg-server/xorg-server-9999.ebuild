@@ -85,7 +85,7 @@ CDEPEND="libglvnd? (
 	)
 	elogind? (
 		sys-apps/dbus
-		sys-auth/elogind
+		sys-auth/elogind[pam]
 		sys-auth/pambase[elogind]
 	)
 	"
