@@ -13,7 +13,7 @@ HOMEPAGE="http://www.jmock.org"
 
 LICENSE="BSD"
 SLOT="2"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 IUSE=""
 
 CDEPEND="dev-java/hamcrest-core:1.3
