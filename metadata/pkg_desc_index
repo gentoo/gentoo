@@ -5936,7 +5936,7 @@ dev-perl/Date-Manip 6.600.0 6.820.0: Perl date manipulation routines
 dev-perl/Date-Pcalc 6.100.0-r1 6.100.0-r2: Gregorian calendar date calculations
 dev-perl/Date-Simple 3.30.0-r1 3.30.0-r2: A simple date object
 dev-perl/DateTime 1.200.0 1.210.0 1.280.0 1.360.0 1.420.0 1.440.0 1.520.0: A date and time object
-dev-perl/DateTime-Calendar-Julian 0.40.0: Dates in the Julian calendar
+dev-perl/DateTime-Calendar-Julian 0.40.0 0.102.0: Dates in the Julian calendar
 dev-perl/DateTime-Event-ICal 0.130.0: Perl DateTime extension for computing rfc2445 recurrences
 dev-perl/DateTime-Event-Recurrence 0.190.0: DateTime::Set extension for create basic recurrence sets
 dev-perl/DateTime-Format-Builder 0.810.0-r1: Create DateTime parser classes and objects
@@ -14782,7 +14782,7 @@ net-misc/exabgp 3.4.28-r2 4.2.7-r3: The BGP swiss army knife of networking
 net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
 net-misc/fatrat 1.2.0_beta2_p20161204: Qt5-based download/upload manager
 net-misc/felix 3.1.3: Calico's per-host agent, responsible for programming routes and security policy
-net-misc/freerdp 2.1.2-r1 2.9999 9999: Free implementation of the Remote Desktop Protocol
+net-misc/freerdp 2.1.2-r1 2.2.0 2.9999 9999: Free implementation of the Remote Desktop Protocol
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.0 3.1.1 4.0.3-r1 4.0.4 4.3.0: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.34: A daemon to serve the gopher protocol
@@ -17044,10 +17044,10 @@ sys-devel/automake 1.4_p6-r2 1.5-r2 1.6.3-r2 1.7.9-r3 1.8.5-r5 1.9.6-r5 1.10.3-r
 sys-devel/automake-wrapper 10 11: wrapper for automake to manage multiple automake versions
 sys-devel/bc 1.06.95-r2 1.07.1-r3: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
-sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34-r1 9999: Tools necessary to build programs
+sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34-r1 2.35 9999: Tools necessary to build programs
 sys-devel/binutils-apple 3.2 3.2.6 4.3-r2 5.1-r1 6.1-r1 6.3-r2 7.0-r1 7.1-r1 7.2-r1 7.3.1 8.1 8.2.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 8.2.1
 sys-devel/binutils-config 5.2 5.3.1 5.3.2 9999: Utility to change the binutils version being used
-sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34 2.34-r1: Tools necessary to build programs
+sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34-r1 2.35: Tools necessary to build programs
 sys-devel/bison 3.1 3.3.2 3.4.2 3.5.4 3.6.3 3.6.4: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20200318: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
@@ -17305,7 +17305,7 @@ sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15 5.6.15 5.7.5: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
-sys-libs/binutils-libs 2.33.1-r1 2.34 2.34-r1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
+sys-libs/binutils-libs 2.33.1-r1 2.34-r1 2.35: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
 sys-libs/compiler-rt 8.0.1 9.0.1 10.0.0 10.0.1_rc1 10.0.1_rc2 10.0.1_rc3 10.0.1_rc4 10.0.1 10.0.1.9999 11.0.0.9999 12.0.0.9999: Compiler runtime library for clang (built-in part)
 sys-libs/compiler-rt-sanitizers 8.0.1 9.0.1 10.0.0 10.0.1_rc1 10.0.1_rc2 10.0.1_rc3 10.0.1_rc4 10.0.1 10.0.1.9999 11.0.0.9999 12.0.0.9999: Compiler runtime libraries for clang (sanitizers & xray)
 sys-libs/cracklib 2.9.6-r2 2.9.7: Password Checking Library
@@ -18344,7 +18344,7 @@ x11-misc/xdaliclock 2.43 2.44: Dali Clock is a digital clock. When a digit chang
 x11-misc/xdesktopwaves 1.3-r2 1.4: A cellular automata setting the background of your X Windows desktop under water
 x11-misc/xdg-user-dirs 0.17: Tool to help manage 'well known' user directories
 x11-misc/xdg-user-dirs-gtk 0.10-r1: Integrates xdg-user-dirs into the Gnome desktop and Gtk+ applications
-x11-misc/xdg-utils 1.1.3-r1 1.1.3_p20200220: Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
+x11-misc/xdg-utils 1.1.3-r1 1.1.3_p20200220 1.1.3_p20200220-r1: Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
 x11-misc/xdialog 2.3.1: drop-in replacement for cdialog using GTK
 x11-misc/xdiskusage 1.51 1.52: user-friendly program to show you what is using up all your disk space
 x11-misc/xdo 0.5.7: Small X utility to perform elementary actions on windows
