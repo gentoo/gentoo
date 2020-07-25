@@ -180,6 +180,12 @@ SITELISP=/usr/share/emacs/site-lisp
 # Directory where packages install miscellaneous (not Lisp) files.
 SITEETC=/usr/share/emacs/etc
 
+# @ECLASS-VARIABLE: EMACSMODULES
+# @DESCRIPTION:
+# Directory where packages install dynamically loaded modules.
+# May contain a @libdir@ token which will be replaced by $(get_libdir).
+EMACSMODULES=/usr/@libdir@/emacs/modules
+
 # @ECLASS-VARIABLE: EMACS
 # @DESCRIPTION:
 # Path of Emacs executable.
@@ -362,17 +368,37 @@ elisp-install() {
 	eend $? "elisp-install: doins failed" || die
 }
 
+# @FUNCTION: elisp-modules-install
+# @USAGE: <subdirectory> <list of files>
+# @DESCRIPTION:
+# Install dynamic modules in EMACSMODULES directory.
+
+elisp-modules-install() {
+	local subdir="$1"
+	shift
+	# Don't bother inheriting multilib.eclass for get_libdir(), but
+	# error out in old EAPIs that don't support it natively.
+	[[ ${EAPI} == [45] ]] \
+		&& die "${ECLASS}: Dynamic modules not supported in EAPI ${EAPI}"
+	ebegin "Installing dynamic modules for GNU Emacs support"
+	( # subshell to avoid pollution of calling environment
+		exeinto "${EMACSMODULES//@libdir@/$(get_libdir)}/${subdir}"
+		doexe "$@"
+	)
+	eend $? "elisp-modules-install: doins failed" || die
+}
+
 # @FUNCTION: elisp-site-file-install
 # @USAGE: <site-init file> [subdirectory]
 # @DESCRIPTION:
 # Install Emacs site-init file in SITELISP directory.  Automatically
-# inserts a standard comment header with the name of the package (unless
-# it is already present).  Tokens @SITELISP@ and @SITEETC@ are replaced
-# by the path to the package's subdirectory in SITELISP and SITEETC,
-# respectively.
+# inserts a standard comment header with the name of the package
+# (unless it is already present).  Tokens @SITELISP@, @SITEETC@, and
+# @EMACSMODULES@ are replaced by the path to the package's subdirectory
+# in SITELISP, SITEETC, and EMACSMODULES, respectively.
 
 elisp-site-file-install() {
-	local sf="${1##*/}" my_pn="${2:-${PN}}" ret
+	local sf="${1##*/}" my_pn="${2:-${PN}}" modules ret
 	local header=";;; ${PN} site-lisp configuration"
 
 	[[ ${sf} == [0-9][0-9]*-gentoo*.el ]] \
@@ -381,9 +407,13 @@ elisp-site-file-install() {
 	sf="${T}/${sf}"
 	ebegin "Installing site initialisation file for GNU Emacs"
 	[[ $1 = "${sf}" ]] || cp "$1" "${sf}"
+	[[ ${EAPI} == [45] ]] && grep -q "@EMACSMODULES@" "${sf}" \
+		&& die "${ECLASS}: Dynamic modules not supported in EAPI ${EAPI}"
+	modules=${EMACSMODULES//@libdir@/$(get_libdir)}
 	sed -i -e "1{:x;/^\$/{n;bx;};/^;.*${PN}/I!s:^:${header}\n\n:;1s:^:\n:;}" \
 		-e "s:@SITELISP@:${EPREFIX}${SITELISP}/${my_pn}:g" \
-		-e "s:@SITEETC@:${EPREFIX}${SITEETC}/${my_pn}:g;\$q" "${sf}"
+		-e "s:@SITEETC@:${EPREFIX}${SITEETC}/${my_pn}:g" \
+		-e "s:@EMACSMODULES@:${EPREFIX}${modules}/${my_pn}:g;\$q" "${sf}"
 	( # subshell to avoid pollution of calling environment
 		insinto "${SITELISP}/site-gentoo.d"
 		doins "${sf}"
