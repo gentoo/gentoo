@@ -6,6 +6,6 @@
 		<name>Marek Szuba</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">gnomesword</remote-id>
+		<remote-id type="github">karlkleinpaste/biblesync</remote-id>
 	</upstream>
 </pkgmetadata>
