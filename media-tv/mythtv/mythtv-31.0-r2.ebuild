@@ -137,6 +137,7 @@ DEPEND="
 			dev-python/future[${PYTHON_USEDEP}]
 			dev-python/lxml[${PYTHON_USEDEP}]
 			dev-python/mysqlclient[${PYTHON_USEDEP}]
+			dev-python/requests-cache[${PYTHON_USEDEP}]
 			dev-python/simplejson[${PYTHON_USEDEP}]
 		')
 	)
@@ -146,6 +147,7 @@ python_check_deps() {
 	has_version "dev-python/future[${PYTHON_USEDEP}]" &&
 	has_version "dev-python/lxml[${PYTHON_USEDEP}]" &&
 	has_version "dev-python/mysqlclient[${PYTHON_USEDEP}]" &&
+	has_version "dev-python/requests-cache[${PYTHON_USEDEP}]" &&
 	has_version "dev-python/simplejson[${PYTHON_USEDEP}]"
 }
 
@@ -385,11 +387,11 @@ src_install() {
 
 	insinto /usr/share/mythtv/contrib
 	# Ensure we don't install scripts needing the perl bindings (bug #516968) Finding none is OK.
-	if use perl; then
+	if ! use perl; then
 		find contrib/ -name '*.pl' -exec rm {} \;
 	fi
 	# Ensure we don't install scripts needing the python bindings (bug #516968) Finding none is OK.
-	if use python; then
+	if ! use python; then
 		find contrib/ -name '*.py' -exec rm {} \;
 	fi
 	doins -r contrib/*
