@@ -5,7 +5,7 @@ EAPI="7"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
-inherit cmake flag-o-matic linux-info \
+inherit cmake-utils flag-o-matic linux-info \
 	multiprocessing prefix toolchain-funcs check-reqs
 
 MY_BOOST_VERSION="1.70.0"
@@ -17,7 +17,7 @@ MY_MAJOR_PV=$(ver_cut 1-2)
 MY_RELEASE_NOTES_URI="https://www.percona.com/doc/percona-server/${MY_MAJOR_PV}/"
 
 # Patch version
-PATCH_SET="https://dev.gentoo.org/~whissi/dist/percona-server/${PN}-8.0.20.11-patches-01.tar.xz"
+PATCH_SET="https://dev.gentoo.org/~whissi/dist/percona-server/${PN}-8.0.19.10-patches-01.tar.xz"
 
 SRC_URI="https://www.percona.com/downloads/${MY_PN}-${MY_MAJOR_PV}/${MY_PN}-${MY_PV}/source/tarball/${PN}-${MY_PV}.tar.gz
 	https://dl.bintray.com/boostorg/release/${MY_BOOST_VERSION}/source/boost_$(ver_rs 1- _ ${MY_BOOST_VERSION}).tar.bz2
@@ -27,8 +27,8 @@ SRC_URI="https://www.percona.com/downloads/${MY_PN}-${MY_MAJOR_PV}/${MY_PN}-${MY
 HOMEPAGE="https://www.percona.com/software/mysql-database/percona-server https://github.com/percona/percona-server"
 DESCRIPTION="Fully compatible, enhanced and open source drop-in replacement for MySQL"
 LICENSE="GPL-2"
-SLOT="0"
-IUSE="cjk cracklib debug jemalloc latin1 ldap libressl numa pam +perl profiling
+SLOT="8.0"
+IUSE="cjk cracklib debug jemalloc latin1 libressl numa pam +perl profiling
 	rocksdb router selinux +server tcmalloc test tokudb tokudb-backup-plugin"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
@@ -63,10 +63,6 @@ COMMON_DEPEND="
 		net-libs/libtirpc:=
 		net-misc/curl:=
 		cjk? ( app-text/mecab:= )
-		ldap? (
-			dev-libs/cyrus-sasl
-			net-nds/openldap
-		)
 		jemalloc? ( dev-libs/jemalloc:0= )
 		kernel_linux? (
 			dev-libs/libaio:0=
@@ -88,6 +84,7 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	!dev-db/mariadb !dev-db/mariadb-galera !dev-db/mysql !dev-db/mysql-cluster
+	!dev-db/percona-server:5.7
 	selinux? ( sec-policy/selinux-mysql )
 	!prefix? (
 		acct-group/mysql acct-user/mysql
@@ -113,59 +110,46 @@ mysql_init_vars() {
 }
 
 pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]] ; then
-		if use server ; then
-			CHECKREQS_DISK_BUILD="3G"
-
-			if has test $FEATURES ; then
-				CHECKREQS_DISK_BUILD="9G"
-			fi
-
-			check-reqs_pkg_pretend
-		fi
-	fi
+	[[ ${MERGE_TYPE} == binary ]] && return
+	use server && check-reqs_pkg_pretend
 }
 
 pkg_setup() {
-	if [[ ${MERGE_TYPE} != binary ]] ; then
-		CHECKREQS_DISK_BUILD="3G"
+	[[ ${MERGE_TYPE} == binary ]] && return
 
-		if has test ${FEATURES} ; then
-			CHECKREQS_DISK_BUILD="9G"
+	if has test ${FEATURES} ; then
+		# Bug #213475 - MySQL _will_ object strenuously if your machine is named
+		# localhost. Also causes weird failures.
+		[[ "${HOSTNAME}" == "localhost" ]] && die "Your machine must NOT be named localhost"
 
-			# Bug #213475 - MySQL _will_ object strenuously if your machine is named
-			# localhost. Also causes weird failures.
-			[[ "${HOSTNAME}" == "localhost" ]] && die "Your machine must NOT be named localhost"
-
-			if ! has userpriv ${FEATURES} ; then
-				die "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
-			fi
-
-			local aio_max_nr=$(sysctl -n fs.aio-max-nr 2>/dev/null)
-			[[ -z "${aio_max_nr}" || ${aio_max_nr} -lt 250000 ]] \
-				&& die "FEATURES=test will require fs.aio-max-nr=250000 at minimum!"
-
-			if use latin1 ; then
-				# Upstream only supports tests with default charset
-				die "Testing with USE=latin1 is not supported."
-			fi
+		if ! has userpriv ${FEATURES} ; then
+			die "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
 		fi
 
-		if use kernel_linux ; then
-			if use numa ; then
-				linux-info_get_any_version
+		local aio_max_nr=$(sysctl -n fs.aio-max-nr 2>/dev/null)
+		[[ -z "${aio_max_nr}" || ${aio_max_nr} -lt 250000 ]] \
+			&& die "FEATURES=test will require fs.aio-max-nr=250000 at minimum!"
 
-				local CONFIG_CHECK="~NUMA"
-
-				local WARNING_NUMA="This package expects NUMA support in kernel which this system does not have at the moment;"
-				WARNING_NUMA+=" Either expect runtime errors, enable NUMA support in kernel or rebuild the package without NUMA support"
-
-				check_extra_config
-			fi
+		if use latin1 ; then
+			# Upstream only supports tests with default charset
+			die "Testing with USE=latin1 is not supported."
 		fi
-
-		use server && check-reqs_pkg_setup
 	fi
+
+	if use kernel_linux ; then
+		if use numa ; then
+			linux-info_get_any_version
+
+			local CONFIG_CHECK="~NUMA"
+
+			local WARNING_NUMA="This package expects NUMA support in kernel which this system does not have at the moment;"
+			WARNING_NUMA+=" Either expect runtime errors, enable NUMA support in kernel or rebuild the package without NUMA support"
+
+			check_extra_config
+		fi
+	fi
+
+	use server && check-reqs_pkg_setup
 }
 
 src_unpack() {
@@ -176,6 +160,8 @@ src_unpack() {
 
 src_prepare() {
 	eapply "${WORKDIR}"/mysql-patches
+
+	eapply_user
 
 	# Avoid rpm call which would trigger sandbox, #692368
 	sed -i \
@@ -202,7 +188,7 @@ src_prepare() {
 		man/zlib_decompress.1 \
 		|| die
 
-	cmake_src_prepare
+	cmake-utils_src_prepare
 }
 
 src_configure() {
@@ -304,7 +290,6 @@ src_configure() {
 
 	if use server ; then
 		mycmakeargs+=(
-			-DWITH_AUTHENTICATION_LDAP=$(usex ldap system OFF)
 			-DWITH_EXTRA_CHARSETS=all
 			-DWITH_DEBUG=$(usex debug)
 			-DWITH_MECAB=$(usex cjk system OFF)
@@ -343,7 +328,7 @@ src_configure() {
 		)
 	fi
 
-	cmake_src_configure
+	cmake-utils_src_configure
 }
 
 # Official test instructions:
@@ -367,7 +352,7 @@ src_test() {
 	local retstatus_tests
 
 	# Run CTest (test-units)
-	cmake_src_test
+	cmake-utils_src_test
 	retstatus_unit=$?
 
 	# Ensure that parallel runs don't die
@@ -412,12 +397,8 @@ src_test() {
 	disabled_tests+=( "gis.spatial_utility_function_simplify;5452;Known rounding error with latest AMD processors (PS)" )
 	disabled_tests+=( "gis.spatial_op_testingfunc_mix;5452;Known rounding error with latest AMD processors (PS)" )
 	disabled_tests+=( "gis.spatial_analysis_functions_distance;5452;Known rounding error with latest AMD processors (PS)" )
-	disabled_tests+=( "group_replication.gr_ssl_options2;0;Sporadic failing test" )
 	disabled_tests+=( "innodb.percona_changed_page_bmp_flush;6807;False positive on Gentoo (PS)" )
 	disabled_tests+=( "innodb.percona_changed_page_bmp_log_resize;0;Sporadic failing test" )
-	disabled_tests+=( "innodb.percona_log_encrypt_failure;0;Requires proper keyring setup" )
-	disabled_tests+=( "innodb.percona_log_encrypt_change_mk;6039;False positive on Gentoo (PS)" )
-	disabled_tests+=( "innodb.percona_log_encrypt_change_rk;6805;False positive on Gentoo (PS)" )
 	disabled_tests+=( "innodb.upgrade_orphan;0;Sporadic failing test" )
 	disabled_tests+=( "main.myisam-blob;0;Sporadic failing test" )
 	disabled_tests+=( "main.mysqlpump_basic_lz4;6042;Extra tool output causes false positive" )
@@ -431,15 +412,6 @@ src_test() {
 	disabled_tests+=( "sys_vars.myisam_data_pointer_size_func;87935;Test will fail on slow hardware" )
 	disabled_tests+=( "x.message_compressed_payload;0;False positive caused by protobuff-3.11+" )
 	disabled_tests+=( "x.message_protobuf_nested;6803;False positive caused by protobuff-3.11+" )
-
-	# Known test failures due to expired SSL certificates -- fixed in 8.0.22
-	disabled_tests+=( "auth_sec.admin_ssl_crl_crlpath;100055;Fixed in 8.0.22" )
-	disabled_tests+=( "auth_sec.admin_ssl_crl;100055;Fixed in 8.0.22" )
-	disabled_tests+=( "auth_sec.server_withssl_client_withssl;100055;Fixed in 8.0.22" )
-	disabled_tests+=( "main.ssl_crl_clients_valid;100055;Fixed in 8.0.22" )
-	disabled_tests+=( "main.ssl_crl;100055;Fixed in 8.0.22" )
-	disabled_tests+=( "main.ssl_crl_crlpath;100055;Fixed in 8.0.22" )
-	disabled_tests+=( "main.ssl_ca;100055;Fixed in 8.0.22" )
 
 	if ! hash zip 1>/dev/null 2>&1 ; then
 		# no need to force dep app-arch/zip for one test
@@ -523,7 +495,7 @@ src_test() {
 }
 
 src_install() {
-	cmake_src_install
+	cmake-utils_src_install
 
 	# Make sure the vars are correctly initialized
 	mysql_init_vars
