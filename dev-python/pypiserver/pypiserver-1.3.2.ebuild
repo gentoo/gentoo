@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python{2_7,3_{6,7,8,9}} pypy3 )
+PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Minimal PyPI server"
@@ -27,7 +27,6 @@ BDEPEND="
 		>=dev-python/pytest-2.3[${PYTHON_USEDEP}]
 		dev-python/twine[${PYTHON_USEDEP}]
 		dev-python/webtest[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' -2)
 	)"
 
 DOCS=( README.rst )
