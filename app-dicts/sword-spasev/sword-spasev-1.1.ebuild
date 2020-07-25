@@ -7,6 +7,6 @@ SWORD_MODULE="SpaSEV"
 inherit sword-module
 
 DESCRIPTION="Spanish Sagradas Escrituras Version Antigua (1569)"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=SpaSEV"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=SpaSEV"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

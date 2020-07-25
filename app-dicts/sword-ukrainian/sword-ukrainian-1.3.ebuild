@@ -7,6 +7,6 @@ SWORD_MODULE="Ukrainian"
 inherit sword-module
 
 DESCRIPTION="Ukrainian Bible"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Ukrainian"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Ukrainian"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

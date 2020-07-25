@@ -7,6 +7,6 @@ SWORD_MODULE="Montgomery"
 inherit sword-module
 
 DESCRIPTION="Montgomery New Testament"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Montgomery"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Montgomery"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

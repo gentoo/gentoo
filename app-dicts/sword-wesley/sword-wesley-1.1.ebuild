@@ -7,6 +7,6 @@ SWORD_MODULE="Wesley"
 inherit sword-module
 
 DESCRIPTION="John Wesley's Notes on the Bible"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Wesley"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Wesley"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

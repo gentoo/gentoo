@@ -7,6 +7,6 @@ SWORD_MODULE="KLV"
 inherit sword-module
 
 DESCRIPTION="Klingon Language Version of the World English Bible"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=KLV"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=KLV"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

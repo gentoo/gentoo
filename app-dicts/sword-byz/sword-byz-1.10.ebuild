@@ -7,6 +7,6 @@ SWORD_MODULE="Byz"
 inherit sword-module
 
 DESCRIPTION="Byzantine/Majority Text (2000)"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Byz"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Byz"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

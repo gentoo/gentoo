@@ -7,6 +7,6 @@ SWORD_MODULE="Torrey"
 inherit sword-module
 
 DESCRIPTION="R. A. Torrey's New Topical Textbook"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Torrey"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Torrey"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

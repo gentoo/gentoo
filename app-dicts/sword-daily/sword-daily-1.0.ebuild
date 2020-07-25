@@ -7,6 +7,6 @@ SWORD_MODULE="Daily"
 inherit sword-module
 
 DESCRIPTION="Jonathan Bagster's Daily Light on the Daily Path"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Daily"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Daily"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

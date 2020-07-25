@@ -7,6 +7,6 @@ SWORD_MODULE="AmTract"
 inherit sword-module
 
 DESCRIPTION="American Tract Society Bible Dictionary"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=AmTract"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=AmTract"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

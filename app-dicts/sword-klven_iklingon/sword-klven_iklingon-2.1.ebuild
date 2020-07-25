@@ -7,6 +7,6 @@ SWORD_MODULE="KLVen_iklingon"
 inherit sword-module
 
 DESCRIPTION="Klingon Language Version English to Klingon mapping lexicon"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=KLVen_iklingon"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=KLVen_iklingon"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

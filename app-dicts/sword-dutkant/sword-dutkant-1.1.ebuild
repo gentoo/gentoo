@@ -7,6 +7,6 @@ SWORD_MODULE="DutKant"
 inherit sword-module
 
 DESCRIPTION="Kanttekeningen Statenvertaling"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=DutKant"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=DutKant"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

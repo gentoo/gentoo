@@ -7,6 +7,6 @@ SWORD_MODULE="ASV"
 inherit sword-module
 
 DESCRIPTION="American Standard Version (1901)"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=ASV"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=ASV"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

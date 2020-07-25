@@ -7,6 +7,6 @@ SWORD_MODULE="ArmWestern"
 inherit sword-module
 
 DESCRIPTION="1853 Western Armenian NT"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=ArmWestern"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=ArmWestern"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

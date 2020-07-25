@@ -7,6 +7,6 @@ SWORD_MODULE="Wycliffe"
 inherit sword-module
 
 DESCRIPTION="John Wycliffe Bible (1395)"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Wycliffe"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Wycliffe"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

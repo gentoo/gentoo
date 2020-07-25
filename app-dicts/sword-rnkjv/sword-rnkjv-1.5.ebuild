@@ -7,6 +7,6 @@ SWORD_MODULE="RNKJV"
 inherit sword-module
 
 DESCRIPTION="Restored Name King James Version"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=RNKJV"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=RNKJV"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

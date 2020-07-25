@@ -7,6 +7,6 @@ SWORD_MODULE="SpaRVG2004"
 inherit sword-module
 
 DESCRIPTION="Spanish Reina Valera Gomez 2004"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=SpaRVG2004"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=SpaRVG2004"
 LICENSE="sword-sparvg2004"
 KEYWORDS="~amd64 ~ppc ~x86"

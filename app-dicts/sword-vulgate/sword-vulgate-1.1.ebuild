@@ -7,6 +7,6 @@ SWORD_MODULE="Vulgate"
 inherit sword-module
 
 DESCRIPTION="Latin Vulgate"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Vulgate"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Vulgate"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

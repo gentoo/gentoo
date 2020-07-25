@@ -7,6 +7,6 @@ SWORD_MODULE="JFB"
 inherit sword-module
 
 DESCRIPTION="Jamieson Fausset Brown Bible Commentary"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=JFB"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=JFB"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

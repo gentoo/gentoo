@@ -7,6 +7,6 @@ SWORD_MODULE="Geneva"
 inherit sword-module
 
 DESCRIPTION="Geneva Bible Translation Notes"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Geneva"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Geneva"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

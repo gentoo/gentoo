@@ -7,6 +7,6 @@ SWORD_MODULE="LITV"
 inherit sword-module
 
 DESCRIPTION="Green's Literal Translation"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=LITV"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=LITV"
 LICENSE="free-noncomm"
 KEYWORDS="~amd64 ~ppc ~x86"

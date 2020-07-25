@@ -7,6 +7,6 @@ SWORD_MODULE="KJVD"
 inherit sword-module
 
 DESCRIPTION="King James Dictionary"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=KJVD"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=KJVD"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

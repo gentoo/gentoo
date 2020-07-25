@@ -7,6 +7,6 @@ SWORD_MODULE="Easton"
 inherit sword-module
 
 DESCRIPTION="Easton's Bible Dictionary"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Easton"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Easton"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

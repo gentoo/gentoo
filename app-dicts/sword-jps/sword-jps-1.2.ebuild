@@ -7,6 +7,6 @@ SWORD_MODULE="JPS"
 inherit sword-module
 
 DESCRIPTION="Jewish Publication Society Old Testament"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=JPS"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=JPS"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

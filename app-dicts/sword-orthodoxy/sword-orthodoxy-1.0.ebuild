@@ -7,6 +7,6 @@ SWORD_MODULE="Orthodoxy"
 inherit sword-module
 
 DESCRIPTION="Orthodoxy by Gilbert K. Chesterton (1874-1936)"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Orthodoxy"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Orthodoxy"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

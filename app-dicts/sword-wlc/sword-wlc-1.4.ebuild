@@ -7,6 +7,6 @@ SWORD_MODULE="WLC"
 inherit sword-module
 
 DESCRIPTION="Westminster Leningrad Codex"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=WLC"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=WLC"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

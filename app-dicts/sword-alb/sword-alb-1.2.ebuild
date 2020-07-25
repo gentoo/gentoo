@@ -7,6 +7,6 @@ SWORD_MODULE="Alb"
 inherit sword-module
 
 DESCRIPTION="Albanian Bible"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Alb"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Alb"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

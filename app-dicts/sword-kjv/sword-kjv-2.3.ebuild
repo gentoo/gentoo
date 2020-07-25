@@ -7,6 +7,6 @@ SWORD_MODULE="KJV"
 inherit sword-module
 
 DESCRIPTION="King James Version (1769) with Strongs Numbers and Morphology"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=KJV"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=KJV"
 LICENSE="freedist"
 KEYWORDS="~amd64 ~ppc ~x86"

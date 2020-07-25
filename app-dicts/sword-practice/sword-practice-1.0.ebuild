@@ -7,6 +7,6 @@ SWORD_MODULE="Practice"
 inherit sword-module
 
 DESCRIPTION="The Practice of the Presence of God: The Best Rule of Holy Life"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Practice"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Practice"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

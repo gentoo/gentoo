@@ -7,6 +7,6 @@ SWORD_MODULE="DutSVV"
 inherit sword-module
 
 DESCRIPTION="Dutch Statenvertaling"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=DutSVV"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=DutSVV"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

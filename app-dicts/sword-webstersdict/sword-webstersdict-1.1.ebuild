@@ -8,6 +8,6 @@ inherit sword-module
 
 DESCRIPTION="Webster's Revised Unabridged Dictionary of the English Language
 1913"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=WebstersDict"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=WebstersDict"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

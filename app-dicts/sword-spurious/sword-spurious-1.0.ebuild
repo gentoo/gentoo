@@ -7,6 +7,6 @@ SWORD_MODULE="Spurious"
 inherit sword-module
 
 DESCRIPTION="Tischendorf's Spurious Passages of the GNT"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Spurious"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Spurious"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

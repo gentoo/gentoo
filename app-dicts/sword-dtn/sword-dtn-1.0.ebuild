@@ -7,6 +7,6 @@ SWORD_MODULE="DTN"
 inherit sword-module
 
 DESCRIPTION="Darby Translation Notes"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=DTN"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=DTN"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

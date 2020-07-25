@@ -7,6 +7,6 @@ SWORD_MODULE="Webster"
 inherit sword-module
 
 DESCRIPTION="Webster Bible"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Webster"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Webster"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

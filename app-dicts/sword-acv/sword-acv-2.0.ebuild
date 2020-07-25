@@ -7,6 +7,6 @@ SWORD_MODULE="ACV"
 inherit sword-module
 
 DESCRIPTION="A Conservative Version"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=ACV"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=ACV"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

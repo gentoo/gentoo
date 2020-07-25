@@ -7,6 +7,6 @@ SWORD_MODULE="Wulfila"
 inherit sword-module
 
 DESCRIPTION="Bishop Wulfila Gothic Bible"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Wulfila"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Wulfila"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

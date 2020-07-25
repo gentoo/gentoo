@@ -7,6 +7,6 @@ SWORD_MODULE="Lightfoot"
 inherit sword-module
 
 DESCRIPTION="John Lightfoot Commentary"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Lightfoot"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Lightfoot"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"
