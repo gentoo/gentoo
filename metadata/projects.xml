@@ -798,10 +798,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:Devmanual</url>
     <description>The Devmanual subproject is tasked with maintaining and updating the Gentoo Development Guide https://devmanual.gentoo.org/</description>
     <member>
-      <email>creffett@gentoo.org</email>
-      <name>Chris Reffett</name>
-    </member>
-    <member>
       <email>gokturk@gentoo.org</email>
       <name>Göktürk Yüksek</name>
     </member>
@@ -859,11 +855,6 @@
     <name>Elections</name>
     <url>https://wiki.gentoo.org/wiki/Project:Elections</url>
     <description>Gentoo Elections Project gathers all the information necessary to conduct elections in Gentoo.</description>
-    <member>
-      <email>creffett@gentoo.org</email>
-      <name>Chris Reffett</name>
-      <role>Member</role>
-    </member>
     <member>
       <email>dabbott@gentoo.org</email>
       <name>David Abbott</name>
@@ -1693,11 +1684,6 @@
     <member is-lead="1">
       <email>asturm@gentoo.org</email>
       <name>Andreas Sturmlechner</name>
-      <role>Developer</role>
-    </member>
-    <member>
-      <email>creffett@gentoo.org</email>
-      <name>Chris Reffett</name>
       <role>Developer</role>
     </member>
     <member>
@@ -3006,11 +2992,6 @@
       <role>Member</role>
     </member>
     <member>
-      <email>creffett@gentoo.org</email>
-      <name>Chris Reffett</name>
-      <role>Member</role>
-    </member>
-    <member>
       <email>zerochaos@gentoo.org</email>
       <name>Rick Farina</name>
       <role>Member</role>
@@ -3396,11 +3377,6 @@
       <role>GLSA Coordinator</role>
     </member>
     <member>
-      <email>creffett@gentoo.org</email>
-      <name>Chris Reffett</name>
-      <role>GLSA Coordinator</role>
-    </member>
-    <member>
       <email>k_f@gentoo.org</email>
       <name>Kristian Fiskerstrand</name>
       <role>Member</role>
@@ -3586,11 +3562,6 @@
     <name>Theology</name>
     <url>https://wiki.gentoo.org/wiki/Project:Theology</url>
     <description>The theology project maintains religious, genealogy, and humanities-related packages</description>
-    <member is-lead="1">
-      <email>creffett@gentoo.org</email>
-      <name>Chris Reffett</name>
-      <role>Lead</role>
-    </member>
   </project>
   <project>
     <email>tinderbox-cluster@gentoo.org</email>
@@ -3862,11 +3833,6 @@
     <name>Wiki</name>
     <url>https://wiki.gentoo.org/wiki/Project:Wiki</url>
     <description>The wiki project oversees the community and the content surrounding wiki.gentoo.org</description>
-    <member>
-      <email>creffett@gentoo.org</email>
-      <name>Chris Reffett</name>
-      <role>Administrator</role>
-    </member>
     <member>
       <email>grknight@gentoo.org</email>
       <name>Brian Evans</name>
