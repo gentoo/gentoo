@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit cmake-utils toolchain-funcs
 
 DESCRIPTION="A multicast protocol to support Bible software shared co-navigation"
-HOMEPAGE="http://www.crosswire.org/wiki/BibleSync"
+HOMEPAGE="https://wiki.crosswire.org/BibleSync"
 SRC_URI="mirror://sourceforge/gnomesword/${P}.tar.gz"
 
 LICENSE="public-domain"
