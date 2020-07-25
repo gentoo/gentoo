@@ -3,7 +3,7 @@
 
 EAPI=7
 DESCRIPTION="A collection of modules for the SWORD project"
-HOMEPAGE="http://www.crosswire.org/sword/"
+HOMEPAGE="https://www.crosswire.org/sword/"
 
 LICENSE="metapackage"
 SLOT="0"
