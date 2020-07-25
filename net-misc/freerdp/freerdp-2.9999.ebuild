@@ -56,7 +56,7 @@ RDEPEND="
 		x11-libs/libXrandr
 	)
 	jpeg? ( virtual/jpeg:0 )
-	openh264? ( media-libs/openh264 )
+	openh264? ( media-libs/openh264:0= )
 	pulseaudio? ( media-sound/pulseaudio )
 	server? (
 		X? (
