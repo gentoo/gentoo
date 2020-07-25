@@ -28,7 +28,7 @@ RDEPEND="!mail-client/nmh
 	berkdb? ( sys-libs/db:= )
 	bidi? ( dev-libs/fribidi )
 	emacs? ( >=app-editors/emacs-23.1:* )
-	gdbm? ( sys-libs/gdbm )
+	gdbm? ( sys-libs/gdbm:= )
 	guile? ( dev-scheme/guile:12/2.2-1 )
 	kerberos? ( virtual/krb5 )
 	kyotocabinet? ( dev-db/kyotocabinet )
