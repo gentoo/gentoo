@@ -276,12 +276,6 @@ sys-kernel/linux-firmware initramfs
 # Requires dev-libs/gumbo which is only keyworded for amd64 and x86
 mail-client/claws-mail litehtml
 
-# James Le Cuirot <chewi@gentoo.org> (2019-05-21)
-# Doesn't support ffmpeg-4. Portage takes a long time to report the
-# conflict and the feature is half broken anyway. See
-# https://github.com/visualboyadvance-m/visualboyadvance-m/issues/179.
-games-emulation/vbam ffmpeg
-
 # Ulrich Müller <ulm@gentoo.org> (2019-05-18)
 # Firmware images without a known license. Most likely, upstream
 # redistribution may conflict with the licenses or lack thereof
