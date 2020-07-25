@@ -78,7 +78,7 @@ DEPEND="
 	>=dev-libs/libgit2-0.99:=
 	net-libs/libssh2:=
 	net-libs/http-parser:=
-	net-misc/curl:=[ssl]
+	net-misc/curl:=[http2,ssl]
 	sys-libs/zlib:=
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
