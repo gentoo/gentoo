@@ -10499,7 +10499,7 @@ dev-util/rbtools 1.0.2 1.0.3: Command line tools for use with Review Board
 dev-util/re2c 1.3-r1 2.0: tool for generating C-based recognizers from regular expressions
 dev-util/rebar 2.6.4 2.6.4-r1: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/rebar-bin 3.6.2 3.13.2: A sophisticated build-tool for Erlang projects that follows OTP principles
-dev-util/redo 0.42-r1 0.42a 0.42c 99999: Smaller, easier, more powerful, and more reliable than make
+dev-util/redo 0.42a 0.42c 99999: Smaller, easier, more powerful, and more reliable than make
 dev-util/regexxer 0.10: An interactive tool for performing search and replace operations
 dev-util/rej 0.16-r1: A utility for solving diff/patch rejects
 dev-util/rocm-cmake 0.2 2.7.0 2.8.0 2.9.0 2.10.0 3.0.0 3.3.0 3.5.0 9999: Radeon Open Compute CMake Modules
