@@ -65,7 +65,7 @@ RDEPEND="
 	gles2? (
 		media-libs/mesa[gles2,wayland]
 	)
-	pipewire? ( >=media-video/pipewire-0.2 )
+	pipewire? ( =media-video/pipewire-0.2*:= )
 	rdp? ( >=net-misc/freerdp-2.0.0_rc2:= )
 	remoting? (
 		media-libs/gstreamer:1.0
