@@ -1,9 +1,9 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 #
 # eclass to simplify installation of Sword modules
-# Bugs to theology@gentoo.org
+# Bugs to marecki@gentoo.org
 #
 
 HOMEPAGE="http://www.crosswire.org/sword/modules/"
