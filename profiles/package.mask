@@ -32,6 +32,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2020-07-25)
+# Included with TeX Live. The separate Gentoo package is
+# unmaintained and had its last version bump in 2015.
+# Use app-text/texlive-core as replacement.
+# Removal in 30 days. Bug #733862.
+dev-tex/metapost
+app-eselect/eselect-mpost
+
+# Ulrich Müller <ulm@gentoo.org> (2020-07-25)
+# No longer needed without the separate dev-tex/pdftex package.
+# Removal in 30 days. Bug #533080.
+app-eselect/eselect-pdftex
+
 # Mikle Kolyada <zlogene@gentoo.org> (2020-07-24)
 # Both packages is a part of the texlive-formatsextra.collection
 # (or dev-texlive/texlive-formatsextra package).

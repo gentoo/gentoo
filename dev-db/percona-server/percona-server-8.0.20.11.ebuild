@@ -412,8 +412,12 @@ src_test() {
 	disabled_tests+=( "gis.spatial_utility_function_simplify;5452;Known rounding error with latest AMD processors (PS)" )
 	disabled_tests+=( "gis.spatial_op_testingfunc_mix;5452;Known rounding error with latest AMD processors (PS)" )
 	disabled_tests+=( "gis.spatial_analysis_functions_distance;5452;Known rounding error with latest AMD processors (PS)" )
+	disabled_tests+=( "group_replication.gr_ssl_options2;0;Sporadic failing test" )
 	disabled_tests+=( "innodb.percona_changed_page_bmp_flush;6807;False positive on Gentoo (PS)" )
 	disabled_tests+=( "innodb.percona_changed_page_bmp_log_resize;0;Sporadic failing test" )
+	disabled_tests+=( "innodb.percona_log_encrypt_failure;0;Requires proper keyring setup" )
+	disabled_tests+=( "innodb.percona_log_encrypt_change_mk;6039;False positive on Gentoo (PS)" )
+	disabled_tests+=( "innodb.percona_log_encrypt_change_rk;6805;False positive on Gentoo (PS)" )
 	disabled_tests+=( "innodb.upgrade_orphan;0;Sporadic failing test" )
 	disabled_tests+=( "main.myisam-blob;0;Sporadic failing test" )
 	disabled_tests+=( "main.mysqlpump_basic_lz4;6042;Extra tool output causes false positive" )
@@ -427,6 +431,15 @@ src_test() {
 	disabled_tests+=( "sys_vars.myisam_data_pointer_size_func;87935;Test will fail on slow hardware" )
 	disabled_tests+=( "x.message_compressed_payload;0;False positive caused by protobuff-3.11+" )
 	disabled_tests+=( "x.message_protobuf_nested;6803;False positive caused by protobuff-3.11+" )
+
+	# Known test failures due to expired SSL certificates -- fixed in 8.0.22
+	disabled_tests+=( "auth_sec.admin_ssl_crl_crlpath;100055;Fixed in 8.0.22" )
+	disabled_tests+=( "auth_sec.admin_ssl_crl;100055;Fixed in 8.0.22" )
+	disabled_tests+=( "auth_sec.server_withssl_client_withssl;100055;Fixed in 8.0.22" )
+	disabled_tests+=( "main.ssl_crl_clients_valid;100055;Fixed in 8.0.22" )
+	disabled_tests+=( "main.ssl_crl;100055;Fixed in 8.0.22" )
+	disabled_tests+=( "main.ssl_crl_crlpath;100055;Fixed in 8.0.22" )
+	disabled_tests+=( "main.ssl_ca;100055;Fixed in 8.0.22" )
 
 	if ! hash zip 1>/dev/null 2>&1 ; then
 		# no need to force dep app-arch/zip for one test
