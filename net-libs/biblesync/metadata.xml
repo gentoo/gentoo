@@ -4,7 +4,15 @@
 	<maintainer type="project">
 		<email>theology@gentoo.org</email>
 	</maintainer>
+	<maintainer type="person">
+		<email>jakov.smolic@sartura.hr</email>
+		<name>Jakov Smolic</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">gnomesword</remote-id>
+		<remote-id type="github">karlkleinpaste/biblesync</remote-id>
 	</upstream>
 </pkgmetadata>
