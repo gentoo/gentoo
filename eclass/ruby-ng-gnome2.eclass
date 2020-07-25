@@ -101,7 +101,7 @@ each_ruby_compile() {
 		-e "s/^ldflags  = /ldflags = $\(LDFLAGS\) /" \
 		|| die "--no-undefined removal failed"
 
-	emake V=1 || die "emake failed"
+	emake V=1
 }
 
 # @FUNCTION: each_ruby_install
@@ -128,7 +128,7 @@ all_ruby_install() {
 	done
 	if [[ -d sample ]]; then
 		insinto /usr/share/doc/${PF}
-		doins -r sample || die "sample install failed"
+		doins -r sample
 	fi
 
 	all_fakegem_install
