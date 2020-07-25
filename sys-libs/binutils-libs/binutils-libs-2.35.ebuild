@@ -4,7 +4,7 @@
 EAPI=7
 
 PATCH_VER=1
-PATCH_DEV=slyfox
+PATCH_DEV=dilfridge
 
 inherit eutils libtool toolchain-funcs multilib-minimal
 
@@ -21,7 +21,7 @@ SRC_URI="mirror://gnu/binutils/${MY_P}.tar.xz
 LICENSE="|| ( GPL-3 LGPL-3 )"
 SLOT="0/${PV}"
 IUSE="64-bit-bfd multitarget nls static-libs"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 BDEPEND="nls? ( sys-devel/gettext )"
 DEPEND="sys-libs/zlib[${MULTILIB_USEDEP}]"
@@ -38,9 +38,6 @@ MULTILIB_WRAPPED_HEADERS=(
 
 src_prepare() {
 	if [[ ! -z ${PATCH_VER} ]] ; then
-		# Use upstream patch to enable development mode
-		rm -v "${WORKDIR}/patch"/0000-Gentoo-Git-is-development.patch || die
-
 		einfo "Applying binutils-${PATCH_BINUTILS_VER} patchset ${PATCH_VER}"
 		eapply "${WORKDIR}/patch"/*.patch
 	fi

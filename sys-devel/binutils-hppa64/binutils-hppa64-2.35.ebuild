@@ -22,7 +22,7 @@ REQUIRED_USE="default-gold? ( gold )"
 #                      for the patchsets
 
 PATCH_VER=1
-PATCH_DEV=slyfox
+PATCH_DEV=dilfridge
 
 case ${PV} in
 	9999)
@@ -32,19 +32,10 @@ case ${PV} in
 		EGIT_CHECKOUT_DIR=${S}
 		SLOT=${PV}
 		;;
-	*.9999)
-		EGIT_REPO_URI="https://sourceware.org/git/binutils-gdb.git"
-		inherit git-r3
-		S=${WORKDIR}/binutils
-		EGIT_CHECKOUT_DIR=${S}
-		EGIT_BRANCH=$(ver_cut 1-2)
-		EGIT_BRANCH="binutils-${EGIT_BRANCH/./_}-branch"
-		SLOT=$(ver_cut 1-2)
-		;;
 	*)
 		SRC_URI="mirror://gnu/binutils/binutils-${PV}.tar.xz"
 		SLOT=$(ver_cut 1-2)
-		KEYWORDS="-* ~hppa"
+#		KEYWORDS="-* ~hppa"
 		;;
 esac
 
@@ -103,9 +94,6 @@ src_unpack() {
 
 src_prepare() {
 	if [[ ! -z ${PATCH_VER} ]] ; then
-		# Use upstream patch to enable development mode
-		rm -v "${WORKDIR}/patch"/0000-Gentoo-Git-is-development.patch || die
-
 		einfo "Applying binutils-${PATCH_BINUTILS_VER} patchset ${PATCH_VER}"
 		eapply "${WORKDIR}/patch"/*.patch
 	fi
