@@ -1,12 +1,12 @@
 DEFINED_PHASES=install
 DEPEND=app-arch/unzip
 DESCRIPTION=Darby Translation Notes
-EAPI=5
-HOMEPAGE=http://crosswire.org/sword/modules/ModInfo.jsp?modName=DTN
+EAPI=7
+HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=DTN
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=public-domain
 RDEPEND=app-text/sword
 SLOT=0
 SRC_URI=mirror://gentoo/DTN-1.0.zip
-_eclasses_=sword-module	f93b38348e60d75f292f55df132bbac4
-_md5_=aeaf266b16b2a55e80862ac8244fb4fb
+_eclasses_=sword-module	95addfe6ccec3bab4c085d831594fa26
+_md5_=99df8988a4e25b5292f634ed8e6308f9

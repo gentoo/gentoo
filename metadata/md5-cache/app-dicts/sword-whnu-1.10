@@ -1,12 +1,12 @@
 DEFINED_PHASES=install
 DEPEND=app-arch/unzip
 DESCRIPTION=Westcott-Hort with NA27/UBS4 variants (1881)
-EAPI=5
-HOMEPAGE=http://crosswire.org/sword/modules/ModInfo.jsp?modName=WHNU
+EAPI=7
+HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=WHNU
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=public-domain
 RDEPEND=app-text/sword
 SLOT=0
 SRC_URI=mirror://gentoo/WHNU-1.10.zip
-_eclasses_=sword-module	f93b38348e60d75f292f55df132bbac4
-_md5_=3262b368938be333c32aa72b5d9bb873
+_eclasses_=sword-module	95addfe6ccec3bab4c085d831594fa26
+_md5_=58bee996652a7886a158616c14982fe1
