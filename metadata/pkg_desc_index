@@ -13592,7 +13592,6 @@ media-sound/rcenter 0.6.2: Rcenter - A program to control the EMU10K Remote Cont
 media-sound/redoflacs 0.16.2 0.19 0.30: Bash commandline flac compressor, verifier, organizer, analyzer, retagger
 media-sound/retrovol 0.13: Systemtray volume mixer applet from PuppyLinux
 media-sound/rexima 1.4-r1: A curses-based interactive mixer which can also be used from the command-line
-media-sound/rgain 1.2.1-r1: Set of programmes and Python modules to deal with Replay Gain information
 media-sound/rhythmbox 3.4.4: Music management and playback software for GNOME
 media-sound/rip 1.07: A command-line based audio CD ripper and mp3 encoder
 media-sound/ripperx 2.7.3: a GTK program to rip CD audio tracks and encode them to the Ogg, MP3, or FLAC formats
@@ -18235,7 +18234,6 @@ x11-misc/netwmpager 2.05: Pager that works with Openbox and other EWMH compliant
 x11-misc/nitrogen 1.6.1 1.6.1-r1 99999: A background browser and setter for X
 x11-misc/notification-daemon 0.5.0 3.14.1 3.18.2 3.20.0: Notification daemon
 x11-misc/notify-osd 0.9.34-r1: Canonical's on-screen-display notification agent
-x11-misc/nts 82-r1: Note Taking made Simple, an intuitive note taking application
 x11-misc/numlockx 1.2: Turns on numlock in X
 x11-misc/obconf 2.0.4 9999: ObConf is a tool for configuring the Openbox window manager
 x11-misc/obconf-qt 0.14.1 0.15.0: Qt GUI Openbox Configuration Tool
