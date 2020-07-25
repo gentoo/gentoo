@@ -5949,7 +5949,7 @@ dev-perl/DateTime-Format-Human-Duration 0.640.0: Get a locale specific string de
 dev-perl/DateTime-Format-ICal 0.90.0 0.90.0-r1: Parse and format iCal datetime and duration strings
 dev-perl/DateTime-Format-ISO8601 0.80.0-r1 0.80.0-r2: Parses ISO8601 formats
 dev-perl/DateTime-Format-Mail 0.403.0: Convert between DateTime and RFC2822/822 formats
-dev-perl/DateTime-Format-Natural 1.50.0: Parse informal natural language date/time strings
+dev-perl/DateTime-Format-Natural 1.50.0 1.100.0: Parse informal natural language date/time strings
 dev-perl/DateTime-Format-SQLite 0.110.0: Parse and format SQLite dates and times
 dev-perl/DateTime-Format-Strptime 1.700.0 1.740.0: Parse and Format DateTimes using Strptime
 dev-perl/DateTime-Format-W3CDTF 0.70.0: Parse and format W3CDTF datetime strings
