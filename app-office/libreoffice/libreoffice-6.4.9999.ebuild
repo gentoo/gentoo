@@ -547,6 +547,10 @@ src_install() {
 		dodir /etc/env.d
 		echo "CONFIG_PROTECT=/usr/$(get_libdir)/${PN}/program/sofficerc" > "${ED}"/etc/env.d/99${PN} || die
 	fi
+
+	# bug 703474
+	insinto /usr/include
+	doins -r include/LibreOfficeKit
 }
 
 pkg_postinst() {
