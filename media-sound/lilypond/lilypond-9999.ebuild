@@ -24,11 +24,7 @@ IUSE="debug emacs guile2 profile vim-syntax"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="
-	>=dev-texlive/texlive-metapost-2013
-	|| (
-		>=app-text/texlive-core-2013
-		>=dev-tex/metapost-1.803
-	)
+	>=dev-texlive/texlive-metapost-2020
 	>=sys-apps/texinfo-4.11
 	>=sys-devel/bison-2.0
 	sys-devel/flex
@@ -62,18 +58,6 @@ PATCHES=(
 )
 
 DOCS=( DEDICATION HACKING README.txt ROADMAP )
-
-pkg_setup() {
-	# make sure >=metapost-1.803 is selected if it's installed, bug 498704
-	if [[ ${MERGE_TYPE} != binary ]] && has_version ">=dev-tex/metapost-1.803" ; then
-		if [[ $(readlink "${EROOT}"/usr/bin/mpost) =~ mpost-texlive-* ]] ; then
-			einfo "Updating metapost symlink"
-			eselect mpost update || die
-		fi
-	fi
-
-	python-single-r1_pkg_setup
-}
 
 src_prepare() {
 	default
