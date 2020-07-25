@@ -140,6 +140,7 @@ acct-group/plugdev 0: Group controlling access to removable media
 acct-group/polkitd 0: System group: polkitd
 acct-group/postdrop 0: System group: postdrop
 acct-group/postfix 0: System group: postfix
+acct-group/postfix_exporter 0: System group: postfix_exporter
 acct-group/postgres 0: PostgreSQL program group
 acct-group/privoxy 0: A privoxy: privacy oriented web proxy group
 acct-group/prometheus 0: System group: prometheus
@@ -342,6 +343,7 @@ acct-user/placement 0: User for the placement openstack service
 acct-user/plex 0: Plex Media Server user
 acct-user/polkitd 0: System user: polkitd
 acct-user/postfix 0: user for postfix daemon
+acct-user/postfix_exporter 0: user for postfix_exporter
 acct-user/postgres 0: PostgreSQL program user
 acct-user/postmaster 0: Postmaster user
 acct-user/privoxy 0: A privoxy: privacy oriented web proxy user
@@ -2051,7 +2053,7 @@ app-metrics/nginx-lua-prometheus 0.1_pre20170610: Library that exports Nginx met
 app-metrics/nginx-vts-exporter 0.10.3 0.10.7 0.10.7-r1: Nginx virtual host traffic stats exporter for Prometheus
 app-metrics/node_exporter 0.18.1 1.0.0_rc0 1.0.0_rc0-r1: Prometheus exporter for machine metrics
 app-metrics/openvpn_exporter 0.2.1 0.3.0: Prometheus Exporter for OpenVPN
-app-metrics/postfix_exporter 0.1.2: Prometheus Exporter for Postfix
+app-metrics/postfix_exporter 0.1.2 0.1.2-r1: Prometheus Exporter for Postfix
 app-metrics/postgres_exporter 0.4.7: PostgreSQL stats exporter for Prometheus
 app-metrics/process-exporter 0.4.0 0.4.0-r1 0.7.1: Process exporter for prometheus
 app-metrics/prom2json 0.1.0_p20170523 1.3.0: A tool to scrape a Prometheus client and dump the result as JSON
@@ -5945,7 +5947,7 @@ dev-perl/DateTime-Format-Flexible 0.280.0 0.320.0: Flexibly parse strings and tu
 dev-perl/DateTime-Format-HTTP 0.420.0 0.420.0-r1: Date conversion routines
 dev-perl/DateTime-Format-Human-Duration 0.640.0: Get a locale specific string describing the span of a given duration
 dev-perl/DateTime-Format-ICal 0.90.0 0.90.0-r1: Parse and format iCal datetime and duration strings
-dev-perl/DateTime-Format-ISO8601 0.80.0-r1: Parses ISO8601 formats
+dev-perl/DateTime-Format-ISO8601 0.80.0-r1 0.80.0-r2: Parses ISO8601 formats
 dev-perl/DateTime-Format-Mail 0.403.0: Convert between DateTime and RFC2822/822 formats
 dev-perl/DateTime-Format-Natural 1.50.0: Parse informal natural language date/time strings
 dev-perl/DateTime-Format-SQLite 0.110.0: Parse and format SQLite dates and times
