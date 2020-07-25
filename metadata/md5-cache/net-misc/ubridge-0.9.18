@@ -1,0 +1,14 @@
+BDEPEND=filecaps? ( sys-libs/libcap )
+DEFINED_PHASES=compile install postinst
+DEPEND=acct-group/ubridge dev-libs/iniparser:4= net-libs/libpcap
+DESCRIPTION=Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces
+EAPI=7
+HOMEPAGE=https://github.com/GNS3/ubridge
+IUSE=+filecaps
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=acct-group/ubridge dev-libs/iniparser:4= net-libs/libpcap filecaps? ( sys-libs/libcap )
+SLOT=0
+SRC_URI=https://github.com/GNS3/ubridge/archive/v0.9.18.tar.gz -> ubridge-0.9.18.tar.gz
+_eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=aa19ed2d77e2b877e085f6b7708d478f
