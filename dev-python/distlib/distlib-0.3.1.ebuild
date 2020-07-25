@@ -21,10 +21,11 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+# pypiserver is called as external executable
 # openpyxl installs invalid metadata that breaks distlib
 BDEPEND="
 	test? (
-		dev-python/pypiserver[${PYTHON_USEDEP}]
+		dev-python/pypiserver
 		!!<dev-python/openpyxl-3.0.3[${PYTHON_USEDEP}]
 	)"
 
