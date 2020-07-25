@@ -3313,7 +3313,7 @@ dev-db/oracle-instantclient-basic 11.2.0.3 11.2.0.4 12: Transition package movin
 dev-db/oracle-instantclient-jdbc 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-odbc 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-sqlplus 11.2.0.3 11.2.0.3-r1 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
-dev-db/percona-server 5.7.27.30 8.0.19.10: Fully compatible, enhanced and open source drop-in replacement for MySQL
+dev-db/percona-server 5.7.27.30 8.0.19.10 8.0.20.11: Fully compatible, enhanced and open source drop-in replacement for MySQL
 dev-db/percona-toolkit 2.2.20 3.0.9 3.0.13 3.1.0-r1: Advanced command-line tools to perform a variety of MySQL and system tasks
 dev-db/percona-xtrabackup 2.4.15 2.4.20 8.0.13: Hot backup utility for MySQL based servers
 dev-db/percona-xtrabackup-bin 2.4.13: MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
@@ -14642,7 +14642,7 @@ net-mail/maildirtree 0.6-r1: A utility that prints trees of Courier-style Maildi
 net-mail/mailfront 2.22: Mail server network protocol front-ends
 net-mail/mailgraph 1.14-r2: A mail statistics RRDtool frontend for Postfix
 net-mail/mailman 2.1.29-r3 2.1.29-r4 2.1.33 3.3.0 3.3.1: Mailman -- the GNU mailing list manager
-net-mail/mailshears 0.0.3-r2: Mangle your mail garden
+net-mail/mailshears 0.0.4: Mangle your mail garden
 net-mail/mailutils 3.8 3.9: A useful collection of mail servers, clients, and filters
 net-mail/mairix 0.24: Indexes and searches Maildir/MH folders
 net-mail/mboxgrep 0.7.9-r1 0.7.9-r2: Grep for mbox files
