@@ -14415,7 +14415,7 @@ net-libs/aqbanking 6.0.1: Generic Online Banking Interface
 net-libs/axtls 2.1.5 2.1.5-r1: Embedded client/server TLSv1 SSL library and small HTTP(S) server
 net-libs/balde 0.1.1: A microframework for C based on GLib and bad intentions
 net-libs/balde-markdown 0.1: A balde extension that adds Markdown support
-net-libs/biblesync 1.1.2-r2 2.0.1: A multicast protocol to support Bible software shared co-navigation
+net-libs/biblesync 1.1.2-r2 2.0.1 2.1.0: A multicast protocol to support Bible software shared co-navigation
 net-libs/c-client 2007f-r6: UW IMAP c-client library
 net-libs/canlock 2b: A library for creating and verifying Usenet cancel locks
 net-libs/courier-authlib 0.69.0-r1 0.70.0: Courier authentication library
