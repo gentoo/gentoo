@@ -586,6 +586,7 @@ app-emulation/qemu:io-uring - Enable efficient I/O via sys-libs/liburing.
 app-emulation/qemu:iscsi - Enable direct iSCSI support via net-libs/libiscsi instead of indirectly via the Linux block layer that sys-block/open-iscsi does.
 app-emulation/qemu:jemalloc - Enable jemalloc allocator support
 app-emulation/qemu:jpeg - Enable jpeg image support for the VNC console server
+app-emulation/qemu:multipath - Enable multipath persistent reservation passthrough via sys-fs/multipath-tools.
 app-emulation/qemu:ncurses - Enable the ncurses-based console
 app-emulation/qemu:nfs - Enable NFS support
 app-emulation/qemu:numa - Enable NUMA support
