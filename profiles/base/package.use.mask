@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2020-07-25)
+# Requires dev-python/beautifulsoup with py2 support.
+<=sys-cluster/charm-6.8.2 doc
+
 # Brian Dolbec <dolsen@gentoo.org> (2020-07-20)
 # Required dependencies are not yet in the Gentoo ebuild tree
 # Please file a bug if this feature is needed
