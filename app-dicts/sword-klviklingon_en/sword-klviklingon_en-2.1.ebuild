@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 SWORD_MODULE="KLViklingon_en"
 
 inherit sword-module
 
 DESCRIPTION="Klingon Language Version Klingon to English mapping lexicon"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=KLViklingon_en"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=KLViklingon_en"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"
