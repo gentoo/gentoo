@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-ruby_add_rdepend ">=dev-ruby/pg-0.17 <dev-ruby/pg-1"
+ruby_add_rdepend ">=dev-ruby/pg-1.2 <dev-ruby/pg-2"
 
 all_ruby_install() {
 	all_fakegem_install
