@@ -66,7 +66,7 @@ COMMON_URI="
 	https://mirrors.kernel.org/sourceware/lvm2/LVM2.${VERSION_LVM}.tgz
 	https://www.oberhumer.com/opensource/lzo/download/lzo-${VERSION_LZO}.tar.gz
 	https://www.kernel.org/pub/linux/utils/raid/mdadm/mdadm-${VERSION_MDADM}.tar.xz
-	http://ftp.rpm.org/mirror/popt/popt-${VERSION_POPT}.tar.gz
+	http://ftp.rpm.org/popt/releases/popt-1.x/popt-${VERSION_POPT}.tar.gz
 	https://github.com/strace/strace/releases/download/v${VERSION_STRACE}/strace-${VERSION_STRACE}.tar.xz
 	https://github.com/jthornber/thin-provisioning-tools/archive/v${VERSION_THIN_PROVISIONING_TOOLS}.tar.gz -> thin-provisioning-tools-${VERSION_THIN_PROVISIONING_TOOLS}.tar.gz
 	https://github.com/rpodgorny/unionfs-fuse/archive/v${VERSION_UNIONFS_FUSE}.tar.gz -> unionfs-fuse-${VERSION_UNIONFS_FUSE}.tar.gz
