@@ -8,13 +8,12 @@ PYTHON_COMPAT=( python3_{6,7,8,9} )
 inherit qmake-utils xdg-utils python-single-r1
 
 DESCRIPTION="A Qt and C++ GUI for radare2 reverse engineering framework"
-HOMEPAGE="https://www.radare.org"
+HOMEPAGE="https://www.radare.org https://github.com/radareorg/cutter/"
 SRC_URI="https://github.com/radareorg/cutter/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
@@ -24,14 +23,13 @@ DEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
-	>=dev-util/radare2-4.4.0
+	~dev-util/radare2-4.5.0
 "
 
 RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.10.3-python3-config.patch"
-	"${FILESDIR}/${P}-qt-5.15.patch" # https://github.com/radareorg/cutter/pull/2231
 )
 
 src_configure() {
