@@ -80,6 +80,10 @@ src_configure() {
 	cmake_src_configure
 }
 
+src_test() {
+	cmake_src_test -j1
+}
+
 src_install() {
 	cmake_src_install
 
