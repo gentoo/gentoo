@@ -3,7 +3,7 @@ DEFINED_PHASES=compile install postinst setup unpack
 DEPEND=acct-group/docker >=dev-db/sqlite-3.7.9:3 device-mapper? ( >=sys-fs/lvm2-2.02.89[thin] ) seccomp? ( >=sys-libs/libseccomp-2.2.1 ) apparmor? ( sys-libs/libapparmor ) >=dev-lang/go-1.12 dev-go/go-md2man btrfs? ( >=sys-fs/btrfs-progs-3.16.1 )
 DESCRIPTION=The core functions you need to create Docker images and run Docker containers
 EAPI=7
-HOMEPAGE=https://dockerproject.org
+HOMEPAGE=https://www.docker.com/
 IUSE=apparmor aufs btrfs +container-init device-mapper hardened +overlay seccomp kernel_linux
 KEYWORDS=amd64 ~arm ~arm64 ~ppc64
 LICENSE=Apache-2.0
@@ -12,4 +12,4 @@ RESTRICT=installsources strip
 SLOT=0
 SRC_URI=https://github.com/docker/docker-ce/archive/v19.03.8.tar.gz -> docker-19.03.8.tar.gz
 _eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	udev	452708c3f55cf6e918b045adb949a9e6
-_md5_=f4ab87b50b1b6db1b11075db86a5a7c3
+_md5_=6cf9db5da80593008eaee07cdff60257

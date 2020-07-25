@@ -5939,8 +5939,8 @@ dev-perl/DateTime 1.200.0 1.210.0 1.280.0 1.360.0 1.420.0 1.440.0 1.520.0: A dat
 dev-perl/DateTime-Calendar-Julian 0.40.0 0.102.0: Dates in the Julian calendar
 dev-perl/DateTime-Event-ICal 0.130.0: Perl DateTime extension for computing rfc2445 recurrences
 dev-perl/DateTime-Event-Recurrence 0.190.0: DateTime::Set extension for create basic recurrence sets
-dev-perl/DateTime-Format-Builder 0.810.0-r1: Create DateTime parser classes and objects
-dev-perl/DateTime-Format-DateParse 0.50.0-r1: Parses Date::Parse compatible formats
+dev-perl/DateTime-Format-Builder 0.810.0-r1 0.820.0: Create DateTime parser classes and objects
+dev-perl/DateTime-Format-DateParse 0.50.0-r1 0.50.0-r2: Parses Date::Parse compatible formats
 dev-perl/DateTime-Format-Flexible 0.280.0: Flexibly parse strings and turn them into DateTime objects
 dev-perl/DateTime-Format-HTTP 0.420.0: Date conversion routines
 dev-perl/DateTime-Format-Human-Duration 0.640.0: Get a locale specific string describing the span of a given duration
@@ -17793,8 +17793,8 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 68.10.0 78.0.2: Firefox Web Browser
 www-client/firefox-bin 68.10.0 78.0.2: Firefox Web Browser
 www-client/google-chrome 84.0.4147.89: The web browser from Google
-www-client/google-chrome-beta 84.0.4147.89: The web browser from Google
-www-client/google-chrome-unstable 85.0.4183.26: The web browser from Google
+www-client/google-chrome-beta 85.0.4183.39: The web browser from Google
+www-client/google-chrome-unstable 86.0.4209.2: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.20.2 2.20.2-r1: A fast and lightweight web browser running in both graphics and text mode
@@ -17838,7 +17838,7 @@ www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution 
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/adobe-flash 32.0.0.403: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 84.0.4147.89_beta 84.0.4147.89 85.0.4183.26_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 84.0.4147.89 85.0.4183.39_beta 86.0.4209.2_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
