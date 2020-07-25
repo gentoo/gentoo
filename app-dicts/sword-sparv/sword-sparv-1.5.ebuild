@@ -7,6 +7,6 @@ SWORD_MODULE="SpaRV"
 inherit sword-module
 
 DESCRIPTION="Spanish Reina-Valera"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=SpaRV"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=SpaRV"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

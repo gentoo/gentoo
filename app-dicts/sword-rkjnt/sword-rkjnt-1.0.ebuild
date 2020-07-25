@@ -7,6 +7,6 @@ SWORD_MODULE="RKJNT"
 inherit sword-module
 
 DESCRIPTION="Revised King James New Testament"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=RKJNT"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=RKJNT"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

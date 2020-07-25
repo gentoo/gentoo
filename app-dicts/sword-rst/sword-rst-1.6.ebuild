@@ -7,6 +7,6 @@ SWORD_MODULE="RST"
 inherit sword-module
 
 DESCRIPTION="Russian Synodal Translation"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=RST"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=RST"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

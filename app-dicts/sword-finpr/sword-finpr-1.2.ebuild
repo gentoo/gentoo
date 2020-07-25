@@ -7,6 +7,6 @@ SWORD_MODULE="FinPR"
 inherit sword-module
 
 DESCRIPTION="Finnish Pyh, Raamattu (1933/1938)"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=FinPR"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=FinPR"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

@@ -7,6 +7,6 @@ SWORD_MODULE="Common"
 inherit sword-module
 
 DESCRIPTION="The Common Edition: New Testament"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Common"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Common"
 LICENSE="free-noncomm"
 KEYWORDS="~amd64 ~ppc ~x86"

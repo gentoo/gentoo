@@ -7,6 +7,6 @@ SWORD_MODULE="GreekHebrew"
 inherit sword-module
 
 DESCRIPTION="Greek to Hebrew Dictionary of Septuagint Words"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=GreekHebrew"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=GreekHebrew"
 LICENSE="free-noncomm"
 KEYWORDS="~amd64 ~ppc ~x86"

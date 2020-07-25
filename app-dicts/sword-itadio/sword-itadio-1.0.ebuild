@@ -7,6 +7,6 @@ SWORD_MODULE="ItaDio"
 inherit sword-module
 
 DESCRIPTION="Italian Giovanni Diodati Bibbia 1649"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=ItaDio"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=ItaDio"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

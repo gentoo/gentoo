@@ -7,6 +7,6 @@ SWORD_MODULE="TR"
 inherit sword-module
 
 DESCRIPTION="Textus Receptus (1550/1894)"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=TR"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=TR"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

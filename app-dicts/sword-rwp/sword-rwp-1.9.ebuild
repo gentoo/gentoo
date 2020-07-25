@@ -7,6 +7,6 @@ SWORD_MODULE="RWP"
 inherit sword-module
 
 DESCRIPTION="Robertson's Word Pictures"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=RWP"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=RWP"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

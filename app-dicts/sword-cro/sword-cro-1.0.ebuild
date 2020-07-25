@@ -7,6 +7,6 @@ SWORD_MODULE="Cro"
 inherit sword-module
 
 DESCRIPTION="Croatian Bible"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Cro"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Cro"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

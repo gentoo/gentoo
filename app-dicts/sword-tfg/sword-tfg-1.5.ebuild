@@ -7,6 +7,6 @@ SWORD_MODULE="TFG"
 inherit sword-module
 
 DESCRIPTION="The Fourfold Gospel and Commentary on Acts of Apostles"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=TFG"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=TFG"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

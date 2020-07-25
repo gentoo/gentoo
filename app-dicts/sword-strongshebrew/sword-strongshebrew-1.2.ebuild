@@ -7,6 +7,6 @@ SWORD_MODULE="StrongsHebrew"
 inherit sword-module
 
 DESCRIPTION="Strong's Hebrew Bible Dictionary"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=StrongsHebrew"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=StrongsHebrew"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

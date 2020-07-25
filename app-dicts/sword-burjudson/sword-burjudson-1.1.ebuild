@@ -7,6 +7,6 @@ SWORD_MODULE="BurJudson"
 inherit sword-module
 
 DESCRIPTION="1835 Judson Burmese Bible"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=BurJudson"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=BurJudson"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

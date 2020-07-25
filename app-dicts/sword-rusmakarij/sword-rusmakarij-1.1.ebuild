@@ -7,6 +7,6 @@ SWORD_MODULE="RusMakarij"
 inherit sword-module
 
 DESCRIPTION="The Pentateuch of Moses in Russian"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=RusMakarij"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=RusMakarij"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

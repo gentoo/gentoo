@@ -7,6 +7,6 @@ SWORD_MODULE="FarsiOPV"
 inherit sword-module
 
 DESCRIPTION="Persian Holy Bible (Tarjumeh-ye Ghadeem)"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=FarsiOPV"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=FarsiOPV"
 LICENSE="free-noncomm"
 KEYWORDS="~amd64 ~ppc ~x86"

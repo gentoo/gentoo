@@ -7,6 +7,6 @@ SWORD_MODULE="Murdock"
 inherit sword-module
 
 DESCRIPTION="James Murdock's Translation of the Syriac Peshitta"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Murdock"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Murdock"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

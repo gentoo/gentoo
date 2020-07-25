@@ -7,6 +7,6 @@ SWORD_MODULE="Weymouth"
 inherit sword-module
 
 DESCRIPTION="Weymouth NT (1912)"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Weymouth"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Weymouth"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

@@ -7,6 +7,6 @@ SWORD_MODULE="Norsk"
 inherit sword-module
 
 DESCRIPTION="Den Norske Bibelen"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Norsk"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Norsk"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

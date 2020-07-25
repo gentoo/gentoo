@@ -7,6 +7,6 @@ SWORD_MODULE="Personal"
 inherit sword-module
 
 DESCRIPTION="Personal Commentary"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Personal"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Personal"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

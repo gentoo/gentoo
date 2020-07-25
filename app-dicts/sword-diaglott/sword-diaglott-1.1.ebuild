@@ -7,6 +7,6 @@ SWORD_MODULE="Diaglott"
 inherit sword-module
 
 DESCRIPTION="The Emphatic Diaglott"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Diaglott"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Diaglott"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

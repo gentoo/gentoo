@@ -7,6 +7,6 @@ SWORD_MODULE="Vulgate_HebPs"
 inherit sword-module
 
 DESCRIPTION="Latin Vulgate Psalms from Hebrew"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Vulgate_HebPs"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Vulgate_HebPs"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

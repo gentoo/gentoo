@@ -7,6 +7,6 @@ SWORD_MODULE="JST"
 inherit sword-module
 
 DESCRIPTION="Joseph Smith Translation"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=JST"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=JST"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

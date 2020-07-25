@@ -7,6 +7,6 @@ SWORD_MODULE="RWebster"
 inherit sword-module
 
 DESCRIPTION="Revised Webster Version (1833)"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=RWebster"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=RWebster"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

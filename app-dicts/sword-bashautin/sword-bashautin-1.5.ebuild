@@ -7,6 +7,6 @@ SWORD_MODULE="BasHautin"
 inherit sword-module
 
 DESCRIPTION="1571 Navarro-Labourdin Basque NT"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=BasHautin"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=BasHautin"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

@@ -7,6 +7,6 @@ SWORD_MODULE="DRC"
 inherit sword-module
 
 DESCRIPTION="Douay-Rheims Bible, Challoner Revision"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=DRC"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=DRC"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

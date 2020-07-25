@@ -7,6 +7,6 @@ SWORD_MODULE="ManxGaelic"
 inherit sword-module
 
 DESCRIPTION="Manx Gaelic Scripture Portions"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=ManxGaelic"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=ManxGaelic"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

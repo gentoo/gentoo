@@ -7,6 +7,6 @@ SWORD_MODULE="ArmEastern"
 inherit sword-module
 
 DESCRIPTION="Eastern Armenian Bible"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=ArmEastern"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=ArmEastern"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

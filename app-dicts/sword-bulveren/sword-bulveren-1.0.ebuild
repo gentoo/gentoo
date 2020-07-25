@@ -7,6 +7,6 @@ SWORD_MODULE="BulVeren"
 inherit sword-module
 
 DESCRIPTION="Veren's Contemporary Bible"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=BulVeren"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=BulVeren"
 LICENSE="free-noncomm"
 KEYWORDS="~amd64 ~ppc ~x86"

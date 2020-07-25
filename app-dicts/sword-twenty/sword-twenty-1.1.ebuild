@@ -7,6 +7,6 @@ SWORD_MODULE="Twenty"
 inherit sword-module
 
 DESCRIPTION="Twentieth Century New Testament"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Twenty"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Twenty"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

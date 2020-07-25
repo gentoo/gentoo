@@ -7,6 +7,6 @@ SWORD_MODULE="WEB"
 inherit sword-module
 
 DESCRIPTION="World English Bible"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=WEB"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=WEB"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

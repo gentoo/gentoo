@@ -7,6 +7,6 @@ SWORD_MODULE="CzeBKR"
 inherit sword-module
 
 DESCRIPTION="Czech Bible Kralicka"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=CzeBKR"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=CzeBKR"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

@@ -7,6 +7,6 @@ SWORD_MODULE="MHC"
 inherit sword-module
 
 DESCRIPTION="Matthew Henry's Complete Commentary on the Whole Bible"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=MHC"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=MHC"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

@@ -7,6 +7,6 @@ SWORD_MODULE="Swahili"
 inherit sword-module
 
 DESCRIPTION="Swahili New Testament"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Swahili"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Swahili"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

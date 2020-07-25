@@ -7,6 +7,6 @@ SWORD_MODULE="ScotsGaelic"
 inherit sword-module
 
 DESCRIPTION="Scots Gaelic Gospel of Mark"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=ScotsGaelic"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=ScotsGaelic"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

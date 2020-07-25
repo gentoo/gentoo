@@ -7,6 +7,6 @@ SWORD_MODULE="ISV"
 inherit sword-module
 
 DESCRIPTION="International Standard Version"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=ISV"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=ISV"
 LICENSE="freedist"
 KEYWORDS="~amd64 ~ppc ~x86"

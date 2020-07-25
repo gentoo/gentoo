@@ -7,6 +7,6 @@ SWORD_MODULE="FreLSG"
 inherit sword-module
 
 DESCRIPTION="French Louis Segond (1910)"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=FreLSG"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=FreLSG"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

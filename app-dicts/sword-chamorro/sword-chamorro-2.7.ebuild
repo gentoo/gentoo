@@ -7,6 +7,6 @@ SWORD_MODULE="Chamorro"
 inherit sword-module
 
 DESCRIPTION="Chamorro: Y Santa Biblia"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Chamorro"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Chamorro"
 LICENSE="freedist"
 KEYWORDS="~amd64 ~ppc ~x86"

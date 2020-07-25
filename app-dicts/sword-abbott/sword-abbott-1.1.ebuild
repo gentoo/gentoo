@@ -8,6 +8,6 @@ SWORD_MODULE="Abbott"
 inherit sword-module
 
 DESCRIPTION="Illustrated New Testament"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Abbott"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Abbott"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

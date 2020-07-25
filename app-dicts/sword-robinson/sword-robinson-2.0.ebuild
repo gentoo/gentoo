@@ -7,6 +7,6 @@ SWORD_MODULE="Robinson"
 inherit sword-module
 
 DESCRIPTION="Robinson's Morphological Analysis Codes"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Robinson"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Robinson"
 LICENSE="CC-BY-SA-3.0"
 KEYWORDS="~amd64 ~ppc ~x86"

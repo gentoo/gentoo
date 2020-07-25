@@ -7,6 +7,6 @@ SWORD_MODULE="ISBE"
 inherit sword-module
 
 DESCRIPTION="International Standard Bible Encyclopedia"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=ISBE"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=ISBE"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

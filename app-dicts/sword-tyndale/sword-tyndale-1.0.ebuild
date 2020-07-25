@@ -7,6 +7,6 @@ SWORD_MODULE="Tyndale"
 inherit sword-module
 
 DESCRIPTION="William Tyndale Bible (1525/1530)"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Tyndale"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Tyndale"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

@@ -7,6 +7,6 @@ SWORD_MODULE="FreCrampon"
 inherit sword-module
 
 DESCRIPTION="La Bible Augustin Crampon 1923"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=FreCrampon"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=FreCrampon"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

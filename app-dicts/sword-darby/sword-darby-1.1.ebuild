@@ -7,6 +7,6 @@ SWORD_MODULE="Darby"
 inherit sword-module
 
 DESCRIPTION="Darby Bible (1889)"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Darby"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Darby"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

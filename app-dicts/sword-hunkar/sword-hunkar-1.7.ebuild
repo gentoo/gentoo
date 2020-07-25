@@ -7,6 +7,6 @@ SWORD_MODULE="HunKar"
 inherit sword-module
 
 DESCRIPTION="Hungarian Karoli"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=HunKar"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=HunKar"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"

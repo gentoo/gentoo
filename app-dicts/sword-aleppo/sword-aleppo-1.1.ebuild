@@ -7,6 +7,6 @@ SWORD_MODULE="Aleppo"
 inherit sword-module
 
 DESCRIPTION="Aleppo Codex"
-HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Aleppo"
+HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Aleppo"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"
