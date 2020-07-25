@@ -22,7 +22,7 @@ RDEPEND="
 	dev-perl/List-MoreUtils
 	dev-perl/Module-Pluggable
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		dev-perl/Test-Exception
