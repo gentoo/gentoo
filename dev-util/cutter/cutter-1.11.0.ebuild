@@ -23,7 +23,7 @@ DEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
-	>=dev-util/radare2-4.4.0
+	~dev-util/radare2-4.5.0
 "
 
 RDEPEND="${DEPEND}"
