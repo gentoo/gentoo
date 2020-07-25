@@ -1700,7 +1700,7 @@ app-emulation/playonlinux 4.2.12 4.3.4-r1: Set of scripts to easily install and 
 app-emulation/protontricks 1.4.1 1.4.1-r1: app-emulation/winetricks wrapper for Proton (Steam Play) games
 app-emulation/punes 0.104 0.105: Nintendo Entertainment System (NES) emulator
 app-emulation/q4wine 1.3.12: Qt GUI configuration tool for Wine
-app-emulation/qemu 5.0.0 5.0.0-r1 5.0.0-r2 9999: QEMU + Kernel-based Virtual Machine userland tools
+app-emulation/qemu 5.0.0-r1 5.0.0-r2 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 3.1.0 4.0.0 4.2.0-r1 5.0.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qemu-init-scripts 0.3.0 0.3.0-r1: Kvm and qemu init scripts
 app-emulation/qemu-riscv64-bin 3.1.0-r4 5.0.0: Statically linked x86-64 binary of app-emulation/qemu, riscv64 emulator
@@ -1808,7 +1808,7 @@ app-forensics/dfxml 20170921-r1 99999999: Digital Forensics XML
 app-forensics/examiner 0.5-r3: Utilizes the objdump command to disassemble and comment foreign binaries
 app-forensics/foremost 1.5.7-r3: A console program to recover files based on their headers and footers
 app-forensics/galleta 20040505_p1: IE Cookie Parser
-app-forensics/honggfuzz 2.2-r1 2.3.1: A general purpose fuzzer with feedback support
+app-forensics/honggfuzz 2.3.1: A general purpose fuzzer with feedback support
 app-forensics/libewf 20171104: Implementation of the EWF (SMART and EnCase) image format
 app-forensics/lynis 3.0.0: Security and system auditing tool
 app-forensics/mac-robber 1.02: mac-robber is a digital forensics and incident response tool that collects data
@@ -4810,7 +4810,7 @@ dev-lang/mono-basic 4.8: Visual Basic Compiler and Runtime
 dev-lang/mozart 1.4.0-r3 1.4.0-r4 2.0.1: Advanced development platform for intelligent, distributed applications
 dev-lang/mozart-stdlib 1.4.0-r2 2.0.1: The Mozart Standard Library
 dev-lang/mujs 1.0.6 1.0.7: An embeddable Javascript interpreter in C.
-dev-lang/nasm 2.14.02 2.15.02 2.15.03: groovy little assembler
+dev-lang/nasm 2.14.02 2.15.03: groovy little assembler
 dev-lang/nim 1.2.4: compiled, garbage-collected systems programming language
 dev-lang/nqp 2019.03-r1 2019.07.1 2019.11 2020.05 2020.06 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
@@ -4928,7 +4928,7 @@ dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/editline 1.17.1: line editing library for UNIX call compatible with the FSF readline
 dev-libs/eekboard 1.0.8_p20121001: An easy to use virtual keyboard toolkit
 dev-libs/efl 1.23.3 1.24.3: Enlightenment Foundation Libraries all-in-one package
-dev-libs/elfutils 0.177 0.179 0.180: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
+dev-libs/elfutils 0.177 0.180: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.28 0.31 0.32 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.2.8 2.2.9: Stream-oriented XML parser library
@@ -5935,7 +5935,7 @@ dev-perl/Date-Leapyear 1.720.0-r1 1.720.0-r2: Simple Perl module that tracks Gre
 dev-perl/Date-Manip 6.600.0 6.820.0: Perl date manipulation routines
 dev-perl/Date-Pcalc 6.100.0-r1 6.100.0-r2: Gregorian calendar date calculations
 dev-perl/Date-Simple 3.30.0-r1 3.30.0-r2: A simple date object
-dev-perl/DateTime 1.200.0 1.210.0 1.280.0 1.360.0 1.420.0 1.440.0: A date and time object
+dev-perl/DateTime 1.200.0 1.210.0 1.280.0 1.360.0 1.420.0 1.440.0 1.520.0: A date and time object
 dev-perl/DateTime-Calendar-Julian 0.40.0: Dates in the Julian calendar
 dev-perl/DateTime-Event-ICal 0.130.0: Perl DateTime extension for computing rfc2445 recurrences
 dev-perl/DateTime-Event-Recurrence 0.190.0: DateTime::Set extension for create basic recurrence sets
@@ -9950,7 +9950,7 @@ dev-ruby/sourcemap 0.1.1: Ruby source maps
 dev-ruby/sparklines 0.5.2-r6: Create sparklines, small graphs to be used inline in texts
 dev-ruby/spork 0.9.2-r2: Spork is Tim Harper's implementation of test server
 dev-ruby/spreadsheet 1.1.9 1.2.2 1.2.4 1.2.5 1.2.6: Ruby library to read and write spreadsheet documents
-dev-ruby/spring 2.0.2 2.1.0: Rails application preloader
+dev-ruby/spring 2.1.0: Rails application preloader
 dev-ruby/sprockets 3.7.2 4.0.2: Ruby library for compiling and serving web assets
 dev-ruby/sprockets-rails 3.2.1: Sprockets implementation for Rails 4.x (and beyond) Asset Pipeline
 dev-ruby/spy 1.0.0: A simple opinionated mocking framework
@@ -10334,7 +10334,7 @@ dev-util/devhelp 3.34.0: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 151 152 153: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 153: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
@@ -10530,7 +10530,7 @@ dev-util/shflags 1.0.3 1.2.3: Command-line flags module for Unix shell scripts
 dev-util/shtool 2.0.8-r1: Set of stable and portable shell scripts
 dev-util/shunit2 2.1.6-r1: Unit-test framework for Bourne-based shell scripts
 dev-util/smem 1.5: A tool that can give numerous reports on memory usage on Linux systems
-dev-util/source-highlight 3.1.8 3.1.9: Generate highlighted source code as an (x)html document
+dev-util/source-highlight 3.1.9: Generate highlighted source code as an (x)html document
 dev-util/spirv-headers 1.5.3 9999: Machine-readable files for the SPIR-V Registry
 dev-util/spirv-llvm-translator 8.0.1.3 9.0.1.1 10.0.0: Bi-directional translator between SPIR-V and LLVM IR
 dev-util/spirv-tools 2020.3 9999: Provides an API and commands for processing SPIR-V modules
@@ -12366,7 +12366,7 @@ media-fonts/source-pro 20141211 20160608 20170111: Adobe's open source typeface 
 media-fonts/stix-fonts 1.1.1 2.0.0: Comprehensive OpenType font set of mathematical symbols and alphabets
 media-fonts/takao-fonts 003.02.01: A community developed derivatives of IPA Fonts
 media-fonts/tengwar-fonts 1.9d: Tengwar - the Elvish letters, created by Feanor and described by J.R.R.Tolkien)
-media-fonts/terminus-font 4.48 4.48-r2: A clean fixed font for the console and X11
+media-fonts/terminus-font 4.48-r2: A clean fixed font for the console and X11
 media-fonts/termsyn 1.8.7: Monospaced font based on terminus and tamsyn
 media-fonts/tex-gyre 2.005 2.501: Extensive remake of freely available URW fonts
 media-fonts/texcm-ttf 1.0: TeX's Computer Modern Fonts for MathML
@@ -14297,7 +14297,7 @@ net-ftp/gproftpd 8.3.2-r1 8.3.2-r2: GTK frontend to proftpd
 net-ftp/lftp 4.8.4-r1 4.9.0 4.9.1 9999: A sophisticated ftp/sftp/http/https/torrent client and file transfer program
 net-ftp/linksys-tftp 1.2.1-r3: TFTP client suitable for uploading to the Linksys WRT54G Wireless Router
 net-ftp/ncftp 3.2.6 3.2.6-r1 3.2.6-r2: An extremely configurable ftp client
-net-ftp/proftpd 1.3.7_rc3 1.3.7_rc4-r1 1.3.7a: An advanced and very configurable FTP server
+net-ftp/proftpd 1.3.7_rc4-r1 1.3.7a: An advanced and very configurable FTP server
 net-ftp/profxp 3_pre2-r2: FXP (server-to-server FTP) commandline client written in Perl
 net-ftp/pure-ftpd 1.0.49-r2 9999: Fast, production-quality, standard-conformant FTP server
 net-ftp/pureadmin 0.4-r1: GUI tool used to make the management of Pure-FTPd a little easier
@@ -14960,7 +14960,7 @@ net-misc/smb4k 3.0.6: Advanced network neighborhood browser
 net-misc/smbc 1.2.2-r3: Text mode (ncurses) SMB network commander. Features: resume and UTF-8
 net-misc/snarf 7.0-r4: Small and fast CLI resource grabber for http, gopher, finger, ftp
 net-misc/sobby 0.4.8-r1: Standalone Obby server
-net-misc/socat 1.7.3.2 1.7.3.3 1.7.3.4 2.0.0_beta9 9999: Multipurpose relay (SOcket CAT)
+net-misc/socat 1.7.3.4 2.0.0_beta9 9999: Multipurpose relay (SOcket CAT)
 net-misc/sock 1.1-r1: A shell interface to network sockets
 net-misc/socket 1.5: A shell-level interface to TCP sockets
 net-misc/socket-burst-dampener 1.2.0 1.2.1: A daemon that spawns one command per connection, and dampens connection bursts
