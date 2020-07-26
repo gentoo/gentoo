@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		This library aims to enable Metrics-Driven Development for C++ services.
+		It implements the Prometheus Data Model, a powerful abstraction on which
+		to collect and expose metrics. We offer the possibility for metrics to
+		be collected by Prometheus, but other push/pull collections can be added
+		as plugins.
+	</longdescription>
+	<maintainer type="person">
+		<email>vilhelm.gray@gmail.com</email>
+		<name>William Breathitt Gray</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/jupp0r/prometheus-cpp/issues</bugs-to>
+		<doc lang="en">https://jupp0r.github.io/prometheus-cpp/</doc>
+		<remote-id type="github">jupp0r/prometheus-cpp</remote-id>
+	</upstream>
+</pkgmetadata>
