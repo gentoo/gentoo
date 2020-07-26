@@ -42,9 +42,8 @@ S="${WORKDIR}/mysql-${PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.0.18-always-build-decompress-utilities.patch
-	"${FILESDIR}"/${PN}-8.0.17-use-relative-include-path-for-udf_registration_types-h.patch
 	"${FILESDIR}"/${PN}-8.0.19-do-not-install-comp_err.patch
-	"${FILESDIR}"/${PN}-8.0.20-libressl.patch
+	"${FILESDIR}"/${PN}-8.0.21-libressl.patch
 )
 
 src_prepare() {
