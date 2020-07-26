@@ -58,6 +58,11 @@
       <role>Developer</role>
     </member>
     <member>
+      <email>sam@gentoo.org</email>
+      <name>Sam James</name>
+      <role>Developer</role>
+    </member>
+    <member>
       <email>slashbeast@gentoo.org</email>
       <name>Piotr Karbowski</name>
       <role>Developer</role>
@@ -116,7 +121,7 @@
     <member>
       <email>sam@gentoo.org</email>
       <name>Sam James</name>
-      <role>Gentoo/ARM</role>
+      <role>Anything/everything</role>
     </member>
     <member>
       <email>vapier@gentoo.org</email>
@@ -136,7 +141,7 @@
   </project>
   <project>
     <email>arm64@gentoo.org</email>
-    <name>ARM64 development</name>
+    <name>ARM64 Development</name>
     <url>https://wiki.gentoo.org/wiki/Project:ARM64</url>
     <description>The ARM64 project is devoted to getting and keeping Gentoo in good shape on the ARM AArch64 architecture.</description>
     <member>
@@ -166,7 +171,7 @@
     <member>
       <email>sam@gentoo.org</email>
       <name>Sam James</name>
-      <role>Despicable minion</role>
+      <role>Anything/everything</role>
     </member>
     <member>
       <email>zlogene@gentoo.org</email>
@@ -1244,6 +1249,11 @@
       <email>jstein@gentoo.org</email>
       <name>Jonas Stein</name>
       <role>Member (QA and cleaning up bugs)</role>
+    </member>
+    <member>
+      <email>sam@gentoo.org</email>
+      <name>Sam James</name>
+      <role>Member ( general )</role>
     </member>
     <member>
       <email>soap@gentoo.org</email>
@@ -2560,6 +2570,11 @@
       <role>Python keywordreqs (on bogsucker/timberdoodle)</role>
     </member>
     <member>
+      <email>sam@gentoo.org</email>
+      <name>Sam James</name>
+      <role>ppc/ppc64 keywording/stabilisation</role>
+    </member>
+    <member>
       <email>slyfox@gentoo.org</email>
       <name>Sergei Trofimovich</name>
       <role>ppc/ppc64 keywording/stabilization</role>
@@ -3171,6 +3186,11 @@
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
     </member>
+    <member>
+      <email>sam@gentoo.org</email>
+      <name>Sam James</name>
+      <role>As-needed stabilisations/keywording</role>
+    </member>
     <member is-lead="1">
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
@@ -3216,6 +3236,11 @@
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
       <role>Python keywordreqs (on catbus)</role>
+    </member>
+    <member>
+      <email>sam@gentoo.org</email>
+      <name>Sam James</name>
+      <role>Focus on security/core bugs</role>
     </member>
     <member>
       <email>slyfox@gentoo.org</email>
@@ -3384,7 +3409,7 @@
     <member>
       <email>sam@gentoo.org</email>
       <name>Sam James</name>
-      <role>GLSA Coordinator</role>
+      <role>Member</role>
     </member>
     <member is-lead="1">
       <email>whissi@gentoo.org</email>
@@ -3945,6 +3970,11 @@
       <email>pacho@gentoo.org</email>
       <name>Pacho Ramos</name>
       <role>keywording/stabilization</role>
+    </member>
+    <member>
+      <email>sam@gentoo.org</email>
+      <name>Sam James</name>
+      <role>Developer (stabilisation/keywording on core)</role>
     </member>
     <member>
       <email>whissi@gentoo.org</email>
