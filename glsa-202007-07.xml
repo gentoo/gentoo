@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-07">
+  <title>Transmission: Remote code execution</title>
+  <synopsis>A use-after-free possibly allowing remote execution of code was
+    discovered in Transmission.
+  </synopsis>
+  <product type="ebuild">transmission</product>
+  <announced>2020-07-26</announced>
+  <revised count="1">2020-07-26</revised>
+  <bug>723258</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-p2p/transmission" auto="yes" arch="*">
+      <unaffected range="ge">3.00</unaffected>
+      <vulnerable range="lt">3.00</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Transmission is a cross-platform BitTorrent client.</p>
+  </background>
+  <description>
+    <p>Transmission mishandles some memory management which may allow
+      manipulation of the heap.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted
+      torrent file using Transmission, possibly resulting in execution of
+      arbitrary code with the privileges of the process or a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Transmission users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-p2p/transmission-3.00"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10756">CVE-2018-10756</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-06-20T02:12:52Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-26T23:30:38Z">sam_c</metadata>
+</glsa>
