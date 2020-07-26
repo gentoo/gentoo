@@ -6,7 +6,7 @@ inherit autotools git-r3
 
 DESCRIPTION="featureful ncurses based MPD client inspired by ncmpc"
 HOMEPAGE="https://ncmpcpp.rybczak.net/"
-EGIT_REPO_URI="https://repo.or.cz/ncmpcpp.git"
+EGIT_REPO_URI="https://github.com/ncmpcpp/ncmpcpp"
 LICENSE="GPL-2"
 
 SLOT="0"
