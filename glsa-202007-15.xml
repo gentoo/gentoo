@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-15">
+  <title>Samba: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Samba, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">samba</product>
+  <announced>2020-07-26</announced>
+  <revised count="1">2020-07-26</revised>
+  <bug>719120</bug>
+  <bug>730472</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-fs/samba" auto="yes" arch="*">
+      <unaffected range="ge">4.11.11</unaffected>
+      <vulnerable range="lt">4.11.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Samba is a suite of SMB and CIFS client/server programs.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Samba. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Samba users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-fs/samba-4.11.11"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-10700">CVE-2020-10700</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-10704">CVE-2020-10704</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-10730">CVE-2020-10730</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-10745">CVE-2020-10745</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-10760">CVE-2020-10760</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14303">CVE-2020-14303</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-26T05:09:50Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-26T23:52:18Z">sam_c</metadata>
+</glsa>
