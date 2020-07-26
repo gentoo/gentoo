@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-03">
+  <title>Cacti: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Cacti, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">cacti</product>
+  <announced>2020-07-26</announced>
+  <revised count="1">2020-07-26</revised>
+  <bug>728678</bug>
+  <bug>732522</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/cacti" auto="yes" arch="*">
+      <unaffected range="ge">1.2.13</unaffected>
+      <vulnerable range="lt">1.2.13</vulnerable>
+    </package>
+    <package name="net-analyzer/cacti-spine" auto="yes" arch="*">
+      <unaffected range="ge">1.2.13</unaffected>
+      <vulnerable range="lt">1.2.13</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Cacti is a complete frontend to rrdtool.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Cacti. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Cacti users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/cacti-1.2.13"
+    </code>
+    
+    <p>All Cacti Spine users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/cacti-spine-1.2.13"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-11022">CVE-2020-11022</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-11023">CVE-2020-11023</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14295">CVE-2020-14295</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-19T01:50:59Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-26T22:31:38Z">sam_c</metadata>
+</glsa>
