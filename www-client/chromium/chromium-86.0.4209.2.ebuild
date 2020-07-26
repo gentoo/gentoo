@@ -12,7 +12,7 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
-PATCHSET="2"
+PATCHSET="1"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://files.pythonhosted.org/packages/ed/7b/bbf89ca71e722b7f9464ebffe4b5ee20a9e5c9a555a56e2d3914bb9119a6/setuptools-44.1.0.zip
@@ -114,7 +114,7 @@ BDEPEND="
 	>=app-arch/gzip-1.7
 	app-arch/unzip
 	dev-lang/perl
-	>=dev-util/gn-0.1726
+	>=dev-util/gn-0.1807
 	dev-vcs/git
 	>=dev-util/gperf-3.0.3
 	>=dev-util/ninja-1.7.2
@@ -130,12 +130,12 @@ BDEPEND="
 : ${CHROMIUM_FORCE_LIBCXX=no}
 
 if [[ ${CHROMIUM_FORCE_CLANG} == yes ]]; then
-	BDEPEND+=" >=sys-devel/clang-9"
+	BDEPEND+=" >=sys-devel/clang-10"
 fi
 
 if [[ ${CHROMIUM_FORCE_LIBCXX} == yes ]]; then
-	RDEPEND+=" >=sys-libs/libcxx-9"
-	DEPEND+=" >=sys-libs/libcxx-9"
+	RDEPEND+=" >=sys-libs/libcxx-10"
+	DEPEND+=" >=sys-libs/libcxx-10"
 else
 	COMMON_DEPEND="
 		app-arch/snappy:=
@@ -280,7 +280,6 @@ src_prepare() {
 		third_party/breakpad
 		third_party/breakpad/breakpad/src/third_party/curl
 		third_party/brotli
-		third_party/cacheinvalidation
 		third_party/catapult
 		third_party/catapult/common/py_vulcanize/third_party/rcssmin
 		third_party/catapult/common/py_vulcanize/third_party/rjsmin
@@ -311,7 +310,12 @@ src_prepare() {
 		third_party/devtools-frontend/src/front_end/third_party/acorn
 		third_party/devtools-frontend/src/front_end/third_party/codemirror
 		third_party/devtools-frontend/src/front_end/third_party/fabricjs
+		third_party/devtools-frontend/src/front_end/third_party/i18n
+		third_party/devtools-frontend/src/front_end/third_party/intl-messageformat
 		third_party/devtools-frontend/src/front_end/third_party/lighthouse
+		third_party/devtools-frontend/src/front_end/third_party/lit-html
+		third_party/devtools-frontend/src/front_end/third_party/lodash-isequal
+		third_party/devtools-frontend/src/front_end/third_party/marked
 		third_party/devtools-frontend/src/front_end/third_party/wasmparser
 		third_party/devtools-frontend/src/third_party
 		third_party/dom_distiller_js
@@ -358,6 +362,7 @@ src_prepare() {
 		third_party/metrics_proto
 		third_party/modp_b64
 		third_party/nasm
+		third_party/nearby
 		third_party/node
 		third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2
 		third_party/one_euro_filter
@@ -388,6 +393,7 @@ src_prepare() {
 		third_party/rnnoise
 		third_party/s2cellid
 		third_party/schema_org
+		third_party/securemessage
 		third_party/simplejson
 		third_party/skia
 		third_party/skia/include/third_party/skcms
@@ -405,6 +411,7 @@ src_prepare() {
 		third_party/swiftshader/third_party/marl
 		third_party/swiftshader/third_party/subzero
 		third_party/swiftshader/third_party/SPIRV-Headers/include/spirv/unified1
+		third_party/ukey2
 		third_party/unrar
 		third_party/usrsctp
 		third_party/vulkan
@@ -687,6 +694,9 @@ src_configure() {
 	# Chromium relies on this, but was disabled in >=clang-10, crbug.com/1042470
 	append-cxxflags $(test-flags-CXX -flax-vector-conversions=all)
 
+	# Disable unknown warning message from clang.
+	tc-is-clang && append-flags -Wno-unknown-warning-option
+
 	# Explicitly disable ICU data file support for system-icu builds.
 	if use system-icu; then
 		myconf_gn+=" icu_use_data_file=false"
@@ -783,7 +793,7 @@ src_install() {
 			"s:/usr/lib/:/usr/$(get_libdir)/:g;
 			s:@@OZONE_AUTO_SESSION@@:$(ozone_auto_session):g"
 	)
-	sed "${sedargs[@]}" "${FILESDIR}/chromium-launcher-r4.sh" > chromium-launcher.sh || die
+	sed "${sedargs[@]}" "${FILESDIR}/chromium-launcher-r5.sh" > chromium-launcher.sh || die
 	doexe chromium-launcher.sh
 
 	# It is important that we name the target "chromium-browser",
