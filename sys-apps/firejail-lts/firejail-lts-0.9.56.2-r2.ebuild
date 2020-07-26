@@ -18,24 +18,28 @@ KEYWORDS="amd64"
 IUSE="apparmor +globalcfg +network +seccomp +suid +userns test +whitelist"
 RESTRICT="!test? ( test )"
 
-DEPEND="!sys-apps/firejail
-		apparmor? ( sys-libs/libapparmor )
-		test? ( dev-tcltk/expect )"
-
 RDEPEND="apparmor? ( sys-libs/libapparmor )"
 
-PATCHES=( "${FILESDIR}/${PN}-fix-compressed-manpages.patch" )
+DEPEND="${RDEPEND}
+		!sys-apps/firejail
+		test? ( dev-tcltk/expect )"
+
 
 S="${WORKDIR}/${MY_PN}-${PV}-LTS"
 
 src_prepare() {
 	default
 
-	find -type f -name Makefile.in | xargs sed --in-place --regexp-extended \
-		--expression='/^\tinstall .*COPYING /d' \
-		--expression='/CFLAGS/s: (-O2|-ggdb) : :g' || die
+	find -type f -name Makefile.in | xargs sed -i -r \
+		-e '/^\tinstall .*COPYING /d' \
+		-e '/CFLAGS/s: (-O2|-ggdb) : :g' || die
 
-	sed --in-place --regexp-extended '/CFLAGS/s: (-O2|-ggdb) : :g' ./src/common.mk.in || die
+	sed -i -r -e '/CFLAGS/s: (-O2|-ggdb) : :g' ./src/common.mk.in || die
+
+	# remove compression of man pages
+	sed -i -e '/gzip -9n $$man; \\/d' Makefile.in || die
+	sed -i -e '/rm -f $$man.gz; \\/d' Makefile.in || die
+	sed -i -r -e 's|\*\.([[:digit:]])\) install -c -m 0644 \$\$man\.gz|\*\.\1\) install -c -m 0644 \$\$man|g' Makefile.in || die
 }
 
 src_configure() {

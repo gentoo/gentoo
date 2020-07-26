@@ -20,31 +20,30 @@ HOMEPAGE="https://firejail.wordpress.com/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="apparmor +chroot contrib debug +file-transfer +globalcfg +network +overlayfs +private-home +seccomp +suid test +userns vim-syntax +whitelist x11"
-
-DEPEND="!sys-apps/firejail-lts
-	apparmor? ( sys-libs/libapparmor )
-	test? ( dev-tcltk/expect )"
+RESTRICT="!test? ( test )"
 
 RDEPEND="apparmor? ( sys-libs/libapparmor )"
 
-# TODO: enable tests
-RESTRICT="test"
+DEPEND="${RDEPEND}
+	!sys-apps/firejail-lts
+	test? ( dev-tcltk/expect )"
+
 
 src_prepare() {
 	default
 
 	find ./contrib -type f -name '*.py' | xargs sed --in-place 's-#!/usr/bin/python3-#!/usr/bin/env python3-g' || die
 
-	find -type f -name Makefile.in | xargs sed --in-place --regexp-extended \
-			--expression='/^\tinstall .*COPYING /d' \
-			--expression='/CFLAGS/s: (-O2|-ggdb) : :g' || die
+	find -type f -name Makefile.in | xargs sed -i -r \
+			-e '/^\tinstall .*COPYING /d' \
+			-e '/CFLAGS/s: (-O2|-ggdb) : :g' || die
 
-	sed --in-place --regexp-extended '/CFLAGS/s: (-O2|-ggdb) : :g' ./src/common.mk.in || die
+	sed -i -r -e '/CFLAGS/s: (-O2|-ggdb) : :g' ./src/common.mk.in || die
 
 	# remove compression of man pages
-	sed --in-place '/gzip -9n $$man; \\/d' Makefile.in || die
-	sed --in-place '/rm -f $$man.gz; \\/d' Makefile.in || die
-	sed --in-place --regexp-extended 's|\*\.([[:digit:]])\) install -c -m 0644 \$\$man\.gz|\*\.\1\) install -c -m 0644 \$\$man|g' Makefile.in || die
+	sed -i -e '/gzip -9n $$man; \\/d' Makefile.in || die
+	sed -i -e '/rm -f $$man.gz; \\/d' Makefile.in || die
+	sed -i -r -e 's|\*\.([[:digit:]])\) install -c -m 0644 \$\$man\.gz|\*\.\1\) install -c -m 0644 \$\$man|g' Makefile.in || die
 }
 
 src_configure() {
