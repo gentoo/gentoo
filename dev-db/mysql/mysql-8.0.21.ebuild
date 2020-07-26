@@ -5,8 +5,8 @@ EAPI="7"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
-inherit cmake flag-o-matic linux-info \
-	multiprocessing prefix toolchain-funcs check-reqs
+inherit check-reqs cmake flag-o-matic linux-info \
+	multiprocessing prefix toolchain-funcs
 
 MY_PV="${PV//_pre*}"
 MY_P="${PN}-${MY_PV}"
@@ -77,6 +77,7 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	!dev-db/mariadb !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
+	!dev-db/mysql:0
 	!dev-db/mysql:5.7
 	selinux? ( sec-policy/selinux-mysql )
 	!prefix? (
