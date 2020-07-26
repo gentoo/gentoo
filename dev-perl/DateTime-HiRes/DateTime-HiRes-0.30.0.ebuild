@@ -8,7 +8,7 @@ DIST_VERSION=0.03
 inherit perl-module
 
 DESCRIPTION="Create DateTime objects with sub-second current time resolution"
-
+LICENSE="Artistic-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
