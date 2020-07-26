@@ -19,7 +19,7 @@ HOMEPAGE="https://pipewire.org/"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/0.3"
-IUSE="+alsa bluetooth debug doc ffmpeg gstreamer jack pulseaudio systemd test vulkan X"
+IUSE="bluetooth debug doc ffmpeg gstreamer jack pulseaudio systemd test vulkan X"
 
 BDEPEND="
 	app-doc/xmltoman
@@ -86,7 +86,7 @@ src_configure() {
 		-Dspa-plugins=true
 		--buildtype=$(usex debug debugoptimized plain)
 		# alsa plugin and jack/pulseaudio emulation
-		$(meson_use alsa pipewire-alsa)
+		-Dpipewire-alsa=true
 		$(meson_use jack pipewire-jack)
 		$(meson_use pulseaudio pipewire-pulseaudio)
 		# spa-plugins
@@ -111,9 +111,10 @@ src_install() {
 
 	dosym ../../../usr/share/alsa/alsa.conf.d/50-pipewire.conf /etc/alsa/conf.d/50-pipewire.conf
 
-	if use alsa; then
-		dosym ../../../usr/share/alsa/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d/99-pipewire-default.conf
-	fi
+# 	# TODO: this breaks alsa users
+# 	if use alsa; then
+# 		dosym ../../../usr/share/alsa/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d/99-pipewire-default.conf
+# 	fi
 }
 
 pkg_postinst() {

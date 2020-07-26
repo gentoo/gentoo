@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="featureful ncurses based MPD client inspired by ncmpc"
-HOMEPAGE="https://rybczak.net/ncmpcpp/"
+HOMEPAGE="https://ncmpcpp.rybczak.net/ https://github.com/ncmpcpp/ncmpcpp"
 SRC_URI="https://rybczak.net/ncmpcpp/stable/${P}.tar.bz2"
 
 LICENSE="GPL-2"
@@ -26,9 +26,9 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-# https://github.com/ncmpcpp/ncmpcpp/pull/385
-PATCHES=( "${FILESDIR}/${PN}-0.8.2-gcc10.patch" )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.8.2-gcc10.patch
+)
 
 src_prepare() {
 	default
