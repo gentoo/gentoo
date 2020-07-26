@@ -14,21 +14,22 @@ case ${PV} in
 	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/xbmc/audioencoder.lame.git"
 	inherit git-r3
+	DEPEND="~media-tv/kodi-9999"
 	;;
 *)
 	KEYWORDS="~amd64 ~x86"
 	CODENAME="Leia"
 	SRC_URI="https://github.com/xbmc/audioencoder.lame/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/audioencoder.lame-${PV}-${CODENAME}"
+	DEPEND="=media-tv/kodi-18*"
 	;;
 esac
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 IUSE=""
 
-DEPEND="
-	=media-tv/kodi-18*
+DEPEND+="
 	>=media-sound/lame-3.100
 	"
 
