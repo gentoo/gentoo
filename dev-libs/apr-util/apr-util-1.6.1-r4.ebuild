@@ -49,6 +49,8 @@ DOCS=(CHANGES NOTICE README)
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.3-sysroot.patch #385775
 	"${FILESDIR}"/${PN}-1.6.1-fix-gdbm-error-handling.patch
+	"${FILESDIR}"/${PN}-1.6.1-mariadb-support.patch
+	"${FILESDIR}"/${PN}-1.6.1-my_boold.patch
 )
 
 src_prepare() {
