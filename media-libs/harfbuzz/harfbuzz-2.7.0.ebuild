@@ -5,23 +5,23 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit flag-o-matic libtool multilib-minimal python-any-r1 xdg-utils
+inherit autotools flag-o-matic libtool multilib-minimal python-any-r1 xdg-utils
 
 DESCRIPTION="An OpenType text shaping engine"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/HarfBuzz"
 
 if [[ ${PV} = 9999 ]] ; then
-	EGIT_REPO_URI="https://anongit.freedesktop.org/git/harfbuzz.git"
-	inherit git-r3 autotools
+	EGIT_REPO_URI="https://github.com/harfbuzz/harfbuzz.git"
+	inherit git-r3
 else
-	SRC_URI="https://www.freedesktop.org/software/${PN}/release/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="Old-MIT ISC icu"
 SLOT="0/0.9.18" # 0.9.18 introduced the harfbuzz-icu split; bug #472416
 
-IUSE="+cairo debug +glib +graphite icu +introspection static-libs test +truetype"
+IUSE="+cairo debug doc +glib +graphite icu +introspection static-libs test +truetype"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="introspection? ( glib )"
 
@@ -34,20 +34,13 @@ RDEPEND="
 	truetype? ( >=media-libs/freetype-2.5.0.1:2=[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
+	>=dev-libs/gobject-introspection-common-1.34
 	test? ( ${PYTHON_DEPS} )
 "
 BDEPEND="
-	dev-util/gtk-doc-am
 	virtual/pkgconfig
+	doc? ( dev-util/gtk-doc )
 "
-# eautoreconf requires gobject-introspection-common
-# ragel needed if regenerating *.hh files from *.rl
-if [[ ${PV} = 9999 ]] ; then
-	DEPEND+="
-		>=dev-libs/gobject-introspection-common-1.34
-		dev-util/ragel
-	"
-fi
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
@@ -68,15 +61,19 @@ src_prepare() {
 		sed -i \
 			-e 's/\<LINK\>/CXXLINK/' \
 			src/Makefile.am || die
-		sed -i \
-			-e '/libharfbuzz_la_LINK = /s/\<LINK\>/CXXLINK/' \
-			src/Makefile.in || die
-		sed -i \
-			-e '/AM_V_CCLD/s/\<LINK\>/CXXLINK/' \
-			test/api/Makefile.in || die
 	fi
 
-	[[ ${PV} == 9999 ]] && eautoreconf
+	sed -i \
+		-e 's:tests/macos.tests::' \
+		test/shaping/data/in-house/Makefile.sources \
+		|| die # bug 726120
+
+	if ! use doc ; then
+		# Taken from shipped autogen.sh script
+		echo "EXTRA_DIST = " > gtk-doc.make
+	fi
+
+	eautoreconf
 	elibtoolize # for Solaris
 
 	# bug 618772
@@ -89,6 +86,8 @@ multilib_src_configure() {
 		--without-coretext
 		--without-fontconfig #609300
 		--without-uniscribe
+		$(multilib_native_use_enable doc gtk-doc)
+		$(multilib_native_use_enable doc gtk-doc-html)
 		$(use_enable static-libs static)
 		$(multilib_native_use_with cairo)
 		$(use_with glib)
@@ -107,5 +106,5 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	find "${ED}" -name "*.la" -delete || die
+	find "${ED}" -type f -name "*.la" -delete || die
 }
