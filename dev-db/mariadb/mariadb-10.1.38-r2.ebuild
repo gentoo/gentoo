@@ -26,21 +26,21 @@ fi
 HOMEPAGE="https://mariadb.org/"
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 LICENSE="GPL-2"
-SLOT="0/${SUBSLOT:-0}"
+SLOT="10.1/${SUBSLOT:-0}"
 IUSE="+backup bindist client-libs cracklib debug extraengine galera jdbc jemalloc kerberos
 	innodb-lz4 innodb-lzo innodb-snappy latin1 libressl mroonga numa odbc oqgraph pam
 	+perl profiling selinux +server sphinx sst-rsync sst-mariabackup sst-xtrabackup
 	systemd systemtap static static-libs tcmalloc test tokudb xml yassl"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
-RESTRICT="!bindist? ( bindist ) libressl? ( test ) !test? ( test )"
+RESTRICT="!bindist? ( bindist ) !test? ( test ) libressl? ( test )"
 
 REQUIRED_USE="jdbc? ( extraengine server !static )
 	server? ( tokudb? ( jemalloc !tcmalloc ) )
 	?? ( tcmalloc jemalloc )
 	static? ( yassl !pam )"
 
-KEYWORDS="arm"
+KEYWORDS="ppc ppc64"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -119,6 +119,10 @@ DEPEND="virtual/yacc
 RDEPEND="selinux? ( sec-policy/selinux-mysql )
 	client-libs? ( !dev-db/mariadb-connector-c[mysqlcompat] !dev-db/mysql-connector-c )
 	!dev-db/mysql !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
+	!dev-db/mariadb:5.5
+	!dev-db/mariadb:10.2
+	!dev-db/mariadb:10.3
+	!dev-db/mariadb:10.4
 	server? ( !prefix? ( dev-db/mysql-init-scripts ) )
 	${COMMON_DEPEND}
 	server? ( galera? (
@@ -267,11 +271,6 @@ src_prepare() {
 	use oqgraph || _disable_engine oqgraph
 	_disable_engine example
 
-	# Don't clash with dev-db/mysql-connector-c
-	sed -i -e 's/ my_print_defaults.1//' \
-		-e 's/ perror.1//' \
-		"${S}"/man/CMakeLists.txt || die
-
 	cmake-utils_src_prepare
 	java-pkg-opt-2_src_prepare
 }
@@ -325,8 +324,6 @@ src_configure() {
 		-DNOT_FOR_DISTRIBUTION=$(usex bindist 0 1)
 		-DENABLE_DTRACE=$(usex systemtap)
 		-DWITH_SSL=$(usex yassl bundled system)
-		-DPLUGIN_CLIENT_ED25519=NO
-		-DPLUGIN_AUTH_GSSAPI_CLIENT=NO
 	)
 
 	if use server ; then
@@ -573,17 +570,14 @@ src_test() {
 	done
 
 	for t in main.mysql_client_test main.mysql_client_test_nonblock \
-		rpl.rpl_semi_sync_uninstall_plugin main.mysql \
+		rpl.rpl_semi_sync_uninstall_plugin \
 		main.mysql_client_test_comp rpl.rpl_extra_col_master_myisam ; do
 			_disable_test  "$t" "False positives in Gentoo"
 	done
 
 	if ! use client-libs ; then
 		_disable_test main.plugin_auth "Needs client libraries built"
-		_disable_test plugins.auth_ed25519 "Needs client libraries built"
 	fi
-
-	_disable_test main.gis_notembedded "Fails when latin1 USE is not set"
 
 	_disable_test sys_vars.sysvars_server_notembedded "Broken test" # bug #661700 required profiling always on
 
@@ -663,7 +657,7 @@ mysql_init_vars() {
 
 pkg_config() {
 	_getoptval() {
-		local mypd="${EROOT}"usr/libexec/mariadb/my_print_defaults
+		local mypd="${EROOT}"/usr/bin/my_print_defaults
 		local section="$1"
 		local flag="--${2}="
 		local extra_options="${3}"
@@ -737,11 +731,11 @@ pkg_config() {
 
 		unset tmp_mysqld_password_source
 	fi
-	MYSQL_TMPDIR="$(_getoptval mysqld tmpdir | tail -n1)"
+	MYSQL_TMPDIR="$(_getoptval mysqld tmpdir)"
 	# These are dir+prefix
-	MYSQL_RELAY_LOG="$(_getoptval mysqld relay-log | tail -n1)"
+	MYSQL_RELAY_LOG="$(_getoptval mysqld relay-log)"
 	MYSQL_RELAY_LOG=${MYSQL_RELAY_LOG%/*}
-	MYSQL_LOG_BIN="$(_getoptval mysqld log-bin | tail -n1)"
+	MYSQL_LOG_BIN="$(_getoptval mysqld log-bin)"
 	MYSQL_LOG_BIN=${MYSQL_LOG_BIN%/*}
 
 	if [[ ! -d "${ROOT}/$MYSQL_TMPDIR" ]]; then
