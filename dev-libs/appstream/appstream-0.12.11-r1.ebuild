@@ -45,12 +45,20 @@ DEPEND="${RDEPEND}
 	test? ( qt5? ( dev-qt/qttest:5 ) )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-no-highlight.js.patch
+	"${FILESDIR}"/${P}-qt-add-missing-provided-kindid-enum.patch
+	"${FILESDIR}"/${P}-disable-Werror-flags.patch # bug 733774
+)
+
 src_prepare() {
 	default
 	sed -e "/^as_doc_target_dir/s/appstream/${PF}/" -i docs/meson.build || die
 	if ! use test; then
 		sed -e "/^subdir.*tests/s/^/#DONT /" -i {,qt/}meson.build || die # bug 675944
 	fi
+	rm docs/html/static/js/HighlightJS.LICENSE \
+		docs/html/static/js/highlight.min.js || die # incompatible license
 }
 
 src_configure() {
