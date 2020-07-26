@@ -10376,7 +10376,7 @@ dev-util/geany 1.36 9999: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.36-r2: A collection of different plugins for Geany
 dev-util/gengetopt 2.23: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.6.0-r1 9999: Gertty is a console-based interface to the Gerrit Code Review system.
-dev-util/github-cli 0.8.0 0.9.0-r1 0.10.1 9999: GitHub CLI
+dev-util/github-cli 0.8.0 0.9.0-r1 0.10.1 0.11.0 9999: GitHub CLI
 dev-util/gitlab-ci-linter 2.2.0: linter for .gitlab-ci.yml files
 dev-util/glade 3.22.2: A user interface designer for GTK+ and GNOME
 dev-util/glib-utils 2.62.6 2.64.4: Build utilities for GLib using projects
@@ -10604,7 +10604,7 @@ dev-vcs/cvsutils 0.2.5-r1: A small bundle of utilities to work with CVS reposito
 dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization utility
 dev-vcs/darcs 2.8.4-r6 2.10.1 2.10.3-r1 2.12.0 2.12.4 2.12.5: a distributed, interactive, smart revision control system
 dev-vcs/easygit 1.7.5.2: Easy GIT (eg), a frontend for git designed for former cvs and svn users
-dev-vcs/fossil 2.8 2.9 2.10 2.10-r1 2.11 2.11.1: Simple, high-reliability, source control management, and more
+dev-vcs/fossil 2.11.1: Simple, high-reliability, source control management, and more
 dev-vcs/git 2.23.3 2.24.3 2.25.4 2.26.2 2.27.0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 6.20170818-r1: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.2015.09.08: Bugzilla subcommand for git
@@ -14085,7 +14085,7 @@ net-analyzer/sarg 2.4.0: Squid Analysis Report Generator
 net-analyzer/sbd 1.37-r1: Netcat-clone, designed to be portable and offer strong encryption
 net-analyzer/scanlogd 2.2.7: a port scan detection tool
 net-analyzer/scanssh 2.1 2.1-r2: network scanner that gathers info on SSH protocols and versions
-net-analyzer/scapy 2.4.2 2.4.3 2.4.4_rc1 9999: A Python interactive packet manipulation program for mastering the network
+net-analyzer/scapy 2.4.2 2.4.3 2.4.4_rc1 2.4.4_rc2 9999: A Python interactive packet manipulation program for mastering the network
 net-analyzer/scli 0.4.0-r1: SNMP Command Line Interface
 net-analyzer/sec 2.7.6-r1 2.8.1 2.8.2 2.8.3: Simple Event Correlator
 net-analyzer/sflowtool 3.34 3.41 5.02 5.04: sflowtool is a utility for collecting and processing sFlow data
