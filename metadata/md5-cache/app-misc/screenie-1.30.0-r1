@@ -1,10 +1,10 @@
 DEFINED_PHASES=install
 DESCRIPTION=screen(1) frontend that is designed to be a session handler
 EAPI=6
-HOMEPAGE=http://pubwww.hsz-t.ch/~mgloor/screenie.html
+HOMEPAGE=https://sourceforge.net/projects/screenie/
 KEYWORDS=amd64 ~arm hppa ~ia64 sparc x86
 LICENSE=GPL-2
 RDEPEND=app-misc/screen
 SLOT=0
 SRC_URI=http://pubwww.hsz-t.ch/~mgloor/data/screenie-1.30.0.tar.bz2
-_md5_=a82c8cd172ab3c0a19264afbd7bc74c9
+_md5_=85cd3aef8022968699b81abeac2ad7cd
