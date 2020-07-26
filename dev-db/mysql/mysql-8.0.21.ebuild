@@ -5,8 +5,8 @@ EAPI="7"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
-inherit cmake flag-o-matic linux-info \
-	multiprocessing prefix toolchain-funcs check-reqs
+inherit check-reqs cmake flag-o-matic linux-info \
+	multiprocessing prefix toolchain-funcs
 
 MY_PV="${PV//_pre*}"
 MY_P="${PN}-${MY_PV}"
