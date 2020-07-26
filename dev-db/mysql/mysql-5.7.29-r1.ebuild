@@ -25,7 +25,7 @@ fi
 HOMEPAGE="https://www.mysql.com/"
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
 LICENSE="GPL-2"
-SLOT="0/18"
+SLOT="5.7/18"
 IUSE="cjk client-libs cracklib debug experimental jemalloc latin1 libressl numa +perl profiling
 	selinux +server static static-libs systemtap tcmalloc test"
 
@@ -115,6 +115,7 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	!dev-db/mariadb !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
+	!dev-db/mysql:8.0
 	client-libs? ( !dev-db/mariadb-connector-c[mysqlcompat] !dev-db/mysql-connector-c dev-libs/protobuf:= )
 	selinux? ( sec-policy/selinux-mysql )
 	server? (
