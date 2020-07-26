@@ -20,7 +20,7 @@ SLOT="4"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
 
 RDEPEND="
-	dev-python/soupsieve[${PYTHON_USEDEP}]
+	<dev-python/soupsieve-2[${PYTHON_USEDEP}]
 	dev-python/html5lib[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 "
