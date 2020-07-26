@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-02">
+  <title>Xen: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Xen, the worst of which
+    could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">xen</product>
+  <announced>2020-07-26</announced>
+  <revised count="1">2020-07-26</revised>
+  <bug>731658</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-emulation/xen" auto="yes" arch="*">
+      <unaffected range="ge">4.12.3-r2</unaffected>
+      <vulnerable range="lt">4.12.3-r2</vulnerable>
+    </package>
+    <package name="app-emulation/xen-tools" auto="yes" arch="*">
+      <unaffected range="ge">4.12.3-r2</unaffected>
+      <vulnerable range="lt">4.12.3-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Xen is a bare-metal hypervisor.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Xen. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Xen users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-4.12.3-r2"
+    </code>
+    
+    <p>All Xen Tools users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulation/xen-tools-4.12.3-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-15563">CVE-2020-15563</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-15564">CVE-2020-15564</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-15565">CVE-2020-15565</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-15566">CVE-2020-15566</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-15567">CVE-2020-15567</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-17T21:12:47Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-26T22:28:47Z">sam_c</metadata>
+</glsa>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-04">
+  <title>fwupd, libjcat: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in fwupd and libjcat, the
+    worst of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">fwupd,libjfcat</product>
+  <announced>2020-07-26</announced>
+  <revised count="1">2020-07-26</revised>
+  <bug>727656</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-apps/fwupd" auto="yes" arch="*">
+      <unaffected range="ge">1.3.10</unaffected>
+      <vulnerable range="lt">1.3.10</vulnerable>
+    </package>
+    <package name="dev-libs/libjcat" auto="yes" arch="*">
+      <unaffected range="ge">0.1.3</unaffected>
+      <vulnerable range="lt">0.1.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>fwupd aims to make updating firmware on Linux automatic, safe and
+      reliable. libjcat is a library and tool for reading and writing Jcat
+      files.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in fwupd and libjcat.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All fwupd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/fwupd-1.3.10"
+    </code>
+    
+    <p>All libjcat users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libjcat-0.1.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-10759">CVE-2020-10759</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-06-29T00:15:07Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-26T22:34:10Z">sam_c</metadata>
+</glsa>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-05">
+  <title>libexif: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libexif, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">libexif</product>
+  <announced>2020-07-26</announced>
+  <revised count="1">2020-07-26</revised>
+  <bug>708728</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libexif" auto="yes" arch="*">
+      <unaffected range="ge">0.6.22</unaffected>
+      <vulnerable range="lt">0.6.22</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libexif is a library for parsing, editing and saving Exif metadata from
+      images.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libexif. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libexif users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libexif-0.6.22"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2016-6328">CVE-2016-6328</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-9278">CVE-2019-9278</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-0093">CVE-2020-0093</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12767">CVE-2020-12767</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-13112">CVE-2020-13112</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-13113">CVE-2020-13113</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-13114">CVE-2020-13114</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-16T01:09:55Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-26T22:40:47Z">sam_c</metadata>
+</glsa>
