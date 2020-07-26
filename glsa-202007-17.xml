@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-17">
+  <title>JHead: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in JHead, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">jhead</product>
+  <announced>2020-07-26</announced>
+  <revised count="1">2020-07-26</revised>
+  <bug>711220</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/jhead" auto="yes" arch="*">
+      <unaffected range="ge">3.04</unaffected>
+      <vulnerable range="lt">3.04</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>JHead is an exif jpeg header manipulation tool.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in JHead. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All JHead users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/jhead-3.04"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-1010301">
+      CVE-2019-1010301
+    </uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-1010302">
+      CVE-2019-1010302
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-26T15:53:15Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-26T23:56:59Z">sam_c</metadata>
+</glsa>
