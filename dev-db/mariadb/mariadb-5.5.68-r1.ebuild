@@ -24,7 +24,7 @@ fi
 HOMEPAGE="https://mariadb.org/"
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 LICENSE="GPL-2"
-SLOT="0/${SUBSLOT:-0}"
+SLOT="5.5/${SUBSLOT:-0}"
 IUSE="bindist client-libs debug extraengine jemalloc latin1 libressl
 	oqgraph pam +perl profiling selinux +server sphinx
 	static static-libs systemtap tcmalloc
@@ -95,6 +95,10 @@ DEPEND="virtual/yacc
 RDEPEND="selinux? ( sec-policy/selinux-mysql )
 	client-libs? ( !dev-db/mariadb-connector-c[mysqlcompat] !dev-db/mysql-connector-c )
 	!dev-db/mysql !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
+	!dev-db/mariadb:10.1
+	!dev-db/mariadb:10.2
+	!dev-db/mariadb:10.3
+	!dev-db/mariadb:10.4
 	server? ( !prefix? ( dev-db/mysql-init-scripts ) )
 	${COMMON_DEPEND}
 	perl? ( !dev-db/mytop
