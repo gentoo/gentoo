@@ -34,7 +34,7 @@ fi
 HOMEPAGE="https://www.percona.com/software/mysql-database/percona-server"
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
 LICENSE="GPL-2"
-SLOT="0/18"
+SLOT="5.7/18"
 IUSE="cjk client-libs cracklib debug experimental jemalloc latin1 libressl numa pam +perl profiling rocksdb
 	selinux +server static static-libs systemtap tcmalloc test tokudb tokudb-backup-plugin yassl"
 
@@ -142,6 +142,7 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	!dev-db/mariadb !dev-db/mariadb-galera !dev-db/mysql !dev-db/mysql-cluster
+	!dev-db/percona-server:8.0
 	client-libs? ( !dev-db/mariadb-connector-c[mysqlcompat] !dev-db/mysql-connector-c dev-libs/protobuf:= )
 	selinux? ( sec-policy/selinux-mysql )
 	server? (
