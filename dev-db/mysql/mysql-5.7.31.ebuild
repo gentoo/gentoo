@@ -5,7 +5,7 @@ EAPI="7"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
-inherit cmake flag-o-matic linux-info \
+inherit check-reqs cmake flag-o-matic linux-info \
 	prefix toolchain-funcs multilib-minimal
 
 # Patch version
