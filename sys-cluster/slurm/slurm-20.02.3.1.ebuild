@@ -35,7 +35,7 @@ COMMON_DEPEND="
 	|| ( sys-cluster/pmix[-pmi] >=sys-cluster/openmpi-2.0.0 )
 	mysql? (
 		|| ( dev-db/mariadb-connector-c dev-db/mysql-connector-c )
-		slurmdbd? ( || ( dev-db/mariadb dev-db/mysql ) )
+		slurmdbd? ( || ( dev-db/mariadb:* dev-db/mysql:* ) )
 		)
 	munge? ( sys-auth/munge )
 	pam? ( sys-libs/pam )
