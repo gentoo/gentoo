@@ -25,7 +25,7 @@ ruby_add_bdepend "test? ( >=dev-ruby/rr-1.1.0 )"
 
 all_ruby_prepare() {
 	# Fix version in gemspec
-	sed -i -e '/s.version/ s/".*"/"'${PV}'"/' ${RUBY_FAKEGEM_GEMSPEC} || die
+	sed -i -e '/s\.version/ s/".*"/"'${PV}'"/' ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	# Avoid unneeded development dependencies
 	sed -i -e '/concourse/I s:^:#:' Rakefile || die
