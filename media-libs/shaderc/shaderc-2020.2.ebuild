@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
 CMAKE_ECLASS=cmake
 
-inherit cmake cmake-multilib python-any-r1
+inherit cmake-multilib python-any-r1
 
 DESCRIPTION="Collection of tools, libraries and tests for shader compilation"
 HOMEPAGE="https://github.com/google/shaderc"
