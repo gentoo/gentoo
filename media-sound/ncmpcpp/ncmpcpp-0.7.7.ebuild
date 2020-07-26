@@ -26,9 +26,9 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-# https://github.com/ncmpcpp/ncmpcpp/pull/385
-PATCHES=( "${FILESDIR}/${PN}-0.8.2-gcc10.patch" )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.8.2-gcc10.patch
+)
 
 src_prepare() {
 	default
