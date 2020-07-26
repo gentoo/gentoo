@@ -10,18 +10,18 @@ HOMEPAGE="https://www.siedler25.org/"
 
 # To generate from git repo:
 # echo -e "COMMIT=\"$(git rev-parse HEAD)\"\nSRC_URI=\"\n\thttps://github.com/Return-To-The-Roots/s25client/archive/\${COMMIT}.tar.gz -> s25client-\${COMMIT}.tar.gz" && git submodule --quiet foreach --recursive 'url=$(git remote get-url origin); gh=${url#*github.com[:/]}; gh=${gh%.git}; echo -e "\thttps://github.com/${gh}/archive/${sha1}.tar.gz -> \${PN}-${gh##*/}-${sha1}.tar.gz"' | egrep -v "/(dev-tools|libsamplerate|s25update)/" | sort && echo '"'
-COMMIT="784eb58fc1eb42751042d82f16cc92617fc6c2ae"
+COMMIT="f0b97b120140c96bbeacae9c22633f899931db69"
 SRC_URI="
 	https://github.com/Return-To-The-Roots/s25client/archive/${COMMIT}.tar.gz -> s25client-${COMMIT}.tar.gz
-	https://github.com/mat007/turtle/archive/5f8421b1d270665347280d4cab1caf159d6858de.tar.gz -> ${PN}-turtle-5f8421b1d270665347280d4cab1caf159d6858de.tar.gz
-	https://github.com/Return-To-The-Roots/languages/archive/b1978170473bbf39a24254814e1b1f967a51ef4c.tar.gz -> ${PN}-languages-b1978170473bbf39a24254814e1b1f967a51ef4c.tar.gz
+	https://github.com/mat007/turtle/archive/9dcdcf9061b929a03f188531ea5cbd530b6234ab.tar.gz -> ${PN}-turtle-9dcdcf9061b929a03f188531ea5cbd530b6234ab.tar.gz
+	https://github.com/Return-To-The-Roots/languages/archive/6906b7ce9cb64242ba406eda34a404fa8eb1e33d.tar.gz -> ${PN}-languages-6906b7ce9cb64242ba406eda34a404fa8eb1e33d.tar.gz
 	https://github.com/Return-To-The-Roots/libendian/archive/dd2c11498f679247530b6b7cf7bd5964f539ddfd.tar.gz -> ${PN}-libendian-dd2c11498f679247530b6b7cf7bd5964f539ddfd.tar.gz
-	https://github.com/Return-To-The-Roots/liblobby/archive/7d85ec40f03af619a6734f20edb28d991b3d61f2.tar.gz -> ${PN}-liblobby-7d85ec40f03af619a6734f20edb28d991b3d61f2.tar.gz
-	https://github.com/Return-To-The-Roots/libsiedler2/archive/800d58ea072c35d3cf9832d2f6a5cdae92fc0445.tar.gz -> ${PN}-libsiedler2-800d58ea072c35d3cf9832d2f6a5cdae92fc0445.tar.gz
-	https://github.com/Return-To-The-Roots/libutil/archive/c91488e4d2f0079a864c4be80eaba24a871e9772.tar.gz -> ${PN}-libutil-c91488e4d2f0079a864c4be80eaba24a871e9772.tar.gz
-	https://github.com/Return-To-The-Roots/mygettext/archive/7e46bbb3e24891348f5629887efb0173690e83b8.tar.gz -> ${PN}-mygettext-7e46bbb3e24891348f5629887efb0173690e83b8.tar.gz
-	https://github.com/Return-To-The-Roots/s25edit/archive/04b5e725036a0568e8da15447167c240563dbaba.tar.gz -> ${PN}-s25edit-04b5e725036a0568e8da15447167c240563dbaba.tar.gz
-	https://github.com/Return-To-The-Roots/s25maps/archive/11a5f3e95405b7cf8088641efb4939eba9639cbc.tar.gz -> ${PN}-s25maps-11a5f3e95405b7cf8088641efb4939eba9639cbc.tar.gz
+	https://github.com/Return-To-The-Roots/liblobby/archive/9275cbfa2303cc8235e96f275829be0d84efd3a4.tar.gz -> ${PN}-liblobby-9275cbfa2303cc8235e96f275829be0d84efd3a4.tar.gz
+	https://github.com/Return-To-The-Roots/libsiedler2/archive/5cb9993a32504337c63fd894266991445e0dcd65.tar.gz -> ${PN}-libsiedler2-5cb9993a32504337c63fd894266991445e0dcd65.tar.gz
+	https://github.com/Return-To-The-Roots/libutil/archive/6c2ee0fa897541ea766533e03ebd53344908cf16.tar.gz -> ${PN}-libutil-6c2ee0fa897541ea766533e03ebd53344908cf16.tar.gz
+	https://github.com/Return-To-The-Roots/mygettext/archive/b2fc5db651542a7fcc069223904f7debc27ec235.tar.gz -> ${PN}-mygettext-b2fc5db651542a7fcc069223904f7debc27ec235.tar.gz
+	https://github.com/Return-To-The-Roots/s25edit/archive/677e4b39eaa7f6ecb701e7b50637a0f05fc691db.tar.gz -> ${PN}-s25edit-677e4b39eaa7f6ecb701e7b50637a0f05fc691db.tar.gz
+	https://github.com/Return-To-The-Roots/s25maps/archive/5efbd103b19335828cab6e757224e87456c4a1e4.tar.gz -> ${PN}-s25maps-5efbd103b19335828cab6e757224e87456c4a1e4.tar.gz
 	https://github.com/satoren/kaguya/archive/38ca7e1d894c138e454bbe5c89048bdd5091545a.tar.gz -> ${PN}-kaguya-38ca7e1d894c138e454bbe5c89048bdd5091545a.tar.gz
 "
 
@@ -54,10 +54,6 @@ BDEPEND="
 "
 
 S="${WORKDIR}/s25client-${COMMIT}"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-loosen-libs.patch
-)
 
 # Build type is checked but blank is valid.
 CMAKE_BUILD_TYPE=
@@ -93,8 +89,8 @@ src_configure() {
 		-DRTTR_INCLUDE_DEVTOOLS=OFF
 		-DRTTR_LIBDIR="$(get_libdir)/${PN}"
 		-DRTTR_REVISION="${COMMIT}"
-		-DRTTR_USE_SYSTEM_SAMPLERATE=ON
-		-DRTTR_VERSION="${PV}"
+		-DRTTR_USE_SYSTEM_LIBSAMPLERATE=ON
+		-DRTTR_VERSION="${PV##*_pre}" # Tests expect a date.
 	)
 
 	if use test && tc-is-gcc; then
