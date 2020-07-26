@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils toolchain-funcs
+inherit eutils toolchain-funcs xdg-utils
 
 DESCRIPTION="Image viewers for the framebuffer console (fbi) and X11 (ida)"
 HOMEPAGE="https://www.kraxel.org/blog/linux/fbida/"
@@ -117,4 +117,12 @@ src_install() {
 		doicon "${WORKDIR}"/ida.png
 		domenu desktop/ida.desktop
 	fi
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
