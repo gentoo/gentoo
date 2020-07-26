@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-01">
+  <title>netqmail: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in netqmail, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">netqmail</product>
+  <announced>2020-07-26</announced>
+  <revised count="1">2020-07-26</revised>
+  <bug>721566</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="mail-mta/netqmail" auto="yes" arch="*">
+      <unaffected range="ge">1.06-r13</unaffected>
+      <vulnerable range="lt">1.06-r13</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>qmail is a secure, reliable, efficient, simple message transfer agent.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in netqmail. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>In the default configuration, these vulnerabilities are only local.
+      Please review the referenced CVE identifiers for details.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All netqmail users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-mta/netqmail-1.06-r13"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2005-1513">CVE-2005-1513</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2005-1514">CVE-2005-1514</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2005-1515">CVE-2005-1515</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-06-11T02:55:31Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-26T22:08:48Z">sam_c</metadata>
+</glsa>
