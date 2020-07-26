@@ -5122,7 +5122,6 @@ media-video/orion:mpv - Use the media-video/mpv player (upstream default)
 media-video/orion:qtav - Use the media-libs/qtav player
 media-video/orion:qtmedia - Use the dev-qt/qtmultimedia
 media-video/peek:keybinder - Enable support for global hotkeys using dev-libs/keybinder
-media-video/pipewire:alsa - Install PipeWire alsa device for playback and record
 media-video/pipewire:jack - Enable SPA JACK plugin and emulation to be able to run JACK applications on top of PipeWire
 media-video/pipewire:pulseaudio - Enable emulation to be able to run PulseAudio applications on top of PipeWire
 media-video/pipewire:vulkan - Enable vulkan spa plugin integration

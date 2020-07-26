@@ -13812,7 +13812,7 @@ media-video/parole 1.0.5: A simple Xfce4 media player using GStreamer
 media-video/peek 1.4.0-r1 1.5.1: Simple animated Gif screen recorder
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
 media-video/photofilmstrip 3.7.1-r1: Movie slideshow creator using Ken Burns effect
-media-video/pipewire 0.2.7 0.3.6: Multimedia processing graphs
+media-video/pipewire 0.2.7 0.3.7: Multimedia processing graphs
 media-video/pitivi 0.999-r3: A non-linear video editor using the GStreamer multimedia framework
 media-video/plasma-mediacenter 5.7.5: Unified media experience for any device capable of running KDE Plasma
 media-video/projectx 0.91.0.10-r2: Converts, splits and demuxes DVB and other MPEG recordings
