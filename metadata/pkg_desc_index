@@ -5954,7 +5954,7 @@ dev-perl/DateTime-Format-Natural 1.50.0 1.100.0: Parse informal natural language
 dev-perl/DateTime-Format-SQLite 0.110.0 0.110.0-r1: Parse and format SQLite dates and times
 dev-perl/DateTime-Format-Strptime 1.700.0 1.740.0 1.770.0: Parse and Format DateTimes using Strptime
 dev-perl/DateTime-Format-W3CDTF 0.70.0: Parse and format W3CDTF datetime strings
-dev-perl/DateTime-HiRes 0.10.0-r1: Create DateTime objects with sub-second current time resolution
+dev-perl/DateTime-HiRes 0.10.0-r1 0.30.0: Create DateTime objects with sub-second current time resolution
 dev-perl/DateTime-Locale 0.460.0 1.20.0 1.30.0 1.50.0 1.160.0 1.260.0: Localization support for DateTime
 dev-perl/DateTime-Set 0.390.0: Datetime sets and set math
 dev-perl/DateTime-TimeZone 1.930.0 1.940.0 2.10.0 2.110.0 2.130.0: Time zone object base class and factory
