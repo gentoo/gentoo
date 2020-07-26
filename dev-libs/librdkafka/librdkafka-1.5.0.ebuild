@@ -3,7 +3,9 @@
 
 EAPI="7"
 
-inherit toolchain-funcs
+PYTHON_COMPAT=( python3_{6..9} )
+
+inherit python-any-r1 toolchain-funcs
 
 DESCRIPTION="Apache Kafka C/C++ client library"
 HOMEPAGE="https://github.com/edenhill/librdkafka"
@@ -32,13 +34,21 @@ LIB_DEPEND="
 	sys-libs/zlib:=[static-libs(+)]
 "
 
+BDEPEND="
+	virtual/pkgconfig
+	${PYTHON_DEPS}
+"
+
 RDEPEND="!static-libs? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 
 DEPEND="
 	${RDEPEND}
-	virtual/pkgconfig
 	static-libs? ( ${LIB_DEPEND} )
 "
+
+pkg_setup() {
+	python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	default
