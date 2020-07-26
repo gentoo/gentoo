@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-MY_EXTRAS_VER="20200317-0103Z"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
@@ -12,23 +11,18 @@ inherit cmake-utils flag-o-matic linux-info \
 MY_PV="${PV//_pre*}"
 MY_P="${PN}-${MY_PV}"
 
-S="${WORKDIR}/${PN}-${MY_PV}"
+# Patch version
+PATCH_SET="https://dev.gentoo.org/~whissi/dist/mysql/${PN}-8.0.20-patches-01.tar.xz"
 
 SRC_URI="https://cdn.mysql.com/Downloads/MySQL-8.0/mysql-boost-${MY_PV}.tar.gz
 	https://cdn.mysql.com/archives/mysql-8.0/mysql-boost-${MY_PV}.tar.gz
-	http://downloads.mysql.com/archives/MySQL-8.0/${PN}-boost-${MY_PV}.tar.gz"
-
-# Gentoo patches to MySQL
-if [[ "${MY_EXTRAS_VER}" != "live" && "${MY_EXTRAS_VER}" != "none" ]] ; then
-	SRC_URI="${SRC_URI}
-		mirror://gentoo/mysql-extras-${MY_EXTRAS_VER}.tar.bz2
-		https://gitweb.gentoo.org/proj/mysql-extras.git/snapshot/mysql-extras-${MY_EXTRAS_VER}.tar.bz2"
-fi
+	http://downloads.mysql.com/archives/MySQL-8.0/${PN}-boost-${MY_PV}.tar.gz
+	${PATCH_SET}"
 
 HOMEPAGE="https://www.mysql.com/"
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="8.0"
 IUSE="cjk cracklib debug jemalloc latin1 libressl numa +perl profiling
 	router selinux +server tcmalloc test"
 
@@ -43,30 +37,11 @@ REQUIRED_USE="?? ( tcmalloc jemalloc )
 	router? ( server )
 	tcmalloc? ( server )"
 
-KEYWORDS="amd64 arm ~arm64 ~hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
 S="${WORKDIR}/mysql"
-
-if [[ "${MY_EXTRAS_VER}" == "live" ]] ; then
-	inherit git-r3
-	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/mysql-extras.git"
-	EGIT_CHECKOUT_DIR="${WORKDIR}/mysql-extras"
-	EGIT_CLONE_TYPE=shallow
-	MY_PATCH_DIR="${WORKDIR}/mysql-extras"
-else
-	MY_PATCH_DIR="${WORKDIR}/mysql-extras-${MY_EXTRAS_VER}"
-fi
-
-PATCHES=(
-	"${MY_PATCH_DIR}"/20001_all_fix-minimal-build-cmake-mysql-8.0.17.patch
-	"${MY_PATCH_DIR}"/20007_all_cmake-debug-werror-8.0.18.patch
-	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.23-fix-grant_user_lock-a-root.patch
-	"${MY_PATCH_DIR}"/20018_all_mysql-8.0.19-without-clientlibs-tools.patch
-	"${MY_PATCH_DIR}"/20018_all_mysql-8.0.19-fix-libressl-support.patch
-	"${MY_PATCH_DIR}"/20018_all_mysql-8.0.19-fix-events_bugs-test.patch
-)
 
 # Be warned, *DEPEND are version-dependant
 # These are used for both runtime and compiletime
@@ -102,6 +77,7 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	!dev-db/mariadb !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
+	!dev-db/mysql:5.7
 	selinux? ( sec-policy/selinux-mysql )
 	!prefix? (
 		acct-group/mysql acct-user/mysql
@@ -172,13 +148,14 @@ pkg_setup() {
 src_unpack() {
 	unpack ${A}
 
-	# Grab the patches
-	[[ "${MY_EXTRAS_VER}" == "live" ]] && S="${WORKDIR}/mysql-extras" git-r3_src_unpack
-
 	mv -f "${WORKDIR}/${MY_P}" "${S}" || die
 }
 
 src_prepare() {
+	eapply "${WORKDIR}"/mysql-patches
+
+	eapply_user
+
 	# Avoid rpm call which would trigger sandbox, #692368
 	sed -i \
 		-e 's/MY_RPM rpm/MY_RPM rpmNOTEXISTENT/' \
@@ -412,6 +389,7 @@ src_test() {
 	disabled_tests+=( "gis.spatial_analysis_functions_distance;5452;Known rounding error with latest AMD processors (PS)" )
 	disabled_tests+=( "main.window_std_var;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
 	disabled_tests+=( "main.window_std_var_optimized;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
+	disabled_tests+=( "main.with_recursive;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
 	disabled_tests+=( "rpl_gtid.rpl_gtid_stm_drop_table;90612;Known test failure" )
 	disabled_tests+=( "rpl_gtid.rpl_multi_source_mtr_includes;0;Known failure - no upstream bug yet" )
 	disabled_tests+=( "sys_vars.myisam_data_pointer_size_func;87935;Test will fail on slow hardware")
@@ -419,6 +397,11 @@ src_test() {
 	disabled_tests+=( "main.mysqlpump_basic_lz4;0;Extra tool output causes false positive" )
 	disabled_tests+=( "x.message_compressed_payload;0;False positive caused by protobuff-3.11+" )
 	disabled_tests+=( "x.message_protobuf_nested;0;False positive caused by protobuff-3.11+" )
+
+	if ! hash zip 1>/dev/null 2>&1 ; then
+		# no need to force dep app-arch/zip for one test
+		disabled_tests+=( "innodb.partition_upgrade_create;0;Requires app-arch/zip" )
+	fi
 
 	local test_infos_str test_infos_arr
 	for test_infos_str in "${disabled_tests[@]}" ; do
