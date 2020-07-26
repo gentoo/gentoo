@@ -90,6 +90,7 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	!dev-db/mariadb !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
+	!dev-db/mysql:0
 	!dev-db/mysql:8.0
 	client-libs? ( !dev-db/mariadb-connector-c[mysqlcompat] !dev-db/mysql-connector-c dev-libs/protobuf:= )
 	selinux? ( sec-policy/selinux-mysql )
