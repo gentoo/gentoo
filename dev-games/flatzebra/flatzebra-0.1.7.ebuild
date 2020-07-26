@@ -4,8 +4,8 @@
 EAPI=7
 
 DESCRIPTION="Generic game engine for 2D double-buffering animation"
-HOMEPAGE="https://perso.b2b2c.ca/~sarrazip/dev/batrachians.html"
-SRC_URI="https://perso.b2b2c.ca/~sarrazip/dev/${P}.tar.gz"
+HOMEPAGE="http://perso.b2b2c.ca/~sarrazip/dev/batrachians.html"
+SRC_URI="http://perso.b2b2c.ca/~sarrazip/dev/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
