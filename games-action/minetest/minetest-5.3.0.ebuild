@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1+ CC-BY-SA-3.0 OFL-1.1 Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+client +curl doc +leveldb ncurses nls postgres redis +server +sound spatial test +truetype"
+IUSE="+client +curl doc +leveldb ncurses nls postgres prometheus redis +server +sound spatial test +truetype"
 REQUIRED_USE="|| ( client server )"
 RESTRICT="!test? ( test )"
 
@@ -42,6 +42,7 @@ RDEPEND="
 	ncurses? ( sys-libs/ncurses:0= )
 	nls? ( virtual/libintl )
 	postgres? ( >=dev-db/postgresql-9.5:= )
+	prometheus? ( dev-cpp/prometheus-cpp )
 	redis? ( dev-libs/hiredis:= )
 	server? (
 		acct-group/minetest
@@ -87,6 +88,7 @@ src_configure() {
 		-DENABLE_LEVELDB=$(usex leveldb)
 		-DENABLE_LUAJIT=1
 		-DENABLE_POSTGRESQL=$(usex postgres)
+		-DENABLE_PROMETHEUS=$(usex prometheus)
 		-DENABLE_REDIS=$(usex redis)
 		-DENABLE_SPATIAL=$(usex spatial)
 		-DENABLE_SOUND=$(usex sound)
