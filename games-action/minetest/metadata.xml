@@ -44,6 +44,7 @@
 	<use>
 		<flag name="client">Build Minetest client</flag>
 		<flag name="leveldb">Enable LevelDB backend</flag>
+		<flag name="prometheus">Enable prometheus client support</flag>
 		<flag name="redis">Enable redis backend via <pkg>dev-libs/hiredis</pkg></flag>
 		<flag name="server">Build Minetest server</flag>
 		<flag name="spatial">Enable SpatialIndex AreaStore backend
