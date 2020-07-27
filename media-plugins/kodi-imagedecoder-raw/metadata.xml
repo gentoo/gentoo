@@ -9,7 +9,6 @@
         <email>k2k@narod.ru</email>
         <name>Karlson2k (Evgeny Grin)</name>
     </maintainer>
-    <longdescription>RAW image decoder for Kodi</longdescription>
     <upstream>
         <remote-id type="github">xbmc/imagedecoder.raw</remote-id>
     </upstream>
