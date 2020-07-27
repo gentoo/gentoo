@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-33">
+  <title>OSSEC: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OSSEC, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">ossec-hids</product>
+  <announced>2020-07-27</announced>
+  <revised count="1">2020-07-27</revised>
+  <bug>707826</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-analyzer/ossec-hids" auto="yes" arch="*">
+      <unaffected range="ge">3.6.0</unaffected>
+      <vulnerable range="lt">3.6.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OSSEC is a full platform to monitor and control your system(s).</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OSSEC. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OSSEC users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/ossec-hids-3.6.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8442">CVE-2020-8442</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8443">CVE-2020-8443</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8444">CVE-2020-8444</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8445">CVE-2020-8445</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8446">CVE-2020-8446</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8447">CVE-2020-8447</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8448">CVE-2020-8448</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-17T21:09:31Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-27T00:29:16Z">sam_c</metadata>
+</glsa>
