@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-50">
+  <title>GLib Networking: Improper certificate validation</title>
+  <synopsis>GLib Networking was not properly verifying TLS certificates in all
+    circumstances, possibly allowing an integrity/confidentiality compromise.
+  </synopsis>
+  <product type="ebuild">glib-networking</product>
+  <announced>2020-07-27</announced>
+  <revised count="1">2020-07-27</revised>
+  <bug>725880</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/glib-networking" auto="yes" arch="*">
+      <unaffected range="ge">2.62.4</unaffected>
+      <vulnerable range="lt">2.62.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Network-related giomodules for glib</p>
+  </background>
+  <description>
+    <p>GTlsClientConnection skips hostname verification of the server’s TLS
+      certificate if the application fails to specify the expected server
+      identity.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>There may be a breach of integrity or confidentiality in connections
+      made using GLib Networking.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GLib Networking users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/glib-networking-2.62.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-13645">CVE-2020-13645</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-26T05:58:10Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-27T01:34:12Z">sam_c</metadata>
+</glsa>
