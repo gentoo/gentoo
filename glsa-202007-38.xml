@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-38">
+  <title>QtGui: Arbitrary code execution</title>
+  <synopsis>A use-after-free was discovered in QtGui's Markdown handling code
+    possibly allowing a remote attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">qtgui</product>
+  <announced>2020-07-27</announced>
+  <revised count="1">2020-07-27</revised>
+  <bug>719732</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-qt/qtgui" auto="yes" arch="*">
+      <unaffected range="ge">5.14.2</unaffected>
+      <vulnerable range="lt">5.14.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>QtGui is a module for the Qt toolkit.</p>
+  </background>
+  <description>
+    <p>QtGui’s setMarkdown has a use-after-free related to
+      QTextMarkdownImporter::insertBlock.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All QtGui users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-qt/qtgui-5.14.2"
+    </code>
+    
+    <p>Note that the Qt suite is best kept in sync, so a world upgrade may be
+      advisable to keep your system in a good state.
+    </p>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12267">CVE-2020-12267</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-06-06T21:54:28Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-27T00:37:49Z">sam_c</metadata>
+</glsa>
