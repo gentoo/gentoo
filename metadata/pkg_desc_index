@@ -11451,7 +11451,7 @@ gnome-base/gnome-core-libs 3.34.4 3.36.4: Sub-meta package for the core librarie
 gnome-base/gnome-desktop 3.34.7 3.36.4: Library with common API for various GNOME modules
 gnome-base/gnome-extra-apps 3.34.4: Sub-meta package for the applications of GNOME 3
 gnome-base/gnome-flashback 3.34.2 3.36.3: GNOME Flashback session
-gnome-base/gnome-keyring 3.31.91-r1 3.34.0: Password and keyring managing daemon
+gnome-base/gnome-keyring 3.31.91-r1 3.34.0 3.36.0: Password and keyring managing daemon
 gnome-base/gnome-light 3.34.4: Meta package for GNOME-Light, merge this package to install
 gnome-base/gnome-menus 3.32.0 3.36.0: Library and layout configuration for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
@@ -16592,7 +16592,7 @@ sys-apps/gawk 4.2.1-r1 5.0.1 5.1.0: GNU awk pattern-matching language
 sys-apps/gcp 0.2.1: File copying utility with progress and I/O indicator
 sys-apps/gentoo-functions 0.12 0.13 9999: base functions required by all Gentoo systems
 sys-apps/gentoo-systemd-integration 7 8 9999: systemd integration files for Gentoo
-sys-apps/gnome-disk-utility 3.34.5 3.36.1: Disk Utility for GNOME using udisks
+sys-apps/gnome-disk-utility 3.34.5 3.36.1 3.36.3: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
 sys-apps/gptfdisk 1.0.4 1.0.5: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201603152148 3.1.201607172312 3.1.201608131257 3.1.201708012022 3.1.201903191516: Administrative interface for the grsecurity Role Based Access Control system
