@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-34">
+  <title>Apache Ant: Multiple vulnerabilities</title>
+  <synopsis>Apache Ant uses various insecure temporary files possibly allowing
+    local code execution.
+  </synopsis>
+  <product type="ebuild">ant</product>
+  <announced>2020-07-27</announced>
+  <revised count="1">2020-07-27</revised>
+  <bug>723086</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-java/ant" auto="yes" arch="*">
+      <unaffected range="ge">1.10.8</unaffected>
+      <vulnerable range="lt">1.10.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Ant is a Java-based build tool similar to ‘make’ that uses XML
+      configuration files.
+    </p>
+  </background>
+  <description>
+    <p>Apache Ant was found to be using multiple insecure temporary files which
+      may disclose sensitive information or execute code from an unsafe local
+      location.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could possibly execute arbitrary code with the
+      privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Apache Ant users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-java/ant-1.10.8"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-1945">CVE-2020-1945</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-19T21:36:39Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-27T00:29:36Z">sam_c</metadata>
+</glsa>

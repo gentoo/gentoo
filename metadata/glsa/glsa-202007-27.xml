@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-27">
+  <title>Haml: Arbitrary code execution</title>
+  <synopsis>A flaw in Haml allows arbitrary code execution as a result of
+    improper filtering.
+  </synopsis>
+  <product type="ebuild">haml</product>
+  <announced>2020-07-27</announced>
+  <revised count="1">2020-07-27</revised>
+  <bug>699840</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-ruby/haml" auto="yes" arch="*">
+      <unaffected range="ge">5.1.2</unaffected>
+      <vulnerable range="lt">5.1.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Haml is a templating engine for HTML.</p>
+  </background>
+  <description>
+    <p>It was discovered that Haml was not correctly filtering out special
+      characters which may be used for attributes.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Haml users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-ruby/haml-5.1.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-1002201">
+      CVE-2017-1002201
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-22T01:38:59Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2020-07-27T00:18:18Z">sam_c</metadata>
+</glsa>

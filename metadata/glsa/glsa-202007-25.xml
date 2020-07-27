@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-25">
+  <title>arpwatch: Root privilege escalation</title>
+  <synopsis>A vulnerability was discovered in arpwatch which may allow local
+    attackers to gain root privileges.
+  </synopsis>
+  <product type="ebuild">arpwatch</product>
+  <announced>2020-07-27</announced>
+  <revised count="1">2020-07-27</revised>
+  <bug>602552</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-analyzer/arpwatch" auto="yes" arch="*">
+      <unaffected range="ge">2.1.15-r11</unaffected>
+      <vulnerable range="lt">2.1.15-r11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The ethernet monitor program; for keeping track of ethernet/ip address
+      pairings.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that Gentoo’s arpwatch ebuild made excessive
+      permission operations on its data directories, possibly changing
+      ownership of unintended files. This only affects OpenRC systems, as the
+      flaw was exploitable via the init script.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could escalate privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All arpwatch users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=net-analyzer/arpwatch-2.1.15-r11"
+    </code>
+  </resolution>
+  <references>
+  </references>
+  <metadata tag="requester" timestamp="2020-06-20T01:06:22Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2020-07-27T00:14:49Z">sam_c</metadata>
+</glsa>

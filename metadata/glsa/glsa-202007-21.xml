@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-21">
+  <title>Libreswan: Denial of service</title>
+  <synopsis>A vulnerability in Libreswan could lead to a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">libreswan</product>
+  <announced>2020-07-27</announced>
+  <revised count="1">2020-07-27</revised>
+  <bug>722696</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-vpn/libreswan" auto="yes" arch="*">
+      <unaffected range="ge">3.32</unaffected>
+      <vulnerable range="lt">3.32</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Libreswan is a free software implementation of the most widely supported
+      and standarized VPN protocol based on (“IPsec”) and the Internet Key
+      Exchange (“IKE”).
+    </p>
+  </background>
+  <description>
+    <p>As a result of a bug in handling certain bogus encrypted IKEv1, while
+      building a log message that the packet has been dropped, a NULL pointer
+      dereference causes Libreswan to crash and restart when it attempts to log
+      the state name involved.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could cause a possible Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Libreswan users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-vpn/libreswan-3.32"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-1763">CVE-2020-1763</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-26T15:11:54Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-27T00:05:28Z">sam_c</metadata>
+</glsa>

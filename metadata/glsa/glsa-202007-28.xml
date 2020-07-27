@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-28">
+  <title>re2c: Buffer overflow</title>
+  <synopsis>A vulnerability in re2c could lead to a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">re2c</product>
+  <announced>2020-07-27</announced>
+  <revised count="1">2020-07-27</revised>
+  <bug>718350</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-util/re2c" auto="yes" arch="*">
+      <unaffected range="ge">1.3-r1</unaffected>
+      <vulnerable range="lt">1.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>re2c is a tool for generating C-based recognizers from regular
+      expressions.
+    </p>
+  </background>
+  <description>
+    <p>A heap buffer overflow vulnerability was discovered in re2c.</p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could possibly cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All re2c users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-util/re2c-1.3-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-11958">CVE-2020-11958</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-06-13T17:20:09Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-27T00:20:01Z">sam_c</metadata>
+</glsa>
