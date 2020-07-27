@@ -9,7 +9,6 @@
         <email>k2k@narod.ru</email>
         <name>Karlson2k (Evgeny Grin)</name>
     </maintainer>
-    <longdescription>Binary Kodi plugin for HEIF image decoding.</longdescription>
     <upstream>
         <remote-id type="github">xbmc/imagedecoder.heif</remote-id>
     </upstream>
