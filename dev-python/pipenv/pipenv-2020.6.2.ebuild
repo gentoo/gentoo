@@ -38,11 +38,11 @@ BDEPEND="
 		dev-python/pytz[${PYTHON_USEDEP}]
 	)"
 
-distutils-r1_src_prepare() {
+src_prepare() {
 	# remove vendored version of PyYAML that is backported to Python2
 	# this should be removed when upstream removes support for Python2
 	rm -vR "${S}/${PN}/patched/yaml2/" || die
-	eapply_user
+	distutils-r1_src_prepare
 }
 
 python_test() {
