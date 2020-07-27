@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-20">
+  <title>fuseiso: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in fuseiso, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">fuseiso</product>
+  <announced>2020-07-27</announced>
+  <revised count="1">2020-07-27</revised>
+  <bug>713328</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-fs/fuseiso" auto="yes" arch="*">
+      <unaffected range="ge">20070708-r3</unaffected>
+      <vulnerable range="lt">20070708-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FuseISO is a FUSE module to mount ISO filesystem images (.iso, .nrg,
+      .bin, .mdf and .img files).
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in fuseiso. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted ISO
+      file using fuseiso, possibly resulting in execution of arbitrary code
+      with the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All fuseiso users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-fs/fuseiso-20070708-r3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2015-8837">CVE-2015-8837</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-26T15:37:48Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-27T00:05:15Z">sam_c</metadata>
+</glsa>
