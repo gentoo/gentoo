@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/romanbsd/fast-stemmer"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 all_ruby_prepare() {
