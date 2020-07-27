@@ -382,11 +382,14 @@ src_configure() {
 }
 
 src_compile() {
+	IFS=$'\n'
 	env $(cat "${S}"/config.env) RUST_BACKTRACE=1\
 		"${EPYTHON}" ./x.py build -vv --config="${S}"/config.toml -j$(makeopts_jobs) || die
+	unset IFS
 }
 
 src_test() {
+	IFS=$'\n'
 	env $(cat "${S}"/config.env) RUST_BACKTRACE=1\
 		"${EPYTHON}" ./x.py test -vv --config="${S}"/config.toml -j$(makeopts_jobs) --no-doc --no-fail-fast \
 		src/test/codegen \
@@ -400,11 +403,14 @@ src_test() {
 		src/test/run-make-fulldeps \
 		src/test/ui \
 		src/test/ui-fulldeps || die
+	unset IFS
 }
 
 src_install() {
+	IFS=$'\n'
 	env $(cat "${S}"/config.env) DESTDIR="${D}" \
 		"${EPYTHON}" ./x.py install -vv --config="${S}"/config.toml || die
+	unset IFS
 
 	# bug #689562, #689160
 	rm "${D}/etc/bash_completion.d/cargo" || die

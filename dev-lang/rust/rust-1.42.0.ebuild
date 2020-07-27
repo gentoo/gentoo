@@ -280,13 +280,17 @@ src_configure() {
 }
 
 src_compile() {
+	IFS=$'\n'
 	env $(cat "${S}"/config.env)\
 		"${EPYTHON}" ./x.py build -vv --config="${S}"/config.toml -j$(makeopts_jobs) || die
+	unset IFS
 }
 
 src_install() {
+	IFS=$'\n'
 	env $(cat "${S}"/config.env) DESTDIR="${D}" \
 		"${EPYTHON}" ./x.py install -vv --config="${S}"/config.toml || die
+	unset IFS
 
 	# bug #689562, #689160
 	rm "${D}/etc/bash_completion.d/cargo" || die
