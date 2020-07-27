@@ -14,6 +14,8 @@ LICENSE="MIT"
 SLOT="0/5"
 IUSE="cpu_flags_x86_rdrand doc static-libs threads"
 
+BDEPEND="doc? ( >=app-doc/doxygen-1.8.13 )"
+
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/json-c/config.h
 )
@@ -24,7 +26,6 @@ src_prepare() {
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DBUILD_DOCUMENTATION=$(multilib_native_usex doc)
 		-DDISABLE_WERROR=ON
 		-DENABLE_THREADING=$(usex threads)
 		-DENABLE_RDRAND=$(usex cpu_flags_x86_rdrand)
@@ -36,6 +37,7 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	cmake_src_compile
+	use doc && doxygen doc/Doxyfile
 }
 
 multilib_src_test() {
@@ -43,6 +45,6 @@ multilib_src_test() {
 }
 
 multilib_src_install_all() {
-	use doc && HTML_DOCS=( "${S}"/doc/html/. )
+	use doc && HTML_DOCS=( "${BUILD_DIR}-abi_x86_64.amd64"/doc/html/. )
 	einstalldocs
 }
