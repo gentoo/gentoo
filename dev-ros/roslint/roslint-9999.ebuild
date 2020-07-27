@@ -4,7 +4,6 @@
 EAPI=7
 ROS_REPO_URI="https://github.com/ros/roslint"
 KEYWORDS="~amd64 ~arm"
-PYTHON_COMPAT=( python{2_7,3_6} pypy3 )
 
 inherit ros-catkin
 
