@@ -16,10 +16,6 @@
 		<flag name="wps">Add support for Wi-Fi Protected Setup</flag>
 	</use>
 	<maintainer type="person">
-		<email>andrey_utkin@gentoo.org</email>
-		<name>Andrey Utkin</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>zerochaos@gentoo.org</email>
 		<name>Rick Farina</name>
 	</maintainer>
