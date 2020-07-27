@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-49">
+  <title>Mozilla Network Security Service (NSS): Information disclosure</title>
+  <synopsis>NSS has an information disclosure vulnerability when handling DSA
+    keys.
+  </synopsis>
+  <product type="ebuild">nss</product>
+  <announced>2020-07-27</announced>
+  <revised count="1">2020-07-27</revised>
+  <bug>726842</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-libs/nss" auto="yes" arch="*">
+      <unaffected range="ge">3.52.1</unaffected>
+      <vulnerable range="lt">3.52.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Mozilla Network Security Service (NSS) is a library implementing
+      security features like SSL v.2/v.3, TLS, PKCS #5, PKCS #7, PKCS #11, PKCS
+      #12, S/MIME and X.509 certificates.
+    </p>
+  </background>
+  <description>
+    <p>NSS was found to not always perform constant-time operations when
+      working with DSA key material.
+    </p>
+  </description>
+  <impact type="low">
+    <p>An attacker may be able to obtain information about a DSA private key.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All NSS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/nss-3.52.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12399">CVE-2020-12399</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-26T16:09:23Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-27T01:25:27Z">sam_c</metadata>
+</glsa>
