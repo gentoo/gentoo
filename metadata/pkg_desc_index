@@ -2323,7 +2323,7 @@ app-misc/tmux 2.9a 3.0a 3.1b 9999: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 3.4.0 9999: CPU, RAM memory, and load monitor for use with tmux
 app-misc/tmux-xpanes 4.1.1: tmux-based terminal divider
 app-misc/tmux2html 0.1.11: Render full tmux windows or individual panes as HTML
-app-misc/tmuxp 1.5.4: tmux session manager. built on libtmux
+app-misc/tmuxp 1.5.4 1.5.5: tmux session manager. built on libtmux
 app-misc/todo 2.10-r2 2.11.0: A CLI-based TODO list manager
 app-misc/toilet 0.3-r1: The Other Implementations letters. Figlet replacement
 app-misc/towitoko 2.0.7-r3: Driver for Towitoko smartcard readers
