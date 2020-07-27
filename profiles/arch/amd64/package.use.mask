@@ -172,10 +172,6 @@ app-admin/rsyslog -mdblookup
 # https://caml.inria.fr/pub/docs/manual-ocaml/spacetime.html
 dev-lang/ocaml -spacetime
 
-# Alexis Ballier <aballier@gentoo.org> (2017-01-31)
-# nvidia drivers are unmasked here
-media-video/ffmpeg -nvenc
-
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2017-01-04)
 # Assembly optimisations are supported on amd64 for all versions
 dev-libs/libsecp256k1 -asm

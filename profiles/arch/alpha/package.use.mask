@@ -224,9 +224,8 @@ net-mail/notmuch test
 app-admin/conky cmus irc
 
 # Tobias Klausmann <klausman@gentoo.org> (2016-06-07)
-# the nvidia SDK needs nvidia-drivers and thus can never work on alpha
-# Likewise, nasm is x86/x86-64 only
-media-video/ffmpeg nvenc openh264
+# nasm is x86/x86-64 only
+media-video/ffmpeg openh264
 
 # Tobias Klausmann <klausman@gentoo.org> (2016-02-04)
 # sys-cluster/ceph is not broken per se, but a maintenance burden.
