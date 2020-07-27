@@ -48,7 +48,7 @@ RDEPEND="
 	gtk? (
 		dev-libs/glib:2
 		x11-libs/gdk-pixbuf:2[jpeg,X?]
-		x11-libs/gtk+:3[X?,wayland]
+		x11-libs/gtk+:3[X?]
 		x11-libs/libX11
 	)
 	hunspell? ( >=app-text/hunspell-1.7:= )
