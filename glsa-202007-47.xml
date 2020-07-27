@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-47">
+  <title>Okular: Local restricted command execution</title>
+  <synopsis>A logic error in Okular might allow an attacker to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">okular</product>
+  <announced>2020-07-27</announced>
+  <revised count="1">2020-07-27</revised>
+  <bug>712490</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="kde-apps/okular" auto="yes" arch="*">
+      <unaffected range="ge">19.12.3-r1</unaffected>
+      <vulnerable range="lt">19.12.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Okular is a universal document viewer based on KPDF.</p>
+  </background>
+  <description>
+    <p>A logic error was discovered in Okular, which results in trusting action
+      links within a PDF, possibly allowing execution of a binary.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted PDF
+      using Okular, possibly resulting in execution of arbitrary code with the
+      privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>Avoid opening PDFs from an untrusted source.</p>
+  </workaround>
+  <resolution>
+    <p>All Okular users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=kde-apps/okular-19.12.3-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9359">CVE-2020-9359</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-06-13T16:20:40Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-27T00:59:53Z">sam_c</metadata>
+</glsa>
