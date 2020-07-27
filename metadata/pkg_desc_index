@@ -1164,140 +1164,140 @@ app-dicts/stardict-xdict-en-zh-big5 2.4.2: Stardict Dictionary English to Tradit
 app-dicts/stardict-xdict-en-zh-gb 2.4.2: Stardict Dictionary English to Simplified Chinese (GB)
 app-dicts/stardict-xdict-zh-en-big5 2.4.2: Stardict Dictionary Traditional Chinese (BIG5) to English
 app-dicts/stardict-xdict-zh-en-gb 2.4.2: Stardict Dictionary Simplified Chinese (GB) to English
-app-dicts/sword-abbott 1.1: Illustrated New Testament
-app-dicts/sword-acv 2.0: A Conservative Version
-app-dicts/sword-afr1953 1.2: Afrikaans Bybel
-app-dicts/sword-akjv 1.4: American King James Version
-app-dicts/sword-alb 1.2: Albanian Bible
-app-dicts/sword-aleppo 1.1: Aleppo Codex
-app-dicts/sword-amtract 1.1: American Tract Society Bible Dictionary
-app-dicts/sword-arasvd 1.1: Smith and van Dyck's al-Kitab al-Muqaddas (Arabic Bible)
-app-dicts/sword-armeastern 1.1: Eastern Armenian Bible
-app-dicts/sword-armwestern 1.1: 1853 Western Armenian NT
-app-dicts/sword-asv 1.3: American Standard Version (1901)
-app-dicts/sword-barnes 1.1: Barnes' New Testament Notes
-app-dicts/sword-bashautin 1.5: 1571 Navarro-Labourdin Basque NT
-app-dicts/sword-bbe 1.3: Bible in Basic English (1949/1964)
-app-dicts/sword-bulveren 1.0: Veren's Contemporary Bible
-app-dicts/sword-burjudson 1.1: 1835 Judson Burmese Bible
-app-dicts/sword-byz 1.10: Byzantine/Majority Text (2000)
-app-dicts/sword-cbc 1.1: Condensed Biblical Cyclopedia
-app-dicts/sword-chamorro 2.7: Chamorro: Y Santa Biblia
-app-dicts/sword-clarke 1.0: Adam Clarke's Commentary on the Bible
-app-dicts/sword-common 1.3: The Common Edition: New Testament
-app-dicts/sword-cro 1.0: Croatian Bible
-app-dicts/sword-czebkr 1.1: Czech Bible Kralicka
-app-dicts/sword-daily 1.0: Jonathan Bagster's Daily Light on the Daily Path
-app-dicts/sword-dan 2.1: Danske Bibel
-app-dicts/sword-darby 1.1: Darby Bible (1889)
-app-dicts/sword-diaglott 1.1: The Emphatic Diaglott
-app-dicts/sword-drc 1.1: Douay-Rheims Bible, Challoner Revision
-app-dicts/sword-dtn 1.0: Darby Translation Notes
-app-dicts/sword-dutkant 1.1: Kanttekeningen Statenvertaling
-app-dicts/sword-dutsvv 1.5: Dutch Statenvertaling
-app-dicts/sword-easton 1.2: Easton's Bible Dictionary
-app-dicts/sword-esperanto 1.6: Esperanto Bible
-app-dicts/sword-farsiopv 1.0: Persian Holy Bible (Tarjumeh-ye Ghadeem)
-app-dicts/sword-finbiblia 1.1: Finnish Biblia (1776)
-app-dicts/sword-finney 1.1: Sermons on Gospel Themes by Charles G. Finney (1792-1875)
-app-dicts/sword-finpr 1.2: Finnish Pyh, Raamattu (1933/1938)
-app-dicts/sword-frebbb 1.1: French Bible Bovet Bonnet (1900)
-app-dicts/sword-frecrampon 1.1: La Bible Augustin Crampon 1923
-app-dicts/sword-frelsg 1.3: French Louis Segond (1910)
-app-dicts/sword-fremartin 1.2: French Bible Martin (1744)
-app-dicts/sword-fresegond 1.6: French Traduction de Louis Segond (1910)
-app-dicts/sword-geneva 1.1: Geneva Bible Translation Notes
-app-dicts/sword-geneva1599 1.1: Geneva Bible (1599)
-app-dicts/sword-gerelb1871 1.1: German Elberfelder (1871)
-app-dicts/sword-gerelb1905 1.5: German Darby Unrevidierte Elberfelder (1905)
-app-dicts/sword-gerlut1545 1.2: German Unrevidierte Luther Ubersetzung von 1545
-app-dicts/sword-gersch 1.1: German Schlachter Bibel (1951)
-app-dicts/sword-greekhebrew 1.1: Greek to Hebrew Dictionary of Septuagint Words
-app-dicts/sword-hebrewgreek 1.1: Hebrew to Greek Dictionary of Septuagint Words
-app-dicts/sword-heretics 1.1: Heretics by Gilbert K. Chesterton (1874-1936)
-app-dicts/sword-hitchcock 1.3: Hitchcock's Bible Names
-app-dicts/sword-hnv 1.8: Hebrew Names Version of the World English Bible
-app-dicts/sword-hunkar 1.7: Hungarian Karoli
-app-dicts/sword-institutes 1.2: Calvin's Institutes
-app-dicts/sword-isbe 1.6: International Standard Bible Encyclopedia
-app-dicts/sword-isv 1.5: International Standard Version
-app-dicts/sword-itadio 1.0: Italian Giovanni Diodati Bibbia 1649
-app-dicts/sword-itarive 1.0: Italian Riveduta Bibbia (1927)
-app-dicts/sword-jfb 2.2: Jamieson Fausset Brown Bible Commentary
-app-dicts/sword-josephus 1.1: Josephus: The Complete Works
-app-dicts/sword-jps 1.2: Jewish Publication Society Old Testament
-app-dicts/sword-jst 1.1: Joseph Smith Translation
-app-dicts/sword-jubilee2000 1.1: English Jubilee 2000 Bible
-app-dicts/sword-kjv 2.3: King James Version (1769) with Strongs Numbers and Morphology
-app-dicts/sword-kjvd 1.1: King James Dictionary
-app-dicts/sword-klv 2.2: Klingon Language Version of the World English Bible
-app-dicts/sword-klven_iklingon 2.1: Klingon Language Version English to Klingon mapping lexicon
-app-dicts/sword-klviklingon_en 2.1: Klingon Language Version Klingon to English mapping lexicon
-app-dicts/sword-lightfoot 1.0: John Lightfoot Commentary
-app-dicts/sword-litv 1.3: Green's Literal Translation
-app-dicts/sword-luther 1.1: Luther's Commentary on Galatians
-app-dicts/sword-mak 1.0: Matthias Ansorgs Kommentar
-app-dicts/sword-manxgaelic 1.1: Manx Gaelic Scripture Portions
-app-dicts/sword-mhc 1.6: Matthew Henry's Complete Commentary on the Whole Bible
-app-dicts/sword-mhcc 1.1: Matthew Henry's Concise Commentary on the Whole Bible
-app-dicts/sword-mkjv 1.3: Green's Modern King James Version
-app-dicts/sword-montgomery 1.3: Montgomery New Testament
-app-dicts/sword-murdock 1.2: James Murdock's Translation of the Syriac Peshitta
-app-dicts/sword-nave 1.1: Nave's Topical Bible
-app-dicts/sword-norsk 1.5: Den Norske Bibelen
-app-dicts/sword-orthodoxy 1.0: Orthodoxy by Gilbert K. Chesterton (1874-1936)
-app-dicts/sword-packard 1.2: Packard's Morphological Analysis Codes
-app-dicts/sword-personal 1.0: Personal Commentary
-app-dicts/sword-peshitta 1.1: Syriac Peshitta
-app-dicts/sword-pilgrim 1.0: The Pilgrim's Progress by John Bunyan (1628-1688)
-app-dicts/sword-pnt 1.1: The People's New Testament
-app-dicts/sword-practice 1.0: The Practice of the Presence of God: The Best Rule of Holy Life
-app-dicts/sword-rkjnt 1.0: Revised King James New Testament
-app-dicts/sword-rnkjv 1.5: Restored Name King James Version
-app-dicts/sword-robinson 2.0: Robinson's Morphological Analysis Codes
-app-dicts/sword-rotherham 1.6: The Emphasized Bible by J. B. Rotherham
-app-dicts/sword-rst 1.6: Russian Synodal Translation
-app-dicts/sword-rusmakarij 1.1: The Pentateuch of Moses in Russian
-app-dicts/sword-rwebster 1.3: Revised Webster Version (1833)
-app-dicts/sword-rwp 1.9: Robertson's Word Pictures
-app-dicts/sword-saoa 1.0: Scripture Alphabet Of Animals
-app-dicts/sword-scofield 1.0: Scofield Reference Notes, 1917 Edition
-app-dicts/sword-scotsgaelic 1.2: Scots Gaelic Gospel of Mark
-app-dicts/sword-sme 1.7: C. H. Spurgeon's Morning and Evening: Daily Readins
-app-dicts/sword-smith 1.3: Smith's Bible Dictionary
-app-dicts/sword-sparv 1.5: Spanish Reina-Valera
-app-dicts/sword-sparvg2004 1.0: Spanish Reina Valera Gomez 2004
-app-dicts/sword-spasev 1.1: Spanish Sagradas Escrituras Version Antigua (1569)
-app-dicts/sword-spavnt 1.2: Spanish Valera New Testament (1858)
-app-dicts/sword-spurious 1.0: Tischendorf's Spurious Passages of the GNT
-app-dicts/sword-strongsgreek 1.2: Strong's Greek Bible Dictionary
-app-dicts/sword-strongshebrew 1.2: Strong's Hebrew Bible Dictionary
-app-dicts/sword-swahili 1.1: Swahili New Testament
-app-dicts/sword-tagalog 1.1: Tagalog (John & James)
-app-dicts/sword-tcr 1.1: Thompson Chain Topics
-app-dicts/sword-tdavid 1.1: C. H. Spurgeon's Treasury of David
-app-dicts/sword-tfg 1.5: The Fourfold Gospel and Commentary on Acts of Apostles
-app-dicts/sword-tisch 1.3: Tischendorf's Eighth Edition GNT
-app-dicts/sword-torrey 1.3: R. A. Torrey's New Topical Textbook
-app-dicts/sword-tr 1.2: Textus Receptus (1550/1894)
-app-dicts/sword-tsk 1.4: Treasury of Scripture Knowledge
-app-dicts/sword-twenty 1.1: Twentieth Century New Testament
-app-dicts/sword-tyndale 1.0: William Tyndale Bible (1525/1530)
-app-dicts/sword-ukjv 1.1: Updated King James Version
-app-dicts/sword-ukrainian 1.3: Ukrainian Bible
-app-dicts/sword-uma 1.2: Uma New Testament
-app-dicts/sword-vulgate 1.1: Latin Vulgate
-app-dicts/sword-vulgate_hebps 1.1: Latin Vulgate Psalms from Hebrew
-app-dicts/sword-web 1.8: World English Bible
-app-dicts/sword-webster 1.2: Webster Bible
-app-dicts/sword-webstersdict 1.1: Webster's Revised Unabridged Dictionary of the English Language 1913
-app-dicts/sword-wesley 1.1: John Wesley's Notes on the Bible
-app-dicts/sword-weymouth 1.1: Weymouth NT (1912)
-app-dicts/sword-whnu 1.10: Westcott-Hort with NA27/UBS4 variants (1881)
-app-dicts/sword-wlc 1.4: Westminster Leningrad Codex
-app-dicts/sword-wulfila 1.0: Bishop Wulfila Gothic Bible
-app-dicts/sword-wycliffe 1.0: John Wycliffe Bible (1395)
-app-dicts/sword-ylt 1.1: Young's Literal Translation (1898)
+app-dicts/sword-ACV 2.0: A Conservative Version
+app-dicts/sword-AKJV 1.4: American King James Version
+app-dicts/sword-ASV 1.3: American Standard Version (1901)
+app-dicts/sword-Abbott 1.1: Illustrated New Testament
+app-dicts/sword-Afr1953 1.2: Afrikaans Bybel
+app-dicts/sword-Alb 1.2: Albanian Bible
+app-dicts/sword-Aleppo 1.1: Aleppo Codex
+app-dicts/sword-AmTract 1.1: American Tract Society Bible Dictionary
+app-dicts/sword-AraSVD 1.1: Smith and van Dyck's al-Kitab al-Muqaddas (Arabic Bible)
+app-dicts/sword-ArmEastern 1.1: Eastern Armenian Bible
+app-dicts/sword-ArmWestern 1.1: 1853 Western Armenian NT
+app-dicts/sword-BBE 1.3: Bible in Basic English (1949/1964)
+app-dicts/sword-Barnes 1.1: Barnes' New Testament Notes
+app-dicts/sword-BasHautin 1.5: 1571 Navarro-Labourdin Basque NT
+app-dicts/sword-BulVeren 1.0: Veren's Contemporary Bible
+app-dicts/sword-BurJudson 1.1: 1835 Judson Burmese Bible
+app-dicts/sword-Byz 1.10: Byzantine/Majority Text (2000)
+app-dicts/sword-CBC 1.1: Condensed Biblical Cyclopedia
+app-dicts/sword-Chamorro 2.7: Chamorro: Y Santa Biblia
+app-dicts/sword-Clarke 1.0: Adam Clarke's Commentary on the Bible
+app-dicts/sword-Common 1.3: The Common Edition: New Testament
+app-dicts/sword-Cro 1.0: Croatian Bible
+app-dicts/sword-CzeBKR 1.1: Czech Bible Kralicka
+app-dicts/sword-DRC 1.1: Douay-Rheims Bible, Challoner Revision
+app-dicts/sword-DTN 1.0: Darby Translation Notes
+app-dicts/sword-Daily 1.0: Jonathan Bagster's Daily Light on the Daily Path
+app-dicts/sword-Dan 2.1: Danske Bibel
+app-dicts/sword-Darby 1.1: Darby Bible (1889)
+app-dicts/sword-Diaglott 1.1: The Emphatic Diaglott
+app-dicts/sword-DutKant 1.1: Kanttekeningen Statenvertaling
+app-dicts/sword-DutSVV 1.5: Dutch Statenvertaling
+app-dicts/sword-Easton 1.2: Easton's Bible Dictionary
+app-dicts/sword-Esperanto 1.6: Esperanto Bible
+app-dicts/sword-FarsiOPV 1.0: Persian Holy Bible (Tarjumeh-ye Ghadeem)
+app-dicts/sword-FinBiblia 1.1: Finnish Biblia (1776)
+app-dicts/sword-FinPR 1.2: Finnish Pyh, Raamattu (1933/1938)
+app-dicts/sword-Finney 1.1: Sermons on Gospel Themes by Charles G. Finney (1792-1875)
+app-dicts/sword-FreBBB 1.1: French Bible Bovet Bonnet (1900)
+app-dicts/sword-FreCrampon 1.1: La Bible Augustin Crampon 1923
+app-dicts/sword-FreLSG 1.3: French Louis Segond (1910)
+app-dicts/sword-FreMartin 1.2: French Bible Martin (1744)
+app-dicts/sword-FreSegond 1.6: French Traduction de Louis Segond (1910)
+app-dicts/sword-Geneva 1.1: Geneva Bible Translation Notes
+app-dicts/sword-Geneva1599 1.1: Geneva Bible (1599)
+app-dicts/sword-GerElb1871 1.1: German Elberfelder (1871)
+app-dicts/sword-GerElb1905 1.5: German Darby Unrevidierte Elberfelder (1905)
+app-dicts/sword-GerLut1545 1.2: German Unrevidierte Luther Ubersetzung von 1545
+app-dicts/sword-GerSch 1.1: German Schlachter Bibel (1951)
+app-dicts/sword-GreekHebrew 1.1: Greek to Hebrew Dictionary of Septuagint Words
+app-dicts/sword-HNV 1.8: Hebrew Names Version of the World English Bible
+app-dicts/sword-HebrewGreek 1.1: Hebrew to Greek Dictionary of Septuagint Words
+app-dicts/sword-Heretics 1.1: Heretics by Gilbert K. Chesterton (1874-1936)
+app-dicts/sword-Hitchcock 1.3: Hitchcock's Bible Names
+app-dicts/sword-HunKar 1.7: Hungarian Karoli
+app-dicts/sword-ISBE 1.6: International Standard Bible Encyclopedia
+app-dicts/sword-ISV 1.5: International Standard Version
+app-dicts/sword-Institutes 1.2: Calvin's Institutes
+app-dicts/sword-ItaDio 1.0: Italian Giovanni Diodati Bibbia 1649
+app-dicts/sword-ItaRive 1.0: Italian Riveduta Bibbia (1927)
+app-dicts/sword-JFB 2.2: Jamieson Fausset Brown Bible Commentary
+app-dicts/sword-JPS 1.2: Jewish Publication Society Old Testament
+app-dicts/sword-JST 1.1: Joseph Smith Translation
+app-dicts/sword-Josephus 1.1: Josephus: The Complete Works
+app-dicts/sword-Jubilee2000 1.1: English Jubilee 2000 Bible
+app-dicts/sword-KJV 2.3: King James Version (1769) with Strongs Numbers and Morphology
+app-dicts/sword-KJVD 1.1: King James Dictionary
+app-dicts/sword-KLV 2.2: Klingon Language Version of the World English Bible
+app-dicts/sword-KLVen_iklingon 2.1: Klingon Language Version English to Klingon mapping lexicon
+app-dicts/sword-KLViklingon_en 2.1: Klingon Language Version Klingon to English mapping lexicon
+app-dicts/sword-LITV 1.3: Green's Literal Translation
+app-dicts/sword-Lightfoot 1.0: John Lightfoot Commentary
+app-dicts/sword-Luther 1.1: Luther's Commentary on Galatians
+app-dicts/sword-MAK 1.0: Matthias Ansorgs Kommentar
+app-dicts/sword-MHC 1.6: Matthew Henry's Complete Commentary on the Whole Bible
+app-dicts/sword-MHCC 1.1: Matthew Henry's Concise Commentary on the Whole Bible
+app-dicts/sword-MKJV 1.3: Green's Modern King James Version
+app-dicts/sword-ManxGaelic 1.1: Manx Gaelic Scripture Portions
+app-dicts/sword-Montgomery 1.3: Montgomery New Testament
+app-dicts/sword-Murdock 1.2: James Murdock's Translation of the Syriac Peshitta
+app-dicts/sword-Nave 1.1: Nave's Topical Bible
+app-dicts/sword-Norsk 1.5: Den Norske Bibelen
+app-dicts/sword-Orthodoxy 1.0: Orthodoxy by Gilbert K. Chesterton (1874-1936)
+app-dicts/sword-PNT 1.1: The People's New Testament
+app-dicts/sword-Packard 1.2: Packard's Morphological Analysis Codes
+app-dicts/sword-Personal 1.0: Personal Commentary
+app-dicts/sword-Peshitta 1.1: Syriac Peshitta
+app-dicts/sword-Pilgrim 1.0: The Pilgrim's Progress by John Bunyan (1628-1688)
+app-dicts/sword-Practice 1.0: The Practice of the Presence of God: The Best Rule of Holy Life
+app-dicts/sword-RKJNT 1.0: Revised King James New Testament
+app-dicts/sword-RNKJV 1.5: Restored Name King James Version
+app-dicts/sword-RST 1.6: Russian Synodal Translation
+app-dicts/sword-RWP 1.9: Robertson's Word Pictures
+app-dicts/sword-RWebster 1.3: Revised Webster Version (1833)
+app-dicts/sword-Robinson 2.0: Robinson's Morphological Analysis Codes
+app-dicts/sword-Rotherham 1.6: The Emphasized Bible by J. B. Rotherham
+app-dicts/sword-RusMakarij 1.1: The Pentateuch of Moses in Russian
+app-dicts/sword-SAOA 1.0: Scripture Alphabet Of Animals
+app-dicts/sword-SME 1.7: C. H. Spurgeon's Morning and Evening: Daily Readins
+app-dicts/sword-Scofield 1.0: Scofield Reference Notes, 1917 Edition
+app-dicts/sword-ScotsGaelic 1.2: Scots Gaelic Gospel of Mark
+app-dicts/sword-Smith 1.3: Smith's Bible Dictionary
+app-dicts/sword-SpaRV 1.5: Spanish Reina-Valera
+app-dicts/sword-SpaRVG2004 1.0: Spanish Reina Valera Gomez 2004
+app-dicts/sword-SpaSEV 1.1: Spanish Sagradas Escrituras Version Antigua (1569)
+app-dicts/sword-SpaVNT 1.2: Spanish Valera New Testament (1858)
+app-dicts/sword-Spurious 1.0: Tischendorf's Spurious Passages of the GNT
+app-dicts/sword-StrongsGreek 1.2: Strong's Greek Bible Dictionary
+app-dicts/sword-StrongsHebrew 1.2: Strong's Hebrew Bible Dictionary
+app-dicts/sword-Swahili 1.1: Swahili New Testament
+app-dicts/sword-TCR 1.1: Thompson Chain Topics
+app-dicts/sword-TDavid 1.1: C. H. Spurgeon's Treasury of David
+app-dicts/sword-TFG 1.5: The Fourfold Gospel and Commentary on Acts of Apostles
+app-dicts/sword-TR 1.2: Textus Receptus (1550/1894)
+app-dicts/sword-TSK 1.4: Treasury of Scripture Knowledge
+app-dicts/sword-Tagalog 1.1: Tagalog (John & James)
+app-dicts/sword-Tisch 1.3: Tischendorf's Eighth Edition GNT
+app-dicts/sword-Torrey 1.3: R. A. Torrey's New Topical Textbook
+app-dicts/sword-Twenty 1.1: Twentieth Century New Testament
+app-dicts/sword-Tyndale 1.0: William Tyndale Bible (1525/1530)
+app-dicts/sword-UKJV 1.1: Updated King James Version
+app-dicts/sword-Ukrainian 1.3: Ukrainian Bible
+app-dicts/sword-Uma 1.2: Uma New Testament
+app-dicts/sword-Vulgate 1.1: Latin Vulgate
+app-dicts/sword-Vulgate_HebPs 1.1: Latin Vulgate Psalms from Hebrew
+app-dicts/sword-WEB 1.8: World English Bible
+app-dicts/sword-WHNU 1.10: Westcott-Hort with NA27/UBS4 variants (1881)
+app-dicts/sword-WLC 1.4: Westminster Leningrad Codex
+app-dicts/sword-Webster 1.2: Webster Bible
+app-dicts/sword-WebstersDict 1.1: Webster's Revised Unabridged Dictionary of the English Language 1913
+app-dicts/sword-Wesley 1.1: John Wesley's Notes on the Bible
+app-dicts/sword-Weymouth 1.1: Weymouth NT (1912)
+app-dicts/sword-Wulfila 1.0: Bishop Wulfila Gothic Bible
+app-dicts/sword-Wycliffe 1.0: John Wycliffe Bible (1395)
+app-dicts/sword-YLT 1.1: Young's Literal Translation (1898)
 app-dicts/verbiste 0.1.38-r1 0.1.41 0.1.44: French conjugation system
 app-dicts/wnn-ldic 1.04: Wnn dictionary for librarian
 app-dicts/wordnet 3.0-r4 3.0-r5 3.1: A lexical database for the English language
@@ -2796,7 +2796,7 @@ app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a
 app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellchecking in mails, etc.)
 app-text/stardict 3.0.6-r3 4.0.0_pre20170304: A international dictionary supporting fuzzy and glob style matching
 app-text/sword 1.8.1-r1: Library for Bible reading software
-app-text/sword-modules 1-r1: A collection of modules for the SWORD project
+app-text/sword-modules 1-r2: A collection of modules for the SWORD project
 app-text/t1utils 1.41-r2: Type 1 Font utilities
 app-text/tabler 2-r1: A utility to create text art tables from delimited input
 app-text/talkfilters 2.3.8-r1: Convert ordinary English text into text that mimics a stereotyped dialect
