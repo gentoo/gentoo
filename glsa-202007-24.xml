@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-24">
+  <title>Twisted: Access restriction bypasses</title>
+  <synopsis>Multiple vulnerabilities have been found in Twisted, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">twisted</product>
+  <announced>2020-07-27</announced>
+  <revised count="1">2020-07-27</revised>
+  <bug>712240</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-python/twisted" auto="yes" arch="*">
+      <unaffected range="ge">20.3.0</unaffected>
+      <vulnerable range="lt">20.3.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Twisted is an asynchronous networking framework written in Python.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Twisted. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Twisted users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/twisted-20.3.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-10108">CVE-2020-10108</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-10109">CVE-2020-10109</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-26T05:19:42Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-27T00:12:37Z">sam_c</metadata>
+</glsa>
