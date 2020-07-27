@@ -20,7 +20,7 @@ sys-block/fio -io-uring -zbc
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-06-20)
 # media-libs/nv-codec-headers is not available for x86
-media-video/ffmpeg video_cards_nvidia
+>=media-video/ffmpeg-4.3 video_cards_nvidia
 
 # Marek Szuba <marecki@gentoo.org> (2020-06-17)
 # Unmask globally-masked flashrom drivers and tools which do work on x86
@@ -193,10 +193,6 @@ app-admin/rsyslog -mdblookup
 # Requires dev-lua/ldoc for building documentation,
 # which is only keyworded for amd64
 x11-wm/awesome doc
-
-# Alexis Ballier <aballier@gentoo.org> (2017-01-31)
-# nvidia drivers are unmasked here
-media-video/ffmpeg -nvenc
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2016-12-31)
 # on behalf of Andreas K. Hüttel <dilfridge@gentoo.org> (2016-12-14)
