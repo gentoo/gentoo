@@ -15,7 +15,7 @@ SRC_URI="https://github.com/jekyll/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="gsl test"
 
 ruby_add_rdepend ">=dev-ruby/fast-stemmer-1.0.0
