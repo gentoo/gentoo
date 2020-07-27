@@ -45,8 +45,8 @@ dev-python/autobahn xbr
 # Requires vulnerable dev-python/pillow version.
 sci-libs/scipy python_targets_python2_7
 
-# Thomas Deutschmann <whissi@gentoo.org> (2020-07-09)
-# media-video/pipewire:0/0.3 is currently masked
+# Thomas Deutschmann <whissi@gentoo.org> (2020-07-27)
+# media-video/pipewire:0/0.3 is only available for certain architectures
 www-client/firefox screencast
 
 # Mart Raudsepp <leio@gentoo.org> (2020-06-28)

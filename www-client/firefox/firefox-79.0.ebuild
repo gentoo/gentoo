@@ -28,7 +28,7 @@ if [[ ${MOZ_ESR} == 1 ]] ; then
 fi
 
 # Patch version
-PATCH="${PN}-78.0-patches-05"
+PATCH="${PN}-79.0-patches-01"
 
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 MOZ_SRC_URI="${MOZ_HTTP_URI}/${MOZ_PV}/source/${PN}-${MOZ_PV}.source.tar.xz"
@@ -70,7 +70,7 @@ SRC_URI="${SRC_URI}
 	${PATCH_URIS[@]}"
 
 CDEPEND="
-	>=dev-libs/nss-3.53.1
+	>=dev-libs/nss-3.54
 	>=dev-libs/nspr-4.25
 	dev-libs/atk
 	dev-libs/expat
@@ -105,7 +105,7 @@ CDEPEND="
 		>=media-libs/libaom-1.0.0:=
 	)
 	system-harfbuzz? (
-		>=media-libs/harfbuzz-2.6.4:0=
+		>=media-libs/harfbuzz-2.6.8:0=
 		>=media-gfx/graphite2-1.3.13
 	)
 	system-icu? ( >=dev-libs/icu-67.1:= )
@@ -135,7 +135,7 @@ RDEPEND="${CDEPEND}
 DEPEND="${CDEPEND}
 	app-arch/zip
 	app-arch/unzip
-	>=dev-util/cbindgen-0.14.1
+	>=dev-util/cbindgen-0.14.3
 	>=net-libs/nodejs-10.19.0
 	>=sys-devel/binutils-2.30
 	sys-apps/findutils
