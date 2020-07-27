@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-32">
+  <title>Sarg: Local privilege escalation</title>
+  <synopsis>A flaw in Sarg may allow local privilege escalation.</synopsis>
+  <product type="ebuild">sarg</product>
+  <announced>2020-07-27</announced>
+  <revised count="1">2020-07-27</revised>
+  <bug>706748</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-analyzer/sarg" auto="yes" arch="*">
+      <unaffected range="ge">2.4.0</unaffected>
+      <vulnerable range="lt">2.4.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Sarg (Squid Analysis Report Generator) is a tool that provides many
+      informations about the Squid web proxy server users activities: time,
+      sites, traffic, etc.
+    </p>
+  </background>
+  <description>
+    <p>A flaw in Sarg’s handling of temporary directories was discovered.</p>
+  </description>
+  <impact type="high">
+    <p>A local attacker may be able to escalate privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Sarg users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/sarg-2.4.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-18932">CVE-2019-18932</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-06-20T01:21:28Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2020-07-27T00:26:55Z">sam_c</metadata>
+</glsa>
