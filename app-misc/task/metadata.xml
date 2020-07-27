@@ -11,6 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="sync">Enable "task sync" support</flag>
+		<flag name="clang"> Support for compilation with sys-devel/clang</flag>
 	</use>
 </pkgmetadata>
 
