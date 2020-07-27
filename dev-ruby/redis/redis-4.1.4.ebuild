@@ -21,7 +21,7 @@ SRC_URI="https://github.com/redis/redis-rb/archive/v${PV}.tar.gz -> ${MY_P}.tar.
 
 LICENSE="MIT"
 SLOT="4"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="doc test"
 
 DEPEND="test? ( >=dev-db/redis-3.2.0 )"

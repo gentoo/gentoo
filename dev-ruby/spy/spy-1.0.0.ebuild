@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/ryanong/spy"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/minitest:0 )"

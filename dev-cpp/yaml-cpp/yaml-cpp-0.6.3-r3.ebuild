@@ -16,14 +16,18 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-lin
 IUSE="test"
 
 # test breaks build
-# RESTRICT="!test? ( test )"
+#RESTRICT="!test? ( test )"
 RESTRICT+="test"
 
 DEPEND="test? ( dev-cpp/gtest )"
 
 S="${WORKDIR}/${PN}-${P}"
 
-PATCHES=( "${FILESDIR}/${P}-abi-breakage.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-abi-breakage.patch"
+	"${FILESDIR}/${P}-CVE-2017-11692.patch"
+	"${FILESDIR}/${P}-fix-overflows.patch"
+)
 
 src_prepare() {
 	sed -i \
