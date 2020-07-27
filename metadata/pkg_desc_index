@@ -17176,7 +17176,7 @@ sys-fs/dd-rescue 1.99.8-r1: Similar to dd but can copy from source with errors
 sys-fs/ddrescue 1.24 1.25: Copy data from one file or block device to another with read-error recovery
 sys-fs/dfc 3.1.1: A simple CLI tool that display file system usage, with colors
 sys-fs/diskdev_cmds 332.14_p1-r2 332.14_p1-r3: HFS and HFS+ utils ported from OSX, supplies mkfs and fsck
-sys-fs/dislocker 0.7.1-r2 9999: Dislocker is used to read BitLocker encrypted partitions.
+sys-fs/dislocker 0.7.1-r2 0.7.1-r3 9999: Dislocker is used to read BitLocker encrypted partitions.
 sys-fs/dmg2img 1.6.7 1.6.7-r1: Converts Apple DMG files to standard HFS+ images
 sys-fs/dmraid 1.0.0_rc16-r3 1.0.0_rc16-r4 1.0.0_rc16-r5: Device-mapper RAID tool and library
 sys-fs/dosfstools 4.1: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
@@ -17807,7 +17807,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r2: a free, open source web browser
 www-client/opera 69.0.3686.77: A fast and secure web browser
 www-client/opera-beta 70.0.3728.8 70.0.3728.21 70.0.3728.46 70.0.3728.59: A fast and secure web browser
-www-client/opera-developer 71.0.3735.0 71.0.3742.0 71.0.3749.0 71.0.3756.0: A fast and secure web browser
+www-client/opera-developer 71.0.3735.0 71.0.3742.0 71.0.3749.0 71.0.3756.0 71.0.3763.0: A fast and secure web browser
 www-client/otter 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.12.0 1.13.0 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
