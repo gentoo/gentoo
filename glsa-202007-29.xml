@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-29">
+  <title>rssh: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in rssh, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">rssh</product>
+  <announced>2020-07-27</announced>
+  <revised count="1">2020-07-27</revised>
+  <bug>699842</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-shells/rssh" auto="yes" arch="*">
+      <vulnerable range="le">2.3.4_p3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>rssh is a restricted shell, allowing only a few commands like scp or
+      sftp. It is often used as a complement to OpenSSH to provide limited
+      access to users.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in rssh. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo has discontinued support for rssh. We recommend that users
+      unmerge rssh:
+    </p>
+    
+    <code>
+      # emerge --unmerge "app-shells/rssh"
+    </code>
+    
+    <p>NOTE: The Gentoo developer(s) maintaining rssh have discontinued support
+      at this time. It may be possible that a new Gentoo developer will update
+      rssh at a later date. OpenSSH (net-misc/openssh) may be able to provide
+      similar functionality using its extensive configuration.
+    </p>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-1000018">
+      CVE-2019-1000018
+    </uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-3463">CVE-2019-3463</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-3464">CVE-2019-3464</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-06-20T04:47:11Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2020-07-27T00:22:59Z">sam_c</metadata>
+</glsa>
