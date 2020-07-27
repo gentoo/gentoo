@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-31">
+  <title>Icinga: Root privilege escalation</title>
+  <synopsis>Icinga installs files with insecure permissions allowing root
+    privilege escalation.
+  </synopsis>
+  <product type="ebuild">icinga</product>
+  <announced>2020-07-27</announced>
+  <revised count="1">2020-07-27</revised>
+  <bug>638186</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-analyzer/icinga" auto="yes" arch="*">
+      <vulnerable range="lt">1.14.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Icinga is an open source computer system and network monitoring
+      application. It was originally created as a fork of the Nagios system
+      monitoring application in 2009.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that Icinga’s installed files have insecure
+      permissions, possibly allowing root privilege escalation.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could escalate privileges to root.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo has discontinued support for Icinga. We recommend that users
+      unmerge Icinga:
+    </p>
+    
+    <code>
+      # emerge --unmerge "net-analyzer/icinga"
+    </code>
+    
+    <p>NOTE: The Gentoo developer(s) maintaining Icinga have discontinued
+      support at this time. It may be possible that a new Gentoo developer will
+      update Icinga at a later date. The natural replacement is Icinga 2
+      (net-analyzer/icinga2).
+    </p>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-16882">CVE-2017-16882</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-06-20T02:07:54Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-27T00:26:20Z">sam_c</metadata>
+</glsa>
