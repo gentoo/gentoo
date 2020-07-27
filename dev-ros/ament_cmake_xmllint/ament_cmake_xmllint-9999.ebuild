@@ -52,3 +52,10 @@ python_check_deps() {
 		has_version "dev-python/catkin_pkg[${PYTHON_USEDEP}]" && \
 		has_version "dev-ros/ament_xmllint[${PYTHON_USEDEP}]"
 }
+
+src_configure() {
+	local mycmakeargs=(
+		-DBUILD_TESTING=$(usex test ON OFF)
+	)
+	cmake_src_configure
+}
