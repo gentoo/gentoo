@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrey Utkin <andrey_utkin@gentoo.org> (2020-07-28)
+# Not used by other packages anymore.
+# Removal in 30 days.
+dev-python/ruamel-std-pathlib
+
 # Marek Szuba <marecki@gentoo.org> (2020-07-27)
 # No longer available upstream. Potentially copyrighted.
 # Removal in 30 days. Bug #734116.
