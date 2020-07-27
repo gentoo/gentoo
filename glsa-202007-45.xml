@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-45">
+  <title>NTFS-3G: Remote code execution, possible privilege escalation</title>
+  <synopsis>A buffer overflow in NTFS-3g might allow local or remote
+    attacker(s) to execute arbitrary code, or escalate privileges.
+  </synopsis>
+  <product type="ebuild">ntfs-3g</product>
+  <announced>2020-07-27</announced>
+  <revised count="1">2020-07-27</revised>
+  <bug>717640</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-fs/ntfs3g" auto="yes" arch="*">
+      <unaffected range="ge">2017.3.23-r3</unaffected>
+      <vulnerable range="lt">2017.3.23-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>NTFS-3G is a stable, full-featured, read-write NTFS driver for various
+      operating systems.
+    </p>
+  </background>
+  <description>
+    <p>An integer underflow issue exists in NTFS-3G which may cause a heap
+      buffer overflow with crafted input.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker may be able to execute arbitrary code while a local
+      attacker may be able to escalate privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All NTFS-3G users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-fs/ntfs3g-2017.3.23-r3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-9755">CVE-2019-9755</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-06-13T16:28:32Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-27T00:59:29Z">sam_c</metadata>
+</glsa>
