@@ -1,4 +1,4 @@
-DEFINED_PHASES=install setup test
+DEFINED_PHASES=compile install setup test
 DEPEND=sys-fs/fuse:0 test? ( || ( ( dev-lang/python:3.8 dev-python/pytest[python_targets_python3_8(-),python_single_target_python3_8(+)] ) ( dev-lang/python:3.7 dev-python/pytest[python_targets_python3_7(-),python_single_target_python3_7(+)] ) ( dev-lang/python:3.6 dev-python/pytest[python_targets_python3_6(-),python_single_target_python3_6(+)] ) ) )
 DESCRIPTION=Self-syncing tree-merging file system based on FUSE
 EAPI=7
@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/rpodgorny/unionfs-fuse/archive/v2.1.tar.gz -> unionfs-fuse-2.1.tar.gz
 _eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=3bd68ea6f3c862002fd8778de8e13d25
+_md5_=fee950f4805dae6f828700303c6a058c
