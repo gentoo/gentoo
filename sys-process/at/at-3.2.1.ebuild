@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit autotools eutils flag-o-matic pam user systemd
 MY_P="${PN}_${PV}"
 
 DESCRIPTION="Queues jobs for later execution"
-HOMEPAGE="http://blog.calhariz.com/tag/at https://packages.qa.debian.org/a/at.html"
+HOMEPAGE="http://blog.calhariz.com/index.php/tag/at https://packages.qa.debian.org/a/at.html"
 SRC_URI="http://software.calhariz.com/at/${MY_P}.orig.tar.gz
 	mirror://debian/pool/main/a/at/${MY_P}.orig.tar.gz"
 
