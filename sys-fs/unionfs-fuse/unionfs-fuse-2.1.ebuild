@@ -4,7 +4,7 @@
 EAPI="7"
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit python-any-r1
+inherit python-any-r1 toolchain-funcs
 
 DESCRIPTION="Self-syncing tree-merging file system based on FUSE"
 HOMEPAGE="https://github.com/rpodgorny/unionfs-fuse"
@@ -30,6 +30,10 @@ pkg_setup() {
 python_check_deps() {
 	use test || return 0
 	has_version "dev-python/pytest[${PYTHON_USEDEP}]"
+}
+
+src_compile() {
+	emake AR="$(tc-getAR)" CC="$(tc-getCC)"
 }
 
 src_install() {
