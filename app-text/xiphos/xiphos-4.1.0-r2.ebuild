@@ -34,7 +34,7 @@ DEPEND="${RDEPEND}
 	app-text/rarian
 	dev-util/glib-utils
 	dev-util/intltool
-	>=net-libs/biblesync-1.1.2-r1[-static]
+	>=net-libs/biblesync-1.2.0-r1[-static]
 	virtual/pkgconfig
 	sys-devel/gettext
 	app-text/gnome-doc-utils
