@@ -30,6 +30,7 @@ HOMEPAGE="http://wiki.ros.org/console_bridge"
 LICENSE="BSD"
 SLOT="0/1"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/boost:=[threads]"
 DEPEND="${RDEPEND}"
@@ -52,8 +53,10 @@ src_configure() {
 	cmake_src_configure
 
 	# For tests
-	cp "${DISTDIR}/${P}-ament-${AMENT_LINT_VER}-cppcheck.py" "${BUILD_DIR}/test/cppcheck.py" || die
-	cp "${DISTDIR}/${P}-ament-${AMENT_LINT_VER}-cpplint.py" "${BUILD_DIR}/test/cpplint.py" || die
+	if use test ; then
+		cp "${DISTDIR}/${P}-ament-${AMENT_LINT_VER}-cppcheck.py" "${BUILD_DIR}/test/cppcheck.py" || die
+		cp "${DISTDIR}/${P}-ament-${AMENT_LINT_VER}-cpplint.py" "${BUILD_DIR}/test/cpplint.py" || die
+	fi
 }
 
 src_test() {
