@@ -1670,7 +1670,7 @@ app-emulation/fs-uae-launcher 3.0.5: PyQt5-based launcher for FS-UAE
 app-emulation/fuse 1.5.6 1.5.7: Free Unix Spectrum Emulator by Philip Kendall
 app-emulation/fuse-utils 1.4.3: Utils for the Free Unix Spectrum Emulator by Philip Kendall
 app-emulation/gallium-nine-standalone 0.5 9999: A standalone version of the WINE parts of Gallium Nine
-app-emulation/ganeti 2.15.2-r10 2.16.0_rc1 2.17.0_beta1: Ganeti is a virtual server management software tool
+app-emulation/ganeti 2.15.2-r11 2.16.0_rc1 2.17.0_beta1: Ganeti is a virtual server management software tool
 app-emulation/ganeti-instance-debootstrap 0.11-r1 0.16: Scripts to build Ganeti VMs with debootstrap
 app-emulation/ganeti-instance-image 0.6-r2: Scripts to build out CD or image based VMs using Ganeti
 app-emulation/ganeti-os-noop 0.2: Dummy OS provider for Ganeti
@@ -4866,7 +4866,7 @@ dev-libs/antlr-c 3.5.2 3.5.2-r1: The ANTLR3 C Runtime
 dev-libs/appstream 0.12.7 0.12.11-r1: Cross-distro effort for providing metadata for software in the Linux ecosystem
 dev-libs/appstream-glib 0.7.16 0.7.17: Provides GObjects and helper methods to read and write AppStream metadata
 dev-libs/apr 1.6.3-r4 1.6.5-r1 1.7.0-r1: Apache Portable Runtime Library
-dev-libs/apr-util 1.6.1-r4: Apache Portable Runtime Utility Library
+dev-libs/apr-util 1.6.1-r5: Apache Portable Runtime Utility Library
 dev-libs/argtable 2.13-r1: An ANSI C library for parsing GNU-style command-line options with minimal fuss
 dev-libs/atcore 1.0.0: API to manage the serial connection between the computer and 3D Printers
 dev-libs/atf 0.21-r2: Libraries to write tests in C, C++ and shell
