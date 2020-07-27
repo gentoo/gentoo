@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/SciRuby/rb-gsl"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="doc"
 
 DEPEND+=" >=sci-libs/gsl-2.3[deprecated]"
