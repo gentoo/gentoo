@@ -2509,7 +2509,7 @@ app-portage/ufed 0.96 9999: Gentoo Linux USE flags editor
 app-portage/unsymlink-lib 17-r1 18 9999: Convert your system to SYMLINK_LIB=no
 app-shells/autojump 22.2.4-r4 22.5.1 22.5.3: change directory command that learns
 app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r2 4.4_p23-r1 5.0_p11 5.0_p16 5.0_p17 5.0_p18: The standard GNU Bourne again shell
-app-shells/bash-completion 2.10 9999: Programmable Completion for bash
+app-shells/bash-completion 2.10 2.11 9999: Programmable Completion for bash
 app-shells/bashdb 4.4.1.0.1 5.0.1.1.0 5.0.1.1.2: bash source code debugging
 app-shells/bashish 2.2.4: Text console theme engine
 app-shells/ccsh 0.0.4-r4: UNIX Shell for people already familiar with the C language
@@ -17530,7 +17530,6 @@ virtual/libffi 3.3_rc0: A virtual for the Foreign Function Interface implementat
 virtual/libgudev 215-r3 230 232: Virtual for libgudev providers
 virtual/libiconv 0 0-r1 0-r2: Virtual for the GNU conversion library
 virtual/libintl 0 0-r1 0-r2: Virtual for the GNU Internationalization Library
-virtual/libstdc++ 3.3: Virtual for the GNU Standard C++ Library for <gcc-3.4
 virtual/libudev 215-r1 232-r1 232-r2 232-r3: Virtual for libudev providers
 virtual/libusb 0-r2 1-r1 1-r2: Virtual for libusb
 virtual/linux-sources 3-r4: Virtual for Linux kernel sources
