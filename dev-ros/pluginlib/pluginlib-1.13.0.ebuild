@@ -5,7 +5,6 @@ EAPI=7
 
 ROS_REPO_URI="https://github.com/ros/pluginlib"
 KEYWORDS="~amd64 ~arm"
-PYTHON_COMPAT=( python2_7 )
 ROS_SUBDIR="${PN}"
 
 inherit ros-catkin
