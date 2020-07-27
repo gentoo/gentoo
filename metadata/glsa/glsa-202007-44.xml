@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-44">
+  <title>FreeXL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in FreeXL, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">freexl</product>
+  <announced>2020-07-27</announced>
+  <revised count="1">2020-07-27</revised>
+  <bug>648700</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/freexl" auto="yes" arch="*">
+      <unaffected range="ge">1.0.5</unaffected>
+      <vulnerable range="lt">1.0.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FreeXL is an open source library to extract valid data from within an
+      Excel (.xls) spreadsheet.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in FreeXL. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All FreeXL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/freexl-1.0.5"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7435">CVE-2018-7435</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7436">CVE-2018-7436</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7437">CVE-2018-7437</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7438">CVE-2018-7438</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7439">CVE-2018-7439</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-18T00:12:02Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-27T00:53:54Z">sam_c</metadata>
+</glsa>

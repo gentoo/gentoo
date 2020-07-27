@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-37">
+  <title>AWStats: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in AWStats, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">awstats</product>
+  <announced>2020-07-27</announced>
+  <revised count="1">2020-07-27</revised>
+  <bug>646786</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-misc/awstats" auto="yes" arch="*">
+      <unaffected range="ge">7.8</unaffected>
+      <vulnerable range="lt">7.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>AWStats is an advanced log file analyzer and statistics generator.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in AWStats. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All AWStats users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-misc/awstats-7.8"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-1000501">
+      CVE-2017-1000501
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-18T00:02:30Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-27T00:37:10Z">sam_c</metadata>
+</glsa>

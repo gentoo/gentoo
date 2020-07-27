@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-40">
+  <title>Thin: Privilege escalation</title>
+  <synopsis>A vulnerability was discovered in Thin which may allow local
+    attackers to kill arbitrary processes (denial of service).
+  </synopsis>
+  <product type="ebuild">thin</product>
+  <announced>2020-07-27</announced>
+  <revised count="1">2020-07-27</revised>
+  <bug>642200</bug>
+  <access>local</access>
+  <affected>
+    <package name="www-servers/thin" auto="yes" arch="*">
+      <vulnerable range="le">1.7.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Thin is a small and fast Ruby web server.</p>
+  </background>
+  <description>
+    <p>It was discovered that Gentoo’s Thin ebuild does not properly handle
+      its temporary runtime directories. This only affects OpenRC systems, as
+      the flaw was exploitable via the init script.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could cause denial of service by killing arbitrary
+      processes.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo has discontinued support for Thin. We recommend that users
+      unmerge Thin:
+    </p>
+    
+    <code>
+      # emerge --unmerge "www-servers/thin"
+    </code>
+    
+    <p>NOTE: The Gentoo developer(s) maintaining Thin have discontinued support
+      at this time. It may be possible that a new Gentoo developer will update
+      Thin at a later date. There are many other web servers available in the
+      tree in the www-servers category.
+    </p>
+  </resolution>
+  <references>
+  </references>
+  <metadata tag="requester" timestamp="2020-06-14T00:47:13Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-27T00:48:08Z">sam_c</metadata>
+</glsa>
