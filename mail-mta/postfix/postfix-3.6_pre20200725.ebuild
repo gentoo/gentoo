@@ -33,7 +33,7 @@ DEPEND=">=dev-libs/libpcre-3.4
 	sasl? (  >=dev-libs/cyrus-sasl-2 )
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
+		!libressl? ( >=dev-libs/openssl-1.1.1:0= )
 		libressl? ( >=dev-libs/libressl-2.9.1:0= )
 	)"
 
@@ -57,14 +57,11 @@ RDEPEND="${DEPEND}
 	!net-mail/fastforward
 	selinux? ( sec-policy/selinux-postfix )"
 
-REQUIRED_USE="ldap-bind? ( ldap sasl )"
+# no libressl support yet for >=postfix_pre20200725
+REQUIRED_USE="ldap-bind? ( ldap sasl )
+	!libressl"
 
 S="${WORKDIR}/${MY_SRC}"
-
-PATCHES=(
-	"${FILESDIR}/${PN}-libressl-certkey.patch"
-	"${FILESDIR}/${PN}-libressl-server.patch"
-)
 
 src_prepare() {
 	default
