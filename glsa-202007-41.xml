@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-41">
+  <title>Roundcube: Multiple vulnerabilities</title>
+  <synopsis>A flaw in Roundcube's handling of configuration files may allow
+    arbitrary code execution, amongst other vulnerabilities.
+  </synopsis>
+  <product type="ebuild">Roundcube</product>
+  <announced>2020-07-27</announced>
+  <revised count="1">2020-07-27</revised>
+  <bug>720876</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/roundcube" auto="yes" arch="*">
+      <unaffected range="ge" slot="1.4.4">1.4.4</unaffected>
+      <unaffected range="ge" slot="1.3.11">1.3.11</unaffected>
+      <vulnerable range="lt" slot="1.4.4">1.4.4</vulnerable>
+      <vulnerable range="lt" slot="1.3.11">1.3.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Free and open source webmail software for the masses, written in PHP.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Roundcube. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Roundcube 1.4.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/roundcube-1.4.4"
+    </code>
+    
+    <p>All Roundcube 1.3.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/roundcube-1.3.11"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12625">CVE-2020-12625</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12626">CVE-2020-12626</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12640">CVE-2020-12640</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12641">CVE-2020-12641</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-17T23:26:23Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-27T00:48:35Z">sam_c</metadata>
+</glsa>
