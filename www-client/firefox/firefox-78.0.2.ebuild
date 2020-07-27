@@ -58,7 +58,8 @@ IUSE="bindist clang cpu_flags_x86_avx2 debug eme-free geckodriver
 	+system-harfbuzz +system-icu +system-jpeg +system-libevent
 	+system-libvpx +system-webp test wayland wifi"
 
-REQUIRED_USE="pgo? ( lto )"
+REQUIRED_USE="pgo? ( lto )
+	screencast? ( wayland )"
 
 RESTRICT="!bindist? ( bindist )
 	!test? ( test )"
