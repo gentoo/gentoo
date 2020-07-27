@@ -136,10 +136,6 @@ app-admin/rsyslog mdblookup
 # https://caml.inria.fr/pub/docs/manual-ocaml/spacetime.html
 dev-lang/ocaml spacetime
 
-# Alexis Ballier <aballier@gentoo.org> (2017-01-31)
-# nvenc requires nvidia drivers, apply same mask logic
-media-video/ffmpeg nvenc
-
 # Thomas Deutschmann <whissi@gentoo.org> (2017-01-30)
 # media-libs/raspberrypi-userland not keyworded
 media-video/motion mmal
