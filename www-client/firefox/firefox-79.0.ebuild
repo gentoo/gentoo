@@ -140,7 +140,7 @@ DEPEND="${CDEPEND}
 	>=sys-devel/binutils-2.30
 	sys-apps/findutils
 	virtual/pkgconfig
-	>=virtual/rust-1.41.0
+	>=virtual/rust-1.43.0
 	|| (
 		(
 			sys-devel/clang:10
