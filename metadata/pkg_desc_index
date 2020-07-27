@@ -2843,7 +2843,7 @@ app-text/xchm 1.23-r1 1.29 1.30 1.31 9999: Utility for viewing Compiled HTML Hel
 app-text/xdvik 22.87.03-r1 22.87.03-r2: DVI previewer for X Window System
 app-text/xhtml1 20020801-r6: DTDs for the eXtensible HyperText Markup Language 1.0
 app-text/xhtml11 20101123: DTDs for the eXtensible HyperText Markup Language 1.0
-app-text/xiphos 4.0.6a-r2 4.1.0-r2: A bible study frontend for Sword (formerly known as GnomeSword)
+app-text/xiphos 4.0.6a-r2 4.2.1: A Gtk+-based Bible-study frontend for SWORD
 app-text/xlhtml 0.5.1_p6: Convert MS Excel and Powerpoint files to HTML
 app-text/xlsx2csv 0.7.6: Convert MS Office xlsx files to CSV
 app-text/xml2 0.5: These tools are used to convert XML and HTML to and from a line-oriented format
@@ -13179,6 +13179,7 @@ media-plugins/kodi-screensaver-asteroids 2.1.0 9999: Asteroids screensaver for K
 media-plugins/kodi-screensaver-biogenesis 1.1.0 2.0.0 9999: Biogenesis screensaver for Kodi
 media-plugins/kodi-screensaver-crystalmorph 9999: Crystalmorph screensaver for Kodi
 media-plugins/kodi-screensaver-greynetic 1.1.0 2.0.0 9999: Greynetic screensaver for Kodi
+media-plugins/kodi-screensaver-matrixtrails 2.2.3 9999: Matrix Trails screensaver for Kodi
 media-plugins/kodi-screensaver-pingpong 1.1.0 2.0.0 9999: Ping-pong screensaver for Kodi
 media-plugins/kodi-screensaver-pyro 2.0.0 3.0.0 3.0.1 9999: Pyro screensaver for Kodi
 media-plugins/kodi-screensaver-rsxs 9999: RSXS screensaver for Kodi
@@ -14477,7 +14478,7 @@ net-libs/libdmapsharing 2.9.39: A library that implements the DMAP family of pro
 net-libs/libdom 0.3.3-r1 0.4.0 0.4.1: implementation of the W3C DOM, written in C
 net-libs/libecap 1.0.0: API for implementing ICAP content analysis and adaptation
 net-libs/libesmtp 1.0.6-r3 9999: lib that implements the client side of the SMTP protocol
-net-libs/libetpan 1.9.3 1.9.4: A portable, efficient middleware for different kinds of mail access
+net-libs/libetpan 1.9.3 1.9.4 1.9.4-r1: A portable, efficient middleware for different kinds of mail access
 net-libs/libflowmanager 3.0.0-r1: A library that measures and reports on packet flows
 net-libs/libgadu 1.11.4 1.12.2-r1: Client-side library for the Gadu-Gadu protocol
 net-libs/libgfbgraph 0.2.3-r1: A GObject library for Facebook Graph API
@@ -17430,7 +17431,7 @@ sys-process/anacron 2.3-r4: a periodic command scheduler
 sys-process/at 3.1.23 3.2.1: Queues jobs for later execution
 sys-process/atop 2.3.0-r1 2.4.0 2.5.0-r1: Resource-specific view of processes
 sys-process/audit 2.6.4 2.7.1 2.8.2 2.8.3 2.8.4 2.8.5 2.8.5-r1: Userspace utilities for storing and processing auditing records
-sys-process/bashtop 0.9.23: Resource monitor that shows usage and stats
+sys-process/bashtop 0.9.25: Resource monitor that shows usage and stats
 sys-process/bcron 0.10 0.11: A new cron system designed with secure operations in mind by Bruce Guenter
 sys-process/criu 3.6 3.11 3.12 3.14: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
