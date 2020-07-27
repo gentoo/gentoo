@@ -17,12 +17,14 @@
     <remote-id type="cpan-module">DateTime::TimeZone::Africa::Ceuta</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Africa::El_Aaiun</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Africa::Johannesburg</remote-id>
+    <remote-id type="cpan-module">DateTime::TimeZone::Africa::Juba</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Africa::Khartoum</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Africa::Lagos</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Africa::Maputo</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Africa::Monrovia</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Africa::Nairobi</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Africa::Ndjamena</remote-id>
+    <remote-id type="cpan-module">DateTime::TimeZone::Africa::Sao_Tome</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Africa::Tripoli</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Africa::Tunis</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Africa::Windhoek</remote-id>
@@ -74,7 +76,6 @@
     <remote-id type="cpan-module">DateTime::TimeZone::America::Fort_Nelson</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::America::Fortaleza</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::America::Glace_Bay</remote-id>
-    <remote-id type="cpan-module">DateTime::TimeZone::America::Godthab</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::America::Goose_Bay</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::America::Grand_Turk</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::America::Guatemala</remote-id>
@@ -122,6 +123,7 @@
     <remote-id type="cpan-module">DateTime::TimeZone::America::North_Dakota::Beulah</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::America::North_Dakota::Center</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::America::North_Dakota::New_Salem</remote-id>
+    <remote-id type="cpan-module">DateTime::TimeZone::America::Nuuk</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::America::Ojinaga</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::America::Panama</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::America::Pangnirtung</remote-id>
@@ -219,6 +221,7 @@
     <remote-id type="cpan-module">DateTime::TimeZone::Asia::Pontianak</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Asia::Pyongyang</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Asia::Qatar</remote-id>
+    <remote-id type="cpan-module">DateTime::TimeZone::Asia::Qostanay</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Asia::Qyzylorda</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Asia::Riyadh</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Asia::Sakhalin</remote-id>
