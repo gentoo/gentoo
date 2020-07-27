@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,6 +22,10 @@ SLOT="0"
 IUSE="berkdb doc gdbm gnutls gpgme idn kerberos kyotocabinet libressl
 	lmdb nls notmuch pgp-classic qdbm sasl selinux slang smime-classic
 	ssl tokyocabinet"
+
+# Disable tests until neomutt-test-files are avablae
+# (https://bugs.gentoo.org/734122)
+RESTRICT=test
 
 CDEPEND="
 	app-misc/mime-types
@@ -65,8 +69,6 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-mutt )
 "
 
-S="${WORKDIR}/${PN}-${P}"
-
 src_configure() {
 	local myconf=(
 		"$(usex doc --full-doc --disable-doc)"
@@ -100,21 +102,21 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" install
 
-	# A man-page is always handy, so fake one – here neomuttrc.5
-	# (neomutt.1 already exists)
+	# A man-page is always handy, so fake one - here neomuttrc.5 (neomutt.1
+	# already exists)
 	if use !doc; then
 		sed -n \
 			-e '/^\(CC_FOR_BUILD\|CFLAGS_FOR_BUILD\)\s*=/p' \
 			-e '/^\(EXTRA_CFLAGS_FOR_BUILD\|LDFLAGS_FOR_BUILD\)\s*=/p' \
 			-e '/^\(EXEEXT\|SRCDIR\)\s*=/p' \
-			Makefile > doc/Makefile.fakedoc || die
+			Makefile > docs/Makefile.fakedoc || die
 		sed -n \
 			-e '/^MAKEDOC_CPP\s*=/,/^\s*$/p' \
-			-e '/^doc\/\(makedoc$(EXEEXT)\|neomutt\.1\|neomuttrc\.5\)\s*:/,/^\s*$/p' \
-			doc/Makefile.autosetup >> doc/Makefile.fakedoc || die
-		emake -f doc/Makefile.fakedoc doc/neomutt.1
-		emake -f doc/Makefile.fakedoc doc/neomuttrc.5
-		doman doc/neomutt.1 doc/neomuttrc.5
+			-e '/^docs\/\(makedoc$(EXEEXT)\|neomutt\.1\|neomuttrc\.5\)\s*:/,/^\s*$/p' \
+			docs/Makefile.autosetup >> docs/Makefile.fakedoc || die
+		emake -f docs/Makefile.fakedoc docs/neomutt.1
+		emake -f docs/Makefile.fakedoc docs/neomuttrc.5
+		doman docs/neomutt.1 docs/neomuttrc.5
 	fi
 
 	dodoc LICENSE* ChangeLog* README*
