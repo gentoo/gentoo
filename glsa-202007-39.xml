@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-39">
+  <title>Binutils: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Binutils, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">binutils</product>
+  <announced>2020-07-27</announced>
+  <revised count="1">2020-07-27</revised>
+  <bug>688836</bug>
+  <bug>690590</bug>
+  <bug>711324</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-devel/binutils" auto="yes" arch="*">
+      <unaffected range="ge">2.33.1</unaffected>
+      <vulnerable range="lt">2.33.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The GNU Binutils are a collection of tools to create, modify and analyse
+      binary files. Many of the files use BFD, the Binary File Descriptor
+      library, to do low-level manipulation.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Binutils. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Binutils users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-devel/binutils-2.33.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-12972">CVE-2019-12972</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14250">CVE-2019-14250</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14444">CVE-2019-14444</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-17450">CVE-2019-17450</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-17451">CVE-2019-17451</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-12972">CVE-2019-12972</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14250">CVE-2019-14250</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14444">CVE-2019-14444</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-17450">CVE-2019-17450</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-17451">CVE-2019-17451</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-06-20T01:35:54Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-27T00:47:26Z">sam_c</metadata>
+</glsa>
