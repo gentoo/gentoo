@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Pagano <mpagano@gentoo.org> (2020-07-27)
+# Failed build on arm64
+# bug #732966
+dev-util/idea-community jbr11
+
 # Sam James <sam@gentoo.org> (2020-07-16)
 # Failed build on arm64
 # bug #674346
