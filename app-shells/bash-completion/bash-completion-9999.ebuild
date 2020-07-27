@@ -99,7 +99,7 @@ src_prepare() {
 
 src_test() {
 	# portage's HOME override breaks tests
-	emake check HOME="$(egethome "${UID}")" PYTESTFLAGS="-vv"
+	emake check HOME="$(egethome "${UID}")" PYTESTFLAGS="-vv" NETWORK=none
 }
 
 src_install() {
