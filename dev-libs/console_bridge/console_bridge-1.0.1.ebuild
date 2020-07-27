@@ -30,6 +30,7 @@ HOMEPAGE="http://wiki.ros.org/console_bridge"
 LICENSE="BSD"
 SLOT="0/1"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/boost:=[threads]"
 DEPEND="${RDEPEND}"
