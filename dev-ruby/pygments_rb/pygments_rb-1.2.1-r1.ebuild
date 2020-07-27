@@ -22,7 +22,7 @@ HOMEPAGE="https://github.com/tmm1/pygments.rb"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 REQUIRED_USE+=" ${PYTHON_REQUIRED_USE}"
 
