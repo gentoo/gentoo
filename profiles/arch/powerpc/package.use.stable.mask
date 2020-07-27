@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2020-07-30)
+# glslang is not yet stable on ppc{,64}
+media-libs/mesa vulkan-overlay
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-12-12)
 # Needs stable net-libs/webkit-gtk, bug #684702
 dev-util/geany-plugins markdown

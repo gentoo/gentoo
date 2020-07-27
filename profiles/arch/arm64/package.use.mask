@@ -286,10 +286,6 @@ dev-python/python-neutronclient test
 # Support for g15daemon still needs -9999 packages on all arches
 media-sound/mumble g15
 
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan vulkan-overlay
-
 # Alexis Ballier <aballier@gentoo.org> (2017-07-20)
 # media-libs/libemf fails with #error unknown CPU.
 media-gfx/pstoedit emf
