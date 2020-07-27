@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-42">
+  <title>LHa: Buffer overflow</title>
+  <synopsis>LHa has a buffer overflow in its compression utility with
+    unspecified impact.
+  </synopsis>
+  <product type="ebuild">lha</product>
+  <announced>2020-07-27</announced>
+  <revised count="1">2020-07-27</revised>
+  <bug>572418</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/lha" auto="yes" arch="*">
+      <unaffected range="ge">114i_p20201004</unaffected>
+      <vulnerable range="lt">114i_p20201004</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>LHa is a console-based program for packing and unpacking LHarc archives.</p>
+  </background>
+  <description>
+    <p>A buffer overflow in LHa’s compression code was discovered which can
+      be triggered by a crafted input file.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted file possibly resulting
+      in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All LHa users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-arch/lha-114i_p20201004"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2016-1925">CVE-2016-1925</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-06-22T20:49:12Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-27T00:53:34Z">sam_c</metadata>
+</glsa>
