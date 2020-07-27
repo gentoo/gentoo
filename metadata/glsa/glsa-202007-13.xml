@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-13">
+  <title>Wireshark: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Wireshark, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">wireshark</product>
+  <announced>2020-07-26</announced>
+  <revised count="1">2020-07-26</revised>
+  <bug>711012</bug>
+  <bug>716756</bug>
+  <bug>724132</bug>
+  <bug>730414</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/wireshark" auto="yes" arch="*">
+      <unaffected range="ge">3.2.5</unaffected>
+      <vulnerable range="lt">3.2.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Wireshark is a network protocol analyzer formerly known as ethereal.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Wireshark. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Wireshark users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/wireshark-3.2.5"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-11647">CVE-2020-11647</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-13164">CVE-2020-13164</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-15466">CVE-2020-15466</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9428">CVE-2020-9428</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9429">CVE-2020-9429</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9430">CVE-2020-9430</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9431">CVE-2020-9431</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-26T16:22:12Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-26T23:47:31Z">sam_c</metadata>
+</glsa>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-18">
+  <title>QtNetwork: Denial of service</title>
+  <synopsis>A vulnerability in QtNetwork could lead to a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">qtnetwork</product>
+  <announced>2020-07-26</announced>
+  <revised count="1">2020-07-26</revised>
+  <bug>727604</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-qt/qtnetwork" auto="yes" arch="*">
+      <unaffected range="ge">5.14.2-r1</unaffected>
+      <vulnerable range="lt">5.14.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>QtNetwork provides a set of APIs for programming applications that use
+      TCP/IP. It is part of the Qt framework.
+    </p>
+  </background>
+  <description>
+    <p>A flaw was discovered in QtNetwork’s handling of OpenSSL protocol
+      errors.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could cause a possible Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All QtNetwork users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-qt/qtnetwork-5.14.2-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-13962">CVE-2020-13962</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-06-17T14:27:39Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-26T23:59:22Z">sam_c</metadata>
+</glsa>

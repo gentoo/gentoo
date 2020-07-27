@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-14">
+  <title>yaml-cpp: Denial of service</title>
+  <synopsis>A vulnerability in yaml-cpp could lead to a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">yaml-cpp</product>
+  <announced>2020-07-26</announced>
+  <revised count="1">2020-07-26</revised>
+  <bug>626662</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-cpp/yaml-cpp" auto="yes" arch="*">
+      <unaffected range="ge">0.6.3-r2</unaffected>
+      <vulnerable range="lt">0.6.3-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>yaml-cpp is a YAML parser and emitter in C++.</p>
+  </background>
+  <description>
+    <p>The function Scanner::peek in scanner.cpp may have an assertion failure.</p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could cause a possible Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All yaml-cpp users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-cpp/yaml-cpp-0.6.3-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-11692">CVE-2017-11692</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-26T16:16:28Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-26T23:48:42Z">sam_c</metadata>
+</glsa>

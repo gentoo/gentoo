@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-10">
+  <title>Mozilla Firefox: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mozilla Firefox, the
+    worst of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">firefox</product>
+  <announced>2020-07-26</announced>
+  <revised count="1">2020-07-26</revised>
+  <bug>730418</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/firefox" auto="yes" arch="*">
+      <unaffected range="ge">68.10.0</unaffected>
+      <vulnerable range="lt">68.10.0</vulnerable>
+    </package>
+    <package name="www-client/firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">68.10.0</unaffected>
+      <vulnerable range="lt">68.10.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mozilla Firefox is a popular open-source web browser from the Mozilla
+      Project.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mozilla Firefox. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mozilla Firefox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-68.10.0"
+    </code>
+    
+    <p>All Mozilla Firefox binary users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-bin-68.10.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12402">CVE-2020-12402</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12415">CVE-2020-12415</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12416">CVE-2020-12416</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12417">CVE-2020-12417</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12418">CVE-2020-12418</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12419">CVE-2020-12419</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12420">CVE-2020-12420</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12421">CVE-2020-12421</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12422">CVE-2020-12422</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12424">CVE-2020-12424</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12425">CVE-2020-12425</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12426">CVE-2020-12426</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-07T16:00:55Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-26T23:38:24Z">sam_c</metadata>
+</glsa>
