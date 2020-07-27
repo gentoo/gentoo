@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-51">
+  <title>FileZilla: Untrusted search path</title>
+  <synopsis>A vulnerability was found in FileZilla which might allow privilege
+    escalation.
+  </synopsis>
+  <product type="ebuild">filezilla</product>
+  <announced>2020-07-27</announced>
+  <revised count="1">2020-07-27</revised>
+  <bug>717726</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-ftp/filezilla" auto="yes" arch="*">
+      <unaffected range="ge">3.47.2.1</unaffected>
+      <vulnerable range="lt">3.47.2.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FileZilla is an open source FTP client.</p>
+  </background>
+  <description>
+    <p>It was discovered that FileZilla uses an untrusted search path.</p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could use a malicious binary to escalate privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All FileZilla users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-ftp/filezilla-3.47.2.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5429">CVE-2019-5429</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-26T05:27:52Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-27T01:36:28Z">sam_c</metadata>
+</glsa>
