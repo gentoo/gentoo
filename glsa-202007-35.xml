@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-35">
+  <title>ReportLab: Arbitrary code execution</title>
+  <synopsis>A vulnerability allowing arbitrary code execution was found in
+    ReportLab.
+  </synopsis>
+  <product type="ebuild">reportlab</product>
+  <announced>2020-07-27</announced>
+  <revised count="1">2020-07-27</revised>
+  <bug>710738</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-python/reportlab" auto="yes" arch="*">
+      <unaffected range="ge">3.5.42</unaffected>
+      <vulnerable range="lt">3.5.42</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ReportLab is an Open Source Python library for generating PDFs and
+      graphics.
+    </p>
+  </background>
+  <description>
+    <p>ReportLab was found to be mishandling XML documents and may evaluate the
+      contents without checking for their safety.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ReportLab users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/reportlab-3.5.42"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-17626">CVE-2019-17626</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-06-20T01:26:21Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2020-07-27T00:33:03Z">sam_c</metadata>
+</glsa>
