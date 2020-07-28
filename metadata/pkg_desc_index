@@ -5953,8 +5953,8 @@ dev-perl/DateTime-Tiny 1.60.0 1.70.0: A date object, with as little code as poss
 dev-perl/DateTimeX-Easy 0.89.0 0.89.0-r1: Parse a date/time string using the best method available
 dev-perl/Debug-Client 0.310.0 0.310.0-r1: Client side code for perl debugger
 dev-perl/Deliantra 1.300.0 2.10.0: Deliantra suppport module to read/write archetypes, maps etc
-dev-perl/DelimMatch 1.06-r1: A Perl 5 module for locating delimited substrings with proper nesting
-dev-perl/Devel-ArgNames 0.30.0-r1: Figure out the names of variables passed into subroutines
+dev-perl/DelimMatch 1.06-r1 1.60.0-r2: A Perl 5 module for locating delimited substrings with proper nesting
+dev-perl/Devel-ArgNames 0.30.0-r1 0.30.0-r2: Figure out the names of variables passed into subroutines
 dev-perl/Devel-CallChecker 0.8.0 0.8.0-r1: Custom OP checking attached to subroutines
 dev-perl/Devel-Caller 2.60.0: Meatier versions of caller
 dev-perl/Devel-CheckBin 0.40.0: check that a command is available
