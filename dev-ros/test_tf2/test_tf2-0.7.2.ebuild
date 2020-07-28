@@ -17,16 +17,16 @@ RDEPEND=""
 DEPEND="
 	dev-ros/rosconsole
 	dev-ros/roscpp
-	dev-ros/rostest[${PYTHON_USEDEP}]
+	dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/tf
 	dev-ros/tf2
 	dev-ros/tf2_bullet
-	dev-ros/tf2_ros[${PYTHON_USEDEP}]
-	dev-ros/tf2_geometry_msgs[${PYTHON_USEDEP}]
-	dev-ros/tf2_kdl[${PYTHON_USEDEP}]
+	dev-ros/tf2_ros[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/tf2_geometry_msgs[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/tf2_kdl[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/tf2_msgs
 	sci-libs/orocos_kdl
-	dev-python/python_orocos_kdl[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep "dev-python/python_orocos_kdl[\${PYTHON_USEDEP}]")
 	dev-libs/boost:=[threads]
 	dev-cpp/gtest"
 
