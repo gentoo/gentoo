@@ -16,8 +16,8 @@ IUSE=""
 RDEPEND="
 	dev-ros/rosconsole
 	dev-ros/roscpp
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-ros/rostest[${PYTHON_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/std_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/visualization_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/tf2_ros
