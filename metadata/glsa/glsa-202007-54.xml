@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-54">
+  <title>rsync: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in rsync, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">rsync</product>
+  <announced>2020-07-28</announced>
+  <revised count="1">2020-07-28</revised>
+  <bug>728852</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/rsync" auto="yes" arch="*">
+      <unaffected range="ge">3.2.0</unaffected>
+      <vulnerable range="lt">3.2.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>File transfer program to keep remote files into sync.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in rsync (within bundled
+      zlib). Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All rsync users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/rsync-3.2.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2016-9840">CVE-2016-9840</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2016-9841">CVE-2016-9841</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2016-9842">CVE-2016-9842</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2016-9843">CVE-2016-9843</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-27T22:51:51Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-28T19:29:58Z">sam_c</metadata>
+</glsa>
