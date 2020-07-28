@@ -14,16 +14,16 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-python/rospkg[${PYTHON_USEDEP}]
-	dev-ros/qt_dotgraph[${PYTHON_USEDEP}]
-	dev-ros/rosgraph[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep "dev-python/rospkg[\${PYTHON_USEDEP}]")
+	dev-ros/qt_dotgraph[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rosgraph[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/rosgraph_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
-	dev-ros/roslib[${PYTHON_USEDEP}]
-	dev-ros/rosnode[${PYTHON_USEDEP}]
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-ros/rosservice[${PYTHON_USEDEP}]
-	dev-ros/rostopic[${PYTHON_USEDEP}]
-	dev-ros/rqt_gui[${PYTHON_USEDEP}]
-	dev-ros/rqt_gui_py[${PYTHON_USEDEP}]
+	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rosnode[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rosservice[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rostopic[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rqt_gui[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rqt_gui_py[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}"
