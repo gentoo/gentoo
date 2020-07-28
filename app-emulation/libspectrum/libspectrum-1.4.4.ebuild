@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit autotools
+
 DESCRIPTION="Spectrum emulation library"
 HOMEPAGE="http://fuse-emulator.sourceforge.net/libspectrum.php"
 SRC_URI="mirror://sourceforge/fuse-emulator/${P}.tar.gz"
@@ -20,6 +22,15 @@ RDEPEND="dev-libs/glib:2
 DEPEND="${RDEPEND}
 	dev-lang/perl
 	virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/remove-local-prefix.patch
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	local myconf=(
