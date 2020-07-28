@@ -23,14 +23,14 @@ RDEPEND="
 	dev-libs/boost:=
 	app-arch/bzip2
 	dev-ros/std_srvs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
-	dev-ros/roslib[${PYTHON_USEDEP}]
-	dev-ros/genpy[${PYTHON_USEDEP}]
-	dev-ros/rospy[${PYTHON_USEDEP}]
+	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/genpy[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
 	dev-libs/console_bridge:=
-	dev-python/pycryptodome[${PYTHON_USEDEP}]
-	dev-python/python-gnupg[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep "dev-python/pycryptodome[\${PYTHON_USEDEP}]")
+	$(python_gen_cond_dep "dev-python/python-gnupg[\${PYTHON_USEDEP}]")
 "
 DEPEND="${RDEPEND}"
 RDEPEND="${RDEPEND}
-	lz4? ( dev-ros/roslz4[${PYTHON_USEDEP}] )"
+	lz4? ( dev-ros/roslz4[${PYTHON_SINGLE_USEDEP}] )"
 PATCHES=( "${FILESDIR}/pycrypto.patch" )
