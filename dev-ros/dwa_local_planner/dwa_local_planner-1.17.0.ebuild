@@ -17,7 +17,7 @@ RDEPEND="
 	dev-ros/angles
 	dev-ros/base_local_planner
 	dev-ros/costmap_2d
-	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
+	dev-ros/dynamic_reconfigure[${PYTHON_SINGLE_USEDEP}]
 	dev-cpp/eigen:3
 	dev-ros/nav_core
 	dev-ros/pluginlib
