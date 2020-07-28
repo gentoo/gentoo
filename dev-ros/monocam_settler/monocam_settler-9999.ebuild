@@ -16,7 +16,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/actionlib[${PYTHON_USEDEP}]
+	dev-ros/actionlib[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/rosconsole
 	dev-ros/roscpp_serialization
 	dev-ros/settlerlib
