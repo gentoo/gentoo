@@ -10,7 +10,7 @@
 # @BLURB: Template eclass for catkin based ROS packages.
 # @DESCRIPTION:
 # Provides function for building ROS packages on Gentoo.
-# It supports selectively building messages, multi-python installation, live ebuilds (git only).
+# It supports selectively building messages, single-python installation, live ebuilds (git only).
 
 # @ECLASS-VARIABLE: CMAKE_ECLASS
 # @INTERNAL
@@ -53,15 +53,12 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	SCM="git-r3"
 fi
 
-# This should be temporary. ROS only really works with one global python
-# version. The idea here is to have a ROS_COMPAT in the same vein as
-# PYTHON_COMPAT where packages would define what distro they can work on, then
-# we'd have ros_distro_gentoo_python_2_7 & co plus the OSRF ones (lunar, etc.).
-# Note that this unconditionally pulls python but in the ROS world there will
-# most certainly be something pulling python anyway.
-PYTHON_COMPAT=( python3_6 )
+# ROS only really works with one global python version and the target
+# version depends on the release. Noetic targets 3.7 and 3.8.
+# py3.8 or later are ok to add there as long as dev-ros/* have their deps satisfied.
+PYTHON_COMPAT=( python3_7 )
 
-inherit ${SCM} python-r1 ${CMAKE_ECLASS} flag-o-matic
+inherit ${SCM} python-single-r1 ${CMAKE_ECLASS} flag-o-matic
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -69,8 +66,8 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 RDEPEND="${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
-	dev-util/catkin[${PYTHON_USEDEP}]
-	dev-python/empy[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep "dev-util/catkin[\${PYTHON_USEDEP}]")
+	$(python_gen_cond_dep "dev-python/empy[\${PYTHON_USEDEP}]")
 "
 
 # @ECLASS-VARIABLE: CATKIN_HAS_MESSAGES
@@ -86,20 +83,20 @@ DEPEND="${RDEPEND}
 if [ -n "${CATKIN_HAS_MESSAGES}" ] ; then
 	IUSE="${IUSE} +ros_messages_python +ros_messages_cxx ros_messages_eus ros_messages_lisp ros_messages_nodejs"
 	RDEPEND="${RDEPEND}
-		ros_messages_cxx?    ( dev-ros/gencpp:=    dev-ros/gencpp[${PYTHON_USEDEP}]    )
-		ros_messages_eus?    ( dev-ros/geneus:=    dev-ros/geneus[${PYTHON_USEDEP}]    )
-		ros_messages_python? ( dev-ros/genpy:=     dev-ros/genpy[${PYTHON_USEDEP}]     )
-		ros_messages_lisp?   ( dev-ros/genlisp:=   dev-ros/genlisp[${PYTHON_USEDEP}]   )
-		ros_messages_nodejs? ( dev-ros/gennodejs:= dev-ros/gennodejs[${PYTHON_USEDEP}] )
+		ros_messages_cxx?    ( dev-ros/gencpp:=[${PYTHON_SINGLE_USEDEP}]    )
+		ros_messages_eus?    ( dev-ros/geneus:=[${PYTHON_SINGLE_USEDEP}]    )
+		ros_messages_python? ( dev-ros/genpy:=[${PYTHON_SINGLE_USEDEP}]     )
+		ros_messages_lisp?   ( dev-ros/genlisp:=[${PYTHON_SINGLE_USEDEP}]   )
+		ros_messages_nodejs? ( dev-ros/gennodejs:=[${PYTHON_SINGLE_USEDEP}] )
 		dev-ros/message_runtime
 	"
 	DEPEND="${DEPEND} ${RDEPEND}
 		dev-ros/message_generation
-		dev-ros/genmsg[${PYTHON_USEDEP}]
+		dev-ros/genmsg[${PYTHON_SINGLE_USEDEP}]
 	"
 	if [ -n "${CATKIN_MESSAGES_TRANSITIVE_DEPS}" ] ; then
 		for i in ${CATKIN_MESSAGES_TRANSITIVE_DEPS} ; do
-			ds="${i}[ros_messages_python(-)?,ros_messages_cxx(-)?,ros_messages_lisp(-)?,ros_messages_eus(-)?,ros_messages_nodejs(-)?] ros_messages_python? ( ${i}[${PYTHON_USEDEP}] )"
+			ds="${i}[ros_messages_python(-)?,ros_messages_cxx(-)?,ros_messages_lisp(-)?,ros_messages_eus(-)?,ros_messages_nodejs(-)?] ros_messages_python? ( ${i}[${PYTHON_SINGLE_USEDEP}] )"
 			RDEPEND="${RDEPEND} ${ds}"
 			DEPEND="${DEPEND} ${ds}"
 		done
@@ -114,7 +111,7 @@ CATKIN_MESSAGES_CXX_USEDEP="ros_messages_cxx(-)"
 # @ECLASS-VARIABLE: CATKIN_MESSAGES_PYTHON_USEDEP
 # @DESCRIPTION:
 # Use it as cat/pkg[${CATKIN_MESSAGES_PYTHON_USEDEP}] to indicate a dependency on the Python messages of cat/pkg.
-CATKIN_MESSAGES_PYTHON_USEDEP="ros_messages_python(-),${PYTHON_USEDEP}"
+CATKIN_MESSAGES_PYTHON_USEDEP="ros_messages_python(-),${PYTHON_SINGLE_USEDEP}"
 
 # @ECLASS-VARIABLE: CATKIN_MESSAGES_LISP_USEDEP
 # @DESCRIPTION:
@@ -161,17 +158,6 @@ ros-catkin_src_prepare() {
 	append-cxxflags '-std=c++14'
 }
 
-# @FUNCTION: ros-catkin_python_setup
-# @DESCRIPTION:
-# Sets up python environment for ROS packages.
-ros-catkin_python_setup() {
-	# Todo: Need to match this with ros distro.
-	local pyimpl="${PYTHON_COMPAT[0]}"
-	python_export "${pyimpl}" EPYTHON PYTHON
-	python_wrapper_setup
-	python_export PYTHON_SCRIPTDIR
-}
-
 # @VARIABLE: mycatkincmakeargs
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -182,8 +168,6 @@ ros-catkin_python_setup() {
 # @DESCRIPTION:
 # Configures a catkin-based package.
 ros-catkin_src_configure() {
-	ros-catkin_python_setup
-
 	export CATKIN_PREFIX_PATH="${EPREFIX}/usr"
 	export ROS_ROOT="${EPREFIX}/usr/share/ros"
 	if [ -n "${CATKIN_HAS_MESSAGES}" ] ; then
@@ -219,7 +203,6 @@ ros-catkin_src_configure() {
 # @DESCRIPTION:
 # Builds a catkin-based package.
 ros-catkin_src_compile() {
-	ros-catkin_python_setup
 	${CMAKE_ECLASS}_src_compile "${@}"
 }
 
@@ -228,8 +211,6 @@ ros-catkin_src_compile() {
 # Run the tests of a catkin-based package.
 ros-catkin_src_test() {
 	cd "${BUILD_DIR}" || die
-
-	ros-catkin_python_setup
 
 	# Regenerate env for tests, PYTHONPATH is not set properly otherwise...
 	if [ -f catkin_generated/generate_cached_setup.py ] ; then
@@ -249,20 +230,12 @@ ros-catkin_src_test() {
 # @DESCRIPTION:
 # Installs a catkin-based package.
 ros-catkin_src_install() {
-	ros-catkin_python_setup
-
 	if [ -n "${CATKIN_IN_SOURCE_BUILD}" ] ; then
 		export CMAKE_USE_DIR="${BUILD_DIR}"
 	fi
 
 	${CMAKE_ECLASS}_src_install "${@}"
-	if [ ! -f "${T}/.catkin_python_symlinks_generated" -a -d "${D}/${PYTHON_SCRIPTDIR}" ]; then
-		dodir /usr/bin
-		for i in "${D}/${PYTHON_SCRIPTDIR}"/* ; do
-			dosym ../lib/python-exec/python-exec2 "/usr/bin/${i##*/}"
-		done
-		touch "${T}/.catkin_python_symlinks_generated" || die
-	fi
+	python_optimize
 }
 
 EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install
