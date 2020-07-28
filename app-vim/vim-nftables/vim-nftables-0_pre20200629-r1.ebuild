@@ -15,6 +15,10 @@ S="${WORKDIR}/${PN}-${COMMIT_ID}"
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"
 
+PATCHES=(
+	"${FILESDIR}/vim-nftables-0_pre2020062901-no-expandtab.patch"
+)
+
 src_prepare() {
 	default
 
