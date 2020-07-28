@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-28)
+# Requires dev-libs/boost[context] which is masked on arm, bug #727138
+dev-libs/msgpack boost
+
 # Sam James <sam@gentoo.org> (2020-07-11)
 # Don't drag in qtwebengine for Plasma right now
 # Not going for nuclear option of general mask
