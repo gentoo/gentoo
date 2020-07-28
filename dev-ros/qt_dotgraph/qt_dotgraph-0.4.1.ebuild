@@ -15,11 +15,11 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-python/pydot[${PYTHON_USEDEP}]
-	>=dev-ros/python_qt_binding-0.3.0[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep "dev-python/pydot[\${PYTHON_USEDEP}]")
+	>=dev-ros/python_qt_binding-0.3.0[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	test? (
-		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/pygraphviz[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
+		$(python_gen_cond_dep "dev-python/pygraphviz[\${PYTHON_USEDEP}]")
 	)"
