@@ -14,10 +14,10 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	dev-ros/diagnostic_updater[${PYTHON_USEDEP}]
-	dev-ros/roslib[${PYTHON_USEDEP}]
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-ros/tf[${PYTHON_USEDEP}]
+	dev-ros/diagnostic_updater[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/tf[${PYTHON_SINGLE_USEDEP}]
 "
 RDEPEND="${DEPEND}
 	app-admin/hddtemp"
