@@ -19,12 +19,12 @@ RDEPEND="
 	>=dev-ros/hardware_interface-0.10.0
 	dev-ros/pluginlib
 		dev-libs/tinyxml2:=
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-ros/roslib[${PYTHON_USEDEP}]
-	dev-ros/rosparam[${PYTHON_USEDEP}]
-	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rosparam[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep "dev-python/pyyaml[\${PYTHON_USEDEP}]")
 	dev-libs/boost:=
 	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}
-	test? ( dev-ros/rostest[${PYTHON_USEDEP}] )"
+	test? ( dev-ros/rostest[${PYTHON_SINGLE_USEDEP}] )"
