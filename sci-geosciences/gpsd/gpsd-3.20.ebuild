@@ -14,14 +14,14 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
+	#KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 DESCRIPTION="GPS daemon and library for USB/serial GPS devices and GPS/mapping clients"
 HOMEPAGE="https://gpsd.gitlab.io/gpsd/"
 
 LICENSE="BSD"
-SLOT="0/27"
+SLOT="0/25"
 
 GPSD_PROTOCOLS=(
 	aivdm ashtech earthmate evermore fury fv18 garmin garmintxt geostar
@@ -103,18 +103,14 @@ python_prepare_all() {
 	python_setup
 
 	# Extract python info out of SConstruct so we can use saner distribute
-	pyarray() { sed -n "/^ *$1 *= *\\[/,/\\]/p" SConstruct ; }
-	local pyprogs=$(pyarray python_progs)
-	local pybins=$("${PYTHON}" -c "${pyprogs}; \
-		print(list(set(python_progs) - {'xgps', 'xgpsspeed', 'ubxtool', 'zerk'}))" || die "Unable to list pybins")
+	pyvar() { sed -n "/^ *$1 *=/s:.*= *::p" SConstruct ; }
+	local pybins=$(pyvar python_progs | tail -1)
 	# Handle conditional tools manually. #666734
 	use X && pybins+="+ ['xgps', 'xgpsspeed']"
 	use gpsd_protocols_ublox && pybins+="+ ['ubxtool']"
 	use gpsd_protocols_greis && pybins+="+ ['zerk']"
-	local pysrcs=$(pyarray packet_ffi_extension)
-	local packet=$("${PYTHON}" -c "${pysrcs}; print(packet_ffi_extension)" || die "Unable to extract packet types")
-
-	pyvar() { sed -n "/^ *$1 *=/s:.*= *::p" SConstruct ; }
+	local pysrcs=$(sed -n '/^ *python_extensions = {/,/}/{s:^ *::;s:os[.]sep:"/":g;p}' SConstruct)
+	local packet=$("${PYTHON}" -c "${pysrcs}; print(python_extensions['gps/packet'])" || die "Unable to extract packet types")
 	# Post 3.19 the clienthelpers were merged into gps.packet
 	sed \
 		-e "s|@VERSION@|$(pyvar gpsd_version)|" \
