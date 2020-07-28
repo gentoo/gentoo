@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}-${COMMIT_HASH}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="udev"
 
 DEPEND="
 	dev-libs/hidapi:=
@@ -48,4 +48,9 @@ src_install() {
 	emake INSTALL_ROOT="${D}" install
 
 	dodoc README.md OpenRGB.patch
+
+	if use udev; then
+		insinto /lib/udev/rules.d
+		doins 60-openrgb.rules
+	fi
 }
