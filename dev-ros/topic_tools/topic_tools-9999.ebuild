@@ -25,8 +25,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? (
-		dev-ros/rostest[${PYTHON_USEDEP}]
-		dev-ros/rosunit[${PYTHON_USEDEP}]
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		dev-ros/rosunit[${PYTHON_SINGLE_USEDEP}]
 		dev-cpp/gtest
-		dev-python/nose[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
 	)"
