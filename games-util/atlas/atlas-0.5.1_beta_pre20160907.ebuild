@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -13,10 +13,9 @@ DESCRIPTION="Chart Program to use with Flightgear Flight Simulator"
 HOMEPAGE="http://atlas.sourceforge.net/"
 SRC_URI="https://dev.gentoo.org/~reavertm/${MY_P}.zip"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 COMMON_DEPEND="
 	media-libs/freeglut
@@ -35,6 +34,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	>=games-simulation/flightgear-3.0.0
 "
+BDEPEND="app-arch/unzip"
 
 S=${WORKDIR}/${MY_P}
 
@@ -47,7 +47,7 @@ src_prepare() {
 	default
 
 	# -Wnarrowing failure, #612986
-	sed -i -e 's:0x:(char)0x:g' src/tiles.h || die
+	sed -i -e 's|0x|(char)0x|g' src/tiles.h || die
 
 	eautoreconf
 }
