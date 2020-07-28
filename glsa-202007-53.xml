@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-53">
+  <title>Dropbear: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Dropbear, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">dropbear</product>
+  <announced>2020-07-28</announced>
+  <revised count="1">2020-07-28</revised>
+  <bug>723848</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/dropbear" auto="yes" arch="*">
+      <unaffected range="ge">2020.80</unaffected>
+      <vulnerable range="lt">2020.80</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Dropbear is an SSH server and client designed with a small memory
+      footprint.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Dropbear. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Dropbear users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/dropbear-2020.80"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-0739">CVE-2018-0739</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12437">CVE-2018-12437</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20685">CVE-2018-20685</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-27T22:58:27Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-28T19:29:15Z">sam_c</metadata>
+</glsa>
