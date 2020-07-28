@@ -22,4 +22,4 @@ RDEPEND="
 	dev-libs/tinyxml2:=
 "
 DEPEND="${RDEPEND}
-	test? ( dev-ros/rostest[${PYTHON_USEDEP}] )"
+	test? ( dev-ros/rostest[${PYTHON_SINGLE_USEDEP}] )"
