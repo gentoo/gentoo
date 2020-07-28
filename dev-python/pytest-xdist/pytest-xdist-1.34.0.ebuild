@@ -33,10 +33,6 @@ BDEPEND="
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}"/pytest-xdist-1.32.0-timeout.patch
-)
-
 python_test() {
 	distutils_install_for_testing
 	pytest -vv testing || die "Tests failed under ${EPYTHON}"
