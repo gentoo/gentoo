@@ -105,7 +105,7 @@ python_prepare_all() {
 	use gpsd_protocols_ublox && pybins+="+ ['ubxtool']"
 	use gpsd_protocols_greis && pybins+="+ ['zerk']"
 	local pysrcs=$(sed -n '/^ *python_extensions = {/,/}/{s:^ *::;s:os[.]sep:"/":g;p}' SConstruct)
-	local packet=$("${PYTHON}" -c "${pysrcs}; print(python_extensions['gps/packet'])")
+	local packet=$("${PYTHON}" -c "${pysrcs}; print(python_extensions['gps/packet'])" || die "Unable to extract packet types")
 	# Post 3.19 the clienthelpers were merged into gps.packet
 	sed \
 		-e "s|@VERSION@|$(pyvar gpsd_version)|" \
