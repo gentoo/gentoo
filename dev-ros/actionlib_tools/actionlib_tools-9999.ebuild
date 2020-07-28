@@ -18,9 +18,9 @@ IUSE=""
 RDEPEND=""
 DEPEND="${RDEPEND}"
 RDEPEND="${RDEPEND}
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-ros/rostopic[${PYTHON_USEDEP}]
-	dev-ros/roslib[${PYTHON_USEDEP}]
-	dev-ros/actionlib[${PYTHON_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rostopic[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/actionlib[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/actionlib_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
