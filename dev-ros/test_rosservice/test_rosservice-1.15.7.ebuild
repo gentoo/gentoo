@@ -18,11 +18,11 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="${RDEPEND}
-	dev-ros/rostest[${PYTHON_USEDEP}]
+	dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/std_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	test? (
-		dev-ros/test_rosmaster[${PYTHON_USEDEP}]
-		dev-ros/rospy[${PYTHON_USEDEP}]
-		dev-ros/rostest[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
+		dev-ros/test_rosmaster[${PYTHON_SINGLE_USEDEP}]
+		dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
 	)"
