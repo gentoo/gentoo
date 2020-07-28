@@ -10555,7 +10555,7 @@ dev-util/tailor 0.9.35-r1: A tool to migrate changesets between version control 
 dev-util/tinlink 1.0.0-r1: Tool to create very small elf binary from pure binary files
 dev-util/tkdiff 4.2: Graphical front end to the diff program
 dev-util/tmake 2.12-r1: A Cross platform Makefile tool
-dev-util/trace-cmd 2.8.3 9999: User-space front-end for Ftrace
+dev-util/trace-cmd 2.8.3 2.9.1 9999: User-space front-end for Ftrace
 dev-util/treecc 0.3.10-r1: Compiler-compiler tool for aspect-oriented programming
 dev-util/trinity 1.9 9999: A Linux system call fuzz tester
 dev-util/tup 0.7.8 9999: A file-based build system
