@@ -14,7 +14,7 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-ros/rostest[${PYTHON_USEDEP}]"
+RDEPEND="dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]"
 DEPEND="${RDEPEND}
-	test? ( dev-ros/rosgraph[${PYTHON_USEDEP}] )
+	test? ( dev-ros/rosgraph[${PYTHON_SINGLE_USEDEP}] )
 "
