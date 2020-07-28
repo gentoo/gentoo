@@ -15,15 +15,15 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/rosunit[${PYTHON_USEDEP}]
+	dev-ros/rosunit[${PYTHON_SINGLE_USEDEP}]
 	dev-libs/boost:=[threads]
 "
 DEPEND="${RDEPEND}"
 RDEPEND="${RDEPEND}
-	dev-ros/roslib[${PYTHON_USEDEP}]
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-ros/roslaunch[${PYTHON_USEDEP}]
-	dev-ros/rosmaster[${PYTHON_USEDEP}]"
+	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/roslaunch[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rosmaster[${PYTHON_SINGLE_USEDEP}]"
 DEPEND="${DEPEND}
 	test? (
 		${RDEPEND}
