@@ -15,5 +15,6 @@
     <remote-id type="cpan-module">Deliantra::Protocol</remote-id>
     <remote-id type="cpan-module">Deliantra::Protocol::Base</remote-id>
     <remote-id type="cpan-module">Deliantra::Protocol::Constants</remote-id>
+    <remote-id type="cpan-module">Deliantra::Util</remote-id>
   </upstream>
 </pkgmetadata>
