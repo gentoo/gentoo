@@ -14,8 +14,8 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/diagnostic_updater[${PYTHON_USEDEP}]
-	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
+	dev-ros/diagnostic_updater[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/dynamic_reconfigure[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/message_filters
 	dev-ros/rosbag
 		dev-libs/boost:=
@@ -30,6 +30,10 @@ DEPEND="${RDEPEND}
 	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/tf2_geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/tf2_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	test? ( dev-ros/rostest[${PYTHON_USEDEP}] dev-python/python_orocos_kdl[${PYTHON_USEDEP}] dev-ros/map_server[${PYTHON_USEDEP}] )
+	test? (
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		$(python_gen_cond_dep "dev-python/python_orocos_kdl[\${PYTHON_USEDEP}]")
+		dev-ros/map_server[${PYTHON_SINGLE_USEDEP}]
+	)
 "
 PATCHES=( "${FILESDIR}/cmake.patch" )
