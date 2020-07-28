@@ -19,10 +19,10 @@ RDEPEND="
 	dev-libs/tinyxml
 	sci-electronics/gazebo:=
 	dev-libs/protobuf:=
-	dev-ros/gazebo_plugins[${PYTHON_USEDEP}]
-	dev-ros/roslib[${PYTHON_USEDEP}]
+	dev-ros/gazebo_plugins[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/roscpp
-	dev-ros/tf[${PYTHON_USEDEP}]
+	dev-ros/tf[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/dynamic_reconfigure
 	dev-libs/libxml2
 	dev-libs/boost:=[threads]
