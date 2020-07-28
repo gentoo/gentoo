@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-52">
+  <title>mujs: Multiple vulnerabilities
+  </title>
+  <synopsis>Multiple vulnerabilities have been found in mujs, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">mujs</product>
+  <announced>2020-07-28</announced>
+  <revised count="1">2020-07-28</revised>
+  <bug>719248</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/mujs" auto="yes" arch="*">
+      <unaffected range="ge">1.0.6</unaffected>
+      <vulnerable range="lt">1.0.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>mujs is an embeddable Javascript interpreter in C.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in mujs. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All mujs users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/mujs-"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11411">CVE-2019-11411</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11412">CVE-2019-11412</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11413">CVE-2019-11413</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-27T23:02:41Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-28T19:28:15Z">sam_c</metadata>
+</glsa>
