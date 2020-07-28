@@ -3,14 +3,14 @@
 
 EAPI=7
 
-inherit desktop qmake-utils
+inherit qmake-utils
 
 MY_P="${PN}-release_${PV}"
-COMMIT_HASH="13414ec9b84c299631e5100744f2b83923cba3c8"
+COMMIT_HASH="308bb6f9b8169c8e1c5123f9499373509f140268"
 
 DESCRIPTION="Open source RGB lighting control that doesn't depend on manufacturer software"
 HOMEPAGE="https://gitlab.com/CalcProgrammer1/OpenRGB/"
-SRC_URI="https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_0.2/${P}.tar.bz2"
+SRC_URI="https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_${PV}/${P}.tar.bz2"
 S="${WORKDIR}/${MY_P}-${COMMIT_HASH}"
 
 LICENSE="GPL-2"
@@ -33,8 +33,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/OpenRGB-0.2-build-system.patch"
-	"${FILESDIR}/OpenRGB-0.2-use-system-hidapi.patch"
-	"${FILESDIR}/OpenRGB-0.2-install.patch"
 )
 
 src_prepare() {
@@ -50,6 +48,4 @@ src_install() {
 	emake INSTALL_ROOT="${D}" install
 
 	dodoc README.md
-
-	make_desktop_entry ${PN} ${PN} ${PN} 'System;Monitor;HardwareSettings;'
 }
