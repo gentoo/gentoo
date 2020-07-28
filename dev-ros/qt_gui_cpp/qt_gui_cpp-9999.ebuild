@@ -31,3 +31,6 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/libdir.patch"
 )
+
+# FIXME: fails to build with ninja
+CMAKE_MAKEFILE_GENERATOR=emake
