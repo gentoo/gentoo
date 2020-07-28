@@ -3,48 +3,44 @@
 
 EAPI=7
 
-ECM_HANDBOOK="forceoptional" # not optional until !kdelibs4support
 KFMIN=5.71.0
 PVCUT=$(ver_cut 1-3)
 QTMIN=5.14.2
 inherit ecm kde.org
 
-DESCRIPTION="KDE Plasma workspace hotkey module"
+DESCRIPTION="Bluetooth stack for KDE Plasma"
+HOMEPAGE="https://invent.kde.org/plasma/bluedevil"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE=""
 
-COMMON_DEPEND="
+DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
+	>=dev-qt/qtdeclarative-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
-	>=dev-qt/qtx11extras-${QTMIN}:5
-	>=kde-frameworks/kcompletion-${KFMIN}:5
+	>=kde-frameworks/bluez-qt-${KFMIN}:5
 	>=kde-frameworks/kconfig-${KFMIN}:5
 	>=kde-frameworks/kconfigwidgets-${KFMIN}:5
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
+	>=kde-frameworks/kded-${KFMIN}:5
 	>=kde-frameworks/kdbusaddons-${KFMIN}:5
-	>=kde-frameworks/kdelibs4support-${KFMIN}:5[X]
-	>=kde-frameworks/kglobalaccel-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
+	>=kde-frameworks/kiconthemes-${KFMIN}:5
 	>=kde-frameworks/kio-${KFMIN}:5
-	>=kde-frameworks/kservice-${KFMIN}:5
-	>=kde-frameworks/ktextwidgets-${KFMIN}:5
+	>=kde-frameworks/knotifications-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5
-	>=kde-frameworks/kxmlgui-${KFMIN}:5
-	>=kde-plasma/libkworkspace-${PVCUT}:5
-	x11-libs/libX11
-	x11-libs/libXtst
+	>=kde-frameworks/plasma-${KFMIN}:5
 "
-DEPEND="${COMMON_DEPEND}
-	x11-base/xorg-proto
-	x11-libs/libxcb
-	x11-libs/libXtst
-"
-RDEPEND="${COMMON_DEPEND}
-	>=kde-frameworks/kded-${KFMIN}:5
+RDEPEND="${DEPEND}
+	>=dev-qt/qtquickcontrols2-${QTMIN}:5
+	>=kde-frameworks/kirigami-${KFMIN}:5
 	>=kde-plasma/kde-cli-tools-${PVCUT}:5
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-5.19.2-use-PlasmaExtras.PlaceholderMessage.patch" # KDE-Bug #422684
+)
