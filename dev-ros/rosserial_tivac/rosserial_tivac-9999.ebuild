@@ -14,7 +14,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/rosserial_client[${PYTHON_USEDEP}]
+	dev-ros/rosserial_client[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/rosserial_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
