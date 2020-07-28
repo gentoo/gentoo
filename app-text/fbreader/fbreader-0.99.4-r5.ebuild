@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils multilib flag-o-matic qmake-utils
+inherit flag-o-matic qmake-utils
 
 DESCRIPTION="E-Book Reader. Supports many e-book formats"
-HOMEPAGE="http://www.fbreader.org/"
-SRC_URI="http://www.fbreader.org/files/desktop/${PN}-sources-${PV}.tgz"
+HOMEPAGE="https://www.fbreader.org/"
+SRC_URI="https://www.fbreader.org/files/desktop/${PN}-sources-${PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -16,18 +16,19 @@ IUSE="debug"
 
 RDEPEND="
 	app-arch/bzip2
-	dev-libs/expat
-	dev-libs/libunibreak
-	dev-libs/fribidi
 	dev-db/sqlite
-	net-misc/curl
-	sys-libs/zlib
+	dev-libs/expat
+	dev-libs/fribidi
+	dev-libs/libunibreak
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
-	dev-qt/qtwidgets:5
 	dev-qt/qtnetwork:5[ssl]
+	dev-qt/qtwidgets:5
+	net-misc/curl
+	sys-libs/zlib
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 "
 
@@ -61,15 +62,15 @@ src_prepare() {
 	sed -e "s:MOC = moc-qt4:MOC = $(qt5_get_bindir)/moc:" \
 		-i makefiles/arch/desktop.mk || die "updating desktop.mk failed"
 
-	echo "TARGET_ARCH = desktop" > makefiles/target.mk
-	echo "LIBDIR = /usr/$(get_libdir)" >> makefiles/target.mk
+	echo "TARGET_ARCH = desktop" > makefiles/target.mk || die
+	echo "LIBDIR = /usr/$(get_libdir)" >> makefiles/target.mk || die
 
-	echo "UI_TYPE = qt4" >> makefiles/target.mk
+	echo "UI_TYPE = qt4" >> makefiles/target.mk || die
 
 	if use debug; then
-		echo "TARGET_STATUS = debug" >> makefiles/target.mk
+		echo "TARGET_STATUS = debug" >> makefiles/target.mk || die
 	else
-		echo "TARGET_STATUS = release" >> makefiles/target.mk
+		echo "TARGET_STATUS = release" >> makefiles/target.mk || die
 	fi
 }
 
