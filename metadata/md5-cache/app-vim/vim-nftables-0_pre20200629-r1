@@ -9,4 +9,4 @@ RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 SRC_URI=https://github.com/nfnty/vim-nftables/archive/26f8a506c6f3e41f1e4a8d6aa94c9a79a666bbff.tar.gz -> vim-nftables-0_pre20200629.tar.gz
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	3160d9cb05ef44497be1485db0fe7590
-_md5_=d95af924050a1b7e536fc824f96e6aa5
+_md5_=081181819e88c3fb09a9e217576cd587
