@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=dev-libs/glib-2.26:2 !gtk3? ( >=x11-libs/gtk+-2.12:2 ) acl? ( sys-apps/acl ) gimp? ( media-gfx/gimp ) gtk3? ( x11-libs/gtk+:3 ) policykit? ( sys-auth/polkit ) spell? ( >=app-text/gtkspell-2.0.14:2 ) virtual/pkgconfig nls? ( sys-devel/gettext ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=A file manager that implements the popular two-pane design
+EAPI=7
+HOMEPAGE=https://github.com/tom2tom/emelfm2
+IUSE=acl ansi gimp +gtk3 kernel_linux nls policykit spell udisks
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-3 LGPL-3
+RDEPEND=>=dev-libs/glib-2.26:2 !gtk3? ( >=x11-libs/gtk+-2.12:2 ) acl? ( sys-apps/acl ) gimp? ( media-gfx/gimp ) gtk3? ( x11-libs/gtk+:3 ) policykit? ( sys-auth/polkit ) spell? ( >=app-text/gtkspell-2.0.14:2 ) udisks? ( sys-fs/udisks:2 )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://emelfm2.net/rel/emelfm2-0.9.1.tar.bz2
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=2d7bb8acfce267f504a436ff52f6bfb1

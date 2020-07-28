@@ -2139,7 +2139,7 @@ app-misc/editor-wrapper 4-r1: Wrapper scripts that will execute EDITOR or PAGER
 app-misc/egads 0.9.5-r1: Entropy Gathering And Distribution System
 app-misc/elasticsearch 6.8.8 7.6.2 7.7.0 7.8.0: Open Source, Distributed, RESTful, Search Engine
 app-misc/email2trac 2.12.2: Utilities to convert emails to trac tickets
-app-misc/emelfm2 0.9.1-r1 0.9.1-r2: A file manager that implements the popular two-pane design
+app-misc/emelfm2 0.9.1-r1 0.9.1-r2 0.9.1-r3: A file manager that implements the popular two-pane design
 app-misc/empty 0.6.20b: Small shell utility, similar to expect(1)
 app-misc/enum 1.1-r1: Replacement for GNU seq and BSD jot
 app-misc/esekeyd 1.2.7: Multimedia key daemon that uses the Linux event interface
@@ -5952,7 +5952,7 @@ dev-perl/DateTime-TimeZone 1.930.0 1.940.0 2.10.0 2.110.0 2.130.0 2.390.0: Time 
 dev-perl/DateTime-Tiny 1.60.0 1.70.0: A date object, with as little code as possible
 dev-perl/DateTimeX-Easy 0.89.0 0.89.0-r1: Parse a date/time string using the best method available
 dev-perl/Debug-Client 0.310.0 0.310.0-r1: Client side code for perl debugger
-dev-perl/Deliantra 1.300.0: Deliantra suppport module to read/write archetypes, maps etc
+dev-perl/Deliantra 1.300.0 2.10.0: Deliantra suppport module to read/write archetypes, maps etc
 dev-perl/DelimMatch 1.06-r1: A Perl 5 module for locating delimited substrings with proper nesting
 dev-perl/Devel-ArgNames 0.30.0-r1: Figure out the names of variables passed into subroutines
 dev-perl/Devel-CallChecker 0.8.0 0.8.0-r1: Custom OP checking attached to subroutines
@@ -8483,7 +8483,7 @@ dev-python/pytest-tempdir 2019.10.12: Pytest plugin to support for a predictable
 dev-python/pytest-testmon 0.9.15: take TDD to a new level with py.test and testmon
 dev-python/pytest-timeout 1.3.4 1.4.1-r1 1.4.2: py.test plugin to abort hanging tests
 dev-python/pytest-virtualenv 1.7.0-r1: Virtualenv fixture for py.test
-dev-python/pytest-xdist 1.23.2 1.28.0 1.31.0 1.32.0 1.33.0 1.34.0: Distributed testing and loop-on-failing modes
+dev-python/pytest-xdist 1.23.2 1.28.0 1.31.0 1.32.0 1.33.0: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.13.1: Manage external processes across test runs
 dev-python/python-augeas 1.1.0: Python bindings for Augeas
 dev-python/python-axolotl 0.2.3: A python module for the axolotl protocol
