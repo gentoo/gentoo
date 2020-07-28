@@ -18,7 +18,7 @@ RDEPEND="
 	dev-ros/rosbag
 	dev-ros/rosconsole
 	dev-ros/roslib
-	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
+	dev-ros/dynamic_reconfigure[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/message_filters
 	>=dev-cpp/eigen-3.2.5:3
 	dev-ros/pluginlib
