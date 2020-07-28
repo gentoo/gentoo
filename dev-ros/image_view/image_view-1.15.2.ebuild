@@ -25,7 +25,7 @@ RDEPEND="
 	dev-ros/rosconsole
 	dev-libs/console_bridge:=
 	dev-ros/roscpp
-	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
+	dev-ros/dynamic_reconfigure[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	dev-ros/stereo_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
