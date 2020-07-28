@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/cv_bridge
-	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
+	dev-ros/dynamic_reconfigure[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/image_transport
 	dev-ros/nodelet
 	dev-libs/console_bridge:=
