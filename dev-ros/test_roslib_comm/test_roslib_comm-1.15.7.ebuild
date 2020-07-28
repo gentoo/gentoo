@@ -18,5 +18,9 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="${RDEPEND}
-	test? (	dev-ros/roslib[${PYTHON_USEDEP}] dev-python/nose[${PYTHON_USEDEP}] dev-ros/test_rosmaster )
+	test? (
+		dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
+		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
+		dev-ros/test_rosmaster
+	)
 "
