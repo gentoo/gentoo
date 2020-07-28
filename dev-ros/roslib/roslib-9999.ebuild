@@ -15,7 +15,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=dev-python/rospkg-1.0.37[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep ">=dev-python/rospkg-1.0.37[\${PYTHON_USEDEP}]")
 	dev-libs/boost:=[threads]
 	dev-ros/rospack
 	dev-ros/ros_environment
@@ -23,5 +23,5 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? (
 		dev-cpp/gtest
-		dev-python/nose[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
 	)"
