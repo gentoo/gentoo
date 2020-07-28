@@ -16,7 +16,3 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 distutils_enable_tests pytest
-
-python_test() {
-	pytest -vv test.py || die "Tests fail with ${EPYTHON}"
-}
