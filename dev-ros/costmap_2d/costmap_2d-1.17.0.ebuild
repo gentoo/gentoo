@@ -17,7 +17,7 @@ IUSE=""
 REQUIRED_USE="ros_messages_cxx"
 
 RDEPEND="
-	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
+	dev-ros/dynamic_reconfigure[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/laser_geometry
 	dev-ros/message_filters
 	dev-ros/pluginlib
@@ -40,7 +40,7 @@ DEPEND="${RDEPEND}
 	test? (
 		dev-ros/map_server
 		dev-ros/rosbag
-		dev-ros/rostest[${PYTHON_USEDEP}]
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
 		dev-ros/rosunit
 	)"
 BDEPEND="
