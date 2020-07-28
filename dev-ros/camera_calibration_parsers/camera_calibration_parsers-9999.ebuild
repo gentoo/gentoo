@@ -15,7 +15,7 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
-	dev-libs/boost:=[python,${PYTHON_USEDEP}]
+	$(python_gen_cond_dep "dev-libs/boost:=[python,\${PYTHON_USEDEP}]")
 	dev-ros/rosconsole
 	>=dev-cpp/yaml-cpp-0.5:=
 	dev-ros/roscpp
