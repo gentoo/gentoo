@@ -15,19 +15,19 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/roslib[${PYTHON_USEDEP}]
-	dev-python/rospkg[${PYTHON_USEDEP}]
-	dev-ros/rosclean[${PYTHON_USEDEP}]
-	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep "dev-python/rospkg[\${PYTHON_USEDEP}]")
+	dev-ros/rosclean[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep "dev-python/pyyaml[\${PYTHON_USEDEP}]")
 	dev-ros/rosgraph_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
-	dev-ros/rosparam[${PYTHON_USEDEP}]
-	dev-ros/rosmaster[${PYTHON_USEDEP}]
+	dev-ros/rosparam[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rosmaster[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/rosout
 "
 DEPEND="${RDEPEND}
 	test? (
-		dev-util/rosdep[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep "dev-util/rosdep[\${PYTHON_USEDEP}]")
+		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
 		dev-ros/test_rosmaster
 	)"
 
