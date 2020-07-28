@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-56">
+  <title>Claws Mail: Improper STARTTLS handling</title>
+  <synopsis>A vulnerability was discovered in Claws Mail's STARTTLS handling,
+    possibly allowing an integrity/confidentiality compromise.
+  </synopsis>
+  <product type="ebuild">claws-mail</product>
+  <announced>2020-07-28</announced>
+  <revised count="1">2020-07-28</revised>
+  <bug>733684</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/claws-mail" auto="yes" arch="*">
+      <unaffected range="ge">3.17.6</unaffected>
+      <vulnerable range="lt">3.17.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Claws Mail is a GTK based e-mail client.</p>
+  </background>
+  <description>
+    <p>It was discovered that Claws Mail was not properly handling state within
+      the STARTTLS protocol handshake.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>There may be a breach of integrity or confidentiality in connections
+      made using Claws Mail with STARTTLS.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Claws Mail users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/claws-mail-3.17.6"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-15917">CVE-2020-15917</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-27T16:52:43Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-28T19:36:02Z">sam_c</metadata>
+</glsa>
