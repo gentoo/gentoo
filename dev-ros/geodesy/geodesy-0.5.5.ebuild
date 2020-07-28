@@ -20,7 +20,7 @@ RDEPEND="
 	dev-ros/tf
 	dev-ros/unique_id
 	dev-ros/uuid_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
-	dev-python/pyproj[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep "dev-python/pyproj[\${PYTHON_USEDEP}]")
 	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	test? (
-		dev-ros/rosunit[${PYTHON_USEDEP}]
+		dev-ros/rosunit[${PYTHON_SINGLE_USEDEP}]
 		dev-cpp/gtest
-		dev-python/nose[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
 	)"
