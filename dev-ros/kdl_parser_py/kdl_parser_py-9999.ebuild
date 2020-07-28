@@ -14,7 +14,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=dev-ros/urdf-1.13[${PYTHON_USEDEP}]
+	>=dev-ros/urdf-1.13[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	test? ( dev-ros/rostest[${PYTHON_USEDEP}] )"
+	test? ( dev-ros/rostest[${PYTHON_SINGLE_USEDEP}] )"
