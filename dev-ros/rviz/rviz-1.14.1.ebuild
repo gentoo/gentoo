@@ -36,14 +36,14 @@ RDEPEND="
 	dev-ros/laser_geometry
 	dev-ros/message_filters
 	dev-ros/pluginlib
-	>=dev-ros/python_qt_binding-0.3.0[${PYTHON_USEDEP}]
+	>=dev-ros/python_qt_binding-0.3.0[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/resource_retriever
-	dev-ros/rosbag[${PYTHON_USEDEP}]
+	dev-ros/rosbag[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/rosconsole
 	dev-libs/console_bridge:=
 	dev-ros/roscpp
-	dev-ros/roslib[${PYTHON_USEDEP}]
-	dev-ros/rospy[${PYTHON_USEDEP}]
+	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/tf
 	dev-ros/urdf
 	dev-ros/media_export
@@ -61,7 +61,7 @@ DEPEND="${RDEPEND}
 	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	test? (
-		dev-ros/rostest[${PYTHON_USEDEP}]
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
 		dev-cpp/gtest
 	)"
 BDEPEND="
