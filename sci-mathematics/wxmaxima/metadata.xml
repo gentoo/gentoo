@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>sci-mathematics@gentoo.org</email>
-    <name>Gentoo Mathematics Project</name>
-  </maintainer>
-  <longdescription lang="en">
-wxMaxima is a wxWidgets GUI for the computer algebra system maxima.
-Most of maxima functions are accessible through menus, some have
-dialogs. The input line has command history (up-key, down-key) and
-completion based on previous input (tab-key).
-wxMaxima provides 2d formated display of maxima output.
-</longdescription>
-  <upstream>
-    <remote-id type="github">andrejv/wxmaxima</remote-id>
-  </upstream>
+	<upstream>
+		<changelog>https://github.com/wxMaxima-developers/wxmaxima/releases</changelog>
+		<doc>https://wxmaxima-developers.github.io/wxmaxima/help.html</doc>
+		<bugs-to>https://github.com/wxMaxima-developers/wxmaxima/issues</bugs-to>
+<remote-id type="github">wxMaxima-developers/wxmaxima</remote-id>
+	</upstream>
+	<maintainer type="project">
+	<email>sci-mathematics@gentoo.org</email>
+	<name>Gentoo Mathematics Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		wxMaxima is a wxWidgets GUI for the computer algebra system maxima.
+		Most of maxima functions are accessible through menus, some have
+		dialogs. The input line has command history (up-key, down-key) and
+		completion based on previous input (tab-key).
+		wxMaxima provides 2d formated display of maxima output.
+	</longdescription>
+	<use>
+		<flag name="cppcheck">
+			Enable integration with <pkg>dev-util/cppcheck</pkg>
+		</flag>
+	</use>
 </pkgmetadata>
