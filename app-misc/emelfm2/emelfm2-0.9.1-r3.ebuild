@@ -32,7 +32,9 @@ DEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
-
+REQUIRED_USE="
+	spell? ( !gtk3 )
+"
 RESTRICT="test"
 
 src_prepare() {
