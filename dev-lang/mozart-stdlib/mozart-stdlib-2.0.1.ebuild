@@ -16,7 +16,7 @@ SRC_URI="https://dev.gentoo.org/~keri/distfiles/mozart-stdlib/${MY_PN}-${PV}.tar
 
 LICENSE="Mozart"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=">=dev-lang/mozart-2.0.1"
