@@ -15,7 +15,11 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-python/netifaces[${PYTHON_USEDEP}]
-	dev-python/rospkg[${PYTHON_USEDEP}]"
+	$(python_gen_cond_dep "dev-python/netifaces[\${PYTHON_USEDEP}]")
+	$(python_gen_cond_dep "dev-python/rospkg[\${PYTHON_USEDEP}]")
+"
 DEPEND="${RDEPEND}
-	test? ( dev-python/mock[${PYTHON_USEDEP}] dev-python/nose[${PYTHON_USEDEP}] )"
+	test? (
+		$(python_gen_cond_dep "dev-python/mock[\${PYTHON_USEDEP}]")
+		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
+	)"
