@@ -12,21 +12,11 @@
 # Provides function for building ROS packages on Gentoo.
 # It supports selectively building messages, single-python installation, live ebuilds (git only).
 
-# @ECLASS-VARIABLE: CMAKE_ECLASS
-# @INTERNAL
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# Set to "cmake-utils" for EAPI 5 and 6, "cmake" for EAPI-7.
-
 case "${EAPI:-0}" in
-	0|1|2|3|4)
+	0|1|2|3|4|5|6)
 		die "EAPI='${EAPI}' is not supported"
 		;;
-	[56])
-		CMAKE_ECLASS=cmake-utils
-		;;
 	*)
-		CMAKE_ECLASS=cmake
 		;;
 esac
 
@@ -58,7 +48,7 @@ fi
 # py3.8 or later are ok to add there as long as dev-ros/* have their deps satisfied.
 PYTHON_COMPAT=( python3_7 )
 
-inherit ${SCM} python-single-r1 ${CMAKE_ECLASS} flag-o-matic
+inherit ${SCM} python-single-r1 cmake flag-o-matic
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -147,7 +137,7 @@ ros-catkin_src_prepare() {
 	# If no multibuild, just use cmake IN_SOURCE support
 	[ -n "${CATKIN_IN_SOURCE_BUILD}" ] && export CMAKE_IN_SOURCE_BUILD=yes
 
-	${CMAKE_ECLASS}_src_prepare
+	cmake_src_prepare
 
 	if [ ! -f "${S}/CMakeLists.txt" ] ; then
 		catkin_init_workspace || die
@@ -196,14 +186,14 @@ ros-catkin_src_configure() {
 		export CMAKE_USE_DIR="${BUILD_DIR}"
 	fi
 
-	${CMAKE_ECLASS}_src_configure "${@}"
+	cmake_src_configure "${@}"
 }
 
 # @FUNCTION: ros-catkin_src_compile
 # @DESCRIPTION:
 # Builds a catkin-based package.
 ros-catkin_src_compile() {
-	${CMAKE_ECLASS}_src_compile "${@}"
+	cmake_src_compile "${@}"
 }
 
 # @FUNCTION: ros-catkin_src_test
@@ -218,12 +208,8 @@ ros-catkin_src_test() {
 		${PYTHON:-python} catkin_generated/generate_cached_setup.py || die
 	fi
 
-	if [[ ${CMAKE_ECLASS} = cmake-utils ]]; then
-		nonfatal cmake-utils_src_make tests
-	else
-		nonfatal cmake_build tests
-	fi
-	${CMAKE_ECLASS}_src_test "${@}"
+	nonfatal cmake_build tests
+	cmake_src_test "${@}"
 }
 
 # @FUNCTION: ros-catkin_src_install
@@ -234,7 +220,7 @@ ros-catkin_src_install() {
 		export CMAKE_USE_DIR="${BUILD_DIR}"
 	fi
 
-	${CMAKE_ECLASS}_src_install "${@}"
+	cmake_src_install "${@}"
 	python_optimize
 }
 
