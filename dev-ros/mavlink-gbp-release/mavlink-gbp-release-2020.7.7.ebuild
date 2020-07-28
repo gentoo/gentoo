@@ -15,7 +15,7 @@ LICENSE="LGPL-3"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-python/future[${PYTHON_USEDEP}]"
+RDEPEND="$(python_gen_cond_dep "dev-python/future[\${PYTHON_USEDEP}]")"
 DEPEND="${RDEPEND}"
 S="${WORKDIR}/${PN}-${EGIT_BRANCH//\//-}"
 PATCHES=( "${FILESDIR}/gentoo.patch" )
