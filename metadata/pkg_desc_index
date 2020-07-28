@@ -5949,8 +5949,8 @@ dev-perl/DateTime-HiRes 0.10.0-r1 0.30.0: Create DateTime objects with sub-secon
 dev-perl/DateTime-Locale 0.460.0 1.20.0 1.30.0 1.50.0 1.160.0 1.260.0: Localization support for DateTime
 dev-perl/DateTime-Set 0.390.0 0.390.0-r1: Datetime sets and set math
 dev-perl/DateTime-TimeZone 1.930.0 1.940.0 2.10.0 2.110.0 2.130.0 2.390.0: Time zone object base class and factory
-dev-perl/DateTime-Tiny 1.60.0: A date object, with as little code as possible
-dev-perl/DateTimeX-Easy 0.89.0: Parse a date/time string using the best method available
+dev-perl/DateTime-Tiny 1.60.0 1.70.0: A date object, with as little code as possible
+dev-perl/DateTimeX-Easy 0.89.0 0.89.0-r1: Parse a date/time string using the best method available
 dev-perl/Debug-Client 0.310.0: Client side code for perl debugger
 dev-perl/Deliantra 1.300.0: Deliantra suppport module to read/write archetypes, maps etc
 dev-perl/DelimMatch 1.06-r1: A Perl 5 module for locating delimited substrings with proper nesting
