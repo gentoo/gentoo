@@ -568,7 +568,6 @@ app-emulation/open-vm-tools:multimon - Enable multimon (Requires X)
 app-emulation/open-vm-tools:resolutionkms - Build the linux/unix resolutionkms module
 app-emulation/open-vm-tools:vgauth - Build vgauth
 app-emulation/pcem:networking - Enable support for emulation of network cards.
-app-emulation/playonlinux:winbind - Enables support for the winbind auth daemon
 app-emulation/punes:cg - Add support for Nvidia CG Toolkit
 app-emulation/q4wine:ico - Enable ico support via media-gfx/icoutils
 app-emulation/q4wine:iso - Support unprivileged mounting of ISO9660 images via sys-fs/fuseiso
@@ -7179,14 +7178,9 @@ sci-biology/yass:lowmem - Build for environments with low amounts of memory
 sci-calculators/datamash:linux-crypto - Use Linux kernel cryptographic API
 sci-calculators/datamash:openssl - Use dev-libs/openssl for hash routines instead of internal gnulib
 sci-calculators/units:units--cur - Install the units_cur python script that updates currencies
-sci-chemistry/apbs:fast - APBS fast mode (experimental)
-sci-chemistry/apbs:fetk - Include support for FeTK
-sci-chemistry/apbs:iapbs - C/C++/Fortran interface
-sci-chemistry/apbs:tools - Install optional tools
 sci-chemistry/avogadro2:rpc - Enable RPC server
 sci-chemistry/avogadro2:vtk - include vtk support
 sci-chemistry/chemtool:emf - EMF export support
-sci-chemistry/eden:double-precision - More precise calculations at the expense of speed
 sci-chemistry/gnome-chemistry-utils:gnumeric - Add a Gnumeric plugin to provide a molarmass function for the spreadsheet
 sci-chemistry/gromacs:cuda - Enable cuda non-bonded kernels
 sci-chemistry/gromacs:double-precision - More precise calculations at the expense of speed
@@ -7203,8 +7197,6 @@ sci-chemistry/molequeue:client - Build the client application
 sci-chemistry/molequeue:server - Build the serve application
 sci-chemistry/molequeue:zeromq - Build with net-libs/zeromq support
 sci-chemistry/mopac7:gmxmopac7 - Add support library for gromacs
-sci-chemistry/pdb2pqr:opal - Add web interface via opal
-sci-chemistry/pdb2pqr:pdb2pka - Install experimental pdb2pka interface
 sci-chemistry/pymol:web - Install Pymodule needed for web app support
 sci-chemistry/raster3d:gd - libgd support for PNG and JPEG output
 sci-chemistry/vmd:cuda - Use nvidia cuda toolkit for speeding up computations
@@ -8700,9 +8692,6 @@ www-apps/trac:highlight - Enable syntax highlighting
 www-apps/trac:i18n - Enable support for i18n with dev-python/Babel
 www-apps/trac:restructuredtext - Enable support for reStructuredText for wiki formatting
 www-apps/tt-rss:daemon - Install additional init scripts for automated RSS updates
-www-apps/viewvc:cvsgraph - Add dev-vcs/cvsgraph support to show graphical views of revisions and branches
-www-apps/viewvc:mod_wsgi - Add www-apache/mod_wsgi support
-www-apps/viewvc:pygments - Add dev-python/pygments support for syntax highlighting
 www-apps/webdavcgi:rcs - Adds support for a revision controlled backend with RCS (dev-vcs/rcs)
 www-apps/websvn:enscript - Add enscript support to colorize code stored in the repository
 www-apps/wordpress:akismet - Installs Akismet comment spam plug-in
