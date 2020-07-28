@@ -18,12 +18,12 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/message_generation
-	dev-ros/rosbag[${PYTHON_USEDEP}]
+	dev-ros/rosbag[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/rosconsole
 	dev-ros/roscpp
-	dev-ros/rostest[${PYTHON_USEDEP}]
-	dev-ros/rosunit[${PYTHON_USEDEP}]
-	dev-ros/topic_tools[${PYTHON_USEDEP}]
+	dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rosunit[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/topic_tools[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/xmlrpcpp
 "
 DEPEND="${RDEPEND}
@@ -31,8 +31,8 @@ DEPEND="${RDEPEND}
 		dev-libs/boost[threads]
 		app-arch/bzip2
 		dev-ros/rosout
-		dev-python/nose[${PYTHON_USEDEP}]
-		dev-ros/rostest[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
 		dev-cpp/gtest
 	)
 "
