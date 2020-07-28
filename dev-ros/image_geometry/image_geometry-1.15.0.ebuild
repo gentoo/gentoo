@@ -19,4 +19,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	test? ( dev-python/nose[${PYTHON_USEDEP}] dev-cpp/gtest )"
+	test? (
+		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
+		dev-cpp/gtest
+	)"
