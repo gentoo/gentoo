@@ -15,11 +15,11 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-ros/rosgraph[${PYTHON_USEDEP}]
-	dev-ros/rostest[${PYTHON_USEDEP}]
-	dev-ros/std_msgs[${PYTHON_USEDEP}]"
+RDEPEND="dev-ros/rosgraph[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/std_msgs[${PYTHON_SINGLE_USEDEP}]"
 DEPEND="${RDEPEND}
-	test? (	dev-ros/roslib[${PYTHON_USEDEP}] )
+	test? (	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}] )
 "
 
 mycatkincmakeargs=( "-DCATKIN_ENABLE_TESTING=ON" )
