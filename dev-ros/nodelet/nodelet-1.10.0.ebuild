@@ -26,7 +26,7 @@ RDEPEND="
 	dev-libs/boost:=
 	sys-apps/util-linux
 	dev-ros/class_loader:=
-	dev-ros/roslib[${PYTHON_USEDEP}]
-	dev-python/rospkg[${PYTHON_USEDEP}]
+	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep "dev-python/rospkg[\${PYTHON_USEDEP}]")
 "
 DEPEND="${RDEPEND}"
