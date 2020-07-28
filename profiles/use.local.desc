@@ -209,7 +209,6 @@ app-antivirus/clamtk:nemo - Install the Nemo plugin.
 app-antivirus/clamtk:thunar - Install the Thunar plugin.
 app-arch/cabextract:extras - Install experimental extra tools: wince_info and wince_rename for examining and processing Windows CE installation cabinet header files; cabinfo for examining the structure of a cab file.
 app-arch/cfv:bittorrent - Enable support for checking .torrent files
-app-arch/deltarpm:system-zlib - Use system sys-libs/zlib. Do not enable features of rsync friendly.
 app-arch/dpkg:libmd - Use app-crypt/libmd library for message digest functions
 app-arch/dpkg:update-alternatives - Install update-alternatives
 app-arch/dump:ermt - encrypted rmt support
@@ -3013,10 +3012,6 @@ dev-util/sysprof:unwind - Use sys-libs/libunwind to unwind the stack
 dev-util/systemtap:libvirt - Support probing of libvirt domains.
 dev-util/trace-cmd:udis86 - Enable support for dev-libs/udis86 disassembler library
 dev-util/uftrace:capstone - Use capstone to provide dynamic tracing without recompilation
-dev-util/unrpyc:module - Build un.rpyc module for run-time decompiling
-dev-util/unrpyc:proto0 - Use pickle protocol 0 for un-rpyc module. May be usefule for very old games
-dev-util/unrpyc:proto1 - Use pickle protocol 1 for un-rpyc module. Default if no protocol is selected
-dev-util/unrpyc:proto2 - Use pickle protocol 2 for un-rpyc module
 dev-util/vulkan-tools:cube - Build the cube/cubepp demos
 dev-vcs/cssc:valgrind - Enable usage of dev-util/valgrind in tests
 dev-vcs/cvs:server - Enable server support

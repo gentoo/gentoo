@@ -653,7 +653,6 @@ app-arch/cfv 1.18.3-r1: Utility to test and create .sfv, .csv, .crc and md5sum f
 app-arch/cksfv 1.3.14-r1: SFV checksum utility (simple file verification)
 app-arch/cpio 2.12-r1 2.13: A file archival tool which can also read and write tar files
 app-arch/deb2targz 1-r3: Convert a .deb file to a .tar.gz archive
-app-arch/deltarpm 3.6: tools to create and apply deltarpms
 app-arch/dpkg 1.19.0.5 1.19.6 1.19.7 1.20.0 1.20.2 1.20.3 1.20.5: Package maintenance system for Debian
 app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a given set of files
 app-arch/dump 0.4.46 0.4.46-r1: Dump/restore ext2fs backup utilities
@@ -1014,7 +1013,6 @@ app-crypt/tpm2-tss-engine 1.1.0_rc0: OpenSSL Engine for TPM2 devices
 app-crypt/trousers 0.3.14-r2: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-crypt/ubuntu-keyring 2018.02.28 2018.09.18.1 2020.02.11.2: GnuPG archive keys of the Ubuntu archive
 app-crypt/veracrypt 1.24_p2 1.24_p4: Disk encryption with strong security based on TrueCrypt
-app-crypt/virtualsmartcard 0.7: Smart card emulator, can be used with Remote Smart Card Reader
 app-crypt/xca 2.1.2 2.2.1 2.3.0: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
 app-crypt/xor-analyze 0.5-r1: program for cryptanalyzing xor 'encryption' with variable key length
 app-crypt/yubikey-manager 3.1.0-r1 3.1.1-r1: Python library and command line tool for configuring a YubiKey
@@ -1067,7 +1065,6 @@ app-dicts/canna-cannadic 0.95c: Japanese dictionary as a supplement/replacement 
 app-dicts/dictd-vera 1.23: V.E.R.A. -- Virtual Entity of Relevant Acronyms for dict
 app-dicts/dictd-wn 3.0_p33: WordNet for dict
 app-dicts/dikt 2s_p1: Dictionary application that implements the Dict protocol
-app-dicts/duali-data 0.1b-r1: Dictionary data for the Arab dictionary project duali
 app-dicts/eblook 1.6.1: Interactive search utility for electronic dictionaries
 app-dicts/edictionary 2.6-r1: Command line dictionary and thesaurus
 app-dicts/freedict-deu-eng 1.0: Freedict for language translation from German to English
@@ -2624,7 +2621,6 @@ app-text/docbook-xsl-stylesheets 1.79.1-r2: XSL Stylesheets for Docbook
 app-text/docbook2X 0.8.8-r4: Tools to convert docbook to man and info
 app-text/docx2txt 1.4: Convert MS Office docx files to plain text
 app-text/dos2unix 7.3.5 7.4.1 7.4.2_beta1: Convert DOS or MAC text files to UNIX format or vice versa
-app-text/duali 0.2.0-r1: Arabic dictionary based on the DICT protocol
 app-text/dvipng 1.15-r1: Translate DVI files into PNG or GIF graphics
 app-text/dvipsk 2020.1_p20200406: DVI-to-PostScript translator
 app-text/dvisvgm 2.1.3 2.6.1 2.7: Converts DVI files to SVG
@@ -2718,7 +2714,6 @@ app-text/manpager 1: Enable colorization of man pages
 app-text/master-pdf-editor 5.2.20 5.3.22 5.4.38-r1: A complete solution for viewing and editing PDF files
 app-text/mathtex 1.04: Lets you easily embed LaTeX math in your own html pages, blogs, wikis, etc
 app-text/mecab 0.996-r1: Yet Another Part-of-Speech and Morphological Analyzer
-app-text/mftrace 1.2.18-r3 1.2.19-r1: Traces TeX fonts to PFA or PFB fonts (formerly pktrace)
 app-text/mpage 2.5.6-r1: Many to one page printing utility
 app-text/msort 8.53: A program for sorting files in sophisticated ways
 app-text/multitail 6.4.1 6.4.2: Tail with multiple windows
@@ -2768,12 +2763,10 @@ app-text/pytextile 3.0.3 4.0.1: A Python port of Textile, A humane web text gene
 app-text/q-text-as-data 2.0.10: A CLI tool that allows direct execution of SQL-like queries on text
 app-text/qpdf 9.0.2 9.1.1-r1 10.0.1-r1: Command-line tool for structural, content-preserving transformation of PDF files
 app-text/qpdfview 0.4.18: A tabbed document viewer
-app-text/queequeg 0.91-r2: A checker for English grammar, for people who are not native English
 app-text/rarian 0.8.1-r3: A documentation metadata library
 app-text/recode 3.6_p20-r1 3.7.6-r1: Convert files between various character sets
 app-text/reed 5.4: This is a text pager (text file viewer), used to display etexts
 app-text/refbase 0.9.6_p20180223: Web-based solution for managing scientific literature, references and citations
-app-text/referencer 1.2.2-r1: Application to organise documents or references, and to generate BibTeX files
 app-text/restview 2.9.2: reStructuredText viewer
 app-text/rman 3.2-r1: PolyGlotMan man page translator AKA RosettaMan
 app-text/rnc2rng 2.6.1 2.6.2: RELAX NG Compact to regular syntax conversion library
@@ -5111,7 +5104,6 @@ dev-libs/liblouis 3.10.0 3.13.0: An open-source braille translator and back-tran
 dev-libs/libltdl 2.4.6: A shared library tool for developers
 dev-libs/liblzw 0.2-r1: small C library for reading LZW compressed files (.Z)
 dev-libs/libmaa 1.3.2: Library with low-level data structures which are helpful for writing compilers
-dev-libs/libmacaroons 0.2.0-r1 0.3.0: Hyperdex macaroons support library
 dev-libs/libmanette 0.2.4: Simple GObject game controller library
 dev-libs/libmateweather 1.22.0-r1 1.22.1 1.24.0: MATE library to access weather information from online services
 dev-libs/libmaxminddb 1.3.2 1.4.2 99999: C library for the MaxMind DB file format
@@ -5333,7 +5325,6 @@ dev-libs/tntnet 2.2.1 2.2.1-r1 2.2.1-r2: Modular, multithreaded web application 
 dev-libs/tomsfastmath 0.13.1: Fast public domain large integer arithmetic library
 dev-libs/totem-pl-parser 3.26.5: Playlist parsing library
 dev-libs/tre 0.8.0-r2: Lightweight, robust, and efficient POSIX compliant regexp matching library
-dev-libs/tut 2013.12.18 2016.12.19: C++ Template Unit Test Framework
 dev-libs/tvision 2.1.0_pre2-r4 2.2.1.4: Text User Interface that implements the well known CUA widgets
 dev-libs/tvmet 1.7.2-r2: Tiny Vector Matrix library using Expression Templates
 dev-libs/ucl 1.03-r1: the UCL Compression Library
@@ -7633,7 +7624,7 @@ dev-python/chardet 3.0.4: Universal encoding detector
 dev-python/cheetah 2.4.4-r1: Python-powered template engine and code generator
 dev-python/cheetah-docs 0.9.16_alpha1: Documentation for Cheetah templates
 dev-python/cheetah3 3.2.4: Python-powered template engine and code generator
-dev-python/cheroot 8.3.0 8.3.0-r1 8.3.1 8.4.0 8.4.1: Cheroot is the high-performance, pure-Python HTTP server used by CherryPy.
+dev-python/cheroot 8.3.0 8.3.0-r1 8.3.1 8.4.0 8.4.1 8.4.2: Cheroot is the high-performance, pure-Python HTTP server used by CherryPy.
 dev-python/cherrypy 3.8.0 18.5.0 18.6.0: CherryPy is a pythonic, object-oriented HTTP framework
 dev-python/chump 1.6.0: API wrapper for Pushover
 dev-python/citeproc-py 0.4.0-r1: Yet another Python CSL Processor
@@ -7771,7 +7762,6 @@ dev-python/elasticsearch-curator 5.8.1-r1: Tending time-series indices in Elasti
 dev-python/elasticsearch-py 7.7.0: Official Python low-level client for Elasticsearch
 dev-python/elementpath 1.4.5 1.4.6: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
 dev-python/elementtree 1.2.6-r3: A light-weight XML object model for Python
-dev-python/elib-intl 0_pre20110711: Enhanced internationalization (I18N) services for your Python modules and applications
 dev-python/emcee 2.2.1: Python ensemble sampling toolkit for affine-invariant MCMC
 dev-python/emoji 0.5.4: Emoji for Python
 dev-python/empy 3.3.3: A powerful and robust templating system for Python
@@ -7781,7 +7771,6 @@ dev-python/enzyme 0.4.1-r2 9999: Python video metadata parser
 dev-python/eradicate 1.0: Removes commented-out code from Python files
 dev-python/errorhandler 2.0.1: Logging framework handler
 dev-python/et_xmlfile 1.0.1: An implementation of lxml.xmlfile for the standard library
-dev-python/eunuchs 20050320.1-r1: Missing manly parts of UNIX API for Python
 dev-python/eventlet 0.25.1-r1: Highly concurrent networking library
 dev-python/exam 0.10.6: Helpers for better testing
 dev-python/execnet 1.7.1: Rapid multi-Python deployment
@@ -8064,7 +8053,6 @@ dev-python/mdx_gh_links 0.2: An extension which adds links to GitHub users, repo
 dev-python/mecab-python 0.996: Python binding for MeCab
 dev-python/mechanize 0.4.5: Stateful programmatic web browsing in Python
 dev-python/mediafile 0.2.0: Read and write audio files' tags in Python
-dev-python/medusa 0.5.4-r1: A framework for writing asynchronous long-running, high-performance network servers in Python
 dev-python/meld3 2.0.0: meld3 is an HTML/XML templating engine
 dev-python/mem_top 0.1.6: Shows top suspects for memory leaks in your Python program
 dev-python/memory_profiler 0.57: A module for monitoring memory usage of a python program
@@ -8224,7 +8212,7 @@ dev-python/paste 3.4.1 3.4.2 3.4.3: Tools for using a Web Server Gateway Interfa
 dev-python/pastedeploy 2.1.0: Load, configure, and compose WSGI applications and servers
 dev-python/patch-ng 1.17.4: Library to parse and apply unified diffs, fork of dev-python/patch
 dev-python/path-and-address 2.0.1: Functions for server CLI applications used by humans
-dev-python/path-py 11.5.2-r1 14.0.1: A module wrapper for os.path
+dev-python/path-py 14.0.1 15.0.0: A module wrapper for os.path
 dev-python/pathlib 1.0.1-r1: Object-oriented filesystem paths
 dev-python/pathlib2 2.3.5: Fork of pathlib aiming to support the full stdlib Python API
 dev-python/pathspec 0.8.0: Utility library for gitignore style pattern matching of file paths.
@@ -8533,7 +8521,6 @@ dev-python/python-gnupg 0.4.6: A Python wrapper for GnuPG
 dev-python/python-heatclient 1.17.0: OpenStack Orchestration API Client Library
 dev-python/python-iptables 0.13.0: Python bindings for iptables
 dev-python/python-ironicclient 4.1.0: Python bindings for the Ironic API
-dev-python/python-iwscan 20080402-r1: A Python extension for iwscan access
 dev-python/python-jose 3.1.0: A JavaScript Object Signing and Encryption (JOSE) implementation in Python
 dev-python/python-jsonrpc-server 0.3.4: A Python 2 and 3 asynchronous JSON RPC server
 dev-python/python-keystoneclient 4.0.0: Client Library for OpenStack Identity
@@ -10295,7 +10282,6 @@ dev-util/comparator 2.10 2.12: ESR's utility for making fast comparisons among l
 dev-util/complexity 1.10: a tool designed for analyzing the complexity of C program functions
 dev-util/conan 1.23.0 1.24.1 1.26.1: Distributed C/C++ package manager
 dev-util/conf2struct 1.0 1.3 9999: Create C parsers for libconfig and command-line
-dev-util/confix 2.3.5-r2 2.3.5-r3 9999: Confix: A Build Tool on Top of GNU Automake
 dev-util/confix-wrapper 1: Wrapper to select either confix1.py or confix2.py
 dev-util/cookiecutter 1.7.2 1.7.2-r1: Command-line utility to create projects from cookiecutters (project templates)
 dev-util/cppcheck 1.86 1.87 1.88 9999: Static analyzer of C/C++ code
@@ -10492,7 +10478,6 @@ dev-util/pycharm-community 2019.3.1 2019.3.2 2019.3.3 2019.3.4 2020.1 2020.1.1 2
 dev-util/pycharm-professional 2019.3.1 2019.3.2 2019.3.3 2019.3.4 2020.1 2020.1.1 2020.1.3: Intelligent Python IDE with unique code assistance and analysis
 dev-util/qbs 1.12.2 1.14.1 1.15.0 1.16.0: Modern build tool for software projects
 dev-util/qdevicemonitor 1.0.1-r2 9999: Crossplatform log viewer for Android, iOS and text files
-dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
 dev-util/qstlink2 1.2.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.66 9999: quilt patch manager
 dev-util/radare2 4.5.0 9999: unix-like reverse engineering framework and commandline tools
@@ -10564,7 +10549,6 @@ dev-util/uftrace 0.9.4: Function (graph) tracer for user-space
 dev-util/umockdev 0.9.4 0.11.3 0.12.1: Mock hardware devices for creating unit tests
 dev-util/uncrustify 0.66.1 0.69.0 0.71.0 9999: C/C++/C#/D/Java/Pawn code indenter and beautifier
 dev-util/unifdef 2.10 2.11 2.12: remove #ifdef'ed lines from a file while otherwise leaving the file alone
-dev-util/unrpyc 1.1.3: Ren'Py's rpyc scripts decompiler
 dev-util/usb-robot 0.2.0: USB Reverse engineering tools
 dev-util/valgrind 3.14.0 3.15.0 3.16.0 3.16.1 9999: An open-source memory debugger for GNU/Linux
 dev-util/vbindiff 3.0_beta5: Visual binary diff utility
@@ -10990,7 +10974,6 @@ games-engines/exult 9999: an Ultima 7 game engine that runs on modern operating 
 games-engines/frobtads 1.2.3-r1 1.2.4: Curses-based interpreter and dev tools for TADS 2 and TADS 3 text adventures
 games-engines/frotz 2.52: Interpreter for Z-code based text games
 games-engines/gargoyle 2011.1-r1: An Interactive Fiction (IF) player supporting all major formats
-games-engines/gemrb 0.8.3-r1: Reimplementation of the Infinity engine
 games-engines/love 0.7.2-r2 0.8.0-r1 0.8.0-r2 0.10.2 11.1 9999: A framework for 2D games in Lua
 games-engines/nazghul 0.7.1-r1: A computer role-playing game (CRPG) engine with game called HaximA
 games-engines/odamex 0.8.2: Online multiplayer free software engine for DOOM
@@ -13479,7 +13462,6 @@ media-sound/klick 0.12.2-r2: An advanced command-line based metronome for JACK
 media-sound/kmetronome 1.0.1: MIDI based metronome using ALSA sequencer
 media-sound/lame 3.100-r1 3.100-r2: LAME Ain't an MP3 Encoder
 media-sound/lash 0.5.4-r3: LASH Audio Session Handler
-media-sound/lilycomp 1.0.2-r2: graphical note entry program for use with LilyPond
 media-sound/lilypond 2.21.1 9999: GNU Music Typesetter
 media-sound/lingot 1.0.1: Accurate, easy to use, and highly configurable musical instrument tuner
 media-sound/linuxsampler 2.1.1 9999: Software audio sampler engine with professional grade features
@@ -13849,7 +13831,6 @@ media-video/super_demux 0.3: DVB transport stream TS to ES demultiplexer
 media-video/tcmplex-panteltje 0.4.7-r1: Audio video multiplexer for 8 audio channels
 media-video/tivodecode 0.2_pre4: TiVo File Decoder
 media-video/totem 3.34.1: Media player for GNOME
-media-video/tovid 0.35.2-r2: A collection of DVD authoring tools
 media-video/transcode 1.1.7-r4 1.1.7-r5: Utilities for transcoding video and audio codecs in different containers
 media-video/tsmuxer 2.6.11-r1: Utility to create and demux TS and M2TS files
 media-video/ttcut 0.19.6_p1-r1: Tool for cutting MPEG files especially for removing commercials
@@ -14614,7 +14595,6 @@ net-libs/zeromq 2.2.0 3.2.5 4.3.2: A brokerless kernel
 net-libs/zmqpp 4.2.0: ZeroMQ 'highlevel' C++ bindings
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
 net-mail/amavis-logwatch 1.51.03-r5: A log analyzer for amavisd-new
-net-mail/archivemail 0.9.0-r1: Tool written archiving old email in mailboxes
 net-mail/asmail 2.1-r1: a small mail monitor similar to xbiff
 net-mail/automx2 2019.0 2020.1-r1: Email client autoconfiguration service
 net-mail/autorespond 2.0.4 2.0.5: Autoresponder add on package for qmailadmin
@@ -14633,7 +14613,6 @@ net-mail/eps 1.7-r1: Inter7 Email Processing and mht System library
 net-mail/ezmlm-idx 7.0.0-r3: Simple yet powerful mailing list manager for qmail
 net-mail/fdm 1.9 2.0: fetch, filter and deliver mail
 net-mail/fetchmail 6.4.1 6.4.6 6.4.8: the legendary remote-mail retrieval and forwarding utility
-net-mail/getmail 5.14: A mail retriever with reliable Maildir and mbox delivery
 net-mail/gnubiff 2.2.17-r2: A mail notification program
 net-mail/grepmail 5.30.33-r2: Search normal or compressed mailbox using a regular expression or dates
 net-mail/imapsync 1.592-r1 1.836 1.882: Tool for incremental and recursive IMAP transfers between mailboxes
@@ -15225,7 +15204,6 @@ net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, e
 net-vpn/wireguard-modules 1.0.20200712 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-vpn/wireguard-tools 1.0.20200513: Required tools for WireGuard, such as wg(8) and wg-quick(8)
 net-wireless/aircrack-ng 1.5.2 1.6-r1 1.6_p20200722 9999: WLAN tools for breaking 802.11 WEP/WPA keys
-net-wireless/airpwn 1.4-r2: Tool for generic packet injection on 802.11
 net-wireless/airspy 1.0.9 9999: Usemode driver and associated tools for airspy
 net-wireless/airtraf 1.1-r3 1.1-r4: AirTraf 802.11b Wireless traffic sniffer
 net-wireless/b43-fwcutter 019: Firmware Tool for Broadcom 43xx based wireless network devices using the mac80211 wireless stack
@@ -15633,7 +15611,6 @@ sci-chemistry/aqua 3.2-r3: Program suite in this distribution calculates restrai
 sci-chemistry/autodock 4.2.6: A suite of automated docking tools
 sci-chemistry/autodock_vina 1.1.2: Program for drug discovery, molecular docking and virtual screening
 sci-chemistry/avogadro2 1.90.0_p20180211 1.93.0: Advanced molecule editor and visualizer 2
-sci-chemistry/bkchem 0.14.0_pre2-r2: Chemical drawing program
 sci-chemistry/bodr 9-r1 10: The Blue Obelisk Data Repository listing element and isotope properties
 sci-chemistry/cara-bin 1.8.4-r2: Analysis of NMR spectra and Computer Aided Resonance Assignment
 sci-chemistry/chemex 0.6.1-r3 2018.10.2 2018.10.3: Program to fit chemical exchange induced shift and relaxation data
@@ -15686,10 +15663,8 @@ sci-chemistry/prodecomp 3.0-r3: Decomposition-based analysis of NMR projections
 sci-chemistry/propka 3.2.0: pKa-value prediction of ionizable groups in protein and protein-ligand complexes
 sci-chemistry/psi 3.4.0-r2: Suite for ab initio quantum chemistry computing various molecular properties
 sci-chemistry/pymol 2.3.0-r2 2.3.0-r3: A Python-extensible molecular graphics system
-sci-chemistry/pymol-plugins-bni-tools 0.27: Gives Pymol additional functionalities and presets to the PyMOL GUI
 sci-chemistry/pymol-plugins-caver 2.1.2: Calculation of pathways of proteins from buried cavities to outside solvent
 sci-chemistry/pymol-plugins-dssp 110430-r1: DSSP Plugin for PyMOL
-sci-chemistry/pymol-plugins-emovie 1.0.4: PyMOL plugin for convinient movie creation
 sci-chemistry/pymol-plugins-promol 3.0.2-r1: Fast and accurate regognition of active sites
 sci-chemistry/rasmol 2.7.5.2-r2: Molecular Graphics Visualisation Tool
 sci-chemistry/raster3d 3.0.2 3.0.3: Generation high quality raster images of proteins or other molecules
@@ -15700,7 +15675,6 @@ sci-chemistry/theseus 2.0.6 3.0.0 3.3.0: Maximum likelihood superpositioning and
 sci-chemistry/threeV 1.2-r1: 3V: Voss Volume Voxelator
 sci-chemistry/tinker 8.2.1: Molecular modeling package that includes force fields, such as AMBER and CHARMM
 sci-chemistry/tm-align 20150914: Quick & Accurate Structural Alignment
-sci-chemistry/viewmol 2.4.1-r3: Open-source graphical front end for computational chemistry programs
 sci-chemistry/vmd 1.9.3-r5: Visual Molecular Dynamics
 sci-chemistry/votca-csg 1.4 1.4.1 1.5 1.5.1 1.6_rc1 1.6 1.6.1 9999: Votca coarse-graining engine
 sci-chemistry/votca-csgapps 1.4 1.4.1 1.5 1.5.1 1.6_rc1 1.6 1.6.1 9999: Extra applications for votca-csg
@@ -15860,7 +15834,6 @@ sci-libs/ceres-solver 1.14.0: Nonlinear least-squares minimizer
 sci-libs/cfitsio 3.360 3.410: C and Fortran library for manipulating FITS files
 sci-libs/cgcode 1.0-r2: Conjugate gradient Codes for large sparse linear systems
 sci-libs/cgnslib 3.3.0 3.4.0: CFD General Notation System standard library
-sci-libs/chemkit 0.1-r2: Library for chemistry applications
 sci-libs/cholmod 2.1.2 3.0.13: Sparse Cholesky factorization and update/downdate library
 sci-libs/cifparse-obj 7.025-r1 7.105: Provides an object-oriented application interface to information in mmCIF format
 sci-libs/clapack 3.2.1-r8: f2c'ed version of LAPACK
@@ -17836,7 +17809,6 @@ www-misc/multisort 1.1-r2: Merges httpd logfiles in the Common Log Format
 www-misc/nx_util 0.52.1 0.53.1: Whitelist & Reports generation for Naxsi (Web App Firewall module for Nginx)
 www-misc/profile-sync-daemon 5.75 6.31 6.35 9999: Symlinks and syncs browser profile dirs to RAM.
 www-misc/shellinabox 2.20-r1 2.20-r2 2.20-r3 2.20-r4: Export command line tools to a web based terminal emulator
-www-misc/surl 0.7.1.1-r1: URL shortening command line application that supports various sites
 www-misc/urlwatch 2.17 2.18-r1: A tool for monitoring webpages for updates
 www-misc/vdradmin-am 3.6.9 3.6.9-r3 3.6.10 3.6.10-r1: WWW Admin for the Video Disk Recorder
 www-misc/visitors 0.7-r2: Fast web log analyzer
@@ -18776,7 +18748,6 @@ x11-wm/openbox 3.6.1 3.6.1-r3 9999: A standards compliant, fast, light-weight, e
 x11-wm/oroborus 2.0.20-r1: Small and fast window manager
 x11-wm/page 1.9.8 1.9.9-r3: A mouse friendly tiling window manager
 x11-wm/pekwm 0.1.17-r1 0.1.17-r2: A lightweight window manager initially based on aewm++
-x11-wm/plwm 2.7_rc1-r1: Python classes for, and an implementation of, a window manager
 x11-wm/qtile 0.14.2-r1 0.15.1 9999: A full-featured, hackable tiling window manager written in Python
 x11-wm/ratpoison 1.4.8-r1 1.4.9 9999: window manager without mouse dependency
 x11-wm/sawfish 1.12.0-r1 1.12.90: Extensible window manager using a Lisp-based scripting language
