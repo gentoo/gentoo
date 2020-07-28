@@ -14,5 +14,5 @@ LICENSE="Apache-2.0"
 SLOT="0/${PV}"
 IUSE=""
 
-RDEPEND="dev-ros/genmsg[${PYTHON_USEDEP}]"
+RDEPEND="dev-ros/genmsg[${PYTHON_SINGLE_USEDEP}]"
 DEPEND="${RDEPEND}"
