@@ -16,8 +16,8 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/bondcpp
-	dev-ros/bondpy[${PYTHON_USEDEP}]
-	dev-ros/rostest[${PYTHON_USEDEP}]
+	dev-ros/bondpy[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )
