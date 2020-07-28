@@ -89,6 +89,10 @@ src_prepare() {
 		-e 's:\<STAGING_PREFIX\>:SYSROOT:g' \
 		SConstruct || die
 
+	#Fix systemd binary paths
+	sed -i -e 's/local\///' 'systemd/gpsd.service'
+	sed -i -e 's/local\///' 'systemd/gpsdctl@.service.in'
+
 	default
 
 	use python && distutils-r1_src_prepare
@@ -124,6 +128,7 @@ src_configure() {
 		prefix="${EPREFIX}/usr"
 		libdir="\$prefix/$(get_libdir)"
 		udevdir="$(get_udevdir)"
+		rundir="/run"
 		chrpath=False
 		gpsd_user=gpsd
 		gpsd_group=uucp
