@@ -17,8 +17,8 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="${RDEPEND}
-	dev-ros/rostest[${PYTHON_USEDEP}]
+	dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
 	test? (
-		dev-python/nose[${PYTHON_USEDEP}]
-		dev-ros/rosparam[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
+		dev-ros/rosparam[${PYTHON_SINGLE_USEDEP}]
 	)"
