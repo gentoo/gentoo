@@ -15,8 +15,8 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	>=dev-ros/qt_gui-0.3.0[${PYTHON_USEDEP}]
-	>=dev-ros/rqt_gui-0.3.0[${PYTHON_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	>=dev-ros/qt_gui-0.3.0[${PYTHON_SINGLE_USEDEP}]
+	>=dev-ros/rqt_gui-0.3.0[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}"
