@@ -14,6 +14,6 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
+	$(python_gen_cond_dep "dev-python/PyQt5[gui,widgets,\${PYTHON_USEDEP}]")
 "
 DEPEND="${RDEPEND}"
