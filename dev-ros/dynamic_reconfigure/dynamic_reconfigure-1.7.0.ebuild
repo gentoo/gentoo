@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND="
 	dev-libs/boost:=[threads]
-	dev-ros/rospy[${PYTHON_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/roscpp
 "
 DEPEND="${RDEPEND}"
