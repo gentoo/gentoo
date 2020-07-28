@@ -32,3 +32,6 @@ PATCHES=(
 	"${FILESDIR}/libdir.patch"
 	"${FILESDIR}/sip.patch"
 )
+
+# FIXME: fails to build with ninja
+CMAKE_MAKEFILE_GENERATOR=emake
