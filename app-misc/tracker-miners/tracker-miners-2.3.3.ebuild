@@ -56,6 +56,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/glib-utils
+	dev-util/gdbus-codegen
 
 	>=dev-util/intltool-0.40.0
 	>=sys-devel/gettext-0.19.8
