@@ -7,7 +7,7 @@ DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_{6,7,8} )
 SCONS_MIN_VERSION="2.3.0"
 
-inherit eutils udev user multilib distutils-r1 scons-utils toolchain-funcs
+inherit eutils udev multilib distutils-r1 scons-utils toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://gitlab.com/gpsd/gpsd.git"
@@ -41,6 +41,7 @@ REQUIRED_USE="X? ( python )
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	acct-user/gpsd
 	>=net-misc/pps-tools-0.0.20120407
 	bluetooth? ( net-wireless/bluez )
 	dbus? (
@@ -135,7 +136,7 @@ src_configure() {
 		rundir="/run"
 		chrpath=False
 		gpsd_user=gpsd
-		gpsd_group=uucp
+		gpsd_group=dialout
 		nostrip=True
 		manbuild=False
 		shared=$(usex !static True False)
@@ -189,10 +190,4 @@ src_install() {
 	# Install correct multi-python copy
 	use python && distutils-r1_src_install
 
-}
-
-pkg_preinst() {
-	# Run the gpsd daemon as gpsd and group uucp; create it here
-	# as it doesn't seem to be needed during compile/install ...
-	enewuser gpsd -1 -1 -1 "uucp"
 }
