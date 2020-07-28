@@ -18,7 +18,7 @@ RDEPEND="
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/nav_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
-	dev-ros/rosserial_client[${PYTHON_USEDEP}]
-	dev-ros/rospy[${PYTHON_USEDEP}]
+	dev-ros/rosserial_client[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}"
