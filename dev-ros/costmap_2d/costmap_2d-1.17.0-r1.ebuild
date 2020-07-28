@@ -31,6 +31,7 @@ RDEPEND="
 	dev-cpp/eigen:3
 	dev-libs/boost:=[threads]
 	dev-libs/tinyxml2:=
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}
 	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
