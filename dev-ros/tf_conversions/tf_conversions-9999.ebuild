@@ -17,11 +17,14 @@ IUSE=""
 RDEPEND="
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/kdl_conversions
-	dev-ros/tf[${PYTHON_USEDEP}]
+	dev-ros/tf[${PYTHON_SINGLE_USEDEP}]
 	sci-libs/orocos_kdl:=
-	dev-ros/rospy[${PYTHON_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:3
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	test? ( dev-cpp/gtest dev-python/nose[${PYTHON_USEDEP}] )"
+	test? (
+		dev-cpp/gtest
+		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
+	)"
