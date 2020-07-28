@@ -367,41 +367,6 @@ x11-misc/nts
 # Removal in 30 days.  Bug #711134.
 sys-apps/pacman
 
-# Aaron Bauman <bman@gentoo.org> (2020-06-28)
-# More Py2 only stuff. Plz see -dev ML for discussions
-# Remove bindings, port to Py3, etc
-# Removal in 30 days
-app-arch/deltarpm
-app-crypt/virtualsmartcard
-app-text/duali
-app-text/duali-data
-app-dicts/duali-data
-app-text/mftrace
-app-text/queequeg
-app-text/referencer
-dev-libs/libmacaroons
-dev-libs/tut
-dev-python/elib-intl
-dev-python/eunuchs
-dev-python/medusa
-dev-python/python-iwscan
-dev-util/confix
-dev-util/qmtest
-dev-util/unrpyc
-games-engines/gemrb
-media-sound/lilycomp
-media-video/tovid
-net-mail/archivemail
-net-mail/getmail
-net-wireless/airpwn
-sci-chemistry/bkchem
-sci-chemistry/pymol-plugins-bni-tools
-sci-chemistry/pymol-plugins-emovie
-sci-chemistry/viewmol
-sci-libs/chemkit
-www-misc/surl
-x11-wm/plwm
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-28)
 # Obsolete package.
 # Does not build.
