@@ -47,5 +47,5 @@ src_configure() {
 src_install() {
 	emake INSTALL_ROOT="${D}" install
 
-	dodoc README.md
+	dodoc README.md OpenRGB.patch
 }
