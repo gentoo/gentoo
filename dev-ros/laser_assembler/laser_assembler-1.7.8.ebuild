@@ -18,15 +18,15 @@ RDEPEND="
 	dev-ros/roscpp
 	dev-libs/boost:=
 	dev-ros/tf
-	dev-ros/laser_geometry[${PYTHON_USEDEP}]
+	dev-ros/laser_geometry[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/pluginlib
 	dev-libs/tinyxml2:=
 	dev-libs/console_bridge:=
-	dev-ros/message_filters[${PYTHON_USEDEP}]
+	dev-ros/message_filters[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/filters
 "
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:3
-	test? ( dev-ros/rostest[${PYTHON_USEDEP}] dev-cpp/gtest )
+	test? ( dev-ros/rostest[${PYTHON_SINGLE_USEDEP}] dev-cpp/gtest )
 "
 PATCHES=( "${FILESDIR}/eigen.patch" )
