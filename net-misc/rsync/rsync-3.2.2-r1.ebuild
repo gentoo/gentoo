@@ -51,6 +51,11 @@ if [[ "${PV}" == *9999 ]] ; then
 		')"
 fi
 
+PATCHES=(
+	"${FILESDIR}/${P}-allow_bwlimit_0.patch" #731306
+	"${FILESDIR}/${P}-zstd_see_token.patch" #733084
+)
+
 # Only required for live ebuild
 python_check_deps() {
 	has_version "dev-python/commonmark[${PYTHON_USEDEP}]"
@@ -81,8 +86,9 @@ src_configure() {
 		$(use_enable zstd)
 	)
 
-	if [[ "${ARCH}" == "amd64" ]] ; then
-		# SIMD is only available for x86_64 right now (#728868)
+	if use elibc_glibc && [[ "${ARCH}" == "amd64" ]] ; then
+		# SIMD is only available for x86_64 right now
+		# and only on glibc (#728868)
 		myeconfargs+=( $(use_enable cpu_flags_x86_sse2 simd) )
 	else
 		myeconfargs+=( --disable-simd )
