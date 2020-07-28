@@ -17,7 +17,7 @@ case ${PV} in
 	DEPEND="~media-tv/kodi-9999"
 	;;
 *)
-	CODENAME="Matrix"
+	CODENAME="Leia"
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://github.com/xbmc/${KODI_PLUGIN_NAME}/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${KODI_PLUGIN_NAME}-${PV}-${CODENAME}"
