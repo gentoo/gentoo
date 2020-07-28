@@ -17,6 +17,6 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="${RDEPEND}
-	test? ( dev-cpp/gtest dev-ros/rosunit[${PYTHON_USEDEP}] )
+	test? ( dev-cpp/gtest dev-ros/rosunit[${PYTHON_SINGLE_USEDEP}] )
 "
 RDEPEND="${RDEPEND}"
