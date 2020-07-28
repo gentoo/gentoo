@@ -15,9 +15,9 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/diagnostic_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
-	dev-ros/roslib[${PYTHON_USEDEP}]
-	dev-ros/rosbag[${PYTHON_USEDEP}]
-	dev-ros/rostest[${PYTHON_USEDEP}]
+	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rosbag[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
+	test? ( $(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]") )"
