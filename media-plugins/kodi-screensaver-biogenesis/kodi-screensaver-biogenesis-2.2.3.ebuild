@@ -16,15 +16,15 @@ case ${PV} in
 	DEPEND="~media-tv/kodi-9999"
 	;;
 *)
-	CODENAME="Matrix"
+	CODENAME="Leia"
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://github.com/xbmc/screensaver.biogenesis/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/screensaver.biogenesis-${PV}-${CODENAME}"
-	DEPEND="=media-tv/kodi-19*:="
+	DEPEND="=media-tv/kodi-18*:="
 	;;
 esac
 
-LICENSE="GPL-2+"
+LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
