@@ -27,4 +27,4 @@ RDEPEND="
 	dev-ros/class_loader:=
 "
 DEPEND="${RDEPEND}
-	test? ( dev-ros/rostest[${PYTHON_USEDEP}] dev-cpp/gtest )"
+	test? ( dev-ros/rostest[${PYTHON_SINGLE_USEDEP}] dev-cpp/gtest )"
