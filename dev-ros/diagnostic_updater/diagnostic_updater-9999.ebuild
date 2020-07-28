@@ -17,10 +17,10 @@ RDEPEND="
 	dev-ros/diagnostic_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/std_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/roscpp
-	dev-ros/rostest[${PYTHON_USEDEP}]
-	dev-ros/std_msgs[${PYTHON_USEDEP}]
+	dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/std_msgs[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	dev-ros/diagnostic_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	test? ( dev-cpp/gtest dev-ros/rostest[${PYTHON_USEDEP}] )"
+	test? ( dev-cpp/gtest dev-ros/rostest[${PYTHON_SINGLE_USEDEP}] )"
