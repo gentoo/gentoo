@@ -15,16 +15,16 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
-	dev-python/rospkg[${PYTHON_USEDEP}]
-	dev-ros/qt_dotgraph[${PYTHON_USEDEP}]
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-ros/rqt_graph[${PYTHON_USEDEP}]
-	dev-ros/rqt_gui[${PYTHON_USEDEP}]
-	dev-ros/rqt_gui_py[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep "dev-python/rospkg[\${PYTHON_USEDEP}]")
+	dev-ros/qt_dotgraph[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rqt_graph[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rqt_gui[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rqt_gui_py[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/tf2
 	dev-ros/tf2_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
-	dev-ros/tf2_ros[${PYTHON_USEDEP}]
+	dev-ros/tf2_ros[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	test? ( dev-python/mock[${PYTHON_USEDEP}] )"
+	test? ( $(python_gen_cond_dep "dev-python/mock[\${PYTHON_USEDEP}]") )"
 PATCHES=( "${FILESDIR}/yaml.patch" )
