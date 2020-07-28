@@ -14,13 +14,15 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/cv_bridge[${PYTHON_USEDEP}]
-	dev-ros/image_geometry[${PYTHON_USEDEP}]
-	media-libs/opencv[python,${PYTHON_USEDEP}]
-	dev-ros/message_filters[${PYTHON_USEDEP}]
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-ros/std_srvs[${PYTHON_USEDEP}]
+	dev-ros/cv_bridge[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/image_geometry[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep "media-libs/opencv[python,\${PYTHON_USEDEP}]")
+	dev-ros/message_filters[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/std_srvs[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
+	test? (
+		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
+	)"
