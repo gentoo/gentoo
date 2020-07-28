@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-58">
+  <title>FFmpeg: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in FFmpeg, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">ffmpeg</product>
+  <announced>2020-07-28</announced>
+  <revised count="1">2020-07-28</revised>
+  <bug>718012</bug>
+  <bug>719940</bug>
+  <bug>727450</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/ffmpeg" auto="yes" arch="*">
+      <unaffected range="ge">4.2.4</unaffected>
+      <vulnerable range="lt">4.2.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FFmpeg is a complete, cross-platform solution to record, convert and
+      stream audio and video.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in FFmpeg. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All FFmpeg users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-video/ffmpeg-4.2.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13312">CVE-2019-13312</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-15942">CVE-2019-15942</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12284">CVE-2020-12284</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-13904">CVE-2020-13904</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14212">CVE-2020-14212</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-27T16:48:41Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-28T19:36:18Z">sam_c</metadata>
+</glsa>
