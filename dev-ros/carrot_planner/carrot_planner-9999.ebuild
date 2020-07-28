@@ -23,6 +23,7 @@ RDEPEND="
 	dev-ros/tf2
 	dev-ros/tf2_ros
 
+	dev-libs/console_bridge:=
 	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
