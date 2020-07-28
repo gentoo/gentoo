@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-57">
+  <title>Mutt, Neomutt: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mutt and Neomutt, the
+    worst of which could result in an access restriction bypass.
+  </synopsis>
+  <product type="ebuild">mutt,neomutt</product>
+  <announced>2020-07-28</announced>
+  <revised count="1">2020-07-28</revised>
+  <bug>728294</bug>
+  <bug>728302</bug>
+  <bug>728708</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/mutt" auto="yes" arch="*">
+      <unaffected range="ge">1.14.4</unaffected>
+      <vulnerable range="lt">1.14.4</vulnerable>
+    </package>
+    <package name="mail-client/neomutt" auto="yes" arch="*">
+      <unaffected range="ge">20200619</unaffected>
+      <vulnerable range="lt">20200619</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mutt is a small but very powerful text-based mail client.</p>
+    
+    <p>NeoMutt is a command line mail reader (or MUA). It’s a fork of Mutt
+      with added features.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mutt and Neomutt.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mutt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/mutt-1.14.4"
+    </code>
+    
+    <p>All Neomutt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/neomutt-20200619"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14093">CVE-2020-14093</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14154">CVE-2020-14154</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14954">CVE-2020-14954</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-26T15:29:54Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-28T19:36:11Z">sam_c</metadata>
+</glsa>
