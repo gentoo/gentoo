@@ -14134,7 +14134,7 @@ net-analyzer/wireshark 3.2.5 99999999: A network protocol analyzer formerly know
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2 9999: A framework for layer 2 attacks
-net-analyzer/zabbix 3.0.31 4.0.21 4.0.22 4.4.9 4.4.10 5.0.1 5.0.2: ZABBIX is software for monitoring of your applications, network and servers
+net-analyzer/zabbix 3.0.31 4.0.22 4.0.23 5.0.2: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 2.1.1 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/accel-ppp 1.12.0 9999: High performance PPTP, PPPoE and L2TP server
@@ -17782,8 +17782,8 @@ www-client/lynx 2.8.9_p1 2.9.0_pre4 2.9.0_pre5: An excellent console-based web b
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r2: a free, open source web browser
-www-client/opera 69.0.3686.77: A fast and secure web browser
-www-client/opera-beta 70.0.3728.8 70.0.3728.21 70.0.3728.46 70.0.3728.59: A fast and secure web browser
+www-client/opera 69.0.3686.77 70.0.3728.71: A fast and secure web browser
+www-client/opera-beta 70.0.3728.59: A fast and secure web browser
 www-client/opera-developer 71.0.3735.0 71.0.3742.0 71.0.3749.0 71.0.3756.0 71.0.3763.0: A fast and secure web browser
 www-client/otter 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
