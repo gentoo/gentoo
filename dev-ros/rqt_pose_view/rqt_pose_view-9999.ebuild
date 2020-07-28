@@ -15,14 +15,14 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
-	dev-python/pyopengl[${PYTHON_USEDEP}]
-	dev-ros/python_qt_binding[${PYTHON_USEDEP}]
-	dev-python/rospkg[${PYTHON_USEDEP}]
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-ros/rostopic[${PYTHON_USEDEP}]
-	dev-ros/rqt_gui[${PYTHON_USEDEP}]
-	dev-ros/rqt_gui_py[${PYTHON_USEDEP}]
-	dev-ros/tf[${PYTHON_USEDEP}]
-	dev-ros/rqt_py_common[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep "dev-python/pyopengl[\${PYTHON_USEDEP}]")
+	dev-ros/python_qt_binding[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep "dev-python/rospkg[\${PYTHON_USEDEP}]")
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rostopic[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rqt_gui[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rqt_gui_py[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/tf[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rqt_py_common[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}"
