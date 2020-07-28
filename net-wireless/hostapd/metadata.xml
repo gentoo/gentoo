@@ -19,6 +19,10 @@
 		<email>zerochaos@gentoo.org</email>
 		<name>Rick Farina</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:w1.fi:hostapd</remote-id>
 	</upstream>
