@@ -4468,7 +4468,6 @@ media-plugins/audacious-plugins:cue - Support CUE sheets using the libcue librar
 media-plugins/audacious-plugins:fluidsynth - Support FluidSynth as MIDI synth backend
 media-plugins/audacious-plugins:gme - Support various gaming console music formats
 media-plugins/audacious-plugins:http - Support HTTP streams through neon
-media-plugins/audacious-plugins:qtmedia - Enable playback via dev-qt/qtmultimedia
 media-plugins/audacious-plugins:scrobbler - Build with scrobbler/LastFM submission support
 media-plugins/audacious-plugins:sid - Build with SID (Commodore 64 Audio) support
 media-plugins/audacious-plugins:soxr - Build with SoX Resampler support
