@@ -8,7 +8,4 @@
 <use>
 	<flag name="utils">Install pwqcheck and pwqgen helper utilities</flag>
 </use>
-<longdescription>
-	Password strength checking for PAM aware password changing programs.
-</longdescription>
 </pkgmetadata>
