@@ -1,8 +1,8 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-PYTHON_COMPAT=( python3_6 pypy3 )
+EAPI=7
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -35,6 +35,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
+PATCHES=( "${FILESDIR}/yaml.patch" )
 
 python_test() {
 	nosetests --with-coverage || die

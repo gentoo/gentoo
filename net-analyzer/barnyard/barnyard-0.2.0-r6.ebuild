@@ -3,13 +3,14 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Fast output system for Snort"
 HOMEPAGE="https://sourceforge.net/projects/barnyard"
 SRC_URI="
 	mirror://sourceforge/barnyard/barnyard-${PV/_/-}.tar.gz
-	mirror://gentoo/${P}-patches.tar.bz2"
+	https://dev.gentoo.org/~jer/${P}-patches.tar.xz
+"
 
 SLOT="0"
 LICENSE="QPL GPL-2"
@@ -20,38 +21,38 @@ DEPEND="
 	net-libs/libpcap
 	mysql? ( dev-db/mysql-connector-c:0= )
 	postgres? ( dev-db/postgresql:*[server] )
-	sguil? ( dev-lang/tcl:0 )"
-RDEPEND="${DEPEND}
-	net-analyzer/snort"
+	sguil? ( dev-lang/tcl:0 )
+"
+RDEPEND="
+	${DEPEND}
+	net-analyzer/snort
+"
 
-S="${WORKDIR}/${P/_/-}"
+S=${WORKDIR}/${P/_/-}
 
 DOCS="AUTHORS README docs/*"
+PATCHES=(
+	"${WORKDIR}"/${P}-64bit.patch
+	"${WORKDIR}"/${P}-canonical-ar.patch
+	"${WORKDIR}"/${P}-configure-in.patch
+	"${WORKDIR}"/${P}-op_plugbase.c.patch
+	"${WORKDIR}"/${P}-sguil_files.patch
+)
 
 src_prepare() {
 	default
-	eapply "${FILESDIR}/barnyard.64bit.diff"
-	if use sguil ; then
-		eapply "${WORKDIR}/${PV}-sguil_files.patch"
-		eapply "${WORKDIR}/${PV}-configure-in.patch"
-		cd "${S}/src/output-plugins" || die
-		eapply "${WORKDIR}/${PV}-op_plugbase.c.patch"
-		cd "${S}" || die
-	fi
+
 	eautoreconf
 }
 
 src_configure() {
-	local myconf
-	if use sguil ; then
-		myconf="--enable-tcl"
-	fi
+	tc-export AR
 
 	econf \
-		${myconf} \
-		--sysconfdir=/etc/snort \
+		$(use_enable mysql) \
 		$(use_enable postgres) \
-		$(use_enable mysql)
+		$(use_enable sguil tcl) \
+		--sysconfdir=/etc/snort
 }
 
 src_install() {
