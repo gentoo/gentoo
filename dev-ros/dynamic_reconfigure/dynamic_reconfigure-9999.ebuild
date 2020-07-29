@@ -19,4 +19,6 @@ RDEPEND="
 	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/roscpp
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+"

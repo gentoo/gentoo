@@ -6,10 +6,6 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Ulrich Müller <ulm@gentoo.org> (2020-07-29)
-# Conditional dependency on package-masked app-text/sgmltools-lite.
-app-office/lyx docbook
-
 # Michał Górny <mgorny@gentoo.org> (2020-07-27)
 # These packages require Python 2 support in dev-python/sphinx.
 # They are generally fixable by adding py3 support and using
