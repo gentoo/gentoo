@@ -594,7 +594,6 @@ EGO_SUM=(
 	"honnef.co/go/tools v0.0.0-20190418001031-e561f6794a2a/go.mod"
 	"honnef.co/go/tools v0.0.0-20190523083050-ea95bdfd59fc/go.mod"
 	"rsc.io/binaryregexp v0.2.0/go.mod"
-
 )
 
 go-module_set_globals

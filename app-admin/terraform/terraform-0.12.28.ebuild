@@ -605,7 +605,7 @@ SRC_URI="https://github.com/hashicorp/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0 BSD-2 BSD-4 ECL-2.0 imagemagick ISC JSON MIT MIT-with-advertising MPL-2.0 unicode"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RESTRICT="test"
 
