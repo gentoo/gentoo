@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Provides functions available in later versions of @base@ to
+		a wider range of compilers, without requiring you to use CPP
+		pragmas in your code.
+		
+		This package provides the same API as the
+		@&lt;http://hackage.haskell.org/package/base-compat base-compat&gt;@
+		library, but depends on compatibility packages
+		(such as @semigroups@) to offer a wider support window than
+		@base-compat@, which has no dependencies. Most of the modules
+		in this library have the same names as in @base-compat@
+		to make it easier to switch between the two. There also exist
+		versions of each module with the suffix @.Repl.Batteries@,
+		which are distinct from anything in @base-compat@, to allow
+		for easier use in GHCi.
+		
+		See
+		@&lt;https://github.com/haskell-compat/base-compat/blob/master/base-compat/README.markdown#dependencies here&gt;@
+		for a more comprehensive list of differences between
+		@base-compat@ and @base-compat-batteries@.
+	</longdescription>
+</pkgmetadata>
