@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="parsec">Enable the use of the `parsec` package</flag>
+		<flag name="attoparsec">Enable the use of the `attoparsec` package</flag>
+	</use>
+	<longdescription>
+		This library provides convenient combinators for working with and building parsing combinator libraries.
+		
+		Given a few simple instances, e.g. for the class &#39;Text.Parser.Combinators.Parsing&#39; in &quot;Text.Parser.Combinators.Parsing&quot; you
+		get access to a large number of canned definitions. Instances exist for the parsers provided by @parsec@,
+		@attoparsec@ and base’s &quot;Text.Read&quot;.
+	</longdescription>
+</pkgmetadata>
