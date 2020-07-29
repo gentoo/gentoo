@@ -24,7 +24,6 @@ RDEPEND="${PYTHON_DEPS}
 		dev-python/PyQt5[gui,widgets,${PYTHON_MULTI_USEDEP}]
 		>=sys-apps/portage-2.1[${PYTHON_MULTI_USEDEP}]
 	')
-	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_MULTI_USEDEP}]' python2_7)
 "
 DEPEND="${RDEPEND}
 	$(python_gen_cond_dep '
