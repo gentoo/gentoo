@@ -54,6 +54,7 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 "
 BDEPEND="
+	dev-util/glib-utils
 	dev-util/gdbus-codegen
 	>=dev-util/intltool-0.37.1
 	virtual/pkgconfig
