@@ -32,7 +32,9 @@ RDEPEND="app-dicts/sword-Abbott
 	app-dicts/sword-Chamorro
 	app-dicts/sword-Clarke
 	app-dicts/sword-Common
+	app-dicts/sword-CroSaric
 	app-dicts/sword-CzeBKR
+	app-dicts/sword-DaOT1931NT1907
 	app-dicts/sword-Daily
 	app-dicts/sword-Darby
 	app-dicts/sword-Diaglott
@@ -42,12 +44,14 @@ RDEPEND="app-dicts/sword-Abbott
 	app-dicts/sword-DutSVV
 	app-dicts/sword-Easton
 	app-dicts/sword-Esperanto
+	app-dicts/sword-FarOPV
 	app-dicts/sword-FinBiblia
 	app-dicts/sword-Finney
 	app-dicts/sword-FinPR
 	app-dicts/sword-FreBBB
+	app-dicts/sword-FreBDM1744
 	app-dicts/sword-FreCrampon
-	app-dicts/sword-FreSegond
+	app-dicts/sword-FreSegond1910
 	app-dicts/sword-Geneva
 	app-dicts/sword-Geneva1599
 	app-dicts/sword-GerElb1871
@@ -70,6 +74,7 @@ RDEPEND="app-dicts/sword-Abbott
 	app-dicts/sword-JST
 	app-dicts/sword-Jubilee2000
 	app-dicts/sword-KJV
+	app-dicts/sword-KJVA
 	app-dicts/sword-KLV
 	app-dicts/sword-KLVen_iklingon
 	app-dicts/sword-KLViklingon_en
@@ -97,6 +102,7 @@ RDEPEND="app-dicts/sword-Abbott
 	app-dicts/sword-Robinson
 	app-dicts/sword-Rotherham
 	app-dicts/sword-RusMakarij
+	app-dicts/sword-RusSynodal
 	app-dicts/sword-RWebster
 	app-dicts/sword-RWP
 	app-dicts/sword-SAOA
@@ -105,6 +111,7 @@ RDEPEND="app-dicts/sword-Abbott
 	app-dicts/sword-SME
 	app-dicts/sword-Smith
 	app-dicts/sword-SpaRV
+	app-dicts/sword-SpaRVG
 	app-dicts/sword-SpaVNT
 	app-dicts/sword-Spurious
 	app-dicts/sword-StrongsGreek
@@ -126,6 +133,7 @@ RDEPEND="app-dicts/sword-Abbott
 	app-dicts/sword-Vulgate
 	app-dicts/sword-Vulgate_HebPs
 	app-dicts/sword-Webster
+	app-dicts/sword-Webster1913
 	app-dicts/sword-Wesley
 	app-dicts/sword-Weymouth
 	app-dicts/sword-WHNU
