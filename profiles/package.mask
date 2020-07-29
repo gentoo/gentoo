@@ -433,12 +433,6 @@ games-board/teg
 # and accept a more unstable release.
 >=www-client/chromium-86
 
-# Michał Górny <mgorny@gentoo.org> (2020-06-29)
-# Unmaintained in Gentoo.  Multiple unresolved vulnerabilities.
-# Suggested replacement: sys-apps/portage (just kidding).
-# Removal in 30 days.  Bug #711134.
-sys-apps/pacman
-
 # Mart Raudsepp <leio@gentoo.org> (2020-06-27)
 # Disappeared upstream and download locations. Potential replacements:
 # media-sound/quimup, xfce-extra/xfce4-mpc-plugin, media-sound/xfmpc
