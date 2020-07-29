@@ -14350,7 +14350,7 @@ net-irc/irccloud-desktop-bin 0.15.0: IRCCloud Desktop Client
 net-irc/ircii 20190117: An IRC and ICB client that runs under most UNIX platforms
 net-irc/ircmap 0.99-r1: Scripts to treate diagrams of IRC networks using the LINKS command
 net-irc/ircstats 1.2: IRCStats is a Linux log analyzer
-net-irc/irker 2.18-r2 2.19: Submission tools for IRC notifications
+net-irc/irker 2.19: Submission tools for IRC notifications
 net-irc/iroffer-dinoex 3.30-r1 3.31 3.32: IRC fileserver using DCC
 net-irc/irssi 1.2.2 9999: A modular textUI IRC client with IPv6 support
 net-irc/irssi-xmpp 0.53 0.54: An irssi plugin providing Jabber/XMPP support
