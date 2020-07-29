@@ -1,0 +1,13 @@
+Index: rosinstall_generator-0.1.22/test/test_distro.py
+===================================================================
+--- rosinstall_generator-0.1.22.orig/test/test_distro.py
++++ rosinstall_generator-0.1.22/test/test_distro.py
+@@ -53,7 +53,7 @@ def _get_test_dist():
+       type: distribution
+       version: 2
+     '''
+-    return DistributionFile('test', yaml.load(test_dist_yaml))
++    return DistributionFile('test', yaml.safe_load(test_dist_yaml))
+ 
+ 
+ def test_get_package_names():
