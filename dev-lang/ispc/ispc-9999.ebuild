@@ -35,9 +35,9 @@ DEPEND="
 	"
 
 PATCHES=(
-	"${FILESDIR}/${P}-cmake-gentoo-release.patch"
-	"${FILESDIR}/${P}-llvm-10.patch"
-	"${FILESDIR}/${P}-werror.patch"
+	"${FILESDIR}/${PN}-1.13.0-cmake-gentoo-release.patch"
+	"${FILESDIR}/${PN}-1.13.0-llvm-10.patch"
+	"${FILESDIR}/${PN}-1.13.0-werror.patch"
 )
 
 src_configure() {
