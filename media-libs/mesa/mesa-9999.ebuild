@@ -333,9 +333,9 @@ pkg_setup() {
 		ewarn "detected! This can cause problems. For details, see bug 459306."
 	fi
 
-	if ! use video_cards_i965 &&
-	   ! use video_cards_iris &&
-	   ! use video_cards_radeonsi; then
+	if use video_cards_i965 ||
+	   use video_cards_iris ||
+	   use video_cards_radeonsi; then
 		CONFIG_CHECK="~CHECKPOINT_RESTORE"
 		linux-info_pkg_setup
 	fi
