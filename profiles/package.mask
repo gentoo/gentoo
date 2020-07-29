@@ -32,6 +32,21 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-29)
+# Py2-only, last release in 2006, no one else is packaging this.
+# Removal in 30 days.
+media-sound/edna
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-29)
+# Py2-only, last release in 2004, no one else is packaging this.
+# Removal in 30 days.
+media-sound/positron
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-29)
+# Py2-only, last release in 2011, we have shortage of music players.
+# Removal in 30 days.
+media-sound/moosic
+
 # Andrey Utkin <andrey_utkin@gentoo.org> (2020-07-28)
 # Not used by other packages anymore.
 # Removal in 30 days.
