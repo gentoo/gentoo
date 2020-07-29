@@ -11,6 +11,7 @@ DESCRIPTION="Low level support for a standard C++ library"
 HOMEPAGE="https://libcxxabi.llvm.org/"
 # libcxx is needed uncondtionally for the headers
 LLVM_COMPONENTS=( libcxx{abi,} )
+LLVM_TEST_COMPONENTS=( llvm/cmake )
 llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
