@@ -52,6 +52,7 @@ RDEPEND="
 	!systemd? ( sys-auth/elogind:0= )
 "
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	dev-util/gdbus-codegen
 	dev-libs/libxml2:2
 	>=dev-util/intltool-0.37.1
