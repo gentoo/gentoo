@@ -16,7 +16,7 @@ case ${PV} in
 	inherit git-r3
 	;;
 *)
-	CODENAME="Leia"
+	CODENAME="Matrix"
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://github.com/xbmc/audiodecoder.nosefart/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/audiodecoder.nosefart-${PV}-${CODENAME}"
@@ -28,7 +28,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	~media-tv/kodi-9999
+	=media-tv/kodi-19*
 	"
 RDEPEND="
 	${DEPEND}
