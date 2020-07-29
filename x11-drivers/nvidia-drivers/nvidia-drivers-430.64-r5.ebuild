@@ -392,7 +392,7 @@ src_install() {
 
 	if has_multilib_profile && use multilib; then
 		local OABI=${ABI}
-		for ABI in $(get_install_abis); do
+		for ABI in $(multilib_get_enabled_abis); do
 			src_install-libs
 		done
 		ABI=${OABI}
