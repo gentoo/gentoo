@@ -1,31 +1,36 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6..8} )
 PYTHON_REQ_USE="sqlite?"
 
-EGIT_REPO_URI="https://github.com/linkcheck/linkchecker.git"
-inherit bash-completion-r1 distutils-r1 eutils git-r3
+inherit bash-completion-r1 distutils-r1 eutils
 
 DESCRIPTION="Check websites for broken links"
 HOMEPAGE="https://github.com/linkcheck/linkchecker"
-SRC_URI=""
+
+if [[ "${PV}" == "9999" ]]; then
+	EGIT_REPO_URI="https://github.com/linkcheck/linkchecker.git"
+	inherit git-r3
+else
+	SRC_URI=""
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="sqlite"
+# requires py2 only libs
+RESTRICT="test"
 
 RDEPEND="
+	dev-python/beautifulsoup[${PYTHON_USEDEP}]
 	dev-python/dnspython[${PYTHON_USEDEP}]
 	dev-python/pyxdg[${PYTHON_USEDEP}]
-	>=dev-python/requests-2.4[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
 "
-DEPEND=""
-
-RESTRICT="test"
 
 python_prepare_all() {
 	local PATCHES=(
@@ -36,15 +41,11 @@ python_prepare_all() {
 }
 
 python_install_all() {
-	DOCS=(
+	local DOCS=(
 		doc/changelog.txt
-		doc/development.mdwn
-		doc/python3.txt
 		doc/upgrading.txt
 	)
 	distutils-r1_python_install_all
-
-	rm "${ED}"/usr/share/applications/linkchecker.desktop || die
 
 	newbashcomp config/linkchecker-completion ${PN}
 }
@@ -53,4 +54,5 @@ pkg_postinst() {
 	optfeature "bash-completion support" dev-python/argcomplete[${PYTHON_USEDEP}]
 	optfeature "Virus scanning" app-antivirus/clamav
 	optfeature "Geo IP support" dev-python/geoip-python[${PYTHON_USEDEP}]
+	optfeature "GNOME proxy settings support" dev-python/pygobject[${PYTHON_USEDEP}]
 }
