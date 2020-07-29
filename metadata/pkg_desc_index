@@ -2389,7 +2389,7 @@ app-office/libreoffice-bin 6.4.3.2: A full office productivity suite. Binary pac
 app-office/libreoffice-bin-debug 6.4.3.2: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 6.4.3.2 6.4.5.2: Translations for the Libreoffice suite
 app-office/libreoffice-voikko 5.0: Free Finnish spell checking and hyphenation for LibreOffice
-app-office/lyx 2.3.3: WYSIWYM frontend for LaTeX, DocBook, etc.
+app-office/lyx 2.3.3 2.3.5.2: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a_p20121015-r1: An X11 based presentation tool
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
 app-office/moneydance 2017.10 2019.3.1880: A cross-platform personal finance application
@@ -8183,7 +8183,7 @@ dev-python/packaging 20.4: Core utilities for Python packages
 dev-python/pafy 0.5.5 9999: Python library to retrieve YouTube content and metadata
 dev-python/paho-mqtt 1.5.0: A client class with support for both MQTT v3.1 and v3.1.1
 dev-python/pallets-sphinx-themes 1.1.2: Sphinx themes for Pallets and related projects
-dev-python/pandas 0.24.2 1.0.4 1.0.5 9999: Powerful data structures for data analysis and statistics
+dev-python/pandas 0.24.2 1.0.4 1.0.5 1.1.0: Powerful data structures for data analysis and statistics
 dev-python/pandas-datareader 0.8.1: Pandas DataFrame extraction from a wide range of Internet sources
 dev-python/pandocfilters 1.4.2-r1 1.4.2-r2: Utilities for writing pandoc filters in python
 dev-python/parameterized 0.7.4: Parameterized testing with any Python test framework
@@ -8226,7 +8226,7 @@ dev-python/pika 0.13.0: Pure-Python implementation of the AMQP
 dev-python/pikepdf 1.17.0: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 6.2.2 7.0.0 7.1.2 7.2.0: Python Imaging Library (fork)
-dev-python/pip 9.0.1-r2 19.3.1-r2 20.0.2 20.1.1: Installs python packages -- replacement for easy_install
+dev-python/pip 20.0.2 20.1.1 20.2: Installs python packages -- replacement for easy_install
 dev-python/pipenv 2020.6.2: Python Development Workflow for Humans
 dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requirements.txt file
 dev-python/pkgconfig 1.5.1: Interface Python with pkg-config
@@ -8747,7 +8747,7 @@ dev-python/sphinxcontrib-pretty-searchresults 0.3.5: Decently styled search resu
 dev-python/sphinxcontrib-programoutput 0.15 0.16: Extension to sphinx to include program output
 dev-python/sphinxcontrib-qthelp 1.0.2 1.0.3: Sphinx extension which outputs QtHelp documents
 dev-python/sphinxcontrib-serializinghtml 1.1.4: Sphinx extension which outputs outputs serialized HTML files
-dev-python/sphinxcontrib-spelling 5.1.0 5.1.2: Sphinx spelling extension
+dev-python/sphinxcontrib-spelling 5.1.0 5.1.2 5.2.0: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.1.0 1.2.2: Sphinx websupport extension
 dev-python/sphinxtogithub 1.1.0: A python script for preparing the html output of Sphinx documentation for github pages
 dev-python/spur 0.3.21: Run commands locally or over SSH using the same interface
@@ -15183,7 +15183,7 @@ net-vpn/tor 0.4.2.7 0.4.2.8 0.4.3.6 0.4.4.2_alpha: Anonymizing overlay network f
 net-vpn/vpnc 0.5.3_p550-r1: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
-net-vpn/wireguard-modules 1.0.20200712 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
+net-vpn/wireguard-modules 1.0.20200729 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-vpn/wireguard-tools 1.0.20200513: Required tools for WireGuard, such as wg(8) and wg-quick(8)
 net-wireless/aircrack-ng 1.5.2 1.6-r1 1.6_p20200722 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airspy 1.0.9 9999: Usemode driver and associated tools for airspy
