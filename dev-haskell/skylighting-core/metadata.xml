@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="executable">Build the skylighting executable.</flag>
+	</use>
+	<longdescription>
+		Skylighting is a syntax highlighting library.
+		It derives its tokenizers from XML syntax
+		definitions used by KDE&#39;s KSyntaxHighlighting
+		framework, so any syntax supported by that
+		framework can be added. An optional command-line
+		program is provided.
+		Skylighting is intended to be the successor to
+		highlighting-kate.
+		This package provides the core highlighting
+		functionality under a permissive license. It also
+		bundles XML parser definitions licensed under the
+		GPL.
+	</longdescription>
+</pkgmetadata>
