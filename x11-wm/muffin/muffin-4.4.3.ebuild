@@ -21,6 +21,7 @@ COMMON_DEPEND="
 	x11-libs/gdk-pixbuf:2[introspection?]
 	>=x11-libs/gtk+-3.9.12:3[X,introspection?]
 	>=dev-libs/glib-2.37.3:2[dbus]
+	>=dev-libs/json-glib-1.0
 	>=gnome-extra/cinnamon-desktop-4.4:0=
 	>=media-libs/libcanberra-0.26[gtk3]
 	>=x11-libs/libXcomposite-0.3
@@ -36,6 +37,7 @@ COMMON_DEPEND="
 	x11-libs/libXfixes
 	x11-libs/libXrandr
 	x11-libs/libXrender
+	x11-libs/libxkbcommon
 	virtual/opengl
 
 	gnome-extra/zenity
@@ -46,6 +48,7 @@ COMMON_DEPEND="
 # needs gtk-doc, not just -am, for gtk-doc.make
 DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
+	dev-util/glib-utils
 	>=app-text/gnome-doc-utils-0.8
 	sys-devel/gettext
 	dev-util/gtk-doc
