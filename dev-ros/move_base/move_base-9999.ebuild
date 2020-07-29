@@ -16,12 +16,12 @@ IUSE=""
 RDEPEND="
 	dev-ros/actionlib
 	>=dev-ros/costmap_2d-1.15.1
-	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
+	dev-ros/dynamic_reconfigure[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/nav_core
 	dev-ros/pluginlib
 		dev-libs/tinyxml2:=
 	dev-ros/roscpp
-	dev-ros/rospy[${PYTHON_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/tf2_ros
 
 	dev-ros/base_local_planner

@@ -21,5 +21,5 @@ RDEPEND="
 	dev-ros/xacro
 "
 DEPEND="${RDEPEND}
-	test? ( dev-ros/roslaunch[${PYTHON_USEDEP}] )
+	test? ( dev-ros/roslaunch[${PYTHON_SINGLE_USEDEP}] )
 "

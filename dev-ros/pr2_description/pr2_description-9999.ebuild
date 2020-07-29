@@ -13,7 +13,7 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-ros/xacro[${PYTHON_USEDEP}]"
+RDEPEND="dev-ros/xacro[${PYTHON_SINGLE_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-ros/convex_decomposition
 	dev-ros/ivcon

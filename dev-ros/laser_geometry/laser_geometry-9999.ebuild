@@ -14,18 +14,18 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/roscpp
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-python/numpy[${PYTHON_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep "dev-python/numpy[\${PYTHON_USEDEP}]")
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-libs/boost:=[threads]
 	dev-ros/tf
-	dev-ros/tf2_ros[${PYTHON_USEDEP}]
+	dev-ros/tf2_ros[${PYTHON_SINGLE_USEDEP}]
 	dev-cpp/eigen:3
 	dev-ros/angles
 "
 DEPEND="${RDEPEND}
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
+	test? ( $(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]") )"
 BDEPEND="
 	dev-ros/cmake_modules
 "

@@ -15,8 +15,8 @@ IUSE=""
 
 RDEPEND="
 	dev-libs/boost:=
-	dev-ros/pluginlib[${PYTHON_USEDEP}]
-	dev-ros/rqt_gui[${PYTHON_USEDEP}]
+	dev-ros/pluginlib[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rqt_gui[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/rqt_gui_cpp
 	>=dev-ros/qt_gui_cpp-0.3
 	dev-qt/qtwidgets:5

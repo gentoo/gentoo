@@ -15,5 +15,5 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-ros/rospy[${PYTHON_USEDEP}]"
+RDEPEND="dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]"
 DEPEND="${RDEPEND}"

@@ -17,7 +17,7 @@ IUSE=""
 
 RDEPEND="
 	dev-libs/boost:=[threads]
-	dev-ros/actionlib[${PYTHON_USEDEP}]
+	dev-ros/actionlib[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/cv_bridge
 	media-libs/opencv:=
 	dev-ros/image_cb_detector

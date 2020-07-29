@@ -14,7 +14,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/controller_manager[${PYTHON_USEDEP}]
+	dev-ros/controller_manager[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/controller_interface
 	dev-ros/control_toolbox
 	dev-libs/boost:=
@@ -22,7 +22,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? (
-		dev-ros/rostest[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
-		dev-ros/rosservice[${PYTHON_USEDEP}]
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
+		dev-ros/rosservice[${PYTHON_SINGLE_USEDEP}]
 	)"

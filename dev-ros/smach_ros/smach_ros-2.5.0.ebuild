@@ -15,11 +15,11 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/rostest[${PYTHON_USEDEP}]
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-ros/rostopic[${PYTHON_USEDEP}]
-	dev-ros/actionlib[${PYTHON_USEDEP}]
-	dev-ros/smach[${PYTHON_USEDEP}]
+	dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rostopic[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/actionlib[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/smach[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/std_srvs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/actionlib_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/std_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]

@@ -26,9 +26,9 @@ RDEPEND="
 	dev-ros/resource_retriever
 	dev-ros/roscpp
 	dev-ros/sensor_msgs
-	dev-ros/tf[${PYTHON_USEDEP}]
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-python/numpy[${PYTHON_USEDEP}]
+	dev-ros/tf[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep "dev-python/numpy[\${PYTHON_USEDEP}]")
 	sci-libs/ViSP:=[opencv,X]
 	dev-libs/console_bridge:=
 "

@@ -28,5 +28,5 @@ RDEPEND="
 	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
-	test? ( dev-cpp/gtest dev-ros/rostest[${PYTHON_USEDEP}] )
+	test? ( dev-cpp/gtest dev-ros/rostest[${PYTHON_SINGLE_USEDEP}] )
 "

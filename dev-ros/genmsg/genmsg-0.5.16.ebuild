@@ -14,5 +14,5 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="${RDEPEND}
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )
+	test? ( $(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]") )
 "

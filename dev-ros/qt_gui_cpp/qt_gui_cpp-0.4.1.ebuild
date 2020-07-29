@@ -19,9 +19,9 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	>=dev-ros/pluginlib-1.9.23
 		dev-libs/tinyxml2:=
-	>=dev-ros/qt_gui-0.3.0[${PYTHON_USEDEP}]
+	>=dev-ros/qt_gui-0.3.0[${PYTHON_SINGLE_USEDEP}]
 	dev-libs/tinyxml
-	>=dev-ros/python_qt_binding-0.3.0[${PYTHON_USEDEP}]
+	>=dev-ros/python_qt_binding-0.3.0[${PYTHON_SINGLE_USEDEP}]
 	dev-libs/boost:=
 	dev-libs/console_bridge:=
 "
@@ -32,3 +32,6 @@ PATCHES=(
 	"${FILESDIR}/libdir.patch"
 	"${FILESDIR}/sip.patch"
 )
+
+# FIXME: fails to build with ninja
+CMAKE_MAKEFILE_GENERATOR=emake
