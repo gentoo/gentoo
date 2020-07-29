@@ -33,6 +33,21 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-07-29)
+# Py2-only, unmaintained, last release in 2008, dead upstream.
+# Removal in 30 days.
+app-cdr/cdcover
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-29)
+# Py2-only, unmaintained, last release in 2009, dead upstream.
+# Removal in 30 days.
+app-arch/cfv
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-29)
+# Py2-only, unmaintained, last release in 2012, dead upstream.
+# Ancient unresolved bugs #453918, #505076. Removal in 30 days.
+app-admin/conkyforecast
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-29)
 # Py2-only, last release in 2006, no one else is packaging this.
 # Removal in 30 days.
 media-sound/edna
