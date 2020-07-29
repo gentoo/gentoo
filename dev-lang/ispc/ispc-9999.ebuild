@@ -35,9 +35,9 @@ DEPEND="
 	"
 
 PATCHES=(
-	"${FILESDIR}/${P}-cmake-gentoo-release.patch"
-	"${FILESDIR}/${P}-llvm-10.patch"
-	"${FILESDIR}/${P}-werror.patch"
+	"${FILESDIR}/${PN}-1.13.0-cmake-gentoo-release.patch"
+	"${FILESDIR}/${PN}-1.13.0-llvm-10.patch"
+	"${FILESDIR}/${PN}-1.13.0-werror.patch"
 )
 
 src_configure() {
@@ -48,12 +48,12 @@ src_configure() {
 }
 
 src_install() {
-	dobin ${BUILD_DIR}/bin/ispc
+	dobin "${BUILD_DIR}"/bin/ispc
 	dodoc README.md
 
 	if use examples; then
 		insinto "/usr/share/doc/${PF}/examples"
 		docompress -x "/usr/share/doc/${PF}/examples"
-		doins -r ${BUILD_DIR}/examples/*
+		doins -r "${BUILD_DIR}"/examples/*
 	fi
 }
