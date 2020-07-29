@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		doclayout is a prettyprinting library for laying out
+		text documents, with several features not present
+		in prettyprinting libraries designed for code.  It
+		was designed for use in pandoc.
+	</longdescription>
+</pkgmetadata>
