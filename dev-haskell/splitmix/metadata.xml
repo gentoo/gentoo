@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name='optimised-mixer'>Use JavaScript for mix32</flag>
+		<flag name='random'>Providen RandomGen SMGen instance</flag>
+	</use>
+	<longdescription>
+		Pure Haskell implementation of SplitMix described in
+		
+		Guy L. Steele, Jr., Doug Lea, and Christine H. Flood. 2014.
+		Fast splittable pseudorandom number generators. In Proceedings
+		of the 2014 ACM International Conference on Object Oriented
+		Programming Systems Languages &amp; Applications (OOPSLA &#39;14). ACM,
+		New York, NY, USA, 453-472. DOI:
+		&lt;https://doi.org/10.1145/2660193.2660195&gt;
+		
+		The paper describes a new algorithm /SplitMix/ for /splittable/
+		pseudorandom number generator that is quite fast: 9 64 bit arithmetic/logical
+		operations per 64 bits generated.
+		
+		/SplitMix/ is tested with two standard statistical test suites (DieHarder and
+		TestU01, this implementation only using the former) and it appears to be
+		adequate for &quot;everyday&quot; use, such as Monte Carlo algorithms and randomized
+		data structures where speed is important.
+		
+		In particular, it __should not be used for cryptographic or security applications__,
+		because generated sequences of pseudorandom values are too predictable
+		(the mixing functions are easily inverted, and two successive outputs
+		suffice to reconstruct the internal state).
+	</longdescription>
+</pkgmetadata>
