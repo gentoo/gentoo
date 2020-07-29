@@ -30,7 +30,7 @@ IUSE=""
 
 DEPEND="
 	net-libs/libssh[sftp]
-	~media-tv/kodi-9999
+	=media-tv/kodi-19*
 	"
 RDEPEND="${DEPEND}"
 
