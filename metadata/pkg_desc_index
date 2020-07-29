@@ -13673,7 +13673,7 @@ media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the comm
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
 media-tv/plex-media-server 1.18.3 1.18.4-r1 1.19.1 1.19.2: A free media library that is intended for use with a plex client
 media-tv/shoutcast2vdr 0.0.8-r1: VDR script: generate shoutcast playlists
-media-tv/tvbrowser-bin 4.0.1: Themeable and easy to use TV Guide - written in Java
+media-tv/tvbrowser-bin 4.2.1: Themeable and easy to use TV Guide - written in Java
 media-tv/tvheadend 4.2.8-r1 9999: Tvheadend is a TV streaming server and digital video recorder
 media-tv/tvnamer 2.4 2.5: Automatic TV episode file renamer, data from thetvdb.com
 media-tv/v4l-dvb-saa716x 0.0.1_p20170225 0.0.1_p20170225-r2: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
