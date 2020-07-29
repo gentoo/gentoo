@@ -160,6 +160,8 @@ ros-catkin_src_prepare() {
 ros-catkin_src_configure() {
 	export CATKIN_PREFIX_PATH="${EPREFIX}/usr"
 	export ROS_ROOT="${EPREFIX}/usr/share/ros"
+	export ROS_PYTHON_VERSION="${EPYTHON#python}"
+
 	if [ -n "${CATKIN_HAS_MESSAGES}" ] ; then
 		ROS_LANG_DISABLE=""
 		use ros_messages_cxx    || ROS_LANG_DISABLE="${ROS_LANG_DISABLE}:gencpp"
