@@ -37,6 +37,7 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
+	dev-util/glib-utils
 	dev-util/gdbus-codegen
 	>=dev-util/intltool-0.40.6
 	sys-devel/gettext
