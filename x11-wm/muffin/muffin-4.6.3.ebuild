@@ -20,6 +20,7 @@ RDEPEND="
 	x11-libs/gdk-pixbuf:2[introspection?]
 	>=x11-libs/gtk+-3.9.12:3[X,introspection?]
 	>=dev-libs/glib-2.37.3:2[dbus]
+	>=dev-libs/json-glib-1.0
 	>=gnome-extra/cinnamon-desktop-4.4:0=
 	>=media-libs/libcanberra-0.26[gtk3]
 	>=x11-libs/libXcomposite-0.3
@@ -35,6 +36,7 @@ RDEPEND="
 	x11-libs/libXfixes
 	x11-libs/libXrandr
 	x11-libs/libXrender
+	x11-libs/libxkbcommon
 	virtual/opengl
 
 	gnome-extra/zenity
@@ -48,6 +50,7 @@ DEPEND="${RDEPEND}
 "
 # needs gtk-doc, not just -am, for gtk-doc.make
 BDEPEND="
+	dev-util/glib-utils
 	sys-devel/gettext
 	dev-util/gtk-doc
 	dev-util/gtk-doc-am
