@@ -5947,7 +5947,7 @@ dev-perl/Devel-CheckBin 0.40.0: check that a command is available
 dev-perl/Devel-CheckCompiler 0.70.0: Check the compiler's availability
 dev-perl/Devel-CheckLib 1.110.0 1.130.0 1.140.0: check that a library is available
 dev-perl/Devel-CheckOS 1.810.0 1.830.0: require that we are running on a particular OS
-dev-perl/Devel-Cover 1.290.0-r1: Code coverage metrics for Perl
+dev-perl/Devel-Cover 1.290.0-r1 1.360.0: Code coverage metrics for Perl
 dev-perl/Devel-Cycle 1.120.0: Find memory cycles in objects
 dev-perl/Devel-Declare 0.6.19: Adding keywords to perl, in perl
 dev-perl/Devel-Dumpvar 1.60.0-r1: Pure-OO reimplementation of dumpvar.pl
