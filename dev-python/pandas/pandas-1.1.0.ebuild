@@ -9,16 +9,16 @@ PYTHON_REQ_USE="threads(+)"
 VIRTUALX_REQUIRED="manual"
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1 eutils flag-o-matic git-r3 virtualx
+inherit distutils-r1 eutils flag-o-matic virtualx
 
 DESCRIPTION="Powerful data structures for data analysis and statistics"
 HOMEPAGE="https://pandas.pydata.org/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/pydata/pandas.git"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P/_/}.tar.gz"
+S="${WORKDIR}/${P/_/}"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="doc full-support minimal test X"
 RESTRICT="!test? ( test )"
 
@@ -42,9 +42,9 @@ OPTIONAL_DEPEND="
 		dev-python/xlsxwriter[${PYTHON_USEDEP}]
 	)
 	>=dev-python/pytables-3.2.1[${PYTHON_USEDEP}]
+	dev-python/s3fs[${PYTHON_USEDEP}]
+	dev-python/statsmodels[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
-		dev-python/s3fs[${PYTHON_USEDEP}]
-		dev-python/statsmodels[${PYTHON_USEDEP}]
 		>=dev-python/xarray-0.10.8[${PYTHON_USEDEP}]
 	' python3_{6,7})
 	>=dev-python/sqlalchemy-0.8.1[${PYTHON_USEDEP}]
@@ -60,12 +60,11 @@ OPTIONAL_DEPEND="
 	)
 "
 COMMON_DEPEND="
-	>dev-python/numpy-1.13.1[${PYTHON_USEDEP}]
+	>dev-python/numpy-1.15.4[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 "
 DEPEND="${COMMON_DEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/cython-0.29.20-r1[${PYTHON_USEDEP}]
 	doc? (
 		${VIRTUALX_DEPEND}
@@ -117,6 +116,9 @@ python_prepare_all() {
 	# requires package installed
 	sed -e 's:test_register_entrypoint:_&:' \
 		-i pandas/tests/plotting/test_backend.py || die
+
+	sed -e '/extra_compile_args =/s:"-Werror"::' \
+		-i setup.py || die
 
 	distutils-r1_python_prepare_all
 }

@@ -3,13 +3,14 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} pypy3 )
 PYTHON_REQ_USE="ssl(+),threads(+)"
 
 inherit bash-completion-r1 distutils-r1 multiprocessing
 
-SETUPTOOLS_PV="41.4.0"
-WHEEL_PV="0.33.6"
+SETUPTOOLS_PV="44.0.0"
+WHEEL_PV="0.34.2"
 
 DESCRIPTION="Installs python packages -- replacement for easy_install"
 HOMEPAGE="https://pip.pypa.io/ https://pypi.org/project/pip/ https://github.com/pypa/pip/"
@@ -24,7 +25,7 @@ SRC_URI="
 # setuptools & wheel .whl files are required for testing, exact version is not very important.
 
 LICENSE="MIT"
-KEYWORDS="amd64 arm64 ~hppa ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 SLOT="0"
 IUSE="test -vanilla"
 
@@ -37,28 +38,33 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	test? (
+		dev-python/cryptography[${PYTHON_USEDEP}]
+		dev-python/csv23[${PYTHON_USEDEP}]
 		dev-python/freezegun[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pretend[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/scripttest[${PYTHON_USEDEP}]
-		dev-python/virtualenv[${PYTHON_USEDEP}]
+		<dev-python/virtualenv-20[${PYTHON_USEDEP}]
+		dev-python/werkzeug[${PYTHON_USEDEP}]
 		dev-python/wheel[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' -2)
 	)
 "
 
 python_prepare_all() {
 	local PATCHES=(
 		"${FILESDIR}/${PN}-19.3-disable-version-check.patch"
-
-		# these are from upstream git
-		"${FILESDIR}/pip-19.3.1-network-tests.patch"
-		"${FILESDIR}/${PN}-20.1.1-test-endian.patch"
+		"${FILESDIR}/${PN}-20.2-no-coverage.patch"
 	)
 	if ! use vanilla; then
-		PATCHES+=( "${FILESDIR}/pip-19.3.1-r2-disable-system-install.patch" )
+		PATCHES+=( "${FILESDIR}/pip-20.0.2-disable-system-install.patch" )
 	fi
+
+	# TODO
+	rm tests/functional/test_new_resolver_user.py || die
+
 	distutils-r1_python_prepare_all
 
 	if use test; then
@@ -95,6 +101,7 @@ python_test() {
 		uninstall_editable_from_usersite
 		uninstall_from_usersite_with_dist_in_global_site
 		build_env_isolation
+		user_config_accepted
 	)
 
 	distutils_install_for_testing

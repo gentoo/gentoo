@@ -50,7 +50,6 @@ app-crypt/ssh-multiadd
 app-misc/mswinurl_launcher
 app-misc/mtail
 app-mobilephone/wammu
-app-office/lyx
 app-text/fbless
 app-text/sgmltools-lite
 dev-cpp/icnc
@@ -84,8 +83,6 @@ dev-vcs/gitstats
 dev-vcs/svnmailer
 games-action/openclonk
 games-emulation/fceux
-games-emulation/m64py
-games-emulation/mupen64plus
 games-strategy/0ad
 media-gfx/alembic
 media-gfx/cptutils
