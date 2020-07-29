@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,7 +35,7 @@ src_compile() {
 
 src_install() {
 	dobin bin/*
-	dodoc {README,CHANGELOG,CONTRIBUTING}.md
+	dodoc {README,CHANGELOG}.md
 	insinto /etc/alertmanager/
 	newins doc/examples/simple.yml config.yml.example
 	keepdir /var/lib/alertmanager /var/log/alertmanager
