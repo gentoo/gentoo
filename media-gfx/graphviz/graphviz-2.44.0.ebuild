@@ -17,6 +17,7 @@ IUSE="+cairo devil doc examples gdk-pixbuf gtk gts guile java lasi nls pdf perl 
 
 REQUIRED_USE="
 	!cairo? ( !X !gtk !postscript !lasi )
+	pdf? ( cairo )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
 # Requires ksh, tests against installed package, missing files and directory
