@@ -56,6 +56,12 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
+src_prepare() {
+	sed -i -e 's:-Werror::' lib/tsan/go/buildgo.sh || die
+
+	llvm.org_src_prepare
+}
+
 src_configure() {
 	# pre-set since we need to pass it to cmake
 	BUILD_DIR=${WORKDIR}/compiler-rt_build
