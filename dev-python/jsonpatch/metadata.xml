@@ -13,6 +13,7 @@
   Python library to apply JSON Patches according to
   http://tools.ietf.org/html/draft-ietf-appsawg-json-patch-08
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">jsonpatch</remote-id>
     <remote-id type="github">stefankoegl/python-json-patch</remote-id>
