@@ -5,6 +5,7 @@
 		<email>zmedico@gentoo.org</email>
 		<name>Zac Medico</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">aws/aws-xray-sdk-python</remote-id>
 		<remote-id type="pypi">aws-xray-sdk</remote-id>
