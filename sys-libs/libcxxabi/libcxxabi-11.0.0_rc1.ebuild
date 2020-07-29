@@ -106,7 +106,7 @@ multilib_src_test() {
 	mv "${BUILD_DIR}"/libcxx/lib/libc++* "${BUILD_DIR}/$(get_libdir)/" || die
 
 	local -x LIT_PRESERVES_TMP=1
-	cmake_build check-libcxxabi
+	cmake_build check-cxxabi
 }
 
 multilib_src_install_all() {

@@ -13,12 +13,13 @@ LLVM_COMPONENTS=( clang clang-tools-extra )
 LLVM_TEST_COMPONENTS=(
 	llvm/lib/Testing/Support
 	llvm/utils/{lit,llvm-lit,unittest}
+	llvm/utils/{UpdateTestChecks,update_cc_test_checks.py}
 )
 llvm.org_set_globals
 
 # Keep in sync with sys-devel/llvm
-ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC AVR VE )
-ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
+ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC VE )
+ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430
 	NVPTX PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
 	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]}" )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
@@ -66,12 +67,6 @@ PDEPEND="
 # Therefore: use sys-devel/clang[${MULTILIB_USEDEP}] only if you need
 # multilib clang* libraries (not runtime, not wrappers).
 
-PATCHES=(
-	# fix simultaneous linking to .a and dylib
-	"${FILESDIR}"/10.0.1/0003-clang-tools-extra-Prevent-linking-to-duplicate-.a-li.patch
-	"${FILESDIR}"/10.0.1/0004-clang-Avoid-linking-c-index-test-to-duplicate-librar.patch
-)
-
 pkg_setup() {
 	LLVM_MAX_SLOT=${SLOT} llvm_pkg_setup
 	python-single-r1_pkg_setup
@@ -102,15 +97,15 @@ check_distribution_components() {
 					clang-libraries|distribution)
 						continue
 						;;
+					# headers for clang-tidy static library
+					clang-tidy-headers)
+						continue
+						;;
 					# tools
 					clang|clangd|clang-*)
 						;;
 					# static libraries
 					clang*|findAllSymbols)
-						continue
-						;;
-					# headers for clang-tidy static library
-					clang-tidy-headers)
 						continue
 						;;
 					# conditional to USE=doc
@@ -173,7 +168,6 @@ get_distribution_components() {
 			c-index-test
 			clang
 			clang-format
-			clang-import-test
 			clang-offload-bundler
 			clang-offload-wrapper
 			clang-refactor
@@ -301,7 +295,7 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	cmake_src_compile
+	cmake_build distribution
 
 	# provide a symlink for tests
 	if [[ ! -L ${WORKDIR}/lib/clang ]]; then

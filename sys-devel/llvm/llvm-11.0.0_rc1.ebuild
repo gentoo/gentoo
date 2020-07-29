@@ -13,9 +13,9 @@ LLVM_COMPONENTS=( llvm )
 llvm.org_set_globals
 
 # Those are in lib/Targets, without explicit CMakeLists.txt mention
-ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC AVR VE )
+ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC VE )
 # Keep in sync with CMakeLists.txt
-ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
+ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430
 	NVPTX PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
 	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]}" )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
@@ -69,12 +69,6 @@ RDEPEND="${RDEPEND}
 	!sys-devel/llvm:0"
 PDEPEND="sys-devel/llvm-common
 	gold? ( >=sys-devel/llvmgold-${SLOT} )"
-
-PATCHES=(
-	# Fix linking to dylib and .a libs simultaneously
-	"${FILESDIR}"/10.0.1/0001-llvm-Avoid-linking-llvm-cfi-verify-to-duplicate-libs.patch
-	"${FILESDIR}"/10.0.1/0002-llvm-Disable-linking-llvm-exegesis-to-dylib.patch
-)
 
 python_check_deps() {
 	if use doc; then
@@ -187,11 +181,6 @@ src_prepare() {
 	# Update config.guess to support more systems
 	cp "${BROOT}/usr/share/gnuconfig/config.guess" cmake/ || die
 
-	# manpages don't use markdown
-	if ! use doc; then
-		sed -i -e '/source_parsers/d' docs/conf.py || die
-	fi
-
 	# Verify that the live ebuild is up-to-date
 	check_live_ebuild
 
@@ -269,6 +258,7 @@ get_distribution_components() {
 			llvm-elfabi
 			llvm-exegesis
 			llvm-extract
+			llvm-gsymutil
 			llvm-ifs
 			llvm-install-name-tool
 			llvm-jitlink
@@ -279,6 +269,7 @@ get_distribution_components() {
 			llvm-lto2
 			llvm-mc
 			llvm-mca
+			llvm-ml
 			llvm-modextract
 			llvm-mt
 			llvm-nm
@@ -444,7 +435,7 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	cmake_src_compile
+	cmake_build distribution
 
 	pax-mark m "${BUILD_DIR}"/bin/llvm-rtdyld
 	pax-mark m "${BUILD_DIR}"/bin/lli

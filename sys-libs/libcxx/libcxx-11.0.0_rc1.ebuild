@@ -9,7 +9,8 @@ inherit cmake-multilib llvm llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
 HOMEPAGE="https://libcxx.llvm.org/"
-LLVM_COMPONENTS=( libcxx )
+# libcxxabi is required unconditionally now
+LLVM_COMPONENTS=( libcxx{,abi} )
 llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
@@ -137,7 +138,7 @@ multilib_src_configure() {
 
 multilib_src_test() {
 	local -x LIT_PRESERVES_TMP=1
-	cmake_build check-libcxx
+	cmake_build check-cxx
 }
 
 # Usage: deps
