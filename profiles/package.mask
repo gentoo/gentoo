@@ -100,7 +100,6 @@ media-sound/positron
 net-analyzer/linkchecker
 net-analyzer/pbgpp
 net-fs/nfstest
-net-im/spectrum2
 net-misc/pssh
 net-misc/putty
 net-misc/ris-linux
