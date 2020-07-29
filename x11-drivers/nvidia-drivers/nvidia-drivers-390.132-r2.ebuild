@@ -483,14 +483,14 @@ src_install-libs() {
 			)
 		fi
 
-		if use wayland && has_multilib_profile && [[ ${ABI} == "amd64" ]];
+		if use wayland && [[ ${ABI} == "amd64" ]];
 		then
 			NV_GLX_LIBRARIES+=(
 				"libnvidia-egl-wayland.so.1.0.2"
 			)
 		fi
 
-		if use kernel_linux && has_multilib_profile && [[ ${ABI} == "amd64" ]];
+		if use kernel_linux && [[ ${ABI} == "amd64" ]];
 		then
 			NV_GLX_LIBRARIES+=(
 				"libnvidia-wfb.so.${NV_SOVER}"
