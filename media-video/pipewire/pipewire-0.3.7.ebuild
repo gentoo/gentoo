@@ -29,9 +29,9 @@ BDEPEND="
 	)
 "
 RDEPEND="
-	media-libs/alsa-lib
+	>=media-libs/alsa-lib-1.1.7
 	media-libs/libsdl2
-	media-libs/libsndfile
+	>=media-libs/libsndfile-1.0.20
 	sys-apps/dbus
 	virtual/libudev
 	bluetooth? (
@@ -40,14 +40,14 @@ RDEPEND="
 	)
 	ffmpeg? ( media-video/ffmpeg:= )
 	gstreamer? (
-		dev-libs/glib:2
-		media-libs/gstreamer:1.0
+		>=dev-libs/glib-2.32.0:2
+		>=media-libs/gstreamer-1.10.0:1.0
 		media-libs/gst-plugins-base:1.0
 	)
 	jack? ( >=media-sound/jack2-1.9.10:2 )
 	pulseaudio? (
 		dev-libs/glib:2
-		media-sound/pulseaudio
+		>=media-sound/pulseaudio-11.1
 	)
 	systemd? ( sys-apps/systemd )
 	vulkan? ( media-libs/vulkan-loader )
