@@ -26,3 +26,9 @@ DEPEND="${RDEPEND}
 		$(python_gen_cond_dep "dev-util/rosinstall[\${PYTHON_USEDEP}]")
 		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
 	)"
+
+src_test() {
+	# Needed for tests to find internal launch file
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	ros-catkin_src_test
+}
