@@ -12,16 +12,12 @@ SRC_URI="https://github.com/flatpak/${PN}/releases/download/${PV}/${P}.tar.xz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="doc geolocation screencast"
+IUSE="geolocation screencast"
 
 BDEPEND="
 	dev-util/gdbus-codegen
 	sys-devel/gettext
 	virtual/pkgconfig
-	doc? (
-		app-text/docbook-xml-dtd:4.3
-		app-text/xmlto
-	)
 "
 DEPEND="
 	dev-libs/glib:2
@@ -38,9 +34,9 @@ RDEPEND="${DEPEND}
 src_configure() {
 	local myeconfargs=(
 		--with-systemduserunitdir="$(systemd_get_userunitdir)"
-		$(use_enable doc docbook-docs)
 		$(use_enable geolocation geoclue)
 		$(use_enable screencast pipewire)
+		--disable-docbook-docs # flatpak not packaged
 		--disable-libportal # not packaged
 	)
 	econf "${myeconfargs[@]}"
