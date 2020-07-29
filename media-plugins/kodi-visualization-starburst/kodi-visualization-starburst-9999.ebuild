@@ -6,19 +6,19 @@ EAPI=7
 inherit cmake kodi-addon
 
 DESCRIPTION="StarBurst visualizer for Kodi"
-HOMEPAGE="https://github.com/notspiff/visualization.starburst"
+HOMEPAGE="https://github.com/xbmc/visualization.starburst"
 SRC_URI=""
 
 case ${PV} in
 9999)
 	SRC_URI=""
-	EGIT_REPO_URI="https://github.com/notspiff/visualization.starburst.git"
+	EGIT_REPO_URI="https://github.com/xbmc/visualization.starburst.git"
 	inherit git-r3
 	;;
 *)
 	KEYWORDS="~amd64 ~x86"
-	CODENAME="Leia"
-	SRC_URI="https://github.com/notspiff/visualization.starburst/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	CODENAME="Matrix"
+	SRC_URI="https://github.com/xbmc/visualization.starburst/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/visualization.starburst-${PV}-${CODENAME}"
 	;;
 esac

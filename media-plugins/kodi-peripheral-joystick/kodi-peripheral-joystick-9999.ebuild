@@ -18,7 +18,7 @@ case ${PV} in
 	;;
 *)
 	KEYWORDS="~amd64 ~x86"
-	CODENAME="Leia"
+	CODENAME="Matrix"
 	SRC_URI="https://github.com/xbmc/peripheral.joystick/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/peripheral.joystick-${PV}-${CODENAME}"
 	;;
@@ -30,7 +30,6 @@ IUSE=""
 
 DEPEND="
 	~media-tv/kodi-9999
-	~media-libs/kodi-platform-9999
 	dev-libs/libpcre
 	dev-libs/tinyxml
 	"

@@ -6,19 +6,19 @@ EAPI=7
 inherit cmake kodi-addon
 
 DESCRIPTION="Timidity decoder addon for Kodi"
-HOMEPAGE="https://github.com/notspiff/audiodecoder.timidity"
+HOMEPAGE="https://github.com/xbmc/audiodecoder.timidity"
 SRC_URI=""
 
 case ${PV} in
 9999)
 	SRC_URI=""
-	EGIT_REPO_URI="https://github.com/notspiff/audiodecoder.timidity.git"
+	EGIT_REPO_URI="https://github.com/xbmc/audiodecoder.timidity.git"
 	inherit git-r3
 	;;
 *)
-	CODENAME="Leia"
+	CODENAME="Matrix"
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/notspiff/audiodecoder.timidity/archive/${PV}-${CODENAME}.tar.gz -> ${P}-${CODENAME}.tar.gz"
+	SRC_URI="https://github.com/xbmc/audiodecoder.timidity/archive/${PV}-${CODENAME}.tar.gz -> ${P}-${CODENAME}.tar.gz"
 	S="${WORKDIR}/audiodecoder.timidity-${PV}-${CODENAME}"
 	;;
 esac

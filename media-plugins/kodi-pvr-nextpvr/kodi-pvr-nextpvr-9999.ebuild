@@ -16,7 +16,7 @@ case ${PV} in
 	inherit git-r3
 	;;
 *)
-	CODENAME="Leia"
+	CODENAME="Matrix"
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://github.com/kodi-pvr/pvr.nextpvr/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/pvr.nextpvr-${PV}-${CODENAME}"
@@ -29,7 +29,6 @@ IUSE=""
 
 DEPEND="
 	~media-tv/kodi-9999
-	~media-libs/kodi-platform-9999
 	dev-libs/tinyxml
 	"
 

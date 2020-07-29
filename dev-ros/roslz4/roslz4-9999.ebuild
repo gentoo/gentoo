@@ -14,6 +14,7 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="app-arch/lz4"
+RDEPEND="app-arch/lz4
+	dev-ros/cpp_common"
 DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )"

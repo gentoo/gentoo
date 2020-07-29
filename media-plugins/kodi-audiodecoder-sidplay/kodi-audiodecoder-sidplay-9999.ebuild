@@ -6,19 +6,19 @@ EAPI=7
 inherit cmake kodi-addon
 
 DESCRIPTION="SidPlay decoder addon for Kodi"
-HOMEPAGE="https://github.com/notspiff/audiodecoder.sidplay"
+HOMEPAGE="https://github.com/xbmc/audiodecoder.sidplay"
 SRC_URI=""
 
 case ${PV} in
 9999)
 	SRC_URI=""
-	EGIT_REPO_URI="https://github.com/notspiff/audiodecoder.sidplay.git"
+	EGIT_REPO_URI="https://github.com/xbmc/audiodecoder.sidplay.git"
 	inherit git-r3
 	;;
 *)
-	CODENAME="Leia"
+	CODENAME="Matrix"
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/notspiff/audiodecoder.sidplay/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/xbmc/audiodecoder.sidplay/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/audiodecoder.sidplay-${PV}-${CODENAME}"
 	;;
 esac
