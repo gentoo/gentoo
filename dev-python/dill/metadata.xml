@@ -15,6 +15,7 @@
     Dill can be used to store Python objects to a file, but the primary usage is to
     send Python objects across the network as a byte stream.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">dill</remote-id>
     <remote-id type="github">uqfoundation/dill</remote-id>
