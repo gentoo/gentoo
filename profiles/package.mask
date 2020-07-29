@@ -50,7 +50,6 @@ app-crypt/ssh-multiadd
 app-misc/mswinurl_launcher
 app-misc/mtail
 app-mobilephone/wammu
-app-office/kexi
 app-office/lyx
 app-text/fbless
 app-text/sgmltools-lite
@@ -123,6 +122,7 @@ net-wireless/gr-rftap
 net-wireless/gr-specest
 net-wireless/mousejack
 net-wireless/rfcat
+sci-biology/bowtie
 sci-biology/seqan
 sci-biology/shrimp
 sci-chemistry/eden
