@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=gtk? ( dev-libs/atk dev-libs/glib:2 x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 ) firebird? ( dev-db/firebird ) gcrypt? ( dev-libs/libgcrypt ) idn? ( net-dns/libidn:0= ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) memcached? ( dev-libs/libmemcached[sasl] ) mongodb? ( dev-libs/mongo-c-driver ) mysql? ( dev-db/mysql-connector-c:0= ) ncp? ( net-fs/ncpfs ) ncurses? ( sys-libs/ncurses:= ) oracle? ( dev-db/oracle-instantclient-basic ) pcre? ( dev-libs/libpcre ) postgres? ( dev-db/postgresql:* ) rdp? ( net-misc/freerdp ) libssh? ( >=net-libs/libssh-0.4.0 ) subversion? ( dev-vcs/subversion ) zlib? ( sys-libs/zlib ) virtual/pkgconfig
+DESCRIPTION=Parallelized network login hacker
+EAPI=7
+HOMEPAGE=https://github.com/vanhauser-thc/thc-hydra
+IUSE=debug firebird gcrypt gtk idn libressl memcached mongodb mysql ncp ncurses oracle pcre postgres rdp libssh subversion zlib
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-3
+RDEPEND=gtk? ( dev-libs/atk dev-libs/glib:2 x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 ) firebird? ( dev-db/firebird ) gcrypt? ( dev-libs/libgcrypt ) idn? ( net-dns/libidn:0= ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) memcached? ( dev-libs/libmemcached[sasl] ) mongodb? ( dev-libs/mongo-c-driver ) mysql? ( dev-db/mysql-connector-c:0= ) ncp? ( net-fs/ncpfs ) ncurses? ( sys-libs/ncurses:= ) oracle? ( dev-db/oracle-instantclient-basic ) pcre? ( dev-libs/libpcre ) postgres? ( dev-db/postgresql:* ) rdp? ( net-misc/freerdp ) libssh? ( >=net-libs/libssh-0.4.0 ) subversion? ( dev-vcs/subversion ) zlib? ( sys-libs/zlib )
+SLOT=0
+SRC_URI=https://github.com/vanhauser-thc/thc-hydra/archive/v9.1.tar.gz -> hydra-9.1.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=bfc6be708a844ca4d2c479783ac3aab9
