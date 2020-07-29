@@ -1,5 +1,5 @@
+BDEPEND=app-arch/unzip
 DEFINED_PHASES=install
-DEPEND=app-arch/unzip
 DESCRIPTION=Byzantine/Majority Text (2000)
 EAPI=7
 HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=Byz
@@ -7,6 +7,6 @@ KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=public-domain
 RDEPEND=app-text/sword
 SLOT=0
-SRC_URI=mirror://gentoo/Byz-1.10.zip
-_eclasses_=sword-module	95addfe6ccec3bab4c085d831594fa26
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/Byz.zip -> Byz-1.10.zip
+_eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
 _md5_=86e866063a3cf35cde3ed974d8673ea1

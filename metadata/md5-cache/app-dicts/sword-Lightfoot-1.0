@@ -1,5 +1,5 @@
+BDEPEND=app-arch/unzip
 DEFINED_PHASES=install
-DEPEND=app-arch/unzip
 DESCRIPTION=John Lightfoot Commentary
 EAPI=7
 HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=Lightfoot
@@ -7,6 +7,6 @@ KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=public-domain
 RDEPEND=app-text/sword
 SLOT=0
-SRC_URI=mirror://gentoo/Lightfoot-1.0.zip
-_eclasses_=sword-module	95addfe6ccec3bab4c085d831594fa26
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/Lightfoot.zip -> Lightfoot-1.0.zip
+_eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
 _md5_=3860ad749f1c613fb64c7d8539440b5f

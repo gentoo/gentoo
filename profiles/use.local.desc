@@ -7888,8 +7888,6 @@ sys-apps/openrc:bash - enable the use of bash in service scripts (experimental)
 sys-apps/openrc:netifrc - enable Gentoo's network stack (net.* scripts)
 sys-apps/openrc:newnet - enable the new network stack (experimental)
 sys-apps/openrc:sysv-utils - Install sysvinit compatibility scripts for halt, init, poweroff, reboot and shutdown
-sys-apps/pacman:doc - Install extended documentation using app-doc/doxygen. (Man pages are included by default.)
-sys-apps/pacman:gpg - Enable GPG signature verification using app-crypt/gpgme
 sys-apps/pciutils:dns - Enable support for querying the central database of PCI IDs using DNS
 sys-apps/pciutils:kmod - Enable sys-apps/kmod support for the -k switch in lspci command
 sys-apps/pciutils:zlib - Support compressed pci.ids database

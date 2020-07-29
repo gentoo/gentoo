@@ -1,5 +1,5 @@
+BDEPEND=app-arch/unzip
 DEFINED_PHASES=install
-DEPEND=app-arch/unzip
 DESCRIPTION=The Practice of the Presence of God: The Best Rule of Holy Life
 EAPI=7
 HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=Practice
@@ -7,6 +7,6 @@ KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=public-domain
 RDEPEND=app-text/sword
 SLOT=0
-SRC_URI=mirror://gentoo/Practice-1.0.zip
-_eclasses_=sword-module	95addfe6ccec3bab4c085d831594fa26
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/Practice.zip -> Practice-1.0.zip
+_eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
 _md5_=6e1dbd45b4d1d47a4fb5cefb60d470b7
