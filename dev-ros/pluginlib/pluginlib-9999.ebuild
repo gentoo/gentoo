@@ -24,3 +24,14 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )"
 PATCHES=( "${FILESDIR}/catkin_prefix_path2.patch" )
+
+src_test() {
+	cmake_build tests
+
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	if [ ! -e "${BUILD_DIR}/devel/lib" ] ; then
+		ln -s $(get_libdir) "${BUILD_DIR}/devel/lib" || die
+	fi
+	export CATKIN_PREFIX_PATH=devel/
+	ros-catkin_src_test
+}
