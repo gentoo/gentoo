@@ -83,10 +83,12 @@ RDEPEND="
 BDEPEND="
 	${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-7.110.100
+	>=dev-perl/File-ShareDir-Install-0.60.0
 	test? (
 		virtual/perl-File-Temp
 		dev-perl/Test-Deep
 		>=dev-perl/Test-UseAllModules-0.150.0
+		virtual/perl-autodie
 	)
 "
 
