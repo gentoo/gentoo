@@ -5005,7 +5005,7 @@ dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.5.2_p1: Open-source library for reading, mastering and writing optical discs
 dev-libs/libbytesize 2.2 2.3: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
 dev-libs/libcbor 0.5.0 0.6.0-r1 0.6.1 0.7.0: CBOR protocol implementation for C and others
-dev-libs/libcdio 0.93 0.94-r1 1.1.0 2.0.0 2.0.0-r1 2.1.0-r1: A library to encapsulate CD-ROM reading and control
+dev-libs/libcdio 2.0.0-r1 2.1.0-r1: A library to encapsulate CD-ROM reading and control
 dev-libs/libcdio-paranoia 0.93_p1-r1 0.94_p2-r2 2.0.0-r1 2.0.1: an advanced CDDA reader with error correction
 dev-libs/libcec 4.0.2-r2 4.0.4-r1: Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor
 dev-libs/libcgroup 0.41-r5 0.41-r6: Tools and libraries to configure and manage kernel control groups
@@ -5945,8 +5945,8 @@ dev-perl/Devel-CallChecker 0.8.0 0.8.0-r1: Custom OP checking attached to subrou
 dev-perl/Devel-Caller 2.60.0 2.60.0-r1: Meatier versions of caller
 dev-perl/Devel-CheckBin 0.40.0: check that a command is available
 dev-perl/Devel-CheckCompiler 0.70.0: Check the compiler's availability
-dev-perl/Devel-CheckLib 1.110.0 1.130.0: check that a library is available
-dev-perl/Devel-CheckOS 1.810.0: require that we are running on a particular OS
+dev-perl/Devel-CheckLib 1.110.0 1.130.0 1.140.0: check that a library is available
+dev-perl/Devel-CheckOS 1.810.0 1.830.0: require that we are running on a particular OS
 dev-perl/Devel-Cover 1.290.0-r1: Code coverage metrics for Perl
 dev-perl/Devel-Cycle 1.120.0: Find memory cycles in objects
 dev-perl/Devel-Declare 0.6.19: Adding keywords to perl, in perl
@@ -12041,9 +12041,9 @@ mail-client/mailx 8.1.2.20160123 8.1.2.20180807: The $ mail program, which is us
 mail-client/mailx-support 20060102-r2: Provides lockspool utility
 mail-client/mutt 1.14.4-r1 1.14.5: A small but very powerful text-based mail client
 mail-client/mutt-wizard 0_pre20200606 9999: A system for automatically configuring neomutt and isync
-mail-client/neomutt 20180716 20200501 20200619 20200626 20200626-r1 99999999: A small but very powerful text-based mail client
+mail-client/neomutt 20200626 20200626-r1 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
-mail-client/roundcube 1.3.11 1.4.4 1.4.6 1.4.7: A browser-based multilingual IMAP client with an application-like user interface
+mail-client/roundcube 1.4.6 1.4.7: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.16 14.9.19: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.7.0: A lightweight email client and newsreader
 mail-client/thunderbird 68.10.0 68.11.0: Thunderbird Mail Client
@@ -12613,7 +12613,7 @@ media-libs/ampache_browser 1.0.1 1.0.2: Ampache desktop client library
 media-libs/aribb24 1.0.3 1.0.3-r1 1.0.3-r2: Library for decoding ARIB STD-B24 subtitles
 media-libs/assimp 5.0.1: Importer library to import assets from 3D files
 media-libs/aubio 0.4.9: Library for audio labelling
-media-libs/audiofile 0.3.6-r3 0.3.6-r4: An elegant API for accessing audio files
+media-libs/audiofile 0.3.6-r4: An elegant API for accessing audio files
 media-libs/avidemux-core 2.7.3-r1 2.7.4-r1: Core libraries for simple video cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.7.3 2.7.4: Plugins for the video editor media-video/avidemux
 media-libs/babl 0.1.66 0.1.66-r1 0.1.74 0.1.74-r1 0.1.78 9999: A dynamic, any to any, pixel format conversion library
@@ -13820,7 +13820,7 @@ media-video/unifi-video 3.10.10 3.10.11 3.10.12: UniFi Video Server
 media-video/ushare 1.1a-r9: uShare is a UPnP (TM) A/V & DLNA Media Server
 media-video/v4l2loopback 0.12.5 9999: v4l2 loopback device which output is it's own input
 media-video/vamps 0.99.2-r2: Very fast requantisizing tool for backup DVDs
-media-video/vcdimager 0.7.24 2.0.1: GNU VCDimager
+media-video/vcdimager 2.0.1: GNU VCDimager
 media-video/vcsi 7-r1: Create thumbnail sheets from video files
 media-video/vdr 2.2.0-r5 2.2.0-r6 2.4.1-r2 2.4.1-r3: Video Disk Recorder - turns a pc into a powerful set top box for DVB
 media-video/vdr2jpeg 0.1.9-r2 0.2.0 0.2.0-r4: Addon needed for XXV - WWW Admin for the Video Disk Recorder
@@ -13862,7 +13862,7 @@ net-analyzer/bwbar 1.2.3: The kernel.org "Current bandwidth utilization" bar
 net-analyzer/bwm-ng 0.6.1-r1: Bandwidth Monitor NG is a small and simple console-based bandwidth monitor
 net-analyzer/bwmon 1.3-r2: Simple ncurses bandwidth monitor
 net-analyzer/bwping 1.17: A tool to measure bandwidth and RTT between two hosts using ICMP
-net-analyzer/cacti 1.2.12 1.2.13: Cacti is a complete frontend to rrdtool
+net-analyzer/cacti 1.2.13: Cacti is a complete frontend to rrdtool
 net-analyzer/cacti-spine 1.2.12 1.2.13 99999: Spine is a fast poller for Cacti (formerly known as Cactid)
 net-analyzer/calamaris 2.59 2.99.4.0: Calamaris parses the logfiles of a wide variety of Web proxy servers and generates reports
 net-analyzer/carl 0.9-r2 0.9-r3: An rsync logfile analyzer
@@ -14483,7 +14483,7 @@ net-libs/libnids 1.24-r6: an implementation of an E-component of Network Intrusi
 net-libs/libnipper 0.12.6-r1: A router configuration security analysis library
 net-libs/libnma 1.8.24 1.8.28 1.8.30: NetworkManager GUI library
 net-libs/libnsl 0-r1 1.2.0 1.3.0-r1: Public client interface for NIS(YP) and NIS+ in a IPv6 ready version
-net-libs/libntlm 1.4 1.6: Microsoft's NTLM authentication (libntlm) library
+net-libs/libntlm 1.6: Microsoft's NTLM authentication (libntlm) library
 net-libs/libnxml 0.18.3: A C-library for parsing and writing XML 1.0/1.1 files or streams
 net-libs/liboauth 1.0.3-r1: C library implementing the OAuth secure authentication protocol
 net-libs/liboping 1.10.0-r2: Protocol independent ANSI-C ping library and command line utility
