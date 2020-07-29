@@ -1,15 +1,18 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-PYTHON_COMPAT=( python2_7 )
+EAPI=6
+PYTHON_COMPAT=( python3_{7,8} )
 PYTHON_REQ_USE='threads(+)'
 
 inherit flag-o-matic toolchain-funcs multilib python-any-r1 waf-utils
 
+WAF_PV='2.0.20'
+
 DESCRIPTION="Onset detection, pitch tracking, note tracking and tempo tracking plugins"
 HOMEPAGE="https://www.vamp-plugins.org/"
-SRC_URI="https://aubio.org/pub/vamp-aubio-plugins/${P}.tar.bz2"
+SRC_URI="https://aubio.org/pub/vamp-aubio-plugins/${P}.tar.bz2
+	https://waf.io/waf-${WAF_PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -22,3 +25,8 @@ DEPEND=">=media-libs/aubio-0.4.1
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
 	${PYTHON_DEPS}"
+
+src_prepare() {
+	rm -r "${S}"/waflib && cp "${DISTDIR}/waf-${WAF_PV}" "${S}"/waf || die 'Failed to update waf'
+	default
+}
