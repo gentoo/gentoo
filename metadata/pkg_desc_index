@@ -419,8 +419,8 @@ acct-user/xrootd 0: User for the XRootD server
 acct-user/znc 0: User for net-irc/znc
 app-accessibility/SphinxTrain 1.0.8: Speech Recognition (Training Module)
 app-accessibility/accerciser 3.22.0 3.36.2: Interactive Python accessibility explorer
-app-accessibility/at-spi2-atk 2.32.0 2.34.2: Gtk module for bridging AT-SPI to Atk
-app-accessibility/at-spi2-core 2.32.1 2.34.0 2.36.0: D-Bus accessibility specifications and registration daemon
+app-accessibility/at-spi2-atk 2.34.2: Gtk module for bridging AT-SPI to Atk
+app-accessibility/at-spi2-core 2.34.0 2.36.0: D-Bus accessibility specifications and registration daemon
 app-accessibility/brltty 5.2-r1 6.0-r1: Daemon that provides access to the Linux/Unix console for a blind person
 app-accessibility/caribou 0.4.21-r1: Input assistive technology intended for switch and pointer users
 app-accessibility/edbrowse 3.7.5.1: Combination editor, browser, and mail client that is 100% text based
@@ -936,7 +936,7 @@ app-crypt/libb2 0.98.1-r2 0.98.1-r3: C library providing BLAKE2b, BLAKE2s, BLAKE
 app-crypt/libmd 1.0.0 1.0.0-r1 1.0.1 99999: Message Digest functions from BSD systems
 app-crypt/libnitrokey 3.5 9999: Support library for the Nitrokey
 app-crypt/libscrypt 1.21: Shared library to impliment the scrypt algorithm
-app-crypt/libsecret 0.18.8 0.20.2 0.20.3: GObject library for accessing the freedesktop.org Secret Service API
+app-crypt/libsecret 0.20.2 0.20.3: GObject library for accessing the freedesktop.org Secret Service API
 app-crypt/libu2f-host 1.1.10: Yubico Universal 2nd Factor (U2F) Host C Library
 app-crypt/libu2f-server 1.1.0: Yubico Universal 2nd Factor (U2F) server C Library
 app-crypt/loop-aes-losetup 2.28.2 2.35.2: Loop-AES losetup utility
@@ -2275,7 +2275,6 @@ app-misc/rpick 0.5.0 0.5.1 0.6.1: Helps you pick items from a list by various al
 app-misc/rtlamr 0.9.1: software defined radio receiver for utility smart meters
 app-misc/rundeck-bin 2.6.8: Job Scheduler and Runbook Automation
 app-misc/rundeck-cli-bin 0.1.8 0.1.11: Command line tool for rundeck
-app-misc/scope 0.04-r1: Serial Line Analyser
 app-misc/screen 4.8.0 9999: screen manager with VT100/ANSI terminal emulation
 app-misc/screenfetch 3.9.1 9999: Bash Screenshot Information Tool
 app-misc/screenie 1.30.0-r1: screen(1) frontend that is designed to be a session handler
@@ -3224,7 +3223,7 @@ dev-cpp/mm-common 1.0.0 1.0.1: Build infrastructure and utilities for GNOME C++ 
 dev-cpp/ms-gsl 2.0.0 2.1.0 3.1.0 9999: Guideline Support Library implementation by Microsoft
 dev-cpp/muParser 2.2.5 2.2.6.1: Library for parsing mathematical expressions
 dev-cpp/nlohmann_json 3.6.1-r1 3.7.0 3.7.3: JSON for Modern C++
-dev-cpp/pangomm 2.42.0 2.42.1: C++ interface for pango
+dev-cpp/pangomm 2.42.1: C++ interface for pango
 dev-cpp/picojson 1.3.0: Header-file-only, JSON parser serializer in C++
 dev-cpp/pngpp 0.2.9: A simple but powerful C++ interface to libpng
 dev-cpp/popl 1.2.0 9999: Header-only C++ program options parser library
@@ -5056,7 +5055,7 @@ dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor A
 dev-libs/libgaminggear 0.15.1: Provides functionality for gaming input devices
 dev-libs/libgcrypt 1.8.5 1.8.6: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgcrypt-compat 1.5.6: Old version of libgcrypt needed by some binaries
-dev-libs/libgdata 0.17.11 0.17.12: GLib-based library for accessing online service APIs using the GData protocol
+dev-libs/libgdata 0.17.12: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.20.3: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.28.4 0.28.5 1.0.0-r1 1.0.1: A linkable library for Git
 dev-libs/libgit2-glib 0.28.0.1 0.28.0.1-r1 0.99.0.1-r1: Git library for GLib
@@ -8288,7 +8287,7 @@ dev-python/pyalsa 1.1.6-r1: Python bindings for ALSA library
 dev-python/pyamg 3.2.1-r1: Algebraic multigrid solvers in Python
 dev-python/pyasn1 0.4.8: ASN.1 library for Python
 dev-python/pyasn1-modules 0.2.8: pyasn1 modules
-dev-python/pyatspi 2.32.1 2.34.0 2.36.0: Python client bindings for D-Bus AT-SPI
+dev-python/pyatspi 2.34.0 2.36.0: Python client bindings for D-Bus AT-SPI
 dev-python/pyaudio 0.2.11 0.2.11-r1: Python bindings for PortAudio
 dev-python/pybind11 2.4.3 2.5.0: AST-based Python refactoring library
 dev-python/pyblake2 1.1.2: BLAKE2 hash function extension module
@@ -8338,7 +8337,7 @@ dev-python/pygit2 1.2.1: Python bindings for libgit2
 dev-python/pyglet 1.2.4 1.5.3: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.5.2 2.6.1: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
-dev-python/pygobject 2.28.6-r55 3.32.1 3.34.0 3.36.1: Python bindings for GObject Introspection
+dev-python/pygobject 2.28.6-r55 3.34.0 3.36.1: Python bindings for GObject Introspection
 dev-python/pygpgme 0.3-r2: A Python wrapper for the GPGME library
 dev-python/pygpu 0.6.7: Python bindings to libgpuarray
 dev-python/pygraphviz 1.5: Python wrapper for the Graphviz Agraph data structure
@@ -11405,7 +11404,7 @@ games-util/xgame 1.7.1-r1: Run games in a separate X session
 games-util/xgame-gtk2 2.0.2-r1: Run games in a separate X session
 games-util/xgamer 0.6.2: A launcher for starting games in a second X session
 games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
-gnome-base/dconf 0.32.0-r2 0.34.0 0.36.0: Simple low-level configuration system
+gnome-base/dconf 0.34.0 0.36.0: Simple low-level configuration system
 gnome-base/dconf-editor 3.34.4: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r4: GNOME configuration system and daemon
 gnome-base/gdm 3.34.1 3.36.2 3.36.3: GNOME Display Manager for managing graphical display servers and user logins
@@ -11418,7 +11417,7 @@ gnome-base/gnome-core-libs 3.34.4 3.36.4: Sub-meta package for the core librarie
 gnome-base/gnome-desktop 3.34.7 3.36.4: Library with common API for various GNOME modules
 gnome-base/gnome-extra-apps 3.34.4: Sub-meta package for the applications of GNOME 3
 gnome-base/gnome-flashback 3.34.2 3.36.3: GNOME Flashback session
-gnome-base/gnome-keyring 3.31.91-r1 3.34.0 3.36.0: Password and keyring managing daemon
+gnome-base/gnome-keyring 3.34.0 3.36.0: Password and keyring managing daemon
 gnome-base/gnome-light 3.34.4: Meta package for GNOME-Light, merge this package to install
 gnome-base/gnome-menus 3.32.0 3.36.0: Library and layout configuration for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
@@ -14506,7 +14505,7 @@ net-libs/libsignal-protocol-c 2.3.2 2.3.3 9999: Signal Protocol C Library
 net-libs/libsignon-glib 2.1: GLib binding for the D-Bus API provided by signond
 net-libs/libslirp 4.3.1: A general purpose TCP-IP emulator used by virtual machine hypervisors to provide virtual networking services.
 net-libs/libsmi 0.4.8-r1 0.5.0: A Library to Access SMI MIB Information
-net-libs/libsoup 2.62.3 2.66.4 2.70.0: HTTP client/server library for GNOME
+net-libs/libsoup 2.70.0: HTTP client/server library for GNOME
 net-libs/libsrsirc 0.0.14-r1: A lightweight, cross-platform IRC library
 net-libs/libsrtp 1.6.0-r1 2.2.0 2.3.0-r1: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/libssh 0.9.4 9999: Access a working SSH implementation by means of a library
