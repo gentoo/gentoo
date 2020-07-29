@@ -1,0 +1,10 @@
+--- 1/configure   2019-03-07 12:52:33.594252613 -0600
++++ 2/configure   2019-03-07 12:57:28.576229245 -0600
+@@ -9287,7 +9287,7 @@
+   with_qt_pkg_config_modules="$with_qt_pkg_config_modules,Qt5DBus"
+ fi
+
+-$as_echo "#define HAVE_QTDBUS 1" >>confdefs.h
++$as_echo "#undef HAVE_QTDBUS" >>confdefs.h
+
+     fi

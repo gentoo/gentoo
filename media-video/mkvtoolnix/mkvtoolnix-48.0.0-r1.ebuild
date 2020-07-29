@@ -69,6 +69,9 @@ src_prepare() {
 		./autogen.sh || die
 	fi
 
+	# apply small patch to allow compilation if dbus/qtdbus is not used
+	use !dbus && eapply "${FILESDIR}"/${P}_undef-qtdbus.patch
+
 	# remove bundled libs
 	rm -r lib/{fmt,libebml,libmatroska,nlohmann-json,pugixml,utf8-cpp} || die
 }
