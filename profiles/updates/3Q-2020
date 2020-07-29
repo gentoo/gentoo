@@ -134,3 +134,4 @@ move app-dicts/sword-wlc app-dicts/sword-WLC
 move app-dicts/sword-wulfila app-dicts/sword-Wulfila
 move app-dicts/sword-wycliffe app-dicts/sword-Wycliffe
 move app-dicts/sword-ylt app-dicts/sword-YLT
+move dev-python/pyicu dev-python/PyICU
