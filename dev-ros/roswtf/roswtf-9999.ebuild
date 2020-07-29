@@ -23,7 +23,6 @@ DEPEND="${RDEPEND}
 	test? (
 		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
 		$(python_gen_cond_dep "dev-util/rosdep[\${PYTHON_USEDEP}]")
-		$(python_gen_cond_dep "dev-util/rosinstall[\${PYTHON_USEDEP}]")
 		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
 	)"
 
