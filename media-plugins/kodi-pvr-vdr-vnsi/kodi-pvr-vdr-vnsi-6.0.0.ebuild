@@ -29,7 +29,7 @@ IUSE=""
 
 DEPEND="
 	=dev-libs/libplatform-2*
-	~media-tv/kodi-9999
+	=media-tv/kodi-19*
 	virtual/opengl
 	"
 
