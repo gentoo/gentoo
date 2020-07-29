@@ -22,7 +22,7 @@ SRC_URI="
 "
 
 EMULTILIB_PKG="true"
-IUSE="multilib kernel_FreeBSD kernel_linux static-libs +tools +X"
+IUSE="driver multilib kernel_FreeBSD kernel_linux static-libs +tools +X"
 KEYWORDS="-* amd64 x86"
 LICENSE="GPL-2 NVIDIA-r2"
 SLOT="0/${PV%.*}"
@@ -91,7 +91,7 @@ pkg_setup() {
 	export DISTCC_DISABLE=1
 	export CCACHE_DISABLE=1
 
-	if use kernel_linux; then
+	if use driver && use kernel_linux; then
 		MODULE_NAMES="nvidia(video:${S}/kernel)"
 
 		# This needs to run after MODULE_NAMES (so that the eclass checks
@@ -134,7 +134,7 @@ pkg_setup() {
 src_prepare() {
 	# Please add a brief description for every added patch
 
-	if use kernel_linux; then
+	if use driver && use kernel_linux; then
 		if kernel_is lt 2 6 9 ; then
 			eerror "You must build this against 2.6.9 or higher kernels."
 		fi
@@ -170,7 +170,7 @@ src_compile() {
 	if use kernel_FreeBSD; then
 		MAKE="$(get_bmake)" CFLAGS="-Wno-sign-compare" emake CC="$(tc-getCC)" \
 			LD="$(tc-getLD)" LDFLAGS="$(raw-ldflags)" || die
-	elif use kernel_linux; then
+	elif use driver && use kernel_linux; then
 		BUILD_TARGETS=module linux-mod_src_compile
 	fi
 
@@ -237,7 +237,7 @@ donvidia() {
 }
 
 src_install() {
-	if use kernel_linux; then
+	if use driver && use kernel_linux; then
 		linux-mod_src_install
 
 		# Add the aliases
@@ -438,9 +438,11 @@ src_install-libs() {
 }
 
 pkg_preinst() {
-	if use kernel_linux; then
+	if use driver && use kernel_linux; then
 		linux-mod_pkg_preinst
+	fi
 
+	if use kernel_linux; then
 		local videogroup="$(getent group video | cut -d ':' -f 3)"
 		if [ -z "${videogroup}" ]; then
 			eerror "Failed to determine the video group gid"
@@ -465,7 +467,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	use kernel_linux && linux-mod_pkg_postinst
+	use driver && use kernel_linux && linux-mod_pkg_postinst
 
 	# Switch to the nvidia implementation
 	use X && "${ROOT}"/usr/bin/eselect opengl set --use-old nvidia
@@ -496,6 +498,6 @@ pkg_prerm() {
 }
 
 pkg_postrm() {
-	use kernel_linux && linux-mod_pkg_postrm
+	use driver && use kernel_linux && linux-mod_pkg_postrm
 	use X && "${ROOT}"/usr/bin/eselect opengl set --use-old xorg-x11
 }
