@@ -50,7 +50,6 @@ app-crypt/ssh-multiadd
 app-misc/mswinurl_launcher
 app-misc/mtail
 app-mobilephone/wammu
-app-office/lyx
 app-text/fbless
 app-text/sgmltools-lite
 dev-cpp/icnc
