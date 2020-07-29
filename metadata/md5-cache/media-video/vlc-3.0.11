@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0/5-9
 SRC_URI=https://download.videolan.org/pub/videolan/vlc/3.0.11/vlc-3.0.11.tar.xz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	virtualx	e49dbce7ac14426e1155497476915307	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=8b635c2430b7e7352f2b571c1fe256f9
+_md5_=f88d61e5a021b420d6eb07a7adc75a61
