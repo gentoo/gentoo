@@ -18,6 +18,7 @@
   commands into documents, helping you to keep your command examples
   up to date.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">sphinxcontrib-programoutput</remote-id>
     <remote-id type="github">NextThought/sphinxcontrib-programoutput</remote-id>
