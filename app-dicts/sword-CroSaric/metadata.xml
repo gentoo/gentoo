@@ -5,4 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<longdescription lang="hr">
+		Hrvatska Biblija Ivana Šarića (Šarićeva Biblija)
+	</longdescription>
 </pkgmetadata>
