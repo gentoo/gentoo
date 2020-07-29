@@ -101,7 +101,6 @@ net-analyzer/linkchecker
 net-analyzer/pbgpp
 net-fs/nfstest
 net-im/spectrum2
-net-irc/quasselgrep
 net-misc/pssh
 net-misc/putty
 net-misc/ris-linux
