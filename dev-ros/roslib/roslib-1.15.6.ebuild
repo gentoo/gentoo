@@ -30,4 +30,3 @@ src_test() {
 	export ROS_PACKAGE_PATH="${S}/../../"
 	ros-catkin_src_test
 }
-
