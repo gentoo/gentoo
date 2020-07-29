@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2020-07-29)
+# Temporary mask until keywording done in bug #733960
+x11-wm/mutter screencast
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-07-28)
 # Requires dev-libs/boost[context] which is masked on arm, bug #727138
 dev-libs/msgpack boost
