@@ -9,14 +9,8 @@
 		Haskell 98 natural numbers
 	</longdescription>
 	<use>
-		<flag name="hashable">
-			You can disable the use of the `hashable` package using
-			USE=-hashable. Disabling this is an unsupported configuration, but it may be
-			useful for accelerating builds in sandboxes for expert users. If set we will
-			not supply an instance of `Hashable`.
-		</flag>
+		<flag name="binary">enable binary instances</flag>
+		<flag name="hashable">enable hashable instances</flag>
+		<flag name="template-haskell">enable template_haskell</flag>
 	</use>
-	<upstream>
-		<remote-id type="github">ekmett/nats</remote-id>
-	</upstream>
 </pkgmetadata>
