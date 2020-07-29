@@ -496,7 +496,7 @@ app-admin/emacs-updater 1.16: Rebuild Emacs packages
 app-admin/entr 4.3 4.4 4.5: Run arbitrary commands when files change
 app-admin/eselect 1.4.15 1.4.16 9999: Gentoo's multi-purpose configuration and management tool
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
-app-admin/exo 1.14.0: Command-line tool for everything at Exoscale: compute, storage, dns.
+app-admin/exo 1.15.0: Command-line tool for everything at Exoscale: compute, storage, dns.
 app-admin/fam 2.7.0_p17_p2 2.7.0_p17_p3: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.4-r1: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1-r1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
@@ -1218,7 +1218,8 @@ app-dicts/sword-JPS 1.2: Jewish Publication Society Old Testament
 app-dicts/sword-JST 1.1: Joseph Smith Translation
 app-dicts/sword-Josephus 1.1: Josephus: The Complete Works
 app-dicts/sword-Jubilee2000 1.1: English Jubilee 2000 Bible
-app-dicts/sword-KJV 2.3: King James Version (1769) with Strongs Numbers and Morphology
+app-dicts/sword-KJV 2.9: King James Version (1769) with Strongs Numbers and Morphology
+app-dicts/sword-KJVA 3.0.1: King James Version (1769) incl. Apocrypha, with Strongs Numbers and Morphology
 app-dicts/sword-KJVD 1.1: King James Dictionary
 app-dicts/sword-KLV 2.2: Klingon Language Version of the World English Bible
 app-dicts/sword-KLVen_iklingon 2.1: Klingon Language Version English to Klingon mapping lexicon
@@ -2777,7 +2778,7 @@ app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a
 app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellchecking in mails, etc.)
 app-text/stardict 3.0.6-r3 4.0.0_pre20170304: A international dictionary supporting fuzzy and glob style matching
 app-text/sword 1.8.1-r1: Library for Bible reading software
-app-text/sword-modules 1-r2: A collection of modules for the SWORD project
+app-text/sword-modules 1-r3: A collection of modules for the SWORD project
 app-text/t1utils 1.41-r2: Type 1 Font utilities
 app-text/tabler 2-r1: A utility to create text art tables from delimited input
 app-text/talkfilters 2.3.8-r1: Convert ordinary English text into text that mimics a stereotyped dialect
@@ -9331,7 +9332,7 @@ dev-ros/tf2_py 0.7.2 9999: TF2 python bindings
 dev-ros/tf2_ros 0.7.2 9999: ROS bindings for the tf2 library, for both Python and C++
 dev-ros/tf2_sensor_msgs 0.7.2 9999: Transform sensor_msgs with tf. Most notably, PointCloud2
 dev-ros/tf2_tools 0.7.2 9999: Tools for 2nd gen Transform library
-dev-ros/tf_conversions 1.13.2 9999: Functions to convert common tf datatypes into those used by other libraries
+dev-ros/tf_conversions 1.13.2-r1 9999: Functions to convert common tf datatypes into those used by other libraries
 dev-ros/theora_image_transport 1.14.0 9999: Plugin for transparently sending an image stream encoded with the Theora codec
 dev-ros/timestamp_tools 1.6.8 9999: Classes to help timestamp hardware events
 dev-ros/topic_tools 1.15.7 1.15.8 9999: Tools for directing, throttling and selecting ROS topics
@@ -12828,7 +12829,7 @@ media-libs/libplacebo 2.43.0 2.72.0 9999: Reusable library for GPU-accelerated i
 media-libs/libpng 1.6.37: Portable Network Graphics library
 media-libs/libpng-compat 1.2.59 1.5.30: Portable Network Graphics library
 media-libs/libpqstego 0.0.1: Library for Perturbed Quantization Steganography
-media-libs/libprojectm 2.1.0-r2 3.1.1_rc8-r1 3.1.2 3.1.3 3.1.6_pre 9999: A graphical music visualization plugin similar to milkdrop
+media-libs/libprojectm 2.1.0-r2 3.1.7 9999: A graphical music visualization plugin similar to milkdrop
 media-libs/libqaccessibilityclient 0.4.1: Library for writing accessibility clients such as screen readers
 media-libs/libquicktime 1.2.4-r3: An enhanced version of the quicktime4linux library
 media-libs/libquvi 0.9.4-r1: Library for parsing video download links
@@ -14570,7 +14571,7 @@ net-libs/tox 0.2.10 0.2.11 0.2.12 9999: Encrypted P2P, messaging, and audio/vide
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.1: HTTP web service mocking library
 net-libs/wandio 1.0.5 4.0.0 4.1.2 4.2.0 4.2.1 4.2.3_p1-r1: C library for simple and efficient file IO
-net-libs/webkit-gtk 2.28.3: Open source web browser engine
+net-libs/webkit-gtk 2.28.3 2.28.4: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
 net-libs/xrootd 4.12.0 4.12.3 5.0.0: Extended ROOT remote file server
 net-libs/xrootd-ceph 4.12.0 4.12.3 5.0.0: xrootd OSS plug-in for interfacing with Ceph storage platform
@@ -17237,7 +17238,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.0_beta1 9999: Gentoo automatic kernel bu
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 5.4.40 5.4.46 5.4.47 5.4.48 5.4.49 5.4.50 5.4.51 5.4.52 5.4.53 5.6.18 5.6.19 5.7.4 5.7.5 5.7.6 5.7.7 5.7.8 5.7.9 5.7.10: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.40 5.4.46 5.4.47 5.4.48 5.4.49 5.4.50 5.4.51 5.4.52 5.4.53 5.6.18 5.6.19 5.7.4 5.7.5 5.7.6 5.7.7 5.7.8 5.7.9 5.7.10: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.221 4.4.228 4.4.229 4.4.230 4.4.231 4.9.221 4.9.228 4.9.229 4.9.230 4.9.231 4.14.178 4.14.185 4.14.186 4.14.187 4.14.188 4.14.189 4.14.190 4.19.120 4.19.129 4.19.130 4.19.131 4.19.132 4.19.133 4.19.134 4.19.135 5.4.38 5.4.48 5.4.49 5.4.50 5.4.51 5.4.52 5.4.53 5.4.54 5.7.4 5.7.5 5.7.6 5.7.7 5.7.8 5.7.9 5.7.10 5.7.11: Full sources including the Gentoo patchset for the 5.7 kernel tree
+sys-kernel/gentoo-sources 4.4.221 4.4.228 4.4.229 4.4.230 4.4.231 4.9.221 4.9.228 4.9.229 4.9.230 4.9.231 4.14.178 4.14.185 4.14.188 4.14.189 4.14.190 4.19.120 4.19.129 4.19.133 4.19.134 4.19.135 5.4.38 5.4.48 5.4.52 5.4.53 5.4.54 5.7.8 5.7.9 5.7.10 5.7.11: Full sources including the Gentoo patchset for the 5.7 kernel tree
 sys-kernel/git-sources 5.8_rc1 5.8_rc2 5.8_rc3 5.8_rc4 5.8_rc5 5.8_rc6 5.8_rc7: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
