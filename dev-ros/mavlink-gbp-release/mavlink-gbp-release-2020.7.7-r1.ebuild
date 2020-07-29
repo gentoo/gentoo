@@ -19,8 +19,3 @@ RDEPEND="$(python_gen_cond_dep "dev-python/future[\${PYTHON_USEDEP}]")"
 DEPEND="${RDEPEND}"
 S="${WORKDIR}/${PN}-${EGIT_BRANCH//\//-}"
 PATCHES=( "${FILESDIR}/gentoo.patch" )
-
-src_configure() {
-	export ROS_PYTHON_VERSION=3.6
-	ros-catkin_src_configure
-}
