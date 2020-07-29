@@ -22,6 +22,15 @@ src_compile() {
 	go build -mod vendor -o ${PN} || die "build failed"
 }
 
+src_test() {
+	# run at least 'exo version' for test
+	./exo version > /dev/null 2>&1
+	if [[ $? -ne 0 ]]
+	then
+		die "Test failed"
+	fi
+}
+
 src_install() {
 	dobin ${PN}
 }

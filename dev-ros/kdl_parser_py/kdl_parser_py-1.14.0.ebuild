@@ -18,3 +18,9 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? ( dev-ros/rostest[${PYTHON_SINGLE_USEDEP}] )"
+
+src_test() {
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	rm -f "${S}/CATKIN_IGNORE"
+	ros-catkin_src_test
+}
