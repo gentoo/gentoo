@@ -1299,12 +1299,6 @@ toolchain_src_configure() {
 		confgcc+=( $(use_with zstd) )
 	fi
 
-	# newer gcc's come with libquadmath, but only fortran uses
-	# it, so auto punt it when we don't care
-	if tc_version_is_at_least 4.6 && ! is_fortran ; then
-		confgcc+=( --disable-libquadmath )
-	fi
-
 	if tc_version_is_at_least 4.6 ; then
 		confgcc+=( --enable-lto )
 	elif tc_version_is_at_least 4.5 ; then
