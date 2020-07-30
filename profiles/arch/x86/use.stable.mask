@@ -8,11 +8,6 @@
 # sci-libs/mkl is not stable, needs online registration to even run pkg_setup
 mkl
 
-# Mike Gilbert <floppym@gentoo.org> (2017-06-08)
-# dev-lang/python:3.8 is not stable.
-python_targets_python3_8
-python_single_target_python3_8
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2017-05-26)
 # dev-db/firebird is keyworded ~x86
 firebird
