@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ahvenas@gmail.com</email>
+		<name>Henrik Pihl</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+	KIT Scenarist is a program for creating screenplays which oriented at 
+	international standards in the field of film production. The program is a 
+	full-featured studio for creating stories from the birth of the idea and 
+	before the transfer of the script to production.
+	</longdescription>
+</pkgmetadata>
