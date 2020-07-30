@@ -12,6 +12,7 @@
 		<flag name="hexpat">use <pkg>dev-haskell/hexpat</pkg> instead of <pkg>dev-haskell/xml</pkg> for XML parsing</flag>
 		<flag name="small-base">Choose the new smaller, split-up base package.</flag>
 		<flag name="test-citeproc">Build the test-citeproc program</flag>
+		<flag name="unicode-collation">Use Haskell bindings to the <pkg>dev-libs/icu</pkg></flag>
 		<flag name="unicode_collation">Use Haskell bindings to the <pkg>dev-libs/icu</pkg></flag>
 	</use>
 	<longdescription>
