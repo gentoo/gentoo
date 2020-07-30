@@ -6,6 +6,8 @@ EAPI=7
 KEYWORDS="~amd64"
 ROS_REPO_URI="https://github.com/ros-visualization/rqt"
 ROS_SUBDIR=${PN}
+# Tests have messages
+CATKIN_HAS_MESSAGES=yes
 
 inherit ros-catkin
 
@@ -22,4 +24,8 @@ RDEPEND="
 	dev-ros/rostopic[${PYTHON_SINGLE_USEDEP}]
 	>=dev-ros/python_qt_binding-0.2.19[${PYTHON_SINGLE_USEDEP}]
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? (
+		dev-ros/std_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
+	)
+"
