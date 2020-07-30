@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2020-07-30)
+# Forces downgrade of dev-python/ws4py and its revdeps.
+www-apps/nikola websocket
+
 # Michał Górny <mgorny@gentoo.org> (2020-07-27)
 # These packages require Python 2 support in dev-python/sphinx.
 # They are generally fixable by adding py3 support and using
