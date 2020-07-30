@@ -7548,7 +7548,7 @@ dev-python/PyPDF2 1.26.0: Python library to work with pdf files
 dev-python/PyQt5 5.14.2 5.15.0: Python bindings for the Qt framework
 dev-python/PyQt5-sip 4.19.22 4.19.23: Private sip module for PyQt5
 dev-python/PyQtWebEngine 5.14.0 5.15.0: Python bindings for QtWebEngine
-dev-python/PyRSS2Gen 1.1-r1: RSS feed generator written in Python
+dev-python/PyRSS2Gen 1.1: RSS feed generator written in Python
 dev-python/PySDL2 0.9.7: Python (ctypes) bindings for SDL2 libraries
 dev-python/PySensors 0.0.4: Python bindings to libsensors (via ctypes)
 dev-python/PySocks 1.7.1: SOCKS client module
@@ -14328,7 +14328,7 @@ net-fs/mc 2019.07.17.22.13.42 2019.07.31.19.17.35 2020.07.11.05.18.52: Minio cli
 net-fs/minio 2020.06.22.03.12.50: An Amazon S3 compatible object storage server
 net-fs/netatalk 3.1.12: Open Source AFP server
 net-fs/nfs-utils 2.4.1-r4 2.4.3 2.5.1: NFS client and server daemons
-net-fs/nfs4-acl-tools 0.3.5: Commandline and GUI tools that deal directly with NFSv4 ACLs
+net-fs/nfs4-acl-tools 0.3.5 0.3.7: Commandline and GUI tools that deal directly with NFSv4 ACLs
 net-fs/nfstest 1.0.2 2.1.2: Tools for testing either the NFS client or the NFS server
 net-fs/openafs 1.6.22.1 1.6.22.2 1.8.2-r1: The OpenAFS distributed file system
 net-fs/openafs-kernel 1.6.22.1 1.6.22.2: The OpenAFS distributed file system kernel module
@@ -16927,7 +16927,7 @@ sys-block/ms-sys 2.5.3 2.6.0 2.7.0: A command-line program for writing Microsoft
 sys-block/mtx 1.3.12: Utilities for controlling SCSI media changers and tape drives
 sys-block/nbd 3.18 3.19 3.20 9999: Userland client/server for kernel network block device
 sys-block/noflushd 2.8: A daemon to spin down your disks and force accesses to be cached
-sys-block/open-iscsi 2.0.873-r1 2.0.875 2.0.878-r1 2.1.0 2.1.1: A performant, transport independent, multi-platform implementation of RFC3720
+sys-block/open-iscsi 2.0.873-r1 2.0.875 2.1.1 2.1.2: A performant, transport independent, multi-platform implementation of RFC3720
 sys-block/open-isns 0.98 0.99 0.100: iSNS server and client for Linux
 sys-block/parted 3.2-r1 3.2_p23 3.2_p25 3.3-r1 99999: Create, destroy, resize, check, copy partitions and file systems
 sys-block/partimage 0.6.9-r1: Console-based application to efficiently save raw partition data to image file
