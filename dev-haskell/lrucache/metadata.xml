@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This package contains a simple, pure LRU cache, implemented in
+		terms of "Data.Map".
+		
+		It also contains a mutable IO wrapper providing atomic updates to
+		an LRU cache.
+		
+		Version History:
+		
+		1.1.1 - Add an additional modification function for AtomicLRUCache.
+		
+		1.1.0.1 - Update containers constraint to allow containers from ghc-7
+		
+		1.1 - Add a Functor instance for LRUCache.
+		Add a generic modification function for AtomicLRUCache.
+		
+		1.0 - Breaking API changes:
+		1) The newLRU smart constructor now makes the maximum
+		size optional.
+		2) The delete function now returns the value removed, if
+		one was.
+		Additionally, a function was added to remove the least-recently
+		used element in the LRU.
+		
+		0.3 - Added a Show instance for LRU. (Requested by Ben Lee)
+		
+		0.2.0.1 - Increase strictness slightly.
+		Remove cabal target for test executable.
+		(Just include test sources instead.)
+		
+		0.2 - Added an Eq instance for LRU.
+		Added strictness to eliminate space leaks in common use patterns.
+		
+		0.1.1 - Add the Data.Cache.LRU.IO.Internal module.
+		Clean up build warnings on GHC 6.12.1.
+		
+		0.1.0.1 - Minor refactoring
+		
+		0.1 - First release
+	</longdescription>
+</pkgmetadata>
