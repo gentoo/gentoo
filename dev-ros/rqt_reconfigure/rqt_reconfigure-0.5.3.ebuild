@@ -21,4 +21,8 @@ RDEPEND="
 	dev-ros/rqt_gui_py[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/rqt_py_common[${PYTHON_SINGLE_USEDEP}]
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? (
+		dev-ros/roslint[${PYTHON_SINGLE_USEDEP}]
+	)
+"
