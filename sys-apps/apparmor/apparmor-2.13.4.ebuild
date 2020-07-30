@@ -35,6 +35,10 @@ PATCHES=(
 )
 
 src_prepare() {
+	pushd "${WORKDIR}/apparmor-${PV}"
+	eapply "${FILESDIR}/${PN}-2.13.1-rules.patch"
+	popd
+
 	default
 
 	# remove warning about missing file that controls features
