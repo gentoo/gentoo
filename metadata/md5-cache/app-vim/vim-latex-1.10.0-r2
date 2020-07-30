@@ -4,11 +4,11 @@ DESCRIPTION=A comprehensive set of tools to view, edit and compile LaTeX documen
 EAPI=7
 HOMEPAGE=http://vim-latex.sourceforge.net/
 IUSE=python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8
-KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
+KEYWORDS=~alpha amd64 ~ia64 ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
 LICENSE=vim
 RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) || ( app-editors/vim[python,python_single_target_python3_6(-)?,python_single_target_python3_7(-)?,python_single_target_python3_8(-)?] app-editors/gvim[python,python_single_target_python3_6(-)?,python_single_target_python3_7(-)?,python_single_target_python3_8(-)?] ) virtual/latex-base !app-vim/vimtex || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 )
 SLOT=0
 SRC_URI=mirror://sourceforge/vim-latex/vim-latex-1.10.0.tar.gz
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	2477ebe553d3e4d2c606191fe6c33602	python-single-r1	674c48c926cbb44e91b656e0399d8f54	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	3160d9cb05ef44497be1485db0fe7590
-_md5_=21c90546673e1619da8c4d552cb6072c
+_md5_=6ace647e99d9ba90b687271d0a5c5499
