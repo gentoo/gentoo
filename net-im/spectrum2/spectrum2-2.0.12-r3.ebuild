@@ -3,9 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
-
-inherit cmake python-any-r1 systemd
+inherit cmake systemd
 
 DESCRIPTION="An open source instant messaging transport"
 HOMEPAGE="https://www.spectrum.im"
@@ -13,9 +11,10 @@ SRC_URI="https://github.com/SpectrumIM/spectrum2/archive/${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="doc frotz irc mysql postgres purple sms +sqlite test twitter whatsapp xmpp"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	acct-group/spectrum
@@ -53,24 +52,13 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	doc? ( app-doc/doxygen )
-	test? (
-		${PYTHON_DEPS}
-		$(python_gen_any_dep 'dev-python/sleekxmpp[${PYTHON_USEDEP}]')
-		dev-util/cppunit
-		net-irc/ngircd
-	)
+	test? (	dev-util/cppunit )
 "
 
-# Tests are currently restricted, as they do completly fail
-RESTRICT="test"
-
-python_check_deps() {
-	has_version "dev-python/sleekxmpp[${PYTHON_USEDEP}]"
-}
-
-pkg_setup() {
-	use test && python-any-r1_pkg_setup
-}
+PATCHES="
+	"${FILESDIR}/${P}-boost-173-compatibility.patch"
+	"${FILESDIR}/${P}-gcc-10-compatibility.patch"
+"
 
 src_prepare() {
 	# Respect users LDFLAGS
@@ -100,7 +88,8 @@ src_configure() {
 }
 
 src_test() {
-	cd tests/libtransport && "${EPYTHON}" ../start.py || die
+	cd "${BUILD_DIR}/tests/libtransport" || die
+	./libtransport_test || die
 }
 
 src_install() {
