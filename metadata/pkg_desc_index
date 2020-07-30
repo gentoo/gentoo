@@ -2250,7 +2250,7 @@ app-misc/golly 3.3-r1 3.3-r3: simulator for Conway's Game of Life and other cell
 app-misc/goobook 3.4-r1: Access your Google contacts from the command line
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
 app-misc/gramps 5.1.2-r1 5.1.2-r2: Genealogical Research and Analysis Management Programming System
-app-misc/graphlcd-base 1.0.2: Contains the lowlevel lcd drivers for GraphLCD
+app-misc/graphlcd-base 1.0.2-r1: Contains the lowlevel lcd drivers for GraphLCD
 app-misc/grc 1.11-r1 1.11.3: Generic Colouriser beautifies your logfiles or output of commands
 app-misc/gtk-sunlight 0.4.2: Real-time Sunlight Wallpaper
 app-misc/gtypist 2.9.5-r1: Universal typing tutor
