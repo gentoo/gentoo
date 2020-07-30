@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-SWORD_MODULE="RusMakarij"
+
+SWORD_MINIMUM_VERSION="1.5.9"
 
 inherit sword-module
 
