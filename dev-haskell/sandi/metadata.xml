@@ -10,5 +10,6 @@
 	</longdescription>
 	<use>
 		<flag name="with-conduit">Build with conduit</flag>
+		<flag name="conduit">Build with conduit</flag>
 	</use>
 </pkgmetadata>
