@@ -33,8 +33,15 @@
 #--- END OF EXAMPLES ---
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-07-30)
+# Has been a part of dev-texlive/texlive-publishers
+# for a long time. Only Gentoo ships this one.
+# Removal in 30 days.
+dev-tex/aastex
+
+# Mikle Kolyada <zlogene@gentoo.org> (2020-07-30)
 # Obsolete package. Last release in 2009 and
 # upstream is dead. Use minted instead.
+# Removal in 30 days.
 dev-tex/slatex
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-07-30)
