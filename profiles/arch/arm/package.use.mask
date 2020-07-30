@@ -162,10 +162,6 @@ sys-power/nut ups_drivers_nut-ipmipsu
 dev-python/ipython test
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan vulkan-overlay
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=opencl that is masked in this profile.
 net-misc/bfgminer adl lm-sensors
 

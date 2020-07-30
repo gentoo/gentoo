@@ -1,10 +1,6 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@gentoo.org> (2020-07-29)
-# Temporary mask until keywording done in bug #733960
-x11-wm/mutter screencast
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2018-03-27)
 # dev-ruby/capybara depends on www-client/firefox which has no keywords
 dev-ruby/capybara test
@@ -158,10 +154,6 @@ app-forensics/sleuthkit java
 # Michał Górny <mgorny@gentoo.org> (2017-08-10)
 # Requires USE=ipmi which is masked in this profile.
 sys-power/nut ups_drivers_nut-ipmipsu
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan vulkan-overlay
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=opencl that is masked in this profile.
