@@ -1,0 +1,26 @@
+https://lists.gnu.org/archive/html/bug-bash/2014-08/msg00082.html
+
+From 2774192e93991e3d85ccc37c714aa018e442af6d Mon Sep 17 00:00:00 2001
+From: Dylan Cali <calid1984@gmail.com>
+Date: Sat, 23 Aug 2014 02:26:05 -0500
+Subject: [PATCH] fix vi search prompt bug for long prompts
+
+---
+ display.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/display.c b/display.c
+index 4df1f73..e575b16 100644
+--- a/display.c
++++ b/display.c
+@@ -2259,7 +2259,7 @@ rl_message (va_alist)
+       va_start (args);
+       format = va_arg (args, char *);
+ #endif
+-      vsnprintf (msg_buf, msg_bufsiz - 1, format, args);
++      vsnprintf (msg_buf, msg_bufsiz, format, args);
+     }
+ #else
+   vsprintf (msg_buf, format, args);
+-- 
+1.7.10.4
