@@ -28,6 +28,22 @@ RDEPEND="acct-group/logstash
 
 S="${WORKDIR}/${MY_P}"
 
+src_prepare() {
+	default
+
+	rm vendor/jruby/lib/jni/aarch64-Linux/libjffi-1.2.so \
+		vendor/jruby/lib/jni/arm-Linux/libjffi-1.2.so \
+		vendor/jruby/lib/jni/i386-SunOS/libjffi-1.2.so \
+		vendor/jruby/lib/jni/mips64el-Linux/libjffi-1.2.so \
+		vendor/jruby/lib/jni/ppc64-Linux/libjffi-1.2.so \
+		vendor/jruby/lib/jni/ppc64le-Linux/libjffi-1.2.so \
+		vendor/jruby/lib/jni/sparcv9-Linux/libjffi-1.2.so \
+		vendor/jruby/lib/jni/sparcv9-SunOS/libjffi-1.2.so \
+		vendor/jruby/lib/jni/x86_64-DragonFlyBSD/libjffi-1.2.so \
+		vendor/jruby/lib/jni/x86_64-FreeBSD/libjffi-1.2.so \
+		vendor/jruby/lib/jni/x86_64-SunOS/libjffi-1.2.so || die
+}
+
 src_install() {
 	keepdir /etc/"${MY_PN}"/{conf.d,patterns,plugins}
 	keepdir "/var/log/${MY_PN}"
