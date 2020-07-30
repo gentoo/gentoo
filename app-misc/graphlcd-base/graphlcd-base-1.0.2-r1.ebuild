@@ -12,7 +12,7 @@ SRC_URI="https://projects.vdr-developer.org/git/${PN}.git/snapshot/${P}.tar.bz2"
 KEYWORDS="amd64 x86"
 SLOT="0"
 LICENSE="GPL-2"
-IUSE="fontconfig freetype g15 graphicsmagick imagemagick lcd_devices_ax206dpf lcd_devices_picolcd_256x64 lcd_devices_vnc"
+IUSE="fontconfig freetype graphicsmagick imagemagick lcd_devices_ax206dpf lcd_devices_picolcd_256x64 lcd_devices_vnc"
 REQUIRED_USE="?? ( graphicsmagick imagemagick )"
 
 RDEPEND="
@@ -73,9 +73,9 @@ src_configure() {
 }
 
 src_install() {
-	default
+	emake DESTDIR="${D}" UDEVRULESDIR="/lib/udev/rules.d" install
 
-	udev_dorules 99-graphlcd-base.rules
+	einstalldocs
 }
 
 pkg_postinst() {
