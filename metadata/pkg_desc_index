@@ -1245,18 +1245,18 @@ app-dicts/sword-Family 1.1: Family Bible Notes
 app-dicts/sword-FarHezareNoh 1.0.2: Tarjumeh-ye Hezare Noh
 app-dicts/sword-FarOPV 1.5.1: Persian Holy Bible (Tarjumeh-ye Ghadeem)
 app-dicts/sword-FarTPV 1.1.2: Today's Persian Version (Mojdeh Baraye Asre Jadid)
-app-dicts/sword-FinBiblia 1.1: Finnish Biblia (1776)
-app-dicts/sword-FinPR 1.2: Finnish Pyh, Raamattu (1933/1938)
+app-dicts/sword-FinBiblia 2.0: Finnish Biblia (1776)
+app-dicts/sword-FinPR 1.2.2: Finnish Pyhä Raamattu (1933/1938)
 app-dicts/sword-FinPR92 1.1.1: Finnish Pyhä Raamattu (1992)
 app-dicts/sword-FinRK 1.8.2: Raamattu Kansalle (2012)
 app-dicts/sword-FinSTLK2017 1.3: Pyhä Raamattu (STLK 2017)
 app-dicts/sword-Finney 1.1: Sermons on Gospel Themes by Charles G. Finney (1792-1875)
-app-dicts/sword-FreBBB 1.1: French Bible Bovet Bonnet (1900)
+app-dicts/sword-FreBBB 1.3: French Bible Bovet Bonnet (1900)
 app-dicts/sword-FreBDM1707 1.1: French Bible David Martin (1707)
 app-dicts/sword-FreBDM1744 1.2.1: French Bible Martin (1744)
 app-dicts/sword-FreBailly 1.3: Abbreviated Greek-French Dictionary by A. Bailly.
 app-dicts/sword-FreCJE 2.0: Chaque jour les Écritures
-app-dicts/sword-FreCrampon 1.1: La Bible Augustin Crampon 1923
+app-dicts/sword-FreCrampon 3.0: La Bible Augustin Crampon 1923
 app-dicts/sword-FreDAW 1.2: Dictionnaire encyclopédique de la Bible A. Westphal (1932)
 app-dicts/sword-FreGBM 1.0: Glossary of the Bible David Martin 1744
 app-dicts/sword-FreGeneve1669 1.0.3: Le Nouveau Testament de la Bible de Genève de 1669
@@ -1273,11 +1273,11 @@ app-dicts/sword-FreStapfer1889 1.0.2: Le Nouveau Testament traduction de Stapfer
 app-dicts/sword-FreSynodale1921 1.0.3: Le Nouveau Testament Version Synodale 1921 et le livre des Psaumes
 app-dicts/sword-Geez 1.0.1: Ge’ez Bible
 app-dicts/sword-Geneva 1.1: Geneva Bible Translation Notes
-app-dicts/sword-Geneva1599 1.1: Geneva Bible (1599)
-app-dicts/sword-GerElb1871 1.1: German Elberfelder (1871)
+app-dicts/sword-Geneva1599 2.0: Geneva Bible (1599)
+app-dicts/sword-GerElb1871 1.2: German Elberfelder (1871)
 app-dicts/sword-GerElb1905 1.5: German Darby Unrevidierte Elberfelder (1905)
-app-dicts/sword-GerLut1545 1.2: German Unrevidierte Luther Ubersetzung von 1545
-app-dicts/sword-GerSch 1.1: German Schlachter Bibel (1951)
+app-dicts/sword-GerLut1545 2.0.1: German Luther Übersetzung von 1545 (moderne Rechtschreibung)
+app-dicts/sword-GerSch 1.1.1: German Schlachter Bibel (1951)
 app-dicts/sword-GreekHebrew 1.1: Greek to Hebrew Dictionary of Septuagint Words
 app-dicts/sword-HNV 1.8: Hebrew Names Version of the World English Bible
 app-dicts/sword-HebrewGreek 1.1: Hebrew to Greek Dictionary of Septuagint Words
@@ -1287,10 +1287,10 @@ app-dicts/sword-HunKar 1.7: Hungarian Karoli
 app-dicts/sword-ISBE 2.2: International Standard Bible Encyclopedia
 app-dicts/sword-ISV 1.5: International Standard Version
 app-dicts/sword-Institutes 1.2: Calvin's Institutes
-app-dicts/sword-ItaDio 1.0: Italian Giovanni Diodati Bibbia 1649
-app-dicts/sword-ItaRive 1.0: Italian Riveduta Bibbia (1927)
+app-dicts/sword-ItaDio 1.1: Italian Giovanni Diodati Bibbia 1649
+app-dicts/sword-ItaRive 1.1: Italian Riveduta Bibbia (1927)
 app-dicts/sword-JFB 2.2: Jamieson Fausset Brown Bible Commentary
-app-dicts/sword-JPS 1.2: Jewish Publication Society Old Testament
+app-dicts/sword-JPS 2.1: Jewish Publication Society Old Testament
 app-dicts/sword-JST 1.1: Joseph Smith Translation
 app-dicts/sword-Josephus 1.1: Josephus: The Complete Works
 app-dicts/sword-Jubilee2000 1.1: English Jubilee 2000 Bible
@@ -1300,23 +1300,23 @@ app-dicts/sword-KJVD 1.1: King James Dictionary
 app-dicts/sword-KLV 2.2: Klingon Language Version of the World English Bible
 app-dicts/sword-KLVen_iklingon 2.1: Klingon Language Version English to Klingon mapping lexicon
 app-dicts/sword-KLViklingon_en 2.1: Klingon Language Version Klingon to English mapping lexicon
-app-dicts/sword-LITV 1.3: Green's Literal Translation
+app-dicts/sword-LITV 1.4: Green's Literal Translation
 app-dicts/sword-Lightfoot 1.0: John Lightfoot Commentary
 app-dicts/sword-Luther 1.1: Luther's Commentary on Galatians
 app-dicts/sword-MAK 1.0: Matthias Ansorgs Kommentar
 app-dicts/sword-MHC 1.6: Matthew Henry's Complete Commentary on the Whole Bible
 app-dicts/sword-MHCC 1.1: Matthew Henry's Concise Commentary on the Whole Bible
-app-dicts/sword-MKJV 1.3: Green's Modern King James Version
+app-dicts/sword-MKJV 1.4: Green's Modern King James Version
 app-dicts/sword-ManxGaelic 1.1: Manx Gaelic Scripture Portions
 app-dicts/sword-Montgomery 1.3: Montgomery New Testament
 app-dicts/sword-Murdock 1.2: James Murdock's Translation of the Syriac Peshitta
 app-dicts/sword-Nave 2.0: Nave's Topical Bible
-app-dicts/sword-Norsk 1.5: Den Norske Bibelen
+app-dicts/sword-Norsk 2.0: Den Norske Bibelen
 app-dicts/sword-Orthodoxy 1.0: Orthodoxy by Gilbert K. Chesterton (1874-1936)
 app-dicts/sword-PNT 1.1: The People's New Testament
 app-dicts/sword-Packard 1.2: Packard's Morphological Analysis Codes
 app-dicts/sword-Personal 1.0: Personal Commentary
-app-dicts/sword-Peshitta 1.1: Syriac Peshitta
+app-dicts/sword-Peshitta 2.0: Syriac Peshitta
 app-dicts/sword-Pilgrim 1.0: The Pilgrim's Progress by John Bunyan (1628-1688)
 app-dicts/sword-Practice 1.0: The Practice of the Presence of God: The Best Rule of Holy Life
 app-dicts/sword-RKJNT 1.0: Revised King James New Testament
@@ -1325,18 +1325,18 @@ app-dicts/sword-RST 1.6: Russian Synodal Translation
 app-dicts/sword-RWP 2.0: Robertson's Word Pictures
 app-dicts/sword-RWebster 1.3: Revised Webster Version (1833)
 app-dicts/sword-Robinson 2.1: Robinson's Morphological Analysis Codes
-app-dicts/sword-Rotherham 1.6: The Emphasized Bible by J. B. Rotherham
-app-dicts/sword-RusMakarij 1.1: The Pentateuch of Moses in Russian
+app-dicts/sword-Rotherham 1.7: The Emphasized Bible by J. B. Rotherham
+app-dicts/sword-RusMakarij 2.0: The Pentateuch of Moses in Russian
 app-dicts/sword-RusSynodal 1.8.1: 1876 Russian Synodal Bible
 app-dicts/sword-SAOA 1.0: Scripture Alphabet Of Animals
 app-dicts/sword-SME 1.7: C. H. Spurgeon's Morning and Evening: Daily Readins
 app-dicts/sword-Scofield 1.0: Scofield Reference Notes, 1917 Edition
 app-dicts/sword-ScotsGaelic 1.2: Scots Gaelic Gospel of Mark
 app-dicts/sword-Smith 1.3: Smith's Bible Dictionary
-app-dicts/sword-SpaRV 1.5: Spanish Reina-Valera
+app-dicts/sword-SpaRV 1.6: Spanish Biblia Reina-Valera (1909)
 app-dicts/sword-SpaRVG 1.3: Spanish Reina Valera Gomez Bible
 app-dicts/sword-SpaSEV 1.1: Spanish Sagradas Escrituras Version Antigua (1569)
-app-dicts/sword-SpaVNT 1.2: Spanish Valera New Testament (1858)
+app-dicts/sword-SpaVNT 1.2.1: Spanish 1858 Reina Valera New Testament
 app-dicts/sword-Spurious 1.0: Tischendorf's Spurious Passages of the GNT
 app-dicts/sword-StrongsGreek 1.2: Strong's Greek Bible Dictionary
 app-dicts/sword-StrongsHebrew 1.2: Strong's Hebrew Bible Dictionary
@@ -1344,27 +1344,27 @@ app-dicts/sword-Swahili 1.1: Swahili New Testament
 app-dicts/sword-TCR 1.1: Thompson Chain Topics
 app-dicts/sword-TDavid 1.1: C. H. Spurgeon's Treasury of David
 app-dicts/sword-TFG 1.5: The Fourfold Gospel and Commentary on Acts of Apostles
-app-dicts/sword-TR 1.2: Textus Receptus (1550/1894)
+app-dicts/sword-TR 2.4: Textus Receptus (1550/1894)
 app-dicts/sword-TSK 1.4: Treasury of Scripture Knowledge
 app-dicts/sword-Tagalog 1.1: Tagalog (John & James)
-app-dicts/sword-Tisch 1.3: Tischendorf's Eighth Edition GNT
+app-dicts/sword-Tisch 2.5: Tischendorf's 8th edition GNT
 app-dicts/sword-Torrey 1.3: R. A. Torrey's New Topical Textbook
 app-dicts/sword-Twenty 1.1: Twentieth Century New Testament
 app-dicts/sword-Tyndale 1.0: William Tyndale Bible (1525/1530)
-app-dicts/sword-UKJV 1.1: Updated King James Version
-app-dicts/sword-Ukrainian 1.3: Ukrainian Bible
+app-dicts/sword-UKJV 1.1.1: Updated King James Version
+app-dicts/sword-Ukrainian 1.4: Ivan Ogienko Ukrainian Bible, 1930
 app-dicts/sword-Uma 1.2: Uma New Testament
 app-dicts/sword-Vulgate 1.1: Latin Vulgate
 app-dicts/sword-Vulgate_HebPs 1.1: Latin Vulgate Psalms from Hebrew
 app-dicts/sword-WEB 1.8: World English Bible
-app-dicts/sword-WHNU 1.10: Westcott-Hort with NA27/UBS4 variants (1881)
-app-dicts/sword-WLC 1.4: Westminster Leningrad Codex
+app-dicts/sword-WHNU 2.4: Westcott-Hort with NA27/UBS4 variants (1881)
+app-dicts/sword-WLC 1.9: Westminster Leningrad Codex
 app-dicts/sword-Webster 1.2: Webster Bible
 app-dicts/sword-Webster1913 2.0: Webster's English Dictionary, 1913 edition
 app-dicts/sword-Wesley 1.1: John Wesley's Notes on the Bible
 app-dicts/sword-Weymouth 1.1: Weymouth NT (1912)
-app-dicts/sword-Wulfila 1.0: Bishop Wulfila Gothic Bible
-app-dicts/sword-Wycliffe 1.0: John Wycliffe Bible (1395)
+app-dicts/sword-Wulfila 1.0.1: Bishop Wulfila Gothic Bible
+app-dicts/sword-Wycliffe 2.3: John Wycliffe Bible (c. 1395)
 app-dicts/sword-YLT 1.1: Young's Literal Translation (1898)
 app-dicts/verbiste 0.1.38-r1 0.1.41 0.1.44: French conjugation system
 app-dicts/wnn-ldic 1.04: Wnn dictionary for librarian
@@ -7690,7 +7690,7 @@ dev-python/cheetah 2.4.4-r1: Python-powered template engine and code generator
 dev-python/cheetah-docs 0.9.16_alpha1: Documentation for Cheetah templates
 dev-python/cheetah3 3.2.4: Python-powered template engine and code generator
 dev-python/cheroot 8.3.0 8.3.0-r1 8.3.1 8.4.0 8.4.1 8.4.2: Cheroot is the high-performance, pure-Python HTTP server used by CherryPy.
-dev-python/cherrypy 3.8.0 18.5.0 18.6.0: CherryPy is a pythonic, object-oriented HTTP framework
+dev-python/cherrypy 18.6.0: CherryPy is a pythonic, object-oriented HTTP framework
 dev-python/chump 1.6.0: API wrapper for Pushover
 dev-python/citeproc-py 0.4.0-r1: Yet another Python CSL Processor
 dev-python/cjkwrap 2.2 2.2-r1: A library for wrapping and filling UTF-8 CJK text
@@ -8974,7 +8974,7 @@ dev-python/whisper 1.1.5: Fixed size round-robin style database
 dev-python/whoosh 2.7.4: Fast, pure-Python full text indexing, search and spell checking library
 dev-python/widgetsnbextension 3.0.0 3.5.1: IPython HTML widgets for Jupyter
 dev-python/wrapt 1.12.1: Module for decorators, wrappers and monkey patching
-dev-python/ws4py 0.3.4-r1 0.5.1-r1 9999: WebSocket client and server library for Python 2 and 3 as well as PyPy
+dev-python/ws4py 0.5.1-r1 9999: WebSocket client and server library for Python 2 and 3 as well as PyPy
 dev-python/wsaccel 0.6.2_p20170108: Accelerator for ws4py, autobahn and tornado
 dev-python/wsgiproxy2 0.4.6-r1: HTTP proxying tools for WSGI apps
 dev-python/wsproto 0.15.0: WebSockets state-machine based protocol implementation
@@ -14527,7 +14527,7 @@ net-libs/libdmapsharing 2.9.39: A library that implements the DMAP family of pro
 net-libs/libdom 0.3.3-r1 0.4.0 0.4.1: implementation of the W3C DOM, written in C
 net-libs/libecap 1.0.0: API for implementing ICAP content analysis and adaptation
 net-libs/libesmtp 1.0.6-r3 9999: lib that implements the client side of the SMTP protocol
-net-libs/libetpan 1.9.3 1.9.4 1.9.4-r1: A portable, efficient middleware for different kinds of mail access
+net-libs/libetpan 1.9.4-r1: A portable, efficient middleware for different kinds of mail access
 net-libs/libflowmanager 3.0.0-r1: A library that measures and reports on packet flows
 net-libs/libgadu 1.11.4 1.12.2-r1: Client-side library for the Gadu-Gadu protocol
 net-libs/libgfbgraph 0.2.3-r1: A GObject library for Facebook Graph API
@@ -14655,7 +14655,7 @@ net-libs/tox 0.2.10 0.2.11 0.2.12 9999: Encrypted P2P, messaging, and audio/vide
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.1: HTTP web service mocking library
 net-libs/wandio 1.0.5 4.0.0 4.1.2 4.2.0 4.2.1 4.2.3_p1-r1: C library for simple and efficient file IO
-net-libs/webkit-gtk 2.28.3 2.28.4: Open source web browser engine
+net-libs/webkit-gtk 2.28.4: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
 net-libs/xrootd 4.12.0 4.12.3 5.0.0: Extended ROOT remote file server
 net-libs/xrootd-ceph 4.12.0 4.12.3 5.0.0: xrootd OSS plug-in for interfacing with Ceph storage platform
@@ -16796,7 +16796,7 @@ sys-apps/superiotool 6637 99999999: util to detect Super I/O chips and functiona
 sys-apps/sydbox 1.0.7: ptrace-based sandbox
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 244.3 245.5 246_rc2 9999: System and service manager for Linux
+sys-apps/systemd 244.3 245.5 246 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/sysvinit 2.93 2.96 2.97: /sbin/init - parent of all processes
 sys-apps/tas 1.5.2.180622: Supermicro Thin-Agent Service for monitoring through the BMC/IPMI
@@ -16981,7 +16981,7 @@ sys-boot/palo 2.12-r1 2.13 2.14 9999: PALO : PArisc Linux Loader
 sys-boot/plymouth 0.9.3-r1 0.9.3-r2 0.9.4-r1 0.9.5-r1 9999: Graphical boot animation (splash) and logger
 sys-boot/plymouth-openrc-plugin 0.1.3: Plymouth plugin for OpenRC
 sys-boot/raspberrypi-firmware 1.20190215 1.20190709 1.20190925 9999: Raspberry Pi (all versions) bootloader and GPU firmware
-sys-boot/refind 0.11.4 0.12.0: The UEFI Boot Manager by Rod Smith
+sys-boot/refind 0.11.4 0.12.0 0.12.0-r1: The UEFI Boot Manager by Rod Smith
 sys-boot/sgibootcd 0.12: Creates burnable CD images for SGI LiveCDs
 sys-boot/shim 15.5-r1: Fedora's signed UEFI shim
 sys-boot/silo 1.4.14_p20120819-r1 1.4.14_p20170829 1.4.14_p20200602: SPARC/UltraSPARC Improved Loader, a boot loader for sparc

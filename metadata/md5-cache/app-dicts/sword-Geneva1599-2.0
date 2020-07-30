@@ -5,8 +5,8 @@ EAPI=7
 HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=Geneva1599
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=public-domain
-RDEPEND=app-text/sword
+RDEPEND=>=app-text/sword-1.6.0
 SLOT=0
-SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/Geneva1599.zip -> Geneva1599-1.1.zip
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/Geneva1599.zip -> Geneva1599-2.0.zip
 _eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
-_md5_=87e7b6be4dd8d1e506c61d5114c2440c
+_md5_=dbfe29b34a4d960397702388cd97a6bf

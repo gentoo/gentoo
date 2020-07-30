@@ -5,8 +5,8 @@ EAPI=7
 HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=Norsk
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=public-domain
-RDEPEND=app-text/sword
+RDEPEND=>=app-text/sword-1.5.9
 SLOT=0
-SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/Norsk.zip -> Norsk-1.5.zip
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/Norsk.zip -> Norsk-2.0.zip
 _eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
-_md5_=df5dd11aa7cfee8af9b4f492f4efad0b
+_md5_=f571c1b434b3246367c1b9782aa35dfe

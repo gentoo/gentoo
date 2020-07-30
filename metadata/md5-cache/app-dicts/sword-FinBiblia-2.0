@@ -5,8 +5,8 @@ EAPI=7
 HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=FinBiblia
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=public-domain
-RDEPEND=app-text/sword
+RDEPEND=>=app-text/sword-1.6.0
 SLOT=0
-SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/FinBiblia.zip -> FinBiblia-1.1.zip
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/FinBiblia.zip -> FinBiblia-2.0.zip
 _eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
-_md5_=5d6cf71c38f70a926d5792e6a842d943
+_md5_=69c747d99239e5405bc7e0dcbc145008

@@ -5,8 +5,8 @@ EAPI=7
 HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=Peshitta
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=public-domain
-RDEPEND=app-text/sword
+RDEPEND=>=app-text/sword-1.5.9
 SLOT=0
-SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/Peshitta.zip -> Peshitta-1.1.zip
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/Peshitta.zip -> Peshitta-2.0.zip
 _eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
-_md5_=f6da4160d494b913136a9b7e2b745c8e
+_md5_=ac71e95f3c6ccc86b0d8b60e7157474b

@@ -5,8 +5,8 @@ EAPI=7
 HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=FreCrampon
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=public-domain
-RDEPEND=app-text/sword
+RDEPEND=>=app-text/sword-1.6.2
 SLOT=0
-SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/FreCrampon.zip -> FreCrampon-1.1.zip
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/FreCrampon.zip -> FreCrampon-3.0.zip
 _eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
-_md5_=acc17ff193c6cb6f777800137c185b62
+_md5_=36574f358d25c156237ac3a92b8f7078
