@@ -1157,26 +1157,26 @@ app-dicts/sword-ACV 2.0: A Conservative Version
 app-dicts/sword-AKJV 1.4: American King James Version
 app-dicts/sword-ASV 1.3: American Standard Version (1901)
 app-dicts/sword-Abbott 1.1: Illustrated New Testament
-app-dicts/sword-Afr1953 1.2: Afrikaans Bybel
-app-dicts/sword-Alb 1.2: Albanian Bible
-app-dicts/sword-Aleppo 1.1: Aleppo Codex
+app-dicts/sword-Afr1953 1.3.2: 1933/1953 Afrikaans Bybel
+app-dicts/sword-Alb 2.0: Albanian Bible
+app-dicts/sword-Aleppo 2.0: Aleppo Codex
 app-dicts/sword-AmTract 1.1: American Tract Society Bible Dictionary
-app-dicts/sword-AraSVD 1.1: Smith and van Dyck's al-Kitab al-Muqaddas (Arabic Bible)
+app-dicts/sword-AraSVD 2.0: Smith and van Dyck's al-Kitab al-Muqaddas (Arabic Bible)
 app-dicts/sword-ArmEastern 1.1: Eastern Armenian Bible
 app-dicts/sword-ArmWestern 1.1: 1853 Western Armenian NT
 app-dicts/sword-BBE 1.3: Bible in Basic English (1949/1964)
 app-dicts/sword-Barnes 1.1: Barnes' New Testament Notes
 app-dicts/sword-BasHautin 1.5: 1571 Navarro-Labourdin Basque NT
-app-dicts/sword-BulVeren 1.0: Veren's Contemporary Bible
-app-dicts/sword-BurJudson 1.1: 1835 Judson Burmese Bible
-app-dicts/sword-Byz 1.10: Byzantine/Majority Text (2000)
+app-dicts/sword-BulVeren 1.1: Veren's Contemporary Bible
+app-dicts/sword-BurJudson 1.3: 1835 Judson Burmese Bible
+app-dicts/sword-Byz 2.4: The New Testament in Original Greek: Byzantine Textform 2005
 app-dicts/sword-CBC 1.1: Condensed Biblical Cyclopedia
-app-dicts/sword-Chamorro 2.7: Chamorro: Y Santa Biblia
+app-dicts/sword-Chamorro 2.7.2: Chamorro: Y Santa Biblia (1908)
 app-dicts/sword-Clarke 1.0: Adam Clarke's Commentary on the Bible
 app-dicts/sword-Common 1.3: The Common Edition: New Testament
 app-dicts/sword-CroSaric 2.0: Croatian Bible
-app-dicts/sword-CzeBKR 1.1: Czech Bible Kralicka
-app-dicts/sword-DRC 1.1: Douay-Rheims Bible, Challoner Revision
+app-dicts/sword-CzeBKR 1.3.1: Czech Bible Kralicka
+app-dicts/sword-DRC 2.0: Douay-Rheims Bible, Challoner Revision
 app-dicts/sword-DTN 1.0: Darby Translation Notes
 app-dicts/sword-DaOT1931NT1907 1.01: Danish OT1931 + NT1907 with original orthography
 app-dicts/sword-Daily 1.0: Jonathan Bagster's Daily Light on the Daily Path
@@ -1184,9 +1184,9 @@ app-dicts/sword-Dan 2.1: Danske Bibel
 app-dicts/sword-Darby 1.1: Darby Bible (1889)
 app-dicts/sword-Diaglott 1.1: The Emphatic Diaglott
 app-dicts/sword-DutKant 1.1: Kanttekeningen Statenvertaling
-app-dicts/sword-DutSVV 1.5: Dutch Statenvertaling
-app-dicts/sword-Easton 1.2: Easton's Bible Dictionary
-app-dicts/sword-Esperanto 1.6: Esperanto Bible
+app-dicts/sword-DutSVV 2.0: Dutch Statenvertaling Bijbel, including footnotes
+app-dicts/sword-Easton 2.0: Easton's Bible Dictionary
+app-dicts/sword-Esperanto 2.1: Esperanto Londona Biblio
 app-dicts/sword-FarOPV 1.5.1: Persian Holy Bible (Tarjumeh-ye Ghadeem)
 app-dicts/sword-FinBiblia 1.1: Finnish Biblia (1776)
 app-dicts/sword-FinPR 1.2: Finnish Pyh, Raamattu (1933/1938)
@@ -1208,7 +1208,7 @@ app-dicts/sword-HebrewGreek 1.1: Hebrew to Greek Dictionary of Septuagint Words
 app-dicts/sword-Heretics 1.1: Heretics by Gilbert K. Chesterton (1874-1936)
 app-dicts/sword-Hitchcock 1.3: Hitchcock's Bible Names
 app-dicts/sword-HunKar 1.7: Hungarian Karoli
-app-dicts/sword-ISBE 1.6: International Standard Bible Encyclopedia
+app-dicts/sword-ISBE 2.2: International Standard Bible Encyclopedia
 app-dicts/sword-ISV 1.5: International Standard Version
 app-dicts/sword-Institutes 1.2: Calvin's Institutes
 app-dicts/sword-ItaDio 1.0: Italian Giovanni Diodati Bibbia 1649
@@ -1234,7 +1234,7 @@ app-dicts/sword-MKJV 1.3: Green's Modern King James Version
 app-dicts/sword-ManxGaelic 1.1: Manx Gaelic Scripture Portions
 app-dicts/sword-Montgomery 1.3: Montgomery New Testament
 app-dicts/sword-Murdock 1.2: James Murdock's Translation of the Syriac Peshitta
-app-dicts/sword-Nave 1.1: Nave's Topical Bible
+app-dicts/sword-Nave 2.0: Nave's Topical Bible
 app-dicts/sword-Norsk 1.5: Den Norske Bibelen
 app-dicts/sword-Orthodoxy 1.0: Orthodoxy by Gilbert K. Chesterton (1874-1936)
 app-dicts/sword-PNT 1.1: The People's New Testament
@@ -1246,9 +1246,9 @@ app-dicts/sword-Practice 1.0: The Practice of the Presence of God: The Best Rule
 app-dicts/sword-RKJNT 1.0: Revised King James New Testament
 app-dicts/sword-RNKJV 1.5: Restored Name King James Version
 app-dicts/sword-RST 1.6: Russian Synodal Translation
-app-dicts/sword-RWP 1.9: Robertson's Word Pictures
+app-dicts/sword-RWP 2.0: Robertson's Word Pictures
 app-dicts/sword-RWebster 1.3: Revised Webster Version (1833)
-app-dicts/sword-Robinson 2.0: Robinson's Morphological Analysis Codes
+app-dicts/sword-Robinson 2.1: Robinson's Morphological Analysis Codes
 app-dicts/sword-Rotherham 1.6: The Emphasized Bible by J. B. Rotherham
 app-dicts/sword-RusMakarij 1.1: The Pentateuch of Moses in Russian
 app-dicts/sword-RusSynodal 1.8.1: 1876 Russian Synodal Bible
@@ -14326,7 +14326,7 @@ net-im/signal-desktop-bin 1.34.4-r1: Allows you to send and receive messages of 
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.62.0.85: Instant messaging client, with support for audio and video
 net-im/slack 4.3.2-r2 4.4.2 4.4.3: Team collaboration tool
-net-im/spectrum2 2.0.12-r2 2.0.13: An open source instant messaging transport
+net-im/spectrum2 2.0.12-r3 2.0.13-r1: An open source instant messaging transport
 net-im/swift 4.0.2-r1: An elegant, secure, adaptable and intuitive XMPP Client
 net-im/teams 1.3.00.958 1.3.00.5153 1.3.00.16851: Microsoft Teams, an Office 365 multimedia collaboration client, pre-release
 net-im/telegram-desktop 2.1.13 2.2.0-r1: Official desktop client for Telegram

@@ -5,8 +5,8 @@ EAPI=7
 HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=Alb
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=public-domain
-RDEPEND=app-text/sword
+RDEPEND=>=app-text/sword-1.5.9
 SLOT=0
-SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/Alb.zip -> Alb-1.2.zip
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/Alb.zip -> Alb-2.0.zip
 _eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
-_md5_=019a4f45ebddfb7a49cce9deb8b5aaf6
+_md5_=b6f328ad125edc76c3393f41b01d7ac2
