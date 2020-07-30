@@ -1030,6 +1030,9 @@ toolchain_src_configure() {
 		esac
 		if [[ -n ${needed_libc} ]] ; then
 			local confgcc_no_libc=( --disable-shared )
+			# requires libc: bug #734820
+			tc_version_is_at_least 4.6 && confgcc_no_libc+=( --disable-libquadmath )
+			# requires libc
 			tc_version_is_at_least 4.8 && confgcc_no_libc+=( --disable-libatomic )
 			if ! has_version ${CATEGORY}/${needed_libc} ; then
 				confgcc+=(
