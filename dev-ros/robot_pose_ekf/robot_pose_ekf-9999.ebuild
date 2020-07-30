@@ -24,5 +24,8 @@ DEPEND="${RDEPEND}
 	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	test? ( dev-ros/rostest[${PYTHON_SINGLE_USEDEP}] )
+	test? (
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		dev-cpp/gtest
+	)
 	virtual/pkgconfig"
