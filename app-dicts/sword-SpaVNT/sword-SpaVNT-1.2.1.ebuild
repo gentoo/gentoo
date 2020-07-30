@@ -2,11 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-SWORD_MODULE="SpaVNT"
+
+SWORD_MINIMUM_VERSION="1.5.1a"
 
 inherit sword-module
 
-DESCRIPTION="Spanish Valera New Testament (1858)"
+DESCRIPTION="Spanish 1858 Reina Valera New Testament"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=SpaVNT"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"
