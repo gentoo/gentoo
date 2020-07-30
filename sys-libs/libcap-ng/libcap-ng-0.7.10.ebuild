@@ -19,8 +19,8 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
-	sys-kernel/linux-headers
-	python? ( >=dev-lang/swig-2 )"
+	sys-kernel/linux-headers"
+BDEPEND="python? ( >=dev-lang/swig-2 )"
 
 src_prepare() {
 	default
