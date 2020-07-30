@@ -2192,7 +2192,7 @@ app-misc/datovka 4.15.0: GUI to access the Czech data box e-government system
 app-misc/ddate 0.2.2: Perpetual date converter from gregorian to poee calendar
 app-misc/ddccontrol 0.4.2_p20140105-r2: DDCControl allows control of monitor parameters via DDC
 app-misc/ddccontrol-db 20061014_p20121105: DDCControl monitor database
-app-misc/ddcutil 0.9.1 0.9.5: Program for querying and changing monitor settings
+app-misc/ddcutil 0.9.1 0.9.5 0.9.9: Program for querying and changing monitor settings
 app-misc/delay 1.6-r2: Sleeplike program that counts down the number of seconds specified
 app-misc/detachtty 9-r1 11.0.0: Attach/detach from interactive processes across the network
 app-misc/detox 1.2.0-r3: Safely remove spaces and strange characters from filenames
@@ -7978,7 +7978,7 @@ dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.8 2.10: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0: Patch ssl.match_hostname for Unicode(idna) domains support
 dev-python/ifaddr 0.1.6: Enumerate IP addresses on the local network adapters
-dev-python/ijson 2.5.1: Iterative JSON parser with a Pythonic interface
+dev-python/ijson 2.5.1 3.1_p0: Iterative JSON parser with a Pythonic interface
 dev-python/imageio 2.6.1: Python library for reading and writing image data
 dev-python/imagesize 1.1.0: Pure Python module for getting image size from png/jpeg/jpeg2000/gif files
 dev-python/imapclient 2.1.0: easy-to-use, pythonic, and complete IMAP client library
