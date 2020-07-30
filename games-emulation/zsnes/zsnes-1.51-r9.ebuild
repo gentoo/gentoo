@@ -1,12 +1,12 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit autotools desktop flag-o-matic toolchain-funcs pax-utils
 
 DESCRIPTION="SNES (Super Nintendo) emulator that uses x86 assembly"
 HOMEPAGE="https://www.zsnes.com/ http://ipherswipsite.com/zsnes/"
-SRC_URI="mirror://sourceforge/zsnes/${PN}${PV//./}src.tar.bz2"
+SRC_URI="mirror://sourceforge/zsnes/${PN}${PV//./}src.tar.bz2 -> ${P}-20071031.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -36,8 +36,7 @@ PATCHES=(
 	# Fix bug #214697
 	# Fix bug #170108
 	# Fix bug #260247
-	"${FILESDIR}"/${P}-archopt-july-23-update.patch
-	"${FILESDIR}"/${P}-gcc43.patch
+	"${FILESDIR}"/${P}-gcc43-20071031.patch
 	"${FILESDIR}"/${P}-libao-thread.patch
 	"${FILESDIR}"/${P}-depbuild.patch
 	"${FILESDIR}"/${P}-CC-quotes.patch
@@ -56,6 +55,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-arch.patch
 
 	"${FILESDIR}"/${P}-gcc-10.patch
+	"${FILESDIR}"/${P}-c++17.patch
 )
 
 src_prepare() {
