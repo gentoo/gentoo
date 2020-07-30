@@ -2226,6 +2226,7 @@ toolchain_pkg_postinst() {
 		# gcc stopped installing .la files fixer in June 2020.
 		# Cleaning can be removed in June 2022.
 		rm -f "${EROOT%/}"/sbin/fix_libtool_files.sh
+		rm -f "${EROOT%/}"/usr/sbin/fix_libtool_files.sh
 		rm -f "${EROOT%/}"/usr/share/gcc-data/fixlafiles.awk
 
 		mkdir -p "${EROOT%/}"/usr/bin
