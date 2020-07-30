@@ -23,7 +23,7 @@ RDEPEND="
 	dev-libs/console_bridge:=
 	dev-ros/pluginlib
 	dev-ros/message_filters
-	dev-ros/dynamic_reconfigure
+	dev-ros/dynamic_reconfigure[${PYTHON_SINGLE_USEDEP}]
 	dev-libs/boost:=[threads]
 "
 DEPEND="${RDEPEND}
