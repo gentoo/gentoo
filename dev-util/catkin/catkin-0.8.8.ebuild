@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -9,9 +9,9 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/ros/catkin"
 fi
 
-PYTHON_COMPAT=( python3_6 pypy3 )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
-inherit ${SCM} cmake-utils python-r1
+inherit ${SCM} cmake python-r1 python-utils-r1
 
 DESCRIPTION="Cmake macros and associated python code used to build some parts of ROS"
 HOMEPAGE="http://wiki.ros.org/catkin"
@@ -37,16 +37,16 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? ( dev-python/nose[${PYTHON_USEDEP}] dev-python/mock[${PYTHON_USEDEP}] )"
+BDEPEND=""
 
 PATCHES=(
 	"${FILESDIR}/tests.patch"
-	"${FILESDIR}/distutils.patch"
+	"${FILESDIR}/distutils-v2.patch"
 	"${FILESDIR}/catkin_prefix_path.patch"
 	"${FILESDIR}/gnuinstalldirs.patch"
-	"${FILESDIR}/catkin_prefix_path_util_py.patch"
+	"${FILESDIR}/catkin_prefix_path_util_py_v2.patch"
 	"${FILESDIR}/package_xml.patch"
 	"${FILESDIR}/etc.patch"
-	"${FILESDIR}/sitedir.patch"
 )
 
 src_prepare() {
@@ -58,7 +58,7 @@ src_prepare() {
 		-e 's:DESTINATION lib/:DESTINATION ${CMAKE_INSTALL_LIBDIR}/:' \
 		-e 's:PYTHON_INSTALL_DIR lib:PYTHON_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR}:' \
 		cmake/*.cmake || die
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 catkin_src_configure_internal() {
@@ -68,30 +68,30 @@ catkin_src_configure_internal() {
 		-DPYTHON_INSTALL_DIR="${sitedir#${EPREFIX}/usr/}"
 	)
 	python_export PYTHON_SCRIPTDIR
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_configure() {
 	export PYTHONPATH="${S}/python"
 	local mycmakeargs=(
-		"$(cmake-utils_use test CATKIN_ENABLE_TESTING)"
+		"-DCATKIN_ENABLE_TESTING=$(usex test)"
 		"-DCATKIN_BUILD_BINARY_PACKAGE=ON"
 		)
 	python_foreach_impl catkin_src_configure_internal
 }
 
 src_compile() {
-	python_foreach_impl cmake-utils_src_compile
+	python_foreach_impl cmake_src_compile
 }
 
 src_test() {
 	unset PYTHON_SCRIPTDIR
-	python_foreach_impl cmake-utils_src_test
+	python_foreach_impl cmake_src_test
 }
 
 catkin_src_install_internal() {
 	python_export PYTHON_SCRIPTDIR
-	cmake-utils_src_install
+	cmake_src_install
 	if [ ! -f "${T}/.catkin_python_symlinks_generated" ]; then
 		dodir /usr/bin
 		for i in "${D}/${PYTHON_SCRIPTDIR}"/* ; do
@@ -108,6 +108,8 @@ src_install() {
 
 	# needed to be considered as a workspace
 	touch "${ED}/usr/.catkin"
+
+	python_foreach_impl python_optimize
 }
 
 pkg_postinst() {
