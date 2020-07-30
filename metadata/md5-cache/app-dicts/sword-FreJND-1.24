@@ -1,0 +1,12 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install
+DESCRIPTION=Bible J.N.Darby en français (1975)
+EAPI=7
+HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=FreJND
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=public-domain
+RDEPEND=>=app-text/sword-1.8.0
+SLOT=0
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/FreJND.zip -> FreJND-1.24.zip
+_eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
+_md5_=549c36e2679e22c79b4a83dd7e81099a

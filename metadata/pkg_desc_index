@@ -1153,49 +1153,125 @@ app-dicts/stardict-xdict-en-zh-big5 2.4.2: Stardict Dictionary English to Tradit
 app-dicts/stardict-xdict-en-zh-gb 2.4.2: Stardict Dictionary English to Simplified Chinese (GB)
 app-dicts/stardict-xdict-zh-en-big5 2.4.2: Stardict Dictionary Traditional Chinese (BIG5) to English
 app-dicts/stardict-xdict-zh-en-gb 2.4.2: Stardict Dictionary Simplified Chinese (GB) to English
+app-dicts/sword-2BabDict 1.0: Definitions and Symbols from The Two Babylons
+app-dicts/sword-AB 1.3.1: The Apostles' Bible
+app-dicts/sword-ABP 1.2: Apostolic Bible Polyglot English Text
+app-dicts/sword-ABPGRK 1.2: Apostolic Bible Polyglot Greek Text
+app-dicts/sword-ABS_Essay_GoodSam_SWB 1.0: Essays on The Good Samaritan: Violence on the Road, Social World of Bandits
 app-dicts/sword-ACV 2.0: A Conservative Version
 app-dicts/sword-AKJV 1.4: American King James Version
 app-dicts/sword-ASV 1.3: American Standard Version (1901)
 app-dicts/sword-Abbott 1.1: Illustrated New Testament
+app-dicts/sword-AbbottSmith 3.1: G. Abbott-Smith's A Manual Greek Lexicon of the New Testament
+app-dicts/sword-AbbottSmithStrongs 3.1: G. Abbott-Smith's A Manual Greek Lexicon of the New Testament
 app-dicts/sword-Afr1953 1.3.2: 1933/1953 Afrikaans Bybel
 app-dicts/sword-Alb 2.0: Albanian Bible
 app-dicts/sword-Aleppo 2.0: Aleppo Codex
 app-dicts/sword-AmTract 1.1: American Tract Society Bible Dictionary
+app-dicts/sword-Anderson 1.0: Henry Tompkins Anderson's 1864 New Testament
+app-dicts/sword-Antoniades 1.4: Antoniades Patriarchal Edition (1904/1912)
+app-dicts/sword-AraNAV 2.0.1: New Arabic Version (Ketab El Hayat)
 app-dicts/sword-AraSVD 2.0: Smith and van Dyck's al-Kitab al-Muqaddas (Arabic Bible)
 app-dicts/sword-ArmEastern 1.1: Eastern Armenian Bible
 app-dicts/sword-ArmWestern 1.1: 1853 Western Armenian NT
+app-dicts/sword-Azeri 2.5.1: Southern Azeri translation of the Bible
 app-dicts/sword-BBE 1.3: Bible in Basic English (1949/1964)
+app-dicts/sword-BDBGlosses_Strongs 1.1: BDB Glosses keyed to Strong's numbers
+app-dicts/sword-BWE 1.0: Bible in Worldwide English
+app-dicts/sword-BaptistConfession1689 1.0.2: Baptist Confession of Faith of 1689
 app-dicts/sword-Barnes 1.1: Barnes' New Testament Notes
 app-dicts/sword-BasHautin 1.5: 1571 Navarro-Labourdin Basque NT
+app-dicts/sword-BeaMRK 1.0.1: The Gospel of Mark in Beaver (Danezaa)
+app-dicts/sword-Bela 1.1: Belarusian Bible
+app-dicts/sword-BlaMat 1.1.1: The Gospel of Matthew in Blackfoot
+app-dicts/sword-BretonNT 1.1.1: Breton New Testament (Koad 21)
 app-dicts/sword-BulVeren 1.1: Veren's Contemporary Bible
+app-dicts/sword-BurCBCM 1.2: Catholic Myanmar Bible (CBCM)
 app-dicts/sword-BurJudson 1.3: 1835 Judson Burmese Bible
+app-dicts/sword-Burkitt 1.0: Burkitt's Expository Notes
 app-dicts/sword-Byz 2.4: The New Testament in Original Greek: Byzantine Textform 2005
 app-dicts/sword-CBC 1.1: Condensed Biblical Cyclopedia
+app-dicts/sword-CPDV 2.1.1: Catholic Public Domain Version
+app-dicts/sword-CSlElizabeth 1.5.1: 1757 Church Slavonic Elizabeth Bible
+app-dicts/sword-Calo 1.0: Gospel of Luke in the Caló language
+app-dicts/sword-Catena 1.0: Catena Aurea (Thomas Aquinas)
+app-dicts/sword-Cawdrey 1.0: A Table Alphabeticall by Robert Cawdrey (1604)
 app-dicts/sword-Chamorro 2.7.2: Chamorro: Y Santa Biblia (1908)
+app-dicts/sword-Che1860 1.2: Cherokee New Testament (1860)
+app-dicts/sword-ChiNCVs 1.0: New Chinese Version of the Bible, simplified script
+app-dicts/sword-ChiNCVt 1.0: New Chinese Version of the Bible, traditional script
+app-dicts/sword-ChiUn 2.6: Chinese Union Version of the Bible, traditional script
+app-dicts/sword-ChiUnL 1.0: Chinese Union Version of the Bible, classical (literary) script
+app-dicts/sword-ChiUns 2.5.2: Chinese Union Version of the Bible, simplified script
 app-dicts/sword-Clarke 1.0: Adam Clarke's Commentary on the Bible
 app-dicts/sword-Common 1.3: The Common Edition: New Testament
+app-dicts/sword-Concord 2.4.1: Book of Concord (Triglot Concordia): The Symbolical Books of the Ev. Lutheran Church
+app-dicts/sword-CopNT 1.0.1: The Coptic New Testament
+app-dicts/sword-CopSahBible2 1.3: Sahidic Bible 2
+app-dicts/sword-CopSahHorner 1.5: Sahidic Coptic New Testament, ed. by G. W. Horner
+app-dicts/sword-CopSahidicMSS 1.0: The Sahidica Manuscripts
+app-dicts/sword-CopSahidica 1.0: Sahidica - A New Edition of the New Testament in Sahidic Coptic
 app-dicts/sword-CroSaric 2.0: Croatian Bible
+app-dicts/sword-CzeB21 1.5: Czech Bible, Překlad 21. století včetně deuterokanonických knih
 app-dicts/sword-CzeBKR 1.3.1: Czech Bible Kralicka
+app-dicts/sword-CzeCEP 1.8: Czech Ekumenicky Cesky preklad
+app-dicts/sword-CzeCSP 1.4: Czech Český studijní překlad
+app-dicts/sword-DBD 1.4: Day By Day By Grace - Bob Hoekstra
 app-dicts/sword-DRC 2.0: Douay-Rheims Bible, Challoner Revision
 app-dicts/sword-DTN 1.0: Darby Translation Notes
+app-dicts/sword-DaNT1819 1.0.1: Danish New Testament from 1819 with original orthography
+app-dicts/sword-DaOT1871NT1907 1.0: Danish OT1871 + NT1907 with original orthography
 app-dicts/sword-DaOT1931NT1907 1.01: Danish OT1931 + NT1907 with original orthography
 app-dicts/sword-Daily 1.0: Jonathan Bagster's Daily Light on the Daily Path
 app-dicts/sword-Dan 2.1: Danske Bibel
 app-dicts/sword-Darby 1.1: Darby Bible (1889)
+app-dicts/sword-Dari 1.0.2: Dari Translation
+app-dicts/sword-DarkNightOfTheSoul 1.0: 'The Dark Night of the Soul' by St. John of the Cross
 app-dicts/sword-Diaglott 1.1: The Emphatic Diaglott
+app-dicts/sword-Dodson 1.0: Dodson Greek-English Lexicon
 app-dicts/sword-DutKant 1.1: Kanttekeningen Statenvertaling
 app-dicts/sword-DutSVV 2.0: Dutch Statenvertaling Bijbel, including footnotes
+app-dicts/sword-EMBReality 0.5: The Reality of Prayer by E.M. Bounds
+app-dicts/sword-EMTV 2.2: English Majority Text Version, 2012 Edition with Greek Explanatory Notes
 app-dicts/sword-Easton 2.0: Easton's Bible Dictionary
+app-dicts/sword-Elzevir 1.3: Elzevir Textus Receptus (1624)
 app-dicts/sword-Esperanto 2.1: Esperanto Londona Biblio
+app-dicts/sword-Est 1.1: Estonian Bible
+app-dicts/sword-Etheridge 1.1: The Peschito Syriac New Testament: Translated into English by John Wesley Etheridge
+app-dicts/sword-Eusebian_num 1.1: Eusebian Numbers
+app-dicts/sword-Eusebian_vs 1.1: Eusebian Numbers By Verse
+app-dicts/sword-FVDPVietAnh 1.1.1: FVDP Vietnamese-English Dictionary
+app-dicts/sword-Family 1.1: Family Bible Notes
+app-dicts/sword-FarHezareNoh 1.0.2: Tarjumeh-ye Hezare Noh
 app-dicts/sword-FarOPV 1.5.1: Persian Holy Bible (Tarjumeh-ye Ghadeem)
+app-dicts/sword-FarTPV 1.1.2: Today's Persian Version (Mojdeh Baraye Asre Jadid)
 app-dicts/sword-FinBiblia 1.1: Finnish Biblia (1776)
 app-dicts/sword-FinPR 1.2: Finnish Pyh, Raamattu (1933/1938)
+app-dicts/sword-FinPR92 1.1.1: Finnish Pyhä Raamattu (1992)
+app-dicts/sword-FinRK 1.8.2: Raamattu Kansalle (2012)
+app-dicts/sword-FinSTLK2017 1.3: Pyhä Raamattu (STLK 2017)
 app-dicts/sword-Finney 1.1: Sermons on Gospel Themes by Charles G. Finney (1792-1875)
 app-dicts/sword-FreBBB 1.1: French Bible Bovet Bonnet (1900)
+app-dicts/sword-FreBDM1707 1.1: French Bible David Martin (1707)
 app-dicts/sword-FreBDM1744 1.2.1: French Bible Martin (1744)
+app-dicts/sword-FreBailly 1.3: Abbreviated Greek-French Dictionary by A. Bailly.
+app-dicts/sword-FreCJE 2.0: Chaque jour les Écritures
 app-dicts/sword-FreCrampon 1.1: La Bible Augustin Crampon 1923
+app-dicts/sword-FreDAW 1.2: Dictionnaire encyclopédique de la Bible A. Westphal (1932)
+app-dicts/sword-FreGBM 1.0: Glossary of the Bible David Martin 1744
+app-dicts/sword-FreGeneve1669 1.0.3: Le Nouveau Testament de la Bible de Genève de 1669
+app-dicts/sword-FreJND 1.24: Bible J.N.Darby en français (1975)
+app-dicts/sword-FreKhan 1.0.2: La Bible de Zadoc Khan
 app-dicts/sword-FreLSG 1.3: French Louis Segond (1910)
+app-dicts/sword-FreLSN1872 1.0: Bible de Lausanne (1872)
+app-dicts/sword-FreLXX 1.1: Traduction de la LXX par P. GIGUET et autres traducteurs, 1872.
+app-dicts/sword-FreOltramare1874 1.0.3: Le Nouveau Testament Version Oltramare 1874
+app-dicts/sword-FrePGR 1.2: Bible Perret-Gentil et Rilliet
+app-dicts/sword-FrePilgrim 1.0: The Pilgrim's Progress in French
 app-dicts/sword-FreSegond1910 3.1: French Bible Louis Segond (1910)
+app-dicts/sword-FreStapfer1889 1.0.2: Le Nouveau Testament traduction de Stapfer - 1889
+app-dicts/sword-FreSynodale1921 1.0.3: Le Nouveau Testament Version Synodale 1921 et le livre des Psaumes
+app-dicts/sword-Geez 1.0.1: Ge’ez Bible
 app-dicts/sword-Geneva 1.1: Geneva Bible Translation Notes
 app-dicts/sword-Geneva1599 1.1: Geneva Bible (1599)
 app-dicts/sword-GerElb1871 1.1: German Elberfelder (1871)

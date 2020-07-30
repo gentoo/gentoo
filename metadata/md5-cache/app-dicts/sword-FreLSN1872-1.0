@@ -1,0 +1,12 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install
+DESCRIPTION=Bible de Lausanne (1872)
+EAPI=7
+HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=FreLSN1872
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=crosswire
+RDEPEND=>=app-text/sword-1.8.0
+SLOT=0
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/FreLSN1872.zip -> FreLSN1872-1.0.zip
+_eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
+_md5_=a04f4f79f4d5ac40b791e6eb2ab84685
