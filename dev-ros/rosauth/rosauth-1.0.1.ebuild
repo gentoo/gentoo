@@ -15,6 +15,10 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/roscpp
-	dev-libs/openssl:0="
+	dev-libs/openssl:0=
+"
 DEPEND="${RDEPEND}
-	test? ( dev-ros/rostest[${PYTHON_SINGLE_USEDEP}] )"
+	test? (
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		dev-cpp/gtest
+	)"
