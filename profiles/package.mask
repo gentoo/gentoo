@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-07-30)
+# Obsolete package. Last release in 2005.
+# TexLive has its own CJK support.
+# Removal in 30 days.
+dev-tex/hlatex
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-07-29)
 # Py2-only, unmaintained, last release in 2008, dead upstream.
 # Removal in 30 days.
