@@ -8,7 +8,7 @@ inherit python-any-r1 qt5-build
 DESCRIPTION="The QML and Quick modules for the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~sparc x86"
 fi
 
 IUSE="gles2-only +jit localstorage vulkan +widgets"
@@ -17,7 +17,7 @@ BDEPEND="${PYTHON_DEPS}"
 # qtgui[gles2-only=] is needed because of bug 504322
 DEPEND="
 	~dev-qt/qtcore-${PV}
-	~dev-qt/qtgui-${PV}[gles2-only=,vulkan=]
+	~dev-qt/qtgui-${PV}:5=[gles2-only=,vulkan=]
 	~dev-qt/qtnetwork-${PV}
 	~dev-qt/qttest-${PV}
 	localstorage? ( ~dev-qt/qtsql-${PV} )
@@ -28,8 +28,9 @@ RDEPEND="${DEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-5.14.2-QQuickItemView-fix-maxXY-extent.patch" # QTBUG-83890
-	"${FILESDIR}/${PN}-5.14.2-fix-subpixel-positioned-text.patch" # QTBUG-49646
+	"${FILESDIR}/${P}-QQuickItemView-fix-maxXY-extent.patch" # QTBUG-83890
+	"${FILESDIR}/${P}-fix-subpixel-positioned-text.patch" # QTBUG-49646
+	"${FILESDIR}/${P}-QQuickMouseArea-stuck-in-pressed-state.patch" # QTBUG-74987
 )
 
 src_prepare() {
