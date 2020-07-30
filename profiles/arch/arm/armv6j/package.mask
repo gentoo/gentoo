@@ -7,6 +7,7 @@
 -dev-util/cbindgen
 -media-video/rav1e
 -net-news/newsboat
+-net-libs/quiche
 
 # James Le Cuirot <chewi@gentoo.org> (2016-01-09)
 # This is built for armv6 so unmask against the wider arm mask.
