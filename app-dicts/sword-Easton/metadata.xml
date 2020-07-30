@@ -5,4 +5,10 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<longdescription>
+		These Dictionary topics are from M.G. Easton M.A., D.D., Illustrated Bible
+		Dictionary, Third Edition, published by Thomas Nelson, 1897. Due to the
+		nature of etext, the illustrated portions of the Dictionary have not been
+		included.
+	</longdescription>
 </pkgmetadata>
