@@ -5965,9 +5965,9 @@ dev-perl/Devel-PatchPerl 1.520.0 1.920.0 2.0.0: Patch perl source a la Devel::PP
 dev-perl/Devel-REPL 1.3.28: A modern perl interactive shell
 dev-perl/Devel-Refactor 0.50.0-r1 0.50.0-r2: Perl extension for refactoring Perl code
 dev-perl/Devel-SimpleTrace 0.80.0: See where you code warns and dies using stack traces
-dev-perl/Devel-Size 0.820.0: Perl extension for finding the memory usage of Perl variables
+dev-perl/Devel-Size 0.820.0 0.830.0: Perl extension for finding the memory usage of Perl variables
 dev-perl/Devel-SmallProf 2.20.0-r4: Per-line Perl profiler
-dev-perl/Devel-StackTrace 2.20.0: An object representing a stack trace
+dev-perl/Devel-StackTrace 2.20.0 2.40.0: An object representing a stack trace
 dev-perl/Devel-StackTrace-AsHTML 0.150.0: Displays stack trace in HTML
 dev-perl/Devel-Symdump 2.180.0: Dump symbol names or the symbol table
 dev-perl/Device-SerialPort 1.40.0-r2: A Serial port Perl Module
@@ -10129,7 +10129,7 @@ dev-tex/latex-beamer 3.56-r1 3.57: LaTeX class for creating presentations using 
 dev-tex/latex-calendar 3.1: LaTeX package used to create Calendars. Very flexible and robust
 dev-tex/latex2html 2015 2017.2-r2: Convertor written in Perl that converts LATEX documents to HTML
 dev-tex/latex2rtf 2.3.11 2.3.15: LaTeX to RTF converter
-dev-tex/latexdiff 1.2.1 1.3.0 9999: Compare two latex files and mark up significant differences
+dev-tex/latexdiff 1.3.0 1.3.1.1 9999: Compare two latex files and mark up significant differences
 dev-tex/latexmk 456 465 469: Perl script for automatically building LaTeX documents
 dev-tex/lgrind 3.67-r3: A pretty printer for various programming languages with tex output.
 dev-tex/metapost 1.803 1.902: System for producing graphics
@@ -14998,7 +14998,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1355-r1 0.4.1432: utility to download media contents from the web
-net-misc/youtube-dl 2020.06.16.1 2020.07.28 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.07.28 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r1 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
