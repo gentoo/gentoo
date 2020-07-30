@@ -13,5 +13,5 @@ SRC_URI="https://dev.gajim.org/gajim/python-nbxmpp/-/archive/nbxmpp-${PV}/python
 
 SLOT="0"
 LICENSE="GPL-3"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
