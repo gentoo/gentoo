@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,7 @@ BDEPEND="virtual/pkgconfig"
 REQUIRED_USE="infiniband? ( rdma ) || ( rdma tcp )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.0.876-Makefiles.patch"
+	"${FILESDIR}/${PN}-2.1.1-Makefiles.patch"
 )
 
 pkg_setup() {
@@ -105,7 +105,7 @@ src_install() {
 	dodoc README THANKS
 
 	docinto test/
-	dodoc test/*
+	dodoc $(find test -maxdepth 1 -type f ! -name ".*")
 
 	insinto /etc/iscsi
 	newins "${FILESDIR}"/initiatorname.iscsi initiatorname.iscsi.example
