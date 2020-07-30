@@ -8256,9 +8256,7 @@ sys-devel/binutils-hppa64:plugins - Enable plugin support in tools
 sys-devel/clang:default-compiler-rt - Use compiler-rt instead of libgcc as the default rtlib for clang
 sys-devel/clang:default-libcxx - Use libc++ instead of libstdc++ as the default stdlib for clang
 sys-devel/clang:static-analyzer - Install the Clang static analyzer
-sys-devel/clang:z3 - Enable the static analyzer constraint manager backend using sci-mathematics/z3
 sys-devel/clang-runtime:compiler-rt - Install sys-libs/compiler-rt for -rtlib=compiler-rt
-sys-devel/clang-runtime:crt - Require a package providing crt*.o files to make it possible to build software without GCC installed
 sys-devel/clang-runtime:libcxx - Install sys-libs/libcxx for -stdlib=libc++
 sys-devel/clang-runtime:openmp - Install sys-libs/libomp for -fopenmp support
 sys-devel/clang-runtime:sanitize - Enable compiler-rt sanitizer (-fsanitize*) support
