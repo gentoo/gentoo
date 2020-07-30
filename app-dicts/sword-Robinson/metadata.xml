@@ -5,4 +5,13 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<longdescription>
+		Produced in accordance with the key at
+		http://www.byztxt.com/download/PARSINGS.TXT, on the basis of numerous Greek
+		texts, and with significant editorial and corrective emendation.
+
+		This text was first created by the CrossWire Bible Society in 2002, and
+		recreated in 2009 using the more recent coding system and numerous
+		additional Greek texts.
+	</longdescription>
 </pkgmetadata>
