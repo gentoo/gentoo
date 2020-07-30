@@ -6,9 +6,9 @@ HOMEPAGE=https://www.elastic.co/products/logstash
 IUSE=x-pack elibc_FreeBSD
 KEYWORDS=~amd64
 LICENSE=Apache-2.0 MIT x-pack? ( Elastic )
-RDEPEND=acct-group/logstash acct-user/logstash virtual/jre >=dev-java/java-config-2.2.0-r3
+RDEPEND=acct-group/logstash acct-user/logstash virtual/jre:1.8 >=dev-java/java-config-2.2.0-r3
 RESTRICT=strip
 SLOT=0
-SRC_URI=x-pack? ( https://artifacts.elastic.co/downloads/logstash/logstash-7.8.0.tar.gz ) !x-pack? ( https://artifacts.elastic.co/downloads/logstash/logstash-oss-7.8.0.tar.gz )
+SRC_URI=x-pack? ( https://artifacts.elastic.co/downloads/logstash/logstash-6.8.11.tar.gz ) !x-pack? ( https://artifacts.elastic.co/downloads/logstash/logstash-oss-6.8.11.tar.gz )
 _eclasses_=java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	16d46032afaca1d6d0621f82084880cb
-_md5_=6b77ac7e3fee24fce90f8767827f44ee
+_md5_=dbac9b904838829ca2428d9fb59b0f8e
