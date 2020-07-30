@@ -4092,8 +4092,8 @@ media-gfx/gmic:krita - Build media-gfx/krita plugin
 media-gfx/gmic:opencv - Enable support for webcams using the OpenCV library
 media-gfx/gnofract4d:doc - Install user manual
 media-gfx/gnome-photos:flickr - Ensure runtime Flickr support
+media-gfx/graphicsmagick:dynamic-loading - Compile graphicsmagick with dynamically loadable modules
 media-gfx/graphicsmagick:fpx - Enable FlashPix support with media-libs/libfpx
-media-gfx/graphicsmagick:modules - Compile graphicsmagick with dynamically loadable modules
 media-gfx/graphicsmagick:q16 - Set storage quantum size to 16 (~2*memory)
 media-gfx/graphicsmagick:q32 - Set storage quantum size to 32 (~5*memory)
 media-gfx/graphviz:X - Builds lefty front-end, builds plugin -Txlib, and enables support for x11 in various other modules (needs cairo)
