@@ -5127,7 +5127,7 @@ dev-libs/libpfm 4.8.0 4.10.1 4.10.1-r1: Hardware-based performance monitoring in
 dev-libs/libpipeline 1.5.2: a pipeline manipulation library
 dev-libs/libplatform 2.0.1 2.1.0.1 2.1.0.1-r1 9999: Platform support library used by libCEC and binary add-ons for Kodi
 dev-libs/libpo6 0.8.0: Hyperdex libpo6 support library
-dev-libs/libpqxx 6.4.5: Standard front-end for writing C++ programs that use PostgreSQL
+dev-libs/libpqxx 6.4.5 7.1.2: Standard front-end for writing C++ programs that use PostgreSQL
 dev-libs/libprelude 4.0.0 4.1.0 5.1.1: Prelude-SIEM Framework Library
 dev-libs/libpreludedb 4.0.0-r1 4.1.0-r1 5.1.0: Framework to easy access to the Prelude database
 dev-libs/libpthread-stubs 0.4-r1: Pthread functions stubs for platforms missing them
@@ -5952,7 +5952,7 @@ dev-perl/Devel-CheckOS 1.810.0 1.830.0: require that we are running on a particu
 dev-perl/Devel-Cover 1.290.0-r1 1.360.0: Code coverage metrics for Perl
 dev-perl/Devel-Cycle 1.120.0 1.120.0-r1: Find memory cycles in objects
 dev-perl/Devel-Declare 0.6.19 0.6.22: (DEPRECATED) Adding keywords to perl, in perl
-dev-perl/Devel-Dumpvar 1.60.0-r1: Pure-OO reimplementation of dumpvar.pl
+dev-perl/Devel-Dumpvar 1.60.0-r1 1.60.0-r2: Pure-OO reimplementation of dumpvar.pl
 dev-perl/Devel-FindPerl 0.14.0: Find the path to your perl
 dev-perl/Devel-GlobalDestruction 0.140.0: Returns the equivalent of ${^GLOBAL_PHASE} eq DESTRUCT for older perls
 dev-perl/Devel-GlobalPhase 0.3.3: Detect perl's global phase on older perls
