@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergey Popov <pinkbyte@gentoo.org> (2020-07-30)
+# Python2-only, dead upstream
+# Recommended replacement - sys-fs/rar2fs
+# Masked for removal in 30 days.
+sys-fs/rarfs
+
 # Mikle Kolyada <zlogene@gentoo.org> (2020-07-30)
 # Has been a part of dev-texlive/texlive-publishers
 # for a long time. Only Gentoo ships this one.
