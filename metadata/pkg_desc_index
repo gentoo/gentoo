@@ -2483,7 +2483,7 @@ app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugrepo
 app-portage/pfl 3.1: Searchable online file/package database for Gentoo
 app-portage/portage-utils 0.80 0.87 0.88 9999: Small and fast Portage helper tools written in C
 app-portage/porticron 0.7.1: cron script to sync portage and send update mails to root
-app-portage/portpeek 2.1.27-r1 2.1.29 3.0.1 3.1.0 3.1.2: A helper program for maintaining the package.keyword and package.unmask files
+app-portage/portpeek 2.1.27-r1 2.1.29 3.0.1 3.1.3: A helper program for maintaining the package.keyword and package.unmask files
 app-portage/pqlop 0.02-r1: emerge.log parser written in python
 app-portage/pram 8 9: Tool to ease merging Pull Requests and git patches
 app-portage/prefix-toolkit 8 9: Utilities for users of Gentoo Prefix
@@ -9122,7 +9122,7 @@ dev-ros/image_rotate 1.15.2 9999: Rotates an image minimizing the angle between 
 dev-ros/image_transport 1.12.0 9999: Transparent support for transporting images in low-bandwidth compressed formats
 dev-ros/image_view 1.15.2 9999: Simple viewer for ROS image topics
 dev-ros/imu_complementary_filter 1.2.2 9999: Fuses angular velocities, accelerations, and magnetic readings from an IMU
-dev-ros/imu_filter_madgwick 1.2.2 9999: Fuses angular velocities, accelerations, and magnetic readings from an IMU
+dev-ros/imu_filter_madgwick 1.2.2-r1 9999: Fuses angular velocities, accelerations, and magnetic readings from an IMU
 dev-ros/imu_processors 0.3.0 9999: Processors for sensor_msgs::Imu data
 dev-ros/imu_transformer 0.3.0 9999: Transforms sensor_msgs::Imu data from one frame into another
 dev-ros/interactive_marker_tutorials 0.11.0 9999: Interactive marker tutorials
@@ -18727,7 +18727,7 @@ x11-wm/openbox 3.6.1 3.6.1-r3 9999: A standards compliant, fast, light-weight, e
 x11-wm/oroborus 2.0.20-r1: Small and fast window manager
 x11-wm/page 1.9.8 1.9.9-r3: A mouse friendly tiling window manager
 x11-wm/pekwm 0.1.17-r1 0.1.17-r2: A lightweight window manager initially based on aewm++
-x11-wm/qtile 0.14.2-r1 0.15.1 9999: A full-featured, hackable tiling window manager written in Python
+x11-wm/qtile 0.15.1 0.16.0 9999: A full-featured, hackable tiling window manager written in Python
 x11-wm/ratpoison 1.4.8-r1 1.4.9 9999: window manager without mouse dependency
 x11-wm/sawfish 1.12.0-r1 1.12.90: Extensible window manager using a Lisp-based scripting language
 x11-wm/selectwm 0.4.1-r1: window manager selector tool
