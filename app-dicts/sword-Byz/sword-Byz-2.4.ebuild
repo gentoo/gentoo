@@ -2,11 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-SWORD_MODULE="Byz"
+
+SWORD_MINIMUM_VERSION="1.7.2"
 
 inherit sword-module
 
-DESCRIPTION="Byzantine/Majority Text (2000)"
+DESCRIPTION="The New Testament in Original Greek: Byzantine Textform 2005"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Byz"
-LICENSE="public-domain"
+LICENSE="CC-BY-NC-SA-4.0"
 KEYWORDS="~amd64 ~ppc ~x86"
