@@ -1,0 +1,12 @@
+diff -ru hackage-security-0.5.3.0.orig/src/Hackage/Security/TUF/FileMap.hs hackage-security-0.5.3.0/src/Hackage/Security/TUF/FileMap.hs
+--- hackage-security-0.5.3.0.orig/src/Hackage/Security/TUF/FileMap.hs	2018-03-25 19:39:07.000000000 -0400
++++ hackage-security-0.5.3.0/src/Hackage/Security/TUF/FileMap.hs	2019-03-16 08:29:08.347456951 -0400
+@@ -78,7 +78,7 @@
+ lookupM :: Monad m => FileMap -> TargetPath -> m FileInfo
+ lookupM m fp =
+     case lookup fp m of
+-      Nothing  -> fail $ "No entry for " ++ pretty fp ++ " in filemap"
++      Nothing  -> error $ "No entry for " ++ pretty fp ++ " in filemap"
+       Just nfo -> return nfo
+ 
+ {-------------------------------------------------------------------------------
