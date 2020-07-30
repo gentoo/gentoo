@@ -5,4 +5,8 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<longdescription>
+		The Aleppo Codex (i.e. Hebrew Bible) without Vowel Points or Punctuation.
+		Based on the electronic edition at http://www.mechon-mamre.org
+	</longdescription>
 </pkgmetadata>
