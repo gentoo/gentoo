@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python3_{6..9} )
 EGIT_REPO_URI="https://github.com/Robpol86/${PN}.git"
 inherit distutils-r1 git-r3
 
@@ -14,10 +14,8 @@ SRC_URI=""
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+BDEPEND="
 	test? (
 		dev-python/colorama[${PYTHON_USEDEP}]
 		dev-python/colorclass[${PYTHON_USEDEP}]
@@ -25,6 +23,4 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/termcolor[${PYTHON_USEDEP}]
 	)"
 
-python_test() {
-	pytest -vv || die "Tests fail with ${EPYTHON}"
-}
+distutils_enable_tests pytest
