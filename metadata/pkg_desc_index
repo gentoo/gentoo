@@ -5953,7 +5953,7 @@ dev-perl/Devel-Cover 1.290.0-r1 1.360.0: Code coverage metrics for Perl
 dev-perl/Devel-Cycle 1.120.0 1.120.0-r1: Find memory cycles in objects
 dev-perl/Devel-Declare 0.6.19 0.6.22: (DEPRECATED) Adding keywords to perl, in perl
 dev-perl/Devel-Dumpvar 1.60.0-r1 1.60.0-r2: Pure-OO reimplementation of dumpvar.pl
-dev-perl/Devel-FindPerl 0.14.0: Find the path to your perl
+dev-perl/Devel-FindPerl 0.14.0 0.15.0: Find the path to your perl
 dev-perl/Devel-GlobalDestruction 0.140.0: Returns the equivalent of ${^GLOBAL_PHASE} eq DESTRUCT for older perls
 dev-perl/Devel-GlobalPhase 0.3.3: Detect perl's global phase on older perls
 dev-perl/Devel-Hide 0.0.900: Forces the unavailability of specified Perl modules (for testing)
