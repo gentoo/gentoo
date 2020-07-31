@@ -14,7 +14,6 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
 
 # Some tests fail due to being unable to find an icon directory relative
 # to ${WORKDIR}, some others segfault. Needs work.
@@ -40,13 +39,13 @@ DEPEND="${RDEPEND}
 	net-misc/curl
 	sys-libs/zlib
 "
-BDEPEND="test? (
-	app-dicts/sword-Josephus
-	app-dicts/sword-KJV
-	app-dicts/sword-KJVA
-	app-dicts/sword-Scofield
-	app-dicts/sword-StrongsGreek
-)"
+#BDEPEND="test? (
+#	app-dicts/sword-Josephus
+#	app-dicts/sword-KJV
+#	app-dicts/sword-KJVA
+#	app-dicts/sword-Scofield
+#	app-dicts/sword-StrongsGreek
+#)"
 
 DOCS=( ChangeLog README.md )
 
