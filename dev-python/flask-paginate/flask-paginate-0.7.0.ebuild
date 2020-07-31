@@ -11,7 +11,6 @@ MY_COMMIT="6445a67395912a5432014ec824ce4bf8fd13e22d"
 
 DESCRIPTION="Pagination support for flask"
 HOMEPAGE="https://flask-paginate.readthedocs.io"
-# https://github.com/lixxu/flask-paginate/issues/68
 SRC_URI="https://github.com/lixxu/flask-paginate/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
