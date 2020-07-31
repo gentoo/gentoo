@@ -1856,7 +1856,7 @@ app-eselect/eselect-repository 7: Manage repos.conf via eselect
 app-eselect/eselect-ruby 20170723 20190121 20191222: Manages multiple Ruby versions
 app-eselect/eselect-rust 20200419: Eselect module for management of multiple Rust versions
 app-eselect/eselect-scala 0.1.1: Manages multiple Scala versions
-app-eselect/eselect-sh 0.4-r2 0.4.1: Manages the /bin/sh (POSIX shell) symlink
+app-eselect/eselect-sh 0.4.1: Manages the /bin/sh (POSIX shell) symlink
 app-eselect/eselect-sndpeek 1.0.1: Manages the /usr/bin/sndpeek symlink
 app-eselect/eselect-timezone 0.2: Manages timezone selection
 app-eselect/eselect-timidity 20110513: Manages configuration of TiMidity++ patchsets
@@ -6057,7 +6057,7 @@ dev-perl/Digest-MD4 1.900.0-r1 1.900.0-r2: MD4 message digest algorithm
 dev-perl/Digest-MD5-File 0.80.0-r1 0.80.0-r2: Perl extension for getting MD5 sums for files and urls
 dev-perl/Digest-Nilsimsa 0.60.0-r2 0.60.0-r3: Perl version of Nilsimsa code
 dev-perl/Digest-Perl-MD5 1.900.0 1.900.0-r1: Pure perl implementation of MD5
-dev-perl/Digest-SHA1 2.130.0-r1: NIST SHA message digest algorithm
+dev-perl/Digest-SHA1 2.130.0-r1 2.130.0-r2: NIST SHA message digest algorithm
 dev-perl/Dist-CheckConflicts 0.110.0: Declare version conflicts for your dist
 dev-perl/Dist-Metadata 0.927.0: Information about a perl module distribution
 dev-perl/Dist-Milla 1.0.20: Distribution builder, Opinionated but Unobtrusive
@@ -8007,7 +8007,7 @@ dev-python/ipynb 0.5.1: Package/Module importer for importing code from Jupyter 
 dev-python/ipyparallel 6.2.3 6.3.0: Interactive Parallel Computing with IPython
 dev-python/ipython 7.5.0 7.16.1: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.2.0 0.2.0-r1: Vestigial utilities from IPython
-dev-python/ipywidgets 7.0.0 7.5.1: IPython HTML widgets for Jupyter
+dev-python/ipywidgets 7.5.1: IPython HTML widgets for Jupyter
 dev-python/irc 18.0.0-r1: IRC client framework written in Python
 dev-python/iso8601 0.1.12: Simple module to parse ISO 8601 dates
 dev-python/isodate 0.6.0-r1: ISO 8601 date/time/duration parser and formatter
@@ -8024,7 +8024,7 @@ dev-python/jaraco-logging 3.0.0-r1: Additional facilities to supplement Python's
 dev-python/jaraco-packaging 6.2-r1 8.1.0: Tools to supplement packaging Python releases
 dev-python/jaraco-stream 3.0.0: Routines for handling streaming data
 dev-python/jaraco-text 3.2.0: Text utilities used by other projects by developer jaraco
-dev-python/jdcal 1.4 1.4.1: Julian dates from proleptic Gregorian and Julian calendars
+dev-python/jdcal 1.4.1: Julian dates from proleptic Gregorian and Julian calendars
 dev-python/jedi 0.14.1 0.15.2 0.17.0 0.17.1-r1 0.17.2: Autocompletion library for Python
 dev-python/jeepney 0.4.3: Low-level, pure Python DBus protocol wrapper
 dev-python/jellyfish 0.8.2: Python module for doing approximate and phonetic matching of strings
@@ -8111,7 +8111,7 @@ dev-python/markdown2 2.3.9: Python Markdown language reimplementation
 dev-python/markups 3.0.0 3.0.0-r1: A wrapper around various text markups
 dev-python/markupsafe 1.1.1: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/marshmallow 3.5.1: A lightweight library for converting complex datatypes to and from native Python datatypes.
-dev-python/matplotlib 2.2.2-r1 2.2.4 3.1.2 3.2.1 3.2.2 3.3.0: Pure python plotting library with matlab like syntax
+dev-python/matplotlib 2.2.2-r1 2.2.4 3.2.2 3.3.0: Pure python plotting library with matlab like syntax
 dev-python/matplotlib-python2 2.2.5-r1: Pure python plotting library with matlab like syntax (py2 version)
 dev-python/matterhook 0.1-r1: Interact with Mattermost incoming webhooks easily
 dev-python/mccabe 0.6.1-r1: flake8 plugin: McCabe complexity checker
@@ -8142,7 +8142,7 @@ dev-python/mock 3.0.5-r1: Rolling backport of unittest.mock for all Pythons
 dev-python/mongoengine 0.10.6 0.20.0: A Python Object-Document-Mapper for working with MongoDB
 dev-python/mongomock 3.19.0: Library to help testing Python code that interacts with MongoDB via Pymongo
 dev-python/monotonic 1.5-r1: An implementation of time.monotonic() for Python 2 & < 3.3
-dev-python/more-itertools 5.0.0 8.3.0 8.4.0: More routines for operating on iterables, beyond itertools
+dev-python/more-itertools 5.0.0 8.4.0: More routines for operating on iterables, beyond itertools
 dev-python/moto 1.3.14-r3: Mock library for boto
 dev-python/moviepy 1.0.1-r1: Video editing with Python
 dev-python/mox 0.5.3-r1: A mock object framework for Python, loosely based on EasyMock for Java
@@ -8179,7 +8179,7 @@ dev-python/neovim-remote 2.2.1 9999: A tool that helps control neovim processes
 dev-python/netaddr 0.7.19: Network address representation and manipulation library
 dev-python/netcdf4-python 1.2.2-r1: Python/numpy interface to the netCDF C library
 dev-python/netifaces 0.10.9: Portable network interface information
-dev-python/networkx 2.4 2.4-r1: Python tools to manipulate graphs and complex networks
+dev-python/networkx 2.4-r1: Python tools to manipulate graphs and complex networks
 dev-python/neutron-lib 2.3.0: Neutron shared routines and utilities.
 dev-python/nltk 3.5: Natural Language Toolkit
 dev-python/nltk-data 20200312-r1: Data files for NLTK
@@ -8329,7 +8329,7 @@ dev-python/portend 2.6: TCP port monitoring utilities
 dev-python/poyo 0.5.0: A lightweight YAML Parser for Python
 dev-python/precis-i18n 1.0.1: Internationalized Usernames and Passwords
 dev-python/pretend 1.0.9: A library for stubbing in Python
-dev-python/pretty-yaml 15.8.2 20.4.0: PyYAML-based module to produce pretty and readable YAML-serialized data
+dev-python/pretty-yaml 20.4.0: PyYAML-based module to produce pretty and readable YAML-serialized data
 dev-python/prettytable 0.7.2-r1: Easily displaying tabular data in a visually appealing ASCII table format
 dev-python/priority 1.3.0: A pure-Python implementation of the HTTP/2 priority tree
 dev-python/process-tests 2.0.2 2.1.1: Tools for testing processes
@@ -8440,7 +8440,7 @@ dev-python/pylast 1.9.0 3.2.1: Python interface to last.fm and other api-compati
 dev-python/pylatex 1.3.3: A Python library for creating LaTeX files and snippets
 dev-python/pylibacl 0.5.3 0.5.4_p20191217: POSIX ACLs (Access Control Lists) for Python
 dev-python/pylibmc 1.6.1-r1: Libmemcached wrapper written as a Python extension
-dev-python/pylint 2.4.4-r1 2.5.3: Python code static checker
+dev-python/pylint 2.5.3: Python code static checker
 dev-python/pylru 1.2.0: A least recently used (LRU) cache for Python
 dev-python/pylzma 0.4.9: Python bindings for the LZMA compression library
 dev-python/pymad 0.10: Python wrapper for libmad MP3 decoding in python
@@ -8449,7 +8449,7 @@ dev-python/pymediainfo 4.2.1: A wrapper around the mediainfo library
 dev-python/pymetar 1.1: Downloads and decodes to the weather report for a given station ID
 dev-python/pymilter 1.0.4-r1: Python interface to sendmail milter API
 dev-python/pyminuit 1.2.1-r1: Minuit numerical function minimization in Python
-dev-python/pymongo 3.10.1: Python driver for MongoDB
+dev-python/pymongo 3.10.1 3.11.0: Python driver for MongoDB
 dev-python/pymountboot 0.2.2 0.2.3 9999: Python extension module to (re)mount /boot
 dev-python/pympler 0.6: Memory profiling for Python applications
 dev-python/pymssql 2.1.3: Simple MSSQL python extension module
@@ -8517,7 +8517,7 @@ dev-python/pytables 3.4.4 3.6.1: Hierarchical datasets for Python
 dev-python/pyte 0.8.0-r1: Simple VTXXX-compatible terminal emulator
 dev-python/pytest 3.10.1 4.5.0 4.6.11 5.4.3 6.0.1: Simple powerful testing with Python
 dev-python/pytest-aiohttp 0.3.0-r1: pytest plugin for aiohttp support
-dev-python/pytest-asyncio 0.12.0 0.14.0: Library for testing asyncio code with pytest
+dev-python/pytest-asyncio 0.14.0: Library for testing asyncio code with pytest
 dev-python/pytest-cache 1.0-r2 1.0-r3: mechanisms for caching across test runs
 dev-python/pytest-catchlog 1.2.2: py.test plugin to catch log messages, fork of pytest-capturelog
 dev-python/pytest-cov 2.8.1: py.test plugin for coverage reporting
@@ -8541,7 +8541,7 @@ dev-python/pytest-pylint 0.14.1: pytest plugin to check source code with pylint
 dev-python/pytest-qt 3.3.0: pytest plugin for PyQt4 or PyQt5 applications
 dev-python/pytest-rerunfailures 8.0: pytest plugin to re-run tests to eliminate flaky failures
 dev-python/pytest-salt 2019.2.1_p1 2020.1.27: PyTest Salt Plugin
-dev-python/pytest-services 2.0.1 2.1.0: Collection of fixtures and utility functions to run service processes for pytest
+dev-python/pytest-services 2.1.0: Collection of fixtures and utility functions to run service processes for pytest
 dev-python/pytest-shutil 1.7.0-r1: A goodie-bag of unix shell and environment tools for py.test
 dev-python/pytest-subtesthack 0.1.1: A hack for test fixtures, needed for hypothesis inside py.test
 dev-python/pytest-tempdir 2019.10.12: Pytest plugin to support for a predictable and repeatable temporary directory
@@ -8690,7 +8690,7 @@ dev-python/reno 2.7.0 2.11.3: Release notes manager, storing release notes in a 
 dev-python/reportlab 3.5.42: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.7-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.8: Sphinx extension: auto-generates API docs from Zope interfaces
-dev-python/requests 2.21.0-r1 2.23.0 2.24.0: HTTP library for human beings
+dev-python/requests 2.23.0 2.24.0: HTTP library for human beings
 dev-python/requests-cache 0.4.12 0.4.12-r1: Persistent cache for requests library
 dev-python/requests-credssp 1.1.1: HTTPS CredSSP authentication with the requests library
 dev-python/requests-file 1.4.3: File transport adapter for Requests
@@ -8979,7 +8979,7 @@ dev-python/wsaccel 0.6.2_p20170108: Accelerator for ws4py, autobahn and tornado
 dev-python/wsgiproxy2 0.4.6-r1: HTTP proxying tools for WSGI apps
 dev-python/wsproto 0.15.0: WebSockets state-machine based protocol implementation
 dev-python/wstools 0.4.8: WSDL parsing services package for Web Services for Python
-dev-python/wtforms 2.2.1 2.3.1: Flexible forms validation and rendering library for python web development
+dev-python/wtforms 2.2.1 2.3.1 2.3.3: Flexible forms validation and rendering library for python web development
 dev-python/wurlitzer 2.0.0 2.0.1: Capture C-level stdout/stderr in Python
 dev-python/www-authenticate 0.9.2: WWW-Authenticate header parser
 dev-python/wxpython 3.0.2.0 4.0.7: A blending of the wxWindows C++ class library with Python
@@ -9815,13 +9815,13 @@ dev-ruby/permutation 0.1.8-r1: Library performing operations with permutations o
 dev-ruby/pg 0.21.0 1.2.2: Ruby extension library providing an API to PostgreSQL
 dev-ruby/pg_array_parser 0.0.9-r2: Simple library to parse PostgreSQL arrays into a array of strings
 dev-ruby/pkg-config 1.2.8 1.4.1: A pkg-config implementation by Ruby
-dev-ruby/plist 3.4.0 3.5.0: A library to manipulate Property List files, also known as plists
+dev-ruby/plist 3.5.0: A library to manipulate Property List files, also known as plists
 dev-ruby/pluggaloid 1.2.0 1.3.1 1.4.0 1.4.1 1.5.0: Pluggaloid is extensible plugin system for mikutter
 dev-ruby/podcast 0.0.4-r2: A pure Ruby library for generating podcasts from mp3 files
 dev-ruby/polyglot 0.3.5: Polyglot provides support for fully-custom DSLs
-dev-ruby/posix-spawn 0.3.13-r1 0.3.14 0.3.15: Library that implements a subset of the Ruby 1.9 Process::spawn
+dev-ruby/posix-spawn 0.3.14 0.3.15: Library that implements a subset of the Ruby 1.9 Process::spawn
 dev-ruby/power_assert 1.1.5 1.1.6 1.1.7 1.2.0: Shows each value of variables and method calls in the expression
-dev-ruby/prawn 2.2.0 2.2.2: Fast, Nimble PDF Generation For Ruby
+dev-ruby/prawn 2.2.2: Fast, Nimble PDF Generation For Ruby
 dev-ruby/prawn-table 0.2.2-r1: Provides support for tables in Prawn
 dev-ruby/pry 0.13.1: Pry is a powerful alternative to the standard IRB shell for Ruby
 dev-ruby/public_suffix 3.1.1 4.0.3 4.0.4 4.0.5: Parse and decompose a domain name into top level domain, domain and subdomains
