@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure install postinst prepare test
+DEPEND=>=dev-libs/popt-1.5 selinux? ( sys-libs/libselinux ) acl? ( virtual/acl ) >=sys-apps/sed-4
+DESCRIPTION=Rotates, compresses, and mails system logs
+EAPI=7
+HOMEPAGE=https://github.com/logrotate/logrotate
+IUSE=acl +cron selinux
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/popt-1.5 selinux? ( sys-libs/libselinux ) acl? ( virtual/acl ) selinux? ( sec-policy/selinux-logrotate ) cron? ( virtual/cron )
+SLOT=0
+SRC_URI=https://github.com/logrotate/logrotate/releases/download/3.17.0/logrotate-3.17.0.tar.gz
+_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=394db8a52bdd60d8fb1010c46f530eab
