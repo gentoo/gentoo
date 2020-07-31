@@ -5774,7 +5774,7 @@ dev-perl/CPAN-Meta-Check 0.14.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.16: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.350.0: Inject modules into a CPAN::Mini mirror
 dev-perl/CPAN-Perl-Releases 3.760.0 5.202.3.200 5.202.4.280 5.202.6.200 5.202.7.170: Mapping Perl releases on CPAN to the location of the tarballs
-dev-perl/CPAN-Uploader 0.103.13 0.103.14: upload things to the CPAN
+dev-perl/CPAN-Uploader 0.103.14: upload things to the CPAN
 dev-perl/CQL-Parser 1.130.0-r1: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r2: Perl extension for minifying CSS
 dev-perl/CSS-Minifier-XS 0.90.0-r1 0.90.0-r2: XS based CSS minifier
@@ -5851,19 +5851,19 @@ dev-perl/Clone-PP 1.70.0: Recursively copy Perl datatypes
 dev-perl/Color-Calc 1.74.0: Simple calculations with RGB colors
 dev-perl/Color-Library 0.21.0-r1 0.21.0-r2: An easy-to-use and comprehensive named-color library
 dev-perl/Compress-Bzip2 2.260.0 2.270.0 2.280.0: Interface to Bzip2 compression library
-dev-perl/Compress-LZF 3.800.0 3.800.0-r1: extremely light-weight Lempel-Ziv-Free compression
+dev-perl/Compress-LZF 3.800.0-r1: extremely light-weight Lempel-Ziv-Free compression
 dev-perl/Conf-Libconfig 0.100.0 0.100.0-r1: Perl extension for libconfig
 dev-perl/Config-Any 0.320.0: Load configuration from different file formats, transparently
 dev-perl/Config-ApacheFormat 1.200.0-r1 1.200.0-r2: use Apache format config files
-dev-perl/Config-Auto 0.440.0 0.440.0-r1: Magical config file parser
+dev-perl/Config-Auto 0.440.0-r1: Magical config file parser
 dev-perl/Config-AutoConf 0.315.0 0.318.0: A module to implement some of AutoConf macros in pure perl
 dev-perl/Config-Crontab 1.450.0: Read/Write Vixie compatible crontab(5) files
 dev-perl/Config-General 2.630.0: Config file parser module
 dev-perl/Config-Grammar 1.120.0 1.130.0: A grammar-based, user-friendly config parser
 dev-perl/Config-INI 0.25.0: simple .ini-file format
 dev-perl/Config-IniFiles 2.940.0 3.0.3: A module for reading .ini-style configuration files
-dev-perl/Config-JSON 1.520.200 1.520.200-r1: A JSON based config file system
-dev-perl/Config-MVP 2.200.10 2.200.11: multivalue-property package-oriented configuration
+dev-perl/Config-JSON 1.520.200-r1: A JSON based config file system
+dev-perl/Config-MVP 2.200.11: multivalue-property package-oriented configuration
 dev-perl/Config-MVP-Reader-INI 2.101.463: an MVP config reader for .ini files
 dev-perl/Config-MVP-Slicer 0.303.0: Extract embedded plugin config from parent config
 dev-perl/Config-Properties 1.800.0 1.800.0-r1: Configuration using Java style properties
@@ -5871,7 +5871,7 @@ dev-perl/Config-Simple 4.590.0-r1 4.590.0-r2: Simple configuration file class
 dev-perl/Config-Tiny 2.230.0 2.240.0: Read/Write .ini style files with as little code as possible
 dev-perl/ConfigReader 0.500.0-r2: Read directives from a configuration file
 dev-perl/Const-Fast 0.14.0-r1 0.14.0-r2: Facility for creating read-only scalars, arrays, and hashes
-dev-perl/Context-Preserve 0.20.0 0.30.0: Return chained, modified values from subs, without losing context
+dev-perl/Context-Preserve 0.30.0: Return chained, modified values from subs, without losing context
 dev-perl/Contextual-Return 0.4.14: Create context-sensitive return values
 dev-perl/Convert-ASCII-Armour 1.400.0-r1 1.400.0-r2: Convert binary octets into ASCII armoured messages
 dev-perl/Convert-ASN1 0.270.0-r1: Standard en/decode of ASN.1 structures
@@ -17519,7 +17519,7 @@ virtual/cblas 1.0 3.6 3.7 3.8: Virtual for BLAS C implementation
 virtual/cdrtools 0: Virtual for command-line recorders cdrtools and cdrkit
 virtual/checkpassword 0: Virtual for checkpassword compatible applications
 virtual/commonlisp 0: Virtual for Common Lisp
-virtual/cron 0-r1: Virtual for cron
+virtual/cron 0-r2: Virtual for cron
 virtual/daemontools 0: Virtual for daemontools
 virtual/dev-manager 0-r2: Virtual for the device filesystem manager
 virtual/editor 0-r3: Virtual for editor
