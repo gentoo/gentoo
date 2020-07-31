@@ -11,7 +11,7 @@ MY_COMMIT="6445a67395912a5432014ec824ce4bf8fd13e22d"
 
 DESCRIPTION="Pagination support for flask"
 HOMEPAGE="https://flask-paginate.readthedocs.io"
-SRC_URI="https://github.com/lixxu/flask-paginate/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lixxu/flask-paginate/archive/${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -24,8 +24,6 @@ BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "
-
-S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 python_test() {
 	pytest -vv tests/tests.py || die "tests failed with ${EPYTHON}"
