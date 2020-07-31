@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Pagination support for flask"
 HOMEPAGE="https://flask-paginate.readthedocs.io"
-SRC_URI="https://github.com/lixxu/flask-paginate/archive/${PV}.tar.gz"
+SRC_URI="https://github.com/lixxu/flask-paginate/archive/${PV}.tar.gz -> ${P}-${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
