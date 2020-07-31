@@ -30,9 +30,6 @@ DESCRIPTION="Berkeley Internet Name Domain - Name Server"
 HOMEPAGE="https://www.isc.org/software/bind"
 SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.xz
 	doc? ( mirror://gentoo/dyndns-samples.tbz2 )"
-#	sdb-ldap? (
-#		http://ftp.disconnected-by-peer.at/pub/bind-sdb-ldap-${SDB_LDAP_VER}.patch.bz2
-#	)"
 
 LICENSE="Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0"
 SLOT="0"
@@ -97,27 +94,6 @@ src_prepare() {
 
 	export LDFLAGS="${LDFLAGS} -L${EPREFIX}/usr/$(get_libdir) -ldl"
 
-	# Adjusting PATHs in manpages
-	for i in bin/{named/named.8,check/named-checkconf.8,rndc/rndc.8} ; do
-		sed -i \
-			-e 's:/etc/named.conf:/etc/bind/named.conf:g' \
-			-e 's:/etc/rndc.conf:/etc/bind/rndc.conf:g' \
-			-e 's:/etc/rndc.key:/etc/bind/rndc.key:g' \
-			"${i}" || die "sed failed, ${i} doesn't exist"
-	done
-
-#	if use dlz; then
-#		# sdb-ldap patch as per  bug #160567
-#		# Upstream URL: http://bind9-ldap.bayour.com/
-#		# New patch take from bug 302735
-#		if use sdb-ldap; then
-#			epatch "${WORKDIR}"/${PN}-sdb-ldap-${SDB_LDAP_VER}.patch
-#			cp -fp contrib/sdb/ldap/ldapdb.[ch] bin/named/
-#			cp -fp contrib/sdb/ldap/{ldap2zone.1,ldap2zone.c} bin/tools/
-#			cp -fp contrib/sdb/ldap/{zone2ldap.1,zone2ldap.c} bin/tools/
-#		fi
-#	fi
-
 	# should be installed by bind-tools
 	sed -i -r -e "s:(nsupdate|dig|delv) ::g" bin/Makefile.in || die
 
@@ -132,6 +108,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		AR="$(type -P $(tc-getAR))"
 		--prefix="${EPREFIX}"/usr
 		--sysconfdir=/etc/bind
 		--localstatedir=/var
@@ -161,8 +138,8 @@ src_configure() {
 		$(use_with zlib)
 	)
 
-	use geoip && myeconfargs+=( --with-geoip )
-	use geoip2 && myeconfargs+=( --with-geoip2 )
+	use geoip && myeconfargs+=( --enable-geoip )
+	use geoip2 && myeconfargs+=( --with-maxminddb )
 
 	# bug #158664
 #	gcc-specs-ssp && replace-flags -O[23s] -O
@@ -183,8 +160,6 @@ src_install() {
 	dodoc CHANGES README
 
 	if use doc; then
-		dodoc doc/arm/Bv9ARM.pdf
-
 		docinto misc
 		dodoc -r doc/misc/
 
@@ -217,7 +192,7 @@ src_install() {
 	newenvd "${FILESDIR}"/10bind.env 10bind
 
 	# Let's get rid of those tools and their manpages since they're provided by bind-tools
-	rm -f "${ED}"/usr/share/man/man1/{dig,host,nslookup}.1* || die
+	rm -f "${ED}"/usr/share/man/man1/{dig,host,nslookup,delv,nsupdate}.1* || die
 	rm -f "${ED}"/usr/share/man/man8/nsupdate.8* || die
 	rm -f "${ED}"/usr/bin/{dig,host,nslookup,nsupdate} || die
 	rm -f "${ED}"/usr/sbin/{dig,host,nslookup,nsupdate} || die
