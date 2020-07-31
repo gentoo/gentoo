@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-65">
+  <title>libsndfile: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libsndfile, the worst
+    of which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">libsndfile</product>
+  <announced>2020-07-31</announced>
+  <revised count="1">2020-07-31</revised>
+  <bug>631674</bug>
+  <bug>671834</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libsndfile" auto="yes" arch="*">
+      <unaffected range="ge">1.0.29_pre2_p20191024</unaffected>
+      <vulnerable range="lt">1.0.29_pre2_p20191024</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libsndfile is a C library for reading and writing files containing
+      sampled sound.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libsndfile. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libsndfile users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=media-libs/libsndfile-1.0.29_pre2_p20191024"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14245">CVE-2017-14245</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14246">CVE-2017-14246</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-3832">CVE-2019-3832</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-16T01:07:57Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-31T19:55:37Z">sam_c</metadata>
+</glsa>
