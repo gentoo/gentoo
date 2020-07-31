@@ -117,20 +117,7 @@ STDCXX_INCDIR=${TOOLCHAIN_STDCXX_INCDIR:-${LIBPATH}/include/g++-v${GCC_BRANCH_VE
 
 #---->> LICENSE+SLOT+IUSE logic <<----
 
-if tc_version_is_at_least 4.6 ; then
-	LICENSE="GPL-3+ LGPL-3+ || ( GPL-3+ libgcc libstdc++ gcc-runtime-library-exception-3.1 ) FDL-1.3+"
-elif tc_version_is_at_least 4.4 ; then
-	LICENSE="GPL-3+ LGPL-3+ || ( GPL-3+ libgcc libstdc++ gcc-runtime-library-exception-3.1 ) FDL-1.2+"
-elif tc_version_is_at_least 4.3 ; then
-	LICENSE="GPL-3+ LGPL-3+ || ( GPL-3+ libgcc libstdc++ ) FDL-1.2+"
-elif tc_version_is_at_least 4.2 ; then
-	LICENSE="GPL-3+ LGPL-2.1+ || ( GPL-3+ libgcc libstdc++ ) FDL-1.2+"
-elif tc_version_is_at_least 3.3 ; then
-	LICENSE="GPL-2+ LGPL-2.1+ FDL-1.2+"
-else
-	LICENSE="GPL-2+ LGPL-2.1+ FDL-1.1+"
-fi
-
+LICENSE="GPL-3+ LGPL-3+ || ( GPL-3+ libgcc libstdc++ gcc-runtime-library-exception-3.1 ) FDL-1.3+"
 IUSE="test vanilla +nls"
 RESTRICT="!test? ( test )"
 
