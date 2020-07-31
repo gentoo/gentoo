@@ -5074,7 +5074,7 @@ dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9-r1: Tool Command Language
 dev-lang/teyjus 2.1 2.1-r1: Higher-order logic programming language Lambda Prolog
 dev-lang/tk 8.5.17-r1 8.6.8 8.6.9 8.6.9.1: Tk Widget Set
 dev-lang/tuprolog 2.9.2 3.0.1 3.1.0 3.1.0-r1 3.2.0: tuProlog is a light-weight Prolog for Internet applications and infrastructures
-dev-lang/vala 0.36.20 0.40.20 0.40.23 0.44.11 0.46.7 0.46.10 0.46.11 0.48.6 0.48.7: Compiler for the GObject type system
+dev-lang/vala 0.36.20 0.40.20 0.40.23 0.44.11 0.46.7 0.46.10 0.46.11 0.46.12 0.48.6 0.48.7 0.48.8: Compiler for the GObject type system
 dev-lang/whitespace 0.4: Whitespace, an esoteric programming language
 dev-lang/xsb 3.6.0 3.6.0-r1 3.7.0-r1 3.8.0: XSB is a logic programming and deductive database system
 dev-lang/yap 6.3.3-r1: YAP is a high-performance Prolog compiler
@@ -5573,7 +5573,7 @@ dev-libs/ustr 1.0.4-r5 1.0.4-r7 1.0.4-r8: Low-overhead managed string library fo
 dev-libs/utfcpp 3.1 9999: UTF-8 C++ library
 dev-libs/uthash 2.0.2: An easy-to-use hash implementation for C programmers
 dev-libs/uulib 0.5.20-r1: Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
-dev-libs/vala-common 0.46.7 0.46.10 0.48.6 0.48.7: Build infrastructure for packages that use Vala
+dev-libs/vala-common 0.46.7 0.46.10 0.48.6 0.48.7 0.48.8: Build infrastructure for packages that use Vala
 dev-libs/vc 1.3.0 1.3.3 1.4.1: SIMD Vector Class Library for C++
 dev-libs/voikko-fi 2.3: Finnish dictionary for libvoikko based spell checkers (vvfst format)
 dev-libs/volume_key 0.3.11 0.3.12: Library for manipulating and storing storage volume encryption keys
