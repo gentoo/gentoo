@@ -248,6 +248,11 @@ dev-perl/Data-Diver
 ~virtual/perl-Archive-Tar-2.360.0
 ~virtual/perl-autodie-2.320.0
 ~virtual/perl-Compress-Raw-Bzip2-2.93.0
+~virtual/perl-Compress-Raw-Zlib-2.93.0
+~virtual/perl-CPAN-2.270.0
+~virtual/perl-DB_File-1.853.0
+~virtual/perl-Devel-PPPort-3.570.0
+~virtual/perl-Digest-MD5-2.550.100_rc
 
 # Christoph Junghans <junghans@gentoo.org> (2020-07-14)
 # Unmaintained upstream and does not support systemd or firewalld.
