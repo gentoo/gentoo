@@ -173,7 +173,6 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 3.3 && IUSE+=" pgo"
 	tc_version_is_at_least 4.0 &&
 		IUSE+=" objc-gc" TC_FEATURES+=(objc-gc)
-	tc_version_is_between 4.0 4.9 && IUSE+=" mudflap"
 	tc_version_is_at_least 4.1 && IUSE+=" libssp objc++"
 	tc_version_is_at_least 4.2 && IUSE+=" +openmp"
 	tc_version_is_at_least 4.3 && IUSE+=" fixed-point"
@@ -1244,12 +1243,6 @@ toolchain_src_configure() {
 	fi
 
 	if tc_version_is_at_least 4.0 ; then
-		if in_iuse mudflap ; then
-			confgcc+=( $(use_enable mudflap libmudflap) )
-		else
-			confgcc+=( --disable-libmudflap )
-		fi
-
 		if use_if_iuse libssp ; then
 			confgcc+=( --enable-libssp )
 		else
