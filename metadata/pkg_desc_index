@@ -7644,7 +7644,7 @@ dev-python/bitarray 0.8.3: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.6 3.1.7: A pure Python module for creation and analysis of binary data
 dev-python/black 19.10_beta0: The uncompromising Python code formatter
 dev-python/bleach 3.1.5: an easy whitelist-based HTML-sanitizing tool
-dev-python/blessed 1.17.8: Library for making terminal apps using colors, keyboard input and positioning
+dev-python/blessed 1.17.8 1.17.9: Library for making terminal apps using colors, keyboard input and positioning
 dev-python/blessings 1.7-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.4-r1: Fast, simple object-to-object and broadcast signaling
 dev-python/blockdiag 1.5.4: Generate block-diagram image from text
@@ -9302,7 +9302,7 @@ dev-ros/rosdiagnostic 1.9.4 9999: Command to print aggregated diagnostic content
 dev-ros/rosgraph 1.15.7 1.15.8 9999: Prints information about the ROS Computation Graph
 dev-ros/rosgraph_msgs 1.11.3 9999: Messages relating to ROS comm
 dev-ros/roslang 1.15.5 1.15.6 9999: Common package for all ROS client libraries
-dev-ros/roslaunch 1.15.7 1.15.8 9999: Tool for easily launching multiple ROS nodes
+dev-ros/roslaunch 1.15.8 9999: Tool for easily launching multiple ROS nodes
 dev-ros/roslib 1.15.6 9999: Base dependencies and support libraries for ROS
 dev-ros/roslint 0.12.0 9999: Static checking of Python or C++ source code for errors and standards compliance
 dev-ros/roslisp 1.9.24 9999: Lisp client library for ROS
@@ -9310,7 +9310,7 @@ dev-ros/roslz4 1.15.8 9999: Python and C++ implementation of the LZ4 streaming f
 dev-ros/rosmake 1.15.5 1.15.6 9999: ROS dependency aware build tool
 dev-ros/rosmaster 1.15.7 1.15.8 9999: ROS Master implementation
 dev-ros/rosmsg 1.15.7 1.15.8 9999: Command-line tools for displaying information about message and services
-dev-ros/rosnode 1.15.7 1.15.8 9999: Command-line tool for displaying debug information about ROS nodes
+dev-ros/rosnode 1.15.8 9999: Command-line tool for displaying debug information about ROS nodes
 dev-ros/rosout 1.15.7 1.15.8 9999: System-wide logging mechanism for messages sent to the /rosout topic
 dev-ros/rospack 2.6.2 9999: Retrieves information about ROS packages available on the filesystem
 dev-ros/rosparam 1.15.7 1.15.8 9999: Command-line tool for getting and setting ROS Parameters on the parameter server
