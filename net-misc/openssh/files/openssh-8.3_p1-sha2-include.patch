@@ -1,0 +1,13 @@
+diff --git a/Makefile.in b/Makefile.in
+index c9e4294d..2dbfac24 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -44,7 +44,7 @@ CC=@CC@
+ LD=@LD@
+ CFLAGS=@CFLAGS@
+ CFLAGS_NOPIE=@CFLAGS_NOPIE@
+-CPPFLAGS=-I. -I$(srcdir) @CPPFLAGS@ $(PATHS) @DEFS@
++CPPFLAGS=-I. -I$(srcdir) -I$(srcdir)/openbsd-compat @CPPFLAGS@ $(PATHS) @DEFS@
+ PICFLAG=@PICFLAG@
+ LIBS=@LIBS@
+ K5LIBS=@K5LIBS@
