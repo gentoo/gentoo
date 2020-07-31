@@ -491,13 +491,6 @@ toolchain_src_prepare() {
 		fi
 	fi
 
-	# disable --as-needed from being compiled into gcc specs
-	# natively when using a gcc version < 3.4.4
-	# http://gcc.gnu.org/PR14992
-	if ! tc_version_is_at_least 3.4.4 ; then
-		sed -i -e s/HAVE_LD_AS_NEEDED/USE_LD_AS_NEEDED/g "${S}"/gcc/config.in
-	fi
-
 	# In gcc 3.3.x and 3.4.x, rename the java bins to gcc-specific names
 	# in line with gcc-4.
 	if tc_version_is_between 3.3 4.0 ; then
