@@ -4674,8 +4674,8 @@ dev-java/offo-hyphenation 2.0: Hyphenation patterns for Apache Fop
 dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of objects
 dev-java/okio 1.11.0: A modern I/O API for Java
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
-dev-java/openjdk 8.252_p09 8.262_p10 11.0.7_p10 11.0.8_p10: Open source implementation of the Java programming language
-dev-java/openjdk-bin 8.252_p09 8.262_p10 11.0.7_p10-r1 11.0.8_p10: Prebuilt Java JDK binaries provided by AdoptOpenJDK
+dev-java/openjdk 8.252_p09 8.262_p10 8.265_p01 11.0.7_p10 11.0.8_p10: Open source implementation of the Java programming language
+dev-java/openjdk-bin 8.252_p09 8.262_p10 8.265_p01 11.0.7_p10-r1 11.0.8_p10: Prebuilt Java JDK binaries provided by AdoptOpenJDK
 dev-java/openjdk-jre-bin 8.252_p09 8.262_p10 11.0.7_p10-r1 11.0.8_p10-r1: Prebuilt Java JRE binaries provided by AdoptOpenJDK
 dev-java/openjfx 11.0.8_p2: Java OpenJFX client application platform
 dev-java/oracle-javamail 1.5.2 1.5.5 1.5.6: A Java-based framework to build multiplatform mail and messaging applications
@@ -4888,8 +4888,8 @@ dev-lang/qu-prolog 10.4 10.5: Extended Prolog supporting quantifiers, object-var
 dev-lang/rakudo 2019.03 2019.11 2020.05.1 2020.06 9999: A compiler for the Perl 6 programming language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/ruby 2.4.10 2.5.8 2.5.8-r1 2.6.6 2.6.6-r1 2.6.6-r2 2.7.1 2.7.1-r1 2.7.1-r2: An object-oriented scripting language
-dev-lang/rust 1.41.1 1.42.0 1.43.1 1.44.1 1.45.0: Systems programming language from Mozilla
-dev-lang/rust-bin 1.41.1 1.42.0 1.43.1 1.44.1 1.45.0: Systems programming language from Mozilla
+dev-lang/rust 1.41.1 1.42.0 1.43.1 1.44.1 1.45.0 1.45.1: Systems programming language from Mozilla
+dev-lang/rust-bin 1.41.1 1.42.0 1.43.1 1.44.1 1.45.0 1.45.1: Systems programming language from Mozilla
 dev-lang/sassc 3.6.0: A libsass command line driver
 dev-lang/scala 2.12.4 2.12.10: The Scala Programming Language
 dev-lang/scala-bin 2.13.1: The Scala Programming Language
@@ -17694,7 +17694,7 @@ virtual/qmail 1.03: Virtual for qmail
 virtual/resolvconf 1: Virtual to select between different resolvconf providers
 virtual/ruby-ssl 11: Virtual ebuild for the Ruby OpenSSL bindings
 virtual/rubygems 15 16: Virtual ebuild for rubygems
-virtual/rust 1.41.1 1.42.0 1.43.1 1.44.1 1.45.0: Virtual for Rust language compiler
+virtual/rust 1.41.1 1.42.0 1.43.1 1.44.1 1.45.0 1.45.1: Virtual for Rust language compiler
 virtual/service-manager 0 1: Virtual for various service managers
 virtual/skkserv 0: Virtual for SKK server
 virtual/ssh 0: Virtual for SSH client and server
