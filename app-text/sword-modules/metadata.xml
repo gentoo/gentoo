@@ -5,8 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
-	<longdescription>
-These are some of the more popular modules for the SWORD Project.
-They provide a large number of tools for personal study.
-	</longdescription>
+	<use>
+		<flag name="esoteric">Install modules with no linguistic content, in unknown languages etc.</flag>
+	</use>
 </pkgmetadata>
