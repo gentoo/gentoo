@@ -6053,7 +6053,7 @@ dev-perl/Digest-GOST 0.60.0-r1 0.60.0-r2: Perl interface to the GOST R 34.11-94 
 dev-perl/Digest-HMAC 1.30.0-r1 1.30.0-r2: Keyed Hashing for Message Authentication
 dev-perl/Digest-JHash 0.100.0: Perl extension for 32 bit Jenkins Hashing Algorithm
 dev-perl/Digest-MD2 2.40.0 2.40.0-r1: Perl interface to the MD2 Algorithm
-dev-perl/Digest-MD4 1.900.0-r1: MD4 message digest algorithm
+dev-perl/Digest-MD4 1.900.0-r1 1.900.0-r2: MD4 message digest algorithm
 dev-perl/Digest-MD5-File 0.80.0-r1: Perl extension for getting MD5 sums for files and urls
 dev-perl/Digest-Nilsimsa 0.60.0-r2: Perl version of Nilsimsa code
 dev-perl/Digest-Perl-MD5 1.900.0: Pure perl implementation of MD5
@@ -7547,7 +7547,7 @@ dev-python/PyICU 2.4.3 2.5: Python bindings for dev-libs/icu
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
 dev-python/PyQt5 5.14.2 5.15.0: Python bindings for the Qt framework
 dev-python/PyQt5-sip 4.19.22 4.19.23: Private sip module for PyQt5
-dev-python/PyQtWebEngine 5.14.0 5.15.0: Python bindings for QtWebEngine
+dev-python/PyQtWebEngine 5.14.0 5.15.1_pre2006110847: Python bindings for QtWebEngine
 dev-python/PyRSS2Gen 1.1: RSS feed generator written in Python
 dev-python/PySDL2 0.9.7: Python (ctypes) bindings for SDL2 libraries
 dev-python/PySensors 0.0.4: Python bindings to libsensors (via ctypes)
