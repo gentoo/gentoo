@@ -5144,7 +5144,7 @@ dev-libs/libgpg-error 1.36 1.37 1.38: Contains error handling functions used by 
 dev-libs/libgpiod 1.1.1 1.4.1: C library and tools for interacting with the linux GPIO character device
 dev-libs/libgpuarray 0.6.0 0.6.7: Library to manipulate tensors on the GPU
 dev-libs/libgudev 233-r1: GObject bindings for libudev
-dev-libs/libgusb 0.3.3 0.3.4: GObject wrapper for libusb
+dev-libs/libgusb 0.3.3 0.3.4 0.3.5: GObject wrapper for libusb
 dev-libs/libgweather 3.34.0 3.36.1: Location and timezone database and weather-lookup library
 dev-libs/libhid 0.2.16-r4: Provides a generic and flexible way to access and interact with USB HID devices
 dev-libs/libical 3.0.8: An implementation of basic iCAL protocols
