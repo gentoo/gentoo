@@ -15,9 +15,15 @@ IUSE=""
 
 RDEPEND="dev-ros/xacro[${PYTHON_SINGLE_USEDEP}]"
 DEPEND="${RDEPEND}
+	test? (
+		dev-libs/urdfdom
+		dev-cpp/gtest
+		dev-ros/rosbash
+	)"
+BDEPEND="
 	dev-ros/convex_decomposition
 	dev-ros/ivcon
-	test? ( dev-libs/urdfdom dev-cpp/gtest )"
+"
 
 src_test() {
 	# Needed for tests to find internal launch file
