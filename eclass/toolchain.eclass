@@ -491,12 +491,6 @@ toolchain_src_prepare() {
 		fi
 	fi
 
-	# In gcc 3.3.x and 3.4.x, rename the java bins to gcc-specific names
-	# in line with gcc-4.
-	if tc_version_is_between 3.3 4.0 ; then
-		do_gcc_rename_java_bins
-	fi
-
 	# Prevent libffi from being installed
 	if tc_version_is_between 3.0 4.8 ; then
 		sed -i -e 's/\(install.*:\) install-.*recursive/\1/' "${S}"/libffi/Makefile.in || die
@@ -709,41 +703,6 @@ gcc_version_patch() {
 		gcc_sed+=( -e "/const char version_string\[\] = /s:= \".*\":= \"${version_string}\":" )
 	fi
 	sed -i "${gcc_sed[@]}" "${S}"/gcc/version.c || die
-}
-
-do_gcc_rename_java_bins() {
-	# bug #139918 - conflict between gcc and java-config-2 for ownership of
-	# /usr/bin/rmi{c,registry}.	 Done with mv & sed rather than a patch
-	# because patches would be large (thanks to the rename of man files),
-	# and it's clear from the sed invocations that all that changes is the
-	# rmi{c,registry} names to grmi{c,registry} names.
-	# Kevin F. Quinn 2006-07-12
-	einfo "Renaming jdk executables rmic and rmiregistry to grmic and grmiregistry."
-	# 1) Move the man files if present (missing prior to gcc-3.4)
-	for manfile in rmic rmiregistry ; do
-		[[ -f ${S}/gcc/doc/${manfile}.1 ]] || continue
-		mv "${S}"/gcc/doc/${manfile}.1 "${S}"/gcc/doc/g${manfile}.1
-	done
-	# 2) Fixup references in the docs if present (mission prior to gcc-3.4)
-	for jfile in gcc/doc/gcj.info gcc/doc/grmic.1 gcc/doc/grmiregistry.1 gcc/java/gcj.texi ; do
-		[[ -f ${S}/${jfile} ]] || continue
-		sed -i -e 's:rmiregistry:grmiregistry:g' "${S}"/${jfile} ||
-			die "Failed to fixup file ${jfile} for rename to grmiregistry"
-		sed -i -e 's:rmic:grmic:g' "${S}"/${jfile} ||
-			die "Failed to fixup file ${jfile} for rename to grmic"
-	done
-	# 3) Fixup Makefiles to build the changed executable names
-	#	 These are present in all 3.x versions, and are the important bit
-	#	 to get gcc to build with the new names.
-	for jfile in libjava/Makefile.am libjava/Makefile.in gcc/java/Make-lang.in ; do
-		sed -i -e 's:rmiregistry:grmiregistry:g' "${S}"/${jfile} ||
-			die "Failed to fixup file ${jfile} for rename to grmiregistry"
-		# Careful with rmic on these files; it's also the name of a directory
-		# which should be left unchanged.  Replace occurrences of 'rmic$',
-		# 'rmic_' and 'rmic '.
-		sed -i -e 's:rmic\([$_ ]\):grmic\1:g' "${S}"/${jfile} ||
-			die "Failed to fixup file ${jfile} for rename to grmic"
-	done
 }
 
 #---->> src_configure <<----
