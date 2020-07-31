@@ -1,0 +1,15 @@
+BDEPEND=dev-perl/Dist-Zilla dev-perl/Moose >=dev-perl/Path-Tiny-0.70.0 dev-perl/namespace-autoclean virtual/perl-ExtUtils-MakeMaker >=dev-perl/Module-Build-Tiny-0.34.0 test? ( virtual/perl-File-Spec virtual/perl-Module-Metadata dev-perl/Test-Deep dev-perl/Test-Fatal >=virtual/perl-Test-Simple-0.880.0 virtual/perl-if ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/Module-Build-Tiny dev-lang/perl
+DESCRIPTION=Copy files from a release (for SCM inclusion, etc.)
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/Dist-Zilla-Plugin-CopyFilesFromRelease
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Dist-Zilla dev-perl/Moose >=dev-perl/Path-Tiny-0.70.0 dev-perl/namespace-autoclean dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/Dist-Zilla-Plugin-CopyFilesFromRelease-0.007.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=0d58b6ed5793c9ffe2243db7802205c8

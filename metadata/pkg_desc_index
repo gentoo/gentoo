@@ -6069,7 +6069,7 @@ dev-perl/Dist-Zilla-Plugin-CheckExtraTests 0.29.0-r1: check xt tests before rele
 dev-perl/Dist-Zilla-Plugin-Config-Git 0.920.0 0.920.0-r1: Plugin configuration containing settings for a Git repo
 dev-perl/Dist-Zilla-Plugin-ContributorsFile 0.3.0: add a file listing all contributors
 dev-perl/Dist-Zilla-Plugin-CopyFilesFromBuild 0.170.880: Copy (or move) specific files after building (for SCM inclusion, etc.)
-dev-perl/Dist-Zilla-Plugin-CopyFilesFromRelease 0.6.0: Copy files from a release (for SCM inclusion, etc.)
+dev-perl/Dist-Zilla-Plugin-CopyFilesFromRelease 0.6.0 0.7.0: Copy files from a release (for SCM inclusion, etc.)
 dev-perl/Dist-Zilla-Plugin-Git 2.42.0-r1: Update your git repository after release
 dev-perl/Dist-Zilla-Plugin-Git-Contributors 0.35.0: Add contributor names from git to your distribution
 dev-perl/Dist-Zilla-Plugin-GithubMeta 0.580.0: Automatically include GitHub meta information in META.yml
