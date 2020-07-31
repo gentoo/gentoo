@@ -25,5 +25,11 @@ RDEPEND="
 	dev-ros/roscpp
 	dev-ros/settlerlib
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-ros/actionlib_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	test? (
+		dev-cpp/gtest
+	)
+"
 PATCHES=( "${FILESDIR}/gcc6.patch" "${FILESDIR}/boost170.patch" "${FILESDIR}/ocv4.patch" )
