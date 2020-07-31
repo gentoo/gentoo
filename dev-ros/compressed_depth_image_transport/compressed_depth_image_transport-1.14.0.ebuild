@@ -21,4 +21,8 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-libs/console_bridge:=
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? (
+		dev-cpp/gtest
+	)
+"
