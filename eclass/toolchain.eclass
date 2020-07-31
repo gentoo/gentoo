@@ -465,14 +465,6 @@ toolchain_src_prepare() {
 		make_gcc_hard
 	fi
 
-	# install the libstdc++ python into the right location
-	# http://gcc.gnu.org/PR51368
-	if tc_version_is_between 4.5 4.7 ; then
-		sed -i \
-			'/^pythondir =/s:=.*:= $(datadir)/python:' \
-			"${S}"/libstdc++-v3/python/Makefile.in || die
-	fi
-
 	# make sure the pkg config files install into multilib dirs.
 	# since we configure with just one --libdir, we can't use that
 	# (as gcc itself takes care of building multilibs).  #435728
