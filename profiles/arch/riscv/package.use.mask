@@ -4,7 +4,7 @@
 # Sam James <sam@gentoo.org> (2020-07-31)
 # Large amount of missing keywords for cmake and friends
 # bug #720296, bug #724358
-dev-util/cmake doc
+dev-util/cmake doc test
 dev-libs/jsoncpp doc
 
 # Lars Wendler <polynomial-c@gentoo.org> (2020-06-25)
