@@ -5329,7 +5329,7 @@ dev-libs/pcl 1.12-r1: Portable Coroutine Library
 dev-libs/pegtl 2.8.3: Header-only library for creating parsers according to Parsing Expression Grammar
 dev-libs/pigpio 76 77: A library for the Raspberry which allows control of the GPIOs
 dev-libs/pkcs11-helper 1.25.1: PKCS#11 helper library
-dev-libs/plasma-wayland-protocols 1.0 1.1.0: Plasma Specific Protocols for Wayland
+dev-libs/plasma-wayland-protocols 1.0 1.1.1: Plasma Specific Protocols for Wayland
 dev-libs/poco 1.9.0-r2: C++ libraries for building network-based applications
 dev-libs/popt 1.16-r2 1.18: Parse Options - Command line parser
 dev-libs/ppl 1.2-r3: The Parma Polyhedra Library for numerical analysis of complex systems
@@ -12801,7 +12801,7 @@ media-libs/libXcm 0.5.4 9999: Reference implementation of the X Color Management
 media-libs/libaacplus 2.0.2-r2 2.0.2-r3: HE-AAC+ v2 library, based on the reference implementation
 media-libs/libaacs 0.9.0 0.10.0: Open implementation of the Advanced Access Content System (AACS) specification
 media-libs/libafterimage 1.20-r2 1.20-r3: Afterstep's standalone generic image manipulation library
-media-libs/libao 1.2.2 1.2.2-r1: The Audio Output library
+media-libs/libao 1.2.2-r1: The Audio Output library
 media-libs/libaom 1.0.0-r2 2.0.0 9999: Alliance for Open Media AV1 Codec SDK
 media-libs/libart_lgpl 2.3.21-r3: A LGPL version of libart
 media-libs/libass 0.14.0: Library for SSA/ASS subtitles rendering
