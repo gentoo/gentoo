@@ -1,13 +1,13 @@
-BDEPEND=sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+BDEPEND=dev-util/gdbus-codegen sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DEFINED_PHASES=configure
-DEPEND=dev-libs/glib:2 dev-util/gdbus-codegen gnome-base/gnome-desktop:3= media-libs/fontconfig sys-apps/dbus >=sys-apps/xdg-desktop-portal-1.7 x11-libs/cairo[X?] x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3[wayland?,X?]
+DEPEND=dev-libs/glib:2 gnome-base/gnome-desktop:3= media-libs/fontconfig sys-apps/dbus >=sys-apps/xdg-desktop-portal-1.7 x11-libs/cairo[X?] x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3[wayland?,X?]
 DESCRIPTION=portal backend implementation that is using GTK+ and various pieces of GNOME
 EAPI=7
 HOMEPAGE=https://flatpak.org/ https://github.com/flatpak/xdg-desktop-portal-gtk
 IUSE=wayland X
 LICENSE=LGPL-2.1
-RDEPEND=dev-libs/glib:2 dev-util/gdbus-codegen gnome-base/gnome-desktop:3= media-libs/fontconfig sys-apps/dbus >=sys-apps/xdg-desktop-portal-1.7 x11-libs/cairo[X?] x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3[wayland?,X?]
+RDEPEND=dev-libs/glib:2 gnome-base/gnome-desktop:3= media-libs/fontconfig sys-apps/dbus >=sys-apps/xdg-desktop-portal-1.7 x11-libs/cairo[X?] x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3[wayland?,X?]
 SLOT=0
 SRC_URI=https://github.com/flatpak/xdg-desktop-portal-gtk/releases/download/1.7.1/xdg-desktop-portal-gtk-1.7.1.tar.xz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=5c83c8bd8329ec108d00c8ff63d9efba
+_md5_=30cc7b1ee10b28500e5e2ccc270d455a
