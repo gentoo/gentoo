@@ -29,6 +29,7 @@ IUSE=""
 
 DEPEND="
 	~media-tv/kodi-9999
+	=dev-libs/libplatform-2*
 	dev-libs/tinyxml2
 	"
 
