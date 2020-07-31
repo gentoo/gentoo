@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jason A. Donenfeld <zx2c4@gentoo.org> (2020-07-31)
+# This package has been deprecated for 8 months now, in addition to
+# loud ewarns upon every install. It is replaced with explicitly
+# installing net-vpn/wireguard-tools. Removal in 7 days.
+virtual/wireguard
+
 # Michał Górny <mgorny@gentoo.org> (2020-07-28)
 # Masked for the time being due to dep on LLVM 8.  Bug #720236.
 <=dev-ada/gps-2019-r1
