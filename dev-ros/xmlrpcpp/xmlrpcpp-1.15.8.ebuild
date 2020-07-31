@@ -14,5 +14,13 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-ros/cpp_common"
-DEPEND="${RDEPEND}"
+RDEPEND="
+	dev-ros/cpp_common
+	dev-ros/rostime
+"
+DEPEND="${RDEPEND}
+	test? (
+		dev-cpp/gtest
+		dev-libs/boost[threads]
+	)
+"
