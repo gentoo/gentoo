@@ -10348,7 +10348,7 @@ dev-tex/biber 2.12 2.14: A BibTeX replacement for users of biblatex
 dev-tex/biblatex 3.12 3.14: Reimplementation of the bibliographic facilities provided by LaTeX
 dev-tex/biblatex-apa 7.5: APA style for BibLaTeX
 dev-tex/biblatex-gost 1.17: Biblatex styles for Russian GOST 7.0.5-2008 bibliography standard
-dev-tex/bibtex2html 1.98 1.99: A bibtex to HTML converter
+dev-tex/bibtex2html 1.99: A bibtex to HTML converter
 dev-tex/bibtexu 3.71_p20200406: 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity
 dev-tex/catdvi 0.14-r2: DVI to plain text translator
 dev-tex/chktex 1.7.6: Checks latex source for common mistakes
@@ -13360,8 +13360,8 @@ media-plugins/kodi-audiodecoder-snesapu 2.0.0 2.0.1 2.0.2 2.1.3 9999: SPC decode
 media-plugins/kodi-audiodecoder-stsound 2.0.0 2.0.1 2.0.2 2.1.3 9999: SPC decoder addon for Kodi
 media-plugins/kodi-audiodecoder-timidity 2.0.5 2.3.0 9999: Timidity decoder addon for Kodi
 media-plugins/kodi-audiodecoder-vgmstream 1.1.3 1.1.4 1.1.5 2.1.2 9999: vgmstream decoder addon for Kodi
-media-plugins/kodi-audioencoder-flac 2.0.6 2.1.1 9999: Flac encoder addon for Kodi
-media-plugins/kodi-audioencoder-lame 2.0.1 2.0.2 2.0.4 2.1.1 9999: Lame MP3 encoder addon for Kodi
+media-plugins/kodi-audioencoder-flac 2.0.6 2.1.1 3.0.0 9999: Flac encoder addon for Kodi
+media-plugins/kodi-audioencoder-lame 2.0.1 2.0.2 2.0.4 2.1.1 3.0.0 9999: Lame MP3 encoder addon for Kodi
 media-plugins/kodi-audioencoder-vorbis 2.0.4 2.1.1 9999: Vorbis encoder addon for Kodi
 media-plugins/kodi-audioencoder-wav 2.0.1 2.0.2 2.0.3 2.1.1 9999: WAV encoder addon for Kodi
 media-plugins/kodi-game-libretro 1.1.0 1.1.1 2.0.2 9999: Libretro compatibility layer for the Kodi Game API
