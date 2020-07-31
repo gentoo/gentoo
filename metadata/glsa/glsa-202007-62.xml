@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-62">
+  <title>PyCrypto: Weak key generation</title>
+  <synopsis>A flaw in PyCrypto allow remote attackers to obtain sensitive
+    information.
+  </synopsis>
+  <product type="ebuild">pycrypto</product>
+  <announced>2020-07-31</announced>
+  <revised count="1">2020-07-31</revised>
+  <bug>703682</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-python/pycrypto" auto="yes" arch="*">
+      <vulnerable range="le">2.6.1-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PyCrypto is the Python Cryptography Toolkit.</p>
+  </background>
+  <description>
+    <p>It was discovered that PyCrypto incorrectly generated ElGamal key
+      parameters.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Attackers may be able to obtain sensitive information by reading
+      ciphertext data.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo has discontinued support for PyCrypto. We recommend that users
+      unmerge PyCrypto:
+    </p>
+    
+    <p># emerge --unmerge “dev-python/pycrypto”</p>
+    
+    <p>NOTE: The Gentoo developer(s) maintaining PyCrypto have discontinued
+      support at this time. PyCryptodome is the canonical successor to
+      PyCrypto.
+    </p>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6594">CVE-2018-6594</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-30T01:21:33Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-31T17:10:46Z">sam_c</metadata>
+</glsa>

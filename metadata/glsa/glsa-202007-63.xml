@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-63">
+  <title>SNMP Trap Translator: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in SNMP Trap Translator,
+    the worst of which could allow attackers to execute arbitrary shell code.
+  </synopsis>
+  <product type="ebuild">snmptt</product>
+  <announced>2020-07-31</announced>
+  <revised count="1">2020-07-31</revised>
+  <bug>733478</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/snmptt" auto="yes" arch="*">
+      <unaffected range="ge">1.4.1</unaffected>
+      <vulnerable range="lt">1.4.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>SNMP Trap Translator (SNMPTT) is an SNMP trap handler written in Perl.</p>
+  </background>
+  <description>
+    <p>It was found that SNMP Trap Translator does not drop privileges as
+      configured and does not properly escape shell commands in certain
+      functions.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by sending a malicious crafted SNMP trap, could
+      possibly execute arbitrary shell code with the privileges of the process
+      or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All SNMP Trap Translator users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/snmptt-1.4.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://sourceforge.net/p/snmptt/git/ci/snmptt_1-4-1/tree/snmptt/ChangeLog">
+      SNMPTT 1.4.1 ChangeLog
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-26T15:27:28Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-31T17:11:01Z">sam_c</metadata>
+</glsa>
