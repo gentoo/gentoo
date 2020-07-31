@@ -7,8 +7,6 @@ PYTHON_COMPAT=( pypy3 python3_{6,7} )
 
 inherit distutils-r1
 
-MY_COMMIT="6445a67395912a5432014ec824ce4bf8fd13e22d"
-
 DESCRIPTION="Pagination support for flask"
 HOMEPAGE="https://flask-paginate.readthedocs.io"
 SRC_URI="https://github.com/lixxu/flask-paginate/archive/${PV}.tar.gz"
