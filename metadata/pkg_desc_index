@@ -6056,7 +6056,7 @@ dev-perl/Digest-MD2 2.40.0 2.40.0-r1: Perl interface to the MD2 Algorithm
 dev-perl/Digest-MD4 1.900.0-r1 1.900.0-r2: MD4 message digest algorithm
 dev-perl/Digest-MD5-File 0.80.0-r1 0.80.0-r2: Perl extension for getting MD5 sums for files and urls
 dev-perl/Digest-Nilsimsa 0.60.0-r2 0.60.0-r3: Perl version of Nilsimsa code
-dev-perl/Digest-Perl-MD5 1.900.0: Pure perl implementation of MD5
+dev-perl/Digest-Perl-MD5 1.900.0 1.900.0-r1: Pure perl implementation of MD5
 dev-perl/Digest-SHA1 2.130.0-r1: NIST SHA message digest algorithm
 dev-perl/Dist-CheckConflicts 0.110.0: Declare version conflicts for your dist
 dev-perl/Dist-Metadata 0.927.0: Information about a perl module distribution
