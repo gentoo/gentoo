@@ -1,0 +1,15 @@
+BDEPEND=virtual/perl-File-Spec virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-File-Temp dev-perl/Path-Tiny dev-perl/Test-Deep dev-perl/Test-Fatal dev-perl/Test-File >=virtual/perl-Test-Simple-0.880.0 dev-perl/Test-Warnings ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=uses File::Copy to recursively copy dirs
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/File-Copy-Recursive
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-File-Spec dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DM/DMUEY/File-Copy-Recursive-0.45.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=61c97792090c4d7b6c4b174699ca2883
