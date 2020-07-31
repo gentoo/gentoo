@@ -8716,7 +8716,7 @@ dev-python/pytest-tempdir 2019.10.12: Pytest plugin to support for a predictable
 dev-python/pytest-testmon 0.9.15: take TDD to a new level with py.test and testmon
 dev-python/pytest-timeout 1.3.4 1.4.1-r1 1.4.2: py.test plugin to abort hanging tests
 dev-python/pytest-virtualenv 1.7.0-r1: Virtualenv fixture for py.test
-dev-python/pytest-xdist 1.23.2 1.28.0 1.31.0 1.32.0 1.33.0: Distributed testing and loop-on-failing modes
+dev-python/pytest-xdist 1.23.2 1.28.0 1.31.0 1.32.0 1.33.0 1.34.0: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.13.1: Manage external processes across test runs
 dev-python/python-augeas 1.1.0: Python bindings for Augeas
 dev-python/python-axolotl 0.2.3: A python module for the axolotl protocol
