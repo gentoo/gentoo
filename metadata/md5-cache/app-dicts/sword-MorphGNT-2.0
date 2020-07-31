@@ -1,0 +1,12 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install
+DESCRIPTION=Morphologically Parsed Greek New Testament based on the SBLGNT
+EAPI=7
+HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=MorphGNT
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=crosswire
+RDEPEND=>=app-text/sword-1.5.1a
+SLOT=0
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/MorphGNT.zip -> MorphGNT-2.0.zip
+_eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
+_md5_=a6546b59da254b4dc7dca24f0f240743

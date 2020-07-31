@@ -5,11 +5,11 @@ DESCRIPTION=keymap handling library for toolkits and window systems
 EAPI=7
 HOMEPAGE=https://xkbcommon.org/ https://github.com/xkbcommon/libxkbcommon/
 IUSE=X doc static-libs test abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_riscv_lp64d abi_riscv_lp64 abi_s390_32 abi_s390_64
-KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86
 LICENSE=MIT
 RDEPEND=X? ( >=x11-libs/libxcb-1.10:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_riscv_lp64d(-)?,abi_riscv_lp64(-)?,abi_s390_32(-)?,abi_s390_64(-)?,xkb] )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://xkbcommon.org/download/libxkbcommon-0.10.0.tar.xz
 _eclasses_=meson	71d293a701d6362387e1214da368c848	multibuild	b2c915190b051f55a23b9354b9849847	multilib	2477ebe553d3e4d2c606191fe6c33602	multilib-build	8ad5b5535b73a8971881f09277b939f4	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=a9aecde0e0c1cfd7e5239a0003c33eb1
+_md5_=a53b45f5a462cb2f1c472c7120ff48c3

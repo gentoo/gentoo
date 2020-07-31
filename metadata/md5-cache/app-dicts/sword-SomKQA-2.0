@@ -1,0 +1,12 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install
+DESCRIPTION=Kitaabka Quduuska Ah (Somali Bible)
+EAPI=7
+HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=SomKQA
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=crosswire
+RDEPEND=>=app-text/sword-1.6.0
+SLOT=0
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/SomKQA.zip -> SomKQA-2.0.zip
+_eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
+_md5_=e868b974c694921cf199f5db6b52a7b6

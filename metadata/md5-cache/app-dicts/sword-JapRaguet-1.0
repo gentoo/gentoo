@@ -1,0 +1,12 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install
+DESCRIPTION=Raguet-yaku - Japanese translation of the Bible by Emile Raguet (1910)
+EAPI=7
+HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=JapRaguet
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=public-domain
+RDEPEND=>=app-text/sword-1.5.12
+SLOT=0
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/JapRaguet.zip -> JapRaguet-1.0.zip
+_eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
+_md5_=fa6978bf26a0f8021dcfbd7465eec4b7

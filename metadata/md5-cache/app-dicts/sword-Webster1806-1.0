@@ -1,0 +1,12 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install
+DESCRIPTION=Webster's 1806 A Compendious Dictionary of the English Language
+EAPI=7
+HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=Webster1806
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=public-domain
+RDEPEND=>=app-text/sword-1.5.11
+SLOT=0
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/Webster1806.zip -> Webster1806-1.0.zip
+_eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
+_md5_=edc55483a6c464d188a3259ff3bf7bd8

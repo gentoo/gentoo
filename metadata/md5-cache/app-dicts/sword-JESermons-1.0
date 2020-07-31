@@ -1,0 +1,12 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install
+DESCRIPTION=Select Sermons of Jonathan Edwards
+EAPI=7
+HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=JESermons
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=public-domain
+RDEPEND=>=app-text/sword-1.5.9
+SLOT=0
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/JESermons.zip -> JESermons-1.0.zip
+_eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
+_md5_=f89742a6457adc318245082c362a279b

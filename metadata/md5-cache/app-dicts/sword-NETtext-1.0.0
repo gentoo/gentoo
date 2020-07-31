@@ -1,0 +1,12 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install
+DESCRIPTION=New English Translation text only with footnote markers
+EAPI=7
+HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=NETtext
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=freedist
+RDEPEND=>=app-text/sword-1.5.1a
+SLOT=0
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/NETtext.zip -> NETtext-1.0.0.zip
+_eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
+_md5_=f09d9d69b1112d1918ee8b199bd26224

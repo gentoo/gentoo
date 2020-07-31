@@ -1,0 +1,12 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install
+DESCRIPTION=Sentiment Analysis of the Bible
+EAPI=7
+HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=Sentiment
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=CC-BY-4.0
+RDEPEND=>=app-text/sword-1.6.2
+SLOT=0
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/Sentiment.zip -> Sentiment-1.0.zip
+_eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
+_md5_=2a6300bca5b56d4156a54c1fd29a60a3

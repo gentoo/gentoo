@@ -1,0 +1,12 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install
+DESCRIPTION=Samaritan Pentateuch with variant readings
+EAPI=7
+HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=SPVar
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=free-noncomm
+RDEPEND=>=app-text/sword-1.6.2
+SLOT=0
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/SPVar.zip -> SPVar-1.0.zip
+_eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
+_md5_=57c63370e14014fe425349d275557f43

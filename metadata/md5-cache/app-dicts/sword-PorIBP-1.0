@@ -1,0 +1,12 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install
+DESCRIPTION=Índice Bíblico-Pastoral da Bíblia dos Capuchinhos
+EAPI=7
+HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=PorIBP
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=crosswire
+RDEPEND=>=app-text/sword-1.7.1
+SLOT=0
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/PorIBP.zip -> PorIBP-1.0.zip
+_eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
+_md5_=90367c7bc79a3bb707f494dace24e0d8
