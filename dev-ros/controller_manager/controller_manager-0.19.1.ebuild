@@ -15,10 +15,11 @@ IUSE=""
 
 RDEPEND="
 	>=dev-ros/controller_interface-0.15
-	>=dev-ros/controller_manager_msgs-0.10.0[${CATKIN_MESSAGES_PYTHON_USEDEP},${CATKIN_MESSAGES_CXX_USEDEP}]
+	>=dev-ros/controller_manager_msgs-0.10.0[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	>=dev-ros/hardware_interface-0.10.0
 	dev-ros/pluginlib
 		dev-libs/tinyxml2:=
+	dev-ros/roscpp
 	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/rosparam[${PYTHON_SINGLE_USEDEP}]
@@ -27,4 +28,8 @@ RDEPEND="
 	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}
-	test? ( dev-ros/rostest[${PYTHON_SINGLE_USEDEP}] )"
+	>=dev-ros/controller_manager_msgs-0.10.0[${CATKIN_MESSAGES_CXX_USEDEP}]
+	test? (
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		dev-cpp/gtest
+	)"
