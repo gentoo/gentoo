@@ -16,13 +16,14 @@ IUSE=""
 
 RDEPEND="
 	dev-libs/console_bridge
-	app-crypt/gpgme
-	dev-ros/pluginlib
+
 	dev-ros/cpp_common
+	dev-ros/pluginlib
 	dev-ros/roscpp_serialization
 	dev-ros/roscpp_traits
 	dev-ros/rostime
 	dev-ros/roslz4
+
 	dev-libs/boost:=
 	app-arch/bzip2
 	dev-libs/console_bridge:=
@@ -31,4 +32,10 @@ RDEPEND="
 	dev-libs/openssl:0=
 	app-crypt/gpgme
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	test? (
+		dev-ros/rostest
+		dev-cpp/gtest
+	)
+"
