@@ -7,7 +7,7 @@
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="https://gcc.gnu.org/"
 
-inherit eutils fixheadtails flag-o-matic gnuconfig libtool multilib pax-utils toolchain-funcs prefix
+inherit eutils flag-o-matic gnuconfig libtool multilib pax-utils toolchain-funcs prefix
 
 tc_is_live() {
 	[[ ${PV} == *9999* ]]
@@ -470,15 +470,6 @@ toolchain_src_prepare() {
 	# (as gcc itself takes care of building multilibs).  #435728
 	find "${S}" -name Makefile.in \
 		-exec sed -i '/^pkgconfigdir/s:=.*:=$(toolexeclibdir)/pkgconfig:' {} +
-
-	# No idea when this first started being fixed, but let's go with 4.3.x for now
-	if ! tc_version_is_at_least 4.3 ; then
-		fix_files=""
-		for x in contrib/test_summary libstdc++-v3/scripts/check_survey.in ; do
-			[[ -e ${x} ]] && fix_files="${fix_files} ${x}"
-		done
-		ht_fix_file ${fix_files} */configure *.sh */Makefile.in
-	fi
 
 	setup_multilib_osdirnames
 	gcc_version_patch
