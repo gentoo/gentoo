@@ -5039,7 +5039,7 @@ dev-lang/mozart 1.4.0-r3 1.4.0-r4 2.0.1: Advanced development platform for intel
 dev-lang/mozart-stdlib 1.4.0-r2 2.0.1: The Mozart Standard Library
 dev-lang/mujs 1.0.6 1.0.7: An embeddable Javascript interpreter in C.
 dev-lang/nasm 2.14.02 2.15.03: groovy little assembler
-dev-lang/nim 1.2.4: compiled, garbage-collected systems programming language
+dev-lang/nim 1.2.4 1.2.6: compiled, garbage-collected systems programming language
 dev-lang/nqp 2019.03-r1 2019.07.1 2019.11 2020.05 2020.06 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
 dev-lang/ocaml 4.04.2-r1 4.05.0-r1 4.09.0: Programming language supporting functional, imperative & object-oriented styles
@@ -10563,7 +10563,7 @@ dev-util/devhelp 3.34.0: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 153: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 153 154: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
@@ -18047,7 +18047,7 @@ www-plugins/freshplayerplugin 0.3.9-r1: PPAPI-host NPAPI-plugin adapter for flas
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
 www-plugins/passff 1.9.1: zx2c4 pass manager extension for Firefox
-www-plugins/passff-host 1.2.1 1.2.1-r1: Host app for the PassFF WebExtension
+www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
 www-plugins/pdfjs 1.9.426 2.1.266 2.4.456: A PDF reader in JavaScript
 www-servers/adsf 1.4.3: A Dead Simple Fileserver is a static file server that can launch in a directory
 www-servers/apache 2.4.43: The Apache Web Server
