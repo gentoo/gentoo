@@ -13,16 +13,20 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/roscpp
-	media-libs/opencv:=
 	dev-ros/dynamic_reconfigure[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/image_geometry
 	dev-ros/image_transport
 	dev-ros/nodelet
+	dev-ros/roscpp
+
+	media-libs/opencv:=
 	dev-libs/boost:=
 	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	test? (
+		dev-cpp/gtest
+	)
 "
 PATCHES=( "${FILESDIR}/isnan.patch" )
