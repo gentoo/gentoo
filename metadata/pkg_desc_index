@@ -6052,7 +6052,7 @@ dev-perl/Digest-CRC 0.210.0 0.220.0_p2 0.220.0_p2-r1: Generic CRC function
 dev-perl/Digest-GOST 0.60.0-r1 0.60.0-r2: Perl interface to the GOST R 34.11-94 digest algorithm
 dev-perl/Digest-HMAC 1.30.0-r1 1.30.0-r2: Keyed Hashing for Message Authentication
 dev-perl/Digest-JHash 0.100.0: Perl extension for 32 bit Jenkins Hashing Algorithm
-dev-perl/Digest-MD2 2.40.0: Perl interface to the MD2 Algorithm
+dev-perl/Digest-MD2 2.40.0 2.40.0-r1: Perl interface to the MD2 Algorithm
 dev-perl/Digest-MD4 1.900.0-r1: MD4 message digest algorithm
 dev-perl/Digest-MD5-File 0.80.0-r1: Perl extension for getting MD5 sums for files and urls
 dev-perl/Digest-Nilsimsa 0.60.0-r2: Perl version of Nilsimsa code

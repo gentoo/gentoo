@@ -1,7 +1,7 @@
 DEFINED_PHASES=compile configure install postinst prepare
 DEPEND=>=sys-devel/bin86-0.15.5
 DESCRIPTION=Standard Linux boot loader
-EAPI=5
+EAPI=7
 HOMEPAGE=https://alioth.debian.org/projects/lilo/
 IUSE=static minimal pxeserial device-mapper
 KEYWORDS=-* ~amd64 ~x86
@@ -9,5 +9,5 @@ LICENSE=BSD GPL-2
 RDEPEND=device-mapper? ( >=sys-fs/lvm2-2.02.45 )
 SLOT=0
 SRC_URI=http://lilo.alioth.debian.org/ftp/sources/lilo-24.2.tar.gz mirror://gentoo/dolilo-0.6.tar.bz2
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	2477ebe553d3e4d2c606191fe6c33602	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=b5fffc45c2830c8af888aa3375a17caf
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=5409e0a1d8f9f9240fdbc61793c56f8c
