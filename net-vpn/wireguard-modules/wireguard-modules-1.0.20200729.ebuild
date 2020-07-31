@@ -24,7 +24,7 @@ SLOT="0"
 IUSE="debug +module module-src"
 
 DEPEND=""
-RDEPEND="${DEPEND} !<virtual/wireguard-1"
+RDEPEND="${DEPEND}"
 
 MODULE_NAMES="wireguard(kernel/drivers/net:src)"
 BUILD_TARGETS="module"
@@ -40,8 +40,8 @@ pkg_setup() {
 			eerror "enable CONFIG_WIREGUARD=y in your kernel configuration."
 			eerror
 			die "Use CONFIG_WIREGUARD=y for this kernel, and do not use this package."
-		elif kernel_is -lt 3 10 0; then
-			die "This version of ${PN} requires Linux >= 3.10."
+		elif kernel_is -lt 3 10 0 || kernel_is -ge 5 6 0; then
+			die "This version of ${PN} requires Linux >= 3.10 and < 5.6."
 		fi
 	fi
 }
