@@ -17,6 +17,7 @@ IUSE=""
 RDEPEND=""
 DEPEND="${RDEPEND}
 	dev-ros/rosbag_storage
+	dev-ros/rosbag
 	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-libs/boost:=
 	test? ( dev-cpp/gtest )"
