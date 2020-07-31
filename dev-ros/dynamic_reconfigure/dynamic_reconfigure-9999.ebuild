@@ -20,5 +20,9 @@ RDEPEND="
 	dev-ros/roscpp
 "
 DEPEND="${RDEPEND}
-	dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+	test? (
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		dev-cpp/gtest
+		dev-ros/roslaunch
+	)
 "
