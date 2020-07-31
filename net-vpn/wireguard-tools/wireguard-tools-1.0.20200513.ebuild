@@ -27,7 +27,6 @@ RDEPEND="${DEPEND}
 		|| ( net-firewall/nftables net-firewall/iptables )
 		virtual/resolvconf
 	)
-	!<virtual/wireguard-1
 "
 
 wg_quick_optional_config_nob() {
@@ -36,29 +35,44 @@ wg_quick_optional_config_nob() {
 }
 
 pkg_setup() {
-	use wg-quick || return 0
-	wg_quick_optional_config_nob IP_ADVANCED_ROUTER
-	wg_quick_optional_config_nob IP_MULTIPLE_TABLES
-	wg_quick_optional_config_nob IPV6_MULTIPLE_TABLES
-	if has_version net-firewall/nftables; then
-		wg_quick_optional_config_nob NF_TABLES
-		wg_quick_optional_config_nob NF_TABLES_IPV4
-		wg_quick_optional_config_nob NF_TABLES_IPV6
-		wg_quick_optional_config_nob NFT_CT
-		wg_quick_optional_config_nob NFT_FIB
-		wg_quick_optional_config_nob NFT_FIB_IPV4
-		wg_quick_optional_config_nob NFT_FIB_IPV6
-		wg_quick_optional_config_nob NF_CONNTRACK_MARK
-	elif has_version net-firewall/iptables; then
-		wg_quick_optional_config_nob NETFILTER_XTABLES
-		wg_quick_optional_config_nob NETFILTER_XT_MARK
-		wg_quick_optional_config_nob NETFILTER_XT_CONNMARK
-		wg_quick_optional_config_nob NETFILTER_XT_MATCH_COMMENT
-		wg_quick_optional_config_nob NETFILTER_XT_MATCH_ADDRTYPE
-		wg_quick_optional_config_nob IP6_NF_RAW
-		wg_quick_optional_config_nob IP_NF_RAW
-		wg_quick_optional_config_nob IP6_NF_FILTER
-		wg_quick_optional_config_nob IP_NF_FILTER
+	if use wg-quick; then
+		wg_quick_optional_config_nob IP_ADVANCED_ROUTER
+		wg_quick_optional_config_nob IP_MULTIPLE_TABLES
+		wg_quick_optional_config_nob IPV6_MULTIPLE_TABLES
+		if has_version net-firewall/nftables; then
+			wg_quick_optional_config_nob NF_TABLES
+			wg_quick_optional_config_nob NF_TABLES_IPV4
+			wg_quick_optional_config_nob NF_TABLES_IPV6
+			wg_quick_optional_config_nob NFT_CT
+			wg_quick_optional_config_nob NFT_FIB
+			wg_quick_optional_config_nob NFT_FIB_IPV4
+			wg_quick_optional_config_nob NFT_FIB_IPV6
+			wg_quick_optional_config_nob NF_CONNTRACK_MARK
+		elif has_version net-firewall/iptables; then
+			wg_quick_optional_config_nob NETFILTER_XTABLES
+			wg_quick_optional_config_nob NETFILTER_XT_MARK
+			wg_quick_optional_config_nob NETFILTER_XT_CONNMARK
+			wg_quick_optional_config_nob NETFILTER_XT_MATCH_COMMENT
+			wg_quick_optional_config_nob NETFILTER_XT_MATCH_ADDRTYPE
+			wg_quick_optional_config_nob IP6_NF_RAW
+			wg_quick_optional_config_nob IP_NF_RAW
+			wg_quick_optional_config_nob IP6_NF_FILTER
+			wg_quick_optional_config_nob IP_NF_FILTER
+		fi
+	fi
+	get_version
+	if [[ -f $KERNEL_DIR/include/uapi/linux/wireguard.h ]]; then
+		CONFIG_CHECK="~WIREGUARD $CONFIG_CHECK"
+		declare -g ERROR_WIREGUARD="CONFIG_WIREGUARD: This option is required for using WireGuard."
+	elif kernel_is -ge 3 10 0 && kernel_is -lt 5 6 0 && ! has_version net-vpn/wireguard-modules; then
+		ewarn
+		ewarn "Your kernel does not appear to have upstream support for WireGuard"
+		ewarn "via CONFIG_WIREGUARD. However, the net-vpn/wireguard-modules ebuild"
+		ewarn "contains a compatibility module that should work for your kernel."
+		ewarn "It is highly recommended to install it:"
+		ewarn
+		ewarn "    emerge -av net-vpn/wireguard-modules"
+		ewarn
 	fi
 	linux-info_pkg_setup
 }
