@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202007-61">
+  <title>WebKitGTK+: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in WebKitGTK+, the worst
+    of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">webkitgtk+</product>
+  <announced>2020-07-31</announced>
+  <revised count="1">2020-07-31</revised>
+  <bug>734584</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/webkit-gtk" auto="yes" arch="*">
+      <unaffected range="ge">2.28.4</unaffected>
+      <vulnerable range="lt">2.28.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>WebKitGTK+ is a full-featured port of the WebKit rendering engine,
+      suitable for projects requiring any kind of web integration, from hybrid
+      HTML/CSS applications to full-fledged web browsers.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in WebKitGTK+. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All WebKitGTK+ users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/webkit-gtk-2.28.4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9862">CVE-2020-9862</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9893">CVE-2020-9893</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9894">CVE-2020-9894</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9895">CVE-2020-9895</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9915">CVE-2020-9915</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9925">CVE-2020-9925</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-07-29T18:52:03Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-31T17:08:46Z">sam_c</metadata>
+</glsa>
