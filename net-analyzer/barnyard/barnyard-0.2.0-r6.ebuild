@@ -35,11 +35,14 @@ PATCHES=(
 	"${WORKDIR}"/${P}-64bit.patch
 	"${WORKDIR}"/${P}-canonical-ar.patch
 	"${WORKDIR}"/${P}-configure-in.patch
+)
+SGUIL_PATCHES=(
 	"${WORKDIR}"/${P}-op_plugbase.c.patch
 	"${WORKDIR}"/${P}-sguil_files.patch
 )
 
 src_prepare() {
+	use sguil && PATCHES+=( "${SGUIL_PATCHES[@]}" )
 	default
 
 	eautoreconf
