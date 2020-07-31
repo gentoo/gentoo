@@ -5,10 +5,10 @@ DESCRIPTION=LXQt system configuration control center
 EAPI=7
 HOMEPAGE=https://lxqt.github.io/
 IUSE=+monitor +touchpad
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~ppc64 x86
 LICENSE=GPL-2 GPL-2+ GPL-3 LGPL-2 LGPL-2+ LGPL-2.1+ WTFPL-2
 RDEPEND=>=dev-libs/libqtxdg-3.3.1 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtxml:5 kde-frameworks/kwindowsystem:5 =lxqt-base/liblxqt-0.15* sys-libs/zlib:= x11-apps/setxkbmap x11-libs/libxcb:= x11-libs/libX11 x11-libs/libXcursor x11-libs/libXfixes monitor? ( kde-plasma/libkscreen:5= ) touchpad? ( virtual/libudev x11-drivers/xf86-input-libinput x11-libs/libXext x11-libs/libXi ) !lxqt-base/lxqt-l10n
 SLOT=0
 SRC_URI=https://github.com/lxqt/lxqt-config/releases/download/0.15.0/lxqt-config-0.15.0.tar.xz
 _eclasses_=cmake	f274d2f953f93e2d88cd3e0b2ce376a9	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=468e618070fc9eadfa02dd40422abf48
+_md5_=5a74e2fac8e1e4b50538f94d88a17269
