@@ -1,0 +1,17 @@
+BDEPEND=acct-user/polkitd app-text/docbook-xml-dtd:4.1.2 app-text/docbook-xsl-stylesheets dev-libs/gobject-introspection-common dev-libs/libxslt dev-util/glib-utils dev-util/gtk-doc-am dev-util/intltool sys-devel/gettext virtual/pkgconfig introspection? ( dev-libs/gobject-introspection ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=dev-lang/spidermonkey:68[-debug] dev-libs/glib:2 dev-libs/expat elogind? ( sys-auth/elogind ) pam? ( sys-auth/pambase sys-libs/pam ) systemd? ( sys-apps/systemd:0=[policykit] )
+DESCRIPTION=Policy framework for controlling privileges for system-wide services
+EAPI=7
+HOMEPAGE=https://www.freedesktop.org/wiki/Software/polkit https://gitlab.freedesktop.org/polkit/polkit
+IUSE=consolekit elogind examples gtk +introspection jit kde nls pam selinux systemd test
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86
+LICENSE=LGPL-2
+PDEPEND=consolekit? ( sys-auth/consolekit[policykit] ) gtk? ( || ( >=gnome-extra/polkit-gnome-0.105 >=lxde-base/lxsession-0.5.2 ) ) kde? ( kde-plasma/polkit-kde-agent )
+RDEPEND=dev-lang/spidermonkey:68[-debug] dev-libs/glib:2 dev-libs/expat elogind? ( sys-auth/elogind ) pam? ( sys-auth/pambase sys-libs/pam ) systemd? ( sys-apps/systemd:0=[policykit] ) acct-user/polkitd selinux? ( sec-policy/selinux-policykit )
+REQUIRED_USE=^^ ( consolekit elogind systemd )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://www.freedesktop.org/software/polkit/releases/polkit-0.117.tar.gz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	pam	a1771fc1e5831c201eaf18451747d94b	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=cf847dce5bd14f481b67fdfce3d61c15
