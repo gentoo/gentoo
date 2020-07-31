@@ -32,6 +32,9 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 	virtual/pkgconfig
 "
+
+REQUIRED_USE="!ncurses? ( slang? ( minimal ) )"
+
 src_prepare() {
 	default
 	if [[ ${PV} == "9999" ]] ; then
