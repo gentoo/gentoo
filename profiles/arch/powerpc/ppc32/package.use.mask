@@ -7,6 +7,7 @@ app-editors/emacs xwidgets
 gnome-extra/evolution-data-server oauth
 app-office/gnucash gui doc
 dev-util/geany-plugins markdown
+>=media-gfx/gthumb-3.10.0 http
 # needs mail-client/evolution, depends on net-libs/webkit-gtk
 app-office/planner eds
 # needs gnome-extra/sushi, depends on net-libs/webkit-gtk
