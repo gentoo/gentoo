@@ -31,10 +31,12 @@ as - Assamese
 ast - Asturian
 az - Azerbaijani
 be - Belarusian
+bea - Beaver
 bg - Bulgarian
 bn - Bengali
 bn-BD - Bengali (Bangladesh)
 bn-IN - Bengali (India)
+bla - Siksika
 bo - Tibetan
 br - Breton
 brx - Bodo (India)
@@ -43,10 +45,14 @@ ca - Catalan
 ca-valencia - Catalan (Valencian)
 cak - Kaqchikel
 ceb - Cebuano
+ch - Chamorro
 chr - Cherokee
+ckb - Central Kurdish
 cnr - Montenegrin
+cop - Coptic
 co - Corsican
 cs - Czech
+cu - Church Slavic
 cy - Welsh
 da - Danish
 de - German
@@ -86,10 +92,14 @@ fr-CA - French (Canada)
 fy - Western Frisian
 ga - Irish
 gd - Scottish Gaelic
+gez - Geez
 gl - Galician
 gn - Guarani
+got - Gothic
+grc - Ancient Greek (to 1453)
 gu - Gujarati
 gug - Paraguayan Guarani
+gv - Manx
 he - Hebrew
 hi - Hindi
 hr - Croatian
@@ -108,22 +118,27 @@ jbo - Lojban
 jv - Javanese
 ka - Georgian
 kab - Kabyle
+kek - Kekchí
 kk - Kazakh
 km - Central Khmer
 kmr-Latn - Northern Kurdish (Latin script)
 kn - Kannada
 ko - Korean
 kok - Konkani (macrolanguage)
+kpg - Kapingamarangi
 ks - Kashmiri
+ktu - Kituba (Democratic Republic of Congo)
 ku - Kurdish
 ky - Kirghiz
 la - Latin
 lb - Luxembourgish
 lij - Ligurian
+ln - Lingala
 lo - Lao
 lt - Lithuanian
 lv - Latvian
 mai - Maithili
+mg - Malagasy
 mi - Maori
 mk - Macedonian
 ml - Malayalam
@@ -135,6 +150,7 @@ mt - Maltese
 my - Burmese
 nan - Min Nan Chinese
 nb - Norwegian Bokmål
+nd - North Ndebele
 ne - Nepali
 nl - Dutch
 nn - Norwegian Nynorsk
@@ -146,12 +162,17 @@ om - Oromo
 or - Oriya (macrolanguage)
 pa - Punjabi
 pl - Polish
+pon - Pohnpeian
+pot - Potawatomi
+ppk - Uma
+prs - Dari
 ps - Pushto
 pt - Portuguese
 pt-BR - Portuguese (Brazil)
 pt-PT - Portuguese (Portugal)
 qu - Quechua
 rm - Romansh
+rmq - Caló
 ro - Romanian
 ru - Russian
 rw - Kinyarwanda
@@ -164,6 +185,8 @@ si - Sinhala
 sid - Sidamo
 sk - Slovak
 sl - Slovenian
+sml - Central Sama
+sn - Shona
 so - Somali
 son - Songhai languages
 sq - Albanian
@@ -176,6 +199,7 @@ sv - Swedish
 sw - Swahili (macrolanguage)
 sw-TZ - Swahili (Tanzania)
 syc - Classical Syriac
+syr - Syriac
 ta - Tamil
 ta-LK - Tamil (Sri Lanka)
 te - Telugu
@@ -184,10 +208,12 @@ th - Thai
 ti - Tigrinya
 tk - Turkmen
 tl - Tagalog
+tlh - Klingon
 tn - Tswana
 to - Tonga (Tonga Islands)
 tr - Turkish
 ts - Tsonga
+tsg - Tausug
 tt - Tatar
 ug - Uyghur
 uk - Ukrainian
@@ -195,6 +221,7 @@ ur - Urdu
 uz - Uzbek
 ve - Venda
 vi - Vietnamese
+vls - Vlaams
 xh - Xhosa
 yi - Yiddish
 yo - Yoruba
