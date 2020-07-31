@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">thunderbird</product>
   <announced>2020-07-31</announced>
-  <revised count="1">2020-07-31</revised>
+  <revised count="2">2020-07-31</revised>
   <bug>734978</bug>
   <access>remote</access>
   <affected>
@@ -41,8 +41,7 @@
     
     <code>
       # emerge --sync
-      # emerge --ask --oneshot --verbose "&gt;=mail-client/thunderbird-68.11.0
-      "
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/thunderbird-68.11.0"
     </code>
     
     <p>All Mozilla Thunderbird binary users should upgrade to the latest
@@ -65,5 +64,5 @@
     </uri>
   </references>
   <metadata tag="requester" timestamp="2020-07-31T17:27:15Z">sam_c</metadata>
-  <metadata tag="submitter" timestamp="2020-07-31T19:01:30Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-07-31T19:04:30Z">sam_c</metadata>
 </glsa>
