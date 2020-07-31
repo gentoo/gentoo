@@ -12132,8 +12132,8 @@ mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for 
 mail-client/roundcube 1.4.6 1.4.7: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.16 14.9.19: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.7.0: A lightweight email client and newsreader
-mail-client/thunderbird 68.10.0 68.11.0: Thunderbird Mail Client
-mail-client/thunderbird-bin 68.10.0-r1 68.11.0: Thunderbird Mail Client
+mail-client/thunderbird 68.11.0: Thunderbird Mail Client
+mail-client/thunderbird-bin 68.11.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r5 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 1.2.0 1.3.0-r1 2.0.0 3.0.0: Initial tagging script for Notmuch
@@ -17825,8 +17825,8 @@ www-client/elinks 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-esta
 www-client/epiphany 3.30.5 3.32.6 3.34.4 3.36.3: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 68.10.0 68.11.0 78.0.2 79.0: Firefox Web Browser
-www-client/firefox-bin 68.10.0 68.11.0 78.0.2 79.0: Firefox Web Browser
+www-client/firefox 68.11.0 79.0: Firefox Web Browser
+www-client/firefox-bin 68.11.0 79.0: Firefox Web Browser
 www-client/google-chrome 84.0.4147.105: The web browser from Google
 www-client/google-chrome-beta 85.0.4183.49: The web browser from Google
 www-client/google-chrome-unstable 86.0.4214.2: The web browser from Google
