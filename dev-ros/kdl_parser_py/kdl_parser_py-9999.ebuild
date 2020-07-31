@@ -17,7 +17,10 @@ RDEPEND="
 	>=dev-ros/urdf-1.13[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	test? ( dev-ros/rostest[${PYTHON_SINGLE_USEDEP}] )"
+	test? (
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		$(python_gen_cond_dep "dev-python/urdf_parser_py[\${PYTHON_USEDEP}]")
+	)"
 
 src_test() {
 	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"

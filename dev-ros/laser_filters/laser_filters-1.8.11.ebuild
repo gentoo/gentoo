@@ -14,16 +14,23 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/roscpp
-	dev-libs/boost:=
 	dev-ros/tf
-	dev-ros/angles
 	dev-ros/filters
+	dev-ros/message_filters
 	dev-ros/laser_geometry
+	dev-ros/pluginlib
+	dev-ros/angles
+	dev-ros/dynamic_reconfigure
+
 	dev-libs/tinyxml2:=
 	dev-libs/console_bridge:=
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:3
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	test? ( dev-ros/rostest[${PYTHON_SINGLE_USEDEP}] )"
+	test? (
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		dev-cpp/gtest
+	)"
 PATCHES=( "${FILESDIR}/eigen.patch" )
