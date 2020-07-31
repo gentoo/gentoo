@@ -146,7 +146,6 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	fi
 	IUSE+=" debug +cxx +nptl" TC_FEATURES+=(nptl)
 	[[ -n ${PIE_VER} ]] && IUSE+=" nopie"
-	[[ -n ${D_VER}   ]] && IUSE+=" d"
 	[[ -n ${SPECS_VER} ]] && IUSE+=" nossp"
 	# fortran support appeared in 4.1, but 4.1 needs outdated mpfr
 	tc_version_is_at_least 4.2 && IUSE+=" +fortran" TC_FEATURES+=(fortran)
@@ -378,9 +377,6 @@ get_gcc_src_uri() {
 	[[ -n ${SPECS_VER} ]] && \
 		GCC_SRC_URI+=" $(gentoo_urls gcc-${SPECS_GCC_VER}-specs-${SPECS_VER}.tar.bz2)"
 
-	[[ -n ${D_VER} ]] && \
-		GCC_SRC_URI+=" d? ( mirror://sourceforge/dgcc/gdc-${D_VER}-src.tar.bz2 )"
-
 	if tc_has_feature gcj ; then
 		if tc_version_is_at_least 4.5 ; then
 			GCC_SRC_URI+=" gcj? ( ftp://sourceware.org/pub/java/ecj-4.5.jar )"
@@ -450,18 +446,6 @@ tc_apply_patches() {
 toolchain_src_prepare() {
 	export BRANDING_GCC_PKGVERSION="Gentoo ${GCC_PVR}"
 	cd "${S}"
-
-	if [[ -n ${D_VER} ]] && use d ; then
-		mv "${WORKDIR}"/d gcc/d || die
-		ebegin "Adding support for the D language"
-		./gcc/d/setup-gcc.sh >& "${T}"/dgcc.log
-		if ! eend $? ; then
-			eerror "The D GCC package failed to apply"
-			eerror "Please include this log file when posting a bug report:"
-			eerror "  ${T}/dgcc.log"
-			die "failed to include the D language"
-		fi
-	fi
 
 	do_gcc_gentoo_patches
 	do_gcc_PIE_patches
