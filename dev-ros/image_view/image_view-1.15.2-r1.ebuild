@@ -14,9 +14,6 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-libs/boost:=[threads]
-	media-libs/opencv:=
-	x11-libs/gtk+:2
 	dev-ros/camera_calibration_parsers
 	>=dev-ros/cv_bridge-1.11.10
 	dev-ros/image_transport
@@ -26,9 +23,17 @@ RDEPEND="
 	dev-libs/console_bridge:=
 	dev-ros/roscpp
 	dev-ros/dynamic_reconfigure[${PYTHON_SINGLE_USEDEP}]
+
+	dev-libs/boost:=[threads]
+	media-libs/opencv:=
+	x11-libs/gtk+:3
+	media-libs/harfbuzz:=
 "
 DEPEND="${RDEPEND}
 	dev-ros/stereo_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
+"
+BDEPEND="
+	virtual/pkgconfig
 "
