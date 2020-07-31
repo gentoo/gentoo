@@ -146,7 +146,6 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	fi
 	IUSE+=" debug +cxx +nptl" TC_FEATURES+=(nptl)
 	[[ -n ${PIE_VER} ]] && IUSE+=" nopie"
-	[[ -n ${HTB_VER} ]] && IUSE+=" boundschecking"
 	[[ -n ${D_VER}   ]] && IUSE+=" d"
 	[[ -n ${SPECS_VER} ]] && IUSE+=" nossp"
 	# fortran support appeared in 4.1, but 4.1 needs outdated mpfr
@@ -335,13 +334,6 @@ gentoo_urls() {
 #			The resulting filename of this tarball will be:
 #			gcc-${SPECS_GCC_VER:-${GCC_RELEASE_VER}}-specs-${SPECS_VER}.tar.bz2
 #
-#	HTB_VER
-#	HTB_GCC_VER
-#			These variables control whether or not an ebuild supports Herman
-#			ten Brugge's bounds-checking patches. If you want to use a patch
-#			for an older gcc version with a new gcc, make sure you set
-#			HTB_GCC_VER to that version of gcc.
-#
 #	CYGWINPORTS_GITREV
 #			If set, this variable signals that we should apply additional patches
 #			maintained by upstream Cygwin developers at github/cygwinports/gcc,
@@ -385,16 +377,6 @@ get_gcc_src_uri() {
 	# gcc minispec for the hardened gcc 4 compiler
 	[[ -n ${SPECS_VER} ]] && \
 		GCC_SRC_URI+=" $(gentoo_urls gcc-${SPECS_GCC_VER}-specs-${SPECS_VER}.tar.bz2)"
-
-	# gcc bounds checking patch
-	if [[ -n ${HTB_VER} ]] ; then
-		local HTBFILE="bounds-checking-gcc-${HTB_GCC_VER}-${HTB_VER}.patch.bz2"
-		GCC_SRC_URI+="
-			boundschecking? (
-				mirror://sourceforge/boundschecking/${HTBFILE}
-				$(gentoo_urls ${HTBFILE})
-			)"
-	fi
 
 	[[ -n ${D_VER} ]] && \
 		GCC_SRC_URI+=" d? ( mirror://sourceforge/dgcc/gdc-${D_VER}-src.tar.bz2 )"
@@ -482,7 +464,6 @@ toolchain_src_prepare() {
 	fi
 
 	do_gcc_gentoo_patches
-	do_gcc_HTB_patches
 	do_gcc_PIE_patches
 	do_gcc_CYGWINPORTS_patches
 
@@ -605,14 +586,6 @@ do_gcc_gentoo_patches() {
 			tc_apply_patches "Applying uClibc patches ..." "${WORKDIR}"/uclibc/*.patch
 		fi
 	fi
-}
-
-do_gcc_HTB_patches() {
-	use_if_iuse boundschecking || return 0
-
-	# modify the bounds checking patch with a regression patch
-	tc_apply_patches "Bounds checking patch" "${WORKDIR}/bounds-checking-gcc-${HTB_GCC_VER}-${HTB_VER}.patch"
-	BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION}, HTB-${HTB_GCC_VER}-${HTB_VER}"
 }
 
 do_gcc_PIE_patches() {
@@ -1680,8 +1653,7 @@ gcc_do_make() {
 
 	# Older versions of GCC could not do profiledbootstrap in parallel due to
 	# collisions with profiling info.
-	# boundschecking also seems to introduce parallel build issues.
-	if [[ ${GCC_MAKE_TARGET} == "profiledbootstrap" ]] || use_if_iuse boundschecking ; then
+	if [[ ${GCC_MAKE_TARGET} == "profiledbootstrap" ]]; then
 		! tc_version_is_at_least 4.6 && export MAKEOPTS="${MAKEOPTS} -j1"
 	fi
 
