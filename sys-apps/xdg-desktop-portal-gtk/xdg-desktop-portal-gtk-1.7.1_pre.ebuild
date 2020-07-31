@@ -18,13 +18,13 @@ KEYWORDS=""
 IUSE="wayland X"
 
 BDEPEND="
+	dev-util/gdbus-codegen
 	sys-devel/gettext
 	virtual/pkgconfig
 "
 
 DEPEND="
 	dev-libs/glib:2
-	dev-util/gdbus-codegen
 	gnome-base/gnome-desktop:3=
 	media-libs/fontconfig
 	sys-apps/dbus
