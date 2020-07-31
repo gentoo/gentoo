@@ -37,6 +37,12 @@ PATCHES=(
 	"${FILESDIR}"/${P}-py39.patch
 )
 
+src_prepare() {
+	# use setuptools unconditionally
+	sed -i -e 's:distutils\.core:setuptools:' setup.py || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	script -eqc "nosetests -v" || die
 }
