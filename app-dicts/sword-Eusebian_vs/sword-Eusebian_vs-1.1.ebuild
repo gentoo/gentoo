@@ -11,3 +11,5 @@ DESCRIPTION="Eusebian Numbers By Verse"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Eusebian_vs"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"
+
+RDEPEND="!app-dicts/sword-Eusebian_num"

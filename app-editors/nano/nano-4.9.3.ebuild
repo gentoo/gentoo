@@ -32,6 +32,14 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 	virtual/pkgconfig
 "
+
+REQUIRED_USE="!ncurses? ( slang? ( minimal ) )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-disable-speller_build_fix.patch"
+	"${FILESDIR}/${P}-minimal_build_fix.patch" #734856
+)
+
 src_prepare() {
 	default
 	if [[ ${PV} == "9999" ]] ; then
