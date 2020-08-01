@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 		${COV_DEP}
 		$(python_gen_cond_dep '
 			dev-python/twisted[${PYTHON_USEDEP}]
-		' python2_7 python3_{6,7,8})
+		' python3_{6,7,8})
 	)"
 
 PATCHES=(
