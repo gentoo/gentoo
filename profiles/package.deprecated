@@ -66,15 +66,7 @@ gnome-base/orbit
 # are really confusing.  Use $(python_gen_cond_dep ...) instead
 # if your package still needs to support Python 2 (or remove it
 # for Python 3 only packages).
-virtual/python-backports_abc
-virtual/python-enum34
-virtual/python-funcsigs
 virtual/python-futures
-virtual/python-ipaddress
-virtual/python-pathlib
-virtual/python-singledispatch
-virtual/python-typing
-virtual/python-unittest-mock
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-08)
 # dev-python/pygtk is in the process of being removed, tracker bug #706462

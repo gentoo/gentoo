@@ -20,10 +20,7 @@ RDEPEND="
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
-	|| (
-		dev-python/elementtree[${PYTHON_USEDEP}]
-		dev-python/lxml[${PYTHON_USEDEP}]
-	)
+	dev-python/lxml[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
