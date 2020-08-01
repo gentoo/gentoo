@@ -15561,7 +15561,7 @@ net-wireless/cubicsdr 0.2.3-r2 9999: Cross-Platform and Open-Source Software Def
 net-wireless/dump1090 3.7.2 9999: simple Mode S decoder for RTLSDR devices
 net-wireless/dump978 9999: simple Mode S decoder for soapysdr supported devices
 net-wireless/gnome-bluetooth 3.34.1: Bluetooth graphical utilities integrated with GNOME
-net-wireless/gnuradio 3.7.13.5-r3 3.8.1.0-r1 9999: Toolkit that provides signal processing blocks to implement software radios
+net-wireless/gnuradio 3.7.13.5-r3 3.7.13.5-r4 3.8.1.0-r1 3.8.1.0-r2 9999: Toolkit that provides signal processing blocks to implement software radios
 net-wireless/gobi_loader 0.7-r2: gobi_loader is a firmware loader for Qualcomm Gobi USB chipsets
 net-wireless/gqrx 2.11.5-r1 2.12.1 9999: Software defined radio receiver powered by GNU Radio and Qt
 net-wireless/gqrx-scanner 1.0.1_p20190329: frequency scanner for Gqrx Software Defined Radio receiver
