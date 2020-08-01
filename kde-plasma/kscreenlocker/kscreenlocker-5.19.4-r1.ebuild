@@ -57,6 +57,8 @@ PDEPEND="
 
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}/${PN}-5.19.5-ck-unlock.patch" )
+
 src_prepare() {
 	ecm_src_prepare
 
@@ -77,7 +79,7 @@ src_test() {
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_Seccomp=ON
-		$(cmake_use_find_package consolekit loginctl)
+		$(cmake_use_find_package consolekit ConsoleKit)
 		-DPAM_REQUIRED=$(usex pam)
 		$(cmake_use_find_package pam PAM)
 	)
