@@ -6,7 +6,7 @@ EAPI=7
 MY_PN="Flask-Sphinx-Themes"
 MY_P="${MY_PN}-${PV}"
 
-PYTHON_COMPAT=( pypy3 python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="Sphinx Themes for Flask related projects and Flask itself"

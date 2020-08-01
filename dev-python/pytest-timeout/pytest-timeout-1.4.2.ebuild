@@ -28,6 +28,10 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/pytest-timeout-1.4.2-optional-cov.patch
+)
+
 python_test() {
 	distutils_install_for_testing
 
