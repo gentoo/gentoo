@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
-		Bower is a curses frontend for the Notmuch email system, written in Mercury.
+		Bower is a curses frontend for the Notmuch (https://notmuchmail.org)
+		email system, written in Mercury.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">wangp/bower</remote-id>
