@@ -8591,7 +8591,7 @@ dev-python/pygobject 2.28.6-r55 3.34.0 3.36.1: Python bindings for GObject Intro
 dev-python/pygpgme 0.3-r2: A Python wrapper for the GPGME library
 dev-python/pygpu 0.6.7: Python bindings to libgpuarray
 dev-python/pygraphviz 1.5: Python wrapper for the Graphviz Agraph data structure
-dev-python/pygresql 5.1: A Python interface for the PostgreSQL database
+dev-python/pygresql 5.1 5.2: A Python interface for the PostgreSQL database
 dev-python/pygsl 2.1.1: Python interface for the GNU scientific library (gsl)
 dev-python/pygtk 2.24.0-r5: GTK+2 bindings for Python
 dev-python/pyh2o 9999: Python API for sci-libs/libh2o
