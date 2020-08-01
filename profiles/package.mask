@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-01)
+# Py2 only. Upstream has py3 version
+# Removal in 30 days. Bug #709278
+media-gfx/printrun
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-01)
 # Py2 only. Dead upstream.
 # Removal in 30 days
 dev-python/pyvorbis
