@@ -29,7 +29,8 @@ esac
 # - "yes": will run prune_libtool_files --modules
 # - If it is not set, it will run prune_libtool_files
 # MATE_LA_PUNT is a stub to GNOME2_LA_PUNT
-GNOME2_LA_PUNT=${MATE_LA_PUNT:-""}
+MATE_LA_PUNT=${MATE_LA_PUNT:-""}
+GNOME2_LA_PUNT="${MATE_LA_PUNT}"
 
 inherit gnome2 autotools mate-desktop.org
 
