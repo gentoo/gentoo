@@ -602,7 +602,7 @@ app-admin/serf 0.8.1-r1: Service orchestration and management tool
 app-admin/setools 4.2.1 4.2.2 9999: Policy Analysis Tools for SELinux
 app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
 app-admin/spectre-meltdown-checker 0.39 0.40 0.41 0.42 0.43 9999: Spectre & Meltdown vulnerability/mitigation checker for Linux
-app-admin/sshguard 2.4.0 99999: protects hosts from brute force attacks against ssh
+app-admin/sshguard 2.4.0 2.4.1 99999: protects hosts from brute force attacks against ssh
 app-admin/stow 2.2.2-r1 2.3.1: GNU Stow is a symlink farm manager
 app-admin/su-exec 0.2: Switch user and group id and exec
 app-admin/sud 1.3-r1: A daemon to execute processes with special privileges in a nosuid environment
