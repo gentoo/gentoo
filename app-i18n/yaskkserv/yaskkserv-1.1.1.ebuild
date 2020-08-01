@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -11,7 +11,7 @@ SRC_URI="http://umiushi.org/~wac/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gnutls libressl systemd"
 
 RDEPEND="app-i18n/skk-jisyo
@@ -31,7 +31,7 @@ src_configure() {
 	econf \
 		$(use_enable gnutls) \
 		$(use_enable systemd) \
-		--compiler="${tc_getCXX}"
+		--compiler="${tc-getCXX}"
 }
 
 src_install() {
