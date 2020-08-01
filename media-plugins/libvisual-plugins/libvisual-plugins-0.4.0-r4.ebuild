@@ -7,7 +7,7 @@ inherit autotools eutils multilib-minimal
 PATCHLEVEL=4
 
 DESCRIPTION="collection of visualization plugins for use with the libvisual framework"
-HOMEPAGE="http://libvisual.sourceforge.net/"
+HOMEPAGE="http://libvisual.org/"
 SRC_URI="mirror://sourceforge/libvisual/${P}.tar.gz
 	mirror://gentoo/${P}-patches-${PATCHLEVEL}.tar.bz2
 	mirror://gentoo/${P}-m4-1.tar.bz2"
@@ -36,6 +36,10 @@ DEPEND="${RDEPEND}
 
 DOCS="AUTHORS ChangeLog NEWS README TODO"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fno-common.patch"
+)
+
 src_prepare() {
 	# Can't use eapply on ${WORKDIR}/patches since the patches use different
 	# values for -p. epatch handled that automatically, eapply doesn't
@@ -49,7 +53,7 @@ src_prepare() {
 	eapply -p1 "${WORKDIR}"/patches/070_all_gforce-fbsd.patch
 	eapply -p1 "${WORKDIR}"/patches/080_all_qa.patch
 	eapply -p1 "${WORKDIR}"/patches/090_all_nastyfft.patch
-	eapply_user
+	default
 
 	AT_M4DIR=${WORKDIR}/m4 eautoreconf
 
