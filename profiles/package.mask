@@ -35,6 +35,11 @@
 # Aaron Bauman <bman@gentoo.org> (2020-08-01)
 # Py2 only. Dead upstream
 # Removal in 30 days
+dev-python/pyid3lib
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-01)
+# Py2 only. Dead upstream
+# Removal in 30 days
 dev-python/pupynere
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-01)
