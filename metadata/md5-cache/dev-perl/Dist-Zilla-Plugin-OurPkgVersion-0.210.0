@@ -1,0 +1,15 @@
+BDEPEND=dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/Dist-Zilla-6.0.0 dev-perl/Moose dev-perl/MooseX-Types-Perl dev-perl/PPI dev-perl/namespace-autoclean virtual/perl-ExtUtils-MakeMaker test? ( >=virtual/perl-CPAN-Meta-2.120.900 dev-perl/Path-Tiny dev-perl/Test-Exception virtual/perl-Test-Simple >=dev-perl/Test-Version-0.40.0 ) dev-lang/perl
+DESCRIPTION=No line insertion and does Package version with our
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/Dist-Zilla-Plugin-OurPkgVersion
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=Artistic-2
+RDEPEND=>=dev-perl/Dist-Zilla-6.0.0 dev-perl/Moose dev-perl/MooseX-Types-Perl dev-perl/PPI dev-perl/namespace-autoclean dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/P/PL/PLICEASE/Dist-Zilla-Plugin-OurPkgVersion-0.21.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=edd9a1b6eb60f3c9e4a2b1240178e8f8

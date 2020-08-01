@@ -6347,7 +6347,7 @@ dev-perl/Dist-Zilla-Plugin-ModuleBuildTiny 0.15.0: Build a Build.PL that uses Mo
 dev-perl/Dist-Zilla-Plugin-NameFromDirectory 0.40.0: Guess distribution name from the current directory
 dev-perl/Dist-Zilla-Plugin-NextVersion-Semantic 0.2.5: update the next version, semantic-wise
 dev-perl/Dist-Zilla-Plugin-OSPrereqs 0.8.0 0.11.0: List prereqs conditional on operating system
-dev-perl/Dist-Zilla-Plugin-OurPkgVersion 0.120.0: No line insertion and does Package version with our
+dev-perl/Dist-Zilla-Plugin-OurPkgVersion 0.120.0 0.210.0: No line insertion and does Package version with our
 dev-perl/Dist-Zilla-Plugin-PodWeaver 4.8.0: Weave your Pod together from configuration and Dist::Zilla
 dev-perl/Dist-Zilla-Plugin-Prereqs-FromCPANfile 0.80.0: Parse cpanfile for prereqs
 dev-perl/Dist-Zilla-Plugin-RPM 0.15.0: Build an RPM from your Dist::Zilla release
