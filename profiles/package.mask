@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (2020-08-01)
+# Py2 only. Dead upstream.
+# Removal in 30 days. Bug #706238
+dev-python/flup
+
 # Michał Górny <mgorny@gentoo.org> (2020-08-01)
 # Python 2 backport, not used by anything anymore.
 # Removal in 30 days.
