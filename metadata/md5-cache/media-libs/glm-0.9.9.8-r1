@@ -1,0 +1,13 @@
+BDEPEND=dev-util/ninja dev-util/cmake
+DEFINED_PHASES=compile configure install prepare test
+DESCRIPTION=OpenGL Mathematics
+EAPI=7
+HOMEPAGE=http://glm.g-truc.net/
+IUSE=test cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_avx cpu_flags_x86_avx2
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
+LICENSE=|| ( HappyBunny MIT )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/g-truc/glm/archive/0.9.9.8.tar.gz -> glm-0.9.9.8.tar.gz
+_eclasses_=cmake	f274d2f953f93e2d88cd3e0b2ce376a9	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=1b76fe5bdaccd871d79dd316b5ae718f

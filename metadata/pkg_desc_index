@@ -13019,7 +13019,7 @@ media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 5.2.1-r1: Library to handle, display and manipulate GIF images
 media-libs/glew 1.6.0-r100 1.10.0-r100 2.1.0-r1 2.2.0: The OpenGL Extension Wrangler Library
 media-libs/glfw 3.2.1 3.3.2: The Portable OpenGL FrameWork
-media-libs/glm 0.9.9.5 0.9.9.7 0.9.9.8: OpenGL Mathematics
+media-libs/glm 0.9.9.5 0.9.9.7 0.9.9.8 0.9.9.8-r1: OpenGL Mathematics
 media-libs/glpng 1.46-r1: OpenGL PNG image library
 media-libs/glu 9.0.1 9999: The OpenGL Utility Library
 media-libs/glyr 1.0.10: Music related metadata searchengine, both with commandline interface and C API
@@ -17587,8 +17587,8 @@ sys-kernel/dracut 048-r1 049-r3 050 050-r1 9999: Generic initramfs generation to
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.0_beta1 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-kernel 5.4.40 5.4.52 5.4.53 5.4.55 5.7.10: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.40 5.4.52 5.4.53 5.4.55 5.7.10: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.40 5.4.52 5.4.53 5.4.55 5.7.10 5.7.12: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.40 5.4.52 5.4.53 5.4.55 5.7.10 5.7.12: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.221 4.4.228 4.4.229 4.4.230 4.4.231 4.4.232 4.9.221 4.9.228 4.9.229 4.9.230 4.9.231 4.9.232 4.14.178 4.14.185 4.14.188 4.14.189 4.14.190 4.14.191 4.19.120 4.19.129 4.19.133 4.19.134 4.19.135 4.19.136 5.4.38 5.4.48 5.4.52 5.4.53 5.4.54 5.4.55 5.7.8 5.7.9 5.7.10 5.7.11 5.7.12: Full sources including the Gentoo patchset for the 5.7 kernel tree
 sys-kernel/git-sources 5.8_rc1 5.8_rc2 5.8_rc3 5.8_rc4 5.8_rc5 5.8_rc6 5.8_rc7: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17603,7 +17603,7 @@ sys-kernel/pf-sources 5.6_p8 5.7_p1 5.7_p2 5.7_p3 5.7_p4 5.7_p5: Linux kernel fo
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p20190925 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.220_p197 4.4.225_p198 4.9.224_p144 4.9.227_p146 4.14.170_p75 4.14.184_p84 4.19.124_p53 4.19.127_p54 5.4.40_p24 5.4.44_p27 5.6.14_p7 5.6.17_p10: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.40 5.4.52 5.4.53 5.4.55 5.7.10: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.40 5.4.52 5.4.53 5.4.55 5.7.10 5.7.12: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.232 4.9.232 4.14.191 4.19.136 5.4.55 5.7.12: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
@@ -19104,7 +19104,7 @@ xfce-base/xfce4-session 4.14.1 4.14.2: A session manager for the Xfce desktop en
 xfce-base/xfce4-settings 4.14.3 4.15.1-r1: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.14.1 4.14.3 4.15.0: A configuration management system for Xfce
 xfce-base/xfdesktop 4.14.2 4.15.0: Desktop manager for the Xfce desktop environment
-xfce-base/xfwm4 4.14.0-r1 4.14.2 4.14.3: Window manager for the Xfce desktop environment
+xfce-base/xfwm4 4.14.0-r1 4.14.2 4.14.3 4.14.4 4.15.0: Window manager for the Xfce desktop environment
 xfce-extra/eatmonkey 0.1.4-r1: A download manager that works exclusively with aria2
 xfce-extra/multiload-nandhp 0.3-r4: A port of the GNOME multiload applet for the Xfce panel
 xfce-extra/thunar-archive-plugin 0.4.0: Archive plug-in for the Thunar filemanager
