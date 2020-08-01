@@ -115,7 +115,17 @@ mate_src_prepare() {
 # MATE specific configure handling
 # Stub to gnome2_src_configure()
 mate_src_configure() {
-	gnome2_src_configure "$@"
+
+	local mateconf=()
+
+	# Pass --disable-static whenever possible
+	if ! use_if_iuse static-libs; then
+		if grep -q "enable-static" "${ECONF_SOURCE:-.}"/configure; then
+			mateconf+=( --disable-static )
+		fi
+	fi
+
+	gnome2_src_configure "${mateconf[@]} $@"
 }
 
 # @FUNCTION: mate_src_install
