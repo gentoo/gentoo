@@ -34,15 +34,10 @@
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-01)
 # Py2 only. Last upstream release 2013.
-# Removal in 30 days
+# Removal in 30 days. Last 2 have deps on cddb.
 dev-python/cddb-py
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-01)
-# Multiple build failure bugs. Py2 only
-# Removal in 30 days
-# Bug #709790, #672872, #714828
-app-pda/jpilot
-app-pda/pilot-link
+media-sound/exaile
+media-sound/jack
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-01)
 # This package's tests are seriously broken (they access random Internet
