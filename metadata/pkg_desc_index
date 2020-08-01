@@ -2030,7 +2030,7 @@ app-eselect/eselect-timezone 0.2: Manages timezone selection
 app-eselect/eselect-timidity 20110513: Manages configuration of TiMidity++ patchsets
 app-eselect/eselect-unison 0.4: unison module for eselect
 app-eselect/eselect-vdr 0.0.3 0.0.4: Manages the VDR plugins
-app-eselect/eselect-vi 1.1.9 1.1.9-r1 1.2: Manages the /usr/bin/vi symlink
+app-eselect/eselect-vi 1.2: Manages the /usr/bin/vi symlink
 app-eselect/eselect-wine 1.2.2: Manage active wine version
 app-eselect/eselect-wxwidgets 20140423 20180529: Eselect module and wrappers for wxWidgets
 app-eselect/eselect-xvmc 0.4: Manages XvMC implementations
