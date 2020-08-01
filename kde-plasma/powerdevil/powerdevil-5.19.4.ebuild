@@ -56,6 +56,8 @@ RDEPEND="${DEPEND}
 	>=sys-power/upower-0.9.23
 "
 
+PATCHES=( "${FILESDIR}/${P}-ddcutil-0.9.9.patch" ) # bug 734918
+
 src_configure() {
 	local mycmakeargs=(
 		-DHAVE_DDCUTIL=$(usex brightness-control)
