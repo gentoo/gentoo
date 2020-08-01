@@ -1,13 +1,13 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="7"
 
-PATCH_VER="2"
+PATCH_VER="3"
 UCLIBC_VER="1.0"
 
 # Hardened gcc 4 stuff
-PIE_VER="0.6.4"
+PIE_VER="1"
 SPECS_VER="0.2.0"
 SPECS_GCC_VER="4.4.3"
 # arch/libc configurations known to be stable with {PIE,SSP}-by-default
@@ -40,11 +40,11 @@ src_prepare() {
 	fi
 
 	# Bug 638056
-	epatch "${FILESDIR}/${P}-bootstrap.patch"
+	eapply "${FILESDIR}/${P}-bootstrap.patch"
 
 	toolchain_src_prepare
 
 	use vanilla && return 0
 	# Use -r1 for newer piepatchet that use DRIVER_SELF_SPECS for the hardened specs.
-	[[ ${CHOST} == ${CTARGET} ]] && epatch "${FILESDIR}"/gcc-spec-env-r1.patch
+	[[ ${CHOST} == ${CTARGET} ]] && eapply "${FILESDIR}"/gcc-spec-env-r1.patch
 }
