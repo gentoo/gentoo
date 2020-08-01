@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_REQ_USE="tk?"
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit distutils-r1 virtualx
 
