@@ -6,3 +6,4 @@ dev-lang/nim
 dev-lang/rust-bin
 dev-lang/rust
 virtual/rust
+>=gnome-base/librsvg-2.41
