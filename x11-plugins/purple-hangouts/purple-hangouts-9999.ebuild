@@ -3,11 +3,11 @@
 
 EAPI=7
 
-inherit toolchain-funcs mercurial
+inherit git-r3 toolchain-funcs
 
 DESCRIPTION="Hangouts Plugin for libpurple"
-HOMEPAGE="https://bitbucket.org/EionRobb/purple-hangouts"
-EHG_REPO_URI="https://bitbucket.org/EionRobb/purple-hangouts"
+HOMEPAGE="https://github.com/EionRobb/purple-hangouts"
+EGIT_REPO_URI="https://github.com/EionRobb/purple-hangouts"
 
 LICENSE="GPL-3+"
 SLOT="0"
