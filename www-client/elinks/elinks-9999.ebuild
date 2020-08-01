@@ -1,9 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
+
 inherit autotools git-r3 python-any-r1
 
 EGIT_REPO_URI="https://github.com/rkd77/felinks"
@@ -17,12 +19,13 @@ KEYWORDS=""
 IUSE="bittorrent brotli bzip2 debug finger ftp gopher gpm guile idn ipv6
 	javascript libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib"
 
+BDEPEND="virtual/pkgconfig"
 RDEPEND="
-	brotli? ( app-arch/brotli )
+	brotli? ( app-arch/brotli:= )
 	bzip2? ( >=app-arch/bzip2-1.0.2 )
 	gpm? ( >=sys-libs/ncurses-5.2:0= >=sys-libs/gpm-1.20.0-r5 )
 	guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated] )
-	idn? ( net-dns/libidn )
+	idn? ( net-dns/libidn:= )
 	javascript? ( >=dev-lang/spidermonkey-1.8.5:0= )
 	lua? ( >=dev-lang/lua-5:0= )
 	perl? ( dev-lang/perl:= )
@@ -41,7 +44,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-parallel-make.patch
-	)
+)
 
 src_unpack() {
 	default
