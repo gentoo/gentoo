@@ -4,6 +4,7 @@
 EAPI=7
 
 # pkg compiles fine with py3_{8,9} but tests fail
+# https://github.com/davidjamesca/ctypesgen/issues/90
 PYTHON_COMPAT=( python3_7 )
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
