@@ -12,10 +12,9 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs"
 
-RDEPEND="app-text/hunspell"
-DEPEND="${RDEPEND}
-	dev-lang/perl
-"
+DEPEND="app-text/hunspell"
+RDEPEND="${DEPEND}"
+BDEPEND="dev-lang/perl"
 
 DOCS=( AUTHORS ChangeLog NEWS README{,.nonstandard,.hyphen,.compound} THANKS TODO )
 
