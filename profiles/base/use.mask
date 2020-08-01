@@ -40,6 +40,9 @@ php_targets_php7-0
 # d3d9 only works on amd64/x86.
 d3d9
 
+# winssl is for prefix/windows/winnt only
+winssl
+
 # CURL_SSL=winssl is for prefix/windows/winnt only
 curl_ssl_winssl
 
