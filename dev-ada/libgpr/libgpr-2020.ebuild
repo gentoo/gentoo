@@ -14,7 +14,7 @@ SRC_URI="https://community.download.adacore.com/v1/408ec35c3bb86bd227db3da55d3e1
 		-> ${MYP}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+shared static-libs static-pic"
 
 RDEPEND="dev-ada/xmlada[shared?,static-libs?,static-pic?,${ADA_USEDEP}]
