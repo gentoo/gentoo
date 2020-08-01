@@ -10,6 +10,6 @@
     manipulation library.
   </longdescription>
   <upstream>
-    <remote-id type="github">sympy/symengine.py</remote-id>
+    <remote-id type="github">symengine/symengine.py</remote-id>
   </upstream>
 </pkgmetadata>
