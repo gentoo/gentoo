@@ -15,7 +15,7 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0/${PV}"
 # keep in sync with ghc-8.6
-#KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND=">=dev-lang/ghc-7.4.1:=
@@ -25,4 +25,4 @@ DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10
 "
 
-CABAL_CORE_LIB_GHC_PV="PM:8.6.1 PM:8.6.2 PM:8.6.3 PM:8.6.4 PM:8.6.5 PM:8.8.1 PM:8.8.2 PM:8.8.3 PM:8.10.1_alpha1 PM:8.10.1_alpha2 PM:8.10.1 PM:9999"
+CABAL_CORE_LIB_GHC_PV="PM:8.6.1 PM:8.6.2 PM:8.6.3 PM:8.6.4 PM:8.6.5 PM:8.8.1 PM:8.8.2 PM:8.8.3 PM:8.8.4 PM:8.10.1_alpha1 PM:8.10.1_alpha2 PM:8.10.1 PM:9999"
