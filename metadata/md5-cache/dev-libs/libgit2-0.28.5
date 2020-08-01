@@ -5,11 +5,11 @@ DESCRIPTION=A linkable library for Git
 EAPI=7
 HOMEPAGE=https://libgit2.org
 IUSE=examples gssapi libressl +ssh test +threads trace
-KEYWORDS=amd64 arm arm64 ~ppc ppc64 x86 ~ppc-macos
+KEYWORDS=amd64 arm arm64 ppc ppc64 x86 ~ppc-macos
 LICENSE=GPL-2-with-linking-exception
 RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sys-libs/zlib net-libs/http-parser:= gssapi? ( virtual/krb5 ) ssh? ( net-libs/libssh2 )
 RESTRICT=!test? ( test )
 SLOT=0/28
 SRC_URI=https://github.com/libgit2/libgit2/archive/v0.28.5.tar.gz -> libgit2-0.28.5.tar.gz
 _eclasses_=cmake	f274d2f953f93e2d88cd3e0b2ce376a9	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=c97fbf4288d5a9897f0f1f0d76742940
+_md5_=bd69a158e645ea6f885e3ca7f4ed76ef

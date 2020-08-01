@@ -5,7 +5,7 @@ DESCRIPTION=A persistent caching system, key-value and data structures database
 EAPI=7
 HOMEPAGE=https://redis.io
 IUSE=+jemalloc tcmalloc luajit test
-KEYWORDS=~amd64 arm ~arm64 hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris
+KEYWORDS=~amd64 arm ~arm64 hppa ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris
 LICENSE=BSD
 RDEPEND=luajit? ( dev-lang/luajit:2 ) !luajit? ( || ( dev-lang/lua:5.1 =dev-lang/lua-5.1*:0 ) ) tcmalloc? ( dev-util/google-perftools ) jemalloc? ( >=dev-libs/jemalloc-5.1:= ) acct-group/redis acct-user/redis
 REQUIRED_USE=?? ( tcmalloc jemalloc )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://download.redis.io/releases/redis-5.0.9.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=2ef717d64560768ddec5d2af2f264ecd
+_md5_=218b6e4e680639bc8a3c8afcaefde3c2
