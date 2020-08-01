@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit autotools python-r1
@@ -18,8 +18,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	app-i18n/libcangjie"
-DEPEND="${RDEPEND}
-	dev-python/cython[${PYTHON_USEDEP}]
+DEPEND="${RDEPEND}"
+BDEPEND="dev-python/cython[${PYTHON_USEDEP}]
 	virtual/pkgconfig"
 
 src_prepare() {
@@ -43,7 +43,11 @@ src_test() {
 }
 
 src_install() {
-	python_foreach_impl run_in_build_dir default
+	python_install() {
+		default
+		python_optimize
+	}
+	python_foreach_impl run_in_build_dir python_install
 	einstalldocs
 
 	find "${D}" -name '*.la' -delete || die
