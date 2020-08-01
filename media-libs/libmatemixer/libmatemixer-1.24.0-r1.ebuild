@@ -35,6 +35,7 @@ DEPEND="${COMMON_DEPEND}
 
 src_configure() {
 	mate_src_configure \
+		--disable-static \
 		--disable-null \
 		$(use_enable alsa) \
 		$(use_enable oss) \
