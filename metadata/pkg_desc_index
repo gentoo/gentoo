@@ -8018,7 +8018,7 @@ dev-python/cycler 0.10.0 0.10.0-r1: Composable style cycles
 dev-python/cython 0.29.15 0.29.20-r2 0.29.21: A Python to C compiler
 dev-python/cytoolz 0.10.0: Cython implementation of Toolz: High performance functional utilities
 dev-python/daemonize 2.5.0: Library for writing system daemons in Python
-dev-python/dask 1.2.0: Task scheduling and blocked algorithms for parallel processing
+dev-python/dask 1.2.0 2.22.0: Task scheduling and blocked algorithms for parallel processing
 dev-python/dataclasses 0.7: A backport of the dataclasses module for Python 3.6
 dev-python/dbus-python 1.2.16: Python bindings for the D-Bus messagebus
 dev-python/dbusmock 0.18.3 0.19: Easily create mock objects on D-Bus for software testing
@@ -8165,7 +8165,7 @@ dev-python/freezegun 0.3.15: Let your Python tests travel through time
 dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static files
 dev-python/frozendict 1.2: A simple immutable mapping for python
 dev-python/fs 2.4.9-r1: Filesystem abstraction layer
-dev-python/fsspec 0.7.4: A specification that python filesystems should adhere to
+dev-python/fsspec 0.7.4 0.8.0: A specification that python filesystems should adhere to
 dev-python/fudge 1.1.1: Replace real objects with fakes (mocks, stubs, etc) while testing
 dev-python/funcparserlib 0.3.6-r1: Recursive descent parsing library based on functional combinators
 dev-python/funcsigs 1.0.2-r1: Python function signatures backport from PEP362 for Python 2.7-3.5
@@ -8238,7 +8238,7 @@ dev-python/humanize 2.4.1: Common humanization utilities
 dev-python/hyper-h2 3.2.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 19.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 4.50.8 4.57.1 5.16.0 5.16.3 5.19.0 5.19.1 5.19.2 5.20.2 5.20.3 5.21.0 5.23.1 5.23.3 5.23.7: A library for property based testing
+dev-python/hypothesis 4.50.8 4.57.1 5.16.0 5.16.3 5.19.0 5.19.1 5.19.2 5.20.2 5.20.3 5.21.0 5.23.1 5.23.3 5.23.7 5.23.8: A library for property based testing
 dev-python/icalendar 4.0.6: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.8 2.10: Internationalized Domain Names in Applications (IDNA)
@@ -8271,7 +8271,7 @@ dev-python/ipy 1.00: Class and tools for handling of IPv4 and IPv6 addresses and
 dev-python/ipykernel 5.1.4 5.3.0 5.3.2 5.3.3 5.3.4: IPython Kernel for Jupyter
 dev-python/ipynb 0.5.1: Package/Module importer for importing code from Jupyter Notebook files
 dev-python/ipyparallel 6.2.3 6.3.0: Interactive Parallel Computing with IPython
-dev-python/ipython 7.5.0 7.16.1: Advanced interactive shell for Python
+dev-python/ipython 7.5.0 7.16.1 7.17.0: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.2.0 0.2.0-r1: Vestigial utilities from IPython
 dev-python/ipywidgets 7.5.1: IPython HTML widgets for Jupyter
 dev-python/irc 18.0.0-r1: IRC client framework written in Python
@@ -8462,7 +8462,7 @@ dev-python/nose2 0.9.1-r1: Next generation unittest with plugins
 dev-python/nose_fixes 1.3: A plugin to make nose behave better
 dev-python/nose_warnings_filters 0.1.5-r3: A python module to inject warning filters during nosetest
 dev-python/nosexcover 1.0.11-r1: Extends nose.plugins.cover to add Cobertura-style XML reports
-dev-python/notebook 5.0.0 6.0.3: Jupyter Interactive Notebook
+dev-python/notebook 5.0.0 6.0.3 6.1.0: Jupyter Interactive Notebook
 dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
 dev-python/notify2 0.3.1-r1: Python interface to DBus notifications.
 dev-python/nototools 0_pre20200207: Noto fonts support tools and scripts plus web site generation
@@ -9186,7 +9186,7 @@ dev-python/typed-ast 1.4.1: Python typed-ast backported
 dev-python/typing 3.7.4.1 3.7.4.2 3.7.4.3: Type Hints for Python
 dev-python/typing-extensions 3.7.4.1 3.7.4.2: Type Hint extensions from Python 3.8 backported
 dev-python/tzlocal 2.1: tzinfo object for the local timezone
-dev-python/u-msgpack 2.6.0: A portable, lightweight MessagePack serializer and deserializer
+dev-python/u-msgpack 2.6.0 2.7.0: A portable, lightweight MessagePack serializer and deserializer
 dev-python/ubelt 0.8.8: A stdlib like feel, and extra batteries. Hashing, Caching, Timing, Progress
 dev-python/ujson 1.35-r1 3.0.0: Ultra fast JSON encoder and decoder for Python
 dev-python/uncertainties 3.1.4: Python module for calculations with uncertainties
@@ -9203,7 +9203,7 @@ dev-python/urwid 2.1.0: Curses-based user interface library for Python
 dev-python/urwidtrees 1.0.2-r1: Tree widgets for urwid
 dev-python/utidylib 0.6: TidyLib Python wrapper
 dev-python/uvloop 0.14.0: Ultra-fast implementation of asyncio event loop on top of libuv
-dev-python/vcrpy 4.0.2: Automatically mock your HTTP interactions to simplify and speed up testing
+dev-python/vcrpy 4.0.2 4.1.0: Automatically mock your HTTP interactions to simplify and speed up testing
 dev-python/vcstools 0.1.42: Python library for interacting with various VCS systems
 dev-python/vcversioner 2.16.0.0: Use version control tags to discover version numbers
 dev-python/vdf 3.2-r1 3.3: A module for (de)serialization to and from VDF, Valve's key-value text format
@@ -9211,7 +9211,7 @@ dev-python/vdirsyncer 0.16.8: Synchronize calendars and contacts
 dev-python/verboselogs 1.7: Verbose logging for Python's logging module
 dev-python/versioneer 0.18 0.18-r1: Easy VCS-based management of project version strings
 dev-python/vine 1.3.0: Python Promises
-dev-python/virtualenv 16.7.10 20.0.27 20.0.28: Virtual Python Environment builder
+dev-python/virtualenv 16.7.10 20.0.27 20.0.28 20.0.29: Virtual Python Environment builder
 dev-python/virtualenv-clone 0.5.3: A script for cloning a non-relocatable virtualenv
 dev-python/virtualenvwrapper 4.8.4-r1: Set of extensions to Ian Bicking's virtualenv tool
 dev-python/visitor 0.1.3: A tiny pythonic visitor implementation
@@ -9264,7 +9264,7 @@ dev-python/yapf 0.30.0: A formatter for Python files
 dev-python/yappi 1.2.5: Yet Another Python Profiler
 dev-python/yapsy 1.12.2: A fat-free DIY Python plugin management toolkit
 dev-python/yaql 1.1.3: YAQL: Yet Another Query Language
-dev-python/yarl 1.4.2 1.5.0: Yet another URL library
+dev-python/yarl 1.4.2 1.5.0 1.5.1: Yet another URL library
 dev-python/yaswfp 0.9.3-r1: Yet Another SWF Parser
 dev-python/zVMCloudConnector 1.4.1: a development sdk for managing z/VM
 dev-python/zc-lockfile 2.0: Basic inter-process locks
