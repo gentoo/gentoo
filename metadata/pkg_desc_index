@@ -12173,7 +12173,7 @@ kde-frameworks/threadweaver 5.70.0 5.72.0: Framework for managing threads using 
 kde-misc/basket 2.49b: Multiple information organizer - a DropDrawers clone
 kde-misc/colord-kde 0.5.0-r2: Provides interfaces and session daemon to colord
 kde-misc/kdeconnect 1.4 20.04.3: Adds communication between KDE Plasma and your smartphone
-kde-misc/kdiff3 1.8.2-r1 1.8.3 1.8.3-r1: Frontend to diff3 based on KDE Frameworks
+kde-misc/kdiff3 1.8.3-r1: Frontend to diff3 based on KDE Frameworks
 kde-misc/kdirstat 3.2.1: GUI equivalent to the du command based on KDE Frameworks
 kde-misc/kimtoy 1.92_pre20190225: Input method frontend for Plasma
 kde-misc/kio-fuse 4.95.0: FUSE interface for KIO
@@ -12194,7 +12194,7 @@ kde-misc/plasma-applet-weather-widget 1.6.10-r1: Plasma 5 applet for weather for
 kde-misc/plasma-pass 1.1.0: Plasma applet to access password from pass
 kde-misc/playbar2 2.5-r1: MPRIS2 client, written in QML for Plasma 5
 kde-misc/rsibreak 0.12.13: Small utility which bothers you at certain intervals
-kde-misc/skanlite 2.1.0.1-r1 2.2.0: Simple image scanning application based on libksane and KDE Frameworks
+kde-misc/skanlite 2.2.0: Simple image scanning application based on libksane and KDE Frameworks
 kde-misc/tellico 3.3.1: Collection manager based on KDE Frameworks
 kde-misc/ultimate-gmail-feed 2.1: Plasma 5 widget showing your Gmail feed
 kde-misc/wacomtablet 3.2.0: System settings module for Wacom tablets
