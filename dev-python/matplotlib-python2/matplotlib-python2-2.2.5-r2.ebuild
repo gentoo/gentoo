@@ -23,8 +23,8 @@ S=${WORKDIR}/${MY_P}
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 x86"
-IUSE="cairo excel gtk3 latex qt5 test tk wxwidgets"
-REQUIRED_USE="test? ( cairo gtk3 latex qt5 tk wxwidgets )"
+IUSE="cairo excel gtk3 latex test tk wxwidgets"
+REQUIRED_USE="test? ( cairo gtk3 latex tk wxwidgets )"
 
 RESTRICT="!test? ( test )"
 
@@ -77,8 +77,7 @@ RDEPEND="${COMMON_DEPEND}
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-xetex
-	)
-	qt5? ( dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}] )"
+	)"
 
 # A few C++ source files are written to srcdir.
 # Other than that, the ebuild shall be fit for out-of-source build.
@@ -157,9 +156,10 @@ python_configure() {
 		pysideagg = False
 		qt4 = False
 		qt4agg = False
+		qt5 = False
+		qt5agg = False
 		$(use_setup cairo)
 		$(use_setup gtk3)
-		$(use_setup qt5)
 		$(use_setup tk)
 	EOF
 

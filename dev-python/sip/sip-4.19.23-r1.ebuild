@@ -3,10 +3,10 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 inherit python-r1 toolchain-funcs
 
-DESCRIPTION="Private sip module for PyQt5"
+DESCRIPTION="Python extension module generator for C and C++ libraries"
 HOMEPAGE="https://www.riverbankcomputing.com/software/sip/intro"
 
 MY_PN=sip
@@ -20,17 +20,17 @@ fi
 # Sub-slot based on SIP_API_MAJOR_NR from siplib/sip.h
 SLOT="0/12"
 LICENSE="|| ( GPL-2 GPL-3 SIP )"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-IUSE=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+IUSE="doc"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}"
-RDEPEND="${DEPEND}
-	!<dev-python/PyQt5-5.12.2
-"
+RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}
+
+PATCHES=( "${FILESDIR}"/${PN}-4.18-darwin.patch )
 
 src_prepare() {
 	# Sub-slot sanity check
@@ -50,16 +50,14 @@ src_prepare() {
 
 src_configure() {
 	configuration() {
-		if ! python_is_python3; then
-			local CFLAGS="${CFLAGS} -fno-strict-aliasing"
-		fi
-
+		local incdir=$(python_get_includedir)
 		local myconf=(
 			"${PYTHON}"
 			"${S}"/configure.py
-			--sip-module PyQt5.sip
 			--sysroot="${ESYSROOT}/usr"
-			--no-tools
+			--bindir="${EPREFIX}/usr/bin"
+			--destdir="$(python_get_sitedir)"
+			--incdir="${incdir#${SYSROOT}}"
 			AR="$(tc-getAR) cqs"
 			CC="$(tc-getCC)"
 			CFLAGS="${CFLAGS}"
@@ -87,8 +85,10 @@ src_compile() {
 src_install() {
 	installation() {
 		emake DESTDIR="${D}" install
+		python_optimize
 	}
 	python_foreach_impl run_in_build_dir installation
 
 	einstalldocs
+	use doc && dodoc -r doc/html
 }

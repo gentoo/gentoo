@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6..9} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 inherit multibuild python-r1 qmake-utils
 
 DESCRIPTION="Python bindings for the Qt framework"
@@ -18,9 +18,9 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 x86"
 
-# TODO: QtNfc, QtQuick3D, QtRemoteObjects
+# TODO: QtNfc, QtRemoteObjects
 IUSE="bluetooth dbus debug declarative designer examples gles2-only gui help location
 	multimedia network networkauth opengl positioning printsupport sensors serialport
 	sql +ssl svg testlib webchannel webkit websockets widgets x11extras xmlpatterns"
@@ -54,12 +54,8 @@ REQUIRED_USE="
 # Minimal supported version of Qt.
 QT_PV="5.12:5"
 
-RDEPEND="
-	${PYTHON_DEPS}
-	$(python_gen_cond_dep '
-		dev-python/enum34[${PYTHON_USEDEP}]
-	' -2)
-	>=dev-python/PyQt5-sip-4.19.23:=[${PYTHON_USEDEP}]
+RDEPEND="${PYTHON_DEPS}
+	>=dev-python/PyQt5-sip-4.19.20:=[${PYTHON_USEDEP}]
 	>=dev-qt/qtcore-${QT_PV}
 	>=dev-qt/qtxml-${QT_PV}
 	bluetooth? ( >=dev-qt/qtbluetooth-${QT_PV} )
@@ -91,7 +87,7 @@ RDEPEND="
 	xmlpatterns? ( >=dev-qt/qtxmlpatterns-${QT_PV} )
 "
 DEPEND="${RDEPEND}
-	>=dev-python/sip-4.19.23[${PYTHON_USEDEP}]
+	>=dev-python/sip-4.19.20[${PYTHON_USEDEP}]
 	dbus? ( virtual/pkgconfig )
 "
 
@@ -156,13 +152,8 @@ src_configure() {
 		"${myconf[@]}" || die
 
 		# Fix parallel install failure
-		if python_is_python3; then
-			sed -i -e '/INSTALLS += distinfo/i distinfo.depends = install_subtargets install_pep484_stubs install_qscintilla_api' \
-				${PN}.pro || die
-		else
-			sed -i -e '/INSTALLS += distinfo/i distinfo.depends = install_subtargets install_qscintilla_api' \
-				${PN}.pro || die
-		fi
+		sed -i -e '/INSTALLS += distinfo/i distinfo.depends = install_subtargets install_pep484_stubs install_qscintilla_api' \
+			${PN}.pro || die
 
 		# Run eqmake to respect toolchain and build flags
 		eqmake5 -recursive ${PN}.pro
@@ -187,11 +178,7 @@ src_install() {
 		done
 
 		local uic_dir=${tmp_root}$(python_get_sitedir)/${PN}/uic
-		if python_is_python3; then
-			rm -r "${uic_dir}"/port_v2 || die
-		else
-			rm -r "${uic_dir}"/port_v3 || die
-		fi
+		rm -r "${uic_dir}"/port_v2 || die
 
 		multibuild_merge_root "${tmp_root}" "${D}"
 		python_optimize

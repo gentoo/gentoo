@@ -19,13 +19,13 @@ SLOT="0"
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
-IUSE="cairo doc excel examples gtk3 latex qt5 test tk wxwidgets"
+IUSE="cairo doc excel examples gtk3 latex test tk wxwidgets"
 RESTRICT="!test? ( test )"
 
 PY2_FLAGS="|| ( $(python_gen_useflags python2_7) )"
 REQUIRED_USE="
 	wxwidgets? ( ${PY2_FLAGS} )
-	test? ( cairo gtk3 latex qt5 tk wxwidgets )"
+	test? ( cairo gtk3 latex tk wxwidgets )"
 
 # #456704 -- a lot of py2-only deps
 PY2_USEDEP=$(python_gen_usedep python2_7)
@@ -93,8 +93,7 @@ RDEPEND="${COMMON_DEPEND}
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-xetex
-	)
-	qt5? ( dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}] )"
+	)"
 
 # A few C++ source files are written to srcdir.
 # Other than that, the ebuild shall be fit for out-of-source build.
@@ -174,9 +173,10 @@ python_configure() {
 		pysideagg = False
 		qt4 = False
 		qt4agg = False
+		qt5 = False
+		qt5agg = False
 		$(use_setup cairo)
 		$(use_setup gtk3)
-		$(use_setup qt5)
 		$(use_setup tk)
 	EOF
 
