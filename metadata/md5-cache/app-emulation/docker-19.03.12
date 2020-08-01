@@ -1,0 +1,15 @@
+BDEPEND=>=dev-lang/go-1.10 virtual/pkgconfig virtual/pkgconfig
+DEFINED_PHASES=compile install postinst setup unpack
+DEPEND=acct-group/docker >=dev-db/sqlite-3.7.9:3 device-mapper? ( >=sys-fs/lvm2-2.02.89[thin] ) seccomp? ( >=sys-libs/libseccomp-2.2.1 ) apparmor? ( sys-libs/libapparmor ) >=dev-lang/go-1.13.12 dev-go/go-md2man btrfs? ( >=sys-fs/btrfs-progs-3.16.1 )
+DESCRIPTION=The core functions you need to create Docker images and run Docker containers
+EAPI=7
+HOMEPAGE=https://www.docker.com/
+IUSE=apparmor aufs btrfs +container-init device-mapper hardened +overlay seccomp kernel_linux
+KEYWORDS=amd64 ~arm ~arm64 ~ppc64
+LICENSE=Apache-2.0
+RDEPEND=acct-group/docker >=dev-db/sqlite-3.7.9:3 device-mapper? ( >=sys-fs/lvm2-2.02.89[thin] ) seccomp? ( >=sys-libs/libseccomp-2.2.1 ) apparmor? ( sys-libs/libapparmor ) !sys-apps/systemd[-cgroup-hybrid(+)] >=net-firewall/iptables-1.4 sys-process/procps >=dev-vcs/git-1.7 >=app-arch/xz-utils-4.9 dev-libs/libltdl ~app-emulation/containerd-1.2.13 ~app-emulation/runc-1.0.0_rc10[apparmor?,seccomp?] ~app-emulation/docker-proxy-0.8.0_p20191011 container-init? ( >=sys-process/tini-0.18.0[static] )
+RESTRICT=installsources strip
+SLOT=0
+SRC_URI=https://github.com/docker/docker-ce/archive/v19.03.12.tar.gz -> docker-19.03.12.tar.gz
+_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	udev	452708c3f55cf6e918b045adb949a9e6
+_md5_=0e6c60d9991b27df674bd7b37c5409af

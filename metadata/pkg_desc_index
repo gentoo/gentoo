@@ -1882,7 +1882,7 @@ app-emulation/crun 0.13: A fast and low-memory footprint OCI Container Runtime f
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 3.1.0 9999: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.5.20: DLX Simulator
-app-emulation/docker 19.03.8: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 19.03.8 19.03.12: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-bench-security 1.3.2 1.3.3: Test for best practices around deploying docker containers
 app-emulation/docker-compose 1.25.4-r1 1.25.4-r2 1.25.5 1.26.0 1.26.1 1.26.2: Multi-container orchestration for Docker
 app-emulation/docker-credential-helpers 0.6.3: A suite of programs to use native stores to keep Docker credentials safe

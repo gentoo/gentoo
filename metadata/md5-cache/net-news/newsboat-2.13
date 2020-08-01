@@ -9,4 +9,4 @@ RDEPEND=>=dev-db/sqlite-3.5:3 >=dev-libs/stfl-0.21 >=net-misc/curl-7.18.0 >=dev-
 SLOT=0
 SRC_URI=https://newsboat.org/releases/2.13/newsboat-2.13.tar.xz
 _eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=392f03e7bd85048fbdc737901c6def14
+_md5_=cb94459713803ba565f7d890744af21d
