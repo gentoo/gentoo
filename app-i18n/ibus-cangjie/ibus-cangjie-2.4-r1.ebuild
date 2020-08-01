@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit gnome2-utils python-r1 xdg
@@ -21,8 +21,8 @@ RDEPEND="${PYTHON_DEPS}
 	app-i18n/libcangjie
 	dev-python/cangjie[${PYTHON_USEDEP}]
 	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
-	dev-util/intltool
+DEPEND="${RDEPEND}"
+BDEPEND="dev-util/intltool
 	nls? ( sys-devel/gettext )"
 
 src_configure() {
