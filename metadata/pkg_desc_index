@@ -9093,7 +9093,7 @@ dev-python/sphinxcontrib-programoutput 0.15 0.16: Extension to sphinx to include
 dev-python/sphinxcontrib-qthelp 1.0.2 1.0.3: Sphinx extension which outputs QtHelp documents
 dev-python/sphinxcontrib-serializinghtml 1.1.4: Sphinx extension which outputs outputs serialized HTML files
 dev-python/sphinxcontrib-spelling 5.1.2 5.2.0: Sphinx spelling extension
-dev-python/sphinxcontrib-websupport 1.1.0 1.2.2: Sphinx websupport extension
+dev-python/sphinxcontrib-websupport 1.2.2: Sphinx websupport extension
 dev-python/sphinxtogithub 1.1.0: A python script for preparing the html output of Sphinx documentation for github pages
 dev-python/spur 0.3.21: Run commands locally or over SSH using the same interface
 dev-python/spyder 4.1.3 4.1.4: The Scientific Python Development Environment
@@ -14020,7 +14020,7 @@ media-tv/ivtv-utils 1.4.1: IVTV utilities for Hauppauge PVR PCI cards
 media-tv/ivtvplayer 0.1.3-r2: Simple IVTV command line TV and radio player with support of LIRC
 media-tv/kodi 18.7 18.7.1 18.8 19.0_alpha1 9999: A free and open source media-player and entertainment hub
 media-tv/linuxtv-dvb-apps 1.1.1.20140321 1.1.1.20140321-r1: Small utils for DVB to scan, zap, view signal strength
-media-tv/mythtv 30.0_p20190808-r3 31.0 31.0-r1: Open Source DVR and media center hub
+media-tv/mythtv 30.0_p20190808-r3 31.0-r1 31.0-r2: Open Source DVR and media center hub
 media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the command prompt
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
 media-tv/plex-media-server 1.18.3 1.18.4-r1 1.19.1 1.19.2: A free media library that is intended for use with a plex client
