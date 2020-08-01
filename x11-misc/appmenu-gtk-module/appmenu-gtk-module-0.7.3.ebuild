@@ -14,12 +14,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
-DEPEND="
+RDEPEND="
 	dev-libs/glib[dbus]
 	>=x11-libs/gtk+-2.24.0:2
 	>=x11-libs/gtk+-3.22.0:3
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	dev-libs/wayland
+"
 
 src_prepare() {
 	cmake_src_prepare

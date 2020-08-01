@@ -15,9 +15,7 @@ DESCRIPTION="Library and components for secure lock screen architecture"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="consolekit +pam seccomp"
-
-REQUIRED_USE="seccomp? ( pam )"
+IUSE="consolekit +pam"
 
 RDEPEND="
 	dev-libs/wayland
@@ -49,7 +47,6 @@ RDEPEND="
 	x11-libs/xcb-util-keysyms
 	consolekit? ( sys-auth/consolekit )
 	pam? ( sys-libs/pam )
-	seccomp? ( sys-libs/libseccomp )
 "
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
@@ -59,6 +56,8 @@ PDEPEND="
 "
 
 RESTRICT+=" test"
+
+PATCHES=( "${FILESDIR}/${PN}-5.19.5-ck-unlock.patch" )
 
 src_prepare() {
 	ecm_src_prepare
@@ -79,10 +78,10 @@ src_test() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake_use_find_package consolekit loginctl)
+		-DCMAKE_DISABLE_FIND_PACKAGE_Seccomp=ON
+		$(cmake_use_find_package consolekit ConsoleKit)
 		-DPAM_REQUIRED=$(usex pam)
 		$(cmake_use_find_package pam PAM)
-		$(cmake_use_find_package seccomp Seccomp)
 	)
 	ecm_src_configure
 }

@@ -35,6 +35,17 @@
 # Aaron Bauman <bman@gentoo.org> (2020-08-01)
 # Py2 only. Dead upstream.
 # Removal in 30 days
+app-crypt/openssl-blacklist
+app-crypt/ssh-multiadd
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-01)
+# Py2 only. Upstream has py3 version
+# Removal in 30 days. Bug #709278
+media-gfx/printrun
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-01)
+# Py2 only. Dead upstream.
+# Removal in 30 days
 dev-python/pyvorbis
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-01)
@@ -456,11 +467,6 @@ media-gfx/uniconvertor
 # Merged into dev-texlive/texlive-langcjk.
 # Removal in 30 days.
 dev-tex/cjk-latex
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-01)
-# Depends on dead gnome-base/libgnomeui, bug #726816, dead upstream. Big Debian
-# patch exists, but we won't become new upstream. Masked for removal in 30 days.
-games-board/teg
 
 # Stephan Hartmann <stha09@googlemail.com> (2020-06-29)
 # Dev channel releases are only for people who
