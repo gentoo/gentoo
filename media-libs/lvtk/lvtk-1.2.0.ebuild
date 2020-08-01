@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -49,7 +49,7 @@ src_install() {
 
 	# It does not respect docdir properly, reported upstream
 	if use doc; then
-		mv "${ED}/usr/share/doc/${PF}/lvtk-1.0/html" "${ED}/usr/share/doc/${PF}/html" || die
-		rmdir "${ED}/usr/share/doc/${PF}/lvtk-1.0" || die
+		mv "${ED}/usr/share/doc/${PF}/lvtk-1/html" "${ED}/usr/share/doc/${PF}/html" || die
+		rmdir "${ED}/usr/share/doc/${PF}/lvtk-1" || die
 	fi
 }
