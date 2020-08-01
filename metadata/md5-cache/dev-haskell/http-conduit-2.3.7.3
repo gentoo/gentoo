@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/aeson-0.8:=[profile?] dev-haskell/attoparsec:=[profile?] >=dev-haskell/conduit-1.2:=[profile?] >=dev-haskell/conduit-extra-1.1:=[profile?] >=dev-haskell/http-client-0.5.13:=[profile?] <dev-haskell/http-client-0.7:=[profile?] >=dev-haskell/http-client-tls-0.3:=[profile?] <dev-haskell/http-client-tls-0.4:=[profile?] >=dev-haskell/http-types-0.7:=[profile?] dev-haskell/mtl:=[profile?] >=dev-haskell/resourcet-1.1:=[profile?] dev-haskell/unliftio-core:=[profile?] >=dev-haskell/void-0.5.5:=[profile?] >=dev-lang/ghc-7.8.2:= >=dev-haskell/cabal-1.18.1.3 test? ( dev-haskell/blaze-builder dev-haskell/case-insensitive >=dev-haskell/connection-0.2 dev-haskell/cookie dev-haskell/data-default-class >=dev-haskell/hspec-1.3 dev-haskell/hunit dev-haskell/network dev-haskell/streaming-commons dev-haskell/temporary dev-haskell/text dev-haskell/unliftio dev-haskell/utf8-string >=dev-haskell/wai-3.0 <dev-haskell/wai-3.3 dev-haskell/wai-conduit >=dev-haskell/warp-3.0.0.2 <dev-haskell/warp-3.4 dev-haskell/warp-tls ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=HTTP client package with conduit interface and HTTPS support
+EAPI=7
+HOMEPAGE=http://www.yesodweb.com/book/http-conduit
+IUSE=doc hscolour profile test
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-haskell/aeson-0.8:=[profile?] dev-haskell/attoparsec:=[profile?] >=dev-haskell/conduit-1.2:=[profile?] >=dev-haskell/conduit-extra-1.1:=[profile?] >=dev-haskell/http-client-0.5.13:=[profile?] <dev-haskell/http-client-0.7:=[profile?] >=dev-haskell/http-client-tls-0.3:=[profile?] <dev-haskell/http-client-tls-0.4:=[profile?] >=dev-haskell/http-types-0.7:=[profile?] dev-haskell/mtl:=[profile?] >=dev-haskell/resourcet-1.1:=[profile?] dev-haskell/unliftio-core:=[profile?] >=dev-haskell/void-0.5.5:=[profile?] >=dev-lang/ghc-7.8.2:=
+RESTRICT=test
+SLOT=0/2.3.7.3
+SRC_URI=https://hackage.haskell.org/package/http-conduit-2.3.7.3/http-conduit-2.3.7.3.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	ghc-package	e3a4a688accbd5f1226e46b379cc1c3e	haskell-cabal	433b5153bec6b0ffe21c7be2210e8396	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=4f2fb352597e773e80f991ffd3dae871

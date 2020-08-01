@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/sop-core-0.5.0:=[profile?] <dev-haskell/sop-core-0.5.1:=[profile?] >=dev-haskell/th-abstraction-0.3:=[profile?] <dev-haskell/th-abstraction-0.4:=[profile?] >=dev-lang/ghc-8.0.1:= >=dev-haskell/cabal-1.24.0.0 doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=Generic Programming using True Sums of Products
+EAPI=7
+HOMEPAGE=http://hackage.haskell.org/package/generics-sop
+IUSE=doc hscolour profile test
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-haskell/sop-core-0.5.0:=[profile?] <dev-haskell/sop-core-0.5.1:=[profile?] >=dev-haskell/th-abstraction-0.3:=[profile?] <dev-haskell/th-abstraction-0.4:=[profile?] >=dev-lang/ghc-8.0.1:=
+RESTRICT=!test? ( test )
+SLOT=0/0.5.1.0
+SRC_URI=https://hackage.haskell.org/package/generics-sop-0.5.1.0/generics-sop-0.5.1.0.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	ghc-package	e3a4a688accbd5f1226e46b379cc1c3e	haskell-cabal	433b5153bec6b0ffe21c7be2210e8396	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=4326571af02dd2b24a26ec5e24a6d477

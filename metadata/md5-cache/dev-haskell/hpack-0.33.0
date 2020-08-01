@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/aeson-1.4.3.0:=[profile?] dev-haskell/bifunctors:=[profile?] >=dev-haskell/cabal-2.2:=[profile?] dev-haskell/cryptonite:=[profile?] >=dev-haskell/glob-0.9.0:=[profile?] dev-haskell/http-client:=[profile?] dev-haskell/http-client-tls:=[profile?] dev-haskell/http-types:=[profile?] >=dev-haskell/infer-license-0.2.0:=[profile?] <dev-haskell/infer-license-0.3:=[profile?] dev-haskell/scientific:=[profile?] dev-haskell/text:=[profile?] dev-haskell/unordered-containers:=[profile?] dev-haskell/vector:=[profile?] >=dev-haskell/yaml-0.10.0:=[profile?] >=dev-lang/ghc-8.0.1:= >=dev-haskell/cabal-1.24.0.0 test? ( >=dev-haskell/hspec-2 <dev-haskell/hspec-3 >=dev-haskell/hunit-1.6.0.0 dev-haskell/interpolate >=dev-haskell/mockery-0.3 dev-haskell/quickcheck dev-haskell/temporary ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=An alternative format for Haskell packages
+EAPI=7
+HOMEPAGE=https://github.com/sol/hpack#readme
+IUSE=doc hscolour profile test
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=>=dev-haskell/aeson-1.4.3.0:=[profile?] dev-haskell/bifunctors:=[profile?] >=dev-haskell/cabal-2.2:=[profile?] dev-haskell/cryptonite:=[profile?] >=dev-haskell/glob-0.9.0:=[profile?] dev-haskell/http-client:=[profile?] dev-haskell/http-client-tls:=[profile?] dev-haskell/http-types:=[profile?] >=dev-haskell/infer-license-0.2.0:=[profile?] <dev-haskell/infer-license-0.3:=[profile?] dev-haskell/scientific:=[profile?] dev-haskell/text:=[profile?] dev-haskell/unordered-containers:=[profile?] dev-haskell/vector:=[profile?] >=dev-haskell/yaml-0.10.0:=[profile?] >=dev-lang/ghc-8.0.1:=
+RESTRICT=!test? ( test )
+SLOT=0/0.33.0
+SRC_URI=https://hackage.haskell.org/package/hpack-0.33.0/hpack-0.33.0.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	ghc-package	e3a4a688accbd5f1226e46b379cc1c3e	haskell-cabal	433b5153bec6b0ffe21c7be2210e8396	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=518fd1e9bf53af59b23823854ffbddd6

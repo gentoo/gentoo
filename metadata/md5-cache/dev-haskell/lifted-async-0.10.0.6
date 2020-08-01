@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/async-2.2:=[profile?] <dev-haskell/async-2.3:=[profile?] >=dev-haskell/constraints-0.2:=[profile?] <dev-haskell/constraints-0.13:=[profile?] >=dev-haskell/lifted-base-0.2:=[profile?] <dev-haskell/lifted-base-0.3:=[profile?] >=dev-haskell/monad-control-1.0:=[profile?] <dev-haskell/monad-control-1.1:=[profile?] >=dev-haskell/transformers-base-0.4:=[profile?] <dev-haskell/transformers-base-0.5:=[profile?] >=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.8 test? ( dev-haskell/hunit dev-haskell/mtl dev-haskell/tasty <dev-haskell/tasty-expected-failure-0.12 >=dev-haskell/tasty-hunit-0.9 <dev-haskell/tasty-hunit-0.11 dev-haskell/tasty-th ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=Run lifted IO operations asynchronously and wait for their results
+EAPI=7
+HOMEPAGE=https://github.com/maoe/lifted-async
+IUSE=doc hscolour profile test
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-haskell/async-2.2:=[profile?] <dev-haskell/async-2.3:=[profile?] >=dev-haskell/constraints-0.2:=[profile?] <dev-haskell/constraints-0.13:=[profile?] >=dev-haskell/lifted-base-0.2:=[profile?] <dev-haskell/lifted-base-0.3:=[profile?] >=dev-haskell/monad-control-1.0:=[profile?] <dev-haskell/monad-control-1.1:=[profile?] >=dev-haskell/transformers-base-0.4:=[profile?] <dev-haskell/transformers-base-0.5:=[profile?] >=dev-lang/ghc-7.4.1:=
+RESTRICT=!test? ( test )
+SLOT=0/0.10.0.6
+SRC_URI=https://hackage.haskell.org/package/lifted-async-0.10.0.6/lifted-async-0.10.0.6.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	ghc-package	e3a4a688accbd5f1226e46b379cc1c3e	haskell-cabal	433b5153bec6b0ffe21c7be2210e8396	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=684614bf1d40dabc9ec927a3600f820f

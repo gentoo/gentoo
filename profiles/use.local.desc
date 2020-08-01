@@ -1197,6 +1197,7 @@ app-text/pandoc:http-conduit - Enable downloading of resources over https.
 app-text/pandoc:https - Enable support for downloading of resources over https.
 app-text/pandoc:make-pandoc-man-pages - Build program to regenerate pandoc man pages from README.
 app-text/pandoc:network-uri - Get Network.URI from the network-uri package.
+app-text/pandoc:optimize - Enable -O1 optimizations (requires ~16GiB memory)
 app-text/pandoc:trypandoc - Build trypandoc cgi executable.
 app-text/pandoc:weigh-pandoc - Build weigh-pandoc to measure memory usage.
 app-text/pastebinit:crypt - Install pbputs for gpg-encrypted pastes
@@ -1536,10 +1537,15 @@ dev-games/simgear:dns - Enable DNS resolver via net-libs/udns
 dev-games/simgear:gdal - Enable alternative terrain engine based on pagedLOD via sci-libs/gdal
 dev-games/simgear:subversion - Enable terrasync scenery downloader
 dev-haskell/abstract-deque:usecas - Enable the reference implementation to use hardware compare-and-swap.
+dev-haskell/aeson:cffi - Controls whether to include c-ffi bits or pure haskell. Default to False for security.
+dev-haskell/aeson:fast - compile without optimizations
 dev-haskell/aeson-pretty:lib-only - don't build 'aeson-pretty' executable.
 dev-haskell/ansi-terminal:example - Build the example application.
 dev-haskell/ansi-wl-pprint:example - Build the example application.
+dev-haskell/attoparsec-iso8601:developer - operate in developer mode
+dev-haskell/attoparsec-iso8601:fast - compile without optimizations
 dev-haskell/authenticate:network-uri - Get Network.URI from the network-uri package
+dev-haskell/aws:network-3 - Use network-3
 dev-haskell/bifunctors:semigroups - You can disable the use of the `semigroups` package using `-f-semigroups`. Disabing this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
 dev-haskell/bifunctors:tagged - You can disable the use of the `tagged` package using `-f-tagged`. Disabing this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
 dev-haskell/biosff:fclip - Build the fclip executable.
@@ -1549,6 +1555,7 @@ dev-haskell/blaze-builder-enumerator:newbuilder - use bytestring-builder instead
 dev-haskell/bytedump:executable - build executable file
 dev-haskell/bytes:test-doctests - Enable the doctest suite when using the enable-tests option for cabal.
 dev-haskell/c2hs:regression - run regression tests
+dev-haskell/cabal-install:native-dns - Enable use of the resolv and windns packages for performing DNS lookups
 dev-haskell/cabal-install:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/cabal-install:noprefs - Ignore 'preferred-versions' file from hackage's tarball.
 dev-haskell/certificate:executable - Build the executable
@@ -1592,7 +1599,13 @@ dev-haskell/gtk:gio - Depend on GIO package, thereby enabling certain features.
 dev-haskell/gtk2hs-buildtools:closuresignals - Use the the GClosure-based signals implementation.
 dev-haskell/gtk3:fmode-binary - Set the default file translation mode for file I/O operations to _O_BINARY.
 dev-haskell/gtk3:gio - Depend on GIO package, thereby enabling certain features.
+dev-haskell/hackage-security:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/hackage-security:use-network-uri - Get Network.URI from the network-uri package.
+dev-haskell/hakyll:buildwebsite - Build the hakyll website
+dev-haskell/hakyll:checkexternal - Include external link checking
+dev-haskell/hakyll:previewserver - Include the preview server
+dev-haskell/hakyll:usepandoc - Include Pandoc support
+dev-haskell/hakyll:watchserver - wait for filesystem changes and rebuild pages
 dev-haskell/happstack-server:network-uri - Get Network.URI from the network-uri package
 dev-haskell/happstack-server:template-haskell - Description: Template Haskell is available on this system
 dev-haskell/hashed-storage:diff - Provide the Storage.Hashed.Diff module.
@@ -1614,6 +1627,7 @@ dev-haskell/hlint:gpl - Use GPL libraries, specifically hscolour.
 dev-haskell/hps:build-exec - Build the `hps-fractals' executable
 dev-haskell/hs3:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/hslogger:buildtests - Build the executable to run unit tests.
+dev-haskell/hslogger:network-3 - Use network-3
 dev-haskell/hslua:apicheck - Compile Lua with -DLUA_USE_APICHECK..
 dev-haskell/hslua:system-lua - Use the system-wide lua instead of the bundled copy.
 dev-haskell/hsopenssl:fast-bignum - Enable fast moving of bignums between OpenSSL and GMP (GHC Only)
@@ -1623,6 +1637,7 @@ dev-haskell/http-api-data:use-text-show - Use text-show library for efficient To
 dev-haskell/http-client:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/http-streams:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/httpd-shed:buildexamples - Build example executables.
+dev-haskell/httpd-shed:network-bsd - Get Network.BSD from the network-bsd package.
 dev-haskell/httpd-shed:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/hxt:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/icalendar:network-uri - use network-uri package
@@ -1644,21 +1659,31 @@ dev-haskell/lens:test-hunit - You can disable the hunit test suite with -f-test-
 dev-haskell/lens:test-properties - Build the properties test if we're building tests
 dev-haskell/lens:test-templates - Build the test templates if we're building tests
 dev-haskell/lens:trustworthy - Assert that we are trustworthy when we can
+dev-haskell/libyaml:no-unicode - Don't enable unicode output. Instead, unicode characters will be escaped.
+dev-haskell/libyaml:system-libyaml - Use the system-wide libyaml instead of the bundled copy
 dev-haskell/lifted-async:monad-control-1 - Use moand-control == 1.*
 dev-haskell/linear:template-haskell - You can disable the use of the `template-haskell` package using `-f-template-haskell`. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
+dev-haskell/lukko:ofd-locking - Enable open file descriptor locking. Available on Linux (kernel 3.15, released Jun 8, 2014).
 dev-haskell/monad-control:instancest - If enabled this package will export MonadBaseControl instances for the lazy and strict ST monad. If disabled these instances are only exported when base >= 4.4. If enabled it is required that the transformer-base package exports MonadBase instances for ST. It will do this by default.
 dev-haskell/monad-logger:template-haskell - Enable Template Haskell support.
 dev-haskell/monad-par:chaselev - Use Chase-Lev Deques for higher-perf work-stealing.
-dev-haskell/nats:hashable - You can disable the use of the `hashable` package using USE=-hashable. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users. If set we will not supply an instance of `Hashable`.
+dev-haskell/nats:binary - enable binary instances
+dev-haskell/nats:hashable - enable hashable instances
+dev-haskell/nats:template-haskell - enable template_haskell
+dev-haskell/netlink:generators - build the generator scripts for constants
 dev-haskell/network-data:small-base - Build the split-up base package.
+dev-haskell/optparse-simple:build-example - Build the example executable
 dev-haskell/pandoc-citeproc:bibutils - use Chris Putnam's app-text/bibutils
 dev-haskell/pandoc-citeproc:embed-data-files - Embed locale files into the library (needed for windows packaging)
 dev-haskell/pandoc-citeproc:hexpat - use dev-haskell/hexpat instead of dev-haskell/xml for XML parsing
 dev-haskell/pandoc-citeproc:network - use dev-haskell/network and dev-haskell/http to retrieve CSL file from URIs
 dev-haskell/pandoc-citeproc:small-base - Choose the new smaller, split-up base package.
 dev-haskell/pandoc-citeproc:test-citeproc - Build the test-citeproc program
+dev-haskell/pandoc-citeproc:unicode-collation - Use Haskell bindings to the dev-libs/icu
 dev-haskell/pandoc-citeproc:unicode_collation - Use Haskell bindings to the dev-libs/icu
 dev-haskell/parsec-numbers:parsec1 - use dev-haskell/parsec1 instead of dev-haskell/parsec
+dev-haskell/parsers:attoparsec - Enable the use of the `attoparsec` package
+dev-haskell/parsers:parsec - Enable the use of the `parsec` package
 dev-haskell/persistent:nooverlap - Use OverlappingInstances only for String. Only developers should use this.
 dev-haskell/persistent-sqlite:build-sanity-exe - Build a sanity check test executable.
 dev-haskell/pointed:comonad - optional instances
@@ -1676,6 +1701,7 @@ dev-haskell/quickcheck:template-haskell - Enable additional test modules requiri
 dev-haskell/recaptcha:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/reflection:template-haskell - Enable template haskell.
 dev-haskell/rfc5051:mkunicodedata - build codes generator itself
+dev-haskell/sandi:conduit - Build with conduit
 dev-haskell/sandi:with-conduit - Build with conduit
 dev-haskell/scientific:bytestring-builder - Provide the Data.ByteString.Builder.Scientific module (requires bytestring >= 0.10).
 dev-haskell/semigroupoid-extras:profunctors - You can disable the use of the `profunctors` package using `-f-profunctors`. Disabing this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
@@ -1684,6 +1710,7 @@ dev-haskell/semigroupoids:containers - You can disable the use of the `container
 dev-haskell/semigroupoids:contravariant - You can disable the use of the `contravariant` package using `-f-contravariant`. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users. If disabled we will not supply instances of `Contravariant`
 dev-haskell/semigroupoids:distributive - You can disable the use of the `distributive` package using `-f-distributive`. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users. If disabled we will not supply instances of `Distributive`
 dev-haskell/semigroupoids:tagged - You can disable the use of the `tagged` package using `-f-tagged`. Disabing this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
+dev-haskell/semigroupoids:unordered-containers - Enable the use of the `unordered-containers` package (and also its dependency `hashable`). Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
 dev-haskell/semigroups:binary - provide instances for binary package
 dev-haskell/semigroups:bytestring - You can disable the use of the `bytestring` package using USE=-bytestring. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
 dev-haskell/semigroups:containers - You can disable the use of the `containers` package using USE=-containers. Disabing this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
@@ -1707,10 +1734,13 @@ dev-haskell/skein:big-endian - When manually selecting the endianness, use big-e
 dev-haskell/skein:force-endianness - Use a manually selected endian when compiling (see flag 'big-endian')
 dev-haskell/skein:reference - Use the reference implementation instead of the optimized one
 dev-haskell/skylighting:executable - Build the skylighting executable.
+dev-haskell/skylighting-core:executable - Build the skylighting executable.
 dev-haskell/snap-core:portable - No non-haskell unportable code.
 dev-haskell/snap-server:build-pong - Build a server that just returns "PONG"
 dev-haskell/snap-server:openssl - enable https support using dev-haskell/hsopenssl
 dev-haskell/snap-server:portable - no non-haskell unportable code.
+dev-haskell/splitmix:optimised-mixer - Use JavaScript for mix32
+dev-haskell/splitmix:random - Providen RandomGen SMGen instance
 dev-haskell/tagsoup:download - Build with Download module.
 dev-haskell/tagsoup:testprog - Build the test program.
 dev-haskell/tasty:colors - Enable colorful output
@@ -1722,6 +1752,7 @@ dev-haskell/thyme:bug-for-bug - bug-for-bug compatibility with time
 dev-haskell/thyme:lens - use the full lens package
 dev-haskell/thyme:show-internal - instance Show of internal representation
 dev-haskell/tls:compat - Accept SSLv2 compatible handshake.
+dev-haskell/tls:hans - Use the Haskell Network Stack (HaNS).
 dev-haskell/tls:network - Use the base network library.
 dev-haskell/transformers-base:orphaninstances - Build instances for orphan datatypes.
 dev-haskell/transformers-compat:three - Use transformers-0.3
@@ -1739,6 +1770,9 @@ dev-haskell/void:safe - dissable effective but unsafe coersions
 dev-haskell/wai-app-static:print - print debug info.
 dev-haskell/warp:allow-sendfilefd - Allow use of sendfileFd (not available on GNU/kFreeBSD).
 dev-haskell/warp:warp-debug - Add additional debuging information
+dev-haskell/wcwidth:cli - Enable command line tool
+dev-haskell/wreq:aws - Enable AWS tests
+dev-haskell/wreq:httpbin - Install client
 dev-haskell/x11:screensaver - whether to build XScreenSaver.
 dev-haskell/x509-store:executable - Build the executable
 dev-haskell/xss-sanitize:network-uri - Get Network.URI from the network-uri package.
@@ -3047,6 +3081,9 @@ dev-vcs/git:webdav - Adds support for push'ing to HTTP/HTTPS repositories via DA
 dev-vcs/git-annex:assistant - Enable git-annex assistant and watch command
 dev-vcs/git-annex:benchmark - Enable benchmarking
 dev-vcs/git-annex:concurrentoutput - Use concurrent-output library (experimental)
+dev-vcs/git-annex:debuglocks - Debug location of MVar/STM deadlocks
+dev-vcs/git-annex:magicmime - Use libmagic to determine file MIME types
+dev-vcs/git-annex:network-3 - Use network-3
 dev-vcs/git-annex:network-uri - Get Network.URI from the network-uri package.
 dev-vcs/git-annex:pairing - Enable pairing of git annex repositories
 dev-vcs/git-annex:s3 - Enable Amazon S3 remote
@@ -8984,11 +9021,20 @@ x11-misc/xkbd:xrandr - Enable XRandR support through x11-libs/libXrandr
 x11-misc/xkbset:tk - Install the dev-perl/Tk based xkbset-gui utility
 x11-misc/xlockmore:vtlock - Enables support for virtual terminal locking
 x11-misc/xlockmore:xlockrc - Enables xlockrc for people without PAM
+x11-misc/xmobar:alsa - Use alsa-mixer to get the volume from soundcards
 x11-misc/xmobar:conduit - Use conduit to fetch weather data.
+x11-misc/xmobar:dbus - Publish a service on the session bus for controlling xmobar
+x11-misc/xmobar:inotify - inotify support (modern Linux only). Required for the Mail and MBox plugins
+x11-misc/xmobar:iwlib - Wireless info support via Wext ioctls (deprecated)
 x11-misc/xmobar:mpd - Support mpd plugin
 x11-misc/xmobar:mpris - Enables MPRIS v1, v2 support
+x11-misc/xmobar:rtsopts - Reduce process wakekups frequency to decrease CPU usage
 x11-misc/xmobar:timezone - Enables localized date support
-x11-misc/xmobar:uvmeter - Plugin to show UV data for Australia.
+x11-misc/xmobar:uvmeter - Plugin to show UV data for Australia
+x11-misc/xmobar:weather - Enable weather plugin
+x11-misc/xmobar:wifi - Wireless info support via nl80211. Required for the Wireless plugin on systems running Linux
+x11-misc/xmobar:xft - Use Xft to render text. UTF-8 support included
+x11-misc/xmobar:xpm - Enable usage of xpm for icons
 x11-misc/xscreensaver:gdk-pixbuf - Include support for the x11-libs/gdk-pixbuf library in some demos, which will make it possible for them to read GIF, JPEG, and PNG files as well
 x11-misc/xscreensaver:gdm - Use gdmflexiserver from gnome-base/gdm instead of x11-misc/lightdm
 x11-misc/xscreensaver:locking - Compile in support for locking the display

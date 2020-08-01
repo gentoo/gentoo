@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=dev-haskell/asn1-encoding:=[profile?] >=dev-haskell/asn1-types-0.2.0:=[profile?] >=dev-haskell/async-2.0:=[profile?] >=dev-haskell/cereal-0.5.3:=[profile?] >=dev-haskell/cryptonite-0.25:=[profile?] dev-haskell/data-default-class:=[profile?] dev-haskell/hourglass:=[profile?] >=dev-haskell/memory-0.14.6:=[profile?] >=dev-haskell/mtl-2:=[profile?] >=dev-haskell/x509-1.7.5:=[profile?] >=dev-haskell/x509-store-1.6:=[profile?] >=dev-haskell/x509-validation-1.6.5:=[profile?] >=dev-lang/ghc-8.0.1:= hans? ( dev-haskell/hans:=[profile?] ) network? ( >=dev-haskell/network-2.4.0.0:=[profile?] ) >=dev-haskell/cabal-1.24.0.0 test? ( dev-haskell/quickcheck dev-haskell/tasty dev-haskell/tasty-quickcheck ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=TLS/SSL protocol native implementation (Server and Client)
+EAPI=7
+HOMEPAGE=https://github.com/vincenthz/hs-tls
+IUSE=+compat hans +network doc hscolour profile test
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-haskell/asn1-encoding:=[profile?] >=dev-haskell/asn1-types-0.2.0:=[profile?] >=dev-haskell/async-2.0:=[profile?] >=dev-haskell/cereal-0.5.3:=[profile?] >=dev-haskell/cryptonite-0.25:=[profile?] dev-haskell/data-default-class:=[profile?] dev-haskell/hourglass:=[profile?] >=dev-haskell/memory-0.14.6:=[profile?] >=dev-haskell/mtl-2:=[profile?] >=dev-haskell/x509-1.7.5:=[profile?] >=dev-haskell/x509-store-1.6:=[profile?] >=dev-haskell/x509-validation-1.6.5:=[profile?] >=dev-lang/ghc-8.0.1:= hans? ( dev-haskell/hans:=[profile?] ) network? ( >=dev-haskell/network-2.4.0.0:=[profile?] )
+RESTRICT=!test? ( test )
+SLOT=0/1.5.4
+SRC_URI=https://hackage.haskell.org/package/tls-1.5.4/tls-1.5.4.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	ghc-package	e3a4a688accbd5f1226e46b379cc1c3e	haskell-cabal	433b5153bec6b0ffe21c7be2210e8396	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=738485be2161056b2e85287585f7efbe

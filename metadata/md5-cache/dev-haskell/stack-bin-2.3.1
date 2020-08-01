@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=The Haskell Tool Stack (Binary)
+EAPI=7
+HOMEPAGE=https://github.com/commercialhaskell/stack
+IUSE=symlink
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=sys-libs/zlib dev-libs/gmp:0 symlink? ( !dev-haskell/stack )
+SLOT=0
+SRC_URI=https://github.com/commercialhaskell/stack/releases/download/v2.3.1/stack-2.3.1-linux-x86_64.tar.gz
+_md5_=bcb578562e1eb1bf74fdbde5b2053635
