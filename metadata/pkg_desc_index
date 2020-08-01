@@ -744,7 +744,7 @@ app-backup/backup-manager 0.7.14 0.7.14-r1: Backup Manager is a command line bac
 app-backup/backupninja 1.0.1-r1 1.1.0: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
 app-backup/bacula 9.6.5: Featureful client/server network backup suite
-app-backup/bareos 17.2.9 18.2.8 19.2.7: Featureful client/server network backup suite
+app-backup/bareos 17.2.10 18.2.9 19.2.8: Featureful client/server network backup suite
 app-backup/borgbackup 1.1.11-r2 1.1.13 9999: Deduplicating backup program with compression and authenticated encryption
 app-backup/borgmatic 1.5.6 1.5.8 1.5.9: Automatically create, prune and verify backups with borgbackup
 app-backup/borgweb 0.2.0-r2 0.3.0: Browser-based user interface for BorgBackup
