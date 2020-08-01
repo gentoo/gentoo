@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-haskell/conduit-combinators-1.0.8.1
-	dev-haskell/conduit
+	>=dev-haskell/conduit-1.3
 	dev-haskell/safe-exceptions
 	>=dev-lang/ghc-7.4.1:=
 "
