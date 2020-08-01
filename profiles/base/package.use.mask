@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2020-08-01)
+# dev-python/distributed is going to be last rited.
+dev-python/dask distributed
+dev-python/joblib doc
+
 # Michał Górny <mgorny@gentoo.org> (2020-07-30)
 # Forces downgrade of dev-python/ws4py and its revdeps.
 www-apps/nikola websocket
