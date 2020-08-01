@@ -66,7 +66,6 @@ gnome-base/orbit
 # are really confusing.  Use $(python_gen_cond_dep ...) instead
 # if your package still needs to support Python 2 (or remove it
 # for Python 3 only packages).
-virtual/python-backports_abc
 virtual/python-enum34
 virtual/python-funcsigs
 virtual/python-futures
