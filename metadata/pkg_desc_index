@@ -475,7 +475,7 @@ app-admin/clustershell 1.8.3: Python framework for efficient cluster administrat
 app-admin/conky 1.10.8-r9 1.11.5: An advanced, highly configurable system monitor for X
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.2.3 8.2.4 8.2.5: Serial Console Manager
-app-admin/consul 1.7.4 1.8.0: A tool for service discovery, monitoring and configuration
+app-admin/consul 1.7.4 1.8.0 1.8.1: A tool for service discovery, monitoring and configuration
 app-admin/consul-replicate 0.2.0: Consul cross-DC KV replication daemon
 app-admin/consul-template 0.25.0: Generic template rendering and notifications with Consul
 app-admin/cpulimit 1.8 2.2 2.4: Limits the CPU usage of a process
@@ -7894,7 +7894,7 @@ dev-python/backports-tempfile 1.0: Backport of new features in Python's tempfile
 dev-python/backports-unittest-mock 1.5-r1: Backport of unittest.mock
 dev-python/backports-weakref 1.0_p1: Backport of new features in Python's weakref module
 dev-python/bandit 1.5.1-r1 1.6.2: A security linter from OpenStack Security
-dev-python/bareos 19.2.7: python bindings for bareos network backup suite
+dev-python/bareos 19.2.8: python bindings for bareos network backup suite
 dev-python/bashate 0.6.0: A pep8 equivalent for bash scripts
 dev-python/basho-erlastic 2.1.1: Erlang binary term codec and port interface
 dev-python/bcrypt 3.1.7-r2: Modern password hashing for software and servers
@@ -9135,7 +9135,7 @@ dev-python/taskflow 4.1.0: A library to do [jobs, tasks, flows] in a HA manner u
 dev-python/tblib 1.6.0 1.7.0: Traceback fiddling library for Python
 dev-python/tempita 0.5.3-r2: A very small text templating language
 dev-python/tempora 3.0.0 4.0.0: Objects and routines pertaining to date and time
-dev-python/tenacity 6.1.0: General-purpose retrying library
+dev-python/tenacity 6.1.0-r1: General-purpose retrying library
 dev-python/termcolor 1.1.0-r2: ANSII Color formatting for output in terminal
 dev-python/terminado 0.8.3: Terminals served to term.js using Tornado websockets
 dev-python/terminaltables 3.1.0 9999: Generate simple tables in terminals from a nested list of strings
@@ -11790,7 +11790,7 @@ gnome-base/libgnomecanvas 2.30.3-r1: The Gnome 2 Canvas library
 gnome-base/libgnomekbd 3.26.1: Gnome keyboard configuration library
 gnome-base/libgnomeui 2.24.5-r1: User Interface routines for Gnome
 gnome-base/libgtop 2.40.0-r1: A library that provides top functionality to applications
-gnome-base/librsvg 2.40.21: Scalable Vector Graphics (SVG) rendering library
+gnome-base/librsvg 2.40.21 2.48.8: Scalable Vector Graphics (SVG) rendering library
 gnome-base/nautilus 3.34.3 3.36.3: Default file manager for the GNOME desktop
 gnome-base/orbit 2.14.19-r5: ORBit2 is a high-performance CORBA ORB
 gnome-extra/chrome-gnome-shell 10-r3 10-r4: GNOME Shell integration for Chrome/Chromium, Firefox, Vivaldi, Opera browsers
@@ -17865,20 +17865,20 @@ virtual/perl-Data-Dumper 2.174.0-r1: Virtual for Data-Dumper
 virtual/perl-Devel-PPPort 3.520.0 3.570.0: Virtual for Devel-PPPort
 virtual/perl-Digest 1.170.100_rc-r10: Virtual for Digest
 virtual/perl-Digest-MD5 2.550.0-r2 2.550.100_rc: Virtual for Digest-MD5
-virtual/perl-Digest-SHA 6.20.0: Virtual for Digest-SHA
-virtual/perl-Dumpvalue 1.180.0-r5: Virtual for Dumpvalue
-virtual/perl-Encode 3.10.0: Virtual for Encode
-virtual/perl-Exporter 5.730.0-r2: Virtual for Exporter
-virtual/perl-ExtUtils-CBuilder 0.280.231: Virtual for ExtUtils-CBuilder
-virtual/perl-ExtUtils-Constant 0.250.0-r2: Virtual for ExtUtils-Constant
-virtual/perl-ExtUtils-Install 2.140.0-r2: Virtual for ExtUtils-Install
-virtual/perl-ExtUtils-MakeMaker 7.340.0-r2: Virtual for ExtUtils-MakeMaker
-virtual/perl-ExtUtils-Manifest 1.720.0: Virtual for ExtUtils-Manifest
-virtual/perl-ExtUtils-ParseXS 3.400.0: Virtual for ExtUtils-ParseXS
-virtual/perl-File-Path 2.160.0: Virtual for File-Path
-virtual/perl-File-Spec 3.780.0: Virtual for File-Spec
+virtual/perl-Digest-SHA 6.20.0-r1: Virtual for Digest-SHA
+virtual/perl-Dumpvalue 1.180.0-r5 1.210.0: Virtual for Dumpvalue
+virtual/perl-Encode 3.10.0 3.60.0: Virtual for Encode
+virtual/perl-Exporter 5.730.0-r2 5.740.0: Virtual for Exporter
+virtual/perl-ExtUtils-CBuilder 0.280.231 0.280.234: Virtual for ExtUtils-CBuilder
+virtual/perl-ExtUtils-Constant 0.250.0-r3: Virtual for ExtUtils-Constant
+virtual/perl-ExtUtils-Install 2.140.0-r3: Virtual for ExtUtils-Install
+virtual/perl-ExtUtils-MakeMaker 7.340.0-r2 7.440.0: Virtual for ExtUtils-MakeMaker
+virtual/perl-ExtUtils-Manifest 1.720.0-r1: Virtual for ExtUtils-Manifest
+virtual/perl-ExtUtils-ParseXS 3.400.0-r1: Virtual for ExtUtils-ParseXS
+virtual/perl-File-Path 2.160.0-r1: Virtual for File-Path
+virtual/perl-File-Spec 3.780.0-r1: Virtual for File-Spec
 virtual/perl-File-Temp 0.230.900: Virtual for File-Temp
-virtual/perl-Filter-Simple 0.950.0-r2: Virtual for perl-core/Filter-Simple
+virtual/perl-Filter-Simple 0.950.0-r2 0.960.0: Virtual for perl-core/Filter-Simple
 virtual/perl-Getopt-Long 2.500.0-r2: Virtual for Getopt-Long
 virtual/perl-HTTP-Tiny 0.76.0: Virtual for HTTP-Tiny
 virtual/perl-I18N-LangTags 0.430.0-r2: Virtual for I18N-LangTags
@@ -17946,7 +17946,6 @@ virtual/podofo-build 0.9.6: Virtual package for building against PoDoFo
 virtual/pypy 7.3.0: An obsolete virtual for PyPy Python implementation
 virtual/pypy3 7.3.0: An obsolete virtual for PyPy3 Python implementation
 virtual/python-cffi 0: A virtual for the Python cffi package
-virtual/python-futures 1: A virtual for the Python concurrent.futures module
 virtual/python-greenlet 1.0-r1: A virtual for Python greenlet module
 virtual/qmail 1.03: Virtual for qmail
 virtual/resolvconf 1: Virtual to select between different resolvconf providers
