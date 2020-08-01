@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
+DESCRIPTION=Private sip module for PyQt5
+EAPI=7
+HOMEPAGE=https://www.riverbankcomputing.com/software/sip/intro
+IUSE=python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
+KEYWORDS=amd64 arm arm64 ~ppc ~ppc64 x86
+LICENSE=|| ( GPL-2 GPL-3 SIP )
+RDEPEND=python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] !<dev-python/PyQt5-5.12.2
+REQUIRED_USE=|| ( python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
+SLOT=0/12
+SRC_URI=https://www.riverbankcomputing.com/static/Downloads/sip/4.19.22/sip-4.19.22.tar.gz
+_eclasses_=multibuild	b2c915190b051f55a23b9354b9849847	multilib	2477ebe553d3e4d2c606191fe6c33602	python-r1	79e26ce8f853c9daebe9a4956e37cc1b	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=e2c3a1ffe29cbc0396d3bede78ee42f4

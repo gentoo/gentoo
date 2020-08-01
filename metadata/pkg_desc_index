@@ -2688,7 +2688,7 @@ app-portage/distpatch 0.1.2-r2: Distfile Patching Support for Gentoo Linux (tool
 app-portage/eix 0.33.9-r1 0.33.11 0.34.1 0.34.2 0.34.4: Search and query ebuilds
 app-portage/elicense 1.0.2 9999: Tool to find installed packages in Gentoo with non-accepted license(s)
 app-portage/elogv 0.7.8-r1 0.7.8-r2 0.7.8-r3: Curses based utility to parse the contents of elogs created by Portage
-app-portage/elogviewer 2.9-r1 3.0-r2: Elog viewer for Gentoo
+app-portage/elogviewer 3.0-r2: Elog viewer for Gentoo
 app-portage/elt-patches 20170317 20170422 20170815 20170826.1: Collection of patches for libtool.eclass
 app-portage/emerge-delta-webrsync 3.7.5 3.7.6: emerge-webrsync using patches to minimize bandwidth
 app-portage/epkg 0.4-r1: A simple portage wrapper which works like other package managers
@@ -7811,8 +7811,8 @@ dev-python/PyECLib 1.6.0: Messaging API for RPC and notifications over different
 dev-python/PyGithub 1.51: Python library to access the Github API v3
 dev-python/PyICU 2.4.3 2.5: Python bindings for dev-libs/icu
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
-dev-python/PyQt5 5.14.2 5.15.0: Python bindings for the Qt framework
-dev-python/PyQt5-sip 4.19.22 4.19.23: Private sip module for PyQt5
+dev-python/PyQt5 5.14.2-r1 5.15.0-r1: Python bindings for the Qt framework
+dev-python/PyQt5-sip 4.19.22-r1 4.19.23-r1: Private sip module for PyQt5
 dev-python/PyQtWebEngine 5.14.0 5.15.1_pre2006110847: Python bindings for QtWebEngine
 dev-python/PyRSS2Gen 1.1: RSS feed generator written in Python
 dev-python/PySDL2 0.9.7: Python (ctypes) bindings for SDL2 libraries
@@ -8378,7 +8378,7 @@ dev-python/markups 3.0.0 3.0.0-r1: A wrapper around various text markups
 dev-python/markupsafe 1.1.1: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/marshmallow 3.5.1: A lightweight library for converting complex datatypes to and from native Python datatypes.
 dev-python/matplotlib 2.2.2-r1 2.2.4 3.2.2 3.3.0: Pure python plotting library with matlab like syntax
-dev-python/matplotlib-python2 2.2.5-r1: Pure python plotting library with matlab like syntax (py2 version)
+dev-python/matplotlib-python2 2.2.5-r2: Pure python plotting library with matlab like syntax (py2 version)
 dev-python/matterhook 0.1-r1: Interact with Mattermost incoming webhooks easily
 dev-python/mccabe 0.6.1-r1: flake8 plugin: McCabe complexity checker
 dev-python/mdx_gh_links 0.2: An extension which adds links to GitHub users, repositories, issues and commits
@@ -8738,7 +8738,7 @@ dev-python/pyparted 3.11.6 999999: Python bindings for sys-block/parted
 dev-python/pypax 0.9.5 9999: Python module to get or set either PT_PAX and/or XATTR_PAX flags
 dev-python/pypcap 1.2.3: Simplified object-oriented Python extension module for libpcap
 dev-python/pypeg2 2.15.2-r1: An intrinsic PEG Parser-Interpreter for Python
-dev-python/pyperclip 1.5.27 1.7.0: A cross-platform clipboard module for Python.
+dev-python/pyperclip 1.7.0: A cross-platform clipboard module for Python.
 dev-python/pyphen 0.9.5: Python module for hyphenation using hunspell dictionaries
 dev-python/pypiserver 1.3.1-r1 1.3.2: Minimal PyPI server
 dev-python/pypng 0.0.20: Pure Python PNG image encoder/decoder
@@ -9039,7 +9039,7 @@ dev-python/simplesoapy 1.5.1-r1 9999: Simple pythonic wrapper for SoapySDR libra
 dev-python/simplespectral 1.0.0 9999: Heavily simplified scipy.signal.spectral module
 dev-python/simpy 3.0.13: Object-oriented, process-based discrete-event simulation language
 dev-python/singledispatch 3.4.0.3: A library to bring functools.singledispatch from Python 3.4 to Python 2.6-3.3
-dev-python/sip 4.19.22 4.19.23: Python extension module generator for C and C++ libraries
+dev-python/sip 4.19.22-r1 4.19.23-r1: Python extension module generator for C and C++ libraries
 dev-python/six 1.14.0 1.15.0: Python 2 and 3 compatibility library
 dev-python/slackclient 2.5.0: Client for Slack supporting the Slack Web and Real Time Messaging API
 dev-python/sleekxmpp 1.3.1-r1: Python library for XMPP
@@ -14563,7 +14563,7 @@ net-firewall/ferm 2.4.1 2.5 2.5.1: Command line util for managing firewall rules
 net-firewall/firehol 3.1.6: iptables firewall generator
 net-firewall/firewalld 0.7.1-r3 0.7.3-r1: A firewall daemon with D-BUS interface providing a dynamic firewall
 net-firewall/fwbuilder 5.3.7: GUI management for iptables, PF, Cisco ASA/PIX/FWSM, Cisco router ACL and more
-net-firewall/fwknop 2.6.9-r1 2.6.10-r1 2.6.10-r2: Single Packet Authorization and Port Knocking application
+net-firewall/fwknop 2.6.10-r2: Single Packet Authorization and Port Knocking application
 net-firewall/ipkungfu 0.6.1-r1: A nice iptables firewall script
 net-firewall/ipset 6.29 6.38 7.5 7.6: IPset tool for iptables, successor to ippool
 net-firewall/ipt_netflow 2.4 2.5 9999: Netflow iptables module
@@ -15989,7 +15989,7 @@ sci-chemistry/probe 2.13.110909: Evaluates atomic packing within or between mole
 sci-chemistry/procheck 3.5.4-r3: Checks the stereochemical quality of a protein structure
 sci-chemistry/propka 3.2.0: pKa-value prediction of ionizable groups in protein and protein-ligand complexes
 sci-chemistry/psi 3.4.0-r2: Suite for ab initio quantum chemistry computing various molecular properties
-sci-chemistry/pymol 2.3.0-r2 2.3.0-r3: A Python-extensible molecular graphics system
+sci-chemistry/pymol 2.3.0-r3: A Python-extensible molecular graphics system
 sci-chemistry/rasmol 2.7.5.2-r2: Molecular Graphics Visualisation Tool
 sci-chemistry/raster3d 3.0.2 3.0.3: Generation high quality raster images of proteins or other molecules
 sci-chemistry/suitename 0.3.070628: The ROC RNA Ontology nomenclature and conformer-list development
