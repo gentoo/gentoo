@@ -7,7 +7,7 @@ PATCH_VER="3"
 UCLIBC_VER="1.0"
 
 # Hardened gcc 4 stuff
-PIE_VER="1"
+PIE_VER="2"
 SPECS_VER="0.2.0"
 SPECS_GCC_VER="4.4.3"
 # arch/libc configurations known to be stable with {PIE,SSP}-by-default
