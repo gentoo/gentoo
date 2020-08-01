@@ -4,11 +4,11 @@ DESCRIPTION=Ada library to handle GPRbuild project files
 EAPI=7
 HOMEPAGE=http://libre.adacore.com/
 IUSE=+shared static-libs static-pic ada_target_gnat_2016 ada_target_gnat_2017 ada_target_gnat_2018 ada_target_gnat_2019
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-3
 RDEPEND=dev-ada/xmlada[shared?,static-libs?,static-pic?,ada_target_gnat_2016(-)?,ada_target_gnat_2017(-)?,ada_target_gnat_2018(-)?,ada_target_gnat_2019(-)?] !net-libs/grpc
 REQUIRED_USE=^^ ( ada_target_gnat_2016 ada_target_gnat_2017 ada_target_gnat_2018 ada_target_gnat_2019 )
 SLOT=0
 SRC_URI=https://community.download.adacore.com/v1/408ec35c3bb86bd227db3da55d3e1e0c572a56e3?filename=gprbuild-2020-20200429-19BD2-src.tar.gz -> gprbuild-2020-20200429-19BD2-src.tar.gz
 _eclasses_=ada	2e62916779222e4f23755b01896c54af	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=c848ec462f8ec3fb5e7b4ec6b3625fe5
+_md5_=6e670f7a02d601778ff5497ceb06d3ab

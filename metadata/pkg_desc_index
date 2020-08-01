@@ -8009,7 +8009,7 @@ dev-python/cssselect2 0.3.0: Parses CSS3 Selectors and translates them to XPath 
 dev-python/cssutils 1.0.2-r2: A CSS Cascading Style Sheets library
 dev-python/csv23 0.3.2: Python 2/3 unicode CSV compatibility layer
 dev-python/ctypescrypto 0.5 9999: Python interface to some openssl function based on ctypes module
-dev-python/ctypesgen 0_p72-r1: Python wrapper generator for ctypes
+dev-python/ctypesgen 0_p72-r1 1.0.2: Python wrapper generator for ctypes
 dev-python/cursive 0.2.2: Cursive implements OpenStack-specific validation of digital signatures.
 dev-python/curtsies 0.3.0-r2: Curses-like terminal wrapper, with colored strings
 dev-python/cvxopt 1.2.5-r1: Python package for convex optimization
@@ -18023,7 +18023,7 @@ www-apps/ampache 3.8.3-r1 3.8.8-r1: PHP-based tool for managing,updating and pla
 www-apps/baikal 0.6.0 0.6.1 0.7.1: Lightweight CalDAV+CardDAV server
 www-apps/blazeblogger 1.2.0-r1: Simple, capable content management system for producing static content
 www-apps/blohg 0.13-r4 9999: A Mercurial (or Git) based blogging engine
-www-apps/bugzilla 4.4.12-r2 5.0.3-r2: Bugzilla is the Bug-Tracking System from the Mozilla project
+www-apps/bugzilla 4.4.12-r2 5.0.3-r2 5.0.6: Bugzilla is the Bug-Tracking System from the Mozilla project
 www-apps/cgisysinfo 0.4.1: A small cgi utility to show basic system information
 www-apps/cgit 1.2.1 1.2.3 9999: a fast web-interface for git repositories
 www-apps/cgp 1_p20181209: A graphical web-based front-end for visualizing RRD collected by collectd
@@ -18060,7 +18060,7 @@ www-apps/mythweb 0.28.1: PHP scripts intended to manage MythTV from a web browse
 www-apps/nanoblogger 3.5_rc1-r1: Small and simple weblog engine written in Bash for the command-line
 www-apps/nanoc 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/nanoc-core 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
-www-apps/netbox 2.5.11 2.5.12 2.6.1 2.6.4 2.6.5 2.6.6 2.6.7 2.6.8 2.6.12 2.7.2 2.7.6 2.7.8: IP address and data center infrastructure management tool
+www-apps/netbox 2.7.2 2.7.6 2.7.8: IP address and data center infrastructure management tool
 www-apps/nextcloud 17.0.5 17.0.6 17.0.7 17.0.8 18.0.3 18.0.4 18.0.6 18.0.7 19.0.0 19.0.1: Personal cloud that runs on your own server
 www-apps/nikola 7.8.15 7.8.15-r1 8.0.4 8.1.0 8.1.1: A static website and blog generator
 www-apps/novnc 1.0.0 1.1.0 9999: noVNC is a VNC client implemented using HTML5 technologies

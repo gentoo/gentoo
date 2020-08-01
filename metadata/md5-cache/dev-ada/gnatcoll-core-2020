@@ -4,11 +4,11 @@ DESCRIPTION=GNAT Component Collection Core packages
 EAPI=7
 HOMEPAGE=http://libre.adacore.com
 IUSE=+shared static-libs static-pic ada_target_gnat_2016 ada_target_gnat_2017 ada_target_gnat_2018 ada_target_gnat_2019
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-3
 RDEPEND=>=dev-ada/libgpr-2020[ada_target_gnat_2016(-)?,ada_target_gnat_2017(-)?,ada_target_gnat_2018(-)?,ada_target_gnat_2019(-)?,shared?,static-libs?,static-pic?]
 REQUIRED_USE=^^ ( ada_target_gnat_2016 ada_target_gnat_2017 ada_target_gnat_2018 ada_target_gnat_2019 )
 SLOT=0
 SRC_URI=https://community.download.adacore.com/v1/c94f2ac914cb305f6bef174329fa0b5003d84935?filename=gnatcoll-core-2020-20200429-19B7C-src.tar.gz -> gnatcoll-core-2020-20200429-19B7C-src.tar.gz
 _eclasses_=ada	2e62916779222e4f23755b01896c54af	multiprocessing	cac3169468f893670dac3e7cb940e045
-_md5_=489051bb891ac7e6b9933340ca0b73dc
+_md5_=c335a9becbd4c096e533c88180181e70
