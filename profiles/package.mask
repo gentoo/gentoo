@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-08-01)
+# This package's tests are seriously broken (they access random Internet
+# hosts for no good reason all the time), and it has no real revdeps.
+# Removal in 30 days.  Bug #735010.
+dev-python/distributed
+
 # Mikle Kolyada <zlogene@gentoo.org> (2020-07-31)
 # Broken package with dead upstream.
 # Libraries like tikz/pgf can be used as a replacement.
