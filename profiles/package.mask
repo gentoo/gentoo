@@ -37,13 +37,6 @@
 # Removal in 30 days
 dev-python/cddb-py
 
-# Aaron Bauman <bman@gentoo.org> (2020-08-01)
-# Multiple build failure bugs. Py2 only
-# Removal in 30 days
-# Bug #709790, #672872, #714828
-app-pda/jpilot
-app-pda/pilot-link
-
 # Michał Górny <mgorny@gentoo.org> (2020-08-01)
 # This package's tests are seriously broken (they access random Internet
 # hosts for no good reason all the time), and it has no real revdeps.
