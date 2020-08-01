@@ -67,7 +67,6 @@ gnome-base/orbit
 # if your package still needs to support Python 2 (or remove it
 # for Python 3 only packages).
 virtual/python-futures
-virtual/python-typing
 virtual/python-unittest-mock
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-08)
