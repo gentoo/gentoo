@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-01)
+# Py2 only. Dead upstream. Fails to build
+# Removal in 30 days. Bug #662572,#730328
+dev-python/pyode
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-01)
 # Py2 only. Dead upstream.
 # Removal in 30 days
 dev-python/pylzma
