@@ -6339,7 +6339,7 @@ dev-perl/Dist-Zilla-Plugin-Git 2.42.0-r1 2.46.0: Update your git repository afte
 dev-perl/Dist-Zilla-Plugin-Git-Contributors 0.35.0: Add contributor names from git to your distribution
 dev-perl/Dist-Zilla-Plugin-GithubMeta 0.580.0: Automatically include GitHub meta information in META.yml
 dev-perl/Dist-Zilla-Plugin-LicenseFromModule 0.70.0: Extract License and Copyright from its main_module file
-dev-perl/Dist-Zilla-Plugin-MakeMaker-Awesome 0.390.0: A more awesome MakeMaker plugin for Dist::Zilla
+dev-perl/Dist-Zilla-Plugin-MakeMaker-Awesome 0.390.0 0.480.0: A more awesome MakeMaker plugin for Dist::Zilla
 dev-perl/Dist-Zilla-Plugin-Meta-Contributors 0.3.0: Generate an x_contributors section in distribution metadata
 dev-perl/Dist-Zilla-Plugin-MetaProvides 2.2.4: Generating and Populating 'provides' in your META.yml
 dev-perl/Dist-Zilla-Plugin-MetaProvides-Package 2.4.3: Extract namespaces/version from traditional packages for provides
@@ -12967,7 +12967,7 @@ media-libs/assimp 5.0.1: Importer library to import assets from 3D files
 media-libs/aubio 0.4.9: Library for audio labelling
 media-libs/audiofile 0.3.6-r4: An elegant API for accessing audio files
 media-libs/avidemux-core 2.7.3-r1 2.7.4-r1: Core libraries for simple video cutting, filtering and encoding tasks
-media-libs/avidemux-plugins 2.7.3 2.7.4: Plugins for the video editor media-video/avidemux
+media-libs/avidemux-plugins 2.7.3 2.7.4 2.7.4-r1: Plugins for the video editor media-video/avidemux
 media-libs/babl 0.1.66 0.1.66-r1 0.1.74 0.1.74-r1 0.1.78 9999: A dynamic, any to any, pixel format conversion library
 media-libs/bcg729 1.0.4 1.0.4-r1 999999: encoder and decoder of the ITU G729 Annex A/B speech codec
 media-libs/bio2jack 0.9-r2: A library for porting blocked I/O OSS/ALSA audio applications to JACK
