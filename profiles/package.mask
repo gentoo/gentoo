@@ -46,6 +46,7 @@ dev-python/flup
 # Python 2 backport, not used by anything anymore.
 # Removal in 30 days.
 dev-python/backports-abc
+dev-python/backports-lzma
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-01)
 # Py2 only. Use dev-python/lxml instead.
