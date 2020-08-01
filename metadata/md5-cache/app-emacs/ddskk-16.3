@@ -1,0 +1,13 @@
+BDEPEND=>=app-editors/emacs-24:*
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DESCRIPTION=One Japanese input methods on Emacs
+EAPI=7
+HOMEPAGE=http://openlab.ring.gr.jp/skk/
+IUSE=ruby
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2+
+RDEPEND=|| ( app-i18n/skk-jisyo virtual/skkserv ) ruby? ( || ( dev-lang/ruby:2.5 dev-lang/ruby:2.4 dev-lang/ruby:2.6 ) virtual/rubygems ) >=app-editors/emacs-24:*
+SLOT=0
+SRC_URI=https://github.com/skk-dev/ddskk/archive/ddskk-16.3_Kutomatsunai.tar.gz -> ddskk-16.3.tar.gz
+_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	504a3383c45504fde86b00426619a709	ruby-single	e6530f43a549f120f9396ccb852288f5	ruby-utils	cdb4c1e4283adb7707b7dd48ccaa7ad2	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_md5_=d1530bc5c322a60e98b80a5f025d33be
