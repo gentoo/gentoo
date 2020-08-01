@@ -21,12 +21,7 @@ RDEPEND="
 	dev-python/PySDL2[${PYTHON_USEDEP}]
 	media-libs/libsdl2[joystick,video]
 	>=games-emulation/mupen64plus-core-2.5:0/2-sdl2
-	7z? (
-		|| (
-			dev-python/pylzma[${PYTHON_USEDEP}]
-			app-arch/p7zip
-		)
-	)
+	7z? ( app-arch/p7zip )
 	rar? (
 		|| (
 			dev-python/rarfile[${PYTHON_USEDEP}]
