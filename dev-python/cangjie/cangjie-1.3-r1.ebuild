@@ -43,7 +43,11 @@ src_test() {
 }
 
 src_install() {
-	python_foreach_impl run_in_build_dir default
+	python_install() {
+		default
+		python_optimize
+	}
+	python_foreach_impl run_in_build_dir python_install
 	einstalldocs
 
 	find "${D}" -name '*.la' -delete || die
