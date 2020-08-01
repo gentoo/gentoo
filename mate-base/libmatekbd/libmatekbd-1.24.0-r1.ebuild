@@ -37,6 +37,7 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	mate_src_configure \
+		--disable-static \
 		$(use_with X x) \
 		$(use_enable introspection) \
 		$(use_enable test tests)
