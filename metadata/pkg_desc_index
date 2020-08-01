@@ -1868,7 +1868,7 @@ app-emacs/zenirc 2.112-r1: A full-featured scriptable IRC client for the Emacs t
 app-emulation/aqemu 0.9.2: Graphical interface for QEMU and KVM emulators, using Qt5
 app-emulation/aranym 1.1.0: Atari Running on Any Machine, VM running Atari ST/TT/Falcon OS and TOS/GEM apps
 app-emulation/bochs 2.6.9 2.6.10 9999: LGPL-ed pc emulator
-app-emulation/buildah 1.14.5 1.14.6 1.14.8: A tool that facilitates building OCI images
+app-emulation/buildah 1.14.8 1.14.10: A tool that facilitates building OCI images
 app-emulation/cadvisor 0.36.0: Analyzes resource usage and performance characteristics of running containers
 app-emulation/cloud-init 19.4 20.1 9999: Cloud instance initialisation magic
 app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
