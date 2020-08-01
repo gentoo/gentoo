@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python3_6 )
 
-inherit gnome2-utils python-r1
+inherit gnome2-utils python-r1 xdg
 
 DESCRIPTION="Chinese Cangjie and Quick engines for IBus"
 HOMEPAGE="http://cangjians.github.io/"
@@ -37,10 +37,16 @@ src_install() {
 	python_foreach_impl default
 }
 
+pkg_preinst() {
+	xdg_pkg_preinst
+}
+
 pkg_postinst() {
+	xdg_pkg_postinst
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
+	xdg_pkg_postrm
 	gnome2_icon_cache_update
 }
