@@ -3,9 +3,9 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8,3_9} )
 
-inherit distutils-r1 eutils
+inherit distutils-r1 eutils virtualx
 
 DESCRIPTION="Python library for arbitrary-precision floating-point arithmetic"
 HOMEPAGE="http://mpmath.org/"
@@ -27,16 +27,17 @@ DEPEND="${RDEPEND}
 python_prepare_all() {
 	local PATCHES=(
 		"${FILESDIR}/${PN}-1.0.0.patch"
-		)
-
-	# this test requires X
-	rm ${PN}/tests/test_visualization.py || die
+	)
 
 	distutils-r1_python_prepare_all
 }
 
+src_test() {
+	virtx distutils-r1_src_test
+}
+
 python_test() {
 	pushd ${PN}/tests >/dev/null
-	${EPYTHON} runtests.py -local
+	${EPYTHON} runtests.py -local || die "Tests failed with ${EPYTHON}"
 	popd >/dev/null
 }
