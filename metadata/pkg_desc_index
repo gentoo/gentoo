@@ -627,7 +627,7 @@ app-admin/tmpwatch 2.11-r2: Files which haven't been accessed are removed from s
 app-admin/tripwire 2.4.3.7: Open Source File Integrity Checker and IDS
 app-admin/ulogd 2.0.7-r1: A userspace logging daemon for netfilter/iptables related logging
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
-app-admin/vault 1.4.2-r1: A tool for managing secrets
+app-admin/vault 1.4.2-r1 1.4.3: A tool for managing secrets
 app-admin/verynice 1.1-r3: A tool for dynamically adjusting the nice-level of processes
 app-admin/watchfolder 0.3.3-r1: watches directories and processes files
 app-admin/webalizer 2.23.08: Webserver log file analyzer
@@ -1632,7 +1632,7 @@ app-editors/nedit 5.6-r1 5.6-r2 5.7: Multi-purpose text editor for the X Window 
 app-editors/neovim 0.4.3 9999: Vim-fork focused on extensibility and agility.
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
 app-editors/notepadqq 2.0.0_beta 9999: Notepad++-like editor for Linux
-app-editors/okteta 0.26.3: Hex editor by KDE
+app-editors/okteta 0.26.3 0.26.4: Hex editor by KDE
 app-editors/padre 1.0.0-r1: Perl Application Development and Refactoring Environment
 app-editors/pluma 1.22.2 1.24.0: Pluma text editor for the MATE desktop
 app-editors/pyvim 3.0.2: An implementation of Vim in Python
@@ -3074,7 +3074,7 @@ app-text/xlhtml 0.5.1_p6: Convert MS Excel and Powerpoint files to HTML
 app-text/xlsx2csv 0.7.6: Convert MS Office xlsx files to CSV
 app-text/xml2 0.5: These tools are used to convert XML and HTML to and from a line-oriented format
 app-text/xml2doc 20030510-r1: Tool to convert simple XML to a variety of formats (pdf, html, txt, manpage)
-app-text/xmldiff 1.1.1 2.3: A tool that figures out the differences between two similar XML files
+app-text/xmldiff 2.3: A tool that figures out the differences between two similar XML files
 app-text/xmlformat 1.04: Reformat XML documents to your custom style
 app-text/xmlstarlet 1.6.1: A set of tools to transform, query, validate, and edit XML documents
 app-text/xmlto 0.0.28-r3: script for converting XML and DocBook documents to a variety of output formats
@@ -11236,7 +11236,6 @@ games-board/spider 1.2_p4-r2: Spider Solitaire
 games-board/stockfish 10 11: Free UCI chess engine, claimed to be the strongest in the world
 games-board/tablebase-syzygy 0_pre20131213 0_pre20131213-r100: Syzygy chess endgame tablebases for up to 6 pieces
 games-board/tali 3.32.1 3.36.4: Beat the odds in a poker-style dice game
-games-board/teg 0.11.2-r1: Gnome Risk Clone
 games-board/tetzle 2.1.3: Jigsaw puzzle game that uses tetrominoes for the pieces
 games-board/xboard 4.9.1: GUI for gnuchess and for internet chess servers
 games-board/xfreecell 1.0.5b-r1: A freecell game for X
@@ -11958,7 +11957,7 @@ kde-apps/akonadi-search 19.12.3 20.04.3: Libraries and daemons to implement sear
 kde-apps/akonadiconsole 19.12.3 20.04.3: Application for debugging Akonadi Resources
 kde-apps/akregator 19.12.3 20.04.3: News feed aggregator
 kde-apps/analitza 19.12.3-r1 20.04.3: KDE library for mathematical features
-kde-apps/ark 19.12.3 20.04.3: KDE Archiving tool
+kde-apps/ark 19.12.3 20.04.3 20.04.3-r1: KDE Archiving tool
 kde-apps/artikulate 19.12.3 20.04.3: Language learning application that helps improving pronunciation skills
 kde-apps/audiocd-kio 19.12.3 20.04.3: kioslave for accessing audio CDs
 kde-apps/baloo-widgets 19.12.3 20.04.3: Widget library for baloo
@@ -12035,7 +12034,7 @@ kde-apps/kdenlive 19.12.3-r3 20.04.3: Non-linear video editing suite by KDE
 kde-apps/kdepim-addons 19.12.3 20.04.3: Plugins for KDE Personal Information Management Suite
 kde-apps/kdepim-apps-libs 19.12.3 20.04.3: Libraries for KDE PIM applications
 kde-apps/kdepim-meta 19.12.3 20.04.3: KDE PIM - merge this to pull in all kdepim-derived packages
-kde-apps/kdepim-runtime 19.12.3 20.04.3: Runtime plugin collection to extend the functionality of KDE PIM
+kde-apps/kdepim-runtime 19.12.3 20.04.3 20.04.3-r1: Runtime plugin collection to extend the functionality of KDE PIM
 kde-apps/kdesdk-kioslaves 19.12.3 20.04.3: kioslaves from kdesdk package
 kde-apps/kdesdk-meta 19.12.3 20.04.3: KDE SDK - merge this to pull in all kdesdk-derived packages
 kde-apps/kdesdk-thumbnailers 19.12.3 20.04.3: Thumbnail generator for PO files
@@ -12073,7 +12072,7 @@ kde-apps/klines 19.12.3 20.04.3: A little KDE game about balls and how to get ri
 kde-apps/kmag 19.12.3 20.04.3: KDE screen magnifier
 kde-apps/kmahjongg 19.12.3 20.04.3: A tile matching game for one or two players
 kde-apps/kmail 19.12.3 20.04.3: Email client, supporting POP3 and IMAP mailboxes.
-kde-apps/kmail-account-wizard 19.12.3 20.04.3: Assistant for KMail accounts configuration
+kde-apps/kmail-account-wizard 19.12.3 20.04.3 20.04.3-r1: Assistant for KMail accounts configuration
 kde-apps/kmailtransport 19.12.3 20.04.3: Mail transport service
 kde-apps/kmbox 19.12.3 20.04.3: Library for accessing MBox format mail storages
 kde-apps/kmime 19.12.3 20.04.3: Libary for handling mail messages and newsgroup articles
@@ -12313,7 +12312,7 @@ kde-plasma/khotkeys 5.18.5 5.19.4: KDE Plasma workspace hotkey module
 kde-plasma/kinfocenter 5.18.5 5.19.4: Utility providing information about the computer hardware
 kde-plasma/kmenuedit 5.18.5 5.19.4: KDE Plasma menu editor
 kde-plasma/kscreen 5.18.5 5.19.4: KDE Plasma screen management
-kde-plasma/kscreenlocker 5.18.5 5.19.4: Library and components for secure lock screen architecture
+kde-plasma/kscreenlocker 5.18.5 5.19.4-r1: Library and components for secure lock screen architecture
 kde-plasma/ksshaskpass 5.18.5 5.19.4: KDE implementation of ssh-askpass with Kwallet integration
 kde-plasma/ksysguard 5.18.5 5.19.4: Network-enabled task manager and system monitor
 kde-plasma/kwallet-pam 5.18.5 5.19.4: PAM module to not enter KWallet password again after login
@@ -12729,7 +12728,7 @@ media-gfx/autopano-sift-C 2.5.1: SIFT algorithm for automatic panorama creation 
 media-gfx/aview 1.3.0_rc1-r3: An ASCII Image Viewer
 media-gfx/birdfont 2.18.3: Font editor for the creation of vector graphics and export TTF, EOT & SVG fonts
 media-gfx/blender 2.79b-r2: 3D Creation/Animation/Publishing System
-media-gfx/cairosvg 1.0.22 2.4.2: CLI and library to export SVG to PDF, PostScript, and PNG
+media-gfx/cairosvg 2.4.2: CLI and library to export SVG to PDF, PostScript, and PNG
 media-gfx/cellwriter 1.3.5 1.3.6: Grid-entry natural handwriting input panel
 media-gfx/chafa 1.4.0 1.4.1: versatile and fast Unicode/ASCII/ANSI graphics renderer
 media-gfx/clockphoto 1.2: Adjusts photo timestamps based on clock photos
@@ -12743,7 +12742,7 @@ media-gfx/curaengine 3.4.1 3.6.0 4.2.0 4.3.0 4.6.1: A 3D model slicing engine fo
 media-gfx/darktable 2.6.2 3.0.2 3.0.2-r1 9999: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b-r1: 3D geometrical postscript renderer
 media-gfx/dcraw 9.28.0-r1: Command-line decoder for raw digital photos
-media-gfx/digikam 6.4.0-r1 7.0.0_rc: Digital photo management application
+media-gfx/digikam 6.4.0-r1 7.0.0: Digital photo management application
 media-gfx/displaycal 3.8.8.1-r1 3.8.9.3-r1: Display calibration and characterization powered by Argyll CMS
 media-gfx/ditaa 0.10 0.11.0: A utility that converts ascii-art diagrams to bitmap diagrams
 media-gfx/dmtx-utils 0.7.5 0.7.6: Tools for reading and writing Data Matrix barcodes

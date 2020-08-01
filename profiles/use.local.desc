@@ -3185,11 +3185,6 @@ games-board/stockfish:general-32 - Generic unoptimized 32-bits build
 games-board/stockfish:general-64 - Generic unoptimized 64-bits build
 games-board/stockfish:optimize - Enable upstream -O3 optimizations (default enabled)
 games-board/tablebase-syzygy:6-pieces - Install tablebases for 6 pieces (huge!)
-games-board/teg:client - Compile the client
-games-board/teg:debug - Turn on debugging
-games-board/teg:ggz - Enable GGZ Gaming Zone support
-games-board/teg:robot - Compile the robot
-games-board/teg:server - Compile the server
 games-board/xboard:default-font - Install the default font that xboard uses
 games-board/xboard:zippy - Enable experimental zippy client
 games-emulation/dolphin:discord-presence - Enables Discord Rich Presence, show the current game on Discord
