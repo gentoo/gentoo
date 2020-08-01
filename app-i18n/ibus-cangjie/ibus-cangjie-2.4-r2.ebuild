@@ -4,7 +4,7 @@
 EAPI="7"
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit gnome2-utils python-r1 xdg
+inherit autotools gnome2-utils python-r1 xdg
 
 DESCRIPTION="Chinese Cangjie and Quick engines for IBus"
 HOMEPAGE="http://cangjians.github.io/"
@@ -24,6 +24,13 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 BDEPEND="dev-util/intltool
 	nls? ( sys-devel/gettext )"
+
+PATCHES=( "${FILESDIR}"/${P}-metadata.patch )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	python_foreach_impl default
