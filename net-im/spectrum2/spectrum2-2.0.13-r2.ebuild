@@ -11,9 +11,12 @@ SRC_URI="https://github.com/SpectrumIM/spectrum2/archive/${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 IUSE="doc frotz irc mysql postgres purple sms +sqlite test twitter whatsapp xmpp"
-REQUIRED_USE="|| ( mysql postgres sqlite )"
+REQUIRED_USE="
+	|| ( mysql postgres sqlite )
+	test? ( irc )
+"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -28,7 +31,7 @@ RDEPEND="
 	dev-libs/popt
 	dev-libs/protobuf:=
 	net-dns/libidn:0=
-	net-im/swift:=
+	>=net-im/swift-4.0.2-r2:=
 	net-misc/curl
 	sys-libs/zlib:=
 	frotz? ( !games-engines/frotz )
@@ -39,7 +42,7 @@ RDEPEND="
 			dev-db/mysql-connector-c
 		)
 	)
-	postgres? ( >=dev-libs/libpqxx-6.4.5:= )
+	postgres? ( <=dev-libs/libpqxx-7.0.0:= )
 	purple? (
 		dev-libs/glib
 		net-im/pidgin:=
@@ -52,12 +55,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	doc? ( app-doc/doxygen )
-	test? (	dev-util/cppunit )
-"
-
-PATCHES="
-	"${FILESDIR}/${P}-boost-173-compatibility.patch"
-	"${FILESDIR}/${P}-gcc-10-compatibility.patch"
+	test? ( dev-util/cppunit )
 "
 
 src_prepare() {

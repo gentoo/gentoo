@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-01)
+# Py2 only. Last upstream release 2013.
+# Removal in 30 days
+dev-python/cddb-py
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-01)
 # Multiple build failure bugs. Py2 only
 # Removal in 30 days
 # Bug #709790, #672872, #714828

@@ -72,6 +72,9 @@ PATCHES=(
 src_prepare() {
 	default
 
+	# Don't include '/usr/lib*' in the link command line for `swiften-config`
+	sed -e '/_LIBDIRFLAGS/d' -i Swiften/Config/SConscript || die
+
 	# Hack for finding Qt system libs
 	mkdir "${T}"/qt || die
 	ln -s "${EPREFIX}"/usr/$(get_libdir)/qt5/bin "${T}"/qt/bin || die
