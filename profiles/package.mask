@@ -271,6 +271,12 @@ dev-perl/Data-Diver
 ~virtual/perl-DB_File-1.853.0
 ~virtual/perl-Devel-PPPort-3.570.0
 ~virtual/perl-Digest-MD5-2.550.100_rc
+~virtual/perl-Dumpvalue-1.210.0
+~virtual/perl-Encode-3.60.0
+~virtual/perl-Exporter-5.740.0
+~virtual/perl-ExtUtils-CBuilder-0.280.234
+~virtual/perl-ExtUtils-MakeMaker-7.440.0
+~virtual/perl-Filter-Simple-0.960.0
 
 # Christoph Junghans <junghans@gentoo.org> (2020-07-14)
 # Unmaintained upstream and does not support systemd or firewalld.
