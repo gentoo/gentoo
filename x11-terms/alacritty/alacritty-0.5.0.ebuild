@@ -47,6 +47,7 @@ core-text-15.0.0
 core-video-sys-0.1.4
 crc32fast-1.2.0
 crossbeam-utils-0.7.2
+crossfont-0.1.0
 deflate-0.8.6
 derivative-2.1.1
 dirs-2.0.2
@@ -277,7 +278,7 @@ if [ ${PV} == "9999" ] ; then
 else
 	SRC_URI="https://github.com/alacritty/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
-	KEYWORDS="~amd64 ~ppc64"
+	KEYWORDS="~amd64 ~arm64 ~ppc64"
 fi
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions Boost-1.0 BSD BSD-2 CC0-1.0 FTL ISC MIT MPL-2.0 Unlicense WTFPL-2 ZLIB"
