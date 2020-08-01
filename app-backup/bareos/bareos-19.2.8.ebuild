@@ -332,6 +332,9 @@ src_install() {
 	diropts -m0755
 	keepdir /var/log/bareos
 
+	insinto /usr/lib/tmpfiles.d
+	newins "${FILESDIR}"/tmpfiles.d-bareos.conf bareos.conf
+
 	# make sure bareos group can execute bareos libexec scripts
 	fowners -R root:bareos /usr/libexec/bareos
 }
