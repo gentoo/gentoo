@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 MY_P="${P/_}"
 inherit desktop flag-o-matic font python-single-r1 qmake-utils toolchain-funcs xdg-utils
