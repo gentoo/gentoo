@@ -2379,7 +2379,7 @@ app-misc/emelfm2 0.9.1-r1 0.9.1-r2 0.9.1-r3: A file manager that implements the 
 app-misc/empty 0.6.20b: Small shell utility, similar to expect(1)
 app-misc/enum 1.1-r1: Replacement for GNU seq and BSD jot
 app-misc/esekeyd 1.2.7: Multimedia key daemon that uses the Linux event interface
-app-misc/evemu 2.6.0 2.7.0: tools and bindings for kernel evdev device emulation, data capture, and replay
+app-misc/evemu 2.7.0: tools and bindings for kernel evdev device emulation, data capture, and replay
 app-misc/evtest 1.33 1.34: test program for capturing input device events
 app-misc/faq 0.0.6: Format agnostic jQ
 app-misc/fdupes 1.5.1 1.6.1 1.6.1-r1 9999: Identify/delete duplicate files residing within specified directories
@@ -2680,7 +2680,7 @@ app-pda/pilot-link 0.12.5-r2: Suite of tools for moving data between a Palm devi
 app-pda/usbmuxd 1.1.0 1.1.1_pre20200121 1.1.1: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-portage/cfg-update 1.8.9: Easy to use GUI & CLI alternative for etc-update
 app-portage/conf-update 1.0.3-r1: conf-update is a ncurses-based config management utility
-app-portage/cpuid2cpuflags 1 9 10 11 9999: Tool to guess CPU_FLAGS_* flags for the host
+app-portage/cpuid2cpuflags 10 11 9999: Tool to guess CPU_FLAGS_* flags for the host
 app-portage/deltup 0.4.6-r1: Delta-Update - patch system for updating source-archives.
 app-portage/demerge 0.047-r3: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r4 9999: A utility to maintain package.unmask entries up-to-date with masks
