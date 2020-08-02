@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index ac40818..b67b25c 100644
+--- a/setup.py
++++ b/setup.py
+@@ -36,7 +36,7 @@ setup(
+     description='RQ is a simple, lightweight, library for creating background '
+                 'jobs, and processing them.',
+     long_description=__doc__,
+-    packages=find_packages(exclude=['tests']),
++    packages=find_packages(exclude=['tests*']),
+     include_package_data=True,
+     zip_safe=False,
+     platforms='any',
