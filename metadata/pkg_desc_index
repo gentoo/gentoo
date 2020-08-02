@@ -8291,7 +8291,7 @@ dev-python/jaraco-packaging 6.2-r1 8.1.0: Tools to supplement packaging Python r
 dev-python/jaraco-stream 3.0.0: Routines for handling streaming data
 dev-python/jaraco-text 3.2.0: Text utilities used by other projects by developer jaraco
 dev-python/jdcal 1.4.1: Julian dates from proleptic Gregorian and Julian calendars
-dev-python/jedi 0.14.1 0.15.2 0.17.0 0.17.1-r1 0.17.2: Autocompletion library for Python
+dev-python/jedi 0.15.2 0.17.0 0.17.1-r1 0.17.2: Autocompletion library for Python
 dev-python/jeepney 0.4.3: Low-level, pure Python DBus protocol wrapper
 dev-python/jellyfish 0.8.2: Python module for doing approximate and phonetic matching of strings
 dev-python/jikanpy 3.4.2 4.2.1: Python wrapper for jikan.moe API.

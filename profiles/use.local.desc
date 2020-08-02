@@ -1896,10 +1896,10 @@ dev-lang/gdl:proj - Add support for sci-libs/proj (geographic projections)
 dev-lang/gdl:udunits - Add support for manipulating units of physical quantities
 dev-lang/gforth:check - Enable build-time sanity check.
 dev-lang/ghc:binary - Install the binary version directly, rather than using it to build the source version.
-dev-lang/ghc:elfutils - Enable DWARF-based baclktraces using dev-libs/elfutils.
+dev-lang/ghc:elfutils - Enable DWARF-based backtraces using dev-libs/elfutils.
 dev-lang/ghc:ghcbootstrap - Internal: Bootstrap GHC from an existing GHC installation.
 dev-lang/ghc:ghcmakebinary - Internal: Build binary friendly for redistribution.
-dev-lang/ghc:gmp - use dev-libs/gmp for integer operations (works faster, but an external depend).
+dev-lang/ghc:gmp - Use dev-libs/gmp for integer operations (works faster, but an external depend).
 dev-lang/ghc:numa - Enable NUMA thread balancing policy using sys-process/numactl.
 dev-lang/gnat-gpl:ada - Build the ADA language (GNAT) frontend
 dev-lang/gnat-gpl:awt - Useful only when building GCJ, this enables Abstract Window Toolkit (AWT) peer support on top of GTK+
