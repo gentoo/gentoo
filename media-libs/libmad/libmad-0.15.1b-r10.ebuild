@@ -67,7 +67,9 @@ multilib_src_install() {
 
 	# This file must be updated with each version update
 	insinto /usr/$(get_libdir)/pkgconfig
-	doins "${FILESDIR}"/mad.pc
+	cp "${FILESDIR}/mad.pc" "${S}"
+	sed -i "s/%VERSION%/${PV}/g" "${S}/mad.pc"
+	doins "${S}/mad.pc"
 
 	# Use correct libdir in pkgconfig file
 	sed -e "s:^libdir.*:libdir=${EPREFIX}/usr/$(get_libdir):" \
