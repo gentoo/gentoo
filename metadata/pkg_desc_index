@@ -14998,7 +14998,7 @@ net-mail/relay-ctrl 3.1.1-r2 3.1.1-r3 3.2: SMTP Relaying Control designed for qm
 net-mail/renattach 1.2.4-r1: Filter that renames/deletes dangerous email attachments
 net-mail/ripmime 1.4.0.10: extract attachment files out of a MIME-encoded email pack
 net-mail/ripole 0.2.2: Program/library to pull out attachment from OLE2 data files
-net-mail/rss2email 3.11 3.11-r1 3.12: A python script that converts RSS/Atom newsfeeds to email
+net-mail/rss2email 3.11 3.11-r1 3.12.1: A python script that converts RSS/Atom newsfeeds to email
 net-mail/safecat 1.13: Safecat implements qmail's maildir algorithm, safely copying standard input
 net-mail/sendEmail 1.56-r1 1.56-r2: Command line based, SMTP email agent
 net-mail/serialmail 0.75-r4: A serialmail is a collection of tools for passing mail across serial links
@@ -17004,7 +17004,7 @@ sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Rea
 sys-apps/pcsc-tools 1.5.6 1.5.7: PC/SC Architecture smartcard tools
 sys-apps/pick 3.0.1: a fuzzy search tool for the command-line
 sys-apps/pkgcore 0.10.12 0.10.13 9999: a framework for package management
-sys-apps/pmount 0.9.99_alpha-r5: Policy based mounter that gives the ability to mount removable devices as a user
+sys-apps/pmount 0.9.99_alpha-r5 0.9.99_alpha-r6: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
 sys-apps/policycoreutils 2.9 3.0 9999: SELinux core utilities
@@ -18301,7 +18301,7 @@ x11-libs/gdk-pixbuf-loader-webp 20160328234507: WebP Image format GdkPixbuf load
 x11-libs/gl2ps 1.3.9 1.4.0 1.4.2: OpenGL to PostScript printing library
 x11-libs/gnome-pty-helper 0.40.2: GNOME Setuid helper for opening ptys
 x11-libs/goffice 0.10.47: A library of document-centric objects and utilities
-x11-libs/goocanvas 1.0.0 2.0.4: Canvas widget for GTK+ using the cairo 2D library for drawing
+x11-libs/goocanvas 1.0.0 2.0.4-r1: Canvas widget for GTK+ using the cairo 2D library for drawing
 x11-libs/gtk+ 2.24.32-r1 3.24.16 3.24.18 3.24.20 3.24.21: Gimp ToolKit +
 x11-libs/gtk+extra 3.3.4: Useful Additional GTK+ widgets
 x11-libs/gtk-mac-integration 2.0.5: Menubar, doc and app bundle integration for GTK+
