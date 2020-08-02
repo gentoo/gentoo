@@ -64,6 +64,7 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	mate_src_configure \
+		--disable-static \
 		--disable-update-mimedb \
 		$(use_enable appindicator) \
 		$(use_enable debug)
