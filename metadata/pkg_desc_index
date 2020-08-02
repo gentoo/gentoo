@@ -13668,7 +13668,7 @@ media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
 media-sound/asunder 2.9.3-r1 2.9.5 2.9.6: Graphical Audio CD ripper and encoder with support for many output formats
 media-sound/aucdtect 0.8.2-r1: Commandline FLAC CDDA authenticity verifier
 media-sound/audacious 3.10.1-r1 4.0.5 9999: Lightweight and versatile audio player
-media-sound/audacity 2.2.2 2.3.3 2.4.2: Free crossplatform audio editor
+media-sound/audacity 2.2.2 2.3.3 2.4.2-r1: Free crossplatform audio editor
 media-sound/audex 0.95_pre20190721: Tool for ripping compact discs
 media-sound/audicle 1.0.0.7-r2: A Context-sensitive, On-the-fly Audio Programming Environ/mentality
 media-sound/audiocompress 2.0: Very gentle 1-band dynamic range compressor
