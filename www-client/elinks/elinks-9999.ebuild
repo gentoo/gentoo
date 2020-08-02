@@ -15,7 +15,7 @@ HOMEPAGE="http://elinks.or.cz/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="bittorrent brotli bzip2 debug finger ftp gopher gpm guile idn ipv6
+IUSE="bittorrent brotli bzip2 debug finger ftp gopher gpm gnutls guile idn ipv6
 	javascript libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib"
 
 BDEPEND="virtual/pkgconfig"
@@ -31,8 +31,11 @@ RDEPEND="
 	ruby? ( dev-lang/ruby:* dev-ruby/rubygems:* )
 	samba? ( net-fs/samba )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		!gnutls? (
+			!libressl? ( dev-libs/openssl:0= )
+			libressl? ( dev-libs/libressl:0= )
+		)
+		gnutls? ( net-libs/gnutls:= )
 	)
 	tre? ( dev-libs/tre )
 	X? ( x11-libs/libX11 x11-libs/libXt )
@@ -96,11 +99,12 @@ src_configure() {
 		myconf+=( --enable-fastmem )
 	fi
 
-	# NOTE about GNUTSL SSL support (from the README -- 25/12/2002)
-	# As GNUTLS is not yet 100% stable and its support in ELinks is not so well
-	# tested yet, it's recommended for users to give a strong preference to OpenSSL whenever possible.
 	if use ssl ; then
-		myconf+=( --with-openssl="${EPREFIX}"/usr )
+		if use gnutls ; then
+			myconf+=( --with-gnutls )
+		else
+			myconf+=( --with-openssl="${EPREFIX}"/usr )
+		fi
 	else
 		myconf+=( --without-openssl --without-gnutls )
 	fi
