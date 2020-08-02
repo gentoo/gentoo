@@ -33,6 +33,34 @@
 #--- END OF EXAMPLES ---
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-02)
+# Py2 only. m-n. Bug #709932
+# Removal in 30 days
+net-wireless/cpyrit-cuda
+net-wireless/cpyrit-opencl
+net-wireless/pyrit
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-02)
+# Py2 only. m-n. Bug #735466
+# Removal in 30 days
+sys-apps/biosdisk
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-02)
+# Py2 only. m-n. Bug #735486
+# Removal in 30 days
+sys-fs/ecryptfs-utils
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-02)
+# Py2 only. m-n. Bug #735502. rdep.
+# Removal in 30 days
+app-metrics/collectd
+sys-fs/owfs
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-02)
+# Py2 only. m-n. Bug #735524
+5# Removal in 30 days
+www-misc/nx_util
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-02)
 # Unmaintained. New release upstream. Py3.6 only.
 # Removal in 30 days. Bug #696484,#718466
 sci-biology/HTSeq
@@ -617,10 +645,6 @@ sci-mathematics/geogebra
 # package is not going away anytime soon, just masked
 # for security. unmask as needed.
 dev-java/icedtea-web
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-03-14)
-# Breaks at least dev-games/simgear right now, bug #709878.
-~dev-games/openscenegraph-3.6.5
 
 # Eray Aslan <eras@gentoo.org> (2020-03-09)
 # Mask experimental software
