@@ -5395,7 +5395,7 @@ dev-libs/libfmt 6.1.2 6.2.0-r1 6.2.1 7.0.0 7.0.1 7.0.2 9999: Small, safe and fas
 dev-libs/libfstrcmp 0.7 0.7-r1: Make fuzzy comparisons of strings and byte arrays
 dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the Logitech G15 keyboard
 dev-libs/libg15render 1.2-r2: Small library for display text and graphics on a Logitech G15 keyboard
-dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor API
+dev-libs/libgamin 0.1.10-r5 0.1.10-r6: Library providing the FAM File Alteration Monitor API
 dev-libs/libgaminggear 0.15.1: Provides functionality for gaming input devices
 dev-libs/libgcrypt 1.8.5 1.8.6: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgcrypt-compat 1.5.6: Old version of libgcrypt needed by some binaries
@@ -8991,7 +8991,7 @@ dev-python/routes 2.4.1-r1: A re-implementation of Rails routes system, mapping 
 dev-python/rply 0.7.7: Pure python parser generator that also works with RPython
 dev-python/rpy 2.9.0: Python interface to the R Programming Language
 dev-python/rpyc 4.1.4: Remote Python Call (RPyC), a transparent and symmetric RPC library
-dev-python/rq 1.3.0 1.4.3 1.5.0: simple, lightweight library for creating and processing background jobs
+dev-python/rq 1.4.3 1.5.0: simple, lightweight library for creating and processing background jobs
 dev-python/rsa 3.4.2-r1 4.2: Pure-Python RSA implementation
 dev-python/rst-linker 1.11 2.0.0: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rtimulib 7.2.1-r1: Python Binding for RTIMULib, a versatile IMU library
@@ -9261,7 +9261,7 @@ dev-python/xmlschema 1.2.2: An XML Schema validator and decoder
 dev-python/xmltodict 0.12.0-r1: Makes working with XML feel like you are working with JSON
 dev-python/xvfbwrapper 0.2.9: Python wrapper for running a display inside X virtual framebuffer
 dev-python/yapf 0.30.0: A formatter for Python files
-dev-python/yappi 1.2.5: Yet Another Python Profiler
+dev-python/yappi 1.2.5-r1: Yet Another Python Profiler
 dev-python/yapsy 1.12.2: A fat-free DIY Python plugin management toolkit
 dev-python/yaql 1.1.3: YAQL: Yet Another Query Language
 dev-python/yarl 1.4.2 1.5.0 1.5.1: Yet another URL library
@@ -12753,7 +12753,7 @@ media-gfx/enblend 4.2.0_p20161007-r1: Image Blending with Multiresolution Spline
 media-gfx/engauge 10.6: Convert an image file showing a graph or map into numbers
 media-gfx/entangle 2.0: Tethered Camera Control & Capture
 media-gfx/eog 3.32.2 3.36.3: The Eye of GNOME image viewer
-media-gfx/eog-plugins 3.26.4-r1: Eye of GNOME plugins
+media-gfx/eog-plugins 3.26.4-r1 3.26.5: Eye of GNOME plugins
 media-gfx/eom 1.22.2 1.24.0: The MATE image viewer
 media-gfx/ephoto 1.5: Enlightenment image viewer written with EFL
 media-gfx/esci-interpreter-gt-s80 0.2.1.1: Epson GT-S50 and GT-S80 scanner plugins for SANE 'epkowa' backend
