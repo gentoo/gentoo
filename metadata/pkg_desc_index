@@ -11854,8 +11854,8 @@ gnome-extra/polkit-gnome 0.105-r2: A dbus session bus service that is used to br
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
 gnome-extra/sushi 3.34.0: A quick previewer for Nautilus, the GNOME file manager
 gnome-extra/synapse 0.2.99.4: A program launcher in the style of GNOME Do
-gnome-extra/yelp 3.34.0: Help browser for GNOME
-gnome-extra/yelp-xsl 3.34.2: XSL stylesheets for yelp
+gnome-extra/yelp 3.34.0 3.36.0: Help browser for GNOME
+gnome-extra/yelp-xsl 3.34.2 3.36.0: XSL stylesheets for yelp
 gnome-extra/zenity 3.32.0: Tool to display dialogs from the commandline and shell scripts
 gnustep-apps/aclock 0.4.0 0.4.0-r1: Analog dockapp clock for GNUstep
 gnustep-apps/addresses 0.4.8 0.4.8-r1: Apple Addressbook work alike (standalone and for GNUMail)
@@ -13668,7 +13668,7 @@ media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
 media-sound/asunder 2.9.3-r1 2.9.5 2.9.6: Graphical Audio CD ripper and encoder with support for many output formats
 media-sound/aucdtect 0.8.2-r1: Commandline FLAC CDDA authenticity verifier
 media-sound/audacious 3.10.1-r1 4.0.5 9999: Lightweight and versatile audio player
-media-sound/audacity 2.2.2 2.3.2 2.3.3 2.4.2: Free crossplatform audio editor
+media-sound/audacity 2.2.2 2.3.3 2.4.2: Free crossplatform audio editor
 media-sound/audex 0.95_pre20190721: Tool for ripping compact discs
 media-sound/audicle 1.0.0.7-r2: A Context-sensitive, On-the-fly Audio Programming Environ/mentality
 media-sound/audiocompress 2.0: Very gentle 1-band dynamic range compressor
@@ -13766,7 +13766,6 @@ media-sound/gstreamripper 0.2: A GTK+ toolkit based frontend for streamripper
 media-sound/gtick 0.5.5: Metronome application supporting different meters and speeds ranging
 media-sound/gtkguitune 0.8: A guitar tuning program that uses Schmitt-triggering for quick feedback
 media-sound/guayadeque 0.4.5_p20170110 9999: Music management program designed for all music enthusiasts
-media-sound/guimup 0.3.2: A client for MPD with a clean, GTK interface
 media-sound/guitarix 0.39.0 0.40.0 9999: Virtual guitar amplifier for Linux
 media-sound/helm 0.9.0-r1: Open source polyphonic software synthesizer with lots of modulation
 media-sound/herrie 2.2-r1: Herrie is a command line music player
