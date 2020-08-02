@@ -29,4 +29,5 @@ IUSE=""
 
 DEPEND="
 	~media-tv/kodi-9999
-	"
+	media-libs/glm
+	virtual/opengl"
