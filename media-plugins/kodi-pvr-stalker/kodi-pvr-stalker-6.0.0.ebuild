@@ -31,6 +31,7 @@ DEPEND="
 	=media-tv/kodi-19*
 	dev-libs/jsoncpp
 	dev-libs/tinyxml
+	=dev-libs/libplatform-2*
 	"
 
 RDEPEND="
