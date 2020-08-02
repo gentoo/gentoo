@@ -1,10 +1,10 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=install unpack
-DEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=FlightGear data files
-EAPI=6
+EAPI=7
 HOMEPAGE=https://www.flightgear.org/
 LICENSE=GPL-2
 PROPERTIES=live
 SLOT=0
 _eclasses_=git-r3	8ec5b53812bce105ae7943930e4660f8
-_md5_=85d77808218b9a0e818e99e6a64c7dab
+_md5_=619c998ceb309d0e49a3cfe6ddca4c63
