@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
@@ -22,15 +22,17 @@ RDEPEND="dev-python/snowballstemmer[${PYTHON_USEDEP}]"
 DEPEND="test? (
 	dev-python/pytest-pep8[${PYTHON_USEDEP}]
 	dev-python/mypy[${PYTHON_USEDEP}]
-	dev-python/tox[${PYTHON_USEDEP}] )"
+	dev-python/tox[${PYTHON_USEDEP}]
+)"
 
 distutils_enable_tests pytest
-distutils_enable_sphinx docs dev-python/sphinx_rtd_theme dev-python/sphinxcontrib-issuetracker
+# Requires network to lookup github issues
+#distutils_enable_sphinx docs dev-python/sphinx_rtd_theme dev-python/sphinxcontrib-issuetracker
 
 src_prepare() {
 	default
 
 	# These tests call pip.
 	# pip install fails because we are not allowed to do that inside an ebuild.
-	rm ${S}/src/tests/test_integration.py || die
+	rm "${S}/src/tests/test_integration.py" || die
 }
