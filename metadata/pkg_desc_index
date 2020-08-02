@@ -3034,7 +3034,7 @@ app-text/tessdata_legacy 4.0.0: Trained models for app-text/tesseract compatible
 app-text/tesseract 3.05.02 4.1.0-r1 4.1.1 9999: An OCR Engine, originally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2020-r6: A complete TeX distribution
-app-text/texlive-core 2020-r5: A complete TeX distribution
+app-text/texlive-core 2020-r5 2020-r6: A complete TeX distribution
 app-text/tidy-html5 5.6.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
@@ -8084,7 +8084,7 @@ dev-python/doublex-expects 0.7.0_rc2-r1: Expects matchers for Doublex test doubl
 dev-python/drf-yasg 1.17.1: Automated generation of Swagger/OpenAPI 2.0 schemas from Django Rest framework
 dev-python/duecredit 0.7.0: Publications (and donations) tracer
 dev-python/dugong 3.7.3: Python library for communicating with HTTP 1.1 servers
-dev-python/dulwich 0.19.6 0.19.15: Pure-Python implementation of the Git file formats and protocols
+dev-python/dulwich 0.19.6 0.19.15 0.20.5: Pure-Python implementation of the Git file formats and protocols
 dev-python/easy-thumbnails 2.7: Easy thumbnails for Django
 dev-python/ebuildtester 0.1.16: A dockerized approach to test a Gentoo package within a clean stage3 container
 dev-python/ecdsa 0.14.1-r1 0.15: ECDSA cryptographic signature library in pure Python
@@ -10677,7 +10677,7 @@ dev-util/drone 0.8.9: A Continuous Delivery platform built on Docker, written in
 dev-util/drone-cli 0.8.6 1.1.4 1.2.1: Command-line interface for Drone
 dev-util/dropwatch 1.4-r1 1.4_p20150706: A utility to interface to the kernel to monitor for dropped network packets
 dev-util/duma 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
-dev-util/dwarves 1.12 1.13 1.15 1.16 1.16-r1 1.17 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
+dev-util/dwarves 1.17 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
 dev-util/dwdiff 2.1.1 2.1.2: diff-like program operating at word level instead of line level
 dev-util/edb-debugger 1.2.0 9999: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
 dev-util/edi 0.8.0: An EFL-based IDE
@@ -14998,7 +14998,7 @@ net-mail/relay-ctrl 3.1.1-r2 3.1.1-r3 3.2: SMTP Relaying Control designed for qm
 net-mail/renattach 1.2.4-r1: Filter that renames/deletes dangerous email attachments
 net-mail/ripmime 1.4.0.10: extract attachment files out of a MIME-encoded email pack
 net-mail/ripole 0.2.2: Program/library to pull out attachment from OLE2 data files
-net-mail/rss2email 3.11 3.11-r1: A python script that converts RSS/Atom newsfeeds to email
+net-mail/rss2email 3.11 3.11-r1 3.12: A python script that converts RSS/Atom newsfeeds to email
 net-mail/safecat 1.13: Safecat implements qmail's maildir algorithm, safely copying standard input
 net-mail/sendEmail 1.56-r1 1.56-r2: Command line based, SMTP email agent
 net-mail/serialmail 0.75-r4: A serialmail is a collection of tools for passing mail across serial links
