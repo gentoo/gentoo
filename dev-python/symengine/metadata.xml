@@ -5,10 +5,6 @@
     <email>sci-mathematics@gentoo.org</email>
     <name>Gentoo Mathematics Project</name>
   </maintainer>
-  <longdescription>
-    Python wrappers to the C++ library SymEngine, a fast C++ symbolic
-    manipulation library.
-  </longdescription>
   <upstream>
     <remote-id type="github">symengine/symengine.py</remote-id>
   </upstream>
