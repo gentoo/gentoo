@@ -17754,7 +17754,7 @@ sys-process/minit 0.10-r1: a small yet feature-complete init
 sys-process/nmon 16g 16i 16j 16m: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.12 2.0.13 9999: Utilities and libraries for NUMA systems
 sys-process/numad 0.5-r3 9999: The NUMA daemon that manages application locality
-sys-process/parallel 20200522 20200622 20200722: A shell tool for executing jobs in parallel locally or on remote machines
+sys-process/parallel 20200622 20200722: A shell tool for executing jobs in parallel locally or on remote machines
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.4: A utility for parallelizing execution of shell functions
 sys-process/procenv 0.51: command-line utility to show process environment
