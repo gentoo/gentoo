@@ -2444,7 +2444,7 @@ app-misc/joy2key 1.6.3-r1: An application that translates joystick events to key
 app-misc/joymouse 0.5 0.5-r1: An application that translates joystick events to mouse events
 app-misc/jq 1.6-r3: A lightweight and flexible command-line JSON processor
 app-misc/kanatest 0.4.8: Visual flashcard tool for memorizing the Japanese Hiragana and Katakana alphabet
-app-misc/khal 0.9.10 0.10.1-r1: A CalDAV based calendar
+app-misc/khal 0.10.1-r1: A CalDAV based calendar
 app-misc/khard 0.11.4 0.12.2 0.13.0: Console CardDAV client
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
 app-misc/kryoflux-dtc 2.6: KryoFlux Host Software
@@ -8946,7 +8946,7 @@ dev-python/readme_renderer 26.0: a library for rendering "readme" descriptions f
 dev-python/readthedocs-sphinx-ext 1.0.4 2.1.0 2.1.1: Code specific for Read the Docs and Sphinx
 dev-python/rebulk 2.0.1: Python library that performs advanced searches in strings
 dev-python/recommonmark 0.6.0: Python docutils-compatibility bridge to CommonMark
-dev-python/redis-py 3.3.11: Python client for Redis key-value store
+dev-python/redis-py 3.3.11 3.5.3: Python client for Redis key-value store
 dev-python/redlock-py 1.0.8: Redis distributed locks in Python
 dev-python/rednose 0.4.3: coloured output for nosetests
 dev-python/reflink 0.2.1-r1: Python wrapper around the reflink system calls
@@ -8991,7 +8991,7 @@ dev-python/routes 2.4.1-r1: A re-implementation of Rails routes system, mapping 
 dev-python/rply 0.7.7: Pure python parser generator that also works with RPython
 dev-python/rpy 2.9.0: Python interface to the R Programming Language
 dev-python/rpyc 4.1.4: Remote Python Call (RPyC), a transparent and symmetric RPC library
-dev-python/rq 1.3.0 1.4.3: simple, lightweight library for creating and processing background jobs
+dev-python/rq 1.3.0 1.4.3 1.5.0: simple, lightweight library for creating and processing background jobs
 dev-python/rsa 3.4.2-r1 4.2: Pure-Python RSA implementation
 dev-python/rst-linker 1.11 2.0.0: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rtimulib 7.2.1-r1: Python Binding for RTIMULib, a versatile IMU library
@@ -9015,7 +9015,7 @@ dev-python/semantic_version 2.8.5: Python library providing a few tools handling
 dev-python/semver 2.10.2: A Python module for semantic versioning
 dev-python/send2trash 1.5.0-r1: Sends files to the Trash (or Recycle Bin)
 dev-python/sentinels 1.0.0: Python Sentinels class which are objects with special meanings.
-dev-python/sentry-sdk 0.14.4: Python client for Sentry
+dev-python/sentry-sdk 0.14.4 0.16.3: Python client for Sentry
 dev-python/serpent 1.30: A simple serialization library based on ast.literal_eval
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0: Service identity verification for pyOpenSSL
