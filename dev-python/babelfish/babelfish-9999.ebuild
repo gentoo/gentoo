@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit distutils-r1 git-r3
 
@@ -13,12 +13,5 @@ EGIT_REPO_URI="https://github.com/Diaoul/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}"
-
-python_test() {
-	esetup.py test
-}
+distutils_enable_tests setup.py
