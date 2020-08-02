@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools elisp-common flag-o-matic multilib prefix versionator
+inherit autotools elisp-common flag-o-matic multilib prefix toolchain-funcs versionator
 
 MY_PN=Singular
 MY_PV=$(replace_all_version_separators '.')
@@ -13,9 +13,9 @@ MY_DIR=$(replace_all_version_separators '-' ${MY_DIR2})
 # This is where the share tarball unpacks to
 
 DESCRIPTION="Computer algebra system for polynomial computations"
-HOMEPAGE="http://www.singular.uni-kl.de/"
-SRC_URI="http://www.mathematik.uni-kl.de/ftp/pub/Math/${MY_PN}/SOURCES/${MY_DIR}/${PN}-${MY_PV}.tar.gz
-		 http://www.mathematik.uni-kl.de/ftp/pub/Math/${MY_PN}/SOURCES/${MY_DIR}/${PN}-${MY_PV}-share.tar.gz"
+HOMEPAGE="https://www.singular.uni-kl.de/"
+SRC_URI="https://www.mathematik.uni-kl.de/ftp/pub/Math/${MY_PN}/SOURCES/${MY_DIR}/${PN}-${MY_PV}.tar.gz
+		 https://www.mathematik.uni-kl.de/ftp/pub/Math/${MY_PN}/SOURCES/${MY_DIR}/${PN}-${MY_PV}-share.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -44,7 +44,7 @@ pkg_setup() {
 	tc-export AR CC CPP CXX
 }
 
-src_prepare () {
+src_prepare() {
 	eapply "${FILESDIR}"/"${P}"-fix-resources-name.patch
 	eapply "${FILESDIR}"/"${P}"-fix-destdir.patch
 	eapply_user

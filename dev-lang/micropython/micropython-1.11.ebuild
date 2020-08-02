@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,17 +19,29 @@ DEPEND="
 	virtual/libffi
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/${P}-prevent-stripping.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-prevent-stripping.patch"
+	"${FILESDIR}/${P}-exclude-float-parse-tests.patch"
+)
+
+src_prepare() {
+	default
+
+	cd ports/unix || die
+
+	# 1) don't die on compiler warning
+	# 2) remove /usr/local prefix references in favour of /usr
+	# 3) enforce our CFLAGS
+	# 4) enforce our LDFLAGS
+	sed -e 's#-Werror##g;' \
+		-e 's#\/usr\/local#\/usr#g;' \
+		-e "s#^CFLAGS = \(.*\)#CFLAGS = \1 ${CFLAGS}#g" \
+		-e "s#^LDFLAGS = \(.*\)#LDFLAGS = \1 ${LDFLAGS}#g" \
+		-i Makefile || die "can't patch Makefile"
+}
 
 src_compile() {
 	cd ports/unix || die
-
-	# 1) don't die on compiler warnings
-	# 2) remove /usr/local prefix references in favour of /usr
-	sed -i \
-		-e 's#-Werror##g;' \
-		-e 's#\/usr\/local#\/usr#g;' \
-		Makefile || die
 
 	emake CC="$(tc-getCC)" axtls
 	emake CC="$(tc-getCC)"
@@ -37,12 +49,12 @@ src_compile() {
 
 src_test() {
 	cd ports/unix || die
-	emake test
+	emake CC="$(tc-getCC)" test
 }
 
 src_install() {
 	pushd ports/unix > /dev/null || die
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" DESTDIR="${D}" install
+	emake CC="$(tc-getCC)" DESTDIR="${D}" install
 	popd > /dev/null || die
 
 	# remove .git files

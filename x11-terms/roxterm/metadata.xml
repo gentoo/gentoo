@@ -2,14 +2,15 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>russell@annunaki2k2.co.uk</email>
-		<name>Russell Knighton</name>
+		<email>ewoud+gentoo@kohlvanwijngaarden.nl</email>
+		<name>Ewoud Kohl van Wijngaarden</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+
 	<upstream>
-		<remote-id type="sourceforge">roxterm</remote-id>
+		<remote-id type="github">realh/roxterm</remote-id>
 	</upstream>
 </pkgmetadata>

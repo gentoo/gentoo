@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,7 +30,7 @@ pkg_setup() {
 	enewuser jffnms -1 /bin/bash -1 jffnms,apache
 }
 
-src_install(){
+src_install() {
 	local INSTALL_DIR="/opt/${PN}"
 	local IMAGE_DIR="${D}${INSTALL_DIR}"
 

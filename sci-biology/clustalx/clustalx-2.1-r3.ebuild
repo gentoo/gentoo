@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit desktop qmake-utils
 
 DESCRIPTION="Graphical interface for the ClustalW multiple alignment program"
-HOMEPAGE="http://www.ebi.ac.uk/tools/clustalw2/"
+HOMEPAGE="https://www.ebi.ac.uk/Tools/msa/clustalw2/"
 SRC_URI="
 	http://www.clustal.org/download/current/${P}.tar.gz
 	https://dev.gentoo.org/~jlec/distfiles/${PN}.png.xz"
@@ -40,7 +40,7 @@ src_prepare() {
 		-e "s|clustalx.hlp|${EPREFIX}/usr/share/${PN}/clustalx.hlp|" \
 		-i HelpDisplayWidget.cpp || \
 		die "Failed to patch help file location."
-	rm -rf usr || die
+	rm -r usr || die
 }
 
 src_configure() {

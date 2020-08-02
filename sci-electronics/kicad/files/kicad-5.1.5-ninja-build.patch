@@ -13,8 +13,8 @@ diff -Naur kicad-5.1.5-orig/pcbnew/CMakeLists.txt kicad-5.1.5/pcbnew/CMakeLists.
 +        install( FILES ${CMAKE_CURRENT_BINARY_DIR}/_pcbnew.kiface DESTINATION ${PYTHON_DEST} COMPONENT binary RENAME "_pcbnew.so" )
          set( PYMOD_EXT "so" )
      endif()
- 
-@@ -827,18 +823,16 @@
+
+@@ -792,18 +788,16 @@ if( KICAD_SCRIPTING_MODULES )
              DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/_pcbnew.${PYMOD_EXT}
              )
      else()
@@ -41,5 +41,5 @@ diff -Naur kicad-5.1.5-orig/pcbnew/CMakeLists.txt kicad-5.1.5/pcbnew/CMakeLists.
 +            DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/_pcbnew.${PYMOD_EXT}
 +            )
      endif()
- 
+
  endif()

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="LPPL-1.2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris"
 
 S=${WORKDIR}/${PN}/base
 
@@ -21,6 +21,11 @@ TEXMF=/usr/share/texmf-site
 DEPEND="virtual/latex-base"
 
 RDEPEND="${DEPEND}"
+
+src_unpack() {
+	# Bug 645438
+	tar -I /bin/gzip -xf "${DISTDIR}"/${P}.tar.gz || die
+}
 
 src_compile() {
 	fmt_call="$(has_version '>=app-text/texlive-core-2019' \

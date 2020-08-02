@@ -1,0 +1,49 @@
+fixing segfault, reported on IRC #gentoo-vdr & vdr-portal.de
+https://www.vdr-portal.de/forum/index.php?thread/132017-videotextuntertitel-f%C3%BCr-vdr-2-4-0/&postID=1306478#post1306478
+
+Signed-Off-By: Joerg Bornkessel <hd_brummy@gentoo.org> ( 2020 Mar 02 )
+diff -Naur vdr-2.4.1.orig/channels.c vdr-2.4.1/channels.c
+--- vdr-2.4.1.orig/channels.c	2020-03-02 19:52:51.052496538 +0100
++++ vdr-2.4.1/channels.c	2020-03-02 19:54:05.096496538 +0100
+@@ -429,7 +429,7 @@
+   return Modified;
+ }
+ 
+-void cChannel::SetTeletextSubtitlePages(tTeletextSubtitlePage pages[], int numberOfPages)
++bool cChannel::SetTeletextSubtitlePages(tTeletextSubtitlePage pages[], int numberOfPages)
+ {
+   int mod = CHANNELMOD_NONE;
+   LOCK_CHANNELS_WRITE;
+@@ -447,7 +447,7 @@
+       totalTtxtSubtitlePages++;
+       }
+   modification |= mod;
+-  Channels->SetModified();
++  return true;
+ }
+ 
+ void cChannel::SetSeen(void)
+diff -Naur vdr-2.4.1.orig/channels.h vdr-2.4.1/channels.h
+--- vdr-2.4.1.orig/channels.h	2020-03-02 19:52:51.052496538 +0100
++++ vdr-2.4.1/channels.h	2020-03-02 19:54:31.745496538 +0100
+@@ -212,7 +212,7 @@
+   bool SetName(const char *Name, const char *ShortName, const char *Provider);
+   bool SetPortalName(const char *PortalName);
+   bool SetPids(int Vpid, int Ppid, int Vtype, int *Apids, int *Atypes, char ALangs[][MAXLANGCODE2], int *Dpids, int *Dtypes, char DLangs[][MAXLANGCODE2], int *Spids, char SLangs[][MAXLANGCODE2], int Tpid);
+-  void SetTeletextSubtitlePages(tTeletextSubtitlePage pages[], int numberOfPages);
++  bool SetTeletextSubtitlePages(tTeletextSubtitlePage pages[], int numberOfPages);
+   bool SetCaIds(const int *CaIds); // list must be zero-terminated
+   bool SetCaDescriptors(int Level);
+   bool SetLinkChannels(cLinkChannels *LinkChannels);
+diff -Naur vdr-2.4.1.orig/pat.c vdr-2.4.1/pat.c
+--- vdr-2.4.1.orig/pat.c	2020-03-02 19:52:51.053496538 +0100
++++ vdr-2.4.1/pat.c	2020-03-02 19:55:40.819496538 +0100
+@@ -649,7 +649,7 @@
+               if (manualPageNumber)
+                  TeletextSubtitlePages[NumTPages++] = tTeletextSubtitlePage(manualPageNumber);
+               }
+-           Channel->SetTeletextSubtitlePages(TeletextSubtitlePages, NumTPages);
++           ChannelsModified |= Channel->SetTeletextSubtitlePages(TeletextSubtitlePages, NumTPages);
+            ChannelsModified |= Channel->SetCaIds(CaDescriptors->CaIds());
+            ChannelsModified |= Channel->SetSubtitlingDescriptors(SubtitlingTypes, CompositionPageIds, AncillaryPageIds);
+            }

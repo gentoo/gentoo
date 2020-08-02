@@ -12,10 +12,6 @@ dev-ml/llvm-ocaml llvm_targets_AMDGPU llvm_targets_NVPTX
 sys-devel/clang llvm_targets_AMDGPU llvm_targets_NVPTX
 sys-devel/llvm llvm_targets_AMDGPU llvm_targets_NVPTX
 
-# James Le Cuirot <chewi@gentoo.org> (2016-08-01)
-# Most users don't need a multilib JVM.
-dev-java/icedtea-bin -multilib
-
 # Michał Górny <mgorny@gentoo.org> (2014-06-28)
 # Packages that should be multilib by default.
 x11-drivers/nvidia-drivers abi_x86_32

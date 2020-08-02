@@ -6,11 +6,11 @@
 		<name>Andrey Utkin</name>
 	</maintainer>
 	<maintainer type="person">
-		<email>fkmclane@gmail.com</email>
-		<name>Foster McLane</name>
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="bitbucket">ruamel/yaml</remote-id>
 		<remote-id type="pypi">ruamel.yaml</remote-id>
+		<remote-id type="sourceforge">ruamel-yaml</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -43,12 +43,4 @@ all_ruby_prepare() {
 		sed -i -e "/^group :development, :test do/,/^end$/d" Gemfile || die
 	#fi
 	sed -i -e '/[Cc]overalls/d' spec/spec_helper.rb || die
-}
-
-each_ruby_prepare() {
-	if [ -f Gemfile ]
-	then
-		BUNDLE_GEMFILE=Gemfile ${RUBY} -S bundle install --local || die
-		BUNDLE_GEMFILE=Gemfile ${RUBY} -S bundle check || die
-	fi
 }

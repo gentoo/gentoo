@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>sci@gentoo.org</email>
-		<name>Gentoo Science Project</name>
-	</maintainer>
-	<longdescription lang="en">
-		The COIN-OR Cut Generation Library (Cgl) is an open collection of
-		cutting plane implementations ("cut generators") for use in teaching,
-		research, and applications. Cgl can be used with other COIN-OR
-		packages that make use of cuts, such as the mixed-integer linear
-		programming.
-	</longdescription>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    The COIN-OR Cut Generation Library (Cgl) is an open collection of
+    cutting plane implementations ("cut generators") for use in
+    teaching, research, and applications. Cgl can be used with other
+    COIN-OR packages that make use of cuts, such as the mixed-integer
+    linear programming.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">coin-or/Cgl</remote-id>
+  </upstream>
 </pkgmetadata>

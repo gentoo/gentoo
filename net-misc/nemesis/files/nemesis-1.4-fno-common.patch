@@ -1,0 +1,150 @@
+--- a/src/nemesis.c
++++ b/src/nemesis.c
+@@ -12,6 +12,8 @@
+ #include <string.h>
+ #include "nemesis.h"
+ 
++int mode;   /* injection mode */
++
+ int main(int argc, char **argv)
+ {
+     char **avtmp, *avval;
+--- a/src/nemesis-dns.c
++++ b/src/nemesis-dns.c
+@@ -37,6 +37,8 @@
+ static void dns_validatedata(void);
+ static void dns_verbose(void);
+ 
++int state;  /* default to UDP */
++
+ void nemesis_dns(int argc, char **argv)
+ {
+     const char *module = "DNS Packet Injection";
+--- a/src/nemesis-dns.h
++++ b/src/nemesis-dns.h
+@@ -32,7 +32,7 @@
+ #include <libnet-1.0.h>
+ #include "nemesis.h"
+ 
+-int state;  /* default to UDP */
++extern int state;  /* default to UDP */
+ 
+ int builddns(ETHERhdr *, IPhdr *, TCPhdr *, UDPhdr *, DNShdr *, FileData *,
+         FileData *, FileData *, char *);
+--- a/src/nemesis.h
++++ b/src/nemesis.h
+@@ -122,6 +122,8 @@
+ extern int got_ipoptions;
+ extern int got_tcpoptions;
+ 
++extern int mode;   /* injection mode */
++
+ typedef struct _FileData
+ {
+     int32_t file_s;         /* file size */
+--- a/src/nemesis-icmp.c
++++ b/src/nemesis-icmp.c
+@@ -38,6 +38,8 @@
+ static void icmp_validatedata(void);
+ static void icmp_verbose(void);
+ 
++int got_origoptions;
++
+ void nemesis_icmp(int argc, char **argv)
+ {
+     const char *module = "ICMP Packet Injection";
+--- a/src/nemesis-icmp.h
++++ b/src/nemesis-icmp.h
+@@ -42,8 +42,7 @@
+ #include <libnet-1.0.h>
+ #include "nemesis.h"
+ 
+-int mode;   /* ICMP injection mode */
+-int got_origoptions;
++extern int got_origoptions;
+ 
+ int buildicmp(ETHERhdr *, IPhdr *, ICMPhdr *, IPhdr *, FileData *, FileData *, 
+         FileData *, char *);
+--- a/src/nemesis-ospf.c
++++ b/src/nemesis-ospf.c
+@@ -15,6 +15,37 @@
+     #include <pcap.h>
+ #endif
+ 
++u_short id,            /* IP id */
++        frag,          /* frag shit */
++        mtusize,       /* Max dgram length (DBD) */
++        num,           /* LSA_RTR num */
++        interval,      /* secs since last pkt sent */
++        rtr_flags,     /* LSA_RTR flags */
++        metric,        /* OSPF metric */
++        ospf_age;      /* OSPF advertisement age */
++
++u_long source,         /* source address */
++       dest,           /* destination address */
++       neighbor,       /* neighbor router */
++       as_fwd,         /* AS_EXT forward address */
++       addrid,         /* advertising router id */
++       addaid,         /* advertising area id */
++       router,         /* advertising router */
++       auth[2],        /* authentication type */
++       mask;           /* subnet mask (icmp_mask) */
++
++u_char priority,       /* OSPF priority */
++       exchange,       /* DBD exchange type */
++       rtrtype,        /* LSA_RTR type */
++       ooptions;       /* OSPF options */
++
++u_int dead_int,        /* dead router interval in secs */
++      as_tag,          /* AS_EXT tag */
++      seqnum,          /* seqnum for LSA */
++      bcastnum,        /* num of LSAs to bcast (LSU) */
++      rtrdata,         /* LSA_RTR router data */
++      rtrid;           /* router id for LSA */
++
+ static ETHERhdr etherhdr;
+ static IPhdr iphdr;
+ static OSPFhdr ospfhdr;
+--- a/src/nemesis-ospf.h
++++ b/src/nemesis-ospf.h
+@@ -35,7 +35,7 @@
+ #include <libnet-1.0.h>
+ #include "nemesis.h"
+ 
+-u_short id,            /* IP id */
++extern u_short id,            /* IP id */
+         frag,          /* frag shit */
+         mtusize,       /* Max dgram length (DBD) */
+         num,           /* LSA_RTR num */
+@@ -44,7 +44,7 @@
+         metric,        /* OSPF metric */
+         ospf_age;      /* OSPF advertisement age */
+ 
+-u_long source,         /* source address */
++extern u_long source,         /* source address */
+        dest,           /* destination address */
+        neighbor,       /* neighbor router */
+        as_fwd,         /* AS_EXT forward address */
+@@ -54,20 +54,18 @@
+        auth[2],        /* authentication type */
+        mask;           /* subnet mask (icmp_mask) */
+ 
+-u_char priority,       /* OSPF priority */
++extern u_char priority,       /* OSPF priority */
+        exchange,       /* DBD exchange type */
+        rtrtype,        /* LSA_RTR type */
+        ooptions;       /* OSPF options */
+ 
+-u_int dead_int,        /* dead router interval in secs */
++extern u_int dead_int,        /* dead router interval in secs */
+       as_tag,          /* AS_EXT tag */
+       seqnum,          /* seqnum for LSA */
+       bcastnum,        /* num of LSAs to bcast (LSU) */
+       rtrdata,         /* LSA_RTR router data */
+       rtrid;           /* router id for LSA */
+ 
+-int mode;   /* OSPF injection mode */
+-
+ int buildospf(ETHERhdr *, IPhdr *, FileData *, FileData *, char *);
+ 
+ #endif /* __NEMESIS_OSPF_H__ */

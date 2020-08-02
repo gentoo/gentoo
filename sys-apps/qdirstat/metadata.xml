@@ -6,8 +6,8 @@
 		<name>Conrad Kostecki</name>
 	</maintainer>
 	<longdescription>
-		Qt-based directory statistics: KDirStat without any KDE -- from
-		the author of the original KDirStat.
+		Qt-based directory statistics: KDirStat without any KDE,
+		from the author of the original KDirStat.
 
 		QDirStat is a graphical application to show where your disk space
 		has gone and to help you to clean it up.

@@ -1,5 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Marek Szuba <marecki@gentoo.org> (2020-05-08)
+# Requires sys-cluster/ceph, which is masked in this profile as well
+# (see below)
+net-libs/xrootd-ceph
 
 # Hasan ÇALIŞIR <hasan.calisir@psauxit.com> (2019-10-28)
 # requires net-libs/nodejs | sys-apps/yarn
@@ -24,24 +29,21 @@ dev-libs/amdgpu-pro-opencl
 net-im/mattermost-desktop-bin
 net-im/skypeforlinux
 net-im/skype-dbus-mock
-net-im/slack-bin
+net-im/slack
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (2012-10-07)
 # V8 upstream said they won't support x32, bug #423815
 # Masked packages containing V8.
 # Michał Górny <mgorny@gentoo.org> (2018-01-12)
 # ...and their reverse dependencies.
-app-editors/atom
 dev-lang/coffee-script
 dev-python/bokeh
-dev-python/blaze
 dev-ruby/autoprefixer-rails
 dev-ruby/coffee-rails
 dev-ruby/coffee-script
 dev-ruby/execjs
 dev-ruby/turbolinks
 dev-ruby/uglifier
-dev-util/electron
 net-libs/nodejs
 sys-apps/yarn
 www-apps/jekyll-coffeescript

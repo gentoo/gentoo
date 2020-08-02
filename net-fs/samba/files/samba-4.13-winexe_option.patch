@@ -1,0 +1,67 @@
+From 54c21a99e6ca54bdb963c70d322f6778b57a384f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?G=C3=BCnther=20Deschner?= <gd@samba.org>
+Date: Wed, 4 Mar 2020 18:51:01 +0100
+Subject: [PATCH] winexe: add configure option to control whether to build it
+ (default: auto)
+
+Guenther
+
+Signed-off-by: Guenther Deschner <gd@samba.org>
+Reviewed-by: Andreas Schneider <asn@samba.org>
+
+Autobuild-User(master): Andreas Schneider <asn@cryptomilk.org>
+Autobuild-Date(master): Mon Mar  9 16:27:21 UTC 2020 on sn-devel-184
+---
+ examples/winexe/wscript_build |  3 ++-
+ source3/wscript               | 17 +++++++++++++++++
+ 2 files changed, 19 insertions(+), 1 deletion(-)
+
+diff --git a/examples/winexe/wscript_build b/examples/winexe/wscript_build
+index 43c09717e3d..559ed3fc706 100644
+--- a/examples/winexe/wscript_build
++++ b/examples/winexe/wscript_build
+@@ -106,4 +106,5 @@ if winexesvc_binaries != '':
+                           LOADPARM_CTX
+                           libsmb
+                           msrpc3
+-                      ''')
++                      ''',
++                      enabled=bld.env.build_winexe)
+diff --git a/source3/wscript b/source3/wscript
+index 85466b493fa..6d5bd22ca49 100644
+--- a/source3/wscript
++++ b/source3/wscript
+@@ -63,6 +63,7 @@ def options(opt):
+     opt.samba_add_onoff_option('cluster-support', default=False)
+ 
+     opt.samba_add_onoff_option('regedit', default=None)
++    opt.samba_add_onoff_option('winexe', default=None)
+ 
+     opt.samba_add_onoff_option('fake-kaserver',
+                           help=("Include AFS fake-kaserver support"), default=False)
+@@ -1782,6 +1783,22 @@ main() {
+     if conf.CHECK_HEADERS('ftw.h') and conf.CHECK_FUNCS('nftw'):
+         conf.env.build_mvxattr = True
+ 
++    conf.env.build_winexe = False
++    if not Options.options.with_winexe == False:
++        if conf.CONFIG_SET('HAVE_WINEXE_CC_WIN32') or conf.CONFIG_SET('HAVE_WINEXE_CC_WIN64'):
++            conf.env.build_winexe = True
++
++    if conf.env.build_winexe:
++        Logs.info("building winexe")
++    else:
++        if Options.options.with_winexe == False:
++            Logs.info("not building winexe (--without-winexe)")
++        elif Options.options.with_winexe == True:
++            Logs.error("mingw not available, cannot build winexe")
++            conf.fatal("mingw not available, but --with-winexe was specified")
++        else:
++            Logs.info("mingw not available, not building winexe")
++
+     conf.CHECK_FUNCS_IN('DES_pcbc_encrypt', 'crypto')
+     if Options.options.with_fake_kaserver == True:
+         conf.CHECK_HEADERS('afs/param.h afs/stds.h', together=True)
+-- 
+2.26.2
+

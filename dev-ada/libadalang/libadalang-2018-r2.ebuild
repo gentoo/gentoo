@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -39,6 +39,7 @@ pkg_setup() {
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${PN}-2017-gentoo.patch
+	"${FILESDIR}"/${PN}-2019-pyyaml.patch
 )
 
 src_configure() {
@@ -54,11 +55,11 @@ src_compile() {
 		--build-mode='prod' || die
 }
 
-src_test () {
+src_test() {
 	ada/manage.py test | grep FAILED && die
 }
 
-src_install () {
+src_install() {
 	ada/manage.py \
 		$(use_enable shared) \
 		$(use_enable static-libs static) \

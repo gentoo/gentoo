@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/opendmarc/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="spf +reports static-libs"
 
 DEPEND="reports? ( dev-perl/DBI )
@@ -42,8 +42,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
-		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html \
 		$(use_with spf) \
 		$(use_with spf spf2-include "${EPREFIX}"/usr/include/spf2) \
 		$(use_with spf spf2-lib "${EPREFIX}"/usr/$(get_libdir)) \

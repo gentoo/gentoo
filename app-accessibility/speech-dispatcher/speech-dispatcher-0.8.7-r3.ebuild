@@ -13,12 +13,12 @@ SRC_URI="http://www.freebsoft.org/pub/projects/speechd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="alsa ao +espeak flite nas pulseaudio python"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-COMMON_DEPEND="python? ( ${PYTHON_DEPS} )
+DEPEND="python? ( ${PYTHON_DEPS} )
 	>=dev-libs/dotconf-1.3
 	>=dev-libs/glib-2.28:2
 	dev-libs/libltdl:0
@@ -29,11 +29,11 @@ COMMON_DEPEND="python? ( ${PYTHON_DEPS} )
 	flite? ( app-accessibility/flite )
 	nas? ( media-libs/nas )
 	pulseaudio? ( media-sound/pulseaudio )"
-DEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
+	python? ( dev-python/pyxdg[${PYTHON_USEDEP}] )"
+BDEPEND="
 	>=dev-util/intltool-0.40.0
 	virtual/pkgconfig"
-RDEPEND="${COMMON_DEPEND}
-	python? ( dev-python/pyxdg[${PYTHON_USEDEP}] )"
 
 src_configure() {
 	# bug 573732

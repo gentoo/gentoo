@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="http://www.etla.net/libstroke/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libX11"
@@ -26,7 +26,7 @@ src_prepare() {
 	eautoreconf
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" install
 	dodoc CREDITS ChangeLog README
 }

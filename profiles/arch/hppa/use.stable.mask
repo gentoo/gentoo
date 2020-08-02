@@ -1,16 +1,70 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Michał Górny <mgorny@gentoo.org> (2020-06-18)
+# Not ready for stable yet.
+python_targets_python3_8
+python_single_target_python3_8
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
+# media-libs/gstreamer is not stable for hppa
+gstreamer
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-13)
+# No stable wayland components on hppa
+wayland
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
+# No stable dev-libs/libressl on hppa, bug #704228
+curl_ssl_libressl
+libressl
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
+# No stable media-libs/libsdl or media-libs/libsdl2 on hppa
+sdl
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-06)
+# No stable media-video/ffmpeg on hppa, bug #711144
+ffmpeg
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-06)
+# No stable app-arch/rpm on hppa, bug #471456
+rpm
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-05)
+# app-editors/{,g}vim has no stable keywords
+vim-syntax
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-05)
+# app-editors/{,x}emacs has no stable keywords
+emacs
+xemacs
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-03-23)
+# net-fs/samba has no stable keywords
+samba
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-03-23)
+# net-wireless/bluez has no stable keywords, bug #676430
+bluetooth
+
+# Mart Raudsepp <leio@gentoo.org> (2020-02-08)
+# No stable x11-libs/gtk+ on hppa.
+gtk
+gtk2
+gtk3
+wxwidgets
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-01-21)
+# No stable media-sound/pulseaudio on hppa.
+pulseaudio
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-12-08)
 # sys-auth/elogind is not stable here.
 elogind
-
-# Hans de Graaff <graaff@gentoo.org> (2019-07-17)
-# Temporary mask for stable bug 688976
-ruby_targets_ruby25
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-06-05)
 # sys-auth/consolekit will not be stabilised anymore.

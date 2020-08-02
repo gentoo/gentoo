@@ -3,7 +3,8 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_6} pypy3 )
+DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 
 inherit distutils-r1
 
@@ -13,7 +14,7 @@ SRC_URI="http://www.alcyone.com/software/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ia64 ppc x86"
 IUSE="doc"
 
 python_test() {

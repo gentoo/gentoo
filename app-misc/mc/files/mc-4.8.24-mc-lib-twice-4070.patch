@@ -1,0 +1,84 @@
+https://midnight-commander.org/ticket/4070
+
+From 30fd157a73f148dbc150c18b206b85e1a4a93e9c Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Tue, 3 Mar 2020 09:26:12 +0000
+Subject: [PATCH] misc/Makefile.am: install 'mc.lib' only once (#4070)
+
+Before the change `mc.lib` was installed twice due to being
+in two `_DATA` variables:
+
+```
+dist_pkgdata_DATA = \
+        mc.lib
+
+pkgdata_DATA = \
+        $(dist_pkgdata_DATA) \
+        $(PKGDATA_OUT)
+```
+
+This causes occasional install failures when two parallel
+`/usr/bin/install` calls race in installing the file:
+
+```
+$ make -j20 DESTDIR=/var/tmp/portage/app-misc/mc-4.8.24/image install
+...
+ /usr/lib/portage/python3.6/ebuild-helpers/xattr/install \
+    -c -m 644 mc.lib '/var/tmp/portage/app-misc/mc-4.8.24/image/usr/share/mc'
+ /usr/lib/portage/python3.6/ebuild-helpers/xattr/install \
+    -c -m 644 mc.lib mc.charsets '/var/tmp/portage/app-misc/mc-4.8.24/image/usr/share/mc'
+...
+ /usr/bin/install: cannot create regular file
+   '/var/tmp/portage/app-misc/mc-4.8.24/image/usr/share/mc/mc.lib': File exists
+```
+
+After the change `mc.lib` is present only in `dist_pkgdata_DATA`.
+
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ misc/Makefile.am | 2 --
+ 1 file changed, 2 deletions(-)
+
+--- a/misc/Makefile.am
++++ b/misc/Makefile.am
+@@ -17,7 +17,7 @@ dist_pkgdata_DATA = \
+ 	mc.lib
+ 
+ pkgdata_DATA = \
+-	$(dist_pkgdata_DATA) \
++	\
+ 	$(PKGDATA_OUT)
+ 
+ SCRIPTS_IN = \
+@@ -54,7 +53,7 @@ EXTRA_DIST = \
+ 	$(LIBFILES_SCRIPT) \
+ 	$(SCRIPTS_IN) \
+ 	$(noinst_DATA) \
+-	$(dist_pkgdata_DATA) \
++	\
+ 	$(PKGDATA_IN)
+ 
+ install-data-hook:
+--- a/misc/Makefile.in
++++ b/misc/Makefile.in
+@@ -472,7 +473,7 @@ dist_pkgdata_DATA = \
+ 	mc.lib
+ 
+ pkgdata_DATA = \
+-	$(dist_pkgdata_DATA) \
++	\
+ 	$(PKGDATA_OUT)
+ 
+ SCRIPTS_IN = \
+@@ -508,7 +509,7 @@ EXTRA_DIST = \
+ 	$(LIBFILES_SCRIPT) \
+ 	$(SCRIPTS_IN) \
+ 	$(noinst_DATA) \
+-	$(dist_pkgdata_DATA) \
++	\
+ 	$(PKGDATA_IN)
+ 
+ all: all-recursive
+-- 
+2.25.1
+

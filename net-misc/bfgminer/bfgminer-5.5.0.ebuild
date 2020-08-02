@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -94,7 +94,6 @@ DEPEND='
 		app-misc/screen
 		|| (
 			>=sys-apps/coreutils-8.15
-			sys-freebsd/freebsd-bin
 			app-misc/realpath
 		)
 	)
@@ -138,7 +137,6 @@ src_configure() {
 
 	CFLAGS="${CFLAGS}" \
 	econf \
-		--docdir="/usr/share/doc/${PF}" \
 		$(use_enable adl) \
 		$(use_enable alchemist)\
 		$(use_enable avalon) \

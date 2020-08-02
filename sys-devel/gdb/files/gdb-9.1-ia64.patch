@@ -1,0 +1,15 @@
+https://sourceware.org/pipermail/gdb-patches/2020-May/168808.html
+
+--- a/gdb/ia64-linux-nat.c
++++ b/gdb/ia64-linux-nat.c
+@@ -21,6 +21,7 @@
+ #include "defs.h"
+ #include "inferior.h"
+ #include "target.h"
++#include "gdbarch.h"
+ #include "gdbcore.h"
+ #include "regcache.h"
+ #include "ia64-tdep.h"
+-- 
+2.26.2
+

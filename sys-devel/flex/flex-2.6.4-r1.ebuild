@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit eutils flag-o-matic libtool multilib-minimal
+inherit eutils flag-o-matic libtool ltprune multilib-minimal toolchain-funcs
 
 DESCRIPTION="The Fast Lexical Analyzer"
 HOMEPAGE="https://flex.sourceforge.net/ https://github.com/westes/flex"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/westes/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="FLEX"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="nls static test"
 RESTRICT="!test? ( test )"
 
@@ -50,9 +50,9 @@ multilib_src_configure() {
 	# Do not install shared libs #503522
 	ECONF_SOURCE=${S} \
 	econf \
+		CC_FOR_BUILD="$(tc-getBUILD_CC)" \
 		--disable-shared \
-		$(use_enable nls) \
-		--docdir='$(datarootdir)/doc/'${PF}
+		$(use_enable nls)
 }
 
 multilib_src_compile() {

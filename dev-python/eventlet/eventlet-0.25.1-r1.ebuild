@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit distutils-r1
 
@@ -12,12 +12,11 @@ SRC_URI="mirror://pypi/e/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~s390 ~sparc x86"
 IUSE="doc examples test"
 
 RDEPEND="
 	>=dev-python/dnspython-1.15.0[${PYTHON_USEDEP}]
-	virtual/python-enum34[${PYTHON_USEDEP}]
 	>=dev-python/greenlet-0.3[${PYTHON_USEDEP}]
 	>=dev-python/monotonic-1.4[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]"
@@ -27,6 +26,7 @@ DEPEND="doc? ( >=dev-python/python-docs-2.7.6-r1:2.7 )
 		dev-python/nose[${PYTHON_USEDEP}] )"
 
 PATCHES=(
+	"${FILESDIR}/eventlet-0.25.1-sparc.patch"
 	"${FILESDIR}/eventlet-0.25.1-tests.patch"
 )
 

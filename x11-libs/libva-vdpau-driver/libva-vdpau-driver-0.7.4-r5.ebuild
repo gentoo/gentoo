@@ -16,8 +16,7 @@ IUSE="debug opengl"
 
 RDEPEND=">=x11-libs/libva-1.2.1-r1:=[X,opengl?,${MULTILIB_USEDEP}]
 	opengl? ( >=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}] )
-	>=x11-libs/libvdpau-0.8[${MULTILIB_USEDEP}]
-	!x11-libs/vdpau-video"
+	>=x11-libs/libvdpau-0.8[${MULTILIB_USEDEP}]"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"

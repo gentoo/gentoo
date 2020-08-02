@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 inherit cmake-utils python-single-r1 xdg
 
 DESCRIPTION="A free turn-based space empire and galactic conquest game"
@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	KEYWORDS="~amd64"
 	if [[ ${PV} = *_p* ]]; then
-		COMMIT="2a49c05796f1c92b96ce9b2aeaf0124fc8be7a77"
+		COMMIT="1570afb475763b13f5d2f434037ec907da812bb4"
 		SRC_URI="https://github.com/${PN}/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 		S="${WORKDIR}/${PN}-${COMMIT}"
 	else
@@ -34,7 +34,9 @@ BDEPEND="
 	virtual/pkgconfig
 "
 RDEPEND="
-	>=dev-libs/boost-1.58:=[python,threads,${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-libs/boost-1.67:=[python,threads,${PYTHON_MULTI_USEDEP}]
+	')
 	!dedicated? (
 		media-libs/freealut
 		>=media-libs/freetype-2.5.5
@@ -51,11 +53,6 @@ RDEPEND="
 	${PYTHON_DEPS}
 "
 DEPEND="${RDEPEND}"
-
-pkg_setup() {
-	# build system is using FindPythonLibs.cmake which needs python:2
-	python-single-r1_pkg_setup
-}
 
 src_prepare() {
 	sed -e "s/-O3//" -i CMakeLists.txt || die

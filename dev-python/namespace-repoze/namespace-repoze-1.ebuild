@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{6,7}} )
+PYTHON_COMPAT=( python3_{6..9} pypy3 )
 inherit python-r1
 
 DESCRIPTION="Namespace package declaration for repoze"
@@ -12,7 +12,7 @@ SRC_URI=""
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 arm arm64 ~ia64 ppc ~ppc64 x86"
 IUSE=""
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]

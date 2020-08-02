@@ -1,0 +1,24 @@
+diff -urN a/makefile b/makefile
+--- a/makefile
++++ b/makefile
+@@ -17,7 +17,7 @@
+ #
+ # Sub-directories that need to be built
+ #
+-subdirs	= external vpflib ogdi contrib
++subdirs	= vpflib ogdi contrib
+ 
+ #
+ # Default target to build everything in all sub-directories
+diff -urN a/ogdi/makefile b/ogdi/makefile
+--- a/ogdi/makefile
++++ b/ogdi/makefile
+@@ -15,7 +15,7 @@
+ #
+ # Sub-directories that need to be built
+ #
+-subdirs	= include c-api glutil attr_driver driver gltpd examples
++subdirs	= include c-api glutil attr_driver driver gltpd
+ 
+ #
+ # Default target to build everything in all sub-directories

@@ -16,6 +16,7 @@
     interfaces are truly implemented, and much more. Additionally, it is
     possible to write plugins to add your own checks.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">pylint</remote-id>
     <remote-id type="github">pycqa/pylint</remote-id>

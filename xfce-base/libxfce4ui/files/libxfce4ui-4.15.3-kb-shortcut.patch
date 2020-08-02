@@ -1,0 +1,38 @@
+From 0fc934ebee037a91e032d362d83d991309c4ce88 Mon Sep 17 00:00:00 2001
+From: Harald Judt <h.judt@gmx.at>
+Date: Sat, 4 Jul 2020 00:22:31 +0200
+Subject: [PATCH] Always return GTK_RESPONSE_OK for accepted shortcut keys
+ (fixes #20)
+
+Commit a41dcb19 replaced the deprecated gtk_keyboard_ungrab code but
+also erroneously put the gtk_dialog_response call inside the
+gdk_seat_grab check, while it should be inside the shortcut_accepted
+check. This commit restores the original logic, thus properly setting
+the accepted shortcut key and closing the dialog.
+
+Closes !4
+---
+ libxfce4kbd-private/xfce-shortcut-dialog.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/libxfce4kbd-private/xfce-shortcut-dialog.c b/libxfce4kbd-private/xfce-shortcut-dialog.c
+index 427855a..ae9c195 100644
+--- a/libxfce4kbd-private/xfce-shortcut-dialog.c
++++ b/libxfce4kbd-private/xfce-shortcut-dialog.c
+@@ -424,10 +424,10 @@ xfce_shortcut_dialog_key_released (XfceShortcutDialog *dialog,
+                          TRUE, NULL, NULL, NULL, NULL))
+         {
+           gdk_seat_ungrab (seat);
+-
+-          /* Exit dialog with positive response */
+-          gtk_dialog_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+         }
++
++      /* Exit dialog with positive response */
++      gtk_dialog_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+     }
+   else
+     {
+-- 
+2.26.2
+

@@ -1,8 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit gnome2-utils multilib toolchain-funcs
+EAPI=7
+
+inherit toolchain-funcs xdg-utils
 
 DESCRIPTION="Drawing program designed for young children"
 HOMEPAGE="http://www.tuxpaint.org/"
@@ -11,7 +12,6 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-
 IUSE="nls"
 
 RDEPEND="
@@ -27,9 +27,15 @@ RDEPEND="
 	media-libs/sdl-ttf
 	x11-libs/cairo
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	nls? ( sys-devel/gettext )
 "
+
+DOCS=(
+	docs/{ADVANCED-STAMPS-HOWTO,AUTHORS,CHANGES,default_colors,dejavu}.txt
+	docs/{EXTENDING,FAQ,OPTIONS,PNG,README,SVG}.txt
+)
 
 PATCHES=(
 	# Sanitize the Makefile and correct a few other issues
@@ -54,29 +60,22 @@ src_compile() {
 		$(use nls && echo ENABLE_GETTEXT=1)
 }
 
-src_install () {
+src_install() {
 	emake -j1 PKG_ROOT="${D}" \
-		$(use nls && echo ENABLE_GETTEXT=1) install
+		$(usex nls ENABLE_GETTEXT=1 '') install
 
-	rm -f docs/COPYING.txt docs/INSTALL.txt
-	dodoc docs/*.txt
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
+	einstalldocs
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 
 	if ! has_version "${CATEGORY}/${PN}"; then
-		elog ""
 		elog "For additional graphic stamps, you can emerge the"
 		elog "media-gfx/tuxpaint-stamps package."
-		elog ""
 	fi
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

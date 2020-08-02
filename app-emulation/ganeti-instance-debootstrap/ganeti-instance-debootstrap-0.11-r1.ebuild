@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ SRC_URI="https://ganeti.googlecode.com/files/ganeti-instance-debootstrap-${PV}.t
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
@@ -20,10 +20,6 @@ RDEPEND="app-arch/dpkg
 	>=sys-apps/coreutils-6.10-r1
 	sys-apps/util-linux
 	sys-fs/e2fsprogs"
-
-src_configure() {
-	econf --docdir=/usr/share/doc/${P}
-}
 
 src_install() {
 	default

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit autotools eutils
+inherit autotools eutils ltprune
 
 DESCRIPTION="Allows a fine-grained control over libpurple events"
 HOMEPAGE="http://purple-events.sardemff7.net/"

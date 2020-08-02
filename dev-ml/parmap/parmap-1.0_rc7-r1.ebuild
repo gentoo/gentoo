@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ inherit multilib
 
 MY_PV="${PV/_/-}-fix-for4.03+3"
 DESCRIPTION="Library to exploit multicore architectures for OCaml programs"
-HOMEPAGE="http://www.dicosmo.org/code/parmap/"
+HOMEPAGE="https://www.dicosmo.org/code/parmap/"
 SRC_URI="https://github.com/rdicosmo/parmap/archive/${MY_PV}.tar.gz -> ${P}-ocaml-4.03.tar.gz"
 
 LICENSE="LGPL-2-with-linking-exception"

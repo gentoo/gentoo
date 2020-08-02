@@ -115,7 +115,7 @@ readonly ACCT_USER_NAME
 # << Boilerplate ebuild variables >>
 : ${DESCRIPTION:="System user: ${ACCT_USER_NAME}"}
 : ${SLOT:=0}
-: ${KEYWORDS:=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris}
+: ${KEYWORDS:=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris}
 S=${WORKDIR}
 
 
@@ -143,8 +143,8 @@ acct-user_add_deps() {
 # << Helper functions >>
 
 # @FUNCTION: eislocked
-# @INTERNAL
 # @USAGE: <user>
+# @INTERNAL
 # @DESCRIPTION:
 # Check whether the specified user account is currently locked.
 # Returns 0 if it is locked, 1 if it is not, 2 if the platform
@@ -176,8 +176,8 @@ eislocked() {
 }
 
 # @FUNCTION: elockuser
-# @INTERNAL
 # @USAGE: <user>
+# @INTERNAL
 # @DESCRIPTION:
 # Lock the specified user account, using the available platform-specific
 # functions.  This should prevent any login to the account.
@@ -221,8 +221,8 @@ elockuser() {
 }
 
 # @FUNCTION: eunlockuser
-# @INTERNAL
 # @USAGE: <user>
+# @INTERNAL
 # @DESCRIPTION:
 # Unlock the specified user account, using the available platform-
 # specific functions.
@@ -360,6 +360,11 @@ acct-user_pkg_preinst() {
 acct-user_pkg_postinst() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	if [[ ${EUID} != 0 ]] ; then
+		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
+		return 0
+	fi
+
 	# NB: eset* functions check current value
 	esethome "${ACCT_USER_NAME}" "${ACCT_USER_HOME}"
 	esetshell "${ACCT_USER_NAME}" "${ACCT_USER_SHELL}"
@@ -375,6 +380,11 @@ acct-user_pkg_postinst() {
 # Ensures that the user account is locked out when it is removed.
 acct-user_pkg_prerm() {
 	debug-print-function ${FUNCNAME} "${@}"
+
+	if [[ ${EUID} != 0 ]] ; then
+		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
+		return 0
+	fi
 
 	if [[ -z ${REPLACED_BY_VERSION} ]]; then
 		if [[ -z $(egetent passwd "${ACCT_USER_NAME}") ]]; then

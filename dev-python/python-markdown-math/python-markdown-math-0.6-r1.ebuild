@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
+PYTHON_COMPAT=( python3_{6,7} pypy3 )
 inherit distutils-r1
 
 MY_PN="python-${PN}"
@@ -35,6 +35,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
-python_test(){
+python_test() {
 	esetup.py test
 }

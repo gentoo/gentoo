@@ -1,0 +1,12 @@
+--- ./usr/lib/plexmediaserver/lib/plexmediaserver.service.old	2020-01-29 08:50:39.856491924 +0100
++++ ./usr/lib/plexmediaserver/lib/plexmediaserver.service	2020-01-29 08:51:49.068249688 +0100
+@@ -12,7 +12,8 @@
+ export PLEX_MEDIA_SERVER_INFO_VENDOR="$(grep ^NAME= /etc/os-release | awk -F= "{print \\$2}" | tr -d \\" )"; \
+ export PLEX_MEDIA_SERVER_INFO_DEVICE="PC"; \
+ export PLEX_MEDIA_SERVER_INFO_MODEL="$(uname -m)"; \
+-export PLEX_MEDIA_SERVER_INFO_PLATFORM_VERSION="$(grep ^VERSION= /etc/os-release | awk -F= "{print \\$2}" | tr -d \\" )"; \
++export GENTOO_PROFILE="`readlink /etc/portage/make.profile`"; \
++export PLEX_MEDIA_SERVER_INFO_PLATFORM_VERSION="$${GENTOO_PROFILE#.*/profiles/}"; \
+ export LD_LIBRARY_PATH=/usr/lib/plexmediaserver/lib; \
+ exec "/usr/lib/plexmediaserver/Plex Media Server"'
+ Type=simple

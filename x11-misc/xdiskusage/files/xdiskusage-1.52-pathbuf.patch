@@ -1,0 +1,11 @@
+--- a/xdiskusage.C
++++ b/xdiskusage.C
+@@ -458,7 +458,7 @@
+   } else {
+     if (!disk) {
+       // follow all symbolic links...
+-      strncpy(pathbuf, path, 1024);
++      strncpy(pathbuf, path, 1024 -1);
+       for (int i=0; i<10; i++) {
+ 	char *p = (char*)fl_filename_name(pathbuf);
+ 	int j = readlink(pathbuf, p, 1024-(p-pathbuf));

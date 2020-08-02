@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools elisp-common flag-o-matic multilib readme.gentoo-r1
+inherit autotools elisp-common flag-o-matic readme.gentoo-r1
 
 if [[ ${PV##*.} = 9999 ]]; then
 	inherit git-r3
@@ -14,7 +14,7 @@ if [[ ${PV##*.} = 9999 ]]; then
 else
 	SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz
 		mirror://gnu-alpha/emacs/pretest/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 	# FULL_VERSION keeps the full version number, which is needed in
 	# order to determine some path information correctly for copy/move
 	# operations later on
@@ -32,9 +32,8 @@ IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif +gmp
 REQUIRED_USE="?? ( aqua X )"
 RESTRICT="test"
 
-RDEPEND="sys-libs/ncurses:0=
-	>=app-eselect/eselect-emacs-1.16
-	>=app-emacs/emacs-common-gentoo-1.5[games?,X?]
+RDEPEND=">=app-emacs/emacs-common-gentoo-1.5[games?,X?]
+	sys-libs/ncurses:0=
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( sys-apps/dbus )
@@ -118,9 +117,13 @@ RDEPEND="sys-libs/ncurses:0=
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
 
-BDEPEND="sys-apps/texinfo
+BDEPEND="app-eselect/eselect-emacs
+	sys-apps/texinfo
 	virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )"
+
+RDEPEND="${RDEPEND}
+	app-eselect/eselect-emacs"
 
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
@@ -149,9 +152,7 @@ src_configure() {
 	strip-flags
 	filter-flags -pie					#526948
 
-	if use sh; then
-		replace-flags "-O[1-9]" -O0		#262359
-	elif use ia64; then
+	if use ia64; then
 		replace-flags "-O[2-9]" -O1		#325373
 	else
 		replace-flags "-O[3-9]" -O2
@@ -283,7 +284,7 @@ src_configure() {
 #	emake RUN_TEMACS="SANDBOX_ON=0 LD_PRELOAD= env ./temacs"
 #}
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" NO_BIN_LINK=t install
 
 	mv "${ED}"/usr/bin/{emacs-${FULL_VERSION}-,}${EMACS_SUFFIX} || die
@@ -363,10 +364,10 @@ src_install () {
 			"${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app || die
 	fi
 
-	DOC_CONTENTS="You can set the version to be started by /usr/bin/emacs
-		through the Emacs eselect module, which also redirects man and info
-		pages. Therefore, several Emacs versions can be installed at the
-		same time. \"man emacs.eselect\" for details.
+	local DOC_CONTENTS="You can set the version to be started by
+		/usr/bin/emacs through the Emacs eselect module, which also
+		redirects man and info pages. Therefore, several Emacs versions can
+		be installed at the same time. \"man emacs.eselect\" for details.
 		\\n\\nIf you upgrade from Emacs version 24.2 or earlier, then it is
 		strongly recommended that you use app-admin/emacs-updater to rebuild
 		all byte-compiled elisp files of the installed Emacs packages."

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3 autotools
 else
 	SRC_URI="mirror://sourceforge/${PN}/${PN}/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~ppc ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 fi
 
 IUSE="libressl sasl ssl zlib"
@@ -31,12 +31,12 @@ DEPEND="${RDEPEND}
 	dev-lang/perl
 "
 
-src_prepare () {
+src_prepare() {
 	default
 	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
-src_configure () {
+src_configure() {
 	econf \
 		$(use_with ssl) \
 		$(use_with sasl) \

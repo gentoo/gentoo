@@ -1,0 +1,22 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 190dabe..6d613d6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,7 +6,7 @@ MESSAGE(STATUS "CMAKE_ROOT: " ${CMAKE_ROOT})
+ #_cmake_modify_IGNORE set(CMAKE_VERBOSE_MAKEFILE ON)
+ 
+ # Project name
+-project(Cpp-Taskflow VERSION 2.3.1 LANGUAGES CXX)
++project(Cpp-Taskflow VERSION 2.4.0 LANGUAGES CXX)
+ 
+ # build options
+ option(TF_ENABLE_CUDA "Enables build of cuda code" OFF)
+@@ -748,7 +748,7 @@ write_basic_package_version_file(
+ install(
+   FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
+         ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake
+-  DESTINATION ${TF_LIB_INSTALL_DIR}/cmake 
++  DESTINATION ${TF_LIB_INSTALL_DIR}/cmake/${PROJECT_NAME}
+ )
+ 
+ 

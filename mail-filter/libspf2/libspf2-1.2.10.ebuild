@@ -1,16 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit autotools eutils
 
 DESCRIPTION="libspf2 implements the Sender Policy Framework, a part of the SPF/SRS protocols"
-HOMEPAGE="http://www.libspf2.org"
-SRC_URI="http://www.libspf2.org/spf/libspf2-${PV}.tar.gz"
+HOMEPAGE="https://www.libspf2.org"
+SRC_URI="https://www.libspf2.org/spf/libspf2-${PV}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 BSD-2 )"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="static static-libs"
 
 DEPEND=""

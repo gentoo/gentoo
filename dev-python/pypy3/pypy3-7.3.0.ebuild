@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}-src"
 LICENSE="MIT"
 # pypy3 -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))'
 SLOT="0/pypy36-pp73"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 gdbm +jit libressl ncurses sqlite test tk"
 RESTRICT="!test? ( test )"
 
@@ -35,7 +35,10 @@ RDEPEND="
 	)
 	!<dev-python/pypy3-bin-7.3.0:0"
 DEPEND="${RDEPEND}
-	test? ( ${PYTHON_DEPS} )"
+	test? (
+		${PYTHON_DEPS}
+		!!dev-python/pytest-forked
+	)"
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
@@ -53,6 +56,59 @@ src_prepare() {
 	pushd lib-python/3 > /dev/null || die
 	eapply "${FILESDIR}"/python-3.5-distutils-OO-build.patch
 	popd > /dev/null || die
+
+	# tests are copied from cpython and apparently not adjusted to pypy3
+	# or marked XFAIL
+	sed -i -e 's:test_runeval_step:_&:' \
+		lib-python/3/test/test_bdb.py || die
+	sed -i -e 's:test_set_nomemory:_&:' \
+		-e '/class PyMemDebugTests/i@unittest.skip("Broken on pypy3")' \
+		lib-python/3/test/test_capi.py || die
+	sed -i -e 's:test_crashing_decode_handler:_&:' \
+		lib-python/3/test/test_codeccallbacks.py || die
+	sed -i -e 's:test_unicode:_&:' \
+		lib-python/3/test/test_dbm_gnu.py || die
+	sed -i -e 's:test_jumpy:_&:' \
+		lib-python/3/test/test_dis.py || die
+	sed -i -e 's:test_generator_doesnt_retain_old_exc:_&:' \
+		-e 's:test_generator_finalizing_and_exc_info:_&:' \
+		-e 's:test_generator_leaking:_&:' \
+		lib-python/3/test/test_exceptions.py || die
+	sed -i -e 's:test_locale:_&:' \
+		lib-python/3/test/test_format.py || die
+	sed -i -e 's:test_ast_line_numbers:_&:' \
+		-e 's:test_backslashes_in_string_part:_&:' \
+		lib-python/3/test/test_fstring.py || die
+	sed -i -e 's:test_decompressor_bug_28275:_&:' \
+		lib-python/3/test/test_lzma.py || die
+	sed -i -e 's:test_listdir_bytes_like:_&:' \
+		-e 's:test_putenv:_&:' \
+		lib-python/3/test/test_posix.py || die
+	sed -i -e 's:test_auto_history:_&:' \
+		-e 's:test_history_size:_&:' \
+		lib-python/3/test/test_readline.py || die
+	sed -i -e 's:CheckDMLDoesNotAutoCommitBefore:_&:' \
+		-e 's:CheckImmediateTransactionalDDL:_&:' \
+		-e 's:CheckTransactionalDDL:_&:' \
+		lib-python/3/sqlite3/test/transactions.py || die
+	sed -i -e 's:test_pha_optional:_&:' \
+		-e 's:test_pha_required:_&:' \
+		lib-python/3/test/test_ssl.py || die
+	sed -i -e 's:test_eval_bytes_invalid_escape:_&:' \
+		-e 's:test_eval_str_invalid_escape:_&:' \
+		lib-python/3/test/test_string_literals.py || die
+	# the first one's broken by sandbox, the second by our env
+	sed -i -e 's:test_empty_env:_&:' \
+		-e 's:test_executable:_&:' \
+		lib-python/3/test/test_subprocess.py || die
+	sed -i -e 's:test_jump_out_of_async_for_block:_&:' \
+		-e 's:test_jump_over_async_for_block_before_else:_&:' \
+		-e 's:test_no_jump_.*wards_into_async_for_block:_&:' \
+		-e 's:test_no_jump_into_async_for_block_before_else:_&:' \
+		-e 's:test_no_jump_from_yield:_&:' \
+		lib-python/3/test/test_sys_settrace.py || die
+	sed -i -e 's:test_circular_imports:_&:' \
+		lib-python/3/test/test_threaded_import.py || die
 
 	eapply_user
 }
@@ -113,10 +169,11 @@ src_compile() {
 src_test() {
 	# (unset)
 	local -x PYTHONDONTWRITEBYTECODE=
+	local -x COLUMNS=80
 
 	# Test runner requires Python 2 too. However, it spawns PyPy3
 	# internally so that we end up testing the correct interpreter.
-	"${PYTHON}" ./pypy/test_all.py --pypy=./pypy3-c -vv lib-python || die
+	"${EPYTHON}" ./pypy/test_all.py --pypy=./pypy3-c -vv lib-python || die
 }
 
 src_install() {
@@ -150,17 +207,13 @@ src_install() {
 			"${ED}${dest}"/lib-python/*3/test/test_{tcl,tk,ttk*}.py || die
 	fi
 
+	local -x EPYTHON=pypy3
 	local -x PYTHON=${ED}${dest}/pypy3-c
-	# we can't use eclass function since PyPy is dumb and always gives
-	# paths relative to the interpreter
-	local PYTHON_SITEDIR=${EPREFIX}/usr/lib/pypy3.6/site-packages
-	python_export pypy3 EPYTHON
 
 	echo "EPYTHON='${EPYTHON}'" > epython.py || die
+	python_moduleinto /usr/lib/pypy3.6/site-packages
 	python_domodule epython.py
 
 	einfo "Byte-compiling Python standard library..."
-
-	# compile the installed modules
 	python_optimize "${ED}${dest}"
 }

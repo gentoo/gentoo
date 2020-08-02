@@ -5,7 +5,6 @@
     <email>juippis@gentoo.org</email>
   </maintainer>
   <use>
-    <flag name="libsecret">Support password storing using libsecret</flag>
     <flag name="rar">Rar archive support</flag>
     <flag name="zip">Zip archive support</flag>
   </use>

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,15 +12,14 @@ SRC_URI="mirror://debian/pool/main/d/${MY_PN}/${MY_P/-/_}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 # Requires python packages to check tools we don't need anyway
 RESTRICT="test"
 
 RDEPEND="dev-lang/perl
-	virtual/perl-Getopt-Long
-	!<dev-util/rpmdevtools-8.3-r1"
+	virtual/perl-Getopt-Long"
 
 S="${WORKDIR}/${MY_P}/scripts"
 

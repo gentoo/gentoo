@@ -1,8 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="C library for cross-platform real-time audio input and output"
@@ -11,7 +12,7 @@ SRC_URI="https://github.com/andrewrk/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="alsa coreaudio examples jack pulseaudio static-libs"
 
 DEPEND="alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
@@ -30,5 +31,5 @@ multilib_src_configure() {
 		-DBUILD_EXAMPLE_PROGRAMS=$(multilib_native_usex examples)
 		-DBUILD_TESTS=no
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

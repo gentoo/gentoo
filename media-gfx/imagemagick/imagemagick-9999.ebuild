@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -13,18 +13,19 @@ else
 	MY_PV="$(ver_rs 3 '-')"
 	MY_P="ImageMagick-${MY_PV}"
 	SRC_URI="mirror://imagemagick/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 DESCRIPTION="A collection of tools and libraries for many image formats"
 HOMEPAGE="https://www.imagemagick.org/"
 
 LICENSE="imagemagick"
-SLOT="0/7.0.9"
-IUSE="bzip2 corefonts cxx djvu fftw fontconfig fpx graphviz hdri heif jbig jpeg jpeg2k lcms lqr lzma opencl openexr openmp pango perl png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf X xml zlib"
+SLOT="0/7.0.10"
+IUSE="bzip2 corefonts +cxx djvu fftw fontconfig fpx graphviz hdri heif jbig jpeg jpeg2k lcms lqr lzma opencl openexr openmp pango perl png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf X xml zlib"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="corefonts? ( truetype )
+	svg? ( xml )
 	test? ( corefonts )"
 
 RESTRICT="!test? ( test )"
@@ -53,7 +54,10 @@ RDEPEND="
 	png? ( media-libs/libpng:0= )
 	postscript? ( app-text/ghostscript-gpl )
 	raw? ( media-libs/libraw:= )
-	svg? ( gnome-base/librsvg )
+	svg? (
+		gnome-base/librsvg
+		media-gfx/potrace
+		)
 	tiff? ( media-libs/tiff:0= )
 	truetype? (
 		media-fonts/urw-fonts
@@ -215,6 +219,8 @@ src_install() {
 	fi
 
 	find "${ED}" -name '*.la' -exec sed -i -e "/^dependency_libs/s:=.*:='':" {} +
+	# .la files in parent are not needed, keep plugin .la files
+	rm "${ED}"/usr/$(get_libdir)/*.la || die
 
 	if use opencl; then
 		cat <<-EOF > "${T}"/99${PN}

@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 AUTOTOOLS_AUTORECONF=1
 
-inherit autotools-utils multilib-minimal
+inherit autotools-utils eutils ltprune multilib-minimal
 
 DESCRIPTION="Library for parsing video download links"
 HOMEPAGE="http://quvi.sourceforge.net/"
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/quvi/${PV:0:3}/${P}.tar.xz"
 
 LICENSE="AGPL-3"
 SLOT="0/8" # subslot = libquvi soname version
-KEYWORDS="amd64 ~arm ~arm64 hppa ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 sparc x86"
 IUSE="examples nls static-libs"
 
 RDEPEND="!<media-libs/quvi-0.4.0
@@ -25,7 +25,7 @@ RDEPEND="!<media-libs/quvi-0.4.0
 	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.9.1-headers-reinstall.patch )

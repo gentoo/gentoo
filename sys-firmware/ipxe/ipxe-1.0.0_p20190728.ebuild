@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -9,7 +9,7 @@ GIT_REV="a4f8c6e31f6c62522cfc633bbbffa81b22f9d6f3"
 GIT_SHORT=${GIT_REV:0:7}
 
 DESCRIPTION="Open source network boot (PXE) firmware"
-HOMEPAGE="http://ipxe.org/"
+HOMEPAGE="https://ipxe.org/"
 SRC_URI="
 	!binary? ( https://git.ipxe.org/ipxe.git/snapshot/${GIT_REV}.tar.bz2 -> ${P}-${GIT_SHORT}.tar.bz2 )
 	binary? ( https://dev.gentoo.org/~tamiko/distfiles/${P}-${GIT_SHORT}-bin.tar.xz )"

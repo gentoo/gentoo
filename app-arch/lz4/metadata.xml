@@ -15,5 +15,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">Cyan4973/lz4</remote-id>
+		<remote-id type="cpe">cpe:/a:lz4_project:lz4</remote-id>
 	</upstream>
 </pkgmetadata>

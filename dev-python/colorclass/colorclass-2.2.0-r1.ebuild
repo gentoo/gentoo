@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
+PYTHON_COMPAT=( python3_{6..9} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Colorful worry-free console applications for multiple platforms"
@@ -12,9 +12,7 @@ SRC_URI="https://github.com/Robpol86/colorclass/archive/v${PV}.tar.gz -> ${P}.gh
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+KEYWORDS="amd64 ~arm64 x86"
 
 PATCHES=(
 	"${FILESDIR}/colorclass-2.2.0-tests.patch"

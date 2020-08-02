@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-r1.eclass
@@ -26,8 +26,8 @@
 # in the packages using python-r1, and there is no need ever to inherit
 # both.
 #
-# For more information, please see the wiki:
-# https://wiki.gentoo.org/wiki/Project:Python/python-r1
+# For more information, please see the Python Guide:
+# https://dev.gentoo.org/~mgorny/python-guide/
 
 case "${EAPI:-0}" in
 	0|1|2|3|4)
@@ -72,7 +72,8 @@ fi
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_COMPAT_OVERRIDE
-# @INTERNAL
+# @USER_VARIABLE
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # This variable can be used when working with ebuilds to override
 # the in-ebuild PYTHON_COMPAT. It is a string listing all
@@ -111,6 +112,7 @@ fi
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_DEPS
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated Python dependency string for all
 # implementations listed in PYTHON_COMPAT.
@@ -130,6 +132,7 @@ fi
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_USEDEP
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated USE-dependency string which can be used to
 # depend on another Python package being built for the same Python
@@ -150,6 +153,7 @@ fi
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_REQUIRED_USE
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated required-use expression which ensures at
 # least one Python implementation has been enabled.
@@ -173,7 +177,7 @@ _python_set_globals() {
 	_python_set_impls
 
 	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-		python_export "${i}" PYTHON_PKG_DEP
+		_python_export "${i}" PYTHON_PKG_DEP
 		deps+="python_targets_${i}? ( ${PYTHON_PKG_DEP} ) "
 	done
 
@@ -273,8 +277,8 @@ _python_validate_useflags() {
 }
 
 # @FUNCTION: _python_gen_usedep
-# @INTERNAL
 # @USAGE: [<pattern>...]
+# @INTERNAL
 # @DESCRIPTION:
 # Output a USE dependency string for Python implementations which
 # are both in PYTHON_COMPAT and match any of the patterns passed
@@ -485,7 +489,7 @@ python_gen_impl_dep() {
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${impl}" "${@}"; then
 			local PYTHON_PKG_DEP
-			python_export "${impl}" PYTHON_PKG_DEP
+			_python_export "${impl}" PYTHON_PKG_DEP
 			matches+=( "python_targets_${impl}? ( ${PYTHON_PKG_DEP} )" )
 		fi
 	done
@@ -563,7 +567,7 @@ python_gen_any_dep() {
 	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${i}" "${@}"; then
 			local PYTHON_USEDEP="python_targets_${i}(-),python_single_target_${i}(+)"
-			python_export "${i}" PYTHON_PKG_DEP
+			_python_export "${i}" PYTHON_PKG_DEP
 
 			local i_depstr=${depstr//\$\{PYTHON_USEDEP\}/${PYTHON_USEDEP}}
 			# note: need to strip '=' slot operator for || deps
@@ -574,6 +578,8 @@ python_gen_any_dep() {
 }
 
 # @ECLASS-VARIABLE: BUILD_DIR
+# @OUTPUT_VARIABLE
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # The current build directory. In global scope, it is supposed to
 # contain an initial build directory; if unset, it defaults to ${S}.
@@ -637,8 +643,8 @@ _python_multibuild_wrapper() {
 
 	local -x EPYTHON PYTHON
 	local -x PATH=${PATH} PKG_CONFIG_PATH=${PKG_CONFIG_PATH}
-	python_export "${MULTIBUILD_VARIANT}" EPYTHON PYTHON
-	python_wrapper_setup
+	_python_export "${MULTIBUILD_VARIANT}" EPYTHON PYTHON
+	_python_wrapper_setup
 
 	"${@}"
 }
@@ -760,7 +766,7 @@ python_setup() {
 		# check patterns
 		_python_impl_matches "${impl}" "${@}" || continue
 
-		python_export "${impl}" EPYTHON PYTHON
+		_python_export "${impl}" EPYTHON PYTHON
 
 		# if python_check_deps() is declared, switch into any-of mode
 		if [[ ${has_check_deps} ]]; then
@@ -784,7 +790,8 @@ python_setup() {
 		die "${FUNCNAME}: no enabled implementation satisfy requirements"
 	fi
 
-	python_wrapper_setup
+	_python_wrapper_setup
+	einfo "Using ${EPYTHON} in global scope"
 }
 
 # @FUNCTION: python_replicate_script
@@ -802,7 +809,7 @@ python_replicate_script() {
 		local _PYTHON_FIX_SHEBANG_QUIET=1
 
 		local PYTHON_SCRIPTDIR
-		python_export PYTHON_SCRIPTDIR
+		_python_export PYTHON_SCRIPTDIR
 
 		(
 			exeopts -m 0755

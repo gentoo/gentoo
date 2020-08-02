@@ -1,0 +1,140 @@
+From f3bbc0ba0e34ea1b34b106228c02d85865ed904a Mon Sep 17 00:00:00 2001
+From: Nate Graham <nate@kde.org>
+Date: Tue, 24 Mar 2020 08:15:12 -0600
+Subject: Stop multiplying duration values
+
+Summary:
+After D28144, some animations are now too long because they were inappropriately
+multiplying a duration value. That's no longer necessary, so let's remove the
+multiplication.
+
+Depends on D28144
+
+Test Plan: Various things that were a bit too slow before feel just right now
+
+Reviewers: #vdg, #plasma
+
+Subscribers: plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D28239
+---
+ applets/taskmanager/package/contents/ui/Task.qml             | 2 +-
+ applets/taskmanager/package/contents/ui/TaskList.qml         | 2 +-
+ desktoppackage/contents/configuration/PanelConfiguration.qml | 4 ++--
+ desktoppackage/contents/explorer/WidgetExplorer.qml          | 6 +++---
+ toolboxes/desktoptoolbox/contents/ui/ToolBoxButton.qml       | 6 +++---
+ 5 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/applets/taskmanager/package/contents/ui/Task.qml b/applets/taskmanager/package/contents/ui/Task.qml
+index 2bf8b88..9683fab 100644
+--- a/applets/taskmanager/package/contents/ui/Task.qml
++++ b/applets/taskmanager/package/contents/ui/Task.qml
+@@ -293,7 +293,7 @@ MouseArea {
+         Timer {
+             id: timer
+ 
+-            interval: units.longDuration * 2
++            interval: units.longDuration
+             repeat: false
+ 
+             onTriggered: {
+diff --git a/applets/taskmanager/package/contents/ui/TaskList.qml b/applets/taskmanager/package/contents/ui/TaskList.qml
+index 594420b..6d6bc45 100644
+--- a/applets/taskmanager/package/contents/ui/TaskList.qml
++++ b/applets/taskmanager/package/contents/ui/TaskList.qml
+@@ -34,7 +34,7 @@ Flow {
+             NumberAnimation {
+                 properties: "x, y"
+                 easing.type: Easing.OutQuad
+-                duration: units.longDuration * 2
++                duration: units.longDuration
+             }
+ 
+             PropertyAction { target: taskList; property: "animating"; value: false }
+diff --git a/desktoppackage/contents/configuration/PanelConfiguration.qml b/desktoppackage/contents/configuration/PanelConfiguration.qml
+index 0e11a96..33e3fbc 100644
+--- a/desktoppackage/contents/configuration/PanelConfiguration.qml
++++ b/desktoppackage/contents/configuration/PanelConfiguration.qml
+@@ -103,7 +103,7 @@ PlasmaCore.FrameSvgItem {
+                     return panel.screenGeometry.y + panel.screenGeometry.height - panel.height - panel.distance
+                 }
+             }
+-            duration: units.shortDuration * 3
++            duration: units.shortDuration
+         }
+ 
+         NumberAnimation {
+@@ -122,7 +122,7 @@ PlasmaCore.FrameSvgItem {
+                     return panel.screenGeometry.y + panel.screenGeometry.height - panel.height - configDialog.height - panel.distance
+                 }
+             }
+-            duration: units.shortDuration * 3
++            duration: units.shortDuration
+         }
+     }
+ //END Animations
+diff --git a/desktoppackage/contents/explorer/WidgetExplorer.qml b/desktoppackage/contents/explorer/WidgetExplorer.qml
+index 1648708..e26cc40 100644
+--- a/desktoppackage/contents/explorer/WidgetExplorer.qml
++++ b/desktoppackage/contents/explorer/WidgetExplorer.qml
+@@ -306,7 +306,7 @@ Item {
+                 NumberAnimation {
+                     properties: "x"
+                     from: -list.width
+-                    duration: units.shortDuration * 3
++                    duration: units.shortDuration
+                 }
+             }
+ 
+@@ -315,7 +315,7 @@ Item {
+                 NumberAnimation {
+                     properties: "x"
+                     to: list.width
+-                    duration: units.shortDuration * 3
++                    duration: units.shortDuration
+                 }
+             }
+ 
+@@ -328,7 +328,7 @@ Item {
+             displaced: Transition {
+                 NumberAnimation {
+                     properties: "x,y"
+-                    duration: units.shortDuration * 3
++                    duration: units.shortDuration
+                 }
+             }
+ 
+diff --git a/toolboxes/desktoptoolbox/contents/ui/ToolBoxButton.qml b/toolboxes/desktoptoolbox/contents/ui/ToolBoxButton.qml
+index 06524c3..eb6b190 100644
+--- a/toolboxes/desktoptoolbox/contents/ui/ToolBoxButton.qml
++++ b/toolboxes/desktoptoolbox/contents/ui/ToolBoxButton.qml
+@@ -54,14 +54,14 @@ Item {
+     }
+     Behavior on rotation {
+         NumberAnimation {
+-            duration: units.shortDuration * 3;
++            duration: units.shortDuration;
+             easing.type: Easing.InOutExpo;
+         }
+         enabled: visible
+     }
+     Behavior on x {
+         NumberAnimation {
+-            duration: units.shortDuration * 3;
++            duration: units.shortDuration;
+             easing.type: Easing.InOutExpo;
+         }
+         enabled: visible
+@@ -69,7 +69,7 @@ Item {
+     }
+     Behavior on y {
+         NumberAnimation {
+-            duration: units.shortDuration * 3;
++            duration: units.shortDuration;
+             easing.type: Easing.InOutExpo;
+         }
+         enabled: visible
+-- 
+cgit v1.1

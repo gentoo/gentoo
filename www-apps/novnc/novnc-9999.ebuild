@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_6 )
+PYTHON_COMPAT=( python3_6 python3_7 )
 
 inherit distutils-r1
 
@@ -16,6 +16,7 @@ if [[ ${PV} == 9999 ]] ; then
 else
 	SRC_URI="https://github.com/kanaka/noVNC/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+	S="${WORKDIR}/noVNC-${PV}"
 fi
 
 LICENSE="LGPL-3"
@@ -28,7 +29,7 @@ RDEPEND="${DEPEND}
 	dev-python/numpy[${PYTHON_USEDEP}]"
 
 python_compile() {
-	echo
+	:
 }
 
 src_install() {
@@ -41,5 +42,6 @@ src_install() {
 
 	insinto /usr/share/novnc
 	doins -r vnc.html vnc_lite.html app/ core/ vendor/
-	dosym /usr/share/novnc/vnc_lite.html /usr/share/novnc/vnc_auto.html  # for compat
+	dosym vnc_lite.html /usr/share/novnc/vnc_auto.html  # for compat
+	dosym ../share/novnc/utils/launch.sh /usr/bin/novnc
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python2_7 )
 RUBY_OPTIONAL=yes
 #USE_RUBY=ruby20
 
-inherit autotools ruby-ng eutils flag-o-matic mono-env multilib java-pkg-opt-2 python-single-r1 multilib-minimal
+inherit autotools ruby-ng eutils flag-o-matic ltprune mono-env multilib java-pkg-opt-2 python-single-r1 multilib-minimal
 
 MY_P=${P/_/.}
 DESCRIPTION="A library that creates colored ASCII-art graphics"
@@ -15,7 +15,7 @@ SRC_URI="http://libcaca.zoy.org/files/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2 ISC LGPL-2.1 WTFPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE="cxx doc imlib java mono ncurses opengl python ruby slang static-libs test truetype X"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="

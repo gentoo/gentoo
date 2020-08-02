@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit git-r3 python-single-r1
 
 DESCRIPTION="Convert your system to SYMLINK_LIB=no"
@@ -18,7 +18,9 @@ IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	sys-apps/portage[${PYTHON_USEDEP}]"
+	$(python_gen_cond_dep '
+		sys-apps/portage[${PYTHON_MULTI_USEDEP}]
+	')"
 
 src_install() {
 	python_doscript unsymlink-lib

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,9 +9,9 @@ DESCRIPTION="M(easuring)buffer is a replacement for buffer with additional funct
 HOMEPAGE="https://www.maier-komor.de/mbuffer.html"
 SRC_URI="https://www.maier-komor.de/software/mbuffer/${P}.tgz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc x86"
+KEYWORDS="amd64 arm ~arm64 ppc x86"
 IUSE="debug ssl test"
 
 REQUIRED_USE="test? ( ssl )"

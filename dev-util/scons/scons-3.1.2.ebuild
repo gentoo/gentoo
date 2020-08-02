@@ -3,7 +3,8 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=no
+# False positive due to commented code in setup.py
+DISTUTILS_USE_SETUPTOOLS=manual
 PYTHON_COMPAT=( python{2_7,3_{6,7,8}} )
 PYTHON_REQ_USE="threads(+)"
 
@@ -21,7 +22,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 

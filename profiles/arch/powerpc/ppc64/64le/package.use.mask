@@ -1,5 +1,19 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-02-26)
+# vulkan tested and works on ppc64le
+dev-qt/qtdeclarative -vulkan
+dev-qt/qtgui -vulkan
+dev-qt/qtwayland -vulkan
+media-libs/mesa -vulkan -vulkan-overlay
+media-libs/libsdl2 -vulkan
+media-video/mpv -vulkan
+media-video/vlc -libplacebo
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-21)
+# mask untested card for libva
+x11-libs/libva video_cards_nouveau
 
 # Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
 # PPS should work on all arches, but only keyworded on some arches

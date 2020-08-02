@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby23 ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_TASK_TEST="none"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
@@ -24,13 +24,12 @@ SRC_URI="https://github.com/rspec/${PN}/archive/v${PV}.tar.gz -> ${P}-git.tgz"
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 ruby_add_bdepend "test? (
 		>=dev-ruby/nokogiri-1.5.2
 		dev-ruby/syntax
-		>=dev-ruby/zentest-4.6.2
 		>=dev-ruby/rspec-expectations-2.14.0:2
 		>=dev-ruby/rspec-mocks-2.99.0:2
 		dev-ruby/rspec:2
@@ -60,15 +59,16 @@ all_ruby_prepare() {
 
 	# Remove minor functionality to remain compatible with rake 12
 	sed -i -e '/last_comment/ s:^:#:' lib/rspec/core/rake_task.rb || die
+
+	# Avoid autotest specs since this is no longer part of zentest
+	sed -i -e '/autotest/ s:^:#:' spec/spec_helper.rb || die
+	rm -rf spec/autotest || die
 }
 
 each_ruby_prepare() {
 	sed -i -e 's:ruby -e:'${RUBY}' -e:' spec/rspec/core_spec.rb || die
 
 	case ${RUBY} in
-		*ruby23)
-			sed -i -e 's/SAFE = 3/SAFE = 1/' spec/support/helper_methods.rb || die
-			;;
 		*ruby24)
 			sed -i -e 's/SAFE = 3/SAFE = 1/' spec/support/helper_methods.rb || die
 			sed -i -e 's/Fixnum: 4/Integer: 4/' spec/rspec/core/memoized_helpers_spec.rb || die
@@ -91,6 +91,16 @@ each_ruby_prepare() {
 			sed -i -e '/with mathn loaded/,/^    end/ s:^:#:' spec/rspec/core/formatters/helpers_spec.rb || die
 			sed -i -e '/is still a private method/,/end/ s:^:#:' spec/rspec/core/memoized_helpers_spec.rb || die
 			sed -i -e '/leaves a raised exception unmodified/,/^      end/ s:^:#:' spec/rspec/core/example_spec.rb || die
+			;;
+		*ruby27)
+			sed -i -e 's/SAFE = 3/SAFE = 0/' spec/support/helper_methods.rb || die
+			sed -i -e 's/Fixnum: 4/Integer: 4/' spec/rspec/core/memoized_helpers_spec.rb || die
+			sed -i -e '/warns when HOME env var is not set/,/^  end/ s:^:#:' spec/rspec/core/configuration_options_spec.rb || die
+			sed -i -e '/with mathn loaded/,/^          end/ s:^:#:' spec/rspec/core/formatters/html_formatter_spec.rb || die
+			sed -i -e '/with mathn loaded/,/^    end/ s:^:#:' spec/rspec/core/formatters/helpers_spec.rb || die
+			sed -i -e '/is still a private method/,/end/ s:^:#:' spec/rspec/core/memoized_helpers_spec.rb || die
+			sed -i -e '/leaves a raised exception unmodified/,/^      end/ s:^:#:' spec/rspec/core/example_spec.rb || die
+			sed -i -e '/PROC_HEX_NUMBER =/ s/@//' lib/rspec/core/filter_manager.rb || die
 			;;
 	esac
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD BSD-with-attribution"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 ~sparc x86"
 IUSE="debug ipv6 freeipmi kerberos libressl pam ssl test tcpd"
 RESTRICT="!test? ( test )"
 

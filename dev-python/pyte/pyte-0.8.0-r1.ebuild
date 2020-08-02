@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -15,23 +15,15 @@ SRC_URI="https://github.com/selectel/pyte/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="LGPL-3"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="test"
-RESTRICT="!test? ( test )"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="dev-python/wcwidth[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
-"
+
+distutils_enable_tests pytest
 
 python_prepare_all() {
 	# run pytest directly for tests
 	sed -i '/setup_requires=\["pytest-runner"\]/d' setup.py || die
 
 	distutils-r1_python_prepare_all
-}
-
-python_test() {
-	py.test -v || die "tests failed with ${EPYTHON}"
 }

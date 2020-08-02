@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -38,7 +38,7 @@ src_configure() {
 		--with-init-script=systemd
 }
 
-src_install () {
+src_install() {
 	default
 
 	# I see no reason to have the tests in the filesystem. Drop them

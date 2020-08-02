@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit versionator java-pkg-opt-2 eutils
+inherit versionator java-pkg-opt-2 eutils ltprune
 
 DESCRIPTION="Helmut Dersch's panorama toolbox library"
 HOMEPAGE="http://panotools.sourceforge.net/"

@@ -1,0 +1,124 @@
+--- a/configure.seed
++++ b/configure.seed
+@@ -182,21 +182,21 @@
+ fi
+ dnl finish: nDPI handling
+ 
+-pkg-config --exists json-c
++${PKG_CONFIG} --exists json-c
+ if test "$?" -ne 1; then
+-  JSON_INC=`pkg-config --cflags json-c`
+-  JSON_LIB=`pkg-config --libs json-c`
++  JSON_INC=`${PKG_CONFIG} --cflags json-c`
++  JSON_LIB=`${PKG_CONFIG} --libs json-c`
+ else
+   echo "Please install libjson-c-dev package prerequisite"
+   exit -1
+ fi
+ 
+ 
+-pkg-config --exists libssl
++${PKG_CONFIG} --exists libssl
+ if test "$?" -ne 1; then
+  AC_DEFINE_UNQUOTED(NO_SSL_DL, 1, [has openssl])
+- SSL_INC="`pkg-config --cflags libssl` -I/usr/include/openssl"
+- SSL_LIB="`pkg-config --libs libssl` -lssl -lcrypto"
++ SSL_INC="`${PKG_CONFIG} --cflags libssl` -I/usr/include/openssl"
++ SSL_LIB="`${PKG_CONFIG} --libs libssl` -lssl -lcrypto"
+ else
+  dnl Workaround for MacOS Brew
+  if test -d "/usr/local/opt/openssl/lib"; then
+@@ -303,8 +303,8 @@
+ AC_DEFINE_UNQUOTED(NTOPNG_GIT_RELEASE, "${GIT_BRANCH}:${GIT_RELEASE}", [GIT Release])
+ AC_DEFINE_UNQUOTED(NTOPNG_GIT_DATE, "${GIT_DATE}", [Last GIT change])
+ 
+-if test -z `which pkg-config`; then
+-   echo "#!/bin/sh\n" > pkg-config
++if test -z `which ${PKG_CONFIG}`; then
++   echo "#!/bin/sh\n" > ${PKG_CONFIG}
+ fi
+ 
+ if test -f ".git/index"; then
+@@ -336,8 +336,8 @@
+ 
+ if test -d "/usr/include/hiredis"; then
+  AC_DEFINE_UNQUOTED(HAVE_HIREDIS, 1, [Local hiredis package present])
+- HIREDIS_INC="`pkg-config --cflags hiredis` -I/usr/include/hiredis"
+- HIREDIS_LIB="`pkg-config --libs hiredis` -lhiredis"
++ HIREDIS_INC="`${PKG_CONFIG} --cflags hiredis` -I/usr/include/hiredis"
++ HIREDIS_LIB="`${PKG_CONFIG} --libs hiredis` -lhiredis"
+ else
+  HIREDIS_INC="-I ${PWD}/third-party/hiredis"
+ fi
+@@ -433,7 +433,7 @@
+    UGLIFYJS_MAJOR_VERSION="${UGLIFYJS_VERSION%%.*}"
+ fi
+ 
+-AC_CHECK_LIB([rrd_th], [rrd_update_r], [LIBRRD_LD_FLAGS=-lrrd_th], [LIBRRD_LD_FLAGS=`pkg-config --libs librrd`])
++AC_CHECK_LIB([rrd_th], [rrd_update_r], [LIBRRD_LD_FLAGS=-lrrd_th], [LIBRRD_LD_FLAGS=`${PKG_CONFIG} --libs librrd`])
+ 
+ AC_CHECK_LIB([nl], [nl_handle_alloc], [LDFLAGS="${LDFLAGS} -lnl"])
+ AC_CHECK_LIB([rt], [clock_gettime],   [LDFLAGS="${LDFLAGS} -lrt"])
+@@ -452,7 +452,7 @@
+     dnl> https://github.com/curl/curl/blob/curl-7_20_0/TODO-RELEASE
+ 
+     AC_MSG_CHECKING(for curl SMTP support)
+-    if `pkg-config --atleast-version="7.20.0" libcurl` ; then
++    if `${PKG_CONFIG} --atleast-version="7.20.0" libcurl` ; then
+         AC_DEFINE_UNQUOTED(HAVE_CURL_SMTP, 1, [curl supports SMTP])
+ 	AC_MSG_RESULT(yes)
+     else
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -45,9 +45,9 @@
+ 
+ ######
+ LIBRRDTOOL_HOME=${PWD}/third-party/rrdtool-1.4.8
+-HAS_LIBRRDTOOL=$(shell pkg-config --atleast-version=1.4.8 librrd && echo 0)
++HAS_LIBRRDTOOL=$(shell ${PKG_CONFIG} --atleast-version=1.4.8 librrd && echo 0)
+ ifeq ($(HAS_LIBRRDTOOL), 0)
+-	LIBRRDTOOL_INC = $(shell pkg-config --cflags librrd)
++	LIBRRDTOOL_INC = $(shell ${PKG_CONFIG} --cflags librrd)
+ 	LIBRRDTOOL_LIB = @LIBRRD_LD_FLAGS@
+ else
+ 	LIBRRDTOOL_INC=-I$(LIBRRDTOOL_HOME)/src/
+@@ -77,21 +77,21 @@
+ ######
+ 
+ ifeq (@NEDGE@, 0)
+- HAS_SODIUM=$(shell pkg-config --exists libsodium && echo 0)
++ HAS_SODIUM=$(shell ${PKG_CONFIG} --exists libsodium && echo 0)
+  ifeq ($(HAS_SODIUM), 0)
+-	SODIUM_INC = $(shell pkg-config --cflags libsodium)
+-	SODIUM_LIB = $(shell pkg-config --libs libsodium)
++	SODIUM_INC = $(shell ${PKG_CONFIG} --cflags libsodium)
++	SODIUM_LIB = $(shell ${PKG_CONFIG} --libs libsodium)
+  else
+ 	SODIUM_INC=
+ 	SODIUM_LIB=
+  endif
+ 
+- HAS_ZEROMQ=$(shell pkg-config --exists libzmq && echo 0)
++ HAS_ZEROMQ=$(shell ${PKG_CONFIG} --exists libzmq && echo 0)
+  ifeq ($(HAS_ZEROMQ), 0)
+-	ZEROMQ_INC = $(shell pkg-config --cflags libzmq)
++	ZEROMQ_INC = $(shell ${PKG_CONFIG} --cflags libzmq)
+ 	ZMQ_STATIC=/usr/local/lib/libzmq.a
+ 	ifeq ($(wildcard $(ZMQ_STATIC)),)
+-		ZEROMQ_LIB = $(shell pkg-config --libs libzmq)
++		ZEROMQ_LIB = $(shell ${PKG_CONFIG} --libs libzmq)
+ 	else
+ 		ZEROMQ_LIB = $(ZMQ_STATIC)
+ 	endif
+@@ -101,9 +101,9 @@
+ 	ZEROMQ_LIB=$(ZEROMQ_HOME)/.libs/libzmq.a
+  endif
+ 
+- HAS_ZSTD=$(shell pkg-config --exists libzstd && echo 0)
++ HAS_ZSTD=$(shell ${PKG_CONFIG} --exists libzstd && echo 0)
+  ifeq ($(HAS_ZSTD), 0)
+-	ZSTD_LIB = $(shell pkg-config --libs libzstd)
++	ZSTD_LIB = $(shell ${PKG_CONFIG} --libs libzstd)
+  endif
+ endif
+ 

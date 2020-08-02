@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -18,7 +18,7 @@ SLOT="0"
 IUSE="debug +introspection test vala"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="vala? ( introspection )"
-KEYWORDS="alpha amd64 arm arm64 ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris"
 
 RDEPEND="
 	>=dev-libs/glib-2.16.0:2[${MULTILIB_USEDEP}]
@@ -32,11 +32,22 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.35
 	sys-devel/gettext
 	virtual/pkgconfig
-	test? ( $(python_gen_any_dep '
+	test? ( ${PYTHON_DEPS} $(python_gen_any_dep '
 		dev-python/pygobject:2[${PYTHON_USEDEP}]
 		dev-python/dbus-python[${PYTHON_USEDEP}]') )
 	vala? ( $(vala_depend) )
 "
+
+python_check_deps() {
+	if use test; then
+		has_version "dev-python/pygobject:2[${PYTHON_USEDEP}]" &&
+		has_version "dev-python/dbus-python[${PYTHON_USEDEP}]"
+	fi
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PV}-vala-0.42-compat.patch

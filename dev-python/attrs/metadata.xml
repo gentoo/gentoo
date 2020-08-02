@@ -11,6 +11,6 @@
       <email>hs@ox.cx</email>
       <name>Hynek Schlawack</name>
     </maintainer>
-    <remote-id type="github">hynek/attrs</remote-id>
+    <remote-id type="github">python-attrs/attrs</remote-id>
   </upstream>
 </pkgmetadata>

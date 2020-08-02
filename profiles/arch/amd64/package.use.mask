@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -17,13 +17,62 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (2020-07-27)
+# media-video/pipewire:0/0.3 is available for amd64
+www-client/firefox -screencast
+
+# Sam James <sam@gentoo.org> (2020-07-03)
+# Rust is available here
+# Bug #728558
+media-video/ffmpeg -rav1e
+
+# Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
+# Mask io-uring & zbc pending keywording
+sys-block/fio -io-uring -zbc
+
+# Marek Szuba <marecki@gentoo.org> (2020-06-17)
+# Unmask globally-masked flashrom drivers and tools which do work on amd64
+sys-apps/flashrom -atahpt -atapromise -internal -nic3com -nicnatsemi -nicrealtek -rayer-spi -satamv -tools
+
+# Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
+# clisp is keyworded on amd64
+app-text/texlive-core -xindy
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-04-30)
+# sys-cluster/slurm is keyworded on amd64
+app-metrics/collectd -collectd_plugins_slurm
+
+# Georgy Yakovlev <gyakovlev@gentoo.org (2020-04-26)
+# static-pie works on amd64, #719444
+sys-libs/glibc -static-pie
+
+# Guilherme Amadio <amadio@gentoo.org> (2020-03-16)
+# media-libs/cudnn is keyworded on amd64
+sci-physics/root -cudnn
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-03-11)
+# Encrypted Media Extensions (eme-free) can be disabled on amd64
+mail-client/thunderbird -eme-free
+www-client/firefox -eme-free
+
+# Mart Raudsepp <leio@gentoo.org> (2020-03-01)
+# dev-util/sysprof-capture is keyworded on amd64
+x11-wm/mutter -sysprof
+dev-libs/gjs -sysprof
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
+# Vulkan is available on amd64.
+dev-qt/qtdeclarative -vulkan
+dev-qt/qtgui -vulkan
+dev-qt/qtwayland -vulkan
+
 # James Le Cuirot <chewi@gentoo.org> (2019-12-10)
 # The JIT feature only works on amd64 and x86.
 app-emulation/aranym -jit
 
 # Thomas Deutschmann <whissi@gentoo.org> (2019-11-11)
 # dev-python/pandas is keyworded for amd64
-sys-block/fio -gnuplot
+sys-block/fio -python -gnuplot
 
 # Craig Andrews <candrews@gentoo.org> (2019-10-08)
 # net-misc/quiche is available on this arch
@@ -96,10 +145,6 @@ dev-util/catalyst -system-bootloader
 # Mask everywhere, unmask where appropriate.
 media-video/mpv -vulkan
 
-# Mikle Kolyada <zlogene@gentoo.org> (2018-06-02)
-# Too many untested ruby dependencies
-<dev-ruby/haml-5 test
-
 # Nick Sarnie <sarnex@gentoo.org> (2018-04-29)
 # media-libs/vulkan-loader and app-emulation/vkd3d are keyworded on amd64
 app-emulation/wine-staging -vkd3d -vulkan
@@ -118,10 +163,6 @@ media-libs/opencv -contribxfeatures2d
 # cpyrit-cuda does not support GCC 4.9 or later
 net-wireless/pyrit cuda
 
-# Rick Farina <zerochaos@gentoo.org> (2017-05-11)
-# nexpose work on amd64
-net-analyzer/metasploit -nexpose
-
 # Thomas Deutschmann <whissi@gentoo.org> (2017-03-01)
 # dev-libs/libmaxminddb is keyworded on amd64
 app-admin/rsyslog -mdblookup
@@ -130,10 +171,6 @@ app-admin/rsyslog -mdblookup
 # spacetime works on amd64
 # https://caml.inria.fr/pub/docs/manual-ocaml/spacetime.html
 dev-lang/ocaml -spacetime
-
-# Alexis Ballier <aballier@gentoo.org> (2017-01-31)
-# nvidia drivers are unmasked here
-media-video/ffmpeg -nvenc
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2017-01-04)
 # Assembly optimisations are supported on amd64 for all versions
@@ -178,10 +215,6 @@ dev-java/icedtea -shenandoah
 # This flag only has meaning on amd64
 sys-boot/grub:2 -grub_platforms_xen-32
 
-# Nathan Phillip Brink <binki@gentoo.org> (2015-09-26)
-# git useflag requires dev-libs/libgit2 which few arches support
-dev-util/geany-plugins -git
-
 # Brian Evans <grknight@gentoo.org (2015-09-14)
 # Unmask new USE flags for mariadb on supported arches
 >=dev-db/mariadb-10.1.0 -mroonga -sst-xtrabackup -galera
@@ -202,10 +235,6 @@ media-libs/libbluray -bdplus
 # Michał Górny <mgorny@gentoo.org> (2015-03-01)
 # pidgin-opensteamworks is only available for amd64, ppc32 and x86
 net-im/telepathy-connection-managers -steam
-
-# Mike Frysinger <vapier@gentoo.org> (2014-08-04)
-# Unmask flashrom drivers that only work on x86 due to in/out asm insns #454024
-sys-apps/flashrom -atahpt -nic3com -nicnatsemi -nicrealtek -rayer-spi -satamv
 
 # Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (2014-04-24)
 # It's only supported on amd64
@@ -243,10 +272,6 @@ sys-apps/hwloc -gl
 # Meaningless on amd64 (it controls the 32-bit x86 JIT).
 dev-python/pypy-exe cpu_flags_x86_sse2
 dev-python/pypy3-exe cpu_flags_x86_sse2
-
-# Christoph Junghans <junghans@gentoo.org> (2012-12-26)
-# cuda works on x86/amd64 (masked in base)
-sci-chemistry/gromacs -mkl
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-11-03)
 # Unmask here, as it's masked in base.

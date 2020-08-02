@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="xml"
 
 inherit eutils distutils-r1 prefix
@@ -18,7 +18,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
 
 RDEPEND="
 	dev-util/dialog
@@ -26,7 +26,7 @@ RDEPEND="
 	>=dev-python/ssl-fetch-0.3[${PYTHON_USEDEP}]
 	"
 
-python_prepare_all()  {
+python_prepare_all() {
 	python_setup
 	eprefixify setup.py mirrorselect/main.py
 	echo Now setting version... VERSION="${PVR}" "${PYTHON}" setup.py set_version

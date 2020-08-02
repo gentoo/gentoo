@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: font.eclass
@@ -25,10 +25,10 @@ EXPORT_FUNCTIONS pkg_setup src_install pkg_postinst pkg_postrm
 FONT_SUFFIX=${FONT_SUFFIX:-}
 
 # @ECLASS-VARIABLE: FONT_S
-# @REQUIRED
+# @DEFAULT_UNSET
 # @DESCRIPTION:
-# Space delimited list of directories containing the fonts.
-FONT_S=${FONT_S:-${S}}
+# Directory containing the fonts.  If unset, ${S} is used instead.
+# Can also be an array of several directories.
 
 # @ECLASS-VARIABLE: FONT_PN
 # @DESCRIPTION:
@@ -159,27 +159,39 @@ font_pkg_setup() {
 font_src_install() {
 	local dir suffix commondoc
 
-	set -- ${FONT_S:-${S}}
-	if [[ $# -gt 1 ]]; then
-		# if we have multiple FONT_S elements then we want to recreate the dir
-		# structure
+	if [[ $(declare -p FONT_S 2>/dev/null) == "declare -a"* ]]; then
+		# recreate the directory structure if FONT_S is an array
+		for dir in "${FONT_S[@]}"; do
+			pushd "${dir}" > /dev/null || die "pushd ${dir} failed"
+			insinto "${FONTDIR}/${dir#"${S}"}"
+			for suffix in ${FONT_SUFFIX}; do
+				doins *.${suffix}
+			done
+			font_xfont_config "${dir}"
+			popd > /dev/null || die
+		done
+	elif [[ ${FONT_S/[[:space:]]} != "${FONT_S}" ]]; then
+		# backwards compatibility code, can be removed after 2021-02-14
+		eqawarn "Using a space-separated list for FONT_S is deprecated."
+		eqawarn "Use a bash array instead if there are multiple directories."
 		for dir in ${FONT_S}; do
-			pushd "${dir}" > /dev/null
+			pushd "${dir}" > /dev/null || die "pushd ${dir} failed"
 			insinto "${FONTDIR}/${dir//${S}/}"
 			for suffix in ${FONT_SUFFIX}; do
 				doins *.${suffix}
 			done
 			font_xfont_config "${dir}"
-			popd > /dev/null
+			popd > /dev/null || die
 		done
 	else
-		pushd "${FONT_S}" > /dev/null
+		pushd "${FONT_S:-${S}}" > /dev/null \
+			|| die "pushd ${FONT_S:-${S}} failed"
 		insinto "${FONTDIR}"
 		for suffix in ${FONT_SUFFIX}; do
 			doins *.${suffix}
 		done
 		font_xfont_config
-		popd > /dev/null
+		popd > /dev/null || die
 	fi
 
 	font_fontconfig

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,13 +6,13 @@ EAPI=7
 inherit toolchain-funcs flag-o-matic readme.gentoo-r1
 
 DESCRIPTION="Classic TECO editor, Predecessor to EMACS"
-HOMEPAGE="http://www.ibiblio.org/pub/linux/apps/editors/tty/ http://www.ibiblio.org/pub/academic/computer-science/history/pdp-11/teco"
-SRC_URI="http://www.ibiblio.org/pub/linux/apps/editors/tty/teco.tar.gz -> ${P}.tar.gz
+HOMEPAGE="https://www.ibiblio.org/pub/linux/apps/editors/tty/ https://www.ibiblio.org/pub/academic/computer-science/history/pdp-11/teco"
+SRC_URI="https://www.ibiblio.org/pub/linux/apps/editors/tty/teco.tar.gz -> ${P}.tar.gz
 	doc? ( https://dev.gentoo.org/~ulm/distfiles/tecodoc.tar.gz )"
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="alpha amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="doc"
 
 RDEPEND="sys-libs/ncurses:0="
@@ -25,6 +25,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-double-free.patch
 	"${FILESDIR}"/${PN}-gcc4.patch
 	"${FILESDIR}"/${PN}-warnings.patch
+	"${FILESDIR}"/${PN}-no-common.patch
+	"${FILESDIR}"/${PN}-void-functions.patch
 )
 
 src_prepare() {

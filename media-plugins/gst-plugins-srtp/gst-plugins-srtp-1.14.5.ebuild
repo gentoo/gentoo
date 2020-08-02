@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-bad
 inherit gstreamer
 
 DESCRIPTION="SRTP encoder/decoder plugin for GStreamer"
-KEYWORDS="alpha amd64 arm arm64 ~ia64 ppc ppc64 x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 x86"
 IUSE=""
 
 RDEPEND="
@@ -15,3 +15,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-util/glib-utils"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.14.5-make43.patch # remove when bumping and switching to Meson
+)

@@ -1,16 +1,16 @@
-# Copyright 2012-2019 Gentoo Authors
+# Copyright 2012-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit multilib-minimal
+inherit multilib multilib-minimal
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://git.sr.ht/~kaniini/pkgconf"
 else
 	SRC_URI="http://distfiles.dereferenced.org/${PN}/${P}.tar.xz"
-	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~riscv s390 ~sh sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86"
 fi
 
 DESCRIPTION="pkg-config compatible replacement with no dependencies other than ANSI C89"
@@ -38,7 +38,7 @@ RDEPEND="
 "
 
 MULTILIB_CHOST_TOOLS=(
-	/usr/bin/pkgconf
+	/usr/bin/pkgconf$(get_exeext)
 )
 
 src_prepare() {
@@ -47,7 +47,7 @@ src_prepare() {
 	[[ ${PV} == "9999" ]] && eautoreconf
 	if use pkg-config; then
 		MULTILIB_CHOST_TOOLS+=(
-			/usr/bin/pkg-config
+			/usr/bin/pkg-config$(get_exeext)
 		)
 	fi
 }
@@ -66,7 +66,7 @@ multilib_src_install() {
 	default
 
 	if use pkg-config; then
-		dosym pkgconf /usr/bin/pkg-config
+		dosym pkgconf$(get_exeext) /usr/bin/pkg-config$(get_exeext)
 		dosym pkgconf.1 /usr/share/man/man1/pkg-config.1
 	else
 		rm "${ED}"/usr/share/aclocal/pkg.m4 || die

@@ -2,23 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=(python{2_7,3_{6,7,8}})
+PYTHON_COMPAT=(python3_{6,7,8})
 inherit bash-completion-r1 distutils-r1 git-r3 readme.gentoo-r1
 
 DESCRIPTION="Download videos from YouTube.com (and more sites...)"
 HOMEPAGE="https://github.com/ytdl-org/youtube-dl/"
-EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_REPO_URI="https://github.com/ytdl-org/youtube-dl/"
 LICENSE="public-domain"
 
 KEYWORDS=""
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 RDEPEND="
+	dev-python/pycryptodome[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	|| (
-		dev-python/pycryptodome[${PYTHON_USEDEP}]
-		dev-python/pycrypto[${PYTHON_USEDEP}]
-	)
 "
 DEPEND="
 	${RDEPEND}
@@ -60,11 +58,10 @@ pkg_postinst() {
 	elog "https://github.com/rg3/${PN}/blob/master/README.md#faq :"
 	elog
 	elog "${PN} works fine on its own on most sites. However, if you want"
-	elog "to convert video/audio, you'll need avconf (media-video/libav) or"
-	elog "ffmpeg (media-video/ffmpeg). On some sites - most notably YouTube -"
-	elog "videos can be retrieved in a higher quality format without sound."
-	elog "${PN} will detect whether avconv/ffmpeg is present and"
-	elog "automatically pick the best option."
+	elog "to convert video/audio, you'll need ffmpeg (media-video/ffmpeg)."
+	elog "On some sites - most notably YouTube - videos can be retrieved in"
+	elog "a higher quality format without sound. ${PN} will detect whether"
+	elog "ffmpeg is present and automatically pick the best option."
 	elog
 	elog "Videos or video formats streamed via RTMP protocol can only be"
 	elog "downloaded when rtmpdump (media-video/rtmpdump) is installed."

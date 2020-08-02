@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,16 +10,16 @@ SRC_URI=""
 LICENSE="metapackage"
 SLOT="0"
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+else
+	PROPERTIES+=" live"
 fi
 
 IUSE_INPUT_DEVICES="
 	input_devices_elographics
 	input_devices_evdev
 	input_devices_joystick
-	input_devices_keyboard
 	input_devices_libinput
-	input_devices_mouse
 	input_devices_vmmouse
 	input_devices_void
 	input_devices_synaptics
@@ -58,11 +58,15 @@ IUSE="${IUSE_VIDEO_CARDS} ${IUSE_INPUT_DEVICES}"
 
 PDEPEND="
 	input_devices_elographics? ( x11-drivers/xf86-input-elographics )
-	input_devices_evdev?       ( >=x11-drivers/xf86-input-evdev-2.10.6 )
+	input_devices_evdev?       (
+								 >=x11-base/xorg-server-${PV}[udev]
+								 >=x11-drivers/xf86-input-evdev-2.10.6
+							   )
 	input_devices_joystick?    ( >=x11-drivers/xf86-input-joystick-1.6.3 )
-	input_devices_keyboard?    ( x11-drivers/xf86-input-keyboard )
-	input_devices_libinput?    ( >=x11-drivers/xf86-input-libinput-0.27.1 )
-	input_devices_mouse?       ( >=x11-drivers/xf86-input-mouse-1.9.3 )
+	input_devices_libinput?    (
+								 >=x11-base/xorg-server-${PV}[udev]
+								 >=x11-drivers/xf86-input-libinput-0.27.1
+							   )
 	input_devices_vmmouse?     ( x11-drivers/xf86-input-vmmouse )
 	input_devices_void?        ( x11-drivers/xf86-input-void )
 	input_devices_synaptics?   ( x11-drivers/xf86-input-synaptics )
@@ -94,6 +98,4 @@ PDEPEND="
 	video_cards_via?           ( x11-drivers/xf86-video-openchrome )
 	video_cards_virtualbox?    ( x11-drivers/xf86-video-vboxvideo )
 	video_cards_vmware?        ( >=x11-drivers/xf86-video-vmware-13.3.0 )
-
-	!<x11-drivers/xf86-input-evdev-2.10.4
 "

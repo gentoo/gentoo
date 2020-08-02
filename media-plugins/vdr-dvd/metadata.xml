@@ -5,9 +5,6 @@
 		<email>vdr@gentoo.org</email>
 		<name>Gentoo VDR Project</name>
 	</maintainer>
-	<longdescription>
-		This is the DVD plugin for the Video Disk Recorder (VDR)
-	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">dvdplugin</remote-id>
 	</upstream>

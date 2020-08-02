@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit cmake-utils gnome2-utils python-single-r1 xdg-utils
+inherit cmake gnome2-utils python-single-r1 xdg-utils
 
 DESCRIPTION="Gtk+ GUI for controlling cdemu-daemon"
 HOMEPAGE="https://cdemu.sourceforge.io"
@@ -13,7 +13,7 @@ SRC_URI="https://download.sourceforge.net/cdemu/gcdemu/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -36,13 +36,13 @@ BDEPEND="${PYTHON_DEPS}
 DOCS=( AUTHORS README )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	python_fix_shebang src/gcdemu
 }
 
 src_configure() {
 	local mycmakeargs=( -DPOST_INSTALL_HOOKS=OFF )
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {

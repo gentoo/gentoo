@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit toolchain-funcs libtool flag-o-matic bash-completion-r1 usr-ldscript \
 	pam python-r1 multilib-minimal multiprocessing systemd
@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git"
 else
 	[[ "${PV}" = *_rc* ]] || \
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 	SRC_URI="https://www.kernel.org/pub/linux/utils/util-linux/v${PV:0:4}/${MY_P}.tar.xz"
 fi
 
@@ -29,8 +29,7 @@ IUSE="build caps +cramfs fdformat hardlink kill +logger ncurses nls pam python +
 
 # Most lib deps here are related to programs rather than our libs,
 # so we rarely need to specify ${MULTILIB_USEDEP}.
-DEPEND="
-	virtual/os-headers
+RDEPEND="
 	caps? ( sys-libs/libcap-ng )
 	cramfs? ( sys-libs/zlib:= )
 	ncurses? ( >=sys-libs/ncurses-5.2-r2:0=[unicode?] )
@@ -47,7 +46,11 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 	test? ( sys-devel/bc )
 "
-RDEPEND="${DEPEND}
+DEPEND="
+	${RDEPEND}
+	virtual/os-headers
+"
+RDEPEND+="
 	hardlink? ( !app-arch/hardlink )
 	logger? ( !>=app-admin/sysklogd-2.0[logger] )
 	kill? (
@@ -59,11 +62,6 @@ RDEPEND="${DEPEND}
 		!>=sys-apps/shadow-4.7-r2[su]
 	)
 	!net-wireless/rfkill
-	!sys-process/schedutils
-	!sys-apps/setarch
-	!<sys-apps/sysvinit-2.88-r7
-	!<sys-libs/e2fsprogs-libs-1.41.8
-	!<sys-fs/e2fsprogs-1.41.8
 	!<app-shells/bash-completion-2.7-r1"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -90,12 +88,6 @@ src_prepare() {
 		po/update-potfiles
 		eautoreconf
 	fi
-
-	# Undo bad ncurses handling by upstream. #601530
-	sed -i -E \
-		-e '/NCURSES_/s:(ncursesw?)[56]-config:$PKG_CONFIG \1:' \
-		-e 's:(ncursesw?)[56]-config --version:$PKG_CONFIG --exists --print-errors \1:' \
-		configure || die
 
 	elibtoolize
 }
@@ -142,6 +134,10 @@ multilib_src_configure() {
 	tc-is-cross-compiler && export scanf_cv_alloc_modifier=ms
 	export ac_cv_header_security_pam_misc_h=$(multilib_native_usex pam) #485486
 	export ac_cv_header_security_pam_appl_h=$(multilib_native_usex pam) #545042
+
+	# Undo bad ncurses handling by upstream. Fall back to pkg-config. #601530
+	export NCURSES6_CONFIG=false NCURSES5_CONFIG=false
+	export NCURSESW6_CONFIG=false NCURSESW5_CONFIG=false
 
 	# configure args shared by python and non-python builds
 	local commonargs=(

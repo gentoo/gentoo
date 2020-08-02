@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{6,7})
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit eutils distutils-r1
 
@@ -19,5 +19,5 @@ RESTRICT="!test? ( test )"
 DEPEND="test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 python_test() {
-	py.test tests.py || die
+	pytest -vv tests.py || die
 }

@@ -12,6 +12,12 @@ source tests-common.sh
 
 inherit toolchain
 
+# Ignore actually running version of gcc and fake new version
+# to force downgrade test on all conditions below.
+gcc-version() {
+	echo "99.99"
+}
+
 test_downgrade_arch_flags() {
 	local exp msg ret=0 ver
 
@@ -26,13 +32,14 @@ test_downgrade_arch_flags() {
 	downgrade_arch_flags ${ver}
 
 	if [[ ${CFLAGS} != ${exp} ]]; then
-		msg="Failure - Expected: \"${exp}\" Got: \"${CFLAGS}\""
+		msg="Failure - Expected: \"${exp}\" Got: \"${CFLAGS}\" Ver: ${ver}"
 		ret=1
 	fi
 	tend ${ret} ${msg}
 }
 
 #                         ver  expected            given
+test_downgrade_arch_flags 10  "-march=haswell"    "-march=haswell"
 test_downgrade_arch_flags 4.9 "-march=haswell"    "-march=haswell"
 test_downgrade_arch_flags 4.8 "-march=core-avx2"  "-march=haswell"
 test_downgrade_arch_flags 4.7 "-march=core-avx2"  "-march=haswell"
@@ -64,6 +71,7 @@ test_downgrade_arch_flags 3.3 "-march=c3"         "-march=c3-2"
 
 test_downgrade_arch_flags 4.5 "-march=garbage"    "-march=garbage"
 
+test_downgrade_arch_flags 10  "-mtune=intel"      "-mtune=intel"
 test_downgrade_arch_flags 4.9 "-mtune=intel"      "-mtune=intel"
 test_downgrade_arch_flags 4.8 "-mtune=generic"    "-mtune=intel"
 test_downgrade_arch_flags 3.4 ""                  "-mtune=generic"
@@ -74,9 +82,12 @@ test_downgrade_arch_flags 4.5 "-march=amdfam10 -mtune=generic" "-march=btver2 -m
 test_downgrade_arch_flags 3.3 "-march=k6-2"       "-march=geode -mtune=barcelona"
 test_downgrade_arch_flags 3.4 "-march=k8"         "-march=btver2 -mtune=generic"
 
+test_downgrade_arch_flags 10  "-march=native"     "-march=native"
+test_downgrade_arch_flags 8   "-march=znver1"     "-march=znver2"
 test_downgrade_arch_flags 4.2 "-march=native"     "-march=native"
 test_downgrade_arch_flags 4.1 "-march=nocona"     "-march=native"
 
+test_downgrade_arch_flags 10  "-march=foo -mno-sha -mno-rtm -mno-avx2 -mno-avx -mno-sse4.1" "-march=foo -mno-sha -mno-rtm -mno-avx2 -mno-avx -mno-sse4.1"
 test_downgrade_arch_flags 4.9 "-march=foo -mno-sha -mno-rtm -mno-avx2 -mno-avx -mno-sse4.1" "-march=foo -mno-sha -mno-rtm -mno-avx2 -mno-avx -mno-sse4.1"
 test_downgrade_arch_flags 4.8 "-march=foo -mno-rtm -mno-avx2 -mno-avx -mno-sse4.1" "-march=foo -mno-sha -mno-rtm -mno-avx2 -mno-avx -mno-sse4.1"
 test_downgrade_arch_flags 4.7 "-march=foo -mno-avx2 -mno-avx -mno-sse4.1" "-march=foo -mno-sha -mno-rtm -mno-avx2 -mno-avx -mno-sse4.1"

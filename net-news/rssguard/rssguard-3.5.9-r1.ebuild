@@ -34,7 +34,7 @@ src_configure() {
 	eqmake5 \
 		CONFIG+=$(usex debug debug release) \
 		$(is-flagq -flto* && echo "CONFIG+=ltcg") \
-		USE_WEBENGINE=$(usex webengine) \
+		USE_WEBENGINE=$(usex webengine true false) \
 		PREFIX="${EPREFIX}"/usr \
 		INSTALL_ROOT=.
 }

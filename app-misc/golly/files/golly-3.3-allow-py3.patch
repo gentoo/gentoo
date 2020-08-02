@@ -1,0 +1,90 @@
+The patch allows python3 as a python implementation.
+Ports module loading to conditional python3 support.
+--- a/gui-wx/configure/configure.ac
++++ b/gui-wx/configure/configure.ac
+@@ -19,7 +19,7 @@ AC_ARG_WITH([python-shlib], [AS_HELP_STRING([--with-python-shlib=ARG],
+ 	, [with_python_shlib=check])
+ AC_ARG_VAR([GOLLYDIR], [golly data directory [default=DATADIR/golly]])
+ AC_ARG_VAR([PERL], [Perl 5 interpreter])
+-AC_ARG_VAR([PYTHON], [Python 2 interpreter])
++AC_ARG_VAR([PYTHON], [Python interpreter])
+ 
+ # Check for build tools:
+ m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
+@@ -76,7 +76,7 @@ AS_IF([test "x$enable_perl" = xyes], [
+ ])
+ 
+ # Find Python
+-AC_PATH_PROGS(PYTHON, [python2 python])
++AC_CHECK_PROGS(PYTHON, [python python3 python2])
+ AS_IF([test "x$PYTHON" = x], [AC_MSG_ERROR([missing Python])])
+ AC_SUBST([PYTHON_INCLUDE], [-I"'`$PYTHON -c "import distutils.sysconfig; print(distutils.sysconfig.get_python_inc())"`'"])
+ AS_IF([test "x$with_python_shlib" = xcheck],
+--- a/gui-wx/wxpython.cpp
++++ b/gui-wx/wxpython.cpp
+@@ -90,6 +90,12 @@
+     #include <Python.h>
+ #endif
+ 
++#if PY_MAJOR_VERSION >= 3
++    // python-3 got rid of int/log distinction
++    #define PyInt_AsLong PyLong_AsLong
++    #define PyInt_FromLong PyLong_FromLong
++#endif
++
+ #ifdef USE_PYTHON_DYNAMIC
+ 
+ #ifndef __WXMAC__
+@@ -3268,6 +3274,22 @@ static PyMethodDef py_methods[] = {
+     { NULL, NULL, 0, NULL }
+ };
+ 
++#if PY_MAJOR_VERSION >= 3
++static PyModuleDef golly_module = {
++    PyModuleDef_HEAD_INIT,
++    "golly", /* name */
++    NULL,    /* doc */
++    -1,      /* size */
++    py_methods, /* methoods */
++};
++
++PyMODINIT_FUNC
++PyInit_golly(void)
++{
++    return PyModule_Create(&golly_module);
++}
++#endif
++
+ // =============================================================================
+ 
+ bool pyinited = false;     // InitPython has been successfully called?
+@@ -3280,6 +3302,13 @@ bool InitPython()
+             if (!LoadPythonLib()) return false;
+         #endif
+         
++        #if PY_MAJOR_VERSION >= 3
++            // Autoload 'golly' builtin module at interpreter start.
++            if (PyImport_AppendInittab("golly", PyInit_golly) == -1) {
++                Warning(_("Error: could not extend in-built modules table\n"));
++            }
++        #endif
++
+         // only initialize the Python interpreter once, mainly because multiple
+         // Py_Initialize/Py_Finalize calls cause leaks of about 12K each time!
+         Py_Initialize();
+@@ -3287,9 +3316,12 @@ bool InitPython()
+         #ifdef USE_PYTHON_DYNAMIC
+             GetPythonExceptions();
+         #endif
+-        
+-        // allow Python to call the above py_* routines
+-        Py_InitModule((char*)"golly", py_methods);
++
++        // Python-3 uses module constructor
++        #if PY_MAJOR_VERSION < 3
++            // allow Python to call the above py_* routines
++            Py_InitModule((char*)"golly", py_methods);
++        #endif
+         
+         // catch Python messages sent to stderr and pass them to py_stderr
+         if (PyRun_SimpleString(

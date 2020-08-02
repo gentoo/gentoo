@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,12 +6,12 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="a graphics library built on top of imlib2"
-HOMEPAGE="http://freecode.com/projects/giblib http://www.linuxbrit.co.uk/giblib/"
+HOMEPAGE="http://freshmeat.sourceforge.net/projects/giblib http://www.linuxbrit.co.uk/giblib/"
 SRC_URI="http://www.linuxbrit.co.uk/downloads/${P}.tar.gz"
 
 LICENSE="feh"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 sparc x86"
 
 RDEPEND="
 	media-libs/freetype

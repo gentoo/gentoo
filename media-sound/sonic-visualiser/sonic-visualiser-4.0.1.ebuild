@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://code.soundsoftware.ac.uk/attachments/download/2607/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="id3tag jack mad ogg opus osc +portaudio pulseaudio"
 
 BDEPEND="
@@ -59,6 +59,7 @@ REQUIRED_USE="|| ( jack pulseaudio portaudio )"
 PATCHES=(
 	"${FILESDIR}/${P}-notest.patch"
 	"${FILESDIR}/${P}-qt-deprecated.patch"
+	"${FILESDIR}/${P}-qt-5.15-fix.patch"
 )
 
 sv_disable_opt() {

@@ -3,8 +3,9 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python{2_7,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 PYTHON_REQ_USE="xml(+),sqlite?"
+DISTUTILS_USE_SETUPTOOLS=no
 
 inherit eutils distutils-r1 linux-info prefix
 
@@ -21,26 +22,19 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Layman"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="bazaar cvs darcs +git gpg g-sorcery mercurial sqlite squashfs subversion sync-plugin-portage test"
+IUSE="cvs darcs +git gpg g-sorcery mercurial sqlite squashfs subversion sync-plugin-portage test"
 RESTRICT="!test? ( test )"
 
 DEPEND="test? ( dev-vcs/subversion )
 	"
 
 RDEPEND="
-	bazaar? ( dev-vcs/bzr )
 	cvs? ( dev-vcs/cvs )
 	darcs? ( dev-vcs/darcs )
 	git? ( dev-vcs/git )
 	mercurial? ( dev-vcs/mercurial )
 	g-sorcery? ( app-portage/g-sorcery )
-	subversion? (
-		|| (
-			>=dev-vcs/subversion-1.5.4[http]
-			>=dev-vcs/subversion-1.5.4[webdav-neon]
-			>=dev-vcs/subversion-1.5.4[webdav-serf]
-		)
-	)
+	subversion? ( >=dev-vcs/subversion-1.5.4[http(+)] )
 	gpg? ( >=dev-python/pyGPG-0.2 )
 	sync-plugin-portage? ( >=sys-apps/portage-2.2.16[${PYTHON_USEDEP}] )
 	!sync-plugin-portage? ( sys-apps/portage[${PYTHON_USEDEP}] )
@@ -61,7 +55,7 @@ pkg_setup() {
 	layman_check_kernel_config
 }
 
-python_prepare_all()  {
+python_prepare_all() {
 	python_setup
 	esetup.py setup_plugins
 	distutils-r1_python_prepare_all
@@ -72,6 +66,15 @@ python_test() {
 	suite=layman/tests/external.py
 	PYTHONPATH="." "${PYTHON}" ${suite} || die "test suite '${suite}' failed"
 	unset suite
+}
+
+python_compile_all() {
+	default_python_compile_all
+	# Generate man page. only required for 9999
+	if [[ ${PV} == *9999 ]] ; then
+		# override MAKEOPTS to prevent build failure
+		emake -j1 -C doc
+	fi
 }
 
 python_install_all() {

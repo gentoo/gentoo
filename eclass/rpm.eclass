@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: rpm.eclass
@@ -6,9 +6,12 @@
 # base-system@gentoo.org
 # @BLURB: convenience class for extracting RPMs
 
-inherit eutils
+inherit estack eutils
 
-DEPEND=">=app-arch/rpm2targz-9.0.0.3g"
+case "${EAPI:-0}" in
+	[0-6]) DEPEND=">=app-arch/rpm2targz-9.0.0.3g" ;;
+	*) BDEPEND=">=app-arch/rpm2targz-9.0.0.3g" ;;
+esac
 
 # @FUNCTION: rpm_unpack
 # @USAGE: <rpms>

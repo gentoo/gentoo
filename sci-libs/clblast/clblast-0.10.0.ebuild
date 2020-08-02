@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -56,7 +56,7 @@ src_test() {
 	cmake-utils_src_test alltests
 }
 
-src_install(){
+src_install() {
 	cmake-utils_src_install
 	dodoc README.md CONTRIBUTING.md CHANGELOG
 	use doc && dodoc -r doc

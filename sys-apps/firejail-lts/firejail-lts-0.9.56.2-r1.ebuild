@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/netblue30/${MY_PN}/archive/${PV}-LTS.tar.gz -> ${P}.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="apparmor +globalcfg +network +seccomp +suid +userns test +whitelist"
 RESTRICT="!test? ( test )"
 
@@ -38,7 +38,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		$(use_enable apparmor) \
 		$(use_enable globalcfg) \
 		$(use_enable network) \
@@ -46,5 +45,4 @@ src_configure() {
 		$(use_enable suid) \
 		$(use_enable userns) \
 		$(use_enable whitelist)
-
 }

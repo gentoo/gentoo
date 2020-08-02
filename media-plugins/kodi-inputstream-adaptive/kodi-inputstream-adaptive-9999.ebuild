@@ -18,7 +18,7 @@ case ${PV} in
 	;;
 *)
 	KEYWORDS="~amd64 ~x86"
-	CODENAME="Leia"
+	CODENAME="Matrix"
 	SRC_URI="https://github.com/peak3d/inputstream.adaptive/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/inputstream.adaptive-${PV}-${CODENAME}"
 	;;
@@ -31,13 +31,12 @@ IUSE=""
 DEPEND="
 	dev-libs/expat
 	~media-tv/kodi-9999
-	~media-libs/kodi-platform-9999
 	"
 RDEPEND="
 	${DEPEND}
 	"
 
-src_prepare(){
+src_prepare() {
 	[ -d depends ] && rm -rf depends || die
 	cmake_src_prepare
 }

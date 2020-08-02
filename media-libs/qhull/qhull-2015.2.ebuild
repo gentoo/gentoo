@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit cmake-utils flag-o-matic
 
 DESCRIPTION="Geometry library"
 HOMEPAGE="http://www.qhull.org"
-SRC_URI="${HOMEPAGE}/download/${PN}-2015-src-7.2.0.tgz -> ${P}.tar.gz"
+SRC_URI="http://www.qhull.org/download/${PN}-2015-src-7.2.0.tgz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"

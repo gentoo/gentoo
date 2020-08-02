@@ -1,0 +1,33 @@
+--- a/src/random.c
++++ b/src/random.c
+@@ -8,12 +8,15 @@
+ #include <regex.h>
+ 
+ #include <errno.h>
++
++#include "i.h"
++
+ extern int errno;
+ int syserr;
+ 
+ #define ALLOC_STEP 1000
+ regex_t regexp;
+-int size_files=0, used_files=0, i=0;
++int size_files=0, used_files=0;
+ char **files, *wyjscie;
+ regmatch_t matchpos;
+ 
+--- a/src/habak.c
++++ b/src/habak.c
+@@ -14,6 +14,7 @@
+ #include <Imlib2.h>
+ #include "types.h"
+ #include "proto.h"
++#include "i.h"
+ 
+ habak_l *current_list_item=NULL, *first_list_item=NULL;
+ habak_t *current_habak;
+--- /dev/null
++++ b/src/i.h
+@@ -0,0 +1 @@
++extern int i;

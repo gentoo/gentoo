@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit autotools eutils
+inherit autotools eutils ltprune
 
 DESCRIPTION="C library for the Flickr API"
 HOMEPAGE="http://librdf.org/flickcurl/"
@@ -11,7 +11,7 @@ SRC_URI="http://download.dajobe.org/flickcurl/${P}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 GPL-2 Apache-2.0 )"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="doc raptor static-libs"
 
 RDEPEND=">=net-misc/curl-7.10.0

@@ -8,6 +8,7 @@
 	<upstream>
 		<remote-id type="cpan">CPAN-Changes</remote-id>
 		<remote-id type="cpan-module">CPAN::Changes</remote-id>
+		<remote-id type="cpan-module">CPAN::Changes::Group</remote-id>
 		<remote-id type="cpan-module">CPAN::Changes::Release</remote-id>
 		<remote-id type="cpan-module">Test::CPAN::Changes</remote-id>
 	</upstream>

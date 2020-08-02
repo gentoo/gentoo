@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>sci@gentoo.org</email>
-		<name>Gentoo Science Project</name>
-	</maintainer>
-	<longdescription lang="en">
-		The COmputational INfrastructure for Operations Research (COIN-OR)
-		sample models for testing.
-	</longdescription>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    The COmputational INfrastructure for Operations Research (COIN-OR)
+    sample models. These datasets are required to run the test suites
+    of most COIN-OR packages in Gentoo.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">coin-or-tools/Data-Sample</remote-id>
+  </upstream>
 </pkgmetadata>

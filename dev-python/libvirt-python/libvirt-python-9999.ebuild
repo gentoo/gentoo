@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_6,3_7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 MY_P="${P/_rc/-rc}"
 
@@ -11,7 +11,7 @@ inherit distutils-r1
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://libvirt.org/git/libvirt-python.git"
+	EGIT_REPO_URI="https://gitlab.com/libvirt/libvirt-python.git"
 	SRC_URI=""
 	KEYWORDS=""
 	RDEPEND="app-emulation/libvirt:=[-python(-)]"

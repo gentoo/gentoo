@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="http://www.netmeridian.com/e-huss/${P}.tar.gz
 
 LICENSE="all-rights-reserved public-domain" # includes code from qmail
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~m68k ~mips ppc s390 sparc x86"
 RESTRICT="mirror bindist"
 
 PDEPEND="virtual/qmail"
@@ -34,7 +34,7 @@ src_configure() {
 	sed -e "s#'ar #'$(tc-getAR) #" -e "s#'ranlib #'$(tc-getRANLIB) #" -i make-makelib.sh || die
 }
 
-src_install () {
+src_install() {
 	dobin queue-fix
 
 	einstalldocs

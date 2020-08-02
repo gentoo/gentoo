@@ -2,6 +2,7 @@
 
 1. To finish the installation, please read
    http://www.bugzilla.org/docs/${MY_PB}/en/html/installing-bugzilla.html
+   https://wiki.gentoo.org/wiki/Bugzilla
    You will need to run ${MY_INSTALLDIR}/checksetup.pl
 
 2. Please read the Release Notes, especially if you are upgrading:

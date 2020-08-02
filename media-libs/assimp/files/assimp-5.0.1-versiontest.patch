@@ -1,0 +1,23 @@
+From 9aea72f70e3f10f7db903c24a2c19a7fd769e3b8 Mon Sep 17 00:00:00 2001
+From: Marc-Antoine Lortie <marc-antoine.lortie@outlook.com>
+Date: Mon, 20 Jan 2020 09:14:04 -0500
+Subject: [PATCH] Changed date in test aiGetLegalStringTest to the appropriate
+ year.
+
+---
+ test/unit/utVersion.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/unit/utVersion.cpp b/test/unit/utVersion.cpp
+index ca54620533..aa75a26d85 100644
+--- a/test/unit/utVersion.cpp
++++ b/test/unit/utVersion.cpp
+@@ -48,7 +48,7 @@ TEST_F( utVersion, aiGetLegalStringTest ) {
+     EXPECT_NE( lv, nullptr );
+     std::string text( lv );
+ 
+-    size_t pos( text.find( std::string( "2019" ) ) );
++    size_t pos( text.find( std::string( "2020" ) ) );
+     EXPECT_NE( pos, std::string::npos );
+ }
+ 

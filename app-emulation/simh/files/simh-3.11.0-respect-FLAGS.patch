@@ -1,0 +1,13 @@
+--- a/makefile
++++ b/makefile
+@@ -497,8 +497,8 @@ ifneq ($(DEBUG),)
+   CFLAGS_O = -O0
+   BUILD_FEATURES = - debugging support
+ else
+-  CFLAGS_O = -O2
+-  LDFLAGS_O = 
++  CFLAGS_O ?= -O2
++  LDFLAGS_O ?= 
+   ifeq (Darwin,$(OSTYPE))
+     NO_LTO = 1
+   endif

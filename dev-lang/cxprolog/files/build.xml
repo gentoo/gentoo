@@ -1,0 +1,49 @@
+<?xml version="1.0" ?><project default="jar" name="cxprolog">
+
+	<!-- some properties -->
+	<property name="src.dir" value="lib/cxprolog/java/prolog"/>
+	<property name="build.dir" value="build"/>
+	<property name="dist.dir" value="dist"/>
+	<property file="build.properties"/>
+
+	<path id="compile.classpath">
+		<pathelement path="${gentoo.classpath}"/>
+	</path>
+
+	<!-- init -->
+	<target name="init">
+		<tstamp/>
+		<mkdir dir="${dist.dir}"/>
+		<mkdir dir="${build.dir}"/>
+	</target>	
+
+	<!-- compile everything -->
+	<target depends="init" name="compile">
+		<javac deprecation="off"
+			destdir="${build.dir}"
+			encoding="ISO-8859-1"
+			srcdir="${src.dir}"
+			source="1.8"
+			target="1.8">
+			<classpath>
+				<path refid="compile.classpath"/>
+			</classpath>
+		</javac>
+		<copy todir="${build.dir}">
+			<fileset dir="${src.dir}">
+				<exclude name="**/*.java"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- build the jar file -->
+	<target depends="compile" name="jar">
+		<jar basedir="${build.dir}" jarfile="${dist.dir}/prolog.jar"/>
+	</target>
+
+	<!-- clean up -->
+	<target name="clean">
+		<delete dir="${build.dir}"/>
+		<delete dir="${dist.dir}"/>
+	</target>
+</project>

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="none"
@@ -28,11 +28,7 @@ DEPEND+=" test? ( sys-process/lsof )"
 ruby_add_rdepend ">=dev-ruby/multipart-post-1.2.0 <dev-ruby/multipart-post-3"
 ruby_add_bdepend "test? (
 		>=dev-ruby/test-unit-2.4
-		dev-ruby/httpclient
-		dev-ruby/rack-test
-		dev-ruby/sinatra
-		dev-ruby/net-http-persistent >=dev-ruby/connection_pool-2.2.2
-		dev-ruby/patron
+		>=dev-ruby/connection_pool-2.2.2
 	)"
 
 all_ruby_prepare() {

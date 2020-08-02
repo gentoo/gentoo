@@ -9,4 +9,7 @@
 		<flag name="qmanifest">Build qmanifest applet, this adds additional dependencies for GPG, OpenSSL and BLAKE2B hashing</flag>
 		<flag name="qtegrity">Build qtegrity applet, this adds additional dependencies for OpenSSL</flag>
 	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:gentoo:portage</remote-id>
+	</upstream>
 </pkgmetadata>

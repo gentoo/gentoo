@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="sqlite"
-QT_MIN_VER="5.9.4"
+QTMIN="5.9.4"
 
 if [[ ${PV} = *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN^^}.git"
@@ -26,9 +26,8 @@ IUSE="3d examples georeferencer grass hdf5 mapserver netcdf opencl oracle polar 
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE} mapserver? ( python )"
 
-BDEPEND="
-	${PYTHON_DEPS}
-	>=dev-qt/linguist-tools-${QT_MIN_VER}:5
+BDEPEND="${PYTHON_DEPS}
+	>=dev-qt/linguist-tools-${QTMIN}:5
 	sys-devel/bison
 	sys-devel/flex
 "
@@ -39,26 +38,26 @@ COMMON_DEPEND="
 	dev-libs/expat
 	dev-libs/libzip:=
 	dev-libs/qtkeychain[qt5(+)]
-	>=dev-qt/designer-${QT_MIN_VER}:5
-	>=dev-qt/qtconcurrent-${QT_MIN_VER}:5
-	>=dev-qt/qtcore-${QT_MIN_VER}:5
-	>=dev-qt/qtgui-${QT_MIN_VER}:5
-	>=dev-qt/qtnetwork-${QT_MIN_VER}:5[ssl]
-	>=dev-qt/qtpositioning-${QT_MIN_VER}:5
-	>=dev-qt/qtprintsupport-${QT_MIN_VER}:5
-	>=dev-qt/qtserialport-${QT_MIN_VER}:5
-	>=dev-qt/qtsvg-${QT_MIN_VER}:5
-	>=dev-qt/qtsql-${QT_MIN_VER}:5
-	>=dev-qt/qtwidgets-${QT_MIN_VER}:5
-	>=dev-qt/qtxml-${QT_MIN_VER}:5
+	>=dev-qt/designer-${QTMIN}:5
+	>=dev-qt/qtconcurrent-${QTMIN}:5
+	>=dev-qt/qtcore-${QTMIN}:5
+	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtnetwork-${QTMIN}:5[ssl]
+	>=dev-qt/qtpositioning-${QTMIN}:5
+	>=dev-qt/qtprintsupport-${QTMIN}:5
+	>=dev-qt/qtserialport-${QTMIN}:5
+	>=dev-qt/qtsvg-${QTMIN}:5
+	>=dev-qt/qtsql-${QTMIN}:5
+	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=dev-qt/qtxml-${QTMIN}:5
 	media-gfx/exiv2:=
-	>=sci-libs/gdal-2.2.3:=[geos]
+	>=sci-libs/gdal-3.0.4:=[geos]
 	sci-libs/geos
 	sci-libs/libspatialindex:=
-	>=sci-libs/proj-4.9.3:=
+	>=sci-libs/proj-6.3.1:=
 	>=x11-libs/qscintilla-2.10.1:=[qt5(+)]
 	>=x11-libs/qwt-6.1.2:6=[qt5(+),svg]
-	3d? ( >=dev-qt/qt3d-${QT_MIN_VER}:5 )
+	3d? ( >=dev-qt/qt3d-${QTMIN}:5 )
 	georeferencer? ( sci-libs/gsl:= )
 	grass? ( =sci-geosciences/grass-7*:= )
 	hdf5? ( sci-libs/hdf5:= )
@@ -73,29 +72,29 @@ COMMON_DEPEND="
 	postgres? ( dev-db/postgresql:= )
 	python? (
 		${PYTHON_DEPS}
-		dev-python/future[${PYTHON_USEDEP}]
-		dev-python/httplib2[${PYTHON_USEDEP}]
-		dev-python/jinja[${PYTHON_USEDEP}]
-		dev-python/markupsafe[${PYTHON_USEDEP}]
-		dev-python/owslib[${PYTHON_USEDEP}]
-		dev-python/pygments[${PYTHON_USEDEP}]
-		dev-python/PyQt5[designer,network,sql,svg,webkit?,${PYTHON_USEDEP}]
-		dev-python/python-dateutil[${PYTHON_USEDEP}]
-		dev-python/pytz[${PYTHON_USEDEP}]
-		dev-python/pyyaml[${PYTHON_USEDEP}]
-		>=dev-python/qscintilla-python-2.10.1[qt5(+),${PYTHON_USEDEP}]
-		dev-python/requests[${PYTHON_USEDEP}]
-		dev-python/sip:=[${PYTHON_USEDEP}]
-		dev-python/six[${PYTHON_USEDEP}]
-		>=sci-libs/gdal-2.2.3[python,${PYTHON_USEDEP}]
-		postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
+		$(python_gen_cond_dep '
+			dev-python/httplib2[${PYTHON_MULTI_USEDEP}]
+			dev-python/jinja[${PYTHON_MULTI_USEDEP}]
+			dev-python/markupsafe[${PYTHON_MULTI_USEDEP}]
+			dev-python/owslib[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygments[${PYTHON_MULTI_USEDEP}]
+			dev-python/PyQt5[designer,network,sql,svg,webkit?,${PYTHON_MULTI_USEDEP}]
+			dev-python/python-dateutil[${PYTHON_MULTI_USEDEP}]
+			dev-python/pytz[${PYTHON_MULTI_USEDEP}]
+			dev-python/pyyaml[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/qscintilla-python-2.10.1[qt5(+),${PYTHON_MULTI_USEDEP}]
+			dev-python/requests[${PYTHON_MULTI_USEDEP}]
+			dev-python/sip:=[${PYTHON_MULTI_USEDEP}]
+			dev-python/six[${PYTHON_MULTI_USEDEP}]
+			>=sci-libs/gdal-2.2.3[python,${PYTHON_MULTI_USEDEP}]
+			postgres? ( dev-python/psycopg:2[${PYTHON_MULTI_USEDEP}] )
+		')
 	)
-	qml? ( >=dev-qt/qtdeclarative-${QT_MIN_VER}:5 )
+	qml? ( >=dev-qt/qtdeclarative-${QTMIN}:5 )
 	webkit? ( >=dev-qt/qtwebkit-5.9.1:5 )
 "
 DEPEND="${COMMON_DEPEND}
-	>=dev-qt/qttest-${QT_MIN_VER}:5
-	python? ( ${PYTHON_DEPS} )
+	>=dev-qt/qttest-${QTMIN}:5
 "
 RDEPEND="${COMMON_DEPEND}
 	sci-geosciences/gpsbabel

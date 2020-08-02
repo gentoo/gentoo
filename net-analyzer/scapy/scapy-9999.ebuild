@@ -20,8 +20,8 @@ DOC_CONTENTS="
 Scapy has optional support for the following packages:
 
 	dev-python/cryptography
-	dev-python/gnuplot-py
 	dev-python/ipython
+	dev-python/matplotlib
 	dev-python/pyx
 	media-gfx/graphviz
 	net-analyzer/tcpreplay
@@ -31,7 +31,8 @@ Scapy has optional support for the following packages:
 "
 
 src_prepare() {
-	echo ${PV/_/} > ${PN}/VERSION
+	echo ${PV/_/} > ${PN}/VERSION || die
+
 	distutils-r1_src_prepare
 }
 

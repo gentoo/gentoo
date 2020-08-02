@@ -25,6 +25,6 @@ CHOST_hppa="${CHOST}"
 # Defaults for video drivers
 VIDEO_CARDS="fbdev"
 
-# Hans de Graaff <graaff@gentoo.org) (2019-07-17)
-# Temporary RUBY_TARGETS for bug 688976
-RUBY_TARGETS="ruby24 -ruby25"
+# force py36 temporary
+PYTHON_TARGETS="python3_6"
+PYTHON_SINGLE_TARGET="python3_6"

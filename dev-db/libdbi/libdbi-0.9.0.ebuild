@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 
-inherit eutils autotools multilib
+inherit eutils autotools ltprune multilib
 
 DESCRIPTION="A database-independent abstraction layer in C"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
@@ -11,7 +11,7 @@ HOMEPAGE="http://libdbi.sourceforge.net/"
 LICENSE="LGPL-2.1"
 
 IUSE="doc static-libs"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
 SLOT=0
 
 DOCS="AUTHORS ChangeLog README README.osx TODO"
@@ -47,7 +47,7 @@ src_configure() {
 		$(use_enable static-libs static)
 }
 
-src_install () {
+src_install() {
 	default
 
 	prune_libtool_files --all

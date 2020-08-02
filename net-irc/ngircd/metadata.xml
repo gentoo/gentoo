@@ -2,14 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>gentoo@blackphoenix.de</email>
-		<name>Moritz Kick</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
 	</maintainer>
 	<use>
 		<flag name="ident">Enables support for <pkg>net-libs/libident</pkg></flag>
+		<flag name="irc-plus">Enables support for the IRC+ protocol (needs <pkg>virtual/libiconv</pkg>)</flag>
+		<flag name="strict-rfc">Strict RFC compliance; may harm compatibility</flag>
 	</use>
 </pkgmetadata>

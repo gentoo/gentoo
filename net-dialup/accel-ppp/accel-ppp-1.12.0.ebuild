@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,6 +31,7 @@ REQUIRED_USE="valgrind? ( debug )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.11.1-socklen.patch"
+	"${FILESDIR}/${P}-kernel-5.2.patch"
 )
 
 pkg_setup() {
@@ -71,7 +72,7 @@ src_configure() {
 		-DBUILD_VLAN_MON_DRIVER="$(usex ipoe)"
 		-DCRYPTO=OPENSSL
 		-DLOG_PGSQL="$(usex postgres)"
-		-DLUA="$(usex lua)"
+		-DLUA="$(usex lua TRUE FALSE)"
 		-DMEMDEBUG="$(usex debug)"
 		-DNETSNMP="$(usex snmp)"
 		-DRADIUS="$(usex radius)"

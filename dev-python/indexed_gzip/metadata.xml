@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>horea.christ@gmail.com</email>
+		<email>chr@chymera.eu</email>
 		<name>Horea Christian</name>
 	</maintainer>
 	<maintainer type="project">
@@ -18,6 +18,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">pauldmccarthy/indexed_gzip</remote-id>
-		<remote-id type="pypi">indexed-gzip"</remote-id>
+		<remote-id type="pypi">indexed-gzip</remote-id>
 	</upstream>
 </pkgmetadata>

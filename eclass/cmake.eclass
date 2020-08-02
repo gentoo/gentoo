@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cmake.eclass
@@ -371,15 +371,6 @@ cmake_src_configure() {
 	# Fix xdg collision with sandbox
 	xdg_environment_reset
 
-	# @SEE CMAKE_BUILD_TYPE
-	if [[ ${CMAKE_BUILD_TYPE} = Gentoo ]]; then
-		# Handle release builds
-		if ! in_iuse debug || ! use debug; then
-			local CPPFLAGS=${CPPFLAGS}
-			append-cppflags -DNDEBUG
-		fi
-	fi
-
 	# Prepare Gentoo override rules (set valid compiler, append CPPFLAGS etc.)
 	local build_rules=${BUILD_DIR}/gentoo_rules.cmake
 
@@ -480,6 +471,12 @@ cmake_src_configure() {
 		SET (CMAKE_INSTALL_DOCDIR "${EPREFIX}/usr/share/doc/${PF}" CACHE PATH "")
 		SET (BUILD_SHARED_LIBS ON CACHE BOOL "")
 	_EOF_
+
+	# See bug 689410
+	if [[ "${ARCH}" == riscv ]]; then
+		echo 'SET (CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX '"${libdir#lib}"' CACHE STRING "library search suffix" FORCE)' >> "${common_config}" || die
+	fi
+
 	if [[ "${NOCOLOR}" = true || "${NOCOLOR}" = yes ]]; then
 		echo 'SET (CMAKE_COLOR_MAKEFILE OFF CACHE BOOL "pretty colors during make" FORCE)' >> "${common_config}" || die
 	fi

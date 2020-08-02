@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -16,6 +16,10 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Sam James <sam@gentoo.org> (2020-07-30)
+# glslang is not yet stable on ppc{,64}
+media-libs/mesa vulkan-overlay
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-12-12)
 # Needs stable net-libs/webkit-gtk, bug #684702
@@ -64,14 +68,9 @@ sys-fs/multipath-tools rbd
 # Dependencies not going to stable for now
 dev-util/geany-plugins gtkspell
 
-# Pacho Ramos <grknight@gentoo.org> (2016-11-01)
-# net-misc/libteam is now ~ppc ~ppc64
-net-misc/networkmanager teamd
-
 # Michael Palimaka <kensington@gentoo.org> (2016-10-21)
 # Requires media-libs/opencv which is not stable
 media-plugins/frei0r-plugins facedetect
-media-video/vlc opencv
 
 # Michael Palimaka <kensington@gentoo.org> (2016-05-25)
 # Dependencies not stable
@@ -84,6 +83,7 @@ x11-misc/xscreensaver new-login
 # that are the only arches upstream is taking care
 >=x11-libs/wxGTK-3.0.2.0-r1 webkit
 dev-util/glade webkit
+dev-python/wxpython webkit
 
 # Justin Lecher <jlec@gentoo.org> (2015-02-21)
 # Needs stable GNOME-3

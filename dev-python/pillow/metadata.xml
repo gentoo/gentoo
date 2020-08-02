@@ -10,6 +10,6 @@
   </use>
   <upstream>
     <remote-id type="pypi">Pillow</remote-id>
-    <remote-id type="github">pillow-dev/pillow</remote-id>
+    <remote-id type="github">python-pillow/Pillow</remote-id>
   </upstream>
 </pkgmetadata>

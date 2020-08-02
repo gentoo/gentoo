@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,6 +19,14 @@ IUSE="curl"
 
 DEPEND="curl? ( net-misc/curl:0= )"
 RDEPEND="${DEPEND}"
+
+# https://github.com/madrisan/nagios-plugins-linux/issues/48
+# Will be in the next release
+# https://github.com/madrisan/nagios-plugins-linux/pull/52
+PATCHES=(
+	"${FILESDIR}/${P}-fix-fno-common.patch"
+	"${FILESDIR}/${P}-fix-musl-build.patch"
+)
 
 S="${WORKDIR}/${MY_P}"
 

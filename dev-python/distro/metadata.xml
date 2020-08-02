@@ -13,6 +13,7 @@
     function, but it also provides much more functionality which isn't
     necessarily Python bound like a command-line interface.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">distro</remote-id>
     <remote-id type="github">nir0s/distro</remote-id>

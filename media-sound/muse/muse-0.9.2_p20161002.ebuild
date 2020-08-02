@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -14,24 +14,23 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="doc gtk jack ncurses portaudio"
 
-RDEPEND="media-sound/lame
+RDEPEND="
+	media-sound/lame
 	media-libs/libvorbis
-	media-libs/libsndfile
+	media-libs/libsndfile:=
 	media-libs/libogg
 	media-libs/libshout
 	media-libs/libsamplerate
 	gtk? ( x11-libs/gtk+:2 )
 	jack? ( media-sound/jack-audio-connection-kit )
 	ncurses? ( sys-libs/ncurses:0= )
-	portaudio? ( media-libs/portaudio )
-"
-DEPEND="${RDEPEND}
+	portaudio? ( media-libs/portaudio )"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.9.2_p20161002-fix-build-system.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-0.9.2_p20161002-fix-build-system.patch )
 
 src_prepare() {
 	default

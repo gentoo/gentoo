@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,12 +9,12 @@ MY_P="${P/_rc/-rc}"
 MY_SLOT="$(ver_cut 1-2)"
 
 DESCRIPTION="Linux Trace Toolkit - UST library"
-HOMEPAGE="http://lttng.org"
-SRC_URI="http://lttng.org/files/${PN}/${MY_P}.tar.bz2"
+HOMEPAGE="https://lttng.org"
+SRC_URI="https://lttng.org/files/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/${MY_SLOT}"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
 IUSE="examples numa"
 
 DEPEND="
@@ -22,6 +22,8 @@ DEPEND="
 	numa? ( sys-process/numactl )
 	"
 RDEPEND="${DEPEND}"
+
+PATCHES=("${FILESDIR}"/${P}-fno-common.patch)
 
 S="${WORKDIR}"/${MY_P}
 
@@ -34,7 +36,5 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		$(use_enable numa) \
-		--docdir=/usr/share/doc/${PF}
+	econf $(use_enable numa)
 }

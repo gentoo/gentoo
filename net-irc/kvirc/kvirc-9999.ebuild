@@ -1,11 +1,11 @@
-# Copyright 2009-2019 Gentoo Authors
+# Copyright 2009-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 CMAKE_MAKEFILE_GENERATOR="emake"
 PYTHON_COMPAT=(python{3_6,3_7,3_8})
 
-inherit cmake-utils flag-o-matic python-single-r1 xdg-utils
+inherit cmake flag-o-matic python-single-r1 xdg-utils
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
@@ -30,10 +30,11 @@ fi
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
-IUSE="audiofile +dbus dcc_video debug doc gsm kde +nls oss +perl +phonon profile +python spell +ssl theora webkit"
+IUSE="audiofile +dbus dcc_video debug doc gsm kde libressl +nls oss +perl +phonon profile +python spell +ssl theora webkit"
 REQUIRED_USE="audiofile? ( oss ) python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND="dev-lang/perl:0
+	>=dev-util/cmake-3.16
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	kde? ( kde-frameworks/extra-cmake-modules:5 )
@@ -65,7 +66,10 @@ DEPEND="dev-qt/qtcore:5
 	phonon? ( media-libs/phonon[qt5(+)] )
 	python? ( ${PYTHON_DEPS} )
 	spell? ( app-text/enchant:0= )
-	ssl? ( dev-libs/openssl:0= )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	theora? (
 		media-libs/libogg
 		media-libs/libtheora
@@ -79,10 +83,6 @@ if [[ "${PV}" != "9999" ]]; then
 	S="${WORKDIR}/KVIrc-${KVIRC_GIT_REVISION}"
 fi
 
-PATCHES=(
-	"${FILESDIR}/${PN}-5.2_pre20190628041642-python-3.patch"
-)
-
 DOCS=()
 
 pkg_setup() {
@@ -92,7 +92,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	if [[ "${PV}" == "9999" ]]; then
 		KVIRC_GIT_REVISION="$(git show -s --format=%H)"
@@ -140,20 +140,28 @@ src_configure() {
 		# COMPILE_SVG_SUPPORT not used in source code.
 		-DWANT_QTSVG=OFF
 	)
+	if use python; then
+		local PYTHON_INCLUDEDIR PYTHON_LIBPATH
+		python_export PYTHON_INCLUDEDIR PYTHON_LIBPATH
+		mycmakeargs+=(
+			-DPython3_INCLUDE_DIR="${PYTHON_INCLUDEDIR}"
+			-DPython3_LIBRARY="${PYTHON_LIBPATH}"
+		)
+	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	if use doc; then
-		cmake-utils_src_compile devdocs
+		cmake_src_compile devdocs
 	fi
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use doc; then
 		(

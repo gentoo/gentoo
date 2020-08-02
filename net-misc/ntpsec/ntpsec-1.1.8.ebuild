@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_6 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE='threads(+)'
 
 inherit flag-o-matic python-r1 waf-utils systemd
@@ -12,12 +12,11 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/NTPsec/ntpsec.git"
 	BDEPEND=""
-	KEYWORDS=""
 else
 	SRC_URI="ftp://ftp.ntpsec.org/pub/releases/${PN}-${PV}.tar.gz"
 	RESTRICT="mirror"
 	BDEPEND=""
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 arm arm64 ~x86"
 fi
 
 DESCRIPTION="The NTP reference implementation, refactored"
@@ -61,6 +60,10 @@ DEPEND="${CDEPEND}
 "
 
 WAF_BINARY="${S}/waf"
+
+PATCHES=( "${FILESDIR}/${P}-externalize-sys_maxclock-fix-for-bug-708522.patch"
+	"${FILESDIR}/${P}-fix-missing-scmp_sys-on-aarch64.patch"
+	"${FILESDIR}/${P}-fix-asciidoc-version-detect.patch")
 
 src_prepare() {
 	default
@@ -147,7 +150,12 @@ src_install() {
 	cp -Rv "${S}"/etc/ntp.d/ "${ED}"/etc/
 
 	# move doc files to /usr/share/doc/"${P}"
-	use doc && mv -v "${ED}"/usr/share/doc/"${PN}" "${ED}"/usr/share/doc/"${P}"/html
+	if use doc; then
+		mv -v "${ED}"/usr/share/doc/"${PN}" \
+			"${ED}"/usr/share/doc/"${PF}"/html
+	else
+		rm -rf "${ED}"/usr/share/doc/"${PN}"
+	fi
 }
 
 pkg_postinst() {

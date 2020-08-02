@@ -1,19 +1,19 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit flag-o-matic cuda autotools-multilib multilib versionator
+inherit flag-o-matic cuda autotools-multilib multilib toolchain-funcs versionator
 
 MY_PV=v$(get_version_component_range 1-2)
 
 DESCRIPTION="displays the hardware topology in convenient formats"
-HOMEPAGE="http://www.open-mpi.org/projects/hwloc/"
-SRC_URI="http://www.open-mpi.org/software/${PN}/${MY_PV}/downloads/${P}.tar.bz2"
+HOMEPAGE="https://www.open-mpi.org/projects/hwloc/"
+SRC_URI="https://www.open-mpi.org/software/${PN}/${MY_PV}/downloads/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0/5"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="cairo cuda debug gl +numa +pci plugins svg static-libs xml X"
 
 # opencl support dropped with x11-drivers/ati-drivers being removed (#582406).
@@ -33,7 +33,7 @@ RDEPEND=">=sys-libs/ncurses-5.9-r3:0[${MULTILIB_USEDEP}]
 	numa? ( >=sys-process/numactl-2.0.10-r1[${MULTILIB_USEDEP}] )
 	xml? ( >=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
+	virtual/pkgconfig"
 
 DOCS=( AUTHORS NEWS README VERSION )
 
@@ -54,7 +54,6 @@ multilib_src_configure() {
 	export HWLOC_PKG_CONFIG=$(tc-getPKG_CONFIG) #393467
 	use cuda && local LDFLAGS="${LDFLAGS} -L/opt/cuda/$(get_libdir)"
 	local myeconfargs=(
-		--disable-silent-rules
 		--docdir="${EPREFIX}"/usr/share/doc/${PF}
 		$(use_enable cairo)
 		$(use_enable cuda)

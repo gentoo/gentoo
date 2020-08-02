@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils libtool flag-o-matic gnuconfig multilib
+inherit eutils libtool flag-o-matic gnuconfig multilib toolchain-funcs
 
 DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
@@ -42,7 +42,7 @@ case ${PV} in
 	*)
 		SRC_URI="mirror://gnu/binutils/binutils-${PV}.tar.xz"
 		SLOT=$(ver_cut 1-2)
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 		;;
 esac
 
@@ -55,8 +55,13 @@ PATCH_DEV=${PATCH_DEV:-slyfox}
 [[ -z ${PATCH_VER} ]] || SRC_URI="${SRC_URI}
 	https://dev.gentoo.org/~${PATCH_DEV}/distfiles/binutils-${PATCH_BINUTILS_VER}-patches-${PATCH_VER}.tar.xz"
 
-# Disable gold testsuite since it always fails.
-PATCHES=( "${FILESDIR}/${PN}-2.29.1-nogoldtest.patch" )
+PATCHES=(
+	# Disable gold testsuite since it always fails.
+	"${FILESDIR}/${PN}-2.29.1-nogoldtest.patch"
+
+	"${FILESDIR}"/${PN}-2.32-gcc-10.patch
+	"${FILESDIR}"/${PN}-2.33-gcc-10.patch
+)
 
 #
 # The cross-compile logic

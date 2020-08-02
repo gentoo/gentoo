@@ -18,7 +18,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/steveicarus/${PN}.git"
 else
 	SRC_URI="https://github.com/steveicarus/${PN}/archive/v${GITHUB_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	S="${WORKDIR}/${PN}-${GITHUB_PV}"
 fi
 
@@ -29,12 +29,14 @@ IUSE="examples"
 # If you are building from git, you will also need gperf to generate
 # the configure scripts.
 RDEPEND="
-	sys-libs/readline:0
+	sys-libs/readline:=
 	sys-libs/zlib
 "
 
 DEPEND="
 	dev-util/gperf
+	sys-devel/bison
+	sys-devel/flex
 	${RDEPEND}
 "
 

@@ -1,4 +1,4 @@
-# Copyright 2008-2019 Gentoo Authors
+# Copyright 2008-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="http://linuxwireless.org/download/crda/${P}.tar.xz
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="gcrypt libressl"
 
 RDEPEND="!gcrypt? (
@@ -33,13 +33,13 @@ python_check_deps() {
 }
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.18-no-ldconfig.patch
-	"${FILESDIR}"/${PN}-3.18-no-werror.patch
-	"${FILESDIR}"/${PN}-3.18-cflags.patch
-	"${FILESDIR}"/${PN}-3.18-libreg-link.patch #542436
+	"${FILESDIR}"/${PN}-no-ldconfig.patch
+	"${FILESDIR}"/${PN}-no-werror.patch
+	"${FILESDIR}"/${PN}-cflags.patch
+	"${FILESDIR}"/${PN}-libreg-link.patch #542436
 	"${FILESDIR}"/${PN}-3.18-openssl-1.1.0-compatibility.patch #652428
-	"${FILESDIR}"/${PN}-3.18-libressl.patch
-	"${FILESDIR}"/${PN}-3.18-ldflags.patch
+	"${FILESDIR}"/${PN}-libressl.patch
+	"${FILESDIR}"/${PN}-ldflags.patch
 )
 
 src_prepare() {

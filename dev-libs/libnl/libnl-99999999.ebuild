@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_OPTIONAL=1
 inherit autotools distutils-r1 git-r3 libtool multilib multilib-minimal
 
@@ -19,6 +19,9 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 "
 DEPEND="
+	${RDEPEND}
+"
+BDEPEND="
 	${RDEPEND}
 	python? ( dev-lang/swig )
 	sys-devel/bison
@@ -69,8 +72,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable utils cli) \
 		$(use_enable debug) \
 		$(use_enable static-libs static) \
-		$(use_enable threads) \
-		--disable-silent-rules
+		$(use_enable threads)
 }
 
 multilib_src_compile() {

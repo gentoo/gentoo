@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,23 +17,21 @@ IUSE="+client +oracle server"
 
 RDEPEND="
 	dev-qt/qtconcurrent:5
-	dev-qt/qtprintsupport:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5[ssl]
+	dev-qt/qtprintsupport:5
 	dev-qt/qtwebsockets:5
 	dev-qt/qtwidgets:5
 	client? (
 		dev-libs/protobuf:=
 		dev-qt/qtmultimedia:5
-		dev-qt/qtprintsupport:5
 		dev-qt/qtsvg:5
 	)
 	oracle? ( sys-libs/zlib )
 	server? (
 		dev-libs/protobuf:=
 		dev-qt/qtsql:5
-		dev-qt/qtwebsockets:5
 	)
 "
 BDEPEND="
@@ -41,8 +39,7 @@ BDEPEND="
 	client? ( dev-libs/protobuf )
 	server? ( dev-libs/protobuf )
 "
-DEPEND="${RDEPEND}
-"
+DEPEND="${RDEPEND}"
 
 # As the default help/about display the sha1 we need it
 SHA1='294b433'
@@ -51,6 +48,7 @@ S="${WORKDIR}/Cockatrice-${MY_PV}"
 
 PATCHES=(
 	"${FILESDIR}"/use-ccache.patch
+	"${FILESDIR}"/${P}-qt-5.15.patch
 )
 
 src_configure() {

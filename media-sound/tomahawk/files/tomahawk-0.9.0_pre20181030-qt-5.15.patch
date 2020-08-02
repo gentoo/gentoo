@@ -1,0 +1,140 @@
+From 4fb44c931be648d61ef3c8d10426b34de1b2a53b Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 8 May 2020 23:55:43 +0200
+Subject: [PATCH] Fix build with Qt 5.15 (missing QPainterPath)
+
+---
+ src/libtomahawk/utils/AnimatedSpinner.cpp               | 1 +
+ src/libtomahawk/utils/TomahawkUtilsGui.cpp              | 1 +
+ src/libtomahawk/widgets/DropDownButton.cpp              | 2 ++
+ src/libtomahawk/widgets/HoverControls.cpp               | 1 +
+ src/libtomahawk/widgets/SourceTreePopupDialog.cpp       | 1 +
+ src/libtomahawk/widgets/searchlineedit/SearchButton.cpp | 9 +++++----
+ src/tomahawk/widgets/AccountsPopupWidget.cpp            | 1 +
+ src/tomahawk/widgets/SlideSwitchButton.cpp              | 1 +
+ src/tomahawk/widgets/SocialWidget.cpp                   | 3 ++-
+ 9 files changed, 15 insertions(+), 5 deletions(-)
+
+diff --git a/src/libtomahawk/utils/AnimatedSpinner.cpp b/src/libtomahawk/utils/AnimatedSpinner.cpp
+index b4778cbe9..a705cfaa2 100644
+--- a/src/libtomahawk/utils/AnimatedSpinner.cpp
++++ b/src/libtomahawk/utils/AnimatedSpinner.cpp
+@@ -28,6 +28,7 @@
+ #include <QApplication>
+ #include <QHideEvent>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QPaintEvent>
+ #include <QShowEvent>
+ 
+diff --git a/src/libtomahawk/utils/TomahawkUtilsGui.cpp b/src/libtomahawk/utils/TomahawkUtilsGui.cpp
+index b35799723..d2733d4a7 100644
+--- a/src/libtomahawk/utils/TomahawkUtilsGui.cpp
++++ b/src/libtomahawk/utils/TomahawkUtilsGui.cpp
+@@ -32,6 +32,7 @@
+ 
+ #include <QLayout>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QPixmap>
+ #include <QBitmap>
+ #include <QPalette>
+diff --git a/src/libtomahawk/widgets/DropDownButton.cpp b/src/libtomahawk/widgets/DropDownButton.cpp
+index 74aa344d1..106e8b882 100644
+--- a/src/libtomahawk/widgets/DropDownButton.cpp
++++ b/src/libtomahawk/widgets/DropDownButton.cpp
+@@ -19,6 +19,8 @@
+ #include "DropDownButton.h"
+ 
+ #include <QMouseEvent>
++#include <QPaintEvent>
++#include <QPainterPath>
+ 
+ #include "Artist.h"
+ #include "Album.h"
+diff --git a/src/libtomahawk/widgets/HoverControls.cpp b/src/libtomahawk/widgets/HoverControls.cpp
+index 3e31bf236..0b6b20aa8 100644
+--- a/src/libtomahawk/widgets/HoverControls.cpp
++++ b/src/libtomahawk/widgets/HoverControls.cpp
+@@ -27,6 +27,7 @@
+ #include <QPixmap>
+ #include <QPaintEvent>
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ using namespace Tomahawk;
+ 
+diff --git a/src/libtomahawk/widgets/SourceTreePopupDialog.cpp b/src/libtomahawk/widgets/SourceTreePopupDialog.cpp
+index 807eb354a..1379c9c53 100644
+--- a/src/libtomahawk/widgets/SourceTreePopupDialog.cpp
++++ b/src/libtomahawk/widgets/SourceTreePopupDialog.cpp
+@@ -22,6 +22,7 @@
+ #include <QApplication>
+ #include <QPaintEvent>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QDialogButtonBox>
+ #include <QVBoxLayout>
+ #include <QHBoxLayout>
+diff --git a/src/libtomahawk/widgets/searchlineedit/SearchButton.cpp b/src/libtomahawk/widgets/searchlineedit/SearchButton.cpp
+index 1d9f1c4bd..97c5406f2 100644
+--- a/src/libtomahawk/widgets/searchlineedit/SearchButton.cpp
++++ b/src/libtomahawk/widgets/searchlineedit/SearchButton.cpp
+@@ -19,10 +19,11 @@
+ 
+ #include "SearchButton.h"
+ 
+-#include <qcompleter.h>
+-#include <qevent.h>
+-#include <qlineedit.h>
+-#include <qpainter.h>
++#include <QCompleter>
++#include <QEvent>
++#include <QLineEdit>
++#include <QPainter>
++#include <QPainterPath>
+ 
+ SearchButton::SearchButton(QWidget *parent)
+     : QAbstractButton(parent)
+diff --git a/src/tomahawk/widgets/AccountsPopupWidget.cpp b/src/tomahawk/widgets/AccountsPopupWidget.cpp
+index cb5739b97..ffd5dcaa1 100644
+--- a/src/tomahawk/widgets/AccountsPopupWidget.cpp
++++ b/src/tomahawk/widgets/AccountsPopupWidget.cpp
+@@ -24,6 +24,7 @@
+ 
+ #include <QDebug>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QPaintEvent>
+ #include <QVBoxLayout>
+ 
+diff --git a/src/tomahawk/widgets/SlideSwitchButton.cpp b/src/tomahawk/widgets/SlideSwitchButton.cpp
+index 3c61b4987..103562e00 100644
+--- a/src/tomahawk/widgets/SlideSwitchButton.cpp
++++ b/src/tomahawk/widgets/SlideSwitchButton.cpp
+@@ -24,6 +24,7 @@
+ 
+ #include <QMouseEvent>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QPropertyAnimation>
+ #include <QStyleOptionButton>
+ #include <QPixmap>
+diff --git a/src/tomahawk/widgets/SocialWidget.cpp b/src/tomahawk/widgets/SocialWidget.cpp
+index f0901279d..b43f44c5d 100644
+--- a/src/tomahawk/widgets/SocialWidget.cpp
++++ b/src/tomahawk/widgets/SocialWidget.cpp
+@@ -29,8 +29,9 @@
+ #include "Source.h"
+ #include "Track.h"
+ 
+-#include <QPainter>
+ #include <QDialog>
++#include <QPainter>
++#include <QPainterPath>
+ #include <QPropertyAnimation>
+ 
+ #define ARROW_HEIGHT 6
+-- 
+2.26.2
+

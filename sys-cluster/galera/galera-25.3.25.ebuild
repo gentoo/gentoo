@@ -3,13 +3,13 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_6 )
 
 MY_P="${PN}-3-${PV}"
 
 inherit python-any-r1 scons-utils toolchain-funcs user flag-o-matic
 DESCRIPTION="Synchronous multi-master replication engine that provides the wsrep API"
-HOMEPAGE="http://galeracluster.com"
+HOMEPAGE="https://galeracluster.com"
 SRC_URI="http://releases.galeracluster.com/${PN}-3/source/galera-3-${PV}.tar.gz"
 LICENSE="GPL-2 BSD"
 

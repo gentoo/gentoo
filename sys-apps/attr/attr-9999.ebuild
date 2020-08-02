@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]] ; then
 
 	inherit autotools git-r3
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 	SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
 fi
 
@@ -48,11 +48,11 @@ multilib_src_configure() {
 	tc-ld-disable-gold #644048
 
 	local myeconfargs=(
-		--bindir="${EPREFIX%/}"/bin
+		--bindir="${EPREFIX}"/bin
 		--enable-shared
 		$(use_enable static-libs static)
 		$(use_enable nls)
-		--libexecdir="${EPREFIX%/}"/usr/$(get_libdir)
+		--libexecdir="${EPREFIX}"/usr/$(get_libdir)
 		$(use_enable debug)
 	)
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
@@ -64,8 +64,8 @@ multilib_src_install() {
 	# Sanity check until we track down why this is happening. #644048
 	local lib="${ED}/usr/$(get_libdir)/libattr.so.1"
 	if [[ -e ${lib} ]] ; then
-		local versions=$(readelf -V "${lib}")
-		local symbols=$(readelf -sW "${lib}")
+		local versions=$($(tc-getREADELF) -V "${lib}")
+		local symbols=$((tc-getREADELF) -sW "${lib}")
 		if [[ "${versions}" != *"ATTR_1.0"* || \
 		      "${versions}" != *"ATTR_1.1"* || \
 		      "${versions}" != *"ATTR_1.2"* || \

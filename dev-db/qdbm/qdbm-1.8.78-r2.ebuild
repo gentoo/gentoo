@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+EAPI="7"
+USE_RUBY="ruby24 ruby25 ruby26"
 RUBY_OPTIONAL="yes"
 
 inherit autotools flag-o-matic java-pkg-opt-2 perl-functions ruby-ng
@@ -13,8 +13,8 @@ SRC_URI="https://fallabs.com/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 s390 sh sparc x86"
-IUSE="bzip2 cxx debug java lzo perl ruby zlib"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 s390 sparc x86"
+IUSE="bzip2 cxx debug java lzo perl ruby static-libs zlib"
 
 RDEPEND="bzip2? ( app-arch/bzip2 )
 	java? ( >=virtual/jre-1.4:* )
@@ -153,6 +153,7 @@ each_ruby_test() {
 src_install() {
 	default
 	qdbm_foreach_api
+	use static-libs || find "${ED}" -name '*.a' -delete || die
 
 	rm -rf "${ED}"/usr/share/${PN}
 

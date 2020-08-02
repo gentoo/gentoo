@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
@@ -20,14 +20,19 @@ SRC_URI="https://github.com/rack-test/rack-test/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="MIT"
 SLOT="1.0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/rack-1.0:* <dev-ruby/rack-3:*"
 ruby_add_bdepend "
-	test? ( dev-ruby/sinatra:2 dev-ruby/rack:2.0 )"
+	test? ( dev-ruby/sinatra:2 || ( dev-ruby/rack:2.1 dev-ruby/rack:2.0 ) )"
 
 all_ruby_prepare() {
 	rm Gemfile* || die
-	sed -i -e '/bundler/d' -e '/[Cc]ode[Cc]limate/d' -e '/simplecov/,/^end/ s:^:#:' spec/spec_helper.rb || die
+	sed -e '/bundler/d' \
+		-e '/[Cc]ode[Cc]limate/d' \
+		-e '/simplecov/,/^end/ s:^:#:' \
+		-e '1igem "rack", "<2.2"' \
+		-i spec/spec_helper.rb || die
+	sed -i -e 's/git ls-files --/find/' ${RUBY_FAKEGEM_GEMSPEC} || die
 }

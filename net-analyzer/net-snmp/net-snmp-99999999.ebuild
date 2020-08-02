@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_SINGLE_IMPL=yesplz
 DISTUTILS_OPTIONAL=yesplz
 WANT_AUTOMAKE=none
@@ -20,7 +20,7 @@ SRC_URI="
 
 # GPL-2 for the init scripts
 LICENSE="HPND BSD GPL-2"
-SLOT="0/35"
+SLOT="0/40"
 KEYWORDS=""
 IUSE="
 	X bzip2 doc elf kmem ipv6 libressl lm-sensors mfd-rewrites minimal mysql
@@ -41,7 +41,9 @@ COMMON_DEPEND="
 	pci? ( sys-apps/pciutils )
 	perl? ( dev-lang/perl:= )
 	python? (
-		dev-python/setuptools[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+		')
 		${PYTHON_DEPS}
 	)
 	rpm? (
@@ -74,8 +76,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.7.3-include-limits.patch
 	"${FILESDIR}"/${PN}-5.8-do-not-conflate-LDFLAGS-and-LIBS.patch
 	"${FILESDIR}"/${PN}-5.8-pcap.patch
-	"${FILESDIR}"/${PN}-5.8-tinfo.patch
 	"${FILESDIR}"/${PN}-5.8.1-pkg-config.patch
+	"${FILESDIR}"/${PN}-99999999-tinfo.patch
 )
 
 pkg_setup() {
@@ -147,7 +149,7 @@ src_compile() {
 	use doc && emake docsdox
 }
 
-src_install () {
+src_install() {
 	# bug #317965
 	emake -j1 DESTDIR="${D}" install
 

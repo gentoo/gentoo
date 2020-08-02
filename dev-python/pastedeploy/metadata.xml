@@ -11,6 +11,7 @@
 	or a Python Egg. For WSGI application providers it only asks for a single,
 	simple entry point to your application, so that application users don't need
 	to be exposed to the implementation details of your application.</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">PasteDeploy</remote-id>
 	</upstream>

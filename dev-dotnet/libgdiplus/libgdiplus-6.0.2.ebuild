@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils dotnet
+inherit eutils dotnet ltprune
 
 DESCRIPTION="Library for using System.Drawing with Mono"
 HOMEPAGE="https://www.mono-project.com"
@@ -11,7 +11,7 @@ SRC_URI="https://download.mono-project.com/sources/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="cairo"
 #skip tests due https://bugs.gentoo.org/687784
 RESTRICT="test"
@@ -33,12 +33,11 @@ DEPEND="${RDEPEND}"
 
 src_configure() {
 	econf \
-		--disable-dependency-tracking \
 		--disable-static \
 		$(usex cairo "" "--with-pango")
 }
 
-src_install () {
+src_install() {
 	default
 
 	dotnet_multilib_comply

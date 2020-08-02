@@ -32,12 +32,12 @@ wasi-0.7.0
 inherit cargo
 
 DESCRIPTION="A command line tool for interacting with Nitrokey devices."
-HOMEPAGE="https://github.com/d-e-s-o/nitrocli/tree/master/nitrocli"
+HOMEPAGE="https://github.com/d-e-s-o/nitrocli/tree/master"
 SRC_URI="$(cargo_crate_uris ${CRATES})"
 
 LICENSE="Apache-2.0 GPL-3+ LGPL-3 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 IUSE=""
 
 DEPEND="

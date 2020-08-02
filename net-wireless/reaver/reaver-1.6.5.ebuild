@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 MY_PN="reaver-wps-fork-t6x"
 
 DESCRIPTION="Brute force attack against Wifi Protected Setup"
-HOMEPAGE="https://github.com/t6x/${MY_PN}"
+HOMEPAGE="https://github.com/t6x/reaver-wps-fork-t6x"
 SRC_URI="https://github.com/t6x/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ SRC_URI+=" mirror://gentoo/gentoo_ice-xmms-0.2.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="gtk nls"
+IUSE="nls"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -29,15 +29,12 @@ BDEPEND="
 DEPEND="
 	>=dev-libs/dbus-glib-0.60
 	>=dev-libs/glib-2.28
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtwidgets:5
 	>=x11-libs/cairo-1.2.6
 	>=x11-libs/pango-1.8.0
 	virtual/freedesktop-icon-theme
-	gtk? ( x11-libs/gtk+:2 )
-	!gtk? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
-	)
 "
 RDEPEND="${DEPEND}"
 PDEPEND="~media-plugins/audacious-plugins-${PV}"
@@ -65,9 +62,9 @@ src_configure() {
 	# Bugs #197894, #199069, #207330, #208606
 	local myeconfargs=(
 		--disable-valgrind
+		--disable-gtk
 		--enable-dbus
-		$(use_enable gtk gtk)
-		$(use_enable !gtk qt)
+		--enable-qt
 		$(use_enable nls)
 	)
 	econf "${myeconfargs[@]}"

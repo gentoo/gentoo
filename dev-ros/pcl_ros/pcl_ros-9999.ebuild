@@ -1,10 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 ROS_REPO_URI="https://github.com/ros-perception/perception_pcl"
 KEYWORDS="~amd64 ~arm"
-PYTHON_COMPAT=( python2_7 )
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin
@@ -19,7 +18,7 @@ RDEPEND="
 	dev-ros/rosbag
 	dev-ros/rosconsole
 	dev-ros/roslib
-	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
+	dev-ros/dynamic_reconfigure[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/message_filters
 	>=dev-cpp/eigen-3.2.5:3
 	dev-ros/pluginlib
@@ -33,8 +32,13 @@ RDEPEND="
 	sci-libs/pcl:=[qhull]
 	>=dev-ros/pcl_conversions-0.2.1-r1
 	dev-libs/boost:=[threads]
+"
+DEPEND="${RDEPEND}
 	dev-ros/pcl_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	test? (
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		dev-cpp/gtest
+	)
 "
-DEPEND="${RDEPEND}"

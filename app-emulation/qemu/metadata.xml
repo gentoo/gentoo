@@ -28,6 +28,9 @@
 		<flag name="iscsi">Enable direct iSCSI support via
 		<pkg>net-libs/libiscsi</pkg> instead of indirectly via the Linux
 		block layer that <pkg>sys-block/open-iscsi</pkg> does.</flag>
+		<flag name="io-uring">Enable efficient I/O via <pkg>sys-libs/liburing</pkg>.</flag>
+		<flag name="multipath">Enable multipath persistent reservation passthrough via
+		<pkg>sys-fs/multipath-tools</pkg>.</flag>
 		<flag name="ncurses">Enable the ncurses-based console</flag>
 		<flag name="nfs">Enable NFS support</flag>
 		<flag name="numa">Enable NUMA support</flag>
@@ -38,6 +41,8 @@
 		<flag name="pulseaudio">Enable pulseaudio output for sound emulation</flag>
 		<flag name="rbd">Enable rados block device backend support, see http://ceph.newdream.net/wiki/QEMU-RBD</flag>
 		<flag name="sdl">Enable the SDL-based console</flag>
+		<flag name="sdl-image">SDL Image support for icons</flag>
+		<flag name="slirp">Enable TCP/IP in hypervisor via <pkg>net-libs/libslirp</pkg></flag>
 		<flag name="spice">Enable Spice protocol support via <pkg>app-emulation/spice</pkg></flag>
 		<flag name="ssh">Enable SSH based block device support via <pkg>net-libs/libssh2</pkg></flag>
 		<flag name="static-user">Build the User targets as static binaries</flag>
@@ -56,8 +61,7 @@
 		<flag name="virtfs">Enable VirtFS via virtio-9p-pci / fsdev. See http://wiki.qemu.org/Documentation/9psetup</flag>
 		<flag name="vte">Enable terminal support (<pkg>x11-libs/vte</pkg>) in the GTK+ interface</flag>
 		<flag name="xattr">Add support for getting and setting POSIX extended attributes, through
-		<pkg>sys-apps/attr</pkg>. Requisite for the virtfs backend.
-	</flag>
+		<pkg>sys-apps/attr</pkg>. Requisite for the virtfs backend.</flag>
 		<flag name="xen">Enables support for Xen backends</flag>
 		<flag name="xfs">Support xfsctl() notification and syncing for XFS backed
 		virtual disks.</flag>

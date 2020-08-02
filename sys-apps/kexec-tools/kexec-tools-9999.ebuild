@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic libtool linux-info systemd
+inherit libtool linux-info systemd
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3 autotools
@@ -11,7 +11,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	SRC_URI="https://www.kernel.org/pub/linux/utils/kernel/kexec/${P/_/-}.tar.xz"
 	[[ "${PV}" == *_rc* ]] || \
-	KEYWORDS="~amd64 ~arm64 ~hppa ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Load another kernel from the currently executing Linux kernel"
@@ -44,12 +44,15 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	# Append PURGATORY_EXTRA_CFLAGS flags set by configure, instead of overriding them completely.
+	sed -e "/^PURGATORY_EXTRA_CFLAGS =/s/=/+=/" -i Makefile.in || die
+
 	if [[ "${PV}" == 9999 ]] ; then
 		eautoreconf
 	else
 		elibtoolize
 	fi
-	filter-flags '-mindirect-branch=thunk*'
 }
 
 src_configure() {
@@ -60,6 +63,23 @@ src_configure() {
 		$(use_with zlib)
 	)
 	econf "${myeconfargs[@]}"
+}
+
+src_compile() {
+	# Respect CFLAGS for purgatory.
+	# purgatory/Makefile uses PURGATORY_EXTRA_CFLAGS variable.
+	# -mfunction-return=thunk and -mindirect-branch=thunk conflict with
+	# -mcmodel=large which is added by build system.
+	# Replace them with -mfunction-return=thunk-inline and -mindirect-branch=thunk-inline.
+	local flag flags=()
+	for flag in ${CFLAGS}; do
+		[[ ${flag} == -mfunction-return=thunk ]] && flag="-mfunction-return=thunk-inline"
+		[[ ${flag} == -mindirect-branch=thunk ]] && flag="-mindirect-branch=thunk-inline"
+		flags+=("${flag}")
+	done
+	local -x PURGATORY_EXTRA_CFLAGS="${flags[*]}"
+
+	default
 }
 
 src_install() {

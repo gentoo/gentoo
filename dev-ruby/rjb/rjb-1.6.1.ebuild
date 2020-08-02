@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_EXTRADOC="readme.txt ChangeLog"
 RUBY_FAKEGEM_TASK_TEST=""
@@ -64,8 +64,7 @@ each_ruby_install() {
 	ruby_fakegem_newins ext/rjbcore.so lib/rjbcore.so
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r samples
+		dodoc -r samples
 	fi
 }
 

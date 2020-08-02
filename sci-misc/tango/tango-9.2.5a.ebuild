@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,9 +17,9 @@ DEPEND="
 	mariadb? ( dev-db/mariadb-connector-c )
 	!mariadb? ( dev-db/mysql-connector-c )
 	dbserver? (
-		mariadb? ( dev-db/mariadb[server] )
-		!mariadb? ( dev-db/mysql[server] )
-		virtual/mysql[server] )
+		mariadb? ( dev-db/mariadb:*[server] )
+		!mariadb? ( >=virtual/mysql-5.6[server] )
+	)
 	java? ( virtual/jdk:* )
 	zeromq? ( net-libs/zeromq )
 "

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit elisp-common bash-completion-r1 autotools eutils
 
 DESCRIPTION="2- and 3-D plotter for creating images (to be used in LaTeX)"
-HOMEPAGE="http://mathcs.holycross.edu/~ahwang/current/ePiX.html"
-SRC_URI="http://mathcs.holycross.edu/~ahwang/epix/${P}_withpdf.tar.bz2"
+HOMEPAGE="https://mathcs.holycross.edu/~ahwang/current/ePiX.html"
+SRC_URI="https://mathcs.holycross.edu/~ahwang/epix/${P}_withpdf.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"

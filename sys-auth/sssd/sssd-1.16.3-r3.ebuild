@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit autotools flag-o-matic linux-info multilib-minimal pam systemd toolchain
 DESCRIPTION="System Security Services Daemon provides access to identity and authentication"
 HOMEPAGE="https://pagure.io/SSSD/sssd"
 SRC_URI="http://releases.pagure.org/SSSD/${PN}/${P}.tar.gz"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc x86"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -77,7 +77,7 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/sss_certmap.h
 )
 
-pkg_setup(){
+pkg_setup() {
 	linux-info_pkg_setup
 }
 
@@ -116,7 +116,6 @@ multilib_src_configure() {
 		--with-nscd
 		--with-unicode-lib="glib2"
 		--disable-rpath
-		--disable-silent-rules
 		--sbindir=/usr/sbin
 		--without-kcm
 		$(use_with samba libwbclient)
@@ -227,7 +226,7 @@ multilib_src_test() {
 	default
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	elog "You must set up sssd.conf (default installed into /etc/sssd)"
 	elog "and (optionally) configuration in /etc/pam.d in order to use SSSD"
 	elog "features. Please see howto in	https://docs.pagure.org/SSSD.sssd/design_pages/index.html#implemented-in-1-16-x"

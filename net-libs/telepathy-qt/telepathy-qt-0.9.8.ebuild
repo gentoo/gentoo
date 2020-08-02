@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit python-any-r1 cmake virtualx
 
 DESCRIPTION="Qt bindings for the Telepathy D-Bus protocol"
@@ -16,6 +16,8 @@ KEYWORDS="amd64 ~arm arm64 x86"
 IUSE="debug farstream test"
 
 REQUIRED_USE="test? ( farstream )"
+
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-qt/qtcore:5
@@ -43,7 +45,6 @@ BDEPEND="${PYTHON_DEPS}
 		')
 	)
 "
-RESTRICT="!test? ( test )"
 
 python_check_deps() {
 	use test || return 0
@@ -65,9 +66,9 @@ src_configure() {
 }
 
 src_test() {
-	# some tests require D-Bus
+	# some tests require D-Bus, bug #732110
 	local myctestargs=(
-		-E "(BaseConnectionManager|BaseProtocol)"
+		-E "(BaseConnectionManager|BaseProtocol|StreamTubeHandlers)"
 	)
 	pushd "${BUILD_DIR}" > /dev/null || die
 	virtx cmake_src_test

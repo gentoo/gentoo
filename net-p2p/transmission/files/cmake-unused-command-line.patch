@@ -1,0 +1,21 @@
+From 63b8fd6391cd30bb45e1c9432f69c43ade9bb7ea Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sat, 23 May 2020 22:25:42 -0400
+Subject: [PATCH] Do not warn about unused command line options
+
+---
+ cmake/TrMacros.cmake | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/cmake/TrMacros.cmake b/cmake/TrMacros.cmake
+index 5e439126f..674b2ede0 100644
+--- a/cmake/TrMacros.cmake
++++ b/cmake/TrMacros.cmake
+@@ -95,6 +95,7 @@ macro(tr_add_external_auto_library ID DIRNAME LIBNAME)
+             PREFIX "${${ID}_PREFIX}"
+             CMAKE_ARGS
+                 -Wno-dev # We don't want to be warned over unused variables
++		--no-warn-unused-cli
+                 "-DCMAKE_TOOLCHAIN_FILE:PATH=${CMAKE_TOOLCHAIN_FILE}"
+                 "-DCMAKE_USER_MAKE_RULES_OVERRIDE=${CMAKE_USER_MAKE_RULES_OVERRIDE}"
+                 "-DCMAKE_C_FLAGS:STRING=${CMAKE_C_FLAGS}"

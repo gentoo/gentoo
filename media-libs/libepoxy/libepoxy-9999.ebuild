@@ -3,40 +3,33 @@
 
 EAPI=7
 
-EGIT_REPO_URI="https://github.com/anholt/${PN}.git"
-
-if [[ ${PV} = 9999* ]]; then
-	GIT_ECLASS="git-r3"
-fi
-
-PYTHON_COMPAT=( python{2_7,3_6,3_7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE='xml(+)'
-inherit ${GIT_ECLASS} meson multilib-minimal python-any-r1
+inherit meson multilib-minimal python-any-r1
 
-DESCRIPTION="Epoxy is a library for handling OpenGL function pointer management for you"
-HOMEPAGE="https://github.com/anholt/libepoxy"
 if [[ ${PV} = 9999* ]]; then
-	SRC_URI=""
+	EGIT_REPO_URI="https://github.com/anholt/${PN}.git"
+	inherit git-r3
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 	SRC_URI="https://github.com/anholt/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 fi
+
+DESCRIPTION="Library for handling OpenGL function pointer management"
+HOMEPAGE="https://github.com/anholt/libepoxy"
 
 LICENSE="MIT"
 SLOT="0"
-RESTRICT="!test? ( test )"
 IUSE="+egl test +X"
 
-RDEPEND="egl? ( media-libs/mesa[egl,${MULTILIB_USEDEP}] )"
-DEPEND="X? ( x11-libs/libX11[${MULTILIB_USEDEP}] )
-	${RDEPEND}"
+RESTRICT="!test? ( test )"
+
+RDEPEND="
+	egl? ( media-libs/mesa[egl,${MULTILIB_USEDEP}] )"
+DEPEND="${RDEPEND}
+	X? ( x11-libs/libX11[${MULTILIB_USEDEP}] )"
 BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig"
-
-src_unpack() {
-	default
-	[[ $PV = 9999* ]] && git-r3_src_unpack
-}
 
 multilib_src_configure() {
 	local emesonargs=(

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
 
@@ -13,16 +13,14 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="cli test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="cli? ( || ( $(python_gen_useflags -3) ) )"
 
 RDEPEND="
 	cli? (
-		$(python_gen_cond_dep '
-			>=dev-python/ipython-0.13.1-r1[${PYTHON_USEDEP}]
-		' -3)
+		>=dev-python/ipython-0.13.1-r1[${PYTHON_USEDEP}]
 	)"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (

@@ -1,0 +1,36 @@
+Fixing QA issue and s/Qt4/Qt5/
+
+ * QA Notice: This package installs one or more .desktop files that do not
+ * pass validation.
+ * 
+ * /usr/share/applications/qxkb.desktop: warning: value "Application;Qt;Utility;"
+ * for key "Categories" in group "Desktop Entry" contains a deprecated value "Application"
+ *
+
+--- a/desktop/qxkb.desktop	2019-08-21 12:55:03.000000000 +0200
++++ b/desktop/qxkb.desktop	2020-04-14 20:16:07.754707291 +0200
+@@ -3,17 +3,17 @@
+ Type=Application
+ Exec=qxkb
+ Terminal=false
+-Categories=Application;Qt;Utility;
++Categories=Qt;Utility;
+ Icon=qxkb
+ Name=QXKB
+ Name[sr]=КјуИксКБ
+ Name[sr@ijekavian]=КјуИксКБ
+-Comment=Qt4-X11 Keyboard  switcher
+-Comment[ru]= Переключатель раскладки на Qt4
+-Comment[sr]=Кјут4-Икс11 пребацивач распореда тастатуре
+-Comment[sr@ijekavian]=Кјут4-Икс11 пребацивач распореда тастатуре
+-Comment[sr@ijekavianlatin]=Qt4-X11 prebacivač rasporeda tastature
+-Comment[sr@latin]=Qt4-X11 prebacivač rasporeda tastature
++Comment=Qt5-X11 Keyboard  switcher
++Comment[ru]= Переключатель раскладки на Qt5
++Comment[sr]=Кјут5-Икс11 пребацивач распореда тастатуре
++Comment[sr@ijekavian]=Кјут5-Икс11 пребацивач распореда тастатуре
++Comment[sr@ijekavianlatin]=Qt5-X11 prebacivač rasporeda tastature
++Comment[sr@latin]=Qt5-X11 prebacivač rasporeda tastature
+ GenericName=Keyboard  switcher
+ GenericName[ru]=Переключатель раскладки
+ GenericName[sr]=Распоред тастатуре

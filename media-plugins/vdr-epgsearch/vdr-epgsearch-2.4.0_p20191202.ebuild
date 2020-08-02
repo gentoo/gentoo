@@ -10,7 +10,7 @@ HOMEPAGE="http://winni.vdr-developer.org/epgsearch/index_eng.html"
 GIT_COMMIT_ID="602d66c55964998ce25c6c57b302949a9517f149"
 SRC_URI="http://projects.vdr-developer.org/git/vdr-plugin-epgsearch.git/snapshot/vdr-plugin-epgsearch-${GIT_COMMIT_ID}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="conflictcheckonly epgsearchonly pcre quicksearch tre"

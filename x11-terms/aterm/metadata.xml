@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>imirkin@alum.mit.edu</email>
+		<name>Ilia Mirkin</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>mattst88@gentoo.org</email>
+		<name>Matt Turner</name>
+	</maintainer>
 	<use>
 		<flag name="background">Enable background image support via
 			<pkg>media-libs/libafterimage</pkg></flag>

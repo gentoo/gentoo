@@ -1,11 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 FORTRAN_NEEDED=fortran
 
-inherit autotools eutils fortran-2 multilib flag-o-matic toolchain-funcs versionator
+inherit autotools fortran-2 flag-o-matic toolchain-funcs
 
 MY_P=${P/-mpi}
 S=${WORKDIR}/${MY_P}
@@ -30,8 +30,8 @@ IUSE_OPENMPI_OFED_FEATURES="
 	"
 
 DESCRIPTION="A high-performance message passing library (MPI)"
-HOMEPAGE="http://www.open-mpi.org"
-SRC_URI="http://www.open-mpi.org/software/ompi/v$(get_version_component_range 1-2)/downloads/${MY_P}.tar.bz2"
+HOMEPAGE="https://www.open-mpi.org"
+SRC_URI="https://www.open-mpi.org/software/ompi/v$(ver_cut 1-2)/downloads/${MY_P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
@@ -88,6 +88,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
 	# Necessary for scalibility, see
 	# http://www.open-mpi.org/community/lists/users/2008/09/6514.php
 	if use threads; then
@@ -97,10 +98,10 @@ src_prepare() {
 
 	# https://svn.open-mpi.org/trac/ompi/ticket/3649
 	# https://svn.open-mpi.org/trac/ompi/ticket/3648
-	epatch "${FILESDIR}"/hooks-disable-malloc-override-inside-of-Gentoo-sandb.patch
+	eapply "${FILESDIR}"/hooks-disable-malloc-override-inside-of-Gentoo-sandb.patch
 
 	# https://github.com/open-mpi/ompi/issues/163
-	epatch "${FILESDIR}"/openmpi-ltdl.patch
+	eapply "${FILESDIR}"/openmpi-ltdl.patch
 
 	AT_M4DIR="config opal/config orte/config ompi/config" eautoreconf
 }
@@ -153,10 +154,10 @@ src_configure() {
 		$(use_with openmpi_rm_slurm slurm)
 }
 
-src_install () {
-	emake DESTDIR="${D}" install
+src_install() {
+	default
 	# From USE=vt see #359917
-	rm "${ED}"/usr/share/libtool &> /dev/null
+	rm "${ED}"/usr/share/libtool || die
 	dodoc README AUTHORS NEWS VERSION
 }
 

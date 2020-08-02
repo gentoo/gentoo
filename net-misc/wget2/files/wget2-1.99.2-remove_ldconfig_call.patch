@@ -1,0 +1,25 @@
+From eb2aefb01868e91f2e1252ddd1bcdb9c075e5b49 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Sun, 8 Mar 2020 21:46:15 +0100
+Subject: [PATCH] Don't run ldconfig by default
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ Makefile.am | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 979ad1b1..5bc6f6ce 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -75,7 +75,3 @@ fuzz-coverage: clean clean-lcov
+ check-local:
+ 	$(AM_V_at)$(MAKE) -s syntax-check >/dev/null
+ 	$(AM_V_at)$(srcdir)/contrib/check_options $(srcdir)/docs/wget2.md $(builddir)/src/wget2$(EXEEXT)
+-
+-# ppl often forget to run ldconfig after an install, so let's do it here
+-install-exec-hook:
+-	$(AM_V_at)$(LDCONFIG) || :
+-- 
+2.25.1
+

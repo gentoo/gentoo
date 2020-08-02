@@ -5,21 +5,21 @@ EAPI=7
 
 DESCRIPTION="Littlewood-Richardson Calculator"
 HOMEPAGE="https://sites.math.rutgers.edu/~asbuch/lrcalc/"
-SRC_URI="${HOMEPAGE}${P}.tar.gz"
+SRC_URI="https://sites.math.rutgers.edu/~asbuch/lrcalc/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0/1"
-KEYWORDS="~amd64 ~x86 ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 x86 ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
 PATCHES=( "${FILESDIR}/${PN}-1.2-includes.patch" )
 
-src_configure(){
+src_configure() {
 	econf $(use_enable static-libs static)
 }
 
-src_install(){
+src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
 }

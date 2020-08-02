@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs xdg-utils
 
@@ -19,6 +19,10 @@ RDEPEND=">=dev-libs/iniparser-4.1:4
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( >=sys-devel/gettext-0.19.1 )"  # bug 512448
+
+PATCHES=(
+	"${FILESDIR}"/${P}-include-path.patch
+)
 
 pkg_setup() {
 	myisoconf=(

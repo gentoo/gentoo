@@ -3,12 +3,12 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
 inherit python-single-r1 systemd udev multilib-minimal
 
 DESCRIPTION="PC/SC Architecture smartcard middleware library"
-HOMEPAGE="https://pcsclite.apdu.fr/"
+HOMEPAGE="https://pcsclite.apdu.fr https://github.com/LudovicRousseau/PCSC"
 
 SRC_URI="https://pcsclite.apdu.fr/files/${P}.tar.bz2"
 
@@ -16,7 +16,7 @@ SRC_URI="https://pcsclite.apdu.fr/files/${P}.tar.bz2"
 # upstream.
 LICENSE="BSD ISC MIT GPL-3+ GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 
 # This is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
@@ -76,6 +76,8 @@ multilib_src_install_all() {
 	fi
 
 	python_fix_shebang "${ED}"/usr/bin/pcsc-spy
+
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {

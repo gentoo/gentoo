@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SRC_URI="https://pencil.evolus.vn/dl/V${MY_PV}/${MY_PN}-${MY_PV}-1.x86_64.rpm ->
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	app-accessibility/at-spi2-atk
@@ -47,6 +47,9 @@ RDEPEND="
 "
 
 S="${WORKDIR}"
+
+# bug 703602
+RESTRICT="splitdebug"
 
 QA_PREBUILT="
 	opt/${MY_PN}/*.so

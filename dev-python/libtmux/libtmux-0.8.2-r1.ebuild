@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
+PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
+DISTUTILS_USE_SETUPTOOLS=bdepend
 inherit distutils-r1
 
 DESCRIPTION="python api for tmux"
@@ -12,10 +13,9 @@ SRC_URI="https://github.com/tmux-python/${PN}/archive/v${PV}.tar.gz -> ${PN}-v${
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~arm x86"
 
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="app-misc/tmux"
+RDEPEND=">=app-misc/tmux-2.9a"
 
 PATCHES=(
 	"${FILESDIR}/libtmux-0.8.2-tests.patch"

@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 
 DESCRIPTION="FreeBSD Whois Client"
-HOMEPAGE="http://www.freebsd.org/"
+HOMEPAGE="https://www.freebsd.org/"
 SRC_URI="http://utenti.gufi.org/~drizzt/codes/${P}.tar.gz"
 
 LICENSE="BSD"

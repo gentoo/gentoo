@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{7,8} )
 PYTHON_REQ_USE="xml"
 MY_P="${P/_/}"
 inherit cmake flag-o-matic xdg toolchain-funcs python-single-r1 git-r3
@@ -15,7 +15,7 @@ EGIT_REPO_URI="https://gitlab.com/inkscape/inkscape.git"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="cdr dbus dia exif graphicsmagick imagemagick inkjar jemalloc jpeg lcms nls
+IUSE="cdr dbus dia exif graphicsmagick imagemagick inkjar jemalloc jpeg lcms
 openmp postscript spell static-libs svg2 visio wpg"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -40,9 +40,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/libxslt-1.1.25
 	dev-libs/gdl:3
 	dev-libs/popt
-	dev-python/lxml[${PYTHON_USEDEP}]
 	media-gfx/potrace
-	media-gfx/scour[${PYTHON_USEDEP}]
 	media-libs/fontconfig
 	media-libs/freetype:2
 	media-libs/libpng:0=
@@ -51,6 +49,10 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	x11-libs/libX11
 	>=x11-libs/pango-1.37.2
 	x11-libs/gtk+:3
+	$(python_gen_cond_dep '
+		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
+		media-gfx/scour[${PYTHON_MULTI_USEDEP}]
+	')
 	cdr? (
 		app-text/libwpg:0.3
 		dev-libs/librevenge
@@ -59,7 +61,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dbus? ( dev-libs/dbus-glib )
 	exif? ( media-libs/libexif )
 	imagemagick? (
-		!graphicsmagick? ( <media-gfx/imagemagick-7:=[cxx] )
+		!graphicsmagick? ( media-gfx/imagemagick:=[cxx] )
 		graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
 	)
 	jemalloc? ( dev-libs/jemalloc )
@@ -84,7 +86,9 @@ COMMON_DEPEND="${PYTHON_DEPS}
 # install these so we could of course just not depend on those and rely
 # on that.
 RDEPEND="${COMMON_DEPEND}
-	dev-python/numpy[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+	')
 	dia? ( app-office/dia )
 	postscript? ( app-text/ghostscript-gpl )
 "
@@ -92,14 +96,9 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-libs/boost-1.65
 "
 
-S="${WORKDIR}/${MY_P}"
-
 RESTRICT="test"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.0_beta1-detect-imagemagick.patch
-	"${FILESDIR}"/${PN}-1.0_beta1-do-not-compress-man.patch
-)
+S="${WORKDIR}/${MY_P}"
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
@@ -118,6 +117,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		# -DWITH_LPETOOL   # Compile with LPE Tool and experimental LPEs enabled
+		-DWITH_NLS=ON
 		-DENABLE_POPPLER=ON
 		-DENABLE_POPPLER_CAIRO=ON
 		-DWITH_PROFILING=OFF
@@ -127,7 +127,6 @@ src_configure() {
 		-DWITH_GRAPHICS_MAGICK=$(usex graphicsmagick $(usex imagemagick)) # both must be enabled to use GraphicsMagick
 		-DWITH_JEMALLOC=$(usex jemalloc)
 		-DENABLE_LCMS=$(usex lcms)
-		-DWITH_NLS=$(usex nls)
 		-DWITH_OPENMP=$(usex openmp)
 		-DBUILD_SHARED_LIBS=$(usex !static-libs)
 		-DWITH_SVG2=$(usex svg2)
@@ -142,6 +141,10 @@ src_install() {
 	cmake_src_install
 
 	find "${ED}" -type f -name "*.la" -delete || die
+
+	find "${ED}"/usr/share/man -type f -maxdepth 3 -name '*.bz2' -exec bzip2 -d {} \; || die
+
+	find "${ED}"/usr/share/man -type f -maxdepth 3 -name '*.gz' -exec gzip -d {} \; || die
 
 	# No extensions are present in beta1
 	local extdir="${ED}"/usr/share/${PN}/extensions

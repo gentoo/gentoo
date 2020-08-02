@@ -17,6 +17,8 @@ IUSE="doc"
 DEPEND="doc? ( app-doc/doxygen )"
 RDEPEND=""
 
+PATCHES=( "${FILESDIR}/${P}-rm-unused-cmd-arg.patch" )
+
 src_prepare() {
 	default
 	eautoreconf

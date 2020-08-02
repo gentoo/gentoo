@@ -15,5 +15,6 @@
 	<use>
 		<flag name="luajittex">Add support for LuaJitTeX: LuaTeX based on LuaJIT which is usually faster.</flag>
 		<flag name="xetex">Add support for XeTeX: a TeX system with Unicode and modern font technologies.</flag>
+		<flag name="xindy">Add support for Xindy: A general-purpose index processor.</flag>
 	</use>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -49,7 +49,6 @@ src_configure() {
 	# snapper does not build without btrfs
 	local myeconfargs=(
 		--with-conf="/etc/conf.d"
-		--docdir="/usr/share/doc/${PF}"
 		--disable-zypp
 		--enable-rollback
 		--disable-ext4

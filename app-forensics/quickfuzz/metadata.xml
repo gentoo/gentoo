@@ -14,9 +14,6 @@
 		<flag name='net'>support networking formats</flag>
 		<flag name='pki'>support PKI formats</flag>
 	</use>
-	<longdescription>
-		An experimental grammar fuzzer in Haskell using QuickCheck.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">CIFASIS/QuickFuzz</remote-id>
 	</upstream>

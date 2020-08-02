@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit qmake-utils
 
@@ -28,10 +28,13 @@ DEPEND="${RDEPEND}
 	webcam? ( media-libs/libv4l )
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-qt-5.11.patch"
+	"${FILESDIR}/${P}-qt-5.15.patch"
+)
+
 src_prepare() {
 	default
-
-	eapply "${FILESDIR}/${P}-qt-5.11.patch"
 
 	sed -i -e "s|linux/videodev.h|libv4l1-videodev.h|" \
 		3rdparty/videocapture/VideoDevice.h || die

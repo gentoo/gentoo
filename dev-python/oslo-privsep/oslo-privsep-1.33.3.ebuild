@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
 
@@ -25,13 +25,11 @@ RDEPEND="
 	>=dev-python/oslo-i18n-3.15.3[${PYTHON_USEDEP}]
 	>=dev-python/oslo-config-5.2.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-utils-3.33.0[${PYTHON_USEDEP}]
-	virtual/python-enum34[${PYTHON_USEDEP}]
 	>=dev-python/cffi-1.7.0[${PYTHON_USEDEP}]
 	>=dev-python/eventlet-0.18.4[${PYTHON_USEDEP}]
 	!~dev-python/eventlet-0.20.1[${PYTHON_USEDEP}]
 	>=dev-python/greenlet-0.4.10[${PYTHON_USEDEP}]
-	>=dev-python/msgpack-0.5.0[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]"
+	>=dev-python/msgpack-0.5.0[${PYTHON_USEDEP}]"
 
 python_prepare_all() {
 	sed -i '/^hacking/d' test-requirements.txt || die

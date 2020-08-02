@@ -11,7 +11,6 @@
 	</maintainer>
 	<use>
 		<flag name="libgda">Enable database support through <pkg>gnome-extra/libgda</pkg>.</flag>
-		<flag name="python">Enable python plugin loader.</flag>
 		<flag name="perl">Enable perl plugin loader.</flag>
 	</use>
 </pkgmetadata>

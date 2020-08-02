@@ -1,10 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+inherit meson
+
 if [[ ${PV} = *9999* ]]; then
-	inherit git-r3 autotools
+	inherit git-r3
 	EGIT_REPO_URI="https://anongit.freedesktop.org/git/spice/spice-protocol.git"
 	SRC_URI=""
 	KEYWORDS=""
@@ -22,8 +24,3 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
-
-src_prepare() {
-	[[ ${PV} = *9999* ]] && eautoreconf
-	default
-}

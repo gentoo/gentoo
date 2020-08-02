@@ -1,0 +1,26 @@
+--- a/src/Plugins/Monitors/Volume.hs
++++ b/src/Plugins/Monitors/Volume.hs
+@@ -122,7 +122,8 @@ formatDb opts dbi = do
+ runVolume :: String -> String -> [String] -> Monitor String
+ runVolume mixerName controlName argv = do
+     opts <- io $ parseOpts argv
+-    (lo, hi, val, db, sw) <- io readMixer
++    (lo', hi', val', db, sw) <- io readMixer
++    let (lo, hi, val) = (toInteger <$> lo', toInteger <$> hi', toInteger <$> val')
+     p <- liftMonitor $ liftM3 formatVol lo hi val
+     b <- liftMonitor $ liftM3 formatVolBar lo hi val
+     v <- liftMonitor $ liftM3 formatVolVBar lo hi val
+@@ -164,11 +165,11 @@ runVolume mixerName controlName argv = do
+ 
+     getDB :: Maybe Volume -> IO (Maybe Integer)
+     getDB Nothing = return Nothing
+-    getDB (Just v) = channel (dB v) 0
++    getDB (Just v) = fmap toInteger <$> channel (dB v) 0
+ 
+     getVal :: Maybe Volume -> IO (Maybe Integer)
+     getVal Nothing = return Nothing
+-    getVal (Just v) = channel (value v) 0
++    getVal (Just v) = fmap toInteger <$> channel (value v) 0
+ 
+     getSw :: Maybe Switch -> IO (Maybe Bool)
+     getSw Nothing = return Nothing

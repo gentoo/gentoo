@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 if [[ $PV = *9999* ]]; then
 	scm_eclass=git-r3
@@ -30,5 +30,14 @@ BDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
-	sci-libs/numkit[${PYTHON_USEDEP}]"
+	sci-libs/numkit[${PYTHON_USEDEP}]
+	test? ( >=dev-python/pandas-0.17[${PYTHON_USEDEP}] )
+"
 RDEPEND="${DEPEND}"
+
+distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/Becksteinlab/GromacsWrapper/issues/182
+	"${FILESDIR}"/${P}-tests-package.patch
+)

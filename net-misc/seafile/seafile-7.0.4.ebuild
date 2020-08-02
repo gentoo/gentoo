@@ -3,12 +3,12 @@
 
 EAPI=7
 
-PYTHON_COMPAT=(python{2_7,3_6})
+PYTHON_COMPAT=(python3_6)
 
 inherit autotools python-single-r1 vala
 
 DESCRIPTION="File syncing and sharing software with file encryption and group sharing"
-HOMEPAGE="https://github.com/haiwen/seafile/ http://www.seafile.com/"
+HOMEPAGE="https://github.com/haiwen/seafile/ https://www.seafile.com/"
 SRC_URI="https://github.com/haiwen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+-with-openssl-exception"
@@ -18,7 +18,7 @@ IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	net-libs/libsearpc[${PYTHON_USEDEP}]
+	net-libs/libsearpc[${PYTHON_SINGLE_USEDEP}]
 	dev-libs/glib:2
 	dev-libs/libevent:0
 	dev-libs/jansson

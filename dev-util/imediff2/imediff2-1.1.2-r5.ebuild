@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_6 )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="ncurses"
 
 inherit python-single-r1 eapi7-ver
@@ -16,7 +16,7 @@ SRC_URI="mirror://debian/pool/main/i/${PN}/${MY_P}.orig.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 DEPEND="${PYTHON_DEPS}"

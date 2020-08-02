@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,12 +9,12 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Database access from Haskell"
-HOMEPAGE="http://hackage.haskell.org/package/hsql"
+HOMEPAGE="https://hackage.haskell.org/package/hsql"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND="dev-haskell/old-time:=[profile?]
@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10
 "
 
-pkg_postinst () {
+pkg_postinst() {
 	ghc-package_pkg_postinst
 
 	elog "You will probably want to emerge one or more HSQL backend."

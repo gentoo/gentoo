@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
 inherit flag-o-matic bash-completion-r1 ninja-utils toolchain-funcs cmake-utils python-r1
@@ -26,12 +26,13 @@ SRC_URI="https://git.archlinux.org/svntogit/community.git/snapshot/community-0ff
 	mirror://gentoo/${MY_P}-selinux.tar.xz https://dev.gentoo.org/~zmedico/dist/${MY_P}-selinux.tar.xz
 	mirror://gentoo/${MY_P}-f2fs-tools.tar.xz https://dev.gentoo.org/~zmedico/dist/${MY_P}-f2fs-tools.tar.xz
 	mirror://gentoo/${MY_P}.ninja.xz https://dev.gentoo.org/~zmedico/dist/${MY_P}.ninja.xz
-	https://raw.githubusercontent.com/nmeum/android-tools/8a30dba5768304176fd78aaa131242f6b880f828/patches/core/0022-Use-glibc-s-gettid-when-using-glibc-2.30.patch -> ${GLIBC_GETTID_PATCH}"
+	https://raw.githubusercontent.com/nmeum/android-tools/8a30dba5768304176fd78aaa131242f6b880f828/patches/core/0022-Use-glibc-s-gettid-when-using-glibc-2.30.patch -> ${GLIBC_GETTID_PATCH}
+	https://dev.gentoo.org/~zmedico/dist/${P}-bug-706946-fno-common.patch.xz"
 
 # The entire source code is Apache-2.0, except for fastboot which is BSD-2.
 LICENSE="Apache-2.0 BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86 ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 x86 ~x86-linux"
 IUSE="python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -71,6 +72,8 @@ src_unpack() {
 	unpack "${MY_P}.ninja.xz"
 	mv "${MY_P}.ninja" "build.ninja" || die
 
+	unpack "${P}-bug-706946-fno-common.patch.xz"
+
 	# Avoid depending on gtest just for its prod headers when boringssl bundles it.
 	ln -s ../../boringssl/third_party/googletest/include/gtest core/include/ || die
 }
@@ -97,7 +100,8 @@ src_prepare() {
 		-i ext4_utils/include/ext4_utils/ext4_crypt{,_init_extensions}.h || die #580686
 
 	cd "${S}" || die
-	default
+
+	eapply "${WORKDIR}/${P}-bug-706946-fno-common.patch"
 
 	sed -E \
 		-e "s|^(CC =).*|\\1 $(tc-getCC)|g" \
@@ -108,6 +112,8 @@ src_prepare() {
 		-e "s|^(LDFLAGS =).*|\\1 ${LDFLAGS}|g" \
 		-e "s|^(PKGVER =).*|\\1 ${MY_PV}|g" \
 		-i build.ninja || die
+
+	grep -rlZ -- -Werror . | xargs -0 sed -e 's:-Werror ::g' -e 's: -Werror::g' -i || die #706946
 
 	# The pregenerated ninja file expects the build/ dir.
 	BUILD_DIR="${CMAKE_USE_DIR}/build"

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ SRC_URI="https://www.x.org/releases/individual/util/${P}.tar.bz2
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 BDEPEND="
@@ -34,13 +34,13 @@ src_configure() {
 
 src_install() {
 	default
-	echo "#define ManDirectoryRoot ${EPREFIX%/}/usr/share/man" >> \
+	echo "#define ManDirectoryRoot ${EPREFIX}/usr/share/man" >> \
 		"${ED}"/usr/$(get_libdir)/X11/config/host.def || die
 	sed -i -e "s/LibDirName *lib$/LibDirName $(get_libdir)/" \
 		"${ED}"/usr/$(get_libdir)/X11/config/Imake.tmpl || die "failed libdir sed"
 	sed -i -e "s|LibDir Concat(ProjectRoot,/lib/X11)|LibDir Concat(ProjectRoot,/$(get_libdir)/X11)|" \
 		"${ED}"/usr/$(get_libdir)/X11/config/X11.tmpl || die "failed libdir sed"
-	sed -i -e "s|\(EtcX11Directory \)\(/etc/X11$\)|\1${EPREFIX%/}\2|" \
+	sed -i -e "s|\(EtcX11Directory \)\(/etc/X11$\)|\1${EPREFIX}\2|" \
 		"${ED}"/usr/$(get_libdir)/X11/config/X11.tmpl || die "failed etcx11dir sed"
 	sed -i -e "/#  define Solaris64bitSubdir/d" \
 		"${ED}"/usr/$(get_libdir)/X11/config/sun.cf || die

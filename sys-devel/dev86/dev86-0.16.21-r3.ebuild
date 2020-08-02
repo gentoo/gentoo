@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,7 +36,7 @@ src_prepare() {
 			makefile.in || die
 	fi
 
-	sed -i -e "s:-O2 -g:${CFLAGS}:" -e '/INEXE=/s:-s::' makefile.in || die
+	sed -i -e "s|-O2 -g|${CFLAGS}|" -e '/INEXE=/s:-s::' makefile.in || die
 	sed -i -e "s:/lib/:/$(get_libdir)/:" bcc/bcc.c || die
 	sed -i -e '/INSTALL_OPTS=/s:-s::' bin86/Makefile || die
 	sed -i -e '/install -m 755 -s/s:-s::' dis88/Makefile || die
@@ -52,7 +52,8 @@ src_compile() {
 		DIST="${D}" \
 		CC="$(tc-getCC)" \
 		LIBDIR="/usr/$(get_libdir)/bcc" \
-		INCLDIR="/usr/$(get_libdir)/bcc"
+		INCLDIR="/usr/$(get_libdir)/bcc" \
+		all
 
 	export PATH=${S}/bin:${PATH}
 
@@ -61,7 +62,10 @@ src_compile() {
 	cd .. || die
 
 	cd bootblocks || die
-	emake DIST="${D}"
+	emake \
+		DIST="${D}" \
+		HOSTCC="$(tc-getCC)"
+
 }
 
 src_install() {

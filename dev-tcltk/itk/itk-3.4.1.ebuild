@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/project/incrtcl/%5BIncr%20Tcl_Tk%5D-source/${PV}/$
 IUSE=""
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 ia64 ppc sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ia64 ppc sparc x86 ~amd64-linux ~x86-linux"
 RESTRICT="!test? ( test )"
 
 DEPEND="

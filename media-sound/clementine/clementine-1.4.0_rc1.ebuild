@@ -23,7 +23,7 @@ else
 	else
 		SRC_URI="${SRC_URI_BASE}/releases/download/${PV/_}/${P/_}.tar.xz"
 	fi
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 DESCRIPTION="Modern music player and library organizer based on Amarok 1.4 and Qt"
 HOMEPAGE="https://www.clementine-player.org https://github.com/clementine-player/Clementine"
@@ -105,6 +105,10 @@ DEPEND="${COMMON_DEPEND}
 RESTRICT="test"
 
 DOCS=( Changelog README.md )
+
+PATCHES=(
+	"${FILESDIR}/${P}-QPainterPath_include.patch" #725678
+)
 
 src_prepare() {
 	l10n_find_plocales_changes "src/translations" "" ".po"

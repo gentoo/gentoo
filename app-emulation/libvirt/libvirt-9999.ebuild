@@ -9,7 +9,7 @@ inherit autotools out-of-source bash-completion-r1 eutils linux-info python-any-
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://libvirt.org/git/libvirt.git"
+	EGIT_REPO_URI="https://gitlab.com/libvirt/libvirt.git"
 	SRC_URI=""
 	KEYWORDS=""
 	SLOT="0"
@@ -20,12 +20,12 @@ else
 fi
 
 DESCRIPTION="C toolkit to manipulate virtual machines"
-HOMEPAGE="http://www.libvirt.org/"
+HOMEPAGE="https://www.libvirt.org/"
 LICENSE="LGPL-2.1"
 IUSE="
 	apparmor audit +caps +dbus dtrace firewalld fuse glusterfs iscsi
 	iscsi-direct +libvirtd lvm libssh lxc +macvtap nfs nls numa openvz
-	parted pcap phyp policykit +qemu rbd sasl selinux +udev +vepa
+	parted pcap policykit +qemu rbd sasl selinux +udev +vepa
 	virtualbox virt-network wireshark-plugins xen zfs
 "
 
@@ -71,13 +71,12 @@ RDEPEND="
 	dbus? ( sys-apps/dbus )
 	dtrace? ( dev-util/systemtap )
 	firewalld? ( >=net-firewall/firewalld-0.6.3 )
-	fuse? ( >=sys-fs/fuse-2.8.6:= )
+	fuse? ( sys-fs/fuse:0= )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
 	iscsi? ( sys-block/open-iscsi )
 	iscsi-direct? ( >=net-libs/libiscsi-1.18.0 )
 	libssh? ( net-libs/libssh )
 	lvm? ( >=sys-fs/lvm2-2.02.48-r2[-device-mapper-only(-)] )
-	lxc? ( !sys-apps/systemd[-cgroup-hybrid(+)] )
 	nfs? ( net-fs/nfs-utils )
 	numa? (
 		>sys-process/numactl-2.0.2
@@ -121,12 +120,12 @@ DEPEND="${RDEPEND}
 	dev-lang/perl
 	dev-libs/libxslt
 	dev-perl/XML-XPath
+	dev-python/docutils
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.7.0-do-not-use-sysconf.patch
-	"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch
-	"${FILESDIR}"/${PN}-5.2.0-fix-paths-for-apparmor.patch
+	"${FILESDIR}"/${PN}-6.0.0-fix_paths_in_libvirt-guests_sh.patch
+	"${FILESDIR}"/${PN}-6.5.0-do-not-use-sysconfig.patch
 )
 
 pkg_setup() {
@@ -217,22 +216,8 @@ src_prepare() {
 
 	default
 
-	if [[ ${PV} = *9999* ]]; then
-		# Reinitialize submodules as this is required for gnulib's bootstrap
-		git submodule init
-		# git checkouts require bootstrapping to create the configure script.
-		# Additionally the submodules must be cloned to the right locations
-		# bug #377279
-		./bootstrap || die "bootstrap failed"
-		(
-		    git submodule status .gnulib | awk '{ print $1 }'
-		    git hash-object bootstrap.conf
-		    git ls-tree -d HEAD gnulib/local | awk '{ print $3 }'
-		) >.git-module-status
-	fi
-
 	# Tweak the init script:
-	cp "${FILESDIR}/libvirtd.init-r18" "${S}/libvirtd.init" || die
+	cp "${FILESDIR}/libvirtd.init-r19" "${S}/libvirtd.init" || die
 	sed -e "s/USE_FLAG_FIREWALLD/$(usex firewalld 'need firewalld' '')/" \
 		-i "${S}/libvirtd.init" || die "sed failed"
 
@@ -265,7 +250,6 @@ my_src_configure() {
 		$(use_with openvz)
 		$(use_with parted storage-disk)
 		$(use_with pcap libpcap)
-		$(use_with phyp)
 		$(use_with policykit polkit)
 		$(use_with qemu)
 		$(use_with qemu yajl)
@@ -295,6 +279,7 @@ my_src_configure() {
 		--disable-werror
 
 		--localstatedir=/var
+		--with-runstatedir=/run
 		--enable-dependency-tracking
 	)
 
@@ -305,12 +290,6 @@ my_src_configure() {
 	fi
 
 	econf "${myeconfargs[@]}"
-
-	if [[ ${PV} = *9999* ]]; then
-		# Restore gnulib's config.sub and config.guess
-		# bug #377279
-		(cd ${S}/.gnulib && git reset --hard > /dev/null)
-	fi
 }
 
 my_src_test() {
@@ -335,6 +314,7 @@ my_src_install() {
 	# libvirtd is able to create them on demand
 	rm -rf "${D}"/etc/sysconfig
 	rm -rf "${D}"/var
+	rm -rf "${D}"/run
 
 	newbashcomp "${S}/tools/bash-completion/vsh" virsh
 	bashcomp_alias virsh virt-admin
@@ -342,20 +322,17 @@ my_src_install() {
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
 
-	systemd_install_serviced \
-		"${FILESDIR}"/libvirtd.service.conf libvirtd.service
-
 	systemd_newtmpfilesd "${FILESDIR}"/libvirtd.tmpfiles.conf libvirtd.conf
 
 	newinitd "${S}/libvirtd.init" libvirtd
 	newinitd "${FILESDIR}/libvirt-guests.init-r4" libvirt-guests
-	newinitd "${FILESDIR}/virtlockd.init-r1" virtlockd
-	newinitd "${FILESDIR}/virtlogd.init-r1" virtlogd
+	newinitd "${FILESDIR}/virtlockd.init-r2" virtlockd
+	newinitd "${FILESDIR}/virtlogd.init-r2" virtlogd
 
 	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd
 	newconfd "${FILESDIR}/libvirt-guests.confd" libvirt-guests
 
-	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r2")
+	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r3")
 	DISABLE_AUTOFORMATTING=true
 	readme.gentoo_create_doc
 }

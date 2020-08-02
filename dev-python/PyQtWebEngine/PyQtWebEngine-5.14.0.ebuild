@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 inherit python-r1 qmake-utils
 
 DESCRIPTION="Python bindings for QtWebEngine"
@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm arm64 x86"
 IUSE="debug"
 
 REQUIRED_USE="
@@ -28,12 +28,12 @@ REQUIRED_USE="
 RDEPEND="
 	${PYTHON_DEPS}
 	>=dev-python/PyQt5-5.13.1[gui,network,printsupport,ssl,webchannel,widgets,${PYTHON_USEDEP}]
-	>=dev-python/PyQt5-sip-4.19.20:=[${PYTHON_USEDEP}]
+	>=dev-python/PyQt5-sip-4.19.22:=[${PYTHON_USEDEP}]
 	dev-qt/qtcore:5
 	dev-qt/qtwebengine:5[widgets]
 "
 DEPEND="${RDEPEND}
-	>=dev-python/sip-4.19.20[${PYTHON_USEDEP}]
+	~dev-python/sip-4.19.22[${PYTHON_USEDEP}]
 "
 
 S=${WORKDIR}/${MY_P}

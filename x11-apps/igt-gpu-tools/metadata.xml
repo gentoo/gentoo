@@ -10,6 +10,7 @@
  <flag name="man">Build and install man pages</flag>
  <flag name="overlay">Build the intel-gpu-overlay utility</flag>
  <flag name="runner">Build the test runner</flag>
+ <flag name="tests">Build and install tests</flag>
  <flag name="valgrind">Support valgrind annotations</flag>
  <flag name="xv">Enable intel-gpu-overlay xv backend</flag>
  <flag name="X">Enable intel-gpu-overlay xlib/cairo backend</flag>

@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 ROS_REPO_URI="https://github.com/tu-darmstadt-ros-pkg/hector_localization"
 KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
@@ -17,12 +17,12 @@ RDEPEND="
 	dev-ros/rostime
 	dev-ros/rosconsole
 	dev-ros/roscpp
-	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-ros/geographic_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/tf
 	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
+	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/geographic_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-cpp/eigen:3"

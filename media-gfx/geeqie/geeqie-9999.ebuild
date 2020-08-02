@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ EGIT_REPO_URI="https://github.com/BestImageViewer/geeqie.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug doc exif ffmpegthumbnailer gpu-accel +gtk3 jpeg lcms lirc lua map tiff xmp"
+IUSE="debug doc exif ffmpegthumbnailer gpu-accel +gtk3 jpeg lcms lirc lua map nls pdf tiff xmp"
 
 RDEPEND="
 	virtual/libintl
@@ -28,6 +28,7 @@ RDEPEND="
 	lirc? ( app-misc/lirc )
 	lua? ( >=dev-lang/lua-5.1:= )
 	map? ( media-libs/libchamplain:0.12 )
+	pdf? ( >=app-text/poppler-0.62[cairo] )
 	tiff? ( media-libs/tiff:0 )
 	xmp? ( >=media-gfx/exiv2-0.17:=[xmp] )
 	!xmp? ( exif? ( >=media-gfx/exiv2-0.17:= ) )"
@@ -35,8 +36,8 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/glib-utils
 	dev-util/intltool
-	sys-devel/gettext
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	nls? ( sys-devel/gettext )"
 
 REQUIRED_USE="gpu-accel? ( gtk3 )
 	map? ( gpu-accel )"
@@ -45,14 +46,13 @@ src_prepare() {
 	default
 
 	# Remove -Werror (gcc changes may add new warnings)
-	sed -e '/CFLAGS/s/-Werror //g' -i configure.in || die
+	sed -e '/CFLAGS/s/-Werror //g' -i configure.ac || die
 
 	eautoreconf
 }
 
 src_configure() {
 	local myeconfargs=(
-		--disable-dependency-tracking
 		--with-readmedir="${EPREFIX}"/usr/share/doc/${PF}
 		$(use_enable debug debug-log)
 		$(use_enable ffmpegthumbnailer)
@@ -63,6 +63,8 @@ src_configure() {
 		$(use_enable lua)
 		$(use_enable lirc)
 		$(use_enable map)
+		$(use_enable nls)
+		$(use_enable pdf)
 		$(use_enable tiff)
 	)
 

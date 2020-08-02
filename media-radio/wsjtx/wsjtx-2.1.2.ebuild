@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/wsjt/${MY_P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
 RDEPEND="dev-qt/qtcore:5
@@ -39,7 +39,8 @@ S=${WORKDIR}/wsjtx
 
 PATCHES=( "${FILESDIR}/${PN}-2.0.1-hamlib.patch"
 		  "${FILESDIR}/${PN}-fix-unicode.patch"
-		  "${FILESDIR}/${PN}-drop-docs.patch" )
+		  "${FILESDIR}/${PN}-drop-docs.patch"
+		  "${FILESDIR}/${PN}-2.1.2-qt_helpers.patch" )
 
 DOCS=( AUTHORS BUGS NEWS README THANKS )
 

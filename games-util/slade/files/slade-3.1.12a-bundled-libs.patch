@@ -1,0 +1,80 @@
+diff -Naur a/src/Application/App.cpp b/src/Application/App.cpp
+--- a/src/Application/App.cpp	2020-05-26 00:34:50.000000000 +0100
++++ b/src/Application/App.cpp	2020-05-31 17:11:08.365000293 +0100
+@@ -34,7 +34,7 @@
+ #include "App.h"
+ #include "Archive/ArchiveManager.h"
+ #include "Dialogs/SetupWizard/SetupWizardDialog.h"
+-#include "External/dumb/dumb.h"
++#include <dumb.h>
+ #include "Game/Configuration.h"
+ #include "General/ColourConfiguration.h"
+ #include "General/Console/Console.h"
+diff -Naur a/src/Audio/ModMusic.cpp b/src/Audio/ModMusic.cpp
+--- a/src/Audio/ModMusic.cpp	2020-05-26 00:34:50.000000000 +0100
++++ b/src/Audio/ModMusic.cpp	2020-05-31 17:11:08.365000293 +0100
+@@ -30,7 +30,7 @@
+  *******************************************************************/
+ #include "Main.h"
+ #include "ModMusic.h"
+-#include "External/dumb/dumb.h"
++#include <dumb.h>
+ 
+ 
+ /*******************************************************************
+diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
+--- a/src/CMakeLists.txt	2020-05-26 00:34:50.000000000 +0100
++++ b/src/CMakeLists.txt	2020-05-31 17:11:08.365000293 +0100
+@@ -105,6 +105,8 @@
+ find_package(GLEW REQUIRED)
+ find_package(Freetype REQUIRED)
+ find_package(CURL REQUIRED)
++find_package(Lua REQUIRED)
++pkg_check_modules(DUMB REQUIRED dumb>=1.0)
+ include_directories(
+ 	${FREEIMAGE_INCLUDE_DIR}
+ 	${SFML_INCLUDE_DIR}
+@@ -112,8 +114,9 @@
+ 	${FREETYPE_INCLUDE_DIRS}
+ 	${GLEW_INCLUDE_PATH}
+ 	${CURL_INCLUDE_DIR}
++	${LUA_INCLUDE_DIR}
++	${DUMB_INCLUDE_DIRS}
+ 	.
+-	./External/dumb
+ 	./Application
+ 	)
+ 
+@@ -182,6 +185,8 @@
+ 	${FREETYPE_LIBRARIES}
+ 	${GLEW_LIBRARY}
+ 	${CURL_LIBRARIES}
++	${LUA_LIBRARIES}
++	${DUMB_LIBRARIES}
+ )
+ 
+ if (WX_GTK3)
+diff -Naur a/src/External/CMakeLists.txt b/src/External/CMakeLists.txt
+--- a/src/External/CMakeLists.txt	2020-05-26 00:34:50.000000000 +0100
++++ b/src/External/CMakeLists.txt	2020-05-31 17:12:09.614333605 +0100
+@@ -24,8 +24,6 @@
+ file(GLOB_RECURSE EXTERNAL_SOURCES
+ 	*.cpp
+ 	*.cxx
+-	dumb/*.c
+-	lua/*.c
+ 	lzma/C/LzmaDec.c
+ 	${SLADE_HEADERS}
+ 	)
+diff -Naur a/src/External/sol/sol.hpp b/src/External/sol/sol.hpp
+--- a/src/External/sol/sol.hpp	2020-05-26 00:34:50.000000000 +0100
++++ b/src/External/sol/sol.hpp	2020-05-31 17:11:08.367000336 +0100
+@@ -798,7 +798,7 @@
+ #include <lualib.h>
+ #include <lauxlib.h>
+ #else
+-#include "External/lua/lua.hpp"
++#include <lua.hpp>
+ #endif // C++ Mangling for Lua
+ 
+ #if defined(_WIN32) || defined(_MSC_VER)

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{6..7}} )
+PYTHON_COMPAT=( python3_{6..8} )
 
 inherit python-r1
 
@@ -43,4 +43,6 @@ src_install() {
 	default
 
 	python_foreach_impl python_domodule python/libvoikko.py
+
+	find "${D}" -name '*.la' -delete -o -name '*.a' -delete || die
 }

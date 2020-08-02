@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,6 +23,6 @@ RDEPEND="
 	app-shells/zsh
 "
 
-src_install(){
+src_install() {
 	emake PREFIX="${ED}/usr" install
 }

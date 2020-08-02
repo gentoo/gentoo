@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,13 +15,13 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${MY_PV}/${MY_P}.tar.
 LICENSE="BSD-2"
 # Subslot == SONAME version
 SLOT="0/1.0.0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="dev-libs/protobuf:0
-	virtual/pkgconfig[${MULTILIB_USEDEP}]"
-DEPEND="dev-libs/protobuf:0=[${MULTILIB_USEDEP}]"
+BDEPEND=">=dev-libs/protobuf-3:0
+	virtual/pkgconfig"
+DEPEND=">=dev-libs/protobuf-3:0=[${MULTILIB_USEDEP}]"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"

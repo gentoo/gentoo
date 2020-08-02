@@ -31,7 +31,3 @@ ABI_S390="32"
 # While multilib is available, we don't default it to on.
 BOOTSTRAP_USE="${BOOTSTRAP_USE} -multilib"
 USE="-multilib"
-
-# Hans de Graaff <graaff@gentoo.org) (2019-07-17)
-# Temporary RUBY_TARGETS for bug 688976
-RUBY_TARGETS="ruby24 -ruby25"

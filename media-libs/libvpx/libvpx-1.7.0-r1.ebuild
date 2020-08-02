@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -20,7 +20,7 @@ SRC_URI="https://github.com/webmproject/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="BSD"
 SLOT="0/5"
-KEYWORDS="amd64 arm arm64 ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="cpu_flags_x86_avx cpu_flags_x86_avx2 doc cpu_flags_x86_mmx postproc cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 +highbitdepth static-libs svc test +threads"
 
 REQUIRED_USE="
@@ -32,8 +32,7 @@ REQUIRED_USE="
 # Disable test phase when USE="-test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=""
-DEPEND="abi_x86_32? ( dev-lang/yasm )
+BDEPEND="abi_x86_32? ( dev-lang/yasm )
 	abi_x86_64? ( dev-lang/yasm )
 	abi_x86_x32? ( dev-lang/yasm )
 	x86-fbsd? ( dev-lang/yasm )
@@ -53,10 +52,10 @@ src_configure() {
 	# https://bugs.gentoo.org/show_bug.cgi?id=384585
 	# https://bugs.gentoo.org/show_bug.cgi?id=465988
 	# copied from php-pear-r1.eclass
-	addpredict /usr/share/snmp/mibs/.index
-	addpredict /var/lib/net-snmp/
-	addpredict /var/lib/net-snmp/mib_indexes
-	addpredict /session_mm_cli0.sem
+	addpredict /usr/share/snmp/mibs/.index #nowarn
+	addpredict /var/lib/net-snmp/ #nowarn
+	addpredict /var/lib/net-snmp/mib_indexes #nowarn
+	addpredict /session_mm_cli0.sem #nowarn
 	multilib-minimal_src_configure
 }
 

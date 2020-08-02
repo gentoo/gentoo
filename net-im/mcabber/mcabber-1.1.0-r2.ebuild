@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ if [[ "${PV}" == 9999 ]]; then
 else
 	SRC_URI="http://mcabber.com/files/${P}.tar.bz2"
 	SRC_URI+=" https://dev.gentoo.org/~andrey_utkin/distfiles/${P}_bug699972.patch"
-	KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+	KEYWORDS="~alpha amd64 ~arm ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 fi
 
 LICENSE="GPL-2"
@@ -36,7 +36,7 @@ RDEPEND="crypt? ( >=app-crypt/gpgme-1.0.0 )
 	aspell? ( app-text/aspell )
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
 	idn? ( net-dns/libidn:= )
-	spell? ( app-text/enchant )
+	spell? ( app-text/enchant:0 )
 	dev-libs/glib:2
 	net-libs/libnsl:0=
 	sys-libs/ncurses:0=

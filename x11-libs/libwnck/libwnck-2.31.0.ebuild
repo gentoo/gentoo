@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ HOMEPAGE="https://www.gnome.org/"
 
 LICENSE="LGPL-2+"
 SLOT="1"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 IUSE="+introspection startup-notification"
 
@@ -44,7 +44,7 @@ src_prepare() {
 	gnome2_src_prepare
 }
 
-src_configure () {
+src_configure() {
 	gnome2_src_configure \
 		--disable-static \
 		$(use_enable introspection) \

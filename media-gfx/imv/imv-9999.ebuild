@@ -19,10 +19,12 @@ REQUIRED_USE="
 
 RDEPEND="
 	!sys-apps/renameutils
+	dev-libs/icu:=
 	media-libs/fontconfig
 	media-libs/libsdl2
 	media-libs/sdl2-ttf
 	X? (
+		virtual/glu
 		x11-libs/libX11
 		x11-libs/libxcb
 		x11-libs/libxkbcommon

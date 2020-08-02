@@ -22,7 +22,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0/21"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="emacs examples static-libs test zlib"
 RESTRICT="!test? ( test )"
 
@@ -42,6 +42,10 @@ DOCS=(CHANGES.txt CONTRIBUTORS.txt README.md)
 
 src_prepare() {
 	default
+
+	# https://github.com/protocolbuffers/protobuf/issues/7413
+	sed -e "/^AC_PROG_CXX_FOR_BUILD$/d" -i configure.ac || die
+
 	eautoreconf
 }
 

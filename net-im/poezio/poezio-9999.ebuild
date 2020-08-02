@@ -10,8 +10,6 @@ DESCRIPTION="Console XMPP client that looks like most famous IRC clients"
 HOMEPAGE="https://poez.io/"
 LICENSE="ZLIB"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://lab.louiz.org/${PN}/${PN}.git"
@@ -27,12 +25,8 @@ RDEPEND="
 	dev-python/pyasn1[${PYTHON_USEDEP}]
 	dev-python/slixmpp[${PYTHON_USEDEP}]
 "
-DEPEND="
-	test? (
-		${RDEPEND}
-		dev-python/potr
-		dev-python/pyinotify
-	)"
+
+distutils_enable_tests pytest
 
 DOC_CONTENTS="
 Install these optional runtime dependencies for additional features.
@@ -54,8 +48,4 @@ src_install() {
 
 pkg_postinst() {
 	readme.gentoo_print_elog
-}
-
-python_test() {
-	esetup.py test
 }

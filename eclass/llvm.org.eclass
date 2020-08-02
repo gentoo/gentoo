@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: llvm.org.eclass
@@ -44,7 +44,7 @@ esac
 # @DESCRIPTION:
 # The major version of current LLVM trunk.  Used to determine
 # the correct branch to use.
-_LLVM_MASTER_MAJOR=10
+_LLVM_MASTER_MAJOR=12
 
 # @ECLASS-VARIABLE: _LLVM_SOURCE_TYPE
 # @INTERNAL
@@ -62,6 +62,8 @@ fi
 
 [[ ${PV} == ${_LLVM_MASTER_MAJOR}.* && ${_LLVM_SOURCE_TYPE} == tar ]] &&
 	die "${ECLASS}: Release ebuild for master branch?!"
+
+inherit multiprocessing
 
 
 # == control variables ==
@@ -167,6 +169,11 @@ llvm.org_set_globals() {
 		fi
 	fi
 
+	# === useful defaults for cmake-based packages ===
+
+	# least intrusive of all
+	CMAKE_BUILD_TYPE=RelWithDebInfo
+
 	_LLVM_ORG_SET_GLOBALS_CALLED=1
 }
 
@@ -174,6 +181,9 @@ llvm.org_set_globals() {
 # == phase functions ==
 
 EXPORT_FUNCTIONS src_unpack
+if ver_test -ge 10.0.1_rc; then
+	EXPORT_FUNCTIONS src_prepare
+fi
 
 # @FUNCTION: llvm.org_src_unpack
 # @DESCRIPTION:
@@ -216,4 +226,42 @@ llvm.org_src_unpack() {
 			done
 		fi
 	fi
+}
+
+# @FUNCTION: llvm.org_src_prepare
+# @DESCRIPTION:
+# Call appropriate src_prepare (cmake or default) depending on inherited
+# eclasses.  Make sure that PATCHES and user patches are applied in top
+# ${WORKDIR}, so that patches straight from llvm-project repository
+# work correctly with -p1.
+llvm.org_src_prepare() {
+	if declare -f cmake_src_prepare >/dev/null; then
+		# cmake eclasses force ${S} for default_src_prepare
+		# but use ${CMAKE_USE_DIR} for everything else
+		CMAKE_USE_DIR=${S} \
+		S=${WORKDIR} \
+		cmake_src_prepare
+	else
+		pushd "${WORKDIR}" >/dev/null || die
+		default_src_prepare
+		popd >/dev/null || die
+	fi
+}
+
+
+# == helper functions ==
+
+# @ECLASS-VARIABLE: LIT_JOBS
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Number of test jobs to run simultaneously.  If unset, defaults
+# to '-j' in MAKEOPTS.  If that is not found, default to nproc.
+
+# @FUNCTION: get_lit_flags
+# @DESCRIPTION:
+# Get the standard recommended lit flags for running tests, in CMake
+# list form (;-separated).
+get_lit_flags() {
+	echo "-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 }

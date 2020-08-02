@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
 
@@ -28,8 +28,6 @@ RDEPEND="
 	app-arch/lz4
 	virtual/acl
 	dev-python/llfuse[${PYTHON_USEDEP}]
-	dev-python/msgpack[${PYTHON_USEDEP}]
-	dev-python/pyzmq[${PYTHON_USEDEP}]
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 "
@@ -39,14 +37,6 @@ DEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	${RDEPEND}
 "
-
-BDEPEND="dev-python/pkgconfig"
-
-python_prepare_all() {
-	# allow use of new (renamed) msgpack
-	sed -i "s|'msgpack-python.*',||g" setup.py || die
-	distutils-r1_python_prepare_all
-}
 
 src_install() {
 	distutils-r1_src_install

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools elisp-common
+inherit autotools elisp-common flag-o-matic
 
 # C-INTERCAL uses minor-major ordering of version components and
 # negative version numbers. We map version components -1, -2, ...
@@ -42,8 +42,14 @@ SITEFILE="50${PN}-gentoo.el"
 
 src_prepare() {
 	eapply "${FILESDIR}"/${P}-version.patch
+	eapply "${FILESDIR}"/${P}-no-common.patch
 	eapply_user
 	eautoreconf
+}
+
+src_configure() {
+	append-flags -fno-toplevel-reorder		#722862
+	econf
 }
 
 src_compile() {

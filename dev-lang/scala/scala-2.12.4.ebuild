@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -59,7 +59,7 @@ declare -a JURI=(
 )
 
 DESCRIPTION="The Scala Programming Language"
-HOMEPAGE="http://www.scala-lang.org/"
+HOMEPAGE="https://www.scala-lang.org/"
 SRC_URI="
 	!binary?  (
 		https://github.com/scala/scala/archive/v${PV}.tar.gz -> ${P}.tar.gz

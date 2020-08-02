@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{6,7,8})
+PYTHON_COMPAT=( python2_7 python3_{6,7,8,9})
 
 inherit distutils-r1
 
@@ -14,10 +14,9 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( >=dev-python/hypothesis-3.4.2[${PYTHON_USEDEP}] )
 "
 

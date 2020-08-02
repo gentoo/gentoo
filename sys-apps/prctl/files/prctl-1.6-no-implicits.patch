@@ -1,12 +1,9 @@
-diff --git a/prctl.c b/prctl.c
-index 2dcda79..01c542f 100644
 --- a/prctl.c
 +++ b/prctl.c
-@@ -27,3 +27,4 @@
+@@ -27,3 +27,3 @@
  #include <pwd.h>
 -#include <linux/prctl.h>
-+#include <linux/prctl.h> /* prctl constants */
-+#include <sys/prctl.h> /* prctl() proto */
++#include <sys/prctl.h> /* prctl constants, prctl() proto */
  #include <string.h>
 @@ -50,3 +51,3 @@ int verbose=0;
  

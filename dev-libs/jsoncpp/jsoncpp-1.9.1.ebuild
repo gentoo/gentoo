@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils python-any-r1
+inherit cmake python-any-r1
 
 DESCRIPTION="C++ JSON reader and writer"
 HOMEPAGE="https://github.com/open-source-parsers/jsoncpp"
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/open-source-parsers/${PN}/archive/${PV}.tar.gz -> ${
 
 LICENSE="|| ( public-domain MIT )"
 SLOT="0/21"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE="doc test"
 
 DEPEND="
@@ -49,11 +49,11 @@ src_configure() {
 		# Disable implicit ccache use
 		-DCCACHE_FOUND=OFF
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	if use doc; then
 		cp "${BUILD_DIR}"/version . || die
@@ -63,5 +63,5 @@ src_compile() {
 }
 
 src_test() {
-	cmake-utils_src_make jsoncpp_check
+	cmake_build jsoncpp_check
 }

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=(python{2_7,3_6})
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
 inherit distutils-r1 prefix
 
@@ -13,7 +13,8 @@ SRC_URI="https://github.com/jauhien/g-sorcery/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="bson git"
+IUSE="bson git test"
+RESTRICT="!test? ( test )"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 
 DEPEND="bson? ( dev-python/pymongo[${PYTHON_USEDEP}] )
@@ -21,6 +22,10 @@ DEPEND="bson? ( dev-python/pymongo[${PYTHON_USEDEP}] )
 	sys-apps/portage[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 PDEPEND=">=app-portage/layman-2.2.0[g-sorcery(-),${PYTHON_USEDEP}]"
+
+PATCHES=(
+	"${FILESDIR}/g-sorcery-0.2.1-py3.7.tests-fix.patch"
+)
 
 src_prepare() {
 	hprefixify setup.py

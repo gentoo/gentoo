@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,12 +12,13 @@ SRC_URI=""
 case ${PV} in
 9999)
 	SRC_URI=""
+	EGIT_BRANCH="Matrix"
 	EGIT_REPO_URI="https://github.com/xbmc/peripheral.joystick.git"
 	inherit git-r3
 	;;
 *)
 	KEYWORDS="~amd64 ~x86"
-	CODENAME="Leia"
+	CODENAME="Matrix"
 	SRC_URI="https://github.com/xbmc/peripheral.joystick/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/peripheral.joystick-${PV}-${CODENAME}"
 	;;
@@ -29,8 +30,8 @@ IUSE=""
 
 DEPEND="
 	~media-tv/kodi-9999
-	~media-libs/kodi-platform-9999
 	dev-libs/libpcre
+	dev-libs/tinyxml
 	"
 RDEPEND="
 	${DEPEND}

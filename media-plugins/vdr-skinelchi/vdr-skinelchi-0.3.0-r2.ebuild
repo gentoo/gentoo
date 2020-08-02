@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit vdr-plugin-2
+inherit flag-o-matic vdr-plugin-2
 
 DESCRIPTION="VDR Skin Plugin: skinelchi"
 HOMEPAGE="http://firefly.vdr-developer.org/skinelchi"
@@ -23,18 +23,18 @@ src_prepare() {
 
 	# disable imagemagick support, broken ...
 	sed -i "${S}"/Makefile -e \
-		"s:SKINELCHI_HAVE_IMAGEMAGICK = 1:SKINELCHI_HAVE_IMAGEMAGICK = 0:"
+		"s:SKINELCHI_HAVE_IMAGEMAGICK = 1:SKINELCHI_HAVE_IMAGEMAGICK = 0:" || die
 
 	sed -i "${S}"/DisplayChannel.c \
 		-e "s:/hqlogos::" \
-		-e "s:/logos::"
+		-e "s:/logos::" || die
 
 	# wrong sed in vdr-plugin-2.eclass?
 	sed -e "s:INCLUDES += -I\$(VDRINCDIR):INCLUDES += -I\$(VDRINCDIR)/include:" \
-		-i Makefile
+		-i Makefile || die
 
 	# gcc-6 warnings
-	sed -e "s:auto_ptr:unique_ptr:" -i services/epgsearch_services.h
+	sed -e "s:auto_ptr:unique_ptr:" -i services/epgsearch_services.h || die
 
 	# wrt bug 703994
 	eapply "${FILESDIR}/${P}_min_max_from_stl.patch"

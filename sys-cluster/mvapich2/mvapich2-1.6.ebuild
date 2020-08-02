@@ -1,13 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
 
-inherit fortran-2
+inherit fortran-2 toolchain-funcs
 
 DESCRIPTION="MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB"
 HOMEPAGE="http://mvapich.cse.ohio-state.edu/"
-SRC_URI="${HOMEPAGE}/download/mvapich2/mvapich2-${PV/_/-}.tgz"
+SRC_URI="http://mvapich.cse.ohio-state.edu/download/mvapich2/mvapich2-${PV/_/-}.tgz"
 
 SLOT="0"
 LICENSE="BSD"

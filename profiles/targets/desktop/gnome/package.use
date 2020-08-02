@@ -1,5 +1,15 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Mart Raudsepp <leio@gentoo.org> (2020-05-08)
+# evolution-data-server requires libical[vala] by default
+dev-libs/libical vala
+
+# Mart Raudsepp <leio@gentoo.org> (2020-02-16)
+# GNOME requires systemd user-session functionality for launching some services.
+# GNOME-3.34 requires it for basic session launching with systemd.
+sys-apps/dbus user-session
+net-wireless/bluez user-session
 
 # REQUIRED_USE constraint when pulseaudio is enabled
 dev-libs/efl sound
@@ -36,10 +46,6 @@ media-libs/grilo playlist
 
 # Pulled in by tracker and grilo-plugins, has REQUIRED_USE="?? ( gtk qt5 )"
 media-libs/libmediaart gtk -qt5
-
-# Pulled in by net-im/telepathy-connection-managers[msn] (via dev-python/papyon
-# and net-voip/telepathy-butterfly)
-net-libs/libproxy python
 
 # For net-misc/vinagre-3.4 and gnome-boxes
 net-misc/spice-gtk gtk3

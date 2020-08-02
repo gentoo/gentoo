@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,9 +19,9 @@ HOMEPAGE="https://www.oyranos.org/"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="cairo cups doc examples exif fltk jpeg qt5 raw scanner static-libs test tiff X"
+IUSE="cairo cups doc examples exif fltk jpeg raw scanner static-libs test tiff X"
 
-REQUIRED_USE="qt5? ( X ) test? ( static-libs )"
+REQUIRED_USE="test? ( static-libs )"
 
 COMMON_DEPEND="
 	app-admin/elektra
@@ -36,14 +36,6 @@ COMMON_DEPEND="
 	exif? ( media-gfx/exiv2:= )
 	fltk? ( x11-libs/fltk:1 )
 	jpeg? ( virtual/jpeg:0 )
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtsvg:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtx11extras:5
-		dev-qt/qtxml:5
-	)
 	raw? ( media-libs/libraw )
 	scanner? ( media-gfx/sane-backends )
 	tiff? ( media-libs/tiff:0 )
@@ -96,7 +88,7 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_Exif2=$(usex !exif)
 		-DCMAKE_DISABLE_FIND_PACKAGE_FLTK=$(usex !fltk)
 		-DCMAKE_DISABLE_FIND_PACKAGE_JPEG=$(usex !jpeg)
-		-DCMAKE_DISABLE_FIND_PACKAGE_Qt5=$(usex !qt5)
+		-DCMAKE_DISABLE_FIND_PACKAGE_Qt5=ON
 		-DCMAKE_DISABLE_FIND_PACKAGE_LibRaw=$(usex !raw)
 		-DCMAKE_DISABLE_FIND_PACKAGE_Sane=$(usex !scanner)
 		-DENABLE_STATIC_LIBS=$(usex static-libs)

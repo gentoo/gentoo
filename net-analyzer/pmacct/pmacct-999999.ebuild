@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="
-	64bit +bgp-bins +bmp-bins geoip geoipv2 jansson kafka +l2 mongodb mysql
+	+bgp-bins +bmp-bins geoip geoipv2 jansson kafka +l2 mongodb mysql
 	ndpi nflog plabel postgres rabbitmq sqlite +st-bins +traffic-bins zmq
 "
 REQUIRED_USE="
@@ -32,7 +32,7 @@ RDEPEND="
 		<dev-libs/mongo-c-driver-0.98
 	)
 	mysql? ( dev-db/mysql-connector-c:0= )
-	ndpi? ( >=net-libs/nDPI-2.4:= )
+	ndpi? ( >=net-libs/nDPI-3.2:= )
 	nflog? ( net-libs/libnetfilter_log )
 	postgres? ( dev-db/postgresql:* )
 	rabbitmq? ( net-libs/rabbitmq-c )
@@ -43,9 +43,6 @@ DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 "
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.7.3-nDPI-3.0.patch
-)
 
 DOCS=(
 	CONFIG-KEYS ChangeLog FAQS QUICKSTART UPGRADE
@@ -60,10 +57,9 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC AR RANLIB
-	append-cppflags -DMYSQL_SERVER_VERSION=99999999
+	append-cflags -fcommon
 
 	econf \
-		$(use_enable 64bit) \
 		$(use_enable bgp-bins) \
 		$(use_enable bmp-bins) \
 		$(use_enable geoip) \

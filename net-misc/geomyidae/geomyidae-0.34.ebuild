@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,17 +15,19 @@ KEYWORDS="~amd64 ~arm ~x86"
 
 S="${WORKDIR}/${PN}-v${PV}"
 
-pkg_setup(){
+pkg_setup() {
 	enewgroup gopherd
 	enewuser gopherd -1 -1 /var/gopher gopherd
 }
 
 src_prepare() {
 	# enable verbose build
-	# drop -O. from CFLAGS
+	# respect CFLAGS
+	# remove /usr/lib from LDFLAGS, bug #731672
 	sed -i \
 		-e 's/@${CC}/${CC}/g' \
-		-e '/CFLAGS/s/-O. //' \
+		-e '/CFLAGS/s/=/?=/' \
+		-e '/GEOM_LDFLAGS/s:-L/usr/lib ::' \
 		Makefile || die 'sed on Makefile failed'
 	# fix path for pid file
 	sed -i \

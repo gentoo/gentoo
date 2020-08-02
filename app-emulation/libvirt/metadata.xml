@@ -48,9 +48,6 @@
 		Support management of VirtualBox virtualisation (one of <pkg>app-emulation/virtualbox</pkg> or
 		<pkg>app-emulation/virtualbox-bin</pkg>)
 	</flag>
-	<flag name="phyp">
-		Support IBM HMC / IVM hypervisor via PHYP protocol
-	</flag>
 	<!-- Miscellaneous flags -->
 	<flag name="apparmor">Enable AppArmor support</flag>
 	<flag name="dtrace">Enable dtrace support via <pkg>dev-util/systemtap</pkg></flag>
@@ -70,9 +67,6 @@
 	</flag>
 	<flag name="pcap">
 		Support auto learning IP addreses for routing
-	</flag>
-	<flag name="pm-utils">
-		Add runtime support for <pkg>sys-power/pm-utils</pkg>
 	</flag>
 	<flag name="macvtap">
 		Support for MAC-based TAP (macvlan/macvtap). For networking instead

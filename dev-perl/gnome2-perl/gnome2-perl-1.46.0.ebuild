@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,11 +9,11 @@ DIST_VERSION=1.046
 inherit perl-module
 
 DESCRIPTION="Perl interface to the 2.x series of the Gnome libraries"
-HOMEPAGE="http://gtk2-perl.sourceforge.net/ ${HOMEPAGE}"
+HOMEPAGE="http://gtk2-perl.sourceforge.net/ https://metacpan.org/release/Gnome2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 x86"
+KEYWORDS="~alpha amd64 x86"
 IUSE=""
 
 RDEPEND="x11-libs/gtk+:2

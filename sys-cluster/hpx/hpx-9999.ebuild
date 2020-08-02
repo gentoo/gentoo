@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_{6..8} )
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
@@ -11,45 +11,74 @@ if [[ ${PV} == 9999 ]] ; then
 else
 	SRC_URI="https://stellar.cct.lsu.edu/files/${PN}_${PV}.tar.gz"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-	S="${WORKDIR}/${PN}_${PV}"
 fi
-inherit cmake fortran-2 python-any-r1
+inherit cmake fortran-2 python-single-r1 check-reqs multiprocessing
 
 DESCRIPTION="C++ runtime system for parallel and distributed applications"
 HOMEPAGE="https://stellar.cct.lsu.edu/tag/hpx/"
 
 SLOT="0"
 LICENSE="Boost-1.0"
-IUSE="doc examples jemalloc papi +perftools tbb test"
+IUSE="doc examples jemalloc mpi papi +perftools tbb test"
 RESTRICT="!test? ( test )"
 
-REQUIRED_USE="?? ( jemalloc perftools tbb )"
+REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
+	?? ( jemalloc perftools tbb )
+"
 
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( >=dev-libs/boost-1.56.0-r1[tools] )
-"
-RDEPEND="
-	>=dev-libs/boost-1.49:=
-	>=sys-apps/hwloc-1.8
-	>=sys-libs/libunwind-1
-	sys-libs/zlib
-	papi? ( dev-libs/papi )
-	perftools? ( >=dev-util/google-perftools-1.7.1 )
-	tbb? ( dev-cpp/tbb )
-"
-DEPEND="${RDEPEND}
+	doc? (
+		${PYTHON_DEPS}
+		app-doc/doxygen
+		$(python_gen_cond_dep '
+			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
+			dev-python/sphinx_rtd_theme[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/breathe-4.14[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 	test? ( ${PYTHON_DEPS} )
 "
+RDEPEND="
+	${PYTHON_DEPS}
+	dev-libs/boost:=
+	sys-apps/hwloc
+	sys-libs/zlib
+	mpi? ( virtual/mpi )
+	papi? ( dev-libs/papi )
+	perftools? ( dev-util/google-perftools )
+	tbb? ( dev-cpp/tbb )
+"
+DEPEND="${RDEPEND}"
+
+hpx_memory_requirement() {
+	# HPX needs enough main memory for compiling
+	# rule of thumb: 1G per job
+	if [[ -z ${MAKEOPTS} ]] ; then
+		echo "2G"
+	else
+		local jobs=$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")
+		echo "${jobs}G"
+	fi
+}
+
+pkg_pretend() {
+	local CHECKREQS_MEMORY=$(hpx_memory_requirement)
+	check-reqs_pkg_setup
+}
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	local CHECKREQS_MEMORY=$(hpx_memory_requirement)
+	check-reqs_pkg_setup
+	python-single-r1_pkg_setup
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DHPX_WITH_EXAMPLES=OFF
 		-DHPX_WITH_DOCUMENTATION=$(usex doc)
+		-DHPX_WITH_PARCELPORT_MPI=$(usex mpi)
 		-DHPX_WITH_PAPI=$(usex papi)
 		-DHPX_WITH_GOOGLE_PERFTOOLS=$(usex perftools)
 		-DBUILD_TESTING=$(usex test)
@@ -67,16 +96,18 @@ src_configure() {
 	cmake_src_configure
 }
 
+src_compile() {
+	cmake_src_compile
+	use test && cmake_build tests
+}
+
 src_test() {
 	# avoid over-suscribing
-	cmake_build -j1 tests
+	cmake_src_test -j1
 }
 
 src_install() {
 	cmake_src_install
-	if use examples; then
-		mv "${D}/usr/bin/spin" "${D}/usr/bin/hpx_spin" || die
-		insinto /usr/share/doc/${PF}
-		doins -r examples
-	fi
+	use examples && dodoc -r examples/
+	python_fix_shebang "${ED}"
 }

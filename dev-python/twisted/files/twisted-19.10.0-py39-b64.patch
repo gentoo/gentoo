@@ -1,0 +1,165 @@
+From f56133a2e0d7ddf9ee6e43bf9e1d62e970cb0b3a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 27 May 2020 13:23:37 +0200
+Subject: [PATCH] Replace base64.*string() functions to fix py3.9 support
+
+Replace base64.decodestring() and .encodestring() functions as they
+were deprecated since Python 3.1 in favor of (equivalent) .decodebytes()
+and .encodebytes(), and were eventually removed in Python 3.9.
+
+While at it, replace most of their uses with base64.b64encode()
+and .b64decode() that are preferable to the former wrt ticket #6446,
+and they do not introduce line breaks that the twisted code usually
+discarded.
+
+Use .decodebytes() and .encodebytes() in DirDBM as it seems to rely
+on the exact presence of newlines, and changing that would break
+backwards compatibility.
+
+Fixes: ticket:6446
+Fixes: ticket:9831
+---
+ src/twisted/conch/scripts/tkconch.py          |  2 +-
+ src/twisted/conch/test/test_keys.py           |  2 +-
+ src/twisted/mail/pop3.py                      |  4 ++--
+ src/twisted/mail/test/test_pop3.py            |  4 ++--
+ src/twisted/persisted/dirdbm.py               | 10 ++++++++--
+ src/twisted/web/http.py                       |  2 +-
+ src/twisted/web/test/test_http.py             |  6 +++---
+ 14 files changed, 18 insertions(+), 12 deletions(-)
+
+diff --git a/src/twisted/conch/scripts/tkconch.py b/src/twisted/conch/scripts/tkconch.py
+index 9c48e8a7f..5e007ebdc 100644
+--- a/src/twisted/conch/scripts/tkconch.py
++++ b/src/twisted/conch/scripts/tkconch.py
+@@ -409,7 +409,7 @@ class SSHClientTransport(transport.SSHClientTransport):
+                 "known hosts.\r\n" %
+                 (khHost, {b'ssh-dss':'DSA', b'ssh-rsa':'RSA'}[keyType]))
+             with open(os.path.expanduser('~/.ssh/known_hosts'), 'a') as known_hosts:
+-                encodedKey = base64.encodestring(pubKey).replace(b'\n', b'')
++                encodedKey = base64.b64encode(pubKey)
+                 known_hosts.write('\n%s %s %s' % (khHost, keyType, encodedKey))
+         except:
+             log.deferr()
+diff --git a/src/twisted/conch/test/test_keys.py b/src/twisted/conch/test/test_keys.py
+index 41e49f415..795e7b8d7 100644
+--- a/src/twisted/conch/test/test_keys.py
++++ b/src/twisted/conch/test/test_keys.py
+@@ -352,7 +352,7 @@ SUrCyZXsNh6VXwjs3gKQ
+ 
+         self.assertRaises(
+             keys.BadKeyError,
+-            keys.Key.fromString, data=b'{' + base64.encodestring(sexp) + b'}',
++            keys.Key.fromString, data=b'{' + base64.b64encode(sexp) + b'}',
+             )
+ 
+ 
+diff --git a/src/twisted/mail/pop3.py b/src/twisted/mail/pop3.py
+index ffe9714c9..057389e3a 100644
+--- a/src/twisted/mail/pop3.py
++++ b/src/twisted/mail/pop3.py
+@@ -728,7 +728,7 @@ class POP3(basic.LineOnlyReceiver, policies.TimeoutMixin):
+         self._auth = auth()
+         chal = self._auth.getChallenge()
+ 
+-        self.sendLine(b'+ ' + base64.encodestring(chal).rstrip(b'\n'))
++        self.sendLine(b'+ ' + base64.b64encode(chal))
+         self.state = 'AUTH'
+ 
+ 
+@@ -747,7 +747,7 @@ class POP3(basic.LineOnlyReceiver, policies.TimeoutMixin):
+         """
+         self.state = "COMMAND"
+         try:
+-            parts = base64.decodestring(line).split(None, 1)
++            parts = base64.b64decode(line).split(None, 1)
+         except binascii.Error:
+             self.failResponse(b"Invalid BASE64 encoding")
+         else:
+diff --git a/src/twisted/mail/test/test_pop3.py b/src/twisted/mail/test/test_pop3.py
+index ea513487c..36780d9c9 100644
+--- a/src/twisted/mail/test/test_pop3.py
++++ b/src/twisted/mail/test/test_pop3.py
+@@ -1097,12 +1097,12 @@ class SASLTests(unittest.TestCase):
+ 
+         p.lineReceived(b"AUTH CRAM-MD5")
+         chal = s.getvalue().splitlines()[-1][2:]
+-        chal = base64.decodestring(chal)
++        chal = base64.b64decode(chal)
+         response = hmac.HMAC(b'testpassword', chal,
+                              digestmod=md5).hexdigest().encode("ascii")
+ 
+         p.lineReceived(
+-            base64.encodestring(b'testuser ' + response).rstrip(b'\n'))
++            base64.b64encode(b'testuser ' + response))
+         self.assertTrue(p.mbox)
+         self.assertTrue(s.getvalue().splitlines()[-1].find(b"+OK") >= 0)
+         p.connectionLost(failure.Failure(Exception("Test harness disconnect")))
+diff --git a/src/twisted/persisted/dirdbm.py b/src/twisted/persisted/dirdbm.py
+index f97c526d0..d9f29cce2 100644
+--- a/src/twisted/persisted/dirdbm.py
++++ b/src/twisted/persisted/dirdbm.py
+@@ -81,14 +81,20 @@ class DirDBM:
+         Encode a key so it can be used as a filename.
+         """
+         # NOTE: '_' is NOT in the base64 alphabet!
+-        return base64.encodestring(k).replace(b'\n', b'_').replace(b"/", b"-")
++        try:
++            return base64.encodebytes(k).replace(b'\n', b'_').replace(b"/", b"-")
++        except AttributeError:
++            return base64.encodestring(k).replace(b'\n', b'_').replace(b"/", b"-")
+ 
+ 
+     def _decode(self, k):
+         """
+         Decode a filename to get the key.
+         """
+-        return base64.decodestring(k.replace(b'_', b'\n').replace(b"-", b"/"))
++        try:
++            return base64.decodebytes(k.replace(b'_', b'\n').replace(b"-", b"/"))
++        except AttributeError:
++            return base64.decodestring(k.replace(b'_', b'\n').replace(b"-", b"/"))
+ 
+ 
+     def _readFile(self, path):
+diff --git a/src/twisted/web/http.py b/src/twisted/web/http.py
+index fe88d3373..602a58f31 100644
+--- a/src/twisted/web/http.py
++++ b/src/twisted/web/http.py
+@@ -1540,7 +1540,7 @@ class Request:
+             bas, upw = authh.split()
+             if bas.lower() != b"basic":
+                 raise ValueError()
+-            upw = base64.decodestring(upw)
++            upw = base64.b64decode(upw)
+             self.user, self.password = upw.split(b':', 1)
+         except (binascii.Error, ValueError):
+             self.user = self.password = ""
+diff --git a/src/twisted/web/test/test_http.py b/src/twisted/web/test/test_http.py
+index 6001d1e40..70065e232 100644
+--- a/src/twisted/web/test/test_http.py
++++ b/src/twisted/web/test/test_http.py
+@@ -1513,7 +1513,7 @@ class ParsingTests(unittest.TestCase):
+                 requests.append(self)
+ 
+         for u, p in [(b"foo", b"bar"), (b"hello", b"there:z")]:
+-            s = base64.encodestring(b":".join((u, p))).strip()
++            s = base64.b64encode(b":".join((u, p)))
+             f = b"GET / HTTP/1.0\nAuthorization: Basic " + s + b"\n\n"
+             self.runRequest(f, Request, 0)
+             req = requests.pop()
+@@ -2139,9 +2139,9 @@ Hello,
+ 
+         u = b"foo"
+         p = b"bar"
+-        s = base64.encodestring(b":".join((u, p))).strip()
++        s = base64.b64encode(b":".join((u, p)))
+         f = b"GET / HTTP/1.0\nAuthorization: Basic " + s + b"\n\n"
+-        self.patch(base64, 'decodestring', lambda x: [])
++        self.patch(base64, 'b64decode', lambda x: [])
+         self.runRequest(f, Request, 0)
+         req = requests.pop()
+         self.assertEqual(('', ''), req.credentials)
+-- 
+2.26.2
+

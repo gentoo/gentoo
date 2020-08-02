@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils flag-o-matic autotools
+inherit eutils flag-o-matic autotools ltprune
 
 DESCRIPTION="An Portable Open Source UPnP Development Kit"
 HOMEPAGE="http://pupnp.sourceforge.net/"
@@ -40,7 +40,7 @@ src_configure() {
 		$(use_with doc documentation "${EPREFIX}/usr/share/doc/${PF}")
 }
 
-src_install () {
+src_install() {
 	default
 	dobin upnp/sample/.libs/tv_{combo,ctrlpt,device}
 	use static-libs || prune_libtool_files

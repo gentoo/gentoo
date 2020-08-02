@@ -1,9 +1,64 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-07-18)
+# net-libs/webkit-gtk has no ppc keywords
+app-editors/emacs xwidgets
+gnome-extra/evolution-data-server oauth
+app-office/gnucash gui doc
+dev-util/geany-plugins markdown
+>=media-gfx/gthumb-3.10.0 http
+# needs mail-client/evolution, depends on net-libs/webkit-gtk
+app-office/planner eds
+# needs gnome-extra/sushi, depends on net-libs/webkit-gtk
+gnome-base/nautilus previewer
+# needs libgdata[gnome-online-accounts], depends on net-libs/webkit-gtk
+gnome-base/gvfs google
+gnome-base/gnome-control-center flickr
+# needs x11-libs/wxGTK[webkit]
+sci-misc/boinc X
+# needs mail-client/evolution, depends on net-libs/webkit-gtk
+net-mail/lbdb evo
+# needs www-client/epiphany, depends on net-libs/webkit-gtk
+net-misc/gwget epiphany
+# needs dev-util/devhelp, depends on net-libs/webkit-gtk
+dev-util/anjuta devhelp
+
+# Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
+# clisp is keyworded on ppc
+app-text/texlive-core -xindy
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-05-09)
+# No sys-cluster/ceph keywords on ppc.
+sys-block/tgt rbd
+
+# James Le Cuirot <chewi@gentoo.org> (2020-04-23)
+# Requires media-libs/mesa[llvm], which is masked.
+dev-python/pyopengl test
+
+# Andrey Utkin <andrey_utkin@gentoo.org> (2020-03-11)
+# USE=bpf depends on sys-devel/clang which is not keyworded on ppc.
+media-tv/v4l-utils bpf
+
+# Matthew Thode <prometheanfire@gentoo.org> (2020-02-17)
+# Mask until net-analyzer/icinga2 is keyworded
+net-analyzer/pnp4nagios icinga
+
+# Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
+# Mask until dev-libs/libfido2 is keyworded
+net-misc/openssh security-key
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
+# media-libs/libheif is not keyworded
+media-gfx/gimp heif
 
 # Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
 # PPS should work on all arches, but only keyworded on some arches
 >=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
+
+# Jaco Kroon <jaco@uls.co.za> (2019-11-28)
+# Unfortunately net-libs/bcg729 isn't available for ppc
+net-libs/pjproject g729
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
 # iasl is stable on ppc

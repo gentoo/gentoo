@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ DEPEND="media-video/vdr"
 src_prepare() {
 	vdr-plugin-2_src_prepare
 
-	sed -e "s:RegisterI18n://RegisterI18n:" -i freecell.c
+	sed -e "s:RegisterI18n://RegisterI18n:" -i freecell.c || die
 
 	eapply -p2 "${FILESDIR}/gcc-3.4.patch"
 	eapply "${FILESDIR}/${P}-gentoo.diff"

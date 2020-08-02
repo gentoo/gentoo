@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,8 +26,8 @@ src_prepare() {
 		-e "s:/usr/adm/sm.bin:/var/lib/smrsh:g" \
 		-i README -i smrsh.8 || die "sed failed"
 
-	sed -e "s:@@confCCOPTS@@:${CFLAGS}:" \
-		-e "s:@@confLDOPTS@@:${LDFLAGS}:" \
+	sed -e "s|@@confCCOPTS@@|${CFLAGS}|" \
+		-e "s|@@confLDOPTS@@|${LDFLAGS}|" \
 		-e "s:@@confCC@@:$(tc-getCC):" "${FILESDIR}/site.config.m4" \
 		> "${S}/devtools/Site/site.config.m4" || die "sed failed"
 }

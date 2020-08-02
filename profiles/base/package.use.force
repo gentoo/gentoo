@@ -1,11 +1,33 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Lars Wendler <polynomial-c@gentoo.org> (2019-12-23)
-# This release does no longer build with x11-libs/gtk+:2
-# and upstream has no intention to fix this.
-# https://bugs.gentoo.org/703592
-~www-client/seamonkey-2.49.5 force-gtk3
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-06-24)
+# Don't let people lose 'cc' or 'f77' by accident.
+sys-devel/gcc-config cc-wrappers
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-05-24)
+# Many base packages still rely on unqualified tools.
+# To contain the breakage flags are masked. Once most packages
+# build with unqualified tools missing we will lift
+# the force flag. More details are at:
+#    https://wiki.gentoo.org/wiki/Project:Toolchain/use_native_symlinks
+sys-devel/binutils-config native-symlinks
+sys-devel/gcc-config      native-symlinks
+
+# Michał Górny <mgorny@gentoo.org> (2017-12-30)
+# Require user configs unless we supply our own .config.
+sys-kernel/gentoo-kernel savedconfig
+sys-kernel/vanilla-kernel savedconfig
+
+# Matt Turner <mattst88@gentoo.org> (2020-03-28)
+# wget is the default FETCHCOMMAND, and most distfiles are distributed via
+# HTTPS. Bug #611072
+net-misc/wget ssl
+
+# Michał Górny <mgorny@gentoo.org> (2020-01-12)
+# libcxxabi is the only supported option.  The support for libsupc++
+# is maintained for experts only.
+sys-libs/libcxx libcxxabi
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-06)
 # Non-initramfs builds do not work with the default .config.  Force
@@ -109,6 +131,7 @@ dev-lang/python-exec python_targets_python2_7
 dev-lang/python-exec python_targets_python3_6
 dev-lang/python-exec python_targets_python3_7
 dev-lang/python-exec python_targets_python3_8
+dev-lang/python-exec python_targets_python3_9
 dev-lang/python-exec python_targets_pypy3
 
 # Zac Medico <zmedico@gentoo.org> (2010-10-20)

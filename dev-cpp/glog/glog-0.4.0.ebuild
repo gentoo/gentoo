@@ -11,11 +11,12 @@ SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-linux ~x86-linux"
+# -sparc as libunwind is not ported on sparc
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 -sparc x86 ~amd64-linux ~x86-linux"
 IUSE="gflags static-libs test"
 RESTRICT="test"
 
-RDEPENDS="sys-libs/libunwind[${MULTILIB_USEDEP}]
+RDEPEND="sys-libs/libunwind[${MULTILIB_USEDEP}]
 	gflags? ( dev-cpp/gflags[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	test? ( >=dev-cpp/gtest-1.8.0[${MULTILIB_USEDEP}] )"

@@ -1,0 +1,181 @@
+--- a/src/sn_data.h
++++ b/src/sn_data.h
+@@ -101,7 +101,7 @@
+ char IP[256];
+ unsigned long SNIFLEN;                            /* bytes we need to snif */
+ short DEST_PORT, SRC_PORT;                             /* destination port */
+-char non_printable, *logging_device;
++char non_printable;
+ 
+ /**** Global data (packets) *************************************************/
+ int PROTO_HEAD;    /* Base Protocol head length (ethernet, PPP ,....) */
+@@ -147,43 +147,6 @@
+ /**** Global data (plugins) *************************************************/
+ char Plugin_Active[10];
+ 
+-/**** Global data (interactive) *********************************************/
+-#ifdef INCLUDE_INTERFACE
+-
+-/**** shared memory pointers ************************************************/
+-char *SHARED, *connection_data, *timing, *running_connections,
+-						  *logged_connections;
+-int *LISTlength, *DATAlength, memory_id;
+-unsigned int  *TCP_nr_of_packets, *ICMP_nr_of_packets, *UDP_nr_of_packets;
+-unsigned int  *IP_nr_of_packets;
+-unsigned long *TCP_bytes_in_packets, *UDP_bytes_in_packets;
+-int *DESC_LEN;
+-
+-/**** data structures *******************************************************/
+-struct snif_mask *mask;
+-struct shared_logged_conn *log_conn;
+-FILE *log_dev_stream;
+-struct stat log_dev_stat;
+-
+-volatile int LOGGING=0, screen_busy=0;
+-char PACKET_INFO;
+-int POINTpos=0, LISTpos=0;
+-unsigned char COLOR_AVAIL=0;
+-
+-/**** screen  **************************************************************/
+-int MASK_WINDOW_ROWS, MASK_WINDOW_COLS;
+-int MAIN_WINDOW_ROWS, MAIN_WINDOW_COLS;
+-int INFO_WINDOW_ROWS, INFO_WINDOW_COLS;
+-int DATA_WINDOW_ROWS, DATA_WINDOW_COLS;
+-int INFO_WINDOW_X, INFO_WINDOW_Y;
+-int MASK_WINDOW_X, MASK_WINDOW_Y;
+-int DATA_WINDOW_X, DATA_WINDOW_Y;
+-
+-WINDOW *menu_window;
+-struct box_window data_box, main_box, mask_box, packets_box;
+-int Pid=0;
+-#endif
+-
+ /* DEBUG section */
+ #ifdef DEBUG
+ FILE *debug_dev;
+--- a/src/sn_global.h
++++ b/src/sn_global.h
+@@ -4,7 +4,6 @@
+ /* currently some option data */
+ 
+ char SNIFMODE, DUMPMODE, PROTOCOLS, ASC, WILDCARD, CFG_FILE, NO_CHKSUM;
+-char INTERACTIVE_EXTEND;
+ int LOGPARAM;
+                                                       /* All option shit */
+ 
+--- a/src/sn_interface.c
++++ b/src/sn_interface.c
+@@ -18,37 +18,37 @@
+ #include "sn_generation.h"
+ #include "sn_resolv.h"
+ 
+-/*** extern stuff ********/
+-extern char *SHARED, *connection_data, *timing, *running_connections,
++/*** global stuff ********/
++char *SHARED, *connection_data, *timing, *running_connections,
+                                                   *logged_connections;
+-extern int *LISTlength, *DATAlength, memory_id;
+-extern unsigned int  *TCP_nr_of_packets, *ICMP_nr_of_packets, *UDP_nr_of_packets; unsigned int  *IP_nr_of_packets;
+-extern unsigned long *TCP_bytes_in_packets, *UDP_bytes_in_packets;
+-extern int *DESC_LEN;   /* For the connection desciption */
+-
+-extern char INTERACTIVE_EXTEND;
+-
+-extern struct snif_mask *mask;
+-extern struct shared_logged_conn *log_conn;
+-extern FILE *log_dev_stream;
+-extern struct stat log_dev_stat;
+-
+-extern volatile int LOGGING, screen_busy;
+-extern char PACKET_INFO;
+-extern int POINTpos, LISTpos;
+-extern unsigned char COLOR_AVAIL;
+-
+-extern WINDOW *menu_window;
+-extern struct box_window data_box, main_box, mask_box, packets_box;
+-extern int Pid;
+-extern char *logging_device;
++int *LISTlength, *DATAlength, memory_id;
++unsigned int  *TCP_nr_of_packets, *ICMP_nr_of_packets, *UDP_nr_of_packets; unsigned int  *IP_nr_of_packets;
++unsigned long *TCP_bytes_in_packets, *UDP_bytes_in_packets;
++int *DESC_LEN;   /* For the connection desciption */
++
++char INTERACTIVE_EXTEND;
++
++struct snif_mask *mask;
++struct shared_logged_conn *log_conn;
++FILE *log_dev_stream;
++struct stat log_dev_stat;
++
++volatile int LOGGING, screen_busy;
++char PACKET_INFO;
++int POINTpos, LISTpos;
++unsigned char COLOR_AVAIL;
++
++WINDOW *menu_window;
++struct box_window data_box, main_box, mask_box, packets_box;
++int Pid;
++char *logging_device;
+ 
+ 
+ /*** Screen Parameters ***/
+-extern int MASK_WINDOW_ROWS, MASK_WINDOW_COLS, MAIN_WINDOW_ROWS, MAIN_WINDOW_COLS;
+-extern int INFO_WINDOW_ROWS, INFO_WINDOW_COLS, DATA_WINDOW_ROWS, DATA_WINDOW_COLS;
+-extern int INFO_WINDOW_X, INFO_WINDOW_Y, MASK_WINDOW_X, MASK_WINDOW_Y;
+-extern int DATA_WINDOW_X, DATA_WINDOW_Y;
++int MASK_WINDOW_ROWS, MASK_WINDOW_COLS, MAIN_WINDOW_ROWS, MAIN_WINDOW_COLS;
++int INFO_WINDOW_ROWS, INFO_WINDOW_COLS, DATA_WINDOW_ROWS, DATA_WINDOW_COLS;
++int INFO_WINDOW_X, INFO_WINDOW_Y, MASK_WINDOW_X, MASK_WINDOW_Y;
++int DATA_WINDOW_X, DATA_WINDOW_Y;
+ 
+ 
+ /*** Sreen operations ***/
+--- a/src/sn_interface.h
++++ b/src/sn_interface.h
+@@ -1,9 +1,46 @@
+ /* Sniffit Data File                                                       */
+ 
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <unistd.h>
+ #include "pcap.h"
+ 
+ typedef void (*sig_hand)(int );  /* sighandler_t gave errors, weird */
+ 
++/*** global stuff ********/
++extern unsigned int  *IP_nr_of_packets;
++extern char *SHARED, *connection_data, *timing, *running_connections,
++                                                  *logged_connections;
++extern int *LISTlength, *DATAlength, memory_id;
++extern unsigned int  *TCP_nr_of_packets, *ICMP_nr_of_packets, *UDP_nr_of_packets;
++extern unsigned int  *IP_nr_of_packets;
++extern unsigned long *TCP_bytes_in_packets, *UDP_bytes_in_packets;
++extern int *DESC_LEN;   /* For the connection desciption */
++
++extern char INTERACTIVE_EXTEND;
++
++extern struct snif_mask *mask;
++extern struct shared_logged_conn *log_conn;
++extern FILE *log_dev_stream;
++extern struct stat log_dev_stat;
++
++extern volatile int LOGGING, screen_busy;
++extern char PACKET_INFO;
++extern int POINTpos, LISTpos;
++extern unsigned char COLOR_AVAIL;
++
++extern WINDOW *menu_window;
++extern struct box_window data_box, main_box, mask_box, packets_box;
++extern int Pid;
++extern char *logging_device;
++
++
++/*** Screen Parameters ***/
++extern int MASK_WINDOW_ROWS, MASK_WINDOW_COLS, MAIN_WINDOW_ROWS, MAIN_WINDOW_COLS;
++extern int INFO_WINDOW_ROWS, INFO_WINDOW_COLS, DATA_WINDOW_ROWS, DATA_WINDOW_COLS;
++extern int INFO_WINDOW_X, INFO_WINDOW_Y, MASK_WINDOW_X, MASK_WINDOW_Y;
++extern int DATA_WINDOW_X, DATA_WINDOW_Y;
++
+ int add_itemlist(char *, char *, char *);
+ void child_exit (void);
+ void clear_shared_mem(char);

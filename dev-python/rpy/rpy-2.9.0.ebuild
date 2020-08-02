@@ -29,7 +29,6 @@ RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	>=dev-python/pandas-0.13.1[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	virtual/python-singledispatch[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	test? ( >=dev-lang/R-3.2[X,png] )

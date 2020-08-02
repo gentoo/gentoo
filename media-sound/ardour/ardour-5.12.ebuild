@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -75,7 +75,7 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
-src_prepare(){
+src_prepare() {
 	eapply_user
 	if ! [[ ${PV} == *9999* ]]; then
 		eapply "${FILESDIR}"/${PN}-4.x-revision-naming.patch
@@ -131,8 +131,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "If you are using Ardour and want to keep its development alive"
-	elog "then please consider to make a donation upstream at ${HOMEPAGE}."
 	elog "Please do _not_ report problems with the package to ${PN} upstream."
 	elog "If you think you've found a bug, check the upstream binary package"
 	elog "before you report anything to upstream."

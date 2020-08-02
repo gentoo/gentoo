@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_6 )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1 flag-o-matic
 
@@ -11,13 +11,15 @@ MYPN="${PN/scikits_/scikit-}"
 MYP="${MYPN}-${PV}"
 
 DESCRIPTION="Python modules for machine learning and data mining"
-HOMEPAGE="http://scikit-learn.org"
+HOMEPAGE="https://scikit-learn.org"
 SRC_URI="mirror://pypi/${MYPN:0:1}/${MYPN}/${MYP}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples test"
+
+RESTRICT="!test? ( test )"
 
 # tried to unbundle virtual/python-funcsigs, funcsigs, odict
 # but it is a large mess to maintain

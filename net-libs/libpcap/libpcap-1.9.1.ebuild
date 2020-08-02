@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~riscv s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="bluetooth dbus netlink static-libs usb"
 
 RDEPEND="
@@ -27,7 +27,7 @@ DEPEND="
 	${RDEPEND}
 	sys-devel/flex
 	virtual/yacc
-	dbus? ( virtual/pkgconfig[${MULTILIB_USEDEP}] )
+	dbus? ( virtual/pkgconfig )
 "
 
 S=${WORKDIR}/${PN}-${P/_}
@@ -49,9 +49,10 @@ multilib_src_configure() {
 	ECONF_SOURCE="${S}" \
 	econf \
 		$(use_enable bluetooth) \
-		$(use_enable usb) \
 		$(use_enable dbus) \
+		$(use_enable usb) \
 		$(use_with netlink libnl) \
+		--disable-rdma \
 		--enable-ipv6
 }
 

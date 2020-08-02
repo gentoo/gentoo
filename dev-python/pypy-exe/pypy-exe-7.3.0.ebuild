@@ -14,11 +14,11 @@ S="${WORKDIR}/${MY_P}-src"
 
 LICENSE="MIT"
 SLOT="${PV}"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 +jit low-memory ncurses cpu_flags_x86_sse2"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
-	virtual/libffi:0=
+	dev-libs/libffi:0=
 	virtual/libintl:0=
 	dev-libs/expat:0=
 	bzip2? ( app-arch/bzip2:0= )
@@ -70,7 +70,7 @@ pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		check_env
 
-		use low-memory && local EPYTHON=
+		use low-memory && EPYTHON=
 		if [[ ! ${EPYTHON} || ${EPYTHON} == pypy ]] &&
 				{ has_version -b dev-python/pypy ||
 				has_version -b dev-python/pypy-bin; }

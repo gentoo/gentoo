@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,8 +7,8 @@ MY_PV=${PV/_p/+}
 MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="System for writing extensible parsers for programming languages"
-HOMEPAGE="https://github.com/ocaml/camlp4"
-SRC_URI="https://github.com/ocaml/camlp4/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/camlp4/camlp4"
+SRC_URI="https://github.com/camlp4/camlp4/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2-with-linking-exception"
 SLOT="0/${PV}"
@@ -34,6 +34,8 @@ src_configure() {
 }
 
 src_compile() {
+	# Increase stack limit to 11GiB to avoid stack overflow error.
+	ulimit -s 11530000
 	emake byte
 	use ocamlopt && emake native
 }

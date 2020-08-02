@@ -1,0 +1,33 @@
+diff -Naur wmmp3-0.12.orig/wmgeneral.c wmmp3-0.12/wmgeneral.c
+--- wmmp3-0.12.orig/wmgeneral.c	1999-10-08 07:58:16.000000000 +0200
++++ wmmp3-0.12/wmgeneral.c	2020-05-08 19:16:45.911950119 +0200
+@@ -58,6 +58,11 @@
+  /* X11 Variables */
+ /*****************/
+ 
++Display *display;
++Window Root, iconwin, win;
++XpmIcon wmgen;
++XpmIcon wmfont;
++
+ int screen;
+ int x_fd;
+ int d_depth;
+diff -Naur wmmp3-0.12.orig/wmgeneral.h wmmp3-0.12/wmgeneral.h
+--- wmmp3-0.12.orig/wmgeneral.h	1999-10-08 07:58:18.000000000 +0200
++++ wmmp3-0.12/wmgeneral.h	2020-05-08 19:16:53.693959618 +0200
+@@ -41,10 +41,10 @@
+  /* Global variable */
+ /*******************/
+ 
+-Display *display;
+-Window Root, iconwin, win;
+-XpmIcon wmgen;
+-XpmIcon wmfont;
++extern Display *display;
++extern Window Root, iconwin, win;
++extern XpmIcon wmgen;
++extern XpmIcon wmfont;
+ 
+ /***********************/
+  /* Function Prototypes */

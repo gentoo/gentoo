@@ -1,23 +1,20 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
+PATCH_GCC_VER=7.3.0
 PATCH_VER="1.8"
 
-TOOLCHAIN_GCC_PV=7.3.0
-GCC_CONFIG_VER=7.3.1
-
-inherit toolchain-funcs toolchain
+TOOLCHAIN_GCC_PV=7.3.1
 
 REL=7
 MYP=gcc-${REL}-gpl-${PV}-src
 BTSTRP_X86=gnat-gpl-2014-x86-linux-bin
 BTSTRP_AMD64=gnat-gpl-2014-x86_64-linux-bin
 
-DESCRIPTION="GNAT Ada Compiler - GPL version"
-HOMEPAGE="http://libre.adacore.com/"
-SRC_URI+="
+# we provide own tarball below
+GCC_TARBALL_SRC_URI="
 	http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27aa5
 		-> ${P}-src.tar.gz
 	http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27aa7
@@ -35,18 +32,23 @@ SRC_URI+="
 		)
 	)"
 
+inherit toolchain-funcs toolchain
+
+DESCRIPTION="GNAT Ada Compiler - GPL version"
+HOMEPAGE="http://libre.adacore.com/"
+
 LICENSE+=" GPL-2 GPL-3"
 KEYWORDS="amd64 x86"
-IUSE="+bootstrap"
+IUSE="+ada +bootstrap"
+RESTRICT="!test? ( test )"
 
-RDEPEND="!sys-devel/gcc:${GCC_CONFIG_VER}"
+RDEPEND="!sys-devel/gcc:${TOOLCHAIN_GCC_PV}"
 DEPEND="${RDEPEND}
 	elibc_glibc? ( >=sys-libs/glibc-2.13 )
 	>=sys-devel/binutils-2.20"
 
 S="${WORKDIR}"/${MYP}
 PDEPEND="${PDEPEND} elibc_glibc? ( >=sys-libs/glibc-2.13 )"
-FSFGCC=gcc-${TOOLCHAIN_GCC_PV}
 
 pkg_setup() {
 	toolchain_pkg_setup
@@ -80,17 +82,9 @@ src_unpack() {
 		die "ada compiler not available"
 	fi
 
-	GCC_A_FAKEIT="
-		${P}-src.tar.gz
-		${MYP}.tar.gz
-		gcc-interface-${REL}-gpl-${PV}-src.tar.gz"
-	if use bootstrap; then
-		GCC_A_FAKEIT="${GCC_A_FAKEIT} ${BTSTRP}.tar.gz"
-	fi
-
 	toolchain_src_unpack
 	if use bootstrap; then
-		rm ${BTSTRP}/libexec/gcc/${CHOST}/4.7.4/ld || die
+		rm ${BTSTRP}/libexec/gcc/*/4.7.4/ld || die
 	fi
 }
 
@@ -129,29 +123,17 @@ src_prepare() {
 	EPATCH_EXCLUDE+=" 95_all_libsanitizer-avoidustat.h-glibc-2.28-part-1.patch"
 	EPATCH_EXCLUDE+=" 98_all_msp430-partial-int.patch"
 	toolchain_src_prepare
+	eapply "${FILESDIR}"/${P}-libsanitizer-p1.patch
+	eapply "${FILESDIR}"/${P}-libsanitizer-p2.patch
 }
 
 src_configure() {
 	export PATH=${PWD}/bin:${PATH}
-	local trueGCC_BRANCH_VER=${GCC_BRANCH_VER}
-	GCC_BRANCH_VER=$(gcc-version)
-	downgrade_arch_flags
-	GCC_BRANCH_VER=${trueGCC_BRANCH_VER}
-	toolchain_src_configure \
-		--enable-languages=ada \
-		--disable-libada
+	downgrade_arch_flags "$(gcc-version)"
+	toolchain_src_configure
 }
 
-src_compile() {
-	unset ADAFLAGS
-	toolchain_src_compile
-	gcc_do_make "-C gcc gnatlib-shared"
-	ln -s gcc ../build/prev-gcc || die
-	ln -s ${CHOST} ../build/prev-${CHOST} || die
-	gcc_do_make "-C gcc gnattools"
-}
-
-pkg_postinst () {
+pkg_postinst() {
 	toolchain_pkg_postinst
 	einfo "This provide the GNAT compiler with gcc for ada/c/c++ and more"
 	einfo "The compiler binary is ${CTARGET}-gcc-${TOOLCHAIN_GCC_PV}"

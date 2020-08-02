@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,9 +9,9 @@ DESCRIPTION="A small (static) UNIX Shell"
 HOMEPAGE="https://www.canb.auug.org.au/~dbell/"
 SRC_URI="https://www.canb.auug.org.au/~dbell/programs/${P}.tar.gz"
 
-LICENSE="freedist"
+LICENSE="sash"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="static"
 
 DEPEND="
@@ -23,7 +23,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/sash-3.7-builtin.patch
 
 	sed \
-		-e "s:-O3:${CFLAGS}:" \
+		-e "s|-O3|${CFLAGS}|" \
 		-e '/strip/d' \
 		-i Makefile || die
 	sed \

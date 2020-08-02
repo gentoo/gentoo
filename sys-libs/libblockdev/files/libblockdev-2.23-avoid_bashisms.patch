@@ -1,0 +1,41 @@
+From e6ab6918ffac65da2d562cb286c6ab50eaf62ca2 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Mon, 11 May 2020 22:14:26 +0200
+Subject: [PATCH] configure.ac: Avoid bashisms
+
+or else we get unpredictable results with shells != /bin/bash like:
+
+checking for gobject-introspection... no (disabled, use --enable-introspection to enable)
+./configure: 13672: test: xno: unexpected operator
+checking for python3... /var/tmp/portage/sys-libs/libblockdev-2.23-r1/temp/python3.8/bin/python3
+./configure: 13838: test: x/var/tmp/portage/sys-libs/libblockdev-2.23-r1/temp/python3.8/bin/python3: unexpected operator
+
+Reported-by: Matt Whitlock <gentoo@mattwhitlock.name>
+Gentoo-bug: https://bugs.gentoo.org/719442
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index ded64259..bbdff5e7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -60,7 +60,7 @@ AC_ARG_WITH([python3],
+ AC_SUBST(WITH_PYTHON3, 0)
+ if test "x$with_python3" != "xno"; then
+     AC_PATH_PROG([python3], [python3], [no])
+-    AS_IF([test "x$python3" == "xno"],
++    AS_IF([test "x$python3" = "xno"],
+     [if test "x$with_python3" = "xyes"; then
+       LIBBLOCKDEV_SOFT_FAILURE([Python3 support requested, but python3 is not available])
+       fi],
+@@ -77,7 +77,7 @@ AC_ARG_WITH([gtk-doc],
+ AC_SUBST(WITH_GTK_DOC, 0)
+ if test "x$with_gtk_doc" != "xno"; then
+     AC_PATH_PROG([gtkdoc_scan], [gtkdoc-scan], [no])
+-    AS_IF([test "x$gtkdoc_scan" == "xno"],
++    AS_IF([test "x$gtkdoc_scan" = "xno"],
+     [if test "x$with_gtk_doc" = "xyes"; then
+       LIBBLOCKDEV_SOFT_FAILURE([Building documentation with gtk-doc requested, but not available])
+       fi],

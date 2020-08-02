@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,12 @@ HOMEPAGE="https://github.com/visualboyadvance-m/visualboyadvance-m"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="ffmpeg link lirc nls openal +sdl wxwidgets"
-REQUIRED_USE="openal? ( wxwidgets ) || ( sdl wxwidgets )"
+
+REQUIRED_USE="
+	ffmpeg? ( wxwidgets )
+	openal? ( wxwidgets )
+	|| ( sdl wxwidgets )
+"
 
 RDEPEND="
 	>=media-libs/libpng-1.4:0=
@@ -30,19 +35,24 @@ RDEPEND="
 	sys-libs/zlib:=
 	virtual/glu
 	virtual/opengl
-	ffmpeg? ( =media-video/ffmpeg-3*:= )
 	lirc? ( app-misc/lirc )
 	nls? ( virtual/libintl )
 	wxwidgets? (
+		ffmpeg? ( media-video/ffmpeg:= )
 		openal? ( media-libs/openal )
 		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
-	)"
-DEPEND="${RDEPEND}
+	)
+"
+DEPEND="
+	${RDEPEND}
+"
+BDEPEND="
 	app-arch/zip
 	wxwidgets? ( virtual/imagemagick-tools )
 	x86? ( || ( dev-lang/nasm dev-lang/yasm ) )
 	nls? ( sys-devel/gettext )
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 src_configure() {
 	use wxwidgets && setup-wxwidgets
@@ -51,13 +61,15 @@ src_configure() {
 		-DENABLE_LINK=$(usex link)
 		-DENABLE_LIRC=$(usex lirc)
 		-DENABLE_NLS=$(usex nls)
-		-DENABLE_OPENAL=$(usex openal)
 		-DENABLE_SDL=$(usex sdl)
 		-DENABLE_WX=$(usex wxwidgets)
 		-DENABLE_ASM_CORE=$(usex x86)
 		-DENABLE_ASM_SCALERS=$(usex x86)
 		-DCMAKE_SKIP_RPATH=ON
 	)
+	if use wxwidgets; then
+		mycmakeargs+=( -DENABLE_OPENAL=$(usex openal) )
+	fi
 	cmake_src_configure
 }
 

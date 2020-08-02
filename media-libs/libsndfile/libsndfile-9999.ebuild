@@ -3,14 +3,14 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_6,3_7} pypy3 )
+PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 
 if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/erikd/libsndfile.git"
 else
 	SRC_URI="http://www.mega-nerd.com/libsndfile/files/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 inherit python-any-r1 multilib-minimal
 

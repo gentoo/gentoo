@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ KEYWORDS="amd64 x86"
 IUSE="+shared static-libs"
 
 RDEPEND="dev-python/pyyaml
-	dev-ada/gnatcoll-bindings[${ADA_USEDEP},iconv,shared=,static-libs=]
+	dev-ada/gnatcoll-bindings[${ADA_USEDEP},gmp,iconv,shared=,static-libs=]
 	${ADA_DEPS}
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
@@ -37,7 +37,10 @@ pkg_setup() {
 	ada_pkg_setup
 }
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-pyyaml.patch
+)
 
 src_configure() {
 	ada/manage.py -v debug generate || die
@@ -59,12 +62,12 @@ src_compile() {
 		--build-mode='prod' || die
 }
 
-src_test () {
+src_test() {
 	ada/manage.py test | tee libadalang.testOut;
 	grep -q FAILED libadalang.testOut && die
 }
 
-src_install () {
+src_install() {
 	ada/manage.py \
 		-v \
 		--library-types $libtype \

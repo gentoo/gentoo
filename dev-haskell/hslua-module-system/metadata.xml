@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Provides access to system information and functionality
+		to Lua scripts via Haskell&#39;s `System` module.
+		
+		Intended usage for this package is to preload it by adding
+		the loader function to `package.preload`. Note that the
+		Lua `package` library must have already been loaded before
+		the loader can be added.
+	</longdescription>
+</pkgmetadata>

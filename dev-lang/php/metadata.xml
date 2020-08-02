@@ -5,6 +5,10 @@
     <email>php-bugs@gentoo.org</email>
     <name>PHP</name>
   </maintainer>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+    <name>Michael Orlitzky</name>
+  </maintainer>
   <use>
     <flag name="argon2">Enable password hashing algorithm from <pkg>app-crypt/argon2</pkg></flag>
     <flag name="bcmath">Add support for libbcmath</flag>

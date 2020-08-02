@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="http://archive.debian.org/debian/pool/main/p/${PN}/${P/-/_}.orig.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 
 PATCHES=( "${FILESDIR}/${P}-makefile.patch" )
 
@@ -19,7 +19,7 @@ src_compile() {
 	emake CC="$(tc-getCC)" all
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${ED}" install
 	einstalldocs
 }

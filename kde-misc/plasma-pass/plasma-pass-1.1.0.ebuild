@@ -8,11 +8,11 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="Plasma applet to access password from pass"
-HOMEPAGE="https://www.dvratil.cz/2018/05/plasma-pass/ https://cgit.kde.org/plasma-pass.git/"
+HOMEPAGE="https://www.dvratil.cz/2018/05/plasma-pass/ https://invent.kde.org/plasma/plasma-pass"
 
 if [[ ${KDE_BUILD_TYPE} != live ]] ; then
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
-	KEYWORDS="amd64"
+	KEYWORDS="amd64 ~ppc64"
 fi
 
 LICENSE="LGPL-2.1+"
@@ -32,3 +32,5 @@ DEPEND="
 RDEPEND="${DEPEND}
 	>=kde-frameworks/kirigami-${KFMIN}:5
 "
+
+PATCHES=( "${FILESDIR}/${P}-qt-5.15.patch" )

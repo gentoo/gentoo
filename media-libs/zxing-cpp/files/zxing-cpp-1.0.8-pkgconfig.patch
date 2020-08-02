@@ -1,0 +1,10 @@
+--- a/zxing.pc.in	2020-04-09 11:43:22.494219440 -0400
++++ b/zxing.pc.in	2020-04-09 11:49:03.884867034 -0400
+@@ -5,6 +5,6 @@
+ 
+ Name: ZXing
+ Description: ZXing library set
+-Version: @VERSION@
++Version: @PROJECT_VERSION@
+ Libs: -L${libdir} -l@TARGET_ZXING@ 
+ Cflags: -I${includedir} -I${includedir}/ZXing

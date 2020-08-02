@@ -1,0 +1,64 @@
+From 9975fe653c8159504807ca6288bd974b4f6057b7 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 8 Jun 2020 11:01:33 +0200
+Subject: [PATCH] Fix build with Qt 5.15 (missing QPainterPath includes)
+
+Fixes https://gitlab.com/sebholt/qastools/-/issues/1
+---
+ shared/src/wdg/ds_slider_painter_bevelled.cpp | 1 +
+ shared/src/wdg/ds_switch_painter_circle.cpp   | 1 +
+ shared/src/wdg/ds_switch_painter_close.cpp    | 1 +
+ shared/src/wdg/sliders_pad_style.hpp          | 1 +
+ 4 files changed, 4 insertions(+)
+
+diff --git a/shared/src/wdg/ds_slider_painter_bevelled.cpp b/shared/src/wdg/ds_slider_painter_bevelled.cpp
+index 3c90143..1748c6e 100644
+--- a/shared/src/wdg/ds_slider_painter_bevelled.cpp
++++ b/shared/src/wdg/ds_slider_painter_bevelled.cpp
+@@ -15,6 +15,7 @@
+ 
+ #include <QImage>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QLinearGradient>
+ #include <QRadialGradient>
+ #include <QScopedPointer>
+diff --git a/shared/src/wdg/ds_switch_painter_circle.cpp b/shared/src/wdg/ds_switch_painter_circle.cpp
+index 32fa8f1..36933af 100644
+--- a/shared/src/wdg/ds_switch_painter_circle.cpp
++++ b/shared/src/wdg/ds_switch_painter_circle.cpp
+@@ -13,6 +13,7 @@
+ 
+ #include <QImage>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QRadialGradient>
+ #include <QScopedPointer>
+ 
+diff --git a/shared/src/wdg/ds_switch_painter_close.cpp b/shared/src/wdg/ds_switch_painter_close.cpp
+index ef058a3..76932cc 100644
+--- a/shared/src/wdg/ds_switch_painter_close.cpp
++++ b/shared/src/wdg/ds_switch_painter_close.cpp
+@@ -13,6 +13,7 @@
+ 
+ #include <QImage>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QRadialGradient>
+ #include <QScopedPointer>
+ 
+diff --git a/shared/src/wdg/sliders_pad_style.hpp b/shared/src/wdg/sliders_pad_style.hpp
+index 3108f92..81a9075 100644
+--- a/shared/src/wdg/sliders_pad_style.hpp
++++ b/shared/src/wdg/sliders_pad_style.hpp
+@@ -5,6 +5,7 @@
+ #define __INC_sliders_pad_style_hpp__
+ 
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QPicture>
+ #include <QPen>
+ 
+-- 
+2.27.0
+

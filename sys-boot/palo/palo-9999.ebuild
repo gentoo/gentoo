@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,11 +15,6 @@ KEYWORDS=""
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.00-toolchain.patch
 )
-
-src_prepare() {
-	default
-	sed -i lib/common.h -e '/^#define PALOVERSION/{s|".*"|"'${PV}'"|g}' || die
-}
 
 src_compile() {
 	local target

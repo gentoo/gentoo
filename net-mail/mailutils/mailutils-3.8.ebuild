@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit autotools elisp-common eutils flag-o-matic python-single-r1 toolchain-funcs
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/mailutils/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="berkdb bidi +clients emacs gdbm sasl guile ipv6 kerberos kyotocabinet \
 	ldap mysql nls pam postgres python servers split-usr ssl static-libs +threads tcpd \
 	tokyocabinet"
@@ -52,10 +52,11 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 
 DOCS=( ABOUT-NLS AUTHORS COPYING COPYING.LESSER ChangeLog INSTALL NEWS README THANKS TODO )
 PATCHES=(
-	"${FILESDIR}/${PN}-3.5-add-include.patch" \
-	"${FILESDIR}/${PN}-3.6-underlinking.patch" \
-	"${FILESDIR}/${PN}-3.8-fix-tests.patch" \
-	)
+	"${FILESDIR}"/${PN}-3.5-add-include.patch
+	"${FILESDIR}"/${PN}-3.6-underlinking.patch
+	"${FILESDIR}"/${PN}-3.8-fix-tests.patch
+	"${FILESDIR}"/${PN}-3.8-fno-common.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup

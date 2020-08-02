@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,15 +30,17 @@ RDEPEND="
 	tiff? ( media-libs/tiff:0 )
 	xmp? ( >=media-gfx/exiv2-0.17:=[xmp] )
 	!xmp? ( exif? ( >=media-gfx/exiv2-0.17:= ) )"
-DEPEND="${RDEPEND}
-	dev-util/glib-utils"
+DEPEND="${RDEPEND}"
 BDEPEND="
+	dev-util/glib-utils
 	dev-util/intltool
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
 REQUIRED_USE="gpu-accel? ( gtk3 )
 	map? ( gpu-accel )"
+
+PATCHES=( "${FILESDIR}"/${P}-no_common.patch )
 
 src_prepare() {
 	default
@@ -50,7 +52,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf="--disable-dependency-tracking
+	local myeconfargs=(
 		--with-readmedir="${EPREFIX}"/usr/share/doc/${PF}
 		$(use_enable debug debug-log)
 		$(use_enable ffmpegthumbnailer)
@@ -63,19 +65,20 @@ src_configure() {
 		$(use_enable map)
 		$(use_enable nls)
 		$(use_enable pdf)
-		$(use_enable tiff)"
+		$(use_enable tiff)
+	)
 
 	if use exif || use xmp; then
-		myconf="${myconf} --enable-exiv2"
+		myeconfargs+=( --enable-exiv2 )
 	else
-		myconf="${myconf} --disable-exiv2"
+		myeconfargs+=( --disable-exiv2)
 	fi
 
-	econf ${myconf}
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 
 	rm -f "${D}/usr/share/doc/${PF}/COPYING"
 	# Application needs access to the uncompressed file

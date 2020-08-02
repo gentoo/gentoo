@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DESCRIPTION="Library and tool for personalization of Yubico's YubiKey"
 SRC_URI="https://github.com/Yubico/yubikey-personalization/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="https://github.com/Yubico/yubikey-personalization"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 SLOT="0"
 LICENSE="BSD-2"
 IUSE="consolekit static-libs"
@@ -26,6 +26,10 @@ RDEPEND="${DEPEND}
 "
 
 S="${WORKDIR}/yubikey-personalization-${PV}"
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.20.0-fix-gcc10-fno-common.patch
+	"${FILESDIR}"/${PN}-1.20.0-json-boolean.patch
+)
 
 DOCS=( doc/. AUTHORS NEWS README )
 

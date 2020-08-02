@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ IUSE="+snappy static-libs +tcmalloc kernel_FreeBSD"
 DEPEND="tcmalloc? ( dev-util/google-perftools )
 	snappy? (
 		app-arch/snappy:=
-		static-libs? ( app-arch/snappy[static-libs] )
+		static-libs? ( app-arch/snappy[static-libs(-)] )
 	)"
 RDEPEND="${DEPEND}"
 

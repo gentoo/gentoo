@@ -5,7 +5,4 @@
 		<email>tupone@gentoo.org</email>
 		<name>Tupone Alfredo</name>
 	</maintainer>
-	<longdescription lang="en">
-		Printer Support for Canon PIXMA Printers
-	</longdescription>
 </pkgmetadata>

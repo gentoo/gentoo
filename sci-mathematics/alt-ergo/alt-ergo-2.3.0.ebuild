@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="amd64"
 IUSE="examples gtk +ocamlopt"
 
-DEPEND=">=dev-lang/ocaml-3.12.1[ocamlopt?]
+DEPEND=">=dev-lang/ocaml-4.09.0[ocamlopt?]
 	dev-ml/zarith
 	gtk? ( >=dev-ml/lablgtk-2.14[sourceview,ocamlopt?] )
 	dev-ml/camlzip
@@ -20,10 +20,22 @@ DEPEND=">=dev-lang/ocaml-3.12.1[ocamlopt?]
 	>=dev-ml/ocplib-simplex-0.4
 	>=dev-ml/menhir-20181006
 	dev-ml/seq
-	dev-ml/dune"
+	dev-ml/dune
+	dev-ml/num"
 RDEPEND="${DEPEND}"
 
 DOCS=( CHANGES INSTALL.md README.md )
+
+QA_FLAGS_IGNORED=(
+	/usr/lib64/alt-ergo-parsers/AltErgoParsers.cmxs
+	/usr/lib64/alt-ergo-lib/AltErgoLib.cmxs
+	/usr/bin/alt-ergo
+)
+
+src_prepare() {
+	default
+	find "${S}" -name \*.ml | xargs sed -i "s:Pervasives:Stdlib:g" || die
+}
 
 src_configure() {
 	./configure --prefix /usr --libdir=/usr/$(get_libdir)

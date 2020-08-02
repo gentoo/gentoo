@@ -5,9 +5,6 @@
 		<email>rafaelmartins@gentoo.org</email>
 		<name>Rafael G. Martins</name>
 	</maintainer>
-	<longdescription lang="en">
-		Simple virtual machine manager for Linux (QEMU/KVM)
-	</longdescription>
 	<upstream>
 		<maintainer status="active">
 			<email>rafael@rafaelmartins.eng.br</email>

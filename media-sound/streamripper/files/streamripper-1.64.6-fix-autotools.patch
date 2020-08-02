@@ -1,0 +1,11 @@
+diff -ur ORIG/configure.ac MOD/configure.ac
+--- ORIG/configure.ac	2020-06-21 13:23:49.051525439 +0200
++++ MOD/configure.ac	2020-06-21 13:24:14.279437637 +0200
+@@ -24,6 +24,7 @@
+ 
+ AC_PROG_INSTALL
+ AC_PROG_RANLIB
++AM_PROG_AR
+ 
+ dnl test for inline
+ AC_C_INLINE

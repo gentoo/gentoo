@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,8 +30,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable boost) \
-		$(use_enable taglib) \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF}
+		$(use_enable taglib)
 }
 
 src_install() {

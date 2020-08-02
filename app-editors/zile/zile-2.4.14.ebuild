@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/zile/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE="acl test"
 RESTRICT="!test? ( test )"
 
@@ -28,7 +28,6 @@ QA_AM_MAINTAINER_MODE=".*help2man.*" #450278
 src_configure() {
 	# --without-emacs to suppress tests for GNU Emacs #630652
 	econf \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--without-emacs \
 		--disable-valgrind-tests \
 		$(use_enable acl) \

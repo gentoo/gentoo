@@ -4,7 +4,7 @@
 EAPI=7
 
 # Python is required for tests and some build tasks.
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 CMAKE_ECLASS=cmake
 inherit cmake-multilib python-any-r1
@@ -19,7 +19,7 @@ else
 		URI_PV=${MY_PV:=${GOOGLETEST_COMMIT}}
 	fi
 	SRC_URI="https://github.com/google/googletest/archive/${URI_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 	S="${WORKDIR}"/googletest-${MY_PV}
 fi
 
@@ -31,11 +31,10 @@ SLOT="0"
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
-DEPEND="test? ( ${PYTHON_DEPS} )"
-RDEPEND="!dev-cpp/gmock"
+BDEPEND="test? ( ${PYTHON_DEPS} )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.9.0_pre20190607-increase-clone-stack-size.patch
+	"${FILESDIR}"/${PN}-1.10.0_p20200702-increase-clone-stack-size.patch
 )
 
 pkg_setup() {

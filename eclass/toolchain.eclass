@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Maintainer: Toolchain Ninjas <toolchain@gentoo.org>
@@ -7,16 +7,20 @@
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="https://gcc.gnu.org/"
 
-inherit eutils fixheadtails flag-o-matic gnuconfig libtool multilib pax-utils toolchain-funcs prefix
+inherit eutils flag-o-matic gnuconfig libtool multilib pax-utils toolchain-funcs prefix
 
-if [[ ${PV} == *9999* ]] ; then
-	EGIT_REPO_URI="git://gcc.gnu.org/git/gcc.git"
+tc_is_live() {
+	[[ ${PV} == *9999* ]]
+}
+
+if tc_is_live ; then
+	EGIT_REPO_URI="https://gcc.gnu.org/git/gcc.git"
 	# naming style:
 	# gcc-10.1.0_pre9999 -> gcc-10-branch
 	#  Note that the micro version is required or lots of stuff will break.
 	#  To checkout master set gcc_LIVE_BRANCH="master" in the ebuild before
 	#  inheriting this eclass.
-	EGIT_BRANCH="${PN}-${PV%.?.?_pre9999}-branch"
+	EGIT_BRANCH="releases/${PN}-${PV%.?.?_pre9999}"
 	EGIT_BRANCH=${EGIT_BRANCH//./_}
 	inherit git-r3
 fi
@@ -63,39 +67,39 @@ tc_version_is_between() {
 GCC_PV=${TOOLCHAIN_GCC_PV:-${PV}}
 GCC_PVR=${GCC_PV}
 [[ ${PR} != "r0" ]] && GCC_PVR=${GCC_PVR}-${PR}
+
+# GCC_RELEASE_VER must always match 'gcc/BASE-VER' value.
+# It's an internal representation of gcc version used for:
+# - versioned paths on disk
+# - 'gcc -dumpversion' output. Must always match <digit>.<digit>.<digit>.
 GCC_RELEASE_VER=$(ver_cut 1-3 ${GCC_PV})
+
 GCC_BRANCH_VER=$(ver_cut 1-2 ${GCC_PV})
 GCCMAJOR=$(ver_cut 1 ${GCC_PV})
 GCCMINOR=$(ver_cut 2 ${GCC_PV})
 GCCMICRO=$(ver_cut 3 ${GCC_PV})
 
-# According to gcc/c-cppbuiltin.c, GCC_CONFIG_VER MUST match this regex.
-# ([^0-9]*-)?[0-9]+[.][0-9]+([.][0-9]+)?([- ].*)?
-GCC_CONFIG_VER=${GCC_CONFIG_VER:-$(ver_rs 3 '-' ${GCC_PV})}
+# Ideally this variable should allow for custom gentoo versioning
+# of binary and gcc-config names not directly tied to upstream
+# versioning. In practive it's hard to untangle from gcc/BASE-VER
+# (GCC_RELEASE_VER) value.
+GCC_CONFIG_VER=${GCC_RELEASE_VER}
 
-# Pre-release support
-if [[ ${GCC_PV} == *_pre* ]] ; then
-	PRERELEASE=${GCC_PV/_pre/-}
-elif [[ ${GCC_PV} == *_alpha* ]] ; then
-	SNAPSHOT=${GCC_BRANCH_VER}-${GCC_PV##*_alpha}
-elif [[ ${GCC_PV} == *_beta* ]] ; then
-	SNAPSHOT=${GCC_BRANCH_VER}-${GCC_PV##*_beta}
+# Pre-release support. Versioning schema:
+# 1.0.0_pre9999: live ebuild
+# 1.2.3_alphaYYYYMMDD: weekly snapshots
+# 1.2.3_rcYYYYMMDD: release candidates
+if [[ ${GCC_PV} == *_alpha* ]] ; then
+	# weekly snapshots
+	SNAPSHOT=${GCCMAJOR}-${GCC_PV##*_alpha}
 elif [[ ${GCC_PV} == *_rc* ]] ; then
+	# release candidates
 	SNAPSHOT=${GCC_PV%_rc*}-RC-${GCC_PV##*_rc}
-fi
-
-if [[ ${SNAPSHOT} == [56789].0-* ]] ; then
-	# The gcc-5+ releases have dropped the .0 for some reason.
-	SNAPSHOT=${SNAPSHOT/.0}
 fi
 
 PREFIX=${TOOLCHAIN_PREFIX:-${EPREFIX}/usr}
 
-if tc_version_is_at_least 3.4.0 ; then
-	LIBPATH=${TOOLCHAIN_LIBPATH:-${PREFIX}/lib/gcc/${CTARGET}/${GCC_CONFIG_VER}}
-else
-	LIBPATH=${TOOLCHAIN_LIBPATH:-${PREFIX}/lib/gcc-lib/${CTARGET}/${GCC_CONFIG_VER}}
-fi
+LIBPATH=${TOOLCHAIN_LIBPATH:-${PREFIX}/lib/gcc/${CTARGET}/${GCC_CONFIG_VER}}
 INCLUDEPATH=${TOOLCHAIN_INCLUDEPATH:-${LIBPATH}/include}
 
 if is_crosscompile ; then
@@ -113,20 +117,7 @@ STDCXX_INCDIR=${TOOLCHAIN_STDCXX_INCDIR:-${LIBPATH}/include/g++-v${GCC_BRANCH_VE
 
 #---->> LICENSE+SLOT+IUSE logic <<----
 
-if tc_version_is_at_least 4.6 ; then
-	LICENSE="GPL-3+ LGPL-3+ || ( GPL-3+ libgcc libstdc++ gcc-runtime-library-exception-3.1 ) FDL-1.3+"
-elif tc_version_is_at_least 4.4 ; then
-	LICENSE="GPL-3+ LGPL-3+ || ( GPL-3+ libgcc libstdc++ gcc-runtime-library-exception-3.1 ) FDL-1.2+"
-elif tc_version_is_at_least 4.3 ; then
-	LICENSE="GPL-3+ LGPL-3+ || ( GPL-3+ libgcc libstdc++ ) FDL-1.2+"
-elif tc_version_is_at_least 4.2 ; then
-	LICENSE="GPL-3+ LGPL-2.1+ || ( GPL-3+ libgcc libstdc++ ) FDL-1.2+"
-elif tc_version_is_at_least 3.3 ; then
-	LICENSE="GPL-2+ LGPL-2.1+ FDL-1.2+"
-else
-	LICENSE="GPL-2+ LGPL-2.1+ FDL-1.1+"
-fi
-
+LICENSE="GPL-3+ LGPL-3+ || ( GPL-3+ libgcc libstdc++ gcc-runtime-library-exception-3.1 ) FDL-1.3+"
 IUSE="test vanilla +nls"
 RESTRICT="!test? ( test )"
 
@@ -147,10 +138,14 @@ tc_has_feature() {
 }
 
 if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
-	IUSE+=" altivec debug +cxx +nptl" TC_FEATURES+=(nptl)
+	# --enable-altivec was dropped before gcc-4. We don't set it.
+	# We drop USE=altivec for newer gccs only to avoid rebuilds
+	# for most stable users. Once gcc-10 is stable we can drop it.
+	if ! tc_version_is_at_least 10; then
+		IUSE+=" altivec"
+	fi
+	IUSE+=" debug +cxx +nptl" TC_FEATURES+=(nptl)
 	[[ -n ${PIE_VER} ]] && IUSE+=" nopie"
-	[[ -n ${HTB_VER} ]] && IUSE+=" boundschecking"
-	[[ -n ${D_VER}   ]] && IUSE+=" d"
 	[[ -n ${SPECS_VER} ]] && IUSE+=" nossp"
 	# fortran support appeared in 4.1, but 4.1 needs outdated mpfr
 	tc_version_is_at_least 4.2 && IUSE+=" +fortran" TC_FEATURES+=(fortran)
@@ -159,13 +154,13 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 3.3 && IUSE+=" pgo"
 	tc_version_is_at_least 4.0 &&
 		IUSE+=" objc-gc" TC_FEATURES+=(objc-gc)
-	tc_version_is_between 4.0 4.9 && IUSE+=" mudflap"
 	tc_version_is_at_least 4.1 && IUSE+=" libssp objc++"
 	tc_version_is_at_least 4.2 && IUSE+=" +openmp"
 	tc_version_is_at_least 4.3 && IUSE+=" fixed-point"
 	tc_version_is_at_least 4.7 && IUSE+=" go"
-	tc_version_is_at_least 4.8 &&
-		IUSE+=" +sanitize"
+	# sanitizer support appeared in gcc-4.8, but <gcc-5 does not
+	# support modern glibc.
+	tc_version_is_at_least 5 && IUSE+=" +sanitize"
 	# Note:
 	#   <gcc-4.8 supported graphite, it required forked ppl
 	#     versions which we dropped.  Since graphite was also experimental in
@@ -175,7 +170,7 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 6.5 &&
 		IUSE+=" graphite" TC_FEATURES+=(graphite)
 	tc_version_is_between 4.9 8 && IUSE+=" cilk"
-	tc_version_is_at_least 4.9 && IUSE+=" +vtv"
+	tc_version_is_at_least 4.9 && IUSE+=" ada +vtv"
 	tc_version_is_at_least 5.0 && IUSE+=" jit"
 	tc_version_is_between 5.0 9 && IUSE+=" mpx"
 	tc_version_is_at_least 6.0 && IUSE+=" +pie +ssp +pch"
@@ -184,10 +179,12 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 		IUSE+=" systemtap" TC_FEATURES+=(systemtap)
 	tc_version_is_at_least 9.0 && IUSE+=" d"
 	tc_version_is_at_least 9.1 && IUSE+=" lto"
+	tc_version_is_at_least 10 && IUSE+=" zstd" TC_FEATURES+=(zstd)
+	tc_version_is_at_least 11 && IUSE+=" valgrind" TC_FEATURES+=(valgrind)
 fi
 
 if tc_version_is_at_least 10; then
-	# Note: currently we pull in prereleases, snapshots and
+	# Note: currently we pull in releases, snapshots and
 	# git versions into the same SLOT.
 	SLOT="${GCCMAJOR}"
 else
@@ -222,7 +219,7 @@ if tc_has_feature graphite ; then
 	RDEPEND+=" graphite? ( >=dev-libs/isl-0.14:0= )"
 fi
 
-DEPEND="${RDEPEND}
+BDEPEND="
 	>=sys-devel/bison-1.875
 	>=sys-devel/flex-2.5.4
 	nls? ( sys-devel/gettext )
@@ -230,6 +227,7 @@ DEPEND="${RDEPEND}
 		>=dev-util/dejagnu-1.4.4
 		>=sys-devel/autogen-5.5.4
 	)"
+DEPEND="${RDEPEND}"
 
 if tc_has_feature gcj ; then
 	GCJ_DEPS=">=media-libs/libart_lgpl-2.1"
@@ -251,17 +249,27 @@ if tc_has_feature systemtap ; then
 	DEPEND+=" systemtap? ( dev-util/systemtap )"
 fi
 
+if tc_has_feature zstd ; then
+	DEPEND+=" zstd? ( app-arch/zstd )"
+fi
+
+if tc_has_feature valgrind; then
+	BDEPEND+=" valgrind? ( dev-util/valgrind )"
+fi
+
+case ${EAPI:-0} in
+	5*|6) DEPEND+=" ${BDEPEND}" ;;
+esac
+
 PDEPEND=">=sys-devel/gcc-config-1.7"
 
 #---->> S + SRC_URI essentials <<----
 
 # Set the source directory depending on whether we're using
-# a prerelease, snapshot, or release tarball.
+# a live git tree, snapshot, or release tarball.
 S=$(
-	if [[ ${PV} == *9999* ]]; then
+	if tc_is_live ; then
 		echo ${EGIT_CHECKOUT_DIR}
-	elif [[ -n ${PRERELEASE} ]] ; then
-		echo ${WORKDIR}/gcc-${PRERELEASE}
 	elif [[ -n ${SNAPSHOT} ]] ; then
 		echo ${WORKDIR}/gcc-${SNAPSHOT}
 	else
@@ -284,6 +292,10 @@ gentoo_urls() {
 #
 # Other than the variables normally set by portage, this function's behavior
 # can be altered by setting the following:
+#
+#	GCC_TARBALL_SRC_URI
+#			Override link to main tarball into SRC_URI. Used by dev-lang/gnat-gpl
+#			to provide gcc tarball snapshots. Patches are usually reused as-is.
 #
 #	SNAPSHOT
 #			If set, this variable signals that we should be using a snapshot of
@@ -321,13 +333,6 @@ gentoo_urls() {
 #			The resulting filename of this tarball will be:
 #			gcc-${SPECS_GCC_VER:-${GCC_RELEASE_VER}}-specs-${SPECS_VER}.tar.bz2
 #
-#	HTB_VER
-#	HTB_GCC_VER
-#			These variables control whether or not an ebuild supports Herman
-#			ten Brugge's bounds-checking patches. If you want to use a patch
-#			for an older gcc version with a new gcc, make sure you set
-#			HTB_GCC_VER to that version of gcc.
-#
 #	CYGWINPORTS_GITREV
 #			If set, this variable signals that we should apply additional patches
 #			maintained by upstream Cygwin developers at github/cygwinports/gcc,
@@ -343,18 +348,14 @@ get_gcc_src_uri() {
 	export SPECS_GCC_VER=${SPECS_GCC_VER:-${GCC_RELEASE_VER}}
 
 	# Set where to download gcc itself depending on whether we're using a
-	# prerelease, snapshot, or release tarball.
-	if [[ ${PV} == *9999* ]] ; then
-		# Nothing to do w/git snapshots.
-		:
-	elif [[ -n ${PRERELEASE} ]] ; then
-		GCC_SRC_URI="ftp://gcc.gnu.org/pub/gcc/prerelease-${PRERELEASE}/gcc-${PRERELEASE}.tar.bz2"
+	# live git tree, snapshot, or release tarball.
+	if tc_is_live ; then
+		: # Nothing to do w/git snapshots.
+	elif [[ -n ${GCC_TARBALL_SRC_URI} ]] ; then
+		# pull gcc tarball from another location. Frequently used by gnat-gpl.
+		GCC_SRC_URI="${GCC_TARBALL_SRC_URI}"
 	elif [[ -n ${SNAPSHOT} ]] ; then
-		if tc_version_is_between 5.5 6 || tc_version_is_between 6.4 7 || tc_version_is_at_least 7.2 ; then
-			GCC_SRC_URI="ftp://gcc.gnu.org/pub/gcc/snapshots/${SNAPSHOT}/gcc-${SNAPSHOT}.tar.xz"
-		else
-			GCC_SRC_URI="ftp://gcc.gnu.org/pub/gcc/snapshots/${SNAPSHOT}/gcc-${SNAPSHOT}.tar.bz2"
-		fi
+		GCC_SRC_URI="ftp://gcc.gnu.org/pub/gcc/snapshots/${SNAPSHOT}/gcc-${SNAPSHOT}.tar.xz"
 	else
 		if tc_version_is_between 5.5 6 || tc_version_is_between 6.4 7 || tc_version_is_at_least 7.2 ; then
 			GCC_SRC_URI="mirror://gnu/gcc/gcc-${GCC_PV}/gcc-${GCC_RELEASE_VER}.tar.xz"
@@ -375,19 +376,6 @@ get_gcc_src_uri() {
 	# gcc minispec for the hardened gcc 4 compiler
 	[[ -n ${SPECS_VER} ]] && \
 		GCC_SRC_URI+=" $(gentoo_urls gcc-${SPECS_GCC_VER}-specs-${SPECS_VER}.tar.bz2)"
-
-	# gcc bounds checking patch
-	if [[ -n ${HTB_VER} ]] ; then
-		local HTBFILE="bounds-checking-gcc-${HTB_GCC_VER}-${HTB_VER}.patch.bz2"
-		GCC_SRC_URI+="
-			boundschecking? (
-				mirror://sourceforge/boundschecking/${HTBFILE}
-				$(gentoo_urls ${HTBFILE})
-			)"
-	fi
-
-	[[ -n ${D_VER} ]] && \
-		GCC_SRC_URI+=" d? ( mirror://sourceforge/dgcc/gdc-${D_VER}-src.tar.bz2 )"
 
 	if tc_has_feature gcj ; then
 		if tc_version_is_at_least 4.5 ; then
@@ -410,12 +398,6 @@ SRC_URI=$(get_gcc_src_uri)
 #---->> pkg_pretend <<----
 
 toolchain_pkg_pretend() {
-	if [[ -n ${PRERELEASE}${SNAPSHOT} || ${PV} == *9999* ]] &&
-	   [[ -z ${I_PROMISE_TO_SUPPLY_PATCHES_WITH_BUGS} ]] ; then
-		die "Please \`export I_PROMISE_TO_SUPPLY_PATCHES_WITH_BUGS=1\` or define it" \
-			"in your make.conf if you want to use this version."
-	fi
-
 	if ! use_if_iuse cxx ; then
 		use_if_iuse go && ewarn 'Go requires a C++ compiler, disabled due to USE="-cxx"'
 		use_if_iuse objc++ && ewarn 'Obj-C++ requires a C++ compiler, disabled due to USE="-cxx"'
@@ -436,77 +418,11 @@ toolchain_pkg_setup() {
 #---->> src_unpack <<----
 
 toolchain_src_unpack() {
-	if [[ ${PV} == *9999* ]]; then
+	if tc_is_live ; then
 		git-r3_src_unpack
-	else
-		gcc_quick_unpack
-	fi
-}
-
-gcc_quick_unpack() {
-	pushd "${WORKDIR}" > /dev/null
-	export PATCH_GCC_VER=${PATCH_GCC_VER:-${GCC_RELEASE_VER}}
-	export UCLIBC_GCC_VER=${UCLIBC_GCC_VER:-${PATCH_GCC_VER}}
-	export PIE_GCC_VER=${PIE_GCC_VER:-${GCC_RELEASE_VER}}
-	export HTB_GCC_VER=${HTB_GCC_VER:-${GCC_RELEASE_VER}}
-	export SPECS_GCC_VER=${SPECS_GCC_VER:-${GCC_RELEASE_VER}}
-
-	# Injection point for more tarballs. dev-lang/gnat-gpl uses
-	# 'GCC_A_FAKEIT' to specify it's own source and binary tarballs.
-	if [[ -n ${GCC_A_FAKEIT} ]] ; then
-		unpack ${GCC_A_FAKEIT}
-	elif [[ -n ${PRERELEASE} ]] ; then
-		unpack gcc-${PRERELEASE}.tar.bz2
-	elif [[ -n ${SNAPSHOT} ]] ; then
-		if tc_version_is_between 5.5 6 || tc_version_is_between 6.4 7 || tc_version_is_at_least 7.2 ; then
-			unpack gcc-${SNAPSHOT}.tar.xz
-		else
-			unpack gcc-${SNAPSHOT}.tar.bz2
-		fi
-	elif [[ ${PV} != *9999* ]] ; then
-		if tc_version_is_between 5.5 6 || tc_version_is_between 6.4 7 || tc_version_is_at_least 7.2 ; then
-			unpack gcc-${GCC_RELEASE_VER}.tar.xz
-		else
-			unpack gcc-${GCC_RELEASE_VER}.tar.bz2
-		fi
 	fi
 
-	if [[ -n ${D_VER} ]] && use d ; then
-		pushd "${S}"/gcc > /dev/null
-		unpack gdc-${D_VER}-src.tar.bz2
-		cd ..
-		ebegin "Adding support for the D language"
-		./gcc/d/setup-gcc.sh >& "${T}"/dgcc.log
-		if ! eend $? ; then
-			eerror "The D GCC package failed to apply"
-			eerror "Please include this log file when posting a bug report:"
-			eerror "  ${T}/dgcc.log"
-			die "failed to include the D language"
-		fi
-		popd > /dev/null
-	fi
-
-	[[ -n ${PATCH_VER} ]] && \
-		unpack gcc-${PATCH_GCC_VER}-patches-${PATCH_VER}.tar.bz2
-
-	[[ -n ${UCLIBC_VER} ]] && \
-		unpack gcc-${UCLIBC_GCC_VER}-uclibc-patches-${UCLIBC_VER}.tar.bz2
-
-	if want_pie ; then
-		if [[ -n ${PIE_CORE} ]] ; then
-			unpack ${PIE_CORE}
-		else
-			unpack gcc-${PIE_GCC_VER}-piepatches-v${PIE_VER}.tar.bz2
-		fi
-		[[ -n ${SPECS_VER} ]] && \
-			unpack gcc-${SPECS_GCC_VER}-specs-${SPECS_VER}.tar.bz2
-	fi
-
-	use_if_iuse boundschecking && unpack "bounds-checking-gcc-${HTB_GCC_VER}-${HTB_VER}.patch.bz2"
-
-	[[ -n ${CYGWINPORTS_GITREV} ]] && use elibc_Cygwin && unpack "gcc-cygwinports-${CYGWINPORTS_GITREV}.tar.gz"
-
-	popd > /dev/null
+	default_src_unpack
 }
 
 #---->> src_prepare <<----
@@ -532,9 +448,12 @@ toolchain_src_prepare() {
 	cd "${S}"
 
 	do_gcc_gentoo_patches
-	do_gcc_HTB_patches
 	do_gcc_PIE_patches
 	do_gcc_CYGWINPORTS_patches
+
+	if tc_is_live ; then
+		BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION}, commit ${EGIT_VERSION}"
+	fi
 
 	case ${EAPI:-0} in
 		5*) epatch_user;;
@@ -546,41 +465,19 @@ toolchain_src_prepare() {
 		make_gcc_hard
 	fi
 
-	# install the libstdc++ python into the right location
-	# http://gcc.gnu.org/PR51368
-	if tc_version_is_between 4.5 4.7 ; then
-		sed -i \
-			'/^pythondir =/s:=.*:= $(datadir)/python:' \
-			"${S}"/libstdc++-v3/python/Makefile.in || die
-	fi
-
 	# make sure the pkg config files install into multilib dirs.
 	# since we configure with just one --libdir, we can't use that
 	# (as gcc itself takes care of building multilibs).  #435728
 	find "${S}" -name Makefile.in \
 		-exec sed -i '/^pkgconfigdir/s:=.*:=$(toolexeclibdir)/pkgconfig:' {} +
 
-	# No idea when this first started being fixed, but let's go with 4.3.x for now
-	if ! tc_version_is_at_least 4.3 ; then
-		fix_files=""
-		for x in contrib/test_summary libstdc++-v3/scripts/check_survey.in ; do
-			[[ -e ${x} ]] && fix_files="${fix_files} ${x}"
-		done
-		ht_fix_file ${fix_files} */configure *.sh */Makefile.in
-	fi
-
 	setup_multilib_osdirnames
 	gcc_version_patch
 
-	if tc_version_is_at_least 4.1 ; then
-		if [[ -n ${SNAPSHOT} || -n ${PRERELEASE} ]] ; then
-			# BASE-VER must be a three-digit version number
-			# followed by an optional -pre string
-			#   eg. 4.5.1, 4.6.2-pre20120213, 4.7.0-pre9999
-			# If BASE-VER differs from ${PV/_/-} then libraries get installed in
-			# the wrong directory.
-			echo ${PV/_/-} > "${S}"/gcc/BASE-VER
-		fi
+	local actual_version=$(< "${S}"/gcc/BASE-VER)
+	if [[ "${GCC_RELEASE_VER}" != "${actual_version}" ]] ; then
+		eerror "'${S}/gcc/BASE-VER' contains '${actual_version}', expected '${GCC_RELEASE_VER}'"
+		die "Please set 'TOOLCHAIN_GCC_PV' to '${actual_version}'"
 	fi
 
 	# >= gcc-4.3 doesn't bundle ecj.jar, so copy it
@@ -592,19 +489,6 @@ toolchain_src_prepare() {
 			einfo "Copying ecj-4.3.jar"
 			cp -pPR "${DISTDIR}/ecj-4.3.jar" "${S}/ecj.jar" || die
 		fi
-	fi
-
-	# disable --as-needed from being compiled into gcc specs
-	# natively when using a gcc version < 3.4.4
-	# http://gcc.gnu.org/PR14992
-	if ! tc_version_is_at_least 3.4.4 ; then
-		sed -i -e s/HAVE_LD_AS_NEEDED/USE_LD_AS_NEEDED/g "${S}"/gcc/config.in
-	fi
-
-	# In gcc 3.3.x and 3.4.x, rename the java bins to gcc-specific names
-	# in line with gcc-4.
-	if tc_version_is_between 3.3 4.0 ; then
-		do_gcc_rename_java_bins
 	fi
 
 	# Prevent libffi from being installed
@@ -631,7 +515,7 @@ toolchain_src_prepare() {
 
 	# Prevent new texinfo from breaking old versions (see #198182, #464008)
 	if tc_version_is_at_least 4.1; then
-		tc_apply_patches "Remove texinfo (bug #198182, bug ##464008)" "${FILESDIR}"/gcc-configure-texinfo.patch
+		tc_apply_patches "Remove texinfo (bug #198182, bug #464008)" "${FILESDIR}"/gcc-configure-texinfo.patch
 	fi
 
 	# >=gcc-4
@@ -656,14 +540,6 @@ do_gcc_gentoo_patches() {
 	fi
 }
 
-do_gcc_HTB_patches() {
-	use_if_iuse boundschecking || return 0
-
-	# modify the bounds checking patch with a regression patch
-	tc_apply_patches "Bounds checking patch" "${WORKDIR}/bounds-checking-gcc-${HTB_GCC_VER}-${HTB_VER}.patch"
-	BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION}, HTB-${HTB_GCC_VER}-${HTB_VER}"
-}
-
 do_gcc_PIE_patches() {
 	want_pie || return 0
 	use vanilla && return 0
@@ -679,7 +555,13 @@ do_gcc_CYGWINPORTS_patches() {
 
 	local p d="${WORKDIR}/gcc-${CYGWINPORTS_GITREV}"
 	# readarray -t is available since bash-4.4 only, #690686
-	local patches=( $(sed -e '1,/PATCH_URI="/d;/"/,$d' < "${d}"/gcc.cygport) )
+	local patches=( $(
+		for p in $(
+			sed -e '1,/PATCH_URI="/d;/"/,$d' < "${d}"/gcc.cygport
+		); do
+			echo "${d}/${p}"
+		done
+	) )
 	tc_apply_patches "Applying cygwin port patches ..." ${patches[*]}
 }
 
@@ -809,7 +691,7 @@ gcc_version_patch() {
 	# gcc-4.3+ has configure flags (whoo!)
 	tc_version_is_at_least 4.3 && return 0
 
-	local version_string=${GCC_CONFIG_VER}
+	local version_string=${GCC_RELEASE_VER}
 
 	einfo "patching gcc version: ${version_string} (${BRANDING_GCC_PKGVERSION})"
 
@@ -821,41 +703,6 @@ gcc_version_patch() {
 		gcc_sed+=( -e "/const char version_string\[\] = /s:= \".*\":= \"${version_string}\":" )
 	fi
 	sed -i "${gcc_sed[@]}" "${S}"/gcc/version.c || die
-}
-
-do_gcc_rename_java_bins() {
-	# bug #139918 - conflict between gcc and java-config-2 for ownership of
-	# /usr/bin/rmi{c,registry}.	 Done with mv & sed rather than a patch
-	# because patches would be large (thanks to the rename of man files),
-	# and it's clear from the sed invocations that all that changes is the
-	# rmi{c,registry} names to grmi{c,registry} names.
-	# Kevin F. Quinn 2006-07-12
-	einfo "Renaming jdk executables rmic and rmiregistry to grmic and grmiregistry."
-	# 1) Move the man files if present (missing prior to gcc-3.4)
-	for manfile in rmic rmiregistry ; do
-		[[ -f ${S}/gcc/doc/${manfile}.1 ]] || continue
-		mv "${S}"/gcc/doc/${manfile}.1 "${S}"/gcc/doc/g${manfile}.1
-	done
-	# 2) Fixup references in the docs if present (mission prior to gcc-3.4)
-	for jfile in gcc/doc/gcj.info gcc/doc/grmic.1 gcc/doc/grmiregistry.1 gcc/java/gcj.texi ; do
-		[[ -f ${S}/${jfile} ]] || continue
-		sed -i -e 's:rmiregistry:grmiregistry:g' "${S}"/${jfile} ||
-			die "Failed to fixup file ${jfile} for rename to grmiregistry"
-		sed -i -e 's:rmic:grmic:g' "${S}"/${jfile} ||
-			die "Failed to fixup file ${jfile} for rename to grmic"
-	done
-	# 3) Fixup Makefiles to build the changed executable names
-	#	 These are present in all 3.x versions, and are the important bit
-	#	 to get gcc to build with the new names.
-	for jfile in libjava/Makefile.am libjava/Makefile.in gcc/java/Make-lang.in ; do
-		sed -i -e 's:rmiregistry:grmiregistry:g' "${S}"/${jfile} ||
-			die "Failed to fixup file ${jfile} for rename to grmiregistry"
-		# Careful with rmic on these files; it's also the name of a directory
-		# which should be left unchanged.  Replace occurrences of 'rmic$',
-		# 'rmic_' and 'rmic '.
-		sed -i -e 's:rmic\([$_ ]\):grmic\1:g' "${S}"/${jfile} ||
-			die "Failed to fixup file ${jfile} for rename to grmic"
-	done
 }
 
 #---->> src_configure <<----
@@ -935,8 +782,7 @@ toolchain_src_configure() {
 	is_f77 && GCC_LANG+=",f77"
 	is_f95 && GCC_LANG+=",f95"
 
-	# We do NOT want 'ADA support' in here!
-	# is_ada && GCC_LANG+=",ada"
+	is_ada && GCC_LANG+=",ada"
 
 	confgcc+=( --enable-languages=${GCC_LANG} )
 
@@ -1056,6 +902,9 @@ toolchain_src_configure() {
 		esac
 		if [[ -n ${needed_libc} ]] ; then
 			local confgcc_no_libc=( --disable-shared )
+			# requires libc: bug #734820
+			tc_version_is_at_least 4.6 && confgcc_no_libc+=( --disable-libquadmath )
+			# requires libc
 			tc_version_is_at_least 4.8 && confgcc_no_libc+=( --disable-libatomic )
 			if ! has_version ${CATEGORY}/${needed_libc} ; then
 				confgcc+=(
@@ -1126,9 +975,6 @@ toolchain_src_configure() {
 	### arch options
 
 	gcc-multilib-configure
-
-	# ppc altivec support
-	in_iuse altivec && confgcc+=( $(use_enable altivec) )
 
 	# gcc has fixed-point arithmetic support in 4.3 for mips targets that can
 	# significantly increase compile time by several hours.  This will allow
@@ -1270,12 +1116,6 @@ toolchain_src_configure() {
 	fi
 
 	if tc_version_is_at_least 4.0 ; then
-		if in_iuse mudflap ; then
-			confgcc+=( $(use_enable mudflap libmudflap) )
-		else
-			confgcc+=( --disable-libmudflap )
-		fi
-
 		if use_if_iuse libssp ; then
 			confgcc+=( --enable-libssp )
 		else
@@ -1296,6 +1136,10 @@ toolchain_src_configure() {
 		fi
 	fi
 
+	if in_iuse ada ; then
+		confgcc+=( --disable-libada )
+	fi
+
 	if in_iuse cilk ; then
 		confgcc+=( $(use_enable cilk libcilkrts) )
 	fi
@@ -1308,6 +1152,10 @@ toolchain_src_configure() {
 		confgcc+=( $(use_enable systemtap) )
 	fi
 
+	if in_iuse valgrind ; then
+		confgcc+=( $(use_enable valgrind valgrind-annotations) )
+	fi
+
 	if in_iuse vtv ; then
 		confgcc+=(
 			$(use_enable vtv vtable-verify)
@@ -1316,10 +1164,8 @@ toolchain_src_configure() {
 		)
 	fi
 
-	# newer gcc's come with libquadmath, but only fortran uses
-	# it, so auto punt it when we don't care
-	if tc_version_is_at_least 4.6 && ! is_fortran ; then
-		confgcc+=( --disable-libquadmath )
+	if in_iuse zstd ; then
+		confgcc+=( $(use_with zstd) )
 	fi
 
 	if tc_version_is_at_least 4.6 ; then
@@ -1341,9 +1187,13 @@ toolchain_src_configure() {
 		confgcc+=( --without-{cloog,ppl} )
 	fi
 
-	if tc_version_is_at_least 4.8 && in_iuse sanitize ; then
-		# See Note [implicitly enabled flags]
-		confgcc+=( $(usex sanitize '' --disable-libsanitizer) )
+	if tc_version_is_at_least 4.8; then
+		if in_iuse sanitize ; then
+			# See Note [implicitly enabled flags]
+			confgcc+=( $(usex sanitize '' --disable-libsanitizer) )
+		else
+			confgcc+=( --disable-libsanitizer )
+		fi
 	fi
 
 	if tc_version_is_at_least 6.0 && in_iuse pie ; then
@@ -1404,7 +1254,8 @@ downgrade_arch_flags() {
 	local arch bver i isa myarch mytune rep ver
 
 	bver=${1:-${GCC_BRANCH_VER}}
-	[[ $(gcc-version) < ${bver} ]] && return 0
+	# Don't perform downgrade if running gcc is older than ebuild's.
+	tc_version_is_at_least ${bver} $(gcc-version) || return 0
 	[[ $(tc-arch) != amd64 && $(tc-arch) != x86 ]] && return 0
 
 	myarch=$(get-flag march)
@@ -1412,7 +1263,7 @@ downgrade_arch_flags() {
 
 	# If -march=native isn't supported we have to tease out the actual arch
 	if [[ ${myarch} == native || ${mytune} == native ]] ; then
-		if [[ ${bver} < 4.2 ]] ; then
+		if ! tc_version_is_at_least 4.2 ${bver}; then
 			arch=$($(tc-getCC) -march=native -v -E -P - </dev/null 2>&1 \
 				| sed -rn "/cc1.*-march/s:.*-march=([^ ']*).*:\1:p")
 			replace-cpu-flags native ${arch}
@@ -1420,13 +1271,14 @@ downgrade_arch_flags() {
 	fi
 
 	# Handle special -mtune flags
-	[[ ${mytune} == intel && ${bver} < 4.9 ]] && replace-cpu-flags intel generic
-	[[ ${mytune} == generic && ${bver} < 4.2 ]] && filter-flags '-mtune=*'
+	[[ ${mytune} == intel ]] && ! tc_version_is_at_least 4.9 ${bver} && replace-cpu-flags intel generic
+	[[ ${mytune} == generic ]] && ! tc_version_is_at_least 4.2 ${bver} && filter-flags '-mtune=*'
 	[[ ${mytune} == x86-64 ]] && filter-flags '-mtune=*'
-	[[ ${bver} < 3.4 ]] && filter-flags '-mtune=*'
+	tc_version_is_at_least 3.4 ${bver} || filter-flags '-mtune=*'
 
 	# "added" "arch" "replacement"
 	local archlist=(
+		9 znver2 znver1
 		4.9 bdver4 bdver3
 		4.9 bonnell atom
 		4.9 broadwell core-avx2
@@ -1473,8 +1325,8 @@ downgrade_arch_flags() {
 
 		[[ ${myarch} != ${arch} && ${mytune} != ${arch} ]] && continue
 
-		if [[ ${ver} > ${bver} ]] ; then
-			einfo "Replacing ${myarch} (added in gcc ${ver}) with ${rep}..."
+		if ! tc_version_is_at_least ${ver} ${bver}; then
+			einfo "Downgrading '${myarch}' (added in gcc ${ver}) with '${rep}'..."
 			[[ ${myarch} == ${arch} ]] && replace-cpu-flags ${myarch} ${rep}
 			[[ ${mytune} == ${arch} ]] && replace-cpu-flags ${mytune} ${rep}
 			continue
@@ -1522,13 +1374,17 @@ downgrade_arch_flags() {
 	for ((i = 0; i < ${#isalist[@]}; i += 2)) ; do
 		ver=${isalist[i]}
 		isa=${isalist[i + 1]}
-		[[ ${ver} > ${bver} ]] && filter-flags ${isa} ${isa/-m/-mno-}
+		tc_version_is_at_least ${ver} ${bver} || filter-flags ${isa} ${isa/-m/-mno-}
 	done
 }
 
 gcc_do_filter_flags() {
+	# Be conservative here:
+	# - don't allow -O3 and like to over-optimize libgcc # 701786
+	# - don't allow -O0 to generate potentially invalid startup code
 	strip-flags
-	replace-flags -O? -O2
+	filter-flags '-O?'
+	append-flags -O2
 
 	# dont want to funk ourselves
 	filter-flags '-mabi*' -m31 -m32 -m64
@@ -1676,6 +1532,11 @@ toolchain_src_compile() {
 	[[ ! -x /usr/bin/perl ]] \
 		&& find "${WORKDIR}"/build -name '*.[17]' -exec touch {} +
 
+	# To compile ada library standard files special compiler options are passed
+	# via ADAFLAGS in the Makefile.
+	# Unset ADAFLAGS as setting this override the options
+	unset ADAFLAGS
+
 	# Older gcc versions did not detect bash and re-exec itself, so force the
 	# use of bash.  Newer ones will auto-detect, but this is not harmful.
 	# This needs to be set for compile as well, as it's used in libtool
@@ -1709,8 +1570,7 @@ gcc_do_make() {
 
 	# Older versions of GCC could not do profiledbootstrap in parallel due to
 	# collisions with profiling info.
-	# boundschecking also seems to introduce parallel build issues.
-	if [[ ${GCC_MAKE_TARGET} == "profiledbootstrap" ]] || use_if_iuse boundschecking ; then
+	if [[ ${GCC_MAKE_TARGET} == "profiledbootstrap" ]]; then
 		! tc_version_is_at_least 4.6 && export MAKEOPTS="${MAKEOPTS} -j1"
 	fi
 
@@ -1743,6 +1603,17 @@ gcc_do_make() {
 		BOOT_CFLAGS="${BOOT_CFLAGS}" \
 		${GCC_MAKE_TARGET} \
 		|| die "emake failed with ${GCC_MAKE_TARGET}"
+
+	if is_ada; then
+		# Without these links it is not getting the good compiler
+		# Need to check why
+		ln -s gcc ../build/prev-gcc || die
+		ln -s ${CHOST} ../build/prev-${CHOST} || die
+		# Building standard ada library
+		emake -C gcc gnatlib-shared
+		# Building gnat toold
+		emake -C gcc gnattools
+	fi
 
 	if ! is_crosscompile && use_if_iuse cxx && use_if_iuse doc ; then
 		if type -p doxygen > /dev/null ; then
@@ -1853,11 +1724,11 @@ toolchain_src_install() {
 		if [[ -f ${CTARGET}-${x} ]] ; then
 			if ! is_crosscompile ; then
 				ln -sf ${CTARGET}-${x} ${x}
-				dosym ${BINPATH#${EPREFIX}}/${CTARGET}-${x} \
+				dosym ${BINPATH}/${CTARGET}-${x} \
 					/usr/bin/${x}-${GCC_CONFIG_VER}
 			fi
 			# Create versioned symlinks
-			dosym ${BINPATH#${EPREFIX}}/${CTARGET}-${x} \
+			dosym ${BINPATH}/${CTARGET}-${x} \
 				/usr/bin/${CTARGET}-${x}-${GCC_CONFIG_VER}
 		fi
 
@@ -1914,13 +1785,8 @@ toolchain_src_install() {
 	# prune empty dirs left behind
 	find "${ED}" -depth -type d -delete 2>/dev/null
 
-	# Rather install the script, else portage with changing $FILESDIR
-	# between binary and source package borks things ....
 	if ! is_crosscompile && [[ ${PN} != "kgcc64" ]] ; then
-		insinto "${DATAPATH#${EPREFIX}}"
-		newins "$(prefixify_ro "${FILESDIR}"/awk/fixlafiles.awk-no_gcc_la)" fixlafiles.awk || die
 		exeinto "${DATAPATH#${EPREFIX}}"
-		doexe "$(prefixify_ro "${FILESDIR}"/fix_libtool_files.sh)" || die
 		doexe "${FILESDIR}"/c{89,99} || die
 	fi
 
@@ -2225,33 +2091,16 @@ toolchain_pkg_postinst() {
 	fi
 
 	if ! is_crosscompile && [[ ${PN} != "kgcc64" ]] ; then
-		echo
-		ewarn "If you have issues with packages unable to locate libstdc++.la,"
-		ewarn "then try running 'fix_libtool_files.sh' on the old gcc versions."
-		echo
-		ewarn "You might want to review the GCC upgrade guide when moving between"
-		ewarn "major versions (like 4.2 to 4.3):"
-		ewarn "https://wiki.gentoo.org/wiki/Upgrading_GCC"
-		echo
+		# gcc stopped installing .la files fixer in June 2020.
+		# Cleaning can be removed in June 2022.
+		rm -f "${EROOT%/}"/sbin/fix_libtool_files.sh
+		rm -f "${EROOT%/}"/usr/sbin/fix_libtool_files.sh
+		rm -f "${EROOT%/}"/usr/share/gcc-data/fixlafiles.awk
 
-		# Clean up old paths
-		rm -f "${EROOT%/}"/*/rcscripts/awk/fixlafiles.awk "${EROOT%/}"/sbin/fix_libtool_files.sh
-		rmdir "${EROOT%/}"/*/rcscripts{/awk,} 2>/dev/null
-
-		mkdir -p "${EROOT%/}"/usr/{share/gcc-data,sbin,bin}
-		# DATAPATH has EPREFIX already, use ROOT with it
-		cp "${ROOT%/}${DATAPATH}"/fixlafiles.awk "${EROOT%/}"/usr/share/gcc-data/ || die
-		cp "${ROOT%/}${DATAPATH}"/fix_libtool_files.sh "${EROOT%/}"/usr/sbin/ || die
-
+		mkdir -p "${EROOT%/}"/usr/bin
 		# Since these aren't critical files and portage sucks with
 		# handling of binpkgs, don't require these to be found
 		cp "${ROOT%/}${DATAPATH}"/c{89,99} "${EROOT%/}"/usr/bin/ 2>/dev/null
-	fi
-
-	if [[ -n ${PRERELEASE}${SNAPSHOT} ]] ; then
-		einfo "This GCC ebuild is provided for your convenience, and the use"
-		einfo "of this compiler is not supported by the Gentoo Developers."
-		einfo "Please report bugs to upstream at http://gcc.gnu.org/bugzilla/"
 	fi
 }
 
@@ -2277,15 +2126,10 @@ toolchain_pkg_postrm() {
 		return 0
 	fi
 
-	# ROOT isnt handled by the script
-	[[ ${ROOT%/} ]] && return 0
-
-	if [[ ! -e ${LIBPATH}/libstdc++.so ]] ; then
-		einfo "Running 'fix_libtool_files.sh ${GCC_RELEASE_VER}'"
-		fix_libtool_files.sh ${GCC_RELEASE_VER}
-	fi
-
-	return 0
+	# gcc stopped installing .la files fixer in June 2020.
+	# Cleaning can be removed in June 2022.
+	rm -f "${EROOT%/}"/sbin/fix_libtool_files.sh
+	rm -f "${EROOT%/}"/usr/share/gcc-data/fixlafiles.awk
 }
 
 do_gcc_config() {

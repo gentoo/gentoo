@@ -1,5 +1,33 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2020-07-30)
+# glslang is not yet stable on arm64
+media-libs/mesa vulkan-overlay
+
+# Sam James <sam@gentoo.org> (2020-07-16)
+# Pulls in too many yet unstable versions of
+# e.g. matplotlib
+# bug #732492
+app-portage/nattka depgraph-order
+
+# Sam James <sam@gentoo.org> (2020-06-29)
+# Deps not yet stable
+dev-python/pymongo test
+app-shells/bash-completion test
+net-misc/ntpsec rclock_oncore rclock_pps
+dev-util/bcc test
+dev-libs/libisoburn launch-frontend launch-frontend-setuid frontend-optional
+net-analyzer/rrdtool rados
+sys-fs/multipath-tools rbd
+www-servers/uwsgi uwsgi_plugins_rados
+dev-libs/boost mpi
+media-plugins/gst-plugins-meta aac dts dv lame libvisual taglib vcd wavpack
+x11-wm/i3 test
+
+# Mikle Kolyada <zlogene@gentoo,org> (2020-03-19)
+# deps not yet stable
+kde-apps/umbrello php
 
 # Craig Andrews <candrews@gentoo.org> (2019-11-26)
 # net-libs/quiche is an early HTTP/3 implementation
@@ -13,14 +41,10 @@ sys-firmware/seabios debug
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-09-14)
 # media-video/pipewire is not stable yet
 dev-libs/weston pipewire
-kde-apps/krfb wayland
-kde-plasma/xdg-desktop-portal-kde screencast
-sys-apps/xdg-desktop-portal screencast
+<kde-apps/krfb-20.07.80 wayland
+<kde-plasma/xdg-desktop-portal-kde-5.19.4 screencast
+<sys-apps/xdg-desktop-portal-1.7.2 screencast
 x11-wm/mutter screencast
-
-# Aaron Bauman (2019-08-01)
-# app-text/docbook2X fails test
-dev-cpp/libcmis man
 
 # Aaron Bauman (2019-07-29)
 # no ocamlopt stuff here...
@@ -52,24 +76,10 @@ x11-base/xorg-drivers input_devices_elographics input_devices_joystick input_dev
 sys-devel/clang-runtime libcxx sanitize
 sys-devel/clang default-libcxx
 
-# Mart Raudsepp <leio@gentoo.org> (2018-06-28)
-# net-misc/lksctp-tools not stable yet
-dev-libs/openssl sctp
-dev-libs/openssl-compat sctp
-net-misc/openssh sctp
-
-# Mart Raudsepp <leio@gentoo.org> (2018-05-30)
-# app-text/docbook2X not stable yet, fails tests (bug #511902)
-dev-vcs/git doc
-
 # Mart Raudsepp <leio@gentoo.org> (2018-05-29)
 # sys-devel/clang, dev-libs/xapian, app-text/texlive not stable yet
 # USE=doc requires USE=latex
 app-doc/doxygen clang doxysearch doc
-
-# Mart Raudsepp <leio@gentoo.org> (2018-05-29)
-# virtual/opengl and media-libs/freeglut not stable yet
-media-libs/libwebp opengl
 
 # Mart Raudsepp <leio@gentoo.org> (2018-05-04)
 # sci-libs/mpir fails tests, bug 640424
@@ -82,15 +92,10 @@ dev-python/urllib3 test
 # Michał Górny <mgorny@gentoo.org> (2018-04-15)
 # Non-stable dependencies.
 app-admin/syslog-ng spoof-source
-app-portage/layman cvs subversion test
 app-text/xmlto latex
-dev-libs/apr-util freetds odbc
-sys-apps/man-pages l10n_fr
-sys-apps/systemd qrcode
 sys-auth/pambase pam_krb5 pam_ssh passwdqc
 sys-block/thin-provisioning-tools test
 sys-devel/distcc gssapi
-sys-devel/gettext cvs
 
 # Michał Górny <mgorny@gentoo.org> (2018-03-03)
 # Requires masked dependent flags.
@@ -104,13 +109,5 @@ net-fs/samba ads
 # Masked due to unstable deps.
 dev-db/redis tcmalloc
 dev-python/hgdistver test
-dev-python/pycurl test
-dev-python/pyopenssl test
-dev-python/setuptools_scm mercurial test
 dev-python/sphinx latex test
-dev-python/twisted-core gtk serial
 net-analyzer/netcat crypt
-
-# Michał Górny <mgorny@gentoo.org> (2018-02-07)
-# sys-libs/tevent is not stable here.
-dev-libs/libverto tevent

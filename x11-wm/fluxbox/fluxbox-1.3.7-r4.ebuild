@@ -1,23 +1,22 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils flag-o-matic toolchain-funcs prefix xdg xdg-utils
+EAPI=7
 
+inherit flag-o-matic toolchain-funcs prefix xdg
+
+DESCRIPTION="X11 window manager featuring tabs and an iconbar"
+HOMEPAGE="http://www.fluxbox.org"
+SRC_URI="mirror://sourceforge/fluxbox/${P}.tar.xz"
+
+LICENSE="MIT"
+SLOT="0"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="nls xinerama bidi +truetype +imlib +slit +systray +toolbar vim-syntax"
 
 REQUIRED_USE="systray? ( toolbar )"
 
-DESCRIPTION="X11 window manager featuring tabs and an iconbar"
-
-SRC_URI="mirror://sourceforge/fluxbox/${P}.tar.xz"
-HOMEPAGE="http://www.fluxbox.org"
-SLOT="0"
-LICENSE="MIT"
-KEYWORDS="alpha amd64 arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
-
-RDEPEND="
-	bidi? ( >=dev-libs/fribidi-0.19.2 )
+RDEPEND="bidi? ( >=dev-libs/fribidi-0.19.2 )
 	imlib? ( >=media-libs/imlib2-1.2.0[X] )
 	truetype? ( media-libs/freetype )
 	vim-syntax? ( app-vim/fluxbox-syntax )
@@ -27,27 +26,27 @@ RDEPEND="
 	x11-libs/libXrandr
 	x11-libs/libXrender
 	xinerama? ( x11-libs/libXinerama )
-	|| ( x11-misc/gxmessage x11-apps/xmessage )
-"
-DEPEND="
-	${RDEPEND}
-	bidi? ( virtual/pkgconfig )
-	nls? ( sys-devel/gettext )
-	x11-base/xorg-proto
-"
+	|| ( x11-misc/gxmessage x11-apps/xmessage )"
+
+BDEPEND="bidi? ( virtual/pkgconfig )
+	nls? ( sys-devel/gettext )"
+
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
 
 src_prepare() {
+	default
 	# We need to be able to include directories rather than just plain
 	# files in menu [include] items. This patch will allow us to do clever
 	# things with style ebuilds.
-	epatch "${FILESDIR}"/gentoo_style_location-1.1.x.patch
+	eapply "${FILESDIR}"/gentoo_style_location-1.1.x.patch
 
 	eprefixify util/fluxbox-generate_menu.in
 
-	epatch "${FILESDIR}"/osx-has-otool.patch
+	eapply "${FILESDIR}"/osx-has-otool.patch
 
 	# Fix bug #551522; 1.3.8 will render this obsolete
-	epatch "${FILESDIR}"/fix-hidden-toolbar.patch
+	eapply "${FILESDIR}"/fix-hidden-toolbar.patch
 
 	# Add in the Gentoo -r number to fluxbox -version output.
 	if [[ "${PR}" == "r0" ]] ; then
@@ -62,9 +61,11 @@ src_prepare() {
 
 src_configure() {
 	xdg_environment_reset
+
 	use bidi && append-cppflags "$($(tc-getPKG_CONFIG) --cflags fribidi)"
 
-	econf $(use_enable bidi fribidi ) \
+	econf \
+		$(use_enable bidi fribidi ) \
 		$(use_enable imlib imlib2) \
 		$(use_enable nls) \
 		$(use_enable slit ) \
@@ -77,9 +78,8 @@ src_configure() {
 }
 
 src_compile() {
-	default
+	emake AR="$(tc-getAR)"
 
-	ebegin "Creating a menu file (may take a while)"
 	mkdir -p "${T}/home/.fluxbox" || die "mkdir home failed"
 	# Call fluxbox-generate_menu through bash since it lacks +x
 	# chmod 744 may be an equal fix
@@ -87,7 +87,6 @@ src_compile() {
 		CHECKINIT="no. go away." HOME="${T}/home" \
 		bash "${S}/util/fluxbox-generate_menu" -is -ds \
 		|| die "menu generation failed"
-	eend $?
 }
 
 src_install() {

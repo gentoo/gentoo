@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake xdg-utils pax-utils systemd user
+inherit cmake xdg-utils pax-utils systemd
 
 if [[ ${PV} != *9999* ]]; then
 	MY_P=${PN}-${PV/_/-}
@@ -23,6 +23,8 @@ IUSE="bundled-icons crypt +dbus debug kde ldap monolithic oxygen postgres +serve
 snorenotify +ssl syslog urlpreview X"
 
 SERVER_DEPEND="
+	acct-group/quassel
+	acct-user/quassel
 	crypt? ( app-crypt/qca:2[ssl] )
 	ldap? ( net-nds/openldap )
 	postgres? ( dev-qt/qtsql:5[postgres] )
@@ -87,16 +89,6 @@ REQUIRED_USE="
 	syslog? ( || ( server monolithic ) )
 "
 
-pkg_setup() {
-	if use server; then
-		QUASSEL_DIR=/var/lib/${PN}
-		QUASSEL_USER=${PN}
-		# create quassel:quassel user
-		enewgroup "${QUASSEL_USER}"
-		enewuser "${QUASSEL_USER}" -1 -1 "${QUASSEL_DIR}" "${QUASSEL_USER}"
-	fi
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DUSE_CCACHE=OFF
@@ -117,7 +109,7 @@ src_configure() {
 	)
 
 	if use server || use monolithic; then
-		mycmakeargs+=(  $(cmake_use_find_package crypt Qca-qt5) )
+		mycmakeargs+=( $(cmake_use_find_package crypt Qca-qt5) )
 	fi
 
 	cmake_src_configure
@@ -129,10 +121,6 @@ src_install() {
 	if use server ; then
 		# needs PAX marking wrt bug#346255
 		pax-mark m "${ED}/usr/bin/quasselcore"
-
-		# prepare folders in /var/
-		keepdir "${QUASSEL_DIR}"
-		fowners "${QUASSEL_USER}":"${QUASSEL_USER}" "${QUASSEL_DIR}"
 
 		# init scripts & systemd unit
 		newinitd "${FILESDIR}"/quasselcore.init-r1 quasselcore
@@ -171,13 +159,14 @@ pkg_postrm() {
 pkg_config() {
 	if use server && use ssl; then
 		# generate the pem file only when it does not already exist
+		QUASSEL_DIR=/var/lib/${PN}
 		if [ ! -f "${QUASSEL_DIR}/quasselCert.pem" ]; then
 			einfo "Generating QUASSEL SSL certificate to: \"${QUASSEL_DIR}/quasselCert.pem\""
 			openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 				-keyout "${QUASSEL_DIR}/quasselCert.pem" \
 				-out "${QUASSEL_DIR}/quasselCert.pem"
 			# permissions for the key
-			chown ${QUASSEL_USER}:${QUASSEL_USER} "${QUASSEL_DIR}/quasselCert.pem"
+			chown ${PN}:${PN} "${QUASSEL_DIR}/quasselCert.pem"
 			chmod 400 "${QUASSEL_DIR}/quasselCert.pem"
 		else
 			einfo "Certificate \"${QUASSEL_DIR}/quasselCert.pem\" already exists."

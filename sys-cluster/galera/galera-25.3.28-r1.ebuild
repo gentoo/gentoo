@@ -3,18 +3,18 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 
 inherit python-any-r1 scons-utils toolchain-funcs flag-o-matic
 
 DESCRIPTION="Synchronous multi-master replication engine that provides the wsrep API"
-HOMEPAGE="http://galeracluster.com"
+HOMEPAGE="https://galeracluster.com"
 SRC_URI="http://nyc2.mirrors.digitalocean.com/mariadb/mariadb-10.3.20/${P}/src/${P}.tar.gz"
 LICENSE="GPL-2 BSD"
 
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ppc ppc64 x86"
 IUSE="cpu_flags_x86_sse4_2 garbd test"
 RESTRICT="!test? ( test )"
 

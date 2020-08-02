@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools git-r3 multilib-minimal
+inherit autotools git-r3 multilib-minimal toolchain-funcs
 
 DESCRIPTION="An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)"
 HOMEPAGE="https://www.gnu.org/software/libidn/#libidn2 https://gitlab.com/libidn/libidn2"
@@ -53,11 +53,11 @@ src_prepare() {
 
 multilib_src_configure() {
 	econf \
+		CC_FOR_BUILD="$(tc-getBUILD_CC)" \
 		$(use_enable static-libs static) \
 		--disable-doc \
 		--disable-gcc-warnings \
-		--disable-gtk-doc \
-		--disable-silent-rules
+		--disable-gtk-doc
 }
 
 multilib_src_install() {

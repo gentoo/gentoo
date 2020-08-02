@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: elisp-common.eclass
@@ -43,8 +43,7 @@
 # Please note that this should be done only for packages that are known
 # to fail with lower Emacs versions.
 #
-# @ROFF .SS
-# src_compile() usage:
+# @SUBSECTION src_compile() usage:
 #
 # An elisp file is compiled by the elisp-compile() function defined
 # here and simply takes the source files as arguments.  The case of
@@ -64,8 +63,7 @@
 # comments.  See the Emacs Lisp Reference Manual (node "Autoload") for
 # a detailed explanation.
 #
-# @ROFF .SS
-# src_install() usage:
+# @SUBSECTION src_install() usage:
 #
 # The resulting compiled files (.elc) should be put in a subdirectory of
 # /usr/share/emacs/site-lisp/ which is named after the first argument
@@ -132,8 +130,7 @@
 # "50${PN}-gentoo.el".  If your subdirectory is not named ${PN}, give
 # the differing name as second argument.
 #
-# @ROFF .SS
-# pkg_setup() usage:
+# @SUBSECTION pkg_setup() usage:
 #
 # If your ebuild uses the elisp-compile eclass function to compile
 # its elisp files (see above), then you don't need a pkg_setup phase,
@@ -149,8 +146,7 @@
 # When having optional Emacs support, you should prepend "use emacs &&"
 # to above call of elisp-check-emacs-version().
 #
-# @ROFF .SS
-# pkg_postinst() / pkg_postrm() usage:
+# @SUBSECTION pkg_postinst() / pkg_postrm() usage:
 #
 # After that you need to recreate the start-up file of Emacs after
 # emerging and unmerging by using

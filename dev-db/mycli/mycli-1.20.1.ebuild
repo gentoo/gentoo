@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 inherit distutils-r1
 
 DESCRIPTION="CLI for MySQL Database with auto-completion and syntax highlighting"
@@ -23,8 +23,8 @@ RDEPEND="
 	>=dev-python/prompt_toolkit-2.0.6[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.0[${PYTHON_USEDEP}]
 	>=dev-python/pymysql-0.9.2[${PYTHON_USEDEP}]
-	>=dev-python/python-sqlparse-0.3.0[${PYTHON_USEDEP}]
-	<dev-python/python-sqlparse-0.4.0[${PYTHON_USEDEP}]
+	>=dev-python/sqlparse-0.3.0[${PYTHON_USEDEP}]
+	<dev-python/sqlparse-0.4.0[${PYTHON_USEDEP}]
 	ssh? ( dev-python/paramiko[${PYTHON_USEDEP}] )
 "
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]

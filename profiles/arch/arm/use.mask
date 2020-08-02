@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -8,12 +8,14 @@
 -cpu_flags_arm_iwmmxt
 -cpu_flags_arm_iwmmxt2
 
-# Michał Górny <mgorny@gentoo.org> (2018-07-16)
-# Python 3.7 support requires fresh versions of packages which are stuck
-# at keywordreqs.
-# bug #661320: dev-python/twisted
-python_targets_python3_7
-python_single_target_python3_7
+# Sam James <sam@gentoo.org> (2020-06-24)
+# Valgrind lacks support for < ARMv7
+# https://valgrind.org/info/platforms.html
+valgrind
+
+# Matt Turner <mattst88@gentoo.org> (2020-02-02)
+# Neither dev-python/pymongo nor dev-libs/mongo-c-driver are keyworded
+mongodb
 
 # Andrey Utkin <andrey_utkin@gentoo.org> (2018-06-13)
 # No ACPI support on arm. Bug #657332
@@ -31,10 +33,6 @@ acpi
 # net-wireless/wimax not tested
 wimax
 
-# Markus Meier <maekke@gentoo.org> (2010-08-21)
-# app-antivirus/clamav not tested
-clamav
-
 # Kacper Kowalik <xarthisius@gentoo.org> (2010-08-09)
 # cblas-external as virtual/cblas is also masked
 cblas-external
@@ -46,10 +44,6 @@ xfs
 # Raúl Porcel <armin76@gentoo.org>
 # Fails to build/work
 openexr
-
-# Samuli Suominen <drac@gentoo.org>
-# media-gfx/gimp not tested.
-gimp
 
 # No hardware to test by the team
 ios

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,11 +12,12 @@ SRC_URI=""
 case ${PV} in
 9999)
 	SRC_URI=""
+	EGIT_BRANCH="Matrix"
 	EGIT_REPO_URI="https://github.com/xbmc/inputstream.rtmp.git"
 	inherit git-r3
 	;;
 *)
-	CODENAME="Leia"
+	CODENAME="Matrix"
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://github.com/xbmc/inputstream.rtmp/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/inputstream.rtmp-${PV}-${CODENAME}"
@@ -35,7 +36,7 @@ RDEPEND="
 	${DEPEND}
 	"
 
-src_prepare(){
+src_prepare() {
 	[ -d depends ] && rm -rf depends || die
 	cmake_src_prepare
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Gtef"
 
 LICENSE="LGPL-2.1+"
 SLOT="4"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+introspection"
 
 RDEPEND="
@@ -23,7 +23,7 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-1.42:= )
 "
 DEPEND="${DEPEND}
-	>=sys-devel/gettext-0.19.4
+	>=sys-devel/gettext-0.19.6
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.25
 	virtual/pkgconfig

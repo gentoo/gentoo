@@ -1,8 +1,8 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-PYTHON_COMPAT=( python{2_7,3_6,3_7} )
+EAPI=7
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -34,7 +34,6 @@ RDEPEND="
 	>=dev-python/vcstools-0.1.38[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	dev-python/sphinx
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/coverage[${PYTHON_USEDEP}]
@@ -43,6 +42,9 @@ DEPEND="${RDEPEND}
 		dev-vcs/mercurial
 		dev-vcs/subversion
 	)
+"
+BDEPEND="
+	dev-python/sphinx
 "
 
 DISTUTILS_IN_SOURCE_BUILD="yes"

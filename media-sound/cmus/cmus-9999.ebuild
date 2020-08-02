@@ -1,16 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit bash-completion-r1
+inherit bash-completion-r1 toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/cmus/cmus.git"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/cmus/cmus/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+	KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="Ncurses based music player with plugin support for many formats"
@@ -18,7 +18,7 @@ HOMEPAGE="https://cmus.github.io/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac alsa ao cddb cdio cue debug discid elogind examples ffmpeg +flac jack libsamplerate
+IUSE="aac alsa ao cddb cdio debug discid elogind examples ffmpeg +flac jack libsamplerate
 	+mad mikmod modplug mp4 musepack opus oss pidgin pulseaudio systemd tremor +unicode
 	+vorbis wavpack"
 
@@ -34,7 +34,6 @@ DEPEND="
 	ao? ( media-libs/libao )
 	cddb? ( media-libs/libcddb )
 	cdio? ( dev-libs/libcdio-paranoia )
-	cue? ( media-libs/libcue )
 	discid? ( media-libs/libdiscid )
 	elogind? ( sys-auth/elogind )
 	ffmpeg? ( media-video/ffmpeg:= )
@@ -68,16 +67,24 @@ DOCS=( AUTHORS README.md )
 
 S="${WORKDIR}/${P/_/-}"
 
-my_config() {
-	local value
-	use ${1} && value=a || value=n
-	myconf="${myconf} ${2}=${value}"
-}
-
 src_configure() {
-	local debuglevel=1 myconf="CONFIG_ARTS=n CONFIG_SUN=n CONFIG_SNDIO=n CONFIG_WAVEOUT=n CONFIG_VTX=n CONFIG_ROAR=n"
+	my_config() {
+		local value
+		use ${1} && value=a || value=n
+		myconf+=( ${2}=${value} )
+	}
 
+	local debuglevel=1
 	use debug && debuglevel=2
+	local myconf=(
+		CONFIG_CUE=y
+		CONFIG_ARTS=n
+		CONFIG_SUN=n
+		CONFIG_SNDIO=n
+		CONFIG_WAVEOUT=n
+		CONFIG_VTX=n
+		CONFIG_ROAR=n
+	)
 
 	my_config cddb CONFIG_CDDB
 	my_config cdio CONFIG_CDIO
@@ -94,7 +101,6 @@ src_configure() {
 	my_config mp4 CONFIG_MP4
 	my_config aac CONFIG_AAC
 	my_config ffmpeg CONFIG_FFMPEG
-	my_config cue CONFIG_CUE
 	my_config pulseaudio CONFIG_PULSE
 	my_config alsa CONFIG_ALSA
 	my_config jack CONFIG_JACK
@@ -103,12 +109,12 @@ src_configure() {
 	my_config oss CONFIG_OSS
 
 	if use elogind || use systemd; then
-		myconf="${myconf} CONFIG_MPRIS=a"
+		myconf+=( CONFIG_MPRIS=a )
 	else
-		myconf="${myconf} CONFIG_MPRIS=n"
+		myconf+=( CONFIG_MPRIS=n )
 	fi
 
-	./configure prefix="${EPREFIX}"/usr ${myconf} \
+	./configure prefix="${EPREFIX}"/usr "${myconf[@]}" \
 		exampledir="${EPREFIX}"/usr/share/doc/${PF}/examples \
 		libdir="${EPREFIX}"/usr/$(get_libdir) DEBUG=${debuglevel} || die
 }

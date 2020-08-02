@@ -60,7 +60,7 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC AR RANLIB
-	append-cppflags -DMYSQL_SERVER_VERSION=99999999
+	append-cflags -fcommon
 
 	econf \
 		$(use_enable 64bit) \

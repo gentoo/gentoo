@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ SRC_URI="https://launchpad.net/${PN/lib}/${PV%.*}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1 LGPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 sparc x86"
 IUSE="debug gtk gtk3 +introspection test"
 RESTRICT="!test? ( test )"
 
@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 	dev-util/glib-utils
 	dev-util/intltool
 	sys-devel/gettext
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	introspection? ( $(vala_depend) )
 	test? (
 		>=dev-libs/json-glib-0.13.4[${MULTILIB_USEDEP}]

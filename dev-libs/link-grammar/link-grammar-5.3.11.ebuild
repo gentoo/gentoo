@@ -3,17 +3,17 @@
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit autotools eutils gnome2 java-pkg-opt-2 python-r1
 
 DESCRIPTION="A Syntactic English parser"
-HOMEPAGE="http://www.abisource.com/projects/link-grammar/ http://www.link.cs.cmu.edu/link/"
-SRC_URI="http://www.abisource.com/downloads/${PN}/${PV}/${P}.tar.gz"
+HOMEPAGE="https://www.abisource.com/projects/link-grammar/ https://www.link.cs.cmu.edu/link/"
+SRC_URI="https://www.abisource.com/downloads/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~ppc ~ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 sparc x86"
 IUSE="aspell +hunspell java python static-libs threads" # pcre
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

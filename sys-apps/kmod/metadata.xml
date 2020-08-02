@@ -14,4 +14,7 @@
 	<flag name="tools">Install module loading/unloading tools.</flag>
 	<flag name="zlib">Enable support for gzipped modules</flag>
 </use>
+<upstream>
+	<remote-id type="cpe">cpe:/a:kernel:kmod</remote-id>
+</upstream>
 </pkgmetadata>

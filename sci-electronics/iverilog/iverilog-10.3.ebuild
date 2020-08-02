@@ -18,7 +18,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/steveicarus/${PN}.git"
 else
 	SRC_URI="https://github.com/steveicarus/${PN}/archive/v${GITHUB_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ~ppc64 ~riscv ~s390 sparc x86"
 	S="${WORKDIR}/${PN}-${GITHUB_PV}"
 fi
 
@@ -35,8 +35,15 @@ RDEPEND="
 
 DEPEND="
 	dev-util/gperf
+	sys-devel/bison
+	sys-devel/flex
 	${RDEPEND}
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-10.3-file-missing.patch #705412
+	"${FILESDIR}"/${PN}-10.3-fno-common.patch #706366
+)
 
 src_prepare() {
 	default

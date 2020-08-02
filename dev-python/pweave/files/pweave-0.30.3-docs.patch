@@ -1,0 +1,12 @@
+diff --git a/doc/source/conf.py b/doc/source/conf.py
+index 2529bca..1066a51 100644
+--- a/doc/source/conf.py
++++ b/doc/source/conf.py
+@@ -1,6 +1,6 @@
+ import sys, os
+ 
+-extensions = ['sphinx.ext.todo', 'sphinx.ext.pngmath', 'sphinx.ext.autodoc', 'sphinx.ext.viewcode']
++extensions = ['sphinx.ext.todo', 'sphinx.ext.autodoc', 'sphinx.ext.viewcode']
+ 
+ templates_path = ['_templates']
+ 

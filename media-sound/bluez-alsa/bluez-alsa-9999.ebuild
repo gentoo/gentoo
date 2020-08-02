@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,20 +17,26 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="aac debug hcitop ldac ofono static-libs test"
+IUSE="aac debug hcitop ldac ofono static-libs test upower"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=dev-libs/glib-2.26[dbus,${MULTILIB_USEDEP}]
+# bluez-alsa does not directly link to upower but
+# is using the upower interface via dbus calls.
+RDEPEND="
+	>=dev-libs/glib-2.26[dbus,${MULTILIB_USEDEP}]
 	>=media-libs/alsa-lib-1.1.2[${MULTILIB_USEDEP}]
 	>=media-libs/sbc-1.2[${MULTILIB_USEDEP}]
 	>=net-wireless/bluez-5.0[${MULTILIB_USEDEP}]
+	sys-apps/dbus[${MULTILIB_USEDEP}]
 	sys-libs/readline:0=
 	aac? ( >=media-libs/fdk-aac-0.1.1:=[${MULTILIB_USEDEP}] )
 	hcitop? (
 		dev-libs/libbsd
 		sys-libs/ncurses:0=
 	)
-	ldac? ( >=media-libs/libldac-2.0.0 )"
+	ldac? ( >=media-libs/libldac-2.0.0 )
+	upower? ( sys-power/upower )
+"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
@@ -49,13 +55,14 @@ multilib_src_configure() {
 		$(use_enable test)
 		$(multilib_native_use_enable hcitop)
 		$(multilib_native_use_enable ldac)
+		$(multilib_native_use_enable upower)
 	)
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_install_all() {
 	default
-	find "${ED}" -name "*.la" -delete || die
+	find "${ED}" -type f -name "*.la" -delete || die
 
 	newinitd "${FILESDIR}"/bluealsa-init.d bluealsa
 	newconfd "${FILESDIR}"/bluealsa-conf.d-2 bluealsa

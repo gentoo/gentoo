@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit autotools bash-completion-r1 eapi7-ver eutils linux-info perl-functions python-single-r1 xdg-utils
 
@@ -111,7 +111,7 @@ PATCHES=(
 	"${FILESDIR}"/${MY_PV_1}/0004-Loosen-build-time-requirement-on-bash-completion.patch
 )
 
-pkg_setup () {
+pkg_setup() {
 		CONFIG_CHECK="~KVM ~VIRTIO"
 		[ -n "${CONFIG_CHECK}" ] && check_extra_config;
 

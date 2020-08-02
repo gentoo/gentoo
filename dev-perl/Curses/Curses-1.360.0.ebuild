@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Curses interface modules for Perl"
 
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 ~sh sparc x86 ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 s390 sparc x86 ~sparc-solaris ~x86-solaris"
 IUSE="+unicode test"
 RESTRICT="!test? ( test )"
 
@@ -39,7 +39,7 @@ pkg_setup() {
 	export CURSES_CFLAGS=$( $(my_curses_version)-config --cflags)
 }
 
-src_configure(){
+src_configure() {
 	perl-module_src_configure
 	if ! use unicode ; then
 		sed -i 's:<form.h>:"/usr/include/form.h":' "${S}"/c-config.h || die

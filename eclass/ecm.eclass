@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ecm.eclass
@@ -74,8 +74,8 @@ EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_test pkg_preinst pkg_po
 
 # @ECLASS-VARIABLE: ECM_DEBUG
 # @DESCRIPTION:
-# Add "debug" to IUSE. If !debug, add -DNDEBUG (via cmake_src_configure)
-# and -DQT_NO_DEBUG to CPPFLAGS. If set to "false", do nothing.
+# Add "debug" to IUSE. If !debug, add -DQT_NO_DEBUG to CPPFLAGS. If set to
+# "false", do nothing.
 : ${ECM_DEBUG:=true}
 
 # @ECLASS-VARIABLE: ECM_DESIGNERPLUGIN
@@ -173,17 +173,10 @@ case ${ECM_NONGUI} in
 	true) ;;
 	false)
 		# gui applications need breeze or oxygen for basic iconset, bug #564838
-		if [[ -n ${_KDE5_ECLASS} ]] ; then
-			RDEPEND+=" || (
-				>=kde-frameworks/breeze-icons-${KFMIN}:${KFSLOT}
-				kde-frameworks/oxygen-icons:*
-			)"
-		else
-			RDEPEND+=" || (
-				kde-frameworks/breeze-icons:*
-				kde-frameworks/oxygen-icons:*
-			)"
-		fi
+		RDEPEND+=" || (
+			kde-frameworks/breeze-icons:*
+			kde-frameworks/oxygen-icons:*
+		)"
 		;;
 	*)
 		eerror "Unknown value for \${ECM_NONGUI}"
@@ -205,37 +198,12 @@ esac
 case ${ECM_DESIGNERPLUGIN} in
 	true)
 		IUSE+=" designer"
-		if [[ -n ${_KDE5_ECLASS} ]] ; then
-			BDEPEND+=" designer? ( >=dev-qt/designer-5.12.3:${KFSLOT} )"
-		else
-			BDEPEND+=" designer? ( dev-qt/designer:${KFSLOT} )"
-		fi
+		BDEPEND+=" designer? ( dev-qt/designer:${KFSLOT} )"
 		;;
 	false) ;;
 	*)
 		eerror "Unknown value for \${ECM_DESIGNERPLUGIN}"
 		die "Value ${ECM_DESIGNERPLUGIN} is not supported"
-		;;
-esac
-
-# @ECLASS-VARIABLE: KDE_DESIGNERPLUGIN
-# @DESCRIPTION:
-# If set to "false", do nothing.
-# Otherwise, add "designer" to IUSE to toggle build of designer plugins
-# and add the necessary BDEPEND.
-# TODO: drop after KDE Applications 19.08.3 removal
-: ${KDE_DESIGNERPLUGIN:=false}
-case ${KDE_DESIGNERPLUGIN} in
-	true)
-		IUSE+=" designer"
-		BDEPEND+="
-			designer? ( >=kde-frameworks/kdesignerplugin-${KFMIN}:${KFSLOT} )
-		"
-		;;
-	false) ;;
-	*)
-		eerror "Unknown value for \${KDE_DESIGNERPLUGIN}"
-		die "Value ${KDE_DESIGNERPLUGIN} is not supported"
 		;;
 esac
 
@@ -265,14 +233,11 @@ esac
 case ${ECM_QTHELP} in
 	true)
 		IUSE+=" doc"
-		if [[ -n ${_KDE5_ECLASS} ]] ; then
-			COMMONDEPEND+=" doc? ( >=dev-qt/qt-docs-5.12.3:${KFSLOT} )"
-			BDEPEND+=" doc? ( >=dev-qt/qthelp-5.12.3:${KFSLOT} )"
-		else
-			COMMONDEPEND+=" doc? ( dev-qt/qt-docs:${KFSLOT} )"
-			BDEPEND+=" doc? ( dev-qt/qthelp:${KFSLOT} )"
-		fi
-		BDEPEND+=" doc? ( >=app-doc/doxygen-1.8.13-r1 )"
+		COMMONDEPEND+=" doc? ( dev-qt/qt-docs:${KFSLOT} )"
+		BDEPEND+=" doc? (
+			>=app-doc/doxygen-1.8.13-r1
+			dev-qt/qthelp:${KFSLOT}
+		)"
 		;;
 	false) ;;
 	*)
@@ -284,11 +249,7 @@ esac
 case ${ECM_TEST} in
 	true|optional|forceoptional|forceoptional-recursive)
 		IUSE+=" test"
-		if [[ -n ${_KDE5_ECLASS} ]] ; then
-			DEPEND+=" test? ( >=dev-qt/qttest-5.12.3:${KFSLOT} )"
-		else
-			DEPEND+=" test? ( dev-qt/qttest:${KFSLOT} )"
-		fi
+		DEPEND+=" test? ( dev-qt/qttest:${KFSLOT} )"
 		RESTRICT+=" !test? ( test )"
 		;;
 	false) ;;
@@ -300,11 +261,7 @@ esac
 
 BDEPEND+=" >=kde-frameworks/extra-cmake-modules-${KFMIN}:${KFSLOT}"
 RDEPEND+=" >=kde-frameworks/kf-env-4"
-if [[ -n ${_KDE5_ECLASS} ]] ; then
-	COMMONDEPEND+=" >=dev-qt/qtcore-5.12.3:${KFSLOT}"
-else
-	COMMONDEPEND+=" dev-qt/qtcore:${KFSLOT}"
-fi
+COMMONDEPEND+=" dev-qt/qtcore:${KFSLOT}"
 
 DEPEND+=" ${COMMONDEPEND}"
 RDEPEND+=" ${COMMONDEPEND}"
@@ -466,11 +423,8 @@ ecm_src_prepare() {
 		done
 	fi
 
-	# don't change behaviour for kde5.eclass consumers
-	# for ported ebuilds, limit playing field of this to kde-*/ categories
-	if [[ -n ${_KDE5_ECLASS} ]] ; then
-		_ecm_strip_handbook_translations # TODO: kde5.eclass cleanup
-	elif [[ ${CATEGORY} = kde-* ]] ; then
+	# limit playing field of locale stripping to kde-*/ categories
+	if [[ ${CATEGORY} = kde-* ]] ; then
 		# always install unconditionally for kconfigwidgets - if you use
 		# language X as system language, and there is a combobox with language
 		# names, the translated language name for language Y is taken from
@@ -522,7 +476,6 @@ ecm_src_prepare() {
 ecm_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	# we rely on cmake.eclass to append -DNDEBUG too
 	if in_iuse debug && ! use debug; then
 		append-cppflags -DQT_NO_DEBUG
 	fi
@@ -543,11 +496,6 @@ ecm_src_configure() {
 
 	if in_iuse designer && [[ ${ECM_DESIGNERPLUGIN} = true ]]; then
 		cmakeargs+=( -DBUILD_DESIGNERPLUGIN=$(usex designer) )
-	fi
-
-	# TODO: drop after KDE Applications 19.08.3 removal
-	if in_iuse designer && [[ ${KDE_DESIGNERPLUGIN} != false ]] ; then
-		cmakeargs+=( $(cmake_use_find_package designer KF5DesignerPlugin) )
 	fi
 
 	if [[ ${ECM_QTHELP} = true ]]; then

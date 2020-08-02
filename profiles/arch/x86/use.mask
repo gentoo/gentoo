@@ -1,19 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -x86
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-06-06)
+# sci-libs/mkl works on x86
+-mkl
+
 # Matt Turner <mattst88@gentoo.org> (2018-11-11)
 # d3d9 works on x86
 -d3d9
-
-# Michał Górny <mgorny@gentoo.org> (2018-07-16)
-# Python 3.7 support requires fresh versions of packages which are stuck
-# at keywordreqs.
-# bug #661320: dev-python/twisted
-python_targets_python3_7
-python_single_target_python3_7
 
 # Michael Orlitzky <mjo@gentoo.org> (2018-01-13)
 # Oracle database stuff should work on x86.
@@ -102,7 +99,6 @@ python_single_target_python3_7
 -lilo
 -mpx
 -svga
--nvram
 -cpu_flags_x86_3dnow
 -cpu_flags_x86_3dnowext
 -cpu_flags_x86_aes
@@ -134,6 +130,7 @@ python_single_target_python3_7
 -video_cards_i915
 -video_cards_i965
 -video_cards_intel
+-video_cards_iris
 -video_cards_nvidia
 -video_cards_siliconmotion
 -video_cards_vmware
@@ -147,10 +144,6 @@ python_single_target_python3_7
 # Unmask as it works on x86
 -lcd_devices_svga
 -lcd_devices_luise
-
-# George Shapovalov <george@gentoo.org> (2007-04-08)
-# supported on x86
--ada
 
 # fdk-aac is already keyworded here
 -fdk

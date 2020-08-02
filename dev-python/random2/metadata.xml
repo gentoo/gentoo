@@ -4,7 +4,4 @@
 	<maintainer type="person">
 		<email>grozin@gentoo.org</email>
 	</maintainer>
-	<longdescription>
-	Python-2.7's random module ported to python3.
-	</longdescription>
 </pkgmetadata>

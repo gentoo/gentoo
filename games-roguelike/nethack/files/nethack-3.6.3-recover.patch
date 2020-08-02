@@ -3,7 +3,7 @@ From: Stefan Strogin <steils@gentoo.org>
 Date: Tue, 17 Dec 2019 20:20:52 +0200
 Subject: [PATCH] Rename manpage from recover to recover-nethack
 
-Based on the patch by Luis Ressel from https://bugs.gentoo.org/203556
+Based on the patch from https://bugs.gentoo.org/203556
 
 Upstream-Status: Inappropriate [Gentoo-specific]
 Signed-off-by: Stefan Strogin <steils@gentoo.org>

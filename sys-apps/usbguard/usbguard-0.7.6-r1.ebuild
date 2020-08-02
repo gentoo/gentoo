@@ -52,7 +52,6 @@ src_configure() {
 		$(use_with ldap)
 		$(use_with policykit polkit)
 		$(use_enable systemd)
-		--disable-dependency-tracking
 	)
 
 	econf "${myargs[@]}"

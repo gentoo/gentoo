@@ -1,22 +1,22 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit toolchain-glibc
+inherit toolchain-funcs toolchain-glibc
 
 DESCRIPTION="GNU libc6 (also called glibc2) C library"
 HOMEPAGE="https://www.gnu.org/software/libc/libc.html"
 
 LICENSE="LGPL-2.1+ BSD HPND ISC inner-net rc PCRE"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
 EMULTILIB_PKG="true"
 
 # Configuration variables
 RELEASE_VER=""
 case ${PV} in
 9999*)
-	EGIT_REPO_URIS="git://sourceware.org/git/glibc.git"
+	EGIT_REPO_URIS="https://sourceware.org/git/glibc.git"
 	inherit git-r3
 	;;
 *)

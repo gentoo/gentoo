@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ SRC_URI="https://dev.gentoo.org/~polynomial-c/dist/${MY_P}.tar.xz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~mips ppc ppc64 x86"
-IUSE="alsa cpu_flags_x86_sse doc ffmpeg +flac id3tag jack +ladspa +lame libav
+IUSE="alsa cpu_flags_x86_sse doc ffmpeg +flac id3tag jack +ladspa +lame
 	+lv2 mad +midi nls +portmixer sbsms +soundtouch twolame vamp +vorbis +vst"
 
 RESTRICT="test"
@@ -29,10 +29,7 @@ RDEPEND=">=app-arch/zip-2.3
 	media-libs/soxr
 	x11-libs/wxGTK:3.0[X]
 	alsa? ( media-libs/alsa-lib )
-	ffmpeg? (
-		libav? ( media-video/libav:= )
-		!libav? ( >=media-video/ffmpeg-1.2:= )
-	)
+	ffmpeg? ( >=media-video/ffmpeg-1.2:= )
 	flac? ( >=media-libs/flac-1.3.1[cxx] )
 	id3tag? ( media-libs/libid3tag )
 	jack? ( virtual/jack )

@@ -7,12 +7,6 @@
 </maintainer>
 <upstream>
 	<remote-id type="sourceforge">sed</remote-id>
+	<remote-id type="cpe">cpe:/a:gnu:sed</remote-id>
 </upstream>
-<use>
-	<flag name="forced-sandbox">
-		Always enable --sandbox mode for simpler/secure runtime (disables e/r/w commands).
-		Note: This may break many configure scripts, so it should be avoided on dev systems
-		(and generally used on binpkg/final systems only).
-	</flag>
-</use>
 </pkgmetadata>

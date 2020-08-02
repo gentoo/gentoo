@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -24,7 +24,7 @@ PATCHES=("${FILESDIR}/${PN}-time_ms.diff"
 src_prepare() {
 	vdr-plugin-2_src_prepare
 
-	sed -e "s:RegisterI18n://RegisterI18n:" -i freecell.c
+	sed -e "s:RegisterI18n://RegisterI18n:" -i freecell.c || die
 }
 
 src_install() {

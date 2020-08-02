@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 SCONS_MIN_VERSION="2.3.0"
 
-inherit eutils flag-o-matic multilib scons-utils
+inherit eutils flag-o-matic multilib scons-utils toolchain-funcs
 
 DESCRIPTION="C++ Driver for MongoDB"
 HOMEPAGE="https://github.com/mongodb/mongo-cxx-driver"

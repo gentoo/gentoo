@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: flag-o-matic.eclass
@@ -56,7 +56,9 @@ setup-allowed-flags() {
 		-mno-faster-structs -mfaster-structs -m32 -m64 -mx32 -mabi
 		-mlittle-endian -mbig-endian -EL -EB -fPIC -mlive-g0 -mcmodel
 		-mstack-bias -mno-stack-bias -msecure-plt '-m*-toc' -mfloat-abi
-		-mfix-r10000 -mno-fix-r10000 -mthumb -marm
+		-mfix-r4000 -mno-fix-r4000 -mfix-r4400 -mno-fix-r4400
+		-mfix-rm7000 -mno-fix-rm7000 -mfix-r10000 -mno-fix-r10000
+		-mr10k-cache-barrier -mthumb -marm
 
 		# gcc 4.5
 		-mno-fma4 -mno-movbe -mno-xop -mno-lwp
@@ -392,6 +394,7 @@ filter-mfpmath() {
 # Strip *FLAGS of everything except known good/safe flags.  This runs over all
 # flags returned by all_flag_vars().
 strip-flags() {
+	[[ $# -ne 0 ]] && die "strip-flags takes no arguments"
 	local x y var
 
 	local ALLOWED_FLAGS
@@ -433,52 +436,70 @@ test-flag-PROG() {
 	local lang=$2
 	shift 2
 
-	[[ -z ${comp} || -z $1 ]] && return 1
+	if [[ -z ${comp} ]]; then
+		return 1
+	fi
+	if [[ -z $1 ]]; then
+		return 1
+	fi
 
 	# verify selected compiler exists before using it
 	comp=($(tc-get${comp}))
 	# 'comp' can already contain compiler options.
 	# 'type' needs a binary name
-	type -p ${comp[0]} >/dev/null || return 1
+	if ! type -p ${comp[0]} >/dev/null; then
+		return 1
+	fi
 
 	# Set up test file.
 	local in_src in_ext cmdline_extra=()
 	case "${lang}" in
 		# compiler/assembler only
 		c)
-			in_ext='.c'
+			in_ext='c'
 			in_src='int main(void) { return 0; }'
 			cmdline_extra+=(-xc -c)
 			;;
 		c++)
-			in_ext='.cc'
+			in_ext='cc'
 			in_src='int main(void) { return 0; }'
 			cmdline_extra+=(-xc++ -c)
 			;;
 		f77)
-			in_ext='.f'
+			in_ext='f'
 			# fixed source form
 			in_src='      end'
 			cmdline_extra+=(-xf77 -c)
 			;;
 		f95)
-			in_ext='.f90'
+			in_ext='f90'
 			in_src='end'
 			cmdline_extra+=(-xf95 -c)
 			;;
 
 		# C compiler/assembler/linker
 		c+ld)
-			in_ext='.c'
+			in_ext='c'
 			in_src='int main(void) { return 0; }'
 			cmdline_extra+=(-xc)
 			;;
 	esac
-	local test_in=${T}/test-flag-${comp}.${lang}
-	local test_out=${T}/test-flag-${comp}.exe
+	local test_in=${T}/test-flag.${in_ext}
+	local test_out=${T}/test-flag.exe
 
-	printf "%s\n" "${in_src}" > "${test_in}" || return 1
+	printf "%s\n" "${in_src}" > "${test_in}" || die "Failed to create '${test_in}'"
 
+	# Currently we rely on warning-free output of a compiler
+	# before the flag to see if a flag prduces any warnings.
+	# This has a few drawbacks:
+	# - if compiler already generates warnings we filter out
+	#   every single flag: bug #712488
+	# - if user actually wants to see warnings we just strip
+	#   them regardless of warnings type.
+	#
+	# We can add more selective detection of no-op flags via
+	# '-Werror=ignored-optimization-argument' and similar error options
+	# similar to what we are doing with '-Qunused-arguments'.
 	local cmdline=(
 		"${comp[@]}"
 		# Clang will warn about unknown gcc flags but exit 0.
@@ -618,6 +639,7 @@ test_version_info() {
 # @DESCRIPTION:
 # Strip {C,CXX,F,FC}FLAGS of any flags not supported by the active toolchain.
 strip-unsupported-flags() {
+	[[ $# -ne 0 ]] && die "strip-unsupported-flags takes no arguments"
 	export CFLAGS=$(test-flags-CC ${CFLAGS})
 	export CXXFLAGS=$(test-flags-CXX ${CXXFLAGS})
 	export FFLAGS=$(test-flags-F77 ${FFLAGS})
@@ -630,6 +652,7 @@ strip-unsupported-flags() {
 # @DESCRIPTION:
 # Find and echo the value for a particular flag.  Accepts shell globs.
 get-flag() {
+	[[ $# -ne 1 ]] && die "usage: <flag>"
 	local f var findflag="$1"
 
 	# this code looks a little flaky but seems to work for
@@ -648,18 +671,11 @@ get-flag() {
 	return 1
 }
 
-has_m64() {
-	die "${FUNCNAME}: don't use this anymore"
-}
-
-has_m32() {
-	die "${FUNCNAME}: don't use this anymore"
-}
-
 # @FUNCTION: replace-sparc64-flags
 # @DESCRIPTION:
 # Sets mcpu to v8 and uses the original value as mtune if none specified.
 replace-sparc64-flags() {
+	[[ $# -ne 0 ]] && die "replace-sparc64-flags takes no arguments"
 	local SPARC64_CPUS="ultrasparc3 ultrasparc v9"
 
 	if [ "${CFLAGS/mtune}" != "${CFLAGS}" ]; then
@@ -743,6 +759,7 @@ raw-ldflags() {
 # @FUNCTION: no-as-needed
 # @RETURN: Flag to disable asneeded behavior for use with append-ldflags.
 no-as-needed() {
+	[[ $# -ne 0 ]] && die "no-as-needed takes no arguments"
 	case $($(tc-getLD) -v 2>&1 </dev/null) in
 		*GNU*) # GNU ld
 		echo "-Wl,--no-as-needed" ;;

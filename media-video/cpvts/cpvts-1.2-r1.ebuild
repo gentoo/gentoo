@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,11 +29,11 @@ echodo() {
 	"$@" || die "failed"
 }
 
-src_compile () {
+src_compile() {
 	echodo $(tc-getCC) ${CFLAGS} ${LDFLAGS} -Wl,-rpath,/usr/lib -o cpvts \
 		cpvts.c -lm -ldvdread
 }
 
-src_install () {
+src_install() {
 	dobin ${PN}
 }
