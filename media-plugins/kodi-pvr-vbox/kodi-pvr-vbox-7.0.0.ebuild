@@ -30,6 +30,7 @@ IUSE=""
 DEPEND="
 	=media-tv/kodi-19*
 	dev-libs/tinyxml2
+	=dev-libs/libplatform-2*
 	"
 
 RDEPEND="
