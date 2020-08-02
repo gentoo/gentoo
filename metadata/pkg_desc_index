@@ -8747,10 +8747,10 @@ dev-python/pyprof2calltree 1.4.4: convert python profile data to kcachegrind cal
 dev-python/pyproj 2.4.2-r1: Python interface to the PROJ library
 dev-python/pyproject2setuppy 7: Cheap setup.py hack to install flit & poetry-based projects
 dev-python/pypugjs 5.9.4-r1: Pug (Jade) syntax adapter for Django, Jinja2 and Mako templates
-dev-python/pypy 7.3.0 7.3.1-r1: A fast, compliant alternative implementation of the Python language
+dev-python/pypy 7.3.0 7.3.1-r2: A fast, compliant alternative implementation of the Python language
 dev-python/pypy-exe 7.3.0 7.3.1: PyPy executable (build from source)
 dev-python/pypy-exe-bin 7.3.0_p1 7.3.1_p1: PyPy executable (pre-built version)
-dev-python/pypy3 7.3.0 7.3.1-r1: A fast, compliant alternative implementation of the Python (3.6) language
+dev-python/pypy3 7.3.0 7.3.1-r2: A fast, compliant alternative implementation of the Python (3.6) language
 dev-python/pypy3-exe 7.3.0 7.3.1: PyPy3 executable (build from source)
 dev-python/pypy3-exe-bin 7.3.0_p1 7.3.1_p1: PyPy3 executable (pre-built version)
 dev-python/pyqrcode 1.2.1-r1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
@@ -9225,7 +9225,7 @@ dev-python/watchdog 0.8.3-r2 0.10.2 0.10.3: Python API and shell utilities to mo
 dev-python/wcwidth 0.2.5: Measures number of Terminal column cells of wide-character codes
 dev-python/weasyprint 51: Visual rendering engine for HTML and CSS that can export to PDF
 dev-python/webassets 2.0: Asset management for Python web development
-dev-python/webcolors 1.10 1.11.1: Color names and value formats defined by the HTML and CSS specifications
+dev-python/webcolors 1.11.1: Color names and value formats defined by the HTML and CSS specifications
 dev-python/webencodings 0.5.1-r1: Character encoding aliases for legacy web content
 dev-python/webob 1.8.5-r3 1.8.6: WSGI request and response object
 dev-python/websocket-client 0.57.0: WebSocket client for python with hybi13 support
