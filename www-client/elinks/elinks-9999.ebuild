@@ -25,7 +25,7 @@ RDEPEND="
 	gpm? ( >=sys-libs/ncurses-5.2:0= >=sys-libs/gpm-1.20.0-r5 )
 	guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated] )
 	idn? ( net-dns/libidn:= )
-	javascript? ( >=dev-lang/spidermonkey-1.8.5:0= )
+	javascript? ( dev-lang/spidermonkey:17= )
 	lua? ( >=dev-lang/lua-5:0= )
 	perl? ( dev-lang/perl:= )
 	ruby? ( dev-lang/ruby:* dev-ruby/rubygems:* )
