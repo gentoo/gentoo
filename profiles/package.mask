@@ -33,6 +33,17 @@
 #--- END OF EXAMPLES ---
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-02)
+# Unmaintained. New release upstream. Py3.6 only.
+# Removal in 30 days. Bug #696484,#718466
+sci-biology/HTSeq
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-02)
+# Dead upstream. Py3.6 only. Build issues.
+# Removal in 30 days. Bug #677900,#716384
+# #722408,723344
+app-mobilephone/obexftp
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-02)
 # Dead upstream. Py3.6 only.
 # Removal in 30 days. Bug #722334,#713686
 app-misc/evemu
