@@ -9188,7 +9188,7 @@ dev-python/typing-extensions 3.7.4.1 3.7.4.2: Type Hint extensions from Python 3
 dev-python/tzlocal 2.1: tzinfo object for the local timezone
 dev-python/u-msgpack 2.6.0 2.7.0: A portable, lightweight MessagePack serializer and deserializer
 dev-python/ubelt 0.8.8: A stdlib like feel, and extra batteries. Hashing, Caching, Timing, Progress
-dev-python/ujson 1.35-r1 3.0.0: Ultra fast JSON encoder and decoder for Python
+dev-python/ujson 1.35-r1 3.0.0 3.1.0: Ultra fast JSON encoder and decoder for Python
 dev-python/uncertainties 3.1.4: Python module for calculations with uncertainties
 dev-python/unicodecsv 0.14.1-r1: Drop-in replacement for python stdlib csv module supporting unicode
 dev-python/unidecode 0.04.21 1.1.1: Module providing ASCII transliterations of Unicode text
@@ -12752,7 +12752,7 @@ media-gfx/ebdftopcf 2: Optimally generate PCF files from BDF files
 media-gfx/enblend 4.2.0_p20161007-r1: Image Blending with Multiresolution Splines
 media-gfx/engauge 10.6: Convert an image file showing a graph or map into numbers
 media-gfx/entangle 2.0: Tethered Camera Control & Capture
-media-gfx/eog 3.32.2: The Eye of GNOME image viewer
+media-gfx/eog 3.32.2 3.36.3: The Eye of GNOME image viewer
 media-gfx/eog-plugins 3.26.4-r1: Eye of GNOME plugins
 media-gfx/eom 1.22.2 1.24.0: The MATE image viewer
 media-gfx/ephoto 1.5: Enlightenment image viewer written with EFL
