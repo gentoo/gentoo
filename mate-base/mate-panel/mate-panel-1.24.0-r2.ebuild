@@ -62,6 +62,7 @@ DEPEND="${COMMON_DEPEND}
 
 src_configure() {
 	mate_src_configure \
+		--disable-static \
 		--libexecdir=/usr/libexec/mate-applets \
 		--disable-deprecation-flags \
 		$(use_enable X x11) \
