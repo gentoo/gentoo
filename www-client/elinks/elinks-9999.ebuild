@@ -3,8 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
-PYTHON_REQ_USE="threads"
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit autotools git-r3 python-any-r1
 
