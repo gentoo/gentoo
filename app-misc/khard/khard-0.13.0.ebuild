@@ -2,11 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_6 )
+
+PYTHON_COMPAT=( python3_{7,8} )
+
+DISTUTILS_USE_SETUPTOOLS=rdepend
+
 inherit distutils-r1
+
 DESCRIPTION="Console CardDAV client"
 HOMEPAGE="https://github.com/scheibler/khard"
 LICENSE="GPL-3"
+
 SLOT="0"
 IUSE="test zsh-completion"
 RESTRICT="!test? ( test )"
