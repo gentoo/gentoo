@@ -618,10 +618,6 @@ sci-mathematics/geogebra
 # for security. unmask as needed.
 dev-java/icedtea-web
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-03-14)
-# Breaks at least dev-games/simgear right now, bug #709878.
-~dev-games/openscenegraph-3.6.5
-
 # Eray Aslan <eras@gentoo.org> (2020-03-09)
 # Mask experimental software
 =mail-mta/postfix-3.6*
