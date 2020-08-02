@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-02)
+# Py2 only. m-n. Bug #735524
+# Removal in 30 days
+www-misc/nx_util
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-02)
 # Unmaintained. New release upstream. Py3.6 only.
 # Removal in 30 days. Bug #696484,#718466
 sci-biology/HTSeq
