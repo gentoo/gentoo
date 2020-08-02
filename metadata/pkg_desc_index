@@ -3971,7 +3971,7 @@ dev-haskell/entropy 0.2.2.4 0.3.7 0.4.1.6: A platform independent entropy source
 dev-haskell/enumerator 0.4.20: Reliable, high-performance processing with left-fold enumerators
 dev-haskell/equivalence 0.2.5 0.3.1: Maintaining an equivalence relation implemented as union-find using STT
 dev-haskell/erf 2.0.0.0-r1: The error function, erf, and related functions
-dev-haskell/errorcall-eq-instance 0.1.0: An orphan Eq instance for ErrorCall
+dev-haskell/errorcall-eq-instance 0.1.0 0.3.0: An orphan Eq instance for ErrorCall
 dev-haskell/errors 1.4.7 2.1.3 2.3.0: Simplified error-handling
 dev-haskell/esqueleto 2.1.3 2.4.3-r1: Type-safe EDSL for SQL queries on persistent backends
 dev-haskell/exceptions 0.3.3 0.6.1 0.8.0.2 0.8.2.1 0.8.3 0.10.4: Extensible optionally-pure exceptions
@@ -4170,7 +4170,7 @@ dev-haskell/lifted-async 0.2.0.2-r1 0.6.0.1 0.7.0.2 0.8.0.1-r1 0.9.1.1-r1 0.10.0
 dev-haskell/lifted-base 0.2.3.6-r2 0.2.3.10 0.2.3.12: lifted IO operations from the base library
 dev-haskell/linear 1.20.5 1.20.6 1.20.9: Linear Algebra
 dev-haskell/list 0.5.2: List monad transformer and class
-dev-haskell/listlike 4.2.1 4.5.1: Generic support for list-like structures
+dev-haskell/listlike 4.2.1 4.5.1 4.6.3: Generic support for list-like structures
 dev-haskell/logging-facade 0.0.0: Simple logging abstraction that allows multiple backends
 dev-haskell/logict 0.6.0.2 0.7.0.2: A backtracking logic-programming monad
 dev-haskell/logict-state 0.1.0.2 0.1.0.5: Library for logic programming based on haskell package logict
@@ -4194,7 +4194,7 @@ dev-haskell/mime-mail 0.4.11: Compose MIME email messages
 dev-haskell/mime-types 0.1.0.3 0.1.0.6 0.1.0.7 0.1.0.9: Basic mime-type handling types and functions
 dev-haskell/minisat 0.1.2: A Haskell bundle of the Minisat SAT solver
 dev-haskell/mintty 0.1.2: A reliable way to detect the presence of a MinTTY console on Windows
-dev-haskell/missingh 1.2.0.2 1.2.1.0 1.3.0.1: Large utility library
+dev-haskell/missingh 1.2.0.2 1.2.1.0 1.3.0.1 1.4.3.0: Large utility library
 dev-haskell/mmap 0.5.8 0.5.9: Memory mapped files for POSIX and Windows
 dev-haskell/mmorph 1.0.0 1.0.5 1.0.6 1.0.9 1.1.3: Monad morphisms
 dev-haskell/mockery 0.3.2 0.3.3 0.3.5: Support functions for automated testing
@@ -8694,7 +8694,7 @@ dev-python/pygtk 2.24.0-r5: GTK+2 bindings for Python
 dev-python/pyh2o 9999: Python API for sci-libs/libh2o
 dev-python/pyhamcrest 1.10.1 2.0.2: Hamcrest framework for matcher objects
 dev-python/pyid3lib 0.5.1-r2: Module for manipulating ID3 tags in Python
-dev-python/pyilmbase 2.3.0-r2 2.5.2: IlmBase Python bindings
+dev-python/pyilmbase 2.3.0-r2 2.5.2-r1: IlmBase Python bindings
 dev-python/pyinotify 0.9.6: Python module used for monitoring filesystems events
 dev-python/pyinsane 2.0.13: Python implementation of the Sane API and abstration layer
 dev-python/pyjwt 1.7.1-r1: JSON Web Token implementation in Python
@@ -13138,7 +13138,7 @@ media-libs/liblo 0.30 0.31: Lightweight OSC (Open Sound Control) implementation
 media-libs/liblqr 0.4.2-r1: An easy to use C/C++ seam carving library
 media-libs/liblrdf 0.6.1: Library for manipulation of RDF files in LADSPA plugins
 media-libs/liblscp 0.6.0 9999: C++ library for the Linux Sampler control protocol
-media-libs/libmad 0.15.1b-r9: "M"peg "A"udio "D"ecoder library
+media-libs/libmad 0.15.1b-r10: "M"peg "A"udio "D"ecoder library
 media-libs/libmatemixer 1.22.0 1.24.0: Mixer library for MATE Desktop
 media-libs/libmatroska 1.5.2 1.6.0: Extensible multimedia container format based on EBML
 media-libs/libmediaart 1.9.4: Manages, extracts and handles media art caches
@@ -13221,7 +13221,7 @@ media-libs/libxtract 0.6.6: A simple, portable, lightweight library of audio fea
 media-libs/libyami 1.0.1 1.1.0 1.2.0 1.3.0 9999: Yet Another Media Infrastructure: Media codec with hardware acceleration
 media-libs/libzen 0.4.38: Shared library for libmediainfo and mediainfo
 media-libs/libzmf 0.0.2 9999: Library for parsing Zoner Callisto/Draw documents
-media-libs/lilv 0.24.6 0.24.8: Library to make the use of LV2 plugins as simple as possible for applications
+media-libs/lilv 0.24.6-r1 0.24.8-r1: Library to make the use of LV2 plugins as simple as possible for applications
 media-libs/lsp-plugins 1.1.5-r2 1.1.7-r1 1.1.10 1.1.22 9999: Linux Studio Plugins
 media-libs/lv2 1.18.0: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
@@ -13668,7 +13668,7 @@ media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
 media-sound/asunder 2.9.3-r1 2.9.5 2.9.6: Graphical Audio CD ripper and encoder with support for many output formats
 media-sound/aucdtect 0.8.2-r1: Commandline FLAC CDDA authenticity verifier
 media-sound/audacious 3.10.1-r1 4.0.5 9999: Lightweight and versatile audio player
-media-sound/audacity 2.2.2 2.3.2 2.3.3: Free crossplatform audio editor
+media-sound/audacity 2.2.2 2.3.2 2.3.3 2.4.2: Free crossplatform audio editor
 media-sound/audex 0.95_pre20190721: Tool for ripping compact discs
 media-sound/audicle 1.0.0.7-r2: A Context-sensitive, On-the-fly Audio Programming Environ/mentality
 media-sound/audiocompress 2.0: Very gentle 1-band dynamic range compressor
@@ -13793,7 +13793,7 @@ media-sound/justeport 0.2: Stream audio to your AirPort Express
 media-sound/kid3 3.8.3: Simple tag editor based on Qt
 media-sound/klick 0.12.2-r2: An advanced command-line based metronome for JACK
 media-sound/kmetronome 1.0.1: MIDI based metronome using ALSA sequencer
-media-sound/lame 3.100-r1 3.100-r2: LAME Ain't an MP3 Encoder
+media-sound/lame 3.100-r2: LAME Ain't an MP3 Encoder
 media-sound/lash 0.5.4-r3: LASH Audio Session Handler
 media-sound/lilypond 2.21.1 9999: GNU Music Typesetter
 media-sound/lingot 1.0.1: Accurate, easy to use, and highly configurable musical instrument tuner
@@ -14349,7 +14349,7 @@ net-analyzer/nettop 0.2.3-r2: top like program for network activity
 net-analyzer/netwag 5.39.0: Tcl/tk interface to netwox (Toolbox of 222 utilities for testing Ethernet/IP networks)
 net-analyzer/netwatch 1.3.0.1-r3 1.3.0.1-r4: Ethernet/PPP IP Packet Monitor
 net-analyzer/netwox 5.39.0: Toolbox of 217 utilities for testing Ethernet/IP networks
-net-analyzer/nfdump 1.6.19 1.6.20: A set of tools to collect and process netflow data
+net-analyzer/nfdump 1.6.19 1.6.20 1.6.21: A set of tools to collect and process netflow data
 net-analyzer/ngrep 1.45-r3 1.47: A grep for network layers
 net-analyzer/nikto 2.1.6_p20180122: Web server vulnerability scanner
 net-analyzer/nipper 0.12.0: Router configuration security analysis tool
