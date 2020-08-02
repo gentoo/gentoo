@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 
 RDEPEND="
-	dev-python/contextvars[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/contextvars[${PYTHON_USEDEP}]' 'python3_6')
 "
 
 PATCHES=(
