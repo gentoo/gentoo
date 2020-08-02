@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (2020-08-02)
+# armv5 and older has no virtual/rust support yet, needed by newer
+# gnome-base/librsvg, et al
+>=media-gfx/eog-3.33.1 svg
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-07-28)
 # Requires dev-libs/boost[context] which is masked on arm, bug #727138
 dev-libs/msgpack boost
