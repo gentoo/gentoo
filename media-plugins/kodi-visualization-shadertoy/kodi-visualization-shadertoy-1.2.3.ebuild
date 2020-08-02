@@ -30,7 +30,7 @@ IUSE=""
 DEPEND="
 	=dev-libs/libplatform-2*
 	=media-tv/kodi-18*
-	>=media-libs/glm-0.9.9.5
+	>=media-libs/glm-0.9.9.8-r1
 	virtual/opengl
 	"
 
@@ -39,6 +39,6 @@ RDEPEND="
 	"
 
 src_prepare() {
-	[ -d depends ] && rm -rf depends || die
+	if [ -d depends ]; then rm -rf depends || die; fi
 	cmake_src_prepare
 }
