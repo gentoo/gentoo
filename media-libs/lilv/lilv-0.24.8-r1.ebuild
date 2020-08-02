@@ -33,8 +33,6 @@ DEPEND="
 	test? ( dev-python/unittest2 )
 "
 
-PATCHES=( "${FILESDIR}/includedir.patch" )
-
 src_prepare() {
 	default
 	sed -i -e 's/^.*run_ldconfig/#\0/' wscript || die
