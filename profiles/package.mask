@@ -33,6 +33,17 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-02)
+# Discontinued.  Last patch in 2008.  Py2 only.
+# Removal in 30 days.  Bug #734632.
+x11-misc/pypanel
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-02)
+# Stuck on py2.  Last release in 2010, last commit in 2014.  No revdeps.
+# Blocks dev-python/mysql-python removal.
+# Removal in 30 days.  Bug #735178.
+dev-python/python-openid
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-02)
 # Discontinued upstream in favor of dev-python/mock.  Py2 only.
 # The only revdep is last rited now.
 # Removal in 30 days.  Bug #735158.
