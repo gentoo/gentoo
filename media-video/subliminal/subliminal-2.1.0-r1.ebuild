@@ -23,6 +23,7 @@ SRC_URI+=" test? ( mirror://sourceforge/matroska/test_files/matroska_test_w1_1.z
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 BDEPEND="
 	test? (
@@ -50,7 +51,7 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.1.0-fix-pytest-warning.patch"
+	"${FILESDIR}/${P}-fix-pytest-warning.patch"
 )
 
 distutils_enable_tests pytest
