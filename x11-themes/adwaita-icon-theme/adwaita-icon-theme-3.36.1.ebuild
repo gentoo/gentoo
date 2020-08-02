@@ -51,5 +51,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# less than 2.45 being a problem is just a guess, but we didn't carry anything between 2.40 and 2.48 in main tree
+	if has_version '<gnome-base/librsvg-2.45:2'; then
+		ewarn "You are building ${CATEGORY}/${PN} against an older"
+		ewarn "gnome-base/librsvg, which will result in various broken symbolic icons until"
+		ewarn "rebuild with newer librsvg, and misrendering of scalable icons at runtime"
+		ewarn "until gnome-base/librsvg is upgraded!"
+	fi
+
 	gnome2_src_configure GTK_UPDATE_ICON_CACHE=$(type -P true)
 }

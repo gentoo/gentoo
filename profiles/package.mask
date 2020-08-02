@@ -32,6 +32,26 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-08-02)
+# Discontinued upstream in favor of dev-python/mock.  Py2 only.
+# The only revdep is last rited now.
+# Removal in 30 days.  Bug #735158.
+dev-python/mox
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-02)
+# Discontinued upstream in 2015.  Python 2 only.  No revdeps.
+# abseil-py (not package) is the suggested replacement.
+# Removal in 30 days.  Bug #735156.
+dev-python/google-apputils
+
+# Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
+# consolekit is abandoned upstream.
+# People are encouraged to switch to any logind
+# implementation (systemd/elogind).
+# Removal in 60 days (bug #727730)
+sys-auth/consolekit
+sec-policy/selinux-consolekit
+
 # Aaron Bauman <bman@gentoo.org> (2020-08-02)
 # Py3.6 backport for dataclasses. No rdeps left.
 # Removal in 30 days
@@ -371,11 +391,6 @@ dev-perl/Data-Diver
 # Please use net-analyzer/fail2ban instead. (bug #732076)
 # Removal in 30 days.
 app-admin/denyhosts
-
-# Matt Turner <mattst88@gentoo.org> (2019-09-01)
-# Icons look funny. E.g., the X (close) icon is wrong. I suspect files are
-# installed incorrectly
->=x11-themes/adwaita-icon-theme-3.36
 
 # William Hubbs <williamh@gentoo.org> (2020-07-14)
 # The kubernetes split packages are old versions with known security
