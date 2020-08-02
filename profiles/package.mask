@@ -392,11 +392,6 @@ dev-perl/Data-Diver
 # Removal in 30 days.
 app-admin/denyhosts
 
-# Matt Turner <mattst88@gentoo.org> (2019-09-01)
-# Icons look funny. E.g., the X (close) icon is wrong. I suspect files are
-# installed incorrectly
->=x11-themes/adwaita-icon-theme-3.36
-
 # William Hubbs <williamh@gentoo.org> (2020-07-14)
 # The kubernetes split packages are old versions with known security
 # issues.
