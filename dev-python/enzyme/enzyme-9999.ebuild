@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE='xml(+)'
 
 inherit distutils-r1 git-r3
@@ -15,18 +15,18 @@ SRC_URI="test? ( mirror://sourceforge/matroska/test_files/matroska_test_w1_1.zip
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
+BDEPEND="
 	test? (
 		app-arch/unzip
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 	)
 "
+
+distutils_enable_tests setup.py
 
 src_unpack() {
 	default_src_unpack
@@ -41,8 +41,4 @@ python_prepare_all() {
 	fi
 
 	distutils-r1_python_prepare_all
-}
-
-python_test() {
-	esetup.py test
 }
