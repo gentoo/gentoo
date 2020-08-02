@@ -967,7 +967,7 @@ app-crypt/pdfcrack 0.19: Tool for recovering passwords and content from PDF-file
 app-crypt/pesign 113: Tools for manipulating signed PE-COFF binaries
 app-crypt/pgpdump 0.33: A PGP packet visualizer
 app-crypt/pinentry 1.1.0-r3: Simple passphrase entry dialogs which utilize the Assuan protocol
-app-crypt/pius 2.2.4 3.0.0: A tool for signing and email all UIDs on a set of PGP keys
+app-crypt/pius 3.0.0: A tool for signing and email all UIDs on a set of PGP keys
 app-crypt/pkcrack 1.2.2-r1: PkZip cipher breaker
 app-crypt/pkcs11-data 0.7.4: Utilities for PKCS#11 data object manipulation in
 app-crypt/pkcs11-dump 0.3.4: Utilities for PKCS#11 token content dump
@@ -13696,7 +13696,7 @@ media-sound/cdplay 1.0: A commandline CD Player
 media-sound/cdstatus 0.97.03: Tool for diagnosing cdrom drive and digital data (audio) extraction
 media-sound/cdtool 2.1.8-r1: collection of command-line utilities to control cdrom devices
 media-sound/chordii 4.5.1 4.5.3: A guitar music typesetter
-media-sound/chuck 1.4.0.0: Strongly-timed, concurrent, and on-the-fly audio programming language
+media-sound/chuck 1.4.0.0 1.4.0.1: Strongly-timed, concurrent, and on-the-fly audio programming language
 media-sound/clementine 1.4.0_rc1 9999: Modern music player and library organizer based on Amarok 1.4 and Qt
 media-sound/cmix 1.6: command line audio mixer
 media-sound/cmus 2.8.0 9999: Ncurses based music player with plugin support for many formats
@@ -13984,7 +13984,7 @@ media-sound/vimpc 0.09.2 0.09.2-r1 9999: An ncurses based mpd client with vi lik
 media-sound/vkeybd 0.1.18d: A virtual MIDI keyboard for X
 media-sound/vlevel 0.5-r1: Dynamic compressor to amplify quiet parts of music
 media-sound/vlorb 1.2: A high quality Audio CD to audio file encoder
-media-sound/vmpk 0.6.2a: Virtual MIDI Piano Keyboard
+media-sound/vmpk 0.6.2a 0.7.2: Virtual MIDI Piano Keyboard
 media-sound/volumeicon 0.5.1-r1: A lightweight volume control that sits in your systray
 media-sound/volwheel 0.2.8-r1: A volume control trayicon with mouse wheel support
 media-sound/vorbis-tools 1.4.0-r5: Tools for using the Ogg Vorbis sound file format
@@ -16292,7 +16292,7 @@ sci-libs/matio 1.5.17: Library for reading and writing matlab files
 sci-libs/mc 1.5: 2D/3D AFEM code for nonlinear geometric PDE
 sci-libs/med 4.0.0-r1 4.0.0-r2: A library to store and exchange meshed data or computation results
 sci-libs/metis 4.0.3-r1 4.0.3-r2 5.1.0-r4: A package for unstructured serial graph partitioning
-sci-libs/minfx 1.0.3-r1 1.0.4_pre98 1.0.4 1.0.5 1.0.6 1.0.10 1.0.11: Numerical optimisation library
+sci-libs/minfx 1.0.11: Numerical optimisation library
 sci-libs/minuit 5.34.14: A C++ physics analysis tool for function minimization
 sci-libs/mkl 10.0.5.025-r1: Intel(R) Math Kernel Library: linear algebra, fft, math functions
 sci-libs/mkl-rt 2019.4.243: Intel Math Kernel Library (Runtime)

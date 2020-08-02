@@ -3,12 +3,12 @@ DEPEND==www-servers/apache-2*
 DESCRIPTION=An Apache2 module for running Python WSGI applications
 EAPI=5
 HOMEPAGE=https://github.com/GrahamDumpleton/mod_wsgi
-IUSE=python_single_target_python2_7 python_single_target_python3_6
+IUSE=+python_single_target_python3_6
 KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=Apache-2.0
-RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads] >=dev-lang/python-exec-2:=[python_targets_python2_7] ) python_single_target_python3_6? ( dev-lang/python:3.6[threads] >=dev-lang/python-exec-2:=[python_targets_python3_6] ) =www-servers/apache-2*
-REQUIRED_USE=^^ ( python_single_target_python2_7 python_single_target_python3_6 )
+RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6[threads] >=dev-lang/python-exec-2:=[python_targets_python3_6] ) =www-servers/apache-2*
+REQUIRED_USE=^^ ( python_single_target_python3_6 )
 SLOT=0
 SRC_URI=https://github.com/GrahamDumpleton/mod_wsgi/archive/4.6.5.tar.gz -> mod_wsgi-4.6.5.tar.gz
 _eclasses_=apache-module	bd30ba4d834196e81cf2b76c52d26b93	depend.apache	05ca915dc22ea60059f85d8d9a34d3de	desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	2477ebe553d3e4d2c606191fe6c33602	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-single-r1	674c48c926cbb44e91b656e0399d8f54	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=24e5306718d62a7faa9d814af657587f
+_md5_=91b5d99c14e0029df76d06eff646ef7e
