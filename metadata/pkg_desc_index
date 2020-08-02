@@ -418,7 +418,7 @@ acct-user/x2gouser 0: User for net-misc/x2goserver
 acct-user/xrootd 0: User for the XRootD server
 acct-user/znc 0: User for net-irc/znc
 app-accessibility/SphinxTrain 1.0.8: Speech Recognition (Training Module)
-app-accessibility/accerciser 3.22.0 3.36.2: Interactive Python accessibility explorer
+app-accessibility/accerciser 3.36.2: Interactive Python accessibility explorer
 app-accessibility/at-spi2-atk 2.34.2: Gtk module for bridging AT-SPI to Atk
 app-accessibility/at-spi2-core 2.34.0 2.36.0: D-Bus accessibility specifications and registration daemon
 app-accessibility/brltty 5.2-r1 6.0-r1: Daemon that provides access to the Linux/Unix console for a blind person
@@ -627,7 +627,7 @@ app-admin/tmpwatch 2.11-r2: Files which haven't been accessed are removed from s
 app-admin/tripwire 2.4.3.7: Open Source File Integrity Checker and IDS
 app-admin/ulogd 2.0.7-r1: A userspace logging daemon for netfilter/iptables related logging
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
-app-admin/vault 1.4.2-r1 1.4.3: A tool for managing secrets
+app-admin/vault 1.4.2-r1 1.4.3 1.5.0: A tool for managing secrets
 app-admin/verynice 1.1-r3: A tool for dynamically adjusting the nice-level of processes
 app-admin/watchfolder 0.3.3-r1: watches directories and processes files
 app-admin/webalizer 2.23.08: Webserver log file analyzer
@@ -12477,7 +12477,7 @@ mate-base/mate-control-center 1.22.2-r1 1.24.0: The MATE Desktop configuration t
 mate-base/mate-desktop 1.22.2 1.24.0: Libraries for the MATE desktop that are not part of the UI
 mate-base/mate-menus 1.22.1-r1 1.24.0-r2: MATE menu system, implementing the F.D.O cross-desktop spec
 mate-base/mate-panel 1.22.2-r1 1.24.0-r1: The MATE panel
-mate-base/mate-session-manager 1.22.3-r2 1.24.0-r2: MATE session manager
+mate-base/mate-session-manager 1.22.3-r3 1.24.0-r3: MATE session manager
 mate-base/mate-settings-daemon 1.22.1 1.24.0: MATE Settings Daemon
 mate-extra/caja-admin 0.0.1 0.0.2 0.0.2_p20200328 9999: Caja Admin Extension
 mate-extra/caja-dropbox 1.22.1-r1 1.24.0: Store, Sync and Share Files Online
@@ -12488,7 +12488,7 @@ mate-extra/mate-indicator-applet 1.22.1 1.24.0: MATE indicator applet
 mate-extra/mate-media 1.22.2 1.24.0: Multimedia related programs for the MATE desktop
 mate-extra/mate-netbook 1.22.2 1.24.0: MATE utilities for netbooks
 mate-extra/mate-polkit 1.22.0-r1 1.24.0: A MATE specific DBUS service that is used to bring up authentication dialogs
-mate-extra/mate-power-manager 1.22.1 1.22.2 1.24.1: A session daemon for MATE that makes it easy to manage your laptop or desktop
+mate-extra/mate-power-manager 1.22.1-r1 1.22.2-r1 1.24.1-r1: A session daemon for MATE that makes it easy to manage your laptop or desktop
 mate-extra/mate-screensaver 1.22.2 1.24.0: Replaces xscreensaver, integrating with the MATE desktop
 mate-extra/mate-sensors-applet 1.22.1 1.24.0: MATE panel applet to display readings from hardware sensors
 mate-extra/mate-system-monitor 1.22.2 1.24.0: The MATE System Monitor
