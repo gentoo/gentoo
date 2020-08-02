@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Felix Janda <felix.janda@posteo.de> (2020-08-01)
+# Requires unkeyworded dev-lang/spidermonkey:17
+>=www-client/elinks-0.13.3 javascript
+
 # Mike Pagano <mpagano@gentoo.org> (2020-07-27)
 # Failed build on arm64
 # bug #732966
