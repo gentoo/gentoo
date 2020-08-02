@@ -43,7 +43,6 @@ RDEPEND="${COMMON_DEPEND}
 	systemd? ( sys-apps/systemd )
 	!systemd? (
 		elogind? ( sys-auth/elogind )
-		!elogind? ( >=sys-auth/consolekit-0.9.2 )
 	)"
 
 DEPEND="${COMMON_DEPEND}
