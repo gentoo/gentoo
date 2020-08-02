@@ -30,7 +30,7 @@ index 6fe62be..a4e9f0d 100644
          if (hasattr(sys, 'pypy_version_info') and
                  not name.endswith(('_user', '_home'))):
 -            if os.name == 'nt':
-+            if self.install_base == os.path.normpath('@EPREFIX@/usr/lib/pypy2.7'):
++            if self.install_base.startswith(os.path.normpath('@EPREFIX@/usr/lib/pypy')):
 +                # override paths for system-wide install
 +                name = 'gentoo'
 +            elif os.name == 'nt':
