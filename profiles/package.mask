@@ -34,6 +34,12 @@
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-01)
 # Py2 only. Dead upstream.
+# Removal in 30 days. Bug #722060
+app-arch/cfv
+app-arch/ipkg-utils
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-01)
+# Py2 only. Dead upstream.
 # Removal in 30 days
 # Bug #568602,#340164,#560840,#716420,#560254
 # #476424,#643982
