@@ -2445,7 +2445,7 @@ app-misc/joymouse 0.5 0.5-r1: An application that translates joystick events to 
 app-misc/jq 1.6-r3: A lightweight and flexible command-line JSON processor
 app-misc/kanatest 0.4.8: Visual flashcard tool for memorizing the Japanese Hiragana and Katakana alphabet
 app-misc/khal 0.10.1-r1: A CalDAV based calendar
-app-misc/khard 0.11.4 0.12.2 0.13.0: Console CardDAV client
+app-misc/khard 0.13.0: Console CardDAV client
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
 app-misc/kryoflux-dtc 2.6: KryoFlux Host Software
 app-misc/ktoblzcheck 1.49-r1: Library to check account numbers and bank codes of German banks
@@ -18075,7 +18075,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.4.2: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 84.0.4147.105 85.0.4183.48 86.0.4209.2: Open-source version of Google Chrome web browser
+www-client/chromium 84.0.4147.105 85.0.4183.48 86.0.4214.2: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r3 3.1_p20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6 3.34.4 3.36.3: GNOME webbrowser based on Webkit
