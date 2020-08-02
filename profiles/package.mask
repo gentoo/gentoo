@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-01)
+# Py3.6 only. Dead upstream.
+# Removal in 30 days. Bug #718898
+dev-python/cloudlib
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-01)
 # Py2 only. Dead upstream.
 # Removal in 30 days. Bug #722060
 app-arch/cfv
