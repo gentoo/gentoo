@@ -28,7 +28,7 @@ RDEPEND="dev-libs/expat
 	media-libs/libsoundtouch
 	media-libs/portaudio[alsa?]
 	media-libs/soxr
-	media-sound/lame
+	>=media-sound/lame-3.100-r3
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
 	alsa? ( media-libs/alsa-lib )
 	ffmpeg? ( media-video/ffmpeg:= )
