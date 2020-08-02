@@ -1,8 +1,0 @@
---- a/Setup.hs
-+++ b/Setup.hs
-@@ -3,4 +3,4 @@ module Main (main) where
- import Distribution.Simple
- 
- main :: IO ()
--main = defaultMainWithHooks defaultUserHooks
-+main = defaultMainWithHooks autoconfUserHooks
