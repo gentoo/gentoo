@@ -8557,7 +8557,7 @@ dev-python/pcapy 0.11.2: Python pcap extension
 dev-python/pdfrw 0.4: PDF file reader/writer library
 dev-python/pebble 4.5.3: Threading and multiprocessing eye-candy
 dev-python/pecan 1.3.3-r2: A WSGI object-dispatching web framework, lean, fast, with few dependencies.
-dev-python/peewee 3.1.0 3.13.2: Small Python ORM
+dev-python/peewee 3.13.2: Small Python ORM
 dev-python/pelican-minify 0.9: An HTML minification plugin for Pelican, the static site generator.
 dev-python/pep8 1.7.1 1.7.1-r1: Python style guide checker
 dev-python/pew 1.1.1: tool to manage multiple virtualenvs written in pure python
@@ -8584,7 +8584,7 @@ dev-python/plumbum 1.6.8: A library for shell script-like programs in python
 dev-python/ply 3.11: Python Lex-Yacc library
 dev-python/plyr 1.0.6: A python wrapper for Glyr
 dev-python/plyvel 1.2.0: Python interface to LevelDB
-dev-python/pmw 1.3.3-r3 2.0.1-r2: Toolkit for building high-level compound Python widgets using the Tkinter module
+dev-python/pmw 2.0.1-r2: Toolkit for building high-level compound Python widgets using the Tkinter module
 dev-python/pocketlint 0.20: Shared code for running pylint against rhinstaller projects
 dev-python/pockets 0.5.1 0.9.1: Collection of helpful Python tools
 dev-python/podcastparser 0.6.4: Podcast parser for the gpodder client
@@ -8649,7 +8649,7 @@ dev-python/pychm 0.8.6: Python bindings for the chmlib library
 dev-python/pychromecast 4.1.0: Python module to talk to Google Chromecast.
 dev-python/pychroot 0.10.1 9999: a python library and cli tool that simplify chroot handling
 dev-python/pyclipper 1.1.0 1.1.0_p3-r1 1.2.0: Cython wrapper for the C++ translation of the Angus Johnson's Clipper library
-dev-python/pycodestyle 2.5.0-r1 2.6.0: Python style guide checker (fka pep8)
+dev-python/pycodestyle 2.6.0: Python style guide checker (fka pep8)
 dev-python/pycollada 0.7.1: Python library for reading and writing COLLADA documents
 dev-python/pycountry 19.8.18: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.20: C parser and AST generator written in Python
