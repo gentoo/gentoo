@@ -7841,7 +7841,7 @@ dev-python/alagitpull 0.0.23: alabaster sub-theme used on git-pull docs
 dev-python/alembic 1.4.2: database migrations tool, written by the author of SQLAlchemy
 dev-python/algopy 0.5.3: Taylor Arithmetic Computation and Algorithmic Differentiation
 dev-python/ament_package 0.9.2: Parser for the manifest files in the ament buildsystem
-dev-python/amodem 1.15.0: Transmit data between two computers using audio
+dev-python/amodem 1.15.1: Transmit data between two computers using audio
 dev-python/aniso8601 8.0.0: A library for parsing ISO 8601 strings
 dev-python/ansi 0.1.5: ANSI cursor movement and graphics in Python
 dev-python/ansi2html 1.5.2-r1: Convert text with ANSI color codes to HTML
