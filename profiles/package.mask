@@ -531,12 +531,6 @@ dev-tex/cjk-latex
 # and accept a more unstable release.
 >=www-client/chromium-86
 
-# Mart Raudsepp <leio@gentoo.org> (2020-06-27)
-# Disappeared upstream and download locations. Potential replacements:
-# media-sound/quimup, xfce-extra/xfce4-mpc-plugin, media-sound/xfmpc
-# Bug 729822. Removal in 30 days.
-media-sound/guimup
-
 # Hans de Graaff <graaff@gentoo.org> (2020-06-14)
 # Ruby 2.4 is no longer supported by upstream and no longer gets
 # security updates since the 2.4.10 release. Use ruby 2.5 or later
