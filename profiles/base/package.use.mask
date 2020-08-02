@@ -11,6 +11,10 @@
 dev-python/dask distributed
 dev-python/joblib doc
 
+# Sam James <sam@gentoo.org> (2020-08-01)
+# Temporary mask to allow atomic commit
+dev-python/sympy symengine
+
 # Michał Górny <mgorny@gentoo.org> (2020-07-30)
 # Forces downgrade of dev-python/ws4py and its revdeps.
 www-apps/nikola websocket
