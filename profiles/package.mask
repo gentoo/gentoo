@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-08-02)
+# Discontinued upstream in 2015.  Python 2 only.  No revdeps.
+# abseil-py (not package) is the suggested replacement.
+# Removal in 30 days.  Bug #735156.
+dev-python/google-apputils
+
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
 # consolekit is abandoned upstream.
 # People are encouraged to switch to any logind
