@@ -1,13 +1,13 @@
 BDEPEND=dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install prepare test
-DEPEND==media-tv/kodi-19* dev-libs/tinyxml
+DEPEND==media-tv/kodi-19* =dev-libs/libplatform-2* dev-libs/tinyxml
 DESCRIPTION=Kodi's MediaPortal TVServer client addon
 EAPI=7
 HOMEPAGE=https://github.com/kodi-pvr/pvr.mediaportal.tvserver
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND==media-tv/kodi-19* dev-libs/tinyxml
+RDEPEND==media-tv/kodi-19* =dev-libs/libplatform-2* dev-libs/tinyxml
 SLOT=0
 SRC_URI=https://github.com/kodi-pvr/pvr.mediaportal.tvserver/archive/6.0.0-Matrix.tar.gz -> kodi-pvr-mediaportal-tvserver-6.0.0.tar.gz
 _eclasses_=cmake	f274d2f953f93e2d88cd3e0b2ce376a9	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	kodi-addon	1be83fd24fef6d1c905c588b9a2c22de	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=1be5109a60ac16e57ece6a4521d6ebf4
+_md5_=34543d523f85ad11097bf7d1a2038939
