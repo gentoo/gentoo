@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (2020-08-02)
+# Needs bump. Py3 tests fail. Last release 2yrs.
+# Removal in 30 days. Bug #718196
+app-backup/cachedir
+
 # Michał Górny <mgorny@gentoo.org> (2020-08-02)
 # Discontinued.  Last patch in 2008.  Py2 only.
 # Removal in 30 days.  Bug #734632.
