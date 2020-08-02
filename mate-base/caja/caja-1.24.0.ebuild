@@ -8,7 +8,7 @@ MATE_LA_PUNT="yes"
 inherit mate virtualx
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="Caja file manager for the MATE desktop"
