@@ -6,7 +6,7 @@ EAPI=6
 inherit mate
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="A session daemon for MATE that makes it easy to manage your laptop or desktop"
@@ -36,15 +36,13 @@ COMMON_DEPEND="
 	x11-libs/pango
 	applet? ( >=mate-base/mate-panel-1.17.0 )
 	gnome-keyring? ( >=gnome-base/libgnome-keyring-3 )
-	>=sys-power/upower-0.99.8:="
+	>=sys-power/upower-0.9.23:="
 
 RDEPEND="${COMMON_DEPEND}
-	virtual/libintl
 	policykit? ( >=mate-extra/mate-polkit-1.6 )
 	systemd? ( sys-apps/systemd )
 	!systemd? (
 		elogind? ( sys-auth/elogind )
-		!elogind? ( >=sys-auth/consolekit-0.9.2 )
 	)"
 
 DEPEND="${COMMON_DEPEND}
@@ -52,9 +50,9 @@ DEPEND="${COMMON_DEPEND}
 	app-text/rarian
 	>=app-text/scrollkeeper-dtd-1:1.0
 	app-text/yelp-tools
-	dev-libs/libxml2
 	dev-util/glib-utils
-	>=sys-devel/gettext-0.19.8:*
+	>=dev-util/intltool-0.50.1
+	sys-devel/gettext
 	virtual/pkgconfig
 	x11-base/xorg-proto"
 
