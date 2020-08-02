@@ -3,41 +3,43 @@
 
 EAPI=7
 
-inherit cmake kodi-addon
+inherit kodi-addon
 
 DESCRIPTION="StarBurst visualizer for Kodi"
 HOMEPAGE="https://github.com/xbmc/visualization.starburst"
-SRC_URI=""
+KODI_PLUGIN_NAME="visualization.starburst"
 
 case ${PV} in
 9999)
 	SRC_URI=""
-	EGIT_REPO_URI="https://github.com/xbmc/visualization.starburst.git"
+	EGIT_REPO_URI="https://github.com/xbmc/${KODI_PLUGIN_NAME}.git"
 	inherit git-r3
+	DEPEND="~media-tv/kodi-9999"
 	;;
 *)
-	KEYWORDS="~amd64 ~x86"
 	CODENAME="Matrix"
-	SRC_URI="https://github.com/xbmc/visualization.starburst/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/visualization.starburst-${PV}-${CODENAME}"
+	KEYWORDS="~amd64 ~x86"
+	SRC_URI="https://github.com/xbmc/${KODI_PLUGIN_NAME}/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${KODI_PLUGIN_NAME}-${PV}-${CODENAME}"
+	DEPEND="=media-tv/kodi-19*:="
 	;;
 esac
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 IUSE=""
 
-DEPEND="
-	~media-tv/kodi-9999
-	media-libs/glm
+DEPEND+="
+	>=media-libs/glm-0.9.9.8-r1
 	virtual/opengl
 	"
 
-RDEPEND="
-	${DEPEND}
-	"
+RDEPEND="${DEPEND}"
+
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
-	[ -d depends ] && rm -rf depends || die
+	if [ -d depends ]; then rm -rf depends || die; fi
+
 	cmake_src_prepare
 }
