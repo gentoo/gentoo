@@ -9,6 +9,10 @@
 #
 
 # Fabian Groffen <grobian@gentoo.org> (2020-08-02)
+# Python 3.6 is soon going away and won't be updated for Prefix anymore.
+dev-lang/python:3.6
+
+# Fabian Groffen <grobian@gentoo.org> (2020-08-02)
 # Python 2 is no longer supported
 # Recent Portage releases no longer supports Python 2, and the version
 # available in the Prefix tree has security issues.  If you still need
