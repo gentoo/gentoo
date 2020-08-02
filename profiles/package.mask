@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
+# consolekit is abandoned upstream.
+# People are encouraged to switch to any logind
+# implementation (systemd/elogind).
+# Removal in 60 days (bug #727730)
+sys-auth/consolekit
+sec-policy/selinux-consolekit
+
 # Aaron Bauman <bman@gentoo.org> (2020-08-02)
 # Py3.6 backport for dataclasses. No rdeps left.
 # Removal in 30 days
