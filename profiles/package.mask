@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-02)
+# Dead upstream. Py3.6 only.
+# Removal in 30 days. Bug #722334,#713686
+app-misc/evemu
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-02)
 # Needs bump. Py3 tests fail. Last release 2yrs.
 # Removal in 30 days. Bug #718196
 app-backup/cachedir
