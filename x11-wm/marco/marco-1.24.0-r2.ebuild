@@ -59,6 +59,7 @@ DEPEND="${COMMON_DEPEND}
 
 src_configure() {
 	mate_src_configure \
+		--disable-static \
 		--enable-compositor \
 		--enable-render \
 		--enable-shape \
