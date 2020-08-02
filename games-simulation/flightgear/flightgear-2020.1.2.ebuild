@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils bash-completion-r1 toolchain-funcs
+inherit cmake bash-completion-r1 toolchain-funcs
 
 DESCRIPTION="Open Source Flight Simulator"
 HOMEPAGE="https://www.flightgear.org/"
@@ -63,7 +63,9 @@ RDEPEND="${COMMON_DEPEND}
 	~games-simulation/${PN}-data-${PV}
 "
 
-PATCHES=("${FILESDIR}/${PN}-2018.3.2-cmake.patch")
+PATCHES=(
+	"${FILESDIR}/${PN}-2020.1.2-cmake.patch"
+)
 
 DOCS=(AUTHORS ChangeLog NEWS README Thanks)
 
@@ -73,13 +75,13 @@ pkg_pretend() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DBUILD_SHARED_LIBS=OFF
 		-DENABLE_AUTOTESTING=OFF
 		-DENABLE_COMPOSITOR=OFF
 		-DENABLE_FGCOM=$(usex utils)
 		-DENABLE_FGELEV=$(usex utils)
 		-DENABLE_FGJS=$(usex utils)
 		-DENABLE_FGVIEWER=$(usex utils)
-		-DENABLE_FLITE=OFF
 		-DENABLE_GDAL=$(usex gdal)
 		-DENABLE_GPSSMOOTH=$(usex utils)
 		-DENABLE_HID_INPUT=$(usex udev)
@@ -95,6 +97,7 @@ src_configure() {
 		-DENABLE_SIMD=OFF # see CPU_FLAGS
 		-DENABLE_SIMD_CODE=$(usex cpu_flags_x86_sse2)
 		-DENABLE_STGMERGE=ON
+		-DENABLE_SWIFT=OFF # swift pilot client not packaged yet
 		-DENABLE_TERRASYNC=$(usex utils)
 		-DENABLE_TRAFFIC=$(usex utils)
 		-DENABLE_UIUC_MODEL=ON
@@ -106,8 +109,8 @@ src_configure() {
 		-DOSG_FSTREAM_EXPORT_FIXED=OFF # TODO also see simgear
 		-DSP_FDMS=ON
 		-DSYSTEM_CPPUNIT=OFF # NOTE we do not build tests anyway
-		-DSYSTEM_FLITE=ON
-		-DSYSTEM_HTS_ENGINE=ON
+		-DSYSTEM_FLITE=OFF
+		-DSYSTEM_HTS_ENGINE=OFF
 		-DSYSTEM_SPEEX=ON
 		-DSYSTEM_GSM=ON
 		-DSYSTEM_SQLITE=ON
@@ -129,11 +132,11 @@ src_configure() {
 		mycmakeargs+=(-DENABLE_FGQCANVAS=OFF)
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	# Install bash completion (TODO zsh)
 	# Uncomment below when scripts stops writing files...
