@@ -46,6 +46,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-parallel-make.patch
+	"${FILESDIR}"/${PN}-0.13.4-ruby-gcc10.patch
 )
 
 src_unpack() {

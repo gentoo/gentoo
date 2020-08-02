@@ -46,6 +46,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-parallel-make.patch
+	"${FILESDIR}"/${P}-ruby-gcc10.patch
 )
 
 src_prepare() {
