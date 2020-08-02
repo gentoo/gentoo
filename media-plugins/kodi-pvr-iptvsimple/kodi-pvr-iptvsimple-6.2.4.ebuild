@@ -29,9 +29,9 @@ IUSE=""
 
 DEPEND="
 	=dev-libs/libplatform-2*
+	dev-libs/pugixml
 	=media-tv/kodi-19*
 	sys-libs/zlib
-	dev-libs/rapidxml
 	"
 
 RDEPEND="
