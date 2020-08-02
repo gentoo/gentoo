@@ -10,7 +10,6 @@ inherit distutils-r1
 DESCRIPTION="Python client for Sentry"
 HOMEPAGE="https://getsentry.com https://pypi.org/project/sentry-sdk/"
 SRC_URI="https://github.com/getsentry/sentry-python/archive/${PV}.tar.gz -> ${P}.tar.gz"
-
 S="${WORKDIR}/sentry-python-${PV}"
 
 LICENSE="PSF-2"
