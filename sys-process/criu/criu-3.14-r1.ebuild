@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..8} )
 
 inherit toolchain-funcs linux-info flag-o-matic python-r1
 
@@ -75,6 +75,7 @@ src_configure() {
 	# Gold linker generates invalid object file when used with criu's custom
 	# linker script.  Use the bfd linker instead. See https://crbug.com/839665#c3
 	tc-ld-disable-gold
+	python_setup
 }
 
 src_compile() {
@@ -84,6 +85,8 @@ src_compile() {
 		CC="$(tc-getCC)" \
 		LD="$(tc-getLD)" \
 		AR="$(tc-getAR)" \
+		PYTHON="${EPYTHON%.?}" \
+		FULL_PYTHON="${PYTHON%.?}" \
 		OBJCOPY="$(tc-getOBJCOPY)" \
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 		ARCH="$(criu_arch)" \
@@ -109,6 +112,8 @@ src_install() {
 	emake \
 		ARCH="$(criu_arch)" \
 		PREFIX="${EPREFIX}"/usr \
+		PYTHON="${EPYTHON%.?}" \
+		FULL_PYTHON="${PYTHON%.?}" \
 		LOGROTATEDIR="${EPREFIX}"/etc/logrotate.d \
 		DESTDIR="${D}" \
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
