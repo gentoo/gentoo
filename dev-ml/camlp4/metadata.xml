@@ -3,6 +3,6 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <upstream>
-    <remote-id type="github">ocaml/camlp4</remote-id>
+    <remote-id type="github">camlp4/camlp4</remote-id>
   </upstream>
 </pkgmetadata>

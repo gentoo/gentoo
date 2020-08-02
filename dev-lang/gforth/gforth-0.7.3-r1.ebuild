@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/gforth/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris"
-IUSE="emacs"
+IUSE="+check emacs"
 
 DEPEND="dev-libs/ffcall
 	emacs? ( >=app-editors/emacs-23.1:* )"
@@ -26,7 +26,8 @@ PATCHES=(
 
 src_configure() {
 	econf \
-		$(use emacs || echo "--without-lispdir")
+		$(use emacs || echo "--without-lispdir") \
+		$(use_with check)
 }
 
 src_compile() {

@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
 
-USE_PHP="php7-2"
+USE_PHP="php7-2 php7-3 php7-4"
 PHP_EXT_NAME="redland"
 PHP_EXT_OPTIONAL_USE="php"
 PHP_EXT_SKIP_PHPIZE="yes"
@@ -18,7 +18,7 @@ SRC_URI="http://download.librdf.org/source/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2 LGPL-2.1"
 SLOT="0"
-#KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-linux"
 IUSE="lua perl python php ruby"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -27,8 +27,12 @@ RDEPEND=">=dev-libs/redland-1.0.14
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	ruby? ( dev-lang/ruby dev-ruby/log4r )
+	php? (
+		php_targets_php7-2? ( dev-lang/php:7.2[-threads] )
+		php_targets_php7-3? ( dev-lang/php:7.3[-threads] )
+		php_targets_php7-4? ( dev-lang/php:7.4[-threads] )
+	)
 "
-#	php? ( php_targets_php5-6? ( dev-lang/php:5.6[-threads] ) )
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	>=dev-lang/swig-2
@@ -40,7 +44,7 @@ pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
-src_prepare(){
+src_prepare() {
 	default
 	if use php ; then
 		local slot

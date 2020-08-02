@@ -1,15 +1,15 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools cuda flag-o-matic versionator multilib-minimal
+inherit autotools cuda flag-o-matic toolchain-funcs versionator multilib-minimal
 
 MY_PV=v$(get_version_component_range 1-2)
 
 DESCRIPTION="displays the hardware topology in convenient formats"
-HOMEPAGE="http://www.open-mpi.org/projects/hwloc/"
-SRC_URI="http://www.open-mpi.org/software/${PN}/${MY_PV}/downloads/${P}.tar.bz2"
+HOMEPAGE="https://www.open-mpi.org/projects/hwloc/"
+SRC_URI="https://www.open-mpi.org/software/${PN}/${MY_PV}/downloads/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0/5"
@@ -33,7 +33,7 @@ RDEPEND=">=sys-libs/ncurses-5.9-r3:0[${MULTILIB_USEDEP}]
 	numa? ( >=sys-process/numactl-2.0.10-r1[${MULTILIB_USEDEP}] )
 	xml? ( >=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
+	virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}/${PN}-1.8.1-gl.patch" )
 DOCS=( AUTHORS NEWS README VERSION )

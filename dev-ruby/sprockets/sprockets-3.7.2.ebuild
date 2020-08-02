@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="README.md"
@@ -23,8 +23,7 @@ IUSE=""
 
 ruby_add_rdepend "
 	dev-ruby/concurrent-ruby:1
-	>=dev-ruby/rack-1:* <dev-ruby/rack-3:*
-	!!<dev-ruby/sprockets-2.12.3-r1:2"
+	>=dev-ruby/rack-1:* <dev-ruby/rack-3:*"
 
 ruby_add_bdepend "test? (
 		dev-ruby/json

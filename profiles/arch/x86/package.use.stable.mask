@@ -24,15 +24,10 @@ kde-apps/kget bittorrent
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-09-13)
 # media-video/pipewire is not stable yet
 dev-libs/weston pipewire
-kde-apps/krfb wayland
-kde-plasma/xdg-desktop-portal-kde screencast
-sys-apps/xdg-desktop-portal screencast
+<kde-apps/krfb-20.07.80 wayland
+<kde-plasma/xdg-desktop-portal-kde-5.19.4 screencast
+<sys-apps/xdg-desktop-portal-1.7.2 screencast
 x11-wm/mutter screencast
-
-# Brian Evans <grknight@gentoo.org> (2019-05-22)
-# Allow python-exec to install all targets
-# Ack by mgorny
-dev-lang/python-exec -python_targets_python3_7 -python_targets_python3_8
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-05-21)
 # dev-db/oracle-instantclient ain't stable
@@ -45,10 +40,6 @@ media-libs/opencv contrib contribcvv contribdnn contribhdf contribsfm contribxfe
 # Mikle Kolyada <zlogene@gentoo.org> (2018-11-07)
 # unmask sssd for sudo
 app-admin/sudo -sssd
-
-# Thomas Deutschmann <whissi@gentoo.org> (2018-09-27)
-# sys-devel/lld is unstable
-www-client/firefox clang
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-06-01)
 net-analyzer/wireshark -doc
@@ -75,7 +66,7 @@ sci-geosciences/qgis oracle
 
 # Christoph Junghans <junghans@gentoo.org> (2017-02-26)
 # Stable mask some fabrics (bug #525534)
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
+sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Brian Evans <grknight@gentoo.org> (2017-01-17)
 # Stable mask groonga on mariadb as I don't know how stable
@@ -94,4 +85,4 @@ dev-cpp/eigen test
 # Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # Don't apply stable masks to python-exec since we're forcing every
 # impl there anyway. Please keep this in sync with use.stable.mask.
-dev-lang/python-exec -python_targets_pypy3
+dev-lang/python-exec -python_targets_pypy3 -python_targets_python3_8

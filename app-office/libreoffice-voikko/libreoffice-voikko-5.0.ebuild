@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,17 +35,17 @@ pkg_postinst() {
 
 	einfo "Trying to register ${COMPONENT} ..."
 	unopkg add --shared "${COMPONENT}"
-	if [[ $? == 0 ]] ; then
+	if [[ ${?} == 0 ]] ; then
 		einfo "${PN} registered succesfully with LibreOffice."
 	else
-		eerror "Couldn’t register ${PN} with LibreOffice."
+		eerror "Couldn't register ${PN} with LibreOffice."
 	fi
 }
 
 pkg_prerm() {
 	# Remove voikko registration from libreoffice
 	unopkg remove --shared org.puimula.ooovoikko
-	if [[ $? == 0 ]] ; then
+	if [[ ${?} == 0 ]] ; then
 		einfo "${PN} removed succesfully from LibreOffice."
 	else
 		eerror "Couldn't remove ${PN} from LibreOffice, "

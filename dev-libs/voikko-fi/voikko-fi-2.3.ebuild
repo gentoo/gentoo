@@ -3,25 +3,23 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..7} )
+PYTHON_COMPAT=( python3_{6..9} )
 
-inherit python-r1
+inherit python-any-r1
 
 DESCRIPTION="Finnish dictionary for libvoikko based spell checkers (vvfst format)"
 HOMEPAGE="https://voikko.puimula.org/"
 SRC_URI="https://www.puimula.org/voikko-sources/${PN}/${P}.tar.gz"
+
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-
-DEPEND="${PYTHON_DEPS}
-	dev-libs/foma
-	$(python_gen_any_dep '
-		>=dev-libs/libvoikko-4.0[${PYTHON_USEDEP}]
-	')"
+DEPEND="dev-libs/foma
+	dev-libs/libvoikko"
 RDEPEND="${DEPEND}"
+BDEPEND="${PYTHON_DEPS}
+	dev-libs/libvoikko"
 
 src_compile() {
 	emake vvfst

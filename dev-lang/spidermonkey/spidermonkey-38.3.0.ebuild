@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="https://archive.mozilla.org/pub/${PN}/releases/${PV}/${MY_P}.tar.bz2
 
 LICENSE="NPL-1.1"
 SLOT="38"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86"
 IUSE="debug +jit minimal static-libs +system-icu test"
 
 RESTRICT="!test? ( test ) ia64? ( test )"
@@ -30,7 +30,7 @@ RDEPEND=">=dev-libs/nspr-4.10.10
 	system-icu? ( >=dev-libs/icu-51.1:= )"
 DEPEND="${RDEPEND}"
 
-pkg_setup(){
+pkg_setup() {
 	if [[ ${MERGE_TYPE} != "binary" ]]; then
 		moz_pkgsetup
 	fi
@@ -57,7 +57,7 @@ src_prepare() {
 }
 
 src_configure() {
-	export SHELL="${SHELL:-${EPREFIX%/}/bin/bash}"
+	export SHELL="${SHELL:-${EPREFIX}/bin/bash}"
 
 	cd "${BUILDDIR}" || die
 

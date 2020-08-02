@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,11 +36,8 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--disable-dependency-tracking \
 		--disable-fatal-warnings \
 		--localstatedir=/var \
-		--docdir=/usr/share/doc/${PF} \
-		--libdir=/usr/$(get_libdir) \
 		--with-ocf-root=/usr/$(get_libdir)/ocf \
 		$(use_enable doc) \
 		$(use_enable libnet)

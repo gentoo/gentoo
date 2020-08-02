@@ -1,0 +1,10 @@
+--- a/setup.py  2020-02-07 15:57:33.445851327 -0000
++++ b/setup.py  2020-02-07 15:57:50.921877837 -0000
+@@ -37,6 +37,6 @@
+         'Topic :: System :: Filesystems',
+         'Topic :: Utilities'],
+     platforms=['any'],
+-    packages=find_packages(exclude=['dist', 'build', 'docs', 'tests']),
++    packages=find_packages(exclude=['dist', 'build', 'docs', 'tests', 'examples']),
+     package_data={'filetype': ['LICENSE', '*.md']},
+     zip_safe=True)

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ HOMEPAGE="http://postfixadmin.sourceforge.net"
 SRC_URI="https://github.com/postfixadmin/postfixadmin/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="+mysql postgres +vacation"
 REQUIRED_USE="|| ( mysql postgres )"
 
@@ -26,7 +26,7 @@ DEPEND="
 		dev-perl/MIME-EncWords
 		mysql? ( dev-perl/DBD-mysql )
 		postgres? ( dev-perl/DBD-Pg )
-	 )
+	)
 "
 RDEPEND="${DEPEND}
 	virtual/httpd-php

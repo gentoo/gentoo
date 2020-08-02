@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,8 +7,8 @@ inherit toolchain-funcs
 
 MY_P="${PN}-3-0"
 DESCRIPTION="Backtracking YACC - modified from Berkeley YACC"
-HOMEPAGE="http://www.siber.com/btyacc"
-SRC_URI="http://www.siber.com/btyacc/${MY_P}.tar.gz"
+HOMEPAGE="https://www.siber.com/btyacc"
+SRC_URI="https://www.siber.com/btyacc/${MY_P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"

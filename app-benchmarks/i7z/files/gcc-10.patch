@@ -1,0 +1,17 @@
+Author: Andreas Beckmann <anbe@debian.org>
+Description: fix FTBFS with gcc-10
+ gcc-10 defaults to -fno-common
+ see https://gcc.gnu.org/gcc-10/porting_to.html
+Bug-Debian: https://bugs.debian.org/957351
+
+--- a/i7z_Dual_Socket.c
++++ b/i7z_Dual_Socket.c
+@@ -37,7 +37,7 @@ float Read_Voltage_CPU(int cpu_num);
+ extern struct program_options prog_options;
+ FILE *fp_log_file;
+ 
+-struct timespec global_ts;
++extern struct timespec global_ts;
+ extern FILE *fp_log_file_freq_1, *fp_log_file_freq_2;
+ 
+ extern char* CPU_FREQUENCY_LOGGING_FILE_single;

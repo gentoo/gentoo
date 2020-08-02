@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ MODULE_VERSION=1.56
 inherit depend.apache perl-module
 
 DESCRIPTION="A HTML development and delivery Perl Module"
-HOMEPAGE="http://www.masonhq.com/ ${HOMEPAGE}"
+HOMEPAGE="http://www.masonhq.com/ https://metacpan.org/release/HTML-Mason"
 
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
@@ -61,7 +61,7 @@ src_prepare() {
 	perl-module_src_prepare
 }
 
-src_install () {
+src_install() {
 	perl-module_src_install
 	mv "${ED}"/usr/bin/convert* "${ED}"/usr/share/doc/${PF} || die
 }

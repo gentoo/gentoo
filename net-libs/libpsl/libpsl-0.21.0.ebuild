@@ -2,17 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=(python{2_7,3_{6,7}})
 
+PYTHON_COMPAT=(python3_{6,7,8})
 inherit multilib-minimal python-any-r1
 
 DESCRIPTION="C library for the Public Suffix List"
 HOMEPAGE="https://github.com/rockdaboot/libpsl"
 SRC_URI="https://github.com/rockdaboot/${PN}/releases/download/${P}/${P}.tar.gz"
+
 LICENSE="MIT"
 SLOT="0"
-
-KEYWORDS="alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv s390 sparc x86"
 IUSE="icu +idn +man"
 
 RDEPEND="
@@ -22,12 +22,8 @@ RDEPEND="
 		net-dns/libidn2:=[${MULTILIB_USEDEP}]
 	)
 "
-
-DEPEND="
-	${RDEPEND}
-"
-BDEPEND="
-	${PYTHON_DEPS}
+DEPEND="${RDEPEND}"
+BDEPEND="${PYTHON_DEPS}
 	dev-util/gtk-doc-am
 	sys-devel/gettext
 	virtual/pkgconfig
@@ -46,6 +42,7 @@ multilib_src_configure() {
 		--disable-asan
 		--disable-cfi
 		--disable-ubsan
+		--disable-static
 		$(use_enable man)
 	)
 
@@ -70,5 +67,5 @@ multilib_src_configure() {
 multilib_src_install() {
 	default
 
-	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
+	find "${ED}" -type f -name "*.la" -delete || die
 }

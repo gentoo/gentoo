@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit autotools elisp-common eutils flag-o-matic java-pkg-opt-2 multilib xdg-utils
+inherit autotools elisp-common eutils flag-o-matic java-pkg-opt-2 multilib vcs-clean xdg-utils
 
-PATCHSET_VER="4"
+PATCHSET_VER="5"
 MY_P=${PN}-srcdist-${PV}
 
 DESCRIPTION="Mercury is a modern general-purpose logic/functional programming language"
@@ -107,8 +107,7 @@ src_compile() {
 	emake \
 		PARALLEL="'${MAKEOPTS}'" \
 		MERCURY_COMPILER="${S}"/compiler/mercury_compile \
-		TEXI2DVI="" PDFTEX="" \
-		compiler
+		TEXI2DVI="" PDFTEX=""
 
 	# The default Mercury grade may not be the same as the bootstrap
 	# grade. Since src_test() is run before src_install() we compile

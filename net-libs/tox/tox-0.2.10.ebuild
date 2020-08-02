@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils systemd
+inherit cmake systemd
 
 MY_P="c-toxcore-${PV}"
 DESCRIPTION="Encrypted P2P, messaging, and audio/video calling platform"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/TokTok/c-toxcore/archive/v${PV}.tar.gz -> ${MY_P}.ta
 
 LICENSE="GPL-3+"
 SLOT="0/0.2"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="+av daemon dht-node ipv6 log-debug +log-error log-info log-trace log-warn static-libs test"
 
 REQUIRED_USE="?? ( log-debug log-error log-info log-trace log-warn )
@@ -38,7 +38,7 @@ RDEPEND="
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	#remove faulty tests
 	for testname in bootstrap lan_discovery save_compatibility tcp_relay tox_many_tcp; do
 		sed -i -e "/^auto_test(${testname})$/d" CMakeLists.txt || die
@@ -81,11 +81,11 @@ src_configure() {
 		einfo "Logging disabled"
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use daemon; then
 		newinitd "${FILESDIR}"/initd tox-dht-daemon

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,6 +19,9 @@ DEPEND=">=dev-erlang/goldrush-0.1.9
 RDEPEND="${DEPEND}"
 
 DOCS=( README.md TODO )
+
+# tests broken upstream with erlang 23.x
+RESTRICT="test"
 
 src_prepare() {
 	rebar_src_prepare

@@ -1,0 +1,37 @@
+From 3a6795548fd755121084b6a77f9de23bece8f534 Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Fri, 17 Jan 2020 14:41:47 +0000
+Subject: [widgetexplorer] Animate column moves
+
+Test Plan:
+Search for something in the second column
+Now it doesn't jump
+
+Reviewers: #plasma, ngraham
+
+Reviewed By: ngraham
+
+Subscribers: ngraham, plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D26699
+---
+ desktoppackage/contents/explorer/WidgetExplorer.qml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/desktoppackage/contents/explorer/WidgetExplorer.qml b/desktoppackage/contents/explorer/WidgetExplorer.qml
+index 1d98e59..56a0c22 100644
+--- a/desktoppackage/contents/explorer/WidgetExplorer.qml
++++ b/desktoppackage/contents/explorer/WidgetExplorer.qml
+@@ -326,7 +326,7 @@ Item {
+             //moved due to filtering
+             displaced: Transition {
+                 NumberAnimation {
+-                    properties: "y"
++                    properties: "x,y"
+                     duration: units.shortDuration * 3
+                 }
+             }
+-- 
+cgit v1.1

@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 ROS_REPO_URI="https://github.com/ros-perception/calibration"
 KEYWORDS="~amd64 ~arm"
-PYTHON_COMPAT=( python2_7 )
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin
@@ -15,16 +14,19 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-python/numpy[${PYTHON_USEDEP}]
-	dev-ros/rosgraph[${PYTHON_USEDEP}]
-	dev-ros/roslib[${PYTHON_USEDEP}]
-	dev-python/rospkg[${PYTHON_USEDEP}]
-	dev-ros/rospy[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep "dev-python/numpy[\${PYTHON_USEDEP}]")
+	dev-ros/rosgraph[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep "dev-python/rospkg[\${PYTHON_USEDEP}]")
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/calibration_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
-	dev-python/matplotlib[${PYTHON_USEDEP}]
-	dev-python/python_orocos_kdl[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}]
-	dev-python/urdf_parser_py[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep "dev-python/matplotlib[\${PYTHON_USEDEP}]")
+	$(python_gen_cond_dep "dev-python/python_orocos_kdl[\${PYTHON_USEDEP}]")
+	$(python_gen_cond_dep "sci-libs/scipy[\${PYTHON_USEDEP}]")
+	$(python_gen_cond_dep "dev-python/urdf_parser_py[\${PYTHON_USEDEP}]")
 "
 DEPEND="${RDEPEND}
-	test? ( dev-ros/rostest[${PYTHON_USEDEP}] dev-python/nose[${PYTHON_USEDEP}] )"
+	test? (
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
+	)"

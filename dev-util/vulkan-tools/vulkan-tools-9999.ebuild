@@ -2,93 +2,80 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
 
-if [[ "${PV}" == "9999" ]]; then
-	EGIT_REPO_URI="https://github.com/KhronosGroup/Vulkan-Tools.git"
+MY_PN=Vulkan-Tools
+CMAKE_ECLASS="cmake"
+PYTHON_COMPAT=( python3_{6,7,8} )
+inherit cmake-multilib python-any-r1
+
+if [[ ${PV} == *9999* ]]; then
+	EGIT_REPO_URI="https://github.com/KhronosGroup/${MY_PN}.git"
 	EGIT_SUBMODULES=()
 	inherit git-r3
 else
-	EGIT_COMMIT="119e7c3bbae122f6cc5d778d068fb91e0e85d6a9"
-	KEYWORDS="~amd64"
-	SRC_URI="https://github.com/KhronosGroup/Vulkan-Tools/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/Vulkan-Tools-${EGIT_COMMIT}"
+	SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~ppc64"
+	S="${WORKDIR}"/${MY_PN}-${PV}
 fi
-
-inherit python-any-r1 cmake-multilib
 
 DESCRIPTION="Official Vulkan Tools and Utilities for Windows, Linux, Android, and MacOS"
 HOMEPAGE="https://github.com/KhronosGroup/Vulkan-Tools"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="+cube +vulkaninfo +X wayland"
-COMMON_DEPEND=">=media-libs/vulkan-loader-1.1.125:=[${MULTILIB_USEDEP},wayland?,X?]
+IUSE="cube wayland +X"
+
+# Cube demo only supports one window system at a time
+REQUIRED_USE="!cube? ( || ( X wayland ) ) cube? ( ^^ ( X wayland ) )"
+
+BDEPEND="${PYTHON_DEPS}
+	>=dev-util/cmake-3.10.2
+	cube? ( dev-util/glslang:=[${MULTILIB_USEDEP}] )
+"
+RDEPEND="
+	>=media-libs/vulkan-loader-${PV}:=[${MULTILIB_USEDEP},wayland?,X?]
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libX11:=[${MULTILIB_USEDEP}]
 		x11-libs/libXrandr:=[${MULTILIB_USEDEP}]
-	)"
-
-BDEPEND="${PYTHON_DEPS}
-	cube? ( dev-util/glslang:=[${MULTILIB_USEDEP}] )"
-DEPEND=">=dev-util/vulkan-headers-1.1.125
-	${COMMON_DEPEND}"
-RDEPEND="${COMMON_DEPEND}"
-
-# Vulkaninfo does not support wayland
-REQUIRED_USE="|| ( X wayland )
-			vulkaninfo? ( X )"
+	)
+"
+DEPEND="${RDEPEND}
+	>=dev-util/vulkan-headers-${PV}
+"
 
 pkg_setup() {
-	MULTILIB_CHOST_TOOLS=()
+	MULTILIB_CHOST_TOOLS=(
+		/usr/bin/vulkaninfo
+	)
 
-	if use vulkaninfo; then
-		MULTILIB_CHOST_TOOLS+=( /usr/bin/vulkaninfo )
-	fi
-
-	if use cube; then
-		MULTILIB_CHOST_TOOLS+=(
-			/usr/bin/vkcube
-			/usr/bin/vkcubepp
-		)
-	fi
+	use cube && MULTILIB_CHOST_TOOLS+=(
+		/usr/bin/vkcube
+		/usr/bin/vkcubepp
+	)
 
 	python-any-r1_pkg_setup
 }
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_SKIP_RPATH=True
+		-DCMAKE_SKIP_RPATH=ON
+		-DBUILD_VULKANINFO=ON
 		-DBUILD_CUBE=$(usex cube)
-		-DBUILD_VULKANINFO=$(usex vulkaninfo)
 		-DBUILD_WSI_WAYLAND_SUPPORT=$(usex wayland)
 		-DBUILD_WSI_XCB_SUPPORT=$(usex X)
 		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
-		-DGLSLANG_INSTALL_DIR="/usr"
-		-DVULKAN_HEADERS_INSTALL_DIR="/usr"
+		-DVULKAN_HEADERS_INSTALL_DIR="${EPREFIX}/usr"
 	)
 
-	# Upstream only supports one window system at a time
-	# If X is set at all, even if wayland is set, use X
-	#
-	# If -cube and/or -vulkaninfo is set, the flags we set
-	# are ignored, so we don't need to consider that
-	if use X; then
-		mycmakeargs+=(
-			-DCUBE_WSI_SELECTION="XCB"
-		)
-	fi
+	use cube && mycmakeargs+=(
+		-DGLSLANG_INSTALL_DIR="${EPREFIX}/usr"
+		-DCUBE_WSI_SELECTION=$(usex X XCB WAYLAND)
+	)
 
-	if ! use X && use wayland; then
-		mycmakeargs+=(
-			-DCUBE_WSI_SELECTION="WAYLAND"
-		)
-	fi
-
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 }

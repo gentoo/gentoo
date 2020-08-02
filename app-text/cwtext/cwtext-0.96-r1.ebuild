@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,11 +13,15 @@ SLOT="0"
 KEYWORDS="amd64 ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
 
-PATCHES=( "${FILESDIR}"/${PN}-0.94-asneeded.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.96-pcm.patch
+	"${FILESDIR}"/${PN}-0.94-asneeded.patch
+)
+
 DOCS=( Changes README TODO )
 
 src_prepare() {
-	eapply -p0 "${PATCHES}"
+	eapply -p0 "${PATCHES[@]}"
 	# change install directory to ${S}
 	sed -i -e "/^PREFIX/ s:=.*:=\"${S}\":" makefile || \
 		die "sed makefile failed"

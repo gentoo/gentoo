@@ -1,0 +1,82 @@
+From 6b69a534863741734b550daf43b5d06c8d899b9a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Robert-Andr=C3=A9=20Mauchin?= <zebob.m@gmail.com>
+Date: Thu, 23 Jan 2020 00:25:50 +0100
+Subject: [PATCH] Mark global variable as extern
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+GCC now defaults to -fno-common. As a result, global variable accesses
+are more efficient on various targets. In C, global variables with
+multiple tentative definitions now result in linker errors.
+
+Fix #532
+
+Signed-off-by: Robert-André Mauchin <zebob.m@gmail.com>
+---
+ globals.c | 40 ++++++++++++++++++++++++++++++++++++++++
+ process.h |  4 ++--
+ 2 files changed, 42 insertions(+), 2 deletions(-)
+ create mode 100644 globals.c
+
+diff --git a/globals.c b/globals.c
+new file mode 100644
+index 0000000..59e9c30
+--- /dev/null
++++ b/globals.c
+@@ -0,0 +1,40 @@
++/*
++ *
++ * Copyright (C) 2014-2018 LastPass.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License along
++ * with this program; if not, write to the Free Software Foundation, Inc.,
++ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
++ *
++ * In addition, as a special exception, the copyright holders give
++ * permission to link the code of portions of this program with the
++ * OpenSSL library under certain conditions as described in each
++ * individual source file, and distribute linked combinations
++ * including the two.
++ *
++ * You must obey the GNU General Public License in all respects
++ * for all of the code used other than OpenSSL.  If you modify
++ * file(s) with this exception, you may extend this exception to your
++ * version of the file(s), but you are not obligated to do so.  If you
++ * do not wish to do so, delete this exception statement from your
++ * version.  If you delete this exception statement from all source
++ * files in the program, then also delete it here.
++ *
++ * See LICENSE.OpenSSL for more details regarding this exception.
++ */
++
++#include "process.h"
++
++/* Globals */
++int ARGC;
++char **ARGV;
+diff --git a/process.h b/process.h
+index 58c2480..4cc2cf4 100644
+--- a/process.h
++++ b/process.h
+@@ -4,8 +4,8 @@
+ #include <stdbool.h>
+ #include <sys/types.h>
+ 
+-int ARGC;
+-char **ARGV;
++extern int ARGC;
++extern char **ARGV;
+ 
+ void process_set_name(const char *name);
+ void process_disable_ptrace(void);

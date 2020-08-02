@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="https://bino3d.org/releases/${P}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="debug doc libav lirc video_cards_nvidia"
+IUSE="debug doc lirc video_cards_nvidia"
 
 RDEPEND="
 	dev-qt/qtcore:5
@@ -23,8 +23,7 @@ RDEPEND="
 	>=media-libs/libass-0.9.9
 	>=media-libs/openal-1.15.1
 	virtual/libintl
-	libav? ( >=media-video/libav-0.7:0= )
-	!libav? ( >=media-video/ffmpeg-0.7:0= )
+	>=media-video/ffmpeg-0.7:0=
 	lirc? ( app-misc/lirc )
 	video_cards_nvidia? ( x11-drivers/nvidia-drivers[tools,static-libs] )
 "
@@ -55,9 +54,7 @@ src_configure() {
 		$(use_with lirc) \
 		$(use_enable debug) \
 		--without-equalizer \
-		--with-qt-version=5 \
-		--htmldir=/usr/share/doc/${PF}/html
-
+		--with-qt-version=5
 }
 
 src_install() {

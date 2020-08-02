@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,8 +19,8 @@ else
 	KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 
-IUSE="bzip2 cxx debug fpx imagemagick jbig jpeg lcms lzma modules openmp
-	perl png postscript q16 q32 static-libs svg threads tiff truetype
+IUSE="bzip2 +cxx debug dynamic-loading fpx imagemagick jbig jpeg lcms lzma
+	openmp perl png postscript q16 q32 static-libs svg threads tiff truetype
 	webp wmf X zlib"
 
 RDEPEND="dev-libs/libltdl:0
@@ -80,7 +80,7 @@ src_configure() {
 		$(use_enable debug gcov)
 		$(use_enable imagemagick magick-compat)
 		$(use_with threads)
-		$(use_with modules)
+		$(use_with dynamic-loading modules)
 		--with-quantum-depth=${depth}
 		--without-frozenpaths
 		$(use_with cxx magick-plus-plus)

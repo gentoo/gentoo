@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_IN_SOURCE_BUILD=1
 
 inherit distutils-r1
@@ -25,7 +25,6 @@ BDEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/PyUtilib[${PYTHON_USEDEP}]
-		virtual/python-typing[${PYTHON_USEDEP}]
 	)
 "
 

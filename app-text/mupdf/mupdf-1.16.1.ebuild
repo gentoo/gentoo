@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://mupdf.com/downloads/archive/${P}-source.tar.xz"
 
 LICENSE="AGPL-3"
 SLOT="0/${PV}"
-KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ppc ppc64 s390 x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 s390 x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="X +javascript libressl opengl ssl static-libs"
 
 # Although we use the bundled, patched version of freeglut in mupdf (because of
@@ -46,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.10a-add-desktop-pc-xpm-files.patch
 	# See bugs #662352
 	"${FILESDIR}"/${PN}-1.15-openssl-x11.patch
+	"${FILESDIR}"/${PN}-1.16.1-freeglut-fg_gl2-gcc-10.patch
 )
 
 src_prepare() {

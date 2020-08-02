@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,6 +30,7 @@ IUSE=""
 
 ruby_add_bdepend "
 	test? (
+		dev-ruby/activesupport
 		|| ( dev-ruby/i18n:1 dev-ruby/i18n:0.9 dev-ruby/i18n:0.7 )
 		dev-ruby/tzinfo
 	)"

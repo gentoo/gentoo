@@ -1,0 +1,27 @@
+diff -Naur dockapps.orig/libacpi.c dockapps/libacpi.c
+--- dockapps.orig/libacpi.c	2015-01-12 11:24:15.000000000 +0100
++++ dockapps/libacpi.c	2020-05-29 22:33:52.526826841 +0200
+@@ -17,6 +17,9 @@
+ #define SYSFS_DATA_SOURCE   1
+ static int data_source;
+ 
++battery_t batteries[MAXBATT];
++int verbosity;
++
+ /* local proto */
+ int acpi_get_design_cap(int batt);
+ 
+diff -Naur dockapps.orig/libacpi.h dockapps/libacpi.h
+--- dockapps.orig/libacpi.h	2015-01-12 11:24:15.000000000 +0100
++++ dockapps/libacpi.h	2020-05-29 22:33:36.393811163 +0200
+@@ -128,8 +128,8 @@
+ 
+ 
+ /* Since these /are/ needed here . . . */
+-battery_t batteries[MAXBATT];
+-int verbosity;
++extern battery_t batteries[MAXBATT];
++extern int verbosity;
+ 
+ /* check if apm/acpi is enabled, etc */
+ int power_init(global_t *globals);

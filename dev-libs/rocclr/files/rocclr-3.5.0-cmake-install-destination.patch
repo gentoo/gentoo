@@ -1,0 +1,53 @@
+--- a/CMakeLists.txt	2020-06-07 13:12:46.497062447 +0200
++++ b/CMakeLists.txt	2020-06-07 13:13:44.401062226 +0200
+@@ -202,40 +202,40 @@
+ #endif()
+ endif()
+ 
+-install( TARGETS amdrocclr_static ARCHIVE DESTINATION lib LIBRARY DESTINATION lib COMPONENT applications)
++install( TARGETS amdrocclr_static ARCHIVE DESTINATION lib64 LIBRARY DESTINATION lib64 COMPONENT applications)
+ file(GLOB headerfiles "${CMAKE_CURRENT_SOURCE_DIR}/*.h*")
+ install (
+     FILES ${headerfiles}
+-    DESTINATION include)
++    DESTINATION include/rocclr)
+ install (
+    DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/include"
+-   DESTINATION include
++   DESTINATION include/rocclr
+    FILES_MATCHING PATTERN "*.h*")
+ install (
+    DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/elf"
+-   DESTINATION include
++   DESTINATION include/rocclr
+    FILES_MATCHING PATTERN "*.h*")
+ install (
+    DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/compiler"
+-   DESTINATION include
++   DESTINATION include/rocclr
+    FILES_MATCHING PATTERN "*.h*")
+ install (
+    DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/utils"
+-   DESTINATION include
++   DESTINATION include/rocclr
+    FILES_MATCHING PATTERN "*.h*")
+ install (
+    DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/platform"
+-   DESTINATION include
++   DESTINATION include/rocclr
+    FILES_MATCHING PATTERN "*.h*")
+ install (
+    DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/thread"
+-   DESTINATION include
++   DESTINATION include/rocclr
+    FILES_MATCHING PATTERN "*.h*")
+ install (
+    DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/os"
+-   DESTINATION include
++   DESTINATION include/rocclr
+    FILES_MATCHING PATTERN "*.h*")
+ install (
+    DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/device"
+-   DESTINATION include
++   DESTINATION include/rocclr
+    FILES_MATCHING PATTERN "*.h*")

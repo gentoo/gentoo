@@ -1,0 +1,25 @@
+From 739c3ffbbeac48b7f86f1e028aae0767b13261f1 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Thu, 30 Jul 2020 21:58:28 +1200
+Subject: Don't auto-use Test::Base
+
+as there doesn't appear to be anything that actually uses any of this
+---
+ Makefile.PL | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 261085f..e7dd11b 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -6,7 +6,6 @@ readme_from 'lib/Digest/BubbleBabble.pm';
+ 
+ test_requires 'Test::More';
+ 
+-use_test_base;
+ auto_include_deps;
+ author_tests('xt');
+ auto_set_repository;
+-- 
+2.27.0
+

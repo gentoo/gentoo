@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
 
@@ -13,24 +13,14 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
+KEYWORDS="amd64 x86"
 
 RDEPEND=">=dev-python/webencodings-0.4[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	>=dev-python/setuptools-39.2.0[${PYTHON_USEDEP}]
-	test? (
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
-		dev-python/pytest-flake8[${PYTHON_USEDEP}]
-		dev-python/pytest-isort[${PYTHON_USEDEP}]
-		dev-python/pytest-runner[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
-	)
-"
 
-DOCS=( README.rst )
+distutils_enable_tests pytest
 
-python_test() {
-	py.test || die "testsuite failed under ${EPYTHON}"
+src_prepare() {
+	# junk deps
+	sed -i -e '/pytest-runner/d' -e '/^addopts/d' setup.cfg || die
+	distutils-r1_src_prepare
 }

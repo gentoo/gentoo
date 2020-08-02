@@ -3,7 +3,7 @@
 <pkgmetadata>
 <maintainer type="person">
 	<email>fordfrog@gentoo.org</email>
-	<description>Miroslav Šulc</description>
+	<name>Miroslav Šulc</name>
 </maintainer>
 <longdescription>A tool for visualizing changes in Linux software packages</longdescription>
 </pkgmetadata>

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit autotools python-r1 toolchain-funcs
 
@@ -13,7 +13,7 @@ SRC_URI="https://releases.pagure.org/newt/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="gpm nls tcl"
 RESTRICT="test"
 
@@ -85,9 +85,9 @@ src_compile() {
 
 src_install() {
 	installit() {
-		python_export PYTHON_SITEDIR
 		emake \
 			DESTDIR="${D}" \
+			PYTHON_SITEDIR="$(python_get_sitedir)" \
 			PYTHONVERS="${EPYTHON}" \
 			install
 		python_optimize

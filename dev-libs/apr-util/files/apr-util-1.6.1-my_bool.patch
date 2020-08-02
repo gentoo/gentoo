@@ -1,0 +1,15 @@
+--- a/dbd/apr_dbd_mysql.c
++++ b/dbd/apr_dbd_mysql.c
+@@ -41,6 +41,12 @@
+ #endif
+ #endif
+ #include <mysql.h>
++// MariaDB still include definition of my_bool but has a higher version ID
++#ifndef MARIADB_VERSION_ID
++#if MYSQL_VERSION_ID > 80000
++typedef bool my_bool;
++#endif
++#endif
+ #include <errmsg.h>
+ #endif
+ 

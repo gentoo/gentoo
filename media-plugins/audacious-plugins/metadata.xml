@@ -10,16 +10,12 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<use>
-		<flag name="adplug">Build with AdPlug (Adlib sound card emulation) support</flag>
 		<flag name="ampache">Support controlling audacious via <pkg>www-apps/ampache</pkg></flag>
 		<flag name="bs2b">Enable Bauer Bauer stereophonic-to-binaural headphone filter</flag>
 		<flag name="cue">Support CUE sheets using the libcue library</flag>
 		<flag name="fluidsynth">Support FluidSynth as MIDI synth backend</flag>
 		<flag name="gme">Support various gaming console music formats</flag>
-		<flag name="gtk">Build with GTK interface instead of Qt5</flag>
 		<flag name="http">Support HTTP streams through neon</flag>
-		<flag name="qt5">Build with Qt5 interface instead of GTK</flag>
-		<flag name="qtmedia">Enable playback via <pkg>dev-qt/qtmultimedia</pkg></flag>
 		<flag name="scrobbler">Build with scrobbler/LastFM submission support</flag>
 		<flag name="sid">Build with SID (Commodore 64 Audio) support</flag>
 		<flag name="soxr">Build with SoX Resampler support</flag>

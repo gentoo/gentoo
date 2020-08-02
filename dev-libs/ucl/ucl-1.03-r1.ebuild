@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils flag-o-matic
+inherit autotools eutils flag-o-matic ltprune
 
 DESCRIPTION="the UCL Compression Library"
 HOMEPAGE="http://www.oberhumer.com/opensource/ucl/"
@@ -10,7 +10,7 @@ SRC_URI="http://www.oberhumer.com/opensource/ucl/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="static-libs"
 
 DEPEND="!!dev-libs/libucl"

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="README.md"
@@ -19,7 +19,9 @@ KEYWORDS="~amd64"
 IUSE=""
 
 all_ruby_prepare() {
-	sed -i -e '/bundler/I s:^:#:' Rakefile || die
+	sed -e '/bundler/I s:^:#:' \
+		-e '/when/ s/ruby/rubyx/' \
+		-i Rakefile || die
 }
 
 each_ruby_configure() {

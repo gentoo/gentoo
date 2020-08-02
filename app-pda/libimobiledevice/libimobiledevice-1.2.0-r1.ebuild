@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit autotools python-r1
 
@@ -71,7 +71,8 @@ src_configure() {
 
 	do_configure_python() {
 		# Bug 567916
-		PYTHON_LDFLAGS="$(python_get_LIBS)" do_configure "$@"
+		local -x PYTHON_LDFLAGS="$(python_get_LIBS)"
+		do_configure "$@"
 	}
 
 	do_configure --without-cython

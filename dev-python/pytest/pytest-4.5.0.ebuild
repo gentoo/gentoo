@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Simple powerful testing with Python"
-HOMEPAGE="http://pytest.org/"
+HOMEPAGE="https://pytest.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -26,14 +26,16 @@ RDEPEND="
 	>=dev-python/atomicwrites-1.0[${PYTHON_USEDEP}]
 	>=dev-python/attrs-17.4.0[${PYTHON_USEDEP}]
 	>=dev-python/more-itertools-4.0.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' python2_7)
+	$(python_gen_cond_dep '
+		dev-python/pathlib2[${PYTHON_USEDEP}]
+		dev-python/funcsigs[${PYTHON_USEDEP}]
+	' -2)
 	>=dev-python/pluggy-0.11[${PYTHON_USEDEP}]
 	<dev-python/pluggy-1
 	>=dev-python/py-${PY_VER}[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-40[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/wcwidth[${PYTHON_USEDEP}]
-	virtual/python-funcsigs[${PYTHON_USEDEP}]"
+	dev-python/wcwidth[${PYTHON_USEDEP}]"
 
 # flake cause a number of tests to fail
 DEPEND="${RDEPEND}

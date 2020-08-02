@@ -1,9 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake readme.gentoo-r1
+PYTHON_COMPAT=( python3_{6,7,8,9} )
+
+inherit cmake python-any-r1 readme.gentoo-r1
 
 DESCRIPTION="Friendly Interactive SHell"
 HOMEPAGE="http://fishshell.com/"
@@ -16,27 +18,40 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}-shell/${PN}-shell.git"
 else
 	SRC_URI="https://github.com/${PN}-shell/${PN}-shell/releases/download/${MY_PV}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
+IUSE="+doc nls test"
 
-IUSE="doc nls test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/libpcre2-10.32[pcre32]
+	sys-apps/coreutils
 	sys-libs/ncurses:0=[unicode]
 "
 
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )
 	nls? ( sys-devel/gettext )
-	test? ( dev-tcltk/expect )
+	test? (
+		${PYTHON_DEPS}
+		dev-tcltk/expect
+		$(python_gen_any_dep '
+			dev-python/pexpect[${PYTHON_USEDEP}]
+		')
+	)
 "
+# we don't need shpinx dep for release tarballs
+[[ ${PV} == 9999 ]] && DEPEND+=" doc? ( dev-python/sphinx )"
 
 S="${WORKDIR}/${MY_P}"
+
+python_check_deps() {
+	use test || return 0
+	has_version -d "dev-python/pexpect[${PYTHON_USEDEP}]"
+}
 
 src_prepare() {
 	# workaround for https://github.com/fish-shell/fish-shell/issues/4883
@@ -50,10 +65,11 @@ src_configure() {
 		-DCMAKE_INSTALL_BINDIR="${EPREFIX}/bin"
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
 		-DCURSES_NEED_NCURSES=ON
-		-DINTERNAL_WCWIDTH=OFF
-		-DBUILD_DOCS="$(usex doc)"
+		-DINSTALL_DOCS="$(usex doc)"
 		-DWITH_GETTEXT="$(usex nls)"
 	)
+	# release tarballs ship pre-built docs // -DHAVE_PREBUILT_DOCS=TRUE
+	[[ ${PV} == 9999 ]] && mycmakeargs+=( -DBUILD_DOCS="$(usex doc)" )
 	cmake_src_configure
 }
 

@@ -1,0 +1,37 @@
+From d2d4902a68b8eabf4dc26a8ba49019e5ea6040c6 Mon Sep 17 00:00:00 2001
+From: rbuj <robert.buj@gmail.com>
+Date: Wed, 29 Jan 2020 16:22:09 +0100
+Subject: [PATCH] Fix build using gcc 10 -fno-common flag
+
+Closes #258
+---
+ baobab/src/baobab.c | 2 ++
+ baobab/src/baobab.h | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/baobab/src/baobab.c b/baobab/src/baobab.c
+index 07af1a1d..d4edde1f 100644
+--- a/baobab/src/baobab.c
++++ b/baobab/src/baobab.c
+@@ -42,6 +42,8 @@
+ static void push_iter_in_stack (GtkTreeIter *);
+ static GtkTreeIter pop_iter_from_stack (void);
+ 
++BaobabApplication baobab;
++
+ static gint currentdepth = 0;
+ static GtkTreeIter currentiter;
+ static GtkTreeIter firstiter;
+diff --git a/baobab/src/baobab.h b/baobab/src/baobab.h
+index b8d01817..76b22d6a 100644
+--- a/baobab/src/baobab.h
++++ b/baobab/src/baobab.h
+@@ -99,7 +99,7 @@ struct _BaobabApplication {
+ };
+ 
+ /* Application singleton */
+-BaobabApplication baobab;
++extern BaobabApplication baobab;
+ 
+ struct chan_data {
+ 	guint64 size;

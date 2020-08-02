@@ -1,23 +1,28 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-WX_GTK_VER="3.0"
+WX_GTK_VER="3.0-gtk3"
 
-inherit autotools gnome2-utils subversion wxwidgets xdg-utils
+inherit autotools subversion wxwidgets xdg
 
 DESCRIPTION="The open source, cross platform, free C, C++ and Fortran IDE"
-HOMEPAGE="http://www.codeblocks.org/"
+HOMEPAGE="https://codeblocks.org/"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 SRC_URI=""
 ESVN_REPO_URI="svn://svn.code.sf.net/p/${PN}/code/trunk"
+ESVN_FETCH_CMD="svn checkout --ignore-externals"
 
 IUSE="contrib debug pch"
 
+BDEPEND="virtual/pkgconfig"
+
 RDEPEND="app-arch/zip
+	>=dev-libs/tinyxml-2.6.2-r3
+	>=dev-util/astyle-3.1-r2:0/3.1
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
 	contrib? (
 		app-admin/gamin
@@ -25,10 +30,7 @@ RDEPEND="app-arch/zip
 		dev-libs/boost:=
 	)"
 
-DEPEND="${RDEPEND}
-	>=dev-libs/tinyxml-2.6.2-r3
-	>=dev-util/astyle-3.1-r2:0/3.1
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/codeblocks-17.12-nodebug.diff )
 
@@ -53,18 +55,12 @@ src_configure() {
 }
 
 pkg_postinst() {
-	if [[ ${WX_GTK_VER} == "3.0" || ${WX_GTK_VER} == "3.0-gtk3" ]]; then
-		elog "The symbols browser is disabled due to it causing crashes."
-		elog "For more information see https://sourceforge.net/p/codeblocks/tickets/225/"
-	fi
+	elog "The Symbols Browser is disabled due to it causing crashes."
+	elog "For more information see https://sourceforge.net/p/codeblocks/tickets/225/"
 
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
+	xdg_pkg_postrm
 }

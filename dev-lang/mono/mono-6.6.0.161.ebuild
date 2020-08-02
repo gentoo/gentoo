@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux"
 
 SLOT="0"
 
@@ -12,10 +12,10 @@ IUSE="nls minimal pax_kernel xen doc"
 inherit autotools eutils linux-info mono-env flag-o-matic pax-utils multilib-minimal
 
 DESCRIPTION="Mono runtime and class libraries, a C# compiler/interpreter"
-HOMEPAGE="http://www.mono-project.com/Main_Page"
+HOMEPAGE="https://mono-project.com"
 LICENSE="MIT LGPL-2.1 GPL-2 BSD-4 NPL-1.1 Ms-PL GPL-2-with-linking-exception IDPL"
 
-SRC_URI="http://download.mono-project.com/sources/mono/${P}.tar.xz"
+SRC_URI="https://download.mono-project.com/sources/mono/${P}.tar.xz"
 
 #Note: mono works incorrect with older versions of libgdiplus
 #details on dotnet overlay issue: https://github.com/gentoo/dotnet/issues/429
@@ -79,7 +79,6 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myeconfargs=(
-		--disable-silent-rules
 		$(use_with xen xen_opt)
 		--without-ikvm-native
 		--disable-dtrace

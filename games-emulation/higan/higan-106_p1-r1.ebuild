@@ -1,11 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit desktop gnome2-utils toolchain-funcs qmake-utils
-
 MY_COMMIT=41efdba45afa770db99bc7484a8ad340ccc597d2
+inherit desktop toolchain-funcs qmake-utils xdg-utils
 
 DESCRIPTION="A multi-system game emulator formerly known as bsnes"
 HOMEPAGE="https://byuu.org/emulation/higan/ https://gitlab.com/higan/higan"
@@ -22,16 +21,17 @@ RDEPEND="
 	x11-libs/gtk+:2
 	x11-libs/libX11
 	x11-libs/libXext
-	icarus? ( x11-libs/gtksourceview:2.0
-			  x11-libs/gtk+:2
-			  x11-libs/pango
-			  dev-libs/atk
-			  x11-libs/cairo
-			  x11-libs/gdk-pixbuf
-			  dev-libs/glib:2
-			  media-libs/fontconfig
-			  media-libs/freetype
-			)
+	icarus? (
+		x11-libs/gtksourceview:2.0
+		x11-libs/gtk+:2
+		x11-libs/pango
+		dev-libs/atk
+		x11-libs/cairo
+		x11-libs/gdk-pixbuf
+		dev-libs/glib:2
+		media-libs/fontconfig
+		media-libs/freetype
+	)
 	ao? ( media-libs/libao )
 	openal? ( media-libs/openal )
 	alsa? ( media-libs/alsa-lib )
@@ -43,7 +43,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	app-arch/p7zip
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 S=${WORKDIR}/${PN}-${MY_COMMIT}-${MY_COMMIT}
 
@@ -123,7 +124,6 @@ src_install() {
 
 pkg_preinst() {
 	games_pkg_preinst
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
@@ -131,9 +131,9 @@ pkg_postinst() {
 	#elog "  dev-games/higan-ananke (extra rom load options)"
 	#elog "  games-util/higan-purify (Rom purifier)"
 
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

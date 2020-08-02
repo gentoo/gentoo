@@ -1,14 +1,15 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
-inherit eutils
+
+inherit eutils toolchain-funcs
 
 S="${WORKDIR}/${P}-001114"
 
 DESCRIPTION="A simple fax program for single-user systems"
-HOMEPAGE="http://www.cce.com/efax"
-SRC_URI="http://www.cce.com/efax/download/${P}-001114.tar.gz
+HOMEPAGE="https://www.cce.com/efax/"
+SRC_URI="https://www.cce.com/efax/download/${P}-001114.tar.gz
 	mirror://debian/pool/main/e/efax/efax_0.9a-19.diff.gz"
 
 KEYWORDS="amd64 ppc x86"
@@ -16,7 +17,7 @@ IUSE=""
 SLOT="0"
 LICENSE="GPL-2"
 
-src_prepare () {
+src_prepare() {
 	epatch "${WORKDIR}/${PN}_${PV}-19.diff"
 	rm -f "${S}"/${P}/debian/patches/series "${S}"/${P}/debian/patches/00list
 	EPATCH_FORCE="yes" epatch "${S}"/${P}/debian/patches/*
@@ -31,7 +32,7 @@ src_compile() {
 	emake CC=$(tc-getCC) CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
-src_install () {
+src_install() {
 	dobin efax efix fax
 	doman efax.1 efix.1
 	newman fax.1 efax-fax.1 # Don't collide with net-dialup/mgetty, bug #429808

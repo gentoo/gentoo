@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Analogue clock utility for X Windows"
 HOMEPAGE="http://www.tigr.net/"
-SRC_URI="${HOMEPAGE}afterstep/download/${PN}/${P}.tar.gz"
+SRC_URI="http://www.tigr.net/afterstep/download/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -31,7 +31,7 @@ src_compile() {
 	emake CC="$(tc-getCC)"
 }
 
-src_install () {
+src_install() {
 	dobin "${PN}"
 	newman "${PN}.man" "${PN}.1"
 	einstalldocs

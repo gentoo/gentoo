@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,11 +16,9 @@ HOMEPAGE="https://www.flameeyes.eu/projects/unpaper"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="libav test"
+IUSE="test"
 
-RDEPEND="
-	libav? ( >=media-video/libav-10:0=[encode] )
-	!libav? ( >=media-video/ffmpeg-2:0=[encode] )"
+RDEPEND=">=media-video/ffmpeg-2:0=[encode]"
 DEPEND="dev-libs/libxslt
 	app-text/docbook-xsl-ns-stylesheets
 	virtual/pkgconfig

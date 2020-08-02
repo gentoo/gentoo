@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 MY_P=${P/editor}
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/hte/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="X"
 
 RDEPEND="sys-libs/ncurses:0=
@@ -32,21 +32,25 @@ PATCHES=(
 	"${FILESDIR}"/${P}-tinfo.patch
 	"${FILESDIR}"/${P}-gcc-6-uchar.patch
 	"${FILESDIR}"/${P}-format-security.patch
+	"${FILESDIR}"/${P}-gcc-10.patch
+	"${FILESDIR}"/${P}-AR.patch
 )
 
 src_prepare() {
 	default
 	eautoreconf
+
+	# Many literals are concatenated with macro definitions.
+	# Instead of patching them all let's pick old c++ standard
+	# and port to c++11 upstream.
+	# https://bugs.gentoo.org/729252
+	append-cxxflags -std=c++98
 }
 
 src_configure() {
 	econf \
 		$(use_enable X x11-textmode) \
 		--enable-maintainermode
-}
-
-src_compile() {
-	emake AR="$(tc-getAR)" CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}"
 }
 
 src_install() {

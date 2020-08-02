@@ -1,0 +1,11 @@
+--- a/lgmon3/src/cnijlgmon3.c	2020-05-16 19:28:03.585781655 +0200
++++ b/lgmon3/src/cnijlgmon3.c	2020-05-16 19:28:13.488625335 +0200
+@@ -55,7 +55,7 @@
+ int (*GET_STATUS)(char *, int, int *, int * , char *);
+ int (*GET_STATUS2)(char *, int, char *, int *, int * , char *, char *);
+ int (*GET_STATUS2_MAINTENANCE)(char *, int, char *, int *, int * , char *, char *);
+-int (*GET_PROTOCOL)(char *, size_t);
++static int (*GET_PROTOCOL)(char *, size_t);
+ 
+ 
+  int main(int argc, char *argv[])

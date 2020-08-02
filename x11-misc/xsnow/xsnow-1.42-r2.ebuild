@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="let it snow on your desktop and windows"
 HOMEPAGE="https://janswaal.home.xs4all.nl/Xsnow/"
-SRC_URI="${HOMEPAGE}${P}.tar.gz"
+SRC_URI="https://janswaal.home.xs4all.nl/Xsnow/${P}.tar.gz"
 
 LICENSE="freedist"
 SLOT="0"

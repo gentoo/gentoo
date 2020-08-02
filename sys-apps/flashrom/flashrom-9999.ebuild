@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -54,6 +54,7 @@ IUSE_PROGRAMMERS="
 	+satamv
 	+satasii
 	+serprog
+	stlinkv3-spi
 	+usbblaster-spi
 "
 
@@ -84,6 +85,7 @@ LIB_DEPEND="
 	rayer-spi? ( sys-apps/pciutils[static-libs(+)] )
 	satamv? ( sys-apps/pciutils[static-libs(+)] )
 	satasii? ( sys-apps/pciutils[static-libs(+)] )
+	stlinkv3-spi? ( virtual/libusb:1[static-libs(+)] )
 	usbblaster-spi? ( dev-embedded/libftdi:=[static-libs(+)] )
 "
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
@@ -105,9 +107,10 @@ src_compile() {
 	# Help keep things in sync.
 	local sprogs=$(echo $(
 		grep -o 'CONFIG_[A-Z0-9_]*' flashrom.c | \
-			sort -u | \
+			LC_ALL=C sort -u | \
 			sed 's:^CONFIG_::' | \
-			tr '[:upper:]_' '[:lower:]-'))
+			tr '[:upper:]_' '[:lower:]-' | \
+			grep -v ni845x-spi))
 	local eprogs=$(echo ${IUSE_PROGRAMMERS} | sed -E 's/\B[-+]\b//g')
 	if [[ ${sprogs} != "${eprogs}" ]] ; then
 		eerror "The ebuild needs to be kept in sync."
@@ -135,27 +138,17 @@ src_compile() {
 	fi
 
 	tc-export AR CC PKG_CONFIG RANLIB
-	emake WARNERROR=no "${args[@]}"
-}
-
-src_test() {
-	if [[ -d tests ]] ; then
-		pushd tests >/dev/null
-		./tests.py || die
-		popd >/dev/null
-	fi
+	emake WARNERROR=no "${args[@]}" all libflashrom.a
 }
 
 src_install() {
 	dosbin flashrom
 	doman flashrom.8
 	dodoc README Documentation/*.txt
+	dolib.a libflashrom.a
+	doheader libflashrom.h
 
-	if use tools ; then
-		if use amd64 ; then
-			dosbin util/ich_descriptors_tool/ich_descriptors_tool
-		elif use x86 ; then
-			dosbin util/ich_descriptors_tool/ich_descriptors_tool
-		fi
+	if use tools; then
+		dosbin util/ich_descriptors_tool/ich_descriptors_tool
 	fi
 }

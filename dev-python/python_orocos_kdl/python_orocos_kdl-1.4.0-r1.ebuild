@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -21,7 +21,7 @@ else
 fi
 
 DESCRIPTION="Python bindings for KDL"
-HOMEPAGE="http://www.orocos.org/kdl"
+HOMEPAGE="https://www.orocos.org/kdl"
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE=""
@@ -32,6 +32,7 @@ RDEPEND="
 	>=sci-libs/orocos_kdl-1.4.0:=
 	dev-python/sip[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/0001-Declare-assignment-operator-private-for-SIP-Closes-2.patch" )
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	S=${WORKDIR}/${P}/python_orocos_kdl

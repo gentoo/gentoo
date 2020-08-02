@@ -1,15 +1,16 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -riscv
 
+# Ben Kohler <bkohler@gentoo.org> (2019-01-09)
+# no fam providers keyworded yet
+fam
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-11-27)
 # valgrind has no RISCV port.
 valgrind
-
-# The required library has not been ported to riscv yet.
-seccomp
 
 # Not tested yet
 bluetooth
@@ -39,4 +40,5 @@ X
 
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
 # Dependencies not keyworded.
+appindicator
 ayatana

@@ -1,4 +1,4 @@
-# Copyright 2012-2019 Gentoo Authors
+# Copyright 2012-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -10,10 +10,10 @@ HOMEPAGE="https://github.com/gentoo/hwids"
 if [[ ${PV} == "99999999" ]]; then
 	PYTHON_COMPAT=( python3_{6,7} )
 	inherit git-r3 python-any-r1
-	EGIT_REPO_URI="${HOMEPAGE}.git"
+	EGIT_REPO_URI="https://github.com/gentoo/hwids.git"
 else
-	SRC_URI="${HOMEPAGE}/archive/${P}.tar.gz"
-	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~amd64-linux ~x86-linux"
+	SRC_URI="https://github.com/gentoo/hwids/archive/${P}.tar.gz"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="|| ( GPL-2 BSD ) public-domain"

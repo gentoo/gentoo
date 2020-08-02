@@ -3,8 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7}} )
-
+PYTHON_COMPAT=( pypy3 python3_{6..9} )
 inherit distutils-r1
 
 MY_PN="WTForms"
@@ -23,8 +22,6 @@ RESTRICT="!test? ( test )"
 S="${WORKDIR}/${MY_P}"
 
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( >=dev-python/sphinx-0.6[${PYTHON_USEDEP}] )
 	test? (
 		dev-python/Babel[${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
@@ -32,6 +29,8 @@ BDEPEND="
 		dev-python/webob[${PYTHON_USEDEP}]
 	)
 "
+
+distutils_enable_sphinx docs
 
 python_prepare_all() {
 	# Extension-tests are written for an older version of Django
@@ -44,17 +43,6 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-python_compile_all() {
-	if use doc; then
-		emake -C docs html
-		HTML_DOCS=( docs/_build/html/. )
-	fi
-}
-
 python_test() {
 	"${EPYTHON}" tests/runtests.py -v || die
-}
-
-python_install_all() {
-	distutils-r1_python_install_all
 }

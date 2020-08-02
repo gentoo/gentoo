@@ -6,8 +6,8 @@ EAPI=7
 # Sometimes build with ninja fails.
 # Please check occasionally if we can revert back to ninja.
 # Latest known issue:
-#   https://github.com/diasurgical/devilutionX/issues/490
-CMAKE_MAKEFILE_GENERATOR="emake"
+#
+#CMAKE_MAKEFILE_GENERATOR="emake"
 
 inherit cmake desktop
 
@@ -62,8 +62,10 @@ src_configure() {
 src_install() {
 	dobin "${BUILD_DIR}/${PN}"
 
-	newicon -s 32 Packaging/resources/Diablo_32.png ${PN}.png
-	newicon -s 48 Packaging/resources/Diablo_48.png ${PN}.png
+	local size
+	for size in 32 48 ; do
+		newicon -s ${size} Packaging/resources/Diablo_${size}.png ${PN}.png
+	done
 	make_desktop_entry ${PN} "Diablo devolved" "/usr/share/icons/hicolor/48x48/apps/devilutionx.png"
 }
 

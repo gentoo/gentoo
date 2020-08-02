@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kde.org.eclass
@@ -110,10 +110,9 @@ _kde.org_calculate_src_uri() {
 	if [[ ${KDE_RELEASE_SERVICE} = true ]]; then
 		case ${PV} in
 			??.??.[6-9]? )
-				_src_uri+="unstable/applications/${PV}/src/"
+				_src_uri+="unstable/release-service/${PV}/src/"
 				RESTRICT+=" mirror"
 				;;
-			19.08.3? ) _src_uri+="stable/applications/${PV}/src/" ;;
 			*) _src_uri+="stable/release-service/${PV}/src/" ;;
 		esac
 	fi
@@ -132,11 +131,14 @@ _kde.org_calculate_src_uri() {
 				kross)
 					_src_uri+="portingAids/"
 					;;
+				kxmlrpcclient)
+					[[ ${PV} = 5.70.* ]] || _src_uri+="portingAids/"
+					;;
 			esac
 			;;
 		kde-plasma)
 			case ${PV} in
-				5.??.[6-9]? )
+				5.??.[6-9]?* )
 					_src_uri+="unstable/plasma/$(ver_cut 1-3)/"
 					RESTRICT+=" mirror"
 					;;
@@ -251,11 +253,10 @@ kde.org_pkg_nofetch() {
 kde.org_src_unpack() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	if [[ ${KDE_BUILD_TYPE} = live ]]; then
-		git-r3_src_unpack
-	else
-		default
-	fi
+	case ${KDE_BUILD_TYPE} in
+		live) git-r3_src_unpack ;&
+		*) default ;;
+	esac
 }
 
 fi

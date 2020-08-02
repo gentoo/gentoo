@@ -4,6 +4,7 @@
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">shin-/dockerpy-creds</remote-id>
 		<remote-id type="pypi">docker-pycreds</remote-id>

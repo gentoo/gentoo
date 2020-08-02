@@ -28,11 +28,11 @@ IUSE_OPENMPI_OFED_FEATURES="
 	openmpi_ofed_features_failover"
 
 DESCRIPTION="A high-performance message passing library (MPI)"
-HOMEPAGE="http://www.open-mpi.org"
-SRC_URI="http://www.open-mpi.org/software/ompi/v$(get_version_component_range 1-2)/downloads/${MY_P}.tar.bz2"
+HOMEPAGE="https://www.open-mpi.org"
+SRC_URI="https://www.open-mpi.org/software/ompi/v$(get_version_component_range 1-2)/downloads/${MY_P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
+KEYWORDS="~alpha amd64 arm ~ia64 ~ppc ~ppc64 sparc x86 ~amd64-linux"
 IUSE="cma cuda cxx fortran heterogeneous ipv6 java mpi-threads numa romio threads
 	${IUSE_OPENMPI_FABRICS} ${IUSE_OPENMPI_RM} ${IUSE_OPENMPI_OFED_FEATURES}"
 

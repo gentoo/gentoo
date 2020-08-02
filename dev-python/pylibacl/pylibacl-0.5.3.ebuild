@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/iustin/${PN}/archive/${PN}-v${PV}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~ia64 ~mips ppc ppc64 ~sparc x86"
 
 RDEPEND="sys-apps/acl"
 DEPEND="${RDEPEND}
@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${PN}-${PN}-v${PV}"
 
 python_test() {
-	if ! "${PYTHON}" test/test_acls.py; then
+	if ! "${EPYTHON}" test/test_acls.py -v; then
 		eerror
 		eerror "If you got the following errors:"
 		eerror "\"IOError: [Errno 95] Operation not supported\","

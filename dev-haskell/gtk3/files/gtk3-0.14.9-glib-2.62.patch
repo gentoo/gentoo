@@ -1,0 +1,11 @@
+--- a/gtk3.cabal
++++ b/gtk3.cabal
+@@ -372,7 +372,7 @@ Library
+         -- needs to be imported from this module:
+         x-Signals-Import: Graphics.UI.Gtk.General.Threading
+         include-dirs:   .
+-        cpp-options: -DDISABLE_DEPRECATED -U__BLOCKS__
++        cpp-options: -DDISABLE_DEPRECATED -U__BLOCKS__ -D__attribute__(A)=
+         if os(darwin) || os(freebsd)
+           cpp-options: -D__attribute__(A)= -D_Nullable= -D_Nonnull=
+         if os(windows)

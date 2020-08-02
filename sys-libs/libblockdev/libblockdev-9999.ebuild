@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{6,7}} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit python-single-r1 xdg-utils
 
 DESCRIPTION="A library for manipulating block devices"
@@ -119,4 +119,5 @@ src_install() {
 	if ! use lvm; then
 		rm -f "${ED}"/usr/bin/lvm-cache-stats || die
 	fi
+	python_optimize #718576
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors.
+# Copyright 1999-2020 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
 AArch64 - AArch64 CPU target (arm64 in Gentoo)
@@ -16,6 +16,7 @@ PowerPC - PowerPC CPU target (PPC32 and PPC64)
 RISCV - RISC-V CPU target
 Sparc - Sparc CPU target
 SystemZ - SystemZ (s390x) CPU target
+VE - NEC SX-Aurora TSUBASA vector engine target [EXPERIMENTAL]
 WebAssembly - WebAssembly backend
 X86 - X86 CPU target (includes amd64)
 XCore - XCore CPU target

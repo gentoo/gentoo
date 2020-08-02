@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -56,7 +56,7 @@ src_prepare() {
 		-e "s:^\(CCFOPT\s*=\).*:\1 ${FFLAGS}:" \
 		-e "s:^\(CCFDEB\s*=\).*:\1 ${FFLAGS}:" \
 		-e 's:^\(EXTRALIB\s*=\).*:\1 -lm -lrt:' \
-		-e "s:^#\s*\(ROOT\s*=\).*:\1 \$(DESTDIR)${EPREFIX%/}/usr:" \
+		-e "s:^#\s*\(ROOT\s*=\).*:\1 \$(DESTDIR)${EPREFIX}/usr:" \
 		-e 's:^#\s*\(INCLUDEDIR\s*=\).*:\1 $(ROOT)/include:' \
 		-e 's:^#\s*\(BINDIR\s*=\).*:\1 $(ROOT)/bin:' \
 		-e "s:^#\s*\(LIBDIR\s*=\).*:\1 \$(ROOT)/$(get_libdir):" \

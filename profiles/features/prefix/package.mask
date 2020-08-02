@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Benda Xu <heroxbd@gentoo.org> (2019-08-20)
@@ -14,12 +14,9 @@ games-util/gamemode
 gnome-extra/gnome-logs
 gnome-extra/gnome-user-share
 gnome-extra/office-runner
-kde-misc/systemd-kcm
 sys-apps/gentoo-systemd-integration
 sys-apps/systemd-readahead
+sys-kernel/installkernel-systemd-boot
 sys-process/systemd-cron
 www-misc/profile-sync-daemon
-<x11-wm/mutter-3.30
-<gnome-base/gnome-shell-3.30
 <virtual/service-manager-1
-

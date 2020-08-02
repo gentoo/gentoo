@@ -5,12 +5,10 @@
 		<email>python@gentoo.org</email>
 		<name>Python</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">setuptools_scm</remote-id>
 		<remote-id type="bitbucket">pypa/setuptools_scm</remote-id>
 		<remote-id type="github">pypa/setuptools_scm</remote-id>
 	</upstream>
-	<use>
-		<flag name="mercurial">Enables mercurial backend</flag>
-	</use>
 </pkgmetadata>

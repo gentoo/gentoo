@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="http://download.jetbrains.com/python/${P}.tar.gz"
 
 LICENSE="Apache-2.0 BSD CDDL MIT-with-advertising"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND=">=virtual/jre-1.8
 	dev-libs/libdbusmenu
@@ -19,9 +19,7 @@ RDEPEND=">=virtual/jre-1.8
 
 RESTRICT="mirror strip"
 
-QA_PREBUILT="opt/${PN}/bin/fsnotifier
-	opt/${PN}/bin/fsnotifier64
-	opt/${PN}/bin/fsnotifier-arm"
+QA_PREBUILT="*"
 
 MY_PN=${PN/-community/}
 

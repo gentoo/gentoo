@@ -1,15 +1,15 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit eutils multilib-minimal
+inherit eutils ltprune multilib-minimal
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="git://repo.or.cz/cloog.git"
 	inherit autotools git-r3
 else
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86"
+	KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 	SRC_URI="http://www.bastoul.net/cloog/pages/download/${P}.tar.gz"
 fi
 
@@ -50,7 +50,7 @@ multilib_src_configure() {
 }
 
 # The default src_test() fails, so we'll just run these directly
-multilib_src_test () {
+multilib_src_test() {
 	echo ">>> Test phase [check]: ${CATEGORY}/${PF}"
 	emake -j1 check
 }

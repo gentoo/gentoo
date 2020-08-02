@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,10 +11,10 @@ HOMEPAGE="https://libjpeg-turbo.org/ https://sourceforge.net/projects/libjpeg-tu
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 	mirror://gentoo/libjpeg8_8d-2.debian.tar.gz"
 
-LICENSE="BSD IJG"
+LICENSE="BSD IJG ZLIB"
 SLOT="0"
 [[ "$(ver_cut 3)" -ge 90 ]] || \
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="java static-libs"
 
 ASM_DEPEND="|| ( dev-lang/nasm dev-lang/yasm )"
@@ -80,7 +80,7 @@ multilib_src_install() {
 
 		popd || die
 		if use java ; then
-			rm -rf "${ED%/}"/usr/classes || die
+			rm -rf "${ED}"/usr/classes || die
 			java-pkg_dojar java/turbojpeg.jar
 		fi
 	fi
@@ -89,12 +89,12 @@ multilib_src_install() {
 multilib_src_install_all() {
 	find "${ED}" -type f -name '*.la' -delete || die
 
-	insinto /usr/share/doc/${PF}/html
-	doins -r "${S}"/doc/html/*
+	docinto html
+	dodoc -r "${S}"/doc/html/*
 	newdoc "${WORKDIR}"/debian/changelog changelog.debian
 	if use java; then
-		insinto /usr/share/doc/${PF}/html/java
-		doins -r "${S}"/java/doc/*
+		docinto html/java
+		dodoc -r "${S}"/java/doc/*
 		newdoc "${S}"/java/README README.java
 	fi
 }

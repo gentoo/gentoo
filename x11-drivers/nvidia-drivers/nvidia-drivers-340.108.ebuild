@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit desktop flag-o-matic linux-info linux-mod multilib-minimal \
-	nvidia-driver portability toolchain-funcs unpacker user udev
+	nvidia-driver portability toolchain-funcs unpacker udev
 
 NV_URI="https://us.download.nvidia.com/XFree86/"
 X86_NV_PACKAGE="NVIDIA-Linux-x86-${PV}"
@@ -11,8 +11,6 @@ AMD64_NV_PACKAGE="NVIDIA-Linux-x86_64-${PV}"
 X86_FBSD_NV_PACKAGE="NVIDIA-FreeBSD-x86-${PV}"
 AMD64_FBSD_NV_PACKAGE="NVIDIA-FreeBSD-x86_64-${PV}"
 
-DESCRIPTION="NVIDIA Accelerated Graphics Driver"
-HOMEPAGE="https://www.nvidia.com/"
 SRC_URI="
 	amd64-fbsd? ( ${NV_URI}FreeBSD-x86_64/${PV}/${AMD64_FBSD_NV_PACKAGE}.tar.gz )
 	amd64? ( ${NV_URI}Linux-x86_64/${PV}/${AMD64_NV_PACKAGE}.run )
@@ -24,14 +22,17 @@ SRC_URI="
 "
 
 EMULTILIB_PKG="true"
-IUSE="acpi multilib kernel_FreeBSD kernel_linux static-libs +tools +X"
-KEYWORDS="-* ~amd64 ~x86"
+IUSE="driver multilib kernel_FreeBSD kernel_linux static-libs +tools +X"
+KEYWORDS="-* amd64 x86"
 LICENSE="GPL-2 NVIDIA-r2"
 SLOT="0/${PV%.*}"
 
 COMMON="
 	app-eselect/eselect-opencl
-	kernel_linux? ( >=sys-libs/glibc-2.6.1 )
+	kernel_linux? (
+		>=sys-libs/glibc-2.6.1
+		acct-group/video
+	)
 	tools? (
 		>=x11-libs/gtk+-2.4:2
 		dev-libs/atk
@@ -54,7 +55,6 @@ DEPEND="
 "
 RDEPEND="
 	${COMMON}
-	acpi? ( sys-power/acpid )
 	tools? ( !media-video/nvidia-settings )
 	X? (
 		<x11-base/xorg-server-1.20.99:=
@@ -70,7 +70,13 @@ REQUIRED_USE="tools? ( X )"
 QA_PREBUILT="opt/* usr/lib*"
 S=${WORKDIR}/
 NV_KV_MAX_PLUS="5.5"
-CONFIG_CHECK="!DEBUG_MUTEXES ~!LOCKDEP ~MTRR ~SYSVIPC ~ZONE_DMA"
+CONFIG_CHECK="
+	!DEBUG_MUTEXES
+	~!LOCKDEP
+	~DRM
+	~DRM_KMS_HELPER
+	~SYSVIPC
+"
 
 pkg_pretend() {
 	use x86 && CONFIG_CHECK+=" ~HIGHMEM"
@@ -85,7 +91,7 @@ pkg_setup() {
 	export DISTCC_DISABLE=1
 	export CCACHE_DISABLE=1
 
-	if use kernel_linux; then
+	if use driver && use kernel_linux; then
 		MODULE_NAMES="nvidia(video:${S}/kernel)"
 
 		# This needs to run after MODULE_NAMES (so that the eclass checks
@@ -128,7 +134,7 @@ pkg_setup() {
 src_prepare() {
 	# Please add a brief description for every added patch
 
-	if use kernel_linux; then
+	if use driver && use kernel_linux; then
 		if kernel_is lt 2 6 9 ; then
 			eerror "You must build this against 2.6.9 or higher kernels."
 		fi
@@ -141,6 +147,15 @@ src_prepare() {
 	for man_file in "${NV_MAN}"/*1.gz; do
 		gunzip $man_file || die
 	done
+
+	if use tools; then
+		cp "${FILESDIR}"/nvidia-settings-fno-common.patch "${WORKDIR}" || die
+		sed -i \
+			-e "s:@PV@:${PV}:g" \
+			"${WORKDIR}"/nvidia-settings-fno-common.patch \
+			|| die
+		eapply "${WORKDIR}"/nvidia-settings-fno-common.patch
+	fi
 
 	# Allow user patches so they can support RC kernels and whatever else
 	eapply_user
@@ -155,7 +170,7 @@ src_compile() {
 	if use kernel_FreeBSD; then
 		MAKE="$(get_bmake)" CFLAGS="-Wno-sign-compare" emake CC="$(tc-getCC)" \
 			LD="$(tc-getLD)" LDFLAGS="$(raw-ldflags)" || die
-	elif use kernel_linux; then
+	elif use driver && use kernel_linux; then
 		BUILD_TARGETS=module linux-mod_src_compile
 	fi
 
@@ -222,7 +237,7 @@ donvidia() {
 }
 
 src_install() {
-	if use kernel_linux; then
+	if use driver && use kernel_linux; then
 		linux-mod_src_install
 
 		# Add the aliases
@@ -340,7 +355,7 @@ src_install() {
 
 	if has_multilib_profile && use multilib ; then
 		local OABI=${ABI}
-		for ABI in $(get_install_abis) ; do
+		for ABI in $(multilib_get_enabled_abis) ; do
 			src_install-libs
 		done
 		ABI=${OABI}
@@ -423,10 +438,9 @@ src_install-libs() {
 }
 
 pkg_preinst() {
-	if use kernel_linux; then
+	if use driver && use kernel_linux; then
 		linux-mod_pkg_preinst
-
-		local videogroup="$(egetent group video | cut -d ':' -f 3)"
+		local videogroup="$(getent group video | cut -d ':' -f 3)"
 		if [ -z "${videogroup}" ]; then
 			eerror "Failed to determine the video group gid"
 			die "Failed to determine the video group gid"
@@ -450,7 +464,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	use kernel_linux && linux-mod_pkg_postinst
+	use driver && use kernel_linux && linux-mod_pkg_postinst
 
 	# Switch to the nvidia implementation
 	use X && "${ROOT}"/usr/bin/eselect opengl set --use-old nvidia
@@ -481,6 +495,6 @@ pkg_prerm() {
 }
 
 pkg_postrm() {
-	use kernel_linux && linux-mod_pkg_postrm
+	use driver && use kernel_linux && linux-mod_pkg_postrm
 	use X && "${ROOT}"/usr/bin/eselect opengl set --use-old xorg-x11
 }

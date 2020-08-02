@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit autotools eutils git-r3 python-any-r1 readme.gentoo-r1 xdg-utils
+PYTHON_COMPAT=( python3_{6,7,8} )
+inherit git-r3 meson python-any-r1 readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="SPICE server"
 HOMEPAGE="https://www.spice-space.org/"
@@ -14,21 +14,21 @@ EGIT_REPO_URI="https://anongit.freedesktop.org/git/spice/spice.git"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="libressl lz4 sasl smartcard static-libs gstreamer"
+IUSE="gstreamer libressl lz4 opus sasl smartcard static-libs"
 
 # the libspice-server only uses the headers of libcacard
 RDEPEND="
-	dev-lang/orc[static-libs(+)?]
-	>=dev-libs/glib-2.22:2[static-libs(+)?]
-	media-libs/opus[static-libs(+)?]
-	sys-libs/zlib[static-libs(+)?]
-	virtual/jpeg:0=[static-libs(+)?]
-	>=x11-libs/pixman-0.17.7[static-libs(+)?]
-	!libressl? ( dev-libs/openssl:0=[static-libs(+)?] )
-	libressl? ( dev-libs/libressl:0=[static-libs(+)?] )
-	lz4? ( app-arch/lz4:0=[static-libs(+)?] )
+	dev-lang/orc
+	>=dev-libs/glib-2.22:2
+	sys-libs/zlib
+	virtual/jpeg:0=
+	>=x11-libs/pixman-0.17.7
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
+	lz4? ( app-arch/lz4:0= )
+	opus? ( media-libs/opus )
 	smartcard? ( >=app-emulation/libcacard-0.1.2 )
-	sasl? ( dev-libs/cyrus-sasl[static-libs(+)?] )
+	sasl? ( dev-libs/cyrus-sasl )
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
@@ -43,6 +43,12 @@ BDEPEND="${PYTHON_DEPS}
 		dev-python/six[${PYTHON_USEDEP}]
 	')"
 
+DOCS=(
+	AUTHORS
+	CHANGELOG.md
+	README
+)
+
 python_check_deps() {
 	has_version -b ">=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]"
 	has_version -b "dev-python/six[${PYTHON_USEDEP}]"
@@ -52,47 +58,39 @@ pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && python-any-r1_pkg_setup
 }
 
-src_prepare() {
-	default
-
-	# Delete repo-only Makefile that causes build to fail.
-	# https://gitlab.freedesktop.org/spice/spice/issues/35
-	rm GNUmakefile || die
-
-	eautoreconf
-}
-
 src_configure() {
 	# Prevent sandbox violations, bug #586560
 	# https://bugzilla.gnome.org/show_bug.cgi?id=744134
 	# https://bugzilla.gnome.org/show_bug.cgi?id=744135
-	addpredict /dev
+	use gstreamer && addpredict /dev
 
 	xdg_environment_reset
 
-	local myconf="
-		$(use_enable static-libs static)
-		$(use_enable lz4)
-		$(use_with sasl)
-		$(use_enable smartcard)
-		--enable-gstreamer=$(usex gstreamer "1.0" "no")
-		--disable-celt051
-		"
-	econf ${myconf}
+	local emesonargs=(
+		-Ddefault_library=$(usex static-libs both shared)
+		-Dgstreamer=$(usex gstreamer 1.0 no)
+		$(meson_use lz4)
+		$(meson_use sasl)
+		$(meson_feature opus)
+		$(meson_feature smartcard)
+		-Dmanual=false
+		-Dtests=false
+	)
+	meson_src_configure
 }
 
 src_compile() {
 	# Prevent sandbox violations, bug #586560
 	# https://bugzilla.gnome.org/show_bug.cgi?id=744134
 	# https://bugzilla.gnome.org/show_bug.cgi?id=744135
-	addpredict /dev
+	use gstreamer && addpredict /dev
 
-	default
+	meson_src_compile
 }
 
 src_install() {
-	default
-	use static-libs || find "${D}" -name '*.la' -type f -delete || die
+	meson_src_install
+	einstalldocs
 	readme.gentoo_create_doc
 }
 

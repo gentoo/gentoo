@@ -1,0 +1,57 @@
+From 629e7b702ede03262afeb86cd7a6d42d739504d2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 30 May 2020 09:30:58 +0200
+Subject: [PATCH] Update expected class method deprecation msgs in tests for
+ py3.9
+
+Python 3.9 has fixed @classmethod combining with other decorators,
+making deprecated correctly report 'class method' (instead of function
+or static method).  Update the tests to account for that.
+
+Fixes #29
+---
+ tests/test_deprecated.py | 6 +++++-
+ tests/test_sphinx.py     | 5 ++++-
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_deprecated.py b/tests/test_deprecated.py
+index 3796640..e4c00ef 100644
+--- a/tests/test_deprecated.py
++++ b/tests/test_deprecated.py
+@@ -1,4 +1,5 @@
+ # -*- coding: utf-8 -*-
++import sys
+ import warnings
+ 
+ import pytest
+@@ -184,7 +185,10 @@ def test_classic_deprecated_class_method__warns(classic_deprecated_class_method)
+     assert len(warns) == 1
+     warn = warns[0]
+     assert issubclass(warn.category, DeprecationWarning)
+-    assert "deprecated function (or staticmethod)" in str(warn.message)
++    if sys.version_info >= (3, 9):
++        assert "deprecated class method" in str(warn.message)
++    else:
++        assert "deprecated function (or staticmethod)" in str(warn.message)
+     assert warn.filename == __file__, 'Incorrect warning stackLevel'
+ 
+ 
+diff --git a/tests/test_sphinx.py b/tests/test_sphinx.py
+index 42f2460..efc8628 100644
+--- a/tests/test_sphinx.py
++++ b/tests/test_sphinx.py
+@@ -334,7 +334,10 @@ def test_sphinx_deprecated_class_method__warns(sphinx_deprecated_class_method):
+     assert len(warns) == 1
+     warn = warns[0]
+     assert issubclass(warn.category, DeprecationWarning)
+-    assert "deprecated function (or staticmethod)" in str(warn.message)
++    if sys.version_info >= (3, 9):
++        assert "deprecated class method" in str(warn.message)
++    else:
++        assert "deprecated function (or staticmethod)" in str(warn.message)
+ 
+ 
+ def test_should_raise_type_error():
+-- 
+2.26.2
+

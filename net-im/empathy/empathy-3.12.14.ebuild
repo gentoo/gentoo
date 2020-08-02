@@ -3,7 +3,7 @@
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_{6..8} )
 
 inherit gnome2 python-any-r1 virtualx
 
@@ -14,7 +14,7 @@ LICENSE="GPL-2 CC-BY-SA-3.0 FDL-1.3 LGPL-2.1"
 SLOT="0"
 IUSE="debug +geolocation gnome gnome-online-accounts +map spell test +v4l"
 RESTRICT="!test? ( test )"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc64 x86 ~x86-linux"
 
 # False positives caused by nested configure scripts
 QA_CONFIGURE_OPTIONS=".*"
@@ -60,7 +60,7 @@ COMMON_DEPEND="
 		>=media-libs/clutter-gtk-0.90.3:1.0
 		>=media-libs/libchamplain-0.12.1:0.12[gtk] )
 	spell? (
-		>=app-text/enchant-1.2
+		>=app-text/enchant-1.2:0
 		>=app-text/iso-codes-0.35 )
 	v4l? (
 		dev-libs/libgudev:=

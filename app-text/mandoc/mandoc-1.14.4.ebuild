@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -6,8 +6,8 @@ EAPI="6"
 inherit multilib toolchain-funcs
 
 DESCRIPTION="Suite of tools compiling mdoc and man"
-HOMEPAGE="http://mdocml.bsd.lv/"
-SRC_URI="http://mdocml.bsd.lv/snapshots/${P}.tar.gz"
+HOMEPAGE="https://mdocml.bsd.lv/"
+SRC_URI="https://mdocml.bsd.lv/snapshots/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"

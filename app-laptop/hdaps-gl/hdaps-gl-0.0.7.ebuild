@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="OpenGL visualization for HDAPS data"
-HOMEPAGE="https://github.com/linux-thinkpad/${PN}"
-SRC_URI="${HOMEPAGE}/releases/download/${PV}/${P}.tar.xz"
+HOMEPAGE="https://github.com/linux-thinkpad/hdaps-gl"
+SRC_URI="https://github.com/linux-thinkpad/hdaps-gl/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

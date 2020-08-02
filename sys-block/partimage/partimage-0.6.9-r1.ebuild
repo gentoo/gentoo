@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -54,13 +54,11 @@ src_configure() {
 	fi
 
 	econf \
-		--docdir="${EPREFIX%/}"/usr/share/doc/${PF} \
-		--sysconfdir="${EPREFIX%/}"/etc \
 		$(use_enable nls) \
 		$(use_enable ssl) \
 		--disable-pam \
 		$(use_enable static all-static) \
-		--with-log-dir="${EPREFIX%/}"/var/log/partimage \
+		--with-log-dir="${EPREFIX}"/var/log/partimage \
 		${myconf}
 }
 

@@ -1,8 +1,82 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
+
+# Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
+# Mask io-uring & zbc pending keywording
+sys-block/fio -io-uring zbc
+
+# Michał Górny <mgorny@gentoo.org> (2020-06-14)
+# Requires dev-python/networkx.
+app-portage/nattka depgraph-order
+
+# Michał Górny <mgorny@gentoo.org> (2020-05-03)
+# Requires unsupported dev-python/gevent.
+dev-python/socketpool eventlet gevent
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-25)
+# dependencies not yet keyworded
+dev-ruby/activemodel test
+dev-ruby/activerecord test
+dev-ruby/activesupport test
+
+# James Le Cuirot <chewi@gentoo.org> (2020-04-23)
+# Requires media-libs/mesa[llvm], which is masked.
+dev-python/pyopengl test
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-22)
+# dev-python/pip not keyworded yet, bug #700918
+dev-python/virtualenv test
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-22)
+# dev-libs/criterion not yet keyworded
+>=app-admin/syslog-ng-3.25 test
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-20)
+# Not keyworded on hppa
+net-misc/whois xcrypt
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-18)
+# nagios and icinga not stable on hppa
+sys-libs/freeipmi nagios
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-15)
+# media-libs/kate not keyworded on hppa
+media-sound/vorbis-tools kate
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
+# dependencies not keyworded
+media-video/ffmpeg dav1d libaribb24 libtesseract vidstab
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
+# media-gfx/nvidia-texture-tools, media-libs/allegro not keyworded on hppa
+media-libs/devil allegro nvtt
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-09)
+# dependencies not keyworded
+dev-python/stevedore doc
+
+# Matt Turner <mattst88@gentoo.org> (2020-04-03)
+# app-emacs/wanderlust is not keyworded
+app-emacs/elscreen wanderlust
+
+# Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
+# Mask until dev-libs/libfido2 is keyworded
+net-misc/openssh security-key
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-02)
+# net-libs/libgadu is not keyworded
+net-im/pidgin gadu
+
+# Jeroen Roovers <jer@gentoo.org> (2020-01-28)
+# sys-apps/systemd is not stable
+net-analyzer/wireshark sdjournal
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
+# media-libs/libheif is not keyworded
+media-gfx/gimp heif
 
 # Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
 # PPS should work on all arches, but only keyworded on some arches
@@ -66,7 +140,7 @@ media-libs/mesa vulkan vulkan-overlay
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=redis that is masked in this profile.
-dev-python/pyzor test
+mail-filter/pyzor test
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=systemd that is masked in this profile.
@@ -91,10 +165,6 @@ app-shells/bash-completion test
 # media-libs/zimg triggers a toolchain issue (bug #597152)
 media-video/ffmpeg libilbc zimg
 
-# Jeroen Roovers <jer@gentoo.org> (2017-02-03)
-# net-mail/notmuch is not keyworded
-mail-client/mutt notmuch
-
 # Justin Lecher <jlec@gentoo.org> (2017-01-15)
 # unkeyworded rev deps
 dev-games/openscenegraph gdal las
@@ -110,11 +180,6 @@ kde-frameworks/extra-cmake-modules doc
 # Jeroen Roovers <jer@gentoo.org> (2016-05-19)
 # pulls in many dev-ruby/asciidoctor dependencies (bug #583390)
 net-misc/chrony html
-
-# Jeroen Roovers <jer@gentoo.org> (2015-08-16)
-# Bundles luajit which has not been ported to HPPA (bug #554376)
-app-text/texlive-core luajittex
-dev-texlive/texlive-basic luajittex
 
 # Jeroen Roovers <jer@gentoo.org> (2015-07-03)
 # net-libs/nghttp2 fails to compile (bug #552898)
@@ -137,7 +202,7 @@ dev-libs/efl physics
 # Jeroen Roovers <jer@gentoo.org> (2015-02-02)
 # dev-python/gevent requires dev-python/greenlet which has not been ported to
 # HPPA (bug #538510)
-dev-python/pyzor gevent
+mail-filter/pyzor gevent
 
 # Jeroen Roovers <jer@gentoo.org> (2014-10-19)
 # requires dev-python/restkit which requires
@@ -204,7 +269,6 @@ app-text/asciidoc test
 # Requires sys-power/upower or sys-power/upower-pm-utils which are
 # not much use on HPPA
 xfce-extra/xfce4-systemload-plugin upower
-xfce-base/xfce4-session upower
 xfce-base/xfce4-settings upower
 
 # Jeroen Roovers <jer@gentoo.org> (2011-10-25)
@@ -218,10 +282,6 @@ app-office/lyx gnumeric
 # Jeroen Roovers <jer@gentoo.org> (2011-02-24)
 # Needs Java (bug #355353)
 app-text/texlive pdfannotextractor
-
-# Justin Lecher <jlec@gentoo.org> (2010-08-13)
-# MKL not available on this arch
-media-gfx/povray mkl
 
 # Pacho Ramos <pacho@gentoo.org> (2010-07-11)
 # Mask due bug #324511, this will be general once needed by more packages.

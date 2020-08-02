@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils
+inherit eutils vcs-clean
 
 DESCRIPTION="Documentation for Cheetah templates"
-HOMEPAGE="http://www.cheetahtemplate.org/"
+HOMEPAGE="https://www.cheetahtemplate.org/"
 SRC_URI="mirror://sourceforge/cheetahtemplate/CheetahDocs-${PV/_alpha/a}.tgz"
 
 IUSE=""

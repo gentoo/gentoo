@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -26,8 +26,7 @@ RDEPEND="${COMMON_DEPEND}
 	|| (
 		net-misc/iputils
 		net-analyzer/tcptraceroute
-		net-analyzer/traceroute
-		sys-freebsd/freebsd-usbin )
+		net-analyzer/traceroute )
 	net-analyzer/nmap
 	net-dns/bind-tools
 	userland_GNU? ( net-misc/netkit-fingerd net-misc/whois )

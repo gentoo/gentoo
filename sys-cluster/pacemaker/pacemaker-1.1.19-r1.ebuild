@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit autotools python-single-r1
 
@@ -46,9 +46,7 @@ src_prepare() {
 src_configure() {
 	# appends lib to localstatedir automatically
 	local myconf=(
-		--libdir="/usr/$(get_libdir)"
 		--localstatedir=/var
-		--disable-dependency-tracking
 		--disable-fatal-warnings
 		--disable-static
 		--without-cs-quorum

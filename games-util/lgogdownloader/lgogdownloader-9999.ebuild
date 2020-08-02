@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,6 @@ RDEPEND=">=app-crypt/rhash-1.3.3-r2:0=
 	dev-libs/boost:0=
 	>=dev-libs/jsoncpp-1.7:0=
 	dev-libs/tinyxml2:0=
-	net-libs/liboauth:0=
 	>=net-misc/curl-7.32:0=[ssl]
 	gui? ( dev-qt/qtwebengine:5=[widgets] )"
 

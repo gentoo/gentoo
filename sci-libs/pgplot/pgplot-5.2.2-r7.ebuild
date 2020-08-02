@@ -8,7 +8,7 @@ inherit eutils fortran-2 toolchain-funcs
 MY_P="${PN}${PV//.}"
 
 DESCRIPTION="FORTRAN/C device-independent scientific graphic library"
-HOMEPAGE="http://www.astro.caltech.edu/~tjp/pgplot/"
+HOMEPAGE="https://www.astro.caltech.edu/~tjp/pgplot/"
 SRC_URI="ftp://ftp.astro.caltech.edu/pub/pgplot/${MY_P}.tar.gz"
 
 SLOT="0"
@@ -125,7 +125,7 @@ src_test() {
 src_install() {
 	insinto /usr/$(get_libdir)/pgplot
 	doins grfont.dat grexec.f *.inc rgb.txt
-	echo "PGPLOT_FONT=${EPREFIX%/}/usr/$(get_libdir)/pgplot/grfont.dat" >> 99pgplot
+	echo "PGPLOT_FONT=${EPREFIX}/usr/$(get_libdir)/pgplot/grfont.dat" >> 99pgplot
 	doenvd 99pgplot
 
 	dolib.so libpgplot.so*

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ HOMEPAGE="https://pipewire.org/"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/0.2"
-IUSE="bluetooth doc ffmpeg libav gstreamer sdl systemd vaapi X"
+IUSE="bluetooth doc ffmpeg gstreamer sdl systemd vaapi X"
 
 BDEPEND="
 	app-doc/xmltoman
@@ -32,10 +32,7 @@ DEPEND="
 	sys-apps/dbus
 	virtual/libudev
 	bluetooth? ( media-libs/sbc )
-	ffmpeg? (
-		!libav? ( media-video/ffmpeg:= )
-		libav? ( media-video/libav:= )
-	)
+	ffmpeg? ( media-video/ffmpeg:= )
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
@@ -46,6 +43,8 @@ DEPEND="
 	X? ( x11-libs/libX11 )
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-fno-common.patch" )
 
 src_prepare() {
 	spa_use() {

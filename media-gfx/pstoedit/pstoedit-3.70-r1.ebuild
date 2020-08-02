@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,14 +11,14 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="emf imagemagick plotutils pptx static-libs"
 
 RDEPEND="
 	>=media-libs/gd-2.0.35-r1:=
 	>=app-text/ghostscript-gpl-8.71-r1
 	emf? ( >=media-libs/libemf-1.0.3 )
-	imagemagick? ( >=media-gfx/imagemagick-6.6.1.2[cxx] )
+	imagemagick? ( >=media-gfx/imagemagick-6.6.1.2:=[cxx] )
 	plotutils? ( media-libs/plotutils )
 	pptx? ( dev-libs/libzip )
 "

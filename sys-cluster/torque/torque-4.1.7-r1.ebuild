@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ SRC_URI="http://www.adaptivecomputing.com/index.php?wpfb_dl=1690 -> ${P}.tar.gz"
 
 LICENSE="torque-2.5"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="cpusets +crypt doc drmaa kernel_linux libressl munge nvidia server +syslog tk"
 
 DEPEND_COMMON="
@@ -174,7 +174,7 @@ pkg_postinst() {
 	echo ""
 	elog "    For a basic setup, you may use emerge --config ${PN}"
 	echo ""
-	if [[ -z "${REPLACING_VERSIONS}" ]] || [[ ${REPLACING_VERSIONS} < 4 ]]; then
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		elog "Important 4.0+ updates"
 		elog "  - The on-wire protocol version has been changed."
 		elog "    Versions of Torque before 4.0.0 are no longer able to communicate."

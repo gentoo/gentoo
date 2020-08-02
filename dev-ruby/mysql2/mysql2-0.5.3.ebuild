@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 # Tests require a live MySQL database but should all pass.
 RUBY_FAKEGEM_TASK_TEST=""
@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/brianmario/mysql2"
 
 LICENSE="MIT"
 SLOT="0.5"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="mysql mariadb"
 REQUIRED_USE="^^ ( mariadb mysql )"
 

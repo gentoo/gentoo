@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="Interactive Packet Sniffer"
 HOMEPAGE="https://github.com/resurrecting-open-source-projects/sniffit"
-SRC_URI="${HOMEPAGE}/archive/${P}.tar.gz"
+SRC_URI="https://github.com/resurrecting-open-source-projects/sniffit/archive/${P}.tar.gz"
 SLOT="0"
 LICENSE="BSD"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
@@ -19,6 +19,7 @@ DEPEND="
 	${RDEPEND}
 "
 PATCHES=(
+	"${FILESDIR}"/${PN}-0.4.0-fno-common.patch
 	"${FILESDIR}"/${PN}-0.4.0-tinfo.patch
 )
 S=${WORKDIR}/${PN}-${P}

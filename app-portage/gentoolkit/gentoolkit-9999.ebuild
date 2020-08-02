@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 PYTHON_REQ_USE="xml(+),threads(+)"
 
 EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/gentoolkit.git"
@@ -20,20 +20,19 @@ IUSE=""
 
 KEYWORDS=""
 
-DEPEND="sys-apps/portage[${PYTHON_USEDEP}]"
+DEPEND="
+	sys-apps/portage[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
 	sys-apps/gawk
 	sys-apps/gentoo-functions"
+
+distutils_enable_tests setup.py
 
 python_prepare_all() {
 	python_setup
 	echo VERSION="${PVR}" "${PYTHON}" setup.py set_version
 	VERSION="${PVR}" "${PYTHON}" setup.py set_version
 	distutils-r1_python_prepare_all
-}
-
-python_install_all() {
-	distutils-r1_python_install_all
 }
 
 pkg_preinst() {

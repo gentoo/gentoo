@@ -3,12 +3,12 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_6 python3_7 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="threads(+)"
 inherit python-single-r1 waf-utils multilib-minimal
 
 DESCRIPTION="Jackdmp jack implemention for multi-processor machine"
-HOMEPAGE="http://jackaudio.org/"
+HOMEPAGE="https://jackaudio.org/"
 
 if [[ "${PV}" = "9999" ]]; then
 	inherit git-r3
@@ -17,7 +17,7 @@ else
 	MY_PV="${PV/_rc/-RC}"
 	MY_P="${PN}-${MY_PV}"
 	S="${WORKDIR}/${MY_P}"
-	SRC_URI="https://github.com/jackaudio/jack2/releases/download/v${MY_PV}/${MY_P}.tar.gz"
+	SRC_URI="SRC_URI="https://github.com/jackaudio/jack2/releases/download/v${MY_PV}/v${MY_PV}.tar.gz -> ${P}.tar.gz""
 	KEYWORDS="~amd64 ~ppc ~x86"
 fi
 
@@ -44,7 +44,11 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 RDEPEND="${COMMON_DEPEND}
-	dbus? ( dev-python/dbus-python[${PYTHON_USEDEP}] )
+	dbus? (
+		$(python_gen_cond_dep '
+			dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 	pam? ( sys-auth/realtime-base )
 	!media-sound/jack-audio-connection-kit:0"
 

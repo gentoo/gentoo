@@ -1,16 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils
+inherit eutils ltprune
 
 DESCRIPTION="A Library to Access SMI MIB Information"
 HOMEPAGE="https://www.ibr.cs.tu-bs.de/projects/libsmi/"
-SRC_URI="${HOMEPAGE}/download/${P}.tar.gz"
+SRC_URI="https://www.ibr.cs.tu-bs.de/projects/libsmi/download/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="static-libs"
 
 src_configure() {
@@ -24,7 +24,7 @@ src_test() {
 	LC_ALL=C emake -j1 check
 }
 
-src_install () {
+src_install() {
 	default
 	dodoc smi.conf-example ANNOUNCE ChangeLog README THANKS TODO \
 		doc/{*.txt,smi.dia,smi.dtd,smi.xsd}

@@ -10,7 +10,7 @@ if [[ ${EAPI} == [5-7] ]]; then
 	python_pyc_check() {
 		local impl missing=() outdated=()
 		for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-			python_export "${impl}" EPYTHON PYTHON
+			_python_export "${impl}" EPYTHON PYTHON
 			[[ -x ${PYTHON} ]] || continue
 			local sitedir=$(python_get_sitedir "${impl}")
 

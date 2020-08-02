@@ -2,42 +2,36 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
 DESCRIPTION="Python module to describe statistical models and design matrices"
-HOMEPAGE="http://patsy.readthedocs.org/en/latest/index.html"
-SRC_URI="https://files.pythonhosted.org/packages/49/c7/b971d8685c52512dbaa45bf8d076695432245a9f59509fb20a6c8e4ff69a/patsy-0.5.1.tar.gz"
+HOMEPAGE="https://patsy.readthedocs.org/en/latest/index.html"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
-IUSE="doc test"
-RESTRICT="!test? ( test )"
+IUSE="doc"
 
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	"
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	sci-libs/scipy[${PYTHON_USEDEP}]
+	"
+BDEPEND="
 	doc? (
 		dev-python/ipython[${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
-		)
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
+		)"
+
+distutils_enable_tests nose
 
 python_compile_all() {
 	use doc && emake -C doc html
-}
-
-python_test() {
-	cd "${BUILD_DIR}" || die
-	nosetests -v || die "Testing failed with ${EPYTHON}"
 }
 
 python_install_all() {

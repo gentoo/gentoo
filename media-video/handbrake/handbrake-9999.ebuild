@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} python2_7 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit autotools eutils gnome2-utils python-any-r1 xdg-utils
 
@@ -23,7 +23,7 @@ HOMEPAGE="http://handbrake.fr/"
 LICENSE="GPL-2"
 
 SLOT="0"
-IUSE="+fdk gstreamer gtk libav libav-aac numa nvenc x265"
+IUSE="+fdk gstreamer gtk libav-aac numa nvenc x265"
 
 REQUIRED_USE="^^ ( fdk libav-aac )"
 
@@ -47,8 +47,7 @@ RDEPEND="
 	media-libs/x264:=
 	media-sound/lame
 	sys-libs/zlib
-	libav? ( >=media-video/libav-12.2:0=[fdk?] )
-	!libav? ( >=media-video/ffmpeg-4.2.1:0=[fdk?] )
+	>=media-video/ffmpeg-4.2.1:0=[fdk?]
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0

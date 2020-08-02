@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ DIST_VERSION=${PV%0.0}
 inherit user perl-module
 
 DESCRIPTION="Server for the MogileFS distributed file system"
-HOMEPAGE="http://www.danga.com/mogilefs/ ${HOMEPAGE}"
+HOMEPAGE="http://www.danga.com/mogilefs/ https://metacpan.org/release/MogileFS-Server"
 
 IUSE="mysql +sqlite test postgres"
 RESTRICT="!test? ( test )"

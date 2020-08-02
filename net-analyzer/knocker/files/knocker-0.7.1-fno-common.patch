@@ -1,0 +1,215 @@
+--- a/src/knocker_args.c
++++ b/src/knocker_args.c
+@@ -34,6 +34,7 @@
+ 
+ static int _have_last_host = 0; /* tells if we've got the host with the --last-host option */
+ 
++knocker_args_t knocker_args; /* command line arguments structure */
+ 
+ /*
+    ============================================================================
+--- a/src/knocker_args.h
++++ b/src/knocker_args.h
+@@ -93,7 +93,7 @@
+ } knocker_args_t;
+ 
+ 
+-knocker_args_t knocker_args; /* command line arguments structure */
++extern knocker_args_t knocker_args; /* command line arguments structure */
+ 
+ /*
+  Initialize a knocker_args_t type of structure
+--- a/src/knocker_conf.c
++++ b/src/knocker_conf.c
+@@ -31,6 +31,11 @@
+ #include "knocker_user.h"
+ #include "knocker_conf.h"
+ 
++int KNOCKER_USER_COLOR;
++int KNOCKER_COLOR_1;
++int KNOCKER_COLOR_2;
++int KNOCKER_COLOR_1_ATTR;
++int KNOCKER_COLOR_2_ATTR;
+ 
+ /*
+    ============================================================================
+--- a/src/knocker_conf.h
++++ b/src/knocker_conf.h
+@@ -46,11 +46,11 @@
+ /* The actual values variable */
+ /* these values are read from the conf file */
+ /* by the knocker_conf_parse function */
+-int KNOCKER_USER_COLOR;
+-int KNOCKER_COLOR_1;
+-int KNOCKER_COLOR_2;
+-int KNOCKER_COLOR_1_ATTR;
+-int KNOCKER_COLOR_2_ATTR;
++extern int KNOCKER_USER_COLOR;
++extern int KNOCKER_COLOR_1;
++extern int KNOCKER_COLOR_2;
++extern int KNOCKER_COLOR_1_ATTR;
++extern int KNOCKER_COLOR_2_ATTR;
+ 
+ void knocker_conf_configure ( void );
+ int knocker_conf_parse ( void );
+--- a/src/knocker_core.c
++++ b/src/knocker_core.c
+@@ -50,6 +50,9 @@
+ static void knocker_core_free_host_ip_string (knocker_core_host_t * hinfo);
+ 
+ 
++char *knocker_core_last_hostip;   /* string of the last resolved host ip address */
++char *knocker_core_last_hostname; /* string of the last used host name */
++char *knocker_core_last_service;  /* string of the last service */
+ 
+ /*
+    ============================================================================
+--- a/src/knocker_core.h
++++ b/src/knocker_core.h
+@@ -164,9 +164,9 @@
+ static const char knocker_core_author_email[] = _KNOCKER_CORE_AUTHOR_EMAIL_;
+ 
+ /* allocated and deallocated within knocker_core_init, knocker_core_quit */
+-char *knocker_core_last_hostip;   /* string of the last resolved host ip address */
+-char *knocker_core_last_hostname; /* string of the last used host name */
+-char *knocker_core_last_service;  /* string of the last service */
++extern char *knocker_core_last_hostip;   /* string of the last resolved host ip address */
++extern char *knocker_core_last_hostname; /* string of the last used host name */
++extern char *knocker_core_last_service;  /* string of the last service */
+ 
+ 
+ int   knocker_core_init ( void );
+--- a/src/knocker_led.c
++++ b/src/knocker_led.c
+@@ -50,6 +50,9 @@
+ #define LED_VALUE_SCR   LED_SCR
+ 
+ 
++knocker_led_t knocker_led_status;
++int ledt;
++
+ #ifndef NO_LED
+ static int initialized = 0;
+ #endif
+--- a/src/knocker_led.h
++++ b/src/knocker_led.h
+@@ -65,7 +65,7 @@
+   int sequence;  /* used in knocker_led_sequence() only */
+ } knocker_led_t;
+ 
+-knocker_led_t knocker_led_status;
++extern knocker_led_t knocker_led_status;
+ 
+ void knocker_led_turn_on  (int led);
+ void knocker_led_turn_off (int led);
+@@ -75,7 +75,7 @@
+ void knocker_led_reset ( void );
+ 
+ #define led_delay 1
+-int ledt;
++extern int ledt;
+ 
+ #endif /* _KNOCKER_LED_H_ */
+ 
+--- a/src/knocker_log.c
++++ b/src/knocker_log.c
+@@ -30,7 +30,7 @@
+ const char knocker_log_header[] =
+   "+-----------------------------------------------------------------------------+\n|--=| k n o c k e r -- t h e -- n e t -- p o r t s c a n n e r |=-=[logfile]=-|\n+-----------------------------------------------------------------------------+\n";
+ 
+-char *knocker_time;
++FILE *knocker_log_fp;
+ 
+ /*
+    ============================================================================
+--- a/src/knocker_log.h
++++ b/src/knocker_log.h
+@@ -33,7 +33,7 @@
+ #include <string.h>
+ 
+ #define KNOCKER_LOG_FILE "knocker_scan.log"
+-FILE *knocker_log_fp;
++extern FILE *knocker_log_fp;
+ 
+ int  knocker_log_open (const char *filename);
+ void knocker_log_host_info (char *hostname_str, char *hostip_str);
+--- a/src/knocker_output.c
++++ b/src/knocker_output.c
+@@ -38,8 +38,6 @@
+ };
+ 
+ 
+-char *knocker_time;
+-
+ /*
+    ============================================================================
+    ============================================================================
+--- a/src/knocker_services.c
++++ b/src/knocker_services.c
+@@ -28,6 +28,9 @@
+ #include "knocker_services.h"
+ #include "knocker_core.h"
+ 
++int knocker_core_services_db_init;
++char *knocker_core_services_db[SERVICES_DB_TOTAL_SERVICES];
++
+ /* this following list of services has been automatically
+    generated from /etc/services */
+ 
+--- a/src/knocker_services.h
++++ b/src/knocker_services.h
+@@ -29,9 +29,9 @@
+ 
+ #define SERVICES_DB_TOTAL_SERVICES 30000 /* was erroneously 231 */ 
+ 
+-int knocker_core_services_db_init;
++extern int knocker_core_services_db_init;
+ 
+-char *knocker_core_services_db[SERVICES_DB_TOTAL_SERVICES];
++extern char *knocker_core_services_db[SERVICES_DB_TOTAL_SERVICES];
+ 
+ int  init_knocker_core_services_db ( void );
+ void free_knocker_core_services_db ( void );
+--- a/src/knocker_time.c
++++ b/src/knocker_time.c
+@@ -40,6 +40,7 @@
+ static struct timeval timer_start;
+ #endif
+ 
++char *knocker_time;
+ 
+ void knocker_time_start_timer (void)
+ {
+--- a/src/knocker_time.h
++++ b/src/knocker_time.h
+@@ -30,6 +30,8 @@
+ 
+ #include <time.h>
+ 
++extern char *knocker_time;
++
+ void   knocker_time_start_timer (void);
+ double knocker_time_get_ticks   (void);
+ void   knocker_time_delay (unsigned long ms);
+--- a/src/knocker_user.c
++++ b/src/knocker_user.c
+@@ -41,6 +41,8 @@
+ #define KNOCKER_LASTSCAN_FILE   "lastscan"
+ #define KNOCKER_TOKEN  "|"
+ 
++knocker_user_t knocker_user;
++
+ static int _dir_exists (const char *path);
+ static int _dir_create (const char *path);
+ static int _file_exists (const char *path);
+--- a/src/knocker_user.h
++++ b/src/knocker_user.h
+@@ -30,7 +30,7 @@
+   int    super;  /* user is root or not */
+ } knocker_user_t;
+ 
+-knocker_user_t knocker_user;
++extern knocker_user_t knocker_user;
+ 
+ int   knocker_user_is_root ( void );
+ char *knocker_user_get_username ( void );

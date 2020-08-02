@@ -1,0 +1,43 @@
+From 348041c3ff7104ca5b30e518beb2d2b86bf7bd73 Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <dolsen@gentoo.org>
+Date: Sun, 19 Jul 2020 16:31:42 -0700
+Subject: [PATCH] Fix issue #6 broken test_sortkeys()
+
+Newer python dictionaries are keeping the order the keys were added in.
+As a result since both lists were pre-sorted and identicle so the later 
+test failed to find any differences causing the failure.
+This change introduces 3 entries that are out of sorted order for both 
+the obytes and xbytes lists.  This ensures a valid test of sorting.
+---
+ cbor/tests/test_cbor.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/cbor/tests/test_cbor.py b/cbor/tests/test_cbor.py
+index 78b3ddb..6ce068b 100644
+--- a/cbor/tests/test_cbor.py
++++ b/cbor/tests/test_cbor.py
+@@ -281,6 +281,10 @@ class XTestCBOR(object):
+         xbytes = []
+         for n in _range(2, 27):
+             ob = {u'{:02x}'.format(x):x for x in _range(n)}
++            # ensure some "ob" have unsorted key:value entries
++            if n in [4, 6, 9]:
++                ob.pop('01')
++                ob["01"] = 1
+             obytes.append(self.dumps(ob, sort_keys=True))
+             xbytes.append(self.dumps(ob, sort_keys=False))
+         allOGood = True
+--- a/setup.py	2016-02-09 15:10:34.000000000 -0800
++++ b/setup.py	2020-07-19 13:46:18.586936516 -0700
+@@ -75,7 +75,7 @@
+     author='Brian Olson',
+     author_email='bolson@bolson.org',
+     url='https://bitbucket.org/bodhisnarkva/cbor',
+-    packages=['cbor'],
++    packages=['cbor', 'cbor/tests'],
+     package_dir={'cbor':'cbor'},
+     ext_modules=[
+         Extension(
+--
+libgit2 1.0.1
+

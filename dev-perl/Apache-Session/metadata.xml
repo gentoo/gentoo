@@ -21,6 +21,7 @@
     <remote-id type="cpan-module">Apache::Session::Lock::Semaphore</remote-id>
     <remote-id type="cpan-module">Apache::Session::Lock::Sybase</remote-id>
     <remote-id type="cpan-module">Apache::Session::MySQL</remote-id>
+    <remote-id type="cpan-module">Apache::Session::MySQL::NoLock</remote-id>
     <remote-id type="cpan-module">Apache::Session::Oracle</remote-id>
     <remote-id type="cpan-module">Apache::Session::Postgres</remote-id>
     <remote-id type="cpan-module">Apache::Session::Serialize::Base64</remote-id>

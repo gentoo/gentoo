@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 inherit distutils-r1
 
 DESCRIPTION="Powerful, accurate, and easy-to-use Python library for colorspace conversions"
@@ -22,6 +22,6 @@ DEPEND="${RDEPEND}
 	app-arch/unzip
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
-python_test () {
+python_test() {
 	nosetests --all-modules || die "Tests fail with ${EPYTHON}"
 }

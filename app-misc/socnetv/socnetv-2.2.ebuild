@@ -1,16 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils qmake-utils toolchain-funcs
-
-MY_PN="SocNetV"
-MY_P="${MY_PN}-${PV}"
+inherit desktop qmake-utils toolchain-funcs
 
 DESCRIPTION="Qt Social Network Visualizer"
-HOMEPAGE="http://socnetv.sourceforge.net/"
-SRC_URI="mirror://sourceforge/socnetv/${MY_P}.tar.gz"
+HOMEPAGE="https://socnetv.org/"
+SRC_URI="mirror://sourceforge/socnetv/SocNetV-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

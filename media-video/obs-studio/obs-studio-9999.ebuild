@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_SUBMODULES=()
 else
 	SRC_URI="https://github.com/obsproject/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Software for Recording and Streaming Live Video Content"
@@ -41,26 +41,29 @@ DEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
+	dev-qt/qtxml:5
+	media-libs/x264
 	media-video/ffmpeg:=[x264]
 	net-misc/curl
+	sys-apps/dbus
+	sys-libs/zlib
+	virtual/udev
+	x11-libs/libX11
 	x11-libs/libXcomposite
+	x11-libs/libXfixes
 	x11-libs/libXinerama
 	x11-libs/libXrandr
+	x11-libs/libxcb
 	alsa? ( media-libs/alsa-lib )
 	fdk? ( media-libs/fdk-aac:= )
 	imagemagick? ( media-gfx/imagemagick:= )
 	jack? ( virtual/jack )
 	luajit? ( dev-lang/luajit:2 )
-	nvenc? (
-		|| (
-			<media-video/ffmpeg-4[nvenc]
-			>=media-video/ffmpeg-4[video_cards_nvidia]
-		)
-	)
+	nvenc? ( >=media-video/ffmpeg-4[video_cards_nvidia] )
 	pulseaudio? ( media-sound/pulseaudio )
 	python? ( ${PYTHON_DEPS} )
 	speex? ( media-libs/speexdsp )
-	ssl? ( net-libs/mbedtls )
+	ssl? ( net-libs/mbedtls:= )
 	truetype? (
 		media-libs/fontconfig
 		media-libs/freetype
@@ -91,6 +94,12 @@ src_configure() {
 		-DWITH_RTMPS=$(usex ssl)
 	)
 
+	if [ "${PV}" != "9999" ]; then
+		mycmakeargs+=(
+			-DOBS_VERSION_OVERRIDE=${PV}
+		)
+	fi
+
 	if use luajit || use python; then
 		mycmakeargs+=(
 			-DDISABLE_LUA=$(usex !luajit)
@@ -102,6 +111,13 @@ src_configure() {
 	fi
 
 	cmake-utils_src_configure
+}
+
+src_install() {
+	cmake-utils_src_install
+	#external plugins may need some things not installed by default, install them here
+	insinto /usr/include/obs/UI/obs-frontend-api
+	doins UI/obs-frontend-api/obs-frontend-api.h
 }
 
 pkg_postinst() {

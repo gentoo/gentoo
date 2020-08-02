@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 FORTRAN_STANDARD=90
 FORTRAN_NEEDED="fortran"
-inherit autotools cuda fortran-2 toolchain-funcs
+inherit autotools cuda fortran-2 ltprune toolchain-funcs
 
 DESCRIPTION="Unified runtime system for heterogeneous multicore architectures"
 HOMEPAGE="http://starpu.gforge.inria.fr/"

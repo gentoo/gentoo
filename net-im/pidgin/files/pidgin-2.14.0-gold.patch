@@ -1,0 +1,11 @@
+--- pidgin-2.14.0/pidgin/Makefile.am
++++ pidgin-2.14.0/pidgin/Makefile.am
+@@ -162,7 +162,7 @@
+ 	$(LIBXML_LIBS) \
+ 	$(GTK_LIBS) \
+ 	$(GIO_UNIX_LIBS) \
+-	$(top_builddir)/libpurple/libpurple.la
++	$(top_builddir)/libpurple/libpurple.la -lm
+ 
+ AM_CPPFLAGS = \
+ 	-DDATADIR=\"$(datadir)\" \

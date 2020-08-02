@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ppc sparc x86"
+KEYWORDS="~alpha amd64 hppa ppc sparc x86"
 IUSE="boost +dbus debug doc libressl pam"
 
 #Tests fail if openssl is not compiled with -DPURIFY. Gentoo's isn't. FAIL!
@@ -43,6 +43,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.6.1-gcc47.patch
 	"${FILESDIR}"/${PN}-4.6.1-parallel-make.patch
 	"${FILESDIR}"/${PN}-4.6.1-_DEFAULT_SOURCE.patch
+	"${FILESDIR}"/${PN}-4.6.1_p14-xplc-module.patch
+	"${FILESDIR}"/${PN}-4.6.1_p14-llvm.patch
 )
 S=${WORKDIR}/${P/_p*}
 

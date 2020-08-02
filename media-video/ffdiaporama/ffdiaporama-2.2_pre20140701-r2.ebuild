@@ -1,14 +1,14 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit gnome2-utils qmake-utils xdg-utils
+EAPI=7
 
 MY_PV=${PV%_pre20140701}
 BIN_PV=${MY_PV}.devel.2014.0701
 RSC_PV=${MY_PV}.devel.2014.0503
 TMT_PV=1.0.2014.0125
+inherit qmake-utils xdg-utils
+
 DESCRIPTION="Movie creator from photos and video clips"
 HOMEPAGE="https://ffdiaporama.tuxfamily.org"
 SRC_URI="https://download.tuxfamily.org/${PN}/Packages/Devel/${PN}_bin_${BIN_PV}.tar.gz
@@ -18,11 +18,10 @@ SRC_URI="https://download.tuxfamily.org/${PN}/Packages/Devel/${PN}_bin_${BIN_PV}
 	https://dev.gentoo.org/~jstein/dist/ffdiaporama-2.2-ffmpeg-4.0.patch
 	texturemate? ( https://download.tuxfamily.org/${PN}/Packages/Stable/${PN}_texturemate_${TMT_PV}.tar.gz )"
 
-LICENSE="GPL-2
-	texturemate? ( CC-BY-3.0 )"
+LICENSE="GPL-2 texturemate? ( CC-BY-3.0 )"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="libav openclipart texturemate"
+IUSE="openclipart texturemate"
 
 RDEPEND="
 	dev-qt/qtconcurrent:5
@@ -36,8 +35,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	media-gfx/exiv2:=
-	libav? ( >=media-video/libav-11:0=[encode] )
-	!libav? ( >=media-video/ffmpeg-3:0=[encode] )
+	>=media-video/ffmpeg-3:0=[encode]
 	openclipart? ( media-gfx/openclipart[svg,-gzip] )"
 DEPEND="${RDEPEND}"
 
@@ -68,11 +66,11 @@ src_install() {
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

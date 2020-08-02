@@ -1,0 +1,26 @@
+From eb7bedd400d854e430808ae469164dfed24b1550 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 24 Apr 2020 18:55:30 +0200
+Subject: [PATCH 2/2] synapticstouchpad.cpp: Drop synaptics-properties.h parent
+ dir from include
+
+---
+ kcms/touchpad/src/backends/x11/synapticstouchpad.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kcms/touchpad/src/backends/x11/synapticstouchpad.cpp b/kcms/touchpad/src/backends/x11/synapticstouchpad.cpp
+index d2f41d70b..3eb3171ee 100644
+--- a/kcms/touchpad/src/backends/x11/synapticstouchpad.cpp
++++ b/kcms/touchpad/src/backends/x11/synapticstouchpad.cpp
+@@ -53,7 +53,7 @@
+ 
+ #include <stddef.h>
+ #include <limits.h>
+-#include <xorg/synaptics-properties.h>
++#include <synaptics-properties.h>
+ 
+ #define SYN_MAX_BUTTONS 12
+ 
+-- 
+2.26.2
+

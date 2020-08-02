@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,17 +12,22 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0/3" # subslot matches SONAME major
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="ipv6 kerberos static-libs"
 
 RDEPEND="kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	elibc_musl? ( sys-libs/queue-standalone )"
 BDEPEND="
 	app-arch/xz-utils
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
+	virtual/pkgconfig"
 
 src_prepare() {
 	cp -r "${WORKDIR}"/tirpc "${S}"/ || die
+	local PATCHES=(
+		"${FILESDIR}"/libtirpc-1.2.5-avoid-multiple-definition.patch
+		"${FILESDIR}"/libtirpc-1.2.5-endian.h.patch
+	)
 	default
 	eautoreconf
 }

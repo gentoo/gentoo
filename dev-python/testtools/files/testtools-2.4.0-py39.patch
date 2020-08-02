@@ -1,0 +1,76 @@
+From 1d698cf91cb2205aedc018e465a2e17c5a6a3e94 Mon Sep 17 00:00:00 2001
+From: Michel Alexandre Salim <michel@michel-slm.name>
+Date: Sat, 16 May 2020 13:21:38 -0700
+Subject: [PATCH] Fix syntax error test for Python 3.9
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+On Python 3.9 the zero-width no-break space Unicode character U+FEFF
+does not get printed in syntax errors.
+
+See:
+https://bugzilla.redhat.com/show_bug.cgi?id=1831126
+
+This is reproducible in a virtual environment as well.
+
+Before:
+```
+.venv ❯ make check
+PYTHONPATH=/home/michel/src/github/testing-cabal/testtools python -m testtools.run testtools.tests.test_suite
+/usr/lib64/python3.9/runpy.py:127: RuntimeWarning: 'testtools.run' found in sys.modules after import of package 'testtools', but prior to execution of 'testtools.run'; this may result in unpredictable behaviour
+  warn(RuntimeWarning(msg))
+Tests running...
+======================================================================
+FAIL: testtools.tests.test_testresult.TestNonAsciiResults.test_syntax_error_line_utf_8
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/michel/src/github/testing-cabal/testtools/testtools/tests/test_testresult.py", line 2744, in test_syntax_error_line_utf_8
+    self.assertThat(
+  File "/home/michel/src/github/testing-cabal/testtools/testtools/testcase.py", line 499, in assertThat
+    raise mismatch_error
+testtools.matchers._impl.MismatchError: 'Tests running...\n======================================================================\nERROR: test_syntax_error_line_utf_8.Test.runTest\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File "/tmp/TestNonAsciiResultsblblh75h/test_syntax_error_line_utf_8.py", line 6, in runTest\n    import bad\n  File "/tmp/TestNonAsciiResultsblblh75h/bad.py", line 1\n    \ufeff^ = 0 # paɪθən\n    ^\nSyntaxError: invalid syntax\n\nRan 1 test in 0.001s\nFAILED (failures=1)\n' does not match /.*bad.py", line 1\n\s*\^ = 0 # pa\u026a\u03b8\u0259n\n \s*\^\nSyntaxError:.*/
+======================================================================
+FAIL: testtools.tests.test_testresult.TestNonAsciiResultsWithUnittest.test_syntax_error_line_utf_8
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/michel/src/github/testing-cabal/testtools/testtools/tests/test_testresult.py", line 2744, in test_syntax_error_line_utf_8
+    self.assertThat(
+  File "/home/michel/src/github/testing-cabal/testtools/testtools/testcase.py", line 499, in assertThat
+    raise mismatch_error
+testtools.matchers._impl.MismatchError: 'E\n======================================================================\nERROR: runTest (test_syntax_error_line_utf_8.Test)\ntest_syntax_error_line_utf_8.Test.runTest\n----------------------------------------------------------------------\ntesttools.testresult.real._StringException: Traceback (most recent call last):\n  File "/tmp/TestNonAsciiResultsWithUnittest_zzswpmj/test_syntax_error_line_utf_8.py", line 6, in runTest\n    import bad\n  File "/tmp/TestNonAsciiResultsWithUnittest_zzswpmj/bad.py", line 1\n    \ufeff^ = 0 # paɪθən\n    ^\nSyntaxError: invalid syntax\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (errors=1)\n' does not match /.*bad.py", line 1\n\s*\^ = 0 # pa\u026a\u03b8\u0259n\n \s*\^\nSyntaxError:.*/
+
+Ran 2627 tests in 0.569s
+FAILED (failures=2)
+make: *** [Makefile:7: check] Error 1
+```
+
+After:
+```
+.venv ❯ make check
+PYTHONPATH=/home/michel/src/github/testing-cabal/testtools python -m testtools.run testtools.tests.test_suite
+/usr/lib64/python3.9/runpy.py:127: RuntimeWarning: 'testtools.run' found in sys.modules after import of package 'testtools', but prior to execution of 'testtools.run'; this may result in unpredictable behaviour
+  warn(RuntimeWarning(msg))
+Tests running...
+
+Ran 2627 tests in 0.492s
+OK
+```
+---
+ testtools/tests/test_testresult.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/testtools/tests/test_testresult.py b/testtools/tests/test_testresult.py
+index 3bbd8937..deceb07d 100644
+--- a/testtools/tests/test_testresult.py
++++ b/testtools/tests/test_testresult.py
+@@ -2741,6 +2741,9 @@ def test_syntax_error_line_utf_8(self):
+         textoutput = self._setup_external_case("import bad")
+         self._write_module("bad", "utf-8", "\ufeff^ = 0 # %s\n" % text)
+         textoutput = self._run_external_case()
++        # Python 3.9 no longer prints the '\ufeff'
++        if sys.version_info >= (3,9):
++            textoutput = textoutput.replace('\ufeff', '')
+         self.assertThat(
+             textoutput,
+             MatchesRegex(

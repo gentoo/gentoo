@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/awesomeWM/${PN}.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="dbus doc elibc_FreeBSD gnome luajit test"
+IUSE="dbus doc gnome luajit test"
 RESTRICT="test"
 
 RDEPEND="
@@ -21,7 +21,7 @@ RDEPEND="
 	dev-libs/glib:2
 	>=dev-libs/libxdg-basedir-1
 	>=dev-lua/lgi-0.8
-	x11-libs/cairo[xcb]
+	x11-libs/cairo[X,xcb(+)]
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/libxcb-1.6[xkb]
 	>=x11-libs/pango-1.19.3[introspection]
@@ -35,7 +35,6 @@ RDEPEND="
 	x11-libs/libxkbcommon[X]
 	>=x11-libs/libX11-1.3.99.901
 	dbus? ( >=sys-apps/dbus-1 )
-	elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) )
 "
 
 # graphicsmagick's 'convert -channel' has no Alpha support, bug #352282
@@ -69,7 +68,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DSYSCONFDIR="${EPREFIX}"/etc
 		-DCOMPRESS_MANPAGES=OFF
-		-DWITH_DBUS=$(usex dbus)
+		-DWITH_DBUS=$(usex dbus ON OFF)
 		-DGENERATE_DOC=$(usex doc)
 		-DAWESOME_DOC_PATH="${EPREFIX}"/usr/share/doc/${PF}
 	)
@@ -89,7 +88,7 @@ src_install() {
 	cmake-utils_src_install
 	rm "${ED}"/usr/share/doc/${PF}/LICENSE || die
 
-	pax-mark m "${ED%/}"/usr/bin/awesome
+	pax-mark m "${ED}"/usr/bin/awesome
 
 	exeinto /etc/X11/Sessions
 	newexe "${FILESDIR}"/${PN}-session ${PN}

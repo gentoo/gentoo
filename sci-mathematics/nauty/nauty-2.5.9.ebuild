@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,7 @@ IUSE=""
 
 S="${WORKDIR}/${PN}${MY_PV}"
 
-src_prepare () {
+src_prepare() {
 	sed \
 		-e "s/^LDFLAGS=.*/LDFLAGS=${LDFLAGS}/" \
 		-e 's:${CC} -o:${CC} ${LDFLAGS} -o:g' \
@@ -27,12 +27,12 @@ src_prepare () {
 		-i makefile.in || die
 }
 
-src_test () {
+src_test() {
 	emake checks
 	./runalltests
 }
 
-src_install () {
+src_install() {
 	dobin addedgeg amtog biplabg catg complg copyg countg \
 		deledgeg directg dreadnaut dretog genbg geng genrang \
 		gentourng labelg listg multig newedgeg NRswitchg pickg \

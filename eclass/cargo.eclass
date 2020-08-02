@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cargo.eclass
@@ -16,12 +16,11 @@ _CARGO_ECLASS=1
 RUST_DEPEND=">=virtual/rust-1.37.0"
 
 case ${EAPI} in
-	6) DEPEND="${RUST_DEPEND}";;
 	7) BDEPEND="${RUST_DEPEND}";;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
-inherit multiprocessing
+inherit multiprocessing toolchain-funcs
 
 EXPORT_FUNCTIONS src_unpack src_compile src_install src_test
 
@@ -39,16 +38,13 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # @DESCRIPTION:
 # Generates the URIs to put in SRC_URI to help fetch dependencies.
 cargo_crate_uris() {
+	local -r regex='^([a-zA-Z0-9_\-]+)-([0-9]+\.[0-9]+\.[0-9]+.*)$'
 	local crate
 	for crate in "$@"; do
-		local name version url pretag
-		name="${crate%-*}"
-		version="${crate##*-}"
-		pretag="^[a-zA-Z]+"
-		if [[ $version =~ $pretag ]]; then
-			version="${name##*-}-${version}"
-			name="${name%-*}"
-		fi
+		local name version url
+		[[ $crate =~ $regex ]] || die "Could not parse name and version from crate: $crate"
+		name="${BASH_REMATCH[1]}"
+		version="${BASH_REMATCH[2]}"
 		url="https://crates.io/api/v1/crates/${name}/${version}/download -> ${crate}.crate"
 		echo "${url}"
 	done
@@ -164,6 +160,8 @@ cargo_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	export CARGO_HOME="${ECARGO_HOME}"
+
+	tc-export AR CC
 
 	cargo build $(usex debug "" --release) "$@" \
 		|| die "cargo build failed"

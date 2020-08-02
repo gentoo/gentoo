@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} )
 
 inherit distutils-r1
 
@@ -17,7 +18,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="LGPL-3+"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="mpir"
 
 RDEPEND="
@@ -37,12 +38,15 @@ PATCHES=(
 distutils_enable_sphinx docs
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
-
 	# rm non std test file
 	rm test*/gmpy_test_thr.py || die
 	# testing for contents of __dir__ is really silly, and fails
 	sed -i -e '/__dir__/,+1d' test3/*.py || die
+	# fix sphinx-1.8+ compat
+	# https://github.com/aleaxit/gmpy/commit/c35c1f3319fcf95e894a59a6d523851bad4abf66
+	sed -i -e 's:pngmath:imgmath:' docs/conf.py || die
+
+	distutils-r1_python_prepare_all
 }
 
 python_configure_all() {

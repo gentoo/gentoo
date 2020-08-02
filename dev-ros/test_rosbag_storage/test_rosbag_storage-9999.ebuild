@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 ROS_REPO_URI="https://github.com/ros/ros_comm"
 KEYWORDS="~amd64 ~arm"
@@ -17,6 +17,7 @@ IUSE=""
 RDEPEND=""
 DEPEND="${RDEPEND}
 	dev-ros/rosbag_storage
+	dev-ros/rosbag
 	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-libs/boost:=
 	test? ( dev-cpp/gtest )"

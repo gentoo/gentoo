@@ -1,0 +1,12 @@
+--- a/SConstruct
++++ b/SConstruct
+@@ -213,6 +213,9 @@ if cxx != 'default':
+ link = os.getenv('LINK', 'default')
+ if link != 'default':
+     env.Replace(LINK = link)
++ar = os.getenv('AR', 'default')
++if ar != 'default':
++    env.Replace(AR = ar)
+
+ # Get compiler name/version, CXX may be set to "c++" which may be clang or gcc
+ cc_version = str(read_first_line(env['CC'].split() + ['--version']))

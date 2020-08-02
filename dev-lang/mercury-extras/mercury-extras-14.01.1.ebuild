@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils multilib
+inherit eutils multilib vcs-clean
 
-PATCHSET_VER="2"
+PATCHSET_VER="4"
 MY_P=mercury-srcdist-${PV}
 
 DESCRIPTION="Additional libraries and tools that are not part of the Mercury standard library"
@@ -92,8 +92,8 @@ src_compile() {
 		SUBDIRS="${MERCURY_PKGS}" \
 		EXTRA_MLFLAGS=--no-strip \
 		EXTRA_CFLAGS="${CFLAGS}" \
-		EXTRA_LDFLAGS="${LDFLAGS}" \
-		EXTRA_LD_LIBFLAGS="${LDFLAGS}" \
+		EXTRA_LDFLAGS="${LDFLAGS} -L/usr/$(get_libdir)" \
+		EXTRA_LD_LIBFLAGS="${LDFLAGS} -L/usr/$(get_libdir)" \
 		|| die "mmake failed"
 
 	if use cairo; then
@@ -111,8 +111,8 @@ src_install() {
 		SUBDIRS="${MERCURY_PKGS}" \
 		EXTRA_MLFLAGS=--no-strip \
 		EXTRA_CFLAGS="${CFLAGS}" \
-		EXTRA_LDFLAGS="${LDFLAGS}" \
-		EXTRA_LD_LIBFLAGS="${LDFLAGS}" \
+		EXTRA_LDFLAGS="${LDFLAGS} -L/usr/$(get_libdir)" \
+		EXTRA_LD_LIBFLAGS="${LDFLAGS} -L/usr/$(get_libdir)" \
 		DESTDIR="${D}" \
 		INSTALL_PREFIX="${D}"/usr \
 		install || die "mmake install failed"

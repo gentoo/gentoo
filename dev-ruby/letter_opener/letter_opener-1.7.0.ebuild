@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,4 +27,7 @@ ruby_add_rdepend ">=dev-ruby/launchy-2.2:0"
 all_ruby_prepare() {
 	sed -i -e "/[Bb]undler/d" Rakefile spec/spec_helper.rb || die
 	sed -i -e '4irequire "letter_opener"' spec/spec_helper.rb || die
+
+	# Avoid tests that require some kind of browser
+	sed -i -e '/opens email/askip "requires installed browser"' spec/letter_opener/delivery_method_spec.rb || die
 }

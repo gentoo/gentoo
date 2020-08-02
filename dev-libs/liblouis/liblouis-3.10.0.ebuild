@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE='wide-unicode(+)'
 DISTUTILS_OPTIONAL=1
 inherit autotools distutils-r1
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/liblouis/liblouis/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ppc ppc64 ~sparc x86"
 IUSE="python"
 BDEPEND="sys-apps/help2man"
 RDEPEND="python? ( ${PYTHON_DEPS} )"

@@ -1,13 +1,14 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 FORTRAN_NEEDED=fortran
 
-inherit autotools cuda eutils flag-o-matic fortran-2 multilib toolchain-funcs versionator
+inherit autotools cuda flag-o-matic fortran-2 toolchain-funcs
 
 MY_P=${P/-mpi}
+
 S=${WORKDIR}/${MY_P}
 
 IUSE_OPENMPI_FABRICS="
@@ -27,8 +28,8 @@ IUSE_OPENMPI_OFED_FEATURES="
 	openmpi_ofed_features_failover"
 
 DESCRIPTION="A high-performance message passing library (MPI)"
-HOMEPAGE="http://www.open-mpi.org"
-SRC_URI="http://www.open-mpi.org/software/ompi/v$(get_version_component_range 1-2)/downloads/${MY_P}.tar.bz2"
+HOMEPAGE="https://www.open-mpi.org"
+SRC_URI="https://www.open-mpi.org/software/ompi/v$(ver_cut 1-2)/downloads/${MY_P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
@@ -86,6 +87,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
 	# Necessary for scalibility, see
 	# http://www.open-mpi.org/community/lists/users/2008/09/6514.php
 	if use threads; then
@@ -94,7 +96,7 @@ src_prepare() {
 	fi
 
 	# https://github.com/open-mpi/ompi/issues/163
-	epatch "${FILESDIR}"/openmpi-ltdl.patch
+	eapply "${FILESDIR}"/openmpi-ltdl.patch
 
 	AT_M4DIR=config eautoreconf
 }
@@ -145,12 +147,12 @@ src_configure() {
 		$(use_with openmpi_rm_slurm slurm)
 }
 
-src_install () {
-	emake DESTDIR="${D}" install
+src_install() {
+	default
 	# From USE=vt see #359917
-	rm "${ED}"/usr/share/libtool &> /dev/null
+	rm "${ED}"/usr/share/libtool || die
 	# Avoid collisions with libevent
-	rm -rf "${ED}"/usr/include/event2 &> /dev/null
+	rm -rf "${ED}"/usr/include/event2 || die
 	dodoc README AUTHORS NEWS VERSION
 }
 

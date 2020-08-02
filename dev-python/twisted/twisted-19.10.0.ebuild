@@ -3,10 +3,10 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r1 virtualx
 
 TWISTED_PN="Twisted"
 TWISTED_P="${TWISTED_PN}-${PV}"
@@ -17,12 +17,13 @@ HOMEPAGE="https://www.twistedmatrix.com/trac/"
 SRC_URI="https://twistedmatrix.com/Releases/${TWISTED_PN}"
 SRC_URI="${SRC_URI}/${TWISTED_RELEASE}/${TWISTED_P}.tar.bz2
 	https://dev.gentoo.org/~mgorny/dist/twisted-regen-cache.gz"
+S=${WORKDIR}/${TWISTED_P}
 
-KEYWORDS="amd64 ~arm arm64 ~mips ~s390 ~sh ~sparc ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="conch crypt http2 serial +soap test"
+IUSE="conch crypt http2 serial test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -44,7 +45,6 @@ RDEPEND="
 		>=dev-python/idna-0.6[${PYTHON_USEDEP}]
 	)
 	serial? ( >=dev-python/pyserial-3.0[${PYTHON_USEDEP}] )
-	soap? ( $(python_gen_cond_dep 'dev-python/soappy[${PYTHON_USEDEP}]' python2_7) )
 	http2? (
 		>=dev-python/hyper-h2-3.0.0[${PYTHON_USEDEP}]
 		<dev-python/hyper-h2-4.0.0[${PYTHON_USEDEP}]
@@ -79,55 +79,76 @@ DEPEND="
 	)
 "
 
-S=${WORKDIR}/${TWISTED_P}
-
 python_prepare_all() {
-	# No allowed tests are garaunteed to work on py3.5 or py3.8
-	if use test ; then
-		# Remove since this is an upstream distribution test for making releases
-		rm src/twisted/python/test/test_release.py || die "rm src/twisted/python/test/test_release.py FAILED"
+	local PATCHES=(
+		"${FILESDIR}"/${P}-py38.patch
+		"${FILESDIR}"/twisted-19.10.0-py38-cgi.patch
+		"${FILESDIR}"/twisted-20.3.0-py38-hmac.patch
+		"${FILESDIR}"/twisted-19.10.0-py39-b64.patch
+		"${FILESDIR}"/twisted-20.3.0-py39-combined.patch
+	)
 
-		# Remove these as they are known to fail -- fix (py2.7 - py3.6)
-		rm src/twisted/conch/test/test_ckeygen.py || die "rm src/twisted/conch/test/test_ckeygen.py FAILED"
-		rm src/twisted/pair/test/test_tuntap.py || die "rm src/twisted/pair/test/test_tuntap.py FAILED"
-		rm src/twisted/test/test_log.py || die "rm src/twisted/test/test_log.py FAILED"
+	# upstream test for making releases; not very useful and requires
+	# sphinx (including on py2)
+	rm src/twisted/python/test/test_release.py || die
 
-		# This test fails only on py3.7
-		rm src/twisted/internet/test/test_process.py || die " rm src/twisted/internet/test/test_process.py FAILED"
-	fi
+	# Conch doesn't work with latest >=OpenSSH 7.6
+	#   - https://twistedmatrix.com/trac/ticket/9311
+	#   - https://twistedmatrix.com/trac/ticket/9515
+	rm src/twisted/conch/test/test_ckeygen.py || die
+	rm src/twisted/conch/test/test_conch.py || die
+	rm src/twisted/conch/test/test_cftp.py || die
+
+	# puts system in EMFILE state, then the exception handler may fail
+	# trying to open more files due to some gi magic
+	sed -e '/SKIP_EMFILE/s:None:"Fails on non-pristine systems":' \
+		-i src/twisted/internet/test/test_tcp.py || die
+
+	# TODO: times out, i can't find where to increase the timeout
+	sed -e 's:test_manyProcesses:_&:' \
+		-i src/twisted/test/test_process.py || die
+
+	# multicast tests fail within network-sandbox
+	sed -e 's:test_joinLeave:_&:' \
+		-e 's:test_loopback:_&:' \
+		-e 's:test_multiListen:_&:' \
+		-e 's:test_multicast:_&:' \
+		-i src/twisted/test/test_udp.py || die
+
+	# accesses /dev/net/tun
+	sed -e '/class RealDeviceTestsMixin/a\
+    skip = "Requires extra permissions"' \
+		-i src/twisted/pair/test/test_tuntap.py || die
+
+	# TODO: figure it out, probably doesn't accept DST date here
+	sed -e 's:test_getTimezoneOffsetWithoutDaylightSavingTime:_&:' \
+		-i src/twisted/test/test_log.py || die
+
+	# TODO: failures specific to Python 2
+	sed -e 's:testLookupProcNetTcp:_&:' \
+		-i src/twisted/test/test_ident.py || die
+	sed -e 's:test_loggingFactoryOpensLogfileAutomatically:_&:' \
+		-i src/twisted/test/test_policies.py || die
+
 	distutils-r1_python_prepare_all
 }
 
+src_test() {
+	virtx distutils-r1_src_test
+}
+
 python_test() {
+	# TODO: upstream seems to override our build paths
 	distutils_install_for_testing
 
-	# workaround for the eclass not installing the entry points
-	# in the test environment.  copy the old 16.3.2 start script
-	# to run the tests with
-	cp "${FILESDIR}"/trial "${TEST_DIR}" || die
-	chmod +x "${TEST_DIR}"/trial || die
-
-	pushd "${TEST_DIR}" > /dev/null || die
-
-	if ! "${TEST_DIR}"/trial twisted; then
+	"${EPYTHON}" -m twisted.trial twisted ||
 		die "Tests failed with ${EPYTHON}"
-	fi
-
-	if ! "${TEST_DIR}"/trial twisted.test.test_twistd.DaemonizeTests; then
-		die "DaemonizeTests failed with ${EPYTHON}"
-	fi
-
-	if ! "${TEST_DIR}"/trial twisted.test.test_reflect.SafeStrTests; then
-		die "SafeStrTests failed with ${EPYTHON}"
-	fi
-
-	popd > /dev/null || die
 }
 
 python_install() {
 	distutils-r1_python_install
 
-	cd "${D%}$(python_get_sitedir)" || die
+	cd "${D}$(python_get_sitedir)" || die
 
 	# own the dropin.cache so we don't leave orphans
 	touch twisted/plugins/dropin.cache || die
@@ -162,10 +183,10 @@ pkg_postinst() {
 }
 
 python_postrm() {
-	rm -f "${ROOT%}$(python_get_sitedir)/twisted/plugins/dropin.cache" || die
+	rm -f "${ROOT}$(python_get_sitedir)/twisted/plugins/dropin.cache" || die
 }
 
-pkg_postrm(){
+pkg_postrm() {
 	# if we're removing the last version, remove the cache file
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
 		python_foreach_impl python_postrm

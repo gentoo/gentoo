@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit git-r3
 
@@ -20,4 +20,5 @@ RDEPEND="app-shells/bash
 
 src_install() {
 	newbin mkstage4.sh mkstage4
+	einstalldocs
 }

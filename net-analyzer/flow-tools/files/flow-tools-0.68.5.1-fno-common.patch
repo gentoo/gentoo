@@ -1,0 +1,42 @@
+--- ./src/acl2.h
++++ ./src/acl2.h
+@@ -48,7 +48,7 @@
+ #define ACL_TYPE_STD  1
+ #define ACL_TYPE_EXT  2
+ 
+-struct acl_list {
++typedef struct acl_list {
+   int num;                          /* number of entries */
+   int num_std;                      /* number of standard acl entries */
+   int num_ext;                      /* number of extended acl entries */
+@@ -59,6 +59,8 @@
+                                     /* num_ext of these */
+ };
+ 
++extern struct acl_list acl_list;
++
+ struct acl_names {
+   int num;       /* index into standard or extended list */
+   char *name;    /* name of this acl */
+--- a/src/aclyacc.y
++++ b/src/aclyacc.y
+@@ -7,8 +7,6 @@
+ unsigned char fmt_buf[32];
+ unsigned char fmt_buf2[32];
+ 
+-extern struct acl_list acl_list;
+-
+ int x;
+ 
+ %}
+--- a/src/flow-filter.c
++++ b/src/flow-filter.c
+@@ -56,8 +56,6 @@
+ int debug;
+ int ip_net_only;
+ 
+-struct acl_list acl_list;
+-
+ int yyparse (void);
+ void usage(void);
+ void yyerror(const char *msg);

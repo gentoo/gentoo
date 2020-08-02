@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # prefix USE flag should always be unmasked in prefix profiles
@@ -12,3 +12,7 @@ gpm
 
 # need to invade pid 1, which is not possible for Prefix.
 systemd
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-06-06)
+# sci-libs/mkl does not have prefix keywords
+mkl

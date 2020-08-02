@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake
 
 DESCRIPTION="LXQt desktop panel and plugins"
-HOMEPAGE="https://lxqt.org/"
+HOMEPAGE="https://lxqt.github.io/"
 
 MY_PV="$(ver_cut 1-2)*"
 
@@ -110,7 +110,7 @@ src_configure() {
 	cmake_src_configure
 }
 
-src_install(){
+src_install() {
 	cmake_src_install
 	doman panel/man/*.1
 }

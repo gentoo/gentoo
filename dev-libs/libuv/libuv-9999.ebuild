@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ inherit autotools git-r3 multilib-minimal
 
 DESCRIPTION="Cross-platform asychronous I/O"
 HOMEPAGE="https://github.com/libuv/libuv"
-EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_REPO_URI="https://github.com/libuv/libuv"
 
 LICENSE="BSD BSD-2 ISC MIT"
 SLOT="0/1"
@@ -14,8 +14,10 @@ KEYWORDS=""
 IUSE="static-libs"
 RESTRICT="test"
 
-DEPEND="sys-devel/libtool
-	virtual/pkgconfig[${MULTILIB_USEDEP}]"
+BDEPEND="
+	sys-devel/libtool
+	virtual/pkgconfig
+"
 
 src_prepare() {
 	default

@@ -1,5 +1,5 @@
---- zip.c
-+++ zip.c
+--- a/zip.c
++++ b/zip.c
 @@ -1028,7 +1028,7 @@
  
    for (i = 0; i < sizeof(text)/sizeof(char *); i++)

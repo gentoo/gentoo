@@ -10,7 +10,7 @@ DESCRIPTION="Basepack of plugins for gstreamer"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
 
 LICENSE="GPL-2+ LGPL-2+"
-KEYWORDS="amd64 arm arm64 ~hppa ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
 
 # For OpenGL we have three separate concepts, with a list of possibilities in each:
 #  * opengl APIs - opengl and/or gles2; USE=opengl and USE=gles2 enable these accordingly; if neither is enabled, OpenGL helper library and elements are not built at all and all the other options aren't relevant
@@ -89,6 +89,10 @@ DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.12
 	X? ( x11-base/xorg-proto )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.14.5-make43.patch # remove when bumping and switching to Meson
+)
 
 src_prepare() {
 	# Disable GL tests for now; prone to fail with EGL_NOT_INITIALIZED, etc

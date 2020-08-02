@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -86,7 +86,7 @@ src_install() {
 	fi
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	if use gtk; then
 		gnome2_schemas_update
 		xdg_desktop_database_update
@@ -94,7 +94,7 @@ pkg_postinst(){
 	fi
 }
 
-pkg_postrm(){
+pkg_postrm() {
 	if use gtk; then
 		gnome2_schemas_update
 		xdg_desktop_database_update

@@ -18,6 +18,5 @@
 		<remote-id type="cpan-module">Crypt::Random::Source::Strong::devrandom</remote-id>
 		<remote-id type="cpan-module">Crypt::Random::Source::Weak</remote-id>
 		<remote-id type="cpan-module">Crypt::Random::Source::Weak::devurandom</remote-id>
-		<remote-id type="cpan-module">Crypt::Random::Source::Weak::rand</remote-id>
 	</upstream>
 </pkgmetadata>

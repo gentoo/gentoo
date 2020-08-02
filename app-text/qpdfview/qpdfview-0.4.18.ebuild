@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="cups +dbus djvu fitz +pdf postscript +sqlite +svg synctex"
 
 REQUIRED_USE="?? ( fitz pdf )"
@@ -41,6 +41,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=( CHANGES CONTRIBUTORS README TODO )
+
+PATCHES=( "${FILESDIR}/${P}-qt-5.15.patch" ) # bug 726064
 
 src_prepare() {
 	default

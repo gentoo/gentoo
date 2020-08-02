@@ -1,0 +1,128 @@
+https://github.com/proxytunnel/proxytunnel/pull/43
+
+From 517650724dc478dd35ac7c7953b4eb700ccb7273 Mon Sep 17 00:00:00 2001
+From: Paul Howarth <paul@city-fan.org>
+Date: Wed, 22 Jan 2020 21:44:01 +0000
+Subject: [PATCH] Fix global variable declarations/definitions for GCC 10
+ compatibility
+
+This boils down to declaring global variables as "extern" in header files
+and defining them in just one place.
+
+See https://www.gnu.org/software/gcc/gcc-10/porting_to.html
+---
+ Makefile      |  1 +
+ globals.c     | 41 +++++++++++++++++++++++++++++++++++++++++
+ ntlm.h        |  4 ++--
+ proxytunnel.h | 16 ++++++++--------
+ 4 files changed, 52 insertions(+), 10 deletions(-)
+ create mode 100644 globals.c
+
+diff --git a/Makefile b/Makefile
+index 57328e8..ecdaa5f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -63,6 +63,7 @@ OBJ = proxytunnel.o	\
+ 	readpassphrase.o	\
+ 	messages.o	\
+ 	cmdline.o	\
++	globals.o	\
+ 	ntlm.o		\
+ 	ptstream.o
+ 
+diff --git a/globals.c b/globals.c
+new file mode 100644
+index 0000000..fe19db4
+--- /dev/null
++++ b/globals.c
+@@ -0,0 +1,41 @@
++/* Proxytunnel - (C) 2001-2008 Jos Visser / Mark Janssen    */
++/* Contact:                  josv@osp.nl / maniac@maniac.nl */
++
++/*
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
++ */
++
++/* globals.c */
++
++#include "proxytunnel.h"
++
++/* Globals */
++char *program_name;             /* Guess what? */
++int i_am_daemon;                /* Also... */
++
++PTSTREAM *stunnel;	/* stream representing the socket from us to proxy */
++PTSTREAM *std;		/* stream representing stdin/stdout */
++
++/*
++ * All the command line options
++ */
++struct gengetopt_args_info args_info;
++
++char buf[SIZE];         /* Data transfer buffer */
++
++char ntlm_type1_buf[160];
++char ntlm_type3_buf[4096];
++
++// vim:noexpandtab:ts=4
+diff --git a/ntlm.h b/ntlm.h
+index f919368..01a6434 100644
+--- a/ntlm.h
++++ b/ntlm.h
+@@ -26,8 +26,8 @@ void build_ntlm2_response();
+ 
+ extern int ntlm_challenge;
+ 
+-char ntlm_type1_buf[160];
+-char ntlm_type3_buf[4096];
++extern char ntlm_type1_buf[160];
++extern char ntlm_type3_buf[4096];
+ 
+ 
+ // Below are the flag definitions.
+diff --git a/proxytunnel.h b/proxytunnel.h
+index 593cd7e..aa09a4b 100644
+--- a/proxytunnel.h
++++ b/proxytunnel.h
+@@ -46,21 +46,21 @@ char * readpassphrase(const char *, char *, size_t, int);
+ char * getpass_x(const char *format, ...);
+ 
+ /* Globals */
+-int read_fd;                    /* The file descriptor to read from */
+-int write_fd;                   /* The file destriptor to write to */
+-char *program_name;             /* Guess what? */
+-int i_am_daemon;                /* Also... */
++extern int read_fd;                    /* The file descriptor to read from */
++extern int write_fd;                   /* The file descriptor to write to */
++extern char *program_name;             /* Guess what? */
++extern int i_am_daemon;                /* Also... */
+ 
+-PTSTREAM *stunnel;	/* stream representing the socket from us to proxy */
+-PTSTREAM *std;		/* stream representing stdin/stdout */
++extern PTSTREAM *stunnel;	/* stream representing the socket from us to proxy */
++extern PTSTREAM *std;		/* stream representing stdin/stdout */
+ 
+ /*
+  * All the command line options
+  */
+-struct gengetopt_args_info args_info;
++extern struct gengetopt_args_info args_info;
+ 
+ #define SIZE 65536
+-char buf[SIZE];         /* Data transfer buffer */
++extern char buf[SIZE];         /* Data transfer buffer */
+ 
+ /*
+  * Small MAX macro

@@ -5,11 +5,12 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1 virtualx
 
 DESCRIPTION="Qt-based console for Jupyter with support for rich media output"
-HOMEPAGE="http://jupyter.org"
+HOMEPAGE="https://qtconsole.readthedocs.io"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -31,7 +32,6 @@ DEPEND="${RDEPEND}
 		>=dev-python/sphinx-1.3.1-r1[${PYTHON_USEDEP}]
 	)
 	test? (
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' 'python2*')
 		>=dev-python/nose-0.10.1[${PYTHON_USEDEP}]
 		dev-python/PyQt5[${PYTHON_USEDEP},svg,testlib]
 	)

@@ -2,12 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>bernardo@standard.ai</email>
-    <name>Bernardo Meurer</name>
+    <email>guillaumeseren@gmail.com</email>
+    <name>Guillaume Seren</name>
   </maintainer>
   <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>
-    <name>Gentoo Proxy Maintainers Project</name>
+    <name>Proxy Maintainers</name>
   </maintainer>
   <longdescription lang="en">
         The purpose of beets is to get your music collection right once and for

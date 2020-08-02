@@ -1,5 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Mikle Kolyada <zlogene@gentoo.org> (2020-07-13)
+# Luajit does not work on s390
+app-text/texlive-core luajittex
 
 # Hans de Graaff <graaff@gentoo.org> (2019-04-08)
 # Obsolete ruby version, no newer versions keyworded or stable.
@@ -12,10 +16,8 @@ dev-python/cssselect doc
 dev-vcs/subversion kwallet
 # not really interested in supporting alternative
 # VCS for oberlays yet.
-app-portage/layman bazaar darcs mercurial
-dev-python/setuptools_scm mercurial test
-# no nmap gui
-net-analyzer/nmap zenmap
+app-portage/layman darcs mercurial
+dev-python/setuptools_scm test
 # no lua support for vim
 app-editors/vim luajit lua
 # not keyworded yet
@@ -46,10 +48,6 @@ dev-libs/libpcre2 jit
 # Sergey Popov <pinkbyte@gentoo.org> (2015-10-24)
 # Not tested
 net-mail/dovecot lz4
-
-# Mike Frysinger <vapier@gentoo.org> (2015-03-16)
-# Needs sci-physics/bullet tested #499974
-dev-libs/efl physics
 
 # Sergey Popov <pinkbyte@gentoo.org> (2015-02-18)
 # Not tested

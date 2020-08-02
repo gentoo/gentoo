@@ -14,7 +14,7 @@ https://edu.kde.org/kstars/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2+ GPL-3+"
@@ -87,7 +87,7 @@ src_configure() {
 	ecm_src_configure
 }
 
-pkg_postinst () {
+pkg_postinst() {
 	ecm_pkg_postinst
 
 	if [[ -z "${REPLACING_VERSIONS}" ]] && ! has_version "x11-misc/xplanet" ; then

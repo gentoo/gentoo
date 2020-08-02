@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ SRC_URI="ftp://ftp.sendmail.org/pub/sendmail/sendmail.${SENDMAIL_VER}.tar.gz"
 
 LICENSE="Sendmail"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="ipv6 poll"
 
 DEPEND="!mail-mta/sendmail
@@ -42,7 +42,14 @@ src_prepare() {
 	use ipv6 && ENVDEF="${ENVDEF} -DNETINET6"
 	use poll && ENVDEF="${ENVDEF} -DSM_CONF_POLL=1"
 
-	sed -e "s:@@CFLAGS@@:${CFLAGS}:" \
+	if use elibc_musl; then
+		use ipv6 && ENVDEF="${ENVDEF} -DNEEDSGETIPNODE"
+
+		eapply "${FILESDIR}/${PN}-musl-stack-size.patch"
+		eapply "${FILESDIR}/${PN}-musl-disable-cdefs.patch"
+	fi
+
+	sed -e "s|@@CFLAGS@@|${CFLAGS}|" \
 		-e "s:@@LDFLAGS@@:${LDFLAGS}:" \
 		-e "s:@@CC@@:${CC}:" \
 		-e "s:@@ENVDEF@@:${ENVDEF}:" \
@@ -56,7 +63,7 @@ src_compile() {
 	popd
 }
 
-src_install () {
+src_install() {
 	local MY_LIBDIR=/usr/$(get_libdir)
 	dodir "${MY_LIBDIR}"
 	emake DESTDIR="${D}" LIBDIR="${MY_LIBDIR}" MANROOT=/usr/share/man/man \

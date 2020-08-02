@@ -1,0 +1,27 @@
+From ee246dc058098dee1709d76635e72db35efcef4e Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Wed, 20 Nov 2019 10:55:02 +0100
+Subject: [PATCH] tests: Add another duplicate
+
+$ wget -O- -q https://www.aviationweather.gov/docs/metar/stations.txt | grep KX26
+FL SEBASTIAN        KX26  X26          27 49N  080 30W    6   X           W    8 US
+FL VALKARIA AFS     KX26  X26          27 49N  080 30W    6   X                8 US
+---
+ libgweather/test_libgweather.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libgweather/test_libgweather.c b/libgweather/test_libgweather.c
+index 1bfa3d4..8a21911 100644
+--- a/libgweather/test_libgweather.c
++++ b/libgweather/test_libgweather.c
+@@ -336,6 +336,7 @@ parse_metar_stations (const char *contents)
+                 "KHQG",
+                 "KOEL",
+                 "KTQK",
++                "KX26",
+                 NULL
+             };
+             if (g_strv_contains (known_duplicates, station)) {
+-- 
+2.24.1
+

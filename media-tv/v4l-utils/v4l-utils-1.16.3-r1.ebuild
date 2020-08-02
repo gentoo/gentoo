@@ -10,7 +10,7 @@ SRC_URI="https://linuxtv.org/downloads/v4l-utils/${P}.tar.bz2"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~sparc x86"
 IUSE="+bpf opengl qt5"
 
 RDEPEND=">=media-libs/libv4l-${PV}[jpeg]

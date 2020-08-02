@@ -12,7 +12,6 @@
 	<use>
 		<flag name="asm">Enable assembly for optimization</flag>
 		<flag name="bip70">Enable support for the BIP70 payment protocol</flag>
-		<flag name="bitcoin_policy_rbf">Replace By Fee policy: Your node will preferentially mine and relay transactions paying the highest fee, regardless of receive order</flag>
 		<flag name="knots">Build enhanced Bitcoin Knots version, rather than Bitcoin Core</flag>
 		<flag name="libevent">Use dev-libs/libevent (needed for JSON-RPC, REST, and Tor auto-configuration</flag>
 		<flag name="qrcode">Enable generation of QR Codes for receiving payments</flag>

@@ -1,6 +1,17 @@
---- a/CommonHeader.old	2010-10-12 13:08:23.000000000 +0200
-+++ b/CommonHeader	2010-10-12 13:08:48.000000000 +0200
-@@ -31,9 +31,9 @@
+--- a/CommonHeader
++++ b/CommonHeader
+@@ -22,18 +22,18 @@
+ NET = true
+ 
+ LD = ld
+-CXX = g++
+ 
+-CXXFLAGS= `sdl-config --cflags` -g -Wall -DAUDIO
++CXXFLAGS+= `sdl-config --cflags` -Wall
++CPPFLAGS+= -DAUDIO
+ 
+ ifndef NET
+ CXXFLAGS+= -DNONET
  endif
  
  ifdef NET
@@ -12,8 +23,8 @@
  endif
  
  SRCS	= 	$(wildcard *.cpp)
---- a/Makefile.Linux.old	2010-10-12 14:36:47.000000000 +0200
-+++ b/Makefile.Linux	2010-10-12 14:37:02.000000000 +0200
+--- a/Makefile.Linux
++++ b/Makefile.Linux
 @@ -38,8 +38,7 @@
  	$(MAKE) -C $(@D:%_module.o=%)
  

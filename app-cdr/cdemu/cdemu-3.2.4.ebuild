@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit bash-completion-r1 cmake-utils python-single-r1 xdg-utils
+inherit bash-completion-r1 cmake python-single-r1 xdg-utils
 
 MY_P=cdemu-client-${PV}
 DESCRIPTION="Command-line tool for controlling cdemu-daemon"
@@ -15,7 +15,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+cdemu-daemon"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -33,7 +33,7 @@ BDEPEND="${PYTHON_DEPS}
 DOCS=( AUTHORS README )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	python_fix_shebang src/cdemu
 }
@@ -43,7 +43,7 @@ src_configure() {
 		-DPOST_INSTALL_HOOKS=OFF
 		-DCMAKE_INSTALL_COMPLETIONSDIR="$(get_bashcompdir)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {

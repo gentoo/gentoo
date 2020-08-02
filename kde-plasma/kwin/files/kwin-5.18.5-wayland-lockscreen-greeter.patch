@@ -1,0 +1,73 @@
+From 6f8b8efb338117ee197092e46b25b489b612257d Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Fri, 8 May 2020 11:26:27 +0300
+Subject: [wayland] Place lockscreen greeter above other windows
+
+Summary: BUG: 420802
+
+Reviewers: #kwin, davidedmundson
+
+Reviewed By: #kwin, davidedmundson
+
+Subscribers: apol, kwin
+
+Tags: #kwin
+
+Differential Revision: https://phabricator.kde.org/D29523
+---
+ abstract_client.cpp                  |  2 ++
+ autotests/integration/lockscreen.cpp | 19 +++++++++++++++++++
+ 2 files changed, 21 insertions(+)
+
+diff --git a/abstract_client.cpp b/abstract_client.cpp
+index ca6c422..48918e7 100644
+--- a/abstract_client.cpp
++++ b/abstract_client.cpp
+@@ -275,6 +275,8 @@ Layer AbstractClient::belongsToLayer() const
+     // Since the desktop is also activated, nothing should be in the ActiveLayer, though
+     if (isInternal())
+         return UnmanagedLayer;
++    if (isLockScreen())
++        return UnmanagedLayer;
+     if (isDesktop())
+         return workspace()->showingDesktop() ? AboveLayer : DesktopLayer;
+     if (isSplash())          // no damn annoying splashscreens
+diff --git a/autotests/integration/lockscreen.cpp b/autotests/integration/lockscreen.cpp
+index e258540..82cac09 100644
+--- a/autotests/integration/lockscreen.cpp
++++ b/autotests/integration/lockscreen.cpp
+@@ -62,6 +62,7 @@ private Q_SLOTS:
+     void initTestCase();
+     void init();
+     void cleanup();
++    void testStackingOrder();
+     void testPointer();
+     void testPointerButton();
+     void testPointerAxis();
+@@ -223,6 +224,24 @@ void LockScreenTest::cleanup()
+     Test::destroyWaylandConnection();
+ }
+ 
++void LockScreenTest::testStackingOrder()
++{
++    // This test verifies that the lockscreen greeter is placed above other windows.
++
++    QSignalSpy clientAddedSpy(waylandServer(), &WaylandServer::shellClientAdded);
++    QVERIFY(clientAddedSpy.isValid());
++
++    LOCK
++    QVERIFY(clientAddedSpy.wait());
++
++    AbstractClient *client = clientAddedSpy.first().first().value<AbstractClient *>();
++    QVERIFY(client);
++    QVERIFY(client->isLockScreen());
++    QCOMPARE(client->layer(), UnmanagedLayer);
++
++    UNLOCK
++}
++
+ void LockScreenTest::testPointer()
+ {
+     using namespace KWayland::Client;
+-- 
+cgit v1.1

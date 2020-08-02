@@ -2,26 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
 
-if [[ "${PV}" == "9999" ]]; then
-	EGIT_REPO_URI="https://github.com/KhronosGroup/Vulkan-Loader.git"
+MY_PN=Vulkan-Loader
+CMAKE_ECLASS="cmake"
+PYTHON_COMPAT=( python3_{6,7,8} )
+inherit flag-o-matic cmake-multilib python-any-r1 toolchain-funcs
+
+if [[ ${PV} == *9999* ]]; then
+	EGIT_REPO_URI="https://github.com/KhronosGroup/${MY_PN}.git"
 	EGIT_SUBMODULES=()
 	inherit git-r3
 else
-	if [[ -z ${SNAPSHOT_COMMIT} ]]; then
-		MY_PV=v${PV}
-		MY_P=Vulkan-Loader-${PV}
-	else
-		MY_PV=${SNAPSHOT_COMMIT}
-		MY_P=Vulkan-Loader-${SNAPSHOT_COMMIT}
-	fi
-	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/KhronosGroup/Vulkan-Loader/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}"/${MY_P}
+	SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~ppc64 ~x86"
+	S="${WORKDIR}"/${MY_PN}-${PV}
 fi
-
-inherit toolchain-funcs python-any-r1 cmake-multilib
 
 DESCRIPTION="Vulkan Installable Client Driver (ICD) Loader"
 HOMEPAGE="https://github.com/KhronosGroup/Vulkan-Loader"
@@ -30,14 +25,16 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="layers wayland X"
 
-PDEPEND="layers? ( media-libs/vulkan-layers:=[${MULTILIB_USEDEP}] )"
+BDEPEND=">=dev-util/cmake-3.10.2"
 DEPEND="${PYTHON_DEPS}
 	>=dev-util/vulkan-headers-${PV}
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libX11:=[${MULTILIB_USEDEP}]
 		x11-libs/libXrandr:=[${MULTILIB_USEDEP}]
-	)"
+	)
+"
+PDEPEND="layers? ( media-libs/vulkan-layers:=[${MULTILIB_USEDEP}] )"
 
 multilib_src_configure() {
 	# Integrated clang assembler doesn't work with x86 - Bug #698164
@@ -46,21 +43,21 @@ multilib_src_configure() {
 	fi
 
 	local mycmakeargs=(
-		-DCMAKE_SKIP_RPATH=True
-		-DBUILD_TESTS=False
-		-DBUILD_LOADER=True
+		-DCMAKE_SKIP_RPATH=ON
+		-DBUILD_TESTS=OFF
+		-DBUILD_LOADER=ON
 		-DBUILD_WSI_WAYLAND_SUPPORT=$(usex wayland)
 		-DBUILD_WSI_XCB_SUPPORT=$(usex X)
 		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
-		-DVULKAN_HEADERS_INSTALL_DIR="/usr"
+		-DVULKAN_HEADERS_INSTALL_DIR="${ESYSROOT}/usr"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_install() {
 	keepdir /etc/vulkan/icd.d
 
-	cmake-utils_src_install
+	cmake_src_install
 }
 
 pkg_postinst() {

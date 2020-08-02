@@ -2,20 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit user golang-build golang-vcs-snapshot systemd
-
-EGO_PN="github.com/oliver006/redis_exporter"
-EGIT_COMMIT="55b9cfabb601b5a71822fa396f914a07a31dcbe4"
-ARCHIVE_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64"
+inherit go-module user systemd
+EGIT_COMMIT=55b9cfabb601b5a71822fa396f914a07a31dcbe4
 
 DESCRIPTION="Prometheus Exporter for Redis Metrics. Supports Redis 2.x, 3.x and 4.x"
 HOMEPAGE="https://github.com/oliver006/redis_exporter"
-SRC_URI="${ARCHIVE_URI}"
+SRC_URI="https://github.com/oliver006/redis_exporter/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+
 LICENSE="MIT Apache-2.0 BSD"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE=""
-S=${WORKDIR}/${P}/src/${EGO_PN}
 
 pkg_setup() {
 	enewgroup ${PN}
@@ -48,9 +45,8 @@ src_prepare() {
 }
 
 src_compile() {
-	export -n GOCACHE XDG_CACHE_HOME #684052
-	export GO111MODULE=on GOFLAGS="-mod=vendor -v -x" GOBIN="${WORKDIR}/${P}/bin"
-	go install -work ${EGO_BUILD_FLAGS} \
+	export GOBIN="${S}/bin"
+	go install -mod=vendor \
 		-ldflags="-X main.BuildVersion=${PV} -X main.BuildCommitSha=${EGIT_COMMIT} -X main.BuildDate=$(date +%F-%T)" \
 		"${EGO_PN}" || die
 }

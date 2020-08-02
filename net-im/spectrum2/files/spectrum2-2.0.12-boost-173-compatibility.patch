@@ -1,0 +1,21 @@
+From 1a6ede2dbf0f621e3e6864675befcbc32e02c8b6 Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <kostecki@his.de>
+Date: Thu, 14 May 2020 10:34:43 +0200
+Subject: [PATCH] Fix compilation with boost-1.73
+
+Signed-off-by: Conrad Kostecki <conrad@kostecki.com>
+---
+ include/transport/ThreadPool.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/transport/ThreadPool.h b/include/transport/ThreadPool.h
+index 5902f965..ffd07c8e 100644
+--- a/include/transport/ThreadPool.h
++++ b/include/transport/ThreadPool.h
+@@ -1,5 +1,6 @@
+ #pragma once 
+ 
++#include <boost/bind.hpp>
+ #include <boost/thread.hpp>
+ #include <boost/thread/mutex.hpp>
+ #include <queue>

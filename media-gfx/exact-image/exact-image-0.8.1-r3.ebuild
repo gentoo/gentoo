@@ -1,10 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python2_7 )
+EAPI=7
 
-inherit eutils multilib python-single-r1 toolchain-funcs
+inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="A fast, modern and generic image processing library"
 HOMEPAGE="http://www.exactcode.de/site/open_source/exactimage/"
@@ -13,20 +12,18 @@ SRC_URI="http://dl.exactcode.de/oss/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="expat jpeg lua openexr php perl png python ruby swig tiff truetype X"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+IUSE="expat jpeg lua openexr php perl png ruby swig tiff truetype X"
 
 RDEPEND="x11-libs/agg[truetype]
 	sys-libs/zlib
 	expat? ( dev-libs/expat )
 	jpeg? ( virtual/jpeg )
-	lua? ( dev-lang/lua )
+	lua? ( dev-lang/lua:= )
 	openexr? ( media-libs/openexr )
-	php? ( dev-lang/php )
+	php? ( dev-lang/php:* )
 	perl? ( dev-lang/perl )
 	png? ( >=media-libs/libpng-1.2.43 )
-	python? ( ${PYTHON_DEPS} )
-	ruby? ( dev-lang/ruby )
+	ruby? ( dev-lang/ruby:* )
 	tiff? ( media-libs/tiff )
 	truetype? ( >=media-libs/freetype-2 )
 	X? (
@@ -39,21 +36,14 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	swig? ( dev-lang/swig )"
 
-pkg_setup() {
-	use python && python-single-r1_pkg_setup
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.7.5-libpng14.patch
+	"${FILESDIR}"/${P}-libpng15.patch
+	"${FILESDIR}"/${P}-gcc6.patch
+)
 
 src_prepare() {
-	eapply \
-		"${FILESDIR}"/${PN}-0.7.5-libpng14.patch \
-		"${FILESDIR}"/${P}-libpng15.patch \
-		"${FILESDIR}"/${P}-gcc6.patch
-	eapply_user
-
-	# fix python hardcoded path wrt bug #327171
-	sed -i -e "s:python2.5:${EPYTHON}:" \
-		-e "s:\$(libdir):usr/$(get_libdir):" \
-		"${S}"/api/python/Makefile || die
+	default
 
 	# Respect user CFLAGS/CXXFLAGS.
 	sed -i \
@@ -79,6 +69,7 @@ src_configure() {
 	# evas -> enlightenment overlay
 	# bardecode -> protected by custom license
 	# libungif -> not supported anymore
+	# python -> allegedly not python3, but python2 only
 
 	./configure \
 		--prefix=/usr \
@@ -98,7 +89,7 @@ src_configure() {
 		$(use_with lua) \
 		$(use_with swig) \
 		$(use_with perl) \
-		$(use_with python) \
+		--without-python \
 		$(use_with php) \
 		$(use_with ruby) || die
 }

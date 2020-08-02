@@ -1,0 +1,315 @@
+explain steps to guide future me and other patchers
+(1) define common variables on top
+(2) remove conditions for doc and others to define VERSION
+(3) replace all ${*} by $(*)
+(4) replace pkg-config by $(PKG_CONFIG)
+(6) remove .PATH: src
+(5) remove main.c from OBJS because it is in different directory
+    - we will define a separate target for it
+(6) add $(OBJS) target + main.o target and add then to the end
+    of dependencies for hikari
+(7) add main.o to be cleaned-up
+(8) reorder the library orders in the $(CC) steps because gcc
+diff --git a/Makefile b/Makefile
+index 11fc449..d73c4e0 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,24 +1,22 @@
+-.ifmake doc || dist
+-.ifndef VERSION
+-.error please specify VERSION
+-.endif
+-.endif
+-
+-VERSION ?= "darcs"
+-
+-.ifmake install || uninstall
+-.ifndef PREFIX
+-.error please specify PREFIX
+-.endif
++TARGET =	hikari
++
++DESTDIR	?=
++
++prefix ?=	/usr/local
++exec_prefix ?=	$(prefix)
++bindir ?=	$(exec_prefix)/bin
++sysconfdir ?=	$(prefix)/etc
++
++PKG_CONFIG ?=	pkg-config
++
++VERSION ?=	"darcs"
++
++### Upstream variables
++PREFIX ?=	$(prefix)
++ETC_PREFIX ?=	$(sysconfdir)
++
+ OS != uname
+ INSTALL_GROUP != id -gn
+-.endif
+-
+-.ifmake install || uninstall
+-.ifndef ETC_PREFIX
+-.error please specify ETC_PREFIX
+-.endif
+-.endif
+
+ OBJS = \
+ 	action.o \
+@@ -45,7 +43,6 @@ OBJS = \
+ 	layout.o \
+ 	layout_config.o \
+ 	layout_select_mode.o \
+-	main.o \
+ 	mark.o \
+ 	mark_assign_mode.o \
+ 	mark_select_mode.o \
+@@ -72,106 +69,117 @@ OBJS = \
+ 	xwayland_unmanaged_view.o \
+ 	xwayland_view.o
+
+-WAYLAND_PROTOCOLS != pkg-config --variable pkgdatadir wayland-protocols
+-
+-.PHONY: distclean clean clean-doc doc dist install uninstall
+-.PATH: src
++WAYLAND_PROTOCOLS != $(PKG_CONFIG) --variable pkgdatadir wayland-protocols
+
+-.ifdef DEBUG
+-CFLAGS += -g -O0 -fsanitize=address
+-.else
+-CFLAGS += -DNDEBUG
+-.endif
++ifeq ($(DEBUG),1)
++	CFLAGS += -g -O0 -fsanitize=address
++else
++	CFLAGS += -DNDEBUG
++endif
+
+-.ifdef WITH_POSIX_C_SOURCE
+-CFLAGS += -D_POSIX_C_SOURCE=200809L
+-.endif
++ifeq ($(WITH_POSIX_C_SOURCE),1)
++	CFLAGS += -D_POSIX_C_SOURCE=200809L
++endif
+
+-.ifdef WITH_XWAYLAND
+-CFLAGS += -DHAVE_XWAYLAND=1
+-.endif
++ifeq ($(WITH_XWAYLAND),1)
++	CFLAGS += -DHAVE_XWAYLAND=1
++endif
+
+-.ifdef WITH_GAMMACONTROL
+-CFLAGS += -DHAVE_GAMMACONTROL=1
+-.endif
++ifeq ($(WITH_GAMMACONTROL),1)
++	CFLAGS += -DHAVE_GAMMACONTROL=1
++endif
+
+-.ifdef WITH_SCREENCOPY
+-CFLAGS += -DHAVE_SCREENCOPY=1
+-.endif
++ifeq ($(WITH_SCREENCOPY),1)
++	CFLAGS += -DHAVE_SCREENCOPY=1
++endif
+
+-.ifdef WITH_LAYERSHELL
+-CFLAGS += -DHAVE_LAYERSHELL=1
+-.endif
++ifeq ($(WITH_LAYERSHELL),1)
++	CFLAGS += -DHAVE_LAYERSHELL=1
++endif
+
+ CFLAGS += -Wall -I. -Iinclude
+
+-WLROOTS_CFLAGS != pkg-config --cflags wlroots
+-WLROOTS_LIBS != pkg-config --libs wlroots
++WLROOTS_CFLAGS != $(PKG_CONFIG) --cflags wlroots
++WLROOTS_LIBS != $(PKG_CONFIG) --libs wlroots
+
+ WLROOTS_CFLAGS += -DWLR_USE_UNSTABLE=1
+
+-PANGO_CFLAGS != pkg-config --cflags pangocairo
+-PANGO_LIBS != pkg-config --libs pangocairo
++PANGO_CFLAGS != $(PKG_CONFIG) --cflags pangocairo
++PANGO_LIBS != $(PKG_CONFIG) --libs pangocairo
+
+-CAIRO_CFLAGS != pkg-config --cflags cairo
+-CAIRO_LIBS != pkg-config --libs cairo
++CAIRO_CFLAGS != $(PKG_CONFIG) --cflags cairo
++CAIRO_LIBS != $(PKG_CONFIG) --libs cairo
+
+-GLIB_CFLAGS != pkg-config --cflags glib-2.0
+-GLIB_LIBS != pkg-config --libs glib-2.0
++GLIB_CFLAGS != $(PKG_CONFIG) --cflags glib-2.0
++GLIB_LIBS != $(PKG_CONFIG) --libs glib-2.0
+
+-PIXMAN_CFLAGS != pkg-config --cflags pixman-1
+-PIXMAN_LIBS != pkg-config --libs pixman-1
++PIXMAN_CFLAGS != $(PKG_CONFIG) --cflags pixman-1
++PIXMAN_LIBS != $(PKG_CONFIG) --libs pixman-1
+
+-XKBCOMMON_CFLAGS != pkg-config --cflags xkbcommon
+-XKBCOMMON_LIBS != pkg-config --libs xkbcommon
++XKBCOMMON_CFLAGS != $(PKG_CONFIG) --cflags xkbcommon
++XKBCOMMON_LIBS != $(PKG_CONFIG) --libs xkbcommon
+
+-WAYLAND_CFLAGS != pkg-config --cflags wayland-server
+-WAYLAND_LIBS != pkg-config --libs wayland-server
++WAYLAND_CFLAGS != $(PKG_CONFIG) --cflags wayland-server
++WAYLAND_LIBS != $(PKG_CONFIG) --libs wayland-server
+
+-LIBINPUT_CFLAGS != pkg-config --cflags libinput
+-LIBINPUT_LIBS != pkg-config --libs libinput
++LIBINPUT_CFLAGS != $(PKG_CONFIG) --cflags libinput
++LIBINPUT_LIBS != $(PKG_CONFIG) --libs libinput
+
+-UCL_CFLAGS != pkg-config --cflags libucl
+-UCL_LIBS != pkg-config --libs libucl
++UCL_CFLAGS != $(PKG_CONFIG) --cflags libucl
++UCL_LIBS != $(PKG_CONFIG) --libs libucl
+
+ CFLAGS += \
+-	${WLROOTS_CFLAGS} \
+-	${PANGO_CFLAGS} \
+-	${CAIRO_CFLAGS} \
+-	${GLIB_CFLAGS} \
+-	${PIXMAN_CFLAGS} \
+-	${XKBCOMMON_CFLAGS} \
+-	${WAYLAND_CFLAGS} \
+-	${LIBINPUT_CFLAGS} \
+-	${UCL_CFLAGS}
++	$(WLROOTS_CFLAGS) \
++	$(PANGO_CFLAGS) \
++	$(CAIRO_CFLAGS) \
++	$(GLIB_CFLAGS) \
++	$(PIXMAN_CFLAGS) \
++	$(XKBCOMMON_CFLAGS) \
++	$(WAYLAND_CFLAGS) \
++	$(LIBINPUT_CFLAGS) \
++	$(UCL_CFLAGS)
+
+ LIBS = \
+-	${WLROOTS_LIBS} \
+-	${PANGO_LIBS} \
+-	${CAIRO_LIBS} \
+-	${GLIB_LIBS} \
+-	${PIXMAN_LIBS} \
+-	${XKBCOMMON_LIBS} \
+-	${WAYLAND_LIBS} \
+-	${LIBINPUT_LIBS} \
+-	${UCL_LIBS}
+-
+-all: hikari hikari-unlocker
++	$(WLROOTS_LIBS) \
++	$(PANGO_LIBS) \
++	$(CAIRO_LIBS) \
++	$(GLIB_LIBS) \
++	$(PIXMAN_LIBS) \
++	$(XKBCOMMON_LIBS) \
++	$(WAYLAND_LIBS) \
++	$(LIBINPUT_LIBS) \
++	$(UCL_LIBS)
++
++.PHONY: distclean clean clean-doc doc dist install uninstall
++
++all: hikari hikari-unlocker doc
+
+ version.h:
+-	echo "#define HIKARI_VERSION \"${VERSION}\"" >> version.h
++	echo "#define HIKARI_VERSION \"$(VERSION)\"" >> version.h
+
+-hikari: version.h xdg-shell-protocol.h wlr-layer-shell-unstable-v1-protocol.h ${OBJS}
+-	${CC} ${LDFLAGS} ${CFLAGS} ${INCLUDES} ${LIBS} ${OBJS} -o ${.TARGET}
++$(OBJS): %.o: src/%.c
++	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
++
++main.o:
++	$(CC) $(CFLAGS) $(INCLUDES) -c main.c -o main.o
+
+ xdg-shell-protocol.h:
+-	wayland-scanner server-header ${WAYLAND_PROTOCOLS}/stable/xdg-shell/xdg-shell.xml ${.TARGET}
++	wayland-scanner server-header $(WAYLAND_PROTOCOLS)/stable/xdg-shell/xdg-shell.xml xdg-shell-protocol.h
+
+ wlr-layer-shell-unstable-v1-protocol.h:
+-	wayland-scanner server-header protocol/wlr-layer-shell-unstable-v1.xml ${.TARGET}
++	wayland-scanner server-header protocol/wlr-layer-shell-unstable-v1.xml wlr-layer-shell-unstable-v1-protocol.h
++
++hikari: version.h xdg-shell-protocol.h wlr-layer-shell-unstable-v1-protocol.h $(OBJS) main.o
++	$(CC) $(LDFLAGS) $(CFLAGS) $(INCLUDES) $(OBJS) main.o $(LIBS) -o $(TARGET)
+
+ hikari-unlocker: hikari_unlocker.c
+-	${CC} -lpam hikari_unlocker.c -o hikari-unlocker
++	$(CC) $(LDFLAGS) $(CFLAGS) $(INCLUDES) hikari_unlocker.c -lpam $(LIBS) -o hikari-unlocker
++
++share/man/man1/hikari.1:
++	pandoc -M title:"HIKARI(1) $(VERSION) | hikari - Wayland Compositor" -s \
++		--to man -o share/man/man1/hikari.1 share/man/man1/hikari.md
++
++doc: share/man/man1/hikari.1
+
+ clean-doc:
+ 	@test -e _darcs && echo "cleaning manpage" ||:
+@@ -183,20 +191,15 @@ clean: clean-doc
+ 	@rm xdg-shell-protocol.h 2> /dev/null ||:
+ 	@rm wlr-layer-shell-unstable-v1-protocol.h 2> /dev/null ||:
+ 	@echo "cleaning object files"
+-	@rm ${OBJS} 2> /dev/null ||:
++	@rm $(OBJS) 2> /dev/null ||:
++	@rm main.o 2> /dev/null ||:
+ 	@echo "cleaning executables"
+ 	@rm hikari 2> /dev/null ||:
+ 	@rm hikari-unlocker 2> /dev/null ||:
+
+-share/man/man1/hikari.1:
+-	pandoc -M title:"HIKARI(1) ${VERSION} | hikari - Wayland Compositor" -s \
+-		--to man -o share/man/man1/hikari.1 share/man/man1/hikari.md
+-
+-doc: share/man/man1/hikari.1
+-
+-hikari-${VERSION}.tar.gz: version.h share/man/man1/hikari.1
++hikari-$(VERSION).tar.gz: version.h share/man/man1/hikari.1
+ 	@darcs revert
+-	@tar -s "#^#hikari-${VERSION}/#" -czf hikari-${VERSION}.tar.gz \
++	@tar -s "#^#hikari-$(VERSION)/#" -czf hikari-$(VERSION).tar.gz \
+ 		version.h \
+ 		main.c \
+ 		hikari_unlocker.c \
+@@ -215,22 +218,22 @@ distclean: clean-doc
+ 	@test -e _darcs && echo "cleaning version.h" ||:
+ 	@test -e _darcs && rm version.h ||:
+
+-dist: distclean hikari-${VERSION}.tar.gz
++dist: distclean hikari-$(VERSION).tar.gz
+
+ install: hikari hikari-unlocker share/man/man1/hikari.1
+-	mkdir -p ${PREFIX}/bin
+-	mkdir -p ${PREFIX}/share/man/man1
+-	mkdir -p ${PREFIX}/share/examples/hikari
+-	mkdir -p ${ETC_PREFIX}/pam.d
+-	install -m 4555 -g ${INSTALL_GROUP} hikari hikari-unlocker ${PREFIX}/bin
+-	install -m 644 -g ${INSTALL_GROUP} share/man/man1/hikari.1 ${PREFIX}/share/man/man1
+-	install -m 644 -g ${INSTALL_GROUP} share/examples/hikari/hikari.conf ${PREFIX}/share/examples/hikari
+-	install -m 644 -g ${INSTALL_GROUP} pam.d/hikari-unlocker.${OS} ${ETC_PREFIX}/pam.d/hikari-unlocker
++	mkdir -p $(PREFIX)/bin
++	mkdir -p $(PREFIX)/share/man/man1
++	mkdir -p $(PREFIX)/share/examples/hikari
++	mkdir -p $(ETC_PREFIX)/pam.d
++	install -m 4555 -g $(INSTALL_GROUP) hikari hikari-unlocker $(PREFIX)/bin
++	install -m 644 -g $(INSTALL_GROUP) share/man/man1/hikari.1 $(PREFIX)/share/man/man1
++	install -m 644 -g $(INSTALL_GROUP) share/examples/hikari/hikari.conf $(PREFIX)/share/examples/hikari
++	install -m 644 -g $(INSTALL_GROUP) pam.d/hikari-unlocker.$(OS) $(ETC_PREFIX)/pam.d/hikari-unlocker
+
+ uninstall:
+-	-rm ${PREFIX}/bin/hikari
+-	-rm ${PREFIX}/bin/hikari-unlocker
+-	-rm ${PREFIX}/share/examples/hikari/hikari.conf
+-	-rmdir ${PREFIX}/share/examples/hikari
+-	-rm ${PREFIX}/share/man/man1/hikari.1
+-	-rm ${ETC_PREFIX}/pam.d/hikari-unlocker
++	-rm $(PREFIX)/bin/hikari
++	-rm $(PREFIX)/bin/hikari-unlocker
++	-rm $(PREFIX)/share/examples/hikari/hikari.conf
++	-rmdir $(PREFIX)/share/examples/hikari
++	-rm $(PREFIX)/share/man/man1/hikari.1
++	-rm $(ETC_PREFIX)/pam.d/hikari-unlocker

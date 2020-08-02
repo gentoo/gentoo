@@ -3,7 +3,8 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8} )
+DISTUTILS_USE_SETUPTOOLS=no
 
 EGIT_BRANCH="master"
 
@@ -24,11 +25,6 @@ DEPEND=""
 
 RDEPEND="${DEPEND}
 	>=dev-python/requests-1.2.1[${PYTHON_USEDEP}]
-	python_targets_python2_7? (
-		dev-python/ndg-httpsclient[python_targets_python2_7]
-		dev-python/pyasn1[python_targets_python2_7]
-		>=dev-python/pyopenssl-0.13[python_targets_python2_7]
-		)
 	"
 
 pkg_postinst() {

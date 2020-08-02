@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -15,7 +15,7 @@ HOMEPAGE="https://projects.gnome.org/gconf/"
 
 LICENSE="LGPL-2+"
 SLOT="2"
-KEYWORDS="alpha amd64 arm arm64 ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 sparc x86 ~x86-linux"
 IUSE="debug +introspection ldap policykit"
 
 RDEPEND="
@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 	dev-util/glib-utils
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.35
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

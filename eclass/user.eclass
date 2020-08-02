@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: user.eclass
@@ -13,6 +13,8 @@
 if [[ -z ${_USER_ECLASS} ]]; then
 _USER_ECLASS=1
 
+inherit user-info
+
 # @FUNCTION: _assert_pkg_ebuild_phase
 # @INTERNAL
 # @USAGE: <calling func name>
@@ -24,49 +26,6 @@ _assert_pkg_ebuild_phase() {
 		eerror "You may only call from pkg_{setup,{pre,post}{inst,rm}} functions."
 		eerror "Package fails at QA and at life.  Please file a bug."
 		die "Bad package!  $1 is only for use in some pkg_* functions!"
-	esac
-}
-
-# @FUNCTION: egetent
-# @USAGE: <database> <key>
-# @DESCRIPTION:
-# Small wrapper for getent (Linux), nidump (< Mac OS X 10.5),
-# dscl (Mac OS X 10.5), and pw (FreeBSD) used in enewuser()/enewgroup().
-#
-# Supported databases: group passwd
-egetent() {
-	local db=$1 key=$2
-
-	[[ $# -ge 3 ]] && die "usage: egetent <database> <key>"
-
-	case ${db} in
-	passwd|group) ;;
-	*) die "sorry, database '${db}' not yet supported; file a bug" ;;
-	esac
-
-	case ${CHOST} in
-	*-freebsd*|*-dragonfly*)
-		case ${db} in
-		passwd) db="user" ;;
-		*) ;;
-		esac
-
-		# lookup by uid/gid
-		local opts
-		if [[ ${key} == [[:digit:]]* ]] ; then
-			[[ ${db} == "user" ]] && opts="-u" || opts="-g"
-		fi
-
-		pw show ${db} ${opts} "${key}" -q
-		;;
-	*-openbsd*)
-		grep "${key}:\*:" /etc/${db}
-		;;
-	*)
-		# ignore nscd output if we're not running as root
-		type -p nscd >/dev/null && nscd -i "${db}" 2>/dev/null
-		getent "${db}" "${key}"
-		;;
 	esac
 }
 
@@ -109,7 +68,7 @@ user_get_nologin() {
 # exist.
 enewuser() {
 	if [[ ${EUID} != 0 ]] ; then
-		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
+		ewarn "Insufficient privileges to execute ${FUNCNAME[0]}"
 		return 0
 	fi
 	_assert_pkg_ebuild_phase ${FUNCNAME}
@@ -135,7 +94,7 @@ enewuser() {
 	if [[ -n $(egetent passwd "${euser}") ]] ; then
 		return 0
 	fi
-	einfo "Adding user '${euser}' to your system ..."
+	elog "Adding user '${euser}' to your system ..."
 
 	# options to pass to useradd
 	local opts=()
@@ -163,7 +122,7 @@ enewuser() {
 		[[ ${euid} -ge 101 ]] || die "${FUNCNAME}: no free UID found"
 	fi
 	opts+=( -u ${euid} )
-	einfo " - Userid: ${euid}"
+	elog " - Userid: ${euid}"
 
 	# handle shell
 	local eshell=$1; shift
@@ -179,7 +138,7 @@ enewuser() {
 	else
 		eshell=$(user_get_nologin)
 	fi
-	einfo " - Shell: ${eshell}"
+	elog " - Shell: ${eshell}"
 	opts+=( -s "${eshell}" )
 
 	# handle homedir
@@ -187,7 +146,7 @@ enewuser() {
 	if [[ -z ${ehome} ]] || [[ ${ehome} == "-1" ]] ; then
 		ehome="/dev/null"
 	fi
-	einfo " - Home: ${ehome}"
+	elog " - Home: ${ehome}"
 	opts+=( -d "${ehome}" )
 
 	# handle groups
@@ -212,7 +171,7 @@ enewuser() {
 			opts+=( -G "${exgroups:1}" )
 		fi
 	fi
-	einfo " - Groups: ${egroups:-(none)}"
+	elog " - Groups: ${egroups:-(none)}"
 
 	# handle extra args
 	if [[ $# -gt 0 ]] ; then
@@ -220,7 +179,7 @@ enewuser() {
 	else
 		local comment="added by portage for ${PN}"
 		opts+=( -c "${comment}" )
-		einfo " - GECOS: ${comment}"
+		elog " - GECOS: ${comment}"
 	fi
 
 	# add the user
@@ -245,7 +204,7 @@ enewuser() {
 	esac
 
 	if [[ -n ${create_home} && ! -e ${ROOT}/${ehome} ]] ; then
-		einfo " - Creating ${ehome} in ${ROOT}"
+		elog " - Creating ${ehome} in ${ROOT}"
 		mkdir -p "${ROOT}/${ehome}"
 		chown "${euser}" "${ROOT}/${ehome}"
 		chmod 755 "${ROOT}/${ehome}"
@@ -264,7 +223,7 @@ enewuser() {
 # can not be assigned.
 enewgroup() {
 	if [[ ${EUID} != 0 ]] ; then
-		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
+		ewarn "Insufficient privileges to execute ${FUNCNAME[0]}"
 		return 0
 	fi
 	_assert_pkg_ebuild_phase ${FUNCNAME}
@@ -289,11 +248,11 @@ enewgroup() {
 	if [[ -n $(egetent group "${egroup}") ]] ; then
 		return 0
 	fi
-	einfo "Adding group '${egroup}' to your system ..."
+	elog "Adding group '${egroup}' to your system ..."
 
 	# handle gid
 	local egid=$1; shift
-	if [[ ! -z ${egid} ]] ; then
+	if [[ -n ${egid} && ${egid} != -1 ]] ; then
 		if [[ ${egid} -gt 0 ]] ; then
 			if [[ -n $(egetent group ${egid}) ]] ; then
 				[[ -n ${force_gid} ]] && die "${FUNCNAME}: GID ${egid} already taken"
@@ -307,7 +266,7 @@ enewgroup() {
 		[[ -n ${force_gid} ]] && die "${FUNCNAME}: -F with gid==-1 makes no sense"
 		egid="next available"
 	fi
-	einfo " - Groupid: ${egid}"
+	elog " - Groupid: ${egid}"
 
 	# handle extra
 	if [[ $# -gt 0 ]] ; then
@@ -351,108 +310,6 @@ enewgroup() {
 	esac
 }
 
-# @FUNCTION: egetusername
-# @USAGE: <uid>
-# @DESCRIPTION:
-# Gets the username for given UID.
-egetusername() {
-	[[ $# -eq 1 ]] || die "usage: egetusername <uid>"
-
-	egetent passwd "$1" | cut -d: -f1
-}
-
-# @FUNCTION: egetgroupname
-# @USAGE: <gid>
-# @DESCRIPTION:
-# Gets the group name for given GID.
-egetgroupname() {
-	[[ $# -eq 1 ]] || die "usage: egetgroupname <gid>"
-
-	egetent group "$1" | cut -d: -f1
-}
-
-# @FUNCTION: egethome
-# @USAGE: <user>
-# @DESCRIPTION:
-# Gets the home directory for the specified user.
-egethome() {
-	local pos
-
-	[[ $# -eq 1 ]] || die "usage: egethome <user>"
-
-	case ${CHOST} in
-	*-freebsd*|*-dragonfly*)
-		pos=9
-		;;
-	*)	# Linux, NetBSD, OpenBSD, etc...
-		pos=6
-		;;
-	esac
-
-	egetent passwd "$1" | cut -d: -f${pos}
-}
-
-# @FUNCTION: egetshell
-# @USAGE: <user>
-# @DESCRIPTION:
-# Gets the shell for the specified user.
-egetshell() {
-	local pos
-
-	[[ $# -eq 1 ]] || die "usage: egetshell <user>"
-
-	case ${CHOST} in
-	*-freebsd*|*-dragonfly*)
-		pos=10
-		;;
-	*)	# Linux, NetBSD, OpenBSD, etc...
-		pos=7
-		;;
-	esac
-
-	egetent passwd "$1" | cut -d: -f${pos}
-}
-
-# @FUNCTION: egetcomment
-# @USAGE: <user>
-# @DESCRIPTION:
-# Gets the comment field for the specified user.
-egetcomment() {
-	local pos
-
-	[[ $# -eq 1 ]] || die "usage: egetshell <user>"
-
-	case ${CHOST} in
-	*-freebsd*|*-dragonfly*)
-		pos=8
-		;;
-	*)	# Linux, NetBSD, OpenBSD, etc...
-		pos=5
-		;;
-	esac
-
-	egetent passwd "$1" | cut -d: -f${pos}
-}
-
-# @FUNCTION: egetgroups
-# @USAGE: <user>
-# @DESCRIPTION:
-# Gets all the groups user belongs to.  The primary group is returned
-# first, then all supplementary groups.  Groups are ','-separated.
-egetgroups() {
-	[[ $# -eq 1 ]] || die "usage: egetgroups <user>"
-
-	local egroups_arr
-	read -r -a egroups_arr < <(id -G -n "$1")
-
-	local g groups=${egroups_arr[0]}
-	# sort supplementary groups to make comparison possible
-	while read -r g; do
-		[[ -n ${g} ]] && groups+=",${g}"
-	done < <(printf '%s\n' "${egroups_arr[@]:1}" | sort)
-	echo "${groups}"
-}
-
 # @FUNCTION: esethome
 # @USAGE: <user> <homedir>
 # @DESCRIPTION:
@@ -494,12 +351,12 @@ esethome() {
 		return 0
 	fi
 
-	einfo "Updating home for user '${euser}' ..."
-	einfo " - Home: ${ehome}"
+	elog "Updating home for user '${euser}' ..."
+	elog " - Home: ${ehome}"
 
 	# ensure home directory exists, otherwise update will fail
 	if [[ ! -e ${ROOT}/${ehome} ]] ; then
-		einfo " - Creating ${ehome} in ${ROOT}"
+		elog " - Creating ${ehome} in ${ROOT}"
 		mkdir -p "${ROOT}/${ehome}"
 		chown "${euser}" "${ROOT}/${ehome}"
 		chmod 755 "${ROOT}/${ehome}"
@@ -563,8 +420,8 @@ esetshell() {
 		return 0
 	fi
 
-	einfo "Updating shell for user '${euser}' ..."
-	einfo " - Shell: ${eshell}"
+	elog "Updating shell for user '${euser}' ..."
+	elog " - Shell: ${eshell}"
 
 	# update the shell
 	case ${CHOST} in
@@ -619,8 +476,8 @@ esetcomment() {
 		return 0
 	fi
 
-	einfo "Updating comment for user '${euser}' ..."
-	einfo " - Comment: ${ecomment}"
+	elog "Updating comment for user '${euser}' ..."
+	elog " - Comment: ${ecomment}"
 
 	# update the comment
 	case ${CHOST} in
@@ -689,8 +546,8 @@ esetgroups() {
 	fi
 
 	local opts=( -g "${defgroup}" -G "${exgroups}" )
-	einfo "Updating groups for user '${euser}' ..."
-	einfo " - Groups: ${egroups}"
+	elog "Updating groups for user '${euser}' ..."
+	elog " - Groups: ${egroups}"
 
 	# update the group
 	case ${CHOST} in

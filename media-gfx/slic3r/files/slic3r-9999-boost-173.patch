@@ -1,0 +1,39 @@
+--- a/xs/src/libslic3r/SLAPrint.cpp	2020-05-10 23:32:00.044962439 -0600
++++ b/xs/src/libslic3r/SLAPrint.cpp	2020-05-10 23:40:48.867348908 -0600
+@@ -7,6 +7,7 @@
+ #include <iostream>
+ #include <complex>
+ #include <cstdio>
++#include "boost/bind.hpp"
+ 
+ namespace Slic3r {
+ 
+--- a/xs/src/libslic3r/PrintObject.cpp	2020-05-10 23:32:00.044962439 -0600
++++ b/xs/src/libslic3r/PrintObject.cpp	2020-05-10 23:46:22.614152088 -0600
+@@ -7,6 +7,7 @@
+ #include <algorithm>
+ #include <vector>
+ #include <limits>
++#include "boost/bind.hpp"
+ 
+ namespace Slic3r {
+ 
+--- a/xs/src/libslic3r/SupportMaterial.cpp	2020-05-10 23:32:00.044962439 -0600
++++ b/xs/src/libslic3r/SupportMaterial.cpp	2020-05-10 23:54:17.078033850 -0600
+@@ -1,5 +1,6 @@
+ #include "SupportMaterial.hpp"
+ #include "Log.hpp"
++#include "boost/bind.hpp"
+ 
+ namespace Slic3r
+ {
+--- a/xs/src/libslic3r/TriangleMesh.cpp	2020-05-10 23:32:00.045962432 -0600
++++ b/xs/src/libslic3r/TriangleMesh.cpp	2020-05-10 23:35:44.778426800 -0600
+@@ -15,6 +15,7 @@
+ #include <stdexcept>
+ #include <boost/config.hpp>
+ #include <boost/nowide/convert.hpp>
++#include "boost/bind.hpp"
+ 
+ #ifdef SLIC3R_DEBUG
+ #include "SVG.hpp"

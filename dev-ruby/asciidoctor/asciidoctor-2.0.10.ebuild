@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ppc ppc64 x86"
 IUSE=""
 
 ruby_add_bdepend "test? (
@@ -26,11 +26,12 @@ ruby_add_bdepend "test? (
 	dev-ruby/rspec-expectations:*
 	dev-ruby/asciimath
 	dev-ruby/coderay
+	dev-ruby/concurrent-ruby
 	dev-ruby/erubis
 	dev-ruby/haml
 	dev-ruby/nokogiri
+	dev-ruby/rouge
 	dev-ruby/slim
-	dev-ruby/thread_safe
 	dev-ruby/tilt )"
 
 all_ruby_prepare() {

@@ -1,13 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils multilib-minimal
+inherit autotools eutils ltprune multilib-minimal
 
 PATCHLEVEL=4
 
 DESCRIPTION="collection of visualization plugins for use with the libvisual framework"
-HOMEPAGE="http://libvisual.sourceforge.net/"
+HOMEPAGE="http://libvisual.org/"
 SRC_URI="mirror://sourceforge/libvisual/${P}.tar.gz
 	mirror://gentoo/${P}-patches-${PATCHLEVEL}.tar.bz2
 	mirror://gentoo/${P}-m4-1.tar.bz2"
@@ -30,13 +30,14 @@ RDEPEND=">=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}]
 		>=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}]
 	)"
 DEPEND="${RDEPEND}
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	>=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}]"
 
 DOCS="AUTHORS ChangeLog NEWS README TODO"
 
 src_prepare() {
 	EPATCH_SUFFIX=patch epatch "${WORKDIR}"/patches
+	epatch "${FILESDIR}/${P}-fno-common.patch"
 	AT_M4DIR=${WORKDIR}/m4 eautoreconf
 
 	sed -i -e "s:@MKINSTALLDIRS@:${S}/mkinstalldirs:" po/Makefile.* || die

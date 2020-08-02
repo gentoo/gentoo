@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 GENTOO_VDR_CONDITIONAL=yes
 
-inherit git-r3 toolchain-funcs vdr-plugin-2
+inherit flag-o-matic git-r3 toolchain-funcs vdr-plugin-2
 
 DESCRIPTION="VDR Plugin: Xinelib PlugIn"
 HOMEPAGE="https://sourceforge.net/projects/xineliboutput/"
@@ -13,7 +13,7 @@ HOMEPAGE="https://sourceforge.net/projects/xineliboutput/"
 EGIT_REPO_URI="https://git.code.sf.net/p/xineliboutput/git"
 
 SLOT="0"
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 KEYWORDS=""
 IUSE="bluray caps cec dbus fbcon jpeg libextractor nls opengl +vdr vdpau +X +xine xinerama"
 
@@ -26,7 +26,7 @@ COMMON_DEPEND="
 
 	xine? (
 		( >=media-libs/xine-lib-1.2
-			virtual/ffmpeg )
+			media-video/ffmpeg )
 		fbcon? ( jpeg? ( virtual/jpeg:* ) )
 		X? (
 			x11-libs/libX11
@@ -74,7 +74,7 @@ pkg_setup() {
 
 src_prepare() {
 	# Allow user patches to be applied without modifyfing the ebuild
-	eaplly_user
+	eapply_user
 
 	vdr-plugin-2_src_prepare
 

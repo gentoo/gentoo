@@ -20,6 +20,10 @@ RDEPEND=">=x11-libs/libdrm-2.4.89[video_cards_amdgpu]
 	udev? ( virtual/libudev:= )"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-Fix-link-failure-with-gcc-10.patch
+)
+
 pkg_setup() {
 	XORG_CONFIGURE_OPTIONS=(
 		--enable-glamor

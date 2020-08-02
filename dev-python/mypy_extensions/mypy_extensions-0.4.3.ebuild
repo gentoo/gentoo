@@ -20,7 +20,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
@@ -40,9 +40,7 @@ python_compile_all() {
 }
 
 python_test() {
-	local PYTHONPATH="$(pwd)"
-
-	"${PYTHON}" runtests.py || die "tests failed under ${EPYTHON}"
+	"${PYTHON}" -m unittest discover tests -v || die "tests fail with ${EPYTHON}"
 }
 
 python_install_all() {

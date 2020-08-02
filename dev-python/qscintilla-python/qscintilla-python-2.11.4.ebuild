@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit python-r1 qmake-utils
 
 DESCRIPTION="Python bindings for QScintilla"
@@ -19,7 +19,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 IUSE="debug"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -27,7 +27,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	${PYTHON_DEPS}
 	>=dev-python/PyQt5-5.12[gui,printsupport,widgets,${PYTHON_USEDEP}]
-	>=dev-python/PyQt5-sip-4.19.14:=[${PYTHON_USEDEP}]
+	>=dev-python/PyQt5-sip-4.19.22:=[${PYTHON_USEDEP}]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtprintsupport:5
@@ -35,7 +35,7 @@ RDEPEND="
 	~x11-libs/qscintilla-${PV}:=
 "
 DEPEND="${RDEPEND}
-	>=dev-python/sip-4.19.14[${PYTHON_USEDEP}]
+	~dev-python/sip-4.19.22[${PYTHON_USEDEP}]
 "
 
 S=${WORKDIR}/${MY_P}/Python

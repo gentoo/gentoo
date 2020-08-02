@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake
 
 DESCRIPTION="A Qt-based interface to system statistics"
-HOMEPAGE="https://lxqt.org/"
+HOMEPAGE="https://lxqt.github.io/"
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3

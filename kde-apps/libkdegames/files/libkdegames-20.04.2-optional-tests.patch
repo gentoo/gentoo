@@ -1,0 +1,28 @@
+From f80393453a5645c0e9a4bdb8a23c9b303b0c4d41 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 17 Jun 2020 17:51:36 +0200
+Subject: [PATCH] Also add BUILD_TESTING condition in subdir
+
+Follow-up to 02679f6d.
+---
+ libkdegamesprivate/CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/libkdegamesprivate/CMakeLists.txt b/libkdegamesprivate/CMakeLists.txt
+index b122f37a..c2e9572e 100644
+--- a/libkdegamesprivate/CMakeLists.txt
++++ b/libkdegamesprivate/CMakeLists.txt
+@@ -1,7 +1,9 @@
+ enable_testing()
+ project(libkdegamesprivate)
+ 
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ # NOTE: The libkdegamesprivate target is compiled in the parent directory,
+ # because CMake can't cope with exported libraries in two different
+-- 
+2.27.0
+

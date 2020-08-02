@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools-utils eutils python-r1
+inherit autotools-utils eutils ltprune python-r1
 
 DESCRIPTION="Python bindings for libnotify"
 HOMEPAGE="http://www.galago-project.org/"
@@ -13,7 +13,7 @@ SRC_URI="http://www.galago-project.org/files/releases/source/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ~mips ppc ppc64 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm ~ia64 ~mips ppc ~ppc64 sparc x86"
 IUSE="examples"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

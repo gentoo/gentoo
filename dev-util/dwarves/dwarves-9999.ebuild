@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,13 +18,15 @@ IUSE="debug"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	>=dev-libs/elfutils-0.131
-	<=dev-libs/elfutils-0.177
+	>=dev-libs/elfutils-0.178
 	sys-libs/zlib"
 DEPEND="${RDEPEND}"
 
 DOCS=( README README.ctracer NEWS )
-PATCHES=( "${FILESDIR}"/${PN}-1.10-python-import.patch )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.10-python-import.patch
+)
 
 src_configure() {
 	local mycmakeargs=( "-D__LIB=$(get_libdir)" )

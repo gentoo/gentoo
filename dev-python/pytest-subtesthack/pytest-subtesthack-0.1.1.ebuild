@@ -1,9 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_6} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{6,7,8} )
+
 inherit distutils-r1
 
 DESCRIPTION="A hack for test fixtures, needed for hypothesis inside py.test"
@@ -27,5 +29,5 @@ DEPEND="${RDEPEND}
 
 python_test() {
 	distutils_install_for_testing
-	py.test -v || die "Tests fail with ${EPYTHON}"
+	pytest -vv || die "Tests fail with ${EPYTHON}"
 }

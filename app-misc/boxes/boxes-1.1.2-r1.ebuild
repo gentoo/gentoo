@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,12 +6,12 @@ EAPI=5
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Draw any kind of boxes around your text"
-HOMEPAGE="http://boxes.thomasjensen.com/ https://github.com/ascii-boxes/boxes"
+HOMEPAGE="https://boxes.thomasjensen.com/ https://github.com/ascii-boxes/boxes"
 SRC_URI="https://github.com/ascii-boxes/boxes/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE=""
 
 DEPEND="

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm arm64 ~ia64 ppc ~ppc64 sparc x86 ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ppc ~ppc64 sparc x86 ~x86-linux"
 IUSE="gnutls test"
 RESTRICT="!test? ( test )"
 
@@ -36,10 +36,7 @@ DEPEND="${RDEPEND}
 	test? (
 		>=dev-libs/check-0.9.4
 		net-libs/libgsasl
-		|| (
-			$(python_gen_any_dep 'dev-python/twisted[${PYTHON_USEDEP}]')
-			$(python_gen_any_dep 'dev-python/twisted-words[${PYTHON_USEDEP}]')
-		)
+		$(python_gen_any_dep 'dev-python/twisted[${PYTHON_USEDEP}]')
 	)
 "
 # FIXME: needs xmppstream python module
@@ -52,8 +49,7 @@ PATCHES=(
 
 python_check_deps() {
 	if use test ; then
-		 has_version "dev-python/twisted[${PYTHON_USEDEP}]" \
-			|| has_version "dev-python/twisted-words[${PYTHON_USEDEP}]"
+		 has_version "dev-python/twisted[${PYTHON_USEDEP}]"
 	fi
 }
 
@@ -68,7 +64,6 @@ src_configure() {
 		--disable-Werror \
 		--disable-static \
 		--disable-avahi-tests \
-		--docdir=/usr/share/doc/${PF} \
 		--with-tls=$(usex gnutls gnutls openssl)
 		#$(use_enable test avahi-tests)
 

@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Dali Clock is a digital clock. When a digit changes, it melts into its new shape"
 HOMEPAGE="https://www.jwz.org/xdaliclock"
-SRC_URI="${HOMEPAGE}/${P}.tar.gz"
+SRC_URI="https://www.jwz.org/xdaliclock/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

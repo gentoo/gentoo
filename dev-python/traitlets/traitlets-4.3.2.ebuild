@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
 
@@ -19,7 +19,6 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/decorator[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' 'python2*')
 	dev-python/ipython_genutils[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	"
@@ -29,7 +28,6 @@ DEPEND="
 		dev-python/sphinx[${PYTHON_USEDEP}]
 	)
 	test? (
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' 'python2*')
 		dev-python/pytest[${PYTHON_USEDEP}]
 		)
 	"

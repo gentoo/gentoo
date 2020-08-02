@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -339,7 +339,7 @@ src_install() {
 		if use module_other_remote_script ; then
 			# Create subnets file based on example from mod_remote_script.conf
 			grep 192 "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_remote_script.conf \
-				| sed 's/# //' > "${ED%/}"/etc/stargazer/subnets
+				| sed 's/# //' > "${ED}"/etc/stargazer/subnets
 
 			# Correct permissions for file
 			fperms 0640 /etc/stargazer/subnets

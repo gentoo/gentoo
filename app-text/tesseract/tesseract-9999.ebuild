@@ -1,13 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit autotools git-r3 multilib-minimal toolchain-funcs
 
-DESCRIPTION="An OCR Engine, orginally developed at HP, now open source."
+DESCRIPTION="An OCR Engine, originally developed at HP, now open source."
 HOMEPAGE="https://github.com/tesseract-ocr"
-EGIT_REPO_URI="https://github.com/${MY_PN}/${PN}.git"
+EGIT_REPO_URI="https://github.com/tesseract-ocr/${PN}.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"

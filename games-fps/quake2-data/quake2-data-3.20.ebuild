@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit unpacker eutils cdrom games
 
 DESCRIPTION="iD Software's Quake 2 ... the data files"
-HOMEPAGE="http://www.idsoftware.com/"
+HOMEPAGE="https://www.idsoftware.com/"
 SRC_URI="mirror://idsoftware/quake2/q2-${PV}-x86-full-ctf.exe"
 
 LICENSE="Q2EULA"

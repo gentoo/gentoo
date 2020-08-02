@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/swaywm/${PN}.git"
 else
 	SRC_URI="https://github.com/swaywm/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
 LICENSE="MIT"
@@ -27,10 +27,7 @@ DEPEND="
 	gdk-pixbuf? ( x11-libs/gdk-pixbuf:2 )
 	pam? ( sys-libs/pam )
 "
-RDEPEND="
-	${DEPEND}
-	!<=gui-wm/sway-1.0_beta2[swaylock]
-"
+RDEPEND="${DEPEND}"
 BDEPEND="
 	>=dev-libs/wayland-protocols-1.14
 	virtual/pkgconfig

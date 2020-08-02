@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>onigino@protonmail.com</email>
-		<name>Gino McCarty</name>
+		<email>m.mairkeimberger@gmail.com</email>
+		<name>Michael Mair-Keimberger</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
@@ -11,5 +11,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">gns-3</remote-id>
+		<remote-id type="github">GNS3/gns3-server</remote-id>
+		<bugs-to>https://github.com/GNS3/gns3-server/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

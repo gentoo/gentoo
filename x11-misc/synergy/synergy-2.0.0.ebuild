@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils flag-o-matic gnome2-utils cmake-utils
 
 DESCRIPTION="Lets you easily share a single mouse and keyboard between multiple computers"
-HOMEPAGE="http://synergy-project.org/ https://github.com/symless/synergy-core"
+HOMEPAGE="https://symless.com/synergy https://github.com/symless/synergy-core"
 SRC_URI="
 	https://github.com/symless/${PN}-core/archive/v${PV}-stable.tar.gz -> ${P}.tar.gz
 "
@@ -52,7 +52,7 @@ src_compile() {
 	cmake-utils_src_compile
 }
 
-src_install () {
+src_install() {
 	dobin ../${P}_build/bin/${PN}{c,s} ../${P}_build/bin/synergy-core
 
 	insinto /etc

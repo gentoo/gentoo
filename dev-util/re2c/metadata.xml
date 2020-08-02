@@ -10,5 +10,6 @@
 	<upstream>
 		<remote-id type="sourceforge">re2c</remote-id>
 		<remote-id type="github">skvadrik/re2c</remote-id>
+		<remote-id type="cpe">cpe:/a:re2c:re2c</remote-id>
 	</upstream>
 </pkgmetadata>

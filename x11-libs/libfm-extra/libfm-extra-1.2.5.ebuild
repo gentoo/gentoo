@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -58,8 +58,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --sysconfdir="${EPREFIX}/etc" --disable-dependency-tracking \
-		--disable-static --with-extra-only
+	econf --disable-static --with-extra-only
 }
 
 src_install() {

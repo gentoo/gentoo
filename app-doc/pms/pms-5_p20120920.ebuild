@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,14 +10,13 @@ SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${MY_P}.tar.xz"
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="${PV#*_p}"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 IUSE="html"
 
-BDEPEND="dev-tex/leaflet
-	dev-texlive/texlive-bibtexextra
+BDEPEND="dev-texlive/texlive-bibtexextra
 	dev-texlive/texlive-fontsrecommended
 	dev-texlive/texlive-latex
-	dev-texlive/texlive-latexextra
+	>=dev-texlive/texlive-latexextra-2020-r2
 	dev-texlive/texlive-latexrecommended
 	dev-texlive/texlive-mathscience
 	html? (
@@ -27,6 +26,7 @@ BDEPEND="dev-tex/leaflet
 RDEPEND="!app-doc/pms-bin"
 
 S="${WORKDIR}/${MY_P}"
+PATCHES=("${FILESDIR}/${PN}-5-Makefile.patch")
 
 src_compile() {
 	# just in case; we shouldn't be generating any fonts

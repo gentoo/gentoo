@@ -9,7 +9,7 @@ DESCRIPTION="VDR Plugin:  Automatic Video Aspect Ratio Detection and Signaling"
 HOMEPAGE="http://firefly.vdr-developer.org/avards/"
 SRC_URI="http://firefly.vdr-developer.org/avards/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
@@ -20,5 +20,5 @@ src_prepare() {
 
 	# revert wrong implementation of vdr-2.4. feature
 	sed -i Makefile \
-		-e "s:\$(INCLUDES) -o \$@ \$<:\$(INCLUDES) -o \$<:"
+		-e "s:\$(INCLUDES) -o \$@ \$<:\$(INCLUDES) -o \$<:" || die
 }

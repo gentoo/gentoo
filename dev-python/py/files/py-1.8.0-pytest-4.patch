@@ -38,31 +38,6 @@ Signed-off-by: Stanislav Levin <slev@altlinux.org>
  testing/root/test_std.py                     |  3 ++-
  17 files changed, 100 insertions(+), 82 deletions(-)
 
-diff --git a/doc/faq.txt b/doc/faq.txt
-index 52cb4b3f..cac83b2c 100644
---- a/doc/faq.txt
-+++ b/doc/faq.txt
-@@ -98,20 +98,6 @@ in a managed class/module/function scope.
- .. _`xUnit style setup`: test/xunit_setup.html
- .. _`pytest_nose`: test/plugin/nose.html
- 
--.. _`why pytest_pyfuncarg__ methods?`:
--
--Why the ``pytest_funcarg__*`` name for funcarg factories?
-----------------------------------------------------------------
--
--When experimenting with funcargs an explicit registration mechanism
--was considered.  But lacking a good use case for this indirection and
--flexibility we decided to go for `Convention over Configuration`_ and
--allow to directly specify the factory.  Besides removing the need
--for an indirection it allows to "grep" for ``pytest_funcarg__MYARG``
--and will safely find all factory functions for the ``MYARG`` function
--argument.  It helps to alleviate the de-coupling of function
--argument usage and creation.
--
- .. _`Convention over Configuration`: http://en.wikipedia.org/wiki/Convention_over_Configuration
- 
- Can I yield multiple values from a factory function?
 diff --git a/testing/code/test_assertion.py b/testing/code/test_assertion.py
 index e2a7f903..4cb39fe2 100644
 --- a/testing/code/test_assertion.py

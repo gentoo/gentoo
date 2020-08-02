@@ -1,0 +1,82 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1bf8ed3..190dabe 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -223,76 +223,10 @@ target_include_directories(${PROJECT_NAME} INTERFACE
+   $<INSTALL_INTERFACE:include/> 
+ )
+ 
+-# -----------------------------------------------------------------------------
+-# Example program 
+-# -----------------------------------------------------------------------------
+-
+-message(STATUS "Building examples ...")
+-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${TF_EXAMPLE_DIR})
+-
+-add_executable(simple ${TF_EXAMPLE_DIR}/simple.cpp)
+-target_link_libraries(
+-  simple ${PROJECT_NAME} Threads::Threads tf::default_settings
+-)
+-
+-add_executable(observer ${TF_EXAMPLE_DIR}/observer.cpp)
+-target_link_libraries(
+-  observer ${PROJECT_NAME} Threads::Threads tf::default_settings
+-)
+-
+-add_executable(subflow ${TF_EXAMPLE_DIR}/subflow.cpp)
+-target_link_libraries(
+-  subflow ${PROJECT_NAME} Threads::Threads tf::default_settings
+-)
+-
+-add_executable(condition ${TF_EXAMPLE_DIR}/condition.cpp)
+-target_link_libraries(
+-  condition ${PROJECT_NAME} Threads::Threads tf::default_settings
+-)
+-
+-add_executable(visualization ${TF_EXAMPLE_DIR}/visualization.cpp)
+-target_link_libraries(
+-  visualization ${PROJECT_NAME} Threads::Threads tf::default_settings
+-)
+-
+-add_executable(reduce ${TF_EXAMPLE_DIR}/reduce.cpp)
+-target_link_libraries(
+-  reduce ${PROJECT_NAME} Threads::Threads tf::default_settings
+-)
+-
+-add_executable(parallel_for ${TF_EXAMPLE_DIR}/parallel_for.cpp)
+-target_link_libraries(
+-  parallel_for ${PROJECT_NAME} Threads::Threads tf::default_settings
+-)
+-
+-add_executable(run ${TF_EXAMPLE_DIR}/run.cpp)
+-target_link_libraries(
+-  run ${PROJECT_NAME} Threads::Threads tf::default_settings
+-)
+-
+-add_executable(composition ${TF_EXAMPLE_DIR}/composition.cpp)
+-target_link_libraries(
+- composition ${PROJECT_NAME} Threads::Threads tf::default_settings
+-)
+-
+-#### CUDA examples
+-if(${TF_ENABLE_CUDA})
+-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${TF_EXAMPLE_DIR}/cuda)
+-
+-add_executable(saxpy ${TF_EXAMPLE_DIR}/cuda/saxpy.cu)
+-target_link_libraries(
+-  saxpy ${PROJECT_NAME} Threads::Threads tf::default_settings
+-)
+-
+-add_executable(device_property ${TF_EXAMPLE_DIR}/cuda/device_property.cu)
+-target_link_libraries(
+-  device_property ${PROJECT_NAME} Threads::Threads tf::default_settings
+-)
+-endif(${TF_ENABLE_CUDA})
+-
+ # -----------------------------------------------------------------------------
+ # Unittest
+ # -----------------------------------------------------------------------------
++
+ enable_testing()
+ message(STATUS "Building unit tests ...")
+ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${TF_UTEST_DIR})

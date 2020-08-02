@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python2_7 python{3_6,3_7,3_8} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
 inherit distutils-r1
 
@@ -11,12 +11,12 @@ MY_PN="IPy"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Class and tools for handling of IPv4 and IPv6 addresses and networks"
-HOMEPAGE="https://github.com/haypo/python-ipy/wiki https://pypi.org/project/IPy/"
+HOMEPAGE="https://github.com/autocracy/python-ipy/wiki https://pypi.org/project/IPy/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc x86"
 IUSE="examples"
 
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
@@ -35,6 +35,11 @@ python_test() {
 }
 
 python_install_all() {
-	use examples && local EXAMPLES=( example/. )
+	if use examples; then
+		docinto examples
+		dodoc -r example/.
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
+
 	distutils-r1_python_install_all
 }

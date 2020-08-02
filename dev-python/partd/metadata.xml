@@ -13,6 +13,7 @@
     Partd stores key-value pairs. Values are raw bytes. We append on old values.
     Partd excels at shuffling operations.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">partd</remote-id>
     <remote-id type="github">dask/partd</remote-id>

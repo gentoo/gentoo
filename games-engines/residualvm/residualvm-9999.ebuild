@@ -1,16 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit desktop toolchain-funcs xdg
 
 DESCRIPTION="A cross-platform 3D game interpreter for play LucasArts' LUA-based 3D adventures"
-HOMEPAGE="http://www.residualvm.org/"
+HOMEPAGE="https://www.residualvm.org/"
 if [[ "${PV}" = 9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/residualvm/residualvm.git"
 else
-	SRC_URI="http://www.residualvm.org/downloads/release/${PV}/${P}-sources.tar.bz2"
+	SRC_URI="https://www.residualvm.org/downloads/release/${PV}/${P}-sources.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 fi
 LICENSE="GPL-2 LGPL-2.1"

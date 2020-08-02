@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE="tk?"
 inherit cmake desktop flag-o-matic python-single-r1 subversion xdg
 
@@ -36,7 +36,7 @@ DEPEND="${PYTHON_DEPS}
 	dev-libs/librevenge
 	dev-libs/libxml2
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5[-gles2]
+	dev-qt/qtgui:5[-gles2-only]
 	dev-qt/qtnetwork:5
 	dev-qt/qtopengl:5
 	dev-qt/qtprintsupport:5
@@ -58,11 +58,15 @@ DEPEND="${PYTHON_DEPS}
 	virtual/jpeg:0=
 	>=x11-libs/cairo-1.10.0[X,svg]
 	boost? ( >=dev-libs/boost-1.67:= )
-	hunspell? ( app-text/hunspell:= )
 	graphicsmagick? ( media-gfx/graphicsmagick:= )
+	hunspell? ( app-text/hunspell:= )
 	osg? ( dev-games/openscenegraph:= )
 	pdf? ( app-text/podofo:0= )
-	scripts? ( dev-python/pillow[tk?,${PYTHON_USEDEP}] )
+	scripts? (
+		$(python_gen_cond_dep '
+			dev-python/pillow[tk?,${PYTHON_MULTI_USEDEP}]
+		')
+	)
 "
 RDEPEND="${DEPEND}
 	app-text/ghostscript-gpl
@@ -76,18 +80,13 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.6-findhyphen.patch
 )
 
+CMAKE_BUILD_TYPE="Release"
+
 src_prepare() {
 	cmake_src_prepare
 
 	rm -r codegen/cheetah scribus/third_party/hyphen || die
 
-	cat > cmake/modules/FindZLIB.cmake <<- EOF || die
-	find_package(PkgConfig)
-	pkg_check_modules(ZLIB minizip zlib)
-	SET( ZLIB_LIBRARY \${ZLIB_LIBRARIES} )
-	SET( ZLIB_INCLUDE_DIR \${ZLIB_INCLUDE_DIRS} )
-	MARK_AS_ADVANCED( ZLIB_LIBRARY ZLIB_INCLUDE_DIR )
-	EOF
 	sed \
 		-e "/^\s*unzip\.[ch]/d" \
 		-e "/^\s*ioapi\.[ch]/d" \
@@ -111,6 +110,7 @@ src_configure() {
 		-DHAVE_PYTHON=ON
 		-DWANT_DISTROBUILD=ON
 		-DDOCDIR="${EPREFIX}"/usr/share/doc/${PF}/
+		-DPython3_EXECUTABLE="${PYTHON}"
 		-DWITH_BOOST=$(usex boost)
 		-DWANT_DEBUG=$(usex debug)
 		-DWANT_NOEXAMPLES=$(usex !examples)

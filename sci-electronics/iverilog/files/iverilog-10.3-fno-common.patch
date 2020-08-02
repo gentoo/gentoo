@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/706366
+--- a/driver/cflexor.lex
++++ b/driver/cflexor.lex
+@@ -27,6 +27,8 @@
+ # include  "globals.h"
+ # include  <string.h>
+ 
++char *current_file = NULL;
++
+ static int comment_enter;
+ static char* trim_trailing_white(char*txt, int trim);
+ 
+--- a/driver/cfparse_misc.h
++++ b/driver/cfparse_misc.h
+@@ -39,6 +39,6 @@ int cferror(const char *);
+ int cfparse(void);
+ void switch_to_command_file(const char *);
+ void destroy_lexor(void);
+-char *current_file;
++extern char *current_file;
+ 
+ #endif /* IVL_cfparse_misc_H */
+--- a/libveriuser/priv.h
++++ b/libveriuser/priv.h
+@@ -31,6 +31,6 @@ extern char* __acc_newstring(const char*txt);
+ /*
+  * Trace file for logging ACC and TF calls.
+  */
+-FILE* pli_trace;
++extern FILE* pli_trace;
+ 
+ #endif /* IVL_priv_H */
+

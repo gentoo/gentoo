@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,7 +30,7 @@ BIN_PV=${PV}
 arch_binaries="$arch_binaries amd64? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-x86_64-pc-linux-gnu.tbz2 )"
 #arch_binaries="$arch_binaries ia64?  ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ia64-fixed-fiw.tbz2 )"
 #arch_binaries="$arch_binaries ppc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ppc.tbz2 )"
-#arch_binaries="$arch_binaries ppc64? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ppc64.tbz2 )"
+arch_binaries="$arch_binaries ppc64? ( !big-endian? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-powerpc64le-unknown-linux-gnu.tbz2 ) )"
 #arch_binaries="$arch_binaries sparc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-sparc.tbz2 )"
 arch_binaries="$arch_binaries x86? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-i686-pc-linux-gnu.tbz2 )"
 
@@ -46,7 +46,10 @@ yet_binary() {
 		amd64) return 0 ;;
 		#ia64) return 0 ;;
 		#ppc) return 0 ;;
-		#ppc64) return 0 ;;
+		ppc64)
+			use big-endian && return 1
+			return 0
+			;;
 		#sparc) return 0 ;;
 		x86) return 0 ;;
 		*) return 1 ;;
@@ -73,15 +76,17 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 # to be rekeyworded when most of revdeps are updated
 #KEYWORDS="~amd64 ~x86"
-IUSE="doc ghcbootstrap ghcmakebinary +gmp profile test"
-RESTRICT="!test? ( test )"
+IUSE="big-endian doc elfutils ghcbootstrap ghcmakebinary +gmp numa profile test"
 IUSE+=" binary"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-lang/perl-5.6.1
 	dev-libs/gmp:0=
 	sys-libs/ncurses:0=[unicode]
-	!ghcmakebinary? ( virtual/libffi:= )
+	elfutils? ( dev-libs/elfutils )
+	!ghcmakebinary? ( dev-libs/libffi:= )
+	numa? ( sys-process/numactl )
 "
 
 # This set of dependencies is needed to run
@@ -484,6 +489,7 @@ src_prepare() {
 		eapply "${FILESDIR}"/${PN}-7.8.3-prim-lm.patch
 		eapply "${FILESDIR}"/${PN}-8.0.2-no-relax-everywhere.patch
 		eapply "${FILESDIR}"/${PN}-8.4.2-allow-cross-bootstrap.patch
+		eapply "${FILESDIR}"/${PN}-8.6.5-numa.patch
 
 		# a bunch of crosscompiler patches
 		# needs newer version:
@@ -626,13 +632,16 @@ src_configure() {
 			# using ${GTARGET}'s libffi is not supported yet:
 			# GHC embeds full path for ffi includes without /usr/${CTARGET} account.
 			econf_args+=(--with-system-libffi)
-			econf_args+=(--with-ffi-includes=$(pkg-config libffi --cflags-only-I | sed -e 's@^-I@@'))
+			econf_args+=(--with-ffi-includes=$($(tc-getPKG_CONFIG) libffi --cflags-only-I | sed -e 's@^-I@@'))
 		fi
 
 		einfo "Final mk/build.mk:"
 		cat mk/build.mk || die
 
-		econf ${econf_args[@]} --enable-bootstrap-with-devel-snapshot
+		econf ${econf_args[@]} \
+			--enable-bootstrap-with-devel-snapshot \
+			$(use elfutils && echo --enable-dwarf-unwind) \
+			$(use_enable numa)
 
 		if [[ ${PV} == *9999* ]]; then
 			GHC_PV="$(grep 'S\[\"PACKAGE_VERSION\"\]' config.status | sed -e 's@^.*=\"\(.*\)\"@\1@')"

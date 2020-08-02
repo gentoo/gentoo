@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{6,7,8}} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit cmake-multilib python-single-r1 toolchain-funcs
 
@@ -19,7 +19,7 @@ IUSE="doc examples gmp isabelle java python"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	gmp? ( dev-libs/gmp:0=[${MULTILIB_USEDEP}] )"
+	gmp? ( dev-libs/gmp:0=[cxx,${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	java? ( >=virtual/jdk-1.8 )"
 BDEPEND="

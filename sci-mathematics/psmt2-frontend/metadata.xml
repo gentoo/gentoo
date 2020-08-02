@@ -5,8 +5,4 @@
 		<email>tupone@gentoo.org</email>
 		<name>Tupone Alfredo</name>
 	</maintainer>
-	<longdescription lang="en">
-			A library to parse and type-check a conservative extension of the
-			SMT-LIB 2 standard with prenex polymorphism.
-	</longdescription>
 </pkgmetadata>

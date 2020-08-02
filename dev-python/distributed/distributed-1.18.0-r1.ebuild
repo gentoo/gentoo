@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
 
@@ -30,7 +30,6 @@ RDEPEND="
 	>=dev-python/toolz-0.7.4[${PYTHON_USEDEP}]
 	dev-python/zict[${PYTHON_USEDEP}]
 	www-servers/tornado[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]

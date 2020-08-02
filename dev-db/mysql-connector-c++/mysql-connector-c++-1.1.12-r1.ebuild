@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -49,10 +49,10 @@ src_install() {
 
 	# static lib has wrong name so we need to rename it
 	if use static-libs; then
-		mv "${ED%/}"/usr/$(get_libdir)/libmysqlcppconn-static.a \
-			"${ED%/}"/usr/$(get_libdir)/libmysqlcppconn.a || die
+		mv "${ED}"/usr/$(get_libdir)/libmysqlcppconn-static.a \
+			"${ED}"/usr/$(get_libdir)/libmysqlcppconn.a || die
 	else
-		rm -f "${ED%/}"/usr/$(get_libdir)/libmysqlcppconn-static.a
+		rm -f "${ED}"/usr/$(get_libdir)/libmysqlcppconn-static.a
 	fi
 
 	# examples

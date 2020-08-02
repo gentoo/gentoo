@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,7 +38,7 @@ DEPEND="${BDEPEND}
 	tre? ( dev-libs/tre )"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/pid-patch.patch" )
+PATCHES=( "${FILESDIR}/anope-2.0.6-example.conf-pid-path.patch" )
 
 S="${WORKDIR}/${P}-source"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/rspec/rspec-its"
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 hppa ~ppc ~ppc64 ~sparc x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/rspec-core-3.0.0 >=dev-ruby/rspec-expectations-3.0.0"

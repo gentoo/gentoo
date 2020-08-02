@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit xdg
 
 DESCRIPTION="A nice and well polished icon theme"
-HOMEPAGE="http://packages.ubuntu.com/lucid/human-icon-theme"
+HOMEPAGE="https://packages.ubuntu.com/lucid/human-icon-theme"
 SRC_URI="
 	mirror://ubuntu/pool/universe/h/${PN}/${PN}_${PV}.tar.gz
 	https://www.gentoo.org/images/gentoo-logo.svg"

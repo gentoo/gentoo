@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="5"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="exif pdf taglib truetype"
 
 BDEPEND="sys-devel/gettext"
@@ -45,7 +45,10 @@ RDEPEND="${DEPEND}
 	!kde-misc/krename:4
 "
 
-PATCHES=( "${FILESDIR}/${P}-exiv2-0.27.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-exiv2-0.27.patch"
+	"${FILESDIR}/${P}-kf-5.72-findtaglib.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(

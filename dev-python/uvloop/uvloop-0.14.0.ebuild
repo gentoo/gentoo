@@ -3,14 +3,14 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python3_{6..8} )
 inherit distutils-r1
 
 DESCRIPTION="Ultra-fast implementation of asyncio event loop on top of libuv"
 HOMEPAGE="https://github.com/magicstack/uvloop"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="MIT"
 SLOT="0"
 IUSE="doc examples test"
@@ -19,13 +19,19 @@ RESTRICT="!test? ( test )"
 RDEPEND=">=dev-libs/libuv-1.11.0:="
 DEPEND="
 	${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
 		>=dev-python/alabaster-0.6.2[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
 	)
-	test? ( dev-python/pyopenssl[${PYTHON_USEDEP}] )
+	test? (
+		dev-python/pyopenssl[${PYTHON_USEDEP}]
+		dev-python/psutil[${PYTHON_USEDEP}]
+	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-asyncio-test-hang.patch
+)
 
 python_prepare_all() {
 	cat <<EOF >> setup.cfg || die
@@ -35,6 +41,9 @@ EOF
 
 	# flake8 only
 	rm tests/test_sourcecode.py || die
+
+	sed -i -e 's:test_write_to_closed_transport:_&:' \
+		tests/test_tcp.py || die
 
 	distutils-r1_python_prepare_all
 }

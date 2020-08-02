@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 
 inherit bash-completion-r1 elisp-common python-any-r1 toolchain-funcs
 
@@ -15,7 +15,7 @@ else
 	MY_P="ninja-${KITWARE_VERSION}"
 	S="${WORKDIR}/${MY_P}"
 	SRC_URI="https://github.com/Kitware/ninja/archive/v${KITWARE_VERSION}.tar.gz -> ${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
 fi
 
 DESCRIPTION="A small build system similar to make"
@@ -48,6 +48,7 @@ RDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}"/ninja-cflags.patch
 	"${FILESDIR}/ninja-1.9.0-musl.patch"
 )
 
@@ -66,8 +67,8 @@ run_for_build() {
 src_compile() {
 	tc-export AR CXX
 
-	# configure.py uses CFLAGS instead of CXXFLAGS
-	export CFLAGS=${CXXFLAGS}
+	# configure.py appends CFLAGS to CXXFLAGS
+	unset CFLAGS
 
 	run_for_build ${EPYTHON} configure.py --bootstrap --verbose || die
 

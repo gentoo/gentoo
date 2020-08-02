@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2 public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="doc infiniband static-libs systemd xml"
 
 # TODO: support those new configure flags
@@ -44,7 +44,6 @@ src_configure() {
 	# FIXME: install just shared libs --disable-static does not work
 	econf_opts=(
 		--localstatedir=/var \
-		--docdir=/usr/share/doc/${PF} \
 		$(use_enable infiniband rdma) \
 		$(use_enable systemd) \
 		$(use_enable xml xmlconf)
@@ -69,15 +68,4 @@ src_install() {
 	keepdir /var/lib/corosync
 	use static-libs || rm -rf "${D}"/usr/$(get_libdir)/*.{,l}a || die
 
-}
-
-pkg_postinst() {
-	if [[ ${REPLACING_VERSIONS} < 2.0 ]]; then
-		ewarn "!! IMPORTANT !!"
-		ewarn " "
-		ewarn "Migrating from a previous version of corosync can be dangerous !"
-		ewarn " "
-		ewarn "Make sure you backup your cluster configuration before proceeding"
-		ewarn " "
-	fi
 }

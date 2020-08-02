@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_OPTIONAL=1
 # ninja: error: build.ninja:521: multiple rules generate pm_java/pmdefaults.jar [-w dupbuild=err]
 CMAKE_MAKEFILE_GENERATOR="emake"
-inherit cmake desktop xdg distutils-r1 java-pkg-opt-2
+inherit cmake desktop xdg distutils-r1 java-pkg-opt-2 flag-o-matic
 
 DESCRIPTION="Library for real time MIDI input and output"
 HOMEPAGE="http://portmedia.sourceforge.net/"
@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/portmedia/${PN}-src-${PV}.zip"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ~ppc64 sparc x86"
 IUSE="debug doc java python static-libs test-programs"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -50,7 +50,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-cmake.patch
 
 	# add include directories and remove references to missing files
-	"${FILESDIR}"/${PF}-python.patch
+	"${FILESDIR}"/${P}-r4-python.patch
 )
 
 pkg_setup() {
@@ -97,6 +97,7 @@ src_compile() {
 	if use python ; then
 		sed -i -e "/library_dirs=.*linux/s#./linux#${CMAKE_BUILD_DIR}#" pm_python/setup.py || die
 		pushd pm_python > /dev/null
+		append-ldflags -L"${BUILD_DIR}"
 		distutils-r1_src_compile
 		popd > /dev/null
 	fi

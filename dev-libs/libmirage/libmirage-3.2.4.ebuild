@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 
 DESCRIPTION="CD and DVD image access library"
 HOMEPAGE="https://cdemu.sourceforge.io"
@@ -11,7 +11,7 @@ SRC_URI="https://download.sourceforge.net/cdemu/libmirage/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0/11" # subslot = libmirage soname version
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc +introspection"
 
 RDEPEND=">=app-arch/bzip2-1:=
@@ -38,7 +38,7 @@ src_configure() {
 		-DINTROSPECTION_ENABLED="$(usex introspection)"
 		-DPOST_INSTALL_HOOKS=OFF # avoid sandbox violation, #487304
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {

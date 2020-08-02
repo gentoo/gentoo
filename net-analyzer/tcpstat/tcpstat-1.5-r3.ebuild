@@ -1,12 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools flag-o-matic
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Reports network interface statistics"
 HOMEPAGE="https://www.frenchfries.net/paul/tcpstat/"
-SRC_URI="${HOMEPAGE}${P}.tar.gz"
+SRC_URI="https://www.frenchfries.net/paul/tcpstat/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

@@ -3,17 +3,18 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{6,7,8}} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
 
 DESCRIPTION="A CSS Cascading Style Sheets library"
-HOMEPAGE="https://pypi.org/project/cssutils/ https://bitbucket.org/cthedot/cssutils http://cthedot.de/cssutils/"
+HOMEPAGE="https://pypi.org/project/cssutils/ https://bitbucket.org/cthedot/cssutils https://cthedot.de/cssutils/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 arm arm64 ppc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

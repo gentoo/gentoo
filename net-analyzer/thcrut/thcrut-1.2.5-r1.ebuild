@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ inherit autotools eutils
 
 DESCRIPTION="Network discovery and fingerprinting tool"
 HOMEPAGE="http://www.thc.org/thc-rut/"
-SRC_URI="http://www.thc.org/thc-rut/${P}.tar.gz"
+SRC_URI="https://github.com/vanhauser-thc/THC-Archive/raw/master/Tools/${P}.tar.gz"
 
 LICENSE="free-noncomm PCRE GPL-1+"
 SLOT="0"

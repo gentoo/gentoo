@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,12 +9,12 @@ CABAL_FEATURES="bin lib profile haddock hoogle hscolour test-suite"
 inherit eutils haskell-cabal
 
 DESCRIPTION="Conversion between markup formats"
-HOMEPAGE="http://pandoc.org"
+HOMEPAGE="https://pandoc.org"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="embed-data-files +https +network-uri trypandoc"
 
 RESTRICT=test # likes to break on highlighting-kate update

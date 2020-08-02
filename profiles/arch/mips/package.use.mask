@@ -1,5 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
+# Mask until dev-libs/libfido2 is keyworded
+net-misc/openssh security-key
 
 # Michał Górny <mgorny@gentoo.org> (2018-01-23)
 # USE=collab requires unkeyworded net-libs/loudmouth & dev-cpp/asio.
@@ -58,10 +62,6 @@ app-portage/g-sorcery bson
 # dev-python/gmpy also a test depend, so minimize the features until can test properly (http2 soap test)
 dev-python/twisted conch crypt http2 soap test
 
-# Fabian Groffen <grobian@gentoo.org> (2016-12-07)
-# unkeyworded notmuch dependency, bug #587560
-mail-client/mutt notmuch
-
 # Felix Janda <felix.janda@posteo.de> (2016-09-24)
 # net-libs/libnetfilter_conntrack is not keyworded on mips
 net-dns/dnsmasq conntrack
@@ -78,14 +78,6 @@ dev-qt/qtchooser test
 # Requires matplotlib which requires a bit more.
 dev-python/numpydoc test
 
-# Mikle Kolyada <zlogene@gentoo.org> (2015-04-12)
-# GNOME Shell does not work on mips
-net-misc/wicd gnome-shell
-
-# Mike Frysinger <vapier@gentoo.org> (2015-03-16)
-# Needs sci-physics/bullet tested #499974
-dev-libs/efl physics
-
 # Matthias Maier <tamiko@gentoo.org> (2014-12-24)
 # sys-devel/clang is not keyworded
 app-doc/doxygen clang
@@ -97,6 +89,7 @@ media-libs/devil	nvtt
 # Ryan Hill <dirtyepic@gentoo.org> (2014-01-07)
 # req net-libs/webkit-gtk:2
 x11-libs/wxGTK webkit
+dev-python/wxpython webkit
 
 # Markos Chandras <hwoarang@gentoo.org> (2014-01-05)
 # Perl is heavily unkeyworded on MIPS. See 497068
@@ -142,9 +135,7 @@ media-video/mplayer ladspa
 dev-lang/ruby xemacs
 
 # Sebastian Pipping <sping@gentoo.org> (2010-01-27)
-# dev-vcs/bzr is not keyworded on this arch
 # dev-vcs/darcs is not keyworded on this arch
-app-portage/layman bazaar
 app-portage/layman darcs
 
 # deps missing keywords
@@ -166,10 +157,6 @@ www-client/elinks javascript
 # Matt Turner <mattst88@gentoo.org> (2010-12-26)
 # media-gfx/ufraw not keyworded
 media-gfx/imagemagick raw
-
-# Matt Turner <mattst88@gentoo.org> (2011-06-12)
-# dev-python/mysql-python not keyworded
-dev-vcs/mercurial bugzilla
 
 # Matt Turner <mattst88@gentoo.org> (2012-02-09)
 # dev-vcs/git[cgi] requires app-text/highlight which requires boost

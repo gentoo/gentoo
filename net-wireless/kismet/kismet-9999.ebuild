@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit autotools eutils multilib user python-single-r1
+inherit autotools eutils multilib user python-single-r1 udev
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://www.kismetwireless.net/git/${PN}.git"
@@ -21,7 +21,7 @@ else
 	SRC_URI="https://www.kismetwireless.net/code/${MY_P}.tar.xz"
 
 	#but sometimes we want a git commit
-	#COMMIT="6d6d486831c0f7ac712ffb8a3ff122c5063c3b2a"
+	#COMMIT="9ca7e469cf115469f392db7436816151867e1654"
 	#SRC_URI="https://github.com/kismetwireless/kismet/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	#S="${WORKDIR}/${PN}-${COMMIT}"
 
@@ -33,7 +33,7 @@ HOMEPAGE="https://www.kismetwireless.net"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-IUSE="libusb lm-sensors networkmanager +pcre rtlsdr selinux +suid ubertooth"
+IUSE="libusb lm-sensors networkmanager +pcre rtlsdr selinux +suid ubertooth udev"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 CDEPEND="
@@ -51,7 +51,9 @@ CDEPEND="
 	libusb? ( virtual/libusb:1 )
 	dev-libs/protobuf-c:=
 	dev-libs/protobuf:=
-	dev-python/protobuf-python[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/protobuf-python[${PYTHON_MULTI_USEDEP}]
+	')
 	sys-libs/ncurses:=
 	lm-sensors? ( sys-apps/lm-sensors )
 	pcre? ( dev-libs/libpcre )
@@ -64,11 +66,18 @@ DEPEND="${CDEPEND}
 "
 
 RDEPEND="${CDEPEND}
-	dev-python/pyserial[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pyserial[${PYTHON_MULTI_USEDEP}]
+	')
 	selinux? ( sec-policy/selinux-kismet )
 "
-PDEPEND="rtlsdr? ( dev-python/numpy[${PYTHON_USEDEP}]
-				net-wireless/rtl-sdr )"
+PDEPEND="
+	rtlsdr? (
+		$(python_gen_cond_dep '
+			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		')
+		net-wireless/rtl-sdr
+	)"
 
 src_prepare() {
 	sed -i -e "s:^\(logtemplate\)=\(.*\):\1=/tmp/\2:" \
@@ -104,6 +113,7 @@ src_install() {
 	emake DESTDIR="${D}" commoninstall
 	python_optimize
 	emake DESTDIR="${D}" forceconfigs
+	use udev && udev_dorules packaging/udev/*.rules
 
 	insinto /usr/share/${PN}
 	doins Makefile.inc

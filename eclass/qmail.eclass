@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: qmail.eclass
@@ -117,8 +117,7 @@ qmail_spp_src_unpack() {
 
 # @FUNCTION: qmail_src_postunpack
 # @DESCRIPTION:
-# Unpack common config files, apply custom patches if supplied and
-# set built configuration (CFLAGS, LDFLAGS, etc)
+# Unpack common config files, and set built configuration (CFLAGS, LDFLAGS, etc)
 qmail_src_postunpack() {
 	cd "${S}"
 
@@ -144,33 +143,27 @@ qmail_base_install() {
 	einfo "Setting up basic directory hierarchy"
 	diropts -o root -g qmail -m 755
 	keepdir "${QMAIL_HOME}"/{,bin,control}
-
-	einfo "Installing basic qmail software"
-	insinto "${QMAIL_HOME}"/bin
-
-	insopts -o root -g qmail -m 755
-	doins datemail elq forward maildir2mbox maildirmake \
-		maildirwatch mailsubj pinq predate qail \
-		qmail-{inject,qmqpc,showctl} sendmail
-
-	einfo "Adding env.d entry for qmail"
-	doenvd "${GENQMAIL_S}"/conf/99qmail
-
-	declare -F qmail_base_install_hook >/dev/null && \
-		qmail_base_install_hook
-}
-
-qmail_full_install() {
-	einfo "Setting up full directory hierarchy"
 	keepdir "${QMAIL_HOME}"/users
 	diropts -o alias -g qmail -m 755
 	keepdir "${QMAIL_HOME}"/alias
 
+	einfo "Adding env.d entry for qmail"
+	doenvd "${GENQMAIL_S}"/conf/99qmail
+
 	einfo "Installing all qmail software"
+	insinto "${QMAIL_HOME}"/bin
+
 	insopts -o root -g qmail -m 755
-	doins bouncesaying condredirect config-fast except preline qbiff \
-		qmail-{qmqpd,qmtpd,qread,qstat,smtpd,tcpok,tcpto} \
-		qreceipt qsmhook tcp-env
+	doins bouncesaying condredirect config-fast datemail except forward maildir2mbox \
+		maildirmake mailsubj predate preline qbiff \
+		qmail-{inject,qmqpc,qmqpd,qmtpd,qread,qstat,smtpd,tcpok,tcpto,showctl} \
+		qreceipt sendmail tcp-env
+
+	# obsolete tools, install if they are still present
+	for i in elq maildirwatch pinq qail qsmhook; do
+		[[ -x ${i} ]] && doins ${i}
+	done
+
 	use pop3 && doins qmail-pop3d
 
 	insopts -o root -g qmail -m 711
@@ -183,8 +176,8 @@ qmail_full_install() {
 	insopts -o qmailq -g qmail -m 4711
 	doins qmail-queue
 
-	declare -F qmail_full_install_hook >/dev/null && \
-		qmail_full_install_hook
+	declare -F qmail_base_install_hook >/dev/null && \
+		qmail_base_install_hook
 }
 
 qmail_config_install() {
@@ -207,8 +200,14 @@ qmail_man_install() {
 
 	into /usr
 	doman *.[1578]
-	dodoc BLURB* CHANGES FAQ INSTALL* PIC* README* REMOVE* SECURITY \
-		SENDMAIL* TEST* THANKS* THOUGHTS UPGRADE VERSION*
+	dodoc BLURB* INSTALL* PIC* README* REMOVE* \
+		SENDMAIL* TEST* THANKS* VERSION*
+	# notqmail converted the files to markdown
+	if [ -f CHANGES ]; then
+		dodoc CHANGES FAQ SECURITY THOUGHTS UPGRADE
+	else
+		dodoc CHANGES.md FAQ.md SECURITY.md THOUGHTS.md UPGRADE.md
+	fi
 
 	declare -F qmail_man_install_hook >/dev/null && \
 		qmail_man_install_hook
@@ -267,9 +266,9 @@ qmail_tcprules_install() {
 }
 
 qmail_supervise_install_one() {
-	dosupervise ${i}
+	dosupervise ${1}
 	diropts -o qmaill -g "${GROUP_ROOT}" -m 755
-	keepdir /var/log/qmail/${i}
+	keepdir /var/log/qmail/${1}
 }
 
 qmail_supervise_install() {
@@ -334,7 +333,6 @@ qmail_ssl_install() {
 qmail_src_install() {
 	export GROUP_ROOT="$(id -gn root)"
 	qmail_base_install
-	qmail_full_install
 	qmail_config_install
 	qmail_man_install
 	qmail_sendmail_install

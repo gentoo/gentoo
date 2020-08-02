@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ RDEPEND="!!media-sound/mmix"
 
 SLOT="0"
 LICENSE="${PN}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
 S="${WORKDIR}"
@@ -24,6 +24,7 @@ S="${WORKDIR}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-20110420-makefile.patch
 	"${FILESDIR}"/${PN}-20131017-format-security.patch
+	"${FILESDIR}"/${PN}-20160804-gcc-10.patch
 )
 
 src_compile() {

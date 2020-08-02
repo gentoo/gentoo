@@ -1,5 +1,45 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2018-03-27)
+# dev-ruby/capybara depends on www-client/firefox which has no keywords
+dev-ruby/capybara test
+
+# Michał Górny <mgorny@gentoo.org> (2020-06-14)
+# Requires dev-python/networkx.
+app-portage/nattka depgraph-order
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-05-19)
+# deps not keyworded on ~ppc/ppc64
+media-video/obs-studio nvenc
+
+# Mikle Kolyada <zlogene@gentoo.org> (2020-05-06)
+# No deps keyworded
+dev-python/pbr test
+
+# Benda Xu <heroxbd@gentoo.org> (2020-04-27)
+# tests optionally depend on dev-python/hypothesis
+dev-python/numpy test
+
+# Lars Wendler <polynomial-c@gentoo.org> (2020-04-20)
+# Not keyworded on ppc
+net-misc/whois xcrypt
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-19)
+# Unsupported on ppc/ppc64
+www-client/chromium widevine
+
+# Patrick McLean <chutzpah@gentoo.org> (2020-04-03)
+# Lots of deps for little gain
+dev-python/joblib doc
+
+# Matthias Maier <tamiko@gentoo.org> (2020-03-13)
+# requires media-libs/sdl2-image, which is not yet keyworded
+app-emulation/qemu sdl-image
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
+# requires fwupd, which is not yet keyworded
+kde-plasma/discover firmware
 
 # Rick Farina <zerochaos@gentoo.com> (2020-01-03)
 # ubertooth needs net-libs/libbtbb and net-wireless/ubertooth which aren't keyworded
@@ -92,8 +132,6 @@ media-libs/opencv contribdnn
 
 # Robin H. Johnson <robbat2@gentoo.org> (2017-11-10)
 # Masked for dependencies:
-# - bug #438780: sys-firmware/ipxe not buildable on PPC without cross-compiler
-app-emulation/qemu qemu_softmmu_targets_i386 qemu_softmmu_targets_x86_64
 # - media-libs/virglrenderer: pending keywording
 app-emulation/qemu virgl
 
@@ -118,10 +156,6 @@ app-forensics/sleuthkit java
 sys-power/nut ups_drivers_nut-ipmipsu
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan vulkan-overlay
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=opencl that is masked in this profile.
 net-misc/bfgminer adl lm-sensors
 
@@ -142,10 +176,6 @@ sci-geosciences/gpsbabel gui
 # DOSBox + OpenGLide is untested on this arch.
 games-emulation/dosbox glide
 
-# Fabian Groffen <grobian@gentoo.org> (2016-12-07)
-# unkeyworded notmuch dependency, bug #587560
-mail-client/mutt notmuch
-
 # Thomas Deutschmann <whissi@gentoo.org> (2016-08-26)
 # Enable numa support on supported architectures
 dev-db/mysql -numa
@@ -154,7 +184,7 @@ dev-db/percona-server -numa
 # Davide Pesavento <pesa@gentoo.org> (2016-07-28)
 # The corresponding Qt5 modules are not keyworded on ppc, and we don't want to
 # keyword them solely because of PyQt5 while there are no other in-tree users.
-dev-python/PyQt5 bluetooth location networkauth webengine
+dev-python/PyQt5 bluetooth location networkauth
 
 # Michael Palimaka <kensington@gentoo.org> (2016-07-07)
 # Requires unkeyworded dependencies
@@ -308,7 +338,7 @@ net-misc/connman ofono
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2012-01-20)
 # Mask some use flags for openmpi due to unkeyworded deps
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
+sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Kacper Kowalik <xarthisius@gentoo.org> (2011-11-20)
 # Dropped dietlibc wrt #364103

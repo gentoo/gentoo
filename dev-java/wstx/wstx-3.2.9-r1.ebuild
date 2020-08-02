@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -49,7 +49,7 @@ java_prepare() {
 
 EANT_GENTOO_CLASSPATH="sax,msv,relaxng-datatype"
 
-src_test(){
+src_test() {
 	java-pkg-2_src_test
 }
 

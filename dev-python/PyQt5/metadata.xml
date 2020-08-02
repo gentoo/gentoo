@@ -10,7 +10,6 @@
 		<flag name="dbus">Build bindings for the QtDBus module</flag>
 		<flag name="declarative">Build bindings for the QtQml/QtQuick modules and enable the qmlscene plugin</flag>
 		<flag name="designer">Build bindings for the QtDesigner module and enable the designer plugin</flag>
-		<flag name="gles2">Use GLES 2.0 or later instead of full OpenGL</flag>
 		<flag name="gui">Build bindings for the QtGui module</flag>
 		<flag name="help">Build bindings for the QtHelp module</flag>
 		<flag name="location">Build bindings for the QtLocation module</flag>

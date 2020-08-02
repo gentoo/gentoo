@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 
-inherit eutils toolchain-funcs
+inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="FFS/UFS/UFS2 filesystem utilities from FreeBSD"
 HOMEPAGE="http://packages.debian.org/source/sid/ufsutils"
@@ -38,10 +38,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# globals are defined in header files and reused in multiple final
+	# binaries. bug #706696
+	append-cflags -fcommon
+
 	tc-export AR CC
 }
 
-src_compile(){
+src_compile() {
 	emake -j1
 }
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,8 +17,9 @@ IUSE=""
 
 RDEPEND="
 	acct-group/plugdev
-	>=app-pda/libimobiledevice-1.1.6
-	>=app-pda/libplist-1.11
+	>=app-pda/libimobiledevice-1.1.6:=
+	<app-pda/libimobiledevice-1.2.1_pre0
+	>=app-pda/libplist-1.11:=
 	virtual/libusb:1"
 DEPEND="${RDEPEND}
 	virtual/os-headers

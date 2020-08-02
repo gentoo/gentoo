@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake
 
 DESCRIPTION="LXQt quick launcher"
-HOMEPAGE="https://lxqt.org/"
+HOMEPAGE="https://lxqt.github.io/"
 
 MY_PV="$(ver_cut 1-2)*"
 
@@ -42,7 +42,7 @@ RDEPEND="${DEPEND}
 	!lxqt-base/lxqt-l10n
 "
 
-src_install(){
+src_install() {
 	cmake_src_install
 	doman man/*.1
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ SRC_URI="https://github.com/storaged-project/udisks/releases/download/${P}/${P}.
 
 LICENSE="LGPL-2+ GPL-2+"
 SLOT="2"
-KEYWORDS="~alpha amd64 arm arm64 ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="acl debug elogind +introspection lvm nls selinux systemd vdo"
 
 REQUIRED_USE="?? ( elogind systemd )"
@@ -76,9 +76,9 @@ src_configure() {
 		--enable-btrfs
 		--disable-gtk-doc
 		--disable-static
-		--localstatedir="${EPREFIX%/}"/var
-		--with-html-dir="${EPREFIX%/}"/usr/share/gtk-doc/html
-		--with-modprobedir="${EPREFIX%/}"/lib/modprobe.d
+		--localstatedir="${EPREFIX}"/var
+		--with-html-dir="${EPREFIX}"/usr/share/gtk-doc/html
+		--with-modprobedir="${EPREFIX}"/lib/modprobe.d
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 		--with-tmpfilesdir="/usr/lib/tmpfiles.d"
 		--with-udevdir="$(get_udevdir)"

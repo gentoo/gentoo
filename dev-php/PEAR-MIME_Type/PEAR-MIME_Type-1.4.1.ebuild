@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ RDEPEND=">=dev-lang/php-5.4:*
 	dev-php/PEAR-System_Command"
 S="${WORKDIR}/${P#PEAR-}"
 
-src_install(){
+src_install() {
 	insinto /usr/share/php
 	doins -r MIME
 }

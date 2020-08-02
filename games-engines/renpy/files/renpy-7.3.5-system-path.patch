@@ -1,0 +1,19 @@
+--- renpy-7.3.5-source/renpy.py.orig	2019-10-18 02:35:19.000000000 +0300
++++ renpy-7.3.5-source/renpy.py	2020-05-09 13:38:24.989131947 +0300
+@@ -32,6 +32,7 @@
+ import warnings
+ 
+ # Functions to be customized by distributors. ################################
++from distutils.sysconfig import get_python_lib
+ 
+ # Given the Ren'Py base directory (usually the directory containing
+ # this file), this is expected to return the path to the common directory.
+@@ -140,7 +141,7 @@
+ # Returns the path to the Ren'Py base directory (containing common and
+ # the launcher, usually.)
+ def path_to_renpy_base():
+-    renpy_base = os.path.dirname(os.path.realpath(sys.argv[0]))
++    renpy_base = get_python_lib()
+     renpy_base = os.path.abspath(renpy_base)
+ 
+     return renpy_base

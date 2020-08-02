@@ -1,13 +1,13 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python2_7 python3_6 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 SCONS_MIN_VERSION="2.3.0"
 
-inherit eutils udev user multilib distutils-r1 scons-utils toolchain-funcs
+inherit eutils udev multilib distutils-r1 scons-utils toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://gitlab.com/gpsd/gpsd.git"
@@ -21,7 +21,7 @@ DESCRIPTION="GPS daemon and library for USB/serial GPS devices and GPS/mapping c
 HOMEPAGE="https://gpsd.gitlab.io/gpsd/"
 
 LICENSE="BSD"
-SLOT="0/24"
+SLOT="0/27"
 
 GPSD_PROTOCOLS=(
 	aivdm ashtech earthmate evermore fury fv18 garmin garmintxt geostar
@@ -41,6 +41,7 @@ REQUIRED_USE="X? ( python )
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	acct-user/gpsd
 	>=net-misc/pps-tools-0.0.20120407
 	bluetooth? ( net-wireless/bluez )
 	dbus? (
@@ -84,15 +85,14 @@ src_prepare() {
 		die "please sync ebuild & source"
 	fi
 
-	epatch "${FILESDIR}"/${PN}-3.19-do_not_rm_library.patch
-	# Merged upstream
-	#epatch "${FILESDIR}"/${P}-scons-print.patch
-	#epatch "${FILESDIR}"/${P}-scons-py3.patch
-
 	# Avoid useless -L paths to the install dir
 	sed -i \
 		-e 's:\<STAGING_PREFIX\>:SYSROOT:g' \
 		SConstruct || die
+
+	#Fix systemd binary paths
+	sed -i -e 's/local\///' 'systemd/gpsd.service'
+	sed -i -e 's/local\///' 'systemd/gpsdctl@.service.in'
 
 	default
 
@@ -101,17 +101,20 @@ src_prepare() {
 
 python_prepare_all() {
 	python_setup
-	python_export
 
 	# Extract python info out of SConstruct so we can use saner distribute
-	pyvar() { sed -n "/^ *$1 *=/s:.*= *::p" SConstruct ; }
-	local pybins=$(pyvar python_progs | tail -1)
+	pyarray() { sed -n "/^ *$1 *= *\\[/,/\\]/p" SConstruct ; }
+	local pyprogs=$(pyarray python_progs)
+	local pybins=$("${PYTHON}" -c "${pyprogs}; \
+		print(list(set(python_progs) - {'xgps', 'xgpsspeed', 'ubxtool', 'zerk'}))" || die "Unable to list pybins")
 	# Handle conditional tools manually. #666734
 	use X && pybins+="+ ['xgps', 'xgpsspeed']"
 	use gpsd_protocols_ublox && pybins+="+ ['ubxtool']"
 	use gpsd_protocols_greis && pybins+="+ ['zerk']"
-	local pysrcs=$(sed -n '/^ *python_extensions = {/,/}/{s:^ *::;s:os[.]sep:"/":g;p}' SConstruct)
-	local packet=$("${PYTHON}" -c "${pysrcs}; print(python_extensions['gps/packet'])")
+	local pysrcs=$(pyarray packet_ffi_extension)
+	local packet=$("${PYTHON}" -c "${pysrcs}; print(packet_ffi_extension)" || die "Unable to extract packet types")
+
+	pyvar() { sed -n "/^ *$1 *=/s:.*= *::p" SConstruct ; }
 	# Post 3.19 the clienthelpers were merged into gps.packet
 	sed \
 		-e "s|@VERSION@|$(pyvar gpsd_version)|" \
@@ -126,39 +129,43 @@ python_prepare_all() {
 }
 
 src_configure() {
-	myesconsargs=(
+	scons_opts=(
 		prefix="${EPREFIX}/usr"
 		libdir="\$prefix/$(get_libdir)"
 		udevdir="$(get_udevdir)"
+		rundir="/run"
 		chrpath=False
 		gpsd_user=gpsd
-		gpsd_group=uucp
+		gpsd_group=dialout
 		nostrip=True
 		manbuild=False
 		shared=$(usex !static True False)
-		$(use_scons bluetooth bluez)
-		$(use_scons cxx libgpsmm)
-		$(use_scons debug clientdebug)
-		$(use_scons dbus dbus_export)
-		$(use_scons ipv6)
-		$(use_scons latency-timing timing)
-		$(use_scons ncurses)
-		$(use_scons ntp ntpshm)
-		$(use_scons ntp pps)
-		$(use_scons python)
-		$(use_scons qt5 qt)
-		$(use_scons shm shm_export)
-		$(use_scons sockets socket_export)
-		$(use_scons usb)
+		bluez=$(usex bluetooth)
+		libgpsmm=$(usex cxx)
+		clientdebug=$(usex debug)
+		dbus_export=$(usex dbus)
+		ipv6=$(usex ipv6)
+		timing=$(usex latency-timing)
+		ncurses=$(usex ncurses)
+		ntpshm=$(usex ntp)
+		pps=$(usex ntp)
+		python=$(usex python)
+		# force a predictable python libdir because lib vs. lib64 usage differs
+		# from 3.5 to 3.6+
+		$(usex python python_libdir="${EPREFIX}"/python-discard "")
+		qt=$(usex qt5)
+		shm_export=$(usex shm)
+		socket_export=$(usex sockets)
+		usb=$(usex usb)
 	)
 
-	use X && myesconsargs+=( xgps=1 xgpsspeed=1 )
-	use qt5 && myesconsargs+=( qt_versioned=5 )
+	use X && scons_opts+=( xgps=1 xgpsspeed=1 )
+	use qt5 && scons_opts+=( qt_versioned=5 )
 
 	# enable specified protocols
 	local protocol
 	for protocol in ${GPSD_PROTOCOLS[@]} ; do
-		myesconsargs+=( $(use_scons gpsd_protocols_${protocol} ${protocol}) )
+		scons_opts+=( ${protocol}=$(usex gpsd_protocols_${protocol}) )
 	done
 }
 
@@ -166,27 +173,21 @@ src_compile() {
 	export CHRPATH=
 	tc-export CC CXX PKG_CONFIG
 	export SHLINKFLAGS=${LDFLAGS} LINKFLAGS=${LDFLAGS}
-	escons
+	escons "${scons_opts[@]}"
 
 	use python && distutils-r1_src_compile
 }
 
 src_install() {
-	DESTDIR="${D}" escons install $(usex udev udev-install "")
+	DESTDIR="${D}" escons install "${scons_opts[@]}" $(usex udev udev-install "")
 
 	newconfd "${FILESDIR}"/gpsd.conf-2 gpsd
 	newinitd "${FILESDIR}"/gpsd.init-2 gpsd
 
 	# Cleanup bad alt copy due to Scons
-	rm -rf  "${D}"/usr/local/$(get_libdir)/python*/site-packages/gps*
-	find "${D}"/usr/local/ -type d -delete
+	rm -rf  "${D}"/python-discard/gps*
+	find "${D}"/python-discard/ -type d -delete
 	# Install correct multi-python copy
 	use python && distutils-r1_src_install
 
-}
-
-pkg_preinst() {
-	# Run the gpsd daemon as gpsd and group uucp; create it here
-	# as it doesn't seem to be needed during compile/install ...
-	enewuser gpsd -1 -1 -1 "uucp"
 }

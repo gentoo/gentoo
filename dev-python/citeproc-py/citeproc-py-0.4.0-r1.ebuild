@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 inherit distutils-r1
 
 DESCRIPTION="Yet another Python CSL Processor"
@@ -18,7 +18,7 @@ IUSE=""
 PATCHES=( "${FILESDIR}/b1a5f925527093b0b5c11507f379a908e3354820.patch" )
 
 RDEPEND="
-	dev-python/rnc2rng[${PYTHON_USEDEP}]
+	app-text/rnc2rng[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]"
 BDEPEND="
 	${RDEPEND}"

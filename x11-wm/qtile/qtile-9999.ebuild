@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
+
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit distutils-r1 virtualx
 
@@ -23,19 +24,17 @@ IUSE="test"
 # docs require sphinxcontrib-blockdiag and sphinxcontrib-seqdiag
 
 RDEPEND="
-	x11-libs/cairo[xcb]
+	x11-libs/cairo[X,xcb(+)]
 	x11-libs/pango
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/cairocffi-0.9.0[${PYTHON_USEDEP}]
 	>=dev-python/cffi-1.1.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4.1[${PYTHON_USEDEP}]
 	>=dev-python/xcffib-0.8.1[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/trollius[${PYTHON_USEDEP}]' 'python2*')
 "
-DEPEND="${RDEPEND}
+BDEPEND="
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		dev-python/xvfbwrapper[${PYTHON_USEDEP}]
 		x11-base/xorg-server[xephyr]
 		x11-apps/xeyes

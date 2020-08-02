@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -65,7 +65,7 @@ RDEPEND="
 	gles2? (
 		media-libs/mesa[gles2,wayland]
 	)
-	pipewire? ( >=media-video/pipewire-0.2 )
+	pipewire? ( =media-video/pipewire-0.2*:= )
 	rdp? ( >=net-misc/freerdp-2.0.0_rc2:= )
 	remoting? (
 		media-libs/gstreamer:1.0
@@ -83,7 +83,7 @@ RDEPEND="
 	)
 	xwayland? (
 		x11-base/xorg-server[wayland]
-		x11-libs/cairo[xcb]
+		x11-libs/cairo[X,xcb(+)]
 		>=x11-libs/libxcb-1.9
 		x11-libs/libXcursor
 	)
@@ -119,11 +119,11 @@ src_configure() {
 		$(meson_use jpeg image-jpeg)
 		$(meson_use webp image-webp)
 		-Dtools=debug,info,terminal
-		-Dsimple-dmabuf-drm=auto
 		$(meson_use examples demo-clients)
 		-Dsimple-clients=$(usex examples damage,dmabuf-v4l,im,shm,touch$(usex gles2 ,dmabuf-egl,egl "") "")
 		$(meson_use resize-optimization resize-pool)
 		-Dtest-junit-xml=false
+		-Dtest-gl-renderer=false
 		"${myconf[@]}"
 	)
 	meson_src_configure

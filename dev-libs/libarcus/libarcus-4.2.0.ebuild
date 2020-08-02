@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit cmake-utils python-single-r1
+inherit cmake python-single-r1
 
 MY_PN="libArcus"
 
@@ -20,9 +20,11 @@ IUSE="examples python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-python/sip[${PYTHON_USEDEP}]
 	dev-libs/protobuf
-	python? ( dev-python/protobuf-python[${PYTHON_USEDEP}] )"
+	$(python_gen_cond_dep '
+		dev-python/sip[${PYTHON_MULTI_USEDEP}]
+		python? ( dev-python/protobuf-python[${PYTHON_MULTI_USEDEP}] )
+	')"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
@@ -38,5 +40,5 @@ src_configure() {
 		-DBUILD_STATIC=$(usex static-libs ON OFF)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

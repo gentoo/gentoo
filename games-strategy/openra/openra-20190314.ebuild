@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -156,7 +156,7 @@ pkg_config() {
 	cert-sync --quiet "${EROOT}"/etc/ssl/certs/ca-certificates.crt
 	eend $?
 
-	if [[ -n ${ROOT%/} ]]; then
+	if [[ -n ${ROOT} ]]; then
 		echo
 		ewarn "Mono's cert-sync cannot write to your ROOT system so you must manually"
 		ewarn "copy the certificates from ${BROOT}/usr/share/.mono to ${EROOT}/usr/share/.mono."

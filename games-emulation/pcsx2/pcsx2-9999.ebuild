@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake git-r3 multilib toolchain-funcs wxwidgets
+inherit cmake flag-o-matic git-r3 multilib toolchain-funcs wxwidgets
 
 DESCRIPTION="A PlayStation 2 emulator"
 HOMEPAGE="https://www.pcsx2.net"
@@ -34,7 +34,6 @@ RDEPEND="
 	x11-libs/libXext[abi_x86_32(-)]
 	>=x11-libs/wxGTK-3.0.4-r301:3.0-gtk3[abi_x86_32(-),X]
 "
-# Ensure no incompatible headers from eselect-opengl are installed, bug #510730
 DEPEND="${RDEPEND}
 	dev-cpp/pngpp
 	dev-cpp/sparsehash
@@ -52,6 +51,9 @@ pkg_setup() {
 
 src_configure() {
 	multilib_toolchain_setup x86
+	# Build with ld.gold fails
+	# https://github.com/PCSX2/pcsx2/issues/1671
+	tc-ld-disable-gold
 
 	# pcsx2 build scripts will force CMAKE_BUILD_TYPE=Devel
 	# if it something other than "Devel|Debug|Release"
@@ -72,14 +74,15 @@ src_configure() {
 		-DPACKAGE_MODE=TRUE
 		-DXDG_STD=TRUE
 
-		-DCMAKE_INSTALL_PREFIX=/usr
 		-DCMAKE_LIBRARY_PATH="/usr/$(get_libdir)/${PN}"
 		-DDOC_DIR=/usr/share/doc/"${PF}"
 		-DEGL_API=FALSE
 		-DGTK3_API=TRUE
+		-DOPENCL_API=FALSE
 		-DPLUGIN_DIR="/usr/$(get_libdir)/${PN}"
 		# wxGTK must be built against same sdl version
 		-DSDL2_API=TRUE
+		-DUSE_VTUNE=FALSE
 	)
 
 	WX_GTK_VER="3.0-gtk3" setup-wxwidgets

@@ -1,0 +1,20 @@
+# build with newer qt-5.14
+# patch provided by  nrdufour at the wsjtx mailing list
+--- a/qt_helpers.hpp    2019-11-26 09:22:32.000000000 -0500
++++ b/qt_helpers.hpp    2020-02-03 11:30:07.488214336 -0500
+@@ -83,6 +83,7 @@
+   // std::hash<> specialization for QString based on the dbj2
+   // algorithm <http://www.cse.yorku.ca/~oz/hash.html> because qHash()
+   // is poor on 64-bit platforms due to being a 32-bit hash value
++  #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
+   template<>
+   struct hash<QString>
+   {
+@@ -96,6 +97,7 @@
+       return hash;
+     }
+   };
++#endif
+ }
+
+ // Register some useful Qt types with QMetaType

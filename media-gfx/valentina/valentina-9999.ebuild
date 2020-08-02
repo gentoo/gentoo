@@ -1,14 +1,14 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit mercurial qmake-utils gnome2-utils xdg
+inherit qmake-utils gnome2-utils xdg git-r3
 
 DESCRIPTION="Cloth patternmaking software"
-HOMEPAGE="https://valentinaproject.bitbucket.io/"
-EHG_REPO_URI="https://bitbucket.org/dismine/valentina"
-EHG_REVISION="develop"
+HOMEPAGE="https://gitlab.com/smart-pattern/valentina"
+EGIT_REPO_URI="https://gitlab.com/smart-pattern/valentina.git"
+EGIT_BRANCH="develop"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -28,6 +28,7 @@ CDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5[ssl]
+	dev-qt/qtopengl
 	dev-qt/qtprintsupport:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5

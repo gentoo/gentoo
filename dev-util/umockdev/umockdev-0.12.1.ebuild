@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit multilib-minimal python-any-r1
 
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/martinpitt/umockdev/releases/download/${PV}/${P}.tar
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+introspection static-libs test"
 RESTRICT="!test? ( test )"
 
@@ -27,11 +27,15 @@ DEPEND="${RDEPEND}
 		dev-libs/libgudev:=[${MULTILIB_USEDEP}] )
 	app-arch/xz-utils
 	>=dev-util/gtk-doc-am-1.14
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 # Tests seem to hang forever
 # RESTRICT="test"
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 multilib_src_configure() {
 	local ECONF_SOURCE="${S}"

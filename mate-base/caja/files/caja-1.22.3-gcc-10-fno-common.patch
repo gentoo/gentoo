@@ -1,0 +1,100 @@
+From 6bf49f348d8ce6debc8f645b667422bb9a261a2b Mon Sep 17 00:00:00 2001
+From: rbuj <robert.buj@gmail.com>
+Date: Thu, 30 Jan 2020 10:56:12 +0100
+Subject: [PATCH] Fix build using gcc 10 -fno-common flag
+
+---
+ eel/eel-background.c                      |  6 ++++--
+ libcaja-private/caja-global-preferences.c | 13 ++++++++++++
+ libcaja-private/caja-global-preferences.h | 24 +++++++++++------------
+ 3 files changed, 29 insertions(+), 14 deletions(-)
+
+diff --git a/libcaja-private/caja-global-preferences.c b/libcaja-private/caja-global-preferences.c
+index 2d3c3466c..2f1d90886 100644
+--- a/libcaja-private/caja-global-preferences.c
++++ b/libcaja-private/caja-global-preferences.c
+@@ -35,6 +35,19 @@
+ #include "caja-file-utilities.h"
+ #include "caja-file.h"
+ 
++GSettings *caja_preferences;
++GSettings *caja_media_preferences;
++GSettings *caja_window_state;
++GSettings *caja_icon_view_preferences;
++GSettings *caja_desktop_preferences;
++GSettings *caja_tree_sidebar_preferences;
++GSettings *caja_compact_view_preferences;
++GSettings *caja_list_view_preferences;
++GSettings *caja_extension_preferences;
++
++GSettings *mate_background_preferences;
++GSettings *mate_lockdown_preferences;
++
+ /*
+  * Public functions
+  */
+diff --git a/libcaja-private/caja-global-preferences.h b/libcaja-private/caja-global-preferences.h
+index 2eec02b4a..832811574 100644
+--- a/libcaja-private/caja-global-preferences.h
++++ b/libcaja-private/caja-global-preferences.h
+@@ -212,18 +212,18 @@ typedef enum
+ void caja_global_preferences_init                      (void);
+ char *caja_global_preferences_get_default_folder_viewer_preference_as_iid (void);
+ 
+-GSettings *caja_preferences;
+-GSettings *caja_media_preferences;
+-GSettings *caja_window_state;
+-GSettings *caja_icon_view_preferences;
+-GSettings *caja_desktop_preferences;
+-GSettings *caja_tree_sidebar_preferences;
+-GSettings *caja_compact_view_preferences;
+-GSettings *caja_list_view_preferences;
+-GSettings *caja_extension_preferences;
+-
+-GSettings *mate_background_preferences;
+-GSettings *mate_lockdown_preferences;
++extern GSettings *caja_preferences;
++extern GSettings *caja_media_preferences;
++extern GSettings *caja_window_state;
++extern GSettings *caja_icon_view_preferences;
++extern GSettings *caja_desktop_preferences;
++extern GSettings *caja_tree_sidebar_preferences;
++extern GSettings *caja_compact_view_preferences;
++extern GSettings *caja_list_view_preferences;
++extern GSettings *caja_extension_preferences;
++
++extern GSettings *mate_background_preferences;
++extern GSettings *mate_lockdown_preferences;
+ 
+ G_END_DECLS
+ 
+--- a/eel/eel-background.c	2020-04-06 17:58:28.060044227 -0400
++++ b/eel/eel-background.c	2020-04-06 18:01:18.246099978 -0400
+@@ -36,7 +36,6 @@
+ #include <gio/gio.h>
+ #include <math.h>
+ #include <stdio.h>
+-#include <libcaja-private/caja-global-preferences.h>
+ 
+ enum
+ {
+@@ -427,6 +426,7 @@
+ static void
+ init_fade (EelBackground *self)
+ {
++    GSettings *mate_background_preferences;
+     GtkWidget *widget = self->details->widget;
+     gboolean do_fade;
+ 
+@@ -434,8 +434,11 @@
+         return;
+     }
+ 
++    mate_background_preferences = g_settings_new ("org.mate.background");
+     do_fade = g_settings_get_boolean (mate_background_preferences,
+                                       MATE_BG_KEY_BACKGROUND_FADE);
++    g_object_unref (mate_background_preferences);
++
+     if (!do_fade) {
+     	return;
+     }

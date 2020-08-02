@@ -1,5 +1,77 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Mike Pagano <mpagano@gentoo.org> (2020-07-27)
+# Failed build on arm64
+# bug #732966
+dev-util/idea-community jbr11
+
+# Sam James <sam@gentoo.org> (2020-07-16)
+# Failed build on arm64
+# bug #674346
+net-misc/asterisk osplookup
+
+# Sam James <sam@gentoo.org> (2020-07-10)
+# Failed build with USE=tools
+# bug #732122
+dev-libs/xmlrpc-c tools
+
+# Sam James <sam@gentoo.org> (2020-07-09)
+# mariadb[rocksdb] fails to build on arm64
+# bug #731998
+dev-db/mariadb rocksdb
+
+# Sam James <sam@gentoo.org> (2020-07-03)
+# Rust is available here
+# bug #728558
+media-video/ffmpeg -rav1e
+
+# Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
+# Mask io-uring & zbc pending keywording
+sys-block/fio -io-uring
+
+# Michał Górny <mgorny@gentoo.org> (2020-06-19)
+# Requires dev-util/dwarves.
+sys-kernel/gentoo-kernel debug
+sys-kernel/vanilla-kernel debug
+
+# Sam James <sam@gentoo.org> (2020-06-11)
+# PGO works on arm64
+>=www-client/firefox-68.9.0 -pgo
+
+# Michał Górny <mgorny@gentoo.org> (2020-06-02)
+# Avoid unkeyworded deps, we really need a minimal install
+# for imagemagick.
+media-gfx/inkscape dia
+
+# Jimi Huotari <chiitoo@gentoo.org> (2020-05-17)
+# Mask until 'app-arch/lxqt-archiver' is keyworded.
+lxqt-base/lxqt-meta archiver
+
+# Georgy Yakovlev <gyakovlev@gentoo.org (2020-04-26)
+# static-pie works on arm64, #719444
+sys-libs/glibc -static-pie
+
+# Lars Wendler <polynomial-c@gentoo.org> (2020-04-20)
+# Not keyworded on arm64
+net-misc/whois xcrypt
+
+# Ettore Di Giacinto <mudler@gentoo.org> (2016-11-10)
+# Dependency has no stable keyword
+# and as for now we have only stable mate versions
+mate-base/mate bluetooth
+
+# Patrick McLean <chutzpah@gentoo.org> (2020-04-03)
+# Lots of deps for little gain
+dev-python/joblib doc
+
+# Matt Turner <mattst88@gentoo.org> (2020-02-02)
+# dev-libs/mongo-c-driver is not keyworded
+net-dialup/freeradius mongodb
+
+# Michał Górny <mgorny@gentoo.org> (2020-01-11)
+# Unkeyworded dep.
+kde-apps/cantor julia
 
 # Rick Farina <zerochaos@gentoo.com> (2020-01-03)
 # ubertooth needs net-libs/libbtbb and net-wireless/ubertooth which aren't keyworded
@@ -37,10 +109,6 @@ sys-apps/flashrom jlink-spi
 # dep not keyworded here
 media-gfx/gnome-photos upnp-av
 
-# Patrick McLean <chutzpah@gentoo.org> (2019-06-14)
-# test deps not keyworded
-dev-util/bcc test
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-01)
 # not yet keyworded
 dev-java/openjdk javafx
@@ -48,12 +116,6 @@ dev-java/openjdk javafx
 # Aaron Bauman <bman@gentoo.org> (2019-05-20)
 # doc USE ultimately pulls in dev-lang/ocaml[ocamlopt]
 media-gfx/enblend doc
-
-# Patrick McLean <chutzpah@gentoo.org> (2019-04-15)
-# pending re-keyword request, bug 615400
-net-analyzer/rrdtool rados
-sys-fs/multipath-tools rbd
-www-servers/uwsgi uwsgi_plugins_rados
 
 # Aaron Bauman <bman@gentoo.org> (2019-04-08)
 # app-text/dblatex not keyword yet
@@ -86,11 +148,9 @@ media-libs/mlt -sdl
 media-libs/openal -sdl
 media-sound/mpg123 -sdl
 media-video/ffmpeg -sdl
-media-video/libav -sdl
 media-video/mplayer -sdl
 media-video/mpv -sdl
 media-video/transcode -sdl
-virtual/ffmpeg -sdl
 >=x11-libs/wxGTK-3 -sdl
 
 # Roy Bamford <neddyseagoon@gentoo.org> (2019-02-24)
@@ -113,19 +173,10 @@ dev-python/networkx pandas test
 dev-python/matplotlib doc
 net-libs/gnome-online-accounts gnome
 
-# Tomáš Mózes <hydrapolic@gmail.com> (2018-06-19)
-# Needs dev-libs/libmaxminddb which isn't keyworded
-www-servers/nginx nginx_modules_http_geoip2 nginx_modules_stream_geoip2
-
 # Jan Vesely <jano.vesely@gmail.com> (2018-06-15)
 # Mesa clover only works on r600 or radeonsi GPUs. The corresponding
 # video_cards useflags are not available on arm
 media-libs/mesa opencl
-
-# Alex Bennee <alex@bennee.com> (2018-05-31)
-# bunch of dev-perl packages not yet keyworded
-# and the i3 ebuild currently has RESTRICT="test" due to upstream bug
-x11-wm/i3 test
 
 # Mart Raudsepp <leio@gentoo.org> (2018-05-30)
 # app-text/pandoc not keyworded yet
@@ -135,11 +186,6 @@ dev-python/notebook doc
 # Mart Raudsepp <leio@gentoo.org> (2018-05-30)
 # Require old gnome2 libraries, not keywording legacy on purpose
 sys-devel/distcc gnome
-
-# Mart Raudsepp <leio@gentoo.org> (2018-05-13)
-# Not bothering with otherwise p.masked old gcc for the
-# extra dev-libs/cloog dependency with USE=graphite
-<sys-devel/gcc-5 graphite
 
 # Mart Raudsepp <leio@gentoo.org> (2018-05-06)
 # New enough dev-ruby/webmock not keyworded yet
@@ -171,22 +217,13 @@ net-fs/samba addc addns ads cluster python test
 # Some more unkeyworded dependencies.
 app-text/tesseract scrollview
 dev-cpp/eigen test
-kde-frameworks/frameworkintegration appstream
 mate-base/mate help
 mate-base/mate-applets-meta appindicator sensors
 mate-extra/caja-extensions gajim
 net-fs/samba dmapi
-net-misc/ntpsec rclock_oncore rclock_pps
 sci-libs/gdal armadillo netcdf
 sys-fs/btrfs-progs reiserfs
 www-client/chromium widevine
-www-servers/lighttpd memcached
-x11-misc/xscreensaver gdm
-
-# Michał Górny <mgorny@gentoo.org> (2018-02-28)
-# Requires masked dependent flags.
-dev-lang/php ldap-sasl
-net-nds/openldap cxx
 
 # Matthew Thode <prometheanfire@gentoo.org> (2018-02-23)
 # net-proxy/haproxy isn't keyworded for arm64
@@ -198,19 +235,10 @@ dev-python/ipython notebook
 dev-python/networkx scipy
 dev-ruby/haml test
 media-libs/opencv contribdnn
-net-analyzer/icinga2 classicui
-
-# Matthew Thode <prometheanfire@gentoo.org> (2018-02-16)
-# USE=test requires dev-db/mongodb which is not keyworded
-dev-python/pymongo test
 
 # Michał Górny <mgorny@gentoo.org> (2018-02-16)
 # USE=test-full requires USE=pkcs11 that is use.masked.
 net-libs/gnutls test-full
-
-# Matthew Thode <prometheanfire@gentoo.org> (2018-02-13)
-# USE=scipy requires scipy, which is not keyworded yet
-dev-python/networkx scipy
 
 # Mart Raudsepp <leio@gentoo.org> (2018-02-13)
 # USE=dmraid requires sys-fs/dmraid that is not keyworded yet.
@@ -242,10 +270,6 @@ dev-libs/dbus-c++ ecore
 app-office/libreoffice coinmp eds postgres libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript libreoffice_extensions_wiki-publisher
 
 # Michał Górny <mgorny@gentoo.org> (2018-01-23)
-# Requires app-accessibility/brltty that is not keyworded here.
-app-emulation/qemu accessibility
-
-# Michał Górny <mgorny@gentoo.org> (2018-01-23)
 # Requires app-emulation/xen that is not keyworded here.
 app-emulation/libvirt xen
 
@@ -261,10 +285,6 @@ dev-python/python-neutronclient test
 # NeddySeagoon <neddysegoon@gentoo.org> (2017-08-24)
 # Support for g15daemon still needs -9999 packages on all arches
 media-sound/mumble g15
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan vulkan-overlay
 
 # Alexis Ballier <aballier@gentoo.org> (2017-07-20)
 # media-libs/libemf fails with #error unknown CPU.
@@ -290,10 +310,6 @@ app-crypt/qca botan
 app-emulation/libvirt openvz
 
 # Alexis Ballier <aballier@gentoo.org> (2017-07-10)
-# sys-firmware/ipxe does not build, mask x86 targets needing it
-app-emulation/qemu qemu_softmmu_targets_i386 qemu_softmmu_targets_x86_64
-
-# Alexis Ballier <aballier@gentoo.org> (2017-07-10)
 # media-gfx/nvidia-texture-tools does not support arm64
 media-libs/devil nvtt
 
@@ -308,11 +324,6 @@ app-emulation/libvirt virtualbox
 gnome-base/nautilus previewer
 app-crypt/libsecret test
 
-# Michał Górny <mgorny@gentoo.org> (2017-06-28)
-# app-misc/dtach & dev-tcltk/tcllib are not keyworded, and tests are
-# restricted anyway, so no point in pursuing it right now.
-app-shells/bash-completion test
-
 # Alexis Ballier <aballier@gentoo.org> (2017-06-21)
 # net-fs/openafs-kernel does not recognize arm64 properly
 # Need to check if this has a chance to work with in-kernel drivers
@@ -321,14 +332,6 @@ app-crypt/heimdal afs
 # James Le Cuirot <chewi@gentoo.org> (2017-05-22)
 # Only available on some architectures.
 dev-java/icedtea -shenandoah
-
-# Michael Weber <xmw@gentoo.org> (2017-05-18)
-# mask due missing keywords on dev-python/epydoc[latex]
-sys-apps/portage epydoc
-
-# Jason Zaman <perfinion@gentoo.org> (2017-05-09)
-# x11-libs/libXpresent is not keyworded on arm64
-xfce-base/xfwm4 xpresent
 
 # James Le Cuirot <chewi@gentoo.org> (2017-04-25)
 # Oracle doesn't include VisualVM on this platform.
@@ -340,7 +343,7 @@ app-portage/g-sorcery bson
 
 # Thomas Deutschmann <whissi@gentoo.org> (2017-03-01)
 # Unkeyworded depedencies
-app-admin/rsyslog kafka kubernetes mongodb normalize rabbitmq
+app-admin/rsyslog mongodb
 
 # Michael Weber <xmw@gentoo.org> (2017-03-01)
 # untested dependencies
@@ -352,35 +355,14 @@ app-text/evince dvi nautilus postscript t1lib xps
 net-wireless/blueman appindicator
 x11-libs/gtk+ cloudprint
 
-# Robin Johnson <robbat2@gentoo.org> (2017-02-14)
-# Not tk for this arch yet
-dev-libs/libisoburn launch-frontend launch-frontend-setuid frontend-optional
-
 # Thomas Deutschmann <whissi@gentoo.org> (2017-02-14)
 # No lua keyworded for this arch yet
 # libpcre jit is not (yet?) support on this arch
 www-servers/nginx nginx_modules_http_lua pcre-jit
 
-# Mart Raudsepp <leio@gentoo.org> (2017-02-04)
-# dev-libs/snowball-stemmer not keyworded
-dev-libs/appstream-glib stemmer
-
-# Mart Raudsepp <leio@gentoo.org> (2017-01-28)
-# app-admin/hddtemp not keyworded
-app-admin/gkrellm hddtemp
-
 # Steev Klimaszewski <steev@gentoo.org> (2016-03-04)
 # Chromium uses an internal tcmalloc that doesn't support this arch yet.
 www-client/chromium tcmalloc
-
-# Mike Frysinger <vapier@gentoo.org> (2015-07-20)
-# Mart Raudsepp <leio@gentoo.org> (2017-02-04)
-# Needs deps tested.
-net-misc/curl  metalink
-
-# Mike Frysinger <vapier@gentoo.org> (2015-03-16)
-# Needs sci-physics/bullet tested #499974
-dev-libs/efl physics
 
 # Roy Bamford <neddyseagoon@gentoo.org> (2017-01-26)
 # gcj-6.3 won't bootstrap icedtea 7
@@ -410,13 +392,9 @@ dev-python/ipython nbconvert
 # sci-libs/hdf does not build properly on arm
 dev-perl/PDL	hdf
 
-# Michael Weber <xmw@gentoo.org> (2013-08-23)
-# Unkeyworded deps
-media-gfx/fim graphicsmagick svg
-
 # Markus Meier <maekke@gentoo.org> (2013-08-04)
 # Unkeyworded deps, bug #474026
-app-admin/conky lua-cairo lua-imlib xmms2 moc
+app-admin/conky lua-cairo xmms2 moc
 
 # Sergey Popov <pinkbyte@gentoo.org> (2013-07-30)
 # Not tested
@@ -425,14 +403,6 @@ media-libs/devil allegro nvtt
 # Andreas K. Huettel <dilfridge@gentoo.org> (2013-05-27)
 # Firmware loader not keyworded yet
 sci-libs/linux-gpib firmware
-
-# Christoph Junghans <junghans@gentoo.org> (2013-04-29)
-# MKL not available on this arch
-media-gfx/povray mkl
-
-# Benda Xu <heroxbd@gentoo.org> (2013-04-01)
-# dev-ml/lablgtk not keyworded
-net-misc/unison gtk
 
 # Julian Ospald <hasufell@gentoo.org> (2013-03-31)
 # depends on mono
@@ -443,57 +413,23 @@ net-misc/unison gtk
 app-office/calligra spacenav
 media-gfx/pstoedit emf
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2013-01-22)
-# remove mask if/when media-gfx/argyllcms is keywored here.
-x11-misc/colord extra-print-profiles
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
 # requires app-office/unoconv, which requires virtual/ooo, which is not
 # keyworded here. Remove mask if this situation changes.
 gnome-extra/sushi office
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-30)
-# requires dev-util/bustle, which is written in haskell
-# remove mask if/when dev-lang/ghc is keywoded for arm
-dev-util/dbus-test-runner test
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-27)
 # remove mask when >=app-editors/gedit-3.6 is keyworded here
 dev-util/devhelp gedit
-
-# Markus Meier <maekke@gentoo.org> (2012-Dez-25)
-# unkeyworded deps for app-accessibility/speech-dispatcher
-app-accessibility/speech-dispatcher flite
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2012-04-12)
 # Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
 # gobject-introspection[doctool], bug #411761
 dev-libs/gobject-introspection -doctool
 
-# Anthony G. Basile <blueness@gentoo.org> (2011-12-21)
-# Mask the vde flag on tinc because net-misc/vde is not
-# keyworded for arm
-net-vpn/tinc vde
-
-# Tobias Klausmann <klausman@gentoo.org> (2011-11-02)
-# libpcre jit is not supported on alpha
-dev-libs/libpcre jit
-
-# Markus Meier <maekke@gentoo.org> (2011-09-05)
-# unkeyworded deps for bug 379657 and bug 379651
-app-admin/packagekit-base entropy
-
-# Jim Ramsay <lack@gentoo.org> (2008-11-05)
-# app-admin/gkrellm may pull in net-libs/libntlm, which is not keyworded
-app-admin/gkrellm ntlm
-
-# missing keyword for sys-cluster/openmpi sys-cluster/mpich2
-dev-libs/boost mpi
-
 # missing keywords
-media-sound/sox ladspa
 media-plugins/gst-plugins-meta aac dts dv lame libvisual taglib vcd wavpack
 
 # Ian Whyman <thev00d00@gentoo.org> (2017-09-05)
-# missing keywords dev-lang/duktape media-libs/lastfmlib
-net-misc/gerbera javascript lastfm
+# missing keywords media-libs/lastfmlib
+net-misc/gerbera lastfm

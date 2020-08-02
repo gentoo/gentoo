@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit versionator virtualx autotools eutils gnome2 multilib python-single-r1
+inherit versionator virtualx autotools eutils gnome2 ltprune multilib python-single-r1
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
@@ -49,8 +49,10 @@ RDEPEND=">=dev-libs/glib-2.40.0:2
 	>=media-libs/libpng-1.6.25:0
 	python?	(
 		${PYTHON_DEPS}
-		>=dev-python/pygtk-2.10.4:2[${PYTHON_USEDEP}]
-		>=dev-python/pycairo-1.0.2[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/pygtk-2.10.4:2[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/pycairo-1.0.2[${PYTHON_MULTI_USEDEP}]
+		')
 	)
 	>=media-libs/tiff-3.5.7:0
 	>=gnome-base/librsvg-2.40.6:2
@@ -114,10 +116,7 @@ src_configure() {
 	local myconf=(
 		GEGL=${EPREFIX}/usr/bin/gegl-0.3
 		GDBUS_CODEGEN=${EPREFIX}/bin/false
-
 		--enable-default-binary
-		--disable-silent-rules
-
 		$(use_with !aqua x)
 		$(use_with aalib aa)
 		$(use_with alsa)

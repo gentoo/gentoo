@@ -1,0 +1,39 @@
+From df4dc1c6a92d9f50cfe7f56d9507eca5bc56870e Mon Sep 17 00:00:00 2001
+From: Stefano Rivera <stefano@rivera.za.net>
+Date: Sun, 2 Feb 2020 13:02:58 +0100
+Subject: [PATCH] Replace recursive knot with explicitly unpicklable object
+
+Python 3.8 was able to pickle the previously unpicklable. Instead of
+relying on limits, let's raise an explicit error.
+
+Fixes: #341
+---
+ tests/test_runner.py | 13 ++++---------
+ 1 file changed, 4 insertions(+), 9 deletions(-)
+
+diff --git a/tests/test_runner.py b/tests/test_runner.py
+index 51c8a61..a9029e8 100644
+--- a/tests/test_runner.py
++++ b/tests/test_runner.py
+@@ -577,17 +577,12 @@ def non_top_function(): return 4
+         t2 = pickle.loads(t1p)
+         assert 4 == t2.actions[0].py_callable()
+ 
+-    @pytest.mark.xfail('PLAT_IMPL == "PyPy"')  # pypy can handle it :)
+     def test_not_picklable_raises_InvalidTask(self):
+-        # create a large enough recursive obj so pickle fails
+-        d1 = {}
+-        last = d1
+-        for x in range(400):
+-            dn = {'p': last}
+-            last = dn
+-        d1['p'] = last
+-
+         def non_top_function(): pass
++        class Unpicklable:
++            def __getstate__(self):
++                raise pickle.PicklingError("DO NOT PICKLE")
++        d1 = Unpicklable()
+         t1 = Task('t1', [non_top_function, (d1,)])
+         pytest.raises(InvalidTask, runner.JobTask, t1)
+ 

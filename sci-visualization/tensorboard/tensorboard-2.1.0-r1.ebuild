@@ -30,8 +30,7 @@ RDEPEND="
 	>=dev-python/setuptools-41[${PYTHON_USEDEP}]
 	dev-python/werkzeug[${PYTHON_USEDEP}]
 	dev-python/wheel[${PYTHON_USEDEP}]
-	>=sci-libs/scipy-1.4.1[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]"
+	>=sci-libs/scipy-1.4.1[${PYTHON_USEDEP}]"
 BDEPEND="app-arch/unzip
 	${PYTHON_DEPS}"
 PDEPEND="sci-libs/tensorflow[python,${PYTHON_USEDEP}]"

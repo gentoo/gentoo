@@ -1,0 +1,23 @@
+diff -Naur wmspaceweather-1.04.orig.orig/wmgeneral/wmgeneral.h wmspaceweather-1.04.orig/wmgeneral/wmgeneral.h
+--- wmspaceweather-1.04.orig.orig/wmgeneral/wmgeneral.h	1999-04-11 07:35:53.000000000 +0200
++++ wmspaceweather-1.04.orig/wmgeneral/wmgeneral.h	2020-03-01 16:13:29.843346352 +0100
+@@ -28,7 +28,7 @@
+  /* Global variable */
+ /*******************/
+ 
+-Display		*display;
++extern Display		*display;
+ 
+   /***********************/
+  /* Function Prototypes */
+diff -Naur wmspaceweather-1.04.orig.orig/wmSpaceWeather/wmSpaceWeather.c wmspaceweather-1.04.orig/wmSpaceWeather/wmSpaceWeather.c
+--- wmspaceweather-1.04.orig.orig/wmSpaceWeather/wmSpaceWeather.c	1999-04-11 07:35:53.000000000 +0200
++++ wmspaceweather-1.04.orig/wmSpaceWeather/wmSpaceWeather.c	2020-03-01 16:13:38.172348429 +0100
+@@ -91,6 +91,7 @@
+ char            URL[1024];
+ int		ForceUpdate2;
+ 
++Display		*display;
+ 
+ void ParseCMDLine(int argc, char *argv[]);
+ void pressEvent(XButtonEvent *xev);

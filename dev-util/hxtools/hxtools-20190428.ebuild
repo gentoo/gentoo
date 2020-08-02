@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ src_install() {
 	default
 
 	# man2html is provided by man
-	rm -r "${ED}"/usr/bin/man2html || die 
+	rm -r "${ED}"/usr/bin/man2html || die
 	rm -r "${ED}"/usr/share/man/man1/man2html* || die
 
 	# Don't collide with dev-util/cwdiff

@@ -6,23 +6,31 @@ EAPI=6
 MY_PN="Flask-Gravatar"
 MY_P=${MY_PN}-${PV}
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..9} )
 inherit distutils-r1
 
 DESCRIPTION="Small extension for Flask to make usage of Gravatar service easy"
 HOMEPAGE="https://github.com/zzzsochi/Flask-Gravatar/"
 SRC_URI="mirror://pypi/F/${MY_PN}/${MY_P}.tar.gz"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
-
 SLOT="0"
-
 KEYWORDS="amd64 x86"
 
 RDEPEND="dev-python/flask[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	dev-python/pytest-runner[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
-"
 
-S=${WORKDIR}/${MY_P}
+distutils_enable_tests pytest
+
+src_prepare() {
+	sed -i -e '/pytest-runner/d' setup.py || die
+	sed -e 's:--pep8::' \
+		-e 's:--cov=flask_gravatar --cov-report=term-missing::' \
+		-i pytest.ini || die
+	distutils-r1_src_prepare
+}
+
+python_test() {
+	cd tests || die
+	pytest -vv || die "Tests failed with ${EPYTHON}"
+}

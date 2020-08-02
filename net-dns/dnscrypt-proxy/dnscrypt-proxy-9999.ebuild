@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-EGO_PN="github.com/jedisct1/${PN}"
+EGO_PN="github.com/DNSCrypt/${PN}"
 
 inherit fcaps go-module systemd
 
@@ -16,7 +16,7 @@ else
 fi
 
 DESCRIPTION="A flexible DNS proxy, with support for encrypted DNS protocols"
-HOMEPAGE="https://github.com/jedisct1/dnscrypt-proxy"
+HOMEPAGE="https://github.com/DNSCrypt/dnscrypt-proxy"
 
 LICENSE="Apache-2.0 BSD ISC MIT MPL-2.0"
 SLOT="0"
@@ -30,12 +30,18 @@ RDEPEND="
 "
 
 FILECAPS=( cap_net_bind_service+ep usr/bin/dnscrypt-proxy )
-PATCHES=( "${FILESDIR}"/config-full-paths-r10.patch )
+
+PATCHES=( "${FILESDIR}"/config-full-paths-r11.patch )
 
 src_compile() {
 	pushd "${PN}" >/dev/null || die
-	go build -buildmode="$(usex pie pie default)" || die
+	go build -v -x -mod=readonly -mod=vendor -buildmode="$(usex pie pie default)" || die
 	popd >/dev/null || die
+}
+
+src_test() {
+	cd "${PN}" || die
+	go test -mod=vendor -buildmode="$(usex pie pie default)" || die "Failed to run tests"
 }
 
 src_install() {
@@ -95,5 +101,5 @@ pkg_postinst() {
 	elog
 	elog "nameserver 127.0.0.1"
 	elog
-	elog "Also see https://github.com/jedisct1/${PN}/wiki"
+	elog "Also see https://github.com/DNSCrypt/${PN}/wiki"
 }

@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>crypto@gentoo.org</email>
-    <name>Crypto</name>
-</maintainer>
 <maintainer type="person">
         <email>zlogene@gentoo.org</email>
         <name>Mikle Kolyada</name>
 </maintainer>
-  <longdescription>
-    PC/SC Architecture smartcard middleware library
-  </longdescription>
-
   <use>
     <flag name="embedded">limit RAM and CPU ressources by disabling features</flag>
     <flag name="libusb" restrict="&gt;=sys-apps/pcsc-lite-1.8.0">

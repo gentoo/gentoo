@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SRC_URI="https://dianne.skoll.ca/projects/rp-pppoe/download/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="tk"
 
 RDEPEND="
@@ -79,12 +79,12 @@ src_compile() {
 	fi
 }
 
-src_install () {
+src_install() {
 	cd "${S}/src" || die
 	emake DESTDIR="${D}" install #docdir=/usr/share/doc/${PF} install
 
 	#Don't use compiled rp-pppoe plugin - see pkg_preinst below
-	local pppoe_plugin="${ED%/}/etc/ppp/plugins/rp-pppoe.so"
+	local pppoe_plugin="${ED}/etc/ppp/plugins/rp-pppoe.so"
 	if [ -f "${pppoe_plugin}" ] ; then
 		rm "${pppoe_plugin}" || die
 	fi
@@ -105,7 +105,7 @@ src_install () {
 
 pkg_preinst() {
 	# Use the rp-pppoe plugin that comes with net-dialup/pppd
-	if [ -n "${PPPD_VER}" ] && [ -f "${EROOT%/}/usr/lib/pppd/${PPPD_VER}/rp-pppoe.so" ] ; then
+	if [ -n "${PPPD_VER}" ] && [ -f "${EROOT}/usr/lib/pppd/${PPPD_VER}/rp-pppoe.so" ] ; then
 		dosym ../../../usr/lib/pppd/${PPPD_VER}/rp-pppoe.so /etc/ppp/plugins/rp-pppoe.so
 	fi
 }

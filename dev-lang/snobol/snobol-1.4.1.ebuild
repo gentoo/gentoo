@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -35,9 +35,9 @@ src_prepare() {
 }
 
 src_configure() {
-	./configure --prefix="${EPREFIX%/}/usr" \
-		--snolibdir="${EPREFIX%/}/usr/lib/snobol4" \
-		--mandir="${EPREFIX%/}/usr/share/man" \
+	./configure --prefix="${EPREFIX}/usr" \
+		--snolibdir="${EPREFIX}/usr/lib/snobol4" \
+		--mandir="${EPREFIX}/usr/share/man" \
 		--add-cflags="${CFLAGS}"
 }
 

@@ -9,9 +9,6 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
-	<longdescription>
-		MiniUPnP Internet Gateway Device Deamon, used to allow UPnP enabled clients to forward ports.
-	</longdescription>
 	<use>
 		<flag name="leasefile">Enable lease file.</flag>
 		<flag name="igd2">Build for IGDv2 instead of an IGDv1</flag>

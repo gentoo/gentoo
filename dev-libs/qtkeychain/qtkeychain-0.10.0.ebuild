@@ -9,8 +9,8 @@ HOMEPAGE="https://github.com/frankosterfeld/qtkeychain"
 DESCRIPTION="Qt API for storing passwords securely"
 
 if [[ ${PV} != *9999* ]]; then
-	SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	SRC_URI="https://github.com/frankosterfeld/qtkeychain/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="${HOMEPAGE}.git"
@@ -23,14 +23,15 @@ IUSE="gnome-keyring"
 BDEPEND="
 	dev-qt/linguist-tools:5
 "
-RDEPEND="
+DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
-	gnome-keyring? ( dev-libs/glib:2 )
+	gnome-keyring? (
+		app-crypt/libsecret
+		dev-libs/glib:2
+	)
 "
-DEPEND="${RDEPEND}
-	gnome-keyring? ( gnome-base/libgnome-keyring )
-"
+RDEPEND="${DEPEND}"
 
 DOCS=( ChangeLog ReadMe.txt )
 

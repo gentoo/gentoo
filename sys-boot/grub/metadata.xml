@@ -23,14 +23,11 @@
 	<flag name="libzfs">
 		Enable support for <pkg>sys-fs/zfs</pkg>
 	</flag>
-	<flag name="multislot">
-		Allow concurrent installation of <pkg>sys-boot/grub</pkg> SLOT 0 and
-		<pkg>sys-boot/grub</pkg> SLOT 2 by renaming all programs.
-	</flag>
 	<flag name="themes">Build and install GRUB themes (starfield)</flag>
 	<flag name="truetype">Build and install grub-mkfont conversion utility</flag>
 </use>
 <upstream>
 	<remote-id type="sourceforge">dejavu</remote-id>
+	<remote-id type="cpe">cpe:/a:gnu:grub</remote-id>
 </upstream>
 </pkgmetadata>

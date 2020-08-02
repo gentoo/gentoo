@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,11 +6,11 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
 if [[ ${PV} = *9999* ]]; then
-    EGIT_REPO_URI=( "https://gitlab.freedesktop.org/telepathy/${PN}" )
-    inherit git-r3
+	EGIT_REPO_URI=( "https://gitlab.freedesktop.org/telepathy/${PN}" )
+	inherit git-r3
 else
-    SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
-    KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 inherit python-any-r1 cmake virtualx
 
@@ -72,9 +72,9 @@ src_configure() {
 }
 
 src_test() {
-	# some tests require D-Bus
+	# some tests require D-Bus, bug #732110
 	local myctestargs=(
-		-E "(BaseConnectionManager|BaseProtocol)"
+		-E "(BaseConnectionManager|BaseProtocol|StreamTubeHandlers)"
 	)
 	pushd "${BUILD_DIR}" > /dev/null || die
 	virtx cmake_src_test

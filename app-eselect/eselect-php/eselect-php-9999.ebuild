@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit systemd git-r3 autotools
+inherit git-r3 autotools
 
 DESCRIPTION="PHP eselect module"
 HOMEPAGE="https://gitweb.gentoo.org/proj/eselect-php.git/"
@@ -19,11 +19,11 @@ RDEPEND="app-admin/eselect
 	apache2? ( www-servers/apache[apache2_modules_dir] )"
 
 src_prepare() {
-	eapply_user
+	default
 	eautoreconf
 }
 
-src_configure(){
+src_configure() {
 	# We expect localstatedir to be "var"ish, not "var/lib"ish, because
 	# that's what PHP upstream expects. See for example the FPM
 	# configuration where they put logs in @localstatedir@/log.
@@ -35,15 +35,4 @@ src_configure(){
 		  --with-piddir="${EPREFIX}/run" \
 		  $(use_enable apache2) \
 		  $(use_enable fpm)
-}
-
-src_install() {
-	default
-
-	if use fpm ; then
-		systemd_dotmpfilesd "${FILESDIR}/php-fpm.conf"
-		sed -e "s,@libdir@,$(get_libdir),g" "${FILESDIR}/php-fpm-launcher-r3" > "${T}"/php-fpm-launcher || die
-		exeinto /usr/libexec
-		doexe "${T}"/php-fpm-launcher
-	fi
 }

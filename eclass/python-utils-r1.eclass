@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-utils-r1.eclass
@@ -16,8 +16,8 @@
 # This eclass does not set any metadata variables nor export any phase
 # functions. It can be inherited safely.
 #
-# For more information, please see the wiki:
-# https://wiki.gentoo.org/wiki/Project:Python/python-utils-r1
+# For more information, please see the Python Guide:
+# https://dev.gentoo.org/~mgorny/python-guide/
 
 case "${EAPI:-0}" in
 	[0-4]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
@@ -41,7 +41,7 @@ inherit toolchain-funcs
 _PYTHON_ALL_IMPLS=(
 	pypy3
 	python2_7
-	python3_6 python3_7 python3_8
+	python3_6 python3_7 python3_8 python3_9
 )
 readonly _PYTHON_ALL_IMPLS
 
@@ -77,7 +77,7 @@ _python_impl_supported() {
 	# keep in sync with _PYTHON_ALL_IMPLS!
 	# (not using that list because inline patterns shall be faster)
 	case "${impl}" in
-		python2_7|python3_[678]|pypy3)
+		python2_7|python3_[6789]|pypy3)
 			return 0
 			;;
 		jython2_7|pypy|pypy1_[89]|pypy2_0|python2_[56]|python3_[12345])
@@ -198,7 +198,7 @@ _python_impl_matches() {
 # This variable is set automatically in the following contexts:
 #
 # python-r1: Set in functions called by python_foreach_impl() or after
-# calling python_export_best().
+# calling python_setup().
 #
 # python-single-r1: Set after calling python-single-r1_pkg_setup().
 #
@@ -217,7 +217,7 @@ _python_impl_matches() {
 # This variable is set automatically in the following contexts:
 #
 # python-r1: Set in functions called by python_foreach_impl() or after
-# calling python_export_best().
+# calling python_setup().
 #
 # python-single-r1: Set after calling python-single-r1_pkg_setup().
 #
@@ -228,116 +228,24 @@ _python_impl_matches() {
 # python2.7
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_SITEDIR
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# The path to Python site-packages directory.
-#
-# Set and exported on request using python_export().
-# Requires a proper build-time dependency on the Python implementation.
-#
-# Example value:
-# @CODE
-# /usr/lib64/python2.7/site-packages
-# @CODE
-
-# @ECLASS-VARIABLE: PYTHON_INCLUDEDIR
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# The path to Python include directory.
-#
-# Set and exported on request using python_export().
-# Requires a proper build-time dependency on the Python implementation.
-#
-# Example value:
-# @CODE
-# /usr/include/python2.7
-# @CODE
-
-# @ECLASS-VARIABLE: PYTHON_LIBPATH
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# The path to Python library.
-#
-# Set and exported on request using python_export().
-# Valid only for CPython. Requires a proper build-time dependency
-# on the Python implementation.
-#
-# Example value:
-# @CODE
-# /usr/lib64/libpython2.7.so
-# @CODE
-
-# @ECLASS-VARIABLE: PYTHON_CFLAGS
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# Proper C compiler flags for building against Python. Obtained from
-# pkg-config or python-config.
-#
-# Set and exported on request using python_export().
-# Valid only for CPython. Requires a proper build-time dependency
-# on the Python implementation and on pkg-config.
-#
-# Example value:
-# @CODE
-# -I/usr/include/python2.7
-# @CODE
-
-# @ECLASS-VARIABLE: PYTHON_LIBS
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# Proper C compiler flags for linking against Python. Obtained from
-# pkg-config or python-config.
-#
-# Set and exported on request using python_export().
-# Valid only for CPython. Requires a proper build-time dependency
-# on the Python implementation and on pkg-config.
-#
-# Example value:
-# @CODE
-# -lpython2.7
-# @CODE
-
-# @ECLASS-VARIABLE: PYTHON_CONFIG
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# Path to the python-config executable.
-#
-# Set and exported on request using python_export().
-# Valid only for CPython. Requires a proper build-time dependency
-# on the Python implementation and on pkg-config.
-#
-# Example value:
-# @CODE
-# /usr/bin/python2.7-config
-# @CODE
-
-# @ECLASS-VARIABLE: PYTHON_PKG_DEP
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# The complete dependency on a particular Python package as a string.
-#
-# Set and exported on request using python_export().
-#
-# Example value:
-# @CODE
-# dev-lang/python:2.7[xml]
-# @CODE
-
-# @ECLASS-VARIABLE: PYTHON_SCRIPTDIR
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# The location where Python scripts must be installed for current impl.
-#
-# Set and exported on request using python_export().
-#
-# Example value:
-# @CODE
-# /usr/lib/python-exec/python2.7
-# @CODE
-
 # @FUNCTION: python_export
 # @USAGE: [<impl>] <variables>...
+# @INTERNAL
+# @DESCRIPTION:
+# Backwards compatibility function.  The relevant API is now considered
+# private, please use python_get* instead.
+python_export() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	eqawarn "python_export() is part of private eclass API."
+	eqawarn "Please call python_get*() instead."
+
+	_python_export "${@}"
+}
+
+# @FUNCTION: _python_export
+# @USAGE: [<impl>] <variables>...
+# @INTERNAL
 # @DESCRIPTION:
 # Set and export the Python implementation-relevant variables passed
 # as parameters.
@@ -350,7 +258,7 @@ _python_impl_matches() {
 # The variables which can be exported are: PYTHON, EPYTHON,
 # PYTHON_SITEDIR. They are described more completely in the eclass
 # variable documentation.
-python_export() {
+_python_export() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local impl var
@@ -367,7 +275,7 @@ python_export() {
 		*)
 			impl=${EPYTHON}
 			if [[ -z ${impl} ]]; then
-				die "python_export called without a python implementation and EPYTHON is unset"
+				die "_python_export called without a python implementation and EPYTHON is unset"
 			fi
 			;;
 	esac
@@ -433,9 +341,13 @@ python_export() {
 				local val
 
 				case "${impl}" in
-					python*)
-						# python-2.7, python-3.2, etc.
+					python2*|python3.6|python3.7*)
+						# python* up to 3.7
 						val=$($(tc-getPKG_CONFIG) --libs ${impl/n/n-}) || die
+						;;
+					python*)
+						# python3.8+
+						val=$($(tc-getPKG_CONFIG) --libs ${impl/n/n-}-embed) || die
 						;;
 					*)
 						die "${impl}: obtaining ${var} not supported"
@@ -467,16 +379,12 @@ python_export() {
 				case ${impl} in
 					python2.7)
 						PYTHON_PKG_DEP='>=dev-lang/python-2.7.5-r2:2.7';;
-					python3.3)
-						PYTHON_PKG_DEP='>=dev-lang/python-3.3.2-r2:3.3';;
 					python*)
 						PYTHON_PKG_DEP="dev-lang/python:${impl#python}";;
 					pypy)
-						PYTHON_PKG_DEP='>=dev-python/pypy-5:0=';;
+						PYTHON_PKG_DEP='>=dev-python/pypy-7.3.0:0=';;
 					pypy3)
-						PYTHON_PKG_DEP='>=dev-python/pypy3-5:0=';;
-					jython2.7)
-						PYTHON_PKG_DEP='dev-java/jython:2.7';;
+						PYTHON_PKG_DEP='>=dev-python/pypy3-7.3.0:0=';;
 					*)
 						die "Invalid implementation: ${impl}"
 				esac
@@ -495,7 +403,7 @@ python_export() {
 				debug-print "${FUNCNAME}: PYTHON_SCRIPTDIR = ${PYTHON_SCRIPTDIR}"
 				;;
 			*)
-				die "python_export: unknown variable ${var}"
+				die "_python_export: unknown variable ${var}"
 		esac
 	done
 }
@@ -506,13 +414,10 @@ python_export() {
 # Obtain and print the 'site-packages' path for the given
 # implementation. If no implementation is provided, ${EPYTHON} will
 # be used.
-#
-# If you just need to have PYTHON_SITEDIR set (and exported), then it is
-# better to use python_export() directly instead.
 python_get_sitedir() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	python_export "${@}" PYTHON_SITEDIR
+	_python_export "${@}" PYTHON_SITEDIR
 	echo "${PYTHON_SITEDIR}"
 }
 
@@ -521,13 +426,10 @@ python_get_sitedir() {
 # @DESCRIPTION:
 # Obtain and print the include path for the given implementation. If no
 # implementation is provided, ${EPYTHON} will be used.
-#
-# If you just need to have PYTHON_INCLUDEDIR set (and exported), then it
-# is better to use python_export() directly instead.
 python_get_includedir() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	python_export "${@}" PYTHON_INCLUDEDIR
+	_python_export "${@}" PYTHON_INCLUDEDIR
 	echo "${PYTHON_INCLUDEDIR}"
 }
 
@@ -542,7 +444,7 @@ python_get_includedir() {
 python_get_library_path() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	python_export "${@}" PYTHON_LIBPATH
+	_python_export "${@}" PYTHON_LIBPATH
 	echo "${PYTHON_LIBPATH}"
 }
 
@@ -559,7 +461,7 @@ python_get_library_path() {
 python_get_CFLAGS() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	python_export "${@}" PYTHON_CFLAGS
+	_python_export "${@}" PYTHON_CFLAGS
 	echo "${PYTHON_CFLAGS}"
 }
 
@@ -576,7 +478,7 @@ python_get_CFLAGS() {
 python_get_LIBS() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	python_export "${@}" PYTHON_LIBS
+	_python_export "${@}" PYTHON_LIBS
 	echo "${PYTHON_LIBS}"
 }
 
@@ -593,7 +495,7 @@ python_get_LIBS() {
 python_get_PYTHON_CONFIG() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	python_export "${@}" PYTHON_CONFIG
+	_python_export "${@}" PYTHON_CONFIG
 	echo "${PYTHON_CONFIG}"
 }
 
@@ -606,7 +508,7 @@ python_get_PYTHON_CONFIG() {
 python_get_scriptdir() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	python_export "${@}" PYTHON_SCRIPTDIR
+	_python_export "${@}" PYTHON_SCRIPTDIR
 	echo "${PYTHON_SCRIPTDIR}"
 }
 
@@ -671,7 +573,7 @@ python_optimize() {
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
 
 	local PYTHON=${PYTHON}
-	[[ ${PYTHON} ]] || python_export PYTHON
+	[[ ${PYTHON} ]] || _python_export PYTHON
 
 	# default to sys.path
 	if [[ ${#} -eq 0 ]]; then
@@ -774,9 +676,8 @@ python_newexe() {
 	local f=${1}
 	local newfn=${2}
 
-	local PYTHON_SCRIPTDIR d
-	python_export PYTHON_SCRIPTDIR
-	d=${PYTHON_SCRIPTDIR#${EPREFIX}}
+	local scriptdir=$(python_get_scriptdir)
+	local d=${scriptdir#${EPREFIX}}
 
 	(
 		dodir "${wrapd}"
@@ -902,10 +803,8 @@ python_domodule() {
 		d=${python_moduleroot}
 	else
 		# relative to site-packages
-		local PYTHON_SITEDIR=${PYTHON_SITEDIR}
-		[[ ${PYTHON_SITEDIR} ]] || python_export PYTHON_SITEDIR
-
-		d=${PYTHON_SITEDIR#${EPREFIX}}/${python_moduleroot//.//}
+		local sitedir=$(python_get_sitedir)
+		d=${sitedir#${EPREFIX}}/${python_moduleroot//.//}
 	fi
 
 	(
@@ -935,10 +834,8 @@ python_doheader() {
 
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
 
-	local d PYTHON_INCLUDEDIR=${PYTHON_INCLUDEDIR}
-	[[ ${PYTHON_INCLUDEDIR} ]] || python_export PYTHON_INCLUDEDIR
-
-	d=${PYTHON_INCLUDEDIR#${EPREFIX}}
+	local includedir=$(python_get_includedir)
+	local d=${includedir#${EPREFIX}}
 
 	(
 		insopts -m 0644
@@ -949,6 +846,21 @@ python_doheader() {
 
 # @FUNCTION: python_wrapper_setup
 # @USAGE: [<path> [<impl>]]
+# @DESCRIPTION:
+# Backwards compatibility function.  The relevant API is now considered
+# private, please use python_setup instead.
+python_wrapper_setup() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	eqawarn "python_wrapper_setup() is part of private eclass API."
+	eqawarn "Please call python_setup() instead."
+
+	_python_wrapper_setup "${@}"
+}
+
+# @FUNCTION: _python_wrapper_setup
+# @USAGE: [<path> [<impl>]]
+# @INTERNAL
 # @DESCRIPTION:
 # Create proper 'python' executable and pkg-config wrappers
 # (if available) in the directory named by <path>. Set up PATH
@@ -961,7 +873,7 @@ python_doheader() {
 # be assumed to contain proper wrappers already and only environment
 # setup will be done. If wrapper update is requested, the directory
 # shall be removed first.
-python_wrapper_setup() {
+_python_wrapper_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local workdir=${1:-${T}/${EPYTHON}}
@@ -978,10 +890,10 @@ python_wrapper_setup() {
 		# Clean up, in case we were supposed to do a cheap update.
 		rm -f "${workdir}"/bin/python{,2,3}{,-config} || die
 		rm -f "${workdir}"/bin/2to3 || die
-		rm -f "${workdir}"/pkgconfig/python{,2,3}.pc || die
+		rm -f "${workdir}"/pkgconfig/python{2,3}{,-embed}.pc || die
 
 		local EPYTHON PYTHON
-		python_export "${impl}" EPYTHON PYTHON
+		_python_export "${impl}" EPYTHON PYTHON
 
 		local pyver pyother
 		if python_is_python3; then
@@ -1021,8 +933,13 @@ python_wrapper_setup() {
 
 			# Python 2.7+.
 			ln -s "${EPREFIX}"/usr/$(get_libdir)/pkgconfig/${EPYTHON/n/n-}.pc \
-				"${workdir}"/pkgconfig/python.pc || die
-			ln -s python.pc "${workdir}"/pkgconfig/python${pyver}.pc || die
+				"${workdir}"/pkgconfig/python${pyver}.pc || die
+
+			# Python 3.8+.
+			if [[ ${EPYTHON} != python[23].[67] ]]; then
+				ln -s "${EPREFIX}"/usr/$(get_libdir)/pkgconfig/${EPYTHON/n/n-}-embed.pc \
+					"${workdir}"/pkgconfig/python${pyver}-embed.pc || die
+			fi
 		else
 			nonsupp+=( 2to3 python-config "python${pyver}-config" )
 		fi
@@ -1085,23 +1002,9 @@ python_is_installed() {
 			;;
 	esac
 
-	case "${impl}" in
-		pypy|pypy3)
-			local append=
-			if [[ ${PYTHON_REQ_USE} ]]; then
-				append=[${PYTHON_REQ_USE}]
-			fi
-
-			# be happy with just the interpeter, no need for the virtual
-			has_version "${hasv_args[@]}" "dev-python/${impl}${append}" \
-				|| has_version "${hasv_args[@]}" "dev-python/${impl}-bin${append}"
-			;;
-		*)
-			local PYTHON_PKG_DEP
-			python_export "${impl}" PYTHON_PKG_DEP
-			has_version "${hasv_args[@]}" "${PYTHON_PKG_DEP}"
-			;;
-	esac
+	local PYTHON_PKG_DEP
+	_python_export "${impl}" PYTHON_PKG_DEP
+	has_version "${hasv_args[@]}" "${PYTHON_PKG_DEP}"
 }
 
 # @FUNCTION: python_fix_shebang
@@ -1262,6 +1165,7 @@ python_fix_shebang() {
 # @FUNCTION: _python_check_locale_sanity
 # @USAGE: <locale>
 # @RETURN: 0 if sane, 1 otherwise
+# @INTERNAL
 # @DESCRIPTION:
 # Check whether the specified locale sanely maps between lowercase
 # and uppercase ASCII characters.

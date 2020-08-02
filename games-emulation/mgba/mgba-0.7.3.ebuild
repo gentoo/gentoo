@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,11 +12,11 @@ if [[ "${PV}" == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/mgba-emu/mgba.git"
 else
 	SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 LICENSE="MPL-2.0"
 SLOT="0"
-IUSE="debug elf ffmpeg imagemagick libav opengl qt5 +sdl sqlite"
+IUSE="debug elf ffmpeg imagemagick opengl qt5 +sdl sqlite"
 REQUIRED_USE="|| ( qt5 sdl )
 		qt5? ( opengl )"
 
@@ -24,10 +24,7 @@ RDEPEND="
 	media-libs/libpng:0=
 	sys-libs/zlib[minizip]
 	elf? ( dev-libs/elfutils )
-	ffmpeg? (
-		libav? ( media-video/libav:= )
-		!libav? ( media-video/ffmpeg:= )
-	)
+	ffmpeg? ( media-video/ffmpeg:= )
 	imagemagick? ( media-gfx/imagemagick:= )
 	opengl? ( virtual/opengl )
 	qt5? (

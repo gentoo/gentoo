@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit eutils savedconfig toolchain-funcs
 
@@ -21,12 +21,11 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-PATCHES=( "${FILESDIR}"/fzy-0.9-cflags.patch )
-
 src_prepare() {
 	default
 	restore_config config.h
 	tc-export CC
+	sed -i 's/$(LIBS)/$(LIBS) $(LDFLAGS)/g' Makefile || die
 }
 
 src_install() {

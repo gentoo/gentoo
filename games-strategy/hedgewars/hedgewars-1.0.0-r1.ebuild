@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ SRC_URI="https://www.hedgewars.org/download/releases/${MY_P}.tar.bz2"
 LICENSE="GPL-2 Apache-2.0 FDL-1.3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libav server"
+IUSE="server"
 
 QA_FLAGS_IGNORED="/usr/bin/hwengine" # pascal sucks
 QA_PRESTRIPPED="/usr/bin/hwengine" # pascal sucks
@@ -35,10 +35,8 @@ DEPEND="
 	media-libs/sdl2-net:=
 	media-libs/sdl2-ttf:=
 	sys-libs/zlib
-	!x86? (
-		libav? ( media-video/libav:= )
-		!libav? ( media-video/ffmpeg:= )
-	)"
+	!x86? ( media-video/ffmpeg:= )
+	"
 RDEPEND="${DEPEND}
 	app-arch/xz-utils
 	>=media-fonts/dejavu-2.28
@@ -65,6 +63,8 @@ BDEPEND="
 		>=dev-lang/ghc-6.10
 		dev-haskell/parsec
 	)"
+
+PATCHES=( "${FILESDIR}/${P}-qt-5.15.patch" )
 
 S="${WORKDIR}"/${MY_P}
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -49,7 +49,7 @@ RDEPEND+="
 	sci-libs/spqr:0=
 	sci-libs/umfpack:0=
 	sci-mathematics/glpk:0=
-	>=sys-libs/libunwind-1.1:7=
+	>=sys-libs/libunwind-1.1:0=
 	sys-libs/readline:0=
 	sys-libs/zlib:0=
 	>=virtual/blas-3.6
@@ -90,7 +90,7 @@ src_prepare() {
 	sed -i \
 		-e 's|git submodule|${EPREFIX}/bin/true|g' \
 		-e "s|GENTOOCFLAGS|${CFLAGS}|g" \
-		-e "s|/usr/include|${EPREFIX%/}/usr/include|g" \
+		-e "s|/usr/include|${EPREFIX}/usr/include|g" \
 		deps/Makefile || die
 
 	local libblas="$($(tc-getPKG_CONFIG) --libs-only-l blas)"

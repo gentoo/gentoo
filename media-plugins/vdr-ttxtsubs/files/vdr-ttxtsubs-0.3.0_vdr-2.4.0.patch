@@ -1,0 +1,109 @@
+diff --git a/ttxtsubs.c b/ttxtsubs.c
+index f9b7bbc..5307c44 100644
+--- a/ttxtsubs.c
++++ b/ttxtsubs.c
+@@ -275,7 +275,8 @@ void cPluginTtxtsubs::Housekeeping(void)
+ 
+ const char *cPluginTtxtsubs::MainMenuEntry(void)
+ {
+-  bool haveChannel = Channels.GetByNumber(cDevice::ActualDevice()->CurrentChannel()) != NULL;
++  LOCK_CHANNELS_READ;
++  bool haveChannel = Channels->GetByNumber(cDevice::ActualDevice()->CurrentChannel()) != NULL;
+   switch(globals.mMainMenuEntry) {
+   case 1:
+     if(globals.mRealDoDisplay)
+@@ -349,7 +350,8 @@ void cPluginTtxtsubs::ChannelSwitch(const cDevice *Device, int ChannelNumber
+     DELETENULL(mLiveReceiver);
+     if (!Device->Replaying() && !Device->Transferring())
+     {
+-      cChannel* channel = Channels.GetByNumber(ChannelNumber);
++      LOCK_CHANNELS_READ;
++      const cChannel* channel = Channels->GetByNumber(ChannelNumber);
+       if (channel && channel->Tpid())
+       {
+         mLiveReceiver = new cTtxtSubsLiveReceiver(channel, this);
+diff --git a/ttxtsubschannelsettings.c b/ttxtsubschannelsettings.c
+index b543a36..7f9d326 100644
+--- a/ttxtsubschannelsettings.c
++++ b/ttxtsubschannelsettings.c
+@@ -48,8 +48,9 @@ bool cTtxtSubsChannelSetting::Parse(const char *s)
+       }
+       else { // parse old format
+         int sid;
++        LOCK_CHANNELS_READ;
+         if (1 == sscanf(buffer, "%d", &sid)) {
+-          for (cChannel *ch = Channels.First(); ch; ch = Channels.Next(ch)) {
++          for (const cChannel *ch = Channels->First(); ch; ch = Channels->Next(ch)) {
+             if (!ch->GroupSep() && ch->Sid() == sid) {
+               channelid=ch->GetChannelID();
+               pagemode=PageMode;
+diff --git a/ttxtsubslivereceiver.c b/ttxtsubslivereceiver.c
+index 9f60fdd..586d5af 100644
+--- a/ttxtsubslivereceiver.c
++++ b/ttxtsubslivereceiver.c
+@@ -22,7 +22,7 @@
+ #include <vdr/remux.h>
+ #include "ttxtsubslivereceiver.h"
+ 
+-cTtxtSubsLiveReceiver::cTtxtSubsLiveReceiver(cChannel* channel, cVDRTtxtsubsHookListener* hook)
++cTtxtSubsLiveReceiver::cTtxtSubsLiveReceiver(const cChannel* channel, cVDRTtxtsubsHookListener* hook)
+   :
+   _channel(channel),
+   _hook(hook)
+@@ -35,7 +35,7 @@ cTtxtSubsLiveReceiver::~cTtxtSubsLiveReceiver()
+   cReceiver::Detach();
+ }
+ 
+-void cTtxtSubsLiveReceiver::Receive(uchar *Data, int Length)
++void cTtxtSubsLiveReceiver::Receive(const uchar *Data, int Length)
+ {
+   if (Data == NULL)
+   {
+diff --git a/ttxtsubslivereceiver.h b/ttxtsubslivereceiver.h
+index d361c7b..0aba89b 100644
+--- a/ttxtsubslivereceiver.h
++++ b/ttxtsubslivereceiver.h
+@@ -29,12 +29,12 @@ class cTtxtSubsLiveReceiver : public cReceiver
+ {
+     private:
+       cTsToPes tsToPesTeletext;
+-      cChannel* _channel;
++      const cChannel* _channel;
+       cVDRTtxtsubsHookListener* _hook;
+     protected:
+-        virtual void Receive(uchar *Data, int Length);
++        virtual void Receive(const uchar *Data, int Length);
+     public:
+-        cTtxtSubsLiveReceiver(cChannel* channel, cVDRTtxtsubsHookListener* hook);
++        cTtxtSubsLiveReceiver(const cChannel* channel, cVDRTtxtsubsHookListener* hook);
+         virtual ~cTtxtSubsLiveReceiver();
+ };
+ 
+diff --git a/ttxtsubspagemenu.c b/ttxtsubspagemenu.c
+index cd7b6d0..b03949c 100644
+--- a/ttxtsubspagemenu.c
++++ b/ttxtsubspagemenu.c
+@@ -35,8 +35,9 @@ cTtxtsubsPageMenu::~cTtxtsubsPageMenu()
+ cTtxtsubsPageMenu::cTtxtsubsPageMenu()
+   :cOsdMenu(tr("Subtitle Page Settings"), 30)
+ {
++    LOCK_CHANNELS_READ;
+     cDevice *device = cDevice::ActualDevice();
+-    channel = Channels.GetByNumber(device->CurrentChannel());
++    channel = Channels->GetByNumber(device->CurrentChannel());
+     setting = TtxtSubsChannelSettings.Get(channel);
+     if (setting) {
+        origPageMode = mPageMode = setting->PageMode();
+diff --git a/ttxtsubspagemenu.h b/ttxtsubspagemenu.h
+index ad4bd48..ffe82d9 100644
+--- a/ttxtsubspagemenu.h
++++ b/ttxtsubspagemenu.h
+@@ -29,7 +29,7 @@
+ class cTtxtsubsPageMenu : public cOsdMenu 
+ {
+     private:
+-        cChannel *channel;
++        const cChannel *channel;
+         cTtxtSubsChannelSetting *setting;
+         int mPageNumber;
+         int mPageMode;

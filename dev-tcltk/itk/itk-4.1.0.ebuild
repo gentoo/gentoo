@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,6 @@ EAPI=7
 inherit autotools multilib virtualx
 
 MY_PV=${PV/_beta/b}
-ITCL_VERSION=$(ver_cut 1-2)
 
 DESCRIPTION="Object Oriented Enhancements for Tcl/Tk"
 HOMEPAGE="http://incrtcl.sourceforge.net/"
@@ -15,12 +14,12 @@ SRC_URI="mirror://sourceforge/project/incrtcl/%5Bincr%20Tcl_Tk%5D-4-source/itk%2
 IUSE=""
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 ia64 ppc sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ia64 ppc sparc x86 ~amd64-linux ~x86-linux"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-lang/tk-8.6:=
-	=dev-tcltk/itcl-${ITCL_VERSION}*"
+	>=dev-tcltk/itcl-4.1"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}${MY_PV}"
@@ -33,6 +32,8 @@ src_prepare() {
 }
 
 src_configure() {
+	local ITCL_VERSION=$(best_version dev-tcltk/itcl)
+	ITCL_VERSION=${ITCL_VERSION:15} # remove category, package name and dash
 	source "${EPREFIX}"/usr/$(get_libdir)/itcl${ITCL_VERSION}*/itclConfig.sh || die
 	econf \
 		--with-tcl="${EPREFIX}"/usr/$(get_libdir) \

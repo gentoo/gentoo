@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/x48.berlios/${P}.tar.bz2"
 LICENSE="GPL-3"
 
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="readline"
 
 RDEPEND="
@@ -22,15 +22,15 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	x11-libs/libXt"
 
-src_unpack() {
-	mkdir -p "${S}"
-	cd "${S}"
-	unpack ${A}
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-static.patch
+	"${FILESDIR}"/${P}-void_return.patch
+	)
+
+S=${WORKDIR}
 
 src_prepare() {
 	default
-	sed -i '698s/inline/static inline/' src/emulate.c || die
 	eautoreconf
 }
 

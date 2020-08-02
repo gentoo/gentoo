@@ -3,13 +3,13 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
 
 DESCRIPTION="jinja2 template renderer for aiohttp.web"
 HOMEPAGE="https://github.com/aio-libs/aiohttp-jinja2"
-SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -41,7 +41,7 @@ python_compile_all() {
 }
 
 python_test() {
-	py.test -v tests || die "Tests failed under ${EPYTHON}"
+	pytest -vv tests || die "Tests failed under ${EPYTHON}"
 }
 
 python_install_all() {

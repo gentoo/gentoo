@@ -1,25 +1,26 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 XORG_DOC=doc
 XORG_EAUTORECONF="yes"
-inherit xorg-3 multilib flag-o-matic
+inherit xorg-3 multilib flag-o-matic toolchain-funcs
 EGIT_REPO_URI="https://gitlab.freedesktop.org/xorg/xserver.git"
 
 DESCRIPTION="X.Org X servers"
 SLOT="0/${PV}"
 if [[ ${PV} != 9999* ]]; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 IUSE_SERVERS="dmx kdrive wayland xephyr xnest xorg xvfb"
-IUSE="${IUSE_SERVERS} debug elogind ipv6 libressl libglvnd minimal selinux +suid systemd +udev unwind xcsecurity"
+IUSE="${IUSE_SERVERS} debug +elogind ipv6 libressl +libglvnd minimal selinux suid systemd +udev unwind xcsecurity"
 
 CDEPEND="libglvnd? (
-		media-libs/libglvnd
+		media-libs/libglvnd[X]
 		!app-eselect/eselect-opengl
+		!!x11-drivers/nvidia-drivers[-libglvnd(-)]
 	)
 	!libglvnd? ( >=app-eselect/eselect-opengl-1.3.0	)
 	!libressl? ( dev-libs/openssl:0= )
@@ -68,13 +69,13 @@ CDEPEND="libglvnd? (
 		>=x11-libs/libX11-1.1.5
 		>=x11-libs/libXext-1.0.5
 		>=media-libs/mesa-18[X(+),egl,gbm]
-		media-libs/libepoxy[X,egl(+)]
+		>=media-libs/libepoxy-1.5.4[X,egl(+)]
 	)
 	udev? ( virtual/libudev:= )
 	unwind? ( sys-libs/libunwind )
 	wayland? (
 		>=dev-libs/wayland-1.3.0
-		media-libs/libepoxy[egl(+)]
+		>=media-libs/libepoxy-1.5.4[egl(+)]
 		>=dev-libs/wayland-protocols-1.18
 	)
 	>=x11-apps/xinit-1.3.3-r1
@@ -84,7 +85,7 @@ CDEPEND="libglvnd? (
 	)
 	elogind? (
 		sys-apps/dbus
-		sys-auth/elogind
+		sys-auth/elogind[pam]
 		sys-auth/pambase[elogind]
 	)
 	"
@@ -104,7 +105,6 @@ DEPEND="${CDEPEND}
 
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-xserver )
-	!x11-drivers/xf86-video-modesetting
 "
 
 PDEPEND="
@@ -162,10 +162,7 @@ pkg_setup() {
 		$(use_enable udev config-udev)
 		$(use_with doc doxygen)
 		$(use_with doc xmlto)
-		$(usex !elogind $(use_enable systemd systemd-logind) '--enable-systemd-logind')
 		$(use_with systemd systemd-daemon)
-		$(usex suid $(use_enable systemd suid-wrapper) '--disable-suid-wrapper')
-		$(usex suid $(use_enable !systemd install-setuid) '--disable-install-setuid')
 		--enable-libdrm
 		--sysconfdir="${EPREFIX}"/etc/X11
 		--localstatedir="${EPREFIX}"/var
@@ -176,7 +173,22 @@ pkg_setup() {
 		--without-dtrace
 		--without-fop
 		--with-sha1=libcrypto
+		CPP="$(tc-getPROG CPP cpp)"
 	)
+
+	if use systemd || use elogind; then
+		XORG_CONFIGURE_OPTIONS+=(
+			"--enable-systemd-logind"
+			"--disable-install-setuid"
+			"$(use_enable suid suid-wrapper)"
+		)
+	else
+		XORG_CONFIGURE_OPTIONS+=(
+			"--disable-systemd-logind"
+			"--disable-suid-wrapper"
+			"$(use_enable suid install-setuid)"
+		)
+	fi
 }
 
 src_install() {

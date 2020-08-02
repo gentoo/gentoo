@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,6 +28,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/"${PN}"-1.3.3-gcc10-fix.patch
+)
 
 src_configure() {
 	local mycmakeargs=(

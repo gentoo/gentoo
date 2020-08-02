@@ -9,16 +9,12 @@
 		clouds and more.
 	</longdescription>
 	<maintainer type="person">
-		<email>admwiggin@gmail.com</email>
-		<name>Tianon</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
 	<maintainer type="person">
-		<email>mrueg@gentoo.org</email>
-		<name>Manuel Rüger</name>
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
 	</maintainer>
 	<use>
 		<flag name="aufs">

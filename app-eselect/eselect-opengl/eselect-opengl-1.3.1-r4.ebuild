@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit eutils multilib
 
-DESCRIPTION="Utility to change the OpenGL interface being used"
+DESCRIPTION="Utility to switch between OpenGL implementations"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 # Source:
@@ -20,14 +20,11 @@ SRC_URI="https://dev.gentoo.org/~mgorny/dist/opengl.eselect-${PV}.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 DEPEND="app-arch/xz-utils"
-RDEPEND="
-	>=app-admin/eselect-1.2.4
-	!<media-libs/mesa-10.4
-	!<x11-base/xorg-server-1.18"
+RDEPEND=">=app-admin/eselect-1.2.4"
 
 S=${WORKDIR}
 

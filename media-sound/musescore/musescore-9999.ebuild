@@ -17,7 +17,7 @@ EGIT_REPO_URI="https://github.com/${PN}/MuseScore.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="alsa debug jack mp3 portaudio portmidi pulseaudio vorbis webengine"
+IUSE="alsa debug jack mp3 osc omr portaudio portmidi pulseaudio +sf3 sfz webengine"
 REQUIRED_USE="portmidi? ( portaudio )"
 
 BDEPEND="
@@ -34,7 +34,7 @@ DEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtquickcontrols2:5
-	>=dev-qt/qtsingleapplication-2.6.1_p20171024
+	>=dev-qt/qtsingleapplication-2.6.1_p20171024[X]
 	dev-qt/qtsvg:5
 	dev-qt/qtxml:5
 	dev-qt/qtxmlpatterns:5
@@ -44,17 +44,18 @@ DEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
 	jack? ( virtual/jack )
 	mp3? ( media-sound/lame )
+	omr? ( app-text/poppler )
 	portaudio? ( media-libs/portaudio )
 	portmidi? ( media-libs/portmidi )
 	pulseaudio? ( media-sound/pulseaudio )
-	vorbis? ( media-libs/libvorbis )
+	sf3? ( media-libs/libvorbis )
 	webengine? ( dev-qt/qtwebengine:5[widgets] )
 "
 RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.1-man-pages.patch"
-	"${FILESDIR}/5583.patch"
+	"${FILESDIR}/${P}-lambda-capture-this.patch"
 )
 
 src_unpack() {
@@ -71,19 +72,29 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_SKIP_RPATH=ON
-		-DDOWNLOAD_SOUNDFONT=OFF
-		-DUSE_SYSTEM_QTSINGLEAPPLICATION=ON
-		-DUSE_PATH_WITH_EXPLICIT_QT_VERSION=ON
-		-DUSE_SYSTEM_FREETYPE=ON
+		-DAEOLUS=OFF # does not compile
 		-DBUILD_ALSA="$(usex alsa)"
+		-DBUILD_CRASH_REPORTER=OFF
 		-DBUILD_JACK="$(usex jack)"
 		-DBUILD_LAME="$(usex mp3)"
+		-DBUILD_PCH=ON
 		-DBUILD_PORTAUDIO="$(usex portaudio)"
 		-DBUILD_PORTMIDI="$(usex portmidi)"
 		-DBUILD_PULSEAUDIO="$(usex pulseaudio)"
-		-DSOUNDFONT3="$(usex vorbis)"
+		-DBUILD_SHARED_LIBS=ON
+		-DBUILD_TELEMETRY_MODULE=ON
 		-DBUILD_WEBENGINE="$(usex webengine)"
+		-DCMAKE_SKIP_RPATH=ON
+		-DDOWNLOAD_SOUNDFONT=OFF
+		-DHAS_AUDIOFILE=ON
+		-DOCR=OFF
+		-DOMR="$(usex omr)"
+		-DSOUNDFONT3=ON
+		-DZERBERUS="$(usex sfz)"
+		-DUSE_PATH_WITH_EXPLICIT_QT_VERSION=ON
+		-DUSE_SYSTEM_FREETYPE=ON
+		-DUSE_SYSTEM_POPPLER=ON
+		-DUSE_SYSTEM_QTSINGLEAPPLICATION=ON
 	)
 	cmake_src_configure
 }

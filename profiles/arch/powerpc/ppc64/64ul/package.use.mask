@@ -1,5 +1,22 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-05-03)
+# Fails to build, needs more work
+www-client/firefox clang
+mail-client/thunderbird clang
+
+# James Le Cuirot <chewi@gentoo.org> (2020-04-23)
+# Requires media-libs/mesa[llvm], which is masked.
+dev-python/pyopengl test
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-03-11)
+# vc not keyworded on ppc64
+media-gfx/krita vc
+
+# Joonas Niilola <juippis@gentoo.org> (2020-02-01)
+# luajit not keyworded on ppc64, #696222
+dev-libs/efl luajit
 
 # Brian Evans <grknight@gentoo.org> (2015-11-23)
 # unmask galera for dev-db/mariadb

@@ -23,5 +23,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.17-networktests.patch
 	"${FILESDIR}"/${PN}-4.17-RT117793.patch
 	"${FILESDIR}"/${PN}-4.17-RT130591.patch
+	"${FILESDIR}"/${PN}-4.17-RT132197.patch
 )
 PERL_RM_FILES=("t/meta.t" "t/pod-coverage.t" "t/pod.t")

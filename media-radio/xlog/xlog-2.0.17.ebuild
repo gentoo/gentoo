@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools fdo-mime toolchain-funcs
+inherit autotools toolchain-funcs xdg-utils
 MY_P=${P/_}
 
 DESCRIPTION="An amateur radio logging program"
@@ -53,8 +53,7 @@ src_prepare() {
 
 src_configure() {
 	# mime-update causes file collisions if enabled
-	econf --disable-mime-update --disable-desktop-update \
-		--docdir=/usr/share/doc/${PF}
+	econf --disable-mime-update --disable-desktop-update
 }
 
 src_compile() {
@@ -68,11 +67,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }

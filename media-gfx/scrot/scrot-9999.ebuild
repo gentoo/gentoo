@@ -15,7 +15,7 @@ KEYWORDS=""
 RDEPEND="
 	>=media-libs/giblib-1.2.3
 	x11-libs/libX11
-	x11-libs/libXcursor
+	x11-libs/libXcomposite
 	x11-libs/libXfixes
 	|| (
 		media-libs/imlib2[gif]
@@ -29,10 +29,11 @@ DEPEND="
 	x11-base/xorg-proto
 "
 DOCS=(
-	AUTHORS ChangeLog CONTRIBUTING.md README TODO
+	AUTHORS ChangeLog CONTRIBUTING.md README.md TODO
 )
 
 src_prepare() {
+	sed -i -e 's#-g -O3##g' src/Makefile.am || die
 	default
 	eautoreconf
 }

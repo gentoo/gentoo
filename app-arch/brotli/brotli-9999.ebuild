@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_OPTIONAL="1"
 DISTUTILS_IN_SOURCE_BUILD="1"
 
@@ -59,7 +59,7 @@ src_compile() {
 	use python && distutils-r1_src_compile
 }
 
-python_test(){
+python_test() {
 	esetup.py test || die
 }
 

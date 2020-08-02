@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -146,7 +146,7 @@ pkg_postinst() {
 	elog "other hosts, you can enable the 'minimal' USE flag."
 	elog ""
 	elog "The service supports multiplexing if you wish to use multiple"
-	elog "keys, just symlink /etc/init.d/ekeyd → /etc/init.d/ekeyd.identifier"
+	elog "keys, just symlink /etc/init.d/ekeyd -> /etc/init.d/ekeyd.identifier"
 	elog "and it'll be looking for /etc/entropykey/identifier.conf"
 	elog ""
 

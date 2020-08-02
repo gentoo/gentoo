@@ -1,0 +1,5 @@
+/var/log/exabgp/*.log {
+	missingok
+	compress
+	copytruncate
+}

@@ -1,0 +1,19 @@
+diff --git a/passlib/utils/__init__.py b/passlib/utils/__init__.py
+index 69b55e5..d18ec50 100644
+--- a/passlib/utils/__init__.py
++++ b/passlib/utils/__init__.py
+@@ -807,7 +807,13 @@ else:
+ 
+             if isinstance(hash, bytes):
+                 hash = hash.decode("ascii")
+-            result = _crypt(secret, hash)
++            try:
++                result = _crypt(secret, hash)
++            except OSError:
++                # new in py39 -- per https://bugs.python.org/issue39289,
++                # crypt() now throws OSError for various things, mainly unknown hash formats
++                # translating that to None for now (may revise safe_crypt behavior in future)
++                return None
+             if PYPY and isinstance(result, bytes):
+                 result = result.decode("utf-8")
+             if not result or result[0:1] in _invalid_prefixes:

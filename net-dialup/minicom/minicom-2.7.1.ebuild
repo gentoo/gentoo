@@ -1,17 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools
 
-STUPID_NUM="3977"
 DESCRIPTION="Serial Communication Program"
-HOMEPAGE="https://alioth.debian.org/projects/minicom"
-SRC_URI="https://alioth.debian.org/frs/download.php/file/${STUPID_NUM}/${P}.tar.gz"
+HOMEPAGE="https://salsa.debian.org/minicom-team/minicom"
+SRC_URI="https://alioth-archive.debian.org/releases/minicom/Source/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="nls"
 
 COMMON_DEPEND="sys-libs/ncurses:="
@@ -26,6 +25,7 @@ S="${WORKDIR}/${PN}-2.7" # 2.7.1 specific
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3-gentoo-runscript.patch
 	"${FILESDIR}"/${PN}-2.7-lockdir.patch
+	"${FILESDIR}"/${PN}-2.7.1-gcc-10.patch
 )
 
 src_prepare() {

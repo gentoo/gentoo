@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ EGIT_NONSHALLOW=true
 inherit git-r3 toolchain-funcs udev
 
 DESCRIPTION="Tools for bcachefs"
-HOMEPAGE="http://bcache.evilpiepirate.org/"
+HOMEPAGE="https://bcache.evilpiepirate.org/"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/g2p/bcache-tools.git"
 

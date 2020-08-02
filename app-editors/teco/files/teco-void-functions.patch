@@ -1,0 +1,536 @@
+https://bugs.gentoo.org/729254
+
+--- teco-orig/te_chario.c
++++ teco/te_chario.c
+@@ -24,6 +24,8 @@
+ #define SIGINTMASK 2
+ #endif
+ 
++void crlf(), type_char();
++
+ int lf_sw;                                  /* nonzero: make up a LF following an entered CR */
+ int ttyflags;                               /* flags for (stdin) file descriptor */
+ #ifndef _POSIX_SOURCE
+@@ -44,6 +46,7 @@
+ /* operation; normal mode is none of the above.  TTY_OFF and TTY_ON do this     */
+ /* absolutely; TTY_SUSP and TTY_RESUME use saved signal status.                 */
+ 
++void
+ setup_tty(arg)
+     int arg;
+     {
+@@ -213,6 +216,7 @@
+ #ifdef _POSIX_SOURCE
+ sigset_t  oldmask;
+ 
++void
+ block_inter(func)
+     int func;
+     {
+@@ -313,6 +317,7 @@
+ 
+ /* type a crlf */
+ 
++void
+ crlf()
+     {
+     type_char(CR);
+@@ -340,6 +345,7 @@
+ 
+ /* routine to type one character */
+ 
++void
+ type_char(c)
+     char c;
+     {
+--- teco-orig/te_defs.h
++++ teco/te_defs.h
+@@ -320,7 +320,7 @@
+ extern char mapch[], mapch_l[];         /* char mapping tables              */
+ extern unsigned char spec_chars[];      /* special character table          */
+ 
+-extern char skipto(), find_endcond(), getcmdc(), getcmdc0();    /* routines that return chars */
++extern char skipto(), getcmdc(), getcmdc0();    /* routines that return chars */
+ 
+ extern FILE *eisw;                      /* indirect command file pointer    */
+ extern FILE *fopen();
+--- teco-orig/te_exec0.c
++++ teco/te_exec0.c
+@@ -8,6 +8,7 @@
+ #include <time.h>
+ #include <sys/time.h>
+ 
++void
+ exec_cmdstr()
+     {
+     char c;
+--- teco-orig/te_exec1.c
++++ teco/te_exec1.c
+@@ -6,6 +6,7 @@
+ /* version for multiple buffers  04/13/89 15.55                             */
+ #include "te_defs.h"
+ 
++void
+ exec_cmds1()
+     {
+     char command;                   /* command character */
+--- teco-orig/te_exec2.c
++++ teco/te_exec2.c
+@@ -12,6 +12,9 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ 
++void do_en_next(), set_var(), write_file(), write_stream();
++void kill_output(), pop_iteration(), find_enditer(), find_endcond();
++
+ struct qh oldcstring;                       /* hold command string during ei */
+ 
+ /* file stuff for input/output files */
+@@ -26,6 +29,7 @@
+ 
+ /* process E commands */
+ 
++void
+ do_e()
+     {
+     char c;                         /* temps */
+@@ -567,6 +571,7 @@
+ 
+ /* routine to get next file spec from "EN" list into filespec buffer */
+ 
++void
+ do_en_next()
+     {
+     char c;
+@@ -669,6 +674,7 @@
+ 
+ /* fetch or set variable */
+ 
++void
+ set_var(arg)
+     int *arg;           /* argument is pointer to variable */
+     {
+@@ -764,6 +770,7 @@
+ /* arguments are qp to start of text, number of characters, */
+ /* and an "append FF" switch                                */
+ 
++void
+ write_file(wbuff, nchars, ffsw)
+     struct qp *wbuff;
+     int nchars, ffsw;
+@@ -779,6 +786,7 @@
+ /* Unix processes.  Arguments wbuff, nchars as above; file  */
+ /* is stream pointer, crlf_sw zero converts CRLF to LF      */
+ 
++void
+ write_stream(file, wbuff, nchars, crlf_sw)
+     FILE *file;
+     struct qp *wbuff;
+@@ -809,6 +817,7 @@
+ 
+ /* routine to kill output file: argument is pointer to an output file structure */
+ 
++void
+ kill_output(outptr)
+     struct outfiledata *outptr;
+     {
+@@ -825,6 +834,7 @@
+ 
+ char panic_name[] = "TECO_SAVED.tmp";           /* name of file created to save buffer */
+ 
++void
+ panic()
+     {
+     if (!outfile->fd && pbuff->z) outfile->fd = fopen(panic_name, "w"); /* if buffer nonempty and no file open, make one */
+@@ -838,6 +848,7 @@
+ 
+ /* do "F" commands */
+ 
++void
+ do_f()
+     {
+     struct buffcell *delete_p;
+@@ -954,6 +965,7 @@
+ /* pop iteration: if arg nonzero, exit unconditionally */
+ /* else check exit conditions and exit or reiterate */
+ 
++void
+ pop_iteration(arg)
+     int arg;
+     {
+@@ -973,6 +985,7 @@
+ 
+ /* find end of iteration - read over arbitrary <> and one > */
+ 
++void
+ find_enditer()
+     {
+     register int icnt;
+@@ -988,7 +1001,8 @@
+ 
+ 
+ /* find end of conditional */
+-char find_endcond(arg)
++void
++find_endcond(arg)
+     char arg;
+     {
+     register int icnt;
+--- teco-orig/te_main.c
++++ teco/te_main.c
+@@ -44,6 +44,8 @@
+ 
+ #include "te_defs.h"
+ 
++void cleanup(), print_string(), save_args(), read_startup(), get_term_par();
++
+ main(argc, argv)
+     int argc;           /* arg count */
+     char *argv[];       /* array of string pointers */
+@@ -103,6 +105,7 @@
+ 
+ /* reset screen state, keyboard state; remove open output files */
+ 
++void
+ cleanup()
+     {
+     window(WIN_OFF);            /* restore screen */
+@@ -115,6 +118,7 @@
+ /* print string for error message */
+ /* argument is subscript of a qreg qh, prints text from that buffer */
+ 
++void
+ print_string(arg)
+     int arg;
+     {
+@@ -137,6 +141,7 @@
+ 
+ /* copy invocation command line to a text buffer */
+ 
++void
+ save_args(argc, argv, q)
+     int argc;
+     char *argv[];
+@@ -171,6 +176,7 @@
+ 
+ char startup_name[] = "/.tecorc";       /* name of startup file */
+ 
++void
+ read_startup()
+     {
+     char *hp, *getenv();
+@@ -192,6 +198,7 @@
+ 
+ /* routine to get terminal height and width from termcap */
+ 
++void
+ get_term_par()
+     {
+     char tbuff[1024];   /* termcap buffer */
+--- teco-orig/te_rdcmd.c
++++ teco/te_rdcmd.c
+@@ -6,6 +6,7 @@
+ /* version for multiple buffers  04/13/89 10.22                             */
+ #include "te_defs.h"
+ 
++void retype_cmdstr();
+ int ccount;             /* count of chars read in */
+ 
+ int read_cmdstr()
+@@ -227,6 +228,7 @@
+ 
+ /* retype command string: entirely (arg = '*') or most recent line (arg = ' ') */
+ 
++void
+ retype_cmdstr(c)
+     char c;
+     {
+--- teco-orig/te_subs.c
++++ teco/te_subs.c
+@@ -17,6 +17,7 @@
+ /*    n is the returned number of chars moved   */
+ /* max is the maximum number of chars to move   */
+ 
++void
+ movenchars(from, to, n)
+     struct qp *from, *to;       /* address of buffer pointers */
+     register int n;             /* number of characters */
+@@ -69,6 +70,7 @@
+ 	}
+     }
+ 
++void
+ moveuntil(from, to, c, n, max, trace)
+     struct qp *from, *to;       /* address of buffer pointers   */
+     register char c;            /* match char that ends move    */
+@@ -249,6 +251,7 @@
+ /* leaves bb pointing to end of that text */
+ /* insert2() copies rest of buffer */
+ 
++void
+ insert1()
+     {
+     int nchars;             /* number of chars in cell */
+@@ -269,6 +272,7 @@
+ 
+ 
+ 
++void
+ insert2(count)              /* count is the number of chars added */
+     int count;
+     {
+@@ -289,6 +293,7 @@
+ /* subroutine to delete n characters starting at dot    */
+ /* argument is number of characters                     */
+ 
++void
+ delete1(nchars)
+     int nchars;
+     {
+@@ -314,6 +319,7 @@
+ 
+ struct qh obuff;        /* tag string buffer */
+ 
++void
+ do_o()
+     {
+     int i, j;           /* i used as start of tag, j as end */
+@@ -460,6 +466,7 @@
+ 
+ /* find number of characters to next matching (, [, or {  (like '%' in vi) */
+ 
++void
+ do_ctlp()
+     {
+     int i, l;
+--- teco-orig/te_utils.c
++++ teco/te_utils.c
+@@ -37,6 +37,7 @@
+ 
+ 
+ /* free a list of buffcells */
++void
+ free_blist(p)
+     struct buffcell *p;
+     {
+@@ -51,6 +52,7 @@
+     }
+ 
+ /* free a list of buffcells to the "delayed free" list */
++void
+ dly_free_blist(p)
+     struct buffcell *p;
+     {
+@@ -92,6 +94,7 @@
+ 
+ 
+ /* free a list of cells */
++void
+ free_dlist(p)
+     struct qp *p;
+     {
+@@ -107,6 +110,7 @@
+ 
+ /* build a buffer:  called with address of a qh */
+ /* if no buffer there, get a cell and link it in */
++void
+ make_buffer(p)
+     struct qh *p;
+     {
+@@ -178,6 +182,7 @@
+ 
+ /* set up a pointer to a particular text buffer position */
+ 
++void
+ set_pointer(pos, ptr)   /* first arg is position, 2nd is addr of pointer */
+     int pos;
+     struct qp *ptr;
+--- teco-orig/te_window.c
++++ teco/te_window.c
+@@ -21,6 +21,10 @@
+ #define MAX 0x7fffffff          /* maximum positive integer, for "last modified" location */
+ #define W_MARK 0200             /* "this loc is special" in screen image */
+ 
++void window(), window0(), window1_both(), window1(), window1_abs();
++void window1_inc(), window1_after(), w_rmcurs(), window2(), vtm();
++void w_makecurs(), w_type(), w_init(), w_separators(), w_move();
++void w_scroll(), w_ebol();
+ 
+ /* image of current window */
+ 
+@@ -74,6 +78,7 @@
+ /* routine to perform simple scope operations */
+ /* (an attempt to concentrate VT-100 specific things in one place) */
+ 
++void
+ vt(func)
+     int func;
+     {
+@@ -132,6 +137,7 @@
+ int win_max[]  = { 4,  W_MAX_H, W_MAX_V, 1, MAX, 12, -1,  20,   20, -1, -1 } ;  /* max values */
+ int win_data[] = { 4,  132,     24,      0, 0,    0,  0,   0,    0,  0,  0 } ;  /* window parameters    */
+ 
++void
+ do_window(ref_flag)
+     int ref_flag;                   /* nonzero forces "refresh" operation */
+     {
+@@ -196,6 +202,7 @@
+ /* routine to update screen size with numbers obtained from environment */
+ /* (called by main program's initialization)                            */
+ 
++void
+ set_term_par(lines, cols)
+     int lines, cols;
+     {
+@@ -215,6 +222,7 @@
+ /* WIN_LINE:    does WIN_REFR unless that wouldn't do anything, in which case       */
+ /*              it does effective 1EV output                                        */
+ 
++void
+ window(arg)
+     int arg;
+     {
+@@ -288,6 +296,7 @@
+ /* used for ev, es, and <BS> or <LF> as immediate commands                  */
+ /* starting char position is in w_p1; argument is number of lines           */
+ 
++void
+ window0(num)
+     int num;
+     {
+@@ -364,6 +373,7 @@
+ 
+ struct bh *old_pbuff;
+ 
++void
+ window1_both()
+     {
+     pw0 = &win_1;
+@@ -396,6 +406,7 @@
+ /* if scroll mode is enabled, the VT100 screen is split and only the upper part */
+ /* is used by this routine; else the whole screen is used.                      */
+ 
++void
+ window1()
+     {
+     int i, j, m, lflag;
+@@ -500,6 +511,7 @@
+ 
+ /* routine to redraw screen absolutely */
+ 
++void
+ window1_abs()
+     {
+     int i, j;
+@@ -531,6 +543,7 @@
+ 
+ /* redraw screen incrementally */
+ 
++void
+ window1_inc(wd)
+     int wd;                     /* argument is earliest change */
+     {
+@@ -559,6 +572,7 @@
+ 
+ /* routine to move window downwards: scroll up or redraw as appropriate */
+ 
++void
+ window1_after()
+     {
+     int i, lflag;
+@@ -591,6 +605,7 @@
+ 
+ /* routine to remove the existing cursor */
+ 
++void
+ w_rmcurs()
+     {
+     register struct w_data *pw = pw0;
+@@ -609,6 +624,7 @@
+ /* called with w_p1 at starting char, curr_y, curr_x at starting coordinate         */
+ /* rewrites to end of screen if arg = 0, or only until line with cursor if arg = 1  */
+ 
++void
+ window2(arg)
+     int arg;
+     {
+@@ -794,6 +810,7 @@
+ 
+ /* routine to move cursor to current location and then call vt */
+ 
++void
+ vtm(arg)
+     int arg;
+     {
+@@ -807,6 +824,7 @@
+ /* routine to set reverse video and save cursor location */
+ /* first argument is char at cursor, 2nd is value for curs_crflag */
+ 
++void
+ w_makecurs(wc, crflag)
+     char wc;
+     short crflag;
+@@ -851,6 +869,7 @@
+ /* routine to type one character:  arguments are char and a */
+ /* "mark" bit.  If mark is set, the char is always retyped  */
+ 
++void
+ w_type(c, m)
+     char c;
+     int m;
+@@ -875,6 +894,7 @@
+ 
+ /* initialize display image */
+ 
++void
+ w_init()
+     {
+     short i, j;
+@@ -907,6 +927,7 @@
+ 
+ /* write separator lines between windows on screen */
+ 
++void
+ w_separators()
+     {
+     int i;
+@@ -929,6 +950,7 @@
+ /* put character followed by appropriate number of nulls for "other control function" */
+ /* if argument is 0, output filler chars only */
+ 
++void
+ putchar_d(c)
+     char c;
+     {
+@@ -942,6 +964,7 @@
+ 
+ /* put out appropriate number of filler chars for display function that scrolls (LF, etc.) */
+ 
++void
+ scroll_dly()
+     {
+     int i;
+@@ -952,6 +975,7 @@
+ /* move terminal cursor to stated y, x position */
+ /* uses incremental moves or absolute cursor position, whichever is shorter */
+ 
++void
+ w_move(y, x)
+     short y, x;
+     {
+@@ -993,6 +1017,7 @@
+ 
+ /* scroll screen: argument is count: + up, - down */
+ 
++void
+ w_scroll(count)
+     int count;
+     {
+@@ -1025,6 +1050,7 @@
+ /* clear line to left of curr_x */
+ /* if some chars nonblank, does erase from start of line */
+ 
++void
+ w_ebol()
+     {
+     short i, j;

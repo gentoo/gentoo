@@ -1,0 +1,671 @@
+diff -Nuar a/cmake/FindPackageHandleStandardArgs.cmake b/cmake/FindPackageHandleStandardArgs.cmake
+--- a/cmake/FindPackageHandleStandardArgs.cmake	1970-01-01 01:00:00.000000000 +0100
++++ b/cmake/FindPackageHandleStandardArgs.cmake	2020-03-04 11:38:51.062021412 +0100
+@@ -0,0 +1,258 @@
++# Distributed under the OSI-approved BSD 3-Clause License.  See accompanying
++# file Copyright.txt or https://cmake.org/licensing for details.
++
++include(${CMAKE_CURRENT_LIST_DIR}/FindPackageMessage.cmake)
++
++# internal helper macro
++macro(_FPHSA_FAILURE_MESSAGE _msg)
++  if (${_NAME}_FIND_REQUIRED)
++    message(FATAL_ERROR "${_msg}")
++  else ()
++    if (NOT ${_NAME}_FIND_QUIETLY)
++      message(STATUS "${_msg}")
++    endif ()
++  endif ()
++endmacro()
++
++
++# internal helper macro to generate the failure message when used in CONFIG_MODE:
++macro(_FPHSA_HANDLE_FAILURE_CONFIG_MODE)
++  # <PackageName>_CONFIG is set, but FOUND is false, this means that some other of the REQUIRED_VARS was not found:
++  if(${_NAME}_CONFIG)
++    _FPHSA_FAILURE_MESSAGE("${FPHSA_FAIL_MESSAGE}: missing:${MISSING_VARS} (found ${${_NAME}_CONFIG} ${VERSION_MSG})")
++  else()
++    # If _CONSIDERED_CONFIGS is set, the config-file has been found, but no suitable version.
++    # List them all in the error message:
++    if(${_NAME}_CONSIDERED_CONFIGS)
++      set(configsText "")
++      list(LENGTH ${_NAME}_CONSIDERED_CONFIGS configsCount)
++      math(EXPR configsCount "${configsCount} - 1")
++      foreach(currentConfigIndex RANGE ${configsCount})
++        list(GET ${_NAME}_CONSIDERED_CONFIGS ${currentConfigIndex} filename)
++        list(GET ${_NAME}_CONSIDERED_VERSIONS ${currentConfigIndex} version)
++        string(APPEND configsText "    ${filename} (version ${version})\n")
++      endforeach()
++      if (${_NAME}_NOT_FOUND_MESSAGE)
++        string(APPEND configsText "    Reason given by package: ${${_NAME}_NOT_FOUND_MESSAGE}\n")
++      endif()
++      _FPHSA_FAILURE_MESSAGE("${FPHSA_FAIL_MESSAGE} ${VERSION_MSG}, checked the following files:\n${configsText}")
++
++    else()
++      # Simple case: No Config-file was found at all:
++      _FPHSA_FAILURE_MESSAGE("${FPHSA_FAIL_MESSAGE}: found neither ${_NAME}Config.cmake nor ${_NAME_LOWER}-config.cmake ${VERSION_MSG}")
++    endif()
++  endif()
++endmacro()
++
++
++function(FIND_PACKAGE_HANDLE_STANDARD_ARGS _NAME _FIRST_ARG)
++
++# Set up the arguments for `cmake_parse_arguments`.
++  set(options  CONFIG_MODE  HANDLE_COMPONENTS)
++  set(oneValueArgs  FAIL_MESSAGE  VERSION_VAR  FOUND_VAR)
++  set(multiValueArgs REQUIRED_VARS)
++
++# Check whether we are in 'simple' or 'extended' mode:
++  set(_KEYWORDS_FOR_EXTENDED_MODE  ${options} ${oneValueArgs} ${multiValueArgs} )
++  list(FIND _KEYWORDS_FOR_EXTENDED_MODE "${_FIRST_ARG}" INDEX)
++
++  if(${INDEX} EQUAL -1)
++    set(FPHSA_FAIL_MESSAGE ${_FIRST_ARG})
++    set(FPHSA_REQUIRED_VARS ${ARGN})
++    set(FPHSA_VERSION_VAR)
++  else()
++    cmake_parse_arguments(FPHSA "${options}" "${oneValueArgs}" "${multiValueArgs}"  ${_FIRST_ARG} ${ARGN})
++
++    if(FPHSA_UNPARSED_ARGUMENTS)
++      message(FATAL_ERROR "Unknown keywords given to FIND_PACKAGE_HANDLE_STANDARD_ARGS(): \"${FPHSA_UNPARSED_ARGUMENTS}\"")
++    endif()
++
++    if(NOT FPHSA_FAIL_MESSAGE)
++      set(FPHSA_FAIL_MESSAGE  "DEFAULT_MSG")
++    endif()
++
++    # In config-mode, we rely on the variable <PackageName>_CONFIG, which is set by find_package()
++    # when it successfully found the config-file, including version checking:
++    if(FPHSA_CONFIG_MODE)
++      list(INSERT FPHSA_REQUIRED_VARS 0 ${_NAME}_CONFIG)
++      list(REMOVE_DUPLICATES FPHSA_REQUIRED_VARS)
++      set(FPHSA_VERSION_VAR ${_NAME}_VERSION)
++    endif()
++
++    if(NOT FPHSA_REQUIRED_VARS)
++      message(FATAL_ERROR "No REQUIRED_VARS specified for FIND_PACKAGE_HANDLE_STANDARD_ARGS()")
++    endif()
++  endif()
++
++# now that we collected all arguments, process them
++
++  if("x${FPHSA_FAIL_MESSAGE}" STREQUAL "xDEFAULT_MSG")
++    set(FPHSA_FAIL_MESSAGE "Could NOT find ${_NAME}")
++  endif()
++
++  list(GET FPHSA_REQUIRED_VARS 0 _FIRST_REQUIRED_VAR)
++
++  string(TOUPPER ${_NAME} _NAME_UPPER)
++  string(TOLOWER ${_NAME} _NAME_LOWER)
++
++  if(FPHSA_FOUND_VAR)
++    if(FPHSA_FOUND_VAR MATCHES "^${_NAME}_FOUND$"  OR  FPHSA_FOUND_VAR MATCHES "^${_NAME_UPPER}_FOUND$")
++      set(_FOUND_VAR ${FPHSA_FOUND_VAR})
++    else()
++      message(FATAL_ERROR "The argument for FOUND_VAR is \"${FPHSA_FOUND_VAR}\", but only \"${_NAME}_FOUND\" and \"${_NAME_UPPER}_FOUND\" are valid names.")
++    endif()
++  else()
++    set(_FOUND_VAR ${_NAME_UPPER}_FOUND)
++  endif()
++
++  # collect all variables which were not found, so they can be printed, so the
++  # user knows better what went wrong (#6375)
++  set(MISSING_VARS "")
++  set(DETAILS "")
++  # check if all passed variables are valid
++  set(FPHSA_FOUND_${_NAME} TRUE)
++  foreach(_CURRENT_VAR ${FPHSA_REQUIRED_VARS})
++    if(NOT ${_CURRENT_VAR})
++      set(FPHSA_FOUND_${_NAME} FALSE)
++      string(APPEND MISSING_VARS " ${_CURRENT_VAR}")
++    else()
++      string(APPEND DETAILS "[${${_CURRENT_VAR}}]")
++    endif()
++  endforeach()
++  if(FPHSA_FOUND_${_NAME})
++    set(${_NAME}_FOUND TRUE)
++    set(${_NAME_UPPER}_FOUND TRUE)
++  else()
++    set(${_NAME}_FOUND FALSE)
++    set(${_NAME_UPPER}_FOUND FALSE)
++  endif()
++
++  # component handling
++  unset(FOUND_COMPONENTS_MSG)
++  unset(MISSING_COMPONENTS_MSG)
++
++  if(FPHSA_HANDLE_COMPONENTS)
++    foreach(comp ${${_NAME}_FIND_COMPONENTS})
++      if(${_NAME}_${comp}_FOUND)
++
++        if(NOT DEFINED FOUND_COMPONENTS_MSG)
++          set(FOUND_COMPONENTS_MSG "found components: ")
++        endif()
++        string(APPEND FOUND_COMPONENTS_MSG " ${comp}")
++
++      else()
++
++        if(NOT DEFINED MISSING_COMPONENTS_MSG)
++          set(MISSING_COMPONENTS_MSG "missing components: ")
++        endif()
++        string(APPEND MISSING_COMPONENTS_MSG " ${comp}")
++
++        if(${_NAME}_FIND_REQUIRED_${comp})
++          set(${_NAME}_FOUND FALSE)
++          string(APPEND MISSING_VARS " ${comp}")
++        endif()
++
++      endif()
++    endforeach()
++    set(COMPONENT_MSG "${FOUND_COMPONENTS_MSG} ${MISSING_COMPONENTS_MSG}")
++    string(APPEND DETAILS "[c${COMPONENT_MSG}]")
++  endif()
++
++  # version handling:
++  set(VERSION_MSG "")
++  set(VERSION_OK TRUE)
++
++  # check with DEFINED here as the requested or found version may be "0"
++  if (DEFINED ${_NAME}_FIND_VERSION)
++    if(DEFINED ${FPHSA_VERSION_VAR})
++      set(_FOUND_VERSION ${${FPHSA_VERSION_VAR}})
++
++      if(${_NAME}_FIND_VERSION_EXACT)       # exact version required
++        # count the dots in the version string
++        string(REGEX REPLACE "[^.]" "" _VERSION_DOTS "${_FOUND_VERSION}")
++        # add one dot because there is one dot more than there are components
++        string(LENGTH "${_VERSION_DOTS}." _VERSION_DOTS)
++        if (_VERSION_DOTS GREATER ${_NAME}_FIND_VERSION_COUNT)
++          # Because of the C++ implementation of find_package() ${_NAME}_FIND_VERSION_COUNT
++          # is at most 4 here. Therefore a simple lookup table is used.
++          if (${_NAME}_FIND_VERSION_COUNT EQUAL 1)
++            set(_VERSION_REGEX "[^.]*")
++          elseif (${_NAME}_FIND_VERSION_COUNT EQUAL 2)
++            set(_VERSION_REGEX "[^.]*\\.[^.]*")
++          elseif (${_NAME}_FIND_VERSION_COUNT EQUAL 3)
++            set(_VERSION_REGEX "[^.]*\\.[^.]*\\.[^.]*")
++          else ()
++            set(_VERSION_REGEX "[^.]*\\.[^.]*\\.[^.]*\\.[^.]*")
++          endif ()
++          string(REGEX REPLACE "^(${_VERSION_REGEX})\\..*" "\\1" _VERSION_HEAD "${_FOUND_VERSION}")
++          unset(_VERSION_REGEX)
++          if (NOT ${_NAME}_FIND_VERSION VERSION_EQUAL _VERSION_HEAD)
++            set(VERSION_MSG "Found unsuitable version \"${_FOUND_VERSION}\", but required is exact version \"${${_NAME}_FIND_VERSION}\"")
++            set(VERSION_OK FALSE)
++          else ()
++            set(VERSION_MSG "(found suitable exact version \"${_FOUND_VERSION}\")")
++          endif ()
++          unset(_VERSION_HEAD)
++        else ()
++          if (NOT ${_NAME}_FIND_VERSION VERSION_EQUAL _FOUND_VERSION)
++            set(VERSION_MSG "Found unsuitable version \"${_FOUND_VERSION}\", but required is exact version \"${${_NAME}_FIND_VERSION}\"")
++            set(VERSION_OK FALSE)
++          else ()
++            set(VERSION_MSG "(found suitable exact version \"${_FOUND_VERSION}\")")
++          endif ()
++        endif ()
++        unset(_VERSION_DOTS)
++
++      else()     # minimum version specified:
++        if (${_NAME}_FIND_VERSION VERSION_GREATER _FOUND_VERSION)
++          set(VERSION_MSG "Found unsuitable version \"${_FOUND_VERSION}\", but required is at least \"${${_NAME}_FIND_VERSION}\"")
++          set(VERSION_OK FALSE)
++        else ()
++          set(VERSION_MSG "(found suitable version \"${_FOUND_VERSION}\", minimum required is \"${${_NAME}_FIND_VERSION}\")")
++        endif ()
++      endif()
++
++    else()
++
++      # if the package was not found, but a version was given, add that to the output:
++      if(${_NAME}_FIND_VERSION_EXACT)
++         set(VERSION_MSG "(Required is exact version \"${${_NAME}_FIND_VERSION}\")")
++      else()
++         set(VERSION_MSG "(Required is at least version \"${${_NAME}_FIND_VERSION}\")")
++      endif()
++
++    endif()
++  else ()
++    # Check with DEFINED as the found version may be 0.
++    if(DEFINED ${FPHSA_VERSION_VAR})
++      set(VERSION_MSG "(found version \"${${FPHSA_VERSION_VAR}}\")")
++    endif()
++  endif ()
++
++  if(VERSION_OK)
++    string(APPEND DETAILS "[v${${FPHSA_VERSION_VAR}}(${${_NAME}_FIND_VERSION})]")
++  else()
++    set(${_NAME}_FOUND FALSE)
++  endif()
++
++
++  # print the result:
++  if (${_NAME}_FOUND)
++    FIND_PACKAGE_MESSAGE(${_NAME} "Found ${_NAME}: ${${_FIRST_REQUIRED_VAR}} ${VERSION_MSG} ${COMPONENT_MSG}" "${DETAILS}")
++  else ()
++
++    if(FPHSA_CONFIG_MODE)
++      _FPHSA_HANDLE_FAILURE_CONFIG_MODE()
++    else()
++      if(NOT VERSION_OK)
++        _FPHSA_FAILURE_MESSAGE("${FPHSA_FAIL_MESSAGE}: ${VERSION_MSG} (found ${${_FIRST_REQUIRED_VAR}})")
++      else()
++        _FPHSA_FAILURE_MESSAGE("${FPHSA_FAIL_MESSAGE} (missing:${MISSING_VARS}) ${VERSION_MSG}")
++      endif()
++    endif()
++
++  endif ()
++
++  set(${_NAME}_FOUND ${${_NAME}_FOUND} PARENT_SCOPE)
++  set(${_NAME_UPPER}_FOUND ${${_NAME}_FOUND} PARENT_SCOPE)
++endfunction()
+diff -Nuar a/cmake/FindPackageMessage.cmake b/cmake/FindPackageMessage.cmake
+--- a/cmake/FindPackageMessage.cmake	1970-01-01 01:00:00.000000000 +0100
++++ b/cmake/FindPackageMessage.cmake	2020-03-04 11:38:51.062021412 +0100
+@@ -0,0 +1,19 @@
++# Distributed under the OSI-approved BSD 3-Clause License.  See accompanying
++# file Copyright.txt or https://cmake.org/licensing for details.
++
++function(find_package_message pkg msg details)
++  # Avoid printing a message repeatedly for the same find result.
++  if(NOT ${pkg}_FIND_QUIETLY)
++    string(REPLACE "\n" "" details "${details}")
++    set(DETAILS_VAR FIND_PACKAGE_MESSAGE_DETAILS_${pkg})
++    if(NOT "${details}" STREQUAL "${${DETAILS_VAR}}")
++      # The message has not yet been printed.
++      message(STATUS "${msg}")
++
++      # Save the find details in the cache to avoid printing the same
++      # message again.
++      set("${DETAILS_VAR}" "${details}"
++        CACHE INTERNAL "Details about finding ${pkg}")
++    endif()
++  endif()
++endfunction()
+diff -Nuar a/cmake/FindRuby.cmake b/cmake/FindRuby.cmake
+--- a/cmake/FindRuby.cmake	2017-02-09 10:33:45.000000000 +0100
++++ b/cmake/FindRuby.cmake	2020-03-04 11:38:51.062021412 +0100
+@@ -1,89 +1,297 @@
+-# Ruby cmake package
+-#
+-# Returns
+-# RUBY_FOUND
+-# RUBY_INCLUDE_DIRS
+-# RUBY_LIBRARIES
+-# RUBY_VERSION_MAJOR
+-# RUBY_VERSION_MINOR
+-# RUBY_VERSION_STRING
+-
+-if(RUBY_FOUND)
+-   set(RUBY_FIND_QUIETLY TRUE)
+-endif()
+-
+-find_program(RUBY_EXECUTABLE
+-  NAMES ruby2.2 ruby22 ruby2.1 ruby21 ruby2.0 ruby2 ruby1.9.3 ruby193 ruby1.9.2 ruby192 ruby1.9.1 ruby191 ruby1.9 ruby19 ruby1.8 ruby18 ruby
+-  PATHS /usr/bin /usr/local/bin /usr/pkg/bin
+-  )
+-if(RUBY_EXECUTABLE)
+-  execute_process(
+-    COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "print RbConfig::CONFIG['MAJOR']"
+-    OUTPUT_VARIABLE RUBY_VERSION_MAJOR
+-    )
+-
+-  execute_process(
+-    COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "print RbConfig::CONFIG['MINOR']"
+-    OUTPUT_VARIABLE RUBY_VERSION_MINOR
+-    )
+-
+-  execute_process(
+-    COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "print RbConfig::CONFIG['TEENY']"
+-    OUTPUT_VARIABLE RUBY_VERSION_TEENY
+-    )
+-  set(RUBY_VERSION_STRING ${RUBY_VERSION_MAJOR}.${RUBY_VERSION_MINOR}.${RUBY_VERSION_TEENY})
+-
+-  execute_process(
+-    COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "print RbConfig::CONFIG['rubyhdrdir'] || RbConfig::CONFIG['archdir']"
+-    OUTPUT_VARIABLE RUBY_ARCH_DIR
+-    )
+-  execute_process(
+-    COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "print RbConfig::CONFIG['arch']"
+-    OUTPUT_VARIABLE RUBY_ARCH
+-    )
+-  execute_process(
+-    COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "print RbConfig::CONFIG['libdir']"
+-    OUTPUT_VARIABLE RUBY_POSSIBLE_LIB_PATH
+-    )
+-  execute_process(
+-    COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "print RbConfig::CONFIG['rubylibdir']"
+-    OUTPUT_VARIABLE RUBY_LIB_PATH
+-    )
+-  execute_process(
+-    COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "print RbConfig::CONFIG['archincludedir']"
+-    OUTPUT_VARIABLE RUBY_ARCH_INC_DIR
+-    )
+-  execute_process(
+-    COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "print RbConfig::CONFIG['RUBY_SO_NAME']"
+-    OUTPUT_VARIABLE RUBY_SO_NAME
+-    )
+-
+-  find_path(RUBY_INCLUDE_DIRS
+-    NAMES ruby.h ruby/config.h
+-    PATHS ${RUBY_ARCH_DIR}
+-    )
+-  set(RUBY_INCLUDE_ARCH "${RUBY_INCLUDE_DIRS}/${RUBY_ARCH}")
+-  find_library(RUBY_LIB
+-    NAMES ${RUBY_SO_NAME}
+-    PATHS ${RUBY_POSSIBLE_LIB_PATH} ${RUBY_RUBY_LIB_PATH}
+-    )
+-
+-  if(RUBY_LIB AND RUBY_INCLUDE_DIRS)
+-    set(RUBY_FOUND TRUE)
+-    set(RUBY_INCLUDE_DIRS "${RUBY_INCLUDE_DIRS};${RUBY_INCLUDE_ARCH};${RUBY_ARCH_INC_DIR}/ruby-${RUBY_VERSION_STRING}")
+-    set(RUBY_LIBRARIES ${RUBY_LIB})
+-  endif()
++# Distributed under the OSI-approved BSD 3-Clause License.  See accompanying
++# file Copyright.txt or https://cmake.org/licensing for details.
++
++#[[
++FindRuby
++--------
++
++This module finds if Ruby is installed and determines where the
++include files and libraries are.  Ruby 1.8, 1.9, 2.0 through 2.5 are
++supported.
++
++The minimum required version of Ruby can be specified using the
++standard syntax, e.g.  find_package(Ruby 1.8)
++
++It also determines what the name of the library is.  This code sets
++the following variables:
++
++RUBY_EXECUTABLE
++    full path to the ruby binary
++RUBY_INCLUDE_DIRS
++    include dirs to be used when using the ruby library
++RUBY_LIBRARY
++    full path to the ruby library
++RUBY_VERSION
++    the version of ruby which was found, e.g. "1.8.7"
++RUBY_FOUND
++    set to true if ruby ws found successfully
+ 
+-  if(RUBY_OLD_VERSION)
+-    set(RUBY_FOUND FALSE)
+-    set(RUBY_NOT_FOUND TRUE)
++Also:
++
++RUBY_INCLUDE_PATH
++    same as RUBY_INCLUDE_DIRS, only provided for compatibility reasons, don't use it
++#]]
++
++#   RUBY_ARCHDIR=`$RUBY -r rbconfig -e 'printf("%s",Config::CONFIG@<:@"archdir"@:>@)'`
++#   RUBY_SITEARCHDIR=`$RUBY -r rbconfig -e 'printf("%s",Config::CONFIG@<:@"sitearchdir"@:>@)'`
++#   RUBY_SITEDIR=`$RUBY -r rbconfig -e 'printf("%s",Config::CONFIG@<:@"sitelibdir"@:>@)'`
++#   RUBY_LIBDIR=`$RUBY -r rbconfig -e 'printf("%s",Config::CONFIG@<:@"libdir"@:>@)'`
++#   RUBY_LIBRUBYARG=`$RUBY -r rbconfig -e 'printf("%s",Config::CONFIG@<:@"LIBRUBYARG_SHARED"@:>@)'`
++
++# uncomment the following line to get debug output for this file
++set(_RUBY_DEBUG_OUTPUT TRUE)
++
++# Determine the list of possible names of the ruby executable depending
++# on which version of ruby is required
++set(_RUBY_POSSIBLE_EXECUTABLE_NAMES ruby)
++
++# if 1.9 is required, don't look for ruby18 and ruby1.8, default to version 1.8
++if(DEFINED Ruby_FIND_VERSION_MAJOR AND DEFINED Ruby_FIND_VERSION_MINOR)
++   set(Ruby_FIND_VERSION_SHORT_NODOT "${Ruby_FIND_VERSION_MAJOR}${RUBY_FIND_VERSION_MINOR}")
++   # we can't construct that if only major version is given
++   set(_RUBY_POSSIBLE_EXECUTABLE_NAMES
++       ruby${Ruby_FIND_VERSION_MAJOR}.${Ruby_FIND_VERSION_MINOR}
++       ruby${Ruby_FIND_VERSION_MAJOR}${Ruby_FIND_VERSION_MINOR}
++       ${_RUBY_POSSIBLE_EXECUTABLE_NAMES})
++else()
++   set(Ruby_FIND_VERSION_SHORT_NODOT "18")
++endif()
++
++if(NOT Ruby_FIND_VERSION_EXACT)
++  list(APPEND _RUBY_POSSIBLE_EXECUTABLE_NAMES ruby2.5 ruby25)
++  list(APPEND _RUBY_POSSIBLE_EXECUTABLE_NAMES ruby2.4 ruby24)
++  list(APPEND _RUBY_POSSIBLE_EXECUTABLE_NAMES ruby2.3 ruby23)
++  list(APPEND _RUBY_POSSIBLE_EXECUTABLE_NAMES ruby2.2 ruby22)
++  list(APPEND _RUBY_POSSIBLE_EXECUTABLE_NAMES ruby2.1 ruby21)
++  list(APPEND _RUBY_POSSIBLE_EXECUTABLE_NAMES ruby2.0 ruby20)
++  list(APPEND _RUBY_POSSIBLE_EXECUTABLE_NAMES ruby1.9 ruby19)
++
++  # if we want a version below 1.9, also look for ruby 1.8
++  if("${Ruby_FIND_VERSION_SHORT_NODOT}" VERSION_LESS "19")
++    list(APPEND _RUBY_POSSIBLE_EXECUTABLE_NAMES ruby1.8 ruby18)
+   endif()
+ 
+-  mark_as_advanced(
+-    RUBY_INCLUDE_DIRS
+-    RUBY_LIBRARIES
+-    RUBY_LIB
+-    RUBY_VERSION_MAJOR RUBY_VERSION_MINOR
+-    RUBY_VERSION_STRING
+-    )
++  list(REMOVE_DUPLICATES _RUBY_POSSIBLE_EXECUTABLE_NAMES)
++endif()
++
++find_program(RUBY_EXECUTABLE NAMES ${_RUBY_POSSIBLE_EXECUTABLE_NAMES})
++
++if(RUBY_EXECUTABLE  AND NOT  RUBY_VERSION_MAJOR)
++  function(_RUBY_CONFIG_VAR RBVAR OUTVAR)
++    execute_process(COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "print RbConfig::CONFIG['${RBVAR}']"
++      RESULT_VARIABLE _RUBY_SUCCESS
++      OUTPUT_VARIABLE _RUBY_OUTPUT
++      ERROR_QUIET)
++    if(_RUBY_SUCCESS OR _RUBY_OUTPUT STREQUAL "")
++      execute_process(COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "print Config::CONFIG['${RBVAR}']"
++        RESULT_VARIABLE _RUBY_SUCCESS
++        OUTPUT_VARIABLE _RUBY_OUTPUT
++        ERROR_QUIET)
++    endif()
++    set(${OUTVAR} "${_RUBY_OUTPUT}" PARENT_SCOPE)
++  endfunction()
++
++
++  # query the ruby version
++   _RUBY_CONFIG_VAR("MAJOR" RUBY_VERSION_MAJOR)
++   _RUBY_CONFIG_VAR("MINOR" RUBY_VERSION_MINOR)
++   _RUBY_CONFIG_VAR("TEENY" RUBY_VERSION_PATCH)
++
++   # query the different directories
++   _RUBY_CONFIG_VAR("archdir" RUBY_ARCH_DIR)
++   _RUBY_CONFIG_VAR("arch" RUBY_ARCH)
++   _RUBY_CONFIG_VAR("rubyhdrdir" RUBY_HDR_DIR)
++   _RUBY_CONFIG_VAR("rubyarchhdrdir" RUBY_ARCHHDR_DIR)
++   _RUBY_CONFIG_VAR("libdir" RUBY_POSSIBLE_LIB_DIR)
++   _RUBY_CONFIG_VAR("rubylibdir" RUBY_RUBY_LIB_DIR)
++
++   # site_ruby
++   _RUBY_CONFIG_VAR("sitearchdir" RUBY_SITEARCH_DIR)
++   _RUBY_CONFIG_VAR("sitelibdir" RUBY_SITELIB_DIR)
++
++   # vendor_ruby available ?
++   execute_process(COMMAND ${RUBY_EXECUTABLE} -r vendor-specific -e "print 'true'"
++      OUTPUT_VARIABLE RUBY_HAS_VENDOR_RUBY  ERROR_QUIET)
++
++   if(RUBY_HAS_VENDOR_RUBY)
++      _RUBY_CONFIG_VAR("vendorlibdir" RUBY_VENDORLIB_DIR)
++      _RUBY_CONFIG_VAR("vendorarchdir" RUBY_VENDORARCH_DIR)
++   endif()
++
++   # save the results in the cache so we don't have to run ruby the next time again
++   set(RUBY_VERSION_MAJOR    ${RUBY_VERSION_MAJOR}    CACHE PATH "The Ruby major version" FORCE)
++   set(RUBY_VERSION_MINOR    ${RUBY_VERSION_MINOR}    CACHE PATH "The Ruby minor version" FORCE)
++   set(RUBY_VERSION_PATCH    ${RUBY_VERSION_PATCH}    CACHE PATH "The Ruby patch version" FORCE)
++   set(RUBY_ARCH_DIR         ${RUBY_ARCH_DIR}         CACHE PATH "The Ruby arch dir" FORCE)
++   set(RUBY_HDR_DIR          ${RUBY_HDR_DIR}          CACHE PATH "The Ruby header dir (1.9+)" FORCE)
++   set(RUBY_ARCHHDR_DIR      ${RUBY_ARCHHDR_DIR}      CACHE PATH "The Ruby arch header dir (2.0+)" FORCE)
++   set(RUBY_POSSIBLE_LIB_DIR ${RUBY_POSSIBLE_LIB_DIR} CACHE PATH "The Ruby lib dir" FORCE)
++   set(RUBY_RUBY_LIB_DIR     ${RUBY_RUBY_LIB_DIR}     CACHE PATH "The Ruby ruby-lib dir" FORCE)
++   set(RUBY_SITEARCH_DIR     ${RUBY_SITEARCH_DIR}     CACHE PATH "The Ruby site arch dir" FORCE)
++   set(RUBY_SITELIB_DIR      ${RUBY_SITELIB_DIR}      CACHE PATH "The Ruby site lib dir" FORCE)
++   set(RUBY_HAS_VENDOR_RUBY  ${RUBY_HAS_VENDOR_RUBY}  CACHE BOOL "Vendor Ruby is available" FORCE)
++   set(RUBY_VENDORARCH_DIR   ${RUBY_VENDORARCH_DIR}   CACHE PATH "The Ruby vendor arch dir" FORCE)
++   set(RUBY_VENDORLIB_DIR    ${RUBY_VENDORLIB_DIR}    CACHE PATH "The Ruby vendor lib dir" FORCE)
++
++   mark_as_advanced(
++     RUBY_ARCH_DIR
++     RUBY_ARCH
++     RUBY_HDR_DIR
++     RUBY_ARCHHDR_DIR
++     RUBY_POSSIBLE_LIB_DIR
++     RUBY_RUBY_LIB_DIR
++     RUBY_SITEARCH_DIR
++     RUBY_SITELIB_DIR
++     RUBY_HAS_VENDOR_RUBY
++     RUBY_VENDORARCH_DIR
++     RUBY_VENDORLIB_DIR
++     RUBY_VERSION_MAJOR
++     RUBY_VERSION_MINOR
++     RUBY_VERSION_PATCH
++     )
++endif()
++
++# In case RUBY_EXECUTABLE could not be executed (e.g. cross compiling)
++# try to detect which version we found. This is not too good.
++if(RUBY_EXECUTABLE AND NOT RUBY_VERSION_MAJOR)
++   # by default assume 1.8.0
++   set(RUBY_VERSION_MAJOR 1)
++   set(RUBY_VERSION_MINOR 8)
++   set(RUBY_VERSION_PATCH 0)
++   # check whether we found 1.9.x
++   if(${RUBY_EXECUTABLE} MATCHES "ruby1\\.?9")
++      set(RUBY_VERSION_MAJOR 1)
++      set(RUBY_VERSION_MINOR 9)
++   endif()
++   # check whether we found 2.0.x
++   if(${RUBY_EXECUTABLE} MATCHES "ruby2\\.?0")
++      set(RUBY_VERSION_MAJOR 2)
++      set(RUBY_VERSION_MINOR 0)
++   endif()
++   # check whether we found 2.1.x
++   if(${RUBY_EXECUTABLE} MATCHES "ruby2\\.?1")
++      set(RUBY_VERSION_MAJOR 2)
++      set(RUBY_VERSION_MINOR 1)
++   endif()
++   # check whether we found 2.2.x
++   if(${RUBY_EXECUTABLE} MATCHES "ruby2\\.?2")
++      set(RUBY_VERSION_MAJOR 2)
++      set(RUBY_VERSION_MINOR 2)
++   endif()
++   # check whether we found 2.3.x
++   if(${RUBY_EXECUTABLE} MATCHES "ruby2\\.?3")
++      set(RUBY_VERSION_MAJOR 2)
++      set(RUBY_VERSION_MINOR 3)
++   endif()
++   # check whether we found 2.4.x
++   if(${RUBY_EXECUTABLE} MATCHES "ruby2\\.?4")
++      set(RUBY_VERSION_MAJOR 2)
++      set(RUBY_VERSION_MINOR 4)
++   endif()
++   if(${RUBY_EXECUTABLE} MATCHES "ruby2\\.?5")
++      set(RUBY_VERSION_MAJOR 2)
++      set(RUBY_VERSION_MINOR 5)
++   endif()
+ endif()
++
++if(RUBY_VERSION_MAJOR)
++   set(RUBY_VERSION "${RUBY_VERSION_MAJOR}.${RUBY_VERSION_MINOR}.${RUBY_VERSION_PATCH}")
++   set(_RUBY_VERSION_SHORT "${RUBY_VERSION_MAJOR}.${RUBY_VERSION_MINOR}")
++   set(_RUBY_VERSION_SHORT_NODOT "${RUBY_VERSION_MAJOR}${RUBY_VERSION_MINOR}")
++   set(_RUBY_NODOT_VERSION "${RUBY_VERSION_MAJOR}${RUBY_VERSION_MINOR}${RUBY_VERSION_PATCH}")
++endif()
++
++find_path(RUBY_INCLUDE_DIR
++   NAMES ruby.h
++   HINTS
++   ${RUBY_HDR_DIR}
++   ${RUBY_ARCH_DIR}
++   /usr/lib/ruby/${_RUBY_VERSION_SHORT}/i586-linux-gnu/ )
++
++set(RUBY_INCLUDE_DIRS ${RUBY_INCLUDE_DIR} )
++
++# if ruby > 1.8 is required or if ruby > 1.8 was found, search for the config.h dir
++if( "${Ruby_FIND_VERSION_SHORT_NODOT}" GREATER 18  OR  "${_RUBY_VERSION_SHORT_NODOT}" GREATER 18  OR  RUBY_HDR_DIR)
++   find_path(RUBY_CONFIG_INCLUDE_DIR
++     NAMES ruby/config.h  config.h
++     HINTS
++     ${RUBY_HDR_DIR}/${RUBY_ARCH}
++     ${RUBY_ARCH_DIR}
++     ${RUBY_ARCHHDR_DIR}
++     )
++
++   set(RUBY_INCLUDE_DIRS ${RUBY_INCLUDE_DIRS} ${RUBY_CONFIG_INCLUDE_DIR} )
++endif()
++
++
++# Determine the list of possible names for the ruby library
++set(_RUBY_POSSIBLE_LIB_NAMES ruby ruby-static ruby${_RUBY_VERSION_SHORT} ruby${_RUBY_VERSION_SHORT_NODOT} ruby-${_RUBY_VERSION_SHORT} ruby-${RUBY_VERSION})
++
++if(WIN32)
++   set( _RUBY_MSVC_RUNTIME "" )
++   if( MSVC_VERSION EQUAL 1200 )
++     set( _RUBY_MSVC_RUNTIME "60" )
++   endif()
++   if( MSVC_VERSION EQUAL 1300 )
++     set( _RUBY_MSVC_RUNTIME "70" )
++   endif()
++   if( MSVC_VERSION EQUAL 1310 )
++     set( _RUBY_MSVC_RUNTIME "71" )
++   endif()
++   if( MSVC_VERSION EQUAL 1400 )
++     set( _RUBY_MSVC_RUNTIME "80" )
++   endif()
++   if( MSVC_VERSION EQUAL 1500 )
++     set( _RUBY_MSVC_RUNTIME "90" )
++   endif()
++
++   set(_RUBY_ARCH_PREFIX "")
++   if(CMAKE_SIZEOF_VOID_P EQUAL 8)
++     set(_RUBY_ARCH_PREFIX "x64-")
++   endif()
++
++   list(APPEND _RUBY_POSSIBLE_LIB_NAMES
++               "${_RUBY_ARCH_PREFIX}msvcr${_RUBY_MSVC_RUNTIME}-ruby${_RUBY_NODOT_VERSION}"
++               "${_RUBY_ARCH_PREFIX}msvcr${_RUBY_MSVC_RUNTIME}-ruby${_RUBY_NODOT_VERSION}-static"
++               "${_RUBY_ARCH_PREFIX}msvcrt-ruby${_RUBY_NODOT_VERSION}"
++               "${_RUBY_ARCH_PREFIX}msvcrt-ruby${_RUBY_NODOT_VERSION}-static" )
++endif()
++
++find_library(RUBY_LIBRARY NAMES ${_RUBY_POSSIBLE_LIB_NAMES} HINTS ${RUBY_POSSIBLE_LIB_DIR} )
++
++include(${CMAKE_CURRENT_LIST_DIR}/FindPackageHandleStandardArgs.cmake)
++set(_RUBY_REQUIRED_VARS RUBY_EXECUTABLE RUBY_INCLUDE_DIR RUBY_LIBRARY)
++if(_RUBY_VERSION_SHORT_NODOT GREATER 18)
++   list(APPEND _RUBY_REQUIRED_VARS RUBY_CONFIG_INCLUDE_DIR)
++endif()
++
++if(_RUBY_DEBUG_OUTPUT)
++   message(STATUS "--------FindRuby.cmake debug------------")
++   message(STATUS "_RUBY_POSSIBLE_EXECUTABLE_NAMES: ${_RUBY_POSSIBLE_EXECUTABLE_NAMES}")
++   message(STATUS "_RUBY_POSSIBLE_LIB_NAMES: ${_RUBY_POSSIBLE_LIB_NAMES}")
++   message(STATUS "RUBY_ARCH_DIR: ${RUBY_ARCH_DIR}")
++   message(STATUS "RUBY_HDR_DIR: ${RUBY_HDR_DIR}")
++   message(STATUS "RUBY_POSSIBLE_LIB_DIR: ${RUBY_POSSIBLE_LIB_DIR}")
++   message(STATUS "Found RUBY_VERSION: \"${RUBY_VERSION}\" , short: \"${_RUBY_VERSION_SHORT}\", nodot: \"${_RUBY_VERSION_SHORT_NODOT}\"")
++   message(STATUS "_RUBY_REQUIRED_VARS: ${_RUBY_REQUIRED_VARS}")
++   message(STATUS "RUBY_EXECUTABLE: ${RUBY_EXECUTABLE}")
++   message(STATUS "RUBY_LIBRARY: ${RUBY_LIBRARY}")
++   message(STATUS "RUBY_INCLUDE_DIR: ${RUBY_INCLUDE_DIR}")
++   message(STATUS "RUBY_CONFIG_INCLUDE_DIR: ${RUBY_CONFIG_INCLUDE_DIR}")
++   message(STATUS "--------------------")
++endif()
++
++FIND_PACKAGE_HANDLE_STANDARD_ARGS(Ruby  REQUIRED_VARS  ${_RUBY_REQUIRED_VARS}
++                                        VERSION_VAR RUBY_VERSION )
++
++mark_as_advanced(
++  RUBY_EXECUTABLE
++  RUBY_LIBRARY
++  RUBY_INCLUDE_DIR
++  RUBY_CONFIG_INCLUDE_DIR
++  )
++
++# Set some variables for compatibility with previous version of this file
++set(RUBY_POSSIBLE_LIB_PATH ${RUBY_POSSIBLE_LIB_DIR})
++set(RUBY_RUBY_LIB_PATH ${RUBY_RUBY_LIB_DIR})
++set(RUBY_INCLUDE_PATH ${RUBY_INCLUDE_DIRS})

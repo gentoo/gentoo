@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 GNOME_ORG_MODULE="murrine"
 
-inherit gnome.org multilib-minimal
+inherit eutils gnome.org ltprune multilib-minimal
 
 DESCRIPTION="Murrine GTK+2 Cairo Engine"
 
@@ -25,7 +25,7 @@ PDEPEND="themes? ( x11-themes/murrine-themes )"
 DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.37.1
 	sys-devel/gettext
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
+	virtual/pkgconfig"
 
 DOCS="AUTHORS ChangeLog NEWS TODO"
 

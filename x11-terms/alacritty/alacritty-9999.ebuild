@@ -1,50 +1,56 @@
-# Copyright 2017-2019 Gentoo Authors
+# Copyright 2017-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-CRATES=""
+CRATES="
+"
 
 MY_PV="${PV//_rc/-rc}"
+# https://bugs.gentoo.org/725962
+PYTHON_COMPAT=( python3_{7,8} )
 
-inherit bash-completion-r1 cargo desktop eutils
+inherit bash-completion-r1 cargo desktop python-any-r1
 
 DESCRIPTION="GPU-accelerated terminal emulator"
-HOMEPAGE="https://github.com/jwilm/alacritty"
+HOMEPAGE="https://github.com/alacritty/alacritty"
 
 if [ ${PV} == "9999" ] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/jwilm/alacritty"
+	EGIT_REPO_URI="https://github.com/alacritty/alacritty"
 else
-	SRC_URI="https://github.com/jwilm/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
+	SRC_URI="https://github.com/alacritty/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
-	KEYWORDS="amd64 ~ppc64"
+	KEYWORDS="~amd64 ~arm64 ~ppc64"
 fi
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions Boost-1.0 BSD BSD-2 CC0-1.0 FTL ISC MIT MPL-2.0 Unlicense WTFPL-2 ZLIB"
 SLOT="0"
-IUSE=""
+IUSE="wayland +X"
 
-DEPEND="
+REQUIRED_USE="|| ( wayland X )"
+
+DEPEND="${PYTHON_DEPS}"
+
+COMMON_DEPEND="
 	media-libs/fontconfig:=
 	media-libs/freetype:2
-	x11-libs/libxcb
+	X? ( x11-libs/libxcb:=[xkb] )
 "
 
-RDEPEND="${DEPEND}
+RDEPEND="${COMMON_DEPEND}
+	media-libs/mesa[X?,wayland?]
 	sys-libs/zlib
 	sys-libs/ncurses:0
-	x11-libs/libXcursor
-	x11-libs/libXi
-	x11-libs/libXrandr
-	virtual/opengl
+	wayland? ( dev-libs/wayland )
+	X? (
+		x11-libs/libXcursor
+		x11-libs/libXi
+		x11-libs/libXrandr
+	)
 "
 
-BDEPEND="dev-util/cmake
-	>=virtual/rust-1.37.0
-"
-
-DOCS=( CHANGELOG.md docs/ansicode.txt INSTALL.md README.md alacritty.yml )
+BDEPEND="dev-util/cmake"
 
 QA_FLAGS_IGNORED="usr/bin/alacritty"
 
@@ -59,8 +65,22 @@ src_unpack() {
 	fi
 }
 
+src_configure() {
+	myfeatures=(
+		$(usex X x11 '')
+		$(usev wayland)
+	)
+}
+
+src_compile() {
+	cd alacritty || die
+	cargo_src_compile ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
+}
+
 src_install() {
-	CARGO_INSTALL_PATH="alacritty" cargo_src_install
+	CARGO_INSTALL_PATH="alacritty" cargo_src_install ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
+
+	newman extra/alacritty.man alacritty.1
 
 	newbashcomp extra/completions/alacritty.bash alacritty
 
@@ -70,22 +90,26 @@ src_install() {
 	insinto /usr/share/zsh/site-functions
 	doins extra/completions/_alacritty
 
-	domenu extra/linux/alacritty.desktop
+	domenu extra/linux/Alacritty.desktop
 	newicon extra/logo/alacritty-term.svg Alacritty.svg
 
 	newman extra/alacritty.man alacritty.1
 
+	insinto /usr/share/metainfo
+	doins extra/linux/io.alacritty.Alacritty.appdata.xml
+
 	insinto /usr/share/alacritty/scripts
 	doins -r scripts/*
 
+	local DOCS=(
+		alacritty.yml
+		CHANGELOG.md INSTALL.md README.md
+		docs/{ansicode.txt,escape_support.md}
+	)
 	einstalldocs
 }
 
 src_test() {
-	cargo_src_test --offline
-}
-
-pkg_postinst() {
-	optfeature "wayland support" dev-libs/wayland
-	optfeature "apply-tilix-colorscheme script dependency" dev-python/pyyaml
+	cd alacritty || die
+	cargo_src_test ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
 }

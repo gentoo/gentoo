@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1
@@ -20,13 +20,8 @@ KEYWORDS="~amd64 ~x86 ~x64-solaris"
 SLOT="0"
 IUSE="test"
 
-# TODO: split twisted-core gives minor test failure, get rid of it
-# when we port revdeps
 RDEPEND="
-	|| (
-		dev-python/twisted[${PYTHON_USEDEP}]
-		dev-python/twisted-core[${PYTHON_USEDEP}]
-	)
+	dev-python/twisted[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]

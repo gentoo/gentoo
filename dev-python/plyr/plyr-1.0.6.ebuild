@@ -1,8 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-PYTHON_COMPAT=( python{2_7,3_6} )
+EAPI=7
+
+DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1 flag-o-matic
 
@@ -13,19 +15,17 @@ DESCRIPTION="A python wrapper for Glyr"
 HOMEPAGE="https://sahib.github.io/python-glyr/intro.html
 	https://github.com/sahib/python-glyr"
 SRC_URI="https://github.com/sahib/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3+"
 KEYWORDS="amd64 x86"
 SLOT="0"
-IUSE="doc"
 
-RDEPEND="media-libs/glyr"
+RDEPEND="media-libs/glyr:="
 DEPEND="${RDEPEND}
-	dev-python/cython[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
+	dev-python/cython[${PYTHON_USEDEP}]"
 
-S="${WORKDIR}/${MY_P}"
+distutils_enable_sphinx docs
 
 python_prepare_all() {
 	# Disable test requiring internet connection
@@ -33,25 +33,6 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-python_compile() {
-	if ! python_is_python3; then
-		local CFLAGS=${CFLAGS}
-		append-cflags -fno-strict-aliasing
-	fi
-	distutils-r1_python_compile
-}
-
-python_compile_all() {
-	if use doc; then
-		emake -C docs html
-	fi
-}
-
 python_test() {
 	"${PYTHON}" -m unittest discover tests || die "Tests fail with ${EPYTHON}"
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( docs/build/html/. )
-	distutils-r1_python_install_all
 }

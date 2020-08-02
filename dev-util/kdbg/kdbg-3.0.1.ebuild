@@ -9,7 +9,7 @@ QTMIN=5.12.3
 inherit ecm
 
 DESCRIPTION="Graphical debugger interface"
-HOMEPAGE="http://www.kdbg.org/"
+HOMEPAGE="https://www.kdbg.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

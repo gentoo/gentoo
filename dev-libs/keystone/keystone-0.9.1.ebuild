@@ -5,12 +5,12 @@ EAPI=6
 
 DISTUTILS_OPTIONAL=1
 CMAKE_MIN_VERSION=3.8.7
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit cmake-utils distutils-r1 llvm
 
 DESCRIPTION="assembly/assembler framework + bindings"
-HOMEPAGE="http://www.keystone-engine.org/"
+HOMEPAGE="https://www.keystone-engine.org/"
 
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/keystone-engine/keystone.git"

@@ -1,0 +1,84 @@
+From 1c5faa6dcf16135ee31252d13766d01536a69405 Mon Sep 17 00:00:00 2001
+From: Peter Levine <plevine457@gmail.com>
+Date: Tue, 5 May 2020 03:45:35 -0400
+Subject: [PATCH] Fix building against clang configured with
+ CLANG_LINK_CLANG_DYLIB
+
+LLVM/Clang upstream only officially supports building shared
+components as a single dynamic library (via
+LLVM_BUILD_LLVM_DYLIB=ON, CLANG_LINK_CLANG_DYLIB=ON, etc..).
+Linux distros like Fedora and Gentoo have followed suit.
+
+Unfortunately, QT-Creator's src/shared/clang/clang_installation.pri
+file assumes clang is built with separate component libraries
+and the build fails.
+
+This change alters the build to check for the existence
+of clang component libraries and, if found, link to them, or
+otherwise to libclang-cpp.
+
+Task-number: QTCREATORBUG-23172
+Change-Id: I17df5822d7aeb471227f21f2cf4a71871d6f9b86
+---
+ src/shared/clang/clang_installation.pri | 35 +++++++++++++++----------
+ 1 file changed, 21 insertions(+), 14 deletions(-)
+
+diff --git a/src/shared/clang/clang_installation.pri b/src/shared/clang/clang_installation.pri
+index 08838838bca..c191c57f1c7 100644
+--- a/src/shared/clang/clang_installation.pri
++++ b/src/shared/clang/clang_installation.pri
+@@ -204,19 +204,6 @@ isEmpty(LLVM_VERSION) {
+         }
+     }
+ 
+-    isEmpty(QTC_CLANG_BUILDMODE_MISMATCH)|!equals(QTC_CLANG_BUILDMODE_MISMATCH, 1) {
+-        CLANGFORMAT_MAIN_HEADER = $$LLVM_INCLUDEPATH/clang/Format/Format.h
+-        exists($$CLANGFORMAT_MAIN_HEADER) {
+-            CLANGFORMAT_LIBS=-lclangFormat -lclangToolingInclusions -lclangToolingCore -lclangRewrite -lclangLex -lclangBasic
+-            ALL_CLANG_LIBS=-lclangFormat -lclangToolingInclusions -lclangTooling -lclangToolingCore \
+-                           -lclangRewrite -lclangIndex -lclangFrontend -lclangParse -lclangSerialization \
+-                           -lclangSema -lclangEdit -lclangAnalysis -lclangDriver -lclangDynamicASTMatchers \
+-                           -lclangASTMatchers -lclangAST -lclangLex -lclangBasic
+-            win32:CLANGFORMAT_LIBS += -lversion
+-        }
+-    }
+-    win32:ALL_CLANG_LIBS += -lversion
+-
+     LIBCLANG_MAIN_HEADER = $$LLVM_INCLUDEPATH/clang-c/Index.h
+     !exists($$LIBCLANG_MAIN_HEADER) {
+         $$llvmWarningOrError(\
+@@ -237,10 +224,30 @@ isEmpty(LLVM_VERSION) {
+     LIBCLANG_LIBS += $${CLANG_LIB}
+ 
+     isEmpty(QTC_CLANG_BUILDMODE_MISMATCH)|!equals(QTC_CLANG_BUILDMODE_MISMATCH, 1) {
++        CLANGFORMAT_MAIN_HEADER = $$LLVM_INCLUDEPATH/clang/Format/Format.h
++        exists($$CLANGFORMAT_MAIN_HEADER) {
++            exists($${LLVM_LIBDIR}/libclangFormat.so*)|exists($${LLVM_LIBDIR}/libclangFormat.dylib) {
++                CLANGFORMAT_LIBS=-lclangFormat -lclangToolingInclusions -lclangToolingCore -lclangRewrite -lclangLex -lclangBasic
++                ALL_CLANG_LIBS=-lclangFormat -lclangToolingInclusions -lclangTooling -lclangToolingCore \
++                           -lclangRewrite -lclangIndex -lclangFrontend -lclangParse -lclangSerialization \
++                           -lclangSema -lclangEdit -lclangAnalysis -lclangDriver -lclangDynamicASTMatchers \
++                           -lclangASTMatchers -lclangAST -lclangLex -lclangBasic
++                win32:CLANGFORMAT_LIBS += -lversion
++                win32:ALL_CLANG_LIBS += -lversion
++            } else {
++                CLANGFORMAT_LIBS=-lclang-cpp
++                ALL_CLANG_LIBS=-lclang-cpp
++            }
++        }
++
+         QTC_DISABLE_CLANG_REFACTORING=$$(QTC_DISABLE_CLANG_REFACTORING)
+         isEmpty(QTC_DISABLE_CLANG_REFACTORING) {
+             !contains(QMAKE_DEFAULT_LIBDIRS, $$LLVM_LIBDIR): LIBTOOLING_LIBS = -L$${LLVM_LIBDIR}
+-            LIBTOOLING_LIBS += $$CLANGTOOLING_LIBS $$LLVM_STATIC_LIBS
++            exists($${LLVM_LIBDIR}/libclangTooling.so*)|exists($${LLVM_LIBDIR}/libclangTooling.dylib) {
++                LIBTOOLING_LIBS += $$CLANGTOOLING_LIBS $$LLVM_STATIC_LIBS
++            } else {
++                LIBTOOLING_LIBS += -lclang-cpp $$LLVM_STATIC_LIBS
++            }
+         }
+     }
+ 
+-- 
+2.26.2
+

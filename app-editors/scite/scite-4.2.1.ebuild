@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,12 +7,12 @@ inherit toolchain-funcs xdg-utils
 
 MY_PV=${PV//./}
 DESCRIPTION="A very powerful, highly configurable, small editor with syntax coloring"
-HOMEPAGE="http://www.scintilla.org/SciTE.html"
+HOMEPAGE="https://www.scintilla.org/SciTE.html"
 SRC_URI="https://www.scintilla.org/${PN}${MY_PV}.tgz -> ${P}.tgz"
 
 LICENSE="HPND lua? ( MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="lua"
 
 RDEPEND="

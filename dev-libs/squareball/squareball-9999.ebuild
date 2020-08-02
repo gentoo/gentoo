@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3 autotools
 fi
 
-inherit eutils
+inherit eutils ltprune
 
 DESCRIPTION="A general-purpose library for C99"
 HOMEPAGE="https://github.com/rafaelmartins/squareball"

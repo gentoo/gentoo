@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/tinyproxy/tinyproxy/releases/download/${PV}/${P}.tar
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ia64 ppc ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ppc ~sparc x86"
 
 IUSE="test debug +filter-proxy reverse-proxy transparent-proxy
 +upstream-proxy +xtinyproxy-header"
@@ -42,7 +42,6 @@ src_configure() {
 		$(use_enable transparent-proxy transparent) \
 		$(use_enable upstream-proxy upstream) \
 		$(use_enable xtinyproxy-header xtinyproxy) \
-		--disable-silent-rules \
 		--localstatedir=/var
 }
 

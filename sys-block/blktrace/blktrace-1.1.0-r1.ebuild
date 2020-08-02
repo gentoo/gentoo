@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,8 +9,8 @@ MY_PN="blktrace"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="btrace can show detailed info about what is happening on a block device io queue"
-HOMEPAGE="http://git.kernel.dk/cgit/blktrace/"
-SRC_URI="http://brick.kernel.dk/snaps/${MY_P}.tar.bz2"
+HOMEPAGE="https://git.kernel.dk/cgit/blktrace/"
+SRC_URI="https://brick.kernel.dk/snaps/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 

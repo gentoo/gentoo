@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,6 +18,7 @@ DEPEND="x11-libs/libX11
 	x11-libs/libXpm"
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-gcc-10.patch )
 DOCS=( ../ChangeLog ../README )
 S=${WORKDIR}/${P}/src
 
@@ -25,7 +26,7 @@ src_compile() {
 	emake CC="$(tc-getCC)"
 }
 
-src_install () {
+src_install() {
 	dobin wmsysmon
 	einstalldocs
 }

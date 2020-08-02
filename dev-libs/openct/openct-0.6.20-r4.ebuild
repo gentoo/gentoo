@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DESCRIPTION="library for accessing smart card terminals"
 HOMEPAGE="https://github.com/OpenSC/openct/wiki"
 
 SRC_URI="mirror://sourceforge/opensc/${PN}/${P}.tar.gz"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -30,8 +30,6 @@ src_configure() {
 	use debug && append-cppflags -DDEBUG_IFDH
 
 	econf \
-		--docdir="/usr/share/doc/${PF}" \
-		--htmldir="/usr/share/doc/${PF}/html" \
 		--localstatedir=/var \
 		--with-udev="$(get_udevdir)" \
 		--enable-non-privileged \

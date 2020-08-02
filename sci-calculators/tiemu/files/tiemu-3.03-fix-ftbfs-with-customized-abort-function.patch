@@ -1,0 +1,14 @@
+Description: Fix FTBFS error: '"abort" passed 1 arguments, but takes just 0'
+Author: Andreas B. Mundt <andi@debian.org> with help from #debian-science (jokva).
+Last-Update: 2018-05-19
+
+--- a/src/core/uae/sysdeps.h
++++ b/src/core/uae/sysdeps.h
+@@ -33,6 +33,7 @@
+ #define _GNU_SOURCE
+ #endif
+ #include <limits.h>
++#include <stdlib.h>
+ 
+ // Make sure that the character types take exactly 1 byte.
+ #if UCHAR_MAX != 0xFF

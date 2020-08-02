@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -14,12 +14,12 @@ MY_P=${MY_P/_/-}
 
 DESCRIPTION="Ruby bindings for rrdtool"
 HOMEPAGE="https://oss.oetiker.ch/rrdtool/"
-SRC_URI="${HOMEPAGE}pub/${MY_P}.tar.gz"
+SRC_URI="https://oss.oetiker.ch/rrdtool/pub/${MY_P}.tar.gz"
 RUBY_S="$MY_P"/bindings/ruby
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
 IUSE="graph test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( graph )"

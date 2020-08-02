@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools flag-o-matic linux-info xdg multilib-minimal pam user systemd toolchain-funcs
+inherit autotools flag-o-matic linux-info xdg multilib-minimal pam systemd toolchain-funcs
 
 MY_PV="${PV/_rc/rc}"
 MY_PV="${MY_PV/_beta/b}"
@@ -21,7 +21,7 @@ else
 	#SRC_URI="https://github.com/apple/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	SRC_URI="https://github.com/apple/cups/releases/download/v${MY_PV}/${MY_P}-source.tar.gz"
 	if [[ "${PV}" != *_beta* ]] && [[ "${PV}" != *_rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~m68k-mint"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~m68k-mint"
 	fi
 fi
 
@@ -56,11 +56,13 @@ CDEPEND="
 DEPEND="${CDEPEND}"
 BDEPEND="
 	acct-group/lp
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	acct-group/lpadmin
+	virtual/pkgconfig
 "
 
 RDEPEND="${CDEPEND}
 	acct-group/lp
+	acct-group/lpadmin
 	selinux? ( sec-policy/selinux-cups )
 "
 
@@ -89,8 +91,9 @@ S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	#enewgroup lp -> acct-group/lp
-	enewuser lp -1 -1 -1 lp
-	enewgroup lpadmin 106
+	# user lp already provided by baselayout
+	#enewuser lp -1 -1 -1 lp
+	#enewgroup lpadmin 106
 
 	if use kernel_linux; then
 		linux-info_pkg_setup

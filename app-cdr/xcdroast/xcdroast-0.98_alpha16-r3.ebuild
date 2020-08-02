@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -45,7 +45,6 @@ src_configure() {
 		$(use_enable nls) \
 		$(use_enable suid nonrootmode) \
 		--enable-gtk2 \
-		--disable-dependency-tracking \
 		--mandir=/usr/share/man \
 		--sysconfdir=/etc
 }

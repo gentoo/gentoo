@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -26,7 +26,10 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="internal-tls ipv6 libressl logwatch netlink sqlite +wps +crda"
+IUSE="internal-tls ipv6 libressl logwatch netlink sqlite +suiteb +wps +crda"
+
+# suiteb impl uses openssl feature not available in libressl, see bug 710992
+REQUIRED_USE="?? ( libressl suiteb )"
 
 DEPEND="
 	libressl? ( dev-libs/libressl:0= )
@@ -90,6 +93,14 @@ src_configure() {
 	echo "CONFIG_EAP=y" >> ${CONFIG}
 	echo "CONFIG_ERP=y" >> ${CONFIG}
 	echo "CONFIG_EAP_MD5=y" >> ${CONFIG}
+	echo "CONFIG_SAE=y" >> ${CONFIG}
+	echo "CONFIG_OWE=y" >> ${CONFIG}
+	echo "CONFIG_DPP=y" >> ${CONFIG}
+
+	if use suiteb; then
+		echo "CONFIG_SUITEB=y" >> ${CONFIG}
+		echo "CONFIG_SUITEB192=y" >> ${CONFIG}
+	fi
 
 	if use internal-tls && ! use libressl; then
 		echo "CONFIG_TLS=internal" >> ${CONFIG}

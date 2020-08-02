@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit versionator multilib eutils readme.gentoo-r1 rpm systemd user pax-utils
+inherit versionator multilib eutils readme.gentoo-r1 rpm systemd pax-utils
 
 DESCRIPTION="IBM Spectrum Protect (former Tivoli Storage Manager) Backup/Archive Client, API"
 HOMEPAGE="https://www.ibm.com/us-en/marketplace/data-protection-and-recovery"
@@ -34,8 +34,8 @@ LICENSE="Apache-1.1 Apache-2.0 JDOM BSD-2 CC-PD Boost-1.0 MIT CPL-1.0 HPND Exola
 	|| ( BSD GPL-2+ ) gSOAP libpng tsm"
 
 SLOT="0"
-#KEYWORDS="-* ~amd64"
-IUSE="acl java +tsm_cit +tsm_hw"
+KEYWORDS="-* ~amd64"
+IUSE="acl java +tsm-cit +tsm-hw"
 QA_PREBUILT="*"
 
 # not available (yet?)
@@ -50,8 +50,11 @@ ${MY_LANG_PV}TIVsm-msg.${lang#*:}.x86_64.rpm )"
 done
 unset lang
 
-DEPEND=""
+DEPEND="
+	acct-group/tsm
+"
 RDEPEND="
+	acct-group/tsm
 	dev-libs/expat
 	dev-libs/libxml2
 	sys-fs/fuse:0
@@ -62,7 +65,6 @@ RDEPEND="
 S="${WORKDIR}/bacli"
 
 pkg_setup() {
-	enewgroup tsm
 	DOC_CONTENTS="
 		Note that you have to be root to be able to use the Tivoli Storage Manager
 		client. The dsmtca trusted agent binary does not exist anymore.
@@ -84,10 +86,10 @@ src_unpack() {
 	for rpm in *.rpm; do
 		case ${rpm} in
 			TIVsm-APIcit.*|TIVsm-BAcit.*)
-				use tsm_cit && rpms="${rpms} ./${rpm}"
+				use tsm-cit && rpms="${rpms} ./${rpm}"
 				;;
 			TIVsm-BAhdw.*)
-				use tsm_hw && rpms="${rpms} ./${rpm}"
+				use tsm-hw && rpms="${rpms} ./${rpm}"
 				;;
 			TIVsm-JBB.*|*-filepath-*)
 				# "journal based backup" for all filesystems
@@ -114,7 +116,7 @@ src_unpack() {
 	chmod -R u+w "${S}" || die
 }
 
-src_install(){
+src_install() {
 	cp -a opt "${D}" || die
 	cp -a usr "${D}" || die
 

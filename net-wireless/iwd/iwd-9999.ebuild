@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ if [[ ${PV} == *9999* ]]; then
 	ELL_EGIT_REPO_URI="https://git.kernel.org/pub/scm/libs/ell/ell.git"
 else
 	SRC_URI="https://www.kernel.org/pub/linux/network/wireless/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 DESCRIPTION="Wireless daemon for linux"
@@ -26,7 +26,7 @@ IUSE="+client +crda +monitor ofono wired cpu_flags_x86_aes cpu_flags_x86_ssse3"
 COMMON_DEPEND="sys-apps/dbus
 	client? ( sys-libs/readline:0= )"
 
-[[ -z "${ELL_REQ}" ]] || COMMON_DEPEND+=" ~dev-libs/ell-${ELL_REQ}"
+[[ -z "${ELL_REQ}" ]] || COMMON_DEPEND+=" >=dev-libs/ell-${ELL_REQ}"
 
 RDEPEND="${COMMON_DEPEND}
 	net-wireless/wireless-regdb
@@ -37,7 +37,7 @@ DEPEND="${COMMON_DEPEND}
 
 [[ ${PV} == *9999* ]] && DEPEND+=" dev-python/docutils"
 
-pkg_pretend() {
+pkg_setup() {
 	CONFIG_CHECK="
 		~ASYMMETRIC_KEY_TYPE
 		~ASYMMETRIC_PUBLIC_KEY_SUBTYPE
@@ -59,6 +59,7 @@ pkg_pretend() {
 		~CRYPTO_USER_API_SKCIPHER
 		~KEY_DH_OPERATIONS
 		~PKCS7_MESSAGE_PARSER
+		~RFKILL
 		~X509_CERTIFICATE_PARSER
 	"
 	if use crda;then
@@ -140,7 +141,7 @@ src_install() {
 	default
 	keepdir /var/lib/${PN}
 
-	newinitd "${FILESDIR}/iwd.initd" iwd
+	newinitd "${FILESDIR}/iwd.initd-r1" iwd
 
 	if use wired;then
 		newinitd "${FILESDIR}/ead.initd" ead

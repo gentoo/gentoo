@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.13-libdir.patch
 	"${FILESDIR}"/${PN}-1.13-my_bool.patch
 	"${FILESDIR}"/${PN}-1.13-odbc.patch
+	"${FILESDIR}"/${PN}-1.13-Werror.patch
 	"${FILESDIR}"/${PN}-1.13-pcap-1.9.0.patch
 )
 
@@ -61,7 +62,7 @@ src_configure() {
 		--without-oracle
 }
 
-src_install () {
+src_install() {
 	default
 
 	newconfd "${FILESDIR}/barnyard2.confd" barnyard2

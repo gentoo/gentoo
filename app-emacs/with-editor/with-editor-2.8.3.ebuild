@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,6 +19,5 @@ ELISP_TEXINFO="*.texi"
 DOCS="README.md with-editor.org"
 
 DEPEND=""
-# Versions of magit before 2.5.0 bundled with-editor
-RDEPEND="!!<app-emacs/magit-2.5.0 ${DEPEND}"
+RDEPEND="${DEPEND}"
 DEPEND="${DEPEND} sys-apps/texinfo"

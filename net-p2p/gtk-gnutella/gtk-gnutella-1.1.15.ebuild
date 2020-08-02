@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,10 +14,10 @@ HOMEPAGE="http://gtk-gnutella.sourceforge.net/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc ~ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 RDEPEND="
-	sys-libs/binutils-libs:=
+	<sys-libs/binutils-libs-2.34:=
 	dev-libs/glib:2
 	sys-libs/zlib
 	gtk? ( >=x11-libs/gtk+-2.2.1:2 )

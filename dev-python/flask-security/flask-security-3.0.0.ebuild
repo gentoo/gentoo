@@ -3,8 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
-
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 MY_PN="Flask-Security"
@@ -32,18 +31,20 @@ RDEPEND=">=dev-python/flask-0.11[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}
-	dev-python/pytest-runner[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/flask-sqlalchemy[${PYTHON_USEDEP}]
 		dev-python/flask-mongoengine[${PYTHON_USEDEP}]
 		dev-python/bcrypt[${PYTHON_USEDEP}]
 		dev-python/simplejson[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/flask-peewee[${PYTHON_USEDEP}]' 'python2*')
 	)"
 
 S="${WORKDIR}/${MY_P}"
+
+src_prepare() {
+	sed -i -e '/pytest-runner/d' setup.py || die
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	nosetests -v || die "Testing failed with ${EPYTHON}"

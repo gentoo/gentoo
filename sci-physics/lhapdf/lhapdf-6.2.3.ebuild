@@ -4,7 +4,7 @@
 EAPI=7
 
 AUTOTOOLS_IN_SOURCE_BUILD=yes
-PYTHON_COMPAT=( python{2_7,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 
 inherit distutils-r1
 
@@ -17,7 +17,7 @@ SRC_URI="http://www.hepforge.org/archive/lhapdf/${MY_PF}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
 IUSE="doc examples python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -26,7 +26,15 @@ RDEPEND="
 	dev-libs/boost:0=
 	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen[latex] )"
+	doc? (
+		app-doc/doxygen
+		dev-texlive/texlive-bibtexextra
+		dev-texlive/texlive-fontsextra
+		dev-texlive/texlive-fontutils
+		dev-texlive/texlive-latex
+		dev-texlive/texlive-latexextra
+	)
+"
 
 S="${WORKDIR}/${MY_PF}"
 

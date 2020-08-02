@@ -1,14 +1,14 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 GENTOO_DEPEND_ON_PERL=no
 
-inherit perl-module systemd flag-o-matic
+inherit autotools perl-module systemd flag-o-matic
 
 if [[ "${PV}" == "9999" ]] ; then
-	inherit autotools git-r3
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/OpenPrinting/cups-filters.git"
 else
 	SRC_URI="http://www.openprinting.org/download/${PN}/${P}.tar.xz"
@@ -19,7 +19,7 @@ HOMEPAGE="https://wiki.linuxfoundation.org/openprinting/cups-filters"
 
 LICENSE="MIT GPL-2"
 SLOT="0"
-IUSE="dbus +foomatic ipp_autosetup jpeg ldap pclm pdf perl png +postscript static-libs test tiff zeroconf"
+IUSE="dbus +foomatic jpeg ldap pclm pdf perl png +postscript static-libs test tiff zeroconf"
 
 RESTRICT="!test? ( test )"
 
@@ -31,11 +31,9 @@ RDEPEND="
 	media-libs/freetype:2
 	media-libs/lcms:2
 	>=net-print/cups-1.7.3
-	!<=net-print/cups-1.5.9999
 	sys-devel/bc
 	sys-libs/zlib
 	dbus? ( sys-apps/dbus )
-	foomatic? ( !net-print/foomatic-filters )
 	jpeg? ( virtual/jpeg:0 )
 	ldap? ( net-nds/openldap )
 	pdf? ( app-text/mupdf )
@@ -54,8 +52,18 @@ BDEPEND="
 "
 
 src_prepare() {
+	local need_eautoreconf=
+
 	default
-	[[ "${PV}" == "9999" ]] && eautoreconf
+
+	if ! use test ; then
+		eapply "${FILESDIR}"/${PN}-1.27.4-make-missing-testfont-non-fatal.patch
+		need_eautoreconf=yes
+	elif [[ "${PV}" == "9999" ]] ; then
+		need_eautoreconf=yes
+	fi
+
+	[[ -n ${need_eautoreconf} ]] && eautoreconf
 
 	# Bug #626800
 	append-cxxflags -std=c++11
@@ -73,7 +81,6 @@ src_configure() {
 		--without-php
 		$(use_enable dbus)
 		$(use_enable foomatic)
-		$(use_enable ipp_autosetup auto-setup-driverless)
 		$(use_enable ldap)
 		$(use_enable pclm)
 		$(use_enable pdf mutool)

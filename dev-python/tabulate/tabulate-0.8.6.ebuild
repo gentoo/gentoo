@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{6..9} pypy3 )
 
 inherit distutils-r1
 
@@ -14,19 +15,18 @@ S="${WORKDIR}/python-${P}"
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+RDEPEND="
 	dev-python/wcwidth[${PYTHON_USEDEP}]"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+BDEPEND="
 	test? (
 		${RDEPEND}
 		$(python_gen_impl_dep 'sqlite')
 		dev-python/colorclass[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep 'dev-python/numpy[${PYTHON_USEDEP}]' 'python3*')
-		virtual/python-funcsigs[${PYTHON_USEDEP}]
 	)
 "
 

@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit fixheadtails
 
@@ -39,4 +39,8 @@ src_install() {
 		DATADIR="${ED}/usr/share/doc/${P}" \
 		install
 	einstalldocs
+}
+
+src_test() {
+	emake -j1 -s check
 }

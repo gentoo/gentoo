@@ -12,7 +12,7 @@ HOMEPAGE="https://gitlab.gnome.org/World/Authenticator"
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	SRC_URI=""
-	EGIT_REPO_URI="${HOMEPAGE}"
+	EGIT_REPO_URI="https://gitlab.gnome.org/World/Authenticator"
 else
 	SRC_URI="https://gitlab.gnome.org/World/Authenticator/-/archive/${PV}/Authenticator-${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/Authenticator-${PV}"
@@ -27,11 +27,13 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	${PYTHON_DEPS}
 	app-crypt/libsecret
-	dev-python/pillow[${PYTHON_USEDEP}]
-	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	dev-python/pyotp[${PYTHON_USEDEP}]
-	dev-python/python-gnupg[${PYTHON_USEDEP}]
-	dev-python/pyzbar[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyotp[${PYTHON_MULTI_USEDEP}]
+		dev-python/python-gnupg[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyzbar[${PYTHON_MULTI_USEDEP}]
+	')
 	media-libs/gd
 	x11-libs/gtk+:3
 "

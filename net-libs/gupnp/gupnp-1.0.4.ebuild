@@ -3,7 +3,7 @@
 
 EAPI="6"
 VALA_USE_DEPEND="vapigen"
-PYTHON_COMPAT=( python{2_7,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 PYTHON_REQ_USE="xml"
 
 inherit gnome2 multilib-minimal python-single-r1 vala
@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GUPnP"
 
 LICENSE="LGPL-2"
 SLOT="0/4"
-KEYWORDS="~alpha amd64 ~arm arm64 hppa ~ia64 ~ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~ppc ppc64 ~sparc x86"
 
 IUSE="connman +introspection kernel_linux networkmanager"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -22,7 +22,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 # prefix: uuid dependency can be adapted to non-linux platforms
 RDEPEND="${PYTHON_DEPS}
-	>=net-libs/gssdp-0.14.15:0=[introspection?,${MULTILIB_USEDEP}]
+	>=net-libs/gssdp-0.14.15:0/3[introspection?,${MULTILIB_USEDEP}]
 	>=net-libs/libsoup-2.48.0:2.4[introspection?,${MULTILIB_USEDEP}]
 	>=dev-libs/glib-2.40:2[${MULTILIB_USEDEP}]
 	>=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}]
@@ -35,9 +35,10 @@ RDEPEND="${PYTHON_DEPS}
 	!net-libs/gupnp-vala
 "
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.14
 	sys-devel/gettext
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 src_prepare() {

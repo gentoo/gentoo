@@ -1,11 +1,36 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -sparc
 
+# Matt Turner <mattst88@gentoo.org> (2020-07-01)
+# Unlikely.
+vulkan
+
+# James Le Cuirot <chewi@gentoo.org> (2020-05-10)
+# media-libs/allegro is not keyworded.
+allegro
+
+# Michał Górny <mgorny@gentoo.org> (2020-05-06)
+# dev-python/mercurial does not work on sparc due to deps.
+mercurial
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-21)
+# ruby2.4 will go away soon, avoid keywording older packages
+ruby_targets_ruby24
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
+# media-libs/opencv not keyworded on sparc
+opencv
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-09)
+# gimp dependencies unusable because of unaligned accesses, bug #638172
+gimp
+
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
 # Dependency not keyworded (dev-libs/libappindicator).
+appindicator
 ayatana
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2018-12-12)
@@ -15,14 +40,6 @@ mongodb
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-12-06)
 # dev-qt/qtdeclarative-5.11.x is broken and blocks re-keywording of Qt5.
 qml
-
-# Michał Górny <mgorny@gentoo.org> (2018-07-16)
-# Python 3.7 support requires fresh versions of packages which are stuck
-# at keywordreqs.
-# bug #661306: dev-python/pytest
-# bug #661320: dev-python/twisted
-python_targets_python3_7
-python_single_target_python3_7
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-11-19)
 # There is no luajit support on sparc. Bug #554376
@@ -73,8 +90,6 @@ srtp
 tokyocabinet
 # bug 235685
 webkit
-# bug 359963
-webp
 
 # Gustavo Zacarias <gustavoz@gentoo.org> (2007-02-14)
 # Mono needs gcc4 and it's not yet stable
@@ -148,7 +163,6 @@ zmq
 
 # No hardware to test
 ifp
-chipcard
 hbci
 lm-sensors
 openct

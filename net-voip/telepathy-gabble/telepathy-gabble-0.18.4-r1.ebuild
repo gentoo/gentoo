@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -57,12 +57,7 @@ DEPEND="${RDEPEND}
 # pygobject:2 is needed by twisted-17 for gtk2reactor usage by gabble
 #test? (
 #	dev-python/pygobject:2
-#	|| (
 #	>=dev-python/twisted-16.0.0
-#	(	>=dev-python/twisted-core-0.8.2
-#		>=dev-python/twisted-words-0.8.2
-#		>=dev-python/dbus-python-0.83
-#	) )
 #)
 
 PATCHES=(

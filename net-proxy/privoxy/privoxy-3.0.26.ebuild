@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -9,7 +9,7 @@ inherit autotools systemd toolchain-funcs user
 	PRIVOXY_STATUS="beta" ||
 	PRIVOXY_STATUS="stable"
 
-HOMEPAGE="http://www.privoxy.org https://sourceforge.net/projects/ijbswa/"
+HOMEPAGE="https://www.privoxy.org https://sourceforge.net/projects/ijbswa/"
 DESCRIPTION="A web proxy with advanced filtering capabilities for enhancing privacy"
 SRC_URI="mirror://sourceforge/ijbswa/${P%_*}-${PRIVOXY_STATUS}-src.tar.gz"
 
@@ -18,7 +18,7 @@ external-filters +fast-redirects +force graceful-termination
 ie-images +image-blocking ipv6 lfs png-images selinux +stats
 +threads toggle tools whitelists +zlib"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ppc ppc64 sparc x86"
 LICENSE="GPL-2"
 
 DEPEND="
@@ -71,7 +71,6 @@ src_configure() {
 	# --with-docbook and --with-db2html and their deps are useless,
 	#	since docs are already pregenerated in the source tarball
 	econf \
-		--docdir=/usr/share/doc/${PF} \
 		--sysconfdir=/etc/privoxy \
 		--enable-dynamic-pcre \
 		--with-user=privoxy \
@@ -97,7 +96,7 @@ src_configure() {
 		$(use_enable zlib)
 }
 
-src_install () {
+src_install() {
 	default
 
 	newinitd "${FILESDIR}/privoxy.initd-3" privoxy

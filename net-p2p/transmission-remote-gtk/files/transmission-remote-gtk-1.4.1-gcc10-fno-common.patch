@@ -1,0 +1,25 @@
+From b20655081332847426a7d10189bb1e2369efea42 Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Fri, 20 Mar 2020 20:30:24 +0100
+Subject: [PATCH] Fix building under GCC 10 / -fno-common
+
+* Add a `typedef` to avoid defining a variable.
+
+Bug: https://bugs.gentoo.org/706980
+---
+ src/trg-tree-view.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/trg-tree-view.h b/src/trg-tree-view.h
+index 435848f..78cd76e 100644
+--- a/src/trg-tree-view.h
++++ b/src/trg-tree-view.h
+@@ -51,7 +51,7 @@ GtkWidget *trg_tree_view_new(void);
+ 
+ G_END_DECLS GList *trg_tree_view_get_selected_refs_list(GtkTreeView * tv);
+ 
+-enum {
++typedef enum {
+     TRG_COLTYPE_ICONTEXT,
+     TRG_COLTYPE_FILEICONTEXT,
+     TRG_COLTYPE_WANTED,

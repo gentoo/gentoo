@@ -2,19 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_6 )
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 
-inherit cmake-utils eutils python-any-r1
+inherit cmake-utils eutils llvm python-any-r1
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/doxygen/doxygen.git"
 	SRC_URI=""
-	KEYWORDS="alpha amd64 arm arm64 ia64 ppc ppc64 s390 sparc x86"
 else
 	SRC_URI="http://doxygen.nl/files/${P}.src.tar.gz"
-	KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="Documentation system for most programming languages"
@@ -28,7 +27,7 @@ RDEPEND="app-text/ghostscript-gpl
 	dev-lang/perl
 	media-libs/libpng:0=
 	virtual/libiconv
-	clang? ( >=sys-devel/clang-4.0.0:= )
+	clang? ( <sys-devel/clang-10:= )
 	dot? (
 		media-gfx/graphviz
 		media-libs/freetype
@@ -68,8 +67,10 @@ PATCHES=(
 )
 
 DOCS=( LANGUAGE.HOWTO README.md )
+LLVM_MAX_SLOT=9
 
 pkg_setup() {
+	use clang && llvm_pkg_setup
 	use doc && python-any-r1_pkg_setup
 }
 

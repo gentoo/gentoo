@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ MY_PV=${PV//.}
 MY_P=${MY_PN}${MY_PV}
 
 DESCRIPTION="Image library supporting many formats"
-HOMEPAGE="http://freeimage.sourceforge.net/"
+HOMEPAGE="https://freeimage.sourceforge.io/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip
 	mirror://sourceforge/${PN}/${MY_P}.pdf"
 
@@ -113,6 +113,6 @@ src_compile() {
 }
 
 src_install() {
-	foreach_make install DESTDIR="${ED}" INSTALLDIR="${ED%/}"/usr/$(get_libdir)
+	foreach_make install DESTDIR="${ED}" INSTALLDIR="${ED}"/usr/$(get_libdir)
 	einstalldocs
 }

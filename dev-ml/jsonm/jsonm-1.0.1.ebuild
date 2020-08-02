@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,8 +6,8 @@ EAPI="5"
 inherit findlib
 
 DESCRIPTION="Non-blocking streaming JSON codec for OCaml"
-HOMEPAGE="http://erratique.ch/software/jsonm"
-SRC_URI="http://erratique.ch/software/jsonm/releases/${P}.tbz"
+HOMEPAGE="https://erratique.ch/software/jsonm"
+SRC_URI="https://erratique.ch/software/jsonm/releases/${P}.tbz"
 
 LICENSE="ISC"
 SLOT="0/${PV}"

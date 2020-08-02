@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Benda Xu <heroxbd@gentoo.org> (2019-08-20)
@@ -15,10 +15,6 @@ www-servers/uwsgi uwsgi_plugins_systemd_logger
 # Needs root privilege.
 sys-fs/eudev hwdb kmod
 
-# Kacper Kowalik <xarthisius@gentoo.org> (2012-01-14)
-# sci-libs/mkl don't have prefix keywords
-dev-python/numexpr mkl
-
 # Fabian Groffen <grobian@gentoo.org> (2011-12-08)
 # USE=vanilla produces a broken compiler for Prefix.  Only use this flag
 # when you're absolutely sure what you're doing.  Do NOT report bugs
@@ -32,7 +28,6 @@ sci-electronics/gtkwave judy
 
 # Christian Faulhammer <fauli@gentoo.org> (2010-01-09)
 # m17n-lib is not available in Prefix
-app-editors/emacs-vcs m17n-lib
 app-editors/emacs m17n-lib
 
 # Jeremy Olexa <darkside@gentoo.org> (2009-09-30)

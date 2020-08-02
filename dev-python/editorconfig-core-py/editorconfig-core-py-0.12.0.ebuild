@@ -4,7 +4,7 @@
 EAPI=6
 
 TESTVER="abb579e00f2deeede91cb485e53512efab9c6474"
-PYTHON_COMPAT=( python2_7 python3_6 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="Clone of EditorConfig core written in Python"
@@ -43,11 +43,8 @@ python_install() {
 	#use cli || rm -f "${D}/${EPREFIX}"/usr/bin
 }
 
-src_test() {
-	__src_test_run_python_impl() {
-		cmake -DPYTHON_EXECUTABLE="${PYTHON}" . || die "tests failed to build with ${EPYTHON}"
-		ctest . || die "tests failed with ${EPYTHON}"
-	}
-	python_foreach_impl __src_test_run_python_impl
-	unset __src_test_run_python_impl
+python_test() {
+	cmake -DPYTHON_EXECUTABLE="${PYTHON}" . ||
+		die "tests failed to build with ${EPYTHON}"
+	ctest . || die "tests failed with ${EPYTHON}"
 }

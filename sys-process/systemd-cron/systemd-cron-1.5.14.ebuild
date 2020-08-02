@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( pypy3 python3_{6,7} )
+PYTHON_COMPAT=( pypy3 python3_{6,7,8,9} )
 inherit python-single-r1 systemd
 
 DESCRIPTION="systemd units to create timers for cron directories and crontab"
@@ -11,12 +11,13 @@ SRC_URI="https://github.com/systemd-cron/${PN}/archive/v${PV}.tar.gz -> systemd-
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc ~x86"
+KEYWORDS="amd64 sparc x86"
 IUSE="cron-boot etc-crontab-systemd minutely setgid test yearly"
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=sys-apps/systemd-217
 	sys-apps/debianutils
+	!sys-process/cronie[anacron]
 	!etc-crontab-systemd? ( !sys-process/dcron )
 	${PYTHON_DEPS}
 	sys-process/cronbase"

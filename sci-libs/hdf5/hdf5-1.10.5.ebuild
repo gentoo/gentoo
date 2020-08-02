@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,12 +11,12 @@ MY_P=${PN}-${PV/_p/-patch}
 MAJOR_P=${PN}-$(ver_cut 1-2)
 
 DESCRIPTION="General purpose library and file format for storing scientific data"
-HOMEPAGE="http://www.hdfgroup.org/HDF5/"
-SRC_URI="http://www.hdfgroup.org/ftp/HDF5/releases/${MAJOR_P}/${MY_P}/src/${MY_P}.tar.bz2"
+HOMEPAGE="https://www.hdfgroup.org/HDF5/"
+SRC_URI="https://www.hdfgroup.org/ftp/HDF5/releases/${MAJOR_P}/${MY_P}/src/${MY_P}.tar.bz2"
 
 LICENSE="NCSA-HDF"
 SLOT="0/${PV%%_p*}"
-KEYWORDS="alpha amd64 ~arm arm64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="cxx debug examples fortran +hl mpi szip threads zlib"
 
 REQUIRED_USE="

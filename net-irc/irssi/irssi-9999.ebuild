@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -13,10 +13,9 @@ DESCRIPTION="A modular textUI IRC client with IPv6 support"
 HOMEPAGE="https://irssi.org/"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="otr +perl selinux socks5 +proxy libressl"
 
-CDEPEND="sys-libs/ncurses:0=
+COMMON_DEPEND="sys-libs/ncurses:0=
 	>=dev-libs/glib-2.6.0
 	!libressl? ( dev-libs/openssl:= )
 	libressl? ( dev-libs/libressl:= )
@@ -28,7 +27,7 @@ CDEPEND="sys-libs/ncurses:0=
 	socks5? ( >=net-proxy/dante-1.1.18 )"
 
 DEPEND="
-	${CDEPEND}
+	${COMMON_DEPEND}
 	virtual/pkgconfig
 	dev-lang/perl
 	|| (
@@ -37,7 +36,7 @@ DEPEND="
 	)"
 
 RDEPEND="
-	${CDEPEND}
+	${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-irc )"
 
 src_prepare() {
@@ -64,11 +63,11 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 
 	use perl && perl_delete_localpod
 
-	prune_libtool_files --modules
+	rm -f "${ED}"/usr/$(get_libdir)/irssi/modules/*.{a,la} || die
 
 	dodoc AUTHORS ChangeLog README.md TODO NEWS
 }

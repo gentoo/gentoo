@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -35,7 +35,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-no-ikvm.patch
 	epatch "${FILESDIR}"/${P}-oolibrary-unit-test.patch
 
-	cp "${FILESDIR}"/build-${PV}.xml "${S}"/build.xml || die
+	cp "${FILESDIR}"/build-3.x.xml "${S}"/build.xml || die
 }
 
 src_compile() {

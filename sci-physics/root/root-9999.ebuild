@@ -1,22 +1,21 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 # ninja does not work due to fortran
 CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
-inherit cmake-utils cuda eapi7-ver elisp-common eutils fortran-2 \
-	prefix python-single-r1 toolchain-funcs
+inherit cmake cuda elisp-common fortran-2 prefix python-single-r1 toolchain-funcs
 
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
 
-IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda +davix debug emacs
+IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda cudnn +davix debug emacs
 	+examples fits fftw fortran +gdml graphviz +gsl http libcxx +minuit
-	mysql odbc +opengl oracle postgres prefix pythia6 pythia8 +python
+	mpi mysql odbc +opengl oracle postgres prefix pythia6 pythia8 +python
 	qt5 R +roofit root7 shadow sqlite +ssl +tbb test +tmva +unuran vc
 	vmc +xml xrootd"
 RESTRICT="!test? ( test )"
@@ -24,7 +23,7 @@ RESTRICT="!test? ( test )"
 if [[ ${PV} =~ "9999" ]] ; then
 	inherit git-r3
 	KEYWORDS=""
-	EGIT_REPO_URI="http://root.cern/git/root.git"
+	EGIT_REPO_URI="https://github.com/root-project/root.git"
 	if [[ ${PV} == "9999" ]]; then
 		SLOT="0"
 	else
@@ -40,7 +39,8 @@ LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
 
 REQUIRED_USE="
 	^^ ( c++11 c++14 c++17 )
-	cuda? ( tmva !c++17 )
+	cuda? ( tmva )
+	cudnn? ( cuda )
 	!X? ( !asimage !opengl !qt5 )
 	davix? ( ssl xml )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -81,6 +81,7 @@ CDEPEND="
 	)
 	asimage? ( media-libs/libafterimage[gif,jpeg,png,tiff] )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-9.0 )
+	cudnn? ( dev-libs/cudnn )
 	davix? ( net-libs/davix )
 	emacs? ( >=app-editors/emacs-23.1:* )
 	fftw? ( sci-libs/fftw:3.0= )
@@ -91,6 +92,7 @@ CDEPEND="
 	libcxx? ( sys-libs/libcxx )
 	unuran? ( sci-mathematics/unuran:0= )
 	minuit? ( !sci-libs/minuit )
+	mpi? ( virtual/mpi )
 	mysql? ( dev-db/mysql-connector-c )
 	odbc? ( || ( dev-db/libiodbc dev-db/unixODBC ) )
 	oracle? ( dev-db/oracle-instantclient-basic )
@@ -99,11 +101,15 @@ CDEPEND="
 	pythia8? ( sci-physics/pythia:8 )
 	python? ( ${PYTHON_DEPS} )
 	R? ( dev-lang/R )
-	shadow? ( virtual/shadow )
+	shadow? ( sys-apps/shadow )
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? ( dev-libs/openssl:0= )
 	tbb? ( >=dev-cpp/tbb-2018 )
-	tmva? ( dev-python/numpy[${PYTHON_USEDEP}] )
+	tmva? (
+		$(python_gen_cond_dep '
+			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 	vc? ( dev-libs/vc:= )
 	xml? ( dev-libs/libxml2:2= )
 	xrootd? ( net-libs/xrootd:0= )
@@ -129,12 +135,16 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	use cuda && cuda_src_prepare
+
+	cmake_src_prepare
 
 	sed -i "/CLING_BUILD_PLUGINS/d" interpreter/CMakeLists.txt || die
 
 	# CSS should use local images
 	sed -i -e 's,http://.*/,,' etc/html/ROOT.css || die "html sed failed"
+
+	eapply_user
 }
 
 # Note: ROOT uses bundled clang because it is patched and API-incompatible
@@ -145,15 +155,18 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_C_COMPILER=$(tc-getCC)
+		-DCMAKE_CXX_COMPILER=$(tc-getCXX)
+		-DCMAKE_CUDA_HOST_COMPILER=$(tc-getCXX)
 		-DCMAKE_C_FLAGS="${CFLAGS}"
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS}"
 		-DCMAKE_CXX_STANDARD=$((usev c++11 || usev c++14 || usev c++17) | cut -c4-)
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX%/}/usr/lib/${PN}/$(ver_cut 1-2)"
-		-DCMAKE_INSTALL_MANDIR="${EPREFIX%/}/usr/lib/${PN}/$(ver_cut 1-2)/share/man"
+		-DPYTHON_EXECUTABLE="${EPREFIX}/usr/bin/${EPYTHON}"
+		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)"
+		-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)/share/man"
 		-DCMAKE_INSTALL_LIBDIR="lib"
 		-DDEFAULT_SYSROOT="${EPREFIX}"
 		-DCLING_BUILD_PLUGINS=OFF
-		-Dexplicitlink=ON
 		-Dexceptions=ON
 		-Dfail-on-missing=ON
 		-Dgnuinstall=OFF
@@ -182,31 +195,32 @@ src_configure() {
 		-Dbuiltin_xrootd=OFF
 		-Dbuiltin_xxhash=OFF
 		-Dbuiltin_zlib=OFF
-		-Dx11=$(usex X)
+		-Dbuiltin_zstd=OFF
 		-Dalien=OFF
 		-Darrow=OFF
 		-Dasimage=$(usex asimage)
-		-Dlibcxx=$(usex libcxx)
 		-Dccache=OFF # use ccache via portage
 		-Dcefweb=OFF
 		-Dclad=OFF
 		-Dcocoa=$(usex aqua)
 		-Dcuda=$(usex cuda)
+		-Dcudnn=$(usex cudnn)
 		-Dcxxmodules=OFF # requires clang, unstable
+		-Ddataframe=ON
 		-Ddavix=$(usex davix)
 		-Ddcache=OFF
+		-Dfcgi=$(usex http)
 		-Dfftw3=$(usex fftw)
 		-Dfitsio=$(usex fits)
 		-Dfortran=$(usex fortran)
-		-Dftgl=$(usex opengl)
 		-Dgdml=$(usex gdml)
 		-Dgfal=OFF
-		-Dgl2ps=$(usex opengl)
 		-Dgminimal=OFF
 		-Dgsl_shared=$(usex gsl)
 		-Dgviz=$(usex graphviz)
 		-Dhttp=$(usex http)
 		-Dimt=$(usex tbb)
+		-Dlibcxx=$(usex libcxx)
 		-Dmathmore=$(usex gsl)
 		-Dmemstat=OFF # deprecated
 		-Dminimal=OFF
@@ -214,23 +228,27 @@ src_configure() {
 		-Dminuit=$(usex minuit)
 		-Dmlp=$(usex tmva)
 		-Dmonalisa=OFF
+		-Dmpi=$(usex mpi)
 		-Dmysql=$(usex mysql)
 		-Dodbc=$(usex odbc)
 		-Dopengl=$(usex opengl)
 		-Doracle=$(usex oracle)
 		-Dpgsql=$(usex postgres)
 		-Dpythia6=$(usex pythia6)
+		-Dpyroot=$(usex python) # python was renamed to pyroot
+		#-Dpyroot_legacy=OFF # set to ON to use legacy PyROOT (6.22 and later)
+		#-Dpyroot_experimental=OFF # set to ON to use new PyROOT (6.20 and earlier)
 		-Dpythia8=$(usex pythia8)
-		-Dpython=$(usex python)
 		-Dqt5web=$(usex qt5)
+		-Dr=$(usex R)
 		-Droofit=$(usex roofit)
 		-Droot7=$(usex root7)
 		-Drootbench=OFF
 		-Droottest=OFF
 		-Drpath=OFF
-		-Druntime_cxxmodules=OFF # does not work yet
-		-Dr=$(usex R)
+		-Druntime_cxxmodules=OFF
 		-Dshadowpw=$(usex shadow)
+		-Dspectrum=ON
 		-Dsqlite=$(usex sqlite)
 		-Dssl=$(usex ssl)
 		-Dtcmalloc=OFF
@@ -238,30 +256,34 @@ src_configure() {
 		-Dtmva=$(usex tmva)
 		-Dtmva-cpu=$(usex tmva)
 		-Dtmva-gpu=$(usex cuda)
+		-Dtmva-pymva=$(usex tmva)
+		-Dtmva-rmva=$(usex R)
 		-Dunuran=$(usex unuran)
 		-Dvc=$(usex vc)
-		-Dvmc=$(usex vmc)
 		-Dvdt=OFF
 		-Dveccore=OFF
+		-Dvecgeom=OFF
+		-Dvmc=$(usex vmc)
+		-Dx11=$(usex X)
 		-Dxml=$(usex xml)
 		-Dxrootd=$(usex xrootd)
 		${EXTRA_ECONF}
 	)
 
 	CMAKE_BUILD_TYPE=$(usex debug Debug Release) \
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
 	# needed for hsimple.root
 	addwrite /dev/random
-	cmake-utils_src_compile
+	cmake_src_compile
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
-	ROOTSYS=${EPREFIX%/}/usr/lib/${PN}/$(ver_cut 1-2)
+	ROOTSYS=${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)
 
 	if [[ ${PV} == "9999" ]]; then
 		ROOTENV="9900${PN}-git"

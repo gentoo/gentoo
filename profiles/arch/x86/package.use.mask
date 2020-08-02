@@ -1,5 +1,75 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-07-27)
+# media-video/pipewire:0/0.3 is available for x86
+www-client/firefox -screencast
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-07-11)
+# net-libs/libslirp is not yet keyworded on x86, bug #732144
+app-emulation/qemu slirp
+
+# Sam James <sam@gentoo.org> (2020-07-03)
+# Rust is available here
+# Bug #728558
+media-video/ffmpeg -rav1e
+
+# Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
+# Mask io-uring & zbc pending keywording
+sys-block/fio -io-uring -zbc
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-06-20)
+# media-libs/nv-codec-headers is not available for x86
+>=media-video/ffmpeg-4.3 video_cards_nvidia
+
+# Marek Szuba <marecki@gentoo.org> (2020-06-17)
+# Unmask globally-masked flashrom drivers and tools which do work on x86
+sys-apps/flashrom -atahpt -atapromise -internal -nic3com -nicnatsemi -nicrealtek -rayer-spi -satamv -tools
+
+# Christopher Head <chead@chead.ca> (2020-06-10)
+# Requires dev-db/influxdb which is amd64-only
+dev-python/influxdb test
+
+# Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
+# clisp is keyworded on x86
+app-text/texlive-core -xindy
+
+# Christoph Junghans <junghans@gentoo.org> (2020-05-16)
+# restrict USE=kokkos for x86 as kokkos doesn't support 32-bit archs
+# https://github.com/kokkos/kokkos/issues/2312
+sci-physics/lammps kokkos
+
+# Joonas Niilola <juippis@gentoo.org> (2020-05-14)
+# Dependency not keyworded on this arch.
+app-emulation/lxc apparmor
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-04-30)
+# sys-cluster/slurm is keyworded on x86
+app-metrics/collectd -collectd_plugins_slurm
+
+# Georgy Yakovlev <gyakovlev@gentoo.org (2020-04-26)
+# static-pie works on x86, #719444
+sys-libs/glibc -static-pie
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-03-11)
+# Encrypted Media Extensions (eme-free) can be disabled on x86
+mail-client/thunderbird -eme-free
+www-client/firefox -eme-free
+
+# Mart Raudsepp <leio@gentoo.org> (2020-03-01)
+# dev-util/sysprof-capture is keyworded on x86
+x11-wm/mutter -sysprof
+dev-libs/gjs -sysprof
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
+# Vulkan is available on x86.
+dev-qt/qtdeclarative -vulkan
+dev-qt/qtgui -vulkan
+dev-qt/qtwayland -vulkan
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-29)
+# media-libs/pulseaudio-qt is not keyworded
+kde-misc/kdeconnect pulseaudio
 
 # Georgy Yakovlev <gyakovlev@gentoo.org (2020-01-04)
 # zfs is not keyworded on x86
@@ -19,7 +89,7 @@ media-video/vlc -libplacebo
 
 # Thomas Deutschmann <whissi@gentoo.org> (2019-11-11)
 # dev-python/pandas is keyworded for x86
-sys-block/fio -gnuplot
+sys-block/fio -python -gnuplot
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
 # iasl is stable on x86
@@ -80,10 +150,6 @@ dev-python/pymongo test
 # media-libs/qtav not keyworded
 media-video/orion qtav
 
-# Thomas Deutschmann <whissi@gentoo.org> (2018-08-23)
-# Dependency sys-cluster/ceph is keyworded for x86
-net-fs/samba -ceph
-
 # Rick Farina <zerochaos@gentoo.org> (2018-06-27)
 # Catalyst has support for assembling bootloader on this arch
 dev-util/catalyst -system-bootloader
@@ -95,10 +161,6 @@ app-emulation/fuse -backend-svga
 # Thomas Deutschmann <whissi@gentoo.org> (2018-02-10)
 # Requires dev-db/mongodb which has dropped x86 support
 dev-libs/mongo-c-driver test
-
-# Thomas Deutschmann <whissi@gentoo.org> (2018-01-05)
-# Requires dev-python/neovim-remote, which is not keyworded on x86.
-app-editors/neovim remote
 
 # Michał Górny <mgorny@gentoo.org> (2017-12-30)
 # Moved from use.mask since it is a flag local to one package:
@@ -131,14 +193,6 @@ app-admin/rsyslog -mdblookup
 # Requires dev-lua/ldoc for building documentation,
 # which is only keyworded for amd64
 x11-wm/awesome doc
-
-# Alexis Ballier <aballier@gentoo.org> (2017-01-31)
-# nvidia drivers are unmasked here
-media-video/ffmpeg -nvenc
-
-# Luca Barbato <lu_zero@gentoo.org> (2017-01-22)
-# cuda is not available on x86 nvidia-video-codec depends on it
-media-video/libav nvidia
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2016-12-31)
 # on behalf of Andreas K. Hüttel <dilfridge@gentoo.org> (2016-12-14)
@@ -176,10 +230,6 @@ www-client/chromium widevine
 app-emulation/libvirt xen
 app-emulation/ganeti xen
 
-# Nathan Phillip Brink <binki@gentoo.org> (2015-09-26)
-# git useflag requires dev-libs/libgit2 which few arches support
-dev-util/geany-plugins -git
-
 # Brian Evans <grknight@gentoo.org (2015-09-14)
 # Unmask new USE flags for mariadb on supported arches
 >=dev-db/mariadb-10.1.0 -sst-xtrabackup -galera
@@ -204,10 +254,6 @@ net-im/telepathy-connection-managers -steam
 # Jeroen Roovers <jer@gentoo.org> (2015-01-31)
 # >x11-drivers/nvidia-drivers-346 on x86 has no UVM support (bug #534156)
 >x11-drivers/nvidia-drivers-346 uvm
-
-# Mike Frysinger <vapier@gentoo.org> (2014-08-04)
-# Unmask flashrom drivers that only work on x86 due to in/out asm insns #454024
-sys-apps/flashrom -atahpt -nic3com -nicnatsemi -nicrealtek -rayer-spi -satamv
 
 # Yixun Lan <dlan@gentoo.org> (2014-05-21)
 # sys-fs/zfs not keyworded on x86
@@ -239,10 +285,6 @@ app-editors/gvim -luajit -racket
 # Kacper Kowalik <xarthisius@gentoo.org> (2013-08-09)
 # Works on x86
 sys-apps/hwloc -gl
-
-# Christoph Junghans <junghans@gentoo.org> (2012-12-26)
-# mkl works on x86/amd64 (masked in base)
-sci-chemistry/gromacs -mkl
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-11-03)
 # Unmask here, as it's masked in base.

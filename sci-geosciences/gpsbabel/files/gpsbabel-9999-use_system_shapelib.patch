@@ -1,0 +1,133 @@
+From b69718b85b4ea9025f0f91d1e5de8b051a3c102d Mon Sep 17 00:00:00 2001
+From: "Andreas K. Huettel" <dilfridge@gentoo.org>
+Date: Thu, 12 Mar 2020 20:10:59 +0100
+Subject: [PATCH] Gentoo: Use system shapelib
+
+---
+ Makefile.in | 23 ++++++++++-------------
+ shape.cc    |  2 +-
+ shape.h     |  3 +--
+ 3 files changed, 12 insertions(+), 16 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index f04c6408..5365cf56 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -105,7 +105,7 @@ JEEPS=jeeps/gpsapp.o jeeps/gpscom.o \
+ # Extra modules in Jeeps that we don't use
+ # 	jeeps/gpsfmt.o jeeps/gpsinput.o jeeps/gpsproj.o
+ 
+-SHAPE=shapelib/shpopen.o shapelib/dbfopen.o shapelib/safileio.o
++SHAPE=-lshp
+ 
+ ZLIB=zlib/adler32.o zlib/compress.o zlib/crc32.o zlib/deflate.o zlib/inffast.o \
+ 	zlib/inflate.o zlib/infback.o zlib/inftrees.o zlib/trees.o \
+@@ -121,7 +121,7 @@ LIBOBJS = route.o waypt.o filter_vecs.o util.o vecs.o mkshort.o \
+     src/core/textstream.o \
+ 	  src/core/usasciicodec.o \
+ 	  src/core/xmlstreamwriter.o \
+-	  $(GARMIN) $(JEEPS) $(SHAPE) @ZLIB@ $(FMTS) $(FILTERS)
++	  $(GARMIN) $(JEEPS) @ZLIB@ $(FMTS) $(FILTERS)
+ OBJS = main.o globals.o $(LIBOBJS) @FILEINFO@
+ 
+ DEPFILES = $(OBJS:.o=.d)
+@@ -154,10 +154,10 @@ toolinfo
+ all: gpsbabel$(EXEEXT)
+ 
+ gpsbabel$(EXEEXT): configure Makefile $(OBJS) @USB_DEPS@ @GPSBABEL_DEBUG@
+-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) @LIBS@ $(QT_LIBS) @USB_LIBS@ $(OUTPUT_SWITCH)$@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) $(SHAPE) @LIBS@ $(QT_LIBS) @USB_LIBS@ $(OUTPUT_SWITCH)$@
+ 
+ gpsbabel-debug: $(OBJS) @USB_DEPS@
+-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) @LIBS@ $(QT_LIBS) @USB_LIBS@ $(OUTPUT_SWITCH)$@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) $(SHAPE) @LIBS@ $(QT_LIBS) @USB_LIBS@ $(OUTPUT_SWITCH)$@
+ 
+ Makefile gbversion.h: Makefile.in config.status xmldoc/makedoc.in \
+ 	  gbversion.h.in gui/setup.iss.in
+@@ -511,7 +511,7 @@ filter_vecs.o: filter_vecs.cc defs.h config.h zlib/zlib.h zlib/zconf.h \
+   position.h radius.h reverse_route.h smplrout.h sort.h stackfilter.h \
+   swapdata.h trackfilter.h transform.h validate.h gbversion.h vecs.h \
+   format.h ggv_bin.h gpx.h src/core/file.h src/core/xmlstreamwriter.h \
+-  src/core/xmltag.h shape.h shapelib/shapefil.h yahoo.h xmlgeneric.h \
++  src/core/xmltag.h shape.h yahoo.h xmlgeneric.h \
+   legacyformat.h mynav.h xcsv.h garmin_fs.h jeeps/gps.h jeeps/../defs.h \
+   jeeps/gpsport.h jeeps/gpsdevice.h jeeps/gpssend.h jeeps/gpsread.h \
+   jeeps/gpsutil.h jeeps/gpsapp.h jeeps/gpsprot.h jeeps/gpscom.h \
+@@ -535,7 +535,7 @@ garmin.o: garmin.cc defs.h config.h zlib/zlib.h zlib/zconf.h formspec.h \
+   jeeps/gpscom.h jeeps/gpsfmt.h jeeps/gpsmath.h jeeps/gpsmem.h \
+   jeeps/gpsrqst.h garmin_tables.h grtcirc.h jeeps/gpsserial.h vecs.h \
+   ggv_bin.h gpx.h src/core/file.h src/core/xmlstreamwriter.h \
+-  src/core/xmltag.h shape.h shapelib/shapefil.h yahoo.h xmlgeneric.h \
++  src/core/xmltag.h shape.h yahoo.h xmlgeneric.h \
+   legacyformat.h mynav.h xcsv.h src/core/textstream.h
+ garmin_device_xml.o: garmin_device_xml.cc defs.h config.h zlib/zlib.h \
+   zlib/zconf.h formspec.h inifile.h gbfile.h session.h \
+@@ -817,7 +817,7 @@ magproto.o: magproto.cc defs.h config.h zlib/zlib.h zlib/zconf.h \
+   formspec.h inifile.h gbfile.h session.h src/core/datetime.h \
+   src/core/optional.h explorist_ini.h format.h gbser.h magellan.h vecs.h \
+   ggv_bin.h gpx.h src/core/file.h src/core/xmlstreamwriter.h \
+-  src/core/xmltag.h shape.h shapelib/shapefil.h yahoo.h xmlgeneric.h \
++  src/core/xmltag.h shape.h yahoo.h xmlgeneric.h \
+   legacyformat.h mynav.h xcsv.h garmin_fs.h jeeps/gps.h jeeps/../defs.h \
+   jeeps/gpsport.h jeeps/gpsdevice.h jeeps/gpssend.h jeeps/gpsread.h \
+   jeeps/gpsutil.h jeeps/gpsapp.h jeeps/gpsprot.h jeeps/gpscom.h \
+@@ -831,7 +831,7 @@ main.o: main.cc defs.h config.h zlib/zlib.h zlib/zconf.h formspec.h \
+   stackfilter.h swapdata.h trackfilter.h transform.h validate.h format.h \
+   src/core/file.h src/core/usasciicodec.h vecs.h ggv_bin.h gpx.h \
+   src/core/xmlstreamwriter.h src/core/xmltag.h shape.h \
+-  shapelib/shapefil.h yahoo.h xmlgeneric.h legacyformat.h mynav.h xcsv.h \
++  yahoo.h xmlgeneric.h legacyformat.h mynav.h xcsv.h \
+   garmin_fs.h jeeps/gps.h jeeps/../defs.h jeeps/gpsport.h \
+   jeeps/gpsdevice.h jeeps/gpssend.h jeeps/gpsread.h jeeps/gpsutil.h \
+   jeeps/gpsapp.h jeeps/gpsprot.h jeeps/gpscom.h jeeps/gpsfmt.h \
+@@ -954,10 +954,7 @@ session.o: session.cc defs.h config.h zlib/zlib.h zlib/zconf.h formspec.h \
+   inifile.h gbfile.h session.h src/core/datetime.h src/core/optional.h
+ shape.o: shape.cc defs.h config.h zlib/zlib.h zlib/zconf.h formspec.h \
+   inifile.h gbfile.h session.h src/core/datetime.h src/core/optional.h \
+-  shape.h format.h shapelib/shapefil.h
+-shapelib/dbfopen.o: shapelib/dbfopen.c shapelib/shapefil.h
+-shapelib/safileio.o: shapelib/safileio.c shapelib/shapefil.h
+-shapelib/shpopen.o: shapelib/shpopen.c shapelib/shapefil.h
++  shape.h format.h
+ skyforce.o: skyforce.cc defs.h config.h zlib/zlib.h zlib/zconf.h \
+   formspec.h inifile.h gbfile.h session.h src/core/datetime.h \
+   src/core/optional.h
+@@ -1048,7 +1045,7 @@ vecs.o: vecs.cc defs.h config.h zlib/zlib.h zlib/zconf.h formspec.h \
+   inifile.h gbfile.h session.h src/core/datetime.h src/core/optional.h \
+   vecs.h format.h ggv_bin.h gpx.h src/core/file.h \
+   src/core/xmlstreamwriter.h src/core/xmltag.h shape.h \
+-  shapelib/shapefil.h yahoo.h xmlgeneric.h legacyformat.h mynav.h xcsv.h \
++  yahoo.h xmlgeneric.h legacyformat.h mynav.h xcsv.h \
+   garmin_fs.h jeeps/gps.h jeeps/../defs.h jeeps/gpsport.h \
+   jeeps/gpsdevice.h jeeps/gpssend.h jeeps/gpsread.h jeeps/gpsutil.h \
+   jeeps/gpsapp.h jeeps/gpsprot.h jeeps/gpscom.h jeeps/gpsfmt.h \
+diff --git a/shape.cc b/shape.cc
+index 933eb95a..f2ec5365 100644
+--- a/shape.cc
++++ b/shape.cc
+@@ -32,7 +32,7 @@
+ 
+ #include "defs.h"
+ #include "shape.h"
+-#include "shapelib/shapefil.h"
++#include <libshp/shapefil.h>
+ 
+ 
+ #if SHAPELIB_ENABLED
+diff --git a/shape.h b/shape.h
+index 75ec82c2..3bf1072f 100644
+--- a/shape.h
++++ b/shape.h
+@@ -27,8 +27,7 @@
+ 
+ #include "defs.h"               // for arglist_t, ARGTYPE_STRING, Waypoint, route_head, CET_CHARSET_ASCII, FF_CAP_RW_ALL, ff_cap, ff_type, ff_type_file
+ #include "format.h"             // for Format
+-#include "shapelib/shapefil.h"  // for DBFHandle, SHPAPI_CALL, SHPHandle
+-
++#include <libshp/shapefil.h>
+ 
+ #if SHAPELIB_ENABLED
+ class ShapeFormat : public Format
+-- 
+2.24.1
+

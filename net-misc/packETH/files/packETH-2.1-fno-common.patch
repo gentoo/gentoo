@@ -1,0 +1,42 @@
+--- a/src/function.c
++++ b/src/function.c
+@@ -66,7 +66,7 @@
+ int ipv6_start = 0;
+ int eth_start = 0;
+ gboolean stop_flag = 0;
+-extern char iftext[20];
++char iftext[20];
+ static unsigned long crc32_table[256];
+ int crc32_table_init = 0;
+ int ip_proto_used = 0; // 0 - none, 4 - ipv4, 6- IPv6, 806 - ARP
+--- a/src/function.h
++++ b/src/function.h
+@@ -22,6 +22,8 @@
+ 
+ #include <gtk/gtk.h>
+ 
++extern char iftext[20];
++
+ signed int char2x(char *p);
+ char c4(int value);
+ guint32 get_checksum32(int start, int stop);	
+--- a/src/function_send.c
++++ b/src/function_send.c
+@@ -55,7 +55,6 @@
+ extern long li_packets_sent_lastsec;
+ extern long sentstream[10];
+ extern long sendtime;
+-char iftext[20];
+ 
+ struct params  {
+ 	long long del;
+--- a/src/callbacks.c
++++ b/src/callbacks.c
+@@ -65,7 +65,6 @@
+ extern int stop_flag;
+ extern long desired_bw;
+ gint row_number;/* this is because i cant get the selected row number*/
+-gchar iftext[20];
+ gchar address_filename[100] = "addresslist";
+ static GtkWidget *entry_field;
+ static GtkWidget *entry_field_ip;

@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
-inherit eutils flag-o-matic python-single-r1
+inherit eutils flag-o-matic python-single-r1 toolchain-funcs
 
 export CTARGET=${CTARGET:-${CHOST}}
 if [[ ${CTARGET} == ${CHOST} ]] ; then
@@ -14,12 +14,10 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 fi
 is_cross() { [[ ${CHOST} != ${CTARGET} ]] ; }
 
-RPM=
-MY_PV=${PV}
 case ${PV} in
 9999*)
 	# live git tree
-	EGIT_REPO_URI="git://sourceware.org/git/binutils-gdb.git"
+	EGIT_REPO_URI="https://sourceware.org/git/binutils-gdb.git"
 	inherit git-r3
 	SRC_URI=""
 	;;
@@ -46,9 +44,9 @@ SRC_URI="${SRC_URI}
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 if [[ ${PV} != 9999* ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
-IUSE="+client lzma multitarget nls +python +server source-highlight test vanilla xml"
+IUSE="+client lzma multitarget nls +python +server source-highlight test vanilla xml xxhash"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	|| ( client server )
@@ -67,7 +65,7 @@ RDEPEND="
 	client? (
 		dev-libs/mpfr:0=
 		>=sys-libs/ncurses-5.2-r2:0=
-		sys-libs/readline:0=
+		>=sys-libs/readline-7:0=
 		lzma? ( app-arch/xz-utils )
 		python? ( ${PYTHON_DEPS} )
 		xml? ( dev-libs/expat )
@@ -75,6 +73,9 @@ RDEPEND="
 	)
 	source-highlight? (
 		dev-util/source-highlight
+	)
+	xxhash? (
+		dev-libs/xxhash
 	)
 "
 DEPEND="${RDEPEND}"
@@ -87,8 +88,6 @@ BDEPEND="
 		nls? ( sys-devel/gettext )
 	)"
 
-S=${WORKDIR}/${PN}-${MY_PV}
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.3.1-verbose-build.patch
 )
@@ -98,8 +97,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	[[ -n ${RPM} ]] && rpm_spec_epatch "${WORKDIR}"/gdb.spec
-
 	default
 
 	strip-linguas -u bfd/po opcodes/po
@@ -175,6 +172,7 @@ src_configure() {
 			$(use_enable source-highlight)
 			$(use multitarget && echo --enable-targets=all)
 			$(use_with python python "${EPYTHON}")
+			$(use_with xxhash)
 		)
 	fi
 	if use sparc-solaris || use x86-solaris ; then
@@ -182,6 +180,9 @@ src_configure() {
 		# https://sourceware.org/ml/gdb-patches/2014-12/msg00058.html
 		myconf+=( --disable-largefile )
 	fi
+
+	# source-highlight is detected with pkg-config: bug #716558
+	export ac_cv_path_pkg_config_prog_path="$(tc-getPKG_CONFIG)"
 
 	econf "${myconf[@]}"
 }
@@ -243,6 +244,10 @@ src_install() {
 	# gcore is part of ubin on freebsd
 	if [[ ${CHOST} == *-freebsd* ]]; then
 		rm "${ED}"/usr/bin/gcore || die
+	fi
+
+	if use python; then
+		python_optimize "${ED}"/usr/share/gdb/python/gdb
 	fi
 }
 

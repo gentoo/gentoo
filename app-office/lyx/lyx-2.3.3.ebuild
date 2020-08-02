@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ SRC_URI="ftp://ftp.lyx.org/pub/lyx/stable/2.3.x/${MY_P}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~sparc x86 ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~ppc ~ppc64 ~sparc x86 ~x64-macos ~x86-macos"
 IUSE="aspell cups debug docbook dia dot enchant gnumeric html +hunspell +latex monolithic-build nls rcs rtf subversion svg l10n_he"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -36,7 +36,7 @@ RDEPEND="${PYTHON_DEPS}
 	dia? ( app-office/dia )
 	docbook? ( app-text/sgmltools-lite )
 	dot? ( media-gfx/graphviz )
-	enchant? ( app-text/enchant )
+	enchant? ( app-text/enchant:0 )
 	gnumeric? ( app-office/gnumeric )
 	html? ( dev-tex/html2latex )
 	hunspell? ( app-text/hunspell )

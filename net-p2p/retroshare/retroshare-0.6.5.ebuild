@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop qmake-utils xdg-utils
+inherit desktop eutils qmake-utils xdg-utils
 
 DESCRIPTION="P2P private sharing application"
 HOMEPAGE="https://retroshare.cc"
@@ -12,8 +12,7 @@ SRC_URI="https://github.com/RetroShare/RetroShare/releases/download/v${PV}/Retro
 # pegmarkdown can also be used with MIT
 LICENSE="AGPL-3 GPL-2 GPL-3 Apache-2.0 LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-
+KEYWORDS="amd64 x86"
 IUSE="cli control-socket gnome-keyring +gui +jsonapi service +sqlcipher webui +xapian"
 
 REQUIRED_USE="
@@ -24,10 +23,10 @@ RDEPEND="
 	app-arch/bzip2
 	dev-libs/openssl:0=
 	>=dev-libs/rapidjson-1.1.0
-	net-libs/libupnp:0=
+	<net-libs/libupnp-1.8.0
 	sys-libs/zlib
 	control-socket? ( dev-qt/qtnetwork:5 )
-	gnome-keyring? ( gnome-base/libgnome-keyring )
+	gnome-keyring? ( app-crypt/libsecret )
 	gui? (
 		dev-qt/qtcore:5
 		dev-qt/qtmultimedia:5
@@ -48,18 +47,26 @@ RDEPEND="
 	xapian? ( dev-libs/xapian )"
 
 DEPEND="${RDEPEND}
-	gui? ( dev-qt/designer:5 )
-	jsonapi? (
-		app-doc/doxygen
-		dev-util/cmake
-	)
 	dev-qt/qtcore:5
-	virtual/pkgconfig
-"
-src_unpack() {
-	default
+	gui? ( dev-qt/designer:5 )"
 
-	mv RetroShare ${P}
+BDEPEND="dev-util/cmake
+	virtual/pkgconfig
+	jsonapi? (
+		|| (
+			>=app-doc/doxygen-1.8.17
+			<app-doc/doxygen-1.8.16
+		)
+	)"
+
+PATCHES=( "${FILESDIR}/${P}-qt-5.15.patch" )
+
+S="${WORKDIR}"/RetroShare
+
+src_prepare() {
+	# CRLF endings break patch...
+	edos2unix retroshare-gui/src/gui/elastic/elnode.h
+	default
 }
 
 src_configure() {

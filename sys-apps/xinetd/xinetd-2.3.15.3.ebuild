@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,11 +6,11 @@ inherit flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="powerful replacement for inetd"
 HOMEPAGE="https://github.com/openSUSE/xinetd"
-SRC_URI="${HOMEPAGE}/releases/download/${PV}/${P}.tar.xz"
+SRC_URI="https://github.com/openSUSE/xinetd/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
 IUSE="perl selinux tcpd"
 
 DEPEND="
