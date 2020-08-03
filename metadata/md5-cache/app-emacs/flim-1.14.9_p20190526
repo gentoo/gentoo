@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=>=app-emacs/apel-10.8 !app-emacs/limit >=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://github.com/wanderlust/flim/archive/e4bd54fd7d335215b54f7ef27ed974c8cd68d472.tar.gz -> flim-1.14.9_p20190526.tar.gz
-_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	504a3383c45504fde86b00426619a709
+_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	cae18e9c43c86703b074d0b15dcdb9e2
 _md5_=b0c5b24f97d91f07af662f57b0853309

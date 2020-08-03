@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-perl/File-MMagic emacs? ( >=app-editors/emacs-23.1:* ) l10n_ja? ( app-i18n/nkf || ( dev-perl/Text-Kakasi app-i18n/kakasi app-text/chasen app-text/mecab ) ) nls? ( virtual/libintl ) tk? ( dev-lang/tk:0 www-client/lynx )
 SLOT=0
 SRC_URI=http://www.namazu.org/test/namazu-2.0.22pre7.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	504a3383c45504fde86b00426619a709	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	cae18e9c43c86703b074d0b15dcdb9e2	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=7c83a1517db606b27a96b3fa0e3e0ab3

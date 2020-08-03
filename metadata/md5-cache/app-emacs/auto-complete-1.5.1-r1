@@ -10,5 +10,5 @@ RDEPEND=app-emacs/popup >=app-editors/emacs-23.1:*
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/auto-complete/auto-complete/archive/v1.5.1.tar.gz -> auto-complete-1.5.1.tar.gz
-_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	504a3383c45504fde86b00426619a709
+_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	cae18e9c43c86703b074d0b15dcdb9e2
 _md5_=93ff8c7110b0498fb6980bf946a39b5e

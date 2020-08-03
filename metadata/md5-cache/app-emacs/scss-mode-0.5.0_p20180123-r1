@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=dev-ruby/sass >=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://github.com/antonj/scss-mode/archive/cf58dbec5394280503eb5502938f3b5445d1b53d.tar.gz -> scss-mode-0.5.0_p20180123.tar.gz
-_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	504a3383c45504fde86b00426619a709
+_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	cae18e9c43c86703b074d0b15dcdb9e2
 _md5_=f21b6da45eb524b1fa5e5a33f95afd56

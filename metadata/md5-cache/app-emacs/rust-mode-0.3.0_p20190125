@@ -8,5 +8,5 @@ LICENSE=|| ( MIT Apache-2.0 )
 RDEPEND=>=app-editors/emacs-24:*
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/rust-mode-0.3.0_p20190125.tar.xz
-_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	504a3383c45504fde86b00426619a709
+_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	cae18e9c43c86703b074d0b15dcdb9e2
 _md5_=6e27e9c8ca0593c7a0c5117a654480ed

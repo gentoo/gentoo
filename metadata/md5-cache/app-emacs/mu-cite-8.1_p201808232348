@@ -10,5 +10,5 @@ LICENSE=GPL-2+
 RDEPEND=app-emacs/apel app-emacs/flim bbdb? ( app-emacs/bbdb ) >=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://www.jpl.org/elips/mu/snapshots/mu-cite-201808232348.tar.gz
-_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	504a3383c45504fde86b00426619a709
+_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	cae18e9c43c86703b074d0b15dcdb9e2
 _md5_=50589a3d4fa464af68770f11e71966df

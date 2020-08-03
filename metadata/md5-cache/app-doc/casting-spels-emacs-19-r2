@@ -8,5 +8,5 @@ LICENSE=GPL-2+ FDL-1.2
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://casting-spels-emacs.googlecode.com/files/casting-spels-emacs-v19.zip
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	504a3383c45504fde86b00426619a709
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	cae18e9c43c86703b074d0b15dcdb9e2
 _md5_=47ea6be5ef00bed6c4e4a88716a6b4b5

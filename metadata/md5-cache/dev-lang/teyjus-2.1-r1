@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=>=sys-devel/binutils-2.17:* >=sys-devel/gcc-2.95.3:* >=dev-lang/ocaml-3.10[ocamlopt?] emacs? ( >=app-editors/emacs-23.1:* )
 SLOT=0/2.1
 SRC_URI=https://github.com/teyjus/teyjus/archive/v2.1.tar.gz -> teyjus-2.1.tar.gz
-_eclasses_=elisp-common	504a3383c45504fde86b00426619a709	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=elisp-common	cae18e9c43c86703b074d0b15dcdb9e2	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=b34cd250fa85ef4700126e4c3d3f4372

@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://github.com/jaalto/project-emacs--folding-mode/archive/a1361aa154b27bd4db2e1cfe6c3b81b4fc1fdc9a.tar.gz -> folding-2019.0524.1621.tar.gz
-_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	504a3383c45504fde86b00426619a709
+_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	cae18e9c43c86703b074d0b15dcdb9e2
 _md5_=5bfed2527b21ef3c903362f80c4906ec

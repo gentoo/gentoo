@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=bzip2? ( app-arch/bzip2:= ) curl? ( net-misc/curl ) lzma? ( app-arch/xz-utils:= )
+DESCRIPTION=C library for high-throughput sequencing data formats
+EAPI=7
+HOMEPAGE=http://www.htslib.org/
+IUSE=+bzip2 curl +lzma
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=MIT
+RDEPEND=bzip2? ( app-arch/bzip2:= ) curl? ( net-misc/curl ) lzma? ( app-arch/xz-utils:= )
+SLOT=0/3
+SRC_URI=mirror://sourceforge/samtools/1.10.2/htslib-1.10.2.tar.bz2
+_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=23b94cf7e1e965cd1a0196a498381a08

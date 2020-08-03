@@ -8,5 +8,5 @@ LICENSE=HPND
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://docbook.org/xml/5.0/rng/docbookxi.rnc -> docbookxi-5.0.rnc
-_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	504a3383c45504fde86b00426619a709
+_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	cae18e9c43c86703b074d0b15dcdb9e2
 _md5_=719e1af9bd0b431db9e5af672913bd04
