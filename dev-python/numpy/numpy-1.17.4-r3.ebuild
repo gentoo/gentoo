@@ -103,11 +103,7 @@ python_prepare_all() {
 python_compile() {
 	export MAKEOPTS=-j1 #660754
 
-	local python_makeopts_jobs=""
-	python_is_python3 || python_makeopts_jobs="-j $(makeopts_jobs)"
-	distutils-r1_python_compile \
-		${python_makeopts_jobs} \
-		${NUMPY_FCONFIG}
+	distutils-r1_python_compile ${NUMPY_FCONFIG}
 }
 
 python_test() {
