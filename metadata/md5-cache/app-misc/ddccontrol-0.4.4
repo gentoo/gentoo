@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=app-misc/ddccontrol-db dev-libs/libxml2:2 app-arch/xz-utils gtk? ( x11-libs/gtk+:2 ) nls? ( sys-devel/gettext ) pci? ( sys-apps/pciutils ) dev-perl/XML-Parser dev-util/intltool sys-kernel/linux-headers doc? ( >=app-text/docbook-xsl-stylesheets-1.65.1 >=dev-libs/libxslt-1.1.6 app-text/htmltidy ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=DDCControl allows control of monitor parameters via DDC
+EAPI=5
+HOMEPAGE=http://ddccontrol.sourceforge.net/
+IUSE=doc gtk nls +pci static-libs
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=app-misc/ddccontrol-db dev-libs/libxml2:2 app-arch/xz-utils gtk? ( x11-libs/gtk+:2 ) nls? ( sys-devel/gettext ) pci? ( sys-apps/pciutils )
+SLOT=0
+SRC_URI=https://github.com/ddccontrol/ddccontrol/archive/0.4.4.tar.gz -> ddccontrol-0.4.4.tar.gz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	2477ebe553d3e4d2c606191fe6c33602	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=af7ab80619b1b4375714a6498725fea6

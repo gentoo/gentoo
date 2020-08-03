@@ -2358,8 +2358,8 @@ app-misc/datefudge 1.22: A program (and preload library) to fake system date
 app-misc/dateutils 0.4.6: command line date and time utilities
 app-misc/datovka 4.15.0: GUI to access the Czech data box e-government system
 app-misc/ddate 0.2.2: Perpetual date converter from gregorian to poee calendar
-app-misc/ddccontrol 0.4.2_p20140105-r2: DDCControl allows control of monitor parameters via DDC
-app-misc/ddccontrol-db 20061014_p20121105: DDCControl monitor database
+app-misc/ddccontrol 0.4.2_p20140105-r2 0.4.4 0.4.4_p20180123 0.4.4_p20200630: DDCControl allows control of monitor parameters via DDC
+app-misc/ddccontrol-db 20061014_p20121105 20190826 20190826_p20200613: DDCControl monitor database
 app-misc/ddcutil 0.9.1 0.9.5 0.9.9: Program for querying and changing monitor settings
 app-misc/delay 1.6-r2: Sleeplike program that counts down the number of seconds specified
 app-misc/detachtty 9-r1 11.0.0: Attach/detach from interactive processes across the network
@@ -3809,7 +3809,7 @@ dev-haskell/basic-prelude 0.3.11 0.4.1: An enhanced core prelude; a common found
 dev-haskell/bencode 0.5-r1 0.6.0.0 0.6.1.1: Parser and printer for bencoded data
 dev-haskell/bifunctors 3.2.0.1 4.1.1.1 4.2.1 5 5.4.1 5.5.6: Haskell98 bifunctors package
 dev-haskell/binary 0.5.1.1 0.7.1.0 0.7.2.3 0.7.5.0 0.7.6.1 0.8.3.0 0.8.7.0: Binary serialisation for Haskell values using lazy ByteStrings
-dev-haskell/binary-orphans 0.1.6.0-r1: Orphan instances for binary
+dev-haskell/binary-orphans 0.1.6.0-r1 1.0.1: Orphan instances for binary
 dev-haskell/binary-tagged 0.1.4.2-r1: Tagged binary serialisation
 dev-haskell/bio 0.5.3-r2: A bioinformatics library
 dev-haskell/biocore 0.3.1: A bioinformatics library
@@ -4025,7 +4025,7 @@ dev-haskell/graphviz 2999.18.0.2-r1 2999.18.1.2 2999.20.0.4: Bindings to Graphvi
 dev-haskell/groupoids 3.0.1.1 4.0: This package has been absorbed into semigroupoids 4.0
 dev-haskell/gsasl 0.3.6: Bindings for GNU libgsasl
 dev-haskell/gtk 0.14.10-r3: Binding to the Gtk+ graphical user interface library
-dev-haskell/gtk2hs-buildtools 0.12.5.1-r1 0.13.0.4-r3 0.13.2.2 0.13.5.1: Tools to build the Gtk2Hs suite of User Interface libraries
+dev-haskell/gtk2hs-buildtools 0.12.5.1-r1 0.13.0.4-r3 0.13.2.2 0.13.5.1 0.13.8.0: Tools to build the Gtk2Hs suite of User Interface libraries
 dev-haskell/gtk3 0.14.9-r3: Binding to the Gtk+ 3 graphical user interface library
 dev-haskell/hackage-security 0.5.2.2 0.5.3.0-r3: Hackage security library
 dev-haskell/haddock 2.14.3.0.7.8.3 2.16.1 2.17.2 2.23.1: A documentation-generation tool for Haskell libraries
