@@ -58,13 +58,6 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-python_prepare() {
-	if ! python_is_python3; then
-		# this is for python3 only
-		rm -r eventlet/green/http || die
-	fi
-}
-
 python_install_all() {
 	if use examples; then
 		docompress -x "/usr/share/doc/${PF}/examples"
