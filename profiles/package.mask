@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2020-08-03)
+# Package is dead and upstream maintainer asked that it be removed.
+# Removal in 30 days. Bug #735314
+dev-util/cmdtest
+
 # Michał Górny <mgorny@gentoo.org> (2020-08-03)
 # Unmaintained.  Last release in 2011.  Py2 only.
 # Removal in 30 days.  Bug #735362.
