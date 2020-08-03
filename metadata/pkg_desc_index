@@ -2448,7 +2448,7 @@ app-misc/khal 0.10.1-r1: A CalDAV based calendar
 app-misc/khard 0.13.0: Console CardDAV client
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
 app-misc/kryoflux-dtc 2.6: KryoFlux Host Software
-app-misc/ktoblzcheck 1.49-r1: Library to check account numbers and bank codes of German banks
+app-misc/ktoblzcheck 1.49-r1 1.49-r2: Library to check account numbers and bank codes of German banks
 app-misc/lcd4linux 0.11.0_pre20170527-r4 0.11.0_pre20170527-r5: A small program that grabs information and displays it on an external LCD
 app-misc/lcdproc 0.5.9-r1: Displays real-time system information from your Linux/*BSD box on a LCD
 app-misc/leave 20100918-r1: FreeBSD command-line tool that reminds you when its time to leave
@@ -4052,7 +4052,7 @@ dev-haskell/haskell-src-meta 0.6.0.8-r1 0.6.0.10 0.6.0.14-r1 0.8.5-r1: Parse sou
 dev-haskell/hastache 0.5.1 0.6.1: Haskell implementation of Mustache templates
 dev-haskell/haxml 1.24 1.24.1 1.25.3: Utilities for manipulating XML documents
 dev-haskell/hcg-minus 0.15: haskell cg (minus)
-dev-haskell/hcodecs 0.5 0.5.1: A library to read, write and manipulate MIDI, WAVE, and SoundFont2 files
+dev-haskell/hcodecs 0.5 0.5.1 0.5.2: A library to read, write and manipulate MIDI, WAVE, and SoundFont2 files
 dev-haskell/hdbc 2.3.1.2 2.4.0.1 2.4.0.3: Haskell Database Connectivity
 dev-haskell/hdbc-mysql 0.6.6.1-r4 0.7.1.0-r1: MySQL driver for HDBC
 dev-haskell/hdbc-odbc 2.3.1.1 2.4.0.1: ODBC driver for HDBC
@@ -7943,7 +7943,7 @@ dev-python/cbor 1.0.0-r1: RFC 7049 - Concise Binary Object Representation
 dev-python/cbor2 5.1.0: Pure Python CBOR (de)serializer with extensive tag support
 dev-python/cddb-py 1.4-r1: CDDB Module for Python
 dev-python/celery 4.3.0: Asynchronous task queue/job queue based on distributed message passing
-dev-python/certifi 9999: Thin replacement for certifi using system certificate store
+dev-python/certifi 10001: Thin replacement for certifi using system certificate store
 dev-python/cffi 1.14.0-r2: Foreign Function Interface for Python calling C code
 dev-python/cfn-python-lint 0.30.1: CloudFormation Linter
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
@@ -8074,7 +8074,7 @@ dev-python/docopt 0.6.2-r3: Pythonic argument parser, that will make you smile
 dev-python/doctest-ignore-unicode 0.1.2: Add flag to ignore unicode literal prefixes in doctests
 dev-python/docutils 0.16: Python Documentation Utilities
 dev-python/docutils-glep 1.2 9999: Gentoo GLEP support for docutils
-dev-python/dogpile-cache 0.9.1: A locking API for expiring values while a single thread generates a new value.
+dev-python/dogpile-cache 0.9.1 1.0.1: A locking API for expiring values while a single thread generates a new value.
 dev-python/dogpile-core 0.4.1: Copy-on-write locking mechanism for expensive resources
 dev-python/doit 0.32.0-r1 0.32.0-r2: Automation tool
 dev-python/doit-py 0.4.0-r2 0.5.0: doit tasks for python stuff
