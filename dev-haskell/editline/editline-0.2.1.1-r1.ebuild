@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,6 +30,9 @@ PATCHES=(
 src_prepare() {
 	default
 	eautoconf
+
+	# default file, not compatible to cabal-3
+	rm Setup.lhs || die
 
 	cabal_chdeps \
 		'base < 4.7' 'base'
