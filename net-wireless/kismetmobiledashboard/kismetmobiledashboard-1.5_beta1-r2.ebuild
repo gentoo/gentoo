@@ -22,6 +22,11 @@ DEPEND="net-wireless/kismet"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
+src_prepare() {
+	sed -i 's#\$(INSTALL)#install#' Makefile
+	default
+}
+
 src_compile() {
 	KIS_SRC_DIR="/usr/share/kismet" emake
 }
