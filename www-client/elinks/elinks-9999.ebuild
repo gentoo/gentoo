@@ -72,7 +72,7 @@ src_configure() {
 		$(use_with guile)
 		$(use_with idn)
 		$(use_with javascript spidermonkey)
-		$(use_with lua)
+		--with-luapkg=$(usev lua)
 		$(use_with perl)
 		$(use_with ruby)
 		$(use_with tre)
