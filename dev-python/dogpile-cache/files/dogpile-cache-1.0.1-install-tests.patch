@@ -1,0 +1,28 @@
+From 559a5c57c922741461d419b73f1aa547e3231110 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 3 Aug 2020 08:50:33 +0200
+Subject: [PATCH] Exclude installing "tests" package from setup.py
+
+---
+ setup.cfg | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/setup.cfg b/setup.cfg
+index ab4008f..2f43889 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -30,6 +30,11 @@ python_requires = >=3.6
+ package_dir =
+     =.
+ 
++[options.packages.find]
++exclude =
++    tests
++    tests.*
++
+ [options.exclude_package_data]
+ '' = tests*
+ 
+-- 
+2.28.0
+
