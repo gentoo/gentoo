@@ -88,8 +88,6 @@ RDEPEND="
 		app-dicts/sword-GerElb1871
 		app-dicts/sword-GerElb1905
 		app-dicts/sword-GerGruenewald
-		app-dicts/sword-GerHfa2002
-		app-dicts/sword-GerHfaLex2002
 		app-dicts/sword-GerLeoNA28
 		app-dicts/sword-GerLeoRP18
 		app-dicts/sword-GerLut1545
