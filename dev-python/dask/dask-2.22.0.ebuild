@@ -41,8 +41,6 @@ BDEPEND="
 distutils_enable_tests pytest
 
 src_prepare() {
-	# don't die on warnings or xpass
-	sed -i -e '/error:::/d' -e '/xfail_strict/d' setup.cfg || die
 	# flaky
 	sed -e 's:test_time_rolling_methods:_&:' \
 		-i dask/dataframe/tests/test_rolling.py || die
