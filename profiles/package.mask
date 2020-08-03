@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jimi Huotari <chiitoo@gentoo.org> (2020-08-04)
+# No consumers since 2015, and no known stand-alone use.
+# Removal in 30 days.
+dev-libs/liboobs
+
 # Matt Turner <mattst88@gentoo.org> (2020-08-03)
 # Package is dead and upstream maintainer asked that it be removed.
 # Removal in 30 days. Bug #735314
