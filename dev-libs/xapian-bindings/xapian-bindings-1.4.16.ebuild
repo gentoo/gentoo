@@ -192,12 +192,8 @@ src_configure() {
 			--without-php7
 			--without-ruby
 			--without-tcl
+			--with-python3
 		)
-		if python_is_python3; then
-			myconf+=( --with-python3 )
-		else
-			myconf+=( --with-python )
-		fi
 
 		# Avoid sandbox failures when compiling modules
 		addpredict "$(python_get_sitedir)"
