@@ -1,0 +1,94 @@
+commit 1d58388b6fc4f5055c19d1815e3252625fd8ab3f
+Author: Olaf Meeuwissen <paddy-hack@member.fsf.org>
+Date:   Sun Mar 3 21:22:28 2019 +0900
+
+    Fix link issues with the unit test runners
+
+diff --git a/drivers/esci/tests/Makefile.am b/drivers/esci/tests/Makefile.am
+index d00f129..9c8f766 100644
+--- a/drivers/esci/tests/Makefile.am
++++ b/drivers/esci/tests/Makefile.am
+@@ -1,5 +1,6 @@
+ ##  Makefile.am -- an automake template for Makefile.in
+ ##  Copyright (C) 2012-2015  SEIKO EPSON CORPORATION
++##  Copyright (C) 2019  Olaf Meeuwissen
+ ##
+ ##  License: GPL-3.0+
+ ##  Author : EPSON AVASYS CORPORATION
+@@ -39,16 +40,22 @@ AM_CPPFLAGS += -DESCI_GRAMMAR_TRACE=1
+ AM_LDFLAGS  += $(BOOST_LDFLAGS)
+ 
+ LDADD = ../libdrv-esci.la $(LIBUTSUSHI_LIBS)
+-grammar_formats_utr_LDADD   = $(LDADD) $(BOOST_FILESYSTEM_LIB)
+-grammar_utr_LDADD           = $(LDADD) $(BOOST_FILESYSTEM_LIB)
+-## FIXME: remove once usb connexion is a proper plugin
+-setter_utr_LDADD    = $(LDADD) ../../../connexions/libcnx-usb.la
++grammar_formats_utr_LDADD    = $(LDADD) $(BOOST_FILESYSTEM_LIB)
++grammar_utr_LDADD            = $(LDADD) $(BOOST_FILESYSTEM_LIB)
++udev_rules_utr_LDADD         = $(BOOST_UNIT_TEST_FRAMEWORK_LIB)
++udev_rules_utr_LDADD        += $(BOOST_FILESYSTEM_LIB)
++udev_rules_utr_LDADD        += $(BOOST_REGEX_LIB)
++## FIXME: remove when connexions are turned into proper plugins
++setter_utr_LDADD             = $(LDADD)
++setter_utr_LDADD            += ../../../connexions/libcnx-usb.la
++setter_utr_LDADD            += ../../../connexions/libcnx-hexdump.la
+ grammar_formats_utr_LDADD   += ../../../connexions/libcnx-usb.la
++grammar_formats_utr_LDADD   += ../../../connexions/libcnx-hexdump.la
+ grammar_utr_LDADD           += ../../../connexions/libcnx-usb.la
+-grammar_mechanics_utr_LDADD  = $(LDADD) ../../../connexions/libcnx-usb.la
+-udev_rules_utr_LDADD  = $(BOOST_UNIT_TEST_FRAMEWORK_LIB)
+-udev_rules_utr_LDADD += $(BOOST_FILESYSTEM_LIB)
+-udev_rules_utr_LDADD += $(BOOST_REGEX_LIB)
++grammar_utr_LDADD           += ../../../connexions/libcnx-hexdump.la
++grammar_mechanics_utr_LDADD  = $(LDADD)
++grammar_mechanics_utr_LDADD += ../../../connexions/libcnx-usb.la
++grammar_mechanics_utr_LDADD += ../../../connexions/libcnx-hexdump.la
+ 
+ endif
+ 
+diff --git a/filters/tests/Makefile.am b/filters/tests/Makefile.am
+index 4d88e48..ac198df 100644
+--- a/filters/tests/Makefile.am
++++ b/filters/tests/Makefile.am
+@@ -1,6 +1,6 @@
+ ##  Makefile.am -- an automake template for Makefile.in
+ ##  Copyright (C) 2012-2014  SEIKO EPSON CORPORATION
+-##  Copyright (C) 2013, 2015  Olaf Meeuwissen
++##  Copyright (C) 2013, 2015, 2019  Olaf Meeuwissen
+ ##
+ ##  License: GPL-3.0+
+ ##  Author : EPSON AVASYS CORPORATION
+@@ -39,8 +39,9 @@ endif
+ 
+ LDADD  = ../libflt-all.la
+ LDADD += ../../lib/libutsushi.la $(LIBUTSUSHI_LIBS)
+-##  FIXME: drop once usb connexion is a proper plugin
++##  FIXME: drop when connexions have been turned into proper plugins
+ LDADD += ../../connexions/libcnx-usb.la
++LDADD += ../../connexions/libcnx-hexdump.la
+ 
+ if have_libjpeg
+ check_PROGRAMS    += jpeg.utr
+diff --git a/lib/tests/Makefile.am b/lib/tests/Makefile.am
+index fc5eeb5..f24a7da 100644
+--- a/lib/tests/Makefile.am
++++ b/lib/tests/Makefile.am
+@@ -1,6 +1,6 @@
+ ##  Makefile.am -- an automake template for Makefile.in
+ ##  Copyright (C) 2012, 2013  SEIKO EPSON CORPORATION
+-##  Copyright (C) 2015  Olaf Meeuwissen
++##  Copyright (C) 2015, 2019  Olaf Meeuwissen
+ ##
+ ##  License: GPL-3.0+
+ ##  Author : EPSON AVASYS CORPORATION
+@@ -62,8 +62,9 @@ log_no_check_utr_CPPFLAGS += -DUTSUSHI_LOG_ARGUMENT_COUNT_CHECK_ENABLED=false
+ AM_CPPFLAGS += -DLOCALEDIR="\"$(localedir)\""
+ 
+ LDADD  = ../libutsushi.la $(LIBUTSUSHI_LIBS)
+-##  FIXME: drop once usb connexion is a proper plugin
++##  FIXME: drop when connexions have been turned into proper plugins
+ LDADD += ../../connexions/libcnx-usb.la
++LDADD += ../../connexions/libcnx-hexdump.la
+ 
+ if have_libtiff
+ test_runners      += tiff.utr
