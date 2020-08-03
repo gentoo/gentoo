@@ -6,11 +6,6 @@
 # bug #732966
 dev-util/idea-community jbr11
 
-# Sam James <sam@gentoo.org> (2020-07-16)
-# Failed build on arm64
-# bug #674346
-net-misc/asterisk osplookup
-
 # Sam James <sam@gentoo.org> (2020-07-10)
 # Failed build with USE=tools
 # bug #732122
