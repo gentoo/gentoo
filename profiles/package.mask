@@ -32,6 +32,88 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2020-08-03)
+# Package is dead and upstream maintainer asked that it be removed.
+# Removal in 30 days. Bug #735314
+dev-util/cmdtest
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-03)
+# Unmaintained.  Last release in 2011.  Py2 only.
+# Removal in 30 days.  Bug #735362.
+dev-vcs/svnmailer
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-03)
+# Unmaintained.  Last release in 2016.  Py2 only.
+# Removal in 30 days.  Bug #735336.
+dev-vcs/gitinspector
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-03)
+# Unmaintained.  Homepage gone.  Last bumped in 2009.  Py2 only.
+# Removal in 30 days.  Bug #735328.
+dev-util/tailor
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-03)
+# Last release in 2012.  Py2 only.  Has build failure reported.
+# Removal in 30 days.  Bug #717490.
+sys-fs/traydevice
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-03)
+# Unmaintained.  Py2 only.  The current Gentoo version is from 2015.
+# No reverse dependencies.
+# Removal in 30 days.  Bug #721476.
+net-mail/libpst
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-03)
+# dev-util/coccigrep is py2-only and requires coccinelle with Python
+# bindings.  dev-util/coccinelle has py2 bindings and fails to build
+# with python disabled (bug #701904).  Both packages are unmaintained.
+# Removal in 30 days.  Bug #734630.
+dev-util/coccigrep
+dev-util/coccinelle
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-02)
+# Py2 only. m-n. Bug #735340
+# Removal in 30 days
+dev-vcs/rapidsvn
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-02)
+# Py2 only. m-n. Bug #735364
+# Removal in 30 days
+media-gfx/cptutils
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-02)
+# Py2 only. m-n. Bug #709932
+# Removal in 30 days
+net-wireless/cpyrit-cuda
+net-wireless/cpyrit-opencl
+net-wireless/pyrit
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-02)
+# Py2 only. m-n. Bug #735486
+# Removal in 30 days
+sys-fs/ecryptfs-utils
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-02)
+# Py2 only. m-n. Bug #735524
+# Removal in 30 days
+www-misc/nx_util
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-02)
+# Dead upstream. Py3.6 only. Build issues.
+# Removal in 30 days. Bug #677900,#716384
+# #722408,723344
+app-mobilephone/obexftp
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-02)
+# Dead upstream. Py3.6 only.
+# Removal in 30 days. Bug #722334,#713686
+app-misc/evemu
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-02)
+# Needs bump. Py3 tests fail. Last release 2yrs.
+# Removal in 30 days. Bug #718196
+app-backup/cachedir
+
 # Michał Górny <mgorny@gentoo.org> (2020-08-02)
 # Discontinued.  Last patch in 2008.  Py2 only.
 # Removal in 30 days.  Bug #734632.
@@ -531,12 +613,6 @@ dev-tex/cjk-latex
 # and accept a more unstable release.
 >=www-client/chromium-86
 
-# Mart Raudsepp <leio@gentoo.org> (2020-06-27)
-# Disappeared upstream and download locations. Potential replacements:
-# media-sound/quimup, xfce-extra/xfce4-mpc-plugin, media-sound/xfmpc
-# Bug 729822. Removal in 30 days.
-media-sound/guimup
-
 # Hans de Graaff <graaff@gentoo.org> (2020-06-14)
 # Ruby 2.4 is no longer supported by upstream and no longer gets
 # security updates since the 2.4.10 release. Use ruby 2.5 or later
@@ -602,10 +678,6 @@ sci-mathematics/geogebra
 # package is not going away anytime soon, just masked
 # for security. unmask as needed.
 dev-java/icedtea-web
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-03-14)
-# Breaks at least dev-games/simgear right now, bug #709878.
-~dev-games/openscenegraph-3.6.5
 
 # Eray Aslan <eras@gentoo.org> (2020-03-09)
 # Mask experimental software
