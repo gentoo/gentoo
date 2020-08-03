@@ -34,7 +34,6 @@ RDEPEND="
 	>=dev-python/snowballstemmer-1.1[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/sphinxcontrib-websupport[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' -2)
 	latex? (
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-luatex
@@ -47,7 +46,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' -2)
 		dev-python/sphinxcontrib-websupport[${PYTHON_USEDEP}]
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
