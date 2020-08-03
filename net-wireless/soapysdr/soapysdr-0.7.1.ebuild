@@ -39,10 +39,10 @@ PDEPEND="bladerf? ( net-wireless/soapybladerf )
 
 src_configure() {
 	configuration() {
-		mycmakeargs+=( -DENABLE_PYTHON=ON )
-		if python_is_python3; then
-			mycmakeargs+=( -DBUILD_PYTHON3=ON )
-		fi
+		mycmakeargs+=(
+			-DENABLE_PYTHON=ON
+			-DBUILD_PYTHON3=ON
+		)
 	}
 
 	if use python; then
