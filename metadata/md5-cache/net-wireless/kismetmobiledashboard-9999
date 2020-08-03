@@ -1,5 +1,5 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile install unpack
+DEFINED_PHASES=compile install prepare unpack
 DEPEND=net-wireless/kismet
 DESCRIPTION=Mobile UI for kismet
 EAPI=7
@@ -9,4 +9,4 @@ PROPERTIES=live
 RDEPEND=net-wireless/kismet
 SLOT=0
 _eclasses_=git-r3	8ec5b53812bce105ae7943930e4660f8
-_md5_=3cade984f6d1c3418caf744a757e3f53
+_md5_=55490882f1a6012a7011fafacca5d201

@@ -8042,7 +8042,7 @@ dev-python/distlib 0.3.1: Low-level components of distutils2/packaging
 dev-python/distributed 1.18.0-r1: Python library for distributed computation
 dev-python/distro 1.5.0: Reliable machine-readable Linux distribution information for Python
 dev-python/dj-database-url 0.5.0: Use Database URLs in your Django Application
-dev-python/django 2.2.13 2.2.14 3.0.7 3.0.8: High-level Python web framework
+dev-python/django 2.2.13 2.2.14 2.2.15 3.0.7 3.0.8 3.0.9: High-level Python web framework
 dev-python/django-auth-ldap 2.1.0: Django LDAP authentication backend
 dev-python/django-cacheops 4.2: ORM cache with automatic granular event-driven invalidation for Django
 dev-python/django-cors-headers 3.2.1: Django App that adds CORS (Cross-Origin Resource Sharing) headers to responses
@@ -8238,7 +8238,7 @@ dev-python/humanize 2.4.1: Common humanization utilities
 dev-python/hyper-h2 3.2.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 19.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 4.50.8 4.57.1 5.16.0 5.16.3 5.19.0 5.19.1 5.19.2 5.20.2 5.20.3 5.21.0 5.23.1 5.23.3 5.23.7 5.23.8: A library for property based testing
+dev-python/hypothesis 4.50.8 4.57.1 5.16.0 5.16.3 5.19.0 5.19.1 5.19.2 5.20.2 5.20.3 5.21.0 5.23.1 5.23.3 5.23.7 5.23.8 5.23.9: A library for property based testing
 dev-python/icalendar 4.0.6: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.8 2.10: Internationalized Domain Names in Applications (IDNA)
@@ -15895,7 +15895,7 @@ sci-biology/repeatmasker 4.0.1: Screen DNA sequences for interspersed repeats an
 sci-biology/repeatmasker-libraries 20120418: A special version of RepBase used by RepeatMasker
 sci-biology/rmblast 1.2-r1: RepeatMasker compatible version of NCBI BLAST+
 sci-biology/rnaview 20040713-r4: Generates 2D displays of RNA/DNA secondary structures with tertiary interactions
-sci-biology/samtools 0.1.20-r3 1.5 1.9-r1 1.10: Utilities for analysing and manipulating the SAM/BAM alignment formats
+sci-biology/samtools 0.1.20-r4 1.5 1.9-r1 1.10: Utilities for analysing and manipulating the SAM/BAM alignment formats
 sci-biology/seaview 4.3.5 4.5.4 4.6: A graphical multiple sequence alignment editor
 sci-biology/seqan 1.4.2-r1 2.2.0-r1 2.4.0 9999: C++ Sequence Analysis Library
 sci-biology/shrimp 2.2.3: SHort Read Mapping Package

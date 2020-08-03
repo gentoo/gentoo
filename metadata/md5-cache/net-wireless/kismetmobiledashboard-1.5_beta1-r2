@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install
+DEFINED_PHASES=compile install prepare
 DEPEND=net-wireless/kismet
 DESCRIPTION=Mobile UI for kismet
 EAPI=7
@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=net-wireless/kismet
 SLOT=0
 SRC_URI=https://github.com/elkentaro/KismetMobileDashboard/archive/V1.5-beta.1.tar.gz -> kismetmobiledashboard-1.5_beta1.tar.gz
-_md5_=3cade984f6d1c3418caf744a757e3f53
+_md5_=55490882f1a6012a7011fafacca5d201
