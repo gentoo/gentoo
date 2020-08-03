@@ -1,10 +1,9 @@
 # Copyright 2002-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python2_7 )
+EAPI=7
+PYTHON_COMPAT=( python3_{6..9} )
 
-WANT_AUTOMAKE=1.14
 inherit autotools python-any-r1
 
 MY_P=xdelta3-${PV}
@@ -33,12 +32,13 @@ src_prepare() {
 	eapply_user
 
 	# huh
+	2to3 -w -n --no-diffs testing/*.py || die
 	sed -i -e '/python/s:2.6:2:' testing/xdelta3-regtest.py || die
 	sed -i -e '/python/s:2.7:2:' testing/xdelta3-test.py || die
 
 	# only build tests when required
 	sed -i -e '/xdelta3regtest/s:noinst_P:check_P:' Makefile.am || die
-	eautomake
+	eautoreconf
 }
 
 src_test() {
