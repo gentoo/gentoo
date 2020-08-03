@@ -5130,7 +5130,7 @@ dev-lang/micropython 1.11: Python implementation for microcontrollers
 dev-lang/mlton 20130715 20180207: Standard ML optimizing compiler and libraries
 dev-lang/mmix 20160804-r1: Donald Knuth's MMIX Assembler and Simulator
 dev-lang/moarvm 2019.03-r1 2019.07-r1 2019.07.1-r1 2019.11 2020.05 2020.06 9999: A 6model-based VM for NQP and Rakudo Perl 6
-dev-lang/mono 6.6.0.161: Mono runtime and class libraries, a C# compiler/interpreter
+dev-lang/mono 6.6.0.161 6.10.0.104: Mono runtime and class libraries, a C# compiler/interpreter
 dev-lang/mono-basic 4.8: Visual Basic Compiler and Runtime
 dev-lang/mozart 1.4.0-r3 1.4.0-r4 2.0.1: Advanced development platform for intelligent, distributed applications
 dev-lang/mozart-stdlib 1.4.0-r2 2.0.1: The Mozart Standard Library
