@@ -175,12 +175,6 @@ kde-apps/cantor julia
 # This is stable masked as g-sorcery is being not actively developed.
 app-portage/layman g-sorcery
 
-# David Seifert <soap@gentoo.org> (2017-02-12)
-# Unknown future, stable deps are hopelessly
-# broken, only allow for unstable keywords
-# Bug: #581058
-net-misc/asterisk osplookup
-
 # Michael Palimaka <kensington@gentoo.org (2017-01-26)
 # Requires testing version of media-libs/opencv
 media-libs/mlt opencv
