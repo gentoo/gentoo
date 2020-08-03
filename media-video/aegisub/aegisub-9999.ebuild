@@ -3,7 +3,7 @@
 
 EAPI=6
 
-WX_GTK_VER=3.0
+WX_GTK_VER=3.0-gtk3
 PLOCALES="ar be bg ca cs da de el es eu fa fi fr_FR gl hu id it ja ko nl pl pt_BR pt_PT ru sr_RS sr_RS@latin uk_UA vi zh_CN zh_TW"
 
 inherit autotools gnome2-utils l10n wxwidgets xdg-utils git-r3
