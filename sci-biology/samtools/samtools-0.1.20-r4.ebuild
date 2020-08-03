@@ -36,16 +36,16 @@ src_install() {
 	# install executables and hide them away from sight
 	dobin samtools bcftools/{bcftools,vcfutils.pl} misc/{*.py,*.pl,wgsim,ace2sam} \
 		misc/{md5sum-lite,maq2sam-short,bamcheck,maq2sam-long,md5fa,plot-bamcheck}
-	mv "${ED%/}"/usr/{bin,${PN}-${SLOT}} || die
-	mkdir "${ED%/}"/usr/bin || die
-	mv "${ED%/}"/usr/{${PN}-${SLOT},bin/} || die
+	mv "${ED}"/usr/{bin,${PN}-${SLOT}} || die
+	mkdir "${ED}"/usr/bin || die
+	mv "${ED}"/usr/{${PN}-${SLOT},bin/} || die
 
 	# remove py2 script, has been removed upstream anyways
 	# https://github.com/samtools/samtools/issues/1125
-	rm "${ED%/}"/usr/bin/${PN}-${SLOT}/varfilter.py || die
+	rm "${ED}"/usr/bin/${PN}-${SLOT}/varfilter.py || die
 
 	# fix perl shebangs
-	pushd "${ED%/}"/usr/bin/${PN}-${SLOT} >/dev/null || die
+	pushd "${ED}"/usr/bin/${PN}-${SLOT} >/dev/null || die
 		local i
 		for i in plot-bamcheck *.pl; do
 			sed -e '1s:.*:#!/usr/bin/env perl:' -i "${i}" || die
