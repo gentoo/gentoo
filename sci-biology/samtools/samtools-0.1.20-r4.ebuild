@@ -1,11 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
-
-inherit python-single-r1 toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Utilities for analysing and manipulating the SAM/BAM alignment formats"
 HOMEPAGE="http://samtools.sourceforge.net/"
@@ -14,23 +12,17 @@ SRC_URI="https://github.com/samtools/samtools/archive/${PV}.tar.gz -> ${P}.tar.g
 LICENSE="MIT"
 SLOT="0.1-legacy"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
-IUSE="examples"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="${PYTHON_DEPS}
+RDEPEND="
 	sys-libs/ncurses:0=
 	dev-lang/perl"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-PATCHES=(
-	"${FILESDIR}/${P}-buildsystem.patch"
-)
+PATCHES=( "${FILESDIR}"/${P}-buildsystem.patch )
 
 src_prepare() {
 	default
-	# required, otherwise python_fix_shebang errors out
-	sed -i 's~/software/bin/python~/usr/bin/env python~' misc/varfilter.py || die
 	tc-export CC AR
 }
 
@@ -48,9 +40,9 @@ src_install() {
 	mkdir "${ED%/}"/usr/bin || die
 	mv "${ED%/}"/usr/{${PN}-${SLOT},bin/} || die
 
-	# ... do the same with the python script, but also fix the shebang
-	mv "${ED%/}"/usr/bin/${PN}-${SLOT}/varfilter{,-${SLOT}}.py || die
-	python_fix_shebang "${ED%/}"/usr/bin/${PN}-${SLOT}/varfilter-${SLOT}.py
+	# remove py2 script, has been removed upstream anyways
+	# https://github.com/samtools/samtools/issues/1125
+	rm "${ED%/}"/usr/bin/${PN}-${SLOT}/varfilter.py || die
 
 	# fix perl shebangs
 	pushd "${ED%/}"/usr/bin/${PN}-${SLOT} >/dev/null || die
@@ -70,14 +62,12 @@ src_install() {
 	doman ${PN}-${SLOT}.1
 	einstalldocs
 
-	if use examples; then
-		dodoc -r examples
-		docompress -x /usr/share/doc/${PF}/examples
-	fi
+	dodoc -r examples
+	docompress -x /usr/share/doc/${PF}/examples
 }
 
 pkg_postinst() {
 	elog "This version of samtools should *not* be your first choice for working"
 	elog "with NGS data. It is installed solely for programs requiring it."
-	elog "It is recommended that you use >=sci-biology/samtools-1.2."
+	elog "It is recommended that you use >=sci-biology/samtools-1.10."
 }
