@@ -42,9 +42,7 @@ python_prepare_all() {
 }
 
 python_compile() {
-	if python_is_python3; then
-		./fail2ban-2to3 || die
-	fi
+	./fail2ban-2to3 || die
 	distutils-r1_python_compile
 }
 
