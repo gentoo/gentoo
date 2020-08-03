@@ -3,12 +3,12 @@
 
 EAPI="5"
 
-EGIT_REPO_URI="https://gitlab.zapb.de/zapb/libjaylink.git"
+EGIT_REPO_URI="https://gitlab.zapb.de/libjaylink/libjaylink.git"
 
 inherit git-r3 autotools eutils ltprune
 
 DESCRIPTION="Library to access J-Link devices"
-HOMEPAGE="https://gitlab.zapb.de/zapb/libjaylink"
+HOMEPAGE="https://gitlab.zapb.de/libjaylink/libjaylink"
 
 LICENSE="GPL-2"
 SLOT="0"
