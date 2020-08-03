@@ -51,14 +51,6 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-python_compile() {
-	if ! python_is_python3; then
-		local -x CFLAGS="${CFLAGS}"
-		append-cflags -fno-strict-aliasing
-	fi
-	distutils-r1_python_compile
-}
-
 python_test() {
 	cd "${BUILD_DIR}"/lib* || die
 	${EPYTHON} tables/tests/test_all.py || die
