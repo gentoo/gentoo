@@ -27,7 +27,6 @@ S=${WORKDIR}/${MY_P}
 PATCHES=( "${FILESDIR}/${PN}-3.6.20.1-fix_tests.patch" )
 
 python_compile() {
-	python_is_python3 || append-cflags -fno-strict-aliasing
 	distutils-r1_python_compile --enable=load_extension
 }
 
