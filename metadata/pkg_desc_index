@@ -2983,7 +2983,7 @@ app-text/pep 2.8-r2: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5 0.6.10-r7 0.6.13 99999: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.57 0.59.1 0.60: Tools to ease the translation of documentation
 app-text/podofo 0.9.6_p20190928: PoDoFo is a C++ library to work with the PDF file format
-app-text/poppler 0.88.0-r1 0.89.0 0.90.0 0.90.1 9999: PDF rendering library based on the xpdf-3.0 code base
+app-text/poppler 0.88.0-r1 0.89.0 0.90.1 20.08.0 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.9: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
 app-text/ps2pkm 1.8_p20200406: Tool that converts a PostScript type1 font into a corresponding TeX PK font
@@ -5416,7 +5416,7 @@ dev-libs/libical 3.0.8: An implementation of basic iCAL protocols
 dev-libs/libiconv 1.15: GNU charset conversion library for libc which doesn't implement it
 dev-libs/libindicate 12.10.1-r3: Library to raise flags on DBus for other components of the desktop
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
-dev-libs/libinput 1.15.5 1.15.6: Library to handle input devices in Wayland
+dev-libs/libinput 1.15.6 1.16.0: Library to handle input devices in Wayland
 dev-libs/libintl 0.19.7 0.19.8.1 0.20.1 0.20.2 0.21: the GNU international library (split out of gettext)
 dev-libs/libisoburn 1.5.2: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.5.2: Open-source library for reading, mastering and writing optical discs
@@ -17587,7 +17587,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.0_beta1 9999: Gentoo automatic kernel bu
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 5.4.40 5.4.52 5.4.53 5.4.55 5.7.10 5.7.12: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.40 5.4.52 5.4.53 5.4.55 5.7.10 5.7.12: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.221 4.4.228 4.4.229 4.4.230 4.4.231 4.4.232 4.9.221 4.9.228 4.9.229 4.9.230 4.9.231 4.9.232 4.14.178 4.14.185 4.14.188 4.14.189 4.14.190 4.14.191 4.19.120 4.19.129 4.19.133 4.19.134 4.19.135 4.19.136 5.4.38 5.4.48 5.4.52 5.4.53 5.4.54 5.4.55 5.7.8 5.7.9 5.7.10 5.7.11 5.7.12: Full sources including the Gentoo patchset for the 5.7 kernel tree
+sys-kernel/gentoo-sources 4.4.221 4.4.228 4.4.229 4.4.230 4.4.231 4.4.232 4.9.221 4.9.228 4.9.229 4.9.230 4.9.231 4.9.232 4.14.178 4.14.185 4.14.188 4.14.189 4.14.190 4.14.191 4.19.120 4.19.129 4.19.133 4.19.134 4.19.135 4.19.136 5.4.38 5.4.48 5.4.52 5.4.53 5.4.54 5.4.55 5.7.8 5.7.9 5.7.10 5.7.11 5.7.12 5.8.0: Full sources including the Gentoo patchset for the 5.8 kernel tree
 sys-kernel/git-sources 5.8_rc1 5.8_rc2 5.8_rc3 5.8_rc4 5.8_rc5 5.8_rc6 5.8_rc7: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
