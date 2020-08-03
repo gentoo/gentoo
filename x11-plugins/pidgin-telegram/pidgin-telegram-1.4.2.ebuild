@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ SRC_URI="https://github.com/majn/telegram-purple/releases/download/v${PV}/telegr
 LICENSE="GPL-2+"
 KEYWORDS="amd64 x86"
 SLOT="0"
-IUSE="gcrypt libressl +nls +webp"
+IUSE="gcrypt libressl +nls +png +webp"
 
 RDEPEND="net-im/pidgin
 	sys-libs/zlib:=
@@ -19,6 +19,7 @@ RDEPEND="net-im/pidgin
 		libressl? ( dev-libs/libressl:0= )
 		!libressl? ( dev-libs/openssl:0= )
 	)
+	png? ( media-libs/libpng:0= )
 	webp? ( media-libs/libwebp:= )"
 
 DEPEND="${RDEPEND}"
@@ -43,6 +44,7 @@ src_configure() {
 	local myeconfargs=(
 		$(use_enable gcrypt)
 		$(use_enable nls translation)
+		$(use_enable png libpng)
 		$(use_enable webp libwebp)
 	)
 

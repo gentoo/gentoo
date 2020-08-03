@@ -92,8 +92,6 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	export LDFLAGS="${LDFLAGS} -L${EPREFIX}/usr/$(get_libdir) -ldl"
-
 	# should be installed by bind-tools
 	sed -i -r -e "s:(nsupdate|dig|delv) ::g" bin/Makefile.in || die
 

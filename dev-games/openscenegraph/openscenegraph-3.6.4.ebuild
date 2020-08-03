@@ -5,7 +5,7 @@ EAPI=7
 
 MY_PN="OpenSceneGraph"
 MY_P=${MY_PN}-${PV}
-WX_GTK_VER="3.0"
+WX_GTK_VER="3.0-gtk3"
 inherit cmake flag-o-matic wxwidgets
 
 DESCRIPTION="Open source high performance 3D graphics toolkit"

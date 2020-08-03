@@ -1,0 +1,12 @@
+diff --git a/help/CMakeLists.txt b/help/CMakeLists.txt
+index 43a7714..0e8a3d8 100755
+--- a/help/CMakeLists.txt
++++ b/help/CMakeLists.txt
+@@ -40,6 +40,6 @@ if( NOT "${CMAKE_GENERATOR}" MATCHES "Xcode|Visual Studio*" )
+    install( FILES "${_SRCDIR}/audacity.1"
+             DESTINATION "${_MANDIR}/man1" )
+    install( FILES "${_SRCDIR}/audacity.appdata.xml"
+-            DESTINATION "${_DATADIR}/appdata" )
++            DESTINATION "${_DATADIR}/metainfo" )
+ endif()
+ 
