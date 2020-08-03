@@ -60,12 +60,6 @@ sys-apps/biosdisk
 sys-fs/ecryptfs-utils
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-02)
-# Py2 only. m-n. Bug #735502. rdep.
-# Removal in 30 days
-app-metrics/collectd
-sys-fs/owfs
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-02)
 # Py2 only. m-n. Bug #735524
 # Removal in 30 days
 www-misc/nx_util
