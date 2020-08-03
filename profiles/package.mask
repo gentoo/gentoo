@@ -32,6 +32,25 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-08-03)
+# Last release in 2012.  Py2 only.  Has build failure reported.
+# Removal in 30 days.  Bug #717490.
+sys-fs/traydevice
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-03)
+# Unmaintained.  Py2 only.  The current Gentoo version is from 2015.
+# No reverse dependencies.
+# Removal in 30 days.  Bug #721476.
+net-mail/libpst
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-03)
+# dev-util/coccigrep is py2-only and requires coccinelle with Python
+# bindings.  dev-util/coccinelle has py2 bindings and fails to build
+# with python disabled (bug #701904).  Both packages are unmaintained.
+# Removal in 30 days.  Bug #734630.
+dev-util/coccigrep
+dev-util/coccinelle
+
 # Aaron Bauman <bman@gentoo.org> (2020-08-02)
 # Py2 only. m-n. Bug #735340
 # Removal in 30 days
