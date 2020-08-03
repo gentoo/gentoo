@@ -31,5 +31,6 @@ src_compile() {
 }
 
 src_install() {
+	python_setup
 	DESTDIR="${ED}" KIS_SRC_DIR="/usr/share/kismet" emake install
 }
