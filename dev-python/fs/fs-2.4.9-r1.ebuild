@@ -39,11 +39,7 @@ BDEPEND="test? (
 )"
 
 python_test() {
-	# python2_7 tests require dev-python/typing which is
-	# now in stdlib so ignore tests. py2.7 is going away.
-	if python_is_python3; then
-		esetup.py test || die "tests failed"
-	fi
+	esetup.py test
 }
 
 pkg_postinst() {
