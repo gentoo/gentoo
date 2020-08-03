@@ -31,7 +31,7 @@ src_configure() {
 	econf \
 		$(use_enable gnutls) \
 		$(use_enable systemd) \
-		--compiler="${tc-getCXX}"
+		--compiler="$(tc-getCXX)"
 }
 
 src_install() {
