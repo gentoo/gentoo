@@ -99,6 +99,7 @@
 	</longdescription>
 	<use>
 		<flag name="bounds-checking">if on, use bounds-checking array accesses</flag>
+		<flag name="detailed-profiling">add detailed profiling information to profiled build-depends</flag>
 		<flag name="portable">if on, use only pure Haskell code and no GHC extensions.</flag>
 		<flag name="unsafe-tricks">turn on unsafe GHC tricks</flag>
 	</use>
