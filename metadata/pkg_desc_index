@@ -13941,7 +13941,7 @@ media-sound/sooperlooper 1.7.3-r2: Live looping sampler with immediate loop reco
 media-sound/sound-juicer 3.24.0: CD ripper for GNOME
 media-sound/soundconverter 3.0.2-r1: A simple audiofile converter application for the GNOME environment
 media-sound/soundkonverter 3.0.1-r2: Frontend to various audio converters
-media-sound/sox 14.4.2-r1: The swiss army knife of sound processing programs
+media-sound/sox 14.4.2-r1 14.4.2_p20200803: The swiss army knife of sound processing programs
 media-sound/specimen 0.5.2_rc3-r2: A Midi Controllable Audio Sampler
 media-sound/spek 0.8.3-r1: Analyse your audio files by showing their spectrogram
 media-sound/splay 0.9.5.2-r2: An audio player, primarily for the console
