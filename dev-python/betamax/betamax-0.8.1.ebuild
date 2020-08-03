@@ -17,11 +17,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="test"
 
 RDEPEND="dev-python/requests[${PYTHON_USEDEP}]"
-DEPEND="
-	test? (
-		${RDEPEND}
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7 pypy)
-	)"
+DEPEND="test? ( ${RDEPEND} )"
 
 PATCHES=(
 	"${FILESDIR}/betamax-0.8.1-tests.patch"
