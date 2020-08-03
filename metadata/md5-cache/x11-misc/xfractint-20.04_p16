@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=x11-libs/libX11 x11-libs/libXft
+DESCRIPTION=A fractal generator
+EAPI=7
+HOMEPAGE=https://www.fractint.org
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=free-noncomm HPND public-domain
+RDEPEND=x11-libs/libX11 x11-libs/libXft
+SLOT=0
+SRC_URI=https://www.fractint.org/ftp/current/linux/xfractint-20.04p16.tar.gz
+_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=00ecb5cd8304004843aa2d54883596a3

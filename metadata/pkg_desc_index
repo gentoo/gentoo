@@ -15592,7 +15592,7 @@ net-wireless/kismet 2016.07.1-r2 2019.09.1-r2 2019.12.2-r1 2020.04.3 9999: IEEE 
 net-wireless/kismet-rest 2019.05.02 9999: Kismet REST Python API
 net-wireless/kismet-ubertooth 2017.03.2 9999: Provides basic bluetooth support in kismet
 net-wireless/kismetdb 2019.05.05 9999: Kismetdb database log helper library
-net-wireless/kismetmobiledashboard 1.5_beta1 9999: Mobile UI for kismet
+net-wireless/kismetmobiledashboard 1.5_beta1-r1 9999: Mobile UI for kismet
 net-wireless/limesuite 19.04.0: Driver and GUI for LMS7002M-based SDR platforms
 net-wireless/linssid 3.6-r1: Graphical wireless scanning for Linux
 net-wireless/lorcon 0.0_p20150109 0.0_p20180409-r1 0.0_p20200214 9999: A generic library for injecting 802.11 frames
@@ -18646,7 +18646,7 @@ x11-misc/xfe 1.42 1.43.1 1.43.2: MS-Explorer-like minimalist file manager for X
 x11-misc/xfishtank 2.1-r2: Turns your root window into an aquarium
 x11-misc/xflux 20130927-r1 20170103: Makes the color of your computer's display adapt to the time of the day
 x11-misc/xflux-gui 1.2.0-r1: A GUI for f.lux
-x11-misc/xfractint 20.04_p14: A fractal generator
+x11-misc/xfractint 20.04_p14 20.04_p16: A fractal generator
 x11-misc/xgestures 0.4: A mouse gesture recognition program for X11 desktops
 x11-misc/xhkeys 2.2.1: assign particular actions to any key or key combination
 x11-misc/xiccd 0.3.0: A desktop environment-independent bridge between colord and X
