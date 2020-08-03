@@ -21,6 +21,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">dogpile.cache</remote-id>
-		<remote-id type="bitbucket">zzzeek/dogpile.cache</remote-id>
+		<remote-id type="github">sqlalchemy/dogpile.cache</remote-id>
 	</upstream>
 </pkgmetadata>
