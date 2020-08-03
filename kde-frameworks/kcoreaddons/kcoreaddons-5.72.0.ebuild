@@ -4,7 +4,7 @@
 EAPI=7
 
 QTMIN=5.14.2
-inherit ecm kde.org
+inherit ecm kde.org xdg-utils
 
 DESCRIPTION="Framework for solving common problems such as caching, randomisation, and more"
 LICENSE="LGPL-2+"
@@ -37,4 +37,14 @@ src_test() {
 	)
 
 	ecm_src_test
+}
+
+pkg_postinst() {
+	ecm_pkg_postinst
+	xdg_mimeinfo_database_update
+}
+
+pkg_postrm() {
+	ecm_pkg_postrm
+	xdg_mimeinfo_database_update
 }

@@ -5,13 +5,13 @@ EAPI=7
 
 MY_PN="pcsc-${PN}"
 MY_PV="${PV/_p/final.SP}"
-MY_P="${MY_PN}-${MY_PV}"
+MY_P="${MY_PN}_${MY_PV}"
 
 inherit autotools flag-o-matic linux-info toolchain-funcs udev
 
 DESCRIPTION="REINER SCT cyberJack USB chipcard reader user space driver"
 HOMEPAGE="https://www.reiner-sct.de/"
-SRC_URI="http://kernelport.com/reiner-sct/SP$(ver_cut 5)/${MY_P}.tar.bz2"
+SRC_URI="https://support.reiner-sct.de/downloads/LINUX/V${PV/_p/_SP}/${MY_P}.tar.gz -> ${MY_P}.tar.bz2"
 
 KEYWORDS="amd64 x86"
 LICENSE="GPL-2+ LGPL-2.1+"
@@ -77,7 +77,7 @@ src_install() {
 	default
 
 	use tools && dobin tools/cjflash/cjflash tools/cjgeldkarte/cjgeldkarte
-	use udev && udev_newrules debian/libifd-cyberjack6.udev 99-${PN}.rules
+	use udev && udev_newrules "${FILESDIR}"/libifd-cyberjack6.udev 99-cyberjack.rules
 
 	dodoc debian/changelog doc/{LIESMICH,README}.{pdf,txt,xml}
 

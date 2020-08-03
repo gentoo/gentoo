@@ -10,7 +10,7 @@ SRC_URI="https://github.com/majn/telegram-purple/releases/download/v${PV}/telegr
 LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="gcrypt libressl +nls +webp"
+IUSE="gcrypt libressl +nls +png +webp"
 
 RDEPEND="
 	net-im/pidgin
@@ -20,6 +20,7 @@ RDEPEND="
 		libressl? ( dev-libs/libressl:0= )
 		!libressl? ( dev-libs/openssl:0= )
 	)
+	png? ( media-libs/libpng:0= )
 	webp? ( media-libs/libwebp:= )
 "
 
@@ -47,6 +48,7 @@ src_configure() {
 	local myeconfargs=(
 		$(use_enable gcrypt)
 		$(use_enable nls translation)
+		$(use_enable png libpng)
 		$(use_enable webp libwebp)
 	)
 
