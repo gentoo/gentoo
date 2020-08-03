@@ -12488,7 +12488,7 @@ mate-extra/mate-indicator-applet 1.22.1 1.24.0: MATE indicator applet
 mate-extra/mate-media 1.22.2 1.24.0: Multimedia related programs for the MATE desktop
 mate-extra/mate-netbook 1.22.2 1.24.0: MATE utilities for netbooks
 mate-extra/mate-polkit 1.22.0-r1 1.24.0: A MATE specific DBUS service that is used to bring up authentication dialogs
-mate-extra/mate-power-manager 1.22.1-r1 1.22.2-r1 1.24.1-r1: A session daemon for MATE that makes it easy to manage your laptop or desktop
+mate-extra/mate-power-manager 1.22.1-r1 1.22.2-r1 1.24.1-r1 1.24.1-r2: A session daemon for MATE that makes it easy to manage your laptop or desktop
 mate-extra/mate-screensaver 1.22.2 1.24.0: Replaces xscreensaver, integrating with the MATE desktop
 mate-extra/mate-sensors-applet 1.22.1 1.24.0: MATE panel applet to display readings from hardware sensors
 mate-extra/mate-system-monitor 1.22.2 1.24.0: The MATE System Monitor
