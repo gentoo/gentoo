@@ -473,6 +473,7 @@ multilib_src_configure() {
 		--ar="$(tc-getAR)" \
 		--nm="$(tc-getNM)" \
 		--ranlib="$(tc-getRANLIB)" \
+		--pkg-config="$(tc-getPKG_CONFIG)" \
 		--optflags="${CFLAGS}" \
 		$(use_enable static-libs static) \
 		"${myconf[@]}" \
