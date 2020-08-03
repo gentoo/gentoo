@@ -44,12 +44,7 @@ src_configure() {
 	# set up python bindings build(s)
 	if use python ; then
 		setup_python_flags_configure() {
-			if python_is_python3; then
-				pythonconf=( --without-python --with-python3 )
-			else
-				pythonconf=( --with-python --without-python3 )
-				local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
-			fi
+			pythonconf=( --without-python --with-python3 )
 			run_in_build_dir econf "${pythonconf[@]}" "${myconf[@]}"
 		}
 
