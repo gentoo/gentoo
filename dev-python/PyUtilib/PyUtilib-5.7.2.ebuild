@@ -51,11 +51,4 @@ python_install_all() {
 
 python_install() {
 	distutils-r1_python_install
-
-	if ! python_is_python3; then
-		printf "# Placeholder for python2\n" \
-			> "${D}$(python_get_sitedir)/${PN,,}/__init__.py"
-
-		python_optimize
-	fi
 }
