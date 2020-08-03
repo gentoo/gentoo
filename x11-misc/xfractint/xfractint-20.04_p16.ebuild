@@ -11,18 +11,17 @@ DESCRIPTION="A fractal generator"
 HOMEPAGE="https://www.fractint.org"
 SRC_URI="https://www.fractint.org/ftp/current/linux/${MY_P}.tar.gz"
 
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="free-noncomm HPND public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
-RDEPEND="x11-libs/libX11"
-
-DEPEND="
-	${RDEPEND}
+RDEPEND="
+	x11-libs/libX11
 	x11-libs/libXft
 "
-
-S="${WORKDIR}/${MY_P}"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-20.04p16-install-phase.patch"
