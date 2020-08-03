@@ -26,9 +26,8 @@ DEPEND="${RDEPEND}
 		dev-python/sphinx-testing[${PYTHON_USEDEP}] )"
 
 python_prepare() {
-	if python_is_python3; then
-		sed -i -e "s/import urllib/import urllib.request as urllib/" sphinxcontrib/jinja.py || die
-	fi
+	sed -e "s/import urllib/import urllib.request as urllib/" \
+		-i sphinxcontrib/jinja.py || die
 }
 
 python_test() {
