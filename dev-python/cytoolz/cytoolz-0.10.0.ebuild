@@ -25,12 +25,6 @@ DEPEND="${RDEPEND}
 	test? ( dev-python/nose[${PYTHON_USEDEP}]
 		>=dev-python/toolz-0.8[${PYTHON_USEDEP}] )"
 
-python_compile() {
-	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
-
-	distutils-r1_python_compile
-}
-
 python_test() {
 	pushd "${BUILD_DIR}"/lib/ > /dev/null || die
 	PYTHONPATH=.:${PN} nosetests --with-doctest ${PN} || die "tests failed under ${EPYTHON}"
