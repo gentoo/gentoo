@@ -15017,7 +15017,7 @@ net-misc/AQtion 2.2.7 2.3.1 2.3.4: Aquantia AQC multigigabit NIC linux driver (a
 net-misc/adjtimex 1.29-r2: display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Perform two optimisations on a list of prefixes to reduce the length of the list
-net-misc/anydesk 5.5.0-r1 5.5.1 5.5.4 5.5.6: Feature rich multi-platform remote desktop application
+net-misc/anydesk 5.5.0-r1 5.5.1 5.5.4 5.5.6 6.0.0: Feature rich multi-platform remote desktop application
 net-misc/apt-cacher-ng 3.3.1_p2 3.4_p1 3.5_p1-r1 9999999: Yet another caching HTTP proxy for Debian/Ubuntu software packages
 net-misc/aria2 1.34.0-r2: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
@@ -19078,7 +19078,7 @@ x11-wm/wm2 4-r1: Small, unconfigurable window manager
 x11-wm/wmfs 201003 99999999: Window Manager From Scratch, A tiling window manager highly configurable
 x11-wm/wmii 3.9.2-r5: A dynamic window manager for X11
 x11-wm/xmonad 0.11-r1 0.11-r3 0.11.1 0.12 0.13 0.15: A tiling window manager
-x11-wm/xmonad-contrib 0.11.2 0.11.4 0.12 0.13 0.15: Third party extensions for xmonad
+x11-wm/xmonad-contrib 0.11.2 0.11.4 0.12 0.13 0.15 0.16: Third party extensions for xmonad
 x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
 x11-wm/xpra 3.0.2-r1 3.0.5-r1: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.12.11 4.15.1: Extensions, widgets and framework library with session support for Xfce
