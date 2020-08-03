@@ -15789,7 +15789,7 @@ sci-biology/amap 2.2-r3: Protein multiple-alignment-based sequence annealing
 sci-biology/amos 3.1.0-r4: A Modular, Open-Source whole genome assembler
 sci-biology/augustus 2.5.5: Eukaryotic gene predictor
 sci-biology/bamtools 2.5.1 9999: A programmer's API and an end-user's toolkit for handling BAM files
-sci-biology/bcftools 1.5 1.9-r2 1.10.2: Utilities for variant calling and manipulating VCF and BCF files
+sci-biology/bcftools 1.10.2: Utilities for variant calling and manipulating VCF and BCF files
 sci-biology/bedtools 2.26.0: Tools for manipulation and analysis of BED, GFF/GTF, VCF, SAM/BAM file formats
 sci-biology/bfast 0.7.0a: Blat-like Fast Accurate Search Tool
 sci-biology/biogrep 1.0-r2: Multithreaded tool for matching large sets of patterns against biosequence DBs
@@ -15886,7 +15886,7 @@ sci-biology/prodigal 2.6.3: Prokaryotic Dynamic Programming Genefinding Algorith
 sci-biology/profphd 1.0.39 1.0.40: Secondary structure and solvent accessibility predictor
 sci-biology/prosite 2017.02: A protein families and domains database
 sci-biology/psipred 3.4 3.5: Protein Secondary Structure Prediction
-sci-biology/pysam 0.12.0.1 0.16.0.1: Python interface for the SAM/BAM sequence alignment and mapping format
+sci-biology/pysam 0.16.0.1: Python interface for the SAM/BAM sequence alignment and mapping format
 sci-biology/qrna 2.0.3c-r3: Prototype ncRNA genefinder
 sci-biology/raxml 7.2.6: Sequential, Parallel & Distributed Inference of Large Phylogenetic Trees
 sci-biology/rebase 1701 1702 1703 1704 1803 1806 1810 1901: A restriction enzyme database
@@ -15895,7 +15895,7 @@ sci-biology/repeatmasker 4.0.1: Screen DNA sequences for interspersed repeats an
 sci-biology/repeatmasker-libraries 20120418: A special version of RepBase used by RepeatMasker
 sci-biology/rmblast 1.2-r1: RepeatMasker compatible version of NCBI BLAST+
 sci-biology/rnaview 20040713-r4: Generates 2D displays of RNA/DNA secondary structures with tertiary interactions
-sci-biology/samtools 0.1.20-r4 1.5 1.9-r1 1.10: Utilities for analysing and manipulating the SAM/BAM alignment formats
+sci-biology/samtools 0.1.20-r4 1.10: Utilities for analysing and manipulating the SAM/BAM alignment formats
 sci-biology/seaview 4.3.5 4.5.4 4.6: A graphical multiple sequence alignment editor
 sci-biology/seqan 1.4.2-r1 2.2.0-r1 2.4.0 9999: C++ Sequence Analysis Library
 sci-biology/shrimp 2.2.3: SHort Read Mapping Package
@@ -16223,7 +16223,7 @@ sci-libs/h5hut 1.99.13: High-Performance I/O Library for Particle-based Simulati
 sci-libs/h5part 1.6.6: Portable High Performance Parallel Data Interface to HDF5
 sci-libs/hdf 4.2.11 4.2.13 4.2.13-r1: General purpose library and format for storing scientific data
 sci-libs/hdf5 1.10.5 1.10.5-r1: General purpose library and file format for storing scientific data
-sci-libs/htslib 1.5 1.9 1.10.2: C library for high-throughput sequencing data formats
+sci-libs/htslib 1.9 1.10.2: C library for high-throughput sequencing data formats
 sci-libs/hypre 2.14.0 2.18.0 2.18.2: Parallel matrix preconditioners library
 sci-libs/idlcoyote 20161220 99999999: GDL library from D. Fannings IDL courses
 sci-libs/idlmarkwardt 20130418 20160319: Craig Markwardt IDL procedures (MPFIT, CMSVLIB, etc)
