@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils
+inherit desktop
 
 MYP=${PN}_${PV}
 DESCRIPTION="Tcl/Tk-based graphical interface to CVS with Subversion support"
