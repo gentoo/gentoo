@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs vcs-snapshot
 
@@ -19,16 +19,12 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	>=app-text/mupdf-1.10:0=
 	app-text/djvu:0=
-	dev-lang/mujs:0=
-	dev-libs/openssl:0=
 	!media-gfx/fbida[fbcon(-)]
-	media-libs/freetype:2=
-	media-libs/jbig2dec:0=
-	media-libs/openjpeg:0=
-	virtual/jpeg:0=
 "
 
 DEPEND="${RDEPEND}"
+
+BDEPEND="virtual/pkgconfig"
 
 S=${WORKDIR}/${P}-${COMMIT}
 
@@ -38,7 +34,7 @@ PATCHES=(
 )
 
 src_compile() {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
+	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
