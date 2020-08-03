@@ -16,7 +16,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">keyring</remote-id>
-		<remote-id type="bitbucket">kang/python-keyring-lib</remote-id>
 		<remote-id type="github">jaraco/keyring</remote-id>
 	</upstream>
 </pkgmetadata>
