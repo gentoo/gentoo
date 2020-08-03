@@ -52,10 +52,6 @@ python_prepare_all() {
 }
 
 python_compile() {
-	if ! python_is_python3; then
-		local -x CFLAGS="${CFLAGS}"
-		append-cflags -fno-strict-aliasing
-	fi
 	distutils-r1_python_compile -j1
 }
 
