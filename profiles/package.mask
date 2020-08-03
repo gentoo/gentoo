@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Jimi Huotari <chiitoo@gentoo.org> (2020-08-04)
+# No consumers since 2015, and no known stand-alone use.
+# Removal in 30 days.
+dev-libs/liboobs
 
 # Mikle Kolyada <zlogene@gentoo.org>
 # Starting with this version pambase was
