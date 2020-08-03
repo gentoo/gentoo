@@ -3,10 +3,6 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
-
-inherit python-single-r1
-
 DESCRIPTION="Mobile UI for kismet"
 HOMEPAGE="https://github.com/elkentaro/KismetMobileDashboard"
 if [ "${PV}" = "9999" ]; then
@@ -31,6 +27,5 @@ src_compile() {
 }
 
 src_install() {
-	python_setup
 	DESTDIR="${ED}" KIS_SRC_DIR="/usr/share/kismet" emake install
 }
