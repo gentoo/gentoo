@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="bounds-checking cpu_flags_x86_sse4_2 portable +unsafe-tricks"
 
 RDEPEND="dev-haskell/primitive:=[profile?]
-	>=dev-haskell/vector-0.7:=[profile?] 
+	>=dev-haskell/vector-0.7:=[profile?]
 	>=dev-lang/ghc-7.4.1:=
 	>=dev-haskell/hashable-1.1:=[profile?] <dev-haskell/hashable-1.3:=[profile?]
 "
