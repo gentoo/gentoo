@@ -5,7 +5,6 @@
         <email>candrews@gentoo.org</email>
         <name>Craig Andrews</name>
     </maintainer>
-    <longdescription>Kodi's RTMP inputstream addon</longdescription>
     <upstream>
         <remote-id type="github">xbmc/inputstream.rtmp</remote-id>
     </upstream>
