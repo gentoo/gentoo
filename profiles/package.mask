@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2020-08-04)
+# Unmaintained, out of date, serious security
+# issue.
+# Removal in 30 days. bug #658448.
+net-analyzer/nikto
+
 # Matt Turner <mattst88@gentoo.org> (2020-08-03)
 # Package is dead and upstream maintainer asked that it be removed.
 # Removal in 30 days. Bug #735314
