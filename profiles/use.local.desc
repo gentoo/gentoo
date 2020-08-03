@@ -3082,11 +3082,9 @@ dev-vcs/git:tk - Include the 'gitk' and 'git gui' tools
 dev-vcs/git:webdav - Adds support for push'ing to HTTP/HTTPS repositories via DAV
 dev-vcs/git-annex:assistant - Enable git-annex assistant and watch command
 dev-vcs/git-annex:benchmark - Enable benchmarking
-dev-vcs/git-annex:concurrentoutput - Use concurrent-output library (experimental)
 dev-vcs/git-annex:debuglocks - Debug location of MVar/STM deadlocks
 dev-vcs/git-annex:magicmime - Use libmagic to determine file MIME types
 dev-vcs/git-annex:network-3 - Use network-3
-dev-vcs/git-annex:network-uri - Get Network.URI from the network-uri package.
 dev-vcs/git-annex:pairing - Enable pairing of git annex repositories
 dev-vcs/git-annex:s3 - Enable Amazon S3 remote
 dev-vcs/git-annex:torrentparser - Use haskell torrent library to parse torrent files
