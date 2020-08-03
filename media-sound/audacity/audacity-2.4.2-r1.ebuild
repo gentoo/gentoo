@@ -38,7 +38,7 @@ RDEPEND="dev-libs/expat
 	lv2? (
 		dev-libs/serd
 		dev-libs/sord
-		media-libs/lilv
+		>=media-libs/lilv-0.24.6-r2
 		media-libs/lv2
 		media-libs/sratom
 		media-libs/suil
