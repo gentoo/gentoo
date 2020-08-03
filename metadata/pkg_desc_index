@@ -2868,7 +2868,7 @@ app-text/expander 2.0.5-r2: Expander is a utility that acts as a filter for text
 app-text/extract_url 1.6.2: extracts URLs from correctly-encoded MIME email messages or plain text
 app-text/fbless 0.2.3: Python-based console fb2 reader with less-like interface
 app-text/fblog 1.4.1: Small command-line JSON Log viewer
-app-text/fbpdf 0_p20190202: framebuffer pdf and djvu viewer
+app-text/fbpdf 0_p20190202-r1: framebuffer pdf and djvu viewer
 app-text/fbreader 0.99.4-r5: E-Book Reader. Supports many e-book formats
 app-text/fictionup 0.1 0.2.1: A command-line markdown to fb2 convertor
 app-text/flpsed 0.7.3: Pseudo PostScript editor
