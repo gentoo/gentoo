@@ -460,6 +460,7 @@ src_install() {
 	_EOF_
 
 	dodoc COPYRIGHT
+	rm -rf "${ED}/usr/$(get_libdir)/${P}"/*.old || die
 	rm "${ED}/usr/share/doc/${P}"/*.old || die
 	rm "${ED}/usr/share/doc/${P}/LICENSE-APACHE" || die
 	rm "${ED}/usr/share/doc/${P}/LICENSE-MIT" || die
