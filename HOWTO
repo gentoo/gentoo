@@ -4,3 +4,13 @@
   git checkout master
   git merge --no-ff gentoo-master
   git push origin master
+
+# El checkout regular
+git checkout gentoo-master
+git pull https://github.com/gentoo/gentoo.git master
+git checkout master
+git merge --no-ff gentoo-master
+git push origin master
+
+
+
