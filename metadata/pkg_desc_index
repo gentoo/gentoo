@@ -10646,7 +10646,7 @@ dev-util/cucumber-wire 0.0.1-r1: Executable feature scenarios
 dev-util/cunit 2.1_p3: C Unit Test Framework
 dev-util/cutils 1.6-r4: C language utilities
 dev-util/cutter 1.11.0: A Qt and C++ GUI for radare2 reverse engineering framework
-dev-util/cvise 1.1.0: Super-parallel Python port of the C-Reduce
+dev-util/cvise 1.1.0 1.6.0: Super-parallel Python port of the C-Reduce
 dev-util/cwdiff 0.2.8 0.3.0 0.3.1 0.4.0 9999: A script that wraps wdiff to support directories and colorize the output
 dev-util/d-feet 0.3.14-r1: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 19.04.0-r1: Run executables under a new DBus session for testing
