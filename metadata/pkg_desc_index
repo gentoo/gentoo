@@ -13149,7 +13149,7 @@ media-libs/libmms 0.6.4: Common library for accessing Microsoft Media Server (MM
 media-libs/libmng 2.0.3: Multiple Image Networkgraphics lib (animated png's)
 media-libs/libmodplug 0.8.9.0: Library for playing MOD-like music files
 media-libs/libmp3splt 0.9.2-r1: a library for mp3splt to split mp3 and ogg files without decoding
-media-libs/libmp4v2 2.0.0-r1: Functions for accessing ISO-IEC:14496-1:2001 MPEG-4 standard
+media-libs/libmp4v2 2.0.0-r1 2.0.0-r2: Functions for accessing ISO-IEC:14496-1:2001 MPEG-4 standard
 media-libs/libmpd 11.8.17-r1: A library handling connections to a MPD server
 media-libs/libmpdclient 2.16: A library for interfacing Music Player Daemon (media-sound/mpd)
 media-libs/libmpeg2 0.5.1-r2: library for decoding mpeg-2 and mpeg-1 video
