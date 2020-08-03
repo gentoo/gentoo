@@ -59,7 +59,7 @@ COLLECTD_TESTED_PLUGINS="aggregation amqp apache apcups ascent battery bind
 	multimeter mysql netlink network network nfs nginx notify_desktop
 	notify_email notify_nagios ntpd numa nut olsrd onewire openldap
 	openvpn oracle ovs_events ovs_stats pcie_errors perl ping postgresql
-	powerdns procevent processes protocols python python redis routeros
+	powerdns procevent processes protocols python redis routeros
 	rrdcached rrdtool sensors serial sigrok slurm smart snmp snmp_agent
 	statsd swap synproxy sysevent syslog table tail tail_csv
 	target_notification target_replace target_scale target_set tcpconns
