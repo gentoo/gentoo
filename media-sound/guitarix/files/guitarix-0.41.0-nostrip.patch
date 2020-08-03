@@ -1,0 +1,47 @@
+From f630c226e4d6f342f78a82f6dd6df4fe3e3f3e01 Mon Sep 17 00:00:00 2001
+From: Alexander Tsoy <alexander@tsoy.me>
+Date: Fri, 5 Jun 2020 17:21:10 +0300
+Subject: [PATCH] Do not strip lv2 plugins
+
+---
+ waftools/lv2.py | 4 ++--
+ wscript         | 1 -
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/waftools/lv2.py b/waftools/lv2.py
+index 7397f6b7..256d52b1 100644
+--- a/waftools/lv2.py
++++ b/waftools/lv2.py
+@@ -40,7 +40,7 @@ def lv2_add_common(tg, target, install_path, defines=None, linkflags=None, cxxfl
+ @Configure.conf
+ def lv2(bld, *k, **kw):
+     lv2_base, dst = get_lv2_base(bld, kw)
+-    tg = bld.shlib(features='strip', *k, **kw)
++    tg = bld.shlib(*k, **kw)
+     cxxflags = []
+     if not bld.env['OPT'] and bld.env['SSE2']:
+         cxxflags = [ "-msse2", "-mfpmath=sse"]
+@@ -57,7 +57,7 @@ def lv2_gui(bld, *k, **kw):
+     if not bld.env['LV2GUI']:
+         return None
+     lv2_base, dst = get_lv2_base(bld, kw)
+-    tg = bld.shlib(features='strip', *k, **kw)
++    tg = bld.shlib(*k, **kw)
+     lv2_add_common(tg, lv2_base+'_gui', dst, ["LV2_GUI"], ['-fvisibility=hidden','-Wl,-z,relro,-z,now','-Wl,--exclude-libs,ALL'])
+     return tg
+ 
+diff --git a/wscript b/wscript
+index 3e2114d3..0d49cd16 100644
+--- a/wscript
++++ b/wscript
+@@ -375,7 +375,6 @@ def configure(conf):
+     conf.env['DESKAPPS_DIR'] = os.path.normpath(os.path.join(conf.env['SHAREDIR'], 'applications'))
+     conf.env['BIN_NAME'] = APPNAME
+     if opt.lv2:
+-        conf.gxload('strip')
+         conf.gxload('lv2')
+     conf.env['LADSPA'] = opt.ladspa
+     conf.env['NEW_LADSPA'] = opt.new_ladspa
+-- 
+2.26.2
+
