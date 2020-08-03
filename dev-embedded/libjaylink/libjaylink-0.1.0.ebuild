@@ -6,9 +6,9 @@ EAPI="6"
 inherit autotools eutils ltprune
 
 DESCRIPTION="Library to access J-Link devices"
-HOMEPAGE="https://gitlab.zapb.de/zapb/libjaylink"
+HOMEPAGE="https://gitlab.zapb.de/libjaylink/libjaylink"
 
-SRC_URI="https://gitlab.zapb.de/zapb/libjaylink/-/archive/${PV}/${P}.tar.bz2"
+SRC_URI="https://gitlab.zapb.de/libjaylink/libjaylink/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
