@@ -27,7 +27,9 @@ RDEPEND="
 		dev-libs/libxml2:2[python,${PYTHON_USEDEP}]
 	)
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	>=virtual/pkgconfig-1
+"
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/xslt-config
