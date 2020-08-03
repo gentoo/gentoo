@@ -10048,7 +10048,7 @@ dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation 
 dev-ruby/nio4r 1.2.1-r1 2.4.0 2.5.2: A high performance selector API for monitoring IO objects
 dev-ruby/nokogiri 1.10.4: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
-dev-ruby/nokogumbo 1.5.0 2.0.1 2.0.2: A Nokogiri interface to the Gumbo HTML5 parser
+dev-ruby/nokogumbo 1.5.0 2.0.2: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
 dev-ruby/oauth 0.5.4: A RubyGem for implementing both OAuth clients and servers
@@ -10329,9 +10329,9 @@ dev-ruby/tty-command 0.8.2 0.9.0: Terminal color capabilities detection
 dev-ruby/tty-cursor 0.7.0 0.7.1: Move the terminal cursor around and manipulate text using intuitive method calls
 dev-ruby/tty-file 0.7.0: File manipulation utility methods
 dev-ruby/tty-platform 0.2.0 0.2.1 0.3.0: Query methods for detecting different operating systems
-dev-ruby/tty-prompt 0.19.0 0.20.0 0.21.0: A beautiful and powerful interactive command line prompt
+dev-ruby/tty-prompt 0.19.0 0.20.0 0.21.0 0.22.0: A beautiful and powerful interactive command line prompt
 dev-ruby/tty-reader 0.6.0-r1 0.7.0 0.8.0: Methods for processing keyboard input in character, line and multiline modes
-dev-ruby/tty-screen 0.7.0 0.7.1 0.8.0: Terminal screen size detection which works on Linux, OS X and Windows/Cygwin
+dev-ruby/tty-screen 0.7.0 0.7.1 0.8.0 0.8.1: Terminal screen size detection which works on Linux, OS X and Windows/Cygwin
 dev-ruby/tty-which 0.4.1: Platform independent implementation of Unix which command
 dev-ruby/turbolinks 5.2.1: Makes following links in your web application faster
 dev-ruby/turbolinks-source 5.2.0: Turbolinks JavaScript assets
@@ -13221,7 +13221,7 @@ media-libs/libxtract 0.6.6: A simple, portable, lightweight library of audio fea
 media-libs/libyami 1.0.1 1.1.0 1.2.0 1.3.0 9999: Yet Another Media Infrastructure: Media codec with hardware acceleration
 media-libs/libzen 0.4.38: Shared library for libmediainfo and mediainfo
 media-libs/libzmf 0.0.2 9999: Library for parsing Zoner Callisto/Draw documents
-media-libs/lilv 0.24.6-r1 0.24.8-r1: Library to make the use of LV2 plugins as simple as possible for applications
+media-libs/lilv 0.24.6-r2 0.24.8-r1: Library to make the use of LV2 plugins as simple as possible for applications
 media-libs/lsp-plugins 1.1.5-r2 1.1.7-r1 1.1.10 1.1.22 9999: Linux Studio Plugins
 media-libs/lv2 1.18.0: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
@@ -13825,7 +13825,7 @@ media-sound/mp3c 0.31-r1: console based mp3 ripper, with cddb support
 media-sound/mp3cat 0.4: mp3cat reads and writes MP3 files
 media-sound/mp3check 0.8.7: Checks mp3 files for consistency and prints several errors and warnings
 media-sound/mp3diags 1.5.01: Qt-based MP3 diagnosis and repair tool
-media-sound/mp3gain 1.6.1: A program to analyze and adjust MP3 files to same volume
+media-sound/mp3gain 1.6.1 1.6.2: A program to analyze and adjust MP3 files to same volume
 media-sound/mp3info 0.8.5a-r1: An MP3 technical info viewer and ID3 1.x tag editor
 media-sound/mp3report 1.0.2: Perl script to create an HTML report of MP3 files in a directory
 media-sound/mp3splt 2.6.2: a command line utility to split mp3 and ogg files without decoding
@@ -14212,8 +14212,8 @@ net-analyzer/bwbar 1.2.3: The kernel.org "Current bandwidth utilization" bar
 net-analyzer/bwm-ng 0.6.1-r1: Bandwidth Monitor NG is a small and simple console-based bandwidth monitor
 net-analyzer/bwmon 1.3-r2: Simple ncurses bandwidth monitor
 net-analyzer/bwping 1.17: A tool to measure bandwidth and RTT between two hosts using ICMP
-net-analyzer/cacti 1.2.13: Cacti is a complete frontend to rrdtool
-net-analyzer/cacti-spine 1.2.13 99999: Spine is a fast poller for Cacti (formerly known as Cactid)
+net-analyzer/cacti 1.2.13 1.2.14: Cacti is a complete frontend to rrdtool
+net-analyzer/cacti-spine 1.2.13 1.2.14 99999: Spine is a fast poller for Cacti (formerly known as Cactid)
 net-analyzer/calamaris 2.59 2.99.4.0: Calamaris parses the logfiles of a wide variety of Web proxy servers and generates reports
 net-analyzer/carl 0.9-r2 0.9-r3: An rsync logfile analyzer
 net-analyzer/cbm 0.1-r1 0.2: Color Bandwidth Meter
