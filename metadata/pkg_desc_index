@@ -4171,7 +4171,7 @@ dev-haskell/libyaml 0.1.2: Low-level, streaming YAML interface
 dev-haskell/lifted-async 0.2.0.2-r1 0.6.0.1 0.7.0.2 0.8.0.1-r1 0.9.1.1-r1 0.10.0.6: Run lifted IO operations asynchronously and wait for their results
 dev-haskell/lifted-base 0.2.3.6-r2 0.2.3.10 0.2.3.12: lifted IO operations from the base library
 dev-haskell/linear 1.20.5 1.20.6 1.20.9: Linear Algebra
-dev-haskell/list 0.5.2: List monad transformer and class
+dev-haskell/list 0.5.2 0.6.2: List monad transformer and class
 dev-haskell/listlike 4.2.1 4.5.1 4.6.3: Generic support for list-like structures
 dev-haskell/logging-facade 0.0.0: Simple logging abstraction that allows multiple backends
 dev-haskell/logict 0.6.0.2 0.7.0.2: A backtracking logic-programming monad
@@ -4218,7 +4218,7 @@ dev-haskell/mono-traversable-instances 0.1.0.0: Extra typeclass instances for mo
 dev-haskell/mountpoints 1.0.2: list mount points
 dev-haskell/mtl 2.1.3.1 2.2.1 2.2.1-r1 2.2.2: Monad classes, using functional dependencies
 dev-haskell/mtl-compat 0.2.1.3 0.2.2: Backported Control.Monad.Except module from mtl
-dev-haskell/multipart 0.1.2: HTTP multipart split out of the cgi package
+dev-haskell/multipart 0.1.2 0.2.0: HTTP multipart split out of the cgi package
 dev-haskell/murmur-hash 0.1.0.9: MurmurHash2 implementation for Haskell
 dev-haskell/mustache 2.3.1: A mustache template parser library
 dev-haskell/mutable-containers 0.3.2 0.3.2.1 0.3.3 0.3.4: Abstactions and concrete implementations of mutable containers
@@ -4280,7 +4280,7 @@ dev-haskell/pid1 0.1.0.1 0.1.2.0: Do signal handling and orphan reaping for Unix
 dev-haskell/pipes 4.1.7 4.1.9 4.3.14: Compositional pipelines
 dev-haskell/pointed 4.0 4.1.1 4.2.0.2 5-r1 5.0.1-r1: Pointed and copointed data
 dev-haskell/polyparse 1.9 1.11 1.13: A variety of alternative parser combinator libraries
-dev-haskell/pqueue 1.3.2: Reliable, persistent, fast priority queues
+dev-haskell/pqueue 1.3.2 1.4.1.3: Reliable, persistent, fast priority queues
 dev-haskell/prelude-extras 0.4.0.3: Higher order versions of Prelude classes
 dev-haskell/preprocessor-tools 1.0.1 2.0.2: A framework for extending Haskell's syntax via quick-and-dirty preprocessors
 dev-haskell/pretty-hex 1.0: A library for hex dumps of ByteStrings
@@ -4380,7 +4380,7 @@ dev-haskell/statevar 1.0.0.0-r1 1.0.1.0 1.1.0.3 1.1.0.4 1.1.1.1: State variables
 dev-haskell/statistics 0.10.5.2 0.11.0.3 0.13.2.3 0.13.3.0: A library of statistical types, data, and functions
 dev-haskell/stm 2.4.2 2.4.4.1 2.5.0.0: Software Transactional Memory
 dev-haskell/stm-chans 3.0.0.4: Additional types of channels for STM
-dev-haskell/stmonadtrans 0.3.3 0.3.4: A monad transformer version of the ST monad
+dev-haskell/stmonadtrans 0.3.3 0.3.4 0.4.4: A monad transformer version of the ST monad
 dev-haskell/store 0.3.1: Fast binary serialization
 dev-haskell/store-core 0.3: Fast and lightweight binary serialization
 dev-haskell/stream 0.4.7.2: A library for manipulating infinite lists
@@ -4944,9 +4944,9 @@ dev-java/offo-hyphenation 2.0: Hyphenation patterns for Apache Fop
 dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of objects
 dev-java/okio 1.11.0: A modern I/O API for Java
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
-dev-java/openjdk 8.252_p09 8.262_p10 8.265_p01 11.0.7_p10 11.0.8_p10: Open source implementation of the Java programming language
-dev-java/openjdk-bin 8.252_p09 8.262_p10 8.265_p01 11.0.7_p10-r1 11.0.8_p10: Prebuilt Java JDK binaries provided by AdoptOpenJDK
-dev-java/openjdk-jre-bin 8.252_p09 8.262_p10 8.265_p01 11.0.7_p10-r1 11.0.8_p10-r1: Prebuilt Java JRE binaries provided by AdoptOpenJDK
+dev-java/openjdk 8.265_p01 11.0.8_p10: Open source implementation of the Java programming language
+dev-java/openjdk-bin 8.265_p01 11.0.8_p10: Prebuilt Java JDK binaries provided by AdoptOpenJDK
+dev-java/openjdk-jre-bin 8.265_p01 11.0.8_p10-r1: Prebuilt Java JRE binaries provided by AdoptOpenJDK
 dev-java/openjfx 11.0.8_p2: Java OpenJFX client application platform
 dev-java/oracle-javamail 1.5.2 1.5.5 1.5.6: A Java-based framework to build multiplatform mail and messaging applications
 dev-java/oracle-jdk-bin 1.8.0.202 11.0.2: Oracle's Java SE Development Kit
@@ -14268,7 +14268,7 @@ net-analyzer/httping 2.5 9999999: like ping but for HTTP requests
 net-analyzer/hunt 1.5-r1 1.5-r3 1.5_p6_p1: tool for checking well known weaknesses in the TCP/IP protocol
 net-analyzer/hydra 9.0 9.0-r1 9.1 9999999: Parallelized network login hacker
 net-analyzer/ibmonitor 1.4 1.4-r1: Interactive bandwidth monitor
-net-analyzer/icinga2 2.11.4 9999: Distributed, general purpose, network monitoring engine
+net-analyzer/icinga2 2.11.4 2.11.5 2.12.0 9999: Distributed, general purpose, network monitoring engine
 net-analyzer/ifmetric 0.3-r2: Set metrics of all IPv4 routes attached to a given network interface at once
 net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for snmp targets
 net-analyzer/ifstatus 1.1.0-r2 2.0.0: A simple CLI program for displaying network statistics in real time
