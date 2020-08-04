@@ -2525,7 +2525,7 @@ app-misc/rundeck-bin 2.6.8: Job Scheduler and Runbook Automation
 app-misc/rundeck-cli-bin 0.1.8 0.1.11: Command line tool for rundeck
 app-misc/screen 4.8.0 9999: screen manager with VT100/ANSI terminal emulation
 app-misc/screenfetch 3.9.1 9999: Bash Screenshot Information Tool
-app-misc/screenie 1.30.0-r1: screen(1) frontend that is designed to be a session handler
+app-misc/screenie 1.30.0-r1 20120406: A small and lightweight screen wrapper
 app-misc/scrub 2.5.2 2.6.1: Overwrite files with iterative patterns.
 app-misc/selecta 0.0.7 9999: A fuzzy text selector for files and anything else you need to select
 app-misc/skim 0.6.9 0.7.0 0.8.1: Command-line fuzzy finder
@@ -8991,7 +8991,7 @@ dev-python/rootpy 1.0.1-r1: Pythonic layer on top of the ROOT framework's PyROOT
 dev-python/rope 0.16.0 0.17.0: Python refactoring library
 dev-python/ropemode 0.5: A helper for using rope refactoring library in IDEs
 dev-python/rosdistro 0.8.0 0.8.1 0.8.2 9999: Tools to work with catkinized rosdistro files
-dev-python/rospkg 1.2.8 9999: Standalone Python library for the ROS package system
+dev-python/rospkg 1.2.0 1.2.6 1.2.8 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.4.1-r1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
 dev-python/rply 0.7.7: Pure python parser generator that also works with RPython
 dev-python/rpy 2.9.0: Python interface to the R Programming Language
