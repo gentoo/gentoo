@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="dev-libs/libvterm"
 RDEPEND="${DEPEND}
-	app-editors/emacs[dynamic-loading]"
+	>=app-editors/emacs-26:*[dynamic-loading]"
 
 S="${WORKDIR}/${MY_PN}-${COMMIT}"
 PATCHES=( "${FILESDIR}"/${PN}-dont-compile.patch )
