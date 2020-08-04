@@ -148,12 +148,13 @@ src_install() {
 
 	# Install examples and other misc files
 	if use examples; then
-		insinto /usr/share/doc/"${PF}"/examples
-		doins -r scripts/java scripts/perl scripts/python
-		insinto /usr/share/doc/"${PF}"/examples/c++
-		doins -r scripts/example/*
-		insinto /usr/share/doc/"${PF}"/tools
-		doins -r scripts/atis scripts/tools/*
+		docompress -x /usr/share/doc/"${PF}"/{examples,tools}
+		docinto examples
+		dodoc -r scripts/java scripts/perl scripts/python
+		docinto examples/c++
+		dodoc -r scripts/example/*
+		docinto tools
+		dodoc -r scripts/atis scripts/tools/*
 	fi
 
 	# Install nasal script syntax
