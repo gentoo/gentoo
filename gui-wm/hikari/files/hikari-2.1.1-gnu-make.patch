@@ -1,0 +1,332 @@
+explain steps to guide future me and other patchers
+(1) define common variables on top
+(2) remove conditions for doc and others to define VERSION
+(3) replace all ${*} by $(*)
+(4) replace pkg-config by $(PKG_CONFIG)
+(6) remove .PATH: src
+(5) remove main.c from OBJS because it is in different directory
+    - we will define a separate target for it
+(6) add $(OBJS) target + main.o target and add then to the end
+    of dependencies for hikari
+(7) add main.o to be cleaned-up
+(8) reorder the library orders in the $(CC) steps because gcc
+diff --git a/Makefile b/Makefile
+index cab013a..b72e74c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,22 @@
++TARGET =	hikari
++
++DESTDIR	?=
++
++prefix ?=	/usr/local
++exec_prefix ?=	$(prefix)
++bindir ?=	$(exec_prefix)/bin
++sysconfdir ?=	$(prefix)/etc
++
++PKG_CONFIG ?=	pkg-config
++
++VERSION ?=	"CURRENT"
++
++### Upstream variables
++PREFIX ?=	$(DESTDIR)$(prefix)
++ETC_PREFIX ?=	$(DESTDIR)$(sysconfdir)
++
+ OS != uname
+-VERSION ?= "CURRENT"
+-PREFIX ?= /usr/local
+-ETC_PREFIX ?= ${PREFIX}
++INSTALL_GROUP != id -gn
+ 
+ OBJS = \
+ 	action.o \
+@@ -33,7 +48,6 @@ OBJS = \
+ 	layout_select_mode.o \
+ 	lock_indicator.o \
+ 	lock_mode.o \
+-	main.o \
+ 	mark.o \
+ 	mark_assign_mode.o \
+ 	mark_select_mode.o \
+@@ -64,109 +78,124 @@ OBJS = \
+ 
+ WAYLAND_PROTOCOLS != pkg-config --variable pkgdatadir wayland-protocols
+ 
+-.PHONY: distclean clean clean-doc doc dist install uninstall
+-.PATH: src
+-
+ # Allow specification of /extra/ CFLAGS and LDFLAGS
+-CFLAGS += ${CFLAGS_EXTRA}
+-LDFLAGS += ${LDFLAGS_EXTRA}
++CFLAGS += $(CFLAGS_EXTRA)
++LDFLAGS += $(LDFLAGS_EXTRA)
+ 
+-.ifdef DEBUG
++ifeq ($(DEBUG),1)
+ CFLAGS += -g -O0 -fsanitize=address
+-.else
++else
+ CFLAGS += -DNDEBUG
+-.endif
++endif
+ 
+-.ifdef WITH_POSIX_C_SOURCE
++ifeq ($(WITH_POSIX_C_SOURCE),1)
+ CFLAGS += -D_POSIX_C_SOURCE=200809L
+-.endif
++endif
+ 
+-.ifdef WITH_XWAYLAND
++ifeq ($(WITH_XWAYLAND),1)
+ CFLAGS += -DHAVE_XWAYLAND=1
+-.endif
++endif
+ 
+-.ifdef WITH_GAMMACONTROL
++ifeq ($(WITH_GAMMACONTROL),1)
+ CFLAGS += -DHAVE_GAMMACONTROL=1
+-.endif
++endif
+ 
+-.ifdef WITH_SCREENCOPY
++ifeq ($(WITH_SCREENCOPY),1)
+ CFLAGS += -DHAVE_SCREENCOPY=1
+-.endif
++endif
+ 
+-.ifdef WITH_LAYERSHELL
++ifeq ($(WITH_LAYERSHELL),1)
+ CFLAGS += -DHAVE_LAYERSHELL=1
+-.endif
++endif
++
++ifeq ($(WITH_VIRTUAL_INPUT),1)
++CFLAGS += -DHAVE_VIRTUAL_INPUT=1
++endif
+ 
+-.ifdef WITHOUT_SUID
++ifeq ($(WITHOUT_SUID),1)
+ PERMS = 555
+-.else
++else
+ PERMS = 4555
+-.endif
++endif
+ 
+-CFLAGS += -Wall -I. -Iinclude -DHIKARI_ETC_PREFIX=${ETC_PREFIX}
++CFLAGS += -Wall -I. -Iinclude -DHIKARI_ETC_PREFIX=$(ETC_PREFIX)
+ 
+-WLROOTS_CFLAGS != pkg-config --cflags wlroots
+-WLROOTS_LIBS != pkg-config --libs wlroots
++WLROOTS_CFLAGS != $(PKG_CONFIG) --cflags wlroots
++WLROOTS_LIBS != $(PKG_CONFIG) --libs wlroots
+ 
+ WLROOTS_CFLAGS += -DWLR_USE_UNSTABLE=1
+ 
+-PANGO_CFLAGS != pkg-config --cflags pangocairo
+-PANGO_LIBS != pkg-config --libs pangocairo
++PANGO_CFLAGS != $(PKG_CONFIG) --cflags pangocairo
++PANGO_LIBS != $(PKG_CONFIG) --libs pangocairo
+ 
+-CAIRO_CFLAGS != pkg-config --cflags cairo
+-CAIRO_LIBS != pkg-config --libs cairo
++CAIRO_CFLAGS != $(PKG_CONFIG) --cflags cairo
++CAIRO_LIBS != $(PKG_CONFIG) --libs cairo
+ 
+-PIXMAN_CFLAGS != pkg-config --cflags pixman-1
+-PIXMAN_LIBS != pkg-config --libs pixman-1
++PIXMAN_CFLAGS != $(PKG_CONFIG) --cflags pixman-1
++PIXMAN_LIBS != $(PKG_CONFIG) --libs pixman-1
+ 
+-XKBCOMMON_CFLAGS != pkg-config --cflags xkbcommon
+-XKBCOMMON_LIBS != pkg-config --libs xkbcommon
++XKBCOMMON_CFLAGS != $(PKG_CONFIG) --cflags xkbcommon
++XKBCOMMON_LIBS != $(PKG_CONFIG) --libs xkbcommon
+ 
+-WAYLAND_CFLAGS != pkg-config --cflags wayland-server
+-WAYLAND_LIBS != pkg-config --libs wayland-server
++WAYLAND_CFLAGS != $(PKG_CONFIG) --cflags wayland-server
++WAYLAND_LIBS != $(PKG_CONFIG) --libs wayland-server
+ 
+-LIBINPUT_CFLAGS != pkg-config --cflags libinput
+-LIBINPUT_LIBS != pkg-config --libs libinput
++LIBINPUT_CFLAGS != $(PKG_CONFIG) --cflags libinput
++LIBINPUT_LIBS != $(PKG_CONFIG) --libs libinput
+ 
+-UCL_CFLAGS != pkg-config --cflags libucl
+-UCL_LIBS != pkg-config --libs libucl
++UCL_CFLAGS != $(PKG_CONFIG) --cflags libucl
++UCL_LIBS != $(PKG_CONFIG) --libs libucl
+ 
+ CFLAGS += \
+-	${WLROOTS_CFLAGS} \
+-	${PANGO_CFLAGS} \
+-	${CAIRO_CFLAGS} \
+-	${PIXMAN_CFLAGS} \
+-	${XKBCOMMON_CFLAGS} \
+-	${WAYLAND_CFLAGS} \
+-	${LIBINPUT_CFLAGS} \
+-	${UCL_CFLAGS}
++	$(WLROOTS_CFLAGS) \
++	$(PANGO_CFLAGS) \
++	$(CAIRO_CFLAGS) \
++	$(PIXMAN_CFLAGS) \
++	$(XKBCOMMON_CFLAGS) \
++	$(WAYLAND_CFLAGS) \
++	$(LIBINPUT_CFLAGS) \
++	$(UCL_CFLAGS)
+ 
+ LIBS = \
+-	${WLROOTS_LIBS} \
+-	${PANGO_LIBS} \
+-	${CAIRO_LIBS} \
+-	${PIXMAN_LIBS} \
+-	${XKBCOMMON_LIBS} \
+-	${WAYLAND_LIBS} \
+-	${LIBINPUT_LIBS} \
+-	${UCL_LIBS}
++	$(WLROOTS_LIBS) \
++	$(PANGO_LIBS) \
++	$(CAIRO_LIBS) \
++	$(PIXMAN_LIBS) \
++	$(XKBCOMMON_LIBS) \
++	$(WAYLAND_LIBS) \
++	$(LIBINPUT_LIBS) \
++	$(UCL_LIBS)
+ 
+-all: hikari hikari-unlocker
++.PHONY: distclean clean clean-doc doc dist install uninstall
+ 
+ version.h:
+-	echo "#define HIKARI_VERSION \"${VERSION}\"" >> version.h
++	echo "#define HIKARI_VERSION \"$(VERSION)\"" >> version.h
+ 
+-hikari: version.h xdg-shell-protocol.h wlr-layer-shell-unstable-v1-protocol.h ${OBJS}
+-	${CC} ${LDFLAGS} ${CFLAGS} ${INCLUDES} -o ${.TARGET} ${OBJS} ${LIBS}
++$(OBJS): %.o: src/%.c
++	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
++
++main.o:
++	$(CC) $(CFLAGS) $(INCLUDES) -c main.c -o main.o
+ 
+ xdg-shell-protocol.h:
+-	wayland-scanner server-header ${WAYLAND_PROTOCOLS}/stable/xdg-shell/xdg-shell.xml ${.TARGET}
++	wayland-scanner server-header $(WAYLAND_PROTOCOLS)/stable/xdg-shell/xdg-shell.xml xdg-shell-protocol.h
+ 
+ wlr-layer-shell-unstable-v1-protocol.h:
+-	wayland-scanner server-header protocol/wlr-layer-shell-unstable-v1.xml ${.TARGET}
++	wayland-scanner server-header protocol/wlr-layer-shell-unstable-v1.xml wlr-layer-shell-unstable-v1-protocol.h
++
++hikari: version.h xdg-shell-protocol.h wlr-layer-shell-unstable-v1-protocol.h $(OBJS) main.o
++	$(CC) $(LDFLAGS) $(CFLAGS) $(INCLUDES) $(OBJS) main.o $(LIBS) -o $(TARGET)
+ 
+ hikari-unlocker: hikari_unlocker.c
+-	${CC} ${CFLAGS_EXTRA} ${LDFLAGS_EXTRA} -o hikari-unlocker hikari_unlocker.c -lpam
++	$(CC) $(LDFLAGS) $(CFLAGS) $(INCLUDES) hikari_unlocker.c -lpam $(LIBS) -o hikari-unlocker
++
++share/man/man1/hikari.1:
++	pandoc -M title:"HIKARI(1) $(VERSION) | hikari - Wayland Compositor" -s \
++		--to man -o share/man/man1/hikari.1 share/man/man1/hikari.md
++
++doc: share/man/man1/hikari.1
++
++all: hikari hikari-unlocker
+ 
+ clean-doc:
+ 	@test -e _darcs && echo "cleaning manpage" ||:
+@@ -178,66 +207,38 @@ clean: clean-doc
+ 	@rm xdg-shell-protocol.h 2> /dev/null ||:
+ 	@rm wlr-layer-shell-unstable-v1-protocol.h 2> /dev/null ||:
+ 	@echo "cleaning object files"
+-	@rm ${OBJS} 2> /dev/null ||:
++	@rm $(OBJS) 2> /dev/null ||:
++	@rm main.o 2> /dev/null ||:
+ 	@echo "cleaning executables"
+ 	@rm hikari 2> /dev/null ||:
+ 	@rm hikari-unlocker 2> /dev/null ||:
+ 
+-share/man/man1/hikari.1:
+-	pandoc -M title:"HIKARI(1) ${VERSION} | hikari - Wayland Compositor" -s \
+-		--to man -o share/man/man1/hikari.1 share/man/man1/hikari.md
+-
+-doc: share/man/man1/hikari.1
+-
+-hikari-${VERSION}.tar.gz: version.h share/man/man1/hikari.1
+-	@darcs revert
+-	@tar -s "#^#hikari-${VERSION}/#" -czf hikari-${VERSION}.tar.gz \
+-		version.h \
+-		main.c \
+-		hikari_unlocker.c \
+-		include/hikari/*.h \
+-		src/*.c \
+-		protocol/*.xml \
+-		Makefile \
+-		LICENSE \
+-		README.md \
+-		CHANGELOG.md \
+-		share/man/man1/hikari.md \
+-		share/man/man1/hikari.1 \
+-		share/backgrounds/hikari/hikari_wallpaper.png \
+-		share/wayland-sessions/hikari.desktop \
+-		etc/hikari/hikari.conf \
+-		etc/pam.d/hikari-unlocker.*
+-
+-distclean: clean-doc
+-	@test -e _darcs && echo "cleaning version.h" ||:
+-	@test -e _darcs && rm version.h ||:
+-
+-dist: distclean hikari-${VERSION}.tar.gz
+-
+-install: hikari hikari-unlocker share/man/man1/hikari.1
+-	mkdir -p ${DESTDIR}/${PREFIX}/bin
+-	mkdir -p ${DESTDIR}/${PREFIX}/share/man/man1
+-	mkdir -p ${DESTDIR}/${PREFIX}/share/backgrounds/hikari
+-	mkdir -p ${DESTDIR}/${PREFIX}/share/wayland-sessions
+-	mkdir -p ${DESTDIR}/${ETC_PREFIX}/etc/hikari
+-	mkdir -p ${DESTDIR}/${ETC_PREFIX}/etc/pam.d
+-	sed "s,PREFIX,${PREFIX}," etc/hikari/hikari.conf > ${DESTDIR}/${ETC_PREFIX}/etc/hikari/hikari.conf
+-	chmod 644 ${DESTDIR}/${ETC_PREFIX}/etc/hikari/hikari.conf
+-	install -m ${PERMS} hikari ${DESTDIR}/${PREFIX}/bin
+-	install -m 4555 hikari-unlocker ${DESTDIR}/${PREFIX}/bin
+-	install -m 644 share/man/man1/hikari.1 ${DESTDIR}/${PREFIX}/share/man/man1
+-	install -m 644 share/backgrounds/hikari/hikari_wallpaper.png ${DESTDIR}/${PREFIX}/share/backgrounds/hikari/hikari_wallpaper.png
+-	install -m 644 share/wayland-sessions/hikari.desktop ${DESTDIR}/${PREFIX}/share/wayland-sessions/hikari.desktop
+-	install -m 644 etc/pam.d/hikari-unlocker.${OS} ${DESTDIR}/${ETC_PREFIX}/etc/pam.d/hikari-unlocker
++install-doc:
++	install -m 644 share/man/man1/hikari.1 $(PREFIX)/share/man/man1
++
++install:
++	mkdir -p $(PREFIX)/bin
++	mkdir -p $(PREFIX)/share/man/man1
++	mkdir -p $(PREFIX)/share/backgrounds/hikari
++	mkdir -p $(PREFIX)/share/wayland-sessions
++	mkdir -p $(ETC_PREFIX)/etc/hikari
++	mkdir -p $(ETC_PREFIX)/etc/pam.d
++	sed "s,PREFIX,$(prefix)," etc/hikari/hikari.conf > $(ETC_PREFIX)/etc/hikari/hikari.conf
++	chmod 644 $(ETC_PREFIX)/etc/hikari/hikari.conf
++	install -m $(PERMS) hikari $(PREFIX)/bin
++	install -m 4555 hikari-unlocker $(PREFIX)/bin
++	install -m 644 share/backgrounds/hikari/hikari_wallpaper.png $(PREFIX)/share/backgrounds/hikari/hikari_wallpaper.png
++	install -m 644 share/wayland-sessions/hikari.desktop $(PREFIX)/share/wayland-sessions/hikari.desktop
++	install -m 644 etc/pam.d/hikari-unlocker.$(OS) $(ETC_PREFIX)/etc/pam.d/hikari-unlocker
+ 
+ uninstall:
+-	-rm ${DESTDIR}/${PREFIX}/bin/hikari
+-	-rm ${DESTDIR}/${PREFIX}/bin/hikari-unlocker
+-	-rm ${DESTDIR}/${PREFIX}/share/man/man1/hikari.1
+-	-rm ${DESTDIR}/${PREFIX}/share/backgrounds/hikari/hikari_wallpaper.png
+-	-rm ${DESTDIR}/${PREFIX}/share/wayland-sessions/hikari.desktop
+-	-rm ${DESTDIR}/${ETC_PREFIX}/etc/pam.d/hikari-unlocker
+-	-rm ${DESTDIR}/${ETC_PREFIX}/etc/hikari/hikari.conf
+-	-rmdir ${DESTDIR}/${ETC_PREFIX}/etc/hikari
+-	-rmdir ${DESTDIR}/${PREFIX}/share/backgrounds/hikari
++	-rm $(PREFIX)/bin/hikari
++	-rm $(PREFIX)/bin/hikari-unlocker
++	-rm $(PREFIX)/share/man/man1/hikari.1
++	-rm $(PREFIX)/share/backgrounds/hikari/hikari_wallpaper.png
++	-rm $(PREFIX)/share/wayland-sessions/hikari.desktop
++	-rm $(ETC_PREFIX)/etc/pam.d/hikari-unlocker
++	-rm $(ETC_PREFIX)/etc/hikari/hikari.conf
++	-rmdir $(ETC_PREFIX)/etc/hikari
++	-rmdir $(PREFIX)/share/backgrounds/hikari
++
