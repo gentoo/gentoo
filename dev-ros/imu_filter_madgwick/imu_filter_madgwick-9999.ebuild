@@ -29,5 +29,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	test? ( dev-ros/rosunit )
+	test? (
+		dev-ros/rosunit
+		dev-cpp/gtest
+	)
 "
