@@ -18,4 +18,5 @@ S="${WORKDIR}/${PN}"
 src_install() {
 	einstalldocs
 	dobin screenie
+	doman screenie.1
 }
