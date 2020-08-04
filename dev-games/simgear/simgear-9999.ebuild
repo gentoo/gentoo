@@ -6,7 +6,7 @@ EAPI=7
 inherit eutils cmake toolchain-funcs flag-o-matic git-r3
 
 DESCRIPTION="Development library for simulation games"
-HOMEPAGE="http://www.simgear.org/"
+HOMEPAGE="https://www.flightgear.org/"
 EGIT_REPO_URI="git://git.code.sf.net/p/flightgear/${PN}
 	git://mapserver.flightgear.org/${PN}"
 EGIT_BRANCH="next"
