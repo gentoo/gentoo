@@ -33,6 +33,21 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2020-08-04)
+# Dead upstream, unmaintained.
+# Open security bug. Large number of other bugs.
+# Removal in 30 days. bug #630884.
+# bug #520844, bug #665910, bug #626474,
+# bug #490322, bug #692436, bug #707274,
+# bug #713404.
+mail-filter/dspam
+
+# Sam James <sam@gentoo.org> (2020-08-04)
+# Unmaintained, vulnerable package.
+# Superseded by dev-python/slixmpp.
+# Removal in 30 days. bug #608838.
+dev-python/sleekxmpp
+
+# Sam James <sam@gentoo.org> (2020-08-04)
 # Unmaintained and now obsolete.
 # Not likely to work with newer rspam (>= 1.7)
 # Removal in 30 days. bug #630990
