@@ -523,6 +523,13 @@ dev-perl/Data-Diver
 ~virtual/perl-ExtUtils-CBuilder-0.280.234
 ~virtual/perl-ExtUtils-MakeMaker-7.440.0
 ~virtual/perl-Filter-Simple-0.960.0
+~virtual/perl-Getopt-Long-2.510.0
+~virtual/perl-I18N-LangTags-0.440.0
+~virtual/perl-IO-1.430.0
+~virtual/perl-IO-Compress-2.93.0
+~virtual/perl-IPC-Cmd-1.40.0
+~virtual/perl-JSON-PP-4.40.0
+~virtual/perl-Math-BigInt-1.999.818
 
 # Christoph Junghans <junghans@gentoo.org> (2020-07-14)
 # Unmaintained upstream and does not support systemd or firewalld.
