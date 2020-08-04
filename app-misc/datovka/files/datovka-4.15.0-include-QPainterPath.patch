@@ -1,0 +1,10 @@
+--- a/src/delegates/tag_item.cpp	2020-03-04 11:05:08.000000000 +0100
++++ b/src/delegates/tag_item.cpp	2020-06-08 14:52:06.000000000 +0200
+@@ -23,6 +23,7 @@
+ 
+ #include <algorithm> /* std::sort */
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ #include "src/datovka_shared/localisation/localisation.h"
+ #include "src/datovka_shared/log/log.h"
