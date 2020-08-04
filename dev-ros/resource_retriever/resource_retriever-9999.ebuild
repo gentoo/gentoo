@@ -23,5 +23,10 @@ DEPEND="${RDEPEND}
 
 src_test() {
 	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	if has network-sandbox ${FEATURES}; then
+		einfo "Skipping network tests due to network sandbox"
+		export GTEST_FILTER='-Retriever.http'
+		export NOSE_TESTMATCH='^(?!test_http).*'
+	fi
 	ros-catkin_src_test
 }
