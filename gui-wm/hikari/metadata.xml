@@ -20,5 +20,6 @@
         <flag name="layershell">add support for wayland apps using layer shell</flag>
         <flag name="screencopy">add support for screen grabbing</flag>
         <flag name="man">build and install man pages</flag>
+        <flag name="virtual-io">enable virtual input/output support, needed for remote I/O in VNC</flag>
     </use>
 </pkgmetadata>
