@@ -22,6 +22,8 @@ RDEPEND="
 	dev-python/certifi
 "
 
+RESTRICT="test"
+
 python_test() {
 	cd "${S}"/src || die
 	"${PYTHON}" test_typing.py || die "tests failed under ${EPYTHON}"
