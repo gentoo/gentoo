@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEFINED_PHASES=configure install prepare setup
+DEPEND=dev-libs/glib:2 caps? ( sys-libs/libcap-ng ) numa? ( sys-process/numactl ) tui? ( sys-libs/ncurses:0=[unicode] )
+DESCRIPTION=Distribute hardware interrupts across processors on a multiprocessor system
+EAPI=7
+HOMEPAGE=https://github.com/Irqbalance/irqbalance
+IUSE=caps +numa selinux tui kernel_linux
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 caps? ( sys-libs/libcap-ng ) numa? ( sys-process/numactl ) tui? ( sys-libs/ncurses:0=[unicode] ) selinux? ( sec-policy/selinux-irqbalance )
+SLOT=0
+SRC_URI=https://github.com/Irqbalance/irqbalance/archive/v1.7.0.tar.gz -> irqbalance-1.7.0.tar.gz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=c90fb643f2a02afde6cf72213b87909c

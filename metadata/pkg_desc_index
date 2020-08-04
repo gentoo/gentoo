@@ -7813,7 +7813,7 @@ dev-python/HeapDict 1.0.0: Heap with decrease-key and increase-key operations
 dev-python/MechanicalSoup 0.12.0: A python library for automating interaction with websites
 dev-python/PyContracts 1.8.14: Declare constraints on function parameters and return values
 dev-python/PyECLib 1.6.0: Messaging API for RPC and notifications over different messaging transports
-dev-python/PyGithub 1.51: Python library to access the Github API v3
+dev-python/PyGithub 1.51 1.52: Python library to access the Github API v3
 dev-python/PyICU 2.4.3 2.5: Python bindings for dev-libs/icu
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
 dev-python/PyQt5 5.14.2-r1 5.15.0-r1: Python bindings for the Qt framework
@@ -7924,8 +7924,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r2 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.13.26 1.14.20 1.14.23 1.14.27 1.14.28-r1 1.14.31 9999: The AWS SDK for Python
-dev-python/botocore 1.16.26 1.17.20 1.17.23 1.17.27 1.17.28-r1 1.17.31 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.13.26 1.14.20 1.14.23 1.14.27 1.14.28-r1 1.14.31 1.14.34 9999: The AWS SDK for Python
+dev-python/botocore 1.16.26 1.17.20 1.17.23 1.17.27 1.17.28-r1 1.17.31 1.17.34 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.18: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.2.1-r1 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.19: Syntax highlighting and autocompletion for the Python interpreter
@@ -7973,7 +7973,7 @@ dev-python/click-default-group 1.2.2: Extends click. Group to invoke a command w
 dev-python/click-log 0.3.2: Logging integration for Click.
 dev-python/click-plugins 1.0.3 1.1.1: Module for click to enable registering CLI commands via setuptools entry-points
 dev-python/click-threading 0.4.4: Multithreaded Click apps made easy.
-dev-python/cliff 3.3.0: Command Line Interface Formulation Framework
+dev-python/cliff 3.3.0 3.4.0: Command Line Interface Formulation Framework
 dev-python/clint 0.5.1-r1: Python Command-line Application Tools
 dev-python/cloudlib 0.5.0: Cloud middleware for in application use.
 dev-python/cloudpickle 1.4.1 1.5.0: Extended pickling support for Python objects
@@ -8047,7 +8047,7 @@ dev-python/distlib 0.3.1: Low-level components of distutils2/packaging
 dev-python/distributed 1.18.0-r1: Python library for distributed computation
 dev-python/distro 1.5.0: Reliable machine-readable Linux distribution information for Python
 dev-python/dj-database-url 0.5.0: Use Database URLs in your Django Application
-dev-python/django 2.2.13 2.2.14 2.2.15 3.0.7 3.0.8 3.0.9: High-level Python web framework
+dev-python/django 2.2.13 2.2.14 2.2.15 3.0.7 3.0.8 3.0.9 3.1: High-level Python web framework
 dev-python/django-auth-ldap 2.1.0: Django LDAP authentication backend
 dev-python/django-cacheops 4.2: ORM cache with automatic granular event-driven invalidation for Django
 dev-python/django-cors-headers 3.2.1: Django App that adds CORS (Cross-Origin Resource Sharing) headers to responses
@@ -8467,7 +8467,7 @@ dev-python/nose2 0.9.1-r1: Next generation unittest with plugins
 dev-python/nose_fixes 1.3: A plugin to make nose behave better
 dev-python/nose_warnings_filters 0.1.5-r3: A python module to inject warning filters during nosetest
 dev-python/nosexcover 1.0.11-r1: Extends nose.plugins.cover to add Cobertura-style XML reports
-dev-python/notebook 5.0.0 6.0.3 6.1.0: Jupyter Interactive Notebook
+dev-python/notebook 5.0.0 6.0.3 6.1.0 6.1.1: Jupyter Interactive Notebook
 dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
 dev-python/notify2 0.3.1-r1: Python interface to DBus notifications.
 dev-python/nototools 0_pre20200207: Noto fonts support tools and scripts plus web site generation
@@ -8577,7 +8577,7 @@ dev-python/pika 0.13.0: Pure-Python implementation of the AMQP
 dev-python/pikepdf 1.17.0: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 6.2.2 7.0.0 7.1.2 7.2.0: Python Imaging Library (fork)
-dev-python/pip 20.0.2 20.1.1 20.2: Installs python packages -- replacement for easy_install
+dev-python/pip 20.0.2 20.1.1 20.2 20.2.1: Installs python packages -- replacement for easy_install
 dev-python/pipenv 2020.6.2: Python Development Workflow for Humans
 dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requirements.txt file
 dev-python/pkgconfig 1.5.1: Interface Python with pkg-config
@@ -9170,7 +9170,7 @@ dev-python/toolz 0.9.0 0.10.0: List processing tools and functional utilities
 dev-python/tooz 1.60.1: Library centralizing the most common distributed primitives
 dev-python/towncrier 19.2.0: Building newsfiles for your project
 dev-python/tox 3.15.0 3.15.2 3.16.1 3.17.0 3.17.1 3.18.0 3.18.1: virtualenv-based automation of test activities
-dev-python/tqdm 4.47.0 4.48.0 4.48.1 9999: Add a progress meter to your loops in a second
+dev-python/tqdm 4.47.0 4.48.0 4.48.1 4.48.2 9999: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0: Backports of the traceback module
 dev-python/traitlets 4.3.2 4.3.3: A configuration system for Python applications
 dev-python/transitions 0.7.1-r1 0.8.1-r1 0.8.2: A lightweight, object-oriented state machine implementation in Python
@@ -9259,7 +9259,7 @@ dev-python/xarray 0.12.1 0.16.0: N-D labeled arrays and datasets in Python
 dev-python/xcffib 0.9.0 0.10.0 0.10.1: A drop in replacement for xpyb, an XCB python binding
 dev-python/xdoctest 0.11.0: A rewrite of Python's builtin doctest module but without all the weirdness
 dev-python/xlrd 1.2.0: Library to extract data from Microsoft Excel spreadsheets
-dev-python/xlsxwriter 1.2.8 1.2.9 1.3.0: Python module for creating Excel XLSX files
+dev-python/xlsxwriter 1.2.8 1.2.9 1.3.0 1.3.1: Python module for creating Excel XLSX files
 dev-python/xlutils 2.0.0-r1: provides a collection of utilities for working with Excel files
 dev-python/xlwt 1.3.0 1.3.0-r1: Python library to create spreadsheet files compatible with Excel
 dev-python/xmlschema 1.2.2: An XML Schema validator and decoder
@@ -11285,7 +11285,7 @@ games-emulation/mastergear-bin 4.5: SEGA Master System / Game Gear emulator
 games-emulation/mednafen 0.9.46: Argument-driven multi-system emulator utilizing OpenGL and SDL
 games-emulation/mednaffe 0.8.7: A front-end (GUI) for mednafen emulator
 games-emulation/mekanix 070-r1: SG-1000, SC-3000, SF-7000, SSC, SMS, GG, COLECO, and OMV emulator
-games-emulation/mgba 0.7.3 0.8.1 0.8.2 9999: Game Boy Advance emulator written in C
+games-emulation/mgba 0.7.3 0.8.2 0.8.3 9999: Game Boy Advance emulator written in C
 games-emulation/mupen64plus 2.5.9: A fork of Mupen64 Nintendo 64 emulator, meta-package
 games-emulation/mupen64plus-audio-sdl 2.5.9: A fork of Mupen64 Nintendo 64 emulator, SDL audio plugin
 games-emulation/mupen64plus-core 2.5.9-r2: A fork of Mupen64 Nintendo 64 emulator, core library
@@ -15377,7 +15377,7 @@ net-nntp/leafnode 1.11.11: A USENET software package designed for small sites
 net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
 net-nntp/nzbget 20.0 21.0_pre2302 21.0: A command-line based binary newsgrabber supporting .nzb files
 net-nntp/pan 0.145: A newsreader for GNOME
-net-nntp/sabnzbd 2.3.9-r1 3.0.0_rc1 3.0.0_rc2 3.0.0: Binary newsgrabber with web-interface
+net-nntp/sabnzbd 2.3.9-r1 3.0.0_rc1 3.0.0_rc2 3.0.0-r1: Binary newsgrabber with web-interface
 net-nntp/slrn 1.0.2 1.0.3: A s-lang based newsreader
 net-nntp/sn 0.3.8: Hassle-free Usenet news system for small sites
 net-nntp/suck 4.3.3-r1 4.3.4: Grab news from a remote NNTP server and feed them to another
@@ -16936,7 +16936,7 @@ sys-apps/ipmicfg 1.31.0.200205: An in-band utility for configuring Supermicro IP
 sys-apps/ipmitool 1.8.18-r1: Utility for controlling IPMI enabled devices.
 sys-apps/ipmiutil 3.0.6 3.0.9 3.1.5-r1 3.1.6: IPMI Management Utilities
 sys-apps/iproute2 5.2.0-r1 5.4.0 5.6.0 5.7.0 9999: kernel routing and traffic control utilities
-sys-apps/irqbalance 1.6.0-r1: Distribute hardware interrupts across processors on a multiprocessor system
+sys-apps/irqbalance 1.6.0-r1 1.7.0: Distribute hardware interrupts across processors on a multiprocessor system
 sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
 sys-apps/iucode_tool 2.3.1-r1: tool to manipulate Intel X86 and X86-64 processor microcode update collections
 sys-apps/kbd 2.0.4 2.0.4-r1 2.2.0-r2 2.3.0-r1 9999: Keyboard and console utilities
