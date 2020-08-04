@@ -3938,7 +3938,7 @@ dev-haskell/dbus-core 0.9.3-r3: Low-level D-Bus protocol implementation
 dev-haskell/dec 0.0.3: Decidable propositions
 dev-haskell/deepseq-generics 0.1.1.2 0.2.0.0: GHC.Generics-based Control.DeepSeq.rnf implementation
 dev-haskell/derive 2.5.26: A program and library to derive instances for data types
-dev-haskell/deriving-compat 0.3.5: Backports of GHC deriving extensions
+dev-haskell/deriving-compat 0.3.5 0.5.8: Backports of GHC deriving extensions
 dev-haskell/diff 0.3.0 0.3.2 0.3.4 0.4.0: O(ND) diff algorithm in haskell
 dev-haskell/digest 0.0.1.2: Various cryptographic hashes for bytestrings; CRC32 and Adler32 for now
 dev-haskell/disk-free-space 0.1.0.1: Retrieve information about disk space usage
@@ -4148,7 +4148,7 @@ dev-haskell/keys 3.10.2 3.11 3.12.3: Keyed functors and containers
 dev-haskell/language-bash 0.6.1 0.9.0: Parsing and pretty-printing Bash shell scripts
 dev-haskell/language-c 0.4.2 0.4.7 0.7.1 0.8.3: Analysis and generation of C code
 dev-haskell/language-css 0.0.3: CSS 2.1 syntax
-dev-haskell/language-dot 0.1.0: A library for the analysis and creation of Graphviz DOT files
+dev-haskell/language-dot 0.1.0 0.1.1: A library for the analysis and creation of Graphviz DOT files
 dev-haskell/language-ecmascript 0.17.1.0-r1 0.17.1.0-r2 0.19.1.0: JavaScript parser and pretty-printer library
 dev-haskell/language-glsl 0.2.0: GLSL abstract syntax tree, parser, and pretty-printer
 dev-haskell/language-haskell-extract 0.2.4: Module to automatically extract functions from the local code
