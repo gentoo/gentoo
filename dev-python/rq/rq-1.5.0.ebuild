@@ -19,6 +19,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 BDEPEND="
 	test? (
 		dev-db/redis
+		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/sentry-sdk[${PYTHON_USEDEP}]
 	)
 "
