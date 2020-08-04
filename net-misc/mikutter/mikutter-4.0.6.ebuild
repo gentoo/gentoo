@@ -1,11 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-USE_RUBY="ruby24 ruby25"
+USE_RUBY="ruby25 ruby26"
 
-inherit eutils ruby-ng
+inherit eutils desktop ruby-ng
 
 PLUGIN_HASH="30071c3008e4616e723cf4e734fc79254019af09"
 
@@ -17,17 +17,15 @@ if [ "${PV}" = "9999" ]; then
 	KEYWORDS=""
 	EGIT_CHECKOUT_DIR="${WORKDIR}/all"
 else
-	MY_P="${PN}.${PV}"
-	SRC_URI="https://mikutter.hachune.net/bin/${MY_P}.tar.gz
+	SRC_URI="http://mikutter.hachune.net/bin/${P}.tar.gz
 		https://raw.githubusercontent.com/toshia/twitter_api_keys/${PLUGIN_HASH}/twitter_api_keys.rb"
 	KEYWORDS="~amd64"
-	RUBY_S="${PN}"
 fi
 
 DESCRIPTION="Simple, powerful and moeful twitter client"
 HOMEPAGE="https://mikutter.hachune.net/"
 
-LICENSE="GPL-3"
+LICENSE="MIT"
 SLOT="0"
 IUSE="+libnotify"
 
@@ -36,25 +34,26 @@ RDEPEND="
 	libnotify? ( x11-libs/libnotify )
 	media-sound/alsa-utils"
 
-ruby_add_rdepend "<dev-ruby/addressable-2.6
-	dev-ruby/delayer
-	>=dev-ruby/delayer-deferred-2.0
-	>=dev-ruby/diva-0.3.2
+ruby_add_rdepend "=dev-ruby/addressable-2.7*
+	=dev-ruby/delayer-1.1*:1
+	=dev-ruby/delayer-deferred-2.1*
+	!<dev-ruby/delayer-deferred-2.1.3
+	=dev-ruby/diva-1.0*
+	!<dev-ruby/diva-1.0.2
 	dev-ruby/httpclient
-	dev-ruby/json:0
-	dev-ruby/instance_storage
-	dev-ruby/memoist
+	dev-ruby/json:2
+	=dev-ruby/memoist-0.16*
+	!<dev-ruby/memoist-0.16.2
 	dev-ruby/moneta
 	dev-ruby/nokogiri
-	>=dev-ruby/oauth-0.5.1
-	>=dev-ruby/pluggaloid-1.1.1
+	>=dev-ruby/oauth-0.5.4
+	=dev-ruby/pluggaloid-1.2*
 	dev-ruby/rcairo
-	>=dev-ruby/ruby-gettext-3.2.9
-	>=dev-ruby/ruby-gtk2-3.3.0
-	>dev-ruby/ruby-hmac-0.4
-	dev-ruby/totoridipjp
-	dev-ruby/twitter-text:=
-	>dev-ruby/typed-array-0.1
+	=dev-ruby/ruby-gettext-3.3*
+	!<dev-ruby/ruby-gettext-3.3.5
+	=dev-ruby/ruby-gtk2-3.4*
+	=dev-ruby/typed-array-0.1*
+	!<dev-ruby/typed-array-0.1.2
 	virtual/ruby-ssl"
 
 all_ruby_unpack() {
@@ -68,10 +67,10 @@ all_ruby_unpack() {
 all_ruby_install() {
 	local rubyversion
 
-	if use ruby_targets_ruby25; then
+	if use ruby_targets_ruby26; then
+		rubyversion=ruby26
+	elif use ruby_targets_ruby25; then
 		rubyversion=ruby25
-	elif use ruby_targets_ruby24; then
-		rubyversion=ruby24
 	fi
 
 	exeinto /usr/share/mikutter
