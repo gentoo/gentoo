@@ -89,6 +89,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.3.0-curl.patch" # bug 659840
 	"${FILESDIR}/${PN}-3.0.2-complete.patch"
 	"${FILESDIR}/${PN}-3.0.2-datadir.patch"
+	"${FILESDIR}/${P}-poppler-20.08.patch" # bug 735828
 )
 
 src_prepare() {
