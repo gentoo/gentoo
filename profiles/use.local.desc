@@ -1768,6 +1768,7 @@ dev-haskell/vector-algorithms:boundschecks - Enable bounds checking.
 dev-haskell/vector-algorithms:internalchecks - Enable internal consistency checks at the cost of a significant performance penalty.
 dev-haskell/vector-algorithms:properties - Enable quickcheck tests.
 dev-haskell/vector-algorithms:unsafechecks - Enable bounds checking in unsafe operations at the cost of a significant performance penalty.
+dev-haskell/vector-instances:hashable - use dev-haskell/hashable
 dev-haskell/void:safe - dissable effective but unsafe coersions
 dev-haskell/wai-app-static:print - print debug info.
 dev-haskell/warp:allow-sendfilefd - Allow use of sendfileFd (not available on GNU/kFreeBSD).

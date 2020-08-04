@@ -3852,7 +3852,7 @@ dev-haskell/cassava 0.4.4.0 0.4.5.0: A CSV parsing and encoding library
 dev-haskell/cereal 0.3.5.2 0.4.0.1 0.4.1.1 0.5.8.1: A binary serialization library
 dev-haskell/cereal-vector 0.2.0.1: Serialize instances for Data.Vector types
 dev-haskell/certificate 1.3.9: Certificates and Key Reader/Writer
-dev-haskell/cgi 3001.1.8.3 3001.1.8.4 3001.1.8.4-r1 3001.2.2.2: A library for writing CGI programs
+dev-haskell/cgi 3001.1.8.3 3001.1.8.4 3001.1.8.4-r1 3001.2.2.2 3001.5.0.0: A library for writing CGI programs
 dev-haskell/charset 0.3.7.1-r1: Fast unicode character sets based on complemented PATRICIA tries
 dev-haskell/chaselev-deque 0.4 0.5.0.5: Chase & Lev work-stealing lock-free double-ended queues (deques)
 dev-haskell/chasingbottoms 1.3.0.11-r1 1.3.0.13 1.3.0.14 1.3.1.2 1.3.1.9: For testing partial and infinite values
@@ -3992,7 +3992,7 @@ dev-haskell/file-location 0.4.9 0.4.9-r1 0.4.9.1: common functions that show fil
 dev-haskell/filelock 0.1.0.1 0.1.1.3 0.1.1.4: Portable interface to file locking (flock / LockFileEx)
 dev-haskell/filemanip 0.3.6.3: Expressive file and directory manipulation for Haskell
 dev-haskell/filepath-bytestring 1.4.2.1.6: Library for manipulating RawFilePaths in a cross platform way
-dev-haskell/filestore 0.6.1 0.6.2 0.6.3.4: Interface for versioning file stores
+dev-haskell/filestore 0.6.1 0.6.2 0.6.3.4 0.6.4: Interface for versioning file stores
 dev-haskell/findbin 0.0.5-r1: Locate directory of original program
 dev-haskell/fingertree 0.1.1.0 0.1.4.2: Generic finger-tree structure, with example instances
 dev-haskell/fixed 0.2.1.1: Signed 15.16 precision fixed point arithmetic
@@ -4148,7 +4148,7 @@ dev-haskell/language-bash 0.6.1 0.9.0: Parsing and pretty-printing Bash shell sc
 dev-haskell/language-c 0.4.2 0.4.7 0.7.1 0.8.3: Analysis and generation of C code
 dev-haskell/language-css 0.0.3: CSS 2.1 syntax
 dev-haskell/language-dot 0.1.0: A library for the analysis and creation of Graphviz DOT files
-dev-haskell/language-ecmascript 0.17.1.0-r1 0.17.1.0-r2: JavaScript parser and pretty-printer library
+dev-haskell/language-ecmascript 0.17.1.0-r1 0.17.1.0-r2 0.19.1.0: JavaScript parser and pretty-printer library
 dev-haskell/language-glsl 0.2.0: GLSL abstract syntax tree, parser, and pretty-printer
 dev-haskell/language-haskell-extract 0.2.4: Module to automatically extract functions from the local code
 dev-haskell/language-javascript 0.5.14.2 0.6.0.9 0.6.0.14: Parser for JavaScript
@@ -4200,7 +4200,7 @@ dev-haskell/mmap 0.5.8 0.5.9: Memory mapped files for POSIX and Windows
 dev-haskell/mmorph 1.0.0 1.0.5 1.0.6 1.0.9 1.1.3: Monad morphisms
 dev-haskell/mockery 0.3.2 0.3.3 0.3.5: Support functions for automated testing
 dev-haskell/monad-control 0.3.2.2 0.3.3.0 1.0.0.4 1.0.1.0 1.0.2.3: Lift control operations, like exception catching, through monad transformers
-dev-haskell/monad-journal 0.7.1 0.7.2: Pure logger typeclass and monad transformer
+dev-haskell/monad-journal 0.7.1 0.7.2 0.8.1: Pure logger typeclass and monad transformer
 dev-haskell/monad-logger 0.3.17 0.3.18 0.3.20.1 0.3.32: A class of monads which can log messages
 dev-haskell/monad-loops 0.4.3: Monadic loops
 dev-haskell/monad-par 0.3.4.7 0.3.4.8 0.3.5: A library for parallel programming based on a monad
@@ -4210,7 +4210,7 @@ dev-haskell/monadcatchio-mtl 0.3.1.0-r1: Monad-transformer version of the Contro
 dev-haskell/monadcatchio-transformers 0.3.1.3 0.3.1.3-r1: Monad-transformer compatible version of the Control.Exception module
 dev-haskell/monadlib 3.10: A collection of monad transformers
 dev-haskell/monadplus 1.4.2 1.4.2-r1: Haskell98 partial maps and filters over MonadPlus
-dev-haskell/monadrandom 0.1.13 0.3.0.2 0.4.2.1 0.4.2.3: Random-number generation monad
+dev-haskell/monadrandom 0.1.13 0.3.0.2 0.4.2.1 0.4.2.3 0.5.1.2: Random-number generation monad
 dev-haskell/monads-tf 0.1.0.2 0.1.0.2-r1 0.1.0.3: Monad classes, using type families
 dev-haskell/mono-traversable 0.1.0.0 0.4.0.1 0.6.3 0.7.0 0.9.2.1 0.10.0.1 0.10.2 1.0.1.1 1.0.15.1: Type classes for mapping, folding, and traversing monomorphic containers
 dev-haskell/mono-traversable-instances 0.1.0.0: Extra typeclass instances for mono-traversable
@@ -4275,7 +4275,7 @@ dev-haskell/persistent-template 2.1.3.4 2.5.1.6-r2 2.8.2.3: Type-safe, non-relat
 dev-haskell/persistent-test 2.0.3.0: Tests for Persistent
 dev-haskell/pgp-wordlist 0.1.0.2 0.1.0.3: Translate between binary data and a human-readable collection of words
 dev-haskell/pid1 0.1.0.1 0.1.2.0: Do signal handling and orphan reaping for Unix PID1 init processes
-dev-haskell/pipes 4.1.7 4.1.9: Compositional pipelines
+dev-haskell/pipes 4.1.7 4.1.9 4.3.14: Compositional pipelines
 dev-haskell/pointed 4.0 4.1.1 4.2.0.2 5-r1 5.0.1-r1: Pointed and copointed data
 dev-haskell/polyparse 1.9 1.11 1.13: A variety of alternative parser combinator libraries
 dev-haskell/pqueue 1.3.2: Reliable, persistent, fast priority queues
@@ -4401,7 +4401,7 @@ dev-haskell/tagstream-conduit 0.5.5.3: streamlined html tag parser
 dev-haskell/tar 0.4.0.1 0.4.2.1 0.5.0.3 0.5.1.0 0.5.1.1: Reading, writing and manipulating tar files
 dev-haskell/tar-conduit 0.3.2-r1: Extract and create tar files using conduit for streaming
 dev-haskell/tasty 0.3.1 0.5.2 0.8.1.2 0.10.1.2 0.11.0.4 1.2.3: Modern and extensible testing framework
-dev-haskell/tasty-ant-xml 1.0.1 1.0.2: Render tasty output to XML for Jenkins
+dev-haskell/tasty-ant-xml 1.0.1 1.0.2 1.1.6: Render tasty output to XML for Jenkins
 dev-haskell/tasty-expected-failure 0.11.1.2: Mark tasty tests as failure expected
 dev-haskell/tasty-golden 2.2.2.4 2.3.1 2.3.1.1: Golden tests support for tasty
 dev-haskell/tasty-hedgehog 1.0.0.2: Integration for tasty and hedgehog
@@ -4489,7 +4489,7 @@ dev-haskell/vector 0.10.12.3 0.11.0.0 0.12.1.2: Efficient Arrays
 dev-haskell/vector-algorithms 0.6.0.4 0.7.0.1 0.8.0.3: Efficient algorithms for vector arrays
 dev-haskell/vector-binary-instances 0.2.1.0 0.2.3.2: Instances of Data.Binary and Data.Serialize for vector
 dev-haskell/vector-builder 0.3.8: Vector builder
-dev-haskell/vector-instances 3.3.1: Orphan Instances for 'Data.Vector'
+dev-haskell/vector-instances 3.3.1 3.4: Orphan Instances for 'Data.Vector'
 dev-haskell/vector-space 0.10.4: Vector & affine spaces, linear maps, and derivatives
 dev-haskell/vector-th-unbox 0.2.1.3 0.2.1.6 0.2.1.7: Deriver for Data.Vector.Unboxed using Template Haskell
 dev-haskell/void 0.6.1 0.7.1 0.7.3: A Haskell 98 logically uninhabited data type
