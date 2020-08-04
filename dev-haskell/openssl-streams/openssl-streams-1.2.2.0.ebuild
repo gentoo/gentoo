@@ -17,6 +17,8 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+RESTRICT=test # requires network access
+
 RDEPEND=">=dev-haskell/hsopenssl-0.10.3:=[profile?] <dev-haskell/hsopenssl-0.12:=[profile?]
 	>=dev-haskell/io-streams-1.0:=[profile?] <dev-haskell/io-streams-1.6:=[profile?]
 	>=dev-haskell/network-2.4:=[profile?] <dev-haskell/network-3.1:=[profile?]
