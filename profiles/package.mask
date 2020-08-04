@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2020-08-04)
+# Unmaintained and now obsolete.
+# Not likely to work with newer rspam (>= 1.7)
+# Removal in 30 days. bug #630990
+mail-filter/rmilter
+
+# Sam James <sam@gentoo.org> (2020-08-04)
 # Unmaintained and out of date in Gentoo.
 # Has outstanding security issue.
 # Removal in 30 days. bug #710728, bug #588606
