@@ -20,4 +20,11 @@ DEPEND="
 	dev-ros/tf[${PYTHON_SINGLE_USEDEP}]
 "
 RDEPEND="${DEPEND}
+	$(python_gen_cond_dep "dev-python/psutil[\${PYTHON_USEDEP}]")
 	app-admin/hddtemp"
+DEPEND="${DEPEND}
+	test? (
+		$(python_gen_cond_dep "dev-python/psutil[\${PYTHON_USEDEP}]")
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+	)
+"
