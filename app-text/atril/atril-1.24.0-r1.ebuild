@@ -75,6 +75,7 @@ src_configure() {
 	# Passing --disable-help would drop offline help, that would be inconsistent
 	# with helps of the most of GNOME apps that doesn't require network for that.
 	mate_src_configure \
+		--disable-static \
 		--disable-tests \
 		--enable-comics \
 		--enable-pdf \
