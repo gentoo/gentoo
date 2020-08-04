@@ -23,4 +23,3 @@ RDEPEND="
 
 # No tests for now
 # Need unpackaged: executing, fakeredis
-RESTRICT="test"
