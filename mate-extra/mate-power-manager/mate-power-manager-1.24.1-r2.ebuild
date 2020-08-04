@@ -13,9 +13,9 @@ DESCRIPTION="A session daemon for MATE that makes it easy to manage your laptop 
 
 LICENSE="FDL-1.1+ GPL-2+ LGPL-2+"
 SLOT="0"
-IUSE="+applet elogind policykit systemd test"
+IUSE="+applet elogind libsecret policykit systemd test"
 
-REQUIRED_USE="?? ( elogind systemd )"
+REQUIRED_USE="^^ ( elogind systemd )"
 
 # Interactive testsuite.
 RESTRICT="test"
@@ -25,6 +25,7 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.50:2
 	>=media-libs/libcanberra-0.10:0[gtk3]
 	>=sys-apps/dbus-1
+	>=sys-power/upower-0.99.8:=
 	>=x11-apps/xrandr-1.3
 	>=x11-libs/cairo-1
 	>=x11-libs/gdk-pixbuf-2.11:2
@@ -35,15 +36,15 @@ COMMON_DEPEND="
 	>=x11-libs/libnotify-0.7:0
 	x11-libs/pango
 	applet? ( >=mate-base/mate-panel-1.17.0 )
-	>=sys-power/upower-0.99.8:="
+	libsecret? ( >=app-crypt/libsecret-0.11 )
+"
 
 RDEPEND="${COMMON_DEPEND}
 	virtual/libintl
 	policykit? ( >=mate-extra/mate-polkit-1.6 )
 	systemd? ( sys-apps/systemd )
-	!systemd? (
-		elogind? ( sys-auth/elogind )
-	)"
+	elogind? ( sys-auth/elogind )
+"
 
 DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.3
@@ -54,12 +55,15 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8:*
 	virtual/pkgconfig
-	x11-base/xorg-proto"
+	x11-base/xorg-proto
+"
+
+PATCHES=( "${FILESDIR}/${P}-libsecret.patch" )
 
 src_configure() {
 	mate_src_configure \
-		--without-keyring \
 		--enable-compile-warnings=minimum \
+		$(use_with libsecret) \
 		$(use_enable applet applets) \
 		$(use_enable test tests)
 }
