@@ -43,7 +43,7 @@ mail-filter/dspam
 www-apps/dspam-web
 
 # Sam James <sam@gentoo.org> (2020-08-04)
-# Unmaintained and now obsolete.
+# Dead upstream and now obsolete.
 # Not likely to work with newer rspam (>= 1.7)
 # Removal in 30 days. bug #630990
 mail-filter/rmilter
