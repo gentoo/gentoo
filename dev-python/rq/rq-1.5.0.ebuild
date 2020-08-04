@@ -17,7 +17,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 BDEPEND="
-	test? ( dev-python/sentry-sdk[${PYTHON_USEDEP}] )
+	test? (
+		dev-db/redis
+		dev-python/sentry-sdk[${PYTHON_USEDEP}]
+	)
 "
 DEPEND="
 	>=dev-python/click-5.0[${PYTHON_USEDEP}]
