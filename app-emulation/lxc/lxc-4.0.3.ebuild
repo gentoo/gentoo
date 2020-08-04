@@ -37,6 +37,7 @@ PDEPEND="templates? ( app-emulation/lxc-templates )"
 CONFIG_CHECK="~CGROUPS ~CGROUP_DEVICE
 	~CPUSETS ~CGROUP_CPUACCT
 	~CGROUP_SCHED
+	~MEMCG
 
 	~NAMESPACES
 	~IPC_NS ~USER_NS ~PID_NS
@@ -55,6 +56,7 @@ ERROR_VETH="CONFIG_VETH:  needed for internal (host-to-container) networking"
 ERROR_MACVLAN="CONFIG_MACVLAN:  needed for internal (inter-container) networking"
 ERROR_POSIX_MQUEUE="CONFIG_POSIX_MQUEUE:  needed for lxc-execute command"
 ERROR_NETPRIO_CGROUP="CONFIG_NETPRIO_CGROUP:  as of kernel 3.3 and lxc 0.8.0_rc1 this causes LXCs to fail booting."
+ERROR_MEMCG="CONFIG_MEMCG is not set. This is needed for memory resource control in containers."
 
 DOCS=( AUTHORS CONTRIBUTING MAINTAINERS NEWS README doc/FAQ.txt )
 
