@@ -40,6 +40,7 @@ image_path() {
 		"bzImage" \
 		"vmlinux" \
 		"vmlinuz" \
+		"kernel" \
 		"bzImage-${kver}" \
 		"vmlinux-${kver}" \
 		"vmlinuz-${kver}" \
@@ -67,6 +68,7 @@ initrd_path() {
 	local gkarch="$(get_genkernel_arch $karch)"
 	for x in \
 		"initrd" \
+		"initramfs" \
 		"initrd.img-${kver}" \
 		"initrd-${kver}.img" \
 		"initrd-${kver}" \
