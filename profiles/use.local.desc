@@ -2136,7 +2136,6 @@ dev-libs/efl:dds - Enable DDS image loader
 dev-libs/efl:drm - Enable DRM engine
 dev-libs/efl:eet - Enable Eet image loader
 dev-libs/efl:fribidi - Enable bidirectional text support
-dev-libs/efl:gles2 - Enable the OpenGL ES GL implementation
 dev-libs/efl:glib - Enable dev-libs/glib support
 dev-libs/efl:harfbuzz - Enable complex text shaping and layout support
 dev-libs/efl:hyphen - Enable text hyphenation support
@@ -2154,7 +2153,6 @@ dev-libs/efl:tga - Enable Tga image loader
 dev-libs/efl:tgv - Enable Tgv image loader
 dev-libs/efl:tslib - Enable x11-libs/tslib for touchscreen events
 dev-libs/efl:unwind - Enable debug support via sys-libs/libunwind
-dev-libs/efl:vlc - Enable media-video/vlc support
 dev-libs/efl:xcf - Enable XCF image loader
 dev-libs/efl:xim - Enable X Input Method
 dev-libs/efl:xpresent - Enable x11-libs/libXpresent support

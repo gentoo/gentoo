@@ -1927,7 +1927,7 @@ app-emulation/libspectrum 1.4.4: Spectrum emulation library
 app-emulation/libvirt 6.2.0-r2 6.5.0 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
-app-emulation/lxc 4.0.2-r2 4.0.3: LinuX Containers userspace utilities
+app-emulation/lxc 4.0.3: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.4: Old style template scripts for LXC
 app-emulation/lxd 4.0.1 4.0.2-r1: Fast, dense and secure container management
 app-emulation/nemu 2.2.1 9999: ncurses interface for QEMU
@@ -5257,7 +5257,7 @@ dev-libs/double-conversion 3.1.5: Binary-decimal and decimal-binary conversion r
 dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/editline 1.17.1: line editing library for UNIX call compatible with the FSF readline
 dev-libs/eekboard 1.0.8_p20121001: An easy to use virtual keyboard toolkit
-dev-libs/efl 1.23.3 1.24.3: Enlightenment Foundation Libraries all-in-one package
+dev-libs/efl 1.24.3: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfutils 0.177 0.180: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.28 0.31 0.32 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
@@ -8842,7 +8842,7 @@ dev-python/python-distutils-extra 2.44-r1 2.45: Gettext support, themed icons an
 dev-python/python-docs 2.7.17 2.7.18 3.6.10 3.6.11 3.7.7 3.7.8 3.8.2 3.8.3: HTML documentation for Python
 dev-python/python-dotenv 0.13.0 0.14.0: Manage .env files
 dev-python/python-editor 1.0.4: Programmatically open an editor, capture the result.
-dev-python/python-efl 1.23.0 1.24.0: Python bindings for Enlightenment Foundation Libraries
+dev-python/python-efl 1.24.0: Python bindings for Enlightenment Foundation Libraries
 dev-python/python-email-validator 1.1.1: A robust email syntax and deliverability validation library
 dev-python/python-engineio 3.12.1: Python implementation of the Engine.IO realtime server.
 dev-python/python-etcd 0.4.5-r1: A python client for etcd
@@ -14190,7 +14190,7 @@ media-video/x264-encoder 0.0.20190214 0.0.20190903 9999: A free commandline enco
 media-video/xine-ui 0.99.10: Xine movie player
 media-video/xvattr 1.3-r3: X11 XVideo Querying/Setting Tool from Ogle project
 media-video/xvid4conf 1.12: GTK2-configuration dialog for xvid4
-media-video/yle-dl 20200419 20200628: Download media files from Yle Areena
+media-video/yle-dl 20200628: Download media files from Yle Areena
 net-analyzer/2ping 4.4.1 4.5: A bi-directional ping utility
 net-analyzer/alive 2.0.2-r1: a periodic ping program
 net-analyzer/amap 5.4 5.4-r1: A network scanning tool for pentesters
@@ -15434,7 +15434,7 @@ net-print/c2esp 26 27: A CUPS filter for Kodak ESP printers
 net-print/cndrvcups-common-lb 3.60-r1 3.70: Common files for Canon drivers
 net-print/cndrvcups-lb 3.60-r2 3.70: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cnijfilter2 5.20 5.40 5.50 5.70 5.80: IJ Printer Driver
-net-print/cnrdrvcups-lb 5.10 5.10-r1: Canon UFR II / LIPSLX Printer Driver for Linux
+net-print/cnrdrvcups-lb 5.10-r1: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.3.3-r1 9999: The Common Unix Printing System
 net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
 net-print/cups-filters 1.27.4 1.27.5 9999: Cups filters
@@ -17528,7 +17528,7 @@ sys-fs/lsscsi 0.31: SCSI sysfs query tool
 sys-fs/lufis 0.3 0.3-r1: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r4: User-mode filesystem implementation
 sys-fs/lvm2 2.02.187-r2 2.03.09: User-land utilities for LVM2 (device-mapper) software
-sys-fs/lxcfs 4.0.3 4.0.4-r2: FUSE filesystem for LXC
+sys-fs/lxcfs 4.0.3 4.0.4-r2 4.0.5: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1_p18: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
 sys-fs/mergerfs 2.28.3-r1 2.29.0: A featureful union filesystem
@@ -17601,7 +17601,7 @@ sys-kernel/linux-docs 4.19.114 5.4.39: Developer documentation generated from th
 sys-kernel/linux-firmware 20200316 20200421 20200519 20200619 20200721 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.14-r1 4.19 5.4 5.4-r1 5.5 5.6 5.7 5.8: Linux system headers
 sys-kernel/mips-sources 4.4.230 4.9.230 4.14.188 4.18.20 4.19.133 4.20.17: Kernel.org sources for MIPS-based machines
-sys-kernel/pf-sources 5.6_p8 5.7_p1 5.7_p2 5.7_p3 5.7_p4 5.7_p5: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
+sys-kernel/pf-sources 5.6_p8 5.7_p1 5.7_p2 5.7_p3 5.7_p4 5.7_p5 5.7_p7: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p20190925 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.220_p197 4.4.225_p198 4.9.224_p144 4.9.227_p146 4.14.170_p75 4.14.184_p84 4.19.124_p53 4.19.127_p54 5.4.40_p24 5.4.44_p27 5.6.14_p7 5.6.17_p10: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
@@ -17882,19 +17882,19 @@ virtual/perl-File-Path 2.160.0-r1: Virtual for File-Path
 virtual/perl-File-Spec 3.780.0-r1: Virtual for File-Spec
 virtual/perl-File-Temp 0.230.900: Virtual for File-Temp
 virtual/perl-Filter-Simple 0.950.0-r2 0.960.0: Virtual for perl-core/Filter-Simple
-virtual/perl-Getopt-Long 2.500.0-r2: Virtual for Getopt-Long
-virtual/perl-HTTP-Tiny 0.76.0: Virtual for HTTP-Tiny
-virtual/perl-I18N-LangTags 0.430.0-r2: Virtual for I18N-LangTags
-virtual/perl-IO 1.400.0: Virtual for IO
-virtual/perl-IO-Compress 2.84.0: Virtual for IO-Compress
-virtual/perl-IO-Socket-IP 0.390.0-r2: Virtual for IO-Socket-IP
-virtual/perl-IO-Zlib 1.100.0-r13: Virtual for IO-Zlib
-virtual/perl-IPC-Cmd 1.20.0: Virtual for IPC-Cmd
-virtual/perl-JSON-PP 4.20.0: Virtual for JSON-PP
-virtual/perl-Locale-Maketext 1.290.0-r2: Virtual for Locale-Maketext
-virtual/perl-Locale-Maketext-Simple 0.210.100_rc-r9: Virtual for Locale-Maketext-Simple
+virtual/perl-Getopt-Long 2.500.0-r2 2.510.0: Virtual for Getopt-Long
+virtual/perl-HTTP-Tiny 0.76.0-r1: Virtual for HTTP-Tiny
+virtual/perl-I18N-LangTags 0.430.0-r2 0.440.0: Virtual for I18N-LangTags
+virtual/perl-IO 1.400.0 1.430.0: Virtual for IO
+virtual/perl-IO-Compress 2.84.0 2.93.0: Virtual for IO-Compress
+virtual/perl-IO-Socket-IP 0.390.0-r3: Virtual for IO-Socket-IP
+virtual/perl-IO-Zlib 1.100.0-r14: Virtual for IO-Zlib
+virtual/perl-IPC-Cmd 1.20.0 1.40.0: Virtual for IPC-Cmd
+virtual/perl-JSON-PP 4.20.0 4.40.0: Virtual for JSON-PP
+virtual/perl-Locale-Maketext 1.290.0-r3: Virtual for Locale-Maketext
+virtual/perl-Locale-Maketext-Simple 0.210.100_rc-r10: Virtual for Locale-Maketext-Simple
 virtual/perl-MIME-Base64 3.150.0-r6: Virtual for MIME-Base64
-virtual/perl-Math-BigInt 1.999.816: Virtual for Math-BigInt
+virtual/perl-Math-BigInt 1.999.816 1.999.818: Virtual for Math-BigInt
 virtual/perl-Math-BigInt-FastCalc 0.500.800: Virtual for Math-BigInt-FastCalc
 virtual/perl-Math-BigRat 0.261.400: Virtual for Math-BigRat
 virtual/perl-Math-Complex 1.590.100-r3: Virtual for Math-Complex
@@ -17935,8 +17935,8 @@ virtual/perl-Unicode-Normalize 1.260.0-r2: Virtual for Unicode-Normalize
 virtual/perl-XSLoader 0.300.0-r2: Virtual for XSLoader
 virtual/perl-autodie 2.290.0-r5 2.320.0: Virtual for autodie
 virtual/perl-bignum 0.510.0-r1: Virtual for bignum
-virtual/perl-if 0.60.800-r2: Virtual for if
-virtual/perl-libnet 3.110.0-r2: Virtual for libnet
+virtual/perl-if 0.60.800-r3: Virtual for if
+virtual/perl-libnet 3.110.0-r3: Virtual for libnet
 virtual/perl-parent 0.237.0: Virtual for parent
 virtual/perl-podlators 4.110.0: Virtual for podlators
 virtual/perl-threads 2.220.0-r2: Virtual for threads
@@ -18892,7 +18892,7 @@ x11-terms/rxvt-unicode 9.22-r1 9.22-r3 9999: rxvt clone with xft and unicode sup
 x11-terms/sakura 3.7.0 3.7.1: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.8.4 9999: simple terminal implementation for X
 x11-terms/terminator 1.92-r1: Multiple GNOME terminals in one window
-x11-terms/terminology 1.7.0-r1: Feature rich terminal emulator using the Enlightenment Foundation Libraries
+x11-terms/terminology 1.7.0-r1 1.8.0: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/tilda 1.4.1 1.5.0 1.5.2: A drop down terminal, similar to the consoles found in first person shooters
 x11-terms/xfce4-terminal 0.8.9.2: A terminal emulator for the Xfce desktop environment
 x11-terms/xterm 337 351 353 357: Terminal Emulator for X Windows
@@ -19041,7 +19041,7 @@ x11-wm/cwm 6.6 6.7 9999: OpenBSD fork of calmwm, a clean and lightweight window 
 x11-wm/dwm 6.2 9999: a dynamic window manager for X11
 x11-wm/e16 1.0.20 1.0.21: Enlightenment Window Manager (E16)
 x11-wm/echinus 0.4.9: A window manager for X in the spirit of dwm
-x11-wm/enlightenment 0.23.1-r1 0.24.1: Enlightenment window manager
+x11-wm/enlightenment 0.24.1 0.24.2: Enlightenment window manager
 x11-wm/evilwm 1.0.1-r1 1.1.1: A minimalist, no frills window manager for X
 x11-wm/fluxbox 1.3.7-r4: X11 window manager featuring tabs and an iconbar
 x11-wm/fvwm 2.6.5-r3 2.6.8-r2 2.6.9: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
