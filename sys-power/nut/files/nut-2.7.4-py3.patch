@@ -1,0 +1,56 @@
+From eea0c5e9e5566c36a8b1e364ed4909231901a8f5 Mon Sep 17 00:00:00 2001
+From: Florian Bruhin <git@the-compiler.org>
+Date: Tue, 29 Nov 2016 10:45:04 +0100
+Subject: [PATCH 1/2] Make gen-nutupsconf-aug.py work with Python 3
+
+This makes the script work with Python 2.6+.
+Fixes #345.
+---
+ scripts/augeas/gen-nutupsconf-aug.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/scripts/augeas/gen-nutupsconf-aug.py b/scripts/augeas/gen-nutupsconf-aug.py
+index 55db17a73..4bb201602 100755
+--- a/scripts/augeas/gen-nutupsconf-aug.py
++++ b/scripts/augeas/gen-nutupsconf-aug.py
+@@ -18,6 +18,8 @@
+ # This program extracts all drivers specific variables, declared
+ # using 'addvar()' and output a complete ups.conf lens for Augeas
+ 
++from __future__ import print_function
++
+ import sys
+ import re
+ import glob
+@@ -69,7 +71,7 @@ def grep(string,list):
+ 
+ 	if (len(sys.argv) == 2):
+ 		dirPrefix = sys.argv[1]
+-		print dirPrefix
++		print(dirPrefix)
+ 
+ 	# 1/ Extract all specific drivers parameters, in a sorted list with unique entries
+ 	# 1.1/ List all drivers implementation files
+
+From 7bf209a5deef1ec1f05cf89c25c8399590d4e4e8 Mon Sep 17 00:00:00 2001
+From: Florian Bruhin <git@the-compiler.org>
+Date: Tue, 29 Nov 2016 17:37:01 +0100
+Subject: [PATCH 2/2] Fix gitlog2changelog.py on python 3
+
+---
+ tools/gitlog2changelog.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/gitlog2changelog.py b/tools/gitlog2changelog.py
+index d8c089187..f0bea4af6 100755
+--- a/tools/gitlog2changelog.py
++++ b/tools/gitlog2changelog.py
+@@ -80,7 +80,7 @@
+             else:
+                 message = message + " " + line.strip()
+     # If this line is hit all of the files have been stored for this commit
+-    elif re.search('files? changed', line) >= 0:
++    elif re.search('files? changed', line):
+         filesFound = True
+         continue
+     # Collect the files for this commit. FIXME: Still need to add +/- to files
