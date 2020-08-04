@@ -7,4 +7,4 @@ LICENSE=GPL-2+
 RDEPEND=app-misc/screen
 SLOT=0
 SRC_URI=http://downloads.sourceforge.net/project/screenie/screenie-20120406.tar.gz
-_md5_=1e43731b772a1618cb7d98e1db0b637f
+_md5_=e9558f5f77f948928f52512ec1bdab22
