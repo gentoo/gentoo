@@ -119,12 +119,22 @@ load_image() {
 		fi
 	fi
 
+	local is_rootpart_autodetected=no
 	if [ -z "${ROOTPART}" ]; then
 		ROOTPART="$(readlink -f "$(sed -n '/^\/[^ ]* \/ / s,^\([^ ]*\).*,\1,p' /proc/mounts)")"
+		is_rootpart_autodetected=yes
 	fi
 
+	local is_reusing_cmdline=no
 	if [ -z "${KPARAM}" ]; then
 		kparamopt="--reuse-cmdline"
+		is_reusing_cmdline=yes
+	fi
+
+	if ! yesno "${is_rootpart_autodetected}" || ! yesno "${is_reusing_cmdline}"; then
+		# Only append root when explicit set in config or
+		# if we aren't re-using kernel cmdline
+		KPARAM="${KPARAM:+"${KPARAM} "}root=${ROOTPART}"
 	fi
 
 	if [ -n "${initrd}" ]; then
@@ -137,7 +147,7 @@ load_image() {
 	ebegin "Using kernel image ${img}${msg} for kexec"
 
 	kexec ${KEXEC_OPT_ARGS} ${kparamopt} \
-		-l "${img}" --append="root=${ROOTPART} ${KPARAM}" ${initrdopt}
+		-l "${img}" ${KPARAM:+--append="${KPARAM}"} ${initrdopt}
 	local ret=$?
 
 	${mounted} && umount "${BOOTPART}"
