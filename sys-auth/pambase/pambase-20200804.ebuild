@@ -56,8 +56,8 @@ src_configure() {
 	$(usex minimal '--minimal' '') \
 	$(usex mktemp '--mktemp' '') \
 	$(usex nullok '--nullok' '') \
-	$(usex pam-krb5 '--krb5' '') \
-	$(usex pam-ssh '--pam-ssh' '') \
+	$(usex pam_krb5 '--krb5' '') \
+	$(usex pam_ssh '--pam-ssh' '') \
 	$(usex passwdqc '--passwdqc' '') \
 	$(usex securetty '--securetty' '') \
 	$(usex selinux '--selinux' '') \
