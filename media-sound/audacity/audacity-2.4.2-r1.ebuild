@@ -18,8 +18,8 @@ S="${WORKDIR}/${PN}-${MY_P}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~mips ~x86"
-IUSE="alsa cpu_flags_x86_sse doc ffmpeg +flac id3tag jack +ladspa +lame
-	+lv2 mad midi nls ogg oss portmidi +portmixer portsmf sbsms +soundtouch twolame vamp +vorbis +vst"
+IUSE="alsa doc ffmpeg +flac id3tag jack +ladspa +lv2 mad ogg oss
+	portmidi +portmixer portsmf sbsms twolame vamp +vorbis +vst"
 
 RESTRICT="test"
 
@@ -53,8 +53,8 @@ RDEPEND="dev-libs/expat
 "
 DEPEND="${RDEPEND}"
 BDEPEND="app-arch/unzip
+	sys-devel/gettext
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )
 "
 
 PATCHES=(
