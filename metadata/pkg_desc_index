@@ -10568,7 +10568,7 @@ dev-util/bin_replace_string 0.2: A tool to edit C strings in compiled binaries
 dev-util/bingrep 0.8.2: Binary file analysis tool
 dev-util/bitcoin-tx 0.16.3 0.19.1 0.20.0: Command-line Bitcoin transaction tool
 dev-util/bitrise 1.16.1 1.19.0 1.20.0 1.23.0 1.24.0: Run your Bitrise.io automations on any Mac or Linux machine
-dev-util/bless 0.6.0-r3 0.6.0-r4 0.6.2-r1: GTK# Hex Editor
+dev-util/bless 0.6.2-r1: GTK# Hex Editor
 dev-util/bloaty 0_p20170420 1.1 9999: A size profiler for binaries
 dev-util/bnfc 2.8.1 2.8.3: A compiler front-end generator
 dev-util/boost-build 1.72.0 1.73.0: A system for large project software construction, simple to use and powerful
@@ -17148,7 +17148,7 @@ sys-auth/pam_ssh 2.3: Uses ssh-agent to provide single sign-on
 sys-auth/pam_ssh_agent_auth 0.10.3 9999: Simple module to authenticate users against their ssh-agent keys
 sys-auth/pam_u2f 1.0.8: Library for authenticating against PAM with a Yubikey
 sys-auth/pam_yubico 2.26: Library for authenticating against PAM with a Yubikey
-sys-auth/pambase 20200304 20200618: PAM base configuration files
+sys-auth/pambase 20200304 20200618 20200804: PAM base configuration files
 sys-auth/passwdqc 1.3.0 1.4.0: Password strength checking library (and PAM module)
 sys-auth/polkit 0.115-r4 0.116-r1 0.117: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
