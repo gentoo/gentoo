@@ -3210,6 +3210,8 @@ games-emulation/m64py:rar - Ensure support for .rar archives.
 games-emulation/mednafen:debugger - Build with internal debugger
 games-emulation/mgba:discord - Enable Discord RPC support
 games-emulation/mgba:elf - Enable the use of elf utils via dev-libs/elfutils
+games-emulation/mgba:gles2 - Build OpenGL ES 2.x RenderSystem
+games-emulation/mgba:gles3 - Build OpenGL ES 3.x RenderSystem
 games-emulation/mupen64plus:audio-sdl - Enable SDL audio plugin.
 games-emulation/mupen64plus:input-sdl - Enable SDL input plugin.
 games-emulation/mupen64plus:rsp-hle - Enable HLE RSP plugin.
