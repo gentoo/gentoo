@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 	)"
 
 src_test() {
-	rosdep update
+	export ROS_PACKAGE_PATH="${S}:${S}/../rosmaster/:${EPREFIX}/usr/share/ros_packages/rosparam:${EPREFIX}/usr/share/ros_packages/roslib:${EPREFIX}/usr/share/ros_packages/rosout"
 	ros-catkin_src_test
 }
 
