@@ -64,6 +64,11 @@ src_prepare() {
 	# See bug #691308
 	eapply "${FILESDIR}/eid-sign-test-4.4.19.patch"
 
+	# See bug #732994
+	sed -i \
+		-e '/LDFLAGS="/ s:$CPPFLAGS:$LDFLAGS:' \
+		configure.ac || die
+
 	eautoreconf
 }
 
