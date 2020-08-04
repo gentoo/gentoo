@@ -15,6 +15,7 @@ IUSE=""
 
 RDEPEND="
 	>=dev-ros/urdf-1.13[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep "dev-python/python_orocos_kdl[\${PYTHON_USEDEP}]")
 "
 DEPEND="${RDEPEND}
 	test? (
