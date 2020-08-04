@@ -640,11 +640,6 @@ net-misc/termpkg
 # Removal in 30 days.  Bug #715682.
 media-gfx/uniconvertor
 
-# Mikle Kolyada <zlogene@gentoo.org> (2020-07-03)
-# Merged into dev-texlive/texlive-langcjk.
-# Removal in 30 days.
-dev-tex/cjk-latex
-
 # Stephan Hartmann <stha09@googlemail.com> (2020-06-29)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
