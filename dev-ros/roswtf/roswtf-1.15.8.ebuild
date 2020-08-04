@@ -16,15 +16,28 @@ IUSE=""
 
 RDEPEND="
 	$(python_gen_cond_dep "dev-python/paramiko[\${PYTHON_USEDEP}]")
-	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep "dev-python/rospkg[\${PYTHON_USEDEP}]")
+	dev-ros/rosbuild[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rosgraph[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/roslaunch[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rosnode[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rosservice[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	test? (
 		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		dev-ros/rosbag[${PYTHON_SINGLE_USEDEP}]
+		dev-ros/roslang[${PYTHON_SINGLE_USEDEP}]
+		dev-ros/std_srvs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 		$(python_gen_cond_dep "dev-util/rosdep[\${PYTHON_USEDEP}]")
 		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
 	)"
+BDEPEND="
+	test? (
+		dev-ros/cmake_modules
+	)
+"
 
 src_test() {
 	# Needed for tests to find internal launch file
