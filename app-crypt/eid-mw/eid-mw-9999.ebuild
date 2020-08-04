@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools gnome2-utils git-r3
+inherit autotools desktop gnome2-utils xdg-utils git-r3
 
 DESCRIPTION="Electronic Identity Card middleware supplied by the Belgian Federal Government"
 HOMEPAGE="https://eid.belgium.be"
@@ -16,7 +16,7 @@ IUSE="+dialogs +gtk +p11v220 p11-kit"
 RDEPEND=">=sys-apps/pcsc-lite-1.2.9
 	gtk? (
 		x11-libs/gdk-pixbuf[jpeg]
-		x11-libs/gtk+:*
+		x11-libs/gtk+:3
 		dev-libs/libxml2
 		net-misc/curl[ssl]
 		net-libs/libproxy
@@ -46,6 +46,16 @@ src_prepare() {
 		-e "s:get_lsb_info('c'):strdup(_(\"n/a\")):" \
 		plugins_tools/aboutmw/gtk/about-main.c || die
 
+	# Fix libdir for pkcs11_manifestdir
+	sed -i \
+		-e "/pkcs11_manifestdir/ s:prefix)/lib:libdir):" \
+		cardcomm/pkcs11/src/Makefile.am || die
+
+	# See bug #732994
+	sed -i \
+		-e '/LDFLAGS="/ s:$CPPFLAGS:$LDFLAGS:' \
+		configure.ac || die
+
 	eautoreconf
 }
 
@@ -71,13 +81,15 @@ src_install() {
 pkg_postinst() {
 	if use gtk; then
 		gnome2_schemas_update
-		gnome2_icon_cache_update
+		xdg_desktop_database_update
+		xdg_icon_cache_update
 	fi
 }
 
 pkg_postrm() {
 	if use gtk; then
 		gnome2_schemas_update
-		gnome2_icon_cache_update
+		xdg_desktop_database_update
+		xdg_icon_cache_update
 	fi
 }
