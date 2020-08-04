@@ -15,7 +15,7 @@ SRC_URI="mirror://apache/${PN}/apache-${P}.tar.bz2"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="examples test"
+IUSE="examples"
 
 RDEPEND="
 	>=dev-python/requests-2.5.0[${PYTHON_USEDEP}]
@@ -23,9 +23,10 @@ RDEPEND="
 "
 BDEPEND="${RDEPEND}
 	test? (
-		dev-python/lockfile[${PYTHON_USEDEP}]
-		dev-python/requests-mock[${PYTHON_USEDEP}]
 		>=dev-python/cryptography-2.6.1[${PYTHON_USEDEP}]
+		dev-python/lockfile[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/requests-mock[${PYTHON_USEDEP}]
 	)"
 
 S="${WORKDIR}/apache-${P}"
