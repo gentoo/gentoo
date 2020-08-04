@@ -11,7 +11,6 @@
     <flag name="drm">Enable DRM engine</flag>
     <flag name="eet">Enable Eet image loader</flag>
     <flag name="fribidi">Enable bidirectional text support</flag>
-    <flag name="gles2">Enable the OpenGL ES GL implementation</flag>
     <flag name="glib">Enable <pkg>dev-libs/glib</pkg> support</flag>
     <flag name="harfbuzz">Enable complex text shaping and layout support</flag>
     <flag name="hyphen">Enable text hyphenation support</flag>
@@ -29,7 +28,6 @@
     <flag name="tgv">Enable Tgv image loader</flag>
     <flag name="tslib">Enable <pkg>x11-libs/tslib</pkg> for touchscreen events</flag>
     <flag name="unwind">Enable debug support via <pkg>sys-libs/libunwind</pkg></flag>
-    <flag name="vlc">Enable <pkg>media-video/vlc</pkg> support</flag>
     <flag name="xcf">Enable XCF image loader</flag>
     <flag name="xim">Enable X Input Method</flag>
     <flag name="xpresent">Enable <pkg>x11-libs/libXpresent</pkg> support</flag>
