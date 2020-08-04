@@ -54,7 +54,7 @@ mail-filter/rmilter
 # Removal in 30 days. bug #710728, bug #588606
 sys-auth/pam_radius
 
-# Sam James <sam@gentoo.org> (2020-08-03)
+# Sam James <sam@gentoo.org> (2020-08-04)
 # Unmaintained, out of date, serious security
 # issue.
 # Removal in 30 days. bug #658448.
