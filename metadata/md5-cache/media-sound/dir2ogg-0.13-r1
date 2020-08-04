@@ -4,11 +4,11 @@ DESCRIPTION=Converts mp3, m4a, wma, and wav files to Ogg Vorbis format
 EAPI=7
 HOMEPAGE=https://jak-linux.org/projects/dir2ogg/
 IUSE=aac flac mac mp3 musepack wavpack wma python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8
-KEYWORDS=~amd64 ~ppc ~sparc ~x86
+KEYWORDS=~amd64 ~ppc sparc ~x86
 LICENSE=GPL-2
 RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_6? ( >=media-libs/mutagen-1.11[python_targets_python3_6(-)] ) python_single_target_python3_7? ( >=media-libs/mutagen-1.11[python_targets_python3_7(-)] ) python_single_target_python3_8? ( >=media-libs/mutagen-1.11[python_targets_python3_8(-)] ) media-sound/vorbis-tools[ogg123] aac? ( || ( media-libs/faad2 media-video/mplayer ) ) flac? ( || ( media-libs/flac media-video/mplayer ) ) mac? ( || ( media-sound/mac media-video/mplayer ) ) mp3? ( || ( media-sound/mpg123 media-sound/lame media-video/mplayer media-sound/mpg321 ) ) musepack? ( || ( >=media-sound/musepack-tools-444 media-video/mplayer ) ) wavpack? ( || ( media-sound/wavpack media-video/mplayer ) ) wma? ( media-video/mplayer )
 REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 )
 SLOT=0
 SRC_URI=https://jak-linux.org/projects/dir2ogg/0.13/dir2ogg-0.13.tar.gz
 _eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	python-single-r1	674c48c926cbb44e91b656e0399d8f54	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=4409b75826cc5fc47c44f4a06fdf6a35
+_md5_=585edfabadb86da43f9cd88caa5ed6bd
