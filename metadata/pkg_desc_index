@@ -3698,7 +3698,7 @@ dev-games/cardpics 0.4-r1: set of free cards sets
 dev-games/cegui 0.8.7-r1: Crazy Eddie's GUI System
 dev-games/clanlib 0.8.1 2.3.7 4.0.0: Multi-platform game development library
 dev-games/flatzebra 0.1.6 0.1.7: Generic game engine for 2D double-buffering animation
-dev-games/freecell-solver 5.22.1 5.24.0: C library for automatically solving Freecell and some other solitaire variants
+dev-games/freecell-solver 5.24.0: C library for automatically solving Freecell and some other solitaire variants
 dev-games/goatee 0.3.1.2: A monadic take on a 2,500-year-old board game - library
 dev-games/guichan 0.8.2: a portable C++ GUI library designed for games using Allegro, SDL and/or OpenGL
 dev-games/hawknl 1.68-r3: A cross-platform network library designed for games
@@ -6354,7 +6354,7 @@ dev-perl/Dist-Zilla-Plugin-OSPrereqs 0.8.0 0.11.0: List prereqs conditional on o
 dev-perl/Dist-Zilla-Plugin-OurPkgVersion 0.120.0 0.210.0: No line insertion and does Package version with our
 dev-perl/Dist-Zilla-Plugin-PodWeaver 4.8.0: Weave your Pod together from configuration and Dist::Zilla
 dev-perl/Dist-Zilla-Plugin-Prereqs-FromCPANfile 0.80.0: Parse cpanfile for prereqs
-dev-perl/Dist-Zilla-Plugin-RPM 0.15.0: Build an RPM from your Dist::Zilla release
+dev-perl/Dist-Zilla-Plugin-RPM 0.15.0 0.16.0: Build an RPM from your Dist::Zilla release
 dev-perl/Dist-Zilla-Plugin-ReadmeAnyFromPod 0.163.250: Automatically convert POD to a README in any format for Dist::Zilla
 dev-perl/Dist-Zilla-Plugin-ReadmeFromPod 0.370.0: dzil plugin to generate README from POD
 dev-perl/Dist-Zilla-Plugin-ReversionOnRelease 0.60.0: Bump and reversion $VERSION on release
@@ -8777,7 +8777,7 @@ dev-python/pyside2 5.14.2: Python bindings for the Qt framework
 dev-python/pysmi 0.3.4: Python Lex & Yacc
 dev-python/pysnmp 4.4.12-r1 999999: Python SNMP library
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
-dev-python/pysol_cards 0.8.9 0.10.1: Deal PySol FreeCell cards
+dev-python/pysol_cards 0.10.1: Deal PySol FreeCell cards
 dev-python/pyspectrum2 0.2.0: Implements a protobuf-based interface for Spectrum2 python-based backends
 dev-python/pyspf 2.0.14: Python implementation of the Sender Policy Framework (SPF)
 dev-python/pysrt 1.1.2 9999: Python library used to edit or create SubRip files
@@ -12272,7 +12272,7 @@ kde-frameworks/syntax-highlighting 5.70.0 5.72.0: Framework for syntax highlight
 kde-frameworks/threadweaver 5.70.0 5.72.0: Framework for managing threads using job and queue-based interfaces
 kde-misc/basket 2.49b: Multiple information organizer - a DropDrawers clone
 kde-misc/colord-kde 0.5.0-r2: Provides interfaces and session daemon to colord
-kde-misc/kdeconnect 1.4 20.04.3: Adds communication between KDE Plasma and your smartphone
+kde-misc/kdeconnect 20.04.3: Adds communication between KDE Plasma and your smartphone
 kde-misc/kdiff3 1.8.3-r1: Frontend to diff3 based on KDE Frameworks
 kde-misc/kdirstat 3.2.1: GUI equivalent to the du command based on KDE Frameworks
 kde-misc/kimtoy 1.92_pre20190225: Input method frontend for Plasma
@@ -17148,7 +17148,7 @@ sys-auth/pam_ssh 2.3: Uses ssh-agent to provide single sign-on
 sys-auth/pam_ssh_agent_auth 0.10.3 9999: Simple module to authenticate users against their ssh-agent keys
 sys-auth/pam_u2f 1.0.8: Library for authenticating against PAM with a Yubikey
 sys-auth/pam_yubico 2.26: Library for authenticating against PAM with a Yubikey
-sys-auth/pambase 20190402 20191128 20200304 20200618: PAM base configuration files
+sys-auth/pambase 20200304 20200618: PAM base configuration files
 sys-auth/passwdqc 1.3.0 1.4.0: Password strength checking library (and PAM module)
 sys-auth/polkit 0.115-r4 0.116-r1 0.117: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
@@ -17587,7 +17587,7 @@ sys-kernel/ck-sources 5.4.37 5.4.48: Gentoo's genpatches for Linux , with Con Ko
 sys-kernel/cryptodev 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 048-r1 049-r3 050 050-r1 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
-sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.0_beta1 9999: Gentoo automatic kernel building scripts
+sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.0_beta1 4.1.0_rc1 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 5.4.40 5.4.52 5.4.53 5.4.55 5.7.10 5.7.12: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.40 5.4.52 5.4.53 5.4.55 5.7.10 5.7.12: Pre-built Linux kernel with genpatches
