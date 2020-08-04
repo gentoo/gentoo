@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Jack Todaro <solpeth@posteo.org> (2020-08-04)
+# Deprecated in favour of dev-haskell/dbus.
+# Unmaintained since 2012.
+dev-haskell/dbus-core
+
+# Jack Todaro <solpeth@posteo.org> (2020-08-04)
 # Requires porting for MonadFail. No upstream
 # activity since January 2018.
 dev-haskell/hans
