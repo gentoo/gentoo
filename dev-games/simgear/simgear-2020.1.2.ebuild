@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake toolchain-funcs flag-o-matic
 
 DESCRIPTION="Development library for simulation games"
-HOMEPAGE="http://www.simgear.org/"
+HOMEPAGE="https://www.flightgear.org/"
 SRC_URI="mirror://sourceforge/flightgear/${P}.tar.bz2"
 
 LICENSE="GPL-2"
