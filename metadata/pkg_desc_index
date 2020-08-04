@@ -1847,6 +1847,7 @@ app-emacs/vhdl-mode 3.38.1: VHDL-mode for Emacs
 app-emacs/visual-basic-mode 1.5: A mode for editing Visual Basic programs
 app-emacs/vm 8.2.0_beta-r1: The VM mail reader for Emacs
 app-emacs/volume 1.0-r1: Tweak your sound card volume from Emacs
+app-emacs/vterm 0.0.1_pre20200713: Fully-featured terminal emulator based on libvterm
 app-emacs/w3mnav 0.5-r3: Add Info-like navigation keys to the emacs-w3m web browser
 app-emacs/wanderlust 2.15.9_p20180814 2.15.9_p20190623: Yet Another Message Interface on Emacsen
 app-emacs/websocket 1.10 1.12: A websocket implementation in elisp
@@ -8696,7 +8697,7 @@ dev-python/pygresql 5.1 5.2: A Python interface for the PostgreSQL database
 dev-python/pygsl 2.1.1: Python interface for the GNU scientific library (gsl)
 dev-python/pygtk 2.24.0-r5: GTK+2 bindings for Python
 dev-python/pyh2o 9999: Python API for sci-libs/libh2o
-dev-python/pyhamcrest 1.10.1 2.0.2: Hamcrest framework for matcher objects
+dev-python/pyhamcrest 2.0.2: Hamcrest framework for matcher objects
 dev-python/pyid3lib 0.5.1-r2: Module for manipulating ID3 tags in Python
 dev-python/pyilmbase 2.3.0-r2 2.5.2-r1: IlmBase Python bindings
 dev-python/pyinotify 0.9.6: Python module used for monitoring filesystems events
