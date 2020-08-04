@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jack Todaro <solpeth@posteo.org> (2020-08-04)
+# Requires porting for MonadFail. No upstream
+# activity since January 2018.
+dev-haskell/hans
+
 # Sam James <sam@gentoo.org> (2020-08-04)
 # Dead upstream, unmaintained.
 # Open security bug. Large number of other bugs.
