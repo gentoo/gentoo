@@ -6355,7 +6355,7 @@ dev-perl/Dist-Zilla-Plugin-OurPkgVersion 0.120.0 0.210.0: No line insertion and 
 dev-perl/Dist-Zilla-Plugin-PodWeaver 4.8.0: Weave your Pod together from configuration and Dist::Zilla
 dev-perl/Dist-Zilla-Plugin-Prereqs-FromCPANfile 0.80.0: Parse cpanfile for prereqs
 dev-perl/Dist-Zilla-Plugin-RPM 0.15.0 0.16.0: Build an RPM from your Dist::Zilla release
-dev-perl/Dist-Zilla-Plugin-ReadmeAnyFromPod 0.163.250: Automatically convert POD to a README in any format for Dist::Zilla
+dev-perl/Dist-Zilla-Plugin-ReadmeAnyFromPod 0.163.250-r1: Automatically convert POD to a README in any format for Dist::Zilla
 dev-perl/Dist-Zilla-Plugin-ReadmeFromPod 0.370.0: dzil plugin to generate README from POD
 dev-perl/Dist-Zilla-Plugin-ReversionOnRelease 0.60.0: Bump and reversion $VERSION on release
 dev-perl/Dist-Zilla-Plugin-Run 0.48.0: Run external commands and code at specific phases of Dist::Zilla
@@ -10454,7 +10454,6 @@ dev-tex/bibtex2html 1.99: A bibtex to HTML converter
 dev-tex/bibtexu 3.71_p20200406: 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity
 dev-tex/catdvi 0.14-r2: DVI to plain text translator
 dev-tex/chktex 1.7.6: Checks latex source for common mistakes
-dev-tex/cjk-latex 4.8.4-r1: LaTeX package to use CJK (Chinese/Japanese/Korean) scripts in various encodings
 dev-tex/cpp2latex 2.3-r2: A program to convert C++ code to LaTeX source
 dev-tex/crosstex 0.6-r3: CrossTeX - object oriented BibTeX replacement
 dev-tex/csindex 2.11c-r2: Utility for creating Czech/Slovak-sorted LaTeX index-files
