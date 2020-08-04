@@ -6,7 +6,7 @@ EAPI=6
 inherit mate
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="A session daemon for MATE that makes it easy to manage your laptop or desktop"
@@ -15,7 +15,7 @@ LICENSE="FDL-1.1+ GPL-2+ LGPL-2+"
 SLOT="0"
 IUSE="+applet elogind gnome-keyring policykit systemd test"
 
-REQUIRED_USE="?? ( elogind systemd )"
+REQUIRED_USE="^^ ( elogind systemd )"
 
 # Interactive testsuite.
 RESTRICT="test"
@@ -42,9 +42,8 @@ RDEPEND="${COMMON_DEPEND}
 	virtual/libintl
 	policykit? ( >=mate-extra/mate-polkit-1.6 )
 	systemd? ( sys-apps/systemd )
-	!systemd? (
-		elogind? ( sys-auth/elogind )
-	)"
+	elogind? ( sys-auth/elogind )
+"
 
 DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.3
