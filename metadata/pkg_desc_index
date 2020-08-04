@@ -15069,7 +15069,7 @@ net-misc/connman-json-client 1.0_p20150721-r2: An ncurses UI for connman
 net-misc/connman-notify 0_pre20191003-r1: Desktop notification integration for connman
 net-misc/connman-ui 0_p20150622 9999: A full-featured GTK based trayicon UI for ConnMan
 net-misc/csync 0.50.0 0.50.0-r1: lightweight file synchronizer utility
-net-misc/curl 7.71.0 7.71.1: A Client that groks URLs
+net-misc/curl 7.71.0 7.71.1 7.71.1-r1: A Client that groks URLs
 net-misc/dahdi 3.1.0-r1: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 3.1.0: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
@@ -16941,7 +16941,7 @@ sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
 sys-apps/iucode_tool 2.3.1-r1: tool to manipulate Intel X86 and X86-64 processor microcode update collections
 sys-apps/kbd 2.0.4 2.0.4-r1 2.2.0-r2 2.3.0-r1 9999: Keyboard and console utilities
 sys-apps/kcheck 0.0.2-r1 9999: Record and check required kernel symbols are set
-sys-apps/kexec-tools 2.0.20-r1 9999: Load another kernel from the currently executing Linux kernel
+sys-apps/kexec-tools 2.0.20-r1 2.0.20-r2 9999: Load another kernel from the currently executing Linux kernel
 sys-apps/keyutils 1.6.1 1.6.3: Linux Key Management Utilities
 sys-apps/kmod 26-r5 27-r1 9999: library and tools for managing linux kernel modules
 sys-apps/kmscon 8-r1 8_p20180906: KMS/DRM based virtual Console Emulator
