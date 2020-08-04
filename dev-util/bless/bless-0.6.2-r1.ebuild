@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,6 +28,7 @@ DEPEND="${RDEPEND}
 # See bug 278162
 # Waiting on nunit ebuild entering the tree
 RESTRICT="test"
+PATCHES=("${FILESDIR}/bless-0.6.2-range-disambiguation.patch")
 
 pkg_setup() {
 	mono-env_pkg_setup
