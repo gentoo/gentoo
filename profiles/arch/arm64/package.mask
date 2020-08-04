@@ -1,7 +1,2 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Sam James <sam@gentoo.org> (2020-07-16)
-# Failed build on arm64
-# bug #674346
-net-libs/osptoolkit
