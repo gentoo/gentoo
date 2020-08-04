@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -18,10 +18,10 @@ KEYWORDS="amd64 ~arm64 ppc64 x86"
 CDEPEND="dev-java/hawtjni-runtime:0"
 
 DEPEND="${CDEPEND}
-	>=virtual/jdk-1.5"
+	>=virtual/jdk-1.8"
 
 RDEPEND="${CDEPEND}
-	>=virtual/jre-1.5"
+	>=virtual/jre-1.8"
 
 S="${WORKDIR}/${P}"
 
