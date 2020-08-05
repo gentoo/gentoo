@@ -8,7 +8,7 @@ HOMEPAGE="https://github.com/majn/telegram-purple"
 SRC_URI="https://github.com/majn/telegram-purple/releases/download/v${PV}/telegram-purple_${PV}.orig.tar.gz"
 
 LICENSE="GPL-2+"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 IUSE="gcrypt libressl +nls +png +webp"
 
