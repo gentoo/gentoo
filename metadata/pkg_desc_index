@@ -1927,7 +1927,7 @@ app-emulation/libspectrum 1.4.4: Spectrum emulation library
 app-emulation/libvirt 6.2.0-r2 6.5.0 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
-app-emulation/lxc 4.0.3: LinuX Containers userspace utilities
+app-emulation/lxc 4.0.3 4.0.4: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.4: Old style template scripts for LXC
 app-emulation/lxd 4.0.1 4.0.2-r1: Fast, dense and secure container management
 app-emulation/nemu 2.2.1 9999: ncurses interface for QEMU
@@ -4052,7 +4052,7 @@ dev-haskell/haskell-src-exts 1.13.5 1.14.0 1.15.0.1 1.16.0.1 1.17.1 1.21.1: Mani
 dev-haskell/haskell-src-exts-util 0.2.5: Helper functions for working with haskell-src-exts trees
 dev-haskell/haskell-src-meta 0.6.0.8-r1 0.6.0.10 0.6.0.14-r1 0.8.5-r1: Parse source to template-haskell abstract syntax
 dev-haskell/hastache 0.5.1 0.6.1: Haskell implementation of Mustache templates
-dev-haskell/haxml 1.24 1.24.1 1.25.3: Utilities for manipulating XML documents
+dev-haskell/haxml 1.24 1.24.1 1.25.3 1.25.5-r1: Utilities for manipulating XML documents
 dev-haskell/hcg-minus 0.15: haskell cg (minus)
 dev-haskell/hcodecs 0.5 0.5.1 0.5.2: A library to read, write and manipulate MIDI, WAVE, and SoundFont2 files
 dev-haskell/hdbc 2.3.1.2 2.4.0.1 2.4.0.3: Haskell Database Connectivity
@@ -4159,7 +4159,7 @@ dev-haskell/lazysmallcheck 0.6: A library for demand-driven testing of Haskell p
 dev-haskell/lcs 0.2-r1: Find longest common sublist of two lists
 dev-haskell/lens 3.9.2 3.10.0.1 4.2 4.6.0.1 4.9.1 4.11 4.14 4.19.1: Lenses, Folds and Traversals
 dev-haskell/lens-aeson 1.1: Law-abiding lenses for aeson
-dev-haskell/lens-family 1.2.1: Lens Families
+dev-haskell/lens-family 1.2.1 1.2.3: Lens Families
 dev-haskell/lens-family-core 1.2.1 1.2.3: Haskell 98 Lens Families
 dev-haskell/lens-family-th 0.4.1.0: Generate lens-family style lenses
 dev-haskell/lens-simple 0.1.0.9: simplified import of elementary lens-family combinators
@@ -4256,12 +4256,12 @@ dev-haskell/optparse-simple 0.0.3 0.1.1.2: Simple interface to optparse-applicat
 dev-haskell/pandoc-citeproc 0.1.2.1 0.2 0.3.1 0.6 0.7.2 0.8.1.3 0.10.4 0.10.4.1 0.17.0.1: Supports using pandoc with citeproc
 dev-haskell/pandoc-types 1.12.3 1.12.4.5 1.12.4.7 1.17.0.4 1.20: Types for representing a structured document
 dev-haskell/pango 0.12.5.3 0.13.1.1 0.13.3.1 0.13.6.1: Binding to the Pango text rendering engine
-dev-haskell/pantry 0.4.0.1: Content addressable Haskell package management
+dev-haskell/pantry 0.4.0.2: Content addressable Haskell package management
 dev-haskell/parallel 3.2.0.3 3.2.1.0 3.2.2.0: Parallel programming library
 dev-haskell/parallel-io 0.3.3-r3: Combinators for executing IO actions in parallel on a thread pool
 dev-haskell/parsec 3.1.5 3.1.9-r1 3.1.11 3.1.13.0-r1 3.1.14.0: Monadic parser combinators
 dev-haskell/parsec-numbers 0.1.0: Utilities for parsing numbers from strings
-dev-haskell/parsec1 1.0.0.6: Portable monadic parser combinators
+dev-haskell/parsec1 1.0.0.6 1.0.0.7: Portable monadic parser combinators
 dev-haskell/parser-combinators 1.0.0: Lightweight package providing commonly useful parser combinators
 dev-haskell/parsers 0.12.10: Parsing combinators
 dev-haskell/path 0.5.13 0.7.0: Support for well-typed paths
@@ -4294,7 +4294,7 @@ dev-haskell/process-extras 0.3.3.6: Process extras
 dev-haskell/profunctor-extras 3.3.3.1 4.0: This package has been absorbed into profunctors 4.0
 dev-haskell/profunctors 3.3.0.1 4.0.4 4.3.2 4.4.1 5.1.2 5.2 5.5.1: Haskell98 profunctors package
 dev-haskell/project-template 0.2.0 0.2.0.1: Specify Haskell project templates and generate files
-dev-haskell/psqueue 1.1-r1: Priority Search Queue
+dev-haskell/psqueue 1.1-r1 1.1.0.1: Priority Search Queue
 dev-haskell/psqueues 0.2.0.3 0.2.2.1 0.2.2.2 0.2.2.3 0.2.7.2: Pure priority search queues
 dev-haskell/publicsuffixlist 0.1: Is a given string a domain suffix?
 dev-haskell/punycode 2.0: Encode unicode strings to ascii forms according to RFC 3492
@@ -4388,7 +4388,7 @@ dev-haskell/streaming-commons 0.1.12.1 0.1.15 0.1.15.4 0.1.16 0.2.1.2: Common lo
 dev-haskell/strict 0.3.2: Strict data types and String IO
 dev-haskell/string-qq 0.0.2 0.0.4: QuasiQuoter for non-interpolated strings, texts and bytestrings
 dev-haskell/stringable 0.1.3: A Stringable type class, in the spirit of Foldable and Traversable
-dev-haskell/stringbuilder 0.4.0 0.5.0: A writer monad for multi-line string literals
+dev-haskell/stringbuilder 0.4.0 0.5.0 0.5.1: A writer monad for multi-line string literals
 dev-haskell/stringprep 0.1.5 1.0.0: Implements the StringPrep algorithm
 dev-haskell/stringsearch 0.3.6.5 0.3.6.6 0.3.6.6-r1: Fast searching, splitting and replacing of ByteStrings
 dev-haskell/syb 0.4.3 0.4.4 0.5.1 0.7.1: Scrap Your Boilerplate
@@ -4465,7 +4465,7 @@ dev-haskell/typed-process 0.2.6.0: Run external processes, with strong typing of
 dev-haskell/uhc-light 1.1.9.5: Part of UHC packaged as cabal/hackage installable library
 dev-haskell/uhc-util 0.1.6.7: UHC utilities
 dev-haskell/unbounded-delays 0.1.0.9 0.1.1.0: Unbounded thread delays and timeouts
-dev-haskell/unexceptionalio 0.3.0: IO without any non-error, synchronous exceptions
+dev-haskell/unexceptionalio 0.3.0 0.5.1: IO without any non-error, synchronous exceptions
 dev-haskell/unicode-transforms 0.2.1 0.3.6: Unicode normalization
 dev-haskell/uniplate 1.6.12: Help writing simple, concise and fast generic operations
 dev-haskell/uniqueid 0.1.1: Splittable Unique Identifier Supply
@@ -4516,7 +4516,7 @@ dev-haskell/wreq 0.5.3.2: An easy-to-use HTTP client library
 dev-haskell/wx 0.92.2.0: Portable and native GUI library built on wxWidgets
 dev-haskell/wxc 0.92.2.0: wxHaskell C++ wrapper
 dev-haskell/wxcore 0.92.2.0: wxHaskell core
-dev-haskell/wxdirect 0.92.2.0 0.92.2.0-r1: helper tool for building wxHaskell
+dev-haskell/wxdirect 0.92.2.0 0.92.2.0-r1 0.92.3.0-r1: helper tool for building wxHaskell
 dev-haskell/x11 1.6.1.1 1.6.1.2 1.8-r1 1.9.1: A binding to the X11 graphics library
 dev-haskell/x11-xft 0.3.1 0.3.1-r1: Bindings to the Xft, X Free Type interface library, and some Xrender parts
 dev-haskell/x509 1.4.11 1.5.1 1.6.3 1.6.5 1.7.5: X509 reader and writer
@@ -16873,7 +16873,7 @@ sys-apps/elivepatch-server 0.1 0.2 9999: Live patch building server with RESTFul
 sys-apps/epoch 1.2.1 1.2.2 1.3.0 9999: An init system, a /sbin/init replacement; designed for simplicity
 sys-apps/etckeeper 1.18.14: A collection of tools to let /etc be stored in a repository
 sys-apps/ethq 0.5.0 0.6.1 9999: Ethernet NIC Queue stats viewer
-sys-apps/ethtool 5.4 5.6-r1 5.7: Utility for examining and tuning ethernet-based network interfaces
+sys-apps/ethtool 5.4 5.6-r1 5.7 5.8: Utility for examining and tuning ethernet-based network interfaces
 sys-apps/exa 0.9.0-r1: A modern replacement for 'ls' written in Rust
 sys-apps/fakechroot 2.19 2.20.1: Provide a faked chroot environment without requiring root privileges
 sys-apps/fakeroot 1.22 1.23 1.24: A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery
@@ -17492,6 +17492,7 @@ sys-fs/encfs 1.9.5: An implementation of encrypted filesystem in user-space usin
 sys-fs/etcd-fs 0_p20140620 0_p20170517: Use etcd as a FUSE filesystem
 sys-fs/eudev 3.2.5 3.2.7-r2 3.2.8 3.2.9 4.9999 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/exfat-utils 1.3.0: exFAT filesystem utilities
+sys-fs/exfatprogs 1.0.4 9999: Userspace utilities for new exfat filesystem (kernel 5.7+)
 sys-fs/ext3grep 0.10.2: Recover deleted files on an ext3 file system
 sys-fs/ext4magic 0.3.2-r1: Tool for recovery of deleted or overwritten files on ext3/ext4 filesystems
 sys-fs/extundelete 0.2.4: A utility to undelete files from an ext3 or ext4 partition
