@@ -4,10 +4,10 @@ DESCRIPTION=Free, redistributable digital camera software application
 EAPI=6
 HOMEPAGE=http://www.gphoto.org/
 IUSE=aalib exif ncurses nls readline
-KEYWORDS=~alpha amd64 ~hppa ppc ppc64 ~sparc x86
+KEYWORDS=~alpha amd64 ~arm64 ~hppa ppc ppc64 ~sparc x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/popt >=media-libs/libgphoto2-2.5.17:=[exif?] aalib? ( media-libs/aalib virtual/jpeg:0 ) exif? ( media-libs/libexif ) ncurses? ( dev-libs/cdk:0= ) readline? ( sys-libs/readline:0= )
 SLOT=0
 SRC_URI=mirror://sourceforge/gphoto/gphoto2-2.5.20.tar.bz2
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=dd85e5f0e48a90124cc15bb72520e2be
+_md5_=c41575fa9af33b4bdfc7c20a9604d8ed
