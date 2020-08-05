@@ -99,6 +99,7 @@ src_prepare() {
 		sed -i \
 			-e '2s:rpn1::; 2s:rpn2::; 6s:create-with-source-4::;' \
 			-e '7s:xport1::; 7s:dcounter1::; 7s:vformatter1::' \
+			-e 's|graph1||g' \
 			tests/Makefile.am || die
 	fi
 
