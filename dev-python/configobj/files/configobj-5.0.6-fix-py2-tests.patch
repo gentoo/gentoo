@@ -1,9 +1,16 @@
-Upstream: https://github.com/DiffSK/configobj/commit/e2731538d1a37a5b67a6e518848be6a8988043ae
-
 diff --git a/tests/test_validate.py b/tests/test_validate.py
-index bffb0dc..4eed7e9 100644
+index bffb0dc..c7d57d3 100644
 --- a/tests/test_validate.py
 +++ b/tests/test_validate.py
+@@ -2,7 +2,7 @@
+ 
+ from configobj import ConfigObj
+ import pytest
+-from validate import Validator, VdtValueTooSmallError
++from validate import Validator, VdtValueTooSmallError, dottedQuadToNum
+ 
+ 
+ class TestBasic(object):
 @@ -161,3 +161,26 @@ class TestBasic(object):
                      'test3': 3,
                      'test4': 6.0
@@ -31,25 +38,3 @@ index bffb0dc..4eed7e9 100644
 +        with pytest.raises(ValueError) as excinfo:
 +            dottedQuadToNum('-1')
 +        assert str(excinfo.value) == 'Not a good dotted-quad IP: -1'
-diff --git a/validate.py b/validate.py
-index b7a964c..9d8c94d 100644
---- a/validate.py
-+++ b/validate.py
-@@ -277,17 +277,8 @@ def dottedQuadToNum(ip):
-     
-     >>> int(dottedQuadToNum('1 '))
-     1
--    >>> int(dottedQuadToNum(' 1.2'))
--    16777218
--    >>> int(dottedQuadToNum(' 1.2.3 '))
--    16908291
-     >>> int(dottedQuadToNum('1.2.3.4'))
-     16909060
--    >>> dottedQuadToNum('255.255.255.255')
--    4294967295
--    >>> dottedQuadToNum('255.255.255.256')
--    Traceback (most recent call last):
--    ValueError: Not a good dotted-quad IP: 255.255.255.256
-     """
-     
-     # import here to avoid it when ip_addr values are not used

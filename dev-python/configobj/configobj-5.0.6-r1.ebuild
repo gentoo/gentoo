@@ -20,6 +20,4 @@ RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
 
 PATCHES=( "${FILESDIR}/${P}-fix-py2-tests.patch" )
 
-python_test() {
-	"${EPYTHON}" validate.py -v || die "Tests fail with ${EPYTHON}"
-}
+distutils_enable_tests pytest
