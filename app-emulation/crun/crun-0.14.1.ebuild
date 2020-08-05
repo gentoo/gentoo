@@ -9,12 +9,13 @@ inherit autotools python-any-r1
 
 DESCRIPTION="A fast and low-memory footprint OCI Container Runtime fully written in C"
 HOMEPAGE="https://github.com/containers/crun"
-SRC_URI="https://github.com/containers/${PN}/releases/download/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/containers/${PN}/releases/download/${PV}/${P}.tar.gz
+	https://github.com/containers/${PN}/raw/${PV}/libcrun.lds"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="bpf +caps doc seccomp systemd static-libs"
+IUSE="bpf +caps man seccomp systemd static-libs"
 
 DEPEND="
 	dev-libs/yajl
@@ -25,7 +26,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
-	doc? ( dev-go/go-md2man )
+	man? ( dev-go/go-md2man )
 "
 
 # the crun test suite is comprehensive to the extent that tests will fail
@@ -35,37 +36,42 @@ RESTRICT="test"
 
 DOCS=( README.md )
 
-PATCHES=(
-	# see https://709982.bugs.gentoo.org/attachment.cgi?id=614208
-	"${FILESDIR}/libocispec-deduplicate-json_common-in-makefile-am.patch"
-)
+src_unpack() {
+	# dont' try to unpack the .lds file
+	A=( ${A[@]/libcrun.lds} )
+	unpack ${A}
+}
 
 src_prepare() {
 	default
 	eautoreconf
+	cp -v ${DISTDIR}/libcrun.lds ${S}/ || die "libcrun.lds could not be copied"
 }
 
 src_configure() {
-	econf \
+	local myeconfargs=(
 		--disable-criu \
 		$(use_enable bpf) \
 		$(use_enable caps) \
 		$(use_enable seccomp) \
 		$(use_enable systemd) \
 		$(usex static-libs '--enabled-shared  --enabled-static' '--enable-shared --disable-static' '' '')
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
 	emake -C libocispec
 	emake crun
-	if use doc ; then
+	if use man ; then
 		emake generate-man
 	fi
 }
 
 src_install() {
 	emake "DESTDIR=${D}" install-exec
-	if use doc ; then
+	if use man ; then
 		emake "DESTDIR=${D}" install-man
 	fi
 

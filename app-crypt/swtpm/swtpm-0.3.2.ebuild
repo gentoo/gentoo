@@ -52,9 +52,14 @@ RDEPEND="${COMMON_DEPEND}
 	app-crypt/trousers
 	dev-tcltk/expect"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-fix-localca-path.patch"
+	"${FILESDIR}/${PN}-build-sys-Explicitly-link-libswtpm_libtpms-with-lcry.patch"
+	"${FILESDIR}/${PN}-build-sys-Use-AC_COMPILE_IFELSE-to-check-for-unused-.patch"
+	)
+
 src_prepare() {
 	use test || eapply "${FILESDIR}/${PN}-disable-test-dependencies.patch"
-	eapply "${FILESDIR}/${PN}-fix-localca-path.patch"
 	default
 	eautoreconf
 }
