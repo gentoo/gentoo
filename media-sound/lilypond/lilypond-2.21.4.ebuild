@@ -57,7 +57,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.21.1-fix-font-size.patch
 )
 
-DOCS=( DEDICATION HACKING Documentation/out/topdocs/README.txt ROADMAP )
+DOCS=( DEDICATION HACKING README.txt ROADMAP )
 
 src_prepare() {
 	default
