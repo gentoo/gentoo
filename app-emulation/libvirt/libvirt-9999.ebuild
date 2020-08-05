@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit autotools out-of-source bash-completion-r1 eutils linux-info python-any-r1 readme.gentoo-r1 systemd
+inherit meson bash-completion-r1 eutils linux-info python-any-r1 readme.gentoo-r1 systemd
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -125,7 +125,6 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.0-fix_paths_in_libvirt-guests_sh.patch
-	"${FILESDIR}"/${PN}-6.5.0-do-not-use-sysconfig.patch
 )
 
 pkg_setup() {
@@ -220,75 +219,67 @@ src_prepare() {
 	cp "${FILESDIR}/libvirtd.init-r19" "${S}/libvirtd.init" || die
 	sed -e "s/USE_FLAG_FIREWALLD/$(usex firewalld 'need firewalld' '')/" \
 		-i "${S}/libvirtd.init" || die "sed failed"
-
-	eautoreconf
 }
 
-my_src_configure() {
-	local myeconfargs=(
-		$(use_with apparmor)
-		$(use_with apparmor apparmor-profiles)
-		$(use_with audit)
-		$(use_with caps capng)
-		$(use_with dbus)
-		$(use_with dtrace)
-		$(use_with firewalld)
-		$(use_with fuse)
-		$(use_with glusterfs)
-		$(use_with glusterfs storage-gluster)
-		$(use_with iscsi storage-iscsi)
-		$(use_with iscsi-direct storage-iscsi-direct)
-		$(use_with libvirtd)
-		$(use_with libssh)
-		$(use_with lvm storage-lvm)
-		$(use_with lvm storage-mpath)
-		$(use_with lxc)
-		$(use_with macvtap)
-		$(use_enable nls)
-		$(use_with numa numactl)
-		$(use_with numa numad)
-		$(use_with openvz)
-		$(use_with parted storage-disk)
-		$(use_with pcap libpcap)
-		$(use_with policykit polkit)
-		$(use_with qemu)
-		$(use_with qemu yajl)
-		$(use_with rbd storage-rbd)
-		$(use_with sasl)
-		$(use_with selinux)
-		$(use_with udev)
-		$(use_with vepa virtualport)
-		$(use_with virt-network network)
-		$(use_with virtualbox vbox)
-		$(use_with wireshark-plugins wireshark-dissector)
-		$(use_with xen libxl)
-		$(use_with zfs storage-zfs)
+src_configure() {
+	local emesonargs=(
+		$(meson_feature apparmor)
+		$(meson_use apparmor apparmor-profiles)
+		$(meson_feature audit)
+		$(meson_feature caps capng)
+		$(meson_feature dbus)
+		$(meson_feature dtrace)
+		$(meson_feature firewalld)
+		$(meson_feature fuse)
+		$(meson_feature glusterfs)
+		$(meson_feature glusterfs storage-gluster)
+		$(meson_feature iscsi storage-iscsi)
+		$(meson_feature iscsi-direct storage-iscsi-direct)
+		$(meson_feature libvirtd driver_libvirtd)
+		$(meson_feature libssh)
+		$(meson_feature lvm storage_lvm)
+		$(meson_feature lvm storage_mpath)
+		$(meson_feature lxc driver_lxc)
+		$(meson_feature macvtap)
+		$(meson_feature nls)
+		$(meson_feature numa numactl)
+		$(meson_feature numa numad)
+		$(meson_feature openvz driver_openvz)
+		$(meson_feature parted storage_disk)
+		$(meson_feature pcap libpcap)
+		$(meson_feature policykit polkit)
+		$(meson_feature qemu driver_qemu)
+		$(meson_feature qemu yajl)
+		$(meson_feature rbd storage_rbd)
+		$(meson_feature sasl)
+		$(meson_feature selinux)
+		$(meson_feature udev)
+		$(meson_feature vepa virtualport)
+		$(meson_feature virt-network driver_network)
+		$(meson_feature virtualbox driver_vbox)
+		$(meson_feature wireshark-plugins wireshark_dissector)
+		$(meson_feature xen driver_libxl)
+		$(meson_feature zfs storage_zfs)
 
-		--without-hal
-		--without-netcf
-		--without-sanlock
+		-Dhal=disabled
+		-Dnetcf=disabled
+		-Dsanlock=disabled
 
-		--with-esx
-		--with-init-script=systemd
-		--with-qemu-group=$(usex caps qemu root)
-		--with-qemu-user=$(usex caps qemu root)
-		--with-remote
-		--with-storage-fs
-		--with-vmware
+		-Ddriver_esx=enabled
+		-Dinit_script=systemd
+		-Dqemu_user=$(usex caps qemu root)
+		-Dqemu-user=$(usex caps qemu root)
+		-Ddriver_remote=enabled
+		-Dstorage_fs=enabled
+		-Ddriver_vmware=enabled
 
-		--disable-static
-		--disable-werror
-
-		--localstatedir=/var
-		--with-runstatedir=/run
-		--enable-dependency-tracking
+		-Drunstatedir=/run
 	)
 
-
-	econf "${myeconfargs[@]}"
+	meson_src_configure
 }
 
-my_src_test() {
+src_test() {
 	# remove problematic tests, bug #591416, bug #591418
 	sed -i -e 's#commandtest$(EXEEXT) # #' \
 		-e 's#virfirewalltest$(EXEEXT) # #' \
@@ -297,14 +288,11 @@ my_src_test() {
 		tests/Makefile
 
 	export VIR_TEST_DEBUG=1
-	HOME="${T}" emake check
+	meson_src_test
 }
 
-my_src_install() {
-	emake DESTDIR="${D}" \
-		SYSTEMD_UNIT_DIR="$(systemd_get_systemunitdir)" install
-
-	find "${D}" -name '*.la' -delete || die
+src_install() {
+	meson_src_install
 
 	# Remove bogus, empty directories. They are either not used, or
 	# libvirtd is able to create them on demand
