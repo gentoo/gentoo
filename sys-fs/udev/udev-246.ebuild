@@ -183,7 +183,7 @@ multilib_src_install() {
 		into /
 		dobin udevadm
 
-	dosym ../../bin/udevadm /lib/systemd/systemd-udevd
+		dosym ../../bin/udevadm /lib/systemd/systemd-udevd
 
 		exeinto /lib/udev
 		doexe src/udev/{ata_id,cdrom_id,mtd_probe,scsi_id,v4l_id}
