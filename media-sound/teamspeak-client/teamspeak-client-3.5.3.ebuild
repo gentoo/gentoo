@@ -14,7 +14,7 @@ SRC_URI="
 	x86? ( https://files.teamspeak-services.com/releases/client/${PV}/TeamSpeak3-Client-linux_x86-${MY_PV}.run )
 "
 
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 ~x86"
 LICENSE="teamspeak3 || ( GPL-2 GPL-3 LGPL-3 )"
 SLOT="0"
 IUSE="+alsa pulseaudio"
