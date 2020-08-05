@@ -1,0 +1,41 @@
+Index: geodesy/src/geodesy/wu_point.py
+===================================================================
+--- geodesy.orig/src/geodesy/wu_point.py
++++ geodesy/src/geodesy/wu_point.py
+@@ -159,12 +159,12 @@ class WuPointSet():
+         # Initialize way point information.
+         self.way_point_ids = {}         # points symbol table
+         self.n_points = len(self.points)
+-        for wid in xrange(self.n_points):
++        for wid in range(self.n_points):
+             self.way_point_ids[self.points[wid].id.uuid] = wid
+ 
+         # Create empty list of UTM points, corresponding to map points.
+         # They will be evaluated lazily, when first needed.
+-        self.utm_points = [None for wid in xrange(self.n_points)]
++        self.utm_points = [None for wid in range(self.n_points)]
+ 
+     def __contains__(self, item):
+         """ Point set membership. """
+@@ -259,7 +259,7 @@ class WuPointSet():
+         """
+         return self.way_point_ids.get(key, default)
+ 
+-    def next(self):
++    def __next__(self):
+         """ Next iteration point.
+ 
+         :returns: Next :class:`WuPoint`.
+Index: geodesy/tests/test_wu_point.py
+===================================================================
+--- geodesy.orig/tests/test_wu_point.py
++++ geodesy/tests/test_wu_point.py
+@@ -127,7 +127,7 @@ class TestWuPoint(unittest.TestCase):
+         self.assertEqual(wupts.get(uu).uuid(), uu)
+ 
+         # test index() function
+-        for i in xrange(len(uuids)):
++        for i in range(len(uuids)):
+             self.assertEqual(wupts.index(uuids[i]), i)
+             self.assertEqual(wupts.points[i].id.uuid, uuids[i])
+ 
