@@ -1,14 +1,14 @@
-BDEPEND=>=sys-apps/gawk-3.1.6 virtual/yacc virtual/pkgconfig
+BDEPEND=>=sys-apps/gawk-3.1.6 virtual/yacc test? ( !~sys-apps/gawk-4.2.1 ) virtual/pkgconfig
 DEFINED_PHASES=compile configure install prepare setup test
 DEPEND=>=sys-apps/coreutils-6.10 dev-libs/libmaa sys-libs/zlib dbi? ( dev-db/libdbi ) judy? ( dev-libs/judy )
 DESCRIPTION=Dictionary Client/Server for the DICT protocol
 EAPI=7
 HOMEPAGE=http://www.dict.org/ https://sourceforge.net/projects/dict/
-IUSE=dbi judy minimal
+IUSE=dbi judy minimal test
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
 LICENSE=GPL-2 ISOC-rfc
 RDEPEND=>=sys-apps/coreutils-6.10 dev-libs/libmaa sys-libs/zlib dbi? ( dev-db/libdbi ) judy? ( dev-libs/judy )
 SLOT=0
 SRC_URI=mirror://sourceforge/dict/dictd-1.13.0.tar.gz
 _eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
-_md5_=edecfcc957f30c1779ebe11eefe7360f
+_md5_=1175842e13e53b70621025f72c5067af
