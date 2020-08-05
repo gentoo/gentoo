@@ -11,5 +11,5 @@ REQUIRED_USE=?? ( openmp pthread )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/xianyi/OpenBLAS/archive/v0.3.9 -> openblas-0.3.9.tar.gz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	fortran-2	1a8c9d0b2d30f756bae6be4e9b39e46b	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	fortran-2	b4796813ccda91c9c0d3463fc90aa969	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=e14d5c0d6fd394938bc43bc2f25c1880

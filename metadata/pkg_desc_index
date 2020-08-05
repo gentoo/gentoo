@@ -7977,7 +7977,7 @@ dev-python/cliff 3.3.0 3.4.0: Command Line Interface Formulation Framework
 dev-python/clint 0.5.1-r1: Python Command-line Application Tools
 dev-python/cloudlib 0.5.0: Cloud middleware for in application use.
 dev-python/cloudpickle 1.4.1 1.5.0: Extended pickling support for Python objects
-dev-python/cmd2 1.1.0 1.2.0 1.2.1: Extra features for standard library's cmd module
+dev-python/cmd2 1.1.0 1.2.0 1.2.1 1.3.0: Extra features for standard library's cmd module
 dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
 dev-python/colorama 0.4.3: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/colorclass 2.2.0-r1: Colorful worry-free console applications for multiple platforms
@@ -8242,8 +8242,8 @@ dev-python/humanfriendly 4.18: Human friendly output for text interfaces using P
 dev-python/humanize 2.4.1: Common humanization utilities
 dev-python/hyper-h2 3.2.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0: HTTP/2 framing layer for Python
-dev-python/hyperlink 19.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 4.50.8 4.57.1 5.16.0 5.16.3 5.19.0 5.19.1 5.19.2 5.20.2 5.20.3 5.21.0 5.23.1 5.23.3 5.23.7 5.23.8 5.23.9: A library for property based testing
+dev-python/hyperlink 19.0.0 20.0.1: A featureful, correct URL for Python
+dev-python/hypothesis 4.50.8 4.57.1 5.16.0 5.16.3 5.19.0 5.19.1 5.19.2 5.20.2 5.20.3 5.21.0 5.23.1 5.23.3 5.23.7 5.23.8 5.23.9 5.23.11: A library for property based testing
 dev-python/icalendar 4.0.6: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.8 2.10: Internationalized Domain Names in Applications (IDNA)
@@ -8541,7 +8541,7 @@ dev-python/parameterized 0.7.4: Parameterized testing with any Python test frame
 dev-python/parametrized 0.1: Parameterized testing with any Python test framework
 dev-python/paramiko 2.7.1: SSH2 protocol library
 dev-python/parsedatetime 2.4-r1: Parse human-readable date/time strings
-dev-python/parso 0.5.2 0.6.1 0.7.0 0.7.1: a python parser that supports error recovery and round-trip parsing
+dev-python/parso 0.5.2 0.6.1 0.7.0 0.7.1 0.8.0: a python parser that supports error recovery and round-trip parsing
 dev-python/partd 0.3.8 1.1.0: Appendable key-value storage
 dev-python/parver 0.3: Parse and manipulate version numbers
 dev-python/passlib 1.7.2: Password hashing framework supporting over 20 schemes
@@ -9216,7 +9216,7 @@ dev-python/vdirsyncer 0.16.8: Synchronize calendars and contacts
 dev-python/verboselogs 1.7: Verbose logging for Python's logging module
 dev-python/versioneer 0.18 0.18-r1: Easy VCS-based management of project version strings
 dev-python/vine 1.3.0: Python Promises
-dev-python/virtualenv 16.7.10 20.0.27 20.0.28 20.0.29: Virtual Python Environment builder
+dev-python/virtualenv 16.7.10 20.0.27 20.0.28 20.0.29 20.0.30: Virtual Python Environment builder
 dev-python/virtualenv-clone 0.5.3: A script for cloning a non-relocatable virtualenv
 dev-python/virtualenvwrapper 4.8.4-r1: Set of extensions to Ian Bicking's virtualenv tool
 dev-python/visitor 0.1.3: A tiny pythonic visitor implementation
