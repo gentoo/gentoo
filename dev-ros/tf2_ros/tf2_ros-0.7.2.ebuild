@@ -31,3 +31,9 @@ DEPEND="${RDEPEND}
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/tf2_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
+
+src_test() {
+	# Needed for tests to find internal launch file
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	ros-catkin_src_test
+}
