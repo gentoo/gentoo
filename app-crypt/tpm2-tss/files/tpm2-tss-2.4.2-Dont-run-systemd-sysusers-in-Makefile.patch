@@ -1,0 +1,15 @@
+diff --git a/Makefile.am b/Makefile.am
+index 322415b8..39e09063 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -602,10 +602,6 @@ endif #FAPI
+ EXTRA_DIST += dist/tpm-udev.rules
+ 
+ install-dirs:
+-if HOSTOS_LINUX
+-	(systemd-sysusers && systemd-tmpfiles --create) || \
+-	($(call make_tss_user_and_group) && $(call make_fapi_dirs) && ($call set_fapi_permissions)) || true
+-endif
+ 
+ install-data-hook: install-dirs
+ 	-if [ ! -z "$(udevrulesprefix)" ]; then \
