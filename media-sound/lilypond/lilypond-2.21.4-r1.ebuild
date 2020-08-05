@@ -55,6 +55,7 @@ RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.21.1-fix-font-size.patch
+	"${FILESDIR}"/${PN}-fix-cve-2020-17353.patch
 )
 
 DOCS=( DEDICATION HACKING README.txt ROADMAP )

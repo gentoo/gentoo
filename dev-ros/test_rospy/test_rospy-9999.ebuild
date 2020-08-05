@@ -27,5 +27,7 @@ DEPEND="${RDEPEND}
 		dev-ros/rosbuild
 		dev-ros/rosgraph[${PYTHON_SINGLE_USEDEP}]
 		dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+		dev-ros/rostopic[${PYTHON_SINGLE_USEDEP}]
 		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
+		$(python_gen_cond_dep "dev-python/psutil[\${PYTHON_USEDEP}]")
 	)"
