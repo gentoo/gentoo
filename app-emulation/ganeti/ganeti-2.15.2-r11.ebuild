@@ -20,6 +20,7 @@ SRC_URI="
 KEYWORDS="~amd64 ~x86"
 PATCHES=(
 	"${FILESDIR}"/ganeti-2.15-use-balloon-device.patch
+	"${FILESDIR}"/ganeti-2.15-disable-docs.patch
 	"${WORKDIR}"/debian/patches/do-not-backup-export-dir.patch
 	"${WORKDIR}"/debian/patches/Makefile.am-use-C.UTF-8
 	"${WORKDIR}"/debian/patches/relax-deps
