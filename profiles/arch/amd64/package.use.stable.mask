@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (2020-08-05)
+# sys-cluster/slurm has no stable keywords
+app-metrics/collectd collectd_plugins_slurm
+
 # Joonas Niilola <juippis@gentoo.org> (2020-06-21)
 # sys-apps/apparmor doesn't have stable keywords.
 app-emulation/lxc apparmor
