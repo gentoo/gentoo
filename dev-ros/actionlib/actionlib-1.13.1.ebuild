@@ -26,3 +26,8 @@ RDEPEND="${RDEPEND}
 	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/rostopic[${PYTHON_SINGLE_USEDEP}]
 "
+
+src_test() {
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	ros-catkin_src_test
+}
