@@ -1743,6 +1743,7 @@ dev-haskell/snap-server:openssl - enable https support using dev-haskell/hsopens
 dev-haskell/snap-server:portable - no non-haskell unportable code.
 dev-haskell/splitmix:optimised-mixer - Use JavaScript for mix32
 dev-haskell/splitmix:random - Providen RandomGen SMGen instance
+dev-haskell/store-core:force-alignment - No description
 dev-haskell/tagsoup:download - Build with Download module.
 dev-haskell/tagsoup:testprog - Build the test program.
 dev-haskell/tasty:colors - Enable colorful output

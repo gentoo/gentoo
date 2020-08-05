@@ -3971,7 +3971,7 @@ dev-haskell/enclosed-exceptions 1.0.1.1 1.0.2 1.0.3: Catching all exceptions fro
 dev-haskell/encoding 0.6.7.2-r2 0.7.0.2-r1 0.8 0.8.1 0.8.2: A library for various character encodings
 dev-haskell/entropy 0.2.2.4 0.3.7 0.4.1.6: A platform independent entropy source
 dev-haskell/enumerator 0.4.20: Reliable, high-performance processing with left-fold enumerators
-dev-haskell/equivalence 0.2.5 0.3.1: Maintaining an equivalence relation implemented as union-find using STT
+dev-haskell/equivalence 0.2.5 0.3.1 0.3.5: Maintaining an equivalence relation implemented as union-find using STT
 dev-haskell/erf 2.0.0.0-r1: The error function, erf, and related functions
 dev-haskell/errorcall-eq-instance 0.1.0 0.3.0: An orphan Eq instance for ErrorCall
 dev-haskell/errors 1.4.7 2.1.3 2.3.0: Simplified error-handling
@@ -4150,7 +4150,7 @@ dev-haskell/language-c 0.4.2 0.4.7 0.7.1 0.8.3: Analysis and generation of C cod
 dev-haskell/language-css 0.0.3: CSS 2.1 syntax
 dev-haskell/language-dot 0.1.0 0.1.1: A library for the analysis and creation of Graphviz DOT files
 dev-haskell/language-ecmascript 0.17.1.0-r1 0.17.1.0-r2 0.19.1.0: JavaScript parser and pretty-printer library
-dev-haskell/language-glsl 0.2.0: GLSL abstract syntax tree, parser, and pretty-printer
+dev-haskell/language-glsl 0.2.0 0.3.0: GLSL abstract syntax tree, parser, and pretty-printer
 dev-haskell/language-haskell-extract 0.2.4: Module to automatically extract functions from the local code
 dev-haskell/language-javascript 0.5.14.2 0.6.0.9 0.6.0.14: Parser for JavaScript
 dev-haskell/language-lua 0.10.0: Lua parser and pretty-printer
@@ -4381,8 +4381,8 @@ dev-haskell/statistics 0.10.5.2 0.11.0.3 0.13.2.3 0.13.3.0: A library of statist
 dev-haskell/stm 2.4.2 2.4.4.1 2.5.0.0: Software Transactional Memory
 dev-haskell/stm-chans 3.0.0.4: Additional types of channels for STM
 dev-haskell/stmonadtrans 0.3.3 0.3.4 0.4.4: A monad transformer version of the ST monad
-dev-haskell/store 0.3.1: Fast binary serialization
-dev-haskell/store-core 0.3: Fast and lightweight binary serialization
+dev-haskell/store 0.3.1 0.7.5: Fast binary serialization
+dev-haskell/store-core 0.3 0.4.4.2: Fast and lightweight binary serialization
 dev-haskell/stream 0.4.7.2: A library for manipulating infinite lists
 dev-haskell/streaming-commons 0.1.12.1 0.1.15 0.1.15.4 0.1.16 0.2.1.2: Common lower-level functions needed by various streaming data libraries
 dev-haskell/strict 0.3.2: Strict data types and String IO
@@ -17529,7 +17529,7 @@ sys-fs/lsscsi 0.31: SCSI sysfs query tool
 sys-fs/lufis 0.3 0.3-r1: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r4: User-mode filesystem implementation
 sys-fs/lvm2 2.02.187-r2 2.03.09: User-land utilities for LVM2 (device-mapper) software
-sys-fs/lxcfs 4.0.3 4.0.4-r2 4.0.5: FUSE filesystem for LXC
+sys-fs/lxcfs 4.0.3 4.0.5: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1_p18: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
 sys-fs/mergerfs 2.28.3-r1 2.29.0: A featureful union filesystem
