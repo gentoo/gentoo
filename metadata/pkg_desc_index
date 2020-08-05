@@ -13666,7 +13666,7 @@ media-sound/alsaplayer 0.99.81-r1: A heavily multi-threaded pluggable audio play
 media-sound/amsynth 1.8.0: Virtual analogue synthesizer
 media-sound/apetag 1.12-r2: Command-line ape 2.0 tagger
 media-sound/apulse 0.1.12-r4 0.1.13: PulseAudio emulation for ALSA
-media-sound/aqualung 1.0-r3 1.0-r4: Music player for a wide range of formats designed for gapless playback
+media-sound/aqualung 1.0-r3 1.0-r4 1.0-r5: Music player for a wide range of formats designed for gapless playback
 media-sound/ardour 5.12 6.0 9999: Digital Audio Workstation
 media-sound/ario 1.6: GTK client for MPD inspired by Rhythmbox but much lighter and faster
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
@@ -17566,7 +17566,7 @@ sys-fs/tmsu 0.6.1 0.7.0 0.7.4: Files tagger and virtual tag-based filesystem
 sys-fs/traydevice 1.6.2-r2: A little desktop application displaying systray icon for UDisks
 sys-fs/treesize 0.54.1-r1: A disk consumption analyzing tool
 sys-fs/udev 242 243 243-r2 245 245.5 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
-sys-fs/udev-init-scripts 33 9999: udev startup scripts for openrc
+sys-fs/udev-init-scripts 33 34 9999: udev startup scripts for openrc
 sys-fs/udftools 2.1 2.2: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 2.1.0 2.1.1 2.2.0: An automatic disk mounting service using udisks
 sys-fs/udisks 2.8.4 2.9.0: Daemon providing interfaces to work with storage devices
