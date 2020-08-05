@@ -67,5 +67,6 @@ python_test() {
 		tests/test_thread_safety::test_thread_safety
 	)
 
-	pytest -vv --ignore tests/test_redistdict.py ${skipped_tests[@]/#/--deselect } || die "Tests fail with ${EPYTHON}"
+	# Redis tests need a redis server running
+	pytest -vv --ignore tests/test_redisdict.py ${skipped_tests[@]/#/--deselect } || die "Tests fail with ${EPYTHON}"
 }
