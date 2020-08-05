@@ -80,6 +80,8 @@ src_prepare() {
 }
 
 src_compile() {
+	append-cflags -fcommon # https://bugs.gentoo.org/707838
+
 	# Drop jikes support as it seems to be unfriendly with SWT
 	java-pkg_filter-compiler jikes
 
