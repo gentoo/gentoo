@@ -32,7 +32,7 @@ IUSE="babeltrace +cephfs custom-cflags diskprediction dpdk fuse grafana jemalloc
 	spdk system-boost systemd +tcmalloc test xfs zfs"
 IUSE+=" $(printf "cpu_flags_x86_%s\n" ${CPU_FLAGS_X86[@]})"
 
-COMMON_DEPEND="
+DEPEND="
 	acct-group/ceph
 	acct-user/ceph
 	virtual/libudev:=
@@ -122,7 +122,7 @@ BDEPEND="
 		sys-fs/btrfs-progs
 	)
 "
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	app-admin/sudo
 	net-misc/socat
 	sys-apps/gptfdisk
@@ -195,6 +195,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-14.2.4-undefined-behaviour.patch"
 	"${FILESDIR}/ceph-14.2.10-missing-includes.patch"
 	"${FILESDIR}/ceph-14.2.10-python-warnings.patch"
+	"${FILESDIR}/ceph-14.2.10-build-without-mgr.patch"
 )
 
 check-reqs_export_vars() {
