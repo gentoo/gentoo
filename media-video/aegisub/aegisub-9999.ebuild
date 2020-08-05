@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-WX_GTK_VER=3.0
-PLOCALES="ar bg ca cs da de el es eu fa fi fr_FR gl hu id it ja ko nl pl pt_BR pt_PT ru sr_RS sr_RS@latin uk_UA vi zh_CN zh_TW"
+WX_GTK_VER=3.0-gtk3
+PLOCALES="ar be bg ca cs da de el es eu fa fi fr_FR gl hu id it ja ko nl pl pt_BR pt_PT ru sr_RS sr_RS@latin uk_UA vi zh_CN zh_TW"
 
 inherit autotools gnome2-utils l10n wxwidgets xdg-utils git-r3
 
@@ -52,9 +52,7 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="|| ( alsa openal oss portaudio pulseaudio )"
 
 PATCHES=(
-	"${FILESDIR}/3.2.2_p20160518/${PN}-3.2.2_p20160518-fix-system-luajit-build.patch"
-	"${FILESDIR}/3.2.2_p20160518/${PN}-3.2.2_p20160518-respect-compiler-flags.patch"
-	"${FILESDIR}/3.2.2_p20160518/${PN}-3.2.2_p20160518-fix-boost170-build.patch"
+	"${FILESDIR}/${P}-git.patch"
 )
 
 src_prepare() {
@@ -94,12 +92,14 @@ src_configure() {
 		$(use_with pulseaudio libpulse)
 		$(use_with spell hunspell)
 		$(use_with uchardet)
+		--disable-compiler-flags
 	)
 	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
-	emake
+	# Concurrent builds seem to break the build process.
+	emake -j1
 }
 
 src_test() {
