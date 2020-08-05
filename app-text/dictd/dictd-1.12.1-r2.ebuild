@@ -12,7 +12,7 @@ SLOT="0"
 # We install rfc so - ISOC-rfc
 LICENSE="GPL-2 ISOC-rfc"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
-IUSE="dbi judy minimal"
+IUSE="dbi judy minimal test"
 
 # <gawk-3.1.6 makes tests fail.
 RDEPEND="
@@ -25,6 +25,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=sys-apps/gawk-3.1.6
 	virtual/yacc
+	test? ( !~sys-apps/gawk-4.2.1 )
 "
 
 DOC_CONTENTS="
