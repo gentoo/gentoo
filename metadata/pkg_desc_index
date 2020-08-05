@@ -993,7 +993,7 @@ app-crypt/ssh-multiadd 1.3.2-r1: Adds multiple ssh keys to the ssh authenticatio
 app-crypt/ssss 0.5-r1: Shamir's Secret Sharing Scheme
 app-crypt/stan 0.4.1-r1: Stan analyzes binary streams and calculates statistical information
 app-crypt/stoken 0.92-r1: Software Token for Linux/UNIX
-app-crypt/swtpm 0.3.1-r1: Libtpms-based TPM emulator
+app-crypt/swtpm 0.3.2: Libtpms-based TPM emulator
 app-crypt/tc-play 2.0-r1: a free, pretty much fully featured and stable TrueCrypt implementation
 app-crypt/tpm-emulator 0.7.5-r1: Emulator driver for tpm
 app-crypt/tpm-tools 1.3.9.1-r1: TrouSerS' support tools for the Trusted Platform Modules
@@ -1002,7 +1002,7 @@ app-crypt/tpm2-pkcs11 1.3.0: A PKCS#11 interface for TPM2 hardware
 app-crypt/tpm2-tools 4.2.1: Tools for the TPM 2.0 TSS
 app-crypt/tpm2-totp 0.2.1-r1: Attest the trustworthiness of a device against a human using time-based OTP
 app-crypt/tpm2-tss 2.4.1: TCG Trusted Platform Module 2.0 Software Stack
-app-crypt/tpm2-tss-engine 1.1.0_rc0: OpenSSL Engine for TPM2 devices
+app-crypt/tpm2-tss-engine 1.1.0_rc1: OpenSSL Engine for TPM2 devices
 app-crypt/trousers 0.3.14-r2: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-crypt/ubuntu-keyring 2018.02.28 2018.09.18.1 2020.02.11.2: GnuPG archive keys of the Ubuntu archive
 app-crypt/veracrypt 1.24_p2 1.24_p4: Disk encryption with strong security based on TrueCrypt
@@ -1879,7 +1879,7 @@ app-emulation/containers-storage 1.18.1 1.20.2: containers/storage library
 app-emulation/cri-o 1.10.6 1.13.9 1.15.1 1.15.2 1.16.3 1.17.0 1.17.1: OCI-based implementation of Kubernetes Container Runtime Interface
 app-emulation/cri-tools 1.18.0: CLI and validation tools for Kubelet Container Runtime (CRI)
 app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13.1.2-r2 13.1.3-r2 13.2.0-r2 14.0.3-r1 14.1.4-r1 15.0.0 15.0.1 15.1.0 15.2.0 15.3.0 15.3.1 16.0.0 16.2.5 17.5.0 17.5.0-r1 17.5.1 18.0.0 18.1.0 18.5.0-r1 19.0.1-r1: Commercial version of app-emulation/wine with paid support
-app-emulation/crun 0.13: A fast and low-memory footprint OCI Container Runtime fully written in C
+app-emulation/crun 0.14.1: A fast and low-memory footprint OCI Container Runtime fully written in C
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 3.1.0 9999: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.5.20: DLX Simulator
@@ -2835,9 +2835,9 @@ app-text/cuneiform 1.1.0-r3: An enterprise quality OCR engine by Cognitive Techn
 app-text/cutemarked 0.11.3-r1: Qt5 markdown editor
 app-text/cwtext 0.96-r1: Text to Morse Code converter
 app-text/dbacl 1.14 1.14.1: Digramic Bayesian text classifier
-app-text/dblatex 0.3.11: Transform DocBook using TeX macros
+app-text/dblatex 0.3.11 0.3.11-r1: Transform DocBook using TeX macros
 app-text/delta 20060803-r1: Heuristically minimizes interesting files
-app-text/dictd 1.12.1-r2: Dictionary Client/Server for the DICT protocol
+app-text/dictd 1.12.1-r2 1.13.0: Dictionary Client/Server for the DICT protocol
 app-text/diction 1.13 1.14: Diction and style checkers for english and german texts
 app-text/diff-pdf 0.3: A simple tool for visually comparing two PDF files
 app-text/diffpdf 2.1.3-r2: Program that textually or visually compares two PDF files
@@ -5509,7 +5509,7 @@ dev-libs/libtimezonemap 0.4.6: GTK+3 timezone map widget
 dev-libs/libtomfloat 0.02-r1: library for floating point number manipulation
 dev-libs/libtommath 1.1.0 1.2.0: Optimized and portable routines for integer theoretic applications
 dev-libs/libtompoly 0.04-r1: portable ISO C library for polynomial basis arithmetic
-dev-libs/libtpms 0.7.2: Library providing software emultion of a TPM
+dev-libs/libtpms 0.7.3: Library providing software emultion of a TPM
 dev-libs/libtreadstone 0.2.0: Hyperdex libtreadstone support library
 dev-libs/libtsm 3 4.0.1: Terminal Emulator State Machine
 dev-libs/libtubo 5.0.15: small and simple interprocess communication library
@@ -5713,7 +5713,7 @@ dev-lisp/flexi-streams 1.0.16 1.0.17: Flexible bivalent streams for Common Lisp
 dev-lisp/gcl 2.6.10 2.6.12: GNU Common Lisp
 dev-lisp/hyperspec 7.0-r1: Common Lisp ANSI-standard Hyperspec
 dev-lisp/roswell 19.08.10.101 19.09.12.102 19.12.13.103 20.01.14.104 20.04.14.105 20.05.14.106: A lisp installer and launcher for major environment
-dev-lisp/sbcl 1.3.11 1.4.9 1.5.6 1.5.7 1.5.8 2.0.0 2.0.1 2.0.3 2.0.4 2.0.5: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
+dev-lisp/sbcl 1.3.11 1.4.9 1.5.6 1.5.7 1.5.8 2.0.0 2.0.1 2.0.3 2.0.4 2.0.5 2.0.7: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
 dev-lisp/trivial-gray-streams 20170830 99999999: A thin compatibility layer between Gray Stream Common Lisp implementations
 dev-lisp/uiop 3.1.5 3.3.1 3.3.2: UIOP is a portability layer spun off ASDF3
 dev-lua/LuaBitOp 1.0.1-r1 1.0.2 1.0.2-r1: Bit Operations Library for the Lua Programming Language
@@ -9107,7 +9107,7 @@ dev-python/spyder-kernels 1.9.1 1.9.2: Kernels used by spyder on its ipython con
 dev-python/spyder-line-profiler 0.2.1: Plugin to run the python line profiler from within the spyder editor
 dev-python/spyder-memory-profiler 0.2.1: Plugin to run the python memory_profiler from within the spyder editor
 dev-python/spyder-notebook 0.2.3: Jupyter notebook integration with Spyder
-dev-python/spyder-terminal 0.3.2: Run system terminals inside Spyder
+dev-python/spyder-terminal 0.4.0: Run system terminals inside Spyder
 dev-python/spyder-unittest 0.4.1: Plugin for Spyder to run tests and view the results
 dev-python/spyder-vim 0_pre20200514: Plugin for Spyder to enable Vim keybindings
 dev-python/sqlalchemy 1.3.11 1.3.17: Python SQL toolkit and Object Relational Mapper
@@ -14138,7 +14138,7 @@ media-video/pipewire 0.2.7 0.3.7: Multimedia processing graphs
 media-video/pitivi 0.999-r3: A non-linear video editor using the GStreamer multimedia framework
 media-video/plasma-mediacenter 5.7.5: Unified media experience for any device capable of running KDE Plasma
 media-video/projectx 0.91.0.10-r2: Converts, splits and demuxes DVB and other MPEG recordings
-media-video/qmplay2 19.12.19-r2 20.05.02 9999: A Qt-based video player, which can play most formats and codecs
+media-video/qmplay2 19.12.19-r2 20.05.02 20.07.04 9999: A Qt-based video player, which can play most formats and codecs
 media-video/raspberrypi-omxplayer 0_p20160217-r1 0_p20160528-r2 0_p20160528-r3 9999: Command line media player for the Raspberry Pi
 media-video/rav1e 0.3.3 9999: The fastest and safest AV1 encoder
 media-video/recmpeg 1.0.5: Simple libfame-based video encoder, compresses raw video sequences to MPEG video
@@ -14247,7 +14247,7 @@ net-analyzer/firewalk 5.0-r1 5.0-r2: A tool for determining a firewall's rule se
 net-analyzer/flent 1.3.2: The FLExible Network Tester
 net-analyzer/flow-tools 0.68.5.1-r10: library and programs to process reports from NetFlow data
 net-analyzer/flowgrind 0.7.1 0.8.0: Network performance measurement tool
-net-analyzer/fping 2.4_beta2_p161-r2 3.13 4.0 4.1 4.2 4.2-r1 4.4: A utility to ping multiple hosts at once
+net-analyzer/fping 2.4_beta2_p161-r2 3.13 4.0 4.1 4.2 4.2-r1 4.4 5.0: A utility to ping multiple hosts at once
 net-analyzer/fprobe 1.1-r3: libpcap-based tool to collect network traffic data and emit it as NetFlow flows
 net-analyzer/fragroute 1.2.6-r1 1.2.6-r3: Testing of network intrusion detection systems, firewalls and TCP/IP stacks
 net-analyzer/ftester 1.0: Firewall and Intrusion Detection System testing tool
@@ -15039,7 +15039,7 @@ net-misc/autoupnp 0.4.7 9999: Automatic open port forwarder using UPnP
 net-misc/axel 2.17.8 2.17.9: Light Unix download accelerator
 net-misc/babeld 1.8.2 1.9.1: a loop-free distance-vector routing protocol
 net-misc/balance 3.57: TCP Load Balancing Port Forwarder
-net-misc/batctl 2017.4: BATMAN advanced control and management tool
+net-misc/batctl 2020.1 2020.2: BATMAN advanced control and management tool
 net-misc/bfgminer 5.4.2 5.5.0: Modular Bitcoin ASIC/FPGA/GPU/CPU miner in C
 net-misc/bgpq3 0.1.33 0.1.35: Generate access-lists for Cisco/Juniper routers, successor of bgpq
 net-misc/bird 2.0.7: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6
