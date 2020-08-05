@@ -3,7 +3,6 @@
 
 # @ECLASS: fortran-2.eclass
 # @MAINTAINER:
-# jlec@gentoo.org
 # sci@gentoo.org
 # @AUTHOR:
 # Author Justin Lecher <jlec@gentoo.org>
