@@ -22,4 +22,7 @@ RDEPEND="
 	dev-ros/rqt_gui_py[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	test? ( $(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]") )"
+	test? (
+		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
+		$(python_gen_cond_dep "dev-python/mock[\${PYTHON_USEDEP}]")
+	)"
