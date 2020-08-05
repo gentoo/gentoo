@@ -259,6 +259,7 @@ my_src_configure() {
 		$(use_with udev)
 		$(use_with vepa virtualport)
 		$(use_with virt-network network)
+		$(use_with virtualbox vbox)
 		$(use_with wireshark-plugins wireshark-dissector)
 		$(use_with xen libxl)
 		$(use_with zfs storage-zfs)
@@ -283,11 +284,6 @@ my_src_configure() {
 		--enable-dependency-tracking
 	)
 
-	if use virtualbox && has_version app-emulation/virtualbox-ose; then
-		myeconfargs+=( --with-vbox=/usr/lib/virtualbox-ose/ )
-	else
-		myeconfargs+=( $(use_with virtualbox vbox) )
-	fi
 
 	econf "${myeconfargs[@]}"
 }
