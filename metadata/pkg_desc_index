@@ -3506,7 +3506,7 @@ dev-db/gqlplus 1.16: a front-end for Oracle program sqlplus with command-line ed
 dev-db/henplus 0.9.8-r1: Java-based multisession SQL shell for databases with JDBC support
 dev-db/hsqldb 1.8.1.3-r2: The leading SQL relational database engine written in Java
 dev-db/influxdb 1.5.1 1.6.3 1.6.4 1.8.0 1.8.0-r1 1.8.1: Scalable datastore for metrics, events, and real-time analytics
-dev-db/innotop 1.11.1 1.11.4 1.12.0: A text-mode MySQL and InnoDB monitor like mytop, but with many more features
+dev-db/innotop 1.12.0: A text-mode MySQL and InnoDB monitor like mytop, but with many more features
 dev-db/kdb 3.2.0: Database connectivity and creation framework for various vendors
 dev-db/kyotocabinet 1.2.77: A straightforward implementation of DBM
 dev-db/libdbi 0.9.0: A database-independent abstraction layer in C
@@ -17558,7 +17558,7 @@ sys-fs/shake 1.0: Defragmenter that runs in userspace while the system is used
 sys-fs/simple-mtpfs 0.3.0: Simple MTP fuse filesystem driver
 sys-fs/snapraid 11.4 11.5: a backup program for disk array for home media centers
 sys-fs/squashfs-tools 4.4 9999: tools to create and extract Squashfs filesystems
-sys-fs/squashfs-tools-ng 0.9.1 1.0.0 9999: A new set of tools for working with SquashFS images
+sys-fs/squashfs-tools-ng 1.0.1 9999: A new set of tools for working with SquashFS images
 sys-fs/squashfuse 0.1.100 0.1.103: FUSE filesystem to mount squashfs archives
 sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
