@@ -1,0 +1,241 @@
+From 265f696b532f63f0ac1f9f341e0469a6eafe2fdd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?J=C3=B3hann=20B=2E=20Gu=C3=B0mundsson?= <johannbg@gmail.com>
+Date: Wed, 15 Jul 2020 14:26:00 +0000
+Subject: [PATCH 01/10] As of v246 of systemd "syslog" and "syslog-console"
+ switches have been deprecated
+
+---
+ modules.d/90stratis/stratisd-init.service | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/modules.d/90stratis/stratisd-init.service b/modules.d/90stratis/stratisd-init.service
+index 318e8c27..1be2e33b 100644
+--- a/modules.d/90stratis/stratisd-init.service
++++ b/modules.d/90stratis/stratisd-init.service
+@@ -8,8 +8,6 @@ DefaultDependencies=no
+ Type=simple
+ ExecStart=/sbin/stratisd-init --debug
+ KillSignal=SIGINT
+-StandardOutput=syslog
+-StandardError=syslog
+ 
+ [Install]
+ WantedBy=sysinit.target
+-- 
+2.26.2
+
+From 38ba90bf88b38228e128c65be40a2da287c0b1ed Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?J=C3=B3hann=20B=2E=20Gu=C3=B0mundsson?= <johannbg@gmail.com>
+Date: Wed, 15 Jul 2020 14:29:34 +0000
+Subject: [PATCH 02/10] As of v246 of systemd "syslog" and "syslog-console"
+ switches have been deprecated
+
+---
+ modules.d/99squash/squash-mnt-clear.service | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/modules.d/99squash/squash-mnt-clear.service b/modules.d/99squash/squash-mnt-clear.service
+index 84441f60..9d94c524 100644
+--- a/modules.d/99squash/squash-mnt-clear.service
++++ b/modules.d/99squash/squash-mnt-clear.service
+@@ -12,6 +12,6 @@ ConditionPathExists=/squash/root
+ Type=oneshot
+ RemainAfterExit=no
+ StandardInput=null
+-StandardOutput=syslog+console
+-StandardError=syslog+console
++StandardOutput=journal+console
++StandardError=journal+console
+ ExecStart=/squash/clear-squash.sh
+-- 
+2.26.2
+
+From 5cb2a4004d18e4b96ddc18f221fae922350a9000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?J=C3=B3hann=20B=2E=20Gu=C3=B0mundsson?= <johannbg@gmail.com>
+Date: Wed, 15 Jul 2020 14:31:17 +0000
+Subject: [PATCH 03/10] As of v246 of systemd "syslog" and "syslog-console"
+ switches have been deprecated
+
+---
+ modules.d/98dracut-systemd/dracut-pre-trigger.service | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/modules.d/98dracut-systemd/dracut-pre-trigger.service b/modules.d/98dracut-systemd/dracut-pre-trigger.service
+index 7bf16167..6f1ba521 100644
+--- a/modules.d/98dracut-systemd/dracut-pre-trigger.service
++++ b/modules.d/98dracut-systemd/dracut-pre-trigger.service
+@@ -20,8 +20,7 @@ Environment=NEWROOT=/sysroot
+ Type=oneshot
+ ExecStart=-/bin/dracut-pre-trigger
+ StandardInput=null
+-StandardOutput=syslog
+-StandardError=syslog+console
++StandardError=journal+console
+ KillMode=process
+ RemainAfterExit=yes
+ 
+-- 
+2.26.2
+
+From 317d841c788e841d3533515ceda5597a099eb64e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?J=C3=B3hann=20B=2E=20Gu=C3=B0mundsson?= <johannbg@gmail.com>
+Date: Wed, 15 Jul 2020 14:31:59 +0000
+Subject: [PATCH 04/10] As of v246 of systemd "syslog" and "syslog-console"
+ switches have been deprecated
+
+---
+ modules.d/98dracut-systemd/dracut-initqueue.service | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/modules.d/98dracut-systemd/dracut-initqueue.service b/modules.d/98dracut-systemd/dracut-initqueue.service
+index 207d545d..3a8679a5 100644
+--- a/modules.d/98dracut-systemd/dracut-initqueue.service
++++ b/modules.d/98dracut-systemd/dracut-initqueue.service
+@@ -21,8 +21,7 @@ Environment=NEWROOT=/sysroot
+ Type=oneshot
+ ExecStart=-/bin/dracut-initqueue
+ StandardInput=null
+-StandardOutput=syslog
+-StandardError=syslog+console
++StandardError=journal+console
+ KillMode=process
+ RemainAfterExit=yes
+ 
+-- 
+2.26.2
+
+From 0c1bd016ecfb9c6d194c4356199b509d90db4071 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?J=C3=B3hann=20B=2E=20Gu=C3=B0mundsson?= <johannbg@gmail.com>
+Date: Wed, 15 Jul 2020 14:32:44 +0000
+Subject: [PATCH 05/10] As of v246 of systemd "syslog" and "syslog-console"
+ switches have been deprecated
+
+---
+ modules.d/98dracut-systemd/dracut-pre-pivot.service | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/modules.d/98dracut-systemd/dracut-pre-pivot.service b/modules.d/98dracut-systemd/dracut-pre-pivot.service
+index 9a1f0854..e893d1dd 100644
+--- a/modules.d/98dracut-systemd/dracut-pre-pivot.service
++++ b/modules.d/98dracut-systemd/dracut-pre-pivot.service
+@@ -27,8 +27,7 @@ Environment=NEWROOT=/sysroot
+ Type=oneshot
+ ExecStart=-/bin/dracut-pre-pivot
+ StandardInput=null
+-StandardOutput=syslog
+-StandardError=syslog+console
++StandardError=journal+console
+ KillMode=process
+ RemainAfterExit=yes
+ 
+-- 
+2.26.2
+
+From e1130a83405648777210fdc99f7eee087eebaadc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?J=C3=B3hann=20B=2E=20Gu=C3=B0mundsson?= <johannbg@gmail.com>
+Date: Wed, 15 Jul 2020 14:33:33 +0000
+Subject: [PATCH 06/10] As of v246 of systemd "syslog" and "syslog-console"
+ switches have been deprecated
+
+---
+ modules.d/98dracut-systemd/dracut-pre-udev.service | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/modules.d/98dracut-systemd/dracut-pre-udev.service b/modules.d/98dracut-systemd/dracut-pre-udev.service
+index 570ec02d..e4092e35 100644
+--- a/modules.d/98dracut-systemd/dracut-pre-udev.service
++++ b/modules.d/98dracut-systemd/dracut-pre-udev.service
+@@ -24,8 +24,7 @@ Environment=NEWROOT=/sysroot
+ Type=oneshot
+ ExecStart=-/bin/dracut-pre-udev
+ StandardInput=null
+-StandardOutput=syslog
+-StandardError=syslog+console
++StandardError=journal+console
+ KillMode=process
+ RemainAfterExit=yes
+ 
+-- 
+2.26.2
+
+From c437933cb0490e800e776cb7695d2ea0e95056a2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?J=C3=B3hann=20B=2E=20Gu=C3=B0mundsson?= <johannbg@gmail.com>
+Date: Wed, 15 Jul 2020 14:34:17 +0000
+Subject: [PATCH 07/10] As of v246 of systemd "syslog" and "syslog-console"
+ switches have been deprecated
+
+---
+ modules.d/98dracut-systemd/dracut-pre-mount.service | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/modules.d/98dracut-systemd/dracut-pre-mount.service b/modules.d/98dracut-systemd/dracut-pre-mount.service
+index d3909689..18c9730c 100644
+--- a/modules.d/98dracut-systemd/dracut-pre-mount.service
++++ b/modules.d/98dracut-systemd/dracut-pre-mount.service
+@@ -19,8 +19,7 @@ Environment=NEWROOT=/sysroot
+ Type=oneshot
+ ExecStart=-/bin/dracut-pre-mount
+ StandardInput=null
+-StandardOutput=syslog
+-StandardError=syslog+console
++StandardError=journal+console
+ KillMode=process
+ RemainAfterExit=yes
+ 
+-- 
+2.26.2
+
+From d9149c6ca7c52c204c1b346e9b6a32bbadd0b2ff Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?J=C3=B3hann=20B=2E=20Gu=C3=B0mundsson?= <johannbg@gmail.com>
+Date: Wed, 15 Jul 2020 14:35:02 +0000
+Subject: [PATCH 08/10] As of v246 of systemd "syslog" and "syslog-console"
+ switches have been deprecated
+
+---
+ modules.d/98dracut-systemd/dracut-cmdline.service | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/modules.d/98dracut-systemd/dracut-cmdline.service b/modules.d/98dracut-systemd/dracut-cmdline.service
+index e577ec88..a8078bd2 100644
+--- a/modules.d/98dracut-systemd/dracut-cmdline.service
++++ b/modules.d/98dracut-systemd/dracut-cmdline.service
+@@ -23,8 +23,7 @@ Environment=NEWROOT=/sysroot
+ Type=oneshot
+ ExecStart=-/bin/dracut-cmdline
+ StandardInput=null
+-StandardOutput=syslog
+-StandardError=syslog+console
++StandardError=journal+console
+ KillMode=process
+ RemainAfterExit=yes
+ 
+-- 
+2.26.2
+
+From 8cb5ac1b30be458df9497911ba601d90e68f4d5b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?J=C3=B3hann=20B=2E=20Gu=C3=B0mundsson?= <johannbg@gmail.com>
+Date: Wed, 15 Jul 2020 14:35:38 +0000
+Subject: [PATCH 09/10] As of v246 of systemd "syslog" and "syslog-console"
+ switches have been deprecated
+
+---
+ modules.d/98dracut-systemd/dracut-mount.service | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/modules.d/98dracut-systemd/dracut-mount.service b/modules.d/98dracut-systemd/dracut-mount.service
+index 77d34f62..c88e6d84 100644
+--- a/modules.d/98dracut-systemd/dracut-mount.service
++++ b/modules.d/98dracut-systemd/dracut-mount.service
+@@ -19,8 +19,7 @@ Environment=NEWROOT=/sysroot
+ Type=oneshot
+ ExecStart=-/bin/dracut-mount
+ StandardInput=null
+-StandardOutput=syslog
+-StandardError=syslog+console
++StandardError=journal+console
+ KillMode=process
+ RemainAfterExit=yes
+ 
+-- 
+2.26.2
+
