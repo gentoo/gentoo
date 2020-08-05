@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 case ${PV} in
@@ -20,7 +20,7 @@ case ${PV} in
 	inherit subversion
 	ESVN_REPO_URI="svn://svn.code.sf.net/p/fvwm-crystal/code"
 	SRC_URI=""
-	KEYWORDS="amd64"
+	KEYWORDS="amd64 x86"
 	S="${WORKDIR}/${PN}"
 	src_unpack() {
 		subversion_src_unpack
