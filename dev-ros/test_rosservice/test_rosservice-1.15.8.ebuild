@@ -24,5 +24,6 @@ DEPEND="${RDEPEND}
 		dev-ros/test_rosmaster[${PYTHON_SINGLE_USEDEP}]
 		dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
 		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		dev-ros/rosservice[${PYTHON_SINGLE_USEDEP}]
 		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
 	)"
