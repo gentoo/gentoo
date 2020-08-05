@@ -25,6 +25,10 @@ DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.8
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-ghc84.patch
+)
+
 src_configure() {
 	haskell-cabal_src_configure \
 		$(cabal_flag build-exec build-exec)
