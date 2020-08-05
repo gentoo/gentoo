@@ -3526,7 +3526,7 @@ dev-db/mycli 1.20.1 1.21.1-r1 9999: CLI for MySQL Database with auto-completion 
 dev-db/mydumper 0.9.3-r1 0.9.5 0.9.5-r1: A high-performance multi-threaded backup (and restore) toolset for MySQL
 dev-db/myodbc 5.3.9 5.3.10-r3 8.0.16 8.0.17 8.0.19 8.0.20 8.0.21: ODBC driver for MySQL
 dev-db/mysql 5.7.27-r2 5.7.29-r1 5.7.30-r1 5.7.31 8.0.19-r2 8.0.20-r1 8.0.21: A fast, multi-threaded, multi-user SQL database server
-dev-db/mysql++ 2.3.2-r1 3.2.3-r1 3.2.4 3.2.5: C++ API interface to the MySQL database
+dev-db/mysql++ 3.2.5: C++ API interface to the MySQL database
 dev-db/mysql-cluster 7.2.34 7.3.22 7.4.21: An enhanced, drop-in replacement for MySQL
 dev-db/mysql-connector-c 6.1.11-r2 8.0.19 8.0.20 8.0.21: C client library for MariaDB/MySQL
 dev-db/mysql-connector-c++ 1.1.12-r1 8.0.19 8.0.20 8.0.21: MySQL database connector for C++ (mimics JDBC 4.0 API)

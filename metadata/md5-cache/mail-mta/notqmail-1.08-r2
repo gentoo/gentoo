@@ -5,7 +5,7 @@ DESCRIPTION=qmail -- a secure, reliable, efficient, simple message transfer agen
 EAPI=7
 HOMEPAGE=https://notqmail.org https://cr.yp.to/qmail.html http://qmail.org
 IUSE=authcram gencertdaily highvolume libressl -pop3 qmail-spp ssl test vanilla
-KEYWORDS=~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86
+KEYWORDS=~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86
 LICENSE=public-domain
 RDEPEND=net-dns/libidn2 net-mail/queue-repair sys-apps/gentoo-functions ssl? ( !libressl? ( >=dev-libs/openssl-1.1:0= ) libressl? ( dev-libs/libressl:= ) ) test? ( dev-libs/check ) acct-group/nofiles acct-group/qmail acct-user/alias acct-user/qmaild acct-user/qmaill acct-user/qmailp acct-user/qmailq acct-user/qmailr acct-user/qmails sys-apps/ucspi-tcp virtual/checkpassword virtual/daemontools authcram? ( >=net-mail/cmd5checkpw-0.30 ) ssl? ( pop3? ( sys-apps/ucspi-ssl ) ) !mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/msmtp[mta] !mail-mta/nullmailer !mail-mta/opensmtpd !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/netqmail !mail-mta/sendmail !mail-mta/ssmtp[mta]
 REQUIRED_USE=vanilla? ( !ssl !qmail-spp !highvolume !authcram !gencertdaily ) gencertdaily? ( ssl ) libressl? ( ssl )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/notqmail/notqmail/releases/download/notqmail-1.08/notqmail-1.08.tar.xz https://github.com/DerDakon/genqmail/releases/download/genqmail-20191010/genqmail-20191010.tar.bz2 https://www.ckdhr.com/ckd/qmail-103.patch !vanilla? ( highvolume? ( https://github.com/notqmail/notqmail/commit/3a22b45974ddd1230da0dfa21f886c3401bee020.patch -> notqmail-1.08-big-todo.patch ) qmail-spp? ( ssl? ( https://github.com/notqmail/notqmail/commit/c467ba6880aaecfe1d3f592a7738de88cb5ac79a.patch -> notqmail-1.08-auth.patch https://github.com/notqmail/notqmail/commit/d950cc34491afe90432cafcaeda61d1c1a9508e9.patch -> notqmail-1.08-tls-spp.patch ) !ssl? ( https://github.com/notqmail/notqmail/commit/b36d52a0dd7315a969f2a9a7455717466e45be23.patch -> notqmail-1.08-spp.patch ) ) ssl? ( https://github.com/notqmail/notqmail/commit/0dc6a3aa9cb3440fe589ca5384ea27d683f05625.patch -> notqmail-1.08-tls-20200107.patch ) !ssl? ( https://github.com/notqmail/notqmail/commit/c467ba6880aaecfe1d3f592a7738de88cb5ac79a.patch -> notqmail-1.08-auth.patch ) )
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	fixheadtails	662e80584ee2337b981d7188078e7c74	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	2477ebe553d3e4d2c606191fe6c33602	qmail	d71e87f6dc80bb9af62fd46856dc0a92	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=519df2ecd22ee23b7a4dd0518f636099
+_md5_=f026d32c633b2aee22ac0938c9983d26
