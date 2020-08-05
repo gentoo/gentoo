@@ -37,7 +37,7 @@
 # Removal in 30 days.
 dev-libs/liboobs
 
-# Mikle Kolyada <zlogene@gentoo.org>
+# Mikle Kolyada <zlogene@gentoo.org> (2020-08-04)
 # Starting with this version pambase was
 # completly rewritten in python.
 # Initial testing needed.
