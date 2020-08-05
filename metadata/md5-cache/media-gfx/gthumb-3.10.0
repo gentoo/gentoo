@@ -5,10 +5,10 @@ DESCRIPTION=Image viewer and browser for Gnome
 EAPI=7
 HOMEPAGE=https://wiki.gnome.org/Apps/gthumb
 IUSE=cdr colord exif gnome-keyring gstreamer http lcms raw slideshow svg tiff webp
-KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris
+KEYWORDS=amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=GPL-2+
 RDEPEND=>=dev-libs/glib-2.54.0:2 >=x11-libs/gtk+-3.16.0:3 exif? ( >=media-gfx/exiv2-0.21:= ) slideshow? ( >=media-libs/clutter-1.12.0:1.0 >=media-libs/clutter-gtk-1:1.0 ) gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 media-plugins/gst-plugins-gtk:1.0 ) raw? ( >=media-libs/libraw-0.14:= ) http? ( >=net-libs/libsoup-2.42.0:2.4 >=dev-libs/json-glib-0.15.0 >=net-libs/webkit-gtk-1.10.0:4 ) gnome-keyring? ( >=app-crypt/libsecret-0.11 ) cdr? ( >=app-cdr/brasero-3.2.0 ) svg? ( >=gnome-base/librsvg-2.34:2 ) webp? ( >=media-libs/libwebp-0.2.0:= ) lcms? ( >=media-libs/lcms-2.6:2 ) colord? ( >=x11-misc/colord-1.3 >=media-libs/lcms-2.6:2 ) sys-libs/zlib virtual/jpeg:0= tiff? ( media-libs/tiff:= ) media-libs/libpng:0= >=gnome-base/gsettings-desktop-schemas-0.1.4
 SLOT=0
 SRC_URI=mirror://gnome/sources/gthumb/3.10/gthumb-3.10.0.tar.xz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome.org	532d56d07b9eace4831aaa817d2b756a	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	meson	71d293a701d6362387e1214da368c848	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=1a70255e4d7c576609b03844b037283e
+_md5_=95e84addc76eec0558cc50a14400ebaf
