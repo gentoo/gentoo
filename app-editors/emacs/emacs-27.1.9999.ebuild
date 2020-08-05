@@ -20,7 +20,7 @@ else
 	# operations later on
 	FULL_VERSION="${PV%%_*}"
 	S="${WORKDIR}/emacs-${FULL_VERSION}"
-	[[ ${FULL_VERSION} != ${PV} ]] && S="${WORKDIR}/emacs"
+	[[ ${PV} == *_pre* ]] && S="${WORKDIR}/emacs"
 fi
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
