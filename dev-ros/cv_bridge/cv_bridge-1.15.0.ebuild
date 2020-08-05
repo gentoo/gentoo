@@ -21,5 +21,9 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	test? (
+		dev-cpp/gtest
+		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
+	)
 "
 PATCHES=( "${FILESDIR}/boostpython.patch" )
