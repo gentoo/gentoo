@@ -13457,9 +13457,9 @@ media-plugins/imlib2_loaders 1.6.1: Additional image loaders for Imlib2
 media-plugins/ir_lv2 1.2.4 1.3.4: LV2 convolver plugin especially for creating reverb effects
 media-plugins/kodi-audiodecoder-modplug 2.0.3 2.1.3 9999: Modplug decoder addon for Kodi
 media-plugins/kodi-audiodecoder-nosefart 2.0.0 2.0.1 2.0.2 2.3.0 9999: Nosefart decoder addon for Kodi
-media-plugins/kodi-audiodecoder-sidplay 1.2.2 2.1.3 9999: SidPlay decoder addon for Kodi
-media-plugins/kodi-audiodecoder-snesapu 2.0.0 2.0.1 2.0.2 2.1.3 9999: SPC decoder addon for Kodi
-media-plugins/kodi-audiodecoder-stsound 2.0.0 2.0.1 2.0.2 2.1.3 9999: SPC decoder addon for Kodi
+media-plugins/kodi-audiodecoder-sidplay 1.2.2 2.1.3 3.0.0 9999: SidPlay decoder addon for Kodi
+media-plugins/kodi-audiodecoder-snesapu 2.0.0 2.0.1 2.0.2 2.1.3 3.0.0 9999: SPC decoder addon for Kodi
+media-plugins/kodi-audiodecoder-stsound 2.0.0 2.0.1 2.0.2 2.1.3 3.0.0 9999: SPC decoder addon for Kodi
 media-plugins/kodi-audiodecoder-timidity 2.0.5 2.3.0 9999: Timidity decoder addon for Kodi
 media-plugins/kodi-audiodecoder-vgmstream 1.1.3 1.1.4 1.1.5 2.1.2 9999: vgmstream decoder addon for Kodi
 media-plugins/kodi-audioencoder-flac 2.0.6 2.1.1 3.0.0 9999: Flac encoder addon for Kodi
@@ -15474,6 +15474,7 @@ net-proxy/dnsproxy 1.17: The dnsproxy daemon is a proxy for DNS queries
 net-proxy/haproxy 1.8.25-r1 2.0.14 2.0.14-r1 2.0.15 2.0.16 2.0.9999 2.1.4 2.1.4-r1 2.1.7 2.1.9999 2.2.0 2.2.1 2.2.9999: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/hatop 0.7.7 0.8.0: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
+net-proxy/microsocks 1.0.1_p20200805: Multithreaded, small, efficient SOCKS5 server
 net-proxy/mitmproxy 5.1.1: An interactive, SSL-capable, man-in-the-middle HTTP proxy
 net-proxy/nutcracker 0.2.4 0.3.0 0.4.1-r1: A fast, light-weight proxy for Memcached and Redis. (Twitter's Twemproxy)
 net-proxy/obfs4proxy 0.0.11-r1: An obfuscating proxy supporting Tor's pluggable transport protocol obfs4
@@ -17565,7 +17566,7 @@ sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
 sys-fs/tmsu 0.6.1 0.7.0 0.7.4: Files tagger and virtual tag-based filesystem
 sys-fs/traydevice 1.6.2-r2: A little desktop application displaying systray icon for UDisks
 sys-fs/treesize 0.54.1-r1: A disk consumption analyzing tool
-sys-fs/udev 242 243 243-r2 245 245.5 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
+sys-fs/udev 242 243 243-r2 245 245.5 246 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 33 34 9999: udev startup scripts for openrc
 sys-fs/udftools 2.1 2.2: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 2.1.0 2.1.1 2.2.0: An automatic disk mounting service using udisks

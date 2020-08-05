@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Multithreaded, small, efficient SOCKS5 server
+EAPI=7
+HOMEPAGE=https://github.com/rofl0r/microsocks
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+SLOT=0
+SRC_URI=https://github.com/rofl0r/microsocks/archive/de2d746862e1ec78688500955e15706f173a1151.tar.gz -> microsocks-1.0.1_p20200805.tar.gz
+_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=e4cc5ca486228575e6dfad491419c18d
