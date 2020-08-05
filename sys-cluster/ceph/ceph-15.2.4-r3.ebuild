@@ -16,7 +16,7 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://download.ceph.com/tarballs/${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc64"
+	KEYWORDS="~amd64 ~arm64 ~ppc64"
 fi
 
 DESCRIPTION="Ceph distributed filesystem"
@@ -28,11 +28,11 @@ SLOT="0"
 CPU_FLAGS_X86=(sse{,2,3,4_1,4_2} ssse3)
 
 IUSE="babeltrace +cephfs custom-cflags diskprediction dpdk fuse grafana jemalloc
-	kafka kerberos ldap libressl lttng +mgr numa +openssl rabbitmq +radosgw +ssl
-	spdk system-boost systemd +tcmalloc test xfs zfs"
+	kafka kerberos ldap libressl lttng +mgr numa +openssl pmdk rabbitmq +radosgw
+	rbd-rwl +ssl spdk system-boost systemd +tcmalloc test uring xfs zfs"
 IUSE+=" $(printf "cpu_flags_x86_%s\n" ${CPU_FLAGS_X86[@]})"
 
-COMMON_DEPEND="
+DEPEND="
 	acct-group/ceph
 	acct-user/ceph
 	virtual/libudev:=
@@ -45,6 +45,7 @@ COMMON_DEPEND="
 	dev-libs/crypto++:=
 	dev-libs/leveldb:=[snappy,tcmalloc(-)?]
 	dev-libs/libaio:=
+	dev-libs/libfmt:=
 	dev-libs/libnl:3=
 	dev-libs/libxml2:=
 	dev-libs/xmlsec:=[!openssl?,!libressl?]
@@ -91,6 +92,7 @@ COMMON_DEPEND="
 		libressl? ( dev-libs/libressl:= )
 	)
 	system-boost? ( =dev-libs/boost-1.72*[threads,context,python,${PYTHON_USEDEP}] )
+	uring? ( sys-libs/liburing:= )
 	xfs? ( sys-fs/xfsprogs:= )
 	zfs? ( sys-fs/zfs:= )
 	${PYTHON_DEPS}
@@ -122,10 +124,11 @@ BDEPEND="
 		sys-fs/btrfs-progs
 	)
 "
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	app-admin/sudo
 	net-misc/socat
 	sys-apps/gptfdisk
+	sys-apps/nvme-cli
 	>=sys-apps/smartmontools-7.0
 	sys-block/parted
 	sys-fs/cryptsetup
@@ -134,6 +137,7 @@ RDEPEND="${COMMON_DEPEND}
 	virtual/awk
 	dev-python/bcrypt[${PYTHON_USEDEP}]
 	dev-python/cherrypy[${PYTHON_USEDEP}]
+	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/pecan[${PYTHON_USEDEP}]
@@ -142,6 +146,7 @@ RDEPEND="${COMMON_DEPEND}
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/werkzeug[${PYTHON_USEDEP}]
 	mgr? (
+		dev-python/jsonpatch[${PYTHON_USEDEP}]
 		dev-python/more-itertools[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pyjwt[${PYTHON_USEDEP}]
@@ -184,17 +189,16 @@ PATCHES=(
 	"${FILESDIR}/ceph-14.2.0-cflags.patch"
 	"${FILESDIR}/ceph-12.2.4-boost-build-none-options.patch"
 	"${FILESDIR}/ceph-13.2.0-cflags.patch"
-	"${FILESDIR}/ceph-14.2.0-mgr-python-version.patch"
-	"${FILESDIR}/ceph-14.2.5-no-virtualenvs.patch"
+	"${FILESDIR}/ceph-15.2.0-no-virtualenvs.patch"
 	"${FILESDIR}/ceph-13.2.2-dont-install-sysvinit-script.patch"
 	"${FILESDIR}/ceph-14.2.0-dpdk-cflags.patch"
 	"${FILESDIR}/ceph-14.2.0-link-crc32-statically.patch"
 	"${FILESDIR}/ceph-14.2.0-cython-0.29.patch"
-	"${FILESDIR}/ceph-14.2.3-dpdk-compile-fix-1.patch"
-	"${FILESDIR}/ceph-14.2.4-python-executable.patch"
-	"${FILESDIR}/ceph-14.2.4-undefined-behaviour.patch"
-	"${FILESDIR}/ceph-14.2.10-missing-includes.patch"
+	"${FILESDIR}/ceph-15.2.0-rocksdb-cmake.patch"
+	"${FILESDIR}/ceph-15.2.2-systemd-unit.patch"
+	"${FILESDIR}/ceph-15.2.3-spdk-compile.patch"
 	"${FILESDIR}/ceph-14.2.10-python-warnings.patch"
+	"${FILESDIR}/ceph-15.2.4-system-uring.patch"
 )
 
 check-reqs_export_vars() {
@@ -241,6 +245,7 @@ ceph_src_configure() {
 	local flag
 	local mycmakeargs=(
 		-DWITH_BABELTRACE=$(usex babeltrace)
+		-DWITH_BLUESTORE_PMEM=$(usex pmdk)
 		-DWITH_CEPHFS=$(usex cephfs)
 		-DWITH_CEPHFS_SHELL=$(usex cephfs)
 		-DWITH_DPDK=$(usex dpdk)
@@ -257,9 +262,11 @@ ceph_src_configure() {
 		-DWITH_RADOSGW=$(usex radosgw)
 		-DWITH_RADOSGW_AMQP_ENDPOINT=$(usex rabbitmq)
 		-DWITH_RADOSGW_KAFKA_ENDPOINT=$(usex kafka)
+		-DWITH_RBD_RWL=$(usex rbd-rwl)
 		-DWITH_SSL=$(usex ssl)
 		-DWITH_SYSTEMD=$(usex systemd)
 		-DWITH_TESTS=$(usex test)
+		-DWITH_LIBURING=$(usex uring)
 		-DWITH_XFS=$(usex xfs)
 		-DWITH_ZFS=$(usex zfs)
 		-DENABLE_SHARED="ON"

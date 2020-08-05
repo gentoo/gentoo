@@ -1,0 +1,66 @@
+diff --git a/src/os/CMakeLists.txt b/src/os/CMakeLists.txt
+index 760244b9b4..7f83923671 100644
+--- a/src/os/CMakeLists.txt
++++ b/src/os/CMakeLists.txt
+@@ -134,27 +134,6 @@ if(WITH_EVENTTRACE)
+ endif()
+ 
+ if(WITH_LIBURING)
+-  include(ExternalProject)
+-  if("${CMAKE_GENERATOR}" MATCHES "Make")
+-    set(make_cmd "$(MAKE)")
+-  else()
+-    set(make_cmd "make")
+-  endif()
+-  ExternalProject_Add(liburing_ext
+-    DOWNLOAD_DIR ${CMAKE_BINARY_DIR}/src/
+-    GIT_REPOSITORY http://git.kernel.dk/liburing
+-    GIT_TAG "4e360f71131918c36774f51688e5c65dea8d43f2"
+-    SOURCE_DIR ${CMAKE_BINARY_DIR}/src/liburing
+-    CONFIGURE_COMMAND <SOURCE_DIR>/configure
+-    BUILD_COMMAND env CC=${CMAKE_C_COMPILER} ${make_cmd} -C src -s
+-    BUILD_IN_SOURCE 1
+-    INSTALL_COMMAND "")
+-  unset(make_cmd)
+-  add_library(liburing STATIC IMPORTED GLOBAL)
+-  add_dependencies(liburing liburing_ext)
+-  set_target_properties(liburing PROPERTIES
+-    IMPORTED_LINK_INTERFACE_LANGUAGES "C"
+-    IMPORTED_LOCATION "${CMAKE_BINARY_DIR}/src/liburing/src/liburing.a")
+-  target_link_libraries(os liburing)
+-  target_include_directories(os SYSTEM PRIVATE "${CMAKE_BINARY_DIR}/src/liburing/src/include")
++  pkg_check_modules(LIBURING REQUIRED IMPORTED_TARGET liburing)
++  target_link_libraries(os uring)
+ endif(WITH_LIBURING)
+diff --git a/src/os/bluestore/io_uring.cc b/src/os/bluestore/io_uring.cc
+index 54fa0f9535..4ba83cf172 100644
+--- a/src/os/bluestore/io_uring.cc
++++ b/src/os/bluestore/io_uring.cc
+@@ -7,6 +7,8 @@
+ 
+ #include "liburing.h"
+ #include <sys/epoll.h>
++#include <unistd.h>
++#include <sys/syscall.h>
+ 
+ /* Options */
+ 
+@@ -134,8 +136,7 @@ int ioring_queue_t::init(std::vector<int> &fds)
+   if (ret < 0)
+     return ret;
+ 
+-  ret = io_uring_register(d->io_uring.ring_fd, IORING_REGISTER_FILES,
+-			  &fds[0], fds.size());
++  ret = io_uring_register_files(&d->io_uring, &fds[0], fds.size());
+   if (ret < 0) {
+     ret = -errno;
+     goto close_ring_fd;
+@@ -214,7 +215,7 @@ bool ioring_queue_t::supported()
+   struct io_uring_params p;
+ 
+   memset(&p, 0, sizeof(p));
+-  int fd = io_uring_setup(16, &p);
++  int fd = syscall(SYS_io_uring_setup, 16, &p);
+   if (fd < 0)
+     return false;
+ 
