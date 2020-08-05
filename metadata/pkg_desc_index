@@ -1593,7 +1593,7 @@ app-editors/diakonos 0.9.4: A Linux editor for the masses
 app-editors/e3 2.8.2: Very tiny editor in ASM with emacs, pico, wordstar, and vi keybindings
 app-editors/ee 1.5.2: An easy to use text editor. A subset of aee
 app-editors/elvis 2.2.0-r6 2.2.0-r7 2.2.0-r8: A vi/ex clone
-app-editors/emacs 18.59-r12 23.4-r18 24.5-r7 25.3-r6 26.3-r1 27.0.9999-r1 27.1_rc1 28.0.9999: The extensible, customizable, self-documenting real-time display editor
+app-editors/emacs 18.59-r12 23.4-r18 24.5-r7 25.3-r6 26.3-r1 27.1_rc1 27.1.9999 28.0.9999: The extensible, customizable, self-documenting real-time display editor
 app-editors/emact 2.58.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515-r1: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fe 2.0: A small and easy to use folding editor
