@@ -1,0 +1,4 @@
+# /etc/conf.d/microsocks - config for microsocks
+#
+# see README.md or --help for possible parameters
+microsocks_args=""
