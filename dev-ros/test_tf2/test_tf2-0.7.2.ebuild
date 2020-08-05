@@ -25,9 +25,11 @@ DEPEND="
 	dev-ros/tf2_geometry_msgs[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/tf2_kdl[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/tf2_msgs
+	dev-ros/rosbash
 	sci-libs/orocos_kdl
 	$(python_gen_cond_dep "dev-python/python_orocos_kdl[\${PYTHON_USEDEP}]")
 	dev-libs/boost:=[threads]
-	dev-cpp/gtest"
+	dev-cpp/gtest
+"
 
 mycatkincmakeargs=( "-DCATKIN_ENABLE_TESTING=ON" )
