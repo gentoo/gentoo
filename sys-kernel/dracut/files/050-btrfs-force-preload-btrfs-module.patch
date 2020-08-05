@@ -1,0 +1,30 @@
+From 0402b3777b1c64bd716f588ff7457b905e98489d Mon Sep 17 00:00:00 2001
+From: Harald Hoyer <harald@redhat.com>
+Date: Wed, 11 Mar 2020 12:56:52 +0100
+Subject: [PATCH] btrfs: force preload btrfs module
+
+fixes https://github.com/dracutdevs/dracut/issues/658
+
+raid6_pq and xor takes time doing benchmarking
+
+[    3.983009] request_module fs-btrfs succeeded, but still no fs?
+---
+ modules.d/90btrfs/module-setup.sh | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/modules.d/90btrfs/module-setup.sh b/modules.d/90btrfs/module-setup.sh
+index b0d0058b..66a254e1 100755
+--- a/modules.d/90btrfs/module-setup.sh
++++ b/modules.d/90btrfs/module-setup.sh
+@@ -48,5 +48,7 @@ install() {
+ 
+     inst_multiple -o btrfsck btrfs-zero-log
+     inst $(command -v btrfs) /sbin/btrfs
++    # Hack for slow machines
++    # see https://github.com/dracutdevs/dracut/issues/658
++    echo "rd.driver.pre=btrfs" > ${initdir}/etc/cmdline.d/00-btrfs.conf
+ }
+-
+-- 
+2.26.2
+
