@@ -48,7 +48,7 @@ python_prepare_all() {
 	gunzip docs/manpage/dblatex.1.gz || die
 	# If we dont have inkscape we need to use an alternative SVG converter
 	use inkscape || eapply "${FILESDIR}/${P}-no-inkscape-dependency.patch"
-	# If we use inscape however we want to make dblatex compatible with v1.0 
+	# If we use inscape however we want to make dblatex compatible with v1.0
 	use inkscape && eapply "${FILESDIR}/${P}-inkscape-1.0.patch"
 	# We need to fix version information in the docs and some metadata
 	grep -l -I -R "0.3.11py3" | xargs -n1 sed -i -e "s/${PV}py3/${PV}/" || die
