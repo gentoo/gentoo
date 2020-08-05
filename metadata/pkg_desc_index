@@ -2274,7 +2274,7 @@ app-metrics/alertmanager 0.18.0 0.19.0 0.21.0: Alertmanager for alerts sent by c
 app-metrics/bind_exporter 0.3.0: Prometheus exporter for BIND
 app-metrics/blackbox_exporter 0.15.1 0.16.0 0.17.0: Prometheus exporter for blackbox probing via HTTP, HTTPS, DNS, TCP and ICMP
 app-metrics/burrow_exporter 0.0.6 0.0.6-r1: Prometheus exporter for Burrow
-app-metrics/collectd 5.10.0 5.11.0-r2: Collects system statistics and provides mechanisms to store the values
+app-metrics/collectd 5.10.0 5.11.0-r3: Collects system statistics and provides mechanisms to store the values
 app-metrics/consul_exporter 0.4.0 0.6.0: Prometheus exporter for consul metrics
 app-metrics/dnsmasq_exporter 0.2.0-r1: prometheus exporter for dnsmasq
 app-metrics/elasticsearch_exporter 1.0.2 1.0.4_rc1 1.1.0_rc1 1.1.0: Elasticsearch stats exporter for Prometheus
@@ -13723,7 +13723,7 @@ media-sound/declick 0.6.5-r1: Dynamic digital declicker for audio sample files
 media-sound/deinvert 9999: A voice inversion descrambler
 media-sound/denemo 2.3.0-r1: A music notation editor
 media-sound/din 44.0.2 47.1: a software musical instrument and audio synthesizer
-media-sound/dir2ogg 0.12-r1 0.13-r1: Converts mp3, m4a, wma, and wav files to Ogg Vorbis format
+media-sound/dir2ogg 0.13-r1: Converts mp3, m4a, wma, and wav files to Ogg Vorbis format
 media-sound/drumstick 1.1.3: Qt/C++ wrapper for ALSA sequencer
 media-sound/dvda-author 10.06-r1: Author a DVD-Audio DVD
 media-sound/easytag 2.4.3-r1: GTK+ utility for editing MP2, MP3, MP4, FLAC, Ogg and other media tags
@@ -14325,7 +14325,7 @@ net-analyzer/nagios-core 4.4.6: Nagios core - monitoring daemon, web GUI, and do
 net-analyzer/nagios-icinga-openvpn 0.0.1-r1: A Nagios plugin to check whether an OpenVPN server is alive
 net-analyzer/nagios-plugin-check_lm_sensors 4.1.1_p20191028: Nagios plugin to monitor the values of onboard sensors and disk temperatures
 net-analyzer/nagios-plugin-check_raid 4.0.8 4.0.10: Nagios/Icinga plugin to check current server's RAID status
-net-analyzer/nagios-plugins 2.2.1-r3 2.3.1-r1: Official plugins for Nagios
+net-analyzer/nagios-plugins 2.3.1-r1: Official plugins for Nagios
 net-analyzer/nagios-plugins-flameeyes 9999: Flameeyes's custom Nagios/Icinga plugins
 net-analyzer/nagios-plugins-linux-madrisan 25-r1 26-r1: Additional and alternative Nagios plugins for Linux
 net-analyzer/nagios-plugins-snmp 0.6.0-r2: Additional Nagios plugins for monitoring SNMP capable devices
@@ -16814,7 +16814,7 @@ sys-apps/aix-miscutils 0.1.1671: Miscellaneous helpers for AIX (currently just l
 sys-apps/apmd 3.2.2_p14-r1: Advanced Power Management Daemon
 sys-apps/apparmor 2.13.4: Userspace utils and init scripts for the AppArmor application security system
 sys-apps/apparmor-utils 2.13.4-r1: Additional userspace utils to assist with AppArmor profile management
-sys-apps/apply-default-acl 0.4.2 0.4.4: Apply default POSIX ACLs to files and directories
+sys-apps/apply-default-acl 0.4.4: Apply default POSIX ACLs to files and directories
 sys-apps/arrayprobe 2.0-r2: Utility to report status of an HP (Compaq) array controller (both IDA & CCISS)
 sys-apps/attr 2.4.48-r3 9999: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
