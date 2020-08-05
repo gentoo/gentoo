@@ -129,14 +129,41 @@ toml_usex() {
 	usex "$1" true false
 }
 
+boostrap_rust_version_check() {
+	# never call from pkg_pretend. eselect-rust may be not installed yet.
+	local rustc_wanted="$(ver_cut 1).$(($(ver_cut 2) - 1))"
+	local rustc_version=( $(eselect --brief rust show 2>/dev/null) )
+	rustc_version=${rustc_version[0]#rust-bin-}
+	rustc_version=${rustc_version#rust-}
+
+	[[ -z "${rustc_version}" ]] && die "Failed to determine rustc version!"
+
+	if ver_test "${rustc_version}" -lt "${rustc_wanted}" ; then
+		eerror "Rust >=${rustc_wanted} is required"
+		eerror "please run \'eselect rust\' and set correct rust version" 
+		die
+	else
+		einfo "Using rust ${rustc_version} to build"
+	fi
+}
+
 pre_build_checks() {
-	CHECKREQS_DISK_BUILD="9G"
+	local M=6144
+	M=$(( $(usex clippy 128 0) + ${M} ))
+	M=$(( $(usex miri 128 0) + ${M} ))
+	M=$(( $(usex rls 512 0) + ${M} ))
+	M=$(( $(usex rustfmt 256 0) + ${M} ))
+	M=$(( $(usex system-llvm 0 2048) + ${M} ))
+	M=$(( $(usex wasm 256 0) + ${M} ))
+	M=$(( $(usex debug 15 10) * ${M} / 10 ))
 	eshopts_push -s extglob
 	if is-flagq '-g?(gdb)?([1-9])'; then
-		CHECKREQS_DISK_BUILD="15G"
+		M=$(( 15 * ${M} / 10 ))
 	fi
 	eshopts_pop
-	check-reqs_pkg_setup
+	M=$(( $(usex system-bootstrap 0 1024) + ${M} ))
+	M=$(( $(usex doc 256 0) + ${M} ))
+	CHECKREQS_DISK_BUILD=${M}M check-reqs_pkg_${EBUILD_PHASE}
 }
 
 pkg_pretend() {
@@ -146,6 +173,7 @@ pkg_pretend() {
 pkg_setup() {
 	pre_build_checks
 	python-any-r1_pkg_setup
+	use system-bootstrap && boostrap_rust_version_check
 
 	# required to link agains system libs, otherwise
 	# crates use bundled sources and compile own static version
