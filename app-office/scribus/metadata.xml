@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>jlec@gentoo.org</email>
-  </maintainer>
+  <!-- maintainer-needed -->
   <use>
     <flag name="boost">Enable support for Boost based enhancement</flag>
     <flag name="hunspell">Enable support for spell checking with <pkg>app-text/hunspell</pkg></flag>

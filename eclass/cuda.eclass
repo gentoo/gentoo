@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 case "${EAPI:-0}" in
@@ -14,7 +14,7 @@ esac
 
 # @ECLASS: cuda.eclass
 # @MAINTAINER:
-# Justin Lecher <jlec@gentoo.org>
+# No maintainer <maintainer-needed@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Common functions for cuda packages
 # @DESCRIPTION:
