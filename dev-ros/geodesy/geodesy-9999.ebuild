@@ -32,3 +32,4 @@ DEPEND="${RDEPEND}
 		dev-cpp/gtest
 		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
 	)"
+PATCHES=( "${FILESDIR}/py3.patch" )
