@@ -7,9 +7,10 @@ inherit autotools bash-completion-r1 linux-info flag-o-matic pam readme.gentoo-r
 
 DESCRIPTION="LinuX Containers userspace utilities"
 HOMEPAGE="https://linuxcontainers.org/ https://github.com/lxc/lxc"
-SRC_URI="https://linuxcontainers.org/downloads/lxc/${P}.tar.gz"
+SRC_URI="https://linuxcontainers.org/downloads/lxc/${P}.tar.gz
+	https://github.com/lxc/lxc/archive/${P}.tar.gz"
 
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 LICENSE="LGPL-3"
 SLOT="0"
@@ -34,29 +35,35 @@ DEPEND="${RDEPEND}
 BDEPEND="doc? ( app-doc/doxygen )"
 PDEPEND="templates? ( app-emulation/lxc-templates )"
 
-CONFIG_CHECK="~CGROUPS ~CGROUP_DEVICE
-	~CPUSETS ~CGROUP_CPUACCT
-	~CGROUP_SCHED
-	~MEMCG
-
-	~NAMESPACES
-	~IPC_NS ~USER_NS ~PID_NS
+CONFIG_CHECK="~!NETPRIO_CGROUP
+	~CGROUPS
+	~CGROUP_CPUACCT
+	~CGROUP_DEVICE
 
 	~CGROUP_FREEZER
-	~UTS_NS ~NET_NS
-	~VETH ~MACVLAN
+	~CGROUP_SCHED
+	~CPUSETS
+	~IPC_NS
 
+	~MACVLAN
+	~MEMCG
+	~NAMESPACES
+	~NET_NS
+
+	~PID_NS
 	~POSIX_MQUEUE
-	~!NETPRIO_CGROUP"
+	~USER_NS
+	~UTS_NS
 
-ERROR_CGROUP_FREEZER="CONFIG_CGROUP_FREEZER:  needed to freeze containers"
-ERROR_UTS_NS="CONFIG_UTS_NS:  needed to unshare hostnames and uname info"
-ERROR_NET_NS="CONFIG_NET_NS:  needed for unshared network"
-ERROR_VETH="CONFIG_VETH:  needed for internal (host-to-container) networking"
-ERROR_MACVLAN="CONFIG_MACVLAN:  needed for internal (inter-container) networking"
-ERROR_POSIX_MQUEUE="CONFIG_POSIX_MQUEUE:  needed for lxc-execute command"
-ERROR_NETPRIO_CGROUP="CONFIG_NETPRIO_CGROUP:  as of kernel 3.3 and lxc 0.8.0_rc1 this causes LXCs to fail booting."
-ERROR_MEMCG="CONFIG_MEMCG is not set. This is needed for memory resource control in containers."
+	~VETH"
+
+ERROR_CGROUP_FREEZER="CONFIG_CGROUP_FREEZER: needed to freeze containers"
+ERROR_MACVLAN="CONFIG_MACVLAN: needed for internal (inter-container) networking"
+ERROR_MEMCG="CONFIG_MEMCG: needed for memory resource control in containers"
+ERROR_NET_NS="CONFIG_NET_NS: needed for unshared network"
+ERROR_POSIX_MQUEUE="CONFIG_POSIX_MQUEUE: needed for lxc-execute command"
+ERROR_UTS_NS="CONFIG_UTS_NS: needed to unshare hostnames and uname info"
+ERROR_VETH="CONFIG_VETH: needed for internal (host-to-container) networking"
 
 DOCS=( AUTHORS CONTRIBUTING MAINTAINERS NEWS README doc/FAQ.txt )
 
@@ -68,6 +75,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.0-bash-completion.patch
 	"${FILESDIR}"/${PN}-2.0.5-omit-sysconfig.patch # bug 558854
 )
+
+S="${WORKDIR}/lxc-${P}"
 
 src_prepare() {
 	default

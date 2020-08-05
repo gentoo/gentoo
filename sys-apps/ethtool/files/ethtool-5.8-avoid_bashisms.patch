@@ -1,0 +1,29 @@
+Running this script with dash results in an endless loop spitting out this:
+
+  ./test-driver: 62: [: --test-name: unexpected operator
+  ./test-driver: 78: [[: not found
+
+This is caused by two bashisms which are being fixed by the below patch
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+
+--- ethtool-5.8/test-driver
++++ ethtool-5.8/test-driver
+@@ -59,7 +59,7 @@
+ while test $# -gt 1; do
+  arg=${1%=*}
+  val=${1#*=}
+- if [ $arg == $val ]; then
++ if [ $arg = $val ]; then
+    val=$2
+    shift
+  fi
+@@ -75,7 +75,7 @@
+   --) break;;
+   -*) usage_error "invalid option: '$1'";;
+   esac
+-  [[ $arg != $val ]] && shift
++  [ $arg != $val ] && shift
+ done
+ 
+ missing_opts=
