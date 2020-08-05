@@ -14,7 +14,7 @@ esac
 
 # @ECLASS: cuda.eclass
 # @MAINTAINER:
-# No maintainer <maintainer-needed@gentoo.org>
+# Gentoo Science Project <sci@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Common functions for cuda packages
 # @DESCRIPTION:
