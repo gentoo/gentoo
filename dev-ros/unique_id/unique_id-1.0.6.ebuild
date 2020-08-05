@@ -25,3 +25,10 @@ DEPEND="${RDEPEND}
 		dev-cpp/gtest
 		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
 	)"
+PATCHES=( "${FILESDIR}/tests.patch" )
+
+src_test() {
+	# Those tests fail and are commented as undefined behavior in the code
+	export GTEST_FILTER='-BoostUUID.fromUrnString:BoostUUID.fromTooLongString:BoostUUID2.fromUrnString:BoostUUID2.fromTooLongString'
+	ros-catkin_src_test
+}
