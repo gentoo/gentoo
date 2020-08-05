@@ -107,4 +107,20 @@ pkg_postinst() {
 		elog "   /etc/kexec.conf"
 		elog "Please adopt it to your needs as there is no autoconfig anymore"
 	fi
+
+	local n_root_args=$(grep -o -- '\<root=' /proc/cmdline 2>/dev/null | wc -l)
+	local has_rootpart_set=no
+	if [[ -f "${EROOT}/etc/conf.d/kexec" ]]; then
+		if grep -q -E -- '^ROOTPART=' "${EROOT}/etc/conf.d/kexec" 2>/dev/null; then
+			has_rootpart_set=yes
+		fi
+	fi
+
+	if [[ ${n_root_args} > 1 && "${has_rootpart_set}" == "no"  ]]; then
+		ewarn "WARNING: Multiple root arguments (root=) on kernel command-line detected!"
+		ewarn "This was probably caused by a previous version of ${PN}."
+		ewarn "Please reboot system once *without* kexec to avoid boot problems"
+		ewarn "in case running system and initramfs do not agree on detected"
+		ewarn "root device name!"
+	fi
 }
