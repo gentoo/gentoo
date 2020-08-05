@@ -6,7 +6,7 @@ EAPI="7"
 CMAKE_MAKEFILE_GENERATOR=emake
 
 inherit check-reqs cmake flag-o-matic linux-info \
-	prefix toolchain-funcs multilib-minimal
+	multiprocessing prefix toolchain-funcs multilib-minimal
 
 # Patch version
 PATCH_SET="https://dev.gentoo.org/~whissi/dist/mysql/${PN}-5.7.31-patches-01.tar.xz"
@@ -467,10 +467,25 @@ src_test() {
 
 	# Ensure that parallel runs don't die
 	export MTR_BUILD_THREAD="$((${RANDOM} % 100))"
-	# Enable parallel testing, auto will try to detect number of cores
-	# You may set this by hand.
-	# The default maximum is 8 unless MTR_MAX_PARALLEL is increased
-	export MTR_PARALLEL="${MTR_PARALLEL:-auto}"
+
+	if [[ -z "${MTR_PARALLEL}" ]] ; then
+		local -x MTR_PARALLEL=$(makeopts_jobs)
+
+		if [[ ${MTR_PARALLEL} -gt 4 ]] ; then
+			# Running multiple tests in parallel usually require higher ulimit
+			# and fs.aio-max-nr setting. In addition, tests like main.multi_update
+			# are known to hit timeout when system is busy.
+			# To avoid test failure we will limit MTR_PARALLEL to 4 instead of
+			# using "auto".
+			local info_msg="Parallel MySQL test suite jobs limited to 4 (MAKEOPTS=${MTR_PARALLEL})"
+			info_msg+=" to avoid test failures. Set MTR_PARALLEL if you know what you are doing!"
+			einfo "${info_msg}"
+			unset info_msg
+			MTR_PARALLEL=4
+		fi
+	else
+		einfo "MTR_PARALLEL is set to '${MTR_PARALLEL}'"
+	fi
 
 	# create directories because mysqladmin might run out of order
 	mkdir -p "${T}"/var-tests{,/log} || die
