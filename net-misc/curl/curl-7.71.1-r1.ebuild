@@ -29,15 +29,13 @@ RDEPEND="ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 			dev-libs/nettle:0=[${MULTILIB_USEDEP}]
 			app-misc/ca-certificates
 		)
-		libressl? (
-			dev-libs/libressl:0=[static-libs?,${MULTILIB_USEDEP}]
-		)
 		mbedtls? (
 			net-libs/mbedtls:0=[${MULTILIB_USEDEP}]
 			app-misc/ca-certificates
 		)
 		openssl? (
-			dev-libs/openssl:0=[static-libs?,${MULTILIB_USEDEP}]
+			!libressl? ( dev-libs/openssl:0=[static-libs?,${MULTILIB_USEDEP}] )
+			libressl? ( dev-libs/libressl:0=[static-libs?,${MULTILIB_USEDEP}] )
 		)
 		nss? (
 			dev-libs/nss:0[${MULTILIB_USEDEP}]
@@ -76,13 +74,11 @@ BDEPEND="virtual/pkgconfig
 	)"
 
 # c-ares must be disabled for threads
-# only one of libressl or openssl can be enabled
 # only one default ssl provider can be enabled
 REQUIRED_USE="
 	winssl? ( elibc_Winnt )
 	threads? ( !adns )
 	ssl? (
-		libressl? ( !openssl )
 		^^ (
 			curl_ssl_gnutls
 			curl_ssl_libressl
@@ -131,10 +127,6 @@ multilib_src_configure() {
 			einfo "SSL provided by gnutls"
 			myconf+=( --with-gnutls --with-nettle )
 		fi
-		if use libressl || use curl_ssl_libressl; then
-			einfo "SSL provided by LibreSSL"
-			myconf+=( --with-ssl --with-ca-path="${EPREFIX}"/etc/ssl/certs )
-		fi
 		if use mbedtls || use curl_ssl_mbedtls; then
 			einfo "SSL provided by mbedtls"
 			myconf+=( --with-mbedtls )
@@ -143,7 +135,7 @@ multilib_src_configure() {
 			einfo "SSL provided by nss"
 			myconf+=( --with-nss )
 		fi
-		if use openssl || use curl_ssl_openssl; then
+		if use openssl || use curl_ssl_openssl || use curl_ssl_libressl; then
 			einfo "SSL provided by openssl"
 			myconf+=( --with-ssl --with-ca-path="${EPREFIX}"/etc/ssl/certs )
 		fi
