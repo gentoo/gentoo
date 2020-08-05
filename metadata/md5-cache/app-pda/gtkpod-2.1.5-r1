@@ -5,11 +5,11 @@ DESCRIPTION=A graphical user interface to the Apple productline
 EAPI=7
 HOMEPAGE=http://www.gtkpod.org/
 IUSE=aac clutter curl cdr flac gstreamer mp3 vorbis
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2 FDL-1.2
 RDEPEND=>=dev-libs/gdl-3.6:3 >=dev-libs/glib-2.31:2 >=dev-libs/libxml2-2.7.7:2 >=dev-util/anjuta-3.6 >=media-libs/libgpod-0.8.2:= >=media-libs/libid3tag-0.15 >=x11-libs/gtk+-3.0.8:3 aac? ( media-libs/faad2 ) clutter? ( >=media-libs/clutter-gtk-1.2:1.0 ) curl? ( >=net-misc/curl-7.10 ) flac? ( media-libs/flac ) gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 cdr? ( >=app-cdr/brasero-3 >=media-libs/libdiscid-0.2.2 media-libs/musicbrainz:5 ) ) mp3? ( media-sound/lame ) vorbis? ( media-libs/libvorbis media-sound/vorbis-tools ) gstreamer? ( media-plugins/gst-plugins-meta:1.0 )
 REQUIRED_USE=cdr? ( gstreamer )
 SLOT=0
 SRC_URI=mirror://sourceforge/gtkpod/gtkpod-2.1.5.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=ab3e39ea9bcf26971b5e10b20b4ac6f6
+_md5_=5007372bf273f17a11e3879e4e0b8e42

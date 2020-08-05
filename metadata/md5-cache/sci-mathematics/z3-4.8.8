@@ -5,11 +5,11 @@ DESCRIPTION=An efficient theorem prover
 EAPI=7
 HOMEPAGE=https://github.com/Z3Prover/z3/
 IUSE=doc examples gmp isabelle java python abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_riscv_lp64d abi_riscv_lp64 abi_s390_32 abi_s390_64 python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8
-KEYWORDS=amd64 arm arm64 ppc64 ~x86
+KEYWORDS=amd64 arm arm64 ppc64 x86
 LICENSE=MIT
 RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) gmp? ( dev-libs/gmp:0=[cxx,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_riscv_lp64d(-)?,abi_riscv_lp64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] )
 REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 )
 SLOT=0/4.8
 SRC_URI=https://github.com/Z3Prover/z3/archive/z3-4.8.8.tar.gz
 _eclasses_=cmake	f274d2f953f93e2d88cd3e0b2ce376a9	cmake-multilib	b396704c8c04bb210b7b45dff5c67fea	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multibuild	b2c915190b051f55a23b9354b9849847	multilib	2477ebe553d3e4d2c606191fe6c33602	multilib-build	8ad5b5535b73a8971881f09277b939f4	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-single-r1	674c48c926cbb44e91b656e0399d8f54	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=c8e014d87009968b73c62e17cee7a5e9
+_md5_=66676e0a8436ab9bdde209ab418ee9e2
