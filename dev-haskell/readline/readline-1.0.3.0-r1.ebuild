@@ -26,5 +26,8 @@ PATCHES=("${FILESDIR}"/${P}-tinfo.patch)
 src_prepare() {
 	default
 
+	# Default setup is not compatible to cabal-3
+	rm Setup.hs || die
+
 	eautoconf
 }
