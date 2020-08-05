@@ -8962,7 +8962,7 @@ dev-python/reportlab 3.5.42: Tools for generating printable PDF documents from a
 dev-python/repoze-lru 0.7-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.8: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/requests 2.23.0 2.24.0: HTTP library for human beings
-dev-python/requests-cache 0.4.12 0.4.12-r1: Persistent cache for requests library
+dev-python/requests-cache 0.4.12 0.4.12-r1 0.5.2: Persistent cache for requests library
 dev-python/requests-credssp 1.1.1: HTTPS CredSSP authentication with the requests library
 dev-python/requests-file 1.4.3: File transport adapter for Requests
 dev-python/requests-kerberos 0.12.0-r1: A Kerberos authentication handler for python-requests
@@ -12466,7 +12466,7 @@ mail-mta/netqmail 1.06-r13: qmail -- a secure, reliable, efficient, simple messa
 mail-mta/notqmail 1.08-r2 9999: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 2.2-r1: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.7.1_p1: Lightweight but featured SMTP daemon from OpenBSD
-mail-mta/postfix 3.5.1 3.5.2 3.5.3 3.5.4 3.5.6 3.6_pre20200725: A fast and secure drop-in replacement for sendmail
+mail-mta/postfix 3.5.1 3.5.6 3.6_pre20200725: A fast and secure drop-in replacement for sendmail
 mail-mta/protonmail-bridge-bin 1.2.6 1.2.7: Serves ProtonMail to IMAP/SMTP clients
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
 mail-mta/sendmail 8.15.2-r2: Widely-used Mail Transport Agent (MTA)
@@ -14943,7 +14943,7 @@ net-mail/courierpassd 1.1.2-r1: Courierpassd is a utility for changing a user's 
 net-mail/cyrus-imapd 3.0.10-r1 3.0.11 3.0.13: The Cyrus IMAP Server
 net-mail/dbmail 3.2.3-r1 3.2.3-r2: Fast and scalable sql based email services
 net-mail/dot-forward 0.71-r4: reads sendmail's .forward files under qmail
-net-mail/dovecot 2.2.36.4 2.3.7.2 2.3.9.3 2.3.10 2.3.10.1: An IMAP and POP3 server written with security primarily in mind
+net-mail/dovecot 2.2.36.4 2.3.7.2 2.3.10.1: An IMAP and POP3 server written with security primarily in mind
 net-mail/email 3.1.3 3.1.3-r1: Advanced CLI tool for sending email
 net-mail/eps 1.7-r1: Inter7 Email Processing and mht System library
 net-mail/ezmlm-idx 7.0.0-r3: Simple yet powerful mailing list manager for qmail
