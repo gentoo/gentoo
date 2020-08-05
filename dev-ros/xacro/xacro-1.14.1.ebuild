@@ -22,3 +22,9 @@ DEPEND="${RDEPEND}
 "
 RDEPEND="${RDEPEND}
 	dev-ros/roslaunch[${PYTHON_SINGLE_USEDEP}]"
+PATCHES=( "${FILESDIR}/tests.patch" )
+
+src_test() {
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	ros-catkin_src_test
+}
