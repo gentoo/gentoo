@@ -41,7 +41,7 @@ dev-libs/liboobs
 # Starting with this version pambase was
 # completly rewritten in python.
 # Initial testing needed.
-=sys-auth/pambase-20200804
+=sys-auth/pambase-20200805
 
 # Jack Todaro <solpeth@posteo.org> (2020-08-04)
 # Deprecated in favour of dev-haskell/dbus.
