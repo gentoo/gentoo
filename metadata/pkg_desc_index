@@ -3420,7 +3420,7 @@ dev-ada/gnat_util 2017-r2 2018-r2 2019-r1: Provides access to GNAT compiler inte
 dev-ada/gnatcoll-bindings 2019-r1 2020: GNAT Component Collection
 dev-ada/gnatcoll-core 2019-r1 2020: GNAT Component Collection Core packages
 dev-ada/gnatcoll-db 2019: GNAT Component Collection
-dev-ada/gnatmem 2019-r1: Monitors dynamic allocation and deallocation activity in a program
+dev-ada/gnatmem 2019-r1 2020: Monitors dynamic allocation and deallocation activity in a program
 dev-ada/gnatsymbolize 2019-r1: Translates addresses into filename, line number, and function names
 dev-ada/gprbuild 2017-r2 2019-r1 2020: Multi-Language Management
 dev-ada/gps 2019-r1: The GNAT Programming Studio
@@ -14686,7 +14686,7 @@ net-im/transwhat 0.2.2_p20190426: A WhatsApp XMPP Gateway based on Spectrum 2 an
 net-im/vacuum 1.3.0_pre20180105 9999: Qt Crossplatform Jabber client
 net-im/yowsup 3.2.3_p20190905: A library that enables you to build applications which use the WhatsApp service
 net-im/ysm 2.9.9.1-r1: A console ICQ client supporting versions 7/8
-net-im/zoom 5.0.418682.0603 5.1.418436.0628 5.1.422789.0705: Video conferencing and web conferencing service
+net-im/zoom 5.1.422789.0705 5.2.440215.0803: Video conferencing and web conferencing service
 net-irc/anope 2.0.6 2.0.7: Anope IRC Services
 net-irc/atheme-services 7.2.10_p2-r2: A portable and secure set of open-source and modular IRC services
 net-irc/bnc 2.9.4-r1: BNC (BouNCe) is used as a gateway to an IRC Server
