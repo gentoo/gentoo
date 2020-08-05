@@ -13,7 +13,6 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE=""
 
-
 TEST_DATA="
 basic_localization_stage_indexed.bag
 global_localization_stage_indexed.bag
