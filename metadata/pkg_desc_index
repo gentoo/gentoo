@@ -865,7 +865,7 @@ app-cdr/xbiso 0.6.1-r2 0.6.1-r3: Xbox xdvdfs ISO extraction utility
 app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD writing
 app-cdr/xfburn 0.6.2: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
-app-crypt/acme 1.5.0 1.6.0 9999: An implementation of the ACME protocol
+app-crypt/acme 1.5.0 1.6.0 1.7.0 9999: An implementation of the ACME protocol
 app-crypt/acme-client 0.1.16: a secure ACME client
 app-crypt/acme-sh 2.8.3 2.8.5 9999: An ACME Shell script
 app-crypt/acme-tiny 4.0.3 4.0.4 9999: A tiny, auditable script for Let's Encrypt's ACME Protocol
@@ -882,10 +882,10 @@ app-crypt/bsign 0.4.5-r1: embed secure hashes (SHA1) and digital signatures (GNU
 app-crypt/cardpeek 0.7.2 0.8.4: Tool to read the contents of smartcards
 app-crypt/ccid 1.4.30 1.4.31 1.4.32 1.4.33: CCID free software driver
 app-crypt/ccrypt 1.11 1.11-r1: Encryption and decryption
-app-crypt/certbot 1.5.0 1.6.0 9999: Let's encrypt client to automate deployment of X.509 certificates
-app-crypt/certbot-apache 1.5.0 1.6.0 9999: Apache plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot 1.5.0 1.6.0 1.7.0 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/certbot-apache 1.5.0 1.6.0 1.7.0 9999: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/certbot-dns-nsone 0.39.0-r1: NS1 DNS Authenticator plugin for Certbot (Let's Encrypt Client)
-app-crypt/certbot-nginx 1.5.0 1.6.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot-nginx 1.5.0 1.6.0 1.7.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
 app-crypt/cfssl 1.4.1: Cloudflare's PKI and TLS toolkit
 app-crypt/chntpw 140201: Offline Windows NT Password & Registry Editor
 app-crypt/ckpass 0.2-r1: ncurses based password database client compatible with KeePass 1.x databases
@@ -18101,9 +18101,9 @@ www-client/lynx 2.8.9_p1 2.9.0_pre4 2.9.0_pre5: An excellent console-based web b
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r2: a free, open source web browser
-www-client/opera 69.0.3686.77 70.0.3728.71: A fast and secure web browser
+www-client/opera 70.0.3728.95: A fast and secure web browser
 www-client/opera-beta 70.0.3728.59: A fast and secure web browser
-www-client/opera-developer 71.0.3735.0 71.0.3742.0 71.0.3749.0 71.0.3756.0 71.0.3763.0 71.0.3770.0: A fast and secure web browser
+www-client/opera-developer 71.0.3763.0 71.0.3770.0: A fast and secure web browser
 www-client/otter 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.12.0 1.13.0 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
@@ -18111,8 +18111,8 @@ www-client/seamonkey 2.53.2 2.53.3: Seamonkey Web Browser
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 3.1.1929.48_p1 3.2.1967.41_p1: A browser for our friends
-www-client/vivaldi-snapshot 3.2.1957.9_p1 3.2.1959.3_p1 3.2.1964.3_p1 3.2.1967.30_p1 3.2.1967.38_p1: A browser for our friends
+www-client/vivaldi 3.2.1967.41_p1: A browser for our friends
+www-client/vivaldi-snapshot 3.2.1967.38_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.8-r1: AWStats is short for Advanced Web Statistics
