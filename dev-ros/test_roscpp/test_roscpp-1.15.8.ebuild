@@ -28,3 +28,9 @@ DEPEND="${RDEPEND}
 	)
 "
 REQUIRED_USE="test? ( ros_messages_cxx )"
+PATCHES=( "${FILESDIR}/tests.patch" )
+
+src_test() {
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	ros-catkin_src_test
+}
