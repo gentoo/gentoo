@@ -35,6 +35,8 @@ RDEPEND="${DEPEND}
 	!<kde-apps/kdepim-addons-18.07.80
 "
 
+PATCHES=( "${FILESDIR}/${P}-poppler-20.08.patch" ) # bug 735800
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package barcode ZXing)
