@@ -29,3 +29,8 @@ BDEPEND="
 	virtual/pkgconfig
 "
 PATCHES=( "${FILESDIR}/boostpython.patch" )
+
+src_test() {
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	ros-catkin_src_test
+}
