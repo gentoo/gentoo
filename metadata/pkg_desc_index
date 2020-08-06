@@ -474,7 +474,7 @@ app-admin/chrpath 0.13-r2 0.16: Chrpath can modify the rpath and runpath of ELF 
 app-admin/clog 1.3.0: clog is a colorized log tail utility
 app-admin/clsync 0.4.4 9999: Live sync tool based on inotify, written in GNU C
 app-admin/clustershell 1.8.3: Python framework for efficient cluster administration
-app-admin/conky 1.10.8-r9 1.11.5 1.11.6: An advanced, highly configurable system monitor for X
+app-admin/conky 1.10.8-r9 1.10.8-r10 1.11.5 1.11.6: An advanced, highly configurable system monitor for X
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.2.3 8.2.4 8.2.5: Serial Console Manager
 app-admin/consul 1.7.4 1.8.0 1.8.1: A tool for service discovery, monitoring and configuration
@@ -11964,7 +11964,7 @@ kde-apps/akonadi-search 20.04.3: Libraries and daemons to implement searching in
 kde-apps/akonadiconsole 20.04.3: Application for debugging Akonadi Resources
 kde-apps/akregator 20.04.3: News feed aggregator
 kde-apps/analitza 20.04.3: KDE library for mathematical features
-kde-apps/ark 20.04.3 20.04.3-r1: KDE Archiving tool
+kde-apps/ark 20.04.3-r1: KDE Archiving tool
 kde-apps/artikulate 20.04.3: Language learning application that helps improving pronunciation skills
 kde-apps/audiocd-kio 20.04.3: kioslave for accessing audio CDs
 kde-apps/baloo-widgets 20.04.3: Widget library for baloo
@@ -12041,7 +12041,7 @@ kde-apps/kdenlive 20.04.3: Non-linear video editing suite by KDE
 kde-apps/kdepim-addons 20.04.3: Plugins for KDE Personal Information Management Suite
 kde-apps/kdepim-apps-libs 20.04.3: Libraries for KDE PIM applications
 kde-apps/kdepim-meta 20.04.3: KDE PIM - merge this to pull in all kdepim-derived packages
-kde-apps/kdepim-runtime 20.04.3 20.04.3-r1: Runtime plugin collection to extend the functionality of KDE PIM
+kde-apps/kdepim-runtime 20.04.3-r1: Runtime plugin collection to extend the functionality of KDE PIM
 kde-apps/kdesdk-kioslaves 20.04.3: kioslaves from kdesdk package
 kde-apps/kdesdk-meta 20.04.3: KDE SDK - merge this to pull in all kdesdk-derived packages
 kde-apps/kdesdk-thumbnailers 20.04.3: Thumbnail generator for PO files
@@ -12079,7 +12079,7 @@ kde-apps/klines 20.04.3: A little KDE game about balls and how to get rid of the
 kde-apps/kmag 20.04.3: KDE screen magnifier
 kde-apps/kmahjongg 20.04.3: A tile matching game for one or two players
 kde-apps/kmail 20.04.3: Email client, supporting POP3 and IMAP mailboxes.
-kde-apps/kmail-account-wizard 20.04.3 20.04.3-r1: Assistant for KMail accounts configuration
+kde-apps/kmail-account-wizard 20.04.3-r1: Assistant for KMail accounts configuration
 kde-apps/kmailtransport 20.04.3: Mail transport service
 kde-apps/kmbox 20.04.3: Library for accessing MBox format mail storages
 kde-apps/kmime 20.04.3: Libary for handling mail messages and newsgroup articles

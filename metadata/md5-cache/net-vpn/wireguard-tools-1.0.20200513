@@ -10,4 +10,4 @@ RDEPEND=wg-quick? ( || ( net-firewall/nftables net-firewall/iptables ) virtual/r
 SLOT=0
 SRC_URI=https://git.zx2c4.com/wireguard-tools/snapshot/wireguard-tools-1.0.20200513.tar.xz
 _eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=b036cda3064eb58de937a94202974be6
+_md5_=10e1510b0043df8ee237b0d62cf6af10
