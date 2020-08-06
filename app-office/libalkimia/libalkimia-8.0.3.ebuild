@@ -7,6 +7,7 @@ ECM_TEST="forceoptional"
 KDE_ORG_NAME="alkimia"
 KFMIN=5.60.0
 QTMIN=5.12.3
+VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
@@ -65,4 +66,12 @@ src_configure() {
 		-DBUILD_APPLETS=$(usex plasma)
 	)
 	ecm_src_configure
+}
+
+src_test() {
+	# Depends on BUILD_WITH_WEBKIT, bug 736128
+	local myctestargs=(
+		-E "(alkonlinequotestest)"
+	)
+	ecm_src_test
 }
