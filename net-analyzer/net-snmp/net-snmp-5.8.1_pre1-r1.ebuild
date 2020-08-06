@@ -79,6 +79,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.8-pcap.patch
 	"${FILESDIR}"/${PN}-5.8-tinfo.patch
 	"${FILESDIR}"/${PN}-5.8.1-pkg-config.patch
+	"${FILESDIR}"/${PN}-5.8.1-net-snmp-config-libdir.patch
+	"${FILESDIR}"/${PN}-5.8.1-mysqlclient.patch
 )
 
 pkg_setup() {
