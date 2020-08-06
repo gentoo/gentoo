@@ -4092,7 +4092,7 @@ dev-haskell/hspec-core 2.1.2 2.1.4 2.2.1 2.2.4 2.7.1: A Testing Framework for Ha
 dev-haskell/hspec-discover 2.1.2 2.1.4 2.2.1 2.2.4 2.7.1: Automatically discover and run Hspec tests
 dev-haskell/hspec-expectations 0.3.2 0.3.3 0.5.0.1 0.6.1 0.6.1.1 0.7.2 0.8.2: Catchy combinators for HUnit
 dev-haskell/hspec-meta 1.7.2 1.8.1 1.8.3 1.10.0 2.0.0 2.2.0 2.2.1 2.6.0: A version of Hspec which is used to test Hspec itself
-dev-haskell/hspec-smallcheck 0.4.1: SmallCheck support for the Hspec testing framework
+dev-haskell/hspec-smallcheck 0.5.2: SmallCheck support for the Hspec testing framework
 dev-haskell/hsql 1.8.2-r1: Database access from Haskell
 dev-haskell/hsql-mysql 1.8.2-r1 1.8.3: MySQL driver for HSQL
 dev-haskell/hsql-odbc 1.8.2: A Haskell Interface to ODBC
@@ -4333,9 +4333,9 @@ dev-haskell/resourcet 0.4.9 0.4.10 1.1.2.2 1.1.7 1.1.7.4 1.1.9 1.2.4.2: Determin
 dev-haskell/retry 0.7.4.2 0.8.1.1: Retry combinators for monadic actions that may fail
 dev-haskell/rfc5051 0.1.0.3 0.1.0.4: Simple unicode collation as per RFC5051
 dev-haskell/riff 0.3.0.1: RIFF parser for Haskell
-dev-haskell/rio 0.1.17.0: A standard library for Haskell
+dev-haskell/rio 0.1.18.0: A standard library for Haskell
 dev-haskell/rio-orphans 0.1.1.0: Orphan instances for the RIO type in the rio package
-dev-haskell/rio-prettyprint 0.1.0.0: Pretty-printing for RIO
+dev-haskell/rio-prettyprint 0.1.1.0: Pretty-printing for RIO
 dev-haskell/rsa 2.3.1: Implementation of RSA, using the padding schemes of PKCS#1 v2.1
 dev-haskell/safe 0.3.9 0.3.17: Library of safe (exception free) functions
 dev-haskell/safe-exceptions 0.1.4.0 0.1.7.0: Safe, consistent, and easy exception handling
@@ -4375,15 +4375,15 @@ dev-haskell/socks 0.5.4 0.5.5 0.6.1: Socks proxy (version 5) implementation
 dev-haskell/sop-core 0.5.0.1: True Sums of Products
 dev-haskell/split 0.2.2 0.2.3 0.2.3.1 0.2.3.3 0.2.3.4: Combinator library for splitting lists
 dev-haskell/splitmix 0.0.4: Fast Splittable PRNG
-dev-haskell/stack 1.3.2 2.3.1: The Haskell Tool Stack
+dev-haskell/stack 2.3.1: The Haskell Tool Stack
 dev-haskell/stack-bin 1.5.1 1.6.1 1.7.1 2.1.3 2.3.1: The Haskell Tool Stack (Binary)
 dev-haskell/statevar 1.0.0.0-r1 1.0.1.0 1.1.0.3 1.1.0.4 1.1.1.1: State variables
 dev-haskell/statistics 0.10.5.2 0.11.0.3 0.13.2.3 0.13.3.0: A library of statistical types, data, and functions
 dev-haskell/stm 2.4.2 2.4.4.1 2.5.0.0: Software Transactional Memory
 dev-haskell/stm-chans 3.0.0.4: Additional types of channels for STM
 dev-haskell/stmonadtrans 0.3.3 0.3.4 0.4.4: A monad transformer version of the ST monad
-dev-haskell/store 0.3.1 0.7.5: Fast binary serialization
-dev-haskell/store-core 0.3 0.4.4.2: Fast and lightweight binary serialization
+dev-haskell/store 0.7.6: Fast binary serialization
+dev-haskell/store-core 0.4.4.3: Fast and lightweight binary serialization
 dev-haskell/stream 0.4.7.2: A library for manipulating infinite lists
 dev-haskell/streaming-commons 0.1.12.1 0.1.15 0.1.15.4 0.1.16 0.2.1.2: Common lower-level functions needed by various streaming data libraries
 dev-haskell/strict 0.3.2: Strict data types and String IO
@@ -4475,7 +4475,7 @@ dev-haskell/unix-time 0.3.5 0.3.6 0.3.7 0.4.7: Unix time parser/formatter and ut
 dev-haskell/unixutils 1.54.1: A crude interface between Haskell and Unix-like operating systems
 dev-haskell/unliftio 0.2.12.1: The MonadUnliftIO typeclass for unlifting monads to IO (batteries included)
 dev-haskell/unliftio-core 0.1.2.0: The MonadUnliftIO typeclass for unlifting monads to IO
-dev-haskell/unordered-containers 0.2.3.3 0.2.6.0 0.2.7.0 0.2.7.1 0.2.7.2 0.2.10.0: Efficient hashing-based container types
+dev-haskell/unordered-containers 0.2.12.0: Efficient hashing-based container types
 dev-haskell/uri 0.1.6.4: Library for working with URIs
 dev-haskell/uri-bytestring 0.2.2.1 0.3.2.2: Haskell URI parsing as ByteStrings
 dev-haskell/uri-bytestring-aeson 0.1.0.7: Aeson instances for URI Bytestring
