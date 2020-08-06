@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile
+DEPEND=x11-libs/libX11 x11-libs/libXft x11-libs/libXinerama x11-libs/libXres virtual/pkgconfig
+DESCRIPTION=lightweight EWMH window switcher with features and looks of dmenu
+EAPI=7
+HOMEPAGE=https://github.com/seanpringle/simpleswitcher
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=x11-libs/libX11 x11-libs/libXft x11-libs/libXinerama x11-libs/libXres
+SLOT=0
+SRC_URI=https://github.com/seanpringle/simpleswitcher/archive/7230421aa2e3364e3b4620f1ea3760f8f810b1a5.tar.gz -> simpleswitcher-20191008-7230421aa2e3364e3b4620f1ea3760f8f810b1a5.tar.gz
+_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=400d74ea230837ec1a3e9f78c411757f

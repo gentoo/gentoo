@@ -1,0 +1,15 @@
+BDEPEND=>=dev-lang/go-1.12 app-arch/unzip virtual/pkgconfig
+DEFINED_PHASES=compile install postinst prepare test unpack
+DEPEND=server? ( acct-group/etcd acct-user/etcd )
+DESCRIPTION=Highly-available key value store for shared configuration and service discovery
+EAPI=7
+HOMEPAGE=https://github.com/etcd-io/etcd
+IUSE=doc +server
+KEYWORDS=~amd64
+LICENSE=Apache-2.0 BSD BSD-2 MIT
+RDEPEND=server? ( acct-group/etcd acct-user/etcd ) !dev-db/etcdctl
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/etcd-io/etcd/archive/v3.4.10.tar.gz -> etcd-3.4.10.tar.gz
+_eclasses_=go-module	45394825d9260b479aa1cf252ea58e01	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=c7ed6c9eca2d0cc0e912ea01bedeef77

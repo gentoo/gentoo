@@ -1,5 +1,5 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile install unpack
+DEFINED_PHASES=compile unpack
 DEPEND=x11-libs/libX11 x11-libs/libXft x11-libs/libXinerama x11-libs/libXres virtual/pkgconfig
 DESCRIPTION=lightweight EWMH window switcher with features and looks of dmenu
 EAPI=7
@@ -9,4 +9,4 @@ PROPERTIES=live
 RDEPEND=x11-libs/libX11 x11-libs/libXft x11-libs/libXinerama x11-libs/libXres
 SLOT=0
 _eclasses_=git-r3	8ec5b53812bce105ae7943930e4660f8	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=911dc1d2ae69d5b368f87ba86414a8ee
+_md5_=2a4e5a439edbde2ee8af780019003cc3
