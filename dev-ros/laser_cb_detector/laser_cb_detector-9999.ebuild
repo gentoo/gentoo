@@ -32,4 +32,4 @@ DEPEND="${RDEPEND}
 		dev-cpp/gtest
 	)
 "
-PATCHES=( "${FILESDIR}/gcc6.patch" "${FILESDIR}/boost170.patch" "${FILESDIR}/ocv4.patch" )
+PATCHES=( "${FILESDIR}/gcc6.patch" "${FILESDIR}/boost170.patch" "${FILESDIR}/ocv4.patch" "${FILESDIR}/ocv4-2.patch" )
