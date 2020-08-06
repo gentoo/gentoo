@@ -18,6 +18,8 @@ KEYWORDS="~amd64"
 RESTRICT="mirror bindist"
 
 RDEPEND="
+	app-accessibility/at-spi2-atk:2
+	app-accessibility/at-spi2-core:2
 	dev-libs/atk
 	dev-libs/expat
 	dev-libs/glib:2
@@ -28,6 +30,7 @@ RDEPEND="
 	media-libs/freetype:2
 	net-print/cups
 	sys-apps/dbus
+	sys-apps/util-linux
 	sys-libs/libcxx
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
