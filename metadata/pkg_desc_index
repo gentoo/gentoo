@@ -6367,7 +6367,7 @@ dev-perl/Dist-Zilla-Plugin-StaticInstall 0.12.0: Identify a distribution as elig
 dev-perl/Dist-Zilla-Plugin-SurgicalPodWeaver 0.2.300: Surgically apply PodWeaver
 dev-perl/Dist-Zilla-Plugin-Test-CPAN-Changes 0.12.0: release tests for your changelog
 dev-perl/Dist-Zilla-Plugin-Test-Compile 2.58.0: Common tests to check syntax of your modules, using only core modules
-dev-perl/Dist-Zilla-Plugin-Test-MinimumVersion 2.0.7: Release tests for minimum required versions
+dev-perl/Dist-Zilla-Plugin-Test-MinimumVersion 2.0.7 2.0.10: Release tests for minimum required versions
 dev-perl/Dist-Zilla-Plugin-Test-Perl-Critic 3.1.0: Tests to check your code against best practices
 dev-perl/Dist-Zilla-Plugin-VersionFromMainModule 0.40.0: Set the distribution version from your main module's
 dev-perl/Dist-Zilla-Role-FileWatcher 0.6.0: Receive notification when something changes a file's contents
@@ -8062,7 +8062,7 @@ dev-python/django-otp 0.9.3 0.9.4: Django framework adding two-factor authentica
 dev-python/django-pglocks 1.0.4: PostgreSQL locking context managers and functions for Django
 dev-python/django-prometheus 2.0.0: Library to export django metrics for prometheus
 dev-python/django-redis 4.10.0: Full featured redis cache backend for Django.
-dev-python/django-rq 2.3.0: An app that provides django integration for RQ (Redis Queue)
+dev-python/django-rq 2.3.0 2.3.2: An app that provides django integration for RQ (Redis Queue)
 dev-python/django-sortedm2m 2.0.0 3.0.1 3.0.2: Drop-in replacement for django's many to many field with sorted relations
 dev-python/django-tables2 2.2.1: Table/data-grid framework for Django
 dev-python/django-tagging 0.5.0: Generic tagging application for Django
