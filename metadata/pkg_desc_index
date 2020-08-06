@@ -5153,7 +5153,7 @@ dev-lang/orc 0.4.28-r1 0.4.29 0.4.31: The Oil Runtime Compiler, a just-in-time c
 dev-lang/parrot 7.1.0-r1 7.5.0-r1 7.11.0-r1 8.1.0-r1 8.1.0-r2: Virtual machine designed to compile and execute bytecode for dynamic languages
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.3 5.30.3-r1 5.30.3-r2 5.32.0: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 7.2.31 7.2.32 7.3.18 7.3.19 7.3.20 7.4.6 7.4.7 7.4.8-r1: The PHP language runtime engine
+dev-lang/php 7.2.31 7.2.32 7.2.33 7.3.18 7.3.19 7.3.20 7.3.21 7.4.6 7.4.7 7.4.8-r1 7.4.9: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6 5.8: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.18-r1 3.6.11-r2 3.7.8-r2 3.8.4-r1 3.8.5 3.9.0_beta3 3.9.0_beta4 3.9.0_beta4-r1 3.9.0_beta5: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r1 9999: Python script wrapper
@@ -5351,7 +5351,7 @@ dev-libs/libbase58 0.1.4: C implementation of Bitcoin's base58 encoding
 dev-libs/libbpf 0.0.6 0.0.7 0.0.8 0.0.9-r1 9999: Stand-alone build of libbpf from the Linux kernel
 dev-libs/libbrahe 1.1.0-r1: A Heterogenous C Library of Numeric Functions
 dev-libs/libbsd 0.10.0: An library to provide useful functions commonly found on BSD systems
-dev-libs/libbson 0.98.0 1.1.2 1.1.10 1.3.5 1.3.6 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0 1.13.1 1.14.0 1.15.1 1.16.2: Library routines related to building,parsing and iterating BSON documents
+dev-libs/libbson 0.98.0 1.1.2 1.1.10 1.3.5 1.3.6 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0 1.13.1 1.14.0 1.15.1 1.16.2 1.17.0: Library routines related to building,parsing and iterating BSON documents
 dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.5.2_p1: Open-source library for reading, mastering and writing optical discs
 dev-libs/libbytesize 2.2 2.3 2.4: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
@@ -5564,7 +5564,7 @@ dev-libs/mathjax 2.7.0 2.7.4 2.7.7: JavaScript display engine for LaTeX, MathML 
 dev-libs/mimetic 0.9.8: C++ MIME library designed to be easy to use and integrate, fast and efficient.
 dev-libs/mm 1.4.2-r2: Shared Memory Abstraction Library
 dev-libs/mmtf-cpp 1.0.0: The pure C++ implementation of the MMTF API, decoder and encoder
-dev-libs/mongo-c-driver 0.7.1-r1 0.8.1-r1 0.98.2 1.1.2-r1 1.1.10 1.3.5 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0-r1 1.13.1 1.14.0 1.15.1 1.16.2: Client library written in C for MongoDB
+dev-libs/mongo-c-driver 0.7.1-r1 0.8.1-r1 0.98.2 1.1.2-r1 1.1.10 1.3.5 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0-r1 1.13.1 1.14.0 1.15.1 1.16.2 1.17.0: Client library written in C for MongoDB
 dev-libs/mongo-cxx-driver 0.0.2.6.7-r1 1.0.0 1.0.5 1.1.2-r1: C++ Driver for MongoDB
 dev-libs/mpc 1.1.0-r1: A library for multiprecision complex arithmetic with exact rounding
 dev-libs/mpfr 4.0.2 4.1.0: library for multiple-precision floating-point computations with exact rounding
@@ -7615,7 +7615,7 @@ dev-php/PEAR-HTML_Template_Flexy 1.3.13: An extremely powerful Tokenizer driven 
 dev-php/PEAR-HTML_Template_Sigma 1.3.0-r1: An implementation of Integrated Templates API with template 'compilation' added
 dev-php/PEAR-HTTP 1.4.1-r3: Miscellaneous HTTP utilities
 dev-php/PEAR-HTTP_Header 1.2.1-r2: Handle and modify HTTP headers and status codes in PHP
-dev-php/PEAR-HTTP_Request2 2.3.0-r1: Provides an easy way to perform HTTP requests
+dev-php/PEAR-HTTP_Request2 2.3.0-r1 2.4.1: Provides an easy way to perform HTTP requests
 dev-php/PEAR-HTTP_Session2 0.7.3-r2: Wraps PHP's session functions providing extras like db storage for session data
 dev-php/PEAR-Image_Color2 0.1.5-r1: Color conversion and mixing for PHP5
 dev-php/PEAR-Image_GraphViz 1.3.0_p20151104: PHP interface to AT&T's GraphViz tools
@@ -7681,7 +7681,7 @@ dev-php/PEAR-XML_Parser 1.3.7-r1 1.3.8: XML parsing class based on PHP's SAX par
 dev-php/PEAR-XML_RSS 1.1.0_alpha1 1.1.0: PHP parser for RDF and RSS documents
 dev-php/PEAR-XML_Serializer 0.21.0-r1: Swiss-army knife for reading and writing XML files
 dev-php/PEAR-XML_Util 1.4.2 1.4.3 1.4.4 1.4.5: XML utility class
-dev-php/PHPMailer 5.2.28 6.1.6: Full-featured email creation and transfer class for PHP
+dev-php/PHPMailer 5.2.28 6.1.6 6.1.7: Full-featured email creation and transfer class for PHP
 dev-php/PHP_CodeCoverage 4.0.7-r2 7.0.10-r1: Collection, processing, and rendering for PHP code coverage
 dev-php/PHP_CodeSniffer 3.5.4: Detect violations of PHP code standards
 dev-php/PHP_Timer 1.0.5 1.0.9 2.1.2-r1: Utility class for timing
@@ -7689,18 +7689,18 @@ dev-php/PHP_TokenStream 1.4.11-r1 3.1.1: Wrapper around PHP's tokenizer extensio
 dev-php/SabreAMF 1.5.0: SabreAMF is a Flash Remoting server and client for PHP
 dev-php/Text_Template 1.1.1 1.2.1: A simple template engine
 dev-php/YAML 1.0.6-r3: The Symfony YAML Component
-dev-php/adodb 5.20.14 5.20.15 5.20.17: Database abstraction layer for PHP
+dev-php/adodb 5.20.14 5.20.18: Database abstraction layer for PHP
 dev-php/agavi 1.0.8: PHP MVC application framework
 dev-php/awl 0.61: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.1.3: Find the system CA bundle or fall back to the Mozilla one
 dev-php/cli-prompt 1.0.0 1.0.3: Allows you to prompt for user input on the command line
-dev-php/composer 1.9.3 1.10.1 1.10.5 1.10.6 1.10.7 1.10.8 1.10.9: Dependency Manager for PHP
+dev-php/composer 1.9.3 1.10.1 1.10.5 1.10.6 1.10.7 1.10.8 1.10.9 1.10.10: Dependency Manager for PHP
 dev-php/cphplib 0.51-r1: Cute PHP Library (cphplib)
 dev-php/doctrine 1.2.5 2.4.6 2.6.1 2.6.4: An object relational mapper for PHP
 dev-php/doctrine-instantiator 1.0.5 1.1.0 1.3.0 1.3.1: Utility to instantiate objects in PHP without invoking their constructors
 dev-php/fedora-autoloader 0.2.1 1.0.0 1.0.1: Fedora's Static PSR-4, PSR-0, and classmap autoloader
 dev-php/geos-php 1.0.0: A PHP interface to GEOS - Geometry Engine, Open Source
-dev-php/igbinary 3.0.1 3.1.2: A fast drop-in replacement for the standard PHP serialize
+dev-php/igbinary 3.1.2 3.1.4: A fast drop-in replacement for the standard PHP serialize
 dev-php/jpgraph 4.0.2 4.2.0: Object-oriented graphing library for PHP
 dev-php/json-schema 5.2.8 5.2.9 5.2.10: PHP implementation of JSON schema
 dev-php/jsonlint 1.7.1 1.7.2: JSON Lint for PHP
@@ -7717,7 +7717,7 @@ dev-php/pecl-apcu 5.1.18: Stripped down version of APC supporting only user cach
 dev-php/pecl-apcu_bc 1.0.4-r1 1.0.5: Provides APC backwards compatibility functions via APCu
 dev-php/pecl-crack 0.4-r7: PHP interface to the cracklib libraries
 dev-php/pecl-dbase 7.0.1: dBase database file access functions
-dev-php/pecl-dio 0.1.0-r1: Direct I/O functions for PHP
+dev-php/pecl-dio 0.1.0-r1 0.2.0: Direct I/O functions for PHP
 dev-php/pecl-eio 2.0.4: PHP wrapper for libeio library
 dev-php/pecl-event 2.5.3 2.5.3-r1: PHP wrapper for libevent2
 dev-php/pecl-geoip 1.1.1-r4: PHP extension to map IP address to geographic places
@@ -7729,7 +7729,7 @@ dev-php/pecl-mailparse 3.0.4 3.1.0: PHP extension for parsing and working with R
 dev-php/pecl-mcrypt 1.0.1 1.0.2 1.0.3: Bindings for the libmcrypt library
 dev-php/pecl-memcache 4.0.5.2: PHP extension for using memcached
 dev-php/pecl-memcached 3.1.3-r1 3.1.5-r1: Interface PHP with memcached via libmemcached library
-dev-php/pecl-mongodb 1.5.3 1.5.3-r1 1.5.5 1.6.0 1.7.4 1.7.5: MongoDB database driver for PHP
+dev-php/pecl-mongodb 1.5.3 1.5.3-r1 1.5.5 1.6.0 1.7.4 1.7.5 1.8.0: MongoDB database driver for PHP
 dev-php/pecl-ncurses 1.0.2-r5: Terminal screen handling and optimization package
 dev-php/pecl-oauth 2.0.5: OAuth is an authorization protocol built on top of HTTP
 dev-php/pecl-pam 1.0.3-r3: This extension provides PAM (Pluggable Authentication Modules) integration
@@ -16812,7 +16812,7 @@ sec-policy/selinux-zabbix 2.20190201-r1 2.20190609-r1 9999: SELinux policy for z
 sys-apps/accountsservice 0.6.50-r1 0.6.55: D-Bus interfaces for querying and manipulating user account information
 sys-apps/ack 3.0.0 3.2.0 3.3.1 3.4.0: ack is a tool like grep, optimized for programmers
 sys-apps/acl 2.2.53: access control list utilities, libraries and headers
-sys-apps/agedu 20190630 20200206 20200617: A utility for tracking down wasted disk space
+sys-apps/agedu 20200617 20200705: A utility for tracking down wasted disk space
 sys-apps/aix-miscutils 0.1.1671: Miscellaneous helpers for AIX (currently just ldd)
 sys-apps/apmd 3.2.2_p14-r1: Advanced Power Management Daemon
 sys-apps/apparmor 2.13.4: Userspace utils and init scripts for the AppArmor application security system
@@ -17674,7 +17674,7 @@ sys-libs/libxcrypt 2.4 4.4.10-r1 4.4.12-r3 4.4.16: Extended crypt library for de
 sys-libs/llvm-libunwind 9.0.1 10.0.0 10.0.1 11.0.0_rc1 11.0.0.9999 12.0.0.9999: C++ runtime stack unwinder from LLVM
 sys-libs/lwp 2.8: Light-weight process library (used by Coda)
 sys-libs/mtdev 1.1.6: Multitouch Protocol Translation Library
-sys-libs/musl 1.1.24 1.2.0-r1 9999: Light, fast and simple C library focused on standards-conformance and safety
+sys-libs/musl 1.1.24 1.2.0-r1 1.2.1 9999: Light, fast and simple C library focused on standards-conformance and safety
 sys-libs/musl-nscd 1.0.2 9999: musl-nscd is an implementation of the NSCD protocol for the musl libc
 sys-libs/native-uuid 1.0: .pc file for uuid
 sys-libs/ncurses 6.2-r1: console display library

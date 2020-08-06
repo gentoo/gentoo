@@ -1,0 +1,12 @@
+BDEPEND=doc? ( dev-php/phpDocumentor )
+DEFINED_PHASES=compile install postinst prepare
+DESCRIPTION=Full-featured email creation and transfer class for PHP
+EAPI=7
+HOMEPAGE=https://github.com/PHPMailer/PHPMailer
+IUSE=doc idn ssl
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=ssl? ( idn? ( dev-lang/php:*[ctype,filter,intl,ssl,unicode] ) !idn? ( dev-lang/php:*[ctype,filter,ssl] ) ) !ssl? ( idn? ( dev-lang/php:*[ctype,filter,intl,unicode] ) !idn? ( dev-lang/php:*[ctype,filter] ) )
+SLOT=0
+SRC_URI=https://github.com/PHPMailer/PHPMailer/archive/v6.1.7.tar.gz -> PHPMailer-6.1.7.tar.gz
+_md5_=6356d158567b071b9afc234bdd1a9f08
