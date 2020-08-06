@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ahvenas@gmail.com</email>
+		<name>Henrik Pihl</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="gtk">Build the <pkg>dev-cpp/gtkmm</pkg>:3.0 client.</flag>
+		<flag name="audio">Use snd_aloop kernel module for audio</flag>
+	</use>
+	<longdescription>
+	DroidCam allows you to use your Android or iOS device as webcam, wired (USB
+	and ADB) or wireless (TCP/IP). Works with the free version of the phone app.	
+	</longdescription>
+	<upstream>
+		<remote-id type="github">aramg/droidcam</remote-id>
+	</upstream>
+</pkgmetadata>
