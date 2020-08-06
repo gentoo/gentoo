@@ -5923,7 +5923,7 @@ dev-ml/variantslib 0.9.0: OCaml variants as first class values
 dev-ml/xml-light 2.2-r3: Minimal Xml parser and printer for OCaml
 dev-ml/yojson 1.4.0: JSON parsing and pretty-printing library for OCaml
 dev-ml/zarith 1.7 1.9.1: Arithmetic and logic operations over arbitrary-precision integers
-dev-perl/Ace 1.920.0-r3 1.920.0-r4 1.920.0-r5 1.920.0-r6: Object-Oriented Access to ACEDB Databases
+dev-perl/Ace 1.920.0-r6: Object-Oriented Access to ACEDB Databases
 dev-perl/Acme-Damn 0.80.0: Module, that 'unblesses' Perl objects
 dev-perl/Algorithm-Annotate 0.100.0-r1 0.100.0-r2: Represent a series of changes in annotate form
 dev-perl/Algorithm-C3 0.100.0: A module for merging hierarchies using the C3 algorithm
@@ -6225,7 +6225,7 @@ dev-perl/Danga-Socket 1.610.0-r1 1.620.0: A non-blocking socket object; uses epo
 dev-perl/Data-AMF 0.90.0-r1 0.90.0-r2: (de)serializer perl module for Adobe's AMF (Action Message Format)
 dev-perl/Data-Buffer 0.40.0-r1 0.40.0-r2: Read/write buffer class
 dev-perl/Data-Compare 1.250.0 1.270.0-r1: Compare perl data structures
-dev-perl/Data-Diver 1.010.1 1.10.100-r1: Simple, ad-hoc access to elements of deeply nested structures
+dev-perl/Data-Diver 1.010.1 1.10.100-r1 1.10.100-r2: Simple, ad-hoc access to elements of deeply nested structures
 dev-perl/Data-Dump 1.230.0 1.230.0-r1: Pretty printing of data structures
 dev-perl/Data-Dump-Streamer 2.400.0 2.400.0-r1: Accurately serialize a data structure as Perl code
 dev-perl/Data-DumpXML 1.60.0-r1 1.60.0-r2: Dump arbitrary data structures as XML
@@ -9010,7 +9010,7 @@ dev-python/ruamel-yaml-clib 0.2.0: C-based reader/scanner and emitter for dev-py
 dev-python/ryu 4.26-r1: Component-based Software-defined Networking Framework
 dev-python/s3fs 0.1.5 0.4.2: Pythonic file interface to S3
 dev-python/s3transfer 0.3.3: An Amazon S3 Transfer Manager
-dev-python/sabyenc 3.3.6 4.0.1 4.0.2: Module providing raw yEnc encoding/decoding for SABnzbd
+dev-python/sabyenc 4.0.1 4.0.2: Module providing raw yEnc encoding/decoding for SABnzbd
 dev-python/sarge 0.1.5: wrapper for subprocess which provides command pipeline functionality
 dev-python/scandir 1.10.0-r1: A better directory iterator and faster os.walk()
 dev-python/scikit-build 0.11.1: Improved build system generator for Python C/C++/Fortran/Cython extensions
@@ -17594,8 +17594,8 @@ sys-kernel/dracut 048-r1 049-r3 050 050-r1 9999: Generic initramfs generation to
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.0_beta1 4.1.0_rc1 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-kernel 5.4.40 5.4.52 5.4.53 5.4.55 5.7.10 5.7.12: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.40 5.4.52 5.4.53 5.4.55 5.7.10 5.7.12: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.7.10 5.7.12 5.7.13: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.7.10 5.7.12 5.7.13: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.221 4.4.228 4.4.229 4.4.230 4.4.231 4.4.232 4.9.221 4.9.228 4.9.229 4.9.230 4.9.231 4.9.232 4.14.178 4.14.185 4.14.188 4.14.189 4.14.190 4.14.191 4.14.192 4.19.120 4.19.129 4.19.133 4.19.134 4.19.135 4.19.136 4.19.137 5.4.38 5.4.48 5.4.52 5.4.53 5.4.54 5.4.55 5.4.56 5.7.8 5.7.9 5.7.10 5.7.11 5.7.12 5.7.13 5.8.0 5.8.0-r1: Full sources including the Gentoo patchset for the 5.8 kernel tree
 sys-kernel/git-sources 5.8_rc1 5.8_rc2 5.8_rc3 5.8_rc4 5.8_rc5 5.8_rc6 5.8_rc7: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17610,7 +17610,7 @@ sys-kernel/pf-sources 5.6_p8 5.7_p1 5.7_p2 5.7_p3 5.7_p4 5.7_p5 5.7_p7 5.8_p1: L
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p20190925 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.220_p197 4.4.225_p198 4.9.224_p144 4.9.227_p146 4.14.170_p75 4.14.184_p84 4.19.124_p53 4.19.127_p54 5.4.40_p24 5.4.44_p27 5.6.14_p7 5.6.17_p10: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.40 5.4.52 5.4.53 5.4.55 5.7.10 5.7.12: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.7.10 5.7.12 5.7.13: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.232 4.9.232 4.14.192 4.19.137 5.4.56 5.7.13 5.8.0: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
