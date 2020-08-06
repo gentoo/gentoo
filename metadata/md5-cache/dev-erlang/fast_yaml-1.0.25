@@ -3,10 +3,10 @@ DEPEND=>=dev-lang/erlang-18.0 >=dev-erlang/p1_utils-1.0.19 dev-libs/libyaml dev-
 DESCRIPTION=Fast Yaml native library for Erlang and Elixir
 EAPI=6
 HOMEPAGE=https://github.com/processone/fast_yaml
-KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~sparc ~x86
+KEYWORDS=amd64 ~arm ~ia64 ~ppc ~sparc x86
 LICENSE=Apache-2.0
 RDEPEND=>=dev-lang/erlang-18.0 >=dev-erlang/p1_utils-1.0.19 dev-libs/libyaml dev-lang/erlang:=
 SLOT=0
 SRC_URI=https://github.com/processone/fast_yaml/archive/1.0.25.tar.gz -> fast_yaml-1.0.25.tar.gz
 _eclasses_=rebar	43c151aeda0dc4bf44b59e949df136aa
-_md5_=f092827bd1bfd1b7d38fceaa651a8d85
+_md5_=3392b62d79a59663f47af187f8a378c8

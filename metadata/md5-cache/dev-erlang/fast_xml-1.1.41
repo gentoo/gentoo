@@ -3,10 +3,10 @@ DEPEND=>=dev-erlang/p1_utils-1.0.19 dev-libs/expat dev-lang/erlang:= dev-util/re
 DESCRIPTION=Fast Expat based Erlang XML parsing library
 EAPI=6
 HOMEPAGE=https://github.com/processone/fast_xml
-KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~sparc ~x86
+KEYWORDS=amd64 ~arm ~ia64 ~ppc ~sparc x86
 LICENSE=Apache-2.0
 RDEPEND=>=dev-erlang/p1_utils-1.0.19 dev-libs/expat dev-lang/erlang:=
 SLOT=0
 SRC_URI=https://github.com/processone/fast_xml/archive/1.1.41.tar.gz -> fast_xml-1.1.41.tar.gz
 _eclasses_=rebar	43c151aeda0dc4bf44b59e949df136aa
-_md5_=12a826fec2f51c27efa3b3a131b05933
+_md5_=e1fd5f0901c9cd3e58b53cce70f99bab
