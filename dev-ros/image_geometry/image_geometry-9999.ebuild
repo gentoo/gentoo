@@ -22,4 +22,5 @@ DEPEND="${RDEPEND}
 	test? (
 		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
 		dev-cpp/gtest
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
 	)"
