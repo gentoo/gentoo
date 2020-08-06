@@ -17898,22 +17898,22 @@ virtual/perl-IPC-Cmd 1.20.0 1.40.0: Virtual for IPC-Cmd
 virtual/perl-JSON-PP 4.20.0 4.40.0: Virtual for JSON-PP
 virtual/perl-Locale-Maketext 1.290.0-r3: Virtual for Locale-Maketext
 virtual/perl-Locale-Maketext-Simple 0.210.100_rc-r10: Virtual for Locale-Maketext-Simple
-virtual/perl-MIME-Base64 3.150.0-r6: Virtual for MIME-Base64
+virtual/perl-MIME-Base64 3.150.0-r7: Virtual for MIME-Base64
 virtual/perl-Math-BigInt 1.999.816 1.999.818: Virtual for Math-BigInt
-virtual/perl-Math-BigInt-FastCalc 0.500.800: Virtual for Math-BigInt-FastCalc
-virtual/perl-Math-BigRat 0.261.400: Virtual for Math-BigRat
-virtual/perl-Math-Complex 1.590.100-r3: Virtual for Math-Complex
-virtual/perl-Memoize 1.30.100_rc-r9: Virtual for Memoize
-virtual/perl-Module-CoreList 5.202.6.13.0_rc: Virtual for Module-CoreList
-virtual/perl-Module-Load 0.340.0: Virtual for Module-Load
-virtual/perl-Module-Load-Conditional 0.680.0-r3: Virtual for Module-Load-Conditional
-virtual/perl-Module-Loaded 0.80.0-r12: Virtual for Module-Loaded
-virtual/perl-Module-Metadata 1.0.36: Virtual for Module-Metadata
-virtual/perl-Net-Ping 2.710.0: Virtual for Net-Ping
-virtual/perl-Params-Check 0.380.0-r9: Virtual for Params-Check
-virtual/perl-Parse-CPAN-Meta 2.150.10-r3: Virtual for Parse-CPAN-Meta
-virtual/perl-Perl-OSType 1.10.0-r3: Virtual for Perl-OSType
-virtual/perl-Pod-Escapes 1.70.0-r6: Virtual for Pod-Escapes
+virtual/perl-Math-BigInt-FastCalc 0.500.800 0.500.900: Virtual for Math-BigInt-FastCalc
+virtual/perl-Math-BigRat 0.261.400-r1: Virtual for Math-BigRat
+virtual/perl-Math-Complex 1.590.100-r4: Virtual for Math-Complex
+virtual/perl-Memoize 1.30.100_rc-r10: Virtual for Memoize
+virtual/perl-Module-CoreList 5.202.6.13.0_rc 5.202.6.200: Virtual for Module-CoreList
+virtual/perl-Module-Load 0.340.0-r1: Virtual for Module-Load
+virtual/perl-Module-Load-Conditional 0.680.0-r3 0.700.0: Virtual for Module-Load-Conditional
+virtual/perl-Module-Loaded 0.80.0-r13: Virtual for Module-Loaded
+virtual/perl-Module-Metadata 1.0.36 1.0.37: Virtual for Module-Metadata
+virtual/perl-Net-Ping 2.710.0 2.720.0: Virtual for Net-Ping
+virtual/perl-Params-Check 0.380.0-r10: Virtual for Params-Check
+virtual/perl-Parse-CPAN-Meta 2.150.10-r4: Virtual for Parse-CPAN-Meta
+virtual/perl-Perl-OSType 1.10.0-r4: Virtual for Perl-OSType
+virtual/perl-Pod-Escapes 1.70.0-r7: Virtual for Pod-Escapes
 virtual/perl-Pod-Parser 1.630.0-r6: Virtual for Pod-Parser
 virtual/perl-Pod-Simple 3.350.0-r3: Virtual for Pod-Simple
 virtual/perl-Safe 2.400.0-r3: Virtual for Safe
@@ -17942,8 +17942,8 @@ virtual/perl-autodie 2.290.0-r5 2.320.0: Virtual for autodie
 virtual/perl-bignum 0.510.0-r1: Virtual for bignum
 virtual/perl-if 0.60.800-r3: Virtual for if
 virtual/perl-libnet 3.110.0-r3: Virtual for libnet
-virtual/perl-parent 0.237.0: Virtual for parent
-virtual/perl-podlators 4.110.0: Virtual for podlators
+virtual/perl-parent 0.237.0 0.238.0: Virtual for parent
+virtual/perl-podlators 4.110.0 4.140.0: Virtual for podlators
 virtual/perl-threads 2.220.0-r2: Virtual for threads
 virtual/perl-threads-shared 1.600.0: Virtual for threads-shared
 virtual/perl-version 0.992.400: Virtual for version
