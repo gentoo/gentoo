@@ -199,6 +199,7 @@ acct-group/tss 0: Trusted Software Stack for TPMs group
 acct-group/tty 0: System group: tty
 acct-group/turnserver 0: A group for a turn server like coturn
 acct-group/ubridge 0: Group for net-misc/ubridge
+acct-group/unbound 0: unbound program group
 acct-group/unifi 0: A group for the UniFi controller
 acct-group/unrealircd 0: System group: unrealircd
 acct-group/uptimed 0: System group: uptimed
@@ -403,6 +404,7 @@ acct-user/transmission 1: System user: transmission
 acct-user/tss 0: Trusted Software Stack for TPMs user
 acct-user/turnserver 0: A user for a turn server like coturn
 acct-user/tvheadend 0: User for tvheadend
+acct-user/unbound 0: unbound program user
 acct-user/unifi 0: A user for the UniFi Controller
 acct-user/unrealircd 0: System user: unrealircd
 acct-user/uptimed 0: user for uptime daemon
@@ -3053,7 +3055,7 @@ app-text/unac 1.8.0: Library and command-line tool for removing accents from cha
 app-text/unpaper 6.1-r1 9999: Post-processor for scanned and photocopied book pages
 app-text/unrtf 0.21.9 0.21.10: Converts RTF files to various formats
 app-text/uudeview 0.5.20-r2: uu, xx, base64, binhex decoder
-app-text/vgrep 2.3.1 2.3.3: A pager for grep, git-grep and similar grep implementations
+app-text/vgrep 2.3.1 2.3.3 2.4.0: A pager for grep, git-grep and similar grep implementations
 app-text/vilistextum 2.6.9-r1 2.8.0.20191023-r1: HTML to ASCII converter programmed to handle incorrect html
 app-text/vlna 1.5: Add nonbreakable spaces after some prepositions in Czech texts
 app-text/wdiff 1.2.2 1.2.2-r1: Create a diff disregarding formatting
@@ -9008,7 +9010,7 @@ dev-python/ruamel-yaml-clib 0.2.0: C-based reader/scanner and emitter for dev-py
 dev-python/ryu 4.26-r1: Component-based Software-defined Networking Framework
 dev-python/s3fs 0.1.5 0.4.2: Pythonic file interface to S3
 dev-python/s3transfer 0.3.3: An Amazon S3 Transfer Manager
-dev-python/sabyenc 3.3.6 4.0.1: Module providing raw yEnc encoding/decoding for SABnzbd
+dev-python/sabyenc 3.3.6 4.0.1 4.0.2: Module providing raw yEnc encoding/decoding for SABnzbd
 dev-python/sarge 0.1.5: wrapper for subprocess which provides command pipeline functionality
 dev-python/scandir 1.10.0-r1: A better directory iterator and faster os.walk()
 dev-python/scikit-build 0.11.1: Improved build system generator for Python C/C++/Fortran/Cython extensions
@@ -14556,7 +14558,7 @@ net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writa
 net-dns/s6-dns 2.2.0.1 2.3.0.0 2.3.0.1 2.3.0.2 2.3.1.1: Suite of DNS client programs and libraries for Unix systems
 net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
 net-dns/totd 1.5.1: Trick Or Treat Daemon, a DNS proxy for 6to4
-net-dns/unbound 1.10.1 1.10.1-r1: A validating, recursive and caching DNS resolver
+net-dns/unbound 1.10.1-r1 1.11.0: A validating, recursive and caching DNS resolver
 net-dns/updatedd 2.6-r5: Dynamic DNS client with plugins for several dynamic dns services
 net-dns/valtz 0.7-r3: Validation tool for tinydns-data zone files
 net-firewall/arno-iptables-firewall 2.0.3 2.1.0: Arno's iptables firewall script
@@ -14582,7 +14584,7 @@ net-firewall/pglinux 2.3.1_p20171006: Privacy oriented firewall application
 net-firewall/psad 2.2.5 2.4.5 2.4.6: Port Scanning Attack Detection daemon
 net-firewall/rtsp-conntrack 3.7-r1 4.18: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r2: iptables firewall generator (fork of firehol)
-net-firewall/shorewall 5.2.6 5.2.6.1: A high-level tool for configuring Netfilter
+net-firewall/shorewall 5.2.6.1 5.2.7: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.36: A program used to manage a netfilter firewall
 net-firewall/xtables-addons 2.13 3.7 3.8 3.9: iptables extensions not yet accepted in the main kernel
 net-fs/autofs 5.1.6 5.1.6-r1: Kernel based automounter
@@ -15378,7 +15380,7 @@ net-nntp/leafnode 1.11.11: A USENET software package designed for small sites
 net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
 net-nntp/nzbget 20.0 21.0_pre2302 21.0: A command-line based binary newsgrabber supporting .nzb files
 net-nntp/pan 0.145: A newsreader for GNOME
-net-nntp/sabnzbd 2.3.9-r1 3.0.0_rc1 3.0.0_rc2 3.0.0-r1: Binary newsgrabber with web-interface
+net-nntp/sabnzbd 3.0.0-r1: Binary newsgrabber with web-interface
 net-nntp/slrn 1.0.2 1.0.3: A s-lang based newsreader
 net-nntp/sn 0.3.8: Hassle-free Usenet news system for small sites
 net-nntp/suck 4.3.3-r1 4.3.4: Grab news from a remote NNTP server and feed them to another
@@ -17218,7 +17220,7 @@ sys-block/sedutil 1.15 1.15.1: The Drive Trust Alliance Self Encrypting Drive Ut
 sys-block/seekwatcher 0.13: generates graphs from blktrace to help visualize IO patterns and performance
 sys-block/smp_utils 0.99: Utilities for SAS management protocol (SMP)
 sys-block/spindown 0.4.0-r5: Spindown is a daemon that can spin down idle disks
-sys-block/storcli 1.19.04 1.20.15 1.21.06 1.23.02 7.0504 7.0606 7.0709-r1 7.1017 7.1211 7.1316: MegaRAID StorCLI (successor of the MegaCLI)
+sys-block/storcli 1.19.04 1.20.15 1.21.06 1.23.02 7.0504 7.0606 7.0709-r1 7.1017 7.1211 7.1316 7.1410: MegaRAID StorCLI (successor of the MegaCLI)
 sys-block/tapecat 1.0.0-r1: tapecat is a tape utility used to describe the physical content of a tape
 sys-block/targetcli-fb 2.1.49 2.1.51: Command shell for managing Linux LIO kernel target
 sys-block/tgt 1.0.78 1.0.79: Linux SCSI target framework (tgt)
