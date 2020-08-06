@@ -93,6 +93,7 @@ src_install() {
 		SYSTEMDUNITDIR="$(systemd_get_systemunitdir)" \
 		PREFIX="${EPREFIX}/usr" \
 		-C src install
+	use wg-quick && newinitd "${FILESDIR}/wg-quick.init" wg-quick
 }
 
 pkg_postinst() {
