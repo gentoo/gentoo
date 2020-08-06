@@ -54,6 +54,8 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 "
 
+PATCHES=( "${FILESDIR}/eom-1.24.0-add-gdk-includes.patch" )
+
 src_configure() {
 	mate_src_configure \
 		--enable-thumbnailer \
