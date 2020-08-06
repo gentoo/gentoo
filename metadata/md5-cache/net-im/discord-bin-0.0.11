@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm prepare unpack
+DESCRIPTION=All-in-one voice and text chat for gamers
+EAPI=7
+HOMEPAGE=https://discordapp.com
+KEYWORDS=~amd64
+LICENSE=all-rights-reserved
+RDEPEND=app-accessibility/at-spi2-atk:2 app-accessibility/at-spi2-core:2 dev-libs/atk dev-libs/expat dev-libs/glib:2 dev-libs/nspr dev-libs/nss media-libs/alsa-lib media-libs/fontconfig:1.0 media-libs/freetype:2 net-print/cups sys-apps/dbus sys-apps/util-linux sys-libs/libcxx x11-libs/cairo x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3 x11-libs/libX11 x11-libs/libXScrnSaver x11-libs/libxcb x11-libs/libXcomposite x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXrandr x11-libs/libXrender x11-libs/libXtst x11-libs/pango
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=https://dl.discordapp.net/apps/linux/0.0.11/discord-0.0.11.deb
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	2477ebe553d3e4d2c606191fe6c33602	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	unpacker	8ee8c1a2f31437d1766aac890d07a7f4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=caf4b6c8db668dd0c2002224d7c833f7
