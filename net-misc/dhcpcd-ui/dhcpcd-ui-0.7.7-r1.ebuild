@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd
+inherit systemd xdg
 
 DESCRIPTION="Desktop notification and configuration for dhcpcd"
 HOMEPAGE="https://roy.marples.name/projects/dhcpcd-ui/"
@@ -62,6 +62,13 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" INSTALL_ROOT="${D}" install
-
 	systemd_dounit src/dhcpcd-online/dhcpcd-wait-online.service
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
