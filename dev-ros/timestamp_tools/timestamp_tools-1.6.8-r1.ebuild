@@ -20,4 +20,3 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )"
 PATCHES=( "${FILESDIR}/tests.patch" "${FILESDIR}/boost.patch" )
-
