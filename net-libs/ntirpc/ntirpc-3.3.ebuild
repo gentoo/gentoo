@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,9 +17,7 @@ IUSE="gssapi rdma"
 # Since the GSS option only controls some extra files to be enabled,
 # there's nothing to list in the depend string for it.
 RDEPEND="
-	app-crypt/mit-krb5
 	dev-libs/userspace-rcu
-	net-libs/libnsl
 	rdma? ( sys-fabric/librdmacm )
 "
 DEPEND="

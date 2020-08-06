@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 inherit cmake-multilib
 
@@ -16,8 +16,7 @@ IUSE="gssapi rdma"
 
 # Since the GSS option only controls some extra files to be enabled,
 # there's nothing to list in the depend string for it.
-RDEPEND="app-crypt/mit-krb5
-	net-libs/libnsl
+RDEPEND="dev-libs/userspace-rcu
 	rdma? ( sys-fabric/librdmacm )"
 DEPEND="${RDEPEND}"
 
