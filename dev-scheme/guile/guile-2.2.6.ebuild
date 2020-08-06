@@ -33,9 +33,6 @@ PATCHES=( "${FILESDIR}/${PN}-2.2.3-gentoo-sandbox.patch" )
 DOCS=( GUILE-VERSION HACKING README )
 
 src_configure() {
-	# see bug #178499
-	filter-flags -ftree-vectorize
-
 	# see bug #676468
 	mv prebuilt/32-bit-big-endian{,.broken} || die
 
