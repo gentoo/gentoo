@@ -32,6 +32,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-08-06)
+# Py2.7 only.  Last release in 2009.  No reverse dependencies left.
+# Removal in 30 days.  Bug #735610.
+dev-python/pythonutils
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-06)
+# Py3.6 only.  Apparently randomly fails to build (bug #515736).
+# Last release in 2016.  No reverse dependencies left.
+# Removal in 30 days.  Bug #718968.
+dev-python/gntp
+
 # Jimi Huotari <chiitoo@gentoo.org> (2020-08-04)
 # No consumers since 2015, and no known stand-alone use.
 # Removal in 30 days.
@@ -497,12 +508,6 @@ media-video/plasma-mediacenter
 # Broken by scons-python3 for >1 year, depends on dead gnome-base/libgnomeui,
 # bugs #685576, #726818, no reverse dependencies. Removal in 30 days.
 app-text/glosung
-
-# Kent Fredric <kentnl@gentoo.org> (2020-07-15)
-# No LICENSE declaration by upstream, and no response from upstream
-# since at least 2013 as to what license to use (bug #732710)
-# Removal in 30 days.
-dev-perl/Data-Diver
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2020-07-15)
 # In preparation; do not use yet.
