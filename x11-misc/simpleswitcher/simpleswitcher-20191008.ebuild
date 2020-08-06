@@ -2,15 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit git-r3 toolchain-funcs
+inherit toolchain-funcs
 
+SSHASH="7230421aa2e3364e3b4620f1ea3760f8f810b1a5"
 DESCRIPTION="lightweight EWMH window switcher with features and looks of dmenu"
 HOMEPAGE="https://github.com/seanpringle/simpleswitcher"
-EGIT_REPO_URI="https://github.com/seanpringle/simpleswitcher"
+SRC_URI="https://github.com/seanpringle/simpleswitcher/archive/${SSHASH}.tar.gz -> ${P}-${SSHASH}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	x11-libs/libX11
@@ -22,6 +23,7 @@ DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 "
+S=${WORKDIR}/${PN}-${SSHASH}
 
 src_compile() {
 	tc-export CC
