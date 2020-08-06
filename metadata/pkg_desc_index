@@ -5991,16 +5991,16 @@ dev-perl/Authen-SCRAM 0.11.0-r1: Salted Challenge Response Authentication Mechan
 dev-perl/Authen-Simple 0.500.0: Simple Authentication
 dev-perl/Authen-Simple-Passwd 0.600.0: Simple Passwd authentication
 dev-perl/AutoXS-Header 1.20.0-r1 1.20.0-r2: Container for the AutoXS header files
-dev-perl/B-COW 0.4.0 0.4.0-r1: additional B helpers to check COW status
+dev-perl/B-COW 0.4.0-r1: additional B helpers to check COW status
 dev-perl/B-Debug 1.260.0: Walk Perl syntax tree, printing debug info about ops
-dev-perl/B-Flags 0.170.0 0.170.0-r1: Friendlier flags for B
+dev-perl/B-Flags 0.170.0-r1: Friendlier flags for B
 dev-perl/B-Hooks-EndOfScope 0.240.0: Execute code after a scope finished compilation
 dev-perl/B-Hooks-OP-Check 0.220.0 0.220.0-r1: Wrap OP check callbacks
-dev-perl/B-Hooks-Parser 0.210.0 0.210.0-r1: Interface to perls parser variables
+dev-perl/B-Hooks-Parser 0.210.0-r1: Interface to perls parser variables
 dev-perl/B-Keywords 1.190.0 1.210.0: Lists of reserved barewords and symbol names
-dev-perl/B-OPCheck 0.320.0 0.320.0-r1: PL_check hacks using Perl callbacks
+dev-perl/B-OPCheck 0.320.0-r1: PL_check hacks using Perl callbacks
 dev-perl/B-Utils 0.270.0 0.270.0-r1 0.270.0-r2: Helper functions for op tree manipulation
-dev-perl/BDB 1.920.0 1.920.0-r1: Asynchronous Berkeley DB access
+dev-perl/BDB 1.920.0-r1: Asynchronous Berkeley DB access
 dev-perl/BSD-Resource 1.291.100 1.291.100-r1 1.291.100-r2: Perl module for BSD process resource limit and priority functions
 dev-perl/BSON 1.12.1: BSON serialization and deserialization
 dev-perl/BZ-Client 4.400.200: A client for the Bugzilla web services API.
@@ -6010,10 +6010,10 @@ dev-perl/Bio-ASN1-EntrezGene 1.720.0: Regular expression-based Perl Parser for N
 dev-perl/Bio-DB-HTS 2.110.0 3.10.0 3.10.0-r1: Perl bindings for sci-libs/htslib
 dev-perl/Bio-Das 1.170.0-r2: Interface to Distributed Annotation System
 dev-perl/Bio-Graphics 2.390.0 2.400.0: Generate images from Bio::Seq objects for visualization purposes
-dev-perl/Bio-SamTools 1.430.0-r1 1.430.0-r2: Read SAM/BAM database files
+dev-perl/Bio-SamTools 1.430.0-r2: Read SAM/BAM database files
 dev-perl/Bit-Vector 7.400.0 7.400.0-r1 7.400.0-r2: Efficient bit vector, set of integers and big int math library
 dev-perl/Bit-Vector-Minimal 1.300.0-r1 1.300.0-r2: Object-oriented wrapper around vec()
-dev-perl/Boulder 1.300.0-r1 1.300.0-r2: An API for hierarchical tag/value structures
+dev-perl/Boulder 1.300.0-r2: An API for hierarchical tag/value structures
 dev-perl/Browser-Open 0.40.0: Open a browser at a given URL
 dev-perl/Business-FedEx-DirectConnect 1.10.0-r1 1.10.0-r2: Interface to FedEx Ship Manager Direct
 dev-perl/Business-Hours 0.120.0-r1 0.130.0: Calculate business hours in a time period
@@ -6023,12 +6023,12 @@ dev-perl/Business-ISMN 1.132.0 1.201.0: International Standard Music Numbers
 dev-perl/Business-ISSN 1.3.0 1.4.0: Object and functions to work with International Standard Serial Numbers
 dev-perl/Business-Tax-VAT-Validation 1.120.0: A class for european VAT numbers validation
 dev-perl/Business-UPS 2.10.0-r1 2.10.0-r2: A UPS Interface Module
-dev-perl/CBOR-XS 1.700.0 1.710.0 1.710.0-r1: Concise Binary Object Representation (CBOR, RFC7049)
-dev-perl/CDB_File 0.990.0 1.20.0 1.20.0-r1: Tie to CDB (Bernstein's constant DB) files
+dev-perl/CBOR-XS 1.710.0-r1: Concise Binary Object Representation (CBOR, RFC7049)
+dev-perl/CDB_File 1.20.0-r1: Tie to CDB (Bernstein's constant DB) files
 dev-perl/CDDB 1.222.0-r2: high-level interface to cddb/freedb protocol
 dev-perl/CDDB-File 1.50.0-r1 1.50.0-r2: Parse a CDDB/freedb data file
 dev-perl/CDDB_get 2.280.0-r1 2.280.0-r2: Read the CDDB entry for an audio CD in your drive
-dev-perl/CGI 4.220.0 4.400.0 4.470.0 4.500.0: Simple Common Gateway Interface Class
+dev-perl/CGI 4.400.0 4.470.0 4.500.0: Simple Common Gateway Interface Class
 dev-perl/CGI-Ajax 0.707.0-r1: a perl-specific system for writing Asynchronous web applications
 dev-perl/CGI-Builder 1.360.0-r2: Framework to build simple or complex web-apps
 dev-perl/CGI-Compile 0.220.0 0.240.0: Compile .cgi scripts to a code reference like ModPerl::Registry
@@ -6056,9 +6056,9 @@ dev-perl/CSS-Squish 0.100.0-r1 0.100.0-r2: Compact many CSS files into one big f
 dev-perl/CSS-Tiny 1.200.0: Read/Write .css files with as little code as possible
 dev-perl/Cache 2.110.0: the Cache interface
 dev-perl/Cache-Cache 1.80.0: Generic cache interface and implementations
-dev-perl/Cache-FastMmap 1.470.0 1.490.0 1.490.0-r1: Uses an mmaped file to act as a shared memory interprocess cache
+dev-perl/Cache-FastMmap 1.490.0-r1: Uses an mmaped file to act as a shared memory interprocess cache
 dev-perl/Cache-Memcached 1.300.0-r1 1.300.0-r2: Perl API for memcached
-dev-perl/Cache-Memcached-Fast 0.250.0 0.260.0 0.260.0-r1: Perl client for memcached, in C language
+dev-perl/Cache-Memcached-Fast 0.260.0-r1: Perl client for memcached, in C language
 dev-perl/Cache-Simple-TimedExpiry 0.270.0-r1 0.270.0-r2: A lightweight cache with timed expiration
 dev-perl/Cairo 1.106.0 1.107.0 1.107.0-r1: Perl interface to the cairo library
 dev-perl/Cairo-GObject 1.4.0-r1 1.5.0 1.5.0-r1: Integrate Cairo into the Glib type system
@@ -6139,7 +6139,7 @@ dev-perl/Config-JSON 1.520.200-r1: A JSON based config file system
 dev-perl/Config-MVP 2.200.11: multivalue-property package-oriented configuration
 dev-perl/Config-MVP-Reader-INI 2.101.463: an MVP config reader for .ini files
 dev-perl/Config-MVP-Slicer 0.303.0: Extract embedded plugin config from parent config
-dev-perl/Config-Properties 1.800.0 1.800.0-r1: Configuration using Java style properties
+dev-perl/Config-Properties 1.800.0-r1: Configuration using Java style properties
 dev-perl/Config-Simple 4.590.0-r1 4.590.0-r2: Simple configuration file class
 dev-perl/Config-Tiny 2.230.0 2.240.0: Read/Write .ini style files with as little code as possible
 dev-perl/ConfigReader 0.500.0-r2: Read directives from a configuration file
@@ -6157,13 +6157,13 @@ dev-perl/Convert-TNEF 0.180.0-r2 0.180.0-r3: A Perl module for reading TNEF file
 dev-perl/Convert-UUlib 1.710.0: A Perl interface to the uulib library
 dev-perl/Cookie-Baker 0.80.0 0.110.0: Cookie string generator / parser
 dev-perl/Cookie-Baker-XS 0.80.0 0.110.0: Accelerate Cookie::Baker's crush_cookie
-dev-perl/Coro 6.514.0 6.514.0-r1 6.550.0: The only real threads in perl
+dev-perl/Coro 6.550.0: The only real threads in perl
 dev-perl/Cpanel-JSON-XS 3.23.900 4.190.0: cPanel fork of JSON::XS, fast and correct serializing
 dev-perl/Crypt-Blowfish 2.140.0-r1 2.140.0-r2: Perl Blowfish encryption module
 dev-perl/Crypt-CAST5_PP 1.40.0-r1 1.40.0-r2: CAST5 block cipher in pure Perl
 dev-perl/Crypt-CBC 2.330.0-r1 2.330.0-r2: Encrypt Data with Cipher Block Chaining Mode
 dev-perl/Crypt-CipherSaber 1.10.0-r1: Perl module implementing CipherSaber encryption
-dev-perl/Crypt-Cracklib 1.700.0-r1 1.700.0-r2 1.700.0-r3: Perl interface to Alec Muffett's Cracklib
+dev-perl/Crypt-Cracklib 1.700.0-r2 1.700.0-r3: Perl interface to Alec Muffett's Cracklib
 dev-perl/Crypt-Curve25519 0.60.0 0.60.0-r1: Shared secret elliptic-curve Diffie-Hellman generator
 dev-perl/Crypt-DES 2.70.0-r1 2.70.0-r2: Perl DES encryption module
 dev-perl/Crypt-DES_EDE3 0.10.0-r1 0.10.0-r2: Triple-DES EDE encryption/decryption
@@ -6171,12 +6171,12 @@ dev-perl/Crypt-DH 0.70.0-r2 0.70.0-r3: Diffie-Hellman key exchange system
 dev-perl/Crypt-DH-GMP 0.0.120 0.0.120-r1: Crypt::DH Using GMP Directly
 dev-perl/Crypt-DSA 1.170.0 1.170.0-r1: DSA Signatures and Key Generation
 dev-perl/Crypt-Eksblowfish 0.9.0-r2 0.9.0-r3: the Eksblowfish block cipher
-dev-perl/Crypt-IDEA 1.100.0 1.100.0-r1 1.100.0-r2: An implementation of the IDEA symmetric-key block cipher
+dev-perl/Crypt-IDEA 1.100.0-r1 1.100.0-r2: An implementation of the IDEA symmetric-key block cipher
 dev-perl/Crypt-OpenPGP 1.120.0: Pure-Perl OpenPGP-compatible PGP implementation
 dev-perl/Crypt-OpenSSL-Bignum 0.90.0 0.90.0-r1: OpenSSL's multiprecision integer arithmetic
 dev-perl/Crypt-OpenSSL-DSA 0.190.0-r1 0.190.0-r2: Digital Signature Algorithm using OpenSSL
-dev-perl/Crypt-OpenSSL-EC 1.310.0 1.320.0: Perl extension for OpenSSL EC (Elliptic Curves) library
-dev-perl/Crypt-OpenSSL-ECDSA 0.80.0-r2 0.80.0-r3: OpenSSL ECDSA (Elliptic Curve Digital Signature Algorithm) Perl extension
+dev-perl/Crypt-OpenSSL-EC 1.320.0: Perl extension for OpenSSL EC (Elliptic Curves) library
+dev-perl/Crypt-OpenSSL-ECDSA 0.80.0-r3: OpenSSL ECDSA (Elliptic Curve Digital Signature Algorithm) Perl extension
 dev-perl/Crypt-OpenSSL-Guess 0.110.0: Guess OpenSSL include path
 dev-perl/Crypt-OpenSSL-RSA 0.280.0-r3 0.310.0: RSA encoding and decoding using the OpenSSL libraries
 dev-perl/Crypt-OpenSSL-Random 0.110.0 0.150.0: OpenSSL/LibreSSL pseudo-random number generator access
@@ -6187,15 +6187,15 @@ dev-perl/Crypt-RIPEMD160 0.60.0 0.60.0-r1: Perl extension for the RIPEMD-160 Has
 dev-perl/Crypt-RSA 1.990.0-r1 1.990.0-r2: RSA public-key cryptosystem
 dev-perl/Crypt-Random 1.520.0: Cryptographically Secure, True Random Number Generator
 dev-perl/Crypt-Random-Source 0.120.0 0.140.0: Get weak or strong random data from pluggable sources
-dev-perl/Crypt-Rijndael 1.130.0 1.140.0 1.140.0-r1: Crypt::CBC compliant Rijndael encryption module
-dev-perl/Crypt-SMIME 0.190.0 0.250.0 0.250.0-r1: S/MIME message signing, verification, encryption and decryption
-dev-perl/Crypt-SSLeay 0.720.0-r1 0.720.0-r2 0.720.0-r3: OpenSSL support for LWP
+dev-perl/Crypt-Rijndael 1.140.0 1.140.0-r1: Crypt::CBC compliant Rijndael encryption module
+dev-perl/Crypt-SMIME 0.250.0-r1: S/MIME message signing, verification, encryption and decryption
+dev-perl/Crypt-SSLeay 0.720.0-r2 0.720.0-r3: OpenSSL support for LWP
 dev-perl/Crypt-Simple 0.60.0-r1 0.60.0-r2: encrypt stuff simply
 dev-perl/Crypt-SmbHash 0.120.0-r2 0.120.0-r3: LM/NT hashing, for Samba's smbpasswd entries
 dev-perl/Crypt-Twofish 2.170.0-r1 2.170.0-r2: The Twofish Encryption Algorithm
 dev-perl/Crypt-URandom 0.360.0: Provide non blocking randomness
 dev-perl/Crypt-X509 0.510.0 0.530.0: Parse a X.509 certificate
-dev-perl/CryptX 0.53.0 0.64.0 0.68.0: Self-contained crypto toolkit
+dev-perl/CryptX 0.64.0 0.68.0: Self-contained crypto toolkit
 dev-perl/Curses 1.360.0 1.360.0-r1: Curses interface modules for Perl
 dev-perl/Curses-UI 0.960.900-r2 0.960.900-r3: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r2 1.997.0-r3: Provide high level APIs for rapid user interface design on the console in Perl
@@ -7540,7 +7540,7 @@ dev-perl/bareword-filehandles 0.6.0 0.7.0 0.7.0-r1: Disables bareword filehandle
 dev-perl/boolean 0.460.0: Boolean support for Perl
 dev-perl/capitalization 0.30.0-r1 0.30.0-r2: no capitalization on method names
 dev-perl/common-sense 3.740.0-r1 3.750.0: Save a tree AND a kitten, use common::sense!
-dev-perl/constant-boolean 0.20.0-r1 0.20.0-r2: Define TRUE and FALSE constants
+dev-perl/constant-boolean 0.20.0-r2: Define TRUE and FALSE constants
 dev-perl/constant-defer 6.0.0 6.0.0-r1: constant subs with deferred value calculation
 dev-perl/enum 1.110.0: C style enumerated types and bitmask flags in Perl
 dev-perl/forks 0.360.0-r1: Emulate threads with fork
