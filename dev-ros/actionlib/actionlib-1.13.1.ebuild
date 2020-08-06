@@ -21,7 +21,10 @@ RDEPEND="dev-libs/boost:=[threads]
 	"
 DEPEND="${RDEPEND}
 	dev-ros/rosunit[${PYTHON_SINGLE_USEDEP}]
-	test? ( dev-ros/rostest[${PYTHON_SINGLE_USEDEP}] )"
+	test? (
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		dev-cpp/gtest
+	)"
 RDEPEND="${RDEPEND}
 	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/rostopic[${PYTHON_SINGLE_USEDEP}]
