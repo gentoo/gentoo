@@ -10853,7 +10853,7 @@ dev-util/serialtalk 1.2 1.2-r1 9999: simple command-line tool to talk to serial 
 dev-util/setconf 0.6.6 0.6.7: A small python based utility used to change configuration files
 dev-util/sgb 20030623-r1 20090810: Stanford GraphBase
 dev-util/shadowman 2 9999: Unified compiler shadow link directory updater
-dev-util/shards 0.11.1: Dependency manager for the Crystal language
+dev-util/shards 0.11.1 0.12.0: Dependency manager for the Crystal language
 dev-util/shc 3.9.6: A (shell-) script compiler/scrambler
 dev-util/shellcheck 0.7.1: Shell script analysis tool
 dev-util/shellcheck-bin 0.7.1: Shell script analysis tool (binary package)
@@ -11207,8 +11207,8 @@ games-board/gambit 1.0.4: Qt-based chess application + engine "gupta"
 games-board/gmchess 0.29.6-r2: Chinese chess with gtkmm and c++
 games-board/gnome-chess 3.34.0: Play the classic two-player boardgame of chess
 games-board/gnome-hearts 0.3.1-r2: A clone of classic hearts card game
-games-board/gnome-mahjongg 3.34.0: Disassemble a pile of tiles by removing matching pairs
-games-board/gnome-mines 3.34.0: Clear hidden mines from a minefield
+games-board/gnome-mahjongg 3.34.0 3.36.2: Disassemble a pile of tiles by removing matching pairs
+games-board/gnome-mines 3.34.0 3.36.1: Clear hidden mines from a minefield
 games-board/gnubg 1.06.002-r1: GNU BackGammon
 games-board/gnuchess 6.2.7: Console based chess interface
 games-board/gnuchess-book 1.02-r1: Opening book for gnuchess
@@ -11510,7 +11510,7 @@ games-puzzle/hexalate 1.1.6: A color matching game
 games-puzzle/hitori 3.34.0: Logic puzzle game for GNOME
 games-puzzle/icebreaker 1.9.6-r1: Trap and capture penguins on Antarctica
 games-puzzle/ksokoban 0.5.0_pre20190225 9999: The Japanese warehouse keeper game
-games-puzzle/lightsoff 3.34.0: Turn off all the lights
+games-puzzle/lightsoff 3.34.0 3.36.0: Turn off all the lights
 games-puzzle/lmarbles 1.0.8: puzzle game inspired by Atomix and written in SDL
 games-puzzle/lpairs 1.0.4-r1: A classical memory game
 games-puzzle/ltris 1.0.19-r1: Very polished Tetris clone
@@ -18087,7 +18087,7 @@ www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launc
 www-client/chromium 84.0.4147.105 85.0.4183.59 86.0.4221.3: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
-www-client/epiphany 3.30.5 3.32.6 3.34.4 3.36.3: GNOME webbrowser based on Webkit
+www-client/epiphany 3.30.5 3.32.6 3.34.4 3.36.3 3.36.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 68.11.0 79.0-r1: Firefox Web Browser
