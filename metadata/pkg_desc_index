@@ -3517,7 +3517,7 @@ dev-db/libzdb 3.1 3.1-r1: A thread safe high level multi-database connection poo
 dev-db/lmdb 0.9.23 0.9.24: An ultra-fast, ultra-compact key-value embedded data store
 dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-db 1.7.0 1.8.0: Database for the m17n library
-dev-db/mariadb 5.5.68-r1 10.1.38-r2 10.1.43-r1 10.1.45-r1 10.2.22-r2 10.2.29-r1 10.2.32-r1 10.3.23-r1 10.4.13-r1: An enhanced, drop-in replacement for MySQL
+dev-db/mariadb 5.5.68-r1 10.1.38-r2 10.1.43-r1 10.1.45-r1 10.2.22-r2 10.2.29-r1 10.2.32-r2 10.3.23-r2 10.4.13-r2: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-connector-c 3.1.9 9999: C client library for MariaDB/MySQL
 dev-db/mariadb-connector-odbc 3.1.6: MariaDB Connector/ODBC
 dev-db/mongodb 3.6.13 3.6.17 4.0.12 4.0.16-r1 4.0.19 4.2.3-r1 4.2.6 4.2.8: A high-performance, open source, schema-free document-oriented database
