@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
-inherit autotools flag-o-matic multilib-minimal python-single-r1 systemd user
+inherit autotools flag-o-matic multilib-minimal python-single-r1 systemd
 
 MY_P=${PN}-${PV/_/}
 DESCRIPTION="A validating, recursive and caching DNS resolver"
@@ -13,7 +13,7 @@ SRC_URI="https://nlnetlabs.nl/downloads/unbound/${MY_P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0/8" # ABI version of libunbound.so
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~x86"
 IUSE="debug dnscrypt dnstap +ecdsa ecs gost libressl python redis selinux static-libs systemd test threads"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
@@ -23,7 +23,9 @@ RESTRICT="!test? ( test )"
 # the executables. MULTILIB_USEDEP may be dropped once build system
 # is fixed.
 
-CDEPEND=">=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
+CDEPEND="acct-group/unbound
+	acct-user/unbound
+	>=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
 	>=dev-libs/libevent-2.0.21:0=[${MULTILIB_USEDEP}]
 	libressl? ( >=dev-libs/libressl-2.2.4:0[${MULTILIB_USEDEP}] )
 	!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
@@ -60,19 +62,12 @@ RDEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.7-trust-anchor-file.patch
 	"${FILESDIR}"/${PN}-1.6.3-pkg-config.patch
+	"${FILESDIR}"/${PN}-1.10.1-find-ar.patch
 )
 
 S=${WORKDIR}/${MY_P}
 
 pkg_setup() {
-	enewgroup unbound
-	enewuser unbound -1 -1 /etc/unbound unbound
-	# improve security on existing installs (bug #641042)
-	# as well as new installs where unbound homedir has just been created
-	if [[ -d "${ROOT}/etc/unbound" ]]; then
-		chown --no-dereference --from=unbound root "${ROOT}/etc/unbound"
-	fi
-
 	use python && python-single-r1_pkg_setup
 }
 
@@ -148,16 +143,18 @@ multilib_src_install_all() {
 
 	# create space for auto-trust-anchor-file...
 	keepdir /etc/unbound/var
+	fowners root:unbound /etc/unbound/var
+	fperms 0770 /etc/unbound/var
 	# ... and point example config to it
 	sed -i \
 		-e '/# auto-trust-anchor-file:/s,/etc/dnssec/root-anchors.txt,/etc/unbound/var/root-anchors.txt,' \
-		"${ED}/etc/unbound/unbound.conf" || \
-		die
+		"${ED}/etc/unbound/unbound.conf" \
+		|| die
 
 	# Used to store cache data
 	keepdir /var/lib/${PN}
 	fowners root:unbound /var/lib/${PN}
-	fperms 0750 /var/lib/${PN}
+	fperms 0770 /var/lib/${PN}
 
 	find "${ED}" -name '*.la' -delete || die
 	if ! use static-libs ; then
@@ -166,18 +163,38 @@ multilib_src_install_all() {
 }
 
 pkg_postinst() {
-	# make var/ writable by unbound
-	if [[ -d "${EROOT}/etc/unbound/var" ]]; then
-		chown --no-dereference --from=root unbound: "${EROOT}/etc/unbound/var"
+	if [[ ! -f "${EROOT}/etc/unbound/unbound_control.key" ]] ; then
+		einfo "Trying to create unbound control key ..."
+		if ! unbound-control-setup &>/dev/null ; then
+			ewarn "Failed to create unbound control key!"
+		fi
 	fi
 
-	einfo ""
-	einfo "If you want unbound to automatically update the root-anchor file for DNSSEC validation"
-	einfo "set 'auto-trust-anchor-file: ${EROOT}/etc/unbound/var/root-anchors.txt' in ${EROOT}/etc/unbound/unbound.conf"
-	einfo "and run"
-	einfo ""
-	einfo "  su -s /bin/sh -c '${EROOT}/usr/sbin/unbound-anchor -a ${EROOT}/etc/unbound/var/root-anchors.txt' unbound"
-	einfo ""
-	einfo "as root to create it initially before starting unbound for the first time after enabling this."
-	einfo ""
+	if [[ ! -f "${EROOT}/etc/unbound/var/root-anchors.txt" ]] ; then
+		einfo ""
+		einfo "If you want unbound to automatically update the root-anchor file for DNSSEC validation"
+		einfo "set 'auto-trust-anchor-file: ${EROOT}/etc/unbound/var/root-anchors.txt' in ${EROOT}/etc/unbound/unbound.conf"
+		einfo "and run"
+		einfo ""
+		einfo "  su -s /bin/sh -c '${EROOT}/usr/sbin/unbound-anchor -a ${EROOT}/etc/unbound/var/root-anchors.txt' unbound"
+		einfo ""
+		einfo "as root to create it initially before starting unbound for the first time after enabling this."
+		einfo ""
+	fi
+
+	# Our user is not available on prefix
+	use prefix && return
+
+	local _perm_check_testfile=$(mktemp --dry-run "${EPREFIX}"/etc/unbound/var/.pkg_postinst-perm-check.XXXXXXXXX)
+	su -s /bin/sh -c "touch ${_perm_check_testfile}" unbound &>/dev/null
+	if [ $? -ne 0 ] ; then
+		ewarn "WARNING: unbound user cannot write to \"${EPREFIX}/etc/unbound/var\"!"
+		ewarn "Run the following commands to restore default permission:"
+		ewarn ""
+		ewarn "    chown root:unbound ${EPREFIX}/etc/unbound/var"
+		ewarn "    chmod 0770 ${EPREFIX}/etc/unbound/var"
+	else
+		# Cleanup -- no reason to die here!
+		rm -f "${_perm_check_testfile}"
+	fi
 }

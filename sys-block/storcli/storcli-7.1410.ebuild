@@ -3,18 +3,18 @@
 
 EAPI="7"
 
-inherit pax-utils
+inherit pax-utils toolchain-funcs
 
 # Upstream is still using strange version numbers
-MY_PV="007.1316.0000.0000"
+MY_PV="007.1410.0000.0000"
 
 DESCRIPTION="MegaRAID StorCLI (successor of the MegaCLI)"
 HOMEPAGE="https://www.broadcom.com/support/download-search?dk=storcli"
-SRC_URI="https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${MY_PV}_Unified_StorCLI.zip -> ${P}.zip"
+SRC_URI="https://docs.broadcom.com/docs-and-downloads/docs-and-downloads/raid-controllers/raid-controllers-common-files/${MY_PV}_Unified_StorCLI.zip -> ${P}.zip"
 
 LICENSE="Avago LSI BSD"
-SLOT="0/7.13"
-KEYWORDS="-* amd64 x86"
+SLOT="0/7.14"
+KEYWORDS="-* ~amd64"
 IUSE=""
 
 RDEPEND=""
@@ -53,14 +53,7 @@ src_prepare() {
 
 src_install() {
 	exeinto "${MY_STORCLI_BASEDIR}"
-
-	if use x86; then
-		doexe storcli
-	elif use amd64; then
-		# 32-bit version is less crashy than the 64bit (bug #656494)
-		newexe storcli storcli32
-		newexe storcli64 storcli
-	fi
+	newexe storcli64 storcli
 
 	dosym "${MY_STORCLI_BASEDIR}"/storcli /usr/sbin/storcli
 
