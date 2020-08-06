@@ -27,7 +27,10 @@ RDEPEND="
 	dev-ros/tf2_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	test? ( dev-ros/rostest[${PYTHON_SINGLE_USEDEP}] )
+	test? (
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		dev-cpp/gtest
+	)
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/tf2_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
