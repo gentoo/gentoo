@@ -63,6 +63,7 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.1-man-pages.patch"
 	"${FILESDIR}/${P}-lambda-capture-this.patch"
+	"${FILESDIR}/${P}-remove-duplicite-declaration.patch"
 )
 
 src_unpack() {
