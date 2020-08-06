@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-CVE-2018-14325.patch"
 	"${FILESDIR}/${P}-CVE-2018-14379.patch"
 	"${FILESDIR}/${P}-CVE-2018-14403.patch"
+	"${FILESDIR}/${P}-unsigned-int-cast.patch"
 )
 
 src_prepare() {
