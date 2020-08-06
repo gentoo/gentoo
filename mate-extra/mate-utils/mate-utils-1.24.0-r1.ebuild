@@ -8,7 +8,7 @@ MATE_LA_PUNT="yes"
 inherit mate
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="Utilities for the MATE desktop"
@@ -63,6 +63,7 @@ src_prepare() {
 
 src_configure() {
 	mate_src_configure \
+		--disable-static \
 		--enable-zlib \
 		--enable-debug=$(usex debug yes minimum) \
 		$(use_with X x) \
