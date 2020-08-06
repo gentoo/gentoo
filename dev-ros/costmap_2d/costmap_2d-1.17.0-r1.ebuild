@@ -26,22 +26,22 @@ RDEPEND="
 	dev-ros/tf2_ros
 	dev-ros/voxel_grid
 
-	dev-ros/tf2_sensor_msgs
-
-	dev-cpp/eigen:3
 	dev-libs/boost:=[threads]
 	dev-libs/tinyxml2:=
 	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}
+	dev-cpp/eigen:3
 	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/visualization_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/tf2_geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/tf2_sensor_msgs
 	test? (
 		dev-ros/map_server
 		dev-ros/rosbag
 		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		dev-cpp/gtest
 		dev-ros/rosunit
 	)"
 BDEPEND="
