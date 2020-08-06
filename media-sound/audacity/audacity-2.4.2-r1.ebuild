@@ -62,6 +62,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-fix-vertical-track-resizing.patch"
 	"${FILESDIR}/${P}-fix-gettimeofday.patch"
 	"${FILESDIR}/${P}-fix-metainfo.patch"
+	"${FILESDIR}/${P}-add-missing-include-portaudio.patch"
 )
 
 src_prepare() {
