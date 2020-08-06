@@ -17969,7 +17969,6 @@ virtual/ttf-fonts 1-r1: Virtual for Serif/Sans/Monospace font packages
 virtual/udev 215 217: Virtual to select between different udev daemon providers
 virtual/w3m 0: Virtual for the w3m web browser
 virtual/wine 0-r7: Virtual for Wine that supports multiple variants and slotting
-virtual/wireguard 1: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 virtual/yacc 0: virtual for yacc (yet another compiler compiler)
 www-apache/anyterm 1.1.29-r1: A terminal anywhere
 www-apache/libapreq2 2.13-r1: A library for manipulating client request data via the Apache API
