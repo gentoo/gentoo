@@ -8,7 +8,7 @@ EAPI=6
 CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
-DESCRIPTION="The most complete prelude formed solely from the \\"
+DESCRIPTION="The most complete prelude formed solely from the \"base\" package"
 HOMEPAGE="https://github.com/nikita-volkov/base-prelude"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
