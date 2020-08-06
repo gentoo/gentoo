@@ -3415,7 +3415,7 @@ app-xemacs/zenirc 1.16 1.18: ZENIRC IRC Client
 dev-ada/asis 2016-r1 2019-r1: To develop tools for Ada software
 dev-ada/aunit 2019-r1 2020: Ada unit testing framework
 dev-ada/aws 2018-r2 2019-r1 2020: A complete Web development framework
-dev-ada/gnat-suite-bin 2014 2016 2017 2018 2019: GNAT Ada suite
+dev-ada/gnat-suite-bin 2016 2017 2018 2019: GNAT Ada suite
 dev-ada/gnat_util 2017-r2 2018-r2 2019-r1: Provides access to GNAT compiler internals for AdaCore utilities
 dev-ada/gnatcoll-bindings 2019-r1 2020: GNAT Component Collection
 dev-ada/gnatcoll-core 2019-r1 2020: GNAT Component Collection Core packages
@@ -15078,7 +15078,7 @@ net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5 0.5-r1: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.4.1 4.4.2 4.4.2-r2: ISC Dynamic Host Configuration Protocol (DHCP) client/server
 net-misc/dhcpcd 8.1.9 9.1.3 9.1.4 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
-net-misc/dhcpcd-ui 0.7.5-r1 0.7.7: Desktop notification and configuration for dhcpcd
+net-misc/dhcpcd-ui 0.7.7-r1: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
 net-misc/dibbler 1.0.1 1.0.1-r2 1.0.1-r3: Portable DHCPv6 implementation (server, client and relay)
@@ -17628,7 +17628,7 @@ sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify so
 sys-libs/freeipmi 1.5.7 1.6.4 1.6.5: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.13-r2 1.14.1 1.17 1.18 1.18.1: Standard GNU database libraries
-sys-libs/glibc 2.19-r2 2.25-r11 2.30-r8 2.30-r9 2.31-r6 9999: GNU libc C library
+sys-libs/glibc 2.19-r2 2.25-r11 2.30-r8 2.30-r9 2.31-r6 2.32 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 5.1.2: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.1.0: Library for managing partitions

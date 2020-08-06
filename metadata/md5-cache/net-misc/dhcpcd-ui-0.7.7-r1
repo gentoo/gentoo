@@ -1,6 +1,6 @@
 BDEPEND=virtual/libintl virtual/pkgconfig
-DEFINED_PHASES=configure install
-DEPEND=gtk? ( dev-libs/glib:2 x11-libs/gdk-pixbuf:2 gtk2? ( x11-libs/gtk+:2 ) !gtk2? ( x11-libs/gtk+:3 ) ) libnotify? ( x11-libs/libnotify ) ncurses? ( sys-libs/ncurses:0= ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 media-libs/mesa )
+DEFINED_PHASES=configure install postinst postrm preinst prepare
+DEPEND=gtk? ( dev-libs/glib:2 x11-libs/gdk-pixbuf:2 gtk2? ( x11-libs/gtk+:2 ) !gtk2? ( x11-libs/gtk+:3 ) ) libnotify? ( x11-libs/libnotify ) ncurses? ( sys-libs/ncurses:0= ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 media-libs/mesa ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Desktop notification and configuration for dhcpcd
 EAPI=7
 HOMEPAGE=https://roy.marples.name/projects/dhcpcd-ui/
@@ -11,5 +11,5 @@ RDEPEND=gtk? ( dev-libs/glib:2 x11-libs/gdk-pixbuf:2 gtk2? ( x11-libs/gtk+:2 ) !
 REQUIRED_USE=libnotify? ( gtk ) qt5? ( !libnotify )
 SLOT=0
 SRC_URI=https://roy.marples.name/downloads/dhcpcd/dhcpcd-ui-0.7.7.tar.xz
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=0c1ddd4aecf39cf332a885fa05f3d18a
+_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=aa9a7cff1ea8a3d9dec470a764594b62

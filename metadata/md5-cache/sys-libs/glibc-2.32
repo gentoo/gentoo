@@ -1,0 +1,15 @@
+BDEPEND=|| ( dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 ) >=app-misc/pax-utils-0.1.10 sys-devel/bison doc? ( sys-apps/texinfo ) >=sys-devel/binutils-2.24 >=sys-devel/gcc-6 virtual/pkgconfig
+DEFINED_PHASES=compile configure install postinst preinst prepare pretend setup test unpack
+DEPEND=gd? ( media-libs/gd:2= ) nscd? ( selinux? ( audit? ( sys-process/audit ) caps? ( sys-libs/libcap ) ) ) suid? ( caps? ( sys-libs/libcap ) ) selinux? ( sys-libs/libselinux ) systemtap? ( dev-util/systemtap ) !<net-misc/openssh-8.1_p1-r2 test? ( >=net-dns/libidn2-2.3.0 ) virtual/os-headers sys-devel/gnuconfig
+DESCRIPTION=GNU libc C library
+EAPI=7
+HOMEPAGE=https://www.gnu.org/software/libc/
+IUSE=audit caps cet compile-locales +crypt custom-cflags doc gd headers-only +multiarch multilib nscd profile selinux +ssp +static-libs static-pie suid systemtap test vanilla
+LICENSE=LGPL-2.1+ BSD HPND ISC inner-net rc PCRE
+PDEPEND=!vanilla? ( sys-libs/timezone-data )
+RDEPEND=gd? ( media-libs/gd:2= ) nscd? ( selinux? ( audit? ( sys-process/audit ) caps? ( sys-libs/libcap ) ) ) suid? ( caps? ( sys-libs/libcap ) ) selinux? ( sys-libs/libselinux ) systemtap? ( dev-util/systemtap ) !<net-misc/openssh-8.1_p1-r2 sys-apps/gentoo-functions >=net-dns/libidn2-2.3.0 vanilla? ( !sys-libs/timezone-data )
+RESTRICT=!test? ( test )
+SLOT=2.2
+SRC_URI=mirror://gnu/glibc/glibc-2.32.tar.xz https://dev.gentoo.org/~dilfridge/distfiles/glibc-2.32-patches-1.tar.xz https://gitweb.gentoo.org/proj/locale-gen.git/snapshot/locale-gen-2.10.tar.gz multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-20180511.tar.xz )
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	gnuconfig	b8ec1c34be4ff9dac7ad4034d277936b	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	prefix	c2993e4c430c1ee24f278983d6189501	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=efc1a7bf3bc649b773a2657d8ac03efc
