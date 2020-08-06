@@ -271,6 +271,7 @@ PATCHES=(
 
 	# git master
 	"${FILESDIR}/${PN}-6.4.3.2-boost-1.73.patch" # bug 721806
+	"${FILESDIR}/${PN}-6.4.6.2-llvm-10.patch" # bug 713574
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
