@@ -67,7 +67,7 @@ RDEPEND="${COMMON_DEPEND}
 	!sys-apps/systemd
 "
 PDEPEND=">=sys-apps/hwids-20140304[udev]
-	>=sys-fs/udev-init-scripts-26"
+	>=sys-fs/udev-init-scripts-34"
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
