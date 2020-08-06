@@ -3,7 +3,7 @@
 <pkgmetadata>
   <maintainer type="person">
     <email>fordfrog@gentoo.org</email>
-    <name>Miroslav šulc</name>
+    <name>Miroslav Šulc</name>
   </maintainer>
   <use>
     <flag name="boost">Enable support for Boost based enhancement</flag>
