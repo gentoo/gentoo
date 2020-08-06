@@ -4040,7 +4040,7 @@ dev-haskell/hakyll 4.13.4.0: A static website compiler library
 dev-haskell/half 0.2.2.3: Half-precision floating-point
 dev-haskell/hamlet 1.1.9.2 1.2.0: Haml-like template files that are compile-time checked (deprecated)
 dev-haskell/hans 3.0.1: Network Stack
-dev-haskell/happstack-server 7.1.7.1 7.3.9 7.4.5 7.4.6.1 7.4.6.2 7.5.3: Web related tools and services
+dev-haskell/happstack-server 7.6.0: Web related tools and services
 dev-haskell/happy 1.19.4 1.19.5 1.19.12: Happy is a parser generator for Haskell
 dev-haskell/harp 0.4.1 0.4.2 0.4.3.2: HaRP allows pattern-matching with regular expressions
 dev-haskell/hashable 1.2.1.0 1.2.4.0 1.2.7.0: A class for types that can be converted to a hash value
@@ -4144,7 +4144,7 @@ dev-haskell/iwlib 0.1.0: Bindings for the iw C library
 dev-haskell/jira-wiki-markup 1.1.4: Parse jira wiki text into an abstract syntax tree
 dev-haskell/js-flot 0.8.3: Obtain minified flot code
 dev-haskell/js-jquery 3.1.1 3.2.1 3.3.1: Obtain minified jQuery code
-dev-haskell/json 0.9.1 0.9.3: Support for serialising Haskell to and from JSON
+dev-haskell/json 0.9.3 0.10: Support for serialising Haskell to and from JSON
 dev-haskell/juicypixels 3.2.5.3 3.2.7 3.2.8 3.3.5: Picture loading/serialization (in png, jpeg, bitmap, gif, tga, tiff and others)
 dev-haskell/kan-extensions 4.2.3 5.0.1 5.2: Kan extensions, lifts, forms of the Yoneda lemma, and (co)density (co)monads
 dev-haskell/keys 3.10.2 3.11 3.12.3: Keyed functors and containers
@@ -5109,7 +5109,7 @@ dev-lang/gforth 0.7.3-r1: GNU Forth is a fast and portable implementation of the
 dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5 8.8.1 8.8.2 8.8.3 8.8.4 8.10.1: The Glasgow Haskell Compiler
 dev-lang/gnat-gpl 2016-r4 2017-r1 2018-r3 2019-r2: GNAT Ada Compiler - GPL version
 dev-lang/gnuprologjava 0.2.6 0.2.6-r1: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
-dev-lang/go 1.12.17 1.13.13 1.13.14 1.14.5 1.14.6 9999: A concurrent garbage collected and typesafe programming language
+dev-lang/go 1.12.17 1.13.13 1.13.14 1.13.15 1.14.5 1.14.6 1.14.7 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/go-bootstrap 1.13.6: Bootstrap package for dev-lang/go
 dev-lang/gprolog 1.4.4 1.4.5: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/helium 1.8.1: The Helium Compiler
@@ -14892,7 +14892,7 @@ net-libs/nghttp2 1.41.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
 net-libs/nodejs 8.12.0 10.19.0 10.20.1 10.21.0 12.16.1 12.16.2 12.16.3 12.17.0 14.2.0 14.3.0 14.4.0 14.5.0 14.6.0 14.7.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
-net-libs/ntirpc 1.7.1 1.7.4 3.0 3.2: Transport Independent RPC library for nfs-ganesha
+net-libs/ntirpc 1.7.4 1.8.1 3.2 3.3: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
 net-libs/openmq-cclient 4.4.1: C-Client Library for Open Source Java Message Service (JMS)
@@ -18030,10 +18030,10 @@ www-apps/cvsweb 3.0.6-r1: WWW interface to a CVS tree
 www-apps/davical 1.1.9.3: A CalDAV and CardDAV Server
 www-apps/dokuwiki 20160626e 20170219e 20180422a 20180422b: DokuWiki is a simple to use Wiki aimed at a small company's documentation needs.
 www-apps/dotproject 2.1.7-r1: dotProject is a PHP web-based project management framework
-www-apps/drupal 7.72 8.8.8 8.9.1 8.9.2 9.0.1 9.0.2: PHP-based open-source platform and content management system
+www-apps/drupal 7.72 8.8.8 8.9.1 8.9.2 8.9.3 9.0.1 9.0.2 9.0.3: PHP-based open-source platform and content management system
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/gitea 1.11.8 1.12.1 9999: A painless self-hosted Git service
-www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
+www-apps/gitit 0.13.0.0: Wiki using happstack, git or darcs, and pandoc
 www-apps/grafana-bin 6.7.4: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hugo 0.69.0: The world's fastest framework for building websites
 www-apps/icingaweb2 2.7.3 2.8.1 9999: Icinga Web 2 - Frontend for icinga2
