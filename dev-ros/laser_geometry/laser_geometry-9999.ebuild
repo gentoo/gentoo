@@ -13,19 +13,24 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
+	dev-ros/angles
 	dev-ros/roscpp
 	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep "dev-python/numpy[\${PYTHON_USEDEP}]")
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
-	dev-libs/boost:=[threads]
 	dev-ros/tf
-	dev-ros/tf2_ros[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/tf2[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/tf2_geometry_msgs[${PYTHON_SINGLE_USEDEP}]
+	dev-libs/boost:=[threads]
 	dev-cpp/eigen:3
-	dev-ros/angles
 "
 DEPEND="${RDEPEND}
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	test? ( $(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]") )"
+	test? (
+		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		dev-cpp/gtest
+	)"
 BDEPEND="
 	dev-ros/cmake_modules
 "
