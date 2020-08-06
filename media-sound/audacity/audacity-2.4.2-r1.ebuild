@@ -57,6 +57,8 @@ BDEPEND="app-arch/unzip
 	virtual/pkgconfig
 "
 
+REQUIRED_USE="portmidi? ( portsmf )"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3.3-Fix-building-against-system-portaudio.patch
 	"${FILESDIR}/${P}-fix-vertical-track-resizing.patch"
