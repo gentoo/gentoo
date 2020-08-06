@@ -12,7 +12,7 @@ HOMEPAGE="https://www.gtk.org/"
 
 LICENSE="LGPL-2+"
 SLOT="3"
-IUSE="aqua broadway cloudprint colord cups examples gtk-doc +introspection test vim-syntax wayland +X xinerama"
+IUSE="aqua broadway cloudprint cloudproviders colord cups examples gtk-doc +introspection test vim-syntax wayland +X xinerama"
 REQUIRED_USE="
 	|| ( aqua wayland X )
 	xinerama? ( X )
@@ -41,6 +41,7 @@ COMMON_DEPEND="
 	cloudprint? (
 		>=net-libs/rest-0.7[${MULTILIB_USEDEP}]
 		>=dev-libs/json-glib-1.0[${MULTILIB_USEDEP}] )
+	cloudproviders? ( >=dev-libs/libcloudproviders-0.3.1 )
 	colord? ( >=x11-misc/colord-0.1.9:0=[${MULTILIB_USEDEP}] )
 	cups? ( >=net-print/cups-2.0[${MULTILIB_USEDEP}] )
 	introspection? ( >=dev-libs/gobject-introspection-1.39:= )
@@ -138,6 +139,7 @@ multilib_src_configure() {
 		$(use_enable aqua quartz-backend)
 		$(use_enable broadway broadway-backend)
 		$(use_enable cloudprint)
+		$(use_enable cloudproviders)
 		$(use_enable colord)
 		$(use_enable cups cups auto)
 		$(multilib_native_use_enable gtk-doc)
@@ -150,8 +152,6 @@ multilib_src_configure() {
 		$(use_enable X xkb)
 		$(use_enable X xrandr)
 		$(use_enable xinerama)
-		# cloudprovider is not packaged in Gentoo yet
-		--disable-cloudproviders
 		--disable-papi
 		# sysprof integration needs >=sysprof-3.33.2
 		--disable-profiler

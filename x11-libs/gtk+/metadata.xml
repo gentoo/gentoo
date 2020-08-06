@@ -14,6 +14,7 @@
 	<use>
 		<flag name="broadway">Enable the GDK Broadway backend.</flag>
 		<flag name="cloudprint">Enable printing via Google Cloud Print.</flag>
+		<flag name="cloudproviders">Enable cloud storage providers integration.</flag>
 		<flag name="colord">Use <pkg>x11-misc/colord</pkg> for color management
 			in printing</flag>
 	</use>
