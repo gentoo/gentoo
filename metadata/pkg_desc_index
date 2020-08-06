@@ -519,7 +519,7 @@ app-admin/gnome-abrt 1.2.6 1.2.7: A utility for viewing problems that have occur
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/go-updater 0.2.0: Checks if Gentoo go packages are compiled with the system's golang version
 app-admin/gopass 1.9.2: a simple but powerful password manager for the terminal
-app-admin/graylog 3.3.1 3.3.2: Free and open source log management
+app-admin/graylog 3.3.3: Free and open source log management
 app-admin/gtkdiskfree 2.0.1-r1 2.0.3: Graphical tool to show free disk space like df
 app-admin/hardinfo 0.5.2_pre20130823: System information and benchmark tool for Linux systems
 app-admin/haskell-updater 1.2.9 1.2.10 1.2.12-r1 1.3.1 1.3.2: Rebuild Haskell dependencies in Gentoo
@@ -5934,7 +5934,7 @@ dev-perl/Algorithm-Munkres 0.80.0-r1 0.80.0-r2: Munkres solution to classical As
 dev-perl/Alien-Base-ModuleBuild 1.140.0: A Module::Build subclass for building Alien:: modules and their libraries
 dev-perl/Alien-Build 1.790.0 2.230.0 2.260.0: Build external dependencies for use in CPAN
 dev-perl/Alien-Gnuplot 1.33.0: Find and verify functionality of the gnuplot executable
-dev-perl/Alien-LibGumbo 0.50.0-r1 0.50.0-r2: Gumbo parser library
+dev-perl/Alien-LibGumbo 0.50.0-r2: Gumbo parser library
 dev-perl/Alien-Libxml2 0.90.0 0.160.0: Install the C libxml2 library on your system
 dev-perl/Alien-SDL 1.446.0 1.446.0-r1: building, finding and using SDL binaries
 dev-perl/Alien-wxWidgets 0.690.0-r1: Building, finding and using wxWidgets binaries
@@ -5951,7 +5951,7 @@ dev-perl/Apache-LogFormat-Compiler 0.350.0 0.360.0: Compile an Apache log format
 dev-perl/Apache-Reload 0.130.0-r1: Automatically reload changed modules without restarting Apache
 dev-perl/Apache-Session 1.930.0 1.930.0-r1: A persistence framework for session data
 dev-perl/Apache-SizeLimit 0.970.0-r1 0.970.0-r2: Graceful exit for large children
-dev-perl/Apache-Test 1.400.0-r2 1.420.0: Test.pm wrapper with helpers for testing Apache
+dev-perl/Apache-Test 1.420.0: Test.pm wrapper with helpers for testing Apache
 dev-perl/Apache2-AuthenNTLM 0.20.0-r2: Perform Microsoft NTLM and Basic User Authentication
 dev-perl/App-CLI 0.500.0: Dispatcher module for command line interface programs
 dev-perl/App-Cmd 0.331.0: write command line apps with less suffering
@@ -5959,7 +5959,7 @@ dev-perl/App-FatPacker 0.10.8: pack your dependencies onto your script file
 dev-perl/App-Nopaste 1.13.0: Easy access to any pastebin
 dev-perl/App-cpanminus 1.704.400 9999: Get, unpack, build and install modules from CPAN
 dev-perl/App-perlbrew 0.840.0 0.880.0: Manage perl installations in your $HOME
-dev-perl/App-pwhich 1.140.0 1.150.0 1.160.0: Perl-only 'which'
+dev-perl/App-pwhich 1.150.0 1.160.0: Perl-only 'which'
 dev-perl/AppConfig 1.710.0 1.710.0-r1: Perl5 module for reading configuration files and parsing command line arguments
 dev-perl/Archive-Any 0.94.500 0.94.600: Single interface to deal with file archives
 dev-perl/Archive-Extract 0.800.0 0.860.0: Generic archive extracting mechanism
@@ -5981,7 +5981,7 @@ dev-perl/Audio-WMA 1.300.0-r1: extension for reading WMA/ASF metadata
 dev-perl/Audio-Wav 0.140.0-r1 0.140.0-r2: Modules for reading & writing Microsoft WAV files
 dev-perl/Authen-DigestMD5 0.40.0-r1 0.40.0-r2: SASL DIGEST-MD5 authentication (RFC2831)
 dev-perl/Authen-Htpasswd 0.171.0-r1 0.171.0-r2: interface to read and modify Apache .htpasswd files
-dev-perl/Authen-Libwrap 0.230.0 0.230.0-r1: A Perl access to the TCP Wrappers interface
+dev-perl/Authen-Libwrap 0.230.0-r1: A Perl access to the TCP Wrappers interface
 dev-perl/Authen-NTLM 1.90.0-r1 1.90.0-r2: An NTLM authentication module
 dev-perl/Authen-PAM 0.160.0-r2 0.160.0-r3: Interface to PAM library
 dev-perl/Authen-Radius 0.270.0 0.310.0: Communicate with a Radius server from Perl
@@ -9665,7 +9665,7 @@ dev-ros/test_rosbag 1.15.8 9999: Unit tests for rosbag
 dev-ros/test_rosbag_storage 1.15.8 9999: Unit tests for rosbag_storage
 dev-ros/test_roscpp 1.15.7 1.15.8 9999: Unit tests for roscpp
 dev-ros/test_rosgraph 1.15.7 1.15.8 9999: Unit tests for rosgraph
-dev-ros/test_roslaunch 1.15.7 1.15.8 9999: Unit tests for roslaunch
+dev-ros/test_roslaunch 1.15.8 9999: Unit tests for roslaunch
 dev-ros/test_roslib_comm 1.15.7 1.15.8 9999: Unit tests for roslib
 dev-ros/test_rosmaster 1.15.7 1.15.8 9999: Unit tests for rosmaster
 dev-ros/test_rosparam 1.15.7 1.15.8 9999: Unit tests for rosparam
@@ -17292,7 +17292,7 @@ sys-cluster/hpl 2.0-r3: Portable Implementation of the Linpack Benchmark for Dis
 sys-cluster/hpx 1.4.1 9999: C++ runtime system for parallel and distributed applications
 sys-cluster/ipvsadm 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
 sys-cluster/k9scli 0.20.5 0.21.2: terminal based UI to manage kubernetes clusters
-sys-cluster/keepalived 2.0.17 2.0.19 2.0.20 2.1.3: A strong & robust keepalive facility to the Linux Virtual Server project
+sys-cluster/keepalived 2.0.20 2.1.5: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.3 9999: High-Performance Intra-Node MPI Communication
 sys-cluster/kube-apiserver 1.15.10 1.15.11 1.15.12 1.16.7 1.16.8 1.17.3 1.17.4: Kubernetes API server
 sys-cluster/kube-controller-manager 1.15.10 1.15.11 1.15.12 1.16.7 1.16.8 1.17.3 1.17.4: Kubernetes Controller Manager
