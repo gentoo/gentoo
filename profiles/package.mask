@@ -533,6 +533,13 @@ app-text/glosung
 ~virtual/perl-IPC-Cmd-1.40.0
 ~virtual/perl-JSON-PP-4.40.0
 ~virtual/perl-Math-BigInt-1.999.818
+~virtual/perl-Math-BigInt-FastCalc-0.500.900
+~virtual/perl-Module-CoreList-5.202.6.200
+~virtual/perl-Module-Load-Conditional-0.700.0
+~virtual/perl-Module-Metadata-1.0.37
+~virtual/perl-Net-Ping-2.720.0
+~virtual/perl-parent-0.238.0
+~virtual/perl-podlators-4.140.0
 
 # Christoph Junghans <junghans@gentoo.org> (2020-07-14)
 # Unmaintained upstream and does not support systemd or firewalld.
