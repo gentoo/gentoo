@@ -18,6 +18,8 @@ KEYWORDS="~amd64"
 RESTRICT="mirror bindist"
 
 RDEPEND="
+	app-accessibility/at-spi2-atk:2
+	app-accessibility/at-spi2-core:2
 	dev-libs/atk
 	dev-libs/expat
 	dev-libs/glib:2
@@ -28,6 +30,7 @@ RDEPEND="
 	media-libs/freetype:2
 	net-print/cups
 	sys-apps/dbus
+	sys-apps/util-linux
 	sys-libs/libcxx
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
@@ -51,10 +54,12 @@ S=${WORKDIR}
 
 QA_PREBUILT="
 	opt/discord/${MY_BIN}
+	opt/discord/chrome-sandbox
 	opt/discord/libEGL.so
 	opt/discord/libGLESv2.so
 	opt/discord/swiftshader/libEGL.so
 	opt/discord/swiftshader/libGLESv2.so
+	opt/discord/swiftshader/libvk_swiftshader.so
 	opt/discord/libVkICD_mock_icd.so
 	opt/discord/libffmpeg.so
 "
