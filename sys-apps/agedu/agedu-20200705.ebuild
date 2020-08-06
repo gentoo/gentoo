@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit autotools eutils
 
 # agedu-20151213.59b0ed3.ebuild is not a legitimate name
 # so we'll drop versionator and just set MY_P manually.
-MY_P="${PN}"-20190630.66cb14d
+MY_P="${PN}"-20200705.2a7d4a2
 
 DESCRIPTION="A utility for tracking down wasted disk space"
 HOMEPAGE="https://www.chiark.greenend.org.uk/~sgtatham/agedu/"
