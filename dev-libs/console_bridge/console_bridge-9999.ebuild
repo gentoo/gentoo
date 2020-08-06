@@ -39,6 +39,7 @@ BDEPEND="
 		dev-util/cppcheck
 	)
 "
+PATCHES=( "${FILESDIR}/tests.patch" )
 
 src_prepare() {
 	# Avoid wgeting it. #733704
