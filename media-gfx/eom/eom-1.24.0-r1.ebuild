@@ -6,7 +6,7 @@ EAPI=6
 inherit mate
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="The MATE image viewer"
@@ -53,6 +53,8 @@ DEPEND="${COMMON_DEPEND}
 	>=sys-devel/gettext-0.19.8:*
 	virtual/pkgconfig
 "
+
+PATCHES=( "${FILESDIR}/eom-1.24.0-add-gdk-includes.patch" )
 
 src_configure() {
 	mate_src_configure \

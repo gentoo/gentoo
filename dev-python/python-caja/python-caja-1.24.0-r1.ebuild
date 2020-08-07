@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 inherit mate python-single-r1
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm x86"
 fi
 
 DESCRIPTION="Python bindings for the Caja file manager"
@@ -34,6 +34,13 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig:*
 	doc? ( app-text/docbook-xml-dtd:4.1.2 )
 "
+
+src_prepare() {
+	MATE_FORCE_AUTORECONF="true"
+
+	sed -i "s/\$(PACKAGE)/${PF}/g" examples/Makefile.am || die
+	mate_src_prepare
+}
 
 src_install() {
 	mate_src_install

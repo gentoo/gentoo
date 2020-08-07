@@ -8,7 +8,7 @@ MATE_LA_PUNT="yes"
 inherit mate
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="Atril document viewer for MATE"
@@ -75,6 +75,7 @@ src_configure() {
 	# Passing --disable-help would drop offline help, that would be inconsistent
 	# with helps of the most of GNOME apps that doesn't require network for that.
 	mate_src_configure \
+		--disable-static \
 		--disable-tests \
 		--enable-comics \
 		--enable-pdf \

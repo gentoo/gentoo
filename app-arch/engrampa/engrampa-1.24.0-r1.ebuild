@@ -8,7 +8,7 @@ MATE_LA_PUNT="yes"
 inherit mate readme.gentoo-r1
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="Engrampa archive manager for MATE"
@@ -23,6 +23,7 @@ COMMON_DEPEND="
 	virtual/libintl
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/gtk+-3.22:3[X]
+	x11-libs/libSM
 	x11-libs/pango
 	caja? ( >=mate-base/caja-1.17.1 )
 	magic? ( sys-apps/file )

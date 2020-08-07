@@ -14,7 +14,7 @@ SRC_URI="https://github.com/Fred-Barclay/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

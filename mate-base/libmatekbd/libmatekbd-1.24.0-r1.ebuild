@@ -8,7 +8,7 @@ MATE_LA_PUNT="yes"
 inherit mate
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="MATE keyboard configuration library"
@@ -37,6 +37,7 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	mate_src_configure \
+		--disable-static \
 		$(use_with X x) \
 		$(use_enable introspection) \
 		$(use_enable test tests)

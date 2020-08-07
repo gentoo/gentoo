@@ -13,7 +13,7 @@ fi
 
 DESCRIPTION="MATE default window manager"
 LICENSE="FDL-1.2+ GPL-2+ LGPL-2+ MIT"
-SLOT="0"
+SLOT="0/2"
 
 IUSE="startup-notification test xinerama"
 RESTRICT="!test? ( test )"
@@ -59,6 +59,7 @@ DEPEND="${COMMON_DEPEND}
 
 src_configure() {
 	mate_src_configure \
+		--disable-static \
 		--enable-compositor \
 		--enable-render \
 		--enable-shape \

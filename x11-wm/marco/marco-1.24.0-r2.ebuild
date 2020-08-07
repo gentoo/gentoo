@@ -8,7 +8,7 @@ MATE2_LA_PUNT="yes"
 inherit mate
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="MATE default window manager"
@@ -59,6 +59,7 @@ DEPEND="${COMMON_DEPEND}
 
 src_configure() {
 	mate_src_configure \
+		--disable-static \
 		--enable-compositor \
 		--enable-render \
 		--enable-shape \

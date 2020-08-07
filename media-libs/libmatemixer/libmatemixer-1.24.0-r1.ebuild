@@ -6,7 +6,7 @@ EAPI=6
 inherit mate
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="Mixer library for MATE Desktop"
@@ -35,6 +35,7 @@ DEPEND="${COMMON_DEPEND}
 
 src_configure() {
 	mate_src_configure \
+		--disable-static \
 		--disable-null \
 		$(use_enable alsa) \
 		$(use_enable oss) \
