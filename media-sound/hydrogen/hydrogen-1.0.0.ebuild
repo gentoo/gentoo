@@ -57,7 +57,7 @@ RDEPEND="${CDEPEND}"
 
 DOCS=( AUTHORS ChangeLog DEVELOPERS README.txt )
 
-PATCHES=( "${FILESDIR}/${PN}-1.0.0-gnuinstalldirs.patch" )
+PATCHES=( "${FILESDIR}/${P}-gnuinstalldirs.patch" )
 
 src_prepare() {
 	cmake_src_prepare
