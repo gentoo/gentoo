@@ -8348,7 +8348,7 @@ dev-python/ldap3 2.7: A strictly RFC 4511 conforming LDAP V3 pure Python client
 dev-python/ldappool 2.4.1: A connection pool for python-ldap
 dev-python/lesscpy 0.14.0: A compiler written in Python for the LESS language
 dev-python/libarchive-c 2.9: A Python interface to libarchive
-dev-python/libcloud 3.0.0: Unified Interface to the Cloud - python support libs
+dev-python/libcloud 3.0.0 3.1.0: Unified Interface to the Cloud - python support libs
 dev-python/liblarch 3.0.1: Library to handle directed acyclic graphs
 dev-python/libnacl 1.6.1: Python ctypes wrapper for libsodium
 dev-python/libpillowfight 0.3.0: Small library containing various image processing algorithms
