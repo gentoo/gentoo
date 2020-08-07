@@ -84,7 +84,6 @@ dual_scripts() {
 	src_remove_dual      perl-core/IO-Compress        2.93.0        zipdetails
 	src_remove_dual      perl-core/JSON-PP            4.40.0        json_pp
 	src_remove_dual      perl-core/Module-CoreList    5.202.6.20    corelist
-	src_remove_dual      perl-core/Pod-Parser         1.630.0       pod2usage podchecker podselect
 	src_remove_dual      perl-core/Pod-Perldoc        3.280.100     perldoc
 	src_remove_dual      perl-core/Test-Harness       3.420.0       prove
 	src_remove_dual      perl-core/podlators          4.140.0       pod2man pod2text
