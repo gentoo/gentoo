@@ -19,6 +19,7 @@ RDEPEND="
 	dev-libs/console_bridge:=
 	dev-ros/roscpp
 	dev-ros/roslaunch
+	dev-ros/tf
 	dev-ros/tf2
 	dev-ros/tf2_ros
 	dev-ros/topic_tools
