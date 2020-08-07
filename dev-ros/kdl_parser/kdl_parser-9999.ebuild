@@ -17,6 +17,7 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-ros/roscpp
 	dev-ros/rosconsole
+		dev-libs/console_bridge:=
 	>=dev-ros/urdf-1.13
 	sci-libs/orocos_kdl:=
 	dev-libs/tinyxml2:=
