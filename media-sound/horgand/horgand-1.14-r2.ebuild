@@ -13,18 +13,18 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc sparc x86"
 
-RDEPEND="x11-libs/fltk:1
-	x11-libs/libXpm
-	media-libs/libsndfile
+RDEPEND="
 	media-libs/alsa-lib
+	media-libs/libsndfile
 	media-sound/alsa-utils
-	media-sound/jack-audio-connection-kit"
+	virtual/jack
+	x11-libs/fltk:1
+	x11-libs/libXpm
+"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=(
-	"${FILESDIR}/${P}-overflow.patch"
-)
+PATCHES=( "${FILESDIR}/${P}-overflow.patch" )
 
 src_compile() {
 	emake CXX="$(tc-getCXX)" CXXFLAGS="${CXXFLAGS} $(fltk-config --cxxflags) \
