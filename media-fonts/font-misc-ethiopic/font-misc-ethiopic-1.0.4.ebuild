@@ -10,11 +10,18 @@ DESCRIPTION="Miscellaneous Ethiopic fonts"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 
-FONT_OPTIONS="--with-otf-fontdir=${EPREFIX}/usr/share/fonts/OTF"
+XORG_CONFIGURE_OPTIONS=(
+	--with-fontrootdir="${EPREFIX}/usr/share/fonts"
+
+	# This flag unexpectedly doesn't control whether the font (i.e. the .ttf file)
+	# is installed, but instead only controls whether mkfontscale/mkfontdir is
+	# run. I suspect this is a bug.
+	--disable-truetype-install
+)
 
 src_install() {
 	xorg-3_src_install
+
 	# TTF fonts are not supposed to be installed.
-	# Also fixes file collision per bug #309689
 	rm -r "${ED}/usr/share/fonts/TTF" || die
 }
