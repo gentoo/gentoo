@@ -18,7 +18,7 @@ SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~ppc-macos ~x86-macos"
 IUSE=""
 RESTRICT=test # missing ia64 alpha keywords for dev-haskell/puremd5
 

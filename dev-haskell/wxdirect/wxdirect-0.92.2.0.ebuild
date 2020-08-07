@@ -16,7 +16,7 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="${WX_GTK_VER}/${PV}"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-haskell/parsec-2.1.0:=[profile?] <dev-haskell/parsec-4:=[profile?]
