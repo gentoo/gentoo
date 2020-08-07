@@ -34,7 +34,10 @@ DOCS=(
 
 src_prepare() {
 	sed -i -e 's#-g -O3##g' src/Makefile.am || die
+	cat "${FILESDIR}"/ax_prefix_config_h.m4 >> acinclude.m4 || die
+
 	default
+
 	eautoreconf
 }
 
