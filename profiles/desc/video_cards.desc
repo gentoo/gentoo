@@ -35,6 +35,7 @@ radeon - VIDEO_CARDS setting to build driver for ATI radeon video cards
 radeonsi - VIDEO_CARDS setting to build only Southern Islands based chips code for radeon
 siliconmotion - VIDEO_CARDS setting to build driver for siliconmotion video cards
 tegra - VIDEO_CARDS setting to build driver for tegra video cards
+v3d - VIDEO_CARDS setting to build driver for v3d video cards
 vc4 - VIDEO_CARDS setting to build driver for vc4 video cards
 vesa - VIDEO_CARDS setting to build driver for vesa video cards
 via - VIDEO_CARDS setting to build driver for via video cards
