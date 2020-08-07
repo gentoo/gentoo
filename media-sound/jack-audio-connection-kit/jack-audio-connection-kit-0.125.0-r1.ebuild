@@ -69,7 +69,7 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	einstalldocs
 	if use examples; then
-		insinto /usr/share/doc/${PF}
+		docinto /usr/share/doc/${PF}
 		doins -r "${S}/example-clients"
 		docompress -x /usr/share/doc/${PF}/example-clients
 	fi
