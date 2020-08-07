@@ -6371,7 +6371,7 @@ dev-perl/Dist-Zilla-Plugin-Test-MinimumVersion 2.0.7 2.0.10: Release tests for m
 dev-perl/Dist-Zilla-Plugin-Test-Perl-Critic 3.1.0: Tests to check your code against best practices
 dev-perl/Dist-Zilla-Plugin-VersionFromMainModule 0.40.0: Set the distribution version from your main module's
 dev-perl/Dist-Zilla-Role-FileWatcher 0.6.0: Receive notification when something changes a file's contents
-dev-perl/Dist-Zilla-Role-ModuleMetadata 0.4.0: A role for plugins that use Module::Metadata
+dev-perl/Dist-Zilla-Role-ModuleMetadata 0.4.0 0.6.0: A role for plugins that use Module::Metadata
 dev-perl/Dist-Zilla-Role-PluginBundle-PluginRemover 0.105.0: Add '-remove' functionality to a bundle
 dev-perl/Dumbbench 0.111.0: More reliable benchmarking with the least amount of thinking
 dev-perl/DynaLoader-Functions 0.3.0: Deconstructed Dynamic C Library Loading
@@ -17152,7 +17152,7 @@ sys-auth/pam_ssh 2.3: Uses ssh-agent to provide single sign-on
 sys-auth/pam_ssh_agent_auth 0.10.3 9999: Simple module to authenticate users against their ssh-agent keys
 sys-auth/pam_u2f 1.0.8: Library for authenticating against PAM with a Yubikey
 sys-auth/pam_yubico 2.26: Library for authenticating against PAM with a Yubikey
-sys-auth/pambase 20200304 20200618 20200805: PAM base configuration files
+sys-auth/pambase 20200304 20200618 20200806: PAM base configuration files
 sys-auth/passwdqc 1.3.0 1.4.0: Password strength checking library (and PAM module)
 sys-auth/polkit 0.115-r4 0.116-r1 0.117: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
