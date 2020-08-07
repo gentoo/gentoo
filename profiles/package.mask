@@ -560,6 +560,20 @@ app-text/glosung
 ~virtual/perl-Net-Ping-2.720.0
 ~virtual/perl-parent-0.238.0
 ~virtual/perl-podlators-4.140.0
+~virtual/perl-Pod-Simple-3.400.0
+~virtual/perl-Safe-2.410.0
+~virtual/perl-Scalar-List-Utils-1.550.0
+~virtual/perl-Socket-2.29.0
+~virtual/perl-Storable-3.210.0
+~virtual/perl-Sys-Syslog-0.360.0
+~virtual/perl-Term-ANSIColor-5.10.0
+~virtual/perl-Test-Simple-1.302.175
+~virtual/perl-Thread-Queue-3.140.0
+~virtual/perl-threads-2.250.0
+~virtual/perl-threads-shared-1.610.0
+~virtual/perl-Time-HiRes-1.976.400
+~virtual/perl-Time-Piece-1.340.100
+~virtual/perl-Unicode-Normalize-1.270.0
 
 # Christoph Junghans <junghans@gentoo.org> (2020-07-14)
 # Unmaintained upstream and does not support systemd or firewalld.
