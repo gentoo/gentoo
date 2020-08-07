@@ -477,7 +477,7 @@ app-admin/clustershell 1.8.3: Python framework for efficient cluster administrat
 app-admin/conky 1.10.8-r9 1.10.8-r10 1.11.5 1.11.6: An advanced, highly configurable system monitor for X
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.2.3 8.2.4 8.2.5: Serial Console Manager
-app-admin/consul 1.7.4 1.8.0 1.8.1: A tool for service discovery, monitoring and configuration
+app-admin/consul 1.7.4 1.7.6 1.8.0 1.8.1 1.8.2: A tool for service discovery, monitoring and configuration
 app-admin/consul-replicate 0.2.0: Consul cross-DC KV replication daemon
 app-admin/consul-template 0.25.0: Generic template rendering and notifications with Consul
 app-admin/cpulimit 1.8 2.2 2.4: Limits the CPU usage of a process
@@ -12556,7 +12556,7 @@ media-fonts/font-adobe-75dpi 1.0.3-r1 1.0.3-r2: X.Org Adobe bitmap fonts
 media-fonts/font-adobe-utopia-100dpi 1.0.4-r1 1.0.4-r2: X.Org Adobe Utopia bitmap fonts
 media-fonts/font-adobe-utopia-75dpi 1.0.4-r1 1.0.4-r2: X.Org Adobe Utopia bitmap fonts
 media-fonts/font-adobe-utopia-type1 1.0.4-r1 1.0.4-r2: X.Org Adobe Utopia Type 1 fonts
-media-fonts/font-alias 1.0.3-r1 1.0.3-r2: X.Org font aliases
+media-fonts/font-alias 1.0.3-r1 1.0.3-r2 1.0.4: X.Org font aliases
 media-fonts/font-arabic-misc 1.0.3-r1 1.0.3-r2: X.Org arabic bitmap fonts
 media-fonts/font-bh-100dpi 1.0.3-r1 1.0.3-r2: X.Org Bigelow & Holmes bitmap fonts
 media-fonts/font-bh-75dpi 1.0.3-r1 1.0.3-r2: X.Org Bigelow & Holmes bitmap fonts
@@ -12577,7 +12577,7 @@ media-fonts/font-isas-misc 1.0.3-r1 1.0.3-r2: X.Org the Institute of Software, A
 media-fonts/font-jis-misc 1.0.3-r1 1.0.3-r2: X.Org JIS (japanese) fonts
 media-fonts/font-micro-misc 1.0.3-r1 1.0.3-r2: X.Org micro-misc font
 media-fonts/font-misc-cyrillic 1.0.3-r1 1.0.3-r2: X.Org misc-cyrillic fonts
-media-fonts/font-misc-ethiopic 1.0.3-r1 1.0.3-r2: Miscellaneous Ethiopic fonts
+media-fonts/font-misc-ethiopic 1.0.3-r1 1.0.4: Miscellaneous Ethiopic fonts
 media-fonts/font-misc-meltho 1.0.3-r1 1.0.3-r2: X.Org Syriac fonts
 media-fonts/font-misc-misc 1.1.2-r1 1.1.2-r2: X.Org miscellaneous fonts
 media-fonts/font-mutt-misc 1.0.3-r1 1.0.3-r2: X.Org ClearlyU fonts
