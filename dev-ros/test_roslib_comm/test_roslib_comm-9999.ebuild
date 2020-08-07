@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}
 		dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
 		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
 		dev-ros/test_rosmaster
+		dev-ros/std_srvs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	)
 "
 
