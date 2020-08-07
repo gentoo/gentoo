@@ -1,0 +1,76 @@
+diff --git a/Test/Framework/TH/Prime/Parser.hs b/Test/Framework/TH/Prime/Parser.hs
+index 87553a6..f188390 100644
+--- a/Test/Framework/TH/Prime/Parser.hs
++++ b/Test/Framework/TH/Prime/Parser.hs
+@@ -10,2 +10,5 @@ import Language.Haskell.Exts.Extension
+ import Language.Haskell.Exts.Parser
++#if MIN_VERSION_haskell_src_exts(1, 18, 0)
++import Language.Haskell.Exts.SrcLoc
++#endif
+ import Language.Haskell.Exts.Syntax hiding (VarName, Exp)
+@@ -14,2 +17,11 @@ import Language.Preprocessor.Cpphs hiding (Ident)
+ 
++#if MIN_VERSION_haskell_src_exts(1, 18, 0)
++-- location field for haskell-src-exts-1.18
++#define L SrcSpanInfo
++#define loc _
++#else
++#define L
++#define loc
++#endif
++
+ ----------------------------------------------------------------
+@@ -45,3 +57,7 @@ getTests :: FilePath -> IO ([String], [String])
+ getTests file = do
++#if MIN_VERSION_haskell_src_exts(1, 18, 0)
++    ParseOk (Module _ _ _ _ decls) <- parseTest file
++#else
+     ParseOk (Module _ _ _ _ _ _ decls) <- parseTest file
++#endif
+     let funs = map fromFunBind $ filter isFunBind decls
+@@ -54,3 +70,3 @@ getTests file = do
+ 
+-parseTest :: FilePath -> IO (ParseResult Module)
++parseTest :: FilePath -> IO (ParseResult (Module L))
+ parseTest file = do
+@@ -74,4 +90,4 @@ parseTest file = do
+ #endif
+-        toStr (Ident str) = str
+-        toStr (Symbol str) = str
++        toStr (Ident loc str) = str
++        toStr (Symbol loc str) = str
+     opt raw = defaultParseMode {
+@@ -88,7 +104,7 @@ parseTest file = do
+ 
+-isFunBind :: Decl -> Bool
+-isFunBind (FunBind _) = True
+-isFunBind _           = False
++isFunBind :: Decl L -> Bool
++isFunBind (FunBind loc _) = True
++isFunBind _               = False
+ 
+-isPatBind :: Decl -> Bool
++isPatBind :: Decl L -> Bool
+ isPatBind PatBind{} = True
+@@ -96,6 +112,6 @@ isPatBind _                   = False
+ 
+-fromPatBind :: Decl -> String
++fromPatBind :: Decl L -> String
+ #if MIN_VERSION_haskell_src_exts(1, 16, 0)
+-fromPatBind (PatBind _ (PVar (Ident  name)) _ _) = name
+-fromPatBind (PatBind _ (PVar (Symbol name)) _ _) = name
++fromPatBind (PatBind _ (PVar loc (Ident  loc name)) _ _) = name
++fromPatBind (PatBind _ (PVar loc (Symbol loc name)) _ _) = name
+ #else
+@@ -106,5 +122,10 @@ fromPatBind _ = error "fromPatBind"
+ 
+-fromFunBind :: Decl -> String
++fromFunBind :: Decl L -> String
++#if MIN_VERSION_haskell_src_exts(1, 18, 0)
++fromFunBind (FunBind _floc (Match _ (Ident  _iloc name) _ _ _:_)) = name
++fromFunBind (FunBind _floc (Match _ (Symbol _sloc name) _ _ _:_)) = name
++#else
+ fromFunBind (FunBind (Match _ (Ident  name) _ _ _ _:_)) = name
+ fromFunBind (FunBind (Match _ (Symbol name) _ _ _ _:_)) = name
++#endif
+ fromFunBind _ = error "fromFunBind"
