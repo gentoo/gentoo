@@ -157,10 +157,10 @@ multilib_src_compile() {
 	fi
 	if multilib_is_native_abi; then
 		targets+=(
-			systemd-udevd
 			udevadm
 			src/udev/ata_id
 			src/udev/cdrom_id
+			src/udev/fido_id
 			src/udev/mtd_probe
 			src/udev/scsi_id
 			src/udev/v4l_id
@@ -189,11 +189,10 @@ multilib_src_install() {
 		into /
 		dobin udevadm
 
-		exeinto /lib/systemd
-		doexe systemd-udevd
+		dosym ../../bin/udevadm /lib/systemd/systemd-udevd
 
 		exeinto /lib/udev
-		doexe src/udev/{ata_id,cdrom_id,mtd_probe,scsi_id,v4l_id}
+		doexe src/udev/{ata_id,cdrom_id,fido_id,mtd_probe,scsi_id,v4l_id}
 
 		rm rules.d/99-systemd.rules || die
 		insinto /lib/udev/rules.d
