@@ -53,11 +53,15 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		"-DDISABLE_LIRC=$(usex lirc OFF ON)"
+		-DDISABLE_LIRC=$(usex !lirc)
 	)
 	cmake_src_configure
 }
 
 src_test() {
-	 virtx cmake_src_test
+	# bug 701682, tries to open network socket and fails.
+	local myctestargs=(
+		-E "(test_notationview_selection)"
+	)
+	virtx cmake_src_test
 }
