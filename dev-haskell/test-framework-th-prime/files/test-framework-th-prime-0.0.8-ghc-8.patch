@@ -1,0 +1,25 @@
+diff --git a/Test/Framework/TH/Prime.hs b/Test/Framework/TH/Prime.hs
+index 75b0798..0bed643 100644
+--- a/Test/Framework/TH/Prime.hs
++++ b/Test/Framework/TH/Prime.hs
+@@ -1,2 +1,3 @@
+ {-# LANGUAGE QuasiQuotes, TemplateHaskell #-}
++{-# LANGUAGE CPP #-}
+ 
+@@ -119,3 +120,7 @@ isDefined :: String -> Q Bool
+ isDefined n = return False `recover` do
++#if MIN_VERSION_template_haskell(2,11,0)
++    VarI (Name _ flavour) _ _ <- reify (mkName n)
++#else
+     VarI (Name _ flavour) _ _ _ <- reify (mkName n)
++#endif
+     modul <- loc_module <$> location
+diff --git a/Test/Framework/TH/Prime/Parser.hs b/Test/Framework/TH/Prime/Parser.hs
+index 7f541c4..fef60f1 100644
+--- a/Test/Framework/TH/Prime/Parser.hs
++++ b/Test/Framework/TH/Prime/Parser.hs
+@@ -78,3 +78,3 @@ parseTest file = do
+ #if MIN_VERSION_haskell_src_exts(1, 14, 0)
+-        extensions = nub $ EnableExtension TemplateHaskell : exts raw
++        extensions = nub $ EnableExtension Language.Haskell.Exts.Extension.TemplateHaskell : exts raw
+ #else
