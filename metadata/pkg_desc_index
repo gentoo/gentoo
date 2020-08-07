@@ -6375,7 +6375,7 @@ dev-perl/Dist-Zilla-Role-ModuleMetadata 0.4.0 0.6.0: A role for plugins that use
 dev-perl/Dist-Zilla-Role-PluginBundle-PluginRemover 0.105.0: Add '-remove' functionality to a bundle
 dev-perl/Dumbbench 0.111.0: More reliable benchmarking with the least amount of thinking
 dev-perl/DynaLoader-Functions 0.3.0: Deconstructed Dynamic C Library Loading
-dev-perl/EV 4.220.0: Perl interface to libev, a high performance full-featured event loop
+dev-perl/EV 4.220.0 4.330.0: Perl interface to libev, a high performance full-featured event loop
 dev-perl/Emacs-PDE 0.2.16-r2: Perl Develop Environment in Emacs
 dev-perl/Email-Abstract 3.8.0: unified interface to mail representations
 dev-perl/Email-Address 1.912.0: RFC 2822 Address Parsing and Creation
@@ -8385,7 +8385,7 @@ dev-python/markdown2 2.3.9: Python Markdown language reimplementation
 dev-python/markups 3.0.0 3.0.0-r1: A wrapper around various text markups
 dev-python/markupsafe 1.1.1: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/marshmallow 3.5.1: A lightweight library for converting complex datatypes to and from native Python datatypes.
-dev-python/matplotlib 2.2.2-r1 2.2.4 3.2.2 3.3.0: Pure python plotting library with matlab like syntax
+dev-python/matplotlib 3.2.2 3.3.0: Pure python plotting library with matlab like syntax
 dev-python/matplotlib-python2 2.2.5-r2: Pure python plotting library with matlab like syntax (py2 version)
 dev-python/matterhook 0.1-r1: Interact with Mattermost incoming webhooks easily
 dev-python/mccabe 0.6.1-r1: flake8 plugin: McCabe complexity checker
@@ -8537,7 +8537,7 @@ dev-python/packaging 20.4: Core utilities for Python packages
 dev-python/pafy 0.5.5 9999: Python library to retrieve YouTube content and metadata
 dev-python/paho-mqtt 1.5.0: A client class with support for both MQTT v3.1 and v3.1.1
 dev-python/pallets-sphinx-themes 1.1.2: Sphinx themes for Pallets and related projects
-dev-python/pandas 0.24.2 1.0.4 1.0.5 1.1.0: Powerful data structures for data analysis and statistics
+dev-python/pandas 1.0.5 1.1.0: Powerful data structures for data analysis and statistics
 dev-python/pandas-datareader 0.8.1: Pandas DataFrame extraction from a wide range of Internet sources
 dev-python/pandocfilters 1.4.2-r1 1.4.2-r2: Utilities for writing pandoc filters in python
 dev-python/parameterized 0.7.4: Parameterized testing with any Python test framework
@@ -10780,7 +10780,7 @@ dev-util/massif-visualizer 0.7.0-r1: Tool visualising massif data
 dev-util/mdds 1.6.0 9999: A collection of multi-dimensional data structure and indexing algorithm
 dev-util/meld 3.20.2-r1: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
-dev-util/meson 0.54.2 0.54.3 9999: Open source build system
+dev-util/meson 0.54.2 0.54.3 0.55.0 9999: Open source build system
 dev-util/min-cscope 16.1.0: Interactively examine a C program
 dev-util/mingw64-runtime 6.0.0-r3 7.0.0 7.0.0-r1: Free Win64 runtime and import library definitions
 dev-util/molecule 2: Meta package for dev-util/molecule-core and dev-util/molecule-plugins
