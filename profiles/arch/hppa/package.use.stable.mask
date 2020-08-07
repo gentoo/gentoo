@@ -33,7 +33,6 @@ dev-util/patchutils test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
 # no stable app-editors/{,g}vim
-dev-util/gtk-doc vim
 sys-fs/dosfstools test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
