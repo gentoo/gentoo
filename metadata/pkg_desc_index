@@ -3993,7 +3993,7 @@ dev-haskell/fgl 5.4.2.4-r1 5.5.0.1 5.5.2.3 5.5.3.0 5.7.0.2: Martin Erwig's Funct
 dev-haskell/fgl-arbitrary 0.2.0.1 0.2.0.2 0.2.0.3-r1: QuickCheck support for fgl
 dev-haskell/file-embed 0.0.7 0.0.9 0.0.10 0.0.11 0.0.11.2: Use Template Haskell to embed file contents directly
 dev-haskell/file-location 0.4.9 0.4.9-r1 0.4.9.1: common functions that show file location information
-dev-haskell/filelock 0.1.0.1 0.1.1.3 0.1.1.4: Portable interface to file locking (flock / LockFileEx)
+dev-haskell/filelock 0.1.1.5: Portable interface to file locking (flock / LockFileEx)
 dev-haskell/filemanip 0.3.6.3: Expressive file and directory manipulation for Haskell
 dev-haskell/filepath-bytestring 1.4.2.1.6: Library for manipulating RawFilePaths in a cross platform way
 dev-haskell/filestore 0.6.1 0.6.2 0.6.3.4 0.6.4: Interface for versioning file stores
@@ -4377,7 +4377,7 @@ dev-haskell/socks 0.5.4 0.5.5 0.6.1: Socks proxy (version 5) implementation
 dev-haskell/sop-core 0.5.0.1: True Sums of Products
 dev-haskell/split 0.2.2 0.2.3 0.2.3.1 0.2.3.3 0.2.3.4: Combinator library for splitting lists
 dev-haskell/splitmix 0.0.4: Fast Splittable PRNG
-dev-haskell/stack 2.3.1: The Haskell Tool Stack
+dev-haskell/stack 2.3.3: The Haskell Tool Stack
 dev-haskell/stack-bin 1.5.1 1.6.1 1.7.1 2.1.3 2.3.1: The Haskell Tool Stack (Binary)
 dev-haskell/statevar 1.0.0.0-r1 1.0.1.0 1.1.0.3 1.1.0.4 1.1.1.1: State variables
 dev-haskell/statistics 0.10.5.2 0.11.0.3 0.13.2.3 0.13.3.0: A library of statistical types, data, and functions
