@@ -2700,7 +2700,7 @@ app-portage/etc-proposals 1.4.3-r3: a set of tools for updating gentoo config fi
 app-portage/euses 2.5.9 2.6.0: look up USE flag descriptions fast
 app-portage/fetchcommandwrapper 0.8.1-r1 0.8.2 0.8.3 0.8.4: Wrapper integrating aria2 into portage's FETCHCOMMAND
 app-portage/flaggie 0.2.1-r1 9999: A smart CLI mangler for package.* files
-app-portage/fquery 0.2.3: Installed package query tool for Gentoo Linux
+app-portage/fquery 0.2.3 0.2.3-r1: Installed package query tool for Gentoo Linux
 app-portage/g-cpan 0.16.9-r1 0.17.0 9999: Autogenerate and install ebuilds for CPAN modules
 app-portage/g-octave 0.4.1-r7: A tool that generates and installs ebuilds for Octave-Forge
 app-portage/g-sorcery 0.2.1-r1 9999: framework for ebuild generators
@@ -7067,6 +7067,7 @@ dev-perl/Pod-Markdown 3.5.0: Convert POD to Markdown
 dev-perl/Pod-Markdown-Github 0.40.0: Convert POD to Github's specific markdown
 dev-perl/Pod-POM 2.10.0: POD Object Model
 dev-perl/Pod-POM-View-Restructured 1.0.1: View for Pod::POM that outputs reStructuredText
+dev-perl/Pod-Parser 1.630.0: POD filters and translators
 dev-perl/Pod-Readme 1.1.2 1.2.3: Intelligently generate a README file from POD
 dev-perl/Pod-Simple-LaTeX 0.60.0: format Pod as LaTeX
 dev-perl/Pod-Spell 1.200.0: A formatter for spellchecking Pod
@@ -17914,7 +17915,7 @@ virtual/perl-Params-Check 0.380.0-r10: Virtual for Params-Check
 virtual/perl-Parse-CPAN-Meta 2.150.10-r4: Virtual for Parse-CPAN-Meta
 virtual/perl-Perl-OSType 1.10.0-r4: Virtual for Perl-OSType
 virtual/perl-Pod-Escapes 1.70.0-r7: Virtual for Pod-Escapes
-virtual/perl-Pod-Parser 1.630.0-r7: Virtual for Pod-Parser
+virtual/perl-Pod-Parser 1.630.0-r8: Virtual for Pod-Parser
 virtual/perl-Pod-Simple 3.350.0-r3 3.400.0: Virtual for Pod-Simple
 virtual/perl-Safe 2.400.0-r3 2.410.0: Virtual for Safe
 virtual/perl-Scalar-List-Utils 1.500.0-r2 1.550.0: Virtual for Scalar::Util and List::Util, also distributed as Scalar::List::Utils
