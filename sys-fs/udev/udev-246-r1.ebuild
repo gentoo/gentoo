@@ -18,7 +18,7 @@ else
 	MY_P=${MY_PN}-${MY_PV}
 	S=${WORKDIR}/${MY_P}
 	SRC_URI="https://github.com/systemd/${MY_PN}/archive/v${MY_PV}/${MY_P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 fi
 
 DESCRIPTION="Linux dynamic and persistent device naming support (aka userspace devfs)"
@@ -67,7 +67,7 @@ RDEPEND="${COMMON_DEPEND}
 	!sys-apps/systemd
 "
 PDEPEND=">=sys-apps/hwids-20140304[udev]
-	>=sys-fs/udev-init-scripts-26"
+	>=sys-fs/udev-init-scripts-34"
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
@@ -157,10 +157,10 @@ multilib_src_compile() {
 	fi
 	if multilib_is_native_abi; then
 		targets+=(
-			systemd-udevd
 			udevadm
 			src/udev/ata_id
 			src/udev/cdrom_id
+			src/udev/fido_id
 			src/udev/mtd_probe
 			src/udev/scsi_id
 			src/udev/v4l_id
@@ -189,11 +189,10 @@ multilib_src_install() {
 		into /
 		dobin udevadm
 
-		exeinto /lib/systemd
-		doexe systemd-udevd
+		dosym ../../bin/udevadm /lib/systemd/systemd-udevd
 
 		exeinto /lib/udev
-		doexe src/udev/{ata_id,cdrom_id,mtd_probe,scsi_id,v4l_id}
+		doexe src/udev/{ata_id,cdrom_id,fido_id,mtd_probe,scsi_id,v4l_id}
 
 		rm rules.d/99-systemd.rules || die
 		insinto /lib/udev/rules.d
