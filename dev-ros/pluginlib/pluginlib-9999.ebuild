@@ -11,7 +11,7 @@ inherit ros-catkin
 
 DESCRIPTION="Tools for writing and dynamically loading plugins using the ROS infrastructure"
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/${PV}"
 IUSE=""
 
 RDEPEND="
