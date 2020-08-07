@@ -10218,7 +10218,7 @@ dev-ruby/ruby-openid 2.9.2: A robust library for verifying and serving OpenID id
 dev-ruby/ruby-pango 3.3.2 3.3.6 3.3.7 3.4.3: Ruby Pango bindings
 dev-ruby/ruby-poppler 3.3.2 3.3.6 3.3.7 3.4.3: Ruby poppler-glib bindings
 dev-ruby/ruby-prof 0.18.0: A module for profiling Ruby code
-dev-ruby/ruby-progressbar 1.4.2-r1 1.10.0 1.10.1 1.10.1-r1: A Text Progress Bar Library for Ruby
+dev-ruby/ruby-progressbar 1.10.0 1.10.1 1.10.1-r1: A Text Progress Bar Library for Ruby
 dev-ruby/ruby-rc4 0.1.5-r2: A pure Ruby implementation of the Rc4 algorithm
 dev-ruby/ruby-romkan 0.4-r6: A Romaji <-> Kana conversion library for Ruby
 dev-ruby/ruby-rsvg 3.3.2 3.3.6 3.3.7 3.4.3: Ruby bindings for librsvg
@@ -14872,7 +14872,7 @@ net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C 
 net-libs/libtirpc 1.2.5 1.2.6: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ for *nix
 net-libs/libtorrent-rasterbar 1.1.14 1.2.6 1.2.7: C++ BitTorrent implementation focusing on efficiency and scalability
-net-libs/libtrace 4.0.10_p1 4.0.11_p1 4.0.12_p1 4.0.13_p1 99999: A library and tools for trace processing
+net-libs/libtrace 4.0.10_p1 4.0.11_p1 4.0.12_p1 4.0.13_p1 4.0.14_p1 99999: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.6.25 1.8.7 1.12.1: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.17.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
 net-libs/libvncserver 0.9.13: library for creating vnc servers
@@ -18169,7 +18169,7 @@ www-servers/servefile 0.4.4_p20200211: Serve a single file via HTTP
 www-servers/sniproxy 0.5.0 0.6.0: Proxies incoming HTTP and TLS connections based on the hostname
 www-servers/spawn-fcgi 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
-www-servers/tomcat 7.0.105 8.5.57 9.0.37: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
+www-servers/tomcat 7.0.105-r1 8.5.57-r1 9.0.37-r1: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
 www-servers/tornado 4.5.3 6.0.4: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.18: uWSGI server for Python web applications
 www-servers/varnish 6.0.6 6.3.2 6.4.0: Varnish is a state-of-the-art, high-performance HTTP accelerator
