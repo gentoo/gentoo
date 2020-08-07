@@ -679,13 +679,6 @@ media-gfx/uniconvertor
 # and accept a more unstable release.
 >=www-client/chromium-86
 
-# Hans de Graaff <graaff@gentoo.org> (2020-06-14)
-# Ruby 2.4 is no longer supported by upstream and no longer gets
-# security updates since the 2.4.10 release. Use ruby 2.5 or later
-# instead.
-dev-lang/ruby:2.4
-dev-ruby/did_you_mean:2.4
-
 # Jonas Stein <jstein@gentoo.org> (2020-06-07)
 # Last rite unusable package.
 # Removal after 2020-08-01
