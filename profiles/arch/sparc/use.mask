@@ -139,7 +139,6 @@ ebook
 capi
 lensfun
 jingle
-mod_wsgi
 vaapi
 librtmp
 rtmp

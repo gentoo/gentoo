@@ -35,7 +35,6 @@ dev-python/backports-functools-lru-cache doc
 <=dev-python/lockfile-0.12.2-r2 doc
 <=dev-python/mysql-python-1.2.5-r3 doc
 <=dev-python/mysqlclient-1.4.6 doc
-<dev-python/peewee-3.13.2 doc
 <dev-python/pep8-1.7.1-r1 doc
 <dev-python/psycopg-2.8.4 doc
 <dev-python/requests-cache-0.4.12-r1 doc
@@ -54,10 +53,6 @@ dev-python/backports-functools-lru-cache doc
 # Required dependencies are not yet in the Gentoo ebuild tree
 # Please file a bug if this feature is needed
 dev-python/autobahn xbr
-
-# Michał Górny <mgorny@gentoo.org> (2020-07-13)
-# Requires vulnerable dev-python/pillow version.
-sci-libs/scipy python_targets_python2_7
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-07-27)
 # media-video/pipewire:0/0.3 is only available for certain architectures
@@ -82,13 +77,8 @@ media-gfx/inkscape jemalloc
 # broken.
 www-client/chromium component-build
 
-# Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
-# requires clisp whichis keyworded on fewer arches
-app-text/texlive-core xindy
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-05-04)
 # Broken error[E0478]: lifetime bound not satisfied
-=dev-lang/rust-1.44.0 miri
 =dev-lang/rust-1.44.1 miri
 
 # Ben Kohler <bkohler@gentoo.org> (2020-04-29)
@@ -110,10 +100,6 @@ media-video/mpv doc
 # Michał Górny <mgorny@gentoo.org> (2020-04-19)
 # Requires dev-vcs/ghp-import that is masked for removal.
 www-apps/nikola ghpages
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-19)
-# oracle-jdk-bin masked for removal, mask revdep useflag.
-=app-forensics/sleuthkit-4.7.0 java
 
 # Ulrich Müller <ulm@gentoo.org> (2020-04-08)
 # Old versions of libjpeg-turbo have known security issues.
@@ -160,19 +146,6 @@ dev-util/buildbot doc
 # Requires deprecated python2 and pygtk
 mail-client/claws-mail python
 
-# Michał Górny <mgorny@gentoo.org> (2020-03-24)
-# Require dev-python/recommonmark with py2.
-<sys-devel/llvm-9 doc
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-03-18)
-# USE=doc makes rust compile 6 times!
-# Reason unknown yet, masking for now.
-=dev-lang/rust-1.42.0 doc
-
-# Michał Górny <mgorny@gentoo.org> (2020-03-17)
-# dev-python/soappy is being removed.
-dev-python/twisted soap
-
 # Guilherme Amadio <amadio@gentoo.org> (2020-03-16)
 # Requires dev-libs/cudnn which is only available on amd64
 sci-physics/root cudnn
@@ -186,11 +159,6 @@ www-client/firefox eme-free
 # dev-python/pyzmq USE=doc deps are not met with python2_7
 dev-python/pyzmq doc
 
-# Michał Górny <mgorny@gentoo.org> (2020-02-08)
-# The dependency is python-single-r1 while the package (and its revdeps)
-# are python-r1.
-dev-python/rdflib redland
-
 # Michał Górny <mgorny@gentoo.org> (2020-02-04)
 # Unsatisfiable dep due to missing impls.
 dev-python/zeep tornado
@@ -202,17 +170,12 @@ dev-python/zeep tornado
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-29)
 # Require dev-python/epydoc which is being removed.
-<=dev-python/restkit-4.2.2 doc
 <=dev-python/suds-0.6-r1 doc
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-27)
 # Requires old split dev-python/twisted-*.
 net-irc/telepathy-idle test
 net-voip/telepathy-rakia test
-
-# Michał Górny <mgorny@gentoo.org> (2020-01-27)
-# dev-python/zsi is being removed.
-sci-chemistry/pdb2pqr opal
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-12)
 # libcxxrt is unmaintained and it's going to be removed.
@@ -237,10 +200,6 @@ app-emulation/aranym jit
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-12-07)
 # dev-python/flask-cors is PMASKED.
 media-sound/beets webserver
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-04)
-# Python 2.7 only packages optionally needing dev-python/ipython.
-dev-python/restkit cli
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-04)
 # Packages requiring dev-python/ipython to build the docs and still
@@ -383,12 +342,6 @@ sys-block/fio static
 # Michał Górny <mgorny@gentoo.org> (2018-05-16)
 # Depends on last-rited sci-libs/coinhsl.
 sci-libs/ipopt hsl
-
-# Göktürk Yüksek <gokturk@gentoo.org> (2018-04-04)
-# libewf is getting treecleaned (#547418).
-# Starting with sleuthkit-4.6.0, we statically link sleuthkit to a
-# locally compiled libewf. Mask the prior versions.
-<app-forensics/sleuthkit-4.6.0 ewf
 
 # Lars Wendler <polynomial-c@gentoo.org> (2018-03-14)
 # Broken on all 32bit arches. Globally masked because of sys-apps/dmapi having

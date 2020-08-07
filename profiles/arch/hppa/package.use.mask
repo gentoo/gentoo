@@ -301,10 +301,6 @@ media-sound/mpd fluidsynth
 # to HPPA (bug #234629)
 media-video/mplayer cpudetection
 
-# Jeroen Roovers <jer@gentoo.org> (2008-09-16)
-# app-text/xindy needs dev-lisp/clisp and clisp does not build (bug #229217)
-app-text/texlive xindy
-
 # Mart Raudsepp <leio@gentoo.org> (2008-04-02)
 # media-plugins/gst-plugins-{dvb,fluendo-mpegdemux,bad} not keyworded
 media-plugins/gst-plugins-meta dvb

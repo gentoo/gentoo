@@ -34,10 +34,6 @@ sys-block/fio -io-uring -zbc
 # Unmask globally-masked flashrom drivers and tools which do work on amd64
 sys-apps/flashrom -atahpt -atapromise -internal -nic3com -nicnatsemi -nicrealtek -rayer-spi -satamv -tools
 
-# Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
-# clisp is keyworded on amd64
-app-text/texlive-core -xindy
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-04-30)
 # sys-cluster/slurm is keyworded on amd64
 app-metrics/collectd -collectd_plugins_slurm

@@ -178,10 +178,6 @@ media-libs/mesa opencl
 app-emulation/xen-tools doc
 dev-python/notebook doc
 
-# Mart Raudsepp <leio@gentoo.org> (2018-05-30)
-# Require old gnome2 libraries, not keywording legacy on purpose
-sys-devel/distcc gnome
-
 # Mart Raudsepp <leio@gentoo.org> (2018-05-06)
 # New enough dev-ruby/webmock not keyworded yet
 >=dev-ruby/thor-0.20.0 test
@@ -195,10 +191,6 @@ app-admin/syslog-ng mongodb
 # masked too (no-one has tested it yet).
 app-text/texlive-core luajittex
 dev-texlive/texlive-basic luajittex
-
-# Michał Górny <mgorny@gentoo.org> (2018-04-03)
-# Requires unported sys-libs/netbsd-csu.
-sys-devel/clang-runtime crt
 
 # Mart Raudsepp <leio@gentoo.org> (2018-03-31)
 # Boost.Context can be built on arm64
@@ -289,11 +281,6 @@ media-gfx/pstoedit emf
 # zfs does not build on arm64 (yet?)
 app-emulation/libvirt zfs
 sys-cluster/ceph zfs
-
-# Alexis Ballier <aballier@gentoo.org> (2017-07-11)
-# Needs indirectly clisp:
-# https://bugs.gentoo.org/show_bug.cgi?id=624532
-app-text/texlive xindy
 
 # Alexis Ballier <aballier@gentoo.org> (2017-07-11)
 # dev-libs/botan:0 fails with 'ERROR: Unknown or unidentifiable processor
