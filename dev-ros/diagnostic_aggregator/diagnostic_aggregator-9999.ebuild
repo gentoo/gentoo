@@ -14,7 +14,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/pluginlib
+	dev-ros/pluginlib:=
 		dev-libs/tinyxml2:=
 	dev-ros/roscpp
 	dev-ros/rospy
@@ -27,3 +27,9 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-ros/diagnostic_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	test? ( dev-ros/rostest )"
+
+src_test() {
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	export CATKIN_PREFIX_PATH="${BUILD_DIR}/devel/:${CATKIN_PREFIX_PATH}"
+	ros-catkin_src_test
+}
