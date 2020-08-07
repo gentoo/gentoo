@@ -3059,7 +3059,7 @@ app-text/vgrep 2.3.1 2.3.3 2.4.0: A pager for grep, git-grep and similar grep im
 app-text/vilistextum 2.6.9-r1 2.8.0.20191023-r1: HTML to ASCII converter programmed to handle incorrect html
 app-text/vlna 1.5: Add nonbreakable spaces after some prepositions in Czech texts
 app-text/wdiff 1.2.2 1.2.2-r1: Create a diff disregarding formatting
-app-text/webgen 1.7.0 1.7.1: A template-based static website generator
+app-text/webgen 1.7.1: A template-based static website generator
 app-text/wgetpaste 2.29-r1: Command-line interface to various pastebins
 app-text/wiki2beamer 0.9.5-r1 0.10.0: Tool to produce LaTeX Beamer code from wiki-like input
 app-text/writerperfect 0.9.6: Various formats to Open document format converter
@@ -7980,7 +7980,7 @@ dev-python/cliff 3.3.0 3.4.0: Command Line Interface Formulation Framework
 dev-python/clint 0.5.1-r1: Python Command-line Application Tools
 dev-python/cloudlib 0.5.0: Cloud middleware for in application use.
 dev-python/cloudpickle 1.4.1 1.5.0: Extended pickling support for Python objects
-dev-python/cmd2 1.1.0 1.2.0 1.2.1 1.3.0: Extra features for standard library's cmd module
+dev-python/cmd2 1.1.0 1.2.0 1.2.1 1.3.0 1.3.1: Extra features for standard library's cmd module
 dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
 dev-python/colorama 0.4.3: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/colorclass 2.2.0-r1: Colorful worry-free console applications for multiple platforms
@@ -8278,7 +8278,7 @@ dev-python/ipdb 0.10.3: IPython-enabled pdb
 dev-python/ipy 1.00: Class and tools for handling of IPv4 and IPv6 addresses and networks
 dev-python/ipykernel 5.1.4 5.3.0 5.3.2 5.3.3 5.3.4: IPython Kernel for Jupyter
 dev-python/ipynb 0.5.1: Package/Module importer for importing code from Jupyter Notebook files
-dev-python/ipyparallel 6.2.3 6.3.0: Interactive Parallel Computing with IPython
+dev-python/ipyparallel 6.3.0: Interactive Parallel Computing with IPython
 dev-python/ipython 7.5.0 7.16.1 7.17.0: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.2.0 0.2.0-r1: Vestigial utilities from IPython
 dev-python/ipywidgets 7.5.1: IPython HTML widgets for Jupyter
@@ -9172,7 +9172,7 @@ dev-python/toml 0.10.1: Python library for handling TOML files
 dev-python/toolz 0.10.0: List processing tools and functional utilities
 dev-python/tooz 1.60.1: Library centralizing the most common distributed primitives
 dev-python/towncrier 19.2.0: Building newsfiles for your project
-dev-python/tox 3.15.0 3.15.2 3.16.1 3.17.0 3.17.1 3.18.0 3.18.1: virtualenv-based automation of test activities
+dev-python/tox 3.15.0 3.15.2 3.16.1 3.17.0 3.17.1 3.18.0 3.18.1 3.19.0: virtualenv-based automation of test activities
 dev-python/tqdm 4.47.0 4.48.0 4.48.1 4.48.2 9999: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0: Backports of the traceback module
 dev-python/traitlets 4.3.2 4.3.3: A configuration system for Python applications
@@ -9262,7 +9262,7 @@ dev-python/xarray 0.12.1 0.16.0: N-D labeled arrays and datasets in Python
 dev-python/xcffib 0.9.0 0.10.0 0.10.1: A drop in replacement for xpyb, an XCB python binding
 dev-python/xdoctest 0.11.0: A rewrite of Python's builtin doctest module but without all the weirdness
 dev-python/xlrd 1.2.0: Library to extract data from Microsoft Excel spreadsheets
-dev-python/xlsxwriter 1.2.9 1.3.1: Python module for creating Excel XLSX files
+dev-python/xlsxwriter 1.2.9 1.3.1 1.3.2: Python module for creating Excel XLSX files
 dev-python/xlutils 2.0.0-r1: provides a collection of utilities for working with Excel files
 dev-python/xlwt 1.3.0 1.3.0-r1: Python library to create spreadsheet files compatible with Excel
 dev-python/xmlschema 1.2.2: An XML Schema validator and decoder
@@ -10246,7 +10246,7 @@ dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubyte
 dev-ruby/rubytter 1.5.1-r1: Rubytter is a simple twitter library
 dev-ruby/rubyzip 1.3.0 2.2.0 2.3.0: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.5: Parse YAML safely, alternative implementation of YAML.load
-dev-ruby/sanitize 4.6.6 5.2.1: Sanitize is a whitelist-based HTML sanitizer
+dev-ruby/sanitize 5.2.1: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.4.25 3.4.25-r1 3.5.7 3.5.7-r1 3.7.4: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/sass-listen 4.0.0: Fork of guard/listen provides a stable API for users of the ruby Sass CLI
 dev-ruby/sass-rails 5.0.8 5.1.0: Official Ruby-on-Rails Integration with Sass
@@ -18170,7 +18170,7 @@ www-servers/sniproxy 0.5.0 0.6.0: Proxies incoming HTTP and TLS connections base
 www-servers/spawn-fcgi 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
 www-servers/tomcat 7.0.105 8.5.57 9.0.37: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
-www-servers/tornado 4.5.3 5.1-r1 6.0.3 6.0.4: Python web framework and asynchronous networking library
+www-servers/tornado 4.5.3 6.0.4: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.18: uWSGI server for Python web applications
 www-servers/varnish 6.0.6 6.3.2 6.4.0: Varnish is a state-of-the-art, high-performance HTTP accelerator
 www-servers/xsp 2014.12-r2014120900: XSP is a small web server that can host ASP.NET pages
