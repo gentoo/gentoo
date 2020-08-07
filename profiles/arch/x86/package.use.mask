@@ -30,6 +30,10 @@ sys-apps/flashrom -atahpt -atapromise -internal -nic3com -nicnatsemi -nicrealtek
 # Requires dev-db/influxdb which is amd64-only
 dev-python/influxdb test
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
+# clisp is keyworded on x86
+app-text/texlive-core -xindy
+
 # Christoph Junghans <junghans@gentoo.org> (2020-05-16)
 # restrict USE=kokkos for x86 as kokkos doesn't support 32-bit archs
 # https://github.com/kokkos/kokkos/issues/2312
