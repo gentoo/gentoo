@@ -21,6 +21,7 @@ RDEPEND="
 	sci-libs/orocos_kdl:=
 	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep "dev-python/python_orocos_kdl[\${PYTHON_USEDEP}]")
+	$(python_gen_cond_dep "dev-python/numpy[\${PYTHON_USEDEP}]")
 "
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:3
