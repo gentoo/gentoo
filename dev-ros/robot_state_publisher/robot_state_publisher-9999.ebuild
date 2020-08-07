@@ -33,7 +33,11 @@ RDEPEND="
 	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
-	test? ( dev-cpp/gtest dev-ros/rostest[${PYTHON_SINGLE_USEDEP}] )
+	test? (
+		dev-cpp/gtest
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		dev-ros/rosbag[${PYTHON_SINGLE_USEDEP}]
+	)
 "
 
 src_prepare() {
