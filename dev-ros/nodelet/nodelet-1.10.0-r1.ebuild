@@ -18,7 +18,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/bondcpp
 	dev-ros/cmake_modules
-	dev-ros/pluginlib
+	dev-ros/pluginlib:=
 		dev-libs/tinyxml2:=
 	dev-ros/rosconsole
 		dev-libs/console_bridge:=
