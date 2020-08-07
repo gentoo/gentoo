@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile install
+DEPEND=media-libs/alsa-lib media-libs/libsndfile media-sound/alsa-utils virtual/jack x11-libs/fltk:1 x11-libs/libXpm
+DESCRIPTION=Opensource software organ
+EAPI=7
+HOMEPAGE=https://sourceforge.net/projects/horgand.berlios/
+KEYWORDS=amd64 ~ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=media-libs/alsa-lib media-libs/libsndfile media-sound/alsa-utils virtual/jack x11-libs/fltk:1 x11-libs/libXpm
+SLOT=0
+SRC_URI=https://download.sourceforge.net/horgand.berlios/horgand-1.14.tar.gz
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=5b61c3641738c0dca6f61a202f3d9716

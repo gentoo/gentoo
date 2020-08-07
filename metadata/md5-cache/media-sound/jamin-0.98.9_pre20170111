@@ -1,0 +1,14 @@
+BDEPEND=dev-util/intltool sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure postinst postrm preinst prepare
+DEPEND=dev-libs/atk dev-libs/glib dev-libs/libxml2 media-libs/libsndfile >=media-plugins/swh-plugins-0.4.6 sci-libs/fftw:3.0= x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:3 x11-libs/pango virtual/jack osc? ( >=media-libs/liblo-0.26 ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Audio mastering interface for JACK Audio Connection Kit (JACK)
+EAPI=7
+HOMEPAGE=http://jamin.sourceforge.net/en/about.html https://salsa.debian.org/multimedia-team/jamin
+IUSE=osc
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/atk dev-libs/glib dev-libs/libxml2 media-libs/libsndfile >=media-plugins/swh-plugins-0.4.6 sci-libs/fftw:3.0= x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:3 x11-libs/pango virtual/jack osc? ( >=media-libs/liblo-0.26 )
+SLOT=0
+SRC_URI=http://deb.debian.org/debian/pool/main/j/jamin/jamin_0.98.9~git20170111~199091~repack1.orig.tar.bz2 http://deb.debian.org/debian/pool/main/j/jamin/jamin_0.98.9~git20170111~199091~repack1-1.debian.tar.xz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=0afc277bb3c075d9d1f5bcb0dc8c1e15

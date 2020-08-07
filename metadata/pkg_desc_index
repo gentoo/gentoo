@@ -1981,7 +1981,7 @@ app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and ic
 app-emulation/wine-gecko 2.47-r1 2.47.1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0 4.7.1 4.7.3 4.7.5 4.8.0 4.8.1 4.8.3 4.9.0 4.9.2 4.9.3 4.9.4 5.0.0 5.1.0: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
 app-emulation/wine-staging 5.11 5.12 5.13 5.14 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
-app-emulation/wine-vanilla 4.0.3 5.0.1 5.11 5.12 5.13 5.14 9999: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-vanilla 4.0.3 5.0.1 5.0.2 5.11 5.12 5.13 5.14 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20190912 20191224 20200412 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
@@ -11196,7 +11196,7 @@ games-board/blokish 0.9.4-r3: Open source clone of the four-player board game Bl
 games-board/camato 0.7.4-r1: A map editor for the game gnocatan
 games-board/ccgo 0.3.6.5-r1: An IGS client written in C++
 games-board/cgoban 1.9.14-r2: A Go-frontend
-games-board/chessx 1.5.4: Qt5-based Chess Database Utility
+games-board/chessx 1.5.4-r1: Qt5-based Chess Database Utility
 games-board/cockatrice 20190304-r1: An open-source multiplatform software for playing card games over a network
 games-board/crafty 24.1-r1: Bob Hyatt's strong chess engine
 games-board/domination 1.1.1.6-r1: The well-known board game, written in java
@@ -12010,7 +12010,6 @@ kde-apps/katomic 20.04.3: KDE Atomic Entertainment Game
 kde-apps/kbackup 20.04.3: Program that lets you back up any directories or files
 kde-apps/kblackbox 20.04.3: Game of hide and seek played on a grid of boxes
 kde-apps/kblocks 20.04.3: Single-player Tetris-like KDE game
-kde-apps/kblog 20.04.2: Library providing client-side support for web application remote blogging APIs
 kde-apps/kbounce 20.04.3: KDE Bounce Ball Game
 kde-apps/kbreakout 20.04.3: Breakout-like game by KDE
 kde-apps/kbruch 20.04.3: Educational application to learn calculating with fractions
@@ -12973,8 +12972,8 @@ media-libs/aribb24 1.0.3 1.0.3-r1 1.0.3-r2: Library for decoding ARIB STD-B24 su
 media-libs/assimp 5.0.1: Importer library to import assets from 3D files
 media-libs/aubio 0.4.9: Library for audio labelling
 media-libs/audiofile 0.3.6-r4: An elegant API for accessing audio files
-media-libs/avidemux-core 2.7.3-r1 2.7.4-r1: Core libraries for simple video cutting, filtering and encoding tasks
-media-libs/avidemux-plugins 2.7.3 2.7.4 2.7.4-r1: Plugins for the video editor media-video/avidemux
+media-libs/avidemux-core 2.7.4-r1: Core libraries for simple video cutting, filtering and encoding tasks
+media-libs/avidemux-plugins 2.7.4-r1: Plugins for the video editor media-video/avidemux
 media-libs/babl 0.1.66 0.1.66-r1 0.1.74 0.1.74-r1 0.1.78 9999: A dynamic, any to any, pixel format conversion library
 media-libs/bcg729 1.0.4 1.0.4-r1 999999: encoder and decoder of the ITU G729 Annex A/B speech codec
 media-libs/bio2jack 0.9-r2: A library for porting blocked I/O OSS/ALSA audio applications to JACK
@@ -13777,7 +13776,7 @@ media-sound/guayadeque 0.4.5_p20170110 9999: Music management program designed f
 media-sound/guitarix 0.39.0 0.40.0 9999: Virtual guitar amplifier for Linux
 media-sound/helm 0.9.0-r1: Open source polyphonic software synthesizer with lots of modulation
 media-sound/herrie 2.2-r1: Herrie is a command line music player
-media-sound/horgand 1.14-r1: Opensource software organ
+media-sound/horgand 1.14-r2: Opensource software organ
 media-sound/hydrogen 1.0.0_rc1-r1 1.0.0 9999: Advanced drum machine
 media-sound/icecream 1.3: Extracts and records individual MP3 tracks from shoutcast streams
 media-sound/id3 0.15-r1: changes the id3 tag in an mp3 file
@@ -13795,7 +13794,7 @@ media-sound/jack2 1.9.14 9999: Jackdmp jack implemention for multi-processor mac
 media-sound/jack_capture 0.9.73 9999: JACK Recording utility
 media-sound/jackbeat 0.7.6: An audio sequencer for Linux
 media-sound/jalv 1.6.4: Simple but fully featured LV2 host for Jack
-media-sound/jamin 0.95.0-r3: JAMin is the JACK Audio Connection Kit (JACK) Audio Mastering interface
+media-sound/jamin 0.95.0-r3 0.98.9_pre20170111: Audio mastering interface for JACK Audio Connection Kit (JACK)
 media-sound/justeport 0.2: Stream audio to your AirPort Express
 media-sound/kid3 3.8.3: Simple tag editor based on Qt
 media-sound/klick 0.12.2-r2: An advanced command-line based metronome for JACK
@@ -14045,7 +14044,7 @@ media-video/aravis 0.7.2 9999: Library for video acquisition using Genicam camer
 media-video/asfrecorder 1.1-r1: Linux WindowsMedia streaming client
 media-video/atomicparsley 0.9.0: Command line program for manipulating iTunes-style metadata in MPEG4 files
 media-video/atomicparsley-wez 0.9.6: command line program for reading, parsing and setting iTunes-style metadata in MPEG4 files
-media-video/avidemux 2.7.3 2.7.4-r1: Video editor designed for simple cutting, filtering and encoding tasks
+media-video/avidemux 2.7.4-r1: Video editor designed for simple cutting, filtering and encoding tasks
 media-video/baka-mplayer 2.0.4 2.0.4-r1 9999: Cross-platform libmpv-based multimedia player with uncluttered design
 media-video/bashnapi 2.0.0: Napiprojekt.pl subtitle downloader in bash
 media-video/bbtools 1.9: bbdmux, bbinfo, bbvinfo and bbainfo from Brent Beyeler

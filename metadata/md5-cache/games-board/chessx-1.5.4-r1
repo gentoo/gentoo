@@ -1,13 +1,13 @@
 BDEPEND=dev-qt/linguist-tools:5 virtual/pkgconfig
 DEFINED_PHASES=configure install postinst postrm preinst prepare
-DEPEND=>=dev-libs/quazip-0.9.1 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 sys-libs/zlib dev-qt/qtconcurrent:5 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DEPEND=>=dev-libs/quazip-0.9.1 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtspeech:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 sys-libs/zlib dev-qt/qtconcurrent:5 dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Qt5-based Chess Database Utility
 EAPI=7
 HOMEPAGE=http://chessx.sourceforge.net/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+ LGPL-2+ LGPL-2.1+ ZLIB
-RDEPEND=>=dev-libs/quazip-0.9.1 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 sys-libs/zlib
+RDEPEND=>=dev-libs/quazip-0.9.1 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtspeech:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 sys-libs/zlib
 SLOT=0
 SRC_URI=https://sourceforge.net/projects/chessx/files/chessx/1.5.4/chessx-1.5.4.tgz
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	estack	686eaab303305a908fd57b2fd7617800	multilib	2477ebe553d3e4d2c606191fe6c33602	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=ffb79066e50cc28ff8a52cc6c41fcd78
+_md5_=8f3a1ed0e271782aeb613179e9dbfe5a
