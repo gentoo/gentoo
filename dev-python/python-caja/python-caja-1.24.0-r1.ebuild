@@ -35,6 +35,13 @@ DEPEND="${COMMON_DEPEND}
 	doc? ( app-text/docbook-xml-dtd:4.1.2 )
 "
 
+src_prepare() {
+	MATE_FORCE_AUTORECONF="true"
+
+	sed -i "s/\$(PACKAGE)/${PF}/g" examples/Makefile.am || die
+	mate_src_prepare
+}
+
 src_install() {
 	mate_src_install
 
