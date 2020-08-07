@@ -30,6 +30,7 @@ DEPEND="${RDEPEND}
 	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	test? (
 		dev-cpp/gtest
+		media-libs/opencv[png]
 	)
 "
 PATCHES=( "${FILESDIR}/gcc6.patch" "${FILESDIR}/boost170.patch" "${FILESDIR}/ocv4.patch" "${FILESDIR}/ocv4-2.patch" )
