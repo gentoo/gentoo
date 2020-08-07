@@ -14,7 +14,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/pluginlib
+	dev-ros/pluginlib:=
 		dev-libs/tinyxml2:=
 	dev-ros/roscpp
 	dev-ros/rospy
