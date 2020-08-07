@@ -16,5 +16,5 @@ HOMEPAGE="https://github.com/ruby/ruby2_keywords"
 
 LICENSE="Ruby"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
