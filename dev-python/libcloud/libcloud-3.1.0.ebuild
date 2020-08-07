@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE="ssl(+)"
 
 inherit distutils-r1
@@ -11,27 +11,25 @@ inherit distutils-r1
 DESCRIPTION="Unified Interface to the Cloud - python support libs"
 HOMEPAGE="https://libcloud.apache.org/"
 SRC_URI="mirror://apache/${PN}/apache-${P}.tar.bz2"
+S="${WORKDIR}/apache-${P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="examples"
 
-RDEPEND="
-	>=dev-python/requests-2.5.0[${PYTHON_USEDEP}]
+RDEPEND=">=dev-python/requests-2.5.0[${PYTHON_USEDEP}]"
 
-"
-BDEPEND="${RDEPEND}
+distutils_enable_tests pytest
+
+BDEPEND+="
 	test? (
 		>=dev-python/cryptography-2.6.1[${PYTHON_USEDEP}]
 		dev-python/lockfile[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/requests-mock[${PYTHON_USEDEP}]
-	)"
-
-S="${WORKDIR}/apache-${P}"
-
-distutils_enable_tests pytest
+	)
+"
 
 python_prepare_all() {
 	if use examples; then
