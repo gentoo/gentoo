@@ -152,7 +152,7 @@ if [[ ${FONT} == yes ]]; then
 	PDEPEND+=" media-fonts/font-alias"
 	DEPEND+=" >=media-fonts/font-util-1.2.0
 		>=x11-apps/mkfontscale-1.2.0"
-	BDEPEND+="x11-apps/bdftopcf"
+	BDEPEND+=" x11-apps/bdftopcf"
 
 	# @ECLASS-VARIABLE: FONT_DIR
 	# @DESCRIPTION:
