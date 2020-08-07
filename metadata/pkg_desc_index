@@ -6201,7 +6201,7 @@ dev-perl/Curses-UI 0.960.900-r2 0.960.900-r3: Perl UI framework based on the cur
 dev-perl/CursesWidgets 1.997.0-r2 1.997.0-r3: Provide high level APIs for rapid user interface design on the console in Perl
 dev-perl/Cwd-Guard 0.50.0: Temporary changing working directory (chdir)
 dev-perl/DBD-MariaDB 1.210.0 1.210.0-r1: MariaDB and MySQL driver for the Perl5 Database Interface (DBI)
-dev-perl/DBD-Pg 3.5.3 3.6.2 3.7.0 3.10.0 3.13.0: PostgreSQL database driver for the DBI module
+dev-perl/DBD-Pg 3.5.3 3.6.2 3.7.0 3.10.0 3.13.0 3.14.0: PostgreSQL database driver for the DBI module
 dev-perl/DBD-SQLite 1.560.0 1.580.0 1.640.0: Self Contained RDBMS in a DBI Driver
 dev-perl/DBD-mysql 4.44.0-r1 4.44.0-r2 4.50.0 4.50.0-r1: MySQL driver for the Perl5 Database Interface (DBI)
 dev-perl/DBI 1.637.0 1.643.0: Database independent interface for Perl
@@ -17914,39 +17914,39 @@ virtual/perl-Params-Check 0.380.0-r10: Virtual for Params-Check
 virtual/perl-Parse-CPAN-Meta 2.150.10-r4: Virtual for Parse-CPAN-Meta
 virtual/perl-Perl-OSType 1.10.0-r4: Virtual for Perl-OSType
 virtual/perl-Pod-Escapes 1.70.0-r7: Virtual for Pod-Escapes
-virtual/perl-Pod-Parser 1.630.0-r6: Virtual for Pod-Parser
-virtual/perl-Pod-Simple 3.350.0-r3: Virtual for Pod-Simple
-virtual/perl-Safe 2.400.0-r3: Virtual for Safe
-virtual/perl-Scalar-List-Utils 1.500.0-r2: Virtual for Scalar::Util and List::Util, also distributed as Scalar::List::Utils
-virtual/perl-Socket 2.27.0-r2: Virtual for Socket
-virtual/perl-Storable 3.150.0: Virtual for Storable
-virtual/perl-Sys-Syslog 0.350.0-r3: Virtual for Sys-Syslog
-virtual/perl-Term-ANSIColor 4.60.0-r3: Virtual for Term-ANSIColor
-virtual/perl-Term-ReadLine 1.170.0-r3: Virtual for Term-ReadLine
-virtual/perl-Test 1.310.0-r2: Virtual for Test
-virtual/perl-Test-Harness 3.420.0-r2: Virtual for Test-Harness
-virtual/perl-Test-Simple 1.302.162: Virtual for Test-Simple
-virtual/perl-Text-Balanced 2.30.0-r6: Virtual for Text-Balanced
-virtual/perl-Text-ParseWords 3.300.0-r6: Virtual for Text-ParseWords
-virtual/perl-Text-Tabs+Wrap 2013.52.300-r9: Virtual for Text::Tabs and Text::Wrap, also distributed as Text::Tabs+Wrap
-virtual/perl-Thread-Queue 3.130.0: Virtual for Thread-Queue
-virtual/perl-Thread-Semaphore 2.130.0-r3: Virtual for Thread-Semaphore
-virtual/perl-Tie-RefHash 1.390.0-r11: Virtual for Tie-RefHash
-virtual/perl-Time-HiRes 1.976.0: Virtual for Time-HiRes
-virtual/perl-Time-Local 1.280.0: Virtual for Time-Local
-virtual/perl-Time-Piece 1.330.0: Virtual for Time-Piece
-virtual/perl-Unicode-Collate 1.270.0: Virtual for Unicode-Collate
-virtual/perl-Unicode-Normalize 1.260.0-r2: Virtual for Unicode-Normalize
-virtual/perl-XSLoader 0.300.0-r2: Virtual for XSLoader
+virtual/perl-Pod-Parser 1.630.0-r7: Virtual for Pod-Parser
+virtual/perl-Pod-Simple 3.350.0-r3 3.400.0: Virtual for Pod-Simple
+virtual/perl-Safe 2.400.0-r3 2.410.0: Virtual for Safe
+virtual/perl-Scalar-List-Utils 1.500.0-r2 1.550.0: Virtual for Scalar::Util and List::Util, also distributed as Scalar::List::Utils
+virtual/perl-Socket 2.27.0-r2 2.29.0: Virtual for Socket
+virtual/perl-Storable 3.150.0 3.210.0: Virtual for Storable
+virtual/perl-Sys-Syslog 0.350.0-r3 0.360.0: Virtual for Sys-Syslog
+virtual/perl-Term-ANSIColor 4.60.0-r3 5.10.0: Virtual for Term-ANSIColor
+virtual/perl-Term-ReadLine 1.170.0-r4: Virtual for Term-ReadLine
+virtual/perl-Test 1.310.0-r3: Virtual for Test
+virtual/perl-Test-Harness 3.420.0-r3: Virtual for Test-Harness
+virtual/perl-Test-Simple 1.302.162 1.302.175: Virtual for Test-Simple
+virtual/perl-Text-Balanced 2.30.0-r7: Virtual for Text-Balanced
+virtual/perl-Text-ParseWords 3.300.0-r7: Virtual for Text-ParseWords
+virtual/perl-Text-Tabs+Wrap 2013.52.300-r10: Virtual for Text::Tabs and Text::Wrap, also distributed as Text::Tabs+Wrap
+virtual/perl-Thread-Queue 3.130.0 3.140.0: Virtual for Thread-Queue
+virtual/perl-Thread-Semaphore 2.130.0-r4: Virtual for Thread-Semaphore
+virtual/perl-Tie-RefHash 1.390.0-r12: Virtual for Tie-RefHash
+virtual/perl-Time-HiRes 1.976.0 1.976.400: Virtual for Time-HiRes
+virtual/perl-Time-Local 1.280.0-r1: Virtual for Time-Local
+virtual/perl-Time-Piece 1.330.0 1.340.100: Virtual for Time-Piece
+virtual/perl-Unicode-Collate 1.270.0-r1: Virtual for Unicode-Collate
+virtual/perl-Unicode-Normalize 1.260.0-r2 1.270.0: Virtual for Unicode-Normalize
+virtual/perl-XSLoader 0.300.0-r3: Virtual for XSLoader
 virtual/perl-autodie 2.290.0-r5 2.320.0: Virtual for autodie
 virtual/perl-bignum 0.510.0-r1: Virtual for bignum
 virtual/perl-if 0.60.800-r3: Virtual for if
 virtual/perl-libnet 3.110.0-r3: Virtual for libnet
 virtual/perl-parent 0.237.0 0.238.0: Virtual for parent
 virtual/perl-podlators 4.110.0 4.140.0: Virtual for podlators
-virtual/perl-threads 2.220.0-r2: Virtual for threads
-virtual/perl-threads-shared 1.600.0: Virtual for threads-shared
-virtual/perl-version 0.992.400: Virtual for version
+virtual/perl-threads 2.220.0-r2 2.250.0: Virtual for threads
+virtual/perl-threads-shared 1.600.0 1.610.0: Virtual for threads-shared
+virtual/perl-version 0.992.400-r1: Virtual for version
 virtual/perl6 0: Convenience virtual for perl6
 virtual/pkgconfig 2: Virtual for the pkg-config implementation
 virtual/pmake 1: Virtual for BSD-like make (to be used with get_bmake)
