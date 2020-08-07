@@ -19,6 +19,9 @@ RDEPEND="
 	dev-perl/Moose
 	dev-perl/namespace-autoclean
 "
+DEPEND="
+	dev-perl/Module-Build-Tiny
+"
 BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	>=dev-perl/Module-Build-Tiny-0.34.0
