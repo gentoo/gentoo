@@ -60,7 +60,7 @@ src_prepare() {
 
 	# For use of catalina.sh in netbeans
 	sed -i -e "/^# ----- Execute The Requested Command/ a\
-		CLASSPATH=\`java-config --classpath ${PN}-${SLOT}\`" \
+		CLASSPATH=\`java-config --with-dependencies --classpath ${PN}-${SLOT}\`" \
 		bin/catalina.sh || die
 
 	java-pkg-2_src_prepare
