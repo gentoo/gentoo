@@ -34,6 +34,11 @@
 
 # Hans de Graaff <graaff@gentoo.org> (2020-08-07)
 # Slot with known security issues. Please use a newer slot
+# instead. Removal in 30 days. Bug #713478.
+dev-ruby/json:0
+
+# Hans de Graaff <graaff@gentoo.org> (2020-08-07)
+# Slot with known security issues. Please use a newer slot
 # instead. Removal in 30 days. Bug #733116.
 dev-ruby/kramdown:0
 
