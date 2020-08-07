@@ -3588,12 +3588,6 @@
     </member>
   </project>
   <project>
-    <email>theology@gentoo.org</email>
-    <name>Theology</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Theology</url>
-    <description>The theology project maintains religious, genealogy, and humanities-related packages</description>
-  </project>
-  <project>
     <email>tinderbox-cluster@gentoo.org</email>
     <name>Tinderbox cluster</name>
     <url>https://wiki.gentoo.org/wiki/Project:Tinderbox-cluster</url>
