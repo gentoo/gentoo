@@ -16,6 +16,6 @@ IUSE=""
 RDEPEND="
 	dev-ros/roscpp
 	dev-ros/hardware_interface
-	dev-ros/pluginlib
+	dev-ros/pluginlib:=
 "
 DEPEND="${RDEPEND}"
