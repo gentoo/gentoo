@@ -20,15 +20,18 @@ checkconfig() {
 		eerror "    /etc/init.d/wg-quick.vpn0 start"
 		return 1
 	fi
+	return 0
 }
 
 start() {
+	checkconfig || return 1
 	ebegin "Starting $description for $CONF"
 	wg-quick up "$CONF"
 	eend $? "Failed to start $description for $CONF"
 }
 
 stop() {
+	checkconfig || return 1
 	ebegin "Stopping $description for $CONF"
 	wg-quick down "$CONF"
 	eend $? "Failed to stop $description for $CONF"
