@@ -98,10 +98,6 @@ net-analyzer/icinga2 mariadb
 sys-boot/grub:2 grub_platforms_pc grub_platforms_efi-32 grub_platforms_efi-64 grub_platforms_xen grub_platforms_xen-pvh
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2018-06-08)
-# Requires unported sys-libs/netbsd-csu
-sys-devel/clang-runtime crt
-
-# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2018-06-08)
 # sys-devel/llvmgold not yet keyworded
 sys-devel/llvm gold
 
@@ -223,10 +219,6 @@ dev-libs/efl physics sdl
 # Andreas K. Huettel <dilfridge@gentoo.org> (2015-02-15)
 # There's no keyworded office implementation anymore.
 gnome-extra/sushi office
-
-# Markos Chandras <hwoarang@gentoo.org> (2015-02-07)
-# app-admin/cgmanager misses PPC/PPC64 keywords. Bug #539208
-app-emulation/lxc cgmanager
 
 # Mark Wright <gienah@gentoo.org> (2014-12-14/2014-12-24, 2015-04-01)
 # test dependencies need keywording
@@ -365,10 +357,6 @@ mail-client/claws-mail pda
 # Sebastian Pipping <sping@gentoo.org> (2011-02-22)
 # No media-sound/lilypond here, yet (bug #356069)
 app-text/asciidoc test
-
-# Justin Lecher <jlec@gentoo.org> (2010-11-01)
-# Deps not Keyworded
-sci-chemistry/apbs fetk iapbs python
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2010-08-22)
 # sci-chemistry/msms not available for this arch

@@ -111,10 +111,6 @@ sys-apps/fwupd dell thunderbolt
 # keyword them solely because of PyQt5 while there are no other in-tree users.
 dev-python/PyQt5 networkauth
 
-# Michał Górny <mgorny@gentoo.org> (2018-10-18)
-# Requires unported sys-libs/netbsd-csu.
-sys-devel/clang-runtime crt
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-10-12)
 # Requires www-client/firefox which isn't available on ARM yet
 # due to dev-lang/rust requirement
@@ -220,7 +216,6 @@ dev-db/mariadb -jdbc
 # media-gfx/graphicsmagick is not keyworded on arm, users will need
 # to enable imagemagick flag and disable graphicsmagick use flag
 # to enable conversion facilities
-sci-mathematics/octave graphicsmagick
 media-gfx/zbar graphicsmagick
 
 # Amy Winston <amynka@gentoo.org> (2016-06-12)
@@ -300,10 +295,6 @@ media-libs/clutter-gtk wayland
 # Unkeyworded deps, bug #518742
 dev-python/ipython doc
 dev-python/oct2py doc
-
-# Michael Weber <xmw@gentoo.org> (2014-11-15)
-# missing keywords on media-libs/libharu
-www-client/netsurf pdf-writer
 
 # Markus Meier <maekke@gentoo.org> (2014-11-14)
 # Unkeyworded deps, bug #511532
@@ -425,7 +416,6 @@ dev-vcs/subversion java
 media-libs/libjpeg-turbo java
 net-dns/libidn java
 net-misc/tigervnc java
-net-print/cups java
 sys-devel/gettext java
 sys-libs/db java
 

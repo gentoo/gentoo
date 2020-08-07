@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -32,9 +32,6 @@ cpu_flags_arm_neon
 -cpu_flags_arm_vfpv3
 -cpu_flags_arm_vfpv4
 -cpu_flags_arm_vfp-d32
-
-# Unmask [old] arm specific USE flags
--armvfp
 
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
 # Dependency not keyworded (dev-libs/libindicate).
