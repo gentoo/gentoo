@@ -261,7 +261,7 @@ case ${EAPI:-0} in
 	5*|6) DEPEND+=" ${BDEPEND}" ;;
 esac
 
-PDEPEND=">=sys-devel/gcc-config-1.7"
+PDEPEND=">=sys-devel/gcc-config-2.3"
 
 #---->> S + SRC_URI essentials <<----
 
