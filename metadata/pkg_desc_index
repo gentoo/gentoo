@@ -6334,7 +6334,7 @@ dev-perl/Digest-SHA1 2.130.0-r1 2.130.0-r2: NIST SHA message digest algorithm
 dev-perl/Dist-CheckConflicts 0.110.0: Declare version conflicts for your dist
 dev-perl/Dist-Metadata 0.927.0: Information about a perl module distribution
 dev-perl/Dist-Milla 1.0.20: Distribution builder, Opinionated but Unobtrusive
-dev-perl/Dist-Zilla 6.10.0-r2 6.15.0: distribution builder; installer not included!
+dev-perl/Dist-Zilla 6.10.0-r2 6.15.0 6.15.0-r1: distribution builder; installer not included!
 dev-perl/Dist-Zilla-Config-Slicer 0.202.0: Config::MVP::Slicer customized for Dist::Zilla
 dev-perl/Dist-Zilla-Plugin-AuthorsFromGit 0.6.0: Add per-file per-year copyright information
 dev-perl/Dist-Zilla-Plugin-CheckChangesHasContent 0.11.0: Ensure Changes has content before releasing
@@ -18086,7 +18086,7 @@ www-apps/wordpress 5.4.2: Wordpress PHP and MySQL based content management syste
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
 www-client/chromium 84.0.4147.105 85.0.4183.59 86.0.4221.3: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
-www-client/elinks 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
+www-client/elinks 0.12_pre6-r4 0.13_pre_pre20180225 0.13.4 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6 3.34.4 3.36.3 3.36.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
