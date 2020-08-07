@@ -32,6 +32,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-08-07)
+# Last upstream (pre-)release in 2016.  Python 3 porting effort is not
+# progressing since February, and PRs are stuck.  Homepage is gone.
+# Removal in 30 days.  Bug #695010.
+app-i18n/fcitx-sunpinyin
+app-i18n/ibus-sunpinyin
+app-i18n/scim-sunpinyin
+app-i18n/sunpinyin
+app-i18n/sunpinyin-data
+app-i18n/xsunpinyin
+
 # Hans de Graaff <graaff@gentoo.org> (2020-08-07)
 # Slot with known security issues. Please use a newer slot
 # instead. Removal in 30 days. Bug #713478.
