@@ -42,7 +42,6 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/strace-5.5-static.patch"
-	"${FILESDIR}/strace-5.6-AR.patch"
 )
 
 src_prepare() {
