@@ -10,5 +10,5 @@ RDEPEND=dev-ada/gnatcoll-core[ada_target_gnat_2019(-)?,-ada_target_gnat_2016(-),
 REQUIRED_USE=ada_target_gnat_2019
 SLOT=0
 SRC_URI=http://mirrors.cdn.adacore.com/art/5cdf912431e87a8f1c967d51 -> spark-2019-20190517-19665-src.tar.gz http://mirrors.cdn.adacore.com/art/5cdf865331e87aa2cdf16b49 -> gnat-2019-20190517-18C94-src.tar.gz
-_eclasses_=ada	2e62916779222e4f23755b01896c54af	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=ada	2e62916779222e4f23755b01896c54af	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=ae98dc0a0004373d8d0a340d1208f012

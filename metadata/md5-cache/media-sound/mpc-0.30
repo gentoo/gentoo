@@ -10,5 +10,5 @@ RDEPEND=media-libs/libmpdclient iconv? ( virtual/libiconv )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://www.musicpd.org/download/mpc/0/mpc-0.30.tar.xz
-_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	meson	71d293a701d6362387e1214da368c848	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	meson	71d293a701d6362387e1214da368c848	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=251d1b039a26cc95e1e4f17aaccbf671
