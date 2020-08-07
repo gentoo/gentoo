@@ -30,6 +30,7 @@ DZIL_DEPENDS="
 	dev-perl/Dist-Zilla
 	dev-perl/Dist-Zilla-Plugin-CheckExtraTests
 	dev-perl/Dist-Zilla-Plugin-ContributorsFile
+	dev-perl/Dist-Zilla-Plugin-Git
 	dev-perl/Dist-Zilla-Plugin-Git-Contributors
 	dev-perl/Dist-Zilla-Plugin-MakeMaker-Awesome
 	dev-perl/Dist-Zilla-Plugin-Meta-Contributors
