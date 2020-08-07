@@ -4312,6 +4312,7 @@ media-libs/libextractor:archive - Enable archive support using app-arch/libarchi
 media-libs/libextractor:gsf - Enable OLE2 (MS Office) plug-in support using gnome-extra/libgsf
 media-libs/libextractor:midi - Enable MIDI support through media-libs/libsmf
 media-libs/libffado:test-programs - Install standalone test programs
+media-libs/libggi:3dfx - Enables support for Voodoo chipsets, also called 3DFX and TDFX
 media-libs/libggi:vis - Enables sparc vis support for libggi
 media-libs/libgphoto2:serial - Enable serial port support
 media-libs/libgpod:gtk - Enable ArtworkDB support
