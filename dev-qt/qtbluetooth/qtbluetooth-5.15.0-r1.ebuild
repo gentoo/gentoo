@@ -15,7 +15,7 @@ IUSE="qml"
 
 RDEPEND="
 	~dev-qt/qtconcurrent-${PV}
-	~dev-qt/qtcore-${PV}
+	~dev-qt/qtcore-${PV}:5=
 	~dev-qt/qtdbus-${PV}
 	>=net-wireless/bluez-5:=
 	qml? ( ~dev-qt/qtdeclarative-${PV} )
