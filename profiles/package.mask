@@ -650,12 +650,6 @@ kde-apps/kblog
 # Removal in 30 days.
 x11-misc/xmonad-log-applet
 
-# Hans de Graaff <graaff@gentoo.org> (2020-07-05)
-# Obsolete slot with known security issues. Please
-# update to slot "5" instead.
-# Removal in 30 days.  Bug #728506.
-dev-ruby/sanitize:4
-
 # Michał Górny <mgorny@gentoo.org> (2020-07-04)
 # Unmaintained.  Requires scipy-python2.  Current version is from 2015,
 # latest upstream release from 2017.  The only revdep is masked
