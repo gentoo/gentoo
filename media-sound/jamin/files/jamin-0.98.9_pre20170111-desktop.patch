@@ -1,0 +1,19 @@
+--- a/data/jamin.desktop.in	2015-01-14 10:10:12.000000000 +0100
++++ b/data/jamin.desktop.in	2020-08-07 21:23:02.617171359 +0200
+@@ -1,11 +1,10 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+-_Name=JAMin
+-_GenericName=
+-_Comment=JACK Audio Mastering interface
+-Categories=Application;AudioVideo;
++Name=JAMin
++Comment=JACK Audio Mastering interface
++Categories=AudioVideo;Audio
++Keywords=audio;sound;mastering;ladspa
+ Exec=jamin
+-Icon=jamin.svg
++Icon=jamin
+ MimeType=application/x-jamin;
+ StartupNotify=true
+ Terminal=false
