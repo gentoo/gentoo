@@ -13,6 +13,10 @@ sys-block/fio -io-uring -zbc
 # Requires dev-python/networkx.
 app-portage/nattka depgraph-order
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
+# clisp is keyworded on sparc
+app-text/texlive-core -xindy
+
 # Michał Górny <mgorny@gentoo.org> (2020-06-02)
 # Avoid unkeyworded deps, we really need a minimal install
 # for imagemagick.
