@@ -118,7 +118,7 @@ _ruby_get_all_impls() {
 	for i in ${USE_RUBY}; do
 		case ${i} in
 			# removed implementations
-			ruby19|ruby20|ruby21|ruby22|ruby23|jruby)
+			ruby19|ruby20|ruby21|ruby22|ruby23|ruby24|jruby)
 				;;
 			*)
 				echo ${i};;
