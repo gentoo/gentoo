@@ -3,7 +3,6 @@
 
 # Keep them sorted
 
-3dfx - Enable support for Voodoo chipsets, also called as 3DFX and TDFX
 X - Add support for X11
 Xaw3d - Add support for the 3d athena widget set
 a52 - Enable support for decoding ATSC A/52 streams used in DVD
