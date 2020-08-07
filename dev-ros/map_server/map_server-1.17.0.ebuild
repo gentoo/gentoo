@@ -28,3 +28,8 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	virtual/pkgconfig"
+
+src_test() {
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	ros-catkin_src_test
+}
