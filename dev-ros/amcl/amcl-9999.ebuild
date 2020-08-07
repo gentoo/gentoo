@@ -62,3 +62,8 @@ src_prepare() {
 	done
 	sed -e "s#http://download.ros.org/data/amcl#file://${S}#" -i CMakeLists.txt || die
 }
+
+src_test() {
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	ros-catkin_src_test
+}
