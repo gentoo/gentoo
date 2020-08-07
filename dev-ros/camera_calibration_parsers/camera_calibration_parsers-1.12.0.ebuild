@@ -22,7 +22,10 @@ RDEPEND="
 	dev-ros/roscpp_serialization
 "
 DEPEND="${RDEPEND}
-	test? ( dev-python/nose )
+	test? (
+		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
+		dev-ros/rosbash
+	)
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
 BDEPEND="
