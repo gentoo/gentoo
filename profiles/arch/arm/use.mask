@@ -97,6 +97,7 @@ anthy
 -video_cards_omap
 -video_cards_panfrost
 -video_cards_tegra
+-video_cards_v3d
 -video_cards_vc4
 
 # James Le Cuirot <chewi@gentoo.org>
