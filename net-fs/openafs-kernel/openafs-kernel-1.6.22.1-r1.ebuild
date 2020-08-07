@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="IBM BSD openafs-krb5-a APSL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 S=${WORKDIR}/${MY_P}
@@ -36,9 +36,9 @@ QA_TEXTRELS_amd64_fbsd="/boot/modules/libafs.ko"
 PATCHES=( "${WORKDIR}/gentoo/patches" )
 
 pkg_pretend() {
-	if use kernel_linux && kernel_is ge 4 16 ; then
+	if use kernel_linux && kernel_is ge 4 15 ; then
 		ewarn "Gentoo supports kernels which are supported by OpenAFS"
-		ewarn "which are limited to the kernel versions: < 4.16"
+		ewarn "which are limited to the kernel versions: < 4.15"
 		ewarn ""
 		ewarn "You are free to utilize epatch_user to provide whatever"
 		ewarn "support you feel is appropriate, but will not receive"
