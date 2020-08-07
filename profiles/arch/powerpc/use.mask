@@ -55,7 +55,6 @@ klibc
 
 # These flags should only be used for ppc
 -ppcsha1
--power8
 # Unmask the Altivec instruction set
 -altivec
 

@@ -28,10 +28,6 @@ app-portage/nattka depgraph-order
 # Requires unsupported dev-python/eventlet and fails tests with gevent
 dev-python/socketpool eventlet gevent
 
-# Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
-# clisp is keyworded on alpha
-app-text/texlive-core -xindy
-
 # Michał Górny <mgorny@gentoo.org> (2020-06-02)
 # Avoid unkeyworded deps, we really need a minimal install
 # for imagemagick.
@@ -254,10 +250,6 @@ media-sound/rhythmbox upnp-av
 # Davide Pesavento <pesa@gentoo.org> (2015-10-26)
 # Tests require non-keyworded qt5
 dev-qt/qtchooser test
-
-# Justin Lecher <jlec@gentoo.org> (2015-10-14)
-# Requires dev-python/ipython which triggers a long dep chain
-dev-python/restkit cli
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2015-09-10)
 # Requires wifi USE flag, which is masked for this arch

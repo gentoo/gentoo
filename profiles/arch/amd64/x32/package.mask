@@ -37,7 +37,6 @@ net-im/slack
 # Michał Górny <mgorny@gentoo.org> (2018-01-12)
 # ...and their reverse dependencies.
 dev-lang/coffee-script
-dev-python/bokeh
 dev-ruby/autoprefixer-rails
 dev-ruby/coffee-rails
 dev-ruby/coffee-script

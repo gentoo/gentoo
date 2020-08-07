@@ -106,10 +106,6 @@ app-admin/sudo sssd
 # app-misc/ddcutil is not yet stable.
 kde-plasma/powerdevil brightness-control
 
-# Michał Górny <mgorny@gentoo.org> (2018-06-07)
-# sys-libs/netbsd-csu not stable yet.
-sys-devel/clang-runtime crt
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-06-01)
 # Needs dev-ruby/asciidoctor which has a lot of unstable deps
 net-analyzer/wireshark doc
