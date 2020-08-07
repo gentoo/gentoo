@@ -13,7 +13,6 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~x86"
 IUSE="lirc"
-RESTRICT="!test? ( test )"
 
 BDEPEND="
 	dev-qt/linguist-tools:5
