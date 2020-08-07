@@ -49,7 +49,7 @@ fi
 
 # we need to inherit autotools first to get the deps
 inherit autotools libtool multilib toolchain-funcs flag-o-matic \
-	flag-o-matic ${FONT_ECLASS}
+	${FONT_ECLASS} ${GIT_ECLASS}
 
 if [[ ${XORG_MULTILIB} == yes ]]; then
 	inherit multilib-minimal
@@ -152,7 +152,7 @@ if [[ ${FONT} == yes ]]; then
 	PDEPEND+=" media-fonts/font-alias"
 	DEPEND+=" >=media-fonts/font-util-1.2.0
 		>=x11-apps/mkfontscale-1.2.0"
-	BDEPEND="x11-apps/bdftopcf"
+	BDEPEND+="x11-apps/bdftopcf"
 
 	# @ECLASS-VARIABLE: FONT_DIR
 	# @DESCRIPTION:
