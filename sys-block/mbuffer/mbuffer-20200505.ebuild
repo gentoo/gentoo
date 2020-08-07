@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-20180410-sysconfdir.patch"
+	"${FILESDIR}/${PN}-20200505-find-OBJDUMP.patch"
 )
 
 src_prepare() {
