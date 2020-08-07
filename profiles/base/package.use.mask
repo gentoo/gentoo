@@ -165,7 +165,6 @@ dev-python/zeep tornado
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-29)
 # Require Python 2 support in numpydoc.
-<dev-python/matplotlib-3 doc
 <=dev-python/pywavelets-0.5.2-r1 doc
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-29)
