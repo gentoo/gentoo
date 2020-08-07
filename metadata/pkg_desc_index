@@ -5036,7 +5036,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.24: Allows Tomcat to use certain native resources for better performance
-dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.103 7.0.104 7.0.105 8.5.56 8.5.57 9.0.36 9.0.37: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
+dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.105 8.5.57 9.0.37: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -11108,7 +11108,7 @@ games-arcade/gav 0.9.0-r1: GPL Arcade Volleyball
 games-arcade/gish-demo 1.6-r1: Play as an amorphous ball of tar that rolls and squishes around
 games-arcade/gnake 0.94b-r1: An ncurses-based Nibbles clone
 games-arcade/gnome-nibbles 3.36.0: Nibbles clone for Gnome
-games-arcade/gnome-robots 3.36.0: Avoid the robots and make them crash into each other
+games-arcade/gnome-robots 3.36.0 3.36.1: Avoid the robots and make them crash into each other
 games-arcade/gnujump 1.0.8-r1: Xjump clone with added features
 games-arcade/grande-KXL 0.6-r1: ZANAC type game
 games-arcade/gunocide2ex 1.0: fast-paced 2D shoot'em'up
@@ -18377,7 +18377,7 @@ x11-libs/libva-intel-driver 2.3.0 2.4.0_pre1 2.4.1 9999: HW video decode support
 x11-libs/libva-intel-media-driver 18.3.0 18.4.1 20.1.1 20.2.0 9999: Intel Media Driver for VAAPI (iHD)
 x11-libs/libva-vdpau-driver 0.7.4-r5: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.2 1.3 1.4 99999: VDPAU wrapper and trace libraries
-x11-libs/libwnck 2.31.0 3.30.0: A window navigation construction kit
+x11-libs/libwnck 2.31.0 3.30.0 3.36.0: A window navigation construction kit
 x11-libs/libxcb 1.14: X C-language Bindings library
 x11-libs/libxkbcommon 0.10.0 0.10.0-r1: keymap handling library for toolkits and window systems
 x11-libs/libxkbfile 1.1.0: X.Org xkbfile library
