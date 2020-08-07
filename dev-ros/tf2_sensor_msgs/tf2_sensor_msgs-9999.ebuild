@@ -25,6 +25,7 @@ DEPEND="${RDEPEND}
 		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
 		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
 		dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+		dev-cpp/gtest
 	)
 	dev-ros/cmake_modules
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
