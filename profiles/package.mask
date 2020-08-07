@@ -32,6 +32,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2020-08-07)
+# Slot with known security issues. Please use a newer slot
+# instead. Removal in 30 days. Bug #713478.
+dev-ruby/json:0
+
+# Hans de Graaff <graaff@gentoo.org> (2020-08-07)
+# Slot with known security issues. Please use a newer slot
+# instead. Removal in 30 days. Bug #733116.
+dev-ruby/kramdown:0
+
 # Michał Górny <mgorny@gentoo.org> (2020-08-06)
 # Py2.7 only.  Last release in 2009.  No reverse dependencies left.
 # Removal in 30 days.  Bug #735610.
@@ -644,12 +654,6 @@ kde-apps/kblog
 # Needs porting to gtk3/fxce4panel-4.15: bug #729492.
 # Removal in 30 days.
 x11-misc/xmonad-log-applet
-
-# Hans de Graaff <graaff@gentoo.org> (2020-07-05)
-# Obsolete slot with known security issues. Please
-# update to slot "5" instead.
-# Removal in 30 days.  Bug #728506.
-dev-ruby/sanitize:4
 
 # Michał Górny <mgorny@gentoo.org> (2020-07-04)
 # Unmaintained.  Requires scipy-python2.  Current version is from 2015,
