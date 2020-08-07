@@ -5399,7 +5399,7 @@ dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to
 dev-libs/libfido2 1.3.1 1.4.0: Provides library functionality for FIDO 2.0
 dev-libs/libfilezilla 0.20.2 0.21.0 0.22.0 0.23.0: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.4.0_pre20200314: Struct of arrays library with object oriented interface for C++
-dev-libs/libfmt 6.1.2 6.2.0-r1 6.2.1 7.0.0 7.0.1 7.0.2 9999: Small, safe and fast formatting library
+dev-libs/libfmt 6.1.2 7.0.3 9999: Small, safe and fast formatting library
 dev-libs/libfstrcmp 0.7 0.7-r1: Make fuzzy comparisons of strings and byte arrays
 dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the Logitech G15 keyboard
 dev-libs/libg15render 1.2-r2: Small library for display text and graphics on a Logitech G15 keyboard
@@ -6188,7 +6188,7 @@ dev-perl/Crypt-RSA 1.990.0-r1 1.990.0-r2: RSA public-key cryptosystem
 dev-perl/Crypt-Random 1.520.0: Cryptographically Secure, True Random Number Generator
 dev-perl/Crypt-Random-Source 0.120.0 0.140.0: Get weak or strong random data from pluggable sources
 dev-perl/Crypt-Rijndael 1.140.0 1.140.0-r1: Crypt::CBC compliant Rijndael encryption module
-dev-perl/Crypt-SMIME 0.250.0-r1: S/MIME message signing, verification, encryption and decryption
+dev-perl/Crypt-SMIME 0.250.0-r1 0.260.0: S/MIME message signing, verification, encryption and decryption
 dev-perl/Crypt-SSLeay 0.720.0-r2 0.720.0-r3: OpenSSL support for LWP
 dev-perl/Crypt-Simple 0.60.0-r1 0.60.0-r2: encrypt stuff simply
 dev-perl/Crypt-SmbHash 0.120.0-r2 0.120.0-r3: LM/NT hashing, for Samba's smbpasswd entries
@@ -8993,7 +8993,7 @@ dev-python/root_numpy 4.7.3-r1: Interface between ROOT and numpy
 dev-python/rootpy 1.0.1-r1: Pythonic layer on top of the ROOT framework's PyROOT bindings
 dev-python/rope 0.16.0 0.17.0: Python refactoring library
 dev-python/ropemode 0.5: A helper for using rope refactoring library in IDEs
-dev-python/rosdistro 0.8.0 0.8.1 0.8.2 9999: Tools to work with catkinized rosdistro files
+dev-python/rosdistro 0.8.2 9999: Tools to work with catkinized rosdistro files
 dev-python/rospkg 1.2.0 1.2.6 1.2.8 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.4.1-r1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
 dev-python/rply 0.7.7: Pure python parser generator that also works with RPython
@@ -9411,7 +9411,7 @@ dev-ros/compressed_image_transport 1.14.0 9999: Plugin for transparently sending
 dev-ros/console_bridge_vendor 1.2.1 9999: Wrapper around console_bridge
 dev-ros/control_msgs 1.5.2 9999: Base messages and actions useful for controlling robots
 dev-ros/control_toolbox 1.18.2 9999: Modules that are useful across all controllers
-dev-ros/controller_interface 0.19.1 9999: Interface base class for controllers
+dev-ros/controller_interface 0.19.1-r1 9999: Interface base class for controllers
 dev-ros/controller_manager 0.19.1 9999: The controller manager
 dev-ros/controller_manager_msgs 0.19.1 9999: The controller manager
 dev-ros/controller_manager_tests 0.19.1 9999: Tests for the controller manager
@@ -9421,7 +9421,7 @@ dev-ros/cpp_common 0.7.2 9999: C++ code for doing things that are not necessaril
 dev-ros/cv_bridge 1.15.0 9999: Converts between ROS Image messages and OpenCV images
 dev-ros/depth_image_proc 1.15.2 9999: Nodelets for processing depth images such as those produced by OpenNI camera
 dev-ros/depthimage_to_laserscan 1.0.8 9999: Converts a depth image to a laser scan for use with navigation and localization
-dev-ros/diagnostic_aggregator 1.9.4 9999: Aggregates ROS diagnostics
+dev-ros/diagnostic_aggregator 1.9.4-r1 9999: Aggregates ROS diagnostics
 dev-ros/diagnostic_analysis 1.9.4 9999: Converts diagnostics data into a series of CSV files
 dev-ros/diagnostic_common_diagnostics 1.9.4 9999: Generic nodes for monitoring a linux host
 dev-ros/diagnostic_msgs 1.13.0 9999: Standardized interface for the diagnostic and runtime monitoring systems in ROS
@@ -9515,7 +9515,7 @@ dev-ros/nav_core 1.17.0 9999: Common interfaces for navigation specific robot ac
 dev-ros/nav_msgs 1.13.0 9999: Common messages used to interact with the navigation stack
 dev-ros/navfn 1.17.0 9999: Fast interpolated navigation function for creating plans for a mobile base
 dev-ros/nmea_msgs 1.1.0 9999: Messages related to data in the NMEA format
-dev-ros/nodelet 1.10.0 9999: Runs multiple algorithms in the same process with zero copy transport
+dev-ros/nodelet 1.10.0-r1 9999: Runs multiple algorithms in the same process with zero copy transport
 dev-ros/nodelet_topic_tools 1.10.0 9999: Common nodelet tools such as a mux, demux and throttle
 dev-ros/nodelet_tutorial_math 0.1.12 0.2.0 9999: Nodelet tutorial
 dev-ros/object_recognition_msgs 0.4.1 9999: ROS message and the actionlib definition used in object_recognition_core
@@ -9529,7 +9529,7 @@ dev-ros/openslam_gmapping 0.2.1 9999: ROS-ified version of gmapping SLAM
 dev-ros/pcl_conversions 1.7.1 9999: Provides conversions from PCL data types and ROS message types
 dev-ros/pcl_msgs 0.3.0 9999: PCL (Point Cloud Library)-related ROS messages
 dev-ros/pcl_ros 1.7.1 9999: PCL (Point Cloud Library) ROS interface stack
-dev-ros/pluginlib 1.13.0-r1 9999: Tools for writing and dynamically loading plugins using the ROS infrastructure
+dev-ros/pluginlib 1.13.0-r2 9999: Tools for writing and dynamically loading plugins using the ROS infrastructure
 dev-ros/pluginlib_tutorials 0.1.12 0.2.0 9999: Pluginlib tutorials
 dev-ros/poco_vendor 1.2.0 9999: CMake shim over the poco library
 dev-ros/pointcloud_to_laserscan 1.4.1 9999: Converts a 3D Point Cloud into a 2D laser scan
@@ -9571,7 +9571,7 @@ dev-ros/roscpp 1.15.7 1.15.8 9999: C++ implementation of ROS
 dev-ros/roscpp_serialization 0.7.2 9999: Code for serialization
 dev-ros/roscpp_traits 0.7.2 9999: Message traits code
 dev-ros/roscpp_tutorials 0.10.1 9999: Attempts to show the features of ROS step-by-step
-dev-ros/roscreate 1.15.5 1.15.6 9999: Tool that assists in the creation of ROS filesystem resources
+dev-ros/roscreate 1.15.6 9999: Tool that assists in the creation of ROS filesystem resources
 dev-ros/rosdiagnostic 1.9.4 9999: Command to print aggregated diagnostic contents to the command line
 dev-ros/rosgraph 1.15.7 1.15.8 9999: Prints information about the ROS Computation Graph
 dev-ros/rosgraph_msgs 1.11.3 9999: Messages relating to ROS comm
@@ -9602,7 +9602,7 @@ dev-ros/rosserial_xbee 0.8.0 9999: Tools to do communicate between rosserial nod
 dev-ros/rosservice 1.15.7 1.15.8 9999: Command-line tool for listing and querying ROS Services
 dev-ros/rostest 1.15.8 9999: Integration test suite based on roslaunch compatible with xUnit frameworks
 dev-ros/rostime 0.7.2 9999: Time and Duration implementations for C++ libraries
-dev-ros/rostopic 1.15.7 1.15.8 9999: Command-line tool for displaying debug information about ROS Topics
+dev-ros/rostopic 1.15.8 9999: Command-line tool for displaying debug information about ROS Topics
 dev-ros/rosunit 1.15.5 1.15.6 9999: Unit-testing package for ROS
 dev-ros/roswtf 1.15.8 9999: Tool for diagnosing issues with a running ROS system
 dev-ros/rotate_recovery 1.17.0 9999: Recovery behavior that attempts performing a 360 degree rotation of the robot
@@ -9667,7 +9667,7 @@ dev-ros/test_roscpp 1.15.7 1.15.8 9999: Unit tests for roscpp
 dev-ros/test_rosgraph 1.15.7 1.15.8 9999: Unit tests for rosgraph
 dev-ros/test_roslaunch 1.15.8 9999: Unit tests for roslaunch
 dev-ros/test_roslib_comm 1.15.8 9999: Unit tests for roslib
-dev-ros/test_rosmaster 1.15.7 1.15.8 9999: Unit tests for rosmaster
+dev-ros/test_rosmaster 1.15.8 9999: Unit tests for rosmaster
 dev-ros/test_rosparam 1.15.7 1.15.8 9999: Unit tests for rosparam
 dev-ros/test_rospy 1.15.8 9999: Unit tests for rospy
 dev-ros/test_rosservice 1.15.8 9999: Unit tests for rospy
@@ -10836,7 +10836,7 @@ dev-util/regexxer 0.10: An interactive tool for performing search and replace op
 dev-util/rej 0.16-r1: A utility for solving diff/patch rejects
 dev-util/rocm-cmake 0.2 2.7.0 2.8.0 2.9.0 2.10.0 3.0.0 3.3.0 3.5.0 9999: Radeon Open Compute CMake Modules
 dev-util/rocminfo 2.6.0 2.7.0 2.8.0 2.9.0 2.10.0 3.0.0 3.1.0 3.3.0 3.5.0 9999: ROCm Application for Reporting System Info
-dev-util/rosdep 0.15.0 0.19.0 9999: Command-line tool for installing ROS system dependencies
+dev-util/rosdep 0.19.0 9999: Command-line tool for installing ROS system dependencies
 dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
 dev-util/rosinstall_generator 0.1.22 9999: Generates rosinstall metadata about repositories with ROS packages/stacks
 dev-util/rpmdevtools 8.10-r2: Collection of rpm packaging related utilities
