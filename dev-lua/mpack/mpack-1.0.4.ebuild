@@ -12,7 +12,7 @@ S="${WORKDIR}/libmpack-${PV}/binding/lua"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="luajit test"
 RESTRICT="!test? ( test )"
 
