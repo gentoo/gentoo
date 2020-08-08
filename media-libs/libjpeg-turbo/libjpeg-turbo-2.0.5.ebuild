@@ -77,7 +77,16 @@ multilib_src_configure() {
 		-DWITH_JAVA="$(multilib_native_usex java)"
 		-DWITH_MEM_SRCDST=ON
 	)
+
 	[[ ${ABI} == "x32" ]] && mycmakeargs+=( -DREQUIRE_SIMD=OFF ) #420239
+
+	if use ppc ; then
+		# Workaround recommended by upstream:
+		# https://bugs.gentoo.org/715406#c9
+		# https://github.com/libjpeg-turbo/libjpeg-turbo/issues/428
+		mycmakeargs+=( -DFLOATTEST="64bit" )
+	fi
+
 	cmake_src_configure
 }
 
