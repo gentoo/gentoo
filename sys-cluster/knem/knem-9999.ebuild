@@ -25,7 +25,7 @@ DEPEND="
 		virtual/linux-sources"
 RDEPEND="
 		sys-apps/hwloc
-		virtual/modutils"
+		sys-apps/kmod[tools]"
 
 MODULE_NAMES="knem(misc:${S}/driver/linux)"
 BUILD_TARGETS="all"
