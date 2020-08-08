@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils multilib
+inherit cmake multilib
 
 DESCRIPTION="turns your Realtek RTL2832 based DVB dongle into a SDR receiver"
 HOMEPAGE="http://sdr.osmocom.org/trac/wiki/rtl-sdr"
@@ -41,13 +41,12 @@ src_configure() {
 		-DINSTALL_UDEV_RULES=OFF
 		-DDETACH_KERNEL_DRIVER=ON
 		-DENABLE_ZEROCOPY="$(usex zerocopy)"
-		-DLIB_INSTALL_DIR=$(get_libdir)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	newinitd "${FILESDIR}"/rtl_tcp.initd rtl_tcp
 	newconfd "${FILESDIR}"/rtl_tcp.confd rtl_tcp
 }
