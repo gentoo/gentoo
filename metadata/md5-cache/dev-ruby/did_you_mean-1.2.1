@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare setup test unpack
-DEPEND=ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby25? ( test? ( dev-ruby/rake[ruby_targets_ruby25(-)] ) ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25(-)] !!dev-ruby/psych[ruby_targets_ruby25(-)] ) test? ( ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25(-)] ) )
+DEPEND=ruby_targets_ruby25? ( test? ( dev-ruby/test-unit[ruby_targets_ruby25(-)] ) ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby25? ( test? ( dev-ruby/rake[ruby_targets_ruby25(-)] ) ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25(-)] !!dev-ruby/psych[ruby_targets_ruby25(-)] ) test? ( ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25(-)] ) )
 DESCRIPTION='did you mean?'experience in Ruby
 EAPI=6
 HOMEPAGE=https://github.com/yuki24/did_you_mean
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test ) !test? ( test )
 SLOT=2.5
 SRC_URI=https://rubygems.org/gems/did_you_mean-1.2.1.gem
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	2477ebe553d3e4d2c606191fe6c33602	ruby-fakegem	6ee14a23a169409059ed36d4dddc3197	ruby-ng	676004cfb6cdf3dedf1c778d56346624	ruby-utils	9991225e034c8185d67fbc7a8816559f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=a4f709e7837505f60a27c80fe5c2c62c
+_md5_=f032dfc1657d112bb8896ed3f1a51195
