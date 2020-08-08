@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-08-08)
+# modutils is obsolete and does not build.
+# No consumers in the tree.
+# Removal in 30 days.
+sys-apps/modutils
+virtual/modutils
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2020-08-08)
 # HOMEPAGE dead.
 # Removal in 30 days. bug #736326
