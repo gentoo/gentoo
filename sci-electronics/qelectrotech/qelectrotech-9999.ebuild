@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit qmake-utils xdg-utils
+inherit qmake-utils xdg
 
 DESCRIPTION="Qt5 application to design electric diagrams"
 HOMEPAGE="https://qelectrotech.org/"
@@ -57,16 +57,4 @@ src_install() {
 	fi
 
 	einstalldocs
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	xdg_icon_cache_update
 }
