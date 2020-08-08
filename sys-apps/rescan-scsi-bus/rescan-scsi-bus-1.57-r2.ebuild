@@ -16,8 +16,8 @@ KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 RDEPEND=">=sys-apps/sg3_utils-1.24
 	<sys-apps/sg3_utils-1.44
 	app-admin/killproc
-	virtual/modutils
-	app-shells/bash"
+	app-shells/bash
+	sys-apps/kmod[tools]"
 
 S=${WORKDIR}
 
