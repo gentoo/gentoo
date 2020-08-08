@@ -11,4 +11,4 @@ RDEPEND=dev-libs/atk dev-libs/glib dev-libs/libxml2 media-libs/libsndfile >=medi
 SLOT=0
 SRC_URI=http://deb.debian.org/debian/pool/main/j/jamin/jamin_0.98.9~git20170111~199091~repack1.orig.tar.bz2 http://deb.debian.org/debian/pool/main/j/jamin/jamin_0.98.9~git20170111~199091~repack1-1.debian.tar.xz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=0afc277bb3c075d9d1f5bcb0dc8c1e15
+_md5_=41e1fd4f5b61973385328d5ed8e4e6a6

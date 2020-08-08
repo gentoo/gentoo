@@ -1,0 +1,14 @@
+BDEPEND=sys-devel/gettext
+DEFINED_PHASES=compile install prepare
+DEPEND=xattr? ( sys-apps/attr )
+DESCRIPTION=A featureful union filesystem
+EAPI=7
+HOMEPAGE=https://github.com/trapexit/mergerfs
+IUSE=+xattr
+KEYWORDS=~amd64 ~x86
+LICENSE=ISC LGPL-2.1
+RDEPEND=xattr? ( sys-apps/attr )
+SLOT=0
+SRC_URI=https://github.com/trapexit/mergerfs/archive/2.30.0.tar.gz -> mergerfs-2.30.0.tar.gz
+_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=5fe00b0d417d265b8f76865a6321eee5
