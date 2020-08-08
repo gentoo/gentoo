@@ -12761,7 +12761,7 @@ media-gfx/engauge 10.6: Convert an image file showing a graph or map into number
 media-gfx/entangle 2.0: Tethered Camera Control & Capture
 media-gfx/eog 3.32.2 3.36.3: The Eye of GNOME image viewer
 media-gfx/eog-plugins 3.26.4-r1 3.26.5: Eye of GNOME plugins
-media-gfx/eom 1.22.2 1.24.0-r1: The MATE image viewer
+media-gfx/eom 1.22.2 1.24.0-r2: The MATE image viewer
 media-gfx/ephoto 1.5: Enlightenment image viewer written with EFL
 media-gfx/esci-interpreter-gt-s80 0.2.1.1: Epson GT-S50 and GT-S80 scanner plugins for SANE 'epkowa' backend
 media-gfx/evoluspencil 3.1.0-r1: A simple GUI prototyping tool to create mockups
