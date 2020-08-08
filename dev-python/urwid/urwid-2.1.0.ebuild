@@ -17,6 +17,10 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
 
+PATCHES=(
+	"${FILESDIR}/2.1-Ignore-resetting-to-invalid-locale-Closes-377.patch"
+	)
+
 distutils_enable_sphinx docs
 distutils_enable_tests setup.py
 
