@@ -13940,7 +13940,7 @@ media-sound/smixer 1.0.4: command-line tool for setting and viewing mixer settin
 media-sound/snapcast 0.15.0-r1 9999: Synchronous multi-room audio player
 media-sound/snd 17.4-r1: Snd is a sound editor
 media-sound/sndfile-tools 1.03-r1 1.04 9999: A small collection of programs that use libsndfile
-media-sound/sndpeek 1.4: real-time audio visualization
+media-sound/sndpeek 1.41: real-time audio visualization
 media-sound/solfege 3.23.4: GNU program to help practicing ear training
 media-sound/sonata 1.7_beta1_p20200212: Elegant GTK+ music client for the Music Player Daemon (MPD)
 media-sound/sonic-visualiser 4.0.1 4.1: Music audio files viewer and analiser
