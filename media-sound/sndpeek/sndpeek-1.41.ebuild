@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 inherit eutils toolchain-funcs
 
 DESCRIPTION="real-time audio visualization"
@@ -13,24 +13,27 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+alsa jack oss"
 
-RDEPEND="media-libs/freeglut
-	virtual/opengl
+RDEPEND="
+	app-eselect/eselect-sndpeek
+	media-libs/freeglut
 	virtual/glu
-	x11-libs/libXmu
+	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXext
+	x11-libs/libXmu
 	media-libs/libsndfile
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	alsa? ( media-libs/alsa-lib )
-	app-eselect/eselect-sndpeek"
+"
 DEPEND="${RDEPEND}"
 REQUIRED_USE="|| ( alsa jack oss )"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.3-makefile.patch \
-		"${FILESDIR}"/${P}-gcc.patch \
-		"${FILESDIR}"/${P}-ldflags.patch
-}
+DOCS=( AUTHORS README THANKS TODO VERSIONS )
+
+PATCHES=(
+	"${FILESDIR}/${P}-makefile.patch"
+#	"${FILESDIR}/${PN}-1.4-gcc.patch"
+)
 
 compile_backend() {
 	backend=$1
@@ -53,7 +56,7 @@ src_install() {
 	use alsa && dobin src/sndpeek/sndpeek-alsa
 	use jack && dobin src/sndpeek/sndpeek-jack
 	use oss && dobin src/sndpeek/sndpeek-oss
-	dodoc AUTHORS README THANKS TODO VERSIONS
+	einstalldocs
 }
 
 pkg_postinst() {
