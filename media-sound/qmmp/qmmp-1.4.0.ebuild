@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake xdg-utils
+inherit cmake xdg
 [[ ${PV} = 9999 ]] && inherit subversion
 
 DESCRIPTION="Qt5-based audio player with winamp/xmms skins support"
@@ -55,7 +55,7 @@ RDEPEND="
 	game? ( media-libs/game-music-emu )
 	jack? (
 		media-libs/libsamplerate
-		media-sound/jack-audio-connection-kit
+		virtual/jack
 	)
 	ladspa? ( media-libs/ladspa-cmt )
 	mad? ( || (
@@ -153,12 +153,4 @@ src_configure() {
 	)
 
 	cmake_src_configure
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
 }
