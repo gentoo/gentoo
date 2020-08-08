@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI="7"
 
 inherit flag-o-matic linux-mod
 
@@ -18,11 +18,12 @@ HOMEPAGE="https://github.com/dynup/kpatch"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="contrib +kpatch +kpatch-build kmod test"
+IUSE="+kpatch-build +kpatch kmod doc contrib test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-crypt/pesign
+	dev-libs/openssl:0=
 	sys-libs/zlib
 	sys-apps/pciutils
 "
@@ -33,8 +34,6 @@ DEPEND="
 	sys-devel/bison
 	test? ( dev-util/shellcheck-bin )
 "
-
-PATCHES=( "${FILESDIR}"/${P}-disable-dwarf-compression.patch )
 
 pkg_setup() {
 	if use kmod; then
@@ -58,7 +57,7 @@ pkg_setup() {
 			eerror
 			die "Upgrade the kernel sources before installing kpatch."
 		fi
-		check_extra_config
+	check_extra_config
 	fi
 
 }
@@ -72,27 +71,15 @@ src_compile() {
 	use kpatch-build && emake -C kpatch-build
 	use kpatch && emake -C kpatch
 	use kmod && set_arch_to_kernel && emake -C kmod
+	use doc && emake -C doc
 	use contrib && emake -C contrib
 	use test && emake check
 }
 
 src_install() {
-	if use kpatch-build; then
-		emake DESTDIR="${D}" PREFIX="/usr" install -C kpatch-build
-		insinto /usr/share/${PN}/patch
-		doins kmod/patch/kpatch{.lds.S,-macros.h,-patch.h,-patch-hook.c}
-		doins kmod/patch/{livepatch-patch-hook.c,Makefile,patch-hook.c}
-		doins kmod/core/kpatch.h
-		doman man/kpatch-build.1
-	fi
-
-	if use kpatch; then
-		emake DESTDIR="${D}" PREFIX="/usr" install -C kpatch
-		doman man/kpatch.1
-	fi
-
+	use kpatch-build && emake DESTDIR="${D}" PREFIX="/usr" install -C kpatch-build
+	use kpatch && emake DESTDIR="${D}" PREFIX="/usr" install -C kpatch
 	use kmod && set_arch_to_kernel && emake DESTDIR="${D}" PREFIX="/usr" install -C kmod
 	use contrib && emake DESTDIR="${D}" PREFIX="/usr" install -C contrib
-
-	dodoc README.md doc/patch-author-guide.md
+	use doc && einstalldocs
 }
