@@ -1,11 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit versionator autotools
+inherit autotools
 
-DESCRIPTION="a GTK+ based utility to split mp3 and ogg files without decoding"
+DESCRIPTION="A GTK+ based utility to split mp3 and ogg files without decoding"
 HOMEPAGE="http://mp3splt.sourceforge.net"
 SRC_URI="mirror://sourceforge/mp3splt/${P}.tar.gz"
 
@@ -20,12 +20,14 @@ RDEPEND="
 	dev-libs/dbus-glib
 	gstreamer? (
 		media-libs/gstreamer:1.0
-		media-plugins/gst-plugins-meta:1.0[mp3] )
-"
-DEPEND="${RDEPEND}
+		media-plugins/gst-plugins-meta:1.0[mp3]
+	)"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )
-"
+	nls? ( sys-devel/gettext )"
+
+PATCHES=( "${FILESDIR}"/${PN}-0.9.2-fno-common.patch )
 
 src_prepare() {
 	default
@@ -33,15 +35,15 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
+	local myconf=()
 
-	use nls || myconf+=" --disable-nls"
-	use gstreamer || myconf+=" --disable-gstreamer"
+	use nls || myconf+=( --disable-nls )
+	use gstreamer || myconf+=( --disable-gstreamer )
 
 	econf \
 		--disable-audacious \
 		--disable-gnome \
 		$(use_enable doc doxygen_doc) \
 		--disable-cutter \
-		${myconf}
+		"${myconf[@]}"
 }
