@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202008-06">
+  <title>iproute2: Denial of service</title>
+  <synopsis>A use-after-free was found in iproute2, possibly allowing a Denial
+    of Service condition. 
+  </synopsis>
+  <product type="ebuild">iproute2</product>
+  <announced>2020-08-08</announced>
+  <revised count="1">2020-08-08</revised>
+  <bug>722144</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-apps/iproute2" auto="yes" arch="*">
+      <unaffected range="ge">5.1.0</unaffected>
+      <vulnerable range="lt">5.1.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>iproute2 is a set of tools for managing Linux network routing and
+      advanced features.
+    </p>
+  </background>
+  <description>
+    <p>iproute2 was found to contain a use-after-free in get_netnsid_from_name
+      in ip/ipnetns.c.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, able to feed iproute2 crafted data, may be able to
+      cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All iproute2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/iproute2-5.1.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-20795">CVE-2019-20795</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-08-03T07:01:06Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-08-08T04:18:42Z">sam_c</metadata>
+</glsa>
