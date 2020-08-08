@@ -4882,7 +4882,6 @@ media-sound/xnoise:lyrics - Enable support for lyrics fetching
 media-sound/xwax:alsa - Adds support for ALSA audio input/output.
 media-sound/xwax:cdda - Sets runtime dependencies to support decoding audio from a compact disc.
 media-sound/xwax:fallback - Sets runtime dependencies to support decoding "other" audio files.
-media-sound/xwax:jack - Adds support for audio input/output via the JACK Audio Connection Kit.
 media-sound/xwax:mp3 - Sets runtime dependencies to support decoding MP3 audio.
 media-sound/xwax:oss - Adds support for OSS (open sound system) audio input/output.
 media-sound/yarock:mpv - Enable media-video/mpv backend

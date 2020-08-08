@@ -14011,7 +14011,7 @@ media-sound/xineadump 0.1-r1: Utility for Xine decoding support in transKode
 media-sound/xmms2 0.8_p20161122-r8: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
 media-sound/xmms2-scrobbler 0.4.0-r1: XMMS2 AudioScrobbler client
 media-sound/xnoise 0.2.21: A media player for Gtk+ with a slick GUI, great speed and lots of features
-media-sound/xwax 1.6-r1: Digital vinyl emulation software
+media-sound/xwax 1.6-r1 1.7: Digital vinyl emulation software
 media-sound/yarock 1.4.0: Qt-based music player
 media-sound/yoshimi 1.7.1: Software synthesizer based on ZynAddSubFX
 media-sound/zynaddsubfx 3.0.5: Software synthesizer capable of making a countless number of instruments
