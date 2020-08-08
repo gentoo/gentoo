@@ -322,7 +322,6 @@ _ecm_strip_handbook_translations() {
 	for po in ${ECM_PO_DIRS}; do
 		if [[ -d ${po} ]] ; then
 			pushd ${po} > /dev/null || die
-			local lang
 			for lang in *; do
 				if [[ -e ${lang} ]] && ! has ${lang/.po/} ${LINGUAS} ; then
 					case ${lang} in
