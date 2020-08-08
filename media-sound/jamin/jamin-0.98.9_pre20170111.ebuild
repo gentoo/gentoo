@@ -48,6 +48,13 @@ S="${WORKDIR}/${PN}"
 
 src_prepare() {
 	default
+
+	# bug 632470
+	cat <<-EOF > po/POTFILES.skip
+jam-ui.glade
+src/limiter-ui.c
+EOF
+
 	sed -e "/^AC_INIT/s/.in/.ac/" -i configure.in || die
 	mv configure.{in,ac} || die
 	eautoreconf
