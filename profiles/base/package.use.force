@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-08-08)
+# Ensure tools flag is enabled for @system set
+sys-apps/kmod tools
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-06-24)
 # Don't let people lose 'cc' or 'f77' by accident.
 sys-devel/gcc-config cc-wrappers
