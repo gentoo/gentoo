@@ -1,0 +1,102 @@
+--- a/PsxCounters.c
++++ b/PsxCounters.c
+@@ -20,6 +20,9 @@
+ 
+ #include "PsxCommon.h"
+ 
++psxCounter psxCounters[5];
++u32 psxNextCounter, psxNextsCounter;
++
+ static int cnts = 4;
+ static u32 last=0;
+ 
+--- a/PsxCounters.h
++++ b/PsxCounters.h
+@@ -24,9 +24,9 @@
+ 	u32 sCycle, Cycle, rate, interrupt;
+ } psxCounter;
+ 
+-psxCounter psxCounters[5];
++extern psxCounter psxCounters[5];
+ 
+-u32 psxNextCounter, psxNextsCounter;
++extern u32 psxNextCounter, psxNextsCounter;
+ 
+ void psxRcntInit();
+ void psxRcntUpdate();
+--- a/PsxMem.c
++++ b/PsxMem.c
+@@ -21,6 +21,12 @@
+ 
+ #include "PsxCommon.h"
+ 
++s8 *psxM;
++s8 *psxP;
++s8 *psxR;
++s8 *psxH;
++char **psxMemLUT;
++
+ void LoadPSXMem(u32 address, s32 length, char *data)
+ {
+  //printf("%08x %08x\n",address,length);
+--- a/PsxMem.h
++++ b/PsxMem.h
+@@ -41,21 +41,21 @@
+ }
+ #endif
+ 
+-s8 *psxM;
++extern s8 *psxM;
+ #define psxMu32(mem)	(*(u32*)&psxM[(mem) & 0x1fffff])
+ 
+-s8 *psxP;
+-s8 *psxR;
++extern s8 *psxP;
++extern s8 *psxR;
+ #define psxRu32(mem)	(*(u32*)&psxR[(mem) & 0x7ffff])
+ 
+-s8 *psxH;
++extern s8 *psxH;
+ 
+ #define psxHu8(mem)	(*(u8*) &psxH[(mem) & 0xffff])
+ 
+ #define psxHu16(mem)   	(*(u16*)&psxH[(mem) & 0xffff])
+ #define psxHu32(mem)   	(*(u32*)&psxH[(mem) & 0xffff])
+ 
+-char **psxMemLUT;
++extern char **psxMemLUT;
+ 
+ #define PSXM(mem)		(psxMemLUT[(mem) >> 16] == 0 ? NULL : (void*)(psxMemLUT[(mem) >> 16] + ((mem) & 0xffff)))
+ 
+--- a/R3000A.c
++++ b/R3000A.c
+@@ -22,6 +22,9 @@
+ 
+ #include "PsxCommon.h"
+ 
++R3000Acpu *psxCpu;
++psxRegisters psxRegs;
++
+ int psxInit() {
+ 
+ 	psxCpu = &psxInt;
+--- a/R3000A.h
++++ b/R3000A.h
+@@ -32,7 +32,7 @@
+ 	void (*Shutdown)();
+ } R3000Acpu;
+ 
+-R3000Acpu *psxCpu;
++extern R3000Acpu *psxCpu;
+ extern R3000Acpu psxInt;
+ 
+ typedef union {
+@@ -68,7 +68,7 @@
+ 	u32 interrupt;
+ } psxRegisters;
+ 
+-psxRegisters psxRegs;
++extern psxRegisters psxRegs;
+ 
+ #define _i32(x) (s32)x
+ #define _u32(x) (u32)x
