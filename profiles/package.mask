@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Miroslav Šulc <fordfrog@gentoo.org> (2020-08-08)
+# Last release in 2010.
+# Removal in 30 days. bug #736300
+media-sound/jackbeat
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-08-08)
 # Was not ported to >=ghc-8. Old dev-vcs/darcs was the only user.
 # Removal in 30 days. bug #736250
