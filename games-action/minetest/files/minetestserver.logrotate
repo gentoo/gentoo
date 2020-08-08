@@ -1,5 +1,6 @@
 /var/log/minetest/minetest-server.log {
 	rotate 5
 	weekly
+	missingok
 	copytruncate
 }
