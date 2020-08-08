@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake desktop
+inherit cmake desktop xdg
 
 # This commit is needed so the milkytrace binary is linked properly, bug 711564
 # It is also ~40kb so it is better to fetch it rather than ship it in-tree
@@ -24,7 +24,7 @@ RDEPEND="
 	media-libs/libsdl2[X]
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
-	jack? ( media-sound/jack-audio-connection-kit )"
+	jack? ( virtual/jack )"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
@@ -32,9 +32,14 @@ PATCHES=(
 	"${FILESDIR}/${P}-CVE-2019-14464.patch"
 	"${FILESDIR}/${P}-CVE-2019-1449x.patch"
 	"${FILESDIR}/${P}-CVE-2020-15569.patch"
+	"${FILESDIR}/${P}-fix-hard-dependency-on-rtmidi.patch"
 )
 
 S="${WORKDIR}/MilkyTracker-${PV}"
+
+src_prepare() {
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(

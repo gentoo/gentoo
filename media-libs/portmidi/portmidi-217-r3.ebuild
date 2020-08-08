@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/portmedia/${PN}-src-${PV}.zip"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ~ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ~ppc64 sparc x86"
 IUSE="debug doc java python static-libs test-programs"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
