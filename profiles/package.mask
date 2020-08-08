@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-08)
+# Was not ported to >=ghc-8. Old dev-vcs/darcs was the only user.
+# Removal in 30 days. bug #736250
+dev-haskell/shellish
+
 # Michał Górny <mgorny@gentoo.org> (2020-08-07)
 # Last upstream (pre-)release in 2016.  Python 3 porting effort is not
 # progressing since February, and PRs are stuck.  Homepage is gone.
