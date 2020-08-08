@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install setup
+DEPEND=net-firewall/iptables sys-apps/iproute2[-minimal,ipv6?] net-misc/iputils[ipv6?] net-misc/iprange net-analyzer/traceroute virtual/modutils app-arch/gzip ipset? ( net-firewall/ipset )
+DESCRIPTION=iptables firewall generator
+EAPI=7
+HOMEPAGE=https://firehol.org/ https://github.com/firehol/firehol
+IUSE=doc ipv6 ipset kernel_linux
+KEYWORDS=amd64 arm ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=net-firewall/iptables sys-apps/iproute2[-minimal,ipv6?] net-misc/iputils[ipv6?] net-misc/iprange net-analyzer/traceroute virtual/modutils app-arch/gzip ipset? ( net-firewall/ipset )
+SLOT=0
+SRC_URI=https://github.com/firehol/firehol/releases/download/v3.1.6/firehol-3.1.6.tar.xz
+_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=c4edb740058ddc546d13956de4540cfe

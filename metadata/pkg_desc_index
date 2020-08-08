@@ -997,7 +997,7 @@ app-crypt/stan 0.4.1-r1: Stan analyzes binary streams and calculates statistical
 app-crypt/stoken 0.92-r1: Software Token for Linux/UNIX
 app-crypt/swtpm 0.3.2: Libtpms-based TPM emulator
 app-crypt/tc-play 2.0-r1: a free, pretty much fully featured and stable TrueCrypt implementation
-app-crypt/tpm-emulator 0.7.5-r1: Emulator driver for tpm
+app-crypt/tpm-emulator 0.7.5-r2: Emulator driver for tpm
 app-crypt/tpm-tools 1.3.9.1-r1: TrouSerS' support tools for the Trusted Platform Modules
 app-crypt/tpm2-abrmd 2.1.1-r2 2.3.1: TPM2 Access Broker & Resource Manager
 app-crypt/tpm2-pkcs11 1.3.1: A PKCS#11 interface for TPM2 hardware
@@ -1974,8 +1974,8 @@ app-emulation/virtualbox 5.2.40 5.2.42 5.2.44 6.0.22 6.0.24 6.1.10-r1 6.1.12a: F
 app-emulation/virtualbox-additions 5.2.40 5.2.42 5.2.44 6.0.22 6.0.24 6.1.10 6.1.12: CD image containing guest additions for VirtualBox
 app-emulation/virtualbox-bin 5.2.40.137108 5.2.42.137960 5.2.44.139111 6.0.22.137980 6.0.24.139119 6.1.10.138449 6.1.12.139181: Family of powerful x86 virtualization products for enterprise and home use
 app-emulation/virtualbox-extpack-oracle 5.2.40.137108 5.2.42.137960 5.2.44.139111 6.0.22.137980 6.0.24.139119 6.1.10.138449 6.1.12.139181: PUEL extensions for VirtualBox
-app-emulation/virtualbox-guest-additions 5.2.40 5.2.42 5.2.44 6.0.22 6.0.24 6.1.10 6.1.12a: VirtualBox kernel modules and user-space tools for Gentoo guests
-app-emulation/virtualbox-modules 5.2.40 5.2.42 5.2.44 6.0.22 6.0.24 6.1.10 6.1.12: Kernel Modules for Virtualbox
+app-emulation/virtualbox-guest-additions 5.2.40-r1 5.2.42-r1 5.2.44-r1 6.0.22-r1 6.0.24-r1 6.1.10-r1 6.1.12a-r1: VirtualBox kernel modules and user-space tools for Gentoo guests
+app-emulation/virtualbox-modules 5.2.40-r1 5.2.42-r1 5.2.44-r1 6.0.22-r1 6.0.24-r1 6.1.10-r1 6.1.12-r1: Kernel Modules for Virtualbox
 app-emulation/vkd3d 1.0 1.1 1.1-r1 9999: D3D12 to Vulkan translation library
 app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1 2.47.1: A Mozilla Gecko based version of Internet Explorer for Wine
@@ -2196,11 +2196,11 @@ app-laptop/pommed 1.39-r1: Manage screen and keyboard backlight on Apple MacBook
 app-laptop/radeontool 1.6.3: Manage the backlight, external video output and registers of ATI Radeon cards
 app-laptop/spicctrl 1.9-r1: tool for the sonypi-Device (found in Sony Vaio Notebooks)
 app-laptop/thinkfan 0.9.3 1.0.2: simple fan control program for thinkpads
-app-laptop/tp_smapi 0.43: IBM ThinkPad SMAPI BIOS driver
+app-laptop/tp_smapi 0.43-r1: IBM ThinkPad SMAPI BIOS driver
 app-laptop/tpacpi-bat 1.1-r1 2.1 3.0 3.0-r1 3.1 9999: Control battery thresholds of recent ThinkPads, not supported by tp_smapi
 app-laptop/tpb 0.6.4-r1: IBM ThinkPad buttons utility
 app-laptop/tuxedo-control-center-bin 1.0.3: Tool to control performance, energy, fan and comfort settings on TUXEDO laptops
-app-laptop/tuxedo-keyboard 2.0.5: Kernel Module for Tuxedo Keyboard
+app-laptop/tuxedo-keyboard 2.0.5-r1: Kernel Module for Tuxedo Keyboard
 app-leechcraft/laretz 9999: The Laretz sync server
 app-leechcraft/lc-advancednotifications 9999: Flexible and customizable notifications framework for LeechCraft
 app-leechcraft/lc-aggregator 9999: Full-featured RSS/Atom feed reader for LeechCraft
@@ -10771,7 +10771,7 @@ dev-util/lldb 9.0.1-r1 10.0.0 10.0.1 11.0.0_rc1 11.0.0.9999 12.0.0.9999: The LLV
 dev-util/lockrun 20120508-r1: Lockrun - runs cronjobs with overrun protection
 dev-util/lsuio 0.2.0-r1: List available userspace I/O (UIO) devices
 dev-util/ltrace 0.7.3_p4-r1: trace library calls made at runtime
-dev-util/lttng-modules 2.7.1 2.10.12 2.11.0: LTTng Kernel Tracer Modules
+dev-util/lttng-modules 2.7.1-r1 2.10.12-r1 2.11.0-r1: LTTng Kernel Tracer Modules
 dev-util/lttng-tools 2.7.1 2.10.9 2.11.0: Linux Trace Toolkit - next generation
 dev-util/lttng-ust 2.7.1 2.8.1 2.10.6 2.11.0: Linux Trace Toolkit - UST library
 dev-util/lxqt-build-tools 0.6.0 0.7.0: LXQt Build Tools
@@ -10877,7 +10877,7 @@ dev-util/stressapptest 1.0.9: Stressful Application Test
 dev-util/stripe-mock 0.79.0 0.88.0: Mock HTTP server that responds like the real Stripe API
 dev-util/stubgen 2.08: A member function stub generator for C++
 dev-util/sysdig 0.26.6 0.26.7: A system exploration and troubleshooting tool
-dev-util/sysdig-kmod 0.26.6 0.26.7: Kernel module for dev-util/sysdig
+dev-util/sysdig-kmod 0.26.6-r1 0.26.7-r1: Kernel module for dev-util/sysdig
 dev-util/sysprof 3.34.1-r1 3.36.0: System-wide Linux Profiler
 dev-util/sysprof-capture 3.34.1-r1 3.36.0: Static library for sysprof capture data generation
 dev-util/systemtap 2.4-r1 3.1-r1 4.0-r1: A linux trace/probe tool
@@ -13315,7 +13315,7 @@ media-libs/stimg 0.1.0: Simple and tiny image loading library
 media-libs/stk 4.6.1: Synthesis ToolKit in C++
 media-libs/stops 0.3.0-r1: Organ stops for aeolus by Fons Adriaensen <fons.adriaensen@skynet.be>
 media-libs/suil 0.10.6: Lightweight C library for loading and wrapping LV2 plugin UIs
-media-libs/svgalib 1.9.25-r5 1.9.25-r6: A library for running svga graphics on the console
+media-libs/svgalib 1.9.25-r7 1.9.25-r8: A library for running svga graphics on the console
 media-libs/t1lib 5.1.2-r2: A Type 1 Font Rasterizer Library for UNIX/X11
 media-libs/taglib 1.11.1_p20190920-r1: Library for reading and editing audio meta data
 media-libs/taglib-extras 1.0.1-r1: Unofficial taglib plugins maintained by the Amarok team
@@ -14033,7 +14033,7 @@ media-tv/shoutcast2vdr 0.0.8-r1: VDR script: generate shoutcast playlists
 media-tv/tvbrowser-bin 4.2.1: Themeable and easy to use TV Guide - written in Java
 media-tv/tvheadend 4.2.8-r1 9999: Tvheadend is a TV streaming server and digital video recorder
 media-tv/tvnamer 2.4 2.5: Automatic TV episode file renamer, data from thetvdb.com
-media-tv/v4l-dvb-saa716x 0.0.1_p20170225 0.0.1_p20170225-r2: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
+media-tv/v4l-dvb-saa716x 0.0.1_p20170225-r3 0.0.1_p20170225-r4: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
 media-tv/v4l-utils 1.10.1 1.16.3 1.16.3-r1 1.16.6 1.18.0: Separate utilities ebuild from upstream v4l-utils package
 media-tv/w_scan 20141122 20170107: Scan DVB-C/DVB-T/DVB-S channels
 media-tv/xmltv 0.5.70 0.6.1: Set of utilities to manage TV listings stored in the XMLTV format
@@ -14175,7 +14175,7 @@ media-video/tsmuxer 2.6.11-r1: Utility to create and demux TS and M2TS files
 media-video/ttcut 0.19.6_p1-r1: Tool for cutting MPEG files especially for removing commercials
 media-video/unifi-video 3.10.10 3.10.11 3.10.12: UniFi Video Server
 media-video/ushare 1.1a-r9: uShare is a UPnP (TM) A/V & DLNA Media Server
-media-video/v4l2loopback 0.12.5 9999: v4l2 loopback device which output is it's own input
+media-video/v4l2loopback 0.12.5-r1 9999: v4l2 loopback device which output is it's own input
 media-video/vamps 0.99.2-r2: Very fast requantisizing tool for backup DVDs
 media-video/vcdimager 2.0.1: GNU VCDimager
 media-video/vcsi 7-r1: Create thumbnail sheets from video files
@@ -14476,7 +14476,7 @@ net-analyzer/yersinia 0.7.3 0.8.2 9999: A framework for layer 2 attacks
 net-analyzer/zabbix 3.0.31-r1 4.0.22 4.0.23 5.0.2: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 2.1.1 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
-net-dialup/accel-ppp 1.12.0 9999: High performance PPTP, PPPoE and L2TP server
+net-dialup/accel-ppp 1.12.0-r1 9999: High performance PPTP, PPPoE and L2TP server
 net-dialup/cistronradius 1.6.8-r2: Authentication and accounting server for terminal servers using RADIUS
 net-dialup/cutecom 0.51.0-r1: A serial terminal, like minicom, written in Qt
 net-dialup/dial 1.2-r2: A simple client for DWUN
@@ -14566,13 +14566,13 @@ net-firewall/arptables 0.0.4 0.0.5 0.0.5-r1: set up, maintain, and inspect the t
 net-firewall/conntrack-tools 1.4.5 1.4.6: Connection tracking userspace tools
 net-firewall/ebtables 2.0.11-r2: Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
 net-firewall/ferm 2.4.1 2.5 2.5.1: Command line util for managing firewall rules
-net-firewall/firehol 3.1.6: iptables firewall generator
+net-firewall/firehol 3.1.6-r1: iptables firewall generator
 net-firewall/firewalld 0.7.1-r3 0.7.3-r1: A firewall daemon with D-BUS interface providing a dynamic firewall
 net-firewall/fwbuilder 5.3.7: GUI management for iptables, PF, Cisco ASA/PIX/FWSM, Cisco router ACL and more
 net-firewall/fwknop 2.6.10-r2: Single Packet Authorization and Port Knocking application
 net-firewall/ipkungfu 0.6.1-r1: A nice iptables firewall script
-net-firewall/ipset 6.29 6.38 7.5 7.6: IPset tool for iptables, successor to ippool
-net-firewall/ipt_netflow 2.4 2.5 9999: Netflow iptables module
+net-firewall/ipset 6.29-r1 6.38-r1 7.5-r1 7.6-r1: IPset tool for iptables, successor to ippool
+net-firewall/ipt_netflow 2.4-r1 2.5-r1 9999: Netflow iptables module
 net-firewall/iptables 1.6.1-r3 1.6.2-r2 1.8.4-r2 1.8.5: Linux kernel (2.4+) firewall, NAT and packet mangling tools
 net-firewall/itval 1.2_p20121104 1.2_p20121104-r1: Iptables policy testing and validation tool
 net-firewall/lutelwall 0.99-r1: IPTables firewall setup script
@@ -14582,11 +14582,11 @@ net-firewall/nftlb 0.6: nftables load balancer
 net-firewall/nufw 2.2.22-r3: An enterprise grade authenticating firewall based on netfilter
 net-firewall/pglinux 2.3.1_p20171006: Privacy oriented firewall application
 net-firewall/psad 2.2.5 2.4.5 2.4.6: Port Scanning Attack Detection daemon
-net-firewall/rtsp-conntrack 3.7-r1 4.18: RTSP conntrack module for Netfilter
+net-firewall/rtsp-conntrack 3.7-r2 4.18-r1: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r2: iptables firewall generator (fork of firehol)
 net-firewall/shorewall 5.2.6.1 5.2.7: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.36: A program used to manage a netfilter firewall
-net-firewall/xtables-addons 2.13 3.7 3.8 3.9: iptables extensions not yet accepted in the main kernel
+net-firewall/xtables-addons 2.13-r1 3.7-r1 3.8-r1 3.9: iptables extensions not yet accepted in the main kernel
 net-fs/autofs 5.1.6 5.1.6-r1: Kernel based automounter
 net-fs/btfs 2.19 2.20: a bittorrent filesystem based on FUSE
 net-fs/cifs-utils 6.9-r1 6.10-r1: Tools for Managing Linux CIFS Client Filesystems
@@ -14601,8 +14601,8 @@ net-fs/netatalk 3.1.12: Open Source AFP server
 net-fs/nfs-utils 2.4.1-r4 2.4.3 2.5.1: NFS client and server daemons
 net-fs/nfs4-acl-tools 0.3.5 0.3.7: Commandline and GUI tools that deal directly with NFSv4 ACLs
 net-fs/nfstest 1.0.2 2.1.2: Tools for testing either the NFS client or the NFS server
-net-fs/openafs 1.6.22.1 1.6.22.2 1.8.2-r1: The OpenAFS distributed file system
-net-fs/openafs-kernel 1.6.22.1 1.6.22.2: The OpenAFS distributed file system kernel module
+net-fs/openafs 1.6.22.1 1.6.22.2 1.8.2-r2: The OpenAFS distributed file system
+net-fs/openafs-kernel 1.6.22.1-r1 1.6.22.2-r1: The OpenAFS distributed file system kernel module
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
 net-fs/s3backer 1.4.5: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.80 1.83 1.85 1.86: Amazon S3 mounting via fuse
@@ -15020,7 +15020,7 @@ net-mail/vchkuser 0.4: qmail-spp plugin to check recipient existance with vpopma
 net-mail/vpopmail 5.4.33-r6 5.4.33-r7: Collection of programs to manage virtual email on Qmail servers
 net-mail/vqadmin 2.3.7: A web based control pannel to manage Virtual Qmail Domains
 net-mail/ytnef 1.9.3: Yeraze's TNEF Stream Reader - for winmail.dat files
-net-misc/AQtion 2.2.7 2.3.1 2.3.4: Aquantia AQC multigigabit NIC linux driver (atlantic) - development preview
+net-misc/AQtion 2.2.7-r1 2.3.1-r1 2.3.4-r1: Aquantia AQC multigigabit NIC linux driver (atlantic) - development preview
 net-misc/adjtimex 1.29-r2: display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Perform two optimisations on a list of prefixes to reduce the length of the list
@@ -15073,7 +15073,7 @@ net-misc/connman-notify 0_pre20191003-r1: Desktop notification integration for c
 net-misc/connman-ui 0_p20150622 9999: A full-featured GTK based trayicon UI for ConnMan
 net-misc/csync 0.50.0 0.50.0-r1: lightweight file synchronizer utility
 net-misc/curl 7.71.0 7.71.1 7.71.1-r1: A Client that groks URLs
-net-misc/dahdi 3.1.0-r1: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
+net-misc/dahdi 3.1.0-r2: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 3.1.0: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
@@ -15095,7 +15095,7 @@ net-misc/efax 0.9a-r4 0.9a_p19_p1: A simple fax program for single-user systems
 net-misc/electron-cash 4.0.2-r2: Lightweight Bitcoin Cash client (BCH fork of Electrum)
 net-misc/electrum 3.3.8 4.0.2: User friendly Bitcoin client
 net-misc/electrum-ltc 3.3.4.1-r2: Litecoin thin client
-net-misc/ena-driver 2.0.3 2.2.3: Amazon EC2 Elastic Network Adapter (ENA) kernel driver
+net-misc/ena-driver 2.0.3-r1 2.2.3-r1: Amazon EC2 Elastic Network Adapter (ENA) kernel driver
 net-misc/endlessh 1.1-r1 9999: SSH tarpit that slowly sends and endless banner
 net-misc/ethercard-diag 20050321.1g 20050321.1g-r1: low level mii diagnostic tools including mii-diag and etherwake (merge of netdiag/isa-diag)
 net-misc/etherdfs 20180203-r1: An ethernet-based file system for DOS
@@ -15222,7 +15222,7 @@ net-misc/omnisync 1.0_p20200130: A driver for NTPd for people who are firewall-c
 net-misc/openntpd 6.0_p1 6.2_p3 6.2_p3-r1 6.2_p3-r2: Lightweight NTP server ported from OpenBSD
 net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling protocol
 net-misc/openssh 8.1_p1-r3 8.2_p1-r6 8.3_p1-r4: Port of OpenBSD's free SSH release
-net-misc/openvswitch 2.13.0: Production quality, multilayer virtual switch
+net-misc/openvswitch 2.13.0-r1: Production quality, multilayer virtual switch
 net-misc/owncloud-client 2.6.0.13018 2.6.1.13407-r1 2.6.3.14058: Synchronize files from ownCloud Server with your computer
 net-misc/packETH 1.7.3 1.8.1 1.9 2.1: Packet generator tool for ethernet
 net-misc/pcapfix 0.7 1.1.4: Repair and fix broken pcap files
@@ -15249,7 +15249,7 @@ net-misc/pyhoca-gui 0.6.1.0 0.6.1.1: X2Go graphical client applet
 net-misc/python-x2go 0.6.0.2 0.6.1.1 0.6.1.2 0.6.1.3: X2Go client-side Python API
 net-misc/qtm 1.3.19: Qt blogging client
 net-misc/quagga 1.2.4: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
-net-misc/r8168 8.048.00 8.048.02 8.048.03: r8168 driver for Realtek 8111/8168 PCI-E NICs
+net-misc/r8168 8.048.00-r1 8.048.02-r1 8.048.03-r1: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.6.9 3.6.14 3.7.13 3.7.24 3.8.2 3.8.3 3.8.4: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/radvd 2.14 2.17-r1 2.17-r2 2.18 2.18-r1: Linux IPv6 Router Advertisement Daemon
 net-misc/rclone 1.51.0 1.52.1 9999: A program to sync files to and from various cloud storage providers
@@ -15541,7 +15541,7 @@ net-vpn/tor 0.4.2.8 0.4.3.6 0.4.4.3_alpha: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550-r1: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
-net-vpn/wireguard-modules 1.0.20200729: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
+net-vpn/wireguard-modules 1.0.20200729-r1: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-vpn/wireguard-tools 1.0.20200513: Required tools for WireGuard, such as wg(8) and wg-quick(8)
 net-wireless/aircrack-ng 1.5.2 1.6-r1 1.6_p20200722 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airspy 1.0.9 9999: Usemode driver and associated tools for airspy
@@ -15555,7 +15555,7 @@ net-wireless/blueman 2.1.2 2.1.3 9999: Simple and intuitive GTK+ Bluetooth Manag
 net-wireless/bluez 5.54: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/bluez-tools 0_p20161212: A set of tools to manage bluetooth devices for linux
-net-wireless/broadcom-sta 6.30.223.271-r5: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
+net-wireless/broadcom-sta 6.30.223.271-r6: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
 net-wireless/bss 0.8-r1: Bluetooth stack smasher / fuzzer
 net-wireless/btcrack 9999: linux port of Thierry Zollers' BTCrack
 net-wireless/chirp 20200430 99999999: Free open-source tool for programming your amateur radio
@@ -16288,7 +16288,7 @@ sci-libs/libtifiles2 1.1.6-r1 1.1.7: Library for TI calculator files
 sci-libs/libxc 2.1.3 2.2.3 3.0.0: A library of exchange-correlation functionals for use in DFT
 sci-libs/linbox 1.6.3: C++ template library for integer and finite-field linear algebra
 sci-libs/linux-gpib 4.3.0 4.3.2 4.3.3: Driver library for GPIB (IEEE 488.2) hardware
-sci-libs/linux-gpib-modules 4.3.0 4.3.2 4.3.3: Kernel modules for GPIB (IEEE 488.2) hardware
+sci-libs/linux-gpib-modules 4.3.0-r1 4.3.2-r1 4.3.3-r1: Kernel modules for GPIB (IEEE 488.2) hardware
 sci-libs/lis 1.6.5: Library of Iterative Solvers for Linear Systems
 sci-libs/lmfit 5.1 6.4 7.0 8.2.2: library for Levenberg-Marquardt least-squares minimization and curve fitting
 sci-libs/lrslib 062: Self-contained C implementation of the reverse search algorithm
@@ -16890,7 +16890,7 @@ sys-apps/firejail 0.9.60-r1 0.9.62 9999: Security sandbox for any type of proces
 sys-apps/firejail-lts 0.9.56.2-r1: Security sandbox for any type of processes; LTS version
 sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from an ELF object's GNU_STACK
 sys-apps/flashrom 1.2-r1 1.2-r2 9999: Utility for reading, writing, erasing and verifying flash ROM chips
-sys-apps/frandom 1.1: Fast kernel-land pseudo-random number generator using the RC4 algorithm
+sys-apps/frandom 1.1-r1: Fast kernel-land pseudo-random number generator using the RC4 algorithm
 sys-apps/fwts 20.05.00: Firmware Test Suite
 sys-apps/fwupd 1.3.10 1.3.11 1.4.2 1.4.4: Aims to make updating firmware on Linux automatic, safe and reliable
 sys-apps/fxload 20081013-r1: USB firmware uploader
@@ -17006,7 +17006,7 @@ sys-apps/osinfo-db-tools 1.6.0-r1 1.8.0: Tools for managing the osinfo database
 sys-apps/paxctl 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
 sys-apps/paxctld 1.2.3: PaX flags maintenance daemon
 sys-apps/pciutils 3.5.6-r1 3.6.4 3.7.0: Various utilities dealing with the PCI bus
-sys-apps/pcmciautils 018_p8-r1: PCMCIA userspace utilities for Linux
+sys-apps/pcmciautils 018_p8-r2: PCMCIA userspace utilities for Linux
 sys-apps/pcsc-lite 1.8.25-r1 1.8.26 1.9.0: PC/SC Architecture smartcard middleware library
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.5.6 1.5.7: PC/SC Architecture smartcard tools
@@ -17058,7 +17058,7 @@ sys-apps/sg3_utils 1.42 1.44 1.45-r1: Apps for querying the sg SCSI interface
 sys-apps/shadow 4.8-r4 4.8.1-r2: Utilities to deal with user accounts
 sys-apps/smartmontools 7.0-r1 7.1 9999: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/smc-sum 2.4.0.20191206: Updates the BIOS and IPMI firmware and system settings on Supermicro mainboards
-sys-apps/smc-sum-driver 1.6.0.20151201-r3: Supermicro Update Manager (SUM) kernel module
+sys-apps/smc-sum-driver 1.6.0.20151201-r4: Supermicro Update Manager (SUM) kernel module
 sys-apps/smcipmitool 2.21.0.181029 2.23.0.191216: An out-of-band utility for interfacing with SuperBlade and IPMI devices via CLI
 sys-apps/sparc-utils 1.9-r6: Various sparc utilities from Debian GNU/Linux
 sys-apps/spu-tools 2.3.0.136: CELL spu ps and top alike utilities
@@ -17208,8 +17208,8 @@ sys-block/partitionmanager 4.1.0: Utility for management of disks, partitions an
 sys-block/perccli 7.5.007.0529 7.5.007.0529-r2: LINUX PERCCLI Utility For All Dell HBA/PERC Controllers
 sys-block/qla-fc-firmware 20101015: QLogic Linux Fibre Channel HBA Firmware for ql2xxx cards
 sys-block/raid-check 20140719-r1: Script to do "scrubbing" on software RAID systems
-sys-block/rts5229 1.07-r6: PCIE RTS5229 card reader driver for Linux
-sys-block/rts_pstor 1.10_p20160103: PCI-E RTS5209 card reader driver for Linux
+sys-block/rts5229 1.07-r7: PCIE RTS5229 card reader driver for Linux
+sys-block/rts_pstor 1.10_p20160103-r1: PCI-E RTS5209 card reader driver for Linux
 sys-block/sas2ircu 19 20: LSI MPT-SAS2 controller management tool
 sys-block/sas3flash 15 15-r1 16: Flash utility for LSI MPT-SAS3 controller
 sys-block/sas3ircu 5 14 15 16: LSI MPT-SAS3 controller management tool
@@ -17293,7 +17293,7 @@ sys-cluster/hpx 1.4.1 9999: C++ runtime system for parallel and distributed appl
 sys-cluster/ipvsadm 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
 sys-cluster/k9scli 0.20.5 0.21.2: terminal based UI to manage kubernetes clusters
 sys-cluster/keepalived 2.0.20 2.1.5: A strong & robust keepalive facility to the Linux Virtual Server project
-sys-cluster/knem 1.1.3 9999: High-Performance Intra-Node MPI Communication
+sys-cluster/knem 1.1.3-r1 9999: High-Performance Intra-Node MPI Communication
 sys-cluster/kube-apiserver 1.15.10 1.15.11 1.15.12 1.16.7 1.16.8 1.17.3 1.17.4: Kubernetes API server
 sys-cluster/kube-controller-manager 1.15.10 1.15.11 1.15.12 1.16.7 1.16.8 1.17.3 1.17.4: Kubernetes Controller Manager
 sys-cluster/kube-proxy 1.15.10 1.15.11 1.15.12 1.16.7 1.16.8 1.17.3 1.17.4: Kubernetes Proxy service
@@ -17308,7 +17308,7 @@ sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18
 sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1 0.3.0: API for distributing embarrassingly parallel workloads using self-stabilization
 sys-cluster/libqb 0.17.2 1.0.1 1.0.5 1.9.0: Library providing high performance logging, tracing, ipc, and poll
 sys-cluster/libquo 1.2 1.2.2 1.2.3 1.2.4-r1 1.2.9 9999: run-time tuning of process binding policies made easy
-sys-cluster/lustre 2.13.0: Lustre is a parallel distributed file system
+sys-cluster/lustre 2.13.0-r1: Lustre is a parallel distributed file system
 sys-cluster/maui 3.3.1-r3: Maui Cluster Scheduler
 sys-cluster/minikube 1.10.1 1.11.0: Single Node Kubernetes Cluster
 sys-cluster/mpe2 1.0.6_p1-r2: MPI development tools
@@ -17528,7 +17528,7 @@ sys-fs/lde 2.6.1-r1: ext2fs and minix disk editor for linux
 sys-fs/lessfs 1.7.0-r1: A high performance inline data deduplicating filesystem
 sys-fs/libeatmydata 105-r2: LD_PRELOAD hack to convert sync()/msync() and the like to NO-OP
 sys-fs/libfat 0.3a-r1: Support library to access and manipulate FAT12 / FAT16 / FAT32 file systems
-sys-fs/loop-aes 3.7n 3.7q: Linux kernel module to encrypt disk partitions with AES cipher
+sys-fs/loop-aes 3.7n-r1 3.7q-r1: Linux kernel module to encrypt disk partitions with AES cipher
 sys-fs/lsscsi 0.31: SCSI sysfs query tool
 sys-fs/lufis 0.3 0.3-r1: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r4: User-mode filesystem implementation
@@ -17575,7 +17575,7 @@ sys-fs/udiskie 2.1.0 2.1.1 2.2.0: An automatic disk mounting service using udisk
 sys-fs/udisks 2.8.4 2.9.0: Daemon providing interfaces to work with storage devices
 sys-fs/ufsutils 8.2_p3: FFS/UFS/UFS2 filesystem utilities from FreeBSD
 sys-fs/unionfs-fuse 1.0 2.0 2.1 9999: Self-syncing tree-merging file system based on FUSE
-sys-fs/vhba 20200106: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
+sys-fs/vhba 20200106-r1: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/xfsdump 3.1.8 3.1.9: xfs dump/restore utilities
 sys-fs/xfsprogs 5.4.0-r1 5.6.0 5.7.0: xfs filesystem utilities
@@ -17584,12 +17584,12 @@ sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.0.4 1.1.1: Zeroes out all free space on a filesystem
 sys-fs/zfs 0.8.4-r1 9999: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-auto-snapshot 1.2.4 9999: ZFS Automatic Snapshot Service for Linux
-sys-fs/zfs-kmod 0.8.4 9999: Linux ZFS kernel module for sys-fs/zfs
+sys-fs/zfs-kmod 0.8.4-r1 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.14.138 4.14.143 4.14.144 4.14.145 4.14.146 4.14.147 4.14.148 4.14.149 4.14.150 4.19.66 4.19.72 4.19.73 4.19.74 4.19.75 4.19.76 4.19.77 4.19.78 4.19.79 4.19.80 5.2.13 5.2.14 5.2.15 5.2.16 5.2.17 5.2.18 5.2.19 5.2.20 5.3.0 5.3.1 5.3.2 5.3.4 5.3.5 5.3.6-r1 5.3.7: Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs5 support
 sys-kernel/bliss-initramfs 8.1.0-r1 9.1.0: Boot your system's rootfs from Encrypted/OpenZFS.
 sys-kernel/bliss-kernel-bin 4.14.178 5.4.51: Precompiled Vanilla Kernel (Kernel Ready-to-Eat [KRE])
 sys-kernel/ck-sources 5.4.37 5.4.48: Gentoo's genpatches for Linux , with Con Kolivas' MuQSS process scheduler.
-sys-kernel/cryptodev 1.9 9999: device that allows access to Linux kernel cryptographic drivers
+sys-kernel/cryptodev 1.9-r1 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.0_beta1 4.1.0_rc1 9999: Gentoo automatic kernel building scripts
@@ -17601,7 +17601,7 @@ sys-kernel/git-sources 5.8_rc1 5.8_rc2 5.8_rc3 5.8_rc4 5.8_rc5 5.8_rc6 5.8_rc7: 
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
 sys-kernel/kergen 0.1.4: Kernel config generator
-sys-kernel/kpatch 0.6.3 0.7.1 9999: Dynamic kernel patching for Linux
+sys-kernel/kpatch 0.6.3-r1 0.7.1-r1 9999: Dynamic kernel patching for Linux
 sys-kernel/linux-docs 4.19.114 5.4.39: Developer documentation generated from the Linux kernel
 sys-kernel/linux-firmware 20200316 20200421 20200519 20200619 20200721 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.14-r1 4.19 5.4 5.4-r1 5.5 5.6 5.7 5.8: Linux system headers
@@ -17702,13 +17702,13 @@ sys-libs/uclibc-ng 1.0.30-r1 1.0.32 1.0.33 9999: C library for developing embedd
 sys-libs/uid_wrapper 1.2.7 1.2.8: Wrapper to fake privilege separation
 sys-libs/zlib 1.2.11-r2: Standard (de)compression library
 sys-power/acpi 1.7-r1: Displays information about ACPI devices
-sys-power/acpi_call 1.1.0 1.1.0-r1 1.1.0-r2 3.17-r1 9999: A kernel module that enables you to call ACPI methods
+sys-power/acpi_call 1.1.0-r3 1.1.0-r4 1.1.0-r5 3.17-r2 9999: A kernel module that enables you to call ACPI methods
 sys-power/acpid 2.0.31 2.0.32 2.0.32-r1 2.0.32-r2: Daemon for Advanced Configuration and Power Interface
 sys-power/acpilight 1.1 1.2: Replacement for xbacklight that uses the ACPI interface to set brightness
 sys-power/acpitool 0.5.1-r1: A small command line application, intended to be a replacement for the apm tool
 sys-power/apcupsd 3.14.13 3.14.14-r2: APC UPS daemon with integrated tcp/ip remote shutdown
 sys-power/athcool 0.3.12: small utility to toggle Powersaving mode for AMD Athlon/Duron processors
-sys-power/bbswitch 0.8-r2 0.8-r3 9999: Toggle discrete NVIDIA Optimus graphics card
+sys-power/bbswitch 0.8-r4 0.8-r5 9999: Toggle discrete NVIDIA Optimus graphics card
 sys-power/cpupower 4.13.0 5.4: Shows and sets processor power related values
 sys-power/dptfxtract 1.4.3: Intel's Linux DPTF Extract Utility for generating thermald's thermal_conf.xml
 sys-power/hibernate-script 2.0-r6: Hibernate script supporting multiple suspend methods
@@ -17729,7 +17729,7 @@ sys-power/powertop 2.10 2.11 2.13 9999: tool to diagnose issues with power consu
 sys-power/sispmctl 4.0 4.1: GEMBIRD SiS-PM control utility
 sys-power/suspend 1.0_p20190605: Userspace Software Suspend and S2Ram
 sys-power/thermald 1.9.1 2.1 2.2: Thermal daemon for Intel architectures
-sys-power/tuxedo-cc-wmi 0.1.4: Kernel Module for Tuxedo WMI
+sys-power/tuxedo-cc-wmi 0.1.4-r1: Kernel Module for Tuxedo WMI
 sys-power/uhubctl 1.8-r1: USB hub per-port power control
 sys-power/upower 0.99.9-r1 0.99.11: D-Bus abstraction for enumerating power devices, querying history and statistics
 sys-process/acct 6.6.4-r1: GNU system accounting utilities
@@ -18267,7 +18267,7 @@ x11-base/xorg-drivers 1.20-r2 9999: Meta package containing deps on all xorg dri
 x11-base/xorg-proto 2020.1 9999: X.Org combined protocol headers
 x11-base/xorg-server 1.20.8 1.20.8-r1 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
-x11-drivers/nvidia-drivers 340.108 390.132-r1 390.132-r2 390.138 430.64-r5 435.21-r5 440.100-r1 450.57: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 340.108-r1 390.132-r3 390.132-r4 390.138-r1 430.64-r6 435.21-r6 440.100-r2 450.57-r1: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.2: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices

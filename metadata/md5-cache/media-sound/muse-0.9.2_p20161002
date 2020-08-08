@@ -1,14 +1,14 @@
 BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
-DEFINED_PHASES=configure prepare
-DEPEND=media-sound/lame media-libs/libvorbis media-libs/libsndfile:= media-libs/libogg media-libs/libshout media-libs/libsamplerate gtk? ( x11-libs/gtk+:2 ) jack? ( media-sound/jack-audio-connection-kit ) ncurses? ( sys-libs/ncurses:0= ) portaudio? ( media-libs/portaudio )
+DEFINED_PHASES=configure install postinst postrm preinst prepare
+DEPEND=media-sound/lame media-libs/libvorbis media-libs/libsndfile:= media-libs/libogg media-libs/libshout media-libs/libsamplerate gtk? ( x11-libs/gtk+:2 ) jack? ( virtual/jack ) ncurses? ( sys-libs/ncurses:0= ) portaudio? ( media-libs/portaudio ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Multiple Streaming Engine, an icecast source streamer
 EAPI=7
-HOMEPAGE=http://muse.dyne.org
+HOMEPAGE=https://www.dyne.org/software/muse/
 IUSE=doc gtk jack ncurses portaudio
 KEYWORDS=~amd64 ~ppc ~sparc ~x86
 LICENSE=GPL-2
-RDEPEND=media-sound/lame media-libs/libvorbis media-libs/libsndfile:= media-libs/libogg media-libs/libshout media-libs/libsamplerate gtk? ( x11-libs/gtk+:2 ) jack? ( media-sound/jack-audio-connection-kit ) ncurses? ( sys-libs/ncurses:0= ) portaudio? ( media-libs/portaudio )
+RDEPEND=media-sound/lame media-libs/libvorbis media-libs/libsndfile:= media-libs/libogg media-libs/libshout media-libs/libsamplerate gtk? ( x11-libs/gtk+:2 ) jack? ( virtual/jack ) ncurses? ( sys-libs/ncurses:0= ) portaudio? ( media-libs/portaudio )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~soap/distfiles/muse-0.9.2_p20161002.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=e1f71c3dbf73bb5d2d18dd99bfb91cfc
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=f651c97247774548b981e7a37dbbb63d

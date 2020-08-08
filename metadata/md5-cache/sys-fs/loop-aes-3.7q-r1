@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm preinst setup
+DEPEND=app-crypt/loop-aes-losetup kernel_linux? ( sys-apps/kmod[tools] ) sys-apps/sed kernel_linux? ( virtual/linux-sources virtual/libelf )
+DESCRIPTION=Linux kernel module to encrypt disk partitions with AES cipher
+EAPI=7
+HOMEPAGE=http://loop-aes.sourceforge.net/loop-AES.README
+IUSE=cpu_flags_x86_aes extra-ciphers keyscrub cpu_flags_x86_padlock kernel_linux kernel_linux
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=kernel_linux? ( sys-apps/kmod[tools] )
+SLOT=0
+SRC_URI=http://loop-aes.sourceforge.net/loop-AES/loop-AES-v3.7q.tar.bz2
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	linux-mod	63c06dfa12648f13855f5f4348af824c	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=3a06e04b520e3eb79bd9c9b708a76648

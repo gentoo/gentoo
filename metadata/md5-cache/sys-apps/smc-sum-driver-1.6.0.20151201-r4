@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install nofetch postinst postrm preinst prepare setup
+DEPEND=kernel_linux? ( sys-apps/kmod[tools] ) sys-apps/sed kernel_linux? ( virtual/linux-sources virtual/libelf )
+DESCRIPTION=Supermicro Update Manager (SUM) kernel module
+EAPI=7
+HOMEPAGE=https://www.supermicro.com
+IUSE=kernel_linux kernel_linux
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=supermicro
+RDEPEND=kernel_linux? ( sys-apps/kmod[tools] )
+RESTRICT=bindist fetch mirror
+SLOT=0
+SRC_URI=sum_driver_V1.6.0_20151201.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	linux-mod	63c06dfa12648f13855f5f4348af824c	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=767b585ec0f3cfe91c174b5492d039df
