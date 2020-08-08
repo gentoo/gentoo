@@ -65,7 +65,7 @@ src_configure() {
 		$(use_with exif libexif) \
 		$(usex imagemagick \
 			--without-gdk-pixbuf-thumbnailer \
-			--with-gdk-pixbuf-thumbnail \
+			--with-gdk-pixbuf-thumbnailer \
 		) \
 		$(use_with jpeg libjpeg) \
 		$(use_with lcms cms) \
