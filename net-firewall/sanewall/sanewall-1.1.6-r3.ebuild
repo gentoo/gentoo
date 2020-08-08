@@ -16,8 +16,8 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	net-firewall/iptables[ipv6]
 	sys-apps/iproute2[-minimal]
+	sys-apps/kmod[tools]
 	sys-apps/net-tools
-	virtual/modutils
 	|| (
 		net-misc/wget
 		net-misc/curl
