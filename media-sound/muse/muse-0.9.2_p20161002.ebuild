@@ -3,10 +3,10 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools desktop xdg
 
 DESCRIPTION="Multiple Streaming Engine, an icecast source streamer"
-HOMEPAGE="http://muse.dyne.org"
+HOMEPAGE="https://www.dyne.org/software/muse/"
 SRC_URI="https://dev.gentoo.org/~soap/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -22,7 +22,7 @@ RDEPEND="
 	media-libs/libshout
 	media-libs/libsamplerate
 	gtk? ( x11-libs/gtk+:2 )
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	ncurses? ( sys-libs/ncurses:0= )
 	portaudio? ( media-libs/portaudio )"
 DEPEND="${RDEPEND}"
@@ -47,4 +47,10 @@ src_configure() {
 		$(use_enable ncurses) \
 		$(use_enable portaudio) \
 		$(use_enable doc)
+}
+
+src_install() {
+	default
+
+	make_desktop_entry /usr/bin/muse "MuSE"
 }
