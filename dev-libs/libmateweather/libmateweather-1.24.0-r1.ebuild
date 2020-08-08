@@ -5,7 +5,7 @@ EAPI=6
 
 MATE_LA_PUNT="yes"
 
-inherit mate
+inherit eapi7-ver mate
 
 if [[ ${PV} != 9999 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
