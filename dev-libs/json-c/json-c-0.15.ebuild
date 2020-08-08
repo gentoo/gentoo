@@ -1,17 +1,18 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
 
 CMAKE_ECLASS=cmake
-inherit cmake-multilib git-r3
+inherit cmake-multilib
 
 DESCRIPTION="A JSON implementation in C"
 HOMEPAGE="https://github.com/json-c/json-c/wiki"
-EGIT_REPO_URI="https://github.com/json-c/json-c.git"
+SRC_URI="https://s3.amazonaws.com/json-c_releases/releases/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/5"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="cpu_flags_x86_rdrand doc static-libs threads"
 
 BDEPEND="doc? ( >=app-doc/doxygen-1.8.13 )"
@@ -26,10 +27,10 @@ src_prepare() {
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DDISABLE_WERROR=ON
-		-DENABLE_THREADING=$(usex threads)
-		-DENABLE_RDRAND=$(usex cpu_flags_x86_rdrand)
 		-DBUILD_STATIC_LIBS=$(usex static-libs)
+		-DDISABLE_WERROR=ON
+		-DENABLE_RDRAND=$(usex cpu_flags_x86_rdrand)
+		-DENABLE_THREADING=$(usex threads)
 	)
 
 	cmake_src_configure
@@ -37,7 +38,6 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	cmake_src_compile
-	use doc && doxygen doc/Doxyfile
 }
 
 multilib_src_test() {
@@ -45,6 +45,6 @@ multilib_src_test() {
 }
 
 multilib_src_install_all() {
-	use doc && HTML_DOCS=( "${BUILD_DIR}-abi_x86_64.amd64"/doc/html/. )
+	use doc && HTML_DOCS=( "${S}"/doc/html/. )
 	einstalldocs
 }

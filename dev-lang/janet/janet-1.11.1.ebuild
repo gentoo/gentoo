@@ -14,19 +14,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="static-libs"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-1.7.0"-fix-ldflags-in-pkgconfig.patch
-)
-
 src_configure() {
-	append-ldflags -Wl,-soname,libjanet.so.0
+	append-ldflags -Wl,-soname,libjanet.so.1.11
+	append-cflags -fPIC
 }
 
 src_compile() {
 	# janet_build is the git hash of the commit related to the
 	# current release - it defines a constant which is then shown
 	# when starting janet
-	local janet_build='\"5b6b9f1\"'
+	local janet_build='\"4cc68096\"'
 	emake PREFIX="/usr" JANET_BUILD="${janet_build}"
 	emake PREFIX="/usr" build/janet.pc JANET_BUILD="${janet_build}"
 	emake PREFIX="/usr" docs JANET_BUILD="${janet_build}"
@@ -34,13 +31,13 @@ src_compile() {
 
 src_install() {
 	dobin "build/janet"
-	dobin "auxbin/jpm"
-
+	dobin "jpm"
+	insinto "usr/include/janet"
 	doheader "src/include/janet.h"
 	doheader "src/conf/janetconf.h"
 
 	dolib.so "build/libjanet.so"
-	dosym libjanet.so /usr/$(get_libdir)/libjanet.so.0
+	dosym libjanet.so /usr/$(get_libdir)/libjanet.so.1.11
 
 	if use static-libs; then
 		dolib.a "build/libjanet.a"

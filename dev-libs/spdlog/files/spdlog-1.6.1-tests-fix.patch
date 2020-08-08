@@ -1,0 +1,13 @@
+diff --git a/include/spdlog/fmt/bin_to_hex.h b/include/spdlog/fmt/bin_to_hex.h
+index e974cf51..5393dcac 100644
+--- a/include/spdlog/fmt/bin_to_hex.h
++++ b/include/spdlog/fmt/bin_to_hex.h
+@@ -92,7 +92,7 @@ struct formatter<spdlog::details::dump_info<T>>
+     auto parse(ParseContext &ctx) -> decltype(ctx.begin())
+     {
+         auto it = ctx.begin();
+-        while (*it && *it != '}')
++        while (it != ctx.end() && *it != '}')
+         {
+             switch (*it)
+             {

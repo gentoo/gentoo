@@ -49,4 +49,5 @@ src_install() {
 	cd "${S}/tools" || die
 	BUILD_DIR="${S}/tools" python_foreach_impl distutils-r1_python_install
 	dobin "${S}/tools/tpm2_ptool"
+	find "${D}" -name '*.la' -delete || die
 }
