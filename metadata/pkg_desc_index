@@ -13714,7 +13714,7 @@ media-sound/coquillo 2.0.0: GUI audio tagger based on Qt and taglib
 media-sound/csound 6.14.0 9999: Sound design and signal processing system for composition and performance
 media-sound/cvoicecontrol 0.9_alpha-r1: Console based speech recognition system
 media-sound/dagrab 0.513-r1: fixed point cd ripper
-media-sound/darkice 1.2 1.3: A live audio streamer
+media-sound/darkice 1.2 1.3 1.4: A live audio streamer
 media-sound/darksnow 0.7.1: Streaming GTK+ Front-End based on Darkice Ice Streamer
 media-sound/daudio 0.3-r1: Distributed audio on the local network
 media-sound/dbmeasure 0.0.20100217: ALSA Volume Control Attenuation Measurement Tool
