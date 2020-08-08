@@ -10,5 +10,5 @@ RDEPEND=app-doc/doxygen python_single_target_python3_7? ( dev-python/jinja[pytho
 REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 )
 SLOT=5/5.73
 SRC_URI=mirror://kde/stable/frameworks/5.73/kapidox-5.73.0.tar.xz
-_eclasses_=distutils-r1	0dda1d9008ac0b2530588115a772d99d	kde.org	805aef05bd5352355744e28a6ab5ae3c	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=distutils-r1	0dda1d9008ac0b2530588115a772d99d	kde.org	555930b8ec632651fb9acbd983a96e3f	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=762485542270fd0362f0c55c024425d7
