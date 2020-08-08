@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="amd64 arm ppc x86"
 IUSE="debug staticsocket"
 
-RDEPEND="virtual/modutils"
+RDEPEND="sys-apps/kmod[tools]"
 DEPEND="${RDEPEND}
 	virtual/yacc
 	sys-devel/flex"
