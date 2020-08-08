@@ -7,7 +7,7 @@ inherit flag-o-matic eutils multilib-minimal
 
 DESCRIPTION="A low-latency audio server"
 HOMEPAGE="http://www.jackaudio.org"
-SRC_URI="http://www.jackaudio.org/downloads/${P}.tar.gz"
+SRC_URI="https://github.com/jackaudio/jack1/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
@@ -69,7 +69,7 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	einstalldocs
 	if use examples; then
-		insinto /usr/share/doc/${PF}
+		docinto /usr/share/doc/${PF}
 		doins -r "${S}/example-clients"
 		docompress -x /usr/share/doc/${PF}/example-clients
 	fi
