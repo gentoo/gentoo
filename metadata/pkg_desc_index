@@ -8083,7 +8083,7 @@ dev-python/docopt 0.6.2-r3: Pythonic argument parser, that will make you smile
 dev-python/doctest-ignore-unicode 0.1.2: Add flag to ignore unicode literal prefixes in doctests
 dev-python/docutils 0.16: Python Documentation Utilities
 dev-python/docutils-glep 1.2 9999: Gentoo GLEP support for docutils
-dev-python/dogpile-cache 0.9.1 1.0.1: A locking API for expiring values while a single thread generates a new value.
+dev-python/dogpile-cache 0.9.1 1.0.1 1.0.2: A locking API for expiring values while a single thread generates a new value.
 dev-python/dogpile-core 0.4.1: Copy-on-write locking mechanism for expensive resources
 dev-python/doit 0.32.0-r1 0.32.0-r2: Automation tool
 dev-python/doit-py 0.4.0-r2 0.5.0: doit tasks for python stuff
@@ -10033,7 +10033,7 @@ dev-ruby/multi_xml 0.6.0-r1: A generic swappable back-end for XML parsing
 dev-ruby/multipart-post 2.0.0-r1 2.1.0 2.1.1: Adds a streamy multipart form post capability to Net::HTTP
 dev-ruby/mustache 1.0.5 1.1.1: Mustache is a framework-agnostic way to render logic-free views
 dev-ruby/mustermann 1.0.3 1.1.1: A library implementing patterns that behave like regular expressions
-dev-ruby/mysql2 0.4.10-r3 0.5.2-r3 0.5.3: A modern, simple and very fast Mysql library for Ruby - binding to libmysql
+dev-ruby/mysql2 0.4.10-r3 0.5.3: A modern, simple and very fast Mysql library for Ruby - binding to libmysql
 dev-ruby/nagios 0.0.4-r1: Nagios-rb is a compact framework for writing Nagios plugins
 dev-ruby/nagios_analyzer 0.0.5-r1: A simple parser for Nagios status files
 dev-ruby/nanotest 0.9.4.1: Extremely mynymal test framework
