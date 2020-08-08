@@ -16,10 +16,10 @@ KEYWORDS="amd64 arm ~ppc ~x86"
 
 RDEPEND="net-firewall/iptables
 	sys-apps/iproute2[-minimal,ipv6?]
+	sys-apps/kmod[tools]
 	net-misc/iputils[ipv6?]
 	net-misc/iprange
 	net-analyzer/traceroute
-	virtual/modutils
 	app-arch/gzip
 	ipset? (
 		net-firewall/ipset
