@@ -82,7 +82,7 @@ COMMON_DEPEND="
 		>=sys-libs/libavc1394-0.5.3
 		>=sys-libs/libraw1394-1.2.0
 	)
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	java? ( dev-java/ant-core )
 	lcd? ( app-misc/lcdproc )
 	libass? ( >=media-libs/libass-0.9.11:= )
