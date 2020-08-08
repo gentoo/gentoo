@@ -54,13 +54,13 @@ RDEPEND="${DEPEND}
 		!<sys-kernel/genkernel-3.5.1.1
 	)
 	test-suite? (
+		sys-apps/kmod[tools]
 		sys-apps/util-linux
 		sys-devel/bc
 		sys-block/parted
 		sys-fs/lsscsi
 		sys-fs/mdadm
 		sys-process/procps
-		virtual/modutils
 	)
 "
 
