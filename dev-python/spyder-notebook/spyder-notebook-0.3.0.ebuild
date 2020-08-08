@@ -40,6 +40,6 @@ DOCS=( "README.md" "RELEASE.md" "CHANGELOG.md" "doc/example.gif" )
 RESTRICT="test"
 distutils_enable_tests pytest
 
-pytthon_test() {
+python_test() {
 	virtx pytest -vv
 }
