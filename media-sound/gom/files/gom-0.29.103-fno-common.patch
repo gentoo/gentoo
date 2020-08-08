@@ -1,0 +1,11 @@
+--- a/src/gom_info.h
++++ b/src/gom_info.h
+@@ -52,7 +52,7 @@
+ enum gom_info_types {GOM_INFO_ERROR=-1, GOM_INFO_QUIET, GOM_INFO_NORMAL, GOM_INFO_VERBOSE, GOM_INFO_DEBUG};
+ 
+ /* shown errors count */
+-int gom_info_errors;
++extern int gom_info_errors;
+ 
+ /*
+  * FUNCTION PROTOTYPES
