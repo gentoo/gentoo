@@ -1,39 +1,37 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit autotools eutils gnome2-utils
+inherit autotools desktop xdg
 
 DESCRIPTION="Streaming GTK+ Front-End based on Darkice Ice Streamer"
 HOMEPAGE="http://darksnow.radiolivre.org"
 SRC_URI="http://darksnow.radiolivre.org/pacotes/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
-IUSE=""
 
 PDEPEND=">=media-sound/darkice-1.2"
 RDEPEND=">=x11-libs/gtk+-2.14.0:2"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-Makefile.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-Makefile.patch
+	default
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 	dodoc documentation/{CHANGES,CREDITS,README*}
+
 	make_desktop_entry ${PN} "DarkSnow" ${PN}
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
 }
