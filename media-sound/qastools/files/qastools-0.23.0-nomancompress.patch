@@ -1,0 +1,173 @@
+From 6532d0458e027485d997091f57d651e517d53c38 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 8 Jun 2020 11:45:09 +0200
+Subject: [PATCH] Compress manpages optionally
+
+---
+ qasconfig/share/man/CMakeLists.txt | 26 +++++++++++++-------------
+ qashctl/share/man/CMakeLists.txt   | 26 +++++++++++++-------------
+ qasmixer/share/man/CMakeLists.txt  | 26 +++++++++++++-------------
+ 3 files changed, 39 insertions(+), 39 deletions(-)
+
+diff --git a/qasconfig/share/man/CMakeLists.txt b/qasconfig/share/man/CMakeLists.txt
+index 638b6a3..6ab3f7e 100644
+--- a/qasconfig/share/man/CMakeLists.txt
++++ b/qasconfig/share/man/CMakeLists.txt
+@@ -1,35 +1,35 @@
+ # Find gzip
+-FIND_PACKAGE ( UnixCommands REQUIRED )
+-
+-IF ( NOT GZIP )
+-  MESSAGE ( FATAL_ERROR "Unable to find 'gzip' program" )
+-ENDIF ( NOT GZIP )
+-
++FIND_PACKAGE ( UnixCommands )
+ 
+ # Configure manpages
+ 
+ SET ( man_src  ${CMAKE_CURRENT_SOURCE_DIR}/manpage.1.cmake )
+ SET ( man_plain ${CMAKE_CURRENT_BINARY_DIR}/manpage.1 )
+-SET ( man_gz ${CMAKE_CURRENT_BINARY_DIR}/manpage.1.gz )
++SET ( man_gz .gz )
+ 
+ CONFIGURE_FILE ( ${man_src} ${man_plain} )
+ 
+ 
+ # Compress manpages
+ 
++IF ( NOT GZIP )
++	MESSAGE ( STATUS "Unable to find 'gzip' program, not compressing manpage" )
++	SET ( man_gz "" )
++ELSE()
+ ADD_CUSTOM_COMMAND (
+-  OUTPUT ${man_gz}
+-  COMMAND ${GZIP} -c -9 ${man_plain} > ${man_gz}
++  OUTPUT ${man_plain}${man_gz}
++  COMMAND ${GZIP} -c -9 ${man_plain} > ${man_plain}${man_gz}
+   DEPENDS ${man_plain}
+-  COMMENT "Building ${man_gz}" )
++  COMMENT "Building ${man_plain}${man_gz}" )
++ENDIF()
+ 
+ ADD_CUSTOM_TARGET (
+   qasconfig_manpage ALL
+-  DEPENDS ${man_gz} )
++  DEPENDS ${man_plain}${man_gz} )
+ 
+ 
+ # Installation of the manpage
+ 
+-INSTALL ( FILES ${man_gz}
++INSTALL ( FILES ${man_plain}${man_gz}
+   DESTINATION ${INSTALL_DIR_MAN}
+-  RENAME ${PROGRAM_NAME}.1.gz )
++  RENAME ${PROGRAM_NAME}.1${man_gz} )
+diff --git a/qashctl/share/man/CMakeLists.txt b/qashctl/share/man/CMakeLists.txt
+index 1916374..57f4faa 100644
+--- a/qashctl/share/man/CMakeLists.txt
++++ b/qashctl/share/man/CMakeLists.txt
+@@ -1,35 +1,35 @@
+ # Find gzip
+-FIND_PACKAGE ( UnixCommands REQUIRED )
+-
+-IF ( NOT GZIP )
+-  MESSAGE ( FATAL_ERROR "Unable to find 'gzip' program" )
+-ENDIF ( NOT GZIP )
+-
++FIND_PACKAGE ( UnixCommands )
+ 
+ # Configure manpages
+ 
+ SET ( man_src  ${CMAKE_CURRENT_SOURCE_DIR}/manpage.1.cmake )
+ SET ( man_plain ${CMAKE_CURRENT_BINARY_DIR}/manpage.1 )
+-SET ( man_gz ${CMAKE_CURRENT_BINARY_DIR}/manpage.1.gz )
++SET ( man_gz .gz )
+ 
+ CONFIGURE_FILE ( ${man_src} ${man_plain} )
+ 
+ 
+ # Compress manpages
+ 
++IF ( NOT GZIP )
++	MESSAGE ( STATUS "Unable to find 'gzip' program, not compressing manpage" )
++	SET ( man_gz "" )
++ELSE()
+ ADD_CUSTOM_COMMAND (
+-  OUTPUT ${man_gz}
+-  COMMAND ${GZIP} -c -9 ${man_plain} > ${man_gz}
++  OUTPUT ${man_plain}${man_gz}
++  COMMAND ${GZIP} -c -9 ${man_plain} > ${man_plain}${man_gz}
+   DEPENDS ${man_plain}
+-  COMMENT "Building ${man_gz}" )
++  COMMENT "Building ${man_plain}${man_gz}" )
++ENDIF()
+ 
+ ADD_CUSTOM_TARGET (
+   qashctl_manpage ALL
+-  DEPENDS ${man_gz} )
++  DEPENDS ${man_plain}${man_gz} )
+ 
+ 
+ # Installation of the manpage
+ 
+-INSTALL ( FILES ${man_gz}
++INSTALL ( FILES ${man_plain}${man_gz}
+   DESTINATION ${INSTALL_DIR_MAN}
+-  RENAME ${PROGRAM_NAME}.1.gz )
++  RENAME ${PROGRAM_NAME}.1${man_gz} )
+diff --git a/qasmixer/share/man/CMakeLists.txt b/qasmixer/share/man/CMakeLists.txt
+index 7fa745a..2929863 100644
+--- a/qasmixer/share/man/CMakeLists.txt
++++ b/qasmixer/share/man/CMakeLists.txt
+@@ -1,35 +1,35 @@
+ # Find gzip
+-FIND_PACKAGE ( UnixCommands REQUIRED )
+-
+-IF ( NOT GZIP )
+-  MESSAGE ( FATAL_ERROR "Unable to find 'gzip' program" )
+-ENDIF ( NOT GZIP )
+-
++FIND_PACKAGE ( UnixCommands )
+ 
+ # Configure manpages
+ 
+ SET ( man_src  ${CMAKE_CURRENT_SOURCE_DIR}/manpage.1.cmake )
+ SET ( man_plain ${CMAKE_CURRENT_BINARY_DIR}/manpage.1 )
+-SET ( man_gz ${CMAKE_CURRENT_BINARY_DIR}/manpage.1.gz )
++SET ( man_gz .gz )
+ 
+ CONFIGURE_FILE ( ${man_src} ${man_plain} )
+ 
+ 
+ # Compress manpages
+ 
++IF ( NOT GZIP )
++	MESSAGE ( STATUS "Unable to find 'gzip' program, not compressing manpage" )
++	SET ( man_gz "" )
++ELSE()
+ ADD_CUSTOM_COMMAND (
+-  OUTPUT ${man_gz}
+-  COMMAND ${GZIP} -c -9 ${man_plain} > ${man_gz}
++  OUTPUT ${man_plain}${man_gz}
++  COMMAND ${GZIP} -c -9 ${man_plain} > ${man_plain}${man_gz}
+   DEPENDS ${man_plain}
+-  COMMENT "Building ${man_gz}" )
++  COMMENT "Building ${man_plain}${man_gz}" )
++ENDIF()
+ 
+ ADD_CUSTOM_TARGET (
+   qasmixer_manpage ALL
+-  DEPENDS ${man_gz} )
++  DEPENDS ${man_plain}${man_gz} )
+ 
+ 
+ # Installation of the manpage
+ 
+-INSTALL ( FILES ${man_gz}
++INSTALL ( FILES ${man_plain}${man_gz}
+   DESTINATION ${INSTALL_DIR_MAN}
+-  RENAME ${PROGRAM_NAME}.1.gz )
++  RENAME ${PROGRAM_NAME}.1${man_gz} )
+-- 
+2.28.0
+
