@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (2020-08-05)
+# sys-cluster/slurm has no stable keywords
+app-metrics/collectd collectd_plugins_slurm
+
 # Joonas Niilola <juippis@gentoo.org> (2020-06-21)
 # sys-apps/apparmor doesn't have stable keywords.
 app-emulation/lxc apparmor
@@ -29,9 +33,9 @@ net-misc/curl quiche
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-08-18)
 # media-video/pipewire is not stable yet
 dev-libs/weston pipewire
-kde-apps/krfb wayland
-kde-plasma/xdg-desktop-portal-kde screencast
-sys-apps/xdg-desktop-portal screencast
+<kde-apps/krfb-20.07.80 wayland
+<kde-plasma/xdg-desktop-portal-kde-5.19.4 screencast
+<sys-apps/xdg-desktop-portal-1.7.2 screencast
 x11-wm/mutter screencast
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-05-21)

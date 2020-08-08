@@ -1,9 +1,0 @@
-diff --git a/sentinel.conf b/sentinel.conf
-index 0e1b266..869a4b9 100644
---- a/sentinel.conf
-+++ b/sentinel.conf
-@@ -194,3 +194,4 @@ sentinel failover-timeout mymaster 180000
- #
- # sentinel client-reconfig-script mymaster /var/redis/reconfig.sh
-
-+logfile "/var/log/redis/sentinel.log"

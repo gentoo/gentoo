@@ -1,6 +1,15 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (2020-08-02)
+# armv5 and older has no virtual/rust support yet, needed by newer
+# gnome-base/librsvg, et al
+>=media-gfx/eog-3.33.1 svg
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-28)
+# Requires dev-libs/boost[context] which is masked on arm, bug #727138
+dev-libs/msgpack boost
+
 # Sam James <sam@gentoo.org> (2020-07-11)
 # Don't drag in qtwebengine for Plasma right now
 # Not going for nuclear option of general mask
@@ -102,10 +111,6 @@ sys-apps/fwupd dell thunderbolt
 # keyword them solely because of PyQt5 while there are no other in-tree users.
 dev-python/PyQt5 networkauth
 
-# Michał Górny <mgorny@gentoo.org> (2018-10-18)
-# Requires unported sys-libs/netbsd-csu.
-sys-devel/clang-runtime crt
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-10-12)
 # Requires www-client/firefox which isn't available on ARM yet
 # due to dev-lang/rust requirement
@@ -156,10 +161,6 @@ sys-power/nut ups_drivers_nut-ipmipsu
 # Michał Górny <mgorny@gentoo.org> (2017-08-10)
 # Requires USE=octave which is masked in this profile.
 dev-python/ipython test
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan vulkan-overlay
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=opencl that is masked in this profile.
@@ -215,7 +216,6 @@ dev-db/mariadb -jdbc
 # media-gfx/graphicsmagick is not keyworded on arm, users will need
 # to enable imagemagick flag and disable graphicsmagick use flag
 # to enable conversion facilities
-sci-mathematics/octave graphicsmagick
 media-gfx/zbar graphicsmagick
 
 # Amy Winston <amynka@gentoo.org> (2016-06-12)
@@ -295,10 +295,6 @@ media-libs/clutter-gtk wayland
 # Unkeyworded deps, bug #518742
 dev-python/ipython doc
 dev-python/oct2py doc
-
-# Michael Weber <xmw@gentoo.org> (2014-11-15)
-# missing keywords on media-libs/libharu
-www-client/netsurf pdf-writer
 
 # Markus Meier <maekke@gentoo.org> (2014-11-14)
 # Unkeyworded deps, bug #511532
@@ -420,7 +416,6 @@ dev-vcs/subversion java
 media-libs/libjpeg-turbo java
 net-dns/libidn java
 net-misc/tigervnc java
-net-print/cups java
 sys-devel/gettext java
 sys-libs/db java
 

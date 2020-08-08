@@ -1,0 +1,111 @@
+From 8e1a4dc5f8a777fc718db490414ffdc9dc755f66 Mon Sep 17 00:00:00 2001
+From: Jonas Witschel <diabonas@archlinux.org>
+Date: Sat, 18 Apr 2020 14:55:41 +0200
+Subject: [PATCH] dracut-lib.sh: quote variables in parameter expansion
+ patterns
+
+According to POSIX.1-2017, 2.6.2 Parameter Expansion:
+
+${parameter%[word]} [...] The word shall be expanded to produce a
+pattern.
+
+This means if word contains variables that itself contain special
+characters like asterisks or backslashes, these are treated as pattern
+characters unless the variable is quoted. Try e.g. the following example
+in bash, dash or (busybox) ash:
+
+i='a\c'; j='\'; echo "${i%$j*}"
+
+This prints "a\c" because "$j*" is expanded to "\*", escaping the
+asterisk. In contrast,
+
+i='a\c'; j='\'; echo "${i%"$j"*}"
+
+produces the expected result "a" because the backslash is not specially
+treated any more after quoting.
+
+The quotes that this commit adds have been previously removed in commit
+f9c96cf56fed390841eac05c43826e62014c9188, citing issues with busybox
+hush without further specifying the actual error. I tested a recent
+busybox build (upstream commit 9aa751b08ab03d6396f86c3df77937a19687981b)
+and couldn't find any problems. Note that the above example always
+produces "a\c" in hush regardless of quoting $j, making hush unsuitable
+for use with dracut, but using quotes in parameter expansions generally
+works.
+
+The unquoted variables break the "rd.luks.uuid/name" kernel command line
+options in dracut 050 because
+
+str_replace "$luksname" '\' '\\'
+
+in modules.d/90crypt/parse-crypt.sh is not able to escape the
+backslashes any more, see GH-723, GH-727: backslashes in the
+systemd-cryptsetup@.service unit name stay unescaped for use in udev
+(cf. commit 0f6d93eb9d63695a64002ec8b0421fbc9fc8a7a3), leading to
+failures in starting the unit.
+
+This partially reverts commit f9c96cf56fed390841eac05c43826e62014c9188.
+---
+ modules.d/99base/dracut-lib.sh | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/modules.d/99base/dracut-lib.sh b/modules.d/99base/dracut-lib.sh
+index c53cd13b..c57523d3 100755
+--- a/modules.d/99base/dracut-lib.sh
++++ b/modules.d/99base/dracut-lib.sh
+@@ -24,7 +24,7 @@ debug_on() {
+ 
+ # returns OK if $1 contains literal string $2 (and isn't empty)
+ strstr() {
+-    [ "${1##*$2*}" != "$1" ]
++    [ "${1##*"$2"*}" != "$1" ]
+ }
+ 
+ # returns OK if $1 matches (completely) glob pattern $2
+@@ -43,18 +43,18 @@ strglobin() {
+ 
+ # returns OK if $1 contains literal string $2 at the beginning, and isn't empty
+ str_starts() {
+-    [ "${1#$2*}" != "$1" ]
++    [ "${1#"$2"*}" != "$1" ]
+ }
+ 
+ # returns OK if $1 contains literal string $2 at the end, and isn't empty
+ str_ends() {
+-    [ "${1%*$2}" != "$1" ]
++    [ "${1%*"$2"}" != "$1" ]
+ }
+ 
+ trim() {
+     local var="$*"
+-    var="${var#${var%%[![:space:]]*}}"   # remove leading whitespace characters
+-    var="${var%${var##*[![:space:]]}}"   # remove trailing whitespace characters
++    var="${var#"${var%%[![:space:]]*}"}"   # remove leading whitespace characters
++    var="${var%"${var##*[![:space:]]}"}"   # remove trailing whitespace characters
+     printf "%s" "$var"
+ }
+ 
+@@ -108,9 +108,9 @@ str_replace() {
+     local out=''
+ 
+     while strstr "${in}" "$s"; do
+-        chop="${in%%$s*}"
++        chop="${in%%"$s"*}"
+         out="${out}${chop}$r"
+-        in="${in#*$s}"
++        in="${in#*"$s"}"
+     done
+     echo "${out}${in}"
+ }
+@@ -396,7 +396,7 @@ splitsep() {
+     while [ -n "$str" -a "$#" -gt 1 ]; do
+         tmp="${str%%$sep*}"
+         eval "$1='${tmp}'"
+-        str="${str#$tmp}"
++        str="${str#"$tmp"}"
+         str="${str#$sep}"
+         shift
+     done
+-- 
+2.26.2
+

@@ -29,18 +29,19 @@ else
 	KEYWORDS="~amd64"
 fi
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-ros/ament_cmake_test
-	dev-ros/ament_lint_cmake
+	dev-ros/ament_cmake_copyright
 "
-DEPEND="${RDEPEND}"
+DEPEND=""
 BDEPEND="
 	$(python_gen_any_dep 'dev-python/ament_package[${PYTHON_USEDEP}] dev-python/catkin_pkg[${PYTHON_USEDEP}] dev-ros/ament_xmllint[${PYTHON_USEDEP}]')
 	dev-ros/ament_cmake_test
 	dev-ros/ament_cmake_core
+	dev-ros/ament_cmake_copyright
 	test? (
-		dev-ros/ament_cmake_copyright
 		dev-ros/ament_cmake_lint_cmake
 	)
 	${PYTHON_DEPS}
@@ -50,4 +51,11 @@ python_check_deps() {
 	has_version "dev-python/ament_package[${PYTHON_USEDEP}]" && \
 		has_version "dev-python/catkin_pkg[${PYTHON_USEDEP}]" && \
 		has_version "dev-ros/ament_xmllint[${PYTHON_USEDEP}]"
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DBUILD_TESTING=$(usex test ON OFF)
+	)
+	cmake_src_configure
 }

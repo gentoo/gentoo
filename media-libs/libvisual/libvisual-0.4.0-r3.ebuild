@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ AUTOTOOLS_AUTORECONF=1
 inherit autotools-multilib
 
 DESCRIPTION="Libvisual is an abstraction library that comes between applications and audio visualisation plugins"
-HOMEPAGE="http://libvisual.sourceforge.net"
+HOMEPAGE="http://libvisual.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

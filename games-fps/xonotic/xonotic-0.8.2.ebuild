@@ -1,15 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils check-reqs toolchain-funcs
+EAPI=7
+
+inherit desktop check-reqs toolchain-funcs
 
 MY_PN="${PN^}"
 DESCRIPTION="Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine"
-HOMEPAGE="http://www.xonotic.org/"
-SRC_URI="http://dl.xonotic.org/${P}.zip"
+HOMEPAGE="https://www.xonotic.org/"
+SRC_URI="https://dl.xonotic.org/${P}.zip"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="alsa debug dedicated doc ode sdl"
@@ -42,6 +43,9 @@ RDEPEND="
 	!dedicated? ( ${UIRDEPEND} )"
 DEPEND="${RDEPEND}
 	!dedicated? ( ${UIDEPEND} )"
+BDEPEND="app-arch/unzip"
+
+DOCS="Docs/*.txt"
 
 CHECKREQS_DISK_BUILD="1200M"
 CHECKREQS_DISK_USR="950M"
@@ -60,15 +64,15 @@ src_prepare() {
 	default
 
 	sed -i \
-		-e "/^EXE_/s:darkplaces:${PN}:" \
-		-e "s:-O3:${CFLAGS}:" \
-		-e "/-lm/s:$: ${LDFLAGS}:" \
-		-e '/^STRIP/s/strip/true/' \
+		-e "/^EXE_/s|darkplaces|${PN}|" \
+		-e "s|-O3|${CFLAGS}|" \
+		-e "/-lm/s|$| ${LDFLAGS}|" \
+		-e '/^STRIP/s|strip|true|' \
 		source/darkplaces/makefile.inc || die
 
 	if ! use alsa; then
 		sed -i \
-			-e "/DEFAULT_SNDAPI/s:ALSA:OSS:" \
+			-e "/DEFAULT_SNDAPI/s|ALSA|OSS|" \
 			source/darkplaces/makefile || die
 	fi
 }
@@ -102,8 +106,8 @@ src_install() {
 	fi
 	dobin source/darkplaces/${PN}-dedicated
 
-	dodoc Docs/*.txt
-	use doc && dohtml -r Docs
+	use doc && local HTML_DOCS=( Docs/htmlfiles Docs/faq.html )
+	einstalldocs
 
 	insinto "/usr/share/${PN}"
 	doins -r key_0.d0pk server data

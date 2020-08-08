@@ -17,7 +17,7 @@ case ${PV} in
 	inherit git-r3
 	;;
 *)
-	CODENAME="Leia"
+	CODENAME="Matrix"
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://github.com/xbmc/inputstream.rtmp/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/inputstream.rtmp-${PV}-${CODENAME}"

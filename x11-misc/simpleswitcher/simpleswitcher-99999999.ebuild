@@ -27,8 +27,3 @@ src_compile() {
 	tc-export CC
 	default
 }
-
-src_install() {
-	default
-	doman ${PN}.1
-}

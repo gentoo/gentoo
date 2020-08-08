@@ -79,6 +79,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.8-pcap.patch
 	"${FILESDIR}"/${PN}-5.8-tinfo.patch
 	"${FILESDIR}"/${PN}-5.8.1-pkg-config.patch
+	"${FILESDIR}"/${PN}-5.8.1-net-snmp-config-libdir.patch
+	"${FILESDIR}"/${PN}-5.8.1-mysqlclient.patch
 )
 
 pkg_setup() {
@@ -145,7 +147,7 @@ src_compile() {
 	use doc && emake docsdox
 }
 
-src_install () {
+src_install() {
 	# bug #317965
 	emake -j1 DESTDIR="${D}" install
 

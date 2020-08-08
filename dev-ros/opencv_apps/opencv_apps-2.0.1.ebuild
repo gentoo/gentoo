@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/cv_bridge
-	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
+	dev-ros/dynamic_reconfigure[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/image_transport
 	dev-ros/nodelet
 	dev-libs/console_bridge:=
@@ -26,5 +26,15 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	test? (
+		dev-ros/roslaunch
+		dev-ros/rostest
+		dev-ros/rosbag
+		dev-ros/rosservice
+		dev-ros/rostopic
+		dev-ros/image_proc
+		dev-ros/topic_tools
+		dev-ros/compressed_image_transport
+	)
 "
 PATCHES=( "${FILESDIR}/ocv4.patch" )

@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (2020-08-02)
+# sparc has no virtual/rust support, needed by newer gnome-base/librsvg, et al
+>=media-gfx/eog-3.33.1 svg
+
 # Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
 # Mask io-uring & zbc pending keywording
 sys-block/fio -io-uring -zbc
@@ -17,11 +21,6 @@ app-text/texlive-core -xindy
 # Avoid unkeyworded deps, we really need a minimal install
 # for imagemagick.
 media-gfx/inkscape cdr visio wpg
-
-# Michał Górny <mgorny@gentoo.org> (2020-05-06)
-# dev-vcs/mercurial is broken on SPARC and setuptools_scm tests
-# lack proper skipping (to be fixed).
-<=dev-python/setuptools_scm-3.5.0 test
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-05-06)
 # No keywords
@@ -314,10 +313,6 @@ dev-qt/qtchooser test
 # Sergey Popov <pinkbyte@gentoo.org> (2015-10-24)
 # Not tested
 net-mail/dovecot lz4
-
-# Justin Lecher <jlec@gentoo.org> (2015-10-14)
-# Requires dev-python/ipython which triggers a long dep chain
-dev-python/restkit cli
 
 # Brian Evans <grknight@gentoo.org> (2015-09-14)
 # Mask new USE flags for mariadb which all arches do not yet have dependencies

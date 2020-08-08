@@ -10,7 +10,7 @@ DESCRIPTION="Uses coderay to highlight code blocks/spans"
 HOMEPAGE="https://github.com/kramdown/syntax-coderay"
 LICENSE="MIT"
 
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 SLOT="$(ver_cut 1)"
 IUSE="doc"
 

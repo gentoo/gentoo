@@ -10,12 +10,12 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
 DESCRIPTION="Qt-based console for Jupyter with support for rich media output"
-HOMEPAGE="http://jupyter.org"
+HOMEPAGE="https://qtconsole.readthedocs.io"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 x86"
 
 RDEPEND="
 	dev-python/ipykernel[${PYTHON_USEDEP}]

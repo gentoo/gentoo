@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools eutils
+EAPI=7
+
+inherit autotools desktop
 
 DESCRIPTION="Precise Instrument Tweaking for Crispy Harmony - tuner"
 HOMEPAGE="https://sourceforge.net/projects/pitchtune/"
@@ -15,26 +16,24 @@ KEYWORDS="~amd64"
 RDEPEND="
 	dev-libs/glib:2
 	x11-libs/gtk+:2
-	media-libs/alsa-lib
-"
-DEPEND="
-	${RDEPEND}
-	sys-devel/gettext
-"
+	media-libs/alsa-lib"
+DEPEND="${RDEPEND}"
+BDEPEND="sys-devel/gettext"
 
-DOCS=( AUTHORS README REQUIRED TODO )
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.0.4-lm.patch
+	"${FILESDIR}"/${PN}-0.0.4-fno-common.patch
 )
 
 src_prepare() {
 	default
-
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
 src_install() {
 	default
+	dodoc REQUIRED
 
 	doicon pixmaps/${PN}.xpm
 	make_desktop_entry ${PN} Pitchtune

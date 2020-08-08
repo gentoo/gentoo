@@ -21,10 +21,16 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~a
 BDEPEND="
 	test? (
 		dev-python/pexpect[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pytest-cov[${PYTHON_USEDEP}]
+		' -3)
 	)"
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/pytest-timeout-1.4.2-optional-cov.patch
+)
 
 python_test() {
 	distutils_install_for_testing

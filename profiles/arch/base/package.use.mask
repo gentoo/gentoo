@@ -17,6 +17,10 @@ sys-block/fio io-uring zbc
 #  - the others only work on x86 due to lack of PCI-port I/O support.
 sys-apps/flashrom atahpt atapromise internal nic3com nicnatsemi nicrealtek rayer-spi satamv tools
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
+# requires clisp whichis keyworded on fewer arches
+app-text/texlive-core xindy
+
 # Thomas Deutschmann <whissi@gentoo.org> (2020-04-30)
 # Dependency is only keyworded on amd64 and x86
 app-metrics/collectd collectd_plugins_slurm
@@ -135,10 +139,6 @@ app-admin/rsyslog mdblookup
 # spacetime is only supported on amd64 at the moment.
 # https://caml.inria.fr/pub/docs/manual-ocaml/spacetime.html
 dev-lang/ocaml spacetime
-
-# Alexis Ballier <aballier@gentoo.org> (2017-01-31)
-# nvenc requires nvidia drivers, apply same mask logic
-media-video/ffmpeg nvenc
 
 # Thomas Deutschmann <whissi@gentoo.org> (2017-01-30)
 # media-libs/raspberrypi-userland not keyworded

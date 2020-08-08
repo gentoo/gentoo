@@ -16,7 +16,7 @@ case ${PV} in
 	inherit git-r3
 	;;
 *)
-	CODENAME="Leia"
+	CODENAME="Matrix"
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://github.com/xbmc/visualization.shadertoy/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/visualization.shadertoy-${PV}-${CODENAME}"
@@ -28,7 +28,6 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	=dev-libs/libplatform-2*
 	~media-tv/kodi-9999
 	>=media-libs/glm-0.9.9.5
 	virtual/opengl

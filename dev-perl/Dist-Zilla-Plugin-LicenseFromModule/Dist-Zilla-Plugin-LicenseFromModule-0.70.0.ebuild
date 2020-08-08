@@ -24,6 +24,7 @@ BDEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-Tiny-0.34.0
 	test? (
 		dev-perl/JSON
+		dev-perl/Test-Exception
 	)
 "
 PERL_RM_FILES=(

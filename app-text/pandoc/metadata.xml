@@ -16,6 +16,7 @@
 	</longdescription>
 	<use>
 		<flag name="embed-data-files">Embed data files in binary for relocatable executable.</flag>
+		<flag name="optimize">Enable -O1 optimizations (requires ~16GiB memory)</flag>
 		<flag name="http-conduit">Enable downloading of resources over https.</flag>
 		<flag name="trypandoc">Build trypandoc cgi executable.</flag>
 		<flag name="https">Enable support for downloading of resources over https.</flag>

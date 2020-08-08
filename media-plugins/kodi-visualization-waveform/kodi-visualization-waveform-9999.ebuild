@@ -16,7 +16,7 @@ case ${PV} in
 	inherit git-r3
 	;;
 *)
-	CODENAME="Leia"
+	CODENAME="Matrix"
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://github.com/xbmc/visualization.waveform/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/visualization.waveform-${PV}-${CODENAME}"

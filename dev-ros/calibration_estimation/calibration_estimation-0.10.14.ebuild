@@ -14,16 +14,26 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-python/numpy[${PYTHON_USEDEP}]
-	dev-ros/rosgraph[${PYTHON_USEDEP}]
-	dev-ros/roslib[${PYTHON_USEDEP}]
-	dev-python/rospkg[${PYTHON_USEDEP}]
-	dev-ros/rospy[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep "dev-python/numpy[\${PYTHON_USEDEP}]")
+	dev-ros/rosgraph[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep "dev-python/rospkg[\${PYTHON_USEDEP}]")
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/calibration_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
-	dev-python/matplotlib[${PYTHON_USEDEP}]
-	dev-python/python_orocos_kdl[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}]
-	dev-python/urdf_parser_py[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep "dev-python/matplotlib[\${PYTHON_USEDEP}]")
+	$(python_gen_cond_dep "dev-python/python_orocos_kdl[\${PYTHON_USEDEP}]")
+	$(python_gen_cond_dep "sci-libs/scipy[\${PYTHON_USEDEP}]")
+	$(python_gen_cond_dep "dev-python/urdf_parser_py[\${PYTHON_USEDEP}]")
 "
 DEPEND="${RDEPEND}
-	test? ( dev-ros/rostest[${PYTHON_USEDEP}] dev-python/nose[${PYTHON_USEDEP}] )"
+	test? (
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
+	)"
+PATCHES=( "${FILESDIR}/py3.patch" )
+
+src_prepare() {
+	ros-catkin_src_prepare
+	sed -e 's/yaml.load/yaml.safe_load/g' -i src/*/*.py -i test/*.py || die
+	2to3 -w src/*/*.py src/*/*/*.py test/*.py || die
+}

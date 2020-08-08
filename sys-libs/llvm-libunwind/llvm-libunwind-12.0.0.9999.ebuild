@@ -10,7 +10,7 @@ inherit cmake-multilib llvm llvm.org python-any-r1
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
 HOMEPAGE="https://github.com/llvm-mirror/libunwind"
 LLVM_COMPONENTS=( libunwind )
-LLVM_TEST_COMPONENTS=( libcxx{,abi} )
+LLVM_TEST_COMPONENTS=( libcxx{,abi} llvm/cmake )
 llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"

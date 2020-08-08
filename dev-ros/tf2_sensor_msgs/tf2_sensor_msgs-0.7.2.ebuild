@@ -14,14 +14,25 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/tf2_ros[${PYTHON_USEDEP}]
+	dev-ros/tf2_ros[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/tf2
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-python/python_orocos_kdl[${PYTHON_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep "dev-python/python_orocos_kdl[\${PYTHON_USEDEP}]")
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	test? ( dev-ros/rostest[${PYTHON_USEDEP}] )
+	test? (
+		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+		dev-cpp/gtest
+	)
 	dev-ros/cmake_modules
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-cpp/eigen:3
 "
+
+src_test() {
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	ros-catkin_src_test
+}

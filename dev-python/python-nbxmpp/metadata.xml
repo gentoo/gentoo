@@ -8,6 +8,7 @@
   <maintainer type="person">
     <email>hanno@gentoo.org</email>
   </maintainer>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">nbxmpp</remote-id>
   </upstream>

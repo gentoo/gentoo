@@ -14,7 +14,7 @@ SRC_URI="https://community.download.adacore.com/v1/c94f2ac914cb305f6bef174329fa0
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+shared static-libs static-pic"
 
 RDEPEND="

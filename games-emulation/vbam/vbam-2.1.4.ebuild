@@ -21,7 +21,12 @@ HOMEPAGE="https://github.com/visualboyadvance-m/visualboyadvance-m"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="ffmpeg link lirc nls openal +sdl wxwidgets"
-REQUIRED_USE="openal? ( wxwidgets ) || ( sdl wxwidgets )"
+
+REQUIRED_USE="
+	ffmpeg? ( wxwidgets )
+	openal? ( wxwidgets )
+	|| ( sdl wxwidgets )
+"
 
 RDEPEND="
 	>=media-libs/libpng-1.4:0=
@@ -30,19 +35,24 @@ RDEPEND="
 	sys-libs/zlib:=
 	virtual/glu
 	virtual/opengl
-	ffmpeg? ( =media-video/ffmpeg-3*:= )
 	lirc? ( app-misc/lirc )
 	nls? ( virtual/libintl )
 	wxwidgets? (
+		ffmpeg? ( media-video/ffmpeg:= )
 		openal? ( media-libs/openal )
 		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
-	)"
-DEPEND="${RDEPEND}
+	)
+"
+DEPEND="
+	${RDEPEND}
+"
+BDEPEND="
 	app-arch/zip
 	wxwidgets? ( virtual/imagemagick-tools )
 	x86? ( || ( dev-lang/nasm dev-lang/yasm ) )
 	nls? ( sys-devel/gettext )
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-cmake_fix.patch

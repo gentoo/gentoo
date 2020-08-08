@@ -16,14 +16,14 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
-	dev-python/pycairo[${PYTHON_USEDEP}]
-	dev-python/pillow[${PYTHON_USEDEP}]
-	dev-ros/rosbag[${PYTHON_USEDEP}]
-	dev-ros/roslib[${PYTHON_USEDEP}]
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-ros/rqt_bag[${PYTHON_USEDEP}]
-	dev-ros/rqt_gui[${PYTHON_USEDEP}]
-	dev-ros/rqt_gui_py[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep "dev-python/pycairo[\${PYTHON_USEDEP}]")
+	$(python_gen_cond_dep "dev-python/pillow[\${PYTHON_USEDEP}]")
+	dev-ros/rosbag[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rqt_bag[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rqt_gui[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rqt_gui_py[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/std_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "

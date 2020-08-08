@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="buildwebsite">Build the hakyll website</flag>
+		<flag name="previewserver">Include the preview server</flag>
+		<flag name="checkexternal">Include external link checking</flag>
+		<flag name="watchserver">wait for filesystem changes and rebuild pages</flag>
+		<flag name="usepandoc">Include Pandoc support</flag>
+	</use>
+	<longdescription>
+		Hakyll is a static website compiler library. It provides you with the tools to
+		create a simple or advanced static website using a Haskell DSL and formats
+		such as markdown or RST. You can find more information, including a tutorial,
+		on the website:
+		
+		* &lt;http://jaspervdj.be/hakyll&gt;
+		
+		If you seek assistance, there's:
+		
+		* A google group: &lt;http://groups.google.com/group/hakyll&gt;
+		
+		* An IRC channel, @#hakyll@ on freenode
+		
+		Additionally, there's the Haddock documentation in the different modules,
+		meant as a reference.
+	</longdescription>
+</pkgmetadata>

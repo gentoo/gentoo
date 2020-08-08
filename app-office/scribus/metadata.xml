@@ -2,7 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>jlec@gentoo.org</email>
+    <email>fordfrog@gentoo.org</email>
+    <name>Miroslav Šulc</name>
   </maintainer>
   <use>
     <flag name="boost">Enable support for Boost based enhancement</flag>

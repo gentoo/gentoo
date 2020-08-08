@@ -16,14 +16,14 @@ IUSE=""
 RDEPEND="
 	dev-ros/tf2
 	dev-ros/tf2_ros
-	dev-python/python_orocos_kdl[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep "dev-python/python_orocos_kdl[\${PYTHON_USEDEP}]")
 	sci-libs/orocos_kdl:=
-	dev-ros/tf2_msgs[${PYTHON_USEDEP}]
+	dev-ros/tf2_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	dev-ros/cmake_modules
 	dev-cpp/eigen:3
 	test? (
-		dev-ros/rostest[${PYTHON_USEDEP}]
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
 		dev-cpp/gtest
 	)"

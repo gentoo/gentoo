@@ -16,14 +16,14 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/actionlib[${PYTHON_USEDEP}]
-	dev-ros/cv_bridge[${PYTHON_USEDEP}]
+	dev-ros/actionlib[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/cv_bridge[${PYTHON_SINGLE_USEDEP}]
 	media-libs/opencv:=
 	dev-ros/image_transport
 	dev-ros/message_filters
 	dev-ros/roscpp
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
-	dev-ros/rospy[${PYTHON_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
 	dev-libs/boost:=[threads]
 "
 DEPEND="${RDEPEND}

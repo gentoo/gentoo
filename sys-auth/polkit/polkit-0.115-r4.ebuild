@@ -131,8 +131,8 @@ src_install() {
 	keepdir /var/lib/polkit-1
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins src/examples/{*.c,*.policy*}
+		docinto examples
+		dodoc src/examples/{*.c,*.policy*}
 	fi
 
 	find "${ED}" -name '*.la' -delete || die

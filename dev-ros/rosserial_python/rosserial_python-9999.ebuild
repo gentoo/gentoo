@@ -14,8 +14,8 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-python/pyserial[${PYTHON_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep "dev-python/pyserial[\${PYTHON_USEDEP}]")
 	dev-ros/diagnostic_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/rosserial_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "

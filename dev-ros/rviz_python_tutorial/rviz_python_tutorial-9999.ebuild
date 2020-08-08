@@ -13,5 +13,5 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-ros/rviz[${PYTHON_USEDEP}]"
+RDEPEND="dev-ros/rviz[${PYTHON_SINGLE_USEDEP}]"
 DEPEND="${RDEPEND}"

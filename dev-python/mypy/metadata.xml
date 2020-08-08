@@ -5,6 +5,7 @@
 		<email>ikelos@gentoo.org</email>
 		<name>Mike Auty</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">python/mypy</remote-id>
 	</upstream>

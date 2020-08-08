@@ -15,6 +15,15 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/roscpp
-	dev-libs/openssl:0="
+	dev-libs/openssl:0=
+"
 DEPEND="${RDEPEND}
-	test? ( dev-ros/rostest[${PYTHON_USEDEP}] )"
+	test? (
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		dev-cpp/gtest
+	)"
+
+src_test() {
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	ros-catkin_src_test
+}

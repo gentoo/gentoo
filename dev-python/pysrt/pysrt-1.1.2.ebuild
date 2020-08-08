@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
+PYTHON_COMPAT=( pypy3 python3_{6,7,8,9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
@@ -20,17 +20,7 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/chardet[${PYTHON_USEDEP}]"
-DEPEND="
-	test? (
-		${RDEPEND}
-		dev-python/nose[${PYTHON_USEDEP}]
-	)
-"
 
-python_test() {
-	nosetests -v || die "Tests failed under ${EPYTHON}"
-}
+distutils_enable_tests nose

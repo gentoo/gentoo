@@ -1,0 +1,107 @@
+diff -Naur dblatex-0.3.11py3-orig/docs/custom/dblatex.xconf dblatex-0.3.11py3/docs/custom/dblatex.xconf
+--- dblatex-0.3.11py3-orig/docs/custom/dblatex.xconf	2020-01-29 13:48:32.000000000 -0800
++++ dblatex-0.3.11py3/docs/custom/dblatex.xconf	2020-07-14 01:05:42.883435133 -0700
+@@ -18,7 +18,7 @@
+   <imagedata>
+     <converter src="svg" dst="*" docformat="pdf">
+       <command>
+-        inkscape -z -D --export-dpi=600 --export-%(dst)s=%(output)s %(input)s
++        inkscape -D --export-dpi=600 --export-filename=%(output)s %(input)s
+       </command>
+     </converter>
+   </imagedata>
+diff -Naur dblatex-0.3.11py3-orig/docs/xhtml/manual/sec-specs.html dblatex-0.3.11py3/docs/xhtml/manual/sec-specs.html
+--- dblatex-0.3.11py3-orig/docs/xhtml/manual/sec-specs.html	2020-01-29 13:49:23.000000000 -0800
++++ dblatex-0.3.11py3/docs/xhtml/manual/sec-specs.html	2020-07-14 01:06:19.012860710 -0700
+@@ -36,7 +36,7 @@
+   &lt;imagedata&gt;
+     &lt;converter src="svg" dst="*" docformat="pdf"&gt;
+       &lt;command&gt;
+-        inkscape -z -D --export-dpi=600 --export-%(dst)s=%(output)s %(input)s
++        inkscape -D --export-dpi=600 --export-filename=%(output)s %(input)s
+       &lt;/command&gt;
+     &lt;/converter&gt;
+   &lt;/imagedata&gt;
+diff -Naur dblatex-0.3.11py3-orig/lib/dbtexmf/core/imagedata.py dblatex-0.3.11py3/lib/dbtexmf/core/imagedata.py
+--- dblatex-0.3.11py3-orig/lib/dbtexmf/core/imagedata.py	2020-01-29 13:48:33.000000000 -0800
++++ dblatex-0.3.11py3/lib/dbtexmf/core/imagedata.py	2020-07-14 01:02:56.729388831 -0700
+@@ -47,16 +47,16 @@
+ 
+ 
+ class PoolManager:
+-    def __init__(self): 
++    def __init__(self):
+         self._used_pool = None
+         self._pending_pools = []
+-    
++
+     def set_pool(self, pool):
+         self._used_pool = pool
+         for p in self._pending_pools:
+             pool.preprend(p)
+         self._pending_pools = []
+-    
++
+     def prepend_pool(self, pool):
+         if self._used_pool:
+             self._used_pool.prepend(pool)
+@@ -73,7 +73,7 @@
+         self.format_pool = PoolManager()
+ 
+ _image_setup = ImageSetup()
+-    
++
+ def image_setup():
+     global _image_setup
+     return _image_setup
+@@ -181,7 +181,7 @@
+ class SvgConverter(ImageConverter):
+     def __init__(self, imgsrc, imgdst="", docformat="", backend=""):
+         ImageConverter.__init__(self, imgsrc="svg", imgdst=imgdst)
+-        self.add_command(["inkscape", "-z", "-D", "--export-%(dst)s=%(output)s",
++        self.add_command(["inkscape", "-D", "--export-filename=%(output)s",
+                           "%(input)s"])
+ 
+ 
+@@ -224,7 +224,7 @@
+         ImageFormatPool.__init__(self)
+         # There can be a mismatch between PDF-1.4 images and PDF-1.3
+         # document produced by XeTeX
+-        self.add_rule(FormatRule(docformat="pdf", backend="xetex", 
++        self.add_rule(FormatRule(docformat="pdf", backend="xetex",
+                                  imgdst="png"))
+         self.add_rule(FormatRule(docformat="pdf", imgdst="pdf"))
+         self.add_rule(FormatRule(docformat="dvi", imgdst="eps"))
+@@ -318,7 +318,7 @@
+         Copy the file in the working directory if its path contains characters
+         unsupported by latex, like spaces.
+         """
+-        # Encode to expected output format. If encoding is OK and 
++        # Encode to expected output format. If encoding is OK and
+         # supported by tex, just return the encoded path
+         newfig = self._path_encode(fig)
+         if newfig and newfig.find(b" ") == -1:
+@@ -350,7 +350,7 @@
+         if (ext):
+             realfig = self.find(fig)
+             return (realfig, ext[1:])
+-        
++
+         # Lookup for the best suited available figure
+         if (self.output_format == "pdf"):
+             formats = ("png", "pdf", "jpg", "eps", "gif", "fig", "svg")
+@@ -369,7 +369,7 @@
+             format = ""
+ 
+         return (realfig, format)
+-        
++
+     def find(self, fig):
+         # First, the obvious absolute path case
+         if os.path.isabs(fig):
+@@ -385,4 +385,4 @@
+                 return realfig
+ 
+         return None
+- 
++

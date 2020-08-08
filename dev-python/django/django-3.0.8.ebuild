@@ -23,7 +23,7 @@ LICENSE+=" Apache-2.0"
 # admin icons, jquery, xregexp.js
 LICENSE+=" MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86"
 IUSE="doc sqlite test"
 RESTRICT="!test? ( test )"
 
@@ -32,10 +32,10 @@ RDEPEND="
 	dev-python/pytz[${PYTHON_USEDEP}]
 	>=dev-python/sqlparse-0.2.2[${PYTHON_USEDEP}]"
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		$(python_gen_impl_dep sqlite)
+		${RDEPEND}
 		dev-python/docutils[${PYTHON_USEDEP}]
 		dev-python/jinja[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]

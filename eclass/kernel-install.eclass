@@ -228,10 +228,12 @@ kernel-install_test() {
 		"${T}/fs.qcow2" || die
 
 	cd "${T}" || die
+	local qemu_extra_args=
+	[[ ${qemu_arch} == x86_64 ]] && qemu_extra_args='-cpu max'
 	cat > run.sh <<-EOF || die
 		#!/bin/sh
 		exec qemu-system-${qemu_arch} \
-			-cpu max \
+			${qemu_extra_args} \
 			-m 256M \
 			-display none \
 			-no-reboot \

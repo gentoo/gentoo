@@ -1,0 +1,32 @@
+From 7098c8be9a5e7fabf74543308bfaf11a2ebe5484 Mon Sep 17 00:00:00 2001
+From: Volker Krause <vkrause@kde.org>
+Date: Wed, 5 Aug 2020 17:18:13 +0200
+Subject: [PATCH] Fix build with latest Poppler
+
+That now has a leading 0 in its minor version number.
+---
+ CMakeLists.txt | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e4d40f2..37787d8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -71,10 +71,10 @@ if(TARGET Poppler::Core)
+     endif()
+ endif()
+ if (HAVE_POPPLER)
+-    string(REPLACE "." ";" _poppler_version_components ${Poppler_VERSION})
+-    list(GET _poppler_version_components 0 POPPLER_VERSION_MAJOR)
+-    list(GET _poppler_version_components 1 POPPLER_VERSION_MINOR)
+-    list(GET _poppler_version_components 2 POPPLER_VERSION_PATCH)
++    string(REGEX MATCH "([0-9]+)\.0*([0-9]+)\.0*([0-9]+)" _match ${Poppler_VERSION})
++    set(POPPLER_VERSION_MAJOR ${CMAKE_MATCH_1})
++    set(POPPLER_VERSION_MINOR ${CMAKE_MATCH_2})
++    set(POPPLER_VERSION_PATCH ${CMAKE_MATCH_3})
+ endif()
+ 
+ if (TARGET ZXing::ZXing OR TARGET ZXing::Core)
+-- 
+GitLab
+

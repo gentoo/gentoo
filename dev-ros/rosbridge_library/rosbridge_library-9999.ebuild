@@ -16,19 +16,19 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-ros/roscpp[${PYTHON_USEDEP}]
-	dev-ros/rosgraph[${PYTHON_USEDEP}]
-	dev-ros/rosservice[${PYTHON_USEDEP}]
-	dev-ros/rostopic[${PYTHON_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/roscpp[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rosgraph[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rosservice[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rostopic[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/std_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
-	dev-python/pillow[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep "dev-python/pillow[\${PYTHON_USEDEP}]")
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
-	dev-python/pymongo[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep "dev-python/pymongo[\${PYTHON_USEDEP}]")
 	"
 DEPEND="${RDEPEND}
 	test? (
-		dev-ros/rostest[${PYTHON_USEDEP}]
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
 		dev-ros/actionlib_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 		dev-ros/diagnostic_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 		dev-ros/nav_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]

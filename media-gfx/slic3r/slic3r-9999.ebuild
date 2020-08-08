@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -75,6 +75,7 @@ src_prepare() {
 	pushd "${WORKDIR}/slic3r-${PV}" || die
 	sed -i lib/Slic3r.pm -e "s@FindBin::Bin@FindBin::RealBin@g" || die
 	eapply "${FILESDIR}"/${P}-no-locallib.patch
+	eapply "${FILESDIR}"/${P}-boost-173.patch
 	eapply_user
 	popd || die
 }

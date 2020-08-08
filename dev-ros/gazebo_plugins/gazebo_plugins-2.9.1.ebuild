@@ -25,8 +25,8 @@ RDEPEND="
 	dev-ros/urdf
 	dev-ros/tf
 	dev-ros/tf2_ros
-	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
-	dev-ros/driver_base[${PYTHON_USEDEP}]
+	dev-ros/dynamic_reconfigure[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/driver_base[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/pcl_conversions
 	dev-ros/image_transport
 	dev-ros/rosconsole
@@ -41,7 +41,7 @@ RDEPEND="
 	dev-games/ogre
 	sci-libs/pcl
 	dev-libs/boost:=
-	dev-ros/roslib[${PYTHON_USEDEP}]
+	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	dev-ros/gazebo_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]

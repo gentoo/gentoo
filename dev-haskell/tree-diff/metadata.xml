@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Common diff algorithm works on list structures:
+		
+		@
+		diff :: Eq a =&gt; [a] -&gt; [a] -&gt; [Edit a]
+		@
+		
+		This package works on trees.
+		
+		@
+		treeDiff :: Eq a =&gt; Tree a -&gt; Tree a -&gt; Edit (EditTree a)
+		@
+		
+		This package also provides a way to diff arbitrary ADTs,
+		using @Generics@-derivable helpers.
+		
+		This package differs from &lt;http://hackage.haskell.org/package/gdiff gdiff&gt;,
+		in a two ways: @tree-diff@ doesn&#39;t have patch function,
+		and the &quot;edit-script&quot; is a tree itself, which is useful for pretty-printing.
+		
+		@
+		&gt;&gt;&gt; prettyEditExpr $ ediff (Foo 42 [True, False] &quot;old&quot;) (Foo 42 [False, False, True] &quot;new&quot;)
+		Foo
+		{fooBool = [-True, +False, False, +True],
+		fooInt = 42,
+		fooString = -&quot;old&quot; +&quot;new&quot;}
+		@
+	</longdescription>
+</pkgmetadata>

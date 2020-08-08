@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  Emacs-libvterm (vterm) is fully-fledged terminal emulator inside
+  GNU Emacs based on libvterm, a C library. As a result of using
+  compiled code (instead of elisp), emacs-libvterm is fully capable,
+  fast, and it can seamlessly handle large outputs.
+</longdescription>
+<upstream>
+  <remote-id type="github">akermu/emacs-libvterm</remote-id>
+</upstream>
+</pkgmetadata>

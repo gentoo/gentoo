@@ -10,7 +10,7 @@ SRC_URI="https://github.com/storaged-project/udisks/releases/download/${P}/${P}.
 
 LICENSE="LGPL-2+ GPL-2+"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="acl +daemon debug elogind +introspection lvm nls selinux systemd vdo"
 
 REQUIRED_USE="
@@ -21,13 +21,13 @@ REQUIRED_USE="
 
 COMMON_DEPEND="
 	>=sys-auth/polkit-0.110
+	>=sys-libs/libblockdev-2.24[cryptsetup,lvm?,vdo?]
 	virtual/udev
 	acl? ( virtual/acl )
 	daemon? (
 		>=dev-libs/glib-2.50:2
 		>=dev-libs/libatasmart-0.19
 		>=dev-libs/libgudev-165:=
-		>=sys-libs/libblockdev-2.24[cryptsetup,lvm?,vdo?]
 	)
 	elogind? ( >=sys-auth/elogind-219 )
 	introspection? ( >=dev-libs/gobject-introspection-1.30:= )

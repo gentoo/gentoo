@@ -16,10 +16,10 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/roslib[${PYTHON_USEDEP}]
-	dev-ros/rosgraph[${PYTHON_USEDEP}]
-	dev-python/rospkg[${PYTHON_USEDEP}]
-	dev-ros/roscpp[${PYTHON_USEDEP}]
+	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rosgraph[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep "dev-python/rospkg[\${PYTHON_USEDEP}]")
+	dev-ros/roscpp[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/rosgraph_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"

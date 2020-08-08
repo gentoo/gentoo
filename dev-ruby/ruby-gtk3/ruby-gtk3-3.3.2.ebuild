@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,15 +13,15 @@ IUSE=""
 DEPEND+=" x11-libs/gtk+:3"
 RDEPEND+=" x11-libs/gtk+:3"
 
-ruby_add_bdepend ">=dev-ruby/ruby-glib2-${PV}
-	>=dev-ruby/ruby-pango-${PV}"
+ruby_add_bdepend "~dev-ruby/ruby-glib2-${PV}
+	~dev-ruby/ruby-pango-${PV}"
 
 ruby_add_rdepend "
-	>=dev-ruby/ruby-atk-${PV}
-	>=dev-ruby/ruby-gdk3-${PV}
-	>=dev-ruby/ruby-gdkpixbuf2-${PV}
-	>=dev-ruby/ruby-gio2-${PV}
-	>=dev-ruby/ruby-pango-${PV}
+	~dev-ruby/ruby-atk-${PV}
+	~dev-ruby/ruby-gdk3-${PV}
+	~dev-ruby/ruby-gdkpixbuf2-${PV}
+	~dev-ruby/ruby-gio2-${PV}
+	~dev-ruby/ruby-pango-${PV}
 "
 
 all_ruby_prepare() {

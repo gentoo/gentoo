@@ -14,12 +14,12 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/rqt_py_common[${PYTHON_USEDEP}]
-	dev-ros/roslaunch[${PYTHON_USEDEP}]
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-ros/rqt_console[${PYTHON_USEDEP}]
-	dev-ros/rqt_gui[${PYTHON_USEDEP}]
-	dev-ros/rqt_gui_py[${PYTHON_USEDEP}]
-	dev-ros/rqt_py_common[${PYTHON_USEDEP}]
+	dev-ros/rqt_py_common[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/roslaunch[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rqt_console[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rqt_gui[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rqt_gui_py[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rqt_py_common[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}"

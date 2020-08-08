@@ -3,13 +3,13 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
 
 DESCRIPTION="Python documentation generator"
-HOMEPAGE="http://www.sphinx-doc.org/"
+HOMEPAGE="https://www.sphinx-doc.org/"
 SRC_URI="mirror://pypi/S/${PN^}/${P^}.tar.gz"
 
 LICENSE="BSD"

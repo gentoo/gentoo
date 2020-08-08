@@ -15,13 +15,17 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-ros/tf2_ros[${PYTHON_USEDEP}]
-	dev-python/python_orocos_kdl[${PYTHON_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/tf2_ros[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep "dev-python/python_orocos_kdl[\${PYTHON_USEDEP}]")
 	dev-ros/tf2
 	sci-libs/orocos_kdl
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	test? (
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		dev-cpp/gtest
+	)
 "

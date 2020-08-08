@@ -15,9 +15,9 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-python/rospkg[${PYTHON_USEDEP}]
-	dev-ros/roslib[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep "dev-python/rospkg[\${PYTHON_USEDEP}]")
+	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )
+	test? ( $(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]") )
 "

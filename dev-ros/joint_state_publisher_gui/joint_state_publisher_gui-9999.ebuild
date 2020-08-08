@@ -15,9 +15,9 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-ros/python_qt_binding[${PYTHON_USEDEP}]
-	dev-ros/joint_state_publisher[${PYTHON_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/python_qt_binding[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/joint_state_publisher[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${DEPEND}
-	test? ( dev-ros/rostest[${PYTHON_USEDEP}] )"
+	test? ( dev-ros/rostest[${PYTHON_SINGLE_USEDEP}] )"

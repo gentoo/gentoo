@@ -7,7 +7,7 @@ inherit autotools eutils ltprune multilib-minimal
 PATCHLEVEL=4
 
 DESCRIPTION="collection of visualization plugins for use with the libvisual framework"
-HOMEPAGE="http://libvisual.sourceforge.net/"
+HOMEPAGE="http://libvisual.org/"
 SRC_URI="mirror://sourceforge/libvisual/${P}.tar.gz
 	mirror://gentoo/${P}-patches-${PATCHLEVEL}.tar.bz2
 	mirror://gentoo/${P}-m4-1.tar.bz2"
@@ -37,6 +37,7 @@ DOCS="AUTHORS ChangeLog NEWS README TODO"
 
 src_prepare() {
 	EPATCH_SUFFIX=patch epatch "${WORKDIR}"/patches
+	epatch "${FILESDIR}/${P}-fno-common.patch"
 	AT_M4DIR=${WORKDIR}/m4 eautoreconf
 
 	sed -i -e "s:@MKINSTALLDIRS@:${S}/mkinstalldirs:" po/Makefile.* || die

@@ -14,8 +14,8 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-ros/rqt_msg[${PYTHON_USEDEP}]
-	dev-ros/rqt_py_common[${PYTHON_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rqt_msg[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rqt_py_common[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}"

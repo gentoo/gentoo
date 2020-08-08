@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/jekyll/jekyll-coffeescript"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="test"
 
 all_ruby_prepare() {

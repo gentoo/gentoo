@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 
+PYTHON_COMPAT=( python3_{6,7} )
 inherit autotools bash-completion-r1 gnome2-utils l10n linux-info python-single-r1 systemd xdg-utils
 
 DESCRIPTION="A firewall daemon with D-BUS interface providing a dynamic firewall"

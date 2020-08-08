@@ -17,9 +17,9 @@ RDEPEND="
 	dev-ros/roscpp
 	dev-ros/interactive_markers
 	dev-ros/visualization_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
-	dev-ros/tf[${PYTHON_USEDEP}]
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-ros/roslib[${PYTHON_USEDEP}]
+	dev-ros/tf[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
 	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}

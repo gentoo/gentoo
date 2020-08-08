@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,3 +24,10 @@ RDEPEND=">=dev-haskell/regex-applicative-0.3:=[profile?] <dev-haskell/regex-appl
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10
 "
+
+src_prepare() {
+	default
+
+	cabal_chdeps \
+		'base >= 4.3 && <4.10' 'base >= 4.3'
+}

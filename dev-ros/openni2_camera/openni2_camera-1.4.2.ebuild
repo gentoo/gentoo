@@ -17,7 +17,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/image_transport
 	dev-ros/camera_info_manager
-	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
+	dev-ros/dynamic_reconfigure[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/nodelet
 	dev-libs/console_bridge:=
 	dev-ros/roscpp

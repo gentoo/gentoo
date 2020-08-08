@@ -40,7 +40,7 @@ DEPEND="test? (
 	>=dev-python/pydocstyle-2.0.0[${PYTHON_USEDEP}]
 	dev-python/pyflakes[${PYTHON_USEDEP}]
 	dev-python/pylint[${PYTHON_USEDEP}]
-	dev-python/QtPy[testlib,${PYTHON_USEDEP}]
+	dev-python/QtPy[gui,testlib,${PYTHON_USEDEP}]
 	>=dev-python/rope-0.10.5[${PYTHON_USEDEP}]
 	dev-python/yapf[${PYTHON_USEDEP}]
 )"

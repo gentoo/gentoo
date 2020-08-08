@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (2020-08-02)
+# ia64 has no virtual/rust support, needed by newer gnome-base/librsvg, et al
+>=media-gfx/eog-3.33.1 svg
+
 # Michał Górny <mgorny@gentoo.org> (2020-06-14)
 # Requires dev-python/networkx.
 app-portage/nattka depgraph-order
@@ -256,10 +260,6 @@ dev-python/pyquery test
 # Davide Pesavento <pesa@gentoo.org> (2015-10-26)
 # Tests require non-keyworded qt5
 dev-qt/qtchooser test
-
-# Justin Lecher <jlec@gentoo.org> (2015-10-14)
-# Requires dev-python/ipython which triggers a long dep chain
-dev-python/restkit cli
 
 # Brian Evans <grknight@gentoo.org> (2015-09-14)
 # Mask new USE flags for mariadb which all arches do not yet have dependencies

@@ -12,6 +12,6 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">sphinxcontrib-doxylink</remote-id>
-    <remote-id type="bitbucket">birkenfeld/sphinx-contrib</remote-id>
+    <remote-id type="github">sphinx-contrib/doxylink</remote-id>
   </upstream>
 </pkgmetadata>

@@ -15,10 +15,14 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/cv_bridge
-	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
+	dev-ros/dynamic_reconfigure[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/image_transport
 	media-libs/opencv:=
 	dev-libs/boost:=
 	dev-libs/console_bridge:=
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? (
+		dev-cpp/gtest
+	)
+"

@@ -41,6 +41,7 @@
 *sys-apps/gawk
 *sys-apps/grep
 *sys-apps/kbd
+*sys-apps/kmod
 # temporary bugfix for #398295
 *sys-apps/less
 *sys-process/procps
@@ -58,7 +59,6 @@
 *virtual/editor
 *virtual/libc
 *virtual/man
-*virtual/modutils
 *virtual/os-headers
 *virtual/package-manager
 *virtual/pager

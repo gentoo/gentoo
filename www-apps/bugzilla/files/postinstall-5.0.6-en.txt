@@ -1,0 +1,30 @@
+0. Bugzilla has been installed into ${MY_INSTALLDIR}
+
+1. To finish the installation, please read
+   https://bugzilla.readthedocs.io/en/5.0/installing/index.html
+   https://wiki.gentoo.org/wiki/Bugzilla
+   You will need to run ${MY_INSTALLDIR}/checksetup.pl
+
+2. Please read the Release Notes, especially if you are upgrading:
+   https://www.bugzilla.org/releases/${PV}/release-notes.html
+
+3. Please note that Apache2 sets AllowOverride None by default. You may have
+   to edit it to process the .htaccess file provided by Bugzilla. Please see
+   https://httpd.apache.org/docs/2.2/mod/core.html#allowoverride and
+   https://bugzilla.readthedocs.io/en/5.0/installing/apache.html for more info.
+
+4. If this is a large project and you wish to enable mail queuing, you need to
+   emerge dev-perl/TheSchwarz and dev-perl/Daemon-Generic. To enable mail 
+   queuing as an openrc-service, create a file named bugzilla-queue in 
+   /etc/conf.d/ with this one line 
+
+   JOBQUEUE_PATH=${MY_INSTALLDIR}
+
+   Which defines the variable used by the openrc service file 
+   /etc/init.d/bugzilla-queue
+   Then run:
+
+   rc-update add bugzilla-queue default
+
+5. For other optional post installation configuration, please read
+   https://bugzilla.readthedocs.io/en/5.0/installing/optional-post-install-config.html

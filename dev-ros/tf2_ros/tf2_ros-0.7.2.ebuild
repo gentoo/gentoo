@@ -14,20 +14,29 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/actionlib[${PYTHON_USEDEP}]
+	dev-ros/actionlib[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/message_filters
 	dev-ros/roscpp
 	dev-ros/rosgraph
 	dev-libs/boost:=[threads]
-	dev-ros/rospy[${PYTHON_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/tf2
-	dev-ros/tf2_py[${PYTHON_USEDEP}]
+	dev-ros/tf2_py[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/actionlib_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/tf2_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	test? ( dev-ros/rostest[${PYTHON_USEDEP}] )
+	test? (
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		dev-cpp/gtest
+	)
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/tf2_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
+
+src_test() {
+	# Needed for tests to find internal launch file
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	ros-catkin_src_test
+}

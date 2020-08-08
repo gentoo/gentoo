@@ -13,7 +13,7 @@ SRC_URI="https://dev.gentoo.org/~conikost/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="dmalloc outb"
 REQUIRED_USE="
 	?? ( lcd_devices_hd44780 lcd_devices_hd44780-i2c )

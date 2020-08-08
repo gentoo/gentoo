@@ -30,6 +30,7 @@ DZIL_DEPENDS="
 	dev-perl/Dist-Zilla
 	dev-perl/Dist-Zilla-Plugin-CheckExtraTests
 	dev-perl/Dist-Zilla-Plugin-ContributorsFile
+	dev-perl/Dist-Zilla-Plugin-Git
 	dev-perl/Dist-Zilla-Plugin-Git-Contributors
 	dev-perl/Dist-Zilla-Plugin-MakeMaker-Awesome
 	dev-perl/Dist-Zilla-Plugin-Meta-Contributors
@@ -83,10 +84,12 @@ RDEPEND="
 BDEPEND="
 	${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-7.110.100
+	>=dev-perl/File-ShareDir-Install-0.60.0
 	test? (
 		virtual/perl-File-Temp
 		dev-perl/Test-Deep
 		>=dev-perl/Test-UseAllModules-0.150.0
+		virtual/perl-autodie
 	)
 "
 

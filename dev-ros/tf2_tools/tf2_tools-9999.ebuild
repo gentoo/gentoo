@@ -15,10 +15,10 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/tf2_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-ros/tf2_py[${PYTHON_USEDEP}]
-	dev-ros/tf2_ros[${PYTHON_USEDEP}]
-	dev-ros/roslib[${PYTHON_USEDEP}]
-	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/tf2_py[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/tf2_ros[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep "dev-python/pyyaml[\${PYTHON_USEDEP}]")
 "
 DEPEND="${RDEPEND}"

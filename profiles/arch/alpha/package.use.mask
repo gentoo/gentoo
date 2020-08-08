@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (2020-08-02)
+# alpha has no virtual/rust support, needed by newer gnome-base/librsvg, et al
+>=media-gfx/eog-3.33.1 svg
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-07-18)
 # net-libs/webkit-gtk has no alpha keywords
 app-editors/emacs xwidgets
@@ -224,9 +228,8 @@ net-mail/notmuch test
 app-admin/conky cmus irc
 
 # Tobias Klausmann <klausman@gentoo.org> (2016-06-07)
-# the nvidia SDK needs nvidia-drivers and thus can never work on alpha
-# Likewise, nasm is x86/x86-64 only
-media-video/ffmpeg nvenc openh264
+# nasm is x86/x86-64 only
+media-video/ffmpeg openh264
 
 # Tobias Klausmann <klausman@gentoo.org> (2016-02-04)
 # sys-cluster/ceph is not broken per se, but a maintenance burden.
@@ -251,10 +254,6 @@ media-sound/rhythmbox upnp-av
 # Davide Pesavento <pesa@gentoo.org> (2015-10-26)
 # Tests require non-keyworded qt5
 dev-qt/qtchooser test
-
-# Justin Lecher <jlec@gentoo.org> (2015-10-14)
-# Requires dev-python/ipython which triggers a long dep chain
-dev-python/restkit cli
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2015-09-10)
 # Requires wifi USE flag, which is masked for this arch

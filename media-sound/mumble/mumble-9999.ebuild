@@ -129,8 +129,7 @@ multilib_src_install() {
 src_install() {
 	multilib_foreach_abi multilib_src_install
 
-	newdoc README.Linux README
-	dodoc CHANGES
+	dodoc CHANGES README.md
 	dobin scripts/mumble-overlay
 
 	insinto /usr/share/services

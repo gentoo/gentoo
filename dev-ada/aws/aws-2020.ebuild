@@ -15,7 +15,7 @@ SRC_URI="https://community.download.adacore.com/v1/c1b0f6863d1a30acaee1df022a65a
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="dev-ada/xmlada[${ADA_USEDEP},shared,static-libs]"

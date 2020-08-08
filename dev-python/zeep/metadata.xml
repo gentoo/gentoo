@@ -8,9 +8,6 @@
 		<email>cedk@gentoo.org</email>
 		<name>Cédric Krier</name>
 	</maintainer>
-	<longdescription lang="en">
-		A fast and modern Python SOAP client
-	</longdescription>
 	<use>
 		<flag name="async">Add async support</flag>
 		<flag name="tornado">Add tornado support</flag>

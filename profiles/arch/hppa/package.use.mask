@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Felix Janda <felix.janda@posteo.de> (2020-08-01)
+# Requires masked dev-lang/spidermonkey:17
+>=www-client/elinks-0.13.3 javascript
+
 # Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
 # Mask io-uring & zbc pending keywording
 sys-block/fio -io-uring zbc
@@ -300,10 +304,6 @@ media-sound/mpd fluidsynth
 # cpudetection and custom-cpuopts does not apply
 # to HPPA (bug #234629)
 media-video/mplayer cpudetection
-
-# Jeroen Roovers <jer@gentoo.org> (2008-09-16)
-# app-text/xindy needs dev-lisp/clisp and clisp does not build (bug #229217)
-app-text/texlive xindy
 
 # Mart Raudsepp <leio@gentoo.org> (2008-04-02)
 # media-plugins/gst-plugins-{dvb,fluendo-mpegdemux,bad} not keyworded

@@ -22,7 +22,7 @@ Index: catkin-0.7.17/python/catkin/builder.py
                      'CATKIN_LIB_ENVIRONMENT_PATHS': "'lib'",
                      'CATKIN_PKGCONFIG_ENVIRONMENT_PATHS': "os.path.join('lib', 'pkgconfig')",
                      'CMAKE_PREFIX_PATH_AS_IS': ';'.join(os.environ['CMAKE_PREFIX_PATH'].split(os.pathsep)),
-+                    'CATKIN_PREFIX_PATH': ';'.join(os.environ['CATKIN_PREFIX_PATH'].split(os.pathsep)),
++                    'CATKIN_PREFIX_PATH': ';'.join(os.environ.get('CATKIN_PREFIX_PATH','').split(os.pathsep)),
                      'PYTHON_EXECUTABLE': sys.executable,
                      'PYTHON_INSTALL_DIR': get_python_install_dir(),
                  }

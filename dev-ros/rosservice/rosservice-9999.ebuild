@@ -15,9 +15,9 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/rosgraph[${PYTHON_USEDEP}]
-	dev-ros/roslib[${PYTHON_USEDEP}]
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-ros/rosmsg[${PYTHON_USEDEP}]
+	dev-ros/rosgraph[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rosmsg[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}"

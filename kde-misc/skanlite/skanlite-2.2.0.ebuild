@@ -15,7 +15,7 @@ SRC_URI="mirror://kde/stable/${PN}/2.2/${P}.tar.xz"
 
 LICENSE="|| ( GPL-2 GPL-3 ) handbook? ( FDL-1.2+ )"
 SLOT="5"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

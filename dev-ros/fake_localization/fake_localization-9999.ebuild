@@ -17,7 +17,7 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-ros/angles
 	dev-ros/roscpp
-	dev-ros/rospy[${PYTHON_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/rosconsole
 	dev-ros/nav_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]

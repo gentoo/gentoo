@@ -11,12 +11,18 @@ fi
 
 inherit ${SCM} cmake
 
+AMENT_LINT_VER=0.9.5
+EXTERNAL_PROGS="
+	https://raw.githubusercontent.com/ament/ament_lint/${AMENT_LINT_VER}/ament_cppcheck/ament_cppcheck/main.py -> ${P}-ament-${AMENT_LINT_VER}-cppcheck.py
+	https://raw.githubusercontent.com/ament/ament_lint/${AMENT_LINT_VER}/ament_cpplint/ament_cpplint/cpplint.py -> ${P}-ament-${AMENT_LINT_VER}-cpplint.py
+"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	KEYWORDS=""
-	SRC_URI=""
+	SRC_URI="${EXTERNAL_PROGS}"
 else
 	KEYWORDS="~amd64 ~arm"
-	SRC_URI="https://github.com/ros/console_bridge/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="${EXTERNAL_PROGS}
+		https://github.com/ros/console_bridge/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 DESCRIPTION="A ROS-independent package for logging into rosconsole/rosout"
@@ -24,21 +30,34 @@ HOMEPAGE="http://wiki.ros.org/console_bridge"
 LICENSE="BSD"
 SLOT="0/1"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/boost:=[threads]"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	test? (
-		net-misc/wget
 		dev-util/cppcheck
 	)
 "
+PATCHES=( "${FILESDIR}/tests.patch" )
+
+src_prepare() {
+	# Avoid wgeting it. #733704
+	sed -e 's/add_dependencies(console_bridge wget_cppchec/#/' -i test/CMakeLists.txt || die
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test ON OFF)
 	)
 	cmake_src_configure
+
+	# For tests
+	if use test ; then
+		cp "${DISTDIR}/${P}-ament-${AMENT_LINT_VER}-cppcheck.py" "${BUILD_DIR}/test/cppcheck.py" || die
+		cp "${DISTDIR}/${P}-ament-${AMENT_LINT_VER}-cpplint.py" "${BUILD_DIR}/test/cpplint.py" || die
+	fi
 }
 
 src_test() {

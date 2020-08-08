@@ -15,15 +15,20 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/cv_bridge
-	dev-ros/dynamic_reconfigure
+	dev-ros/dynamic_reconfigure[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/image_geometry
 	dev-ros/image_transport
 	dev-ros/nodelet
-	dev-libs/console_bridge:=
+	dev-ros/nodelet_topic_tools
 	dev-ros/roscpp
+	dev-libs/console_bridge:=
 	media-libs/opencv:=
 	dev-libs/boost:=[threads]
 "
 DEPEND="${RDEPEND}
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	test? (
+		dev-ros/rostest
+		dev-cpp/gtest
+	)
 "

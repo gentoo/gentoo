@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/rocclr-3.5.0-cmake-install-destination.patch"
+	"${FILESDIR}/rocclr-3.5.0-find-opencl.patch"
 )
 
 S="${WORKDIR}/ROCclr-roc-${PV}"

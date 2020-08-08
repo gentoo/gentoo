@@ -19,8 +19,8 @@ IUSE=""
 RDEPEND=""
 DEPEND="${RDEPEND}
 	dev-ros/roscpp
-	dev-ros/rostest[${PYTHON_USEDEP}]
-	dev-ros/rosunit[${PYTHON_USEDEP}]
+	dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rosunit[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-libs/boost:=[threads]
 	test? (

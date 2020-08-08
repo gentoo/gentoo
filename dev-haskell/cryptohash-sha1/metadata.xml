@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		A practical incremental and one-pass, pure API to the
+		&lt;https://en.wikipedia.org/wiki/SHA-1 SHA-1 hash algorithm&gt;
+		(including &lt;https://en.wikipedia.org/wiki/HMAC HMAC&gt; support)
+		with performance close to the fastest implementations available in other languages.
+		
+		The implementation is made in C with a haskell FFI wrapper that hides the C implementation.
+		
+		NOTE: This package has been forked off @cryptohash-0.11.7@ because the @cryptohash@ package has been
+		deprecated and so this package continues to satisfy the need for a lightweight package
+		providing the SHA1 hash algorithm without any dependencies on packages other than
+		@base@ and @bytestring@.
+		
+		Consequently, this package can be used as a drop-in replacement for @cryptohash@&#39;s
+		&quot;Crypto.Hash.SHA1&quot; module, though with a clearly smaller footprint.
+	</longdescription>
+</pkgmetadata>

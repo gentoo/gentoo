@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit gnome2-utils qmake-utils
+inherit qmake-utils xdg-utils
 
-if [[ ${PV} == "9999" ]]; then
+if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/ricochet-im/ricochet"
 else
@@ -31,12 +31,13 @@ RDEPEND="
 	dev-qt/qtquickcontrols:5
 	dev-qt/qtwidgets:5
 	net-vpn/tor"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig"
 
 src_prepare() {
-	eapply_user
+	default
 
 	# workaround bug https://github.com/ricochet-im/ricochet/issues/582
 	cp contrib/usr.bin.ricochet-apparmor contrib/usr.bin.ricochet
@@ -56,9 +57,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

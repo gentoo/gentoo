@@ -11,7 +11,7 @@ HOMEPAGE="https://libjpeg-turbo.org/ https://sourceforge.net/projects/libjpeg-tu
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 	mirror://gentoo/libjpeg8_8d-2.debian.tar.gz"
 
-LICENSE="BSD IJG"
+LICENSE="BSD IJG ZLIB"
 SLOT="0"
 [[ "$(ver_cut 3)" -ge 90 ]] || \
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
@@ -77,7 +77,16 @@ multilib_src_configure() {
 		-DWITH_JAVA="$(multilib_native_usex java)"
 		-DWITH_MEM_SRCDST=ON
 	)
+
 	[[ ${ABI} == "x32" ]] && mycmakeargs+=( -DREQUIRE_SIMD=OFF ) #420239
+
+	if use ppc ; then
+		# Workaround recommended by upstream:
+		# https://bugs.gentoo.org/715406#c9
+		# https://github.com/libjpeg-turbo/libjpeg-turbo/issues/428
+		mycmakeargs+=( -DFLOATTEST="64bit" )
+	fi
+
 	cmake_src_configure
 }
 

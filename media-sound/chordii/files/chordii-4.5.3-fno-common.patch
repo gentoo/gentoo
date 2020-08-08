@@ -1,0 +1,31 @@
+--- a/src/chordii.c
++++ b/src/chordii.c
+@@ -19,6 +19,8 @@
+ 
+ static FILE *source_fd;
+ 
++struct kcs dummy_kcs;
++
+ char
+ 	text_line[MAXLINE],	/* Lyrics Buffer */
+ 	chord[MAXTOKEN],	/* Buffer for the name of the chord */
+--- a/src/chordii.h
++++ b/src/chordii.h
+@@ -67,7 +67,7 @@
+ #define CHORD_EASY	0
+ #define CHORD_HARD	1
+ 
+-struct kcs {
++extern struct kcs {
+ 	struct	kcs *next;
+ 	char	chord_name[CHORD_NAME_SZ];
+ 	int	displ;
+@@ -76,7 +76,7 @@
+ 	int	difficult;
+ 	} dummy_kcs;
+ 
+-struct chord_struct {
++typedef struct chord_struct {
+ 	struct chord_struct *next;
+ 	struct kcs *chord;
+ 	} dummy_chord_struct;

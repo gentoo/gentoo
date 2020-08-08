@@ -39,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.4.33-unistd.patch
 	"${FILESDIR}"/${PN}-5.4.33-check-crypt-return-value-for-NULL.patch
 	"${FILESDIR}"/${PN}-5.4.33-use-proper-printf-format-strings.patch
+	"${FILESDIR}"/${PN}-5.4.33-vpgsql-onchange.patch
 )
 DOCS=(
 	ChangeLog

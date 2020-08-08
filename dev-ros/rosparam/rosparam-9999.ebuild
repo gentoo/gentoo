@@ -15,7 +15,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/rosgraph[${PYTHON_USEDEP}]
-	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-ros/rosgraph[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep "dev-python/pyyaml[\${PYTHON_USEDEP}]")
 "
 DEPEND="${RDEPEND}"

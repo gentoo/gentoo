@@ -4,9 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-01)
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-08-03)
 # dev-qt/qtquicktimeline-5.15.0 not yet stable, bug 711120
-dev-qt/qt-creator qmldesigner
+# dev-libs/libclangformat-ide not stable and unclear maintainer, bug 711120
+>=dev-qt/qt-creator-4.12 clang qmldesigner
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-06)
 # dev-python/wxpython:4.0 w/ py3 is not stable, bug #714566
@@ -105,10 +106,6 @@ app-admin/sudo sssd
 # app-misc/ddcutil is not yet stable.
 kde-plasma/powerdevil brightness-control
 
-# Michał Górny <mgorny@gentoo.org> (2018-06-07)
-# sys-libs/netbsd-csu not stable yet.
-sys-devel/clang-runtime crt
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-06-01)
 # Needs dev-ruby/asciidoctor which has a lot of unstable deps
 net-analyzer/wireshark doc
@@ -173,12 +170,6 @@ kde-apps/cantor julia
 # Brian Dolbec <dolsen@gentoo.org> (2017-02-14)
 # This is stable masked as g-sorcery is being not actively developed.
 app-portage/layman g-sorcery
-
-# David Seifert <soap@gentoo.org> (2017-02-12)
-# Unknown future, stable deps are hopelessly
-# broken, only allow for unstable keywords
-# Bug: #581058
-net-misc/asterisk osplookup
 
 # Michael Palimaka <kensington@gentoo.org (2017-01-26)
 # Requires testing version of media-libs/opencv

@@ -16,7 +16,7 @@ case ${PV} in
 	inherit git-r3
 	;;
 *)
-	CODENAME="Leia"
+	CODENAME="Matrix"
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://github.com/xbmc/screensaver.greynetic/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/screensaver.greynetic-${PV}-${CODENAME}"
@@ -28,5 +28,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
+	media-libs/glm
 	~media-tv/kodi-9999
+	virtual/opengl
 	"

@@ -7,6 +7,7 @@
 -dev-util/cbindgen
 -media-video/rav1e
 -net-news/newsboat
+-net-libs/quiche
 
 # Sam James <sam@gentoo.org> (2020-06-24)
 # Valgrind works on ARMv7

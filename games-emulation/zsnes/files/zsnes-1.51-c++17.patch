@@ -1,0 +1,76 @@
+--- a/jma/jma.cpp
++++ b/jma/jma.cpp
+@@ -48,7 +48,7 @@ namespace JMA
+ 
+ 
+   //Retreive the file block, what else?
+-  void jma_open::retrieve_file_block() throw(jma_errors)
++  void jma_open::retrieve_file_block()
+   {
+     unsigned char uint_buffer[UINT_SIZE];
+     unsigned char ushort_buffer[USHORT_SIZE];
+@@ -168,7 +168,7 @@ namespace JMA
+   }
+ 
+   //Constructor for opening JMA files for reading
+-  jma_open::jma_open(const char *compressed_file_name) throw (jma_errors)
++  jma_open::jma_open(const char *compressed_file_name)
+   {
+     decompressed_buffer = 0;
+     compressed_buffer = 0;
+@@ -229,7 +229,7 @@ namespace JMA
+   }
+ 
+   //Skip forward a given number of chunks
+-  void jma_open::chunk_seek(unsigned int chunk_num) throw(jma_errors)
++  void jma_open::chunk_seek(unsigned int chunk_num)
+   {
+     //Check the stream is open
+     if (!stream.is_open())
+@@ -257,7 +257,7 @@ namespace JMA
+ 
+   //Return a vector of pointers to each file in the JMA, the buffer to hold all the files
+   //must be initilized outside.
+-  vector<unsigned char *> jma_open::get_all_files(unsigned char *buffer) throw(jma_errors)
++  vector<unsigned char *> jma_open::get_all_files(unsigned char *buffer)
+   {
+     //If there's no stream we can't read from it, so exit
+     if (!stream.is_open())
+@@ -396,7 +396,7 @@ namespace JMA
+   }
+ 
+   //Extracts the file with a given name found in the archive to the given buffer
+-  void jma_open::extract_file(string& name, unsigned char *buffer) throw(jma_errors)
++  void jma_open::extract_file(string& name, unsigned char *buffer)
+   {
+     if (!stream.is_open())
+     {
+--- a/jma/jma.h
++++ b/jma/jma.h
+@@ -64,12 +64,12 @@ namespace JMA
+   class jma_open
+   {
+     public:
+-    jma_open(const char *) throw(jma_errors);
++    jma_open(const char *);
+     ~jma_open();
+ 
+     std::vector<jma_public_file_info> get_files_info();
+-    std::vector<unsigned char *> get_all_files(unsigned char *) throw(jma_errors);
+-    void extract_file(std::string& name, unsigned char *) throw(jma_errors);
++    std::vector<unsigned char *> get_all_files(unsigned char *);
++    void extract_file(std::string& name, unsigned char *);
+     bool is_solid();
+ 
+     private:
+@@ -79,8 +79,8 @@ namespace JMA
+     unsigned char *decompressed_buffer;
+     unsigned char *compressed_buffer;
+ 
+-    void chunk_seek(unsigned int) throw(jma_errors);
+-    void retrieve_file_block() throw(jma_errors);
++    void chunk_seek(unsigned int);
++    void retrieve_file_block();
+   };
+ 
+   const char *jma_error_text(jma_errors);

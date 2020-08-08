@@ -16,7 +16,7 @@ DEPEND+=" x11-libs/cairo"
 RDEPEND+=" x11-libs/cairo"
 
 ruby_add_rdepend "dev-ruby/rcairo
-	>=dev-ruby/ruby-glib2-${PV}"
+	~dev-ruby/ruby-glib2-${PV}"
 
 all_ruby_prepare() {
 	# Avoid unneeded dependency on test-unit-notify.

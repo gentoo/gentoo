@@ -14,18 +14,18 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-python/matplotlib[${PYTHON_USEDEP}]
-	dev-python/pyqtgraph[${PYTHON_USEDEP}]
-	dev-python/rospkg[${PYTHON_USEDEP}]
-	dev-python/numpy[${PYTHON_USEDEP}]
-	dev-ros/qt_gui_py_common[${PYTHON_USEDEP}]
-	dev-ros/rosgraph[${PYTHON_USEDEP}]
-	dev-ros/rostopic[${PYTHON_USEDEP}]
-	dev-ros/rqt_gui[${PYTHON_USEDEP}]
-	dev-ros/rqt_gui_py[${PYTHON_USEDEP}]
-	dev-ros/rqt_py_common[${PYTHON_USEDEP}]
-	dev-ros/roslib[${PYTHON_USEDEP}]
-	>=dev-ros/python_qt_binding-0.2.19[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep "dev-python/matplotlib[\${PYTHON_USEDEP}]")
+	$(python_gen_cond_dep "dev-python/pyqtgraph[\${PYTHON_USEDEP}]")
+	$(python_gen_cond_dep "dev-python/rospkg[\${PYTHON_USEDEP}]")
+	$(python_gen_cond_dep "dev-python/numpy[\${PYTHON_USEDEP}]")
+	dev-ros/qt_gui_py_common[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rosgraph[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rostopic[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rqt_gui[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rqt_gui_py[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rqt_py_common[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
+	>=dev-ros/python_qt_binding-0.2.19[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/std_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"

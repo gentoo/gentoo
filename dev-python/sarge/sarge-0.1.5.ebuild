@@ -11,7 +11,7 @@ MY_P="${MY_PN}-${PV}.post0"
 S=$WORKDIR/$MY_P
 
 DESCRIPTION="wrapper for subprocess which provides command pipeline functionality"
-HOMEPAGE="http://sarge.readthedocs.org/"
+HOMEPAGE="https://sarge.readthedocs.org/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

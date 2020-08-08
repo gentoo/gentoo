@@ -14,8 +14,8 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/bond[${PYTHON_USEDEP}]
-	dev-ros/rospy[${PYTHON_USEDEP}]
+	dev-ros/bond[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/smclib
 	sys-apps/util-linux
 "

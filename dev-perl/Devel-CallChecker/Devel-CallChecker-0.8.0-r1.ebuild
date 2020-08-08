@@ -32,6 +32,10 @@ BDEPEND="${RDEPEND}
 		virtual/perl-Test-Simple
 	)
 "
+PERL_RM_FILES=(
+	t/pod_cvg.t
+	t/pod_syn.t
+)
 src_configure() {
 	unset LD
 	[[ -n "${CCLD}" ]] && export LD="${CCLD}"

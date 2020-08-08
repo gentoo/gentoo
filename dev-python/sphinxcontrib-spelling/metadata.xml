@@ -7,6 +7,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">sphinxcontrib-spelling</remote-id>
-		<remote-id type="bitbucket">dhellmann/sphinxcontrib-spelling</remote-id>
+		<remote-id type="github">sphinx-contrib/spelling</remote-id>
 	</upstream>
 </pkgmetadata>

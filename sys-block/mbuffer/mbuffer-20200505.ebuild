@@ -11,7 +11,7 @@ SRC_URI="https://www.maier-komor.de/software/mbuffer/${P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="~amd64 arm ~arm64 ~ppc ~x86"
 IUSE="debug ssl test"
 
 REQUIRED_USE="test? ( ssl )"
@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-20180410-sysconfdir.patch"
+	"${FILESDIR}/${PN}-20200505-find-OBJDUMP.patch"
 )
 
 src_prepare() {

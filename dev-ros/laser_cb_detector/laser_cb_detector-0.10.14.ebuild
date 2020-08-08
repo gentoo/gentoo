@@ -17,7 +17,7 @@ IUSE=""
 
 RDEPEND="
 	dev-libs/boost:=[threads]
-	dev-ros/actionlib[${PYTHON_USEDEP}]
+	dev-ros/actionlib[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/cv_bridge
 	media-libs/opencv:=
 	dev-ros/image_cb_detector
@@ -25,5 +25,12 @@ RDEPEND="
 	dev-ros/roscpp
 	dev-ros/settlerlib
 "
-DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/gcc6.patch" "${FILESDIR}/boost170.patch" "${FILESDIR}/ocv4.patch" )
+DEPEND="${RDEPEND}
+	dev-ros/actionlib_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	test? (
+		dev-cpp/gtest
+		media-libs/opencv[png]
+	)
+"
+PATCHES=( "${FILESDIR}/gcc6.patch" "${FILESDIR}/boost170.patch" "${FILESDIR}/ocv4.patch" "${FILESDIR}/ocv4-2.patch" )

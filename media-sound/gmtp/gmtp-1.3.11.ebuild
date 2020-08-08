@@ -1,7 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit gnome2-utils
 
 DESCRIPTION="A simple MTP client for MP3 players"
@@ -11,17 +12,20 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND="dev-libs/glib:2
+RDEPEND="
+	dev-libs/glib:2
 	media-libs/flac
 	media-libs/libid3tag
 	media-libs/libmtp
 	media-libs/libvorbis
 	x11-libs/gtk+:3"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDPEND="
 	sys-devel/gettext
 	virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${PN}-1.3.11-fno-common.patch )
 
 src_configure() {
 	econf --with-gtk3

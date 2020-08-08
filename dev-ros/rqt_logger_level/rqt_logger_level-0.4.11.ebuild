@@ -14,11 +14,11 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-python/rospkg[${PYTHON_USEDEP}]
-	dev-ros/rosnode[${PYTHON_USEDEP}]
-	dev-ros/rosservice[${PYTHON_USEDEP}]
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-ros/rqt_gui[${PYTHON_USEDEP}]
-	dev-ros/rqt_gui_py[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep "dev-python/rospkg[\${PYTHON_USEDEP}]")
+	dev-ros/rosnode[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rosservice[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rqt_gui[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rqt_gui_py[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}"

@@ -14,7 +14,7 @@ SRC_URI="https://github.com/mozart/mozart2/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="emacs test"
 RESTRICT="!test? ( test )"
 

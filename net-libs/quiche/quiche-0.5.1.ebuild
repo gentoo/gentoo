@@ -117,7 +117,7 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	CRATES+=" ${P//_/-}"
 	SRC_URI="$(cargo_crate_uris ${CRATES})"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 	S="${WORKDIR}/${P//_/-}"
 fi
 

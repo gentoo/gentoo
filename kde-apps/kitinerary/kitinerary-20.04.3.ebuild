@@ -15,7 +15,7 @@ HOMEPAGE="https://kde.org/applications/office/org.kde.kontact"
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE="+barcode pdf"
 
 DEPEND="
@@ -34,6 +34,8 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!<kde-apps/kdepim-addons-18.07.80
 "
+
+PATCHES=( "${FILESDIR}/${P}-poppler-20.08.patch" ) # bug 735800
 
 src_configure() {
 	local mycmakeargs=(

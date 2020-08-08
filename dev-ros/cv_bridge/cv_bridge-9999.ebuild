@@ -15,11 +15,16 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/rosconsole
-	>=media-libs/opencv-3:=[contrib(+)]
-	dev-libs/boost:=[threads,python,${PYTHON_USEDEP}]
+	>=media-libs/opencv-3:=[contrib(+),png,jpeg,tiff]
+	$(python_gen_cond_dep "dev-libs/boost:=[threads,python,\${PYTHON_USEDEP}]")
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	test? (
+		dev-cpp/gtest
+		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+	)
 "
 PATCHES=( "${FILESDIR}/boostpython.patch" )

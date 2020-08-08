@@ -9,12 +9,12 @@ PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Simple powerful testing with Python"
-HOMEPAGE="http://pytest.org/"
+HOMEPAGE="https://pytest.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~s390 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

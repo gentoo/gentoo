@@ -3,7 +3,6 @@
 
 # Keep them sorted
 
-3dfx - Enable support for Voodoo chipsets, also called as 3DFX and TDFX
 X - Add support for X11
 Xaw3d - Add support for the 3d athena widget set
 a52 - Enable support for decoding ATSC A/52 streams used in DVD
@@ -161,7 +160,6 @@ latex - Add support for LaTeX (typesetting package)
 lcms - Add lcms support (color management engine)
 ldap - Add LDAP support (Lightweight Directory Access Protocol)
 libass - SRT/SSA/ASS (SubRip / SubStation Alpha) subtitle support
-libav - Prefer libav over ffmpeg whenever both are supported
 libcaca - Add support for colored ASCII-art graphics
 libedit - Use the libedit library (replacement for readline)
 libffi - Enable support for Foreign Function Interface library

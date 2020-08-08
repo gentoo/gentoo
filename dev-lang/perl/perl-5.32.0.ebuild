@@ -51,8 +51,7 @@ LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0/${SUBSLOT}"
 
 if [[ "${PV##*.}" != "9999" ]] && [[ "${PV/rc//}" == "${PV}" ]] ; then
-#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 IUSE="berkdb debug doc gdbm ithreads"
@@ -76,20 +75,19 @@ PDEPEND="
 S="${WORKDIR}/${MY_P}"
 
 dual_scripts() {
-	src_remove_dual      perl-core/Archive-Tar        2.320.0       ptar ptardiff ptargrep
-	src_remove_dual      perl-core/CPAN               2.220.0       cpan
+	src_remove_dual      perl-core/Archive-Tar        2.360.0       ptar ptardiff ptargrep
+	src_remove_dual      perl-core/CPAN               2.270.0       cpan
 	src_remove_dual      perl-core/Digest-SHA         6.20.0        shasum
-	src_remove_dual      perl-core/Encode             3.10.0        enc2xs piconv
-	src_remove_dual      perl-core/ExtUtils-MakeMaker 7.340.0       instmodsh
+	src_remove_dual      perl-core/Encode             3.60.0        enc2xs piconv
+	src_remove_dual      perl-core/ExtUtils-MakeMaker 7.440.0       instmodsh
 	src_remove_dual      perl-core/ExtUtils-ParseXS   3.400.0       xsubpp
-	src_remove_dual      perl-core/IO-Compress        2.84.0        zipdetails
-	src_remove_dual      perl-core/JSON-PP            4.20.0        json_pp
-	src_remove_dual      perl-core/Module-CoreList    5.202.6.13.0_rc corelist
-	src_remove_dual      perl-core/Pod-Parser         1.630.0       pod2usage podchecker podselect
+	src_remove_dual      perl-core/IO-Compress        2.93.0        zipdetails
+	src_remove_dual      perl-core/JSON-PP            4.40.0        json_pp
+	src_remove_dual      perl-core/Module-CoreList    5.202.6.20    corelist
 	src_remove_dual      perl-core/Pod-Perldoc        3.280.100     perldoc
 	src_remove_dual      perl-core/Test-Harness       3.420.0       prove
-	src_remove_dual      perl-core/podlators          4.110.0       pod2man pod2text
-	src_remove_dual_man  perl-core/podlators          4.110.0       /usr/share/man/man1/perlpodstyle.1
+	src_remove_dual      perl-core/podlators          4.140.0       pod2man pod2text
+	src_remove_dual_man  perl-core/podlators          4.140.0       /usr/share/man/man1/perlpodstyle.1
 }
 
 check_rebuild() {

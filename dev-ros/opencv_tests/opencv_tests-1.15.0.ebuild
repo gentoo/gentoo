@@ -14,10 +14,10 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/cv_bridge[${PYTHON_USEDEP}]
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	media-libs/opencv[python,${PYTHON_USEDEP}]
-	dev-python/numpy[${PYTHON_USEDEP}]
+	dev-ros/cv_bridge[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep "media-libs/opencv[python,\${PYTHON_USEDEP}]")
+	$(python_gen_cond_dep "dev-python/numpy[\${PYTHON_USEDEP}]")
 "
 DEPEND="${RDEPEND}"
 

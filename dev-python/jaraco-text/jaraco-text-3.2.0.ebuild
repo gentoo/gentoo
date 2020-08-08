@@ -22,7 +22,7 @@ RDEPEND="
 	dev-python/jaraco-functools[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	>=dev-python/namespace-jaraco-2[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' python{2_7,3_{5,6}})
+	$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' python3_6)
 "
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]

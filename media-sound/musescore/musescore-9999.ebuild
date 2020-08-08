@@ -5,14 +5,21 @@ EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 CHECKREQS_DISK_BUILD=3500M
-inherit git-r3 cmake xdg check-reqs
+inherit cmake xdg check-reqs
+
+if [[ ${PV} == "9999" ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/${PN}/MuseScore.git"
+else
+	SRC_URI="https://github.com/musescore/MuseScore/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/MuseScore-${PV}"
+fi
 
 DESCRIPTION="WYSIWYG Music Score Typesetter"
 HOMEPAGE="https://musescore.org/"
-# MuseScore_General-0.1.3.tar.bz2 packaged from https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/
+# MuseScore_General-*.tar.bz2 packaged from https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/
 # It has to be repackaged because the files are not versioned, current version can be found in VERSION file there.
-SRC_URI="https://dev.gentoo.org/~fordfrog/distfiles/MuseScore_General-0.1.8.tar.bz2"
-EGIT_REPO_URI="https://github.com/${PN}/MuseScore.git"
+SRC_URI+=" https://dev.gentoo.org/~fordfrog/distfiles/MuseScore_General-0.2.0.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -59,8 +66,12 @@ PATCHES=(
 )
 
 src_unpack() {
-	git-r3_src_unpack
-	unpack ${A}
+	if [[ ${PV} == "9999" ]]; then
+		git-r3_src_unpack
+		unpack ${A}
+	else
+		default
+	fi
 }
 
 src_prepare() {
