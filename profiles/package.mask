@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2020-08-08)
+# Last release in 2007, HOMEPAGE dead.
+# Removal in 30 days. bug #736322
+media-sound/specimen
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2020-08-08)
 # Last release in 2010.
 # Removal in 30 days. bug #736300
 media-sound/jackbeat
