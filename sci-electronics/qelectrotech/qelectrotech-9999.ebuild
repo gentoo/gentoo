@@ -28,6 +28,8 @@ RDEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
+	kde-frameworks/kcoreaddons:5
+	kde-frameworks/kwidgetsaddons:5
 "
 DEPEND="${RDEPEND}"
 
