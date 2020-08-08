@@ -3054,8 +3054,6 @@ dev-vcs/cvs2svn:bazaar - Support for dev-vcs/bzr
 dev-vcs/cvsync:gcrypt - Use dev-libs/libgcrypt for hash functions.
 dev-vcs/cvsync:mhash - Use app-crypt/mhash for hash functions.
 dev-vcs/cvsync:openssl - Use dev-libs/openssl for hash functions.
-dev-vcs/darcs:diff - Use 'lcs' for diff building.
-dev-vcs/darcs:http - Use the pure Haskell HTTP package for HTTP support.
 dev-vcs/darcs:network-uri - Get Network.URI from the network-uri package.
 dev-vcs/darcs:terminfo - Use the terminfo package for enhanced console support.
 dev-vcs/darcs:threaded - Use threading and SMP support.
