@@ -6,6 +6,7 @@ EAPI=7
 inherit autotools
 
 MY_P="abcMIDI-${PV}"
+
 DESCRIPTION="Programs for processing ABC music notation files"
 HOMEPAGE="https://ifdo.ca/~seymour/runabc/top.html"
 SRC_URI="https://ifdo.ca/~seymour/runabc/${MY_P}.zip"
@@ -13,14 +14,17 @@ SRC_URI="https://ifdo.ca/~seymour/runabc/${MY_P}.zip"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 S=${WORKDIR}/${PN}
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2016.05.05-docs.patch
+	"${FILESDIR}"/${PN}-2016.05.05-fno-common.patch
+)
+
 src_prepare() {
-	local PATCHES=( "${FILESDIR}"/${PN}-2016.05.05-docs.patch )
 	default
 
 	rm configure Makefile || die
@@ -33,8 +37,7 @@ src_install() {
 	default
 	dodoc doc/{AUTHORS,CHANGES,abcguide.txt,abcmatch.txt,history.txt,readme.txt,yapshelp.txt}
 
-	if use examples ; then
-		docinto examples
-		dodoc samples/*.abc
-	fi
+	docinto examples
+	dodoc samples/*.abc
+	docompress -x /usr/share/doc/${PF}/examples
 }

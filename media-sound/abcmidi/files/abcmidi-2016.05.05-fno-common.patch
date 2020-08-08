@@ -1,0 +1,23 @@
+--- a/drawtune.c
++++ b/drawtune.c
+@@ -75,7 +75,8 @@
+ int rootstem;
+ int fontsize, fontnum;
+ int donemeter;
+-int ingrace, inchord;
++extern int ingrace;
++int inchord;
+ int chordcount;
+ struct feature* chordhead;
+ 
+--- a/toabc.c
++++ b/toabc.c
+@@ -85,7 +85,7 @@
+ int new_key_number;  /* used for gchord transposition */
+ int oldtable[7], newtable[7]; /* for handling transposition */
+ int inchord; /* are we in a chord [ ] ? */
+-int ingrace; /* are we in a grace note set { } ? */
++extern int ingrace; /* are we in a grace note set { } ? */
+ int chordcount; /* number of notes or rests in current chord */
+ int inlinefield; /* boolean - are we in [<field>: ] ? */
+ int cleanup; /* boolean to indicate -u option (update notation) */
