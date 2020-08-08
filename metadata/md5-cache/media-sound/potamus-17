@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure postinst postrm preinst prepare
+DEPEND=x11-libs/gtk+:2 gnome-base/libglade media-libs/libsamplerate media-video/ffmpeg:0= ao? ( media-libs/libao ) audiofile? ( media-libs/audiofile ) flac? ( media-libs/flac ) jack? ( virtual/jack ) mad? ( media-libs/libmad ) modplug? ( media-libs/libmodplug ) opus? ( media-libs/opusfile ) vorbis? ( media-libs/libvorbis ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=A lightweight audio player with a simple interface and an emphasis on high audio quality
+EAPI=7
+HOMEPAGE=http://offog.org/code/potamus/
+IUSE=+ao audiofile flac jack mad modplug opus vorbis
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:2 gnome-base/libglade media-libs/libsamplerate media-video/ffmpeg:0= ao? ( media-libs/libao ) audiofile? ( media-libs/audiofile ) flac? ( media-libs/flac ) jack? ( virtual/jack ) mad? ( media-libs/libmad ) modplug? ( media-libs/libmodplug ) opus? ( media-libs/opusfile ) vorbis? ( media-libs/libvorbis )
+SLOT=0
+SRC_URI=http://offog.org/files/potamus-17.tar.gz
+_eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=97ac7a1bb9de2d396d87b7ca5a632214
