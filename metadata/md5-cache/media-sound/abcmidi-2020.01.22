@@ -1,13 +1,11 @@
-BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=app-arch/unzip >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=install prepare
-DEPEND=app-arch/unzip
 DESCRIPTION=Programs for processing ABC music notation files
 EAPI=7
 HOMEPAGE=https://ifdo.ca/~seymour/runabc/top.html
-IUSE=examples
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=https://ifdo.ca/~seymour/runabc/abcMIDI-2020.01.22.zip
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=a0247c92f5ed6553a8e721a1a2e92137
+_md5_=e46e56b7e49c71fd7dd86b717434d943
