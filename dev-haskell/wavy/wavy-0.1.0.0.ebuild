@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ CABAL_FEATURES="bin lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Process WAVE files in Haskell"
-HOMEPAGE="https://bitbucket.org/robertmassaioli/wavy"
+HOMEPAGE="http://bitbucket.org/robertmassaioli/wavy"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -27,7 +27,10 @@ DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.18.1.3
 "
 
-PATCHES=("${FILESDIR}"/${P}-binary-0.8.patch)
+PATCHES=(
+	"${FILESDIR}"/${P}-binary-0.8.patch
+	"${FILESDIR}"/${P}-ghc-8.8.patch
+)
 
 src_prepare() {
 	default
