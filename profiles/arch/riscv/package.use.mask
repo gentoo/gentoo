@@ -3,11 +3,8 @@
 
 # Mikle Kolyada <zlogene@gentoo.org>
 # not yet
+dev-python/jinja doc test
 dev-python/markupsafe test
-
-# Mikle Kolyada <zlogene@gentoo.org>
-# Not yet keyworded
-sys-auth/pambase python_targets_python3_8 python_targets_python3_9 python_single_target_python3_8 python_single_target_python3_9
 
 # Sam James <sam@gentoo.org> (2020-07-31)
 # Large amount of missing keywords for cmake and friends
