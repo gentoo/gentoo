@@ -1,0 +1,23 @@
+From aec5ed41122b1a900c6fe0a3ddc11656c150b6d5 Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conrad@kostecki.com>
+Date: Tue, 24 Sep 2019 00:01:59 +0200
+Subject: [PATCH] inc/functions.inc.php: add double quote for whitelist
+
+Signed-off-by: Conrad Kostecki <conrad@kostecki.com>
+---
+ inc/functions.inc.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/inc/functions.inc.php b/inc/functions.inc.php
+index 376b6e1..48336fb 100644
+--- a/inc/functions.inc.php
++++ b/inc/functions.inc.php
+@@ -34,7 +34,7 @@ function GET($index = NULL, $value = NULL) {
+ 		case 'h': # host
+ 		case 'pi': # plugin instance
+ 		case 'ti': # type instance
+-			if (!preg_match('/^[\w\-.: ]+$/u', $value)) {
++			if (!preg_match('/^[\w\-.:" ]+$/u', $value)) {
+ 				error_log(sprintf('Invalid %s in $_GET["%s"]: "%s"', $desc[$index], $index, $value));
+ 				return NULL;
+ 			}
