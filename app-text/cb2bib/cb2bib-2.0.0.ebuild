@@ -43,6 +43,11 @@ src_configure() {
 		$(use !lzo && echo -config disable_lzo)
 }
 
+src_compile() {
+	# bug #709940
+	emake -j1
+}
+
 src_install() {
 	emake INSTALL_ROOT="${D}" install
 	einstalldocs
