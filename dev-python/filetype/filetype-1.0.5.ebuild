@@ -3,18 +3,18 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
 DESCRIPTION="Small, dependency-free, fast Python package to infer binary file types checking"
 HOMEPAGE="https://github.com/h2non/filetype.py"
-LICENSE="BSD"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64"
 
-BDEPEND=""
-RDEPEND=""
-
 PATCHES=( "${FILESDIR}/${P}-examples.patch" )
+
+distutils_enable_tests unittest
