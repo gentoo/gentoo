@@ -1,5 +1,5 @@
 diff --git a/src/sndpeek/makefile.alsa b/src/sndpeek/makefile.alsa
-index a0f76ba..1b7a21f 100644
+index a0f76ba..e50cf82 100644
 --- a/src/sndpeek/makefile.alsa
 +++ b/src/sndpeek/makefile.alsa
 @@ -1,10 +1,10 @@
@@ -12,95 +12,98 @@ index a0f76ba..1b7a21f 100644
  MARSYAS_DIR=../marsyas/
 -CFLAGS=-D__LINUX_ALSA__ -D__LITTLE_ENDIAN__ -D__USE_GLUT__ $(INCLUDES) -O3 -c
 -LIBS=-L/usr/X11R6/lib -lglut -lGL -lGLU -lasound -lXmu -lX11 -lXext -lXi -lm -lsndfile
-+CFLAGS=-D__LINUX_ALSA__ -D__LITTLE_ENDIAN__ -D__USE_GLUT__ $(INCLUDES) -c
++CFLAGS_MAIN=-D__LINUX_ALSA__ -D__LITTLE_ENDIAN__ -D__USE_GLUT__ $(INCLUDES) -c
 +LIBS=-L/usr/X11R6/lib -lpthread -lstdc++ -lglut -lGL -lGLU -lasound -lXmu -lX11 -lXext -lXi -lm -lsndfile
  
  OBJS=chuck_fft.o RtAudio.o Thread.o sndpeek.o Stk.o \
  	Centroid.o DownSampler.o Flux.o LPC.o MFCC.o RMS.o Rolloff.o \
-@@ -12,55 +12,55 @@ OBJS=chuck_fft.o RtAudio.o Thread.o sndpeek.o Stk.o \
+@@ -12,55 +12,58 @@ OBJS=chuck_fft.o RtAudio.o Thread.o sndpeek.o Stk.o \
  	MagFFT.o NormRMS.o MarSignal.o fmatrix.o
  
  sndpeek: $(OBJS)
 -	$(CPP) -o $@ $(OBJS) $(LIBS)
 +	$(CXX) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
++
++chuck_fft.o:
++	$(CC) $(CFLAGS_MAIN) $(CFLAGS) $*.c
  
  Centroid.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  DownSampler.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  Flux.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  LPC.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  MFCC.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  RMS.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  Rolloff.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  System.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  fvec.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  AutoCorrelation.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  Communicator.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  Hamming.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  MagFFT.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  NormRMS.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  MarSignal.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  fmatrix.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  .o: $*.h
  
-@@ -68,7 +68,7 @@ fmatrix.o:
+@@ -68,7 +71,7 @@ fmatrix.o:
  	$(CC) $(CFLAGS) $*.c
  
  .cpp.o: $*.h $*.cpp
 -	$(CC) $(CFLAGS) $*.cpp
-+	$(CXX) $(CFLAGS) $*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $*.cpp
  
  clean: 
  	rm -f sndpeek *~ *.o
 diff --git a/src/sndpeek/makefile.jack b/src/sndpeek/makefile.jack
-index ec15276..86be1e7 100644
+index ec15276..70fa6e3 100644
 --- a/src/sndpeek/makefile.jack
 +++ b/src/sndpeek/makefile.jack
 @@ -1,8 +1,8 @@
@@ -111,94 +114,97 @@ index ec15276..86be1e7 100644
  INCLUDES=-I../marsyas/
  MARSYAS_DIR=../marsyas/
 -CFLAGS=-D__LINUX_JACK__ -D__LITTLE_ENDIAN__ -D__USE_GLUT__ $(INCLUDES) -O3 -c
-+CFLAGS=-D__LINUX_JACK__ -D__LITTLE_ENDIAN__ -D__USE_GLUT__ $(INCLUDES) -c
++CFLAGS_MAIN=-D__LINUX_JACK__ -D__LITTLE_ENDIAN__ -D__USE_GLUT__ $(INCLUDES) -c
  LIBS=-L/usr/X11R6/lib -lpthread -lstdc++ -lglut -lGL -lGLU -lasound -ljack -lXmu -lX11 -lXext -lXi -lm -lsndfile
  
  OBJS=chuck_fft.o RtAudio.o Thread.o sndpeek.o Stk.o \
-@@ -11,55 +11,55 @@ OBJS=chuck_fft.o RtAudio.o Thread.o sndpeek.o Stk.o \
+@@ -11,55 +11,58 @@ OBJS=chuck_fft.o RtAudio.o Thread.o sndpeek.o Stk.o \
  	MagFFT.o NormRMS.o MarSignal.o fmatrix.o
  
  sndpeek: $(OBJS)
 -	$(CPP) -o $@ $(OBJS) $(LIBS)
 +	$(CXX) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
++
++chuck_fft.o:
++	$(CC) $(CFLAGS_MAIN) $(CFLAGS) $*.c
  
  Centroid.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  DownSampler.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  Flux.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  LPC.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  MFCC.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  RMS.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  Rolloff.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  System.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  fvec.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  AutoCorrelation.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  Communicator.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  Hamming.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  MagFFT.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  NormRMS.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  MarSignal.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  fmatrix.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  .o: $*.h
  
-@@ -67,7 +67,7 @@ fmatrix.o:
+@@ -67,7 +70,7 @@ fmatrix.o:
  	$(CC) $(CFLAGS) $*.c
  
  .cpp.o: $*.h $*.cpp
 -	$(CC) $(CFLAGS) $*.cpp
-+	$(CXX) $(CFLAGS) $*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $*.cpp
  
  clean: 
  	rm -f sndpeek *~ *.o
 diff --git a/src/sndpeek/makefile.oss b/src/sndpeek/makefile.oss
-index f092df2..d5768aa 100644
+index f092df2..3ef005c 100644
 --- a/src/sndpeek/makefile.oss
 +++ b/src/sndpeek/makefile.oss
 @@ -1,8 +1,8 @@
@@ -209,89 +215,92 @@ index f092df2..d5768aa 100644
  INCLUDES=-I../marsyas/
  MARSYAS_DIR=../marsyas/
 -CFLAGS=-D__LINUX_OSS__ -D__LITTLE_ENDIAN__ -D__USE_GLUT__ $(INCLUDES) -O3 -c
-+CFLAGS=-D__LINUX_OSS__ -D__LITTLE_ENDIAN__ -D__USE_GLUT__ $(INCLUDES) -c
++CFLAGS_MAIN=-D__LINUX_OSS__ -D__LITTLE_ENDIAN__ -D__USE_GLUT__ $(INCLUDES) -c
  LIBS=-L/usr/X11R6/lib -lpthread -lstdc++ -lglut -lGL -lGLU -lXmu -lX11 -lXext -lXi -lm -lsndfile
  
  TARGE=sndpeek
-@@ -12,55 +12,55 @@ OBJS=chuck_fft.o RtAudio.o Thread.o sndpeek.o Stk.o \
+@@ -12,55 +12,58 @@ OBJS=chuck_fft.o RtAudio.o Thread.o sndpeek.o Stk.o \
  	MagFFT.o NormRMS.o MarSignal.o fmatrix.o
  
  sndpeek: $(OBJS)
 -	$(CPP) -o $@ $(OBJS) $(LIBS)
 +	$(CXX) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
++
++chuck_fft.o:
++	$(CC) $(CFLAGS_MAIN) $(CFLAGS) $*.c
  
  Centroid.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  DownSampler.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  Flux.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  LPC.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  MFCC.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  RMS.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  Rolloff.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  System.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  fvec.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  AutoCorrelation.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  Communicator.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  Hamming.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  MagFFT.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  NormRMS.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  MarSignal.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  fmatrix.o:
 -	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
-+	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
  
  .o: $*.h
  
-@@ -68,7 +68,7 @@ fmatrix.o:
+@@ -68,7 +71,7 @@ fmatrix.o:
  	$(CC) $(CFLAGS) $*.c
  
  .cpp.o: $*.h $*.cpp
 -	$(CC) $(CFLAGS) $*.cpp
-+	$(CXX) $(CFLAGS) $*.cpp
++	$(CXX) $(CFLAGS_MAIN) $(CFLAGS) $*.cpp
  
  clean: 
  	rm -f sndpeek *~ *.o
