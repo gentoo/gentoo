@@ -5226,7 +5226,7 @@ dev-libs/cdk 5.0.20160131: A library of curses widgets
 dev-libs/cereal 1.3.0: Header-only C++11 serialization library
 dev-libs/cgilib 0.7-r1: A simple and lightweight interface to the CGI for C and C++ programs
 dev-libs/cgreen 1.3.0: Unit test and mocking framework for C and C++
-dev-libs/check 0.14.0-r2 0.15.0: A unit test framework for C
+dev-libs/check 0.14.0-r2 0.15.0 0.15.2: A unit test framework for C
 dev-libs/chmlib 0.40-r1: Library for MS CHM (compressed html) file format
 dev-libs/cl 1.2.3 1.2.4 9999: OpenCL bindings for Erlang
 dev-libs/clhpp 2.0.11-r1 2.0.12: Khronos OpenCL C++ bindings
@@ -12298,7 +12298,7 @@ kde-misc/plasma-pass 1.1.0: Plasma applet to access password from pass
 kde-misc/playbar2 2.5-r1: MPRIS2 client, written in QML for Plasma 5
 kde-misc/rsibreak 0.12.13: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.2.0: Simple image scanning application based on libksane and KDE Frameworks
-kde-misc/tellico 3.3.1: Collection manager based on KDE Frameworks
+kde-misc/tellico 3.3.1 3.3.2: Collection manager based on KDE Frameworks
 kde-misc/ultimate-gmail-feed 2.1: Plasma 5 widget showing your Gmail feed
 kde-misc/wacomtablet 3.2.0: System settings module for Wacom tablets
 kde-misc/zanshin 0.5.71-r1: Getting things done application by KDE
@@ -12841,7 +12841,7 @@ media-gfx/jpegpixi 1.1.1: almost lossless JPEG pixel interpolator, for correctin
 media-gfx/jpegtoavi 1.5: JPEG to AVI/MJPEG animation command-line conversion tool
 media-gfx/kcoloredit 2.0.0_p20171121-r1: Tool for editing color palettes
 media-gfx/kgraphviewer 2.4.3-r1: Graphviz dot graph file viewer
-media-gfx/kphotoalbum 5.6.1: Tool for indexing, searching, and viewing images
+media-gfx/kphotoalbum 5.6.1 5.7.0: Tool for indexing, searching, and viewing images
 media-gfx/krita 4.2.9 4.3.0: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/kuickshow 0.10.1: Image viewer based on KDE Frameworks
 media-gfx/kxstitch 2.2.0: Program to create cross stitch patterns
@@ -12861,7 +12861,7 @@ media-gfx/mscgen 0.20: A message sequence chart generator
 media-gfx/mypaint 1.2.1-r5: fast and easy graphics application for digital painters
 media-gfx/mypaint-brushes 1.3.0-r1: Default MyPaint brushes
 media-gfx/netpaint 1.1.2: curses-based drawing tool
-media-gfx/nomacs 3.14.2: Qt-based image viewer
+media-gfx/nomacs 3.14.2 3.16.224: Qt-based image viewer
 media-gfx/nvidia-cg-toolkit 3.1.0013-r5: NVIDIA's C graphics compiler toolkit
 media-gfx/nvidia-texture-tools 2.0.8-r4: A set of cuda-enabled texture tools and compressors
 media-gfx/openclipart 0.20: Open Clip Art Library (openclipart.org)
@@ -13901,7 +13901,7 @@ media-sound/pulseaudio-modules-bt 1.3-r2 1.4 9999: PulseAudio modules for LDAC, 
 media-sound/pulseeffects 4.7.2-r1 4.7.3 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pulsemixer 1.5.1 9999: CLI and curses mixer for PulseAudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
-media-sound/qastools 0.22.0: Qt5 GUI ALSA tools: mixer, configuration browser
+media-sound/qastools 0.22.0 0.23.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.6.2 9999: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiarp 0.6.4-r1: Arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
@@ -15369,7 +15369,7 @@ net-news/canto-curses 0.9.9: The ncurses client for canto-daemon
 net-news/canto-daemon 0.9.7: Daemon part of Canto-NG RSS reader
 net-news/liferea 1.12.7-r1 1.12.8: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsboat 2.13 2.19-r1: An RSS/Atom feed reader for text terminals
-net-news/quiterss 0.19.3 9999: A Qt-based RSS/Atom feed reader
+net-news/quiterss 0.19.3 0.19.4 9999: Qt-based RSS/Atom feed reader
 net-news/rssguard 3.5.9-r1: Tiny RSS and Atom feed reader
 net-news/rsstail 1.8: A tail-like RSS-reader
 net-news/rsstool 1.0.1_rc2: cmdline tool to read, parse, merge, and write RSS (and Atom) feeds
@@ -16056,7 +16056,7 @@ sci-electronics/pcb 4.2.2: GPL Electronic Design Automation: Printed Circuit Boa
 sci-electronics/petrify 4.2-r1: Synthesize Petri nets into asynchronous circuits
 sci-electronics/puff 20100127-r1: microwave CAD software
 sci-electronics/pulseview 0.4.2 9999: Qt based logic analyzer GUI for sigrok
-sci-electronics/qelectrotech 0.61 9999: Qt5 application to design electric diagrams
+sci-electronics/qelectrotech 0.61 0.70 9999: Qt5 application to design electric diagrams
 sci-electronics/quartus-prime-lite 15.1.0.185-r2 15.1.0.185-r3: Full-featured EDA product for altera devices
 sci-electronics/sigrok-cli 0.7.1-r1 9999: Command-line client for the sigrok logic analyzer software
 sci-electronics/spice 3.5.5-r2: general-purpose circuit simulation program
@@ -18114,7 +18114,7 @@ www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 3.2.1967.41_p1: A browser for our friends
-www-client/vivaldi-snapshot 3.2.1967.38_p1: A browser for our friends
+www-client/vivaldi-snapshot 3.3.2001.3_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.8-r1: AWStats is short for Advanced Web Statistics
