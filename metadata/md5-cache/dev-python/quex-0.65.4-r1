@@ -1,0 +1,14 @@
+BDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] )
+DEFINED_PHASES=install prepare setup
+DESCRIPTION=Mode Oriented Directly Coded Lexical Analyser Generator
+EAPI=7
+HOMEPAGE=http://quex.sourceforge.net/
+IUSE=+python_single_target_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] )
+REQUIRED_USE=^^ ( python_single_target_python2_7 )
+SLOT=0
+SRC_URI=mirror://sourceforge/quex/quex-0.65.4.tar.gz
+_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=0f0560d7ab4b98934e41d0215bd1dba3
