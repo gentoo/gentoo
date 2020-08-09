@@ -2772,8 +2772,8 @@ app-shells/peco 0.5.7: Simplistic interactive filtering tool
 app-shells/posh 0.14.1: Reimplementation of Bourne shell based on pdksh
 app-shells/powerline 2.7-r1 9999: The ultimate statusline/prompt utility.
 app-shells/psh 1.8.1-r3: Combines the interactive nature of a Unix shell with the power of Perl
-app-shells/push 2.0-r1: A POSIX shell function to treat a variable like an array, quoting args
-app-shells/quoter 3.0_p2-r1: Quote arguments or standard input for usage in POSIX shell by eval
+app-shells/push 2.0-r1 3.3: A POSIX shell function to treat a variable like an array, quoting args
+app-shells/quoter 3.0_p2-r1 4.2: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/rc 1.7.4-r1: A reimplementation of the Plan 9 shell
 app-shells/rrs 1.70-r2: Reverse Remote Shell
 app-shells/rush 2.0 2.1: Restricted User Shell
@@ -8081,7 +8081,7 @@ dev-python/docker-pycreds 0.4.0: Python bindings for the docker credentials stor
 dev-python/dockerpty 0.4.1-r1: Python library to use the pseudo-tty of a docker container
 dev-python/docopt 0.6.2-r3: Pythonic argument parser, that will make you smile
 dev-python/doctest-ignore-unicode 0.1.2: Add flag to ignore unicode literal prefixes in doctests
-dev-python/docutils 0.16: Python Documentation Utilities
+dev-python/docutils 0.16 0.16-r1: Python Documentation Utilities
 dev-python/docutils-glep 1.2 9999: Gentoo GLEP support for docutils
 dev-python/dogpile-cache 0.9.1 1.0.1 1.0.2: A locking API for expiring values while a single thread generates a new value.
 dev-python/dogpile-core 0.4.1: Copy-on-write locking mechanism for expensive resources
@@ -12758,7 +12758,7 @@ media-gfx/duhdraw 2.8.13-r1: ASCII art editor
 media-gfx/ebdftopcf 2: Optimally generate PCF files from BDF files
 media-gfx/enblend 4.2.0_p20161007-r1: Image Blending with Multiresolution Splines
 media-gfx/engauge 10.6: Convert an image file showing a graph or map into numbers
-media-gfx/entangle 2.0: Tethered Camera Control & Capture
+media-gfx/entangle 2.0 3.0: Tethered Camera Control & Capture
 media-gfx/eog 3.32.2 3.36.3: The Eye of GNOME image viewer
 media-gfx/eog-plugins 3.26.4-r1 3.26.5: Eye of GNOME plugins
 media-gfx/eom 1.22.2 1.24.0-r2: The MATE image viewer
@@ -13061,7 +13061,7 @@ media-libs/jpeg 9d: Library to load, handle and manipulate images in the JPEG fo
 media-libs/kodi-platform 18.0_pre20180301 18.0_pre20190429 9999: Kodi platform support library
 media-libs/kvazaar 1.2.0-r1 9999: Open-source HEVC encoder
 media-libs/ladspa-cmt 1.16-r4 1.17: CMT (computer music toolkit) LADSPA library plugins
-media-libs/ladspa-sdk 1.13-r2 1.15: The Linux Audio Developer's Simple Plugin API
+media-libs/ladspa-sdk 1.13-r2 1.15-r1: The Linux Audio Developer's Simple Plugin API
 media-libs/lasi 1.1.2: C++ library for postscript stream output
 media-libs/lastfmlib 0.4.0: C++ library to scrobble tracks on Last.fm
 media-libs/lcms 2.9 2.10 2.11: A lightweight, speed optimized color management engine
@@ -14871,7 +14871,7 @@ net-libs/libssh2 1.9.0_p20190913 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 1.2.5 1.2.6: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ for *nix
-net-libs/libtorrent-rasterbar 1.1.14 1.2.6 1.2.7: C++ BitTorrent implementation focusing on efficiency and scalability
+net-libs/libtorrent-rasterbar 1.1.14 1.2.6 1.2.7 1.2.8: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libtrace 4.0.10_p1 4.0.11_p1 4.0.12_p1 4.0.13_p1 4.0.14_p1 99999: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.6.25 1.8.7 1.12.1: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.17.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
