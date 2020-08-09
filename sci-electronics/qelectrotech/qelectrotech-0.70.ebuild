@@ -12,8 +12,8 @@ if [[ ${PV} = *9999* ]]; then
 	inherit subversion
 	ESVN_REPO_URI="svn://svn.tuxfamily.org/svnroot/qet/qet/trunk"
 else
-	MY_P=${PN}-${PV%0}-src
-	SRC_URI="https://download.tuxfamily.org/qet/tags/20180823/${MY_P}.tar.gz"
+	MY_P=qet-${PV/%0/.0}
+	SRC_URI="https://git.tuxfamily.org/qet/qet.git/snapshot/${MY_P}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}"/${MY_P}
 fi
