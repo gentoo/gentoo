@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit flag-o-matic eutils multilib-minimal
 
@@ -21,20 +21,20 @@ RDEPEND="
 	sys-libs/readline:0=
 	>=media-libs/libsndfile-1.0.0
 	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
-	>=media-libs/libsamplerate-0.1.8-r1[${MULTILIB_USEDEP}]
-	!media-sound/jack-cvs"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	doc? ( app-doc/doxygen )"
+	>=media-libs/libsamplerate-0.1.8-r1[${MULTILIB_USEDEP}]"
+DEPEND="${RDEPEND}"
 RDEPEND="${RDEPEND}
 	alsa? ( sys-process/lsof )
 	pam? ( sys-auth/realtime-base )"
-
-src_prepare() {
-	epatch "${FILESDIR}/${PN}-0.125.0-freebsd.patch"
-}
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )"
 
 DOCS=( AUTHORS TODO README )
+
+PATCHES=(
+	"${FILESDIR}/${PN}-0.125.0-freebsd.patch"
+)
 
 multilib_src_configure() {
 	local myconf=""
@@ -69,8 +69,7 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	einstalldocs
 	if use examples; then
-		docinto /usr/share/doc/${PF}
-		doins -r "${S}/example-clients"
+		dodoc -r "${S}/example-clients"
 		docompress -x /usr/share/doc/${PF}/example-clients
 	fi
 }
