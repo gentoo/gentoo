@@ -10870,7 +10870,7 @@ dev-util/spirv-tools 2020.3 9999: Provides an API and commands for processing SP
 dev-util/splint 3.1.2-r1 3.1.2-r2: Check C programs for vulnerabilities and programming mistakes
 dev-util/squashdelta 0.1.1 9999: Efficient (partially uncompressed) SquashFS binary delta tool
 dev-util/squashmerge 0.1 9999: dev-util/squashdelta delta merge tool
-dev-util/statifier 1.7.4: Statifier is a tool for creating portable, self-containing Linux executables
+dev-util/statifier 1.7.4 1.7.4-r1: Statifier is a tool for creating portable, self-containing Linux executables
 dev-util/stepman 0.10.0 0.10.2 0.10.4 0.10.5: Step collection manager for Bitrise CLI
 dev-util/strace 5.3 5.4 5.7 5.8 9999: A useful diagnostic, instructional, and debugging tool
 dev-util/stressapptest 1.0.9: Stressful Application Test
@@ -11339,7 +11339,7 @@ games-fps/doom-data 1.9: The IWAD used by the shareware version of Doom
 games-fps/doomsday 2.1.1-r1: A modern gaming engine for Doom, Heretic, and Hexen
 games-fps/duke3d-data 1.0-r4: Duke Nukem 3D data files
 games-fps/duke3d-demodata 1.3: Duke Nukem 3D 1.3d shareware data
-games-fps/eduke32 20200505.8904: An open source engine port of the classic PC first person shooter Duke Nukem 3D
+games-fps/eduke32 20200808.9208: An open source engine port of the classic PC first person shooter Duke Nukem 3D
 games-fps/etqw-bin 1.5-r2: Enemy Territory: Quake Wars
 games-fps/etqw-data 1.0-r1: Enemy Territory: Quake Wars data files
 games-fps/etqw-demo 2.0_p1-r2: Enemy Territory: Quake Wars demo
