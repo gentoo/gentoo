@@ -1,5 +1,5 @@
 diff --git a/src/Makefile b/src/Makefile
-index c339524..0b8137e 100644
+index c339524..2166624 100644
 --- a/src/Makefile
 +++ b/src/Makefile
 @@ -13,12 +13,12 @@ INSTALL_BINARY_DIR	=	/usr/bin/
@@ -20,7 +20,7 @@ index c339524..0b8137e 100644
  PLUGINS		=	../plugins/amp.so				\
  			../plugins/delay.so				\
  			../plugins/filter.so				\
-@@ -28,7 +28,8 @@ PROGRAMS	=	../bin/analyseplugin				\
+@@ -28,34 +28,25 @@ PROGRAMS	=	../bin/analyseplugin				\
  			../bin/applyplugin 				\
  			../bin/listplugins
  CC		=	cc
@@ -30,9 +30,13 @@ index c339524..0b8137e 100644
  
  ###############################################################################
  #
-@@ -36,26 +37,12 @@ CPP		=	c++
+ # RULES TO BUILD PLUGINS FROM C OR C++ CODE
  #
  
++../plugins/filter.so:	plugins/filter.c ladspa.h gcc_exports.map
++	$(CC) $(CFLAGS) $(INCLUDES) -fPIC -o plugins/filter.o -c plugins/filter.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -o ../plugins/filter.so plugins/filter.o -nostartfiles -shared -lm
++
  ../plugins/%.so:	plugins/%.c ladspa.h gcc_exports.map
 -	$(CC) $(CFLAGS) -o plugins/$*.o -c plugins/$*.c
 -	$(CC)	-o ../plugins/$*.so					\
@@ -61,7 +65,7 @@ index c339524..0b8137e 100644
  
  ###############################################################################
  #
-@@ -66,7 +53,7 @@ test:	/tmp/test.wav ../snd/noise.wav always
+@@ -66,7 +57,7 @@ test:	/tmp/test.wav ../snd/noise.wav always
  	@echo ---------------------------------------------
  	@echo First listen to the white noise input signal:
  	@echo ---------------------------------------------
@@ -70,7 +74,7 @@ index c339524..0b8137e 100644
  	@echo -------------------------
  	@echo Compare to plugin output.
  	@echo -------------------------
-@@ -75,12 +62,12 @@ test:	/tmp/test.wav ../snd/noise.wav always
+@@ -75,12 +66,12 @@ test:	/tmp/test.wav ../snd/noise.wav always
  	@echo Test complete.
  
  install:	targets
@@ -89,7 +93,7 @@ index c339524..0b8137e 100644
  
  /tmp/test.wav:	targets ../snd/noise.wav
  	../bin/listplugins
-@@ -106,19 +93,19 @@ targets:	$(PLUGINS) $(PROGRAMS)
+@@ -106,19 +97,19 @@ targets:	$(PLUGINS) $(PROGRAMS)
  #
  
  ../bin/applyplugin:	applyplugin.o load.o default.o
