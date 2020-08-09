@@ -661,7 +661,7 @@ app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a gi
 app-arch/dump 0.4.46 0.4.46-r1: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.22.3-r1 1.24.0-r1: Engrampa archive manager for MATE
 app-arch/fastjar 0.98-r3: A jar program written in C
-app-arch/file-roller 3.32.4: Archive manager for GNOME
+app-arch/file-roller 3.32.4 3.36.3: Archive manager for GNOME
 app-arch/funzix 1.0: unpacker for the bogus ZIX format
 app-arch/gcab 1.4: Library and tool for working with Microsoft Cabinet (CAB) files
 app-arch/gnome-autoar 0.2.4: Automatic archives creating and extracting library
@@ -8039,7 +8039,7 @@ dev-python/defcon 0.6.0-r1: A set of UFO based objects for use in font editing a
 dev-python/defusedxml 0.6.0 0.7.0_rc1: XML bomb protection for Python stdlib modules, an xml serialiser
 dev-python/denonavr 0.9.4: Automation Library for Denon AVR receivers
 dev-python/deprecated 1.2.10: Python @deprecated decorator to deprecate old API
-dev-python/deprecation 2.0.7: A library to handle automated deprecations
+dev-python/deprecation 2.0.7 2.1.0: A library to handle automated deprecations
 dev-python/dicttoxml 1.7.4-r1: Converts a Python dictionary or other data type to a valid XML string
 dev-python/diff-cover 2.3.0: Automatically find diff lines that need test coverage
 dev-python/diff-match-patch 20181111: Diff, match and patch algorithms for plain text
@@ -8116,7 +8116,7 @@ dev-python/exam 0.10.6: Helpers for better testing
 dev-python/execnet 1.7.1: Rapid multi-Python deployment
 dev-python/expects 0.8.0-r1: Expressive and extensible TDD/BDD assertion library for Python
 dev-python/extras 1.0.0: Useful extra bits for Python that should be in the standard library
-dev-python/eyeD3 0.8.11: Module for manipulating ID3 (v1 + v2) tags in Python
+dev-python/eyeD3 0.8.11-r1 0.9.5: Module for manipulating ID3 (v1 + v2) tags in Python
 dev-python/falcon 2.0.0: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.15: Python package that provides useful locks
 dev-python/faulthandler 3.0 3.1: functions to dump Python tracebacks explicitly (on fault, user signal, timeout)
@@ -8126,7 +8126,7 @@ dev-python/feedparser 5.2.1 6.0.0_beta1: Parse RSS and Atom feeds in Python
 dev-python/fido2 0.7.3 0.8.1: Python based FIDO 2.0 library
 dev-python/fields 5.0.0-r2: Container class boilerplate killer
 dev-python/filelock 3.0.12: A platform independent file lock for Python
-dev-python/filetype 1.0.5: Small, dependency-free, fast Python package to infer binary file types checking
+dev-python/filetype 1.0.5 1.0.7: Small, dependency-free, fast Python package to infer binary file types checking
 dev-python/findimports 1.5.2: Python module import analysis tool
 dev-python/fitsio 0.9.11: Python library to read from and write to FITS files
 dev-python/fixtures 3.0.0: Fixtures, reusable state for writing clean tests and more
@@ -8711,7 +8711,7 @@ dev-python/pykerberos 1.3.0: A high-level Python wrapper for Kerberos/GSSAPI ope
 dev-python/pykka 2.0.2: A Python implementation of the actor model
 dev-python/pykwalify 1.7.0 9999: Python lib/cli for JSON/YAML schema validation
 dev-python/pylama 7.7.1: Code audit tool for python
-dev-python/pylast 3.2.1: Python interface to last.fm and other api-compatible websites
+dev-python/pylast 3.2.1 3.3.0: Python interface to last.fm and other api-compatible websites
 dev-python/pylatex 1.3.3: A Python library for creating LaTeX files and snippets
 dev-python/pylibacl 0.5.3 0.5.4_p20191217: POSIX ACLs (Access Control Lists) for Python
 dev-python/pylibmc 1.6.1-r1: Libmemcached wrapper written as a Python extension
@@ -11815,7 +11815,7 @@ gnome-extra/evolution-data-server 3.36.4 3.36.5: Evolution groupware backend
 gnome-extra/evolution-ews 3.36.4 3.36.5: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/filemanager-actions 3.2.4 3.4: File manager extension which offers user configurable context menu actions
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
-gnome-extra/gnome-boxes 3.34.4 3.36.5: Simple GNOME 3 application to access remote or virtual systems
+gnome-extra/gnome-boxes 3.34.4 3.36.5 3.36.6: Simple GNOME 3 application to access remote or virtual systems
 gnome-extra/gnome-calculator 3.34.1: A calculator application for GNOME
 gnome-extra/gnome-calendar 3.34.2 3.36.2: Manage your online calendars with simple and modern interface
 gnome-extra/gnome-characters 3.34.0: Unicode character map viewer and library
