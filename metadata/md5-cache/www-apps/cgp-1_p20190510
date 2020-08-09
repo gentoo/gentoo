@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prerm setup
+DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
+DESCRIPTION=A graphical web-based front-end for visualizing RRD collected by collectd
+EAPI=7
+HOMEPAGE=https://github.com/pommi/CGP
+IUSE=vhosts
+KEYWORDS=~amd64 ~x86
+LICENSE=CC-BY-2.0 GPL-2+ GPL-3 MIT
+RDEPEND=dev-lang/php[json] net-analyzer/rrdtool[graph] virtual/httpd-php >=app-admin/webapp-config-1.50.15
+SLOT=1_p20190510
+SRC_URI=https://github.com/pommi/CGP/archive/fd8fa70739d18d786e88f7ffa57e250e0e41af8f.tar.gz -> cgp-1_p20190510.tar.gz
+_eclasses_=webapp	16783e418aca3ffa461d68310bf7ab12
+_md5_=1d280efb4b37d36c9862e6c2c8385c54
