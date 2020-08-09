@@ -73,7 +73,7 @@ DEPEND_LCD_DEVICES="
 	lcd_devices_lcd2usb? ( virtual/libusb:0= )
 	lcd_devices_ledmatrix? ( virtual/libusb:0= )
 	lcd_devices_luise? (
-		dev-libs/luise-bin
+		dev-libs/luise
 		virtual/libusb:0=
 	)
 	lcd_devices_matrixorbitalgx? ( virtual/libusb:0= )
