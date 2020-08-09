@@ -52,3 +52,11 @@ src_test() {
 	echo "$@"
 	"$@" || die
 }
+
+pkg_postinst () {
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+		elog ""
+		elog "Run \'git lfs install\' once for each user account manually."
+		elog "For more details see https://bugs.gentoo.org/show_bug.cgi?id=733372."
+	fi
+}
