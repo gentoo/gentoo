@@ -15151,7 +15151,7 @@ net-misc/ipv6calc 1.0.0 2.1.0 2.1.1 2.2.0: IPv6 address calculator
 net-misc/jlj 2.12-r1: Simple console LiveJournal entry system
 net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) for viewing and/or controlling a distance PC
 net-misc/jwhois 4.0-r1: Advanced Internet Whois client capable of recursive queries
-net-misc/kafka-bin 2.0.1 2.1.1 2.2.1 2.3.0 2.4.0 2.4.1 2.5.0: A high-throughput distributed messaging system
+net-misc/kafka-bin 2.0.1 2.1.1 2.2.1 2.3.0 2.4.0 2.4.1 2.5.0 2.6.0: A high-throughput distributed messaging system
 net-misc/kafkacat 1.3.1 1.5.0: Generic command line non-JVM Apache Kafka producer and consumer
 net-misc/kea 1.7.9 1.7.10 9999: High-performance production grade DHCPv4 & DHCPv6 server
 net-misc/keychain 2.8.1 2.8.5: Agent manager for OpenSSH, ssh.com, Sun SSH, and GnuPG
