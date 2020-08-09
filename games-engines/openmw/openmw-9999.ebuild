@@ -61,7 +61,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/openmw-0.46.0-mygui-license.patch
+	"${FILESDIR}"/openmw-0.47.0-mygui-license.patch
 	"${FILESDIR}"/openmw-0.46.0-recastnavigation.patch
 )
 
