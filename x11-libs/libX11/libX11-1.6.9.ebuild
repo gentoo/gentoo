@@ -5,7 +5,7 @@ EAPI=7
 
 XORG_DOC=doc
 XORG_MULTILIB=yes
-inherit xorg-3
+inherit toolchain-funcs xorg-3
 
 DESCRIPTION="X.Org X11 library"
 
@@ -26,5 +26,6 @@ pkg_setup() {
 		$(use_enable doc specs)
 		$(use_enable ipv6)
 		--without-fop
+		CPP="$(tc-getPROG CPP cpp)"
 	)
 }
