@@ -1,8 +1,5 @@
-Always respect users CFLAGS, enable verbose output when compiling
-and don't install compressed man pages.
-
---- a/Makefile
-+++ b/Makefile
+--- stress-ng-0.11.17.orig/Makefile	2020-07-27 13:38:23.000000000 +0200
++++ stress-ng-0.11.17/Makefile	2020-08-09 13:43:30.919796477 +0200
 @@ -21,7 +21,7 @@
  # Codename "synthetic system strainer"
  #
@@ -12,10 +9,10 @@ and don't install compressed man pages.
  
  #
  # Pedantic flags
-@@ -357,12 +357,10 @@
+@@ -358,12 +358,10 @@
  .o: stress-ng.h Makefile
  
- .c.o: stress-ng.h Makefile $(SRC)
+ .c.o:
 -	@echo "CC $<"
 -	@$(CC) $(CFLAGS) -c -o $@ $<
 +	$(CC) $(CFLAGS) -c -o $@ $<
@@ -27,7 +24,7 @@ and don't install compressed man pages.
  	@sync
  
  makeconfig:
-@@ -383,7 +381,7 @@
+@@ -384,7 +382,7 @@
  		sed '$$ s/.$$//' >> apparmor-data.c
  	@echo "};" >> apparmor-data.c
  	@echo "const size_t g_apparmor_data_len = sizeof(g_apparmor_data);" >> apparmor-data.c
@@ -36,9 +33,9 @@ and don't install compressed man pages.
  	@$(CC) -c apparmor-data.c -o apparmor-data.o
  	@rm -rf apparmor-data.c apparmor-data.bin
  
-@@ -399,12 +397,12 @@
- core-perf.o: core-perf.c core-perf-event.c
- 	@$(CC) $(CFLAGS) -E core-perf-event.c | grep "PERF_COUNT" | sed 's/,/ /' | \
+@@ -401,12 +399,12 @@
+ 	@$(CC) $(CFLAGS) -E core-perf-event.c | grep "PERF_COUNT" | \
+ 	sed 's/,/ /' | sed s/'^ *//' | \
  	awk {'print "#define _SNG_" $$1 " (1)"'} > core-perf-event.h
 -	@echo CC $<
 -	@$(CC) $(CFLAGS) -c -o $@ $<
@@ -53,7 +50,7 @@ and don't install compressed man pages.
  	@touch stress-ng.c
  
  $(OBJS): stress-ng.h Makefile
-@@ -453,7 +451,7 @@
+@@ -459,7 +457,7 @@
  	mkdir -p ${DESTDIR}${BINDIR}
  	cp stress-ng ${DESTDIR}${BINDIR}
  	mkdir -p ${DESTDIR}${MANDIR}

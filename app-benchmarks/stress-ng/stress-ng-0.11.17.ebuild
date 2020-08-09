@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit eutils toolchain-funcs
 
 DESCRIPTION="Stress test for a computer system with various selectable ways"
 HOMEPAGE="https://kernel.ubuntu.com/~cking/stress-ng/"
@@ -17,10 +17,8 @@ DEPEND="
 	dev-libs/libaio
 	dev-libs/libbsd
 	dev-libs/libgcrypt:0=
-	net-misc/lksctp-tools
 	sys-apps/attr
 	sys-apps/keyutils:=
-	sys-libs/libapparmor
 	sys-libs/libcap
 	sys-libs/zlib
 "
@@ -29,10 +27,15 @@ RDEPEND="${DEPEND}"
 
 DOCS=( "README" "README.Android" "TODO" "syscalls.txt" )
 
-PATCHES=( "${FILESDIR}/${PN}-0.11.02-makefile.patch" )
+PATCHES=( "${FILESDIR}/${PN}-0.11.17-makefile.patch" )
 
 src_compile() {
 	tc-export CC
 
 	default
+}
+
+pkg_postinst() {
+	optfeature "AppArmor support" sys-libs/libapparmor
+	optfeature "SCTP support" net-misc/lksctp-tools
 }

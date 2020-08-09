@@ -57,7 +57,7 @@ RDEPEND="
 		media-libs/libsamplerate
 		media-sound/jack-audio-connection-kit
 	)
-	ladspa? ( media-libs/ladspa-cmt )
+	ladspa? ( media-plugins/cmt-plugins )
 	mad? ( || (
 		media-libs/libmad
 		media-sound/mpg123
