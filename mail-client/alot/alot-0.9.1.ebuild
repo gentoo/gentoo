@@ -23,17 +23,17 @@ RDEPEND="
 	dev-python/python-magic[${PYTHON_USEDEP}]
 	dev-python/urwid[${PYTHON_USEDEP}]
 	dev-python/urwidtrees[${PYTHON_USEDEP}]
-	>=dev-python/twisted-18.4[${PYTHON_USEDEP}]
+	dev-python/twisted[${PYTHON_USEDEP}]
 	net-mail/mailbase
-	<net-mail/notmuch-0.30[crypt,python,${PYTHON_USEDEP}]
+	net-mail/notmuch[crypt,python,${PYTHON_USEDEP}]
 	"
 BDEPEND="
 	dev-python/sphinx[${PYTHON_USEDEP}]
-	"
+"
 
 PATCHES=(
 	"${FILESDIR}/0.9-0001-remove-non-working-test.patch"
-	)
+)
 
 distutils_enable_tests unittest
 
