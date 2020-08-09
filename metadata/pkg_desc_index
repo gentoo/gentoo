@@ -2360,7 +2360,7 @@ app-misc/dailystrips 1.0.28-r3: dailystrips automatically downloads your favorit
 app-misc/datefudge 1.22: A program (and preload library) to fake system date
 app-misc/dateutils 0.4.6: command line date and time utilities
 app-misc/datovka 4.15.0 4.15.1: GUI to access the Czech data box e-government system
-app-misc/ddate 0.2.2: Perpetual date converter from gregorian to poee calendar
+app-misc/ddate 0.2.2 0.2.2_p20160627: Perpetual date converter from gregorian to poee calendar
 app-misc/ddccontrol 0.4.2_p20140105-r2 0.4.4 0.4.4_p20180123 0.4.4_p20200630: DDCControl allows control of monitor parameters via DDC
 app-misc/ddccontrol-db 20061014_p20121105 20190826 20190826_p20200613: DDCControl monitor database
 app-misc/ddcutil 0.9.1 0.9.5 0.9.9: Program for querying and changing monitor settings
@@ -17152,7 +17152,7 @@ sys-auth/pam_ssh 2.3: Uses ssh-agent to provide single sign-on
 sys-auth/pam_ssh_agent_auth 0.10.3 9999: Simple module to authenticate users against their ssh-agent keys
 sys-auth/pam_u2f 1.0.8: Library for authenticating against PAM with a Yubikey
 sys-auth/pam_yubico 2.26: Library for authenticating against PAM with a Yubikey
-sys-auth/pambase 20200304 20200618 20200806: PAM base configuration files
+sys-auth/pambase 20200304 20200806: PAM base configuration files
 sys-auth/passwdqc 1.3.0 1.4.0: Password strength checking library (and PAM module)
 sys-auth/polkit 0.115-r4 0.116-r1 0.117: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
