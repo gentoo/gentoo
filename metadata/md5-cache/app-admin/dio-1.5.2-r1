@@ -9,4 +9,4 @@ RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=https://github.com/donaldmcintosh/dio/archive/1.5.2.tar.gz -> dio-1.5.2.tar.gz
 _eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=e5efe1f8d2e44fb33041e5002588796a
+_md5_=3c763623380252961282bea71d32222c

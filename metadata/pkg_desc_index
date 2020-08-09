@@ -639,7 +639,7 @@ app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yadm 2.4.0: A dotfile manager for the config files in your home folder
 app-antivirus/clamav 0.102.4: Clam Anti-Virus Scanner
-app-antivirus/clamtk 6.03-r1: A graphical front-end for ClamAV
+app-antivirus/clamtk 6.03-r1 6.05: A graphical front-end for ClamAV
 app-antivirus/fangfrisch 1.2.0-r1: Update and verify unofficial Clam Anti-Virus signatures
 app-arch/advancecomp 2.2_pre20190301: Recompress ZIP, PNG and MNG, considerably improving compression
 app-arch/afio 2.5.1-r2: Afio creates cpio-format archives.
@@ -802,7 +802,7 @@ app-benchmarks/cpuburn 1.4a-r3: CPU testing utilities in optimized assembler for
 app-benchmarks/dbench 4.0: Popular filesystem benchmark
 app-benchmarks/filebench 1.4.9.1-r1: Filebench - A Model Based File System Workload Generator
 app-benchmarks/forkbomb 1.4-r1: Controlled fork() bomber for testing heavy system load
-app-benchmarks/geekbench 2.4.2 2.4.3 3.4.2 4.4.1 5.1.1 5.2.1: A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows
+app-benchmarks/geekbench 2.4.2 2.4.3 3.4.2 4.4.1 5.1.1 5.2.3: A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows
 app-benchmarks/hey 0.1.2: HTTP load generator, ApacheBench (ab) replacement, formerly known as rakyll/boom
 app-benchmarks/httperf 0.9.1_p20181111 0.9.1_p20181111-r1: A tool from HP for measuring web server performance
 app-benchmarks/i7z 93_p20131012-r2: A better i7 (and now i3, i5) reporting tool for Linux
@@ -2028,7 +2028,7 @@ app-eselect/eselect-ruby 20170723 20190121 20191222: Manages multiple Ruby versi
 app-eselect/eselect-rust 20200419: Eselect module for management of multiple Rust versions
 app-eselect/eselect-scala 0.1.1: Manages multiple Scala versions
 app-eselect/eselect-sh 0.4.1: Manages the /bin/sh (POSIX shell) symlink
-app-eselect/eselect-sndpeek 1.0.1: Manages the /usr/bin/sndpeek symlink
+app-eselect/eselect-sndpeek 1.0.2: Manages the /usr/bin/sndpeek symlink
 app-eselect/eselect-timezone 0.2: Manages timezone selection
 app-eselect/eselect-timidity 20110513: Manages configuration of TiMidity++ patchsets
 app-eselect/eselect-unison 0.4: unison module for eselect
@@ -5555,7 +5555,7 @@ dev-libs/log4cplus 1.2.0: C++ port of the Log for Java (log4j) logging library
 dev-libs/log4cpp 1.1 1.1.3: C++ classes for flexible logging to files, syslog and other destinations
 dev-libs/log4cxx 0.10.0-r1: Library of C++ classes for logging to files, syslog and other destinations
 dev-libs/log4sh 1.4.2: A flexible logging framework for shell scripts
-dev-libs/luise-bin 0.1.1-r1: Programming interface for the Wallbraun LCD-USB-Interface
+dev-libs/luise 0.1.1-r1: Programming interface for the Wallbraun LCD-USB-Interface
 dev-libs/lzo 2.10: An extremely fast compression and decompression library
 dev-libs/m17n-lib 1.7.0 1.8.0: Multilingual Library for Unix/Linux
 dev-libs/maloc 1.5-r1: Minimal Abstraction Layer for Object-oriented C/C++ programs
@@ -9177,7 +9177,7 @@ dev-python/tox 3.15.0 3.15.2 3.16.1 3.17.0 3.17.1 3.18.0 3.18.1 3.19.0: virtuale
 dev-python/tqdm 4.47.0 4.48.0 4.48.1 4.48.2 9999: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0: Backports of the traceback module
 dev-python/traitlets 4.3.2 4.3.3: A configuration system for Python applications
-dev-python/transitions 0.7.1-r1 0.8.1-r1 0.8.2: A lightweight, object-oriented state machine implementation in Python
+dev-python/transitions 0.7.1-r1 0.8.2: A lightweight, object-oriented state machine implementation in Python
 dev-python/translate-toolkit 2.4.0 2.5.0: Toolkit to convert between many translation formats
 dev-python/treq 20.4.1: A requests-like API built on top of twisted.web's Agent
 dev-python/trustme 0.6.0: #1 quality TLS certs while you wait, for the discerning tester
@@ -15142,7 +15142,7 @@ net-misc/igmpproxy 0.2.1-r2 0.2.1_p20200508: A multicast routing daemon which us
 net-misc/ip-sentinel 0.12 0.12-r1: Prevent unauthorized usage of IP addresses
 net-misc/ipcalc 0.41: IP Calculator prints broadcast/network/etc for an IP address and netmask
 net-misc/iperf 2.0.13 2.0.14a 2.99999.99999 3.6 3.7 3.8.1 3.99999.99999: A TCP, UDP, and SCTP network bandwidth measurement tool
-net-misc/ipmiview 2.15.0.190109 2.16.0.190815: A GUI application that allows to manage multiple target systems through BMC
+net-misc/ipmiview 2.15.0.190109 2.17.0.200505: A GUI application that allows to manage multiple target systems through BMC
 net-misc/iprange 1.0.4: iprange utility
 net-misc/ipsorcery 2.0.9-r2: Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets
 net-misc/ipsvd 1.0.0-r2: ipsvd is a set of internet protocol service daemons for Unix
@@ -16869,7 +16869,7 @@ sys-apps/duc 1.4.1-r1 1.4.3-r1 9999: A library and suite of tools for inspecting
 sys-apps/earlyoom 1.3 9999: Early OOM Daemon for Linux
 sys-apps/ed 1.15-r1 1.16: Your basic line editor
 sys-apps/edac-utils 0.18: Userspace helper for Linux kernel EDAC drivers
-sys-apps/edid-decode 0_pre20191209 0_pre20200422 9999: Decode EDID data in a human-readable format
+sys-apps/edid-decode 0_pre20200422 0_pre20200720 9999: Decode EDID data in a human-readable format
 sys-apps/edid-fixdim 1: Tool to fix screen dimensions in EDID data dumps
 sys-apps/elfix 0.9.5 9999: A suite of tools to work with ELF objects on Hardened Gentoo
 sys-apps/elivepatch-client 0.1 9999: Live patch installer client working with elivepatch-server
@@ -16936,7 +16936,7 @@ sys-apps/intel-performance-counter-monitor 2.10: Intel Performance Counter Monit
 sys-apps/intel-sa-00075-tools 1.0: Tools from Intel to detect and mitigate the AMT/MEI vulnerability
 sys-apps/inxi 3.0.33.1 3.0.34.1 3.0.36.1 3.0.38.1: The CLI inxi collects and prints hardware and system information
 sys-apps/iotools 1.5: Simple commands to access hardware device registers
-sys-apps/ipmicfg 1.31.0.200205: An in-band utility for configuring Supermicro IPMI devices
+sys-apps/ipmicfg 1.31.1.200623: An in-band utility for configuring Supermicro IPMI devices
 sys-apps/ipmitool 1.8.18-r1: Utility for controlling IPMI enabled devices.
 sys-apps/ipmiutil 3.0.6 3.0.9 3.1.5-r1 3.1.6: IPMI Management Utilities
 sys-apps/iproute2 5.4.0 5.7.0 5.8.0 9999: kernel routing and traffic control utilities
@@ -17024,7 +17024,7 @@ sys-apps/progress 0.13: Coreutils Viewer: show progress for cp, rm, dd, and so f
 sys-apps/proot 5.1.0-r2: User-space implementation of chroot, mount --bind, and binfmt_misc
 sys-apps/pv 1.6.0-r1 1.6.6: Pipe Viewer: a tool for monitoring the progress of data through a pipe
 sys-apps/qcontrol 0.4.2-r1: Send commands to some microcontrollers, e.g., to change LEDs or sound a buzzer
-sys-apps/qdirstat 1.6.1: Qt-based directory statistics
+sys-apps/qdirstat 1.6.1 1.7: Qt-based directory statistics
 sys-apps/qingy 1.0.0-r4: A DirectFB getty replacement
 sys-apps/razercfg 0.39-r2 0.42: Utility for advanced configuration of Razer mice
 sys-apps/readahead-list 1.20060421.1016-r3: Preloads files into the page cache to accelerate program loading
@@ -17071,7 +17071,7 @@ sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
 sys-apps/systemd 244.3 245.5 246 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/sysvinit 2.93 2.96 2.97: /sbin/init - parent of all processes
-sys-apps/tas 1.5.2.180622: Supermicro Thin-Agent Service for monitoring through the BMC/IPMI
+sys-apps/tas 1.6.0.200601: Supermicro Thin-Agent Service for monitoring through the BMC/IPMI
 sys-apps/tcp-wrappers 7.6.28: TCP Wrappers
 sys-apps/texinfo 6.6-r1 6.7: The GNU info program and utilities
 sys-apps/the_silver_searcher 2.0.0 2.1.0 2.2.0: A code-searching tool similar to ack, but faster

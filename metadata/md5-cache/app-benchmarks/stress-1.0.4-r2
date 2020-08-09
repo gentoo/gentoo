@@ -7,4 +7,4 @@ KEYWORDS=amd64 arm ~mips ppc ppc64 sparc x86
 LICENSE=GPL-2+
 SLOT=0
 SRC_URI=https://people.seas.harvard.edu/~apw/stress/stress-1.0.4.tar.gz -> stress-1.0.4-r1.tar.gz
-_md5_=4517f9e55e6a4ad8099bacba35c17e44
+_md5_=8a8ddc670d2382992e6881aaa849fd66

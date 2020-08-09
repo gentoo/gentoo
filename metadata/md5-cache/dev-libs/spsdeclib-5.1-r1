@@ -9,4 +9,4 @@ LICENSE=Kryoflux-MAME
 SLOT=0
 SRC_URI=https://www.kryoflux.com/download/spsdeclib_5.1_source.zip
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=04db6ab9a899f2b213c70eca494977f1
+_md5_=8a4bee90b17f452e8d9535efd9c368ee
