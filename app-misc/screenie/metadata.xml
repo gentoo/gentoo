@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-  </maintainer>
-  <maintainer type="person">
-    <email>rgkmg25@gmail.com</email>
-    <name>Robert Kowalski</name>
-  </maintainer>
+  <!-- maintainer-needed -->
   <longdescription lang="en">
     Screenie is a small and lightweight GNU screen(1) frontend that is
     designed to be a session handler that simplifies the process of
