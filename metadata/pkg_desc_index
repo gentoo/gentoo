@@ -10915,7 +10915,7 @@ dev-util/xmlindent 0.2.17-r2: XML stream reformatter for ASCII text, but not UTF
 dev-util/xxdi 1.0.0: Simple alternative to vim's 'xxd -i' mode
 dev-util/xxdiff 4.0.1_p20170622-r1: A graphical file and directories comparator and merge tool
 dev-util/yacc 1.9.1-r6: Yacc: Yet Another Compiler-Compiler
-dev-util/ydiff 1.1: Colored, side-by-side diff terminal viewer (ex. cdiff)
+dev-util/ydiff 1.1 1.2: Colored, side-by-side diff terminal viewer (ex. cdiff)
 dev-util/yuicompressor 2.4.8-r2: JavaScript and CSS compressor
 dev-vcs/bfg 1.13.0: a faster alternative to git-filter-branch for removing bad data from git repos
 dev-vcs/colorcvs 1.4-r2: A tool based on colorgcc to beautify cvs output
