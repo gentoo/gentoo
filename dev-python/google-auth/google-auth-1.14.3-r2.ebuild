@@ -44,6 +44,7 @@ distutils_enable_tests pytest
 src_prepare() {
 	# delete stray files included in the tarball
 	find "${S}"/tests -name '*.pyc' -delete || die
+	sed -e 's|"rsa>=3.1.4,<4.1"|"rsa>=3.1.4"|' -i setup.py || die
 	distutils-r1_src_prepare
 }
 
