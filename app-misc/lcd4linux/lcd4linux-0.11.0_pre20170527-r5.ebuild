@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7,8,9} )
 inherit autotools flag-o-matic python-single-r1
 
 DESCRIPTION="A small program that grabs information and displays it on an external LCD"
-HOMEPAGE="https://lcd4linux.bulix.org/"
+HOMEPAGE="https://github.com/jmccrohan/lcd4linux/"
 SRC_URI="https://dev.gentoo.org/~conikost/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
