@@ -5,11 +5,11 @@ DESCRIPTION=TLS/SSL - Port Wrapper
 EAPI=7
 HOMEPAGE=https://www.stunnel.org/index.html
 IUSE=ipv6 selinux stunnel3 tcpd ssl
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=GPL-2
 RDEPEND=acct-user/stunnel acct-group/stunnel dev-libs/openssl:0= tcpd? ( sys-apps/tcp-wrappers ) stunnel3? ( dev-lang/perl ) selinux? ( sec-policy/selinux-stunnel )
 RESTRICT=test
 SLOT=0
 SRC_URI=ftp://ftp.stunnel.org/stunnel/archive/5.x/stunnel-5.56.tar.gz http://www.usenix.org.uk/mirrors/stunnel/archive/5.x/stunnel-5.56.tar.gz http://ftp.nluug.nl/pub/networking/stunnel/archive/5.x/stunnel-5.56.tar.gz http://www.namesdir.com/mirrors/stunnel/archive/5.x/stunnel-5.56.tar.gz http://stunnel.cybermirror.org/archive/5.x/stunnel-5.56.tar.gz http://mirrors.zerg.biz/stunnel/archive/5.x/stunnel-5.56.tar.gz ftp://mirrors.go-parts.com/stunnel/archive/5.x/stunnel-5.56.tar.gz
 _eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	ssl-cert	876f0e74ef1cc2e7c4edd9bca336d350	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=035f0c054a1b744fa8742f2cde80b1e2
+_md5_=4828779a2536938972635627702a6b56
