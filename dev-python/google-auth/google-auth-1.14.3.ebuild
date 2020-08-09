@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -39,6 +39,7 @@ distutils_enable_tests pytest
 src_prepare() {
 	# delete stray files included in the tarball
 	find "${S}"/tests -name '*.pyc' -delete || die
+	sed -e 's|"rsa>=3.1.4,<4.1"|"rsa>=3.1.4"|' -i setup.py || die
 	distutils-r1_src_prepare
 }
 
