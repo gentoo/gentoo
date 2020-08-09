@@ -23,6 +23,7 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PV}-flags.patch
 	"${FILESDIR}"/${PV}-libnet-1.0.patch
+	"${FILESDIR}"/${PV}-sysctl.h.patch
 )
 
 src_configure() {
