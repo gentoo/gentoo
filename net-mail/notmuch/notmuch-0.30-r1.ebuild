@@ -87,6 +87,12 @@ bindings() {
 		${@}
 		rc=${?}
 		popd || die
+
+		# Old deprecated bindings, #736204
+		pushd bindings/python || die
+		${@}
+		rc=${?}
+		popd || die
 	fi
 	return ${rc}
 }
