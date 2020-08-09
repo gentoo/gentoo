@@ -18,6 +18,8 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="aws httpbin"
 
+RESTRICT=test # needs network
+
 RDEPEND=">=dev-haskell/aeson-1.0.0.0:=[profile?]
 	>=dev-haskell/attoparsec-0.11.1.0:=[profile?]
 	>=dev-haskell/authenticate-oauth-1.5:=[profile?]
