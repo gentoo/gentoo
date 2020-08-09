@@ -42,7 +42,7 @@ RDEPEND="
 			dev-db/mysql-connector-c
 		)
 	)
-	postgres? ( <=dev-libs/libpqxx-7.0.0:= )
+	postgres? ( dev-libs/libpqxx:= )
 	purple? (
 		dev-libs/glib
 		net-im/pidgin:=
@@ -58,10 +58,11 @@ DEPEND="
 	test? (	dev-util/cppunit )
 "
 
-PATCHES="
+PATCHES=(
 	"${FILESDIR}/${P}-boost-173-compatibility.patch"
 	"${FILESDIR}/${P}-gcc-10-compatibility.patch"
-"
+	"${FILESDIR}/${PN}-2.0.13-libpqxx-7-compatibility.patch"
+)
 
 src_prepare() {
 	# Respect users LDFLAGS

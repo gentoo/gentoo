@@ -42,7 +42,7 @@ RDEPEND="
 			dev-db/mysql-connector-c
 		)
 	)
-	postgres? ( <=dev-libs/libpqxx-7.0.0:= )
+	postgres? ( dev-libs/libpqxx:= )
 	purple? (
 		dev-libs/glib
 		net-im/pidgin:=
@@ -57,6 +57,8 @@ DEPEND="
 	doc? ( app-doc/doxygen )
 	test? ( dev-util/cppunit )
 "
+
+PATCHES=( "${FILESDIR}/${P}-libpqxx-7-compatibility.patch" )
 
 src_prepare() {
 	# Respect users LDFLAGS
