@@ -141,3 +141,4 @@ move app-dicts/sword-FreMartin app-dicts/sword-FreBDM1744
 move app-dicts/sword-FreSegond app-dicts/sword-FreSegond1910
 move app-dicts/sword-SpaRVG2004 app-dicts/sword-SpaRVG
 move app-dicts/sword-WebstersDict app-dicts/sword-Webster1913
+move media-libs/ladspa-cmt media-plugins/cmt-plugins

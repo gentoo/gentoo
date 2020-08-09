@@ -27,8 +27,8 @@ DEPEND="
 	dbus? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
 	ladspa? (
-		media-libs/ladspa-cmt[${MULTILIB_USEDEP}]
 		media-libs/ladspa-sdk[${MULTILIB_USEDEP}]
+		media-plugins/cmt-plugins[${MULTILIB_USEDEP}]
 	)
 	portaudio? ( media-libs/portaudio[${MULTILIB_USEDEP}] )
 	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )

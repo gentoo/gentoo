@@ -57,7 +57,7 @@ RDEPEND="
 		media-libs/libsamplerate
 		virtual/jack
 	)
-	ladspa? ( media-libs/ladspa-cmt )
+	ladspa? ( media-plugins/cmt-plugins )
 	mad? ( || (
 		media-libs/libmad
 		media-sound/mpg123
