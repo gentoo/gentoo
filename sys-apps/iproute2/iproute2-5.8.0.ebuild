@@ -48,6 +48,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.0-mtu.patch #291907
 	"${FILESDIR}"/${PN}-4.20.0-configure-nomagic.patch # bug 643722
 	"${FILESDIR}"/${PN}-5.1.0-portability.patch
+	"${FILESDIR}"/${PN}-5.7.0-mix-signal.h-include.patch
 )
 
 src_prepare() {
@@ -69,12 +70,6 @@ src_prepare() {
 		-e "/^HOSTCC/s:=.*:= $(tc-getBUILD_CC):" \
 		-e "/^DBM_INCLUDE/s:=.*:=${T}:" \
 		Makefile || die
-
-	# Use /run instead of /var/run.
-	sed -i \
-		-e 's:/var/run:/run:g' \
-		include/namespace.h \
-		man/man8/ip-netns.8 || die
 
 	# build against system headers
 	rm -r include/netinet || die #include/linux include/ip{,6}tables{,_common}.h include/libiptc
@@ -120,7 +115,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake V=1
+	emake V=1 NETNS_RUN_DIR=/run/netns
 }
 
 src_install() {
