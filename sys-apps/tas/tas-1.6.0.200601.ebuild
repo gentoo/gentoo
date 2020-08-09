@@ -64,7 +64,7 @@ src_install() {
 	dodir /var/log/tas
 	local logfiles=( {starttime,tas,tas.com}.log )
 	for logfile in ${logfiles[@]}; do
-		touch "${ED%/}"/var/log/tas/${logfile} || die
+		touch "${ED}"/var/log/tas/${logfile} || die
 		dosym ../../var/log/tas/${logfile} /etc/supermicro/${logfile}
 	done
 
