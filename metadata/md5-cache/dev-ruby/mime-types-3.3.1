@@ -5,7 +5,7 @@ DESCRIPTION=Provides a mailcap-like MIME Content-Type lookup for Ruby
 EAPI=7
 HOMEPAGE=https://github.com/mime-types/ruby-mime-types
 IUSE=test ruby_targets_ruby25 ruby_targets_ruby26 ruby_targets_ruby27 doc test test
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86
 LICENSE=MIT
 RDEPEND=ruby_targets_ruby25? ( >=dev-ruby/mime-types-data-3.2015:3[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( >=dev-ruby/mime-types-data-3.2015:3[ruby_targets_ruby26(-)] ) ruby_targets_ruby27? ( >=dev-ruby/mime-types-data-3.2015:3[ruby_targets_ruby27(-)] ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby27? ( dev-lang/ruby:2.7 ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( virtual/rubygems[ruby_targets_ruby26(-)] ) ruby_targets_ruby27? ( virtual/rubygems[ruby_targets_ruby27(-)] )
 REQUIRED_USE=|| ( ruby_targets_ruby25 ruby_targets_ruby26 ruby_targets_ruby27 )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test ) !test? ( test ) !test? ( test )
 SLOT=3
 SRC_URI=https://rubygems.org/gems/mime-types-3.3.1.gem
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	2477ebe553d3e4d2c606191fe6c33602	ruby-fakegem	6ee14a23a169409059ed36d4dddc3197	ruby-ng	676004cfb6cdf3dedf1c778d56346624	ruby-utils	9991225e034c8185d67fbc7a8816559f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=1344de63a65362910219ad71297d3f07
+_md5_=78a8b7cf48f6286c07eb4ddb70df2dc6
