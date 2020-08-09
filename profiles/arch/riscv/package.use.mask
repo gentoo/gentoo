@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Mikle Kolyada <zlogene@gentoo.org>
+# not yet
+dev-python/markupsafe test
+
+# Mikle Kolyada <zlogene@gentoo.org>
 # Not yet keyworded
 sys-auth/pambase python_targets_python3_8 python_targets_python3_9 python_single_target_python3_8 python_single_target_python3_9
 
