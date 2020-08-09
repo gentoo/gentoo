@@ -13060,7 +13060,7 @@ media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution 
 media-libs/jpeg 9d: Library to load, handle and manipulate images in the JPEG format
 media-libs/kodi-platform 18.0_pre20180301 18.0_pre20190429 9999: Kodi platform support library
 media-libs/kvazaar 1.2.0-r1 9999: Open-source HEVC encoder
-media-libs/ladspa-cmt 1.16-r4 1.17: CMT (computer music toolkit) LADSPA library plugins
+media-libs/ladspa-cmt 1.16-r4 1.17-r1: CMT (computer music toolkit) LADSPA library plugins
 media-libs/ladspa-sdk 1.13-r2 1.15-r1: The Linux Audio Developer's Simple Plugin API
 media-libs/lasi 1.1.2: C++ library for postscript stream output
 media-libs/lastfmlib 0.4.0: C++ library to scrobble tracks on Last.fm
