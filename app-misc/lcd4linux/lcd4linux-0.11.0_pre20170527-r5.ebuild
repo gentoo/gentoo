@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7,8,9} )
 inherit autotools flag-o-matic python-single-r1
 
 DESCRIPTION="A small program that grabs information and displays it on an external LCD"
-HOMEPAGE="https://lcd4linux.bulix.org/"
+HOMEPAGE="https://github.com/jmccrohan/lcd4linux/"
 SRC_URI="https://dev.gentoo.org/~conikost/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
@@ -73,7 +73,7 @@ DEPEND_LCD_DEVICES="
 	lcd_devices_lcd2usb? ( virtual/libusb:0= )
 	lcd_devices_ledmatrix? ( virtual/libusb:0= )
 	lcd_devices_luise? (
-		dev-libs/luise-bin
+		dev-libs/luise
 		virtual/libusb:0=
 	)
 	lcd_devices_matrixorbitalgx? ( virtual/libusb:0= )

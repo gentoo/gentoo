@@ -5,14 +5,14 @@ EAPI=7
 
 inherit toolchain-funcs
 
-EGIT_COMMIT="e719d04077d098eb51d9494f41060eba2419d4bc"
+EGIT_COMMIT="56dd103a0c20724ee956950f5bcb8cc1c8667af9"
 MY_P="${PN}-${EGIT_COMMIT}"
 
 DESCRIPTION="Decode EDID data in a human-readable format"
 HOMEPAGE="https://git.linuxtv.org/edid-decode.git/"
 SRC_URI="https://dev.gentoo.org/~conikost/files/${MY_P}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 LICENSE="MIT"
 SLOT="0"
 IUSE="examples"

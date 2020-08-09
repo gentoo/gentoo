@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,9 +22,9 @@ RDEPEND="
 	virtual/jre:1.8
 "
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
-RESTRICT="bindist fetch mirror strip"
+RESTRICT="bindist fetch mirror"
 
 DIR="/usr/share/${PN}"
 QA_PREBUILT="usr/lib*"

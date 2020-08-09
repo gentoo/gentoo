@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-inherit eapi7-ver linux-info systemd
+inherit eutils linux-info systemd
 
 MY_DATE="$(ver_cut 4)"
 MY_PN="${PN^^}"
@@ -17,7 +17,8 @@ KEYWORDS="-* ~amd64 ~x86"
 LICENSE="BSD supermicro"
 SLOT="0"
 
-RDEPEND="net-misc/networkmanager
+RDEPEND="
+	net-misc/networkmanager
 	sys-apps/ethtool
 	sys-apps/net-tools
 	sys-apps/smartmontools
@@ -25,7 +26,8 @@ RDEPEND="net-misc/networkmanager
 	sys-devel/bc
 	sys-fs/lsscsi
 	sys-fs/mdadm"
-DEPEND="app-arch/unzip"
+
+BDEPEND="app-arch/unzip"
 
 RESTRICT="bindist fetch mirror"
 
@@ -54,7 +56,7 @@ src_unpack() {
 }
 
 src_install() {
-	dobin $(usex amd64 '64' '32')bit/IPMITAS
+	dobin TAS/$(usex amd64 '64' '32')bit/IPMITAS
 
 	insinto /etc/supermicro
 	doins "${FILESDIR}"/tas.ini
@@ -70,4 +72,9 @@ src_install() {
 	systemd_newunit "${FILESDIR}"/tas.service tas.service
 
 	einstalldocs
+}
+
+pkg_postinst() {
+	optfeature "Broadcom controller management" sys-block/storcli
+	optfeature "LSI controller management" sys-block/sas3ircu
 }
