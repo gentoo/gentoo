@@ -101,12 +101,6 @@ dev-python/gntp
 # Removal in 30 days.
 dev-libs/liboobs
 
-# Mikle Kolyada <zlogene@gentoo.org> (2020-08-04)
-# Starting with this version pambase was
-# completly rewritten in python.
-# Initial testing needed.
-=sys-auth/pambase-20200806
-
 # Jack Todaro <solpeth@posteo.org> (2020-08-04)
 # Deprecated in favour of dev-haskell/dbus.
 # Unmaintained since 2012.
