@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-09)
+# Build tool with no revdeps left.
+# Removal in 30 days.  Bug #736517.
+dev-python/paver
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-09)
 # Python 2 only.  No commits since 2015.
 # Removal in 30 days.  Bug #735334.
 dev-vcs/git-bz
