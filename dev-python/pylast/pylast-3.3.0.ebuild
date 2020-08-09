@@ -13,21 +13,18 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
-BDEPEND="${RDEPEND}
+BDEPEND="
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? ( dev-python/flaky[${PYTHON_USEDEP}] )
 "
 
 distutils_enable_tests pytest
 
-python_prepare_all() {
-	# remove setuptools-scm dependency
-	sed -e 's:"setuptools_scm"::' \
-		-e "s:use_scm_version=.*:version='${PV}',:" -i setup.py || die
-
-	distutils-r1_python_prepare_all
+src_configure() {
+	export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 }
 
 python_test() {
