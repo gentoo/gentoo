@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Lars Wendler <polynomial-c@gentoo.org> (2020-08-06)
+# USE="qt5" and USE="libnotify" are mutually exclusive in this package
+# Disable libnotify here to have a better user experience
+net-misc/dhcpcd-ui -libnotify
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-05)
 # Required by many packages, most notably Mozilla products
 dev-lang/python sqlite
