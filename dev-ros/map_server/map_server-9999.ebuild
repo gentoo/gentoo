@@ -16,7 +16,7 @@ IUSE=""
 RDEPEND="
 	sci-physics/bullet:=
 	dev-ros/roscpp
-	media-libs/sdl-image
+	media-libs/sdl-image[png]
 	dev-ros/tf2
 	>=dev-cpp/yaml-cpp-0.5:=
 
