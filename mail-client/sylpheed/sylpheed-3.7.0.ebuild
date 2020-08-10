@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils
+inherit desktop
 
 DESCRIPTION="A lightweight email client and newsreader"
 HOMEPAGE="http://sylpheed.sraoss.jp/"
