@@ -13,8 +13,4 @@
 		<email>web-apps@gentoo.org</email>
 		<name>Gentoo Webapps</name>
 	</maintainer>
-	<use>
-		<flag name="extras">Optional Perl modules</flag>
-		<flag name="modperl">Enable <pkg>www-apache/mod_perl</pkg> support</flag>
-	</use>
 </pkgmetadata>
