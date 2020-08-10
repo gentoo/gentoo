@@ -1,25 +1,39 @@
-From 28eeb5e4a5d92ff913e3956550bff56f615c97df Mon Sep 17 00:00:00 2001
+From 988c171aa06bee85e393b28a482c894ccbbf8f58 Mon Sep 17 00:00:00 2001
 From: Lars Wendler <polynomial-c@gentoo.org>
-Date: Sat, 21 Dec 2019 15:17:56 +0100
-Subject: [PATCH] Fix build against ncurses with separate tinfo lib
+Date: Mon, 10 Aug 2020 07:45:34 +0200
+Subject: [PATCH] configure: Fix build against ncurses with separate tinfo lib
 
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
 ---
- configure | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ configure | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
 diff --git a/configure b/configure
-index ed83221..bae1180 100755
+index ed83221..f77bde5 100755
 --- a/configure
 +++ b/configure
-@@ -469,7 +469,7 @@ int main(void) {
- }
- EOF
- 	if $XCC _curses.c -o _curses -lcurses 2>&3; then
--		LIB_CURSES=-lcurses
-+		LIB_CURSES="-lcurses -ltinfo"
+@@ -472,6 +472,21 @@ EOF
+ 		LIB_CURSES=-lcurses
  	fi
  	rm -f _curses.c _curses
++
++	#Check for -ltinfo requirement
++	cat <<EOF >_curses.c
++#include <curses.h>
++int main(void) {
++	curs_set(1);
++	return 0;
++}
++EOF
++	if ! $XCC _curses.c -o _curses -lcurses 2>&3; then
++		if $XCC _curses.c -o _curses -ltinfo 2>&3; then
++			LIB_CURSES="$LIB_CURSES -ltinfo"
++		fi
++	fi
++	rm -f _curses.c _curses
  fi
+ if [ -n "$LIB_CURSES" ]; then
+ 	echo "$LIB_CURSES"
 -- 
-2.24.1
+2.28.0
 
