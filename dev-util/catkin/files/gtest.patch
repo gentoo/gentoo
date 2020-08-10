@@ -1,0 +1,45 @@
+From d9302318dece61acd0caa27d56f3817838f8f333 Mon Sep 17 00:00:00 2001
+From: seanyen <seanyen@microsoft.com>
+Date: Thu, 6 Aug 2020 18:59:07 -0700
+Subject: [PATCH] Adding the new GTest search logic for Vcpkg.
+
+---
+ cmake/test/gtest.cmake | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+
+Index: catkin-0.8.8/cmake/test/gtest.cmake
+===================================================================
+--- catkin-0.8.8.orig/cmake/test/gtest.cmake
++++ catkin-0.8.8/cmake/test/gtest.cmake
+@@ -337,6 +337,31 @@ if(TARGET gtest AND TARGET gtest_main AN
+     set(GTEST_BOTH_LIBRARIES ${GTEST_LIBRARIES} ${GTEST_MAIN_LIBRARIES})
+   endif()
+ else()
++  # attempt to find the modern GTest config.
++  find_package(GTest 1.8.1 QUIET CONFIG)
++  if(GTest_FOUND AND TARGET GTest::gtest AND TARGET GTest::gtest_main)
++    set(GTEST_FOUND TRUE)
++    add_library(gtest ALIAS GTest::gtest)
++    add_library(gtest_main ALIAS GTest::gtest_main)
++    set(GTEST_INCLUDE_DIRS)
++    set(GTEST_LIBRARY_DIRS)
++    set(GTEST_LIBRARIES gtest)
++    set(GTEST_MAIN_LIBRARIES gtest_main)
++    set(GTEST_BOTH_LIBRARIES ${GTEST_LIBRARIES} ${GTEST_MAIN_LIBRARIES})
++  endif()
++  if(GTest_FOUND AND TARGET GTest::gmock AND TARGET GTest::gmock_main)
++    set(GMOCK_FOUND TRUE)
++    add_library(gmock ALIAS GTest::gmock)
++    add_library(gmock_main ALIAS GTest::gmock_main)
++    set(GMOCK_INCLUDE_DIRS)
++    set(GMOCK_LIBRARY_DIRS)
++    set(GMOCK_LIBRARIES gmock)
++    set(GMOCK_MAIN_LIBRARIES gmock_main)
++    set(GMOCK_BOTH_LIBRARIES ${GMOCK_LIBRARIES} ${GMOCK_MAIN_LIBRARIES})
++  endif()
++endif()
++
++if(NOT GTEST_FOUND)
+   find_package(GTest QUIET)
+ endif()
+ if(NOT GMOCK_FOUND OR NOT GTEST_FOUND)

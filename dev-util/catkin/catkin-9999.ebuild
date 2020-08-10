@@ -47,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}/catkin_prefix_path_util_py_v2.patch"
 	"${FILESDIR}/package_xml.patch"
 	"${FILESDIR}/etc.patch"
+	"${FILESDIR}/gtest.patch"
 )
 
 src_prepare() {
