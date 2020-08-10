@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake desktop git-r3 xdg-utils
+inherit cmake desktop xdg-utils
 
 DESCRIPTION="Project aiming to recreate classic Opera (12.x) UI using Qt5"
 HOMEPAGE="https://otter-browser.org/"
-EGIT_REPO_URI="https://github.com/OtterBrowser/${PN}-browser"
+SRC_URI="https://github.com/OtterBrowser/${PN}-browser/archive/v${PV/_p/-dev}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="spell"
 
 DEPEND="
@@ -34,7 +34,9 @@ RDEPEND="
 	${DEPEND}
 "
 DOCS=( CHANGELOG CONTRIBUTING.md TODO )
+S=${WORKDIR}/${PN}-browser-${PV/_p/-dev}
 PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.01-qtgui-5.15.0.patch
 	"${FILESDIR}"/${PN}-1.0.01-webengine.patch
 )
 
