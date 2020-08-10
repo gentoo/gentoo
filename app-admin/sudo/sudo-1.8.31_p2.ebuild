@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit pam multilib libtool systemd tmpfiles
+inherit pam multilib libtool tmpfiles
 
 MY_P="${P/_/}"
 MY_P="${MY_P/beta/b}"
@@ -30,11 +30,10 @@ fi
 # 3-clause BSD license
 LICENSE="ISC BSD"
 SLOT="0"
-IUSE="gcrypt ldap libressl nls offensive pam sasl +secure-path selinux +sendmail skey ssl sssd"
+IUSE="gcrypt ldap libressl nls offensive pam sasl +secure-path selinux +sendmail skey sssd system-digest"
 
 DEPEND="
 	sys-libs/zlib:=
-	gcrypt? ( dev-libs/libgcrypt:= )
 	ldap? (
 		>=net-nds/openldap-2.1.30-r1
 		sasl? (
@@ -45,11 +44,14 @@ DEPEND="
 	pam? ( sys-libs/pam )
 	sasl? ( dev-libs/cyrus-sasl )
 	skey? ( >=sys-auth/skey-1.1.5-r1 )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
 	sssd? ( sys-auth/sssd[sudo] )
+	system-digest? (
+		gcrypt? ( dev-libs/libgcrypt:= )
+		!gcrypt? (
+			!libressl? ( dev-libs/openssl:0= )
+			libressl? ( dev-libs/libressl:0= )
+		)
+	)
 "
 RDEPEND="
 	${DEPEND}
@@ -135,33 +137,35 @@ src_configure() {
 	# until `make` time, so we have to use a full path here rather than
 	# basing off other values.
 	myeconfargs=(
-		# requires some python eclass
-		--disable-python
-		--enable-tmpfiles.d="${EPREFIX}"/usr/lib/tmpfiles.d
 		--enable-zlib=system
+		--enable-tmpfiles.d="${EPREFIX}"/usr/lib/tmpfiles.d
 		--with-editor="${EPREFIX}"/usr/libexec/editor
 		--with-env-editor
 		--with-plugindir="${EPREFIX}"/usr/$(get_libdir)/sudo
 		--with-rundir="${EPREFIX}"/run/sudo
+		$(use_with secure-path secure-path "${SECURE_PATH}")
 		--with-vardir="${EPREFIX}"/var/db/sudo
 		--without-linux-audit
 		--without-opie
 		$(use_enable gcrypt)
 		$(use_enable nls)
 		$(use_enable sasl)
-		$(use_enable ssl openssl)
-		$(use_with ldap)
-		$(use_with ldap ldap_conf_file /etc/ldap.conf.sudo)
 		$(use_with offensive insults)
 		$(use_with offensive all-insults)
+		$(use_with ldap ldap_conf_file /etc/ldap.conf.sudo)
+		$(use_with ldap)
 		$(use_with pam)
-		$(use_with pam pam-login)
-		$(use_with secure-path secure-path "${SECURE_PATH}")
-		$(use_with selinux)
-		$(use_with sendmail)
 		$(use_with skey)
 		$(use_with sssd)
+		$(use_with selinux)
+		$(use_with sendmail)
 	)
+
+	if use system-digest && ! use gcrypt; then
+		myeconfargs+=("--enable-openssl")
+	else
+		myeconfargs+=("--disable-openssl")
+	fi
 
 	econf "${myeconfargs[@]}"
 }
@@ -198,7 +202,6 @@ src_install() {
 	fi
 
 	pamd_mimic system-auth sudo auth account session
-	pamd_mimic system-auth sudo-i auth account session
 
 	keepdir /var/db/sudo/lectured
 	fperms 0700 /var/db/sudo/lectured
@@ -206,7 +209,7 @@ src_install() {
 
 	# Don't install into /run as that is a tmpfs most of the time
 	# (bug #504854)
-	rm -rf "${ED}"/run || die
+	rm -rf "${ED}"/run
 
 	find "${ED}" -type f -name "*.la" -delete || die #697812
 }
