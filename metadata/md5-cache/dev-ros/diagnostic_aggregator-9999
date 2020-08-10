@@ -1,15 +1,15 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl] dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install prepare setup test unpack
-DEPEND=dev-ros/pluginlib:= dev-libs/tinyxml2:= dev-ros/roscpp dev-ros/rospy dev-ros/rostest dev-ros/xmlrpcpp dev-ros/bondcpp dev-libs/boost:= dev-libs/console_bridge:= dev-ros/diagnostic_msgs[ros_messages_cxx(-)] test? ( dev-ros/rostest ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_7? ( dev-util/catkin[python_targets_python3_7(-)] ) python_single_target_python3_7? ( dev-python/empy[python_targets_python3_7(-)] )
+DEPEND=dev-ros/pluginlib:= dev-libs/tinyxml2:= dev-ros/roscpp dev-ros/rospy dev-ros/rostest dev-ros/xmlrpcpp dev-ros/bondcpp dev-libs/boost:= dev-libs/console_bridge:= dev-ros/bondpy[python_single_target_python3_7(-)?] dev-ros/diagnostic_msgs[ros_messages_cxx(-)] test? ( dev-ros/rostest[python_single_target_python3_7(-)?] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_7? ( dev-util/catkin[python_targets_python3_7(-)] ) python_single_target_python3_7? ( dev-python/empy[python_targets_python3_7(-)] )
 DESCRIPTION=Aggregates ROS diagnostics
 EAPI=7
 HOMEPAGE=https://wiki.ros.org/diagnostic_aggregator https://github.com/ros/diagnostics
 IUSE=+python_single_target_python3_7 test
 LICENSE=BSD
 PROPERTIES=live
-RDEPEND=dev-ros/pluginlib:= dev-libs/tinyxml2:= dev-ros/roscpp dev-ros/rospy dev-ros/rostest dev-ros/xmlrpcpp dev-ros/bondcpp dev-libs/boost:= dev-libs/console_bridge:= python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] )
+RDEPEND=dev-ros/pluginlib:= dev-libs/tinyxml2:= dev-ros/roscpp dev-ros/rospy dev-ros/rostest dev-ros/xmlrpcpp dev-ros/bondcpp dev-libs/boost:= dev-libs/console_bridge:= dev-ros/bondpy[python_single_target_python3_7(-)?] python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] )
 REQUIRED_USE=^^ ( python_single_target_python3_7 )
 RESTRICT=!test? ( test )
 SLOT=0
 _eclasses_=cmake	f274d2f953f93e2d88cd3e0b2ce376a9	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	8ec5b53812bce105ae7943930e4660f8	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	ros-catkin	9288108ddefe6d63971edf53318f15ba	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=87c000f5b509af86ce88a55351c1c5f2
+_md5_=5557d08ee07d9e7fb755bb6100e61b15

@@ -9558,7 +9558,7 @@ dev-ros/rosapi 0.11.9 9999: Service calls for getting ros meta-information
 dev-ros/rosauth 1.0.1 9999: Server Side tools for Authorization and Authentication of ROS Clients
 dev-ros/rosbag 1.15.7 1.15.8 9999: Set of tools for recording from and playing back to ROS topics
 dev-ros/rosbag_migration_rule 1.0.1 9999: Allows to export rosbag migration rule files without depending on rosbag
-dev-ros/rosbag_storage 1.15.8 9999: Set of tools for recording from and playing back ROS message
+dev-ros/rosbag_storage 1.15.8-r1 9999: Set of tools for recording from and playing back ROS message
 dev-ros/rosbash 1.15.5 1.15.6 9999: Assorted shell commands for using ros with bash
 dev-ros/rosboost_cfg 1.15.5 1.15.6 9999: Tool for determining cflags/lflags/etc. of boost on your system
 dev-ros/rosbridge_library 0.11.9 9999: Core rosbridge package for parsing JSON and performing the appropriate action
