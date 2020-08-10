@@ -1,4 +1,4 @@
-if [[ -n "$GTK_MODULES" }]; then
+if [[ -n "$GTK_MODULES" ]]; then
     GTK_MODULES="${GTK_MODULES}:appmenu-gtk-module"
 else
     GTK_MODULES="appmenu-gtk-module"
