@@ -18097,7 +18097,7 @@ www-client/google-chrome-beta 85.0.4183.49: The web browser from Google
 www-client/google-chrome-unstable 86.0.4214.2: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
-www-client/links 2.20.2 2.20.2-r1: A fast and lightweight web browser running in both graphics and text mode
+www-client/links 2.20.2 2.20.2-r1 2.21: A fast and lightweight web browser running in both graphics and text mode
 www-client/luakit 2017.08.10 9999: A fast, light, simple to use micro-browser using WebKit and Lua
 www-client/lynx 2.8.9_p1 2.9.0_pre4 2.9.0_pre5: An excellent console-based web browser with ssl support
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
