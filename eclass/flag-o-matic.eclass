@@ -31,7 +31,7 @@ setup-allowed-flags() {
 		# debugging symbols should generally be very safe to add
 		-g '-g[0-9]'
 		-ggdb '-ggdb[0-9]'
-		'-gdwarf-*'
+		-gdwarf '-gdwarf-*'
 		gstabs -gstabs+
 		-gz
 
