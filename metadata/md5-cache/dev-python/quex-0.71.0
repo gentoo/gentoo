@@ -1,0 +1,15 @@
+BDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) app-arch/unzip
+DEFINED_PHASES=install prepare setup
+DEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] )
+DESCRIPTION=Mode Oriented Directly Coded Lexical Analyser Generator
+EAPI=7
+HOMEPAGE=http://quex.sourceforge.net/
+IUSE=+python_single_target_python3_6
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] )
+REQUIRED_USE=^^ ( python_single_target_python3_6 )
+SLOT=0
+SRC_URI=mirror://sourceforge/quex/quex-0.71.0.zip
+_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=032f43959cce6519959f1c68603650da
