@@ -6,7 +6,7 @@ EAPI=7
 inherit eutils flag-o-matic toolchain-funcs multilib prefix
 
 # Official patchlevel
-# See ftp://ftp.cwru.edu/pub/bash/bash-5.0-patches/
+# See ftp://ftp.cwru.edu/pub/bash/bash-4.4-patches/
 PLEVEL=${PV##*_p}
 MY_PV=${PV/_p*}
 MY_PV=${MY_PV/_/-}
@@ -34,7 +34,7 @@ patches() {
 }
 
 # The version of readline this bash normally ships with.
-READLINE_VER="8.0"
+READLINE_VER="7.0"
 
 DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="http://tiswww.case.edu/php/chet/bash/bashtop.html"
@@ -45,8 +45,8 @@ else
 fi
 
 LICENSE="GPL-3"
-SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+SLOT="${MY_PV}"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="afs bashlogger examples mem-scramble +net nls plugins +readline"
 
 DEPEND="
@@ -61,12 +61,6 @@ RDEPEND="
 #DEPEND+=" virtual/yacc"
 
 S="${WORKDIR}/${MY_P}"
-
-PATCHES=(
-	# Patches from Chet sent to bashbug ml
-	"${FILESDIR}"/${PN}-5.0-history-append.patch
-	"${FILESDIR}"/${PN}-5.0-syslog-history-extern.patch
-)
 
 pkg_setup() {
 	if is-flag -malign-double ; then #7332
@@ -88,6 +82,9 @@ src_prepare() {
 	# Include official patches
 	[[ ${PLEVEL} -gt 0 ]] && eapply -p0 $(patches -s)
 
+	eapply "${FILESDIR}/${PN}-4.4-jobs_overflow.patch" #644720
+	eapply "${FILESDIR}/${PN}-4.4-set-SHOBJ_STATUS.patch" #644720
+
 	# Clean out local libs so we know we use system ones w/releases.
 	if is_release ; then
 		rm -rf lib/{readline,termcap}/*
@@ -102,7 +99,6 @@ src_prepare() {
 	sed -i -r '/^(HS|RL)USER/s:=.*:=:' doc/Makefile.in || die
 	touch -r . doc/*
 
-	eapply -p0 "${PATCHES[@]}"
 	eapply_user
 }
 
@@ -179,83 +175,15 @@ src_compile() {
 }
 
 src_install() {
-	local d f
+	into /
+	newbin bash bash-${SLOT}
 
-	default
+	newman doc/bash.1 bash-${SLOT}.1
+	newman doc/builtins.1 builtins-${SLOT}.1
 
-	dodir /bin
-	mv "${ED}"/usr/bin/bash "${ED}"/bin/ || die
-	dosym bash /bin/rbash
+	insinto /usr/share/info
+	newins doc/bashref.info bash-${SLOT}.info
+	dosym bash-${SLOT}.info /usr/share/info/bashref-${SLOT}.info
 
-	insinto /etc/bash
-	doins "${FILESDIR}"/bash_logout
-	doins "$(prefixify_ro "${FILESDIR}"/bashrc)"
-	keepdir /etc/bash/bashrc.d
-	insinto /etc/skel
-	for f in bash{_logout,_profile,rc} ; do
-		newins "${FILESDIR}"/dot-${f} .${f}
-	done
-
-	local sed_args=(
-		-e "s:#${USERLAND}#@::"
-		-e '/#@/d'
-	)
-	if ! use readline ; then
-		sed_args+=( #432338
-			-e '/^shopt -s histappend/s:^:#:'
-			-e 's:use_color=true:use_color=false:'
-		)
-	fi
-	sed -i \
-		"${sed_args[@]}" \
-		"${ED}"/etc/skel/.bashrc \
-		"${ED}"/etc/bash/bashrc || die
-
-	if use plugins ; then
-		exeinto /usr/$(get_libdir)/bash
-		doexe $(echo examples/loadables/*.o | sed 's:\.o::g')
-		insinto /usr/include/bash-plugins
-		doins *.h builtins/*.h include/*.h lib/{glob/glob.h,tilde/tilde.h}
-	fi
-
-	if use examples ; then
-		for d in examples/{functions,misc,scripts,startup-files} ; do
-			exeinto /usr/share/doc/${PF}/${d}
-			docinto ${d}
-			for f in ${d}/* ; do
-				if [[ ${f##*/} != PERMISSION ]] && [[ ${f##*/} != *README ]] ; then
-					doexe ${f}
-				else
-					dodoc ${f}
-				fi
-			done
-		done
-	fi
-
-	doman doc/*.1
-	newdoc CWRU/changelog ChangeLog
-	dosym bash.info /usr/share/info/bashref.info
-}
-
-pkg_preinst() {
-	if [[ -e ${EROOT}/etc/bashrc ]] && [[ ! -d ${EROOT}/etc/bash ]] ; then
-		mkdir -p "${EROOT}"/etc/bash
-		mv -f "${EROOT}"/etc/bashrc "${EROOT}"/etc/bash/
-	fi
-
-	if [[ -L ${EROOT}/bin/sh ]] ; then
-		# rewrite the symlink to ensure that its mtime changes. having /bin/sh
-		# missing even temporarily causes a fatal error with paludis.
-		local target=$(readlink "${EROOT}"/bin/sh)
-		local tmp=$(emktemp "${EROOT}"/bin)
-		ln -sf "${target}" "${tmp}"
-		mv -f "${tmp}" "${EROOT}"/bin/sh
-	fi
-}
-
-pkg_postinst() {
-	# If /bin/sh does not exist, provide it
-	if [[ ! -e ${EROOT}/bin/sh ]] ; then
-		ln -sf bash "${EROOT}"/bin/sh
-	fi
+	dodoc README NEWS AUTHORS CHANGES COMPAT Y2K doc/FAQ doc/INTRO
 }
