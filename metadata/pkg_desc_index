@@ -9029,7 +9029,7 @@ dev-python/serpent 1.30: A simple serialization library based on ast.literal_eva
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.10-r1: Allow customization of the process title
-dev-python/setuptools 44.1.0 46.4.0-r1 49.1.1 49.2.0 49.2.1: Collection of extensions to Distutils
+dev-python/setuptools 44.1.0 46.4.0-r1 49.1.1 49.2.0 49.2.1 49.3.0: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 4.1.2: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.0 1.1: A setuptools_scm plugin for git archives
@@ -10597,7 +10597,7 @@ dev-util/cargo-ebuild 0.2.0 0.3.0: Generates an ebuild for a package using the i
 dev-util/cargo-license 0.3.0: Cargo subcommand to see license of dependencies
 dev-util/catalyst 3.0.9 3.0.12 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.4.13: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
-dev-util/catkin 0.8.3-r1 0.8.8 9999: Cmake macros and associated python code used to build some parts of ROS
+dev-util/catkin 0.8.3-r1 0.8.8-r1 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/cbindgen 0.14.3: A tool for generating C bindings to Rust code
 dev-util/ccache 3.7.10 3.7.11: fast compiler cache
 dev-util/cccc 3.1.5-r1: Source metrics (line counts, complexity, etc) for Java and C++
