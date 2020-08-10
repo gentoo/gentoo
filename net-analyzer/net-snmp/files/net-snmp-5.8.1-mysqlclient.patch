@@ -1,3 +1,14 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -25,6 +25,8 @@
+ 
+ AC_MSG_CACHE_INIT()
+ 
++PKG_PROG_PKG_CONFIG
++
+ #
+ # save the configure arguments
+ #
 --- a/configure.d/config_os_libs2
 +++ b/configure.d/config_os_libs2
 @@ -516,6 +516,8 @@
