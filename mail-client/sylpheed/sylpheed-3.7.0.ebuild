@@ -12,7 +12,7 @@ SRC_URI="http://${PN}.sraoss.jp/${PN}/v${PV%.*}/${P}.tar.bz2"
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 sparc x86"
-IUSE="crypt ipv6 ldap libressl nls oniguruma pda spell ssl xface"
+IUSE="crypt ipv6 ldap libressl nls oniguruma spell ssl xface"
 
 CDEPEND="net-libs/liblockfile
 	x11-libs/gtk+:2
@@ -20,7 +20,6 @@ CDEPEND="net-libs/liblockfile
 	ldap? ( net-nds/openldap )
 	nls? ( sys-devel/gettext )
 	oniguruma? ( dev-libs/oniguruma:= )
-	pda? ( app-pda/jpilot )
 	spell? (
 		app-text/gtkspell:2
 		dev-libs/dbus-glib
@@ -45,7 +44,6 @@ src_configure() {
 		$(use_enable ipv6) \
 		$(use_enable ldap) \
 		$(use_enable oniguruma) \
-		$(use_enable pda jpilot) \
 		$(use_enable spell gtkspell) \
 		$(use_enable ssl) \
 		$(use_enable xface compface) \
