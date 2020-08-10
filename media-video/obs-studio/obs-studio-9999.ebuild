@@ -42,7 +42,7 @@ DEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
-	media-libs/x264
+	media-libs/x264:=
 	media-video/ffmpeg:=[x264]
 	net-misc/curl
 	sys-apps/dbus
