@@ -9,15 +9,15 @@ MAJOR_PV=$(ver_cut 1-2)
 
 DESCRIPTION="A roguelike dungeon exploration game based on the books of J.R.R. Tolkien"
 HOMEPAGE="https://rephial.org/"
-SRC_URI="https://rephial.org/downloads/${MAJOR_PV}/${P}.tar.gz"
+SRC_URI="https://rephial.org/downloads/${MAJOR_PV}/${P}.tar.gz
+	https://dev.gentoo.org/~steils/distfiles/${P}-man.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+ncurses sdl sdl2 sound +X"
+IUSE="+ncurses sdl sound +X"
 
-REQUIRED_USE="sdl2? ( sdl )
-	sound? ( sdl )
+REQUIRED_USE="sound? ( sdl )
 	|| ( X ncurses )"
 
 RDEPEND="X? (
@@ -26,29 +26,18 @@ RDEPEND="X? (
 	)
 	ncurses? ( sys-libs/ncurses:0=[unicode] )
 	sdl? (
-		!sdl2? (
-			media-libs/libsdl[video,X]
-			media-libs/sdl-image
-			media-libs/sdl-ttf
-			sound? (
-				media-libs/libsdl[sound]
-				media-libs/sdl-mixer[mp3]
-			)
-		)
-		sdl2? (
-			media-libs/libsdl2[video,X]
-			media-libs/sdl2-image
-			media-libs/sdl2-ttf
-			sound? (
-				media-libs/libsdl2[sound]
-				media-libs/sdl2-mixer[mp3]
-			)
+		media-libs/libsdl2[video,X]
+		media-libs/sdl2-image
+		media-libs/sdl2-ttf
+		sound? (
+			media-libs/libsdl2[sound]
+			media-libs/sdl2-mixer[mp3]
 		)
 	)"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=("${FILESDIR}"/${P}-gcc-10.patch)
+PATCHES=( "${FILESDIR}/${P}-sdl2-sound.patch" )
 
 src_prepare() {
 	default
@@ -78,17 +67,10 @@ src_configure() {
 		$(use_enable ncurses curses)
 	)
 	if use sdl; then
-		if use sdl2; then
-			myconf+=(
-				--enable-sdl2
-				$(use_enable sound sdl2-mixer)
-			)
-		else
-			myconf+=(
-				--enable-sdl
-				$(use_enable sound sdl-mixer)
-			)
-		fi
+		myconf+=(
+			--enable-sdl2
+			$(use_enable sound sdl2-mixer)
+		)
 	fi
 
 	econf "${myconf[@]}"
@@ -97,16 +79,13 @@ src_configure() {
 src_install() {
 	default
 
-	dodoc changes.txt readme.txt
-	dodoc docs/{a-quick-demo,attack,birth,command,customize,dungeon,faq,guide}.rst
+	dodoc changes.txt README.md
+	doman "${WORKDIR}"/${PN}.1
 	doenvd "${T}"/99${PN}
 
 	if use X || use sdl; then
 		use X && make_desktop_entry "angband -mx11" "Angband (X11)" "${PN}"
-		if use sdl; then
-			use sdl2 && make_desktop_entry "angband -msdl2" "Angband (SDL2)" "${PN}" \
-				 || make_desktop_entry "angband -msdl" "Angband (SDL)" "${PN}"
-		fi
+		use sdl && make_desktop_entry "angband -msdl2" "Angband (SDL2)" "${PN}"
 
 		local s
 		for s in 16 32 128 256 512; do
