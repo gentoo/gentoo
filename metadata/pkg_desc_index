@@ -18764,7 +18764,7 @@ x11-plugins/pidgin-libnotify 0.14-r1: pidgin-libnotify provides popups for pidgi
 x11-plugins/pidgin-mbpurple 0.3.0-r2: Pidgin plug-in supporting microblog services like Twitter or identi.ca
 x11-plugins/pidgin-mpris 0.2.6: Gets current song from MPRIS-aware media players
 x11-plugins/pidgin-musictracker 0.4.22: A Pidgin now playing plugin to publicise the songs you are listening
-x11-plugins/pidgin-opensteamworks 1.6.1 1.7: Steam protocol plugin for pidgin
+x11-plugins/pidgin-opensteamworks 1.7: Steam protocol plugin for pidgin
 x11-plugins/pidgin-otr 4.0.2: (OTR) Messaging allows you to have private conversations over instant messaging
 x11-plugins/pidgin-privacy-please 0.7.1: pidgin plugin to stop spammers from annoying you
 x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with current info from Rhythmbox
