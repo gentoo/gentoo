@@ -4,9 +4,9 @@ DESCRIPTION=A file viewer, editor and analyzer for text, binary, and executable 
 EAPI=7
 HOMEPAGE=http://hte.sourceforge.net/ https://github.com/sebastianbiallas/ht/
 IUSE=X
-KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+KEYWORDS=amd64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0= X? ( x11-libs/libX11 ) >=dev-libs/lzo-2
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~slyfox/distfiles/ht-2.1.1_pre20161206.tar.gz
-_md5_=aee48c32ece2aa5b636aaed12c171cdf
+_md5_=e9d92d9be2bb078ff8d042c554527b0a
