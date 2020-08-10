@@ -3,9 +3,9 @@ DEPEND=dev-lang/go:=
 DESCRIPTION=A command-line interface for Hetzner Cloud
 EAPI=7
 HOMEPAGE=https://github.com/hetznercloud/cli
-KEYWORDS=~amd64
+KEYWORDS=amd64
 LICENSE=MIT
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ago/distfiles/hcloud-1.17.0.tar.xz
-_md5_=eaff0ddb85e9934da211ab49dd2eee8f
+_md5_=5fcb8708fcfaa2550b305dd364b21388
