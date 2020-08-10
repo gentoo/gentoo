@@ -13694,7 +13694,7 @@ media-sound/bplay 0.991: No-frills command-line buffered player and recorder
 media-sound/bpmdetect 0.7.0_pre20170810: Automatic BPM detection utility
 media-sound/bristol 0.60.11-r1: Synthesizer keyboard emulation package: Moog, Hammond and others
 media-sound/brutefir 1.0k-r2: Software convolution engine for applying long FIR filters
-media-sound/cadence 0.9.0-r4 0.9.1 9999: Collection of tools useful for audio production
+media-sound/cadence 0.9.1 9999: Collection of tools useful for audio production
 media-sound/cantata 2.4.1: Featureful and configurable Qt client for the music player daemon (MPD)
 media-sound/cd-discid 1.4: returns the disc id for the cd in the cd-rom drive
 media-sound/cdcd 0.6.6-r2: a simple yet powerful command line cd player
@@ -18106,7 +18106,7 @@ www-client/netsurf 3.10-r2: a free, open source web browser
 www-client/opera 70.0.3728.95: A fast and secure web browser
 www-client/opera-beta 70.0.3728.59: A fast and secure web browser
 www-client/opera-developer 71.0.3763.0 71.0.3770.0: A fast and secure web browser
-www-client/otter 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
+www-client/otter 1.0.01 1.0.01-r1 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.12.0 1.13.0 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
 www-client/seamonkey 2.53.2 2.53.3: Seamonkey Web Browser
