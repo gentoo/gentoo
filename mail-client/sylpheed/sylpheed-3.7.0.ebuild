@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit desktop
 
@@ -32,8 +32,8 @@ RDEPEND="${CDEPEND}
 	app-misc/mime-types
 	net-misc/curl"
 DEPEND="${CDEPEND}
-	virtual/pkgconfig
 	xface? ( media-libs/compface )"
+BDEPEND="virtual/pkgconfig"
 
 DOCS="AUTHORS ChangeLog* NEW* PLUGIN* README* TODO*"
 
