@@ -18,4 +18,6 @@ RDEPEND="
 	dev-ros/hardware_interface
 	dev-ros/pluginlib:=
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-cpp/gtest )
+"
