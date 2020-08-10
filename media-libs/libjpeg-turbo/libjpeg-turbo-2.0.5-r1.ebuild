@@ -75,8 +75,8 @@ multilib_src_configure() {
 		-DCMAKE_INSTALL_DEFAULT_DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
 		-DENABLE_STATIC="$(usex static-libs)"
 		-DWITH_JAVA="$(multilib_native_usex java)"
-    -DWITH_JPEG7="$(usex jpeg7 1 0)"
-    -DWITH_JPEG8="$(usex jpeg8 1 0)"
+		-DWITH_JPEG7="$(usex jpeg7 1 0)"
+		-DWITH_JPEG8="$(usex jpeg8 1 0)"
 		-DWITH_MEM_SRCDST=ON
 	)
 
