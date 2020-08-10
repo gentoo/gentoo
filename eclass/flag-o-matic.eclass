@@ -32,7 +32,7 @@ setup-allowed-flags() {
 		-g '-g[0-9]'
 		-ggdb '-ggdb[0-9]'
 		-gdwarf '-gdwarf-*'
-		gstabs -gstabs+
+		-gstabs -gstabs+
 		-gz
 
 		-fno-ident -fpermissive -frecord-gcc-switches
