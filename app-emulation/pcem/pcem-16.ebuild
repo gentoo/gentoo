@@ -16,7 +16,7 @@ SRC_URI="https://pcem-emulator.co.uk/files/PCemV${PV}Linux.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="alsa networking"
 
 S="${WORKDIR}"
