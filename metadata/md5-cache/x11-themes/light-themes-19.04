@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=app-arch/xz-utils
+DESCRIPTION=GTK2/GTK3 Ambiance and Radiance themes from Ubuntu
+EAPI=7
+HOMEPAGE=https://packages.ubuntu.com/zesty/light-themes
+IUSE=gtk3
+KEYWORDS=~amd64 ~x86
+LICENSE=CC-BY-SA-3.0 CC-BY-SA-4.0
+RDEPEND=x11-themes/gtk-engines-murrine gtk3? ( x11-themes/gtk-engines-unico )
+SLOT=0
+SRC_URI=mirror://ubuntu/pool/main/u/ubuntu-themes/ubuntu-themes_19.04.orig.tar.gz https://dev.gentoo.org/~pacho/light-themes/Gentoo-Buttons-r1.tar.xz
+_md5_=eed3e377dc992f5169c7b5e10fde7c1f
