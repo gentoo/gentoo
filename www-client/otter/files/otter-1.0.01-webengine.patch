@@ -1,0 +1,11 @@
+--- a/src/core/SettingsManager.cpp
++++ b/src/core/SettingsManager.cpp
+@@ -73,7 +73,7 @@ void SettingsManager::createInstance(con
+ 	registerOption(AddressField_SuggestSearchOption, BooleanType, true);
+ 	registerOption(AddressField_SuggestSpecialPagesOption, BooleanType, true);
+ 	registerOption(Backends_PasswordsOption, EnumerationType, QLatin1String("file"), {QLatin1String("file")});
+-	registerOption(Backends_WebOption, EnumerationType, QLatin1String("qtwebkit"), {QLatin1String("qtwebkit")}, (OptionDefinition::IsEnabledFlag | OptionDefinition::IsVisibleFlag | OptionDefinition::RequiresRestartFlag));
++	registerOption(Backends_WebOption, EnumerationType, QLatin1String("qtwebengine"), {QLatin1String("qtwebengine")}, (OptionDefinition::IsEnabledFlag | OptionDefinition::IsVisibleFlag | OptionDefinition::RequiresRestartFlag));
+ 	registerOption(Browser_AlwaysAskWhereToSaveDownloadOption, BooleanType, true);
+ 	registerOption(Browser_EnableMouseGesturesOption, BooleanType, true);
+ 	registerOption(Browser_EnableSingleKeyShortcutsOption, BooleanType, true);
