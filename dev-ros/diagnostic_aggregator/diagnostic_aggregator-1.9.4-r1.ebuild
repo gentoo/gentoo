@@ -23,10 +23,11 @@ RDEPEND="
 	dev-ros/bondcpp
 	dev-libs/boost:=
 	dev-libs/console_bridge:=
+	dev-ros/bondpy[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	dev-ros/diagnostic_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	test? ( dev-ros/rostest )"
+	test? ( dev-ros/rostest[${PYTHON_SINGLE_USEDEP}] )"
 
 src_test() {
 	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
