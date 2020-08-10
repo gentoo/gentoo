@@ -35,7 +35,7 @@ DEPEND="${RDEPEND}
 		virtual/latex-base
 	)"
 
-PATCHES=( "${FILESDIR}"/${P}-man.patch )
+PATCHES=( "${FILESDIR}"/${PN}-0.60-man.patch )
 
 DIST_TEST="do"
 
