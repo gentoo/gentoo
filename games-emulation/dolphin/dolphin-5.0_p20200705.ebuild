@@ -16,7 +16,7 @@ else
 	inherit vcs-snapshot
 	commit=0dbe8fb2eaa608a6540df3d269648a596c29cf4b
 	SRC_URI="https://github.com/dolphin-emu/dolphin/archive/${commit}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 DESCRIPTION="Gamecube and Wii game emulator"
