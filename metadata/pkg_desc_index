@@ -9102,7 +9102,7 @@ dev-python/sphinxcontrib-programoutput 0.16: Extension to sphinx to include prog
 dev-python/sphinxcontrib-qthelp 1.0.2 1.0.3: Sphinx extension which outputs QtHelp documents
 dev-python/sphinxcontrib-serializinghtml 1.1.4: Sphinx extension which outputs outputs serialized HTML files
 dev-python/sphinxcontrib-spelling 5.1.2 5.2.0: Sphinx spelling extension
-dev-python/sphinxcontrib-websupport 1.2.2: Sphinx websupport extension
+dev-python/sphinxcontrib-websupport 1.2.2 1.2.4: Sphinx websupport extension
 dev-python/sphinxtogithub 1.1.0: A python script for preparing the html output of Sphinx documentation for github pages
 dev-python/spur 0.3.21: Run commands locally or over SSH using the same interface
 dev-python/spyder 4.1.3 4.1.4: The Scientific Python Development Environment
