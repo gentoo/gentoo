@@ -63,6 +63,7 @@ RDEPEND="
 	gdbm? ( >=sys-libs/gdbm-1.8.3:= )
 	app-arch/bzip2
 	sys-libs/zlib
+	virtual/libcrypt:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="${RDEPEND}"
