@@ -34,7 +34,7 @@ VERSION_LVM="2.02.187"
 VERSION_LZO="2.10"
 VERSION_MDADM="4.1"
 VERSION_POPT="1.18"
-VERSION_STRACE="5.7"
+VERSION_STRACE="5.8"
 VERSION_THIN_PROVISIONING_TOOLS="0.8.5"
 VERSION_UNIONFS_FUSE="2.0"
 VERSION_UTIL_LINUX="2.36"
@@ -272,5 +272,13 @@ pkg_postinst() {
 			elog "file (${gk_config}) and make use of new MODULEREBUILD option"
 			elog "instead."
 		fi
+	fi
+
+	local n_root_args=$(grep -o -- '\<root=' /proc/cmdline 2>/dev/null | wc -l)
+	if [[ ${n_root_args} > 1 ]]; then
+		ewarn "WARNING: Multiple root arguments (root=) on kernel command-line detected!"
+		ewarn "If you are appending non-persistent device names to kernel command-line,"
+		ewarn "next reboot could fail in case running system and initramfs do not agree"
+		ewarn "on detected root device name!"
 	fi
 }
