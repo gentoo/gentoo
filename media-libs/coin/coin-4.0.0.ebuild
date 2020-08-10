@@ -1,15 +1,15 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils flag-o-matic
+inherit cmake flag-o-matic
 
-MY_P=Coin3D-coin-a4ce638f43bd
+MY_P=${P/coin/Coin}
 
 DESCRIPTION="A high-level 3D graphics toolkit, fully compatible with SGI Open Inventor 2.1"
-HOMEPAGE="https://bitbucket.org/Coin3D/coin/wiki/Home"
-SRC_URI="https://dev.gentoo.org/~reavertm/${MY_P}.tar.bz2"
+HOMEPAGE="https://github.com/coin3d/coin/wiki"
+SRC_URI="https://github.com/coin3d/coin/releases/download/${MY_P}/${P}-src.tar.gz"
 
 LICENSE="|| ( GPL-2 PEL )"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
@@ -47,10 +47,15 @@ DEPEND="${RDEPEND}
 	)
 "
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/${PN}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.0.0a-cmake.patch
+	"${FILESDIR}"/${P}-0001-updated-to-cmake-3.14.patch
+	"${FILESDIR}"/${P}-0002-cpack.d-is-now-optional.patch
+	"${FILESDIR}"/${P}-0003-Partially-incorporating-coin4.0.0a-patch-from-gentoo.patch
+	"${FILESDIR}"/${P}-0004-Added-coin-default.cfg.patch
+	"${FILESDIR}"/${P}-0005-Slightly-fix-coin.cfg.cmake.in.patch
+	"${FILESDIR}"/${P}-0006-Fix-underlinking-against-X11.patch
 )
 
 DOCS=(
@@ -94,12 +99,12 @@ src_configure() {
 		-DSPIDERMONKEY_RUNTIME_LINKING=ON
 
 		-DCOIN_VERBOSE=$(usex debug)
-		-DHAVE_MULTIPLE_VERSION=ON
+		-DHAVE_MULTIPLE_VERSION=OFF
 
 		-DCOIN_BUILD_SINGLE_LIB=ON
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
