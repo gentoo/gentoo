@@ -1,0 +1,107 @@
+diff --git a/nowide/CMakeLists.txt b/nowide/CMakeLists.txt
+index ff9dba6..5d1b9ce 100644
+--- a/nowide/CMakeLists.txt
++++ b/nowide/CMakeLists.txt
+@@ -1,7 +1,5 @@
+ find_package(Boost 1.54 REQUIRED)
+ 
+-add_leatherman_includes(${Boost_INCLUDE_DIRS} "${CMAKE_CURRENT_SOURCE_DIR}/../vendor/nowide/include")
+-add_leatherman_headers(../vendor/nowide/include/boost)
+ if(WIN32)
+     add_leatherman_library(../vendor/nowide/src/iostream.cpp)
+ endif()
+--- leatherman-1.10.0/execution/CMakeLists.txt~	2020-06-03 10:30:05.027479897 +0100
++++ leatherman-1.10.0/execution/CMakeLists.txt	2020-06-03 10:30:18.871483297 +0100
+@@ -1,4 +1,4 @@
+-find_package(Boost 1.54 REQUIRED COMPONENTS regex filesystem system)
++find_package(Boost 1.73 REQUIRED COMPONENTS regex filesystem system nowide)
+ 
+ add_leatherman_deps("${Boost_LIBRARIES}")
+ if ("${CMAKE_SYSTEM_NAME}" MATCHES "SunOS")
+@@ -10,7 +10,6 @@
+ add_leatherman_includes("${Boost_INCLUDE_DIRS}")
+ 
+ leatherman_dependency(util)
+-leatherman_dependency(nowide)
+ leatherman_dependency(locale)
+ leatherman_dependency(logging)
+ leatherman_dependency(file_util)
+--- leatherman-1.10.0/file_util/CMakeLists.txt~	2020-06-03 10:30:05.031479898 +0100
++++ leatherman-1.10.0/file_util/CMakeLists.txt	2020-06-03 10:31:04.550494516 +0100
+@@ -1,9 +1,8 @@
+-find_package(Boost 1.54 REQUIRED COMPONENTS regex filesystem system)
++find_package(Boost 1.73 REQUIRED COMPONENTS regex filesystem system nowide)
+ 
+ add_leatherman_deps("${Boost_LIBRARIES}")
+ add_leatherman_includes("${Boost_INCLUDE_DIRS}")
+ 
+-leatherman_dependency(nowide)
+ leatherman_dependency(locale)
+ leatherman_dependency(logging)
+ leatherman_dependency(util)
+--- leatherman-1.10.0/logging/CMakeLists.txt~	2020-06-03 10:30:05.035479898 +0100
++++ leatherman-1.10.0/logging/CMakeLists.txt	2020-06-03 10:30:19.092483352 +0100
+@@ -4,7 +4,6 @@
+ add_leatherman_deps(${Boost_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+ add_leatherman_includes("${Boost_INCLUDE_DIRS}")
+ 
+-leatherman_dependency(nowide)
+ leatherman_dependency(locale)
+ 
+ if (CMAKE_SYSTEM_NAME MATCHES "Linux" OR CMAKE_SYSTEM_NAME MATCHES "SunOS")
+--- leatherman-1.10.0/tests/CMakeLists.txt~	2020-06-02 23:24:17.146002133 +0100
++++ leatherman-1.10.0/tests/CMakeLists.txt	2020-06-02 23:26:17.780054923 +0100
+@@ -1,8 +1,8 @@
+-set(BOOST_REQUIRED_COMPONENTS system date_time chrono log log_setup thread filesystem regex)
++set(BOOST_REQUIRED_COMPONENTS system date_time chrono log log_setup thread filesystem regex nowide)
+ if (LEATHERMAN_USE_LOCALES)
+     set(BOOST_REQUIRED_COMPONENTS ${BOOST_REQUIRED_COMPONENTS} locale)
+ endif()
+-find_package(Boost "1.54" REQUIRED COMPONENTS ${BOOST_REQUIRED_COMPONENTS})
++find_package(Boost "1.73" REQUIRED COMPONENTS ${BOOST_REQUIRED_COMPONENTS})
+ 
+ include_directories(BEFORE ${LEATHERMAN_CATCH_INCLUDE} ${LEATHERMAN_INCLUDE_DIRS})
+ add_executable(leatherman_test main.cc ${LEATHERMAN_TEST_SRCS})
+--- leatherman-1.10.0/util/CMakeLists.txt~	2020-06-03 10:05:44.277172451 +0100
++++ leatherman-1.10.0/util/CMakeLists.txt	2020-06-03 10:06:52.969185017 +0100
+@@ -1,10 +1,8 @@
+-find_package(Boost 1.54 REQUIRED date_time chrono system)
++find_package(Boost 1.73 REQUIRED date_time chrono system nowide)
+ 
+ add_leatherman_deps(${Boost_LIBRARIES})
+ add_leatherman_includes("${Boost_INCLUDE_DIRS}")
+ 
+-leatherman_dependency(nowide)
+-
+ if(WIN32)
+     set(PLATFORM_SRCS "src/windows/time.cc" "src/windows/environment.cc" "src/windows/scoped_handle.cc")
+     set(PLATFORM_TESTS "tests/windows/environment.cc")
+--- leatherman-1.10.0/file_util/src/file.cc~	2019-12-14 20:46:29.000000000 +0000
++++ leatherman-1.10.0/file_util/src/file.cc	2020-06-02 22:42:45.100963441 +0100
+@@ -1,6 +1,6 @@
+ #include <leatherman/file_util/file.hpp>
+ #include <boost/nowide/fstream.hpp>
+-#include <boost/nowide/cenv.hpp>
++#include <boost/nowide/cstdlib.hpp>
+ #include <boost/filesystem.hpp>
+ #include <sstream>
+ #include <leatherman/logging/logging.hpp>
+--- leatherman-1.10.0/util/src/environment.cc~	2019-12-14 20:46:29.000000000 +0000
++++ leatherman-1.10.0/util/src/environment.cc	2020-06-02 22:42:45.101963441 +0100
+@@ -1,5 +1,5 @@
+ #include <leatherman/util/environment.hpp>
+-#include <boost/nowide/cenv.hpp>
++#include <boost/nowide/cstdlib.hpp>
+ 
+ using namespace std;
+ 
+--- leatherman-1.10.0/util/tests/environment.cc~	2019-12-14 20:46:29.000000000 +0000
++++ leatherman-1.10.0/util/tests/environment.cc	2020-06-02 22:42:45.103963442 +0100
+@@ -1,6 +1,6 @@
+ #include <catch.hpp>
+ #include <leatherman/util/environment.hpp>
+-#include <boost/nowide/cenv.hpp>
++#include <boost/nowide/cstdlib.hpp>
+ 
+ using namespace std;
+ using namespace leatherman::util;
