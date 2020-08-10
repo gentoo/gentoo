@@ -22,6 +22,7 @@ RDEPEND="
 	dev-ros/roscpp
 	dev-ros/rostime
 	dev-ros/xmlrpcpp
+	dev-ros/rosmsg[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	test? (
