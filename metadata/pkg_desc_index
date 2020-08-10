@@ -608,7 +608,7 @@ app-admin/sshguard 2.4.0 2.4.1 99999: protects hosts from brute force attacks ag
 app-admin/stow 2.2.2-r1 2.3.1: GNU Stow is a symlink farm manager
 app-admin/su-exec 0.2: Switch user and group id and exec
 app-admin/sud 1.3-r1: A daemon to execute processes with special privileges in a nosuid environment
-app-admin/sudo 1.8.31 1.8.31_p1 1.9.0-r1 1.9.1 1.9.2 9999: Allows users or groups to run commands as other users
+app-admin/sudo 1.8.31 1.8.31_p1 1.8.31_p2 1.9.2 9999: Allows users or groups to run commands as other users
 app-admin/superadduser 1.0.9 1.15: Interactive adduser script from Slackware
 app-admin/supervisor 4.0.4 4.1.0 4.2.0: A system for controlling process state under UNIX
 app-admin/swatchdog 3.2.4-r1: Simple log watcher
@@ -17532,7 +17532,7 @@ sys-fs/loop-aes 3.7n-r1 3.7q-r1: Linux kernel module to encrypt disk partitions 
 sys-fs/lsscsi 0.31: SCSI sysfs query tool
 sys-fs/lufis 0.3 0.3-r1: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r4: User-mode filesystem implementation
-sys-fs/lvm2 2.02.187-r2 2.03.09: User-land utilities for LVM2 (device-mapper) software
+sys-fs/lvm2 2.02.187-r2 2.03.10: User-land utilities for LVM2 (device-mapper) software
 sys-fs/lxcfs 4.0.3 4.0.5: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1_p18: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
