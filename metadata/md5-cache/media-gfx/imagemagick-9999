@@ -11,5 +11,5 @@ RDEPEND=dev-libs/libltdl:0 bzip2? ( app-arch/bzip2 ) corefonts? ( media-fonts/co
 REQUIRED_USE=corefonts? ( truetype ) svg? ( xml ) test? ( corefonts )
 RESTRICT=!test? ( test )
 SLOT=0/7.0.10
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	git-r3	8ec5b53812bce105ae7943930e4660f8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	8ec5b53812bce105ae7943930e4660f8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=1c53b1bc70e8a197fcd2bd35ac30feaf

@@ -10,5 +10,5 @@ RDEPEND=app-misc/mime-types berkdb? ( || ( sys-libs/db:6.2 sys-libs/db:5.3 sys-l
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/neomutt/neomutt/archive/20200626.tar.gz -> neomutt-20200626.tar.gz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=347eae30f49b66ac7305f9154c5c0643

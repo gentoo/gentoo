@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=net-libs/libpcap geoip? ( dev-libs/geoip ) geoipv2? ( dev-libs/libmaxminddb ) jansson? ( dev-libs/jansson ) kafka? ( dev-libs/librdkafka ) mongodb? ( >=dev-libs/mongo-c-driver-0.8.1-r1 <dev-libs/mongo-c-driver-0.98 ) mysql? ( dev-db/mysql-connector-c:0= ) ndpi? ( >=net-libs/nDPI-3.2:= ) nflog? ( net-libs/libnetfilter_log ) postgres? ( dev-db/postgresql:* ) rabbitmq? ( net-libs/rabbitmq-c ) sqlite? ( =dev-db/sqlite-3* ) zmq? ( >=net-libs/zeromq-4.2.0:= )
 REQUIRED_USE=?? ( geoip geoipv2 ) kafka? ( jansson ) rabbitmq? ( jansson )
 SLOT=0
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	git-r3	8ec5b53812bce105ae7943930e4660f8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	8ec5b53812bce105ae7943930e4660f8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=c701e261db4e58516f839abc9662ba01
