@@ -7067,7 +7067,7 @@ dev-perl/Pod-Markdown 3.5.0: Convert POD to Markdown
 dev-perl/Pod-Markdown-Github 0.40.0: Convert POD to Github's specific markdown
 dev-perl/Pod-POM 2.10.0: POD Object Model
 dev-perl/Pod-POM-View-Restructured 1.0.1: View for Pod::POM that outputs reStructuredText
-dev-perl/Pod-Parser 1.630.0: POD filters and translators
+dev-perl/Pod-Parser 1.630.0-r1: POD filters and translators
 dev-perl/Pod-Readme 1.1.2 1.2.3: Intelligently generate a README file from POD
 dev-perl/Pod-Simple-LaTeX 0.60.0: format Pod as LaTeX
 dev-perl/Pod-Spell 1.200.0: A formatter for spellchecking Pod
