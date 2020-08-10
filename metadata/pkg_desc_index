@@ -9385,9 +9385,9 @@ dev-ros/ament_lint_cmake 0.9.5 9999: Lint CMake code using cmakelint and generat
 dev-ros/ament_pep257 0.9.5 9999: Checks code against style conventions in PEP 8 and generate test result files
 dev-ros/ament_xmllint 0.9.5 9999: Checks XML files like the package manifest using xmllint
 dev-ros/angles 1.9.13 9999: Set of simple math utilities to work with angles
-dev-ros/audio_capture 0.3.6 9999: Transports audio from a source to a destination
-dev-ros/audio_common_msgs 0.3.6 9999: Messages for transmitting audio via ROS
-dev-ros/audio_play 0.3.6 9999: Outputs audio to a speaker from a source node
+dev-ros/audio_capture 0.3.6 0.3.7 9999: Transports audio from a source to a destination
+dev-ros/audio_common_msgs 0.3.6 0.3.7 9999: Messages for transmitting audio via ROS
+dev-ros/audio_play 0.3.6 0.3.7 9999: Outputs audio to a speaker from a source node
 dev-ros/base_local_planner 1.17.0 9999: Trajectory Rollout and Dynamic Window approaches to robot navigation on a plane
 dev-ros/bond 1.8.5 9999: A bond allows two processes, A and B, to know when the other has terminated
 dev-ros/bondcpp 1.8.5 9999: C++ implementation of bond, for checking when another process has terminated
@@ -10133,7 +10133,7 @@ dev-ruby/rb-readline-r7 0.5.2.0: Ruby implementation of the GNU readline C libra
 dev-ruby/rbnacl 4.0.2-r1 5.0.0-r1 6.0.1 7.0.0 7.1.0 7.1.1: Provides a high-level toolkit for building cryptographic systems and protocols
 dev-ruby/rbpdf 1.20.1-r2: Ruby on Rails RBPDF plugin
 dev-ruby/rbpdf-font 1.19.1: Font files for the Ruby on Rails RBPDF plugin
-dev-ruby/rbst 0.5.1: A simple Ruby wrapper for processing rST via docutils
+dev-ruby/rbst 0.5.1 0.6.5: A simple Ruby wrapper for processing rST via docutils
 dev-ruby/rcairo 1.16.2 1.16.4 1.16.5 1.16.6: Ruby bindings for cairo
 dev-ruby/rchardet 1.8.0: Character encoding auto-detection in Ruby
 dev-ruby/rdiscount 2.2.0.1 2.2.0.2: Implementation of John Gruber's Markdown
@@ -15698,7 +15698,7 @@ perl-core/parent 0.228-r1: Establish an ISA relationship with base classes at co
 perl-core/podlators 2.5.3: Format POD source into various output formats
 perl-core/version 0.990.800: Perl extension for Version Objects
 ros-meta/ament_cmake 0.9.6 1.0.0 9999: The entry point package for the ament buildsystem
-ros-meta/audio_common 0.3.6 9999: Common code for working with audio in ROS
+ros-meta/audio_common 0.3.6 0.3.7 9999: Common code for working with audio in ROS
 ros-meta/bond_core 1.8.5 9999: A bond allows two processes, A and B, to know when the other has terminated
 ros-meta/calibration 0.10.14 9999: Provides a toolchain running through the robot calibration process
 ros-meta/common_msgs 1.13.0 9999: Messages that are widely used by other ROS packages
