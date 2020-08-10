@@ -8247,7 +8247,7 @@ dev-python/humanize 2.4.1 2.5.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 19.0.0 20.0.1: A featureful, correct URL for Python
-dev-python/hypothesis 4.57.1 5.16.3 5.21.0 5.23.9: A library for property based testing
+dev-python/hypothesis 4.57.1 5.16.3 5.21.0 5.23.9 5.23.12: A library for property based testing
 dev-python/icalendar 4.0.6: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.8 2.10: Internationalized Domain Names in Applications (IDNA)
@@ -8900,7 +8900,7 @@ dev-python/python-sense-hat 2.2.0-r1: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-slugify 1.2.6 4.0.1: A Python Slugify application that handles Unicode
 dev-python/python-sshpubkeys 3.1.0: OpenSSH public key parser for Python
-dev-python/python-stdnum 1.13: A module to handle standardized numbers and codes
+dev-python/python-stdnum 1.13 1.14: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.7.0: Python bindings to the OpenStack Object Storage API
 dev-python/python-systemd 234: Python module for native access to the systemd facilities
 dev-python/python-termstyle 0.1.10: console colouring for python
