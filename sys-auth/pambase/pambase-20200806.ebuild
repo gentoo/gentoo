@@ -43,7 +43,7 @@ BDEPEND="$(python_gen_any_dep '
 	')"
 
 python_check_deps() {
-	has_version "dev-python/jinja[${PYTHON_USEDEP}]"
+	has_version -b "dev-python/jinja[${PYTHON_USEDEP}]"
 }
 
 S="${WORKDIR}/${PN}-${P}"
