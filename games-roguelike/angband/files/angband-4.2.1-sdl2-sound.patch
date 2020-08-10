@@ -1,0 +1,50 @@
+From bbfe78654e2f67da264d81d25fe1e6332302e51a Mon Sep 17 00:00:00 2001
+From: Eric Branlund <ebranlund@fastmail.com>
+Date: Sat, 11 Jul 2020 11:07:24 -0700
+Subject: [PATCH] Adjusted so "./configure --enable-sdl2-mixer" and then
+ compiling generates an executable where "angband --help" lists the SDL sound
+ module as available.
+
+Upstream-Status: Accepted
+[https://github.com/angband/angband/commit/bbfe78654e2f67da264d81d25fe1e6332302e51a]
+Signed-off-by: Stefan Strogin <steils@gentoo.org>
+---
+ configure.ac     | 2 +-
+ src/sound-core.c | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 968aaa914..9d0b1e600 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -337,7 +337,7 @@ if test "$enable_sdl2_mixer" = "yes"; then
+ 			SDL2_LIBS=`sdl2-config --libs`
+ 			LIBS="${LIBS} ${SDL2_LIBS} -lSDL2_mixer"
+ 		fi
+-		MAINFILES="${MAINFILES} \$(SNDSDL2FILES)"
++		MAINFILES="${MAINFILES} \$(SNDSDLFILES)"
+ 	fi
+ fi
+ 
+diff --git a/src/sound-core.c b/src/sound-core.c
+index 261009429..8b8ef7ffd 100644
+--- a/src/sound-core.c
++++ b/src/sound-core.c
+@@ -20,7 +20,7 @@
+ #include "sound.h"
+ #include "main.h"
+ #include "ui-prefs.h"
+-#ifdef SOUND_SDL
++#if defined(SOUND_SDL) || defined(SOUND_SDL2)
+ #include "snd-sdl.h"
+ #endif
+ 
+@@ -55,7 +55,7 @@ static struct msg_snd_data message_sounds[MSG_MAX];
+  */
+ static const struct sound_module sound_modules[] =
+ {
+-#ifdef SOUND_SDL
++#if defined(SOUND_SDL) || defined(SOUND_SDL2)
+ 	{ "sdl", "SDL_mixer sound module", init_sound_sdl },
+ #endif /* SOUND_SDL */
+ #if (!defined(WIN32_CONSOLE_MODE) && defined(WINDOWS) && !defined(USE_SDL) && !defined(USE_SDL2)) 
