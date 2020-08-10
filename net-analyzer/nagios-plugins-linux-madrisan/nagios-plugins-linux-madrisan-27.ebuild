@@ -15,18 +15,13 @@ SRC_URI="https://github.com/madrisan/${MY_PN}/releases/download/v${PV}/${MY_P}.t
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="curl"
+IUSE="curl varlink"
 
-DEPEND="curl? ( net-misc/curl:0= )"
+DEPEND="
+	curl? ( net-misc/curl:0= )
+	varlink? ( dev-libs/libvarlink:= )
+"
 RDEPEND="${DEPEND}"
-
-# https://github.com/madrisan/nagios-plugins-linux/issues/48
-# Will be in the next release
-# https://github.com/madrisan/nagios-plugins-linux/pull/52
-PATCHES=(
-	"${FILESDIR}/${P}-fix-fno-common.patch"
-	"${FILESDIR}/${P}-fix-musl-build.patch"
-)
 
 S="${WORKDIR}/${MY_P}"
 
@@ -44,6 +39,7 @@ src_configure() {
 		# Most options are already defaults for Gentoo
 		--disable-hardening
 		$(use_enable curl libcurl)
+		$(use_enable varlink libvarlink)
 	)
 	econf "${myconf[@]}"
 }
