@@ -23,7 +23,12 @@ RDEPEND="
 	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
-	test? ( dev-ros/rostest dev-ros/rospy dev-ros/rosunit )
+	test? (
+		dev-ros/rostest
+		dev-ros/rospy
+		dev-ros/rosunit
+		dev-cpp/gtest
+	)
 	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
 BDEPEND="
