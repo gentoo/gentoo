@@ -32,10 +32,7 @@ REQUIRED_USE="dialogs? ( gtk )"
 src_prepare() {
 	default
 
-	sed -i -e 's:/beid/rsaref220:/rsaref220:' configure.ac || die
-	sed -i -e 's:/beid::' cardcomm/pkcs11/src/libbeidpkcs11.pc.in || die
-
-	# legacy xpi module : we don't want it anymore
+	# xpi module : we don't want it anymore
 	sed -i -e '/SUBDIRS/ s:plugins_tools/xpi ::' Makefile.am || die
 	sed -i -e '/plugins_tools\/xpi/ d' configure.ac || die
 
