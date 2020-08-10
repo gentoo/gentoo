@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-PYTHON_COMPAT=( python2_7 )
+EAPI="7"
+PYTHON_COMPAT=( python3_{6,7,8} )
 VALA_USE_DEPEND="vapigen"
 
 inherit autotools gnome2-utils python-any-r1 vala vcs-snapshot virtualx xdg-utils
@@ -30,8 +30,8 @@ RDEPEND="app-accessibility/at-spi2-core
 	libcanberra? ( media-libs/libcanberra[gtk3(+)] )
 	vala? ( $(vala_depend) )
 	xtest? ( x11-libs/libXtst )"
-DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
+DEPEND="${RDEPEND}"
+BDEPEND="${PYTHON_DEPS}
 	dev-util/glib-utils
 	dev-util/gtk-doc
 	dev-util/gtk-doc-am
@@ -39,7 +39,10 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${PN}-vala.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-python-3.patch
+	"${FILESDIR}"/${PN}-vala.patch
+)
 
 src_prepare() {
 	use vala && vala_src_prepare

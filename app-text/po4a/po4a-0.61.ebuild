@@ -6,15 +6,13 @@ PLOCALES="af ar ca cs da de eo es et eu fr hr hu id it ja kn ko nb nl pl pt pt_B
 
 inherit l10n perl-module
 
-MY_P="${P/-/-v}"
-
 DESCRIPTION="Tools to ease the translation of documentation"
 HOMEPAGE="https://po4a.org/"
-SRC_URI="https://github.com/mquinson/${PN}/releases/download/v${PV}/${MY_P}.tar.gz"
+SRC_URI="https://github.com/mquinson/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -36,9 +34,8 @@ DEPEND="${RDEPEND}
 		dev-perl/Test-Pod
 		virtual/latex-base
 	)"
-S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}"/${PN}-man.patch )
+PATCHES=( "${FILESDIR}"/${PN}-0.60-man.patch )
 
 DIST_TEST="do"
 
