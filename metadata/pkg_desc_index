@@ -18425,7 +18425,7 @@ x11-misc/accessx 0951-r2: Interface to the XKEYBOARD extension in X11
 x11-misc/alacarte 3.36.0: Simple GNOME menu editor
 x11-misc/albert 0.14.22 0.16.1: Desktop agnostic launcher
 x11-misc/alock 1.0.0: locks the local X display until a password is entered
-x11-misc/appmenu-gtk-module 0.7.3: Application menu module for GTK
+x11-misc/appmenu-gtk-module 0.7.3-r1: Application menu module for GTK
 x11-misc/apwal 0.4.5-r2: A simple application launcher and combined editor
 x11-misc/arandr 0.1.10: Another XRandR GUI
 x11-misc/autocutsel 0.10.0: Synchronise the two copy/paste buffers mainly used by X applications
