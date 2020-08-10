@@ -27,7 +27,14 @@ setup-allowed-flags() {
 		'-fstack-protector*' '-fsanitize*' '-fstack-check*' -fno-stack-check
 		-fbounds-check -fbounds-checking -fno-strict-overflow
 		-fno-PIE -fno-pie -nopie -no-pie -fno-unit-at-a-time
-		-g '-g[0-9]' -ggdb '-ggdb[0-9]' '-gdwarf-*' gstabs -gstabs+ -gz
+
+		# debugging symbols should generally be very safe to add
+		-g '-g[0-9]'
+		-ggdb '-ggdb[0-9]'
+		'-gdwarf-*'
+		gstabs -gstabs+
+		-gz
+
 		-fno-ident -fpermissive -frecord-gcc-switches
 		'-fdiagnostics*' '-fplugin*'
 		'-W*' -w
