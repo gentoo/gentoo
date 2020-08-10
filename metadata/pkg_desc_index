@@ -10668,7 +10668,7 @@ dev-util/devhelp 3.34.0: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 154 155: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 155: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
@@ -11569,7 +11569,7 @@ games-puzzle/zaz 1.0.0-r1: A puzzle game where the player has to arrange balls i
 games-roguelike/FTL 1.5.13: Faster Than Light: A spaceship simulation real-time roguelike-like game
 games-roguelike/FTL-gog 1.6.9.25330: Top-down roguelike space ship simulator
 games-roguelike/adom 1.1.1-r1: Ancient Domains Of Mystery rogue-like game
-games-roguelike/angband 4.1.3 4.2.0 4.2.1: A roguelike dungeon exploration game based on the books of J.R.R. Tolkien
+games-roguelike/angband 4.1.3 4.2.1 4.2.1-r1: A roguelike dungeon exploration game based on the books of J.R.R. Tolkien
 games-roguelike/crossfire-client 1.71.0-r2: Client for the nethack-style but more in the line of UO
 games-roguelike/dwarf-fortress 0.44.12: A single-player fantasy game
 games-roguelike/hengband 1.6.2-r1: An Angband variant, with a Japanese/fantasy theme

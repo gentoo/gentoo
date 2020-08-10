@@ -3336,7 +3336,6 @@ games-puzzle/world-of-goo-gog:bundled-libs - Use bundled libs
 games-puzzle/world-of-goo-hb:bundled-libs - Use bundled libs
 games-puzzle/xlogical:alt_gfx - Use alternate graphics which are closer to the original Amiga version
 games-roguelike/FTL:bundled-libs - Use bundled libraries.
-games-roguelike/angband:sdl2 - Use libsdl2 instead of libsdl
 games-roguelike/angband:sound - Enable and install sounds
 games-roguelike/stone-soup:ncurses - Enable for console (uses ncurses) based build. (can be enabled on top of tiles)
 games-roguelike/stone-soup:tiles - Enable for graphical (tiled) build. (can be enabled on top of ncurses)
