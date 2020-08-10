@@ -18,7 +18,7 @@ RDEPEND="
 	dev-libs/console_bridge
 
 	dev-ros/cpp_common
-	dev-ros/pluginlib
+	>=dev-ros/pluginlib-1.13.0-r2:=
 	dev-ros/roscpp_serialization
 	dev-ros/roscpp_traits
 	dev-ros/rostime
