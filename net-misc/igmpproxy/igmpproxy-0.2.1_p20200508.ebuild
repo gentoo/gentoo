@@ -11,7 +11,7 @@ DESCRIPTION="A multicast routing daemon which uses IGMP forwarding"
 HOMEPAGE="https://github.com/pali/igmpproxy"
 SRC_URI="https://github.com/pali/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 LICENSE="GPL-2+"
 SLOT="0"
 
