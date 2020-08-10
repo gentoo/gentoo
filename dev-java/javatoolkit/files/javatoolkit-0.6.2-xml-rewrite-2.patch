@@ -1,0 +1,29 @@
+From bb8bb23579f75a34ccb7c9d963a6bae001ae40b8 Mon Sep 17 00:00:00 2001
+From: Patrice Clement <monsieurp@gentoo.org>
+Date: Wed, 15 Jul 2020 22:13:06 +0200
+Subject: xml-rewrite-2.py: add back os.chdir() function call.
+
+Courtesy of Arfrever <arfrever@apache.org>.
+
+Closes: https://bugs.gentoo.org/698964
+Signed-off-by: Patrice Clement <monsieurp@gentoo.org>
+---
+ src/py/xml-rewrite-2.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/py/xml-rewrite-2.py b/src/py/xml-rewrite-2.py
+index c56de1d..4035119 100755
+--- a/src/py/xml-rewrite-2.py
++++ b/src/py/xml-rewrite-2.py
+@@ -375,6 +375,8 @@ parameters will break the script."""
+                 else:
+                     rewriter.process(f)
+ 
++            os.chdir(cwd)
++
+             # Then write it back out to the file
+             with open(file, 'w') as f:
+                 rewriter.write(f)
+-- 
+cgit v1.2.1
+
