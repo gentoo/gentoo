@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
+# No longer needed with virtual/opencl-3
+# Masked for removal in 30 days. Bug #728284
+app-eselect/eselect-opencl
+
+# Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # Replaced by media-libs/libglvnd.
 # Masked for removal in 30 days. Bug #728286
 app-eselect/eselect-opengl
