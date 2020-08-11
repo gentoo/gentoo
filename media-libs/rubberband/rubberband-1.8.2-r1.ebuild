@@ -37,6 +37,9 @@ src_prepare() {
 }
 
 multilib_src_install() {
+	# fix libdir in .pc file
+	sed -iE "s%/lib$%/$(get_libdir)%g" "${BUILD_DIR}/rubberband.pc.in" || die "Failed to fix .pc file"
+
 	emake INSTALL_BINDIR="${ED}/usr/bin" \
 		INSTALL_INCDIR="${ED}/usr/include/rubberband" \
 		INSTALL_LIBDIR="${ED}/usr/$(get_libdir)" \
