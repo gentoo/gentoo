@@ -590,10 +590,6 @@ app-doc/doxygen sqlite
 # Lyx is currently not working with subversion 1.7 and needs 1.6.
 app-office/lyx subversion
 
-# Christian Faulhammer <fauli@gentoo.org> (2013-05-08)
-# Will not build successfully yet
-mail-client/claws-mail gtk3
-
 # Bernard Cafarelli <voyageur@gentoo.org> (2013-04-04)
 # Broken for now (segmentation fault on play)
 gnustep-apps/cynthiune flac
