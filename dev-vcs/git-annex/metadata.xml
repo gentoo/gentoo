@@ -14,7 +14,6 @@
 		<flag name="httpclientrestricted">Build with http-client-restricted library (rather than vendored copy)</flag>
 		<flag name="magicmime">Use libmagic to determine file MIME types</flag>
 		<flag name="networkbsd">Build with network-3.0 which split out network-bsd</flag>
-		<flag name="network-3">Build with network-3.0 which split out network-bsd</flag>
 		<flag name="pairing">Enable pairing</flag>
 		<flag name="s3">Enable S3 support</flag>
 		<flag name="torrentparser">Use haskell torrent library to parse torrent files</flag>
