@@ -12,7 +12,7 @@ SRC_URI="http://www.j10n.org/${PN}/${P}.tar.bz2"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc x86"
-IUSE="+libtirpc"
+IUSE="+libtirpc static-libs"
 RESTRICT="test"
 
 RDEPEND="!libtirpc? ( elibc_glibc? ( sys-libs/glibc[rpc(-)] ) )
@@ -34,5 +34,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_with libtirpc)
+	econf \
+		$(use_enable static-libs static) \
+		$(use_with libtirpc)
 }
