@@ -38,6 +38,10 @@ BDEPEND="
 		)
 	)"
 
+PATCHES=(
+	"${FILESDIR}/pypy3-exe-7.3.1-respect-pkg-config.patch"
+)
+
 check_env() {
 	if use low-memory; then
 		CHECKREQS_MEMORY="1750M"
@@ -76,7 +80,7 @@ pkg_setup() {
 }
 
 src_configure() {
-	tc-export CC
+	tc-export CC PKG_CONFIG
 
 	local jit_backend
 	if use jit; then
