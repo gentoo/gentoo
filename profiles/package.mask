@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Miroslav Šulc <fordfrog@gentoo.org> (2020-08-11)
+# Package dead. No consumers in the tree.
+# Removal in 30 days. Bug #735518
+x11-libs/flowcanvas
+
 # Michał Górny <mgorny@gentoo.org> (2020-08-09)
 # Build tool with no revdeps left.
 # Removal in 30 days.  Bug #736517.
