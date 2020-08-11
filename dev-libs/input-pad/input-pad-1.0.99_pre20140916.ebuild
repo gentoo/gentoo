@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit autotools ltprune xdg-utils
+inherit autotools
 
 MY_P="${P/_pre/.}"
 MY_PV="${PV/_pre/.}"
@@ -27,8 +27,8 @@ RDEPEND="dev-libs/glib:2
 	eekboard? ( dev-libs/eekboard )
 	introspection? ( dev-libs/gobject-introspection )
 	xtest? ( x11-libs/libXtst )"
-DEPEND="${RDEPEND}
-	dev-util/intltool
+DEPEND="${RDEPEND}"
+BDEPEND="dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig"
 S="${WORKDIR}/${MY_P}"
@@ -38,7 +38,6 @@ PATCHES=( "${FILESDIR}"/${PN}-man.patch )
 src_prepare() {
 	default
 	eautoreconf
-	xdg_environment_reset
 }
 
 src_configure() {
@@ -51,5 +50,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	use static-libs || find "${ED}" -name '*.la' -delete || die
 }
