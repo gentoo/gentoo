@@ -1,13 +1,13 @@
 BDEPEND=dev-util/ninja >=dev-util/cmake-3.9.6
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
-DEPEND=app-text/pandoc dev-libs/libxml2:2 x11-libs/wxGTK:3.0 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DEPEND=dev-libs/libxml2:2 x11-libs/wxGTK:3.0 dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Graphical frontend to Maxima, using the wxWidgets toolkit
 EAPI=7
 HOMEPAGE=https://wxmaxima-developers.github.io/wxmaxima/
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
-RDEPEND=app-text/pandoc dev-libs/libxml2:2 x11-libs/wxGTK:3.0 media-fonts/jsmath sci-visualization/gnuplot[wxwidgets] sci-mathematics/maxima
+RDEPEND=dev-libs/libxml2:2 x11-libs/wxGTK:3.0 media-fonts/jsmath sci-visualization/gnuplot[wxwidgets] sci-mathematics/maxima
 SLOT=0
-SRC_URI=https://github.com/wxMaxima-developers/wxmaxima/archive/Version-20.06.6.tar.gz -> wxmaxima-20.06.6.tar.gz
+SRC_URI=https://github.com/wxMaxima-developers/wxmaxima/archive/Version-20.07.0.tar.gz -> wxmaxima-20.07.0.tar.gz
 _eclasses_=cmake-utils	77cd39e6009811bf97a59d91ffd5b54f	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=26e2b0ad8e56742893e03d386ab0bd2b
+_md5_=33d05e1798e41756df8068b6639cb39e
