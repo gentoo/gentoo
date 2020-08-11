@@ -29,6 +29,10 @@ DEPEND="${RDEPEND}
 		)
 	"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-cve-2020-13757.patch
+)
+
 python_test() {
 	nosetests --verbose || die
 }
