@@ -4,7 +4,7 @@
 EAPI=6
 
 # Set this var for any releases except stable
-RC_SUFFIX="-d88cbf373712731c30d0"
+RC_SUFFIX="-9bf8d2f44f"
 
 inherit systemd
 
@@ -14,7 +14,7 @@ SRC_URI="https://dl.ui.com/unifi/${PV}${RC_SUFFIX}/UniFi.unix.zip -> ${P}.zip"
 
 KEYWORDS="~amd64"
 LICENSE="Apache-1.0 Apache-2.0 BSD-1 BSD-2 BSD CDDL EPL-1.0 GPL-2 LGPL-2.1 LGPL-3 MIT ubiquiti"
-SLOT="0/6.0"
+SLOT="0/5.14"
 IUSE="systemd"
 
 RDEPEND="
