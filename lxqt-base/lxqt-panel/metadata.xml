@@ -16,7 +16,6 @@
 		<flag name="mount">Build mount plugin</flag>
 		<flag name="networkmonitor">Build networkmonitor plugin</flag>
 		<flag name="quicklaunch">Build quicklaunch plugin</flag>
-		<flag name="sensors">Build sensors plugin</flag>
 		<flag name="showdesktop">Build showdesktop plugin</flag>
 		<flag name="statusnotifier">Build statusnotifier plugin</flag>
 		<flag name="spacer">Build spacer plugin</flag>
