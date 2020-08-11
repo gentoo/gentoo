@@ -1,6 +1,8 @@
---- acinclude.m4
-+++ acinclude.m4
-@@ -40,9 +40,9 @@
+diff --git a/acinclude.m4 b/acinclude.m4
+index 4722b53..ea37316 100644
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -40,9 +40,9 @@ AC_DEFUN([AC_PROG_SWIG],[
                          if test -z "$available_patch" ; then
                                  [available_patch=0]
                          fi

@@ -1,7 +1,7 @@
-clients/synth/lash.c:85:2: warning: implicit declaration of function ‘strcmp’ [-Wimplicit-function-declaration]
-
---- clients/synth/lash.c
-+++ clients/synth/lash.c
+diff --git a/clients/synth/lash.c b/clients/synth/lash.c
+index 03717ae..5395198 100644
+--- a/clients/synth/lash.c
++++ b/clients/synth/lash.c
 @@ -22,6 +22,7 @@
  
  #include "config.h"
