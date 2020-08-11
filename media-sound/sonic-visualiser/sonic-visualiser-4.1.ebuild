@@ -55,6 +55,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 # tests fail without mp3 support
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	|| ( jack pulseaudio portaudio )
 	test? ( mad )
