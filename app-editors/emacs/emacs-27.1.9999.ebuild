@@ -12,15 +12,19 @@ if [[ ${PV##*.} = 9999 ]]; then
 	EGIT_CHECKOUT_DIR="${WORKDIR}/emacs"
 	S="${EGIT_CHECKOUT_DIR}"
 else
-	SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz
-		mirror://gnu-alpha/emacs/pretest/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 	# FULL_VERSION keeps the full version number, which is needed in
 	# order to determine some path information correctly for copy/move
 	# operations later on
 	FULL_VERSION="${PV%%_*}"
+	SRC_URI="mirror://gnu/emacs/${P}.tar.xz"
 	S="${WORKDIR}/emacs-${FULL_VERSION}"
-	[[ ${PV} == *_pre* ]] && S="${WORKDIR}/emacs"
+	if [[ ${PV} == *_pre* ]]; then
+		SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+		S="${WORKDIR}/emacs"
+	elif [[ ${PV//[0-9]} != "." ]]; then
+		SRC_URI="mirror://gnu-alpha/emacs/pretest/${PN}-${PV/_/-}.tar.xz"
+	fi
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 fi
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
