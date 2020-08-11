@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit desktop
+inherit desktop xdg
 
 DESCRIPTION="A lightweight email client and newsreader"
 HOMEPAGE="http://sylpheed.sraoss.jp/"
