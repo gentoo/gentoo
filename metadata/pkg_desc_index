@@ -9001,7 +9001,7 @@ dev-python/rply 0.7.7: Pure python parser generator that also works with RPython
 dev-python/rpy 2.9.0: Python interface to the R Programming Language
 dev-python/rpyc 4.1.4: Remote Python Call (RPyC), a transparent and symmetric RPC library
 dev-python/rq 1.4.3 1.5.0: simple, lightweight library for creating and processing background jobs
-dev-python/rsa 3.4.2-r1 4.2: Pure-Python RSA implementation
+dev-python/rsa 3.4.2-r2 4.2: Pure-Python RSA implementation
 dev-python/rst-linker 1.11 2.0.0: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rtimulib 7.2.1-r1: Python Binding for RTIMULib, a versatile IMU library
 dev-python/rtslib-fb 2.1.69: A Python object API for managing the Linux LIO kernel target
