@@ -5,6 +5,7 @@
 		<email>tools-portage@gentoo.org</email>
 		<name>Gentoo Portage tools team</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 		This utility is used to select the fastest mirror (distfiles) and
 		provide a nicer front-end for mirror selection
