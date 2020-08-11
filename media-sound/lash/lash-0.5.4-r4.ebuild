@@ -30,7 +30,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	python? ( >=dev-lang/swig )
+	python? ( dev-lang/swig )
 "
 # doc? ( >=app-text/texi2html-5 )
 
