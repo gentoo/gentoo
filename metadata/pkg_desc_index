@@ -1887,7 +1887,7 @@ app-emulation/diskimage-builder 3.1.0 9999: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.5.20: DLX Simulator
 app-emulation/docker 19.03.8 19.03.12: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-bench-security 1.3.2 1.3.3: Test for best practices around deploying docker containers
-app-emulation/docker-compose 1.25.4-r1 1.25.4-r2 1.25.5 1.26.0 1.26.1 1.26.2: Multi-container orchestration for Docker
+app-emulation/docker-compose 1.25.4-r1 1.25.4-r2 1.25.5 1.26.0 1.26.1 1.26.2 1.27.0_rc1: Multi-container orchestration for Docker
 app-emulation/docker-credential-helpers 0.6.3: A suite of programs to use native stores to keep Docker credentials safe
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.13.0: Machine management for a container-centric world
@@ -18291,7 +18291,7 @@ x11-drivers/xf86-video-amdgpu 19.1.0 9999: Accelerated Open Source driver for AM
 x11-drivers/xf86-video-ast 1.1.5: X.Org driver for ASpeedTech cards
 x11-drivers/xf86-video-ati 19.1.0 9999: ATI video driver
 x11-drivers/xf86-video-dummy 0.3.8: X.Org driver for dummy cards
-x11-drivers/xf86-video-fbdev 0.5.0: video driver for framebuffer device
+x11-drivers/xf86-video-fbdev 0.5.0 0.5.0-r1: video driver for framebuffer device
 x11-drivers/xf86-video-geode 2.11.20: AMD Geode GX2 and LX video driver
 x11-drivers/xf86-video-glint 1.2.9: GLINT/Permedia video driver
 x11-drivers/xf86-video-intel 2.99.917_p20200310 2.99.917_p20200515 9999: X.Org driver for Intel cards
