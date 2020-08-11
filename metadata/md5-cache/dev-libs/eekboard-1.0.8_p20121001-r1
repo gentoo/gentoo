@@ -1,6 +1,6 @@
 BDEPEND=|| ( dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 ) dev-util/glib-utils dev-util/gtk-doc dev-util/gtk-doc-am dev-util/intltool sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DEFINED_PHASES=configure install postinst postrm preinst prepare setup test unpack
-DEPEND=app-accessibility/at-spi2-core dev-libs/glib:2 dev-libs/libcroco virtual/libintl x11-libs/gtk+:3 x11-libs/libX11 x11-libs/libxklavier x11-libs/pango introspection? ( dev-libs/gobject-introspection ) libcanberra? ( media-libs/libcanberra[gtk3(+)] ) vala? ( || ( dev-lang/vala:0.48[vapigen(+)] dev-lang/vala:0.46[vapigen(+)] dev-lang/vala:0.44[vapigen(+)] dev-lang/vala:0.40[vapigen(+)] dev-lang/vala:0.36[vapigen(+)] ) ) xtest? ( x11-libs/libXtst )
+DEPEND=app-accessibility/at-spi2-core dev-libs/glib:2 dev-libs/libcroco virtual/libintl x11-libs/gtk+:3 x11-libs/libX11 x11-libs/libxklavier x11-libs/pango introspection? ( dev-libs/gobject-introspection ) libcanberra? ( media-libs/libcanberra[gtk3(+)] ) vala? ( || ( dev-lang/vala:0.48[vapigen(+)] dev-lang/vala:0.46[vapigen(+)] dev-lang/vala:0.44[vapigen(+)] dev-lang/vala:0.40[vapigen(+)] dev-lang/vala:0.36[vapigen(+)] ) ) xtest? ( x11-libs/libXtst ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=An easy to use virtual keyboard toolkit
 EAPI=7
 HOMEPAGE=https://github.com/ueno/eekboard
@@ -12,5 +12,5 @@ REQUIRED_USE=vala? ( introspection )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/ueno/eekboard/archive/e212262f29e022bdf7047861263ceea0c373e916.tar.gz -> eekboard-1.0.8_p20121001.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vala	5b72a65a36d681d65aef5f7b4b8b2cb6	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd	virtualx	e49dbce7ac14426e1155497476915307	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=294ec0079369425e8a22d9748295f026
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vala	5b72a65a36d681d65aef5f7b4b8b2cb6	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd	virtualx	e49dbce7ac14426e1155497476915307	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=ec081e8ea2b15b61983824762817dafc
