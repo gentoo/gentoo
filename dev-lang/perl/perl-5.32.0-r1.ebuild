@@ -620,14 +620,6 @@ src_configure() {
 	[[ ${CHOST} == *-darwin* && ${CHOST##*darwin} -le 9 ]] && tc-is-gcc && \
 		append-cflags -Dinline=__inline__
 
-	# fix unaligned access misdetection
-	# https://rt.perl.org/Public/Bug/Display.html?id=133495
-	# https://rt.perl.org/Public/Bug/Display.html?id=133803
-	# bug #676062, bug #688432
-	use hppa || use sparc || [[ ${CHOST} == sparc*-solaris* ]] || \
-		[[ ${CHOST} == armv5tel* ]] \
-			&& myconf "-Dd_u32align='define'"
-
 	# Prefix: the host system needs not to follow Gentoo multilib stuff, and in
 	# Prefix itself we don't do multilib either, so make sure perl can find
 	# something compatible.
