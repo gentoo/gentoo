@@ -71,6 +71,10 @@ multilib_src_install_all() {
 	newinitd "${FILESDIR}"/bluealsa-init.d bluealsa
 	newconfd "${FILESDIR}"/bluealsa-conf.d-2 bluealsa
 	systemd_dounit "${FILESDIR}"/bluealsa.service
+
+	# Add config file to alsa datadir as well to preserve changes in /etc
+	insinto "/usr/share/alsa/alsa.conf.d/"
+	doins "src/asound/20-bluealsa.conf"
 }
 
 pkg_postinst() {
