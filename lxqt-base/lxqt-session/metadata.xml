@@ -8,7 +8,4 @@
 	<upstream>
 		<remote-id type="github">lxqt/lxqt-session</remote-id>
 	</upstream>
-	<use>
-		<flag name="themes">Install LXQt themes and graphics</flag>
-	</use>
 </pkgmetadata>

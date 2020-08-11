@@ -11,7 +11,6 @@
 		<flag name="archiver">Install <pkg>app-arch/lxqt-archiver</pkg></flag>
 		<flag name="display-manager">Install a graphical display manager</flag>
 		<flag name="filemanager">Install <pkg>x11-misc/pcmanfm-qt</pkg>file manager</flag>
-		<flag name="lightdm">Install <pkg>x11-misc/lightdm</pkg>display manager</flag>
 		<flag name="lximage">Install <pkg>media-gfx/lximage-qt</pkg>image viewer</flag>
 		<flag name="minimal">Do not install <pkg>x11-wm/openbox</pkg>window manager</flag>
 		<flag name="nls">Install <pkg>dev-qt/qttranslations</pkg> to better support different locales</flag>
