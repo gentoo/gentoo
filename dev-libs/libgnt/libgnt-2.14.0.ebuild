@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/glib-utils
 	virtual/pkgconfig
+	doc? ( dev-util/gtk-doc )
 "
 
 PATCHES=(
