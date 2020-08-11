@@ -15098,7 +15098,7 @@ net-misc/dleyna-server 0.6.0: Service that allows to discover and manipulate DLN
 net-misc/dmr_utils 9999: Python utilities for working with DMR
 net-misc/drive 0.3.9.1 0.3.9.1-r1: Google Drive client for the commandline
 net-misc/dropbear 2020.80-r1: small SSH 2 client/server designed for small memory environments
-net-misc/dropbox 98.4.158 99.4.501 100.4.409 101.4.434 102.4.431: Dropbox daemon (pretends to be GUI-less)
+net-misc/dropbox 98.4.158 102.4.431 103.4.383: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 19 2020.03.04: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/econnman 1.1-r1: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a-r4 0.9a_p19_p1: A simple fax program for single-user systems
@@ -15544,7 +15544,7 @@ net-vpn/openvpn 2.4.9 9999: Robust and highly flexible tunneling application com
 net-vpn/peervpn 0.044-r5: P2P mesh VPN
 net-vpn/pptpd 1.4.0-r3: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/protonvpn-cli 2.2.0 2.2.2: A VPN command-line tool from protonvpn - python rewrite
-net-vpn/strongswan 5.8.1 5.8.2 5.8.4: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
+net-vpn/strongswan 5.8.1 5.8.2 5.8.4 5.9.0: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tailscale 0.98 0.98_p0: Tailscale vpn client
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17-r1: tinc is an easy to configure VPN implementation
 net-vpn/tor 0.4.2.8 0.4.3.6 0.4.4.3_alpha: Anonymizing overlay network for TCP

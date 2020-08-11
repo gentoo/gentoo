@@ -6993,6 +6993,7 @@ net-vpn/strongswan:openssl - Enable dev-libs/openssl plugin which is required fo
 net-vpn/strongswan:pkcs11 - Enable pkcs11 support
 net-vpn/strongswan:strongswan_plugins_aesni - Enable support for Intel AES-NI crypto plugin
 net-vpn/strongswan:strongswan_plugins_blowfish - Enable support for the blowfish plugin
+net-vpn/strongswan:strongswan_plugins_bypass-lan - Enable support for the bypass-lan plugin
 net-vpn/strongswan:strongswan_plugins_ccm - Enable support for the ccm plugin
 net-vpn/strongswan:strongswan_plugins_chapoly - Enable ChaCha20/Poly1305 AEAD implementation and ChaCha20 XOF plugin
 net-vpn/strongswan:strongswan_plugins_ctr - Enable support for the ctr plugin
