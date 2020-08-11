@@ -35,6 +35,7 @@ DEPEND="${CDEPEND}
 	xface? ( media-libs/compface )"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/${PN}-tls-1.3.patch )
 DOCS="AUTHORS ChangeLog* NEW* PLUGIN* README* TODO*"
 
 src_configure() {
