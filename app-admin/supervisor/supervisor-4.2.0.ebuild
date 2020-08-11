@@ -19,7 +19,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="repoze ZPL BSD HPND GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 RDEPEND="acct-group/supervisor"
 
