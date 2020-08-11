@@ -1,0 +1,17 @@
+https://sylpheed.sraoss.jp/redmine/issues/306
+
+Author: Antonio Ospite <ao2@ao2.it>
+
+--- a/libsylph/ssl.c
++++ b/libsylph/ssl.c
+@@ -262,6 +262,10 @@ gboolean ssl_init_socket_with_method(SockInfo *sockinfo, SSLMethod method)
+ 		return FALSE;
+ 	}
+ 
++#ifdef SSL_CTRL_SET_TLSEXT_HOSTNAME
++	SSL_set_tlsext_host_name(sockinfo->ssl, sockinfo->hostname);
++#endif
++
+ 	SSL_set_fd(sockinfo->ssl, sockinfo->sock);
+ 	while ((ret = SSL_connect(sockinfo->ssl)) != 1) {
+ 		err = SSL_get_error(sockinfo->ssl, ret);

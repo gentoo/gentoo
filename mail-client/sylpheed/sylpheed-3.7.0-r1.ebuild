@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit desktop
+inherit desktop xdg
 
 DESCRIPTION="A lightweight email client and newsreader"
 HOMEPAGE="http://sylpheed.sraoss.jp/"
@@ -35,6 +35,7 @@ DEPEND="${CDEPEND}
 	xface? ( media-libs/compface )"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/${PN}-tls-1.3.patch )
 DOCS="AUTHORS ChangeLog* NEW* PLUGIN* README* TODO*"
 
 src_configure() {
