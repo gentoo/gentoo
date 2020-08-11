@@ -13659,7 +13659,7 @@ media-sound/a2jmidid 9 9999: Daemon for exposing legacy ALSA sequencer applicati
 media-sound/abcde 2.9.3-r1: Command line CD encoder
 media-sound/abcm2ps 8.14.4 8.14.6: Program to convert abc files to Postscript files
 media-sound/abcmidi 2020.01.22: Programs for processing ABC music notation files
-media-sound/aeolus 0.9.7 0.9.9: A synthesised pipe organ emulator
+media-sound/aeolus 0.9.9: A synthesised pipe organ emulator
 media-sound/alac_decoder 0.2.0-r1: Basic decoder for Apple Lossless Audio Codec files (ALAC)
 media-sound/alsa-tools 1.2.2-r1: Advanced Linux Sound Architecture tools
 media-sound/alsa-utils 1.2.2 1.2.3: Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)
@@ -13725,7 +13725,7 @@ media-sound/dcd 0.95: A simple command-line based CD Player
 media-sound/declick 0.6.5-r1: Dynamic digital declicker for audio sample files
 media-sound/deinvert 9999: A voice inversion descrambler
 media-sound/denemo 2.3.0-r1: A music notation editor
-media-sound/din 44.0.2 47.1: a software musical instrument and audio synthesizer
+media-sound/din 47.1: a software musical instrument and audio synthesizer
 media-sound/dir2ogg 0.13-r1: Converts mp3, m4a, wma, and wav files to Ogg Vorbis format
 media-sound/drumstick 1.1.3: Qt/C++ wrapper for ALSA sequencer
 media-sound/dvda-author 10.06-r1: Author a DVD-Audio DVD
@@ -13807,7 +13807,7 @@ media-sound/lingot 1.0.1: Accurate, easy to use, and highly configurable musical
 media-sound/linuxsampler 2.1.1 9999: Software audio sampler engine with professional grade features
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
 media-sound/lltag 0.14.4-r1 0.14.5: Automatic command-line mp3/ogg/flac file tagger and renamer
-media-sound/lmms 1.2.1 1.2.2 9999: Cross-platform music production software
+media-sound/lmms 1.2.2 9999: Cross-platform music production software
 media-sound/lollypop 1.1.4.16 1.2.35: Modern music player for GNOME
 media-sound/loudness-scanner 0.5.1_p20190709 9999: Scans your music files and tags them with loudness information
 media-sound/lxmusic 0.4.7: A simple GUI XMMS2 client with minimal functionality
@@ -13911,7 +13911,7 @@ media-sound/qsampler 0.5.6 9999: Graphical frontend to the LinuxSampler engine
 media-sound/qsynth 0.6.2 9999: A Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
 media-sound/qtgain 1.0.0: Simple frontend to mp3gain, vorbisgain and metaflac
-media-sound/qtractor 0.9.13 0.9.15 0.9.16: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
+media-sound/qtractor 0.9.15 0.9.16: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.3: A Qt5 client for the music player daemon (MPD) written in C++
 media-sound/quodlibet 4.2.1 4.3.0: audio library tagger, manager, and player for GTK+
@@ -17191,7 +17191,7 @@ sys-block/hpssacli 2.40.13.0-r1 3.10.3.0: HPE Smart Storage Administrator (HPE S
 sys-block/io-scheduler-udev-rules 1: Udev rules to allow easier customization of kernel I/O schedulers
 sys-block/libzbc 5.5.1: A library and tools for working with ZBC and ZAC disks
 sys-block/lsiutil 1.62-r1 1.62-r2: LSI Logic Fusion MPT Command Line Interface management tool
-sys-block/mbuffer 20191016 20200505: M(easuring)buffer is a replacement for buffer with additional functionality
+sys-block/mbuffer 20200505: M(easuring)buffer is a replacement for buffer with additional functionality
 sys-block/megacli 8.07.10 8.07.14 8.07.14-r1 8.07.14-r2: LSI Logic MegaRAID Command Line Interface management tool
 sys-block/megactl 0.4.1-r3: LSI MegaRAID control utility
 sys-block/megamgr 5.20-r2: LSI Logic MegaRAID Text User Interface management tool
@@ -17612,7 +17612,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p201909
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.220_p197 4.4.225_p198 4.9.224_p144 4.9.227_p146 4.14.170_p75 4.14.184_p84 4.19.124_p53 4.19.127_p54 5.4.40_p24 5.4.44_p27 5.6.14_p7 5.6.17_p10: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.7.10 5.7.12 5.7.13: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 4.4.232 4.9.232 4.14.193 4.19.138 5.4.57 5.7.14 5.8.0: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 4.4.232 4.9.232 4.14.193 4.19.139 5.4.58 5.7.15 5.8.1: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15 5.7.12: The Zen Kernel Live Sources
