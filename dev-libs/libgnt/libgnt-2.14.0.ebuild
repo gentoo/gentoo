@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/pidgin/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS="~alpha ~amd64 arm ~arm64 ~ia64 ~ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~alpha ~amd64 arm arm64 ~ia64 ~ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="doc"
 
 RDEPEND="
