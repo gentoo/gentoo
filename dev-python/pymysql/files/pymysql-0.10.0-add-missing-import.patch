@@ -1,0 +1,22 @@
+From 3e71dd32e8ce868b090c282759eebdeabc960f58 Mon Sep 17 00:00:00 2001
+From: Inada Naoki <songofacandy@gmail.com>
+Date: Tue, 28 Jul 2020 13:06:07 +0900
+Subject: [PATCH] Add missing import (#879)
+
+Fixes #878
+---
+ pymysql/converters.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/pymysql/converters.py b/pymysql/converters.py
+index b084ed2f..1b582904 100644
+--- a/pymysql/converters.py
++++ b/pymysql/converters.py
+@@ -5,6 +5,7 @@
+ import re
+ import time
+ 
++from .err import ProgrammingError
+ from .constants import FIELD_TYPE
+ 
+ 
