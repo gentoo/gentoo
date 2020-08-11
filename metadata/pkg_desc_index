@@ -7890,7 +7890,7 @@ dev-python/autopep8 1.4.4 9999: Automatically formats Python code to conform to 
 dev-python/awesome-slugify 1.6.5: Python flexible slugify function
 dev-python/aws-sam-translator 1.25.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0: AWS X-Ray SDK for Python
-dev-python/awscli 1.18.70: Universal Command Line Environment for AWS
+dev-python/awscli 1.18.70 1.18.117: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backcall 0.2.0: Specifications for callback functions passed in to an API
 dev-python/backports 1.0: Namespace for backported Python features
@@ -7929,7 +7929,7 @@ dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r2 2.49.0-r3: Amazon Web Services API
 dev-python/boto3 1.13.26 1.14.20 1.14.23 1.14.27 1.14.28-r1 1.14.31 1.14.34 9999: The AWS SDK for Python
-dev-python/botocore 1.16.26 1.17.20 1.17.23 1.17.27 1.17.28-r1 1.17.31 1.17.34 9999: Low-level, data-driven core of boto 3
+dev-python/botocore 1.16.26 1.17.20 1.17.23 1.17.27 1.17.28-r1 1.17.31 1.17.34 1.17.40 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.18: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.2.1-r1 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.19: Syntax highlighting and autocompletion for the Python interpreter
@@ -13156,9 +13156,9 @@ media-libs/liblrdf 0.6.1: Library for manipulation of RDF files in LADSPA plugin
 media-libs/liblscp 0.6.0 9999: C++ library for the Linux Sampler control protocol
 media-libs/libmad 0.15.1b-r10: "M"peg "A"udio "D"ecoder library
 media-libs/libmatemixer 1.22.0 1.24.0-r1: Mixer library for MATE Desktop
-media-libs/libmatroska 1.5.2 1.6.0: Extensible multimedia container format based on EBML
+media-libs/libmatroska 1.5.2 1.6.2: Extensible multimedia container format based on EBML
 media-libs/libmediaart 1.9.4: Manages, extracts and handles media art caches
-media-libs/libmediainfo 20.03: MediaInfo libraries
+media-libs/libmediainfo 20.03 20.08: MediaInfo libraries
 media-libs/libmetalink 0.1.3-r1: Library for handling Metalink files
 media-libs/libmikmod 3.3.11.1: A library to play a wide range of module formats
 media-libs/libmms 0.6.4: Common library for accessing Microsoft Media Server (MMS) media streaming protocol
@@ -14116,7 +14116,7 @@ media-video/lxdvdrip 1.77: Command line tool to automate the process of ripping 
 media-video/m2vrequantizer 0.0.2_pre20060306-r1: Tool to requantize mpeg2 videos
 media-video/makemkv 1.15.2: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
-media-video/mediainfo 20.03: MediaInfo supplies technical and tag information about media files
+media-video/mediainfo 20.03 20.08: MediaInfo supplies technical and tag information about media files
 media-video/mjpegtools 2.1.0-r4: Tools for MJPEG video
 media-video/mjpg-streamer 0_pre20120621-r2: MJPG-streamer takes JPGs from Linux-UVC compatible webcams
 media-video/mkclean 0.8.10: mkclean is a command line tool to clean and optimize Matroska files
@@ -14901,7 +14901,7 @@ net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP pr
 net-libs/nghttp2 1.41.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 8.12.0 10.19.0 10.20.1 10.21.0 12.16.1 12.16.2 12.16.3 12.17.0 14.2.0 14.3.0 14.4.0 14.5.0 14.6.0 14.7.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 8.12.0 10.19.0 10.20.1 10.21.0 12.16.1 12.16.2 12.16.3 12.17.0 14.2.0 14.3.0 14.4.0 14.5.0 14.6.0 14.7.0 14.8.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.7.4 1.8.1 3.2 3.3: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
