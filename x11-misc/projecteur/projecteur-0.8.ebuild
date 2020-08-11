@@ -34,6 +34,15 @@ DEPEND="${RDEPEND}"
 
 BDEPEND="virtual/pkgconfig"
 
+src_prepare() {
+	default
+
+	cmake_src_prepare
+
+	# Don't treat all warnings as errors
+	sed -e '/add_compile_options/d' -i CMakeLists.txt || die
+}
+
 pkg_postinst() {
 	udev_reload
 	xdg_icon_cache_update
