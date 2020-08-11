@@ -685,13 +685,6 @@ sys-kernel/genkernel-next
 # Removal in 30 days. Bug #732136.
 dev-go/goptlib
 
-# Mikle Kolyada <zlogene@gentoo.org> (2020-07-10)
-# Last major release in 2001. Was added into texlive
-# long ago.
-# Use dev-texlive/texlive-formatsextra instead.
-# Removal in 30 days.
-dev-tex/xmltex
-
 # Kent Fredric <kentnl@gentoo.org> (2020-07-10)
 # No reverse dependencies, and Gtk2 support is becomming
 # obsolete in Gentoo.
