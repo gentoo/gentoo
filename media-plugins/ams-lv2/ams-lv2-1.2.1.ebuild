@@ -7,7 +7,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit waf-utils python-any-r1
 
 DESCRIPTION="A port of the AMS internal modules to LV2 plugins to create modular synthesizers"
-HOMEPAGE="https://objectivewave.wordpress.com/ams-lv2/"
+HOMEPAGE="https://github.com/blablack/ams-lv2"
 SRC_URI="https://github.com/blablack/ams-lv2/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
