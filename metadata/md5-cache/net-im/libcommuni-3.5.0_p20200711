@@ -4,11 +4,11 @@ DESCRIPTION=A cross-platform IRC framework written with Qt
 EAPI=7
 HOMEPAGE=https://communi.github.io/
 IUSE=examples qml test +uchardet
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=BSD
 RDEPEND=dev-qt/qtcore:5 dev-qt/qtdeclarative:5 examples? ( || ( dev-qt/qtgui:5[X(-)] dev-qt/qtgui:5[xcb(-)] ) ) uchardet? ( app-i18n/uchardet ) !uchardet? ( dev-libs/icu:= )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/communi/libcommuni/archive/85fc0d9d8659269b00499975d184d75e67f63a9f.tar.gz -> libcommuni-3.5.0_p20200711.tar.gz
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	2477ebe553d3e4d2c606191fe6c33602	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=7d05b32f4f5e6b9bb48ece28478db9e9
+_md5_=cc6414cc22745c3e2030c7c4472abbac
