@@ -354,7 +354,6 @@ dev-python/elementtree
 # Py2 only. Last upstream release 2013.
 # Removal in 30 days. Last 2 have deps on cddb.
 dev-python/cddb-py
-media-sound/exaile
 media-sound/jack
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-01)
