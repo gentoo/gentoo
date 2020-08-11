@@ -143,3 +143,6 @@ move app-dicts/sword-SpaRVG2004 app-dicts/sword-SpaRVG
 move app-dicts/sword-WebstersDict app-dicts/sword-Webster1913
 move media-libs/ladspa-cmt media-plugins/cmt-plugins
 move dev-libs/luise-bin dev-libs/luise
+slotmove ~app-editors/emacs-27.0.90 27-vcs 27
+slotmove ~app-editors/emacs-27.0.91 27-vcs 27
+slotmove =app-editors/emacs-27.1_rc* 27-vcs 27
