@@ -16,7 +16,8 @@ SLOT="2.7"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug nls nvenc opengl qt5 sdl vaapi vdpau xv"
 
-BDEPEND="qt5? ( dev-qt/linguist-tools:5 )"
+BDEPEND="dev-lang/yasm
+	qt5? ( dev-qt/linguist-tools:5 )"
 DEPEND="
 	~media-libs/avidemux-core-${PV}:${SLOT}[nls?,sdl?,vaapi?,vdpau?,xv?,nvenc?]
 	nvenc? ( amd64? ( media-video/nvidia_video_sdk:0 ) )
@@ -39,7 +40,7 @@ PDEPEND="~media-libs/avidemux-plugins-${PV}:${SLOT}[opengl?,qt5?]"
 S="${WORKDIR}/avidemux2-${PV}"
 
 src_prepare() {
-	eapply "${FILESDIR}"/${P}-qt-5.15.patch
+	eapply "${FILESDIR}"/${PN}-2.7.4-qt-5.15.patch
 
 	processes="buildCli:avidemux/cli"
 	use qt5 && processes+=" buildQt4:avidemux/qt4"
