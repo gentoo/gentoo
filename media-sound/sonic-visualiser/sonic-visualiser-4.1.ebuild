@@ -12,7 +12,7 @@ SRC_URI="https://code.soundsoftware.ac.uk/attachments/download/2717/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="id3tag jack mad ogg opus osc +portaudio pulseaudio"
+IUSE="id3tag jack mad ogg opus osc +portaudio pulseaudio test"
 
 BDEPEND="
 	dev-qt/qttest:5
@@ -54,7 +54,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-REQUIRED_USE="|| ( jack pulseaudio portaudio )"
+# tests fail without mp3 support
+REQUIRED_USE="
+	|| ( jack pulseaudio portaudio )
+	test? ( mad )
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.1-notest.patch"
