@@ -14647,7 +14647,7 @@ net-im/discord-bin 0.0.11: All-in-one voice and text chat for gamers
 net-im/ejabberd 17.04-r2 20.03 20.04: Robust, scalable and extensible XMPP server
 net-im/ekg2 0.4_pre20190315 9999: Text-based, multi-protocol instant messenger
 net-im/empathy 3.12.14: Telepathy instant messaging and video/audio call client for GNOME
-net-im/err 5.2.0-r1 6.1.4: Multiprotocol chatbot designed to be easily deployable and maintainable
+net-im/err 6.1.4: Multiprotocol chatbot designed to be easily deployable and maintainable
 net-im/gajim 1.1.3-r1 1.1.3-r2 1.2.0 1.2.1: Jabber client written in PyGTK
 net-im/gg-transport 2.2.6: Gadu-Gadu transport for Jabber
 net-im/gitter-bin 3.1.0 4.1.0: Chat and network platform
@@ -15077,7 +15077,7 @@ net-misc/dahdi 3.1.0-r2: Kernel modules for Digium compatible hardware (formerly
 net-misc/dahdi-tools 3.1.0: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
-net-misc/dhcdrop 0.5 0.5-r1: Effectively suppresses illegal DHCP servers on the LAN
+net-misc/dhcdrop 0.5-r1: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.4.1 4.4.2 4.4.2-r2: ISC Dynamic Host Configuration Protocol (DHCP) client/server
 net-misc/dhcpcd 8.1.9 9.1.3 9.1.4 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.7-r1: Desktop notification and configuration for dhcpcd
