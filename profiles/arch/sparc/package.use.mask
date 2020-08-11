@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner <mattst88@gentoo.org> (2020-08-11)
+# No drivers on this architecture support Vulkan
+media-libs/mesa vulkan vulkan-overlay zink
+
 # Mart Raudsepp <leio@gentoo.org> (2020-08-02)
 # sparc has no virtual/rust support, needed by newer gnome-base/librsvg, et al
 >=media-gfx/eog-3.33.1 svg
@@ -214,10 +218,6 @@ dev-db/mariadb numa
 # Gilles Dartiguelongue <eva@gentoo.org> (2017-08-16)
 # missing keyword on dev-python/dbusmock, bug #620024
 >=gnome-base/gnome-settings-daemon-3.24 test
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan vulkan-overlay
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=redis that is masked in this profile.
