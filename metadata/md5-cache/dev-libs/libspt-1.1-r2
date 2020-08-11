@@ -1,9 +1,10 @@
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure prepare
-DEPEND=!libtirpc? ( elibc_glibc? ( sys-libs/glibc[rpc(-)] ) ) libtirpc? ( net-libs/libtirpc ) virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=!libtirpc? ( elibc_glibc? ( sys-libs/glibc[rpc(-)] ) ) libtirpc? ( net-libs/libtirpc )
 DESCRIPTION=Library for handling root privilege
-EAPI=6
+EAPI=7
 HOMEPAGE=http://www.j10n.org/libspt/
-IUSE=+libtirpc
+IUSE=+libtirpc static-libs
 KEYWORDS=~alpha amd64 ppc x86
 LICENSE=BSD-2
 RDEPEND=!libtirpc? ( elibc_glibc? ( sys-libs/glibc[rpc(-)] ) ) libtirpc? ( net-libs/libtirpc )
@@ -11,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://www.j10n.org/libspt/libspt-1.1.tar.bz2
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=46d99672ee523d853853a2e351fc1560
+_md5_=ca588e80e48ab432a51c4b34d0c69b6d

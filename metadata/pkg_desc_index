@@ -9571,7 +9571,7 @@ dev-ros/rosconsole_bridge 0.5.4 9999: Connects console_bridge-based logging to r
 dev-ros/roscpp 1.15.7 1.15.8 9999: C++ implementation of ROS
 dev-ros/roscpp_serialization 0.7.2 9999: Code for serialization
 dev-ros/roscpp_traits 0.7.2 9999: Message traits code
-dev-ros/roscpp_tutorials 0.10.1 9999: Attempts to show the features of ROS step-by-step
+dev-ros/roscpp_tutorials 0.10.1 0.10.2 9999: Attempts to show the features of ROS step-by-step
 dev-ros/roscreate 1.15.6 9999: Tool that assists in the creation of ROS filesystem resources
 dev-ros/rosdiagnostic 1.9.4 9999: Command to print aggregated diagnostic contents to the command line
 dev-ros/rosgraph 1.15.7 1.15.8 9999: Prints information about the ROS Computation Graph
@@ -9590,7 +9590,7 @@ dev-ros/rosout 1.15.7 1.15.8 9999: System-wide logging mechanism for messages se
 dev-ros/rospack 2.6.2 9999: Retrieves information about ROS packages available on the filesystem
 dev-ros/rosparam 1.15.7 1.15.8 9999: Command-line tool for getting and setting ROS Parameters on the parameter server
 dev-ros/rospy 1.15.7 1.15.8 9999: Python client library for ROS
-dev-ros/rospy_tutorials 0.10.1 9999: Attempts to show the features of ROS step-by-step
+dev-ros/rospy_tutorials 0.10.1 0.10.2 9999: Attempts to show the features of ROS step-by-step
 dev-ros/rosserial_arduino 0.8.0 9999: Libraries and examples for ROSserial usage on Arduino/AVR Platforms
 dev-ros/rosserial_client 0.8.0 9999: Generalized client side source for rosserial
 dev-ros/rosserial_embeddedlinux 0.8.0 9999: Libraries and examples for ROSserial usage on Embedded Linux Enviroments
@@ -9693,7 +9693,7 @@ dev-ros/transmission_interface 0.19.1 9999: Transmission Interface
 dev-ros/turtle_actionlib 0.1.12 0.2.0 9999: Demonstrates how to write an action server and client with the turtlesim
 dev-ros/turtle_tf 0.2.3 9999: Demonstrates how to write a tf broadcaster and listener with the turtlesim
 dev-ros/turtle_tf2 0.2.3 9999: Demonstrates how to write a tf2 broadcaster and listener with the turtlesim
-dev-ros/turtlesim 0.10.1 9999: Tool made for teaching ROS and ROS packages
+dev-ros/turtlesim 0.10.1 0.10.2 9999: Tool made for teaching ROS and ROS packages
 dev-ros/unique_id 1.0.6 9999: ROS Python and C++ interfaces for universally unique identifiers
 dev-ros/urdf 1.13.2 9999: C++ parser for the Unified Robot Description Format (URDF)
 dev-ros/urdf_parser_plugin 1.13.2 9999: C++ base class for URDF parsers
@@ -15735,7 +15735,7 @@ ros-meta/ros_base 1.5.0 9999: Metapackage which extends ros_core and includes ot
 ros-meta/ros_comm 1.15.7 1.15.8 9999: ROS communications-related packages
 ros-meta/ros_control 0.19.1 9999: Controller interfaces, managers, transmissions, control_toolbox
 ros-meta/ros_core 1.5.0 9999: Metapackage to aggregate the packages required to use core ROS concepts
-ros-meta/ros_tutorials 0.10.1 9999: Demonstrates various features of ROS
+ros-meta/ros_tutorials 0.10.1 0.10.2 9999: Demonstrates various features of ROS
 ros-meta/rosbridge_suite 0.11.3 0.11.9 9999: JSON API to ROS functionality for non-ROS programs
 ros-meta/roscpp_core 0.7.2 9999: Underlying data libraries for roscpp messages
 ros-meta/rosserial 0.8.0 9999: Metapackage for core of rosserial
