@@ -1,0 +1,12 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile install prepare setup
+DEPEND=sys-apps/texinfo sys-devel/flex sys-devel/gettext || ( dev-util/byacc dev-util/yacc <sys-devel/bison-3.7 )
+DESCRIPTION=A makefile framework for writing simple makefiles for complex tasks
+EAPI=7
+HOMEPAGE=http://svn.netlabs.org/kbuild/wiki
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~polynomial-c/kbuild-0.1.9998.3407-src.tar.xz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=9b930847c332421418d44be431d8d25f

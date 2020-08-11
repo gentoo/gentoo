@@ -8227,7 +8227,7 @@ dev-python/guzzle_sphinx_theme 0.7.11-r1: Sphinx theme used by Guzzle
 dev-python/h11 0.9.0: A pure-Python implementation of HTTP/1.1 inspired by hyper-h2
 dev-python/h5py 2.10.0-r1: Simple Python interface to HDF5 files
 dev-python/hacking 2.0.0: A client for the OpenStack Nova API
-dev-python/hcloud-python 1.8.1 1.8.2: Official Hetzner Cloud python library
+dev-python/hcloud-python 1.8.1 1.8.2 1.9.0: Official Hetzner Cloud python library
 dev-python/helpdev 0.6.10 0.7.1: Helping users and developers to get information about the environment
 dev-python/hgdistver 0.25: utility lib to generate python package version infos from mercurial tags
 dev-python/hiredis 1.0.1: Python extension that wraps hiredis
@@ -10751,7 +10751,7 @@ dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files f
 dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
 dev-util/jenkins-bin 2.235.1 2.235.2 2.235.3 2.242 2.245 2.251: Extensible continuous integration server
 dev-util/jfrog-cli 1.35.3: Command line utility foroperations on container images and image repositories
-dev-util/kbuild 0.1.9998.3149 9999: A makefile framework for writing simple makefiles for complex tasks
+dev-util/kbuild 0.1.9998.3149 0.1.9998.3407 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 3.0.1: Graphical debugger interface
 dev-util/kdevelop 5.5.2: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
@@ -14647,7 +14647,7 @@ net-im/discord-bin 0.0.11: All-in-one voice and text chat for gamers
 net-im/ejabberd 17.04-r2 20.03 20.04: Robust, scalable and extensible XMPP server
 net-im/ekg2 0.4_pre20190315 9999: Text-based, multi-protocol instant messenger
 net-im/empathy 3.12.14: Telepathy instant messaging and video/audio call client for GNOME
-net-im/err 5.2.0-r1: Multiprotocol chatbot designed to be easily deployable and maintainable
+net-im/err 5.2.0-r1 6.1.4: Multiprotocol chatbot designed to be easily deployable and maintainable
 net-im/gajim 1.1.3-r1 1.1.3-r2 1.2.0 1.2.1: Jabber client written in PyGTK
 net-im/gg-transport 2.2.6: Gadu-Gadu transport for Jabber
 net-im/gitter-bin 3.1.0 4.1.0: Chat and network platform
@@ -15344,7 +15344,7 @@ net-misc/wput 0.6.1-r1 0.6.2: Tiny program like wget, to upload files/whole dire
 net-misc/x11-ssh-askpass 1.2.4.1-r2: X11-based passphrase dialog for use with OpenSSH
 net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
-net-misc/yandex-disk 0.1.5.978_p1 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
+net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1355-r1 0.4.1432: utility to download media contents from the web
 net-misc/youtube-dl 2020.07.28 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r1 9999: A command line utility for viewing youtube-videos in Mplayer
@@ -15532,7 +15532,7 @@ net-vpn/openconnect 8.09-r1 9999: Free client for Cisco AnyConnect SSL VPN softw
 net-vpn/openfortivpn 1.13.2 1.13.3: Fortinet compatible VPN client
 net-vpn/openvpn 2.4.9 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/peervpn 0.044-r5: P2P mesh VPN
-net-vpn/pptpd 1.4.0-r2 1.4.0-r3: Linux Point-to-Point Tunnelling Protocol Server
+net-vpn/pptpd 1.4.0-r3: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/protonvpn-cli 2.2.0 2.2.2: A VPN command-line tool from protonvpn - python rewrite
 net-vpn/strongswan 5.8.1 5.8.2 5.8.4: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tailscale 0.98 0.98_p0: Tailscale vpn client
