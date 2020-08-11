@@ -11638,11 +11638,11 @@ games-rpg/wastesedge 0.3.5-r2: role playing game to showcase the adonthell engin
 games-rpg/xu4 0.9-r1: A remake of the computer game Ultima IV
 games-rpg/zsdx 1.9.0-r1: A free 2D Zelda fangame
 games-rpg/zsxd 1.9.0-r1: A free 2D Zelda fangame parody
-games-server/bedrock-server 1.14.60.5 1.16.1.02: The official bedrock (non-java) based server for the sandbox video game
+games-server/bedrock-server 1.16.1.02: The official bedrock (non-java) based server for the sandbox video game
 games-server/crossfire-server 1.71.0-r1: Server for the crossfire clients
 games-server/etqw-ded 1.5-r1: Enemy Territory: Quake Wars dedicated server
 games-server/mednafen-server 0.5.2-r1: Server for Mednafen emulator
-games-server/minecraft-server 1.15.2 1.16.1: The official server for the sandbox video game
+games-server/minecraft-server 1.16.1: The official server for the sandbox video game
 games-server/monopd 0.10.2-r1: server for atlantik games
 games-server/mtavc 0.5-r2: dedicated server for GTA3 multiplayer
 games-server/pvpgn 1.8.5-r2: A gaming server for Battle.Net compatible clients
@@ -11659,7 +11659,7 @@ games-simulation/gl117 1.3.2-r1: An action flight simulator
 games-simulation/lincity 1.13.1-r1: city/country simulation game for X and Linux SVGALib
 games-simulation/lincity-ng 2.9_beta: City simulation game
 games-simulation/micropolis 1.0_p20180313: Free version of the well-known city building simulation
-games-simulation/openrct2 0.2.4 0.2.6 9999: An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2
+games-simulation/openrct2 0.2.6 9999: An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2
 games-simulation/openttd 1.10.2 9999: OpenTTD is a clone of Transport Tycoon Deluxe
 games-simulation/pmars-sdl 0.9.2e-r1: Portable redcode simulator's sdl port for core war
 games-simulation/searchandrescue 1.7.0: Helicopter based air rescue flight simulator
@@ -14664,7 +14664,7 @@ net-im/gitter-bin 3.1.0 4.1.0: Chat and network platform
 net-im/jabber-base 0.01-r1: Jabber servers and transports layout package
 net-im/kadu 4.3-r2: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
-net-im/libcommuni 3.5.0_p20190110-r1 3.5.0_p20200711: A cross-platform IRC framework written with Qt
+net-im/libcommuni 3.5.0_p20200711: A cross-platform IRC framework written with Qt
 net-im/librvp 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
 net-im/mattermost-desktop-bin 4.5.1: Mattermost Desktop application
 net-im/mcabber 1.1.0-r1 1.1.0-r2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
@@ -15148,7 +15148,7 @@ net-misc/icaclient 20.04.0.21 20.06.0.15: ICA Client for Citrix Presentation ser
 net-misc/icecast 2.4.4: Opensource alternative to shoutcast that supports mp3, ogg and aac streaming
 net-misc/ices 2.0.2: Icecast OGG streaming client, supports on the fly re-encoding
 net-misc/ifenslave 1.1.0-r6: Attach and detach slave interfaces to a bonding device
-net-misc/igmpproxy 0.2.1-r2 0.2.1_p20200508: A multicast routing daemon which uses IGMP forwarding
+net-misc/igmpproxy 0.2.1_p20200508: A multicast routing daemon which uses IGMP forwarding
 net-misc/ip-sentinel 0.12 0.12-r1: Prevent unauthorized usage of IP addresses
 net-misc/ipcalc 0.41: IP Calculator prints broadcast/network/etc for an IP address and netmask
 net-misc/iperf 2.0.13 2.0.14a 2.99999.99999 3.6 3.7 3.8.1 3.99999.99999: A TCP, UDP, and SCTP network bandwidth measurement tool
@@ -16857,7 +16857,7 @@ sys-apps/consolation 0.0.7: libinput based console mouse daemon
 sys-apps/conspy 1.10 1.14: Remote control for Linux virtual consoles
 sys-apps/coreutils 8.30 8.31-r1 8.32-r1: Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)
 sys-apps/cpint 2.5.3: Linux/390 Interface to z/VM's Control Program
-sys-apps/cpuid 20180519 20200427: Linux tool to dump x86 CPUID information about the CPUs
+sys-apps/cpuid 20200427: Linux tool to dump x86 CPUID information about the CPUs
 sys-apps/cracklib-words 2.9.6: large set of crack/cracklib dictionaries
 sys-apps/crazydiskinfo 1.1.0: Interactive TUI S.M.A.R.T viewer
 sys-apps/daemonize 1.7.8: Runs a command as a Unix daemon
