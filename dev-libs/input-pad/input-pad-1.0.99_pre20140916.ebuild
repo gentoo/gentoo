@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit ltprune xdg-utils
+inherit autotools ltprune xdg-utils
 
 MY_P="${P/_pre/.}"
 MY_PV="${PV/_pre/.}"
@@ -33,8 +33,11 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=( "${FILESDIR}"/${PN}-man.patch )
+
 src_prepare() {
 	default
+	eautoreconf
 	xdg_environment_reset
 }
 
