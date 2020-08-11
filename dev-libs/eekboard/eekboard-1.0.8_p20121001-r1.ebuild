@@ -5,7 +5,7 @@ EAPI="7"
 PYTHON_COMPAT=( python3_{6,7,8} )
 VALA_USE_DEPEND="vapigen"
 
-inherit autotools gnome2-utils python-any-r1 vala vcs-snapshot virtualx xdg-utils
+inherit autotools gnome2-utils python-any-r1 vala vcs-snapshot virtualx xdg
 
 DESCRIPTION="An easy to use virtual keyboard toolkit"
 HOMEPAGE="https://github.com/ueno/eekboard"
@@ -48,7 +48,6 @@ src_prepare() {
 	use vala && vala_src_prepare
 	default
 	eautoreconf
-	xdg_environment_reset
 }
 
 src_configure() {
@@ -71,16 +70,16 @@ src_test() {
 }
 
 pkg_preinst() {
-	gnome2_icon_savelist
+	xdg_pkg_preinst
 	gnome2_schemas_savelist
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_pkg_postinst
 	gnome2_schemas_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_pkg_postrm
 	gnome2_schemas_update
 }
