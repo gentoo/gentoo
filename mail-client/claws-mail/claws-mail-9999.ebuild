@@ -20,7 +20,7 @@ fi
 SLOT="0"
 LICENSE="GPL-3"
 
-IUSE="archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls gtk3 +imap ipv6 ldap +libcanberra +libindicate +libnotify litehtml networkmanager nls nntp +notification pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
+IUSE="archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls gtk2 +imap ipv6 ldap +libcanberra +libindicate +libnotify litehtml networkmanager nls nntp +notification pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
 REQUIRED_USE="libcanberra? ( notification )
 	libindicate? ( notification )
 	libnotify? ( notification )
@@ -52,8 +52,8 @@ COMMONDEPEND="
 	gdata? ( >=dev-libs/libgdata-0.17.2 )
 	dillo? ( www-client/dillo )
 	gnutls? ( >=net-libs/gnutls-3.0 )
-	gtk3? ( x11-libs/gtk+:3 )
-	!gtk3? ( >=x11-libs/gtk+-2.24:2 )
+	!gtk2? ( x11-libs/gtk+:3 )
+	gtk2? ( >=x11-libs/gtk+-2.24:2 )
 	imap? ( >=net-libs/libetpan-0.57 )
 	ldap? ( >=net-nds/openldap-2.0.7 )
 	litehtml? (
@@ -114,6 +114,10 @@ PATCHES=(
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
+
+	if ! use gtk2 ; then
+		EGIT_BRANCH="gtk3"
+	fi
 }
 
 src_prepare() {
@@ -150,7 +154,6 @@ src_configure() {
 		$(use_enable doc manual)
 		$(use_enable gdata gdata-plugin)
 		$(use_enable gnutls)
-		$(use_enable gtk3)
 		$(use_enable ipv6)
 		$(use_enable ldap)
 		$(use_enable litehtml litehtml_viewer-plugin)
