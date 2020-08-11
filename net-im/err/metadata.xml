@@ -9,11 +9,7 @@
 		<flag name="irc">Pull optional dependencies, needed for IRC backend</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">gbin/err</remote-id>
-		<maintainer status="active">
-			<email>gbin@gootz.net</email>
-			<name>Guillaume BINET</name>
-		</maintainer>
+		<remote-id type="github">errbotio/errbot</remote-id>
 		<remote-id type="pypi">err</remote-id>
 	</upstream>
 </pkgmetadata>
