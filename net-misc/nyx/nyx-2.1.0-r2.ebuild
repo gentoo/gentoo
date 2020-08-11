@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=(python3_{7,8} pypy3)
-PYTHON_REQ_USE='sqlite(-)'
+PYTHON_REQ_USE='ncurses,sqlite(-)'
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
