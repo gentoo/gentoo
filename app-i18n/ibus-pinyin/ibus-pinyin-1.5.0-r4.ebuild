@@ -12,7 +12,7 @@ SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.go
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="boost lua nls"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
