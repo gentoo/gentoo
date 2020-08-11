@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils git-r3 readme.gentoo-r1 xdg-utils
+inherit cmake git-r3 readme.gentoo-r1 xdg-utils
 
 EGIT_REPO_URI="https://github.com/OpenRCT2/OpenRCT2.git"
 EGIT_BRANCH="develop"
@@ -12,8 +12,8 @@ MY_PN="OpenRCT2"
 MY_PN_OBJ="objects"
 MY_PN_RPL="replays"
 MY_PN_TS="title-sequences"
-MY_PV_OBJ="1.0.14"
-MY_PV_RPL="0.0.12"
+MY_PV_OBJ="1.0.16"
+MY_PV_RPL="0.0.17"
 MY_PV_TS="0.1.2c"
 
 DESCRIPTION="An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2"
@@ -95,7 +95,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# Don't treat warnings as errors.
 	sed -e 's/-Werror//' -i CMakeLists.txt || die
@@ -123,7 +123,7 @@ src_configure() {
 		-DUSE_MMAP=ON
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
@@ -134,11 +134,11 @@ src_test() {
 	# See: https://github.com/OpenRCT2/OpenRCT2/issues/6473
 	ln -s "${S}"/data "${BUILD_DIR}" || die
 
-	cmake-utils_src_test
+	cmake_src_test
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use dedicated; then
 		newinitd "${FILESDIR}"/openrct2.initd openrct2
