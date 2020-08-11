@@ -12,11 +12,11 @@ SRC_URI="https://github.com/wxMaxima-developers/wxmaxima/archive/Version-${PV}.t
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 S="${WORKDIR}"/${PN}-Version-${PV}
 
-DEPEND="app-text/pandoc
+DEPEND="
 	dev-libs/libxml2:2
 	x11-libs/wxGTK:${WX_GTK_VER}"
 RDEPEND="${DEPEND}
