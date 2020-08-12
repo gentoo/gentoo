@@ -1,15 +1,23 @@
---- seamonkey-2.53.3/mozilla/config/rules.mk
-+++ seamonkey-2.53.3/mozilla/config/rules.mk
-@@ -871,12 +871,6 @@
+--- a/mozilla/config/rules.mk
++++ b/mozilla/config/rules.mk
+@@ -870,16 +870,20 @@ endif
+ 
  # These flags are passed via `cargo rustc` and only apply to the final rustc
  # invocation (i.e., only the top-level crate, not its dependencies).
  cargo_rustc_flags = $(CARGO_RUSTCFLAGS)
--ifndef DEVELOPER_OPTIONS
--ifndef MOZ_DEBUG_RUST
--# Enable link-time optimization for release builds.
--cargo_rustc_flags += -C lto
--endif
--endif
+ ifndef DEVELOPER_OPTIONS
+ ifndef MOZ_DEBUG_RUST
+ # Enable link-time optimization for release builds.
+ cargo_rustc_flags += -C lto
++# Versions of rust >= 1.45 need -Cembed-bitcode=yes for all crates when using -Clto.
++ifeq (,$(filter 1.3% 1.40.% 1.41.% 1.42.% 1.43.% 1.44.%,$(RUSTC_VERSION)))
++RUSTFLAGS += -Cembed-bitcode=yes
++endif
+ endif
+ endif
  
  rustflags_override = RUSTFLAGS='$(MOZ_RUST_DEFAULT_FLAGS) $(RUSTFLAGS)'
  
+ ifdef MOZ_MSVCBITS
+ # If we are building a MozillaBuild shell, we want to clear out the
+ # vcvars.bat environment variables for cargo builds. This is because

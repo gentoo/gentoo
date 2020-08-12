@@ -189,10 +189,7 @@ src_prepare() {
 		edos2unix "${file}"
 	done
 
-	if has_version ">=virtual/rust-1.45.0" ; then
-		einfo "Unbreak build with >=rust-1.45.0, bmo#1640982 ..."
-		eapply "${FILESDIR}/${PN}-2.53.3-rust-1.45.0.patch"
-	fi
+	eapply "${FILESDIR}/${PN}-2.53.3-rust-1.45.0.patch"
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
