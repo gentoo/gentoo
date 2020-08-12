@@ -36,10 +36,6 @@
     <remote-id type="cpan-module">Mojo::IOLoop::Delay</remote-id>
     <remote-id type="cpan-module">Mojo::IOLoop::Server</remote-id>
     <remote-id type="cpan-module">Mojo::IOLoop::Stream</remote-id>
-    <remote-id type="cpan-module">Mojo::IOLoop::Stream::HTTPClient</remote-id>
-    <remote-id type="cpan-module">Mojo::IOLoop::Stream::HTTPServer</remote-id>
-    <remote-id type="cpan-module">Mojo::IOLoop::Stream::WebSocketClient</remote-id>
-    <remote-id type="cpan-module">Mojo::IOLoop::Stream::WebSocketServer</remote-id>
     <remote-id type="cpan-module">Mojo::IOLoop::Subprocess</remote-id>
     <remote-id type="cpan-module">Mojo::IOLoop::TLS</remote-id>
     <remote-id type="cpan-module">Mojo::JSON</remote-id>
