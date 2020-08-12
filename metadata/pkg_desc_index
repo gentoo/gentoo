@@ -16280,6 +16280,7 @@ sci-libs/libgeotiff 1.5.1-r1: Library for reading TIFF files with embedded tags 
 sci-libs/libghemical 3.0.0: Chemical quantum mechanics and molecular mechanics
 sci-libs/libh2o 0.2.1-r1 9999: Library of routines for IF97 water & steam properties
 sci-libs/libh2oxx 0.2-r1 9999: C++ bindings for libh2o
+sci-libs/libhomfly 1.02.6: Library to compute the homfly polynomial of a link
 sci-libs/libint 1.1.6 2.0.5: Matrix elements (integrals) evaluation over Cartesian Gaussian functions
 sci-libs/libmems 1.6_p1-r3 9999: Library for sci-biology/mauve
 sci-libs/libmuscle 3.7-r3: Library for sci-biology/mauve
