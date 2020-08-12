@@ -3085,11 +3085,6 @@
       <name>William Hubbs</name>
       <role>LiveCD Tools Maintainer</role>
     </member>
-    <member>
-      <email>zerochaos@gentoo.org</email>
-      <name>Rick Farina</name>
-      <role>Builder of Things</role>
-    </member>
   </project>
   <project>
     <email>grs@gentoo.org</email>

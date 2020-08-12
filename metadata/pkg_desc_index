@@ -10761,7 +10761,7 @@ dev-util/itstool 2.0.6-r1: Translation tool for XML documents that uses gettext 
 dev-util/japi-compliance-checker 2.4 9999: Java API compliance checker
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
-dev-util/jenkins-bin 2.235.1 2.235.2 2.235.3 2.242 2.245 2.251: Extensible continuous integration server
+dev-util/jenkins-bin 2.235.4 2.252: Extensible continuous integration server
 dev-util/jfrog-cli 1.35.3: Command line utility foroperations on container images and image repositories
 dev-util/kbuild 0.1.9998.3149 0.1.9998.3407 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
@@ -14481,7 +14481,7 @@ net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
 net-analyzer/vnstat 1.17 2.4 2.5 2.6 9999: Console-based network traffic monitor that keeps statistics of network usage
 net-analyzer/wapiti 3.0.3 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1 0.2.0-r2: Poor man's web vulnerability scanner
-net-analyzer/wireshark 3.2.5 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 3.2.5 3.2.6 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2 9999: A framework for layer 2 attacks
