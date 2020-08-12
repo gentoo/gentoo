@@ -13028,7 +13028,7 @@ media-libs/freetype 2.9.1-r3 2.9.1-r4 2.10.1 2.10.2-r1 9999: A high-quality and 
 media-libs/freeverb3 3.2.1-r2: Reverb and Impulse Response Convolution plug-ins (Audacious/JACK)
 media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
 media-libs/game-music-emu 0.6.2: Video game music file emulators
-media-libs/ganv 1.6.0: A GTK+ widget for interactive graph-like environments
+media-libs/ganv 1.6.0 1.6.0-r1: A GTK+ widget for interactive graph-like environments
 media-libs/gavl 1.4.0-r1: library for handling uncompressed audio and video data
 media-libs/gd 2.3.0: Graphics library for fast image creation
 media-libs/gegl 0.2.0-r6 0.3.34 0.3.34-r1 0.4.16 0.4.16-r1 0.4.18 0.4.18-r1 0.4.22 0.4.22-r1 0.4.24 9999: A graph based image processing framework
@@ -17584,7 +17584,7 @@ sys-fs/udev 242 243-r2 245.5-r1 246-r1 9999: Linux dynamic and persistent device
 sys-fs/udev-init-scripts 33 34 9999: udev startup scripts for openrc
 sys-fs/udftools 2.1 2.2: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 2.1.0 2.1.1 2.2.0: An automatic disk mounting service using udisks
-sys-fs/udisks 2.8.4 2.9.0: Daemon providing interfaces to work with storage devices
+sys-fs/udisks 2.9.0 2.9.1: Daemon providing interfaces to work with storage devices
 sys-fs/ufsutils 8.2_p3: FFS/UFS/UFS2 filesystem utilities from FreeBSD
 sys-fs/unionfs-fuse 1.0 2.0 2.1 9999: Self-syncing tree-merging file system based on FUSE
 sys-fs/vhba 20200106-r1: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
