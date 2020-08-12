@@ -17517,8 +17517,8 @@ sys-fs/fatcat 1.1.0-r1: FAT filesystems explore, extract, repair, and forensic t
 sys-fs/fatresize 1.0.4: Resize FAT partitions using libparted
 sys-fs/fatsort 1.6.2.605: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fragview 0.1.1 9999: Disk fragmentation visualizer based on FIEMAP and FIBMAP ioctls
-sys-fs/fuse 2.9.9-r1 3.9.1 3.9.2: An interface for filesystems implemented in userspace
-sys-fs/fuse-common 3.9.1 3.9.2: Common files for multiple slots of sys-fs/fuse
+sys-fs/fuse 2.9.9-r1 3.9.1 3.9.2 3.9.3: An interface for filesystems implemented in userspace
+sys-fs/fuse-common 3.9.1 3.9.2 3.9.3: Common files for multiple slots of sys-fs/fuse
 sys-fs/fuse-convmvfs 0.2.6-r1: FUSE file system to convert filename charset
 sys-fs/fuse-exfat 1.3.0: exFAT filesystem FUSE module
 sys-fs/fuse-overlayfs 0.7.8 1.0.0 1.1.1 1.1.2: FUSE implementation for overlayfs
@@ -18094,7 +18094,7 @@ www-apps/webdavcgi 0.8.3 0.8.4 1.1.1: A Perl CGI for accessing and sharing files
 www-apps/webmcp 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
-www-apps/wordpress 5.4.2: Wordpress PHP and MySQL based content management system (CMS)
+www-apps/wordpress 5.5: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
 www-client/chromium 84.0.4147.125 85.0.4183.59 86.0.4221.3: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
