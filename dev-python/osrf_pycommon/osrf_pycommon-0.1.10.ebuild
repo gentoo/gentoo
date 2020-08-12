@@ -13,12 +13,16 @@ SRC_URI="https://github.com/osrf/osrf_pycommon/archive/${PV}.tar.gz -> ${P}.tar.
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
-RESTRICT=""
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="dev-python/mock[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
-BDEPEND=""
+BDEPEND="
+	test? (
+		dev-python/flake8[${PYTHON_USEDEP}]
+	)
+"
 PATCHES=( "${FILESDIR}/str.patch" )
 
 distutils_enable_tests pytest
