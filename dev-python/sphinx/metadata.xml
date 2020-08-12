@@ -6,6 +6,7 @@
 		<name>Python</name>
 	</maintainer>
 	<longdescription lang="en">Sphinx is a tool to create documentation for Python projects (or other documents consisting of multiple reStructuredText sources).</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">Sphinx</remote-id>
 	</upstream>
