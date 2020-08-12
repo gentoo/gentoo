@@ -32,22 +32,18 @@ similarity index 100%
 rename from docs/conf/helpop.conf.example
 rename to docs/conf/helpop.conf
 diff --git a/docs/conf/inspircd.conf.example b/docs/conf/inspircd.conf
-similarity index 98%
+similarity index 99%
 rename from docs/conf/inspircd.conf.example
 rename to docs/conf/inspircd.conf
-index dbd56d2fe..665d4dfb5 100644
+index d678b5be3..607141381 100644
 --- a/docs/conf/inspircd.conf.example
 +++ b/docs/conf/inspircd.conf
-@@ -247,10 +247,10 @@
+@@ -250,7 +250,7 @@
  # This can be done by using <connect registered="no">                 #
  
  # To enable IRCCloud on your network uncomment this:
 -#<include file="examples/providers/irccloud.conf.example">
 +#<include file="/etc/inspircd/providers/irccloud.conf">
- 
- # To enable KiwiIRC.com on your network uncomment this:
--#<include file="examples/providers/kiwiirc-com.conf.example">
-+#<include file="/etc/inspircd/providers/kiwiirc-com.conf">
  
  # A connect class with <connect:deny> set denies connections from the specified host/IP range.
  <connect
@@ -79,11 +75,11 @@ index dbd56d2fe..665d4dfb5 100644
  #                                                                     #
  
 -#<pid file="/path/to/inspircd.pid">
-+<pid file="/var/run/inspircd/inspircd.pid">
++#<pid file="/var/run/inspircd/inspircd.pid">
  
  #-#-#-#-#-#-#-#-#-#-#-#-#- LIST MODE LIMITS #-#-#-#-#-#-#-#-#-#-#-#-#-#
  #                                                                     #
-@@ -693,7 +693,7 @@
+@@ -697,7 +697,7 @@
           #                    messages (requires the stripcolor module).
           #  - topiclock       Channel mode +t - limits changing the topic to (half)ops
           # You can also configure this on a per-channel basis with a channel mode.
@@ -92,7 +88,7 @@ index dbd56d2fe..665d4dfb5 100644
           exemptchanops="censor:o filter:o nickflood:o nonick:v regmoderated:o"
  
           # invitebypassmodes: This allows /INVITE to bypass other channel modes.
-@@ -1041,7 +1041,7 @@
+@@ -1045,7 +1045,7 @@
  # provide almost all the features of InspIRCd. :)                     #
  #                                                                     #
  # The default does nothing -- we include it for simplicity for you.   #
@@ -101,7 +97,7 @@ index dbd56d2fe..665d4dfb5 100644
  
  #-#-#-#-#-#-#-#-#-#-#-# SERVICES CONFIGURATION  #-#-#-#-#-#-#-#-#-#-#-#
  #                                                                     #
-@@ -1050,13 +1050,13 @@
+@@ -1054,13 +1054,13 @@
  # exemptions for services pseudoclients:                              #
  #
  # Anope users should uncomment this:
@@ -122,7 +118,7 @@ diff --git a/docs/conf/links.conf.example b/docs/conf/links.conf
 similarity index 98%
 rename from docs/conf/links.conf.example
 rename to docs/conf/links.conf
-index 09b3bb3d5..22db1bdab 100644
+index 256ac10f9..40f5be35d 100644
 --- a/docs/conf/links.conf.example
 +++ b/docs/conf/links.conf
 @@ -121,4 +121,4 @@
@@ -135,7 +131,7 @@ diff --git a/docs/conf/modules.conf.example b/docs/conf/modules.conf
 similarity index 99%
 rename from docs/conf/modules.conf.example
 rename to docs/conf/modules.conf
-index d68248163..b55d368fb 100644
+index 2e50977bd..315d376cf 100644
 --- a/docs/conf/modules.conf.example
 +++ b/docs/conf/modules.conf
 @@ -576,10 +576,10 @@
@@ -189,7 +185,7 @@ index d68248163..b55d368fb 100644
  
  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
  # Hide chans module: Allows users to hide their channels list from non-
-@@ -1575,7 +1575,7 @@
+@@ -1581,7 +1581,7 @@
  # onoper        - If on, the message is sent on /OPER, otherwise it's #
  #                 only sent when /OPERMOTD is used.                   #
  #                                                                     #
@@ -198,9 +194,9 @@ index d68248163..b55d368fb 100644
  
  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
  # Override module: Adds support for oper override.
-@@ -2153,7 +2153,7 @@
+@@ -2172,7 +2172,7 @@
  # connections in order to oper up. It is highly recommended to load
- # this module if you use SSL on your network.
+ # this module if you use TLS (SSL) on your network.
  # For how to use the oper features, please see the first
 -# example <oper> tag in opers.conf.example.
 +# example <oper> tag in opers.conf.
@@ -243,10 +239,10 @@ diff --git a/docs/conf/opers.conf.example b/docs/conf/opers.conf
 similarity index 99%
 rename from docs/conf/opers.conf.example
 rename to docs/conf/opers.conf
-index 7cad2589c..082009da9 100644
+index d8c266b1f..9517b3685 100644
 --- a/docs/conf/opers.conf.example
 +++ b/docs/conf/opers.conf
-@@ -178,4 +178,4 @@
+@@ -182,4 +182,4 @@
  
  # Once you have edited this file you can remove this line. This is just to
  # ensure that you don't hastily include the file without reading it.
@@ -256,10 +252,6 @@ diff --git a/docs/conf/providers/irccloud.conf.example b/docs/conf/providers/irc
 similarity index 100%
 rename from docs/conf/providers/irccloud.conf.example
 rename to docs/conf/providers/irccloud.conf
-diff --git a/docs/conf/providers/kiwiirc-com.conf.example b/docs/conf/providers/kiwiirc-com.conf
-similarity index 100%
-rename from docs/conf/providers/kiwiirc-com.conf.example
-rename to docs/conf/providers/kiwiirc-com.conf
 diff --git a/docs/conf/quotes.txt.example b/docs/conf/quotes.txt
 similarity index 100%
 rename from docs/conf/quotes.txt.example
@@ -301,10 +293,10 @@ similarity index 100%
 rename from docs/conf/services/generic.conf.example
 rename to docs/conf/services/generic.conf
 diff --git a/make/template/main.mk b/make/template/main.mk
-index a57595c9d..42fef2563 100644
+index 9f905f970..c87da5d73 100644
 --- a/make/template/main.mk
 +++ b/make/template/main.mk
-@@ -220,10 +220,10 @@ install: target
+@@ -221,10 +221,10 @@ install: target
  	@-$(INSTALL) -d -g @GID@ -o @UID@ -m $(INSTMODE_DIR) $(BINPATH)
  	@-$(INSTALL) -d -g @GID@ -o @UID@ -m $(INSTMODE_DIR) $(CONPATH)
  	@-$(INSTALL) -d -g @GID@ -o @UID@ -m $(INSTMODE_DIR) $(DATPATH)
@@ -319,10 +311,10 @@ index a57595c9d..42fef2563 100644
  	@-$(INSTALL) -d -g @GID@ -o @UID@ -m $(INSTMODE_DIR) $(LOGPATH)
  	@-$(INSTALL) -d -g @GID@ -o @UID@ -m $(INSTMODE_DIR) $(MANPATH)
  	@-$(INSTALL) -d -g @GID@ -o @UID@ -m $(INSTMODE_DIR) $(MODPATH)
-@@ -240,11 +240,11 @@ endif
- 	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_TXT) @CONFIGURE_DIRECTORY@/inspircd.1 $(MANPATH) 2>/dev/null
- 	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_TXT) @CONFIGURE_DIRECTORY@/inspircd-genssl.1 $(MANPATH) 2>/dev/null
+@@ -244,11 +244,11 @@ endif
+ 	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_TXT) @CONFIGURE_DIRECTORY@/inspircd-testssl.1 $(MANPATH) 2>/dev/null
  	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_BIN) tools/genssl $(BINPATH)/inspircd-genssl 2>/dev/null
+ 	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_BIN) tools/testssl $(BINPATH)/inspircd-testssl 2>/dev/null
 -	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_TXT) docs/conf/*.example $(EXAPATH)
 -	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_TXT) docs/conf/codepages/*.example $(EXAPATH)/codepages
 -	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_TXT) docs/conf/providers/*.example $(EXAPATH)/providers
@@ -333,10 +325,10 @@ index a57595c9d..42fef2563 100644
 +	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_TXT) docs/conf/providers/* $(CONPATH)/providers
 +	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_TXT) docs/conf/services/* $(CONPATH)/services
 +	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_TXT) docs/sql/*.sql $(CONPATH)/sql
+ 	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_TXT) @CONFIGURE_DIRECTORY@/help.txt $(CONPATH)
  	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_PRV) *.pem $(CONPATH) 2>/dev/null
  	@echo ""
- 	@echo "*************************************"
-@@ -258,7 +258,6 @@ endif
+@@ -263,7 +263,6 @@ endif
  	@echo '  Data:' $(DATPATH)
  	@echo 'To start the ircd, run:' $(SCRPATH)/inspircd start
  	@echo 'Remember to create your config file:' $(CONPATH)/inspircd.conf
