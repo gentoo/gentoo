@@ -26,15 +26,15 @@ IUSE="scripts test"
 BDEPEND="
 	app-text/asciidoc"
 RDEPEND="
-	>=dev-python/attrs-19.3.0[${PYTHON_USEDEP}]
-	>=dev-python/colorama-0.4.3[${PYTHON_USEDEP}]
-	>=dev-python/cssutils-1.0.2[${PYTHON_USEDEP}]
-	>=dev-python/jinja-2.11.2[${PYTHON_USEDEP}]
-	>=dev-python/markupsafe-1.1.1[${PYTHON_USEDEP}]
+	dev-python/attrs[${PYTHON_USEDEP}]
+	dev-python/colorama[${PYTHON_USEDEP}]
+	dev-python/cssutils[${PYTHON_USEDEP}]
+	dev-python/jinja[${PYTHON_USEDEP}]
+	dev-python/markupsafe[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.6.1[${PYTHON_USEDEP}]
-	>=dev-python/pypeg2-2.15.2[${PYTHON_USEDEP}]
-	>=dev-python/PyQt5-5.14.1[${PYTHON_USEDEP},declarative,multimedia,gui,network,opengl,printsupport,sql,widgets]
-	>=dev-python/PyQtWebEngine-5.14.0[${PYTHON_USEDEP}]
+	dev-python/pypeg2[${PYTHON_USEDEP}]
+	dev-python/PyQt5[${PYTHON_USEDEP},declarative,multimedia,gui,network,opengl,printsupport,sql,widgets]
+	dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-5.3.1[${PYTHON_USEDEP},libyaml]
 "
 
