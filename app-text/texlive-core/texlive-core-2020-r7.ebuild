@@ -9,7 +9,7 @@ inherit flag-o-matic toolchain-funcs libtool texlive-common
 
 MY_P=${PN%-core}-${TL_SOURCE_VERSION}-source
 
-PATCHLEVEL=4
+PATCHLEVEL=5
 
 DESCRIPTION="A complete TeX distribution"
 HOMEPAGE="https://tug.org/texlive/"
@@ -157,13 +157,13 @@ src_prepare() {
 
 	cd "${B}" || die
 
-	default
-
-	eapply "${WORKDIR}"/patches
-
 	sed -i \
 		-e "s,/usr/include /usr/local/include.*echo \$KPATHSEA_INCLUDES.*,${EPREFIX}/usr/include\"," \
 		texk/web2c/configure || die
+
+	eapply "${WORKDIR}"/patches
+
+	default
 
 	elibtoolize
 }
@@ -215,6 +215,7 @@ src_configure() {
 		--enable-regiswin \
 		--enable-tektronixwin \
 		--enable-unitermwin \
+		--enable-vlna \
 		--with-ps=gs \
 		--disable-psutils \
 		--disable-t1utils \
@@ -236,7 +237,6 @@ src_configure() {
 		--enable-luatex \
 		--disable-dvi2tty \
 		--disable-dvisvgm \
-		--disable-vlna \
 		--enable-shared \
 		--disable-native-texlive-build \
 		--disable-largefile \
