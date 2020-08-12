@@ -10605,7 +10605,7 @@ dev-util/buildbot-www 2.7.0 2.8.0 2.8.2: BuildBot base web interface, use with b
 dev-util/bustle 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20190617 20191125 20200330: the best variant of the Yacc parser generator
 dev-util/cargo-c 0.6.2: Helper program to build and install c-like libraries
-dev-util/cargo-ebuild 0.2.0 0.3.0: Generates an ebuild for a package using the in-tree eclasses.
+dev-util/cargo-ebuild 0.2.0 0.3.0 0.3.1: Generates an ebuild for a package using the in-tree eclasses.
 dev-util/cargo-license 0.3.0: Cargo subcommand to see license of dependencies
 dev-util/catalyst 3.0.9 3.0.12 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.4.13: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
@@ -14711,7 +14711,7 @@ net-irc/emech 3.0.3-r1 3.0.99_p3: UNIX compatible IRC bot programmed in the C la
 net-irc/epic5 2.0.1: Epic5 IRC Client
 net-irc/hexchat 2.14.3 9999: Graphical IRC client based on XChat
 net-irc/ii 1.8 9999: A minimalist FIFO and filesystem-based IRC client
-net-irc/inspircd 2.0.29 3.4.0-r1 3.6.0: Inspire IRCd - The Stable, High-Performance Modular IRCd
+net-irc/inspircd 2.0.29 3.4.0-r1 3.7.0: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/irc-server 2.11.1_p1-r4: RFC compliant IRC server
 net-irc/irccloud-desktop-bin 0.15.0: IRCCloud Desktop Client
 net-irc/ircii 20190117: An IRC and ICB client that runs under most UNIX platforms
