@@ -24,7 +24,8 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.3.4-respect-flags.patch
+	"${FILESDIR}"/${P}-respect-flags.patch
+	"${FILESDIR}"/${P}-lv2.patch
 )
 
 DOCS=( README.md sshot.png ChangeLog )
