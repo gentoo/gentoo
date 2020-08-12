@@ -3036,8 +3036,8 @@ app-text/tessdata_fast 4.0.0: Fast integer versions of trained models for app-te
 app-text/tessdata_legacy 4.0.0: Trained models for app-text/tesseract compatible with the legacy engine
 app-text/tesseract 3.05.02 4.1.0-r1 4.1.1 9999: An OCR Engine, originally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
-app-text/texlive 2020-r6: A complete TeX distribution
-app-text/texlive-core 2020-r5 2020-r6: A complete TeX distribution
+app-text/texlive 2020-r7: A complete TeX distribution
+app-text/texlive-core 2020-r7: A complete TeX distribution
 app-text/tidy-html5 5.6.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
@@ -5157,7 +5157,7 @@ dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.3 5.30.3-r1 5.30.3-r2 5.32.0 5.32.0-r1: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 7.2.31 7.2.32 7.2.33 7.3.18 7.3.19 7.3.20 7.3.21 7.4.6 7.4.7 7.4.8-r1 7.4.9: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6 5.8: Poly/ML is a full implementation of Standard ML
-dev-lang/python 2.7.18-r1 3.6.11-r2 3.7.8-r2 3.8.4-r1 3.8.5 3.9.0_beta3 3.9.0_beta4 3.9.0_beta4-r1 3.9.0_beta5: An interpreted, interactive, object-oriented programming language
+dev-lang/python 2.7.18-r1 3.6.11-r2 3.7.8-r2 3.8.4-r1 3.8.5 3.9.0_beta3 3.9.0_beta4 3.9.0_beta4-r1 3.9.0_beta5 3.9.0_rc1: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r1 9999: Python script wrapper
 dev-lang/qu-prolog 10.4 10.5: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2019.03 2019.11 2020.05.1 2020.06 9999: A compiler for the Perl 6 programming language
@@ -7890,7 +7890,7 @@ dev-python/automat 20.2.0: Self-service finite-state machines for the programmer
 dev-python/automaton 1.12.1: Friendly state machines for python.
 dev-python/autopep8 1.4.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/awesome-slugify 1.6.5: Python flexible slugify function
-dev-python/aws-sam-translator 1.25.0: A library that transform SAM templates into AWS CloudFormation templates
+dev-python/aws-sam-translator 1.25.0 1.26.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0: AWS X-Ray SDK for Python
 dev-python/awscli 1.18.70 1.18.117: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
@@ -8584,7 +8584,7 @@ dev-python/pika 0.13.0: Pure-Python implementation of the AMQP
 dev-python/pikepdf 1.17.0: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 6.2.2 7.0.0 7.1.2 7.2.0: Python Imaging Library (fork)
-dev-python/pip 20.0.2 20.1.1 20.2 20.2.1: Installs python packages -- replacement for easy_install
+dev-python/pip 20.0.2 20.1.1 20.2 20.2.1 20.2.2: Installs python packages -- replacement for easy_install
 dev-python/pipenv 2020.6.2: Python Development Workflow for Humans
 dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requirements.txt file
 dev-python/pkgconfig 1.5.1: Interface Python with pkg-config
@@ -9073,7 +9073,7 @@ dev-python/soupsieve 1.9.5 1.9.6 2.0.1: A modern CSS selector implementation for
 dev-python/sparql-wrapper 1.8.5: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3: A PEG-based parser interpreter with memoization
-dev-python/sphinx 1.7.5-r2 2.0.1-r1 2.4.4 3.0.4 3.1.2: Python documentation generator
+dev-python/sphinx 1.7.5-r2 2.0.1-r1 2.4.4 3.0.4 3.1.2 3.2.0: Python documentation generator
 dev-python/sphinx-aiohttp-theme 0.1.6: Sphinx theme for aiohttp
 dev-python/sphinx-bootstrap-theme 0.6.5: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx-epytext 0.0.4: Sphinx epytext extension
