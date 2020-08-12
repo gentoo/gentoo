@@ -5,11 +5,11 @@ DESCRIPTION=Networking support library for the Lua language
 EAPI=7
 HOMEPAGE=http://www.tecgraf.puc-rio.br/~diego/professional/luasocket/ https://github.com/diegonehab/luasocket
 IUSE=debug abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_riscv_lp64d abi_riscv_lp64 abi_s390_32 abi_s390_64
-KEYWORDS=amd64 arm arm64 hppa ~mips ppc ppc64 sparc ~x86
+KEYWORDS=amd64 arm arm64 hppa ~mips ppc ppc64 sparc x86
 LICENSE=MIT
 RDEPEND=>=dev-lang/lua-5.1.5-r2:0[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_riscv_lp64d(-)?,abi_riscv_lp64(-)?,abi_s390_32(-)?,abi_s390_64(-)?]
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/diegonehab/luasocket/archive/v3.0-rc1.tar.gz -> luasocket-3.0_rc1.tar.gz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	multibuild	b2c915190b051f55a23b9354b9849847	multilib	2477ebe553d3e4d2c606191fe6c33602	multilib-build	8ad5b5535b73a8971881f09277b939f4	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=7d130dd47047f97ce3c0ded8437f2850
+_md5_=9d7c4d13efbfec4a73b743b632b36245
