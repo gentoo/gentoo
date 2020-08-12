@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE='threads(+)'
 inherit eutils flag-o-matic waf-utils python-any-r1
 
@@ -12,7 +12,7 @@ SRC_URI="http://download.drobilla.net/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+fdgl +graphviz introspection nls"
 
 RDEPEND="
