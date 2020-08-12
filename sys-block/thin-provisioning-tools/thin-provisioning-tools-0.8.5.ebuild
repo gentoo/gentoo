@@ -30,7 +30,6 @@ DEPEND="${RDEPEND}
 		|| (
 			dev-lang/ruby:2.6
 			dev-lang/ruby:2.5
-			dev-lang/ruby:2.4
 		)
 		>=dev-cpp/gtest-1.8.0
 		dev-util/cucumber
