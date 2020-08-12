@@ -5421,7 +5421,7 @@ dev-libs/libgpuarray 0.6.0 0.6.7: Library to manipulate tensors on the GPU
 dev-libs/libgudev 233-r1: GObject bindings for libudev
 dev-libs/libgusb 0.3.3 0.3.4 0.3.5: GObject wrapper for libusb
 dev-libs/libgweather 3.34.0 3.36.1: Location and timezone database and weather-lookup library
-dev-libs/libhid 0.2.16-r4: Provides a generic and flexible way to access and interact with USB HID devices
+dev-libs/libhid 0.2.16-r4 0.2.17: Provides a generic and flexible way to access and interact with USB HID devices
 dev-libs/libical 3.0.8: An implementation of basic iCAL protocols
 dev-libs/libiconv 1.15: GNU charset conversion library for libc which doesn't implement it
 dev-libs/libindicate 12.10.1-r3: Library to raise flags on DBus for other components of the desktop
@@ -6838,7 +6838,7 @@ dev-perl/MogileFS-Client-Async 0.030.0-r1: MogileFS Client using AnyEvent non-bl
 dev-perl/MogileFS-Network 0.60.0-r2: Network awareness and extensions for MogileFS::Server
 dev-perl/MogileFS-Server 2.720.0-r1 2.730.0: Server for the MogileFS distributed file system
 dev-perl/MogileFS-Utils 2.290.0 2.300.0: Server for the MogileFS distributed file system
-dev-perl/Mojolicious 7.570.0 7.600.0 7.700.0: Real-time web framework
+dev-perl/Mojolicious 7.570.0 7.600.0 7.700.0 7.800.0: Real-time web framework
 dev-perl/Mon 0.110.0-r2: A Monitor Perl Module
 dev-perl/MongoDB 1.8.0: Official MongoDB Driver for Perl
 dev-perl/Monitoring-Plugin 0.390.0 0.400.0: Modules to streamline Nagios, Icinga, Shinken, etc. plugins
