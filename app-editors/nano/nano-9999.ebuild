@@ -79,5 +79,11 @@ src_install() {
 			"${ED}"/etc/nanorc || die
 	fi
 
+	# Since nano-5.0 these are no longer being "enabled" by default
+	# (bug #736848)
+	local rcdir="/usr/share/nano"
+	mv "${ED}"${rcdir}/extra/* "${ED}"/${rcdir}/ || die
+	rmdir "${ED}"${rcdir}/extra || die
+
 	use split-usr && dosym ../../bin/nano /usr/bin/nano
 }
