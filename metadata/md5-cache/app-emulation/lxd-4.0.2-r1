@@ -5,11 +5,11 @@ DESCRIPTION=Fast, dense and secure container management
 EAPI=7
 HOMEPAGE=https://linuxcontainers.org/lxd/introduction/ https://github.com/lxc/lxd
 IUSE=apparmor +ipv6 nls kernel_linux
-KEYWORDS=~amd64
+KEYWORDS=amd64
 LICENSE=Apache-2.0 BSD BSD-2 LGPL-3 MIT MPL-2.0
 RDEPEND=app-arch/xz-utils >=app-emulation/lxc-3.0.0[apparmor?,seccomp] dev-lang/tcl dev-libs/libuv dev-libs/lzo net-dns/dnsmasq[dhcp,ipv6?] acct-group/lxd net-firewall/ebtables net-firewall/iptables[ipv6?] sys-apps/iproute2[ipv6?] sys-fs/fuse:0= sys-fs/lxcfs sys-fs/squashfs-tools virtual/acl
 RESTRICT=test
 SLOT=0
 SRC_URI=https://linuxcontainers.org/downloads/lxd/lxd-4.0.2.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	eutils	fcb2aa98e1948b835b5ae66ca52868c5	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=7afdc7dab5973f0debbfb709fdc0c39c
+_md5_=497950db849bfb05e223f4423554b69d
