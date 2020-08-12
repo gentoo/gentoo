@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_7} )
 DISTUTILS_USE_SETUPTOOLS=no
 DISTUTILS_OPTIONAL=yes
 
@@ -37,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-debian-args.patch
 	"${FILESDIR}"/${P}-test.patch
 	"${FILESDIR}"/${PN}${PV}-seektell-fix.patch
+	"${FILESDIR}"/tcl-${P}-python3.patch
 )
 
 HTML_DOCS="${WORKDIR}/${PN}${PV}/doc/*"
