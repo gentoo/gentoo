@@ -4017,6 +4017,7 @@ dev-haskell/getopt-generics 0.13.0.1 0.13.0.4: Create command line interfaces wi
 dev-haskell/ghc-paths 0.1.0.9 0.1.0.12-r1: Knowledge of GHC's installation directories
 dev-haskell/ghc-syb-utils 0.2.3: Scrap Your Boilerplate utilities for the GHC API
 dev-haskell/gio 0.12.5.3 0.13.1.1 0.13.3.1 0.13.6.0: Binding to GIO
+dev-haskell/git-lfs 1.1.0: git-lfs protocol
 dev-haskell/githash 0.1.3.3: Compile git revision info into Haskell projects
 dev-haskell/gitrev 1.2.0 1.3.1: Compile git revision info into Haskell projects
 dev-haskell/glade 0.13.1: Binding to the glade library
@@ -4031,7 +4032,7 @@ dev-haskell/groupoids 3.0.1.1 4.0: This package has been absorbed into semigroup
 dev-haskell/gsasl 0.3.6: Bindings for GNU libgsasl
 dev-haskell/gtk 0.14.10-r3: Binding to the Gtk+ graphical user interface library
 dev-haskell/gtk2hs-buildtools 0.12.5.1-r1 0.13.0.4-r3 0.13.2.2 0.13.5.1 0.13.8.0: Tools to build the Gtk2Hs suite of User Interface libraries
-dev-haskell/gtk3 0.14.9-r3: Binding to the Gtk+ 3 graphical user interface library
+dev-haskell/gtk3 0.14.9-r3 0.15.5: Binding to the Gtk+ 3 graphical user interface library
 dev-haskell/hackage-security 0.5.2.2 0.5.3.0-r3: Hackage security library
 dev-haskell/haddock 2.14.3.0.7.8.3 2.16.1 2.17.2 2.23.1: A documentation-generation tool for Haskell libraries
 dev-haskell/haddock-api 2.16.1 2.17.3 2.23.1: A documentation-generation tool for Haskell libraries
@@ -4111,6 +4112,7 @@ dev-haskell/http-attoparsec 0.1.1-r2 0.1.1-r3: Attoparsec parsers for http-types
 dev-haskell/http-client 0.4.18.1 0.4.30 0.5.5 0.5.7.0 0.6.4.1: An HTTP client engine, intended as a base layer for more user-friendly packages
 dev-haskell/http-client-conduit 0.2.0.1 0.3.0: Frontend support for using http-client with conduit (deprecated)
 dev-haskell/http-client-multipart 0.2.0.0 0.3.0.0: Generate multipart uploads for http-client. (deprecated)
+dev-haskell/http-client-restricted 0.0.3: restricting the servers that http-client will use
 dev-haskell/http-client-tls 0.2.2 0.2.4 0.3.3 0.3.5.3: http-client backend using the connection package and tls library
 dev-haskell/http-common 0.8.2.0: Common types for HTTP clients and servers
 dev-haskell/http-conduit 2.1.7.2 2.1.8 2.1.10.1 2.2.3 2.3.7.3: HTTP client package with conduit interface and HTTPS support
@@ -10944,7 +10946,7 @@ dev-vcs/darcs 2.12.5 2.14.5: a distributed, interactive, smart revision control 
 dev-vcs/easygit 1.7.5.2: Easy GIT (eg), a frontend for git designed for former cvs and svn users
 dev-vcs/fossil 2.11.1: Simple, high-reliability, source control management, and more
 dev-vcs/git 2.23.3 2.24.3 2.25.4 2.26.2 2.27.0 2.28.0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
-dev-vcs/git-annex 8.20200617: manage files with git, without checking their contents into git
+dev-vcs/git-annex 8.20200810: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.2015.09.08: Bugzilla subcommand for git
 dev-vcs/git-cola 3.5-r1: The highly caffeinated git GUI
 dev-vcs/git-crypt 0.6.0: transparent file encryption in git

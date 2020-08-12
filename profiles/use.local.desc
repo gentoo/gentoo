@@ -3082,14 +3082,17 @@ dev-vcs/git:tk - Include the 'gitk' and 'git gui' tools
 dev-vcs/git:webdav - Adds support for push'ing to HTTP/HTTPS repositories via DAV
 dev-vcs/git-annex:assistant - Enable git-annex assistant and watch command
 dev-vcs/git-annex:benchmark - Enable benchmarking
+dev-vcs/git-annex:dbus - Enable dbus support
 dev-vcs/git-annex:debuglocks - Debug location of MVar/STM deadlocks
+dev-vcs/git-annex:gitlfs - Build with git-lfs library (rather than vendored copy)
+dev-vcs/git-annex:httpclientrestricted - Build with http-client-restricted library (rather than vendored copy)
 dev-vcs/git-annex:magicmime - Use libmagic to determine file MIME types
-dev-vcs/git-annex:network-3 - Use network-3
-dev-vcs/git-annex:pairing - Enable pairing of git annex repositories
-dev-vcs/git-annex:s3 - Enable Amazon S3 remote
+dev-vcs/git-annex:networkbsd - Build with network-3.0 which split out network-bsd
+dev-vcs/git-annex:pairing - Enable pairing
+dev-vcs/git-annex:s3 - Enable S3 support
 dev-vcs/git-annex:torrentparser - Use haskell torrent library to parse torrent files
 dev-vcs/git-annex:webapp - Enable git-annex webapp
-dev-vcs/git-annex:webdav - Enable webdav remote
+dev-vcs/git-annex:webdav - Enable WebDAV support
 dev-vcs/gitg:glade - Install a glade catalog file
 dev-vcs/gitg:python - Install Python bindings for those plugins requiring it.
 dev-vcs/gitolite:contrib - Install user-contributed files
