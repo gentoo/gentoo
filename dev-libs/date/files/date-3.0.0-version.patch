@@ -1,0 +1,15 @@
+Fixes an oversight in the build-system versioning.
+
+Upstream-Bug: https://github.com/HowardHinnant/date/issues/583
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,7 +17,7 @@
+ 
+ cmake_minimum_required( VERSION 3.7 )
+ 
+-project( date VERSION 2.4.1 )
++project( date VERSION 3.0.0 )
+ 
+ include( GNUInstallDirs )
+ 
