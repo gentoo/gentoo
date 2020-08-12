@@ -1,0 +1,16 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/tcl:0= dev-lang/tk:0= alsa? ( media-libs/alsa-lib ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) vorbis? ( media-libs/libvorbis )
+DESCRIPTION=The Snack Sound Toolkit (Tcl)
+EAPI=7
+HOMEPAGE=http://www.speech.kth.se/snack/
+IUSE=alsa examples python vorbis python_targets_python2_7 test
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=GPL-2
+RDEPEND=dev-lang/tcl:0= dev-lang/tk:0= alsa? ( media-libs/alsa-lib ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) vorbis? ( media-libs/libvorbis )
+REQUIRED_USE=|| ( python_targets_python2_7 )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=http://www.speech.kth.se/snack/dist/snack2.2.10.tar.gz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	distutils-r1	eb92d1a6d9057e2422cc9610f79f919c	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	b2c915190b051f55a23b9354b9849847	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8d03325e7e3cf3e1465d9c32031e2517	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	virtualx	e49dbce7ac14426e1155497476915307
+_md5_=1aa2f611bf2a0d5b0a189a6506b5a4c6
