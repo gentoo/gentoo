@@ -7,7 +7,7 @@ inherit meson xdg-utils
 
 DESCRIPTION="Feature rich terminal emulator using the Enlightenment Foundation Libraries"
 HOMEPAGE="https://www.enlightenment.org/about-terminology"
-SRC_URI="https://download.enlightenment.org/rel/apps/${PN}/${P}.tar.xz"
+SRC_URI="https://download.enlightenment.org/rel/apps/terminology/${P}.tar.xz https://downloads.terminolo.gy/${P}.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0"
