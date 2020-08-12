@@ -10,5 +10,6 @@
 		<flag name="lvm">Add support for Logical Volume Management via <pkg>sys-fs/lvm2</pkg>.</flag>
 		<flag name="systemd">Support <pkg>sys-apps/systemd</pkg>'s logind</flag>
 		<flag name="vdo">Enable Virtual Data Optimizer support.</flag>
+		<flag name="zram">Enable ZRAM support (requires <pkg>sys-apps/systemd</pkg>).</flag>
 	</use>
 </pkgmetadata>
