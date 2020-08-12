@@ -6,4 +6,8 @@
     <remote-id type="sourceforge">libjpeg-turbo</remote-id>
     <remote-id type="cpe">cpe:/a:libjpeg-turbo:libjpeg-turbo</remote-id>
   </upstream>
+  <use>
+    <flag name="jpeg7">Enable support for libjpeg v7 ABI/API emulation</flag>
+    <flag name="jpeg8">Enable support for libjpeg v8 ABI/API emulation</flag>
+  </use>
 </pkgmetadata>
