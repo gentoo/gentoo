@@ -12,7 +12,6 @@
 		<flag name="gdata">Enable plugin for access to Google data providers</flag>
 		<flag name="gtk2">Build support for GTK+-2 instead of GTK+-3 (live ebuild only)</flag>
 		<flag name="libcanberra">Enable sound notification in connection with USE=notification</flag>
-		<flag name="libindicate">Enable notification through DBUS in connection with USE=notification</flag>
 		<flag name="libnotify">Enable notification on the desktop in connection with USE=notification</flag>
 		<flag name="litehtml">Enable <pkg>dev-libs/gumbo</pkg> html viewer plugin</flag>
 		<flag name="notification">Notification for new mail in different way, see also USE flags libcanberra, libindicate and libnotify</flag>

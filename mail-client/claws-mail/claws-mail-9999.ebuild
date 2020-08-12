@@ -20,13 +20,15 @@ fi
 SLOT="0"
 LICENSE="GPL-3"
 
-IUSE="archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls gtk2 +imap ipv6 ldap +libcanberra +libindicate +libnotify litehtml networkmanager nls nntp +notification pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
-REQUIRED_USE="libcanberra? ( notification )
-	libindicate? ( notification )
+IUSE="+appindicator archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls gtk2 +imap ipv6 ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
+REQUIRED_USE="
+	appindicator? ( notification )
+	libcanberra? ( notification )
 	libnotify? ( notification )
 	networkmanager? ( dbus )
 	python? ( ${PYTHON_REQUIRED_USE} )
-	smime? ( pgp )"
+	smime? ( pgp )
+"
 
 COMMONDEPEND="
 	dev-libs/nettle:=
@@ -66,8 +68,8 @@ COMMONDEPEND="
 	nntp? ( >=net-libs/libetpan-0.57 )
 	notification? (
 		dev-libs/glib:2
+		appindicator? ( dev-libs/libindicate:3[gtk] )
 		libcanberra? (  media-libs/libcanberra[gtk] )
-		libindicate? ( dev-libs/libindicate:3[gtk] )
 		libnotify? ( x11-libs/libnotify )
 	)
 	pdf? ( app-text/poppler[cairo] )
