@@ -1,0 +1,65 @@
+# https://bugs.gentoo.org/733228
+# https://bugzilla.redhat.com/show_bug.cgi?id=1718562
+# https://bugzilla.redhat.com/show_bug.cgi?id=1776152
+# https://review.gluster.org/#/c/glusterfs/+/23794/8/xlators/features/locks/src/common.c
+
+From 6ef82683064a87c434bd67e2004935281e4c04cc Mon Sep 17 00:00:00 2001
+From: l17zhou <cynthia.zhou@nokia-sbell.com>
+Date: Tue, 03 Dec 2019 07:43:35 +0200
+Subject: [PATCH] add clean local after grant lock
+
+found by flock test, without correct ref number of fd,
+lock will not be correctly released.
+
+Fixes: bz#1779089
+Change-Id: I3e466b17c852eb219c8778e43af8ad670a8449cc
+Signed-off-by: l17zhou <cynthia.zhou@nokia-sbell.com>
+---
+
+diff --git a/xlators/features/locks/src/common.c b/xlators/features/locks/src/common.c
+index c78d537..4c6b78c 100644
+--- a/xlators/features/locks/src/common.c
++++ b/xlators/features/locks/src/common.c
+@@ -962,7 +962,7 @@
+     struct list_head granted_list;
+     posix_lock_t *tmp = NULL;
+     posix_lock_t *lock = NULL;
+-
++    pl_local_t *local = NULL;
+     INIT_LIST_HEAD(&granted_list);
+ 
+     pthread_mutex_lock(&pl_inode->mutex);
+@@ -977,9 +977,9 @@
+ 
+         pl_trace_out(this, lock->frame, NULL, NULL, F_SETLKW, &lock->user_flock,
+                      0, 0, NULL);
+-
+-        STACK_UNWIND_STRICT(lk, lock->frame, 0, 0, &lock->user_flock, NULL);
+-
++        local = lock->frame->local;
++        PL_STACK_UNWIND_AND_FREE(local, lk, lock->frame, 0, 0,
++                                 &lock->user_flock, NULL);
+         __destroy_lock(lock);
+     }
+ 
+@@ -999,6 +999,7 @@
+     struct list_head granted_list;
+     posix_lock_t *tmp = NULL;
+     posix_lock_t *lock = NULL;
++    pl_local_t *local = NULL;
+ 
+     int ret = -1;
+ 
+@@ -1026,9 +1027,9 @@
+ 
+         pl_trace_out(this, lock->frame, NULL, NULL, F_SETLKW, &lock->user_flock,
+                      0, 0, NULL);
+-
+-        STACK_UNWIND_STRICT(lk, lock->frame, 0, 0, &lock->user_flock, NULL);
+-
++        local = lock->frame->local;
++        PL_STACK_UNWIND_AND_FREE(local, lk, lock->frame, 0, 0,
++                                 &lock->user_flock, NULL);
+         __destroy_lock(lock);
+     }
+ 
