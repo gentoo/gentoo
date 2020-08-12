@@ -1,17 +1,26 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit webapp
 
 # upstream uses dashes in the datestamp
 MY_BASE_PV="${PV:0:4}-${PV:4:2}-${PV:6:2}"
-MY_PV="${MY_BASE_PV}${PV:8:1}"
+
+if [[ ${PV} == *rc* ]]; then
+	MY_PV="${MY_BASE_PV}${PV:8:4}"
+	MY_P="${PN}-rc-${MY_BASE_PV}"
+	S="${WORKDIR}/${MY_P}"
+	SRC_URI="https://download.dokuwiki.org/src/${PN}/${PN}-rc.tgz -> ${PN}-${PV}.tgz"
+else
+	MY_PV="${MY_BASE_PV}${PV:8:4}"
+	SRC_URI="https://download.dokuwiki.org/src/${PN}/${PN}-${MY_PV}.tgz"
+	S="${WORKDIR}/${PN}-${MY_PV}"
+fi
 
 DESCRIPTION="DokuWiki is a simple to use Wiki aimed at a small company's documentation needs."
-HOMEPAGE="http://wiki.splitbrain.org/wiki:dokuwiki"
-SRC_URI="http://download.dokuwiki.org/src/${PN}/${PN}-${MY_PV}.tgz"
+HOMEPAGE="https://wiki.dokuwiki.org"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
@@ -31,11 +40,11 @@ RDEPEND="
 
 need_httpd_cgi
 
-S="${WORKDIR}/${PN}-${MY_PV}"
-
 src_prepare() {
 	# create initial changes file
 	touch data/changes.log
+
+	default
 }
 
 src_install() {

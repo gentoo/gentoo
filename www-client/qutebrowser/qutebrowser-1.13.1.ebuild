@@ -8,19 +8,13 @@ DISTUTILS_USE_SETUPTOOLS="rdepend"
 
 inherit desktop distutils-r1 eutils xdg-utils
 
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
-	inherit git-r3
-else
-	SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
-
 DESCRIPTION="A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine"
 HOMEPAGE="https://www.qutebrowser.org/ https://github.com/qutebrowser/qutebrowser"
+SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="scripts test"
 
 BDEPEND="
