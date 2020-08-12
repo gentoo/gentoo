@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MY_P="${PN}-${PV/_}"
 	SRC_URI="https://www.nano-editor.org/dist/v${PV:0:1}/${MY_P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="GNU GPL'd Pico clone with more functionality"
@@ -32,7 +32,9 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 	virtual/pkgconfig
 "
-PATCHES=( "${FILESDIR}/${PN}-4.8-justify_keystroke_crash_fix.patch" )
+
+REQUIRED_USE="!ncurses? ( slang? ( minimal ) )"
+
 src_prepare() {
 	default
 	if [[ ${PV} == "9999" ]] ; then
@@ -76,6 +78,12 @@ src_install() {
 			-e '/^# include /s:# *::' \
 			"${ED}"/etc/nanorc || die
 	fi
+
+	# Since nano-5.0 these are no longer being "enabled" by default
+	# (bug #736848)
+	local rcdir="/usr/share/nano"
+	mv "${ED}"${rcdir}/extra/* "${ED}"/${rcdir}/ || die
+	rmdir "${ED}"${rcdir}/extra || die
 
 	use split-usr && dosym ../../bin/nano /usr/bin/nano
 }
