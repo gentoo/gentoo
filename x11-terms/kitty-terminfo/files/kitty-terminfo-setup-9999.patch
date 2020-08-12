@@ -30,8 +30,8 @@ index 7c4295bd..8d31e2d1 100755
          'action',
          nargs='?',
          default=Options.action,
--        choices='build test linux-package kitty.app linux-freeze macos-freeze build-launcher clean'.split(),
-+        choices='build test linux-package linux-terminfo kitty.app linux-freeze macos-freeze build-launcher clean'.split(),
+-        choices='build test linux-package kitty.app linux-freeze macos-freeze build-launcher clean export-ci-bundles'.split(),
++        choices='build test linux-package linux-terminfo kitty.app linux-freeze macos-freeze build-launcher clean export-ci-bundles'.split(),
          help='Action to perform (default is build)'
      )
      p.add_argument(
