@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE='threads(+)'
-#EPYTHON='python2.7'
 PLOCALES="cs de el en_GB es eu fr it ja nn pl pt pt_PT ru sv zh"
 inherit eutils toolchain-funcs flag-o-matic l10n python-any-r1 waf-utils
 
@@ -114,15 +113,15 @@ src_configure() {
 	tc-export CC CXX
 	mkdir -p "${D}"
 	waf-utils_src_configure \
-                $(usex doc "--docs" '') \
-                $({ use altivec || use cpu_flags_x86_sse; } && echo "--fpu-optimization" || echo "--no-fpu-optimization") \
-                $(usex jack "--with-backends=alsa,jack" "--with-backends=alsa  --libjack=weak") \
+		$(usex doc "--docs" '') \
+		$({ use altivec || use cpu_flags_x86_sse; } && echo "--fpu-optimization" || echo "--no-fpu-optimization") \
+		$(usex jack "--with-backends=alsa,jack" "--with-backends=alsa  --libjack=weak") \
 		$( use phonehome && echo "--phone-home" ) || echo "--no-phone-home" \
-                $( use nls && echo "--nls" ) || echo --no-nls \
+		$( use nls && echo "--nls" ) || echo --no-nls \
 		--destdir="${D}" \
-                --prefix=/usr \
-                --configdir=/etc \
-                --optimize
+		--prefix=/usr \
+		--configdir=/etc \
+		--optimize
 #not possible right now		--use-external-libs
 }
 src_compile() {
