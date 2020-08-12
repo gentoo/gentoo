@@ -505,10 +505,6 @@
       <name>Brian Dolbec</name>
     </member>
     <member>
-      <email>jmbsvicetto@gentoo.org</email>
-      <name>Jorge Manuel B. S. Vicetto</name>
-    </member>
-    <member>
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
     </member>
@@ -3063,11 +3059,6 @@
     <member>
       <email>dolsen@gentoo.org</email>
       <name>Brian Dolbec</name>
-    </member>
-    <member>
-      <email>jmbsvicetto@gentoo.org</email>
-      <name>Jorge Manuel B. S. Vicetto</name>
-      <role>AMD64 / X86 Release Coordinator</role>
     </member>
     <member>
       <email>maffblaster@gentoo.org</email>
