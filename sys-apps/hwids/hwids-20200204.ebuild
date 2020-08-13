@@ -22,8 +22,6 @@ IUSE="+net +pci +udev +usb"
 
 RDEPEND="
 	udev? ( virtual/udev )
-	!<sys-apps/pciutils-3.1.9-r2
-	!<sys-apps/usbutils-005-r1
 "
 
 if [[ ${PV} == 99999999 ]]; then
