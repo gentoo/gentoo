@@ -6389,9 +6389,9 @@ dev-perl/Email-Filter 1.34.0: Simple filtering of RFC2822 message format and hea
 dev-perl/Email-Find 0.100.0-r1 0.100.0-r2: Find RFC 822 email addresses in plain text
 dev-perl/Email-FolderType 0.814.0-r1: Determine the type of a mail folder
 dev-perl/Email-LocalDelivery 1.200.0-r2: Local delivery of RFC2822 message format and headers
-dev-perl/Email-MIME 1.940.0 1.946.0: Easy MIME message parsing
-dev-perl/Email-MIME-Attachment-Stripper 1.317.0-r1: Strip the attachments from a mail
-dev-perl/Email-MIME-ContentType 1.18.0 1.22.0: Parse a MIME Content-Type Header or Content-Disposition Header
+dev-perl/Email-MIME 1.940.0 1.946.0 1.949.0: Easy MIME message parsing
+dev-perl/Email-MIME-Attachment-Stripper 1.317.0-r1 1.317.0-r2: Strip the attachments from a mail
+dev-perl/Email-MIME-ContentType 1.18.0 1.22.0 1.24.0: Parse a MIME Content-Type Header or Content-Disposition Header
 dev-perl/Email-MIME-Encodings 1.315.0-r1: A unified interface to MIME encoding and decoding
 dev-perl/Email-MessageID 1.406.0: Generate world unique message-ids
 dev-perl/Email-Reply 1.204.0: Reply to a Message
