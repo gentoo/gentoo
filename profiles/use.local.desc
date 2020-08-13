@@ -3602,6 +3602,7 @@ kde-apps/kget:gpg - Enable signature verification by GpgME++ via app-crypt/gpgme
 kde-apps/kget:mms - Enable MMS (Microsoft Media Server) plugin through media-libs/libmms
 kde-apps/kig:geogebra - Support files created by sci-mathematics/geogebra
 kde-apps/kig:scripting - Support Python scripting
+kde-apps/kio-extras:X - Enable support for XCursor thumbnails via x11-libs/libX11
 kde-apps/kio-extras:activities - Enable activities kioslave and fileitem plugin
 kde-apps/kio-extras:man - Enable manpages kioslave
 kde-apps/kio-extras:nfs - Enable NFS support using net-libs/libtirpc
@@ -3765,7 +3766,6 @@ lxqt-base/lxqt-meta:admin - Install lxqt-base/lxqt-admin
 lxqt-base/lxqt-meta:archiver - Install app-arch/lxqt-archiver
 lxqt-base/lxqt-meta:display-manager - Install a graphical display manager
 lxqt-base/lxqt-meta:filemanager - Install x11-misc/pcmanfm-qtfile manager
-lxqt-base/lxqt-meta:lightdm - Install x11-misc/lightdmdisplay manager
 lxqt-base/lxqt-meta:lximage - Install media-gfx/lximage-qtimage viewer
 lxqt-base/lxqt-meta:minimal - Do not install x11-wm/openboxwindow manager
 lxqt-base/lxqt-meta:nls - Install dev-qt/qttranslations to better support different locales
@@ -3787,7 +3787,6 @@ lxqt-base/lxqt-panel:mainmenu - Build mainmenu plugin
 lxqt-base/lxqt-panel:mount - Build mount plugin
 lxqt-base/lxqt-panel:networkmonitor - Build networkmonitor plugin
 lxqt-base/lxqt-panel:quicklaunch - Build quicklaunch plugin
-lxqt-base/lxqt-panel:sensors - Build sensors plugin
 lxqt-base/lxqt-panel:showdesktop - Build showdesktop plugin
 lxqt-base/lxqt-panel:spacer - Build spacer plugin
 lxqt-base/lxqt-panel:statusnotifier - Build statusnotifier plugin
@@ -3796,7 +3795,6 @@ lxqt-base/lxqt-panel:taskbar - Build taskbar plugin
 lxqt-base/lxqt-panel:tray - Build tray plugin
 lxqt-base/lxqt-panel:volume - Build volume plugin
 lxqt-base/lxqt-panel:worldclock - Build worldclock plugin
-lxqt-base/lxqt-session:themes - Install LXQt themes and graphics
 mail-client/aerc:notmuch - Enable support for net-mail/notmuch
 mail-client/alot:doc - Install user manual and API documentation
 mail-client/alpine:chappa - enhance Alpine by applying Eduardo Chappa's patches
