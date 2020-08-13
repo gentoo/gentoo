@@ -7984,7 +7984,7 @@ dev-python/cliff 3.3.0 3.4.0: Command Line Interface Formulation Framework
 dev-python/clint 0.5.1-r1: Python Command-line Application Tools
 dev-python/cloudlib 0.5.0: Cloud middleware for in application use.
 dev-python/cloudpickle 1.4.1 1.5.0: Extended pickling support for Python objects
-dev-python/cmd2 1.1.0 1.2.0 1.2.1 1.3.0 1.3.1 1.3.2: Extra features for standard library's cmd module
+dev-python/cmd2 1.1.0 1.2.0 1.2.1 1.3.0 1.3.1 1.3.2 1.3.3: Extra features for standard library's cmd module
 dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
 dev-python/colorama 0.4.3: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/colorclass 2.2.0-r1: Colorful worry-free console applications for multiple platforms
@@ -8227,7 +8227,7 @@ dev-python/gsd 1.5.3-r1: GSD - file format specification and a library to read a
 dev-python/gst-python 1.14.1-r1 1.16.2: A Python Interface to GStreamer
 dev-python/guessit 3.1.1: Python library for guessing information from video filenames
 dev-python/guzzle_sphinx_theme 0.7.11-r1: Sphinx theme used by Guzzle
-dev-python/h11 0.9.0: A pure-Python implementation of HTTP/1.1 inspired by hyper-h2
+dev-python/h11 0.9.0 0.10.0: A pure-Python implementation of HTTP/1.1 inspired by hyper-h2
 dev-python/h5py 2.10.0-r1: Simple Python interface to HDF5 files
 dev-python/hacking 2.0.0: A client for the OpenStack Nova API
 dev-python/hcloud-python 1.8.1 1.8.2 1.9.0: Official Hetzner Cloud python library
@@ -8250,7 +8250,7 @@ dev-python/humanize 2.4.1 2.5.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 19.0.0 20.0.1: A featureful, correct URL for Python
-dev-python/hypothesis 4.57.1 5.16.3 5.21.0 5.23.9 5.23.12 5.24.0 5.24.2: A library for property based testing
+dev-python/hypothesis 4.57.1 5.16.3 5.21.0 5.23.9 5.23.12 5.24.0 5.24.2 5.24.3: A library for property based testing
 dev-python/icalendar 4.0.6: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.8 2.10: Internationalized Domain Names in Applications (IDNA)
@@ -9033,7 +9033,7 @@ dev-python/serpent 1.30: A simple serialization library based on ast.literal_eva
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.10-r1: Allow customization of the process title
-dev-python/setuptools 44.1.0 46.4.0-r1 49.1.1 49.2.0 49.2.1 49.3.0 49.3.1 49.3.2: Collection of extensions to Distutils
+dev-python/setuptools 44.1.0 46.4.0-r1 49.1.1 49.2.0 49.2.1 49.3.0 49.3.1 49.3.2 49.4.0: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 4.1.2: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.0 1.1: A setuptools_scm plugin for git archives
@@ -9767,7 +9767,7 @@ dev-ruby/ast 2.4.0 2.4.1: A library for working with abstract syntax trees
 dev-ruby/astrolabe 1.3.1: An object-oriented AST extension for Parser
 dev-ruby/async_sinatra 1.3.0: Asynchronous response API for Sinatra and Thin
 dev-ruby/atomic 1.1.101: An atomic reference implementation for JRuby, Rubinius, and MRI
-dev-ruby/autoprefixer-rails 7.2.6 8.6.5 9.6.5 9.7.6 9.8.1 9.8.2 9.8.4 9.8.5 9.8.6: Add vendor prefixes to CSS rules using values from the Can I Use website
+dev-ruby/autoprefixer-rails 7.2.6 8.6.5 9.6.5 9.7.6 9.8.1 9.8.2 9.8.4 9.8.5 9.8.6 9.8.6.1: Add vendor prefixes to CSS rules using values from the Can I Use website
 dev-ruby/aws-eventstream 1.0.3 1.1.0: Amazon Web Services event stream library
 dev-ruby/aws-partitions 1.248.0 1.281.0 1.297.0 1.298.0: Provides interfaces to enumerate AWS partitions, regions, and services
 dev-ruby/aws-s3 0.6.3: Client library for Amazon's Simple Storage Service's REST API
@@ -10103,7 +10103,7 @@ dev-ruby/pdf-reader 1.4.1-r2 2.3.0 2.4.0: PDF parser conforming as much as possi
 dev-ruby/permutation 0.1.8-r1: Library performing operations with permutations of sequences (strings, arrays)
 dev-ruby/pg 0.21.0 1.2.2: Ruby extension library providing an API to PostgreSQL
 dev-ruby/pg_array_parser 0.0.9-r2: Simple library to parse PostgreSQL arrays into a array of strings
-dev-ruby/pkg-config 1.2.8 1.4.1: A pkg-config implementation by Ruby
+dev-ruby/pkg-config 1.2.8 1.4.1 1.4.2: A pkg-config implementation by Ruby
 dev-ruby/plist 3.5.0: A library to manipulate Property List files, also known as plists
 dev-ruby/pluggaloid 1.2.0 1.3.1 1.4.0 1.4.1 1.5.0: Pluggaloid is extensible plugin system for mikutter
 dev-ruby/podcast 0.0.4-r2: A pure Ruby library for generating podcasts from mp3 files
@@ -15571,7 +15571,7 @@ net-wireless/bluez-tools 0_p20161212: A set of tools to manage bluetooth devices
 net-wireless/broadcom-sta 6.30.223.271-r6: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
 net-wireless/bss 0.8-r1: Bluetooth stack smasher / fuzzer
 net-wireless/btcrack 9999: linux port of Thierry Zollers' BTCrack
-net-wireless/chirp 20200430 99999999: Free open-source tool for programming your amateur radio
+net-wireless/chirp 20200807 99999999: Free open-source tool for programming your amateur radio
 net-wireless/cpyrit-cuda 0.5.0: A sub-package that adds CUDA-capability to Pyrit
 net-wireless/cpyrit-opencl 0.5.0: A sub-package that adds OpenCL-capability to Pyrit
 net-wireless/crackle 0.1 9999: Crackle cracks BLE Encryption (AKA Bluetooth Smart)
@@ -18098,7 +18098,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.5: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 84.0.4147.125 85.0.4183.59 86.0.4221.3: Open-source version of Google Chrome web browser
+www-client/chromium 84.0.4147.125 85.0.4183.69 86.0.4229.0: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r4 0.13_pre_pre20180225 0.13.4 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6 3.34.4 3.36.3 3.36.4: GNOME webbrowser based on Webkit
@@ -18107,8 +18107,8 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 68.11.0 79.0-r2: Firefox Web Browser
 www-client/firefox-bin 68.11.0 79.0: Firefox Web Browser
 www-client/google-chrome 84.0.4147.125: The web browser from Google
-www-client/google-chrome-beta 85.0.4183.59: The web browser from Google
-www-client/google-chrome-unstable 86.0.4221.3: The web browser from Google
+www-client/google-chrome-beta 85.0.4183.69: The web browser from Google
+www-client/google-chrome-unstable 86.0.4229.0: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.20.2 2.20.2-r1 2.21: A fast and lightweight web browser running in both graphics and text mode
@@ -18151,7 +18151,7 @@ www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution 
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/adobe-flash 32.0.0.414: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 84.0.4147.125 85.0.4183.59_beta 86.0.4221.3_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 84.0.4147.125 85.0.4183.69_beta 86.0.4229.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
