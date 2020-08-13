@@ -5979,7 +5979,7 @@ dev-perl/Audio-DSP 0.20.0-r2 0.20.0-r3: Perl interface to *NIX digital audio dev
 dev-perl/Audio-FLAC-Header 2.400.0-r1 2.400.0-r2 2.400.0-r3: Access to FLAC audio metadata
 dev-perl/Audio-Mixer 0.700.0-r2 0.700.0-r3 0.700.0-r4: Perl extension for Sound Mixer control
 dev-perl/Audio-Musepack 1.0.1-r1: An OO interface to Musepack file information and APE tag fields
-dev-perl/Audio-Scan 1.10.0 1.10.0-r1: Fast C metadata and tag reader for all common audio file formats
+dev-perl/Audio-Scan 1.10.0-r1: Fast C metadata and tag reader for all common audio file formats
 dev-perl/Audio-WMA 1.300.0-r1: extension for reading WMA/ASF metadata
 dev-perl/Audio-Wav 0.140.0-r1 0.140.0-r2: Modules for reading & writing Microsoft WAV files
 dev-perl/Authen-DigestMD5 0.40.0-r1 0.40.0-r2: SASL DIGEST-MD5 authentication (RFC2831)
@@ -6209,7 +6209,7 @@ dev-perl/DBD-SQLite 1.560.0 1.580.0 1.640.0: Self Contained RDBMS in a DBI Drive
 dev-perl/DBD-mysql 4.44.0-r1 4.44.0-r2 4.50.0 4.50.0-r1: MySQL driver for the Perl5 Database Interface (DBI)
 dev-perl/DBI 1.637.0 1.643.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r2 11.960.0: Interactive command shell for the DBI
-dev-perl/DBICx-TestDatabase 0.50.0 0.50.0-r1: create a temporary database from a DBIx::Class::Schema
+dev-perl/DBICx-TestDatabase 0.50.0-r1: create a temporary database from a DBIx::Class::Schema
 dev-perl/DBIx-Class 0.82.841-r1 0.82.842: Extensible and flexible object <-> relational mapper
 dev-perl/DBIx-Class-DynamicDefault 0.40.0 0.40.0-r1: Automatically set and update fields
 dev-perl/DBIx-Class-InflateColumn-Boolean 0.3.0: Auto-create boolean objects from columns
@@ -11293,7 +11293,7 @@ games-emulation/libretro-dosbox 0.0.1_pre20180723 9999: DOSBox libretro port
 games-emulation/libretro-fceumm 0.0.1_pre20180723 9999: FCEUmm libretro port
 games-emulation/libretro-info 0.0.1_pre20180723 9999: Libretro info files required for libretro cores
 games-emulation/libretro-nestopia 0.0.1_pre20180723 9999: Nestopia libretro port
-games-emulation/libretro-snes9x 0.0.1_pre20180723 9999: Snes9x libretro port
+games-emulation/libretro-snes9x 0.0.1_pre20180723 0.0.2_pre20200107 9999: Snes9x libretro port
 games-emulation/libretro-twentyfortyeight 0.0.1_pre20180723 9999: Port of 2048 puzzle game to the libretro API
 games-emulation/lxdream 0.9.1-r3: An emulator for the Sega Dreamcast system
 games-emulation/m64py 0.2.4 0.2.5: A frontend for Mupen64Plus
@@ -11797,7 +11797,7 @@ gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
 gnome-base/gnome-panel 3.34.1 3.36.2: The GNOME Flashback Panel
 gnome-base/gnome-session 3.34.2 3.36.0: Gnome session manager
 gnome-base/gnome-settings-daemon 3.34.2 3.36.1: Gnome Settings Daemon
-gnome-base/gnome-shell 3.34.5 3.36.4 3.36.4-r1 3.36.4-r2: Provides core UI functions for the GNOME 3 desktop
+gnome-base/gnome-shell 3.34.5 3.34.5-r1 3.36.4 3.36.4-r1 3.36.4-r2: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
 gnome-base/gsettings-desktop-schemas 3.34.0 3.36.1: Collection of GSettings schemas for GNOME desktop
 gnome-base/gvfs 1.42.2 1.44.1: Virtual filesystem implementation for GIO
@@ -13490,8 +13490,8 @@ media-plugins/kodi-game-libretro-snes9x 1.60.0.10 1.60.0.11 9999: Snes9x GameCli
 media-plugins/kodi-game-libretro-twentyfortyeight 1.0.0.111 9999: 2048 for Kodi
 media-plugins/kodi-imagedecoder-heif 1.1.0 1.3.0 9999: HEIF image decoder for Kodi
 media-plugins/kodi-imagedecoder-raw 2.1.2 3.0.1 9999: RAW image decoder for Kodi
-media-plugins/kodi-inputstream-adaptive 2.4.4 2.4.5 2.6.0 9999: Kodi's Adaptive inputstream addon
-media-plugins/kodi-inputstream-rtmp 2.0.9 3.1.1 9999: Kodi's RTMP inputstream addon
+media-plugins/kodi-inputstream-adaptive 2.4.4 2.4.5 2.4.5-r1 2.6.0 9999: Kodi's Adaptive inputstream addon
+media-plugins/kodi-inputstream-rtmp 2.0.9 2.0.9-r1 3.1.1-r1 9999: Kodi's RTMP inputstream addon
 media-plugins/kodi-peripheral-joystick 1.4.6 1.4.7 1.4.8 1.4.9 1.6.0 9999: Libretro compatibility layer for the Kodi Game API
 media-plugins/kodi-peripheral-steamcontroller 9999: Steam controller driver for Kodi
 media-plugins/kodi-pvr-argustv 3.5.4 3.5.6 6.0.1 9999: Kodi's ARGUS TV client addon
@@ -13511,22 +13511,22 @@ media-plugins/kodi-pvr-vbox 4.4.6 4.4.7 4.4.8 4.5.0 4.6.0 4.7.0 7.0.0 9999: Kodi
 media-plugins/kodi-pvr-vdr-vnsi 3.6.2 3.6.3 3.6.3-r1 6.0.0 9999: Kodi PVR addon VNSI
 media-plugins/kodi-pvr-vuplus 3.28.0 3.28.1 3.28.2 3.28.4 3.28.5 3.28.6 3.28.7 3.28.8 3.28.9 6.1.1 9999: Kodi's VuPlus client addon
 media-plugins/kodi-pvr-wmc 2.4.4 2.4.5 2.4.6 5.0.1 5.0.2 9999: Kodi's Windows Media Center client addon
-media-plugins/kodi-screensaver-asteroids 2.1.0 2.4.2 9999: Asteroids screensaver for Kodi
-media-plugins/kodi-screensaver-biogenesis 1.1.0 2.0.0 2.3.2 9999: Biogenesis screensaver for Kodi
+media-plugins/kodi-screensaver-asteroids 2.1.0 2.3.2 2.4.2 2.4.2-r1 9999: Asteroids screensaver for Kodi
+media-plugins/kodi-screensaver-biogenesis 1.1.0 2.0.0 2.2.3 2.3.2 2.3.2-r1 9999: Biogenesis screensaver for Kodi
 media-plugins/kodi-screensaver-crystalmorph 9999: Crystalmorph screensaver for Kodi
-media-plugins/kodi-screensaver-greynetic 1.1.0 2.0.0 2.3.1 9999: Greynetic screensaver for Kodi
+media-plugins/kodi-screensaver-greynetic 1.1.0 2.0.0 2.2.2 2.3.1 2.3.1-r1 9999: Greynetic screensaver for Kodi
 media-plugins/kodi-screensaver-matrixtrails 2.2.3 2.4.2 9999: Matrix Trails screensaver for Kodi
-media-plugins/kodi-screensaver-pingpong 1.1.0 2.0.0 2.2.2 9999: Ping-pong screensaver for Kodi
+media-plugins/kodi-screensaver-pingpong 1.1.0 2.0.0 2.1.2 2.2.2 2.2.2-r1 9999: Ping-pong screensaver for Kodi
 media-plugins/kodi-screensaver-pyro 2.0.0 3.0.0 3.0.1 3.1.2 9999: Pyro screensaver for Kodi
 media-plugins/kodi-screensaver-rsxs 9999: RSXS screensaver for Kodi
 media-plugins/kodi-vfs-libarchive 1.0.2 1.0.5 1.0.6 1.0.7 1.3.0 9999: Libarchive VFS add-on for Kodi
 media-plugins/kodi-vfs-rar 2.2.0 2.2.1 2.2.2 2.2.3 2.3.0 2.3.1 3.4.0 9999: RAR VFS addon for Kodi
 media-plugins/kodi-vfs-sacd 1.0.3 1.0.4 1.3.0 9999: SACD VFS addon for Kodi
 media-plugins/kodi-vfs-sftp 1.0.1 1.0.3 1.0.4 1.0.5 1.0.6 1.3.0 9999: SFTP VFS addon for Kodi
-media-plugins/kodi-visualization-fishbmc 5.1.1 5.1.2 6.1.0 9999: Fische visualizer for Kodi
-media-plugins/kodi-visualization-goom 2.1.0 2.2.0 2.2.1 2.2.1-r1 9999: Goom visualizer for Kodi
+media-plugins/kodi-visualization-fishbmc 5.1.1 5.1.2 6.1.0 6.1.0-r1 9999: Fische visualizer for Kodi
+media-plugins/kodi-visualization-goom 2.1.0 2.2.0 2.2.1 2.2.1-r1 3.2.0 9999: Goom visualizer for Kodi
 media-plugins/kodi-visualization-nastyfft 9999: NastyFFT visualizer for Kodi
-media-plugins/kodi-visualization-projectm 2.3.5 3.1.0 9999: ProjectM visualizer for Kodi
+media-plugins/kodi-visualization-projectm 2.3.5 2.3.5-r1 3.1.0 3.1.0-r1 9999: ProjectM visualizer for Kodi
 media-plugins/kodi-visualization-shadertoy 1.1.5 1.1.8 1.1.9 1.1.10 1.2.1 1.2.2 1.2.3 2.1.1 9999: Shadertoy visualizer for Kodi
 media-plugins/kodi-visualization-spectrum 3.0.3 3.2.0 9999: Spectrum visualizer for Kodi
 media-plugins/kodi-visualization-starburst 2.0.0 2.0.1 2.0.2 2.2.0 9999: StarBurst visualizer for Kodi
@@ -14159,7 +14159,7 @@ media-video/rav1e 0.3.3 9999: The fastest and safest AV1 encoder
 media-video/recmpeg 1.0.5: Simple libfame-based video encoder, compresses raw video sequences to MPEG video
 media-video/recordmydesktop 0.3.8.1-r6: A desktop session recorder producing Ogg video/audio files
 media-video/rovclock 0.6e-r1: Overclocking utility for ATI Radeon cards
-media-video/rtmpdump 2.4_p20161210-r3 9999: RTMP client intended to stream audio or video flash content
+media-video/rtmpdump 2.4_p20161210-r3 2.4_p20190330 9999: RTMP client, librtmp library intended to stream audio or video flash content
 media-video/setpwc 1.3: Control various aspects of Philips (and compatible) webcams
 media-video/shotcut 19.12.31 20.06.28: A free, open source, cross-platform video editor
 media-video/shrip 0.6.0-r1: Command line tool for ripping DVDs and encoding to AVI/OGM/MKV/MP4
