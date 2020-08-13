@@ -113,15 +113,14 @@ src_configure() {
 	tc-export CC CXX
 	mkdir -p "${D}"
 	waf-utils_src_configure \
+		--destdir="${D}" \
+		--configdir=/etc \
+		--optimize \
 		$(usex doc "--docs" '') \
 		$({ use altivec || use cpu_flags_x86_sse; } && echo "--fpu-optimization" || echo "--no-fpu-optimization") \
 		$(usex jack "--with-backends=alsa,jack" "--with-backends=alsa  --libjack=weak") \
-		$( use phonehome && echo "--phone-home" ) || echo "--no-phone-home" \
-		$( use nls && echo "--nls" ) || echo --no-nls \
-		--destdir="${D}" \
-		--prefix=/usr \
-		--configdir=/etc \
-		--optimize
+		$(usex phonehome "--phone-home" "--no-phone-home") \
+		$(usex nls "--nls" "--no-nls")
 #not possible right now		--use-external-libs
 }
 src_compile() {
