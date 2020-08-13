@@ -6838,7 +6838,7 @@ dev-perl/MogileFS-Client-Async 0.030.0-r1: MogileFS Client using AnyEvent non-bl
 dev-perl/MogileFS-Network 0.60.0-r2: Network awareness and extensions for MogileFS::Server
 dev-perl/MogileFS-Server 2.720.0-r1 2.730.0: Server for the MogileFS distributed file system
 dev-perl/MogileFS-Utils 2.290.0 2.300.0: Server for the MogileFS distributed file system
-dev-perl/Mojolicious 7.570.0 7.600.0 7.700.0 7.800.0 7.900.0 7.940.0 8.0.0 8.100.0 8.200.0 8.300.0 8.400.0 8.500.0: Real-time web framework
+dev-perl/Mojolicious 7.570.0 7.600.0 7.700.0 7.800.0 7.900.0 7.940.0 8.0.0 8.100.0 8.200.0 8.300.0 8.400.0 8.500.0 8.580.0: Real-time web framework
 dev-perl/Mon 0.110.0-r2: A Monitor Perl Module
 dev-perl/MongoDB 1.8.0: Official MongoDB Driver for Perl
 dev-perl/Monitoring-Plugin 0.390.0 0.400.0: Modules to streamline Nagios, Icinga, Shinken, etc. plugins
@@ -16933,7 +16933,7 @@ sys-apps/hponcfg 4.6.0.0 5.4.0.0 5.5.0.0: HP Lights-Out Online Configuration Uti
 sys-apps/hprofile 3.0.6 3.1.1 3.2.2 6.1.3: Utility to manage hardware, network, power or other profiles (fork)
 sys-apps/hw-probe 1.5: A tool to probe for hardware, check it's operability and find drivers
 sys-apps/hwdata-gentoo 0.4: Data for the hwsetup program
-sys-apps/hwids 20190316 20190818 20191025 20200204 20200306 99999999: Hardware (PCI, USB, OUI, IAB) IDs databases
+sys-apps/hwids 20200204 20200306 20200813 99999999: Hardware (PCI, USB, OUI, IAB) IDs databases
 sys-apps/hwinfo 21.4 21.23: Hardware detection tool used in SuSE Linux
 sys-apps/hwloc 1.11.2-r1 1.11.10 1.11.13 2.0.4 2.1.0: displays the hardware topology in convenient formats
 sys-apps/hwsetup 1.2-r3: Hardware setup program from Knoppix - used only on LiveCD
