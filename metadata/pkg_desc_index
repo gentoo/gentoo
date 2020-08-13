@@ -6838,7 +6838,7 @@ dev-perl/MogileFS-Client-Async 0.030.0-r1: MogileFS Client using AnyEvent non-bl
 dev-perl/MogileFS-Network 0.60.0-r2: Network awareness and extensions for MogileFS::Server
 dev-perl/MogileFS-Server 2.720.0-r1 2.730.0: Server for the MogileFS distributed file system
 dev-perl/MogileFS-Utils 2.290.0 2.300.0: Server for the MogileFS distributed file system
-dev-perl/Mojolicious 7.570.0 7.600.0 7.700.0 7.800.0 7.900.0 7.940.0 8.0.0 8.100.0 8.200.0 8.300.0 8.400.0: Real-time web framework
+dev-perl/Mojolicious 7.570.0 7.600.0 7.700.0 7.800.0 7.900.0 7.940.0 8.0.0 8.100.0 8.200.0 8.300.0 8.400.0 8.500.0: Real-time web framework
 dev-perl/Mon 0.110.0-r2: A Monitor Perl Module
 dev-perl/MongoDB 1.8.0: Official MongoDB Driver for Perl
 dev-perl/Monitoring-Plugin 0.390.0 0.400.0: Modules to streamline Nagios, Icinga, Shinken, etc. plugins
