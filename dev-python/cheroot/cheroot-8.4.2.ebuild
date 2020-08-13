@@ -25,9 +25,11 @@ BDEPEND="
 		${RDEPEND}
 		dev-python/jaraco-context[${PYTHON_USEDEP}]
 		dev-python/jaraco-text[${PYTHON_USEDEP}]
+		dev-python/portend[${PYTHON_USEDEP}]
 		dev-python/pytest-forked[${PYTHON_USEDEP}]
 		>=dev-python/pytest-mock-1.11.0[${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
+		dev-python/requests-toolbelt[${PYTHON_USEDEP}]
 		dev-python/requests-unixsocket[${PYTHON_USEDEP}]
 		dev-python/trustme[${PYTHON_USEDEP}]
 		dev-python/urllib3[${PYTHON_USEDEP}]
