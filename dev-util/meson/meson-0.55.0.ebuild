@@ -56,8 +56,6 @@ python_prepare_all() {
 	# Broken due to python2 script created by python_wrapper_setup
 	rm -r "test cases/frameworks/1 boost" || die
 
-	use prefix && eapply "${FILESDIR}"/0.54.2-prefix-dont-strip-rpath.patch
-
 	distutils-r1_python_prepare_all
 }
 
