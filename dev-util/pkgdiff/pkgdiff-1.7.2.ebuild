@@ -13,8 +13,9 @@ KEYWORDS="amd64"
 
 DEPEND=">=dev-lang/perl-5"
 RDEPEND="${DEPEND}
-	sys-apps/diffutils
 	app-text/wdiff
+	dev-perl/File-LibMagic
+	sys-apps/diffutils
 	sys-apps/gawk
 	sys-devel/binutils
 "
