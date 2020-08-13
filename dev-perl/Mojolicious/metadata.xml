@@ -102,7 +102,6 @@
     <remote-id type="cpan-module">Mojolicious::Plugin::HeaderCondition</remote-id>
     <remote-id type="cpan-module">Mojolicious::Plugin::JSONConfig</remote-id>
     <remote-id type="cpan-module">Mojolicious::Plugin::Mount</remote-id>
-    <remote-id type="cpan-module">Mojolicious::Plugin::PODRenderer</remote-id>
     <remote-id type="cpan-module">Mojolicious::Plugin::TagHelpers</remote-id>
     <remote-id type="cpan-module">Mojolicious::Plugins</remote-id>
     <remote-id type="cpan-module">Mojolicious::Renderer</remote-id>
