@@ -20,6 +20,10 @@ SRC_URI+=" https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.x
 		https://src.fedoraproject.org/rpms/kernel/raw/${CONFIG_HASH}/f/kernel-x86_64-fedora.config
 			-> kernel-x86_64-fedora.config.${CONFIG_VER}
 	)
+	arm64? (
+		https://src.fedoraproject.org/rpms/kernel/raw/${CONFIG_HASH}/f/kernel-aarch64-fedora.config
+			-> kernel-aarch64.config.${CONFIG_VER}
+	)
 	x86? (
 		https://src.fedoraproject.org/rpms/kernel/raw/${CONFIG_HASH}/f/kernel-i686-fedora.config
 			-> kernel-i686-fedora.config.${CONFIG_VER}
@@ -58,11 +62,14 @@ src_prepare() {
 		amd64)
 			cp "${DISTDIR}/kernel-x86_64-fedora.config.${CONFIG_VER}" .config || die
 			;;
+		arm)
+			return
+			;;
+		arm64)
+			cp "${DISTDIR}/kernel-aarch64.config.${CONFIG_VER}" .config || die
+			;;
 		x86)
 			cp "${DISTDIR}/kernel-i686-fedora.config.${CONFIG_VER}" .config || die
-			;;
-		arm|arm64)
-			return
 			;;
 		*)
 			die "Unsupported arch ${ARCH}"
