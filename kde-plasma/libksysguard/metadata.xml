@@ -5,6 +5,9 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<slots>
+		<subslots>Reflects ABI compatibility by soname version</subslots>
+	</slots>
 	<use>
 		<flag name="webengine">Enable display of detailed memory information using <pkg>dev-qt/qtwebengine</pkg>.</flag>
 	</use>
