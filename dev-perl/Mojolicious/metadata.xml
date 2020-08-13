@@ -25,6 +25,7 @@
     <remote-id type="cpan-module">Mojo::DOM::CSS</remote-id>
     <remote-id type="cpan-module">Mojo::DOM::HTML</remote-id>
     <remote-id type="cpan-module">Mojo::Date</remote-id>
+    <remote-id type="cpan-module">Mojo::DynamicMethods</remote-id>
     <remote-id type="cpan-module">Mojo::EventEmitter</remote-id>
     <remote-id type="cpan-module">Mojo::Exception</remote-id>
     <remote-id type="cpan-module">Mojo::File</remote-id>
