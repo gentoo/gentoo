@@ -6,7 +6,7 @@ EAPI=7
 HOMEPAGE=https://github.com/lvc/pkgdiff
 LICENSE=GPL-2
 PROPERTIES=live
-RDEPEND=>=dev-lang/perl-5 sys-apps/diffutils app-text/wdiff sys-apps/gawk sys-devel/binutils
+RDEPEND=>=dev-lang/perl-5 app-text/wdiff dev-perl/File-LibMagic sys-apps/diffutils sys-apps/gawk sys-devel/binutils
 SLOT=0
 _eclasses_=git-r3	8ec5b53812bce105ae7943930e4660f8
-_md5_=8d8ec31266187ae1145a0a0293f48314
+_md5_=31c0edc67866aa7144473c1c8caf0658
