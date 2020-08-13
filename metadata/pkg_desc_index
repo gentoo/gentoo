@@ -2876,7 +2876,7 @@ app-text/fbreader 0.99.4-r5: E-Book Reader. Supports many e-book formats
 app-text/fictionup 0.1 0.2.1: A command-line markdown to fb2 convertor
 app-text/flpsed 0.7.3: Pseudo PostScript editor
 app-text/foliate 2.4.2-r1: gtk ebook reader built with gjs
-app-text/ghostscript-gpl 9.50: Interpreter for the PostScript language and PDF
+app-text/ghostscript-gpl 9.50 9.52: Interpreter for the PostScript language and PDF
 app-text/glosung 3.6.2-r1 3.6.4: Watch word program for the GNOME2 desktop (watch word (german): losung)
 app-text/gnome-doc-utils 0.20.10-r2: A collection of documentation utilities for the Gnome project
 app-text/gocr 0.50: An OCR (Optical Character Recognition) reader
@@ -6400,7 +6400,7 @@ dev-perl/Email-Send-Gmail 0.330.0 0.330.0-r1: Send Messages using Gmail
 dev-perl/Email-Sender 1.300.31-r1 1.300.34: A library for sending email
 dev-perl/Email-Simple 2.214.0 2.216.0: Simple parsing of RFC2822 message format and headers
 dev-perl/Email-Valid 1.202.0: Check validity of Internet email addresses
-dev-perl/Encode-Detect 1.10.0-r1: Encode::Detect - An Encode::Encoding subclass that detects the encoding of data
+dev-perl/Encode-Detect 1.10.0-r1 1.10.0-r2: An Encode::Encoding subclass that detects the encoding of data
 dev-perl/Encode-EUCJPASCII 0.30.0: An eucJP-open mapping
 dev-perl/Encode-HanConvert 0.350.0-r1: Traditional and Simplified Chinese mappings
 dev-perl/Encode-HanExtra 0.230.0-r2: Extra sets of Chinese encodings
@@ -7966,7 +7966,7 @@ dev-python/chardet 3.0.4: Universal encoding detector
 dev-python/cheetah 2.4.4-r1: Python-powered template engine and code generator
 dev-python/cheetah-docs 0.9.16_alpha1: Documentation for Cheetah templates
 dev-python/cheetah3 3.2.4: Python-powered template engine and code generator
-dev-python/cheroot 8.3.0-r1 8.3.1 8.4.2: Cheroot is the high-performance, pure-Python HTTP server used by CherryPy.
+dev-python/cheroot 8.3.0-r1 8.3.1 8.4.2 8.4.4: Cheroot is the high-performance, pure-Python HTTP server used by CherryPy.
 dev-python/cherrypy 18.6.0: CherryPy is a pythonic, object-oriented HTTP framework
 dev-python/chump 1.6.0: API wrapper for Pushover
 dev-python/citeproc-py 0.4.0-r1: Yet another Python CSL Processor
@@ -8249,7 +8249,7 @@ dev-python/humanize 2.4.1 2.5.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 19.0.0 20.0.1: A featureful, correct URL for Python
-dev-python/hypothesis 4.57.1 5.16.3 5.21.0 5.23.9 5.23.12 5.24.0: A library for property based testing
+dev-python/hypothesis 4.57.1 5.16.3 5.21.0 5.23.9 5.23.12 5.24.0 5.24.2: A library for property based testing
 dev-python/icalendar 4.0.6: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.8 2.10: Internationalized Domain Names in Applications (IDNA)
@@ -8473,7 +8473,7 @@ dev-python/nose2 0.9.1-r1: Next generation unittest with plugins
 dev-python/nose_fixes 1.3: A plugin to make nose behave better
 dev-python/nose_warnings_filters 0.1.5-r3: A python module to inject warning filters during nosetest
 dev-python/nosexcover 1.0.11-r1: Extends nose.plugins.cover to add Cobertura-style XML reports
-dev-python/notebook 5.0.0 6.0.3 6.1.0 6.1.1: Jupyter Interactive Notebook
+dev-python/notebook 5.0.0 6.0.3 6.1.0 6.1.1 6.1.3: Jupyter Interactive Notebook
 dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
 dev-python/notify2 0.3.1-r1: Python interface to DBus notifications.
 dev-python/nototools 0_pre20200207: Noto fonts support tools and scripts plus web site generation
@@ -9032,7 +9032,7 @@ dev-python/serpent 1.30: A simple serialization library based on ast.literal_eva
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.10-r1: Allow customization of the process title
-dev-python/setuptools 44.1.0 46.4.0-r1 49.1.1 49.2.0 49.2.1 49.3.0 49.3.1: Collection of extensions to Distutils
+dev-python/setuptools 44.1.0 46.4.0-r1 49.1.1 49.2.0 49.2.1 49.3.0 49.3.1 49.3.2: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 4.1.2: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.0 1.1: A setuptools_scm plugin for git archives
@@ -9104,7 +9104,7 @@ dev-python/sphinxcontrib-pretty-searchresults 0.3.5: Decently styled search resu
 dev-python/sphinxcontrib-programoutput 0.16: Extension to sphinx to include program output
 dev-python/sphinxcontrib-qthelp 1.0.2 1.0.3: Sphinx extension which outputs QtHelp documents
 dev-python/sphinxcontrib-serializinghtml 1.1.4: Sphinx extension which outputs outputs serialized HTML files
-dev-python/sphinxcontrib-spelling 5.1.2 5.2.0: Sphinx spelling extension
+dev-python/sphinxcontrib-spelling 5.1.2 5.2.0 5.2.2: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.2.2 1.2.4: Sphinx websupport extension
 dev-python/sphinxtogithub 1.1.0: A python script for preparing the html output of Sphinx documentation for github pages
 dev-python/spur 0.3.21: Run commands locally or over SSH using the same interface
@@ -14255,7 +14255,7 @@ net-analyzer/echoping 6.0.2_p434-r2 6.0.2_p434-r3 6.0.2_p434-r4: Small program t
 net-analyzer/egressor 1.0-r2: tool for checking router configuration
 net-analyzer/etherape 0.9.19: A graphical network monitor for Unix modeled after etherman
 net-analyzer/ethloop 10-r3 10-r4: Local simulator for testing Linux QoS disciplines
-net-analyzer/ettercap 0.8.3 9999: A suite for man in the middle attacks
+net-analyzer/ettercap 0.8.3 0.8.3.1 9999: A suite for man in the middle attacks
 net-analyzer/fail2ban 0.11.1-r2 99999999: scans log files and bans IPs that show malicious signs
 net-analyzer/firewalk 5.0-r1 5.0-r2: A tool for determining a firewall's rule set
 net-analyzer/flent 1.3.2: The FLExible Network Tester
