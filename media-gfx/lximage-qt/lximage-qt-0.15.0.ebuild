@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit cmake xdg-utils
 
 DESCRIPTION="Qt Image Viewer"
 HOMEPAGE="https://lxqt.github.io/"
@@ -42,3 +42,11 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!lxqt-base/lxqt-l10n
 "
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+}
