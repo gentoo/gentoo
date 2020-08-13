@@ -5,7 +5,7 @@ EAPI=5
 
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( pypy3 python3_{6..9} )
-PYTHON_REQ_USE='bzip2(+),threads(+),xml(+)'
+PYTHON_REQ_USE='bzip2(+),threads(+)'
 
 inherit distutils-r1 linux-info systemd prefix
 
