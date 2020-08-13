@@ -6392,7 +6392,7 @@ dev-perl/Email-LocalDelivery 1.200.0-r2: Local delivery of RFC2822 message forma
 dev-perl/Email-MIME 1.940.0 1.946.0 1.949.0: Easy MIME message parsing
 dev-perl/Email-MIME-Attachment-Stripper 1.317.0-r1 1.317.0-r2: Strip the attachments from a mail
 dev-perl/Email-MIME-ContentType 1.18.0 1.22.0 1.24.0: Parse a MIME Content-Type Header or Content-Disposition Header
-dev-perl/Email-MIME-Encodings 1.315.0-r1: A unified interface to MIME encoding and decoding
+dev-perl/Email-MIME-Encodings 1.315.0-r1 1.315.0-r2: A unified interface to MIME encoding and decoding
 dev-perl/Email-MessageID 1.406.0: Generate world unique message-ids
 dev-perl/Email-Reply 1.204.0: Reply to a Message
 dev-perl/Email-Send 2.201.0: Simply Sending Email
@@ -13681,7 +13681,7 @@ media-sound/amsynth 1.8.0: Virtual analogue synthesizer
 media-sound/apetag 1.12-r2: Command-line ape 2.0 tagger
 media-sound/apulse 0.1.12-r4 0.1.13: PulseAudio emulation for ALSA
 media-sound/aqualung 1.0-r3 1.0-r4 1.0-r5: Music player for a wide range of formats designed for gapless playback
-media-sound/ardour 6.2 9999: Digital Audio Workstation
+media-sound/ardour 6.2-r1 9999: Digital Audio Workstation
 media-sound/ario 1.6: GTK client for MPD inspired by Rhythmbox but much lighter and faster
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
 media-sound/asunder 2.9.3-r1 2.9.5 2.9.6: Graphical Audio CD ripper and encoder with support for many output formats
@@ -17609,7 +17609,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.0 9999: Gentoo automatic kernel building
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.7.10 5.7.12 5.7.13: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.7.10 5.7.12 5.7.13: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.221 4.4.228 4.4.229 4.4.230 4.4.231 4.4.232 4.9.221 4.9.228 4.9.229 4.9.230 4.9.231 4.9.232 4.14.178 4.14.185 4.14.188 4.14.189 4.14.190 4.14.191 4.14.192 4.14.193 4.19.120 4.19.129 4.19.133 4.19.134 4.19.135 4.19.136 4.19.137 4.19.138 5.4.38 5.4.48 5.4.52 5.4.53 5.4.54 5.4.55 5.4.56 5.4.57 5.7.8 5.7.9 5.7.10 5.7.11 5.7.12 5.7.13 5.7.14 5.7.15 5.8.0 5.8.0-r1: Full sources including the Gentoo patchset for the 5.8 kernel tree
+sys-kernel/gentoo-sources 4.4.221 4.4.228 4.4.229 4.4.230 4.4.231 4.4.232 4.9.221 4.9.228 4.9.229 4.9.230 4.9.231 4.9.232 4.14.178 4.14.185 4.14.188 4.14.189 4.14.190 4.14.191 4.14.192 4.14.193 4.19.120 4.19.129 4.19.133 4.19.134 4.19.135 4.19.136 4.19.137 4.19.138 5.4.38 5.4.48 5.4.52 5.4.53 5.4.54 5.4.55 5.4.56 5.4.57 5.4.58 5.7.8 5.7.9 5.7.10 5.7.11 5.7.12 5.7.13 5.7.14 5.7.15 5.8.0 5.8.0-r1: Full sources including the Gentoo patchset for the 5.8 kernel tree
 sys-kernel/git-sources 5.8_rc1 5.8_rc2 5.8_rc3 5.8_rc4 5.8_rc5 5.8_rc6 5.8_rc7: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
