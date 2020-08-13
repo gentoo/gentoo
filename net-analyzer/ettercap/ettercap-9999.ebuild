@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="A suite for man in the middle attacks"
 HOMEPAGE="https://github.com/Ettercap/ettercap"
@@ -15,11 +15,11 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Ettercap/${PN}.git"
 else
-	SRC_URI="https://github.com/Ettercap/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz" #mirror does not work
+	SRC_URI="https://github.com/Ettercap/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 fi
 
-IUSE="doc gtk ipv6 libressl ncurses +plugins test"
+IUSE="doc geoip gtk ipv6 libressl ncurses +plugins test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/libbsd
@@ -29,6 +29,7 @@ RDEPEND="dev-libs/libbsd
 	net-libs/libnet:1.1
 	>=net-libs/libpcap-0.8.1
 	sys-libs/zlib
+	geoip? ( dev-libs/geoip )
 	gtk? (
 		>=dev-libs/atk-1.2.4
 		>=dev-libs/glib-2.2.2:2
@@ -46,13 +47,10 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/check )
 	sys-devel/flex
 	virtual/yacc"
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.8.3-fno-common.patch
-)
 
 src_prepare() {
 	sed -i "s:Release:Release Gentoo:" CMakeLists.txt || die
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -63,11 +61,14 @@ src_configure() {
 		-DENABLE_IPV6="$(usex ipv6)"
 		-DENABLE_TESTS="$(usex test)"
 		-DENABLE_PDF_DOCS="$(usex doc)"
+		-DENABLE_GEOIP="$(usex geoip)"
 		-DBUNDLED_LIBS=OFF
 		-DSYSTEM_LIBS=ON
-		-DINSTALL_SYSCONFDIR="${EROOT}"etc
+		-DINSTALL_SYSCONFDIR="${EPREFIX}"/etc
 	)
+
+	! use gtk && mycmakeargs+=(-DINSTALL_DESKTOP=OFF)
 		#right now we only support gtk2, but ettercap also supports gtk3
 		#do we care? do we want to support both?
-	cmake-utils_src_configure
+	cmake_src_configure
 }
