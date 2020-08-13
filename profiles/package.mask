@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2020-08-13)
+# One of many password generators, but with dead upstream in this case.
+# Masked for removal after 2020-10-01.
+# Bug #629272
+app-admin/apg
+
 # Sam James <sam@gentoo.org> (2020-08-12)
 # Obsolete. Now included in texlive.
 # Removal in 30 days.
