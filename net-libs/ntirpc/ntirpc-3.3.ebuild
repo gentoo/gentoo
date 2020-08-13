@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-multilib
+inherit cmake
 
 DESCRIPTION="Transport Independent RPC library for nfs-ganesha"
 HOMEPAGE="https://github.com/nfs-ganesha/ntirpc"
@@ -24,10 +24,10 @@ DEPEND="
 	${RDEPEND}
 "
 
-multilib_src_configure() {
+src_configure() {
 	local mycmakeargs=(
 		-DUSE_GSS="$(usex gssapi)"
 		-DUSE_RPC_RDMA="$(usex rdma)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
