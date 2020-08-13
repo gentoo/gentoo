@@ -6401,7 +6401,7 @@ dev-perl/Email-Sender 1.300.31-r1 1.300.34: A library for sending email
 dev-perl/Email-Simple 2.214.0 2.216.0: Simple parsing of RFC2822 message format and headers
 dev-perl/Email-Valid 1.202.0: Check validity of Internet email addresses
 dev-perl/Encode-Detect 1.10.0-r1 1.10.0-r2: An Encode::Encoding subclass that detects the encoding of data
-dev-perl/Encode-EUCJPASCII 0.30.0: An eucJP-open mapping
+dev-perl/Encode-EUCJPASCII 0.30.0 0.30.0-r1: An eucJP-open mapping
 dev-perl/Encode-HanConvert 0.350.0-r1: Traditional and Simplified Chinese mappings
 dev-perl/Encode-HanExtra 0.230.0-r2: Extra sets of Chinese encodings
 dev-perl/Encode-IMAPUTF7 1.50.0-r1: Modification of UTF-7 encoding for IMAP
