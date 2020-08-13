@@ -1,16 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-MODULE_AUTHOR=RJBS
-MODULE_VERSION=1.300016
+DIST_AUTHOR=RJBS
+DIST_VERSION=1.300034
 inherit perl-module
 
 DESCRIPTION="A library for sending email"
 
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -21,32 +21,25 @@ RDEPEND="
 	>=dev-perl/Email-Simple-1.998.0
 	>=virtual/perl-File-Path-2.60.0
 	virtual/perl-File-Spec
-	virtual/perl-IO
-	dev-perl/List-MoreUtils
+	>=virtual/perl-IO-1.110.0
 	dev-perl/Module-Runtime
-	>=dev-perl/Moo-1.0.8
+	>=dev-perl/Moo-2.0.0
 	>=dev-perl/MooX-Types-MooseLike-0.150.0
-	virtual/perl-libnet
-	dev-perl/Net-SMTP-SSL
-	virtual/perl-Scalar-List-Utils
+	>=virtual/perl-Scalar-List-Utils-1.450.0
 	dev-perl/Sub-Exporter
 	>=dev-perl/Throwable-0.200.3
 	dev-perl/Try-Tiny
+	>=virtual/perl-libnet-3.70.0
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
-		>=dev-perl/Capture-Tiny-0.08
+		>=virtual/perl-CPAN-Meta-2.120.900
+		>=dev-perl/Capture-Tiny-0.80.0
 		virtual/perl-Exporter
 		virtual/perl-File-Temp
+		dev-perl/Sub-Override
+		dev-perl/Test-MockObject
 		>=virtual/perl-Test-Simple-0.960.0
 	)
 "
-
-SRC_TEST=do
-
-src_test() {
-	# https://rt.cpan.org/Public/Bug/Display.html?id=54642
-	mv "${S}"/t/smtp-via-mock.t{,.disable} || die
-	perl-module_src_test
-}
