@@ -59,7 +59,6 @@ RDEPEND+="
 	sci-libs/spqr:0=
 	sci-libs/umfpack:0=
 	sci-mathematics/glpk:0=
-	>=sci-visualization/gr-0.50.0-r1
 	>=sys-libs/libunwind-1.1:0=
 	sys-libs/readline:0=
 	sys-libs/zlib:0=
@@ -201,4 +200,8 @@ src_install() {
 	rmdir "${ED}"/usr/etc || die
 	mv "${ED}"/usr/share/doc/julia/html "${ED}"/usr/share/doc/${PF} || die
 	rmdir "${ED}"/usr/share/doc/julia || die
+}
+
+pkg_postinst() {
+	elog "To use Plots, you will need to install sci-visualization/gr."
 }
