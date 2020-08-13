@@ -6405,7 +6405,7 @@ dev-perl/Encode-EUCJPASCII 0.30.0 0.30.0-r1: An eucJP-open mapping
 dev-perl/Encode-HanConvert 0.350.0-r1 0.350.0-r2: Traditional and Simplified Chinese mappings
 dev-perl/Encode-HanExtra 0.230.0-r2 0.230.0-r3: Extra sets of Chinese encodings
 dev-perl/Encode-IMAPUTF7 1.50.0-r1 1.50.0-r2: Modification of UTF-7 encoding for IMAP
-dev-perl/Encode-JIS2K 0.30.0: JIS X 0212 (aka JIS 2000) Encodings
+dev-perl/Encode-JIS2K 0.30.0 0.30.0-r1: JIS X 0212 (aka JIS 2000) Encodings
 dev-perl/Encode-Locale 1.50.0: Determine the locale encoding
 dev-perl/Encode-compat 0.70.0-r2: Encode.pm emulation layer
 dev-perl/Error 0.170.250: Error/exception handling in an OO-ish way
@@ -16980,7 +16980,7 @@ sys-apps/lssbus 0.1: Small utility for Linux/SPARC that list devices on SBUS
 sys-apps/lsvpd 1.7.10 1.7.11: Utility to List Device Vital Product Data (VPD)
 sys-apps/makedev 3.23.1-r1: program used for creating device files in /dev
 sys-apps/man-db 2.8.7 2.9.2 2.9.3 9999: a man replacement that utilizes berkdb instead of flat files
-sys-apps/man-pages 5.05-r2 5.06 5.07: A somewhat comprehensive collection of Linux man pages
+sys-apps/man-pages 5.07 5.08: A somewhat comprehensive collection of Linux man pages
 sys-apps/man-pages-posix 2013a: POSIX man-pages (0p, 1p, 3p)
 sys-apps/man2html 1.6g: Standard commands to read man pages
 sys-apps/mawk 1.3.4_p20161120 1.3.4_p20190203-r1 1.3.4_p20200106-r1: an (often faster than gawk) awk-interpreter
@@ -17609,7 +17609,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.0 9999: Gentoo automatic kernel building
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.7.10 5.7.12 5.7.13: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.7.10 5.7.12 5.7.13: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.221 4.4.228 4.4.229 4.4.230 4.4.231 4.4.232 4.9.221 4.9.228 4.9.229 4.9.230 4.9.231 4.9.232 4.14.178 4.14.185 4.14.188 4.14.189 4.14.190 4.14.191 4.14.192 4.14.193 4.19.120 4.19.129 4.19.133 4.19.134 4.19.135 4.19.136 4.19.137 4.19.138 4.19.139 5.4.38 5.4.48 5.4.52 5.4.53 5.4.54 5.4.55 5.4.56 5.4.57 5.4.58 5.7.8 5.7.9 5.7.10 5.7.11 5.7.12 5.7.13 5.7.14 5.7.15 5.8.0 5.8.0-r1: Full sources including the Gentoo patchset for the 5.8 kernel tree
+sys-kernel/gentoo-sources 4.4.221 4.4.228 4.4.229 4.4.230 4.4.231 4.4.232 4.9.221 4.9.228 4.9.229 4.9.230 4.9.231 4.9.232 4.14.178 4.14.185 4.14.188 4.14.189 4.14.190 4.14.191 4.14.192 4.14.193 4.19.120 4.19.129 4.19.133 4.19.134 4.19.135 4.19.136 4.19.137 4.19.138 4.19.139 5.4.38 5.4.48 5.4.52 5.4.53 5.4.54 5.4.55 5.4.56 5.4.57 5.4.58 5.7.8 5.7.9 5.7.10 5.7.11 5.7.12 5.7.13 5.7.14 5.7.15 5.8.0 5.8.0-r1 5.8.1: Full sources including the Gentoo patchset for the 5.8 kernel tree
 sys-kernel/git-sources 5.8_rc1 5.8_rc2 5.8_rc3 5.8_rc4 5.8_rc5 5.8_rc6 5.8_rc7: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
