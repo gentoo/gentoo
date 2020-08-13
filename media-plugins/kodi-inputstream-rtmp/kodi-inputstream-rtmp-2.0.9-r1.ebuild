@@ -5,9 +5,9 @@ EAPI=7
 
 inherit kodi-addon
 
-DESCRIPTION="StarBurst visualizer for Kodi"
-HOMEPAGE="https://github.com/notspiff/visualization.starburst"
-KODI_PLUGIN_NAME="visualization.starburst"
+DESCRIPTION="Kodi's RTMP inputstream addon"
+HOMEPAGE="https://github.com/xbmc/inputstream.rtmp"
+KODI_PLUGIN_NAME="inputstream.rtmp"
 
 case ${PV} in
 9999)
@@ -30,8 +30,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND+="
-	>=media-libs/glm-0.9.9.8-r1
-	virtual/opengl
+	media-video/rtmpdump[ssl]
 	"
 
 RDEPEND="${DEPEND}"

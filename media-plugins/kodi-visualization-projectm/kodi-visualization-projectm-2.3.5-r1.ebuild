@@ -5,9 +5,9 @@ EAPI=7
 
 inherit kodi-addon
 
-DESCRIPTION="StarBurst visualizer for Kodi"
-HOMEPAGE="https://github.com/notspiff/visualization.starburst"
-KODI_PLUGIN_NAME="visualization.starburst"
+DESCRIPTION="ProjectM visualizer for Kodi"
+HOMEPAGE="https://github.com/xbmc/visualization.projectm"
+KODI_PLUGIN_NAME="visualization.projectm"
 
 case ${PV} in
 9999)
@@ -30,8 +30,8 @@ SLOT="0"
 IUSE=""
 
 DEPEND+="
-	>=media-libs/glm-0.9.9.8-r1
 	virtual/opengl
+	>=media-libs/libprojectm-3.1.2:=
 	"
 
 RDEPEND="${DEPEND}"

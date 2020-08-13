@@ -5,21 +5,22 @@ EAPI=7
 
 inherit kodi-addon
 
-DESCRIPTION="StarBurst visualizer for Kodi"
-HOMEPAGE="https://github.com/notspiff/visualization.starburst"
-KODI_PLUGIN_NAME="visualization.starburst"
+DESCRIPTION="Kodi's Adaptive inputstream addon"
+HOMEPAGE="https://github.com/peak3d/inputstream.adaptive.git"
+KODI_PLUGIN_NAME="inputstream.adaptive"
 
 case ${PV} in
 9999)
 	SRC_URI=""
-	EGIT_REPO_URI="https://github.com/xbmc/${KODI_PLUGIN_NAME}.git"
+	EGIT_REPO_URI="https://github.com/peak3d/${KODI_PLUGIN_NAME}.git"
+	EGIT_BRANCH="Matrix"
 	inherit git-r3
 	DEPEND="~media-tv/kodi-9999"
 	;;
 *)
 	CODENAME="Leia"
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/xbmc/${KODI_PLUGIN_NAME}/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/peak3d/${KODI_PLUGIN_NAME}/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${KODI_PLUGIN_NAME}-${PV}-${CODENAME}"
 	DEPEND="=media-tv/kodi-18*:="
 	;;
@@ -30,13 +31,10 @@ SLOT="0"
 IUSE=""
 
 DEPEND+="
-	>=media-libs/glm-0.9.9.8-r1
-	virtual/opengl
+	dev-libs/expat
 	"
 
 RDEPEND="${DEPEND}"
-
-BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	if [ -d depends ]; then rm -rf depends || die; fi

@@ -5,9 +5,9 @@ EAPI=7
 
 inherit kodi-addon
 
-DESCRIPTION="StarBurst visualizer for Kodi"
-HOMEPAGE="https://github.com/notspiff/visualization.starburst"
-KODI_PLUGIN_NAME="visualization.starburst"
+DESCRIPTION="Asteroids screensaver for Kodi"
+HOMEPAGE="https://github.com/xbmc/screensaver.asteroids"
+KODI_PLUGIN_NAME="screensaver.asteroids"
 
 case ${PV} in
 9999)
@@ -31,7 +31,6 @@ IUSE=""
 
 DEPEND+="
 	>=media-libs/glm-0.9.9.8-r1
-	virtual/opengl
 	"
 
 RDEPEND="${DEPEND}"
