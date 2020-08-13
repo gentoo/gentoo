@@ -1,0 +1,15 @@
+BDEPEND=dev-perl/Authen-SASL dev-perl/Email-Address dev-perl/Email-Send dev-perl/Net-SMTP-SSL dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=Send Messages using Gmail
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/Email-Send-Gmail
+IUSE=test
+KEYWORDS=~amd64 ~mips ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Authen-SASL dev-perl/Email-Address dev-perl/Email-Send dev-perl/Net-SMTP-SSL dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/L/LB/LBROCARD/Email-Send-Gmail-0.33.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=4b23cb8a69e58c4f75f0c74369e0bb7a
