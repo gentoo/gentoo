@@ -20,6 +20,10 @@ SRC_URI+=" https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.x
 		https://src.fedoraproject.org/rpms/kernel/raw/${CONFIG_HASH}/f/kernel-x86_64.config
 			-> kernel-x86_64.config.${CONFIG_VER}
 	)
+	arm64? (
+		https://src.fedoraproject.org/rpms/kernel/raw/${CONFIG_HASH}/f/kernel-aarch64.config
+			-> kernel-aarch64.config.${CONFIG_VER}
+	)
 	x86? (
 		https://src.fedoraproject.org/rpms/kernel/raw/${CONFIG_HASH}/f/kernel-i686.config
 			-> kernel-i686.config.${CONFIG_VER}
@@ -27,7 +31,7 @@ SRC_URI+=" https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.x
 S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="debug"
 
 RDEPEND="
@@ -54,6 +58,9 @@ src_prepare() {
 	case ${ARCH} in
 		amd64)
 			cp "${DISTDIR}/kernel-x86_64.config.${CONFIG_VER}" .config || die
+			;;
+		arm64)
+			cp "${DISTDIR}/kernel-aarch64.config.${CONFIG_VER}" .config || die
 			;;
 		x86)
 			cp "${DISTDIR}/kernel-i686.config.${CONFIG_VER}" .config || die
