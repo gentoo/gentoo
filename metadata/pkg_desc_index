@@ -5476,7 +5476,7 @@ dev-libs/libpcre-debian 8-r2: libpcre(posix).so.3 symlinks for compatibility wit
 dev-libs/libpcre2 10.34 10.35: Perl-compatible regular expression library
 dev-libs/libpeas 1.26.0: A GObject plugins library
 dev-libs/libpfm 4.8.0 4.10.1 4.10.1-r1: Hardware-based performance monitoring interface for Linux
-dev-libs/libpipeline 1.5.2: a pipeline manipulation library
+dev-libs/libpipeline 1.5.2 1.5.3: a pipeline manipulation library
 dev-libs/libplatform 2.0.1 2.1.0.1 2.1.0.1-r1 9999: Platform support library used by libCEC and binary add-ons for Kodi
 dev-libs/libpo6 0.8.0: Hyperdex libpo6 support library
 dev-libs/libpqxx 6.4.5 7.1.2: Standard front-end for writing C++ programs that use PostgreSQL
@@ -12314,7 +12314,7 @@ kde-misc/skanlite 2.2.0: Simple image scanning application based on libksane and
 kde-misc/tellico 3.3.1 3.3.2: Collection manager based on KDE Frameworks
 kde-misc/ultimate-gmail-feed 2.1: Plasma 5 widget showing your Gmail feed
 kde-misc/wacomtablet 3.2.0: System settings module for Wacom tablets
-kde-misc/zanshin 0.5.71-r1: Getting things done application by KDE
+kde-misc/zanshin 0.5.71-r1 0.5.71-r2: Getting things done application by KDE
 kde-plasma/bluedevil 5.18.5 5.19.4: Bluetooth stack for KDE Plasma
 kde-plasma/breeze 5.18.5 5.19.4: Breeze visual style for the Plasma desktop
 kde-plasma/breeze-grub 5.18.5 5.19.4: Breeze theme for GRUB
