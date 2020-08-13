@@ -6386,7 +6386,7 @@ dev-perl/Email-Address-XS 1.10.0 1.40.0: Parse and format RFC 2822 email address
 dev-perl/Email-Date 1.104.0-r2: Find and Format Date Headers
 dev-perl/Email-Date-Format 1.5.0: Produce RFC 822 date strings
 dev-perl/Email-Filter 1.34.0: Simple filtering of RFC2822 message format and headers
-dev-perl/Email-Find 0.100.0-r1: Find RFC 822 email addresses in plain text
+dev-perl/Email-Find 0.100.0-r1 0.100.0-r2: Find RFC 822 email addresses in plain text
 dev-perl/Email-FolderType 0.814.0-r1: Determine the type of a mail folder
 dev-perl/Email-LocalDelivery 1.200.0-r2: Local delivery of RFC2822 message format and headers
 dev-perl/Email-MIME 1.940.0 1.946.0: Easy MIME message parsing
