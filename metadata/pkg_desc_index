@@ -4022,7 +4022,7 @@ dev-haskell/git-lfs 1.1.0: git-lfs protocol
 dev-haskell/githash 0.1.3.3: Compile git revision info into Haskell projects
 dev-haskell/gitrev 1.2.0 1.3.1: Compile git revision info into Haskell projects
 dev-haskell/glade 0.13.1: Binding to the glade library
-dev-haskell/glib 0.12.5.4 0.13.2.2 0.13.4.1 0.13.7.0: Binding to the GLIB library for Gtk2Hs
+dev-haskell/glib 0.12.5.4 0.13.2.2 0.13.4.1 0.13.7.0 0.13.8.1: Binding to the GLIB library for Gtk2Hs
 dev-haskell/glob 0.7.5 0.7.14 0.9.3: Globbing library
 dev-haskell/gluraw 1.3.0.0 1.4.0.1 1.5.0.1 2.0.0.3 2.0.0.4: A raw binding for the OpenGL graphics system
 dev-haskell/glut 2.5.1.1 2.7.0.11 2.7.0.15: A binding for the OpenGL Utility Toolkit
@@ -18177,7 +18177,7 @@ www-servers/nginx-unit 1.17.0 1.18.0: Dynamic web and application server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.3.3 0.3.4 9999: Pretty small HTTP server -- a command-line tool to share files
-www-servers/puma 3.12.5 4.3.4-r1: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
+www-servers/puma 3.12.4 3.12.5 3.12.5-r1 4.3.3 4.3.4 4.3.4-r1: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
 www-servers/resin 4.0.48-r1: A fast Servlet and JSP engine
 www-servers/servefile 0.4.4_p20200211: Serve a single file via HTTP
 www-servers/sniproxy 0.5.0 0.6.0: Proxies incoming HTTP and TLS connections based on the hostname
