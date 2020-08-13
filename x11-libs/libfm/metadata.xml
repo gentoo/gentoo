@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>lxqt@gentoo.org</email>
-    <name>LXQt</name>
-  </maintainer>
+  <!-- maintainer-needed -->
   <use>
     <flag name="vala">Support custom actions in menus</flag>
     <flag name="udisks">Use libfm's udisks-based volume monitor implementation instead of using the one from gvfs</flag>
