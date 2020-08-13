@@ -55,7 +55,11 @@ SRC_URI+="
 
 SLOT="${PV}"
 IUSE="+initramfs test"
-RESTRICT+=" !test? ( test ) test? ( userpriv )"
+RESTRICT+="
+	!test? ( test )
+	test? ( userpriv )
+	arm? ( test )
+	arm64? ( test )"
 
 # install-DEPEND actually
 # note: we need installkernel with initramfs support!
