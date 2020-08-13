@@ -55,6 +55,10 @@ RDEPEND="${CDEPEND}
 
 DOCS=( ChangeLog.rst README.rst README_NETJACK2 )
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-doc.patch"
+)
+
 src_prepare() {
 	default
 	multilib_copy_sources
