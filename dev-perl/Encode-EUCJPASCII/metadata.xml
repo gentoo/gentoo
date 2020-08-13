@@ -7,6 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="cpan">Encode-EUCJPASCII</remote-id>
-    <remote-id type="cpan-module"> Encode::EUCJPASCII</remote-id>
+    <remote-id type="cpan-module">Encode::EUCJPASCII</remote-id>
   </upstream>
 </pkgmetadata>
