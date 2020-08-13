@@ -8,7 +8,8 @@ inherit cmake desktop qmake-utils xdg
 
 DESCRIPTION="Video editor designed for simple cutting, filtering and encoding tasks"
 HOMEPAGE="http://fixounet.free.fr/avidemux"
-SRC_URI="https://github.com/mean00/avidemux2/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mean00/avidemux2/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/mean00/avidemux2_i18n/archive/${PV}.tar.gz -> ${PN}-i18n-${PV}.tar.gz"
 
 # Multiple licenses because of all the bundled stuff.
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
@@ -38,6 +39,11 @@ RDEPEND="${DEPEND}
 PDEPEND="~media-libs/avidemux-plugins-${PV}:${SLOT}[opengl?,qt5?]"
 
 S="${WORKDIR}/avidemux2-${PV}"
+
+src_unpack() {
+	default
+	mv -f -T avidemux2_i18n-${PV} "${S}"/avidemux/qt4/i18n >/dev/null || die
+}
 
 src_prepare() {
 	eapply "${FILESDIR}"/${PN}-2.7.4-qt-5.15.patch
