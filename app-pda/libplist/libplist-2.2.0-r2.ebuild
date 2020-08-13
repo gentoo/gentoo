@@ -26,7 +26,10 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DOCS=( AUTHORS NEWS README.md )
 
-PATCHES=( "${FILESDIR}"/libplist-2.2.0-pkgconfig-lib.patch )
+PATCHES=(
+	"${FILESDIR}"/libplist-2.2.0-fmin.patch
+	"${FILESDIR}"/libplist-2.2.0-pkgconfig-lib.patch
+)
 
 BUILD_DIR="${S}_build"
 
