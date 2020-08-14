@@ -18,9 +18,6 @@
     <remote-id type="cpan-module">Event::group</remote-id>
     <remote-id type="cpan-module">Event::idle</remote-id>
     <remote-id type="cpan-module">Event::io</remote-id>
-    <remote-id type="cpan-module">Event::msg</remote-id>
-    <remote-id type="cpan-module">Event::process</remote-id>
-    <remote-id type="cpan-module">Event::semaphore</remote-id>
     <remote-id type="cpan-module">Event::signal</remote-id>
     <remote-id type="cpan-module">Event::timer</remote-id>
     <remote-id type="cpan-module">Event::type</remote-id>
