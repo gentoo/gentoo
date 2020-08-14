@@ -2877,7 +2877,7 @@ app-text/fbreader 0.99.4-r5: E-Book Reader. Supports many e-book formats
 app-text/fictionup 0.1 0.2.1: A command-line markdown to fb2 convertor
 app-text/flpsed 0.7.3: Pseudo PostScript editor
 app-text/foliate 2.4.2-r1: gtk ebook reader built with gjs
-app-text/ghostscript-gpl 9.50 9.52: Interpreter for the PostScript language and PDF
+app-text/ghostscript-gpl 9.50 9.52-r1: Interpreter for the PostScript language and PDF
 app-text/gnome-doc-utils 0.20.10-r2: A collection of documentation utilities for the Gnome project
 app-text/gocr 0.50: An OCR (Optical Character Recognition) reader
 app-text/goldendict 1.5.0_rc2-r2: Feature-rich dictionary lookup program
@@ -4159,7 +4159,7 @@ dev-haskell/language-glsl 0.2.0 0.3.0: GLSL abstract syntax tree, parser, and pr
 dev-haskell/language-haskell-extract 0.2.4: Module to automatically extract functions from the local code
 dev-haskell/language-javascript 0.5.14.2 0.6.0.9 0.6.0.14: Parser for JavaScript
 dev-haskell/language-lua 0.10.0 0.11.0.1: Lua parser and pretty-printer
-dev-haskell/language-python 0.5.4: Parsing and pretty printing of Python code
+dev-haskell/language-python 0.5.4 0.5.8: Parsing and pretty printing of Python code
 dev-haskell/lazysmallcheck 0.6: A library for demand-driven testing of Haskell programs
 dev-haskell/lcs 0.2-r1: Find longest common sublist of two lists
 dev-haskell/lens 3.9.2 3.10.0.1 4.2 4.6.0.1 4.9.1 4.11 4.14 4.19.1: Lenses, Folds and Traversals
