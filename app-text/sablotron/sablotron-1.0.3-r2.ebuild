@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools
 
 MY_PN="Sablot"
@@ -16,7 +17,7 @@ SRC_URI="mirror://sourceforge/sablotron/${MY_P}.tar.gz"
 LICENSE="MPL-1.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="perl static-libs"
+IUSE="perl"
 
 RDEPEND="
 	>=dev-libs/expat-1.95.6-r1
@@ -38,14 +39,14 @@ PATCHES=(
 src_prepare() {
 	default
 	sed -i configure.in -e 's|AM_CONFIG_HEADER|AC_CONFIG_HEADERS|g' || die
+	mv configure.{in,ac} || die
 	eautoreconf
-	elibtoolize
 }
 
 src_configure() {
 	econf \
+		--disable-static \
 		$(use_enable perl perlconnect) \
-		$(use_enable static-libs static) \
 		--with-html-dir="${EPREFIX}"/usr/share/doc/${PF}/html
 }
 
