@@ -17331,7 +17331,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 16.0.0 2020.1.9999: A virtual network service for Openstack
-sys-cluster/nomad 0.12.1: A simple and flexible workload orchestrator
+sys-cluster/nomad 0.12.1 0.12.3: A simple and flexible workload orchestrator
 sys-cluster/nova 21.0.0 2020.1.9999: Cloud computing fabric controller
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/onesis 2.0.2: Diskless computing made easy
