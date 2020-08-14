@@ -1,6 +1,11 @@
 # Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jakov Smolic <jakov.smolic@sartura.hr> (2020-08-14)
+# Large amount of missing keywords
+# Bug #724358
+>=dev-libs/json-c-0.15 doc
+
 # Sam James <sam@gentoo.org> (2020-07-31)
 # Large amount of missing keywords for cmake and friends
 # bug #720296, bug #724358
