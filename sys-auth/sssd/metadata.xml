@@ -14,6 +14,7 @@
 		<flag name="autofs">Build helper to let <pkg>net-fs/autofs</pkg> use sssd provided information</flag>
 		<flag name="ssh">Build helper to let <pkg>net-misc/openssh</pkg> use sssd provided information</flag>
 		<flag name="sudo">Build helper to let <pkg>app-admin/sudo</pkg> use sssd provided information</flag>
+		<flag name="valgrind">Depend on <pkg>dev-util/valgrind</pkg> for test suite</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">SSSD/sssd</remote-id>
