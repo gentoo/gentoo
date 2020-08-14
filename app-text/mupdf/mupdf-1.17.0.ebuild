@@ -29,7 +29,7 @@ RDEPEND="
 	virtual/jpeg[static-libs?]
 	opengl? ( >=media-libs/freeglut-3.0.0:= )
 	ssl? (
-		libressl? ( >=dev-libs/libressl-2.8:0=[static-libs?] )
+		libressl? ( >=dev-libs/libressl-3.2.0:0=[static-libs?] )
 		!libressl? ( >=dev-libs/openssl-1.1:0=[static-libs?] )
 	)
 	X? (
@@ -59,9 +59,6 @@ src_prepare() {
 	use javascript || \
 		sed -e '/* #define FZ_ENABLE_JS/ a\#define FZ_ENABLE_JS 0' \
 			-i include/mupdf/fitz/config.h || die
-
-	# See bug #670832
-	use ssl && use libressl && eapply "${FILESDIR}"/${PN}-1.14-libressl.patch
 
 	sed -e "1iOS = Linux" \
 		-e "1iCC = $(tc-getCC)" \
