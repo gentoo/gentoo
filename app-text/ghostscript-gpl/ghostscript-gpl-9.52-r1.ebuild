@@ -15,8 +15,7 @@ PVM_S=$(ver_rs 1-2 "")
 
 MY_PATCHSET="ghostscript-gpl-9.52-patchset-01.tar.xz"
 
-SRC_URI="https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${PVM_S}/${MY_P}.tar.xz
-	https://dev.gentoo.org/~whissi/dist/ghostscript-gpl/ghostscript-gpl-9.52-fontmaps-01.tar.xz"
+SRC_URI="https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${PVM_S}/${MY_P}.tar.xz"
 
 if [[ -n "${MY_PATCHSET}" ]] ; then
 	SRC_URI+=" https://dev.gentoo.org/~whissi/dist/ghostscript-gpl/${MY_PATCHSET}"
@@ -179,17 +178,6 @@ src_install() {
 
 	# rename the original cidfmap to cidfmap.GS
 	mv "${ED}/usr/share/ghostscript/${PVM}/Resource/Init/cidfmap"{,.GS} || die
-
-	# install our own cidfmap to handle CJK fonts
-	insinto /usr/share/ghostscript/${PVM}/Resource/Init
-	doins \
-		"${WORKDIR}/fontmaps/CIDFnmap" \
-		"${WORKDIR}/fontmaps/cidfmap"
-	for X in ${LANGS} ; do
-		if use l10n_${X} ; then
-			doins "${WORKDIR}/fontmaps/cidfmap.${X/-/_}"
-		fi
-	done
 
 	# install the CMaps from poppler-data properly, bug #409361
 	dosym ../../../poppler/cMaps "/usr/share/ghostscript/${PVM}/Resource/CMap"
