@@ -6,12 +6,18 @@
     <name>Gentoo network monitoring and analysis project</name>
   </maintainer>
   <use>
-    <flag name="readpcap">Build nfcapd collector to read from pcap file instead ofnetwork data</flag>
     <flag name="ftconv">Build the flow-tools to nfdump converter</flag>
+    <flag name="jnat">Build nfudmp to support JunOS NAT event logging</flag>
+    <flag name="nfpcapd">Build nfpcapd collector to create netflow data from precollected pcap traffic</flag>
     <flag name="nfprofile">Build nfprofile used by NfSen</flag>
     <flag name="nftrack">Build nfprofile used by PortTracker</flag>
+    <flag name="nsel">Build nfudmp to support NSEL/NEL event data</flag>
+    <flag name="readpcap">Build nfcapd collector to read from pcap file instead ofnetwork data</flag>
     <flag name="sflow">Build sflow collector sfcpad</flag>
   </use>
+  <longdescription>nfdump is a toolset to collect and process netflow and sflow
+    data, sent from netflow/sflow compatible devices. The toolset supports
+    netflow v1, v5/v7,v9,IPFIX and SFLOW.</longdescription>
   <upstream>
     <remote-id type="sourceforge">nfdump</remote-id>
     <remote-id type="github">phaag/nfdump</remote-id>
