@@ -11,7 +11,7 @@ SRC_URI="https://github.com/jackaudio/jack1/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~s390"
+KEYWORDS="~amd64 ~ia64 ~s390 ~sparc"
 IUSE="cpu_flags_x86_3dnow altivec alsa coreaudio doc debug examples oss cpu_flags_x86_sse pam"
 
 # readline: only used for jack_transport -> useless for non native ABIs
