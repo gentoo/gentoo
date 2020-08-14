@@ -17344,7 +17344,7 @@ sys-cluster/ploop 1.14.1: openvz tool and a library to control ploop block devic
 sys-cluster/pmix 2.1.1: The Process Management Interface (PMI) Exascale
 sys-cluster/poolmon 0.5 0.6: A director mailserver pool monitoring script for Dovecot
 sys-cluster/projections 6.2.1: Projections Performance Analysis Framework for Charm++ Applications
-sys-cluster/rdma-core 26.0-r2 26.1-r1 27.0-r2 28.0-r1 30.0-r1 9999: Userspace components for the Linux Kernel's drivers/infiniband subsystem
+sys-cluster/rdma-core 30.0-r2 9999: Userspace components for the Linux Kernel's drivers/infiniband subsystem
 sys-cluster/resource-agents 3.9.6 4.0.1: Resources pack for Heartbeat / Pacemaker
 sys-cluster/sanlock 3.6.0 3.8.0: shared storage lock manager
 sys-cluster/singularity 3.6.0: Application containers for Linux
