@@ -775,12 +775,6 @@ app-misc/ifp-line
 # Bug 687664
 app-dicts/stardict-quick-eng-fra
 
-# Aaron W. Swenson <titanofold@gentoo.org> (2020-05-15)
-# PostgreSQL 9.4 series is EOL. Migrate your database cluster to a more recent
-# version.
-# Removal after 2020-06-14.
-<dev-db/postgresql-9.5
-
 # Michael Orlitzky <mjo@gentoo.org> (2020-04-19)
 # Stuck on Python 3.6, support for which already required
 # backporting patches to a release from 2014. Upstream's git
