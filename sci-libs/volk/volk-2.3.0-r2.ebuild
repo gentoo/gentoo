@@ -18,7 +18,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="orc test"
 
-RDEPEND="!<net-wireless/gnuradio-3.8
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RDEPEND="${PYTHON_DEPS}
+	!<net-wireless/gnuradio-3.8
 	dev-libs/boost:=
 	orc? ( dev-lang/orc )"
 DEPEND="${RDEPEND}
