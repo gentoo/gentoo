@@ -385,12 +385,6 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-1.4.1-fix-perl-install-path.patch"
 	eapply "${FILESDIR}/${PN}-httpoxy-mitigation-r1.patch"
 
-	if use nginx_modules_http_auth_pam; then
-		cd "${HTTP_AUTH_PAM_MODULE_WD}" || die
-		eapply "${FILESDIR}"/http_auth_pam-1.5.1-adjust-loglevel-for-authentication-failures.patch
-		cd "${S}" || die
-	fi
-
 	if use nginx_modules_http_brotli; then
 		cd "${HTTP_BROTLI_MODULE_WD}" || die
 		eapply "${FILESDIR}"/http_brotli-detect-brotli-r3.patch
