@@ -2211,6 +2211,8 @@ dev-libs/libdynd:cuda - Enable NVIDIA CUDA toolkit support
 dev-libs/libevent:clock-gettime - Disable use of clock_gettime even if it is available
 dev-libs/libevent:debug - Support for running in debug mode
 dev-libs/libevent:malloc-replacement - Support for replacing the memory management functions
+dev-libs/libevent:mbedtls - Support for net-libs/mbedtls encryption
+dev-libs/libevent:ssl - Support for dev-libs/openssl encryption
 dev-libs/libevent:verbose-debug - Support for verbose debug logging
 dev-libs/libffi:pax_kernel - Use PaX emulated trampolines, for we can't use PROT_EXEC
 dev-libs/libffi-compat:pax_kernel - Use PaX emulated trampolines, for we can't use PROT_EXEC
