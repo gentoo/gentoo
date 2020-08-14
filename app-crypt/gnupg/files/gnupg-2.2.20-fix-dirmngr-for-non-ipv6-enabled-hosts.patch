@@ -1,0 +1,35 @@
+From 109d16e8f644da97ed9c00e6f9010a53097f587a Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Mon, 13 Jul 2020 10:00:58 +0900
+Subject: [PATCH] dirmngr: Handle EAFNOSUPPORT at connect_server.
+
+* dirmngr/http.c (connect_server): Skip server with EAFNOSUPPORT.
+
+--
+
+GnuPG-bug-id: 4977
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+---
+ dirmngr/http.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/dirmngr/http.c b/dirmngr/http.c
+index f26675f9b..50b9b732b 100644
+--- a/dirmngr/http.c
++++ b/dirmngr/http.c
+@@ -3005,6 +3005,15 @@ connect_server (ctrl_t ctrl, const char *server, unsigned short port,
+           sock = my_sock_new_for_addr (ai->addr, ai->socktype, ai->protocol);
+           if (sock == ASSUAN_INVALID_FD)
+             {
++              if (errno == EAFNOSUPPORT)
++                {
++                  if (ai->family == AF_INET)
++                    v4_valid = 0;
++                  if (ai->family == AF_INET6)
++                    v6_valid = 0;
++                  continue;
++                }
++
+               err = gpg_err_make (default_errsource,
+                                   gpg_err_code_from_syserror ());
+               log_error ("error creating socket: %s\n", gpg_strerror (err));

@@ -51,6 +51,7 @@ DOCS=(
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.1.20-gpgscm-Use-shorter-socket-path-lengts-to-improve-tes.patch"
+	"${FILESDIR}/${PN}-2.2.20-fix-dirmngr-for-non-ipv6-enabled-hosts.patch"
 )
 
 src_prepare() {
