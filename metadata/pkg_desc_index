@@ -6408,7 +6408,7 @@ dev-perl/Encode-HanExtra 0.230.0-r2 0.230.0-r3: Extra sets of Chinese encodings
 dev-perl/Encode-IMAPUTF7 1.50.0-r1 1.50.0-r2: Modification of UTF-7 encoding for IMAP
 dev-perl/Encode-JIS2K 0.30.0 0.30.0-r1: JIS X 0212 (aka JIS 2000) Encodings
 dev-perl/Encode-Locale 1.50.0: Determine the locale encoding
-dev-perl/Encode-compat 0.70.0-r2: Encode.pm emulation layer
+dev-perl/Encode-compat 0.70.0-r2 0.70.0-r3: Encode.pm emulation layer
 dev-perl/Error 0.170.250: Error/exception handling in an OO-ish way
 dev-perl/Eval-Closure 0.140.0: safely and cleanly create closures via string eval
 dev-perl/Eval-LineNumbers 0.340.0: Add line numbers to hereis blocks that contain perl source code
