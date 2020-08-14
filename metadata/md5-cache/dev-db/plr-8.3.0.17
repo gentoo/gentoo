@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile install postinst prepare setup test unpack
-DEPEND=dev-lang/R postgres_targets_postgres10? ( dev-db/postgresql:10=[server] ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6=[server] ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5=[server] ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4=[server] ) virtual/pkgconfig
+DEPEND=dev-lang/R postgres_targets_postgres10? ( dev-db/postgresql:10=[server] ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6=[server] ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5=[server] ) virtual/pkgconfig
 DESCRIPTION=R language extension for postgresql database
 EAPI=6
 HOMEPAGE=http://www.joeconway.com/plr/
-IUSE=postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5 postgres_targets_postgres9_4
+IUSE=postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5
 KEYWORDS=~amd64
 LICENSE=GPL-2
-RDEPEND=dev-lang/R postgres_targets_postgres10? ( dev-db/postgresql:10=[server] ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6=[server] ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5=[server] ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4=[server] )
-REQUIRED_USE=|| ( postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5 postgres_targets_postgres9_4 )
+RDEPEND=dev-lang/R postgres_targets_postgres10? ( dev-db/postgresql:10=[server] ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6=[server] ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5=[server] )
+REQUIRED_USE=|| ( postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5 )
 SLOT=0
 SRC_URI=https://github.com/postgres-plr/plr/archive/REL8_3_0_17.tar.gz -> plr-8.3.0.17.tar.gz
 _eclasses_=multibuild	b2c915190b051f55a23b9354b9849847	postgres	9613fb90112e2a521b6a8315187c2966	postgres-multi	b784ac6c30437f2ded3f16482b56374c	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
-_md5_=7125d364b58700fde121f507ea563218
+_md5_=c6fcddcde95e18beefd7fe1ea77db33f
