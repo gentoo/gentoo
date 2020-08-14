@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt?] dev-ml/camlp4:= >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=Camomile is a comprehensive Unicode library for ocaml
+EAPI=7
+HOMEPAGE=https://github.com/yoriyuki/Camomile/wiki
+IUSE=debug +ocamlopt
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=LGPL-2
+RDEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt?] dev-ml/camlp4:=
+SLOT=0/0.8.5
+SRC_URI=https://github.com/yoriyuki/Camomile/releases/download/rel-0.8.5/camomile-0.8.5.tar.bz2
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	findlib	17c71a5d96323df925f9f6db1215668a
+_md5_=03e7ccfb00fcae7f8ac1323929815a59
