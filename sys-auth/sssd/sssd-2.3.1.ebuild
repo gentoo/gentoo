@@ -89,6 +89,10 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/sss_certmap.h
 )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-test_ca-Look-for-libsofthsm2.so-in-usr-libdir-sofths.patch
+)
+
 pkg_setup() {
 	linux-info_pkg_setup
 }
