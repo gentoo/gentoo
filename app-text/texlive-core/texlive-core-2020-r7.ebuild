@@ -86,6 +86,7 @@ MODULAR_X_DEPEND="X? (
 	)"
 
 COMMON_DEPEND="${MODULAR_X_DEPEND}
+	!app-text/vlna
 	!app-text/xindy
 	!~dev-texlive/texlive-basic-2019
 	!~dev-texlive/texlive-fontutils-2019
