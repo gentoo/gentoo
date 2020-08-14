@@ -3,7 +3,7 @@
 
 EAPI=6
 
-POSTGRES_COMPAT=( 9.{4..6} {10..12} )
+POSTGRES_COMPAT=( 9.{5..6} {10..12} )
 POSTGRES_USEDEP="server"
 inherit autotools eapi7-ver postgres-multi
 
