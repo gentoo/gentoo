@@ -93,7 +93,10 @@ src_install() {
 	udev_dorules "${D}"/etc/udev/rules.d/70-persistent-ipoib.rules
 	rm -r "${D}"/etc/{udev,init.d} || die
 
-	newinitd "${FILESDIR}"/ibacm.init ibacm
+	if use neigh; then
+		newinitd "${FILESDIR}"/ibacm.init ibacm
+	fi
+
 	newinitd "${FILESDIR}"/iwpmd.init iwpmd
 	newinitd "${FILESDIR}"/srpd.init srpd
 
