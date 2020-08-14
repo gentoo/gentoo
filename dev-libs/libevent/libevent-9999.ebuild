@@ -15,12 +15,13 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 IUSE="
-	+clock-gettime debug libressl malloc-replacement +ssl static-libs test
-	+threads verbose-debug
+	+clock-gettime debug libressl malloc-replacement mbedtls +ssl static-libs
+	test +threads verbose-debug
 "
 RESTRICT="test"
 
 DEPEND="
+	mbedtls? ( net-libs/mbedtls )
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
 		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
@@ -52,6 +53,7 @@ multilib_src_configure() {
 		$(use_enable clock-gettime) \
 		$(use_enable debug debug-mode) \
 		$(use_enable malloc-replacement malloc-replacement) \
+		$(use_enable mbedtls) \
 		$(use_enable ssl openssl) \
 		$(use_enable static-libs static) \
 		$(use_enable test libevent-regress) \
