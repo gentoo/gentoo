@@ -2063,7 +2063,7 @@ app-forensics/rifiuti 20040505_p1: Recycle Bin Analyzer
 app-forensics/rkhunter 1.4.6-r1: Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers
 app-forensics/scalpel 2.0: A high performance file carver
 app-forensics/sleuthkit 4.9.0: A collection of file system and media management forensic analysis tools
-app-forensics/unhide 20121229 20130526: A forensic tool to find hidden processes and TCP/UDP ports by rootkits/LKMs
+app-forensics/unhide 20130526: A forensic tool to find hidden processes and TCP/UDP ports by rootkits/LKMs
 app-forensics/yasat 848: Security and system auditing tool
 app-forensics/zzuf 0.15-r1: Transparent application input fuzzer
 app-i18n/anthy 9100h-r2: Anthy -- free and secure Japanese input system
@@ -6417,7 +6417,7 @@ dev-perl/Event-RPC 1.100.0 1.100.0-r1: Event based transparent Client/Server RPC
 dev-perl/Exception-Base 0.250.100 0.250.100-r1: Error handling with exception class
 dev-perl/Exception-Class 1.430.0 1.440.0: A module that allows you to declare real exception classes in Perl
 dev-perl/Exception-Died 0.60.0-r2: Convert simple die into real exception object
-dev-perl/Exception-System 0.110.0-r1: Exception class for system or library calls
+dev-perl/Exception-System 0.110.0-r1 0.110.0-r2: Exception class for system or library calls
 dev-perl/Exception-Warning 0.40.100-r1: Convert simple warn into real exception object
 dev-perl/Expect 1.350.0: Expect for Perl
 dev-perl/Exporter-Cluster 0.310.0-r1: Extension for easy multiple module imports
@@ -17526,7 +17526,7 @@ sys-fs/fuse-overlayfs 0.7.8 1.0.0 1.1.1 1.1.2: FUSE implementation for overlayfs
 sys-fs/fuse-zip 0.7.0: FUSE file system to navigate, extract, create and modify ZIP archives
 sys-fs/fuseiso 20070708-r3: Fuse module to mount ISO9660
 sys-fs/genext2fs 1.4.1: generate ext2 file systems
-sys-fs/go-mtpfs 9999: a simple FUSE filesystem for mounting Android devices as a MTP device
+sys-fs/go-mtpfs 1.0.0: a simple FUSE filesystem for mounting Android devices as a MTP device
 sys-fs/growpart 0.0.1 0.0.30: A script that can grow your rootfs on first boot
 sys-fs/gt5 1.4.0-r2: a diff-capable 'du-browser'
 sys-fs/hfsplusutils 1.0.4-r2: HFS+ Filesystem Access Utilities (a PPC filesystem)

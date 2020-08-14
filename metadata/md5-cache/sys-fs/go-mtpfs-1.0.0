@@ -1,0 +1,14 @@
+BDEPEND=>=dev-lang/go-1.12 app-arch/unzip
+DEFINED_PHASES=compile install postinst test unpack
+DEPEND=virtual/libusb:1 virtual/udev media-libs/libmtp
+DESCRIPTION=a simple FUSE filesystem for mounting Android devices as a MTP device
+EAPI=7
+HOMEPAGE=https://github.com/hanwen/go-mtpfs
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=virtual/libusb:1 virtual/udev
+RESTRICT=strip test
+SLOT=0
+SRC_URI=https://github.com/hanwen/go-mtpfs/archive/v1.0.0.tar.gz -> go-mtpfs-1.0.0.tar.gz mirror://goproxy//github.com/hanwen/go-fuse/@v/v0.0.0-20190726130028-2f298055551b.zip -> github.com%2Fhanwen%2Fgo-fuse%2F@v%2Fv0.0.0-20190726130028-2f298055551b.zip mirror://goproxy//github.com/hanwen/go-fuse/@v/v0.0.0-20190726130028-2f298055551b.mod -> github.com%2Fhanwen%2Fgo-fuse%2F@v%2Fv0.0.0-20190726130028-2f298055551b.mod mirror://goproxy//github.com/hanwen/go-fuse/@v/v1.0.0.zip -> github.com%2Fhanwen%2Fgo-fuse%2F@v%2Fv1.0.0.zip mirror://goproxy//github.com/hanwen/go-fuse/@v/v1.0.0.mod -> github.com%2Fhanwen%2Fgo-fuse%2F@v%2Fv1.0.0.mod mirror://goproxy//github.com/hanwen/go-fuse/v2/@v/v2.0.1.zip -> github.com%2Fhanwen%2Fgo-fuse%2Fv2%2F@v%2Fv2.0.1.zip mirror://goproxy//github.com/hanwen/go-fuse/v2/@v/v2.0.1.mod -> github.com%2Fhanwen%2Fgo-fuse%2Fv2%2F@v%2Fv2.0.1.mod mirror://goproxy//github.com/hanwen/go-fuse/v2/@v/v2.0.2.zip -> github.com%2Fhanwen%2Fgo-fuse%2Fv2%2F@v%2Fv2.0.2.zip mirror://goproxy//github.com/hanwen/go-fuse/v2/@v/v2.0.2.mod -> github.com%2Fhanwen%2Fgo-fuse%2Fv2%2F@v%2Fv2.0.2.mod mirror://goproxy//github.com/hanwen/usb/@v/v0.0.0-20141217151552-69aee4530ac7.zip -> github.com%2Fhanwen%2Fusb%2F@v%2Fv0.0.0-20141217151552-69aee4530ac7.zip mirror://goproxy//github.com/hanwen/usb/@v/v0.0.0-20141217151552-69aee4530ac7.mod -> github.com%2Fhanwen%2Fusb%2F@v%2Fv0.0.0-20141217151552-69aee4530ac7.mod mirror://goproxy//github.com/kylelemons/godebug/@v/v0.0.0-20170820004349-d65d576e9348.mod -> github.com%2Fkylelemons%2Fgodebug%2F@v%2Fv0.0.0-20170820004349-d65d576e9348.mod mirror://goproxy//github.com/kylelemons/godebug/@v/v1.1.0.mod -> github.com%2Fkylelemons%2Fgodebug%2F@v%2Fv1.1.0.mod mirror://goproxy//golang.org/x/sys/@v/v0.0.0-20180830151530-49385e6e1522.zip -> golang.org%2Fx%2Fsys%2F@v%2Fv0.0.0-20180830151530-49385e6e1522.zip mirror://goproxy//golang.org/x/sys/@v/v0.0.0-20180830151530-49385e6e1522.mod -> golang.org%2Fx%2Fsys%2F@v%2Fv0.0.0-20180830151530-49385e6e1522.mod mirror://goproxy//golang.org/x/sys/@v/v0.0.0-20190826190057-c7b8b68b1456.zip -> golang.org%2Fx%2Fsys%2F@v%2Fv0.0.0-20190826190057-c7b8b68b1456.zip mirror://goproxy//golang.org/x/sys/@v/v0.0.0-20190826190057-c7b8b68b1456.mod -> golang.org%2Fx%2Fsys%2F@v%2Fv0.0.0-20190826190057-c7b8b68b1456.mod
+_eclasses_=go-module	45394825d9260b479aa1cf252ea58e01
+_md5_=9389949f1eb6de376848667dbe219e89
