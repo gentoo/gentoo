@@ -1,0 +1,13 @@
+BDEPEND=>=virtual/perl-Exporter-5.570.0 virtual/perl-ExtUtils-MakeMaker dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=Add line numbers to hereis blocks that contain perl source code
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/Eval-LineNumbers
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=|| ( Artistic-2 LGPL-2.1 )
+RDEPEND=>=virtual/perl-Exporter-5.570.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MU/MUIR/modules/Eval-LineNumbers-0.34.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=27a390ba9c3cdd5cab7a9e1fa90d0b1b
