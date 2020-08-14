@@ -48,7 +48,7 @@ src_prepare() {
 }
 
 src_configure() {
-	append-flags -fno-toplevel-reorder		#722862
+	append-cflags $(test-flags-CC -fno-toplevel-reorder)	#722862
 	econf
 }
 
