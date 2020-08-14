@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2020-08-13)
+# Masked for testing
+>=sys-auth/sssd-2.3.0
+
 # Jonas Stein <jstein@gentoo.org> (2020-08-13)
 # One of many password generators, but with dead upstream in this case.
 # Masked for removal after 2020-10-01.
