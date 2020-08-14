@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Rick Farina <zerochaos@gentoo.org> (2020-08-14)
+# Obsolete, nothing depends on it. Removal in 30 days.
+net-wireless/lorcon-old
+
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-14)
 # Obsolete package. Current version is py2-only.
 # py3 port has been abandoned for a long time.
