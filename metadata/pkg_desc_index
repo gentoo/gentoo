@@ -1549,7 +1549,7 @@ app-doc/cantera-docs 2.4.0: Documentation API reference for Cantera package libr
 app-doc/casting-spels-emacs 19-r2: Casting SPELs in Lisp - A Comic Book (Emacs Lisp Edition)
 app-doc/clsync-docs 0.4.4-r1: Clsync and libclsync API documentation
 app-doc/cppman 0.4.8-r2 0.4.9: C++ man pages for Linux, with source from cplusplus.com and cppreference.com
-app-doc/csound-manual 6.14 6.15: The Csound reference manual
+app-doc/csound-manual 6.14 6.15-r1: The Csound reference manual
 app-doc/devmanual 0_pre20200207 9999: The Gentoo Development Guide
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
 app-doc/doxygen 1.8.15 1.8.16-r1 1.8.17 9999: Documentation system for most programming languages
@@ -5637,7 +5637,7 @@ dev-libs/rocm-device-libs 3.0.0 3.1.0 3.3.0 3.5.0 3.5.1 9999: Radeon Open Comput
 dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
 dev-libs/rocm-opencl-runtime 3.0.0 3.1.0 3.3.0 3.5.0: Radeon Open Compute OpenCL Compatible Runtime
 dev-libs/rocr-runtime 3.0.0 3.1.0 3.3.0 3.5.0 9999: Radeon Open Compute Runtime
-dev-libs/roct-thunk-interface 3.0.0 3.1.0 3.3.0 3.5.0 3.6.0 9999: Radeon Open Compute Thunk Interface
+dev-libs/roct-thunk-interface 3.0.0 3.1.0 3.3.0 3.5.0 3.6.0 3.7.0 9999: Radeon Open Compute Thunk Interface
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
 dev-libs/satyr 0.27 0.30: Satyr is a collection of low-level algorithms for program failure processing
 dev-libs/sdformat 6.2.0 9.2.0: Simulation Description Format (SDF) parser
@@ -13485,7 +13485,7 @@ media-plugins/kodi-game-libretro-bnes 0.83.0.3 0.83.0.4 0.83.0.5 0.83.0.6 0.83.0
 media-plugins/kodi-game-libretro-dosbox 0.74.0.3 0.74.0.4 0.74.0.5 0.74.0.6 9999: DOSBox GameClient for Kodi
 media-plugins/kodi-game-libretro-fceumm 0.0.1.9 9999: FCEU-Next GameClient for Kodi
 media-plugins/kodi-game-libretro-nestopia 1.50.0.8 1.50.0.9 9999: Nestopia GameClient for Kodi
-media-plugins/kodi-game-libretro-snes9x 1.60.0.10 1.60.0.11 9999: Snes9x GameClient for Kodi
+media-plugins/kodi-game-libretro-snes9x 1.60.0.10 1.60.0.11 1.60.0.12 9999: Snes9x GameClient for Kodi
 media-plugins/kodi-game-libretro-twentyfortyeight 1.0.0.111 1.0.0.113 9999: 2048 for Kodi
 media-plugins/kodi-imagedecoder-heif 1.1.0 1.3.0 9999: HEIF image decoder for Kodi
 media-plugins/kodi-imagedecoder-raw 2.1.2 3.0.1 9999: RAW image decoder for Kodi
