@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="tools for communicating with HackRF SDR platform"
 HOMEPAGE="http://greatscottgadgets.com/hackrf/"
@@ -29,7 +29,7 @@ DEPEND="~net-libs/libhackrf-${PV}:=
 RDEPEND="${DEPEND}"
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	dosbin "${FILESDIR}/hackrf_easy_flash"
 	if [[ ${PV} != "9999" ]] ; then
 		insinto /usr/share/hackrf
