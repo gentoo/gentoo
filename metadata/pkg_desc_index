@@ -1549,7 +1549,7 @@ app-doc/cantera-docs 2.4.0: Documentation API reference for Cantera package libr
 app-doc/casting-spels-emacs 19-r2: Casting SPELs in Lisp - A Comic Book (Emacs Lisp Edition)
 app-doc/clsync-docs 0.4.4-r1: Clsync and libclsync API documentation
 app-doc/cppman 0.4.8-r2 0.4.9: C++ man pages for Linux, with source from cplusplus.com and cppreference.com
-app-doc/csound-manual 6.14: The Csound reference manual
+app-doc/csound-manual 6.14 6.15: The Csound reference manual
 app-doc/devmanual 0_pre20200207 9999: The Gentoo Development Guide
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
 app-doc/doxygen 1.8.15 1.8.16-r1 1.8.17 9999: Documentation system for most programming languages
@@ -2322,7 +2322,7 @@ app-misc/beanstalkd 1.10 1.11: A simple, fast work queue
 app-misc/beep 1.4.9: Advanced PC speaker beeper
 app-misc/bfr 1.6-r2 1.6-r3: General-purpose command-line pipe buffer
 app-misc/bgrep 0_p20110121-r1: Grep-like tool to search for binary strings
-app-misc/bijiben 3.34.2: Note editor designed to remain simple to use
+app-misc/bijiben 3.34.2 3.36.3: Note editor designed to remain simple to use
 app-misc/binclock 1.5: Displays a binary clock in your terminal
 app-misc/binwalk 2.2.0 9999: A tool for identifying files embedded inside firmware images
 app-misc/birthday 1.6.2-r1: Displays a list of events happening in the near future
@@ -5182,7 +5182,7 @@ dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9-r1: Tool Command Language
 dev-lang/teyjus 2.1 2.1-r1: Higher-order logic programming language Lambda Prolog
 dev-lang/tk 8.5.17-r1 8.6.8 8.6.9 8.6.9.1: Tk Widget Set
 dev-lang/tuprolog 2.9.2 3.0.1 3.1.0 3.1.0-r1 3.2.0: tuProlog is a light-weight Prolog for Internet applications and infrastructures
-dev-lang/vala 0.36.20 0.40.20 0.40.23 0.44.11 0.46.7 0.46.10 0.46.11 0.46.12 0.48.6 0.48.7 0.48.8: Compiler for the GObject type system
+dev-lang/vala 0.36.20 0.40.20 0.40.23 0.44.11 0.46.7 0.46.10 0.46.11 0.46.12 0.46.13 0.48.6 0.48.7 0.48.8 0.48.9: Compiler for the GObject type system
 dev-lang/whitespace 0.4: Whitespace, an esoteric programming language
 dev-lang/xsb 3.6.0 3.6.0-r1 3.7.0-r1 3.8.0: XSB is a logic programming and deductive database system
 dev-lang/yap 6.3.3-r1: YAP is a high-performance Prolog compiler
@@ -5681,7 +5681,7 @@ dev-libs/ustr 1.0.4-r5 1.0.4-r7 1.0.4-r8: Low-overhead managed string library fo
 dev-libs/utfcpp 3.1 9999: UTF-8 C++ library
 dev-libs/uthash 2.0.2: An easy-to-use hash implementation for C programmers
 dev-libs/uulib 0.5.20-r1: Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
-dev-libs/vala-common 0.46.7 0.46.10 0.48.6 0.48.7 0.48.8: Build infrastructure for packages that use Vala
+dev-libs/vala-common 0.46.7 0.46.10 0.48.6 0.48.7 0.48.8 0.48.9: Build infrastructure for packages that use Vala
 dev-libs/vc 1.3.0 1.3.3 1.4.1: SIMD Vector Class Library for C++
 dev-libs/voikko-fi 2.3: Finnish dictionary for libvoikko based spell checkers (vvfst format)
 dev-libs/volume_key 0.3.11 0.3.12: Library for manipulating and storing storage volume encryption keys
@@ -6412,7 +6412,7 @@ dev-perl/Encode-compat 0.70.0-r2 0.70.0-r3: Encode.pm emulation layer
 dev-perl/Error 0.170.250 0.170.290: Error/exception handling in an OO-ish way
 dev-perl/Eval-Closure 0.140.0: safely and cleanly create closures via string eval
 dev-perl/Eval-LineNumbers 0.340.0 0.340.0-r1: Add line numbers to hereis blocks that contain perl source code
-dev-perl/Event 1.260.0: Fast, generic event loop
+dev-perl/Event 1.260.0 1.270.0: Fast, generic event loop
 dev-perl/Event-ExecFlow 0.640.0-r1: High level API for event-based execution flow control
 dev-perl/Event-RPC 1.80.0 1.100.0: Event based transparent Client/Server RPC framework
 dev-perl/Exception-Base 0.250.100: Error handling with exception class
@@ -11546,7 +11546,7 @@ games-puzzle/pingus 0.7.6-r2 9999: free Lemmings clone
 games-puzzle/pipepanic 0.1.3-r1: A simple pipe connecting game
 games-puzzle/pipewalker 0.9.4-r1: Rotating pieces puzzle game
 games-puzzle/quadra 1.2.0-r1: A tetris clone with multiplayer support
-games-puzzle/quadrapassel 3.36.00: Fit falling blocks together
+games-puzzle/quadrapassel 3.36.00 3.36.05: Fit falling blocks together
 games-puzzle/rezerwar 0.4.2-r1: Puzzle game like the known tetromino and the average pipe games
 games-puzzle/scramble 0.9.5-r1: Create as many words as you can before the time runs out
 games-puzzle/sdl-jewels 1.1.1-r1: Swap and match 3 or more jewels in a line in order to score points
@@ -11787,7 +11787,7 @@ gnome-base/gnome-common 3.18.0-r1: Common files for development of Gnome package
 gnome-base/gnome-control-center 3.34.5-r1 3.36.4: GNOME's main interface to configure various aspects of the desktop
 gnome-base/gnome-core-apps 3.34.4: Sub-meta package for the core applications integrated with GNOME 3
 gnome-base/gnome-core-libs 3.34.4 3.36.4: Sub-meta package for the core libraries of GNOME 3
-gnome-base/gnome-desktop 3.34.7 3.36.4: Library with common API for various GNOME modules
+gnome-base/gnome-desktop 3.34.7 3.36.4 3.36.5: Library with common API for various GNOME modules
 gnome-base/gnome-extra-apps 3.34.4: Sub-meta package for the applications of GNOME 3
 gnome-base/gnome-flashback 3.34.2 3.36.3: GNOME Flashback session
 gnome-base/gnome-keyring 3.34.0 3.36.0: Password and keyring managing daemon
@@ -11797,7 +11797,7 @@ gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
 gnome-base/gnome-panel 3.34.1 3.36.2: The GNOME Flashback Panel
 gnome-base/gnome-session 3.34.2 3.36.0: Gnome session manager
 gnome-base/gnome-settings-daemon 3.34.2 3.36.1: Gnome Settings Daemon
-gnome-base/gnome-shell 3.34.5 3.34.5-r1 3.36.4 3.36.4-r1 3.36.4-r2: Provides core UI functions for the GNOME 3 desktop
+gnome-base/gnome-shell 3.34.5 3.34.5-r1 3.36.5: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
 gnome-base/gsettings-desktop-schemas 3.34.0 3.36.1: Collection of GSettings schemas for GNOME desktop
 gnome-base/gvfs 1.42.2 1.44.1: Virtual filesystem implementation for GIO
@@ -11850,7 +11850,7 @@ gnome-extra/gnome-shell-extension-bluetooth-quick-connect 10 13: Allow to connec
 gnome-extra/gnome-shell-extension-dash-to-panel 37 38: An icon taskbar for the Gnome Shell
 gnome-extra/gnome-shell-extension-desktop-icons 20.04.0-r1: A GNOME Shell extension for providing desktop icons
 gnome-extra/gnome-shell-extension-gsconnect 33-r2 39: KDE Connect implementation for Gnome Shell
-gnome-extra/gnome-shell-extensions 3.34.2 3.36.2: JavaScript extensions for GNOME Shell
+gnome-extra/gnome-shell-extensions 3.34.2 3.36.2 3.36.3: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons-plus 27: Moves legacy tray icons to top panel
 gnome-extra/gnome-shell-frippery 3.34.2: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-software 3.34.2 3.36.1: Gnome install & update software
@@ -12399,7 +12399,7 @@ mail-client/aerc 0.4.0 9999: Email client for your terminal
 mail-client/alot 0.9 0.9.1 9999: Experimental terminal UI for net-mail/notmuch written in Python
 mail-client/alpine 2.23: An easy to use text-based based mail and news client
 mail-client/balsa 2.5.6-r1: Email client for GNOME
-mail-client/bower 0.10 0.11: Curses terminal client for the Notmuch email system
+mail-client/bower 0.10 0.11 0.12: Curses terminal client for the Notmuch email system
 mail-client/claws-mail 3.17.6-r1 9999: An email client (and news reader) based on GTK+
 mail-client/clawsker 1.1.0 1.3.1: Applet to edit Claws Mail's hidden preferences
 mail-client/cone 1.0: CONE: COnsole News reader and Emailer
@@ -13724,7 +13724,7 @@ media-sound/cmusfm 0.2.5 0.3.1 0.3.3: Last.fm scrobbler for cmus music player
 media-sound/codecgraph 20120114-r2: Generates a graph based on the ALSA description of an HD Audio codec
 media-sound/combine_wave 0.3.1-r1: sync up 2 audio ch. and/or combine 2 mono audio ch. into one stereo wave ch
 media-sound/coquillo 2.0.0: GUI audio tagger based on Qt and taglib
-media-sound/csound 6.14.0 9999: Sound design and signal processing system for composition and performance
+media-sound/csound 6.14.0 6.15.0 9999: Sound design and signal processing system for composition and performance
 media-sound/cvoicecontrol 0.9_alpha-r1: Console based speech recognition system
 media-sound/dagrab 0.513-r1: fixed point cd ripper
 media-sound/darkice 1.2 1.3 1.4: A live audio streamer
@@ -13771,7 +13771,7 @@ media-sound/gmpc 11.8.16-r1: A GTK+2 client for the Music Player Daemon
 media-sound/gmtp 1.3.11: A simple MTP client for MP3 players
 media-sound/gmusicbrowser 1.1.15_p20190315 9999: An open-source jukebox for large collections of mp3/ogg/flac files
 media-sound/gnomad 2.9.6: A GTK+ music manager for the Portable Digital Entertainment (PDE) protocol
-media-sound/gnome-music 3.34.6: Music management for Gnome
+media-sound/gnome-music 3.34.6 3.36.4.1: Music management for Gnome
 media-sound/gnome-sound-recorder 3.34.0: Simple sound recorder
 media-sound/gnump3d 3.0-r2: A streaming server for MP3, OGG vorbis and other streamable files
 media-sound/gogglesmm 1.2.1-r1: Fast and light music player
@@ -14781,7 +14781,7 @@ net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.8.84 2.8.87 2.8.91 2.8.93: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 1.0.3 1.2.2 1.2.3: GObject-based API for handling resource discovery and announcement over SSDP
 net-libs/gtk-vnc 1.0.0: VNC viewer widget for GTK
-net-libs/gupnp 1.0.4 1.2.2 1.2.3: An object-oriented framework for creating UPnP devs and control points
+net-libs/gupnp 1.0.4 1.2.2 1.2.3 1.2.4: An object-oriented framework for creating UPnP devs and control points
 net-libs/gupnp-av 0.12.11: Utility library aiming to ease the handling UPnP A/V profiles
 net-libs/gupnp-igd 0.2.5 0.2.5-r10: Library to handle UPnP IGD port mapping for GUPnP
 net-libs/http-parser 2.8.1 2.9.1 2.9.2 2.9.3 2.9.4 99999: HTTP request/response parser for C
@@ -17482,7 +17482,7 @@ sys-fs/bcache-tools 1.0.5 1.0.8 1.0.8_p20140220-r1 9999: Tools for bcachefs
 sys-fs/bees 0.6.1-r2 9999: Best-Effort Extent-Same, a btrfs dedup agent
 sys-fs/bindfs 1.14.5 1.14.7: FUSE filesystem for bind mounting with altered permissions
 sys-fs/btrfs-progs 4.19 5.4.1 5.6.1 5.7 9999: Btrfs filesystem utilities
-sys-fs/btrfsmaintenance 0.4 0.4.1-r1 0.4.2: Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag
+sys-fs/btrfsmaintenance 0.4 0.4.1-r1 0.4.2 0.5: Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag
 sys-fs/cachefilesd 0.10.9 0.10.10-r1: Provides a caching directory on an already mounted filesystem
 sys-fs/clamfs 1.0.1-r3: A FUSE-based user-space file system with on-access anti-virus file scanning
 sys-fs/compsize 1.1 9999: Utility to find btrfs compression ratio
@@ -17762,7 +17762,7 @@ sys-process/daemontools 0.76-r8: Collection of tools for managing UNIX services
 sys-process/daemontools-encore 1.10 1.11: Collection of tools for managing UNIX services
 sys-process/dcron 4.5-r2: A cute little cron from Matt Dillon
 sys-process/dumb-init 1.2.0 1.2.1: A minimal init system for Linux containers
-sys-process/evisum 0.4.1 0.5.1: System and process monitor written with EFL
+sys-process/evisum 0.5.1: System and process monitor written with EFL
 sys-process/fcron 3.2.1-r1 3.2.1-r3 3.3.0_beta-r1: A command scheduler with extended capabilities over cron and anacron
 sys-process/ftop 1.0 1.0-r1: Monitor open files and filesystems
 sys-process/glances 2.11.1 3.1.0 3.1.4.1-r1: CLI curses based monitoring tool
@@ -18325,7 +18325,7 @@ x11-libs/gl2ps 1.3.9 1.4.0 1.4.2: OpenGL to PostScript printing library
 x11-libs/gnome-pty-helper 0.40.2: GNOME Setuid helper for opening ptys
 x11-libs/goffice 0.10.47: A library of document-centric objects and utilities
 x11-libs/goocanvas 1.0.0 2.0.4-r1: Canvas widget for GTK+ using the cairo 2D library for drawing
-x11-libs/gtk+ 2.24.32-r1 3.24.16 3.24.18 3.24.20 3.24.21: Gimp ToolKit +
+x11-libs/gtk+ 2.24.32-r1 3.24.16 3.24.18 3.24.20 3.24.21 3.24.22: Gimp ToolKit +
 x11-libs/gtk+extra 3.3.4: Useful Additional GTK+ widgets
 x11-libs/gtk-mac-integration 2.0.5: Menubar, doc and app bundle integration for GTK+
 x11-libs/gtkdatabox 0.9.3.0: Gtk+ Widgets for live display of large amounts of fluctuating numerical data
@@ -19077,7 +19077,7 @@ x11-wm/matwm2 0.1.2_pre3-r1: Simple EWMH compatible window manager with titlebar
 x11-wm/metacity 3.34.1 3.36.1: GNOME Flashback window manager
 x11-wm/muffin 4.4.3: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r4: A simple dynamic window manager, with features nicked from ratpoison and dwm
-x11-wm/mutter 3.34.6-r1 3.34.6-r2 3.36.4 3.36.4-r1: GNOME 3 compositing window manager based on Clutter
+x11-wm/mutter 3.34.6-r1 3.34.6-r2 3.36.4 3.36.4-r1 3.36.5: GNOME 3 compositing window manager based on Clutter
 x11-wm/notion 3_p2013030200 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.6.1-r3 9999: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20-r1: Small and fast window manager
