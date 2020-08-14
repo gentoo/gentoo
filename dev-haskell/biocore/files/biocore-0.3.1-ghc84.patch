@@ -1,0 +1,28 @@
+--- a/src/Bio/Core/Sequence.hs
++++ b/src/Bio/Core/Sequence.hs
+@@ -37,2 +37,3 @@ import Data.Stringable hiding (length)
+ import Data.Monoid
++import qualified Data.Semigroup as S
+ 
+@@ -42,2 +43,5 @@ newtype SeqData  = SeqData { unSD :: LC.ByteString }
+ 
++instance S.Semigroup SeqData where
++  (<>) (SeqData s1) (SeqData s2) = SeqData (mappend s1 s2)
++
+ instance Monoid SeqData where
+@@ -51,2 +55,9 @@ newtype SeqLabel = SeqLabel { unSL :: LC.ByteString }
+ 
++instance S.Semigroup SeqLabel where
++  (<>) (SeqLabel s1) (SeqLabel s2) = let
++    (i1:r1) = LC.words s1
++    (i2:r2) = LC.words s2
++    sid = mconcat [i1,(LC.pack ":"),i2]
++    in SeqLabel (LC.unwords ([sid]++r1++[LC.pack ":"]++r2))
++
+ instance Monoid SeqLabel where
+@@ -68,2 +79,5 @@ newtype QualData = QualData { unQD :: L.ByteString }
+ 
++instance S.Semigroup QualData where
++  (<>) (QualData s1) (QualData s2) = QualData (mappend s1 s2)
++
+ instance Monoid QualData where
