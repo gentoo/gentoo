@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-08-14)
+# Obsolete package. Current version is py2-only.
+# py3 port has been abandoned for a long time.
+# Use bibtex/biber as a replacement.
+# Removal in 30 days.
+dev-tex/crosstex
+
 # Matt Turner <mattst88@gentoo.org> (2020-08-13)
 # Masked for testing
 >=sys-auth/sssd-2.3.0
