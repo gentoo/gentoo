@@ -590,11 +590,6 @@ dev-ruby/zeitwerk:1
 # Unmaintained upstream and broken by ECM 5.72.0, masked for removal in 30 days.
 media-video/plasma-mediacenter
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-15)
-# Broken by scons-python3 for >1 year, depends on dead gnome-base/libgnomeui,
-# bugs #685576, #726818, no reverse dependencies. Removal in 30 days.
-app-text/glosung
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2020-07-15)
 # In preparation; do not use yet.
 =dev-lang/perl-5.32*
