@@ -785,10 +785,6 @@ app-misc/ifp-line
 # regarding runstatedir (not using /run).
 =net-misc/networkmanager-1.22.10-r11
 
-# Stefan Strogin <steils@gentoo.org> (2020-06-03)
-# Masked for testing
->=dev-libs/libressl-3.2.0
-
 # Jonas Stein <jstein@gentoo.org> (2020-06-01)
 # Last rite package due to missing/unclear license.
 # Removal after 2020-08-01
