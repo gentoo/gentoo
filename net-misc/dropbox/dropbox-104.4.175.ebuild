@@ -14,7 +14,7 @@ SRC_URI="
 LICENSE="BSD-2 CC-BY-ND-3.0 FTL MIT LGPL-2 openssl dropbox"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-linux"
-IUSE="+librsync-bundled selinux X"
+IUSE="selinux X"
 
 RESTRICT="mirror strip"
 
@@ -38,7 +38,6 @@ RDEPEND="
 		x11-misc/wmctrl
 		x11-themes/hicolor-icon-theme
 	)
-	!librsync-bundled? ( <net-libs/librsync-2 )
 	selinux? ( sec-policy/selinux-dropbox )
 	app-arch/bzip2
 	dev-libs/libffi-compat:6
@@ -67,11 +66,6 @@ src_prepare() {
 		mv images/hicolor/16x16/status "${T}" || die
 	else
 		rm -vrf images || die
-	fi
-	if use librsync-bundled ; then
-		patchelf --set-rpath '$ORIGIN' librsyncffi_native.*.so || die
-	else
-		rm -vf librsync.so.1 || die
 	fi
 	patchelf --set-rpath '$ORIGIN' \
 		apex._apex.*.so \
