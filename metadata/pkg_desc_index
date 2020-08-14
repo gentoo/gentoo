@@ -16391,7 +16391,7 @@ sci-libs/trilinos 12.14.1 12.18.1: Scientific library collection for large scale
 sci-libs/udunits 2.1.24-r1 2.2.20: Library for manipulating units of physical quantities
 sci-libs/ufconfig 3.7.1: Common configuration scripts for the SuiteSparse libraries
 sci-libs/umfpack 5.7.9: Unsymmetric multifrontal sparse LU factorization library
-sci-libs/volk 2.3.0-r1: vector optimized library of kernels
+sci-libs/volk 2.3.0-r2: vector optimized library of kernels
 sci-libs/voro++ 0.4.6-r1: A 3D Voronoi cell software library
 sci-libs/votca-tools 1.4 1.4.1 1.5 1.5.1 1.6_rc1 1.6 1.6.1 9999: Votca tools library
 sci-libs/vtk 8.2.0: The Visualization Toolkit
