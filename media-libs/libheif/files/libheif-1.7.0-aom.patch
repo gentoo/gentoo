@@ -1,0 +1,46 @@
+From 331dff0ba58d5265ddcdadeaf5a45c1f0698a388 Mon Sep 17 00:00:00 2001
+From: Jakov Smolic <jakov.smolic@sartura.hr>
+Date: Fri, 14 Aug 2020 22:03:25 +0200
+Subject: [PATCH] Fix building against aom 1.0
+
+Taken from upstream commit:
+https://github.com/strukturag/libheif/commit/6768552c0a99bb2957906be0f369850326486a58
+
+Signed-off-by: Jakov Smolic <jakov.smolic@sartura.hr>
+---
+ libheif/heif_encoder_aom.cc | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/libheif/heif_encoder_aom.cc b/libheif/heif_encoder_aom.cc
+index 9953e34..669a51a 100644
+--- a/libheif/heif_encoder_aom.cc
++++ b/libheif/heif_encoder_aom.cc
+@@ -502,9 +502,11 @@ struct heif_error aom_encode_image(void* encoder_raw, const struct heif_image* i
+ 
+ 
+   // --- configure codec
+-
+-  unsigned int aomUsage = (encoder->realtime_mode ? AOM_USAGE_REALTIME : AOM_USAGE_GOOD_QUALITY);
+-
++  unsigned int aomUsage = 0;
++#if defined(AOM_USAGE_REALTIME)
++  // aom 2.0
++  aomUsage = (encoder->realtime_mode ? AOM_USAGE_REALTIME : AOM_USAGE_GOOD_QUALITY);
++#endif
+ 
+   aom_codec_enc_cfg_t cfg;
+   aom_codec_err_t res = aom_codec_enc_config_default(encoder->iface, &cfg, aomUsage);
+@@ -540,7 +542,10 @@ struct heif_error aom_encode_image(void* encoder_raw, const struct heif_image* i
+   aom_codec_control(&encoder->codec, AOME_SET_CPUUSED, encoder->cpu_used);
+ 
+   if (encoder->threads > 1) {
++#if defined(AV1E_SET_ROW_MT)
++    // aom 2.0
+     aom_codec_control(&encoder->codec, AV1E_SET_ROW_MT, 1);
++#endif
+   }
+ 
+   // --- encode frame
+-- 
+2.26.2
+
