@@ -8,7 +8,7 @@ inherit udev
 DESCRIPTION="Hardware (PCI, USB, OUI, IAB) IDs databases"
 HOMEPAGE="https://github.com/gentoo/hwids"
 if [[ ${PV} == 99999999 ]]; then
-	PYTHON_COMPAT=( python3_{6,7} )
+	PYTHON_COMPAT=( python3_{6..9} )
 	inherit git-r3 python-any-r1
 	EGIT_REPO_URI="https://github.com/gentoo/hwids.git"
 else
