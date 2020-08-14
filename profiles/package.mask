@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-14)
+# Was not ported to >=ghc-8. Old dev-vcs/darcs was the only user.
+# Removal in 30 days. bug #735998
+dev-haskell/hashed-storage
+
 # Rick Farina <zerochaos@gentoo.org> (2020-08-14)
 # Obsolete, nothing depends on it. Removal in 30 days.
 net-wireless/lorcon-old
