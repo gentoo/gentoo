@@ -24,6 +24,9 @@ IUSE="html"
 LANGS=" fr"
 IUSE+="${LANGS// / l10n_}"
 
+BDEPEND="
+	media-libs/libpng:0
+"
 DEPEND="app-arch/unzip"
 
 S=${WORKDIR}
@@ -45,6 +48,18 @@ src_unpack() {
 			mv html html-${lang}
 		fi
 	done
+}
+
+src_prepare() {
+	default
+
+	# Fix broken png file, bug 737130
+	if use html; then
+		local png=html-en/images/delayk.png
+		pngfix -q --out=${png/.png/fixed.png} ${png} # see pngfix help for exit codes
+		[[ $? -gt 15 ]] && die "Failed to fix ${png}"
+		mv -f ${png/.png/fixed.png} ${png} || die
+	fi
 }
 
 src_install() {
