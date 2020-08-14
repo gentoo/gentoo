@@ -15,7 +15,7 @@ SRC_URI="mirror://gentoo/${P}.tar.xz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="caps debug python seccomp"
+IUSE="caps debug kernel_linux python seccomp"
 
 RDEPEND="caps? ( >=sys-libs/libcap-2.24 )
 	python? (
@@ -26,8 +26,10 @@ RDEPEND="caps? ( >=sys-libs/libcap-2.24 )
 	)
 	seccomp? ( sys-libs/libseccomp )"
 DEPEND="${RDEPEND}"
+# >=linux-headers-4.11 to pick linux headers with statx, bug #737094
 BDEPEND="
 	caps? ( virtual/pkgconfig )
+	kernel_linux? ( >=sys-kernel/linux-headers-4.11 )
 	seccomp? ( virtual/pkgconfig )
 "
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
