@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit autotools flag-o-matic libtool multilib-minimal python-any-r1 xdg-utils
+inherit flag-o-matic libtool meson multilib-minimal python-any-r1 xdg-utils
 
 DESCRIPTION="An OpenType text shaping engine"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/HarfBuzz"
@@ -54,15 +54,6 @@ src_prepare() {
 
 	xdg_environment_reset
 
-	if [[ ${CHOST} == *-darwin* || ${CHOST} == *-solaris* ]] ; then
-		# on Darwin/Solaris we need to link with g++, like automake defaults
-		# to, but overridden by upstream because on Linux this is not
-		# necessary, bug #449126
-		sed -i \
-			-e 's/\<LINK\>/CXXLINK/' \
-			src/Makefile.am || die
-	fi
-
 	sed -i \
 		-e 's:tests/macos.tests::' \
 		test/shaping/data/in-house/Makefile.sources \
@@ -73,38 +64,46 @@ src_prepare() {
 		echo "EXTRA_DIST = " > gtk-doc.make
 	fi
 
-	eautoreconf
-	elibtoolize # for Solaris
-
 	# bug 618772
 	append-cxxflags -std=c++14
 }
 
+meson_multilib_native_feature() {
+	if multilib_is_native_abi && use "$1" ; then
+		echo "enabled"
+	else
+		echo "disabled"
+	fi
+}
+
 multilib_src_configure() {
 	# harfbuzz-gobject only used for instrospection, bug #535852
-	local myeconfargs=(
-		--without-coretext
-		--without-fontconfig #609300
-		--without-uniscribe
-		$(multilib_native_use_enable doc gtk-doc)
-		$(multilib_native_use_enable doc gtk-doc-html)
-		$(use_enable static-libs static)
-		$(multilib_native_use_with cairo)
-		$(use_with glib)
-		$(use_with introspection gobject)
-		$(use_with graphite graphite2)
-		$(use_with icu)
-		$(multilib_native_use_enable introspection)
-		$(use_with truetype freetype)
+	local emesonargs=(
+		-Dcairo="$(meson_multilib_native_feature cairo)"
+		-Dcoretext="disabled"
+		-Ddocs="$(meson_multilib_native_feature doc)"
+		-Dfontconfig="disabled" #609300
+		#-Dgobject="$(meson_multilib_native_feature introspection)"
+		-Dintrospection="$(meson_multilib_native_feature introspection)"
+		-Dstatic="$(usex static-libs true false)"
+		$(meson_feature glib)
+		$(meson_feature graphite)
+		$(meson_feature icu)
+		$(meson_feature introspection gobject)
+		$(meson_feature test tests)
+		$(meson_feature truetype freetype)
 	)
-	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+	meson_src_configure
+}
 
-	if multilib_is_native_abi; then
-		ln -s "${S}"/docs/html docs/html || die
-	fi
+multilib_src_compile() {
+	meson_src_compile
+}
+
+multilib_src_install() {
+	meson_src_install
 }
 
 multilib_src_install_all() {
 	einstalldocs
-	find "${ED}" -type f -name "*.la" -delete || die
 }
