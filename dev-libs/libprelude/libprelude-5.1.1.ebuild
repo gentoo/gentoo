@@ -63,6 +63,7 @@ src_configure() {
 	local myconf=(
 		--enable-easy-bindings
 		--with-swig
+		--without-python2
 		$(use_with lua)
 		$(use_with perl)
 		$(usex perl '--with-perl-installdirs=vendor' '')
@@ -71,13 +72,9 @@ src_configure() {
 
 	if use python; then
 		python_setup
-		if python_is_python3; then
-			myconf+=(--without-python2 --with-python3="${EPYTHON}")
-		else
-			myconf+=(--without-python3 --with-python2="${EPYTHON}")
-		fi
+		myconf+=( --with-python3="${EPYTHON}" )
 	else
-		myconf+=(--without-python2 --without-python3)
+		myconf+=( --without-python3 )
 	fi
 
 	econf "${myconf[@]}"

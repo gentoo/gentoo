@@ -63,17 +63,6 @@ python_configure_all() {
 	export YES_I_HAVE_THE_RIGHT_TO_USE_THIS_BERKELEY_DB_VERSION=1
 }
 
-python_compile() {
-	if ! python_is_python3; then
-		local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
-	fi
-	distutils-r1_python_compile
-}
-
 python_test() {
-	if python_is_python3; then
-		PYTHONPATH=Lib3 "${EPYTHON}" test3.py -v || die "Testing failed with ${EPYTHON}"
-	else
-		PYTHONPATH=Lib "${EPYTHON}" test.py -v || die "Testing failed with ${EPYTHON}"
-	fi
+	PYTHONPATH=Lib3 "${EPYTHON}" test3.py -v || die "Testing failed with ${EPYTHON}"
 }

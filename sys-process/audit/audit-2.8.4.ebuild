@@ -85,11 +85,7 @@ multilib_src_configure() {
 			mkdir -p "${BUILD_DIR}" || die
 			cd "${BUILD_DIR}" || die
 
-			if python_is_python3; then
-				econf --without-python --with-python3
-			else
-				econf --with-python --without-python3
-			fi
+			econf --without-python --with-python3
 		}
 
 		use python && python_foreach_impl python_configure
@@ -109,25 +105,16 @@ multilib_src_compile() {
 		default
 
 		python_compile() {
-			local pysuffix pydef
-			if python_is_python3; then
-				pysuffix=3
-				pydef='USE_PYTHON3=true'
-			else
-				pysuffix=2
-				pydef='HAVE_PYTHON=true'
-			fi
-
 			emake -C "${BUILD_DIR}"/bindings/swig \
 				VPATH="${native_build}/lib" \
 				LIBS="${native_build}/lib/libaudit.la" \
 				_audit_la_LIBADD="${native_build}/lib/libaudit.la" \
 				_audit_la_DEPENDENCIES="${S}/lib/libaudit.h ${native_build}/lib/libaudit.la" \
-				${pydef}
-			emake -C "${BUILD_DIR}"/bindings/python/python${pysuffix} \
-				VPATH="${S}/bindings/python/python${pysuffix}:${native_build}/bindings/python/python${pysuffix}" \
+				USE_PYTHON3=true
+			emake -C "${BUILD_DIR}"/bindings/python/python3 \
+				VPATH="${S}/bindings/python/python3:${native_build}/bindings/python/python3" \
 				auparse_la_LIBADD="${native_build}/auparse/libauparse.la ${native_build}/lib/libaudit.la" \
-				${pydef}
+				USE_PYTHON3=true
 		}
 
 		local native_build="${BUILD_DIR}"
@@ -143,26 +130,17 @@ multilib_src_install() {
 		emake DESTDIR="${D}" initdir="$(systemd_get_systemunitdir)" install
 
 		python_install() {
-			local pysuffix pydef
-			if python_is_python3; then
-				pysuffix=3
-				pydef='USE_PYTHON3=true'
-			else
-				pysuffix=2
-				pydef='HAVE_PYTHON=true'
-			fi
-
 			emake -C "${BUILD_DIR}"/bindings/swig \
 				VPATH="${native_build}/lib" \
 				LIBS="${native_build}/lib/libaudit.la" \
 				_audit_la_LIBADD="${native_build}/lib/libaudit.la" \
 				_audit_la_DEPENDENCIES="${S}/lib/libaudit.h ${native_build}/lib/libaudit.la" \
-				${pydef} \
+				USE_PYTHON3=true \
 				DESTDIR="${D}" install
-			emake -C "${BUILD_DIR}"/bindings/python/python${pysuffix} \
-				VPATH="${S}/bindings/python/python${pysuffix}:${native_build}/bindings/python/python${pysuffix}" \
+			emake -C "${BUILD_DIR}"/bindings/python/python3 \
+				VPATH="${S}/bindings/python/python3:${native_build}/bindings/python/python3" \
 				auparse_la_LIBADD="${native_build}/auparse/libauparse.la ${native_build}/lib/libaudit.la" \
-				${pydef} \
+				USE_PYTHON3=true \
 				DESTDIR="${D}" install
 		}
 
