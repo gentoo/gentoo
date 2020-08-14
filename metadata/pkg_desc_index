@@ -8388,7 +8388,7 @@ dev-python/markdown2 2.3.9: Python Markdown language reimplementation
 dev-python/markups 3.0.0 3.0.0-r1: A wrapper around various text markups
 dev-python/markupsafe 1.1.1: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/marshmallow 3.5.1: A lightweight library for converting complex datatypes to and from native Python datatypes.
-dev-python/matplotlib 3.2.2 3.3.0: Pure python plotting library with matlab like syntax
+dev-python/matplotlib 3.2.2 3.3.0 3.3.1: Pure python plotting library with matlab like syntax
 dev-python/matplotlib-python2 2.2.5-r2: Pure python plotting library with matlab like syntax (py2 version)
 dev-python/matterhook 0.1-r1: Interact with Mattermost incoming webhooks easily
 dev-python/mccabe 0.6.1-r1: flake8 plugin: McCabe complexity checker
