@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8})
 
-inherit cmake-utils python-single-r1
+inherit cmake python-single-r1
 
 DESCRIPTION="gnuradio I/Q balancing"
 HOMEPAGE="http://git.osmocom.org/gr-iqbal/"
@@ -32,10 +32,10 @@ src_configure() {
 	local mycmakeargs=(
 		-DENABLE_DOXYGEN="$(usex doc)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	python_optimize "${ED}/$(python_get_sitedir)"
 }
