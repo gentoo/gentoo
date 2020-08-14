@@ -12,12 +12,12 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}/${PV}/${P}.tar.gz"
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="jack lash X"
+IUSE="lash X"
 
 CDEPEND="
 	dev-libs/glib:2
+	virtual/jack
 	x11-libs/gtk+:2
-	jack? ( virtual/jack )
 	lash? ( media-sound/lash )
 	X? ( x11-libs/libX11 )
 "
@@ -33,8 +33,8 @@ src_prepare() {
 }
 
 src_configure() {
-	local mymakeargs=(
-		-DJackEnable=$(usex jack)
+	local mycmakeargs=(
+		-DJackEnable=ON # though configurable, does not compile withou jack
 		-DLashEnable=$(usex lash)
 		-DX11Enable=$(usex X)
 	)
