@@ -12,8 +12,9 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="acl autofs +locator +netlink nfsv4 nls +manpages samba selinux sudo ssh systemd test valgrind"
+IUSE="acl +autofs +locator +netlink nfsv4 nls +manpages samba selinux +sudo +ssh systemd test valgrind"
 RESTRICT="!test? ( test )"
+REQUIRED_USE="test? ( ssh sudo )"
 
 COMMON_DEP="
 	>=sys-libs/pam-0-r1[${MULTILIB_USEDEP}]
