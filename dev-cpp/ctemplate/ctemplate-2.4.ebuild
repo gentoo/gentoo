@@ -47,7 +47,7 @@ src_compile() {
 src_install() {
 	default
 	if ! use doc; then
-		rm -r "${ED%/}"/usr/share/doc/${PF}/html || die
+		rm -r "${ED}"/usr/share/doc/${PF}/html || die
 	fi
 
 	if use vim-syntax; then
