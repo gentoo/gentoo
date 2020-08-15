@@ -40,6 +40,7 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	virtual/pkgconfig
 	doc? ( dev-util/gtk-doc )
+	introspection? ( dev-util/glib-utils )
 "
 
 pkg_setup() {
