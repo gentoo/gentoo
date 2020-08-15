@@ -146,6 +146,9 @@ WAF_BINARY="${S}/buildtools/bin/waf"
 SHAREDMODS=""
 
 pkg_setup() {
+	# Package fails to build with distcc
+	export DISTCC_DISABLE=1
+
 	python-single-r1_pkg_setup
 	if use cluster ; then
 		SHAREDMODS="idmap_rid,idmap_tdb2,idmap_ad"
