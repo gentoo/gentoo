@@ -8,19 +8,19 @@ GENTOO_DEPEND_ON_PERL=no
 PATCHSET=3
 PYTHON_COMPAT=( python3_{6,7,8} )
 WANT_AUTOMAKE=none
-inherit autotools distutils-r1 git-r3 perl-module systemd
+inherit autotools distutils-r1 perl-module systemd
 
 DESCRIPTION="Software for generating and retrieving SNMP data"
 HOMEPAGE="http://www.net-snmp.org/"
-EGIT_REPO_URI="https://github.com/net-snmp/net-snmp"
 SRC_URI="
+	mirror://sourceforge/project/${PN}/${PN}/${PV/_rc*/}/${P/_rc/.rc}.tar.gz
 	https://dev.gentoo.org/~jer/${PN}-5.7.3-patches-3.tar.xz
 "
 
 # GPL-2 for the init scripts
 LICENSE="HPND BSD GPL-2"
 SLOT="0/40"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="
 	X bzip2 doc elf kmem ipv6 libressl lm-sensors mfd-rewrites minimal mysql
 	netlink pcap pci perl python rpm selinux smux ssl tcpd ucd-compat zlib
@@ -82,11 +82,6 @@ PATCHES=(
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
-}
-
-src_unpack() {
-	default
-	git-r3_src_unpack
 }
 
 src_prepare() {

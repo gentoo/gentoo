@@ -1,0 +1,10 @@
+--- a/perl/Makefile.PL
++++ b/perl/Makefile.PL
+@@ -3,6 +3,7 @@
+ use ExtUtils::MakeMaker;
+ use Config;
+ require 5;
++use lib '.';
+ use MakefileSubs;
+ 
+ # Prevent that MakeMaker complains about unknown parameter names.
