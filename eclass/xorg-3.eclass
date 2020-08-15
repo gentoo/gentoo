@@ -85,15 +85,16 @@ IUSE=""
 # inherit to override the default autoconfigured module.
 : ${XORG_MODULE:="auto"}
 if [[ ${XORG_MODULE} == auto ]]; then
-	case ${CATEGORY} in
-		app-doc)             XORG_MODULE=doc/     ;;
-		media-fonts)         XORG_MODULE=font/    ;;
-		x11-apps|x11-wm)     XORG_MODULE=app/     ;;
-		x11-misc|x11-themes) XORG_MODULE=util/    ;;
-		x11-base)            XORG_MODULE=xserver/ ;;
-		x11-drivers)         XORG_MODULE=driver/  ;;
-		x11-libs)            XORG_MODULE=lib/     ;;
-		*)                   XORG_MODULE=         ;;
+	case "${CATEGORY}/${P}" in
+		app-doc/*)               XORG_MODULE=doc/     ;;
+		media-fonts/*)           XORG_MODULE=font/    ;;
+		x11-apps/*|x11-wm/*)     XORG_MODULE=app/     ;;
+		x11-misc/*|x11-themes/*) XORG_MODULE=util/    ;;
+		x11-base/*)              XORG_MODULE=xserver/ ;;
+		x11-drivers/*)           XORG_MODULE=driver/  ;;
+		x11-libs/xcb-util-*)     XORG_MODULE=xcb/     ;;
+		x11-libs/*)              XORG_MODULE=lib/     ;;
+		*)                       XORG_MODULE=         ;;
 	esac
 fi
 
