@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prepare prerm unpack
+DEPEND=office_implementation_libreoffice? ( || ( app-office/libreoffice app-office/libreoffice-bin ) ) office_implementation_openoffice? ( app-office/openoffice-bin ) app-arch/unzip
+DESCRIPTION=Open/LibreOffice extension for the FictionBook2 format with validation
+EAPI=7
+HOMEPAGE=https://sourceforge.net/projects/fbtools/
+IUSE=office_implementation_libreoffice office_implementation_openoffice
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=app-arch/zip dev-libs/libxml2 office_implementation_libreoffice? ( || ( app-office/libreoffice app-office/libreoffice-bin ) ) office_implementation_openoffice? ( app-office/openoffice-bin )
+REQUIRED_USE=|| ( office_implementation_libreoffice office_implementation_openoffice )
+SLOT=0
+SRC_URI=mirror://sourceforge/fbtools/files/release/OOoFBTools-2.57.zip
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	office-ext-r1	c5599254918ad9dfc276c949247566af
+_md5_=7aa79eb37ec644da0fa7b6a10474c991
