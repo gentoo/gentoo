@@ -239,7 +239,7 @@ multilib_src_install_all() {
 }
 
 multilib_src_test() {
-	default
+	emake check
 }
 
 pkg_postinst() {
