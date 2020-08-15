@@ -13,7 +13,7 @@ SRC_URI="https://mp4v2.googlecode.com/files/${MY_P}.tar.bz2"
 
 LICENSE="MPL-1.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="static-libs utils"
 # Tests need DejaGnu but are non-existent (just an empty framework)
 RESTRICT="test"
