@@ -51,6 +51,7 @@ RESTRICT="!test? ( test )"
 
 SRC_URI+="
 	https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/${PATCH}.tar.xz
+	system-libvpx? ( https://dev.gentoo.org/~polynomial-c/mozilla/${PN}-2.53.3-system_libvpx-1.8.patch.xz )
 "
 
 ASM_DEPEND=">=dev-lang/yasm-1.1"
@@ -101,7 +102,7 @@ DEPEND="
 	system-icu? ( >=dev-libs/icu-59.1:= )
 	system-jpeg? ( >=media-libs/libjpeg-turbo-1.2.1 )
 	system-libevent? ( >=dev-libs/libevent-2.0:0= )
-	system-libvpx? ( >=media-libs/libvpx-1.5.0:0=[postproc] )
+	system-libvpx? ( >=media-libs/libvpx-1.8.0:0=[postproc] )
 	system-sqlite? ( >=dev-db/sqlite-3.19.3:3[secure-delete,debug=] )
 	wifi? (
 		kernel_linux? (
@@ -190,6 +191,7 @@ src_prepare() {
 	done
 
 	eapply "${FILESDIR}/${PN}-2.53.3-rust-1.45.0.patch"
+	use system-libvpx && eapply "${WORKDIR}/${PN}-2.53.3-system_libvpx-1.8.patch"
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
