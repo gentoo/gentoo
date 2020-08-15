@@ -59,11 +59,6 @@ src_prepare() {
 		test/shaping/data/in-house/Makefile.sources \
 		|| die # bug 726120
 
-	if ! use doc ; then
-		# Taken from shipped autogen.sh script
-		echo "EXTRA_DIST = " > gtk-doc.make
-	fi
-
 	# bug 618772
 	append-cxxflags -std=c++14
 }
@@ -83,7 +78,6 @@ multilib_src_configure() {
 		-Dcoretext="disabled"
 		-Ddocs="$(meson_multilib_native_feature doc)"
 		-Dfontconfig="disabled" #609300
-		#-Dgobject="$(meson_multilib_native_feature introspection)"
 		-Dintrospection="$(meson_multilib_native_feature introspection)"
 		-Dstatic="$(usex static-libs true false)"
 		$(meson_feature glib)
