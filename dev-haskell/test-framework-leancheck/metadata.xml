@@ -5,7 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<use>
-		<flag name="print">print debug info.</flag>
-	</use>
 </pkgmetadata>
