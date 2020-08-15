@@ -70,6 +70,8 @@ DEPEND="${RDEPEND}
 	curl? ( virtual/pkgconfig )
 "
 
+PATCHES=("${FILESDIR}"/${PN}-2.16.1-curl.patch)
+
 src_configure() {
 	haskell-cabal_src_configure \
 		$(cabal_flag curl curl) \
