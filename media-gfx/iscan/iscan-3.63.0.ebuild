@@ -27,7 +27,10 @@ RDEPEND="
 "
 # Disable opencl as during reorient.utr test it produces inconsistent results
 DEPEND="${RDEPEND}
-	test? ( app-text/tesseract[training,-opencl] )
+	test? (
+		app-text/tesseract[training,-opencl]
+		media-fonts/dejavu
+	)
 "
 RESTRICT="!test? ( test )"
 S="${WORKDIR}/utsushi-0.$(ver_cut 2-3)"
