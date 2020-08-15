@@ -743,12 +743,6 @@ dev-go/goptlib
 # Removal in 30 days
 dev-perl/gnome2-perl
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-07-05)
-# No upstream activity in past few years.
-# Needs porting to gtk3/fxce4panel-4.15: bug #729492.
-# Removal in 30 days.
-x11-misc/xmonad-log-applet
-
 # Michał Górny <mgorny@gentoo.org> (2020-07-04)
 # Unmaintained.  Requires scipy-python2.  Current version is from 2015,
 # latest upstream release from 2017.  The only revdep is masked
