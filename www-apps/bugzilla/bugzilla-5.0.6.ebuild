@@ -12,7 +12,7 @@ HOMEPAGE="https://www.bugzilla.org"
 LICENSE="MPL-2.0"
 KEYWORDS="amd64 x86"
 
-IUSE="apache2 doc mysql postgres sqlite test"
+IUSE="apache2 doc mysql postgres +sqlite test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
