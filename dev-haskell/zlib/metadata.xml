@@ -6,14 +6,16 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
-		<flag name='non-blocking-ffi'>Execute FFI calls in the context of haskell thread.</flag>
+		<flag name="bundled-c-zlib">Use the bundled zlib C sources. Requires pkg-config to be False. For windows, this is the default.</flag>
+		<flag name="non-blocking-ffi">The (de)compression calls can sometimes take a long time, which prevents other Haskell threads running. Enabling this flag avoids this unfairness, but with greater overall cost.</flag>
 	</use>
 	<longdescription>
 		This package provides a pure interface for compressing and
 		decompressing streams of data represented as lazy
-		'ByteString's. It uses the zlib C library so it has high
-		performance. It supports the \"zlib\", \"gzip\" and \"raw\"
-		compression formats.
+		&#39;ByteString&#39;s. It uses the
+		&lt;https://en.wikipedia.org/wiki/Zlib zlib C library&gt;
+		so it has high performance. It supports the \&quot;zlib\&quot;,
+		\&quot;gzip\&quot; and \&quot;raw\&quot; compression formats.
 		
 		It provides a convenient high level API suitable for most
 		tasks and for the few cases where more control is needed it
