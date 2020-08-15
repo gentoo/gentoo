@@ -57,7 +57,6 @@ RDEPEND="${COMMON_DEP}
 	>=sys-libs/glibc-2.17[nscd]
 	selinux? ( >=sec-policy/selinux-sssd-2.20120725-r9 )
 	"
-# FIXME: Add pam_wrapper when it enters the tree. Bug #730974
 DEPEND="${COMMON_DEP}
 	test? (
 		app-crypt/p11-kit
@@ -67,6 +66,7 @@ DEPEND="${COMMON_DEP}
 		net-libs/gnutls[pkcs11,tools]
 		sys-libs/libfaketime
 		sys-libs/nss_wrapper
+		sys-libs/pam_wrapper
 		sys-libs/uid_wrapper
 		valgrind? ( dev-util/valgrind )
 	)
