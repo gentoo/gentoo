@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
-DEPEND=dev-cpp/eigen:3 dev-cpp/glibmm:2 dev-cpp/gtkmm:3.0 dev-libs/glib:2 >=media-libs/libsndfile-1.0.17 >=media-libs/zita-convolver-3:= media-libs/zita-resampler >=net-misc/curl-7.26.0 >=sci-libs/fftw-3.1.2:3.0= x11-libs/gtk+:3 lv2? ( media-libs/lv2 ) standalone? ( dev-libs/boost:= media-libs/liblrdf media-libs/lilv virtual/jack bluetooth? ( net-wireless/bluez ) zeroconf? ( net-dns/avahi ) ) || ( dev-lang/python:3.8[threads(+)] dev-lang/python:3.7[threads(+)] dev-lang/python:3.6[threads(+)] ) dev-lang/sassc virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext ) dev-util/desktop-file-utils x11-misc/shared-mime-info >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=dev-cpp/eigen:3 dev-cpp/glibmm:2 dev-cpp/gtkmm:3.0 dev-libs/glib:2 >=media-libs/libsndfile-1.0.17 >=media-libs/zita-convolver-3:= media-libs/zita-resampler >=net-misc/curl-7.26.0 >=sci-libs/fftw-3.1.2:3.0= x11-libs/gtk+:3 lv2? ( media-libs/lv2 ) standalone? ( dev-libs/boost:= media-libs/liblrdf media-libs/lilv virtual/jack bluetooth? ( net-wireless/bluez ) nsm? ( media-libs/liblo ) zeroconf? ( net-dns/avahi ) ) || ( dev-lang/python:3.8[threads(+)] dev-lang/python:3.7[threads(+)] dev-lang/python:3.6[threads(+)] ) dev-lang/sassc virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext ) dev-util/desktop-file-utils x11-misc/shared-mime-info >=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=Virtual guitar amplifier for Linux
 EAPI=6
 HOMEPAGE=https://guitarix.org/
-IUSE=bluetooth debug lv2 nls +standalone zeroconf
+IUSE=bluetooth debug lv2 nls nsm +standalone zeroconf
 LICENSE=GPL-2
 PROPERTIES=live
-RDEPEND=dev-cpp/eigen:3 dev-cpp/glibmm:2 dev-cpp/gtkmm:3.0 dev-libs/glib:2 >=media-libs/libsndfile-1.0.17 >=media-libs/zita-convolver-3:= media-libs/zita-resampler >=net-misc/curl-7.26.0 >=sci-libs/fftw-3.1.2:3.0= x11-libs/gtk+:3 lv2? ( media-libs/lv2 ) standalone? ( dev-libs/boost:= media-libs/liblrdf media-libs/lilv virtual/jack bluetooth? ( net-wireless/bluez ) zeroconf? ( net-dns/avahi ) ) standalone? ( media-fonts/roboto )
+RDEPEND=dev-cpp/eigen:3 dev-cpp/glibmm:2 dev-cpp/gtkmm:3.0 dev-libs/glib:2 >=media-libs/libsndfile-1.0.17 >=media-libs/zita-convolver-3:= media-libs/zita-resampler >=net-misc/curl-7.26.0 >=sci-libs/fftw-3.1.2:3.0= x11-libs/gtk+:3 lv2? ( media-libs/lv2 ) standalone? ( dev-libs/boost:= media-libs/liblrdf media-libs/lilv virtual/jack bluetooth? ( net-wireless/bluez ) nsm? ( media-libs/liblo ) zeroconf? ( net-dns/avahi ) ) standalone? ( media-fonts/roboto )
 REQUIRED_USE=|| ( lv2 standalone )
 SLOT=0
 _eclasses_=git-r3	8ec5b53812bce105ae7943930e4660f8	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	waf-utils	cf9742c01975dc707eb982114a9d70fa	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=844115c2b108b1b5dae2f22d0a373f19
+_md5_=ac51fbaac29cb1f6ea01a6b487bf5b2e
