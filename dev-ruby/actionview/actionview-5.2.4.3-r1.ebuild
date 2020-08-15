@@ -41,6 +41,7 @@ ruby_add_bdepend "
 		dev-ruby/mocha
 		~dev-ruby/actionpack-${PV}
 		~dev-ruby/activemodel-${PV}
+		~dev-ruby/railties-${PV}
 	)"
 
 all_ruby_prepare() {
