@@ -4,6 +4,14 @@
 	<email>andrey_utkin@gentoo.org</email>
 	<name>Andrey Utkin</name>
 </maintainer>
+<maintainer type="person">
+	<email>holgersson@posteo.de</email>
+	<name>Nils Freydank</name>
+</maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>
 <upstream>
 	<remote-id type="github">scheibler/khard</remote-id>
 </upstream>
