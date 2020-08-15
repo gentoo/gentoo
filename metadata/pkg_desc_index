@@ -4551,7 +4551,7 @@ dev-haskell/yesod-routes 1.1.2 1.2.0.7-r2: Efficient routing for Yesod
 dev-haskell/yesod-static 1.2.4 1.4.0.4 1.5.0.3 1.5.0.5 1.5.1.1 1.6.0.1: Static file serving subsite for Yesod Web Framework
 dev-haskell/yesod-test 1.2.3.1 1.4.3.1 1.5.0.1 1.5.1.1 1.5.3 1.5.4.1 1.6.10: integration testing for WAI/Yesod Applications
 dev-haskell/zip-archive 0.1.3.4 0.2.3.7 0.3.3 0.4.1: Library for creating and modifying zip archives
-dev-haskell/zlib 0.5.4.1 0.5.4.2 0.6.1.1 0.6.1.2 0.6.2.1: Compression and decompression in the gzip and zlib formats
+dev-haskell/zlib 0.5.4.2 0.6.2.1 0.6.2.2: Compression and decompression in the gzip and zlib formats
 dev-haskell/zlib-bindings 0.1.1.5: Low-level bindings to the zlib package. (deprecated)
 dev-haskell/zlib-conduit 1.0.0 1.1.0: Streaming compression/decompression via conduits. (deprecated)
 dev-haskell/zlib-enum 0.2.3.1 0.2.3.1-r1: Enumerator interface for zlib compression
@@ -19100,8 +19100,8 @@ x11-wm/windowmaker 0.95.8-r1 0.95.9-r1 9999: The fast and light GNUstep window m
 x11-wm/wm2 4-r1: Small, unconfigurable window manager
 x11-wm/wmfs 201003 99999999: Window Manager From Scratch, A tiling window manager highly configurable
 x11-wm/wmii 3.9.2-r5: A dynamic window manager for X11
-x11-wm/xmonad 0.11-r1 0.11-r3 0.11.1 0.12 0.13 0.15: A tiling window manager
-x11-wm/xmonad-contrib 0.11.2 0.11.4 0.12 0.13 0.15 0.16: Third party extensions for xmonad
+x11-wm/xmonad 0.15: A tiling window manager
+x11-wm/xmonad-contrib 0.16: Third party extensions for xmonad
 x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
 x11-wm/xpra 3.0.2-r1 3.0.5-r1: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.12.11 4.15.1: Extensions, widgets and framework library with session support for Xfce
