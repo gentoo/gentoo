@@ -594,11 +594,6 @@ net-libs/osptoolkit
 =net-misc/asterisk-11*
 =net-misc/asterisk-g729-11*
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-07-20)
-# Old erlang version. Removal in 30 days. bug #732188
-=dev-lang/erlang-21*
-<net-misc/rabbitmq-server-3.7.24
-
 # Hans de Graaff <graaff@gentoo.org> (2020-07-20)
 # Mask old obsolete slots for removal in 30 days.
 # Use a newer slot of the same package instead.
