@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-15)
+# Obsolete package without reverse dependencies.
+# Does not compile against current ghc-8.8. Removal in 30 days.
+dev-haskell/crypto-conduit
+
 # Mart Raudsepp <leio@gentoo.org> (2020-08-15)
 # Development release, needs testing to ensure valac-0.50
 # works for existing packages
