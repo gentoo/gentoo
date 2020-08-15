@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 
 inherit distutils-r1
 
@@ -13,25 +14,23 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 
+# please do not depend on pytest to avoid unnecessary USEDEP enforcement
 RDEPEND="
 	dev-python/execnet[${PYTHON_USEDEP}]
-	>=dev-python/pytest-4.4[${PYTHON_USEDEP}]
+	dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/pytest-forked[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
 "
 
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/filelock[${PYTHON_USEDEP}] )
+BDEPEND="
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	test? (
+		dev-python/filelock[${PYTHON_USEDEP}]
+	)
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-1.28.0-strip-setuptools-scm.patch"
-)
+distutils_enable_tests pytest
 
 python_test() {
 	distutils_install_for_testing
