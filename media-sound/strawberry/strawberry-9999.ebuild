@@ -99,6 +99,7 @@ src_configure() {
 		-DENABLE_LIBPULSE="$(usex pulseaudio)"
 		-DENABLE_UDISKS2="$(usex udisks)"
 		-DUSE_SYSTEM_TAGLIB=ON
+		-DWITH_QT6=OFF
 	)
 
 	use !debug && append-cppflags -DQT_NO_DEBUG_OUTPUT
