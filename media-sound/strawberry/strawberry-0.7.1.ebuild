@@ -5,7 +5,7 @@ EAPI=7
 
 inherit cmake flag-o-matic l10n virtualx xdg
 
-PLOCALES="de es fr id it nb ru"
+PLOCALES="cs de es fr hu id it ko nb pl ru"
 
 DESCRIPTION="Modern music player and library organizer based on Clementine and Qt"
 HOMEPAGE="https://www.strawbs.org/"
@@ -99,6 +99,7 @@ src_configure() {
 		-DENABLE_LIBPULSE="$(usex pulseaudio)"
 		-DENABLE_UDISKS2="$(usex udisks)"
 		-DUSE_SYSTEM_TAGLIB=ON
+		-DWITH_QT6=OFF
 	)
 
 	use !debug && append-cppflags -DQT_NO_DEBUG_OUTPUT
