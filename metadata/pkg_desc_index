@@ -1006,7 +1006,7 @@ app-crypt/tpm2-tools 4.2.1: Tools for the TPM 2.0 TSS
 app-crypt/tpm2-totp 0.2.1-r1: Attest the trustworthiness of a device against a human using time-based OTP
 app-crypt/tpm2-tss 2.4.1: TCG Trusted Platform Module 2.0 Software Stack
 app-crypt/tpm2-tss-engine 1.1.0_rc1: OpenSSL Engine for TPM2 devices
-app-crypt/trousers 0.3.14-r2: An open-source TCG Software Stack (TSS) v1.1 implementation
+app-crypt/trousers 0.3.14-r2 0.3.14-r3: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-crypt/ubuntu-keyring 2018.02.28 2018.09.18.1 2020.02.11.2: GnuPG archive keys of the Ubuntu archive
 app-crypt/veracrypt 1.24_p2 1.24_p4: Disk encryption with strong security based on TrueCrypt
 app-crypt/xca 2.1.2 2.2.1 2.3.0: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
@@ -5116,7 +5116,7 @@ dev-lang/go-bootstrap 1.13.6: Bootstrap package for dev-lang/go
 dev-lang/gprolog 1.4.4 1.4.5: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/helium 1.8.1: The Helium Compiler
 dev-lang/hy 0.14.0 0.15.0 0.16.0 0.17.0: A LISP dialect running in python
-dev-lang/icon 9.5.1-r1 9.5.1-r2: very high level language
+dev-lang/icon 9.5.1-r1 9.5.1-r2 9.5.20h: very high level language
 dev-lang/inform 6.33.1_p2: design system for interactive fiction
 dev-lang/interprolog 2.1.2: InterProlog is a Java front-end and enhancement for Prolog
 dev-lang/ispc 1.13.0 9999: Intel SPMD Program Compiler
