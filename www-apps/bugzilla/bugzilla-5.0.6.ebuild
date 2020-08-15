@@ -10,7 +10,7 @@ SRC_URI="https://ftp.mozilla.org/pub/mozilla.org/webtools/${P}.tar.gz"
 HOMEPAGE="https://www.bugzilla.org"
 
 LICENSE="MPL-2.0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="apache2 doc mysql postgres sqlite test"
 RESTRICT="!test? ( test )"
