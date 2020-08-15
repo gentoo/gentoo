@@ -19,7 +19,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sp
 IUSE="+gpg tools"
 
 RDEPEND="
-	gpg? ( app-crypt/gnupg )"
+	gpg? ( >=app-crypt/gnupg-2.2.20-r1 )"
 
 distutils_enable_tests setup.py
 
