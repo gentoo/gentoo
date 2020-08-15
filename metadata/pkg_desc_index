@@ -5672,7 +5672,7 @@ dev-libs/ucl 1.03-r1: the UCL Compression Library
 dev-libs/ucommon 6.0.3 6.5.7 7.0.0: Portable C++ runtime for threads and sockets
 dev-libs/udis86 1.7-r2 1.7.2: Disassembler library for the x86/-64 architecture sets
 dev-libs/unibilium 2.0.0: A very basic terminfo library
-dev-libs/unittest++ 1.6.1 2.0.0: A lightweight unit testing framework for C++
+dev-libs/unittest++ 2.0.0 2.0.0-r1: A lightweight unit testing framework for C++
 dev-libs/univalue 1.0.5 9999: C++ universal value object and JSON library
 dev-libs/urdfdom 1.0.4 9999: URDF (U-Robot Description Format) library
 dev-libs/urdfdom_headers 1.0.5 9999: URDF (U-Robot Description Format) headers
