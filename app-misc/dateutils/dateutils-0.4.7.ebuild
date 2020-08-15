@@ -8,11 +8,11 @@ HOMEPAGE="https://www.fresse.org/dateutils/"
 
 case "${PV}" in
 	9999)
-		inherit git-r3
-		EGIT_REPO_URI="https://github.com/hroptatyr/${PN}.git"
+		inherit git-r3 autotools
+		EGIT_REPO_URI="https://github.com/hroptatyr/dateutils.git"
 		;;
 	*)
-		SRC_URI="https://bitbucket.org/hroptatyr/${PN}/downloads/${P}.tar.xz"
+		SRC_URI="https://bitbucket.org/hroptatyr/dateutils/downloads/${P}.tar.xz"
 		KEYWORDS="~amd64 ~x86"
 esac
 
@@ -26,14 +26,6 @@ DEPEND="app-arch/xz-utils
 RDEPEND="!sys-fabric/dapl"
 
 src_configure() {
-	[ "${PV}" = 9999 ] && autoreconf -i
-	default
-}
-
-src_compile() {
-	emake CFLAGS="${CFLAGS}"
-}
-
-src_test() {
-	emake CFLAGS="${CFLAGS}" check
+	[[ "${PV}" = 9999 ]] && eautoreconf
+	econf CFLAGS="${CFLAGS}"
 }
