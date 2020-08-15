@@ -32,8 +32,8 @@ RDEPEND="
 
 DEPEND="dev-libs/libxslt
 	doc? ( app-doc/doxygen )
+	python? ( ${PYTHON_DEPS} )
 	virtual/pkgconfig
-	${PYTHON_DEPS}
 	${RDEPEND}
 "
 
@@ -50,7 +50,10 @@ PATCHES=(
 )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	# Package fails to build with distcc
+	export DISTCC_DISABLE=1
+
+	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -97,6 +100,8 @@ multilib_src_install() {
 		docinto html
 		dodoc -r apidocs/html/*
 	fi
+
+	use python && python_optimize #726454
 }
 
 pkg_postinst() {
