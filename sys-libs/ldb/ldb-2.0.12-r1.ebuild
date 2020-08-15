@@ -32,12 +32,13 @@ RDEPEND="
 
 DEPEND="dev-libs/libxslt
 	doc? ( app-doc/doxygen )
-	python? ( ${PYTHON_DEPS} )
 	virtual/pkgconfig
+	${PYTHON_DEPS}
 	${RDEPEND}
 "
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
+REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
 	test? ( python )"
 
 WAF_BINARY="${S}/buildtools/bin/waf"
@@ -53,7 +54,8 @@ pkg_setup() {
 	# Package fails to build with distcc
 	export DISTCC_DISABLE=1
 
-	use python && python-single-r1_pkg_setup
+	# waf requires a python interpreter
+	python-single-r1_pkg_setup
 }
 
 src_prepare() {
