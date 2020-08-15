@@ -452,7 +452,7 @@ app-admin/abrt 2.14.0 2.14.1: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 3.6.13-r2 4.0.19-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0.13: A webserver log analyzer
-app-admin/ansible 2.9.9 2.9.10 2.9.11 2.9.12 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.9.9 2.9.10 2.9.11 2.9.12 2.10.0 9999: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-cmdb 1.28: Ansible Configuration Management Database
 app-admin/ansible-lint 4.0.1 4.1.0: Checks ansible playbooks for practices and behaviour that can be improved
 app-admin/apache-tools 2.4.41 2.4.43 2.4.46: Useful Apache tools - htdigest, htpasswd, ab, htdbm
@@ -514,7 +514,7 @@ app-admin/gentoo-rsync-mirror 1.0-r5: Ebuild for setting up a Gentoo rsync mirro
 app-admin/github-backup-utils 2.10.0 2.10.0-r1 2.11.0 2.11.0-r1 2.11.1 2.11.1-r1 2.11.2 2.11.2-r1 2.13.0 2.13.2 2.14.2 2.15.0 2.15.1 2.16.1 2.17.0 2.18.0 2.19.1 2.20.2 2.21.0: Backup and recovery utilities for GitHub Enterprise
 app-admin/gixy 0.1.20: Nginx configuration static analyzer
 app-admin/gkrellm 2.3.10-r2 2.3.11 2.3.11-r1 9999: Single process stack of various system monitors
-app-admin/glance 20.0.0 2020.1.9999: Services for discovering, registering, and retrieving VM images
+app-admin/glance 20.0.0 20.0.1 2020.1.9999: Services for discovering, registering, and retrieving VM images
 app-admin/gnome-abrt 1.2.7: A utility for viewing problems that have occurred with the system
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/go-updater 0.2.0: Checks if Gentoo go packages are compiled with the system's golang version
@@ -13242,7 +13242,7 @@ media-libs/libyami 1.0.1 1.1.0 1.2.0 1.3.0 9999: Yet Another Media Infrastructur
 media-libs/libzen 0.4.38: Shared library for libmediainfo and mediainfo
 media-libs/libzmf 0.0.2 9999: Library for parsing Zoner Callisto/Draw documents
 media-libs/lilv 0.24.6-r2 0.24.8-r1: Library to make the use of LV2 plugins as simple as possible for applications
-media-libs/lsp-plugins 1.1.5-r2 1.1.7-r1 1.1.10 1.1.22 9999: Linux Studio Plugins
+media-libs/lsp-plugins 1.1.5-r2 1.1.7-r1 1.1.10 1.1.22 1.1.24 9999: Linux Studio Plugins
 media-libs/lv2 1.18.0: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
@@ -13912,7 +13912,7 @@ media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
 media-sound/pulseaudio 13.0: A networked sound server with an advanced plugin system
 media-sound/pulseaudio-ctl 1.66 1.67: CLI utility to control PulseAudio volume
 media-sound/pulseaudio-modules-bt 1.3-r2 1.4 9999: PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth
-media-sound/pulseeffects 4.7.2-r1 4.7.3 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
+media-sound/pulseeffects 4.7.2-r1 4.7.3 4.8.0 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pulsemixer 1.5.1 9999: CLI and curses mixer for PulseAudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/qastools 0.22.0 0.23.0: Qt5 GUI ALSA tools: mixer, configuration browser
