@@ -57,8 +57,9 @@ src_prepare() {
 	default
 	# Fix strict dependencies
 	sed -i \
-		-e "s:six>=1.10.0,<1.14.0:six>=1.12.0:g" \
+		-e "s:six>=1.10.0,<=1.14.0:six>=1.12.0:g" \
 		-e "s:node-semver==0.6.1:node-semver>=0.6.1:g" \
+		-e "s:distro>=1.0.2, <1.2.0:distro>=1.0.2:g" \
 		conans/requirements.txt || die
 }
 
@@ -68,6 +69,7 @@ python_test() {
 		-e rpath_optin_test -e test_variables -e system_package_tool_installed_test \
 		-e virtualbuildenv_test -e scm_test -e test_git_shallow -e tools_test \
 		-e test_environment_nested -e devflow_test -e shared_chain_test \
+		-e test_toolchain_linux_0_Debug -e test_toolchain_linux_1_Release \
 		-e virtualenv_test \
 		-A "not rest_api and not local_bottle" || die
 }
