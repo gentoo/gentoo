@@ -3,23 +3,20 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit netsurf
 
-DESCRIPTION="C library for decoding BMP and ICO images"
-HOMEPAGE="http://www.netsurf-browser.org/projects/"
+DESCRIPTION="C library for base64 and time"
+HOMEPAGE="http://www.netsurf-browser.org/"
 SRC_URI="https://download.netsurf-browser.org/libs/releases/${P}-src.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~m68k-mint"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
 IUSE=""
 
-BDEPEND="
-	dev-util/netsurf-buildsystem
-	virtual/pkgconfig"
+BDEPEND="dev-util/netsurf-buildsystem"
 
 _emake() {
-	source /usr/share/netsurf-buildsystem/gentoo-helpers.sh
 	netsurf_define_makeconf
 	emake "${NETSURF_MAKECONF[@]}" COMPONENT_TYPE=lib-shared $@
 }

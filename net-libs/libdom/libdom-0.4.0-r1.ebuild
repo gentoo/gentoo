@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit netsurf
 
 DESCRIPTION="implementation of the W3C DOM, written in C"
 HOMEPAGE="http://www.netsurf-browser.org/projects/libdom/"
@@ -37,7 +37,6 @@ BDEPEND="
 REQUIRED_USE="test? ( xml )"
 
 _emake() {
-	source /usr/share/netsurf-buildsystem/gentoo-helpers.sh
 	netsurf_define_makeconf
 	emake "${NETSURF_MAKECONF[@]}" COMPONENT_TYPE=lib-shared \
 		WITH_EXPAT_BINDING=$(usex xml $(usex expat yes no) no) \

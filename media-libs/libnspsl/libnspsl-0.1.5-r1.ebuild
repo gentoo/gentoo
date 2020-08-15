@@ -3,10 +3,10 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit netsurf
 
 DESCRIPTION="decoding library for BMP and ICO image file formats, written in C"
-HOMEPAGE="http://www.netsurf-browser.org/projects/libnsbmp/"
+HOMEPAGE="http://www.netsurf-browser.org/projects/"
 SRC_URI="https://download.netsurf-browser.org/libs/releases/${P}-src.tar.gz"
 
 LICENSE="MIT"
@@ -19,7 +19,6 @@ BDEPEND="
 	virtual/pkgconfig"
 
 _emake() {
-	source /usr/share/netsurf-buildsystem/gentoo-helpers.sh
 	netsurf_define_makeconf
 	emake "${NETSURF_MAKECONF[@]}" COMPONENT_TYPE=lib-shared $@
 }

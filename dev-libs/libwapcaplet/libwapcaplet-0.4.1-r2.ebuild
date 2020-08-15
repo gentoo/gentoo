@@ -3,30 +3,28 @@
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs
+inherit netsurf
 
-DESCRIPTION="C library for building efficient parsers"
-HOMEPAGE="http://www.netsurf-browser.org/projects/libparserutils/"
+DESCRIPTION="string internment library, written in C"
+HOMEPAGE="http://www.netsurf-browser.org/projects/libwapcaplet/"
 SRC_URI="https://download.netsurf-browser.org/libs/releases/${P}-src.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~m68k-mint"
-IUSE="iconv test"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~m68k-mint"
+IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-util/netsurf-buildsystem-1.7-r1
-	test? (	dev-lang/perl )"
+	test? ( >=dev-libs/check-0.9.11 )"
 
-DOCS=( README docs/Todo )
-
-src_configure() {
-	append-cflags "-D$(usex iconv WITH WITHOUT)_ICONV_FILTER"
-}
+PATCHES=(
+	# bug 664288
+	"${FILESDIR}/${PN}-0.4.1-makefile.patch"
+)
 
 _emake() {
-	source /usr/share/netsurf-buildsystem/gentoo-helpers.sh
 	netsurf_define_makeconf
 	emake "${NETSURF_MAKECONF[@]}" COMPONENT_TYPE=lib-shared $@
 }

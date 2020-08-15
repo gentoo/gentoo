@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs desktop
+inherit netsurf desktop
 
 DESCRIPTION="a free, open source web browser"
 HOMEPAGE="https://www.netsurf-browser.org/"
@@ -70,7 +70,6 @@ src_prepare() {
 }
 
 _emake() {
-	source /usr/share/netsurf-buildsystem/gentoo-helpers.sh
 	netsurf_define_makeconf
 	local netsurf_makeconf=(
 		"${NETSURF_MAKECONF[@]}"

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit netsurf
 
 DESCRIPTION="decoding library for the GIF image file format, written in C"
 HOMEPAGE="https://www.netsurf-browser.org/projects/libnsgif/"
@@ -26,7 +26,6 @@ src_prepare() {
 }
 
 _emake() {
-	source /usr/share/netsurf-buildsystem/gentoo-helpers.sh
 	netsurf_define_makeconf
 	emake "${NETSURF_MAKECONF[@]}" COMPONENT_TYPE=lib-shared $@
 }

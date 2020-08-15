@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit netsurf
 
 DESCRIPTION="CSS parser and selection engine, written in C"
 HOMEPAGE="http://www.netsurf-browser.org/projects/libcss/"
@@ -13,15 +13,17 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~m68k-mint"
 IUSE="test"
+
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-libs/libparserutils-0.2.1-r1
-	>=dev-libs/libwapcaplet-0.4.0"
+	dev-libs/libparserutils
+	dev-libs/libwapcaplet"
 DEPEND="${RDEPEND}
-	>=dev-util/netsurf-buildsystem-1.7-r1
-	virtual/pkgconfig
 	test? ( dev-lang/perl )"
+BDEPEND="
+	>=dev-util/netsurf-buildsystem-1.7-r1
+	virtual/pkgconfig"
 
 src_prepare() {
 	default
@@ -32,7 +34,6 @@ src_prepare() {
 }
 
 _emake() {
-	source /usr/share/netsurf-buildsystem/gentoo-helpers.sh
 	netsurf_define_makeconf
 	emake "${NETSURF_MAKECONF[@]}" COMPONENT_TYPE=lib-shared $@
 }
@@ -46,5 +47,5 @@ src_test() {
 }
 
 src_install() {
-	_emake DESTDIR="${ED}" install
+	_emake DESTDIR="${D}" install
 }

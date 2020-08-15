@@ -1,31 +1,31 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic netsurf
 
-DESCRIPTION="string internment library, written in C"
-HOMEPAGE="http://www.netsurf-browser.org/projects/libwapcaplet/"
+DESCRIPTION="C library for building efficient parsers"
+HOMEPAGE="http://www.netsurf-browser.org/projects/libparserutils/"
 SRC_URI="https://download.netsurf-browser.org/libs/releases/${P}-src.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~m68k-mint"
-IUSE="test"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~m68k-mint"
+IUSE="iconv test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-util/netsurf-buildsystem-1.7-r1
-	test? ( >=dev-libs/check-0.9.11 )"
+	test? (	dev-lang/perl )"
 
-PATCHES=(
-	# bug 664288
-	"${FILESDIR}/${PN}-0.4.1-makefile.patch"
-)
+DOCS=( README docs/Todo )
+
+src_configure() {
+	append-cflags "-D$(usex iconv WITH WITHOUT)_ICONV_FILTER"
+}
 
 _emake() {
-	source /usr/share/netsurf-buildsystem/gentoo-helpers.sh
 	netsurf_define_makeconf
 	emake "${NETSURF_MAKECONF[@]}" COMPONENT_TYPE=lib-shared $@
 }
@@ -39,5 +39,5 @@ src_test() {
 }
 
 src_install() {
-	_emake DESTDIR="${ED}" install
+	_emake DESTDIR="${D}" install
 }

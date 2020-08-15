@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit netsurf
 
 DESCRIPTION="Generate Javascript-to-DOM bindings from w3c webidl files"
 HOMEPAGE="http://www.netsurf-browser.org/"
@@ -19,7 +19,6 @@ BDEPEND="
 	virtual/yacc"
 
 _emake() {
-	source /usr/share/netsurf-buildsystem/gentoo-helpers.sh
 	netsurf_define_makeconf
 	emake "${NETSURF_MAKECONF[@]}" COMPONENT_TYPE=binary $@
 }

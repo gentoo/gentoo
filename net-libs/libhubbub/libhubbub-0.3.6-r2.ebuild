@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs flag-o-matic
+inherit netsurf flag-o-matic
 
 DESCRIPTION="HTML5 compliant parsing library, written in C"
 HOMEPAGE="https://www.netsurf-browser.org/projects/hubbub/"
@@ -35,7 +35,6 @@ src_prepare() {
 }
 
 _emake() {
-	source /usr/share/netsurf-buildsystem/gentoo-helpers.sh
 	netsurf_define_makeconf
 	append-cflags -Wno-error
 	emake "${NETSURF_MAKECONF[@]}" COMPONENT_TYPE=lib-shared $@

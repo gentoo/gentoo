@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit netsurf
 
 DESCRIPTION="base64 and time library, written in C"
 HOMEPAGE="http://www.netsurf-browser.org/"
@@ -17,7 +17,6 @@ IUSE=""
 DEPEND="dev-util/netsurf-buildsystem"
 
 _emake() {
-	source /usr/share/netsurf-buildsystem/gentoo-helpers.sh
 	netsurf_define_makeconf
 	emake "${NETSURF_MAKECONF[@]}" COMPONENT_TYPE=lib-shared $@
 }
@@ -27,5 +26,5 @@ src_compile() {
 }
 
 src_install() {
-	_emake DESTDIR="${ED}" install
+	_emake DESTDIR="${D}" install
 }

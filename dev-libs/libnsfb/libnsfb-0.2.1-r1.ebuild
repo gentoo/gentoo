@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit netsurf
 
 DESCRIPTION="framebuffer abstraction library, written in C"
 HOMEPAGE="http://www.netsurf-browser.org/projects/libnsfb/"
@@ -33,7 +33,6 @@ PATCHES=( "${FILESDIR}"/${PN}-0.1.0-autodetect.patch )
 DOCS=( usage )
 
 _emake() {
-	source /usr/share/netsurf-buildsystem/gentoo-helpers.sh
 	netsurf_define_makeconf
 	emake "${NETSURF_MAKECONF[@]}" COMPONENT_TYPE=lib-shared \
 		WITH_VNC=$(usex vnc) \
@@ -48,5 +47,5 @@ src_compile() {
 }
 
 src_install() {
-	_emake DESTDIR="${ED}" install
+	_emake DESTDIR="${D}" install
 }
