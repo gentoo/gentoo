@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/737236
+
+--- a/src/hscurl.c
++++ b/src/hscurl.c
+@@ -11,6 +11,9 @@
+ #define ENABLE_PIPELINING
+ #endif
+ 
++/* workaround for https://bugs.gentoo.org/737236 */
++#include "cabal_macros.h"
++
+ enum RESULT_CODES
+   {
+     RESULT_OK = 0,
+@@ -46,6 +49,10 @@ struct UrlData
+ 
+ static int debug = 0;
+ #ifndef _WIN32
++#ifndef PACKAGE_VERSION
++/* workaround for https://bugs.gentoo.org/737236 */
++#    define PACKAGE_VERSION CURRENT_PACKAGE_VERSION
++#endif
+ static const char user_agent[] =
+   "darcs/" PACKAGE_VERSION " libcurl/" LIBCURL_VERSION;
+ #else
