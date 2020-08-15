@@ -4162,6 +4162,7 @@ dev-haskell/language-lua 0.10.0 0.11.0.1: Lua parser and pretty-printer
 dev-haskell/language-python 0.5.4 0.5.8: Parsing and pretty printing of Python code
 dev-haskell/lazysmallcheck 0.6: A library for demand-driven testing of Haskell programs
 dev-haskell/lcs 0.2-r1: Find longest common sublist of two lists
+dev-haskell/leancheck 0.9.3: Enumerative property-based testing
 dev-haskell/lens 3.9.2 3.10.0.1 4.2 4.6.0.1 4.9.1 4.11 4.14 4.19.1: Lenses, Folds and Traversals
 dev-haskell/lens-aeson 1.1: Law-abiding lenses for aeson
 dev-haskell/lens-family 1.2.1 1.2.3: Lens Families
@@ -4427,6 +4428,7 @@ dev-haskell/terminal-size 0.3.2.1: Get terminal window height and width
 dev-haskell/terminfo 0.4.0.0 0.4.0.1 0.4.0.2 0.4.1.4: Haskell bindings to the terminfo library
 dev-haskell/test-framework 0.8 0.8.1.1 0.8.2.0-r2: Framework for running and organising tests, with HUnit and QuickCheck support
 dev-haskell/test-framework-hunit 0.3.0 0.3.0.2 0.3.0.2-r1: HUnit support for the test-framework package
+dev-haskell/test-framework-leancheck 0.0.1: LeanCheck support for test-framework
 dev-haskell/test-framework-quickcheck2 0.3.0.2 0.3.0.3-r2 0.3.0.5-r1: QuickCheck2 support for the test-framework package
 dev-haskell/test-framework-th 0.2.4: Automagically generate the HUnit and Quickcheck code using Template Haskell
 dev-haskell/test-framework-th-prime 0.0.7 0.0.8 0.0.9: Template Haskell for test framework
@@ -4502,7 +4504,7 @@ dev-haskell/vector-space 0.10.4: Vector & affine spaces, linear maps, and deriva
 dev-haskell/vector-th-unbox 0.2.1.3 0.2.1.6 0.2.1.7: Deriver for Data.Vector.Unboxed using Template Haskell
 dev-haskell/void 0.6.1 0.7.1 0.7.3: A Haskell 98 logically uninhabited data type
 dev-haskell/wai 1.4.0.2 2.0.0 2.1.0 3.0.3.0 3.0.5.0 3.2.1.1 3.2.2.1: Web Application Interface
-dev-haskell/wai-app-static 1.3.2.1 2.0.0.3 3.0.1 3.1.4.1 3.1.6.1 3.1.7.1: WAI application for static serving
+dev-haskell/wai-app-static 3.1.7.2: WAI application for static serving
 dev-haskell/wai-conduit 3.0.0.2 3.0.0.3: conduit wrappers for WAI
 dev-haskell/wai-extra 3.0.10 3.0.14 3.0.15.1 3.0.18 3.0.29.1: Provides some basic WAI handlers and middleware
 dev-haskell/wai-logger 2.2.4.1 2.2.7 2.3.6: A logging system for WAI
@@ -10942,7 +10944,7 @@ dev-vcs/cvsps 2.2_beta1-r1 3.13-r2: Generates patchset information from a CVS re
 dev-vcs/cvsspam 0.2.12: Utility to send colored HTML CVS-mails
 dev-vcs/cvsutils 0.2.5-r1: A small bundle of utilities to work with CVS repositories
 dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization utility
-dev-vcs/darcs 2.12.5 2.14.5: a distributed, interactive, smart revision control system
+dev-vcs/darcs 2.12.5 2.14.5 2.16.1: a distributed, interactive, smart revision control system
 dev-vcs/easygit 1.7.5.2: Easy GIT (eg), a frontend for git designed for former cvs and svn users
 dev-vcs/fossil 2.11.1: Simple, high-reliability, source control management, and more
 dev-vcs/git 2.23.3 2.24.3 2.25.4 2.26.2 2.27.0 2.28.0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
