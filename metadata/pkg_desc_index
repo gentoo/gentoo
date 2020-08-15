@@ -3444,7 +3444,7 @@ dev-cpp/clucene 2.3.3.4-r6: High-performance, full-featured text search engine b
 dev-cpp/commoncpp2 1.8.1-r4: C++ library offering portable support for system-related services
 dev-cpp/cpp-hocon 0.2.1 0.3.0: Provides C++ support for the HOCON configuration file format
 dev-cpp/cpp-taskflow 2.4.0-r1: Modern C++ Parallel Task Programming
-dev-cpp/ctemplate 2.3-r1: A simple but powerful template language for C++
+dev-cpp/ctemplate 2.3-r1 2.4: A simple but powerful template language for C++
 dev-cpp/eigen 3.3.7 3.3.7-r1: C++ template library for linear algebra
 dev-cpp/gconfmm 2.28.3-r1: C++ bindings for GConf
 dev-cpp/gflags 2.2.0 2.2.1 2.2.1-r1 9999: Google's C++ argument parsing library
@@ -14621,7 +14621,7 @@ net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS 
 net-fs/s3backer 1.4.5: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.80 1.83 1.85 1.86: Amazon S3 mounting via fuse
 net-fs/s3ql 2.33: A full-featured file system for online data storage
-net-fs/samba 4.11.11 4.12.4 4.12.5 4.12.6 4.13.0_rc2: Samba Suite Version 4
+net-fs/samba 4.11.11 4.12.6 4.13.0_rc2: Samba Suite Version 4
 net-fs/smbnetfs 0.6.2: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/sshfs 3.7.0: Fuse-filesystem utilizing the sftp service
@@ -17649,7 +17649,7 @@ sys-libs/glibc 2.19-r2 2.25-r11 2.30-r8 2.30-r9 2.31-r6 2.32 9999: GNU libc C li
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 5.1.2: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.1.0: Library for managing partitions
-sys-libs/ldb 2.0.12 2.1.3 2.1.4 2.2.0: An LDAP-like embedded database
+sys-libs/ldb 2.0.12-r1 2.1.4-r1 2.2.0-r1: An LDAP-like embedded database
 sys-libs/libaal 1.0.7-r1: library required by reiser4progs
 sys-libs/libapparmor 2.13.4: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r2: Library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
