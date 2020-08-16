@@ -4,6 +4,7 @@
 <maintainer type='person'><email>jer@gentoo.org</email></maintainer>
 <use>
 <flag name='freeimage'>Use <pkg>media-libs/freeimage</pkg> as image library</flag>
+<flag name='heif'>Use <pkg>media-libs/libheif</pkg> as image library</flag>
 <flag name='libnsgif'>Use <pkg>media-libs/libnsgif</pkg> as image library</flag>
 </use>
 <upstream>
