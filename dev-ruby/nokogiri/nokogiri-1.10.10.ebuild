@@ -9,7 +9,7 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md ROADMAP.md STANDARD_RESPONSES.md"
 
 RUBY_FAKEGEM_EXTRAINSTALL="ext"
 
-inherit ruby-fakegem eutils multilib
+inherit ruby-fakegem multilib
 
 DESCRIPTION="Nokogiri is an HTML, XML, SAX, and Reader parser"
 HOMEPAGE="https://www.nokogiri.org/"

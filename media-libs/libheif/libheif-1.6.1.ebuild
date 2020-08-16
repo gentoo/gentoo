@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
 
 inherit autotools xdg-utils multilib-minimal
 
@@ -19,6 +19,7 @@ HOMEPAGE="https://github.com/strukturag/libheif"
 LICENSE="GPL-3"
 SLOT="0/1.6"
 IUSE="static-libs test +threads"
+
 RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( dev-lang/go )"
@@ -34,6 +35,10 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	default
 
+	# heif_test.go is not included in the tarball
+	# https://github.com/strukturag/libheif/issues/289
+	cp "${FILESDIR}/heif_test.go" "${S}/go/heif" || die
+
 	sed -i -e 's:-Werror::' configure.ac || die
 
 	eautoreconf
@@ -48,6 +53,11 @@ multilib_src_configure() {
 		$(use_enable static-libs static)
 	)
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+}
+
+multilib_src_test() {
+	default
+	emake -C go test
 }
 
 multilib_src_install_all() {
