@@ -7,3 +7,4 @@ dev-lang/rust-bin
 dev-lang/rust
 virtual/rust
 >=gnome-base/librsvg-2.41
+>=gnome-base/gnome-core-libs-3.36.5
