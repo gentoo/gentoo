@@ -1,0 +1,41 @@
+--- a/Makefile
++++ b/Makefile
+@@ -183,7 +168,7 @@
+ 
+ $(BIN_DIR)/intersectBed: | $(BIN_DIR)
+ 	@echo "- Creating executables for old CLI."
+-	@python scripts/makeBashScripts.py
++	$(EPYTHON) scripts/makeBashScripts.py
+ 	@chmod +x bin/*
+ 	@echo "done."
+ 
+--- a/src/utils/BamTools/Makefile.frag
++++ b/src/utils/BamTools/Makefile.frag
+@@ -1,4 +1,4 @@
+ src/utils/BamTools/include/BamAlignment.mapping.hpp: src/utils/BamTools/mapping/BamAlignment.py src/utils/BamTools/mapping/BamAlignment.map
+ 
+ src/utils/BamTools/include/%.mapping.hpp: src/utils/BamTools/mapping/%.py src/utils/BamTools/mapping/%.map
+-	python $^ > $@
++	$(EPYTHON) $^ > $@
+--- a/test/bigchroms/test-bigchroms.sh
++++ b/test/bigchroms/test-bigchroms.sh
+@@ -28,7 +28,7 @@
+ rm obs
+ 
+ if [[ "$BT_NO_BIG_FILES" != "" ]]; then
+-python make-big-chrom.py
++${EPYTHON} make-big-chrom.py
+ 
+ echo -e "    bigchroms.t03...big get fasta \c"
+ $BT getfasta -fi bigx.fasta -bed bigx.bed | tail -1 > obs
+--- a/test/fisher/cmp.sh
++++ b/test/fisher/cmp.sh
+@@ -3,7 +3,7 @@
+ echo "fisher,shuffled"
+ 
+ for i in $(seq 1000); do
+-    fisher=$(python ./sim.py | tail -1 | cut -f 2)
++    fisher=$(${EPYTHON} ./sim.py | tail -1 | cut -f 2)
+     shuffle=$(bash shuf.sh)
+     echo "$fisher,$shuffle"
+ done
