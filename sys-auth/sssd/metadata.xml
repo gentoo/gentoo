@@ -22,6 +22,7 @@
 		<flag name="valgrind">Depend on <pkg>dev-util/valgrind</pkg> for test suite</flag>
 	</use>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:fedoraproject:sssd</remote-id>
 		<remote-id type="github">SSSD/sssd</remote-id>
 	</upstream>
 </pkgmetadata>
