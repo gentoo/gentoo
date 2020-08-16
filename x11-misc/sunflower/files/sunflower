@@ -1,5 +1,0 @@
-#!/usr/bin/env python
-
-import os
-os.chdir("@SITEDIR@")
-import sunflower.Sunflower
