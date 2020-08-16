@@ -19,8 +19,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=""
-RDEPEND="${DEPEND}"
+DEPEND="app-arch/unzip"
+RDEPEND=""
 BDEPEND=""
 PDEPEND="dev-embedded/arduino"
 
