@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-16)
+# Not maintained since 2017.  Not ported to py3.7.  No reverse
+# dependencies.
+# Removal in 30 days.  Bug #719412.
+dev-python/pygpu
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-16)
 # Unmaintained.  Not ported to py3.7.  'blocks' is a snapshot from 2013,
 # last activity in 2014.  It is the only revdep of 'maintboot'.
 # Removal in 30 days.  Bug #718522.
