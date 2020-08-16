@@ -45,6 +45,11 @@ dev-ada/libadalang
 dev-ada/libadalang-tools
 dev-ada/gps
 
+# Zac Medico <zmedico@gentoo.org> (2020-08-16)
+# Not ported to py3.7. No reverse deps.
+# Removal in 30 days. Bug #719098.
+dev-python/mem_top
+
 # Michał Górny <mgorny@gentoo.org> (2020-08-16)
 # Unmaintained.  Not ported to py3.7.  The only revdep is queued
 # for removal.
