@@ -6,4 +6,7 @@
 		<bugs-to>https://github.com/strukturag/libheif/issues</bugs-to>
 		<remote-id type="github">strukturag/libheif</remote-id>
 	</upstream>
+	<use>
+		<flag name="gdk-pixbuf">Enable gdk-pixbuf plugin</flag>
+	</use>
 </pkgmetadata>
