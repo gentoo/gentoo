@@ -1,0 +1,82 @@
+--- a/Makefile
++++ b/Makefile
+@@ -4,44 +4,29 @@
+ # (c) 2009 Aaron Quinlan
+ # ==========================
+ 
+-SHELL := /bin/bash -e
++SHELL := bash -e
+ 
+ VERSION_FILE=./src/utils/version/version_git.h
+ RELEASED_VERSION_FILE=./src/utils/version/version_release.txt
+ 
+ 
+ # define our object and binary directories
+-ifeq ($(VERBOSE),1)
+ CCPREFIX =
+-else
+-CCPREFIX = @
+-endif
+ 
+ OBJ_DIR	= obj
+ BIN_DIR	= bin
+ SRC_DIR	= src
+ 
+-CXX     = g++
+-
+-ifeq ($(DEBUG),1)
+-BT_CPPFLAGS = -DDEBUG -D_DEBUG -D_FILE_OFFSET_BITS=64 -DWITH_HTS_CB_API $(INCLUDES)
+-BT_CXXFLAGS = -Wconversion -Wall -Wextra -g -O0
+-else
+ BT_CPPFLAGS = -D_FILE_OFFSET_BITS=64 -DWITH_HTS_CB_API $(INCLUDES)
+-BT_CXXFLAGS = -g -Wall -O2
+-endif
++BT_CXXFLAGS = -Wall
+ 
+ # If the user has specified to do so, tell the compile to use rand() (instead of mt19937).
+-ifeq ($(USE_RAND),1)
+-BT_CXXFLAGS += -DUSE_RAND
+-else
+ BT_CXXFLAGS += -std=c++11
+-endif
+ 
+ BT_LDFLAGS =
+ BT_LIBS    = -lz -lm -lbz2 -llzma -lpthread
+ 
+-prefix ?= /usr/local
++prefix = $(EPREFIX)/usr
+ 
+ SUBDIRS = $(SRC_DIR)/annotateBed \
+ 		  $(SRC_DIR)/bamToBed \
+@@ -204,7 +189,7 @@
+ 
+ # make the "obj/" and "bin/" directories, if they don't exist
+ $(OBJ_DIR) $(BIN_DIR):
+-	@mkdir -p $@
++	mkdir -p $@
+ 
+ 
+ # Usually HTSlib's configure script has not been used (detected via config.mk
+--- a/src/utils/htslib/Makefile
++++ b/src/utils/htslib/Makefile
+@@ -22,20 +22,13 @@
+ # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ # DEALINGS IN THE SOFTWARE.
+ 
+-CC     = gcc
+-AR     = ar
+-RANLIB = ranlib
+-
+ # Default libraries to link if configure is not used
+ htslib_default_libs = -lz -lm -lbz2 -llzma
+ 
+-CPPFLAGS =
+ # TODO: probably update cram code to make it compile cleanly with -Wc++-compat
+ # For testing strict C99 support add -std=c99 -D_XOPEN_SOURCE=600
+ #CFLAGS   = -g -Wall -O2 -pedantic -std=c99 -D_XOPEN_SOURCE=600 -D__FUNCTION__=__func__
+-CFLAGS   = -g -Wall -O2
+ EXTRA_CFLAGS_PIC = -fpic
+-LDFLAGS  =
+ LIBS     = $(htslib_default_libs)
+ 
+ prefix      = /usr/local
