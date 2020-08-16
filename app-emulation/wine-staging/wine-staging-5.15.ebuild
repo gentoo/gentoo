@@ -10,7 +10,7 @@ inherit autotools eapi7-ver estack eutils flag-o-matic gnome2-utils l10n multili
 
 MY_PN="${PN%%-*}"
 MY_P="${MY_PN}-${PV}"
-
+STAGING_COMMIT="150ce22fa21ffa040816e725ead34ed1de516bd8"
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://source.winehq.org/git/wine.git"
 	EGIT_BRANCH="master"
@@ -24,7 +24,7 @@ else
 fi
 S="${WORKDIR}/${MY_P}"
 
-STAGING_P="wine-staging-${PV}"
+STAGING_P="wine-staging-${STAGING_COMMIT}"
 STAGING_DIR="${WORKDIR}/${STAGING_P}"
 GWP_V="20200523"
 PATCHDIR="${WORKDIR}/gentoo-wine-patches"
@@ -39,7 +39,7 @@ if [[ ${PV} == "9999" ]] ; then
 	STAGING_EGIT_REPO_URI="https://github.com/wine-staging/wine-staging.git"
 else
 	SRC_URI="${SRC_URI}
-	staging? ( https://github.com/wine-staging/wine-staging/archive/v${PV}.tar.gz -> ${STAGING_P}.tar.gz )"
+	staging? ( https://github.com/wine-staging/wine-staging/archive/${STAGING_COMMIT}.tar.gz -> ${STAGING_P}.tar.gz )"
 fi
 
 LICENSE="LGPL-2.1"
