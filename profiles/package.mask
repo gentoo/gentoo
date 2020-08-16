@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2020-08-16)
+# Mask old obsolete slots for removal in 30 days.
+# Use a newer slot of the same package instead.
+dev-ruby/mysql2:0.4
+dev-ruby/regexp_property_values:0
+dev-ruby/request_store:1.0.5
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-08-15)
 # Obsolete package without reverse dependencies.
 # Does not compile against current ghc-8.8. Removal in 30 days.
