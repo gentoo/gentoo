@@ -7911,7 +7911,7 @@ dev-python/bareos 19.2.8: python bindings for bareos network backup suite
 dev-python/bashate 0.6.0: A pep8 equivalent for bash scripts
 dev-python/basho-erlastic 2.1.1: Erlang binary term codec and port interface
 dev-python/bcrypt 3.1.7-r2: Modern password hashing for software and servers
-dev-python/beagle 0.2.1: Command line client for Hound, the code search tool.
+dev-python/beagle 0.2.1 0.3.0: Command line client for Hound, the code search tool.
 dev-python/beautifulsoup 4.8.2 4.9.1: Pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
 dev-python/bert 2.2.0: BERT Serialization Library
 dev-python/betamax 0.8.1: python-requests HTTP exchanges recorder
@@ -11325,7 +11325,7 @@ games-emulation/yabause 0.9.15: Sega Saturn emulator
 games-emulation/zinc 1.1-r1: An x86 binary-only emulator for Sony ZN-1, ZN-2, and Namco System 11 arcades
 games-emulation/zsnes 1.51-r8 1.51-r9: SNES (Super Nintendo) emulator that uses x86 assembly
 games-engines/box2d 2.1.2 2.2.1 2.3.1: A C++ engine for simulating rigid bodies in 2D games
-games-engines/dMagnetic 0.24: A Magnetic Scrolls Interpreter for playing a collection of old text adventures
+games-engines/dMagnetic 0.25: A Magnetic Scrolls Interpreter for playing a collection of old text adventures
 games-engines/devilutionx 1.0.0-r1 1.0.1 9999: Diablo engine for modern operating systems
 games-engines/exult 9999: an Ultima 7 game engine that runs on modern operating systems
 games-engines/frobtads 1.2.3-r1 1.2.4: Curses-based interpreter and dev tools for TADS 2 and TADS 3 text adventures
@@ -14670,7 +14670,7 @@ net-im/kadu 4.3-r2: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Me
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
 net-im/libcommuni 3.5.0_p20200711: A cross-platform IRC framework written with Qt
 net-im/librvp 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
-net-im/mattermost-desktop-bin 4.5.1: Mattermost Desktop application
+net-im/mattermost-desktop-bin 4.5.1 4.5.2: Mattermost Desktop application
 net-im/mcabber 1.1.0-r1 1.1.0-r2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
 net-im/openmittsu 0.9.13.46 0.9.15.0: An open source chat client for Threema-style end-to-end encrypted chat networks
