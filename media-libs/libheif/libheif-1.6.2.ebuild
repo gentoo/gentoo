@@ -19,7 +19,6 @@ HOMEPAGE="https://github.com/strukturag/libheif"
 LICENSE="GPL-3"
 SLOT="0/1.6"
 IUSE="static-libs test +threads"
-
 RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( dev-lang/go )"
