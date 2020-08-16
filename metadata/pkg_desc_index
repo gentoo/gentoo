@@ -9732,7 +9732,7 @@ dev-ruby/acme-client 2.0.4 2.0.5 2.0.6: A Ruby client for the letsencrypt's ACME
 dev-ruby/actioncable 5.2.4.3 6.0.3.2: Integrated WebSockets for Rails
 dev-ruby/actionmailbox 6.0.3.2: Framework for designing email-service layers
 dev-ruby/actionmailer 5.2.4.3 6.0.3.2: Framework for designing email-service layers
-dev-ruby/actionpack 5.2.4.3 5.2.4.3-r1 6.0.3.2 6.0.3.2-r1: Eases web-request routing, handling, and response
+dev-ruby/actionpack 5.2.4.3-r1 6.0.3.2-r1: Eases web-request routing, handling, and response
 dev-ruby/actionpack-action_caching 1.2.1: Action caching for Action Pack (removed from core in Rails 4.0)
 dev-ruby/actionpack-xml_parser 2.0.1: XML parameters parser for Action Pack (removed from core in Rails 4.0)
 dev-ruby/actiontext 6.0.3.2: Edit and display rich text in Rails applications
@@ -9953,7 +9953,7 @@ dev-ruby/htmlentities 4.3.4: A simple library for encoding/decoding entities in 
 dev-ruby/http 3.3.0 4.1.1: An easy-to-use client library for making requests from Ruby
 dev-ruby/http-accept 1.7.0 2.1.0 2.1.1: Parse Accept and Accept-Language HTTP headers
 dev-ruby/http-cookie 1.0.3: A ruby library to handle HTTP cookies
-dev-ruby/http-form_data 1.0.3 2.1.1 2.2.0 2.3.0: Utility-belt to build form data request bodies
+dev-ruby/http-form_data 1.0.3 2.2.0 2.3.0: Utility-belt to build form data request bodies
 dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response parser
 dev-ruby/httparty 0.17.1 0.17.3 0.18.0 0.18.1: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpauth 0.2.1: Library implementing the full HTTP Authentication protocol (RFC 2617)
@@ -9969,7 +9969,7 @@ dev-ruby/instance_storage 1.0.0: Manage class instances with dictionary
 dev-ruby/instantiator 0.0.7: Instantiate an arbitrary Ruby class
 dev-ruby/introspection 0.0.4: Dynamic inspection of the hierarchy of method definitions on a Ruby object
 dev-ruby/iobuffer 1.1.2-r3: IO::Buffer is a byte queue which is intended for non-blocking I/O applications
-dev-ruby/itextomml 1.5.8 1.6.0: Native Ruby bindings to itex2MML, which converts itex equations to MathML
+dev-ruby/itextomml 1.6.0: Native Ruby bindings to itex2MML, which converts itex equations to MathML
 dev-ruby/jbuilder 2.10.0: Create JSON structures via a Builder-style DSL
 dev-ruby/jmespath 1.4.0: Implements JMESPath for Ruby
 dev-ruby/journey 1.0.4-r1: Journey is a router. It routes requests
