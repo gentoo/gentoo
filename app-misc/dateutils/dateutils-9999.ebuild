@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="command line date and time utilities"
-HOMEPAGE="https://www.fresse.org/dateutils/"
+HOMEPAGE="https://www.fresse.org/dateutils/ https://github.com/hroptatyr/dateutils"
 
 case "${PV}" in
 	9999)
