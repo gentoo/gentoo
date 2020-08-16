@@ -5985,7 +5985,7 @@ dev-perl/Audio-WMA 1.300.0-r1: extension for reading WMA/ASF metadata
 dev-perl/Audio-Wav 0.140.0-r1 0.140.0-r2: Modules for reading & writing Microsoft WAV files
 dev-perl/Authen-DigestMD5 0.40.0-r1 0.40.0-r2: SASL DIGEST-MD5 authentication (RFC2831)
 dev-perl/Authen-Htpasswd 0.171.0-r1 0.171.0-r2: interface to read and modify Apache .htpasswd files
-dev-perl/Authen-Libwrap 0.230.0-r1: A Perl access to the TCP Wrappers interface
+dev-perl/Authen-Libwrap 0.230.0-r1 0.230.0-r2: A Perl access to the TCP Wrappers interface
 dev-perl/Authen-NTLM 1.90.0-r1 1.90.0-r2: An NTLM authentication module
 dev-perl/Authen-PAM 0.160.0-r2 0.160.0-r3: Interface to PAM library
 dev-perl/Authen-Radius 0.270.0 0.310.0: Communicate with a Radius server from Perl
