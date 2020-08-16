@@ -15,7 +15,7 @@ SRC_URI+="
 	)
 	arm64? (
 		https://dev.gentoo.org/~sam/binpkg/arm64/kernel/sys-kernel/gentoo-kernel/${MY_P}.xpak
-			-> ${MY_P}.arm64.xpak
+			-> ${MY_P}.arm64.1.xpak
 	)
 	x86? (
 		https://dev.gentoo.org/~mgorny/binpkg/x86/kernel/sys-kernel/gentoo-kernel/${MY_P}.xpak
@@ -41,8 +41,17 @@ pkg_pretend() {
 }
 
 src_unpack() {
+	local arch=${ARCH}
+
+	if use arm64 ; then
+		# Hack to force re-download for broken arm64 image
+		# NOTE: This can be removed on the next bump.
+		# (And switch back tar line to ${ARCH})
+		arch="arm64.1"
+	fi
+
 	ebegin "Unpacking ${MY_P}.${ARCH}.xpak"
-	tar -x < <(xz -c -d --single-stream "${DISTDIR}/${MY_P}.${ARCH}.xpak")
+	tar -x < <(xz -c -d --single-stream "${DISTDIR}/${MY_P}.${arch}.xpak")
 	eend ${?} || die "Unpacking ${MY_P} failed"
 }
 
