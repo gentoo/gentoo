@@ -1,0 +1,23 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -137,8 +137,7 @@
+ AC_SUBST(HOST_OS)
+ # ====================================================================
+ 
+-CFLAGS="${CFLAGS} -O3"
+-CXXFLAGS="${CXXFLAGS} -O3 -Wall"
++CXXFLAGS="${CXXFLAGS} -Wall"
+ 
+ # The std=c11 flag provides the proper float-pt math decls working,
+ # e.g. fmax  However, it also undefined _BSD_SOURCE, etc. which is
+@@ -908,10 +907,6 @@
+ 
+ AC_FUNC_STRERROR_R
+ 
+-AC_SUBST(CFLAGS)
+-AC_SUBST(CPPFLAGS)
+-AC_SUBST(CXXFLAGS)
+-
+ dnl Save the compilation definitions for an extended version printout
+ AC_OUTPUT_MAKE_DEFS()
+ LG_DEFS=`$ECHO "$DEFS" | $SED 's/\\\\//g'`
