@@ -59,6 +59,11 @@ multilib_src_install_all() {
 	fi
 }
 
+multilib_src_test() {
+	default
+	emake -C go test
+}
+
 pkg_postinst() {
 	xdg_mimeinfo_database_update
 }
