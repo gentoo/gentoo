@@ -5553,7 +5553,7 @@ dev-libs/libyaml 0.2.2 0.2.5: YAML 1.1 parser and emitter written in C
 dev-libs/libzia 4.21: platform abstraction code for tucnak package
 dev-libs/libzip 1.6.1-r1 1.7.3: Library for manipulating zip archives
 dev-libs/light 1.2-r1: A program to control backlights (and other hardware lights)
-dev-libs/link-grammar 5.3.11: A Syntactic English parser
+dev-libs/link-grammar 5.3.11 5.8.0: A Syntactic English parser
 dev-libs/lockdev 1.0.3.1.2-r3: Library for locking devices
 dev-libs/log4cplus 1.2.0: C++ port of the Log for Java (log4j) logging library
 dev-libs/log4cpp 1.1 1.1.3: C++ classes for flexible logging to files, syslog and other destinations
