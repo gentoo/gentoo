@@ -49,6 +49,12 @@ DEPEND="
 		dev-vcs/git
 	)"
 
+python_compile() {
+	# disable version checks on upgrade
+	export ANSIBLE_SKIP_CONFLICT_CHECK=1
+	distutils-r1_python_compile
+}
+
 python_compile_all() {
 	if use doc; then
 		cd docs/docsite || die
