@@ -30,6 +30,7 @@ DEPEND="${RDEPEND}
 	test? (
 		app-text/tesseract[png,tiff,training,-opencl]
 		media-fonts/dejavu
+		virtual/imagemagick-tools[png,tiff]
 	)
 "
 RESTRICT="!test? ( test )"
