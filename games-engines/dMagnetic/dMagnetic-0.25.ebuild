@@ -26,6 +26,11 @@ src_compile() {
 		  LINK="$(tc-getCC) ${LDFLAGS}"
 }
 
+src_test() {
+	emake check \
+		  SHA256_CMD=sha256sum
+}
+
 src_install() {
 	dobin ${PN}
 	doman ${PN}.1 ${PN}ini.5
