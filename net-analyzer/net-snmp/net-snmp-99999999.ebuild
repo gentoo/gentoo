@@ -143,6 +143,8 @@ src_configure() {
 }
 
 src_compile() {
+	emake sedscript
+
 	local subdir
 	for subdir in snmplib agent/mibgroup agent apps .; do
 		emake OTHERLDFLAGS="${LDFLAGS}" -C ${subdir} all
