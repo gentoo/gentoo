@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=(python{3_6,3_7})
+PYTHON_COMPAT=(python3_{6..9})
 PYTHON_REQ_USE="readline(+)"
 
 inherit distutils-r1
@@ -27,6 +27,7 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PV}-Fix-setup.py.patch
 	"${FILESDIR}"/${PV}-Fix-python-3-compatability.patch
+	"${FILESDIR}"/${PV}-updatedb-quoting.patch
 )
 
 python_configure_all() {
