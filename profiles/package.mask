@@ -32,6 +32,52 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-08-16)
+# Unmaintained.  Not ported to py3.7.  Not bumped for over a year.
+# Removal in 30 days.  Bug #737400.
+media-video/photofilmstrip
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-16)
+# Unmaintained.  Broken with py3.7.  Upstream archived the repository.
+# No reverse dependencies left.
+# Removal in 30 days.  Bug #719554.
+dev-python/sleekxmpp
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-16)
+# Unmaintained.  Not ported to py3.7.  Not bumped since introduction
+# in 2015.
+# Removal in 30 days.  Bug #719422.
+dev-python/pyminuit
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-16)
+# Not maintained since 2017.  Not ported to py3.7.  No reverse
+# dependencies.
+# Removal in 30 days.  Bug #719412.
+dev-python/pygpu
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-16)
+# Unmaintained.  Not ported to py3.7.  'blocks' is a snapshot from 2013,
+# last activity in 2014.  It is the only revdep of 'maintboot'.
+# Removal in 30 days.  Bug #718522.
+dev-python/maintboot
+sys-block/blocks
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-16)
+# Outdated.  Not tested (successfully) on py3.7.  The current version
+# fails tests.  No reverse dependencies.
+# Removal in 30 days.  Bug #718814.
+dev-python/emcee
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-16)
+# Obsolete package without reverse dependencies.
+# A metapackage. Removal in 30 days.
+dev-haskell/yesod-platform
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-16)
+# Obsolete package without reverse dependencies.
+# Does not compile against current ghc-8.8. Removal in 30 days.
+dev-haskell/yesod-routes
+
 # Hans de Graaff <graaff@gentoo.org> (2020-08-16)
 # Mask old obsolete slots for removal in 30 days.
 # Use a newer slot of the same package instead.
