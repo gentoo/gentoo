@@ -11,6 +11,5 @@
 		<flag name="hbci">Enable HBCI support using <pkg>net-libs/aqbanking</pkg></flag>
 		<flag name="holidays">Enable <pkg>kde-frameworks/kholidays</pkg> integration</flag>
 		<flag name="quotes">Enable Online Stock Quote retrieval</flag>
-		<flag name="weboob">Enable import of online banking transactions extracted by <pkg>www-client/weboob</pkg></flag>
 	</use>
 </pkgmetadata>
