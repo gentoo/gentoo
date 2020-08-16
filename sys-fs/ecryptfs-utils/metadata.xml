@@ -2,6 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>onkobu@onkobutanaake.de</email>
+		<name>Onkobu Tanaake</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="gpg">Enable <pkg>app-crypt/gnupg</pkg> key module</flag>
 		<flag name="openssl">Enable <pkg>dev-libs/openssl</pkg> key
