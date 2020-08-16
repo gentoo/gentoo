@@ -20,7 +20,7 @@ for x in ${AGENT} ${CLI} ${SERVICES}; do
 	IUSE+=" +${x}"
 done
 
-BDEPEND=">=dev-lang/go-1.13"
+BDEPEND="=dev-lang/go-1.14*"
 COMMON_DEPEND="
 	kube-apiserver? (
 		acct-group/kube-apiserver
