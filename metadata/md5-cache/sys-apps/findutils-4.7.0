@@ -1,6 +1,6 @@
 BDEPEND=nls? ( sys-devel/gettext )
 DEFINED_PHASES=compile configure prepare setup
-DEPEND=selinux? ( sys-libs/libselinux ) nls? ( virtual/libintl ) test? ( || ( dev-lang/python:3.7 dev-lang/python:3.6 ) )
+DEPEND=selinux? ( sys-libs/libselinux ) nls? ( virtual/libintl ) test? ( || ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 ) )
 DESCRIPTION=GNU utilities for finding files
 EAPI=7
 HOMEPAGE=https://www.gnu.org/software/findutils/
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://gnu/findutils/findutils-4.7.0.tar.xz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	multilib	2477ebe553d3e4d2c606191fe6c33602	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=035a835c7aa2daf0ca612e14c9859da3
+_md5_=a928476e29fa45929b26078648632166

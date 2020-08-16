@@ -4009,7 +4009,7 @@ dev-haskell/fsnotify 0.0.11 0.1.0.3 0.2.1 0.3.0.1: Cross platform library for fi
 dev-haskell/generic-deriving 1.6.3 1.7.0 1.11.1 1.13.1: Generic programming library for generalised deriving
 dev-haskell/generics-sop 0.2.4.0 0.5.1.0: Generic Programming using True Sums of Products
 dev-haskell/geniplate 0.6.0.5: Use Template Haskell to generate Uniplate-like functions
-dev-haskell/geniplate-mirror 0.7.1 0.7.4: Use Template Haskell to generate Uniplate-like functions
+dev-haskell/geniplate-mirror 0.7.1 0.7.4 0.7.7: Use Template Haskell to generate Uniplate-like functions
 dev-haskell/genvalidity 0.10.0.2: Testing utilities for the validity library
 dev-haskell/genvalidity-hspec 0.7.0.4: Standard spec's for GenValidity instances
 dev-haskell/genvalidity-property 0.5.0.1: Standard properties for functions on 'Validity' types
