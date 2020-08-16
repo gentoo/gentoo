@@ -39,6 +39,8 @@ all_ruby_prepare() {
 	sed -i -e 's/git ls-files --/echo/' ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	sed -i -e '/test_connection_timeout/askip "requires network"' test/internals_test.rb || die
+
+	sed -i -e '/bundler/ s:^:#:' Rakefile || die
 }
 
 each_ruby_test() {
