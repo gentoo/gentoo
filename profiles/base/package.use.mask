@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2020-08-16)
+# dev-python/pyminuit is being removed.
+sci-visualization/veusz minuit
+
 # Michał Górny <mgorny@gentoo.org> (2020-08-01)
 # Require dev-python/twisted with py2.7.
 net-voip/telepathy-haze test
