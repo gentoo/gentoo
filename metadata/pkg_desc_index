@@ -2696,7 +2696,7 @@ app-portage/elogviewer 3.0-r2: Elog viewer for Gentoo
 app-portage/elt-patches 20170317 20170422 20170815 20170826.1: Collection of patches for libtool.eclass
 app-portage/emerge-delta-webrsync 3.7.5 3.7.6: emerge-webrsync using patches to minimize bandwidth
 app-portage/epkg 0.4-r1: A simple portage wrapper which works like other package managers
-app-portage/esearch 1.3-r2 9999: Replacement for 'emerge --search' with search-index
+app-portage/esearch 1.3-r3 9999: Replacement for 'emerge --search' with search-index
 app-portage/etc-proposals 1.4.3-r3: a set of tools for updating gentoo config files
 app-portage/euses 2.5.9 2.6.0: look up USE flag descriptions fast
 app-portage/fetchcommandwrapper 0.8.1-r1 0.8.2 0.8.3 0.8.4: Wrapper integrating aria2 into portage's FETCHCOMMAND
@@ -14037,7 +14037,7 @@ media-tv/gentoo-vdr-scripts 2.8: Scripts necessary for use of VDR as a set-top-b
 media-tv/gtk-v4l 0.4: A control application for Video 4 Linux (based on C and GTK+)
 media-tv/ivtv-utils 1.4.1: IVTV utilities for Hauppauge PVR PCI cards
 media-tv/ivtvplayer 0.1.3-r2: Simple IVTV command line TV and radio player with support of LIRC
-media-tv/kodi 18.7 18.7.1 18.8 19.0_alpha1 19.9999 9999: A free and open source media-player and entertainment hub
+media-tv/kodi 18.7 18.7.1 18.8 19.0_alpha1-r1 19.9999 9999: A free and open source media-player and entertainment hub
 media-tv/linuxtv-dvb-apps 1.1.1.20140321 1.1.1.20140321-r1: Small utils for DVB to scan, zap, view signal strength
 media-tv/mythtv 30.0_p20190808-r3 31.0-r1 31.0-r2: Open Source DVR and media center hub
 media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the command prompt
@@ -15812,7 +15812,7 @@ sci-biology/amos 3.1.0-r4: A Modular, Open-Source whole genome assembler
 sci-biology/augustus 2.5.5: Eukaryotic gene predictor
 sci-biology/bamtools 2.5.1 9999: A programmer's API and an end-user's toolkit for handling BAM files
 sci-biology/bcftools 1.10.2: Utilities for variant calling and manipulating VCF and BCF files
-sci-biology/bedtools 2.26.0: Tools for manipulation and analysis of BED, GFF/GTF, VCF, SAM/BAM file formats
+sci-biology/bedtools 2.29.2: Tools for manipulation and analysis of BED, GFF/GTF, VCF, SAM/BAM file formats
 sci-biology/bfast 0.7.0a: Blat-like Fast Accurate Search Tool
 sci-biology/biogrep 1.0-r2: Multithreaded tool for matching large sets of patterns against biosequence DBs
 sci-biology/biopandas 0.2.1: Molecular Structures in Pandas DataFrames
