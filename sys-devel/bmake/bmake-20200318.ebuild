@@ -32,7 +32,12 @@ src_compile() {
 
 src_test() {
 	cd unit-tests || die
-	LC_ALL=C env -u A "${S}"/bmake -r -m all || die "tests compilation failed"
+
+	# the 'ternary' test uses ${A} internally, which
+	# conflicts with Gentoo's ${A}, hence unset it for
+	# the tests temporarily.
+	env -u A MAKEFLAGS= \
+		"${S}"/bmake -r -m / TEST_MAKE="${S}"/bmake test || die "tests compilation failed"
 }
 
 src_install() {
