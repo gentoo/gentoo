@@ -36,6 +36,10 @@ BDEPEND="
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/${P}-Make-BASH_COMPLETION_DIR-user-overridable.patch )
+
+mycmakeargs=( -DBASH_COMPLETION_PATH=share/bash-completion/completions )
+
 pkg_postinst() {
 	xdg_icon_cache_update
 }
