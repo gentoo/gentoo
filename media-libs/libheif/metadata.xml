@@ -2,6 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<use>
+	<flag name='go'>Add support for <pkg>dev-lang/go</pkg></flag>
+	</use>
 	<upstream>
 		<bugs-to>https://github.com/strukturag/libheif/issues</bugs-to>
 		<remote-id type="github">strukturag/libheif</remote-id>

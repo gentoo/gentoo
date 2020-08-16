@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/strukturag/libheif"
 
 LICENSE="GPL-3"
 SLOT="0/1.6"
-IUSE="static-libs test +threads"
+IUSE="go static-libs test +threads"
 RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( dev-lang/go )"
@@ -28,6 +28,7 @@ DEPEND="
 	media-libs/x265:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	virtual/jpeg:0=[${MULTILIB_USEDEP}]
+	go? ( dev-lang/go )
 "
 RDEPEND="${DEPEND}"
 
@@ -43,18 +44,16 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	local myeconfargs=(
-		$(use_enable threads multithreading)
+	local econf_args=(
+		$(multilib_is_native_abi && use_enable go || echo --disable-go)
 		$(use_enable static-libs static)
+		$(use_enable threads multithreading)
 	)
-	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+	ECONF_SOURCE="${S}" econf "${econf_args[@]}"
 }
 
 multilib_src_install_all() {
 	find "${ED}" -name '*.la' -delete || die
-	if ! use static-libs ; then
-		find "${ED}" -name "*.a" -delete || die
-	fi
 }
 
 pkg_postinst() {
