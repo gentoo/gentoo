@@ -4,11 +4,11 @@ DESCRIPTION=Make an educated guess about the shell in use
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Shell-Guess
 IUSE=test
-KEYWORDS=~amd64
+KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/P/PL/PLICEASE/Shell-Guess-0.09.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=cb09370abc972174322340f0bbee2b94
+_md5_=99abae60876703350a7b9256e7b32f48

@@ -5936,7 +5936,7 @@ dev-perl/Algorithm-Dependency 1.110.0-r2 1.112.0: Toolkit for implementing depen
 dev-perl/Algorithm-Diff 1.190.300 1.190.300-r1: Compute intelligent differences between two files / lists
 dev-perl/Algorithm-Munkres 0.80.0-r1 0.80.0-r2: Munkres solution to classical Assignment problem
 dev-perl/Alien-Base-ModuleBuild 1.140.0: A Module::Build subclass for building Alien:: modules and their libraries
-dev-perl/Alien-Build 1.790.0 2.230.0 2.260.0 2.280.0: Build external dependencies for use in CPAN
+dev-perl/Alien-Build 1.790.0 2.230.0 2.260.0 2.280.0 2.290.0: Build external dependencies for use in CPAN
 dev-perl/Alien-Gnuplot 1.33.0: Find and verify functionality of the gnuplot executable
 dev-perl/Alien-LibGumbo 0.50.0-r2: Gumbo parser library
 dev-perl/Alien-Libxml2 0.90.0 0.160.0: Install the C libxml2 library on your system
