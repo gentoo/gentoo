@@ -16353,7 +16353,7 @@ sci-libs/profnet 1.0.22: Neural network architecture for profacc
 sci-libs/profphd-utils 1.0.10 1.0.10-r1: Additional utils for profphd
 sci-libs/proj 7.0.1: PROJ coordinate transformation software
 sci-libs/punc 1.5: Portable Understructure for Numerical Computing
-sci-libs/pyshp 1.2.0 2.1.0 9999: Pure Python read/write support for ESRI Shapefile format
+sci-libs/pyshp 1.2.0 2.1.0: Pure Python read/write support for ESRI Shapefile format
 sci-libs/qd 2.3.17 2.3.22: Quad-double and double-double float arithmetics
 sci-libs/qfits 6.2.0: ESO stand-alone C library offering easy access to FITS files
 sci-libs/qrupdate 1.1.2-r1: Library for updating of QR and Cholesky decompositions
