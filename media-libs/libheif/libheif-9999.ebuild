@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/strukturag/libheif"
 
 LICENSE="GPL-3"
 SLOT="0/1.6"
-IUSE="go static-libs test +threads"
+IUSE="gdk-pixbuf go static-libs test +threads"
 RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( dev-lang/go )"
@@ -28,6 +28,7 @@ DEPEND="
 	media-libs/x265:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	virtual/jpeg:0=[${MULTILIB_USEDEP}]
+	gdk-pixbuf? ( x11-libs/gdk-pixbuf )
 	go? ( dev-lang/go )
 "
 RDEPEND="${DEPEND}"
@@ -46,6 +47,7 @@ src_prepare() {
 multilib_src_configure() {
 	local econf_args=(
 		$(multilib_is_native_abi && use_enable go || echo --disable-go)
+		$(use_enable gdk-pixbuf)
 		$(use_enable static-libs static)
 		$(use_enable threads multithreading)
 	)
