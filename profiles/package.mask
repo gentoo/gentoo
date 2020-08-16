@@ -85,6 +85,12 @@ dev-haskell/yesod-platform
 dev-haskell/yesod-routes
 
 # Hans de Graaff <graaff@gentoo.org> (2020-08-16)
+# Old unmaintained package without reverse dependencies. Block removal
+# of insecure dev-ruby/rack versions, bug 730786. Masked for removal
+# in 30 days.
+dev-ruby/bcat
+
+# Hans de Graaff <graaff@gentoo.org> (2020-08-16)
 # Mask old obsolete slots for removal in 30 days.
 # Use a newer slot of the same package instead.
 dev-ruby/mysql2:0.4
