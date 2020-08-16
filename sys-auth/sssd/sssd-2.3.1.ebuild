@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic linux-info multilib-minimal pam systemd toolchain-funcs
+PYTHON_COMPAT=( python3_{7,8,9} )
+
+inherit autotools flag-o-matic linux-info multilib-minimal python-single-r1 pam systemd toolchain-funcs
 
 DESCRIPTION="System Security Services Daemon provides access to identity and authentication"
 HOMEPAGE="https://github.com/SSSD/sssd"
@@ -12,54 +14,64 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="acl +autofs +locator +netlink nfsv4 nls +manpages samba selinux +sudo +ssh systemd test valgrind"
+IUSE="acl doc +locator +netlink nfsv4 nls +manpages pac python samba selinux sudo systemd test valgrind"
 RESTRICT="!test? ( test )"
-REQUIRED_USE="test? ( ssh sudo )"
 
-COMMON_DEP="
-	>=sys-libs/pam-0-r1[${MULTILIB_USEDEP}]
-	>=dev-libs/popt-1.16
-	dev-libs/glib:2
+REQUIRED_USE="pac? ( samba )
+	python? ( ${PYTHON_REQUIRED_USE} )"
+
+DEPEND="
+	>=app-crypt/mit-krb5-1.10.3
+	app-crypt/p11-kit
 	>=dev-libs/ding-libs-0.2
-	>=dev-libs/openssl-1.0.2
+	dev-libs/glib:2
+	>=dev-libs/cyrus-sasl-2.1.25-r3[kerberos]
+	>=dev-libs/libpcre-8.30:=
+	>=dev-libs/popt-1.16
+	>=dev-libs/openssl-1.0.2:0=
+	>=net-dns/bind-tools-9.9[gssapi]
+	>=net-dns/c-ares-1.7.4
+	>=net-nds/openldap-2.4.30[sasl]
+	>=sys-apps/dbus-1.6
+	>=sys-apps/keyutils-1.5:=
+	>=sys-libs/pam-0-r1[${MULTILIB_USEDEP}]
 	>=sys-libs/talloc-2.0.7
 	>=sys-libs/tdb-1.2.9
 	>=sys-libs/tevent-0.9.16
 	>=sys-libs/ldb-1.1.17-r1:=
-	>=net-nds/openldap-2.4.30[sasl]
-	net-libs/http-parser
-	>=dev-libs/libpcre-8.30
-	>=app-crypt/mit-krb5-1.10.3
-	dev-libs/jansson
-	net-misc/curl
+	virtual/libintl
 	locator? (
 		>=app-crypt/mit-krb5-1.12.2[${MULTILIB_USEDEP}]
 		>=net-dns/c-ares-1.10.0-r1[${MULTILIB_USEDEP}]
 	)
-	>=sys-apps/keyutils-1.5:=
-	>=net-dns/c-ares-1.7.4
+	acl? ( net-fs/cifs-utils[acl] )
+	netlink? ( dev-libs/libnl:3 )
+	nfsv4? ( || ( >=net-fs/nfs-utils-2.3.1-r2 net-libs/libnfsidmap ) )
+	nls? ( >=sys-devel/gettext-0.18 )
+	pac? (
+		app-crypt/mit-krb5[${MULTILIB_USEDEP}]
+		net-fs/samba[${MULTILIB_USEDEP}]
+	)
+	python? ( ${PYTHON_DEPS} )
+	samba? ( >=net-fs/samba-4.10.2[winbind] )
 	selinux? (
 		>=sys-libs/libselinux-2.1.9
 		>=sys-libs/libsemanage-2.1
 	)
-	>=net-dns/bind-tools-9.9[gssapi]
-	>=dev-libs/cyrus-sasl-2.1.25-r3[kerberos]
-	>=sys-apps/dbus-1.6
-	acl? ( net-fs/cifs-utils[acl] )
-	nfsv4? ( || ( >=net-fs/nfs-utils-2.3.1-r2 net-libs/libnfsidmap ) )
-	nls? ( >=sys-devel/gettext-0.18 )
-	virtual/libintl
-	netlink? ( dev-libs/libnl:3 )
-	samba? ( >=net-fs/samba-4.10.2[winbind] )
+	systemd? (
+		dev-libs/jansson:0=
+		net-libs/http-parser:0=
+		net-misc/curl:0=
+	)
 	"
 
-RDEPEND="${COMMON_DEP}
+RDEPEND="${DEPEND}
 	>=sys-libs/glibc-2.17[nscd]
 	selinux? ( >=sec-policy/selinux-sssd-2.20120725-r9 )
 	"
-DEPEND="${COMMON_DEP}
+BDEPEND="${DEPEND}
+	doc? ( app-doc/doxygen )
 	test? (
-		app-crypt/p11-kit
 		dev-libs/check
 		dev-libs/softhsm:2
 		dev-util/cmocka
@@ -71,8 +83,9 @@ DEPEND="${COMMON_DEP}
 		valgrind? ( dev-util/valgrind )
 	)
 	manpages? (
-		>=dev-libs/libxslt-1.1.26
 		app-text/docbook-xml-dtd:4.4
+		>=dev-libs/libxslt-1.1.26
+		nls? ( app-text/po4a )
 	)"
 
 CONFIG_CHECK="~KEYS"
@@ -81,7 +94,6 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/ipa_hbac.h
 	/usr/include/sss_idmap.h
 	/usr/include/sss_nss_idmap.h
-	/usr/include/wbclient_sssd.h
 	# --with-ifp
 	/usr/include/sss_sifp.h
 	/usr/include/sss_sifp_dbus.h
@@ -98,12 +110,15 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -i 's:#!/sbin/runscript:#!/sbin/openrc-run:' \
-		"${S}"/src/sysv/gentoo/sssd.in || die "sed sssd.in"
+	sed -i 's:/var/run:/run:' \
+		"${S}"/src/examples/logrotate || die
 
 	default
 	eautoreconf
 	multilib_copy_sources
+	if use python && multilib_is_native_abi; then
+		python_setup
+	fi
 }
 
 src_configure() {
@@ -117,36 +132,42 @@ multilib_src_configure() {
 
 	myconf+=(
 		--localstatedir="${EPREFIX}"/var
-		--enable-nsslibdir="${EPREFIX}"/$(get_libdir)
+		--with-pid-path="${EPREFIX}"/run
 		--with-plugin-path="${EPREFIX}"/usr/$(get_libdir)/sssd
 		--enable-pammoddir="${EPREFIX}"/$(getpam_mod_dir)
 		--with-ldb-lib-dir="${EPREFIX}"/usr/$(get_libdir)/samba/ldb
+		--with-db-path="${EPREFIX}"/var/lib/sss/db
+		--with-gpo-cache-path="${EPREFIX}"/var/lib/sss/gpo_cache
+		--with-pubconf-path="${EPREFIX}"/var/lib/sss/pubconf
+		--with-pipe-path="${EPREFIX}"/var/lib/sss/pipes
+		--with-mcache-path="${EPREFIX}"/var/lib/sss/mc
+		--with-secrets-db-path="${EPREFIX}"/var/lib/sss/secrets
+		--with-log-path="${EPREFIX}"/var/log/sssd
 		--with-os=gentoo
-		--with-nscd
+		--with-nscd="${EPREFIX}"/usr/sbin/nscd
 		--with-unicode-lib="glib2"
 		--disable-rpath
 		--sbindir=/usr/sbin
-		--without-kcm
-		$(use_with samba libwbclient)
-		--with-secrets
-		$(multilib_native_use_with samba)
+		--with-crypto="libcrypto"
+		$(multilib_native_use_with systemd kcm)
+		$(multilib_native_use_with systemd secrets)
+		$(use_with samba)
 		$(multilib_native_use_enable acl cifs-idmap-plugin)
 		$(multilib_native_use_with selinux)
 		$(multilib_native_use_with selinux semanage)
 		$(use_enable locator krb5-locator-plugin)
+		$(use_enable pac pac-responder)
 		$(multilib_native_use_with nfsv4 nfsv4-idmapd-plugin)
 		$(use_enable nls)
 		$(multilib_native_use_with netlink libnl)
 		$(multilib_native_use_with manpages)
 		$(multilib_native_use_with sudo)
-		$(multilib_native_use_with autofs)
-		$(multilib_native_use_with ssh)
+		$(multilib_native_with autofs)
+		$(multilib_native_with ssh)
 		$(use_enable valgrind)
-		--with-crypto="libcrypto"
 		--without-python2-bindings
-		--without-python3-bindings
+		$(multilib_native_use_with python python3-bindings)
 
-		KRB5_CONFIG=/usr/bin/${CHOST}-krb5-config
 	)
 
 	# Annoyingly configure requires that you pick systemd XOR sysv
@@ -165,7 +186,7 @@ multilib_src_configure() {
 			{POPT,TALLOC,TDB,TEVENT,LDB}_{CFLAGS,LIBS}=' '
 			# ldb headers are fine since native needs it
 			# ldb lib fails... but it does not seem to bother
-			{DHASH,COLLECTION,INI_CONFIG_V{0,1,1_1}}_{CFLAGS,LIBS}=' '
+			{DHASH,COLLECTION,INI_CONFIG_V{0,1,1_1,1_3}}_{CFLAGS,LIBS}=' '
 			{PCRE,CARES,SYSTEMD_LOGIN,SASL,GLIB2,DBUS,CRYPTO,P11_KIT}_{CFLAGS,LIBS}=' '
 
 			# use native include path for dbus (needed for build)
@@ -174,12 +195,7 @@ multilib_src_configure() {
 			# non-pkgconfig checks
 			ac_cv_lib_ldap_ldap_search=yes
 			--without-secrets
-			--without-libwbclient
 			--without-kcm
-		)
-
-		use locator || myconf+=(
-				KRB5_CONFIG=/bin/true
 		)
 	fi
 
@@ -189,15 +205,25 @@ multilib_src_configure() {
 multilib_src_compile() {
 	if multilib_is_native_abi; then
 		default
+		use doc && emake docs
+		if use manpages || use nls; then
+			emake update-po
+		fi
 	else
 		emake libnss_sss.la pam_sss.la
 		use locator && emake sssd_krb5_locator_plugin.la
+		use pac && emake sssd_pac_plugin.la
 	fi
 }
 
 multilib_src_install() {
 	if multilib_is_native_abi; then
 		emake -j1 DESTDIR="${D}" "${_at_args[@]}" install
+		if use python; then
+			python_optimize
+			python_fix_shebang "${ED}"
+		fi
+
 	else
 		# easier than playing with automake...
 		dopammod .libs/pam_sss.so
@@ -208,6 +234,11 @@ multilib_src_install() {
 		if use locator; then
 			exeinto /usr/$(get_libdir)/krb5/plugins/libkrb5
 			doexe .libs/sssd_krb5_locator_plugin.so
+		fi
+
+		if use pac; then
+			exeinto /usr/$(get_libdir)/krb5/plugins/authdata
+			doexe .libs/sssd_pac_plugin.so
 		fi
 	fi
 }
@@ -225,7 +256,6 @@ multilib_src_install_all() {
 	newins "${S}"/src/examples/logrotate sssd
 
 	newconfd "${FILESDIR}"/sssd.conf sssd
-	newinitd "${FILESDIR}"/sssd sssd
 
 	keepdir /var/lib/sss/db
 	keepdir /var/lib/sss/deskprofile
@@ -236,10 +266,18 @@ multilib_src_install_all() {
 	keepdir /var/lib/sss/pubconf/krb5.include.d
 	keepdir /var/lib/sss/secrets
 	keepdir /var/log/sssd
+
+	# strip empty dirs
+	if ! use doc ; then
+		rm -r "${ED}"/usr/share/doc/"${PF}"/doc || die
+		rm -r "${ED}"/usr/share/doc/"${PF}"/{hbac,idmap,nss_idmap,sss_simpleifp}_doc || die
+	fi
+
+	rm -r "${ED}"/run || die
 }
 
 multilib_src_test() {
-	emake check
+	multilib_is_native_abi && emake check
 }
 
 pkg_postinst() {
