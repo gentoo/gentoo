@@ -8,11 +8,8 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
-	<longdescription lang="en">
-		Beagle is a command line client for Hound, the code search tool.
-	</longdescription>
 	<upstream>
 		<remote-id type="pypi">beagle</remote-id>
-		<remote-id type="github">dhellmann/beagle</remote-id>
+		<remote-id type="github">beaglecli/beagle</remote-id>
 	</upstream>
 </pkgmetadata>
