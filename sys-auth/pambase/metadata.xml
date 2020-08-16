@@ -35,10 +35,13 @@
 		</flag>
 		<flag name="passwdqc">
 			Enable pam_passwdqc module on system auth stack for password
-			quality validation. This is an alternative to pam_cracklib
-			producing warnings, rejecting or providing example passwords
-			when changing your system password. It is used by default by
-			OpenWall GNU/*/Linux and by FreeBSD.
+			quality validation. This module produces warnings, rejecting 
+			or providing example passwords when changing your system password.
+			It is used by default by OpenWall GNU/*/Linux and by FreeBSD.
+		</flag>
+		<flag name="pwquality">
+			Enable pam_pwquality module on system auth stack for passwd
+			quality validation. It is used be dafault by Fedora GNU/*/Linux.
 		</flag>
 		<flag name="mktemp">
 			Enable pam_mktemp module on system auth stack for session
