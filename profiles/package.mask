@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-08-16)
+# Outdated.  Not tested (successfully) on py3.7.  The current version
+# fails tests.  No reverse dependencies.
+# Removal in 30 days.  Bug #718814.
+dev-python/emcee
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-08-16)
 # Obsolete package without reverse dependencies.
 # A metapackage. Removal in 30 days.
