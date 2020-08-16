@@ -6006,7 +6006,7 @@ dev-perl/B-OPCheck 0.320.0-r1: PL_check hacks using Perl callbacks
 dev-perl/B-Utils 0.270.0 0.270.0-r1 0.270.0-r2: Helper functions for op tree manipulation
 dev-perl/BDB 1.920.0-r1: Asynchronous Berkeley DB access
 dev-perl/BSD-Resource 1.291.100 1.291.100-r1 1.291.100-r2: Perl module for BSD process resource limit and priority functions
-dev-perl/BSON 1.12.1: BSON serialization and deserialization
+dev-perl/BSON 1.12.1 1.12.2: BSON serialization and deserialization (EOL)
 dev-perl/BZ-Client 4.400.200: A client for the Bugzilla web services API.
 dev-perl/Benchmark-Timer 0.711.200: Perl code benchmarking tool
 dev-perl/BerkeleyDB 0.550.0 0.630.0 0.630.0-r1 0.630.0-r2: This module provides Berkeley DB interface for Perl
