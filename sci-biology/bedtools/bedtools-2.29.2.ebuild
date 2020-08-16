@@ -22,7 +22,9 @@ RDEPEND="
 	app-arch/xz-utils
 	sys-libs/zlib"
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( >=sci-biology/samtools-1.10:0 )"
+BDEPEND="
+	${PYTHON_DEPS}
+	test? ( >=sci-biology/samtools-1.10:0 )"
 
 S="${WORKDIR}"/${PN}2
 
