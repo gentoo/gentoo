@@ -151,7 +151,7 @@ src_install() {
 			doc/*.asy \
 			doc/*.csv \
 			doc/*.dat \
-			dec/pixel.pdf \
+			doc/pixel.pdf \
 			doc/extra/*.asy
 		insinto /usr/share/${PN}/examples/animations
 		doins examples/animations/*.asy
@@ -187,7 +187,7 @@ src_install() {
 		insinto /usr/share/vim/vimfiles/syntax
 		doins base/asy.vim
 		insinto /usr/share/vim/vimfiles/ftdetect
-		doins "${FILESDIR}"/asy-filetype.vim
+		doins base/asy_filetype.vim
 	fi
 
 	# extra documentation
