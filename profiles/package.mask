@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
+# Ported to py3.8 but not yet released
+# Masked to allow py2.7 removal
+dev-ada/langkit
+dev-ada/libadalang
+dev-ada/libadalang-tools
+dev-ada/gps
+
 # Michał Górny <mgorny@gentoo.org> (2020-08-16)
 # Unmaintained.  Not ported to py3.7.  The only revdep is queued
 # for removal.
