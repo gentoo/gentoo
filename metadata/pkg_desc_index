@@ -11787,7 +11787,7 @@ gnome-base/gnome-applets 3.34.0 3.36.4: Applets for the GNOME Flashback Panel
 gnome-base/gnome-common 3.18.0-r1: Common files for development of Gnome packages
 gnome-base/gnome-control-center 3.34.5-r1 3.36.4: GNOME's main interface to configure various aspects of the desktop
 gnome-base/gnome-core-apps 3.34.4: Sub-meta package for the core applications integrated with GNOME 3
-gnome-base/gnome-core-libs 3.34.4 3.36.4: Sub-meta package for the core libraries of GNOME 3
+gnome-base/gnome-core-libs 3.34.4 3.36.4 3.36.5: Sub-meta package for the core libraries of GNOME 3
 gnome-base/gnome-desktop 3.34.7 3.36.4 3.36.5: Library with common API for various GNOME modules
 gnome-base/gnome-extra-apps 3.34.4: Sub-meta package for the applications of GNOME 3
 gnome-base/gnome-flashback 3.34.2 3.36.3: GNOME Flashback session
