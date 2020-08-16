@@ -25,7 +25,11 @@ DEPEND="app-arch/xz-utils
 # bug 429810
 RDEPEND="!sys-fabric/dapl"
 
-src_configure() {
+src_prepare() {
+	default
 	[[ "${PV}" = 9999 ]] && eautoreconf
+}
+
+src_configure() {
 	econf CFLAGS="${CFLAGS}"
 }
