@@ -29,7 +29,7 @@ ruby_add_rdepend ">=dev-ruby/multipart-post-1.2.0 <dev-ruby/multipart-post-3"
 ruby_add_bdepend "test? (
 		>=dev-ruby/test-unit-2.4
 		>=dev-ruby/connection_pool-2.2.2
-		|| ( dev-ruby/rack:2.0 dev-ruby/rack:1.6 )
+		dev-ruby/rack
 	)"
 
 all_ruby_prepare() {
@@ -40,7 +40,6 @@ all_ruby_prepare() {
 	# Avoid loading all lib files since some of them require unpackaged dependencies.
 	sed -e '/[Cc]overall/ s:^:#:' \
 		-e '/lib\/\*\*/ s:^:#:' \
-		-e '3igem "rack", "<2.1"' \
 		-e '/simplecov/ s:^:#:' \
 		-e '/SimpleCov/,/end/ s:^:#:' \
 		-e '/pry/ s:^:#:' \
@@ -65,6 +64,9 @@ all_ruby_prepare() {
 	if ! has_version "dev-ruby/typhoeus:1" ; then
 		rm -f  spec/faraday/adapter/typhoeus_spec.rb || die
 	fi
+
+	# Fix spec broken by newer rack versions, already fixed upstream
+	sed -i -e 's/one, two/name=value/' spec/support/shared_examples/request_method.rb || die
 }
 
 each_ruby_prepare() {
