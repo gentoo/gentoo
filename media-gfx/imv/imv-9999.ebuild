@@ -2,16 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit git-r3 toolchain-funcs xdg-utils
+inherit git-r3 meson xdg-utils
 
 DESCRIPTION="Minimal image viewer designed for tiling window manager users"
+LICENSE="MIT-with-advertising"
 HOMEPAGE="https://github.com/eXeC64/imv"
 EGIT_REPO_URI="https://github.com/eXeC64/imv"
 
-LICENSE="MIT-with-advertising"
-SLOT="0"
 KEYWORDS=""
-IUSE="X +freeimage jpeg libnsgif png +svg test tiff wayland"
+SLOT="0"
+IUSE="X +freeimage +png jpeg svg gif heif test tiff wayland"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	|| ( X wayland )
@@ -27,15 +27,18 @@ RDEPEND="
 		virtual/glu
 		x11-libs/libX11
 		x11-libs/libxcb
-		x11-libs/libxkbcommon
+		x11-libs/libxkbcommon[X]
 		x11-libs/pango
 	)
-	freeimage? ( media-libs/freeimage )
-	jpeg? ( media-libs/libjpeg-turbo )
-	libnsgif? ( media-libs/libnsgif )
-	png? ( media-libs/libpng )
-	svg? ( gnome-base/librsvg )
-	tiff? ( media-libs/tiff )
+	freeimage? ( media-libs/freeimage[png?,jpeg?,tiff?] )
+	!freeimage? (
+		jpeg? ( media-libs/libjpeg-turbo )
+		png? ( media-libs/libpng )
+		tiff? ( media-libs/tiff )
+	)
+	gif? ( media-libs/libnsgif )
+	heif? ( media-libs/libheif )
+	svg? ( >=gnome-base/librsvg-2.44 )
 	wayland? ( dev-libs/wayland )
 "
 BDEPEND="
@@ -46,13 +49,7 @@ DEPEND="
 	${RDEPEND}
 "
 
-src_prepare() {
-	default
-	sed -i -e 's|pkg-config|$(PKG_CONFIG)|g' Makefile || die
-}
-
 src_configure() {
-	tc-export PKG_CONFIG
 	local WINDOWS
 	if use X; then
 		if ! use wayland; then
@@ -66,23 +63,21 @@ src_configure() {
 		fi
 	fi
 
-	BACKENDS=(
-		BACKEND_FREEIMAGE=$(usex freeimage)
-		BACKEND_JPEG=$(usex jpeg)
-		BACKEND_LIBNSGIF=$(usex libnsgif)
-		BACKEND_LIBPNG=$(usex png)
-		BACKEND_LIBRSVG=$(usex svg)
-		BACKEND_LIBTIFF=$(usex tiff)
-		WINDOWS=${WINDOWS}
+	if ! use test; then
+		sed -i -e '/^dep_cmocka/,/^endforeach$/d' meson.build || die
+	fi
+
+	local emesonargs=(
+		$(meson_feature freeimage)
+		$(meson_feature gif libnsgif)
+		$(meson_feature heif libheif)
+		$(meson_feature svg librsvg)
+		$(usex freeimage -Dlibjpeg=disabled -Dlibjpeg=enabled)
+		$(usex freeimage -Dlibpng=disabled -Dlibjpeg=enabled)
+		$(usex freeimage -Dlibtiff=disabled -Dlibjpeg=enabled)
+		-Dwindows=$WINDOWS
 	)
-}
-
-src_compile() {
-	emake ${BACKENDS[@]}
-}
-
-src_install() {
-	emake ${BACKENDS[@]} DESTDIR="${D}" install
+	meson_src_configure
 }
 
 pkg_postinst() {
