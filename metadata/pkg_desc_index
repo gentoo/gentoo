@@ -423,7 +423,7 @@ app-accessibility/SphinxTrain 1.0.8: Speech Recognition (Training Module)
 app-accessibility/accerciser 3.36.2: Interactive Python accessibility explorer
 app-accessibility/at-spi2-atk 2.34.2: Gtk module for bridging AT-SPI to Atk
 app-accessibility/at-spi2-core 2.34.0 2.36.0: D-Bus accessibility specifications and registration daemon
-app-accessibility/brltty 6.0-r1: Daemon that provides access to the Linux/Unix console for a blind person
+app-accessibility/brltty 6.0-r1 6.1: Daemon that provides access to the Linux/Unix console for a blind person
 app-accessibility/caribou 0.4.21-r1: Input assistive technology intended for switch and pointer users
 app-accessibility/edbrowse 3.7.5.1: Combination editor, browser, and mail client that is 100% text based
 app-accessibility/eflite 0.4.1-r3: A speech server that allows screen readers to interact with festival lite
@@ -437,7 +437,7 @@ app-accessibility/freetts 1.2.2: A speech synthesis system written entirely in J
 app-accessibility/julius 4.2.2: Large Vocabulary Continuous Speech Recognition Engine
 app-accessibility/mbrola 3.0.1h-r6: Speech synthesizer based on the concatenation of diphones. Includes samples
 app-accessibility/nfbtrans 7.74-r2: braille translator from the National Federation of the Blind
-app-accessibility/orca 3.34.2-r1: Extensible screen reader that provides access to the desktop
+app-accessibility/orca 3.34.2-r1 3.36.5: Extensible screen reader that provides access to the desktop
 app-accessibility/powiedz 1.0-r2: Polish speech synthesizer based on rsynth
 app-accessibility/simon 9999: Open-source speech recognition program for replacing mouse and keyboard
 app-accessibility/sound-icons 0.1: a collection of Sound Icons for speech-dispatcher
