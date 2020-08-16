@@ -12,7 +12,7 @@ case "${PV}" in
 		EGIT_REPO_URI="https://github.com/hroptatyr/dateutils.git"
 		;;
 	*)
-		SRC_URI="https://bitbucket.org/hroptatyr/dateutils/downloads/${P}.tar.xz"
+		SRC_URI="https://github.com/hroptatyr/dateutils/releases/download/v${PV}/${P}.tar.xz"
 		KEYWORDS="~amd64 ~x86"
 esac
 
