@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit autotools python-any-r1 xdg-utils toolchain-funcs
+inherit autotools python-any-r1 toolchain-funcs xdg-utils
 
 MY_PV=${PV/_beta/-beta.}
 MY_P=${PN}-${MY_PV}
@@ -41,11 +41,6 @@ RDEPEND="
 	${DEPEND}
 	!<media-gfx/mypaint-1.2.1
 "
-
-src_prepare() {
-	xdg_environment_reset
-	default
-}
 
 src_configure() {
 	tc-ld-disable-gold # bug 589266
