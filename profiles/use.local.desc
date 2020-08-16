@@ -4149,6 +4149,7 @@ media-gfx/imagemagick:pango - Enable Pango support using x11-libs/pango
 media-gfx/imagemagick:q32 - Set quantum depth value to 32
 media-gfx/imagemagick:q8 - Set quantum depth value to 8
 media-gfx/imv:freeimage - Use media-libs/freeimage as image library
+media-gfx/imv:heif - Use media-libs/libheif as image library
 media-gfx/imv:libnsgif - Use media-libs/libnsgif as image library
 media-gfx/inkscape:cdr - Enable support for CorelDRAW files via media-libs/libcdr
 media-gfx/inkscape:dia - Enable DIA flow chart import via app-office/dia
@@ -4320,6 +4321,8 @@ media-libs/libgpod:gtk - Enable ArtworkDB support
 media-libs/libgroove:chromaprint - Enable audio fingerprinting using media-libs/chromaprint.
 media-libs/libgroove:loudness - Enable loudness detection according to the EBU R128 standard using media-libs/libebur128.
 media-libs/libgroove:sound - Enable audio playing.
+media-libs/libheif:gdk-pixbuf - Enable x11-libs/gdk-pixbuf plugin
+media-libs/libheif:go - Enable building dev-lang/go code/examples
 media-libs/liblastfm:fingerprint - Build the lastfm-fingerprint library
 media-libs/libmp4v2:utils - Install command-line utilities
 media-libs/libmypaint:gegl - Add support for media-libs/gegl

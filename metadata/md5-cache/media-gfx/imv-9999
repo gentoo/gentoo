@@ -1,15 +1,15 @@
-BDEPEND=app-text/asciidoc test? ( dev-util/cmocka ) >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile configure install postinst postrm prepare unpack
-DEPEND=!sys-apps/renameutils dev-libs/icu:= media-libs/fontconfig media-libs/libsdl2 media-libs/sdl2-ttf X? ( virtual/glu x11-libs/libX11 x11-libs/libxcb x11-libs/libxkbcommon x11-libs/pango ) freeimage? ( media-libs/freeimage ) jpeg? ( media-libs/libjpeg-turbo ) libnsgif? ( media-libs/libnsgif ) png? ( media-libs/libpng ) svg? ( gnome-base/librsvg ) tiff? ( media-libs/tiff ) wayland? ( dev-libs/wayland )
+BDEPEND=app-text/asciidoc test? ( dev-util/cmocka ) >=dev-vcs/git-1.8.2.1[curl] >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2
+DEFINED_PHASES=compile configure install postinst postrm test unpack
+DEPEND=!sys-apps/renameutils dev-libs/icu:= media-libs/fontconfig media-libs/libsdl2 media-libs/sdl2-ttf X? ( virtual/glu x11-libs/libX11 x11-libs/libxcb x11-libs/libxkbcommon[X] x11-libs/pango ) freeimage? ( media-libs/freeimage[png?,jpeg?,tiff?] ) !freeimage? ( jpeg? ( media-libs/libjpeg-turbo ) png? ( media-libs/libpng ) tiff? ( media-libs/tiff ) ) gif? ( media-libs/libnsgif ) heif? ( media-libs/libheif ) svg? ( >=gnome-base/librsvg-2.44 ) wayland? ( dev-libs/wayland )
 DESCRIPTION=Minimal image viewer designed for tiling window manager users
 EAPI=7
 HOMEPAGE=https://github.com/eXeC64/imv
-IUSE=X +freeimage jpeg libnsgif png +svg test tiff wayland
+IUSE=X +freeimage +png jpeg svg gif heif test tiff wayland
 LICENSE=MIT-with-advertising
 PROPERTIES=live
-RDEPEND=!sys-apps/renameutils dev-libs/icu:= media-libs/fontconfig media-libs/libsdl2 media-libs/sdl2-ttf X? ( virtual/glu x11-libs/libX11 x11-libs/libxcb x11-libs/libxkbcommon x11-libs/pango ) freeimage? ( media-libs/freeimage ) jpeg? ( media-libs/libjpeg-turbo ) libnsgif? ( media-libs/libnsgif ) png? ( media-libs/libpng ) svg? ( gnome-base/librsvg ) tiff? ( media-libs/tiff ) wayland? ( dev-libs/wayland )
+RDEPEND=!sys-apps/renameutils dev-libs/icu:= media-libs/fontconfig media-libs/libsdl2 media-libs/sdl2-ttf X? ( virtual/glu x11-libs/libX11 x11-libs/libxcb x11-libs/libxkbcommon[X] x11-libs/pango ) freeimage? ( media-libs/freeimage[png?,jpeg?,tiff?] ) !freeimage? ( jpeg? ( media-libs/libjpeg-turbo ) png? ( media-libs/libpng ) tiff? ( media-libs/tiff ) ) gif? ( media-libs/libnsgif ) heif? ( media-libs/libheif ) svg? ( >=gnome-base/librsvg-2.44 ) wayland? ( dev-libs/wayland )
 REQUIRED_USE=|| ( X wayland )
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=git-r3	8ec5b53812bce105ae7943930e4660f8	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=75ef8ae2e416ec71cbae70a94bf20660
+_eclasses_=git-r3	8ec5b53812bce105ae7943930e4660f8	meson	71d293a701d6362387e1214da368c848	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=c416e52edd3f54faaf820e0d96d9eca0
