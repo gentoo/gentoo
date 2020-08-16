@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-16)
+# Obsolete package without reverse dependencies.
+# Does not compile against ghc-8.8. Removal in 30 days.
+# Bug #735902.
+dev-haskell/frown
+
 # Michał Górny <mgorny@gentoo.org> (2020-08-16)
 # Unmaintained.  Not ported to py3.7.  Not bumped for over a year.
 # Removal in 30 days.  Bug #737400.
