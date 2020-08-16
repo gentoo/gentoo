@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="A Module::Build subclass for building Alien:: modules and their libraries"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
