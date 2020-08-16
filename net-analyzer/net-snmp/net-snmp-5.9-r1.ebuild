@@ -85,6 +85,9 @@ pkg_setup() {
 }
 
 src_prepare() {
+	find -type d -name .libs -depth -exec rm -r {} \; || die
+	find -type f -name '*.o' -o -name '*.lo' -exec rm {} \; || die
+
 	# snmpconf generates config files with proper selinux context
 	use selinux && eapply "${FILESDIR}"/${PN}-5.1.2-snmpconf-selinux.patch
 
@@ -138,6 +141,8 @@ src_configure() {
 }
 
 src_compile() {
+	emake sedscript
+
 	local subdir
 	for subdir in snmplib agent/mibgroup agent apps .; do
 		emake OTHERLDFLAGS="${LDFLAGS}" -C ${subdir} all
