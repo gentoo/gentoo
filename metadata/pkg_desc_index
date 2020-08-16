@@ -2704,7 +2704,7 @@ app-portage/flaggie 0.2.1-r1 9999: A smart CLI mangler for package.* files
 app-portage/fquery 0.2.3 0.2.3-r1: Installed package query tool for Gentoo Linux
 app-portage/g-cpan 0.16.9-r1 0.17.0 9999: Autogenerate and install ebuilds for CPAN modules
 app-portage/g-octave 0.4.1-r7: A tool that generates and installs ebuilds for Octave-Forge
-app-portage/g-sorcery 0.2.1-r1 9999: framework for ebuild generators
+app-portage/g-sorcery 0.2.1-r1: framework for ebuild generators
 app-portage/gander 0.0.1: Statistic submission client for Goose (anser.gentoo.org)
 app-portage/gemato 14.4-r1 9999: Stand-alone Manifest generation & verification tool
 app-portage/genlop 0.30.9-r1 0.30.10-r1 0.30.10-r2 9999: A nice emerge.log parser
@@ -2715,7 +2715,7 @@ app-portage/golop 0.0.1 0.0.1-r1 9999: A pure Go re-implementation of genlop
 app-portage/gpytage 0.3.0_rc1-r1: GTK Utility to help manage Portage's user config files
 app-portage/gpyutils 0.4.2 9999: Utitilies for maintaining Python packages
 app-portage/grs 0.7 9999: Suite to build Gentoo Reference Systems
-app-portage/gs-elpa 0.1.3-r1 9999: g-sorcery backend for elisp packages
+app-portage/gs-elpa 0.1.3-r1: g-sorcery backend for elisp packages
 app-portage/gverify 2: gentoo.git signature verification tool
 app-portage/hackport 0.6.3 0.6.6 9999: Hackage and Portage integration tool
 app-portage/java-ebuilder 0.4.1 9999: Java team tool for semi-automatic creation of ebuilds from pom.xml
@@ -4538,18 +4538,18 @@ dev-haskell/xml-types 0.3.4 0.3.6: Basic types for representing XML
 dev-haskell/xmlgen 0.6.2.1 0.6.2.2: Fast XML generation library
 dev-haskell/xss-sanitize 0.3.5.6 0.3.5.7 0.3.6: sanitize untrusted HTML to prevent XSS attacks
 dev-haskell/yaml 0.8.10.1 0.8.15.2 0.8.17.1 0.8.20 0.8.21.2 0.11.2.0: Support for parsing and rendering YAML documents
-dev-haskell/yesod 1.4.3 1.4.4 1.6.1.0: Creation of type-safe, RESTful web applications
-dev-haskell/yesod-auth 1.4.13.2 1.4.13.5 1.4.16 1.6.9: Authentication for Yesod
-dev-haskell/yesod-auth-hashdb 1.5.1 1.5.1.3 1.7.1.2: Authentication plugin for Yesod
-dev-haskell/yesod-core 1.2.7 1.4.18.1 1.4.20.2 1.4.25 1.4.31 1.6.17.2: Creation of type-safe, RESTful web applications
+dev-haskell/yesod 1.6.1.0: Creation of type-safe, RESTful web applications
+dev-haskell/yesod-auth 1.6.9: Authentication for Yesod
+dev-haskell/yesod-auth-hashdb 1.7.1.2: Authentication plugin for Yesod
+dev-haskell/yesod-core 1.6.17.2: Creation of type-safe, RESTful web applications
 dev-haskell/yesod-default 1.2.0: Default config and main functions for your yesod application (deprecated)
-dev-haskell/yesod-form 1.4.7.1 1.4.8 1.4.10 1.6.7: Form handling support for Yesod Web Framework
-dev-haskell/yesod-json 1.1.2.2 1.2.0: Generate content for Yesod using the aeson package. (deprecated)
-dev-haskell/yesod-persistent 1.4.0.5 1.4.0.6 1.4.1.1 1.6.0.4: Some helpers for using Persistent from Yesod
+dev-haskell/yesod-form 1.6.7: Form handling support for Yesod Web Framework
+dev-haskell/yesod-json 1.2.0: Generate content for Yesod using the aeson package. (deprecated)
+dev-haskell/yesod-persistent 1.6.0.4: Some helpers for using Persistent from Yesod
 dev-haskell/yesod-platform 1.2.13.3: Meta package for Yesod (deprecated)
 dev-haskell/yesod-routes 1.1.2 1.2.0.7-r2: Efficient routing for Yesod
-dev-haskell/yesod-static 1.2.4 1.4.0.4 1.5.0.3 1.5.0.5 1.5.1.1 1.6.0.1: Static file serving subsite for Yesod Web Framework
-dev-haskell/yesod-test 1.2.3.1 1.4.3.1 1.5.0.1 1.5.1.1 1.5.3 1.5.4.1 1.6.10: integration testing for WAI/Yesod Applications
+dev-haskell/yesod-static 1.6.0.1: Static file serving subsite for Yesod Web Framework
+dev-haskell/yesod-test 1.6.10: integration testing for WAI/Yesod Applications
 dev-haskell/zip-archive 0.1.3.4 0.2.3.7 0.3.3 0.4.1: Library for creating and modifying zip archives
 dev-haskell/zlib 0.5.4.2 0.6.2.1 0.6.2.2: Compression and decompression in the gzip and zlib formats
 dev-haskell/zlib-bindings 0.1.1.5: Low-level bindings to the zlib package. (deprecated)
@@ -4783,7 +4783,7 @@ dev-java/javacsv 2.1: Java library for reading and writing CSV and plain delimit
 dev-java/javacup 0.11b_p20151001: CUP Parser Generator for Java
 dev-java/javahelp 2.0.05_p20170719: The JavaHelp system online help system
 dev-java/javassist 2.6-r2 3.18.2: Javassist makes Java bytecode manipulation simple
-dev-java/javatoolkit 0.3.0-r9 0.6.1 0.6.2-r1 0.6.3 9999: Collection of Gentoo-specific tools for Java
+dev-java/javatoolkit 0.3.0-r9 0.6.1 0.6.2-r1 0.6.3: Collection of Gentoo-specific tools for Java
 dev-java/javax-inject 1-r2 1-r3: Dependency injection for Java (JSR-330)
 dev-java/javolution 4.0.2-r1 6.0.0: Java Solution for Real-Time and Embedded Systems
 dev-java/jaxen 1.1.4-r1 1.1.6 1.1.6-r1: A Java XPath Engine
@@ -8240,7 +8240,7 @@ dev-python/html2text 2020.1.16-r1: Turn HTML into equivalent Markdown-structured
 dev-python/html5-parser 0.4.9: Fast C based HTML 5 parsing for python
 dev-python/html5lib 1.0.1-r2 1.1: HTML parser based on the HTML5 specification
 dev-python/httmock 1.2.5: A mocking library for requests
-dev-python/http-parser 0.8.3 0.9.0: HTTP request/response parser for python in C
+dev-python/http-parser 0.9.0: HTTP request/response parser for python in C
 dev-python/httpauth 0.3: A WSGI middleware that secures routes using HTTP Digest Authentication
 dev-python/httpbin 0.7.0: HTTP Request and Response Service
 dev-python/httplib2 0.18.1: A comprehensive HTTP client library
@@ -8776,7 +8776,7 @@ dev-python/pyrex 0.9.9-r1: A language for writing Python extension modules
 dev-python/pyrfc3339 1.1: Generates and parses RFC 3339 timestamps
 dev-python/pyro 4.80: Distributed object middleware for Python (RPC)
 dev-python/pyroute2 0.5.12-r1: A pure Python netlink and Linux network configuration library.
-dev-python/pyrqlite 2.0 9999: Python client for rqlite
+dev-python/pyrqlite 2.0: Python client for rqlite
 dev-python/pyrsistent 0.15.6 0.16.0: Persistent/Functional/Immutable data structures
 dev-python/pysaml2 4.6.5-r1: Python implementation of SAML Version 2 to be used in a WSGI environment
 dev-python/pyscard 1.9.9: Smart cards support in python
@@ -9058,7 +9058,7 @@ dev-python/six 1.14.0 1.15.0: Python 2 and 3 compatibility library
 dev-python/slackclient 2.5.0: Client for Slack supporting the Slack Web and Real Time Messaging API
 dev-python/sleekxmpp 1.3.1-r1: Python library for XMPP
 dev-python/slimit 0.8.1-r1: A JavaScript minifier written in Python
-dev-python/slixmpp 1.4.2 9999: Python 3 library for XMPP
+dev-python/slixmpp 1.4.2: Python 3 library for XMPP
 dev-python/smmap 3.0.4: A pure Python implementation of a sliding window memory map manager
 dev-python/smmap2 2.0.3: A pure python implementation of a sliding window memory map manager
 dev-python/snakeoil 0.8.8 9999: misc common functionality and useful optimizations
@@ -10699,7 +10699,7 @@ dev-util/drone 0.8.9: A Continuous Delivery platform built on Docker, written in
 dev-util/drone-cli 0.8.6 1.1.4 1.2.1: Command-line interface for Drone
 dev-util/dropwatch 1.4-r1 1.4_p20150706: A utility to interface to the kernel to monitor for dropped network packets
 dev-util/duma 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
-dev-util/dwarves 1.17 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
+dev-util/dwarves 1.17: pahole (Poke-a-Hole) and other DWARF2 utilities
 dev-util/dwdiff 2.1.1 2.1.2: diff-like program operating at word level instead of line level
 dev-util/edb-debugger 1.2.0 9999: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
 dev-util/edi 0.8.0: An EFL-based IDE
@@ -14355,7 +14355,7 @@ net-analyzer/ndoutils 2.1.3-r2: Nagios addon to store Nagios data in a MySQL dat
 net-analyzer/ndsad 1.33-r1 1.33-r2: Cisco netflow probe from libpcap, ULOG, tee/divert sources
 net-analyzer/nessus-agent-bin 7.7.0-r1: A remote security scanner for Linux - agent component
 net-analyzer/nessus-bin 8.11.0: A remote security scanner for Linux
-net-analyzer/net-snmp 5.8.1_pre1-r1 5.9 99999999: Software for generating and retrieving SNMP data
+net-analyzer/net-snmp 5.8.1_pre1-r1 5.9-r1 99999999: Software for generating and retrieving SNMP data
 net-analyzer/netcat 110-r9 110.20180111: the network swiss army knife
 net-analyzer/netdata 1.23.2 1.24.0 9999: Linux real time system monitoring, done right!
 net-analyzer/netdiscover 0.3_beta6-r3 0.3_beta6-r4: An active/passive address reconnaissance tool
