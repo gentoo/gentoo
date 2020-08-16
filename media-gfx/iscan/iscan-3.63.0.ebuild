@@ -28,7 +28,7 @@ RDEPEND="
 # Disable opencl as during reorient.utr test it produces inconsistent results
 DEPEND="${RDEPEND}
 	test? (
-		app-text/tesseract[training,-opencl]
+		app-text/tesseract[png,tiff,training,-opencl]
 		media-fonts/dejavu
 	)
 "
