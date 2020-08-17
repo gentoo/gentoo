@@ -1337,6 +1337,7 @@ dev-db/firebird:xinetd - Install ClassicServer
 dev-db/influxdb:man - Build and install man pages
 dev-db/mariadb:backup - Build mariadb-backup which supports SST and hot backup of InnoDB, Aria and MyISAM including compression and encryption
 dev-db/mariadb:client-libs - Build the client libraries from the server package instead of the C Connector packages
+dev-db/mariadb:columnstore - Build the ColumnStore storage engine
 dev-db/mariadb:extraengine - Add support for alternative storage engines (Archive, CSV, Blackhole, Federated(X), Partition)
 dev-db/mariadb:galera - Enables galera replication
 dev-db/mariadb:innodb-lz4 - Enables lz4 compression methods for InnoDB/XtraDB
@@ -1351,6 +1352,7 @@ dev-db/mariadb:oqgraph - Add support for the Open Query GRAPH engine
 dev-db/mariadb:pam - Enable the optional PAM authentication plugin for the server
 dev-db/mariadb:profiling - Add support for statement profiling (requires USE=community).
 dev-db/mariadb:rocksdb - Add support for RocksDB; a key/value, LSM database optimized for flash storage
+dev-db/mariadb:s3 - Build the S3 storage engine
 dev-db/mariadb:server - Build the server program
 dev-db/mariadb:sphinx - Add suport for the sphinx full-text search engine
 dev-db/mariadb:sst-mariabackup - Add tools needed to support the mariabackup SST method
