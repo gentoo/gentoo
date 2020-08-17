@@ -39,6 +39,10 @@ DEPEND="
 	dev-libs/glib:2
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-111-musl-fix.patch"
+)
+
 pkg_setup() {
 	CONFIG_CHECK="~ECRYPT_FS"
 	linux-info_pkg_setup
