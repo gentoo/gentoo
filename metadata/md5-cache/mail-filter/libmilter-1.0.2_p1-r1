@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=The Sendmail Filter API (Milter)
+EAPI=7
+HOMEPAGE=http://www.sendmail.org/
+IUSE=ipv6 poll
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=Sendmail
+SLOT=0/1.0.2_p1
+SRC_URI=ftp://ftp.sendmail.org/pub/sendmail/sendmail.8.16.1.tar.gz
+_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=c03d2805241bb837b79b654766413a59
