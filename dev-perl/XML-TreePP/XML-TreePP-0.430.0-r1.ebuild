@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Pure Perl implementation for parsing/writing XML documents"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="
