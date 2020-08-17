@@ -8950,7 +8950,7 @@ dev-python/qtawesome 0.7.2: Enables iconic fonts such as Font Awesome in PyQt
 dev-python/qtconsole 4.3.1 4.7.4 4.7.5: Qt-based console for Jupyter with support for rich media output
 dev-python/qtsass 0.3.0: Compile SASS files to Qt stylesheets
 dev-python/quantities 0.12.4: Support for physical quantities with units, based on numpy
-dev-python/quex 0.65.4 0.65.4-r1 0.70.0 0.71.0: Mode Oriented Directly Coded Lexical Analyser Generator
+dev-python/quex 0.65.4 0.65.4-r1 0.70.0 0.71.0 0.71.0-r1: Mode Oriented Directly Coded Lexical Analyser Generator
 dev-python/radon 4.1.0: Code Metrics in Python
 dev-python/raet 0.6.8-r1: Reliable Asynchronous Event Transport Protocol
 dev-python/random2 1.0.1-r1: Python-2.7 random module ported to python-3
