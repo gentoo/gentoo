@@ -14,7 +14,7 @@ SRC_URI="https://github.com/gentoo/pambase/archive/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="caps debug elogind minimal mktemp +nullok pam_krb5 pam_ssh +passwdqc pwquality securetty selinux +sha512 systemd"
+IUSE="caps debug elogind gnome-keyring minimal mktemp +nullok pam_krb5 pam_ssh +passwdqc pwquality securetty selinux +sha512 systemd"
 
 RESTRICT="binchecks"
 
@@ -28,6 +28,7 @@ MIN_PAM_REQ=1.4.0
 RDEPEND="
 	>=sys-libs/pam-${MIN_PAM_REQ}
 	elogind? ( sys-auth/elogind[pam] )
+	gnome-keyring? ( gnome-base/gnome-keyring[pam] )
 	mktemp? ( sys-auth/pam_mktemp )
 	pam_krb5? (
 		>=sys-libs/pam-${MIN_PAM_REQ}
@@ -57,6 +58,7 @@ src_configure() {
 	$(usex caps '--libcap' '') \
 	$(usex debug '--debug' '') \
 	$(usex elogind '--elogind' '') \
+	$(usex gnome-keyring '--gnome-keyring' '') \
 	$(usex minimal '--minimal' '') \
 	$(usex mktemp '--mktemp' '') \
 	$(usex nullok '--nullok' '') \
