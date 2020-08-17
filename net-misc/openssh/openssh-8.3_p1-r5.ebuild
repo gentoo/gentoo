@@ -8,7 +8,10 @@ inherit user-info flag-o-matic multilib autotools pam systemd toolchain-funcs
 # Make it more portable between straight releases
 # and _p? releases.
 PARCH=${P/_}
-HPN_PV="${PV^^}"
+
+# PV to USE for HPN patches
+#HPN_PV="${PV^^}"
+HPN_PV="8.1_P1"
 
 HPN_VER="14.20"
 HPN_PATCHES=(
@@ -18,14 +21,11 @@ HPN_PATCHES=(
 )
 
 SCTP_VER="1.2" SCTP_PATCH="${PARCH}-sctp-${SCTP_VER}.patch.xz"
-X509_VER="12.3" X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
-
-PATCH_SET="openssh-7.9p1-patches-1.0"
+X509_VER="12.5.1" X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
 
 DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="https://www.openssh.com/"
 SRC_URI="mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
-	https://dev.gentoo.org/~chutzpah/dist/openssh/${P}-glibc-2.31-patches.tar.xz
 	${SCTP_PATCH:+sctp? ( https://dev.gentoo.org/~chutzpah/dist/openssh/${SCTP_PATCH} )}
 	${HPN_VER:+hpn? ( $(printf "mirror://sourceforge/hpnssh/HPN-SSH%%20${HPN_VER/./v}%%20${HPN_PV/_P/p}/%s\n" "${HPN_PATCHES[@]}") )}
 	${X509_PATCH:+X509? ( https://roumenpetrov.info/openssh/x509-${X509_VER}/${X509_PATCH} )}
@@ -34,9 +34,9 @@ S="${WORKDIR}/${PARCH}"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # Probably want to drop ssl defaulting to on in a future version.
-IUSE="abi_mips_n32 audit bindist debug hpn kerberos kernel_linux ldns libedit libressl livecd pam +pie sctp selinux +ssl static test X X509 xmss"
+IUSE="abi_mips_n32 audit bindist debug hpn kerberos kernel_linux ldns libedit libressl livecd pam +pie +scp sctp security-key selinux +ssl static test X X509 xmss"
 
 RESTRICT="!test? ( test )"
 
@@ -44,7 +44,8 @@ REQUIRED_USE="
 	ldns? ( ssl )
 	pie? ( !static )
 	static? ( !kerberos !pam )
-	X509? ( !sctp ssl )
+	X509? ( !sctp !security-key ssl !xmss )
+	xmss? ( || ( ssl libressl ) )
 	test? ( ssl )
 "
 
@@ -57,6 +58,7 @@ LIB_DEPEND="
 	)
 	libedit? ( dev-libs/libedit:=[static-libs(+)] )
 	sctp? ( net-misc/lksctp-tools[static-libs(+)] )
+	security-key? ( >=dev-libs/libfido2-1.4.0:=[static-libs(+)] )
 	selinux? ( >=sys-libs/libselinux-1.28[static-libs(+)] )
 	ssl? (
 		!libressl? (
@@ -82,8 +84,9 @@ RDEPEND="
 	kerberos? ( virtual/krb5 )
 "
 DEPEND="${RDEPEND}
-	static? ( ${LIB_DEPEND} )
 	virtual/os-headers
+	kernel_linux? ( >=sys-kernel/linux-headers-5.1 )
+	static? ( ${LIB_DEPEND} )
 "
 RDEPEND="${RDEPEND}
 	pam? ( >=sys-auth/pambase-20081028 )
@@ -129,12 +132,14 @@ src_prepare() {
 	sed -i '/^AuthorizedKeysFile/s:^:#:' sshd_config || die
 
 	eapply "${FILESDIR}"/${PN}-7.9_p1-include-stdlib.patch
-	eapply "${FILESDIR}"/${PN}-8.1_p1-GSSAPI-dns.patch #165444 integrated into gsskex
+	eapply "${FILESDIR}"/${PN}-8.2_p1-GSSAPI-dns.patch #165444 integrated into gsskex
 	eapply "${FILESDIR}"/${PN}-6.7_p1-openssl-ignore-status.patch
 	eapply "${FILESDIR}"/${PN}-7.5_p1-disable-conch-interop-tests.patch
 	eapply "${FILESDIR}"/${PN}-8.0_p1-fix-putty-tests.patch
 	eapply "${FILESDIR}"/${PN}-8.0_p1-deny-shmget-shmat-shmdt-in-preauth-privsep-child.patch
-	eapply "${FILESDIR}"/${PN}-8.1_p1-tests-2020.patch
+
+	# workaround for https://bugs.gentoo.org/734984
+	use X509 || eapply "${FILESDIR}"/${PN}-8.3_p1-sha2-include.patch
 
 	[[ -d ${WORKDIR}/patches ]] && eapply "${WORKDIR}"/patches
 
@@ -146,7 +151,6 @@ src_prepare() {
 		popd &>/dev/null || die
 
 		eapply "${WORKDIR}"/${X509_PATCH%.*}
-		eapply "${FILESDIR}"/${P}-X509-$(ver_cut 1-2 ${X509_VER})-tests.patch
 
 		# We need to patch package version or any X.509 sshd will reject our ssh client
 		# with "userauth_pubkey: could not parse key: string is too large [preauth]"
@@ -183,14 +187,16 @@ src_prepare() {
 		mkdir "${hpn_patchdir}" || die
 		cp $(printf -- "${DISTDIR}/%s\n" "${HPN_PATCHES[@]}") "${hpn_patchdir}" || die
 		pushd "${hpn_patchdir}" &>/dev/null || die
-		eapply "${FILESDIR}"/${PN}-8.1_p1-hpn-${HPN_VER}-glue.patch
+		eapply "${FILESDIR}"/${P}-hpn-${HPN_VER}-glue.patch
+		eapply "${FILESDIR}"/${PN}-8.2_p1-hpn-${HPN_VER}-libressl.patch
 		if use X509; then
 		#	einfo "Will disable MT AES cipher due to incompatbility caused by X509 patch set"
 		#	# X509 and AES-CTR-MT don't get along, let's just drop it
 		#	rm openssh-${HPN_PV//./_}-hpn-AES-CTR-${HPN_VER}.diff || die
-			eapply "${FILESDIR}"/${PN}-8.0_p1-hpn-${HPN_VER}-X509-glue.patch
+
+			eapply "${FILESDIR}"/${PN}-8.2_p1-hpn-${HPN_VER}-X509-glue.patch
 		fi
-		use sctp && eapply "${FILESDIR}"/${PN}-8.1_p1-hpn-${HPN_VER}-sctp-glue.patch
+		use sctp && eapply "${FILESDIR}"/${PN}-8.2_p1-hpn-${HPN_VER}-sctp-glue.patch
 		popd &>/dev/null || die
 
 		eapply "${hpn_patchdir}"
@@ -250,6 +256,10 @@ src_prepare() {
 
 	eapply_user #473004
 
+	# These tests are currently incompatible with PORTAGE_TMPDIR/sandbox
+	sed -e '/\t\tpercent \\/ d' \
+		-i regress/Makefile || die
+
 	tc-export PKG_CONFIG
 	local sed_args=(
 		-e "s:-lcrypto:$(${PKG_CONFIG} --libs openssl):"
@@ -299,6 +309,7 @@ src_configure() {
 		$(use_with pam)
 		$(use_with pie)
 		$(use_with selinux)
+		$(usex X509 '' "$(use_with security-key security-key-builtin)")
 		$(use_with ssl openssl)
 		$(use_with ssl md5-passwords)
 		$(use_with ssl ssl-engine)
@@ -332,10 +343,12 @@ src_test() {
 	mkdir -p "${sshhome}"/.ssh
 	for t in "${tests[@]}" ; do
 		# Some tests read from stdin ...
-		HOMEDIR="${sshhome}" HOME="${sshhome}" SUDO="" \
-		emake -k -j1 ${t} </dev/null \
-			&& passed+=( "${t}" ) \
-			|| failed+=( "${t}" )
+		HOMEDIR="${sshhome}" HOME="${sshhome}" TMPDIR="${T}" \
+			SUDO="" SSH_SK_PROVIDER="" \
+			TEST_SSH_UNSAFE_PERMISSIONS=1 \
+			emake -k -j1 ${t} </dev/null \
+				&& passed+=( "${t}" ) \
+				|| failed+=( "${t}" )
 	done
 
 	einfo "Passed tests: ${passed[*]}"
@@ -410,45 +423,66 @@ src_install() {
 	diropts -m 0700
 	dodir /etc/skel/.ssh
 
+	# https://bugs.gentoo.org/733802
+	if ! use scp; then
+		rm "${ED}"/usr/{bin/scp,share/man/man1/scp.1} \
+			|| die "failed to remove scp"
+	fi
+
 	keepdir /var/empty
 
 	systemd_dounit "${FILESDIR}"/sshd.{service,socket}
 	systemd_newunit "${FILESDIR}"/sshd_at.service 'sshd@.service'
 }
 
-pkg_postinst() {
-	if has_version "<${CATEGORY}/${PN}-5.8_p1" ; then
-		elog "Starting with openssh-5.8p1, the server will default to a newer key"
-		elog "algorithm (ECDSA).  You are encouraged to manually update your stored"
-		elog "keys list as servers update theirs.  See ssh-keyscan(1) for more info."
+pkg_preinst() {
+	if ! use ssl && has_version "${CATEGORY}/${PN}[ssl]"; then
+		show_ssl_warning=1
 	fi
-	if has_version "<${CATEGORY}/${PN}-7.0_p1" ; then
-		elog "Starting with openssh-6.7, support for USE=tcpd has been dropped by upstream."
-		elog "Make sure to update any configs that you might have.  Note that xinetd might"
-		elog "be an alternative for you as it supports USE=tcpd."
-	fi
-	if has_version "<${CATEGORY}/${PN}-7.1_p1" ; then #557388 #555518
-		elog "Starting with openssh-7.0, support for ssh-dss keys were disabled due to their"
-		elog "weak sizes.  If you rely on these key types, you can re-enable the key types by"
-		elog "adding to your sshd_config or ~/.ssh/config files:"
-		elog "	PubkeyAcceptedKeyTypes=+ssh-dss"
-		elog "You should however generate new keys using rsa or ed25519."
+}
 
-		elog "Starting with openssh-7.0, the default for PermitRootLogin changed from 'yes'"
-		elog "to 'prohibit-password'.  That means password auth for root users no longer works"
-		elog "out of the box.  If you need this, please update your sshd_config explicitly."
-	fi
-	if has_version "<${CATEGORY}/${PN}-7.6_p1" ; then
-		elog "Starting with openssh-7.6p1, openssh upstream has removed ssh1 support entirely."
-		elog "Furthermore, rsa keys with less than 1024 bits will be refused."
-	fi
-	if has_version "<${CATEGORY}/${PN}-7.7_p1" ; then
-		elog "Starting with openssh-7.7p1, we no longer patch openssh to provide LDAP functionality."
-		elog "Install sys-auth/ssh-ldap-pubkey and use OpenSSH's \"AuthorizedKeysCommand\" option"
-		elog "if you need to authenticate against LDAP."
-		elog "See https://wiki.gentoo.org/wiki/SSH/LDAP_migration for more details."
-	fi
-	if ! use ssl && has_version "${CATEGORY}/${PN}[ssl]" ; then
+pkg_postinst() {
+	local old_ver
+	for old_ver in ${REPLACING_VERSIONS}; do
+		if ver_test "${old_ver}" -lt "5.8_p1"; then
+			elog "Starting with openssh-5.8p1, the server will default to a newer key"
+			elog "algorithm (ECDSA).  You are encouraged to manually update your stored"
+			elog "keys list as servers update theirs.  See ssh-keyscan(1) for more info."
+		fi
+		if ver_test "${old_ver}" -lt "7.0_p1"; then
+			elog "Starting with openssh-6.7, support for USE=tcpd has been dropped by upstream."
+			elog "Make sure to update any configs that you might have.  Note that xinetd might"
+			elog "be an alternative for you as it supports USE=tcpd."
+		fi
+		if ver_test "${old_ver}" -lt "7.1_p1"; then #557388 #555518
+			elog "Starting with openssh-7.0, support for ssh-dss keys were disabled due to their"
+			elog "weak sizes.  If you rely on these key types, you can re-enable the key types by"
+			elog "adding to your sshd_config or ~/.ssh/config files:"
+			elog "	PubkeyAcceptedKeyTypes=+ssh-dss"
+			elog "You should however generate new keys using rsa or ed25519."
+
+			elog "Starting with openssh-7.0, the default for PermitRootLogin changed from 'yes'"
+			elog "to 'prohibit-password'.  That means password auth for root users no longer works"
+			elog "out of the box.  If you need this, please update your sshd_config explicitly."
+		fi
+		if ver_test "${old_ver}" -lt "7.6_p1"; then
+			elog "Starting with openssh-7.6p1, openssh upstream has removed ssh1 support entirely."
+			elog "Furthermore, rsa keys with less than 1024 bits will be refused."
+		fi
+		if ver_test "${old_ver}" -lt "7.7_p1"; then
+			elog "Starting with openssh-7.7p1, we no longer patch openssh to provide LDAP functionality."
+			elog "Install sys-auth/ssh-ldap-pubkey and use OpenSSH's \"AuthorizedKeysCommand\" option"
+			elog "if you need to authenticate against LDAP."
+			elog "See https://wiki.gentoo.org/wiki/SSH/LDAP_migration for more details."
+		fi
+		if ver_test "${old_ver}" -lt "8.2_p1"; then
+			ewarn "After upgrading to openssh-8.2p1 please restart sshd, otherwise you"
+			ewarn "will not be able to establish new sessions. Restarting sshd over a ssh"
+			ewarn "connection is generally safe."
+		fi
+	done
+
+	if [[ -n ${show_ssl_warning} ]]; then
 		elog "Be aware that by disabling openssl support in openssh, the server and clients"
 		elog "no longer support dss/rsa/ecdsa keys.  You will need to generate ed25519 keys"
 		elog "and update all clients/servers that utilize them."

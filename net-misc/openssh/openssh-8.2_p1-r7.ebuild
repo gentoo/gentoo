@@ -81,8 +81,9 @@ RDEPEND="
 	kerberos? ( virtual/krb5 )
 "
 DEPEND="${RDEPEND}
-	static? ( ${LIB_DEPEND} )
 	virtual/os-headers
+	kernel_linux? ( >=sys-kernel/linux-headers-5.1 )
+	static? ( ${LIB_DEPEND} )
 "
 RDEPEND="${RDEPEND}
 	pam? ( >=sys-auth/pambase-20081028 )
