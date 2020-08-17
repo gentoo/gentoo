@@ -22,6 +22,8 @@ S="${WORKDIR}/openexr-${PV}/IlmBase"
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/OpenEXR/IlmBaseConfigInternal.h )
 
+PATCHES=( "${FILESDIR}"/${P}-musl.patch )
+
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test)
