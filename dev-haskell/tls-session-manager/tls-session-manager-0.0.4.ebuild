@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="In-memory TLS session manager"
-HOMEPAGE="http://hackage.haskell.org/package/tls-session-manager"
+HOMEPAGE="https://hackage.haskell.org/package/tls-session-manager"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
