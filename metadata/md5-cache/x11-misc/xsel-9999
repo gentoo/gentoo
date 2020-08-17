@@ -1,11 +1,12 @@
-DEFINED_PHASES=compile prepare unpack
-DEPEND=x11-libs/libX11 x11-libs/libXext x11-base/xorg-proto x11-libs/libXt >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=prepare unpack
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-base/xorg-proto x11-libs/libXt
 DESCRIPTION=Command-line program for getting and setting the contents of the X selection
-EAPI=6
+EAPI=7
 HOMEPAGE=http://www.vergenet.net/~conrad/software/xsel
 LICENSE=HPND
 PROPERTIES=live
 RDEPEND=x11-libs/libX11 x11-libs/libXext
 SLOT=0
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	git-r3	8ec5b53812bce105ae7943930e4660f8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=509e363e31e04da2ab780fd94a908749
+_md5_=c8e879bae9546f1e2cb6db59313a2976
