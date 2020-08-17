@@ -1,0 +1,28 @@
+--- a/gen_determineargs.sh
++++ b/gen_determineargs.sh
+@@ -1170,6 +1170,14 @@ determine_real_args() {
+ 		fi
+ 	fi
+ 
++	if isTrue "${INTEGRATED_INITRAMFS}"
++	then
++		if  ! isTrue "${BUILD_KERNEL}" || ! isTrue "${BUILD_RAMDISK}"
++		then
++			gen_die "Invalid action specified: --integrated-initramfs option requires action \"all\", i.e. building of kernel and initramfs at the same time!"
++		fi
++	fi
++
+ 	if ! isTrue "${CMD_INSTALL}"
+ 	then
+ 		if [ -n "${KERNEL_MODULES_PREFIX}" ]
+--- a/gen_funcs.sh
++++ b/gen_funcs.sh
+@@ -2033,7 +2033,7 @@ kconfig_set_opt() {
+ 	else
+ 		print_info 3 "$(get_indent ${indentlevel}) - Setting option '${optname}' to '${optval}' in '${kconfig}'..."
+ 		sed -i "${kconfig}" \
+-			-e "s/^#\? \?${optname}[ =].*/${optname}=${optval}/g" \
++			-e "s|^#\? \?${optname}[ =].*|${optname}=${optval}|g" \
+ 			|| gen_die "Failed to set '${optname}=${optval}' in '${kconfig}'"
+ 
+ 		[ ! -f "${KCONFIG_MODIFIED_MARKER}" ] && touch "${KCONFIG_MODIFIED_MARKER}"
