@@ -273,7 +273,8 @@ src_configure() {
 		-Dstorage_fs=enabled
 		-Ddriver_vmware=enabled
 
-		-Drunstatedir=/run
+		--localstatedir="${EPREFIX}/var"
+		-Drunstatedir="${EPREFIX}/run"
 	)
 
 	meson_src_configure
