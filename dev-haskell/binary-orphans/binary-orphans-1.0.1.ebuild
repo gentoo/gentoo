@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Orphan instances for binary"
-HOMEPAGE="http://hackage.haskell.org/package/binary-orphans"
+HOMEPAGE="https://hackage.haskell.org/package/binary-orphans"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
