@@ -368,11 +368,6 @@ net-wireless/cpyrit-opencl
 net-wireless/pyrit
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-02)
-# Py2 only. m-n. Bug #735486
-# Removal in 30 days
-sys-fs/ecryptfs-utils
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-02)
 # Py2 only. m-n. Bug #735524
 # Removal in 30 days
 www-misc/nx_util
