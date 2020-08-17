@@ -8464,7 +8464,7 @@ dev-python/neutron-lib 2.3.0: Neutron shared routines and utilities.
 dev-python/nltk 3.5: Natural Language Toolkit
 dev-python/nltk-data 20200312-r1: Data files for NLTK
 dev-python/nnpy 1.4.2: cffi-based Python bindings for nanomsg
-dev-python/node-semver 0.7.0: Python version of node-semver, the semantic versioner for npm
+dev-python/node-semver 0.7.0 0.8.0: Python version of node-semver, the semantic versioner for npm
 dev-python/nodeenv 1.3.5: Node.js virtual environment builder
 dev-python/nose 1.3.7-r5: Unittest extension with automatic test suite discovery and easy test authoring
 dev-python/nose-cover3 0.1.0-r1: Coverage 3.x support for Nose
