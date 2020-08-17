@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Kent Fredric <kentnl@gentoo.org> (2020-08-17)
+# No reverse dependencies, and Gtk support is becomming
+# obsolete in Gentoo
+# Removal in 30 days
+dev-perl/gnome2-vfs-perl
+
 # Michał Górny <mgorny@gentoo.org> (2020-08-17)
 # Dead pygtk-2 era library.  No reverse dependencies left.
 # Removal in 30 days.  Bug #706480.
@@ -841,12 +847,6 @@ sys-kernel/genkernel-next
 # dependencies have long since switched to vendoring.
 # Removal in 30 days. Bug #732136.
 dev-go/goptlib
-
-# Kent Fredric <kentnl@gentoo.org> (2020-07-10)
-# No reverse dependencies, and Gtk2 support is becomming
-# obsolete in Gentoo.
-# Removal in 30 days
-dev-perl/gnome2-perl
 
 # Michał Górny <mgorny@gentoo.org> (2020-07-04)
 # Unmaintained.  Requires scipy-python2.  Current version is from 2015,
