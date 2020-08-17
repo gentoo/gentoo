@@ -15,12 +15,10 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/portage-utils.git"
 else
 	SRC_URI="https://dev.gentoo.org/~grobian/distfiles/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 RDEPEND="
-	static? ( dev-libs/iniparser:0[static-libs] )
-	!static? ( dev-libs/iniparser:0 )
 	qmanifest? (
 		openmp? (
 			|| (
@@ -70,18 +68,4 @@ src_configure() {
 		$(use_enable qtegrity) \
 		$(use_enable openmp) \
 		$(use_enable static)
-}
-
-pkg_postinst() {
-	local pvr
-	local doshow=
-	for pvr in ${REPLACING_VERSIONS} ; do
-		[[ ${pvr} != "0.8"[01]* ]] && doshow=true
-	done
-
-	if [[ ${doshow} == true ]] ; then
-		elog "This version of Portage utils has undergone significant changes."
-		elog "Please read the elog manpages for applets like qlop(1) and"
-		elog "qfile(1) where argument options have changed."
-	fi
 }
