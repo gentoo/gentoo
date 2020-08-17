@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Convert strings into hexadecimal and back"
-HOMEPAGE="http://hackage.haskell.org/package/hex"
+HOMEPAGE="https://hackage.haskell.org/package/hex"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
