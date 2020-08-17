@@ -19,7 +19,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	${PYTHON_DEPS}
-	dev-python/pygobject[${PYTHON_USEDEP}]
+	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/chardet[${PYTHON_USEDEP}]
 "
 
