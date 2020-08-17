@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_6 )
+
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit distutils-r1 readme.gentoo-r1
 
@@ -23,14 +24,13 @@ RDEPEND="
 	dev-python/aiodns[${PYTHON_USEDEP}]
 	dev-python/pyasn1-modules[${PYTHON_USEDEP}]
 	dev-python/pyasn1[${PYTHON_USEDEP}]
-	dev-python/slixmpp[${PYTHON_USEDEP}]
+	>=dev-python/slixmpp-1.5.2[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
 
 DOC_CONTENTS="
 Install these optional runtime dependencies for additional features.
-* dev-python/potr for OTR encryption support.
 * dev-python/pyinotify for screen autoaway plugin support.
 "
 DISABLE_AUTOFORMATTING=true
