@@ -17,7 +17,7 @@ IUSE="double-precision +nls"
 RDEPEND="app-arch/bzip2
 	dev-db/sqlite:3
 	dev-games/ode[double-precision=]
-	dev-lang/lua:0[deprecated]
+	dev-lang/lua:0
 	dev-libs/libxdg-basedir
 	dev-libs/libxml2
 	media-fonts/dejavu
@@ -35,6 +35,10 @@ RDEPEND="app-arch/bzip2
 DEPEND="${RDEPEND}"
 BDEPEND="app-arch/xz-utils
 	nls? ( sys-devel/gettext )"
+
+PATCHES=(
+	"${FILESDIR}/${P}_lua_deprecated.patch"
+)
 
 src_prepare() {
 	sed -e "/^Icon/s/.xpm//" -i extra/xmoto.desktop || die

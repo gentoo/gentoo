@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,12 +32,6 @@ S="${WORKDIR}/RHash-${PV}"
 
 src_prepare() {
 	default
-	# fix Solaris detection, upstream:
-	# https://github.com/rhash/RHash/pull/81
-	sed -i -e 's/sunos)/solaris2.*)/' configure || die
-	# fix Cygwin detection, upstream:
-	# https://github.com/rhash/RHash/pull/89
-	sed -i -e '/TARGET_OS=Darwin/acygwin*) TARGET_OS=CYGWIN ;;' configure || die
 	multilib_copy_sources
 }
 
@@ -70,9 +64,9 @@ multilib_src_configure() {
 multilib_src_install() {
 	# -j1 needed due to race condition.
 	emake DESTDIR="${D}" -j1 \
-		  install{,-lib-headers,-pkg-config} \
-		  $(use nls && echo install-gmo) \
-		  $(use kernel_Winnt || echo install-lib-so-link)
+		install{,-lib-headers,-pkg-config} \
+		$(use nls && echo install-gmo) \
+		$(use kernel_Winnt || echo install-lib-so-link)
 }
 
 multilib_src_test() {
