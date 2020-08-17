@@ -224,7 +224,7 @@ src_prepare() {
 src_configure() {
 	local emesonargs=(
 		$(meson_feature apparmor)
-		$(meson_use apparmor apparmor-profiles)
+		$(meson_use apparmor apparmor_profiles)
 		$(meson_feature audit)
 		$(meson_feature caps capng)
 		$(meson_feature dbus)
@@ -232,9 +232,9 @@ src_configure() {
 		$(meson_feature firewalld)
 		$(meson_feature fuse)
 		$(meson_feature glusterfs)
-		$(meson_feature glusterfs storage-gluster)
-		$(meson_feature iscsi storage-iscsi)
-		$(meson_feature iscsi-direct storage-iscsi-direct)
+		$(meson_feature glusterfs storage_gluster)
+		$(meson_feature iscsi storage_iscsi)
+		$(meson_feature iscsi-direct storage_iscsi_direct)
 		$(meson_feature libvirtd driver_libvirtd)
 		$(meson_feature libssh)
 		$(meson_feature lvm storage_lvm)
@@ -268,7 +268,7 @@ src_configure() {
 		-Ddriver_esx=enabled
 		-Dinit_script=systemd
 		-Dqemu_user=$(usex caps qemu root)
-		-Dqemu-user=$(usex caps qemu root)
+		-Dqemu_group=$(usex caps qemu root)
 		-Ddriver_remote=enabled
 		-Dstorage_fs=enabled
 		-Ddriver_vmware=enabled
