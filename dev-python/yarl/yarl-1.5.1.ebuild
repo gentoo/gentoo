@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{6..9} pypy3 )
 
 inherit distutils-r1
 
@@ -19,7 +19,7 @@ RDEPEND="
 	>=dev-python/idna-2.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		>=dev-python/typing-extensions-3.7.4[${PYTHON_USEDEP}]
-	' python3_{6,7})
+	' python3_{6,7} pypy3)
 "
 
 distutils_enable_tests pytest
