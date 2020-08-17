@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (2020-08-17)
+# Columnstore engine is supported on amd64
+dev-db/mariadb -columnstore
+
 # Thomas Deutschmann <whissi@gentoo.org> (2020-07-27)
 # media-video/pipewire:0/0.3 is available for amd64
 www-client/firefox -screencast

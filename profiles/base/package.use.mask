@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Thomas Deutschmann <whissi@gentoo.org> (2020-08-17)
+# CMake checks will only allow on amd64 & x86
+dev-db/mariadb columnstore
+
 # Michał Górny <mgorny@gentoo.org> (2020-08-16)
 # dev-python/pyminuit is being removed.
 sci-visualization/veusz minuit
