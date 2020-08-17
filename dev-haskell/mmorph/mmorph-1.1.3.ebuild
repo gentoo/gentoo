@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Monad morphisms"
-HOMEPAGE="http://hackage.haskell.org/package/mmorph"
+HOMEPAGE="https://hackage.haskell.org/package/mmorph"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
