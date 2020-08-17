@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="A writer monad for multi-line string literals"
-HOMEPAGE="http://hackage.haskell.org/package/stringbuilder"
+HOMEPAGE="https://hackage.haskell.org/package/stringbuilder"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
