@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Handy utf8 tests"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc64 ~s390 ~sparc ~x86"
 IUSE=""
 
 RDEPEND="
