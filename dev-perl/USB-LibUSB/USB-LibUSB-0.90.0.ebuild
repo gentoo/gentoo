@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-DIST_VERSION=0.05
+DIST_VERSION=0.09
 DIST_AUTHOR=AMBA
 KEYWORDS="~amd64 ~x86"
 inherit perl-module
