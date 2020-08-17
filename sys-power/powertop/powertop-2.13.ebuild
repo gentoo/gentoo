@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	SRC_URI=""
 else
 	SRC_URI="https://github.com/fenrus75/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 arm ~arm64 ~ppc sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 arm ~arm64 ~ppc sparc x86 ~amd64-linux ~x86-linux"
 fi
 
 inherit autotools ${GIT_ECLASS} linux-info
