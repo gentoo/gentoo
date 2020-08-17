@@ -25,3 +25,4 @@ DEPEND="${RDEPEND}
 		dev-ros/actionlib
 	)
 "
+PATCHES=( "${FILESDIR}/atomic.patch" )
