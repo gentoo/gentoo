@@ -1,0 +1,15 @@
+BDEPEND=app-text/ronn app-arch/gzip virtual/pkgconfig dev-util/ninja >=dev-util/cmake-3.9.6
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-libs/protobuf-2:= virtual/opengl media-libs/openal net-misc/curl dev-libs/tinyxml >=dev-libs/tinyxml2-6:= dev-libs/libtar dev-cpp/tbb >=dev-games/ogre-1.7.4:=[freeimage] <dev-games/ogre-1.10 >=media-libs/freeimage-3.15.4[png] sci-libs/libccd >=media-video/ffmpeg-2.6:0= sci-libs/gts >=sci-physics/bullet-2.82 >=dev-libs/sdformat-9.1:= dev-qt/qtwidgets:5 dev-qt/qtcore:5 dev-qt/qtopengl:5 dev-libs/boost:=[threads] sci-libs/gdal:= virtual/libusb:1 dev-libs/libspnav media-libs/freeimage sci-libs/hdf5:=[cxx] sys-apps/util-linux media-gfx/graphviz net-libs/ignition-msgs:5= sci-libs/ignition-math:6= net-libs/ignition-transport:8= sci-libs/ignition-common:3= sci-libs/ignition-fuel-tools:4= x11-libs/qwt:6=[qt5(+)] dev-qt/qttest:5 x11-apps/mesa-progs test? ( dev-libs/libxslt )
+DESCRIPTION=A 3D multiple robot simulator with dynamics
+EAPI=7
+HOMEPAGE=http://gazebosim.org/
+IUSE=cpu_flags_x86_sse2 test
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=>=dev-libs/protobuf-2:= virtual/opengl media-libs/openal net-misc/curl dev-libs/tinyxml >=dev-libs/tinyxml2-6:= dev-libs/libtar dev-cpp/tbb >=dev-games/ogre-1.7.4:=[freeimage] <dev-games/ogre-1.10 >=media-libs/freeimage-3.15.4[png] sci-libs/libccd >=media-video/ffmpeg-2.6:0= sci-libs/gts >=sci-physics/bullet-2.82 >=dev-libs/sdformat-9.1:= dev-qt/qtwidgets:5 dev-qt/qtcore:5 dev-qt/qtopengl:5 dev-libs/boost:=[threads] sci-libs/gdal:= virtual/libusb:1 dev-libs/libspnav media-libs/freeimage sci-libs/hdf5:=[cxx] sys-apps/util-linux media-gfx/graphviz net-libs/ignition-msgs:5= sci-libs/ignition-math:6= net-libs/ignition-transport:8= sci-libs/ignition-common:3= sci-libs/ignition-fuel-tools:4= x11-libs/qwt:6=[qt5(+)]
+RESTRICT=!test? ( test )
+SLOT=0/11
+SRC_URI=https://osrf-distributions.s3.amazonaws.com/gazebo/releases/gazebo-11.1.0.tar.bz2
+_eclasses_=cmake-utils	77cd39e6009811bf97a59d91ffd5b54f	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=c2779bcc07187b97d3df6064956a3710

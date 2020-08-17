@@ -9563,7 +9563,7 @@ dev-ros/qt_gui_app 0.4.1 0.4.2 9999: Instance of the integrated graphical user i
 dev-ros/qt_gui_cpp 0.4.1 0.4.2 9999: C++-bindings for qt_gui and creates bindings for every generator available
 dev-ros/qt_gui_py_common 0.4.1 0.4.2 9999: Common functionality for ROS RQT GUI plugins written in Python
 dev-ros/random_numbers 0.3.2 9999: Wrappers for generating floating point values, integers and quaternions
-dev-ros/realtime_tools 1.16.0 9999: Set of tools that can be used from a hard realtime thread
+dev-ros/realtime_tools 1.16.0-r1 9999: Set of tools that can be used from a hard realtime thread
 dev-ros/resource_retriever 1.12.6 9999: Retrieves data from url-format files
 dev-ros/rgbd_launch 2.3.0 9999: Launch files to open an RGBD device
 dev-ros/robot_localization 2.6.8 9999: Package of nonlinear state estimation nodes
@@ -16041,7 +16041,7 @@ sci-electronics/espresso-ab 1.0-r1 1.0-r2: POSIX compliant version of the espres
 sci-electronics/fasthenry 3.0_p082514: Three dimensional inductance computation program, Whiteley Research version
 sci-electronics/freehdl 0.0.8: A free VHDL simulator
 sci-electronics/fritzing 0.9.2b-r2: Electronic Design Automation
-sci-electronics/gazebo 10.1.0 11.0.0: A 3D multiple robot simulator with dynamics
+sci-electronics/gazebo 10.1.0 11.0.0 11.1.0: A 3D multiple robot simulator with dynamics
 sci-electronics/geda 1.9.2-r1: GPL Electronic Design Automation (gEDA):gaf core package
 sci-electronics/geda-suite 20171223-r1: Metapackage for all components for a full-featured gEDA/gaf system
 sci-electronics/gerbv 2.7.0: A RS-274X (Gerber) and NC drill (Excellon) file viewer
@@ -18610,7 +18610,7 @@ x11-misc/spnavcfg 0.3: GTK-based GUI to configure a space navigator device
 x11-misc/sprop 0.1-r1: a simple X property utility
 x11-misc/sselp 0.2-r1 9999: Simple X selection printer
 x11-misc/stalonetray 0.8.3: System tray utility including support for KDE system tray icons
-x11-misc/sunflower 0.4_p20200716: Small and highly customizable twin-panel file manager with plugin-support
+x11-misc/sunflower 0.4_p20200716-r1: Small and highly customizable twin-panel file manager with plugin-support
 x11-misc/superswitcher 0.6-r1: A more feature-full replacement of the Alt-Tab window switching behavior
 x11-misc/sux 1.0-r4: "su" wrapper which transfers X credentials
 x11-misc/sw-notify-send 1.2.1 9999: A system-wide variant of tinynotify-send
