@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Types for Casa"
-HOMEPAGE="http://hackage.haskell.org/package/casa-types"
+HOMEPAGE="https://hackage.haskell.org/package/casa-types"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
