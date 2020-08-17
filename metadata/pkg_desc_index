@@ -3438,7 +3438,7 @@ dev-cpp/ETL 0.04.15-r1: Multi-platform class and template library
 dev-cpp/abseil-cpp 20200225.2: Abseil Common Libraries (C++), LTS Branch
 dev-cpp/aixlog 1.2.1 9999: Header-only C++ logging library
 dev-cpp/antlr-cpp 2.7.7-r1 4.7.2: The ANTLR 4 C++ Runtime
-dev-cpp/asio 1.10.8 1.16.1 1.17.0: Asynchronous Network Library
+dev-cpp/asio 1.10.8 1.16.1 1.17.0 1.18.0: Asynchronous Network Library
 dev-cpp/atkmm 2.28.0: C++ interface for the ATK library
 dev-cpp/cairomm 1.12.0-r1: C++ bindings for the Cairo vector graphics library
 dev-cpp/catch 1.12.2 1.9999 2.5.0 2.7.0 2.9.1 9999: Modern C++ header-only framework for unit-tests
@@ -11280,7 +11280,7 @@ games-emulation/dosbox-staging 0.75.0: Modernized DOSBox soft-fork
 games-emulation/emutos 0.9.12: Single-user single-tasking operating system for 32-bit Atari computer emulators
 games-emulation/fakenes 0.5.8-r3: Portable, Open Source NES emulator which is written mostly in C
 games-emulation/fbzx 3.0.0-r1: Full Screen Sinclair Spectrum emulator
-games-emulation/fceux 2.2.3-r1: A portable Famicom/NES emulator, an evolution of the original FCE Ultra
+games-emulation/fceux 2.2.3-r1 2.2.3-r2: A portable Famicom/NES emulator, an evolution of the original FCE Ultra
 games-emulation/gambatte 0.5.0_p20131102-r2: An accuracy-focused Gameboy / Gameboy Color emulator
 games-emulation/gcube 0.4-r2: Gamecube emulator
 games-emulation/generator 0.35_p4-r1: Sega Genesis / Mega Drive emulator
