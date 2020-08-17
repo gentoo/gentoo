@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Portably generate config for any shell"
 
 SLOT="0"
-KEYWORDS="~amd64 ~s390 ~x86"
+KEYWORDS="~amd64 ~arm ~s390 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
