@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -26,18 +26,15 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/pandas[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}]
-"
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? (
-		dev-python/nose[${PYTHON_USEDEP}]
-	)"
+	sci-libs/scipy[${PYTHON_USEDEP}]"
+
+distutils_enable_tests nose
 
 python_test() {
-	"${EPYTHON}" --version
-	"${EPYTHON}" -c "import numpy; print('numpy %s' % numpy.__version__)"
-	"${EPYTHON}" -c "import scipy; print('scipy %s' % scipy.__version__)"
-	"${EPYTHON}" -c "import pandas; print('pandas %s' % pandas.__version__)"
+	"${EPYTHON}" --version || die
+	"${EPYTHON}" -c "import numpy; print('numpy %s' % numpy.__version__)" || die
+	"${EPYTHON}" -c "import scipy; print('scipy %s' % scipy.__version__)" || die
+	"${EPYTHON}" -c "import pandas; print('pandas %s' % pandas.__version__)" || die
+
 	nosetests -s --verbose ${PN} || die
 }
