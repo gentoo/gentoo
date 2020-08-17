@@ -2872,6 +2872,7 @@ app-text/epstool 3.08-r1: Creates or extracts preview images in EPS files, fixes
 app-text/evince 3.34.2 3.36.7: Simple document viewer for GNOME
 app-text/expander 2.0.5-r2: Expander is a utility that acts as a filter for text editors
 app-text/extract_url 1.6.2: extracts URLs from correctly-encoded MIME email messages or plain text
+app-text/fb2edit 0.1.0: Create and edit fb2 books
 app-text/fbless 0.2.3: Python-based console fb2 reader with less-like interface
 app-text/fblog 1.4.1: Small command-line JSON Log viewer
 app-text/fbpdf 0_p20190202-r1: framebuffer pdf and djvu viewer
@@ -15237,7 +15238,7 @@ net-misc/omniORB 4.1.4-r2 4.2.2: A robust, high-performance CORBA 2 ORB
 net-misc/omnisync 1.0_p20200130: A driver for NTPd for people who are firewall-challenged
 net-misc/openntpd 6.0_p1 6.2_p3 6.2_p3-r1 6.2_p3-r2: Lightweight NTP server ported from OpenBSD
 net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling protocol
-net-misc/openssh 8.1_p1-r3 8.2_p1-r6 8.3_p1-r4: Port of OpenBSD's free SSH release
+net-misc/openssh 8.1_p1-r4 8.2_p1-r7 8.3_p1-r5: Port of OpenBSD's free SSH release
 net-misc/openvswitch 2.13.0-r1: Production quality, multilayer virtual switch
 net-misc/owncloud-client 2.6.0.13018 2.6.1.13407-r1 2.6.3.14058: Synchronize files from ownCloud Server with your computer
 net-misc/packETH 1.7.3 1.8.1 1.9 2.1: Packet generator tool for ethernet
@@ -15625,7 +15626,7 @@ net-wireless/madwimax 0.1.1-r1: Reverse-engineered driver for WiMAX devices base
 net-wireless/mdk 3.6-r1: Wireless injection tool with various functions
 net-wireless/mfoc 0.10.7-r1: Mifare Classic Offline Cracker
 net-wireless/mousejack 0.0_p20160726-r2: Firmware and research tools for nRF24LU1+ based USB dongles and breakout boards
-net-wireless/nanovna-saver 0.2.2 9999: tool for reading, displaying and saving data from the NanoVNA
+net-wireless/nanovna-saver 0.3.7 9999: tool for reading, displaying and saving data from the NanoVNA
 net-wireless/neard 0.15-r1: Near Field Communication (NFC) management daemon
 net-wireless/openbsc 9999: OpenBSC, OsmoSGSN, OsmoBSC and other programs
 net-wireless/openggsn 9999: Gateway GPRS Support Node
