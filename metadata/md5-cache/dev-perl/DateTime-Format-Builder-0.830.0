@@ -5,11 +5,11 @@ DESCRIPTION=Create DateTime parser classes and objects
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/DateTime-Format-Builder
 IUSE=minimal test
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp >=dev-perl/DateTime-1.0.0 >=dev-perl/DateTime-Format-Strptime-1.40.0 >=dev-perl/Params-Validate-0.720.0 virtual/perl-Scalar-List-Utils virtual/perl-parent dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DR/DROLSKY/DateTime-Format-Builder-0.83.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=216ae397d080e57dd7880531b4261b77
+_md5_=c3ef49a7031e77c17174792fc3388fbf

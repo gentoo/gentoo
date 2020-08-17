@@ -11336,7 +11336,7 @@ games-engines/gargoyle 2011.1-r1: An Interactive Fiction (IF) player supporting 
 games-engines/love 0.7.2-r2 0.8.0-r1 0.8.0-r2 0.10.2 11.1 9999: A framework for 2D games in Lua
 games-engines/nazghul 0.7.1-r1: A computer role-playing game (CRPG) engine with game called HaximA
 games-engines/odamex 0.8.2: Online multiplayer free software engine for DOOM
-games-engines/openmw 0.45.0 0.46.0 9999: Open source reimplementation of TES III: Morrowind
+games-engines/openmw 0.46.0 9999: Open source reimplementation of TES III: Morrowind
 games-engines/openxcom 1.0.0_p20180317 9999: An open-source reimplementation of the popular UFO: Enemy Unknown
 games-engines/qtads 3.0.0: Multimedia interpreter for TADS text adventures
 games-engines/renpy 6.99.12.4-r4 7.3.5: Visual novel engine written in python
