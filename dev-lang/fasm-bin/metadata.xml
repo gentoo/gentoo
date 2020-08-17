@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zohran.londais@gmail.com</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Flat assembler is a fast assembly language compiler for the x86 architecture processors, which does multiple passes to optimize the size of generated machine code. It is self-compilable and versions for different operating systems are provided. All the versions are designed to be used from the system command line and they should not differ in behavior.
+	</longdescription>
+	<longdescription lang="fr">
+	Flat assembler est un compilateur de langage assembleur rapide pour les processeurs d'architecture x86, qui effectue plusieurs passes pour optimiser la taille du code machine généré. Il est auto-compilable et des versions pour différents systèmes d'exploitation sont fournies. Toutes les versions sont conçues pour être utilisées à partir de la ligne de commande du système et ne doivent pas différer dans le comportement.
+	</longdescription>
+</pkgmetadata>
