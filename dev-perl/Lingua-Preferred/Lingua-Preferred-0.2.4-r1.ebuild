@@ -10,7 +10,7 @@ DESCRIPTION="Pick a language based on user's preferences"
 
 SLOT="0"
 LICENSE="|| ( Artistic GPL-2+ )"
-KEYWORDS="amd64 ~arm ~arm64 ppc x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="dev-perl/Log-TraceMessages"
