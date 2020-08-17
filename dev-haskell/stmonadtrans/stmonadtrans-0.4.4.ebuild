@@ -12,7 +12,7 @@ MY_PN="STMonadTrans"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A monad transformer version of the ST monad"
-HOMEPAGE="http://hackage.haskell.org/package/STMonadTrans"
+HOMEPAGE="https://hackage.haskell.org/package/STMonadTrans"
 SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
