@@ -6,7 +6,7 @@ EAPI=7
 inherit systemd
 
 DESCRIPTION="Fast and scalable sql based email services"
-HOMEPAGE="http://www.dbmail.org/"
+HOMEPAGE="https://www.dbmail.org/"
 SRC_URI="https://github.com/dbmail/dbmail/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
