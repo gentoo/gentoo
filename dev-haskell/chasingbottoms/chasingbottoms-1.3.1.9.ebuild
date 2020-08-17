@@ -13,7 +13,7 @@ MY_PN="ChasingBottoms"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="For testing partial and infinite values"
-HOMEPAGE="http://hackage.haskell.org/package/ChasingBottoms"
+HOMEPAGE="https://hackage.haskell.org/package/ChasingBottoms"
 SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
