@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Make an educated guess about the shell in use"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~s390 ~sparc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
