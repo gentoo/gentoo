@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="DNS library in Haskell"
-HOMEPAGE="http://hackage.haskell.org/package/dns"
+HOMEPAGE="https://hackage.haskell.org/package/dns"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
