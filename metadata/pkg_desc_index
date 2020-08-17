@@ -8108,7 +8108,7 @@ dev-python/elasticsearch-curator 5.8.1-r1: Tending time-series indices in Elasti
 dev-python/elasticsearch-py 7.7.0: Official Python low-level client for Elasticsearch
 dev-python/elementpath 1.4.6 2.0.0: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
 dev-python/elementtree 1.2.6-r3: A light-weight XML object model for Python
-dev-python/emcee 2.2.1: Python ensemble sampling toolkit for affine-invariant MCMC
+dev-python/emcee 3.0.2: Python ensemble sampling toolkit for affine-invariant MCMC
 dev-python/emoji 0.5.4: Emoji for Python
 dev-python/empy 3.3.3: A powerful and robust templating system for Python
 dev-python/entrypoints 0.3-r1: Discover and load entry points from installed packages
