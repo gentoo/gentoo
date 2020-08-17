@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools xdg-utils multilib-minimal
+inherit autotools multilib-minimal xdg
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/strukturag/${PN}.git"
@@ -59,12 +59,4 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	find "${ED}" -name '*.la' -delete || die
-}
-
-pkg_postinst() {
-	xdg_mimeinfo_database_update
-}
-
-pkg_postrm() {
-	xdg_mimeinfo_database_update
 }
