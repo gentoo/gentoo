@@ -5,11 +5,11 @@ DESCRIPTION=Forces the unavailability of specified Perl modules (for testing)
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/Devel-Hide
 IUSE=test
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-File-Temp dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DC/DCANTRELL/Devel-Hide-0.0013.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=696e721c3b1fe1f324e6e00e46d5ff65
+_md5_=2bd2cf504b4fc75a73ab2717a120121f

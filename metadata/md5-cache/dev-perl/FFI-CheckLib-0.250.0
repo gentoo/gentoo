@@ -4,11 +4,11 @@ DESCRIPTION=Check that a library is available for FFI
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/FFI-CheckLib
 IUSE=test examples
-KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv s390 sparc x86
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Module-Load dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/P/PL/PLICEASE/FFI-CheckLib-0.25.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=746fe627f1312cbb4208e6b050b6ce5f
+_md5_=bbccc30205ea6ea4a175352c0284e3a7
