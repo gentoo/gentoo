@@ -1,0 +1,20 @@
+Index: gazebo-11.1.0/plugins/SimpleTrackedVehiclePlugin.cc
+===================================================================
+--- gazebo-11.1.0.orig/plugins/SimpleTrackedVehiclePlugin.cc
++++ gazebo-11.1.0/plugins/SimpleTrackedVehiclePlugin.cc
+@@ -30,6 +30,7 @@
+ 
+ #include "plugins/SimpleTrackedVehiclePlugin.hh"
+ 
++#if BOOST_VERSION < 107400 || defined(BOOST_NO_CXX11_HDR_FUNCTIONAL)
+ namespace std {
+ template<class T>
+ class hash<boost::shared_ptr<T>> {
+@@ -38,6 +39,7 @@ class hash<boost::shared_ptr<T>> {
+   }
+ };
+ }
++#endif
+ 
+ namespace gazebo
+ {
