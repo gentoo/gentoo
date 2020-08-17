@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Generic archive extracting mechanism"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~s390 ~sparc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
