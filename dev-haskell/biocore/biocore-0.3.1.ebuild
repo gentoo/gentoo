@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="A bioinformatics library"
-HOMEPAGE="http://hackage.haskell.org/package/biocore"
+HOMEPAGE="https://hackage.haskell.org/package/biocore"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
