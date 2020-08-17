@@ -10,7 +10,7 @@ inherit eutils systemd flag-o-matic prefix toolchain-funcs \
 	multiprocessing java-pkg-opt-2 cmake
 
 # Patch version
-PATCH_SET="https://dev.gentoo.org/~whissi/dist/${PN}/${PN}-10.4.14-patches-01.tar.xz"
+PATCH_SET="https://dev.gentoo.org/~whissi/dist/${PN}/${PN}-10.5.5-patches-01.tar.xz"
 
 SRC_URI="https://downloads.mariadb.org/interstitial/${P}/source/${P}.tar.gz
 	${PATCH_SET}"
@@ -18,11 +18,11 @@ SRC_URI="https://downloads.mariadb.org/interstitial/${P}/source/${P}.tar.gz
 HOMEPAGE="https://mariadb.org/"
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 LICENSE="GPL-2 LGPL-2.1+"
-SLOT="10.4/${SUBSLOT:-0}"
-IUSE="+backup bindist cracklib debug extraengine galera innodb-lz4
+SLOT="10.5/${SUBSLOT:-0}"
+IUSE="+backup bindist columnstore cracklib debug extraengine galera innodb-lz4
 	innodb-lzo innodb-snappy jdbc jemalloc kerberos latin1 libressl mroonga
 	numa odbc oqgraph pam +perl profiling rocksdb selinux +server sphinx
-	sst-rsync sst-mariabackup static systemd systemtap tcmalloc
+	sst-rsync sst-mariabackup static systemd systemtap s3 tcmalloc
 	test tokudb xml yassl"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
@@ -42,29 +42,30 @@ S="${WORKDIR}/mysql"
 # Be warned, *DEPEND are version-dependant
 # These are used for both runtime and compiletime
 COMMON_DEPEND="
-	kernel_linux? (
-		sys-process/procps:0=
-		dev-libs/libaio:0=
-	)
+	>=dev-libs/libpcre-8.41-r1:3=
 	>=sys-apps/sed-4
 	>=sys-apps/texinfo-4.7-r1
-	jemalloc? ( dev-libs/jemalloc:0= )
-	tcmalloc? ( dev-util/google-perftools:0= )
-	systemtap? ( >=dev-util/systemtap-1.3:0= )
-	>=sys-libs/zlib-1.2.3:0=
-	kerberos? ( virtual/krb5 )
-	yassl? ( net-libs/gnutls:0= )
-	!yassl? (
-		!libressl? ( >=dev-libs/openssl-1.0.0:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
 	sys-libs/ncurses:0=
+	>=sys-libs/zlib-1.2.3:0=
 	!bindist? (
 		sys-libs/binutils-libs:0=
 		>=sys-libs/readline-4.1:0=
 	)
+	jemalloc? ( dev-libs/jemalloc:0= )
+	kerberos? ( virtual/krb5 )
+	kernel_linux? (
+		sys-process/procps:0=
+		dev-libs/libaio:0=
+	)
 	server? (
+		app-arch/bzip2
+		app-arch/xz-utils
 		backup? ( app-arch/libarchive:0= )
+		columnstore? (
+			app-arch/snappy
+			dev-libs/boost:0=
+			dev-libs/libxml2:2=
+		)
 		cracklib? ( sys-libs/cracklib:0= )
 		extraengine? (
 			odbc? ( dev-db/unixODBC:0= )
@@ -77,32 +78,42 @@ COMMON_DEPEND="
 		numa? ( sys-process/numactl )
 		oqgraph? ( >=dev-libs/boost-1.40.0:0= dev-libs/judy:0= )
 		pam? ( sys-libs/pam:0= )
+		s3? ( net-misc/curl )
 		systemd? ( sys-apps/systemd:= )
 		tokudb? ( app-arch/snappy )
 	)
-	>=dev-libs/libpcre-8.41-r1:3=
+	systemtap? ( >=dev-util/systemtap-1.3:0= )
+	tcmalloc? ( dev-util/google-perftools:0= )
+	yassl? ( net-libs/gnutls:0= )
+	!yassl? (
+		!libressl? ( >=dev-libs/openssl-1.0.0:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 "
 BDEPEND="virtual/yacc
 	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
 "
-DEPEND="static? ( sys-libs/ncurses[static-libs] )
+DEPEND="${COMMON_DEPEND}
 	server? (
 		extraengine? ( jdbc? ( >=virtual/jdk-1.6 ) )
 		test? ( acct-group/mysql acct-user/mysql )
 	)
-	${COMMON_DEPEND}"
-RDEPEND="selinux? ( sec-policy/selinux-mysql )
+	static? ( sys-libs/ncurses[static-libs] )
+"
+RDEPEND="${COMMON_DEPEND}
 	!dev-db/mysql !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
 	!dev-db/mariadb:0
 	!dev-db/mariadb:5.5
 	!dev-db/mariadb:10.1
 	!dev-db/mariadb:10.2
 	!dev-db/mariadb:10.3
-	!dev-db/mariadb:10.5
+	!dev-db/mariadb:10.4
 	!<virtual/mysql-5.6-r11
 	!<virtual/libmysqlclient-18-r1
-	${COMMON_DEPEND}
+	selinux? ( sec-policy/selinux-mysql )
 	server? (
+		columnstore? ( dev-db/mariadb-connector-c )
+		extraengine? ( jdbc? ( >=virtual/jre-1.6 ) )
 		galera? (
 			sys-apps/iproute2
 			=sys-cluster/galera-26*
@@ -110,7 +121,6 @@ RDEPEND="selinux? ( sec-policy/selinux-mysql )
 			sst-mariabackup? ( net-misc/socat[ssl] )
 		)
 		!prefix? ( dev-db/mysql-init-scripts acct-group/mysql acct-user/mysql )
-		extraengine? ( jdbc? ( >=virtual/jre-1.6 ) )
 	)
 	perl? (
 		!dev-db/mytop
@@ -382,7 +392,8 @@ src_configure() {
 		if ! use extraengine ; then
 			mycmakeargs+=(
 				-DPLUGIN_FEDERATED=NO
-				-DPLUGIN_FEDERATEDX=NO )
+				-DPLUGIN_FEDERATEDX=NO
+			)
 		fi
 
 		mycmakeargs+=(
@@ -395,6 +406,8 @@ src_configure() {
 			-DPLUGIN_CASSANDRA=NO
 			-DPLUGIN_SEQUENCE=$(usex extraengine YES NO)
 			-DPLUGIN_SPIDER=$(usex extraengine YES NO)
+			-DPLUGIN_S3=$(usex s3 YES NO)
+			-DPLUGIN_COLUMNSTORE=$(usex columnstore YES NO)
 			-DPLUGIN_CONNECT=$(usex extraengine YES NO)
 			-DCONNECT_WITH_MYSQL=1
 			-DCONNECT_WITH_LIBXML2=$(usex xml)
