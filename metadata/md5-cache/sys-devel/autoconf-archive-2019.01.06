@@ -2,9 +2,9 @@ DEFINED_PHASES=-
 DESCRIPTION=GNU Autoconf Macro Archive
 EAPI=7
 HOMEPAGE=https://www.gnu.org/software/autoconf-archive/
-KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-3
 RDEPEND=!=gnome-base/gnome-common-3.14.0-r0 !>=gnome-base/gnome-common-3.14.0-r1[-autoconf-archive(+)]
 SLOT=0
 SRC_URI=mirror://gnu/autoconf-archive/autoconf-archive-2019.01.06.tar.xz
-_md5_=469503e8a647867cc496532478aa9dc6
+_md5_=8ecb6826adf46c48b83b6d3c1353f60a
