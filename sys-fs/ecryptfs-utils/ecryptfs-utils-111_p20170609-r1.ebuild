@@ -25,6 +25,7 @@ RDEPEND="
 	>=dev-libs/libgcrypt-1.2.0:0=
 	dev-libs/nss
 	>=sys-apps/keyutils-1.5.11-r1:=
+	sys-process/lsof
 	gpg? ( app-crypt/gpgme:= )
 	gtk? ( x11-libs/gtk+:2 )
 	openssl? ( >=dev-libs/openssl-0.9.7:= )
