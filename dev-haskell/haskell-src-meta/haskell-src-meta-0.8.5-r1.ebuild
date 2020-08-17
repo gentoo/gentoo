@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour" # test-suite: fails to buil
 inherit haskell-cabal
 
 DESCRIPTION="Parse source to template-haskell abstract syntax"
-HOMEPAGE="http://hackage.haskell.org/package/haskell-src-meta"
+HOMEPAGE="https://hackage.haskell.org/package/haskell-src-meta"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
