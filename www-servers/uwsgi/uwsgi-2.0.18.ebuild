@@ -267,7 +267,7 @@ python_install_symlinks() {
 src_compile() {
 	mkdir -p "${T}/plugins" || die
 
-	python uwsgiconfig.py --build gentoo || die "building uwsgi failed"
+	CPUCOUNT=1 python uwsgiconfig.py --build gentoo || die "building uwsgi failed"
 
 	if use go ; then
 		python uwsgiconfig.py --plugin plugins/gccgo gentoo || die "building plugin for go failed"
