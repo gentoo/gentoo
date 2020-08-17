@@ -100,6 +100,7 @@ RDEPEND="selinux? ( sec-policy/selinux-mysql )
 	!dev-db/mariadb:10.2
 	!dev-db/mariadb:10.3
 	!dev-db/mariadb:10.4
+	!dev-db/mariadb:10.5
 	server? ( !prefix? ( dev-db/mysql-init-scripts ) )
 	${COMMON_DEPEND}
 	perl? ( !dev-db/mytop
