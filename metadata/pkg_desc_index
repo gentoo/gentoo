@@ -6274,7 +6274,7 @@ dev-perl/DateTime 1.200.0 1.210.0 1.280.0 1.360.0 1.420.0 1.440.0 1.520.0: A dat
 dev-perl/DateTime-Calendar-Julian 0.40.0 0.102.0: Dates in the Julian calendar
 dev-perl/DateTime-Event-ICal 0.130.0: Perl DateTime extension for computing rfc2445 recurrences
 dev-perl/DateTime-Event-Recurrence 0.190.0: DateTime::Set extension for create basic recurrence sets
-dev-perl/DateTime-Format-Builder 0.810.0-r1 0.820.0: Create DateTime parser classes and objects
+dev-perl/DateTime-Format-Builder 0.810.0-r1 0.820.0 0.830.0: Create DateTime parser classes and objects
 dev-perl/DateTime-Format-DateParse 0.50.0-r1 0.50.0-r2: Parses Date::Parse compatible formats
 dev-perl/DateTime-Format-Flexible 0.280.0 0.320.0: Flexibly parse strings and turn them into DateTime objects
 dev-perl/DateTime-Format-HTTP 0.420.0 0.420.0-r1: Date conversion routines
@@ -17507,7 +17507,7 @@ sys-fs/duperemove 0.11.1: Btrfs and xfs deduplication utility
 sys-fs/e2fsprogs 1.45.5 1.45.6: Standard EXT2/EXT3/EXT4 filesystem utilities
 sys-fs/e2tools 0.0.16.4 0.1.0: utilities to read, write, and manipulate files in an ext2/ext3 filesystem
 sys-fs/e4rat 0.2.4_pre20141201-r1: Toolset to accelerate the boot process and application startup
-sys-fs/ecryptfs-utils 111_p20170609: eCryptfs userspace utilities
+sys-fs/ecryptfs-utils 111_p20170609 111_p20170609-r1: eCryptfs userspace utilities
 sys-fs/encfs 1.9.5: An implementation of encrypted filesystem in user-space using FUSE
 sys-fs/etcd-fs 0_p20140620 0_p20170517: Use etcd as a FUSE filesystem
 sys-fs/eudev 3.2.5 3.2.7-r2 3.2.8 3.2.9 4.9999 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
