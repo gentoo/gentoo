@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="Build external dependencies for use in CPAN"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~s390 ~x86"
+KEYWORDS="~amd64 ~arm ~s390 ~sparc ~x86"
 IUSE="minimal test zip"
 RESTRICT="!test? ( test )"
 
