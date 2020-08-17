@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jahnf/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
