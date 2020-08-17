@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Interface for versioning file stores"
-HOMEPAGE="http://hackage.haskell.org/package/filestore"
+HOMEPAGE="https://hackage.haskell.org/package/filestore"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
