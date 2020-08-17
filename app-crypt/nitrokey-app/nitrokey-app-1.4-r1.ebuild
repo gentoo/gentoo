@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils xdg-utils
+inherit xdg cmake
 
 DESCRIPTION="Cross platform personalization tool for the Nitrokey"
 HOMEPAGE="https://github.com/Nitrokey/nitrokey-app"
@@ -39,11 +39,3 @@ BDEPEND="
 PATCHES=( "${FILESDIR}"/${P}-Make-BASH_COMPLETION_DIR-user-overridable.patch )
 
 mycmakeargs=( -DBASH_COMPLETION_PATH=share/bash-completion/completions )
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
-}
