@@ -13,7 +13,7 @@ fi
 inherit ${SCM} distutils-r1
 
 DESCRIPTION="Python library for interacting with various VCS systems"
-HOMEPAGE="http://wiki.ros.org/vcstools"
+HOMEPAGE="https://wiki.ros.org/vcstools"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 	KEYWORDS=""
