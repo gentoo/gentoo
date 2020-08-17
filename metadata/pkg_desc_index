@@ -11932,7 +11932,7 @@ gnustep-libs/performance 0.5.0: Help improve the performance of GNUstep applicat
 gnustep-libs/renaissance 0.9.0-r1: GNUstep Renaissance allows to describe user interfaces XML files
 gnustep-libs/sope 4.1.1 4.3.2: A set of frameworks forming a complete Web application server environment
 gnustep-libs/sqlclient 1.8.1-r1: GNUstep lightweight database abstraction layer
-gui-apps/grim 1.2.0 1.3.0 9999: Grab images from a Wayland compositor.
+gui-apps/grim 1.3.1 9999: Grab images from a Wayland compositor.
 gui-apps/gtkgreet 0.6 9999: gtk based greeter for greetd
 gui-apps/kanshi 1.1.0 9999: dynamic display configuration (autorandr for wayland)
 gui-apps/lavalauncher 1.7.1 9999: simple launcher for wayland
@@ -15818,7 +15818,7 @@ sci-biology/bcftools 1.10.2: Utilities for variant calling and manipulating VCF 
 sci-biology/bedtools 2.29.2: Tools for manipulation and analysis of BED, GFF/GTF, VCF, SAM/BAM file formats
 sci-biology/bfast 0.7.0a: Blat-like Fast Accurate Search Tool
 sci-biology/biogrep 1.0-r2: Multithreaded tool for matching large sets of patterns against biosequence DBs
-sci-biology/biopandas 0.2.1: Molecular Structures in Pandas DataFrames
+sci-biology/biopandas 0.2.7: Molecular Structures in Pandas DataFrames
 sci-biology/bioperl 1.6.9: Perl tools for bioinformatics - Core modules
 sci-biology/bioperl-db 1.6.9 1.6.9-r1: Perl tools for bioinformatics - Perl API that accesses the BioSQL schema
 sci-biology/bioperl-network 1.6.9: Perl tools for bioinformatics - Analysis of protein-protein interaction networks
