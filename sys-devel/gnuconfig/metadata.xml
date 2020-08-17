@@ -5,6 +5,7 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
+<stabilize-allarches/>
 <longdescription lang="en">
 Updated config.{sub,guess} files from upstream cvs to properly detect various system types.
 </longdescription>
