@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Simplified error-handling"
-HOMEPAGE="http://hackage.haskell.org/package/errors"
+HOMEPAGE="https://hackage.haskell.org/package/errors"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
