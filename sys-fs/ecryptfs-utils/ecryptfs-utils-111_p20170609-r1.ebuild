@@ -34,7 +34,10 @@ RDEPEND="
 		>=dev-libs/pkcs11-helper-1.04
 	)
 	tpm? ( app-crypt/trousers )"
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	dev-libs/glib:2
+"
 
 pkg_setup() {
 	CONFIG_CHECK="~ECRYPT_FS"
