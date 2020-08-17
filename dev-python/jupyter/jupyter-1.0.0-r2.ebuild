@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -17,7 +17,6 @@ SRC_URI="
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="doc"
 
 RDEPEND="
 	dev-python/notebook[${PYTHON_USEDEP}]
@@ -26,8 +25,9 @@ RDEPEND="
 	dev-python/nbconvert[${PYTHON_USEDEP}]
 	dev-python/ipykernel[${PYTHON_USEDEP}]
 	dev-python/ipywidgets[${PYTHON_USEDEP}]"
-DEPEND="doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 PDEPEND=">=dev-python/jupyter_core-4.2.0[${PYTHON_USEDEP}]"
+
+distutils_enable_sphinx docs/source dev-python/sphinx_rtd_theme
 
 PATCHES=( "${DISTDIR}"/${P}-file-colision.patch )
 
@@ -38,13 +38,4 @@ python_prepare_all() {
 	fi
 
 	distutils-r1_python_prepare_all
-}
-
-python_compile_all() {
-	use doc && emake -C docs html
-}
-
-python_install_all() {
-	use doc && HTML_DOCS=( "${S}"/docs/build/html/. )
-	distutils-r1_python_install_all
 }
