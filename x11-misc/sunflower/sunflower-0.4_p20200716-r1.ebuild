@@ -17,17 +17,14 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="${PYTHON_DEPS}"
-RDEPEND="${DEPEND}
-	dev-python/chardet[${PYTHON_USEDEP}]
-	dev-python/pycairo[${PYTHON_USEDEP}]
+DEPEND="
+	${PYTHON_DEPS}
 	dev-python/pygobject[${PYTHON_USEDEP}]
+	dev-python/chardet[${PYTHON_USEDEP}]
 "
 
-RDEPEND="
-	dev-python/aiohttp[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/simplejson[${PYTHON_USEDEP}]
+RDEPEND="${DEPEND}
+	dev-python/pycairo[${PYTHON_USEDEP}]
 "
 
 pkg_postinst() {
