@@ -6687,7 +6687,7 @@ dev-perl/LWPx-ParanoidAgent 1.120.0: Subclass of LWP::UserAgent that protects yo
 dev-perl/LaTeX-Driver 0.300.2: Perl encapsulation of invoking the Latex programs
 dev-perl/LaTeX-Encode 0.92.0: Encode characters for LaTeX formatting
 dev-perl/LaTeX-Table 1.0.6-r1: Perl extension for the automatic generation of LaTeX tables
-dev-perl/Lab-Measurement 3.682 3.692 9999: Measurement control and automation with Perl
+dev-perl/Lab-Measurement 3.692 3.721 9999: Measurement control and automation with Perl
 dev-perl/Lab-VXI11 0.20.0: Perl interface to the VXI-11 Test&Measurement backend
 dev-perl/Lab-Zhinst 0.30.0 0.50.0 1.20.0 9999: Perl bindings to the LabOne API of Zurich Instruments
 dev-perl/Lchown 1.10.0-r2: Use the lchown(2) system call from Perl
@@ -7417,7 +7417,7 @@ dev-perl/URI-Fetch 0.130.0: Smart URI fetching/caching
 dev-perl/URI-Find 20160806.0.0: Find URIs in plain text
 dev-perl/URI-FromHash 0.50.0: Build a URI from a set of named parameters
 dev-perl/URI-redis 0.20.0: URI for Redis connection info
-dev-perl/USB-LibUSB 0.50.0 0.60.0: Perl interface to the libusb-1.0 API
+dev-perl/USB-LibUSB 0.60.0 0.90.0: Perl interface to the libusb-1.0 API
 dev-perl/USB-TMC 0.6.0 0.7.0: Perl interface to the USB Test & Measurement (USBTMC) backend
 dev-perl/UUID 0.270.0: Perl extension for using UUID interfaces as defined in e2fsprogs
 dev-perl/UUID-Tiny 1.40.0: Pure Perl UUID Support With Functional Interface
