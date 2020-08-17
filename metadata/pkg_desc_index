@@ -7911,7 +7911,7 @@ dev-python/bandit 1.5.1-r1 1.6.2: A security linter from OpenStack Security
 dev-python/bareos 19.2.8: python bindings for bareos network backup suite
 dev-python/bashate 0.6.0: A pep8 equivalent for bash scripts
 dev-python/basho-erlastic 2.1.1: Erlang binary term codec and port interface
-dev-python/bcrypt 3.1.7-r2: Modern password hashing for software and servers
+dev-python/bcrypt 3.1.7-r2 3.2.0: Modern password hashing for software and servers
 dev-python/beagle 0.2.1 0.3.0: Command line client for Hound, the code search tool.
 dev-python/beautifulsoup 4.8.2 4.9.1: Pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
 dev-python/bert 2.2.0: BERT Serialization Library
@@ -8252,7 +8252,7 @@ dev-python/humanize 2.4.1 2.5.0 2.6.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 19.0.0 20.0.1: A featureful, correct URL for Python
-dev-python/hypothesis 4.57.1 5.16.3 5.21.0 5.23.9 5.23.12 5.24.0 5.24.2 5.24.3 5.24.4: A library for property based testing
+dev-python/hypothesis 4.57.1 5.16.3 5.21.0 5.23.9 5.23.12 5.24.0 5.24.2 5.24.3 5.24.4 5.26.0: A library for property based testing
 dev-python/icalendar 4.0.6: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.8 2.10: Internationalized Domain Names in Applications (IDNA)
@@ -8578,7 +8578,7 @@ dev-python/pep8 1.7.1: Python style guide checker
 dev-python/pew 1.1.1: tool to manage multiple virtualenvs written in pure python
 dev-python/pexpect 4.6.0 4.8.0: Python module for spawning child apps and responding to expected patterns
 dev-python/pgspecial 1.11.9: Python implementation of postgres meta commands
-dev-python/phonenumbers 8.12.4 8.12.6 8.12.7: Python port of Google's libphonenumber
+dev-python/phonenumbers 8.12.4 8.12.6 8.12.7 8.12.8: Python port of Google's libphonenumber
 dev-python/picklemagic 0.0_pre20160415: A library for analysing python pickles safely
 dev-python/pickleshare 0.7.5: A small 'shelve' like datastore with concurrency support
 dev-python/pid 2.2.5: Pidfile featuring stale detection and file-locking
