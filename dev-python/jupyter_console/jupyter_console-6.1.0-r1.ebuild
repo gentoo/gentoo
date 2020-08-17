@@ -20,27 +20,27 @@ RDEPEND="
 	dev-python/ipykernel[${PYTHON_USEDEP}]
 	dev-python/jupyter_client[${PYTHON_USEDEP}]
 	<dev-python/prompt_toolkit-3.1.0[${PYTHON_USEDEP}]
-	dev-python/pygments[${PYTHON_USEDEP}]
-	"
+	dev-python/pygments[${PYTHON_USEDEP}]"
 # util-linux provides script(1)
 BDEPEND="
 	test? (
 		dev-python/pexpect[${PYTHON_USEDEP}]
 		sys-apps/util-linux
-	)
-	"
+	)"
 
 distutils_enable_sphinx docs
 distutils_enable_tests nose
 
 PATCHES=(
 	"${FILESDIR}"/${P}-py39.patch
+	"${FILESDIR}"/${P}-increase-test-timeout.patch
 )
 
-src_prepare() {
+python_prepare_all() {
 	# use setuptools unconditionally
 	sed -i -e 's:distutils\.core:setuptools:' setup.py || die
-	distutils-r1_src_prepare
+
+	distutils-r1_python_prepare_all
 }
 
 python_test() {
