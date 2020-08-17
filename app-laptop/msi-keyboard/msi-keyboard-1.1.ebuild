@@ -8,6 +8,7 @@ inherit udev
 DESCRIPTION="Control backlight of MSI laptop keyboards"
 HOMEPAGE="https://github.com/makkarpov/msi-keyboard"
 SRC_URI="https://github.com/makkarpov/msi-keyboard/archive/v1.0.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"
 
 LICENSE="GPL-3"
 SLOT="0"
