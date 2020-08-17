@@ -40,7 +40,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--disable-python
+		--disable-python \
 		$(use_enable pcap) \
 		$(use_enable ssl cryptcab) \
 		$(use_enable static-libs static)
