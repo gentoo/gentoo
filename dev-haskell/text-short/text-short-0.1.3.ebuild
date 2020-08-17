@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Memory-efficient representation of Unicode text strings"
-HOMEPAGE="http://hackage.haskell.org/package/text-short"
+HOMEPAGE="https://hackage.haskell.org/package/text-short"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
