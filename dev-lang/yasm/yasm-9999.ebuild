@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1 toolchain-funcs
+inherit toolchain-funcs
 
 if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/yasm/yasm.git"
@@ -19,21 +18,15 @@ HOMEPAGE="http://yasm.tortall.net/"
 
 LICENSE="BSD-2 BSD || ( Artistic GPL-2 LGPL-2 )"
 SLOT="0"
-IUSE="nls python"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+IUSE="nls"
 
 BDEPEND="
 	nls? ( sys-devel/gettext )
-	python? (
-		${PYTHON_DEPS}
-		$(python_gen_cond_dep '>=dev-python/cython-0.14[${PYTHON_USEDEP}]')
-	)
 "
 DEPEND="
 	nls? ( virtual/libintl )
 "
 RDEPEND="${DEPEND}
-	python? ( ${PYTHON_DEPS} )
 "
 
 if [[ ${PV} == 9999* ]]; then
@@ -42,10 +35,6 @@ if [[ ${PV} == 9999* ]]; then
 		app-text/docbook-xml-dtd:4.1.2
 	"
 fi
-
-pkg_setup() {
-	: # Avoid python-single-r1_pkg_setup
-}
 
 src_prepare() {
 	default
@@ -57,14 +46,12 @@ src_prepare() {
 }
 
 src_configure() {
-	use python && python_setup
-
 	local myconf=(
-		CC_FOR_BUILD=$(tc-getBUILD_CC) \
-		CCLD_FOR_BUILD=$(tc-getBUILD_CC) \
+		CC_FOR_BUILD="$(tc-getBUILD_CC)"
+		CCLD_FOR_BUILD="$(tc-getBUILD_CC)"
 		--disable-warnerror
-		$(use_enable python)
-		$(use_enable python python-bindings)
+		--disable-python
+		--disable-python-bindings
 		$(use_enable nls)
 	)
 
