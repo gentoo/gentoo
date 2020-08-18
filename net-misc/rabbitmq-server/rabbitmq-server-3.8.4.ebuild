@@ -13,7 +13,7 @@ SRC_URI="https://github.com/rabbitmq/rabbitmq-server/releases/download/v${PV}/ra
 
 LICENSE="GPL-2 MPL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE=""
 RESTRICT="test"
 
