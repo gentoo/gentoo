@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Data encoding library"
-HOMEPAGE="http://hackage.haskell.org/package/sandi"
+HOMEPAGE="https://hackage.haskell.org/package/sandi"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
