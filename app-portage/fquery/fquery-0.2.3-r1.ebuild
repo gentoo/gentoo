@@ -9,7 +9,7 @@ CABAL_FEATURES="bin"
 inherit haskell-cabal
 
 DESCRIPTION="Installed package query tool for Gentoo Linux"
-HOMEPAGE="http://hackage.haskell.org/package/fquery"
+HOMEPAGE="https://hackage.haskell.org/package/fquery"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="ZLIB"
