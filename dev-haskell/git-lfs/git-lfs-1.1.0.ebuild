@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="git-lfs protocol"
-HOMEPAGE="http://hackage.haskell.org/package/git-lfs"
+HOMEPAGE="https://hackage.haskell.org/package/git-lfs"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="AGPL-3"
