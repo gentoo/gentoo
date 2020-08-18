@@ -6,7 +6,7 @@ EAPI=6
 inherit gnome2 virtualx
 
 DESCRIPTION="GtkSourceView-based text editors and IDE helper library"
-HOMEPAGE="https://wiki.gnome.org/Projects/Gtef"
+HOMEPAGE="https://wiki.gnome.org/Projects/Tepl"
 
 LICENSE="LGPL-2.1+"
 SLOT="4"
@@ -22,7 +22,7 @@ RDEPEND="
 	app-i18n/uchardet
 	introspection? ( >=dev-libs/gobject-introspection-1.42:= )
 "
-DEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	>=sys-devel/gettext-0.19.6
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.25
