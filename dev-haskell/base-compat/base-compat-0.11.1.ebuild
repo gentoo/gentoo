@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="A compatibility layer for base"
-HOMEPAGE="http://hackage.haskell.org/package/base-compat"
+HOMEPAGE="https://hackage.haskell.org/package/base-compat"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
