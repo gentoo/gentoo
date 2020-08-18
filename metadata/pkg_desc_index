@@ -8360,7 +8360,7 @@ dev-python/liblarch 3.0.1: Library to handle directed acyclic graphs
 dev-python/libnacl 1.6.1: Python ctypes wrapper for libsodium
 dev-python/libpillowfight 0.3.0: Small library containing various image processing algorithms
 dev-python/libsass 0.20.0: A straightforward binding of libsass for Python
-dev-python/libtmux 0.8.2-r1 0.8.2-r2: python api for tmux
+dev-python/libtmux 0.8.2-r1 0.8.2-r2 0.8.3: python api for tmux
 dev-python/libvirt-python 6.2.0 6.5.0 9999: libvirt Python bindings
 dev-python/line_profiler 3.0.2: Line-by-line profiler
 dev-python/linecache2 1.0.0: Backports of the linecache module
