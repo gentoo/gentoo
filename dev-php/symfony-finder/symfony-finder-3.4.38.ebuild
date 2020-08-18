@@ -15,7 +15,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="dev-lang/php:*
 	dev-php/fedora-autoloader"
-DEPEND="test? ( ${RDEPEND} >=dev-php/phpunit-5.7.15 )"
+DEPEND="test? ( ${RDEPEND} <dev-php/phpunit-6 )"
 
 S="${WORKDIR}/finder-${PV}"
 
