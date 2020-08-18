@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="A simple web-server with an interact style API"
-HOMEPAGE="http://hackage.haskell.org/package/httpd-shed"
+HOMEPAGE="https://hackage.haskell.org/package/httpd-shed"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
