@@ -5,8 +5,8 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_7 )
 
-inherit check-reqs cmake xdg-utils flag-o-matic xdg-utils \
-	pax-utils python-single-r1 toolchain-funcs
+inherit check-reqs cmake flag-o-matic pax-utils python-single-r1 \
+	toolchain-funcs xdg-utils
 
 DESCRIPTION="3D Creation/Animation/Publishing System"
 HOMEPAGE="https://www.blender.org"
