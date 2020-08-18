@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Parser and printer for bencoded data"
-HOMEPAGE="http://hackage.haskell.org/package/bencode"
+HOMEPAGE="https://hackage.haskell.org/package/bencode"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
