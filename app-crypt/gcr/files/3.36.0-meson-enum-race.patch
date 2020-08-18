@@ -1,0 +1,31 @@
+From b04d117d5f8275a4c605743825faf2d5a28ae028 Mon Sep 17 00:00:00 2001
+From: Niels De Graef <nielsdegraef@gmail.com>
+Date: Fri, 19 Jun 2020 22:37:31 +0200
+Subject: [PATCH 3/6] meson: Make sure gcr-oids.h is built
+
+Fixes https://gitlab.gnome.org/GNOME/gcr/-/issues/48
+
+(cherry picked from commit 9fca6ae0aa7355c27d0922c561b9fbe18dde5b3d)
+---
+ gcr/meson.build | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/gcr/meson.build b/gcr/meson.build
+index 199452f..06c3a63 100644
+--- a/gcr/meson.build
++++ b/gcr/meson.build
+@@ -178,7 +178,10 @@ endif
+ gcr_base_dep = declare_dependency(
+   link_with: gcr_base_lib,
+   include_directories: include_directories('..'),
+-  sources: gcr_enums_gen[1], # Make sure gcr-enum-types-base.h can be included
++  sources: [
++    gcr_enums_gen[1],
++    gcr_oids[1],
++  ],
+ )
+ 
+ if get_option('introspection')
+-- 
+2.20.1
+
