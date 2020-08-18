@@ -30,8 +30,8 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA MIT"
 SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux"
-IUSE="debug default-compiler-rt default-libcxx doc +static-analyzer
-	test xml kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
+IUSE="debug default-compiler-rt default-libcxx default-lld doc
+	+static-analyzer test xml kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( ${ALL_LLVM_TARGETS[*]} )"
 RESTRICT="!test? ( test )"
@@ -53,7 +53,8 @@ PDEPEND="
 	sys-devel/clang-common
 	~sys-devel/clang-runtime-${PV}
 	default-compiler-rt? ( =sys-libs/compiler-rt-${PV%_*}* )
-	default-libcxx? ( >=sys-libs/libcxx-${PV} )"
+	default-libcxx? ( >=sys-libs/libcxx-${PV} )
+	default-lld? ( sys-devel/lld )"
 
 # Multilib notes:
 # 1. ABI_* flags control ABIs libclang* is built for only.
@@ -247,6 +248,7 @@ multilib_src_configure() {
 		# override default stdlib and rtlib
 		-DCLANG_DEFAULT_CXX_STDLIB=$(usex default-libcxx libc++ "")
 		-DCLANG_DEFAULT_RTLIB=$(usex default-compiler-rt compiler-rt "")
+		-DCLANG_DEFAULT_LINKER=$(usex default-lld lld "")
 
 		-DCLANG_ENABLE_ARCMT=$(usex static-analyzer)
 		-DCLANG_ENABLE_STATIC_ANALYZER=$(usex static-analyzer)
