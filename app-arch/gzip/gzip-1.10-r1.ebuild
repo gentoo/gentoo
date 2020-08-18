@@ -8,8 +8,7 @@ inherit flag-o-matic
 DESCRIPTION="Standard GNU compressor"
 HOMEPAGE="https://www.gnu.org/software/gzip/"
 SRC_URI="mirror://gnu/gzip/${P}.tar.xz
-	mirror://gnu-alpha/gzip/${P}.tar.xz
-	mirror://gentoo/${P}.tar.xz"
+	mirror://gnu-alpha/gzip/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
