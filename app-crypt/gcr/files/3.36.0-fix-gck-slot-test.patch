@@ -1,0 +1,37 @@
+From 4835310d233899f8b541e1c75c79f5c3a9ebf928 Mon Sep 17 00:00:00 2001
+From: Simon McVittie <smcv@debian.org>
+Date: Sun, 15 Mar 2020 13:00:08 +0000
+Subject: [PATCH 1/6] gck-slot: Initialize struct tm to all-zeroes
+
+If the format string for strptime() doesn't include a time zone,
+then the tm_isdst member will be left uninitialized (see NOTES in
+Linux strptime(3)). This means we will be off by an hour from the
+intended time if whatever arbitrary junk is on the stack happens to
+include a positive value for tm.tm_isdst.
+
+Resolves: https://gitlab.gnome.org/GNOME/gcr/issues/42
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=953981
+Signed-off-by: Simon McVittie <smcv@debian.org>
+(cherry picked from commit b1c8213b64fdfcad8c4ae0ff33a31105c0a0a312)
+---
+ gck/gck-slot.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/gck/gck-slot.c b/gck/gck-slot.c
+index f3b2f97..f00857f 100644
+--- a/gck/gck-slot.c
++++ b/gck/gck-slot.c
+@@ -607,7 +607,9 @@ _gck_token_info_from_pkcs11 (CK_TOKEN_INFO_PTR info)
+ {
+ 	GckTokenInfo *token_info;
+ 	gchar *string;
+-	struct tm tm;
++	/* Must be zero-filled, because strptime will leave tm_isdst
++	 * unchanged */
++	struct tm tm = { 0 };
+ 
+ 	token_info = g_new0 (GckTokenInfo, 1);
+ 	token_info->label = gck_string_from_chars (info->label, sizeof (info->label));
+-- 
+2.20.1
+

@@ -1,0 +1,52 @@
+From d3fd10fa3d3fe3e2e60a9ca5cfb401faa5e9c5bd Mon Sep 17 00:00:00 2001
+From: Rasmus Thomsen <oss@cogitri.dev>
+Date: Wed, 11 Mar 2020 11:49:08 +0100
+Subject: [PATCH 4/6] meson: allow building without gpg(2) installed
+
+This avoids circular dependencies, such as gcr -> gpg2 -> pinentry -> gcr
+---
+ meson.build       | 7 +++++--
+ meson_options.txt | 5 +++++
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index f19af0f..57b625b 100644
+--- a/meson.build
++++ b/meson.build
+@@ -41,7 +41,10 @@ gobject_dep = dependency('gobject-2.0', version: '>=' + min_glib_version)
+ gio_dep = dependency('gio-2.0', version: '>=' + min_glib_version)
+ gio_unix_dep = dependency('gio-unix-2.0',version: '>=' + min_glib_version)
+ glib_deps = [ glib_dep, gmodule_dep, gthread_dep, gobject_dep, gio_dep, gio_unix_dep, ]
+-gpg_bin = find_program('gpg2', 'gpg')
++gpg_path = get_option('gpg_path')
++if gpg_path == ''
++  gpg_path = find_program('gpg2', 'gpg').path()
++endif
+ libgcrypt_dep = dependency('libgcrypt', version: '>= 1')
+ p11kit_dep = dependency('p11-kit-1', version: '>= 0.19.0')
+ p11_system_config_modules = p11kit_dep.get_pkgconfig_variable('p11_system_config_modules')
+@@ -65,7 +68,7 @@ conf.set('HAVE_GETTEXT', true)
+ conf.set('HAVE_LOCALE_H', cc.has_header('locale.h'))
+ conf.set('HAVE_TIMEGM', cc.has_function('timegm'))
+ conf.set('HAVE_MLOCK', cc.has_function('mlock'))
+-conf.set_quoted('GPG_EXECUTABLE', gpg_bin.path())
++conf.set_quoted('GPG_EXECUTABLE', gpg_path)
+ conf.set_quoted('LIBGCRYPT_VERSION', libgcrypt_dep.version())
+ config_file = configure_file(
+   output: 'config.h',
+diff --git a/meson_options.txt b/meson_options.txt
+index bbdc8e3..ae0f524 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -13,3 +13,8 @@ option('gtk_doc',
+   value: true,
+   description: 'Build the reference documentation (requires gtk-doc)',
+ )
++option('gpg_path',
++  type: 'string',
++  value: '',
++  description: 'Path to gpg, autodetected if not set',
++)
+-- 
+2.20.1
+
