@@ -83,6 +83,8 @@ RDEPEND="${DEPEND}"
 
 CHECKREQS_DISK_BUILD="16G" # bug 417307
 
+PATCHES=( "${FILESDIR}/${P}-bison-3.7.patch" ) # bug 736499
+
 _check_reqs() {
 	if [[ ${MERGE_TYPE} != binary ]] && is-flagq "-g*" && ! is-flagq "-g*0"; then
 		einfo "Checking for sufficient disk space to build ${PN} with debugging flags"
