@@ -13,10 +13,6 @@ python_single_target_python3_9
 # dev-vcs/darcs (dev-lang/ghc) has no stable keywords.
 darcs
 
-# Patrick Lauer <patrick@gentoo.org> (2019-10-04)
-# No postgres-12 stable yet
-postgres_targets_postgres12
-
 # Zac Medico <zmedico@gentoo.org> (2016-09-01)
 # Needs dev-python/pypy* stable
 python_targets_pypy3
