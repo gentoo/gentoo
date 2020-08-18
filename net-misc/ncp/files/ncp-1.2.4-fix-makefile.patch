@@ -1,0 +1,16 @@
+Never strip executable
+
+Patch by Michael Mair-Keimberger
+
+--- ncp-1.2.4/GNUmakefile	2005-05-13 19:17:17.000000000 +0200
++++ ncp-1.2.4-ng/GNUmakefile	2020-09-04 20:08:50.399902892 +0200
+@@ -53,9 +53,6 @@
+ 
+ ncp: ncp.o libsocket
+ 	$(CC) $< -o $@ -I. $(CFLAGS) $(LDFLAGS) $(LDLIBS) `cat libsocket`
+-ifeq ($(DEBUG),)
+-	strip -R .note -R .comment ncp || strip ncp
+-endif
+ 
+ install:
+ 	install -d $(PREFIX)/bin $(PREFIX)/man/man1
