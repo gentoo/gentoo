@@ -17,7 +17,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
 
 BDEPEND="
 	test? ( dev-python/spur[${PYTHON_USEDEP}] )"
