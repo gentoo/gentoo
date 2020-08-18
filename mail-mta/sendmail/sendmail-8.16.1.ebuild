@@ -11,11 +11,11 @@ SRC_URI="ftp://ftp.sendmail.org/pub/${PN}/${PN}.${PV}.tar.gz"
 
 LICENSE="Sendmail GPL-2" # GPL-2 is here for initscript
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+#KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="ipv6 ldap libressl mbox nis sasl sockets ssl tcpd"
 
+BDEPEND="sys-devel/m4"
 DEPEND="net-mail/mailbase
-	sys-devel/m4
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.10 )
 	tcpd? ( sys-apps/tcp-wrappers )
 	ssl? (
@@ -23,9 +23,8 @@ DEPEND="net-mail/mailbase
 		libressl? ( dev-libs/libressl:0= )
 	)
 	ldap? ( net-nds/openldap )
-	sys-libs/db:6.0
-	!net-mail/vacation
-	"
+	>=sys-libs/db-3.2:=
+	!net-mail/vacation"
 RDEPEND="${DEPEND}
 	acct-group/smmsp
 	acct-user/smmsp
@@ -46,7 +45,7 @@ RDEPEND="${DEPEND}
 PDEPEND="!mbox? ( mail-filter/procmail )"
 
 src_prepare() {
-	eapply "${FILESDIR}"/"${PN}"-8.14.6-build-system.patch
+	eapply "${FILESDIR}"/"${PN}"-8.16.1-build-system.patch
 	eapply -p0 "${FILESDIR}"/sendmail-delivered_hdr.patch
 
 	local confCC="$(tc-getCC)"

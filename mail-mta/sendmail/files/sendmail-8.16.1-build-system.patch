@@ -126,37 +126,25 @@ diff -Nru sendmail-8.14.3.orig/rmail/Makefile.m4 sendmail-8.14.3/rmail/Makefile.
  divert
  
  bldFINISH
-diff -Nru sendmail-8.14.3.orig/sendmail/Makefile.m4 sendmail-8.14.3/sendmail/Makefile.m4
---- sendmail-8.14.3.orig/sendmail/Makefile.m4.orig	2008-03-27 17:13:33.000000000 +0100
-+++ sendmail-8.14.3/sendmail/Makefile.m4	2009-09-20 11:07:24.000000000 +0200
-@@ -14,9 +14,9 @@
- 
- dnl hack: /etc/mail is not defined as "location of .cf" in the build system
- define(`bldTARGET_INST_DEP', ifdef(`confINST_DEP', `confINST_DEP',
--`${DESTDIR}/etc/mail/submit.cf ${DESTDIR}${MSPQ}'))dnl
-+`"${DESTDIR}/etc/mail/submit.cf" "${DESTDIR}${MSPQ}"'))dnl
- define(`bldTARGET_LINKS', ifdef(`confLINKS', `confLINKS',
--`${DESTDIR}${UBINDIR}/newaliases ${DESTDIR}${UBINDIR}/mailq ${DESTDIR}${UBINDIR}/hoststat ${DESTDIR}${UBINDIR}/purgestat')
-+`"${DESTDIR}${UBINDIR}/newaliases" "${DESTDIR}${UBINDIR}/mailq" "${DESTDIR}${UBINDIR}/hoststat" "${DESTDIR}${UBINDIR}/purgestat"')
- )dnl
- 
- # location of sendmail statistics file (usually /etc/mail/ or /var/log)
+
+--- a/sendmail/Makefile.m4	2020-08-10 23:14:23.209900406 -0400
++++ b/sendmail/Makefile.m4	2020-08-10 23:23:51.272863753 -0400
 @@ -43,21 +43,21 @@
  statistics:
  	${CP} /dev/null statistics
- 
+
 -${DESTDIR}/etc/mail/submit.cf:
-+"${DESTDIR}/etc/mail/submit.cf":
++${DESTDIR}/etc/mail/submit.cf:
  	@echo "Please read INSTALL if anything fails while installing the binary."
  	@echo "${DESTDIR}/etc/mail/submit.cf will be installed now."
  	cd ${SRCDIR}/cf/cf && make install-submit-cf
- 
+
  MSPQ=ifdef(`confMSP_QUEUE_DIR', `confMSP_QUEUE_DIR', `/var/spool/clientmqueue')
- 
+
 -${DESTDIR}${MSPQ}:
-+"${DESTDIR}${MSPQ}":
++${DESTDIR}${MSPQ}:
  	@echo "Please read INSTALL if anything fails while installing the binary."
- 	@echo "You must have setup a new user ${MSPQOWN} and a new group ${GBINGRP}"
+ 	@echo "You must have set up a new user ${MSPQOWN} and a new group ${GBINGRP}"
  	@echo "as explained in sendmail/SECURITY."
 -	mkdir -p ${DESTDIR}${MSPQ}
 -	chown ${MSPQOWN} ${DESTDIR}${MSPQ}
@@ -166,46 +154,5 @@ diff -Nru sendmail-8.14.3.orig/sendmail/Makefile.m4 sendmail-8.14.3/sendmail/Mak
 +	chown ${MSPQOWN} "${DESTDIR}${MSPQ}"
 +	chgrp ${GBINGRP} "${DESTDIR}${MSPQ}"
 +	chmod 0770 "${DESTDIR}${MSPQ}"
- 
+
  divert(0)
- 
-@@ -68,30 +68,30 @@
- divert(bldTARGETS_SECTION)
- 
- install-set-user-id: bldCURRENT_PRODUCT ifdef(`confNO_HELPFILE_INSTALL',, `install-hf') ifdef(`confNO_STATISTICS_INSTALL',, `install-st') ifdef(`confNO_MAN_BUILD',, `install-docs')
--	${INSTALL} -c -o ${S`'BINOWN} -g ${S`'BINGRP} -m ${S`'BINMODE} bldCURRENT_PRODUCT ${DESTDIR}${M`'BINDIR}
-+	${INSTALL} -c -o ${S`'BINOWN} -g ${S`'BINGRP} -m ${S`'BINMODE} bldCURRENT_PRODUCT "${DESTDIR}${M`'BINDIR}"
- 	for i in ${sendmailTARGET_LINKS}; do \
- 		rm -f $$i; \
- 		${LN} ${LNOPTS} ${M`'BINDIR}/sendmail $$i; \
- 	done
- 
--define(`confMTA_LINKS', `${DESTDIR}${UBINDIR}/newaliases ${DESTDIR}${UBINDIR}/mailq ${DESTDIR}${UBINDIR}/hoststat ${DESTDIR}${UBINDIR}/purgestat')
-+define(`confMTA_LINKS', `"${DESTDIR}${UBINDIR}/newaliases" "${DESTDIR}${UBINDIR}/mailq" "${DESTDIR}${UBINDIR}/hoststat" "${DESTDIR}${UBINDIR}/purgestat"')
- install-sm-mta: bldCURRENT_PRODUCT
--	${INSTALL} -c -o ${M`'BINOWN} -g ${M`'BINGRP} -m ${M`'BINMODE} bldCURRENT_PRODUCT ${DESTDIR}${M`'BINDIR}/sm-mta
-+	${INSTALL} -c -o ${M`'BINOWN} -g ${M`'BINGRP} -m ${M`'BINMODE} bldCURRENT_PRODUCT "${DESTDIR}${M`'BINDIR}/sm-mta"
- 	for i in confMTA_LINKS; do \
- 		rm -f $$i; \
- 		${LN} ${LNOPTS} ${M`'BINDIR}/sm-mta $$i; \
- 	done
- 
- install-hf:
--	if [ ! -d ${DESTDIR}${HFDIR} ]; then mkdir -p ${DESTDIR}${HFDIR}; else :; fi
--	${INSTALL} -c -o ${UBINOWN} -g ${UBINGRP} -m 444 helpfile ${DESTDIR}${HFFILE}
-+	if [ ! -d "${DESTDIR}${HFDIR}" ]; then mkdir -p "${DESTDIR}${HFDIR}"; else :; fi
-+	${INSTALL} -c -o ${UBINOWN} -g ${UBINGRP} -m 444 helpfile "${DESTDIR}${HFFILE}"
- 
- install-st: statistics
--	if [ ! -d ${DESTDIR}${STDIR} ]; then mkdir -p ${DESTDIR}${STDIR}; else :; fi
--	${INSTALL} -c -o ${SBINOWN} -g ${UBINGRP} -m ifdef(`confSTMODE', `confSTMODE', `0600') statistics ${DESTDIR}${STPATH}
-+	if [ ! -d "${DESTDIR}${STDIR}" ]; then mkdir -p "${DESTDIR}${STDIR}"; else :; fi
-+	${INSTALL} -c -o ${SBINOWN} -g ${UBINGRP} -m ifdef(`confSTMODE', `confSTMODE', `0600') statistics "${DESTDIR}${STPATH}"
- 
--install-submit-st: statistics ${DESTDIR}${MSPQ}
--	${INSTALL} -c -o ${MSPQOWN} -g ${GBINGRP} -m ifdef(`confSTMODE', `confSTMODE', `0600') statistics ${DESTDIR}${MSPQ}/${MSPSTFILE}
-+install-submit-st: statistics "${DESTDIR}${MSPQ}"
-+	${INSTALL} -c -o ${MSPQOWN} -g ${GBINGRP} -m ifdef(`confSTMODE', `confSTMODE', `0600') statistics "${DESTDIR}${MSPQ}/${MSPSTFILE}"
- 
- divert(0)
- bldPRODUCT_END
