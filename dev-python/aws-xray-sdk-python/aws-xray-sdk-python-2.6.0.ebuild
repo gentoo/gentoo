@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND=">=dev-python/botocore-1.12.122[${PYTHON_USEDEP}]
