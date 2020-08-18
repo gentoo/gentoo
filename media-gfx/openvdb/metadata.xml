@@ -29,6 +29,6 @@
 		</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">dreamworksanimation/openvdb</remote-id>
+		<remote-id type="github">AcademySoftwareFoundation/openvdb</remote-id>
 	</upstream>
 </pkgmetadata>
