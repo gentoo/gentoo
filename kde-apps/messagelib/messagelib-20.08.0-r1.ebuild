@@ -29,6 +29,7 @@ DEPEND="
 	>=kde-apps/akonadi-${PVCUT}:5
 	>=kde-apps/akonadi-contacts-${PVCUT}:5
 	>=kde-apps/akonadi-mime-${PVCUT}:5
+	>=kde-apps/akonadi-search-${PVCUT}:5
 	>=kde-apps/grantleetheme-${PVCUT}:5
 	>=kde-apps/incidenceeditor-${PVCUT}:5
 	>=kde-apps/kdepim-apps-libs-${PVCUT}:5
