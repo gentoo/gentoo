@@ -1,14 +1,13 @@
-BDEPEND=nls? ( sys-devel/gettext ) python? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) python_single_target_python2_7? ( >=dev-python/cython-0.14[python_targets_python2_7(-)] ) ) app-text/xmlto app-text/docbook-xml-dtd:4.1.2 >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=configure prepare setup test unpack
+BDEPEND=nls? ( sys-devel/gettext ) app-text/xmlto app-text/docbook-xml-dtd:4.1.2 dev-lang/python >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=configure prepare test unpack
 DEPEND=nls? ( virtual/libintl )
 DESCRIPTION=An assembler for x86 and x86_64 instruction sets
 EAPI=7
 HOMEPAGE=http://yasm.tortall.net/
-IUSE=nls python +python_single_target_python2_7
+IUSE=nls
 LICENSE=BSD-2 BSD || ( Artistic GPL-2 LGPL-2 )
 PROPERTIES=live
-RDEPEND=nls? ( virtual/libintl ) python? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) )
-REQUIRED_USE=python? ( ^^ ( python_single_target_python2_7 ) )
+RDEPEND=nls? ( virtual/libintl )
 SLOT=0
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	git-r3	8ec5b53812bce105ae7943930e4660f8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=70e09e0cb5c37a4da4eb0c9d7daf2313
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	git-r3	8ec5b53812bce105ae7943930e4660f8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=6103cfbb2789ab679d6ee65efd09e2a3

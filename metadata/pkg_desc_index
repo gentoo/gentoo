@@ -5190,7 +5190,7 @@ dev-lang/vala 0.36.20 0.40.20 0.40.23 0.44.11 0.46.7 0.46.10 0.46.11 0.46.12 0.4
 dev-lang/whitespace 0.4: Whitespace, an esoteric programming language
 dev-lang/xsb 3.6.0 3.6.0-r1 3.7.0-r1 3.8.0: XSB is a logic programming and deductive database system
 dev-lang/yap 6.3.3-r1: YAP is a high-performance Prolog compiler
-dev-lang/yasm 1.2.0-r1 1.3.0 9999: An assembler for x86 and x86_64 instruction sets
+dev-lang/yasm 1.3.0 1.3.0-r1 9999: An assembler for x86 and x86_64 instruction sets
 dev-lang/zig 0.5.0 9999: A robust, optimal, and maintainable programming language
 dev-libs/9libs 1.0-r4: A package of Plan 9 compatibility libraries
 dev-libs/Ice 3.6.5 3.6.5-r1: ICE middleware C++ library and generator tools
@@ -9290,15 +9290,15 @@ dev-python/zeroconf 0.24.4: Pure Python Multicast DNS Service Discovery Library 
 dev-python/zict 0.1.4: Mutable mapping tools
 dev-python/zipp 1.0.0 2.0.1 3.1.0: Backport of pathlib-compatible object wrapper for zip files
 dev-python/zope-component 4.4.1: Zope Component Architecture
-dev-python/zope-configuration 4.3.1: Zope Configuration Architecture
+dev-python/zope-configuration 4.3.1 4.4.0: Zope Configuration Architecture
 dev-python/zope-deprecation 4.4.0: Zope Deprecation Infrastructure
 dev-python/zope-event 4.4: Event publishing / dispatch, used by Zope Component Architecture
-dev-python/zope-exceptions 4.3: General purpose exceptions for Zope packages
-dev-python/zope-i18nmessageid 5.0.0: Zope i18nmessageid Architecture
+dev-python/zope-exceptions 4.3 4.4: General purpose exceptions for Zope packages
+dev-python/zope-i18nmessageid 5.0.0 5.0.1: Zope support for i18nmessageid (tagging source of i18n strings)
 dev-python/zope-interface 5.1.0: Interfaces for Python
-dev-python/zope-schema 4.9.3: Zope schema Architecture
+dev-python/zope-schema 4.9.3 6.0.0: Zope schema Architecture
 dev-python/zope-testing 4.7-r1: Zope testing helpers
-dev-python/zope-testrunner 5.1: Zope testrunner script
+dev-python/zope-testrunner 5.1 5.2: Zope testrunner script
 dev-python/zstandard 0.8.1 0.12.0 0.13.0 0.14.0: Zstandard Bindings for Python
 dev-python/zxcvbn 4.4.28: A realistic password strength estimator
 dev-qt/assistant 5.14.2 5.15.0: Tool for viewing on-line documentation in Qt help file format
