@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Library for manipulating RawFilePaths in a cross platform way"
-HOMEPAGE="http://hackage.haskell.org/package/filepath-bytestring"
+HOMEPAGE="https://hackage.haskell.org/package/filepath-bytestring"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
