@@ -9,7 +9,7 @@ CABAL_FEATURES="test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Hackage and Portage integration tool"
-HOMEPAGE="http://hackage.haskell.org/package/hackport"
+HOMEPAGE="https://hackage.haskell.org/package/hackport"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
