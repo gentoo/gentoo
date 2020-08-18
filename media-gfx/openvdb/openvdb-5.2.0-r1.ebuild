@@ -53,6 +53,8 @@ DEPEND="${RDEPEND}
 
 PATCHES=( "${FILESDIR}/${P}-use-gnuinstalldirs.patch"
 	"${FILESDIR}/${P}-use-pkgconfig-for-ilmbase-and-openexr.patch"
+	"${FILESDIR}/${PN}-4.0.2-fix-const-correctness-for-unittest.patch"
+	"${FILESDIR}/${PN}-4.0.2-fix-build-docs.patch"
 )
 
 pkg_setup() {
