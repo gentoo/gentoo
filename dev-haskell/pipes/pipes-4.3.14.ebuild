@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Compositional pipelines"
-HOMEPAGE="http://hackage.haskell.org/package/pipes"
+HOMEPAGE="https://hackage.haskell.org/package/pipes"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"

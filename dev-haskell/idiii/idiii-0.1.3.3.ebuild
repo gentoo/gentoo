@@ -9,7 +9,7 @@ CABAL_FEATURES="bin lib profile haddock hoogle hscolour" # Broken test-suite: mi
 inherit haskell-cabal
 
 DESCRIPTION="ID3v2 (tagging standard for MP3 files) library"
-HOMEPAGE="http://hackage.haskell.org/package/idiii"
+HOMEPAGE="https://hackage.haskell.org/package/idiii"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"

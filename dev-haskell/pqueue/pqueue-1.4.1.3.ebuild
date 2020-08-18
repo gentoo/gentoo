@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Reliable, persistent, fast priority queues"
-HOMEPAGE="http://hackage.haskell.org/package/pqueue"
+HOMEPAGE="https://hackage.haskell.org/package/pqueue"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
