@@ -27,6 +27,8 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+"
+BDEPEND="
 	sys-devel/flex
 	virtual/yacc
 	dbus? ( virtual/pkgconfig )
