@@ -17,19 +17,19 @@ Fixes bug https://bugs.gentoo.org/734102
 Upstream commit https://github.com/AcademySoftwareFoundation/openvdb/commit/d2e8bd87a63d1e9f66a558ecbb6e6cbd54f7de13
 
 diff -Naur a/openvdb/unittest/TestFile.cc b/openvdb/unittest/TestFile.cc
---- a/openvdb/unittest/TestFile.cc	2020-08-19 01:32:17.137844464 +1000
-+++ b/openvdb/unittest/TestFile.cc	2020-08-19 01:36:03.698539134 +1000
+--- a/openvdb/unittest/TestFile.cc	2020-08-19 02:11:48.945711312 +1000
++++ b/openvdb/unittest/TestFile.cc	2020-08-19 02:13:31.106074899 +1000
 @@ -2666,7 +2666,12 @@
  
      for (int compcode = 0; compcode <= BLOSC_ZLIB; ++compcode) {
          char* compname = nullptr;
--        if (0 > blosc_compcode_to_compname(compcode, const_cast<const char **>(&compname))) continue;
+-        if (0 > blosc_compcode_to_compname(compcode, &compname)) continue;
 +#if BLOSC_VERSION_MAJOR > 1 || (BLOSC_VERSION_MAJOR == 1 && BLOSC_VERSION_MINOR >= 15)
 +        if (0 > blosc_compcode_to_compname(compcode, const_cast<const char**>(&compname)))
 +#else
 +        if (0 > blosc_compcode_to_compname(compcode, &compname))
 +#endif
-+	continue;
++        continue;
          /// @todo This changes the compressor setting globally.
          if (blosc_set_compressor(compname) < 0) continue;
  
