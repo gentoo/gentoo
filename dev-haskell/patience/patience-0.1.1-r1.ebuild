@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Patience diff and longest increasing subsequence"
-HOMEPAGE="http://hackage.haskell.org/package/patience"
+HOMEPAGE="https://hackage.haskell.org/package/patience"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
