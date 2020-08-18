@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit multilib-minimal
+inherit libtool multilib-minimal
 
 DESCRIPTION="C library for image processing and analysis"
 HOMEPAGE="http://www.leptonica.org/"
@@ -21,7 +21,7 @@ RDEPEND="gif? ( >=media-libs/giflib-5.1.3:=[${MULTILIB_USEDEP}] )
 	jpeg? ( virtual/jpeg:0=[${MULTILIB_USEDEP}] )
 	jpeg2k? ( media-libs/openjpeg:2=[${MULTILIB_USEDEP}] )
 	png? ( media-libs/libpng:0=[${MULTILIB_USEDEP}]
-		   sys-libs/zlib:=[${MULTILIB_USEDEP}] )
+		sys-libs/zlib:=[${MULTILIB_USEDEP}] )
 	tiff? ( media-libs/tiff:0=[${MULTILIB_USEDEP}] )
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
 	zlib? ( sys-libs/zlib:=[${MULTILIB_USEDEP}] )"
@@ -29,15 +29,12 @@ RDEPEND="gif? ( >=media-libs/giflib-5.1.3:=[${MULTILIB_USEDEP}] )
 DEPEND="${RDEPEND}
 	test? ( media-libs/tiff:0[zlib] )"
 
-PATCHES=(
-	"${FILESDIR}"/${PV}-gnuplot.patch
-)
-
 ECONF_SOURCE="${S}"
 DOCS=( README version-notes )
 
 src_prepare() {
 	default
+	elibtoolize
 
 	# unhtmlize docs
 	local X
@@ -57,6 +54,7 @@ multilib_src_configure() {
 		$(use_with png libpng) \
 		$(use_with tiff libtiff) \
 		$(use_with webp libwebp) \
+		$(use_with webp libwebpmux) \
 		$(use_with zlib) \
 		$(use_enable static-libs static) \
 		$(multilib_native_use_enable utils programs)
