@@ -1,4 +1,4 @@
-BDEPEND=test? ( app-crypt/gnupg dev-lang/php:*[posix,unicode] dev-php/PEAR-Console_CommandLine dev-php/PEAR-Exception dev-php/phpunit )
+BDEPEND=test? ( app-crypt/gnupg dev-lang/php:*[posix,unicode] dev-php/PEAR-Console_CommandLine dev-php/PEAR-Exception <dev-php/phpunit-6 )
 DEFINED_PHASES=install prepare test
 DESCRIPTION=PHP interface to the GNU Privacy Guard (GnuPG)
 EAPI=7
@@ -10,4 +10,4 @@ RDEPEND=app-crypt/gnupg dev-lang/php:*[posix,unicode] dev-php/PEAR-Console_Comma
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://download.pear.php.net/package/Crypt_GPG-1.6.4.tgz
-_md5_=32c6cbe26383c5f0c820a5a10007d82c
+_md5_=684788a8114f825c12dd0218bd88e0b8

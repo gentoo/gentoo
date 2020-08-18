@@ -1,5 +1,5 @@
 DEFINED_PHASES=install prepare test
-DEPEND=test? ( dev-lang/php:* dev-php/fedora-autoloader >=dev-php/phpunit-5.7.15 )
+DEPEND=test? ( dev-lang/php:* dev-php/fedora-autoloader <dev-php/phpunit-6 )
 DESCRIPTION=Symfony Filesystem Component
 EAPI=7
 HOMEPAGE=https://github.com/symfony/filesystem
@@ -10,4 +10,4 @@ RDEPEND=dev-lang/php:* dev-php/fedora-autoloader
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/symfony/filesystem/archive/v3.4.36.tar.gz -> symfony-filesystem-3.4.36.tar.gz
-_md5_=3f58eb9a7669905c512fc286a1c5ed98
+_md5_=e8762f41fceb3674af37f8f91f8e37ee

@@ -1,4 +1,4 @@
-BDEPEND=test? ( dev-php/phpunit )
+BDEPEND=test? ( <dev-php/phpunit-6 )
 DEFINED_PHASES=compile install test
 DESCRIPTION=Andrew McMillan's Web Libraries
 EAPI=7
@@ -10,4 +10,4 @@ RDEPEND=dev-lang/php:*[pdo,postgres,xml]
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://www.davical.org/downloads/awl_0.61.orig.tar.xz -> awl-0.61.tar.xz
-_md5_=98c6c5191ae76e8faa6cda1fd1fdc023
+_md5_=2a2b2685e1915e398d9e6b790237d17e

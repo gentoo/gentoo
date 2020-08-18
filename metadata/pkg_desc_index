@@ -10820,7 +10820,7 @@ dev-util/oprofile 1.3.0: A transparent low-overhead system-wide profiler
 dev-util/ostree 2018.9 2018.9-r1 2019.5: Operating system and container binary deployment and upgrades
 dev-util/packer 1.3.5 1.4.0 1.4.1 1.4.4 1.4.5: A tool to create identical machine images for multiple platforms
 dev-util/patchbin 20160208 99999999: Apply binary patches without git
-dev-util/patchelf 0.10: Small utility to modify the dynamic linker and RPATH of ELF executables
+dev-util/patchelf 0.10 0.11: Small utility to modify the dynamic linker and RPATH of ELF executables
 dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch files
 dev-util/patdiff 0.9.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.15-r1 0.1.18: Recursive-descent parser generators for C
@@ -13082,7 +13082,7 @@ media-libs/lasi 1.1.2: C++ library for postscript stream output
 media-libs/lastfmlib 0.4.0: C++ library to scrobble tracks on Last.fm
 media-libs/lcms 2.9 2.10 2.11: A lightweight, speed optimized color management engine
 media-libs/lensfun 0.3.2-r1: Library for rectifying and simulating photographic lens distortions
-media-libs/leptonica 1.74.4 1.78.0 1.79.0-r1: C library for image processing and analysis
+media-libs/leptonica 1.74.4 1.80.0: C library for image processing and analysis
 media-libs/lib3ds 1.3.0-r1 1.3.0-r2 2.0.0_rc1 2.0.0_rc1-r1: library for managing 3D-Studio Release 3 and 4 .3DS files
 media-libs/lib3mf 1.8.1: Implementation of the 3D Manufacturing Format file standard
 media-libs/libXcm 0.5.4 9999: Reference implementation of the X Color Management specification
@@ -13189,7 +13189,7 @@ media-libs/libofa 0.9.3-r2: Open Fingerprint Architecture
 media-libs/libogg 1.3.3 1.3.4: the Ogg media file format library
 media-libs/liboggz 1.1.1: Oggz provides a simple programming interface for reading and writing Ogg files and streams
 media-libs/libopenglrecorder 0.1.0: Library for asynchronous OpenGL recording with audio
-media-libs/libopenmpt 0.5.0: Library to decode tracked music files (modules)
+media-libs/libopenmpt 0.5.1: Library to decode tracked music files (modules)
 media-libs/libopenraw 0.0.9 0.1.2 0.1.3: A decoding library for RAW image formats
 media-libs/libopenshot 0.2.2 0.2.4_pre20190609 0.2.4 0.2.5: Video editing library used by OpenShot
 media-libs/libopenshot-audio 0.1.4 0.1.9_pre20190502 0.1.9 0.2.0: Library for audio editing and playback used by OpenShot
@@ -13884,7 +13884,7 @@ media-sound/normalize 0.7.7-r1: Audio file volume normalizer
 media-sound/ogg2mp3 0.6.1: A perl script to convert Ogg Vorbis files to MP3 files
 media-sound/oggtst 0.0: A tool for calculating ogg-vorbis playing time
 media-sound/ogmtools 1.5-r2: Information, extraction or creation for OGG media streams
-media-sound/openmpt123 0.5.0: libopenmpt-based command line player for tracked music files (modules)
+media-sound/openmpt123 0.5.1: libopenmpt-based command line player for tracked music files (modules)
 media-sound/opus-tools 0.2: Royalty-free, highly versatile audio codec
 media-sound/orpheus 1.6-r3: Command line MP3 player
 media-sound/pamix 1.5 1.6 9999: A PulseAudio NCurses mixer
