@@ -26,6 +26,10 @@ src_configure() {
 	# avoid text relocation in gzip
 	export DEFS="NO_ASM"
 
+	if use amd64 || use x86 ; then
+		append-cppflags -DUNALIGNED_OK
+	fi
+
 	econf --disable-gcc-warnings #663928
 }
 
