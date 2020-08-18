@@ -14,9 +14,12 @@ SRC_URI="https://github.com/AcademySoftwareFoundation/${PN}/archive/v${PV}.tar.g
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+abi4-compat doc python test"
+IUSE="abi3-compat abi4-compat abi5-compat doc python test"
 RESTRICT="!test? ( test )"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="
+	python? ( ${PYTHON_REQUIRED_USE} )
+	^^ ( abi3-compat abi4-compat abi5-compat )
+"
 
 RDEPEND="
 	dev-libs/boost:=
@@ -64,11 +67,22 @@ pkg_setup() {
 src_configure() {
 	local myprefix="${EPREFIX}/usr/"
 
+	local version
+	if use abi3-compat; then
+		version=3
+	elif use abi4-compat; then
+		version=4
+	elif use abi5-compat; then
+		version=5
+	else
+		die "Openvdb ABI version not specified"
+	fi
+
 	local mycmakeargs=(
 		-DBLOSC_LOCATION="${myprefix}"
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
 		-DGLFW3_LOCATION="${myprefix}"
-		-DOPENVDB_ABI_VERSION_NUMBER=$(usex abi4-compat 4 5)
+		-DOPENVDB_ABI_VERSION_NUMBER="${version}"
 		-DOPENVDB_BUILD_DOCS=$(usex doc)
 		-DOPENVDB_BUILD_PYTHON_MODULE=$(usex python)
 		-DOPENVDB_BUILD_UNITTESTS=$(usex test)
