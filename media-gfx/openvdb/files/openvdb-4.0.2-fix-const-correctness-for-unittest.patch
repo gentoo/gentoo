@@ -1,0 +1,12 @@
+diff -Naur a/openvdb/unittest/TestFile.cc b/openvdb/unittest/TestFile.cc
+--- a/openvdb/unittest/TestFile.cc	2019-09-15 01:05:30.716633230 +0800
++++ b/openvdb/unittest/TestFile.cc	2019-09-15 01:06:16.126633668 +0800
+@@ -2552,7 +2552,7 @@
+ 
+     for (int compcode = 0; compcode <= BLOSC_ZLIB; ++compcode) {
+         char* compname = nullptr;
+-        if (0 > blosc_compcode_to_compname(compcode, &compname)) continue;
++        if (0 > blosc_compcode_to_compname(compcode, const_cast<const char **>(&compname))) continue;
+         /// @todo This changes the compressor setting globally.
+         if (blosc_set_compressor(compname) < 0) continue;
+ 

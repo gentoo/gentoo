@@ -57,6 +57,8 @@ PATCHES=(
 	"${WORKDIR}/${P}-patchset-02/0002-use-pkgconfig-for-ilmbase-and-openexr.patch"
 	"${WORKDIR}/${P}-patchset-02/0003-boost-1.65-numpy-support.patch"
 	"${FILESDIR}/${P}-findboost-fix.patch"
+	"${FILESDIR}/${P}-fix-const-correctness-for-unittest.patch"
+	"${FILESDIR}/${P}-fix-build-docs.patch"
 )
 
 pkg_setup() {
