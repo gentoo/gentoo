@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour" # Broken test-suite: needs 
 inherit haskell-cabal
 
 DESCRIPTION="Domain Name Service (DNS) lookup via the libresolv standard library routines"
-HOMEPAGE="http://hackage.haskell.org/package/resolv"
+HOMEPAGE="https://hackage.haskell.org/package/resolv"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
