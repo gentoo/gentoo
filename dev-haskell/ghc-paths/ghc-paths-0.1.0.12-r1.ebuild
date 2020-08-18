@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile"
 inherit haskell-cabal
 
 DESCRIPTION="Knowledge of GHC's installation directories"
-HOMEPAGE="http://hackage.haskell.org/package/ghc-paths"
+HOMEPAGE="https://hackage.haskell.org/package/ghc-paths"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
