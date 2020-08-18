@@ -12,7 +12,7 @@ MY_PN="PSQueue"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Priority Search Queue"
-HOMEPAGE="http://hackage.haskell.org/package/PSQueue"
+HOMEPAGE="https://hackage.haskell.org/package/PSQueue"
 SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
