@@ -21,6 +21,8 @@ RDEPEND="
 	dev-ros/std_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/visualization_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/tf2_ros
+
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
 	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
