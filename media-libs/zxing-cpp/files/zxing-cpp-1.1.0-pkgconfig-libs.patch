@@ -1,0 +1,20 @@
+From 877b6db1613ddae58e570801920f089c0f64b97f Mon Sep 17 00:00:00 2001
+From: Axel Waggershauser <awagger@gmail.com>
+Date: Mon, 3 Aug 2020 08:48:58 +0200
+Subject: [PATCH] Fix regression in pkgconfig file generation
+
+---
+ zxing.pc.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/zxing.pc.in b/zxing.pc.in
+index b62fd15..3f429f4 100644
+--- a/zxing.pc.in
++++ b/zxing.pc.in
+@@ -6,5 +6,5 @@ includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
+ Name: ZXing
+ Description: ZXing library set
+ Version: @VERSION@
+-Libs: -L${libdir} -l@TARGET_ZXING@ 
++Libs: -L${libdir} -lZXing
+ Cflags: -I${includedir} -I${includedir}/ZXing
