@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="A logging system for WAI"
-HOMEPAGE="http://hackage.haskell.org/package/wai-logger"
+HOMEPAGE="https://hackage.haskell.org/package/wai-logger"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
