@@ -908,7 +908,7 @@ app-crypt/ekeyd 1.1.5-r1: Entropy Key userspace daemon
 app-crypt/elettra 1.0: Plausible deniable file cryptography
 app-crypt/envchain 1.0.0 1.0.1: Save environment variables in a secret vault
 app-crypt/fcrackzip 1.0: a zip password cracker
-app-crypt/gcr 3.34.0-r1: Libraries for cryptographic UIs and accessing PKCS#11 modules
+app-crypt/gcr 3.34.0-r1 3.36.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
 app-crypt/gentoo-keys 201901130136: A OpenPGP/GPG keyring of official Gentoo release media GPG keys
 app-crypt/gifshuffle 2.0-r1: GIF colourmap steganography
 app-crypt/glep63-check 9: GLEP 63 compliance checker for OpenPGP keys
