@@ -7,7 +7,7 @@ GENTOO_DEPEND_ON_PERL=noslotop
 inherit eutils perl-module
 
 DESCRIPTION="A handy shell-like interface for browsing LDAP servers and editing their content"
-HOMEPAGE="https://github.com/mahlonsmith/shelldap https://bitbucket.org/mahlon/shelldap/"
+HOMEPAGE="https://github.com/mahlonsmith/shelldap"
 SRC_URI="https://github.com/mahlonsmith/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
