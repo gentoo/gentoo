@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Martin Erwig's Functional Graph Library"
-HOMEPAGE="http://web.engr.oregonstate.edu/~erwig/fgl/haskell"
+HOMEPAGE="https://hackage.haskell.org/package/fgl"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
