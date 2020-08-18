@@ -15,17 +15,26 @@
 		Chance of Meatballs2' and 'How to Train Your Dragon 2'. 
 	</longdescription>
 	<use>
-		<flag name="abi3-compat">
+		<flag restrict="&gt;=media-gfx/openvdb-7.0.0" name="numpy">
+			Build pyopenvdb with support for <pkg>dev-python/numpy</pkg>
+		</flag>
+		<flag restrict="&lt;=media-gfx/openvdb-7.0.0" name="abi3-compat">
 			Disables newer features to maintain compatibility with ABI3.
 		</flag>
-		<flag restrict="&gt;=media-gfx/openvdb-4.0.0" name="abi4-compat">
+		<flag restrict="&lt;=media-gfx/openvdb-7.0.0" name="abi4-compat">
 			Disables newer features to maintain compatibility with ABI4.
 		</flag>
-		<flag restrict="&gt;=media-gfx/openvdb-5.0.0" name="abi5-compat">
+		<flag restrict="&lt;=media-gfx/openvdb-7.1.0" name="abi5-compat">
 			Disables newer features to maintain compatibility with ABI5.
 		</flag>
 		<flag restrict="&gt;=media-gfx/openvdb-6.0.0" name="abi6-compat">
 			Disables newer features to maintain compatibility with ABI6.
+		</flag>
+		<flag restrict="&gt;=media-gfx/openvdb-7.0.0" name="abi7-compat">
+			Disables newer features to maintain compatibility with ABI7.
+		</flag>
+		<flag restrict="&gt;=media-gfx/openvdb-7.0.0" name="utils">
+			Build utility binaries
 		</flag>
 	</use>
 	<upstream>

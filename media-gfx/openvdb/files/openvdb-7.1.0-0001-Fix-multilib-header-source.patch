@@ -1,0 +1,75 @@
+From 7558089b3dae599ffc80329da3a5c1decf882ca7 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Fri, 28 Feb 2020 17:01:25 +0100
+Subject: [PATCH] Fix multilib header source
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ cmake/FindIlmBase.cmake | 10 ++++++++--
+ cmake/FindOpenEXR.cmake | 10 ++++++++--
+ 2 files changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/cmake/FindIlmBase.cmake b/cmake/FindIlmBase.cmake
+index f20f803..bb85019 100644
+--- a/cmake/FindIlmBase.cmake
++++ b/cmake/FindIlmBase.cmake
+@@ -168,9 +168,15 @@ find_path(IlmBase_INCLUDE_DIR IlmBaseConfig.h
+   PATH_SUFFIXES include/OpenEXR OpenEXR
+ )
+ 
++if(EXISTS "/usr/include/${CHOST}/OpenEXR/IlmBaseConfig.h")
++  set(_ILMBASE_HEADERS "/usr/include/${CHOST}/OpenEXR")
++else()
++  set(_ILMBASE_HEADERS ${IlmBase_INCLUDE_DIR})
++endif()
++
+ if(EXISTS "${IlmBase_INCLUDE_DIR}/IlmBaseConfig.h")
+   # Get the ILMBASE version information from the config header
+-  file(STRINGS "${IlmBase_INCLUDE_DIR}/IlmBaseConfig.h"
++  file(STRINGS "${_ILMBASE_HEADERS}/IlmBaseConfig.h"
+     _ilmbase_version_major_string REGEX "#define ILMBASE_VERSION_MAJOR "
+   )
+   string(REGEX REPLACE "#define ILMBASE_VERSION_MAJOR" ""
+@@ -178,7 +184,7 @@ if(EXISTS "${IlmBase_INCLUDE_DIR}/IlmBaseConfig.h")
+   )
+   string(STRIP "${_ilmbase_version_major_string}" IlmBase_VERSION_MAJOR)
+ 
+-  file(STRINGS "${IlmBase_INCLUDE_DIR}/IlmBaseConfig.h"
++  file(STRINGS "${_ILMBASE_HEADERS}/IlmBaseConfig.h"
+      _ilmbase_version_minor_string REGEX "#define ILMBASE_VERSION_MINOR "
+   )
+   string(REGEX REPLACE "#define ILMBASE_VERSION_MINOR" ""
+diff --git a/cmake/FindOpenEXR.cmake b/cmake/FindOpenEXR.cmake
+index d0d356f..0c5dd7b 100644
+--- a/cmake/FindOpenEXR.cmake
++++ b/cmake/FindOpenEXR.cmake
+@@ -161,9 +161,15 @@ find_path(OpenEXR_INCLUDE_DIR OpenEXRConfig.h
+   PATH_SUFFIXES  include/OpenEXR OpenEXR
+ )
+ 
++if(EXISTS "/usr/include/${CHOST}/OpenEXR/OpenEXRConfig.h")
++	set(_OPENEXR_HEADERS "/usr/include/${CHOST}/OpenEXR")
++else()
++	set(_OPENEXR_HEADERS "${OpenEXR_INCLUDE_DIR}")
++endif()
++
+ if(EXISTS "${OpenEXR_INCLUDE_DIR}/OpenEXRConfig.h")
+   # Get the EXR version information from the config header
+-  file(STRINGS "${OpenEXR_INCLUDE_DIR}/OpenEXRConfig.h"
++  file(STRINGS "${_OPENEXR_HEADERS}/OpenEXRConfig.h"
+     _openexr_version_major_string REGEX "#define OPENEXR_VERSION_MAJOR "
+   )
+   string(REGEX REPLACE "#define OPENEXR_VERSION_MAJOR" ""
+@@ -171,7 +177,7 @@ if(EXISTS "${OpenEXR_INCLUDE_DIR}/OpenEXRConfig.h")
+   )
+   string(STRIP "${_openexr_version_major_string}" OpenEXR_VERSION_MAJOR)
+ 
+-  file(STRINGS "${OpenEXR_INCLUDE_DIR}/OpenEXRConfig.h"
++  file(STRINGS "${_OPENEXR_HEADERS}/OpenEXRConfig.h"
+      _openexr_version_minor_string REGEX "#define OPENEXR_VERSION_MINOR "
+   )
+   string(REGEX REPLACE "#define OPENEXR_VERSION_MINOR" ""
+-- 
+2.25.1
+
+
