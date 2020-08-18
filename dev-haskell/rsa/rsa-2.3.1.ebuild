@@ -13,7 +13,7 @@ MY_PN="RSA"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Implementation of RSA, using the padding schemes of PKCS#1 v2.1"
-HOMEPAGE="http://hackage.haskell.org/package/RSA"
+HOMEPAGE="https://hackage.haskell.org/package/RSA"
 SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
