@@ -53,8 +53,8 @@ src_configure() {
 		$(meson_feature introspection enable-introspection)
 		$(meson_use test enable-tests)
 		$(meson_feature vala enable-vala)
-		-Dwith-pci-ids-path=/usr/share/misc/usb.ids
-		-Dwith-usb-ids-path=/usr/share/misc/pci.ids
+		-Dwith-pci-ids-path=/usr/share/misc/pci.ids
+		-Dwith-usb-ids-path=/usr/share/misc/usb.ids
 	)
 	meson_src_configure
 }
