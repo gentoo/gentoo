@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="restricting the servers that http-client will use"
-HOMEPAGE="http://hackage.haskell.org/package/http-client-restricted"
+HOMEPAGE="https://hackage.haskell.org/package/http-client-restricted"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
