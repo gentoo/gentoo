@@ -1,0 +1,12 @@
+diff -Naur a/openvdb/CMakeLists.txt b/openvdb/CMakeLists.txt
+--- a/openvdb/CMakeLists.txt	2020-08-18 12:17:15.261321103 +1000
++++ b/openvdb/CMakeLists.txt	2020-08-18 12:17:37.101397373 +1000
+@@ -394,7 +394,7 @@
+   FILE ( WRITE ${CMAKE_CURRENT_BINARY_DIR}/cmake-doxygen-config ${DOXYGEN_CONFIG_CONTENT} )
+   FILE ( APPEND ${CMAKE_CURRENT_BINARY_DIR}/cmake-doxygen-config "OUTPUT_DIRECTORY=${CMAKE_CURRENT_BINARY_DIR}/doc\n" )
+ 
+-  ADD_CUSTOM_TARGET ( doc
++  ADD_CUSTOM_TARGET ( doc ALL
+     ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/cmake-doxygen-config
+     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+     COMMENT "Generating API documentation with Doxygen" VERBATIM

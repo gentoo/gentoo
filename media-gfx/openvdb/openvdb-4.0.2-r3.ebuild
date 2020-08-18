@@ -7,9 +7,9 @@ PYTHON_COMPAT=( python3_6 )
 
 inherit cmake flag-o-matic python-single-r1
 
-DESCRIPTION="Libs for the efficient manipulation of volumetric data"
+DESCRIPTION="Library for the efficient manipulation of volumetric data"
 HOMEPAGE="https://www.openvdb.org"
-SRC_URI="https://github.com/dreamworksanimation/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/AcademySoftwareFoundation/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~dracwyrm/patches/${P}-patchset-02.tar.xz"
 
 LICENSE="MPL-2.0"
@@ -57,6 +57,8 @@ PATCHES=(
 	"${WORKDIR}/${P}-patchset-02/0002-use-pkgconfig-for-ilmbase-and-openexr.patch"
 	"${WORKDIR}/${P}-patchset-02/0003-boost-1.65-numpy-support.patch"
 	"${FILESDIR}/${P}-findboost-fix.patch"
+	"${FILESDIR}/${P}-fix-const-correctness-for-unittest.patch"
+	"${FILESDIR}/${P}-fix-build-docs.patch"
 )
 
 pkg_setup() {
