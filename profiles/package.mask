@@ -50,11 +50,6 @@ dev-perl/gnome2-vfs-perl
 # Removal in 30 days.  Bug #706480.
 dev-python/notify-python
 
-# Mart Raudsepp <leio@gentoo.org> (2020-08-16)
-# Temporary mask until accidentally missed app-crypt/gcr
-# bump is finalized
-=gnome-base/gnome-core-apps-3.36.5
-
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
 # Masked to allow py2.7 removal
