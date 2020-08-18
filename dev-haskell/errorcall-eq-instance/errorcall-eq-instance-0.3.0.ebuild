@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="An orphan Eq instance for ErrorCall"
-HOMEPAGE="http://hackage.haskell.org/package/errorcall-eq-instance"
+HOMEPAGE="https://hackage.haskell.org/package/errorcall-eq-instance"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
