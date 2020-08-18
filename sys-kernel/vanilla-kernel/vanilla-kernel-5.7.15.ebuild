@@ -57,7 +57,7 @@ src_prepare() {
 			return
 			;;
 		arm64)
-			cp "${DISTDIR}/kernel-aarch64.config.${CONFIG_VER}" .config || die
+			cp "${DISTDIR}/kernel-aarch64-fedora.config.${CONFIG_VER}" .config || die
 			;;
 		x86)
 			cp "${DISTDIR}/kernel-i686-fedora.config.${CONFIG_VER}" .config || die
