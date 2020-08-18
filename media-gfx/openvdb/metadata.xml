@@ -24,8 +24,11 @@
 		<flag restrict="&gt;=media-gfx/openvdb-5.0.0" name="abi5-compat">
 			Disables newer features to maintain compatibility with ABI5.
 		</flag>
+		<flag restrict="&gt;=media-gfx/openvdb-6.0.0" name="abi6-compat">
+			Disables newer features to maintain compatibility with ABI6.
+		</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">dreamworksanimation/openvdb</remote-id>
+		<remote-id type="github">AcademySoftwareFoundation/openvdb</remote-id>
 	</upstream>
 </pkgmetadata>
