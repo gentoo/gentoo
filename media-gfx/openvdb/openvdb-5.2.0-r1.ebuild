@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit cmake flag-o-matic python-single-r1
 
