@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour" # circular deps: test-suite
 inherit haskell-cabal
 
 DESCRIPTION="Fast Splittable PRNG"
-HOMEPAGE="http://hackage.haskell.org/package/splitmix"
+HOMEPAGE="https://hackage.haskell.org/package/splitmix"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
