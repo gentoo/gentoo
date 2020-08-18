@@ -46,7 +46,7 @@ RDEPEND="${DEPEND}
 PDEPEND="!mbox? ( mail-filter/procmail )"
 
 src_prepare() {
-	eapply "${FILESDIR}"/"${PN}"-8.14.6-build-system.patch
+	eapply "${FILESDIR}"/"${PN}"-8.16.1-build-system.patch
 	eapply -p0 "${FILESDIR}"/sendmail-delivered_hdr.patch
 
 	local confCC="$(tc-getCC)"
