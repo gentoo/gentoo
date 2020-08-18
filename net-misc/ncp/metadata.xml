@@ -12,5 +12,4 @@
 	<longdescription lang="en">
 "ncp" is a utility for copying files in a LAN. It has absolutely no security or integrity checking, no throttling, no features, except one: you don't have to type the coordinates of your peer.
 	</longdescription>
-	<use><flag name="diet">Compile against <pkg>dev-libs/dietlibc</pkg></flag></use>
 </pkgmetadata>
