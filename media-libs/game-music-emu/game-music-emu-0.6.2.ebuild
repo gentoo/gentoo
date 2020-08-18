@@ -15,3 +15,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 x86"
 IUSE=""
 
 DOCS=( changes.txt design.txt gme.txt readme.txt )
+
+PATCHES=(
+	"${FILESDIR}/game-music-emu-0.6.2-gcc10.patch"
+)
