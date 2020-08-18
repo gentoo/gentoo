@@ -5,14 +5,17 @@ EAPI=7
 
 inherit kernel-build
 
-MY_P=linux-${PV}
+MY_P=linux-${PV%.*}
+GENPATCHES_P=genpatches-${PV%.*}-$(( ${PV##*.} + 2 ))
 # https://koji.fedoraproject.org/koji/packageinfo?packageID=8
-CONFIG_VER=5.7.8
-CONFIG_HASH=14d239184a721485a823f30f5aede1c6190558ad
+CONFIG_VER=5.8.1
+CONFIG_HASH=47a895f435cccb2cb14eb5d0c52d2f6d4d904907
 
-DESCRIPTION="Linux kernel built from vanilla upstream sources"
+DESCRIPTION="Linux kernel built with Gentoo patches"
 HOMEPAGE="https://www.kernel.org/"
 SRC_URI+=" https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.xz
+	https://dev.gentoo.org/~alicef/dist/genpatches/${GENPATCHES_P}.base.tar.xz
+	https://dev.gentoo.org/~alicef/dist/genpatches/${GENPATCHES_P}.extras.tar.xz
 	amd64? (
 		https://src.fedoraproject.org/rpms/kernel/raw/${CONFIG_HASH}/f/kernel-x86_64-fedora.config
 			-> kernel-x86_64-fedora.config.${CONFIG_VER}
@@ -31,9 +34,11 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="debug"
 REQUIRED_USE="
-	arm? ( savedconfig )"
+	arm? ( savedconfig )
+	arm64? ( savedconfig )"
 
 RDEPEND="
+	!sys-kernel/vanilla-kernel:${SLOT}
 	!sys-kernel/vanilla-kernel-bin:${SLOT}"
 BDEPEND="
 	debug? ( dev-util/dwarves )"
@@ -46,6 +51,10 @@ pkg_pretend() {
 }
 
 src_prepare() {
+	local PATCHES=(
+		# meh, genpatches have no directory
+		"${WORKDIR}"/*.patch
+	)
 	default
 
 	# prepare the default config

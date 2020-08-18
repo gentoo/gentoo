@@ -7,8 +7,8 @@ inherit kernel-build
 
 MY_P=linux-${PV}
 # https://koji.fedoraproject.org/koji/packageinfo?packageID=8
-CONFIG_VER=5.7.8
-CONFIG_HASH=14d239184a721485a823f30f5aede1c6190558ad
+CONFIG_VER=5.8.1
+CONFIG_HASH=47a895f435cccb2cb14eb5d0c52d2f6d4d904907
 
 DESCRIPTION="Linux kernel built from vanilla upstream sources"
 HOMEPAGE="https://www.kernel.org/"
