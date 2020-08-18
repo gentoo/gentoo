@@ -714,10 +714,6 @@ dev-ruby/net-ssh:4
 dev-ruby/nokogumbo:0
 dev-ruby/zeitwerk:1
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-19)
-# Unmaintained upstream and broken by ECM 5.72.0, masked for removal in 30 days.
-media-video/plasma-mediacenter
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2020-07-15)
 # In preparation; do not use yet.
 =dev-lang/perl-5.32*
