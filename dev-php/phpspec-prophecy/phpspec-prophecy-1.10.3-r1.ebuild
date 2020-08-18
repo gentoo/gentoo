@@ -3,9 +3,12 @@
 
 EAPI="7"
 
+MY_PN="prophecy"
+MY_VENDOR="phpspec"
+
 DESCRIPTION="Highly opinionated mocking framework"
 HOMEPAGE="https://github.com/phpspec/prophecy"
-SRC_URI="https://github.com/phpspec/prophecy/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${MY_VENDOR}/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
