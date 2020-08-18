@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Infer software license from a given license file"
-HOMEPAGE="http://hackage.haskell.org/package/infer-license"
+HOMEPAGE="https://hackage.haskell.org/package/infer-license"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
