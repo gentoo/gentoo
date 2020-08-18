@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Network byte order utilities"
-HOMEPAGE="http://hackage.haskell.org/package/network-byte-order"
+HOMEPAGE="https://hackage.haskell.org/package/network-byte-order"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
