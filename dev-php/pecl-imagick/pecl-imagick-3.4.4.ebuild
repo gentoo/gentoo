@@ -21,6 +21,6 @@ RESTRICT="!test? ( test )"
 # https://github.com/mkoppanen/imagick#openmp
 RDEPEND=">=media-gfx/imagemagick-6.2.4:=[-openmp]"
 DEPEND="${RDEPEND}
-	test? ( >=media-gfx/imagemagick-6.2.4:=[jpeg,png,truetype] )"
+	test? ( >=media-gfx/imagemagick-6.2.4:=[jpeg,png,svg,truetype,xml] )"
 
 PHP_EXT_ECONF_ARGS="--with-imagick=${EPREFIX}/usr"
