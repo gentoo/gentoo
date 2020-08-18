@@ -18,7 +18,7 @@ then
 	EGIT_REPO_URI="https://github.com/mitya57/python-markdown-math.git"
 else
 	SRC_URI="mirror://pypi/${MY_PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="BSD"
