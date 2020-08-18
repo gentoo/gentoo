@@ -14,7 +14,7 @@ SRC_URI="mirror://gnu/gzip/${P}.tar.xz
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="pic static"
+IUSE="static"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.3.8-install-symlinks.patch"
@@ -22,8 +22,10 @@ PATCHES=(
 
 src_configure() {
 	use static && append-flags -static
+
 	# avoid text relocation in gzip
-	use pic && export DEFS="NO_ASM"
+	export DEFS="NO_ASM"
+
 	econf --disable-gcc-warnings #663928
 }
 
