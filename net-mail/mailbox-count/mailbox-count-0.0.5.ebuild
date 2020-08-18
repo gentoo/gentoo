@@ -7,7 +7,7 @@ CABAL_FEATURES="test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Count mailboxes in a SQL database"
-HOMEPAGE="http://hackage.haskell.org/package/mailbox-count"
+HOMEPAGE="https://hackage.haskell.org/package/mailbox-count"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="AGPL-3"
