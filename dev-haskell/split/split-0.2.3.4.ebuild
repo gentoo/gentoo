@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Combinator library for splitting lists"
-HOMEPAGE="http://hackage.haskell.org/package/split"
+HOMEPAGE="https://hackage.haskell.org/package/split"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
