@@ -85,7 +85,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DCHOST="${CHOST}"
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}/"
-		-DCPPUNIT_LOCATION="${myprefix}"
 		-DOPENVDB_ABI_VERSION_NUMBER="${version}"
 		-DOPENVDB_BUILD_DOCS=$(usex doc)
 		-DOPENVDB_BUILD_PYTHON_MODULE=$(usex python)
@@ -99,12 +98,10 @@ src_configure() {
 		-DUSE_CCACHE=OFF
 		-DUSE_COLORED_OUTPUT=ON
 		-DUSE_EXR=ON
-		-DUSE_GLFW3=ON
 		-DUSE_LOG4CPLUS=ON
 		-DUSE_NUMPY=$(usex numpy)
 		-DPYOPENVDB_INSTALL_DIRECTORY="${python_get_sitedir}"
 		-DPython_EXECUTABLE="${PYTHON}"
-		-DTBB_LOCATION="${myprefix}"
 	)
 
 	if use cpu_flags_x86_avx; then
