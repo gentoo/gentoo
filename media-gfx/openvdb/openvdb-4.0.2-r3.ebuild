@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_6 )
 
 inherit cmake flag-o-matic python-single-r1
 
-DESCRIPTION="Libs for the efficient manipulation of volumetric data"
+DESCRIPTION="Library for the efficient manipulation of volumetric data"
 HOMEPAGE="https://www.openvdb.org"
 SRC_URI="https://github.com/AcademySoftwareFoundation/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~dracwyrm/patches/${P}-patchset-02.tar.xz"
