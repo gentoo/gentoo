@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${PN}-python-${PV}/${PN}-python"
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ia64 ~x86"
 IUSE="cli test"
 RESTRICT="!test? ( test )"
 
