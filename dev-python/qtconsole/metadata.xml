@@ -13,6 +13,7 @@
     A rich Qt-based console for working with Jupyter kernels,
     supporting rich media output, session export, and more.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">qtconsole</remote-id>
     <remote-id type="github">jupyter/qtconsole</remote-id>
