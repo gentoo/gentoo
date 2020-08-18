@@ -7,7 +7,7 @@ CABAL_FEATURES="lib profile haddock hscolour hoogle"
 inherit base haskell-cabal
 
 DESCRIPTION="Replaces/Enhances Text.Regex"
-HOMEPAGE="https://sourceforge.net/projects/lazy-regex"
+HOMEPAGE="https://hackage.haskell.org/package/regex-posix"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
