@@ -15,11 +15,14 @@
 		Chance of Meatballs2' and 'How to Train Your Dragon 2'. 
 	</longdescription>
 	<use>
-		<flag restrict="&lt;media-gfx/openvdb-5.0.0" name="abi3-compat">
-			Disables newer features to maintain compatibility with ABI3. Enabled by default.
+		<flag name="abi3-compat">
+			Disables newer features to maintain compatibility with ABI3.
 		</flag>
-		<flag restrict="&gt;=media-gfx/openvdb-5.0.0" name="abi4-compat">
-			Disables newer features to maintain compatibility with ABI4. Enabled by default.
+		<flag restrict="&gt;=media-gfx/openvdb-4.0.0" name="abi4-compat">
+			Disables newer features to maintain compatibility with ABI4.
+		</flag>
+		<flag restrict="&gt;=media-gfx/openvdb-5.0.0" name="abi5-compat">
+			Disables newer features to maintain compatibility with ABI5.
 		</flag>
 	</use>
 	<upstream>
