@@ -276,10 +276,10 @@ src_install() {
 	# fix doc installdir
 	docinto "html"
 	dodoc "${CMAKE_USE_DIR}"/release/text/readme.html
-	rm -r "${ED%/}"/usr/share/doc/blender || die
+	rm -r "${ED}"/usr/share/doc/blender || die
 
-	python_fix_shebang "${ED%/}/usr/bin/blender-thumbnailer.py"
-	python_optimize "${ED%/}/usr/share/blender/${MY_PV}/scripts"
+	python_fix_shebang "${ED}/usr/bin/blender-thumbnailer.py"
+	python_optimize "${ED}/usr/share/blender/${MY_PV}/scripts"
 }
 
 pkg_postinst() {
