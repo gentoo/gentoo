@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic
 
@@ -34,6 +34,6 @@ src_install() {
 
 	# keep most things in /usr, just the fun stuff in /
 	dodir /bin
-	mv "${ED%/}"/usr/bin/{gunzip,gzip,uncompress,zcat} "${ED%/}"/bin/ || die
-	sed -e "s:${EPREFIX}/usr:${EPREFIX}:" -i "${ED%/}"/bin/gunzip || die
+	mv "${ED}"/usr/bin/{gunzip,gzip,uncompress,zcat} "${ED}"/bin/ || die
+	sed -e "s:${EPREFIX}/usr:${EPREFIX}:" -i "${ED}"/bin/gunzip || die
 }
