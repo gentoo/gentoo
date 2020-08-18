@@ -35,10 +35,10 @@ LICENSE="|| ( GPL-2 GPL-3+ LGPL-3 )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="
-	3d charts concurrent datavis designer gles2-only gui help location
-	multimedia network positioning printsupport qml quick script scripttools
+	3d charts concurrent datavis designer gles2-only +gui help location
+	multimedia +network positioning printsupport qml quick script scripttools
 	scxml sensors speech sql svg test testlib webchannel webengine websockets
-	widgets x11extras xml xmlpatterns
+	+widgets x11extras xml xmlpatterns
 "
 
 # Manually reextract these requirements on version bumps by running the
