@@ -9,7 +9,7 @@ CABAL_FEATURES="bin test-suite"
 inherit eutils haskell-cabal toolchain-funcs
 
 DESCRIPTION="Draw sequence diagrams of D-Bus traffic"
-HOMEPAGE="http://hackage.haskell.org/package/bustle"
+HOMEPAGE="https://hackage.haskell.org/package/bustle"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="LGPL-2 GPL-2 GPL-3"
