@@ -20,8 +20,8 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
-	>=dev-libs/boost-1.62:=
-	>=dev-libs/c-blosc-1.5.0
+	dev-libs/boost:=
+	dev-libs/c-blosc
 	dev-libs/jemalloc
 	dev-libs/log4cplus
 	media-libs/glfw:=
@@ -34,7 +34,7 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			>=dev-libs/boost-1.62:=[python,${PYTHON_MULTI_USEDEP}]
+			dev-libs/boost:=[python,${PYTHON_MULTI_USEDEP}]
 			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
 		')
 	)"
