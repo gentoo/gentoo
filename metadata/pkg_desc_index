@@ -1584,7 +1584,7 @@ app-doc/tldp-howto 20120707: The Linux Documentation Project HOWTOs
 app-doc/vilearn 1.0: An interactive vi tutorial comprised of 5 tutorials for the vi-impaired
 app-doc/votca-csg-manual 9999: Manual for votca-csg
 app-doc/xmltoman 0.4-r1: Simple scripts for converting xml to groff or html
-app-doc/zeal 0.6.1: Offline documentation browser inspired by Dash
+app-doc/zeal 0.6.1_p20200815: Offline documentation browser inspired by Dash
 app-doc/zsh-lovers 0.9.0 0.9.1: Tips, tricks and examples for the Z shell
 app-editors/aee 2.2.21: An easy to use text editor
 app-editors/amyedit 1.0-r2: AmyEdit is a LaTeX editor
@@ -3567,7 +3567,7 @@ dev-db/pgxnclient 1.3-r2: PostgreSQL Extension Network Client
 dev-db/phpmyadmin 4.9.5 5.0.2: Web-based administration for MySQL database in PHP
 dev-db/phppgadmin 7.12.1: Web-based administration for Postgres database in php
 dev-db/plr 8.3.0.17: R language extension for postgresql database
-dev-db/postgis 2.5.3-r1 2.5.4 3.0.0-r1 3.0.1 9999: Geographic Objects for PostgreSQL
+dev-db/postgis 2.5.3-r1 2.5.4 2.5.5 3.0.0-r1 3.0.1 3.0.2 9999: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.5.21 9.5.22 9.5.23 9.6.17 9.6.18 9.6.19 10.12 10.13 10.14 11.7 11.8 11.9 12.2 12.3 12.4 13_beta2 13_beta3 9999: PostgreSQL RDBMS
 dev-db/pspg 1.6.5 1.6.8 2.5.4 2.5.5 2.6.6 3.1.2: A better pager for psql and mysql
 dev-db/psqlodbc 10.01.0000 11.01.0000: Official ODBC driver for PostgreSQL
@@ -3704,7 +3704,7 @@ dev-games/cardpics 0.4-r1: set of free cards sets
 dev-games/cegui 0.8.7-r1: Crazy Eddie's GUI System
 dev-games/clanlib 0.8.1 2.3.7 4.0.0: Multi-platform game development library
 dev-games/flatzebra 0.1.6 0.1.7: Generic game engine for 2D double-buffering animation
-dev-games/freecell-solver 5.24.0: C library for automatically solving Freecell and some other solitaire variants
+dev-games/freecell-solver 5.24.0 6.0.1: C library for automatically solving Freecell and some other solitaire variants
 dev-games/goatee 0.3.1.2: A monadic take on a 2,500-year-old board game - library
 dev-games/guichan 0.8.2: a portable C++ GUI library designed for games using Allegro, SDL and/or OpenGL
 dev-games/hawknl 1.68-r3: A cross-platform network library designed for games
@@ -12085,7 +12085,7 @@ kde-apps/kio-extras 20.04.3 20.08.0: KIO plugins present a filesystem-like view 
 kde-apps/kipi-plugins 20.04.3 20.08.0: Plugins for the KDE Image Plugin Interface
 kde-apps/kiriki 20.04.3 20.08.0: An addictive and fun dice game
 kde-apps/kiten 20.04.3 20.08.0: KDE Japanese dictionary and reference
-kde-apps/kitinerary 20.04.3 20.08.0: Data Model and Extraction System for Travel Reservation information
+kde-apps/kitinerary 20.04.3 20.08.0-r1: Data Model and Extraction System for Travel Reservation information
 kde-apps/kjumpingcube 20.04.3 20.08.0: Tactical one or two player game
 kde-apps/kldap 20.04.3 20.08.0: Library for interacting with LDAP servers
 kde-apps/kleopatra 20.04.3 20.08.0: Certificate manager and GUI for OpenPGP and CMS cryptography
@@ -12179,10 +12179,10 @@ kde-apps/libktnef 20.04.3 20.08.0: Library for handling TNEF data
 kde-apps/lokalize 20.04.3 20.08.0: KDE Applications 5 translation tool
 kde-apps/lskat 20.04.3 20.08.0: Skat game by KDE
 kde-apps/mailcommon 20.04.3 20.08.0: Common mail library
-kde-apps/mailimporter 20.04.3 20.08.0: Library to import mail from various sources
+kde-apps/mailimporter 20.04.3 20.08.0-r1: Library to import mail from various sources
 kde-apps/marble 20.04.3 20.08.0: Virtual Globe and World Atlas to learn more about Earth
 kde-apps/mbox-importer 20.04.3 20.08.0: Import mbox email archives from various sources into Akonadi
-kde-apps/messagelib 20.04.3 20.08.0: Libraries for messaging functions
+kde-apps/messagelib 20.04.3 20.08.0-r1: Libraries for messaging functions
 kde-apps/minuet 20.04.3 20.08.0: Music Education software by KDE
 kde-apps/okular 20.04.3 20.08.0: Universal document viewer based on KDE Frameworks
 kde-apps/palapeli 20.04.3 20.08.0: Jigsaw puzzle game by KDE
@@ -12350,7 +12350,7 @@ kde-plasma/libkworkspace 5.18.5 5.19.4: Workspace library to interact with the P
 kde-plasma/milou 5.18.5 5.19.4: Dedicated search application built on top of Baloo
 kde-plasma/oxygen 5.18.5 5.19.4: Oxygen visual style for the Plasma desktop
 kde-plasma/plasma-browser-integration 5.18.5 5.19.4: Integrate Chrome/Firefox better into Plasma through browser extensions
-kde-plasma/plasma-desktop 5.18.5-r1 5.19.4: KDE Plasma desktop
+kde-plasma/plasma-desktop 5.18.5-r1 5.18.5-r2 5.19.4: KDE Plasma desktop
 kde-plasma/plasma-integration 5.18.5 5.19.4: Qt Platform Theme integration plugins for the Plasma workspaces
 kde-plasma/plasma-meta 5.18.5 5.19.4: Merge this to pull in all Plasma 5 packages
 kde-plasma/plasma-nm 5.18.5-r1 5.19.4: KDE Plasma applet for NetworkManager
@@ -13364,7 +13364,7 @@ media-libs/zita-alsa-pcmi 0.3.2: Provides easy access to ALSA PCM devices
 media-libs/zita-convolver 4.0.3: C++ library implementing a real-time convolution matrix
 media-libs/zita-resampler 1.6.2: C++ library for real-time resampling of audio signals
 media-libs/zvbi 0.2.35-r1: VBI Decoding Library for Zapping
-media-libs/zxing-cpp 1.0.8-r1: C++ Multi-format 1D/2D barcode image processing library
+media-libs/zxing-cpp 1.0.8-r1 1.1.0: C++ Multi-format 1D/2D barcode image processing library
 media-plugins/alsa-plugins 1.2.2: ALSA extra plugins
 media-plugins/alsaequal 0.7.1: A real-time adjustable equalizer plugin for ALSA
 media-plugins/amb-plugins 0.8.1-r1: AMB-plugins ladspa plugin package. Filters by Fons Adriaensen
@@ -16140,7 +16140,7 @@ sci-geosciences/opencpn-plugin-weatherfax 1.3.20180316 9999: Weatherfax Plugin f
 sci-geosciences/opencpn-plugins-meta 4.2.0-r3: Meta ebuild to pull in opencpn plugins
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.96.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
-sci-geosciences/qgis 3.10.7 9999: User friendly Geographic Information System
+sci-geosciences/qgis 3.10.7 3.10.9 9999: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.14.0 1.15.0: GPS mapping utility
 sci-geosciences/readosm 1.0.0e-r1: Library to extract valid data from an Open Street Map input file
 sci-geosciences/routino 3.1.1 3.2 3.3.2: Routing application based on openstreetmap data
