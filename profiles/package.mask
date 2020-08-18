@@ -40,7 +40,7 @@ dev-python/pyblake2
 dev-python/pysha3
 
 # Kent Fredric <kentnl@gentoo.org> (2020-08-17)
-# No reverse dependencies, and Gtk support is becomming
+# No reverse dependencies, and gtk2 support is becoming
 # obsolete in Gentoo
 # Removal in 30 days
 dev-perl/gnome2-vfs-perl
