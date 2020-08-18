@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake
+inherit cmake xdg
 DESCRIPTION="Create and edit fb2 books"
 HOMEPAGE="https://github.com/vitlav/fb2edit"
 SRC_URI="https://github.com/vitlav/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
@@ -17,6 +17,22 @@ RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtxml:5
 	dev-qt/qtxmlpatterns:5
-	dev-qt/linguist-tools:5
 	dev-libs/libxml2:2"
-BDEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5"
+
+src_prepare () {
+	cmake_src_prepare
+}
+
+pkg_preinst () {
+	xdg_pkg_preinst
+}
+
+pkg_postinst () {
+	xdg_pkg_postinst
+}
+
+pkg_postrm () {
+	xdg_pkg_postrm
+}
