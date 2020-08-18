@@ -84,16 +84,12 @@ src_configure() {
 	fi
 
 	local mycmakeargs=(
-		#-DBLOSC_LOCATION="${myprefix}"
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
-		#-DGLFW3_LOCATION="${myprefix}"
 		-DOPENVDB_ABI_VERSION_NUMBER="${version}"
 		-DOPENVDB_BUILD_DOCS=$(usex doc)
 		-DOPENVDB_BUILD_PYTHON_MODULE=$(usex python)
 		-DOPENVDB_BUILD_UNITTESTS=$(usex test)
 		-DOPENVDB_ENABLE_RPATH=OFF
-		#-DTBB_LOCATION="${myprefix}"
-		#-DUSE_GLFW3=ON
 		-DCHOST="${CHOST}"
 	)
 
