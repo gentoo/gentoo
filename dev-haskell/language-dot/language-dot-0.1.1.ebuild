@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="A library for the analysis and creation of Graphviz DOT files"
-HOMEPAGE="http://hackage.haskell.org/package/language-dot"
+HOMEPAGE="https://hackage.haskell.org/package/language-dot"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
