@@ -472,7 +472,6 @@ app-emulation/containers-storage:btrfs - Enables dependencies for the "btrfs" gr
 app-emulation/containers-storage:device-mapper - Enables dependencies for the "devicemapper" graph driver, including necessary kernel flags.
 app-emulation/cri-o:btrfs - Enables dependencies for the "btrfs" graph driver, including necessary kernel flags.
 app-emulation/cri-o:device-mapper - Enables dependencies for the "devicemapper" graph driver, including necessary kernel flags.
-app-emulation/cri-o:ostree - Enables dependencies for handling of OSTree images.
 app-emulation/crossover-bin:capi - Enable ISDN support via CAPI
 app-emulation/crossover-bin:opencl - Enable OpenCL support
 app-emulation/crossover-bin:osmesa - Add support for OpenGL in bitmaps using libOSMesa
