@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="
 	mirror://debian/pool/main/m/${PN}/${PN}_${PV/_p*}-$(ver_cut 5).$(ver_cut 7).debian.tar.xz
 "
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~sparc ~x86"
 SLOT="0"
 
 PATCHES=(
