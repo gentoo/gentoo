@@ -6429,7 +6429,7 @@ dev-perl/Exception-Warning 0.40.100-r1 0.40.100-r2: Convert simple warn into rea
 dev-perl/Expect 1.350.0: Expect for Perl
 dev-perl/Exporter-Cluster 0.310.0-r1 0.310.0-r2: Extension for easy multiple module imports
 dev-perl/Exporter-Lite 0.80.0: Lightweight exporting of variables
-dev-perl/Exporter-Tiny 1.2.1: An exporter with the features of Sub::Exporter but only core dependencies
+dev-perl/Exporter-Tiny 1.2.1 1.2.2: An exporter with the features of Sub::Exporter but only core dependencies
 dev-perl/ExtUtils-AutoInstall 0.640.0: Automatic installation of dependencies via CPAN from within Makefile.PL
 dev-perl/ExtUtils-CChecker 0.100.0: Configure-time utilities for using C headers
 dev-perl/ExtUtils-Config 0.8.0: A wrapper for perl's configuration
