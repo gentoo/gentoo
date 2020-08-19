@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot <chewi@gentoo.org> (2020-08-19)
+# Cinnamon is not keyworded on this architecture.
+x11-themes/arc-theme cinnamon
+
 # Sam James <sam@gentoo.org> (2020-07-03)
 # Rust is available here
 # Bug #728558

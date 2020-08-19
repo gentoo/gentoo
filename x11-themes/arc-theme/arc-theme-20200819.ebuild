@@ -3,8 +3,6 @@
 
 EAPI=7
 
-COMMIT="958b9b554cde5a8be7280bdf4a908ebe833cbd81"
-
 # USE="-* gtk2 gtk3 xfce" ebuild ${P}.ebuild clean compile
 # cd ~portage/x11-themes/${P}/work
 # make -j -C */common/gtk-3.0/3.18
@@ -14,7 +12,7 @@ inherit autotools
 
 DESCRIPTION="A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell"
 HOMEPAGE="https://github.com/jnsh/arc-theme"
-SRC_URI="https://github.com/jnsh/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/jnsh/${PN}/releases/download/${PV}/arc-theme-${PV}.tar.xz
 	pre-rendered? ( https://dev.gentoo.org/~chewi/distfiles/${P}-pngs.tar.xz )"
 LICENSE="GPL-3"
 SLOT="0"
@@ -35,10 +33,12 @@ SVG_DEPEND="
 # Supports various GTK+3 versions and uses pkg-config to determine which
 # set of files to install. Updates will break it but only this fix will
 # help. See https://github.com/horst3180/arc-theme/pull/436. The same
-# applies to GNOME Shell but I don't know whether that's fixable.
+# applies to GNOME Shell and Cinnamon but I don't know whether those are
+# fixable.
 BDEPEND="
 	cinnamon? (
 		${SASSC_DEPEND}
+		gnome-extra/cinnamon
 	)
 	gnome-shell? (
 		${SASSC_DEPEND}
@@ -67,8 +67,6 @@ RDEPEND="
 	)
 "
 
-S="${WORKDIR}/${PN}-${COMMIT}"
-
 src_prepare() {
 	default
 	eautoreconf
@@ -79,7 +77,6 @@ src_configure() {
 		export INKSCAPE="${BROOT}"/bin/false OPTIPNG="${BROOT}"/bin/false
 
 	econf \
-		--disable-openbox \
 		--disable-plank \
 		--disable-unity \
 		$(use_enable cinnamon) \
