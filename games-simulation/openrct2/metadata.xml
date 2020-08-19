@@ -16,6 +16,7 @@
 	</longdescription>
 	<use>
 		<flag name="lightfx">Enables LightFX for better lightning effects.</flag>
+		<flag name="scripting">Enable the <pkg>dev-lang/duktape</pkg> scripting engine for executing user scripts.</flag>
 		<flag name="twitch">Enables streaming of ingame content to Twitch.</flag>
 	</use>
 	<upstream>
