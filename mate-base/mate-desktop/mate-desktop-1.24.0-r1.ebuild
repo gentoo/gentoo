@@ -44,7 +44,6 @@ DEPEND="${COMMON_DEPEND}
 src_configure() {
 	mate_src_configure \
 		--enable-mate-about \
-		--disable-static \
 		$(use_with X x) \
 		$(use_enable debug) \
 		$(use_enable introspection) \
