@@ -31,6 +31,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-openssl-1.1.patch
+	"${FILESDIR}/ipmitool-1.8.18-fno-common.patch"
 )
 
 src_prepare() {
