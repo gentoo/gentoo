@@ -73,6 +73,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.2.4-include-additional-paths.patch"
+	"${FILESDIR}/${PN}-0.2.6-gtest-1.10.patch"
 )
 
 src_unpack() {
