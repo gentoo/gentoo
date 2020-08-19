@@ -27,6 +27,7 @@ PATCHES=(
 	"${WORKDIR}"/diskdev_cmds-${PV}.patch
 	"${FILESDIR}"/${PN}-respect-cflags.patch
 	"${FILESDIR}"/${P}-AR.patch
+	"${FILESDIR}"/${P}-no-sysctl.patch
 )
 
 src_compile() {
