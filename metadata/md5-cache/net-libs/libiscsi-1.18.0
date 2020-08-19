@@ -4,10 +4,10 @@ DESCRIPTION=iscsi client library and utilities
 EAPI=6
 HOMEPAGE=https://github.com/sahlberg/libiscsi
 IUSE=static-libs
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86
+KEYWORDS=~alpha amd64 ~arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86
 LICENSE=GPL-2 LGPL-2
 RDEPEND=dev-libs/libgcrypt:0=
 SLOT=0
 SRC_URI=https://github.com/sahlberg/libiscsi/archive/1.18.0.tar.gz -> libiscsi-1.18.0.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=2b83933d4f2d3a088d1abaadb221e9e3
+_md5_=d0f3644229e90f650ed110cab7478eba
