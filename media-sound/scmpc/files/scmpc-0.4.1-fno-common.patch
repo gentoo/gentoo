@@ -1,0 +1,103 @@
+--- a/src/audioscrobbler.c
++++ b/src/audioscrobbler.c
+@@ -50,6 +50,9 @@
+ #define API_KEY "3ec5638071c41a864bf0c8d451566476"
+ #define API_SECRET "365e18391ccdee3bf820cb3d2ba466f6"
+ 
++static struct as_conn_t as_conn;
++gchar *buffer;
++
+ gboolean as_connection_init(void)
+ {
+ 	as_conn.handle = curl_easy_init();
+--- a/src/audioscrobbler.h
++++ b/src/audioscrobbler.h
+@@ -37,19 +37,19 @@
+ /**
+  * Last.fm connection data
+  */
+-struct {
++struct as_conn_t {
+ 	gchar *session_id;
+ 	gint64 last_auth;
+ 	gint64 last_fail;
+ 	connection_status status;
+ 	CURL *handle;
+ 	struct curl_slist *headers;
+-} as_conn;
++};
+ 
+ /**
+  * cURL data buffer
+  */
+-gchar *buffer;
++extern gchar *buffer;
+ 
+ /**
+  * Initialize cURL
+--- a/src/mpd.c
++++ b/src/mpd.c
+@@ -37,6 +37,8 @@
+ static gboolean mpd_parse(GIOChannel *source, GIOCondition condition,
+ 		gpointer data);
+ 
++struct mpd_t mpd;
++
+ gboolean mpd_connect(void)
+ {
+ 	mpd.conn = mpd_connection_new(prefs.mpd_hostname, prefs.mpd_port,
+--- a/src/mpd.h
++++ b/src/mpd.h
+@@ -32,7 +32,7 @@
+ /**
+  * MPD connection data
+  */
+-struct {
++struct mpd_t {
+ 	struct mpd_connection *conn;
+ 	struct mpd_status *status;
+ 	struct mpd_song *song;
+@@ -42,7 +42,9 @@
+ 	guint idle_source;
+ 	guint check_source;
+ 	guint reconnect_source;
+-} mpd;
++};
++
++extern struct mpd_t mpd;
+ 
+ /**
+  * Connect to MPD
+--- a/src/preferences.c
++++ b/src/preferences.c
+@@ -36,6 +36,8 @@
+ #include "scmpc.h"
+ #include "preferences.h"
+ 
++struct prefs_t prefs;
++
+ static gint cf_log_level(cfg_t *cfg, cfg_opt_t *opt, const gchar *value,
+ 		void *result);
+ static gint cf_validate_num(cfg_t *cfg, cfg_opt_t *opt);
+--- a/src/preferences.h
++++ b/src/preferences.h
+@@ -32,7 +32,7 @@
+ /**
+  * scmpc settings
+  */
+-struct {
++struct prefs_t {
+ 	gchar *mpd_hostname;
+ 	gushort mpd_port;
+ 	gushort mpd_timeout;
+@@ -48,7 +48,9 @@
+ 	gchar *cache_file;
+ 	guint queue_length;
+ 	guint cache_interval;
+-} prefs;
++};
++
++extern struct prefs_t prefs;
+ 
+ /**
+  * Initialize preferences
