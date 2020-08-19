@@ -5,6 +5,7 @@
 		<remote-id type="github">Mellanox/mstflint</remote-id>
 	</upstream>
 	<use>
+		<flag name="adb-generic-tools">Enable compiling the following tools: mstreg and mstlink</flag>
 		<flag name="inband">Enable firmware updates for Mellanox SwitchX and ConnectIB devices</flag>
 	</use>
 	<maintainer type="person">
