@@ -39,7 +39,13 @@ DEPEND="${RDEPEND}
 	)
 	sys-devel/bison
 	sys-devel/flex
-	test? ( x11-libs/cairo[glib] )
+	test? (
+		x11-libs/cairo[glib]
+		$(python_gen_cond_dep '
+			dev-python/mako[${PYTHON_MULTI_USEDEP}]
+			dev-python/markdown[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 "
 
 pkg_setup() {
