@@ -9,7 +9,7 @@ inherit linux-info meson python-single-r1 vala xdg toolchain-funcs
 
 DESCRIPTION="Aims to make updating firmware on Linux automatic, safe and reliable"
 HOMEPAGE="https://fwupd.org"
-SRC_URI="https://github.com/hughsie/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
@@ -45,7 +45,7 @@ CDEPEND="${PYTHON_DEPS}
 	dev-libs/libgudev:=
 	>=dev-libs/libgusb-0.2.9[introspection?]
 	>=dev-libs/libjcat-0.1.0[gpg,pkcs7]
-	>=dev-libs/libxmlb-0.1.13
+	>=dev-libs/libxmlb-0.1.13:=
 	$(python_gen_cond_dep '
 		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
 		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
@@ -121,6 +121,7 @@ src_configure() {
 		$(meson_use gtk-doc gtkdoc)
 		$(meson_use man)
 		$(meson_use nvme plugin_nvme)
+		$(meson_use introspection)
 		$(meson_use redfish plugin_redfish)
 		$(meson_use synaptics plugin_synaptics)
 		$(meson_use systemd)
