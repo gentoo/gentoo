@@ -26,8 +26,6 @@ DEPEND="sys-libs/timezone-data"
 RDEPEND="${DEPEND}
 	!sys-fabric/dapl"
 
-PATCHES=( "${FILESDIR}"/${P}-unportable-sys-sysctl_h.patch )
-
 src_prepare() {
 	default
 	[[ "${PV}" = 9999 ]] && eautoreconf
