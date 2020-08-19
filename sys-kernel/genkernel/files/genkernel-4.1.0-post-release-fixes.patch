@@ -26,3 +26,14 @@
  			|| gen_die "Failed to set '${optname}=${optval}' in '${kconfig}'"
  
  		[ ! -f "${KCONFIG_MODIFIED_MARKER}" ] && touch "${KCONFIG_MODIFIED_MARKER}"
+--- a/gkbuilds/bcache-tools.gkbuild
++++ b/gkbuilds/bcache-tools.gkbuild
+@@ -6,7 +6,7 @@ src_configure() {
+ }
+ 
+ src_compile() {
+-	PKG_CONFIG="$(tc-getPKG_CONFIG) -static" \
++	PKG_CONFIG="$(tc-getPKG_CONFIG) --static" \
+ 	gkmake V=1
+ }
+ 
