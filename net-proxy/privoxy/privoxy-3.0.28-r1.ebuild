@@ -48,6 +48,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.19-gentoo.patch
 	"${FILESDIR}"/${P}-chdir.patch
 	"${FILESDIR}"/${P}-null-termination.patch
+	"${FILESDIR}"/${P}-strip.patch
 )
 
 pkg_pretend() {
