@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="test"
 
-CDEPEND=">=net-libs/gnutls-3.3.0:="
+CDEPEND=">=net-libs/gnutls-3.3.0:=[pkcs11]"
 DEPEND="${CDEPEND}
 	test? ( app-crypt/monkeysphere )"
 RDEPEND="${CDEPEND}"
