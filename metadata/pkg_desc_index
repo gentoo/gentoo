@@ -11760,7 +11760,7 @@ games-util/linux-wbfs-manager 0.1.12 9999: WBFS manager for Linux using GTK+
 games-util/loki_patch 20091105: Loki Software binary patch tool
 games-util/lutris 0.5.4-r1 0.5.6 0.5.7 9999: An open source gaming platform for GNU/Linux
 games-util/mcrcon 0.7.1: Remote connection client for Minecraft servers
-games-util/nml 0.4.5-r2: Compiler of NML files into GRF/NFO files
+games-util/nml 0.4.5-r3 0.5.2: Compiler of NML files into GRF/NFO files
 games-util/pogo-manager-bin 0.1.6 0.1.7: Pokemon Go manager
 games-util/pyfa 2.22.1 2.24.1 9999: Python Fitting Assistant - a ship fitting application for EVE Online
 games-util/qjoypad 4.3.1: Translate gamepad/joystick input into key strokes/mouse actions in X
