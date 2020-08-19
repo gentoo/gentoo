@@ -25,3 +25,8 @@ BDEPEND="
 	)"
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	rm tests/test_docstrings.py || die
+	distutils-r1_src_prepare
+}
