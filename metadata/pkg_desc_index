@@ -2363,7 +2363,7 @@ app-misc/cstream 3.1.1-r1: general-purpose stream-handling tool like UNIX dd
 app-misc/cw 1.0.16-r3: A non-intrusive real-time ANSI color wrapper for common unix-based commands
 app-misc/dailystrips 1.0.28-r3: dailystrips automatically downloads your favorite online comics from the web
 app-misc/datefudge 1.22: A program (and preload library) to fake system date
-app-misc/dateutils 0.4.6: command line date and time utilities
+app-misc/dateutils 0.4.6 0.4.7 9999: command line date and time utilities
 app-misc/datovka 4.15.0 4.15.1: GUI to access the Czech data box e-government system
 app-misc/ddate 0.2.2 0.2.2_p20160627: Perpetual date converter from gregorian to poee calendar
 app-misc/ddccontrol 0.4.2_p20140105-r2 0.4.4 0.4.4_p20180123 0.4.4_p20200630: DDCControl allows control of monitor parameters via DDC
@@ -6433,7 +6433,7 @@ dev-perl/Exporter-Tiny 1.2.1 1.2.2: An exporter with the features of Sub::Export
 dev-perl/ExtUtils-AutoInstall 0.640.0: Automatic installation of dependencies via CPAN from within Makefile.PL
 dev-perl/ExtUtils-CChecker 0.100.0: Configure-time utilities for using C headers
 dev-perl/ExtUtils-Config 0.8.0: A wrapper for perl's configuration
-dev-perl/ExtUtils-CppGuess 0.110.0: Guess C++ compiler and flags
+dev-perl/ExtUtils-CppGuess 0.110.0 0.140.0: Guess C++ compiler and flags
 dev-perl/ExtUtils-Depends 0.405.0: Easily build XS extensions that depend on XS extensions
 dev-perl/ExtUtils-F77 1.200.0-r1: Facilitate use of FORTRAN from Perl/XS code
 dev-perl/ExtUtils-Helpers 0.26.0: Various portability utilities for module builders
@@ -14110,7 +14110,7 @@ media-video/gpac 0.7.1-r1 9999: Implementation of the MPEG-4 Systems standard de
 media-video/guvcview 2.0.6-r1: Simple Qt5 or GTK+3 interface for capturing and viewing video from v4l2 devices
 media-video/gxine 0.5.907-r1 0.5.909: GTK+ Front-End for libxine
 media-video/h264enc 10.4.7-r1: Script to encode H.264/AVC/MPEG-4 Part 10 formats
-media-video/handbrake 1.3.3 9999: Open-source, GPL-licensed, multiplatform, multithreaded video transcoder
+media-video/handbrake 1.3.3 1.3.3-r1 9999: Open-source, GPL-licensed, multiplatform, multithreaded video transcoder
 media-video/harvid 0.8.0 0.8.1 0.8.2: HTTP Ardour Video Daemon
 media-video/imagination 3.0-r2: Simple DVD slideshow maker
 media-video/isight-firmware-tools 1.6-r1: Extract, load or export firmware for the iSight webcams
