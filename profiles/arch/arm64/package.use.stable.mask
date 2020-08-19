@@ -4,7 +4,7 @@
 # Sam James <sam@gentoo.org> (2020-08-19)
 # Unstable dependencies for qemu
 # bug #738056
-app-emulation/qemu smartcard fdt rbd slirp xen virgl
+app-emulation/qemu smartcard rbd xen virgl
 app-emulation/qemu glusterfs io-uring
 app-emulation/spice smartcard
 
