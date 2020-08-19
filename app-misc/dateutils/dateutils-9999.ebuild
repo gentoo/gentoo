@@ -19,8 +19,8 @@ esac
 LICENSE="BSD"
 SLOT="0"
 
-DEPEND="app-arch/xz-utils
-	sys-libs/timezone-data"
+BDEPEND="app-arch/xz-utils"
+DEPEND="sys-libs/timezone-data"
 
 # bug 429810
 RDEPEND="${DEPEND}
