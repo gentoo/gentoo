@@ -1703,7 +1703,7 @@ app-emacs/csv-mode 1.9 1.10: A major mode for editing comma-separated value file
 app-emacs/cycle-buffer 2.16: Select buffer by cycling through
 app-emacs/d-mode 2.0.10: Emacs major mode for editing D code
 app-emacs/dash 2.14.1 2.16.0 2.17.0: A modern list library for Emacs
-app-emacs/ddskk 16.2 16.3: One Japanese input methods on Emacs
+app-emacs/ddskk 16.2 16.3 17.1: One Japanese input methods on Emacs
 app-emacs/desktop+ 0.2-r2: desktop+ extends standard desktop module
 app-emacs/develock 0.47: An Emacs minor mode for highlighting broken formatting rules
 app-emacs/df-mode 20050509-r1: Minor mode to show space left on devices in the mode line
@@ -14782,7 +14782,7 @@ net-libs/gnutls 3.6.14: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/google-cloud-cpp 0.2.0-r1 0.5.0 0.9.0 0.10.0 0.10.0-r1: Google Cloud Client Library for C++
 net-libs/grpc 1.26.0-r1 1.28.1-r1: Modern open source high performance RPC framework
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
-net-libs/gsoap 2.8.84 2.8.87 2.8.91 2.8.93: A cross-platform open source C and C++ SDK for SOAP/XML Web services
+net-libs/gsoap 2.8.84 2.8.87 2.8.91 2.8.93 2.8.105: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 1.0.3 1.2.2 1.2.3: GObject-based API for handling resource discovery and announcement over SSDP
 net-libs/gtk-vnc 1.0.0: VNC viewer widget for GTK
 net-libs/gupnp 1.0.4 1.2.2 1.2.3 1.2.4: An object-oriented framework for creating UPnP devs and control points
@@ -17731,7 +17731,7 @@ sys-power/bbswitch 0.8-r4 0.8-r5 9999: Toggle discrete NVIDIA Optimus graphics c
 sys-power/cpupower 4.13.0 5.4: Shows and sets processor power related values
 sys-power/dptfxtract 1.4.3: Intel's Linux DPTF Extract Utility for generating thermald's thermal_conf.xml
 sys-power/hibernate-script 2.0-r6: Hibernate script supporting multiple suspend methods
-sys-power/iasl 20200326: Intel ACPI Source Language (ASL) compiler
+sys-power/iasl 20200326 20200717: Intel ACPI Source Language (ASL) compiler
 sys-power/intel-undervolt 1.7-r1 9999: Intel CPU undervolting and throttling configuration tool
 sys-power/ncpufreqd 2.4: Daemon controlling CPU speed and temperature
 sys-power/nut 2.7.4-r4 2.7.4-r5 2.7.4-r6: Network-UPS Tools
@@ -18008,7 +18008,7 @@ www-apache/mod_evasive 1.10.1-r1: Evasive maneuvers module for the event of an H
 www-apache/mod_extract_forwarded 2.0.3_pre2015052015: Rewrites X-Forwarded-For to REMOTE_ADDR for reverse proxy configurations
 www-apache/mod_fastcgi_handler 0.6-r1: A simple FastCGI handler module
 www-apache/mod_fcgid 2.3.9-r1: Binary-compatible alternative to mod_fastcgi with better process management
-www-apache/mod_gnutls 0.8.2-r1 0.8.4 0.9.0: mod_gnutls uses GnuTLS for SSL/TLS encryption in Apache2 (compare to mod_ssl)
+www-apache/mod_gnutls 0.8.2-r2 0.11.0: mod_gnutls uses GnuTLS for SSL/TLS encryption in Apache2 (compare to mod_ssl)
 www-apache/mod_h2 1.15.7 1.15.8 1.15.9 1.15.10 1.15.11 1.15.12 1.15.13 1.15.14 9999: HTTP/2 module for Apache
 www-apache/mod_jk 1.2.42: JK module for connecting Tomcat and Apache using the ajp13 protocol
 www-apache/mod_ldap_userdir 1.1.19: Look up Apache ~user directories in an LDAP directory
