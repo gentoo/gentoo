@@ -10586,7 +10586,7 @@ dev-util/bear 2.4.3: Build EAR generates a compilation database for clang toolin
 dev-util/biew 6.1.0-r3: A portable viewer of binary files, hexadecimal and disassembler modes
 dev-util/bin_replace_string 0.2: A tool to edit C strings in compiled binaries
 dev-util/bingrep 0.8.2: Binary file analysis tool
-dev-util/bitcoin-tx 0.16.3 0.19.1 0.20.0: Command-line Bitcoin transaction tool
+dev-util/bitcoin-tx 0.16.3 0.19.1 0.20.0 0.20.1: Command-line Bitcoin transaction tool
 dev-util/bitrise 1.16.1 1.19.0 1.20.0 1.23.0 1.24.0: Run your Bitrise.io automations on any Mac or Linux machine
 dev-util/bless 0.6.2-r1: GTK# Hex Editor
 dev-util/bloaty 0_p20170420 1.1 9999: A size profiler for binaries
@@ -14803,7 +14803,7 @@ net-libs/libaccounts-glib 1.25-r1: Accounts SSO (Single Sign-On) management libr
 net-libs/libad9361-iio 0.1-r2 9999: IIO AD9361 library for filter design and handling, multi-chip sync, etc.
 net-libs/libasr 1.0.4: Async Resolver Library from OpenBSD/OpenSMTPD
 net-libs/libasyncns 0.8-r4: C library for executing name service queries asynchronously
-net-libs/libbitcoinconsensus 0.16.3 0.19.1 0.20.0: Bitcoin Core consensus library
+net-libs/libbitcoinconsensus 0.16.3 0.19.1 0.20.0 0.20.1: Bitcoin Core consensus library
 net-libs/libblkmaker 0.3.2 0.4.2 0.4.3 0.5.0 0.5.1 0.5.2 0.5.3: C implementation of getblocktemplate (BIP 22)
 net-libs/libbloom 1.5-r1 1.5-r2: A simple and small bloom filter implementation in plain C.
 net-libs/libbtbb 2018.08.1 2018.12.1 9999: A library to decode Bluetooth baseband packets
@@ -15406,9 +15406,9 @@ net-p2p/airdcpp-webclient 2.6.0 2.6.1: Cross-platform Direct Connect client
 net-p2p/amule 2.3.2-r5 9999: aMule, the all-platform eMule p2p client
 net-p2p/automatic 0.8.3: RSS downloader for Tranmission
 net-p2p/bisq 0.6.3: The decentralized bitcoin exchange (non-atomic, with arbitration)
-net-p2p/bitcoin-cli 0.16.3 0.19.1 0.20.0: Command-line JSON-RPC client specifically for interfacing with bitcoind
-net-p2p/bitcoin-qt 0.16.3 0.19.1 0.20.0: An end-user Qt GUI for the Bitcoin crypto-currency
-net-p2p/bitcoind 0.16.3 0.19.1 0.20.0: Original Bitcoin crypto-currency wallet for automated services
+net-p2p/bitcoin-cli 0.16.3 0.19.1 0.20.0 0.20.1: Command-line JSON-RPC client specifically for interfacing with bitcoind
+net-p2p/bitcoin-qt 0.16.3 0.19.1 0.20.0 0.20.1: An end-user Qt GUI for the Bitcoin crypto-currency
+net-p2p/bitcoind 0.16.3 0.19.1 0.20.0 0.20.1: Original Bitcoin crypto-currency wallet for automated services
 net-p2p/bitflu 1.52: BitTorrent client, written in Perl and is designed to run as a daemon
 net-p2p/bittornado 0.4.1_p20160925-r2: John Hoffman's fork of the original bittorrent
 net-p2p/classified-ads 0.13: Program for displaying classified advertisement items
