@@ -4,10 +4,10 @@ DESCRIPTION=Linux SCSI target framework (tgt)
 EAPI=7
 HOMEPAGE=http://stgt.sourceforge.net
 IUSE=fcoe fcp ibmvio infiniband rbd
-KEYWORDS=amd64 ~arm64 ~ppc x86
+KEYWORDS=amd64 arm64 ~ppc x86
 LICENSE=GPL-2
 RDEPEND=dev-perl/Config-General dev-libs/libxslt rbd? ( sys-cluster/ceph ) infiniband? ( sys-fabric/libibverbs:= sys-fabric/librdmacm:= ) app-text/docbook-xsl-stylesheets dev-libs/libaio sys-apps/sg3_utils
 SLOT=0
 SRC_URI=https://github.com/fujita/tgt/tarball/v1.0.79 -> tgt-1.0.79.tar.gz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=6b43fd3340d6156439abc9dedf876962
+_md5_=a3e8696a6b170db4937d5911177a6fc8
