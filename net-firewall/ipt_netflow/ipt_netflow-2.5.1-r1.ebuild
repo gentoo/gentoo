@@ -2,18 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit git-r3 linux-info linux-mod toolchain-funcs
+inherit linux-info linux-mod toolchain-funcs
 
 DESCRIPTION="Netflow iptables module"
 HOMEPAGE="
 	https://sourceforge.net/projects/ipt-netflow
 	https://github.com/aabc/ipt-netflow
 "
-EGIT_REPO_URI="https://github.com/aabc/ipt-netflow"
+SRC_URI="https://github.com/aabc/ipt-netflow/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 IUSE="debug natevents snmp"
 
@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 "
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0-configure.patch" # bug #455984
-	"${FILESDIR}/${PN}-9999-gentoo.patch"
+	"${FILESDIR}/${PN}-2.5-gentoo.patch"
 )
 
 pkg_setup() {
@@ -51,18 +51,17 @@ pkg_setup() {
 	linux-mod_pkg_setup
 }
 
+src_unpack() {
+	default
+
+	mv "${WORKDIR}"/${PN/_/-}-* "${WORKDIR}"/${P} || die
+}
+
 src_prepare() {
 	default
 
-	# Fix incorrect module version in sources
-	sed -i \
-		-e '/IPT_NETFLOW_VERSION/s#"[0-9.]*"#"'${PV}'"#' \
-		ipt_NETFLOW.c || die
-
 	# Checking for directory is enough
-	sed -i \
-		-e 's:-s /etc/snmp/snmpd.conf:-d /etc/snmp:' \
-		configure || die
+	sed -i -e 's:-s /etc/snmp/snmpd.conf:-d /etc/snmp:' configure || die
 }
 
 do_conf() {
