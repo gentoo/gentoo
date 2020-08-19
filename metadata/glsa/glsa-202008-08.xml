@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202008-08">
+  <title>Mozilla Network Security Service (NSS): Multiple vulnerabilities</title>
+  <synopsis>NSS has multiple information disclosure vulnerabilities when
+    handling secret key material.
+  </synopsis>
+  <product type="ebuild">nss</product>
+  <announced>2020-08-19</announced>
+  <revised count="1">2020-08-19</revised>
+  <bug>734986</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-libs/nss" auto="yes" arch="*">
+      <unaffected range="ge">3.55</unaffected>
+      <vulnerable range="lt">3.55</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Mozilla Network Security Service (NSS) is a library implementing
+      security features like SSL v.2/v.3, TLS, PKCS #5, PKCS #7, PKCS #11, PKCS
+      #12, S/MIME and X.509 certificates.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in NSS. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker may be able to obtain information about secret key material.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All NSS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/nss-3.55"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12400">CVE-2020-12400</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12401">CVE-2020-12401</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12403">CVE-2020-12403</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-08-15T02:24:22Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-08-19T11:08:43Z">sam_c</metadata>
+</glsa>
