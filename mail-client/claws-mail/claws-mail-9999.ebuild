@@ -9,9 +9,9 @@ inherit autotools desktop python-single-r1 xdg
 DESCRIPTION="An email client (and news reader) based on GTK+"
 HOMEPAGE="https://www.claws-mail.org/"
 
-if [[ "${PV}" == 9999 ]] ; then
+if [[ "${PV}" == *9999 ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="git://git.claws-mail.org/claws.git"
+	EGIT_REPO_URI="https://git.claws-mail.org/readonly/claws.git"
 else
 	SRC_URI="https://www.claws-mail.org/download.php?file=releases/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
@@ -117,7 +117,7 @@ PATCHES=(
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 
-	if ! use gtk2 ; then
+	if [[ "${PV}" == *9999 ]] && ! use gtk2 ; then
 		EGIT_BRANCH="gtk3"
 	fi
 }
