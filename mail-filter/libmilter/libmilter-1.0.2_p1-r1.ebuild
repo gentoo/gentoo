@@ -24,7 +24,7 @@ S="${WORKDIR}/sendmail-${SENDMAIL_VER}"
 
 # build system patch copied from sendmail ebuild
 PATCHES=(
-	"${FILESDIR}/sendmail-8.14.6-build-system.patch"
+	"${FILESDIR}/sendmail-8.16.1-build-system.patch"
 	"${FILESDIR}/${PN}-sharedlib.patch"
 )
 
