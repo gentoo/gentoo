@@ -2744,7 +2744,7 @@ app-portage/splat 0.08-r1: Simple Portage Log Analyzer Tool
 app-portage/tatt 0.7-r1 9999: arch testing tool
 app-portage/ufed 0.96 9999: Gentoo Linux USE flags editor
 app-portage/unsymlink-lib 17-r1 18 9999: Convert your system to SYMLINK_LIB=no
-app-shells/autojump 22.2.4-r4 22.5.1 22.5.3: change directory command that learns
+app-shells/autojump 22.5.3: change directory command that learns
 app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r2 4.4_p23-r2 5.0_p17 5.0_p18: The standard GNU Bourne again shell
 app-shells/bash-completion 2.10 2.11 9999: Programmable Completion for bash
 app-shells/bashdb 4.4.1.0.1 5.0.1.1.0 5.0.1.1.2: bash source code debugging
@@ -6423,7 +6423,7 @@ dev-perl/Exception-Base 0.250.100 0.250.100-r1: Error handling with exception cl
 dev-perl/Exception-Class 1.430.0 1.440.0: A module that allows you to declare real exception classes in Perl
 dev-perl/Exception-Died 0.60.0-r2: Convert simple die into real exception object
 dev-perl/Exception-System 0.110.0-r1 0.110.0-r2: Exception class for system or library calls
-dev-perl/Exception-Warning 0.40.100-r1: Convert simple warn into real exception object
+dev-perl/Exception-Warning 0.40.100-r1 0.40.100-r2: Convert simple warn into real exception object
 dev-perl/Expect 1.350.0: Expect for Perl
 dev-perl/Exporter-Cluster 0.310.0-r1: Extension for easy multiple module imports
 dev-perl/Exporter-Lite 0.80.0: Lightweight exporting of variables
