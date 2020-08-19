@@ -8,7 +8,7 @@ HOMEPAGE="https://www.fresse.org/dateutils/ https://github.com/hroptatyr/dateuti
 
 case "${PV}" in
 	9999)
-		inherit git-r3 autotools
+		inherit autotools git-r3
 		EGIT_REPO_URI="https://github.com/hroptatyr/dateutils.git"
 		;;
 	*)
@@ -23,7 +23,8 @@ DEPEND="app-arch/xz-utils
 	sys-libs/timezone-data"
 
 # bug 429810
-RDEPEND="!sys-fabric/dapl"
+RDEPEND="${DEPEND}
+	!sys-fabric/dapl"
 
 src_prepare() {
 	default
