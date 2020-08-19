@@ -1,0 +1,47 @@
+Privory uses STRIP Makefile variable for passing strip argument,
+this clashes with STRIP set in the environment. So rename STRIP ->
+STRIP_ARGS and then use real STRIP instead of STRIP_PROG with
+fallback on predefined "strip" if STRIP is not set.
+
+--- privoxy-3.0.28-stable/GNUmakefile.in.orig	2020-08-19 15:24:46.930551734 +0300
++++ privoxy-3.0.28-stable/GNUmakefile.in	2020-08-19 16:12:18.214837417 +0300
+@@ -117,7 +117,7 @@
+ CP         = cp -f
+ RMDIR      = rmdir
+ MKDIR      = ./mkinstalldirs
+-STRIP_PROG = strip
++STRIP     ?= strip
+ SED        = sed
+ GREP       = grep
+ CAT        = cat
+@@ -391,7 +391,7 @@
+ 	@$(ECHO) "You have run autoconf && autoheader && ./configure right?"
+ 	@$(ECHO) ""
+ 	$(MAKE) $(PROGRAM)
+-	$(STRIP_PROG) $(PROGRAM)
++	$(STRIP) $(PROGRAM)
+ 	$(LN) -s `pwd` ../privoxy-$(VERSION)-$(CODE_STATUS)
+ # add program
+ 	(cd .. && $(TAR) --exclude "PACKAGERS" -cvhf $(GEN_DIST_TAR_NAME) privoxy-$(VERSION)-$(CODE_STATUS)/$(PROGRAM))
+@@ -822,7 +822,7 @@
+ 	 fi)
+ 
+ install-strip:
+-	$(MAKE) install STRIP=-s
++	$(MAKE) install STRIP_ARG=-s
+ 
+ # FIXME: Test USER and GROUP on Slack to make sure this works as
+ # intended.
+@@ -848,10 +848,10 @@
+ 		$(DESTDIR)$(CONF_DEST)/templates $(DESTDIR)$(SHARE_DEST) \
+ 		$(DESTDIR)$(LOG_DEST) $(DESTDIR)$(PID_DEST)
+ 	@# Install the executable binary, strip if invoked as install-strip
+-	@test -n "$(STRIP)" &&\
++	@test -n "$(STRIP_ARG)" &&\
+ 	$(ECHO) Installing $(PROGRAM) stripped executable to $(SBIN_DEST) ||\
+ 	$(ECHO) Installing $(PROGRAM) executable to $(DESTDIR)$(SBIN_DEST)
+-	$(INSTALL) $(INSTALL_P) $(STRIP) $(PROGRAM) $(DESTDIR)$(SBIN_DEST)
++	$(INSTALL) $(INSTALL_P) $(STRIP_ARG) $(PROGRAM) $(DESTDIR)$(SBIN_DEST)
+ 
+ 	@# Install the DOCS and man page. install-sh only does one file at a time.
+ 	@# FIXME: only handles jpegs.
