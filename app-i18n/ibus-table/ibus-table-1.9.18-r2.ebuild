@@ -5,7 +5,7 @@ EAPI="7"
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="sqlite(+)"
 
-inherit python-single-r1 xdg
+inherit gnome2-utils python-single-r1 xdg
 
 DESCRIPTION="Tables engines for IBus"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
@@ -40,12 +40,15 @@ src_configure() {
 
 pkg_preinst() {
 	xdg_pkg_preinst
+	gnome2_schemas_savelist
 }
 
 pkg_postinst() {
 	xdg_pkg_postinst
+	gnome2_schemas_update
 }
 
 pkg_postrm() {
 	xdg_pkg_postrm
+	gnome2_schemas_update
 }
