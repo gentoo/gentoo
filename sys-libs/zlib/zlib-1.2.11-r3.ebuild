@@ -66,6 +66,12 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
+	if use amd64 || use x86 ; then
+		# Similar for bzip2
+		# https://sources.debian.org/src/zlib/1:1.2.11.dfsg-2/debian/rules/#L78
+		append-cflags "-DUNALIGNED_OK"
+	fi
+
 	case ${CHOST} in
 	*-mingw*|mingw*)
 		emake -f win32/Makefile.gcc STRIP=true PREFIX=${CHOST}-
