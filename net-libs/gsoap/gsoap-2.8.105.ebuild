@@ -16,7 +16,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc debug examples ipv6 libressl gnutls +ssl"
 
-
 RDEPEND="
 	sys-libs/zlib
 	gnutls? ( net-libs/gnutls )
