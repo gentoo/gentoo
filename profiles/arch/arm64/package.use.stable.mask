@@ -5,6 +5,7 @@
 # Unstable dependencies for qemu
 # bug #738056
 app-emulation/qemu smartcard fdt rbd slirp xen virgl
+app-emulation/spice smartcard
 
 # Sam James <sam@gentoo.org> (2020-07-30)
 # glslang is not yet stable on arm64
