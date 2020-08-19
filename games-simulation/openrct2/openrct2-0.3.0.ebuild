@@ -3,14 +3,14 @@
 
 EAPI=7
 
-inherit cmake-utils readme.gentoo-r1 xdg-utils
+inherit cmake readme.gentoo-r1 xdg-utils
 
 MY_PN="OpenRCT2"
 MY_PN_OBJ="objects"
 MY_PN_RPL="replays"
 MY_PN_TS="title-sequences"
-MY_PV_OBJ="1.0.14"
-MY_PV_RPL="0.0.9"
+MY_PV_OBJ="1.0.16"
+MY_PV_RPL="0.0.17"
 MY_PV_TS="0.1.2c"
 
 DESCRIPTION="An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2"
@@ -24,25 +24,24 @@ SRC_URI="
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
-IUSE="dedicated libressl +lightfx +opengl test +truetype twitch"
+KEYWORDS="~amd64 ~arm64 ~x86"
+IUSE="dedicated libressl +lightfx +opengl scripting test +truetype"
 
 COMMON_DEPEND="
 	dev-libs/icu:=
 	dev-libs/jansson
 	dev-libs/libzip:=
 	media-libs/libpng:0=
+	net-misc/curl[ssl]
 	sys-libs/zlib
 	!dedicated? (
 		media-libs/libsdl2
 		media-libs/speexdsp
 		opengl? ( virtual/opengl )
-		twitch? (
-			net-misc/curl[ssl]
-		)
 	)
 	libressl? ( dev-libs/libressl:0= )
 	!libressl? ( dev-libs/openssl:0= )
+	scripting? ( dev-lang/duktape )
 	truetype? (
 		media-libs/fontconfig:1.0
 		media-libs/freetype:2
@@ -79,8 +78,8 @@ PATCHES=(
 src_unpack() {
 	unpack "${P}".tar.gz
 
-	mkdir -p "${S}"/data/title || die
-	cd "${S}"/data/title || die
+	mkdir -p "${S}"/data/sequence || die
+	cd "${S}"/data/sequence || die
 	unpack "${PN}-${MY_PN_TS}-${MY_PV_TS}".zip
 
 	mkdir -p "${S}"/data/object || die
@@ -95,7 +94,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# Don't treat warnings as errors.
 	sed -e 's/-Werror//' -i CMakeLists.txt || die
@@ -108,7 +107,7 @@ src_configure() {
 		-DDISABLE_DISCORD_RPC=ON
 		-DDISABLE_GOOGLE_BENCHMARK=ON
 		-DDISABLE_GUI=$(usex dedicated)
-		-DDISABLE_HTTP_TWITCH=$(usex !twitch)
+		-DDISABLE_HTTP=OFF
 		-DDISABLE_NETWORK=OFF
 		$(usex !dedicated "-DDISABLE_OPENGL=$(usex !opengl)" "")
 		-DDISABLE_TTF=$(usex !truetype)
@@ -116,6 +115,8 @@ src_configure() {
 		-DDOWNLOAD_REPLAYS=OFF
 		-DDOWNLOAD_TITLE_SEQUENCES=OFF
 		-DENABLE_LIGHTFX=$(usex lightfx)
+		-DENABLE_SCRIPTING=$(usex scripting)
+		-DOPENRCT2_USE_CCACHE=OFF
 		-DPORTABLE=OFF
 		-DSTATIC=OFF
 		$(usex test "-DSYSTEM_GTEST=ON" "")
@@ -123,7 +124,7 @@ src_configure() {
 		-DUSE_MMAP=ON
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
@@ -134,11 +135,13 @@ src_test() {
 	# See: https://github.com/OpenRCT2/OpenRCT2/issues/6473
 	ln -s "${S}"/data "${BUILD_DIR}" || die
 
-	cmake-utils_src_test
+	cmake_src_test
 }
 
 src_install() {
-	cmake-utils_src_install
+	use scripting && DOCS+=( "distribution/scripting.md" "distribution/openrct2.d.ts" )
+
+	cmake_src_install
 
 	if use dedicated; then
 		newinitd "${FILESDIR}"/openrct2.initd openrct2
