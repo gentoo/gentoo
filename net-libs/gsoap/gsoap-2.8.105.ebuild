@@ -16,6 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc debug examples ipv6 libressl gnutls +ssl"
 
+
 RDEPEND="
 	sys-libs/zlib
 	gnutls? ( net-libs/gnutls )
@@ -50,8 +51,7 @@ src_configure() {
 		# Don't include xlocale.h as it got removed in >=glibc-2.26
 		--disable-xlocale
 		$(use_enable debug)
-		$(use_enable examples samples)
-		$(usex gnutls --enable-gnutls '')
+		$(use_enable gnutls)
 		$(usex ipv6 --enable-ipv6 '')
 		$(usex ssl '' --disable-ssl)
 	)
@@ -71,8 +71,7 @@ src_install() {
 	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
 
 	if use examples; then
-		rm -r gsoap/samples/Makefile* gsoap/samples/*/Makefile* gsoap/samples/*/*.o || die
-		insinto /usr/share/doc/${PF}/examples
+		insinto /usr/share/${PN}/examples
 		doins -r gsoap/samples/*
 	fi
 
