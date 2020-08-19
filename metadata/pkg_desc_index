@@ -17610,7 +17610,7 @@ sys-kernel/ck-sources 5.4.37 5.4.48: Gentoo's genpatches for Linux , with Con Ko
 sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
-sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.0-r1 9999: Gentoo automatic kernel building scripts
+sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.0-r2 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.4.58 5.7.10 5.7.12 5.7.13 5.7.15 5.8.1: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.4.58 5.7.10 5.7.12 5.7.13 5.7.15 5.8.1: Pre-built Linux kernel with genpatches
