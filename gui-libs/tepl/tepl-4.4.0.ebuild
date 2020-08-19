@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Tepl"
 
 LICENSE="LGPL-2.1+"
 SLOT="4"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~sparc ~x86"
 IUSE="+introspection"
 
 RDEPEND="
