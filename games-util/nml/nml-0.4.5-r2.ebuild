@@ -31,6 +31,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.4.4-pillow3.patch
 	"${FILESDIR}"/${PN}-0.4.5-pillow6.patch
 	"${FILESDIR}"/${PN}-0.4.5-pillow7.patch
+	"${FILESDIR}"/${PN}-0.4.5-python38.patch
 )
 
 src_install() {
