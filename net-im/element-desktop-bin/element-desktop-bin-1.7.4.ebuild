@@ -24,10 +24,13 @@ RDEPEND="app-accessibility/at-spi2-atk:2
 	dev-libs/expat
 	dev-libs/nspr
 	dev-libs/nss
+	media-libs/alsa-lib
+	media-libs/mesa
 	net-print/cups
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
+	x11-libs/libdrm
 	x11-libs/libxcb
 	x11-libs/libX11
 	x11-libs/libXcomposite
