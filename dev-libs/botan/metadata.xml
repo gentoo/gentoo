@@ -11,4 +11,8 @@
 	<slots>
 		<subslots>botan soname version</subslots>
 	</slots>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:botan_project:botan</remote-id>
+		<remote-id type="github">randombit/botan</remote-id>
+	</upstream>
 </pkgmetadata>
