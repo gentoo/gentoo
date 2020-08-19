@@ -2803,7 +2803,7 @@ app-text/antiword 0.37-r1: free MS Word reader
 app-text/antixls 0.3b: Print out an XLS file with minimal formatting, or extract the data into CSV
 app-text/apvlv 0.1.5-r2: Alf's PDF Viewer Like Vim
 app-text/asa 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
-app-text/asciidoc 8.6.10_p20181016-r1 9.0.0_rc2: A plain text human readable/writable document format
+app-text/asciidoc 8.6.10_p20181016-r1 9.0.2: A plain text human readable/writable document format
 app-text/aspell 0.60.8: A spell checker replacement for ispell
 app-text/atril 1.22.3 1.24.0-r1: Atril document viewer for MATE
 app-text/bact 0.13-r1: Boosting Algorithm for Classification of Trees
@@ -5162,7 +5162,7 @@ dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.3 5.30.3-r1 5.30.3-r2 5.32.0 5.32.0-r1: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 7.2.31 7.2.32 7.2.33 7.3.18 7.3.19 7.3.20 7.3.21 7.4.6 7.4.7 7.4.8-r1 7.4.9: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6 5.8: Poly/ML is a full implementation of Standard ML
-dev-lang/python 2.7.18-r1 3.6.11-r2 3.7.8-r2 3.8.4-r1 3.8.5 3.9.0_rc1: An interpreted, interactive, object-oriented programming language
+dev-lang/python 2.7.18-r1 3.6.11-r2 3.6.12 3.7.8-r2 3.7.9 3.8.4-r1 3.8.5 3.9.0_rc1: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r1 9999: Python script wrapper
 dev-lang/qu-prolog 10.4 10.5: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2019.03 2019.11 2020.05.1 2020.06 2020.07 9999: A compiler for the Perl 6 programming language
@@ -5289,7 +5289,7 @@ dev-libs/gf-complete 0.0.0 2.0.0 2.0.0-r1: A Comprehensive Open Source Library f
 dev-libs/gf2x 1.3.0: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.3.3 0.3.4 9999: UI library that focuses on simplicity and minimalism
 dev-libs/gjs 1.58.6 1.58.8 1.64.4: Javascript bindings for GNOME
-dev-libs/glib 2.62.6 2.64.4: The GLib library of C routines
+dev-libs/glib 2.62.6 2.64.4 2.64.5: The GLib library of C routines
 dev-libs/gmime 2.6.23-r1 3.2.7: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 6.2.0-r1: Library for arbitrary-precision arithmetic on different type of numbers
 dev-libs/gnulib 2019.03.17.09.24.57 9999-r1: Gnulib is a library of common routines intended to be shared at the source level
@@ -9108,7 +9108,7 @@ dev-python/sphinxcontrib-pretty-searchresults 0.3.5: Decently styled search resu
 dev-python/sphinxcontrib-programoutput 0.16: Extension to sphinx to include program output
 dev-python/sphinxcontrib-qthelp 1.0.2 1.0.3: Sphinx extension which outputs QtHelp documents
 dev-python/sphinxcontrib-serializinghtml 1.1.4: Sphinx extension which outputs outputs serialized HTML files
-dev-python/sphinxcontrib-spelling 5.1.2 5.2.0 5.2.2: Sphinx spelling extension
+dev-python/sphinxcontrib-spelling 5.1.2 5.2.0 5.2.2 5.3.0: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.2.2 1.2.4: Sphinx websupport extension
 dev-python/sphinxtogithub 1.1.0: A python script for preparing the html output of Sphinx documentation for github pages
 dev-python/spur 0.3.21: Run commands locally or over SSH using the same interface
@@ -9980,7 +9980,7 @@ dev-ruby/jquery-ui-rails 5.0.5-r1 6.0.1-r1: The jQuery UI assets for the Rails 3
 dev-ruby/jsobfu 0.4.2: A Javascript code obfuscator
 dev-ruby/json 1.8.6-r1 2.3.0 2.3.1: A JSON implementation as a Ruby extension
 dev-ruby/json_schema 0.20.8 0.20.9: A JSON Schema V4 and Hyperschema V4 parser and validator
-dev-ruby/jwt 1.5.6 2.1.0 2.2.0 2.2.1: A Ruby implementation of JSON Web Token draft 06
+dev-ruby/jwt 1.5.6 2.1.0 2.2.0 2.2.1 2.2.2: A Ruby implementation of JSON Web Token draft 06
 dev-ruby/kirbybase 2.6.1-r2: A simple Ruby DBMS that stores data in plaintext files
 dev-ruby/kissfft 0.0.2: ruby interface to kissfft
 dev-ruby/kpeg 1.1.0-r1: A simple PEG library for Ruby
@@ -10176,7 +10176,7 @@ dev-ruby/rmagick 3.2.0 4.1.1 4.1.2: An interface between Ruby and the ImageMagic
 dev-ruby/roadie 3.5.0 3.5.1 4.0.0: Making HTML emails comfortable for the Rails rockstars
 dev-ruby/roadie-rails 1.3.0 2.1.1: Hooks Roadie into your Rails application to help with email generation
 dev-ruby/robots 0.10.1-r2: A simple Ruby library to parse robots.txt
-dev-ruby/rouge 3.19.0 3.20.0 3.21.0: Yet-another-markdown-parser using a strict syntax definition in pure Ruby
+dev-ruby/rouge 3.19.0 3.20.0 3.21.0 3.22.0: Yet-another-markdown-parser using a strict syntax definition in pure Ruby
 dev-ruby/rqrcode 0.10.1 1.1.1: Library for encoding QR Codes
 dev-ruby/rqrcode_core 0.1.0 0.1.2: Library for encoding QR Codes
 dev-ruby/rr 1.2.1: A double framework featuring a selection of double techniques and a terse syntax
@@ -10226,7 +10226,7 @@ dev-ruby/ruby-ldap 0.9.20: A Ruby interface to some LDAP libraries
 dev-ruby/ruby-libsecret 3.4.3: Ruby libsecret bindings
 dev-ruby/ruby-macho 2.2.0: A library for viewing and manipulating Mach-O files in Ruby
 dev-ruby/ruby-mp3info 0.8.10: A pure Ruby library for access to mp3 files (internal infos and tags)
-dev-ruby/ruby-net-ldap 0.16.2: Pure ruby LDAP client implementation
+dev-ruby/ruby-net-ldap 0.16.2 0.16.3: Pure ruby LDAP client implementation
 dev-ruby/ruby-oci8 2.2.7 2.2.8: A Ruby library for Oracle OCI8
 dev-ruby/ruby-odbc 0.99999: RubyODBC - For accessing ODBC data sources from the Ruby language
 dev-ruby/ruby-oembed 0.13.0 0.13.1: An oEmbed consumer library written in Ruby.
@@ -10718,7 +10718,7 @@ dev-util/ftjam 2.5.3_rc2-r2: A 100% compatible, enhanced implementation of the m
 dev-util/ftnchek 3.3.1-r2: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6-r1: Stress-tests programs by giving them random input
 dev-util/gcovr 4.2: A Python script for summarizing gcov data
-dev-util/gdbus-codegen 2.62.6 2.64.4: GDBus code and documentation generator
+dev-util/gdbus-codegen 2.62.6 2.64.4 2.64.5: GDBus code and documentation generator
 dev-util/geany 1.36 9999: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.36-r2: A collection of different plugins for Geany
 dev-util/gengetopt 2.23: A tool to write command line option parsing code for C programs
@@ -10726,7 +10726,7 @@ dev-util/gertty 1.6.0-r1 9999: Gertty is a console-based interface to the Gerrit
 dev-util/github-cli 0.8.0 0.9.0-r1 0.10.1 0.11.0 9999: GitHub CLI
 dev-util/gitlab-ci-linter 2.2.0: linter for .gitlab-ci.yml files
 dev-util/glade 3.22.2 3.36.0: A user interface designer for GTK+ and GNOME
-dev-util/glib-utils 2.62.6 2.64.4: Build utilities for GLib using projects
+dev-util/glib-utils 2.62.6 2.64.4 2.64.5: Build utilities for GLib using projects
 dev-util/global 6.3.1 6.5.7 6.6.4: tag system to find an object location in various sources
 dev-util/glslang 7.12.3353_pre20191027-r2 8.13.3559 8.13.3560_pre20200404 8.13.3743-r1 9999: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
 dev-util/gn 0.1726 0.1807: GN is a meta-build system that generates build files for Ninja
