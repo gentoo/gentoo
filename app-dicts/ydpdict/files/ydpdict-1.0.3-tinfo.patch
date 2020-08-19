@@ -1,0 +1,10 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -24,6 +24,7 @@
+ AC_CHECK_HEADER([ncursesw/ncurses.h], [have_ncursesw_ncurses_h=yes])
+ AC_CHECK_HEADER([curses.h], [have_curses_h=yes])
+ AC_CHECK_LIB([ncursesw], [initscr], [have_libncursesw=yes])
++AC_SEARCH_LIBS([keypad],[tinfow])
+ 
+ AC_MSG_CHECKING([for Unicode-aware ncurses])
+ 
