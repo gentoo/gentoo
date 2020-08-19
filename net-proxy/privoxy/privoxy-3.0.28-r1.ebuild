@@ -36,6 +36,7 @@ RDEPEND="${DEPEND}
 	)
 "
 REQUIRED_USE="
+	client-tags? ( threads )
 	compression? ( zlib )
 	fuzz? ( zlib )
 	toggle? ( editor )
