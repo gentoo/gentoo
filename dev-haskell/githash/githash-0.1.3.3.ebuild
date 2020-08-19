@@ -17,8 +17,9 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=dev-lang/ghc-8.0.2:=
-"
+RDEPEND=">=dev-lang/ghc-8.0.2:="
+# The package is a wrapper around 'git'
+RDEPEND+=" dev-vcs/git"
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.24.2.0
 	test? ( dev-haskell/hspec
