@@ -1,24 +1,24 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-EGIT_COMMIT="d70609afd5e933948284aebf15966bdc098d28b3"
-EGO_PN="github.com/kubernetes-sigs/${PN}"
+EGIT_COMMIT=61de18161fb4ccda720768c001713592b5a04e46
 
-inherit golang-vcs-snapshot systemd
+inherit go-module
 
 DESCRIPTION="OCI-based implementation of Kubernetes Container Runtime Interface"
 HOMEPAGE="https://cri-o.io/"
-SRC_URI="https://github.com/kubernetes-sigs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/cri-o/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="btrfs +device-mapper ostree seccomp selinux"
+IUSE="btrfs +device-mapper selinux systemd"
 
 COMMON_DEPEND="
 	app-crypt/gpgme:=
+	app-emulation/conmon
 	app-emulation/runc
 	dev-libs/glib:=
 	dev-libs/libassuan:=
@@ -28,16 +28,15 @@ COMMON_DEPEND="
 	net-misc/cni-plugins
 	net-misc/socat
 	sys-apps/iproute2
+	sys-libs/libseccomp:=
 	btrfs? ( sys-fs/btrfs-progs )
 	device-mapper? ( sys-fs/lvm2:= )
-	ostree? ( dev-util/ostree )
-	seccomp? ( sys-libs/libseccomp:= )
-	selinux? ( sys-libs/libselinux:= )"
+	selinux? ( sys-libs/libselinux:= )
+	systemd? ( sys-apps/systemd:= )"
 DEPEND="
-	${COMMON_DEPEND}
-	dev-go/go-md2man"
-RDEPEND="${COMMON_DEPEND}"
-S="${WORKDIR}/${P}/src/${EGO_PN}"
+	${COMMON_DEPEND}"
+RDEPEND="${COMMON_DEPEND}
+	!<app-emulation/libpod-1.3.2-r1"
 
 src_prepare() {
 	default
@@ -46,13 +45,11 @@ src_prepare() {
 		-e '/	git diff --exit-code/d' \
 		-e 's/$(GO) build -i/$(GO) build -v -work -x/' \
 		-e 's/\${GIT_COMMIT}/'${EGIT_COMMIT}'/' \
+		-e "s|^GIT_COMMIT := .*|GIT_COMMIT := ${EGIT_COMMIT}|" \
+		-e "s|^COMMIT_NO := .*|COMMIT_NO := ${EGIT_COMMIT}|" \
 		-i Makefile || die
 
 	echo ".NOTPARALLEL: binaries docs" >> Makefile || die
-
-	sed -e "s|^COMMIT_NO := .*|COMMIT_NO := ${EGIT_COMMIT}|" \
-		-e "s|^GIT_COMMIT := .*|GIT_COMMIT := ${EGIT_COMMIT}|" \
-		-i Makefile.inc || die
 
 	sed -e 's:/usr/local/bin:/usr/bin:' \
 		-i contrib/systemd/* || die
@@ -67,32 +64,20 @@ src_compile() {
 	use device-mapper || { echo -e "#!/bin/sh\necho exclude_graphdriver_devicemapper" > \
 		hack/libdm_installed.sh || die; }
 
-	[[ -f hack/ostree_tag.sh ]] || die
-	use ostree || { echo -e "#!/bin/sh\necho containers_image_ostree_stub" > \
-		hack/ostree_tag.sh || die; }
-
-	[[ -f hack/seccomp_tag.sh ]] || die
-	use seccomp || { echo -e "#!/bin/sh\ntrue" > \
-		hack/seccomp_tag.sh || die; }
-
 	[[ -f hack/selinux_tag.sh ]] || die
 	use selinux || { echo -e "#!/bin/sh\ntrue" > \
 		hack/selinux_tag.sh || die; }
 
 	mkdir -p bin || die
-	GOPATH="${WORKDIR}/${P}" GOBIN="${WORKDIR}/${P}/bin" \
-		emake binaries docs
+	GOBIN="${S}/bin" \
+		emake all
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="${D}${EPREFIX}/usr" install.bin install.man
+	emake DESTDIR="${D}" PREFIX="${D}${EPREFIX}/usr" install install.config install.systemd
 
 	keepdir /etc/crio
-	insinto /etc/crio
-	use seccomp && doins seccomp.json
-
-	"${ED}"/usr/bin/crio --config="" config --default > "${T}"/crio.conf.example || die
-	doins   "${T}/crio.conf.example"
+	mv "${ED}/etc/crio/crio.conf"{,.example} || die
 
 	newinitd "${FILESDIR}/crio.initd" crio
 
@@ -107,6 +92,4 @@ src_install() {
 	keepdir /etc/cni/net.d
 	insinto /etc/cni/net.d
 	doins contrib/cni/99-loopback.conf
-
-	systemd_dounit contrib/systemd/*
 }
