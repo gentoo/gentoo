@@ -1,6 +1,12 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2020-08-19)
+# Needed for openstack, let's come back
+# to keyword ceph another time.
+# bug #738042
+sys-block/tgt rbd
+
 # Benda Xu <heroxbd@gentoo.org> (2020-08-08)
 # dev-lua/busted is not keyworded yet
 dev-lua/mpack test
