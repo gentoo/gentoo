@@ -1,0 +1,18 @@
+Description: don't crash on malformed charset files
+Origin: https://bugs.launchpad.net/ubuntu/+source/mysql-8.0/+bug/1877504/comments/19
+Bug: https://bugs.launchpad.net/ubuntu/+source/mysql-8.0/+bug/1884809
+Bug: https://bugs.gentoo.org/737002
+Forwarded: workaround, not needed
+
+--- a/mysys/charset.cc
++++ b/mysys/charset.cc
+@@ -922,7 +922,7 @@ size_t escape_quotes_for_mysql(CHARSET_I
+ 
+ void charset_uninit() {
+   for (CHARSET_INFO *cs : all_charsets) {
+-    if (cs && cs->coll->uninit) {
++    if (cs && cs->coll && cs->coll->uninit) {
+       cs->coll->uninit(cs);
+     }
+   }
+ 

@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-8.0.18-always-build-decompress-utilities.patch
 	"${FILESDIR}"/${PN}-8.0.19-do-not-install-comp_err.patch
 	"${FILESDIR}"/${PN}-8.0.21-libressl.patch
+	"${FILESDIR}"/${PN}-8.0.21-survive-malformed-charset-files.patch
 )
 
 src_prepare() {
