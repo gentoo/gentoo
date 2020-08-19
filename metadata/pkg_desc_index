@@ -6207,7 +6207,7 @@ dev-perl/Curses 1.360.0 1.360.0-r1: Curses interface modules for Perl
 dev-perl/Curses-UI 0.960.900-r2 0.960.900-r3: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r2 1.997.0-r3: Provide high level APIs for rapid user interface design on the console in Perl
 dev-perl/Cwd-Guard 0.50.0: Temporary changing working directory (chdir)
-dev-perl/DBD-MariaDB 1.210.0 1.210.0-r1: MariaDB and MySQL driver for the Perl5 Database Interface (DBI)
+dev-perl/DBD-MariaDB 1.210.0-r1: MariaDB and MySQL driver for the Perl5 Database Interface (DBI)
 dev-perl/DBD-Pg 3.5.3 3.7.0 3.10.0 3.13.0 3.14.0 3.14.2: PostgreSQL database driver for the DBI module
 dev-perl/DBD-SQLite 1.560.0 1.580.0 1.640.0: Self Contained RDBMS in a DBI Driver
 dev-perl/DBD-mysql 4.44.0-r1 4.50.0 4.50.0-r1: MySQL driver for the Perl5 Database Interface (DBI)
@@ -6259,7 +6259,7 @@ dev-perl/Data-Stag 0.140.0-r1 0.140.0-r2: Structured Tags datastructures
 dev-perl/Data-Stream-Bulk 0.110.0-r2: N at a time iteration API
 dev-perl/Data-Structure-Util 0.160.0 0.160.0-r1: Change nature of data within a structure
 dev-perl/Data-Types 0.90.0 0.170.0: Validate and convert data types.
-dev-perl/Data-URIEncode 0.110.0-r1 0.110.0-r2: Allow complex data structures to be encoded using flat URIs
+dev-perl/Data-URIEncode 0.110.0-r2: Allow complex data structures to be encoded using flat URIs
 dev-perl/Data-UUID 1.221.0 1.226.0: Generate Globally/Universally Unique Identifiers (GUIDs/UUIDs)
 dev-perl/Data-Uniqid 0.120.0-r1 0.120.0-r2: Perl extension for simple generating of unique ids
 dev-perl/Data-Utilities 0.40.0-r1 0.40.0-r2: Merge nested Perl data structures
