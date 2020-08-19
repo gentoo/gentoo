@@ -29,11 +29,13 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.9-GROFF_NO_SGR.patch
 	"${FILESDIR}"/${PN}-0.6.9-lzma-xz.patch
-	"${FILESDIR}"/${PN}-0.6.13-fno-common.patch
 )
 
 src_prepare() {
 	default
+
+	sed -i -e 's| -Werror||g' configure.ac || die
+
 	eautoreconf
 }
 
