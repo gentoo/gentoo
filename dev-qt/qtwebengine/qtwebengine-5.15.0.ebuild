@@ -85,6 +85,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-disable-fatal-warnings.patch" # bug 695446
 	"${FILESDIR}/${PN}-5.14.2-icu67.patch" # bug 720054
 	"${FILESDIR}/${P}-gcc-10.patch" # bug 721876
+	"${FILESDIR}/${P}-bison-3.7-build.patch" # bug 734356
 )
 
 src_prepare() {
