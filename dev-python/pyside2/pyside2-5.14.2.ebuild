@@ -7,7 +7,7 @@ EAPI=7
 #     https://bugreports.qt.io/browse/PYSIDE-535
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit cmake-utils python-r1 virtualx
+inherit cmake python-r1 virtualx
 
 # TODO: Add conditional support for "QtRemoteObjects" via a new "remoteobjects"
 # USE flag after an external "dev-qt/qtremoteobjects" package has been created.
@@ -79,6 +79,7 @@ QT_PV="$(ver_cut 1-2):5"
 
 RDEPEND="${PYTHON_DEPS}
 	>=dev-python/shiboken2-${PV}[${PYTHON_USEDEP}]
+	dev-qt/qtcore:5=
 	3d? ( >=dev-qt/qt3d-${QT_PV}[qml?] )
 	charts? ( >=dev-qt/qtcharts-${QT_PV}[qml?] )
 	concurrent? ( >=dev-qt/qtconcurrent-${QT_PV} )
@@ -166,23 +167,23 @@ src_configure() {
 			-DPYTHON_SITE_PACKAGES="$(python_get_sitedir)"
 			-DSHIBOKEN_PYTHON_SHARED_LIBRARY_SUFFIX="-${EPYTHON}"
 		)
-		cmake-utils_src_configure
+		cmake_src_configure
 	}
 	python_foreach_impl pyside2_configure
 }
 
 src_compile() {
-	python_foreach_impl cmake-utils_src_compile
+	python_foreach_impl cmake_src_compile
 }
 
 src_test() {
 	local -x PYTHONDONTWRITEBYTECODE
-	python_foreach_impl virtx cmake-utils_src_test
+	python_foreach_impl virtx cmake_src_test
 }
 
 src_install() {
 	pyside2_install() {
-		cmake-utils_src_install
+		cmake_src_install
 		python_optimize
 
 		# Uniquify the shiboken2 pkgconfig dependency in the PySide2 pkgconfig
