@@ -17436,7 +17436,7 @@ sys-fabric/libmthca 1.0.6: OpenIB userspace driver for Mellanox InfiniBand HCAs
 sys-fabric/libnes 1.1.4: NetEffect RNIC Userspace Library
 sys-fabric/libocrdma 1.0.2: OpenIB userspace driver for Emulex OneConnect RDMA
 sys-fabric/librdmacm 1.0.18 1.0.18-r1: OpenIB userspace RDMA CM library
-sys-fabric/mstflint 4.10.0_p3 4.11.0_p5 4.13.3_p2: Mstflint - an open source version of MFT (Mellanox Firmware Tools)
+sys-fabric/mstflint 4.10.0_p3 4.11.0_p5 4.13.3_p2 4.14.0_p3: Mstflint - an open source version of MFT (Mellanox Firmware Tools)
 sys-fabric/ofed 3.12_rc1: OpenIB system files
 sys-fabric/opensm 3.3.17-r1: OpenSM - InfiniBand Subnet Manager and Administration for OpenIB
 sys-fabric/perftest 2.0: OpenIB uverbs micro-benchmarks

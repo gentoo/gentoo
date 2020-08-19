@@ -8376,6 +8376,7 @@ sys-devel/parity:vcx86 - Enable support for 32bit Visual Studio compilers
 sys-devel/sparse:gtk - Build the test-inspect utility (requires x11-libs/gtk+ version 2)
 sys-devel/sparse:llvm - Build the sparse-llvm utility
 sys-devel/sparse:xml - Build the c2xml utility (requires dev-libs/libxml2)
+sys-fabric/mstflint:adb-generic-tools - Enable compiling the following tools: mstreg and mstlink
 sys-fabric/mstflint:inband - Enable firmware updates for Mellanox SwitchX and ConnectIB devices
 sys-fabric/ofed:dapl - Add support for DAPL abstraction layer
 sys-fabric/ofed:diags - Add dignostic tools for infiniband
