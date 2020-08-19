@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2020-08-19)
+# Unstable dependencies for qemu
+# bug #738056
+app-emulation/qemu smartcard fdt rbd slirp xen virgl
+
 # Sam James <sam@gentoo.org> (2020-07-30)
 # glslang is not yet stable on arm64
 media-libs/mesa vulkan-overlay
