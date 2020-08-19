@@ -1,0 +1,13 @@
+--- a/test/module.defs	2020-06-13 15:05:35.000000000 +0100
++++ a/test/module.defs	2020-07-03 11:15:53.951205608 +0100
+@@ -30,6 +30,10 @@ 
+ endif
+ endif
+ 
++ifeq (1,$(FEATURE.x265))
++    TEST.GCC.l += x265
++endif
++
+ ifeq (1,$(FEATURE.flatpak))
+     TEST.GCC.l += glib-2.0
+ endif
