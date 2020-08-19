@@ -19,4 +19,7 @@
 	jobs in parallel. If you use ppss or pexec you will find GNU parallel
 	will often make the command easier to read.
 	</longdescription>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:gnu:parallel</remote-id>
+	</upstream>
 </pkgmetadata>
