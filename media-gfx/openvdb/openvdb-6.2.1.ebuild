@@ -15,12 +15,12 @@ SRC_URI="https://github.com/AcademySoftwareFoundation/${PN}/archive/v${PV}.tar.g
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="abi3-compat abi4-compat abi5-compat abi6-compat doc python test"
+IUSE="abi4-compat abi5-compat abi6-compat doc python test"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
-	^^ ( abi3-compat abi4-compat abi5-compat abi6-compat )
+	^^ ( abi4-compat abi5-compat abi6-compat )
 "
 
 RDEPEND="
@@ -71,9 +71,7 @@ src_configure() {
 	local myprefix="${EPREFIX}/usr/"
 
 	local version
-	if use abi3-compat; then
-		version=3
-	elif use abi4-compat; then
+	if use abi4-compat; then
 		version=4
 	elif use abi5-compat; then
 		version=5
