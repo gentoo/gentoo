@@ -3,7 +3,6 @@
 
 EAPI=7
 
-CMAKE_MAKEFILE_GENERATOR="emake"
 PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit cmake flag-o-matic python-single-r1
@@ -39,8 +38,8 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-libs/boost:=[numpy?,python?,${PYTHON_MULTI_USEDEP}]
-			numpy? ( dev-python/numpy[${PYTHON_MULTI_USEDEP}] )
+			dev-libs/boost:=[numpy?,python?,${PYTHON_USEDEP}]
+			numpy? ( dev-python/numpy[${PYTHON_USEDEP}] )
 		')
 	)
 "
@@ -48,6 +47,9 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	dev-cpp/tbb
+"
+
+BDEPEND="
 	>=dev-util/cmake-3.16.2-r1
 	virtual/pkgconfig
 	doc? (
@@ -89,7 +91,6 @@ src_configure() {
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}/"
 		-DOPENVDB_ABI_VERSION_NUMBER="${version}"
 		-DOPENVDB_BUILD_DOCS=$(usex doc)
-		-DOPENVDB_BUILD_PYTHON_MODULE=$(usex python)
 		-DOPENVDB_BUILD_UNITTESTS=$(usex test)
 		-DOPENVDB_BUILD_VDB_LOD=$(usex !utils)
 		-DOPENVDB_BUILD_VDB_RENDER=$(usex !utils)
@@ -101,10 +102,16 @@ src_configure() {
 		-DUSE_COLORED_OUTPUT=ON
 		-DUSE_EXR=ON
 		-DUSE_LOG4CPLUS=ON
-		-DUSE_NUMPY=$(usex numpy)
-		-DPYOPENVDB_INSTALL_DIRECTORY="${python_get_sitedir}"
-		-DPython_EXECUTABLE="${PYTHON}"
 	)
+
+	if use python; then
+		mycmakeargs+=(
+			-DOPENVDB_BUILD_PYTHON_MODULE=ON
+			-DUSE_NUMPY=$(usex numpy)
+			-DPYOPENVDB_INSTALL_DIRECTORY="$(python_get_sitedir)"
+			-DPython_EXECUTABLE="${EPYTHON}"
+		)
+	fi
 
 	if use cpu_flags_x86_avx; then
 		mycmakeargs+=( -DOPENVDB_SIMD=AVX )

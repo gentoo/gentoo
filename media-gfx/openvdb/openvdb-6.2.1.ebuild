@@ -4,7 +4,6 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8,9} )
-CMAKE_MAKEFILE_GENERATOR="emake"
 
 inherit cmake flag-o-matic python-single-r1
 
@@ -38,14 +37,18 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-libs/boost:=[python?,${PYTHON_MULTI_USEDEP}]
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+			dev-libs/boost:=[python?,${PYTHON_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
 		')
 	)"
 
-DEPEND="${RDEPEND}
-	>=dev-util/cmake-3.16.2-r1
+DEPEND="
+	${RDEPEND}
 	dev-cpp/tbb
+"
+
+BDEPEND="
+	>=dev-util/cmake-3.16.2-r1
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
@@ -55,7 +58,8 @@ DEPEND="${RDEPEND}
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
 	)
-	test? ( dev-util/cppunit )"
+	test? ( dev-util/cppunit )
+"
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-multilib-header-source.patch"

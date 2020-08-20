@@ -1,3 +1,11 @@
+This patch is an updated version of the patch created in dracwyrm's
+patchset for openvdb 4.0.2 which uses PkgConfig to ensure that the
+correct IlmBase and OpenEXR dependencies are found.
+
+In subsequent versions this functionality is taken over by
+altering the directory the header files are searched for in
+multilib-header-source patch by Bernd Waibel
+
 diff -urN a/openvdb/CMakeLists.txt b/openvdb/CMakeLists.txt
 --- a/openvdb/CMakeLists.txt	2018-08-28 12:20:33.000000000 +0100
 +++ b/openvdb/CMakeLists.txt	2018-08-28 12:25:19.807755722 +0100
