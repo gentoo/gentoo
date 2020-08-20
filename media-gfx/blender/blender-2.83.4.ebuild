@@ -85,7 +85,7 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	opensubdiv? ( >=media-libs/opensubdiv-3.4.0[cuda=,opencl=] )
 	openvdb? (
-		>=media-gfx/openvdb-7.0.0[abi6-compat(-)?,abi7-compat(-)?]
+		~media-gfx/openvdb-7.0.0[abi6-compat(-)?,abi7-compat(-)?]
 		dev-cpp/tbb
 		dev-libs/c-blosc:=
 	)

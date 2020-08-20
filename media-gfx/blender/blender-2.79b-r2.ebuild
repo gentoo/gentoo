@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit check-reqs cmake-utils xdg-utils flag-o-matic xdg-utils \
+inherit check-reqs cmake-utils flag-o-matic xdg-utils \
 	pax-utils python-single-r1 toolchain-funcs eapi7-ver
 
 DESCRIPTION="3D Creation/Animation/Publishing System"
@@ -77,7 +77,7 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	opensubdiv? ( >=media-libs/opensubdiv-3.3.0:=[cuda=,opencl=] )
 	openvdb? (
-		media-gfx/openvdb[abi4-compat]
+		<media-gfx/openvdb-7[abi4-compat]
 		dev-cpp/tbb
 		>=dev-libs/c-blosc-1.5.2
 	)
