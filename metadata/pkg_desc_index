@@ -12416,7 +12416,7 @@ mail-client/mutt 1.14.4-r1 1.14.5: A small but very powerful text-based mail cli
 mail-client/mutt-wizard 0_pre20200606 9999: A system for automatically configuring neomutt and isync
 mail-client/neomutt 20200626 20200626-r1 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
-mail-client/roundcube 1.4.6 1.4.7: A browser-based multilingual IMAP client with an application-like user interface
+mail-client/roundcube 1.4.6 1.4.7 1.4.8: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.16 14.9.19: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.7.0-r1: A lightweight email client and newsreader
 mail-client/thunderbird 68.11.0: Thunderbird Mail Client
@@ -12820,7 +12820,7 @@ media-gfx/gpicview 0.2.5 0.2.5-r1: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r2: A GTK-based image browser
 media-gfx/graphicsmagick 1.3.35-r1 9999: Collection of tools and libraries for many image formats
 media-gfx/graphite2 1.3.14: Library providing rendering capabilities for complex non-Roman writing systems
-media-gfx/graphviz 2.42.3 2.44.0 2.44.1: Open Source Graph Visualization Software
+media-gfx/graphviz 2.42.3 2.44.1: Open Source Graph Visualization Software
 media-gfx/grub-splashes 20091109: Collection of grub splashes
 media-gfx/gscan2pdf 1.8.11 2.7.0 2.8.1: Scan documents, perform OCR, produce PDFs and DjVus
 media-gfx/gthumb 3.10.0: Image viewer and browser for Gnome
@@ -14125,7 +14125,7 @@ media-video/mjpegtools 2.1.0-r4: Tools for MJPEG video
 media-video/mjpg-streamer 0_pre20120621-r2: MJPG-streamer takes JPGs from Linux-UVC compatible webcams
 media-video/mkclean 0.8.10: mkclean is a command line tool to clean and optimize Matroska files
 media-video/mkvalidator 0.5.2: mkvalidator is a command line tool to verify Matroska files for spec conformance
-media-video/mkvtoolnix 37.0.0 47.0.0 48.0.0 9999: Tools to create, alter, and inspect Matroska files
+media-video/mkvtoolnix 37.0.0 47.0.0 48.0.0 49.0.0 9999: Tools to create, alter, and inspect Matroska files
 media-video/motion 4.1.1-r1 4.3.1: A software motion detector
 media-video/motiontrack 0.1.3-r2: A set of tools that detect motion between two images
 media-video/movit 1.2.0 1.6.1 1.6.2: Modern Video Toolkit
