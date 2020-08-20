@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit flag-o-matic eutils
+inherit autotools flag-o-matic
 
 DESCRIPTION="IBM's Journaling Filesystem (JFS) Utilities"
 HOMEPAGE="http://jfs.sourceforge.net/"
@@ -14,11 +14,27 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 s390 ~sparc x86"
 IUSE="static"
 
+LIB_DEPEND="sys-apps/util-linux:=[static-libs]"
+
+RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs]} )"
+
+DEPEND="${RDEPEND}
+	static? ( ${LIB_DEPEND} )"
+
 DOCS=( AUTHORS ChangeLog NEWS README )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-linux-headers.patch #448844
+	"${FILESDIR}"/${P}-sysmacros.patch #580056
+	"${FILESDIR}"/${P}-check-for-ar.patch #726032
+	"${FILESDIR}"/${P}-gcc10.patch #707314
+	"${FILESDIR}"/${P}-format-security-errors.patch #557140
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-linux-headers.patch #448844
-	epatch "${FILESDIR}"/${P}-sysmacros.patch #580056
+	default
+
+	eautoreconf
 }
 
 src_configure() {
@@ -33,6 +49,6 @@ src_install() {
 	default
 
 	rm -f "${ED}"/sbin/{mkfs,fsck}.jfs || die
-	dosym /sbin/jfs_mkfs /sbin/mkfs.jfs
-	dosym /sbin/jfs_fsck /sbin/fsck.jfs
+	dosym jfs_mkfs /sbin/mkfs.jfs
+	dosym jfs_fsck /sbin/fsck.jfs
 }
