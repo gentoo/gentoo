@@ -30,7 +30,7 @@ RDEPEND="${DEPEND}"
 
 src_install() {
 	cmake_src_install
-	dosbin "${FILESDIR}/hackrf_easy_flash"
+	newsbin "${FILESDIR}/hackrf_easy_flash-r1" hackrf_easy_flash
 	if [[ ${PV} != "9999" ]] ; then
 		insinto /usr/share/hackrf
 		newins "${WORKDIR}/hackrf-${PV}/firmware-bin/hackrf_jawbreaker_usb.bin" hackrf_jawbreaker_usb-${PV}.bin
