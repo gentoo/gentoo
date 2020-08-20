@@ -6439,7 +6439,7 @@ dev-perl/ExtUtils-CppGuess 0.110.0 0.140.0 0.210.0: Guess C++ compiler and flags
 dev-perl/ExtUtils-Depends 0.405.0 0.800.0: Easily build XS extensions that depend on XS extensions
 dev-perl/ExtUtils-F77 1.200.0-r1 1.240.0: Facilitate use of FORTRAN from Perl/XS code
 dev-perl/ExtUtils-Helpers 0.26.0: Various portability utilities for module builders
-dev-perl/ExtUtils-InstallPaths 0.11.0: Build.PL install path logic made easy
+dev-perl/ExtUtils-InstallPaths 0.11.0 0.12.0: Build.PL install path logic made easy
 dev-perl/ExtUtils-LibBuilder 0.80.0: A tool to build C libraries
 dev-perl/ExtUtils-PkgConfig 1.160.0: Simplistic perl interface to pkg-config
 dev-perl/ExtUtils-Typemaps-Default 1.50.0: A set of useful typemaps
