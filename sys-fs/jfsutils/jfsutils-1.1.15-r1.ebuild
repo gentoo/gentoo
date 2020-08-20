@@ -21,6 +21,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-sysmacros.patch #580056
 	"${FILESDIR}"/${P}-check-for-ar.patch #726032
 	"${FILESDIR}"/${P}-gcc10.patch #707314
+	"${FILESDIR}"/${P}-format-security-errors.patch #557140
 )
 
 src_prepare() {
