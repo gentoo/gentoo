@@ -37,7 +37,8 @@ RDEPEND="
 	ldac? ( >=media-libs/libldac-2.0.0 )
 	upower? ( sys-power/upower )
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-libs/check )"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
