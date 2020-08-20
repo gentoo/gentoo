@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils toolchain-funcs user
 
 DESCRIPTION="collect network traffic statistics and store them in pcap format"
-HOMEPAGE="http://www.metre.net/sancp.html"
+HOMEPAGE="https://sourceforge.net/projects/sancp/"
 SRC_URI="
 	http://www.metre.net/files/${P}.tar.gz
 	http://sancp.sourceforge.net/${PN}-1.6.1.fix200511.a.patch
