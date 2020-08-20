@@ -14,6 +14,13 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 s390 ~sparc x86"
 IUSE="static"
 
+LIB_DEPEND="sys-apps/util-linux:=[static-libs]"
+
+RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs]} )"
+
+DEPEND="${RDEPEND}
+	static? ( ${LIB_DEPEND} )"
+
 DOCS=( AUTHORS ChangeLog NEWS README )
 
 PATCHES=(
