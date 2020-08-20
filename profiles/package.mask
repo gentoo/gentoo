@@ -821,7 +821,6 @@ sys-cluster/kube-scheduler
 <media-plugins/mythplugins-31
 net-print/pkpgcounter
 <sci-chemistry/chemex-2018
-sci-libs/scipy-python2
 
 # Jonas Stein <jstein@gentoo.org> (2020-07-04)
 # Last rite, dead upstream, several open bugs.
