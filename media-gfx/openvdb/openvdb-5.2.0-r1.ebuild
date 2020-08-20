@@ -23,10 +23,10 @@ REQUIRED_USE="
 
 RDEPEND="
 	dev-libs/boost:=
-	dev-libs/c-blosc
-	dev-libs/jemalloc
-	dev-libs/log4cplus
-	media-libs/glfw:=
+	dev-libs/c-blosc:=
+	dev-libs/jemalloc:=
+	dev-libs/log4cplus:=
+	media-libs/glfw
 	media-libs/openexr:=
 	sys-libs/zlib:=
 	x11-libs/libXcursor
