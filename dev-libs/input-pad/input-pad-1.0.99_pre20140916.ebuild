@@ -33,7 +33,10 @@ BDEPEND="dev-util/intltool
 	virtual/pkgconfig"
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}"/${PN}-man.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-Wreturn-type.patch
+	"${FILESDIR}"/${PN}-man.patch
+)
 
 src_prepare() {
 	default
