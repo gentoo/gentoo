@@ -17,11 +17,6 @@
 	<use>
 		<flag name="embed-data-files">Embed data files in binary for relocatable executable.</flag>
 		<flag name="optimize">Enable -O1 optimizations (requires ~16GiB memory)</flag>
-		<flag name="http-conduit">Enable downloading of resources over https.</flag>
 		<flag name="trypandoc">Build trypandoc cgi executable.</flag>
-		<flag name="https">Enable support for downloading of resources over https.</flag>
-		<flag name="make-pandoc-man-pages">Build program to regenerate pandoc man pages from README.</flag>
-		<flag name="network-uri">Get Network.URI from the network-uri package.</flag>
-		<flag name="weigh-pandoc">Build weigh-pandoc to measure memory usage.</flag>
 	</use>
 </pkgmetadata>
