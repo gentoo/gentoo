@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit flag-o-matic toolchain-funcs
 
@@ -14,12 +14,12 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE=""
 
-DEPEND="sys-apps/sed
-	sys-libs/ncurses:=
+DEPEND="sys-libs/ncurses:="
+RDEPEND="${DEPEND}
+	app-i18n/skk-jisyo"
+BDEPEND="sys-apps/sed
 	virtual/awk
 	virtual/pkgconfig"
-RDEPEND="sys-libs/ncurses:=
-	app-i18n/skk-jisyo"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-gentoo.patch
@@ -47,7 +47,7 @@ src_compile() {
 }
 
 src_install() {
-	dobin skkfep escmode
-	doman skkfep.1
+	dobin ${PN} escmode
+	doman ${PN}.1
 	einstalldocs
 }
