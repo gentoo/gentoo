@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit distutils-r1
 
@@ -13,9 +13,11 @@ SRC_URI="https://github.com/sdgathman/${PN}/archive/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="test"
+RESTRICT="!test? ( test )"
 
-DEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )"
+DEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )
+	test? ( $(python_gen_impl_dep sqlite) )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-${P}"
