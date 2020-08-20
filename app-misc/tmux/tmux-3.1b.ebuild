@@ -72,17 +72,3 @@ src_install() {
 	dodoc example_tmux.conf
 	docompress -x /usr/share/doc/${PF}/example_tmux.conf
 }
-
-pkg_postinst() {
-	if ! ver_test 1.9a -ge ${REPLACING_VERSIONS:-1.9a}; then
-		echo
-		ewarn "Some configuration options changed in this release."
-		ewarn "Please read the CHANGES file in /usr/share/doc/${PF}/"
-		ewarn
-		ewarn "WARNING: After updating to ${P} you will _not_ be able to connect to any"
-		ewarn "older, running tmux server instances. You'll have to use an existing client to"
-		ewarn "end your old sessions or kill the old server instances. Otherwise you'll have"
-		ewarn "to temporarily downgrade to access them."
-		echo
-	fi
-}
