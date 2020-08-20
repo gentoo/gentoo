@@ -865,12 +865,6 @@ media-gfx/uniconvertor
 # and accept a more unstable release.
 >=www-client/chromium-86
 
-# Jonas Stein <jstein@gentoo.org> (2020-06-07)
-# Last rite unusable package.
-# Removal after 2020-08-01
-# Bug 727360
-app-misc/ifp-line
-
 # Mart Raudsepp <leio@gentoo.org> (2020-06-06)
 # Meson port does not handle multilib yet and has issues
 # regarding runstatedir (not using /run).
