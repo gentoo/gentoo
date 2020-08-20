@@ -114,11 +114,6 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-2.80-fix-install-rules.patch"
-	"${FILESDIR}/${PN}-2.80-link-cycles-standalone-with-opengl.patch"
-)
-
 blender_check_requirements() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 
