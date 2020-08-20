@@ -4529,7 +4529,6 @@ media-plugins/mythplugins:fftw - Adds visual effects to MythMusic when playing b
 media-plugins/mythplugins:hls - HTTP Live Streaming support
 media-plugins/mythplugins:mytharchive - Allows you to archive recorded content to CD or DVD
 media-plugins/mythplugins:mythbrowser - Adds a web browser within MythTV
-media-plugins/mythplugins:mythgallery - Adds a picture viewing gallery within MythTV
 media-plugins/mythplugins:mythgame - Adds a frontend to various ROM emulators within MythTV
 media-plugins/mythplugins:mythmusic - Adds the ability for MythTV to act as a music player
 media-plugins/mythplugins:mythnetvision - Adds the ability to view netvision devices within MythTV
@@ -7505,7 +7504,6 @@ sci-libs/rtabmap:openni2 - Adds support for Kinect-like 3D sensors devices with 
 sci-libs/scikits_image:freeimage - Enable support for image i/o via media-libs/freeimage
 sci-libs/scikits_image:pyamg - Enable support for algebraic solvers via dev-python/pyamg
 sci-libs/scipy:sparse - Adds support for sparse solving with sci-libs/umfpack
-sci-libs/scipy-python2:sparse - Adds support for sparse solving with sci-libs/umfpack
 sci-libs/scotch:int64 - Build the 64 bits integer library (needed for > 2^31 vertices)
 sci-libs/scotch:tools - Build and install extra exec tools
 sci-libs/shogun:R - Enable support for dev-lang/R
