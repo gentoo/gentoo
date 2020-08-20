@@ -32,7 +32,7 @@ DEPEND="
 	virtual/libudev[static-libs(-)?]
 	libressl? ( dev-libs/libressl:0=[static-libs?] )
 	!libressl? ( dev-libs/openssl:0=[static-libs?] )
-	pam? ( sys-libs/pam[static-libs?] )
+	pam? ( sys-libs/pam )
 	python? (
 		virtual/python-cffi[${PYTHON_USEDEP}]
 	)
