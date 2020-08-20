@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic
+inherit autotools flag-o-matic
 
 DESCRIPTION="IBM's Journaling Filesystem (JFS) Utilities"
 HOMEPAGE="http://jfs.sourceforge.net/"
@@ -19,7 +19,14 @@ DOCS=( AUTHORS ChangeLog NEWS README )
 PATCHES=(
 	"${FILESDIR}"/${P}-linux-headers.patch #448844
 	"${FILESDIR}"/${P}-sysmacros.patch #580056
+	"${FILESDIR}"/${P}-check-for-ar.patch #726032
 )
+
+src_prepare() {
+	default
+
+	eautoreconf
+}
 
 src_configure() {
 	# It doesn't compile on alpha without this LDFLAGS
