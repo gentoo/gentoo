@@ -2612,7 +2612,6 @@ app-mobilephone/smsclient 2.0.9a-r1: Utility to send SMS messages to mobile phon
 app-mobilephone/smstools 3.1.15-r2 3.1.21-r1: Send and receive short messages through GSM modems
 app-mobilephone/sobexsrv 1.0.1-r2: Scripting/Secure OBEX Server (for BlueZ Linux)
 app-mobilephone/vmoconv 1.0-r1: A tool that converts Siemens phones VMO and VMI audio files to gsm and wav
-app-mobilephone/wammu 0.44: Front-end for gammu to access mobile phones easily
 app-office/abiword 3.0.4: Fully featured yet light and fast cross platform word processor
 app-office/abiword-docs 3.0.2: Fully featured yet light and fast cross platform word processor documentation
 app-office/auto-multiple-choice 1.3.0-r1: Create and manage multiple choice questionnaries, including automated marking
@@ -3760,7 +3759,6 @@ dev-go/gogo-protobuf 1.3.1: Protocol Buffers for Go with Gadgets
 dev-go/golicense 0.2.0: detect licenses used in Go binaries
 dev-go/golint 0_pre20200301: a linter for Go
 dev-go/gom 0_pre20151110: Go Dependency management system similar to bundle for ruby
-dev-go/goptlib 1.1.0: Go Tor pluggable transports library
 dev-go/goversion 1.2.0: Print version used to build Go executables
 dev-go/gox 1.0.1: A dead simple, no frills Go cross compile tool
 dev-go/licenseclassifier 0_pre20200402 9999: A set of tools that analyzes text to determine type of license
@@ -7856,7 +7854,6 @@ dev-python/aiosmtpd 1.2: asyncio based SMTP server
 dev-python/alabaster 0.7.12: A configurable sidebar-enabled Sphinx theme
 dev-python/alagitpull 0.0.23: alabaster sub-theme used on git-pull docs
 dev-python/alembic 1.4.2: database migrations tool, written by the author of SQLAlchemy
-dev-python/algopy 0.5.3: Taylor Arithmetic Computation and Algorithmic Differentiation
 dev-python/ament_package 0.9.2: Parser for the manifest files in the ament buildsystem
 dev-python/amodem 1.15.1: Transmit data between two computers using audio
 dev-python/aniso8601 8.0.0: A library for parsing ISO 8601 strings
@@ -11278,7 +11275,7 @@ games-emulation/desmume 0.9.11-r2: Nintendo DS emulator
 games-emulation/dgen-sdl 1.33-r1: A Linux/SDL-Port of the famous DGen MegaDrive/Genesis-Emulator
 games-emulation/dolphin 5.0_p20200705 9999: Gamecube and Wii game emulator
 games-emulation/dosbox 0.74.3 0.75_pre4302 9999: DOS emulator
-games-emulation/dosbox-staging 0.75.0: Modernized DOSBox soft-fork
+games-emulation/dosbox-staging 0.75.0 0.75.1: Modernized DOSBox soft-fork
 games-emulation/emutos 0.9.12: Single-user single-tasking operating system for 32-bit Atari computer emulators
 games-emulation/fakenes 0.5.8-r3: Portable, Open Source NES emulator which is written mostly in C
 games-emulation/fbzx 3.0.0-r1: Full Screen Sinclair Spectrum emulator
@@ -14105,7 +14102,7 @@ media-video/frameworks 0.3.7-r1: A small v4l frame capture utility especially su
 media-video/gaupol 1.7 1.8-r1: A subtitle editor for text-based subtitles
 media-video/gnome-video-effects 0.4.3: Effects for Cheese, the webcam video and picture application
 media-video/google2srt 0.5.6-r1: Convert subtitles from Google Video and YouTube to SubRip (.srt) format
-media-video/gpac 0.7.1-r1 9999: Implementation of the MPEG-4 Systems standard developed from scratch in ANSI C
+media-video/gpac 0.7.1-r1 0.8.1 9999: Implementation of the MPEG-4 Systems standard developed from scratch in ANSI C
 media-video/guvcview 2.0.6-r1: Simple Qt5 or GTK+3 interface for capturing and viewing video from v4l2 devices
 media-video/gxine 0.5.907-r1 0.5.909: GTK+ Front-End for libxine
 media-video/h264enc 10.4.7-r1: Script to encode H.264/AVC/MPEG-4 Part 10 formats
@@ -17612,7 +17609,6 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.0-r2 9999: Gentoo automatic kernel building scripts
-sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.4.58 5.4.59 5.7.10 5.7.12 5.7.13 5.7.15 5.7.16 5.8.1 5.8.2: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.4.58 5.4.59 5.7.10 5.7.12 5.7.13 5.7.15 5.7.16 5.8.1 5.8.2: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.228 4.4.229 4.4.230 4.4.231 4.4.232 4.9.228 4.9.229 4.9.230 4.9.231 4.9.232 4.14.185 4.14.191 4.14.192 4.14.193 4.19.129 4.19.138 4.19.139 4.19.140 5.4.48 5.4.57 5.4.58 5.4.59 5.7.14 5.7.15 5.7.16 5.8.0 5.8.0-r1 5.8.1 5.8.2: Full sources including the Gentoo patchset for the 5.8 kernel tree

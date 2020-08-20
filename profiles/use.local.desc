@@ -8481,12 +8481,6 @@ sys-kernel/ck-sources:experimental - Apply experimental patches; for more inform
 sys-kernel/dracut:debug - Module installing additional tools like strace, file editor, ssh and more
 sys-kernel/genkernel:cryptsetup - Enable support for Luks disk encryption using sys-fs/cryptsetup
 sys-kernel/genkernel:firmware - Prefer system firmware sys-kernel/linux-firmware over local copy.
-sys-kernel/genkernel-next:cryptsetup - Enable support for Luks disk enrcyption using sys-fs/cryptsetup
-sys-kernel/genkernel-next:dmraid - Enable support for DMRAID (include dmraid dependency)
-sys-kernel/genkernel-next:gpg - Enable support for GPG (include gnupg dependency)
-sys-kernel/genkernel-next:iscsi - Enable support for open-iscsi (include open-iscsi dependency)
-sys-kernel/genkernel-next:mdadm - Enable support for mdadm (include mdadm dependency)
-sys-kernel/genkernel-next:plymouth - Enable support for Plymouth (include Plymouth dependency)
 sys-kernel/gentoo-kernel:initramfs - Build initramfs along with the kernel.
 sys-kernel/gentoo-kernel-bin:initramfs - Build initramfs along with the kernel.
 sys-kernel/gentoo-sources:experimental - Apply experimental patches; for more information, see "https://wiki.gentoo.org/wiki/Project:Kernel/Experimental".
