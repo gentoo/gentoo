@@ -1,5 +1,5 @@
---- a/Makefile	2004-01-19 23:04:56.000000000 +0100
-+++ b/Makefile	2010-09-15 02:02:26.000000000 +0200
+--- a/Makefile
++++ b/Makefile
 @@ -1,26 +1,26 @@
  
  # !!! Uncomment this CFLAGS for a small binary !!!
