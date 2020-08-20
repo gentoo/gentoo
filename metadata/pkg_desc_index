@@ -7926,7 +7926,7 @@ dev-python/bleach 3.1.5: an easy whitelist-based HTML-sanitizing tool
 dev-python/blessed 1.17.8 1.17.9: Library for making terminal apps using colors, keyboard input and positioning
 dev-python/blessings 1.7-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.4-r1: Fast, simple object-to-object and broadcast signaling
-dev-python/blockdiag 1.5.4: Generate block-diagram image from text
+dev-python/blockdiag 1.5.4 2.0.1: Generate block-diagram image from text
 dev-python/blosc 1.5.1 1.9.1-r1: High performance compressor optimized for binary data
 dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutines
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
@@ -7953,7 +7953,7 @@ dev-python/castellan 1.2.2: Generic Key Manager interface for OpenStack
 dev-python/casttube 0.2.0: casttube provides a way to interact with the Youtube Chromecast api.
 dev-python/catkin_pkg 0.4.20 0.4.22 9999: Standalone Python library for the catkin package system
 dev-python/cbor 1.0.0-r1: RFC 7049 - Concise Binary Object Representation
-dev-python/cbor2 5.1.0: Pure Python CBOR (de)serializer with extensive tag support
+dev-python/cbor2 5.1.0 5.1.2: Pure Python CBOR (de)serializer with extensive tag support
 dev-python/cddb-py 1.4-r1: CDDB Module for Python
 dev-python/celery 4.3.0: Asynchronous task queue/job queue based on distributed message passing
 dev-python/certifi 10001: Thin replacement for certifi using system certificate store
