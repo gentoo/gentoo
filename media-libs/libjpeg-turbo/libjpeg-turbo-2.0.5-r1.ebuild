@@ -18,12 +18,11 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 sparc
 IUSE="java static-libs"
 
 ASM_DEPEND="|| ( dev-lang/nasm dev-lang/yasm )"
+
 COMMON_DEPEND="!media-libs/jpeg:0
 	!media-libs/jpeg:62"
-RDEPEND="${COMMON_DEPEND}
-	java? ( >=virtual/jre-1.5 )"
-DEPEND="${COMMON_DEPEND}
-	>=dev-util/cmake-3.16.5
+
+BDEPEND=">=dev-util/cmake-3.16.5
 	amd64? ( ${ASM_DEPEND} )
 	x86? ( ${ASM_DEPEND} )
 	amd64-fbsd? ( ${ASM_DEPEND} )
@@ -31,8 +30,13 @@ DEPEND="${COMMON_DEPEND}
 	amd64-linux? ( ${ASM_DEPEND} )
 	x86-linux? ( ${ASM_DEPEND} )
 	x64-macos? ( ${ASM_DEPEND} )
-	x64-cygwin? ( ${ASM_DEPEND} )
+	x64-cygwin? ( ${ASM_DEPEND} )"
+
+DEPEND="${COMMON_DEPEND}
 	java? ( >=virtual/jdk-1.5 )"
+
+RDEPEND="${COMMON_DEPEND}
+	java? ( >=virtual/jre-1.5 )"
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/jconfig.h )
 
