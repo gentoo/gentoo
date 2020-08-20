@@ -829,11 +829,6 @@ sci-visualization/pyxplot
 # Removal in 30 days.  Bug #732352.
 app-mobilephone/wammu
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2020-07-11)
-# Fails to build with recent glibc, bug 719968
-# Removal in 30 days
-sys-kernel/genkernel-next
-
 # Jonas Stein <jstein@gentoo.org> (2020-07-04)
 # Last rite, dead upstream, several open bugs.
 # Removal after 2020-09-01
