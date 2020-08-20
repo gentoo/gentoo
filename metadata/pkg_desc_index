@@ -628,7 +628,7 @@ app-admin/system-config-printer 1.5.12-r1: Graphical user interface for CUPS adm
 app-admin/system-tools-backends 2.10.2-r1: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: Systemd managment utility
 app-admin/tenshi 0.17: Log parsing and notification program
-app-admin/terraform 0.12.24 0.12.28 0.12.29: A tool for building, changing, and combining infrastructure safely
+app-admin/terraform 0.12.24 0.12.28 0.12.29 0.13.0: A tool for building, changing, and combining infrastructure safely
 app-admin/testdisk 7.1: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.14: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11-r2: Files which haven't been accessed are removed from specified directories
@@ -2490,7 +2490,7 @@ app-misc/muttprint 0.73-r4: Script for pretty printing of your mails
 app-misc/mvcase 0.1-r2: A modified version of mv, used to convert filenames to lower/upper case
 app-misc/mx5000tools 0.1.2-r1: Tools for controlling the LCD on a Logitech MX5000 keyboard
 app-misc/neofetch 6.0.0 6.1.0 7.0.0 7.1.0 9999: Simple information system script
-app-misc/nnn 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8.1 2.9 3.0 3.1 3.2 3.3: The missing terminal file browser for X
+app-misc/nnn 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8.1 2.9 3.0 3.1 3.2 3.3 3.4: The missing terminal file browser for X
 app-misc/no-more-secrets 9999: recreate decrypting text from 1992 movie 'Sneakers'
 app-misc/notary 0.6.1-r1: A project that allows anyone to have trust over arbitrary collections of data
 app-misc/note 1.3.3-r1 1.3.3-r2: A note taking perl program
@@ -4209,7 +4209,7 @@ dev-haskell/mime-mail 0.4.11: Compose MIME email messages
 dev-haskell/mime-types 0.1.0.3 0.1.0.6 0.1.0.7 0.1.0.9: Basic mime-type handling types and functions
 dev-haskell/minisat 0.1.2: A Haskell bundle of the Minisat SAT solver
 dev-haskell/mintty 0.1.2: A reliable way to detect the presence of a MinTTY console on Windows
-dev-haskell/missingh 1.2.0.2 1.2.1.0 1.3.0.1 1.4.3.0: Large utility library
+dev-haskell/missingh 1.4.3.0: Large utility library
 dev-haskell/mmap 0.5.8 0.5.9: Memory mapped files for POSIX and Windows
 dev-haskell/mmorph 1.0.0 1.0.5 1.0.6 1.0.9 1.1.3: Monad morphisms
 dev-haskell/mockery 0.3.2 0.3.3 0.3.5: Support functions for automated testing
@@ -14365,7 +14365,7 @@ net-analyzer/net-snmp 5.8.1_pre1-r1 5.9-r1 99999999: Software for generating and
 net-analyzer/netcat 110-r9 110.20180111: the network swiss army knife
 net-analyzer/netdata 1.23.2 1.24.0 9999: Linux real time system monitoring, done right!
 net-analyzer/netdiscover 0.3_beta6-r3 0.3_beta6-r4: An active/passive address reconnaissance tool
-net-analyzer/nethogs 0.8.5-r1: A small 'net top' tool, grouping bandwidth by process
+net-analyzer/nethogs 0.8.5-r1 0.8.6: A small 'net top' tool, grouping bandwidth by process
 net-analyzer/neti 2.0-r1: NETI@Home research project from GATech
 net-analyzer/netio 1.32-r1: measures net throughput with NetBIOS and TCP/IP protocols
 net-analyzer/netperf 2.7.0-r2: Network performance benchmark
@@ -15081,7 +15081,7 @@ net-misc/cbqinit 0.7.3-r3: Sets up class-based queue traffic control (QoS) with 
 net-misc/cbugzilla 0.2.1: CLI and C api to get data from Bugzilla
 net-misc/cfengine 2.2.10-r5 2.2.10-r6 3.3.9 3.4.5 3.5.3 3.6.2: An automated suite of programs for configuring and maintaining Unix-like computers
 net-misc/cgminer 4.9.2 4.10.0: Bitcoin CPU/GPU/FPGA/ASIC miner in C
-net-misc/chrony 3.5-r2 3.5-r4 4.0_pre2-r1 9999: NTP client and server programs
+net-misc/chrony 3.5-r2 3.5-r4 3.5.1 4.0_pre2-r1 9999: NTP client and server programs
 net-misc/clockspeed 0.62-r6 0.62-r7: Simple Network Time Protocol (NTP) client
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
 net-misc/cmst 2020.05.09: Qt GUI for Connman with system tray icon
