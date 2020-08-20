@@ -876,12 +876,6 @@ app-misc/ifp-line
 # regarding runstatedir (not using /run).
 =net-misc/networkmanager-1.22.10-r11
 
-# Jonas Stein <jstein@gentoo.org> (2020-06-01)
-# Last rite package due to missing/unclear license.
-# Removal after 2020-08-01
-# Bug 687664
-app-dicts/stardict-quick-eng-fra
-
 # Michael Orlitzky <mjo@gentoo.org> (2020-04-19)
 # Stuck on Python 3.6, support for which already required
 # backporting patches to a release from 2014. Upstream's git
