@@ -50,6 +50,9 @@ list_firmware() {
   if [ -r "/usr/share/hackrf/portapack-h1-havoc.bin" ]; then
     printf "portapack-havoc (--havoc)\n"
   fi
+  if [ -r "/usr/share/hackrf/portapack-h1_h2-mayhem.bin" ]; then
+    printf "portapack-mayhem (--mayhem)\n"
+  fi
 }
 
 #parse args
@@ -76,6 +79,11 @@ while [ -n "${1}" ]; do
     havoc|--havoc)
       firmware="/usr/share/hackrf/portapack-h1-havoc.bin"
       TARGET=havoc
+      shift
+      ;;
+    mayhem|--mayhem)
+      firmware="/usr/share/hackrf/portapack-h1_h2-mayhem.bin"
+      TARGET=mayhem
       shift
       ;;
     cpld|--cpld)
