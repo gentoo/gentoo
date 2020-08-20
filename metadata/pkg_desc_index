@@ -8398,7 +8398,7 @@ dev-python/markupsafe 1.1.1: Implements a XML/HTML/XHTML Markup safe string for 
 dev-python/marshmallow 3.5.1: A lightweight library for converting complex datatypes to and from native Python datatypes.
 dev-python/matplotlib 3.2.2-r1 3.3.0 3.3.1-r1: Pure python plotting library with matlab like syntax
 dev-python/matplotlib-python2 2.2.5-r2: Pure python plotting library with matlab like syntax (py2 version)
-dev-python/matterhook 0.1-r1: Interact with Mattermost incoming webhooks easily
+dev-python/matterhook 0.1-r1 0.2: Interact with Mattermost incoming webhooks easily
 dev-python/mccabe 0.6.1-r1: flake8 plugin: McCabe complexity checker
 dev-python/mdx_gh_links 0.2: An extension which adds links to GitHub users, repositories, issues and commits
 dev-python/mecab-python 0.996: Python binding for MeCab
@@ -10511,7 +10511,7 @@ dev-tex/pgf 3.1.4b-r2 3.1.5b: The TeX Portable Graphic Format
 dev-tex/pscyr 0.4d_beta9: Type1 cyrillic fonts collection
 dev-tex/pythontex 0.17: Fast Access to Python from within LaTeX
 dev-tex/rail 1.2_p1-r1: Offers syntax/railroad diagrams
-dev-tex/rubber 1.4 1.5.1: A LaTeX wrapper for automatically building documents
+dev-tex/rubber 1.5.1: A LaTeX wrapper for automatically building documents
 dev-tex/serienbrief 0.2.5: Easy creation of form letters written in LaTeX
 dev-tex/sketch 0.3.7: Produces drawings of two- or three-dimensional solid objects and scenes for TeX
 dev-tex/slatex 20090928_p20180415: A Scheme program allowing you to write Scheme in your (La)TeX source
