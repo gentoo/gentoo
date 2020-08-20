@@ -400,7 +400,6 @@ src_prepare() {
 		third_party/sqlite
 		third_party/swiftshader
 		third_party/swiftshader/third_party/astc-encoder
-		third_party/swiftshader/third_party/llvm-7.0
 		third_party/swiftshader/third_party/llvm-subzero
 		third_party/swiftshader/third_party/marl
 		third_party/swiftshader/third_party/subzero
@@ -472,6 +471,9 @@ src_prepare() {
 		if use system-icu; then
 			keeplibs+=( third_party/icu )
 		fi
+	fi
+	if use arm64 || use ppc64 ; then
+		keeplibs+=( third_party/swiftshader/third_party/llvm-10.0 )
 	fi
 	# Remove most bundled libraries. Some are still needed.
 	build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove || die
