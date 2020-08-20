@@ -20,6 +20,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-linux-headers.patch #448844
 	"${FILESDIR}"/${P}-sysmacros.patch #580056
 	"${FILESDIR}"/${P}-check-for-ar.patch #726032
+	"${FILESDIR}"/${P}-gcc10.patch #707314
 )
 
 src_prepare() {
