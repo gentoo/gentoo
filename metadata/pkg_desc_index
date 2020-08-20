@@ -970,7 +970,7 @@ app-crypt/openssl-blacklist 0.5.3: Detection of weak ssl keys produced by certai
 app-crypt/ophcrack 3.8.0: A time-memory-trade-off-cracker
 app-crypt/ophcrack-tables 1.0-r2: Tables available for ophcrack
 app-crypt/osslsigncode 2.0: Platform-independent tool for Authenticode signing of EXE/CAB files
-app-crypt/p11-kit 0.23.19-r1 0.23.20-r1: Provides a standard configuration setup for installing PKCS#11
+app-crypt/p11-kit 0.23.19-r1 0.23.20-r1 0.23.21: Provides a standard configuration setup for installing PKCS#11
 app-crypt/paperkey 1.5 1.6: OpenPGP key archiver
 app-crypt/pdfcrack 0.19: Tool for recovering passwords and content from PDF-files
 app-crypt/pesign 113: Tools for manipulating signed PE-COFF binaries
@@ -2971,7 +2971,7 @@ app-text/odt2txt 0.5: A simple converter from OpenDocument Text to plain text
 app-text/openjade 1.3.2-r9: Jade is an implementation of DSSSL for formatting SGML and XML documents
 app-text/opensp 1.5.2-r3 1.5.2-r6: A free, object-oriented toolkit for SGML parsing and entity management
 app-text/ots 0.5.0-r1: Open source Text Summarizer, as used in newer releases of abiword and kword
-app-text/pandoc 1.12.4.2-r1 1.13.2.1 1.14.0.4 1.15.0.6 1.18 1.19.2.1 1.19.2.1-r1 2.9.2.1: Conversion between markup formats
+app-text/pandoc 2.9.2.1: Conversion between markup formats
 app-text/paperwork 1.3.1: a personal document manager for scanned documents (and PDFs)
 app-text/paperwork-backend 1.3.1: Backend part of Paperwork (Python API, no UI)
 app-text/paps 0.6.8-r2: Unicode-aware text to PostScript converter
@@ -4266,7 +4266,7 @@ dev-haskell/openssl-streams 1.2.1.0 1.2.2.0: OpenSSL network support for io-stre
 dev-haskell/options 1.2.1.1: A powerful and easy-to-use command-line option parser
 dev-haskell/optparse-applicative 0.5.2.1 0.7.0.2 0.8.1-r1 0.9.1.1 0.11.0.2 0.13.0.0 0.14.2.0 0.15.1.0: Utilities and combinators for parsing command line options
 dev-haskell/optparse-simple 0.1.1.3: Simple interface to optparse-applicative
-dev-haskell/pandoc-citeproc 0.1.2.1 0.2 0.3.1 0.6 0.7.2 0.8.1.3 0.10.4 0.10.4.1 0.17.0.1: Supports using pandoc with citeproc
+dev-haskell/pandoc-citeproc 0.17.0.1: Supports using pandoc with citeproc
 dev-haskell/pandoc-types 1.12.3 1.12.4.5 1.12.4.7 1.17.0.4 1.20: Types for representing a structured document
 dev-haskell/pango 0.12.5.3 0.13.1.1 0.13.3.1 0.13.6.1 0.13.8.1: Binding to the Pango text rendering engine
 dev-haskell/pantry 0.4.0.2: Content addressable Haskell package management
@@ -4480,7 +4480,7 @@ dev-haskell/uhc-light 1.1.9.5: Part of UHC packaged as cabal/hackage installable
 dev-haskell/uhc-util 0.1.6.7: UHC utilities
 dev-haskell/unbounded-delays 0.1.0.9 0.1.1.0: Unbounded thread delays and timeouts
 dev-haskell/unexceptionalio 0.3.0 0.5.1: IO without any non-error, synchronous exceptions
-dev-haskell/unicode-transforms 0.2.1 0.3.6: Unicode normalization
+dev-haskell/unicode-transforms 0.3.7: Unicode normalization
 dev-haskell/uniplate 1.6.12: Help writing simple, concise and fast generic operations
 dev-haskell/uniqueid 0.1.1: Splittable Unique Identifier Supply
 dev-haskell/unix-compat 0.4.1.3 0.4.1.4 0.4.2.0 0.4.3.1 0.5.2: Portable POSIX-compatibility layer
@@ -4544,7 +4544,7 @@ dev-haskell/xml-hamlet 0.4.0.11 0.4.0.12 0.5.0.1: Hamlet-style quasiquoter for X
 dev-haskell/xml-types 0.3.4 0.3.6: Basic types for representing XML
 dev-haskell/xmlgen 0.6.2.1 0.6.2.2: Fast XML generation library
 dev-haskell/xss-sanitize 0.3.5.6 0.3.5.7 0.3.6: sanitize untrusted HTML to prevent XSS attacks
-dev-haskell/yaml 0.8.10.1 0.8.15.2 0.8.17.1 0.8.20 0.8.21.2 0.11.2.0: Support for parsing and rendering YAML documents
+dev-haskell/yaml 0.11.5.0: Support for parsing and rendering YAML documents
 dev-haskell/yesod 1.6.1.0: Creation of type-safe, RESTful web applications
 dev-haskell/yesod-auth 1.6.9: Authentication for Yesod
 dev-haskell/yesod-auth-hashdb 1.7.1.2: Authentication plugin for Yesod
@@ -6440,7 +6440,7 @@ dev-perl/ExtUtils-Depends 0.405.0 0.800.0: Easily build XS extensions that depen
 dev-perl/ExtUtils-F77 1.200.0-r1 1.240.0: Facilitate use of FORTRAN from Perl/XS code
 dev-perl/ExtUtils-Helpers 0.26.0: Various portability utilities for module builders
 dev-perl/ExtUtils-InstallPaths 0.11.0 0.12.0: Build.PL install path logic made easy
-dev-perl/ExtUtils-LibBuilder 0.80.0: A tool to build C libraries
+dev-perl/ExtUtils-LibBuilder 0.80.0 0.80.0-r1: A tool to build C libraries
 dev-perl/ExtUtils-PkgConfig 1.160.0: Simplistic perl interface to pkg-config
 dev-perl/ExtUtils-Typemaps-Default 1.50.0: A set of useful typemaps
 dev-perl/ExtUtils-XSBuilder 0.280.0-r1: Modules to parse C header files and create XS glue code
@@ -19013,12 +19013,12 @@ x11-themes/notify-osd-icons 0.7-r1: Icons for on-screen-display notification age
 x11-themes/nou-icon-theme 09.02.08: A scalable icon theme called Nou
 x11-themes/numix-gtk-theme 2.6.7-r2: A modern flat theme with a combination of light and dark elements
 x11-themes/numix-icon-theme 18.07.17 19.09.20 20.03.20 20.06.07: An official icon theme from the Numix Project
-x11-themes/numix-icon-theme-circle 18.08.29 18.09.19 18.10.03 18.12.01 19.01.24 19.02.07 19.02.22 19.03.20 19.04.15 19.05.07 19.09.20 19.12.27 20.06.07: An icon theme for Linux from the Numix project
+x11-themes/numix-icon-theme-circle 18.08.29 18.09.19 18.10.03 18.12.01 19.01.24 19.02.07 19.02.22 19.03.20 19.04.15 19.05.07 19.09.20 19.12.27 20.06.07 20.07.11: An icon theme for Linux from the Numix project
 x11-themes/nuovo-icon-theme 0.5: A scalable icon theme called Nuovo
 x11-themes/nuvox 07.1-r1: NuvoX SVG icon theme
 x11-themes/obsidian-xcursors 1.0: A shiny and clean xcursor theme
 x11-themes/oxygen-gtk 1.4.1-r1 1.4.6-r1: Official GTK+:2 port of KDE's Oxygen widget style
-x11-themes/papirus-icon-theme 20191009 20191101 20191201 20200102 20200201 20200301 20200405 20200430 20200602 20200702: icon theme for Linux
+x11-themes/papirus-icon-theme 20191009 20191101 20191201 20200102 20200201 20200301 20200405 20200430 20200602 20200702 20200801: icon theme for Linux
 x11-themes/pearlgrey-xcursors 1.0: A simple crispy white-grey xcursor theme
 x11-themes/pidgin-penguins-smileys 1.0: Penguins pidgin smiley theme
 x11-themes/pulse-glass 20100616: The Pulse Glass x11 mouse cursor theme

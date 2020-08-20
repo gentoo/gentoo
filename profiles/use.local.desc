@@ -1193,13 +1193,8 @@ app-text/msort:heap - Use heap instead of alloca()
 app-text/msort:icu - Use dev-libs/icu instead of dev-libs/libutf8proc.
 app-text/msort:libuninum - Use dev-libs/libuninum for conversion.
 app-text/pandoc:embed-data-files - Embed data files in binary for relocatable executable.
-app-text/pandoc:http-conduit - Enable downloading of resources over https.
-app-text/pandoc:https - Enable support for downloading of resources over https.
-app-text/pandoc:make-pandoc-man-pages - Build program to regenerate pandoc man pages from README.
-app-text/pandoc:network-uri - Get Network.URI from the network-uri package.
 app-text/pandoc:optimize - Enable -O1 optimizations (requires ~16GiB memory)
 app-text/pandoc:trypandoc - Build trypandoc cgi executable.
-app-text/pandoc:weigh-pandoc - Build weigh-pandoc to measure memory usage.
 app-text/pastebinit:crypt - Install pbputs for gpg-encrypted pastes
 app-text/pdfgrep:unac - Removing accents and ligatures before search
 app-text/pelican:markdown - Markdown support
@@ -1676,14 +1671,11 @@ dev-haskell/nats:template-haskell - enable template_haskell
 dev-haskell/netlink:generators - build the generator scripts for constants
 dev-haskell/network-data:small-base - Build the split-up base package.
 dev-haskell/optparse-simple:build-example - Build the example executable
-dev-haskell/pandoc-citeproc:bibutils - use Chris Putnam's app-text/bibutils
+dev-haskell/pandoc-citeproc:bibutils - Use Chris Putnam's Bibutils.
+dev-haskell/pandoc-citeproc:debug - Turn on debug tracing.
 dev-haskell/pandoc-citeproc:embed-data-files - Embed locale files into the library (needed for windows packaging)
-dev-haskell/pandoc-citeproc:hexpat - use dev-haskell/hexpat instead of dev-haskell/xml for XML parsing
-dev-haskell/pandoc-citeproc:network - use dev-haskell/network and dev-haskell/http to retrieve CSL file from URIs
-dev-haskell/pandoc-citeproc:small-base - Choose the new smaller, split-up base package.
-dev-haskell/pandoc-citeproc:test-citeproc - Build the test-citeproc program
-dev-haskell/pandoc-citeproc:unicode-collation - Use Haskell bindings to the dev-libs/icu
-dev-haskell/pandoc-citeproc:unicode_collation - Use Haskell bindings to the dev-libs/icu
+dev-haskell/pandoc-citeproc:static - Use static linking.
+dev-haskell/pandoc-citeproc:unicode-collation - Use Haskell bindings to the International Components for Unicode (ICU) libraries
 dev-haskell/parsec-numbers:parsec1 - use dev-haskell/parsec1 instead of dev-haskell/parsec
 dev-haskell/parsers:attoparsec - Enable the use of the `attoparsec` package
 dev-haskell/parsers:parsec - Enable the use of the `parsec` package
@@ -1784,8 +1776,6 @@ dev-haskell/x509-store:executable - Build the executable
 dev-haskell/xss-sanitize:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/yaml:no-examples - don't build the examples
 dev-haskell/yaml:no-exe - don't install the yaml2json executable
-dev-haskell/yaml:no-unicode - Don't enable unicode output. Instead, unicode characters will be escaped.
-dev-haskell/yaml:system-libyaml - Use system libyaml instead on generic one
 dev-haskell/yesod-auth:network-uri - Get Network.URI from the network-uri package
 dev-haskell/yesod-form:network-uri - Get Network.URI from the network-uri package
 dev-haskell/zip-archive:executable - Build the Zip executable.
