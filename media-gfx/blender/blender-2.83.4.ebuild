@@ -44,8 +44,8 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=[nls?,threads(+)]
 	dev-libs/lzo:2
 	$(python_gen_cond_dep '
-		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
-		dev-python/requests[${PYTHON_MULTI_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
 	')
 	media-libs/freetype
 	media-libs/glew:*
