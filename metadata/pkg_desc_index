@@ -17533,7 +17533,7 @@ sys-fs/hfsutils 3.2.6_p14: HFS FS Access utils
 sys-fs/inotify-tools 3.20.1 3.20.2.2: a set of command-line programs providing a simple interface to inotify
 sys-fs/iprutils 2.4.7 2.4.17.1 2.4.18.1: IBM's tools for support of the ipr SCSI controller
 sys-fs/jdiskreport-bin 1.2.5-r1 1.3.0 1.4.1: JDiskReport helps you to understand disk drive usage
-sys-fs/jfsutils 1.1.15: IBM's Journaling Filesystem (JFS) Utilities
+sys-fs/jfsutils 1.1.15-r1: IBM's Journaling Filesystem (JFS) Utilities
 sys-fs/jmtpfs 0.5-r1: A FUSE and libmtp based filesystem for accessing MTP devices
 sys-fs/ldapfuse 1.0-r2: A virtual filesystem for FUSE which allows navigation of an LDAP tree
 sys-fs/lde 2.6.1-r1: ext2fs and minix disk editor for linux
