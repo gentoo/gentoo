@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit flag-o-matic eutils
+inherit flag-o-matic
 
 DESCRIPTION="IBM's Journaling Filesystem (JFS) Utilities"
 HOMEPAGE="http://jfs.sourceforge.net/"
@@ -16,10 +16,10 @@ IUSE="static"
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-linux-headers.patch #448844
-	epatch "${FILESDIR}"/${P}-sysmacros.patch #580056
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-linux-headers.patch #448844
+	"${FILESDIR}"/${P}-sysmacros.patch #580056
+)
 
 src_configure() {
 	# It doesn't compile on alpha without this LDFLAGS
@@ -33,6 +33,6 @@ src_install() {
 	default
 
 	rm -f "${ED}"/sbin/{mkfs,fsck}.jfs || die
-	dosym /sbin/jfs_mkfs /sbin/mkfs.jfs
-	dosym /sbin/jfs_fsck /sbin/fsck.jfs
+	dosym jfs_mkfs /sbin/mkfs.jfs
+	dosym jfs_fsck /sbin/fsck.jfs
 }
