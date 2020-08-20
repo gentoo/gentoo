@@ -14242,7 +14242,7 @@ net-analyzer/bwping 1.17: A tool to measure bandwidth and RTT between two hosts 
 net-analyzer/cacti 1.2.13 1.2.14: Cacti is a complete frontend to rrdtool
 net-analyzer/cacti-spine 1.2.13 1.2.14 99999: Spine is a fast poller for Cacti (formerly known as Cactid)
 net-analyzer/calamaris 2.59 2.99.4.0 2.99.4.5: parses logfiles of a wide variety of web proxy servers and generates reports
-net-analyzer/carl 0.9-r2 0.9-r3: An rsync logfile analyzer
+net-analyzer/carl 0.9-r3 0.9-r4: An rsync logfile analyzer
 net-analyzer/cbm 0.1-r1 0.2: Color Bandwidth Meter
 net-analyzer/chaosreader 0.96: Trace TCP/UDP/... sessions and fetch application data.
 net-analyzer/check_mk_agent 1.2.8_p27 1.4.0_p31: Agent to report data to Check_MK for monitoring
@@ -14423,7 +14423,7 @@ net-analyzer/rain 1.2.9_beta1 1.2.9_beta1-r1: powerful tool for testing stabilit
 net-analyzer/rrdcollect 0.2.9: Read system statistical data and feed it to RRDtool
 net-analyzer/rrdtool 1.6.0-r1 1.7.1 1.7.2 1.7.2-r1: A system to store and display time-series data
 net-analyzer/rtpbreak 1.3a-r1: Analyze any RTP session through heuristics over UDP network traffic
-net-analyzer/sancp 1.6.1-r4: collect network traffic statistics and store them in pcap format
+net-analyzer/sancp 1.6.1-r4 1.6.1-r5: collect network traffic statistics and store them in pcap format
 net-analyzer/sarg 2.4.0: Squid Analysis Report Generator
 net-analyzer/sbd 1.37-r1: Netcat-clone, designed to be portable and offer strong encryption
 net-analyzer/scanlogd 2.2.7: a port scan detection tool
