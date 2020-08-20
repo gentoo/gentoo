@@ -126,7 +126,7 @@ mate_src_configure() {
 		fi
 	fi
 
-	gnome2_src_configure "${mateconf[@]} $@"
+	gnome2_src_configure "${mateconf[@]}" "$@"
 }
 
 # @FUNCTION: mate_src_install
