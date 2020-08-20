@@ -101,10 +101,6 @@ dev-util/meson test
 # Requires dev-python/filemagic that is broken and masked for removal.
 dev-python/jira magic
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-20)
-# Requires dev-python/rst2pdf that is masked for removal.
-media-video/mpv doc
-
 # Michał Górny <mgorny@gentoo.org> (2020-04-19)
 # Requires dev-vcs/ghp-import that is masked for removal.
 www-apps/nikola ghpages
