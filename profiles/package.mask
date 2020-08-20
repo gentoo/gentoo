@@ -819,7 +819,6 @@ sys-cluster/kube-scheduler
 #
 # Removal in 30 days.  Bug #729672.
 <media-plugins/mythplugins-31
-net-print/pkpgcounter
 <sci-chemistry/chemex-2018
 
 # Jonas Stein <jstein@gentoo.org> (2020-07-04)
