@@ -1,0 +1,40 @@
+Origin: https://sources.debian.org/patches/jfsutils/1.1.15-5/format-security-errors.patch/
+
+--- a/fscklog/display.c
++++ b/fscklog/display.c
+@@ -182,7 +182,7 @@ void dump_service_log()
+ 				} else {
+ 					/* the record looks ok */
+ 					msg_txt = &log_entry[log_entry_pos];
+-					printf(msg_txt);
++					printf("%s", msg_txt);
+ 					/*
+ 					 * set up for the next record
+ 					 */
+--- a/fscklog/fscklog.c
++++ b/fscklog/fscklog.c
+@@ -252,8 +252,8 @@ int v_send_msg(int msg_num, const char *file_name, int line_number, ...) {
+ 
+ 	sprintf(debug_detail, " [%s:%d]\n", basename(file_name), line_number);
+ 
+-	printf(msg_string);
+-	printf(debug_detail);
++	printf("%s", msg_string);
++	printf("%s", debug_detail);
+ 
+ 	return 0;
+ }
+--- a/logdump/helpers.c
++++ b/logdump/helpers.c
+@@ -95,8 +95,8 @@ int v_fsck_send_msg(int msg_num, const char *file_name, int line_number, ...) {
+ 
+ 	sprintf(debug_detail, " [%s:%d]\n", file_name, line_number);
+ 
+-	printf(msg_string);
+-	printf(debug_detail);
++	printf("%s", msg_string);
++	printf("%s", debug_detail);
+ 
+ 	return 0;
+ }
+ 
