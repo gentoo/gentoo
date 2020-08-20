@@ -760,12 +760,6 @@ dev-ruby/zeitwerk:1
 ~virtual/perl-Time-Piece-1.340.100
 ~virtual/perl-Unicode-Normalize-1.270.0
 
-# Christoph Junghans <junghans@gentoo.org> (2020-07-14)
-# Unmaintained upstream and does not support systemd or firewalld.
-# Please use net-analyzer/fail2ban instead. (bug #732076)
-# Removal in 30 days.
-app-admin/denyhosts
-
 # William Hubbs <williamh@gentoo.org> (2020-07-14)
 # The kubernetes split packages are old versions with known security
 # issues.
