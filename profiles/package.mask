@@ -853,12 +853,6 @@ dev-python/algopy
 # Bug #730640
 net-misc/termpkg
 
-# Michał Górny <mgorny@gentoo.org> (2020-07-04)
-# Unmaintained.  Python 2 only.  Effectively depends on vulnerable
-# version of dev-python/pillow.  No revdeps.  Multiple bugs open.
-# Removal in 30 days.  Bug #715682.
-media-gfx/uniconvertor
-
 # Stephan Hartmann <stha09@googlemail.com> (2020-06-29)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
