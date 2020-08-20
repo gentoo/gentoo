@@ -13,7 +13,7 @@ SRC_URI="https://www2.graphviz.org/Packages/stable/portable_source/${P}.tar.gz"
 LICENSE="CPL-1.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris"
-IUSE="+cairo devil doc examples gdk-pixbuf gtk gts guile java lasi nls pdf perl postscript python qt5 ruby static-libs svg tcl X elibc_FreeBSD"
+IUSE="+cairo devil doc examples gtk gts guile java lasi nls pdf perl postscript python qt5 ruby static-libs svg tcl X elibc_FreeBSD"
 
 REQUIRED_USE="
 	!cairo? ( !X !gtk !postscript !lasi )
@@ -191,9 +191,9 @@ src_prepare() {
 src_configure() {
 	local myconf=(
 		--enable-ltdl
+		--enable-gdk-pixbuf
 		$(use_with cairo pangocairo)
 		$(use_with devil)
-		$(use_enable gdk-pixbuf)
 		$(use_with gtk)
 		$(use_with gts)
 		$(use_with qt5 qt)
