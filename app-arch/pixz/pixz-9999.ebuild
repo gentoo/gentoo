@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 inherit flag-o-matic
 
@@ -20,12 +20,17 @@ LICENSE="BSD-2"
 SLOT="0"
 IUSE="static"
 
-LIB_DEPEND=">=app-arch/libarchive-2.8:=[static-libs(+)]
-	>=app-arch/xz-utils-5[static-libs(+)]"
-RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
+LIB_DEPEND="
+	>=app-arch/libarchive-2.8:=[static-libs(+)]
+	>=app-arch/xz-utils-5[static-libs(+)]
+"
+RDEPEND="
+	!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
+"
 DEPEND="${RDEPEND}
-	static? ( ${LIB_DEPEND} )"
-[[ ${PV} == "9999" ]] && DEPEND+=" app-text/asciidoc"
+	static? ( ${LIB_DEPEND} )
+"
+[[ ${PV} == "9999" ]] && BDEPEND+=" app-text/asciidoc"
 
 src_prepare() {
 	default
@@ -39,4 +44,8 @@ src_configure() {
 	# https://github.com/vasi/pixz/issues/67
 	export ac_cv_file_src_pixz_1=$([[ -f src/pixz.1 ]] && echo yes || echo no)
 	econf
+}
+
+src_test() {
+	emake check
 }
