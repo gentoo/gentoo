@@ -15131,7 +15131,7 @@ net-misc/freerdp 2.1.2-r1 2.2.0 2.9999 9999: Free implementation of the Remote D
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.0 3.1.1 4.0.3-r1 4.0.4 4.3.0: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.34: A daemon to serve the gopher protocol
-net-misc/gerbera 1.4.0-r1 1.5.0-r1 9999: UPnP Media Server
+net-misc/gerbera 1.4.0-r1 1.5.0-r1 1.5.0-r2 9999: UPnP Media Server
 net-misc/getdate 1.2-r2: Network Date/Time Query and Set Local Date/Time Utility
 net-misc/gnome-online-miners 3.34.0: Crawls through your online content
 net-misc/gnome-remote-desktop 0.1.7: Remote desktop daemon for GNOME using pipewire
