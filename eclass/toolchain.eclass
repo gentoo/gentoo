@@ -912,6 +912,14 @@ toolchain_src_configure() {
 					--disable-threads
 					--without-headers
 				)
+				if [[ $needed_libc == glibc ]]; then
+					# By default gcc looks at glibc's headers
+					# to detect long double support. This does
+					# not work for --disable-headers mode.
+					# Any >=glibc-2.4 is good enough for float128.
+					# The option appeared in gcc-4.2.
+					confgcc+=( --with-long-double-128 )
+				fi
 			elif has_version "${CATEGORY}/${needed_libc}[headers-only(-)]" ; then
 				confgcc+=(
 					"${confgcc_no_libc[@]}"
