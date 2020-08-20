@@ -824,29 +824,6 @@ net-print/pkpgcounter
 sci-libs/scipy-python2
 sci-visualization/pyxplot
 
-# Michał Górny <mgorny@gentoo.org> (2020-07-13)
-# Unmaintained.  Last release from 2018, still does not support py3.
-# Removal in 30 days.  Bug #732352.
-app-mobilephone/wammu
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2020-07-11)
-# Fails to build with recent glibc, bug 719968
-# Removal in 30 days
-sys-kernel/genkernel-next
-
-# Marek Szuba <marecki@gentoo.org> (2020-07-11)
-# Uses golang-* eclasses, only a library, all former reverse
-# dependencies have long since switched to vendoring.
-# Removal in 30 days. Bug #732136.
-dev-go/goptlib
-
-# Michał Górny <mgorny@gentoo.org> (2020-07-04)
-# Unmaintained.  Requires scipy-python2.  Current version is from 2015,
-# latest upstream release from 2017.  The only revdep is masked
-# for removal.
-# Removal in 30 days.  Bug #730760.
-dev-python/algopy
-
 # Jonas Stein <jstein@gentoo.org> (2020-07-04)
 # Last rite, dead upstream, several open bugs.
 # Removal after 2020-09-01
