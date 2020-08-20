@@ -49,6 +49,10 @@ RDEPEND="${DEPEND}"
 
 CONFIG_CHECK="~INOTIFY_USER"
 
+PATCHES=(
+	"${FILESDIR}/${P}-incomplete-type-iohandler.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_CURL="$(usex curl)" \
