@@ -824,11 +824,6 @@ net-print/pkpgcounter
 sci-libs/scipy-python2
 sci-visualization/pyxplot
 
-# Michał Górny <mgorny@gentoo.org> (2020-07-13)
-# Unmaintained.  Last release from 2018, still does not support py3.
-# Removal in 30 days.  Bug #732352.
-app-mobilephone/wammu
-
 # Jonas Stein <jstein@gentoo.org> (2020-07-04)
 # Last rite, dead upstream, several open bugs.
 # Removal after 2020-09-01
