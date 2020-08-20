@@ -5,22 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Parser and writer for handling sectioned config files in
-		Haskell.
-
-		The ConfigFile module works with configuration files in a standard
-		format that is easy for the user to edit, easy for the programmer
-		to work with, yet remains powerful and flexible.  It is inspired by,
-		and compatible with, Python's ConfigParser module.  It uses files
-		that resemble Windows .INI-style files, but with numerous
-		improvements.
-
-		ConfigFile provides simple calls to both read and write config files.
-		It's possible to make a config file parsable by this module,
-		the Unix shell, and make.
-	</longdescription>
-	<use>
-		<flag name="buildtests">Build the executable to run unit tests.</flag>
-	</use>
 </pkgmetadata>
