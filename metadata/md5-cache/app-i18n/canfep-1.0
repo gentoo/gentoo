@@ -1,13 +1,14 @@
+BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=compile install prepare
-DEPEND=app-i18n/canna sys-libs/ncurses:= virtual/pkgconfig
+DEPEND=app-i18n/canna sys-libs/ncurses:=
 DESCRIPTION=Canna Japanese kana-kanji frontend processor on console
-EAPI=6
-HOMEPAGE=http://www.geocities.co.jp/SiliconValley-Bay/7584/canfep/
+EAPI=7
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
 IUSE=unicode
 KEYWORDS=-alpha ~amd64 ppc ~sparc x86
 LICENSE=canfep
 RDEPEND=app-i18n/canna sys-libs/ncurses:=
 SLOT=0
-SRC_URI=http://www.geocities.co.jp/SiliconValley-Bay/7584/canfep/canfep-1.0.tar.gz unicode? ( http://hp.vector.co.jp/authors/VA020411/patches/canfep_utf8.diff )
+SRC_URI=mirror://gentoo/canfep-1.0.tar.gz unicode? ( http://hp.vector.co.jp/authors/VA020411/patches/canfep_utf8.diff )
 _eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=a5be4cd8ea5920f7a83cdd9564522359
+_md5_=60a60d493ac6e8d84521cda471397e38

@@ -11,4 +11,4 @@ RDEPEND=dev-libs/glib:2 dev-libs/libxml2 x11-libs/gtk+:3 x11-libs/libX11 x11-lib
 SLOT=0
 SRC_URI=https://github.com/fujiwarat/input-pad/releases/download/1.0.99.20140916/input-pad-1.0.99.20140916.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=c37ce1c5b12cb68dbf8cf23afb4e1445
+_md5_=58b9417ecd55c15e226a4d7ea4f532b4
