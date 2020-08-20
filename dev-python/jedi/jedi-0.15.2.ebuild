@@ -20,7 +20,7 @@ LICENSE="MIT
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
-RDEPEND=">=dev-python/parso-0.5.2[${PYTHON_USEDEP}]"
+RDEPEND="<dev-python/parso-0.8[${PYTHON_USEDEP}]"
 
 distutils_enable_sphinx docs
 distutils_enable_tests pytest
