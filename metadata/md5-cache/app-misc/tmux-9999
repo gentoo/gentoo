@@ -1,5 +1,5 @@
 BDEPEND=virtual/pkgconfig virtual/yacc >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=configure install postinst prepare unpack
+DEFINED_PHASES=configure install prepare unpack
 DEPEND=dev-libs/libevent:0= sys-libs/ncurses:0= utempter? ( sys-libs/libutempter )
 DESCRIPTION=Terminal multiplexer
 EAPI=7
@@ -11,4 +11,4 @@ RDEPEND=dev-libs/libevent:0= sys-libs/ncurses:0= utempter? ( sys-libs/libutempte
 SLOT=0
 SRC_URI=https://raw.githubusercontent.com/przepompownia/tmux-bash-completion/678a27616b70c649c6701cae9cd8c92b58cc051b/completions/tmux -> tmux-bash-completion-678a27616b70c649c6701cae9cd8c92b58cc051b
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	8ec5b53812bce105ae7943930e4660f8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=d2db2d9346abf3a90f5335d3a528d1f7
+_md5_=9699681a39212720464ac55ff66d3161
