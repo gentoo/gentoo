@@ -98,6 +98,9 @@ RDEPEND="${PYTHON_DEPS}
 
 DEPEND="${RDEPEND}
 	dev-cpp/eigen
+"
+
+BDEPEND="
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen[dot]
@@ -108,7 +111,8 @@ DEPEND="${RDEPEND}
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
 	)
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.80-fix-install-rules.patch"
