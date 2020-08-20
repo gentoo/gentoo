@@ -31,6 +31,7 @@
     <remote-id type="cpan-module">ExtUtils::XSpp::Node::EnumValue</remote-id>
     <remote-id type="cpan-module">ExtUtils::XSpp::Node::File</remote-id>
     <remote-id type="cpan-module">ExtUtils::XSpp::Node::Function</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Node::Member</remote-id>
     <remote-id type="cpan-module">ExtUtils::XSpp::Node::Method</remote-id>
     <remote-id type="cpan-module">ExtUtils::XSpp::Node::Module</remote-id>
     <remote-id type="cpan-module">ExtUtils::XSpp::Node::Package</remote-id>
@@ -39,9 +40,11 @@
     <remote-id type="cpan-module">ExtUtils::XSpp::Node::Raw</remote-id>
     <remote-id type="cpan-module">ExtUtils::XSpp::Node::Type</remote-id>
     <remote-id type="cpan-module">ExtUtils::XSpp::Parser</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Plugin::feature::default_xs_typemap</remote-id>
     <remote-id type="cpan-module">ExtUtils::XSpp::Typemap</remote-id>
     <remote-id type="cpan-module">ExtUtils::XSpp::Typemap::parsed</remote-id>
     <remote-id type="cpan-module">ExtUtils::XSpp::Typemap::reference</remote-id>
     <remote-id type="cpan-module">ExtUtils::XSpp::Typemap::simple</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Typemap::wrapper</remote-id>
   </upstream>
 </pkgmetadata>
