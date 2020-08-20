@@ -17,7 +17,6 @@
 		<flag name="raw">Allows MythGallery to view photos saved in RAW format</flag>
 		<flag name="mytharchive">Allows you to archive recorded content to CD or DVD</flag>
 		<flag name="mythbrowser">Adds a web browser within MythTV</flag>
-		<flag name="mythgallery">Adds a picture viewing gallery within MythTV</flag>
 		<flag name="mythgame">Adds a frontend to various ROM emulators within MythTV</flag>
 		<flag name="mythmusic">Adds the ability for MythTV to act as a music player</flag>
 		<flag name="mythnetvision">Adds the ability to view netvision devices within MythTV</flag>

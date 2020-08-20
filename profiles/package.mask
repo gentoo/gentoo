@@ -800,26 +800,6 @@ sys-cluster/kube-scheduler
 <net-wireless/gr-iqbal-0.38.1
 <net-wireless/gr-osmosdr-0.2.0
 
-# Michał Górny <mgorny@gentoo.org> (2020-07-13)
-# These packages are mid-profile Python 2-only dependencies
-# of dev-python/pillow.  Since the last Pillow version to support
-# Python 2 contains a number of unresolved vulnerabilities, these
-# packages and old package versions are queued for removal.
-#
-# In more detail:
-# - pyxplot has been last released in 2012
-# - pkpgcounter has been last released in 2007, and has seen only a few
-#   commits since 2009
-# - scipy has removed py2 support in 1.4 (py2 target in the old version
-#   is masked in profiles/base/package.use.mask)
-#
-# This list does not include two high-profile packages:
-# - app-office/scribus whose py3 version is being currently stabilized
-# - media-tv/kodi which has no py3 version at the moment
-#
-# Removal in 30 days.  Bug #729672.
-<media-plugins/mythplugins-31
-
 # Jonas Stein <jstein@gentoo.org> (2020-07-04)
 # Last rite, dead upstream, several open bugs.
 # Removal after 2020-09-01
