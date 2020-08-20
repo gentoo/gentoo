@@ -42,17 +42,15 @@ python_prepare_all() {
 		sed -i "s|'https://docs.python.org/': None|'${PYTHON_DOC}': '${PYTHON_DOC_INVENTORY}'|" doc/conf.py || die
 	fi
 
-	if use test; then
-#		sed -i '/This is a Python 3 module/d' eventlet/green/http/__init__.py || die
-#		sed -i 's/^import/from OpenSSL import/g' eventlet/green/OpenSSL/__init__.py || die
-#		sed -i 's/^from version/from OpenSSL.version/' eventlet/green/OpenSSL/__init__.py || die
-		sed -i 's/TEST_TIMEOUT = 1/TEST_TIMEOUT = 10/' tests/__init__.py || die
-	fi
-
 	# Prevent file collisions from teestsuite
 	sed -e "s:'tests', :'tests', 'tests.*', :" -i setup.py || die
 
 	distutils-r1_python_prepare_all
+}
+
+python_test() {
+	unset PYTHONPATH
+	nosetests -v || die
 }
 
 python_install_all() {
