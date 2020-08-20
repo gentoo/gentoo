@@ -1,0 +1,11 @@
+--- dosbox-staging-0.75.1/configure.ac.orig	2020-08-20 14:25:41.295432272 +0200
++++ dosbox-staging-0.75.1/configure.ac	2020-08-20 14:26:00.614461707 +0200
+@@ -37,7 +37,7 @@
+             :,
+ 	    AC_MSG_ERROR([*** SDL version $SDL_VERSION not found!])
+ )
+-LIBS="$LIBS $SDL_LIBS"
++LIBS="$LIBS -lpthread $SDL_LIBS"
+ CPPFLAGS="$CPPFLAGS $SDL_CFLAGS"
+ 
+ dnl Checks for header files.
