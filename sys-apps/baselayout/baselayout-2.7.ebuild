@@ -101,7 +101,7 @@ multilib_layout() {
 			elif [ -d "${prefix}lib" ] ; then
 				# "lib" is a dir, so need to convert to a symlink
 				ewarn "Converting ${prefix}lib from a dir to a symlink"
-				rm -f "${prefix}lib"/.keep
+				rm -f "${prefix}lib"/.keep || die
 				if rmdir "${prefix}lib" 2>/dev/null ; then
 					ln -s ${def_libdir} "${prefix}lib" || die
 				else
@@ -113,7 +113,7 @@ multilib_layout() {
 				mkdir -p "${prefix}" || die
 				rm -f "${prefix}lib" || die
 				ln -s ${def_libdir} "${prefix}lib" || die
-				mkdir -p "${prefix}${def_libdir}" #423571
+				mkdir -p "${prefix}${def_libdir}" || die #423571
 			fi
 		else
 			# we need to make sure "lib" is a dir
@@ -135,7 +135,7 @@ multilib_layout() {
 				*-gentoo-freebsd*) ;; # We want it the other way on fbsd.
 				i?86*|x86_64*|powerpc*|sparc*|s390*)
 					if [[ -d ${prefix}lib32 && ! -h ${prefix}lib32 ]] ; then
-						rm -f "${prefix}lib32"/.keep
+						rm -f "${prefix}lib32"/.keep || die
 						if ! rmdir "${prefix}lib32" 2>/dev/null ; then
 							ewarn "You need to merge ${prefix}lib32 into ${prefix}lib"
 							die "non-empty dir found where there should be none: ${prefix}lib32"
@@ -164,7 +164,7 @@ pkg_preinst() {
 	# This is written in src_install (so it's in CONTENTS), but punt all
 	# pending updates to avoid user having to do etc-update (and make the
 	# pkg_postinst logic simpler).
-	rm -f "${EROOT}"/etc/._cfg????_gentoo-release
+	rm -f "${EROOT}"/etc/._cfg????_gentoo-release || die
 
 	# We need to install directories and maybe some dev nodes when building
 	# stages, but they cannot be in CONTENTS.
@@ -177,7 +177,7 @@ pkg_preinst() {
 			emake -C "${ED}/usr/share/${PN}" DESTDIR="${EROOT}" layout-usrmerge
 		fi
 	fi
-	rm -f "${ED}"/usr/share/${PN}/Makefile
+	rm -f "${ED}"/usr/share/${PN}/Makefile || die
 }
 
 src_prepare() {
@@ -223,7 +223,7 @@ src_install() {
 		DESTDIR="${ED}" \
 		install
 	dodoc ChangeLog
-	rm "${ED}"/etc/sysctl.d/README
+	rm "${ED}"/etc/sysctl.d/README || die
 
 	# need the makefile in pkg_preinst
 	insinto /usr/share/${PN}
@@ -241,17 +241,19 @@ pkg_postinst() {
 	for x in master.passwd passwd shadow group fstab ; do
 		[ -e "${EROOT}etc/${x}" ] && continue
 		[ -e "${EROOT}usr/share/baselayout/${x}" ] || continue
-		cp -p "${EROOT}usr/share/baselayout/${x}" "${EROOT}"etc
+		cp -p "${EROOT}usr/share/baselayout/${x}" "${EROOT}"etc || die
 	done
 
 	# Force shadow permissions to not be world-readable #260993
 	for x in shadow ; do
-		[ -e "${EROOT}etc/${x}" ] && chmod o-rwx "${EROOT}etc/${x}"
+		if [ -e "${EROOT}etc/${x}" ] ; then
+			chmod o-rwx "${EROOT}etc/${x}" || die
+		fi
 	done
 
 	# Take care of the etc-update for the user
 	if [ -e "${EROOT}"etc/._cfg0000_gentoo-release ] ; then
-		mv "${EROOT}"etc/._cfg0000_gentoo-release "${EROOT}"etc/gentoo-release
+		mv "${EROOT}"etc/._cfg0000_gentoo-release "${EROOT}"etc/gentoo-release || die
 	fi
 
 	# whine about users that lack passwords #193541
@@ -276,7 +278,7 @@ pkg_postinst() {
 
 	# https://bugs.gentoo.org/361349
 	if use kernel_linux; then
-		mkdir -p "${EROOT}"run
+		mkdir -p "${EROOT}"run || die
 
 		local found fstype mountpoint
 		while read -r _ mountpoint fstype _; do
@@ -299,7 +301,7 @@ pkg_postinst() {
 		# clean up after 2.5 typos
 		# https://bugs.gentoo.org/show_bug.cgi?id=656380
 		if [[ ${x} == 2.5 ]]; then
-			rm -fr "${EROOT}{,usr"
+			rm -fr "${EROOT}{,usr" || die
 		fi
 	done
 

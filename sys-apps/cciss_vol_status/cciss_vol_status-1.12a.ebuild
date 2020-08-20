@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 IUSE=""
 DESCRIPTION="Shows status of logical drives attached to HP SmartArray controllers"
@@ -17,5 +17,5 @@ src_install() {
 	emake DESTDIR="${D}" install
 	dodoc AUTHORS ChangeLog NEWS README
 	exeinto /etc/cron.hourly
-	newexe "${FILESDIR}/cciss_vol_status.cron2" cciss_vol_status
+	newexe "${FILESDIR}/cciss_vol_status-r2.cron" cciss_vol_status
 }
