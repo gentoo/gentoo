@@ -17,7 +17,7 @@ SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~mips ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~arm64 ~mips ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="dbus"
 
 RDEPEND="x11-libs/gtk+:2
