@@ -1,0 +1,164 @@
+From dbd4f1bc1992c2942538980e76a50c8b8a758d70 Mon Sep 17 00:00:00 2001
+From: Takao Fujiwara <tfujiwar@redhat.com>
+Date: Fri, 11 Dec 2015 18:29:49 +0900
+Subject: [PATCH] gsettings-schema-convert: Support python3
+
+https://bugzilla.gnome.org/show_bug.cgi?id=759334
+---
+ gsettings/gsettings-schema-convert | 43 ++++++++++++++++++++------------------
+ 1 file changed, 23 insertions(+), 20 deletions(-)
+
+diff --git a/gsettings/gsettings-schema-convert b/gsettings/gsettings-schema-convert
+index 913cc83..6ccf8c5 100755
+--- a/gsettings/gsettings-schema-convert
++++ b/gsettings/gsettings-schema-convert
+@@ -25,6 +25,9 @@
+ # TODO: we don't support migrating a pair from a gconf schema. It has yet to be
+ #       seen in real-world usage, though.
+ 
++from __future__ import print_function
++
++import codecs
+ import os
+ import sys
+ 
+@@ -398,7 +401,7 @@ class SimpleSchemaParser:
+ 
+     def _word_to_token(self, word):
+         lower = word.lower()
+-        if lower and lower in self.allowed_tokens.keys():
++        if lower and lower in list(self.allowed_tokens.keys()):
+             return lower
+         raise GSettingsSchemaConvertException('\'%s\' is not a valid token.' % lower)
+ 
+@@ -594,7 +597,7 @@ class SimpleSchemaParser:
+             self.object_stack.append(new_object)
+ 
+     def parse(self):
+-        f = open(self.file, 'r')
++        f = codecs.open(self.file, 'r', encoding='utf-8')
+         lines = [ line[:-1] for line in f.readlines() ]
+         f.close()
+ 
+@@ -603,7 +606,7 @@ class SimpleSchemaParser:
+             for line in lines:
+                 current_line_nb += 1
+                 self.parse_line(line)
+-        except GSettingsSchemaConvertException, e:
++        except GSettingsSchemaConvertException as e:
+             raise GSettingsSchemaConvertException('%s:%s: %s' % (os.path.basename(self.file), current_line_nb, e))
+ 
+         return self.root
+@@ -711,7 +714,7 @@ class XMLSchemaParser:
+             schema = self._parse_schema(schema_node)
+ 
+             for (child_schema, child_name) in schema._children:
+-                if parent.has_key(child_schema):
++                if child_schema in parent:
+                     raise GSettingsSchemaConvertException('Child \'%s\' is declared by two different schemas: \'%s\' and \'%s\'.' % (child_schema, parent[child_schema], schema.id))
+                 parent[child_schema] = schema
+ 
+@@ -719,7 +722,7 @@ class XMLSchemaParser:
+ 
+         # now let's move all schemas where they should leave
+         for schema in schemas:
+-            if parent.has_key(schema.id):
++            if schema.id in parent:
+                 parent_schema = parent[schema.id]
+ 
+                 # check that the paths of parent and child are supported by
+@@ -1054,31 +1057,31 @@ def main(args):
+     (options, args) = parser.parse_args()
+ 
+     if len(args) < 1:
+-        print >> sys.stderr, 'Need a filename to work on.'
++        print('Need a filename to work on.', file=sys.stderr)
+         return 1
+     elif len(args) > 1:
+-        print >> sys.stderr, 'Too many arguments.'
++        print('Too many arguments.', file=sys.stderr)
+         return 1
+ 
+     if options.simple and options.xml:
+-        print >> sys.stderr, 'Too many output formats requested.'
++        print('Too many output formats requested.', file=sys.stderr)
+         return 1
+ 
+     if not options.gconf and options.gettext_domain:
+-        print >> sys.stderr, 'Default gettext domain can only be specified when converting a gconf schema.'
++        print('Default gettext domain can only be specified when converting a gconf schema.', file=sys.stderr)
+         return 1
+ 
+     if not options.gconf and options.schema_id:
+-        print >> sys.stderr, 'Default schema ID can only be specified when converting a gconf schema.'
++        print('Default schema ID can only be specified when converting a gconf schema.', file=sys.stderr)
+         return 1
+ 
+     if not options.gconf and options.keep_underscores:
+-        print >> sys.stderr, 'The --keep-underscores option can only be specified when converting a gconf schema.'
++        print('The --keep-underscores option can only be specified when converting a gconf schema.', file=sys.stderr)
+         return 1
+ 
+     argfile = os.path.expanduser(args[0])
+     if not os.path.exists(argfile):
+-        print >> sys.stderr, '\'%s\' does not exist.' % argfile
++        print('\'%s\' does not exist.' % argfile, file=sys.stderr)
+         return 1
+ 
+     if options.output:
+@@ -1095,7 +1098,7 @@ def main(args):
+             try:
+                 parser = GConfSchemaParser(argfile, options.gettext_domain, options.schema_id, options.keep_underscores)
+                 schema_root = parser.parse()
+-            except SyntaxError, e:
++            except SyntaxError as e:
+                 raise GSettingsSchemaConvertException('\'%s\' does not look like a valid gconf schema file: %s' % (argfile, e))
+         else:
+             # autodetect if file is XML or not
+@@ -1104,7 +1107,7 @@ def main(args):
+                 schema_root = parser.parse()
+                 if not options.simple and not options.xml:
+                     options.simple = True
+-            except SyntaxError, e:
++            except SyntaxError as e:
+                 parser = SimpleSchemaParser(argfile)
+                 schema_root = parser.parse()
+                 if not options.simple and not options.xml:
+@@ -1113,10 +1116,10 @@ def main(args):
+         if options.xml:
+             node = schema_root.get_xml_node()
+             try:
+-                output = ET.tostring(node, pretty_print = True)
++                output = ET.tostring(node, pretty_print = True, encoding="unicode")
+             except TypeError:
+                 # pretty_print only works with lxml
+-                output = ET.tostring(node)
++                output = ET.tostring(node, encoding="unicode")
+         else:
+             output = schema_root.get_simple_string()
+ 
+@@ -1124,17 +1127,17 @@ def main(args):
+             sys.stdout.write(output)
+         else:
+             try:
+-                fout = open(options.output, 'w')
++                fout = codecs.open(options.output, 'w', encoding='utf-8')
+                 fout.write(output)
+                 fout.close()
+-            except GSettingsSchemaConvertException, e:
++            except GSettingsSchemaConvertException as e:
+                 fout.close()
+                 if os.path.exists(options.output):
+                     os.unlink(options.output)
+                 raise e
+ 
+-    except GSettingsSchemaConvertException, e:
+-        print >> sys.stderr, '%s' % e
++    except GSettingsSchemaConvertException as e:
++        print('%s' % e, file=sys.stderr)
+         return 1
+ 
+     return 0
+-- 
+2.4.3
+
