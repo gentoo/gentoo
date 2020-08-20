@@ -43,9 +43,13 @@ RDEPEND="
 		')
 	)"
 
-DEPEND="${RDEPEND}
-	>=dev-util/cmake-3.16.2-r1
+DEPEND="
+	${RDEPEND}
 	dev-cpp/tbb
+"
+
+BDEPEND="
+	>=dev-util/cmake-3.16.2-r1
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
@@ -55,7 +59,8 @@ DEPEND="${RDEPEND}
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
 	)
-	test? ( dev-util/cppunit )"
+	test? ( dev-util/cppunit )
+"
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-multilib-header-source.patch"

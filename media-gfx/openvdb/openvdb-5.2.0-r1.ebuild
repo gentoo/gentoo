@@ -39,10 +39,15 @@ RDEPEND="
 			dev-libs/boost:=[python?,${PYTHON_MULTI_USEDEP}]
 			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
 		')
-	)"
+	)
+"
 
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	dev-cpp/tbb
+"
+
+BDEPEND="
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
@@ -52,7 +57,8 @@ DEPEND="${RDEPEND}
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
 	)
-	test? ( dev-util/cppunit )"
+	test? ( dev-util/cppunit )
+"
 
 PATCHES=(
 	"${FILESDIR}/${P}-use-gnuinstalldirs.patch"

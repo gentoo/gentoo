@@ -48,6 +48,9 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	dev-cpp/tbb
+"
+
+BDEPEND="
 	>=dev-util/cmake-3.16.2-r1
 	virtual/pkgconfig
 	doc? (
