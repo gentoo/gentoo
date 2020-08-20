@@ -4265,7 +4265,7 @@ dev-haskell/openglraw 1.3.0.0 1.5.0.0 2.5.1.0 3.2.4.0 3.3.4.0: A raw binding for
 dev-haskell/openssl-streams 1.2.1.0 1.2.2.0: OpenSSL network support for io-streams
 dev-haskell/options 1.2.1.1: A powerful and easy-to-use command-line option parser
 dev-haskell/optparse-applicative 0.5.2.1 0.7.0.2 0.8.1-r1 0.9.1.1 0.11.0.2 0.13.0.0 0.14.2.0 0.15.1.0: Utilities and combinators for parsing command line options
-dev-haskell/optparse-simple 0.0.3 0.1.1.2: Simple interface to optparse-applicative
+dev-haskell/optparse-simple 0.1.1.3: Simple interface to optparse-applicative
 dev-haskell/pandoc-citeproc 0.1.2.1 0.2 0.3.1 0.6 0.7.2 0.8.1.3 0.10.4 0.10.4.1 0.17.0.1: Supports using pandoc with citeproc
 dev-haskell/pandoc-types 1.12.3 1.12.4.5 1.12.4.7 1.17.0.4 1.20: Types for representing a structured document
 dev-haskell/pango 0.12.5.3 0.13.1.1 0.13.3.1 0.13.6.1 0.13.8.1: Binding to the Pango text rendering engine
@@ -9949,8 +9949,8 @@ dev-ruby/highline 1.7.8 2.0.3: Highline is a high-level command-line IO library 
 dev-ruby/hipchat 1.6.0: Ruby library to interact with HipChat
 dev-ruby/hiredis 0.6.3: Wrapper for hiredis (protocol serialization/deserialization and blocking I/O)
 dev-ruby/histogram 0.2.4.1: Gives objects the ability to 'histogram' in several useful ways
-dev-ruby/hitimes 1.3.1 2.0.0: A fast, high resolution timer library
-dev-ruby/hocon 1.2.5 1.2.6 1.3.0 1.3.1: This is a port of the Typesafe Config library to Ruby.
+dev-ruby/hitimes 2.0.0: A fast, high resolution timer library
+dev-ruby/hocon 1.2.5 1.3.1: This is a port of the Typesafe Config library to Ruby.
 dev-ruby/hoe 3.16.0 3.21.0: Hoe extends rake to provide full project automation
 dev-ruby/hoe-seattlerb 1.3.5: Hoe plugins providing tasks used by seattle.rb
 dev-ruby/hpricot 0.8.6-r5: A fast and liberal HTML parser for Ruby
@@ -10053,7 +10053,7 @@ dev-ruby/multi_test 0.1.2: A uniform interface for Ruby testing libraries
 dev-ruby/multi_xml 0.6.0-r1: A generic swappable back-end for XML parsing
 dev-ruby/multipart-post 2.1.1: Adds a streamy multipart form post capability to Net::HTTP
 dev-ruby/mustache 1.0.5 1.1.1: Mustache is a framework-agnostic way to render logic-free views
-dev-ruby/mustermann 1.0.3 1.1.1: A library implementing patterns that behave like regular expressions
+dev-ruby/mustermann 1.1.1: A library implementing patterns that behave like regular expressions
 dev-ruby/mysql2 0.4.10-r3 0.5.3: A modern, simple and very fast Mysql library for Ruby - binding to libmysql
 dev-ruby/nagios 0.0.4-r1: Nagios-rb is a compact framework for writing Nagios plugins
 dev-ruby/nagios_analyzer 0.0.5-r1: A simple parser for Nagios status files
