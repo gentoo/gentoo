@@ -4,6 +4,8 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
+DISTUTILS_USE_SETUPTOOLS="rdepend"
+
 inherit distutils-r1
 
 DESCRIPTION="Generate block-diagram image from text"
@@ -12,17 +14,16 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ia64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/funcparserlib-0.3.6[${PYTHON_USEDEP}]
-	>=dev-python/pillow-2.2.1[${PYTHON_USEDEP}]
+	>=dev-python/pillow-3.0.0[${PYTHON_USEDEP}]
 	dev-python/webcolors[${PYTHON_USEDEP}]
 "
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		dev-python/mock[${PYTHON_USEDEP}]
@@ -33,7 +34,6 @@ DEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}/blockdiag-1.5.3-py2_7-test-fix.patch")
 python_prepare_all() {
 	sed -i -e /build-base/d setup.cfg || die
 	# unnecessary dep
