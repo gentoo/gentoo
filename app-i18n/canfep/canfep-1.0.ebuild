@@ -1,13 +1,14 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit toolchain-funcs
 
 DESCRIPTION="Canna Japanese kana-kanji frontend processor on console"
-HOMEPAGE="http://www.geocities.co.jp/SiliconValley-Bay/7584/canfep/"
-SRC_URI="http://www.geocities.co.jp/SiliconValley-Bay/7584/${PN}/${P}.tar.gz
+#HOMEPAGE="http://www.geocities.co.jp/SiliconValley-Bay/7584/canfep/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${P}.tar.gz
 	unicode? ( http://hp.vector.co.jp/authors/VA020411/patches/${PN}_utf8.diff )"
 
 LICENSE="canfep"
@@ -17,8 +18,8 @@ IUSE="unicode"
 
 RDEPEND="app-i18n/canna
 	sys-libs/ncurses:="
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	use unicode && eapply "${DISTDIR}"/${PN}_utf8.diff
@@ -31,7 +32,7 @@ src_compile() {
 	emake \
 		CC="$(tc-getCXX)" \
 		CFLAGS="${CXXFLAGS}" \
-		LIBS="-lcanna $(pkg-config --libs ncurses)"
+		LIBS="-lcanna $($(tc-getPKG_CONFIG) --libs ncurses)"
 }
 
 src_install() {
