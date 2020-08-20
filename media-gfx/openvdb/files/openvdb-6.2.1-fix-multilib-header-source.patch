@@ -1,3 +1,12 @@
+This patch changes the default location that the header files look for
+IlmBaseConfig.h as in Gentoo the version containg the ILMBASE_VERSION_MAJOR
+and ILMBASE_VERSION_MINOR is stored under /usr/include/chost.
+
+Without this patch, compilation fails as it is unable to identify the
+required IlmBase version.
+
+Based on the fix multilib header patch for 7.1.0 by Bernd Waibel
+
 diff -Naur a/cmake/FindIlmBase.cmake b/cmake/FindIlmBase.cmake
 --- a/cmake/FindIlmBase.cmake	2020-02-02 01:03:55.000000000 +0800
 +++ b/cmake/FindIlmBase.cmake	2020-02-02 01:09:05.000000000 +0800
