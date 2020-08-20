@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit user systemd
+inherit systemd
 
 MY_PN=${PN/-bin/}
 MY_PV=${PV/_beta/-beta}
@@ -17,18 +17,13 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND=""
+DEPEND="acct-group/grafana
+	acct-user/grafana"
 RDEPEND="${DEPEND}
 	media-libs/fontconfig"
 
-QA_EXECSTACK="usr/share/grafana/tools/phantomjs/phantomjs"
-QA_PREBUILT="usr/bin/grafana-* ${QA_EXECSTACK}"
+QA_PREBUILT="usr/bin/grafana-*"
 QA_PRESTRIPPED=${QA_PREBUILT}
-
-pkg_setup() {
-	enewgroup grafana
-	enewuser grafana -1 -1 /usr/share/grafana grafana
-}
 
 src_install() {
 	keepdir /etc/grafana
@@ -43,12 +38,6 @@ src_install() {
 	dobin bin/grafana-cli
 	dobin bin/grafana-server
 
-	exeinto /usr/share/grafana/tools/phantomjs
-	doexe tools/phantomjs/phantomjs
-
-	insinto /usr/share/grafana/tools/phantomjs
-	doins tools/phantomjs/render.js
-
 	newconfd "${FILESDIR}"/grafana.confd grafana
 	newinitd "${FILESDIR}"/grafana.initd.3 grafana
 	systemd_newunit "${FILESDIR}"/grafana.service grafana.service
@@ -62,10 +51,14 @@ src_install() {
 }
 
 postinst() {
-	elog "${PN} has built-in log rotation. Please see [log.file] section of"
-	elog "/etc/grafana/grafana.ini for related settings."
-	elog
-	elog "You may add your own custom configuration for app-admin/logrotate if you"
-	elog "wish to use external rotation of logs. In this case, you also need to make"
-	elog "sure the built-in rotation is turned off."
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+		# This is a new installation
+
+		elog "${PN} has built-in log rotation. Please see [log.file] section of"
+		elog "/etc/grafana/grafana.ini for related settings."
+		elog
+		elog "You may add your own custom configuration for app-admin/logrotate if you"
+		elog "wish to use external rotation of logs. In this case, you also need to make"
+		elog "sure the built-in rotation is turned off."
+	fi
 }
