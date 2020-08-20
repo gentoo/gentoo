@@ -5,16 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		This package provides an ODBC database backend for HDBC.
-		It is cross-platform and supports unixODBC on Unix/Linux/POSIX platforms
-		and Microsoft ODBC on Windows.  It is also the preferred way to access
-		MySQL databases from Haskell.
-	</longdescription>
-	<use>
-		<flag name="buildstresstest">Build stress test</flag>
-	</use>
-	<upstream>
-		<remote-id type="github">hdbc/hdbc-odbc</remote-id>
-	</upstream>
 </pkgmetadata>
