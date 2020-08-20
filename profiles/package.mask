@@ -840,13 +840,6 @@ sys-kernel/genkernel-next
 # Removal in 30 days. Bug #732136.
 dev-go/goptlib
 
-# Michał Górny <mgorny@gentoo.org> (2020-07-04)
-# Unmaintained.  Requires scipy-python2.  Current version is from 2015,
-# latest upstream release from 2017.  The only revdep is masked
-# for removal.
-# Removal in 30 days.  Bug #730760.
-dev-python/algopy
-
 # Jonas Stein <jstein@gentoo.org> (2020-07-04)
 # Last rite, dead upstream, several open bugs.
 # Removal after 2020-09-01
