@@ -136,6 +136,9 @@ pkg_postrm() {
 }
 
 kill_gconf() {
+	# Avoid harmless error message. See bug #523868.
+	mkdir -p "${HOME}"/.config || die
+
 	# This function will kill all running gconfd-2 that could be causing troubles
 	if [ -x "${EPREFIX}"/usr/bin/gconftool-2 ]
 	then
