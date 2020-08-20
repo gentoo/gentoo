@@ -1154,7 +1154,6 @@ app-dicts/stardict-langdao-en-zh-gb 2.4.2: Stardict Dictionary English to Simpli
 app-dicts/stardict-langdao-zh-en-gb 2.4.2: Stardict Dictionary Simplified Chinese (GB) to English
 app-dicts/stardict-mova-smiley 2.4.2: Stardict Dictionary for Mova.org's Smiley Dictionary
 app-dicts/stardict-oxford-en-zh-gb 2.4.2: Stardict Dictionary English to Simplified Chinese (GB)
-app-dicts/stardict-quick-eng-fra 2.4.2: Stardict Dictionary English to French
 app-dicts/stardict-quick-eng-jpn 2.4.2: Stardict Dictionary English to Japanese Romaji
 app-dicts/stardict-quick-jpn-eng 2.4.2: Stardict Dictionary Japanese Romaji to English
 app-dicts/stardict-quick-ru-en 2.4.2: Quick but still useful Russian to English dictionary
@@ -2441,7 +2440,6 @@ app-misc/hivex 1.3.14 1.3.18: Library for reading and writing Windows Registry '
 app-misc/hodie 1.5: a Latin date(1)
 app-misc/i2bits 0.1.0: Utility to convert hex or dec to binary format
 app-misc/icdiff 1.9.1 1.9.5: Colourized diff that supports side-by-side diffing
-app-misc/ifp-line 0.3: iRiver iFP open-source driver
 app-misc/imgurbash2 3.1 3.2 9999: Bash script that uploads/deletes images to/from imgur
 app-misc/inputlircd 0.0.1_pre15-r2: Inputlirc daemon to utilize /dev/input/event*
 app-misc/interceptty 0.6-r1: a program that can sit between a serial port and an application
@@ -8310,7 +8308,7 @@ dev-python/jaraco-packaging 6.2-r1 8.1.0: Tools to supplement packaging Python r
 dev-python/jaraco-stream 3.0.0: Routines for handling streaming data
 dev-python/jaraco-text 3.2.0: Text utilities used by other projects by developer jaraco
 dev-python/jdcal 1.4.1: Julian dates from proleptic Gregorian and Julian calendars
-dev-python/jedi 0.15.2 0.17.0 0.17.1-r1 0.17.2: Autocompletion library for Python
+dev-python/jedi 0.15.2 0.17.1-r1 0.17.2-r1: Autocompletion library for Python
 dev-python/jeepney 0.4.3: Low-level, pure Python DBus protocol wrapper
 dev-python/jellyfish 0.8.2: Python module for doing approximate and phonetic matching of strings
 dev-python/jikanpy 3.4.2 4.2.1: Python wrapper for jikan.moe API.
@@ -12956,7 +12954,6 @@ media-gfx/ttygif 1.80_p20181218: Convert terminal recordings to animated gifs
 media-gfx/tuxpaint 0.9.21-r2: Drawing program designed for young children
 media-gfx/tuxpaint-stamps 20090628-r1: Set of 'Rubber Stamp' images which can be used within Tux Paint
 media-gfx/ufraw 0.22-r3: RAW Image format viewer and GIMP plugin
-media-gfx/uniconvertor 2.0_pre379-r2: Convert vector graphic file formats like .cdr, .svg, wmf and more.
 media-gfx/valentina 0.6.1-r1 9999: Cloth patternmaking software
 media-gfx/videorbits 2.205: a collection of programs for creating high dynamic range images
 media-gfx/viewer 0.8.0-r1: A stereo pair image viewer (supports ppm's only)
