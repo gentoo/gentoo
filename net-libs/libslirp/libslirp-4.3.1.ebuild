@@ -23,4 +23,5 @@ S=${WORKDIR}/${MY_P}
 src_prepare() {
 	default
 	echo "${PV}" > .tarball-version || die
+	echo -e "#!${BASH}\necho -n \$(cat '${S}/.tarball-version')" > build-aux/git-version-gen || die
 }
