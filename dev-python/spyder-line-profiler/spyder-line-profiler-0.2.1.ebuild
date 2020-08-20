@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_7 )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit distutils-r1 virtualx
 
@@ -17,11 +17,13 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-python/line_profiler[${PYTHON_USEDEP}]
-	>=dev-python/spyder-4.0.0[${PYTHON_USEDEP}]"
+	>=dev-python/spyder-4.0.0[${PYTHON_USEDEP}]
+	<dev-python/spyder-5.0.0[${PYTHON_USEDEP}]
+"
 
 DEPEND="test? (
-	dev-python/mock[${PYTHON_USEDEP}]
-	dev-python/pytest-qt[${PYTHON_USEDEP}] )"
+	dev-python/pytest-qt[${PYTHON_USEDEP}]
+)"
 
 distutils_enable_tests pytest
 
