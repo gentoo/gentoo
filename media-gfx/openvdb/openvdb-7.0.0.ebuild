@@ -39,8 +39,8 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-libs/boost:=[numpy?,python?,${PYTHON_MULTI_USEDEP}]
-			numpy? ( dev-python/numpy[${PYTHON_MULTI_USEDEP}] )
+			dev-libs/boost:=[numpy?,python?,${PYTHON_USEDEP}]
+			numpy? ( dev-python/numpy[${PYTHON_USEDEP}] )
 		')
 	)
 "
