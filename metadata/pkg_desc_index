@@ -6435,7 +6435,7 @@ dev-perl/Exporter-Tiny 1.2.1 1.2.2: An exporter with the features of Sub::Export
 dev-perl/ExtUtils-AutoInstall 0.640.0: Automatic installation of dependencies via CPAN from within Makefile.PL
 dev-perl/ExtUtils-CChecker 0.100.0: Configure-time utilities for using C headers
 dev-perl/ExtUtils-Config 0.8.0: A wrapper for perl's configuration
-dev-perl/ExtUtils-CppGuess 0.110.0 0.140.0: Guess C++ compiler and flags
+dev-perl/ExtUtils-CppGuess 0.110.0 0.140.0 0.210.0: Guess C++ compiler and flags
 dev-perl/ExtUtils-Depends 0.405.0 0.800.0: Easily build XS extensions that depend on XS extensions
 dev-perl/ExtUtils-F77 1.200.0-r1 1.240.0: Facilitate use of FORTRAN from Perl/XS code
 dev-perl/ExtUtils-Helpers 0.26.0: Various portability utilities for module builders
