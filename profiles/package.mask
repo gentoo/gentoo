@@ -822,7 +822,6 @@ sys-cluster/kube-scheduler
 net-print/pkpgcounter
 <sci-chemistry/chemex-2018
 sci-libs/scipy-python2
-sci-visualization/pyxplot
 
 # Jonas Stein <jstein@gentoo.org> (2020-07-04)
 # Last rite, dead upstream, several open bugs.
