@@ -33,7 +33,7 @@ multilib_layout() {
 
 	if [[ -z "${SYMLINK_LIB}" || ${SYMLINK_LIB} = no ]] ; then
 		prefix_lst=( "${EROOT}"{,usr/,usr/local/} )
-		for prefix in ${prefix_lst[@]}; do
+		for prefix in "${prefix_lst[@]}"; do
 			for libdir in ${libdirs}; do
 				dir="${prefix}${libdir}"
 				if [[ -e "${dir}" ]]; then
@@ -153,7 +153,8 @@ multilib_layout() {
 	if ! use split-usr ; then
 		for libdir in ${libdirs}; do
 			if [[ ! -e "${EROOT}${libdir}" ]]; then
-				ln -s usr/"${libdir}" "${EROOT}${libdir}"
+				ln -s usr/"${libdir}" "${EROOT}${libdir}" ||
+					die " Unable to make ${EROOT}${libdir} symlink"
 			fi
 		done
 	fi
@@ -222,6 +223,7 @@ src_install() {
 		DESTDIR="${ED}" \
 		install
 	dodoc ChangeLog
+	rm "${ED}"/etc/sysctl.d/README
 
 	# need the makefile in pkg_preinst
 	insinto /usr/share/${PN}
