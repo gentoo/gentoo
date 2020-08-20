@@ -834,12 +834,6 @@ app-mobilephone/wammu
 # Removal in 30 days
 sys-kernel/genkernel-next
 
-# Marek Szuba <marecki@gentoo.org> (2020-07-11)
-# Uses golang-* eclasses, only a library, all former reverse
-# dependencies have long since switched to vendoring.
-# Removal in 30 days. Bug #732136.
-dev-go/goptlib
-
 # Jonas Stein <jstein@gentoo.org> (2020-07-04)
 # Last rite, dead upstream, several open bugs.
 # Removal after 2020-09-01
