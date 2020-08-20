@@ -23,6 +23,7 @@ COMMON_DEPEND="!media-libs/jpeg:0
 RDEPEND="${COMMON_DEPEND}
 	java? ( >=virtual/jre-1.5 )"
 DEPEND="${COMMON_DEPEND}
+	>=dev-util/cmake-3.16.5
 	amd64? ( ${ASM_DEPEND} )
 	x86? ( ${ASM_DEPEND} )
 	amd64-fbsd? ( ${ASM_DEPEND} )
