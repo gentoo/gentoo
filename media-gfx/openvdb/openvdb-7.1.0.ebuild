@@ -104,7 +104,7 @@ src_configure() {
 		-DUSE_LOG4CPLUS=ON
 		-DUSE_NUMPY=$(usex numpy)
 		-DPYOPENVDB_INSTALL_DIRECTORY="${python_get_sitedir}"
-		-DPython_EXECUTABLE="${PYTHON}"
+		-DPython_EXECUTABLE="${EPYTHON}"
 	)
 
 	if use cpu_flags_x86_avx; then
