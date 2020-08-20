@@ -42,22 +42,22 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=[nls?,threads(+)]
-	dev-libs/lzo:2
+	dev-libs/lzo:2=
 	$(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 	')
-	media-libs/freetype
+	media-libs/freetype:=
 	media-libs/glew:*
-	media-libs/libpng:0=
+	media-libs/libpng:=
 	media-libs/libsamplerate
-	sys-libs/zlib
+	sys-libs/zlib:=
 	virtual/glu
-	virtual/jpeg:0=
+	virtual/jpeg
 	virtual/libintl
 	virtual/opengl
 	alembic? ( >=media-gfx/alembic-1.7.12[boost(+),hdf(+)] )
-	collada? ( >=media-libs/opencollada-1.6.68:= )
+	collada? ( >=media-libs/opencollada-1.6.68 )
 	color-management? ( media-libs/opencolorio )
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k?] )
@@ -69,7 +69,7 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	jack? ( virtual/jack )
 	jemalloc? ( dev-libs/jemalloc:= )
-	jpeg2k? ( media-libs/openjpeg:2 )
+	jpeg2k? ( media-libs/openjpeg:2= )
 	llvm? ( sys-devel/llvm:= )
 	ndof? (
 		app-misc/spacenavd
@@ -78,26 +78,26 @@ RDEPEND="${PYTHON_DEPS}
 	nls? ( virtual/libiconv )
 	openal? ( media-libs/openal )
 	opencl? ( virtual/opencl )
-	openimageio? ( media-libs/openimageio:= )
+	openimageio? ( media-libs/openimageio )
 	openexr? (
 		media-libs/ilmbase:=
 		media-libs/openexr:=
 	)
-	opensubdiv? ( >=media-libs/opensubdiv-3.4.0:=[cuda=,opencl=] )
+	opensubdiv? ( >=media-libs/opensubdiv-3.4.0[cuda=,opencl=] )
 	openvdb? (
-		>=media-gfx/openvdb-7.0.0:=[abi6-compat(-)?,abi7-compat(-)?]
+		>=media-gfx/openvdb-7.0.0[abi6-compat(-)?,abi7-compat(-)?]
 		dev-cpp/tbb
-		dev-libs/c-blosc
+		dev-libs/c-blosc:=
 	)
-	osl? ( >=media-libs/osl-1.10.9:= )
+	osl? ( media-libs/osl )
 	sdl? ( media-libs/libsdl2[sound,joystick] )
 	sndfile? ( media-libs/libsndfile )
-	tiff? ( media-libs/tiff:0 )
+	tiff? ( media-libs/tiff )
 	valgrind? ( dev-util/valgrind )
 "
 
 DEPEND="${RDEPEND}
-	dev-cpp/eigen
+	dev-cpp/eigen:=
 "
 
 BDEPEND="
