@@ -6459,7 +6459,7 @@ dev-perl/File-Flock 2014.10.0: flock() wrapper. Auto-create locks
 dev-perl/File-Grep 0.20.0-r2: Find matches to a pattern in a series of files and related functions
 dev-perl/File-HomeDir 1.2.0: Get home directory for self or other user
 dev-perl/File-KeePass 2.30.0-r1: Interface to KeePass V1 and V2 database files
-dev-perl/File-LibMagic 1.150.0: Perl wrapper for libmagic
+dev-perl/File-LibMagic 1.150.0 1.220.0: Perl wrapper for libmagic
 dev-perl/File-Listing 6.40.0-r1: Parse directory listings
 dev-perl/File-MMagic 1.300.0-r1: The Perl Image-Info Module
 dev-perl/File-Map 0.640.0: Memory mapping made simple and safe
@@ -11274,7 +11274,7 @@ games-emulation/desmume 0.9.11-r2: Nintendo DS emulator
 games-emulation/dgen-sdl 1.33-r1: A Linux/SDL-Port of the famous DGen MegaDrive/Genesis-Emulator
 games-emulation/dolphin 5.0_p20200705 9999: Gamecube and Wii game emulator
 games-emulation/dosbox 0.74.3 0.75_pre4302 9999: DOS emulator
-games-emulation/dosbox-staging 0.75.0 0.75.1: Modernized DOSBox soft-fork
+games-emulation/dosbox-staging 0.75.0 0.75.1 0.75.1-r1: Modernized DOSBox soft-fork
 games-emulation/emutos 0.9.12: Single-user single-tasking operating system for 32-bit Atari computer emulators
 games-emulation/fakenes 0.5.8-r3: Portable, Open Source NES emulator which is written mostly in C
 games-emulation/fbzx 3.0.0-r1: Full Screen Sinclair Spectrum emulator
@@ -11847,6 +11847,7 @@ gnome-extra/gnome-power-manager 3.32.0: GNOME power statistics
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extension-appindicator 33: Support Ubuntu AppIndicators and KStatusNotifierItems in Gnome
 gnome-extra/gnome-shell-extension-applications-overview-tooltip 7 9: Show tooltip with full name and description
+gnome-extra/gnome-shell-extension-bing-wallpaper 27: Changes your wallpaper daily to the bing.com background image
 gnome-extra/gnome-shell-extension-bluetooth-quick-connect 10 13: Allow to connect bluetooth paired devices from gnome control panel
 gnome-extra/gnome-shell-extension-dash-to-panel 37 38 39: An icon taskbar for the Gnome Shell
 gnome-extra/gnome-shell-extension-desktop-icons 20.04.0-r1: A GNOME Shell extension for providing desktop icons
@@ -11871,7 +11872,7 @@ gnome-extra/nautilus-sendto 3.8.6: A nautilus extension for sending files to loc
 gnome-extra/nemo 4.4.2: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.8.24-r1 1.16.0 1.18.0: NetworkManager connection editor and applet
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
-gnome-extra/pch-session 3.34.3: Unofficial gnome based session with different default settings and extensions
+gnome-extra/pch-session 3.34.3 3.36.0: Unofficial gnome based session with different default settings and extensions
 gnome-extra/polkit-gnome 0.105-r2: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
 gnome-extra/sushi 3.34.0: A quick previewer for Nautilus, the GNOME file manager
@@ -13682,7 +13683,7 @@ media-sound/alsaplayer 0.99.81-r1: A heavily multi-threaded pluggable audio play
 media-sound/amsynth 1.8.0: Virtual analogue synthesizer
 media-sound/apetag 1.12-r2: Command-line ape 2.0 tagger
 media-sound/apulse 0.1.12-r4 0.1.13: PulseAudio emulation for ALSA
-media-sound/aqualung 1.0-r3 1.0-r4 1.0-r5: Music player for a wide range of formats designed for gapless playback
+media-sound/aqualung 1.0-r3 1.0-r5: Music player for a wide range of formats designed for gapless playback
 media-sound/ardour 6.2-r1 9999: Digital Audio Workstation
 media-sound/ario 1.6: GTK client for MPD inspired by Rhythmbox but much lighter and faster
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
@@ -17606,7 +17607,7 @@ sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via s
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.0-r2 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.4.58 5.4.59 5.7.10 5.7.12 5.7.13 5.7.15 5.7.16 5.8.1 5.8.2: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.4.58 5.4.59 5.7.10 5.7.12 5.7.13 5.7.15 5.7.16 5.8.1 5.8.2: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.228 4.4.229 4.4.230 4.4.231 4.4.232 4.9.228 4.9.229 4.9.230 4.9.231 4.9.232 4.14.185 4.14.191 4.14.192 4.14.193 4.19.129 4.19.138 4.19.139 4.19.140 5.4.48 5.4.57 5.4.58 5.4.59 5.7.14 5.7.15 5.7.16 5.8.0 5.8.0-r1 5.8.1 5.8.2 5.8.3: Full sources including the Gentoo patchset for the 5.8 kernel tree
+sys-kernel/gentoo-sources 4.4.228 4.4.229 4.4.230 4.4.231 4.4.232 4.9.228 4.9.229 4.9.230 4.9.231 4.9.232 4.14.185 4.14.191 4.14.192 4.14.193 4.19.129 4.19.138 4.19.139 4.19.140 5.4.48 5.4.57 5.4.58 5.4.59 5.7.14 5.7.15 5.7.16 5.7.17 5.8.0 5.8.0-r1 5.8.1 5.8.2 5.8.3: Full sources including the Gentoo patchset for the 5.8 kernel tree
 sys-kernel/git-sources 5.9_rc1: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
