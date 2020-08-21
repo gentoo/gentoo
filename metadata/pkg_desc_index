@@ -7883,7 +7883,7 @@ dev-python/async_generator 1.10: Making it easy to write async iterators in Pyth
 dev-python/async_timeout 3.0.1: Timeout context manager for asyncio programs
 dev-python/atomicwrites 1.4.0: Atomic file writes
 dev-python/atpublic 1.0: A decorator and function to polulate a module's __all__ and the module globals.
-dev-python/attrs 19.3.0: Attributes without boilerplate
+dev-python/attrs 19.3.0 20.1.0: Attributes without boilerplate
 dev-python/audioread 2.1.8-r2: Wrapper for audio file decoding using FFmpeg or GStreamer
 dev-python/authheaders 0.13.0: A library wrapping email authentication header verification and generation.
 dev-python/authres 1.2.0: Parse and generate Authentication-Results headers
@@ -7985,7 +7985,7 @@ dev-python/cliff 3.3.0 3.4.0: Command Line Interface Formulation Framework
 dev-python/clint 0.5.1-r1: Python Command-line Application Tools
 dev-python/cloudlib 0.5.0: Cloud middleware for in application use.
 dev-python/cloudpickle 1.4.1 1.5.0: Extended pickling support for Python objects
-dev-python/cmd2 1.1.0 1.2.0 1.2.1 1.3.0 1.3.1 1.3.2 1.3.3: Extra features for standard library's cmd module
+dev-python/cmd2 1.1.0 1.2.0 1.2.1 1.3.0 1.3.1 1.3.2 1.3.3 1.3.4: Extra features for standard library's cmd module
 dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
 dev-python/colorama 0.4.3: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/colorclass 2.2.0-r1: Colorful worry-free console applications for multiple platforms
@@ -8251,7 +8251,7 @@ dev-python/humanize 2.4.1 2.5.0 2.6.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 19.0.0 20.0.1: A featureful, correct URL for Python
-dev-python/hypothesis 4.57.1 5.16.3 5.21.0 5.23.9 5.23.12 5.24.0 5.24.2 5.24.3 5.24.4 5.26.0 5.26.1: A library for property based testing
+dev-python/hypothesis 4.57.1 5.16.3 5.21.0 5.23.9 5.23.12 5.24.0 5.24.2 5.24.3 5.24.4 5.26.0 5.26.1 5.27.0: A library for property based testing
 dev-python/icalendar 4.0.6: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.8 2.10: Internationalized Domain Names in Applications (IDNA)
