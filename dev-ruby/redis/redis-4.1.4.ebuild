@@ -30,6 +30,8 @@ RUBY_S="${MY_P}"
 
 PATCHES=( "${FILESDIR}/${PN}-4.1.4-local-redis-server.patch" )
 
+ruby_add_bdepend "test? ( dev-ruby/mocha )"
+
 all_ruby_prepare() {
 	# call me impatient, but this way we don't need netcat
 	sed -i \
