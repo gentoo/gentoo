@@ -458,7 +458,7 @@ app-admin/abrt 2.14.0 2.14.1: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 3.6.13-r2 4.0.19-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0.13: A webserver log analyzer
-app-admin/ansible 2.9.10 2.9.11 2.9.12 2.10.0 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.9.12 2.10.0 9999: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-cmdb 1.28: Ansible Configuration Management Database
 app-admin/ansible-lint 4.0.1 4.1.0: Checks ansible playbooks for practices and behaviour that can be improved
 app-admin/apache-tools 2.4.41 2.4.43 2.4.46: Useful Apache tools - htdigest, htpasswd, ab, htdbm
@@ -9852,8 +9852,8 @@ dev-ruby/crass 1.0.4 1.0.5 1.0.6: Ruby CSS parser that's fully compliant with th
 dev-ruby/creole 0.5.0: Creole-to-HTML converter for Creole, the lightweight markup language
 dev-ruby/cri 2.15.5 2.15.6 2.15.7 2.15.9 2.15.10: Cri is a library for building easy-to-use commandline tools
 dev-ruby/css_parser 1.6.0 1.7.0 1.7.1: Sass-based Stylesheet Framework
-dev-ruby/curb 0.9.9 0.9.10: Ruby-language bindings for libcurl
-dev-ruby/curses 1.2.7 1.3.0 1.3.1 1.3.2: Ruby binding for curses, ncurses, and PDCurses
+dev-ruby/curb 0.9.10: Ruby-language bindings for libcurl
+dev-ruby/curses 1.3.1 1.3.2: Ruby binding for curses, ncurses, and PDCurses
 dev-ruby/d3_rails 4.1.1: Ruby on Rails integration for the Javascript Data Visualization Framework, D3
 dev-ruby/daemon_controller 1.2.0-r1: Library to start and stop specific daemons programmatically in a robust manner
 dev-ruby/daemons 1.3.1: Wrap existing ruby scripts to be run as a daemon
@@ -9887,7 +9887,7 @@ dev-ruby/elasticsearch-transport 6.8.0 6.8.1 6.8.2: Ruby integrations for ES, el
 dev-ruby/em-websocket 0.5.1: EventMachine based WebSocket server
 dev-ruby/equalizer 0.0.11: Module to define equality, equivalence and inspection methods
 dev-ruby/equatable 0.5.0 0.6.0 0.6.1: Allows ruby objects to implement equality comparison and inspection methods
-dev-ruby/erubi 1.8.0 1.9.0: a ERB template engine for ruby; a simplified fork of Erubis
+dev-ruby/erubi 1.9.0: a ERB template engine for ruby; a simplified fork of Erubis
 dev-ruby/erubis 2.7.0-r2: Erubis is an implementation of eRuby
 dev-ruby/ethon 0.12.0: Very lightweight libcurl wrapper
 dev-ruby/evented-spec 0.9.0: A set of helpers to help you test your asynchronous code
@@ -10245,7 +10245,7 @@ dev-ruby/ruby-progressbar 1.10.0 1.10.1 1.10.1-r1: A Text Progress Bar Library f
 dev-ruby/ruby-rc4 0.1.5-r2: A pure Ruby implementation of the Rc4 algorithm
 dev-ruby/ruby-romkan 0.4-r6: A Romaji <-> Kana conversion library for Ruby
 dev-ruby/ruby-rsvg 3.3.2 3.3.6 3.3.7 3.4.3: Ruby bindings for librsvg
-dev-ruby/ruby-sdl 2.1.2-r2: Ruby/SDL: Ruby bindings for SDL
+dev-ruby/ruby-sdl 2.1.2-r2 2.1.2-r3: Ruby/SDL: Ruby bindings for SDL
 dev-ruby/ruby-shadow 2.5.0: ruby shadow bindings
 dev-ruby/ruby-shout 2.2.2: A Ruby interface to libshout2
 dev-ruby/ruby-termios 1.0.2-r1: A Ruby interface to termios
