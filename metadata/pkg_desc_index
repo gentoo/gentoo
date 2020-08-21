@@ -1888,7 +1888,7 @@ app-emulation/cri-tools 1.18.0: CLI and validation tools for Kubelet Container R
 app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13.1.2-r2 13.1.3-r2 13.2.0-r2 14.0.3-r1 14.1.4-r1 15.0.0 15.0.1 15.1.0 15.2.0 15.3.0 15.3.1 16.0.0 16.2.5 17.5.0 17.5.0-r1 17.5.1 18.0.0 18.1.0 18.5.0-r1 19.0.1-r1: Commercial version of app-emulation/wine with paid support
 app-emulation/crun 0.14.1: A fast and low-memory footprint OCI Container Runtime fully written in C
 app-emulation/dinero 4.7-r1: Cache simulator
-app-emulation/diskimage-builder 3.1.0 3.2.0 9999: Golden Disk Image builder.
+app-emulation/diskimage-builder 3.1.0 3.2.1 9999: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.5.20: DLX Simulator
 app-emulation/docker 19.03.8 19.03.12: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-bench-security 1.3.2 1.3.3: Test for best practices around deploying docker containers
@@ -6451,8 +6451,8 @@ dev-perl/FLV-AudioExtractor 0.010.0 0.10.0-r1: Extract audio from Flash Videos
 dev-perl/Fatal-Exception 0.50.0-r2: Succeed or throw exception
 dev-perl/Feed-Find 0.70.0-r2 0.70.0-r3: Syndication feed auto-discovery
 dev-perl/Festival-Client-Async 0.30.300-r2: Non-blocking interface to a Festival server
-dev-perl/File-BOM 0.160.0: Utilities for handling Byte Order Marks
-dev-perl/File-BaseDir 0.30.0-r1 0.70.0: Use the Freedesktop.org base directory specification
+dev-perl/File-BOM 0.160.0 0.180.0: Utilities for handling Byte Order Marks
+dev-perl/File-BaseDir 0.70.0 0.80.0: Use the Freedesktop.org base directory specification
 dev-perl/File-Copy-Link 0.140.0: Perl extension for replacing a link by a copy of the linked file
 dev-perl/File-Copy-Recursive 0.380.0-r1 0.450.0: uses File::Copy to recursively copy dirs
 dev-perl/File-DesktopEntry 0.220.0: Object to handle .desktop files
