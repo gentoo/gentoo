@@ -706,13 +706,6 @@ net-analyzer/pmacct
 net-libs/nDPI
 
 # Jaco Kroon <jaco@uls.co.za> (2020-07-20)
-# net-misc/asterisk was only consumer, dependency now removed (due to failures
-# in osptoolkit build). No known users of USE=osplookup in net-misc/asterisk,
-# and unknown usefulness. bugs #674346, #731250
-# Removal in 30 days.
-net-libs/osptoolkit
-
-# Jaco Kroon <jaco@uls.co.za> (2020-07-20)
 # Asterisk 11 is EOL. All users should migrate to asterisk 13.
 # Removal unspecified, will remain for the foreseeable future. If you need
 # help migrating, contact jkroon in #gentoo-voip on freenode.
