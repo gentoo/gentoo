@@ -2818,7 +2818,7 @@ app-text/blogc 0.19.0 9999: A blog compiler
 app-text/bogosort 0.4.2-r1: A file sorting program which uses the bogosort algorithm
 app-text/build-docbook-catalog 1.21: DocBook XML catalog auto-updater
 app-text/c2ps 4.0: Generates a beautified ps document from a source file (c/c++)
-app-text/calibre 4.9.1-r3 4.20.0 4.21.0 4.22.0 4.23.0: Ebook management application
+app-text/calibre 4.9.1-r3 4.22.0 4.23.0: Ebook management application
 app-text/capyt 1.1.1: A python3 CLI utility to interface with cpy.pt paste service
 app-text/catdoc 0.95-r1: Converter for Microsoft Word, Excel, PowerPoint and RTF files to text
 app-text/cb2bib 2.0.0: Tool for extracting unformatted bibliographic references
@@ -6440,7 +6440,7 @@ dev-perl/ExtUtils-PkgConfig 1.160.0: Simplistic perl interface to pkg-config
 dev-perl/ExtUtils-Typemaps-Default 1.50.0: A set of useful typemaps
 dev-perl/ExtUtils-XSBuilder 0.280.0-r1 0.280.0-r2: Modules to parse C header files and create XS glue code
 dev-perl/ExtUtils-XSpp 0.180.0 0.180.0-r1: XS for C++
-dev-perl/FCGI 0.780.0: Fast CGI module
+dev-perl/FCGI 0.780.0 0.790.0: Fast CGI module
 dev-perl/FCGI-ProcManager 0.280.0: A FastCGI process manager
 dev-perl/FFI-CheckLib 0.250.0: Check that a library is available for FFI
 dev-perl/FLV-AudioExtractor 0.010.0: Extract audio from Flash Videos
