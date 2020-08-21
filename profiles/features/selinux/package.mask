@@ -32,6 +32,7 @@ gnome-extra/gnome-shell-frippery
 gnome-extra/gnome-shell-extensions-topicons-plus
 gnome-extra/gnome-shell-extension-appindicator
 gnome-extra/gnome-shell-extension-applications-overview-tooltip
+gnome-extra/gnome-shell-extension-bing-wallpaper
 gnome-extra/gnome-shell-extension-bluetooth-quick-connect
 gnome-extra/gnome-shell-extension-dash-to-panel
 gnome-extra/gnome-shell-extension-desktop-icons
