@@ -25,7 +25,10 @@ RESTRICT="!test? ( test )"
 DEPEND="!ppc64? ( sys-libs/libunwind )"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/fix_ppc64el_FTBFS.patch )
+PATCHES=(
+	"${FILESDIR}"/fix_ppc64el_FTBFS.patch
+	"${FILESDIR}/2.8-musl-tests.patch"
+)
 
 S="${WORKDIR}/${MY_P}"
 
