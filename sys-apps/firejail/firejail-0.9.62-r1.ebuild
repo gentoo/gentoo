@@ -28,7 +28,6 @@ DEPEND="${RDEPEND}
 	!sys-apps/firejail-lts
 	test? ( dev-tcltk/expect )"
 
-
 src_prepare() {
 	default
 
