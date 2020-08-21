@@ -18,7 +18,7 @@ IUSE="+fapi libressl"
 RESTRICT="test"
 
 RDEPEND="net-misc/curl:=
-	fapi? ( >=app-crypt/tpm2-tss-2.4.0:=[fapi?] )
+	>=app-crypt/tpm2-tss-2.4.0:=[fapi?]
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )"
 DEPEND="${RDEPEND}"
