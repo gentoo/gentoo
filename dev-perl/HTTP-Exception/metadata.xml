@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">HTTP-Exception</remote-id>
+    <remote-id type="cpan-module">HTTP::Exception</remote-id>
+    <remote-id type="cpan-module">HTTP::Exception::1XX</remote-id>
+    <remote-id type="cpan-module">HTTP::Exception::2XX</remote-id>
+    <remote-id type="cpan-module">HTTP::Exception::3XX</remote-id>
+    <remote-id type="cpan-module">HTTP::Exception::4XX</remote-id>
+    <remote-id type="cpan-module">HTTP::Exception::5XX</remote-id>
+    <remote-id type="cpan-module">HTTP::Exception::Base</remote-id>
+    <remote-id type="cpan-module">HTTP::Exception::Loader</remote-id>
+  </upstream>
+</pkgmetadata>
