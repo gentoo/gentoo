@@ -18,6 +18,7 @@ KEYWORDS="amd64"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="
+	!media-sound/grip
 	>=dev-python/docopt-0.4.0
 	>=dev-python/flask-0.10.1
 	>=dev-python/markdown-2.5.1
