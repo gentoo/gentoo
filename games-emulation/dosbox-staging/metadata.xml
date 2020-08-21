@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="dynrec">Use recompiling cpu core instead of dynamic x86/x64 specific cpu core</flag>
+		<flag name="network">Enable networking features (modem, ipx)</flag>
 		<flag name="opus">Support compressed audio tracks (.opus) used with CDROM images</flag>
 	</use>
 	<upstream>
