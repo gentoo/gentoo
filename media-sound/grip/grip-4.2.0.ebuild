@@ -17,6 +17,7 @@ IUSE="vorbis"
 # grip cannot convert ripped files to any format. So use them as
 # a sane default.
 RDEPEND="
+	!app-text/grip
 	dev-libs/glib:2
 	media-libs/id3lib
 	media-sound/cdparanoia
