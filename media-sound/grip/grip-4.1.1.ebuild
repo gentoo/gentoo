@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils flag-o-matic toolchain-funcs libtool
+inherit eutils flag-o-matic toolchain-funcs libtool xdg
 
 DESCRIPTION="GTK+ based Audio CD Player/Ripper"
 HOMEPAGE="https://sourceforge.net/projects/grip/"
