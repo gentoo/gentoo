@@ -11510,8 +11510,8 @@ games-puzzle/gfifteen 1.0.3-r1: Graphical implementation of the sliding puzzle g
 games-puzzle/glightoff 1.0.0-r1: A simple (but not so easy to solve!) puzzle game
 games-puzzle/gnome-klotski 3.34.4: Slide blocks to solve the puzzle
 games-puzzle/gnome-sudoku 3.34.1: Test your logic skills in this number grid puzzle
-games-puzzle/gnome-taquin 3.34.4: Move tiles so that they reach their places
-games-puzzle/gnome-tetravex 3.34.4: Complete the puzzle by matching numbered tiles
+games-puzzle/gnome-taquin 3.34.4 3.36.4: Move tiles so that they reach their places
+games-puzzle/gnome-tetravex 3.34.4 3.36.4: Complete the puzzle by matching numbered tiles
 games-puzzle/gnome2048 3.36.0: Move the tiles until you obtain the 2048 tile
 games-puzzle/gnudoku 0.93-r1: A program for creating and solving Su Doku puzzles
 games-puzzle/gnurobbo 0.66-r1: Robbo, a popular Atari XE/XL game ported to Linux
@@ -11848,7 +11848,7 @@ gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extension-appindicator 33: Support Ubuntu AppIndicators and KStatusNotifierItems in Gnome
 gnome-extra/gnome-shell-extension-applications-overview-tooltip 7 9: Show tooltip with full name and description
 gnome-extra/gnome-shell-extension-bluetooth-quick-connect 10 13: Allow to connect bluetooth paired devices from gnome control panel
-gnome-extra/gnome-shell-extension-dash-to-panel 37 38: An icon taskbar for the Gnome Shell
+gnome-extra/gnome-shell-extension-dash-to-panel 37 38 39: An icon taskbar for the Gnome Shell
 gnome-extra/gnome-shell-extension-desktop-icons 20.04.0-r1: A GNOME Shell extension for providing desktop icons
 gnome-extra/gnome-shell-extension-gsconnect 33-r2 41: KDE Connect implementation for Gnome Shell
 gnome-extra/gnome-shell-extensions 3.34.2 3.36.2 3.36.3: JavaScript extensions for GNOME Shell
