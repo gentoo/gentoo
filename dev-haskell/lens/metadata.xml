@@ -94,12 +94,8 @@
 		<flag name="dump-splices">Build and run the doctests test-suite.</flag>
 		<flag name="j">Attempt a parallel build with GHC 7.8.</flag>
 		<flag name="test-doctests">Build and run the doctests test-suite.</flag>
-		<flag name="test-hlint">You can disable the hlint test suite with -f-test-hlint</flag>
-		<flag name="test-hunit">You can disable the hunit test suite with -f-test-hunit</flag>
-		<flag name="test-properties">Build the properties test if we're building tests</flag>
 		<flag name="test-templates">Build the test templates if we're building tests</flag>
 		<flag name="trustworthy">Assert that we are trustworthy when we can</flag>
-		<flag name="lib-werror">Turn on ghc-options: -Werror</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">ekmett/lens</remote-id>
