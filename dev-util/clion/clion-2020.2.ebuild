@@ -66,7 +66,7 @@ src_install() {
 
 	if use custom-jdk; then
 		if [[ -d jbr ]]; then
-		fperms 755 "${dir}"/jbr/bin/{jaotc,java,javac,jdb,jjs,jrunscript,keytool,pack200,rmid,rmiregistry,serialver,unpack200}
+			fperms 755 "${dir}"/jbr/bin/{jaotc,java,javac,jdb,jjs,jrunscript,keytool,pack200,rmid,rmiregistry,serialver,unpack200}
 		fi
 	fi
 
