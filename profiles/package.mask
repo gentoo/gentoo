@@ -34,6 +34,13 @@
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-08-21)
 # Obsolete package without reverse dependencies.
+# Use dev-haskell/regex-tdfa.
+# Does not compile against ghc-8.8. Removal in 30 days.
+# Bug #736244.
+dev-haskell/regex-tdfa-rc
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-21)
+# Obsolete package without reverse dependencies.
 # Does not compile against ghc-8.8. Removal in 30 days.
 # Bug #736248.
 dev-haskell/testpack
