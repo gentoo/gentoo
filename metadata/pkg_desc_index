@@ -16229,7 +16229,7 @@ sci-libs/dmlc-core 0_p20170719: Common bricks library for building distributed m
 sci-libs/dsdp 5.8-r3: Software for interior-point for semidefinite programming
 sci-libs/eccodes 2.16.0: A set of encoding/decoding APIs and tools for WMO GRIB, BUFR, and GTS messages
 sci-libs/exodusii 6.09: Model developed to store and retrieve transient data for finite element analyses
-sci-libs/fcl 0.5.0 9999: The Flexible Collision Library
+sci-libs/fcl 0.5.0 0.6.1 9999: The Flexible Collision Library
 sci-libs/fetk 1.5: The Finite Element ToolKit - Meta package
 sci-libs/fflas-ffpack 2.4.3: Library for dense linear algebra over word-size finite fields
 sci-libs/fftw 2.1.5-r9 3.3.6_p2 3.3.8 3.3.8-r1 9999: Fast C library for the Discrete Fourier Transform
