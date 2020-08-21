@@ -1,10 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
+EAPI=7
 MY_P="gperftools-${PV}"
-inherit toolchain-funcs flag-o-matic vcs-snapshot autotools multilib-minimal
+
+inherit toolchain-funcs flag-o-matic autotools vcs-snapshot multilib-minimal
 
 DESCRIPTION="Fast, multi-threaded malloc() and nifty performance analysis tools"
 HOMEPAGE="https://github.com/gperftools/gperftools"
@@ -17,16 +17,20 @@ SLOT="0/4"
 # linux x86/amd64/ppc/ppc64/arm
 # OSX ppc/amd64
 # AIX ppc/ppc64
-KEYWORDS="-* amd64 arm ~arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="largepages +debug minimal optimisememory test static-libs"
+KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+
+IUSE="largepages largepages64k +debug minimal optimisememory test static-libs"
+
 RESTRICT="!test? ( test )"
 
-DEPEND="sys-libs/libunwind"
+DEPEND="!ppc64? ( sys-libs/libunwind )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
-HTML_DOCS="docs"
+PATCHES=(
+	"${FILESDIR}/${PV}-musl-tests.patch"
+)
 
 pkg_setup() {
 	# set up the make options in here so that we can actually make use
@@ -48,6 +52,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	use largepages && append-cppflags -DTCMALLOC_LARGE_PAGES
+	use largepages64k && append-cppflags -DTCMALLOC_LARGE_PAGES64K
 	use optimisememory && append-cppflags -DTCMALLOC_SMALL_BUT_SLOW
 	append-flags -fno-strict-aliasing -fno-omit-frame-pointer
 
@@ -81,4 +86,9 @@ src_install() {
 	fi
 
 	multilib-minimal_src_install
+}
+
+multilib_src_install_all() {
+	einstalldocs
+	use static-libs || find "${D}" -name '*.la' -delete || die
 }
