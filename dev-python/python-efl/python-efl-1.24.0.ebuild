@@ -29,6 +29,8 @@ BDEPEND="virtual/pkgconfig
 		media-gfx/graphviz
 	)"
 
+PATCHES=( "${FILESDIR}/python-efl-1.24-clang.patch" )
+
 src_prepare() {
 	default
 
