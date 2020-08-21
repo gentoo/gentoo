@@ -13,8 +13,8 @@ inherit autotools distutils-r1 perl-module systemd
 DESCRIPTION="Software for generating and retrieving SNMP data"
 HOMEPAGE="http://www.net-snmp.org/"
 SRC_URI="
-	mirror://sourceforge/project/${PN}/${PN}/${PV/_rc*/}/${P/_rc/.rc}.tar.gz
 	https://dev.gentoo.org/~jer/${PN}-5.7.3-patches-3.tar.xz
+	https://dev.gentoo.org/~jer/${P}.tar.xz
 "
 
 # GPL-2 for the init scripts
@@ -85,9 +85,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	find -type d -name .libs -depth -exec rm -r {} \; || die
-	find -type f -name '*.o' -o -name '*.lo' -exec rm {} \; || die
-
 	# snmpconf generates config files with proper selinux context
 	use selinux && eapply "${FILESDIR}"/${PN}-5.1.2-snmpconf-selinux.patch
 
