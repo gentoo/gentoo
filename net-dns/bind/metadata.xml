@@ -9,6 +9,10 @@
 		<email>zlogene@gentoo.org</email>
 		<name>Mikle Kolyada</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
+	</maintainer>
 	<use>
 		<flag name="dnstap">Enables dnstap packet logging</flag>
 		<flag name="dnsrps">Enable the DNS Response Policy Service (DNSRPS) API, a mechanism to allow an external response policy provider</flag>
