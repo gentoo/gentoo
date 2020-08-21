@@ -12,12 +12,12 @@ SRC_URI="https://github.com/hashicorp/nomad/archive/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="nvidia"
 
 src_compile() {
 	local go_ldflags go_tags
 	go_ldflags="-X github.com/hashicorp/nomad/version.GitCommit=${GIT_COMMIT}"
-	go_tags="codegen_generated"
+	go_tags="codegen_generated $(usex nvidia '' 'nonvidia')"
 	CGO_ENABLED=1 \
 		go build \
 		-trimpath \
