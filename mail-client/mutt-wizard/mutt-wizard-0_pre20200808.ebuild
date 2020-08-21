@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/LukeSmithxyz/mutt-wizard.git"
 else
-	COMMIT=9ec2a49af03cf542c7db82bc0dd0ccdde81922d4
+	COMMIT=1492a11b3ee0a1c3f5544a351089ff154521b68b
 	SRC_URI="https://github.com/LukeSmithxyz/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${PN}-${COMMIT}"

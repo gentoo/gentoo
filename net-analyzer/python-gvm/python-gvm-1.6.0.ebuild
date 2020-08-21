@@ -5,16 +5,17 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 DISTUTILS_USE_SETUPTOOLS=pyproject.toml
+
 inherit distutils-r1
 
-DESCRIPTION="Base class for scanner wrappers,communication protocol for GVM"
+DESCRIPTION="Greenbone Vulnerability Management Python Library"
 HOMEPAGE="https://www.greenbone.net/en/"
-SRC_URI="https://github.com/greenbone/ospd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/greenbone/python-gvm/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86"
-IUSE="extras"
+IUSE=""
 
 RDEPEND="
 	dev-python/defusedxml[${PYTHON_USEDEP}]
@@ -25,11 +26,3 @@ DEPEND="
 	${RDEPEND}"
 
 distutils_enable_tests unittest
-
-python_compile() {
-	if use extras; then
-		bash "${S}"/doc/generate || die
-		HTML_DOCS=( "${S}"/doc/. )
-	fi
-	distutils-r1_python_compile
-}
