@@ -143,7 +143,7 @@ src_install() {
 	if ! use pam ; then
 		set_login_opt MAIL_CHECK_ENAB no
 		set_login_opt SU_WHEEL_ONLY yes
-		set_login_opt CRACKLIB_DICTPATH /usr/$(get_libdir)/cracklib_dict
+		set_login_opt CRACKLIB_DICTPATH /usr/lib/cracklib_dict
 		set_login_opt LOGIN_RETRIES 3
 		set_login_opt ENCRYPT_METHOD SHA512
 		set_login_opt CONSOLE
