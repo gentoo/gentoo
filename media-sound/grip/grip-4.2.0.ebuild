@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/grip/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="vorbis"
 
 # lame and vorbis-tools are no real RDEPENDs. But without them
@@ -18,11 +18,11 @@ IUSE="vorbis"
 # a sane default.
 RDEPEND="
 	dev-libs/glib:2
-	>=media-libs/id3lib-3.8.3
+	media-libs/id3lib
 	media-sound/cdparanoia
 	media-sound/lame
 	net-misc/curl
-	>=x11-libs/gtk+-2.2:2
+	x11-libs/gtk+:2
 	x11-libs/libX11
 	x11-libs/pango
 	vorbis? ( media-sound/vorbis-tools )
