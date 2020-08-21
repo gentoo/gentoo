@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Static calls apply to a default instantiation"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 hppa ~ia64 ~mips ~ppc sparc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

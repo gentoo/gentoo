@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Object-oriented wrapper around vec()"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~ia64 ~ppc sparc ~x86"
 PERL_RM_FILES=(
 	"t/pod.t"
 	"t/pod-coverage.t"
