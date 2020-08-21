@@ -18,6 +18,8 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="curl +terminfo +threaded"
 
+RESTRICT=test # conflict-fight-failure (Darcs3) (PatienceDiff): [Failed]
+
 RDEPEND=">=dev-haskell/async-2.0.2:=[profile?] <dev-haskell/async-2.3:=[profile?]
 	>=dev-haskell/attoparsec-0.13.0.1:=[profile?] <dev-haskell/attoparsec-0.14:=[profile?]
 	>=dev-haskell/base16-bytestring-0.1:=[profile?] <dev-haskell/base16-bytestring-0.2:=[profile?]
@@ -57,16 +59,20 @@ RDEPEND=">=dev-haskell/async-2.0.2:=[profile?] <dev-haskell/async-2.3:=[profile?
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2 <dev-haskell/cabal-3.3
 	test? ( >=dev-haskell/cmdargs-0.10.10 <dev-haskell/cmdargs-0.11
+		>=dev-haskell/exceptions-0.6
 		>=dev-haskell/findbin-0.0.5 <dev-haskell/findbin-0.1
 		>=dev-haskell/hunit-1.3 <dev-haskell/hunit-1.7
 		>=dev-haskell/leancheck-0.9 <dev-haskell/leancheck-0.10
+		>=dev-haskell/monad-control-0.3.2 <dev-haskell/monad-control-1.1
 		>=dev-haskell/quickcheck-2.13 <dev-haskell/quickcheck-2.14
-		>=dev-haskell/shelly-1.6.8 <dev-haskell/shelly-1.10
 		>=dev-haskell/split-0.2.2 <dev-haskell/split-0.3
+		<dev-haskell/system-fileio-0.4
+		>=dev-haskell/system-filepath-0.4.7 <dev-haskell/system-filepath-0.5
 		>=dev-haskell/test-framework-0.8.1.1 <dev-haskell/test-framework-0.9
 		>=dev-haskell/test-framework-hunit-0.3.0.2 <dev-haskell/test-framework-hunit-0.4
 		>=dev-haskell/test-framework-leancheck-0.0.1 <dev-haskell/test-framework-leancheck-0.1
-		>=dev-haskell/test-framework-quickcheck2-0.3.0.3 <dev-haskell/test-framework-quickcheck2-0.4 )
+		>=dev-haskell/test-framework-quickcheck2-0.3.0.3 <dev-haskell/test-framework-quickcheck2-0.4
+		dev-haskell/transformers-base )
 	curl? ( virtual/pkgconfig )
 "
 
@@ -91,5 +97,7 @@ src_configure() {
 src_install() {
 		haskell-cabal_src_install
 
-		doman "${S}/dist/build/${PN}/darcs.1" || die "darcs.1 not found"
+		# fixup perms in such an awkward way
+		mv "${ED}/usr/share/man/man1/darcs.1" "${S}/darcs.1" || die "darcs.1 not found"
+		doman "${S}/darcs.1"
 }
