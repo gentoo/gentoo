@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-21)
+# Obsolete package without reverse dependencies.
+# Does not compile against ghc-8.8. Removal in 30 days.
+# Bug #736248.
+dev-haskell/testpack
+
 # Michał Górny <mgorny@gentoo.org> (2020-08-18)
 # Backports of hash algorithms that are built-in since Python 3.6.
 # No reverse dependencies left.
