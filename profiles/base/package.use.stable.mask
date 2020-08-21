@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Pacho Ramos <pacho@gentoo.org> (2020-08-21)
+# app-text/pandoc is hard to stabilize #737612
+sys-apps/earlyoom docs
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-08-03)
 # dev-qt/qtquicktimeline-5.15.0 not yet stable, bug 711120
 # dev-libs/libclangformat-ide not stable and unclear maintainer, bug 711120
