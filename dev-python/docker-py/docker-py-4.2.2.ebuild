@@ -12,7 +12,7 @@ SRC_URI="https://github.com/docker/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 x86"
 
 RDEPEND="
 	!~dev-python/requests-2.18.0[${PYTHON_USEDEP}]
