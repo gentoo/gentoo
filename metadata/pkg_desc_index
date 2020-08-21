@@ -9241,7 +9241,7 @@ dev-python/virtualenv-clone 0.5.3: A script for cloning a non-relocatable virtua
 dev-python/virtualenvwrapper 4.8.4-r1: Set of extensions to Ian Bicking's virtualenv tool
 dev-python/visitor 0.1.3: A tiny pythonic visitor implementation
 dev-python/vobject 0.9.6.1-r1: Python package for parsing and generating vCard and vCalendar files
-dev-python/voluptuous 0.11.5: A Python data validation library.
+dev-python/voluptuous 0.11.5 0.11.7: A Python data validation library.
 dev-python/vpython 7.6.1-r1: VPython for Jupyter notebook
 dev-python/waitress 1.4.3 1.4.4: A pure-Python WSGI server
 dev-python/wand 0.6.2: Ctypes-based simple ImageMagick binding for Python
