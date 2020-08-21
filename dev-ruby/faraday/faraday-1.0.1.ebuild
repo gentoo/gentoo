@@ -30,6 +30,7 @@ ruby_add_bdepend "test? (
 		>=dev-ruby/test-unit-2.4
 		>=dev-ruby/connection_pool-2.2.2
 		dev-ruby/rack
+		dev-ruby/webmock
 	)"
 
 all_ruby_prepare() {
