@@ -17,7 +17,7 @@ IUSE=""
 RDEPEND="
 	virtual/perl-XSLoader
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
 src_compile() {
