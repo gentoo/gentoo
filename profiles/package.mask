@@ -712,14 +712,6 @@ net-libs/osptoolkit
 =net-misc/asterisk-11*
 =net-misc/asterisk-g729-11*
 
-# Hans de Graaff <graaff@gentoo.org> (2020-07-20)
-# Mask old obsolete slots for removal in 30 days.
-# Use a newer slot of the same package instead.
-dev-ruby/i18n:0.9
-dev-ruby/net-ssh:4
-dev-ruby/nokogumbo:0
-dev-ruby/zeitwerk:1
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2020-07-15)
 # In preparation; do not use yet.
 =dev-lang/perl-5.32*
