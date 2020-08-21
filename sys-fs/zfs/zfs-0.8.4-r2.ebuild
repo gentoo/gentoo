@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/openzfs/zfs.git"
 else
 	SRC_URI="https://github.com/openzfs/${PN}/releases/download/${P}/${P}.tar.gz"
-	KEYWORDS="amd64 arm64 ~ppc64"
+	KEYWORDS="amd64 arm64 ppc64"
 fi
 
 LICENSE="BSD-2 CDDL MIT"
