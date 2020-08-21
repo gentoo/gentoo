@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 # TODO: make it spawn a local mongodb instance
 RESTRICT="test"
 
