@@ -19,12 +19,6 @@
 		scientific notation they can be efficiently
 		parsed to a @Scientific@ number.
 	</longdescription>
-	<use>
-		<flag name="bytestring-builder">
-			Provide the Data.ByteString.Builder.Scientific
-			module (requires bytestring &gt;= 0.10).
-		</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">basvandijk/scientific</remote-id>
 	</upstream>
