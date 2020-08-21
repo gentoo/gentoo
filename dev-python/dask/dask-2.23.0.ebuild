@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6..9} )
 
-inherit distutils-r1
+inherit distutils-r1 multiprocessing
 
 DESCRIPTION="Task scheduling and blocked algorithms for parallel processing"
 HOMEPAGE="https://dask.org/"
@@ -48,6 +48,7 @@ src_prepare() {
 }
 
 python_test() {
-	pytest -vv -m "not network" -n auto ||
+	pytest -vv -m "not network" \
+		-n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")" ||
 		die "Tests failed with ${EPYTHON}"
 }
