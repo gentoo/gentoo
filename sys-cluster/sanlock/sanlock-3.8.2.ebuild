@@ -3,8 +3,8 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_6 )
-inherit linux-info python-r1 systemd user
+PYTHON_COMPAT=( python3_{6,7,8} )
+inherit linux-info python-r1 systemd
 
 DESCRIPTION="shared storage lock manager"
 HOMEPAGE="https://pagure.io/sanlock"
@@ -18,11 +18,17 @@ IUSE="python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
+	acct-user/${PN}
+	acct-group/${PN}
 	dev-libs/libaio
 	sys-apps/util-linux
 	python? ( ${PYTHON_DEPS} )
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	${FILESDIR}/sanlock-fence_sanlock-LDFLAGS.patch
+)
 
 pkg_setup() {
 	local warning="You need to have CONFIG_SOFT_WATCHDOG enabled in your kernel for wdmd"
@@ -37,12 +43,6 @@ pkg_setup() {
 		ewarn "Could not be checked automatically: $warning"
 		ewarn ""
 	fi
-}
-
-pkg_preinst() {
-	enewgroup sanlock
-	enewuser sanlock -1 -1 -1 sanlock,disk
-
 }
 
 src_compile() {
