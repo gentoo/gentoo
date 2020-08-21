@@ -31,3 +31,8 @@ BDEPEND="${RDEPEND}
 		>=virtual/perl-Test-Simple-0.880.0
 	)
 "
+# Parallel tests broken
+# See:
+#  https://bugs.gentoo.org/738308
+#  https://github.com/redhotpenguin/perl-Archive-Zip/issues/82
+DIST_TEST="do"
