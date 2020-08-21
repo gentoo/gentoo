@@ -1648,7 +1648,7 @@ app-editors/qhexedit2 0.8.6_p20190316: Hex editor library, Qt application writte
 app-editors/qxmledit 0.9.12: Simple Qt-based XML editor
 app-editors/retext 7.0.4-r1 7.1.0 9999: Simple editor for Markdown and reStructuredText
 app-editors/sandy 0.4 0.4-r1: an ncurses text editor with an easy-to-read, hackable C source
-app-editors/scite 4.1.3 4.2.0 4.2.1 4.3.2 4.3.3: A very powerful, highly configurable, small editor with syntax coloring
+app-editors/scite 4.2.1 4.3.3 4.4.4: A very powerful, highly configurable, small editor with syntax coloring
 app-editors/shed 1.15: Simple Hex EDitor
 app-editors/sublime-text 3_p3211-r1: Sophisticated text editor for code, markup and prose
 app-editors/tea 47.0.0: Small, lightweight Qt text editor
@@ -4408,7 +4408,7 @@ dev-haskell/tagged 0.6.1 0.7.3 0.8.2 0.8.4 0.8.6: Haskell 98 phantom types to av
 dev-haskell/tagshare 0.0: TagShare - explicit sharing with tags
 dev-haskell/tagsoup 0.13.3-r1 0.13.8 0.13.10 0.14.8: Parsing and extracting information from (possibly malformed) HTML/XML documents
 dev-haskell/tagstream-conduit 0.5.5.3: streamlined html tag parser
-dev-haskell/tar 0.4.0.1 0.4.2.1 0.5.0.3 0.5.1.0 0.5.1.1: Reading, writing and manipulating tar files
+dev-haskell/tar 0.5.1.1: Reading, writing and manipulating tar files
 dev-haskell/tar-conduit 0.3.2-r1: Extract and create tar files using conduit for streaming
 dev-haskell/tasty 0.3.1 0.5.2 0.8.1.2 0.10.1.2 0.11.0.4 1.2.3: Modern and extensible testing framework
 dev-haskell/tasty-ant-xml 1.0.1 1.0.2 1.1.6: Render tasty output to XML for Jenkins
@@ -10626,7 +10626,7 @@ dev-util/clair 2.1.3 2.1.4: Vulnerability Static Analysis for Containers
 dev-util/clazy 1.6-r1 1.7: Compiler plugin which allows clang to understand Qt semantics
 dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06-r1 9999: A tool to display info about the system's OpenCL capabilities
-dev-util/clion 2020.1.2: A complete toolset for C and C++ development
+dev-util/clion 2020.2: A complete toolset for C and C++ development
 dev-util/cloc 1.84: Count Lines of Code
 dev-util/cmake 3.13.5 3.16.5 3.17.3 3.17.4 3.18.0 3.18.1: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
@@ -10864,7 +10864,7 @@ dev-util/sccache 0.2.12 0.2.13 9999: ccache/distcc like tool with support for ru
 dev-util/schroot 1.6.10_p7: Utility to execute commands in a chroot environment
 dev-util/scons 3.1.1 3.1.2 4.0.0 4.0.1: Extensible Python-based build utility
 dev-util/sel 0.08.4-r2: A filemanager for shell scripts
-dev-util/serialtalk 1.2 1.2-r1 9999: simple command-line tool to talk to serial devices
+dev-util/serialtalk 1.2-r1 9999: simple command-line tool to talk to serial devices
 dev-util/setconf 0.6.6 0.6.7: A small python based utility used to change configuration files
 dev-util/sgb 20030623-r1 20090810: Stanford GraphBase
 dev-util/shadowman 2 9999: Unified compiler shadow link directory updater
@@ -12413,7 +12413,7 @@ mail-client/kube 0.7.0-r1: Mail client based on KDE Frameworks
 mail-client/mailx 8.1.2.20160123 8.1.2.20180807: The $ mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r2: Provides lockspool utility
 mail-client/mutt 1.14.4-r1 1.14.5: A small but very powerful text-based mail client
-mail-client/mutt-wizard 0_pre20200606 9999: A system for automatically configuring neomutt and isync
+mail-client/mutt-wizard 0_pre20200808 9999: A system for automatically configuring neomutt and isync
 mail-client/neomutt 20200626 20200626-r1 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
 mail-client/roundcube 1.4.6 1.4.7 1.4.8: A browser-based multilingual IMAP client with an application-like user interface
@@ -14276,7 +14276,7 @@ net-analyzer/greenbone-security-assistant 8.0.1-r1 9.0.1: Greenbone Security Ass
 net-analyzer/gspoof 3.2-r3: A simple GTK/command line TCP/IP packet generator
 net-analyzer/gvm 10.0.1 11.0.0: Greenbone Vulnerability Management,previously named OpenVAS
 net-analyzer/gvm-libs 10.0.1 11.0.1: Greenbone vulnerability management libraries, previously named openvas-libraries
-net-analyzer/gvm-tools 2.0.0-r1: Remote control for Greenbone Vulnerability Manager, previously named openvas-cli
+net-analyzer/gvm-tools 2.0.0-r1 2.1.0: Remote control for Greenbone Vulnerability Manager, previously named openvas-cli
 net-analyzer/gvmd 8.0.1 9.0.1: Greenbone vulnerability manager, previously named openvas-manager
 net-analyzer/hexinject 1.5 1.6 1.6-r1: Network packet sniffer and injector
 net-analyzer/hping 3_pre20051105-r6 3_pre20141226: A ping-like TCP/IP packet assembler/analyzer
@@ -14409,7 +14409,7 @@ net-analyzer/prelude-lml 3.0.0 4.0.0 4.1.0 5.1.0: The prelude log analyzer
 net-analyzer/prelude-lml-rules 3.0.1 4.0.0 4.1.0 5.1.0: Prelude LML community ruleset
 net-analyzer/prettyping 1.0.1: Ping wrapper that produces coloured, easily readable output.
 net-analyzer/pypacker 2.9 4.6 4.7 4.8 4.9: Fast and simple packet creation and parsing library for Python
-net-analyzer/python-gvm 1.1.0 1.2.0 1.5.0: Greenbone Vulnerability Management Python Library
+net-analyzer/python-gvm 1.1.0 1.2.0 1.5.0 1.6.0: Greenbone Vulnerability Management Python Library
 net-analyzer/quidscor 1.2.48-r1: Qualys IDS Correlation Daemon
 net-analyzer/raddump 0.3.1: RADIUS packet interpreter
 net-analyzer/rain 1.2.9_beta1 1.2.9_beta1-r1: powerful tool for testing stability of utilizing IP protocols
@@ -15939,7 +15939,7 @@ sci-biology/vienna-rna 2.1.8: RNA secondary structure prediction and comparison
 sci-biology/wgs-assembler 7.0-r2: The Celera de novo whole-genome shotgun DNA sequence assembler, aka CABOG
 sci-biology/wise 2.4.0_alpha: Intelligent algorithms for DNA searches
 sci-biology/yass 1.14-r2: Genomic similarity search with multiple transition constrained spaced seeds
-sci-calculators/bc-gh 2.7.2 3.1.3: Implementation of POSIX bc with GNU extensions
+sci-calculators/bc-gh 2.7.2 3.1.3 3.1.5: Implementation of POSIX bc with GNU extensions
 sci-calculators/calcoo 1.3.18-r1: Scientific calculator designed to provide maximum usability
 sci-calculators/datamash 1.4 1.5 1.6 1.7: command-line program for basic numeric, textual and statistical operations
 sci-calculators/galculator 2.1.4: GTK+ based algebraic and RPN calculator
@@ -16921,7 +16921,7 @@ sys-apps/gscanbus 0.8: Bus scanning, testing and topology visualizing tool for L
 sys-apps/gsmartcontrol 1.0.2 1.1.3: Hard disk drive health inspection tool
 sys-apps/habitat 0.54.0: Application automation framework
 sys-apps/haveged 1.9.2-r1 1.9.8c 1.9.13: A simple entropy daemon using the HAVEGE algorithm
-sys-apps/hd-idle 1.05 1.05-r1: Utility for spinning down hard disks after a period of idle time
+sys-apps/hd-idle 1.05-r1: Utility for spinning down hard disks after a period of idle time
 sys-apps/hdparm 9.56 9.58: Utility to change hard drive performance parameters
 sys-apps/heirloom-tools 070715-r3: Heirloom toolchest - original Unix tools
 sys-apps/help2man 1.47.10 1.47.15 1.47.16: GNU utility to convert program --help output to a man page
