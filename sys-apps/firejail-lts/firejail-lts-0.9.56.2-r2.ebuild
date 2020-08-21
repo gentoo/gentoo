@@ -24,7 +24,6 @@ DEPEND="${RDEPEND}
 		!sys-apps/firejail
 		test? ( dev-tcltk/expect )"
 
-
 S="${WORKDIR}/${MY_PN}-${PV}-LTS"
 
 src_prepare() {
