@@ -8712,7 +8712,7 @@ dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
 dev-python/pygobject 2.28.6-r55 3.34.0 3.36.1: Python bindings for GObject Introspection
 dev-python/pygpgme 0.3-r2: A Python wrapper for the GPGME library
 dev-python/pygpu 0.6.7: Python bindings to libgpuarray
-dev-python/pygraphviz 1.5: Python wrapper for the Graphviz Agraph data structure
+dev-python/pygraphviz 1.5 1.6: Python wrapper for the Graphviz Agraph data structure
 dev-python/pygresql 5.1 5.2: A Python interface for the PostgreSQL database
 dev-python/pygsl 2.1.1: Python interface for the GNU scientific library (gsl)
 dev-python/pygtk 2.24.0-r5: GTK+2 bindings for Python
@@ -8978,7 +8978,7 @@ dev-python/reflink 0.2.1-r1: Python wrapper around the reflink system calls
 dev-python/regex 2020.2.20 2020.4.4: Alternative regular expression module to replace re
 dev-python/rencode 1.0.5-r1 1.0.6: similar to bencode from the BitTorrent project
 dev-python/reno 2.11.3: Release notes manager, storing release notes in a git repo and building docs
-dev-python/reportlab 3.5.42: Tools for generating printable PDF documents from any data source
+dev-python/reportlab 3.5.42 3.5.48: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.7-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.8: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/requests 2.23.0 2.24.0: HTTP library for human beings
@@ -15830,7 +15830,7 @@ sci-biology/bioperl 1.6.9: Perl tools for bioinformatics - Core modules
 sci-biology/bioperl-db 1.6.9 1.6.9-r1: Perl tools for bioinformatics - Perl API that accesses the BioSQL schema
 sci-biology/bioperl-network 1.6.9: Perl tools for bioinformatics - Analysis of protein-protein interaction networks
 sci-biology/bioperl-run 1.6.9: Perl wrapper modules for key bioinformatics applications
-sci-biology/biopython 1.73: Python modules for computational molecular biology
+sci-biology/biopython 1.73 1.77: Python modules for computational molecular biology
 sci-biology/biosql 1.0.1-r1: A generic bioinformatics relational database model
 sci-biology/blat 34-r2: The BLAST-Like Alignment Tool, a fast genomic sequence aligner
 sci-biology/bowtie 1.1.2-r1 2.2.9: Popular short read aligner for Next-generation sequencing data
