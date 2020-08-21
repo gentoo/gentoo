@@ -1,13 +1,13 @@
-DEFINED_PHASES=compile install test
-DEPEND=>=sci-mathematics/ginac-1.7 doc? ( app-doc/doxygen )
+DEFINED_PHASES=compile configure install test
+DEPEND=>=sci-mathematics/ginac-1.7[static-libs=] doc? ( app-doc/doxygen )
 DESCRIPTION=A GiNaC-based library for symbolic expansion of certain transcendental functions
 EAPI=7
 HOMEPAGE=https://particlephysics.uni-mainz.de/weinzierl/nestedsums/
-IUSE=doc
+IUSE=doc static-libs
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=>=sci-mathematics/ginac-1.7
+RDEPEND=>=sci-mathematics/ginac-1.7[static-libs=]
 SLOT=0
 SRC_URI=http://particlephysics.uni-mainz.de/weinzierl/download/nestedsums-1.5.2.tar.gz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=58df402eabe2d1eb18a1475e4a22274e
+_md5_=275cf69b9aae9a53c93a5181a07ec28b

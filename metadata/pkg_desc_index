@@ -6053,7 +6053,7 @@ dev-perl/CPAN-Meta-Check 0.14.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.16: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.350.0: Inject modules into a CPAN::Mini mirror
 dev-perl/CPAN-Perl-Releases 3.760.0 5.202.3.200 5.202.4.280 5.202.6.200 5.202.7.170 5.202.8.200: Mapping Perl releases on CPAN to the location of the tarballs
-dev-perl/CPAN-Uploader 0.103.14: upload things to the CPAN
+dev-perl/CPAN-Uploader 0.103.14 0.103.15: upload things to the CPAN
 dev-perl/CQL-Parser 1.130.0-r1: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r2: Perl extension for minifying CSS
 dev-perl/CSS-Minifier-XS 0.90.0-r1 0.90.0-r2: XS based CSS minifier
@@ -9890,7 +9890,7 @@ dev-ruby/exifr 1.3.6: A library to read EXIF info from JPEG and TIFF images
 dev-ruby/expression_parser 0.9.0_p20130518: A math parser
 dev-ruby/facter 3.14.11 3.14.12 9999: A cross-platform ruby library for retrieving facts from operating systems
 dev-ruby/factory_girl 4.8.1: factory_girl provides a framework and DSL for defining and using factories
-dev-ruby/fakefs 0.19.2 0.20.0 0.20.1 1.0.0 1.2.0 1.2.1 1.2.2: A fake filesystem. Use it in your tests
+dev-ruby/fakefs 0.19.2 0.20.1 1.2.1 1.2.2: A fake filesystem. Use it in your tests
 dev-ruby/faker 1.9.6-r1 2.11.0 2.12.0 2.13.0: A library for generating fake data such as names, addresses, and phone numbers
 dev-ruby/fakeweb 1.3.0.20170806: Helper for faking web requests in Ruby
 dev-ruby/faraday 0.17.3 1.0.1: HTTP/REST API client library with pluggable components
@@ -9902,17 +9902,17 @@ dev-ruby/fast_xs 0.8.0-r2: fast_xs text escaping library ruby bindings
 dev-ruby/fattr 2.4.0: fattr.rb is a "fatter attr" for ruby
 dev-ruby/fcgi 0.9.2.1-r1: FastCGI library for Ruby
 dev-ruby/ferret 0.11.8.7: A ruby indexing/searching library
-dev-ruby/ffaker 2.11.0 2.12.0 2.13.0 2.14.0 2.15.0 2.16.0: Faster Faker, generates dummy data
+dev-ruby/ffaker 2.15.0 2.16.0 2.17.0: Faster Faker, generates dummy data
 dev-ruby/ffi 1.11.3 1.12.1 1.12.2 1.13.0 1.13.1: Ruby extension for programmatically loading dynamic libraries
 dev-ruby/file-tail 1.2.0: A small ruby library that allows it to 'tail' files in Ruby
 dev-ruby/filesize 0.2.0: small ruby class for handling filesizes with both the SI and binary prefixes
 dev-ruby/filigree 0.4.1: New classes and extensions to core library classes.
 dev-ruby/fivemat 1.3.7: MiniTest/RSpec/Cucumber formatter that gives each test file its own line of dots
 dev-ruby/flexmock 2.3.6: Simple mock object library for Ruby unit testing
-dev-ruby/flickraw 0.9.9 0.9.10: A library to access flickr api in a simple way
-dev-ruby/flog 4.6.2 4.6.3 4.6.4: Flog reports the most tortured code in an easy to read pain report
+dev-ruby/flickraw 0.9.10: A library to access flickr api in a simple way
+dev-ruby/flog 4.6.4: Flog reports the most tortured code in an easy to read pain report
 dev-ruby/font-awesome-rails 4.7.0.5: Font-awesome for the asset pipeline
-dev-ruby/forgery 0.7.0 0.8.1: Easy and customizable generation of forged data
+dev-ruby/forgery 0.8.1: Easy and customizable generation of forged data
 dev-ruby/forwardable-extended 2.6.0-r1: Forwardable with hash, and instance variable extensions
 dev-ruby/fuubar 2.5.0 2.5.0-r1: Instafailing RSpec progress bar formatter
 dev-ruby/gettext-setup 0.30 0.31 0.34 0.34-r1 0.34-r2: A gem to ease i18n
@@ -13916,7 +13916,7 @@ media-sound/pulseeffects 4.7.2-r1 4.7.3 4.8.0 9999: Limiter, compressor, reverbe
 media-sound/pulsemixer 1.5.1 9999: CLI and curses mixer for PulseAudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/qastools 0.22.0 0.23.0: Qt5 GUI ALSA tools: mixer, configuration browser
-media-sound/qjackctl 0.6.2 9999: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
+media-sound/qjackctl 0.6.2 0.6.3 9999: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiarp 0.6.4-r1: Arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 1.3.2-r1 1.3.7 1.4.0 1.4.1 9999: Qt5-based audio player with winamp/xmms skins support
@@ -15421,7 +15421,7 @@ net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/go-ethereum 1.9.15: Official golang implementation of the Ethereum protocol
 net-p2p/go-ipfs 0.4.23 0.5.1: Main implementation of IPFS
 net-p2p/go-ipfs-bin 0.4.19 0.4.20 0.4.22: Main implementation of IPFS
-net-p2p/gtk-gnutella 1.1.15: A GTK+ Gnutella client
+net-p2p/gtk-gnutella 1.1.15 1.2.0: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/ktorrent 5.2.0-r1: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/litecoind 0.10.4.0: P2P Internet currency based on Bitcoin but easier to mine
@@ -16431,7 +16431,7 @@ sci-mathematics/geomview 1.9.5-r1: Interactive Geometry Viewer
 sci-mathematics/gfan 0.6.2: Compute Groebner fans and tropical varieties
 sci-mathematics/ggnfs 0.77.1-r2: A suite of algorithms to help factoring large integers
 sci-mathematics/gimps 29.8.6-r1: The Great Internet Mersenne Prime Search
-sci-mathematics/ginac 1.6.6 1.7.2 1.7.4 1.7.8: C++ library and tools for symbolic calculations
+sci-mathematics/ginac 1.6.6 1.7.8 1.7.11: C++ library and tools for symbolic calculations
 sci-mathematics/glpk 4.65: GNU Linear Programming Kit
 sci-mathematics/gmm 5.1 5.3: Generic C++ template library for sparse, dense and skyline matrices
 sci-mathematics/gmp-ecm 7.0.4-r2 9999: Elliptic Curve Method for Integer Factorization
@@ -16448,7 +16448,7 @@ sci-mathematics/maxima 5.38.1 5.42.1 5.42.2 5.43.2 5.44.0: Free computer algebra
 sci-mathematics/minisat 2.2.0-r4 2.2.0_p20130925-r1: Small yet efficient SAT solver with reference paper
 sci-mathematics/msieve 1.51-r1 1.53-r1 9999: A C library implementing a suite of algorithms to factor large integers
 sci-mathematics/nauty 2.5.9 2.6.7: Computing automorphism groups of graphs and digraphs
-sci-mathematics/nestedsums 1.5.2: A GiNaC-based library for symbolic expansion of certain transcendental functions
+sci-mathematics/nestedsums 1.5.2-r1: A GiNaC-based library for symbolic expansion of certain transcendental functions
 sci-mathematics/normaliz 2.12.2 3.1.1 3.1.3 3.3.0: Tool for computations in affine monoids and more
 sci-mathematics/num-utils 0.5-r1: A set of programs for dealing with numbers from the command line
 sci-mathematics/octave 5.2.0: High-level interactive language for numerical computations
