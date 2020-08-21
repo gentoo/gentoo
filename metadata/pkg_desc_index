@@ -6442,7 +6442,7 @@ dev-perl/ExtUtils-XSBuilder 0.280.0-r1 0.280.0-r2: Modules to parse C header fil
 dev-perl/ExtUtils-XSpp 0.180.0 0.180.0-r1: XS for C++
 dev-perl/FCGI 0.780.0 0.790.0: Fast CGI module
 dev-perl/FCGI-ProcManager 0.280.0: A FastCGI process manager
-dev-perl/FFI-CheckLib 0.250.0: Check that a library is available for FFI
+dev-perl/FFI-CheckLib 0.250.0 0.270.0: Check that a library is available for FFI
 dev-perl/FLV-AudioExtractor 0.010.0: Extract audio from Flash Videos
 dev-perl/Fatal-Exception 0.50.0-r2: Succeed or throw exception
 dev-perl/Feed-Find 0.70.0-r2: Syndication feed auto-discovery
@@ -9768,7 +9768,7 @@ dev-ruby/ast 2.4.0 2.4.1: A library for working with abstract syntax trees
 dev-ruby/astrolabe 1.3.1: An object-oriented AST extension for Parser
 dev-ruby/async_sinatra 1.3.0: Asynchronous response API for Sinatra and Thin
 dev-ruby/atomic 1.1.101: An atomic reference implementation for JRuby, Rubinius, and MRI
-dev-ruby/autoprefixer-rails 7.2.6 8.6.5 9.6.5 9.7.6 9.8.1 9.8.2 9.8.4 9.8.5 9.8.6 9.8.6.1: Add vendor prefixes to CSS rules using values from the Can I Use website
+dev-ruby/autoprefixer-rails 7.2.6 8.6.5 9.6.5 9.7.6 9.8.1 9.8.2 9.8.4 9.8.5 9.8.6 9.8.6.1 9.8.6.2: Add vendor prefixes to CSS rules using values from the Can I Use website
 dev-ruby/aws-eventstream 1.0.3 1.1.0: Amazon Web Services event stream library
 dev-ruby/aws-partitions 1.248.0 1.281.0 1.297.0 1.298.0: Provides interfaces to enumerate AWS partitions, regions, and services
 dev-ruby/aws-s3 0.6.3: Client library for Amazon's Simple Storage Service's REST API
@@ -9916,12 +9916,12 @@ dev-ruby/forgery 0.7.0 0.8.1: Easy and customizable generation of forged data
 dev-ruby/forwardable-extended 2.6.0-r1: Forwardable with hash, and instance variable extensions
 dev-ruby/fuubar 2.5.0 2.5.0-r1: Instafailing RSpec progress bar formatter
 dev-ruby/gettext-setup 0.30 0.31 0.34 0.34-r1 0.34-r2: A gem to ease i18n
-dev-ruby/gettext_i18n_rails 1.8.0 1.8.1: FastGettext / Rails integration
+dev-ruby/gettext_i18n_rails 1.8.1: FastGettext / Rails integration
 dev-ruby/gh 0.16.0 0.17.0 0.18.0: multi-layer client for the github api v3
 dev-ruby/gherkin 5.1.0: Fast Gherkin lexer and parser
 dev-ruby/gist 5.1.0: Potentially the best command line gister.
-dev-ruby/git 1.5.0 1.7.0: Library for using Git in Ruby
-dev-ruby/globalid 0.4.2: Reference models by URI
+dev-ruby/git 1.7.0: Library for using Git in Ruby
+dev-ruby/globalid 0.4.2 0.4.2-r1: Reference models by URI
 dev-ruby/gnuplot 2.6.2-r2: Gnuplot drawing library - Ruby Bindings
 dev-ruby/google-protobuf 3.8.0 3.9.2 3.10.1 3.11.2 3.11.3 3.11.4: Protocol Buffers are Google's data interchange format
 dev-ruby/gpgme 2.0.18 2.0.19 2.0.20: Ruby language binding for GnuPG Made Easy
@@ -9958,7 +9958,7 @@ dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response pa
 dev-ruby/httparty 0.17.1 0.17.3 0.18.0 0.18.1: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpauth 0.2.1: Library implementing the full HTTP Authentication protocol (RFC 2617)
 dev-ruby/httpclient 2.8.3: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
-dev-ruby/i18n 0.7.0-r3 0.9.5-r1 1.7.1 1.8.0 1.8.1 1.8.2 1.8.2-r1 1.8.3 1.8.4 1.8.5: Add Internationalization support to your Ruby application
+dev-ruby/i18n 0.7.0-r3 1.7.1 1.8.0 1.8.1 1.8.2 1.8.2-r1 1.8.3 1.8.4 1.8.5: Add Internationalization support to your Ruby application
 dev-ruby/ice_nine 0.11.2: Deep Freeze Ruby Objects
 dev-ruby/idn-ruby 0.1.0: LibIDN Ruby Bindings
 dev-ruby/image_processing 1.10.3 1.11.0: High-level image processing helper methods with libvips and ImageMagick
@@ -10062,7 +10062,7 @@ dev-ruby/net-http-persistent 3.0.0 3.0.1 3.1.0 4.0.0: Manages persistent connect
 dev-ruby/net-http-pipeline 1.0.1: An HTTP/1.1 pipelining implementation atop Net::HTTP
 dev-ruby/net-scp 1.2.1-r1 2.0.0 3.0.0: A pure Ruby implementation of the SCP client protocol
 dev-ruby/net-sftp 3.0.0: SFTP in pure Ruby
-dev-ruby/net-ssh 4.2.0 5.2.0 6.1.0-r1: Non-interactive SSH processing in pure Ruby
+dev-ruby/net-ssh 5.2.0 6.1.0-r1: Non-interactive SSH processing in pure Ruby
 dev-ruby/net-ssh-gateway 2.0.0: A simple library to assist in enabling tunneled Net::SSH connections
 dev-ruby/net-telnet 0.1.1-r1 0.2.0: Provides telnet client functionality
 dev-ruby/netrc 0.11.0: This library reads and writes .netrc files
@@ -10072,7 +10072,7 @@ dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation 
 dev-ruby/nio4r 1.2.1-r1 2.4.0 2.5.2: A high performance selector API for monitoring IO objects
 dev-ruby/nokogiri 1.10.4 1.10.10: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
-dev-ruby/nokogumbo 1.5.0 2.0.2: A Nokogiri interface to the Gumbo HTML5 parser
+dev-ruby/nokogumbo 2.0.2: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
 dev-ruby/oauth 0.5.4: A RubyGem for implementing both OAuth clients and servers
@@ -10396,7 +10396,7 @@ dev-ruby/xmlrpc 0.3.0: XMLRPC is a lightweight protocol that enables remote proc
 dev-ruby/xpath 2.1.0 3.2.0: XPath is a Ruby DSL around a subset of XPath 1.0
 dev-ruby/yajl-ruby 1.4.1: Ruby C bindings to the Yajl JSON stream-based parser library
 dev-ruby/yard 0.9.20 0.9.24 0.9.25: Documentation generation tool for the Ruby programming language
-dev-ruby/zeitwerk 1.4.3 2.3.1 2.4.0: Efficient and thread-safe code loader for Ruby
+dev-ruby/zeitwerk 2.3.1 2.4.0: Efficient and thread-safe code loader for Ruby
 dev-ruby/zentest 4.12.0: Testing tools: zentest, unit_diff, autotest, multiruby, and Test::Rails
 dev-scheme/bytestructures 1.0.1: Structured access to bytevector contents
 dev-scheme/c-wrapper 0.6.1-r1: Foreign function interface for C and Objective-C libraries

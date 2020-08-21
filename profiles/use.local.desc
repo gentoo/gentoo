@@ -2837,7 +2837,6 @@ dev-ruby/faraday_middleware:rashify - Include FaradayMiddleware::Rashify
 dev-ruby/maruku:highlight - Enable source code highlighting via dev-ruby/syntax
 dev-ruby/mysql2:mariadb - Use mariadb bindings
 dev-ruby/net-ssh:ed25519 - Use dev-ruby/ed25519 for Ed25519 support
-dev-ruby/net-ssh:sodium - Use dev-libs/libsodium via dev-ruby/rbnacl for Ed25519 support
 dev-ruby/rails:asset-pipeline - Also install the default components for the asset pipeline. These are not required but they are activated automatically in new Rails projects by default.
 dev-ruby/rrdtool-bindings:graph - Enable support for graphing functions
 dev-ruby/rspec-core:highlight - Enable source code highlighting via dev-ruby/coderay
