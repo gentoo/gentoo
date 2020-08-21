@@ -3,15 +3,15 @@
 
 EAPI=7
 
-inherit flag-o-matic qmake-utils autotools git-r3 xdg
+inherit flag-o-matic qmake-utils xdg
 
 DESCRIPTION="Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections"
 HOMEPAGE="https://qjackctl.sourceforge.io/"
-EGIT_REPO_URI="https://git.code.sf.net/p/qjackctl/code"
+SRC_URI="mirror://sourceforge/qjackctl/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="alsa dbus debug portaudio"
 
 BDEPEND="dev-qt/linguist-tools:5"
@@ -27,11 +27,6 @@ RDEPEND="
 	dbus? ( dev-qt/qtdbus:5 )
 	portaudio? ( media-libs/portaudio )"
 DEPEND="${RDEPEND}"
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 src_configure() {
 	append-cxxflags -std=c++11
