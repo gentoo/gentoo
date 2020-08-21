@@ -114,6 +114,7 @@ acct-group/mysql 0: MySQL program group
 acct-group/mysqld_exporter 0: System group: mysqld_exporter
 acct-group/mythtv 0: Mythtv mythbackend server/deamon group
 acct-group/nagios 0: System group: nagios
+acct-group/named 0: System group: named
 acct-group/netbox 0: System group: netbox
 acct-group/netdata 0: System group: netdata
 acct-group/netdev 0: group for netdev (avahi)
@@ -327,6 +328,7 @@ acct-user/mysql 0: MySQL program user
 acct-user/mysqld_exporter 0: mysqld_exporter User
 acct-user/mythtv 0: Mythtv mythbackend server/daemon user
 acct-user/nagios 0: System user: nagios
+acct-user/named 0: User for net-dns/bind
 acct-user/netbox 0: user for netbox
 acct-user/netdata 0: user for netdata
 acct-user/neutron 0: user for the openstack neutron service
@@ -14535,8 +14537,8 @@ net-dialup/wvdial 1.61: Excellent program to automatically configure PPP session
 net-dialup/xc 4.3.2-r3 4.3.2-r4: Modem dialout & serial terminal program
 net-dialup/xl2tpd 1.3.10 1.3.11 1.3.12 1.3.13 1.3.15: A modern version of the Layer 2 Tunneling Protocol (L2TP) daemon
 net-dns/avahi 0.7-r6 0.7-r7 0.8-r2: System which facilitates service discovery on a local network
-net-dns/bind 9.14.12 9.16.4 9.16.5: Berkeley Internet Name Domain - Name Server
-net-dns/bind-tools 9.14.12 9.16.4 9.16.5: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
+net-dns/bind 9.14.12 9.16.4 9.16.5 9.16.6: Berkeley Internet Name Domain - Name Server
+net-dns/bind-tools 9.14.12 9.16.4 9.16.5 9.16.6: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 net-dns/c-ares 1.16.1: C library that resolves names asynchronously
 net-dns/coredns 1.6.9 1.7.0: A DNS server that chains middleware
 net-dns/ddclient 3.9.1: Perl client used to update dynamic DNS entries
