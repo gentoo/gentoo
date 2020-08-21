@@ -10,6 +10,5 @@
 	</upstream>
 	<use>
 		<flag name="ed25519">Use <pkg>dev-ruby/ed25519</pkg> for Ed25519 support</flag>
-		<flag name="sodium">Use <pkg>dev-libs/libsodium</pkg> via <pkg>dev-ruby/rbnacl</pkg> for Ed25519 support</flag>
 	</use>
 </pkgmetadata>
