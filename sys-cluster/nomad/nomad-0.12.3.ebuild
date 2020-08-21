@@ -14,6 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="nvidia"
 
+RESTRICT+=" test"
+
 src_compile() {
 	local go_ldflags go_tags
 	go_ldflags="-X github.com/hashicorp/nomad/version.GitCommit=${GIT_COMMIT}"
