@@ -13,4 +13,4 @@ HOMEPAGE="http://armin.emx.at/cddb/ https://metacpan.org/release/CDDB_get"
 # Bug #721294
 LICENSE="|| ( Artistic ( GPL-1+ GPL-2 ) )"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 sparc ~x86"
