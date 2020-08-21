@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit autotools-utils flag-o-matic
+inherit multilib flag-o-matic
 
 DESCRIPTION="C++ library and tools for symbolic calculations"
 SRC_URI="http://www.ginac.de/${P}.tar.bz2"
@@ -26,19 +26,20 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}"/${PN}-1.5.1-pkgconfig.patch )
 
 src_configure() {
-	local myeconfargs=( --disable-rpath )
-	append-cxxflags -std=c++11
-	autotools-utils_src_configure
+	append-cxxflags -std=c++14
+	econf --disable-rpath $(use_enable static-libs static)
 }
 
 src_compile() {
-	autotools-utils_src_compile
+	emake
 	if use doc; then
 		export VARTEXFONTS="${T}"/fonts
-		cd "${BUILD_DIR}/doc/reference"
+		pushd doc/reference >> /dev/null || die "pushd doc/reference failed"
 		emake html pdf
-		cd "${BUILD_DIR}/doc/tutorial"
+		popd >> /dev/null
+		pushd doc/tutorial >> /dev/null || die "pushd doc/tutorial failed"
 		emake ginac.pdf ginac.html
+		popd >> /dev/null
 	fi
 }
 
@@ -49,17 +50,20 @@ src_test() {
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
+	if ! use static-libs; then
+		rm "${D}"/usr/$(get_libdir)/lib${PN}.la || die "cannot rm lib${PN}.la"
+	fi
 	if use doc; then
-		cd "${BUILD_DIR}"/doc
-		insinto /usr/share/doc/${PF}
-		newins tutorial/ginac.pdf tutorial.pdf
-		newins reference/reference.pdf reference.pdf
-		insinto /usr/share/doc/${PF}/html/reference
-		doins -r reference/html_files/*
-		insinto /usr/share/doc/${PF}/html
-		newins tutorial/ginac.html tutorial.html
-		insinto /usr/share/doc/${PF}/examples
-		doins "${S}"/doc/examples/*.cpp examples/ginac-examples.*
+		pushd doc > /dev/null || die "pushd doc failed"
+		newdoc tutorial/ginac.pdf tutorial.pdf
+		newdoc reference/reference.pdf reference.pdf
+		docinto html/reference
+		dodoc -r reference/html_files/.
+		docinto html
+		newdoc tutorial/ginac.html tutorial.html
+		docinto examples
+		dodoc "${S}"/doc/examples/*.cpp examples/ginac-examples.*
+		popd > /dev/null
 	fi
 }
