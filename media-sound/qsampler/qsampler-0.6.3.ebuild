@@ -3,15 +3,15 @@
 
 EAPI=7
 
-EGIT_REPO_URI="https://git.code.sf.net/p/qsampler/code"
-inherit qmake-utils xdg autotools git-r3
+inherit qmake-utils xdg
 
 DESCRIPTION="Graphical frontend to the LinuxSampler engine"
 HOMEPAGE="https://qsampler.sourceforge.io/ https://www.linuxsampler.org/"
+SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="debug +libgig"
 
 DEPEND="
@@ -32,14 +32,7 @@ BDEPEND="dev-qt/linguist-tools:5"
 
 DOCS=( AUTHORS ChangeLog README TODO TRANSLATORS )
 
-PATCHES=( "${FILESDIR}"/${PN}-0.6.3-Makefile.patch )
-
-src_prepare() {
-	default
-
-	emake -f Makefile.git
-	eautoreconf
-}
+PATCHES=( "${FILESDIR}"/${P}-Makefile.patch )
 
 src_configure() {
 	local myeconfargs=(

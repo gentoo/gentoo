@@ -3,27 +3,19 @@
 
 EAPI=7
 
-inherit autotools subversion
-
 DESCRIPTION="C++ library for the Linux Sampler control protocol"
 HOMEPAGE="https://www.linuxsampler.org"
-ESVN_REPO_URI="https://svn.linuxsampler.org/svn/liblscp/trunk"
+SRC_URI="https://www.rncbc.org/archive/${P}.tar.gz
+https://download.linuxsampler.org/packages/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc"
 
 BDEPEND="doc? ( app-doc/doxygen )"
 
 DOCS=( AUTHORS ChangeLog TODO NEWS README )
-
-src_prepare() {
-	default
-
-	emake -f Makefile.git
-	eautoreconf
-}
 
 src_configure() {
 	econf --disable-static
@@ -32,5 +24,5 @@ src_configure() {
 src_install() {
 	use doc && local HTML_DOCS=( doc/html/. )
 	default
-	find "${D}" -name '*.la' -delete || die
+	find "${D}" -name '*.la' -type f -delete || die
 }

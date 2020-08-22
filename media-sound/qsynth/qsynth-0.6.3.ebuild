@@ -3,16 +3,16 @@
 
 EAPI=7
 
-inherit desktop qmake-utils xdg-utils git-r3 autotools
+inherit desktop qmake-utils xdg-utils
 
 DESCRIPTION="Qt application to control FluidSynth"
 HOMEPAGE="https://qsynth.sourceforge.io/"
-EGIT_REPO_URI="https://git.code.sf.net/p/qsynth/code"
+SRC_URI="mirror://sourceforge/qsynth/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="+alsa debug jack pulseaudio"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
 BDEPEND="
 	dev-qt/linguist-tools:5
@@ -29,11 +29,6 @@ RDEPEND="${DEPEND}"
 REQUIRED_USE="|| ( alsa jack pulseaudio )"
 
 PATCHES=( "${FILESDIR}/${PN}-0.4.0-qt5-tagging.patch" )
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 src_configure() {
 	sed -e "/@gzip.*mandir)\/man1/d" -i Makefile.in || die

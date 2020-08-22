@@ -1,13 +1,13 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit toolchain-funcs
 
-DESCRIPTION="mp3cat reads and writes MP3 files"
-HOMEPAGE="http://tomclegg.net/mp3cat"
-SRC_URI="http://tomclegg.net/software/${P}.tar.gz"
+DESCRIPTION="Reads and writes MP3 files"
+HOMEPAGE="https://tomclegg.ca/mp3cat"
+SRC_URI="https://github.com/tomclegg/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 src_prepare() {
+	default
 	sed -i -e 's:cc -o:${CC} ${CFLAGS} ${LDFLAGS} -o:' \
 		Makefile || die "sed failed"
 }

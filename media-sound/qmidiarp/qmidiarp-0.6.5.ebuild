@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic qmake-utils
+inherit qmake-utils xdg
 
 DESCRIPTION="Arpeggiator, sequencer and MIDI LFO for ALSA"
 HOMEPAGE="http://qmidiarp.sourceforge.net/"
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="nls lv2 osc"
+IUSE="lv2 nls osc"
 
 BDEPEND="
 	nls? ( dev-qt/linguist-tools:5 )
@@ -30,10 +30,7 @@ DEPEND="${RDEPEND}"
 src_configure() {
 	export PATH="$(qt5_get_bindir):${PATH}"
 
-	append-cxxflags -std=c++11
-
 	local myeconfargs=(
-		--enable-qt5
 		$(use_enable lv2 lv2plugins)
 		$(use_enable nls translations)
 		$(use_enable osc nsm)
