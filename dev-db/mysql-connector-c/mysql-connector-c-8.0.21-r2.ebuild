@@ -20,6 +20,7 @@ IUSE="ldap libressl static-libs"
 
 RDEPEND="
 	>=app-arch/lz4-0_p131:=
+	app-arch/zstd:=
 	sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	ldap? ( dev-libs/cyrus-sasl:=[${MULTILIB_USEDEP}] )
 	libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
@@ -84,9 +85,11 @@ multilib_src_configure() {
 		-DWITH_DEFAULT_FEATURE_SET=OFF
 		-DENABLED_LOCAL_INFILE=ON
 		-DMYSQL_UNIX_ADDR="${EPREFIX}/run/mysqld/mysqld.sock"
-		-DWITH_ZLIB=system
-		-DWITH_SSL=system
+		-DWITH_LZ4=system
 		-DWITH_NUMA=OFF
+		-DWITH_SSL=system
+		-DWITH_ZLIB=system
+		-DWITH_ZSTD=system
 		-DLIBMYSQL_OS_OUTPUT_NAME=mysqlclient
 		-DSHARED_LIB_PATCH_VERSION="0"
 		-DCMAKE_POSITION_INDEPENDENT_CODE=ON
