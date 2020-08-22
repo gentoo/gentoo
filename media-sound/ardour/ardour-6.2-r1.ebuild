@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://community.ardour.org/src/Ardour-${PV}.0.tar.bz2"
+	SRC_URI="https://dev.gentoo.org/~fordfrog/distfiles/Ardour-${PV}.0.tar.bz2"
 	S="${WORKDIR}/Ardour-${PV}.0"
 fi
 
@@ -69,6 +69,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen[dot] )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-no-nls.patch"
+)
+
 pkg_setup() {
 	if has_version \>=dev-libs/libsigc++-2.6 ; then
 		append-cxxflags -std=c++11
@@ -77,7 +81,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eapply_user
+	default
 	sed 's/'full-optimization\'\ :\ \\[.*'/'full-optimization\'\ :\ \'\','/' -i "${S}"/wscript || die
 	MARCH=$(get-flag march)
 	OPTFLAGS=""
