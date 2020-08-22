@@ -3906,7 +3906,8 @@ dev-haskell/cookie 0.4.2 0.4.2.1 0.4.4: HTTP cookie parsing and rendering
 dev-haskell/cpphs 1.15 1.16 1.17.1 1.18.8 1.19.3 1.20.2 1.20.8: A liberalised re-implementation of cpp, the C pre-processor
 dev-haskell/cprng-aes 0.5.2 0.6.1: Crypto Pseudo Random Number Generator using AES in counter mode
 dev-haskell/cpu 0.1.2: Cpu information and properties helpers
-dev-haskell/criterion 0.8.1.0 1.0.2.0 1.1.0.0 1.1.1.0 1.1.4.0: Robust, reliable performance measurement and analysis
+dev-haskell/criterion 1.5.6.2: Robust, reliable performance measurement and analysis
+dev-haskell/criterion-measurement 0.1.2.0: Criterion measurement functionality and associated types
 dev-haskell/crypto 4.2.5.1-r1: Collects together existing Haskell cryptographic functions into a package
 dev-haskell/crypto-api 0.12.2.2 0.13.2: A generic interface for cryptographic operations
 dev-haskell/crypto-api-tests 0.3-r1: A test framework and KATs for cryptographic operations
@@ -3932,8 +3933,8 @@ dev-haskell/curl 1.3.8: Haskell binding to libcurl
 dev-haskell/data-accessor 0.2.2.7 0.2.3: Utilities for accessing and manipulating fields of records
 dev-haskell/data-binary-ieee754 0.4.4: Parser/Serialiser for IEEE-754 floating-point values
 dev-haskell/data-default 0.5.3: A class for types with a default value
-dev-haskell/data-default-class 0.0.1: A class for types with a default value
-dev-haskell/data-default-instances-base 0.0.1: Default instances for types in base
+dev-haskell/data-default-class 0.0.1 0.1.2.0: A class for types with a default value
+dev-haskell/data-default-instances-base 0.0.1 0.1.0.1: Default instances for types in base
 dev-haskell/data-default-instances-containers 0.0.1: Default instances for types in containers
 dev-haskell/data-default-instances-dlist 0.0.1: Default instances for types in dlist
 dev-haskell/data-default-instances-old-locale 0.0.1: Default instances for types in old-locale
@@ -3947,6 +3948,7 @@ dev-haskell/dbus 0.10.10 0.10.11-r1 0.10.12 0.10.13 1.2.16: A client library for
 dev-haskell/dbus-core 0.9.3-r3: Low-level D-Bus protocol implementation
 dev-haskell/dec 0.0.3: Decidable propositions
 dev-haskell/deepseq-generics 0.1.1.2 0.2.0.0: GHC.Generics-based Control.DeepSeq.rnf implementation
+dev-haskell/dense-linear-algebra 0.1.0.0: Simple and incomplete pure haskell implementation of linear algebra
 dev-haskell/derive 2.5.26: A program and library to derive instances for data types
 dev-haskell/deriving-compat 0.3.5 0.5.8: Backports of GHC deriving extensions
 dev-haskell/diff 0.3.0 0.3.2 0.3.4 0.4.0: O(ND) diff algorithm in haskell
@@ -4197,7 +4199,7 @@ dev-haskell/lvmlib 1.1: The Lazy Virtual Machine (LVM)
 dev-haskell/maccatcher 2.1.5-r1: Obtain the host MAC address on *NIX and Windows
 dev-haskell/magic 1.1: Interface to C file/magic library
 dev-haskell/markdown-unlit 0.2.0.1: Literate Haskell support for Markdown
-dev-haskell/math-functions 0.1.5.2 0.1.6.0: Special functions and Chebyshev polynomials
+dev-haskell/math-functions 0.1.5.2 0.1.6.0 0.3.3.0: Special functions and Chebyshev polynomials
 dev-haskell/megaparsec 6.5.0-r1 8.0.0: Monadic parser combinators
 dev-haskell/memory 0.7 0.10 0.14.1 0.15.0: memory and related abstraction stuff
 dev-haskell/memotrie 0.6.4 0.6.10: Trie-based memo functions
@@ -4206,6 +4208,7 @@ dev-haskell/microlens 0.4.8.0 0.4.11.2: A tiny lens library with no dependencies
 dev-haskell/microlens-aeson 2.3.0.4: Law-abiding lenses for Aeson, using microlens
 dev-haskell/microlens-mtl 0.2.0.1: microlens support for Reader/Writer/State from mtl
 dev-haskell/microlens-th 0.4.3.4: Automatic generation of record lenses for microlens
+dev-haskell/microstache 1.0.1.1: Mustache templates for Haskell
 dev-haskell/mime 0.4.0.2: Working with MIME types
 dev-haskell/mime-mail 0.4.11: Compose MIME email messages
 dev-haskell/mime-types 0.1.0.3 0.1.0.6 0.1.0.7 0.1.0.9: Basic mime-type handling types and functions
@@ -4398,7 +4401,7 @@ dev-haskell/splitmix 0.0.4: Fast Splittable PRNG
 dev-haskell/stack 2.3.3: The Haskell Tool Stack
 dev-haskell/stack-bin 1.5.1 1.6.1 1.7.1 2.1.3 2.3.1: The Haskell Tool Stack (Binary)
 dev-haskell/statevar 1.0.0.0-r1 1.0.1.0 1.1.0.3 1.1.0.4 1.1.1.1: State variables
-dev-haskell/statistics 0.10.5.2 0.11.0.3 0.13.2.3 0.13.3.0: A library of statistical types, data, and functions
+dev-haskell/statistics 0.10.5.2 0.11.0.3 0.13.2.3 0.13.3.0 0.15.2.0: A library of statistical types, data, and functions
 dev-haskell/stm 2.4.2 2.4.4.1 2.5.0.0: Software Transactional Memory
 dev-haskell/stm-chans 3.0.0.4: Additional types of channels for STM
 dev-haskell/stmonadtrans 0.3.3 0.3.4 0.4.4: A monad transformer version of the ST monad
