@@ -28,6 +28,11 @@ CDEPEND="
 DEPEND="${DEPEND} ${CDEPEND}"
 RDEPEND="${RDEPEND} ${CDEPEND}"
 
+all_ruby_prepare() {
+	# Remove already compressed image
+	rm -f sample/icon.bmp.gz || die
+}
+
 each_ruby_configure() {
 	${RUBY} extconf.rb || die "extconf.rb failed"
 }
