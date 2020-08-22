@@ -18,7 +18,7 @@ SRC_URI="https://github.com/cchandler/certificate_authority/archive/v${PV}.tar.g
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 all_ruby_prepare() {
