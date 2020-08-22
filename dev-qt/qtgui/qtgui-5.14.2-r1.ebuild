@@ -131,6 +131,7 @@ QT5_GENTOO_PRIVATE_CONFIG=(
 PATCHES=(
 	"${FILESDIR}/qt-5.12-gcc-avx2.patch" # bug 672946
 	"${FILESDIR}/${PN}-5.14.1-cmake-macro-backward-compat.patch" # bug 703306
+	"${FILESDIR}/${PN}-5.14.2-CVE-2020-17507.patch" # bug 736924
 )
 
 src_prepare() {
@@ -174,8 +175,8 @@ src_configure() {
 		$(qt_use tslib)
 		$(qt_use udev libudev)
 		$(qt_use vulkan)
-		$(qt_use X xcb)
-		$(usex X '-xcb-xlib' '')
+		$(qt_use X xcb system)
+		$(usex X '-xcb-xlib -xcb-xinput -xkb' '')
 	)
 	if use libinput || use X; then
 		myconf+=( -xkbcommon )
