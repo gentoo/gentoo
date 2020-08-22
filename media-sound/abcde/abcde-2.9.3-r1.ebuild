@@ -25,10 +25,7 @@ RDEPEND="
 	)
 	aac? (
 		media-libs/faac
-		|| (
-			media-video/atomicparsley
-			media-video/atomicparsley-wez
-		)
+		media-video/atomicparsley
 	)
 	aiff? ( media-video/ffmpeg )
 	cdr? ( virtual/cdrtools )
