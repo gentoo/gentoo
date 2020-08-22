@@ -11,6 +11,7 @@ if [[ ${PV##*.} = 9999 ]]; then
 	EGIT_BRANCH="emacs-27"
 	EGIT_CHECKOUT_DIR="${WORKDIR}/emacs"
 	S="${EGIT_CHECKOUT_DIR}"
+	SLOT="${PV%%.*}-vcs"
 else
 	# FULL_VERSION keeps the full version number, which is needed in
 	# order to determine some path information correctly for copy/move
@@ -18,12 +19,20 @@ else
 	FULL_VERSION="${PV%%_*}"
 	SRC_URI="mirror://gnu/emacs/${P}.tar.xz"
 	S="${WORKDIR}/emacs-${FULL_VERSION}"
+	# PV can be in any of the following formats:
+	# 27.1                 released version (slot 27)
+	# 27.1_rc1             upstream release candidate (27)
+	# 27.0.9999            live ebuild (slot 27-vcs)
+	# 27.0.90              upstream prerelease snapshot (27-vcs)
+	# 27.0.50_pre20191223  snapshot by Gentoo developer (27-vcs)
 	if [[ ${PV} == *_pre* ]]; then
 		SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 		S="${WORKDIR}/emacs"
 	elif [[ ${PV//[0-9]} != "." ]]; then
 		SRC_URI="mirror://gnu-alpha/emacs/pretest/${PN}-${PV/_/-}.tar.xz"
 	fi
+	SLOT="${PV%%.*}"
+	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 fi
 
@@ -31,7 +40,6 @@ DESCRIPTION="The extensible, customizable, self-documenting real-time display ed
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-SLOT="27-vcs"
 IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif +gmp gpm gsettings gtk gtk2 gzip-el harfbuzz imagemagick +inotify jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
 REQUIRED_USE="?? ( aqua X )"
 RESTRICT="test"
