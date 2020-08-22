@@ -1,0 +1,37 @@
+From 21b2d50d4c23cd375acda57ed03af288ae0651af Mon Sep 17 00:00:00 2001
+From: Anton Karmanov <bergertroll@insiberia.net>
+Date: Thu, 16 Jul 2020 23:34:16 +0500
+Subject: [PATCH] Fix fullscreen mode regression
+
+BUG: 424286
+(cherry picked from commit 946ecc7fb569244f78f8658148b3bef9911a5af4)
+---
+ app/mainwindow.cpp | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/app/mainwindow.cpp b/app/mainwindow.cpp
+index d8303bd..2d22a9d 100644
+--- a/app/mainwindow.cpp
++++ b/app/mainwindow.cpp
+@@ -1136,14 +1136,13 @@ void MainWindow::wmActiveWindowChanged()
+ 
+ void MainWindow::changeEvent(QEvent* event)
+ {
+-    if (event->type() == QEvent::WindowStateChange)
+-    {
+-        if ((windowState() & Qt::WindowMaximized))
+-        {
++    if (event->type() == QEvent::WindowStateChange && !m_isFullscreen) {
++        if (windowState().testFlag(Qt::WindowMaximized)) {
+             // Don't alter settings to new size so unmaximizing restores previous geometry.
+             setWindowGeometry(100, 100, Settings::position());
+             setWindowState(Qt::WindowMaximized);
+-        } else {
++        }
++        else {
+             setWindowGeometry(Settings::width(), Settings::height(), Settings::position());
+         }
+     }
+-- 
+GitLab
+
