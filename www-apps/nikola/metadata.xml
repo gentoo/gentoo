@@ -7,7 +7,7 @@
   </maintainer>
   <use>
     <flag name="assets">
-      Support web asset management through <pkg>dev-python/assets</pkg>
+      Support web asset management through
     </flag>
     <flag name="charts">
       Support chart generation through <pkg>dev-python/pygal</pkg>
