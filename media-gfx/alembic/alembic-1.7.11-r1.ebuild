@@ -3,9 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
-
-inherit cmake multiprocessing python-single-r1
+inherit cmake multiprocessing
 
 DESCRIPTION="Open framework for storing and sharing scene data"
 HOMEPAGE="https://www.alembic.io/"
@@ -15,25 +13,20 @@ LICENSE="BSD"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="arnold +boost doc examples hdf5 maya prman python test zlib"
+IUSE="arnold +boost doc examples hdf5 maya prman test zlib"
 RESTRICT="!test? ( test )"
 
-# pyalembic python bindings need boost
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	hdf5? ( zlib )
-	python? ( boost )
 "
 
 RDEPEND="
 	${PYTHON_DEPS}
 	>=media-libs/openexr-2.3.0:=
+	boost? ( >=dev-libs/boost-1.65.0:= )
 	hdf5? ( >=sci-libs/hdf5-1.10.2:=[zlib(+)] )
-	python? ( >=dev-python/pyilmbase-2.3.0[${PYTHON_SINGLE_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.11-r1 )
-	$(python_gen_cond_dep '
-		boost? ( >=dev-libs/boost-1.65.0:=[python,${PYTHON_MULTI_USEDEP}] )
-	')
 "
 DEPEND="
 	${RDEPEND}
@@ -72,7 +65,7 @@ src_configure() {
 		-DUSE_HDF5=$(usex hdf5)
 		-DUSE_MAYA=$(usex maya)
 		-DUSE_PRMAN=$(usex prman)
-		-DUSE_PYALEMBIC=$(usex python)
+		-DUSE_PYALEMBIC=OFF
 		-DUSE_TESTS=$(usex test)
 	)
 	cmake_src_configure
