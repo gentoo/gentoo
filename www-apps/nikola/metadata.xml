@@ -26,6 +26,9 @@
       Add support for <pkg>dev-python/jinja</pkg> as alternative templating
       engine to Mako
     </flag>
+    <flag name="server">
+      Enable support for built-in web server using <pkg>dev-python/aiohttp</pkg>
+    </flag>
     <flag name="watchdog">
       Use <pkg>dev-python/watchdog</pkg> to monitor file system events
     </flag>
