@@ -13,7 +13,7 @@ WAF_VER=2.0.20
 DESCRIPTION="A set of C++ wrappers around the LV2 C API"
 HOMEPAGE="https://lvtk.org/"
 SRC_URI="https://github.com/lvtk/lvtk/archive/${PV}.tar.gz -> ${P}.tar.gz
-	https://waf.io/waf-2.0.20"
+	https://waf.io/waf-${WAF_VER}"
 
 LICENSE="GPL-3+"
 SLOT="0"
