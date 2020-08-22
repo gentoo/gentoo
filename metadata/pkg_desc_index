@@ -13256,7 +13256,7 @@ media-libs/libzmf 0.0.2 9999: Library for parsing Zoner Callisto/Draw documents
 media-libs/lilv 0.24.6-r2 0.24.8-r1: Library to make the use of LV2 plugins as simple as possible for applications
 media-libs/lsp-plugins 1.1.5-r2 1.1.7-r1 1.1.10 1.1.22 1.1.24 9999: Linux Studio Plugins
 media-libs/lv2 1.18.0: A simple but extensible successor of LADSPA
-media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
+media-libs/lvtk 1.2.0 1.2.0-r1: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 20.0.8 20.1.6 20.2.0_rc2 9999: OpenGL-like graphic library for Linux
 media-libs/mlt 6.20.0-r2: Open source multimedia framework for television broadcasting
@@ -17526,7 +17526,7 @@ sys-fs/extundelete 0.2.4: A utility to undelete files from an ext3 or ext4 parti
 sys-fs/f2fs-tools 1.13.0: Tools for Flash-Friendly File System (F2FS)
 sys-fs/fatcat 1.1.0-r1: FAT filesystems explore, extract, repair, and forensic tool
 sys-fs/fatresize 1.0.4: Resize FAT partitions using libparted
-sys-fs/fatsort 1.6.2.605: Sorts files on FAT16/32 partitions, ideal for basic audio players
+sys-fs/fatsort 1.6.2.605 1.6.3.622: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fragview 0.1.1 9999: Disk fragmentation visualizer based on FIEMAP and FIBMAP ioctls
 sys-fs/fuse 2.9.9-r1 3.9.1 3.9.2 3.9.3: An interface for filesystems implemented in userspace
 sys-fs/fuse-common 3.9.1 3.9.2 3.9.3: Common files for multiple slots of sys-fs/fuse
