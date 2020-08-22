@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2020-08-22)
+# app-office/openoffice-bin is being removed.
+office_implementation_openoffice
+
 # Patrick Lauer <patrick@gentoo.org> (2020-08-18)
 # pg13 is currently beta and has no keywords yet
 postgres_targets_postgres13

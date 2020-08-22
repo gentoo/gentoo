@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-22)
+# Python 2 only.  You can use app-office/libreoffice{,-bin} instead.
+# Removal in 30 days.  Bug #715400.
+app-office/openoffice-bin
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-22)
 # Python 2 only.  No reverse dependencies left.
 # Removal in 30 days.  Bug #735604.
 dev-python/faulthandler
