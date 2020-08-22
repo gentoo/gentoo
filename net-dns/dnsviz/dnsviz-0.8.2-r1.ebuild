@@ -27,7 +27,10 @@ PATCHES=( "${FILESDIR}"/${PN}-0.8.2-add-ed448-support.patch )
 
 python_prepare_all() {
 	# Fix the ebuild to use correct FHS/Gentoo policy paths for 0.8.2
-	sed -i "s*share/doc/dnsviz*share/doc/dnsviz-${PV}*g" "${S}"/setup.py || die
+	sed -i \
+		-e "s|share/doc/dnsviz|share/doc/${PF}|g" \
+			"${S}"/setup.py \
+			|| die
 
 	distutils-r1_python_prepare_all
 }
