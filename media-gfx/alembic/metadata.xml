@@ -26,9 +26,6 @@
 	<flag name="prman">
 		Compile Alembic plugin for Renderman (experimental)
 	</flag>
-	<flag name="python">
-		Build pyalembic python bindings (needs <pkg>dev-python/pyilmbase</pkg>)
-	</flag>
 	<flag name="test">Build and run the test-suite</flag>
 	<flag name="zlib">Use <pkg>sys-libs/zlib</pkg> for compressions</flag>
 </use>
