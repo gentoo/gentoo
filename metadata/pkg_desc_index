@@ -7839,7 +7839,7 @@ dev-python/PyPDF2 1.26.0: Python library to work with pdf files
 dev-python/PyQt5 5.14.2-r1 5.15.0-r1: Python bindings for the Qt framework
 dev-python/PyQt5-sip 4.19.22-r1 4.19.23-r1 4.19.24: Private sip module for PyQt5
 dev-python/PyQtWebEngine 5.14.0 5.15.1_pre2006110847: Python bindings for QtWebEngine
-dev-python/PyRSS2Gen 1.1: RSS feed generator written in Python
+dev-python/PyRSS2Gen 1.1-r1: RSS feed generator written in Python
 dev-python/PySDL2 0.9.7: Python (ctypes) bindings for SDL2 libraries
 dev-python/PySensors 0.0.4: Python bindings to libsensors (via ctypes)
 dev-python/PySocks 1.7.1: SOCKS client module
@@ -8859,7 +8859,7 @@ dev-python/python-debian 0.1.36: Python modules to work with Debian-related data
 dev-python/python-designateclient 4.0.0: Python bindings to the Designate API.
 dev-python/python-discid 1.2.0: Python bindings for libdiscid
 dev-python/python-distutils-extra 2.45: Gettext support, themed icons and scrollkeeper-based documentation in distutils
-dev-python/python-docs 2.7.17 2.7.18 3.6.10 3.6.11 3.7.7 3.7.8 3.8.2 3.8.3: HTML documentation for Python
+dev-python/python-docs 2.7.18 3.6.11 3.6.12 3.7.8 3.7.9 3.8.5: HTML documentation for Python
 dev-python/python-dotenv 0.14.0: Manage .env files
 dev-python/python-editor 1.0.4: Programmatically open an editor, capture the result.
 dev-python/python-efl 1.24.0: Python bindings for Enlightenment Foundation Libraries
@@ -10861,7 +10861,7 @@ dev-util/redo 0.42a 0.42c 99999: Smaller, easier, more powerful, and more reliab
 dev-util/regexxer 0.10: An interactive tool for performing search and replace operations
 dev-util/rej 0.16-r1: A utility for solving diff/patch rejects
 dev-util/rocm-cmake 0.2 2.7.0 2.8.0 2.9.0 2.10.0 3.0.0 3.3.0 3.5.0 3.7.0 9999: Radeon Open Compute CMake Modules
-dev-util/rocminfo 2.6.0 2.7.0 2.8.0 2.9.0 2.10.0 3.0.0 3.1.0 3.3.0 3.5.0 9999: ROCm Application for Reporting System Info
+dev-util/rocminfo 2.6.0 2.7.0 2.8.0 2.9.0 2.10.0 3.0.0 3.1.0 3.3.0 3.5.0 3.7.0 9999: ROCm Application for Reporting System Info
 dev-util/rosdep 0.19.0 9999: Command-line tool for installing ROS system dependencies
 dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
 dev-util/rosinstall_generator 0.1.22 9999: Generates rosinstall metadata about repositories with ROS packages/stacks
@@ -18083,7 +18083,7 @@ www-apps/nanoc 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible stat
 www-apps/nanoc-core 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/netbox 2.7.2 2.7.6 2.7.8: IP address and data center infrastructure management tool
 www-apps/nextcloud 17.0.5 17.0.6 17.0.7 17.0.8 18.0.3 18.0.4 18.0.6 18.0.7 19.0.0 19.0.1: Personal cloud that runs on your own server
-www-apps/nikola 7.8.15 7.8.15-r1 8.0.4 8.1.0 8.1.1: A static website and blog generator
+www-apps/nikola 7.8.15 7.8.15-r1 8.0.4 8.1.0 8.1.1 8.1.1-r1: A static website and blog generator
 www-apps/novnc 1.0.0 1.1.0 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/owncloud 10.4.0 10.4.1 10.5.0: Web-based storage application where all your data is under your own control
 www-apps/phpBB 3.2.8: An open-source PHP-based bulletin board package
