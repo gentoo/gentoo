@@ -58,7 +58,6 @@ dev-python/girder-client
 dev-python/ipynb
 dev-python/jira
 dev-python/jplephem
-dev-python/metakernel
 dev-python/natgrid
 dev-python/nbdime
 dev-python/oct2py
