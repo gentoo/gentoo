@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="aeson">
+			Enable the use of the `aeson` package. This may be useful for
+			accelerating builds in sandboxes for expert users.
+		</flag>
+		<flag name="semigroupoids">
+			Enable the use of the `semigroupoids` package. This may be
+			useful for accelerating builds in sandboxes for expert users.
+		</flag>
+		<flag name="semirings">
+			Enable the use of the `semirings` package. This may be useful
+			for accelerating builds in sandboxes for expert users.
+		</flag>
+		<flag name="vector">
+			Enable the use of the `vector` package. This may be useful
+			for accelerating builds in sandboxes for expert users.
+		</flag>
+		<flag name="unary-laws">
+			Include infrastructure for testing class laws of unary type constructors.
+		</flag>
+		<flag name="binary-laws">
+			Include infrastructure for testing class laws of binary type constructors.
+			Disabling `unary-laws` while keeping `binary-laws` enabled is an unsupported
+			configuration.
+		</flag>
+	</use>
+	<longdescription>
+		This library provides QuickCheck properties to ensure
+		that typeclass instances adhere to the set of laws that
+		they are supposed to. There are other libraries that do
+		similar things, such as `genvalidity-hspec` and `checkers`.
+		This library differs from other solutions by not introducing
+		any new typeclasses that the user needs to learn.
+		
+		/Note:/ on GHC &lt; 8.5, this library uses the higher-kinded typeclasses
+		(&#39;Data.Functor.Classes.Show1&#39;, &#39;Data.Functor.Classes.Eq1&#39;, &#39;Data.Functor.Classes.Ord1&#39;, etc.),
+		but on GHC &gt;= 8.5, it uses `-XQuantifiedConstraints` to express these
+		constraints more cleanly.
+	</longdescription>
+</pkgmetadata>
