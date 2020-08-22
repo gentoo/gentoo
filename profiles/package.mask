@@ -77,7 +77,6 @@ media-gfx/birdfont
 media-gfx/sigal
 media-libs/libxmlbird
 net-analyzer/nagstamon
-net-dns/dnsviz
 net-fs/s3ql
 net-misc/dmr_utils
 net-misc/s3cmd

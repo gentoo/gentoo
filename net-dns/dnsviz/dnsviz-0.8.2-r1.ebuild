@@ -12,24 +12,40 @@ SRC_URI="https://github.com/dnsviz/dnsviz/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
 	dev-python/dnspython[${PYTHON_USEDEP}]
-	dev-python/libnacl[${PYTHON_USEDEP}]
 	>=dev-python/m2crypto-0.31.0[${PYTHON_USEDEP}]
-	>=dev-python/pygraphviz-1.3.1[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+	>=dev-python/pygraphviz-1.3.1[${PYTHON_USEDEP}]"
 
 RDEPEND="
 	${DEPEND}"
 
+PATCHES=( "${FILESDIR}"/${PN}-0.8.2-add-ed448-support.patch )
+
 python_prepare_all() {
 	# Fix the ebuild to use correct FHS/Gentoo policy paths for 0.8.2
-	sed -i "s*share/doc/dnsviz*share/doc/dnsviz-${PV}*g" "${S}"/setup.py || die
+	sed -i \
+		-e "s|share/doc/dnsviz|share/doc/${PF}|g" \
+			"${S}"/setup.py \
+			|| die
 
 	distutils-r1_python_prepare_all
+}
+
+python_test() {
+	distutils_install_for_testing
+
+	"${EPYTHON}" tests/offline_tests.py -v || die
+
+	# No need to pull in net-dns/bind for this small test
+	if hash named-checkconf &>/dev/null ; then
+		"${EPYTHON}" tests/local_probe_tests.py -v || die
+	else
+		einfo "Skipping local_probe_tests -- named-checkconf not found!"
+	fi
 }
 
 pkg_postinst() {
