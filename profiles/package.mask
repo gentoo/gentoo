@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-22)
+# Python 2 only.  No reverse dependencies left.
+# Removal in 30 days.  Bug #735604.
+dev-python/faulthandler
+dev-python/fdsend
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-22)
 # These packages (or package versions) still require Python 2.7.
 # They are either dead upstream, their Python 3 porting efforts are
 # not progressing or their maintainers are simply unresponsive.
