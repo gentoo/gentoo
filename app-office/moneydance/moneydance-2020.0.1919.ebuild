@@ -1,9 +1,9 @@
-# Copyright 2018-2019 Gentoo Authors
+# Copyright 2018-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop eapi7-ver java-pkg-2 xdg-utils
+inherit desktop java-pkg-2 xdg-utils
 
 MY_PN="Moneydance"
 MY_PV="$(ver_cut 1-2)_$(ver_cut 3)"
