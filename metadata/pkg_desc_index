@@ -10689,7 +10689,7 @@ dev-util/debootstrap 1.0.115 1.0.116 1.0.117 1.0.123: Debian/Ubuntu bootstrap sc
 dev-util/debugedit 4.15.1: Stand-alone debugedit from RPM
 dev-util/dejagnu 1.6 1.6.2: Framework for testing other programs
 dev-util/desktop-file-utils 0.24 0.26: Command line utilities to work with desktop menu entries
-dev-util/devhelp 3.34.0: An API documentation browser for GNOME
+dev-util/devhelp 3.34.0 3.36.2: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
@@ -11231,7 +11231,7 @@ games-board/freedoko 0.7.16 0.7.16-r1: FreeDoko is a Doppelkopf-game
 games-board/fruit 2.1-r1: UCI-only chess engine
 games-board/gambit 1.0.4: Qt-based chess application + engine "gupta"
 games-board/gmchess 0.29.6-r2: Chinese chess with gtkmm and c++
-games-board/gnome-chess 3.34.0: Play the classic two-player boardgame of chess
+games-board/gnome-chess 3.34.0 3.36.1: Play the classic two-player boardgame of chess
 games-board/gnome-hearts 0.3.1-r2: A clone of classic hearts card game
 games-board/gnome-mahjongg 3.34.0 3.36.2: Disassemble a pile of tiles by removing matching pairs
 games-board/gnome-mines 3.34.0 3.36.1: Clear hidden mines from a minefield
@@ -11519,7 +11519,7 @@ games-puzzle/galaxis 1.8-r1: Curses-based clone of the nifty little Macintosh fr
 games-puzzle/gemdropx 0.9-r2: A puzzle game where it's your job to clear the screen of gems
 games-puzzle/gfifteen 1.0.3-r1: Graphical implementation of the sliding puzzle game fifteen
 games-puzzle/glightoff 1.0.0-r1: A simple (but not so easy to solve!) puzzle game
-games-puzzle/gnome-klotski 3.34.4: Slide blocks to solve the puzzle
+games-puzzle/gnome-klotski 3.34.4 3.36.3: Slide blocks to solve the puzzle
 games-puzzle/gnome-sudoku 3.34.1: Test your logic skills in this number grid puzzle
 games-puzzle/gnome-taquin 3.34.4 3.36.4: Move tiles so that they reach their places
 games-puzzle/gnome-tetravex 3.34.4 3.36.4: Complete the puzzle by matching numbered tiles
@@ -11872,7 +11872,7 @@ gnome-extra/gnome-tweaks 3.34.0: Customize advanced GNOME 3 options
 gnome-extra/gnome-user-docs 3.34.2 3.36.2: GNOME end user documentation
 gnome-extra/gnome-user-share 3.34.0: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
-gnome-extra/gnome-weather 3.34.2: A weather application for GNOME
+gnome-extra/gnome-weather 3.34.2 3.36.1: A weather application for GNOME
 gnome-extra/gtkhtml 4.10.0-r2: Lightweight HTML rendering/printing/editing engine
 gnome-extra/gucharmap 3.0.1-r200 12.0.1 12.0.1-r1: Unicode character map viewer and library
 gnome-extra/libgda 5.2.8-r1: GNOME database access library
@@ -14745,7 +14745,7 @@ net-irc/ngircd 25 26: An IRC server written from scratch
 net-irc/ninja 1.5.9_pre14-r1: Ninja IRC Client
 net-irc/onis 0.8.2-r1: onis not irc stats
 net-irc/pisg 0.73-r1: Perl IRC Statistics Generator
-net-irc/polari 3.34.1: An IRC client for Gnome
+net-irc/polari 3.34.1 3.36.3: An IRC client for Gnome
 net-irc/psybnc 2.3.2.9-r3: A multi-user and multi-server gateway to IRC networks
 net-irc/ptlink-ircd 6.19.6-r3: Secure IRC daemon with many advanced features
 net-irc/ptlink-opm 1.3.1-r1 1.3.1-r2: PTlink Open Proxy Monitor
@@ -15830,7 +15830,7 @@ sci-biology/bioperl 1.6.9: Perl tools for bioinformatics - Core modules
 sci-biology/bioperl-db 1.6.9 1.6.9-r1: Perl tools for bioinformatics - Perl API that accesses the BioSQL schema
 sci-biology/bioperl-network 1.6.9: Perl tools for bioinformatics - Analysis of protein-protein interaction networks
 sci-biology/bioperl-run 1.6.9: Perl wrapper modules for key bioinformatics applications
-sci-biology/biopython 1.73 1.77: Python modules for computational molecular biology
+sci-biology/biopython 1.77: Python modules for computational molecular biology
 sci-biology/biosql 1.0.1-r1: A generic bioinformatics relational database model
 sci-biology/blat 34-r2: The BLAST-Like Alignment Tool, a fast genomic sequence aligner
 sci-biology/bowtie 1.1.2-r1 2.2.9: Popular short read aligner for Next-generation sequencing data
@@ -17616,8 +17616,8 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.0-r2 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.4.58 5.4.59 5.7.10 5.7.12 5.7.13 5.7.15 5.7.16 5.8.1 5.8.2: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.4.58 5.4.59 5.7.10 5.7.12 5.7.13 5.7.15 5.7.16 5.8.1 5.8.2: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.4.58 5.4.59 5.4.60 5.7.10 5.7.12 5.7.13 5.7.15 5.7.16 5.7.17 5.8.1 5.8.2 5.8.3: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.4.58 5.4.59 5.4.60 5.7.10 5.7.12 5.7.13 5.7.15 5.7.16 5.7.17 5.8.1 5.8.2 5.8.3: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.228 4.4.229 4.4.230 4.4.231 4.4.232 4.4.233 4.9.228 4.9.229 4.9.230 4.9.231 4.9.232 4.9.233 4.14.185 4.14.191 4.14.192 4.14.193 4.14.194 4.19.129 4.19.138 4.19.139 4.19.140 4.19.141 5.4.48 5.4.57 5.4.58 5.4.59 5.4.60 5.7.14 5.7.15 5.7.16 5.7.17 5.8.0 5.8.0-r1 5.8.1 5.8.2 5.8.3: Full sources including the Gentoo patchset for the 5.8 kernel tree
 sys-kernel/git-sources 5.9_rc1: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17632,7 +17632,7 @@ sys-kernel/pf-sources 5.6_p8 5.7_p1 5.7_p2 5.7_p3 5.7_p4 5.7_p5 5.7_p7 5.8_p1 5.
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p20190925 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.225_p198 4.4.231_p202 4.9.227_p146 4.9.232_p150 4.14.184_p84 4.14.192_p91 4.19.127_p54 4.19.135_p60 5.4.44_p27 5.4.54_p33 5.6.17_p10 5.6.19_p11: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.4.58 5.4.59 5.7.10 5.7.12 5.7.13 5.7.15 5.7.16 5.8.1 5.8.2: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.4.58 5.4.59 5.4.60 5.7.10 5.7.12 5.7.13 5.7.15 5.7.16 5.7.17 5.8.1 5.8.2 5.8.3: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.233 4.9.233 4.14.194 4.19.141 5.4.60 5.7.17 5.8.3: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
