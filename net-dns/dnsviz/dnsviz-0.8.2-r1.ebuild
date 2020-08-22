@@ -18,8 +18,7 @@ IUSE=""
 DEPEND="
 	dev-python/dnspython[${PYTHON_USEDEP}]
 	>=dev-python/m2crypto-0.31.0[${PYTHON_USEDEP}]
-	>=dev-python/pygraphviz-1.3.1[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+	>=dev-python/pygraphviz-1.3.1[${PYTHON_USEDEP}]"
 
 RDEPEND="
 	${DEPEND}"
