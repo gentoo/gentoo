@@ -10,7 +10,4 @@
 	<upstream>
 		<remote-id type="pypi">Sphinx</remote-id>
 	</upstream>
-	<use>
-		<flag name="net">enable internet capabilities</flag>
-	</use>
 </pkgmetadata>
