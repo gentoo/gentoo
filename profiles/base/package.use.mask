@@ -7,6 +7,12 @@
 # mask everywhere, unmask on arch/*) use arch/base.
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-22)
+# These flags depend on dev-python/pygtk that is masked for removal.
+app-mobilephone/sobexsrv gtk
+<media-gfx/gimp-3 python
+<x11-libs/vte-0.58 python
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-22)
 # These flags depend on packages masked for removal due to py2.
 <media-tv/mythtv-31 python
 net-libs/zeromq pgm
