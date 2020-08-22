@@ -3,18 +3,21 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit python-single-r1 waf-utils
 
+WAF_VER=2.0.20
+
 DESCRIPTION="A set of C++ wrappers around the LV2 C API"
 HOMEPAGE="https://lvtk.org/"
-SRC_URI="https://github.com/lvtk/lvtk/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lvtk/lvtk/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://waf.io/waf-2.0.20"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug doc examples +gtk2 +tools"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -29,7 +32,15 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${P}-boost-system-underlinking.patch"
+	"${FILESDIR}/${P}-py3.patch"
 )
+
+src_unpack() {
+	unpack ${P}.tar.gz || die
+
+	# we need newer version of waf to work with py3
+	cp "${DISTDIR}/waf-${WAF_VER}" "${S}/waf" || die
+}
 
 src_configure() {
 	local mywafconfargs=(
