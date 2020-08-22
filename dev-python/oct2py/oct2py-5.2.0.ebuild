@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -16,39 +16,35 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples test"
-RESTRICT="!test? ( test )"
+IUSE="examples"
 
 RDEPEND="
-	>=dev-python/numpy-1.11[${PYTHON_USEDEP}]
-	dev-python/octave_kernel[${PYTHON_USEDEP}]
-	>=sci-libs/scipy-0.17[${PYTHON_USEDEP}]
-"
-DEPEND="${RDEPEND}
-	doc? (
-		dev-python/numpydoc[${PYTHON_USEDEP}]
-		dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/sphinx-bootstrap-theme[${PYTHON_USEDEP}]
-	)
+	>=dev-python/numpy-1.12[${PYTHON_USEDEP}]
+	>=dev-python/octave_kernel-0.31.0[${PYTHON_USEDEP}]
+	>=sci-libs/scipy-0.17[${PYTHON_USEDEP}]"
+BDEPEND="
 	test? (
-		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/ipython[${PYTHON_USEDEP}]
-	)
-"
-python_compile_all() {
-	if use doc; then
-		sphinx-build docs html || die
-		HTML_DOCS=( html/. )
-	fi
-}
+		dev-python/pandas[${PYTHON_USEDEP}]
+	)"
+
+distutils_enable_sphinx docs \
+	dev-python/numpydoc dev-python/sphinx-bootstrap-theme dev-python/sphinx_rtd_theme
+distutils_enable_tests pytest
+
+PATCHES=( "${FILESDIR}"/${PN}-5.2.0-mask-pkg-load-test.patch )
 
 python_test() {
-	cd "${BUILD_DIR}/lib" || die
-	py.test -v -v || die
+	cd "${BUILD_DIR}"/lib || die
+	pytest -vv || die "Tests fail with ${EPYTHON}"
+
+	# remove cache which breaks python_install()
+	rm -r .pytest_cache || die
 }
 
 python_install_all() {
 	distutils-r1_python_install_all
+
 	if use examples; then
 		docinto examples
 		dodoc -r example/.
