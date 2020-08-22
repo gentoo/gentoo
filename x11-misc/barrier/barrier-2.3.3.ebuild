@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop xdg cmake
+inherit desktop virtualx xdg cmake
 
 DESCRIPTION="Share a mouse and keyboard between computers (fork of Synergy)"
 HOMEPAGE="https://github.com/debauchee/barrier"
@@ -12,7 +12,8 @@ SRC_URI="https://github.com/debauchee/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="gui libressl"
+IUSE="gui libressl test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	net-misc/curl
@@ -36,14 +37,13 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	dev-cpp/gtest
 	x11-base/xorg-proto
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-inf-loop.patch
-	"${FILESDIR}"/${P}-no-avahi.patch
-	"${FILESDIR}"/${P}-pthread.patch
-	"${FILESDIR}"/${P}-qt-gui-only.patch
+	"${FILESDIR}"/${P}-tests.patch
+	"${FILESDIR}"/${P}-gtest.patch
 )
 
 DOCS=(
@@ -56,11 +56,18 @@ src_configure() {
 	local mycmakeargs=(
 		-DBARRIER_BUILD_GUI=$(usex gui)
 		-DBARRIER_BUILD_INSTALLER=OFF
+		-DBARRIER_BUILD_TESTS=$(usex test)
 		-DBARRIER_REVISION=00000000
+		-DBARRIER_USE_EXTERNAL_GTEST=ON
 		-DBARRIER_VERSION_STAGE=gentoo
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	"${BUILD_DIR}"/bin/unittests || die
+	virtx "${BUILD_DIR}"/bin/integtests || die
 }
 
 src_install() {
