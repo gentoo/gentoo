@@ -1558,6 +1558,7 @@ dev-haskell/certificate:executable - Build the executable
 dev-haskell/cgi:extensible-exceptions-in-base - Required to be enabled for >=dev-lang/ghc-7.
 dev-haskell/cgi:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/chell:color-output - use colors in program output
+dev-haskell/chimera:representable - Define Representable instance from adjunctions package
 dev-haskell/citeproc-hs:bibutils - use Chris Putnam's app-text/bibutils
 dev-haskell/citeproc-hs:embed-data-files - Embed locale files into the library (needed for windows packaging)
 dev-haskell/citeproc-hs:hexpat - use dev-haskell/hexpat instead of dev-haskell/xml for XML parsing
@@ -1654,6 +1655,7 @@ dev-haskell/lifted-async:monad-control-1 - Use moand-control == 1.*
 dev-haskell/linear:template-haskell - You can disable the use of the `template-haskell` package using `-f-template-haskell`. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
 dev-haskell/lukko:ofd-locking - Enable open file descriptor locking. Available on Linux (kernel 3.15, released Jun 8, 2014).
 dev-haskell/missingh:network-3 - Use network-3
+dev-haskell/mod:semirings - Derive semiring instances
 dev-haskell/monad-control:instancest - If enabled this package will export MonadBaseControl instances for the lazy and strict ST monad. If disabled these instances are only exported when base >= 4.4. If enabled it is required that the transformer-base package exports MonadBase instances for ST. It will do this by default.
 dev-haskell/monad-logger:template-haskell - Enable Template Haskell support.
 dev-haskell/monad-par:chaselev - Use Chase-Lev Deques for higher-perf work-stealing.
@@ -1685,6 +1687,14 @@ dev-haskell/pointed:unordered-containers - optional instances
 dev-haskell/publicsuffixlist:create - export Network.PublicSuffixList.Create module
 dev-haskell/publicsuffixlist:runtimelist - read suffix list from dist at startup instead of embedding list into library
 dev-haskell/quickcheck:template-haskell - Enable additional test modules requiring Template Haskell support.
+dev-haskell/quickcheck-classes:aeson - Enable the use of the `aeson` package. This may be useful for accelerating builds in sandboxes for expert users.
+dev-haskell/quickcheck-classes:binary-laws - Include infrastructure for testing class laws of binary type constructors. Disabling `unary-laws` while keeping `binary-laws` enabled is an unsupported configuration.
+dev-haskell/quickcheck-classes:semigroupoids - Enable the use of the `semigroupoids` package. This may be useful for accelerating builds in sandboxes for expert users.
+dev-haskell/quickcheck-classes:semirings - Enable the use of the `semirings` package. This may be useful for accelerating builds in sandboxes for expert users.
+dev-haskell/quickcheck-classes:unary-laws - Include infrastructure for testing class laws of unary type constructors.
+dev-haskell/quickcheck-classes:vector - Enable the use of the `vector` package. This may be useful for accelerating builds in sandboxes for expert users.
+dev-haskell/quickcheck-classes-base:binary-laws - Include infrastructure for testing class laws of binary type constructors. Disabling `unary-laws` while keeping `binary-laws` enabled is an unsupported configuration.
+dev-haskell/quickcheck-classes-base:unary-laws - Include infrastructure for testing class laws of unary type constructors.
 dev-haskell/recaptcha:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/reflection:template-haskell - Enable template haskell.
 dev-haskell/rfc5051:mkunicodedata - build codes generator itself
@@ -1705,6 +1715,9 @@ dev-haskell/semigroups:hashable - You can disable the use of the `hashable` pack
 dev-haskell/semigroups:text - You can disable the use of the `text` package using USE=-text. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
 dev-haskell/semigroups:transformers - provide instances for transformers package.
 dev-haskell/semigroups:unordered-containers - You can disable the use of the `unordered-containers` package using USE=-unordered-containers. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
+dev-haskell/semirings:containers - Enable the use of the `containers` package. Disabling this may be useful for accelerating builds in sandboxes for expert users.
+dev-haskell/semirings:hashable - Enisable the use of the `hashable` package. Disabling this may be useful for accelerating builds in sandboxes for expert users. Note: `-hashable` implies `-unordered-containers`, as we are necessarily not able to supply those instances as well.
+dev-haskell/semirings:unordered-containers - Enable the use of the `unordered-containers` package. Disabling this may be useful for accelerating builds in sandboxes for expert users.
 dev-haskell/sendfile:portable - Explicitly enable portable sendfile support (implemented in Haskell)
 dev-haskell/sha:exe - Build a sha1 and a sha384 executable similar to 'md5sum'.
 dev-haskell/shakespeare:test-coffee - Render tests through coffeescript render function.
