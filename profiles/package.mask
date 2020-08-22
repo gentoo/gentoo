@@ -34,6 +34,13 @@
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-08-22)
 # Obsolete package without reverse dependencies.
+# Use dev-haskell/mustache instead.
+# Does not compile against ghc-8.8. Removal in 30 days.
+# Bug #735996.
+dev-haskell/hastache
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-22)
+# Obsolete package without reverse dependencies.
 # Does not compile against ghc-8.8. Removal in 30 days.
 # Bug #735782.
 dev-haskell/asn1-data
