@@ -5639,9 +5639,9 @@ dev-libs/redland-bindings 1.0.14.1-r2 1.0.17.1 1.0.17.1-r1: Language bindings fo
 dev-libs/replicant 0.8.1: Hyperdex replicant support library
 dev-libs/rinutils 0.4.0 0.4.1: Set of C headers containing macros and static functions
 dev-libs/rlog 1.4: A C++ logging library
-dev-libs/rocclr 3.5.0: Radeon Open Compute Common Language Runtime
+dev-libs/rocclr 3.5.0-r1: Radeon Open Compute Common Language Runtime
 dev-libs/rocm-comgr 3.0.0 3.1.0 3.3.0 3.5.0: Radeon Open Compute Code Object Manager
-dev-libs/rocm-device-libs 3.0.0 3.1.0 3.3.0 3.5.0 3.5.1 9999: Radeon Open Compute Device Libraries
+dev-libs/rocm-device-libs 3.0.0 3.1.0 3.3.0 3.5.0 3.5.1 3.7.0 9999: Radeon Open Compute Device Libraries
 dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
 dev-libs/rocm-opencl-runtime 3.0.0 3.1.0 3.3.0 3.5.0: Radeon Open Compute OpenCL Compatible Runtime
 dev-libs/rocr-runtime 3.0.0 3.1.0 3.3.0 3.5.0 9999: Radeon Open Compute Runtime
@@ -8413,7 +8413,7 @@ dev-python/meld3 2.0.0: meld3 is an HTML/XML templating engine
 dev-python/mem_top 0.1.6: Shows top suspects for memory leaks in your Python program
 dev-python/memory_profiler 0.57: A module for monitoring memory usage of a python program
 dev-python/mergedict 1.0.0: A Python 'dict' with a merge() method
-dev-python/metakernel 0.20.4: Metakernel for Jupyter
+dev-python/metakernel 0.25.0: Metakernel for Jupyter
 dev-python/micawber 0.5.1: A small library for extracting rich content from urls
 dev-python/microversion-parse 0.2.1: A simple parser for OpenStack microversion headers
 dev-python/mimerender 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
@@ -8502,8 +8502,8 @@ dev-python/oauth2 1.9.0_p1-r1: Library for OAuth version 1.0
 dev-python/oauth2client 4.1.3-r1: Library for accessing resources protected by OAuth 2.0
 dev-python/oauthlib 3.1.0: Spec-compliant and thorough implementation of the OAuth request-signing logic
 dev-python/objgraph 3.4.1: Draws Python object reference graphs with graphviz
-dev-python/oct2py 3.6.0 4.0.6: Python to GNU Octave bridge
-dev-python/octave_kernel 0.26.2: Jupyter kernel for octave
+dev-python/oct2py 5.2.0: Python to GNU Octave bridge
+dev-python/octave_kernel 0.32.0: Jupyter kernel for octave
 dev-python/odfpy 1.3.6: Python API and tools to manipulate OpenDocument files
 dev-python/olefile 0.46: Python package to parse, read and write Microsoft OLE2 files
 dev-python/onkyo-eiscp 1.2.7: Control Onkyo A/V receivers over the network
@@ -10860,7 +10860,7 @@ dev-util/rebar-bin 3.6.2 3.13.2: A sophisticated build-tool for Erlang projects 
 dev-util/redo 0.42a 0.42c 99999: Smaller, easier, more powerful, and more reliable than make
 dev-util/regexxer 0.10: An interactive tool for performing search and replace operations
 dev-util/rej 0.16-r1: A utility for solving diff/patch rejects
-dev-util/rocm-cmake 0.2 2.7.0 2.8.0 2.9.0 2.10.0 3.0.0 3.3.0 3.5.0 9999: Radeon Open Compute CMake Modules
+dev-util/rocm-cmake 0.2 2.7.0 2.8.0 2.9.0 2.10.0 3.0.0 3.3.0 3.5.0 3.7.0 9999: Radeon Open Compute CMake Modules
 dev-util/rocminfo 2.6.0 2.7.0 2.8.0 2.9.0 2.10.0 3.0.0 3.1.0 3.3.0 3.5.0 9999: ROCm Application for Reporting System Info
 dev-util/rosdep 0.19.0 9999: Command-line tool for installing ROS system dependencies
 dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
