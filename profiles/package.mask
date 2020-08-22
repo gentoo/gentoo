@@ -59,7 +59,6 @@ dev-python/ipynb
 dev-python/jira
 dev-python/jplephem
 dev-python/natgrid
-dev-python/nbdime
 dev-python/pcapy
 dev-python/promises
 dev-python/pycuda
