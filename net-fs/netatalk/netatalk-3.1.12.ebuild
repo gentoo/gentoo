@@ -3,11 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
-
 AUTOTOOLS_AUTORECONF=yes
 
-inherit autotools flag-o-matic multilib pam python-r1 systemd
+inherit autotools flag-o-matic multilib pam systemd
 
 DESCRIPTION="Open Source AFP server"
 HOMEPAGE="http://netatalk.sourceforge.net/"
@@ -16,7 +14,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/${PN}/$(ver_cut 1-3)/${P}.tar.bz2"
 LICENSE="GPL-2 BSD"
 SLOT="0/18.0"
 KEYWORDS="amd64 arm ~ppc ~ppc64 x86"
-IUSE="acl cracklib dbus debug kerberos ldap pam pgp quota samba +shadow ssl tracker tcpd +utils zeroconf"
+IUSE="acl cracklib dbus debug kerberos ldap pam pgp quota samba +shadow ssl tracker tcpd zeroconf"
 
 CDEPEND="
 	!app-editors/yudit
@@ -37,14 +35,9 @@ CDEPEND="
 	ssl? ( dev-libs/openssl:0= )
 	tcpd? ( sys-apps/tcp-wrappers )
 	tracker? ( app-misc/tracker )
-	utils? ( ${PYTHON_DEPS} )
 	zeroconf? ( net-dns/avahi[dbus] )
 "
-RDEPEND="${CDEPEND}
-	utils? (
-		dev-lang/perl
-		dev-python/dbus-python[${PYTHON_USEDEP}]
-	)"
+RDEPEND="${CDEPEND}"
 DEPEND="${CDEPEND}
 	virtual/yacc
 	sys-devel/flex"
@@ -53,8 +46,7 @@ RESTRICT="test"
 
 REQUIRED_USE="
 	ldap? ( acl )
-	tracker? ( dbus )
-	utils? ( ${PYTHON_REQUIRED_USE} )"
+	tracker? ( dbus )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.7-gentoo.patch
@@ -67,11 +59,9 @@ src_prepare() {
 	default
 	append-flags -fno-strict-aliasing
 
-	if ! use utils; then
-		sed \
-			-e "s:shell_utils::g" \
-			-i contrib/Makefile.am || die
-	fi
+	sed \
+		-e "s:shell_utils::g" \
+		-i contrib/Makefile.am || die
 	eautoreconf
 }
 
@@ -137,8 +127,6 @@ src_install() {
 		distrib/initscripts/service.systemd.tmpl \
 		> "${T}"/service.systemd || die
 	systemd_newunit "${T}"/service.systemd ${PN}.service
-
-	use utils && python_foreach_impl python_doscript contrib/shell_utils/afpstats
 
 	# no static archives
 	find "${ED}" -name '*.la' -delete || die
