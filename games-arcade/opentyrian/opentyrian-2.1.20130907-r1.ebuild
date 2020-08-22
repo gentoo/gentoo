@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit desktop gnome2-utils
 
 DESCRIPTION="Open-source port of the DOS game Tyrian, vertical scrolling shooter"
-HOMEPAGE="https://bitbucket.org/opentyrian/opentyrian/wiki/Home"
+HOMEPAGE="https://github.com/opentyrian/opentyrian/wiki"
 SRC_URI="http://darklomax.org/tyrian/tyrian21.zip
 	 http://www.camanis.net/${PN}/releases/${P}-src.tar.gz"
 
