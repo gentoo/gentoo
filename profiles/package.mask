@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Jack Todaro <solpeth@posteo.org> (2020-08-23)
+# Its only reverse dependency is app-emacs/ghc-mod,
+# which is masked and dead upstream.
+dev-haskell/cabal-helper
+
+# Jack Todaro <solpeth@posteo.org> (2020-08-23)
 # Unmaintained package, does not build with modern
 # versions of GHC.
 app-emacs/ghc-mod
