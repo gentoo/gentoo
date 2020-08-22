@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jack Todaro <solpeth@posteo.org> (2020-08-23)
+# Unmaintained package, does not build with modern
+# versions of GHC.
+app-emacs/ghc-mod
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-08-22)
 # Obsolete package without reverse dependencies.
 # Use dev-haskell/mustache instead.
