@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Miroslav Šulc <fordfrog@gentoo.org> (2020-08-22)
+# SLV2 has been replaced by Lilv. The latest and final version
+# of SLV2 is 0.6.6, released on May 26, 2009.
+# Removal in 30 days.  Bug #735380.
+media-libs/slv2
+
 # Michał Górny <mgorny@gentoo.org> (2020-08-22)
 # These packages still require Python 3.6.  They are either dead
 # upstream or their maintainers are simply unresponsive.
