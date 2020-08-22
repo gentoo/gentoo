@@ -14,7 +14,7 @@ SRC_URI="https://github.com/maxcountryman/${PN}/archive/${PV}.tar.gz -> ${P}.tar
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 RDEPEND="
 	>=dev-python/flask-0.10[${PYTHON_USEDEP}]

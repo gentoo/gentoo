@@ -13,7 +13,7 @@ HOMEPAGE="https://virtualsquare.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 arm64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 arm64 ~ppc ~ppc64 x86"
 IUSE="pcap selinux ssl libressl static-libs"
 
 COMMON_DEPS="pcap? ( net-libs/libpcap )
