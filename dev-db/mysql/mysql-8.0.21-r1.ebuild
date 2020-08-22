@@ -47,6 +47,7 @@ S="${WORKDIR}/mysql"
 # These are used for both runtime and compiletime
 COMMON_DEPEND="
 	>=app-arch/lz4-0_p131:=
+	app-arch/zstd:=
 	sys-libs/ncurses:0=
 	>=sys-libs/zlib-1.2.3:0=
 	libressl? ( dev-libs/libressl:0= )
@@ -267,6 +268,7 @@ src_configure() {
 		-DWITH_LZ4=system
 		# Our dev-libs/rapidjson doesn't carry necessary fixes for std::regex
 		-DWITH_RAPIDJSON=bundled
+		-DWITH_ZSTD=system
 	)
 
 	if [[ -n "${MYSQL_DEFAULT_CHARSET}" && -n "${MYSQL_DEFAULT_COLLATION}" ]] ; then
