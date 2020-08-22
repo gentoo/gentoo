@@ -114,7 +114,6 @@ app-misc/email2trac
 app-misc/workrave
 app-portage/etc-proposals
 app-portage/gpytage
-<dev-db/mongodb-4.2
 dev-db/mysql-workbench
 dev-lang/ispc
 dev-util/bam
