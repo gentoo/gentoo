@@ -14,6 +14,16 @@
 		rendering, post-production, interactive creation and playback.
 	</longdescription>
 	<use>
+		<flag name="abi6-compat">
+			Build for OpenVDB ABI 6.
+		</flag>
+		<flag name="abi7-compat">
+			Build for OpenVDB ABI 7.
+		</flag>
+		<flag name="alembic">
+			Add support for Alembic through
+			<pkg>media-gfx/alembic</pkg>.
+		</flag>
 		<flag name="bullet">
 			Enable Bullet (Physics Engine).
 		</flag>
@@ -69,6 +79,18 @@
 		</flag>
 		<flag name="player">
 			Build the Blender Player. THis requires the Game engine.
+		</flag>
+		<flag name="standalone">
+			Build the standalone version of Cycles.
+		</flag>
+		<flag name="system-numpy">
+			Use the system numpy implementation rather than a local copy.
+		</flag>
+		<flag name="system-python">
+			Use the system python implementation rather than a local copy.
+		</flag>
+		<flag name="tbb">
+			Use threading building blocks library from <pkg>dev-cpp/tbb</pkg>.
 		</flag>
 		<flag name="test">
 			Build the provided unit tests.
