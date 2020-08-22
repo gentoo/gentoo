@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-08-22)
+# Effectively unmaintained.  Optionally uses Python 2.  I could remove
+# that but it fails to build anyway.
+# Removal in 30 days.  Bug #646748.
+games-action/openclonk
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-08-21)
 # Obsolete package without reverse dependencies.
 # Use dev-haskell/regex-tdfa.
