@@ -10634,7 +10634,7 @@ dev-util/checkbashisms 2.19.7 2.20.1 2.20.2 2.20.3 2.20.4: Perl script to check 
 dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/chroot-wrapper 0.9.3: Wrapper for chroot to set up some bind mounts, namespaces, and control groups
 dev-util/clair 2.1.3 2.1.4: Vulnerability Static Analysis for Containers
-dev-util/clazy 1.6-r1 1.7: Compiler plugin which allows clang to understand Qt semantics
+dev-util/clazy 1.7: Compiler plugin which allows clang to understand Qt semantics
 dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06-r1 9999: A tool to display info about the system's OpenCL capabilities
 dev-util/clion 2020.2: A complete toolset for C and C++ development
@@ -12816,7 +12816,7 @@ media-gfx/gif2apng 1.9-r1: create an APNG from a GIF
 media-gfx/gif2png 2.5.9 2.5.12 2.5.14: Converts images from gif format to png format
 media-gfx/gifsicle 1.91 1.92: Create, manipulate, and optimize GIF images and animations
 media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
-media-gfx/gimp 2.8.22-r2 2.9.8-r1 2.10.14-r1 2.10.18-r1 2.10.18-r2 2.10.20 2.10.20-r1 9999: GNU Image Manipulation Program
+media-gfx/gimp 2.10.14-r1 2.10.18-r1 2.10.18-r2 2.10.20-r1 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
 media-gfx/gmic 2.9.0 2.9.1: GREYC's Magic Image Converter
 media-gfx/gnofract4d 4.0.1_p1-r1: A program for drawing beautiful mathematically-based images known as fractals
@@ -13000,7 +13000,7 @@ media-libs/aubio 0.4.9: Library for audio labelling
 media-libs/audiofile 0.3.6-r4: An elegant API for accessing audio files
 media-libs/avidemux-core 2.7.4-r1 2.7.6: Core libraries for simple video cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.7.4-r1 2.7.6: Plugins for the video editor media-video/avidemux
-media-libs/babl 0.1.66 0.1.66-r1 0.1.74 0.1.74-r1 0.1.78 9999: A dynamic, any to any, pixel format conversion library
+media-libs/babl 0.1.74 0.1.74-r1 0.1.78 9999: A dynamic, any to any, pixel format conversion library
 media-libs/bcg729 1.0.4 1.0.4-r1 999999: encoder and decoder of the ITU G729 Annex A/B speech codec
 media-libs/bio2jack 0.9-r2: A library for porting blocked I/O OSS/ALSA audio applications to JACK
 media-libs/blib 1.1.7-r2: blib is a library full of useful things to hack the Blinkenlights
@@ -13045,7 +13045,7 @@ media-libs/game-music-emu 0.6.2: Video game music file emulators
 media-libs/ganv 1.6.0 1.6.0-r1: A GTK+ widget for interactive graph-like environments
 media-libs/gavl 1.4.0-r1: library for handling uncompressed audio and video data
 media-libs/gd 2.3.0: Graphics library for fast image creation
-media-libs/gegl 0.2.0-r6 0.3.34 0.3.34-r1 0.4.16 0.4.16-r1 0.4.18 0.4.18-r1 0.4.22 0.4.22-r1 0.4.24 9999: A graph based image processing framework
+media-libs/gegl 0.4.18 0.4.18-r1 0.4.22 0.4.22-r1 0.4.24 9999: A graph based image processing framework
 media-libs/gexiv2 0.10.10-r1 0.12.0 0.12.0-r1 0.12.1 9999: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 5.2.1-r1: Library to handle, display and manipulate GIF images
@@ -13116,7 +13116,7 @@ media-libs/libclastfm 0.5: C API library to the last.fm web service (unofficial)
 media-libs/libcue 2.2.1: CUE Sheet Parser Library
 media-libs/libcuefile 477-r1: Cue File library from Musepack
 media-libs/libdc1394 2.2.5-r1: Library to interface with IEEE 1394 cameras following the IIDC specification
-media-libs/libdca 0.0.5-r3: library for decoding DTS Coherent Acoustics streams used in DVD
+media-libs/libdca 0.0.5-r3 0.0.7: Library for decoding DTS Coherent Acoustics streams used in DVD
 media-libs/libde265 1.0.3 1.0.5 9999: Open h.265 video codec implementation
 media-libs/libdiscid 0.6.1 0.6.2: Client library to create MusicBrainz enabled tagging applications
 media-libs/libdmtx 0.7.4 0.7.5: Barcode data matrix reading and writing library
@@ -13169,7 +13169,7 @@ media-libs/liblingoteach 0.2.3: A library to support lingoteach-ui and for gener
 media-libs/liblo 0.30 0.31: Lightweight OSC (Open Sound Control) implementation
 media-libs/liblqr 0.4.2-r1: An easy to use C/C++ seam carving library
 media-libs/liblrdf 0.6.1: Library for manipulation of RDF files in LADSPA plugins
-media-libs/liblscp 0.6.0 9999: C++ library for the Linux Sampler control protocol
+media-libs/liblscp 0.6.0 0.6.2 9999: C++ library for the Linux Sampler control protocol
 media-libs/libmad 0.15.1b-r10: "M"peg "A"udio "D"ecoder library
 media-libs/libmatemixer 1.22.0 1.24.0-r1: Mixer library for MATE Desktop
 media-libs/libmatroska 1.5.2 1.6.2: Extensible multimedia container format based on EBML
@@ -13183,7 +13183,7 @@ media-libs/libmodplug 0.8.9.0: Library for playing MOD-like music files
 media-libs/libmp3splt 0.9.2-r1: a library for mp3splt to split mp3 and ogg files without decoding
 media-libs/libmp4v2 2.0.0-r1 2.0.0-r2: Functions for accessing ISO-IEC:14496-1:2001 MPEG-4 standard
 media-libs/libmpd 11.8.17-r1: A library handling connections to a MPD server
-media-libs/libmpdclient 2.16: A library for interfacing Music Player Daemon (media-sound/mpd)
+media-libs/libmpdclient 2.16 2.19: Library for interfacing Music Player Daemon (media-sound/mpd)
 media-libs/libmpeg2 0.5.1-r2: library for decoding mpeg-2 and mpeg-1 video
 media-libs/libmpeg3 1.8-r1: An mpeg library for linux
 media-libs/libmpris2client 0.1.0-r1: A library to control MPRIS2 compatible players
@@ -13236,7 +13236,7 @@ media-libs/libtaginfo 0.2.1: a library for reading media metadata
 media-libs/libtgvoip 2.4.4_p20200704: VoIP library for Telegram clients
 media-libs/libtheora 1.1.1-r2: The Theora Video Compression Codec
 media-libs/libtiger 0.3.4-r1: A rendering library for Kate streams using Pango and Cairo
-media-libs/libtimidity 0.2.4: MIDI to WAVE converter library
+media-libs/libtimidity 0.2.4 0.2.6: MIDI to WAVE converter library
 media-libs/libuninameslist 20091231-r1: Library of unicode annotation data
 media-libs/libuvc 0.0.6-r1: A cross-platform library for USB video devices, built atop libusb
 media-libs/libv4l 1.6.2 1.10.1 1.16.3 1.16.6 1.18.0 1.18.1: Separate libraries ebuild from upstream v4l-utils package
@@ -13736,7 +13736,7 @@ media-sound/cmus 2.8.0 9999: Ncurses based music player with plugin support for 
 media-sound/cmusfm 0.2.5 0.3.1 0.3.3: Last.fm scrobbler for cmus music player
 media-sound/codecgraph 20120114-r2: Generates a graph based on the ALSA description of an HD Audio codec
 media-sound/combine_wave 0.3.1-r1: sync up 2 audio ch. and/or combine 2 mono audio ch. into one stereo wave ch
-media-sound/coquillo 2.0.0: GUI audio tagger based on Qt and taglib
+media-sound/coquillo 2.0.1: GUI audio tagger based on Qt and taglib
 media-sound/csound 6.14.0 6.15.0 9999: Sound design and signal processing system for composition and performance
 media-sound/cvoicecontrol 0.9_alpha-r1: Console based speech recognition system
 media-sound/dagrab 0.513-r1: fixed point cd ripper
@@ -13831,7 +13831,7 @@ media-sound/lilypond 2.21.1-r1 2.21.4-r1 9999: GNU Music Typesetter
 media-sound/lingot 1.0.1: Accurate, easy to use, and highly configurable musical instrument tuner
 media-sound/linuxsampler 2.1.1 9999: Software audio sampler engine with professional grade features
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
-media-sound/lltag 0.14.4-r1 0.14.5: Automatic command-line mp3/ogg/flac file tagger and renamer
+media-sound/lltag 0.14.5 0.14.6: Automatic command-line mp3/ogg/flac file tagger and renamer
 media-sound/lmms 1.2.2 9999: Cross-platform music production software
 media-sound/lollypop 1.1.4.16 1.2.35: Modern music player for GNOME
 media-sound/loudness-scanner 0.5.1_p20190709 9999: Scans your music files and tags them with loudness information
@@ -13842,7 +13842,7 @@ media-sound/mangler 1.2.5-r1: Open source VOIP client capable of connecting to V
 media-sound/marrie 0.4 9999: A simple podcast client that runs on the Command Line Interface
 media-sound/mcdp 0.4b: A very small console cd player
 media-sound/meterbridge 0.9.3: Software meterbridge for the UNIX based JACK audio system
-media-sound/mhwaveedit 1.4.23: GTK+ Sound file editor (wav, and a few others.)
+media-sound/mhwaveedit 1.4.24: GTK+ Sound file editor (wav, and a few others.)
 media-sound/mikmod 3.2.8: A console MOD-Player based on libmikmod
 media-sound/milkytracker 1.02.00-r1: FastTracker 2 inspired music tracker
 media-sound/mixxx 2.2.3-r2 2.2.4 9999: Advanced Digital DJ tool based on Qt
@@ -13855,7 +13855,7 @@ media-sound/mp3_check 1.98-r1: MP3 consistency checker
 media-sound/mp3asm 0.1.3-r2: A command line tool to clean and edit mp3 files
 media-sound/mp3blaster 3.2.6: Text console based program for playing audio files
 media-sound/mp3c 0.31-r1: console based mp3 ripper, with cddb support
-media-sound/mp3cat 0.4: mp3cat reads and writes MP3 files
+media-sound/mp3cat 0.5: Reads and writes MP3 files
 media-sound/mp3check 0.8.7: Checks mp3 files for consistency and prints several errors and warnings
 media-sound/mp3diags 1.5.01: Qt-based MP3 diagnosis and repair tool
 media-sound/mp3gain 1.6.1 1.6.2: A program to analyze and adjust MP3 files to same volume
@@ -13929,16 +13929,16 @@ media-sound/pulsemixer 1.5.1 9999: CLI and curses mixer for PulseAudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/qastools 0.22.0 0.23.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.6.2 0.6.3 9999: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
-media-sound/qmidiarp 0.6.4-r1: Arpeggiator, sequencer and MIDI LFO for ALSA
+media-sound/qmidiarp 0.6.5: Arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 1.3.2-r1 1.3.7 1.4.0 1.4.1 9999: Qt5-based audio player with winamp/xmms skins support
-media-sound/qsampler 0.5.6 9999: Graphical frontend to the LinuxSampler engine
-media-sound/qsynth 0.6.2 9999: A Qt application to control FluidSynth
+media-sound/qsampler 0.5.6 0.6.3 9999: Graphical frontend to the LinuxSampler engine
+media-sound/qsynth 0.6.2 0.6.3 9999: Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
 media-sound/qtgain 1.0.0: Simple frontend to mp3gain, vorbisgain and metaflac
 media-sound/qtractor 0.9.15 0.9.16: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
-media-sound/quimup 1.4.3: A Qt5 client for the music player daemon (MPD) written in C++
+media-sound/quimup 1.4.3 1.4.4: Qt5 client for the music player daemon (MPD)
 media-sound/quodlibet 4.2.1 4.3.0: audio library tagger, manager, and player for GTK+
 media-sound/rawrec 0.9.991: CLI program to play and record audiofiles
 media-sound/rcenter 0.6.2: Rcenter - A program to control the EMU10K Remote Control
@@ -14039,7 +14039,7 @@ media-sound/xmms2-scrobbler 0.4.0-r1: XMMS2 AudioScrobbler client
 media-sound/xnoise 0.2.21: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.6-r1 1.7: Digital vinyl emulation software
 media-sound/yarock 1.4.0: Qt-based music player
-media-sound/yoshimi 1.7.1-r1: Software synthesizer based on ZynAddSubFX
+media-sound/yoshimi 1.7.1-r1 1.7.2: Software synthesizer based on ZynAddSubFX
 media-sound/zynaddsubfx 3.0.5: Software synthesizer capable of making a countless number of instruments
 media-tv/channeleditor 1.9.2.1-r2: Editor for VDR channels.conf
 media-tv/dtv-scan-tables 0_p20171003 0_p20190922 9999: Digital TV scan tables in v3 and v5 format
