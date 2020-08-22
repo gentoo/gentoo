@@ -5,6 +5,9 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<use>
+		<flag name="embed-data-files">Embed the data files in the binary for a relocatable executable</flag>
+	</use>
 	<longdescription>
 		This library provides a powerful but simple way to measure the
 		performance of Haskell code.  It provides both a framework for
