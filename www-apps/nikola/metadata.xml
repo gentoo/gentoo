@@ -13,8 +13,7 @@
       Support chart generation through <pkg>dev-python/pygal</pkg>
     </flag>
     <flag name="ghpages">
-      Add support for direct uploading to github pages thru
-      <pkg>dev-vcs/ghp-import</pkg>
+      Add support for direct uploading to github pages
     </flag>
     <flag name="hyphenation">
       Add hyphenation support through <pkg>dev-python/pyphen</pkg>
