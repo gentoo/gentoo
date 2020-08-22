@@ -33,6 +33,61 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-22)
+# These packages still require Python 3.6.  They are either dead
+# upstream or their maintainers are simply unresponsive.
+# Please do not remove any packages from this list unless you actually
+# port them to Python 3.7 *and* 3.8 (3.9 would also be nice).
+# Removal in 30 days.  Tracker bug #695996.
+app-portage/pqlop
+app-text/landslide
+dev-python/corner
+dev-python/dogpile-core
+dev-python/girder-client
+dev-python/ipynb
+dev-python/jira
+dev-python/jplephem
+dev-python/metakernel
+dev-python/natgrid
+dev-python/nbdime
+dev-python/oct2py
+dev-python/octave_kernel
+dev-python/pcapy
+dev-python/promises
+dev-python/pycuda
+dev-python/pydotplus
+dev-python/pyds9
+dev-python/pyflann
+dev-python/pygsl
+dev-python/pyqt-distutils
+dev-python/python-ntpdshm
+dev-python/sphinxcontrib-napoleon
+dev-python/textfsm
+dev-python/whelk
+dev-util/molecule
+dev-util/molecule-core
+dev-util/molecule-plugins
+dev-vcs/git-spindle
+media-gfx/birdfont
+media-gfx/sigal
+media-libs/libxmlbird
+net-analyzer/nagstamon
+net-dns/dnsviz
+net-fs/s3ql
+net-misc/dmr_utils
+net-misc/s3cmd
+sci-chemistry/ParmEd
+sci-chemistry/freeon
+sci-chemistry/openbabel-python
+sci-libs/minfx
+sci-mathematics/pymc3
+sci-physics/qutip
+sci-visualization/fityk
+sci-visualization/yt
+sys-apps/elivepatch-client
+sys-apps/elivepatch-server
+www-apps/nikola
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-22)
 # Python 2 only.  You can use app-office/libreoffice{,-bin} instead.
 # Removal in 30 days.  Bug #715400.
 app-office/openoffice-bin
