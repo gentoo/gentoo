@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-08-22)
+# Dead since 2011.  Frowned upon for years now.  Python 2 only.
+# Finally all reverse dependencies are masked.
+# Tracker bug #706462.  Removal in 30 days.
+dev-python/pygtk
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2020-08-22)
 # SLV2 has been replaced by Lilv. The latest and final version
 # of SLV2 is 0.6.6, released on May 26, 2009.
