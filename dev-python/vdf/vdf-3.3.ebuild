@@ -13,7 +13,7 @@ SRC_URI="https://codeload.github.com/ValvePython/${PN}/tar.gz/v${PV} -> ${P}.tar
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.2-mock_from_stdlib.patch
