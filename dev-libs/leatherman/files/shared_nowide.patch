@@ -88,10 +88,11 @@ index ff9dba6..5d1b9ce 100644
  #include <leatherman/logging/logging.hpp>
 --- leatherman-1.10.0/util/src/environment.cc~	2019-12-14 20:46:29.000000000 +0000
 +++ leatherman-1.10.0/util/src/environment.cc	2020-06-02 22:42:45.101963441 +0100
-@@ -1,5 +1,5 @@
+@@ -1,5 +1,6 @@
  #include <leatherman/util/environment.hpp>
 -#include <boost/nowide/cenv.hpp>
 +#include <boost/nowide/cstdlib.hpp>
++#include <boost/system/error_code.hpp>
  
  using namespace std;
  
