@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure prepare
+DEPEND=apparmor? ( sys-libs/libapparmor ) !sys-apps/firejail test? ( dev-tcltk/expect )
+DESCRIPTION=Security sandbox for any type of processes; LTS version
+EAPI=7
+HOMEPAGE=https://firejail.wordpress.com/
+IUSE=apparmor +globalcfg +network +seccomp +suid +userns test +whitelist
+KEYWORDS=amd64
+LICENSE=GPL-2
+RDEPEND=apparmor? ( sys-libs/libapparmor )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/netblue30/firejail/archive/0.9.56.2-LTS.tar.gz -> firejail-lts-0.9.56.2.tar.gz
+_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=b062821ffdaa2785105104c970e93053
