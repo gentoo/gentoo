@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-22)
+# Obsolete package without reverse dependencies.
+# Does not compile against ghc-8.8. Removal in 30 days.
+# Bug #735868.
+dev-haskell/cmdlib
+
 # Michał Górny <mgorny@gentoo.org> (2020-08-22)
 # Dead since 2011.  Frowned upon for years now.  Python 2 only.
 # Finally all reverse dependencies are masked.
