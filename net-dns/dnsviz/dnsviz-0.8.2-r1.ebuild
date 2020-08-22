@@ -35,6 +35,19 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
+python_test() {
+	distutils_install_for_testing
+
+	"${EPYTHON}" tests/offline_tests.py -v || die
+
+	# No need to pull in net-dns/bind for this small test
+	if hash named-checkconf &>/dev/null ; then
+		"${EPYTHON}" tests/local_probe_tests.py -v || die
+	else
+		einfo "Skipping local_probe_tests -- named-checkconf not found!"
+	fi
+}
+
 pkg_postinst() {
 	elog "Support for extra feature can be get from:"
 	optfeature "Support for pre-deployment testing" net-dns/bind
