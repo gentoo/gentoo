@@ -33,6 +33,38 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-22)
+# These packages (or package versions) still require Python 2.7.
+# They are either dead upstream, their Python 3 porting efforts are
+# not progressing or their maintainers are simply unresponsive.
+# Please do not remove any packages from this list unless you actually
+# port it to Python 3.
+# Removal in 30 days.  Tracker bug #694800.
+app-emulation/ganeti
+app-emulation/ganeti-instance-debootstrap
+app-emulation/ganeti-instance-image
+app-emulation/virtualbox-bin
+app-forensics/openscap
+app-misc/email2trac
+app-misc/workrave
+app-portage/etc-proposals
+app-portage/gpytage
+<dev-db/mongodb-4.2
+dev-db/mysql-workbench
+dev-lang/ispc
+dev-util/bam
+media-gfx/displaycal
+media-plugins/gimp-resynthesizer
+net-analyzer/linkchecker
+net-analyzer/pbgpp
+net-libs/openpgm
+<net-mail/mailman-3
+net-wireless/chirp
+net-wireless/rfcat
+sci-geosciences/gdal-grass
+sci-geosciences/grass
+www-apps/trac
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-22)
 # Effectively unmaintained.  Optionally uses Python 2.  I could remove
 # that but it fails to build anyway.
 # Removal in 30 days.  Bug #646748.
