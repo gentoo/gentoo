@@ -5640,7 +5640,7 @@ dev-libs/replicant 0.8.1: Hyperdex replicant support library
 dev-libs/rinutils 0.4.0 0.4.1: Set of C headers containing macros and static functions
 dev-libs/rlog 1.4: A C++ logging library
 dev-libs/rocclr 3.5.0-r1: Radeon Open Compute Common Language Runtime
-dev-libs/rocm-comgr 3.0.0 3.1.0 3.3.0 3.5.0: Radeon Open Compute Code Object Manager
+dev-libs/rocm-comgr 3.0.0 3.1.0 3.3.0 3.5.0 3.7.0: Radeon Open Compute Code Object Manager
 dev-libs/rocm-device-libs 3.0.0 3.1.0 3.3.0 3.5.0 3.5.1 3.7.0 9999: Radeon Open Compute Device Libraries
 dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
 dev-libs/rocm-opencl-runtime 3.0.0 3.1.0 3.3.0 3.5.0: Radeon Open Compute OpenCL Compatible Runtime
@@ -5708,7 +5708,7 @@ dev-libs/yaz 3.0.53: C/C++ toolkit for Z39.50v3 clients and servers
 dev-libs/zlog 1.2.14-r1: A reliable, thread safe, clear-model, pure C logging library.
 dev-libs/zookeeper-c 3.4.8 3.4.9 3.4.10: C client interface to Zookeeper server
 dev-libs/zthread 2.3.2-r4: platform-independent multi-threading and synchronization library for C++
-dev-libs/zziplib 0.13.69-r1 0.13.71 0.13.71-r1: Lightweight library for extracting data from files archived in a single zip file
+dev-libs/zziplib 0.13.69-r1 0.13.71-r1: Lightweight library for extracting data from files archived in a single zip file
 dev-lisp/abcl 1.5.0: Armed Bear Common Lisp is a Common Lisp implementation for the JVM.
 dev-lisp/alexandria 20171029: A collection of portable utilities for Common Lisp
 dev-lisp/asdf 3.1.5 3.3.1 3.3.2 3.3.2-r1: ASDF is Another System Definition Facility for Common Lisp
@@ -8460,7 +8460,7 @@ dev-python/natgrid 0.2.1-r3: Matplotlib toolkit for gridding irreguraly spaced d
 dev-python/natsort 7.0.1: Natural sorting for Python
 dev-python/nautilus-python 1.2.2-r1 1.2.3: Python bindings for the Nautilus file manager
 dev-python/nbconvert 5.6.1: Converting Jupyter Notebooks
-dev-python/nbdime 0.2.0: Diff and merge of Jupyter Notebooks
+dev-python/nbdime 2.0.0: Diff and merge of Jupyter Notebooks
 dev-python/nbformat 5.0.7: Reference implementation of the Jupyter Notebook format
 dev-python/nbsphinx 0.7.1: Jupyter Notebook Tools for Sphinx
 dev-python/nbval 0.9.1: A py.test plugin to validate Jupyter notebooks
@@ -9246,7 +9246,7 @@ dev-python/vpython 7.6.1-r1: VPython for Jupyter notebook
 dev-python/waitress 1.4.4: A pure-Python WSGI server
 dev-python/wand 0.6.2: Ctypes-based simple ImageMagick binding for Python
 dev-python/warlock 1.3.3: Python object model built on JSON schema and JSON patch
-dev-python/watchdog 0.10.3: Python API and shell utilities to monitor file system events
+dev-python/watchdog 0.8.3-r2 0.10.3: Python API and shell utilities to monitor file system events
 dev-python/wcwidth 0.2.5: Measures number of Terminal column cells of wide-character codes
 dev-python/weasyprint 51: Visual rendering engine for HTML and CSS that can export to PDF
 dev-python/webassets 2.0: Asset management for Python web development
@@ -9321,7 +9321,7 @@ dev-qt/qdoc 5.14.2 5.15.0: Qt documentation generator
 dev-qt/qt-creator 4.8.2 4.12.3 9999: Lightweight IDE for C++/QML development centering around Qt
 dev-qt/qt-docs 5.14.2_p202003291239 5.14.2_p202003291239-r1 5.15.0_p202005140838: Qt5 documentation, for use with Qt Creator and other tools
 dev-qt/qt3d 5.14.2 5.15.0: 3D rendering module for the Qt5 framework
-dev-qt/qtbluetooth 5.14.2 5.15.0: Bluetooth support library for the Qt5 framework
+dev-qt/qtbluetooth 5.14.2-r1 5.15.0-r1: Bluetooth support library for the Qt5 framework
 dev-qt/qtcharts 5.14.2 5.15.0: Chart component library for the Qt5 framework
 dev-qt/qtchooser 66: Tool to quickly switch between multiple Qt installations
 dev-qt/qtconcurrent 5.14.2 5.15.0: Multi-threading concurrence support library for the Qt5 framework
@@ -9332,7 +9332,7 @@ dev-qt/qtdeclarative 5.14.2-r4 5.15.0-r1: The QML and Quick modules for the Qt5 
 dev-qt/qtdiag 5.14.2 5.15.0: Tool for reporting diagnostic information about Qt and its environment
 dev-qt/qtgamepad 5.14.2 5.15.0: Qt module to support gamepad hardware
 dev-qt/qtgraphicaleffects 5.14.2 5.15.0: Set of QML types for adding visual effects to user interfaces
-dev-qt/qtgui 5.14.2 5.15.0: The GUI module and platform plugins for the Qt5 framework
+dev-qt/qtgui 5.14.2 5.14.2-r1 5.15.0-r1: The GUI module and platform plugins for the Qt5 framework
 dev-qt/qthelp 5.14.2 5.15.0: Qt5 module for integrating online documentation into applications
 dev-qt/qtimageformats 5.14.2 5.15.0: Additional format plugins for the Qt image I/O system
 dev-qt/qtlocation 5.14.2 5.15.0: Location (places, maps, navigation) library for the Qt5 framework
@@ -9340,7 +9340,7 @@ dev-qt/qtlockedfile 2.4.1_p20171024: QFile extension with advisory locking funct
 dev-qt/qtmultimedia 5.14.2-r1 5.15.0: Multimedia (audio, video, radio, camera) library for the Qt5 framework
 dev-qt/qtnetwork 5.14.2-r1 5.15.0: Network abstraction library for the Qt5 framework
 dev-qt/qtnetworkauth 5.14.2 5.15.0: Network authorization library for the Qt5 framework
-dev-qt/qtopengl 5.14.2 5.15.0: OpenGL support library for the Qt5 framework (deprecated)
+dev-qt/qtopengl 5.14.2-r1 5.15.0-r1: OpenGL support library for the Qt5 framework (deprecated)
 dev-qt/qtpaths 5.14.2 5.15.0: Command line client to QStandardPaths
 dev-qt/qtplugininfo 5.14.2 5.15.0: Qt5 plugin metadata dumper
 dev-qt/qtpositioning 5.14.2 5.15.0: Physical position determination library for the Qt5 framework
@@ -11164,7 +11164,7 @@ games-arcade/nottetris2 1-r1: The spiritual successor of the classic Tetris mixe
 games-arcade/openbubbles 1.2-r1: A clone of Evan Bailey's game Bubbles
 games-arcade/openmortal 0.7-r2: A spoof of the famous Mortal Kombat game
 games-arcade/opensonic 0.1.4-r2: A free open-source game based on the Sonic the Hedgehog universe
-games-arcade/opentyrian 2.1.20130907-r1: Open-source port of the DOS game Tyrian, vertical scrolling shooter
+games-arcade/opentyrian 2.1.20130907-r2: Open-source port of the DOS game Tyrian, vertical scrolling shooter
 games-arcade/orthorobot 0-r1 0-r2: Perspective based puzzle game, where you flatten the view to move across gaps
 games-arcade/oshu 2.0.1 9999: Lightweight osu! port
 games-arcade/pachi 1.0: platform game inspired by games like Manic Miner and Jet Set Willy
