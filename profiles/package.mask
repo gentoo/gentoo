@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jack Todaro <solpeth@posteo.org> (2020-08-22)
+# Unmaintained package, does not build with modern
+# versions of GHC.
+app-emacs/ghc-mod
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-08-21)
 # Obsolete package without reverse dependencies.
 # Use dev-haskell/regex-tdfa.
