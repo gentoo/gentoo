@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
+
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit distutils-r1
 
@@ -22,13 +23,13 @@ RDEPEND="
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
 "
 BDEPEND="test? (
-		${RDEPEND}
 		dev-db/influxdb
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
 		dev-python/requests-mock[${PYTHON_USEDEP}]
 	)"
+
+PATCHES=( "${FILESDIR}/${P}-pandas-future-warning.patch" )
 
 distutils_enable_tests nose
 
