@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst preinst prepare setup unpack
+DEPEND=>=dev-java/java-config-2.2.0-r3
+DESCRIPTION=The official server for the sandbox video game
+EAPI=7
+HOMEPAGE=https://www.minecraft.net/
+IUSE=elibc_FreeBSD
+KEYWORDS=~amd64 ~x86
+LICENSE=Mojang
+RDEPEND=acct-group/minecraft acct-user/minecraft app-misc/dtach || ( >=virtual/jre-1.8 >=virtual/jdk-1.8 ) >=dev-java/java-config-2.2.0-r3
+RESTRICT=bindist mirror
+SLOT=0
+SRC_URI=https://launcher.mojang.com/v1/objects/c5f6fb23c3876461d46ec380421e42b289789530/server.jar -> minecraft-server-1.16.2.jar
+_eclasses_=java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	16d46032afaca1d6d0621f82084880cb	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_md5_=7bb51dd535c27a25c5e5345496a51c72

@@ -824,7 +824,7 @@ app-benchmarks/pipebench 0.40-r2: Measures the speed of stdin/stdout communicati
 app-benchmarks/ramspeed 3.5.0-r2: Benchmarking for memory and cache
 app-benchmarks/siege 4.0.4 4.0.5: A HTTP regression testing and benchmarking utility
 app-benchmarks/stress 1.0.4-r2: A deliberately simple workload generator for POSIX systems
-app-benchmarks/stress-ng 0.11.17: Stress test for a computer system with various selectable ways
+app-benchmarks/stress-ng 0.11.18: Stress test for a computer system with various selectable ways
 app-benchmarks/sysbench 1.0.15-r1 1.0.19 9999: System performance benchmark
 app-benchmarks/tiobench 0.4.2: Portable, robust, fully-threaded I/O benchmark program
 app-benchmarks/wrk 4.1.0-r2: A HTTP benchmarking tool
@@ -1915,7 +1915,7 @@ app-emulation/fs-uae 3.0.5: Integrates the most accurate Amiga emulation code av
 app-emulation/fs-uae-launcher 3.0.5: PyQt5-based launcher for FS-UAE
 app-emulation/fuse 1.5.6 1.5.7: Free Unix Spectrum Emulator by Philip Kendall
 app-emulation/fuse-utils 1.4.3: Utils for the Free Unix Spectrum Emulator by Philip Kendall
-app-emulation/gallium-nine-standalone 0.5 9999: A standalone version of the WINE parts of Gallium Nine
+app-emulation/gallium-nine-standalone 0.7 9999: A standalone version of the WINE parts of Gallium Nine
 app-emulation/ganeti 2.15.2-r11 2.16.0_rc1 2.17.0_beta1: Ganeti is a virtual server management software tool
 app-emulation/ganeti-instance-debootstrap 0.11-r1 0.16: Scripts to build Ganeti VMs with debootstrap
 app-emulation/ganeti-instance-image 0.6-r2: Scripts to build out CD or image based VMs using Ganeti
@@ -2430,7 +2430,7 @@ app-misc/golly 3.3-r3 3.4: simulator for Conway's Game of Life and other cellula
 app-misc/goobook 3.4-r1: Access your Google contacts from the command line
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
 app-misc/gramps 5.1.2-r1 5.1.2-r2: Genealogical Research and Analysis Management Programming System
-app-misc/graphlcd-base 1.0.2-r1: Contains the lowlevel lcd drivers for GraphLCD
+app-misc/graphlcd-base 1.0.2-r1 2.0.0: Contains the lowlevel lcd drivers for GraphLCD
 app-misc/grc 1.11-r1 1.11.3: Generic Colouriser beautifies your logfiles or output of commands
 app-misc/gtk-sunlight 0.4.2: Real-time Sunlight Wallpaper
 app-misc/gtypist 2.9.5-r1: Universal typing tutor
@@ -3534,10 +3534,10 @@ dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.20.1 1.21.1-r1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.9.3-r1 0.9.5 0.9.5-r1: A high-performance multi-threaded backup (and restore) toolset for MySQL
 dev-db/myodbc 8.0.21: ODBC driver for MySQL
-dev-db/mysql 5.7.27-r2 5.7.29-r1 5.7.30-r1 5.7.31 8.0.19-r2 8.0.20-r1 8.0.21: A fast, multi-threaded, multi-user SQL database server
+dev-db/mysql 5.7.27-r2 5.7.29-r1 5.7.30-r1 5.7.31 8.0.19-r2 8.0.20-r1 8.0.21-r1: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 3.2.5: C++ API interface to the MySQL database
 dev-db/mysql-cluster 7.2.34 7.3.22 7.4.21: An enhanced, drop-in replacement for MySQL
-dev-db/mysql-connector-c 8.0.21-r1: C client library for MariaDB/MySQL
+dev-db/mysql-connector-c 8.0.21-r2: C client library for MariaDB/MySQL
 dev-db/mysql-connector-c++ 1.1.12-r1 8.0.19 8.0.20 8.0.21: MySQL database connector for C++ (mimics JDBC 4.0 API)
 dev-db/mysql-init-scripts 2.3-r3: Gentoo MySQL init scripts.
 dev-db/mysql-super-smack 1.3-r4: Benchmarking, stress testing, and load generation tool for MySQL & PostGreSQL
@@ -5528,7 +5528,7 @@ dev-libs/libtubo 5.0.15: small and simple interprocess communication library
 dev-libs/libucl 0.8.1-r1 9999: Universal configuration library parser
 dev-libs/libudfread 1.0.0-r1 1.1.0 9999: Library for reading UDF from raw devices and image files
 dev-libs/libuev 2.2.0 2.3.0 2.3.1: A collection of useful BSD APIs
-dev-libs/libugpio 0.0.6: Lib for the use of linux kernel's sysfs gpio interface from C programs
+dev-libs/libugpio 0.0.6 0.0.7: Lib for the use of linux kernel's sysfs gpio interface from C programs
 dev-libs/libunibreak 4.0 4.1 4.2: Line and word breaking library
 dev-libs/libuninum 2.7: A library for converting unicode strings to numbers and vice versa
 dev-libs/libunique 1.1.6-r2 3.0.2-r1: A library for writing single instance application
@@ -11653,11 +11653,11 @@ games-rpg/wastesedge 0.3.5-r2: role playing game to showcase the adonthell engin
 games-rpg/xu4 0.9-r1: A remake of the computer game Ultima IV
 games-rpg/zsdx 1.9.0-r1: A free 2D Zelda fangame
 games-rpg/zsxd 1.9.0-r1: A free 2D Zelda fangame parody
-games-server/bedrock-server 1.16.1.02: The official bedrock (non-java) based server for the sandbox video game
+games-server/bedrock-server 1.16.1.02 1.16.20.03: The official bedrock (non-java) based server for the sandbox video game
 games-server/crossfire-server 1.71.0-r1: Server for the crossfire clients
 games-server/etqw-ded 1.5-r1: Enemy Territory: Quake Wars dedicated server
 games-server/mednafen-server 0.5.2-r1: Server for Mednafen emulator
-games-server/minecraft-server 1.16.1: The official server for the sandbox video game
+games-server/minecraft-server 1.16.1 1.16.2: The official server for the sandbox video game
 games-server/monopd 0.10.2-r1: server for atlantik games
 games-server/mtavc 0.5-r2: dedicated server for GTA3 multiplayer
 games-server/pvpgn 1.8.5-r2: A gaming server for Battle.Net compatible clients
@@ -16941,7 +16941,7 @@ sys-apps/highway 1.1.0: High performance source code search tool
 sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
 sys-apps/hponcfg 4.6.0.0 5.4.0.0 5.5.0.0: HP Lights-Out Online Configuration Utility (HPONCFG)
 sys-apps/hprofile 3.0.6 3.1.1 3.2.2 6.1.3: Utility to manage hardware, network, power or other profiles (fork)
-sys-apps/hw-probe 1.5: A tool to probe for hardware, check it's operability and find drivers
+sys-apps/hw-probe 1.5 1.6_beta2: A tool to probe for hardware, check it's operability and find drivers
 sys-apps/hwdata-gentoo 0.4: Data for the hwsetup program
 sys-apps/hwids 20200204 20200306 20200813.1 99999999: Hardware (PCI, USB, OUI, IAB) IDs databases
 sys-apps/hwinfo 21.4 21.23: Hardware detection tool used in SuSE Linux
