@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2020-08-22)
+# These flags depend on packages masked for removal due to py2.
+sci-geosciences/qgis grass
+net-libs/zeromq pgm
+
 # Thomas Deutschmann <whissi@gentoo.org> (2020-08-17)
 # CMake checks will only allow on amd64 & x86
 dev-db/mariadb columnstore

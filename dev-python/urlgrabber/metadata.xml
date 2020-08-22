@@ -33,4 +33,5 @@
     * mirror groups - treat a list of mirrors as a single source, automatically
       switching mirrors if there is a failure.
   </longdescription>
+  <stabilize-allarches/>
 </pkgmetadata>
