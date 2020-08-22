@@ -1,0 +1,40 @@
+From 593db1c78011ddce551051ce17eda6feac079b3d Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Fri, 21 Aug 2020 13:16:17 -0400
+Subject: [PATCH] journald: do not change the kernel audit setting by default
+
+Bug: https://bugs.gentoo.org/736910
+---
+ man/journald.conf.xml         | 2 +-
+ src/journal/journald-server.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/man/journald.conf.xml b/man/journald.conf.xml
+index bfd359a903..7e93d4050e 100644
+--- a/man/journald.conf.xml
++++ b/man/journald.conf.xml
+@@ -411,7 +411,7 @@
+         <command>systemd-journald</command> collects generated audit records, it just controls whether it
+         tells the kernel to generate them. This means if another tool turns on auditing even if
+         <command>systemd-journald</command> left it off, it will still collect the generated
+-        messages. Defaults to on.</para></listitem>
++        messages.</para></listitem>
+       </varlistentry>
+ 
+       <varlistentry>
+diff --git a/src/journal/journald-server.c b/src/journal/journald-server.c
+index 5865bf9809..163be685a8 100644
+--- a/src/journal/journald-server.c
++++ b/src/journal/journald-server.c
+@@ -2208,7 +2208,7 @@ int server_init(Server *s, const char *namespace) {
+                 .compress.threshold_bytes = (uint64_t) -1,
+                 .seal = true,
+ 
+-                .set_audit = true,
++                .set_audit = -1,
+ 
+                 .watchdog_usec = USEC_INFINITY,
+ 
+-- 
+2.28.0
+
