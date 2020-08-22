@@ -33,6 +33,10 @@ BDEPEND="
 	gnome-base/librsvg:2[vala]
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-vala-posix.patch
+)
+
 src_prepare() {
 	xdg_src_prepare
 	vala_src_prepare
