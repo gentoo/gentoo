@@ -8693,7 +8693,7 @@ dev-python/pydot 1.4.1: Python interface to Graphviz's Dot language
 dev-python/pydotplus 2.0.2: Improved version of the old pydot project
 dev-python/pyds9 1.8.1: Python interface to XPA to communicate with DS9
 dev-python/pyelftools 0.26: pure-Python library for analyzing ELF files and DWARF debugging information
-dev-python/pyenchant 2.0.0 3.1.0: Python bindings for the Enchant spellchecking system
+dev-python/pyenchant 3.1.0: Python bindings for the Enchant spellchecking system
 dev-python/pyfakefs 3.7.2 4.1.0: a fake file system that mocks the Python file system modules
 dev-python/pyfeyn 1.0.0-r2: Python package for drawing Feynman diagrams
 dev-python/pyflakes 2.1.1 2.2.0: Passive checker for Python programs
@@ -13305,7 +13305,7 @@ media-libs/quvi 0.9.5: A command line tool for parsing video download links
 media-libs/raptor 2.0.15-r2: The RDF Parser Toolkit
 media-libs/raspberrypi-userland 0_pre20160424 9999: Raspberry Pi userspace tools and libraries
 media-libs/raspberrypi-userland-bin 1.20170303 1.20190709: Raspberry Pi userspace tools and libraries
-media-libs/raul 0.8.0-r1: C++ utility library primarily aimed at audio/musical applications
+media-libs/raul 1.0.0_pre20200718 9999: C++ utility library primarily aimed at audio/musical applications
 media-libs/resid 0.16_p2-r1: C++ library to emulate the C64 SID chip
 media-libs/rlottie 0.1-r1 0.2: A platform independent standalone library that plays Lottie Animations
 media-libs/rtaudio 5.1.0: A set of cross-platform C++ classes for realtime audio I/O
