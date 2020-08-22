@@ -35,6 +35,11 @@
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-08-22)
 # Obsolete package without reverse dependencies.
 # Does not compile against ghc-8.8. Removal in 30 days.
+dev-lang/epic
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-22)
+# Obsolete package without reverse dependencies.
+# Does not compile against ghc-8.8. Removal in 30 days.
 # Bug #735868.
 dev-haskell/cmdlib
 
