@@ -1,0 +1,112 @@
+Opencollada 1.65 and later added a pure virtual function writeAnimationClip
+so the compiler is unable to create a DocumentImporter implementation.
+These patches are backported from blender 2.80-r1 which fix the issue.
+
+See https://developer.blender.org/rB10c50d7dbf7578b35b3bf19a1948f556f9eb203b
+and https://developer.blender.org/rB3552731551ef1845b493ffebf78be5a42527e9f2
+
+Thanks to Dennis Schridde for finding them.
+
+--- blender-2.79b/source/blender/collada/CMakeLists.txt.orig	2020-07-23 18:00:09.421620416 +0200
++++ blender-2.79b/source/blender/collada/CMakeLists.txt	2020-07-23 18:00:13.868584964 +0200
+@@ -25,6 +25,18 @@
+ 
+ remove_strict_flags()
+ 
++FIND_FILE(_opencollada_with_animation_clip
++      NAMES
++        COLLADAFWAnimationClip.h
++      PATHS
++        ${OPENCOLLADA_INCLUDE_DIRS}
++      NO_DEFAULT_PATH
++    )
++
++IF(_opencollada_with_animation_clip)
++   add_compile_definitions(OPENCOLLADA_WITH_ANIMATION_CLIP)
++ENDIF()
++
+ set(INC
+ 	.
+ 	../blenkernel
+--- blender-2.79b/source/blender/collada/DocumentImporter.h.orig	2018-03-23 16:10:23.000000000 +0100
++++ blender-2.79b/source/blender/collada/DocumentImporter.h	2020-07-23 18:00:13.897584733 +0200
+@@ -108,6 +108,11 @@
+ 
+ 	bool writeAnimationList(const COLLADAFW::AnimationList*);
+ 
++#if OPENCOLLADA_WITH_ANIMATION_CLIP
++	// Please enable this when building with Collada 1.6.65 or newer (also in DocumentImporter.cpp)
++	bool writeAnimationClip(const COLLADAFW::AnimationClip *AnimationClip);
++#endif
++
+ 	bool writeGeometry(const COLLADAFW::Geometry*);
+ 
+ 	bool writeMaterial(const COLLADAFW::Material*);
+--- blender-2.79b/source/blender/collada/DocumentImporter.cpp.orig	2018-03-23 16:22:25.000000000 +0100
++++ blender-2.79b/source/blender/collada/DocumentImporter.cpp	2020-07-23 18:00:13.896584741 +0200
+@@ -1349,6 +1349,19 @@
+ 
++#if OPENCOLLADA_WITH_ANIMATION_CLIP
++// Since opencollada 1.6.68
++// called on post-process stage after writeVisualScenes
++bool DocumentImporter::writeAnimationClip(const COLLADAFW::AnimationClip *AnimationClip)
++{
++	if (mImportStage != General)
++		return true;
++
++	return true;
++	//return animation_clip_importer.write_animation_clip(animationClip); // TODO: implement import of AnimationClips
++}
++#endif
++
+ // this is called on postprocess, before writeVisualScenes
+ bool DocumentImporter::writeController(const COLLADAFW::Controller *controller)
+ {
+ 	if (mImportStage != General)
+ 		return true;
+--- blender-2.79b/source/blender/collada/CMakeLists.txt.orig	2020-07-23 18:00:45.035336449 +0200
++++ blender-2.79b/source/blender/collada/CMakeLists.txt	2020-07-23 18:00:52.459277244 +0200
+@@ -24,8 +24,7 @@
+ # ***** END GPL LICENSE BLOCK *****
+ 
+ remove_strict_flags()
+-
+-FIND_FILE(_opencollada_with_animation_clip
++FIND_FILE(OPENCOLLADA_ANIMATION_CLIP
+       NAMES
+         COLLADAFWAnimationClip.h
+       PATHS
+@@ -33,8 +32,11 @@
+       NO_DEFAULT_PATH
+     )
+ 
+-IF(_opencollada_with_animation_clip)
+-   add_compile_definitions(OPENCOLLADA_WITH_ANIMATION_CLIP)
++IF(OPENCOLLADA_ANIMATION_CLIP)
++   message(STATUS "Found opencollada: ${OPENCOLLADA_ANIMATION_CLIP} ")
++   add_definitions(-DWITH_OPENCOLLADA_ANIMATION_CLIP)
++ELSE()
++   message(STATUS "opencollada: Build without animation clip support")
+ ENDIF()
+ 
+ set(INC
+--- blender-2.79b/source/blender/collada/DocumentImporter.h.orig	2020-07-23 18:00:13.897584733 +0200
++++ blender-2.79b/source/blender/collada/DocumentImporter.h	2020-07-23 18:00:52.487277021 +0200
+@@ -108,7 +108,7 @@
+ 
+ 	bool writeAnimationList(const COLLADAFW::AnimationList*);
+ 
+-#if OPENCOLLADA_WITH_ANIMATION_CLIP
++#if WITH_OPENCOLLADA_ANIMATION_CLIP
+ 	// Please enable this when building with Collada 1.6.65 or newer (also in DocumentImporter.cpp)
+ 	bool writeAnimationClip(const COLLADAFW::AnimationClip *AnimationClip);
+ #endif
+--- blender-2.79b/source/blender/collada/DocumentImporter.cpp.orig	2020-07-23 18:00:13.896584741 +0200
++++ blender-2.79b/source/blender/collada/DocumentImporter.cpp	2020-07-23 18:00:52.486277028 +0200
+@@ -1349,5 +1349,5 @@
+ 
+-#if OPENCOLLADA_WITH_ANIMATION_CLIP
++#if WITH_OPENCOLLADA_ANIMATION_CLIP
+ // Since opencollada 1.6.68
+ // called on post-process stage after writeVisualScenes
+ bool DocumentImporter::writeAnimationClip(const COLLADAFW::AnimationClip *AnimationClip)

@@ -106,6 +106,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-gcc-8.patch"
 	"${FILESDIR}/${P}-ffmpeg-4-compat.patch"
 	"${FILESDIR}/${P}-fix-for-gcc9-new-openmp-data-sharing.patch"
+	"${FILESDIR}/${P}-fix-opencollada.patch"
 )
 
 blender_check_requirements() {
