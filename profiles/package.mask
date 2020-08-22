@@ -93,7 +93,6 @@ sci-visualization/fityk
 sci-visualization/yt
 sys-apps/elivepatch-client
 sys-apps/elivepatch-server
-www-apps/nikola
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-22)
 # Python 2 only.  You can use app-office/libreoffice{,-bin} instead.
