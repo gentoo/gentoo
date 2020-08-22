@@ -3,8 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
-inherit autotools desktop python-single-r1 xdg
+inherit autotools desktop xdg
 
 DESCRIPTION="An email client (and news reader) based on GTK+"
 HOMEPAGE="https://www.claws-mail.org/"
@@ -20,14 +19,13 @@ fi
 SLOT="0"
 LICENSE="GPL-3"
 
-IUSE="+appindicator archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls +imap ipv6 ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
+IUSE="+appindicator archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls +imap ipv6 ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification pdf perl +pgp rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
 
 REQUIRED_USE="
 	appindicator? ( notification )
 	libcanberra? ( notification )
 	libnotify? ( notification )
 	networkmanager? ( dbus )
-	python? ( ${PYTHON_REQUIRED_USE} )
 	smime? ( pgp )
 "
 
@@ -100,10 +98,6 @@ RDEPEND="${COMMONDEPEND}
 	networkmanager? ( net-misc/networkmanager )
 	pdf? ( app-text/ghostscript-gpl )
 	perl? ( dev-lang/perl:= )
-	python? (
-		${PYTHON_DEPS}
-		>=dev-python/pygtk-2.10.3
-	)
 	rss? (
 		dev-libs/libxml2
 		net-misc/curl
@@ -113,10 +107,6 @@ RDEPEND="${COMMONDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-3.17.5-enchant-2_default.patch"
 )
-
-pkg_setup() {
-	use python && python-single-r1_pkg_setup
-}
 
 src_prepare() {
 	xdg_src_prepare
@@ -163,7 +153,7 @@ src_configure() {
 		$(use_enable pgp pgpcore-plugin)
 		$(use_enable pgp pgpinline-plugin)
 		$(use_enable pgp pgpmime-plugin)
-		$(use_enable python python-plugin)
+		--disable-python-plugin
 		$(use_enable rss rssyl-plugin)
 		$(use_enable session libsm)
 		$(use_enable sieve managesieve-plugin)
