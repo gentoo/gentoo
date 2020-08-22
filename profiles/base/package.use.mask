@@ -8,8 +8,9 @@
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-22)
 # These flags depend on packages masked for removal due to py2.
-sci-geosciences/qgis grass
+<media-tv/mythtv-31 python
 net-libs/zeromq pgm
+sci-geosciences/qgis grass
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-08-17)
 # CMake checks will only allow on amd64 & x86
