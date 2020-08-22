@@ -61,7 +61,6 @@ dev-python/jplephem
 dev-python/natgrid
 dev-python/nbdime
 dev-python/oct2py
-dev-python/octave_kernel
 dev-python/pcapy
 dev-python/promises
 dev-python/pycuda
