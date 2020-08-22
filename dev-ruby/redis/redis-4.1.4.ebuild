@@ -24,7 +24,7 @@ SLOT="4"
 KEYWORDS="~amd64 ~arm64"
 IUSE="doc test"
 
-DEPEND="test? ( >=dev-db/redis-3.2.0 )"
+DEPEND="test? ( =dev-db/redis-5* )"
 
 RUBY_S="${MY_P}"
 
