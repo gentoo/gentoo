@@ -1,0 +1,112 @@
+diff --git a/cddb.py b/cddb.py
+index f30b3b7..c9cb6dd 100755
+--- a/cddb.py
++++ b/cddb.py
+@@ -131,7 +131,7 @@ class Toc:
+                 track =  int(match.group(1))
+                 self._trackext[track] = self._trackext[track] + match.group(2)
+                 continue
+-            raise SyntaxError, "BAD LINE:" + line
++            raise SyntaxError("BAD LINE:" + line)
+ 
+         components = self._disctitle.split("/", 1)
+         self._discartist = components[0].strip()
+@@ -160,18 +160,18 @@ class Toc:
+         return len(self._tracktitle)
+ 
+     def dump(self):
+-        print "DISCID:    " + self._discid
+-        print "DISCTITLE: " + self._disctitle
+-        print "DISKEXT:   " + self._discext
+-        print "TRACK TITLES"
++        print("DISCID:    " + self._discid)
++        print("DISCTITLE: " + self._disctitle)
++        print("DISKEXT:   " + self._discext)
++        print("TRACK TITLES")
+         for k in range(len(self._tracktitle)):
+-            print "%2d:" % k, self._tracktitle[k]
+-        print "TRACK EXTS"
++            print("%2d:" % k, self._tracktitle[k])
++        print("TRACK EXTS")
+         for k in range(len(self._trackext)):
+-            print "%2d:" % k, self._trackext[k]
+-        print "TRACK TIMES"
++            print("%2d:" % k, self._trackext[k])
++        print("TRACK TIMES")
+         for k in range(len(self._tracktimes)):
+-            print "%2d:" % k, self._tracktimes[k]
++            print("%2d:" % k, self._tracktimes[k])
+         return
+ 
+ # ======================================================================
+diff --git a/rmid3tag.py b/rmid3tag.py
+index 36abe7f..e218638 100755
+--- a/rmid3tag.py
++++ b/rmid3tag.py
+@@ -32,7 +32,7 @@ import logging
+ 
+ # ======================================================================
+ def usage():
+-    print USAGE
++    print(USAGE)
+     return -1
+ 
+ # ======================================================================
+@@ -44,7 +44,7 @@ def process_file(name):
+         pos = inp.tell()
+         tag = inp.read(3)
+         if tag == "TAG":
+-            print name + ": found id3v1 tag - truncating at 0x%08x" % pos
++            print(name + ": found id3v1 tag - truncating at 0x%08x" % pos)
+             inp.truncate(pos)
+         else:
+             logging.warning(name + ": no id3v1 tag found\n")
+diff --git a/tagdir.py b/tagdir.py
+index 87223ef..f45aa9a 100755
+--- a/tagdir.py
++++ b/tagdir.py
+@@ -188,7 +188,7 @@ def tag_files(files, toc, cmdpattern, test, verbose):
+ 
+         realcmd    = [tok % args for tok in cmdpattern]
+         if verbose:
+-            print realcmd
++            print(realcmd)
+         if not test:
+             ret = os.spawnvp(os.P_WAIT, realcmd[0], realcmd)
+             if ret:
+@@ -201,7 +201,7 @@ def mode_dump(files):
+     perform read test and all (toc) files  and dump their content
+     """
+     for i in files:
+-        print "TOC: ", i
++        print("TOC: ", i)
+         if not os.access(i, os.R_OK):
+             logging.warning("cannot open " + i)
+             continue
+@@ -218,7 +218,7 @@ def mode_toc(tocpath, test, check, verbose):
+     """
+     try:
+         toc = cddb.Toc(tocpath)
+-    except Exception, ex:
++    except Exception as ex:
+         logging.error("cannot open toc file at %s  %s",
+                       os.path.abspath(tocpath), str(ex))
+         return -1
+@@ -261,7 +261,7 @@ def main(argv):
+     try:
+         opts, args = getopt.getopt(argv, "t:m:v")
+     except getopt.error:
+-        print USAGE
++        print(USAGE)
+         return -1
+ 
+     mode = "tag"
+@@ -276,7 +276,7 @@ def main(argv):
+             verbose = 1
+         else:
+             logging.error("bad option: >" + opt + "<")
+-            print USAGE
++            print(USAGE)
+             return -1
+     if mode == "dump":
+         return mode_dump(args)
