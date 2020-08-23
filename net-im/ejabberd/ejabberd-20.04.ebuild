@@ -14,7 +14,7 @@ SRC_URI="https://static.process-one.net/${PN}/downloads/${PV}/${P}.tgz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ~ppc ~sparc x86"
+KEYWORDS="amd64 ~arm ~ia64 ~sparc x86"
 REQUIRED_USE="mssql? ( odbc )"
 # TODO: Add 'tools' flag.
 IUSE="captcha debug full-xml hipe ldap mssql mysql odbc pam postgres redis
