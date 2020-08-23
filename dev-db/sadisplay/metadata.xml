@@ -16,6 +16,6 @@
 		Supports mapped class inherit.
 	</longdescription>
 	<upstream>
-		<remote-id type="bitbucket">estin/sadisplay</remote-id>
+		<remote-id type="pypi">sadisplay</remote-id>
 	</upstream>
 </pkgmetadata>
