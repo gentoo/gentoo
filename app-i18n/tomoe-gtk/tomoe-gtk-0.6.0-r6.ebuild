@@ -15,6 +15,7 @@ IUSE=""
 RDEPEND="app-i18n/tomoe
 	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	dev-util/gtk-doc-am
 	sys-devel/gettext
 	virtual/pkgconfig"
