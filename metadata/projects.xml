@@ -826,6 +826,11 @@
       <role>Self-appointed lead</role>
     </member>
     <member>
+      <email>sam@gentoo.org</email>
+      <name>Sam James</name>
+      <role>arm64 maintenance</role>
+    </member>
+    <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
       <role>Minion</role>
