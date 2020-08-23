@@ -4,6 +4,5 @@
 	<!--maintainer-needed-->
 	<upstream>
 		<remote-id type="pypi">suds</remote-id>
-		<remote-id type="bitbucket">jurko/suds</remote-id>
 	</upstream>
 </pkgmetadata>

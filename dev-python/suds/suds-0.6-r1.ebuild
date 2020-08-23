@@ -8,7 +8,7 @@ DISTUTILS_IN_SOURCE_BUILD=1
 inherit distutils-r1
 
 DESCRIPTION="Lightweight SOAP client (Jurko's fork) (py3 support) (active development)"
-HOMEPAGE="https://bitbucket.org/jurko/suds"
+HOMEPAGE="https://pypi.org/project/suds-jurko/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}-jurko/${PN}-jurko-${PV}.tar.bz2 -> ${P}.tar.bz2"
 S="${WORKDIR}/${PN}-jurko-${PV}"
 
