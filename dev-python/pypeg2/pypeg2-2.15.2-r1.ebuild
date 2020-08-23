@@ -13,7 +13,6 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="An intrinsic PEG Parser-Interpreter for Python"
 HOMEPAGE="https://fdik.org/pyPEG/
-	https://bitbucket.org/fdik/pypeg/
 	https://pypi.org/project/pyPEG2/"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 S=${WORKDIR}/${MY_P}
