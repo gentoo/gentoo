@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Continuous Collision Detection and Physics Library"
 HOMEPAGE="http://www.bulletphysics.com/"
@@ -18,9 +18,9 @@ RDEPEND="
 	virtual/opengl
 	media-libs/freeglut"
 
-DEPEND="
-	${RDEPEND}
-	doc? ( app-doc/doxygen[dot] )"
+DEPEND="${RDEPEND}"
+
+BDEPEND="doc? ( app-doc/doxygen[dot] )"
 
 PATCHES=( "${FILESDIR}"/${PN}-2.85-soversion.patch )
 
@@ -32,7 +32,7 @@ RESTRICT="test"
 S="${WORKDIR}/${PN}3-${PV}"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# allow to generate docs
 	sed -i -e 's/GENERATE_HTMLHELP.*//g' Doxyfile || die
@@ -52,11 +52,11 @@ src_configure() {
 		-DUSE_DOUBLE_PRECISION=$(usex double-precision)
 		-DBUILD_UNIT_TESTS=$(usex test)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	if use doc; then
 		doxygen || die
@@ -66,7 +66,7 @@ src_compile() {
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	use examples && DOCS+=( examples )
 	einstalldocs
 }
