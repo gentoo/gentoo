@@ -15,7 +15,7 @@ HOMEPAGE="https://www.gimp.org/"
 EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gimp.git"
 SRC_URI=""
 LICENSE="GPL-3 LGPL-3"
-SLOT="2"
+SLOT="2.99"
 KEYWORDS=""
 
 IUSE="aalib alsa aqua debug doc gnome heif javascript jpeg2k lua mng openexr postscript python udev unwind vector-icons webp wmf xpm cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse"
