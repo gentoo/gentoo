@@ -6,5 +6,5 @@ IUSE=debug embedded obsolete +syslog
 KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86
 LICENSE=GPL-2
 SLOT=0
-SRC_URI=https://github.com/troglobit/sntpd/releases/download/2018_244/ntpclient-2018_244.tar.xz
-_md5_=bfecdde0dce72c70fc58361aa3aa8736
+SRC_URI=https://github.com/troglobit/sntpd/releases/download/2018.244/ntpclient-2018_244.tar.xz
+_md5_=78d0d9a56a19048c6c2b6cc24dde3f68
