@@ -6,13 +6,13 @@ EAPI=7
 inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="GNU Linear Programming Kit"
-LICENSE="GPL-3"
 HOMEPAGE="https://www.gnu.org/software/glpk/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
+LICENSE="GPL-3"
 SLOT="0/40"
-IUSE="doc examples gmp odbc mysql static-libs"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
+IUSE="doc examples gmp odbc mysql"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="
@@ -21,13 +21,18 @@ DEPEND="
 	sys-libs/zlib:0=
 	gmp? ( dev-libs/gmp:0= )
 	mysql? ( dev-db/mysql-connector-c )
-	odbc? ( || ( dev-db/libiodbc:0 dev-db/unixODBC:0 ) )"
+	odbc? (
+		|| (
+			dev-db/libiodbc:0
+			dev-db/unixODBC:0
+		)
+	)"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.65-fix-mysql-include-prefix.patch"
-	"${FILESDIR}/${PN}-4.65-debundle-system-libs.patch"
-	"${FILESDIR}/${PN}-4.65-longstep_verbosity.patch"
+	"${FILESDIR}"/${PN}-4.65-fix-mysql-include-prefix.patch
+	"${FILESDIR}"/${PN}-4.65-debundle-system-libs.patch
+	"${FILESDIR}"/${PN}-4.65-longstep_verbosity.patch
 )
 
 src_prepare() {
@@ -52,9 +57,9 @@ src_configure() {
 	fi
 
 	econf ${myconf} \
+		--disable-static \
 		$(use_enable mysql) \
 		$(use_enable odbc) \
-		$(use_enable static-libs static) \
 		$(use_with gmp)
 }
 
@@ -66,4 +71,7 @@ src_install() {
 		docompress -x "/usr/share/doc/${PF}/examples"
 	fi
 	use doc && dodoc doc/*.pdf doc/notes/*.pdf doc/*.txt
+
+	# no static archives
+	find "${D}" -name '*.la' -delete || die
 }

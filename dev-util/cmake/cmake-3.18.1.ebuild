@@ -83,10 +83,8 @@ cmake_src_bootstrap() {
 			Source/kwsys/CMakeLists.txt || die
 	fi
 
-	tc-export CC CXX LD
-
 	# bootstrap script isn't exactly /bin/sh compatible
-	${CONFIG_SHELL:-sh} ./bootstrap \
+	tc-env_build ${CONFIG_SHELL:-sh} ./bootstrap \
 		--prefix="${T}/cmakestrap/" \
 		--parallel=$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)") \
 		|| die "Bootstrap failed"
@@ -141,7 +139,7 @@ src_prepare() {
 		-e "$(usex prefix-guest "s|@GENTOO_HOST@||" "/@GENTOO_HOST@/d")" \
 		-e "s|@GENTOO_PORTAGE_EPREFIX@|${EPREFIX}/|g" \
 		Modules/Platform/{UnixPaths,Darwin}.cmake || die "sed failed"
-	if ! has_version \>=${CATEGORY}/${PN}-3.4.0_rc1 ; then
+	if ! has_version -b \>=${CATEGORY}/${PN}-3.4.0_rc1 ; then
 		CMAKE_BINARY="${S}/Bootstrap.cmk/cmake"
 		cmake_src_bootstrap
 	fi
