@@ -94,7 +94,7 @@ src_configure() {
 		-Daudacity_use_pa_alsa=$(usex alsa)
 		-Daudacity_use_pa_jack=$(usex jack linked off)
 		-Daudacity_use_pa_oss=$(usex oss)
-		-Daudacity_use_pch=ON
+		#-Daudacity_use_pch leaving it to the default behavior
 		-Daudacity_use_portaudio=local # only 'local' option is present
 		-Daudacity_use_portmixer=$(usex portmixer local off)
 		-Daudacity_use_portsmf=$(usex portsmf local off)
