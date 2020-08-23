@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl module to make chained class accessors"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~ppc-aix ~x86-solaris"
+KEYWORDS="~amd64 x86 ~ppc-aix ~x86-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
