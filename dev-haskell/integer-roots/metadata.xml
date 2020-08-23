@@ -5,8 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<use>
-	</use>
 	<longdescription>
 		Calculating integer roots and testing perfect powers of arbitrary precision. Originally part of &lt;https://hackage.haskell.org/package/arithmoi arithmoi&gt; package.
 	</longdescription>
