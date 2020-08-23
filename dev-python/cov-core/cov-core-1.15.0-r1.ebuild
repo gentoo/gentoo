@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="plugin core for use by pytest-cov, nose-cov and nose2-cov"
-HOMEPAGE="https://bitbucket.org/memedough/cov-core/overview"
+HOMEPAGE="https://github.com/schlamar/cov-core"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
