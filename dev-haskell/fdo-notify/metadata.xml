@@ -10,7 +10,4 @@
 		Notifications protcol. This protocol is supported by services such
 		as Ubuntu's NotifyOSD.
 	</longdescription>
-	<upstream>
-		<remote-id type="bitbucket">taejo/fdo-notify</remote-id>
-	</upstream>
 </pkgmetadata>
