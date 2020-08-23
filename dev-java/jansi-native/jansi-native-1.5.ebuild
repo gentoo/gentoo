@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc source"
 inherit vcs-snapshot java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Native JNI component for dev-java/jansi"
-HOMEPAGE="http://jansi.fusesource.org/"
+HOMEPAGE="http://fusesource.github.io/jansi/"
 SRC_URI="https://github.com/fusesource/${PN}/tarball/${P} -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
