@@ -9,6 +9,6 @@
 		their translations</longdescription>
 	<upstream>
 		<remote-id type="pypi">pycountry</remote-id>
-		<remote-id type="bitbucket">flyingcircus/pycountry</remote-id>
+		<remote-id type="github">flyingcircusio/pycountry</remote-id>
 	</upstream>
 </pkgmetadata>
