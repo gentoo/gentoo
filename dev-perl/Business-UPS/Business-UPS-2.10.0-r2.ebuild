@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="A UPS Interface Module"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 RDEPEND="dev-perl/libwww-perl"
 BDEPEND="${RDEPEND}
