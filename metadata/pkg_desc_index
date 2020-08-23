@@ -5419,7 +5419,7 @@ dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for 
 dev-libs/libffi 3.3-r1 3.3-r2: a portable, high level programming interface to various calling conventions
 dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to various calling conventions
 dev-libs/libfido2 1.3.1 1.4.0: Provides library functionality for FIDO 2.0
-dev-libs/libfilezilla 0.20.2 0.21.0 0.22.0 0.23.0: C++ library offering some basic functionality for platform-independent programs
+dev-libs/libfilezilla 0.20.2 0.21.0 0.22.0 0.23.0 0.24.0: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.4.0_pre20200314: Struct of arrays library with object oriented interface for C++
 dev-libs/libfmt 6.1.2 7.0.3 9999: Small, safe and fast formatting library
 dev-libs/libfstrcmp 0.7 0.7-r1: Make fuzzy comparisons of strings and byte arrays
