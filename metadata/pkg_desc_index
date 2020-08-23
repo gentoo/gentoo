@@ -452,7 +452,7 @@ app-accessibility/powiedz 1.0-r2: Polish speech synthesizer based on rsynth
 app-accessibility/simon 9999: Open-source speech recognition program for replacing mouse and keyboard
 app-accessibility/sound-icons 0.1: a collection of Sound Icons for speech-dispatcher
 app-accessibility/speech-dispatcher 0.8.7-r3 0.9.1: Speech synthesis interface
-app-accessibility/speech-tools 2.1-r4: Speech tools for Festival Text to Speech engine
+app-accessibility/speech-tools 2.1-r4 2.5.0: Speech tools for Festival Text to Speech engine
 app-accessibility/speechd-el 2.5: Emacs speech support
 app-accessibility/sphinx2 0.6: CMU Speech Recognition-engine
 app-accessibility/sphinx3 0.8-r1: CMU Speech Recognition engine
@@ -5655,7 +5655,7 @@ dev-libs/rocclr 3.5.0-r1 3.7.0-r1: Radeon Open Compute Common Language Runtime
 dev-libs/rocm-comgr 3.0.0 3.1.0 3.3.0 3.5.0 3.7.0: Radeon Open Compute Code Object Manager
 dev-libs/rocm-device-libs 3.0.0 3.1.0 3.3.0 3.5.0 3.5.1 3.7.0 9999: Radeon Open Compute Device Libraries
 dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
-dev-libs/rocm-opencl-runtime 3.0.0 3.1.0 3.3.0 3.5.0-r1: Radeon Open Compute OpenCL Compatible Runtime
+dev-libs/rocm-opencl-runtime 3.0.0 3.1.0 3.3.0 3.5.0-r1 3.7.0: Radeon Open Compute OpenCL Compatible Runtime
 dev-libs/rocr-runtime 3.0.0 3.1.0 3.3.0 3.5.0 3.7.0 9999: Radeon Open Compute Runtime
 dev-libs/roct-thunk-interface 3.0.0 3.1.0 3.3.0 3.5.0 3.6.0 3.7.0 9999: Radeon Open Compute Thunk Interface
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
@@ -13918,7 +13918,7 @@ media-sound/pavucontrol-qt 0.15.0: Qt GUI Pulseaudio Mixer
 media-sound/pavumeter 0.9.3-r1: PulseAudio Volume Meter, simple GTK volume meter for PulseAudio
 media-sound/peercast 0.1218-r2: A client and server for Peercast P2P-radio network
 media-sound/pianobar 2020.04.05 9999: A console-based replacement for Pandora's flash player
-media-sound/picard 2.1.3-r1 2.3.1 9999: A cross-platform music tagger
+media-sound/picard 2.3.1 9999: A cross-platform music tagger
 media-sound/picoxine 0.0.7: Very small xine frontend for playing audio events
 media-sound/pitchtune 0.0.4: Precise Instrument Tweaking for Crispy Harmony - tuner
 media-sound/pithos 1.5.0: Pandora.com client for the GNOME desktop
