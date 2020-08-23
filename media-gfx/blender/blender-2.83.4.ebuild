@@ -154,15 +154,17 @@ src_configure() {
 	append-flags -funsigned-char
 	append-lfs-flags
 
-	local version
-	if use abi6-compat; then
-		version=6;
-	elif use abi7-compat; then
-		version=7;
-	else
-		die "Openvdb abi version not compatible"
+	if use openvdb; then
+		local version
+		if use abi6-compat; then
+			version=6;
+		elif use abi7-compat; then
+			version=7;
+		else
+			die "Openvdb abi version not compatible"
+		fi
+		append-cppflags -DOPENVDB_ABI_VERSION_NUMBER=${version}
 	fi
-	append-cppflags -DOPENVDB_ABI_VERSION_NUMBER=${version}
 
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=OFF
