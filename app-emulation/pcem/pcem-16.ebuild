@@ -10,7 +10,7 @@ WX_GTK_VER="3.0"
 DESCRIPTION="A PC emulator that specializes in running old operating systems and software"
 HOMEPAGE="
 	https://pcem-emulator.co.uk/
-	https://bitbucket.org/pcem_emulator/pcem/
+	https://github.com/sarah-walker-pcem/pcem/
 "
 SRC_URI="https://pcem-emulator.co.uk/files/PCemV${PV}Linux.tar.gz"
 
