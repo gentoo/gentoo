@@ -19,24 +19,19 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="nas openmp X"
 
 RDEPEND="
+	media-libs/alsa-lib
+	sys-libs/ncurses:0=
 	nas? ( media-libs/nas )
 	X? ( x11-libs/libX11
-		x11-libs/libXt )
-	>=media-libs/alsa-lib-1.0.20-r1
-	!<app-accessibility/festival-1.96_beta
-	!sys-power/powerman
-	>=sys-libs/ncurses-5.6-r2:0=
+		x11-libs/libXt
+	)
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/speech_tools"
 
-DOCS=(
-	README.md
-	lib/cstrutt.dtd
-	lib/example_data
-)
+DOCS=( README.md lib/cstrutt.dtd lib/example_data )
 
 PATCHES=(
 	"${WORKDIR}/patch/02_all_gcc42.patch"
