@@ -302,6 +302,14 @@ setup_target_flags() {
 			# The mips abi cannot support the GNU style hashes. #233233
 			filter-ldflags -Wl,--hash-style=gnu -Wl,--hash-style=both
 		;;
+		ppc)
+			# Many arch-specific implementations do not work on ppc with
+			# cache-block not equal to 128 bytes. This breaks memset:
+			#   https://sourceware.org/PR26522
+			#   https://bugs.gentoo.org/737996
+			# Use default -mcpu=. For ppc it means non-multiarch setup.
+			filter-flags '-mcpu=*'
+		;;
 		sparc)
 			# Both sparc and sparc64 can use -fcall-used-g6.  -g7 is bad, though.
 			filter-flags "-fcall-used-g7"
