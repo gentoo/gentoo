@@ -104,7 +104,7 @@ src_configure() {
 		-DUSE_EXR=ON
 		-DUSE_LOG4CPLUS=ON
 		-DUSE_NUMPY=$(usex numpy)
-		-DPYOPENVDB_INSTALL_DIRECTORY="${python_get_sitedir}"
+		-DPYOPENVDB_INSTALL_DIRECTORY="$(python_get_sitedir)"
 		-DPython_EXECUTABLE="${EPYTHON}"
 	)
 
