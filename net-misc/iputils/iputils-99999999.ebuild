@@ -5,11 +5,12 @@
 # them in a tarball on our mirrors.  This avoids ugly issues while
 # building stages, and reduces depedencies.
 # To regenerate man/html pages emerge iputils-99999999[doc] with
-# EGIT_COMMIT set to release tag and tar ${S}/doc folder.
+# EGIT_COMMIT set to release tag, all USE flags enabled and
+# tar ${S}/doc folder.
 
 EAPI="7"
 
-PLOCALES="ja"
+PLOCALES="de fr ja pt_BR tr uk zh_CN"
 
 inherit fcaps flag-o-matic l10n meson systemd toolchain-funcs
 
@@ -34,18 +35,6 @@ BDEPEND="virtual/pkgconfig"
 LIB_DEPEND="
 	caps? ( sys-libs/libcap[static-libs(+)] )
 	idn? ( net-dns/libidn2:=[static-libs(+)] )
-	ipv6? (
-		ssl? (
-			gcrypt? ( dev-libs/libgcrypt:0=[static-libs(+)] )
-			!gcrypt? (
-				nettle? ( dev-libs/nettle[static-libs(+)] )
-				!nettle? (
-					libressl? ( dev-libs/libressl:0=[static-libs(+)] )
-					!libressl? ( dev-libs/openssl:0=[static-libs(+)] )
-				)
-			)
-		)
-	)
 	nls? ( sys-devel/gettext[static-libs(+)] )
 "
 
@@ -105,16 +94,6 @@ src_configure() {
 		-Dsystemdunitdir="$(systemd_get_systemunitdir)"
 		-DUSE_GETTEXT="$(usex nls true false)"
 	)
-
-	if use ipv6 && use ssl ; then
-		emesonargs+=(
-			-DUSE_CRYPTO="$(usex gcrypt gcrypt $(usex nettle nettle openssl))"
-		)
-	else
-		emesonargs+=(
-			-DUSE_CRYPTO="none"
-		)
-	fi
 
 	if [[ "${PV}" == 99999999 ]] ; then
 		emesonargs+=(
