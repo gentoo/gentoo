@@ -1011,7 +1011,7 @@ app-crypt/tpm-emulator 0.7.5-r2: Emulator driver for tpm
 app-crypt/tpm-tools 1.3.9.1-r1: TrouSerS' support tools for the Trusted Platform Modules
 app-crypt/tpm2-abrmd 2.1.1-r2 2.3.1: TPM2 Access Broker & Resource Manager
 app-crypt/tpm2-pkcs11 1.3.1: A PKCS#11 interface for TPM2 hardware
-app-crypt/tpm2-tools 4.2.1: Tools for the TPM 2.0 TSS
+app-crypt/tpm2-tools 4.2.1-r1: Tools for the TPM 2.0 TSS
 app-crypt/tpm2-totp 0.2.1-r1: Attest the trustworthiness of a device against a human using time-based OTP
 app-crypt/tpm2-tss 2.4.1: TCG Trusted Platform Module 2.0 Software Stack
 app-crypt/tpm2-tss-engine 1.1.0_rc1: OpenSSL Engine for TPM2 devices
@@ -5662,7 +5662,7 @@ dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directo
 dev-libs/satyr 0.27 0.30: Satyr is a collection of low-level algorithms for program failure processing
 dev-libs/sdformat 6.2.0 9.2.0: Simulation Description Format (SDF) parser
 dev-libs/serd 0.30.2 0.30.4: Library for RDF syntax which supports reading and writing Turtle and NTriples
-dev-libs/serdisplib 2.01-r1 2.02: Library to drive several displays with built-in controllers or display modules
+dev-libs/serdisplib 2.02: Library to drive several displays with built-in controllers or display modules
 dev-libs/shhopt 1.1.7-r3: library for parsing command line options
 dev-libs/sink 0.8.0-r2: Data access layer handling synchronization, caching and indexing
 dev-libs/skalibs 2.3.2.0 2.6.1.0 2.6.3.0 2.6.4.0 2.7.0.0 2.8.1.0 2.9.1.0: General-purpose libraries from skarnet.org
@@ -8692,7 +8692,7 @@ dev-python/pycountry 19.8.18: Database of countries, subdivisions, languages, cu
 dev-python/pycparser 2.20: C parser and AST generator written in Python
 dev-python/pycryptodome 3.9.8: A self-contained cryptographic library for Python
 dev-python/pycson 0.7: A python parser for the Coffeescript Object Notation (CSON)
-dev-python/pycuda 2018.1.1 9999: Python wrapper for NVIDIA CUDA
+dev-python/pycuda 2019.1.2: Python wrapper for NVIDIA CUDA
 dev-python/pycups 1.9.73-r2: Python bindings for the CUPS API
 dev-python/pycurl 7.43.0.3 7.43.0.5: python binding for curl/libcurl
 dev-python/pycxx 7.1.2-r2: Set of facilities to extend Python with C++

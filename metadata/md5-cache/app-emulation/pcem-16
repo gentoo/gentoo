@@ -2,7 +2,7 @@ BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/au
 DEFINED_PHASES=configure install postinst prepare
 DESCRIPTION=A PC emulator that specializes in running old operating systems and software
 EAPI=7
-HOMEPAGE=https://pcem-emulator.co.uk/ https://bitbucket.org/pcem_emulator/pcem/
+HOMEPAGE=https://pcem-emulator.co.uk/ https://github.com/sarah-walker-pcem/pcem/
 IUSE=alsa networking
 KEYWORDS=amd64
 LICENSE=GPL-2+
@@ -10,4 +10,4 @@ RDEPEND=alsa? ( media-libs/alsa-lib ) media-libs/libsdl2 media-libs/openal x11-l
 SLOT=0
 SRC_URI=https://pcem-emulator.co.uk/files/PCemV16Linux.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312
-_md5_=edb65e9c3b8e6aa3712eb4643375d241
+_md5_=e68a215d3f62ad4e8d8ccf1166e9e89c
