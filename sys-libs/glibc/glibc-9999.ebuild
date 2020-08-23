@@ -421,11 +421,6 @@ want__thread() {
 use_multiarch() {
 	# Allow user to disable runtime arch detection in multilib.
 	use multiarch || return 1
-	# multiarch does not work on ppc with cache-block not equal to 128 bytes
-	# and breaks memset:
-	# https://sourceware.org/PR26522
-	# https://bugs.gentoo.org/737996
-	[[ $(tc-arch ${CTARGET}) == ppc ]] && return 1
 	# Make sure binutils is new enough to support indirect functions,
 	# #336792. This funky sed supports gold and bfd linkers.
 	local bver nver
