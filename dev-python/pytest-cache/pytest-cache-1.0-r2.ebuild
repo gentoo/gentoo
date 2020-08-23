@@ -9,7 +9,6 @@ inherit distutils-r1
 
 DESCRIPTION="mechanisms for caching across test runs"
 HOMEPAGE="https://pypi.org/project/pytest-cache/
-	https://bitbucket.org/hpk42/pytest-cache/
 	https://pythonhosted.org/pytest-cache/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
