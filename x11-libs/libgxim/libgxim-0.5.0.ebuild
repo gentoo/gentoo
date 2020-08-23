@@ -10,7 +10,7 @@ DESCRIPTION="GObject-based XIM protocol library"
 HOMEPAGE="https://tagoh.bitbucket.io/libgxim"
 SRC_URI="https://bitbucket.org/tagoh/${PN}/downloads/${P}.tar.bz2"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
 IUSE="${USE_RUBY//ruby/ruby_targets_ruby} static-libs test"
