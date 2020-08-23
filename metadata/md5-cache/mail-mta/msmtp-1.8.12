@@ -1,0 +1,15 @@
+BDEPEND=doc? ( virtual/texi2dvi ) nls? ( sys-devel/gettext ) virtual/pkgconfig filecaps? ( sys-libs/libcap )
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=gnome-keyring? ( app-crypt/libsecret ) nls? ( virtual/libintl ) sasl? ( virtual/gsasl ) ssl? ( net-libs/gnutls[idn?] ) !ssl? ( idn? ( net-dns/libidn2:= ) )
+DESCRIPTION=An SMTP client and SMTP plugin for mail user agents such as Mutt
+EAPI=7
+HOMEPAGE=https://marlam.de/msmtp/
+IUSE=daemon doc gnome-keyring idn +mta nls sasl ssl vim-syntax +filecaps
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=GPL-3
+RDEPEND=gnome-keyring? ( app-crypt/libsecret ) nls? ( virtual/libintl ) sasl? ( virtual/gsasl ) ssl? ( net-libs/gnutls[idn?] ) !ssl? ( idn? ( net-dns/libidn2:= ) ) net-mail/mailbase daemon? ( acct-group/msmtpd acct-user/msmtpd ) mta? ( !mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/opensmtpd !<mail-mta/ssmtp-2.64-r2 !>=mail-mta/ssmtp-2.64-r2[mta] ) filecaps? ( sys-libs/libcap )
+REQUIRED_USE=daemon? ( filecaps )
+SLOT=0
+SRC_URI=https://marlam.de/msmtp/releases/msmtp-1.8.12.tar.xz
+_eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=cb690a8e507fdd9583f6058e2494aa6c

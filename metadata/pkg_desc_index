@@ -12503,7 +12503,7 @@ mail-filter/zdkimfilter 1.8 2.1: DKIM filter for Courier-MTA
 mail-mta/courier 1.0.5 1.0.13: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
 mail-mta/exim 4.93.0.4-r1 4.94-r1: A highly configurable, drop-in replacement for sendmail
-mail-mta/msmtp 1.8.7-r1 1.8.10 1.8.11: An SMTP client and SMTP plugin for mail user agents such as Mutt
+mail-mta/msmtp 1.8.7-r1 1.8.10 1.8.11 1.8.12: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06-r13: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/notqmail 1.08-r2 9999: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 2.2-r1: Simple relay-only local mail transport agent
