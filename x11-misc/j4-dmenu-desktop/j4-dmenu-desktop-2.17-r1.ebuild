@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 MY_PV="r${PV}"
 
@@ -14,16 +14,16 @@ SRC_URI="https://github.com/enkore/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="test"
+IUSE="+dmenu test"
 RESTRICT="!test? ( test )"
 
 DEPEND="test? ( dev-cpp/catch:1 )"
-RDEPEND="x11-misc/dmenu"
+RDEPEND="dmenu? ( x11-misc/dmenu )"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# Respect users CFLAGS
 	sed -i -e "s/-pedantic -O2//" CMakeLists.txt || die
@@ -32,14 +32,25 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_GIT_CATCH="no"
-		-DWITH_TESTS=$(usex test)
+		-DWITH_TESTS="$(usex test)"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	doman j4-dmenu-desktop.1
+}
+
+pkg_postinst() {
+	if ! use dmenu; then
+		elog "As you have disabled the 'dmenu' use flag,"
+		elog "x11-misc/dmenu won't be installed by default."
+		elog ""
+		elog "Since x11-misc/j4-dmenu-desktop uses x11-misc/dmenu as default,"
+		elog "you must configure your own replacement with --dmenu=<command>,"
+		elog "as otherwise it won't work."
+	fi
 }

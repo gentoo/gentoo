@@ -4,6 +4,7 @@
 EAPI=7
 
 EGIT_COMMIT="c5f6fb23c3876461d46ec380421e42b289789530"
+README_GENTOO_SUFFIX="-r1"
 
 inherit readme.gentoo-r1 java-pkg-2
 
@@ -30,15 +31,15 @@ RESTRICT="bindist mirror"
 S="${WORKDIR}"
 
 src_unpack() {
-	cp "${DISTDIR}"/${A} "${WORKDIR}" || die
+	cp "${DISTDIR}/${A}" "${WORKDIR}" || die
 }
 
 src_install() {
 	java-pkg_newjar minecraft-server-${PV}.jar minecraft-server.jar
 	java-pkg_dolauncher minecraft-server --jar minecraft-server.jar --java_args "\${JAVA_OPTS}"
 
-	newinitd "${FILESDIR}"/minecraft-server.initd-r3 minecraft-server
-	newconfd "${FILESDIR}"/minecraft-server.confd minecraft-server
+	newinitd "${FILESDIR}"/minecraft-server.initd-r4 minecraft-server
+	newconfd "${FILESDIR}"/minecraft-server.confd-r1 minecraft-server
 
 	readme.gentoo_create_doc
 }

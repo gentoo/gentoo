@@ -18,6 +18,7 @@
 		<remote-id type="github">troglobit/sntpd</remote-id>
 	</upstream>
 	<use>
+		<flag name="adjtimex">Install adjtimex for the clock adjustment algorithm.</flag>
 		<flag name="debug">Enable analysis code path and debugging of NTP protocol.</flag>
 		<flag name="embedded">Build a very small ntpclient, from OpenWRT project.</flag>
 		<flag name="obsolete">Enable obsolete features, to use with kernel versions older than 3.0</flag>

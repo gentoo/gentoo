@@ -1,10 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-MY_PV="${PV/./_}"
-MY_P="${PN}-${MY_PV}"
+MY_PN="ntpclient"
+MY_PV="${PV/2./}"
+MY_P="${MY_PN}-${MY_PV/./_}"
 
 DESCRIPTION="A NTP (RFC-1305 and RFC-4330) client for unix-alike systems"
 HOMEPAGE="https://github.com/troglobit/sntpd"
@@ -18,7 +19,7 @@ IUSE="debug embedded obsolete +syslog"
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}/${P}-linux-headers-5.2.patch"
+	"${FILESDIR}/${MY_PN}-${MY_PV}-linux-headers-5.2.patch"
 )
 
 src_configure() {
