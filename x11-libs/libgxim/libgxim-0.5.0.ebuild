@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 USE_RUBY="ruby25 ruby26 ruby27"
 
 inherit autotools ruby-single
@@ -22,8 +22,8 @@ RDEPEND="dev-libs/dbus-glib
 	virtual/libintl
 	x11-libs/gtk+:2
 	x11-libs/libX11"
-DEPEND="${RDEPEND}
-	${RUBY_DEPS}
+DEPEND="${RDEPEND}"
+BDEPEND="${RUBY_DEPS}
 	dev-util/glib-utils
 	dev-util/intltool
 	sys-devel/autoconf-archive
