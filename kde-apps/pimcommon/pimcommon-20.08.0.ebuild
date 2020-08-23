@@ -30,6 +30,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtxml-${QTMIN}:5
 	>=kde-apps/akonadi-${PVCUT}:5
 	>=kde-apps/akonadi-contacts-${PVCUT}:5
+	>=kde-apps/akonadi-search-${PVCUT}:5
 	>=kde-apps/kimap-${PVCUT}:5
 	>=kde-apps/kldap-${PVCUT}:5
 	>=kde-apps/kpimtextedit-${PVCUT}:5
