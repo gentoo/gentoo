@@ -34,3 +34,10 @@ src_configure() {
 	)
 	cmake_src_configure
 }
+
+src_install() {
+	cmake_src_install
+
+	# This should be fixed in the CMakeLists.txt
+	sed -e "s:${BUILD_DIR}:${EPREFIX}/usr:" -i "${D}/usr/lib/cmake/rocclr/ROCclrConfig.cmake" || die
+}
