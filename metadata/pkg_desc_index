@@ -4544,17 +4544,17 @@ dev-haskell/wxcore 0.92.2.0: wxHaskell core
 dev-haskell/wxdirect 0.92.2.0 0.92.2.0-r1 0.92.3.0-r1: helper tool for building wxHaskell
 dev-haskell/x11 1.6.1.1 1.6.1.2 1.8-r1 1.9.1: A binding to the X11 graphics library
 dev-haskell/x11-xft 0.3.1 0.3.1-r1: Bindings to the Xft, X Free Type interface library, and some Xrender parts
-dev-haskell/x509 1.4.11 1.5.1 1.6.3 1.6.5 1.7.5: X509 reader and writer
-dev-haskell/x509-store 1.4.4 1.5.0 1.6.1 1.6.2 1.6.7: X.509 collection accessing and storing methods
-dev-haskell/x509-system 1.4.5 1.5.0 1.6.3 1.6.4 1.6.6: Handle per-operating-system X.509 accessors and storage
-dev-haskell/x509-validation 1.5.2 1.6.3 1.6.5 1.6.11: X.509 Certificate and CRL validation
+dev-haskell/x509 1.6.5 1.7.5: X509 reader and writer
+dev-haskell/x509-store 1.6.7: X.509 collection accessing and storing methods
+dev-haskell/x509-system 1.6.6: Handle per-operating-system X.509 accessors and storage
+dev-haskell/x509-validation 1.6.11: X.509 Certificate and CRL validation
 dev-haskell/xhtml 3000.2.1-r1 3000.2.2.1: An XHTML combinator library
 dev-haskell/xml 1.3.13 1.3.14: A simple XML library
 dev-haskell/xml-conduit 1.1.0.9 1.2.3.3 1.3.1 1.3.3 1.3.4.2 1.9.0.0: Pure-Haskell utilities for dealing with XML with the conduit package
-dev-haskell/xml-hamlet 0.4.0.11 0.4.0.12 0.5.0.1: Hamlet-style quasiquoter for XML content
+dev-haskell/xml-hamlet 0.5.0.1: Hamlet-style quasiquoter for XML content
 dev-haskell/xml-types 0.3.4 0.3.6: Basic types for representing XML
-dev-haskell/xmlgen 0.6.2.1 0.6.2.2: Fast XML generation library
-dev-haskell/xss-sanitize 0.3.5.6 0.3.5.7 0.3.6: sanitize untrusted HTML to prevent XSS attacks
+dev-haskell/xmlgen 0.6.2.2: Fast XML generation library
+dev-haskell/xss-sanitize 0.3.6: sanitize untrusted HTML to prevent XSS attacks
 dev-haskell/yaml 0.11.5.0: Support for parsing and rendering YAML documents
 dev-haskell/yesod 1.6.1.0: Creation of type-safe, RESTful web applications
 dev-haskell/yesod-auth 1.6.9: Authentication for Yesod
@@ -4568,11 +4568,11 @@ dev-haskell/yesod-platform 1.2.13.3: Meta package for Yesod (deprecated)
 dev-haskell/yesod-routes 1.1.2 1.2.0.7-r2: Efficient routing for Yesod
 dev-haskell/yesod-static 1.6.0.1: Static file serving subsite for Yesod Web Framework
 dev-haskell/yesod-test 1.6.10: integration testing for WAI/Yesod Applications
-dev-haskell/zip-archive 0.1.3.4 0.2.3.7 0.3.3 0.4.1: Library for creating and modifying zip archives
-dev-haskell/zlib 0.5.4.2 0.6.2.1 0.6.2.2: Compression and decompression in the gzip and zlib formats
+dev-haskell/zip-archive 0.4.1: Library for creating and modifying zip archives
+dev-haskell/zlib 0.5.4.2 0.6.2.2: Compression and decompression in the gzip and zlib formats
 dev-haskell/zlib-bindings 0.1.1.5: Low-level bindings to the zlib package. (deprecated)
-dev-haskell/zlib-conduit 1.0.0 1.1.0: Streaming compression/decompression via conduits. (deprecated)
-dev-haskell/zlib-enum 0.2.3.1 0.2.3.1-r1: Enumerator interface for zlib compression
+dev-haskell/zlib-conduit 1.1.0: Streaming compression/decompression via conduits. (deprecated)
+dev-haskell/zlib-enum 0.2.3.1-r1: Enumerator interface for zlib compression
 dev-java/absolutelayout 6.7_beta-r1: AbsoluteLayout files extracted from Netbeans
 dev-java/airline 0.7-r1: Java annotation-based framework for parsing Git like command line structures
 dev-java/android-util 4.1.1.4: Library providing APIs for applications written for Google Android
@@ -5120,7 +5120,7 @@ dev-lang/cxprolog 0.98.2: A WAM based Prolog system
 dev-lang/duktape 2.4.0 2.5.0-r1: Embeddable Javascript engine
 dev-lang/elixir 1.10.3 1.10.4: Elixir programming language
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
-dev-lang/erlang 22.3.2 22.3.4 23.0.1 23.0.1-r1 23.0.2: Erlang programming language, runtime environment and libraries (OTP)
+dev-lang/erlang 22.3.2 22.3.4 23.0.1 23.0.2: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0 2.3.0.3 2.3.0.4 2.5.0.1 2.5.1.0 2.5.3.0: A non-interactive scripting language
 dev-lang/f2c 20100827-r1: Fortran to C converter
@@ -10967,7 +10967,7 @@ dev-vcs/cvsps 2.2_beta1-r1 3.13-r2: Generates patchset information from a CVS re
 dev-vcs/cvsspam 0.2.12: Utility to send colored HTML CVS-mails
 dev-vcs/cvsutils 0.2.5-r1: A small bundle of utilities to work with CVS repositories
 dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization utility
-dev-vcs/darcs 2.12.5 2.14.5 2.16.2: a distributed, interactive, smart revision control system
+dev-vcs/darcs 2.14.5 2.16.2: a distributed, interactive, smart revision control system
 dev-vcs/easygit 1.7.5.2: Easy GIT (eg), a frontend for git designed for former cvs and svn users
 dev-vcs/fossil 2.11.1 2.12.1: Simple, high-reliability, source control management, and more
 dev-vcs/git 2.23.3 2.24.3 2.25.4 2.26.2 2.27.0 2.28.0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
