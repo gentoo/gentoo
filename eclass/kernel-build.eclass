@@ -147,6 +147,11 @@ kernel-build_src_install() {
 	mv include scripts "${ED}/usr/src/linux-${ver}/" || die
 	mv "arch/${kern_arch}/include" \
 		"${ED}/usr/src/linux-${ver}/arch/${kern_arch}/" || die
+	# some arches need module.lds linker script to build external modules
+	if [[ -f arch/${kern_arch}/kernel/module.lds ]]; then
+		insinto "/usr/src/linux-${ver}/arch/${kern_arch}/kernel"
+		doins "arch/${kern_arch}/kernel/module.lds"
+	fi
 
 	# remove everything but Makefile* and Kconfig*
 	find -type f '!' '(' -name 'Makefile*' -o -name 'Kconfig*' ')' \
