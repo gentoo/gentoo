@@ -86,12 +86,12 @@ RDEPEND="${PYTHON_DEPS}
 	opensubdiv? ( >=media-libs/opensubdiv-3.4.0[cuda=,opencl=] )
 	openvdb? (
 		~media-gfx/openvdb-7.0.0[abi6-compat(-)?,abi7-compat(-)?]
-		dev-cpp/tbb
 		dev-libs/c-blosc:=
 	)
 	osl? ( media-libs/osl )
 	sdl? ( media-libs/libsdl2[sound,joystick] )
 	sndfile? ( media-libs/libsndfile )
+	tbb? ( dev-cpp/tbb )
 	tiff? ( media-libs/tiff )
 	valgrind? ( dev-util/valgrind )
 "
@@ -145,7 +145,7 @@ src_prepare() {
 	# Disable MS Windows help generation. The variable doesn't do what it
 	# it sounds like.
 	sed -e "s|GENERATE_HTMLHELP      = YES|GENERATE_HTMLHELP      = NO|" \
-	    -i doc/doxygen/Doxyfile || die
+		-i doc/doxygen/Doxyfile || die
 }
 
 src_configure() {
@@ -154,15 +154,17 @@ src_configure() {
 	append-flags -funsigned-char
 	append-lfs-flags
 
-	local version
-	if use abi6-compat; then
-		version=6;
-	elif use abi7-compat; then
-		version=7;
-	else
-		die "Openvdb abi version not compatible"
+	if use openvdb; then
+		local version
+		if use abi6-compat; then
+			version=6;
+		elif use abi7-compat; then
+			version=7;
+		else
+			die "Openvdb abi version not compatible"
+		fi
+		append-cppflags -DOPENVDB_ABI_VERSION_NUMBER=${version}
 	fi
-	append-cppflags -DOPENVDB_ABI_VERSION_NUMBER=${version}
 
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=OFF
@@ -284,7 +286,7 @@ src_install() {
 pkg_postinst() {
 	elog
 	elog "Blender uses python integration. As such, may have some"
-	elog "inherit risks with running unknown python scripts."
+	elog "inherent risks with running unknown python scripts."
 	elog
 	elog "It is recommended to change your blender temp directory"
 	elog "from /tmp to /home/user/tmp or another tmp file under your"
