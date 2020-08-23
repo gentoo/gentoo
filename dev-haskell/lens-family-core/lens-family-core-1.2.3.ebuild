@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Haskell 98 Lens Families"
-HOMEPAGE="http://hackage.haskell.org/package/lens-family-core"
+HOMEPAGE="https://hackage.haskell.org/package/lens-family-core"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"

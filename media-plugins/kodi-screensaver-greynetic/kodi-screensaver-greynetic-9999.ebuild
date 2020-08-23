@@ -21,7 +21,7 @@ case ${PV} in
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://github.com/xbmc/${KODI_PLUGIN_NAME}/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${KODI_PLUGIN_NAME}-${PV}-${CODENAME}"
-	DEPEND="=media-tv/kodi-18*:="
+	DEPEND="=media-tv/kodi-19*:="
 	;;
 esac
 

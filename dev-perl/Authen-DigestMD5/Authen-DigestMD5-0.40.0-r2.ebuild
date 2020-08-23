@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="SASL DIGEST-MD5 authentication (RFC2831)"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 sparc ~x86"
 
 src_prepare() {
 	mkdir -p examples || die "Can't mkdir examples"

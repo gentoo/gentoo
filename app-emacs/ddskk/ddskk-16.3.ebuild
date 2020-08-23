@@ -34,7 +34,10 @@ src_prepare() {
 	default
 
 	rm -f skk-lookup.el
-	mv {bayesian,tut-code}/*.el .
+	if use ruby; then
+		cp bayesian/*.el . || die
+	fi
+	cp tut-code/*.el . || die
 }
 
 src_compile() {

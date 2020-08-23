@@ -134,11 +134,6 @@ src_configure() {
 		-DENABLE_TRIGGER=$(usex trigger)
 		-DENABLE_XFER=$(usex xfer)
 	)
-
-	if use python; then
-		python_is_python3 || mycmakeargs+=( -DENABLE_PYTHON2=ON )
-	fi
-
 	cmake_src_configure
 }
 

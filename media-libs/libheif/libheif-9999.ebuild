@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
 
 inherit autotools xdg-utils multilib-minimal
 
@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/strukturag/${PN}/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
 
 DESCRIPTION="ISO/IEC 23008-12:2017 HEIF file format decoder and encoder"
@@ -18,8 +18,7 @@ HOMEPAGE="https://github.com/strukturag/libheif"
 
 LICENSE="GPL-3"
 SLOT="0/1.6"
-IUSE="static-libs test +threads"
-
+IUSE="gdk-pixbuf go static-libs test +threads"
 RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( dev-lang/go )"
@@ -29,6 +28,8 @@ DEPEND="
 	media-libs/x265:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	virtual/jpeg:0=[${MULTILIB_USEDEP}]
+	gdk-pixbuf? ( x11-libs/gdk-pixbuf )
+	go? ( dev-lang/go )
 "
 RDEPEND="${DEPEND}"
 
@@ -44,18 +45,17 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	local myeconfargs=(
-		$(use_enable threads multithreading)
+	local econf_args=(
+		$(multilib_is_native_abi && use_enable go || echo --disable-go)
+		$(use_enable gdk-pixbuf)
 		$(use_enable static-libs static)
+		$(use_enable threads multithreading)
 	)
-	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+	ECONF_SOURCE="${S}" econf "${econf_args[@]}"
 }
 
 multilib_src_install_all() {
 	find "${ED}" -name '*.la' -delete || die
-	if ! use static-libs ; then
-		find "${ED}" -name "*.a" -delete || die
-	fi
 }
 
 pkg_postinst() {

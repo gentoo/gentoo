@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
 IUSE="mkl"
 
 RDEPEND="
@@ -40,15 +40,6 @@ python_prepare_all() {
 	fi
 
 	distutils-r1_python_prepare_all
-}
-
-python_compile() {
-	if ! python_is_python3; then
-		local -x CFLAGS="${CFLAGS}"
-		append-cflags -fno-strict-aliasing
-	fi
-
-	distutils-r1_python_compile
 }
 
 python_test() {

@@ -18,7 +18,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sp
 IUSE=""
 
 DEPEND="
-	>=net-libs/libtirpc-1.0.2-r1[${MULTILIB_USEDEP}]
+	>=net-libs/libtirpc-1.2.0[${MULTILIB_USEDEP}]
 "
 RDEPEND="${DEPEND}
 	!<sys-libs/glibc-2.26

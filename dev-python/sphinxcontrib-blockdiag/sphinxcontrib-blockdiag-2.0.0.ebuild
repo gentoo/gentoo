@@ -12,7 +12,7 @@ SRC_URI="https://github.com/blockdiag/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 x86"
 
 RDEPEND="
 	>=dev-python/sphinx-2.0[${PYTHON_USEDEP}]

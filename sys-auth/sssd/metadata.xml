@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
 	<maintainer type="person">
 		<email>alexxy@gentoo.org</email>
 		<name>Alexey Shvetsov</name>
@@ -14,6 +18,7 @@
 		<flag name="autofs">Build helper to let <pkg>net-fs/autofs</pkg> use sssd provided information</flag>
 		<flag name="ssh">Build helper to let <pkg>net-misc/openssh</pkg> use sssd provided information</flag>
 		<flag name="sudo">Build helper to let <pkg>app-admin/sudo</pkg> use sssd provided information</flag>
+		<flag name="valgrind">Depend on <pkg>dev-util/valgrind</pkg> for test suite</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">SSSD/sssd</remote-id>

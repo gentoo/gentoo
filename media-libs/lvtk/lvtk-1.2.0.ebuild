@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit python-single-r1 waf-utils
 
 DESCRIPTION="A set of C++ wrappers around the LV2 C API"
-HOMEPAGE="http://lvtoolkit.org/"
+HOMEPAGE="https://lvtk.org/"
 SRC_URI="https://github.com/lvtk/lvtk/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

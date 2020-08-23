@@ -10,6 +10,9 @@
 		The purpose is to find .desktop files,
 		but shell commands can also be executed.
 	</longdescription>
+	<use>
+		<flag name="dmenu">Use <pkg>x11-misc/dmenu</pkg> as default. Disable to use a different implementation.</flag>
+	</use>	
 	<upstream>
 		<bugs-to>https://github.com/enkore/j4-dmenu-desktop/issues</bugs-to>
 		<remote-id type="github">enkore/j4-dmenu-desktop</remote-id>

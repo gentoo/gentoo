@@ -28,7 +28,7 @@ DEPEND="
 	>=kde-frameworks/kcontacts-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	sys-libs/zlib
-	barcode? ( media-libs/zxing-cpp )
+	barcode? ( ~media-libs/zxing-cpp-1.0.8 )
 	pdf? ( app-text/poppler:=[qt5] )
 "
 RDEPEND="${DEPEND}

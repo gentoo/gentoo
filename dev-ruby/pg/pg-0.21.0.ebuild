@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="ChangeLog Contributors.rdoc README.rdoc History.rdoc"
 inherit multilib ruby-fakegem
 
 DESCRIPTION="Ruby extension library providing an API to PostgreSQL"
-HOMEPAGE="https://bitbucket.org/ged/ruby-pg/"
+HOMEPAGE="https://github.com/ged/ruby-pg"
 
 LICENSE="|| ( GPL-2 Ruby )"
 SLOT="0"

@@ -27,25 +27,23 @@ SRC_URI="
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="dedicated libressl +lightfx +opengl test +truetype twitch"
+IUSE="dedicated libressl +lightfx +opengl scripting test +truetype"
 
 COMMON_DEPEND="
-	dev-lang/duktape
 	dev-libs/icu:=
 	dev-libs/jansson
 	dev-libs/libzip:=
 	media-libs/libpng:0=
+	net-misc/curl[ssl]
 	sys-libs/zlib
 	!dedicated? (
 		media-libs/libsdl2
 		media-libs/speexdsp
 		opengl? ( virtual/opengl )
-		twitch? (
-			net-misc/curl[ssl]
-		)
 	)
 	libressl? ( dev-libs/libressl:0= )
 	!libressl? ( dev-libs/openssl:0= )
+	scripting? ( dev-lang/duktape )
 	truetype? (
 		media-libs/fontconfig:1.0
 		media-libs/freetype:2
@@ -74,13 +72,14 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.2.4-include-additional-paths.patch"
+	"${FILESDIR}/${PN}-0.2.6-gtest-1.10.patch"
 )
 
 src_unpack() {
 	git-r3_src_unpack
 
-	mkdir -p "${S}"/data/title || die
-	cd "${S}"/data/title || die
+	mkdir -p "${S}"/data/sequence || die
+	cd "${S}"/data/sequence || die
 	unpack "${PN}-${MY_PN_TS}-${MY_PV_TS}".zip
 
 	mkdir -p "${S}"/data/object || die
@@ -108,7 +107,7 @@ src_configure() {
 		-DDISABLE_DISCORD_RPC=ON
 		-DDISABLE_GOOGLE_BENCHMARK=ON
 		-DDISABLE_GUI=$(usex dedicated)
-		-DDISABLE_HTTP_TWITCH=$(usex !twitch)
+		-DDISABLE_HTTP=OFF
 		-DDISABLE_NETWORK=OFF
 		$(usex !dedicated "-DDISABLE_OPENGL=$(usex !opengl)" "")
 		-DDISABLE_TTF=$(usex !truetype)
@@ -116,6 +115,8 @@ src_configure() {
 		-DDOWNLOAD_REPLAYS=OFF
 		-DDOWNLOAD_TITLE_SEQUENCES=OFF
 		-DENABLE_LIGHTFX=$(usex lightfx)
+		-DENABLE_SCRIPTING=$(usex scripting)
+		-DOPENRCT2_USE_CCACHE=OFF
 		-DPORTABLE=OFF
 		-DSTATIC=OFF
 		$(usex test "-DSYSTEM_GTEST=ON" "")
@@ -138,6 +139,8 @@ src_test() {
 }
 
 src_install() {
+	use scripting && DOCS+=( "distribution/scripting.md" "distribution/openrct2.d.ts" )
+
 	cmake_src_install
 
 	if use dedicated; then

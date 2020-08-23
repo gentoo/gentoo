@@ -124,7 +124,6 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	dev-python/docutils
 	cuda? ( >=media-libs/nv-codec-headers-8.2.15.7 )
-	doc? ( dev-python/rst2pdf )
 	dvb? ( virtual/linuxtv-dvb-headers )
 	test? ( >=dev-util/cmocka-1.0.0 )
 "
@@ -162,7 +161,7 @@ src_configure() {
 		$(usex debug '' '--disable-debug-build')
 
 		$(use_enable doc html-build)
-		$(use_enable doc pdf-build)
+		--disable-pdf-build
 		--enable-manpage-build
 		$(use_enable cplugins)
 		$(use_enable test)

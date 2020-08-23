@@ -6,6 +6,26 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2020-08-22)
+# These flags depend on dev-python/pygtk that is masked for removal.
+app-mobilephone/sobexsrv gtk
+<media-gfx/gimp-3 python
+<x11-libs/vte-0.58 python
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-22)
+# These flags depend on packages masked for removal due to py2.
+<media-tv/mythtv-31 python
+net-libs/zeromq pgm
+sci-geosciences/qgis grass
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-08-17)
+# CMake checks will only allow on amd64 & x86
+dev-db/mariadb columnstore
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-16)
+# dev-python/pyminuit is being removed.
+sci-visualization/veusz minuit
+
 # Michał Górny <mgorny@gentoo.org> (2020-08-01)
 # Require dev-python/twisted with py2.7.
 net-voip/telepathy-haze test
@@ -92,10 +112,6 @@ dev-util/meson test
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Requires dev-python/filemagic that is broken and masked for removal.
 dev-python/jira magic
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-20)
-# Requires dev-python/rst2pdf that is masked for removal.
-media-video/mpv doc
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-19)
 # Requires dev-vcs/ghp-import that is masked for removal.

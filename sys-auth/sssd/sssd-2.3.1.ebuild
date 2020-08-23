@@ -12,8 +12,9 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="acl autofs +locator +netlink nfsv4 nls +manpages samba selinux sudo ssh test systemd"
+IUSE="acl +autofs +locator +netlink nfsv4 nls +manpages samba selinux +sudo +ssh systemd test valgrind"
 RESTRICT="!test? ( test )"
+REQUIRED_USE="test? ( ssh sudo )"
 
 COMMON_DEP="
 	>=sys-libs/pam-0-r1[${MULTILIB_USEDEP}]
@@ -57,11 +58,22 @@ RDEPEND="${COMMON_DEP}
 	selinux? ( >=sec-policy/selinux-sssd-2.20120725-r9 )
 	"
 DEPEND="${COMMON_DEP}
-	test? ( dev-libs/check )
+	test? (
+		app-crypt/p11-kit
+		dev-libs/check
+		dev-libs/softhsm:2
+		dev-util/cmocka
+		net-libs/gnutls[pkcs11,tools]
+		sys-libs/libfaketime
+		sys-libs/nss_wrapper
+		sys-libs/pam_wrapper
+		sys-libs/uid_wrapper
+		valgrind? ( dev-util/valgrind )
+	)
 	manpages? (
 		>=dev-libs/libxslt-1.1.26
 		app-text/docbook-xml-dtd:4.4
-		)"
+	)"
 
 CONFIG_CHECK="~KEYS"
 
@@ -75,6 +87,10 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/sss_sifp_dbus.h
 	# from 1.15.3
 	/usr/include/sss_certmap.h
+)
+
+PATCHES=(
+	"${FILESDIR}"/${P}-test_ca-Look-for-libsofthsm2.so-in-usr-libdir-sofths.patch
 )
 
 pkg_setup() {
@@ -125,6 +141,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with sudo)
 		$(multilib_native_use_with autofs)
 		$(multilib_native_use_with ssh)
+		$(use_enable valgrind)
 		--with-crypto="libcrypto"
 		--without-python2-bindings
 		--without-python3-bindings
@@ -222,7 +239,7 @@ multilib_src_install_all() {
 }
 
 multilib_src_test() {
-	default
+	emake check
 }
 
 pkg_postinst() {

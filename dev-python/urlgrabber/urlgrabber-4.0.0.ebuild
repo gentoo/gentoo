@@ -13,7 +13,7 @@ SRC_URI="http://urlgrabber.baseurl.org/download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ia64 ppc ppc64 x86"
 
 RDEPEND="
 	dev-python/pycurl[${PYTHON_USEDEP}]

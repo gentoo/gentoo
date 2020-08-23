@@ -98,6 +98,7 @@ RDEPEND="selinux? ( sec-policy/selinux-mysql )
 	!dev-db/mariadb:10.1
 	!dev-db/mariadb:10.2
 	!dev-db/mariadb:10.4
+	!dev-db/mariadb:10.5
 	!<virtual/mysql-5.6-r11
 	${COMMON_DEPEND}
 	server? (

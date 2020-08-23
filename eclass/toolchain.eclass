@@ -912,6 +912,14 @@ toolchain_src_configure() {
 					--disable-threads
 					--without-headers
 				)
+				if [[ $needed_libc == glibc ]]; then
+					# By default gcc looks at glibc's headers
+					# to detect long double support. This does
+					# not work for --disable-headers mode.
+					# Any >=glibc-2.4 is good enough for float128.
+					# The option appeared in gcc-4.2.
+					confgcc+=( --with-long-double-128 )
+				fi
 			elif has_version "${CATEGORY}/${needed_libc}[headers-only(-)]" ; then
 				confgcc+=(
 					"${confgcc_no_libc[@]}"
@@ -1785,11 +1793,6 @@ toolchain_src_install() {
 	# prune empty dirs left behind
 	find "${ED}" -depth -type d -delete 2>/dev/null
 
-	if ! is_crosscompile && [[ ${PN} != "kgcc64" ]] ; then
-		exeinto "${DATAPATH#${EPREFIX}}"
-		doexe "${FILESDIR}"/c{89,99} || die
-	fi
-
 	# libstdc++.la: Delete as it doesn't add anything useful: g++ itself
 	# handles linkage correctly in the dynamic & static case.  It also just
 	# causes us pain: any C++ progs/libs linking with libtool will gain a
@@ -2096,11 +2099,6 @@ toolchain_pkg_postinst() {
 		rm -f "${EROOT%/}"/sbin/fix_libtool_files.sh
 		rm -f "${EROOT%/}"/usr/sbin/fix_libtool_files.sh
 		rm -f "${EROOT%/}"/usr/share/gcc-data/fixlafiles.awk
-
-		mkdir -p "${EROOT%/}"/usr/bin
-		# Since these aren't critical files and portage sucks with
-		# handling of binpkgs, don't require these to be found
-		cp "${ROOT%/}${DATAPATH}"/c{89,99} "${EROOT%/}"/usr/bin/ 2>/dev/null
 	fi
 }
 
@@ -2109,11 +2107,6 @@ toolchain_pkg_postrm() {
 	if [[ ! ${ROOT%/} && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
 		eselect compiler-shadow clean all
 	fi
-
-	# to make our lives easier (and saner), we do the fix_libtool stuff here.
-	# rather than checking SLOT's and trying in upgrade paths, we just see if
-	# the common libstdc++.la exists in the ${LIBPATH} of the gcc that we are
-	# unmerging.  if it does, that means this was a simple re-emerge.
 
 	# clean up the cruft left behind by cross-compilers
 	if is_crosscompile ; then

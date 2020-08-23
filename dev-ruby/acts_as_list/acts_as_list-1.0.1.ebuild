@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 inherit ruby-fakegem
 
@@ -23,6 +23,7 @@ ruby_add_rdepend ">=dev-ruby/activerecord-4.2:*"
 
 ruby_add_bdepend "
 	test? (
+		dev-ruby/mocha
 		dev-ruby/test-unit:2
 		dev-ruby/activerecord[sqlite]
 	)"

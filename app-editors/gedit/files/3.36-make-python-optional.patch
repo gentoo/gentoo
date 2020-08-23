@@ -1,0 +1,90 @@
+From d082ef03b9f545980ab77e6c0a20d5bf4893be69 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Sun, 16 Aug 2020 23:34:42 +0300
+Subject: [PATCH] build: Make python optional
+
+---
+ gedit/meson.build   |  2 ++
+ meson.build         |  4 +++-
+ meson_options.txt   |  4 ++++
+ plugins/meson.build | 11 +++++++----
+ 4 files changed, 16 insertions(+), 5 deletions(-)
+
+diff --git a/gedit/meson.build b/gedit/meson.build
+index 075c001b2..174deba04 100644
+--- a/gedit/meson.build
++++ b/gedit/meson.build
+@@ -214,6 +214,7 @@ if generate_gir == true
+     install_dir_typelib: join_paths(pkglibdir, 'girepository-1.0'),
+   )
+ 
++if get_option('python')
+   python3.install_sources(
+     'Gedit.py',
+     subdir: join_paths(
+@@ -221,6 +222,7 @@ if generate_gir == true
+       'overrides',
+     )
+   )
++endif
+ 
+   libgedit_dep_sources += [
+     libgedit_gir,
+diff --git a/meson.build b/meson.build
+index b8707f33d..4e40833ec 100644
+--- a/meson.build
++++ b/meson.build
+@@ -69,7 +69,9 @@ x11_dep = dependency('x11', required: false)
+ introspection_dep = dependency('gobject-introspection-1.0', required: false)
+ vapigen_dep = dependency('vapigen', version: '>= 0.25.1', required: false)
+ 
+-python3 = python.find_installation('python3')
++if get_option('python')
++  python3 = python.find_installation('python3')
++endif
+ 
+ build_checkupdate_plugin = host_machine.system() == 'windows'
+ if build_checkupdate_plugin
+diff --git a/meson_options.txt b/meson_options.txt
+index 03e07244e..cdcec6165 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -10,6 +10,10 @@ option('gtk_doc',
+        type: 'boolean', value: false,
+        description: 'Build API reference for plugins (requires gtk-doc)')
+ 
++option('python',
++       type: 'boolean', value: true,
++       description: 'Install GIR python overrides and python plugins')
++
+ option('spell',
+        type: 'feature', value: 'enabled',
+        description: 'Build spell checking plugin')
+diff --git a/plugins/meson.build b/plugins/meson.build
+index a9167f8d6..97f1b1765 100644
+--- a/plugins/meson.build
++++ b/plugins/meson.build
+@@ -20,13 +20,16 @@ if build_checkupdate_plugin
+ endif
+ 
+ subdir('docinfo')
+-subdir('externaltools')
+ subdir('filebrowser')
+ subdir('modelines')
+-subdir('pythonconsole')
+ subdir('quickhighlight')
+-subdir('quickopen')
+-subdir('snippets')
+ subdir('sort')
+ subdir('spell')
+ subdir('time')
++
++if get_option('python')
++  subdir('externaltools')
++  subdir('pythonconsole')
++  subdir('quickopen')
++  subdir('snippets')
++endif
+-- 
+2.20.1
+

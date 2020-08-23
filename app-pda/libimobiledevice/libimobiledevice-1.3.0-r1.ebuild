@@ -46,6 +46,8 @@ BDEPEND="
 
 BUILD_DIR="${S}_build"
 
+PATCHES=( "${FILESDIR}"/${P}-libressl.patch )
+
 src_prepare() {
 	default
 	eautoreconf

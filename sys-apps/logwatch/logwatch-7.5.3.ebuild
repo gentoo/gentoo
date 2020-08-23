@@ -16,7 +16,7 @@ else
 fi
 
 DESCRIPTION="Analyzes and Reports on system logs"
-HOMEPAGE="http://www.logwatch.org/"
+HOMEPAGE="https://sourceforge.net/projects/logwatch/"
 
 LICENSE="MIT"
 SLOT="0"

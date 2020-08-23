@@ -51,11 +51,9 @@ src_unpack() {
 }
 
 python_prepare() {
-	if python_is_python3; then
-		einfo "Removing the RSS plugin because of clashes between libxml2's Python3"
-		einfo "bindings and feedparser."
-		rm -rf "plugins/RSS" || die
-	fi
+	einfo "Removing the RSS plugin because of clashes between libxml2's Python3"
+	einfo "bindings and feedparser."
+	rm -rf "plugins/RSS" || die
 }
 
 python_install_all() {

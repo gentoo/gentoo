@@ -23,7 +23,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~ppc ~ppc64 ~x86"
 IUSE="cairo doc excel examples gtk3 latex qt5 tk wxwidgets"
 
 # internal copy of pycxx highly patched
@@ -32,6 +32,7 @@ RDEPEND="
 	>=dev-python/cycler-0.10.0-r1[${PYTHON_USEDEP}]
 	>=dev-python/kiwisolver-1.2.0[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.18.2[${PYTHON_USEDEP}]
+	>=dev-python/pillow-7.1.1[${PYTHON_USEDEP}]
 	>=dev-python/pyparsing-1.5.6[${PYTHON_USEDEP}]
 	dev-python/python-dateutil:0[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2019.3[${PYTHON_USEDEP}]
@@ -78,7 +79,6 @@ BDEPEND="
 	doc? (
 		>=app-text/dvipng-1.15-r1
 		>=dev-python/colorspacious-1.1.2[${PYTHON_USEDEP}]
-		>=dev-python/pillow-7.1.1[${PYTHON_USEDEP}]
 		>=dev-python/ipython-1.18.2[${PYTHON_USEDEP}]
 		>=dev-python/numpydoc-0.9.2[${PYTHON_USEDEP}]
 		>=sci-libs/scipy-1.4.1[${PYTHON_USEDEP}]

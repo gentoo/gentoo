@@ -3,9 +3,9 @@
 
 EAPI=7
 
-inherit desktop flag-o-matic qmake-utils xdg-utils git-r3 autotools
+inherit desktop qmake-utils xdg-utils git-r3 autotools
 
-DESCRIPTION="A Qt application to control FluidSynth"
+DESCRIPTION="Qt application to control FluidSynth"
 HOMEPAGE="https://qsynth.sourceforge.io/"
 EGIT_REPO_URI="https://git.code.sf.net/p/qsynth/code"
 
@@ -31,13 +31,11 @@ REQUIRED_USE="|| ( alsa jack pulseaudio )"
 PATCHES=( "${FILESDIR}/${PN}-0.4.0-qt5-tagging.patch" )
 
 src_prepare() {
-	eautoreconf
-
 	default
+	eautoreconf
 }
 
 src_configure() {
-	append-cxxflags -std=c++11
 	sed -e "/@gzip.*mandir)\/man1/d" -i Makefile.in || die
 	econf \
 		$(use_enable debug)
@@ -51,7 +49,7 @@ src_install() {
 
 	# The desktop file is invalid, and we also change the command
 	# depending on useflags
-	rm "${ED}/usr/share/applications/qsynth.desktop" || die
+	rm "${D}/usr/share/applications/qsynth.desktop" || die
 
 	local cmd
 	if use jack; then

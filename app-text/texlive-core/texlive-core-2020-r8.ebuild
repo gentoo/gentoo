@@ -86,6 +86,7 @@ MODULAR_X_DEPEND="X? (
 	)"
 
 COMMON_DEPEND="${MODULAR_X_DEPEND}
+	!app-text/vlna
 	!app-eselect/eselect-mpost
 	!app-eselect/eselect-pdftex
 	!app-text/xindy

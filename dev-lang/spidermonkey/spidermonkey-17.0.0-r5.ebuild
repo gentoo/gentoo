@@ -49,6 +49,7 @@ PATCHES=(
 	"${WORKDIR}"/sm17/${PN}-17-clang.patch
 	"${FILESDIR}"/${PN}-perl-defined-array-check.patch
 	"${WORKDIR}"/sm17/${PN}-17-fix_pointer_dereference.patch
+	"${FILESDIR}"/${PN}-17.0.0-unbreak-clang.patch
 )
 
 src_prepare() {

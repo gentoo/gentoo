@@ -20,7 +20,7 @@ KEYWORDS=""
 IUSE="+gpg tools"
 
 RDEPEND="
-	gpg? ( app-crypt/gnupg )"
+	gpg? ( >=app-crypt/gnupg-2.2.20-r1 )"
 
 distutils_enable_tests setup.py
 

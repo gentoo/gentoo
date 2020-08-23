@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc ~ppc64 x86 ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 x86 ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 

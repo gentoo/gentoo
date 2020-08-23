@@ -16,7 +16,7 @@ IUSE="alsa debug dynrec opengl opus"
 RDEPEND="alsa? ( media-libs/alsa-lib )
 	debug? ( sys-libs/ncurses:0= )
 	opengl? ( virtual/opengl )
-	opus? ( media-libs/opus )
+	opus? ( media-libs/opusfile )
 	media-libs/libpng:0=
 	media-libs/libsdl2[joystick,opengl?,video,X]
 	media-libs/sdl-net
@@ -43,5 +43,5 @@ src_configure() {
 src_install() {
 	default
 	doicon contrib/icons/${PN}.svg
-	make_desktop_entry dosbox DOSBox-staging ${PN}.svg
+	make_desktop_entry dosbox DOSBox-staging ${PN}
 }

@@ -19,4 +19,9 @@
 		<remote-id type="pypi">hypothesis</remote-id>
 		<remote-id type="github">HypothesisWorks/hypothesis</remote-id>
 	</upstream>
+	<use>
+		<flag name="cli">
+			Install a CLI tool used to write tests.
+		</flag>
+	</use>
 </pkgmetadata>

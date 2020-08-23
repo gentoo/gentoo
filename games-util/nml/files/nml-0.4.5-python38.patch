@@ -1,0 +1,37 @@
+From 5b8764c3c4079941fab7be8d9086c38a88ae09ba Mon Sep 17 00:00:00 2001
+From: glx22 <glx22@users.noreply.github.com>
+Date: Sun, 20 Oct 2019 11:05:25 +0200
+Subject: [PATCH] Fix #52: time.clock() has been removed in python 3.8 (#53)
+
+---
+ nml/generic.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/nml/generic.py b/nml/generic.py
+index ce064b6c..8ee602f1 100644
+--- a/nml/generic.py
++++ b/nml/generic.py
+@@ -295,7 +295,7 @@ def clear_progress():
+     hide_progress()
+ 
+     if (progress_message is not None) and (verbosity_level >= VERBOSITY_TIMING):
+-        print("{} {:.1f} s".format(progress_message, time.clock() - progress_start_time))
++        print("{} {:.1f} s".format(progress_message, time.process_time() - progress_start_time))
+ 
+     progress_message = None
+     progress_start_time = None
+@@ -324,12 +324,12 @@ def print_progress(msg, incremental = False):
+     progress_message = msg
+ 
+     if incremental:
+-        t = time.clock()
++        t = time.process_time()
+         if (progress_update_time is not None) and (t - progress_update_time < 1):
+             return
+         progress_update_time = t
+     else:
+-        progress_start_time = time.clock()
++        progress_start_time = time.process_time()
+ 
+     print_eol(msg)
+ 
