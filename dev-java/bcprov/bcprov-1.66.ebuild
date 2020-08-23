@@ -14,13 +14,13 @@ HOMEPAGE="https://www.bouncycastle.org/java.html"
 SRC_URI="https://www.bouncycastle.org/download/${MY_P}.tar.gz"
 
 LICENSE="BSD"
-SLOT="1.65"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+SLOT="1.66"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 
-DEPEND=">=virtual/jdk-1.6
+DEPEND=">=virtual/jdk-1.8
 	app-arch/unzip"
 
-RDEPEND=">=virtual/jre-1.6"
+RDEPEND=">=virtual/jre-1.8"
 
 S="${WORKDIR}/${MY_P}"
 
