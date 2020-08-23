@@ -12,5 +12,6 @@
 	</longdescription>
 	<use>
 		<flag name="discid">Enable reading the ID of the inserted CD</flag>
+		<flag name="fingerprints">Enable calculation and lookup of AcoustID fingerprints</flag>
 	</use>
 </pkgmetadata>
