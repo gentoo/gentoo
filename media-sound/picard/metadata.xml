@@ -10,4 +10,7 @@
 		tagger for MusicBrainz, with a focus on album oriented tagging as opposed to
 		track based tagging and cross platform compatibility.
 	</longdescription>
+	<use>
+		<flag name="discid">Enable reading the ID of the inserted CD</flag>
+	</use>
 </pkgmetadata>
