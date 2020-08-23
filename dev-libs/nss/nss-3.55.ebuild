@@ -178,7 +178,7 @@ multilib_src_compile() {
 		CPPFLAGS="${myCPPFLAGS}" \
 		XCFLAGS="${CFLAGS} ${CPPFLAGS}" \
 		NSPR_LIB_DIR="${T}/fakedir" \
-		emake -j1 "${makeargs[@]}" -C ${d}
+		emake -j1 "${makeargs[@]}" -C ${d} OS_TEST="$(nssarch)"
 	done
 }
 
