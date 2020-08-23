@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit libtool linux-info multilib-minimal
+inherit autotools linux-info multilib-minimal
 
 MY_P="v4l-utils-${PV}"
 
@@ -14,20 +14,30 @@ SRC_URI="https://linuxtv.org/downloads/v4l-utils/${MY_P}.tar.bz2"
 LICENSE="LGPL-2.1+"
 SLOT="0/0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="jpeg"
+IUSE="dvb jpeg"
 
-RDEPEND="jpeg? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
+RDEPEND="
+	dvb? ( virtual/libudev[${MULTILIB_USEDEP}] )
 	!elibc_glibc? ( sys-libs/argp-standalone )
-	virtual/libudev[${MULTILIB_USEDEP}]
+	jpeg? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
 	!media-tv/v4l2-ctl
-	!<media-tv/ivtv-utils-1.4.0-r2"
-DEPEND="${RDEPEND}
-	virtual/os-headers"
+	!<media-tv/ivtv-utils-1.4.0-r2
+"
+
+DEPEND="
+	${RDEPEND}
+"
+
 BDEPEND="
+	sys-devel/gettext
 	virtual/pkgconfig
-	sys-devel/gettext"
+"
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-automagic.patch
+)
 
 pkg_setup() {
 	CONFIG_CHECK="~SHMEM"
@@ -36,7 +46,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	elibtoolize
+	eautoreconf
 }
 
 multilib_src_configure() {
@@ -44,10 +54,12 @@ multilib_src_configure() {
 	ECONF_SOURCE=${S} \
 	econf \
 		--disable-static \
+		$(use_enable dvb libdvbv5) \
 		--disable-qv4l2 \
 		--disable-qvidcap \
 		--disable-v4l-utils \
-		$(use_with jpeg)
+		$(use_with jpeg) \
+		$(use_with dvb libudev)
 }
 
 multilib_src_compile() {
