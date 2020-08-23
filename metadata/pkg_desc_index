@@ -2076,7 +2076,7 @@ app-forensics/yasat 848: Security and system auditing tool
 app-forensics/zzuf 0.15-r1: Transparent application input fuzzer
 app-i18n/anthy 9100h-r2: Anthy -- free and secure Japanese input system
 app-i18n/bidiv 1.5-r1 1.5_p4: A commandline tool displaying logical Hebrew/Arabic
-app-i18n/canfep 1.0 1.0-r1: Canna Japanese kana-kanji frontend processor on console
+app-i18n/canfep 1.0-r1: Canna Japanese kana-kanji frontend processor on console
 app-i18n/canna 3.7_p3-r1 3.7_p3-r2 3.7_p3-r3: A client-server based Kana-Kanji conversion system
 app-i18n/cstools 3.42-r1: A charset conversion tool cstocs and two Perl modules for Czech language
 app-i18n/dbskkd-cdb 2.00 3.00: SKK dictionary server based on cdb
