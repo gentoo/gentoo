@@ -28,7 +28,8 @@ BDEPEND="
 		sys-apps/util-linux
 	)"
 
-distutils_enable_sphinx docs
+distutils_enable_sphinx docs \
+	dev-python/sphinxcontrib-github-alt dev-python/sphinx_rtd_theme
 distutils_enable_tests nose
 
 PATCHES=(
