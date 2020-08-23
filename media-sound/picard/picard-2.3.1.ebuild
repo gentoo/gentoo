@@ -15,14 +15,16 @@ SRC_URI="https://musicbrainz.osuosl.org/pub/musicbrainz/${PN}/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="nls"
+IUSE="discid nls"
 
 RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/PyQt5[declarative,gui,network,widgets,${PYTHON_MULTI_USEDEP}]
 	')
 	dev-qt/qtgui:5
-	>=media-libs/mutagen-1.38"
+	media-libs/mutagen
+	discid? ( dev-python/python-discid )
+"
 DEPEND="
 	nls? ( dev-qt/linguist-tools:5 )
 "
