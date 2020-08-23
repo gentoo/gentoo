@@ -37,6 +37,10 @@ BDEPEND="
 		app-text/docbook-xml-dtd:4.3 )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-glade3.36-compat{1,2}.patch
+)
+
 src_prepare() {
 	use vala && vala_src_prepare
 	xdg_src_prepare
