@@ -33,6 +33,15 @@ pkg_pretend() {
 	fi
 }
 
+src_configure() {
+	if use ppc || use arm || use hppa; then
+		# bug 727652
+		append-libs -latomic
+	fi
+
+	default
+}
+
 src_install() {
 	default
 	find "${ED}" -type f \( -name "*.a" -o -name "*.la" \) -delete || die
