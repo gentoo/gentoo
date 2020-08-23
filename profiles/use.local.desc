@@ -5817,11 +5817,9 @@ net-im/ejabberd:full-xml - Use XML features in XMPP stream (ex: CDATA), requires
 net-im/ejabberd:hipe - Compile natively with HiPE, not recommended
 net-im/ejabberd:mssql - Enable Microsoft SQL Server support (via ODBC) for data storage
 net-im/ejabberd:mysql - Enable MySQL support for data storage
-net-im/ejabberd:nls - Enable character set conversion for mod_irc
 net-im/ejabberd:odbc - Enable ODBC support to access data storage
 net-im/ejabberd:postgres - Enable PostgreSQL support for data storage
 net-im/ejabberd:redis - Enable Redis support for transient data
-net-im/ejabberd:riak - Enable support for Riak - distributed NoSQL key-value data store
 net-im/ejabberd:roster-gw - Turn on workaround for processing gateway subscriptions
 net-im/ejabberd:sip - Enable SIP support
 net-im/ejabberd:sqlite - Enable SQLite database support
