@@ -8054,7 +8054,7 @@ dev-python/cycler 0.10.0 0.10.0-r1: Composable style cycles
 dev-python/cython 0.29.15 0.29.20-r2 0.29.21: A Python to C compiler
 dev-python/cytoolz 0.10.0: Cython implementation of Toolz: High performance functional utilities
 dev-python/daemonize 2.5.0: Library for writing system daemons in Python
-dev-python/dask 1.2.0 2.22.0 2.23.0: Task scheduling and blocked algorithms for parallel processing
+dev-python/dask 1.2.0 2.22.0 2.23.0 2.24.0: Task scheduling and blocked algorithms for parallel processing
 dev-python/dataclasses 0.7: A backport of the dataclasses module for Python 3.6
 dev-python/dbus-python 1.2.16: Python bindings for the D-Bus messagebus
 dev-python/dbusmock 0.18.3 0.19: Easily create mock objects on D-Bus for software testing
@@ -8361,7 +8361,7 @@ dev-python/kaitaistruct 0.8: Kaitai Struct runtime for Python
 dev-python/kaptan 0.5.12-r1: Configuration manager in your pocket
 dev-python/kazoo 2.7.0 2.8.0: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/kconfiglib 14.1.0: A flexible Python Kconfig implementation
-dev-python/keyring 21.2.1 21.3.0: Provides access to the system keyring service
+dev-python/keyring 21.2.1 21.3.0 21.3.1: Provides access to the system keyring service
 dev-python/keystoneauth 4.0.1: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 7.0.1: A middleware for the OpenStack Keystone API
 dev-python/kiwisolver 1.0.1 1.2.0: An efficient C++ implementation of the Cassowary constraint solving algorithm
@@ -8481,7 +8481,7 @@ dev-python/neovim-remote 2.2.1 9999: A tool that helps control neovim processes
 dev-python/netaddr 0.7.19: Network address representation and manipulation library
 dev-python/netcdf4-python 1.2.2-r1: Python/numpy interface to the netCDF C library
 dev-python/netifaces 0.10.9: Portable network interface information
-dev-python/networkx 2.4-r1: Python tools to manipulate graphs and complex networks
+dev-python/networkx 2.4-r1 2.5: Python tools to manipulate graphs and complex networks
 dev-python/neutron-lib 2.3.0: Neutron shared routines and utilities.
 dev-python/nltk 3.5: Natural Language Toolkit
 dev-python/nltk-data 20200312-r1: Data files for NLTK
@@ -13696,7 +13696,7 @@ media-sound/SmarTagger 0.1-r2: Perl script for renaming and tagging mp3s
 media-sound/a2jmidid 9 9999: Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system
 media-sound/abcde 2.9.3-r1: Command line CD encoder
 media-sound/abcm2ps 8.14.4 8.14.6: Program to convert abc files to Postscript files
-media-sound/abcmidi 2020.01.22: Programs for processing ABC music notation files
+media-sound/abcmidi 2020.01.22 2020.06.07: Programs for processing ABC music notation files
 media-sound/aeolus 0.9.9: A synthesised pipe organ emulator
 media-sound/alac_decoder 0.2.0-r1: Basic decoder for Apple Lossless Audio Codec files (ALAC)
 media-sound/alsa-tools 1.2.2-r1: Advanced Linux Sound Architecture tools
