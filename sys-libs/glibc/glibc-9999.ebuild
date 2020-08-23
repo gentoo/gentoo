@@ -421,6 +421,11 @@ want__thread() {
 use_multiarch() {
 	# Allow user to disable runtime arch detection in multilib.
 	use multiarch || return 1
+	# multiarch does not work on ppc with cache-block not equal to 128 bytes
+	# and breaks memset:
+	# https://sourceware.org/PR26522
+	# https://bugs.gentoo.org/737996
+	[[ $(tc-arch ${CTARGET}) == ppc ]] && return 1
 	# Make sure binutils is new enough to support indirect functions,
 	# #336792. This funky sed supports gold and bfd linkers.
 	local bver nver
@@ -837,14 +842,6 @@ glibc_do_configure() {
 		m68k*)
 			# setjmp() is not compatible with stack protection:
 			# https://sourceware.org/PR24202
-			myconf+=( --enable-stack-protector=no )
-			;;
-		powerpc-*)
-			# Currently gcc on powerpc32 generates invalid code for
-			# __builtin_return_address(0) calls. Normally programs
-			# don't do that but malloc hooks in glibc do:
-			# https://gcc.gnu.org/PR81996
-			# https://bugs.gentoo.org/629054
 			myconf+=( --enable-stack-protector=no )
 			;;
 		*)
