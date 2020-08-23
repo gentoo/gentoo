@@ -1,0 +1,13 @@
+diff --git a/Source/troff_generator.c b/Source/troff_generator.c
+index 1b123b8..94ddcda 100644
+--- a/Source/troff_generator.c
++++ b/Source/troff_generator.c
+@@ -30,7 +30,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #include <ctype.h>
+ 
+ #include <sys/param.h>
+-#include <sys/unistd.h>
++#include <unistd.h>
+ 
+ #include "troff_generator.h"
+ #include "util.h"

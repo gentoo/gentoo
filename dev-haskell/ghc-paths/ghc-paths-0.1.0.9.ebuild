@@ -8,12 +8,12 @@ CABAL_FEATURES="lib profile"
 inherit haskell-cabal
 
 DESCRIPTION="Knowledge of GHC's installation directories"
-HOMEPAGE="http://hackage.haskell.org/package/ghc-paths"
+HOMEPAGE="https://hackage.haskell.org/package/ghc-paths"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-lang/ghc-6.8.2:="

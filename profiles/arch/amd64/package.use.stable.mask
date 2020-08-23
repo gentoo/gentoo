@@ -17,14 +17,14 @@
 
 #--- END OF EXAMPLES ---
 
-# Brian Evans <grknight@gentoo.org> (2020-03-04)
-# Small number of packages which need new stables
-# app-misc/gramps needs newer media-libs/gexiv2 bug 711784
-# dev-python/pyqrcode needs newer dev-python/pypng
-# sys-cluser/ceph needs new cherrypy
-app-misc/gramps python_single_target_python3_7
-dev-python/pyqrcode python_targets_python3_7
-sys-cluster/ceph python_targets_python3_7
+# Thomas Deutschmann <whissi@gentoo.org> (2020-08-05)
+# sys-cluster/slurm has no stable keywords
+app-metrics/collectd collectd_plugins_slurm
+
+# Joonas Niilola <juippis@gentoo.org> (2020-06-21)
+# sys-apps/apparmor doesn't have stable keywords.
+app-emulation/lxc apparmor
+app-emulation/lxd apparmor
 
 # Thomas Deutschmann <whissi@gentoo.org> (2019-10-28)
 # net-libs/quiche is an early HTTP/3 implementation
@@ -34,15 +34,10 @@ net-misc/curl quiche
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-08-18)
 # media-video/pipewire is not stable yet
 dev-libs/weston pipewire
-kde-apps/krfb wayland
-kde-plasma/xdg-desktop-portal-kde screencast
-sys-apps/xdg-desktop-portal screencast
+<kde-apps/krfb-20.07.80 wayland
+<kde-plasma/xdg-desktop-portal-kde-5.19.4 screencast
+<sys-apps/xdg-desktop-portal-1.7.2 screencast
 x11-wm/mutter screencast
-
-# Brian Evans <grknight@gentoo.org> (2019-05-22)
-# Allow python-exec to install all targets
-# Ack by mgorny
-dev-lang/python-exec -python_targets_python3_7 -python_targets_python3_8
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-05-21)
 # dev-db/oracle-instantclient ain't stable
@@ -55,10 +50,6 @@ media-libs/opencv contrib contribcvv contribdnn contribhdf contribsfm contribxfe
 # Mikle Kolyada <zlogene@gentoo.org> (2018-11-07)
 # unmask sssd for sudo
 app-admin/sudo -sssd
-
-# Mikle Kolyada <zlogene@gentoo.org> (2018-09-15)
-# the dependency is unstable
-media-video/libav nvidia
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-06-01)
 net-analyzer/wireshark -doc
@@ -105,4 +96,4 @@ gnustep-base/gnustep-make libobjc2
 # Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # Don't apply stable masks to python-exec since we're forcing every
 # impl there anyway. Please keep this in sync with use.stable.mask.
-dev-lang/python-exec -python_targets_pypy3
+dev-lang/python-exec -python_targets_pypy3 -python_targets_python3_8

@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python3_6 )
 inherit autotools eutils gnome2 java-pkg-opt-2 python-r1
 
 DESCRIPTION="A Syntactic English parser"
-HOMEPAGE="http://www.abisource.com/projects/link-grammar/ http://www.link.cs.cmu.edu/link/"
-SRC_URI="http://www.abisource.com/downloads/${PN}/${PV}/${P}.tar.gz"
+HOMEPAGE="https://www.abisource.com/projects/link-grammar/ https://www.link.cs.cmu.edu/link/"
+SRC_URI="https://www.abisource.com/downloads/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~ppc ~ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 sparc x86"
 IUSE="aspell +hunspell java python static-libs threads" # pcre
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -90,17 +90,10 @@ src_configure() {
 
 	if use python ; then
 		prepare_python() {
-			if python_is_python3; then
-				ECONF_SOURCE="${S}" gnome2_src_configure \
-					--disable-python-bindings \
-					--enable-python3-bindings \
-					${myconf[@]}
-			else
-				ECONF_SOURCE="${S}" gnome2_src_configure \
-					--enable-python-bindings \
-					--disable-python3-bindings \
-					${myconf[@]}
-			fi
+			ECONF_SOURCE="${S}" gnome2_src_configure \
+				--disable-python-bindings \
+				--enable-python3-bindings \
+				${myconf[@]}
 		}
 		python_foreach_impl run_in_build_dir prepare_python
 	fi
@@ -112,14 +105,7 @@ src_compile() {
 
 	if use python ; then
 		compile_binding() {
-			local pysuffix
-			if python_is_python3; then
-				pysuffix=3
-			else
-				pysuffix=
-			fi
-
-			emake -C bindings/python$pysuffix \
+			emake -C bindings/python3 \
 				VPATH="${S}:${NORMAL_BUILD_DIR}" \
 				_clinkgrammar_la_DEPENDENCIES="${NORMAL_BUILD_DIR}"/link-grammar/liblink-grammar.la \
 				_clinkgrammar_la_LIBADD="${NORMAL_BUILD_DIR}"/link-grammar/liblink-grammar.la
@@ -140,14 +126,7 @@ src_install() {
 
 	if use python ; then
 		install_binding() {
-			local pysuffix
-			if python_is_python3; then
-				pysuffix=3
-			else
-				pysuffix=
-			fi
-
-			emake -C bindings/python$pysuffix \
+			emake -C bindings/python3 \
 				VPATH="${S}:${NORMAL_BUILD_DIR}" \
 				_clinkgrammar_la_DEPENDENCIES="${NORMAL_BUILD_DIR}"/link-grammar/liblink-grammar.la \
 				_clinkgrammar_la_LIBADD="${NORMAL_BUILD_DIR}"/link-grammar/liblink-grammar.la \

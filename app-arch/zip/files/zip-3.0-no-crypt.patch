@@ -4,8 +4,8 @@ forward ported from zip-2.32
 
 http://bugs.gentoo.org/238398
 
---- zip.c
-+++ zip.c
+--- a/zip.c
++++ b/zip.c
 @@ -3452,6 +3452,9 @@ char **argv;            /* command line tokens */
  
    /* Key not yet specified.  If needed, get/verify it now. */
@@ -24,8 +24,8 @@ http://bugs.gentoo.org/238398
    }
    if (key) {
      /* if -P "" could get here */
---- zipcloak.c
-+++ zipcloak.c
+--- a/zipcloak.c
++++ b/zipcloak.c
 @@ -744,6 +744,28 @@ struct option_struct far options[] = {
  
  int main OF((void));

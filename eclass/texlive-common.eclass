@@ -39,7 +39,7 @@ texlive-common_handle_config_files() {
 	[[ -d ${ED}${TEXMF_PATH} ]] || return
 	cd "${ED}${TEXMF_PATH}" || die
 
-	while read -r -d '' i; do
+	while read -r f; do
 		if [[ ${f#*config} != ${f} || ${f#doc} != ${f} || ${f#source} != ${f} || ${f#tex} != ${f} ]] ; then
 			continue
 		fi
@@ -64,10 +64,11 @@ texlive-common_is_file_present_in_texmf() {
 	if [[ -d texmf-dist ]]; then
 		find texmf-dist -name ${1} -exec touch ${mark} {} + || die
 	fi
+	[ -f "${mark}" ]
 }
 
 # @FUNCTION: texlive-common_do_symlinks
-# @USAGE: < src > < dest >
+# @USAGE: <src> <dest>
 # @DESCRIPTION:
 # Mimic the install_link function of texlinks
 #
@@ -103,7 +104,7 @@ texlive-common_do_symlinks() {
 }
 
 # @FUNCTION: etexlinks
-# @USAGE: < file >
+# @USAGE: <file>
 # @DESCRIPTION:
 # Mimic texlinks on a fmtutil format file
 #
@@ -121,7 +122,7 @@ etexlinks() {
 }
 
 # @FUNCTION: dobin_texmf_scripts
-# @USAGE: < file1 file2 ... >
+# @USAGE: <file1> [file2] ...
 # @DESCRIPTION:
 # Symlinks a script from the texmf tree to /usr/bin. Requires permissions to be
 # correctly set for the file that it will point to.
@@ -137,10 +138,10 @@ dobin_texmf_scripts() {
 }
 
 # @FUNCTION: etexmf-update
-# @USAGE: In ebuilds' pkg_postinst and pkg_postrm phases
 # @DESCRIPTION:
 # Runs texmf-update if it is available and prints a warning otherwise. This
-# function helps in factorizing some code.
+# function helps in factorizing some code.  Useful in ebuilds' pkg_postinst and
+# pkg_postrm phases.
 
 etexmf-update() {
 	if has_version 'app-text/texlive-core' ; then
@@ -155,10 +156,10 @@ etexmf-update() {
 }
 
 # @FUNCTION: efmtutil-sys
-# @USAGE: In ebuilds' pkg_postinst to force a rebuild of TeX formats.
 # @DESCRIPTION:
 # Runs fmtutil-sys if it is available and prints a warning otherwise. This
-# function helps in factorizing some code.
+# function helps in factorizing some code. Used in ebuilds' pkg_postinst to
+# force a rebuild of TeX formats.
 
 efmtutil-sys() {
 	if has_version 'app-text/texlive-core' ; then

@@ -1,0 +1,6 @@
+#!/sbin/openrc-run
+
+command="${RC_PREFIX}/usr/sbin/ocserv"
+pidfile="${RC_PREFIX}/run/${RC_SVCNAME}.pid"
+command_args="--pid-file '${pidfile}'"
+command_args_foreground="--foreground"

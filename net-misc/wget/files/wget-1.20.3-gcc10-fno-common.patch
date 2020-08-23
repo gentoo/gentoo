@@ -1,0 +1,32 @@
+From 04b7369490344d014b05dee5d48ca78cd04733ce Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tim=20R=C3=BChsen?= <tim.ruehsen@gmx.de>
+Date: Sat, 22 Feb 2020 13:40:50 +0100
+Subject: [PATCH] * tests/unit-tests.c: Fix 'multiple definition of...' with
+ gcc 10
+
+---
+ tests/unit-tests.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/unit-tests.c b/tests/unit-tests.c
+index 5fae8a219..f66e5e664 100644
+--- a/tests/unit-tests.c
++++ b/tests/unit-tests.c
+@@ -37,7 +37,7 @@ as that of the covered work.  */
+ 
+ #include "unit-tests.h"
+ 
+-const char *program_argstring = "TEST";
++extern const char *program_argstring;
+ 
+ static int tests_run;
+ 
+@@ -69,7 +69,7 @@ all_tests(void)
+   return NULL;
+ }
+ 
+-const char *program_name; /* Needed by lib/error.c. */
++extern const char *program_name; /* Needed by lib/error.c. */
+ 
+ int
+ main (int argc _GL_UNUSED, const char *argv[])

@@ -1,0 +1,89 @@
+From 71246536642590e8e8b21c11307ec4bd0e165066 Mon Sep 17 00:00:00 2001
+From: Remi Gacogne <remi.gacogne@powerdns.com>
+Date: Tue, 28 Apr 2020 17:51:47 +0200
+Subject: [PATCH] Replace boost's placeholders with the ones from the std
+ namespace
+
+Boost 1.73 moved boost::bind placeholders to the placeholders
+namespace which did not exist before 1.60, let's switch to
+std::bind and std::placeholders instead of doing per-version handling.
+---
+ pdns/ixfrdist-web.cc |  2 +-
+ pdns/webserver.cc    |  6 +++---
+ pdns/ws-auth.cc      |  4 ++--
+ pdns/ws-recursor.cc  | 12 ++++++------
+ 4 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/webserver.cc b/webserver.cc
+index eafd3059a0..b47cc6d7e0 100644
+--- a/webserver.cc
++++ b/webserver.cc
+@@ -107,7 +107,7 @@ static void bareHandlerWrapper(WebServer::HandlerFunction handler, YaHTTP::Reque
+ 
+ void WebServer::registerBareHandler(const string& url, HandlerFunction handler)
+ {
+-  YaHTTP::THandlerFunction f = boost::bind(&bareHandlerWrapper, handler, _1, _2);
++  YaHTTP::THandlerFunction f = std::bind(&bareHandlerWrapper, handler, std::placeholders::_1, std::placeholders::_2);
+   YaHTTP::Router::Any(url, f);
+ }
+ 
+@@ -179,7 +179,7 @@ void WebServer::apiWrapper(WebServer::HandlerFunction handler, HttpRequest* req,
+ }
+ 
+ void WebServer::registerApiHandler(const string& url, HandlerFunction handler, bool allowPassword) {
+-  HandlerFunction f = boost::bind(&WebServer::apiWrapper, this, handler, _1, _2, allowPassword);
++  HandlerFunction f = std::bind(&WebServer::apiWrapper, this, handler, std::placeholders::_1, std::placeholders::_2, allowPassword);
+   registerBareHandler(url, f);
+ }
+ 
+@@ -196,7 +196,7 @@ void WebServer::webWrapper(WebServer::HandlerFunction handler, HttpRequest* req,
+ }
+ 
+ void WebServer::registerWebHandler(const string& url, HandlerFunction handler) {
+-  HandlerFunction f = boost::bind(&WebServer::webWrapper, this, handler, _1, _2);
++  HandlerFunction f = std::bind(&WebServer::webWrapper, this, handler, std::placeholders::_1, std::placeholders::_2);
+   registerBareHandler(url, f);
+ }
+ 
+diff --git a/ws-recursor.cc b/ws-recursor.cc
+index cd8997309f..a074460c2f 100644
+--- a/ws-recursor.cc
++++ b/ws-recursor.cc
+@@ -382,9 +382,9 @@ static void apiServerCacheFlush(HttpRequest* req, HttpResponse* resp) {
+   DNSName canon = apiNameToDNSName(req->getvars["domain"]);
+   bool subtree = (req->getvars.count("subtree") > 0 && req->getvars["subtree"].compare("true") == 0);
+ 
+-  int count = broadcastAccFunction<uint64_t>(boost::bind(pleaseWipeCache, canon, subtree));
+-  count += broadcastAccFunction<uint64_t>(boost::bind(pleaseWipePacketCache, canon, subtree));
+-  count += broadcastAccFunction<uint64_t>(boost::bind(pleaseWipeAndCountNegCache, canon, subtree));
++  int count = broadcastAccFunction<uint64_t>(std::bind(pleaseWipeCache, canon, subtree));
++  count += broadcastAccFunction<uint64_t>(std::bind(pleaseWipePacketCache, canon, subtree));
++  count += broadcastAccFunction<uint64_t>(std::bind(pleaseWipeAndCountNegCache, canon, subtree));
+   resp->setBody(Json::object {
+     { "count", count },
+     { "result", "Flushed cache." }
+@@ -512,7 +512,7 @@ RecursorWebServer::RecursorWebServer(FDMultiplexer* fdm)
+   d_ws->bind();
+ 
+   // legacy dispatch
+-  d_ws->registerApiHandler("/jsonstat", boost::bind(&RecursorWebServer::jsonstat, this, _1, _2), true);
++  d_ws->registerApiHandler("/jsonstat", std::bind(&RecursorWebServer::jsonstat, this, std::placeholders::_1, std::placeholders::_2), true);
+   d_ws->registerApiHandler("/api/v1/servers/localhost/cache/flush", &apiServerCacheFlush);
+   d_ws->registerApiHandler("/api/v1/servers/localhost/config/allow-from", &apiServerConfigAllowFrom);
+   d_ws->registerApiHandler("/api/v1/servers/localhost/config", &apiServerConfig);
+@@ -664,7 +664,7 @@ void AsyncServerNewConnectionMT(void *p) {
+ void AsyncServer::asyncWaitForConnections(FDMultiplexer* fdm, const newconnectioncb_t& callback)
+ {
+   d_asyncNewConnectionCallback = callback;
+-  fdm->addReadFD(d_server_socket.getHandle(), boost::bind(&AsyncServer::newConnection, this));
++  fdm->addReadFD(d_server_socket.getHandle(), std::bind(&AsyncServer::newConnection, this));
+ }
+ 
+ void AsyncServer::newConnection()
+@@ -743,5 +743,5 @@ void AsyncWebServer::go() {
+   auto server = std::dynamic_pointer_cast<AsyncServer>(d_server);
+   if (!server)
+     return;
+-  server->asyncWaitForConnections(d_fdm, boost::bind(&AsyncWebServer::serveConnection, this, _1));
++  server->asyncWaitForConnections(d_fdm, std::bind(&AsyncWebServer::serveConnection, this, std::placeholders::_1));
+ }

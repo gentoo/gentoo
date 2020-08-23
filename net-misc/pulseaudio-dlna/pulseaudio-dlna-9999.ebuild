@@ -44,14 +44,16 @@ RDEPEND=">=dev-python/protobuf-python-2.5.0[${PYTHON_USEDEP}]
 	|| (
 		|| (
 			media-video/ffmpeg[encode,faac,mp3,opus,vorbis]
-			media-video/ffmpeg[encode,fdk,mp3,opus,vorbis] )
-		( media-video/libav[encode,faac,mp3,opus,vorbis] )
-		( media-libs/faac
+			media-video/ffmpeg[encode,fdk,mp3,opus,vorbis]
+		)
+		(
+			media-libs/faac
 			media-libs/flac
 			media-sound/lame
 			media-sound/opus-tools
 			media-sound/sox
-			media-sound/vorbis-tools )
+			media-sound/vorbis-tools
+		)
 	)"
 
 DEPEND="${RDEPEND}

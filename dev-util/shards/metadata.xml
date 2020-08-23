@@ -5,9 +5,6 @@
 		<email>slyfox@gentoo.org</email>
 		<name>Sergei Trofimovich</name>
 	</maintainer>
-	<longdescription lang="en">
-		Dependency manager for the Crystal language
-	</longdescription>
 	<upstream>
 		<remote-id type="github">ysbaddaden/shards</remote-id>
 	</upstream>

@@ -22,8 +22,12 @@ DOCS=( README.md )
 src_prepare() {
 	default
 	sed \
-	    -e "s/-lncurses/$($(tc-getPKG_CONFIG) --libs ncurses)/" \
+		-e "s/-lncurses/$($(tc-getPKG_CONFIG) --libs ncurses)/" \
 		-i Makefile || die
+}
+
+src_compile() {
+	emake CC=$(tc-getCC) CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {

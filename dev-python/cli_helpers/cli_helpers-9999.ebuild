@@ -14,9 +14,6 @@ SRC_URI=""
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/configobj-5.0.5[${PYTHON_USEDEP}]
@@ -25,13 +22,5 @@ RDEPEND="
 	>=dev-python/terminaltables-3.0.0[${PYTHON_USEDEP}]
 	dev-python/wcwidth[${PYTHON_USEDEP}]
 "
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? (
-		${RDEPEND}
-		>=dev-python/mock-2[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
-	)"
 
-python_test() {
-	pytest -vv || die "Tests fail with ${EPYTHON}"
-}
+distutils_enable_tests pytest

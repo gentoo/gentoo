@@ -104,10 +104,7 @@ EGIT_REPO_URI=(
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Build directory for out-of-source builds.
-case ${QT5_BUILD_TYPE} in
-	live)    : ${QT5_BUILD_DIR:=${S}_build} ;;
-	release) : ${QT5_BUILD_DIR:=${S}} ;; # workaround for bug 497312
-esac
+: ${QT5_BUILD_DIR:=${S}_build}
 
 IUSE="debug test"
 
@@ -192,6 +189,9 @@ qt5-build_src_prepare() {
 qt5-build_src_configure() {
 	if [[ ${QT5_MODULE} == qtbase ]]; then
 		qt5_base_configure
+	fi
+	if [[ ${QT5_MINOR_VERSION} -ge 15 ]] && [[ ${QT5_MODULE} == qttools ]] && [[ -z ${QT5_TARGET_SUBDIRS[@]} ]]; then
+		qt5_tools_configure
 	fi
 
 	qt5_foreach_target_subdir qt5_qmake
@@ -564,6 +564,7 @@ qt5_base_configure() {
 		-no-libpng -no-libjpeg
 		-no-freetype -no-harfbuzz
 		-no-openssl -no-libproxy
+		-no-feature-gssapi
 		-no-xcb-xlib
 
 		# bug 672340
@@ -613,7 +614,6 @@ qt5_base_configure() {
 
 		# disable all platform plugins by default, override in qtgui
 		-no-xcb -no-eglfs -no-kms -no-gbm -no-directfb -no-linuxfb
-		$([[ ${QT5_MINOR_VERSION} -lt 14 ]] && echo -no-mirclient)
 
 		# disable undocumented X11-related flags, override in qtgui
 		# (not shown in ./configure -help output)
@@ -657,10 +657,41 @@ qt5_base_configure() {
 
 	# a forwarding header is no longer created since 5.8, causing the system
 	# config to always be used. bug 599636
-	cp src/corelib/global/qconfig.h include/QtCore/ || die
+	# ${S}/include does not exist in live sources
+	local basedir="${S}/"
+	[[ ${QT5_BUILD_TYPE} == live ]] && basedir=""
+	cp src/corelib/global/qconfig.h "${basedir}"include/QtCore/ || die
 
 	popd >/dev/null || die
 
+}
+
+# @FUNCTION: qt5_tools_configure
+# @INTERNAL
+# @DESCRIPTION:
+# Disables modules other than ${PN} belonging to qttools.
+qt5_tools_configure() {
+	# configure arguments
+	local qmakeargs=(
+		--
+		# not packaged in Gentoo
+		-no-feature-distancefieldgenerator
+		-no-feature-kmap2qmap
+		-no-feature-macdeployqt
+		-no-feature-makeqpf
+		-no-feature-qev
+		-no-feature-qtattributionsscanner
+		-no-feature-windeployqt
+		-no-feature-winrtrunner
+	)
+
+	local i
+	for i in assistant designer linguist pixeltool qdbus qdoc qtdiag qtpaths qtplugininfo; do
+		[[ ${PN} == ${i} ]] || qmakeargs+=( -no-feature-${i} )
+	done
+
+	# allow the ebuild to override what we set here
+	myqmakeargs=( "${qmakeargs[@]}" "${myqmakeargs[@]}" )
 }
 
 # @FUNCTION: qt5_qmake_args

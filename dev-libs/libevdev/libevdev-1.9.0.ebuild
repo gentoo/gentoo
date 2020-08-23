@@ -15,7 +15,7 @@ if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://www.freedesktop.org/software/libevdev/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 fi
 
 LICENSE="MIT"
@@ -26,7 +26,7 @@ DEPEND="test? ( dev-libs/check[${MULTILIB_USEDEP}] )"
 BDEPEND="
 	${PYTHON_DEPS}
 	doc? ( app-doc/doxygen )
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 RESTRICT="!test? ( test )"
 

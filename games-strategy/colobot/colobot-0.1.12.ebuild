@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils desktop xdg-utils
+inherit cmake desktop xdg-utils
 
-DESCRIPTION="Colobot is an educational real-time strategy video game featuring 3D graphics"
+DESCRIPTION="A real-time strategy game, where you can program your bots"
 HOMEPAGE="https://colobot.info/"
 SRC_URI="https://github.com/colobot/colobot/archive/${PN}-gold-${PV}-alpha.tar.gz"
 S="${WORKDIR}/${PN}-${PN}-gold-${PV}-alpha"
@@ -37,8 +37,13 @@ DEPEND="
 RDEPEND="${DEPEND}
 	games-strategy/colobot-data"
 
+PATCHES=(
+	# https://github.com/colobot/colobot/pull/1300
+	"${FILESDIR}"/${P}-includes.patch
+)
+
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# we need to call it explicitly to help Ninja figure out the deps
 	cd desktop || die
@@ -55,7 +60,7 @@ src_configure() {
 		-DCOLOBOT_INSTALL_BIN_DIR="${EPREFIX}"/usr/bin
 		-DCOLOBOT_INSTALL_LIB_DIR="${EPREFIX}"/usr/$(get_libdir)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {

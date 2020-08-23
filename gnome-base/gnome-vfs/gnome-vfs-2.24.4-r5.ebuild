@@ -13,7 +13,7 @@ HOMEPAGE="https://www.gnome.org/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="2"
-KEYWORDS="~alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="acl gnutls ipv6 kerberos libressl samba ssl zeroconf"
 
 RDEPEND="
@@ -44,7 +44,7 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	gnome-base/gnome-common
 	>=dev-util/intltool-0.40
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	>=dev-util/gtk-doc-am-1.13
 "
 

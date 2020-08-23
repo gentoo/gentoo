@@ -1,0 +1,24 @@
+From 3ee765fb6a909e8c22cb1853a9c22c8e4822c67b Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Thu, 30 Apr 2020 11:18:48 +1200
+Subject: Include '.' in @INC on Perl 5.28+
+
+---
+ Makefile.PL | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 4db553e..eebd90f 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -3,6 +3,7 @@
+ use strict;
+ use warnings;
+ use 5.005;
++use lib '.';
+ use inc::Module::Install;
+ 
+ name		'Authen-SASL';
+-- 
+2.26.2
+

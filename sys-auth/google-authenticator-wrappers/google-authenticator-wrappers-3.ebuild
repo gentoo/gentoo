@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils eapi7-ver user
+inherit cmake user
 
 DESCRIPTION="Set of scripts to manage google-auth setup on Gentoo Infra"
 HOMEPAGE="https://github.com/mgorny/google-authenticator-wrappers"
@@ -41,7 +41,7 @@ src_configure() {
 		-DGAUTH_USERNAME=gauth
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_preinst() {

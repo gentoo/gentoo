@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: desktop.eclass
@@ -10,7 +10,7 @@ if [[ -z ${_DESKTOP_ECLASS} ]]; then
 _DESKTOP_ECLASS=1
 
 # @FUNCTION: make_desktop_entry
-# @USAGE: make_desktop_entry(<command>, [name], [icon], [type], [fields])
+# @USAGE: <command> [name] [icon] [type] [fields]
 # @DESCRIPTION:
 # Make a .desktop file.
 #
@@ -162,8 +162,8 @@ make_desktop_entry() {
 	else
 		local desktop_name="${PN}-${slot}"
 	fi
-	local desktop="${T}/$(echo ${exec} | sed 's:[[:space:]/:]:_:g')-${desktop_name}.desktop"
-	#local desktop=${T}/${exec%% *:-${desktop_name}}.desktop
+	local desktop="${exec%%[[:space:]]*}"
+	desktop="${T}/${desktop##*/}-${desktop_name}.desktop"
 
 	# Don't append another ";" when a valid category value is provided.
 	type=${type%;}${type:+;}

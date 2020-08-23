@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-LLVM_MAX_SLOT=8
+LLVM_MAX_SLOT=10
 PLOCALES="cs da de fr ja pl ru sl uk zh-CN zh-TW"
 
 inherit llvm qmake-utils virtualx xdg
@@ -20,31 +20,37 @@ else
 	MY_P=${PN}-opensource-src-${MY_PV}
 	[[ ${MY_PV} == ${PV} ]] && MY_REL=official || MY_REL=development
 	SRC_URI="https://download.qt.io/${MY_REL}_releases/${PN/-}/$(ver_cut 1-2)/${MY_PV}/${MY_P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="~amd64 ~x86"
 	S=${WORKDIR}/${MY_P}
 fi
 
-# TODO: unbundle sqlite, yaml-cpp, and KSyntaxHighlighting
+# TODO: unbundle sqlite
 
-QTC_PLUGINS=(android +autotest baremetal bazaar beautifier boot2qt
-	'+clang:clangcodemodel|clangformat|clangpchmanager|clangrefactoring|clangtools' clearcase
-	cmake:cmakeprojectmanager cppcheck ctfvisualizer cvs +designer git glsl:glsleditor +help ios
-	lsp:languageclient mcu:mcusupport mercurial modeling:modeleditor nim perforce perfprofiler python
-	qbs:qbsprojectmanager +qmldesigner qmlprofiler qnx remotelinux scxml:scxmleditor serialterminal
-	silversearcher subversion valgrind webassembly winrt)
-IUSE="doc systemd test +webengine ${QTC_PLUGINS[@]%:*}"
+QTC_PLUGINS=(android +autotest autotools:autotoolsprojectmanager baremetal bazaar beautifier boot2qt
+	'+clang:clangcodemodel|clangformat|clangtools' clearcase cmake:cmakeprojectmanager cppcheck
+	ctfvisualizer cvs +designer git glsl:glsleditor +help lsp:languageclient mcu:mcusupport mercurial
+	modeling:modeleditor nim perforce perfprofiler python qbs:qbsprojectmanager +qmldesigner
+	+qmljs:qmljseditor qmlprofiler qnx remotelinux scxml:scxmleditor serialterminal silversearcher
+	subversion valgrind webassembly)
+IUSE="doc systemd test webengine ${QTC_PLUGINS[@]%:*}"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	boot2qt? ( remotelinux )
 	clang? ( test? ( qbs ) )
 	mcu? ( cmake )
 	python? ( lsp )
+	qmldesigner? ( qmljs )
 	qnx? ( remotelinux )
 "
 
 # minimum Qt version required
-QT_PV="5.12.3:5"
+QT_PV="5.14:5"
 
+BDEPEND="
+	>=dev-qt/linguist-tools-${QT_PV}
+	virtual/pkgconfig
+	doc? ( >=dev-qt/qdoc-${QT_PV} )
+"
 CDEPEND="
 	>=dev-qt/qtconcurrent-${QT_PV}
 	>=dev-qt/qtcore-${QT_PV}
@@ -59,21 +65,27 @@ CDEPEND="
 	>=dev-qt/qtwidgets-${QT_PV}
 	>=dev-qt/qtx11extras-${QT_PV}
 	>=dev-qt/qtxml-${QT_PV}
-	clang? ( sys-devel/clang:8= )
+	kde-frameworks/syntax-highlighting:5
+	clang? (
+		>=dev-cpp/yaml-cpp-0.6.2:=
+		|| (
+			( sys-devel/clang:10
+				dev-libs/libclangformat-ide:10 )
+			( sys-devel/clang:9
+				dev-libs/libclangformat-ide:9 )
+		)
+		<sys-devel/clang-$((LLVM_MAX_SLOT + 1)):=
+	)
 	designer? ( >=dev-qt/designer-${QT_PV} )
 	help? (
 		>=dev-qt/qthelp-${QT_PV}
 		webengine? ( >=dev-qt/qtwebengine-${QT_PV}[widgets] )
 	)
 	perfprofiler? ( dev-libs/elfutils )
-	qbs? ( >=dev-util/qbs-1.13.1 )
 	serialterminal? ( >=dev-qt/qtserialport-${QT_PV} )
 	systemd? ( sys-apps/systemd:= )
 "
 DEPEND="${CDEPEND}
-	>=dev-qt/linguist-tools-${QT_PV}
-	virtual/pkgconfig
-	doc? ( >=dev-qt/qdoc-${QT_PV} )
 	test? (
 		>=dev-qt/qtdeclarative-${QT_PV}[localstorage]
 		>=dev-qt/qtquickcontrols2-${QT_PV}
@@ -83,12 +95,14 @@ DEPEND="${CDEPEND}
 "
 RDEPEND="${CDEPEND}
 	sys-devel/gdb[client,python]
-	bazaar? ( dev-vcs/bzr )
-	cmake? ( dev-util/cmake )
+	autotools? ( sys-devel/autoconf )
+	cmake? ( >=dev-util/cmake-3.14 )
 	cppcheck? ( dev-util/cppcheck )
 	cvs? ( dev-vcs/cvs )
 	git? ( dev-vcs/git )
 	mercurial? ( dev-vcs/mercurial )
+	qbs? ( >=dev-util/qbs-1.15 )
+	qmldesigner? ( >=dev-qt/qtquicktimeline-${QT_PV} )
 	silversearcher? ( sys-apps/the_silver_searcher )
 	subversion? ( dev-vcs/subversion )
 	valgrind? ( dev-util/valgrind )
@@ -99,6 +113,16 @@ for x in ${PLOCALES}; do
 	RDEPEND+=" l10n_${x}? ( >=dev-qt/qttranslations-${QT_PV} )"
 done
 unset x
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.12.0-dylib-fix.patch
+	"${FILESDIR}"/${PN}-4.12.0-libclangformat-ide.patch
+)
+
+llvm_check_deps() {
+	has_version -d "sys-devel/clang:${LLVM_SLOT}" && \
+		has_version -d "dev-libs/libclangformat-ide:${LLVM_SLOT}"
+}
 
 pkg_setup() {
 	use clang && llvm_pkg_setup
@@ -115,12 +139,13 @@ src_prepare() {
 				src/plugins/plugins.pro || die "failed to disable ${plugin%:*} plugin"
 		fi
 	done
-	sed -i -e '/updateinfo/d' src/plugins/plugins.pro || die
+	sed -i -re '/\<(clangpchmanager|clangrefactoring|ios|updateinfo|winrt)\>/d' src/plugins/plugins.pro || die
+	sed -i -re '/clang(pchmanager|refactoring)backend/d' src/tools/tools.pro || die
 
 	# avoid building unused support libraries and tools
 	if ! use clang; then
-		sed -i -e '/clangsupport/d' src/libs/libs.pro || die
-		sed -i -e '/clang\(\|pchmanager\|refactoring\)backend/d' src/tools/tools.pro || die
+		sed -i -e '/clangsupport\|sqlite\|yaml-cpp/d' src/libs/libs.pro || die
+		sed -i -e '/clangbackend/d' src/tools/tools.pro || die
 	fi
 	if ! use glsl; then
 		sed -i -e '/glsl/d' src/libs/libs.pro || die
@@ -132,14 +157,18 @@ src_prepare() {
 		sed -i -e '/modelinglib/d' src/libs/libs.pro || die
 	fi
 	if ! use perfprofiler; then
-		rm -rf src/tools/perfparser || die
+		rm -r src/tools/perfparser || die
 		if ! use ctfvisualizer && ! use qmlprofiler; then
 			sed -i -e '/tracing/d' src/libs/libs.pro tests/auto/auto.pro || die
 		fi
 	fi
 	if ! use qmldesigner; then
+		sed -i -e '/advanceddockingsystem/d' src/libs/libs.pro || die
 		sed -i -e '/qml2puppet/d' src/tools/tools.pro || die
 		sed -i -e '/qmldesigner/d' tests/auto/qml/qml.pro || die
+	fi
+	if ! use qmljs; then
+		sed -i -e '/qmleditorwidgets/d' src/libs/libs.pro || die
 	fi
 	if ! use valgrind; then
 		sed -i -e '/valgrindfake/d' src/tools/tools.pro || die
@@ -170,17 +199,23 @@ src_prepare() {
 	done
 	sed -i -e "/^LANGUAGES\s*=/s:=.*:=${languages}:" share/qtcreator/translations/translations.pro || die
 
+	# remove bundled syntax-highlighting
+	rm -r src/libs/3rdparty/syntax-highlighting || die
+
+	# remove bundled yaml-cpp
+	rm -r src/libs/3rdparty/yaml-cpp || die
+
 	# remove bundled qbs
-	rm -rf src/shared/qbs || die
+	rm -r src/shared/qbs || die
 }
 
 src_configure() {
 	eqmake5 IDE_LIBRARY_BASENAME="$(get_libdir)" \
 		IDE_PACKAGE_MODE=1 \
+		KSYNTAXHIGHLIGHTING_LIB_DIR="${EPREFIX}/usr/$(get_libdir)" \
+		KSYNTAXHIGHLIGHTING_INCLUDE_DIR="${EPREFIX}/usr/include/KF5/KSyntaxHighlighting" \
 		$(use clang && echo LLVM_INSTALL_DIR="$(get_llvm_prefix ${LLVM_MAX_SLOT})") \
 		$(use qbs && echo QBS_INSTALL_DIR="${EPREFIX}/usr") \
-		CONFIG+=qbs_disable_rpath \
-		CONFIG+=qbs_enable_project_file_updates \
 		$(use systemd && echo CONFIG+=journald) \
 		$(use test && echo BUILD_TESTS=1)
 }

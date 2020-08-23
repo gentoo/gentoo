@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="selinux test"
 RESTRICT="!test? ( test )"
@@ -20,7 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}
 	>=dev-libs/glib-2.56:2
-	>=dev-libs/libreport-2.10.0[python]
+	>=dev-libs/libreport-2.10.0[gtk,python]
 	dev-libs/libxml2:2
 	>=gnome-base/gsettings-desktop-schemas-3.15.1
 	net-libs/libsoup:2.4

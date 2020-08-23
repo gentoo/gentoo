@@ -15,12 +15,7 @@ IUSE="doc resolvconf"
 
 RDEPEND="resolvconf? ( virtual/resolvconf )"
 DEPEND="${RDEPEND}
-	doc? (
-		|| (
-			dev-texlive/texlive-latexextra
-			dev-tex/floatflt
-		)
-	)"
+	doc? ( dev-texlive/texlive-latexextra )"
 
 PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 

@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="curl">Build check_docker which requires <pkg>net-misc/curl</pkg></flag>
+		<flag name="varlink">Build check_podman which requires <pkg>dev-libs/libvarlink</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">madrisan/nagios-plugins-linux</remote-id>

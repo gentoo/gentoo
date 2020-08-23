@@ -28,7 +28,6 @@ IUSE=""
 
 DEPEND="
 	~media-tv/kodi-9999
-	~media-libs/kodi-platform-9999
 	=dev-libs/libplatform-2*
 	virtual/libusb:1
 	"

@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Provides basic first-pass API testing for large class trees"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ia64 ~mips ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
+KEYWORDS="~alpha amd64 hppa ~ia64 ~mips ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
 IUSE=""
 
 RDEPEND="

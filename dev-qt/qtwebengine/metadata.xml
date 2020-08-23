@@ -5,6 +5,11 @@
 		<email>qt@gentoo.org</email>
 		<name>Gentoo Qt Project</name>
 	</maintainer>
+	<maintainer type="person">
+		<description>ppc64 patchset maintainer</description>
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
 	<use>
 		<flag name="designer">Install the QWebEngineView plugin used to add widgets in
 			<pkg>dev-qt/designer</pkg> forms that display web pages.</flag>

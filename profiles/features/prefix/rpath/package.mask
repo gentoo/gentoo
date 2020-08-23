@@ -16,7 +16,3 @@ net-fs/openafs
 # If you have MacFuse or some other implementation of fuse installed, you can
 # probably use this by placing sys-fs/fuse in package.provided, bug 272210
 net-fs/curlftpfs
-
-# Fabian Groffen <grobian@gentoo.org> (2008-01-11)
-# Screws up things, see bug #204998
-<sys-devel/gcc-3.4.0

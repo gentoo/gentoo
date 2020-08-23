@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: if your package uses the texi2dvi utility, it must depend on the
@@ -15,11 +15,10 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86"
 IUSE="nls +standalone static"
 
 RDEPEND="
-	!=app-text/tetex-2*
 	>=sys-libs/ncurses-5.2-r2:0=
 	standalone? ( dev-lang/perl )
 	!standalone?  (
@@ -29,9 +28,8 @@ RDEPEND="
 		dev-perl/Text-Unidecode
 	)
 	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
-	app-arch/xz-utils
-	nls? ( >=sys-devel/gettext-0.19.6 )"
+DEPEND="${RDEPEND}"
+BDEPEND="nls? ( >=sys-devel/gettext-0.19.6 )"
 
 src_configure() {
 	# Respect compiler and CPPFLAGS/CFLAGS/LDFLAGS for Perl extensions. #622576

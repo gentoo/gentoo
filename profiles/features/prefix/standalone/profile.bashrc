@@ -48,10 +48,10 @@ elif [[ ${CATEGORY}/${PN} == sys-devel/binutils && ${EBUILD_PHASE} == prepare ]]
     fi
     [[ -n "${f}" ]] && sed -i -r "s,\"/etc,\"${EPREFIX}/etc," "${f}"
     eend $?
-elif [[ ${CATEGORY}/${PN} == sys-libs/glibc && ${EBUILD_PHASE} == compile ]]; then
+elif [[ ${CATEGORY}/${PN} == sys-libs/glibc && ${EBUILD_PHASE} == configure ]]; then
     cd "${S}"
     einfo "Prefixifying hardcoded path"
-    
+
     for f in libio/iopopen.c \
 		 shadow/lckpwdf.c resolv/{netdb,resolv}.h elf/rtld.c \
 		 nis/nss_compat/compat-{grp,initgroups,{,s}pwd}.c \

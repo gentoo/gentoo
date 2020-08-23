@@ -30,7 +30,7 @@ ruby_add_rdepend "
 "
 
 ruby_add_bdepend "test? (
-	dev-ruby/archive-tar-minitar
+	>=dev-ruby/minitar-0.9
 )"
 
 RDEPEND="${RDEPEND} git? ( >=dev-vcs/git-1.6.6 )"

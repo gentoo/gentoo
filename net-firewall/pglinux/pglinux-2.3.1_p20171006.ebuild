@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -58,6 +58,9 @@ CONFIG_CHECK="~NETFILTER_NETLINK
 	~IP_NF_IPTABLES
 	~IP_NF_TARGET_REJECT"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 S="${WORKDIR}/${MY_PN}-code-${COMMIT}"
 
 src_prepare() {

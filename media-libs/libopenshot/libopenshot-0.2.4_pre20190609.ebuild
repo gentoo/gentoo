@@ -16,7 +16,7 @@ SRC_URI="https://github.com/OpenShot/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.
 LICENSE="GPL-3+"
 SLOT="0/17"
 KEYWORDS="amd64 x86"
-IUSE="doc examples +imagemagick libav +python test"
+IUSE="doc examples +imagemagick +python test"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -28,8 +28,7 @@ RDEPEND="
 	dev-qt/qtmultimedia:5[widgets]
 	>=media-libs/libopenshot-audio-0.1.9_pre20190502:0=
 	imagemagick? ( >=media-gfx/imagemagick-7:0=[cxx] )
-	libav? ( media-video/libav:0=[encode,x264,xvid,vpx,mp3,theora] )
-	!libav? ( media-video/ffmpeg:0=[encode,x264,xvid,vpx,mp3,theora] )
+	media-video/ffmpeg:0=[encode,x264,xvid,vpx,mp3,theora]
 	python? ( ${PYTHON_DEPS} )
 "
 DEPEND="${RDEPEND}"

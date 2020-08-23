@@ -1,0 +1,11 @@
+--- a/src/Makefile	2020-05-21 18:54:31.176399032 +0200
++++ b/src/Makefile	2020-05-21 18:55:27.881498310 +0200
+@@ -65,7 +65,7 @@
+ %.cmx: %.ml
+ 	$(OCAMLOPT) $(CAMLOPTFLAGS) -c $*.ml
+ %.$(O): %.c
+-	$(OCAMLC) -ccopt -DBNG_ARCH_$(BNG_ARCH) -c $*.c
++	$(OCAMLC) -ccopt "-DBNG_ARCH_$(BNG_ARCH) $(CFLAGS)" -c $*.c
+ 
+ # Legacy installation: files go into OCaml's stdlib directory; only META
+ # is installed via findlib

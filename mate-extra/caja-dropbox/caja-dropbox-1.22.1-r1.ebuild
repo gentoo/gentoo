@@ -13,7 +13,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="Store, Sync and Share Files Online"
-LICENSE="GPL-2"
+LICENSE="CC-BY-ND-3.0 GPL-3+ public-domain"
 SLOT="0"
 
 IUSE="debug"

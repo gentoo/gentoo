@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PN="QtGain"
-inherit eutils qmake-utils
+inherit desktop qmake-utils
 
-DESCRIPTION="A simple frontend to mp3gain, vorbisgain and metaflac"
+DESCRIPTION="Simple frontend to mp3gain, vorbisgain and metaflac"
 HOMEPAGE="https://www.linux-apps.com/content/show.php/QtGain?content=56842"
 SRC_URI="https://dl.opendesktop.org/api/files/download/id/1466640864/56842-${MY_PN}_${PV}.zip"
 

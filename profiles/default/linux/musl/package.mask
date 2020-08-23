@@ -23,7 +23,6 @@ games-action/guacamelee
 games-action/heretic2-demo
 games-action/hotline-miami
 games-action/intrusion2
-games-action/rune
 games-action/shadowgrounds-bin
 games-action/shadowgrounds-survivor-bin
 games-action/solar2
@@ -59,8 +58,8 @@ games-fps/ut2004-data
 games-fps/ut2004-demo
 games-misc/little-inferno
 games-misc/papers-please
-games-puzzle/world-of-goo
 games-puzzle/world-of-goo-demo
+games-puzzle/world-of-goo-hb
 games-roguelike/adom
 games-roguelike/neon-chrome
 games-rpg/costume-quest

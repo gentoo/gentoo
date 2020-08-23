@@ -36,7 +36,7 @@ SBTV="0.13.18"
 # ${P}/build/scaladoc
 
 DESCRIPTION="The Scala Programming Language"
-HOMEPAGE="http://www.scala-lang.org/"
+HOMEPAGE="https://www.scala-lang.org/"
 SRC_URI="
 	!binary?  (
 		https://github.com/scala/scala/archive/v${PV}.tar.gz -> ${P}.tar.gz

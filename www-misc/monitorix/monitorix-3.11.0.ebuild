@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit systemd user
+inherit systemd
 
 DESCRIPTION="A lightweight system monitoring tool"
 HOMEPAGE="https://www.monitorix.org/"
@@ -14,7 +14,10 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND="dev-perl/Config-General
+RDEPEND="
+	acct-user/monitorix
+	acct-group/monitorix
+	dev-perl/Config-General
 	dev-perl/DBI
 	dev-perl/HTTP-Server-Simple
 	dev-perl/IO-Socket-SSL
@@ -23,11 +26,6 @@ RDEPEND="dev-perl/Config-General
 	dev-perl/XML-Simple
 	net-analyzer/rrdtool[graph,perl]
 	dev-perl/CGI"
-
-pkg_setup() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
-}
 
 src_prepare() {
 	# Put better Gentoo defaults in the configuration file.
@@ -45,7 +43,7 @@ src_compile() { :; }
 src_install() {
 	dosbin ${PN}
 
-	newinitd ${FILESDIR}/monitorix ${PN}
+	newinitd "${FILESDIR}/monitorix" ${PN}
 
 	insinto /etc/monitorix
 	doins ${PN}.conf

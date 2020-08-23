@@ -1,0 +1,24 @@
+diff -uprN a/ipl/cfuncs/fpoll.c b/ipl/cfuncs/fpoll.c
+--- a/ipl/cfuncs/fpoll.c	2020-05-10 21:46:39.730752626 -0600
++++ b/ipl/cfuncs/fpoll.c	2020-05-10 21:50:41.613577816 -0600
+@@ -33,6 +33,10 @@
+ #include <sys/types.h>
+ #include <sys/time.h>
+ 
++#if defined(_MUSL)
++# include <stdio_ext.h>
++#endif
++
+ #include "icall.h"
+ 
+ int fpoll(int argc, descriptor *argv)	/*: await data from file */
+@@ -66,6 +70,9 @@ int fpoll(int argc, descriptor *argv)	/*
+ #elif defined(_FSTDIO)					/* new BSD library */
+    if (f->_r > 0)
+       RetArg(1);
++#elif defined(_MUSL)                                   /* MUSL library */
++   if (__freadahead(f))
++      RetArg(1);
+ #else							/* old AT&T library */
+    if (f->_cnt > 0)
+       RetArg(1);

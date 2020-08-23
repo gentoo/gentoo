@@ -40,7 +40,7 @@ CONFIG_PROTECT_MASK="/etc/env.d /etc/gconf"
 # GOBIN needs to be cleaned as random values in GOBIN can affect the
 # building of some packages:
 # https://archives.gentoo.org/gentoo-dev/message/163010f83ae7819d80c0cfdf797cbfe0
-ENV_UNSET="DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY XDG_CACHE_HOME XDG_CONFIG_HOME XDG_DATA_HOME XDG_RUNTIME_DIR PERL_MM_OPT PERL5LIB PERL5OPT PERL_MB_OPT PERL_CORE PERLPREFIX GOBIN"
+ENV_UNSET="DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY XDG_CACHE_HOME XDG_CONFIG_HOME XDG_DATA_HOME XDG_RUNTIME_DIR PERL_MM_OPT PERL5LIB PERL5OPT PERL_MB_OPT PERL_CORE PERLPREFIX GOBIN GOPATH"
 
 # Variables that are set exclusively by the profile
 # and not by user configuration files.
@@ -50,7 +50,7 @@ PROFILE_ONLY_VARIABLES="${PROFILE_ONLY_VARIABLES} ELIBC IUSE_IMPLICIT KERNEL USE
 ELIBC="glibc"
 KERNEL="linux"
 USERLAND="GNU"
-INPUT_DEVICES="keyboard mouse"
+INPUT_DEVICES="libinput"
 
 # Accept only licenses in the FREE license group, i.e., with
 # the freedom to use, share, modify and share modifications
@@ -98,9 +98,8 @@ LCD_DEVICES="bayrad cfontz cfontz633 glk hd44780 lb216 lcdm001 mtxorb ncurses te
 
 # Manuel Rüger <mrueg@gentoo.org> (2015-09-09)
 # Default Ruby build target(s)
-# Updated to include ruby24 on 2018-11-12
 # Updated to include ruby25 on 2019-07-17
-RUBY_TARGETS="ruby24 ruby25"
+RUBY_TARGETS="ruby25"
 
 # Enable extended filesystem attribute support by default.
 # https://archives.gentoo.org/gentoo-dev/message/ba0e3457e4b807e79816f0df03566af0
@@ -121,14 +120,14 @@ PYTHONDONTWRITEBYTECODE="1"
 # This MUST be kept in sync with the PYTHON_TARGETS below
 # Mike Gilbert <floppym@gentoo.org> (2018-05-23)
 # sys-apps/baslayout-2.5 needs split-usr enabled.
-BOOTSTRAP_USE="unicode internal-glib pkg-config split-usr python_targets_python3_6 python_targets_python2_7"
+BOOTSTRAP_USE="unicode internal-glib pkg-config split-usr python_targets_python3_7 python_targets_python2_7"
 
 # Mike Gilbert <floppym@gentoo.org> (2012-05-15)
 # Default target(s) for python-r1.eclass
-# Mikle Kolyada <zlogene@gentoo.org> (2018-07-24)
-# Updated to python3_6
-PYTHON_TARGETS="python2_7 python3_6"
-PYTHON_SINGLE_TARGET="python3_6"
+# Mikle Kolyada <zlogene@gentoo.org> (2020-05-06)
+# Updated to python3_7
+PYTHON_TARGETS="python2_7 python3_7"
+PYTHON_SINGLE_TARGET="python3_7"
 
 # Michał Górny <mgorny@gentoo.org> (2013-08-10)
 # Moved from portage's make.globals.
@@ -164,7 +163,7 @@ POSTGRES_TARGETS="postgres10 postgres11"
 # Moreover, it should only contain targets that have a stable version
 # of PHP, to avoid pulling in an unstable PHP on stable systems.
 #
-PHP_TARGETS="php7-2"
+PHP_TARGETS="php7-2 php7-3"
 
 # Alfredo Tupone <tupone@gentoo.org> (2019-09-03)
 #

@@ -25,9 +25,11 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+"
+BDEPEND="
 	sys-devel/flex
 	virtual/yacc
-	dbus? ( virtual/pkgconfig[${MULTILIB_USEDEP}] )
+	dbus? ( virtual/pkgconfig )
 "
 
 PATCHES=(

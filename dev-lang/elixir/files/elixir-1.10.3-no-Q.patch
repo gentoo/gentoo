@@ -1,0 +1,12 @@
+Enable verbose builds by default.
+--- a/Makefile
++++ b/Makefile
+@@ -8,7 +8,7 @@ ERLC := erlc -I lib/elixir/include $(ERLC_OPTS)
+ ERL := erl -I lib/elixir/include -noshell -pa lib/elixir/ebin
+ GENERATE_APP := $(CURDIR)/lib/elixir/generate_app.escript
+ VERSION := $(strip $(shell cat VERSION))
+-Q := @
++Q :=
+ LIBDIR := lib
+ BINDIR := bin
+ INSTALL = install

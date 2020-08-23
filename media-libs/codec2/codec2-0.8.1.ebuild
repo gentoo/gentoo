@@ -12,10 +12,13 @@ SRC_URI="https://hobbes1069.fedorapeople.org/freetel/codec2/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
 IUSE="examples"
 
-PATCHES=( "${FILESDIR}/${P}-unused-deps.patch" )
+PATCHES=(
+	"${FILESDIR}"/${P}-unused-deps.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
 multilib_src_configure() {
 	local mycmakeargs=( -DUNITTEST=OFF )

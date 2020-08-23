@@ -5,13 +5,13 @@ EAPI=6
 inherit gnome.org gnome2-utils meson virtualx xdg
 
 DESCRIPTION="GNOME power statistics"
-HOMEPAGE="https://projects.gnome.org/gnome-power-manager/"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-power-manager"
 
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.45.8:2

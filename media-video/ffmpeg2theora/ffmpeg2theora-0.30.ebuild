@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,12 +11,10 @@ SRC_URI="http://www.v2v.cc/~j/${PN}/downloads/${P}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~ppc64 ~sparc x86"
-IUSE="kate libav"
+IUSE="kate"
 
 RDEPEND="
-	!libav? ( media-video/ffmpeg:0=[postproc] )
-	libav? ( media-libs/libpostproc:0=
-		media-video/libav:0= )
+	media-video/ffmpeg:0=[postproc]
 	>=media-libs/libvorbis-1.1
 	>=media-libs/libogg-1.1
 	>=media-libs/libtheora-1.1[encode]

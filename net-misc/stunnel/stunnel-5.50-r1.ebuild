@@ -6,7 +6,7 @@ EAPI="6"
 inherit ssl-cert multilib systemd user
 
 DESCRIPTION="TLS/SSL - Port Wrapper"
-HOMEPAGE="http://www.stunnel.org/index.html"
+HOMEPAGE="https://www.stunnel.org/index.html"
 SRC_URI="ftp://ftp.stunnel.org/stunnel/archive/${PV%%.*}.x/${P}.tar.gz
 	http://www.usenix.org.uk/mirrors/stunnel/archive/${PV%%.*}.x/${P}.tar.gz
 	http://ftp.nluug.nl/pub/networking/stunnel/archive/${PV%%.*}.x/${P}.tar.gz

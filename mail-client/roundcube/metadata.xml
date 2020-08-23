@@ -21,12 +21,10 @@
 			Add dependencies to support server-side GnuPG signing
 			and/or encryption through the enigma plugin
 		</flag>
-		<flag name="managesieve">
-			Add dependencies to support the sieverules plugin
-		</flag>
 		<flag name="ldap">
 			Add dependencies to support connecting to an LDAP address
 			book server
 		</flag>
 	</use>
+	<stabilize-allarches/>
 </pkgmetadata>

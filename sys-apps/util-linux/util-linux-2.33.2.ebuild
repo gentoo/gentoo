@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git"
 else
 	[[ "${PV}" = *_rc* ]] || \
-	KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux"
 	SRC_URI="https://www.kernel.org/pub/linux/utils/util-linux/v${PV:0:4}/${MY_P}.tar.xz"
 fi
 
@@ -51,11 +51,6 @@ RDEPEND+="
 		!sys-process/procps[kill]
 	)
 	!net-wireless/rfkill
-	!sys-process/schedutils
-	!sys-apps/setarch
-	!<sys-apps/sysvinit-2.88-r7
-	!<sys-libs/e2fsprogs-libs-1.41.8
-	!<sys-fs/e2fsprogs-1.41.8
 	!<app-shells/bash-completion-2.7-r1"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

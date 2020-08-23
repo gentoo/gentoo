@@ -59,7 +59,7 @@ src_prepare() {
 
 	sed -e "s@_LDFLAGS\.$(tc-arch)*.*=@& ${LDFLAGS}@g" \
 		-i "${S}"/Config.kmk || die #332225
-	tc-export CC RANLIB #AR does not work here
+	tc-export CC PKG_CONFIG RANLIB #AR does not work here
 }
 
 src_compile() {

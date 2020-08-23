@@ -1,0 +1,106 @@
+From 71b1a935762efd24a79de193662450de5a89f67e Mon Sep 17 00:00:00 2001
+From: Jonathan McPherson <jonathan@rstudio.com>
+Date: Tue, 14 Jan 2020 12:53:20 -0800
+Subject: [PATCH] use R_NoSave over R_Slave for R 4.0+
+
+---
+ src/cpp/r/CMakeLists.txt             | 12 ++++++++++++
+ src/cpp/r/config.h.in                |  8 +++++++-
+ src/cpp/r/session/REmbeddedPosix.cpp | 20 ++++++++++++++------
+ 3 files changed, 33 insertions(+), 7 deletions(-)
+
+diff --git a/src/cpp/r/CMakeLists.txt b/src/cpp/r/CMakeLists.txt
+index 6984ae309c..29784b8b67 100644
+--- a/src/cpp/r/CMakeLists.txt
++++ b/src/cpp/r/CMakeLists.txt
+@@ -15,6 +15,18 @@
+ 
+ project (R)
+ 
++# find the version of R in play
++find_package(LibR REQUIRED)
++execute_process(
++    COMMAND "${LIBR_EXECUTABLE}" "--vanilla" "--slave" "-e" "cat(as.character(getRversion()))"
++    OUTPUT_VARIABLE LIBR_VERSION)
++
++# parse and save the R version to a variable
++string(REPLACE "." ";" R_VERSION_LIST "${LIBR_VERSION}")
++list(GET R_VERSION_LIST 0 R_VERSION_MAJOR)
++list(GET R_VERSION_LIST 1 R_VERSION_MINOR)
++list(GET R_VERSION_LIST 2 R_VERSION_PATCH)
++
+ # include files
+ file(GLOB_RECURSE R_HEADER_FILES "*.h*")
+ 
+diff --git a/src/cpp/r/config.h.in b/src/cpp/r/config.h.in
+index 6ba67c8e09..00bc8b6191 100644
+--- a/src/cpp/r/config.h.in
++++ b/src/cpp/r/config.h.in
+@@ -1,7 +1,7 @@
+ /*
+  * config.h.in
+  *
+- * Copyright (C) 2009-12 by RStudio, PBC
++ * Copyright (C) 2009-20 by RStudio, Inc.
+  *
+  * Unless you have received this program directly from RStudio pursuant
+  * to the terms of a commercial license agreement with RStudio, then
+@@ -16,4 +16,10 @@
+ 
+ #cmakedefine PANGO_CAIRO_FOUND
+ 
++// Important: These variables represent the version of R found during
++// compile/link time, NOT the version of R present at runtime.
++#define R_VERSION_MAJOR ${R_VERSION_MAJOR}
++#define R_VERSION_MINOR ${R_VERSION_MINOR}
++#define R_VERSION_PATCH ${R_VERSION_PATCH}
++
+ 
+diff --git a/src/cpp/r/session/REmbeddedPosix.cpp b/src/cpp/r/session/REmbeddedPosix.cpp
+index ac71b94522..73e2e2ce7f 100644
+--- a/src/cpp/r/session/REmbeddedPosix.cpp
++++ b/src/cpp/r/session/REmbeddedPosix.cpp
+@@ -1,7 +1,7 @@
+ /*
+  * REmbeddedPosix.cpp
+  *
+- * Copyright (C) 2009-19 by RStudio, PBC
++ * Copyright (C) 2009-20 by RStudio, Inc.
+  *
+  * Unless you have received this program directly from RStudio pursuant
+  * to the terms of a commercial license agreement with RStudio, then
+@@ -38,6 +38,8 @@ extern "C" void (*ptr_R_ProcessEvents)(void);
+ extern "C"  typedef void (*ptr_QuartzCocoa_SetupEventLoop)(int, unsigned long);
+ #endif
+ 
++#include "config.h"
++
+ extern int R_running_as_main_program;  // from unix/system.c
+ 
+ using namespace rstudio::core;
+@@ -103,14 +105,20 @@ void runEmbeddedR(const core::FilePath& /*rHome*/,    // ignored on posix
+    //
+    structRstart rp;
+    Rstart Rp = &rp;
+-   R_DefParams(Rp) ;
+-   Rp->R_Slave = FALSE ;
++   R_DefParams(Rp);
++#if R_VERSION_MAJOR > 3
++   // R 4.0 and above use --no-echo to suppress output
++   Rp->R_NoEcho = FALSE;
++#else
++   // R 3.x and below use --slave
++   Rp->R_Slave = FALSE;
++#endif
+    Rp->R_Quiet = quiet ? TRUE : FALSE;
+-   Rp->R_Interactive = TRUE ;
+-   Rp->SaveAction = defaultSaveAction ;
++   Rp->R_Interactive = TRUE;
++   Rp->SaveAction = defaultSaveAction;
+    Rp->RestoreAction = SA_NORESTORE; // handled within initialize()
+    Rp->LoadInitFile = loadInitFile ? TRUE : FALSE;
+-   R_SetParams(Rp) ;
++   R_SetParams(Rp);
+ 
+    // redirect console
+    R_Interactive = TRUE; // should have also been set by call to Rf_initialize_R

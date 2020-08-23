@@ -1,9 +1,20 @@
-# Copyright 1999-2020 Gentoo Authors.
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-04-11)
+# musl has no support for prelinked sections, bug #717020
+sys-devel/prelink
+
+# Ulrich Müller (2020-03-31)
+# Not ported to musl, bug #715642.
+# See https://wiki.gentoo.org/wiki/Project:Emacs/Emacs-like_editors
+# for alternatives.
+app-editors/jasspa-microemacs
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-03-21)
 # musl has no support for nss subsystem.
 sys-auth/libnss-nis
+sys-auth/libnss-compat
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-03-21)
 # Needs a port no musl. Uses glibc-specific termio and __getppid.
@@ -40,6 +51,8 @@ sys-boot/systemd-boot
 
 # rust-bin requires a glibc system
 dev-lang/rust-bin
+mail-client/thunderbird-bin
+www-client/firefox-bin
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-03-20)
 #  No source builds for musl

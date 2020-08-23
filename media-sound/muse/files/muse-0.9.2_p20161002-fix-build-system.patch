@@ -20,7 +20,15 @@ Fix build system to properly install files and prevent underlinking.
  
  
  dnl ==============================================================
-@@ -178,19 +178,12 @@
+@@ -67,6 +67,7 @@
+ AC_PROG_CPP
+ AC_SEARCH_LIBS([strerror],[cposix])
+ AC_PROG_RANLIB
++AM_PROG_AR
+ 
+ 
+ dnl ==============================================================
+@@ -178,19 +179,12 @@
  # this is really libcdk's configuration, needs to be reviewed if correct
  # see src/ncursesgui/libcdk
  if test x$want_ncurses_gui = xyes; then
@@ -46,7 +54,7 @@ Fix build system to properly install files and prevent underlinking.
  
    if test x$have_ncurses_h = xyes; then
      AC_DEFINE([GUI_RUBIK], 1, [Have ncurses GUI])
-@@ -326,8 +319,13 @@
+@@ -326,8 +320,13 @@
  
  
  dnl documentation
@@ -62,7 +70,7 @@ Fix build system to properly install files and prevent underlinking.
  
  
  dnl ==============================================================
-@@ -402,6 +400,7 @@
+@@ -402,6 +401,7 @@
  
  AC_CONFIG_FILES([
  Makefile

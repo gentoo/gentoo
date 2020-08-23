@@ -36,14 +36,13 @@ PATCHES=(
 	"${FILESDIR}"/install-i7z_rw_registers.patch
 	"${FILESDIR}"/use_stdbool.patch
 	"${FILESDIR}"/nehalem.patch
+	"${FILESDIR}"/gcc-10.patch
+	"${FILESDIR}"/typos.patch
 )
 
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_configure() {
-	# Workaround to build with gcc-10 until I find a patch
-	append-cflags -fcommon
-
 	tc-export CC PKG_CONFIG
 	cd GUI || die
 	use qt5 && eqmake5 ${PN}_GUI.pro

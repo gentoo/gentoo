@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BDEPEND="
 	sys-devel/gcc[objc]
@@ -22,7 +22,7 @@ BDEPEND="
 RDEPEND="
 	app-arch/bzip2:=
 	dev-libs/icu:=
-	gnustep-base/gnustep-base
+	gnustep-base/gnustep-base:=
 	media-sound/wavpack
 	sys-libs/zlib
 "

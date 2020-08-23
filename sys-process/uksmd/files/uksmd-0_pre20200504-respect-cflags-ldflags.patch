@@ -1,0 +1,15 @@
+diff -Naur a/Makefile b/Makefile
+--- a/Makefile	2019-05-19 16:36:31.000000000 +0300
++++ b/Makefile	2019-07-24 18:12:29.444896030 +0300
+@@ -1,8 +1,8 @@
+ PROG = uksmd
+ OBJS = uksmd.o
+-PREFIX ?= /usr/local
+-CFLAGS = -O3 -Wall -Wextra -pedantic -pipe -fstack-protector-strong -fno-plt
+-LDFLAGS = -lprocps -lcap-ng
++PREFIX ?= /usr
++CFLAGS += -Wextra -pedantic -fstack-protector-strong -fno-plt
++LDFLAGS += -lprocps -lcap-ng
+ 
+ all: build
+ 

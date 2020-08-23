@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+<email>netmon@gentoo.org</email>
+</maintainer>
+<longdescription>
+Th[is package] contains a collection of applications written in C to help
+both analyze and visualize MPTCP packet traces.
+</longdescription>
+</pkgmetadata>

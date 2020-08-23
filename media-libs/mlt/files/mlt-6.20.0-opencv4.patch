@@ -1,0 +1,45 @@
+From f4329c7e8f4704d3f8e8f2a96bd774e6d966194b Mon Sep 17 00:00:00 2001
+From: martin <martin.sandsmark@kde.org>
+Date: Tue, 7 Apr 2020 19:48:01 +0000
+Subject: [PATCH] fix opencv4 support (#545)
+
+---
+ src/modules/opencv/configure | 17 +++++++++++++----
+ 1 file changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/src/modules/opencv/configure b/src/modules/opencv/configure
+index 36851f678..4e7fdcf4a 100755
+--- a/src/modules/opencv/configure
++++ b/src/modules/opencv/configure
+@@ -26,18 +26,27 @@ else
+ 		exit 0
+ 	fi
+ 
+-    pkg-config --atleast-version=3.1.0 'opencv'
++	opencvname=opencv
++	pkg-config "$opencvname"
++	if [ $? -ne 0 ]
++	then
++		# Try v4, they renamed
++		opencvname=opencv4
++	fi
++
++	pkg-config --atleast-version=3.1.0 "$opencvname"
++
+ 	if [ $? -eq 0 ]
+ 	then
+-                result=`pkg-config --libs opencv | grep "opencv_tracking"`
++                result=`pkg-config --libs "$opencvname" | grep "opencv_tracking"`
+                 if [ -z "$result" ]
+                 then
+                         echo "- OpenCV tracking contrib module NOT found, disabling OpenCV modules"
+                         touch ../disable-opencv
+                         exit 0
+                 else
+-                        echo "CFLAGS += $(pkg-config --cflags opencv)" >> config.mak
+-                        echo "LDFLAGS += $(pkg-config --libs opencv)" >> config.mak
++                        echo "CFLAGS += $(pkg-config --cflags "$opencvname")" >> config.mak
++                        echo "LDFLAGS += $(pkg-config --libs "$opencvname")" >> config.mak
+                 fi
+ 	else
+ 	    echo "- OpenCV >= 3.1.0 NOT found: disabling"

@@ -1,0 +1,91 @@
+https://github.com/randombit/botan/commit/df73ee690c5795be586cd4df3e33253113a0dcdf
+https://github.com/randombit/botan/commit/d9d6d7a593da135d2046aeb8a9e05e967d90f538
+
+diff --git a/src/tests/test_pkcs11_high_level.cpp b/src/tests/test_pkcs11_high_level.cpp
+index 47a5bf5e56..07dc86ef21 100644
+--- a/src/tests/test_pkcs11_high_level.cpp
++++ b/src/tests/test_pkcs11_high_level.cpp
+@@ -909,6 +909,15 @@ BOTAN_REGISTER_TEST("pkcs11-rsa", PKCS11_RSA_Tests);
+ 
+ /***************************** PKCS11 ECDSA *****************************/
+ 
++#if defined(BOTAN_HAS_ECC_GROUP)
++std::vector<uint8_t> encode_ec_point_in_octet_str(const Botan::PointGFp& point)
++   {
++   std::vector<uint8_t> enc;
++   DER_Encoder(enc).encode(point.encode(PointGFp::UNCOMPRESSED), OCTET_STRING);
++   return enc;
++   }
++#endif
++
+ #if defined(BOTAN_HAS_ECDSA)
+ 
+ Test::Result test_ecdsa_privkey_import()
+@@ -976,13 +985,6 @@ Test::Result test_ecdsa_privkey_export()
+    return result;
+    }
+ 
+-std::vector<uint8_t> encode_ec_point_in_octet_str(const Botan::PointGFp& point)
+-   {
+-   std::vector<uint8_t> enc;
+-   DER_Encoder(enc).encode(point.encode(PointGFp::UNCOMPRESSED), OCTET_STRING);
+-   return enc;
+-   }
+-
+ Test::Result test_ecdsa_pubkey_import()
+    {
+    Test::Result result("PKCS11 import ECDSA public key");
+diff --git a/src/tests/test_pkcs11_high_level.cpp b/src/tests/test_pkcs11_high_level.cpp
+index 07dc86ef21..c77e8ea42e 100644
+--- a/src/tests/test_pkcs11_high_level.cpp
++++ b/src/tests/test_pkcs11_high_level.cpp
+@@ -28,10 +28,14 @@
+    #include <botan/der_enc.h>
+ #endif
+ 
+-#if defined (BOTAN_HAS_PUBLIC_KEY_CRYPTO)
++#if defined(BOTAN_HAS_PUBLIC_KEY_CRYPTO)
+    #include <botan/pubkey.h>
+ #endif
+ 
++#if defined(BOTAN_HAS_ECC_GROUP)
++   #include <botan/ec_group.h>
++#endif
++
+ #if defined(BOTAN_HAS_RSA) && defined(BOTAN_HAS_PKCS11)
+    #include <botan/rsa.h>
+    #include <botan/p11_rsa.h>
+@@ -909,7 +913,7 @@ BOTAN_REGISTER_TEST("pkcs11-rsa", PKCS11_RSA_Tests);
+ 
+ /***************************** PKCS11 ECDSA *****************************/
+ 
+-#if defined(BOTAN_HAS_ECC_GROUP)
++#if defined(BOTAN_HAS_ECC_GROUP) && (defined(BOTAN_HAS_ECDSA) || defined(BOTAN_HAS_ECDH))
+ std::vector<uint8_t> encode_ec_point_in_octet_str(const Botan::PointGFp& point)
+    {
+    std::vector<uint8_t> enc;
+diff --git a/src/tests/unit_x509.cpp b/src/tests/unit_x509.cpp
+index eaae358420..d9b7858898 100644
+--- a/src/tests/unit_x509.cpp
++++ b/src/tests/unit_x509.cpp
+@@ -603,7 +603,7 @@ Test::Result test_verify_gost2012_cert()
+    {
+    Test::Result result("X509 GOST-2012 certificates");
+ 
+-#if defined(BOTAN_HAS_GOST_34_10_2012) && defined(BOTAN_HAS_STREEBOG)
++#if defined(BOTAN_HAS_GOST_34_10_2012) && defined(BOTAN_HAS_STREEBOG) && defined(BOTAN_HAS_EMSA1)
+    try
+       {
+       Botan::X509_Certificate root_cert(Test::data_file("x509/gost/gost_root.pem"));
+@@ -1600,6 +1600,11 @@ class X509_Cert_Unit_Tests final : public Test
+                continue;
+ #endif
+ 
++#if !defined(BOTAN_HAS_EMSA1)
++            if(algo != "RSA" && algo != "Ed25519")
++               continue;
++#endif
++
+             std::unique_ptr<Botan::Private_Key> key = make_a_private_key(algo);
+ 
+             if(key == nullptr)

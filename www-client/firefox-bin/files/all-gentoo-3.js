@@ -13,3 +13,10 @@ pref("browser.EULA.override", true);
 
 // We believe in user choice - disable DNS-over-HTTPS by default
 defaultPref("network.trr.mode", 5);
+
+// Normandy web service allows upstream to push changes
+// like changed default preferences or even add-ons to users
+// without the need to re-release a new version. Because this
+// happens without any user prompt we believe this should be
+// disabled by default.
+defaultPref("app.normandy.enabled", false);

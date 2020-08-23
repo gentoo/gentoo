@@ -9,10 +9,11 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_BRANCH="master"
 else
 	SRC_URI="https://gitweb.gentoo.org/proj/catalyst.git/snapshot/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
+DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1 ${SRC_ECLASS}
 
@@ -23,30 +24,63 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="ccache doc +iso kernel_linux system-bootloader"
 
-DEPEND="
-	app-text/asciidoc
+COMMON_DEPEND="
 	>=dev-python/snakeoil-0.6.5[${PYTHON_USEDEP}]
+	dev-python/toml[${PYTHON_USEDEP}]
+"
+DEPEND="
+	${COMMON_DEPEND}
+	app-text/asciidoc
 "
 RDEPEND="
-	>=dev-python/snakeoil-0.6.5[${PYTHON_USEDEP}]
+	${COMMON_DEPEND}
 	>=dev-python/pydecomp-0.3[${PYTHON_USEDEP}]
 	app-arch/lbzip2
-	app-crypt/shash
+	app-arch/tar[xattr]
+	dev-vcs/git
 	sys-fs/dosfstools
-	!kernel_FreeBSD? ( || ( app-arch/tar[xattr] app-arch/libarchive[xattr] ) )
-	kernel_FreeBSD? ( app-arch/libarchive[xattr] )
-	amd64? ( >=sys-boot/syslinux-3.72 )
-	x86? ( >=sys-boot/syslinux-3.72 )
+	sys-fs/squashfs-tools-ng
 	ccache? ( dev-util/ccache )
-	iso? ( virtual/cdrtools )
-	kernel_linux? ( app-misc/zisofs-tools >=sys-fs/squashfs-tools-2.1 )
+
+	iso? (
+		virtual/cdrtools
+
+		alpha? (
+			dev-libs/libisoburn
+		)
+		ia64?  (
+			dev-libs/libisoburn
+			sys-boot/grub[grub_platforms_efi-64]
+			sys-fs/mtools
+		)
+		ppc?   (
+			dev-libs/libisoburn
+			sys-boot/grub:2[grub_platforms_ieee1275]
+		)
+		ppc64? (
+			dev-libs/libisoburn
+			sys-boot/grub:2[grub_platforms_ieee1275]
+		)
+		sparc? (
+			dev-libs/libisoburn
+			sys-boot/grub:2[grub_platforms_ieee1275]
+		)
+	)
+
+	amd64? ( >=sys-boot/syslinux-3.72 )
+	x86?   ( >=sys-boot/syslinux-3.72 )
 "
-PDEPEND="system-bootloader? ( >=sys-apps/memtest86+-5.01-r4
-				sys-boot/grub:2
-				amd64? ( sys-boot/grub[grub_platforms_efi-32,grub_platforms_efi-64] )
-				x86? ( sys-boot/grub[grub_platforms_efi-32] )
-				sys-boot/syslinux
-				sys-boot/shim )"
+PDEPEND="
+	system-bootloader? (
+		>=sys-apps/memtest86+-5.01-r4
+		sys-boot/grub:2
+		sys-boot/shim
+		sys-boot/syslinux
+
+		amd64? ( sys-boot/grub[grub_platforms_efi-32,grub_platforms_efi-64] )
+		x86?   ( sys-boot/grub[grub_platforms_efi-32] )
+	)
+"
 
 python_prepare_all() {
 	python_setup

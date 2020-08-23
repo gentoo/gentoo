@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>dolsen@gentoo.org</email>
+		<name>Brian Dolbec</name>
+	</maintainer>
 	<longdescription lang="en">
 		The BuildBot-www package is the base or common code used for the other
 		user interface packages such as the waterfall and console views.

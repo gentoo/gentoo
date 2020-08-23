@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour" # test-suite: needs a port 
 inherit haskell-cabal
 
 DESCRIPTION="Fast XML generation library"
-HOMEPAGE="http://hackage.haskell.org/package/xmlgen"
+HOMEPAGE="https://hackage.haskell.org/package/xmlgen"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"

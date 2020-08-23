@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="Python wrapper for the Graphviz Agraph data structure"
-HOMEPAGE="http://pygraphviz.github.io/"
+HOMEPAGE="https://pygraphviz.github.io/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc x86 ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 x86 ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 

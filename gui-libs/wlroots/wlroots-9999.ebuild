@@ -23,7 +23,8 @@ REQUIRED_USE="?? ( elogind systemd )"
 
 DEPEND="
 	>=dev-libs/libinput-1.9.0:0=
-	>=dev-libs/wayland-1.17.0
+	>=dev-libs/wayland-1.18.0
+	>=dev-libs/wayland-protocols-1.17.0
 	media-libs/mesa[egl,gles2,gbm]
 	virtual/libudev
 	x11-libs/libdrm
@@ -44,6 +45,7 @@ RDEPEND="
 "
 BDEPEND="
 	>=dev-libs/wayland-protocols-1.17
+	>=dev-util/meson-0.54.0
 	virtual/pkgconfig
 "
 
@@ -51,7 +53,6 @@ src_configure() {
 	# xcb-util-errors is not on Gentoo Repository (and upstream seems inactive?)
 	local emesonargs=(
 		"-Dxcb-errors=disabled"
-		-Dlibcap=$(usex filecaps enabled disabled)
 		-Dxcb-icccm=$(usex icccm enabled disabled)
 		-Dxwayland=$(usex X enabled disabled)
 		-Dx11-backend=$(usex x11-backend enabled disabled)

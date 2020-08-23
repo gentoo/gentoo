@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	SRC_URI="http://repo.or.cz/w/smatch.git/snapshot/${PV}.tar.gz -> ${P}.tar.gz
 		mirror://gentoo/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 	S=${WORKDIR}/${PN}
 fi
 
@@ -23,12 +23,14 @@ IUSE=""
 
 RDEPEND="dev-db/sqlite"
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
 
 	sed -i \
 		-e '/^CFLAGS =/{s:=:+=:;s:-O2 -finline-functions:${CPPFLAGS}:}' \
+		-e 's:pkg-config:$(PKG_CONFIG):' \
 		Makefile || die
 }
 
@@ -40,6 +42,7 @@ _emake() {
 		AR="$(tc-getAR)" \
 		CC="$(tc-getCC)" \
 		LD='$(CC)' \
+		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
 		HAVE_GTK2=no \
 		HAVE_LLVM=no \
 		HAVE_LIBXML=no \

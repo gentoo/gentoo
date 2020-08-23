@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{3_6,3_7} )
 
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit autotools python-any-r1 readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="SPICE server"
@@ -12,7 +12,7 @@ SRC_URI="https://www.spice-space.org/download/releases/spice-server/${P}.tar.bz2
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 IUSE="libressl lz4 sasl smartcard static-libs gstreamer"
 
 # the libspice-server only uses the headers of libcacard

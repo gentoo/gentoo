@@ -1,0 +1,49 @@
+From f58b44d73442986eeffec7431e59b7d19d214c1b Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Tue, 24 Mar 2020 21:17:05 +0100
+Subject: [PATCH] Fix build with Qt 5.15.0
+
+QPainterPath is no longer included via qtransform.h (since
+5.15.0-beta2, 50d2acdc93b4de2ba56eb67787e2bdcb21dd4bea in qtbase.git).
+---
+ src/modules/qt/filter_qtext.cpp   | 1 +
+ src/modules/qt/graph.cpp          | 1 +
+ src/modules/qt/producer_qtext.cpp | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/src/modules/qt/filter_qtext.cpp b/src/modules/qt/filter_qtext.cpp
+index c3de1fadc..c3e10f1a3 100644
+--- a/src/modules/qt/filter_qtext.cpp
++++ b/src/modules/qt/filter_qtext.cpp
+@@ -21,6 +21,7 @@
+ #include <framework/mlt.h>
+ #include <framework/mlt_log.h>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QString>
+ 
+ static QRectF get_text_path( QPainterPath* qpath, mlt_properties filter_properties, const char* text, double scale )
+diff --git a/src/modules/qt/graph.cpp b/src/modules/qt/graph.cpp
+index 6d4d669ca..7e91bb12f 100644
+--- a/src/modules/qt/graph.cpp
++++ b/src/modules/qt/graph.cpp
+@@ -18,6 +18,7 @@
+  */
+ 
+ #include "graph.h"
++#include <QPainterPath>
+ #include <QVector>
+ #include <math.h>
+ 
+diff --git a/src/modules/qt/producer_qtext.cpp b/src/modules/qt/producer_qtext.cpp
+index 603c2b780..ff95a8e26 100644
+--- a/src/modules/qt/producer_qtext.cpp
++++ b/src/modules/qt/producer_qtext.cpp
+@@ -26,6 +26,7 @@
+ #include <QImage>
+ #include <QColor>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QFont>
+ #include <QString>
+ #include <QTextCodec>

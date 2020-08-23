@@ -10,7 +10,7 @@ inherit autotools versionator java-pkg-2 java-pkg-simple
 MY_P="${PN}-$(replace_version_separator 3 .Fork)"
 
 DESCRIPTION="Fork of Tomcat Native that incorporates various patches"
-HOMEPAGE="http://netty.io/wiki/forked-tomcat-native.html"
+HOMEPAGE="https://netty.io/wiki/forked-tomcat-native.html"
 SRC_URI="https://github.com/netty/netty-tcnative/archive/${MY_P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"

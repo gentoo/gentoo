@@ -1,8 +1,8 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-PYTHON_COMPAT=( python3_6 )
+EAPI=7
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -13,7 +13,7 @@ fi
 inherit ${SCM} distutils-r1
 
 DESCRIPTION="Command-line tools for maintaining a workspace of projects for ROS"
-HOMEPAGE="http://wiki.ros.org/rosinstall http://wiki.ros.org/roslocate"
+HOMEPAGE="https://wiki.ros.org/rosinstall https://wiki.ros.org/roslocate"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 	KEYWORDS=""

@@ -9,11 +9,11 @@ inherit linux-info
 
 DESCRIPTION="Microsemi Adaptec RAID Controller Command Line Utility"
 HOMEPAGE="https://www.microsemi.com/"
-SRC_URI="https://download.adaptec.com/raid/storage_manager/${PN}_${MY_PV}.zip"
+SRC_URI="http://download.adaptec.com/raid/storage_manager/${PN}_${MY_PV}.zip"
 
 LICENSE="Microsemi"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 
 BDEPEND="app-arch/unzip"
 

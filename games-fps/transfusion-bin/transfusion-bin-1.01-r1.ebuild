@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit eutils
 
 MY_PN="${PN/-bin/}"
 DESCRIPTION="Blood remake"
-HOMEPAGE="http://www.transfusion-game.com/"
+HOMEPAGE="https://www.transfusion-game.com/"
 SRC_URI="mirror://sourceforge/blood/${MY_PN}-1.0-linux.i386.zip
 	mirror://sourceforge/blood/${MY_PN}-patch-${PV}-linux.i386.zip
 	mirror://gentoo/${MY_PN}.png"

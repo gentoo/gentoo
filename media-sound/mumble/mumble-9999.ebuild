@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -118,18 +118,18 @@ src_compile() {
 
 multilib_src_install() {
 	local dir=$(usex debug debug release)
-	dolib.so "${dir}/${MULTILIB_ABI_FLAG}"/libmumble.so*
+	insinto /usr/$(get_libdir)/${PN}
+	doins "${dir}/${MULTILIB_ABI_FLAG}"/libmumble.so*
 	if multilib_is_native_abi; then
 		dobin "${dir}"/mumble
-		dolib.so "${dir}"/libcelt0.so* "${dir}"/plugins/lib*.so*
+		doins "${dir}"/libcelt0.so* "${dir}"/plugins/lib*.so*
 	fi
 }
 
 src_install() {
 	multilib_foreach_abi multilib_src_install
 
-	newdoc README.Linux README
-	dodoc CHANGES
+	dodoc CHANGES README.md
 	dobin scripts/mumble-overlay
 
 	insinto /usr/share/services
@@ -150,7 +150,7 @@ pkg_preinst() {
 pkg_postinst() {
 	xdg_pkg_postinst
 	echo
-	elog "Visit http://mumble.sourceforge.net/ for futher configuration instructions."
+	elog "Visit https://wiki.mumble.info/ for futher configuration instructions."
 	elog "Run mumble-overlay to start the OpenGL overlay (after starting mumble)."
 	echo
 }

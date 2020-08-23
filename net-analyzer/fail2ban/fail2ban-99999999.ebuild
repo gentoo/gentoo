@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_SINGLE_IMPL=1
 
 inherit bash-completion-r1 distutils-r1 git-r3 systemd
@@ -42,9 +42,7 @@ python_prepare_all() {
 }
 
 python_compile() {
-	if python_is_python3; then
-		./fail2ban-2to3 || die
-	fi
+	./fail2ban-2to3 || die
 	distutils-r1_python_compile
 }
 

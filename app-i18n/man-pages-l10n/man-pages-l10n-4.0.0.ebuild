@@ -11,7 +11,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux"
 # omit pt-BR and ro for now, because they each install only two man pages
 MY_L10N=(de fr nl pl)
 IUSE="${MY_L10N[@]/#/l10n_}"
@@ -29,8 +29,6 @@ BDEPEND="app-text/po4a
 DOCS=(AUTHORS.md CHANGES.md README.md)
 
 src_prepare() {
-	echo "*** IUSE=${IUSE}"
-	echo "*** REQUIRED_USE=${REQUIRED_USE}"
 	default
 	sed -i -e "/^SUBDIRS/s/=.*/= ${L10N//-/_}/" po/Makefile.{am,in} || die
 

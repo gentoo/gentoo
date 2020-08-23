@@ -1,0 +1,19 @@
+https://sources.debian.org/patches/fuseiso/20070708-3.2/03-prevent-integer-overflow.patch/
+https://bugs.gentoo.org/713328
+----
+Description: Prevent integer overflow in ZISO code
+Author: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+
+--- a/src/isofs.c
++++ b/src/isofs.c
+@@ -1618,6 +1618,10 @@
+ };
+ 
+ static int isofs_real_read_zf(isofs_inode *inode, char *out_buf, size_t size, off_t offset) {
++    if( inode->zf_block_shift > 17 ) {
++        fprintf(stderr, "isofs_real_read_zf: can't handle ZF block size of 2^%d\n", inode->zf_block_shift);
++        return -EIO;
++    }
+     int zf_block_size = 1 << inode->zf_block_shift;
+     int zf_start = offset / zf_block_size;
+     int zf_end = (offset + size) / zf_block_size;

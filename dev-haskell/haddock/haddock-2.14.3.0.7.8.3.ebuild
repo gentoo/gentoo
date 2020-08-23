@@ -10,13 +10,13 @@ CABAL_FEATURES+=" nocabaldep"
 inherit haskell-cabal pax-utils
 
 DESCRIPTION="A documentation-generation tool for Haskell libraries"
-HOMEPAGE="http://www.haskell.org/haddock/"
+HOMEPAGE="https://www.haskell.org/haddock/"
 #SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 SRC_URI="http://code.haskell.org/~slyfox/snapshots/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RESTRICT=test # many test depends are not keyworded yet

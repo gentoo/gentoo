@@ -1,0 +1,29 @@
+https://sourceforge.net/p/vice-emu/patches/218/
+
+Index: configure.proto
+===================================================================
+--- a/configure.proto	(revision 37525)
++++ b/configure.proto	(working copy)
+@@ -1275,6 +1275,14 @@
+   fi
+ 
+   if test x"$found_sdl2" != "xyes"; then
++    PKG_CHECK_MODULES(SDL2, sdl2, [
++      use_sdl_prefix=no
++      use_sdl2_prefix=no
++      found_sdl2=yes
++      VICE_CFLAGS="$VICE_CFLAGS $SDL2_CFLAGS"
++      VICE_CXXFLAGS="$VICE_CXXFLAGS $SDL2_CFLAGS"
++      LIBS="$LIBS $SDL2_LIBS"
++    ], [
+     dnl Check for sdl2-config
+     if test x"$sdl2_config" != "xno"; then
+       user_CFLAGS="$CFLAGS"
+@@ -1311,6 +1319,7 @@
+       CFLAGS="$user_CFLAGS"
+       CXXFLAGS="$user_CXXFLAGS"
+     fi
++    ])
+   fi
+ 
+   dnl fail if SDL2 ui was requested, otherwise restore flags and continue

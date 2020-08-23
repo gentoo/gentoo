@@ -1,0 +1,18 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9481c46..b347fab 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -107,13 +107,11 @@ else()
+ 
+ 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+ 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wextra")
+-	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
+ 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wshadow")
+ 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wwrite-strings")
+ 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wmissing-prototypes")
+ 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wbad-function-cast")
+ 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pedantic")
+-	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pedantic-errors")
+ 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fstack-protector-all")
+ 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99")
+ 

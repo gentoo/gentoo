@@ -94,7 +94,6 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	>=app-misc/pax-utils-0.1.10
-	!<sys-devel/bison-2.7
 	doc? ( sys-apps/texinfo )
 "
 RDEPEND="${COMMON_DEPEND}

@@ -11,7 +11,6 @@
 	<flag name="anonperm">Permit anonymous to change file permissions</flag>
 	<flag name="anonren">Permit anonymous to rename files</flag>
 	<flag name="anonres">Permit anonymous to resume file transfers</flag>
-	<flag name="charconv">Enables charset conversion</flag>
 	<flag name="implicittls">Enable TLS on Port 990</flag>
 	<flag name="noiplog">Disables logging of IP addresses</flag>
 	<flag name="paranoidmsg">Display paranoid messages instead of normal

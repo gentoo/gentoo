@@ -21,7 +21,7 @@ SRC_URI="https://github.com/rubyzip/rubyzip/archive/v${PV}.tar.gz -> ${P}-git.tg
 
 LICENSE="Ruby"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 RDEPEND=""
@@ -48,4 +48,7 @@ all_ruby_prepare() {
 
 	# Add missing requires
 	sed -i -e '1irequire "forwardable"; require "pathname"' test/input_stream_test.rb || die
+
+	# Fix broken test that uses native endian
+	sed -i -e '/pack/ s/LLS/VVv/' test/file_extract_test.rb || die
 }

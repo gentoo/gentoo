@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>lxde@gentoo.org</email>
-		<name>Gentoo LXDE Project</name>
-	</maintainer>
-	<longdescription>LXMusic is a simple GUI XMMS2 client with minimal functionality. It can do nothing more than playing music files.</longdescription>
-	<upstream>
-		<remote-id type="sourceforge">lxde</remote-id>
-	</upstream>
+  <!-- maintainer-needed -->
+  <upstream>
+    <remote-id type="sourceforge">lxde</remote-id>
+  </upstream>
 </pkgmetadata>

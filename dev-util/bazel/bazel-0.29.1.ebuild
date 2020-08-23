@@ -8,7 +8,9 @@ inherit bash-completion-r1 java-pkg-2 multiprocessing
 DESCRIPTION="Fast and correct automated build system"
 HOMEPAGE="https://bazel.build/"
 
-SRC_URI="https://github.com/bazelbuild/bazel/releases/download/${PV}/${P}-dist.zip"
+GLIBC_GETTID_PATCH="${P}-rename-gettid-functions.patch"
+SRC_URI="https://github.com/bazelbuild/bazel/releases/download/${PV}/${P}-dist.zip
+	https://raw.githubusercontent.com/clearlinux-pkgs/bazel/adefd9046582cb52f39579033132e6265ef6ddb0/rename-gettid-functions.patch -> ${GLIBC_GETTID_PATCH}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -51,6 +53,9 @@ pkg_setup() {
 src_unpack() {
 	# Only unpack the main distfile
 	unpack ${P}-dist.zip
+	pushd third_party/grpc/src >/dev/null || die
+	eapply "${DISTDIR}/${GLIBC_GETTID_PATCH}"
+	popd >/dev/null || die
 }
 
 src_prepare() {

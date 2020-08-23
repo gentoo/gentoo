@@ -16,7 +16,7 @@ SRC_URI="mirror://debian/pool/main/i/${PN}/${MY_P}.orig.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 DEPEND="${PYTHON_DEPS}"

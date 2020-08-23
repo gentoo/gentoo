@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit leechcraft
+inherit xdg-utils leechcraft
 
 DESCRIPTION="Monocle, the modular document viewer for LeechCraft"
 
@@ -13,20 +13,23 @@ IUSE="debug +djvu doc +fb2 +mobi +pdf +postscript"
 
 REQUIRED_USE="postscript? ( pdf )"
 
-CDEPEND="~app-leechcraft/lc-core-${PV}
-	dev-qt/qtnetwork:5
-	dev-qt/qtwidgets:5
+DEPEND="~app-leechcraft/lc-core-${PV}
 	dev-qt/qtconcurrent:5
+	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
+	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	pdf? ( app-text/poppler[qt5] )
-	djvu? ( app-text/djvu )"
+	djvu? ( app-text/djvu )
+	pdf? ( app-text/poppler:= )
+"
 
-RDEPEND="${CDEPEND}
-	postscript? ( app-text/ghostscript-gpl )"
+RDEPEND="${DEPEND}
+	postscript? ( app-text/ghostscript-gpl )
+"
 
-DEPEND="${CDEPEND}
-	doc? ( app-doc/doxygen[dot] )"
+BDEPEND="
+	doc? ( app-doc/doxygen[dot] )
+"
 
 src_configure() {
 	local mycmakeargs=(
@@ -37,10 +40,18 @@ src_configure() {
 		-DENABLE_MONOCLE_PDF=$(usex pdf)
 		-DENABLE_MONOCLE_POSTRUS=$(usex postscript)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	use doc && dodoc -r "${CMAKE_BUILD_DIR}"/out/html/*
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }

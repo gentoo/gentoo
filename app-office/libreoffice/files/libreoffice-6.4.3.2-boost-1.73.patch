@@ -1,0 +1,118 @@
+From 55c724b93dfd4c9a1afb10d60fbc2d7a9a66cf61 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Caol=C3=A1n=20McNamara?= <caolanm@redhat.com>
+Date: Wed, 29 Jan 2020 12:44:52 +0000
+Subject: replace boost::bimap in sdext pdfimport
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+the error message with boost 1.69 and gcc 10 is so ungodly its easier to throw
+bimap out and use something simpler
+
+Change-Id: Ie324a0b81931bbd427483878a87beeca455ada18
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/87683
+Tested-by: Jenkins
+Reviewed-by: Caolán McNamara <caolanm@redhat.com>
+---
+ sdext/source/pdfimport/inc/pdfiprocessor.hxx  | 12 ++++--------
+ sdext/source/pdfimport/tree/pdfiprocessor.cxx | 21 ++++++++++++---------
+ 2 files changed, 16 insertions(+), 17 deletions(-)
+
+diff --git a/sdext/source/pdfimport/inc/pdfiprocessor.hxx b/sdext/source/pdfimport/inc/pdfiprocessor.hxx
+index 89f9d601b7b0..9e08d6a6a765 100644
+--- a/sdext/source/pdfimport/inc/pdfiprocessor.hxx
++++ b/sdext/source/pdfimport/inc/pdfiprocessor.hxx
+@@ -37,9 +37,6 @@
+ #include "treevisitorfactory.hxx"
+ #include "genericelements.hxx"
+ 
+-#include <boost/bimap/bimap.hpp>
+-#include <boost/bimap/unordered_set_of.hpp>
+-
+ namespace pdfi
+ {
+ 
+@@ -160,10 +157,8 @@ namespace pdfi
+         typedef std::unordered_map<sal_Int32,FontAttributes> IdToFontMap;
+         typedef std::unordered_map<FontAttributes,sal_Int32,FontAttrHash> FontToIdMap;
+ 
+-        typedef boost::bimaps::bimap<
+-                             boost::bimaps::unordered_set_of<GraphicsContext, GraphicsContextHash>,
+-                             boost::bimaps::unordered_set_of<sal_Int32>
+-                            > GCToIdBiMap;
++        typedef std::unordered_map<sal_Int32,GraphicsContext> IdToGCMap;
++        typedef std::unordered_map<GraphicsContext, sal_Int32, GraphicsContextHash> GCToIdMap;
+ 
+         typedef std::vector<GraphicsContext> GraphicsContextStack;
+ 
+@@ -178,7 +173,8 @@ namespace pdfi
+ 
+         GraphicsContextStack               m_aGCStack;
+         sal_Int32                          m_nNextGCId;
+-        GCToIdBiMap                        m_aGCToId;
++        IdToGCMap                          m_aIdToGC;
++        GCToIdMap                          m_aGCToId;
+ 
+         ImageContainer                     m_aImages;
+ 
+diff --git a/sdext/source/pdfimport/tree/pdfiprocessor.cxx b/sdext/source/pdfimport/tree/pdfiprocessor.cxx
+index c6baa7fee8b2..ed2eaf6510b9 100644
+--- a/sdext/source/pdfimport/tree/pdfiprocessor.cxx
++++ b/sdext/source/pdfimport/tree/pdfiprocessor.cxx
+@@ -54,6 +54,7 @@ namespace pdfi
+     m_aFontToId(),
+     m_aGCStack(),
+     m_nNextGCId( 1 ),
++    m_aIdToGC(),
+     m_aGCToId(),
+     m_aImages(),
+     m_nPages(0),
+@@ -65,12 +66,13 @@ namespace pdfi
+     aDefFont.isBold     = false;
+     aDefFont.isItalic   = false;
+     aDefFont.size       = 10*PDFI_OUTDEV_RESOLUTION/72;
+-    m_aIdToFont[ 0 ]    = aDefFont;
+-    m_aFontToId[ aDefFont ] = 0;
++    m_aIdToFont.insert({0, aDefFont});
++    m_aFontToId.insert({aDefFont, 0});
+ 
+     GraphicsContext aDefGC;
+     m_aGCStack.push_back( aDefGC );
+-    m_aGCToId.insert(GCToIdBiMap::relation(aDefGC, 0));
++    m_aGCToId.insert({aDefGC, 0});
++    m_aIdToGC.insert({0, aDefGC});
+ }
+ 
+ void PDFIProcessor::setPageNum( sal_Int32 nPages )
+@@ -468,12 +470,13 @@ const FontAttributes& PDFIProcessor::getFont( sal_Int32 nFontId ) const
+ sal_Int32 PDFIProcessor::getGCId( const GraphicsContext& rGC )
+ {
+     sal_Int32 nGCId = 0;
+-    auto it = m_aGCToId.left.find( rGC );
+-    if( it != m_aGCToId.left.end() )
++    auto it = m_aGCToId.find( rGC );
++    if( it != m_aGCToId.end() )
+         nGCId = it->second;
+     else
+     {
+-        m_aGCToId.insert(GCToIdBiMap::relation(rGC, m_nNextGCId));
++        m_aGCToId.insert({rGC, m_nNextGCId});
++        m_aIdToGC.insert({m_nNextGCId, rGC});
+         nGCId = m_nNextGCId;
+         m_nNextGCId++;
+     }
+@@ -483,9 +486,9 @@ sal_Int32 PDFIProcessor::getGCId( const GraphicsContext& rGC )
+ 
+ const GraphicsContext& PDFIProcessor::getGraphicsContext( sal_Int32 nGCId ) const
+ {
+-    auto it = m_aGCToId.right.find( nGCId );
+-    if( it == m_aGCToId.right.end() )
+-        it = m_aGCToId.right.find( 0 );
++    auto it = m_aIdToGC.find( nGCId );
++    if( it == m_aIdToGC.end() )
++        it = m_aIdToGC.find( 0 );
+     return it->second;
+ }
+ 
+-- 
+cgit v1.2.1

@@ -35,7 +35,7 @@ BDEPEND="
 "
 DEPEND="
 	dev-libs/libfmt:=
-	media-libs/glew:0
+	media-libs/glew:0=
 	media-libs/libpng:0=
 	sys-libs/zlib:=
 	virtual/glu

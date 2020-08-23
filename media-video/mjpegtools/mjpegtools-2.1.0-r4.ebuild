@@ -11,12 +11,12 @@ SRC_URI="mirror://sourceforge/mjpeg/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="1"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="cpu_flags_x86_mmx dv gtk png quicktime sdl sdlgfx static-libs"
 REQUIRED_USE="sdlgfx? ( sdl )"
 
 BDEPEND="
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 RDEPEND="
 	virtual/jpeg:0=[${MULTILIB_USEDEP}]

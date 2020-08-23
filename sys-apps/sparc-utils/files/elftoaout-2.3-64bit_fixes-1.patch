@@ -1,0 +1,261 @@
+Submitted By: Jim Gifford (patches at jg555 dot com)
+Date: 2006-01-03
+Initial Package Version: 2.3
+Origin: Dave Miller
+Upstream Status: Unknown
+Description: Fixes 64 Bit Issues with Elftoaout
+
+	https://marc.info/?l=linux-sparc&m=113617505627794&w=2
+ 
+diff -Naur elftoaout-2.3/elftoaout.c elftoaout-2.3/elftoaout.c
+--- a/elftoaout-2.3/elftoaout.c	2000-06-03 20:20:12.000000000 +0000
++++ b/elftoaout-2.3/elftoaout.c	2006-01-03 22:33:28.000000000 +0000
+@@ -20,16 +20,36 @@
+  */
+ #include <stdio.h>
+ #include <stdlib.h>
+-#ifdef linux
+ #include <linux/elf.h>
+-#define ELFDATA2MSB   2
+-#else
+-#include <sys/elf.h>
+-#endif
+-
+-#define swab16(x)  (((x)<<8&0xFF00)|((x)>>8&0x00FF))
+-#define swab32(x)  (((x)<<24&0xFF000000)|((x)<<8&0x00FF0000)|((x)>>24&0x000000FF)|((x)>>8&0x0000FF00))
+-#define swab64(x)  ((((unsigned long long)(swab32((unsigned int)x))) << 32) | (swab32(((unsigned long long)x)>>32)))
++#include <sys/types.h>
++
++static inline u_int16_t swab16(u_int16_t x)
++{
++	return (((x << 8)  & 0xFF00) |
++		((x >> 8) & 0x00FF));
++}
++
++static inline u_int32_t swab32(u_int32_t x)
++{
++	return (((x << 24) & 0xFF000000) |
++		((x <<  8) & 0x00FF0000) |
++		((x >> 24) & 0x000000FF) |
++		((x >>  8) & 0x0000FF00));
++}
++
++static inline u_int64_t swab64(u_int64_t x)
++{
++	return ((u_int64_t)
++	((u_int64_t)(((u_int64_t)x & (u_int64_t)0x00000000000000ffULL) << 56) |
++	 (u_int64_t)(((u_int64_t)x & (u_int64_t)0x000000000000ff00ULL) << 40) |
++	 (u_int64_t)(((u_int64_t)x & (u_int64_t)0x0000000000ff0000ULL) << 24) |
++	 (u_int64_t)(((u_int64_t)x & (u_int64_t)0x00000000ff000000ULL) <<  8) |
++	 (u_int64_t)(((u_int64_t)x & (u_int64_t)0x000000ff00000000ULL) >>  8) |
++	 (u_int64_t)(((u_int64_t)x & (u_int64_t)0x0000ff0000000000ULL) >> 24) |
++	 (u_int64_t)(((u_int64_t)x & (u_int64_t)0x00ff000000000000ULL) >> 40) |
++	 (u_int64_t)(((u_int64_t)x & (u_int64_t)0xff00000000000000ULL) >> 56)));
++}
++
+ 
+ /* We carry a.out header here in order to compile the thing on Solaris */
+ 
+@@ -37,14 +57,14 @@
+ #define	CMAGIC	    0x01030108
+ 
+ typedef struct {
+-	unsigned long	a_magic;	/* magic number */
+-	unsigned long	a_text;		/* size of text segment */
+-	unsigned long	a_data;		/* size of initialized data */
+-	unsigned long	a_bss;		/* size of uninitialized data */
+-	unsigned long	a_syms;		/* size of symbol table || checksum */
+-	unsigned long	a_entry;	/* entry point */
+-	unsigned long	a_trsize;	/* size of text relocation */
+-	unsigned long	a_drsize;	/* size of data relocation */
++	u_int32_t	a_magic;	/* magic number */
++	u_int32_t	a_text;		/* size of text segment */
++	u_int32_t	a_data;		/* size of initialized data */
++	u_int32_t	a_bss;		/* size of uninitialized data */
++	u_int32_t	a_syms;		/* size of symbol table || checksum */
++	u_int32_t	a_entry;	/* entry point */
++	u_int32_t	a_trsize;	/* size of text relocation */
++	u_int32_t	a_drsize;	/* size of data relocation */
+ } Exec;
+ 
+ 
+@@ -56,17 +76,16 @@
+ 	int swab;
+ 	int sparc64;
+ 	int csum;
+-	/* friend void Usage(void); */
+ } Application;
+ 
+ typedef struct {
+ 	Elf32_Phdr *tab;
+-	unsigned len;
++	unsigned int len;
+ } ProgTable;
+ 
+ typedef struct {
+ 	Elf64_Phdr *tab;
+-	unsigned len;
++	unsigned int len;
+ } ProgTable64;
+ 
+ void get_ptab(ProgTable *t, FILE *inp, const Elf32_Ehdr *h);
+@@ -75,9 +94,9 @@
+ void print_ptab64(ProgTable64 *t);
+ 
+ typedef struct {
+-	char *buf;                /* Image data */
+-	unsigned len;             /* Length of buffer */
+-	unsigned bss;             /* Length of extra data */
++	unsigned char *buf;       /* Image data */
++	unsigned int len;         /* Length of buffer */
++	unsigned int bss;         /* Length of extra data */
+ } Segment;
+ 
+ void load_image(Segment *t, const ProgTable *h, FILE *inp);
+@@ -105,7 +124,8 @@
+ 
+ 	parse_args(&prog, argc, argv);
+ 
+-	if (prog.version) Version();
++	if (prog.version)
++		Version();
+ 
+ 	if (freopen(prog.iname, "r", stdin) == NULL) {
+ 		fprintf(stderr, "Cannot open \"%s\"\n", prog.iname);
+@@ -141,7 +161,8 @@
+ 	exit(0);
+ }
+ 
+-void parse_args( Application *t, unsigned argc, const char **argv ){
++void parse_args( Application *t, unsigned argc, const char **argv )
++{
+ 	const char *arg;
+ 	union {
+ 		char c[4];
+@@ -185,8 +206,8 @@
+ 	if (t->csum && t->sun4_mode) Usage ();	/* Checksum lives in header. */
+ }
+ 
+-void get_header(Elf32_Ehdr *t, FILE *inp) {
+-
++void get_header(Elf32_Ehdr *t, FILE *inp)
++{
+         if (fread((void*) t, sizeof(Elf64_Ehdr), 1, inp) != 1) {
+ 		fprintf(stderr, "Read error on header\n");
+ 		exit(1);
+@@ -249,8 +270,9 @@
+ 	}
+ }
+ 
+-void get_ptab(ProgTable *t, FILE *inp, const Elf32_Ehdr *h) {
+-	unsigned x;
++void get_ptab(ProgTable *t, FILE *inp, const Elf32_Ehdr *h)
++{
++	unsigned int x;
+ 
+ 	/** fprintf(stderr, "Program header table off = 0x%x\n",
+ 		(unsigned) h->e_phoff); **/
+@@ -294,8 +316,9 @@
+ 	}
+ }
+ 
+-void get_ptab64(ProgTable64 *t, FILE *inp, const Elf64_Ehdr *h) {
+-	unsigned x;
++void get_ptab64(ProgTable64 *t, FILE *inp, const Elf64_Ehdr *h)
++{
++	unsigned int x;
+ 
+ 	if (h->e_phoff == 0) {
+ 		fprintf(stderr, "No Program Header Table\n");
+@@ -332,8 +355,9 @@
+ 	}
+ }
+ 
+-void print_ptab(ProgTable *t) {
+-	unsigned x;
++void print_ptab(ProgTable *t)
++{
++	unsigned int x;
+ 	const Elf32_Phdr *p;
+ 
+ 	for (x = 0; x < t->len; x++) {
+@@ -374,8 +398,9 @@
+ 	}
+ }
+ 
+-void print_ptab64(ProgTable64 *t) {
+-	unsigned x;
++void print_ptab64(ProgTable64 *t)
++{
++	unsigned int x;
+ 	const Elf64_Phdr *p;
+ 
+ 	for (x = 0; x < t->len; x++) {
+@@ -387,8 +412,11 @@
+ 			break;
+ 		case PT_LOAD:
+ 			printf("Loadable to 0x%Lx[0x%Lx] from 0x%Lx[0x%Lx] align 0x%Lx",
+-				p->p_vaddr, p->p_memsz, p->p_offset, p->p_filesz,
+-				p->p_align);
++			       (unsigned long long) p->p_vaddr,
++			       (unsigned long long) p->p_memsz,
++			       (unsigned long long) p->p_offset,
++			       (unsigned long long) p->p_filesz,
++			       (unsigned long long) p->p_align);
+ 			break;
+ 		case PT_DYNAMIC:
+ 			printf("Dynamic");
+@@ -416,9 +444,10 @@
+ 	}
+ }
+ 
+-void load_image(Segment *t, const ProgTable *tp, FILE *inp) {
++void load_image(Segment *t, const ProgTable *tp, FILE *inp)
++{
+ 	Elf32_Phdr *p, *q;
+-	unsigned x;
++	unsigned int x;
+ 	unsigned long off, len;
+ 
+ 	p = 0;
+@@ -484,9 +513,10 @@
+ 	}
+ }
+ 
+-void load_image64(Segment *t, const ProgTable64 *tp, FILE *inp) {
++void load_image64(Segment *t, const ProgTable64 *tp, FILE *inp)
++{
+ 	Elf64_Phdr *p, *q;
+-	unsigned x;
++	unsigned int x;
+ 	unsigned long long off, len;
+ 
+ 	p = 0;
+@@ -547,7 +577,8 @@
+ 	}
+ }
+ 
+-void store_image(Segment *t, FILE *out) {
++void store_image(Segment *t, FILE *out)
++{
+ 	Exec ohdb;
+ 
+ 	if (prog.swab) {
+@@ -585,13 +616,15 @@
+ 	return;
+ }
+ 
+-void Usage(){
++void Usage()
++{
+ 	if (prog.version) Version();
+ 	fprintf(stderr, "Usage: elftoaout [-o output] [-c|-b] [-V] input\n");
+ 	exit(1);
+ }
+ 
+-void Version(){
++void Version()
++{
+ 	printf("elftoaout 2.3: ELF to a.out convertor for SPARC and SPARC64 bootstraps\n");
+ }
+ 

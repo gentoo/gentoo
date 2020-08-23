@@ -207,17 +207,13 @@ src_install() {
 			"${ED}${dest}"/lib-python/*3/test/test_{tcl,tk,ttk*}.py || die
 	fi
 
+	local -x EPYTHON=pypy3
 	local -x PYTHON=${ED}${dest}/pypy3-c
-	# we can't use eclass function since PyPy is dumb and always gives
-	# paths relative to the interpreter
-	local PYTHON_SITEDIR=${EPREFIX}/usr/lib/pypy3.6/site-packages
-	python_export pypy3 EPYTHON
 
 	echo "EPYTHON='${EPYTHON}'" > epython.py || die
+	python_moduleinto /usr/lib/pypy3.6/site-packages
 	python_domodule epython.py
 
 	einfo "Byte-compiling Python standard library..."
-
-	# compile the installed modules
 	python_optimize "${ED}${dest}"
 }

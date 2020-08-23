@@ -1,0 +1,25 @@
+From 8a250730c8d73feea322f5a5beeaa16cbaa05d3a Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Fri, 22 May 2020 04:58:39 +1200
+Subject: Fix direct calling of ar
+
+---
+ uulib/Makefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/uulib/Makefile.in b/uulib/Makefile.in
+index 06a820d..65bae91 100644
+--- a/uulib/Makefile.in
++++ b/uulib/Makefile.in
+@@ -69,7 +69,7 @@ new:		clean
+ 
+ libuu.a:	$(UULIB_OBJ)
+ 	rm -f $@
+-	ar r $@ $(UULIB_OBJ)
++	$(AR) r $@ $(UULIB_OBJ)
+ 	-$(RANLIB) $@
+ 
+ .c.o:
+-- 
+2.26.2
+

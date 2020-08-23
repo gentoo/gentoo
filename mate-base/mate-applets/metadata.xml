@@ -5,6 +5,11 @@
 		<email>mate@gentoo.org</email>
 		<name>Gentoo MATE Desktop</name>
 	</maintainer>
+	<use>
+		<flag name="cpupower">
+			Enable support for cpu frequency manipulation using <pkg>sys-power/cpupower</pkg>
+		</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">mate-desktop/mate-applets</remote-id>
 	</upstream>

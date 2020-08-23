@@ -12,7 +12,7 @@ SRC_URI="https://ftp.samba.org/pub/cwrap/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ppc ppc64 sparc x86"
 
 # Work around a problem with >=dev-util/cmake-3.3.0 (bug #558340)
 # Because of this we cannot use cmake-multilib_src_configure() here.

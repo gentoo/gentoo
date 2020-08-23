@@ -1,12 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools eutils
 
 DESCRIPTION="A simple console game, where you drive a car across the moon's surface"
-HOMEPAGE="http://www.seehuhn.de/comp/moon-buggy.html"
-SRC_URI="http://www.seehuhn.de/data/${P}.tar.gz"
+HOMEPAGE="https://www.seehuhn.de/pages/moon-buggy.html"
+SRC_URI="https://m.seehuhn.de/programs/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

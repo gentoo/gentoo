@@ -1,0 +1,13 @@
+grab PAGE_SHIFT from a location where it is defined nowadays
+
+--- a/machine/m_linux.c
++++ b/machine/m_linux.c
+@@ -68,7 +68,7 @@
+ #include <sys/vfs.h>
+ 
+ #include <sys/param.h>		/* for HZ */
+-#include <asm/page.h>		/* for PAGE_SHIFT */
++#include <sys/user.h>		/* for PAGE_SHIFT */
+ 
+ #if 0
+ #include <linux/proc_fs.h>	/* for PROC_SUPER_MAGIC */

@@ -4,6 +4,18 @@
   <maintainer type="person">
     <email>zmedico@gentoo.org</email>
   </maintainer>
+  <maintainer type="person">
+    <email>jakov.smolic@sartura.hr</email>
+    <name>Jakov Smolic</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>luka.perkov@sartura.hr</email>
+    <name>Luka Perkov</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
   <upstream>
     <remote-id type="github">iovisor/ply</remote-id>
   </upstream>

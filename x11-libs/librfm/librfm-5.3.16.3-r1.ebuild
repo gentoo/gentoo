@@ -35,7 +35,7 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
-	sed -i -e "s:-O2:${CFLAGS}:" m4/rfm-conditionals.m4 || die
+	sed -i -e "s|-O2|${CFLAGS}|" m4/rfm-conditionals.m4 || die
 	eautoreconf
 }
 

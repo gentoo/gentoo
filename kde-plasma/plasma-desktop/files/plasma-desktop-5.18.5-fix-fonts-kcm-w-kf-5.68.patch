@@ -1,0 +1,166 @@
+From e5e5f5ed51aadfac99bfbdf3d2db5be16a12443b Mon Sep 17 00:00:00 2001
+From: Ahmad Samir <a.samirh78@gmail.com>
+Date: Mon, 10 Aug 2020 13:50:36 +0200
+Subject: [PATCH] kcm_fonts: Make the font selection dialog select the correct
+ "Regular"-like style
+
+Due to KConfig dropping QFont styleName property (for "Regular"-like font
+styles, see [1] for more details), the font selection dialog invoked by the
+KCM could end up selecting the wrong style; this change sets the appropriate
+"Regular" style on the QFont object before invoking the font selection dialog
+to fix/workaround the issue.
+
+Note that in Plasma master branch the issue is handled differently, since
+we switched from QFontDialog to KFontChooserDialog (the latter has that
+logic built-in).
+
+[1] https://phabricator.kde.org/D27735
+
+CCBUG: 420287
+---
+ kcms/fonts/fonts.cpp                          | 61 +++++++++++++++++--
+ kcms/fonts/fonts.h                            |  1 +
+ kcms/fonts/package/contents/ui/FontWidget.qml |  7 +--
+ kcms/fonts/package/contents/ui/main.qml       |  4 +-
+ 4 files changed, 61 insertions(+), 12 deletions(-)
+
+diff --git a/kcms/fonts/fonts.cpp b/kcms/fonts/fonts.cpp
+index f771f6e51..c2ccdf777 100644
+--- a/kcms/fonts/fonts.cpp
++++ b/kcms/fonts/fonts.cpp
+@@ -53,23 +53,50 @@
+ /**** DLL Interface ****/
+ K_PLUGIN_FACTORY_WITH_JSON(KFontsFactory, "kcm_fonts.json", registerPlugin<KFonts>();)
+ 
++// If the styleName property is empty, then we want to set it to
++// the "Regular"-like style provided by the font, so that the font
++// selection dialog selects the correct style from the available styles
++// list; for more details see:
++// https://phabricator.kde.org/D27735 and https://phabricator.kde.org/D27785
++static QFont setRegularFontStyle(const QFont &font)
++{
++    if (!(font.styleName().isEmpty() && font.weight() == QFont::Normal)) {
++        return font;
++    }
++
++    QFont f(font);
++    QFontDatabase fdb;
++    const QStringList styles = fdb.styles(f.family());
++    for (const QString &s : styles) {
++        if (s == QLatin1String("Regular")
++            || s == QLatin1String("Normal")
++            || s == QLatin1String("Book")
++            || s == QLatin1String("Roman")) {
++            f.setStyleName(s);
++            return f;
++        }
++    }
++    return font;
++}
++
+ //from KFontRequester
+ // Determine if the font with given properties is available on the system,
+ // otherwise find and return the best fitting combination.
+ static QFont nearestExistingFont(const QFont &font)
+ {
+-    QFontDatabase dbase;
++    QFont _font = setRegularFontStyle(font);
+ 
++    QFontDatabase dbase;
+     // Initialize font data according to given font object.
+-    QString family = font.family();
+-    QString style = dbase.styleString(font);
+-    qreal size = font.pointSizeF();
++    QString family = _font.family();
++    QString style = dbase.styleString(_font);
++    qreal size = _font.pointSizeF();
+ 
+     // Check if the family exists.
+     const QStringList families = dbase.families();
+     if (!families.contains(family)) {
+         // Chose another family.
+-        family = QFontInfo(font).family(); // the nearest match
++        family = QFontInfo(_font).family(); // the nearest match
+         if (!families.contains(family)) {
+             family = families.count() ? families.at(0) : QStringLiteral("fixed");
+         }
+@@ -614,6 +641,30 @@ bool KFonts::isDefaults() const
+     return m_fontAASettings->isDefaults();
+ }
+ 
++void KFonts::adjustFont(const QFont &font, const QString &category)
++{
++    QFont _font = setRegularFontStyle(font);
++
++    bool ok = false;
++    QFont selFont = QFontDialog::getFont(&ok, _font, nullptr, i18n("Select Font"));
++
++    if (ok && !m_settings->isImmutable(category)) {
++        if (category == QLatin1String("font")) {
++            m_settings->setFont(selFont);
++        } else if (category == QLatin1String("menuFont")) {
++            m_settings->setMenuFont(selFont);
++        } else if (category == QLatin1String("toolBarFont")) {
++            m_settings->setToolBarFont(selFont);
++        } else if (category == QLatin1String("activeFont")) {
++            m_settings->setActiveFont(selFont);
++        } else if (category == QLatin1String("smallestReadableFont")) {
++            m_settings->setSmallestReadableFont(selFont);
++        } else if (category == QLatin1String("fixed")) {
++            m_settings->setFixed(selFont);
++        }
++    }
++}
++
+ void KFonts::adjustAllFonts()
+ {
+     QFont font = m_settings->font();
+diff --git a/kcms/fonts/fonts.h b/kcms/fonts/fonts.h
+index 51ed2ab60..5959e1995 100644
+--- a/kcms/fonts/fonts.h
++++ b/kcms/fonts/fonts.h
+@@ -153,6 +153,7 @@ public Q_SLOTS:
+     void save() override;
+     void defaults() override;
+     Q_INVOKABLE void adjustAllFonts();
++    Q_INVOKABLE void adjustFont(const QFont &font, const QString &category);
+ 
+ Q_SIGNALS:
+     void fontsHaveChanged();
+diff --git a/kcms/fonts/package/contents/ui/FontWidget.qml b/kcms/fonts/package/contents/ui/FontWidget.qml
+index b62dd3bf4..5a6be5128 100644
+--- a/kcms/fonts/package/contents/ui/FontWidget.qml
++++ b/kcms/fonts/package/contents/ui/FontWidget.qml
+@@ -57,11 +57,8 @@ FocusScope {
+             Kirigami.MnemonicData.enabled: false
+             focus: true
+             onClicked: {
+-                fontDialog.adjustAllFonts = false;
+-                fontDialog.currentCategory = root.category
+-                fontDialog.font = root.font;
+-                fontDialog.currentFont = root.font;
+-                fontDialog.open()
++                fontDialog.adjustAllFonts = false
++                kcm.adjustFont(root.font, root.category)
+             }
+             QtControls.ToolTip {
+                 visible: parent.hovered
+diff --git a/kcms/fonts/package/contents/ui/main.qml b/kcms/fonts/package/contents/ui/main.qml
+index 4a99c043a..e51fb21ba 100644
+--- a/kcms/fonts/package/contents/ui/main.qml
++++ b/kcms/fonts/package/contents/ui/main.qml
+@@ -264,9 +264,9 @@ KCM.SimpleKCM {
+                 property bool adjustAllFonts: false
+                 onAccepted: {
+                     if (adjustAllFonts) {
+-                        kcm.adjustAllFonts(font);
++                        kcm.adjustAllFonts()
+                     } else {
+-                        kcm.fontsSettings[currentCategory] = font;
++                        kcm.adjustFont(font, currentCategory)
+                     }
+                 }
+             }
+-- 
+GitLab
+

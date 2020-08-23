@@ -11,7 +11,7 @@ HOMEPAGE="https://vim-voom.github.com/ https://www.vim.org/scripts/script.php?sc
 SRC_URI="https://github.com/vim-voom/VOoM/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="CC0-1.0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"

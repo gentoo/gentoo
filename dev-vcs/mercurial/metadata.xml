@@ -6,7 +6,6 @@
 	</maintainer>
 	<use>
 		<flag name="chg">Support Mercurial command server client</flag>
-		<flag name="bugzilla">Support bugzilla integration.</flag>
 		<flag name="gpg">Support signing with GnuPG.</flag>
 		<flag name="tk">Install dev-lang/tk for hgk script.</flag>
 	</use>

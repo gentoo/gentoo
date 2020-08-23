@@ -8,7 +8,4 @@
 	<upstream>
 		<remote-id type="github">puppetlabs/leatherman</remote-id>
 	</upstream>
-	<longdescription lang="en">
-		A set of C++ Libraries.
-	</longdescription>
 </pkgmetadata>

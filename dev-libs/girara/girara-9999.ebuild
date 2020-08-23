@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,7 @@ IUSE="doc libnotify test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/glib:2
-	 dev-libs/json-c
+	 dev-libs/json-c:=
 	 >=x11-libs/gtk+-3.20:3
 	 >=x11-libs/pango-1.14
 	 libnotify? ( x11-libs/libnotify )"

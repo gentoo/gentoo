@@ -5,6 +5,10 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
+	<longdescription lang="en">
+		luasystem is a platform independent system call library for Lua.
+		Supports Lua >= 5.1 and luajit >= 2.0.0.
+	</longdescription>
 	<upstream>
 		<remote-id type="github">LuaDist2/luasystem</remote-id>
 	</upstream>

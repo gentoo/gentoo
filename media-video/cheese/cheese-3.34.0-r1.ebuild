@@ -3,14 +3,14 @@
 
 EAPI=7
 
-inherit gnome.org meson vala virtualx xdg
+inherit gnome.org gnome2-utils meson vala virtualx xdg
 
 DESCRIPTION="A cheesy program to take pictures and videos from your webcam"
 HOMEPAGE="https://wiki.gnome.org/Apps/Cheese"
 
 LICENSE="GPL-2+"
 SLOT="0/8" # subslot = libcheese soname version
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="gtk-doc +introspection test"
 RESTRICT="!test? ( test )"
 

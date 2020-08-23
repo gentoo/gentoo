@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="no capitalization on method names"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ppc sparc x86"
 IUSE=""
 
 RDEPEND="dev-perl/Devel-Symdump"

@@ -25,5 +25,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">logrotate/logrotate</remote-id>
+		<remote-id type="cpe">cpe:/a:logrotate_project:logrotate</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>chutzpah@gentoo.org</email>
+    <name>Patrick McLean</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>williamh@gentoo.org</email>
+    <name>William Hubbs</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>vpayno+gentoo@gmail.com</email>
+    <name>Victor Payno</name>
+  </maintainer>
+</pkgmetadata>

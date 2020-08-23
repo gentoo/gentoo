@@ -1,0 +1,14 @@
+--- a/lib/device/scan.c	2010-10-27 07:31:47.000000000 -0400
++++ b/lib/device/scan.c	2020-04-04 22:13:26.905977068 -0400
+@@ -32,6 +32,11 @@
+ #define	_PATH_MOUNTS	"/proc/mounts"
+ #endif
+ 
++/* Find mtab */
++#ifndef _PATH_MOUNTED
++#define _PATH_MOUNTED	"/etc/mtab"
++#endif
++
+ static char *
+ find_sysfs_mp(struct lib_context *lc)
+ {

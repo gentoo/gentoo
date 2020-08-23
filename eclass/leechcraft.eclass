@@ -39,6 +39,12 @@ fi
 HOMEPAGE="https://leechcraft.org/"
 LICENSE="Boost-1.0"
 
+DEPEND="
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+"
+RDEPEND="${DEPEND}"
+
 # @ECLASS-VARIABLE: LEECHCRAFT_PLUGIN_CATEGORY
 # @DEFAULT_UNSET
 # @DESCRIPTION:

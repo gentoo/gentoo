@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit linux-info autotools python-single-r1 user
 
@@ -103,4 +103,9 @@ src_configure() {
 	)
 	PYTHON3="${PYTHON}" \
 	econf "${myeconfargs[@]}"
+}
+
+src_install() {
+	default
+	python_optimize
 }

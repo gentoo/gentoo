@@ -12,7 +12,7 @@ inherit php-ext-source-r3 git-r3 autotools
 
 DESCRIPTION="PHP bindings for libvirt"
 HOMEPAGE="http://libvirt.org/php/"
-EGIT_REPO_URI="git://libvirt.org/libvirt-php.git"
+EGIT_REPO_URI="https://gitlab.com/libvirt/libvirt-php.git"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

@@ -13,6 +13,8 @@
 
 inherit readme.gentoo-r1
 
+DESCRIPTION="NVIDIA Accelerated Graphics Driver"
+HOMEPAGE="https://www.nvidia.com/Download/Find.aspx"
 DEPEND="sys-apps/pciutils"
 RESTRICT="bindist mirror test"
 
@@ -235,5 +237,5 @@ nvidia-driver_check() {
 	# nvidia-driver.eclass
 	nvidia-driver_check_gpu
 
-	use kernel_linux && nvidia-driver_check_kernel
+	use driver && use kernel_linux && nvidia-driver_check_kernel
 }

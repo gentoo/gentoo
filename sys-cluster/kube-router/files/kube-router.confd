@@ -9,3 +9,6 @@
 # RUN_ROUTER=false
 
 EXTRA_ARGS=''
+
+# Uncomment to enable health checks by supervise-daemon
+# KUBE_ROUTER_HEALTHCHECK_URI="localhost:20244/healthz"

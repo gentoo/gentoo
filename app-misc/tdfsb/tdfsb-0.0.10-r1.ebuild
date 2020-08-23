@@ -29,7 +29,7 @@ src_prepare() {
 		"${FILESDIR}"/${P}-debugging.patch \
 		"${FILESDIR}"/${P}-format-security.patch
 
-	sed -i -e "s:-O2:${CFLAGS} ${LDFLAGS}:" \
+	sed -i -e "s|-O2|${CFLAGS} ${LDFLAGS}|" \
 		-e "s:gcc:$(tc-getCC):" "${S}"/compile.sh || die
 }
 

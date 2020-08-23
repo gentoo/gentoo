@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: easily create sequences of incremented values"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=842"
 
 LICENSE="vim.org"
-KEYWORDS="~alpha amd64 ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ~ia64 ppc sparc x86"
 IUSE=""
 
 VIM_PLUGIN_HELPFILES="increment.txt"

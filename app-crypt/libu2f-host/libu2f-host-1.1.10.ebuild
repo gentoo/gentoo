@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,6 +24,8 @@ RDEPEND="${DEPEND}
 BDEPEND="virtual/pkgconfig"
 
 CONFIG_CHECK="~HIDRAW"
+
+PATCHES=( "${FILESDIR}/${P}-json-boolean.patch" )
 
 src_install() {
 	default

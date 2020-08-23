@@ -131,6 +131,9 @@ _kde.org_calculate_src_uri() {
 				kross)
 					_src_uri+="portingAids/"
 					;;
+				kxmlrpcclient)
+					[[ ${PV} = 5.70.* ]] || _src_uri+="portingAids/"
+					;;
 			esac
 			;;
 		kde-plasma)
@@ -171,7 +174,7 @@ _kde.org_calculate_live_repo() {
 	# @DESCRIPTION:
 	# This variable allows easy overriding of default kde mirror service
 	# (anongit) with anything else you might want to use.
-	EGIT_MIRROR=${EGIT_MIRROR:=https://anongit.kde.org}
+	EGIT_MIRROR=${EGIT_MIRROR:=https://invent.kde.org/kde}
 
 	if [[ ${PV} == ??.??.49.9999 && ${KDE_RELEASE_SERVICE} = true ]]; then
 		EGIT_BRANCH="release/$(ver_cut 1-2)"
@@ -250,11 +253,10 @@ kde.org_pkg_nofetch() {
 kde.org_src_unpack() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	if [[ ${KDE_BUILD_TYPE} = live ]]; then
-		git-r3_src_unpack
-	else
-		default
-	fi
+	case ${KDE_BUILD_TYPE} in
+		live) git-r3_src_unpack ;&
+		*) default ;;
+	esac
 }
 
 fi

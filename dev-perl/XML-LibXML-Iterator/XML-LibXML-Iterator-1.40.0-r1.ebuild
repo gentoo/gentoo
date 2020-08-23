@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Iterator class for XML::LibXML parsed documents"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ia64 ~ppc sparc x86"
+KEYWORDS="~alpha amd64 ~ia64 ~ppc sparc x86"
 IUSE=""
 
 DEPEND="dev-perl/XML-LibXML

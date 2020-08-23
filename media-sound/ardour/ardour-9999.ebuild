@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE='threads(+)'
-#EPYTHON='python2.7'
-inherit eutils toolchain-funcs flag-o-matic python-any-r1 waf-utils
+PLOCALES="cs de el en_GB es eu fr it ja nn pl pt pt_PT ru sv zh"
+inherit eutils toolchain-funcs flag-o-matic l10n python-any-r1 waf-utils
 
 DESCRIPTION="Digital Audio Workstation"
 HOMEPAGE="http://ardour.org/"
@@ -15,13 +15,13 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="mirror://gentoo/${P}.tar.bz2"
+	SRC_URI="https://community.ardour.org/src/Ardour-${PV}.0.tar.bz2"
 	S="${WORKDIR}/Ardour-${PV}.0"
 fi
 
 LICENSE="GPL-2"
 SLOT="6"
-IUSE="altivec doc jack cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
+IUSE="altivec doc jack nls phonehome cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
 
 RDEPEND="
 	>=dev-cpp/glibmm-2.32.0
@@ -60,6 +60,7 @@ RDEPEND="
 	dev-libs/sord
 	>=media-libs/suil-0.6.10
 	>=media-libs/lv2-1.4.0"
+#	!bundled-libs? ( media-sound/fluidsynth ) at leat libltc is missing to be able to unbundle...
 
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
@@ -77,10 +78,6 @@ pkg_setup() {
 
 src_prepare() {
 	eapply_user
-	if ! [[ ${PV} == *9999* ]]; then
-		eapply "${FILESDIR}"/${PN}-4.x-revision-naming.patch
-		touch "${S}/libs/ardour/revision.cc"
-	fi
 	sed 's/'full-optimization\'\ :\ \\[.*'/'full-optimization\'\ :\ \'\','/' -i "${S}"/wscript || die
 	MARCH=$(get-flag march)
 	OPTFLAGS=""
@@ -106,22 +103,30 @@ src_prepare() {
 	append-flags "-lboost_system"
 	python_fix_shebang "${S}"/wscript
 	python_fix_shebang "${S}"/waf
+	my_lcmsg() {
+		rm -f {gtk2_ardour,gtk2_ardour/appdata,libs/ardour,libs/gtkmm2ext}/po/${1}.po
+	}
+	l10n_for_each_disabled_locale_do my_lcmsg
 }
 
 src_configure() {
 	tc-export CC CXX
 	mkdir -p "${D}"
 	waf-utils_src_configure \
-                $(usex doc "--docs" '') \
-                $({ use altivec || use cpu_flags_x86_sse; } && echo "--fpu-optimization" || echo "--no-fpu-optimization") \
-                $(usex jack "--with-backends=alsa,jack" "--with-backends=alsa  --libjack=weak") \
-                --destdir="${D}" \
-                --prefix=/usr \
-                --configdir=/etc \
-                --nls \
-                --optimize
+		--destdir="${D}" \
+		--configdir=/etc \
+		--optimize \
+		$(usex doc "--docs" '') \
+		$({ use altivec || use cpu_flags_x86_sse; } && echo "--fpu-optimization" || echo "--no-fpu-optimization") \
+		$(usex jack "--with-backends=alsa,jack" "--with-backends=alsa  --libjack=weak") \
+		$(usex phonehome "--phone-home" "--no-phone-home") \
+		$(usex nls "--nls" "--no-nls")
+#not possible right now		--use-external-libs
 }
-
+src_compile() {
+	waf-utils_src_compile
+	use nls && waf-utils_src_compile i18n
+}
 src_install() {
 	waf-utils_src_install
 	mv ${PN}.1 ${PN}${SLOT}.1
@@ -131,8 +136,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "If you are using Ardour and want to keep its development alive"
-	elog "then please consider to make a donation upstream at ${HOMEPAGE}."
 	elog "Please do _not_ report problems with the package to ${PN} upstream."
 	elog "If you think you've found a bug, check the upstream binary package"
 	elog "before you report anything to upstream."

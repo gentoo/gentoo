@@ -12,7 +12,7 @@ SRC_URI="mirror://nongnu/${PN}/${P/_/-}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 [[ "${PV}" == *beta* ]] || \
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
 IUSE="selinux ibm static kernel_FreeBSD"
 
 CDEPEND="
@@ -65,7 +65,7 @@ src_prepare() {
 			'#hvsi:2345:respawn:/sbin/agetty -L 19200 hvsi0'
 		)
 	fi
-	(use arm || use mips || use sh || use sparc) && sed -i '/ttyS0/s:#::' inittab
+	(use arm || use mips || use sparc) && sed -i '/ttyS0/s:#::' inittab
 	if use kernel_FreeBSD ; then
 		sed -i \
 			-e 's/linux/cons25/g' \

@@ -17,7 +17,7 @@ SLOT="0/4"
 # linux x86/amd64/ppc/ppc64/arm
 # OSX ppc/amd64
 # AIX ppc/ppc64
-KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="-* amd64 arm arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 
 IUSE="largepages +debug minimal optimisememory test static-libs"
 RESTRICT="!test? ( test )"
@@ -25,7 +25,10 @@ RESTRICT="!test? ( test )"
 DEPEND="!ppc64? ( sys-libs/libunwind )"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/fix_ppc64el_FTBFS.patch )
+PATCHES=(
+	"${FILESDIR}"/fix_ppc64el_FTBFS.patch
+	"${FILESDIR}/2.8-musl-tests.patch"
+)
 
 S="${WORKDIR}/${MY_P}"
 

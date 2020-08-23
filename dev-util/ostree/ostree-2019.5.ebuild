@@ -32,7 +32,7 @@ COMMON_DEPEND="
 	ssl? (
 		gnutls? ( net-libs/gnutls )
 		!gnutls? ( dev-libs/openssl:0= ) )
-	>=sys-fs/fuse-2.9.2:*
+	>=sys-fs/fuse-2.9.2:0
 	sys-libs/zlib
 	libmount? ( sys-apps/util-linux )
 	selinux? ( sys-libs/libselinux )

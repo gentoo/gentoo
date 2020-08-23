@@ -1,0 +1,26 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+#
+# Motion OpenRC systemd service file
+
+
+[Unit]
+Description=Motion detection daemon
+After=local-fs.target network.target
+Documentation=man:motion(1)
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/motion -n -c /etc/motion/motion.conf
+StandardError=null
+
+User=motion
+Group=motion
+
+UMask=007
+WorkingDirectory=-/var/lib/motion
+
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,8 +9,8 @@ OFFICE_EXTENSIONS=(
 inherit office-ext-r1
 
 DESCRIPTION="Mathematics Formula Editor Extension"
-HOMEPAGE="http://extensions.libreoffice.org/extension-center/dmaths"
-SRC_URI="http://extensions.libreoffice.org/extension-center/${PN}/releases/${PV}/${PN}addon.oxt"
+HOMEPAGE="https://extensions.libreoffice.org/extension-center/dmaths"
+SRC_URI="https://extensions.libreoffice.org/extension-center/${PN}/releases/${PV}/${PN}addon.oxt"
 
 LICENSE="GPL-2"
 SLOT="0"

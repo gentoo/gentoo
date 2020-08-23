@@ -1,0 +1,27 @@
+From bde1ea09550a61b4a092cdf0e3ba8dca4200947a Mon Sep 17 00:00:00 2001
+From: Paul Wankadia <junyer@google.com>
+Date: Sun, 10 May 2020 07:12:35 -0700
+Subject: [PATCH] Lower the memory budget in TestCompile.InsufficientMemory.
+
+Fixes #256.
+
+Change-Id: I975c5f6f7a12dc86fedc0f3ab35f16295c18a7e8
+Reviewed-on: https://code-review.googlesource.com/c/re2/+/56150
+Reviewed-by: Paul Wankadia <junyer@google.com>
+---
+ re2/testing/compile_test.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/re2/testing/compile_test.cc b/re2/testing/compile_test.cc
+index 4598aa64..2096e2f0 100644
+--- a/re2/testing/compile_test.cc
++++ b/re2/testing/compile_test.cc
+@@ -236,7 +236,7 @@ TEST(TestCompile, InsufficientMemory) {
+       "^(?P<name1>[^\\s]+)\\s+(?P<name2>[^\\s]+)\\s+(?P<name3>.+)$",
+       Regexp::LikePerl, NULL);
+   EXPECT_TRUE(re != NULL);
+-  Prog* prog = re->CompileToProg(920);
++  Prog* prog = re->CompileToProg(850);
+   // If the memory budget has been exhausted, compilation should fail
+   // and return NULL instead of trying to do anything with NoMatch().
+   EXPECT_TRUE(prog == NULL);

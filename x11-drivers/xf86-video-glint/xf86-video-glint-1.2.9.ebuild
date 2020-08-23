@@ -7,7 +7,7 @@ inherit xorg-2
 
 DESCRIPTION="GLINT/Permedia video driver"
 
-KEYWORDS="~alpha amd64 ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ~ia64 ppc sparc x86"
 IUSE=""
 
 RDEPEND=">=x11-base/xorg-server-1.0.99"

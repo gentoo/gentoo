@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} pypy3 )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
@@ -15,11 +15,14 @@ SRC_URI="https://github.com/kevin1024/pytest-httpbin/archive/v${PV}.tar.gz -> ${
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	dev-python/httpbin[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
+"
+BDEPEND="
+	test? ( dev-python/requests[${PYTHON_USEDEP}] )
 "
 
 PATCHES=(

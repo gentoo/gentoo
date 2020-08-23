@@ -1,0 +1,38 @@
+https://github.com/proftpd/proftpd/issues/1027
+https://bugs.gentoo.org/726460
+
+From 6ac1c727ddfd70080b38097e5484390ec84ef9be Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Sun, 31 May 2020 17:55:08 +0100
+Subject: [PATCH 1/2] contrib/mod_ldap.c: fix SIGSEGV in mod_ldap:ldap_mod_init
+ ()
+
+The crash happens due to missing sentinel value in `pstrcat()`
+
+```c
+   feats = pstrcat(tmp_pool, feats, i != 0 ? ", " : "",
+     api_info.ldapai_extensions[i]);
+```
+
+The change is to add sentinel to `pstrcat()` call.
+
+Bug: https://github.com/proftpd/proftpd/issues/1027
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ contrib/mod_ldap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/contrib/mod_ldap.c
++++ b/contrib/mod_ldap.c
+@@ -3218,7 +3218,7 @@ static int ldap_mod_init(void) {
+ 
+         for (i = 0; api_info.ldapai_extensions[i]; i++) {
+           feats = pstrcat(tmp_pool, feats, i != 0 ? ", " : "",
+-            api_info.ldapai_extensions[i]);
++            api_info.ldapai_extensions[i], NULL);
+           ldap_memfree(api_info.ldapai_extensions[i]);
+         }
+ 
+-- 
+2.26.2
+

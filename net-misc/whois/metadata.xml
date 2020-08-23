@@ -5,6 +5,9 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
+	<use>
+		<flag name="xcrypt">Enable crypt through <pkg>sys-libs/libxcrypt</pkg> package</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">rfc1036/whois</remote-id>
 	</upstream>

@@ -1,0 +1,5 @@
+NAME = DARWIN
+COMPILER = $(TARGET_CC) -fwritable-strings -DACEDB4 -DPOSIX
+LINKER = $(TARGET_LD)
+
+LIBS = -lm

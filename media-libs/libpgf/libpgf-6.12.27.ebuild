@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="Library to load, handle and manipulate images in the PGF format"
-HOMEPAGE="http://www.libpgf.org/"
+HOMEPAGE="https://www.libpgf.org/"
 SRC_URI="https://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"

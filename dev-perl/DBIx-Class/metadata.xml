@@ -45,6 +45,7 @@
     <remote-id type="cpan-module">DBIx::Class::Relationship::Base</remote-id>
     <remote-id type="cpan-module">DBIx::Class::ResultClass::HashRefInflator</remote-id>
     <remote-id type="cpan-module">DBIx::Class::ResultSet</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::ResultSet::Pager</remote-id>
     <remote-id type="cpan-module">DBIx::Class::ResultSetColumn</remote-id>
     <remote-id type="cpan-module">DBIx::Class::ResultSetManager</remote-id>
     <remote-id type="cpan-module">DBIx::Class::ResultSource</remote-id>
@@ -54,6 +55,7 @@
     <remote-id type="cpan-module">DBIx::Class::ResultSourceProxy::Table</remote-id>
     <remote-id type="cpan-module">DBIx::Class::Row</remote-id>
     <remote-id type="cpan-module">DBIx::Class::SQLMaker</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::SQLMaker::ClassicExtensions</remote-id>
     <remote-id type="cpan-module">DBIx::Class::SQLMaker::LimitDialects</remote-id>
     <remote-id type="cpan-module">DBIx::Class::SQLMaker::OracleJoins</remote-id>
     <remote-id type="cpan-module">DBIx::Class::Schema</remote-id>
@@ -107,6 +109,7 @@
     <remote-id type="cpan-module">DBIx::Class::Storage::DBI::Sybase::Microsoft_SQL_Server::NoBindVars</remote-id>
     <remote-id type="cpan-module">DBIx::Class::Storage::DBI::UniqueIdentifier</remote-id>
     <remote-id type="cpan-module">DBIx::Class::Storage::DBI::mysql</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::Debug::PrettyTrace</remote-id>
     <remote-id type="cpan-module">DBIx::Class::Storage::Statistics</remote-id>
     <remote-id type="cpan-module">DBIx::Class::Storage::TxnScopeGuard</remote-id>
     <remote-id type="cpan-module">DBIx::Class::UTF8Columns</remote-id>

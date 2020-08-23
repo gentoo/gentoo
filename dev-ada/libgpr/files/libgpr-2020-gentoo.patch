@@ -1,0 +1,11 @@
+--- a/gpr/src/gpr-env.adb	2017-11-13 22:16:53.349083426 +0100
++++ b/gpr/src/gpr-env.adb	2017-11-13 22:17:22.692590351 +0100
+@@ -1948,6 +1948,8 @@
+ 
+       end if;
+ 
++      Add_Directories (Self, "/usr/share/gpr");
++
+       if Gpr_Prj_Path.all /= "" then
+          Add_Directories (Self, Gpr_Prj_Path.all);
+       end if;

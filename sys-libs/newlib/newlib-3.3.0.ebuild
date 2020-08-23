@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="ftp://sourceware.org/pub/newlib/${P}.tar.gz"
-	KEYWORDS="-* ~arm ~hppa ~m68k ~mips ~ppc ~ppc64 ~sh ~sparc ~x86"
+	KEYWORDS="-* ~arm ~hppa ~m68k ~mips ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 export CBUILD=${CBUILD:-${CHOST}}
@@ -48,6 +48,15 @@ pkg_setup() {
 			*) die "Use sys-devel/crossdev to build a newlib toolchain" ;;
 		esac
 	fi
+
+	case ${CTARGET} in
+		msp430*)
+			if ver_test $(gcc-version ${CTARGET}) -lt 10.1; then
+				# bug #717610
+				die "gcc for ${CTARGET} has to be 10.1 or above"
+			fi
+			;;
+	esac
 }
 
 src_configure() {

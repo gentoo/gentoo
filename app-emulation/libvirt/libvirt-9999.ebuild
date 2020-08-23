@@ -5,11 +5,11 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit autotools out-of-source bash-completion-r1 eutils linux-info python-any-r1 readme.gentoo-r1 systemd
+inherit meson bash-completion-r1 eutils linux-info python-any-r1 readme.gentoo-r1 systemd
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://libvirt.org/git/libvirt.git"
+	EGIT_REPO_URI="https://gitlab.com/libvirt/libvirt.git"
 	SRC_URI=""
 	KEYWORDS=""
 	SLOT="0"
@@ -20,7 +20,7 @@ else
 fi
 
 DESCRIPTION="C toolkit to manipulate virtual machines"
-HOMEPAGE="http://www.libvirt.org/"
+HOMEPAGE="https://www.libvirt.org/"
 LICENSE="LGPL-2.1"
 IUSE="
 	apparmor audit +caps +dbus dtrace firewalld fuse glusterfs iscsi
@@ -71,13 +71,12 @@ RDEPEND="
 	dbus? ( sys-apps/dbus )
 	dtrace? ( dev-util/systemtap )
 	firewalld? ( >=net-firewall/firewalld-0.6.3 )
-	fuse? ( >=sys-fs/fuse-2.8.6:= )
+	fuse? ( sys-fs/fuse:0= )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
 	iscsi? ( sys-block/open-iscsi )
 	iscsi-direct? ( >=net-libs/libiscsi-1.18.0 )
 	libssh? ( net-libs/libssh )
 	lvm? ( >=sys-fs/lvm2-2.02.48-r2[-device-mapper-only(-)] )
-	lxc? ( !sys-apps/systemd[-cgroup-hybrid(+)] )
 	nfs? ( net-fs/nfs-utils )
 	numa? (
 		>sys-process/numactl-2.0.2
@@ -125,7 +124,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-6.0.0-do-not-use-sysconf.patch
 	"${FILESDIR}"/${PN}-6.0.0-fix_paths_in_libvirt-guests_sh.patch
 )
 
@@ -218,82 +216,71 @@ src_prepare() {
 	default
 
 	# Tweak the init script:
-	cp "${FILESDIR}/libvirtd.init-r18" "${S}/libvirtd.init" || die
+	cp "${FILESDIR}/libvirtd.init-r19" "${S}/libvirtd.init" || die
 	sed -e "s/USE_FLAG_FIREWALLD/$(usex firewalld 'need firewalld' '')/" \
 		-i "${S}/libvirtd.init" || die "sed failed"
-
-	eautoreconf
 }
 
-my_src_configure() {
-	local myeconfargs=(
-		$(use_with apparmor)
-		$(use_with apparmor apparmor-profiles)
-		$(use_with audit)
-		$(use_with caps capng)
-		$(use_with dbus)
-		$(use_with dtrace)
-		$(use_with firewalld)
-		$(use_with fuse)
-		$(use_with glusterfs)
-		$(use_with glusterfs storage-gluster)
-		$(use_with iscsi storage-iscsi)
-		$(use_with iscsi-direct storage-iscsi-direct)
-		$(use_with libvirtd)
-		$(use_with libssh)
-		$(use_with lvm storage-lvm)
-		$(use_with lvm storage-mpath)
-		$(use_with lxc)
-		$(use_with macvtap)
-		$(use_enable nls)
-		$(use_with numa numactl)
-		$(use_with numa numad)
-		$(use_with openvz)
-		$(use_with parted storage-disk)
-		$(use_with pcap libpcap)
-		$(use_with policykit polkit)
-		$(use_with qemu)
-		$(use_with qemu yajl)
-		$(use_with rbd storage-rbd)
-		$(use_with sasl)
-		$(use_with selinux)
-		$(use_with udev)
-		$(use_with vepa virtualport)
-		$(use_with virt-network network)
-		$(use_with wireshark-plugins wireshark-dissector)
-		$(use_with xen libxl)
-		$(use_with zfs storage-zfs)
+src_configure() {
+	local emesonargs=(
+		$(meson_feature apparmor)
+		$(meson_use apparmor apparmor_profiles)
+		$(meson_feature audit)
+		$(meson_feature caps capng)
+		$(meson_feature dbus)
+		$(meson_feature dtrace)
+		$(meson_feature firewalld)
+		$(meson_feature fuse)
+		$(meson_feature glusterfs)
+		$(meson_feature glusterfs storage_gluster)
+		$(meson_feature iscsi storage_iscsi)
+		$(meson_feature iscsi-direct storage_iscsi_direct)
+		$(meson_feature libvirtd driver_libvirtd)
+		$(meson_feature libssh)
+		$(meson_feature lvm storage_lvm)
+		$(meson_feature lvm storage_mpath)
+		$(meson_feature lxc driver_lxc)
+		$(meson_feature macvtap)
+		$(meson_feature nls)
+		$(meson_feature numa numactl)
+		$(meson_feature numa numad)
+		$(meson_feature openvz driver_openvz)
+		$(meson_feature parted storage_disk)
+		$(meson_feature pcap libpcap)
+		$(meson_feature policykit polkit)
+		$(meson_feature qemu driver_qemu)
+		$(meson_feature qemu yajl)
+		$(meson_feature rbd storage_rbd)
+		$(meson_feature sasl)
+		$(meson_feature selinux)
+		$(meson_feature udev)
+		$(meson_feature vepa virtualport)
+		$(meson_feature virt-network driver_network)
+		$(meson_feature virtualbox driver_vbox)
+		$(meson_feature wireshark-plugins wireshark_dissector)
+		$(meson_feature xen driver_libxl)
+		$(meson_feature zfs storage_zfs)
 
-		--without-hal
-		--without-netcf
-		--without-sanlock
+		-Dhal=disabled
+		-Dnetcf=disabled
+		-Dsanlock=disabled
 
-		--with-esx
-		--with-init-script=systemd
-		--with-qemu-group=$(usex caps qemu root)
-		--with-qemu-user=$(usex caps qemu root)
-		--with-remote
-		--with-storage-fs
-		--with-vmware
+		-Ddriver_esx=enabled
+		-Dinit_script=systemd
+		-Dqemu_user=$(usex caps qemu root)
+		-Dqemu_group=$(usex caps qemu root)
+		-Ddriver_remote=enabled
+		-Dstorage_fs=enabled
+		-Ddriver_vmware=enabled
 
-		--disable-static
-		--disable-werror
-
-		--localstatedir=/var
-		--with-runstatedir=/run
-		--enable-dependency-tracking
+		--localstatedir="${EPREFIX}/var"
+		-Drunstatedir="${EPREFIX}/run"
 	)
 
-	if use virtualbox && has_version app-emulation/virtualbox-ose; then
-		myeconfargs+=( --with-vbox=/usr/lib/virtualbox-ose/ )
-	else
-		myeconfargs+=( $(use_with virtualbox vbox) )
-	fi
-
-	econf "${myeconfargs[@]}"
+	meson_src_configure
 }
 
-my_src_test() {
+src_test() {
 	# remove problematic tests, bug #591416, bug #591418
 	sed -i -e 's#commandtest$(EXEEXT) # #' \
 		-e 's#virfirewalltest$(EXEEXT) # #' \
@@ -302,14 +289,11 @@ my_src_test() {
 		tests/Makefile
 
 	export VIR_TEST_DEBUG=1
-	HOME="${T}" emake check
+	meson_src_test
 }
 
-my_src_install() {
-	emake DESTDIR="${D}" \
-		SYSTEMD_UNIT_DIR="$(systemd_get_systemunitdir)" install
-
-	find "${D}" -name '*.la' -delete || die
+src_install() {
+	meson_src_install
 
 	# Remove bogus, empty directories. They are either not used, or
 	# libvirtd is able to create them on demand
@@ -323,20 +307,17 @@ my_src_install() {
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
 
-	systemd_install_serviced \
-		"${FILESDIR}"/libvirtd.service.conf libvirtd.service
-
 	systemd_newtmpfilesd "${FILESDIR}"/libvirtd.tmpfiles.conf libvirtd.conf
 
 	newinitd "${S}/libvirtd.init" libvirtd
 	newinitd "${FILESDIR}/libvirt-guests.init-r4" libvirt-guests
-	newinitd "${FILESDIR}/virtlockd.init-r1" virtlockd
-	newinitd "${FILESDIR}/virtlogd.init-r1" virtlogd
+	newinitd "${FILESDIR}/virtlockd.init-r2" virtlockd
+	newinitd "${FILESDIR}/virtlogd.init-r2" virtlogd
 
 	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd
 	newconfd "${FILESDIR}/libvirt-guests.confd" libvirt-guests
 
-	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r2")
+	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r3")
 	DISABLE_AUTOFORMATTING=true
 	readme.gentoo_create_doc
 }

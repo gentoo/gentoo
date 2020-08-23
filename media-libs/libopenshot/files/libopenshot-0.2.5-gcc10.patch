@@ -1,0 +1,58 @@
+From 13290364e7bea54164ab83d973951f2898ad9e23 Mon Sep 17 00:00:00 2001
+From: Stefan Strogin <steils@gentoo.org>
+Date: Sat, 16 May 2020 02:33:37 +0300
+Subject: [PATCH] FFmpegUtilities: replace variable definition with statement
+ expression
+
+It is needed to avoid multiple definitions of AV_GET_CODEC_CONTEXT,
+which is considered as an error with '-fno-common' which is default
+since gcc-10.
+
+Fixes: #511
+
+Upstream-Status: Submitted
+[https://github.com/OpenShot/libopenshot/pull/512]
+Signed-off-by: Stefan Strogin <steils@gentoo.org>
+---
+ include/FFmpegUtilities.h | 18 ++++++++----------
+ 1 file changed, 8 insertions(+), 10 deletions(-)
+
+diff --git a/include/FFmpegUtilities.h b/include/FFmpegUtilities.h
+index 62d64df..b4ec951 100644
+--- a/include/FFmpegUtilities.h
++++ b/include/FFmpegUtilities.h
+@@ -163,11 +163,10 @@
+ 		#define AV_FREE_CONTEXT(av_context) avcodec_free_context(&av_context)
+ 		#define AV_GET_CODEC_TYPE(av_stream) av_stream->codecpar->codec_type
+ 		#define AV_FIND_DECODER_CODEC_ID(av_stream) av_stream->codecpar->codec_id
+-		auto AV_GET_CODEC_CONTEXT = [](AVStream* av_stream, AVCodec* av_codec) { \
+-			AVCodecContext *context = avcodec_alloc_context3(av_codec); \
+-			avcodec_parameters_to_context(context, av_stream->codecpar); \
+-			return context; \
+-		};
++		#define AV_GET_CODEC_CONTEXT(av_stream, av_codec) \
++			({ AVCodecContext *context = avcodec_alloc_context3(av_codec); \
++			   avcodec_parameters_to_context(context, av_stream->codecpar); \
++			   context; })
+ 		#define AV_GET_CODEC_PAR_CONTEXT(av_stream, av_codec) av_codec;
+ 		#define AV_GET_CODEC_FROM_STREAM(av_stream,codec_in)
+ 		#define AV_GET_CODEC_ATTRIBUTES(av_stream, av_context) av_stream->codecpar
+@@ -199,11 +198,10 @@
+ 		#define AV_FREE_CONTEXT(av_context) avcodec_free_context(&av_context)
+ 		#define AV_GET_CODEC_TYPE(av_stream) av_stream->codecpar->codec_type
+ 		#define AV_FIND_DECODER_CODEC_ID(av_stream) av_stream->codecpar->codec_id
+-		auto AV_GET_CODEC_CONTEXT = [](AVStream* av_stream, AVCodec* av_codec) { \
+-			AVCodecContext *context = avcodec_alloc_context3(av_codec); \
+-			avcodec_parameters_to_context(context, av_stream->codecpar); \
+-			return context; \
+-		};
++		#define AV_GET_CODEC_CONTEXT(av_stream, av_codec) \
++			({ AVCodecContext *context = avcodec_alloc_context3(av_codec); \
++			   avcodec_parameters_to_context(context, av_stream->codecpar); \
++			   context; })
+ 		#define AV_GET_CODEC_PAR_CONTEXT(av_stream, av_codec) av_codec;
+ 		#define AV_GET_CODEC_FROM_STREAM(av_stream,codec_in)
+ 		#define AV_GET_CODEC_ATTRIBUTES(av_stream, av_context) av_stream->codecpar
+-- 
+2.26.2
+

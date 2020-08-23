@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/mstorsjo/${PN}.git"
 else
 	SRC_URI="mirror://sourceforge/opencore-amr/${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
 DESCRIPTION="VisualOn AAC encoder library"

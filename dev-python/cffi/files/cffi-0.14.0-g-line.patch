@@ -1,0 +1,250 @@
+From 19ff1036043ae40ff3d8a2e1a6a793219e1ec378 Mon Sep 17 00:00:00 2001
+From: Armin Rigo <arigo@tunes.org>
+Date: Tue, 26 May 2020 15:51:56 +0200
+Subject: [PATCH] Issue #454
+
+Try harder to avoid #line directives confuse the rest of pre-parsing
+---
+ cffi/cparser.py               | 37 ++++++++++++++++++++++++---
+ testing/cffi0/test_parsing.py | 48 ++++++++++++++++++++++++++++++++++-
+ 2 files changed, 81 insertions(+), 4 deletions(-)
+
+diff --git a/cffi/cparser.py b/cffi/cparser.py
+index d7069a73..d9784655 100644
+--- a/cffi/cparser.py
++++ b/cffi/cparser.py
+@@ -29,6 +29,7 @@ _r_comment = re.compile(r"/\*.*?\*/|//([^\n\\]|\\.)*?$",
+ _r_define  = re.compile(r"^\s*#\s*define\s+([A-Za-z_][A-Za-z_0-9]*)"
+                         r"\b((?:[^\n\\]|\\.)*?)$",
+                         re.DOTALL | re.MULTILINE)
++_r_line_directive = re.compile(r"^[ \t]*#[ \t]*line\b.*$", re.MULTILINE)
+ _r_partial_enum = re.compile(r"=\s*\.\.\.\s*[,}]|\.\.\.\s*\}")
+ _r_enum_dotdotdot = re.compile(r"__dotdotdot\d+__$")
+ _r_partial_array = re.compile(r"\[\s*\.\.\.\s*\]")
+@@ -163,10 +164,37 @@ def _warn_for_non_extern_non_static_global_variable(decl):
+                       "with C it should have a storage class specifier "
+                       "(usually 'extern')" % (decl.name,))
+ 
++def _remove_line_directives(csource):
++    # _r_line_directive matches whole lines, without the final \n, if they
++    # start with '#line' with some spacing allowed.  This function stores
++    # them away and replaces them with exactly the string '#line@N', where
++    # N is the index in the list 'line_directives'.
++    line_directives = []
++    def replace(m):
++        i = len(line_directives)
++        line_directives.append(m.group())
++        return '#line@%d' % i
++    csource = _r_line_directive.sub(replace, csource)
++    return csource, line_directives
++
++def _put_back_line_directives(csource, line_directives):
++    def replace(m):
++        s = m.group()
++        if not s.startswith('#line@'):
++            raise AssertionError("unexpected #line directive "
++                                 "(should have been processed and removed")
++        return line_directives[int(s[6:])]
++    return _r_line_directive.sub(replace, csource)
++
+ def _preprocess(csource):
++    # First, remove the lines of the form '#line N "filename"' because
++    # the "filename" part could confuse the rest
++    csource, line_directives = _remove_line_directives(csource)
+     # Remove comments.  NOTE: this only work because the cdef() section
+-    # should not contain any string literal!
+-    csource = _r_comment.sub(' ', csource)
++    # should not contain any string literals (except in line directives)!
++    def replace_keeping_newlines(m):
++        return ' ' + m.group().count('\n') * '\n'
++    csource = _r_comment.sub(replace_keeping_newlines, csource)
+     # Remove the "#define FOO x" lines
+     macros = {}
+     for match in _r_define.finditer(csource):
+@@ -219,7 +247,10 @@ def _preprocess(csource):
+     csource = _r_float_dotdotdot.sub(' __dotdotdotfloat__ ', csource)
+     # Replace all remaining "..." with the same name, "__dotdotdot__",
+     # which is declared with a typedef for the purpose of C parsing.
+-    return csource.replace('...', ' __dotdotdot__ '), macros
++    csource = csource.replace('...', ' __dotdotdot__ ')
++    # Finally, put back the line directives
++    csource = _put_back_line_directives(csource, line_directives)
++    return csource, macros
+ 
+ def _common_type_names(csource):
+     # Look in the source for what looks like usages of types from the
+diff --git a/testing/cffi0/test_parsing.py b/testing/cffi0/test_parsing.py
+index 3fc3783a..5f2d7ec4 100644
+--- a/testing/cffi0/test_parsing.py
++++ b/testing/cffi0/test_parsing.py
+@@ -174,7 +174,7 @@ def test_remove_line_continuation_comments():
+         double // blah \\
+                   more comments
+         x(void);
+-        double // blah\\\\
++        double // blah // blah\\\\
+         y(void);
+         double // blah\\ \
+                   etc
+@@ -185,6 +185,52 @@ def test_remove_line_continuation_comments():
+     m.y
+     m.z
+ 
++def test_dont_remove_comment_in_line_directives():
++    ffi = FFI(backend=FakeBackend())
++    e = py.test.raises(CDefError, ffi.cdef, """
++        \t # \t line \t 8 \t "baz.c" \t
++
++        some syntax error here
++    """)
++    assert str(e.value) == "parse error\nbaz.c:9:14: before: syntax"
++    #
++    e = py.test.raises(CDefError, ffi.cdef, """
++        #line 7 "foo//bar.c"
++
++        some syntax error here
++    """)
++    assert str(e.value) == "parse error\nfoo//bar.c:8:14: before: syntax"
++
++def test_multiple_line_directives():
++    ffi = FFI(backend=FakeBackend())
++    e = py.test.raises(CDefError, ffi.cdef,
++    """ #line 5 "foo.c"
++        extern int xx;
++        #line 6 "bar.c"
++        extern int yy;
++        #line 7 "baz.c"
++        some syntax error here
++        #line 8 "yadda.c"
++        extern int zz;
++    """)
++    assert str(e.value) == "parse error\nbaz.c:7:14: before: syntax"
++
++def test_commented_line_directive():
++    ffi = FFI(backend=FakeBackend())
++    e = py.test.raises(CDefError, ffi.cdef, """
++        /*
++        #line 5 "foo.c"
++        */
++        void xx(void);
++
++        #line 6 "bar.c"
++        /*
++        #line 35 "foo.c"
++        */
++        some syntax error
++    """)
++    assert str(e.value) == "parse error\nbar.c:9:14: before: syntax"
++
+ def test_line_continuation_in_defines():
+     ffi = FFI(backend=FakeBackend())
+     ffi.cdef("""
+-- 
+2.26.2
+
+From 31249d786c833d4960bbbf4e0d7f7bcaecf92d1f Mon Sep 17 00:00:00 2001
+From: Armin Rigo <arigo@tunes.org>
+Date: Fri, 29 May 2020 10:27:40 +0200
+Subject: [PATCH] #454
+
+Second try with '# NUMBER' instead of '#line NUMBER', as gcc seems to output
+---
+ cffi/cparser.py               |  8 +++----
+ testing/cffi0/test_parsing.py | 41 +++++++++++++++++++++++++++++++++++
+ 2 files changed, 45 insertions(+), 4 deletions(-)
+
+diff --git a/cffi/cparser.py b/cffi/cparser.py
+index d9784655..74830e91 100644
+--- a/cffi/cparser.py
++++ b/cffi/cparser.py
+@@ -29,7 +29,7 @@ _r_comment = re.compile(r"/\*.*?\*/|//([^\n\\]|\\.)*?$",
+ _r_define  = re.compile(r"^\s*#\s*define\s+([A-Za-z_][A-Za-z_0-9]*)"
+                         r"\b((?:[^\n\\]|\\.)*?)$",
+                         re.DOTALL | re.MULTILINE)
+-_r_line_directive = re.compile(r"^[ \t]*#[ \t]*line\b.*$", re.MULTILINE)
++_r_line_directive = re.compile(r"^[ \t]*#[ \t]*(?:line|\d+)\b.*$", re.MULTILINE)
+ _r_partial_enum = re.compile(r"=\s*\.\.\.\s*[,}]|\.\.\.\s*\}")
+ _r_enum_dotdotdot = re.compile(r"__dotdotdot\d+__$")
+ _r_partial_array = re.compile(r"\[\s*\.\.\.\s*\]")
+@@ -166,9 +166,9 @@ def _warn_for_non_extern_non_static_global_variable(decl):
+ 
+ def _remove_line_directives(csource):
+     # _r_line_directive matches whole lines, without the final \n, if they
+-    # start with '#line' with some spacing allowed.  This function stores
+-    # them away and replaces them with exactly the string '#line@N', where
+-    # N is the index in the list 'line_directives'.
++    # start with '#line' with some spacing allowed, or '#NUMBER'.  This
++    # function stores them away and replaces them with exactly the string
++    # '#line@N', where N is the index in the list 'line_directives'.
+     line_directives = []
+     def replace(m):
+         i = len(line_directives)
+diff --git a/testing/cffi0/test_parsing.py b/testing/cffi0/test_parsing.py
+index 5f2d7ec4..a5e45874 100644
+--- a/testing/cffi0/test_parsing.py
++++ b/testing/cffi0/test_parsing.py
+@@ -199,6 +199,21 @@ def test_dont_remove_comment_in_line_directives():
+ 
+         some syntax error here
+     """)
++    #
++    assert str(e.value) == "parse error\nfoo//bar.c:8:14: before: syntax"
++    ffi = FFI(backend=FakeBackend())
++    e = py.test.raises(CDefError, ffi.cdef, """
++        \t # \t 8 \t "baz.c" \t
++
++        some syntax error here
++    """)
++    assert str(e.value) == "parse error\nbaz.c:9:14: before: syntax"
++    #
++    e = py.test.raises(CDefError, ffi.cdef, """
++        # 7 "foo//bar.c"
++
++        some syntax error here
++    """)
+     assert str(e.value) == "parse error\nfoo//bar.c:8:14: before: syntax"
+ 
+ def test_multiple_line_directives():
+@@ -214,6 +229,18 @@ def test_multiple_line_directives():
+         extern int zz;
+     """)
+     assert str(e.value) == "parse error\nbaz.c:7:14: before: syntax"
++    #
++    e = py.test.raises(CDefError, ffi.cdef,
++    """ # 5 "foo.c"
++        extern int xx;
++        # 6 "bar.c"
++        extern int yy;
++        # 7 "baz.c"
++        some syntax error here
++        # 8 "yadda.c"
++        extern int zz;
++    """)
++    assert str(e.value) == "parse error\nbaz.c:7:14: before: syntax"
+ 
+ def test_commented_line_directive():
+     ffi = FFI(backend=FakeBackend())
+@@ -229,6 +256,20 @@ def test_commented_line_directive():
+         */
+         some syntax error
+     """)
++    #
++    assert str(e.value) == "parse error\nbar.c:9:14: before: syntax"
++    e = py.test.raises(CDefError, ffi.cdef, """
++        /*
++        # 5 "foo.c"
++        */
++        void xx(void);
++
++        # 6 "bar.c"
++        /*
++        # 35 "foo.c"
++        */
++        some syntax error
++    """)
+     assert str(e.value) == "parse error\nbar.c:9:14: before: syntax"
+ 
+ def test_line_continuation_in_defines():
+-- 
+2.26.2
+

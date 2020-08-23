@@ -21,27 +21,26 @@ HOMEPAGE="https://gerbera.io"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="curl debug +exif exiv2 +ffmpeg ffmpegthumbnailer +javascript lastfm libav +magic +matroska mysql systemd +taglib"
+IUSE="curl debug +exif exiv2 +ffmpeg ffmpegthumbnailer +javascript lastfm +magic +matroska mysql systemd +taglib"
 
 DEPEND="
 	acct-user/gerbera
-	>=net-libs/libupnp-1.8.3:=[ipv6,reuseaddr]
+	>=net-libs/libupnp-1.12.1:=[ipv6,reuseaddr]
 	>=dev-db/sqlite-3
-	dev-libs/expat
+	dev-libs/spdlog:=
+	dev-libs/pugixml
+	dev-libs/libfmt:0=
 	mysql? ( dev-db/mysql-connector-c )
 	javascript? ( dev-lang/duktape )
 	taglib? ( >=media-libs/taglib-1.11 )
 	lastfm? ( >=media-libs/lastfmlib-0.4 )
 	exif? ( media-libs/libexif )
 	exiv2? ( media-gfx/exiv2 )
-	ffmpeg? (
-		libav? ( >=media-video/libav-10:0= )
-		!libav? ( >=media-video/ffmpeg-2.2:0= )
-	)
+	ffmpeg? (  >=media-video/ffmpeg-2.2:0= )
 	ffmpegthumbnailer? ( media-video/ffmpegthumbnailer )
-	curl? ( net-misc/curl net-misc/youtube-dl )
+	curl? ( net-misc/curl )
 	magic? ( sys-apps/file )
-	matroska? (	media-libs/libmatroska )
+	matroska? ( media-libs/libmatroska )
 	sys-apps/util-linux
 	sys-libs/zlib
 	virtual/libiconv

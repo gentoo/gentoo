@@ -1,0 +1,24 @@
+--- uade-2.13/configure	2009-10-29 22:01:12.000000000 +0100
++++ uade-2.13-r1/configure	2020-06-30 20:03:45.237913031 +0200
+@@ -342,8 +342,11 @@
+     if test -z "$prefix"; then
+ 	prefix="/usr/local"
+     fi
++    if test -z "$libdir" ; then
++	libdir="$prefix/lib"
++    fi
+     uadedatadir="$prefix/share/uade2"
+-    uadelibdir="$prefix/lib/uade2"
++    uadelibdir="$libdir/uade2"
+     if test -z "$bindir"; then
+ 	bindir="$prefix/bin"
+     fi
+@@ -439,7 +442,7 @@
+     fi
+ fi
+ 
+-pkgconfigdir="$prefix/lib/pkgconfig"
++pkgconfigdir="$libdir/pkgconfig"
+ rm -f uade.pc
+ if test -n "$PKG_CONFIG" ; then
+     installuadepcrule=""

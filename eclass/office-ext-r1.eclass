@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: office-ext-r1.eclass
@@ -12,10 +12,13 @@
 # Eclass for easing maintenance of libreoffice/openoffice extensions.
 
 case "${EAPI:-0}" in
-	5|6) inherit eutils multilib ;;
+	5|6) inherit multilib ;;
 	7) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
+
+# eutils.eclass: emktemp
+inherit eutils
 
 OEXT_EXPORTED_FUNCTIONS="src_unpack src_install pkg_postinst pkg_prerm"
 

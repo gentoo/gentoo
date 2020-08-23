@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit bash-completion-r1
+inherit bash-completion-r1 libtool
 
 DESCRIPTION="Libraries and applications to access smartcards"
 HOMEPAGE="https://github.com/OpenSC/OpenSC/wiki"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/OpenSC/OpenSC/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ia64 ~m68k ppc ppc64 ~s390 ~sh ~sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~m68k ppc ppc64 ~s390 ~sparc x86"
 IUSE="ctapi doc libressl openct notify +pcsc-lite readline secure-messaging ssl test zlib"
 RESTRICT="!test? ( test )"
 
@@ -19,7 +19,7 @@ RDEPEND="zlib? ( sys-libs/zlib )
 	readline? ( sys-libs/readline:0= )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( >=dev-libs/libressl-2.7.0:0= )
+		libressl? ( >=dev-libs/libressl-3.1.0:0= )
 	)
 	openct? ( >=dev-libs/openct-0.5.0 )
 	pcsc-lite? ( >=sys-apps/pcsc-lite-1.3.0 )
@@ -35,6 +35,15 @@ REQUIRED_USE="
 	openct? ( !pcsc-lite !ctapi )
 	ctapi? ( !pcsc-lite !openct )
 	|| ( pcsc-lite openct ctapi )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-gcc10.patch"
+)
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_configure() {
 	econf \

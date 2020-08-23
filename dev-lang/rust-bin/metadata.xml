@@ -6,7 +6,7 @@
     <name>Rust Project</name>
   </maintainer>
   <use>
-    <flag name="clippy">Install clippy component</flag>
-    <flag name="rustfmt">Install rustfmt component</flag>
+    <flag name="clippy">Install clippy, Rust code linter</flag>
+    <flag name="rustfmt">Install rustfmt, Rust code formatter</flag>
   </use>
 </pkgmetadata>

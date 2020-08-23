@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 2006-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils systemd xdg-utils
+inherit cmake systemd xdg-utils
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -21,7 +21,7 @@ HOMEPAGE="https://transmissionbt.com/"
 # MIT is in several libtransmission/ headers
 LICENSE="|| ( GPL-2 GPL-3 Transmission-OpenSSL-exception ) GPL-2 MIT"
 SLOT="0"
-IUSE="ayatana gtk libressl lightweight nls mbedtls qt5 systemd test"
+IUSE="appindicator gtk libressl lightweight nls mbedtls qt5 systemd test"
 RESTRICT="!test? ( test )"
 
 ACCT_DEPEND="
@@ -41,7 +41,6 @@ BDEPEND="${ACCT_DEPEND}
 	)
 "
 COMMON_DEPEND="
-	dev-libs/libb64:0=
 	>=dev-libs/libevent-2.0.10:=
 	!mbedtls? (
 		!libressl? ( dev-libs/openssl:0= )
@@ -57,7 +56,7 @@ COMMON_DEPEND="
 		>=dev-libs/dbus-glib-0.100
 		>=dev-libs/glib-2.32:2
 		>=x11-libs/gtk+-3.4:3
-		ayatana? ( >=dev-libs/libappindicator-0.4.30:3 )
+		appindicator? ( >=dev-libs/libappindicator-0.4.30:3 )
 	)
 	qt5? (
 		dev-qt/qtcore:5
@@ -84,14 +83,6 @@ RDEPEND="${COMMON_DEPEND}
 	${ACCT_DEPEND}
 "
 
-src_unpack() {
-	if [[ ${PV} == 9999 ]]; then
-		git-r3_src_unpack
-	else
-		unpack ${P}.tar.gz
-	fi
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR=share/doc/${PF}
@@ -107,19 +98,19 @@ src_configure() {
 		-DUSE_SYSTEM_MINIUPNPC=ON
 		-DUSE_SYSTEM_NATPMP=ON
 		-DUSE_SYSTEM_UTP=OFF
-		-DUSE_SYSTEM_B64=ON
+		-DUSE_SYSTEM_B64=OFF
 
 		-DWITH_CRYPTO=$(usex mbedtls polarssl openssl)
 		-DWITH_INOTIFY=ON
-		-DWITH_LIBAPPINDICATOR=$(usex ayatana ON OFF)
+		-DWITH_LIBAPPINDICATOR=$(usex appindicator ON OFF)
 		-DWITH_SYSTEMD=$(usex systemd ON OFF)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	newinitd "${FILESDIR}"/transmission-daemon.initd.10 transmission-daemon
 	newconfd "${FILESDIR}"/transmission-daemon.confd.4 transmission-daemon

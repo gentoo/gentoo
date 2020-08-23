@@ -13,8 +13,8 @@ SLOT="0"
 KEYWORDS=""
 
 RDEPEND="
+	>=x11-libs/libvdpau-1.4
 	x11-libs/libX11
-	>=x11-libs/libvdpau-1.3
 "
 DEPEND="
 	${RDEPEND}

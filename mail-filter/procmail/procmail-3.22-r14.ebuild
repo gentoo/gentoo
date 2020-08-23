@@ -11,7 +11,7 @@ SRC_URI="http://www.procmail.org/${P}.tar.gz"
 
 LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
 IUSE="mbox selinux"
 
 DEPEND="virtual/mta"
@@ -69,10 +69,8 @@ src_compile() {
 	# To work around this, we append -fno-inline-functions to CFLAGS
 	# Since GCC 4.7 we also need -fno-ipa-cp-clone (bug #466552)
 	# If it's clang, ignore -fno-ipa-cp-clone, as clang doesn't support this
-	case "$(tc-getCC)" in
-		"clang") append-flags -fno-inline-functions ;;
-		"gcc"|*) append-flags -fno-inline-functions -fno-ipa-cp-clone ;;
-	esac
+	append-flags -fno-inline-functions
+	tc-is-clang || append-flags -fno-ipa-cp-clone
 
 	sed -e "s|CFLAGS0 = -O|CFLAGS0 = ${CFLAGS}|" \
 		-e "s|LDFLAGS0= -s|LDFLAGS0 = ${LDFLAGS}|" \

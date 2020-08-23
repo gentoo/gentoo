@@ -13,7 +13,7 @@ if [[ ${KDE_BUILD_TYPE} = release ]]; then
 fi
 
 DESCRIPTION="Systemd managment utility"
-HOMEPAGE="https://cgit.kde.org/systemdgenie.git"
+HOMEPAGE="https://invent.kde.org/system/systemdgenie"
 
 LICENSE="GPL-2+"
 SLOT="5"

@@ -9,12 +9,12 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Various cryptographic hashes for bytestrings; CRC32 and Adler32 for now"
-HOMEPAGE="http://hackage.haskell.org/package/digest"
+HOMEPAGE="https://hackage.haskell.org/package/digest"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND=">=dev-lang/ghc-6.10.4:=

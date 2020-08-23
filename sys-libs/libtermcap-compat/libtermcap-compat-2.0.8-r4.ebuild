@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # we only want this for binary-only packages, so we will only be installing
@@ -19,7 +19,7 @@ SRC_URI="http://www.catb.org/~esr/terminfo/termtypes.tc.gz
 
 LICENSE="GPL-2 LGPL-2 BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm hppa ppc sparc x86"
 IUSE=""
 
 S=${WORKDIR}/${MY_P}

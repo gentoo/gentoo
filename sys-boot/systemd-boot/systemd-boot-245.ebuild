@@ -43,6 +43,9 @@ PATCHES=(
 )
 
 src_configure() {
+	# https://bugs.gentoo.org/725794
+	tc-export OBJCOPY
+
 	local emesonargs=(
 		-Dblkid=true
 		-Defi=true

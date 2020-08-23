@@ -11,7 +11,7 @@ SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="debug nls static-libs"
 
 DEPEND="nls? ( sys-devel/gettext )"
@@ -56,8 +56,8 @@ multilib_src_install() {
 	# Sanity check until we track down why this is happening. #644048
 	local lib="${ED%/}/usr/$(get_libdir)/libattr.so.1"
 	if [[ -e ${lib} ]] ; then
-		local versions=$(readelf -V "${lib}")
-		local symbols=$(readelf -sW "${lib}")
+		local versions=$($(tc-getREADELF) -V "${lib}")
+		local symbols=$($(tc-getREADELF) -sW "${lib}")
 		if [[ "${versions}" != *"ATTR_1.0"* || \
 		      "${versions}" != *"ATTR_1.1"* || \
 		      "${versions}" != *"ATTR_1.2"* || \

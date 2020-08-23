@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE='xml'
 
 inherit distutils-r1 git-r3
@@ -15,14 +15,8 @@ EGIT_REPO_URI="https://git.code.sf.net/p/wapiti/git wapiti-git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="kerberos ntlm test"
+IUSE="kerberos ntlm"
 
-RESTRICT="!test? ( test )"
-
-DEPEND="test? (
-	dev-python/pytest[${PYTHON_USEDEP}]
-	dev-python/pytest-runner[${PYTHON_USEDEP}]
-	)"
 RDEPEND="dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/mako[${PYTHON_USEDEP}]
@@ -31,6 +25,9 @@ RDEPEND="dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 	dev-python/yaswfp[${PYTHON_USEDEP}]
 	kerberos? ( dev-python/requests-kerberos[${PYTHON_USEDEP}] )
 	ntlm? ( dev-python/requests-ntlm[${PYTHON_USEDEP}] )"
+
+distutils_enable_tests pytest
+BDEPEND+=" test? ( dev-python/responses[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
 	sed -e 's/"pytest-runner"//' -i setup.py || die

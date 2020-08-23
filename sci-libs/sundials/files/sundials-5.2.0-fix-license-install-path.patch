@@ -1,0 +1,15 @@
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2020-04-01 00:03:37.000000000 +0300
++++ b/CMakeLists.txt	2020-04-21 13:27:58.000000000 +0300
+@@ -1146,9 +1146,9 @@
+ # install license and notice files
+ install(
+   FILES ${PROJECT_SOURCE_DIR}/LICENSE
+-  DESTINATION include/sundials
++  DESTINATION share/doc/sundials-5.2.0
+   )
+ install(
+   FILES ${PROJECT_SOURCE_DIR}/NOTICE
+-  DESTINATION include/sundials
++  DESTINATION share/doc/sundials-5.2.0
+   )

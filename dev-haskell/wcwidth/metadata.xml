@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="cli">
+			Enable command line tool
+		</flag>
+	</use>
+	<longdescription>
+		Bindings for your system's native wcwidth and a command line tool to examine
+		the widths assigned by it. The command line tool can compile a width table
+		to Haskell code that assigns widths to the Char type.
+	</longdescription>
+</pkgmetadata>

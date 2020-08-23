@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/DVBDaemon"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

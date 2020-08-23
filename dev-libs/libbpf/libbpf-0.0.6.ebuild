@@ -9,7 +9,7 @@ HOMEPAGE="https://github.com/libbpf/libbpf"
 DESCRIPTION="Stand-alone build of libbpf from the Linux kernel"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2 LGPL-2.1 BSD-2"
+LICENSE="LGPL-2.1 BSD-2"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+static-libs"

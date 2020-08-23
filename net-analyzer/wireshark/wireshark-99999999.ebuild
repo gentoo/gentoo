@@ -17,7 +17,7 @@ IUSE="
 	+dumpcap +editcap http2 kerberos libxml2 lua lz4 maxminddb +mergecap
 	+minizip +netlink +plugins plugin-ifdemo +pcap +qt5 +randpkt +randpktdump
 	+reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl sdjournal
-	+text2pcap tfshark +tshark +udpdump zlib
+	test +text2pcap tfshark +tshark +udpdump zlib
 "
 S=${WORKDIR}/${P/_/}
 
@@ -72,6 +72,10 @@ BDEPEND="
 	)
 	qt5? (
 		dev-qt/linguist-tools:5
+	)
+	test? (
+		dev-python/pytest
+		dev-python/pytest-xdist
 	)
 "
 RDEPEND="
@@ -168,6 +172,9 @@ src_configure() {
 }
 
 src_test() {
+	cmake_build test-programs
+
+	myctestargs=( --disable-capture --skip-missing-programs=all --verbose )
 	cmake_src_test
 }
 
@@ -213,6 +220,10 @@ src_install() {
 			insinto /usr/share/icons/hicolor/${s}x${s}/mimetypes
 			newins image/WiresharkDoc-${s}.png application-vnd.tcpdump.pcap.png
 		done
+	fi
+
+	if [[ -d "${D}"/usr/share/appdata ]]; then
+		rm -r "${D}"/usr/share/appdata || die
 	fi
 }
 

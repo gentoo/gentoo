@@ -5,7 +5,7 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="A simple interactive calendar program with a notebook capability"
-HOMEPAGE="http://www.freebsd.org/"
+HOMEPAGE="https://www.freebsd.org/"
 SRC_URI="ftp://daemon.jp.FreeBSD.org/pub/FreeBSD-jp/ports-jp/LOCAL_PORTS/${P}+i18n.tar.gz"
 
 LICENSE="HPND"

@@ -68,6 +68,7 @@ and rerun mkdhparams if needed. Location has changed
 PATCHES=(
 	"${FILESDIR}/${PN}-4.17-disable-fam-configure.ac.patch"
 	"${FILESDIR}/${PN}-4.17-aclocal-fix.patch"
+	"${FILESDIR}/${P}-ar-fix.patch"
 )
 
 src_prepare() {

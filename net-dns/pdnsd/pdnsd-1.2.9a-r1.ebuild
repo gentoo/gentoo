@@ -11,7 +11,7 @@ SRC_URI="http://members.home.nl/p.a.rombouts/pdnsd/releases/${P}-par.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ia64 ppc ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~ia64 ppc ~s390 sparc x86"
 IUSE="debug ipv6 isdn +urandom test"
 RESTRICT="!test? ( test )"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Haskell Postscript"
-HOMEPAGE="http://rd.slavepianos.org/?t=hps"
+HOMEPAGE="https://hackage.haskell.org/package/hps"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -24,6 +24,10 @@ RDEPEND=">=dev-haskell/hcg-minus-0.15:=[profile?] <dev-haskell/hcg-minus-0.16:=[
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.8
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-ghc84.patch
+)
 
 src_configure() {
 	haskell-cabal_src_configure \

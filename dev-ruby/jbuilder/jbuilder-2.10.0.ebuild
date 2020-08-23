@@ -20,6 +20,10 @@ IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/activesupport-5.0.0:*"
 
+ruby_add_bdepend "test? (
+	>=dev-ruby/railties-5.0.0
+)"
+
 all_ruby_prepare() {
 	sed -i -e '/bundler/ s:^:#:' Rakefile test/test_helper.rb || die
 }

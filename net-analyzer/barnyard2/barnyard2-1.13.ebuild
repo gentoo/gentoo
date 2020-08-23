@@ -30,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.13-libdir.patch
 	"${FILESDIR}"/${PN}-1.13-my_bool.patch
 	"${FILESDIR}"/${PN}-1.13-odbc.patch
+	"${FILESDIR}"/${PN}-1.13-Werror.patch
 	"${FILESDIR}"/${PN}-1.13-pcap-1.9.0.patch
 )
 

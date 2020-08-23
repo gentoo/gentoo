@@ -2,15 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
-PYTHON_COMPAT=( python3_{6,7,8} )
 inherit elisp-common autotools python-single-r1 toolchain-funcs xdg-utils
 
 if [[ "${PV}" = "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/lilypond.git"
 else
-	SRC_URI="http://lilypond.org/download/sources/v$(ver_cut 1-2)/${P}.tar.gz"
+	MAIN_VER=$(ver_cut 1-2)
+	SRC_URI="http://lilypond.org/download/sources/v${MAIN_VER}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
 fi
 
@@ -19,56 +20,44 @@ HOMEPAGE="http://lilypond.org/"
 
 LICENSE="GPL-3 FDL-1.3"
 SLOT="0"
-IUSE="debug emacs profile vim-syntax"
+IUSE="debug emacs guile2 profile vim-syntax"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="${PYTHON_DEPS}
-	>=app-text/ghostscript-gpl-8.15
-	>=dev-scheme/guile-2:12[deprecated,regex]
+BDEPEND="
+	>=dev-texlive/texlive-metapost-2020
+	>=sys-apps/texinfo-4.11
+	>=sys-devel/bison-2.0
+	sys-devel/flex
+	virtual/pkgconfig
+"
+RDEPEND=">=app-text/ghostscript-gpl-8.15
+	>=dev-scheme/guile-1.8.2:12=[deprecated,regex]
 	media-fonts/tex-gyre
 	media-libs/fontconfig
 	media-libs/freetype:2
 	>=x11-libs/pango-1.12.3
 	emacs? ( >=app-editors/emacs-23.1:* )
-"
+	guile2? ( >=dev-scheme/guile-2.2:12 )
+	!guile2? (
+		>=dev-scheme/guile-1.8.2:12=[deprecated,regex]
+		<dev-scheme/guile-2.0:12
+	)
+	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	app-text/t1utils
 	dev-lang/perl
 	dev-libs/kpathsea
-	>=dev-texlive/texlive-metapost-2013
-	|| (
-		>=app-text/texlive-core-2013
-		>=dev-tex/metapost-1.803
-	)
-	virtual/pkgconfig
-	media-gfx/fontforge[png]
-	>=sys-apps/texinfo-4.11
-	>=sys-devel/bison-2.0
-	sys-devel/flex
-	sys-devel/gettext
-	sys-devel/make
-"
+	media-gfx/fontforge[png,python]
+	sys-devel/gettext"
 
 # Correct output data for tests isn't bundled with releases
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.19.80-fontforge-version.patch
+	"${FILESDIR}"/${PN}-2.21.1-fix-font-size.patch
 )
 
-DOCS=( DEDICATION HACKING README.txt ROADMAP )
-
-pkg_setup() {
-	# make sure >=metapost-1.803 is selected if it's installed, bug 498704
-	if [[ ${MERGE_TYPE} != binary ]] && has_version ">=dev-tex/metapost-1.803" ; then
-		if [[ $(readlink "${EROOT}"/usr/bin/mpost) =~ mpost-texlive-* ]] ; then
-			einfo "Updating metapost symlink"
-			eselect mpost update || die
-		fi
-	fi
-
-	python-single-r1_pkg_setup
-}
+DOCS=( DEDICATION HACKING Documentation/out/topdocs/README.txt ROADMAP )
 
 src_prepare() {
 	default
@@ -79,9 +68,6 @@ src_prepare() {
 
 	# respect CFLAGS
 	sed -i 's/OPTIMIZE -g/OPTIMIZE/' aclocal.m4 || die
-
-	# respect AR
-	sed -i "s:^AR=ar:AR=$(tc-getAR):" stepmake/stepmake/library-vars.make || die
 
 	# remove bundled texinfo file (fixes bug #448560)
 	rm tex/texinfo.tex || die
@@ -97,13 +83,13 @@ src_configure() {
 
 	local myeconfargs=(
 		--with-texgyre-dir=/usr/share/fonts/tex-gyre
-		--enable-guile2
 		--disable-documentation
 		--disable-optimising
 		--disable-pipe
 		$(use_enable debug debugging)
 		$(use_enable profile profiling)
 	)
+	export VARTEXFONTS="${T}/fonts"  # https://bugs.gentoo.org/692010
 
 	econf "${myeconfargs[@]}"
 }

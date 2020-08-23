@@ -24,11 +24,12 @@ HOMEPAGE="http://xine.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="1"
-IUSE="a52 aac aalib +alsa altivec bluray +css dts dvb dxr3 fbcon flac gtk imagemagick ipv6 jack jpeg libav libcaca mad +mmap mng modplug musepack opengl oss pulseaudio samba sdl speex theora truetype v4l vaapi vcd vdpau vdr vidix +vis vorbis vpx wavpack +X xinerama +xv xvmc ${NLS_IUSE}"
+IUSE="a52 aac aalib +alsa altivec bluray +css dts dvb dxr3 fbcon flac gtk imagemagick ipv6 jack jpeg libcaca mad +mmap mng modplug musepack opengl oss pulseaudio samba sdl speex theora truetype v4l vaapi vcd vdpau vdr vidix +vis vorbis vpx wavpack +X xinerama +xv xvmc ${NLS_IUSE}"
 
 RDEPEND="${NLS_RDEPEND}
 	dev-libs/libxdg-basedir
 	media-libs/libdvdnav
+	media-video/ffmpeg:0=
 	sys-libs/zlib:=
 	virtual/libiconv
 	a52? ( media-libs/a52dec )
@@ -44,11 +45,6 @@ RDEPEND="${NLS_RDEPEND}
 	imagemagick? ( virtual/imagemagick-tools )
 	jack? ( virtual/jack )
 	jpeg? ( virtual/jpeg:0 )
-	!libav? ( media-video/ffmpeg:0= )
-	libav? (
-		media-libs/libpostproc:0=
-		media-video/libav:0=
-	)
 	libcaca? ( media-libs/libcaca )
 	mad? ( media-libs/libmad )
 	mng? ( media-libs/libmng:= )
@@ -154,6 +150,7 @@ src_configure() {
 		--disable-real-codecs
 		--disable-v4l
 		--disable-w32dll
+		--enable-avformat
 		--with-external-dvdnav
 		--with-real-codecs-path=/usr/$(get_libdir)/codecs
 		--with-w32-path=${win32dir}
@@ -209,10 +206,6 @@ src_configure() {
 		$(use_with X xcb)
 	)
 	[[ ${PV} == *9999* ]] || myconf+=( $(use_enable nls) )
-
-	if ! use libav && has_version '>=media-video/ffmpeg-2.2:0'; then
-		myconf+=( --enable-avformat ) #507474
-	fi
 
 	econf "${myconf[@]}"
 }

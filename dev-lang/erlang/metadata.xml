@@ -16,7 +16,6 @@
 	<use>
 		<flag name="hipe">HIgh Performance Erlang extension</flag>
 		<flag name="kpoll">Enable kernel polling support</flag>
-		<flag name="pgo">Build erts with profile-guided optimizations</flag>
 	</use>
 	<longdescription>
 		Erlang is a programming language designed at the Ericsson

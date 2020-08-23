@@ -13,7 +13,7 @@ HOMEPAGE="https://library.gnome.org/devel/libgnomecanvas/stable/"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="glade"
 
 RDEPEND=">=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]
@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	dev-util/glib-utils
 	>=dev-util/intltool-0.35
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
+	virtual/pkgconfig"
 
 src_prepare() {
 	gnome2_src_prepare

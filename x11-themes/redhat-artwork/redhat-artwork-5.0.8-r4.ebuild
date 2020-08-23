@@ -11,7 +11,7 @@ SRC_URI="mirror://gentoo/${P}-${MY_R}.fc7.src.rpm"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc sparc x86"
 IUSE="audacious cursors gdm icons nautilus"
 
 RDEPEND="x11-libs/gtk+:2"

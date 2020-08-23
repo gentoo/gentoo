@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 
 EGIT_COMMIT="62467b86871aee3d70c7445f3cb79f0858ec566e"
 MY_P=${PN}-${EGIT_COMMIT}
@@ -15,7 +15,7 @@ LICENSE="GPL-2 public-domain"
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE="alsa archive ccdda cdio libav openal oss pulseaudio +sdl"
+IUSE="alsa archive ccdda cdio openal oss pulseaudio +sdl"
 REQUIRED_USE="?? ( alsa openal oss pulseaudio sdl )"
 
 RDEPEND="
@@ -33,10 +33,7 @@ RDEPEND="
 	archive? ( app-arch/libarchive:= )
 	alsa? ( media-libs/alsa-lib:= )
 	cdio? ( dev-libs/libcdio:= )
-	ccdda? (
-		!libav? ( >=media-video/ffmpeg-3:= )
-		libav? ( media-video/libav:= )
-	)
+	ccdda? ( >=media-video/ffmpeg-3:= )
 	openal? ( media-libs/openal:= )
 	pulseaudio? ( media-sound/pulseaudio:= )
 	sdl? ( media-libs/libsdl2:=[sound] )
@@ -73,11 +70,11 @@ src_configure() {
 		-DSND_BACKEND=${sound_backend}
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	mv "${ED}"/usr/share/doc/pcsxr/* "${ED}/usr/share/doc/${PF}/" || die
 	rmdir "${ED}"/usr/share/doc/pcsxr || die
 }

@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Virtual for notification daemon dbus service"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE="gnome kde"
 
 RDEPEND="
@@ -15,6 +15,7 @@ RDEPEND="
 	!gnome? ( !kde? ( || (
 		x11-misc/notification-daemon
 		gnome-extra/cinnamon
+		gui-apps/mako
 		xfce-extra/xfce4-notifyd
 		x11-misc/notify-osd
 		x11-misc/dunst

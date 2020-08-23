@@ -16,7 +16,7 @@ SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz"
 # FIXME: Review licenses at some point
 LICENSE="GPL-3+ GPL-2+ LGPL-3+ LGPL-2+ MIT CC-BY-SA-3.0 CC0-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="clang +devhelp doc +git +glade gtk-doc spell sysprof test vala"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -58,7 +58,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	clang? ( sys-devel/clang:= )
 	devhelp? ( >=dev-util/devhelp-3.25.1:= )
-	glade? ( >=dev-util/glade-3.22.0:3.10 )
+	glade? ( >=dev-util/glade-3.22.0:3.10= )
 	spell? ( >=app-text/gspell-1.8:0=
 		app-text/enchant:2 )
 	>=dev-util/sysprof-capture-3.33.1:3
@@ -75,7 +75,8 @@ DEPEND="${RDEPEND}"
 # desktop-file-utils required for tests, but we have it in deptree for xdg update-desktop-database anyway, so be explicit and unconditional
 # appstream-glib needed for validation with appstream-util with FEATURES=test
 BDEPEND="
-	doc? ( dev-python/sphinx )
+	doc? ( dev-python/sphinx
+		dev-python/sphinx_rtd_theme )
 	gtk-doc? ( dev-util/gtk-doc
 		app-text/docbook-xml-dtd:4.3 )
 	test? (
@@ -115,6 +116,7 @@ that are currently available with packages include:
 PATCHES=(
 	"${WORKDIR}/patches" # gnome-builder-3-34 branch 2020-01-22 (commit bf485934b37) + cherry-picked meson link_whole fixes
 	"${FILESDIR}"/${PV}-optional-vala.patch
+	"${FILESDIR}"/libgit2-1.0-compat.patch
 )
 
 llvm_check_deps() {

@@ -1,0 +1,12 @@
+diff --git a/src/lib/NUM3Parser.cpp b/src/lib/NUM3Parser.cpp
+index 6dc0e9a..6f8e79e 100644
+--- a/src/lib/NUM3Parser.cpp
++++ b/src/lib/NUM3Parser.cpp
+@@ -7,6 +7,7 @@
+  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+  */
+ 
++#include <algorithm>
+ #include <functional>
+ 
+ #include "NUM3Parser.h"

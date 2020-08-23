@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -16,6 +16,10 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-21)
+# Unstable test deps.
+dev-cpp/eigen test
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-08-15)
 # media-libs/libsidplay:2 appears to be broken, bug #660288
@@ -40,7 +44,6 @@ sci-libs/plplot ocaml
 
 # Pacho Ramos <pacho@gentoo.org> (2014-07-02)
 # Mask due Gnome3 not going to be stabilized on this arch
->=gnome-base/gnome-desktop-2.32.1-r2 license-docs
 gnome-base/gvfs google
 mail-client/balsa webkit
 net-libs/libproxy webkit

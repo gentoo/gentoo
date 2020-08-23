@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="converting Perl structures to strings and back"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ia64 ~mips ppc ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
+KEYWORDS="~alpha amd64 hppa ~ia64 ~mips ppc ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
 IUSE=""
 
 SRC_TEST=do

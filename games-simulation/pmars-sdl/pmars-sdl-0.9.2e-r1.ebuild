@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,8 +9,8 @@ MY_PV="${PV/e/-5}"
 MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="Portable redcode simulator's sdl port for core war"
-HOMEPAGE="http://corewar.co.uk/pihlaja/pmars-sdl/"
-SRC_URI="http://corewar.co.uk/pihlaja/pmars-sdl/${MY_P}.tar.gz"
+HOMEPAGE="https://corewar.co.uk/pihlaja/pmars-sdl/"
+SRC_URI="https://corewar.co.uk/pihlaja/pmars-sdl/${MY_P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"

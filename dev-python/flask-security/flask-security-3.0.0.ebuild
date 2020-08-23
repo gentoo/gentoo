@@ -31,8 +31,6 @@ RDEPEND=">=dev-python/flask-0.11[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}
-	dev-python/pytest-runner[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/flask-sqlalchemy[${PYTHON_USEDEP}]
@@ -42,6 +40,11 @@ DEPEND="${RDEPEND}
 	)"
 
 S="${WORKDIR}/${MY_P}"
+
+src_prepare() {
+	sed -i -e '/pytest-runner/d' setup.py || die
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	nosetests -v || die "Testing failed with ${EPYTHON}"

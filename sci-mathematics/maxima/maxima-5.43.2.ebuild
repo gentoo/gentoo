@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2 GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 
 # Supported lisps
 LISPS=(     sbcl cmucl gcl             ecls clozurecl clisp )
@@ -32,7 +32,7 @@ for lang in ${LANGS}; do
 done
 
 # texlive-latexrecommended needed by imaxima for breqn.sty
-RDEPEND="!app-emacs/imaxima
+RDEPEND="
 	X? ( x11-misc/xdg-utils
 		 sci-visualization/gnuplot[gd]
 		 tk? ( dev-lang/tk:0 ) )

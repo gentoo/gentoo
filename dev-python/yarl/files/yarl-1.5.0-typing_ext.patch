@@ -1,0 +1,52 @@
+From 47478e942992aaaa26c2defc3294cac45ede2cfe Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 27 Jul 2020 07:13:19 +0200
+Subject: [PATCH] Require typing_extensions for py<3.8 only
+
+All the names imported from typing_extensions are available already
+in Python 3.8, so there is no need to use the additional dependency
+there.  Furthermore, typing_extensions currently do not support
+Python 3.9, effectively blocking yarl from doing so.  To solve this,
+use external typing_extensions only for py<3.8, and just use builtin
+typing in 3.8+.
+---
+ requirements/test.txt | 2 +-
+ setup.py              | 3 ++-
+ yarl/__init__.pyi     | 7 ++++++-
+ 3 files changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 41d684d..1ed5bfe 100644
+--- a/setup.py
++++ b/setup.py
+@@ -30,7 +30,8 @@ with fname.open(encoding="utf8") as fp:
+     except IndexError:
+         raise RuntimeError("Unable to determine version.")
+ 
+-install_requires = ["multidict>=4.0", "idna>=2.0", "typing_extensions>=3.7.4"]
++install_requires = ["multidict>=4.0", "idna>=2.0",
++                    "typing_extensions>=3.7.4;python_version<\"3.8\""]
+ 
+ 
+ def read(name):
+diff --git a/yarl/__init__.pyi b/yarl/__init__.pyi
+index b3b58ec..eb4a12f 100644
+--- a/yarl/__init__.pyi
++++ b/yarl/__init__.pyi
+@@ -1,7 +1,12 @@
+ from typing import overload, Any, Tuple, Optional, Mapping, Union, Sequence, Type
+-from typing_extensions import TypedDict, Final, final
+ import multidict
+ from functools import _CacheInfo
++import sys
++
++if sys.hexversion >= 0x03080000:
++    from typing import TypedDict, Final, final
++else:
++    from typing_extensions import TypedDict, Final, final
+ 
+ _QueryVariable = Union[str, int]
+ _Query = Union[
+-- 
+2.27.0
+

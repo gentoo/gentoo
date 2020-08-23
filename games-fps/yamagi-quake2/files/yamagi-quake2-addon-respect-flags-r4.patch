@@ -1,0 +1,33 @@
+--- a/Makefile	2020-02-24 19:01:11.000000000 +0300
++++ b/Makefile	2020-03-08 03:07:40.480074095 +0300
+@@ -66,11 +66,11 @@ endif
+ #
+ # -MMD to generate header dependencies.
+ ifeq ($(OSTYPE), Darwin)
+-CFLAGS := -O2 -fno-strict-aliasing -fomit-frame-pointer \
+-		  -Wall -pipe -g -fwrapv -arch x86_64
++CFLAGS += -fno-strict-aliasing -fomit-frame-pointer \
++		  -Wall -fwrapv -arch x86_64
+ else
+-CFLAGS := -O2 -fno-strict-aliasing -fomit-frame-pointer \
+-		  -Wall -pipe -g -MMD -fwrapv
++CFLAGS += -fno-strict-aliasing -fomit-frame-pointer \
++		  -Wall -MMD -fwrapv
+ endif
+ 
+ # ----------
+@@ -93,11 +93,11 @@ endif
+ 
+ # Base LDFLAGS.
+ ifeq ($(OSTYPE), Darwin)
+-LDFLAGS := -shared -arch x86_64
++LDFLAGS += -shared -arch x86_64
+ else ifeq ($(OSTYPE), Windows)
+-LDFLAGS := -shared -static-libgcc
++LDFLAGS += -shared -static-libgcc
+ else
+-LDFLAGS := -shared -lm
++LDFLAGS += -shared -lm
+ endif
+ 
+ # ----------

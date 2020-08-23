@@ -9,7 +9,7 @@ SRC_URI="http://math-www.uni-paderborn.de/~axel/${PN}/${P}.tar.gz"
 
 LICENSE="Old-MIT GPL-1+"
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ppc sparc x86"
 
 RDEPEND="dev-lang/tk"
 DEPEND="sys-apps/sed"

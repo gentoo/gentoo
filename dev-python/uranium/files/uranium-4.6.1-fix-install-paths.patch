@@ -1,0 +1,32 @@
+--- Uranium-4.5.0-orig/CMakeLists.txt   2020-03-01 16:26:44.736355687 +0200
++++ Uranium-4.5.0/CMakeLists.txt        2020-02-24 17:02:05.000000000 +0200
+@@ -12,6 +12,16 @@
+ 
+ find_package(PythonInterp 3.5.0 REQUIRED)
+ 
++if(NOT PYTHON_SITE_PACKAGES_DIR)
++   if(APPLE OR WIN32)
++       set(PYTHON_SITE_PACKAGES_DIR lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages
++           CACHE STRING "Directory to install Python bindings to")
++   else()
++       set(PYTHON_SITE_PACKAGES_DIR lib/python${PYTHON_VERSION_MAJOR}/dist-packages CACHE
++           STRING "Directory to install Python bindings to")
++   endif()
++endif()
++
+ # # Checks using pylint
+ # Note that we use exit 0 here to not mark the build as a failure on check failure
+ # In addition, the specified pylint configuration uses the spellchecker plugin. This required python-enchant to be installed.
+@@ -48,10 +58,10 @@
+ if(EXISTS /etc/debian_version)
+     install(DIRECTORY UM DESTINATION lib${LIB_SUFFIX}/python${PYTHON_VERSION_MAJOR}/dist-packages)
+ else()
+-    install(DIRECTORY UM DESTINATION lib${LIB_SUFFIX}/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages)
++    install(DIRECTORY UM DESTINATION ${PYTHON_SITE_PACKAGES_DIR})
+ endif()
+ install(FILES ${CMAKE_SOURCE_DIR}/cmake/UraniumTranslationTools.cmake
+-        DESTINATION ${CMAKE_INSTALL_DATADIR}/cmake-${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}/Modules/ )
++        DESTINATION ${CMAKE_INSTALL_DATADIR}/cmake/Modules/ )
+ install(DIRECTORY resources DESTINATION ${CMAKE_INSTALL_DATADIR}/uranium)
+ 
+ # Detect plugins to install

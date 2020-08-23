@@ -1,0 +1,67 @@
+diff -U3 -r qmapshack-V_1.15.0.orig/src/qmapshack/gis/wpt/CGisItemWpt.cpp qmapshack-V_1.15.0/src/qmapshack/gis/wpt/CGisItemWpt.cpp
+--- qmapshack-V_1.15.0.orig/src/qmapshack/gis/wpt/CGisItemWpt.cpp	2020-06-14 17:22:49.000000000 +0700
++++ qmapshack-V_1.15.0/src/qmapshack/gis/wpt/CGisItemWpt.cpp	2020-06-22 17:41:58.776553045 +0700
+@@ -38,6 +38,7 @@
+ 
+ #include <QtWidgets>
+ #include <QtXml>
++#include <QPainterPath>
+ 
+ IGisItem::key_t CGisItemWpt::keyUserFocus;
+ QMap<searchProperty_e, CGisItemWpt::fSearch> CGisItemWpt::keywordLambdaMap;
+diff -U3 -r qmapshack-V_1.15.0.orig/src/qmapshack/helpers/CDraw.cpp qmapshack-V_1.15.0/src/qmapshack/helpers/CDraw.cpp
+--- qmapshack-V_1.15.0.orig/src/qmapshack/helpers/CDraw.cpp	2020-06-14 17:22:49.000000000 +0700
++++ qmapshack-V_1.15.0/src/qmapshack/helpers/CDraw.cpp	2020-06-22 17:45:43.431558615 +0700
+@@ -24,6 +24,7 @@
+ #include <QImage>
+ #include <QPointF>
+ #include <QtMath>
++#include <QPainterPath>
+ 
+ QPen CDraw::penBorderBlue(QColor(10, 10, 150, 220), 2);
+ QPen CDraw::penBorderGray(Qt::lightGray, 2);
+diff -U3 -r qmapshack-V_1.15.0.orig/src/qmapshack/map/CMapIMG.cpp qmapshack-V_1.15.0/src/qmapshack/map/CMapIMG.cpp
+--- qmapshack-V_1.15.0.orig/src/qmapshack/map/CMapIMG.cpp	2020-06-14 17:22:49.000000000 +0700
++++ qmapshack-V_1.15.0/src/qmapshack/map/CMapIMG.cpp	2020-06-22 17:47:21.413561045 +0700
+@@ -33,6 +33,7 @@
+ #include "units/IUnit.h"
+ 
+ #include <QtWidgets>
++#include <QPainterPath>
+ 
+ #undef DEBUG_SHOW_SECT_DESC
+ #undef DEBUG_SHOW_TRE_DATA
+diff -U3 -r qmapshack-V_1.15.0.orig/src/qmapshack/mouse/IMouseSelect.cpp qmapshack-V_1.15.0/src/qmapshack/mouse/IMouseSelect.cpp
+--- qmapshack-V_1.15.0.orig/src/qmapshack/mouse/IMouseSelect.cpp	2020-06-14 17:22:49.000000000 +0700
++++ qmapshack-V_1.15.0/src/qmapshack/mouse/IMouseSelect.cpp	2020-06-22 17:43:31.338555340 +0700
+@@ -23,6 +23,7 @@
+ #include "mouse/IScrOpt.h"
+ 
+ #include <QtWidgets>
++#include <QPainterPath>
+ 
+ IMouseSelect::IMouseSelect(CGisDraw *gis, CCanvas *canvas, CMouseAdapter *mouse)
+     : IMouse(gis, canvas, mouse)
+diff -U3 -r qmapshack-V_1.15.0.orig/src/qmaptool/helpers/CDraw.cpp qmapshack-V_1.15.0/src/qmaptool/helpers/CDraw.cpp
+--- qmapshack-V_1.15.0.orig/src/qmaptool/helpers/CDraw.cpp	2020-06-14 17:22:49.000000000 +0700
++++ qmapshack-V_1.15.0/src/qmaptool/helpers/CDraw.cpp	2020-06-22 17:49:14.789563856 +0700
+@@ -24,6 +24,7 @@
+ #include <QImage>
+ #include <QPointF>
+ #include <QtMath>
++#include <QPainterPath>
+ 
+ QPen CDraw::penBorderBlue(QColor(10,10,150,220),2);
+ QPen CDraw::penBorderGray(Qt::lightGray,2);
+diff -U3 -r qmapshack-V_1.15.0.orig/src/qmaptool/overlay/COverlayCutMap.cpp qmapshack-V_1.15.0/src/qmaptool/overlay/COverlayCutMap.cpp
+--- qmapshack-V_1.15.0.orig/src/qmaptool/overlay/COverlayCutMap.cpp	2020-06-14 17:22:49.000000000 +0700
++++ qmapshack-V_1.15.0/src/qmaptool/overlay/COverlayCutMap.cpp	2020-06-22 17:50:08.109565178 +0700
+@@ -24,6 +24,8 @@
+ 
+ #include <functional>
+ #include <QtWidgets>
++#include <QPainterPath>
++
+ using std::bind;
+ 
+ static inline qreal sqr(qreal a)

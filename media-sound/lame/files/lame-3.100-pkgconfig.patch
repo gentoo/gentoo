@@ -1,0 +1,45 @@
+Based on a Debian patch:
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=829327
+
+--- lame-3.100/configure.in
++++ lame-3.100/configure.in
+@@ -1240,6 +1240,7 @@
+ 
+ AC_CONFIG_FILES([Makefile \
+ 		 libmp3lame/Makefile \
++		 libmp3lame/lame.pc \
+ 		 libmp3lame/i386/Makefile \
+ 		 libmp3lame/vector/Makefile \
+ 		 frontend/Makefile \
+--- lame-3.100/libmp3lame/Makefile.am
++++ lame-3.100/libmp3lame/Makefile.am
+@@ -31,6 +31,7 @@
+ 
+ EXTRA_DIST = \
+ 	lame.rc \
++	lame.pc.in \
+ 	vbrquantize.h \
+ 	logoe.ico
+ 
+@@ -100,3 +101,8 @@
+ #$(OBJECTS): libtool
+ #libtool: $(LIBTOOL_DEPS)
+ #	$(SHELL) $(top_builddir)/config.status --recheck
++
++pkgconfigdir = $(libdir)/pkgconfig
++pkgconfig_DATA = lame.pc
++
++DISTCLEANFILES = $(pkgconfig_DATA)
+--- lame-3.100/libmp3lame/lame.pc.in
++++ lame-3.100/libmp3lame/lame.pc.in
+@@ -0,0 +1,10 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
++
++Name: @PACKAGE_NAME@
++Description: MP3 encoding library
++Version: @PACKAGE_VERSION@
++Libs: -L${libdir} -lmp3lame
++Cflags: -I${includedir}/lame

@@ -1,11 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit qmake-utils
+EAPI=7
 
 MY_P=qt-solutions-${PV#*_p}
+inherit qmake-utils
 
 DESCRIPTION="QFile extension with advisory locking functions"
 HOMEPAGE="https://code.qt.io/cgit/qt-solutions/qt-solutions.git/"
@@ -13,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.xz"
 
 LICENSE="|| ( LGPL-2.1 GPL-3 )"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 x86"
 IUSE="doc"
 
 DEPEND="dev-qt/qtcore:5"

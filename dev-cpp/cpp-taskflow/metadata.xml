@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription>
+		Cpp-Taskflow is faster, more expressive, and easier for drop-in
+		integration than many of existing task programming frameworks in
+		handling complex parallel workloads.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">cpp-taskflow/cpp-taskflow</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # When you add an entry to the top of this file, add your name, the date, and
@@ -7,6 +7,17 @@
 #
 # NOTE: Please add your entry at the top!
 #
+
+# Fabian Groffen <grobian@gentoo.org> (2020-08-02)
+# Python 3.6 is soon going away and won't be updated for Prefix anymore.
+dev-lang/python:3.6
+
+# Fabian Groffen <grobian@gentoo.org> (2020-08-02)
+# Python 2 is no longer supported
+# Recent Portage releases no longer supports Python 2, and the version
+# available in the Prefix tree has security issues.  If you still need
+# Python 2, you should really look into moving away from it.
+dev-lang/python:2.7
 
 # Fabian Groffen <grobian@gentoo.org> (2017-04-15)
 # reentrant patch breaks prefix option, bug #615560

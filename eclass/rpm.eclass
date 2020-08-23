@@ -8,7 +8,10 @@
 
 inherit estack eutils
 
-DEPEND=">=app-arch/rpm2targz-9.0.0.3g"
+case "${EAPI:-0}" in
+	[0-6]) DEPEND=">=app-arch/rpm2targz-9.0.0.3g" ;;
+	*) BDEPEND=">=app-arch/rpm2targz-9.0.0.3g" ;;
+esac
 
 # @FUNCTION: rpm_unpack
 # @USAGE: <rpms>

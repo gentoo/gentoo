@@ -11,10 +11,10 @@ SRC_URI="https://github.com/shimmerproject/${PN^}/archive/v${PV}.tar.gz -> ${P}.
 # README says "dual-licensed as GPLv2 or later and CC-BY-SA 3.0 or later"
 LICENSE="CC-BY-SA-3.0 GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="ayatana gnome gtk2 gtk3 xfce"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+IUSE="appindicator gnome gtk2 gtk3 xfce"
 REQUIRED_USE="
-	|| ( ayatana gnome gtk2 gtk3 xfce )
+	|| ( appindicator gnome gtk2 gtk3 xfce )
 "
 
 RDEPEND="
@@ -33,7 +33,7 @@ src_install() {
 	meson_src_install
 
 	pushd "${ED}"/usr/share/themes > /dev/null || die
-	use ayatana || { rm -r ${PN^}*/unity || die; }
+	use appindicator || { rm -r ${PN^}*/unity || die; }
 	use gnome || { rm -r ${PN^}*/metacity-1 || die; }
 	use gtk2 || { rm -r ${PN^}*/gtk-2.0 || die; }
 	use gtk3 || { rm -r ${PN^}*/gtk-3.0 || die; }

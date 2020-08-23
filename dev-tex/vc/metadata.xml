@@ -13,7 +13,7 @@
   It works more reliably than keyword substitution based approaches,
   since it tracks all files in a working copy, not only .tex files.
 
-  The vc bundle works with LaTeX and plain TeX. Currently, Bazaar, Git
-  and Subversion are supported.
+  The vc bundle works with LaTeX and plain TeX. Currently, Bazaar, Git,
+  Mercurial and Subversion are supported.
 </longdescription>
 </pkgmetadata>

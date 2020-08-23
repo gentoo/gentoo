@@ -7,12 +7,12 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="Generate block-diagram image from text"
-HOMEPAGE="http://blockdiag.com/ https://pypi.org/project/blockdiag/ https://bitbucket.org/blockdiag/blockdiag/"
+HOMEPAGE="http://blockdiag.com/ https://pypi.org/project/blockdiag/ https://github.com/blockdiag/blockdiag/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

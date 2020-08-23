@@ -2,10 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="sqlite"
 
 DISTUTILS_SINGLE_IMPL=1
+DISTUTILS_USE_SETUPTOOLS=no
 inherit distutils-r1 xdg-utils
 
 DESCRIPTION="Genealogical Research and Analysis Management Programming System"
@@ -20,11 +21,11 @@ IUSE="+rcs +reports exif geo postscript spell"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/bsddb3[${PYTHON_MULTI_USEDEP}]
-		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pygobject-3.12:3[cairo,${PYTHON_MULTI_USEDEP}]
-		dev-python/pyicu[${PYTHON_MULTI_USEDEP}]
-		exif? ( >=media-libs/gexiv2-0.5[${PYTHON_MULTI_USEDEP},introspection] )
+		dev-python/bsddb3[${PYTHON_USEDEP}]
+		dev-python/pycairo[${PYTHON_USEDEP}]
+		>=dev-python/pygobject-3.12:3[cairo,${PYTHON_USEDEP}]
+		dev-python/PyICU[${PYTHON_USEDEP}]
+		exif? ( >=media-libs/gexiv2-0.5[${PYTHON_USEDEP},introspection] )
 	')
 	gnome-base/librsvg:2
 	>x11-libs/gtk+-3.14.8:3[introspection]
@@ -60,6 +61,17 @@ python_test_all() {
 		die "Failed to symlink build directory to source directory"
 
 	esetup.py test
+}
+
+# Ugly hack to work around Bug #717922
+python_install() {
+	local mydistutilsargs=(
+		--resourcepath=/usr/share
+		--no-compress-manpages
+		build
+	)
+	distutils-r1_python_install
+	echo -n "/usr/share" > "${D}$(python_get_sitedir)/gramps/gen/utils/resource-path" || die
 }
 
 pkg_postinst() {

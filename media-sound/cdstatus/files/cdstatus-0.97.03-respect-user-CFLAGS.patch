@@ -1,0 +1,11 @@
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -154,7 +154,7 @@
+ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-AM_CFLAGS = -O2 -funroll-loops -finline-functions
++AM_CFLAGS = 
+ cdstatus_SOURCES = \
+ 	args.h \
+ 	basic_info.c \

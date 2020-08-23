@@ -12,7 +12,7 @@ HOMEPAGE="https://www.gnome.org/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 ppc ppc64 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="
@@ -22,7 +22,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.28
 	gnome-base/gnome-common
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 src_prepare() {

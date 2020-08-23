@@ -14,7 +14,7 @@ SRC_URI="https://github.com/OpenShot/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0/18"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc examples +imagemagick libav +python test"
+IUSE="doc examples +imagemagick +python test"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -28,8 +28,7 @@ RDEPEND="
 	net-libs/cppzmq
 	net-libs/zeromq
 	imagemagick? ( >=media-gfx/imagemagick-7:0=[cxx] )
-	!libav? ( media-video/ffmpeg:0=[encode,x264,xvid,vpx,mp3,theora] )
-	libav? ( media-video/libav:0=[encode,x264,xvid,vpx,mp3,theora] )
+	media-video/ffmpeg:0=[encode,x264,xvid,vpx,mp3,theora]
 	python? ( ${PYTHON_DEPS} )
 "
 DEPEND="${RDEPEND}"

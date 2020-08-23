@@ -1,0 +1,39 @@
+From ec602e0c2a676aed0707c7fb7edfe964516dbc77 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sun, 7 Jun 2020 18:05:21 +0200
+Subject: [PATCH] Fix the Plastik decoration with Qt 5.15
+
+The trick in qmldir no longer works with Qt 5.15, so use a more reliable
+approach. This way works with Qt 5.15 and also on previous versions of Qt.
+---
+ .../kdecorations/aurorae/themes/plastik/code/plastikplugin.cpp | 3 ++-
+ plugins/kdecorations/aurorae/themes/plastik/code/qmldir        | 3 ---
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/plugins/kdecorations/aurorae/themes/plastik/code/plastikplugin.cpp b/plugins/kdecorations/aurorae/themes/plastik/code/plastikplugin.cpp
+index 25d11251f..4304dcdc1 100644
+--- a/plugins/kdecorations/aurorae/themes/plastik/code/plastikplugin.cpp
++++ b/plugins/kdecorations/aurorae/themes/plastik/code/plastikplugin.cpp
+@@ -20,7 +20,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ void PlastikPlugin::registerTypes(const char *uri)
+ {
+-    Q_UNUSED(uri)
++    // Need to register something to tell Qt that it loaded (QTBUG-84571)
++    qmlRegisterModule(uri, 1, 0);
+ }
+ 
+ void PlastikPlugin::initializeEngine(QQmlEngine *engine, const char *uri)
+diff --git a/plugins/kdecorations/aurorae/themes/plastik/code/qmldir b/plugins/kdecorations/aurorae/themes/plastik/code/qmldir
+index 49a4b402d..aa7bf16b3 100644
+--- a/plugins/kdecorations/aurorae/themes/plastik/code/qmldir
++++ b/plugins/kdecorations/aurorae/themes/plastik/code/qmldir
+@@ -1,5 +1,2 @@
+ module org.kde.kwin.decorations.plastik
+ plugin plastikplugin
+-
+-# we need to have at least one element of Qt is not able to find the plugin *shrug*
+-Foo 1.0 Foo.qml
+-- 
+2.27.0
+

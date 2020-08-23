@@ -1,7 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit toolchain-funcs flag-o-matic
 
 if [[ ${PV} == 9999 ]]; then
@@ -17,17 +18,17 @@ HOMEPAGE="https://6xq.net/pianobar/"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="libav static-libs"
+IUSE=""
 
-RDEPEND="media-libs/libao
-	net-misc/curl
-	dev-libs/libgcrypt:0=
+BDEPEND="virtual/pkgconfig"
+RDEPEND="
 	dev-libs/json-c:=
-	libav? ( >=media-video/libav-12:0= )
-	!libav? ( >=media-video/ffmpeg-3.1:0= )
+	dev-libs/libgcrypt:0=
+	media-libs/libao
+	>=media-video/ffmpeg-3.3:0=
+	net-misc/curl
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
 
 src_compile() {
 	append-cflags -std=c99
@@ -39,7 +40,7 @@ src_install() {
 	emake DESTDIR="${D}" PREFIX=/usr LIBDIR=/usr/$(get_libdir) DYNLINK=1 install
 	dodoc ChangeLog README.md
 
-	use static-libs || { rm "${D}"/usr/lib*/*.a || die; }
+	rm "${D}"/usr/lib*/*.a || die
 
 	docinto contrib
 	dodoc -r contrib/{config-example,*.sh,eventcmd-examples}

@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit toolchain-funcs
 
@@ -16,12 +16,14 @@ KEYWORDS="~alpha amd64 ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux 
 IUSE=""
 
 RDEPEND="!app-editors/ersatz-emacs"
+BDEPEND="virtual/pkgconfig"
 S="${WORKDIR}/easyedit-${PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-init-location.patch
 	"${FILESDIR}"/${PN}-signal.patch
 	"${FILESDIR}"/${PN}-Wformat-security.patch
+	"${FILESDIR}"/${PN}-gcc-10.patch
 )
 DOCS=( Changes README.${PN} ${PN}.i18n.guide ${PN}.msg )
 
@@ -35,6 +37,7 @@ src_prepare() {
 		-e "s/\tcc /\t\\\\\$(CC) /" \
 		-e "/CFLAGS =/s/\" >/ \\\\\$(LDFLAGS)\" >/" \
 		-e "/other_cflag/s/ *-s//" \
+		-e "s/-lcurses/$($(tc-getPKG_CONFIG) --libs ncurses)/" \
 		create.make
 
 	default

@@ -11,7 +11,7 @@ SRC_URI="https://users-math.au.dk/~jensen/software/${PN}/${PN}${PV}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
 BDEPEND="doc? ( virtual/latex-base )"
@@ -29,7 +29,18 @@ PATCHES=(
 
 pkg_setup() {
 	tc-export CC CXX
+
+	# This should really go in cppflags, but that doesn't work with
+	# gfan's hand-written Makefile.
 	append-cxxflags -DNOCDDPREFIX
+}
+
+src_prepare() {
+	default
+
+	# This test hangs on x86, bug 717112.
+	rm -r testsuite/0602ResultantFanProjection || \
+		die "unable to disable test 0602ResultantFanProjection"
 }
 
 src_configure() {

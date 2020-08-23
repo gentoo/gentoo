@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Perl Superglue for Web frameworks and Web Servers (PSGI toolkit)"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86"
 IUSE="test minimal examples"
 RESTRICT="!test? ( test )"
 PATCHES=(

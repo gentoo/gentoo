@@ -1,0 +1,78 @@
+Index: calibration_estimation/src/calibration_estimation/sensors/chain_sensor.py
+===================================================================
+--- calibration_estimation.orig/src/calibration_estimation/sensors/chain_sensor.py
++++ calibration_estimation/src/calibration_estimation/sensors/chain_sensor.py
+@@ -135,7 +135,7 @@ class ChainSensor:
+         cov_angles = [x*x for x in self._full_chain.calc_block._chain._cov_dict['joint_angles']]
+         cov = matrix(Jt).T * matrix(diag(cov_angles)) * matrix(Jt)
+         
+-        if ( self._full_chain.calc_block._chain._cov_dict.has_key('translation') ):
++        if ( 'translation' in self._full_chain.calc_block._chain._cov_dict ):
+             translation_var = self._full_chain.calc_block._chain._cov_dict['translation'];
+             translation_cov = numpy.diag(translation_var*(self.get_residual_length()/3))
+             cov = cov + translation_cov
+Index: calibration_estimation/src/calibration_estimation/sensors/tilting_laser_sensor.py
+===================================================================
+--- calibration_estimation.orig/src/calibration_estimation/sensors/tilting_laser_sensor.py
++++ calibration_estimation/src/calibration_estimation/sensors/tilting_laser_sensor.py
+@@ -99,7 +99,7 @@ class TiltingLaserSensor:
+         gamma = matrix(zeros(cov.shape))
+         num_pts = self.get_residual_length()/3
+ 
+-        for k in range(num_pts):
++        for k in range(int(num_pts)):
+             first = 3*k
+             last = 3*k+3
+             sub_cov = matrix(cov[first:last, first:last])
+Index: calibration_estimation/test/chain_sensor_unittest.py
+===================================================================
+--- calibration_estimation.orig/test/chain_sensor_unittest.py
++++ calibration_estimation/test/chain_sensor_unittest.py
+@@ -59,7 +59,7 @@ from numpy import *
+ 
+ def loadSystem():
+     urdf = '''
+-<robot>
++<robot name="test">
+   <link name="base_link"/>
+   <joint name="j0" type="fixed">
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+Index: calibration_estimation/test/full_chain_unittest.py
+===================================================================
+--- calibration_estimation.orig/test/full_chain_unittest.py
++++ calibration_estimation/test/full_chain_unittest.py
+@@ -50,7 +50,7 @@ import numpy
+ 
+ def loadSystem1():
+     urdf = '''
+-<robot>
++<robot name="test">
+   <link name="base_link"/>
+   <joint name="j0" type="fixed">
+     <origin xyz="10 0 0" rpy="0 0 0"/>
+Index: calibration_estimation/test/tilting_laser_sensor_unittest.py
+===================================================================
+--- calibration_estimation.orig/test/tilting_laser_sensor_unittest.py
++++ calibration_estimation/test/tilting_laser_sensor_unittest.py
+@@ -74,7 +74,7 @@ class TestTiltingLaserBundler(unittest.T
+ 
+ def loadSystem():
+     urdf = '''
+-<robot>
++<robot name="test">
+   <link name="base_link"/>
+   <joint name="j0" type="fixed">
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+Index: calibration_estimation/test/tilting_laser_unittest.py
+===================================================================
+--- calibration_estimation.orig/test/tilting_laser_unittest.py
++++ calibration_estimation/test/tilting_laser_unittest.py
+@@ -47,7 +47,7 @@ from numpy import *
+ 
+ def loadSystem1():
+     urdf = '''
+-<robot>
++<robot name="test">
+   <link name="base_link"/>
+   <joint name="j0" type="fixed">
+     <origin xyz="0 0 10" rpy="0 0 0"/>

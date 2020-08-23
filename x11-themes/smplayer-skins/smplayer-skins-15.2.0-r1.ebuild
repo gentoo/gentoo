@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit qmake-utils
 
@@ -25,7 +25,7 @@ src_prepare() {
 }
 
 src_install() {
-	rm themes/Makefile
+	rm themes/Makefile || die
 	insinto /usr/share/smplayer
 	doins -r themes
 	dodoc Changelog README.txt

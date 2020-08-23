@@ -12,6 +12,6 @@ MY_PN=${PN/xemacs-/}
 SRC_URI="http://ftp.xemacs.org/pub/xemacs/packages/${MY_PN}-${PV}-pkg.tar.gz"
 
 RDEPEND=""
-KEYWORDS="~alpha amd64 hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ppc ppc64 sparc x86"
 
 inherit xemacs-packages

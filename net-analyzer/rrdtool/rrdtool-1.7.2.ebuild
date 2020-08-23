@@ -5,7 +5,7 @@ EAPI=6
 DISTUTILS_OPTIONAL=true
 DISTUTILS_SINGLE_IMPL=true
 GENTOO_DEPEND_ON_PERL=no
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit autotools perl-module distutils-r1 flag-o-matic multilib
 
 MY_P=${P/_/-}
@@ -16,8 +16,9 @@ SRC_URI="https://oss.oetiker.ch/rrdtool/pub/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/8.0.0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
-IUSE="dbi doc graph lua perl python rados rrdcgi ruby static-libs tcl tcpd"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
+IUSE="dbi doc graph lua perl python rados rrdcgi ruby static-libs tcl tcpd test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 CDEPEND="
@@ -42,6 +43,7 @@ DEPEND="
 	sys-apps/groff
 	virtual/pkgconfig
 	virtual/awk
+	test? ( sys-devel/bc )
 "
 RDEPEND="
 	${CDEPEND}
@@ -97,15 +99,17 @@ src_prepare() {
 		sed -i \
 			-e '2s:rpn1::; 2s:rpn2::; 6s:create-with-source-4::;' \
 			-e '7s:xport1::; 7s:dcounter1::; 7s:vformatter1::' \
+			-e 's|graph1||g' \
 			tests/Makefile.am || die
 	fi
-
-	export rd_cv_gcc_flag__Werror=no
 
 	eautoreconf
 }
 
 src_configure() {
+	export rd_cv_gcc_flag__Werror=no
+	export rd_cv_ms_async=ok
+
 	filter-flags -ffast-math
 
 	export RRDDOCDIR=${EPREFIX}/usr/share/doc/${PF}

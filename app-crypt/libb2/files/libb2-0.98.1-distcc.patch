@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/704044#c8
+
+Patch by Alexey
+
+--- a/src/Makefile.am	2020-04-26 11:16:22.354103351 +0100
++++ b/src/Makefile.am	2020-04-26 11:16:31.584080899 +0100
+@@ -18,8 +18,7 @@ LDFLAGS += -version-info $(B2_LIBRARY_VE
+ lib_LTLIBRARIES = libb2.la
+ libb2_la_LIBADD = # -lgomp -lpthread
+ libb2_la_CPPFLAGS =  -DSUFFIX=  \
+-                     $(LTDLINCL) \
+-                     ${top_builddir}/src/
++                     $(LTDLINCL)
+ 
+ include_HEADERS = blake2.h
+ 

@@ -20,7 +20,7 @@ SRC_URI="https://github.com/intridea/oauth2/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/faraday-0.8 <dev-ruby/faraday-2.0
@@ -28,7 +28,11 @@ ruby_add_rdepend ">=dev-ruby/faraday-0.8 <dev-ruby/faraday-2.0
 	>=dev-ruby/multi_json-1.3 =dev-ruby/multi_json-1*
 	>=dev-ruby/multi_xml-0.5:0
 	>=dev-ruby/rack-1.2:* <dev-ruby/rack-3:*"
-ruby_add_bdepend "test? ( dev-ruby/rspec:3 dev-ruby/rspec-stubbed_env )"
+ruby_add_bdepend "test? (
+	>=dev-ruby/addressable-2.3
+	dev-ruby/rspec:3
+	dev-ruby/rspec-stubbed_env
+)"
 
 all_ruby_prepare() {
 	sed -i -e '/simplecov/,/^  end/ s:^:#:' \

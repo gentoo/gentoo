@@ -5,10 +5,6 @@
 		<email>andrzej.pauli@gmail.com</email>
 		<name>Andrzej Pauli</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>aidecoe@gentoo.org</email>
-		<name>Amadeusz Żołnowski</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>

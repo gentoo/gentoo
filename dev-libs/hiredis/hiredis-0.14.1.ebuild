@@ -11,14 +11,17 @@ SRC_URI="https://github.com/redis/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/0.14"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 s390 sparc ~x86 ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 s390 sparc x86 ~x64-solaris"
 IUSE="examples static-libs test"
 RESTRICT="!test? ( test )"
 
 DEPEND="test? ( dev-db/redis )"
 
 src_prepare() {
-	local PATCHES=( "${FILESDIR}/${PN}-0.13.3-disable-network-tests.patch" )
+	local PATCHES=(
+		"${FILESDIR}"/${PN}-0.13.3-disable-network-tests.patch
+		"${FILESDIR}"/${PN}-0.14.1-honor-AR.patch
+	)
 	default
 
 	# use GNU ld syntax on Solaris
@@ -31,9 +34,8 @@ _build() {
 		CC="$(tc-getCC)" \
 		PREFIX="${EPREFIX}/usr" \
 		LIBRARY_PATH="$(get_libdir)" \
-		ARCH= \
-		DEBUG= \
-		OPTIMIZATION="${CPPFLAGS}" \
+		DEBUG_FLAGS= \
+		OPTIMIZATION= \
 		"$@"
 }
 

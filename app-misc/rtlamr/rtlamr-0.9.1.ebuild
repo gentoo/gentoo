@@ -9,7 +9,7 @@ DESCRIPTION="software defined radio receiver for utility smart meters"
 HOMEPAGE="https://github.com/bemasher/rtlamr"
 SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="AGPL-3"
+LICENSE="AGPL-3 BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 

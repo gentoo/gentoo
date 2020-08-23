@@ -10,11 +10,11 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="Qt bindings for libpulse"
-HOMEPAGE="https://cgit.kde.org/pulseaudio-qt.git/"
+HOMEPAGE="https://invent.kde.org/libraries/pulseaudio-qt"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm64 x86"
+	KEYWORDS="amd64 arm64 x86"
 fi
 
 LICENSE="LGPL-2.1"

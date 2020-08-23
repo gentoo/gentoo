@@ -2,8 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>dan@danmolik.com</email>
-		<name>Dan Molik</name>
+		<email>robert@gnzler.io</email>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
@@ -27,5 +26,6 @@
 		<flag name="bpf">Enable in Kernel, eBPF (enhanced Berkley Packet Filter)
 			support for managing device controllers.
 		</flag>
+		<flag name="man">Build and install man pages</flag>
 	</use>
 </pkgmetadata>

@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
+PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 
 inherit distutils-r1
 
@@ -18,7 +18,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc64 s390 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -35,8 +35,6 @@ BDEPEND="${RDEPEND}
 		dev-python/pyquery[${PYTHON_USEDEP}]
 		dev-python/pastedeploy[${PYTHON_USEDEP}]
 		dev-python/wsgiproxy2[${PYTHON_USEDEP}]
-		dev-python/coverage[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7 )
 	)"
 
 PATCHES=(

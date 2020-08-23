@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1 git-r3
 
@@ -19,7 +19,7 @@ IUSE="+templates"
 
 RDEPEND="
 	app-portage/eix
-	app-portage/gentoolkit
+	app-portage/gentoolkit[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	www-client/pybugz

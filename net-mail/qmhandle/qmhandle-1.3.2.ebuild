@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/qmhandle/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc sparc x86"
 IUSE=""
 
 RDEPEND="virtual/qmail

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,9 +18,9 @@ HOMEPAGE="http://trojita.flaska.net/"
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
 IUSE="+crypt +dbus debug +password pim +spell test +zlib"
-RESTRICT="!test? ( test )"
 
 REQUIRED_USE="password? ( dbus )"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	dev-qt/linguist-tools:5

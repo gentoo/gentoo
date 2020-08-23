@@ -15,9 +15,14 @@ SLOT="1/${PV}"
 LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 
-RDEPEND=">=dev-lang/ocaml-4.02:=[ocamlopt?]
+RDEPEND=">=dev-lang/ocaml-4.05:=[ocamlopt?]
 		>=sys-libs/zlib-1.1.3"
 DEPEND="${RDEPEND}"
+
+QA_FLAGS_IGNORED=(
+	"/usr/lib.*/ocaml/stublibs/dllcamlzip.so"
+	"/usr/lib.*/ocaml/zip/zip.cmxs"
+)
 
 S="${WORKDIR}/${PN}-rel$(ver_rs 1- '')"
 

@@ -8,6 +8,7 @@
   <upstream>
     <remote-id type="cpan">BSON</remote-id>
     <remote-id type="cpan-module">BSON</remote-id>
+    <remote-id type="cpan-module">BSON::Array</remote-id>
     <remote-id type="cpan-module">BSON::Binary</remote-id>
     <remote-id type="cpan-module">BSON::Bool</remote-id>
     <remote-id type="cpan-module">BSON::Bytes</remote-id>

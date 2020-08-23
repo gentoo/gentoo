@@ -3,16 +3,14 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>no111u3@gmail.com</email>
-		<name>Boris Vinogradov</name>
+		<name>Boris Vingradov</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
-		This is a ST-Link V2 (Debugger/Programmer) client developped for Linux, OSX and Windows.
-
-		It is developped using QT and LibUsb/WinUsb. 
+		ST-Link V2 (Debugger/Programmer) client developed for Linux, OSX and Windows, using Qt and LibUsb/WinUsb.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">mobyfab/qstlink2</remote-id>

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit distutils-r1
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/e/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~s390 ~sparc x86"
 IUSE="doc examples test"
 
 RDEPEND="
@@ -26,6 +26,7 @@ DEPEND="doc? ( >=dev-python/python-docs-2.7.6-r1:2.7 )
 		dev-python/nose[${PYTHON_USEDEP}] )"
 
 PATCHES=(
+	"${FILESDIR}/eventlet-0.25.1-sparc.patch"
 	"${FILESDIR}/eventlet-0.25.1-tests.patch"
 )
 
@@ -55,13 +56,6 @@ python_prepare_all() {
 	sed -e "s:'tests', :'tests', 'tests.*', :" -i setup.py || die
 
 	distutils-r1_python_prepare_all
-}
-
-python_prepare() {
-	if ! python_is_python3; then
-		# this is for python3 only
-		rm -r eventlet/green/http || die
-	fi
 }
 
 python_install_all() {

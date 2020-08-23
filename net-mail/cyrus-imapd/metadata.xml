@@ -5,7 +5,7 @@
   <use>
     <flag name="replication">Enable replication support</flag>
     <flag name="sieve">Enable sieve support</flag>
-    <flag name="http">Enable http support</flag>
+    <flag name="http">Enable http and http/2 support</flag>
     <flag name="server">Enable building server binaries</flag>
     <flag name="backup">Enable backup service support</flag>
     <flag name="calalarm">Enable CalDAV alarm support</flag>

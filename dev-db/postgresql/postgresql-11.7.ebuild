@@ -11,7 +11,7 @@ PLOCALES="af cs de en es fa fr hr hu it ko nb pl pt_BR ro ru sk sl sv tr zh_CN
 inherit flag-o-matic l10n linux-info multilib pam prefix python-single-r1 \
 		systemd user
 
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 SLOT=$(ver_cut 1)
 
@@ -22,7 +22,7 @@ SRC_URI="https://ftp.postgresql.org/pub/source/v${MY_PV}/postgresql-${MY_PV}.tar
 
 LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"
-HOMEPAGE="http://www.postgresql.org/"
+HOMEPAGE="https://www.postgresql.org/"
 
 IUSE="debug doc icu kerberos kernel_linux ldap libressl llvm nls pam
 	  perl python +readline selinux +server systemd ssl static-libs tcl
@@ -290,7 +290,7 @@ pkg_postinst() {
 		elog "https://wiki.gentoo.org/wiki/PostgreSQL"
 		elog
 		elog "Official documentation:"
-		elog "http://www.postgresql.org/docs/${SLOT}/static/index.html"
+		elog "https://www.postgresql.org/docs/${SLOT}/static/index.html"
 		elog
 		elog "The default location of the Unix-domain socket is:"
 		elog "    ${EROOT}/run/postgresql/"
@@ -363,8 +363,8 @@ pkg_config() {
 	einfo "    ${EROOT}/etc/conf.d/postgresql-${SLOT}"
 	einfo
 	einfo "Information on options that can be passed to initdb are found at:"
-	einfo "    http://www.postgresql.org/docs/${SLOT}/static/creating-cluster.html"
-	einfo "    http://www.postgresql.org/docs/${SLOT}/static/app-initdb.html"
+	einfo "    https://www.postgresql.org/docs/${SLOT}/static/creating-cluster.html"
+	einfo "    https://www.postgresql.org/docs/${SLOT}/static/app-initdb.html"
 	einfo
 	einfo "PG_INITDB_OPTS is currently set to:"
 	if [[ -z "${PG_INITDB_OPTS}" ]] ; then

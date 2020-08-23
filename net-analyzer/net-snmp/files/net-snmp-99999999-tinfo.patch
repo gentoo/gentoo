@@ -1,0 +1,10 @@
+--- a/configure.d/config_os_libs2
++++ b/configure.d/config_os_libs2
+@@ -601,6 +601,7 @@
+   [HAVE_LIBCURSES=FALSE],,
+   [LIBCURSES])
+ AC_SUBST([HAVE_LIBCURSES])
++NETSNMP_SEARCH_LIBS([cbreak], [tinfo],[LIBCURSES="$LIBCURSES -ltinfo"],,,)
+ AC_SUBST([LIBCURSES])
+ 
+ #   libm for ceil

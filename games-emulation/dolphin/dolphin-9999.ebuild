@@ -1,19 +1,21 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PLOCALES="ar ca cs da de el en es fa fr hr hu it ja ko ms nb nl pl pt pt_BR ro ru sr sv tr zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit cmake-utils desktop gnome2-utils l10n pax-utils
+inherit cmake desktop xdg-utils l10n pax-utils
 
 if [[ ${PV} == *9999 ]]
 then
 	EGIT_REPO_URI="https://github.com/dolphin-emu/dolphin"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${PV}.zip -> ${P}.zip"
+	inherit vcs-snapshot
+	commit=0dbe8fb2eaa608a6540df3d269648a596c29cf4b
+	SRC_URI="https://github.com/dolphin-emu/dolphin/archive/${commit}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 fi
 
@@ -22,7 +24,7 @@ HOMEPAGE="https://www.dolphin-emu.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg libav log lto profile pulseaudio +qt5 systemd upnp"
+IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg log lto profile pulseaudio +qt5 systemd upnp"
 
 RDEPEND="
 	dev-libs/hidapi:0=
@@ -48,10 +50,7 @@ RDEPEND="
 		dev-libs/libevdev
 		virtual/udev
 	)
-	ffmpeg? (
-		libav? ( media-video/libav:= )
-		!libav? ( media-video/ffmpeg:= )
-	)
+	ffmpeg? ( media-video/ffmpeg:= )
 	profile? ( dev-util/oprofile )
 	pulseaudio? ( media-sound/pulseaudio )
 	qt5? (
@@ -62,10 +61,8 @@ RDEPEND="
 	systemd? ( sys-apps/systemd:0= )
 	upnp? ( net-libs/miniupnpc )
 "
-DEPEND="${RDEPEND}
-	app-arch/zip
-	dev-util/vulkan-headers
-	media-libs/freetype
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig"
 
@@ -75,13 +72,19 @@ RDEPEND="${RDEPEND}
 	media-libs/vulkan-loader"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# Remove all the bundled libraries that support system-installed
 	# preference. See CMakeLists.txt for conditional 'add_subdirectory' calls.
 	local KEEP_SOURCES=(
 		Bochs_disasm
 		FreeSurround
+
+		# vulkan's API is not backwards-compatible:
+		# new release dropped VK_PRESENT_MODE_RANGE_SIZE_KHR
+		# but dolphin still relies on it, bug #729832
+		Vulkan
+
 		cpp-optparse
 		# no support for for using system library
 		glslang
@@ -99,6 +102,8 @@ src_prepare() {
 		# gentoo's version requires exception support.
 		# dolphin disables exceptions and fails the build.
 		picojson
+		# No code to detect shared library.
+		zstd
 	)
 	local s
 	for s in "${KEEP_SOURCES[@]}"; do
@@ -142,13 +147,18 @@ src_configure() {
 		-DUSE_DISCORD_PRESENCE=$(usex discord-presence)
 		-DUSE_SHARED_ENET=ON
 		-DUSE_UPNP=$(usex upnp)
+
+		# Undo cmake-utils.eclass's defaults.
+		# All dolphin's libraries are private
+		# and rely on circular dependency resolution.
+		-DBUILD_SHARED_LIBS=OFF
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	dodoc Readme.md
 	if use doc; then
@@ -163,9 +173,9 @@ src_install() {
 pkg_postinst() {
 	# Add pax markings for hardened systems
 	pax-mark -m "${EPREFIX}"/usr/games/bin/"${PN}"-emu
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

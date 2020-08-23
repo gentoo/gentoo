@@ -1,4 +1,4 @@
-# Copyright 2002-2019 Gentoo Authors
+# Copyright 2002-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -55,7 +55,14 @@ PATCHES=(
 	"${FILESDIR}"/${P}-ia16-ldflags.patch
 	"${FILESDIR}"/${P}-fix-inline.patch
 	"${FILESDIR}"/${P}-lto.patch
+	"${FILESDIR}"/${P}-as.patch
 )
+
+pkg_pretend() {
+	if tc-is-clang; then
+		die "${P} does not work on clang due to missing 16-bit assembly support: https://bugs.gentoo.org/729240. Please try gcc."
+	fi
+}
 
 src_prepare() {
 	default
@@ -97,6 +104,7 @@ src_configure() {
 }
 
 src_compile() {
+	# src/makefile.common is fritten manually, uses AR=ar
 	emake AR=$(tc-getAR)
 }
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,25 +6,25 @@ EAPI=6
 inherit cmake-utils linux-info git-r3
 
 DESCRIPTION="ncurses interface for QEMU"
-HOMEPAGE="https://lib.void.so/nemu"
-EGIT_REPO_URI="https://bitbucket.org/PascalRD/nemu.git"
+HOMEPAGE="https://github.com/nemuTUI/nemu"
+EGIT_REPO_URI="https://github.com/nemuTUI/nemu"
 SRC_URI=""
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="+vnc-client +ovf savevm debug"
+IUSE="+vnc-client +ovf +spice savevm svg debug"
 
 RDEPEND="
 	sys-libs/ncurses:0=[unicode]
 	dev-db/sqlite:3=
 	virtual/libusb:1
-	|| ( sys-fs/eudev sys-fs/udev )
-	app-emulation/qemu[vnc,virtfs]
+	|| ( sys-fs/eudev sys-fs/udev sys-apps/systemd )
+	>=app-emulation/qemu-2.12.0[vnc,virtfs,spice?]
 	ovf? (
 		dev-libs/libxml2
 		app-arch/libarchive
 	)
-	vnc-client? ( net-misc/tigervnc )"
+	svg? ( media-gfx/graphviz[svg] )"
 
 DEPEND="
 	${RDEPEND}
@@ -36,6 +36,8 @@ src_configure() {
 		-DNM_DEBUG=$(usex debug)
 		-DNM_SAVEVM_SNAPSHOTS=$(usex savevm)
 		-DNM_WITH_OVF_SUPPORT=$(usex ovf)
+		-DNM_WITH_NETWORK_MAP=$(usex svg)
+		-DNM_WITH_SPICE=$(usex spice)
 	)
 	cmake-utils_src_configure
 }
@@ -57,11 +59,6 @@ pkg_pretend() {
 }
 
 pkg_postinst() {
-	elog "Old database is not supported (nEMU versions < 1.0.0)."
-	elog "You will need to delete current database."
-	elog "If upgraded from 1.0.0, execute script:"
-	elog "/usr/share/nemu/scripts/upgrade_db.sh"
-	elog ""
 	elog "For non-root usage execute script:"
 	elog "/usr/share/nemu/scripts/setup_nemu_nonroot.sh linux <username>"
 	elog "and add udev rule:"

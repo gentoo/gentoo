@@ -1,0 +1,71 @@
+From 03581f45a3563d3d79075fe0e85e6fb52e864b76 Mon Sep 17 00:00:00 2001
+From: William Breathitt Gray <vilhelm.gray@gmail.com>
+Date: Sat, 4 Apr 2020 22:38:26 -0400
+Subject: [PATCH] Fix odamex.wad build flow
+
+The odamex.wad file should be built in the proper build directory;
+building in the source tree confuses CMake and causes it to attempt to
+rebuild a second time. This patch also removes odawad dependency for the
+Odamex client and server executables.
+---
+ wad/CMakeLists.txt | 40 ++++++++++++++++++++++------------------
+ 1 file changed, 22 insertions(+), 18 deletions(-)
+
+diff --git a/wad/CMakeLists.txt b/wad/CMakeLists.txt
+index c09b0d1a..349ce0df 100644
+--- a/wad/CMakeLists.txt
++++ b/wad/CMakeLists.txt
+@@ -4,28 +4,32 @@ find_program(DEUTEX deutex)
+ if(DEUTEX)
+ 	message("Found DeuTex: ${DEUTEX}")
+ 
+-	file(REMOVE odamex.wad)
+-	add_custom_command(OUTPUT odamex.wad
+-		COMMAND ${DEUTEX} -rgb 0 255 255 -doom2 bootstrap -build wadinfo.txt odamex.wad
++	add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/odamex.wad
++		COMMAND ${DEUTEX} -rgb 0 255 255 -doom2 bootstrap -build wadinfo.txt ${CMAKE_CURRENT_BINARY_DIR}/odamex.wad
+ 		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
++		BYPRODUCTS ${CMAKE_CURRENT_BINARY_DIR}/odamex.wad
+ 		VERBATIM)
+ 
+-	add_custom_target(odawad DEPENDS odamex.wad)
++	add_custom_target(odawad ALL
++		DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/odamex.wad)
+ 
+-	if(BUILD_CLIENT)
+-	  add_dependencies(odamex odawad)
++	if(WIN32)
++		install(FILES ${CMAKE_CURRENT_BINARY_DIR}/odamex.wad
++			DESTINATION .
++			COMPONENT common)
++	else()
++		install(FILES ${CMAKE_CURRENT_BINARY_DIR}/odamex.wad
++			DESTINATION ${CMAKE_INSTALL_DATADIR}/odamex
++			COMPONENT common)
+ 	endif()
+-	if(BUILD_SERVER)
+-	  add_dependencies(odasrv odawad)
+-	endif()
+-endif()
+-
+-if(WIN32)
+-	install(FILES odamex.wad
+-		DESTINATION .
+-		COMPONENT common)
+ else()
+-	install(FILES odamex.wad
+-		DESTINATION ${CMAKE_INSTALL_DATADIR}/odamex
+-		COMPONENT common)
++	if(WIN32)
++		install(FILES odamex.wad
++			DESTINATION .
++			COMPONENT common)
++	else()
++		install(FILES odamex.wad
++			DESTINATION ${CMAKE_INSTALL_DATADIR}/odamex
++			COMPONENT common)
++	endif()
+ endif()
+-- 
+2.26.0
+

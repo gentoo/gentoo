@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">vim/vim</remote-id>
+		<remote-id type="cpe">cpe:/a:vim:vim</remote-id>
 	</upstream>
 </pkgmetadata>

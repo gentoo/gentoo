@@ -8,10 +8,10 @@ SRC_URI="https://dev.gentoo.org/~aidecoe/distfiles/${CATEGORY}/${PN}/gentoo-logo
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://anongit.freedesktop.org/git/plymouth"
+	EGIT_REPO_URI="https://gitlab.freedesktop.org/plymouth/plymouth"
 else
 	SRC_URI="${SRC_URI} https://www.freedesktop.org/software/plymouth/releases/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 inherit autotools readme.gentoo-r1 systemd toolchain-funcs
@@ -21,7 +21,7 @@ HOMEPAGE="https://cgit.freedesktop.org/plymouth/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug gdm +gtk +libkms +pango static-libs +udev"
+IUSE="debug +gtk +libkms +pango +split-usr static-libs +udev"
 
 CDEPEND="
 	>=media-libs/libpng-1.2.16:=
@@ -74,7 +74,6 @@ src_configure() {
 		$(use_enable gtk gtk)
 		$(use_enable libkms drm)
 		$(use_enable pango)
-		$(use_enable gdm gdm-transition)
 		$(use_with udev)
 	)
 	econf "${myconf[@]}"
@@ -86,10 +85,12 @@ src_install() {
 	insinto /usr/share/plymouth
 	newins "${DISTDIR}"/gentoo-logo.png bizcom.png
 
-	# Install compatibility symlinks as some rdeps hardcode the paths
-	dosym ../usr/bin/plymouth /bin/plymouth
-	dosym ..../usr/sbin/plymouth-set-default-theme /sbin/plymouth-set-default-theme
-	dosym ../usr/sbin/plymouthd /sbin/plymouthd
+	if use split-usr ; then
+		# Install compatibility symlinks as some rdeps hardcode the paths
+		dosym ../usr/bin/plymouth /bin/plymouth
+		dosym ../usr/sbin/plymouth-set-default-theme /sbin/plymouth-set-default-theme
+		dosym ../usr/sbin/plymouthd /sbin/plymouthd
+	fi
 
 	readme.gentoo_create_doc
 
@@ -97,6 +98,9 @@ src_install() {
 	# this is not needed for systemd, same should hold for openrc
 	# so remove
 	rm -rf "${D}"/var/run
+
+	# fix broken symlink
+	dosym ../../bizcom.png /usr/share/plymouth/themes/spinfinity/header-image.png
 }
 
 pkg_postinst() {

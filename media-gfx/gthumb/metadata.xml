@@ -6,8 +6,7 @@
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
 	<use>
-		<flag name="http">Enable webservice integration through <pkg>net-libs/libsoup</pkg></flag>
-		<flag name="json">Compile code that uses the libjson-glib library</flag>
+		<flag name="http">Enable webservice integration through <pkg>net-libs/webkit-gtk</pkg></flag>
 		<flag name="slideshow">Enable slideshow plugin</flag>
 	</use>
 </pkgmetadata>

@@ -170,7 +170,7 @@ font_src_install() {
 			font_xfont_config "${dir}"
 			popd > /dev/null || die
 		done
-	elif [[ ${FONT_S/ } != "${FONT_S}" ]]; then
+	elif [[ ${FONT_S/[[:space:]]} != "${FONT_S}" ]]; then
 		# backwards compatibility code, can be removed after 2021-02-14
 		eqawarn "Using a space-separated list for FONT_S is deprecated."
 		eqawarn "Use a bash array instead if there are multiple directories."

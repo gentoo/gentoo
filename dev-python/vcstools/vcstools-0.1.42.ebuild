@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -13,7 +13,7 @@ fi
 inherit ${SCM} distutils-r1
 
 DESCRIPTION="Python library for interacting with various VCS systems"
-HOMEPAGE="http://wiki.ros.org/vcstools"
+HOMEPAGE="https://wiki.ros.org/vcstools"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 	KEYWORDS=""

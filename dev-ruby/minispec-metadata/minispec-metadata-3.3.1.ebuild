@@ -13,11 +13,11 @@ HOMEPAGE="https://github.com/ordinaryzelig/minispec-metadata"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 ruby_add_rdepend "dev-ruby/minitest"
 
 all_ruby_prepare() {
-	sed -i -e '/\(bundler\|awesome_print\)/ s:^:#:' spec/helper.rb || die
+	sed -i -e '/\(bundler\|awesome_print\)/ s:^:#:' Rakefile spec/helper.rb || die
 }

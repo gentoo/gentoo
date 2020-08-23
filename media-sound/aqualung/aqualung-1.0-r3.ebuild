@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,8 +13,8 @@ SRC_URI="mirror://sourceforge/aqualung/${PN}-${MY_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="alsa cdda cddb debug flac ffmpeg ifp jack ladspa lame libav libsamplerate
+KEYWORDS="amd64 x86"
+IUSE="alsa cdda cddb debug flac ffmpeg ifp jack ladspa lame libsamplerate
 	lua mac modplug mp3 musepack oss podcast pulseaudio sndfile speex systray
 	vorbis wavpack"
 
@@ -30,10 +30,7 @@ RDEPEND="
 	alsa? ( media-libs/alsa-lib )
 	cdda? ( dev-libs/libcdio-paranoia )
 	cddb? ( media-libs/libcddb )
-	ffmpeg? (
-		libav? ( media-video/libav:0= )
-		!libav? ( media-video/ffmpeg:0= )
-	)
+	ffmpeg? ( media-video/ffmpeg:0= )
 	flac? ( media-libs/flac )
 	ifp? ( media-libs/libifp )
 	jack? ( media-sound/jack-audio-connection-kit )

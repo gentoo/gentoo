@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://www.bitbucket.org/shuerhaaken/${PN}/downloads/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="ayatana +lastfm +lyrics"
+IUSE="appindicator +lastfm +lyrics"
 
 RDEPEND="
 	dev-db/sqlite:3=
@@ -25,7 +25,7 @@ RDEPEND="
 	x11-libs/cairo:=
 	x11-libs/gtk+:3
 	x11-libs/libX11
-	ayatana? ( dev-libs/libappindicator:3= )
+	appindicator? ( dev-libs/libappindicator:3= )
 	lastfm? ( net-libs/libsoup:2.4= )
 	lyrics? (
 		net-libs/libsoup:2.4=
@@ -45,7 +45,7 @@ src_configure() {
 		--enable-mediakeys \
 		--enable-mpris \
 		--enable-soundmenu2 \
-		$(use_enable ayatana appindicator) \
+		$(use_enable appindicator) \
 		$(use_enable lastfm) \
 		$(use_enable lyrics lyricwiki) \
 		$(use_enable lyrics chartlyrics) \

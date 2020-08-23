@@ -9,12 +9,12 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Combinator library for splitting lists"
-HOMEPAGE="http://hackage.haskell.org/package/split"
+HOMEPAGE="https://hackage.haskell.org/package/split"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ia64 ppc ppc64 sparc x86 ~ppc-macos ~x86-macos"
+KEYWORDS="~amd64 ~x86 ~ppc-macos ~x86-macos"
 IUSE=""
 
 RDEPEND=">=dev-lang/ghc-6.10.4:="

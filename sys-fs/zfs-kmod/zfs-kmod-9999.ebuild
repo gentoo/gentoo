@@ -3,19 +3,19 @@
 
 EAPI=7
 
-inherit flag-o-matic linux-mod toolchain-funcs
+inherit autotools flag-o-matic linux-mod toolchain-funcs
 
 DESCRIPTION="Linux ZFS kernel module for sys-fs/zfs"
-HOMEPAGE="https://zfsonlinux.org/"
+HOMEPAGE="https://github.com/openzfs/zfs"
 
 if [[ ${PV} == "9999" ]]; then
-	inherit autotools git-r3
-	EGIT_REPO_URI="https://github.com/zfsonlinux/zfs.git"
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/openzfs/zfs.git"
 else
-	SRC_URI="https://github.com/zfsonlinux/zfs/releases/download/zfs-${PV}/zfs-${PV}.tar.gz"
+	SRC_URI="https://github.com/openzfs/zfs/releases/download/zfs-${PV}/zfs-${PV}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64"
 	S="${WORKDIR}/zfs-${PV}"
-	ZFS_KERNEL_COMPAT="5.4"
+	ZFS_KERNEL_COMPAT="5.6"
 fi
 
 LICENSE="CDDL debug? ( GPL-2+ )"
@@ -60,13 +60,7 @@ pkg_setup() {
 			DEVTMPFS
 	"
 
-	if use arm64; then
-		kernel_is -ge 5 && CONFIG_CHECK="${CONFIG_CHECK} !PREEMPT"
-	fi
-
 	kernel_is -lt 5 && CONFIG_CHECK="${CONFIG_CHECK} IOSCHED_NOOP"
-
-	kernel_is -ge 3 10 || die "Linux 3.10 or newer required"
 
 	if [[ ${PV} != "9999" ]]; then
 		local kv_major_max kv_minor_max zcompat
@@ -76,6 +70,12 @@ pkg_setup() {
 		kv_minor_max="${zcompat%%.*}"
 		kernel_is -le "${kv_major_max}" "${kv_minor_max}" || die \
 			"Linux ${kv_major_max}.${kv_minor_max} is the latest supported version"
+
+		# 0.8.x requires at least 2.6.32
+		kernel_is ge 2 6 32 || die "Linux 2.6.32 or newer required"
+	else
+		# git master requires at least 3.10
+		kernel_is -ge 3 10 || die "Linux 3.10 or newer required"
 	fi
 
 	linux-mod_pkg_setup
@@ -150,7 +150,7 @@ pkg_postinst() {
 		ewarn "at least 256M and decreasing zfs_arc_max to some value less than that."
 	fi
 
-	ewarn "This version of ZFSOnLinux includes support for new feature flags"
+	ewarn "This version of OpenZFS includes support for new feature flags"
 	ewarn "that are incompatible with previous versions. GRUB2 support for"
 	ewarn "/boot with the new feature flags is not yet available."
 	ewarn "Do *NOT* upgrade root pools to use the new feature flags."

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,12 +13,12 @@ MY_PN="ChasingBottoms"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="For testing partial and infinite values"
-HOMEPAGE="http://hackage.haskell.org/package/ChasingBottoms"
+HOMEPAGE="https://hackage.haskell.org/package/ChasingBottoms"
 SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-haskell/mtl-1.1:=[profile?] <dev-haskell/mtl-2.3:=[profile?]

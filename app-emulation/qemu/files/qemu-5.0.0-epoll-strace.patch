@@ -1,0 +1,50 @@
+https://lists.nongnu.org/archive/html/qemu-devel/2020-04/msg02643.html
+
+From 6bce23d8daf96a7faa9288e7414948cda31ddaa2 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Thu, 16 Apr 2020 18:55:49 +0100
+Subject: [PATCH] linux-user/strace.list: fix epoll_create{,1} -strace output
+
+Fix syscall name and parameters priinter.
+
+Before the change:
+
+```
+$ alpha-linux-user/qemu-alpha -strace -L /usr/alpha-unknown-linux-gnu/ /tmp/a
+...
+1274697 %s(%d)(2097152,274903156744,274903156760,274905840712,274877908880,274903235616) = 3
+1274697 exit_group(0)
+```
+
+After the change:
+
+```
+$ alpha-linux-user/qemu-alpha -strace -L /usr/alpha-unknown-linux-gnu/ /tmp/a
+...
+1273719 epoll_create1(2097152) = 3
+1273719 exit_group(0)
+```
+
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ linux-user/strace.list | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/linux-user/strace.list
++++ b/linux-user/strace.list
+@@ -125,10 +125,10 @@
+ { TARGET_NR_dup3, "dup3" , "%s(%d,%d,%d)", NULL, NULL },
+ #endif
+ #ifdef TARGET_NR_epoll_create
+-{ TARGET_NR_epoll_create, "%s(%d)", NULL, NULL, NULL },
++{ TARGET_NR_epoll_create, "epoll_create", "%s(%d)", NULL, NULL },
+ #endif
+ #ifdef TARGET_NR_epoll_create1
+-{ TARGET_NR_epoll_create1, "%s(%d)", NULL, NULL, NULL },
++{ TARGET_NR_epoll_create1, "epoll_create1", "%s(%d)", NULL, NULL },
+ #endif
+ #ifdef TARGET_NR_epoll_ctl
+ { TARGET_NR_epoll_ctl, "epoll_ctl" , NULL, NULL, NULL },
+-- 
+2.26.2
+

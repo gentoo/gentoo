@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -24,12 +24,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-python/nose[${PYTHON_USEDEP}]
 		>=dev-python/toolz-0.8[${PYTHON_USEDEP}] )"
-
-python_compile() {
-	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
-
-	distutils-r1_python_compile
-}
 
 python_test() {
 	pushd "${BUILD_DIR}"/lib/ > /dev/null || die

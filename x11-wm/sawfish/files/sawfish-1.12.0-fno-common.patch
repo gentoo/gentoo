@@ -1,0 +1,39 @@
+--- a/src/functions.c
++++ b/src/functions.c
+@@ -65,7 +65,7 @@
+ # endif
+ #endif
+ 
+-DEFSYM(root, "root");
++extern DEFSYM(root, "root");
+ DEFSYM(after_restacking_hook, "after-restacking-hook");
+ DEFSYM(position, "position");
+ DEFSYM(spacing, "spacing");
+--- a/src/flippers.c
++++ b/src/flippers.c
+@@ -22,10 +22,10 @@
+ 
+ static Window edge_left, edge_right, edge_top, edge_bottom;
+ 
+-DEFSYM(left, "left");
+-DEFSYM(right, "right");
+-DEFSYM(top, "top");
+-DEFSYM(bottom, "bottom");
++extern DEFSYM(left, "left");
++extern DEFSYM(right, "right");
++extern DEFSYM(top, "top");
++extern DEFSYM(bottom, "bottom");
+ DEFSYM(enter_flipper_hook, "enter-flipper-hook");
+ DEFSYM(leave_flipper_hook, "leave-flipper-hook");
+ 
+--- a/src/windows.c
++++ b/src/windows.c
+@@ -75,7 +75,7 @@
+ DEFSYM(north, "north");
+ DEFSYM(north_east, "north-east");
+ DEFSYM(west, "west");
+-DEFSYM(center, "center");
++extern DEFSYM(center, "center");
+ DEFSYM(east, "east");
+ DEFSYM(south_west, "south-west");
+ DEFSYM(south, "south");

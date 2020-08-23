@@ -6,7 +6,7 @@ inherit xorg-2
 
 DESCRIPTION="video mode tuner for Xorg"
 
-KEYWORDS="~alpha amd64 arm hppa ~mips ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~mips ppc ppc64 ~s390 sparc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libXaw

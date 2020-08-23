@@ -10,7 +10,7 @@ nest_size.latex = 500
 save_size.latex = 5000
 pool_size.latex = 500000
 max_strings.latex = 55000
-font_mem_size.latex= 400000
+font_mem_size.latex= 800000
 
 % jadetex & pdfjadetex
 main_memory.jadetex = 1500000

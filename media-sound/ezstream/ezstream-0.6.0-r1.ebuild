@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="A command line source client for Icecast media streaming servers"
-HOMEPAGE="http://www.icecast.org/ezstream/"
+HOMEPAGE="https://www.icecast.org/ezstream/"
 SRC_URI="http://downloads.xiph.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

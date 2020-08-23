@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dolsen@gentoo.org</email>
+		<name>Brian Dolbec</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>glyph@twistedmatrix.com</email>
+			<name>glyph</name>
+		</maintainer>
+		<remote-id type="pypi">Tubes</remote-id>
+		<remote-id type="github">twisted/tubes</remote-id>
+	</upstream>
+	<longdescription>Presently based primarily on Twisted, its core data
+	structures are fairly framework-agnostic and could be repurposed to work
+	with any event-driven container.
+	</longdescription>
+</pkgmetadata>

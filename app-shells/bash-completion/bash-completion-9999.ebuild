@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..9} )
 inherit autotools git-r3 python-any-r1
 
 DESCRIPTION="Programmable Completion for bash"
@@ -23,9 +23,6 @@ RDEPEND=">=app-shells/bash-4.3_p30-r1:0
 DEPEND="
 	test? (
 		${RDEPEND}
-		app-misc/dtach
-		dev-util/dejagnu
-		dev-tcltk/tcllib
 		$(python_gen_any_dep '
 			dev-python/pexpect[${PYTHON_USEDEP}]
 			dev-python/pytest[${PYTHON_USEDEP}]
@@ -85,42 +82,24 @@ src_unpack() {
 }
 
 src_prepare() {
-	eapply_user
 	if use eselect; then
 		# generate and apply patch
 		emake -C "${WORKDIR}"/bashcomp2 bash-completion-blacklist-support.patch
 		eapply "${WORKDIR}"/bashcomp2/bash-completion-blacklist-support.patch
 	fi
 
-	# our setup is close enough to container to cause the same tests
-	# to fail
-	sed -i -e '/def in_container/a \
-    return True' test/t/conftest.py || die
+	# redhat-specific, we strip these completions
+	rm test/t/test_if{down,up}.py || die
+	# not available for icedtea
+	rm test/t/test_javaws.py || die
 
+	eapply_user
 	eautoreconf
 }
 
 src_test() {
-	# Tests need an interactive shell, #477066
-	# idea stolen from:
-	# http://pkgs.fedoraproject.org/cgit/rpms/bash-completion.git/tree/bash-completion.spec
-
-	# real-time output of the log ;-)
-	touch "${T}/dtach-test.log" || die
-	tail -f "${T}/dtach-test.log" &
-	local tail_pid=${!}
-
-	# override the default expect timeout and buffer size to avoid tests
-	# failing randomly due to cold cache, busy system or just more output
-	# than upstream anticipated (they run tests on pristine docker
-	# installs of binary distros)
-	nonfatal dtach -N "${T}/dtach.sock" \
-		bash -c 'emake check RUNTESTFLAGS="OPT_TIMEOUT=300 OPT_BUFFER_SIZE=1000000" PYTESTFLAGS="-vv" \
-			&> "${T}"/dtach-test.log; echo ${?} > "${T}"/dtach-test.out'
-
-	kill "${tail_pid}"
-	[[ -f ${T}/dtach-test.out ]] || die "Unable to run tests"
-	[[ $(<"${T}"/dtach-test.out) == 0 ]] || die "Tests failed"
+	# portage's HOME override breaks tests
+	emake check HOME="$(egethome "${UID}")" PYTESTFLAGS="-vv" NETWORK=none
 }
 
 src_install() {

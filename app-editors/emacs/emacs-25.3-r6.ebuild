@@ -12,14 +12,13 @@ SRC_URI="mirror://gnu/emacs/${P}.tar.xz
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="25"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk gtk2 gzip-el imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm zlib"
 REQUIRED_USE="?? ( aqua X )"
 
-RDEPEND="sys-libs/ncurses:0=
-	>=app-eselect/eselect-emacs-1.16
-	>=app-emacs/emacs-common-gentoo-1.5[games?,X?]
+RDEPEND=">=app-emacs/emacs-common-gentoo-1.5[games?,X?]
 	net-libs/liblockfile
+	sys-libs/ncurses:0=
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( sys-apps/dbus )
@@ -90,11 +89,13 @@ RDEPEND="sys-libs/ncurses:0=
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
 
-BDEPEND="virtual/pkgconfig
+BDEPEND="app-eselect/eselect-emacs
+	virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )"
 
 RDEPEND="${RDEPEND}
-	!<app-editors/emacs-vcs-${PV}"
+	!<app-editors/emacs-vcs-${PV}
+	app-eselect/eselect-emacs"
 
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
@@ -120,9 +121,7 @@ src_configure() {
 	strip-flags
 	filter-flags -pie					#526948
 
-	if use sh; then
-		replace-flags "-O[1-9]" -O0		#262359
-	elif use ia64; then
+	if use ia64; then
 		replace-flags "-O[2-9]" -O1		#325373
 	else
 		replace-flags "-O[3-9]" -O2
@@ -314,9 +313,10 @@ src_install() {
 		/usr/bin/emacs through the Emacs eselect module, which also
 		redirects man and info pages. Therefore, several Emacs versions can
 		be installed at the same time. \"man emacs.eselect\" for details.
-		\\n\\nIf you upgrade from Emacs version 24.2 or earlier, then it is
-		strongly recommended that you use app-admin/emacs-updater to rebuild
-		all byte-compiled elisp files of the installed Emacs packages."
+		\\n\\nIf you upgrade from a previous major version of Emacs, then
+		it is strongly recommended that you use app-admin/emacs-updater
+		to rebuild all byte-compiled elisp files of the installed Emacs
+		packages."
 	use X && DOC_CONTENTS+="\\n\\nYou need to install some fonts for Emacs.
 		Installing media-fonts/font-adobe-{75,100}dpi on the X server's
 		machine would satisfy basic Emacs requirements under X11.

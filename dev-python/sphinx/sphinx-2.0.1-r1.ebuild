@@ -9,12 +9,12 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
 DESCRIPTION="Python documentation generator"
-HOMEPAGE="http://www.sphinx-doc.org/"
+HOMEPAGE="https://www.sphinx-doc.org/"
 SRC_URI="mirror://pypi/S/${PN^}/${P^}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
 IUSE="doc latex test"
 
 # Tests automagically use latex, bug 667414
@@ -36,7 +36,6 @@ RDEPEND="
 	dev-python/sphinxcontrib-htmlhelp[${PYTHON_USEDEP}]
 	dev-python/sphinxcontrib-serializinghtml[${PYTHON_USEDEP}]
 	dev-python/sphinxcontrib-qthelp[${PYTHON_USEDEP}]
-	dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	latex? (
 		dev-texlive/texlive-latexextra

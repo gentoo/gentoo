@@ -1,6 +1,5 @@
 move net-analyzer/ipv6-toolkit net-analyzer/ipv6toolkit
 move x11-apps/xvfb-run x11-misc/xvfb-run
-move kde-plasma/plasma-mediacenter media-video/plasma-mediacenter
 move kde-misc/plasma-nm kde-plasma/plasma-nm
 move app-office/akonadi-server kde-apps/akonadi
 move net-wireless/bluedevil kde-plasma/bluedevil

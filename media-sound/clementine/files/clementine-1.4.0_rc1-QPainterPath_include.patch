@@ -1,0 +1,50 @@
+From 7715ae5c01528213a97369e14d5461efd264cc27 Mon Sep 17 00:00:00 2001
+From: SDNick484 <SDNick484@gmail.com>
+Date: Thu, 28 May 2020 10:34:31 +0200
+Subject: [PATCH] Adds missing QPainterPath include
+
+---
+ src/widgets/freespacebar.cpp | 1 +
+ src/widgets/osdpretty.cpp    | 1 +
+ src/widgets/sliderwidget.cpp | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/src/widgets/freespacebar.cpp b/src/widgets/freespacebar.cpp
+index 3067f722b..c9789d353 100644
+--- a/src/widgets/freespacebar.cpp
++++ b/src/widgets/freespacebar.cpp
+@@ -20,6 +20,7 @@
+ 
+ #include <QLinearGradient>
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ const int FreeSpaceBar::kBarHeight = 20;
+ const int FreeSpaceBar::kBarBorderRadius = 8;
+diff --git a/src/widgets/osdpretty.cpp b/src/widgets/osdpretty.cpp
+index 9d95716d8..30cef7dae 100644
+--- a/src/widgets/osdpretty.cpp
++++ b/src/widgets/osdpretty.cpp
+@@ -26,6 +26,7 @@
+ #include <QLayout>
+ #include <QMouseEvent>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QSettings>
+ #include <QTimer>
+ #include <QTimeLine>
+diff --git a/src/widgets/sliderwidget.cpp b/src/widgets/sliderwidget.cpp
+index 581a0de7b..96bbc0e5e 100644
+--- a/src/widgets/sliderwidget.cpp
++++ b/src/widgets/sliderwidget.cpp
+@@ -27,6 +27,7 @@
+ #include <QSize>
+ #include <QTimer>
+ #include <QStyle>
++#include <QtGui>
+ #include <QMenu>
+ #include <QWheelEvent>
+ #include <QMouseEvent>
+-- 
+2.27.0.rc2
+

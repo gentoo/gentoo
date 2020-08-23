@@ -15,11 +15,13 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="+gui"
 
-BDEPEND="${PYTHON_DEPS}
-	dev-python/setuptools_scm"
+BDEPEND="
+	$(python_gen_cond_dep '
+		dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	')"
 RDEPEND="${PYTHON_DEPS}
 	app-emulation/winetricks
 	$(python_gen_cond_dep '

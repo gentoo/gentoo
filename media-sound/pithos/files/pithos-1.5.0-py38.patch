@@ -1,0 +1,41 @@
+commit 3a23742614058b4bc97d71e1bb826e19891f0d24
+Author: JasonLG1979 <jasonlevigray3@gmail.com>
+Date:   Sun Mar 22 20:50:53 2020 -0500
+
+    Quiet SyntaxWarning: "is" with a literal in Python 3.8
+
+diff --git a/pithos/SearchDialog.py b/pithos/SearchDialog.py
+index d8eec14..fcc9004 100644
+--- a/pithos/SearchDialog.py
++++ b/pithos/SearchDialog.py
+@@ -61,11 +61,11 @@ class SearchDialog(Gtk.Dialog):
+                 return
+ 
+             for i in results:
+-                if i.resultType is 'song':
++                if i.resultType == 'song':
+                     mk = '<b>{}</b> by {}'.format(html.escape(i.title), html.escape(i.artist))
+-                elif i.resultType is 'artist':
++                elif i.resultType == 'artist':
+                     mk = '<b>{}</b> (artist)'.format(html.escape(i.name))
+-                elif i.resultType is 'genre':
++                elif i.resultType == 'genre':
+                     mk = '<b>{}</b> (genre)'.format(html.escape(i.stationName))
+                 self.model.append((i, mk))
+             self.treeview.show()
+diff --git a/pithos/StationsDialog.py b/pithos/StationsDialog.py
+index a2b51b2..43cdcb6 100644
+--- a/pithos/StationsDialog.py
++++ b/pithos/StationsDialog.py
+@@ -201,9 +201,9 @@ class StationsDialog(Gtk.Dialog):
+     def add_station_cb(self, dialog, response):
+         result = dialog.result
+         if result is not None:
+-            if result.resultType is 'song':
++            if result.resultType == 'song':
+                 description = '{} by {}'.format(html.escape(result.title), html.escape(result.artist))
+-            elif result.resultType is 'artist':
++            elif result.resultType == 'artist':
+                 description = html.escape(result.name)
+             else:
+                 description = html.escape(result.stationName)

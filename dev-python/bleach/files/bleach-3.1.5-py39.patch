@@ -1,0 +1,36 @@
+diff --git a/tests/test_clean.py b/tests/test_clean.py
+index 133cd82..4dcb9f4 100644
+--- a/tests/test_clean.py
++++ b/tests/test_clean.py
+@@ -597,31 +597,16 @@ def test_attributes_list():
+         {'protocols': ['http']},
+         '<a href="example.com">valid</a>'
+     ),
+-    (
+-        '<a href="example.com:8000">valid</a>',
+-        {'protocols': ['http']},
+-        '<a href="example.com:8000">valid</a>'
+-    ),
+     (
+         '<a href="localhost">valid</a>',
+         {'protocols': ['http']},
+         '<a href="localhost">valid</a>'
+     ),
+-    (
+-        '<a href="localhost:8000">valid</a>',
+-        {'protocols': ['http']},
+-        '<a href="localhost:8000">valid</a>'
+-    ),
+     (
+         '<a href="192.168.100.100">valid</a>',
+         {'protocols': ['http']},
+         '<a href="192.168.100.100">valid</a>'
+     ),
+-    (
+-        '<a href="192.168.100.100:8000">valid</a>',
+-        {'protocols': ['http']},
+-        '<a href="192.168.100.100:8000">valid</a>'
+-    ),
+ 
+     # Disallow implicit http if disallowed
+     (

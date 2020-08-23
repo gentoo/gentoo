@@ -7,12 +7,12 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit python-single-r1
 
 DESCRIPTION="A set of profiles for the GNU Screen console window manager (app-misc/screen)"
-HOMEPAGE="http://byobu.co"
+HOMEPAGE="https://byobu.org"
 SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P/-/_}.orig.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="screen"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

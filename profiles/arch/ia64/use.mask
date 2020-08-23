@@ -1,24 +1,31 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -ia64
 
-# # Sergei Trofimovich <slyfox@gentoo.org> (2019-12-28)
-# ruby-2.7 dropped ia64 support.
-ruby_targets_ruby27
+# Matt Turner <mattst88@gentoo.org> (2020-07-01)
+# Unlikely.
+vulkan
+
+# James Le Cuirot <chewi@gentoo.org> (2020-05-10)
+# media-libs/allegro is not keyworded.
+allegro
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)
+# Drop support for ghc and darcs
+darcs
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-04-12)
+# ruby-2.7 dropped ia64 support, mask ruby in Gentoo.
+ruby
+# - net-libs/gnome-online-accounts: depend on net-libs/webkit-gtk
+gnome-online-accounts
 
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
 # Dependency not keyworded (dev-libs/libindicate).
+appindicator
 ayatana
-
-# Michał Górny <mgorny@gentoo.org> (2018-07-16)
-# Python 3.7 support requires fresh versions of packages which are stuck
-# at keywordreqs.
-# bug #661306: dev-python/pytest
-# bug #661320: dev-python/twisted
-python_targets_python3_7
-python_single_target_python3_7
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-06-17)
 # There is no luajit support on ia64. Bug #554376
@@ -28,11 +35,6 @@ luajittex
 # Andreas Sturmlechner <asturm@gentoo.org> (2017-02-25)
 # kwallet integration split from kde to distinct flag
 kwallet
-
-# Julian Ospald <hasufell@gentoo.org> (2015-09-20)
-# no LibreSSL support yet
-curl_ssl_libressl
-libressl
 
 # No hardware to test by the team
 3dfx

@@ -1,0 +1,9 @@
+###
+# kubernetes system config
+#
+# The following values are used to configure the kube-scheduler
+#
+
+# Add your own!
+command_args=""
+

@@ -1,0 +1,28 @@
+From 27ec1008df054072fac6b58ffb8d820423522442 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 10 May 2020 23:02:14 +0100
+Subject: [PATCH] dvbpsi: Fix build when DVB is not enabled at all
+
+---
+ src/input/mpegts/dvb_psi.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/input/mpegts/dvb_psi.c b/src/input/mpegts/dvb_psi.c
+index 15203d98c..96b1689fb 100644
+--- a/src/input/mpegts/dvb_psi.c
++++ b/src/input/mpegts/dvb_psi.c
+@@ -2331,9 +2331,11 @@ psi_tables_install ( mpegts_input_t *mi, mpegts_mux_t *mm,
+     psi_tables_atsc_t(mm);
+     break;
+   case DVB_SYS_DVBC_ANNEX_B:
++#if ENABLE_MPEGTS_DVB
+     if (idnode_is_instance(&mm->mm_id, &dvb_mux_dvbc_class))
+       psi_tables_dvb(mm);
+     else
++#endif
+       psi_tables_atsc_c(mm);
+     break;
+   case DVB_SYS_NONE:
+-- 
+2.26.2
+

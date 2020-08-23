@@ -13,7 +13,7 @@ SRC_URI="http://www.tux.org/~mayer/linux/${MY_P}.tar.gz"
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~mips ppc ppc64 sh sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~mips ppc ppc64 sparc x86"
 IUSE=""
 
 S=${WORKDIR}/${MY_P}

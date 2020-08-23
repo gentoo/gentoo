@@ -13,7 +13,7 @@ SRC_URI="http://www.cs.arizona.edu/icon/ftp/packages/unix/icon-v${MY_PV}src.tgz"
 
 LICENSE="public-domain HPND"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ia64 ~ppc ~ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="X iplsrc"
 
 S="${WORKDIR}/icon-v${MY_PV}src"

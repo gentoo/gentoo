@@ -15,22 +15,17 @@ export CTARGET
 TOOLCHAIN_ALLOWED_LANGS="c"
 GCC_TARGET_NO_MULTILIB=true
 
-PATCH_VER="1"
+PATCH_VER="2"
 inherit toolchain
 
 DESCRIPTION="64bit kernel compiler"
 
 # Works on hppa and mips; all other archs, refer to bug #228115
-KEYWORDS="~hppa ~mips"
+KEYWORDS="hppa ~mips"
 
 # unlike every other target, hppa has not unified the 32/64 bit
 # ports in binutils yet
-DEPEND="
-	hppa? ( sys-devel/binutils-hppa64 )
-	!sys-devel/gcc-hppa64
-	!sys-devel/gcc-mips64
-	!sys-devel/gcc-powerpc64
-	!sys-devel/gcc-sparc64"
+DEPEND="hppa? ( sys-devel/binutils-hppa64 )"
 
 pkg_postinst() {
 	toolchain_pkg_postinst

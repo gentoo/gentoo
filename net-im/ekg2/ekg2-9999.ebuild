@@ -1,10 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
-inherit autotools git-r3 python-single-r1
+inherit autotools git-r3
 
 DESCRIPTION="Text-based, multi-protocol instant messenger"
 HOMEPAGE="https://github.com/ekg2/ekg2/"
@@ -15,8 +14,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="gadu gpm gpg gtk minimal ncurses nls nntp openssl
-	perl python readline rss spell sqlite ssl xmpp unicode zlib"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+	perl readline rss spell sqlite ssl xmpp unicode zlib"
 
 RDEPEND="dev-libs/glib:2
 	gadu? ( <net-libs/libgadu-1.12:0= )
@@ -25,7 +23,6 @@ RDEPEND="dev-libs/glib:2
 	nls? ( virtual/libintl:0= )
 	openssl? ( dev-libs/openssl:0= )
 	perl? ( dev-lang/perl:0= )
-	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:0= )
 	rss? ( dev-libs/expat:0= )
 	ssl? ( net-libs/gnutls:0= )
@@ -70,7 +67,7 @@ src_configure() {
 		$(use_enable nntp)
 		$(use_enable openssl sim)
 		$(use_enable perl)
-		$(use_enable python)
+		--disable-python
 		$(use_enable readline)
 		$(use_enable rss)
 		$(use_enable sqlite logsqlite)

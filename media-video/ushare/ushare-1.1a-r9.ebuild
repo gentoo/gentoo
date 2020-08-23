@@ -5,8 +5,8 @@ EAPI=5
 inherit eutils multilib readme.gentoo toolchain-funcs user systemd
 
 DESCRIPTION="uShare is a UPnP (TM) A/V & DLNA Media Server"
-HOMEPAGE="http://ushare.geexbox.org/"
-SRC_URI="http://ushare.geexbox.org/releases/${P}.tar.bz2"
+HOMEPAGE="https://ushare.geexbox.org/"
+SRC_URI="https://ushare.geexbox.org/releases/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

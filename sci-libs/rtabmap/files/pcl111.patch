@@ -1,0 +1,49 @@
+Index: rtabmap-0.19.7/corelib/src/Graph.cpp
+===================================================================
+--- rtabmap-0.19.7.orig/corelib/src/Graph.cpp
++++ rtabmap-0.19.7/corelib/src/Graph.cpp
+@@ -39,6 +39,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBI
+ #include <pcl/search/kdtree.h>
+ #include <pcl/common/eigen.h>
+ #include <pcl/common/common.h>
++#include <pcl/common/point_tests.h>
+ #include <set>
+ #include <queue>
+ #include <fstream>
+Index: rtabmap-0.19.7/corelib/src/clams/frame_projector.cpp
+===================================================================
+--- rtabmap-0.19.7.orig/corelib/src/clams/frame_projector.cpp
++++ rtabmap-0.19.7/corelib/src/clams/frame_projector.cpp
+@@ -33,6 +33,7 @@ RTAB-Map integration: Mathieu Labbe
+ #include <rtabmap/core/util3d.h>
+ #include <opencv2/highgui/highgui.hpp>
+ #include <opencv2/imgproc/imgproc.hpp>
++#include <pcl/common/point_tests.h>
+ 
+ using namespace std;
+ using namespace Eigen;
+Index: rtabmap-0.19.7/corelib/src/util3d_correspondences.cpp
+===================================================================
+--- rtabmap-0.19.7.orig/corelib/src/util3d_correspondences.cpp
++++ rtabmap-0.19.7/corelib/src/util3d_correspondences.cpp
+@@ -32,6 +32,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBI
+ #include <rtabmap/core/EpipolarGeometry.h>
+ #include <opencv2/calib3d/calib3d.hpp>
+ #include <pcl/search/kdtree.h>
++#include <pcl/common/point_tests.h>
+ 
+ namespace rtabmap
+ {
+Index: rtabmap-0.19.7/corelib/src/util3d_features.cpp
+===================================================================
+--- rtabmap-0.19.7.orig/corelib/src/util3d_features.cpp
++++ rtabmap-0.19.7/corelib/src/util3d_features.cpp
+@@ -42,6 +42,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBI
+ 
+ #include <opencv2/video/tracking.hpp>
+ 
++#include <pcl/common/point_tests.h>
++
+ namespace rtabmap
+ {
+ 

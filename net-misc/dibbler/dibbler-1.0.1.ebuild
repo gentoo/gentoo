@@ -13,10 +13,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 hppa ~mips x86"
 IUSE="doc"
 
-DEPEND="doc? ( || (
-		dev-texlive/texlive-latexextra
-		dev-tex/floatflt )
-	)"
+DEPEND="doc? ( dev-texlive/texlive-latexextra )"
 RDEPEND=""
 
 DOC_CONTENTS="Make sure that you modify client.conf, server.conf and/or relay.conf

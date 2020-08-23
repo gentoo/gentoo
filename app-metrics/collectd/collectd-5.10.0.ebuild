@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 JAVA_PKG_OPT_USE="collectd_plugins_java"
 
 inherit autotools fcaps flag-o-matic java-pkg-opt-2 linux-info multilib perl-functions python-single-r1 systemd tmpfiles user
@@ -56,7 +56,7 @@ COLLECTD_TESTED_PLUGINS="aggregation amqp apache apcups ascent battery bind
 	memcachec memcached memory modbus mqtt multimeter mysql netlink
 	network network nfs nginx notify_desktop notify_email notify_nagios
 	ntpd numa nut olsrd onewire openldap openvpn oracle ovs_events
-	ovs_stats perl ping postgresql powerdns processes protocols python
+	ovs_stats perl ping postgresql powerdns processes protocols
 	python redis routeros rrdcached rrdtool sensors serial sigrok smart
 	snmp snmp_agent statsd swap sysevent syslog table tail tail_csv
 	target_notification target_replace target_scale target_set tcpconns

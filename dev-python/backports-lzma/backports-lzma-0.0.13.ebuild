@@ -16,7 +16,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -26,6 +26,12 @@ DEPEND="${RDEPEND}
 	test? ( app-arch/xz-utils:0[extra-filters(+)] )"
 
 S=${WORKDIR}/${MY_P}
+
+src_prepare() {
+	# unforce -L/usr/lib
+	sed -i -e '/library_dirs =/,/\]/d' setup.py || die
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	"${EPYTHON}" test/test_lzma.py || die "tests failed with ${EPYTHON}"

@@ -1,0 +1,37 @@
+--- a/tests/pysam_data/Makefile
++++ b/tests/pysam_data/Makefile
+@@ -3,7 +3,7 @@
+ BAI=$(BAM:%.bam=%.bam.bai)
+ CRAM=ex1.cram ex2.cram ex3.cram
+ CRAI=$(CRAM:%.cram=%.cram.crai)
+-NO_PG:=$(findstring --no-PG,$(shell samtools view))
++NO_PG:=--no-PG
+ 
+ # ex2.bam - bam file without index
+ 
+--- a/tests/tabix_test.py
++++ b/tests/tabix_test.py
+@@ -14,6 +14,7 @@
+ import subprocess
+ import glob
+ import re
++import pytest
+ from TestUtils import checkBinaryEqual, checkGZBinaryEqual, check_url, \
+     load_and_convert, TABIX_DATADIR, get_temp_filename
+ 
+@@ -1014,6 +1015,7 @@
+     globals()[n] = type(n, (TestVCFFromVariantFile,), dict(filename=vcf_file,))
+ 
+ 
++@pytest.mark.skip(reason="requires internet connectivity")
+ class TestRemoteFileHTTP(unittest.TestCase):
+ 
+     url = "http://genserv.anat.ox.ac.uk/downloads/pysam/test/example.gtf.gz"
+@@ -1053,6 +1055,7 @@
+         self.assertEqual(list(self.local_file.header), [])
+ 
+ 
++@pytest.mark.skip(reason="requires internet connectivity")
+ class TestRemoteFileHTTPWithHeader(TestRemoteFileHTTP):
+ 
+     url = "http://genserv.anat.ox.ac.uk/downloads/pysam/test/example_comments.gtf.gz"

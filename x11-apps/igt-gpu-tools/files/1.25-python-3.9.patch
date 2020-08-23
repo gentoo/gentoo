@@ -1,0 +1,25 @@
+manual backport of upstream commit
+https://gitlab.freedesktop.org/drm/igt-gpu-tools/-/commit/201da47cb57b8fadd9bc45be16b82617b32a2c01
+
+--- a/docs/reference/igt-gpu-tools/generate_description_xml.py
++++ b/docs/reference/igt-gpu-tools/generate_description_xml.py
+@@ -4,7 +4,7 @@ import re
+ import sys
+ import os.path
+ import subprocess
+-import xml.etree.cElementTree as ET
++import xml.etree.ElementTree as ET
+ 
+ from collections import namedtuple
+ 
+--- a/lib/i915/perf-configs/perf-codegen.py
++++ b/lib/i915/perf-configs/perf-codegen.py
+@@ -26,7 +26,7 @@ import os
+ import sys
+ import textwrap
+ 
+-import xml.etree.cElementTree as et
++import xml.etree.ElementTree as et
+ 
+ import codegen
+ 

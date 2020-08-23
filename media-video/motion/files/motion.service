@@ -8,13 +8,13 @@ Type=simple
 ExecStart=/usr/bin/motion -n -c /etc/motion/motion.conf
 StandardError=null
 
-User=motion
+#User=motion
 Group=video
 
 #RuntimeDirectory=motion
 #RuntimeDirectoryMode=0750
 
-WorkingDirectory=/var/lib/motion
+#WorkingDirectory=/var/lib/motion
 
 [Install]
 WantedBy=multi-user.target

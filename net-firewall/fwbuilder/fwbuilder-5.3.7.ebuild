@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-inherit autotools gnome2-utils qmake-utils
+inherit autotools qmake-utils xdg-utils
 
-DESCRIPTION="A firewall GUI"
-HOMEPAGE="http://www.fwbuilder.org/"
+DESCRIPTION="GUI management for iptables, PF, Cisco ASA/PIX/FWSM, Cisco router ACL and more"
+HOMEPAGE="https://github.com/fwbuilder/fwbuilder"
 SRC_URI="https://github.com/fwbuilder/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
@@ -61,12 +61,12 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 
 	elog "You need to install sys-apps/iproute2"
 	elog "in order to run the firewall script."
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

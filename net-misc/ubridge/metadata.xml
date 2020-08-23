@@ -2,6 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
+		<email>mmk@levelnine.at</email>
+		<name>Michael Mair-Keimberger</name>
+	</maintainer>
+	<maintainer type="person">
 		<email>g.djavadyan@gmail.com</email>
 		<name>Garri Djavadyan</name>
 	</maintainer>

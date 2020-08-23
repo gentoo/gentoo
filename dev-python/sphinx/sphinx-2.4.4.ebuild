@@ -16,7 +16,7 @@ SRC_URI="mirror://pypi/S/${PN^}/${P^}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
 IUSE="doc latex test"
 RESTRICT="!test? ( test )"
 
@@ -35,7 +35,6 @@ RDEPEND="
 	dev-python/sphinxcontrib-htmlhelp[${PYTHON_USEDEP}]
 	dev-python/sphinxcontrib-serializinghtml[${PYTHON_USEDEP}]
 	dev-python/sphinxcontrib-qthelp[${PYTHON_USEDEP}]
-	dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/typed-ast[${PYTHON_USEDEP}]
@@ -55,6 +54,7 @@ DEPEND="${RDEPEND}
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		virtual/imagemagick-tools[jpeg,png,svg]
+		dev-texlive/texlive-fontsextra
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-luatex
 		app-text/dvipng

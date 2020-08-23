@@ -1,0 +1,474 @@
+From fcd347fe0c11e8e04aebc086da328921f54b947f Mon Sep 17 00:00:00 2001
+From: Robin Gareus <robin@gareus.org>
+Date: Wed, 19 Aug 2020 17:39:32 +0200
+Subject: [PATCH 1/2] Fix --no-nls, i18n include order in libs -- #8361
+
+Ardour's "pbd/i18n.h" needs to be included last,
+after any include that may indirectly pull in getext or libintl.
+
+For that reason "pbd/i18n.h" must not be used in header files either.
+---
+ libs/ardour/ardour/disk_reader.h                           | 7 +------
+ libs/ardour/ardour/disk_writer.h                           | 4 +---
+ libs/ardour/ardour/transport_master.h                      | 3 +--
+ libs/ardour/disk_reader.cc                                 | 6 ++++++
+ libs/ardour/disk_writer.cc                                 | 6 ++++++
+ libs/ardour/port.cc                                        | 3 ++-
+ libs/ardour/port_engine_shared.cc                          | 3 ++-
+ libs/ardour/region.cc                                      | 3 ++-
+ libs/ardour/transport_fsm.cc                               | 3 ++-
+ libs/ardour/transport_master.cc                            | 2 +-
+ libs/surfaces/contourdesign/button_config_widget.cc        | 3 ++-
+ libs/surfaces/contourdesign/contourdesign_gui.cc           | 4 ++--
+ libs/surfaces/contourdesign/jump_distance_widget.cc        | 2 +-
+ .../surfaces/generic_midi/generic_midi_control_protocol.cc | 3 ++-
+ 14 files changed, 31 insertions(+), 21 deletions(-)
+
+diff --git a/libs/ardour/ardour/disk_reader.h b/libs/ardour/ardour/disk_reader.h
+index 724c091b3..d9773bbeb 100644
+--- a/libs/ardour/ardour/disk_reader.h
++++ b/libs/ardour/ardour/disk_reader.h
+@@ -22,8 +22,6 @@
+ 
+ #include <boost/optional.hpp>
+ 
+-#include "pbd/i18n.h"
+-
+ #include "evoral/Curve.h"
+ 
+ #include "ardour/disk_io.h"
+@@ -46,10 +44,7 @@ public:
+ 
+ 	bool set_name (std::string const& str);
+ 
+-	std::string display_name () const
+-	{
+-		return std::string (_("player"));
+-	}
++	std::string display_name () const;
+ 
+ 	static samplecnt_t chunk_samples ()
+ 	{
+diff --git a/libs/ardour/ardour/disk_writer.h b/libs/ardour/ardour/disk_writer.h
+index 2bd753a00..511b6bc4f 100644
+--- a/libs/ardour/ardour/disk_writer.h
++++ b/libs/ardour/ardour/disk_writer.h
+@@ -23,8 +23,6 @@
+ #include <list>
+ #include <vector>
+ 
+-#include "pbd/i18n.h"
+-
+ #include "ardour/disk_io.h"
+ #include "ardour/midi_buffer.h"
+ 
+@@ -42,7 +40,7 @@ public:
+ 	~DiskWriter ();
+ 
+ 	bool set_name (std::string const& str);
+-	std::string display_name () const { return std::string (_ ("recorder")); }
++	std::string display_name () const;
+ 
+ 	bool recordable () const { return _flags & Recordable; }
+ 
+diff --git a/libs/ardour/ardour/transport_master.h b/libs/ardour/ardour/transport_master.h
+index d6b554ef8..af98c0b3a 100644
+--- a/libs/ardour/ardour/transport_master.h
++++ b/libs/ardour/ardour/transport_master.h
+@@ -29,7 +29,6 @@
+ 
+ #include <ltc.h>
+ 
+-#include "pbd/i18n.h"
+ #include "pbd/properties.h"
+ #include "pbd/signals.h"
+ #include "pbd/statefuldestructible.h"
+@@ -123,7 +122,7 @@ struct LIBARDOUR_API SafeTime {
+ 
+ 		do {
+ 			if (tries == 10) {
+-				std::cerr << X_("SafeTime: atomic read of current time failed, sleeping!") << std::endl;
++				std::cerr << "SafeTime: atomic read of current time failed, sleeping!" << std::endl;
+ 				Glib::usleep (20);
+ 				tries = 0;
+ 			}
+diff --git a/libs/ardour/disk_reader.cc b/libs/ardour/disk_reader.cc
+index 252a84a65..5fa694485 100644
+--- a/libs/ardour/disk_reader.cc
++++ b/libs/ardour/disk_reader.cc
+@@ -76,6 +76,12 @@ DiskReader::~DiskReader ()
+ 	DEBUG_TRACE (DEBUG::Destruction, string_compose ("DiskReader %1 @ %2 deleted\n", _name, this));
+ }
+ 
++std::string
++DiskReader::display_name () const
++{
++	return std::string (_("player"));
++}
++
+ void
+ DiskReader::ReaderChannelInfo::resize (samplecnt_t bufsize)
+ {
+diff --git a/libs/ardour/disk_writer.cc b/libs/ardour/disk_writer.cc
+index aee4f9301..34aa3f1e9 100644
+--- a/libs/ardour/disk_writer.cc
++++ b/libs/ardour/disk_writer.cc
+@@ -85,6 +85,12 @@ DiskWriter::default_chunk_samples ()
+ 	return 65536;
+ }
+ 
++std::string
++DiskWriter::display_name () const
++{
++	return std::string (_ ("recorder"));
++}
++
+ void
+ DiskWriter::WriterChannelInfo::resize (samplecnt_t bufsize)
+ {
+diff --git a/libs/ardour/port.cc b/libs/ardour/port.cc
+index 9bc318a14..8be47efbd 100644
+--- a/libs/ardour/port.cc
++++ b/libs/ardour/port.cc
+@@ -26,7 +26,6 @@
+ #include "pbd/compose.h"
+ #include "pbd/error.h"
+ #include "pbd/failed_constructor.h"
+-#include "pbd/i18n.h"
+ 
+ #include "ardour/audioengine.h"
+ #include "ardour/debug.h"
+@@ -34,6 +33,8 @@
+ #include "ardour/port_engine.h"
+ #include "ardour/rc_configuration.h"
+ 
++#include "pbd/i18n.h"
++
+ using namespace std;
+ using namespace ARDOUR;
+ using namespace PBD;
+diff --git a/libs/ardour/port_engine_shared.cc b/libs/ardour/port_engine_shared.cc
+index f8ab0e204..ad32762f0 100644
+--- a/libs/ardour/port_engine_shared.cc
++++ b/libs/ardour/port_engine_shared.cc
+@@ -21,10 +21,11 @@
+ #include <regex.h>
+ 
+ #include "pbd/error.h"
+-#include "pbd/i18n.h"
+ 
+ #include "ardour/port_engine_shared.h"
+ 
++#include "pbd/i18n.h"
++
+ using namespace ARDOUR;
+ 
+ BackendPort::BackendPort (PortEngineSharedImpl &b, const std::string& name, PortFlags flags)
+diff --git a/libs/ardour/region.cc b/libs/ardour/region.cc
+index cb42f1d2c..ab6042af3 100644
+--- a/libs/ardour/region.cc
++++ b/libs/ardour/region.cc
+@@ -30,7 +30,6 @@
+ 
+ #include <glibmm/threads.h>
+ 
+-#include "pbd/i18n.h"
+ #include "pbd/types_convert.h"
+ #include "pbd/xml++.h"
+ 
+@@ -47,6 +46,8 @@
+ #include "ardour/transient_detector.h"
+ #include "ardour/types_convert.h"
+ 
++#include "pbd/i18n.h"
++
+ using namespace std;
+ using namespace ARDOUR;
+ using namespace PBD;
+diff --git a/libs/ardour/transport_fsm.cc b/libs/ardour/transport_fsm.cc
+index 484106785..59de3d1de 100644
+--- a/libs/ardour/transport_fsm.cc
++++ b/libs/ardour/transport_fsm.cc
+@@ -22,7 +22,6 @@
+ #include <boost/none.hpp>
+ 
+ #include "pbd/error.h"
+-#include "pbd/i18n.h"
+ #include "pbd/pthread_utils.h"
+ #include "pbd/stacktrace.h"
+ 
+@@ -31,6 +30,8 @@
+ #include "ardour/session.h"
+ #include "ardour/transport_fsm.h"
+ 
++#include "pbd/i18n.h"
++
+ using namespace ARDOUR;
+ using namespace PBD;
+ 
+diff --git a/libs/ardour/transport_master.cc b/libs/ardour/transport_master.cc
+index ea56a860b..e76fd5eb6 100644
+--- a/libs/ardour/transport_master.cc
++++ b/libs/ardour/transport_master.cc
+@@ -21,7 +21,6 @@
+ 
+ #include "pbd/boost_debug.h"
+ #include "pbd/debug.h"
+-#include "pbd/i18n.h"
+ 
+ #include "ardour/audioengine.h"
+ #include "ardour/debug.h"
+@@ -32,6 +31,7 @@
+ #include "ardour/types_convert.h"
+ #include "ardour/utils.h"
+ 
++#include "pbd/i18n.h"
+ 
+ namespace ARDOUR {
+ 	namespace Properties {
+diff --git a/libs/surfaces/contourdesign/button_config_widget.cc b/libs/surfaces/contourdesign/button_config_widget.cc
+index 785c8c6b1..f46f80f12 100644
+--- a/libs/surfaces/contourdesign/button_config_widget.cc
++++ b/libs/surfaces/contourdesign/button_config_widget.cc
+@@ -24,12 +24,13 @@
+ #include "gtkmm2ext/actions.h"
+ #include "gtkmm2ext/action_model.h"
+ 
+-#include "pbd/i18n.h"
+ #include "pbd/strsplit.h"
+ #include "pbd/signals.h"
+ 
+ #include "button_config_widget.h"
+ 
++#include "pbd/i18n.h"
++
+ using namespace std;
+ using namespace Gtk;
+ using namespace ArdourSurface;
+diff --git a/libs/surfaces/contourdesign/contourdesign_gui.cc b/libs/surfaces/contourdesign/contourdesign_gui.cc
+index 3d061b060..ed58c787d 100644
+--- a/libs/surfaces/contourdesign/contourdesign_gui.cc
++++ b/libs/surfaces/contourdesign/contourdesign_gui.cc
+@@ -37,12 +37,12 @@
+ 
+ #include "widgets/ardour_button.h"
+ 
+-#include "pbd/i18n.h"
+-
+ #include "contourdesign.h"
+ #include "jump_distance_widget.h"
+ #include "button_config_widget.h"
+ 
++#include "pbd/i18n.h"
++
+ using namespace ArdourSurface;
+ 
+ class ContourDesignGUI : public Gtk::VBox, public PBD::ScopedConnectionList
+diff --git a/libs/surfaces/contourdesign/jump_distance_widget.cc b/libs/surfaces/contourdesign/jump_distance_widget.cc
+index 8469658a1..dacc3a752 100644
+--- a/libs/surfaces/contourdesign/jump_distance_widget.cc
++++ b/libs/surfaces/contourdesign/jump_distance_widget.cc
+@@ -21,10 +21,10 @@
+ #include <gtkmm/spinbutton.h>
+ 
+ #include "gtkmm2ext/utils.h"
+-#include "pbd/i18n.h"
+ 
+ #include "jump_distance_widget.h"
+ 
++#include "pbd/i18n.h"
+ 
+ using namespace std;
+ using namespace Gtk;
+diff --git a/libs/surfaces/generic_midi/generic_midi_control_protocol.cc b/libs/surfaces/generic_midi/generic_midi_control_protocol.cc
+index c5ba0b794..31e5383dc 100644
+--- a/libs/surfaces/generic_midi/generic_midi_control_protocol.cc
++++ b/libs/surfaces/generic_midi/generic_midi_control_protocol.cc
+@@ -41,7 +41,6 @@
+ #include "pbd/error.h"
+ #include "pbd/failed_constructor.h"
+ #include "pbd/file_utils.h"
+-#include "pbd/i18n.h"
+ #include "pbd/strsplit.h"
+ #include "pbd/types_convert.h"
+ #include "pbd/xml++.h"
+@@ -66,6 +65,8 @@
+ 
+ #include "pbd/abstract_ui.cc" // instantiate template
+ 
++#include "pbd/i18n.h"
++
+ using namespace ARDOUR;
+ using namespace PBD;
+ using namespace Glib;
+-- 
+2.28.0
+
+
+From a7a20e03ffc61e444c188411da0d3afa1d14548a Mon Sep 17 00:00:00 2001
+From: Robin Gareus <robin@gareus.org>
+Date: Wed, 19 Aug 2020 17:40:02 +0200
+Subject: [PATCH 2/2] Fix --no-nls, i18n include order in UI -- #8361
+
+---
+ gtk2_ardour/ardour_ui_access_web.cc | 3 ++-
+ gtk2_ardour/ardour_ui_dependents.cc | 3 ++-
+ gtk2_ardour/pt_import_selector.cc   | 3 ++-
+ gtk2_ardour/startup_fsm.cc          | 3 ++-
+ gtk2_ardour/template_dialog.cc      | 4 ++--
+ gtk2_ardour/transport_control.cc    | 4 ++--
+ session_utils/fix_bbtppq.cc         | 3 ++-
+ 7 files changed, 14 insertions(+), 9 deletions(-)
+
+diff --git a/gtk2_ardour/ardour_ui_access_web.cc b/gtk2_ardour/ardour_ui_access_web.cc
+index 7986e2ca3..781b65262 100644
+--- a/gtk2_ardour/ardour_ui_access_web.cc
++++ b/gtk2_ardour/ardour_ui_access_web.cc
+@@ -36,12 +36,13 @@
+ #include "gtk2ardour-version.h"
+ #endif
+ 
+-#include "pbd/i18n.h"
+ #include "pbd/openuri.h"
+ 
+ #include "ardour_message.h"
+ #include "ardour_ui.h"
+ 
++#include "pbd/i18n.h"
++
+ using namespace ARDOUR;
+ using namespace PBD;
+ using namespace Gtk;
+diff --git a/gtk2_ardour/ardour_ui_dependents.cc b/gtk2_ardour/ardour_ui_dependents.cc
+index d28ae7c14..24810d3e7 100644
+--- a/gtk2_ardour/ardour_ui_dependents.cc
++++ b/gtk2_ardour/ardour_ui_dependents.cc
+@@ -33,7 +33,6 @@
+ #include <cstdio>
+ 
+ #include "pbd/error.h"
+-#include "pbd/i18n.h"
+ 
+ #include "ardour/session.h"
+ #include "ardour/lv2_plugin.h"
+@@ -62,6 +61,8 @@
+ #include <gdk/gdkx.h>
+ #endif
+ 
++#include "pbd/i18n.h"
++
+ using namespace Gtk;
+ using namespace PBD;
+ 
+diff --git a/gtk2_ardour/pt_import_selector.cc b/gtk2_ardour/pt_import_selector.cc
+index da65bcb72..318da1e35 100644
+--- a/gtk2_ardour/pt_import_selector.cc
++++ b/gtk2_ardour/pt_import_selector.cc
+@@ -22,7 +22,6 @@
+ #include <iostream>
+ 
+ #include "pbd/gstdio_compat.h"
+-#include "pbd/i18n.h"
+ #include "pbd/file_utils.h"
+ 
+ #include "ptformat/ptformat.h"
+@@ -33,6 +32,8 @@
+ 
+ #include "pt_import_selector.h"
+ 
++#include "pbd/i18n.h"
++
+ using namespace Gtk;
+ using namespace ARDOUR;
+ using namespace PBD;
+diff --git a/gtk2_ardour/startup_fsm.cc b/gtk2_ardour/startup_fsm.cc
+index c52b0ecea..dfdd01ce4 100644
+--- a/gtk2_ardour/startup_fsm.cc
++++ b/gtk2_ardour/startup_fsm.cc
+@@ -26,7 +26,6 @@
+ #include "pbd/basename.h"
+ #include "pbd/file_archive.h"
+ #include "pbd/file_utils.h"
+-#include "pbd/i18n.h"
+ 
+ #include "ardour/audioengine.h"
+ #include "ardour/filename_extensions.h"
+@@ -58,6 +57,8 @@
+ #include "gtk2ardour-version.h"
+ #endif
+ 
++#include "pbd/i18n.h"
++
+ using namespace ARDOUR;
+ using namespace Gtk;
+ using namespace Gtkmm2ext;
+diff --git a/gtk2_ardour/template_dialog.cc b/gtk2_ardour/template_dialog.cc
+index e0c5590ee..c9c37d00e 100644
+--- a/gtk2_ardour/template_dialog.cc
++++ b/gtk2_ardour/template_dialog.cc
+@@ -40,7 +40,6 @@
+ #include "pbd/error.h"
+ #include "pbd/file_archive.h"
+ #include "pbd/file_utils.h"
+-#include "pbd/i18n.h"
+ #include "pbd/xml++.h"
+ 
+ #include "gtkmm2ext/gui_thread.h"
+@@ -52,9 +51,10 @@
+ #include "ardour/template_utils.h"
+ 
+ #include "progress_reporter.h"
+-
+ #include "template_dialog.h"
+ 
++#include "pbd/i18n.h"
++
+ using namespace std;
+ using namespace Gtk;
+ using namespace PBD;
+diff --git a/gtk2_ardour/transport_control.cc b/gtk2_ardour/transport_control.cc
+index a7be5903d..0828febb6 100644
+--- a/gtk2_ardour/transport_control.cc
++++ b/gtk2_ardour/transport_control.cc
+@@ -16,8 +16,6 @@
+  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  */
+ 
+-#include "pbd/i18n.h"
+-
+ #include "ardour/location.h"
+ #include "ardour/session.h"
+ 
+@@ -25,6 +23,8 @@
+ #include "ardour_ui.h"
+ #include "transport_control.h"
+ 
++#include "pbd/i18n.h"
++
+ using namespace Gtk;
+ 
+ TransportControlProvider::TransportControlProvider ()
+diff --git a/session_utils/fix_bbtppq.cc b/session_utils/fix_bbtppq.cc
+index e3767c8cd..81b148bcc 100644
+--- a/session_utils/fix_bbtppq.cc
++++ b/session_utils/fix_bbtppq.cc
+@@ -25,7 +25,6 @@
+ #include <glibmm.h>
+ 
+ #include "pbd/file_utils.h"
+-#include "pbd/i18n.h"
+ #include "pbd/stateful.h"
+ 
+ #include "ardour/region_factory.h"
+@@ -44,6 +43,8 @@
+ 
+ #include "common.h"
+ 
++#include "pbd/i18n.h"
++
+ using namespace std;
+ using namespace ARDOUR;
+ using namespace SessionUtils;
+-- 
+2.28.0
+

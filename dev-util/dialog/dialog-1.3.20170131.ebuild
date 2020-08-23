@@ -7,12 +7,12 @@ inherit eutils ltprune multilib versionator
 MY_P="${PN}-$(replace_version_separator 2 '-')"
 S="${WORKDIR}/${MY_P}"
 DESCRIPTION="tool to display dialog boxes from a shell"
-HOMEPAGE="http://invisible-island.net/dialog/dialog.html"
+HOMEPAGE="https://invisible-island.net/dialog/dialog.html"
 SRC_URI="ftp://invisible-island.net/${PN}/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0/14"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
 IUSE="examples minimal nls static-libs unicode"
 
 RDEPEND="

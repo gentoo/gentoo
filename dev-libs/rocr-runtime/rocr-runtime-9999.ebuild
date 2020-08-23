@@ -10,8 +10,8 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 	S="${WORKDIR}/${P}/src"
 else
-	SRC_URI="https://github.com/RadeonOpenCompute/ROCR-Runtime/archive/roc-${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/ROCR-Runtime-roc-${PV}/src"
+	SRC_URI="https://github.com/RadeonOpenCompute/ROCR-Runtime/archive/rocm-${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/ROCR-Runtime-rocm-${PV}/src"
 	KEYWORDS="~amd64"
 fi
 

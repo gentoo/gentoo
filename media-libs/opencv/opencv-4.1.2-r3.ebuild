@@ -20,8 +20,8 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0/4.1.2" # subslot = libopencv* soname version
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
-IUSE="contrib contribcvv contribdnn contribhdf contribsfm contribxfeatures2d cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_popcnt cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cuda debug dnnsamples -download +eigen examples +features2d ffmpeg gdal gflags glog gphoto2 gstreamer gtk3 ieee1394 jpeg jpeg2k lapack libav opencl openexr opengl openmp opencvapps pch png +python qt5 tesseract testprograms threads tiff vaapi v4l vtk webp xine"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 x86 ~amd64-linux"
+IUSE="contrib contribcvv contribdnn contribhdf contribsfm contribxfeatures2d cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_popcnt cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cuda debug dnnsamples -download +eigen examples +features2d ffmpeg gdal gflags glog gphoto2 gstreamer gtk3 ieee1394 jpeg jpeg2k lapack opencl openexr opengl openmp opencvapps pch png +python qt5 tesseract testprograms threads tiff vaapi v4l vtk webp xine"
 # OpenGL needs gtk or Qt installed to activate, otherwise build system
 # will silently disable it Wwithout the user knowing, which defeats the
 # purpose of the opengl use flag.
@@ -51,10 +51,7 @@ RDEPEND="
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	cuda? ( dev-util/nvidia-cuda-toolkit:0= )
 	contribhdf? ( sci-libs/hdf5:= )
-	ffmpeg? (
-		libav? ( media-video/libav:0=[${MULTILIB_USEDEP}] )
-		!libav? ( media-video/ffmpeg:0=[${MULTILIB_USEDEP}] )
-	)
+	ffmpeg? ( media-video/ffmpeg:0=[${MULTILIB_USEDEP}] )
 	gdal? ( sci-libs/gdal:= )
 	gflags? ( dev-cpp/gflags[${MULTILIB_USEDEP}] )
 	glog? ( dev-cpp/glog[${MULTILIB_USEDEP}] )
@@ -102,7 +99,7 @@ DEPEND="${RDEPEND}
 	vaapi? ( x11-libs/libva )"
 BDEPEND="
 	java? ( >=virtual/jdk-1.6 )
-	virtual/pkgconfig[${MULTILIB_USEDEP}]"
+	virtual/pkgconfig"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/opencv2/cvconfig.h

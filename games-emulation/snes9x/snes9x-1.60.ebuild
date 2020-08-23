@@ -12,14 +12,10 @@ SRC_URI="https://github.com/snes9xgit/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Snes9x GPL-2 GPL-2+ LGPL-2.1 LGPL-2.1+ ISC MIT ZLIB Info-ZIP"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE="alsa debug gtk multilib netplay opengl oss png pulseaudio portaudio wayland xinerama +xv"
+IUSE="alsa debug gtk libretro multilib netplay opengl oss png pulseaudio portaudio wayland xinerama +xv"
 RESTRICT="bindist"
 
 RDEPEND="
-	sys-libs/zlib:=[minizip]
-	x11-libs/libX11
-	x11-libs/libXext
-	png? ( media-libs/libpng:0= )
 	gtk? (
 		dev-libs/glib:2
 		media-libs/libsdl2[joystick]
@@ -36,7 +32,15 @@ RDEPEND="
 		xv? ( x11-libs/libXv )
 		wayland? ( dev-libs/wayland )
 	)
-	xinerama? ( x11-libs/libXinerama )"
+	!gtk? ( x11-libs/libXv )
+	libretro? ( !!games-emulation/libretro-snes9x )
+	png? ( media-libs/libpng:0= )
+	sys-libs/zlib:=[minizip]
+	xinerama? ( x11-libs/libXinerama )
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf
+	x11-libs/libX11
+	x11-libs/libXext"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 BDEPEND="virtual/pkgconfig"
@@ -96,6 +100,7 @@ src_configure() {
 }
 
 src_compile() {
+	use libretro && emake -C ../libretro
 	emake
 	use gtk && meson_src_compile
 }
@@ -106,13 +111,18 @@ src_install() {
 	dodoc ../docs/{changes,control-inputs,controls,snapshots}.txt
 	dodoc snes9x.conf.default
 
+	if use libretro ; then
+		cd "${WORKDIR}/${PF}/libretro/"
+		dolib.so snes9x_libretro.so
+	fi
+
 	if use gtk ; then
 		meson_src_install
 		dodoc ../gtk/AUTHORS
 	fi
 
-	docinto html
-	dodoc {.,..}/docs/*.html
+	HTML_DOCS="${WORKDIR}/${PF}/docs/*.html"
+	einstalldocs
 }
 
 pkg_preinst() {

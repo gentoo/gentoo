@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic multilib-minimal
+inherit flag-o-matic linux-info multilib-minimal
 
 DESCRIPTION="Embedded Linux Library provides core, low-level functionality for system daemons"
 HOMEPAGE="https://01.org/ell"
@@ -17,12 +17,26 @@ fi
 LICENSE="LGPL-2.1"
 SLOT="0"
 
-IUSE="glib pie"
+IUSE="glib pie test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	glib? ( dev-libs/glib:2[${MULTILIB_USEDEP}] )
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	test? ( sys-apps/dbus )
+"
+
+CONFIG_CHECK="
+	~TIMERFD
+	~EVENTFD
+	~CRYPTO_USER_API
+	~CRYPTO_USER_API_HASH
+	~CRYPTO_MD5
+	~CRYPTO_SHA1
+	~KEY_DH_OPERATIONS
+"
 
 src_prepare() {
 	default

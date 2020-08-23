@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit findlib
 
 DESCRIPTION="Declarative definition of command line interfaces for OCaml"
-HOMEPAGE="http://erratique.ch/software/cmdliner"
-SRC_URI="http://erratique.ch/software/${PN}/releases/${P}.tbz"
+HOMEPAGE="https://erratique.ch/software/cmdliner"
+SRC_URI="https://erratique.ch/software/${PN}/releases/${P}.tbz"
 
 LICENSE="ISC"
 SLOT="0/${PV}"

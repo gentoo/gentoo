@@ -279,7 +279,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0 Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="amd64 arm ppc64 x86"
 IUSE="selinux tools"
 
 RDEPEND="acct-group/syncthing
@@ -291,6 +291,10 @@ RDEPEND="acct-group/syncthing
 	selinux? ( sec-policy/selinux-syncthing )"
 
 DOCS=( README.md AUTHORS CONTRIBUTING.md )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.3.4-TestIssue5063_timeout.patch
+)
 
 src_prepare() {
 	# Bug #679280

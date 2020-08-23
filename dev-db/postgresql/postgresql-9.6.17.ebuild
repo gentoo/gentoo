@@ -11,7 +11,7 @@ PLOCALES="af cs de en es fa fr hr hu it ko nb pl pt_BR ro ru sk sl sv tr zh_CN
 inherit flag-o-matic l10n linux-info multilib pam prefix python-single-r1 \
 		systemd user
 
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 SLOT=$(ver_cut 1-2)
 
@@ -25,7 +25,7 @@ DESCRIPTION="PostgreSQL RDBMS"
 HOMEPAGE="https://www.postgresql.org/"
 
 IUSE="debug doc kerberos kernel_linux ldap libressl nls pam perl
-	  -pg_legacytimestamp python +readline selinux +server systemd ssl
+	  -pg-legacytimestamp python +readline selinux +server systemd ssl
 	  static-libs tcl threads uuid xml zlib"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -152,7 +152,7 @@ src_configure() {
 		--sysconfdir="${PO}/etc/postgresql-${SLOT}" \
 		--with-system-tzdata="${PO}/usr/share/zoneinfo" \
 		$(use_enable !alpha spinlocks) \
-		$(use_enable !pg_legacytimestamp integer-datetimes) \
+		$(use_enable !pg-legacytimestamp integer-datetimes) \
 		$(use_enable debug) \
 		$(use_enable threads thread-safety) \
 		$(use_with kerberos gssapi) \

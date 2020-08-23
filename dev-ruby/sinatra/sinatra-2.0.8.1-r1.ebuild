@@ -18,13 +18,17 @@ SRC_URI="https://github.com/sinatra/sinatra/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~sparc ~x86"
 IUSE=""
 
 ruby_add_rdepend "
 	dev-ruby/mustermann:1
-	dev-ruby/rack:2.0
+	|| ( dev-ruby/rack:2.1 dev-ruby/rack:2.0 )
 	~dev-ruby/rack-protection-${PV}
 	dev-ruby/tilt:2"
 ruby_add_bdepend "test? ( >=dev-ruby/rack-test-0.5.6 dev-ruby/erubis dev-ruby/builder dev-ruby/activesupport )"
 ruby_add_bdepend "doc? ( dev-ruby/yard )"
+
+all_ruby_prepare() {
+	sed -i -e '1igem "rack", "<2.2"' test/helper.rb || die
+}

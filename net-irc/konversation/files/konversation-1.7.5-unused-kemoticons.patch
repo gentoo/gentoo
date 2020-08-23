@@ -1,0 +1,112 @@
+From 271da4bd1e584026fc24d93474ca6cf9e50fa6d7 Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Mon, 16 Sep 2019 18:18:49 +0100
+Subject: Drop effectively unused kemoticons support
+
+Summary:
+Konversation only supported emoticons if config value EnableEmotIcons
+was true. This by default was false and there is no UI for configuring
+this, making it effectively unused.
+
+This appears to be deliberate from the code comments.
+
+This helps clear up some KEmoticon library usage for future KF6
+transitioning.
+
+UTF-8 emoticons work correctly.
+
+Test Plan: Compiles
+
+Differential Revision: https://phabricator.kde.org/D24000
+---
+ src/CMakeLists.txt           |  2 --
+ src/config/konversation.kcfg |  8 --------
+ src/viewer/ircview.cpp       |  3 ---
+ 3 files changed, 13 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index c2077b3..89616a6 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -138,7 +138,6 @@ set(viewer_SRCS
+     viewer/topiclabel.cpp
+     viewer/awaylabel.cpp
+     viewer/editnotifydialog.cpp
+-    viewer/emoticons.cpp
+     viewer/images.cpp
+     viewer/quickbutton.cpp
+     viewer/searchbar.cpp
+@@ -224,7 +223,6 @@ target_link_libraries(konversation
+     KF5::Bookmarks
+     KF5::ConfigWidgets
+     KF5::Crash
+-    KF5::Emoticons
+     KF5::I18n
+     KF5::IdleTime
+     KF5::NotifyConfig
+diff --git a/src/config/konversation.kcfg b/src/config/konversation.kcfg
+index 1d59eaf..3f0b7a6 100644
+--- a/src/config/konversation.kcfg
++++ b/src/config/konversation.kcfg
+@@ -844,14 +844,6 @@
+       <label></label>
+       <whatsthis></whatsthis>
+     </entry>
+-    <entry key="EnableEmotIcons" type="Bool">
+-      <default>false</default>
+-      <label>Enable emoticons</label>
+-    </entry>
+-    <entry key="EmotIconTheme" type="String">
+-      <default>Default</default>
+-      <label>Emoticons theme</label>
+-    </entry>
+   </group>
+   <group name="PreferencesDialog">
+     <entry name="PreferencesDialogSize" key="Size" type="Size">
+diff --git a/src/viewer/ircview.cpp b/src/viewer/ircview.cpp
+index c129f61..15f78ca 100644
+--- a/src/viewer/ircview.cpp
++++ b/src/viewer/ircview.cpp
+@@ -20,7 +20,6 @@
+ #include "application.h"
+ #include "highlight.h"
+ #include "sound.h"
+-#include "emoticons.h"
+ #include "notificationhandler.h"
+ 
+ #include <QDrag>
+@@ -1214,8 +1213,6 @@ QString IRCView::filter(const QString& line, const QString& defaultColor, const
+             QLatin1String("\">") + filteredLine + QLatin1String("</font>");
+     }
+ 
+-    filteredLine = Konversation::Emoticons::parseEmoticons(filteredLine);
+-
+     return filteredLine;
+ }
+ 
+-- 
+cgit v1.1
+
+From f1e6ec37b9a9ead194606795ed23a1ec70a784cc Mon Sep 17 00:00:00 2001
+From: Peter Simonsson <peter.simonsson@gmail.com>
+Date: Tue, 7 Apr 2020 16:37:53 +0200
+Subject: Remove KEmoticons from dependencies as it's not used
+
+---
+ CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5315dbd..19facd8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -24,7 +24,6 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED
+     CoreAddons
+     Crash
+     DocTools
+-    Emoticons
+     I18n
+     IdleTime
+     NotifyConfig
+-- 
+cgit v1.1

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -52,7 +52,7 @@ src_install() {
 		"TextEditor;IDE;Development" "StartupNotify=true"
 
 	# needed to get WM_CLASS lookup right
-	mv "${ED}"/usr/share/applications/subl{_%F-sublime-text,}.desktop || die
+	mv "${ED}"/usr/share/applications/subl{-sublime-text,}.desktop || die
 }
 
 pkg_postrm() {

@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Getopt::Mixed is used for parsing mixed options"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ppc sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

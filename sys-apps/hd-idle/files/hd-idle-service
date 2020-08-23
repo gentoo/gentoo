@@ -1,0 +1,13 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+[Unit]
+Description=hd-idle - spinning down HDDs after a period of idle time
+Documentation=man:hd-idle(1)
+
+[Service]
+Type=forking
+EnvironmentFile=/etc/conf.d/hd-idle
+ExecStart=/usr/sbin/hd-idle $HD_IDLE_OPTS
+
+[Install]
+WantedBy=multi-user.target

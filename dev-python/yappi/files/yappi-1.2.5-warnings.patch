@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index cd9a549..440043c 100644
+--- a/setup.py
++++ b/setup.py
+@@ -23,7 +23,7 @@ link_args = []
+ 
+ if os.name == 'posix' and sys.platform != 'darwin':
+     compiler = new_compiler()
+-    if compiler.has_function('timer_create', libraries=('rt', )):
++    if compiler.has_function('timer_create', libraries=('rt', ), includes=["signal.h", "time.h"]):
+         user_macros.append(('LIB_RT_AVAILABLE', '1'))
+         user_libraries.append('rt')
+ if _DEBUG:

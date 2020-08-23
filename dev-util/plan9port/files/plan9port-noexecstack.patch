@@ -22,7 +22,7 @@ Patch by Andy Spencer
  test -f $PLAN9/config && . $PLAN9/config
  
  aflags=""
-@@ -17,5 +12,16 @@ Darwin-*x86_64*)
+@@ -17,5 +12,16 @@
  	;;
  esac
  
@@ -43,8 +43,8 @@ Patch by Andy Spencer
 +exec as $aflags $opts -o $dst $src
 --- a/src/mkhdr
 +++ b/src/mkhdr
-@@ -30,7 +30,7 @@ AR=9ar
- INSTALL=install
+@@ -13,7 +13,7 @@
+ AR=9ar
  CFLAGS=
  LDFLAGS=
 -AFLAGS=

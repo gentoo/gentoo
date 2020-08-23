@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -8,7 +8,7 @@ JAVA_ANT_REWRITE_CLASSPATH="true"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="A quality open-source replacement for the Java Date and Time classes"
-HOMEPAGE="http://www.joda.org/joda-time/ https://github.com/JodaOrg/joda-time/"
+HOMEPAGE="https://www.joda.org/joda-time/ https://github.com/JodaOrg/joda-time/"
 SRC_URI="https://github.com/JodaOrg/${PN}/releases/download/v${PV}/${P}-dist.tar.gz"
 
 LICENSE="Apache-2.0"

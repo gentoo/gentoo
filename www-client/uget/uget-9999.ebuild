@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -13,7 +13,7 @@ EGIT_REPO_URI="git://git.code.sf.net/p/urlget/uget2"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="aria2 ayatana control-socket +gnutls gstreamer libnotify nls openssl rss"
+IUSE="aria2 appindicator control-socket +gnutls gstreamer libnotify nls openssl rss"
 
 RDEPEND="
 	>=net-misc/curl-7.19.1
@@ -25,7 +25,7 @@ RDEPEND="
 		dev-libs/libgcrypt:0
 	)
 	aria2? ( net-misc/aria2[xmlrpc] )
-	ayatana? ( dev-libs/libappindicator:3 )
+	appindicator? ( dev-libs/libappindicator:3 )
 	gstreamer? ( media-libs/gstreamer:1.0 )
 	libnotify? ( x11-libs/libnotify )
 	"
@@ -42,7 +42,7 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		$(use_enable ayatana appindicator)
+		$(use_enable appindicator)
 		$(use_enable control-socket unix_socket)
 		$(use_enable gstreamer)
 		$(use_enable libnotify notify)

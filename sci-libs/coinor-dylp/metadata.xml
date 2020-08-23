@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>sci@gentoo.org</email>
-		<name>Gentoo Science Project</name>
-	</maintainer>
-	<longdescription lang="en">
-		DyLp is designed to find solutions of constrained linear mathematical
-		optimization problems. To this end, it is using a full implementation
-		of the so called dynamic simplex algorithm for linear programming.
-		DyLP is part of the larger COIN-OR initiative (Computational
-		Infrastructure for Operations Research).
-	</longdescription>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    DyLP is designed to find solutions of constrained linear
+    mathematical optimization problems. To this end, it is using a
+    full implementation of the so called dynamic simplex algorithm for
+    linear programming.  DyLP is part of the larger COIN-OR initiative
+    (Computational Infrastructure for Operations Research).
+  </longdescription>
+  <upstream>
+    <remote-id type="github">coin-or/DyLP</remote-id>
+  </upstream>
 </pkgmetadata>

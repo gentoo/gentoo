@@ -3,6 +3,7 @@
 
 EAPI=7
 
+# this is a backport, do not add extra impls
 PYTHON_COMPAT=( python3_6 )
 inherit distutils-r1
 
@@ -12,7 +13,7 @@ SRC_URI="https://github.com/MagicStack/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 
 RDEPEND="dev-python/immutables[${PYTHON_USEDEP}]"
 

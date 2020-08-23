@@ -1,0 +1,33 @@
+From 891b5ce1780e10cd94d230efacf6e8b5cb33a931 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 15 Apr 2020 08:04:02 -0400
+Subject: [PATCH 1/1] Ignore postscreen "BDAT/DATA without valid RCPT" lines.
+
+Postscreen now emits a notice when clients send BDAT or DATA
+prematurely (after postscreen rejects the recipient):
+
+  DATA without valid RCPT from [192.168.0.1]:48580
+
+These are merely informational, since the connection was rejected for
+some other reason, so this commit ignores them.
+---
+ postfix-logwatch | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/postfix-logwatch b/postfix-logwatch
+index 648ba7a..1b89ad6 100644
+--- a/postfix-logwatch
++++ b/postfix-logwatch
+@@ -4359,7 +4359,8 @@ sub postfix_postscreen {
+       $line =~ /discarding EHLO keywords: / or
+       $line =~ /: discard_mask / or
+       $line =~ /: sq=\d+ cq=\d+ event/ or
+-      $line =~ /: replacing command "/
++      $line =~ /: replacing command "/ or
++      $line =~ /^(DATA|BDAT) without valid RCPT/
+    );
+ 
+ 
+-- 
+2.24.1
+

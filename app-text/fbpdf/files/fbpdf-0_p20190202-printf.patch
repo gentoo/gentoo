@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/714736
+
+From e89e36c01d09ca6aec03732e922e749257cac3f4 Mon Sep 17 00:00:00 2001
+From: Dmitry Bogatov <KAction@disroot.org>
+Date: Sun, 9 Feb 2020 00:47:09 -0500
+Subject: [PATCH] Avoid passing non-constant format string to printf
+
+gcc complains loudly on any code that uses anything but string literal
+as format string to printf. Right now format string is "const char *"
+and does not contain %-sequences, but should '%' appear in "usage"
+string in future, bad things would happen.
+
+Since formatting functionality of "printf" is not used anyway, replacing
+it with "puts" makes code both safer and easier to understand.
+---
+ fbpdf.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/fbpdf.c b/fbpdf.c
+index a58797f..65b654b 100644
+--- a/fbpdf.c
++++ b/fbpdf.c
+@@ -351,13 +351,13 @@ static void mainloop(void)
+ }
+ 
+ static char *usage =
+-	"usage: fbpdf [-r rotation] [-z zoom x10] [-p page] filename\n";
++	"usage: fbpdf [-r rotation] [-z zoom x10] [-p page] filename";
+ 
+ int main(int argc, char *argv[])
+ {
+ 	int i = 1;
+ 	if (argc < 2) {
+-		printf(usage);
++		puts(usage);
+ 		return 1;
+ 	}
+ 	strcpy(filename, argv[argc - 1]);

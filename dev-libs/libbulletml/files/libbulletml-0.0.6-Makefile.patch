@@ -1,0 +1,119 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,10 +1,5 @@
+-CC = g++
+ INCLUDES = -I.
+ LIBS = tinyxml/tinyxml.o tinyxml/tinyxmlparser.o tinyxml/tinyxmlerror.o
+-#CXXFLAGS = -g -W -Wall -ansi -pedantic
+-#CXXFLAGS = -pg -g -W -Wall -ansi -pedantic
+-CXXFLAGS = -O2 -W -Wall -ansi -pedantic
+-CFLAGS = -O2
+ OBJS = bulletmlparser-tinyxml.o bulletmlparser.o bulletmltree.o calc.o formula-variables.o bulletmlrunner.o bulletmlrunnerimpl.o
+ 
+ all: libbulletml.a
+@@ -21,7 +16,7 @@
+ 	bison -y   calc.yy && mv y.tab.c calc.cpp
+ 
+ $(OBJS): %.o: %.cpp
+-	$(CC) -c $(CXXFLAGS) $(INCLUDES) $<
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c $< -o $@
+ 
+ doxy:
+ 	doxygen
+--- a/tinyxml/Makefile
++++ b/tinyxml/Makefile
+@@ -14,41 +14,6 @@
+ PROFILE        := NO
+ 
+ #****************************************************************************
+-
+-CC     := gcc
+-CXX    := g++
+-LD     := g++
+-AR     := ar rc
+-RANLIB := ranlib
+-
+-DEBUG_CFLAGS     := -Wall -Wno-unknown-pragmas -Wno-format -g -DDEBUG
+-RELEASE_CFLAGS   := -Wall -Wno-unknown-pragmas -Wno-format -O2
+-
+-LIBS		 :=
+-
+-DEBUG_CXXFLAGS   := ${DEBUG_CFLAGS} 
+-RELEASE_CXXFLAGS := ${RELEASE_CFLAGS}
+-
+-DEBUG_LDFLAGS    := -g
+-RELEASE_LDFLAGS  :=
+-
+-ifeq (YES, ${DEBUG})
+-   CFLAGS       += ${DEBUG_CFLAGS}
+-   CXXFLAGS     += ${DEBUG_CXXFLAGS}
+-   LDFLAGS      += ${DEBUG_LDFLAGS}
+-else
+-   CFLAGS       += ${RELEASE_CFLAGS}
+-   CXXFLAGS     += ${RELEASE_CXXFLAGS}
+-   LDFLAGS      += ${RELEASE_LDFLAGS}
+-endif
+-
+-ifeq (YES, ${PROFILE})
+-   CFLAGS   := ${CFLAGS} -pg
+-   CXXFLAGS := ${CXXFLAGS} -pg
+-   LDFLAGS  := ${LDFLAGS} -pg
+-endif
+-
+-#****************************************************************************
+ # Preprocessor directives
+ #****************************************************************************
+ 
+@@ -70,8 +35,8 @@
+ # Makefile code common to all platforms
+ #****************************************************************************
+ 
+-CFLAGS   := ${CFLAGS}   ${DEFS}
+-CXXFLAGS := ${CXXFLAGS} ${DEFS}
++CFLAGS   += ${DEFS}
++CXXFLAGS += ${DEFS}
+ 
+ #****************************************************************************
+ # Targets of the build
+@@ -98,7 +63,7 @@
+ #****************************************************************************
+ 
+ ${OUTPUT}: ${OBJS}
+-	${LD} -o $@ ${LDFLAGS} ${OBJS} ${LIBS} ${EXTRA_LIBS}
++	${CXX} ${LDFLAGS} -o $@ ${OBJS} ${LIBS} ${EXTRA_LIBS}
+ 
+ #****************************************************************************
+ # common rules
+@@ -106,10 +71,10 @@
+ 
+ # Rules for compiling source files to object files
+ %.o : %.cpp
+-	${CXX} -c ${CXXFLAGS} ${INCS} $< -o $@
++	${CXX} ${CXXFLAGS} ${CPPFLAGS} ${INCS} -c $< -o $@
+ 
+ %.o : %.c
+-	${CC} -c ${CFLAGS} ${INCS} $< -o $@
++	${CC} ${CFLAGS} ${CPPFLAGS} ${INCS} -c $< -o $@
+ 
+ clean:
+ 	-rm -f core ${OBJS} ${OUTPUT}
+--- a/ygg/Makefile
++++ b/ygg/Makefile
+@@ -2,8 +2,6 @@
+ LIBS = 
+ #CXXFLAGS = -g -W -Wall
+ #CXXFLAGS = -pg -g -W -Wall
+-CXXFLAGS = -O2 -W -Wall
+-CFLAGS = -O2
+ OBJS = ygg.o
+ 
+ all: $(OBJS)
+@@ -12,7 +10,7 @@
+ 	rm -f *.o *.a
+ 
+ $(OBJS): %.o: %.cpp
+-	$(CXX) -c $(CXXFLAGS) $(INCLUDES) $<
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c $< -o $@
+ 
+ distdir:
+ 

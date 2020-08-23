@@ -5,7 +5,7 @@ EAPI=7
 
 MY_PN="OpenSceneGraph"
 MY_P=${MY_PN}-${PV}
-WX_GTK_VER="3.0"
+WX_GTK_VER="3.0-gtk3"
 inherit cmake flag-o-matic wxwidgets
 
 DESCRIPTION="Open source high performance 3D graphics toolkit"
@@ -14,9 +14,9 @@ SRC_URI="https://github.com/${PN}/${MY_PN}/archive/${MY_P}.tar.gz"
 
 LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0/158" # NOTE: CHECK WHEN BUMPING! Subslot is SOVERSION
-KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="asio curl dicom debug doc egl examples ffmpeg fltk fox gdal gif glut
-gstreamer jpeg las libav lua openexr openinventor osgapps pdf png sdl sdl2
+gstreamer jpeg las lua openexr openinventor osgapps pdf png sdl sdl2
 svg tiff truetype vnc wxwidgets xrandr +zlib"
 
 REQUIRED_USE="sdl2? ( sdl ) dicom? ( zlib ) openexr? ( zlib )"
@@ -42,10 +42,7 @@ RDEPEND="
 		sdl2? ( media-libs/libsdl2 )
 		wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[opengl,X] )
 	)
-	ffmpeg? (
-		libav? ( media-video/libav:0= )
-		!libav? ( media-video/ffmpeg:0= )
-	)
+	ffmpeg? ( media-video/ffmpeg:0= )
 	gdal? ( sci-libs/gdal:= )
 	gif? ( media-libs/giflib:= )
 	gstreamer? (

@@ -10,8 +10,9 @@
 	<name>Proxy Maintainers</name>
 </maintainer>
 <longdescription>
-A python COLLADA library, which can be used to create, edit and load
-COLLADA documents.
+A python module for creating, editing and loading COLLADA, which is a
+COLLAborative Design Activity for establishing an interchange file format
+for interactive 3D applications.
 </longdescription>
 <upstream>
 	<remote-id type="github">pycollada/pycollada</remote-id>

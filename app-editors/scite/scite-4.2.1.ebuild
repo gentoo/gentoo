@@ -7,7 +7,7 @@ inherit toolchain-funcs xdg-utils
 
 MY_PV=${PV//./}
 DESCRIPTION="A very powerful, highly configurable, small editor with syntax coloring"
-HOMEPAGE="http://www.scintilla.org/SciTE.html"
+HOMEPAGE="https://www.scintilla.org/SciTE.html"
 SRC_URI="https://www.scintilla.org/${PN}${MY_PV}.tgz -> ${P}.tgz"
 
 LICENSE="HPND lua? ( MIT )"
@@ -47,18 +47,20 @@ pkg_pretend() {
 }
 
 src_prepare() {
+	tc-export AR CC CXX RANLIB
+
 	# remove hardcoded CC, Optimizations and clang unknown flags
 	sed -i "${WORKDIR}/scintilla/gtk/makefile" \
 	-e "s#^CC = gcc#CC = ${CC}#" \
 	-e "s#^CC = clang#CC = ${CC}#" \
-	-e "s#^CXX = clang++#CC = ${CXX}#" \
+	-e "s#^CXX = clang++#CXX = ${CXX}#" \
 	-e "s#-Os##" \
 	-e "s#-Wno-misleading-indentation##" \
 	|| die "error patching /scintilla/gtk/makefile"
 
 	sed -i "${S}/makefile" \
 	-e "s#^CC = clang#CC = ${CC}#" \
-	-e "s#^CXX = clang++#CC = ${CXX}#" \
+	-e "s#^CXX = clang++#CXX = ${CXX}#" \
 	-e "s#-rdynamic#-rdynamic ${LDFLAGS}#" \
 	-e "s#-Os##" \
 	|| die "error patching gtk/makefile"
@@ -72,7 +74,7 @@ src_prepare() {
 	#  add the ebuild suffix as shell type for working with ebuilds
 	sed -i "${WORKDIR}/scite/src/perl.properties" \
 	-e "s#\*.sh;\*.bsh;#\*.ebuild;\*.sh;\*.bsh;#" \
-	|| die "error patching /scite/src/perl.prperties"
+	|| die "error patching /scite/src/perl.properties"
 
 	# it seems that pwd here is ${S}, but user patches are relative to ${workdir}
 	# Bug #576162

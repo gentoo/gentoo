@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 2002-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -6,7 +6,7 @@ EAPI="7"
 MY_PN="${PN}-cross"
 MY_P="${MY_PN}-${PV}"
 
-inherit autotools flag-o-matic git-r3
+inherit autotools flag-o-matic git-r3 systemd
 
 DESCRIPTION="Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times"
 HOMEPAGE="https://git.yoctoproject.org/cgit/cgit.cgi/prelink-cross/ https://people.redhat.com/jakub/prelink"
@@ -16,13 +16,11 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="doc selinux"
 
-DEPEND="selinux? ( sys-libs/libselinux[static-libs(+)] )
-	!dev-libs/libelf
-	sys-libs/binutils-libs
-	>=sys-libs/glibc-2.8"
-RDEPEND="${DEPEND}
-	>=sys-devel/binutils-2.18
-	>=dev-libs/elfutils-0.100[static-libs(+)]"
+RDEPEND=">=dev-libs/elfutils-0.100
+	selinux? ( sys-libs/libselinux )
+	!dev-libs/libelf"
+DEPEND="${RDEPEND}
+	sys-libs/binutils-libs"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-20130503-prelink-conf.patch
@@ -43,6 +41,12 @@ src_configure() {
 	econf $(use_enable selinux)
 }
 
+src_test() {
+	# prelink tests check exact library lists.
+	# LD_PRELOADed libraries break the assumption.
+	SANDBOX_ON=0 LD_PRELOAD= emake check VERBOSE=1
+}
+
 src_install() {
 	default
 
@@ -54,6 +58,7 @@ src_install() {
 	exeinto /etc/cron.daily
 	newexe "${FILESDIR}"/prelink.cron prelink
 	newconfd "${FILESDIR}"/prelink.confd prelink
+	systemd_dounit "${FILESDIR}"/prelink.{service,timer}
 }
 
 pkg_postinst() {

@@ -120,29 +120,6 @@ EXPORT_FUNCTIONS src_unpack pkg_postinst
 # This decision  does NOT weaken Go module security, as Go will verify the
 # go.sum copy of the Hash1 values during building of the package.
 
-# @ECLASS-VARIABLE: EGO_VENDOR
-# @DESCRIPTION:
-# This variable is deprecated and should no longer be used. Please
-# convert your ebuilds to use EGO_SUM.
-
-# @FUNCTION: go-module_vendor_uris
-# @DESCRIPTION:
-# This function is deprecated.
-go-module_vendor_uris() {
-	local hash import line repo x
-	for line in "${EGO_VENDOR[@]}"; do
-		read -r import hash repo x <<< "${line}"
-		if [[ -n ${x} ]]; then
-			eerror "Trailing information in EGO_VENDOR in ${P}.ebuild"
-			eerror "${line}"
-			eerror "Trailing information is: \"${x}\""
-			die "Invalid EGO_VENDOR format"
-		fi
-		: "${repo:=${import}}"
-		echo "https://${repo}/archive/${hash}.tar.gz -> ${repo//\//-}-${hash}.tar.gz"
-	done
-}
-
 # @ECLASS-VARIABLE: _GOMODULE_GOPROXY_BASEURI
 # @DESCRIPTION:
 # Golang module proxy service to fetch module files from. Note that the module
@@ -261,17 +238,16 @@ go-module_set_globals() {
 
 # @FUNCTION: go-module_src_unpack
 # @DESCRIPTION:
-# - If EGO_VENDOR is set, use the deprecated function to unpack the base
-#   tarballs and the tarballs indicated in EGO_VENDOR to the correct
-#   locations.
-# - Otherwise, if EGO_SUM is set, unpack the base tarball(s) and set up the
+# If EGO_SUM is set, unpack the base tarball(s) and set up the
 #   local go proxy.
+# - Otherwise, if EGO_VENDOR is set, bail out.
 # - Otherwise do a normal unpack.
 go-module_src_unpack() {
-	if [[ "${#EGO_VENDOR[@]}" -gt 0 ]]; then
-		_go-module_src_unpack_vendor
-	elif [[ "${#EGO_SUM[@]}" -gt 0 ]]; then
+	if [[ "${#EGO_SUM[@]}" -gt 0 ]]; then
 		_go-module_src_unpack_gosum
+	elif [[ "${#EGO_VENDOR[@]}" -gt 0 ]]; then
+		eerror "${EBUILD} is using EGO_VENDOR which is no longer supported"
+		die "Please update this ebuild"
 	else
 		default
 	fi
@@ -348,51 +324,6 @@ _go-module_gosum_synthesize_files() {
 	if ! grep -sq -x -e "${version}" "${listfile}" 2>/dev/null; then
 		echo "${version}" >>"${listfile}"
 	fi
-}
-
-# @FUNCTION: _go-module_src_unpack_vendor
-# @DESCRIPTION:
-# Extract all archives in ${a} which are not nentioned in ${EGO_VENDOR}
-# to their usual locations then extract all archives mentioned in
-# ${EGO_VENDOR} to ${S}/vendor.
-_go-module_src_unpack_vendor() {
-	# shellcheck disable=SC2120
-	debug-print-function "${FUNCNAME}" "$@"
-	local f hash import line repo tarball vendor_tarballs x
-	vendor_tarballs=()
-	for line in "${EGO_VENDOR[@]}"; do
-		read -r import hash repo x <<< "${line}"
-		if [[ -n ${x} ]]; then
-			eerror "Trailing information in EGO_VENDOR in ${P}.ebuild"
-			eerror "${line}"
-			die "Invalid EGO_VENDOR format"
-		fi
-		: "${repo:=${import}}"
-		vendor_tarballs+=("${repo//\//-}-${hash}.tar.gz")
-	done
-	for f in ${A}; do
-		[[ -n ${vendor_tarballs[*]} ]] && has "${f}" "${vendor_tarballs[@]}" &&
-			continue
-		unpack "${f}"
-	done
-
-	[[ -z ${vendor_tarballs[*]} ]] && return
-	for line in "${EGO_VENDOR[@]}"; do
-		read -r import hash repo _ <<< "${line}"
-		: "${repo:=${import}}"
-		tarball=${repo//\//-}-${hash}.tar.gz
-		ebegin "Vendoring ${import} ${tarball}"
-		rm -fr "${S}/vendor/${import}" || die
-		mkdir -p "${S}/vendor/${import}" || die
-		tar -C "${S}/vendor/${import}" -x --strip-components 1 \
-			-f "${DISTDIR}/${tarball}" || die
-		eend
-	done
-	# replace GOFLAGS if EGO_VENDOR is being used
-	[[ ${#EGO_VENDOR[@]} -gt 0 ]] &&
-		GOFLAGS="-v -x -mod=vendor"
-	eqawarn "${P}.ebuild: EGO_VENDOR will be removed in the future."
-	eqawarn "Please request that the author migrate to EGO_SUM."
 }
 
 # @FUNCTION: _go-module_src_unpack_verify_gosum

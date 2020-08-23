@@ -151,7 +151,7 @@ RDEPEND+="
 SLOT="0"
 LICENSE="GPL-2"
 if [[ ${PV} != *9999* ]]; then
-	KEYWORDS="~alpha amd64 arm ~hppa ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 fi
 
 # faac codecs are nonfree
@@ -197,12 +197,6 @@ pkg_setup() {
 		ewarn "You won't need this turned on if you are only building"
 		ewarn "mplayer for this system. Also, if your compile fails, try"
 		ewarn "disabling this use flag."
-	fi
-
-	if has_version 'media-video/libav' ; then
-		ewarn "Please note that upstream uses media-video/ffmpeg."
-		ewarn "media-video/libav should be fine in theory but if you"
-		ewarn "experience any problem, try to move to media-video/ffmpeg."
 	fi
 }
 

@@ -5,8 +5,8 @@ EAPI=7
 inherit autotools systemd user
 
 DESCRIPTION="Opensource alternative to shoutcast that supports mp3, ogg and aac streaming"
-HOMEPAGE="http://www.icecast.org/"
-SRC_URI="http://downloads.xiph.org/releases/icecast/${P}.tar.gz"
+HOMEPAGE="https://www.icecast.org/"
+SRC_URI="https://downloads.xiph.org/releases/icecast/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

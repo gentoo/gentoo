@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="A bloody 2D action deathmatch-like game in ASCII-ART"
-HOMEPAGE="http://freecode.com/projects/0verkill"
+HOMEPAGE="http://freshmeat.sourceforge.net/projects/0verkill"
 SRC_URI="http://artax.karlin.mff.cuni.cz/~brain/0verkill/release/${P}.tgz"
 
 LICENSE="GPL-2"

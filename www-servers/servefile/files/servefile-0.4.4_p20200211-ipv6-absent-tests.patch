@@ -1,0 +1,25 @@
+From 3d34ff40f1a24873793c33b8f16a9940050fa93f Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sun, 24 May 2020 15:51:15 +0200
+Subject: [PATCH] Fix test test_ipv4_only for global USE=-ipv6
+
+---
+ tests/test_servefile.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_servefile.py b/tests/test_servefile.py
+index 8132f6b..3f127f4 100644
+--- a/tests/test_servefile.py
++++ b/tests/test_servefile.py
+@@ -137,7 +137,7 @@ def test_ipv4_only(run_servefile, datadir):
+     check_download(data, fname='testfile', host='127.0.0.1')
+ 
+     sock = socket.socket(socket.AF_INET6)
+-    with pytest.raises(connrefused_exc):
++    with pytest.raises((connrefused_exc, OSError)):
+         sock.connect(("::1", 8080))
+ 
+ 
+-- 
+2.26.2
+

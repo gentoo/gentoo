@@ -22,7 +22,7 @@
 # The eclass exports PYTHON_SINGLE_USEDEP that is suitable for depending
 # on other packages using the eclass.  Dependencies on packages using
 # python-r1 should be created via python_gen_cond_dep() function,
-# using PYTHON_MULTI_USEDEP placeholder.
+# using PYTHON_USEDEP placeholder.
 #
 # Please note that packages support multiple Python implementations
 # (using python-r1 eclass) can not depend on packages not supporting
@@ -80,7 +80,8 @@ EXPORT_FUNCTIONS pkg_setup
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_COMPAT_OVERRIDE
-# @INTERNAL
+# @USER_VARIABLE
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # This variable can be used when working with ebuilds to override
 # the in-ebuild PYTHON_COMPAT. It is a string naming the implementation
@@ -119,6 +120,7 @@ EXPORT_FUNCTIONS pkg_setup
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_DEPS
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated Python dependency string for all
 # implementations listed in PYTHON_COMPAT.
@@ -140,13 +142,14 @@ EXPORT_FUNCTIONS pkg_setup
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_SINGLE_USEDEP
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated USE-dependency string which can be used to
 # depend on another python-single-r1 package being built for the same
 # Python implementations.
 #
 # If you need to depend on a multi-impl (python-r1) package, use
-# python_gen_cond_dep with PYTHON_MULTI_USEDEP placeholder instead.
+# python_gen_cond_dep with PYTHON_USEDEP placeholder instead.
 #
 # Example use:
 # @CODE
@@ -158,7 +161,8 @@ EXPORT_FUNCTIONS pkg_setup
 # python_single_target_python3_4(-)?
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_MULTI_USEDEP
+# @ECLASS-VARIABLE: PYTHON_USEDEP
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is a placeholder variable supported by python_gen_cond_dep,
 # in order to depend on python-r1 packages built for the same Python
@@ -167,7 +171,7 @@ EXPORT_FUNCTIONS pkg_setup
 # Example use:
 # @CODE
 # RDEPEND="$(python_gen_cond_dep '
-#     dev-python/foo[${PYTHON_MULTI_USEDEP}]
+#     dev-python/foo[${PYTHON_USEDEP}]
 #   ')"
 # @CODE
 #
@@ -176,7 +180,14 @@ EXPORT_FUNCTIONS pkg_setup
 # python_targets_python3_4(-)
 # @CODE
 
+# @ECLASS-VARIABLE: PYTHON_MULTI_USEDEP
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# This is a backwards-compatibility placeholder.  Use PYTHON_USEDEP
+# instead.
+
 # @ECLASS-VARIABLE: PYTHON_REQUIRED_USE
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated required-use expression which ensures
 # that exactly one PYTHON_SINGLE_TARGET value has been enabled.
@@ -213,7 +224,7 @@ _python_single_set_globals() {
 
 	local deps= i PYTHON_PKG_DEP
 	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-		python_export "${i}" PYTHON_PKG_DEP
+		_python_export "${i}" PYTHON_PKG_DEP
 		# 1) well, python-exec would suffice as an RDEP
 		# but no point in making this overcomplex, BDEP doesn't hurt anyone
 		# 2) python-exec should be built with all targets forced anyway
@@ -249,7 +260,7 @@ _python_single_set_globals() {
 	else
 		PYTHON_DEPS=${deps}
 		PYTHON_REQUIRED_USE=${requse}
-		PYTHON_USEDEP='%PYTHON_USEDEP-HAS-BEEN-REMOVED%'
+		PYTHON_USEDEP='%PYTHON_USEDEP-NEEDS-TO-BE-USED-IN-PYTHON_GEN_COND_DEP%'
 		PYTHON_SINGLE_USEDEP=${single_usedep}
 		readonly PYTHON_DEPS PYTHON_REQUIRED_USE PYTHON_SINGLE_USEDEP \
 			PYTHON_USEDEP
@@ -261,8 +272,8 @@ unset -f _python_single_set_globals
 if [[ ! ${_PYTHON_SINGLE_R1} ]]; then
 
 # @FUNCTION: _python_gen_usedep
-# @INTERNAL
 # @USAGE: [<pattern>...]
+# @INTERNAL
 # @DESCRIPTION:
 # Output a USE dependency string for Python implementations which
 # are both in PYTHON_COMPAT and match any of the patterns passed
@@ -280,6 +291,7 @@ _python_gen_usedep() {
 
 	local impl matches=()
 
+	_python_verify_patterns "${@}"
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${impl}" "${@}"; then
 			matches+=(
@@ -322,6 +334,7 @@ python_gen_useflags() {
 
 	local impl matches=()
 
+	_python_verify_patterns "${@}"
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${impl}" "${@}"; then
 			matches+=( "python_single_target_${impl}" )
@@ -345,7 +358,7 @@ python_gen_useflags() {
 # to prevent accidental shell filename expansion.
 #
 # In order to enforce USE constraints on the packages, verbatim
-# '${PYTHON_SINGLE_USEDEP}' and '${PYTHON_MULTI_USEDEP}' (quoted!) may
+# '${PYTHON_SINGLE_USEDEP}' and '${PYTHON_USEDEP}' (quoted!) may
 # be placed in the dependency specification. It will get expanded within
 # the function into a proper USE dependency string.
 #
@@ -353,7 +366,7 @@ python_gen_useflags() {
 # @CODE
 # PYTHON_COMPAT=( python{2_7,3_{3,4}} pypy )
 # RDEPEND="$(python_gen_cond_dep \
-#   'dev-python/unittest2[${PYTHON_MULTI_USEDEP}]' python2_7 pypy )"
+#   'dev-python/unittest2[${PYTHON_USEDEP}]' python2_7 pypy )"
 # @CODE
 #
 # It will cause the variable to look like:
@@ -371,6 +384,7 @@ python_gen_cond_dep() {
 	local dep=${1}
 	shift
 
+	_python_verify_patterns "${@}"
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${impl}" "${@}"; then
 			# substitute ${PYTHON_SINGLE_USEDEP} if used
@@ -382,8 +396,9 @@ python_gen_cond_dep() {
 			fi
 			local multi_usedep="python_targets_${impl}(-)"
 
+			local subdep=${dep//\$\{PYTHON_MULTI_USEDEP\}/${multi_usedep}}
 			matches+=( "python_single_target_${impl}? (
-				${dep//\$\{PYTHON_MULTI_USEDEP\}/${multi_usedep}} )" )
+				${subdep//\$\{PYTHON_USEDEP\}/${multi_usedep}} )" )
 		fi
 	done
 
@@ -433,10 +448,11 @@ python_gen_impl_dep() {
 	local PYTHON_REQ_USE=${1}
 	shift
 
+	_python_verify_patterns "${@}"
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${impl}" "${@}"; then
 			local PYTHON_PKG_DEP
-			python_export "${impl}" PYTHON_PKG_DEP
+			_python_export "${impl}" PYTHON_PKG_DEP
 			matches+=( "python_single_target_${impl}? ( ${PYTHON_PKG_DEP} )" )
 		fi
 	done
@@ -465,8 +481,8 @@ python_setup() {
 		ewarn
 		ewarn "Dependencies won't be satisfied, and PYTHON_SINGLE_TARGET flags will be ignored."
 
-		python_export "${impls[0]}" EPYTHON PYTHON
-		python_wrapper_setup
+		_python_export "${impls[0]}" EPYTHON PYTHON
+		_python_wrapper_setup
 		einfo "Using ${EPYTHON} to build"
 		return
 	fi
@@ -483,8 +499,8 @@ python_setup() {
 				die "More than one implementation in PYTHON_SINGLE_TARGET."
 			fi
 
-			python_export "${impl}" EPYTHON PYTHON
-			python_wrapper_setup
+			_python_export "${impl}" EPYTHON PYTHON
+			_python_wrapper_setup
 			einfo "Using ${EPYTHON} to build"
 		fi
 	done

@@ -1,0 +1,34 @@
+--- a/arc.h
++++ b/arc.h
+@@ -129,4 +129,8 @@
+ extern u_short	olddate;	/* old archive date stamp */
+ extern u_short	oldtime;	/* old archive time stamp */
+ extern int      dosquash;	/* squash instead of crunch */
++extern long     stdlen;	/* bytes to read */
++extern u_char   *outbuf;
++extern u_char   *outend;
++extern short    crcval;	/* CRC check value */
+ #endif				/* DONT_DEFINE */
+--- a/arclzw.c
++++ b/arclzw.c
+@@ -58,8 +58,7 @@
+ 
+ extern u_char	*pinbuf;
+ u_char		*inbeg, *inend;
+-u_char          *outbuf;
+-u_char          *outbeg, *outend; 
++u_char          *outbeg;
+ 
+ static int      sp;		/* current stack pointer */
+ static int	inflag;
+--- a/arcunp.c
++++ b/arcunp.c
+@@ -39,8 +39,6 @@
+ #define NOHIST 0		/* no relevant history */
+ #define INREP 1			/* sending a repeated value */
+ 
+-short    crcval;		/* CRC check value */
+-long     stdlen;		/* bytes to read */
+ #if	!DOS
+ static int	gotcr;		/* got a carriage return? */
+ #endif

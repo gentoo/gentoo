@@ -116,40 +116,40 @@ fi
 if [[ ! ${_DISTUTILS_R1} ]]; then
 
 _distutils_set_globals() {
-	local rdep=${PYTHON_DEPS}
-	local bdep=${rdep}
-
-	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
-		local sdep=">=dev-python/setuptools-42.0.2[${PYTHON_USEDEP}]"
-	else
-		local sdep="$(python_gen_cond_dep '
-			>=dev-python/setuptools-42.0.2[${PYTHON_MULTI_USEDEP}]
-		')"
-	fi
+	local rdep bdep
+	local setuptools_dep='>=dev-python/setuptools-42.0.2[${PYTHON_USEDEP}]'
 
 	case ${DISTUTILS_USE_SETUPTOOLS} in
 		no|manual)
 			;;
 		bdepend)
-			bdep+=" ${sdep}"
+			bdep+=" ${setuptools_dep}"
 			;;
 		rdepend)
-			bdep+=" ${sdep}"
-			rdep+=" ${sdep}"
+			bdep+=" ${setuptools_dep}"
+			rdep+=" ${setuptools_dep}"
 			;;
 		pyproject.toml)
-			bdep+=" dev-python/pyproject2setuppy[${PYTHON_USEDEP}]"
+			bdep+=' dev-python/pyproject2setuppy[${PYTHON_USEDEP}]'
 			;;
 		*)
 			die "Invalid DISTUTILS_USE_SETUPTOOLS=${DISTUTILS_USE_SETUPTOOLS}"
 			;;
 	esac
 
-	RDEPEND=${rdep}
-	if [[ ${EAPI} != [56] ]]; then
-		BDEPEND=${bdep}
+	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
+		bdep=${bdep//\$\{PYTHON_USEDEP\}/${PYTHON_USEDEP}}
+		rdep=${rdep//\$\{PYTHON_USEDEP\}/${PYTHON_USEDEP}}
 	else
-		DEPEND=${bdep}
+		[[ -n ${bdep} ]] && bdep="$(python_gen_cond_dep "${bdep}")"
+		[[ -n ${rdep} ]] && rdep="$(python_gen_cond_dep "${rdep}")"
+	fi
+
+	RDEPEND="${PYTHON_DEPS} ${rdep}"
+	if [[ ${EAPI} != [56] ]]; then
+		BDEPEND="${PYTHON_DEPS} ${bdep}"
+	else
+		DEPEND="${PYTHON_DEPS} ${bdep}"
 	fi
 	REQUIRED_USE=${PYTHON_REQUIRED_USE}
 }
@@ -403,20 +403,21 @@ distutils_enable_tests() {
 	local test_pkg
 	case ${1} in
 		nose)
-			test_pkg="dev-python/nose"
+			test_pkg=">=dev-python/nose-1.3.7-r4"
 			python_test() {
 				nosetests -v || die "Tests fail with ${EPYTHON}"
 			}
 			;;
 		pytest)
-			test_pkg="dev-python/pytest"
+			test_pkg=">=dev-python/pytest-4.5.0"
 			python_test() {
 				pytest -vv || die "Tests fail with ${EPYTHON}"
 			}
 			;;
 		setup.py)
 			python_test() {
-				esetup.py test --verbose
+				nonfatal esetup.py test --verbose ||
+					die "Tests fail with ${EPYTHON}"
 			}
 			;;
 		unittest)
@@ -474,6 +475,8 @@ _distutils_verify_use_setuptools() {
 		if grep -E -q -s 'entry_points\s*=' setup.py; then
 			expected=rdepend
 		elif grep -F -q -s '[options.entry_points]' setup.cfg; then
+			expected=rdepend
+		elif grep -F -q -s '[entry_points]' setup.cfg; then  # pbr
 			expected=rdepend
 		else
 			expected=bdepend
@@ -558,6 +561,7 @@ distutils_install_for_testing() {
 	TEST_DIR=${BUILD_DIR}/test
 	local bindir=${TEST_DIR}/scripts
 	local libdir=${TEST_DIR}/lib
+	PATH=${bindir}:${PATH}
 	PYTHONPATH=${libdir}:${PYTHONPATH}
 
 	local add_args=(
@@ -771,13 +775,11 @@ _distutils-r1_wrap_scripts() {
 	local path=${1}
 	local bindir=${2}
 
-	local PYTHON_SCRIPTDIR
-	python_export PYTHON_SCRIPTDIR
-
+	local scriptdir=$(python_get_scriptdir)
 	local f python_files=() non_python_files=()
 
-	if [[ -d ${path}${PYTHON_SCRIPTDIR} ]]; then
-		for f in "${path}${PYTHON_SCRIPTDIR}"/*; do
+	if [[ -d ${path}${scriptdir} ]]; then
+		for f in "${path}${scriptdir}"/*; do
 			[[ -d ${f} ]] && die "Unexpected directory: ${f}"
 			debug-print "${FUNCNAME}: found executable at ${f#${path}/}"
 
@@ -875,7 +877,7 @@ distutils-r1_python_install() {
 	local root=${D%/}/_${EPYTHON}
 	[[ ${DISTUTILS_SINGLE_IMPL} ]] && root=${D%/}
 
-	esetup.py install --root="${root}" "${args[@]}"
+	esetup.py install --skip-build --root="${root}" "${args[@]}"
 
 	local forbidden_package_names=( examples test tests .pytest_cache )
 	local p
@@ -949,6 +951,11 @@ distutils-r1_run_phase() {
 		local BUILD_DIR=${BUILD_DIR}/build
 	fi
 	local -x PYTHONPATH="${BUILD_DIR}/lib:${PYTHONPATH}"
+
+	# make PATH local for distutils_install_for_testing calls
+	# it makes little sense to let user modify PATH in per-impl phases
+	# and _all() already localizes it
+	local -x PATH=${PATH}
 
 	# Bug 559644
 	# using PYTHONPATH when the ${BUILD_DIR}/lib is not created yet might lead to

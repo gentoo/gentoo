@@ -1,6 +1,42 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-07)
+# dev-vcs/darcs is not keyworded on ppc/ppc64
+app-portage/layman darcs
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2018-03-27)
+# dev-ruby/capybara depends on www-client/firefox which has no keywords
+dev-ruby/capybara test
+
+# Michał Górny <mgorny@gentoo.org> (2020-06-14)
+# Requires dev-python/networkx.
+app-portage/nattka depgraph-order
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-05-19)
+# deps not keyworded on ~ppc/ppc64
+media-video/obs-studio nvenc
+
+# Mikle Kolyada <zlogene@gentoo.org> (2020-05-06)
+# No deps keyworded
+dev-python/pbr test
+
+# Benda Xu <heroxbd@gentoo.org> (2020-04-27)
+# tests optionally depend on dev-python/hypothesis
+dev-python/numpy test
+
+# Lars Wendler <polynomial-c@gentoo.org> (2020-04-20)
+# Not keyworded on ppc
+net-misc/whois xcrypt
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-19)
+# Unsupported on ppc/ppc64
+www-client/chromium widevine
+
+# Patrick McLean <chutzpah@gentoo.org> (2020-04-03)
+# Lots of deps for little gain
+dev-python/joblib doc
+
 # Matthias Maier <tamiko@gentoo.org> (2020-03-13)
 # requires media-libs/sdl2-image, which is not yet keyworded
 app-emulation/qemu sdl-image
@@ -8,10 +44,6 @@ app-emulation/qemu sdl-image
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
 # requires fwupd, which is not yet keyworded
 kde-plasma/discover firmware
-
-# Michał Górny <mgorny@gentoo.org> (2020-01-11)
-# Unkeyworded test deps.
-dev-cpp/eigen test
 
 # Rick Farina <zerochaos@gentoo.com> (2020-01-03)
 # ubertooth needs net-libs/libbtbb and net-wireless/ubertooth which aren't keyworded
@@ -70,10 +102,6 @@ net-analyzer/icinga2 mariadb
 sys-boot/grub:2 grub_platforms_pc grub_platforms_efi-32 grub_platforms_efi-64 grub_platforms_xen grub_platforms_xen-pvh
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2018-06-08)
-# Requires unported sys-libs/netbsd-csu
-sys-devel/clang-runtime crt
-
-# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2018-06-08)
 # sys-devel/llvmgold not yet keyworded
 sys-devel/llvm gold
 
@@ -128,10 +156,6 @@ app-forensics/sleuthkit java
 sys-power/nut ups_drivers_nut-ipmipsu
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan vulkan-overlay
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=opencl that is masked in this profile.
 net-misc/bfgminer adl lm-sensors
 
@@ -151,10 +175,6 @@ sci-geosciences/gpsbabel gui
 # James Le Cuirot <chewi@gentoo.org> (2016-12-14)
 # DOSBox + OpenGLide is untested on this arch.
 games-emulation/dosbox glide
-
-# Fabian Groffen <grobian@gentoo.org> (2016-12-07)
-# unkeyworded notmuch dependency, bug #587560
-mail-client/mutt notmuch
 
 # Thomas Deutschmann <whissi@gentoo.org> (2016-08-26)
 # Enable numa support on supported architectures
@@ -203,10 +223,6 @@ dev-libs/efl physics sdl
 # Andreas K. Huettel <dilfridge@gentoo.org> (2015-02-15)
 # There's no keyworded office implementation anymore.
 gnome-extra/sushi office
-
-# Markos Chandras <hwoarang@gentoo.org> (2015-02-07)
-# app-admin/cgmanager misses PPC/PPC64 keywords. Bug #539208
-app-emulation/lxc cgmanager
 
 # Mark Wright <gienah@gentoo.org> (2014-12-14/2014-12-24, 2015-04-01)
 # test dependencies need keywording
@@ -345,10 +361,6 @@ mail-client/claws-mail pda
 # Sebastian Pipping <sping@gentoo.org> (2011-02-22)
 # No media-sound/lilypond here, yet (bug #356069)
 app-text/asciidoc test
-
-# Justin Lecher <jlec@gentoo.org> (2010-11-01)
-# Deps not Keyworded
-sci-chemistry/apbs fetk iapbs python
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2010-08-22)
 # sci-chemistry/msms not available for this arch

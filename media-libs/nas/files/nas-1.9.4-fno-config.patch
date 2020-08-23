@@ -1,0 +1,42 @@
+From f1e8e0da221152560efcb097c00539476071047c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Thu, 23 Jan 2020 13:43:12 +0100
+Subject: [PATCH] Fix building with GCC 10
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+GCC 10 defaults to -fno-common and as a result raises an arror when
+linking nasd:
+
+gcc -o nasd -O2 -fno-strict-aliasing   -Wl,-z,relro -Wl,--as-needed  -Wl,-z,now -specs=/usr/lib/rpm/redhat/redhat-hardened-ld  -L../lib/audio -L/usr/lib64 -L/usr/lib64    dia/libdia.a dda/voxware/libvoxware.a os/libos.a
+/usr/bin/ld: dia/libdia.a(lex.o): in function `$d':
+lex.c:(.bss+0x48): multiple definition of `yyin'; dia/libdia.a(main.o):/builddir/build/BUILD/nas-1.9.4/server/dia/main.c:79: first defined here
+collect2: error: ld returned 1 exit status
+
+The reason is that both lex.c (generated from lex.l) and main.c
+define yyin global variable.
+
+This patch changes the main.c definition into a declaration.
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ server/dia/main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/server/dia/main.c b/server/dia/main.c
+index 462e89b..9ea2a12 100644
+--- a/server/dia/main.c
++++ b/server/dia/main.c
+@@ -76,7 +76,7 @@ static char *AuServerName(void);
+ extern char *display;
+ 
+ static int restart = 0;
+-FILE *yyin;                     /* for the config parser */
++extern FILE *yyin;                     /* for the config parser */
+ 
+ void
+ NotImplemented()
+-- 
+2.26.2
+

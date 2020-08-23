@@ -1,0 +1,26 @@
+From 3ecf0a4060d6de3b92a77a393ece663455cf6add Mon Sep 17 00:00:00 2001
+From: Christoph Reiter <reiter.christoph@gmail.com>
+Date: Sun, 10 May 2020 11:22:40 +0200
+Subject: [PATCH] tests: Fix syntax issue with Python 3.9
+
+https://bugs.python.org/issue40246
+
+I haven't actually tested with 3.9 yet, so this is just what I found
+with grep.
+---
+ tests/test_enums.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_enums.py b/tests/test_enums.py
+index 4bc2e3d..02756d0 100644
+--- a/tests/test_enums.py
++++ b/tests/test_enums.py
+@@ -79,7 +79,7 @@ def get_prefix(t):
+         # special case..
+         if name == "PathDataType":
+             name = "Path"
+-        return"_".join([s.upper() for s in re.findall('[A-Z][^A-Z]*', name)])
++        return "_".join([s.upper() for s in re.findall('[A-Z][^A-Z]*', name)])
+ 
+     for t in types_:
+         for name in dir(t):

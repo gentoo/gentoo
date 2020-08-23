@@ -8,20 +8,18 @@ PYTHON_COMPAT=( python3_{6,7} )
 inherit distutils-r1 xdg
 
 DESCRIPTION="DevedeNG is a program to create video DVDs and CDs (VCD, sVCD or CVD)"
-HOMEPAGE="http://www.rastersoft.com/programas/devede.html"
+HOMEPAGE="https://www.rastersoft.com/programas/devede.html"
 SRC_URI="https://gitlab.com/rastersoft/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libav"
 
 RDEPEND="dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	x11-libs/gtk+:3
 	|| ( media-video/vlc media-video/mpv media-video/mplayer )
-	!libav? ( media-video/ffmpeg )
-	libav? ( media-video/libav )
+	media-video/ffmpeg
 	media-video/dvdauthor
 	media-video/vcdimager
 	virtual/cdrtools

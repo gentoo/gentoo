@@ -21,6 +21,7 @@ are supported. SFTP client mode is now supported too.
 用している所です。有名なCipherとHash処理の全てがサポートされています。SFTPクライ
 アントもサポートされています。
 </longdescription>
+  <stabilize-allarches/>
   <use>
     <flag name="server">Enable server feature</flag>
   </use>

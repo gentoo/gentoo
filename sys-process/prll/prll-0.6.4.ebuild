@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,12 +11,12 @@ SRC_URI="https://github.com/exzombie/prll/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 RESTRICT="test"
 
 DOC_CONTENTS="
 You must source the prll.sh file located\nin /etc/profile.d to be able to use prll:\n
- $ source /etc/profile.d/prll.sh
+$ source /etc/profile.d/prll.sh
 "
 
 src_prepare() {

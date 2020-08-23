@@ -9,9 +9,6 @@
 		<flag name="aqbanking">
 			Connect to some internet banks via AqBanking
 		</flag>
-		<flag name="chipcard">
-			Enable support for chipcard reading and processing.
-		</flag>
 		<flag name="quotes">Enable Online Stock Quote retrieval</flag>
 		<flag name="register2">Use the new register (Experimental)</flag>
 	</use>

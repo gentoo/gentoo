@@ -4,12 +4,12 @@
 EAPI=7
 
 GENTOO_DEPEND_ON_PERL=no
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit autotools gnome2-utils flag-o-matic toolchain-funcs multilib perl-module python-single-r1 xdg
 
 DESCRIPTION="GTK Instant Messenger client"
-HOMEPAGE="http://pidgin.im/"
+HOMEPAGE="https://pidgin.im/"
 SRC_URI="
 	mirror://sourceforge/${PN}/${P}.tar.bz2
 	https://dev.gentoo.org/~polynomial-c/${PN}-eds-3.6.patch.bz2

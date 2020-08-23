@@ -1,0 +1,149 @@
+This patch comes from the upstream commit here[1], slightly modified to
+apply to 0.6.3. The pull request[2] mentions fixing CVE-2017-5950,
+CVE-2018-{20573,20574}, and CVE-2019-6285. Note that CVE-2019-6292 appears to
+be a duplicate of CVE-2019-6285 [3].
+
+[1] https://github.com/jbeder/yaml-cpp/commit/4edff1fa5dbfca16fc72d89870841bee89f8ef89
+[2] https://github.com/jbeder/yaml-cpp/pull/807
+[3] https://github.com/jbeder/yaml-cpp/issues/660
+
+diff --git a/include/yaml-cpp/depthguard.h b/include/yaml-cpp/depthguard.h
+new file mode 100644
+index 00000000..8ca61ac6
+--- /dev/null
++++ b/include/yaml-cpp/depthguard.h
+@@ -0,0 +1,77 @@
++#ifndef DEPTH_GUARD_H_00000000000000000000000000000000000000000000000000000000
++#define DEPTH_GUARD_H_00000000000000000000000000000000000000000000000000000000
++
++#if defined(_MSC_VER) ||                                            \
++    (defined(__GNUC__) && (__GNUC__ == 3 && __GNUC_MINOR__ >= 4) || \
++     (__GNUC__ >= 4))  // GCC supports "pragma once" correctly since 3.4
++#pragma once
++#endif
++
++#include "exceptions.h"
++
++namespace YAML {
++
++/**
++ * @brief The DeepRecursion class
++ *  An exception class which is thrown by DepthGuard. Ideally it should be
++ * a member of DepthGuard. However, DepthGuard is a templated class which means
++ * that any catch points would then need to know the template parameters. It is
++ * simpler for clients to not have to know at the catch point what was the
++ * maximum depth.
++ */
++class DeepRecursion : public ParserException {
++public:
++  virtual ~DeepRecursion() = default;
++
++  DeepRecursion(int depth, const Mark& mark_, const std::string& msg_);
++
++  // Returns the recursion depth when the exception was thrown
++  int depth() const {
++    return m_depth;
++  }
++
++private:
++  int m_depth = 0;
++};
++
++/**
++ * @brief The DepthGuard class
++ *  DepthGuard takes a reference to an integer. It increments the integer upon
++ * construction of DepthGuard and decrements the integer upon destruction.
++ *
++ * If the integer would be incremented past max_depth, then an exception is
++ * thrown. This is ideally geared toward guarding against deep recursion.
++ *
++ * @param max_depth
++ *  compile-time configurable maximum depth.
++ */
++template <int max_depth = 2000>
++class DepthGuard final {
++public:
++  DepthGuard(int & depth_, const Mark& mark_, const std::string& msg_) : m_depth(depth_) {
++    ++m_depth;
++    if ( max_depth <= m_depth ) {
++        throw DeepRecursion{m_depth, mark_, msg_};
++    }
++  }
++
++  DepthGuard(const DepthGuard & copy_ctor) = delete;
++  DepthGuard(DepthGuard && move_ctor) = delete;
++  DepthGuard & operator=(const DepthGuard & copy_assign) = delete;
++  DepthGuard & operator=(DepthGuard && move_assign) = delete;
++
++  ~DepthGuard() {
++    --m_depth;
++  }
++
++  int current_depth() const {
++    return m_depth;
++  }
++
++private:
++    int & m_depth;
++};
++
++} // namespace YAML
++
++#endif // DEPTH_GUARD_H_00000000000000000000000000000000000000000000000000000000
+diff --git a/src/depthguard.cpp b/src/depthguard.cpp
+new file mode 100644
+index 00000000..b88cd340
+--- /dev/null
++++ b/src/depthguard.cpp
+@@ -0,0 +1,10 @@
++#include "yaml-cpp/depthguard.h"
++
++namespace YAML {
++
++DeepRecursion::DeepRecursion(int depth, const Mark& mark_, const std::string& msg_)
++    : ParserException(mark_, msg_),
++      m_depth(depth) {
++}
++
++} // namespace YAML
+diff --git a/src/singledocparser.cpp b/src/singledocparser.cpp
+index 47e9e047..3e5638be 100644
+--- a/src/singledocparser.cpp
++++ b/src/singledocparser.cpp
+@@ -7,6 +7,7 @@
+ #include "singledocparser.h"
+ #include "tag.h"
+ #include "token.h"
++#include "yaml-cpp/depthguard.h"
+ #include "yaml-cpp/emitterstyle.h"
+ #include "yaml-cpp/eventhandler.h"
+ #include "yaml-cpp/exceptions.h"  // IWYU pragma: keep
+@@ -47,6 +48,8 @@ void SingleDocParser::HandleDocument(EventHandler& eventHandler) {
+ }
+ 
+ void SingleDocParser::HandleNode(EventHandler& eventHandler) {
++  DepthGuard<2000> depthguard(depth, m_scanner.mark(), ErrorMsg::BAD_FILE);
++
+   // an empty node *is* a possibility
+   if (m_scanner.empty()) {
+     eventHandler.OnNull(m_scanner.mark(), NullAnchor);
+diff --git a/src/singledocparser.h b/src/singledocparser.h
+index c8cfca9d..f484eb1f 100644
+--- a/src/singledocparser.h
++++ b/src/singledocparser.h
+@@ -15,6 +15,7 @@
+ 
+ namespace YAML {
+ class CollectionStack;
++template <int> class DepthGuard; // depthguard.h
+ class EventHandler;
+ class Node;
+ class Scanner;
+@@ -55,6 +56,7 @@ class SingleDocParser {
+   anchor_t LookupAnchor(const Mark& mark, const std::string& name) const;
+ 
+  private:
++  int depth = 0;
+   Scanner& m_scanner;
+   const Directives& m_directives;
+   std::unique_ptr<CollectionStack> m_pCollectionStack;

@@ -1,44 +1,38 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils
+EAPI=7
+
+inherit desktop toolchain-funcs
 
 DESCRIPTION="Gothic science fantasy roguelike game"
-HOMEPAGE="https://freecode.com/projects/wrogue"
+HOMEPAGE="http://freshmeat.sourceforge.net/projects/wrogue"
 SRC_URI="mirror://gentoo/${P}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="media-libs/libsdl[video]"
-DEPEND="${RDEPEND}
-	app-arch/unzip"
+DEPEND="${RDEPEND}"
+BDEPEND="app-arch/unzip"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-ldflags.patch
+	"${FILESDIR}"/${P}-fix-build-system.patch
+	"${FILESDIR}"/${P}-string-allocation.patch
 )
 
-src_prepare() {
-	default
-
-	sed -i \
-		-e "/AppData\[0\]/ s:AppData.*:strcpy(AppData, \"/usr/share/${PN}/\");:" \
-		src/lib/appdir.c \
-		|| die "sed failed"
+src_configure() {
+	tc-export CC
 }
 
 src_compile() {
-	local myCPPFLAGS="-std=c99 -Iinclude -Ilib -Iui -Igenerate"
-	local myCFLAGS="$(sdl-config --cflags) ${CFLAGS}"
-	emake -C src -f linux.mak STRIP_BINARY=NO \
-		CFLAGS="${myCPPFLAGS} ${myCFLAGS}" release
+	emake -C src -f linux.mak release
 }
 
 src_install() {
 	dobin ${PN}
+
 	insinto /usr/share/${PN}
 	doins -r data
 	dodoc changes.txt

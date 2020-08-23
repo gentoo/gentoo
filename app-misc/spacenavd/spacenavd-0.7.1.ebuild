@@ -11,11 +11,20 @@ HOMEPAGE="http://spacenav.sourceforge.net/"
 SRC_URI="https://github.com/FreeSpacenav/spacenavd/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 IUSE="X"
 
-RDEPEND="X? ( x11-apps/xdpyinfo x11-libs/libXi )"
+RDEPEND="X? (
+		x11-apps/xdpyinfo
+		x11-base/xorg-proto
+		x11-libs/libX11
+		x11-libs/libXi
+	)"
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-no-x11.patch  # bug 717690
+)
 
 pkg_setup() {
 	CONFIG_CHECK="~INPUT_EVDEV"

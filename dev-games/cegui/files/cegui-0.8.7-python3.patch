@@ -1,0 +1,21 @@
+From b53f162767bd18aa7dfebe322a7af65593c753f5 Mon Sep 17 00:00:00 2001
+From: ATAGOYAMA Tanuki <s172262@yahoo.co.jp>
+Date: Tue, 21 Nov 2017 20:51:36 +0900
+Subject: [PATCH] cegui/src/ScriptModules/Python/binding/CMakeLists.txt: fix
+ cmake error
+
+---
+ cegui/src/ScriptModules/Python/bindings/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cegui/src/ScriptModules/Python/bindings/CMakeLists.txt b/cegui/src/ScriptModules/Python/bindings/CMakeLists.txt
+index 758788c67..5cc9d5620 100644
+--- a/cegui/src/ScriptModules/Python/bindings/CMakeLists.txt
++++ b/cegui/src/ScriptModules/Python/bindings/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ execute_process(
+-    COMMAND ${PYTHON_EXECUTABLE} -c "import distutils.sysconfig; print distutils.sysconfig.get_python_lib(plat_specific=True, prefix=\"\")"
++    COMMAND ${PYTHON_EXECUTABLE} -c "import distutils.sysconfig; print (distutils.sysconfig.get_python_lib(plat_specific=True, prefix=\"\"))"
+     OUTPUT_VARIABLE CEGUI_PYTHON_INSTALL_DIR
+     OUTPUT_STRIP_TRAILING_WHITESPACE
+ )

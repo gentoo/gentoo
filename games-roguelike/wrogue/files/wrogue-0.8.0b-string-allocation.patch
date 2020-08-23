@@ -1,0 +1,20 @@
+--- a/src/lib/appdir.c
++++ b/src/lib/appdir.c
+@@ -149,7 +149,7 @@
+         CreateDirectory(UserData, NULL);
+ 
+         /* Determine app data directory */
+-        AppData[0] = '.'; AppData[1] = ADIR_DELIMITER; AppData[2] = '\0';
++        strcpy(AppData, "/usr/share/wrogue/");
+ 
+         /* Initialize internal data */
+         Handle = INVALID_HANDLE_VALUE;
+@@ -558,7 +558,7 @@
+         }
+ 
+         /* Determine app data directory */
+-        AppData[0] = '.'; AppData[1] = ADIR_DELIMITER; AppData[2] = '\0';
++        strcpy(AppData, "/usr/share/wrogue/");
+ 
+         /* Initialize internal data */
+         DirectoryStreamValid = ADIR_FALSE;

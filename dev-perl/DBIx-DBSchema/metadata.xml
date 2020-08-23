@@ -8,9 +8,6 @@
   <upstream>
     <remote-id type="cpan">DBIx-DBSchema</remote-id>
     <remote-id type="cpan-module">DBIx::DBSchema</remote-id>
-    <remote-id type="cpan-module">DBIx::DBSchema::ColGroup</remote-id>
-    <remote-id type="cpan-module">DBIx::DBSchema::ColGroup::Index</remote-id>
-    <remote-id type="cpan-module">DBIx::DBSchema::ColGroup::Unique</remote-id>
     <remote-id type="cpan-module">DBIx::DBSchema::Column</remote-id>
     <remote-id type="cpan-module">DBIx::DBSchema::DBD</remote-id>
     <remote-id type="cpan-module">DBIx::DBSchema::DBD::Oracle</remote-id>
@@ -18,6 +15,7 @@
     <remote-id type="cpan-module">DBIx::DBSchema::DBD::SQLite</remote-id>
     <remote-id type="cpan-module">DBIx::DBSchema::DBD::Sybase</remote-id>
     <remote-id type="cpan-module">DBIx::DBSchema::DBD::mysql</remote-id>
+    <remote-id type="cpan-module">DBIx::DBSchema::ForeignKey</remote-id>
     <remote-id type="cpan-module">DBIx::DBSchema::Index</remote-id>
     <remote-id type="cpan-module">DBIx::DBSchema::Table</remote-id>
     <remote-id type="cpan-module">DBIx::DBSchema::_util</remote-id>

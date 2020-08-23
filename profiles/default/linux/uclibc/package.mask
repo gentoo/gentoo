@@ -35,8 +35,8 @@ games-fps/ut2004-bonuspack-cbp2
 games-fps/ut2004-bonuspack-ece
 games-fps/ut2004-bonuspack-mega
 games-fps/ut2004-data
-games-puzzle/world-of-goo
 games-puzzle/world-of-goo-demo
+games-puzzle/world-of-goo-hb
 games-roguelike/neon-chrome
 games-rpg/costume-quest
 games-rpg/wasteland2

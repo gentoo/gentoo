@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,13 +27,13 @@ DEPEND="${RDEPEND}
 "
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0-configure.patch" # bug #455984
-	"${FILESDIR}/${PN}-9999-flags.patch"
+	"${FILESDIR}/${PN}-9999-gentoo.patch"
 )
 
 pkg_setup() {
 	linux-info_pkg_setup
 
-	local CONFIG_CHECK="~IP_NF_IPTABLES VLAN_8021Q"
+	local CONFIG_CHECK="BRIDGE_NETFILTER ~IP_NF_IPTABLES VLAN_8021Q"
 	use debug && CONFIG_CHECK+=" ~DEBUG_FS"
 	if use natevents; then
 		CONFIG_CHECK+=" NF_CONNTRACK_EVENTS"
@@ -97,9 +97,12 @@ src_compile() {
 
 src_install() {
 	linux-mod_src_install
-	exeinto "${IPT_LIB}"
-	doexe libipt_NETFLOW.so
+
 	use snmp && emake DESTDIR="${D}" SNMPTGSO="/usr/$(get_libdir)/snmp/dlmod/snmp_NETFLOW.so" sinstall
+
+	exeinto "${IPT_LIB}"
+	doexe libip{,6}t_NETFLOW.so
+
 	doheader ipt_NETFLOW.h
 	dodoc README*
 }

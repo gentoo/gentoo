@@ -12,12 +12,12 @@ MY_PN="MonadCatchIO-transformers"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Monad-transformer compatible version of the Control.Exception module"
-HOMEPAGE="http://hackage.haskell.org/package/MonadCatchIO-transformers"
+HOMEPAGE="https://hackage.haskell.org/package/MonadCatchIO-transformers"
 SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-haskell/extensible-exceptions-0.1:=[profile?] <dev-haskell/extensible-exceptions-0.2:=[profile?]

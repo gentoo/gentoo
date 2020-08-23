@@ -1,13 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 COMMIT=783ea4e61cbfe54250e809498b1496d6cbd5afa1
 inherit qmake-utils xdg-utils
 
 DESCRIPTION="Qt5 MPD client with experimental UI"
-HOMEPAGE="http://qt-apps.org/content/show.php?content=137091"
+HOMEPAGE="https://www.linux-apps.com/content/show.php/BE::MPC?content=137091"
 SRC_URI="https://sourceforge.net/code-snapshots/git/b/be/be-mpc/code.git/be-mpc-code-${COMMIT}.zip -> ${P}.zip"
 
 LICENSE="GPL-2"
@@ -24,6 +24,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	app-arch/unzip
+	dev-qt/qtconcurrent:5
 "
 
 src_unpack() {

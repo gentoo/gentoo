@@ -17,10 +17,10 @@ MYSPELL_THES=(
 inherit myspell-r2
 
 DESCRIPTION="Khmer dictionaries for myspell/hunspell"
-HOMEPAGE="http://extensions.libreoffice.org/extension-center/khmer-spelling-checker-sbbic-version"
-SRC_URI="http://extensions.libreoffice.org/extension-center/khmer-spelling-checker-sbbic-version/releases/${PV}/sbbic-khmer-spelling-checker-${PV}.oxt"
+HOMEPAGE="https://extensions.libreoffice.org/extension-center/khmer-spelling-checker-sbbic-version"
+SRC_URI="https://extensions.libreoffice.org/extension-center/khmer-spelling-checker-sbbic-version/releases/${PV}/sbbic-khmer-spelling-checker-${PV}.oxt"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE=""

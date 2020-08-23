@@ -18,7 +18,7 @@ SRC_URI="ftp://ftp.isc.org/isc/dhcp/${MY_P}.tar.gz
 
 LICENSE="MPL-2.0 BSD SSLeay GPL-2" # GPL-2 only for init script
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 sparc x86"
 IUSE="+client ipv6 kernel_linux ldap libressl selinux +server ssl vim-syntax"
 
 DEPEND="
@@ -67,6 +67,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.3.6-iproute2-path.patch" #480636
 	"${FILESDIR}/${PN}-4.2.5-bindtodevice-inet6.patch" #471142
 	"${FILESDIR}/${PN}-4.3.3-ldap-ipv6-client-id.patch" #559832
+
+	# Possible upstream candidates
+	"${FILESDIR}/${PN}-4.4.2-fno-common.patch" #710194
 )
 
 src_prepare() {

@@ -1,0 +1,23 @@
+--- a/CMakeLists.txt	2020-03-21 09:42:30.411037664 +0200
++++ b/CMakeLists.txt	2020-03-21 09:49:12.358161439 +0200
+@@ -365,15 +365,16 @@
+   ADD_DEFINITIONS(-DHAVE_LIBRT=1)
+ endif (HAVE_LIBRT)
+
+-check_library_exists(subunit subunit_test_start "" HAVE_SUBUNIT)
+-if (HAVE_SUBUNIT)
++option(CHECK_ENABLE_SUBUNIT "Enable subunit support" ON)
++if (CHECK_ENABLE_SUBUNIT)
+   set(SUBUNIT "subunit")
+   set(ENABLE_SUBUNIT 1)
++  set(HAVE_SUBUNIT 1)
+   add_definitions(-DENABLE_SUBUNIT=1)
+-else(HAVE_SUBUNIT)
++else(CHECK_ENABLE_SUBUNIT)
+   set(ENABLE_SUBUNIT 0)
+   add_definitions(-DENABLE_SUBUNIT=0)
+-endif (HAVE_SUBUNIT)
++endif (CHECK_ENABLE_SUBUNIT)
+
+ ###############################################################################
+ # Generate "config.h" from "cmake/config.h.in"

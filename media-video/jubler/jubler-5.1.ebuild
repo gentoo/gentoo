@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit java-pkg-2 java-ant-2 xdg-utils
 MY_PN="${PN^}"
 
 DESCRIPTION="Java subtitle editor"
-HOMEPAGE="http://www.jubler.org/"
+HOMEPAGE="https://www.jubler.org/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_PN}-source-${PV}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="GPL-2"

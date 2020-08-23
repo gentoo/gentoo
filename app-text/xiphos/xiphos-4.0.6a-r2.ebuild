@@ -8,7 +8,7 @@ inherit flag-o-matic gnome2-utils python-single-r1 toolchain-funcs
 MY_PV="${PV}-20170820"
 MY_P="${PN}-${MY_PV}"
 DESCRIPTION="A bible study frontend for Sword (formerly known as GnomeSword)"
-HOMEPAGE="http://xiphos.org/"
+HOMEPAGE="https://xiphos.org/"
 SRC_URI="https://github.com/crosswire/${PN}/releases/download/${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2 FDL-1.1 LGPL-2 MIT MPL-1.1"
@@ -39,10 +39,8 @@ DEPEND="${RDEPEND}
 	>=net-libs/biblesync-1.1.2-r1[-static]
 	virtual/pkgconfig
 	sys-devel/gettext
-	$(python_gen_cond_dep '
-		app-text/gnome-doc-utils[${PYTHON_MULTI_USEDEP}]
-		dev-libs/libxslt[${PYTHON_MULTI_USEDEP}]
-	')
+	app-text/gnome-doc-utils
+	dev-libs/libxslt
 "
 
 pkg_setup() {

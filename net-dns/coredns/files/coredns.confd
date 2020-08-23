@@ -1,4 +1,9 @@
 ###
 # CoreDNS config
 #
-command_args=""
+
+COREDNS_CONFIG="/etc/coredns/Corefile"
+COREDNS_EXTRA_ARGS=""
+
+# Uncomment / edit to enable healthchecks
+#COREDNS_HEALTHCHECK_URI="127.0.0.1:8092/health"

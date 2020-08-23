@@ -11,7 +11,7 @@ SRC_URI="http://www.textuality.com/bonnie/bonnie.tar.gz -> ${P}.tar.gz"
 
 LICENSE="bonnie"
 SLOT="0"
-KEYWORDS="~alpha amd64 ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE=""
 
 S=${WORKDIR}

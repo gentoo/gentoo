@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit eutils
 
 DESCRIPTION="SG-1000, SC-3000, SF-7000, SSC, SMS, GG, COLECO, and OMV emulator"
-HOMEPAGE="http://www.smspower.org/meka/"
-SRC_URI="http://www.smspower.org/meka/releases/${PN}${PV}.tgz"
+HOMEPAGE="https://www.smspower.org/meka/"
+SRC_URI="https://www.smspower.org/meka/releases/${PN}${PV}.tgz"
 
 LICENSE="mekanix"
 SLOT="0"

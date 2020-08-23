@@ -1,0 +1,23 @@
+From 5f813c35cde9655cabc562411ce82ba9d466193c Mon Sep 17 00:00:00 2001
+From: Denis Dupeyron <calchan@gentoo.org>
+Date: Wed, 25 Mar 2020 10:04:07 -0600
+Subject: [PATCH] Remove pytest-runner dependency
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 24f3bc5..fad4a54 100644
+--- a/setup.py
++++ b/setup.py
+@@ -12,5 +12,5 @@ except ImportError:
+ 
+ 
+ setuptools.setup(
+-    setup_requires=['pbr>=3.0.0', 'setuptools>=17.1', 'pytest-runner'],
++    setup_requires=['pbr>=3.0.0', 'setuptools>=17.1'],
+     pbr=True)
+-- 
+2.25.1
+

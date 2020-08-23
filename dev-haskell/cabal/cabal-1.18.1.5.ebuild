@@ -13,12 +13,12 @@ MY_PN="Cabal"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A framework for packaging Haskell software"
-HOMEPAGE="http://www.haskell.org/cabal/"
+HOMEPAGE="https://www.haskell.org/cabal/"
 SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE=""
 
 RESTRICT=test # circular depend: cabal[test]->quickcheck[test]->cabal

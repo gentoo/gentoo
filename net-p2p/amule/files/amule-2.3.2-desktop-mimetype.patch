@@ -1,0 +1,30 @@
+From 048e86d44e09ef9dc1897c432660a712109b263a Mon Sep 17 00:00:00 2001
+From: Werner Mahr <werner@vollstreckernet.de>
+Date: Mon, 29 Apr 2019 18:37:35 +0200
+Subject: [PATCH] Added imetype-handler for amule ed2k-links. Patch taken from
+ debian.
+
+---
+ amule.desktop | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/amule.desktop b/amule.desktop
+index 70be367af..1cfb38010 100644
+--- a/amule.desktop
++++ b/amule.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Name=aMule
+-Exec=amule
++Exec=amule %u
+ Icon=amule
+ Terminal=false
+ Type=Application
+@@ -8,3 +8,4 @@ Categories=Network;P2P;
+ Comment=A client for the eD2k network
+ Comment[fr]=Un client pour le réseau eD2k
+ Comment[tr]=eD2k ağı için istemci
++MimeType=x-scheme-handler/ed2k;
+-- 
+2.26.2
+

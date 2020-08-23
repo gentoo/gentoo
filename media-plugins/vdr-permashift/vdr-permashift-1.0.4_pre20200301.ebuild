@@ -9,7 +9,7 @@ inherit vdr-plugin-2
 GIT_VERSION="f3541d7c0e3e201daf06a49304db0a0d7d5f8dd1"
 
 DESCRIPTION="VDR Plugin: permanent timeshift by recording live TV on RAM"
-HOMEPAGE="http://ein-eike.de/vdr-plugin-permashift-english/"
+HOMEPAGE="https://ein-eike.de/vdr-plugin-permashift-english/"
 SRC_URI="https://github.com/eikesauer/Permashift/archive/${GIT_VERSION}.tar.gz -> ${PF}.tar.gz"
 
 LICENSE="GPL-2+"

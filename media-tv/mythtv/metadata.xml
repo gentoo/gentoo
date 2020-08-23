@@ -21,14 +21,13 @@
 		<flag name="fftw">Support visualizations via <pkg>sci-libs/fftw</pkg></flag>
 		<flag name="hdhomerun">Silicondust USA Inc.network-attached tuner support</flag>
 		<flag name="hdpvr">Hauppauge HD-PVR?</flag>
-		<flag name="hls">HTTP Live Streaming support</flag>
 		<flag name="ieee1394">Firewire enabled Cable boxe support</flag>
 		<flag name="ivtv">Support kernel driver for the iTVC15 family of MPEG codecs</flag>
 		<flag name="jack">Allows MythTV to use JACK as your sound output device</flag>
 		<flag name="java">BD-J support for Blu-ray discs</flag>
 		<flag name="lcd">Enable use of <pkg>app-misc/lcdproc</pkg> data display</flag>
 		<flag name="lirc">LIRC remote control device support</flag>
-		<flag name="mythlogserver">Enable support for syslog and file logging</flag>
+		<flag name="nvdec">Enable NVDEC (NVCUVID) hardware accelerated video decoding</flag>
 		<flag name="perl">Build the perl bindings for MythTV</flag>
 		<flag name="vbox">V@Box Communications network-attached tuner devices support</flag>
 		<flag name="vpx">Enable VP8/VP9 support for <pkg>media-libs/libvpx</pkg></flag>

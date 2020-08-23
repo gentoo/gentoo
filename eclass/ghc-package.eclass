@@ -18,6 +18,14 @@ case "${EAPI:-0}" in
 	*) ;;
 esac
 
+# GHC uses it's own native code generator. Portage's
+# QA check generates false positive because it assumes
+# presence of GCC-specific sections.
+#
+# Workaround false positiove by disabling the check completely.
+# bug #722078, bug #677600
+QA_FLAGS_IGNORED='.*'
+
 # @FUNCTION: ghc-getghc
 # @DESCRIPTION:
 # returns the name of the ghc executable

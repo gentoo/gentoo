@@ -9,12 +9,12 @@ CABAL_FEATURES="bin lib profile haddock hoogle hscolour"
 inherit base haskell-cabal
 
 DESCRIPTION="a library for command line parsing & online help"
-HOMEPAGE="http://hackage.haskell.org/package/cmdlib"
+HOMEPAGE="https://hackage.haskell.org/package/cmdlib"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-haskell/mtl-2:=[profile?]

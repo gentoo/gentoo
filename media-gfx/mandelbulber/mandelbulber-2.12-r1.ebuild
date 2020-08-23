@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_P="${PN}2-${PV}-1"
-inherit desktop gnome2-utils qmake-utils
+inherit desktop qmake-utils xdg-utils
 
 DESCRIPTION="Tool to render 3D fractals"
-HOMEPAGE="http://www.mandelbulber.com"
+HOMEPAGE="https://www.mandelbulber.com"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="CC-BY-4.0 GPL-3"
@@ -15,6 +15,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="opencl openexr sndfile tiff"
 
+BDEPEND="
+	virtual/pkgconfig
+"
 RDEPEND="
 	dev-libs/lzo
 	dev-qt/qtcore:5
@@ -35,7 +38,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-qt/designer:5
-	virtual/pkgconfig
 "
 
 S=${WORKDIR}/${MY_P}
@@ -74,9 +76,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

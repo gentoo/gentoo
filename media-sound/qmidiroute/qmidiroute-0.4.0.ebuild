@@ -1,7 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit autotools flag-o-matic qmake-utils
 
 DESCRIPTION="QMidiRoute is a filter/router for MIDI events"
@@ -13,13 +14,15 @@ SLOT="0"
 KEYWORDS="amd64 ~x86"
 IUSE=""
 
-RDEPEND="
-	dev-qt/qtgui:5
-	dev-qt/qtcore:5
-	media-libs/alsa-lib"
-DEPEND="${RDEPEND}
+BDEPEND="
 	dev-qt/linguist-tools:5
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
+RDEPEND="
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	media-libs/alsa-lib"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-drop-qtopengl.patch

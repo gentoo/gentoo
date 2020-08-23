@@ -17,7 +17,7 @@ else
 	MY_P="${PN/-utils}-${PV/_}"
 	SRC_URI="https://tukaani.org/xz/${MY_P}.tar.gz"
 	[[ "${PV}" == *_alpha* ]] || [[ "${PV}" == *_beta* ]] || \
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 	S="${WORKDIR}/${MY_P}"
 fi
 
@@ -65,6 +65,12 @@ multilib_src_configure() {
 			# CRC64 is used by default, though some (old?) files use CRC32
 			--enable-checks=crc32,crc64
 		)
+	fi
+
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# undo Solaris-based defaults pointing to /usr/xpg5/bin
+		myconf+=( --disable-path-for-script )
+		export gl_cv_posix_shell=${EPREFIX}/bin/sh
 	fi
 
 	use elibc_FreeBSD && export ac_cv_header_sha256_h=no #545714

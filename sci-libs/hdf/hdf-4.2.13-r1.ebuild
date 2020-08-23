@@ -10,12 +10,12 @@ inherit fortran-2 toolchain-funcs autotools flag-o-matic ltprune
 MYP=${P/_p/-patch}
 
 DESCRIPTION="General purpose library and format for storing scientific data"
-HOMEPAGE="http://www.hdfgroup.org/hdf4.html"
-SRC_URI="http://www.hdfgroup.org/ftp/HDF/HDF_Current/src/${MYP}.tar.bz2"
+HOMEPAGE="https://www.hdfgroup.org/hdf4.html"
+SRC_URI="https://www.hdfgroup.org/ftp/HDF/HDF_Current/src/${MYP}.tar.bz2"
 
 SLOT="0"
 LICENSE="NCSA-HDF"
-KEYWORDS="amd64 ia64 ppc -sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ia64 ppc -sparc x86 ~amd64-linux ~x86-linux"
 IUSE="examples fortran szip static-libs test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( szip )"

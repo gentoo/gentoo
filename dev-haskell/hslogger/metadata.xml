@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="buildtests">Build the executable to run unit tests.</flag>
+		<flag name="network-3">Use network-3</flag>
 	</use>
 	<longdescription>
 		hslogger is a logging framework for Haskell, roughly similar to

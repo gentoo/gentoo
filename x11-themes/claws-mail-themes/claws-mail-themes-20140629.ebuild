@@ -4,8 +4,8 @@
 EAPI=5
 
 DESCRIPTION="Iconsets for Claws Mail"
-HOMEPAGE="http://www.claws-mail.org/"
-SRC_URI="http://www.claws-mail.org/themes/${P}.tar.gz"
+HOMEPAGE="https://www.claws-mail.org/"
+SRC_URI="https://www.claws-mail.org/themes/${P}.tar.gz"
 
 LICENSE="GPL-2 GPL-3 CC-BY-3.0 CC-BY-SA-2.5 CC-BY-NC-SA-3.0 CC-BY-ND-3.0 MPL-1.1 freedist public-domain all-rights-reserved"
 SLOT="0"

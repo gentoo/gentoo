@@ -1,0 +1,12 @@
+'execfile' is python-2-only. 'exec/open' works for both python2 and python3.
+--- a/gui-wx/wxpython.cpp
++++ b/gui-wx/wxpython.cpp
+@@ -3356,7 +3388,7 @@ void RunPythonScript(const wxString& filepath)
+     // for the global namespace so that this script cannot change the
+     // globals of a caller script (which is possible now that RunScript
+     // is re-entrant)
+-    wxString command = wxT("execfile('") + fpath + wxT("',{})");
++    wxString command = wxT("exec(open('") + fpath + wxT("').read(),{})");
+     PyRun_SimpleString(command.mb_str(wxConvLocal));
+     // don't use wxConvUTF8 in above line because caller has already converted
+     // filepath to decomposed UTF8 if on a Mac

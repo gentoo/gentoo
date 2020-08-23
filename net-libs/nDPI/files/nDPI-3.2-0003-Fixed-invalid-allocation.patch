@@ -1,0 +1,22 @@
+From cd4f8051ddfd1bae53393174462c823cf5e15ec0 Mon Sep 17 00:00:00 2001
+From: Luca Deri <deri@ntop.org>
+Date: Tue, 24 Mar 2020 13:39:12 +0100
+Subject: [PATCH] Fixed invalid allocation
+
+---
+ src/lib/protocols/ssh.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/lib/protocols/ssh.c b/src/lib/protocols/ssh.c
+index f3b50b60..6813b2a9 100644
+--- a/src/lib/protocols/ssh.c
++++ b/src/lib/protocols/ssh.c
+@@ -294,7 +294,7 @@ static void ndpi_search_ssh_tcp(struct ndpi_detection_module_struct *ndpi_struct
+     ndpi_MD5_CTX ctx;
+ 
+     if(msgcode == 20 /* key exchange init */) {
+-      char *hassh_buf = calloc(packet->payload_packet_len, sizeof(char));
++      char *hassh_buf = ndpi_calloc(packet->payload_packet_len, sizeof(char));
+       u_int i, len;
+ 
+ #ifdef SSH_DEBUG

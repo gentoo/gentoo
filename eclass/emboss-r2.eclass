@@ -1,10 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: emboss-r2.eclass
 # @MAINTAINER:
 # sci-biology@gentoo.org
-# jlec@gentoo.org
 # ted.tanberry@gmail.com
 # @AUTHOR:
 # Original author: Author Olivier Fisette <ofisette@gmail.com>

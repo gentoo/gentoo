@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit toolchain-funcs
 MY_P="${PN}_V${PV}"
 
 DESCRIPTION="Library for reading and writing ICC color profile files"
-HOMEPAGE="http://freecode.com/projects/icclib"
+HOMEPAGE="http://freshmeat.sourceforge.net/projects/icclib"
 SRC_URI="http://www.argyllcms.com/${MY_P}.zip"
 
 LICENSE="BSD"

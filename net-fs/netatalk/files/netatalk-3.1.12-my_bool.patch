@@ -1,0 +1,16 @@
+fix my_bool compilation issue due to newer MySQL removing the type
+
+https://bugs.gentoo.org/692560
+Patch by Kostiantyn Gorbunov
+
+--- a/libatalk/cnid/mysql/cnid_mysql.c	2016-03-10 10:06:20.000000000 +0200
++++ b/libatalk/cnid/mysql/cnid_mysql.c	2019-09-02 19:55:04.361132422 +0300
+@@ -848,7 +848,7 @@
+ 
+     /* Initialize and connect to MySQL server */
+     EC_NULL( db->cnid_mysql_con = mysql_init(NULL) );
+-    my_bool my_recon = true;
++    bool my_recon = true;
+     EC_ZERO( mysql_options(db->cnid_mysql_con, MYSQL_OPT_RECONNECT, &my_recon) );
+     int my_timeout = 600;
+     EC_ZERO( mysql_options(db->cnid_mysql_con, MYSQL_OPT_CONNECT_TIMEOUT, &my_timeout) );

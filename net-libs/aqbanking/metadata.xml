@@ -4,7 +4,6 @@
   <maintainer type="person">
     <email>hanno@gentoo.org</email></maintainer>
   <use>
-    <flag name="chipcard">Enable support for DDV/RSA-chipcards</flag>
     <flag name="ebics">Enable support for Electronic Banking Internet Communication Standard (EBICS)</flag>
   </use>
 </pkgmetadata>

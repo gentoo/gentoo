@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils linux-info readme.gentoo-r1
+inherit cmake linux-info readme.gentoo-r1
 
 DESCRIPTION="An advanced, highly configurable system monitor for X"
 HOMEPAGE="https://github.com/brndnmtthws/conky"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/brndnmtthws/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-3 BSD LGPL-2.1 MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ppc ppc64 sparc x86"
 IUSE="apcupsd cmus curl eve hddtemp ical iconv imlib iostats ipv6 irc
 	lua-cairo lua-imlib lua-rsvg math moc mpd mysql nano-syntax ncurses
 	nvidia +portmon pulseaudio rss systemd thinkpad truetype vim-syntax
@@ -87,7 +87,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -i -e "s|find_program(APP_MAN man)|set(APP_MAN $(which man) CACHE FILEPATH MAN_BINARY)|" \
 		cmake/ConkyPlatformChecks.cmake || die
@@ -158,11 +158,11 @@ src_configure() {
 		-DDOC_PATH=/usr/share/doc/${PF}
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use vim-syntax; then
 		insinto /usr/share/vim/vimfiles/ftdetect

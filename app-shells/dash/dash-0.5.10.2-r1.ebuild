@@ -11,7 +11,7 @@ SRC_URI="http://gondor.apana.org.au/~herbert/dash/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="libedit static"
 
 BDEPEND="virtual/pkgconfig"
@@ -19,7 +19,10 @@ RDEPEND="!static? ( libedit? ( dev-libs/libedit ) )"
 DEPEND="${RDEPEND}
 	libedit? ( static? ( dev-libs/libedit[static-libs] ) )"
 
-PATCHES=( "${FILESDIR}/${PN}-0.5.9.1-format-security.patch" )
+PATCHES=(
+	"${FILESDIR}/dash-0.5.9.1-format-security.patch"
+	"${FILESDIR}/dash-0.5.20.2-gcc-fno-common.patch"
+)
 
 src_prepare() {
 	default

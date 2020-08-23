@@ -15,6 +15,7 @@
   Joblib is optimized to be fast and robust in particular on large,
   long-running functions and has specific optimizations for numpy arrays.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">joblib</remote-id>
     <remote-id type="github">joblib/joblib</remote-id>

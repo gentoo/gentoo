@@ -1,0 +1,93 @@
+From 2958702524348e9e4fcbdf490be731e92b353dad Mon Sep 17 00:00:00 2001
+From: Nate Graham <nate@kde.org>
+Date: Tue, 24 Mar 2020 08:10:54 -0600
+Subject: Stop multiplying duration values
+
+Summary:
+After D28144, some animations are now too long because they were inappropriately
+multiplying a duration value. That's no longer necessary, so let's remove the
+multiplication.
+
+Depends on D28144
+
+Test Plan: Various things that were a bit too slow before feel just right now
+
+Reviewers: #vdg, #plasma, cblack
+
+Reviewed By: #vdg, #plasma, cblack
+
+Subscribers: cblack, plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D28238
+---
+ applets/devicenotifier/package/contents/ui/FullRepresentation.qml | 2 +-
+ applets/systemtray/package/contents/ui/ExpanderArrow.qml          | 2 +-
+ lookandfeel/contents/components/ActionButton.qml                  | 4 ++--
+ lookandfeel/contents/components/UserDelegate.qml                  | 2 +-
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/applets/devicenotifier/package/contents/ui/FullRepresentation.qml b/applets/devicenotifier/package/contents/ui/FullRepresentation.qml
+index d15e47c..80b9c73 100644
+--- a/applets/devicenotifier/package/contents/ui/FullRepresentation.qml
++++ b/applets/devicenotifier/package/contents/ui/FullRepresentation.qml
+@@ -225,7 +225,7 @@ MouseArea {
+                     popupIconTimer.restart()
+                 }
+             }
+-            Behavior on height { NumberAnimation { duration: units.shortDuration * 3 } }
++            Behavior on height { NumberAnimation { duration: units.shortDuration } }
+         }
+     }
+ }
+diff --git a/applets/systemtray/package/contents/ui/ExpanderArrow.qml b/applets/systemtray/package/contents/ui/ExpanderArrow.qml
+index 9baf654..729f56b 100644
+--- a/applets/systemtray/package/contents/ui/ExpanderArrow.qml
++++ b/applets/systemtray/package/contents/ui/ExpanderArrow.qml
+@@ -37,7 +37,7 @@ PlasmaCore.ToolTipArea {
+         anchors.fill: parent
+         onClicked: root.expanded = !root.expanded
+ 
+-        readonly property int arrowAnimationDuration: units.shortDuration * 3
++        readonly property int arrowAnimationDuration: units.shortDuration
+ 
+         PlasmaCore.Svg {
+             id: arrowSvg
+diff --git a/lookandfeel/contents/components/ActionButton.qml b/lookandfeel/contents/components/ActionButton.qml
+index 9fbd2a8..7a66c56 100644
+--- a/lookandfeel/contents/components/ActionButton.qml
++++ b/lookandfeel/contents/components/ActionButton.qml
+@@ -44,7 +44,7 @@ Item {
+     opacity: activeFocus || containsMouse ? 1 : 0.85
+         Behavior on opacity {
+             PropertyAnimation { // OpacityAnimator makes it turn black at random intervals
+-                duration: units.longDuration * 2
++                duration: units.longDuration
+                 easing.type: Easing.InOutQuad
+             }
+     }
+@@ -59,7 +59,7 @@ Item {
+         opacity: activeFocus || containsMouse ? (softwareRendering ? 0.8 : 0.15) : (softwareRendering ? 0.6 : 0)
+         Behavior on opacity {
+                 PropertyAnimation { // OpacityAnimator makes it turn black at random intervals
+-                    duration: units.longDuration * 3
++                    duration: units.longDuration
+                     easing.type: Easing.InOutQuad
+                 }
+         }
+diff --git a/lookandfeel/contents/components/UserDelegate.qml b/lookandfeel/contents/components/UserDelegate.qml
+index 8882e39..cdb55f1 100644
+--- a/lookandfeel/contents/components/UserDelegate.qml
++++ b/lookandfeel/contents/components/UserDelegate.qml
+@@ -72,7 +72,7 @@ Item {
+         Behavior on width { 
+             PropertyAnimation {
+                 from: faceSize
+-                duration: units.longDuration * 2;
++                duration: units.longDuration;
+             }
+         }
+         width: isCurrent ? faceSize : faceSize - units.largeSpacing
+-- 
+cgit v1.1

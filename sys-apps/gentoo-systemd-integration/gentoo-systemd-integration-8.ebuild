@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,8 +23,8 @@ IUSE=""
 RDEPEND=">=sys-apps/systemd-207
 	!sys-fs/eudev
 	!sys-fs/udev"
-DEPEND=">=sys-apps/systemd-207
-	virtual/pkgconfig"
+DEPEND=">=sys-apps/systemd-207"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default

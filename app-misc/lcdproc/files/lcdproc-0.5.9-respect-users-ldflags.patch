@@ -1,0 +1,25 @@
+From 28cca1d998fc9a74f16ea00e61c3eaa34017db7c Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conrad@kostecki.com>
+Date: Mon, 11 May 2020 23:43:57 +0200
+Subject: [PATCH] Include AM_PROG_AR to use systems AR
+
+If AM_PROG_AR is not included,
+the 'ar' command is directly called.
+
+Signed-off-by: Conrad Kostecki <conrad@kostecki.com>
+---
+ configure.ac | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure.ac b/configure.ac
+index 98a2fb1c..53f7bf50 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -73,6 +73,7 @@ AC_PROG_CC_STDC
+ AC_PROG_CPP
+ AC_PROG_INSTALL
+ AC_PROG_RANLIB
++AM_PROG_AR
+ AM_PROG_CC_C_O
+ AC_PATH_PROG([XMLTO], [xmlto], [no])
+ 

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,16 +14,19 @@ if [[ "${PV}" == *9999 ]] ; then
 else
 	#SRC_URI="mirror://debian/pool/main/w/whois/${MY_P}.tar.xz"
 	SRC_URI="https://github.com/rfc1036/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="iconv idn nls"
+IUSE="iconv idn nls xcrypt"
 RESTRICT="test" #59327
 
-RDEPEND="iconv? ( virtual/libiconv )
+RDEPEND="
+	iconv? ( virtual/libiconv )
 	idn? ( net-dns/libidn2:= )
-	nls? ( virtual/libintl )"
+	nls? ( virtual/libintl )
+	xcrypt? ( >=sys-libs/libxcrypt-4.1 )
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-arch/xz-utils
@@ -34,6 +37,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.7.2-config-file.patch
 	"${FILESDIR}"/${PN}-5.3.0-libidn_automagic.patch
+	"${FILESDIR}"/${PN}-5.5.6-libxcrypt_automagic.patch
 )
 
 src_prepare() {
@@ -55,6 +59,7 @@ src_compile() {
 	unset HAVE_ICONV HAVE_LIBIDN
 	use iconv && export HAVE_ICONV=1
 	use idn && export HAVE_LIBIDN=1
+	use xcrypt && export HAVE_XCRYPT=1
 	tc-export CC
 	emake CFLAGS="${CFLAGS} ${CPPFLAGS}"
 }

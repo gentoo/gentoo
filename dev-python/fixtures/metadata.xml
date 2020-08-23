@@ -16,6 +16,7 @@
 	is provided that makes using fixtures that meet the Fixtures contract in
 	unittest compatible test cases easy and straight forward.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">fixtures</remote-id>
 		<remote-id type="launchpad">python-fixtures</remote-id>

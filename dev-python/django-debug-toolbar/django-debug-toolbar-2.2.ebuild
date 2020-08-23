@@ -16,29 +16,27 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 SLOT="0"
 LICENSE="BSD"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc examples"
+IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/django-1.11[${PYTHON_USEDEP}]
 	>=dev-python/sqlparse-0.2.0[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 "
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
+DEPEND="
+	test? (
+		$(python_gen_impl_dep sqlite)
+		${RDEPEND}
+	)
 "
+
+distutils_enable_sphinx docs
 
 python_prepare_all() {
-	# Prevent non essential d'loading by intersphinx
-	sed -e 's:intersphinx_mapping:_&:' -i docs/conf.py || die
-
 	# This prevents distutils from installing 'tests' package, rm magic no more needed
 	sed -e "/find_packages/s:'tests':'tests.\*', 'tests':" -i setup.py || die
 
 	distutils-r1_python_prepare_all
-}
-
-python_compile_all() {
-	use doc && emake -C docs html
 }
 
 python_test() {
@@ -46,7 +44,6 @@ python_test() {
 }
 
 python_install_all() {
-	use doc && local HTML_DOCS=( docs/_build/html/. )
 	if use examples; then
 		docinto examples
 		dodoc -r example/.

@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person">
+		<email>jakov.smolic@sartura.hr</email>
+		<name>Jakov Smolic</name>
+	</maintainer>
 	<maintainer type="project">
-		<email>graphics@gentoo.org</email>
-		<name>Gentoo Graphics Project</name>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
 		<flag name="tools">Build command-line tools</flag>

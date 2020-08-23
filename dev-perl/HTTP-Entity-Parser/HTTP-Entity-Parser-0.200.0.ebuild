@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="PSGI compliant HTTP Entity Parser"
 SLOT="0"
-KEYWORDS="~alpha amd64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86"
 IUSE="test +xs"
 RESTRICT="!test? ( test )"
 

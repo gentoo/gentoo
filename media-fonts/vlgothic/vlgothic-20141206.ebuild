@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge.jp/${PN}/62375/${MY_PN}-${PV}.tar.bz2"
 # sazanami -> BSD-2
 LICENSE="vlgothic mplus-fonts BSD-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86"
 
 S="${WORKDIR}/${MY_PN}"
 

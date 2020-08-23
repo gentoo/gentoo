@@ -9,8 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription lang="en">Sigil is a multi-platform WYSIWYG ebook editor.
-		It is designed to edit books in ePub format.</longdescription>
 	<use>
 		<flag name="plugins">Installed needed Python packages for using Sigil plugins</flag>
 		<flag name="system-mathjax">Use the system-wide <pkg>dev-libs/mathjax</pkg> instead of bundled</flag>

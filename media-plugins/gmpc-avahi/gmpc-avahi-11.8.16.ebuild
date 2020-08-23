@@ -4,8 +4,8 @@
 EAPI=7
 
 DESCRIPTION="This plugin discovers avahi enabled mpd servers"
-HOMEPAGE="http://gmpc.wikia.com/wiki/GMPC_PLUGIN_AVAHI"
-SRC_URI="http://download.sarine.nl/Programs/gmpc/11.8/${P}.tar.gz"
+HOMEPAGE="https://gmpc.fandom.com/wiki/GMPC_PLUGIN_AVAHI"
+SRC_URI="https://download.sarine.nl/Programs/gmpc/11.8/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

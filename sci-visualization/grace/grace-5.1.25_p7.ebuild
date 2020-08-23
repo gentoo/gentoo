@@ -7,7 +7,7 @@ FORTRAN_NEEDED=fortran
 inherit desktop fortran-2 toolchain-funcs
 
 DESCRIPTION="Motif based XY-plotting tool"
-HOMEPAGE="http://plasma-gate.weizmann.ac.il/Grace/"
+HOMEPAGE="https://plasma-gate.weizmann.ac.il/Grace/"
 SRC_URI="
 	ftp://plasma-gate.weizmann.ac.il/pub/${PN}/src/stable/${P/_p*}.tar.gz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV/_p*}-${PV/*_p}.debian.tar.xz

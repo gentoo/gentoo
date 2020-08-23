@@ -1,11 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+inherit autotools
+
 DESCRIPTION="A tool for recording Flash SWF movies from VNC sessions"
-HOMEPAGE="http://www.unixuser.org/~euske/vnc2swf"
-SRC_URI="http://www.unixuser.org/~euske/vnc2swf/${P}.tar.gz"
+HOMEPAGE="https://www.unixuser.org/~euske/vnc2swf/"
+SRC_URI="https://www.unixuser.org/~euske/vnc2swf/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -23,10 +25,17 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-respect-AR.patch # bug 726264
+)
+
 src_prepare() {
 	default
 	sed -i -e "s:docs:html:" README || die
 	sed -i -e "s:-mouse ::" -e "s:./vnc2swf:vnc2swf:" recordwin.sh || die
+
+	mv configure.{in,ac} || die
+	eautoconf
 }
 
 src_install() {

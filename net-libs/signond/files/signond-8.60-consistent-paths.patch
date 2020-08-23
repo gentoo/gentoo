@@ -1,11 +1,14 @@
-From c68f31b964f9decf323cd212282cf13d4a42ad21 Mon Sep 17 00:00:00 2001
+From 62ce2305081075a53836999441214f03d37b50b5 Mon Sep 17 00:00:00 2001
 From: Andreas Sturmlechner <asturm@gentoo.org>
-Date: Sun, 8 Dec 2019 22:52:46 +0100
-Subject: [PATCH] Consistent overrideable install paths
+Date: Sun, 28 Jun 2020 21:44:42 +0200
+Subject: [PATCH 3/3] Consistent overrideable install paths
 
 At least signon-plugins.pc and signon-plugins-common.pc were getting it wrong.
 
-This patch is converting absolute INSTALL_LIBDIR to LIBDIR relative beneath INSTALL_PREFIX.
+This patch is converting absolute INSTALL_LIBDIR to LIBDIR relative beneath
+INSTALL_PREFIX.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
 ---
  common-installs-config.pri                    |  2 +-
  common-pkgconfig.pri                          |  2 +-
@@ -259,5 +262,5 @@ index 2c03e74..ea2fcb2 100644
 +target.path = $${INSTALL_PREFIX}/$${LIBDIR}/signon
  INSTALLS = target
 -- 
-2.24.0
+2.27.0
 

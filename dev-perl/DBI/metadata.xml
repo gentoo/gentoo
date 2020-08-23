@@ -40,6 +40,13 @@
     <remote-id type="cpan-module">DBD::Gofer::db</remote-id>
     <remote-id type="cpan-module">DBD::Gofer::dr</remote-id>
     <remote-id type="cpan-module">DBD::Gofer::st</remote-id>
+    <remote-id type="cpan-module">DBD::Mem</remote-id>
+    <remote-id type="cpan-module">DBD::Mem::DataSource</remote-id>
+    <remote-id type="cpan-module">DBD::Mem::Statement</remote-id>
+    <remote-id type="cpan-module">DBD::Mem::Table</remote-id>
+    <remote-id type="cpan-module">DBD::Mem::db</remote-id>
+    <remote-id type="cpan-module">DBD::Mem::dr</remote-id>
+    <remote-id type="cpan-module">DBD::Mem::st</remote-id>
     <remote-id type="cpan-module">DBD::NullP</remote-id>
     <remote-id type="cpan-module">DBD::NullP::db</remote-id>
     <remote-id type="cpan-module">DBD::NullP::dr</remote-id>

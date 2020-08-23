@@ -9,7 +9,7 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
 fi
 
 inherit linux-info meson pam udev xdg-utils
@@ -111,6 +111,16 @@ src_install() {
 }
 
 pkg_postinst() {
+	if ! use pam; then
+		ewarn "${PN} will not be managing user logins/seats without USE=\"pam\"!"
+		ewarn "In other words, it will be useless for most applications."
+		ewarn
+	fi
+	if ! use policykit; then
+		ewarn "loginctl will not be able to perform privileged operations without"
+		ewarn "USE=\"policykit\"! That means e.g. no suspend or hibernate."
+		ewarn
+	fi
 	if [[ "$(rc-config list boot | grep elogind)" != "" ]]; then
 		elog "elogind is currently started from boot runlevel."
 	elif [[ "$(rc-config list default | grep elogind)" != "" ]]; then

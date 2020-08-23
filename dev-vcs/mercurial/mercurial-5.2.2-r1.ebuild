@@ -14,19 +14,10 @@ SRC_URI="https://www.mercurial-scm.org/release/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="+chg emacs gpg test tk zsh-completion"
 
-BROKEN_PYTHON="
-	!~dev-python/python-3.5.0
-	!~dev-python/python-3.5.1
-	!~dev-python/python-3.5.2
-	!~dev-python/python-3.6.0
-	!~dev-python/python-3.6.1"
-
-BDEPEND="${BROKEN_PYTHON}"
-
-RDEPEND="${BROKEN_PYTHON}
+RDEPEND="
 	app-misc/ca-certificates
 	dev-python/zstandard[${PYTHON_USEDEP}]
 	gpg? ( app-crypt/gnupg )

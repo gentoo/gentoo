@@ -6,7 +6,7 @@ EAPI=7
 inherit meson virtualx
 
 DESCRIPTION="A highly customizable and functional document viewer"
-HOMEPAGE="http://pwmt.org/projects/zathura/"
+HOMEPAGE="https://pwmt.org/projects/zathura/"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3

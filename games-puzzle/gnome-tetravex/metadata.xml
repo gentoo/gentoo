@@ -5,4 +5,8 @@
 	<email>gnome@gentoo.org</email>
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
+<use>
+	<flag name="cli">Build the gnome-tetravex-cli command-line interface</flag>
+	<flag name="gui">Build the gnome-tetravex graphical Gtk user interface</flag>
+</use>
 </pkgmetadata>

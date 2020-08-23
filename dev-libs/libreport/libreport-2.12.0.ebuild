@@ -29,7 +29,6 @@ DEPEND="${PYTHON_DEPS}
 	dev-libs/xmlrpc-c:=
 	net-libs/libproxy:=
 	net-misc/curl:=[ssl]
-	sys-apps/dbus
 	sys-apps/systemd
 	gtk? ( >=x11-libs/gtk+-3.3.12:3 )
 	python? ( ${PYTHON_DEPS} )

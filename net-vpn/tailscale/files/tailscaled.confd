@@ -1,0 +1,6 @@
+# /etc/conf.d/tailscaled
+# the port for tailscaled to listen on
+#tailscaled_port=41641
+
+# extra arguments passed to the daemon
+#tailscaled_args=""

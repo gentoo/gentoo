@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{7,8} )
 PYTHON_REQ_USE="xml"
 MY_P="${P/_/}"
 inherit cmake flag-o-matic xdg toolchain-funcs python-single-r1 git-r3
@@ -15,7 +15,7 @@ EGIT_REPO_URI="https://gitlab.com/inkscape/inkscape.git"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="cdr dbus dia exif graphicsmagick imagemagick inkjar jemalloc jpeg lcms nls
+IUSE="cdr dbus dia exif graphicsmagick imagemagick inkjar jemalloc jpeg lcms
 openmp postscript spell static-libs svg2 visio wpg"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -61,7 +61,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dbus? ( dev-libs/dbus-glib )
 	exif? ( media-libs/libexif )
 	imagemagick? (
-		!graphicsmagick? ( <media-gfx/imagemagick-7:=[cxx] )
+		!graphicsmagick? ( media-gfx/imagemagick:=[cxx] )
 		graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
 	)
 	jemalloc? ( dev-libs/jemalloc )
@@ -96,14 +96,9 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-libs/boost-1.65
 "
 
-S="${WORKDIR}/${MY_P}"
-
 RESTRICT="test"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.0_beta1-detect-imagemagick.patch
-	"${FILESDIR}"/${PN}-1.0_beta1-do-not-compress-man.patch
-)
+S="${WORKDIR}/${MY_P}"
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
@@ -122,6 +117,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		# -DWITH_LPETOOL   # Compile with LPE Tool and experimental LPEs enabled
+		-DWITH_NLS=ON
 		-DENABLE_POPPLER=ON
 		-DENABLE_POPPLER_CAIRO=ON
 		-DWITH_PROFILING=OFF
@@ -137,14 +133,6 @@ src_configure() {
 		-DWITH_LIBVISIO=$(usex visio)
 		-DWITH_LIBWPG=$(usex wpg)
 	)
-	# We should also have,
-	#
-	#   -DWITH_NLS=$(usex nls)
-	#
-	# in this list, but it's broken upstream at the moment:
-	#
-	#  * https://bugs.gentoo.org/699658
-	#  * https://gitlab.com/inkscape/inkscape/issues/168
 
 	cmake_src_configure
 }
@@ -153,6 +141,10 @@ src_install() {
 	cmake_src_install
 
 	find "${ED}" -type f -name "*.la" -delete || die
+
+	find "${ED}"/usr/share/man -type f -maxdepth 3 -name '*.bz2' -exec bzip2 -d {} \; || die
+
+	find "${ED}"/usr/share/man -type f -maxdepth 3 -name '*.gz' -exec gzip -d {} \; || die
 
 	# No extensions are present in beta1
 	local extdir="${ED}"/usr/share/${PN}/extensions

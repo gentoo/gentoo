@@ -11,7 +11,7 @@ HOMEPAGE="http://sysprof.com/"
 
 LICENSE="GPL-3+ GPL-2+"
 SLOT="3"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=">=dev-libs/glib-2.61.3:2

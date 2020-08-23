@@ -1,16 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit flag-o-matic java-pkg-opt-2
 
-PATCHSET_VER="12"
+PATCHSET_VER="13"
 
 DESCRIPTION="YAP is a high-performance Prolog compiler"
 HOMEPAGE="http://www.dcc.fc.up.pt/~vsc/Yap/"
 SRC_URI="http://www.dcc.fc.up.pt/~vsc/Yap/${P}.tar.gz
-	mirror://gentoo/${P}-gentoo-patchset-${PATCHSET_VER}.tar.gz"
+	https://dev.gentoo.org/~keri/distfiles/yap/${P}-gentoo-patchset-${PATCHSET_VER}.tar.gz"
 
 LICENSE="Artistic LGPL-2"
 SLOT="0"

@@ -1,0 +1,23 @@
+diff --git a/tests/common.py b/tests/common.py
+index 95b9755..41123de 100644
+--- a/tests/common.py
++++ b/tests/common.py
+@@ -1,6 +1,7 @@
+ import codecs
+ import os
+ import sys
++import site
+ if sys.version_info < (2, 7):
+     import unittest2 as unittest
+ else:
+@@ -175,9 +176,7 @@ class AstunparseCommonTestCase:
+     def check_roundtrip(self, code1, filename="internal", mode="exec"):
+         raise NotImplementedError()
+ 
+-    test_directories = [
+-        os.path.join(getattr(sys, 'real_prefix', sys.prefix),
+-                     'lib', 'python%s.%s' % sys.version_info[:2])]
++    test_directories = [os.path.dirname(d) for d in site.getsitepackages()]
+ 
+     def test_files(self):
+         names = []

@@ -1,0 +1,28 @@
+From 2869c385e72932cbed7398742b8a4d5e3feda765 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Tue, 24 Mar 2020 13:14:43 +0100
+Subject: Fix build with Qt 5.15.0
+
+QPainterPath is no longer included via qtransform.h (since
+5.15.0-beta2, 50d2acdc93b4de2ba56eb67787e2bdcb21dd4bea in qtbase.git).
+
+Change-Id: Ibb59e769bba8514d86aa886afee26a2395d458ef
+---
+ src/Gui/Window.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/Gui/Window.cpp b/src/Gui/Window.cpp
+index 65ba246..8d74874 100644
+--- a/src/Gui/Window.cpp
++++ b/src/Gui/Window.cpp
+@@ -32,6 +32,7 @@
+ #include <QKeyEvent>
+ #include <QMenuBar>
+ #include <QMessageBox>
++#include <QPainterPath>
+ #include <QProgressBar>
+ #include <QRegularExpression>
+ #include <QScopedPointer>
+-- 
+cgit v1.1
+

@@ -1,0 +1,34 @@
+--- a/elogviewer.py	2020-05-08 20:23:04.419257166 -0700
++++ b/elogviewer.py	2020-05-08 20:23:30.436359552 -0700
+@@ -255,15 +255,22 @@
+         return "</h2>"
+ 
+     def parse(self, line):
+-        eclass, stage = line.split(":")
+-        self.context.eclass = {
+-            "ERROR": EClass.Error,
+-            "WARN": EClass.Warning,
+-            "LOG": EClass.Log,
+-            "INFO": EClass.Info,
+-            "QA": EClass.QA,
+-        }[eclass]
+-        return "{}: {}".format(self.context.eclass.name, stage)
++        if not line:
++            return
++        parts = line.split(":")
++        if len(parts) == 2:
++            eclass, stage = parts[0:2]
++            self.context.eclass = {
++                "ERROR": EClass.Error,
++                "WARN": EClass.Warning,
++                "LOG": EClass.Log,
++                "INFO": EClass.Info,
++                "QA": EClass.QA,
++            }[eclass]
++            return "{}: {}".format(self.context.eclass.name, stage)
++        elif len(parts) > 2:
++            # Return an empty string, eclass and stage are populated anyway
++            return "" 
+ 
+ 
+ class BodyState(AbstractState):

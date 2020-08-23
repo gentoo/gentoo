@@ -6,7 +6,7 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Ultimate Packer for eXecutables (free version using UCL compression and not NRV)"
-HOMEPAGE="http://upx.github.io/"
+HOMEPAGE="https://upx.github.io/"
 SRC_URI="https://github.com/upx/upx/releases/download/v${PV}/${P}-src.tar.xz"
 
 LICENSE="GPL-2+ UPX-exception" # Read the exception before applying any patches

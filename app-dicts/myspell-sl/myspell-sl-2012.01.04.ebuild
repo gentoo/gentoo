@@ -20,10 +20,10 @@ MYSPELL_THES=(
 inherit myspell-r2
 
 DESCRIPTION="Slovenian dictionaries for myspell/hunspell"
-HOMEPAGE="http://extensions.libreoffice.org/extension-center/slovenian-dictionary-pack"
-SRC_URI="http://extensions.libreoffice.org/extension-center/slovenian-dictionary-pack/releases/${PV}/pack-sl.oxt"
+HOMEPAGE="https://extensions.libreoffice.org/extension-center/slovenian-dictionary-pack"
+SRC_URI="https://extensions.libreoffice.org/extension-center/slovenian-dictionary-pack/releases/${PV}/pack-sl.oxt"
 
 LICENSE="GPL-3 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE=""

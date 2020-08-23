@@ -1,0 +1,11 @@
+--- a/test.pl
++++ b/test.pl
+@@ -120,7 +120,7 @@
+     return;
+ }
+ 
+-do "nkf_test.pl";
++do "./nkf_test.pl";
+ unlink "nkf.in";
+ unlink "nkf.out";
+ 

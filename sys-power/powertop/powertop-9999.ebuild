@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,8 @@ DEPEND="
 
 BDEPEND="
 	virtual/pkgconfig
-	sys-devel/gettext
+	sys-devel/autoconf-archive
+	>=sys-devel/gettext-0.20.2
 "
 RDEPEND="
 	${DEPEND}
@@ -100,10 +101,7 @@ src_prepare() {
 	default
 
 	# Bug 599114
-	sed -i '1s|^|AX_REQUIRE_DEFINED([AX_CXX_COMPILE_STDCXX_11])|' configure.ac || die
-
-	chmod +x scripts/version || die "Failed to make 'scripts/version' executable"
-	scripts/version || die "Failed to extract version information"
+	sed -i '1s|^|AX_REQUIRE_DEFINED([AX_CXX_COMPILE_STDCXX])|' configure.ac || die
 
 	eautoreconf
 }

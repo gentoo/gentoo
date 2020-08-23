@@ -7,7 +7,7 @@ inherit xorg-2
 
 DESCRIPTION="round X clock"
 
-KEYWORDS="~alpha amd64 arm ~ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext

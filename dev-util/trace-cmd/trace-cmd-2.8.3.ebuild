@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git/snapshot/${PN}-v${PV}.tar.gz"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~x86"
 	S="${WORKDIR}/${PN}-v${PV}"
 fi
 
@@ -44,6 +44,7 @@ CONFIG_CHECK="
 PATCHES=(
 	"${FILESDIR}/trace-cmd-2.8-python-pkgconfig-name.patch"
 	"${FILESDIR}/trace-cmd-2.8.3-soname.patch"
+	"${FILESDIR}/trace-cmd-2.8.3-gcc10.patch"
 )
 
 pkg_setup() {
@@ -77,7 +78,7 @@ src_compile() {
 
 python_compile() {
 	pushd "${BUILD_DIR}" > /dev/null || die
-	python_is_python3 && eapply "${FILESDIR}/trace-cmd-2.8.3-python3-warnings.patch"
+	eapply "${FILESDIR}/trace-cmd-2.8.3-python3-warnings.patch"
 
 	emake "${EMAKE_FLAGS[@]}" \
 		PYTHON_VERS="${EPYTHON}" \
@@ -107,4 +108,6 @@ python_install() {
 		install_python
 
 	popd > /dev/null || die
+
+	python_optimize
 }

@@ -9,12 +9,12 @@ CABAL_FEATURES="bin test-suite"
 inherit autotools haskell-cabal
 
 DESCRIPTION="Alex is a tool for generating lexical analysers in Haskell"
-HOMEPAGE="http://www.haskell.org/alex/"
+HOMEPAGE="https://www.haskell.org/alex/"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 RDEPEND=""

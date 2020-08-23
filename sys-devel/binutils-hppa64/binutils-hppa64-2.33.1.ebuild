@@ -44,7 +44,7 @@ case ${PV} in
 	*)
 		SRC_URI="mirror://gnu/binutils/binutils-${PV}.tar.xz"
 		SLOT=$(ver_cut 1-2)
-		KEYWORDS="-* ~hppa"
+		KEYWORDS="-* hppa"
 		;;
 esac
 

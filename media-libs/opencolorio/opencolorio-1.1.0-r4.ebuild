@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 inherit cmake flag-o-matic python-single-r1
 
 DESCRIPTION="A color management framework for visual effects and animation"
-HOMEPAGE="http://opencolorio.org/"
+HOMEPAGE="https://opencolorio.org/"
 
 SRC_URI="https://github.com/imageworks/OpenColorIO/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -88,7 +88,7 @@ src_configure() {
 		-DOCIO_BUILD_PYGLUE=$(usex python)
 		-DOCIO_USE_SSE=$(usex cpu_flags_x86_sse2)
 		-DOCIO_BUILD_TESTS=$(usex test)
-		-DCMAKE_DISABLE_FIND_PACKAGE_LATEX=ON # They don't build
 	)
+	use doc && mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_LATEX=ON ) # broken
 	cmake_src_configure
 }

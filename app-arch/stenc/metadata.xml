@@ -6,8 +6,8 @@
 		<name>Jonas Stein</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>mailto:jcoleman1981@live.com</bugs-to>
-		<remote-id type="sourceforge">stenc</remote-id>
+		<bugs-to>https://github.com/scsitape/stenc/issues</bugs-to>
+		<remote-id type="github">scsitape/stenc</remote-id>
 	</upstream>
 	<longdescription>SCSI Tape Encryption Manager - Manages encryption on LTO 
 		tape drives with hardware-based encryption (LTO-4 and later).

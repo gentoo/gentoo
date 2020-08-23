@@ -11,7 +11,7 @@ SRC_URI="https://github.com/dstosberg/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ia64 ppc64 ~sparc x86 ~x86-macos"
+KEYWORDS="~alpha amd64 ~ia64 ppc64 ~sparc x86 ~x86-macos"
 IUSE=""
 
 RDEPEND="

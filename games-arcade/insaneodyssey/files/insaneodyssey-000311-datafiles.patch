@@ -1,5 +1,5 @@
---- a/io.cpp.orig	2004-06-01 19:11:16.000000000 +0300
-+++ b/io.cpp	2004-06-01 19:21:14.000000000 +0300
+--- a/insaneodyssey/io.cpp
++++ b/insaneodyssey/io.cpp
 @@ -42,7 +42,11 @@
  {
  	SDL_Surface *image, *surface;

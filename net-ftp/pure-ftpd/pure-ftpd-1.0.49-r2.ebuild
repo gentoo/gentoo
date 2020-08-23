@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic
+inherit autotools flag-o-matic
 
 DESCRIPTION="Fast, production-quality, standard-conformant FTP server"
 HOMEPAGE="http://www.pureftpd.org/"
@@ -13,7 +13,7 @@ if [[ "${PV}" == 9999 ]] ; then
 else
 	SRC_URI="ftp://ftp.pureftpd.org/pub/${PN}/releases/${P}.tar.bz2
 		http://download.pureftpd.org/pub/${PN}/releases/${P}.tar.bz2"
-	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 sparc x86"
+	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 fi
 
 LICENSE="BSD"
@@ -49,11 +49,14 @@ PATCHES=(
 	# https://bugs.gentoo.org/711124
 	"${FILESDIR}/${P}-diraliases_uninitialized_pointer.patch"
 	"${FILESDIR}/${P}-pure_strcmp_OOB_read.patch"
+
+	# https://bugs.gentoo.org/721242
+	"${FILESDIR}/${P}-do-not-call-ar-directly.patch"
 )
 
 src_prepare() {
 	default
-	[[ "${PV}" == 9999 ]] && eautoreconf
+	eautoreconf
 }
 
 src_configure() {

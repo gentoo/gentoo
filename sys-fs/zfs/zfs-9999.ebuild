@@ -6,22 +6,22 @@ EAPI=7
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit bash-completion-r1 flag-o-matic linux-info distutils-r1 systemd toolchain-funcs udev usr-ldscript
+inherit autotools bash-completion-r1 distutils-r1 flag-o-matic linux-info pam systemd toolchain-funcs udev usr-ldscript
 
 DESCRIPTION="Userland utilities for ZFS Linux kernel module"
-HOMEPAGE="https://zfsonlinux.org/"
+HOMEPAGE="https://github.com/openzfs/zfs"
 
 if [[ ${PV} == "9999" ]] ; then
-	inherit autotools git-r3 linux-mod
-	EGIT_REPO_URI="https://github.com/zfsonlinux/zfs.git"
+	inherit git-r3 linux-mod
+	EGIT_REPO_URI="https://github.com/openzfs/zfs.git"
 else
-	SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz"
+	SRC_URI="https://github.com/openzfs/${PN}/releases/download/${P}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64"
 fi
 
 LICENSE="BSD-2 CDDL MIT"
 SLOT="0"
-IUSE="custom-cflags debug kernel-builtin libressl python +rootfs test-suite static-libs"
+IUSE="custom-cflags debug kernel-builtin libressl pam python +rootfs test-suite static-libs"
 
 DEPEND="
 	${PYTHON_DEPS}
@@ -32,6 +32,7 @@ DEPEND="
 	virtual/libudev[static-libs(-)?]
 	libressl? ( dev-libs/libressl:0=[static-libs?] )
 	!libressl? ( dev-libs/openssl:0=[static-libs?] )
+	pam? ( sys-libs/pam )
 	python? (
 		virtual/python-cffi[${PYTHON_USEDEP}]
 	)
@@ -54,13 +55,13 @@ RDEPEND="${DEPEND}
 		!<sys-kernel/genkernel-3.5.1.1
 	)
 	test-suite? (
+		sys-apps/kmod[tools]
 		sys-apps/util-linux
 		sys-devel/bc
 		sys-block/parted
 		sys-fs/lsscsi
 		sys-fs/mdadm
 		sys-process/procps
-		virtual/modutils
 	)
 "
 
@@ -110,7 +111,7 @@ src_prepare() {
 
 	# prevent errors showing up on zfs-mount stop, #647688
 	# openrc will unmount all filesystems anyway.
-	sed -i "/^ZFS_UNMOUNT=/ s/yes/no/" etc/default/zfs.in || die
+	sed -i "/^ZFS_UNMOUNT=/ s/yes/no/" "etc/default/zfs.in" || die
 }
 
 src_configure() {
@@ -129,10 +130,13 @@ src_configure() {
 		--with-linux="${KV_DIR}"
 		--with-linux-obj="${KV_OUT_DIR}"
 		--with-udevdir="$(get_udevdir)"
+		--with-pamconfigsdir="${EPREFIX}/unwanted_debian_files"
+		--with-pammoduledir="$(getpam_mod_dir)"
 		--with-python="${EPYTHON}"
 		--with-systemdunitdir="$(systemd_get_systemunitdir)"
 		--with-systemdpresetdir="${EPREFIX}/lib/systemd/system-preset"
 		$(use_enable debug)
+		$(use_enable pam)
 		$(use_enable python pyzfs)
 		$(use_enable static-libs static)
 	)
@@ -154,7 +158,9 @@ src_install() {
 
 	gen_usr_ldscript -a uutil nvpair zpool zfs zfs_core
 
-	use test-suite || rm -rf "${ED}/usr/share/zfs"
+	use pam && { rm -rv "${ED}/unwanted_debian_files" || die ; }
+
+	use test-suite || { rm -r "${ED}/usr/share/zfs" || die ; }
 
 	if ! use static-libs; then
 		find "${ED}/" -name '*.la' -delete || die
@@ -183,12 +189,6 @@ pkg_postinst() {
 			elog "the following packages known to provide one and tested on regular basis:"
 			elog "  sys-kernel/dracut"
 			elog "  sys-kernel/genkernel"
-		fi
-
-		if has_version "<=sys-kernel/genkernel-3.5.3.3"; then
-			einfo "genkernel version 3.5.3.3 and earlier does NOT support"
-			einfo " unlocking pools with native zfs encryption enabled at boot"
-			einfo " use dracut or >=genkernel-4 if you requre this functionality"
 		fi
 	fi
 

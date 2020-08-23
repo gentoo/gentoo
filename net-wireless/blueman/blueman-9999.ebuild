@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..8} )
 inherit autotools gnome2-utils linux-info python-single-r1 systemd xdg-utils
 
 DESCRIPTION="Simple and intuitive GTK+ Bluetooth Manager"
@@ -69,7 +69,6 @@ RDEPEND="${DEPEND}
 			media-sound/pulseaudio-modules-bt
 		)
 	)
-	!net-wireless/gnome-bluetooth
 "
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

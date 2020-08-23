@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit python-single-r1 xdg-utils
 
 DESCRIPTION="A library for manipulating block devices"
@@ -96,18 +96,9 @@ src_configure() {
 		$(use_with lvm lvm-dbus)
 		$(use_with tools)
 		$(use_with vdo)
+		--without-python2
+		--with-python3
 	)
-	if python_is_python3 ; then
-		myeconfargs+=(
-			--without-python2
-			--with-python3
-		)
-	else
-		myeconfargs+=(
-			--with-python2
-			--without-python3
-		)
-	fi
 	econf "${myeconfargs[@]}"
 }
 
@@ -119,4 +110,5 @@ src_install() {
 	if ! use lvm; then
 		rm -f "${ED}"/usr/bin/lvm-cache-stats || die
 	fi
+	python_optimize #718576
 }

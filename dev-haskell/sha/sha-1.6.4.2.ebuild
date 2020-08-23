@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,12 +13,12 @@ MY_PN="SHA"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Implementations of the SHA suite of message digest functions"
-HOMEPAGE="http://hackage.haskell.org/package/SHA"
+HOMEPAGE="https://hackage.haskell.org/package/SHA"
 SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 x86 ~amd64-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux"
 IUSE="exe"
 
 RESTRICT=test # fails to build on ghc-7.6, https://ghc.haskell.org/trac/ghc/ticket/8657

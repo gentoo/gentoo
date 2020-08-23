@@ -1,6 +1,64 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner <mattst88@gentoo.org> (2020-08-11)
+# No drivers on this architecture support Vulkan
+media-libs/mesa vulkan vulkan-overlay zink
+
+# Mart Raudsepp <leio@gentoo.org> (2020-08-02)
+# alpha has no virtual/rust support, needed by newer gnome-base/librsvg, et al
+>=media-gfx/eog-3.33.1 svg
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-07-18)
+# net-libs/webkit-gtk has no alpha keywords
+app-editors/emacs xwidgets
+gnome-extra/evolution-data-server oauth
+# needs mail-client/evolution, depends on net-libs/webkit-gtk
+app-office/planner eds
+# needs gnome-extra/sushi, depends on net-libs/webkit-gtk
+gnome-base/nautilus previewer
+# needs libgdata[gnome-online-accounts], depends on net-libs/webkit-gtk
+gnome-base/gvfs google
+
+# Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
+# Mask io-uring & zbc pending keywording
+sys-block/fio -io-uring zbc
+
+# Michał Górny <mgorny@gentoo.org> (2020-06-14)
+# Requires dev-python/networkx.
+app-portage/nattka depgraph-order
+
+# Matt Turner <mattst88@gentoo.org> (2020-06-09)
+# Requires unsupported dev-python/eventlet and fails tests with gevent
+dev-python/socketpool eventlet gevent
+
+# Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
+# clisp is keyworded on alpha
+app-text/texlive-core -xindy
+
+# Michał Górny <mgorny@gentoo.org> (2020-06-02)
+# Avoid unkeyworded deps, we really need a minimal install
+# for imagemagick.
+media-gfx/inkscape cdr visio
+
+# Mart Raudsepp <leio@gentoo.org> (2020-04-25)
+# gnome-base/gnome-shell not keyworded on alpha
+# anymore, bug #677176
+x11-terms/gnome-terminal gnome-shell
+
+# Mart Raudsepp <leio@gentoo.org> (2020-04-25)
+# gnome-base/gnome-control-center not keyworded on alpha
+# anymore, bug #692802
+net-libs/gnome-online-accounts gnome
+
+# James Le Cuirot <chewi@gentoo.org> (2020-04-23)
+# Requires media-libs/mesa[llvm], which is masked.
+dev-python/pyopengl test
+
+# Lars Wendler <polynomial-c@gentoo.org> (2020-04-20)
+# Not keyworded on alpha
+net-misc/whois xcrypt
+
 # Matt Turner <mattst88@gentoo.org> (2020-03-17)
 # Requires an insane (and always growing) number of ruby deps
 sys-block/thin-provisioning-tools test
@@ -17,11 +75,6 @@ media-tv/v4l-utils bpf
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
 # Mask until dev-libs/libfido2 is keyworded
 net-misc/openssh security-key
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-02)
-# net-libs/libgadu is not keyworded
-net-im/pidgin gadu
-net-im/telepathy-connection-managers gadu
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
 # media-libs/libheif is not keyworded
@@ -87,7 +140,6 @@ app-metrics/collectd collectd_plugins_onewire
 app-metrics/collectd collectd_plugins_oracle
 app-metrics/collectd collectd_plugins_routeros
 app-metrics/collectd collectd_plugins_sigrok
-app-metrics/collectd collectd_plugins_tokyotyrant
 app-metrics/collectd collectd_plugins_varnish
 app-metrics/collectd collectd_plugins_virt
 app-metrics/collectd collectd_plugins_write_kafka
@@ -108,10 +160,6 @@ dev-db/mariadb numa
 >=gnome-base/gnome-settings-daemon-3.24 test
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan vulkan-overlay
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=seccomp that is masked in this profile.
 net-libs/gnutls test-full
 
@@ -123,11 +171,6 @@ media-sound/pulseaudio native-headset
 # Upstream Git is switching to PCRE2 w/ JIT.
 # This is not available on some arches, where a fallback to PCRE1 without JIT is used.
 dev-vcs/git pcre-jit
-
-# Fabian Groffen <grobian@gentoo.org> (2017-06-15)
-# net-mail/notmuch is not keyworded, and holds back stabilisation, see
-# bug https://bugs.gentoo.org/show_bug.cgi?id=604902
-mail-client/mutt notmuch
 
 # Tobias Klausmann <klausman@gentoo.org> (2017-05-18)
 # Stack protector code is not ported to alpha (and may not ever be)
@@ -185,9 +228,8 @@ net-mail/notmuch test
 app-admin/conky cmus irc
 
 # Tobias Klausmann <klausman@gentoo.org> (2016-06-07)
-# the nvidia SDK needs nvidia-drivers and thus can never work on alpha
-# Likewise, nasm is x86/x86-64 only
-media-video/ffmpeg nvenc openh264
+# nasm is x86/x86-64 only
+media-video/ffmpeg openh264
 
 # Tobias Klausmann <klausman@gentoo.org> (2016-02-04)
 # sys-cluster/ceph is not broken per se, but a maintenance burden.
@@ -213,10 +255,6 @@ media-sound/rhythmbox upnp-av
 # Tests require non-keyworded qt5
 dev-qt/qtchooser test
 
-# Justin Lecher <jlec@gentoo.org> (2015-10-14)
-# Requires dev-python/ipython which triggers a long dep chain
-dev-python/restkit cli
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2015-09-10)
 # Requires wifi USE flag, which is masked for this arch
 net-misc/networkmanager wext
@@ -232,10 +270,6 @@ dev-libs/libpeas lua
 # Michał Górny <mgorny@gentoo.org> (2015-02-22)
 # Dependency not keyworded for some reason.
 media-libs/gegl umfpack
-
-# Patrick Lauer <patrick@gentoo.org> (2015-02-10)
-# Missing keywords for media-libs/x265
-media-video/libav x265
 
 # Johannes Huber <johu@gentoo.org> (2015-01-28)
 # Missing keyword on dev-libs/botan
@@ -255,7 +289,6 @@ dev-haskell/vector test
 
 # Tobias Klausmann <klausman@gentoo.org> (2014-11-20)
 # OpenCV likely will never work on Alpha
-media-video/vlc opencv
 media-gfx/shotwell opencv
 
 # Tobias Klausmann <klausman@gentoo.org> (2014-10-11)
@@ -332,10 +365,6 @@ media-libs/phonon gstreamer vlc
 # remove mask when dev-java/fop is keyworded here
 gnome-extra/libgda reports
 
-# Luca Barbato <lu_zero@gentoo.org> (2012-11-11)
-# Libav 9 can use fdk-aac
->=media-video/libav-9_beta2 fdk
-
 # Robin H Johnson <robbat2@gentoo.org> (2012-11-01)
 # MySQL 5.5 wants systemtap, tcmalloc & jemalloc
 >=dev-db/mysql-5.5 tcmalloc
@@ -371,10 +400,6 @@ media-plugins/gst-plugins-meta dts libvisual
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2010-12-17)
 # needs sys-libs/libcap-ng that is masked right now
 sys-apps/smartmontools caps
-
-# Justin Lecher <jlec@gentoo.org> (2010-08-13)
-# MKL not available on this arch, 
-media-gfx/povray mkl 
 
 # Raúl Porcel <armin76@gentoo.org> (2010-06-26)
 # custom-optimization doesn't work on alpha

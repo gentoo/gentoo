@@ -72,11 +72,11 @@ xpi_install() {
 	#cd ${x}
 	# determine id for extension
 	if [[ -f "${x}"/install.rdf ]]; then
-	emid="$(sed -n -e '/install-manifest/,$ { /em:id/!d; s/.*[\">]\([^\"<>]*\)[\"<].*/\1/; p; q }' "${x}"/install.rdf)" \
-		|| die "failed to determine extension id from install.rdf"
+		emid="$(sed -n -e '/install-manifest/,$ { /em:id/!d; s/.*[\">]\([^\"<>]*\)[\"<].*/\1/; p; q }' "${x}"/install.rdf)"
+		[[ -z "${emid}" ]] && die "failed to determine extension id from install.rdf"
 	elif [[ -f "${x}"/manifest.json ]]; then
-		emid="$( sed -n 's/.*"id": "\(.*\)",/\1/p' "${x}"/manifest.json )" \
-			|| die "failed to determine extension id from manifest.json"
+		emid="$( sed -n 's/.*"id": "\(.*\)".*/\1/p' "${x}"/manifest.json )"
+		[[ -z "${emid}" ]] && die "failed to determine extension id from manifest.json"
 	else
 		die "failed to determine extension id"
 	fi
@@ -101,11 +101,11 @@ xpi_copy() {
 	#cd ${x}
 	# determine id for extension
 	if [[ -f "${x}"/install.rdf ]]; then
-	emid="$(sed -n -e '/install-manifest/,$ { /em:id/!d; s/.*[\">]\([^\"<>]*\)[\"<].*/\1/; p; q }' "${x}"/install.rdf)" \
-		|| die "failed to determine extension id from install.rdf"
+		emid="$(sed -n -e '/install-manifest/,$ { /em:id/!d; s/.*[\">]\([^\"<>]*\)[\"<].*/\1/; p; q }' "${x}"/install.rdf)"
+		[[ -z "${emid}" ]] && die "failed to determine extension id from install.rdf"
 	elif [[ -f "${x}"/manifest.json ]]; then
-		emid="$( sed -n 's/.*"id": "\([^"]*\)",.*/\1/p' "${x}"/manifest.json )" \
-			|| die "failed to determine extension id from manifest.json"
+		emid="$(sed -n 's/.*"id": "\([^"]*\)".*/\1/p' "${x}"/manifest.json)"
+		[[ -z "${emid}" ]] && die "failed to determine extension id from manifest.json"
 	else
 		die "failed to determine extension id"
 	fi

@@ -11,7 +11,7 @@ SRC_URI="https://www.ohse.de/uwe/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="nls"
 
 DEPEND="nls? ( virtual/libintl )"
@@ -22,6 +22,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-automake-1.12.patch
 	"${FILESDIR}"/${P}-automake-1.13.patch
 	"${FILESDIR}"/${P}-gettext-0.20.patch
+	"${FILESDIR}"/${P}-AR.patch
 )
 
 DOCS=( AUTHORS COMPATABILITY ChangeLog NEWS \

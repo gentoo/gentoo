@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 COMMIT=777b31219179b43f56c7b95857d2fbd7f33199aa
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 
 DESCRIPTION="Multi-source social music player"
 HOMEPAGE="https://github.com/tomahawk-player/tomahawk"
@@ -15,7 +15,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="telepathy xmpp"
 
+BDEPEND="
+	dev-qt/linguist-tools:5
+"
 COMMON_DEPEND="
+	app-crypt/qca:2[qt5(+)]
+	dev-cpp/lucene++
+	dev-cpp/sparsehash
+	dev-libs/boost:=
+	dev-libs/qtkeychain:=[qt5(+)]
+	>=dev-libs/quazip-0.7.2[qt5(+)]
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
@@ -26,12 +35,6 @@ COMMON_DEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
-	app-crypt/qca:2[qt5(+)]
-	dev-cpp/lucene++
-	dev-cpp/sparsehash
-	dev-libs/boost:=
-	dev-libs/qtkeychain:=[qt5(+)]
-	>=dev-libs/quazip-0.7.2[qt5(+)]
 	kde-frameworks/extra-cmake-modules:5
 	kde-frameworks/attica:5
 	>=media-libs/liblastfm-1.1.0_pre20150206
@@ -44,7 +47,6 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	dev-qt/designer:5
-	dev-qt/linguist-tools:5
 	dev-qt/qtconcurrent:5
 "
 RDEPEND="${COMMON_DEPEND}
@@ -56,6 +58,8 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 PATCHES=(
 	"${FILESDIR}/${P}-fix-warning.patch"
 	"${FILESDIR}/${P}-cmakepolicy.patch" # bug 674826
+	"${FILESDIR}/${P}-qt-5.15.patch" # git master
+	"${FILESDIR}/${P}-findtaglib.patch" # pending upstream
 )
 
 src_configure() {
@@ -70,7 +74,7 @@ src_configure() {
 
 	[[ ${PV} != *9999* ]] && mycmakeargs+=( -DBUILD_RELEASE=ON )
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {

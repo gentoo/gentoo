@@ -4,6 +4,72 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Matt Turner <mattst88@gentoo.org> (2020-08-11)
+# No drivers on this architecture support Vulkan
+media-libs/mesa vulkan vulkan-overlay zink
+
+# Felix Janda <felix.janda@posteo.de> (2020-08-01)
+# Requires masked dev-lang/spidermonkey:17
+>=www-client/elinks-0.13.3 javascript
+
+# Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
+# Mask io-uring & zbc pending keywording
+sys-block/fio -io-uring zbc
+
+# Michał Górny <mgorny@gentoo.org> (2020-06-14)
+# Requires dev-python/networkx.
+app-portage/nattka depgraph-order
+
+# Michał Górny <mgorny@gentoo.org> (2020-05-03)
+# Requires unsupported dev-python/gevent.
+dev-python/socketpool eventlet gevent
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-25)
+# dependencies not yet keyworded
+dev-ruby/activemodel test
+dev-ruby/activerecord test
+dev-ruby/activesupport test
+
+# James Le Cuirot <chewi@gentoo.org> (2020-04-23)
+# Requires media-libs/mesa[llvm], which is masked.
+dev-python/pyopengl test
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-22)
+# dev-python/pip not keyworded yet, bug #700918
+dev-python/virtualenv test
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-22)
+# dev-libs/criterion not yet keyworded
+>=app-admin/syslog-ng-3.25 test
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-20)
+# Not keyworded on hppa
+net-misc/whois xcrypt
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-18)
+# nagios and icinga not stable on hppa
+sys-libs/freeipmi nagios
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-15)
+# media-libs/kate not keyworded on hppa
+media-sound/vorbis-tools kate
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
+# dependencies not keyworded
+media-video/ffmpeg dav1d libaribb24 libtesseract vidstab
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
+# media-gfx/nvidia-texture-tools, media-libs/allegro not keyworded on hppa
+media-libs/devil allegro nvtt
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-09)
+# dependencies not keyworded
+dev-python/stevedore doc
+
+# Matt Turner <mattst88@gentoo.org> (2020-04-03)
+# app-emacs/wanderlust is not keyworded
+app-emacs/elscreen wanderlust
+
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
 # Mask until dev-libs/libfido2 is keyworded
 net-misc/openssh security-key
@@ -11,10 +77,6 @@ net-misc/openssh security-key
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-02)
 # net-libs/libgadu is not keyworded
 net-im/pidgin gadu
-
-# Joonas Niilola <juippis@gentoo.org> (2020-02-02)
-# luajit is not keyworded on this arch.
-dev-libs/efl luajit
 
 # Jeroen Roovers <jer@gentoo.org> (2020-01-28)
 # sys-apps/systemd is not stable
@@ -81,10 +143,6 @@ sys-libs/glibc systemtap
 app-forensics/sleuthkit java
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan vulkan-overlay
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=redis that is masked in this profile.
 mail-filter/pyzor test
 
@@ -111,10 +169,6 @@ app-shells/bash-completion test
 # media-libs/zimg triggers a toolchain issue (bug #597152)
 media-video/ffmpeg libilbc zimg
 
-# Jeroen Roovers <jer@gentoo.org> (2017-02-03)
-# net-mail/notmuch is not keyworded
-mail-client/mutt notmuch
-
 # Justin Lecher <jlec@gentoo.org> (2017-01-15)
 # unkeyworded rev deps
 dev-games/openscenegraph gdal las
@@ -130,11 +184,6 @@ kde-frameworks/extra-cmake-modules doc
 # Jeroen Roovers <jer@gentoo.org> (2016-05-19)
 # pulls in many dev-ruby/asciidoctor dependencies (bug #583390)
 net-misc/chrony html
-
-# Jeroen Roovers <jer@gentoo.org> (2015-08-16)
-# Bundles luajit which has not been ported to HPPA (bug #554376)
-app-text/texlive-core luajittex
-dev-texlive/texlive-basic luajittex
 
 # Jeroen Roovers <jer@gentoo.org> (2015-07-03)
 # net-libs/nghttp2 fails to compile (bug #552898)
@@ -238,10 +287,6 @@ app-office/lyx gnumeric
 # Needs Java (bug #355353)
 app-text/texlive pdfannotextractor
 
-# Justin Lecher <jlec@gentoo.org> (2010-08-13)
-# MKL not available on this arch
-media-gfx/povray mkl
-
 # Pacho Ramos <pacho@gentoo.org> (2010-07-11)
 # Mask due bug #324511, this will be general once needed by more packages.
 net-im/pidgin gstreamer
@@ -259,10 +304,6 @@ media-sound/mpd fluidsynth
 # cpudetection and custom-cpuopts does not apply
 # to HPPA (bug #234629)
 media-video/mplayer cpudetection
-
-# Jeroen Roovers <jer@gentoo.org> (2008-09-16)
-# app-text/xindy needs dev-lisp/clisp and clisp does not build (bug #229217)
-app-text/texlive xindy
 
 # Mart Raudsepp <leio@gentoo.org> (2008-04-02)
 # media-plugins/gst-plugins-{dvb,fluendo-mpegdemux,bad} not keyworded

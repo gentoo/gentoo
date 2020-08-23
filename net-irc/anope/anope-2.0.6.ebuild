@@ -38,7 +38,7 @@ DEPEND="${BDEPEND}
 	tre? ( dev-libs/tre )"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/pid-patch.patch" )
+PATCHES=( "${FILESDIR}/anope-2.0.6-example.conf-pid-path.patch" )
 
 S="${WORKDIR}/${P}-source"
 

@@ -1,0 +1,25 @@
+From 96dd5b512e7761626b6924df471bfec50983eeb7 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Thu, 14 May 2020 02:39:16 +1200
+Subject: Abort with a non-zero exit code
+
+---
+ Makefile.PL | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index d7a6d49..8960261 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -99,7 +99,7 @@ my %cairo_cfg;
+ eval { %cairo_cfg = ExtUtils::PkgConfig->find ("cairo >= $extreqs{cairo}"); };
+ if ($@ ne '') {
+ 	warn $@;
+-	exit 0;
++	exit 1;
+ }
+ 
+ my %objects = (
+-- 
+2.26.2
+

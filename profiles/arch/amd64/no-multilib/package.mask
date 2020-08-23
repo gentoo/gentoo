@@ -19,13 +19,11 @@ mail-client/novell-groupwise-client
 
 # AMD64 Team <amd64@gentoo.org>
 # Mask packages that rely on amd64 multilib
->=app-i18n/atokx3-3.0.0
 app-accessibility/mbrola
 app-arch/stuffit
 app-benchmarks/cpuburn
 app-editors/emacs:18
 app-emulation/crossover-bin
-app-emulation/playonlinux
 app-emulation/protontricks
 app-emulation/q4wine
 app-emulation/winetricks
@@ -38,7 +36,6 @@ games-action/badland
 games-action/beathazardultra
 games-action/brutal-legend
 games-action/crimsonland
-games-action/cs2d
 games-action/descent3
 games-action/descent3-demo
 games-action/guacamelee
@@ -47,7 +44,6 @@ games-action/heretic2-demo
 games-action/hotline-miami
 games-action/intrusion2
 games-action/lugaru
-games-action/rune
 games-action/shadowgrounds-bin
 games-action/shadowgrounds-survivor-bin
 games-action/solar2

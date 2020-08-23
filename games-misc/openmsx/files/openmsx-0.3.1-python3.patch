@@ -1,4 +1,4 @@
-From 7b298b1bacc56392b9a19ba6b95d368309832ad7 Mon Sep 17 00:00:00 2001
+From 5857a22e79dc77c9b571297451dc11c4a68bc198 Mon Sep 17 00:00:00 2001
 From: Stefan Strogin <steils@gentoo.org>
 Date: Fri, 7 Feb 2020 13:15:16 +0200
 Subject: [PATCH] Fix: support Python 3
@@ -47,7 +47,7 @@ index 689ddb9..e041d64 100755
 +		sys.stdout.flush()
 +		break
 diff --git a/scripts/md5list.py b/scripts/md5list.py
-index cf611fc..a60f977 100755
+index cf611fc..781052e 100755
 --- a/scripts/md5list.py
 +++ b/scripts/md5list.py
 @@ -16,28 +16,28 @@ import subprocess
@@ -89,7 +89,7 @@ index cf611fc..a60f977 100755
 +		md5call = md5call + ["src/"+separate[1].strip()]
 +		md5sum = subprocess.Popen(md5call, stdout=subprocess.PIPE).communicate()[0]
 +		md5sum = md5sum.split()
-+		res = "%-32s = %s\n" % (separate[1], md5sum[0])
++		res = "%-32s = %s\n" % (separate[1], md5sum[0].decode())
 +		sys.stdout.write(res)
  	else:
 -		md5call = ["md5sum"]
@@ -302,5 +302,5 @@ index f97709a..5368831 100755
 \ No newline at end of file
 +		print(str.strip())
 -- 
-2.25.0
+2.27.0
 

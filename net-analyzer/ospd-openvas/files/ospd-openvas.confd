@@ -1,0 +1,10 @@
+# OpenVAS Scanner command args
+
+# e.g --foreground
+OSPD_OPENVAS_OPTIONS=""
+
+# Scanner listen socket
+OSPD_OPENVAS_UNIX_SOCKET="--unix-socket=/tmp/ospd.sock"
+
+# Scanner listen mode
+OSPD_OPENVAS_SOCKET_MODE="--socket-mode=0o777"

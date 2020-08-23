@@ -7,11 +7,13 @@ inherit autotools xdg
 
 DESCRIPTION="Fully featured yet light and fast cross platform word processor"
 HOMEPAGE="http://www.abisource.com/"
-SRC_URI="http://www.abisource.com/downloads/${PN}/${PV}/source/${P}.tar.gz"
+SRC_URI="
+	http://www.abisource.com/downloads/${PN}/${PV}/source/${P}.tar.gz
+	https://dev.gentoo.org/~soap/distfiles/${P}-patchset-r2.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips x86 ~amd64-linux ~x86-linux"
 IUSE="calendar collab cups debug eds +goffice grammar +introspection latex map math ots +plugins readline redland spell wordperfect wmf thesaurus"
 # You need 'plugins' enabled if want to enable the extra plugins
 REQUIRED_USE="!plugins? ( !collab !grammar !latex !math !ots !readline !thesaurus !wordperfect !wmf )"
@@ -65,9 +67,13 @@ BDEPEND="
 	virtual/pkgconfig"
 
 PATCHES=(
-	# Backport of hard dep on enchant-2
-	# https://gitlab.gnome.org/World/AbiWord/commit/ae05e92df5a5d6151641622c83d35a6fdba47b1f
-	"${FILESDIR}"/${P}-enchant-2.patch
+	"${WORKDIR}"/patches/${PN}-2.6.0-boolean.patch
+	"${WORKDIR}"/patches/${PN}-2.8.3-desktop.patch
+	"${WORKDIR}"/patches/${PN}-3.0.0-librevenge.patch
+	"${WORKDIR}"/patches/${PN}-3.0.2-explicit-python.patch
+	"${WORKDIR}"/patches/${PN}-3.0.4-enchant-2.patch # backport
+	"${WORKDIR}"/patches/${PN}-3.0.4-pygobject.patch
+	"${WORKDIR}"/patches/${PN}-3.0.4-asio-standalone-placeholders.patch
 )
 
 src_prepare() {

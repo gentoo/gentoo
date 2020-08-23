@@ -1,0 +1,25 @@
+From 8fb95a5dba51fbfcd37db10da4db69d518f7b0f4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fran=C3=A7ois=20Bissey?= <frp.bissey@gmail.com>
+Date: Fri, 24 Apr 2020 14:10:05 +1200
+Subject: [PATCH] Remove @LINBOX_SAGE@ from linbox.pc.in. linbox_sage is gone
+ and the string stays as garbage in the final .pc file.
+
+---
+ linbox.pc.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/linbox.pc.in b/linbox.pc.in
+index f54285e..1f83834 100644
+--- a/linbox.pc.in
++++ b/linbox.pc.in
+@@ -9,6 +9,6 @@ Description: Exact Linear Algebra library
+ URL: http://github.com/linbox-team/linbox
+ Version: @VERSION@
+ Requires: fflas-ffpack >= 2.4.0, givaro >= 4.1.0
+-Libs: -L${libdir} -llinbox @LINBOXSAGE_LIBS@ @NTL_LIBS@ @MPFR_LIBS@ @FPLLL_LIBS@ @IML_LIBS@ @FLINT_LIBS@ @OCL_LIBS@
++Libs: -L${libdir} -llinbox @NTL_LIBS@ @MPFR_LIBS@ @FPLLL_LIBS@ @IML_LIBS@ @FLINT_LIBS@ @OCL_LIBS@
+ Cflags: @DEFAULT_CFLAGS@ -DDISABLE_COMMENTATOR -I${includedir} @NTL_CFLAGS@ @MPFR_CFLAGS@ @FPLLL_CFLAGS@  @IML_CFLAGS@ @FLINT_CFLAGS@ 
+ \-------------------------------------------------------
+-- 
+2.26.2
+

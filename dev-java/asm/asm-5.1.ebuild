@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ SRC_URI="http://download.forge.objectweb.org/${PN}/${P}.tar.gz
 LICENSE="BSD"
 SLOT="4"
 IUSE=""
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86 ~x64-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x64-macos"
 
 DEPEND=">=virtual/jdk-1.6"
 RDEPEND=">=virtual/jre-1.6"

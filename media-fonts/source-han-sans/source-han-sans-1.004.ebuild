@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,13 +18,15 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x64-macos"
 IUSE="l10n_ja l10n_ko +l10n_zh-CN l10n_zh-TW"
 REQUIRED_USE="|| ( l10n_ja l10n_ko l10n_zh-CN l10n_zh-TW )"
 
 S=${WORKDIR}
 FONT_SUFFIX="otf"
 RESTRICT="binchecks strip"
+
+DEPEND="app-arch/unzip"
 
 src_install() {
 	use l10n_ja && FONT_S="${S}/SourceHanSansJP" font_src_install

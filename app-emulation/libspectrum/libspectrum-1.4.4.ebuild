@@ -1,7 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
+inherit autotools
 
 DESCRIPTION="Spectrum emulation library"
 HOMEPAGE="http://fuse-emulator.sourceforge.net/libspectrum.php"
@@ -21,8 +23,18 @@ DEPEND="${RDEPEND}
 	dev-lang/perl
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/remove-local-prefix.patch
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
+
 src_configure() {
 	local myconf=(
+		--disable-static
 		$(use_with audiofile libaudiofile)
 		$(use_with bzip2)
 		$(use_with gcrypt libgcrypt)

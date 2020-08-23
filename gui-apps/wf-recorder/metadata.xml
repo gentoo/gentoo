@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>consus@ftml.net</email>
+		<name>Olaf Torvaldsson</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="man">Build and install man pages</flag>
+		<flag name="opencl">Enable OpenCL</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ammen99/wf-recorder</remote-id>
+	</upstream>
+</pkgmetadata>

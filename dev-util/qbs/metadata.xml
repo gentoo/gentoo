@@ -12,7 +12,7 @@
 	<longdescription lang="en">
 	Qbs is a tool that helps simplify the build process for developing
 	projects across multiple platforms. Qbs can be used for any software
-	project, whether it is written in Qt or not.
+	project, regardless of programming language, toolkit, or libraries used.
 
 	Qbs is an all-in-one tool that generates a build graph from a
 	high-level project description (like qmake or cmake) and additionally
@@ -21,6 +21,6 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
-		<doc>http://doc.qt.io/qbs/</doc>
+		<doc>https://doc.qt.io/qbs/</doc>
 	</upstream>
 </pkgmetadata>

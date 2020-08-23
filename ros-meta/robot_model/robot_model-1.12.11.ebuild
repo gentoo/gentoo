@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 ROS_REPO_URI="https://github.com/ros/robot_model"
 KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
@@ -13,9 +13,5 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="
-	dev-ros/joint_state_publisher
-	dev-ros/urdf
-	dev-ros/urdf_parser_plugin
-"
+RDEPEND=""
 DEPEND="${RDEPEND}"

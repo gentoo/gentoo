@@ -1,8 +1,0 @@
-CFLAGS += -fno-strength-reduce -fno-strict-aliasing
-CPPFLAGS += -I. -I../include -D_GNU_SOURCE -DMITSHM
-LDLIBS += ../libvncauth/libvncauth.a -lz -ljpeg -lXaw -lXmu -lXt -lXext -lX11
-include Makefile.in
-all: vncviewer
-vncviewer: $(SRCS:.c=.o)
-clean:
-	rm -f *.[oa] vncviewer

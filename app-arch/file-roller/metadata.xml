@@ -9,7 +9,7 @@
 		<flag name="nautilus">Build contextual menu extension for
 			<pkg>gnome-base/nautilus</pkg>.</flag>
 		<flag name="packagekit">Enable support for the distro-neutral package
-			manager GUI <pkg>app-admin/packagekit</pkg></flag>
+			manager GUI PackageKit</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">fileroller</remote-id>

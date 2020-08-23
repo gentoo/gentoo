@@ -69,7 +69,8 @@ EXPORT_FUNCTIONS pkg_setup
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_COMPAT_OVERRIDE
-# @INTERNAL
+# @USER_VARIABLE
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # This variable can be used when working with ebuilds to override
 # the in-ebuild PYTHON_COMPAT. It is a string naming the implementation
@@ -105,6 +106,7 @@ EXPORT_FUNCTIONS pkg_setup
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_DEPS
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated Python dependency string for all
 # implementations listed in PYTHON_COMPAT.
@@ -124,6 +126,7 @@ EXPORT_FUNCTIONS pkg_setup
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_USEDEP
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # An eclass-generated USE-dependency string for the currently tested
 # implementation. It is set locally for python_check_deps() call.
@@ -151,7 +154,7 @@ _python_any_set_globals() {
 	_python_set_impls
 
 	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-		python_export "${i}" PYTHON_PKG_DEP
+		_python_export "${i}" PYTHON_PKG_DEP
 
 		# note: need to strip '=' slot operator for || deps
 		deps="${PYTHON_PKG_DEP/:0=/:0} ${deps}"
@@ -232,7 +235,7 @@ python_gen_any_dep() {
 	local i PYTHON_PKG_DEP out=
 	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		local PYTHON_USEDEP="python_targets_${i}(-),python_single_target_${i}(+)"
-		python_export "${i}" PYTHON_PKG_DEP
+		_python_export "${i}" PYTHON_PKG_DEP
 
 		local i_depstr=${depstr//\$\{PYTHON_USEDEP\}/${PYTHON_USEDEP}}
 		# note: need to strip '=' slot operator for || deps
@@ -299,8 +302,8 @@ python_setup() {
 		ewarn
 		ewarn "Dependencies won't be satisfied, and EPYTHON/eselect-python will be ignored."
 
-		python_export "${impls[0]}" EPYTHON PYTHON
-		python_wrapper_setup
+		_python_export "${impls[0]}" EPYTHON PYTHON
+		_python_wrapper_setup
 		einfo "Using ${EPYTHON} to build"
 		return
 	fi
@@ -308,8 +311,8 @@ python_setup() {
 	# first, try ${EPYTHON}... maybe it's good enough for us.
 	if [[ ${EPYTHON} ]]; then
 		if _python_EPYTHON_supported "${EPYTHON}"; then
-			python_export EPYTHON PYTHON
-			python_wrapper_setup
+			_python_export EPYTHON PYTHON
+			_python_wrapper_setup
 			einfo "Using ${EPYTHON} to build"
 			return
 		fi
@@ -324,8 +327,8 @@ python_setup() {
 			# no eselect-python?
 			break
 		elif _python_EPYTHON_supported "${i}"; then
-			python_export "${i}" EPYTHON PYTHON
-			python_wrapper_setup
+			_python_export "${i}" EPYTHON PYTHON
+			_python_wrapper_setup
 			einfo "Using ${EPYTHON} to build"
 			return
 		fi
@@ -334,9 +337,9 @@ python_setup() {
 	# fallback to best installed impl.
 	# (reverse iteration over _PYTHON_SUPPORTED_IMPLS)
 	for (( i = ${#_PYTHON_SUPPORTED_IMPLS[@]} - 1; i >= 0; i-- )); do
-		python_export "${_PYTHON_SUPPORTED_IMPLS[i]}" EPYTHON PYTHON
+		_python_export "${_PYTHON_SUPPORTED_IMPLS[i]}" EPYTHON PYTHON
 		if _python_EPYTHON_supported "${EPYTHON}"; then
-			python_wrapper_setup
+			_python_wrapper_setup
 			einfo "Using ${EPYTHON} to build"
 			return
 		fi

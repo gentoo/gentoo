@@ -10,7 +10,7 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2
 HOMEPAGE="http://wolf31o2.org"
 
 IUSE="opengl binary-drivers"
-KEYWORDS="~alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ppc ppc64 sparc x86"
 SLOT="0"
 LICENSE="GPL-2"
 

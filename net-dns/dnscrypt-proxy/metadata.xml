@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>gyakovlev@gentoo.org</email>
-		<name>Georgy Yakovlev</name>
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
 	</maintainer>
 	<longdescription lang="en">
 		dnscrypt-proxy provides local service which can be used directly as your
@@ -12,6 +12,6 @@
 		to upstream servers.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">jedisct1/dnscrypt-proxy</remote-id>
+		<remote-id type="github">DNSCrypt/dnscrypt-proxy</remote-id>
 	</upstream>
 </pkgmetadata>

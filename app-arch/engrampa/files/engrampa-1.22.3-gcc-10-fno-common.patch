@@ -1,0 +1,22 @@
+From 623bd665371e3afd9dc6fa29f9e1cfe735681358 Mon Sep 17 00:00:00 2001
+From: rbuj <robert.buj@gmail.com>
+Date: Wed, 29 Jan 2020 15:52:44 +0100
+Subject: [PATCH] Fix build using gcc 10 -fno-common flag
+
+---
+ src/main.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/main.c b/src/main.c
+index 56e75ea0..a9e297dc 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -33,8 +33,6 @@
+ 
+ #include "fr-init.h"
+ 
+-gint          ForceDirectoryCreation;
+-
+ static char **remaining_args;
+ static char  *add_to = NULL;
+ static int    add;

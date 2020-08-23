@@ -1,0 +1,26 @@
+From c7fdc67aefb67851a1210c7d5adfc7287c4b6572 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Mon, 15 Jun 2020 01:14:24 +0300
+Subject: [PATCH] Fix compilation with GCC10
+
+Fix compilation with -fno-common, which is enabled by default in GCC10.
+---
+ shred.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/shred.h b/shred.h
+index d7eeb93..0e35b28 100644
+--- a/shred.h
++++ b/shred.h
+@@ -100,7 +100,7 @@ extern int shredfile(struct filehdr_t *,
+ extern void sort_hashes(struct sorthash_t *hashlist, int hashcount);
+ 
+ /* linebyline.c feature analyzer */
+-struct analyzer_t linebyline;
++extern struct analyzer_t linebyline;
+ 
+ /* shredcompare.c functions */
+ extern int merge_compare(struct sorthash_t *obarray, int hashcount);
+-- 
+2.26.2
+

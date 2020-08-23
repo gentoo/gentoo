@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby23 ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_TASK_TEST=""
 RUBY_FAKEGEM_TASK_DOC=""
@@ -14,7 +14,7 @@ inherit multilib ruby-fakegem
 DESCRIPTION="FastCGI library for Ruby"
 HOMEPAGE="https://github.com/alphallc/ruby-fcgi-ng"
 
-KEYWORDS="amd64 arm hppa ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 arm hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 LICENSE="Ruby"
 
 DEPEND+=" dev-libs/fcgi"

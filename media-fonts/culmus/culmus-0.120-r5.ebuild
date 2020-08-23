@@ -36,7 +36,7 @@ SRC_URI+=" taamey? ( $(printf "http://culmus.sourceforge.net/taamim/%s.zip " ${T
 
 LICENSE="|| ( GPL-2 LICENSE-BITSTREAM ) ancient? ( MIT ) fancy? ( GPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ia64 ppc ppc64 s390 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 s390 sparc x86"
 IUSE="ancient fancy fontforge taamey"
 
 FONT_CONF=( "${T}/65-culmus.conf" )
@@ -44,6 +44,7 @@ FONT_CONF=( "${T}/65-culmus.conf" )
 RDEPEND="!media-fonts/culmus-ancient"
 # >=x11-apps/mkfontscale-1.0.9-r1 as Heavy weight support is required
 DEPEND="${RDEPEND}
+	app-arch/unzip
 	>=x11-apps/mkfontscale-1.0.9-r1
 	fontforge? ( media-gfx/fontforge )"
 

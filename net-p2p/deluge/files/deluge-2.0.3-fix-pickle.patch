@@ -1,0 +1,143 @@
+https://dev.deluge-torrent.org/changeset/23b3f144fce3424ae
+
+Index: deluge/core/torrentmanager.py
+===================================================================
+--- deluge-2.0.3/deluge/core/torrentmanager.py	(revision 8b62e50eb8bf81a177c4d62484a44b766c6f54a6)
++++ deluge-2.0.3/deluge/core/torrentmanager.py	(revision 23b3f144fce3424ae874d54a659cb7b8dd624ade)
+@@ -26,5 +26,5 @@
+ import deluge.component as component
+ from deluge._libtorrent import lt
+-from deluge.common import archive_files, decode_bytes, get_magnet_info, is_magnet
++from deluge.common import PY2, archive_files, decode_bytes, get_magnet_info, is_magnet
+ from deluge.configmanager import ConfigManager, get_config_dir
+ from deluge.core.authmanager import AUTH_LEVEL_ADMIN
+@@ -810,5 +810,8 @@
+             try:
+                 with open(filepath, 'rb') as _file:
+-                    state = pickle.load(_file)
++                    if PY2:
++                        state = pickle.load(_file)
++                    else:
++                        state = pickle.load(_file, encoding='utf8')
+             except (IOError, EOFError, pickle.UnpicklingError) as ex:
+                 message = 'Unable to load {}: {}'.format(filepath, ex)
+Index: deluge/tests/data/utf8_filename_torrents.state
+===================================================================
+--- deluge-2.0.3/deluge/tests/data/utf8_filename_torrents.state	(revision 23b3f144fce3424ae874d54a659cb7b8dd624ade)
++++ deluge-2.0.3/deluge/tests/data/utf8_filename_torrents.state	(revision 23b3f144fce3424ae874d54a659cb7b8dd624ade)
+@@ -0,0 +1,85 @@
++(ideluge.core.torrentmanager
++TorrentManagerState
++p1
++(dp2
++S'torrents'
++p3
++(lp4
++(ideluge.core.torrentmanager
++TorrentState
++p5
++(dp6
++S'max_download_speed'
++p7
++I-1
++sS'move_completed_path'
++p8
++S'/home/calum/Downloads'
++p9
++sS'paused'
++p10
++I00
++sS'max_upload_slots'
++p11
++I-1
++sS'prioritize_first_last'
++p12
++I00
++sS'max_connections'
++p13
++I-1
++sS'compact'
++p14
++I00
++sS'queue'
++p15
++I0
++sS'file_priorities'
++p16
++(lp17
++I4
++asS'filename'
++p18
++S'\xc2\xa2.torrent'
++p19
++sS'max_upload_speed'
++p20
++I-1
++sS'save_path'
++p21
++S'/home/calum/Downloads'
++p22
++sS'time_added'
++p23
++F1573563097.749759
++sS'total_uploaded'
++p24
++I0
++sS'torrent_id'
++p25
++S'80d81d55ef3b85f3c1b634c362e014b35594dc71'
++p26
++sS'auto_managed'
++p27
++I01
++sS'stop_at_ratio'
++p28
++I00
++sS'move_completed'
++p29
++I00
++sS'trackers'
++p30
++(lp31
++sS'magnet'
++p32
++NsS'remove_at_ratio'
++p33
++I00
++sS'stop_ratio'
++p34
++F2
++sS'is_finished'
++p35
++I00
++sbasb.
+Index: deluge/tests/test_torrentmanager.py
+===================================================================
+--- deluge-2.0.3/deluge/tests/test_torrentmanager.py	(revision c6b6902e9f3e37f5b15184eb509b48b43817a331)
++++ deluge-2.0.3/deluge/tests/test_torrentmanager.py	(revision 23b3f144fce3424ae874d54a659cb7b8dd624ade)
+@@ -8,4 +8,6 @@
+ from __future__ import unicode_literals
+ 
++import os
++import shutil
+ import warnings
+ from base64 import b64encode
+@@ -29,5 +31,5 @@
+ class TorrentmanagerTestCase(BaseTestCase):
+     def set_up(self):
+-        common.set_tmp_config_dir()
++        self.config_dir = common.set_tmp_config_dir()
+         self.rpcserver = RPCServer(listen=False)
+         self.core = Core()
+@@ -119,2 +121,11 @@
+             InvalidTorrentError, self.tm.remove, 'torrentidthatdoesntexist'
+         )
++
++    def test_open_state_from_python2(self):
++        """Open a Python2 state with a UTF-8 encoded torrent filename."""
++        shutil.copy(
++            common.get_test_data_file('utf8_filename_torrents.state'),
++            os.path.join(self.config_dir, 'state', 'torrents.state'),
++        )
++        state = self.tm.open_state()
++        self.assertEqual(len(state.torrents), 1)

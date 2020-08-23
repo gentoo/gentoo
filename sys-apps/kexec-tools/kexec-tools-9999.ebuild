@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic libtool linux-info systemd
+inherit libtool linux-info systemd
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3 autotools
@@ -11,7 +11,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	SRC_URI="https://www.kernel.org/pub/linux/utils/kernel/kexec/${P/_/-}.tar.xz"
 	[[ "${PV}" == *_rc* ]] || \
-	KEYWORDS="~amd64 ~arm64 ~hppa ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Load another kernel from the currently executing Linux kernel"
@@ -44,12 +44,15 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	# Append PURGATORY_EXTRA_CFLAGS flags set by configure, instead of overriding them completely.
+	sed -e "/^PURGATORY_EXTRA_CFLAGS =/s/=/+=/" -i Makefile.in || die
+
 	if [[ "${PV}" == 9999 ]] ; then
 		eautoreconf
 	else
 		elibtoolize
 	fi
-	filter-flags '-mindirect-branch=thunk*'
 }
 
 src_configure() {
@@ -62,12 +65,29 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
+src_compile() {
+	# Respect CFLAGS for purgatory.
+	# purgatory/Makefile uses PURGATORY_EXTRA_CFLAGS variable.
+	# -mfunction-return=thunk and -mindirect-branch=thunk conflict with
+	# -mcmodel=large which is added by build system.
+	# Replace them with -mfunction-return=thunk-inline and -mindirect-branch=thunk-inline.
+	local flag flags=()
+	for flag in ${CFLAGS}; do
+		[[ ${flag} == -mfunction-return=thunk ]] && flag="-mfunction-return=thunk-inline"
+		[[ ${flag} == -mindirect-branch=thunk ]] && flag="-mindirect-branch=thunk-inline"
+		flags+=("${flag}")
+	done
+	local -x PURGATORY_EXTRA_CFLAGS="${flags[*]}"
+
+	default
+}
+
 src_install() {
 	default
 
 	dodoc "${FILESDIR}"/README.Gentoo
 
-	newinitd "${FILESDIR}"/kexec.init-2.0.13-r1 kexec
+	newinitd "${FILESDIR}"/kexec-r2.init kexec
 	newconfd "${FILESDIR}"/kexec.conf-2.0.4 kexec
 
 	insinto /etc
@@ -84,5 +104,21 @@ pkg_postinst() {
 		elog "For systemd support the new config file is"
 		elog "   /etc/kexec.conf"
 		elog "Please adopt it to your needs as there is no autoconfig anymore"
+	fi
+
+	local n_root_args=$(grep -o -- '\<root=' /proc/cmdline 2>/dev/null | wc -l)
+	local has_rootpart_set=no
+	if [[ -f "${EROOT}/etc/conf.d/kexec" ]]; then
+		if grep -q -E -- '^ROOTPART=' "${EROOT}/etc/conf.d/kexec" 2>/dev/null; then
+			has_rootpart_set=yes
+		fi
+	fi
+
+	if [[ ${n_root_args} > 1 && "${has_rootpart_set}" == "no"  ]]; then
+		ewarn "WARNING: Multiple root arguments (root=) on kernel command-line detected!"
+		ewarn "This was probably caused by a previous version of ${PN}."
+		ewarn "Please reboot system once *without* kexec to avoid boot problems"
+		ewarn "in case running system and initramfs do not agree on detected"
+		ewarn "root device name!"
 	fi
 }

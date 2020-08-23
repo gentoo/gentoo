@@ -1,0 +1,181 @@
+From 4f79ab942936c2985136575e9244aae4d9b81323 Mon Sep 17 00:00:00 2001
+From: Ralf Habacker <ralf.habacker@freenet.de>
+Date: Fri, 24 Jan 2020 09:47:28 +0100
+Subject: [PATCH] Add option ENABLE_FINANCEQUOTE and set to false by default on
+ Windows
+
+Financequote needs perl, which isn't supported on Windows yet.
+---
+ CMakeLists.txt                          | 10 ++++++++++
+ src/CMakeLists.txt                      | 15 ++++++++++-----
+ src/alkonlinequote.cpp                  |  7 ++++++-
+ src/alkonlinequotesprofile.cpp          |  7 ++++++-
+ tools/onlinequoteseditor/mainwindow.cpp |  2 ++
+ 5 files changed, 34 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ae48620..02bea7c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -10,6 +10,16 @@ option(BUILD_QT4 "Build for Qt4" OFF)
+ option(BUILD_DOXYGEN_DOCS "Build api docs" ON)
+ option(BUILD_APPLETS "Build plasma applets" ON)
+ 
++if(WIN32)
++    set(ENABLE_FINANCEQUOTE_DEFAULT 0)
++else()
++    set(ENABLE_FINANCEQUOTE_DEFAULT 1)
++endif()
++option(ENABLE_FINANCEQUOTE "Enable finance quote support (requires perl)" ENABLE_FINANCEQUOTE_DEFAULT)
++if(ENABLE_FINANCEQUOTE)
++    add_definitions(-DENABLE_FINANCEQUOTE)
++endif()
++
+ find_package(ECM 0.0.11 REQUIRED NO_MODULE)
+ 
+ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 2692a79..b863fa1 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -49,7 +49,6 @@ set(ALKIMIA_LIB_SOVERSION "${alkimia_VERSION_MAJOR}")
+ 
+ set(alkimia_LIB_SRCS
+     alkcompany.cpp
+-    alkfinancequoteprocess.cpp
+     alkonlinequote.cpp
+     alkonlinequotesource.cpp
+     alkonlinequotesprofile.cpp
+@@ -61,7 +60,6 @@ set(alkimia_LIB_SRCS
+ 
+ set(alkimia_LIB_HEADERS
+     alkcompany.h
+-    alkfinancequoteprocess.h
+     alkonlinequote.h
+     alkonlinequotesource.h
+     alkonlinequotesprofile.h
+@@ -70,6 +68,11 @@ set(alkimia_LIB_HEADERS
+     alkwebpage.h
+ )
+ 
++if(ENABLE_FINANCEQUOTE)
++    list(APPEND alkimia_LIB_SRCS alkfinancequoteprocess.cpp)
++    list(APPEND alkimia_LIB_HEADERS alkfinancequoteprocess.h)
++endif()
++
+ set(alkimia_UI
+     alkonlinequoteswidget.ui
+ )
+@@ -177,9 +180,11 @@ install(FILES
+ make_directory(${FQ_LOCAL_INSTALL_PATH})
+ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/financequote.pl ${FQ_LOCAL_INSTALL_PATH}/financequote.pl IMMEDIATE COPYONLY)
+ 
+-install(PROGRAMS financequote.pl
+-  DESTINATION ${APPDATA_INSTALL_DIR}/alkimia${ALKIMIA_PATH_SUFFIX}/misc
+-)
++if(ENABLE_FINANCEQUOTE)
++    install(PROGRAMS financequote.pl
++      DESTINATION ${APPDATA_INSTALL_DIR}/alkimia${ALKIMIA_PATH_SUFFIX}/misc
++    )
++endif()
+ 
+ if (NOT WIN32)
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/libalkimia.pc.in ${CMAKE_CURRENT_BINARY_DIR}/libalkimia${ALKIMIA_PATH_SUFFIX}.pc IMMEDIATE @ONLY)
+diff --git a/src/alkonlinequote.cpp b/src/alkonlinequote.cpp
+index 5b1b6e6..83a839c 100644
+--- a/src/alkonlinequote.cpp
++++ b/src/alkonlinequote.cpp
+@@ -337,6 +337,7 @@ bool AlkOnlineQuote::Private::launchNative(const QString &_symbol, const QString
+     return result;
+ }
+ 
++#ifdef ENABLE_FINANCEQUOTE
+ bool AlkOnlineQuote::Private::launchFinanceQuote(const QString &_symbol, const QString &_id,
+                                         const QString &_sourcename)
+ {
+@@ -374,6 +375,7 @@ bool AlkOnlineQuote::Private::launchFinanceQuote(const QString &_symbol, const Q
+     }
+     return result;
+ }
++#endif
+ 
+ bool AlkOnlineQuote::Private::parsePrice(const QString &_pricestr)
+ {
+@@ -560,10 +562,13 @@ void AlkOnlineQuote::setAcceptLanguage(const QString &language)
+ 
+ bool AlkOnlineQuote::launch(const QString &_symbol, const QString &_id, const QString &_source)
+ {
++#ifdef ENABLE_FINANCEQUOTE
+     if (AlkOnlineQuoteSource::isFinanceQuote(_source) ||
+             d->m_profile->type() == AlkOnlineQuotesProfile::Type::Script) {
+         return d->launchFinanceQuote(_symbol, _id, _source);
+-    } else if (_source.endsWith(".css")) {
++    } else
++#endif
++        if (_source.endsWith(".css")) {
+         return d->launchWebKitCssSelector(_symbol, _id, _source);
+     } else if (_source.endsWith(".webkit")) {
+         return d->launchWebKitHtmlParser(_symbol, _id, _source);
+diff --git a/src/alkonlinequotesprofile.cpp b/src/alkonlinequotesprofile.cpp
+index c3a6c96..637fb38 100644
+--- a/src/alkonlinequotesprofile.cpp
++++ b/src/alkonlinequotesprofile.cpp
+@@ -59,11 +59,12 @@ public:
+         , m_config(0)
+         , m_type(Type::Undefined)
+     {
+-
++#ifdef ENABLE_FINANCEQUOTE
+         if (m_financeQuoteScriptPath.isEmpty()) {
+             m_financeQuoteScriptPath = KGlobal::dirs()->findResource("appdata",
+                                                                      QString("misc/financequote.pl"));
+         }
++#endif
+     }
+ 
+     ~Private()
+@@ -135,6 +136,7 @@ public Q_SLOTS:
+         return groups;
+     }
+ 
++#ifdef ENABLE_FINANCEQUOTE
+     const QStringList quoteSourcesFinanceQuote()
+     {
+         if (m_financeQuoteSources.empty()) { // run the process one time only
+@@ -153,6 +155,7 @@ public Q_SLOTS:
+         }
+         return m_financeQuoteSources;
+     }
++#endif
+ 
+     const QStringList quoteSourcesSkrooge()
+     {
+@@ -391,9 +394,11 @@ const QStringList AlkOnlineQuotesProfile::quoteSources()
+     case AlkOnlineQuotesProfile::Type::KMyMoney5:
+         result << d->quoteSourcesNative();
+         break;
++#ifdef ENABLE_FINANCEQUOTE
+     case AlkOnlineQuotesProfile::Type::Script:
+         result << d->quoteSourcesFinanceQuote();
+         break;
++#endif
+     case AlkOnlineQuotesProfile::Type::None:
+         result << d->defaultQuoteSources().keys();
+         break;
+diff --git a/tools/onlinequoteseditor/mainwindow.cpp b/tools/onlinequoteseditor/mainwindow.cpp
+index 59af0c4..791b1e6 100644
+--- a/tools/onlinequoteseditor/mainwindow.cpp
++++ b/tools/onlinequoteseditor/mainwindow.cpp
+@@ -82,7 +82,9 @@ MainWindow::MainWindow(QWidget *parent)
+     manager.addProfile(new AlkOnlineQuotesProfile("skrooge5", AlkOnlineQuotesProfile::Type::Skrooge5, "skrooge-quotes.knsrc"));
+     manager.addProfile(new AlkOnlineQuotesProfile("kmymoney5", AlkOnlineQuotesProfile::Type::KMyMoney5, "kmymoney-quotes.knsrc"));
+ #endif
++#ifdef ENABLE_FINANCEQUOTE
+     manager.addProfile(new AlkOnlineQuotesProfile("Finance::Quote", AlkOnlineQuotesProfile::Type::Script));
++#endif
+     d->ui.setupUi(this);
+ 
+     d->quotesWidget = new AlkOnlineQuotesWidget(true, true);
+-- 
+GitLab
+

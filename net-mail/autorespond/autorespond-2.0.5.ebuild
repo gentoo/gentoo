@@ -4,12 +4,12 @@
 EAPI=7
 
 DESCRIPTION="Autoresponder add on package for qmailadmin"
-HOMEPAGE="http://www.inter7.com/software/"
+HOMEPAGE="https://www.inter7.com/software/"
 SRC_URI="http://qmail.ixip.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~s390 ~sparc ~x86"
 
 RDEPEND="virtual/qmail"
 PATCHES=(

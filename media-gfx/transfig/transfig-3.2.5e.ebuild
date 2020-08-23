@@ -7,14 +7,14 @@ inherit toolchain-funcs eutils flag-o-matic multilib
 MY_P=${PN}.${PV}
 
 DESCRIPTION="A set of tools for creating TeX documents with graphics"
-HOMEPAGE="http://www.xfig.org/"
+HOMEPAGE="https://www.xfig.org/"
 SRC_URI="mirror://sourceforge/mcj/${MY_P}.tar.gz
 	mirror://gentoo/fig2mpdf-1.1.2.tar.bz2
 	https://dev.gentoo.org/~mgorny/dist/${P}-gentoo-patchset.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE=""
 
 RDEPEND="x11-libs/libXpm

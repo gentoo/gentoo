@@ -4,13 +4,13 @@
 EAPI=7
 
 DESCRIPTION="Documentation reference and man pages for lapack implementations"
-HOMEPAGE="http://www.netlib.org/lapack"
+HOMEPAGE="https://www.netlib.org/lapack"
 SRC_URI="mirror://gentoo/lapack-man-${PV}.tgz
 	http://www.netlib.org/lapack/lapackqref.ps"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE=""
 
 S="${WORKDIR}/lapack-${PV}/manpages"

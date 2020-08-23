@@ -14,5 +14,6 @@
 	</upstream>
 	<use>
 		<flag name="acct">User and group management via acct-*/git packages</flag>
+		<flag name="build-client">Build the client code, instead of using a precompiled one</flag>
 	</use>
 </pkgmetadata>

@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+drop-root libressl smi ssl samba suid test"
 RESTRICT="!test? ( test )"
 
@@ -34,7 +34,7 @@ DEPEND="
 	test? (
 		>=net-libs/libpcap-1.9.1
 		dev-lang/perl
-		|| ( app-arch/sharutils sys-freebsd/freebsd-ubin )
+		app-arch/sharutils
 	)
 "
 

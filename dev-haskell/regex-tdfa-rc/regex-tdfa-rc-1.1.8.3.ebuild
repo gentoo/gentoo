@@ -9,12 +9,12 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Replaces/Enhances Text.Regex (fork by Roman Cheplyaka)"
-HOMEPAGE="http://hackage.haskell.org/package/regex-tdfa-rc"
+HOMEPAGE="https://hackage.haskell.org/package/regex-tdfa-rc"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-haskell/mtl:=[profile?]

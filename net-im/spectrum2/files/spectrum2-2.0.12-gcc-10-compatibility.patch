@@ -1,0 +1,54 @@
+From 95e6968c0f8c95f6bd817e5081e0b10dea9d4269 Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <kostecki@his.de>
+Date: Wed, 13 May 2020 14:22:27 +0200
+Subject: [PATCH] Fix dfrotz compilation with GCC >= 10
+
+Since GCC enables by default -fno-common,
+the compilation of dfrotz due multiple definitions will fail.
+
+Signed-off-by: Conrad Kostecki <conrad@kostecki.com>
+---
+ backends/frotz/dfrotz/dumb/dumb_init.c   | 2 +-
+ backends/frotz/dfrotz/dumb/dumb_input.c  | 2 +-
+ backends/frotz/dfrotz/dumb/dumb_output.c | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/backends/frotz/dfrotz/dumb/dumb_init.c b/backends/frotz/dfrotz/dumb/dumb_init.c
+index 4b9c6704..35295b74 100644
+--- a/backends/frotz/dfrotz/dumb/dumb_init.c
++++ b/backends/frotz/dfrotz/dumb/dumb_init.c
+@@ -7,7 +7,7 @@
+ 
+ #include "dumb_frotz.h"
+ 
+-f_setup_t f_setup;
++extern f_setup_t f_setup;
+ 
+ #define INFORMATION "\
+ An interpreter for all Infocom and other Z-Machine games.\n\
+diff --git a/backends/frotz/dfrotz/dumb/dumb_input.c b/backends/frotz/dfrotz/dumb/dumb_input.c
+index 4149b2b0..88fc8ae5 100644
+--- a/backends/frotz/dfrotz/dumb/dumb_input.c
++++ b/backends/frotz/dfrotz/dumb/dumb_input.c
+@@ -5,7 +5,7 @@
+  */
+ 
+ #include "dumb_frotz.h"
+-f_setup_t f_setup;
++extern f_setup_t f_setup;
+ 
+ static char runtime_usage[] =
+   "DUMB-FROTZ runtime help:\n"
+diff --git a/backends/frotz/dfrotz/dumb/dumb_output.c b/backends/frotz/dfrotz/dumb/dumb_output.c
+index 9e505167..6dc7db82 100644
+--- a/backends/frotz/dfrotz/dumb/dumb_output.c
++++ b/backends/frotz/dfrotz/dumb/dumb_output.c
+@@ -7,7 +7,7 @@
+ 
+ #include "dumb_frotz.h"
+ 
+-f_setup_t f_setup;
++extern f_setup_t f_setup;
+ 
+ static bool show_line_numbers = FALSE;
+ static bool show_line_types = -1;

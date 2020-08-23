@@ -1,0 +1,97 @@
+diff -Naur Src.orig/calendar.c Src/calendar.c
+--- Src.orig/calendar.c	2007-01-15 01:14:32.000000000 +0100
++++ Src/calendar.c	2020-03-29 13:25:39.390760510 +0200
+@@ -1,5 +1,10 @@
+ #include "calendar.h"
+ 
++time_t  modtime;
++struct  calobj* calRoot;
++int     xr, yr;
++int     datetype[32][2];
++
+ int  get_datetype(int day){return datetype[day][0];}
+ 
+ /*------------------------------------------------------
+diff -Naur Src.orig/calendarfunc.c Src/calendarfunc.c
+--- Src.orig/calendarfunc.c	2003-07-13 16:41:02.000000000 +0200
++++ Src/calendarfunc.c	2020-03-29 13:24:07.630789052 +0200
+@@ -24,6 +24,7 @@
+ #include <stdio.h>
+ 
+ 
++int     datemoon[200][2];
+ 
+ long persian_jdn(struct icaltimetype dt)
+ {
+diff -Naur Src.orig/calendarfunc.h Src/calendarfunc.h
+--- Src.orig/calendarfunc.h	2003-07-15 17:19:43.000000000 +0200
++++ Src/calendarfunc.h	2020-03-29 13:23:23.468802848 +0200
+@@ -70,5 +70,5 @@
+ 
+ int Ceil(float number);
+ 
+-int     datemoon[200][2];   /* hashtable for moonphase.[jdn%32][0] stores moonphase of day jdn, 
++extern int     datemoon[200][2];   /* hashtable for moonphase.[jdn%32][0] stores moonphase of day jdn, 
+ 			    [jdn%32][1] stores jdn. */
+diff -Naur Src.orig/calendar.h Src/calendar.h
+--- Src.orig/calendar.h	2007-01-15 01:13:50.000000000 +0100
++++ Src/calendar.h	2020-03-29 13:25:57.657754851 +0200
+@@ -5,10 +5,10 @@
+ #include <sys/stat.h>
+ 
+ 
+-time_t  modtime;              /* modified time of icalendar file */
+-struct  calobj* calRoot;  /* 1st element in list of calendar obj*/
+-int     xr, yr;               /*evil hack for moving dayview window*/
+-int     datetype[32][2];      /* hashtable for coloring days.[jdn%32][0] stores color of day jdn, 
++extern time_t  modtime;              /* modified time of icalendar file */
++extern struct  calobj* calRoot;  /* 1st element in list of calendar obj*/
++extern int     xr, yr;               /*evil hack for moving dayview window*/
++extern int     datetype[32][2];      /* hashtable for coloring days.[jdn%32][0] stores color of day jdn, 
+ 				 [jdn%32][1] stores jdn. */
+ struct calobj{
+     struct icaltimetype start;
+diff -Naur Src.orig/settings.c Src/settings.c
+--- Src.orig/settings.c	2003-07-15 17:22:51.000000000 +0200
++++ Src/settings.c	2020-03-29 13:26:31.673744323 +0200
+@@ -1,4 +1,14 @@
+ #include "settings.h"
++
++char    rcfile[250];
++char    icsfile[250];
++char    application[250];
++int     start_of_week;
++char*   daystr[8];
++int     appicon;
++int     lang;
++int     debug;
++
+ void set_lang(int language){lang = language;}
+ void setAppicon(int app){appicon = app;}
+ void enter_callback( GtkWidget *widget, GtkWidget *entry ){ 
+diff -Naur Src.orig/settings.h Src/settings.h
+--- Src.orig/settings.h	2006-09-15 11:56:12.000000000 +0200
++++ Src/settings.h	2020-03-29 13:26:37.732742450 +0200
+@@ -7,14 +7,14 @@
+ 
+ 
+ 
+-char    rcfile[250];       /* location of settings file */
+-char    icsfile[250];      /* location of icalendar file */
+-char    application[250];  /* command for starting external application */
+-int     start_of_week; /* defines the first day of week */
+-char*   daystr[8];
+-int     appicon;       /* sets the application icon evol(0) moz(1) other(2)*/
+-int     lang;          /* defines the language 0:english(default) 1:farsi */
+-int     debug;         /* debug mode off(0) or on(1) */
++extern char    rcfile[250];       /* location of settings file */
++extern char    icsfile[250];      /* location of icalendar file */
++extern char    application[250];  /* command for starting external application */
++extern int     start_of_week; /* defines the first day of week */
++extern char*   daystr[8];
++extern int     appicon;       /* sets the application icon evol(0) moz(1) other(2)*/
++extern int     lang;          /* defines the language 0:english(default) 1:farsi */
++extern int     debug;         /* debug mode off(0) or on(1) */
+ 
+ 
+ void destroy (GtkWidget * widget, gpointer data);

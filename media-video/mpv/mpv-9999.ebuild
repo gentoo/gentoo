@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 PYTHON_REQ_USE='threads(+)'
 
 WAF_PV=2.0.9
@@ -26,11 +26,11 @@ SRC_URI+=" https://waf.io/waf-${WAF_PV}"
 DOCS+=( README.md DOCS/{client-api,interface}-changes.rst )
 
 # See Copyright in sources and Gentoo bug 506946. Waf is BSD, libmpv is ISC.
-LICENSE="LGPL-2.1+ GPL-2+ BSD ISC samba? ( GPL-3+ )"
+LICENSE="LGPL-2.1+ GPL-2+ BSD ISC"
 SLOT="0"
 IUSE="+alsa aqua archive bluray cdda +cli coreaudio cplugins cuda debug doc drm dvb
-	dvd +egl gamepad gbm +iconv jack javascript jpeg lcms +libass libcaca libmpv +lua
-	luajit openal +opengl oss pulseaudio raspberry-pi rubberband samba sdl
+	dvd +egl gamepad gbm +iconv jack javascript jpeg lcms libcaca libmpv +lua
+	luajit openal +opengl pulseaudio raspberry-pi rubberband sdl
 	selinux test tools +uchardet vaapi vdpau vulkan wayland +X +xv zlib zimg"
 
 REQUIRED_USE="
@@ -81,10 +81,8 @@ COMMON_DEPEND="
 	javascript? ( >=dev-lang/mujs-1.0.0 )
 	jpeg? ( virtual/jpeg:0 )
 	lcms? ( >=media-libs/lcms-2.6:2 )
-	libass? (
-		>=media-libs/libass-0.12.1:=[fontconfig,harfbuzz]
-		virtual/ttf-fonts
-	)
+	>=media-libs/libass-0.12.1:=[fontconfig,harfbuzz]
+	virtual/ttf-fonts
 	libcaca? ( >=media-libs/libcaca-0.99_beta18 )
 	lua? (
 		!luajit? ( <dev-lang/lua-5.3:= )
@@ -94,7 +92,6 @@ COMMON_DEPEND="
 	pulseaudio? ( media-sound/pulseaudio )
 	raspberry-pi? ( >=media-libs/raspberrypi-userland-0_pre20160305-r1 )
 	rubberband? ( >=media-libs/rubberband-1.8.0 )
-	samba? ( net-fs/samba )
 	sdl? ( media-libs/libsdl2[sound,threads,video] )
 	vaapi? ( x11-libs/libva:=[drm?,X?,wayland?] )
 	vdpau? ( x11-libs/libvdpau )
@@ -127,7 +124,6 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	dev-python/docutils
 	cuda? ( >=media-libs/nv-codec-headers-8.2.15.7 )
-	doc? ( dev-python/rst2pdf )
 	dvb? ( virtual/linuxtv-dvb-headers )
 	test? ( >=dev-util/cmocka-1.0.0 )
 "
@@ -162,21 +158,18 @@ src_configure() {
 		--disable-static-build
 		# See deep down below for build-date.
 		--disable-optimize # Don't add '-O2' to CFLAGS.
-		$(use_enable debug debug-build)
+		$(usex debug '' '--disable-debug-build')
 
 		$(use_enable doc html-build)
-		$(use_enable doc pdf-build)
+		--disable-pdf-build
 		--enable-manpage-build
 		$(use_enable cplugins)
 		$(use_enable test)
 
 		$(use_enable iconv)
-		$(use_enable samba libsmbclient)
 		$(use_enable lua)
 		$(usex luajit '--lua=luajit' '')
 		$(use_enable javascript)
-		$(use_enable libass)
-		$(use_enable libass libass-osd)
 		$(use_enable zlib)
 		$(use_enable bluray libbluray)
 		$(use_enable dvd dvdnav)
@@ -191,9 +184,6 @@ src_configure() {
 
 		# Audio outputs:
 		$(use_enable sdl sdl2) # Listed under audio, but also includes video.
-		$(use_enable oss oss-audio)
-		--disable-rsound # Only available in overlays.
-		--disable-sndio # Only available in overlays.
 		$(use_enable pulseaudio pulse)
 		$(use_enable jack)
 		$(use_enable openal)
@@ -224,6 +214,7 @@ src_configure() {
 		$(use_enable libcaca caca)
 		$(use_enable jpeg)
 		$(use_enable vulkan shaderc)
+		$(use_enable vulkan libplacebo)
 		$(use_enable raspberry-pi rpi)
 		$(usex libmpv "$(use_enable opengl plain-gl)" '--disable-plain-gl')
 		$(usex opengl '' '--disable-gl')

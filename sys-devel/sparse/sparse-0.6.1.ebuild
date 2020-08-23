@@ -14,7 +14,7 @@ if [[ ${PV} == "9999" ]] ; then
 	KEYWORDS=""
 else
 	SRC_URI="https://www.kernel.org/pub/software/devel/${PN}/dist/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 fi
 
 LICENSE="MIT"
@@ -30,6 +30,10 @@ RDEPEND="gtk? ( x11-libs/gtk+:2 )
 DEPEND="${RDEPEND}
 	gtk? ( virtual/pkgconfig )
 	xml? ( virtual/pkgconfig )"
+
+pkg_setup() {
+	use llvm && llvm_pkg_setup
+}
 
 _emake() {
 	# Makefile does not allow for an easy override of flags.

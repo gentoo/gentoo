@@ -5,7 +5,4 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
-		<use>
-					<flag name="webhooks">Enable webhooks via django-rq</flag>
-	</use>
 </pkgmetadata>

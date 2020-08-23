@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Framework to provide start/stop/reload for a daemon"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
-    <email>lxde@gentoo.org</email>
-    <name>Gentoo LXDE Project</name>
-  </maintainer>
-  <maintainer type="project">
     <email>lxqt@gentoo.org</email>
     <name>LXQt</name>
   </maintainer>

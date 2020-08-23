@@ -1,0 +1,25 @@
+--- a/src/apply_user.c
++++ b/src/apply_user.c
+@@ -52,11 +52,6 @@
+ //gchar *dir; // ???
+ extern gchar *homedir;
+ 
+-/* The 18 checkbox values */
+-gchar *dir_val[19]; // ???
+-
+-char *user_profile; // ???
+-
+ extern long num_rows;
+ extern int row_pos;
+ 
+--- a/src/dir_treeview_funcs.h
++++ b/src/dir_treeview_funcs.h
+@@ -18,6 +18,8 @@
+  *
+  */
+ 
++extern gchar *dir_val[19];
++extern char *user_profile;
+ 
+ gboolean dirs_foreach(GtkTreeModel *model, GtkTreePath *path,
+ 		      GtkTreeIter *iter, struct w *widgets);

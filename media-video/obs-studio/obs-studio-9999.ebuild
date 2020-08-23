@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_SUBMODULES=()
 else
 	SRC_URI="https://github.com/obsproject/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Software for Recording and Streaming Live Video Content"
@@ -42,7 +42,7 @@ DEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
-	media-libs/x264
+	media-libs/x264:=
 	media-video/ffmpeg:=[x264]
 	net-misc/curl
 	sys-apps/dbus
@@ -59,12 +59,7 @@ DEPEND="
 	imagemagick? ( media-gfx/imagemagick:= )
 	jack? ( virtual/jack )
 	luajit? ( dev-lang/luajit:2 )
-	nvenc? (
-		|| (
-			<media-video/ffmpeg-4[nvenc]
-			>=media-video/ffmpeg-4[video_cards_nvidia]
-		)
-	)
+	nvenc? ( >=media-video/ffmpeg-4[video_cards_nvidia] )
 	pulseaudio? ( media-sound/pulseaudio )
 	python? ( ${PYTHON_DEPS} )
 	speex? ( media-libs/speexdsp )
@@ -116,6 +111,13 @@ src_configure() {
 	fi
 
 	cmake-utils_src_configure
+}
+
+src_install() {
+	cmake-utils_src_install
+	#external plugins may need some things not installed by default, install them here
+	insinto /usr/include/obs/UI/obs-frontend-api
+	doins UI/obs-frontend-api/obs-frontend-api.h
 }
 
 pkg_postinst() {

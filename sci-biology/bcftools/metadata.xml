@@ -5,10 +5,6 @@
 		<email>sci-biology@gentoo.org</email>
 		<name>Gentoo Biology Project</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>mmokrejs@gmail.com</email>
-		<name>Martin Mokrejs</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="github">samtools/bcftools</remote-id>
 	</upstream>

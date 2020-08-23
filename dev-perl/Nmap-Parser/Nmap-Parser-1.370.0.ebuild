@@ -12,7 +12,7 @@ DESCRIPTION="Parse nmap scan data with perl"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	>=virtual/perl-Storable-2.0.0

@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
-inherit eutils flag-o-matic python-single-r1
+inherit eutils flag-o-matic python-single-r1 toolchain-funcs
 
 export CTARGET=${CTARGET:-${CHOST}}
 if [[ ${CTARGET} == ${CHOST} ]] ; then
@@ -44,7 +44,7 @@ SRC_URI="${SRC_URI}
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 if [[ ${PV} != 9999* ]] ; then
-	KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~riscv s390 ~sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 IUSE="+client lzma multitarget nls +python +server source-highlight test vanilla xml xxhash"
 REQUIRED_USE="
@@ -90,6 +90,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.3.1-verbose-build.patch
+	"${FILESDIR}"/${PN}-9.1-ia64.patch
 )
 
 GDB_BUILD_DIR="${WORKDIR}"/${P}-build
@@ -182,6 +183,9 @@ src_configure() {
 		# https://sourceware.org/ml/gdb-patches/2014-12/msg00058.html
 		myconf+=( --disable-largefile )
 	fi
+
+	# source-highlight is detected with pkg-config: bug #716558
+	export ac_cv_path_pkg_config_prog_path="$(tc-getPKG_CONFIG)"
 
 	mkdir "${GDB_BUILD_DIR}" || die
 	pushd "${GDB_BUILD_DIR}" || die

@@ -3,9 +3,10 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_SINGLE_IMPL=1
 
+DISTUTILS_USE_SETUPTOOLS=no
 inherit gnome2 distutils-r1
 
 DESCRIPTION="A graphical tool for administering virtual machines"
@@ -32,7 +33,6 @@ RDEPEND="!app-emulation/virtinst
 	$(python_gen_cond_dep '
 		dev-libs/libxml2[python,${PYTHON_MULTI_USEDEP}]
 		dev-python/argcomplete[${PYTHON_MULTI_USEDEP}]
-		dev-python/ipaddr[${PYTHON_MULTI_USEDEP}]
 		dev-python/libvirt-python[${PYTHON_MULTI_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
 		dev-python/requests[${PYTHON_MULTI_USEDEP}]
@@ -60,11 +60,13 @@ src_prepare() {
 	distutils-r1_src_prepare
 }
 
-distutils-r1_python_compile() {
-	local defgraphics=
-
+python_configure() {
 	esetup.py configure \
 		--default-graphics=spice
+}
+
+python_install() {
+	esetup.py install
 }
 
 src_install() {

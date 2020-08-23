@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/kino/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
-IUSE="alsa dvdr gpac lame libav quicktime sox vorbis"
+IUSE="alsa dvdr gpac lame quicktime sox vorbis"
 
 # Optional dependency on cinelerra-cvs (as a replacement for libquicktime)
 # dropped because kino may run with it but won't build anymore.
@@ -30,8 +30,7 @@ CDEPEND="
 	media-libs/libiec61883
 	media-libs/libv4l:0=
 	alsa? ( >=media-libs/alsa-lib-1.0.9 )
-	!libav? ( >=media-video/ffmpeg-3:0= )
-	libav? ( media-video/libav:0= )
+	>=media-video/ffmpeg-3:0=
 	quicktime? ( >=media-libs/libquicktime-0.9.5 )
 "
 DEPEND="${CDEPEND}

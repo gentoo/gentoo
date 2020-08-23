@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 COMMIT=33ed278b9b543554fd6a556fd391eb4c78faab07
 MY_PN=qtscrob
 MY_P=${MY_PN}-${PV}
-inherit desktop gnome2-utils qmake-utils toolchain-funcs
+inherit desktop qmake-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="Updates last.fm profiles using information from supported portable music players"
 HOMEPAGE="http://qtscrob.sourceforge.net/"
@@ -17,6 +17,11 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
+BDEPEND="
+	app-arch/unzip
+	dev-qt/linguist-tools:5
+	virtual/pkgconfig
+"
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -25,9 +30,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	media-libs/libmtp:=
 	net-misc/curl"
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_PN}-code-${COMMIT}"
 
@@ -56,5 +59,10 @@ src_install() {
 	einstalldocs
 }
 
-pkg_postinst() { gnome2_icon_cache_update; }
-pkg_postrm() { gnome2_icon_cache_update; }
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
+}

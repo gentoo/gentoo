@@ -86,6 +86,9 @@ IUSE="source"
 # Starting from TeX Live 2009, upstream provides .tar.xz modules.
 PKGEXT=tar.xz
 
+# Now where should we get these files?
+TEXLIVE_DEVS=${TEXLIVE_DEVS:- zlogene dilfridge }
+
 # We do not need anything from SYSROOT:
 #   Everything is built from the texlive install in /
 #   Generated files are noarch
@@ -93,13 +96,17 @@ BDEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils"
 
 for i in ${TEXLIVE_MODULE_CONTENTS}; do
-	SRC_URI="${SRC_URI} mirror://gentoo/texlive-module-${i}-${PV}.${PKGEXT}"
+	for tldev in ${TEXLIVE_DEVS}; do
+		SRC_URI="${SRC_URI} https://dev.gentoo.org/~${tldev}/distfiles/texlive/tl-${i}-${PV}.${PKGEXT}"
+	done
 done
 
 # Forge doc SRC_URI
 [[ -n ${TEXLIVE_MODULE_DOC_CONTENTS} ]] && SRC_URI="${SRC_URI} doc? ("
 for i in ${TEXLIVE_MODULE_DOC_CONTENTS}; do
-	SRC_URI="${SRC_URI} mirror://gentoo/texlive-module-${i}-${PV}.${PKGEXT}"
+	for tldev in ${TEXLIVE_DEVS}; do
+		SRC_URI="${SRC_URI} https://dev.gentoo.org/~${tldev}/distfiles/texlive/tl-${i}-${PV}.${PKGEXT}"
+	done
 done
 [[ -n ${TEXLIVE_MODULE_DOC_CONTENTS} ]] && SRC_URI="${SRC_URI} )"
 
@@ -107,7 +114,9 @@ done
 if [[ -n ${TEXLIVE_MODULE_SRC_CONTENTS} ]] ; then
 	SRC_URI="${SRC_URI} source? ("
 	for i in ${TEXLIVE_MODULE_SRC_CONTENTS}; do
-		SRC_URI="${SRC_URI} mirror://gentoo/texlive-module-${i}-${PV}.${PKGEXT}"
+		for tldev in ${TEXLIVE_DEVS}; do
+			SRC_URI="${SRC_URI} https://dev.gentoo.org/~${tldev}/distfiles/texlive/tl-${i}-${PV}.${PKGEXT}"
+		done
 	done
 	SRC_URI="${SRC_URI} )"
 fi
@@ -140,16 +149,14 @@ RELOC_TARGET=texmf-dist
 texlive-module_src_unpack() {
 	unpack ${A}
 
-	grep RELOC tlpkg/tlpobj/* | awk '{print $2}' | sed 's#^RELOC/##' > "${T}/reloclist" || die
-	{ for i in $(<"${T}/reloclist"); do  dirname ${i}; done; } | uniq > "${T}/dirlist"
-	for i in $(<"${T}/dirlist"); do
-		if [[ ! -d ${RELOC_TARGET}/${i} ]]; then
-			mkdir -p "${RELOC_TARGET}/${i}" || die
-		fi
-	done
-	for i in $(<"${T}/reloclist"); do
-		mv "${i}" "${RELOC_TARGET}"/$(dirname "${i}") || die "failed to relocate ${i} to ${RELOC_TARGET}/$(dirname ${i})"
-	done
+	sed -n -e 's:\s*RELOC/::p' tlpkg/tlpobj/* > "${T}/reloclist" || die
+	sed -e 's/\/[^/]*$//' -e "s:^:${RELOC_TARGET}/:" "${T}/reloclist" |
+		sort -u |
+		xargs mkdir -p || die
+	local i
+	while read i; do
+		mv "${i}" "${RELOC_TARGET}/${i%/*}" || die
+	done < "${T}/reloclist"
 }
 
 # @FUNCTION: texlive-module_add_format
@@ -350,8 +357,10 @@ texlive-module_src_install() {
 	done
 
 	dodir /usr/share
-	if use doc && [[ -d texmf-doc ]]; then
-		cp -pR texmf-doc "${ED}/usr/share/" || die
+	if use doc; then
+		if [[ -d texmf-doc ]]; then
+			cp -pR texmf-doc "${ED}/usr/share/" || die
+		fi
 	else
 		if [[ -d texmf-dist/doc ]]; then
 			rm -rf texmf-dist/doc || die
@@ -374,9 +383,11 @@ texlive-module_src_install() {
 		cp -pR tlpkg "${ED}/usr/share/" || die
 	fi
 
-	insinto /var/lib/texmf
 
-	[[ -d texmf-var ]] && doins -r texmf-var/.
+	if [[ -d texmf-var ]]; then
+		insinto /var/lib/texmf
+		doins -r texmf-var/.
+	fi
 
 	insinto /etc/texmf/updmap.d
 	[[ -f ${S}/${PN}.cfg ]] && doins "${S}/${PN}.cfg"

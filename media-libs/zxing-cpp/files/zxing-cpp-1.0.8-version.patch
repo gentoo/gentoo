@@ -1,0 +1,22 @@
+From 66cc26b25633cb7f1e20f2bf7711960c321e3a7b Mon Sep 17 00:00:00 2001
+From: Huy Cuong Nguyen <huycn@users.noreply.github.com>
+Date: Thu, 19 Mar 2020 13:58:48 -0400
+Subject: [PATCH] Pump version to 1.0.8
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d851580..c996e4a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 3.1.3)
+ 
+ set (ZXING_VERSION_MAJOR 1)
+ set (ZXING_VERSION_MINOR 0)
+-set (ZXING_VERSION_PATCH 7)
++set (ZXING_VERSION_PATCH 8)
+ 
+ project (ZXingCpp VERSION ${ZXING_VERSION_MAJOR}.${ZXING_VERSION_MINOR}.${ZXING_VERSION_PATCH})
+ 

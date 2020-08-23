@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 
 inherit distutils-r1
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ia64 ~mips ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -26,6 +26,10 @@ RDEPEND="
 	dev-python/path-py[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
 	dev-python/termcolor[${PYTHON_USEDEP}]
+"
+# block pytest plugins that will be broken by the upgrade
+RDEPEND+="
+	!<dev-python/pytest-virtualenv-1.7.0-r1[python_targets_python2_7(-)]
 "
 
 BDEPEND="
@@ -41,12 +45,6 @@ python_prepare_all() {
 }
 
 python_test() {
-	# at this point let's not fix python2 stuff
-	if ! python_is_python3; then
-		ewarn "Tests broken on python2, not runninge tests for ${EPYTHON}"
-		return 0
-	fi
-
 	distutils_install_for_testing
 
 	esetup.py test || die "Tests failed under ${EPYTHON}"

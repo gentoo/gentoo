@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Report the search path thru an ISA tree"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-solaris"
+KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86 ~x86-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

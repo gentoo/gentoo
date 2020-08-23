@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 PYTHON_REQ_USE='threads(+)'
 
 WAF_PV=2.0.9
@@ -15,7 +15,7 @@ HOMEPAGE="https://mpv.io/ https://github.com/mpv-player/mpv"
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ppc ppc64 x86 ~amd64-linux"
 	DOCS=( RELEASE_NOTES )
 else
 	EGIT_REPO_URI="https://github.com/mpv-player/mpv.git"
@@ -127,7 +127,6 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	dev-python/docutils
 	cuda? ( >=media-libs/nv-codec-headers-8.2.15.7 )
-	doc? ( dev-python/rst2pdf )
 	dvb? ( virtual/linuxtv-dvb-headers )
 	test? ( >=dev-util/cmocka-1.0.0 )
 "
@@ -162,10 +161,10 @@ src_configure() {
 		--disable-static-build
 		# See deep down below for build-date.
 		--disable-optimize # Don't add '-O2' to CFLAGS.
-		$(use_enable debug debug-build)
+		$(usex debug '' '--disable-debug-build')
 
 		$(use_enable doc html-build)
-		$(use_enable doc pdf-build)
+		--disable-pdf-build
 		--enable-manpage-build
 		$(use_enable cplugins)
 		$(use_enable test)
@@ -224,6 +223,7 @@ src_configure() {
 		$(use_enable libcaca caca)
 		$(use_enable jpeg)
 		$(use_enable vulkan shaderc)
+		$(use_enable vulkan libplacebo)
 		$(use_enable raspberry-pi rpi)
 		$(usex libmpv "$(use_enable opengl plain-gl)" '--disable-plain-gl')
 		$(usex opengl '' '--disable-gl')

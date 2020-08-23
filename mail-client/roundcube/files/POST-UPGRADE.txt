@@ -5,7 +5,7 @@ Post-Upgrade Activities
    ./bin/indexcontacts.sh.
 3. When upgrading from version older than 0.6-beta you should make sure your
    folder settings contain a namespace prefix if necessary. For example Courier
-   users should add “INBOX.” prefix to folder names in main configuration file.
+   users should add "INBOX." prefix to folder names in main configuration file.
 4. Check system requirements in INSTALL file.
 5. If you previously installed plugins through composer, update dependencies by
    running:

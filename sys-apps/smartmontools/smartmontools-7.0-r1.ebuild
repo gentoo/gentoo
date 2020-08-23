@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit subversion
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+	KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
 DESCRIPTION="Tools to monitor storage systems to provide advanced warning of disk degradation"
@@ -24,9 +24,6 @@ DEPEND="
 	caps? (
 		static? ( sys-libs/libcap-ng[static-libs] )
 		!static? ( sys-libs/libcap-ng )
-	)
-	kernel_FreeBSD? (
-		sys-freebsd/freebsd-lib[usb]
 	)
 	selinux? (
 		sys-libs/libselinux

@@ -5,8 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		This package provides an interface to Windows and Unix
-		file locking functionalities.
-	</longdescription>
 </pkgmetadata>

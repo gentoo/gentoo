@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Simple reflection of expressions containing variables"
-HOMEPAGE="http://twanvl.nl/blog/haskell/simple-reflection-of-expressions"
+HOMEPAGE="https://twanvl.nl/blog/haskell/simple-reflection-of-expressions"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"

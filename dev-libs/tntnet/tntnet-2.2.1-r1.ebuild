@@ -88,3 +88,5 @@ src_install() {
 		newinitd "${FILESDIR}/tntnet.initd" tntnet
 	fi
 }
+
+# @stable ~26may2020

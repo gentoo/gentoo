@@ -20,6 +20,7 @@ IUSE="doc fuse systemd tcpd"
 COMMON_DEPEND="
 	app-arch/bzip2
 	app-arch/xz-utils
+	dev-libs/libevent:=
 	dev-libs/openssl:0=
 	sys-libs/zlib
 	systemd? (
@@ -39,6 +40,7 @@ RDEPEND="
 	tcpd? ( sys-apps/tcp-wrappers )
 "
 PATCHES=(
+	"${FILESDIR}"/${PN}-3.5-perl-syntax.patch
 	"${FILESDIR}"/${PN}-9999999-flags.patch
 )
 S=${WORKDIR}/${P/_*}
@@ -112,8 +114,8 @@ src_install() {
 
 	# perl daily cron script
 	dosbin scripts/expire-caller.pl
-	exeinto /etc/cron.daily
-	newexe "${FILESDIR}"/cron.daily ${PN}
+	insinto /etc/cron.daily
+	newins "${FILESDIR}"/cron.daily ${PN}
 
 	# default configuration
 	insinto /etc/${PN}

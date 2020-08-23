@@ -1,0 +1,11 @@
+diff -ur a/applepart.c b/applepart.c
+--- a/applepart.c	2020-03-30 10:25:52.122137073 -0500
++++ b/applepart.c	2020-03-30 10:26:09.803672537 -0500
+@@ -27,6 +27,7 @@
+ #include <string.h>
+ #include <stdio.h>
+ #include <errno.h>
++#include <byteswap.h>
+ 
+ #include "applepart.h"
+ #include "endian.h"

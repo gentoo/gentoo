@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit gnome2-utils
+inherit gnome2-utils xdg-utils
 
 DESCRIPTION="icon theme for Linux"
 HOMEPAGE="https://github.com/PapirusDevelopmentTeam/papirus-icon-theme"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/archive/${
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 src_compile() { :; }
 
@@ -23,4 +23,4 @@ src_install() {
 
 pkg_preinst() { gnome2_icon_savelist; }
 pkg_postinst() { gnome2_icon_cache_update; }
-pkg_postrm() { gnome2_icon_cache_update; }
+pkg_postrm() { xdg_icon_cache_update; }

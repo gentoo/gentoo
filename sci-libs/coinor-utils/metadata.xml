@@ -6,13 +6,18 @@
     <name>Gentoo Science Project</name>
   </maintainer>
   <longdescription lang="en">
-  CoinUtils (Coin-or Utilities) is a collection of classes that are
-  generally useful to COmputational INfrastructure for Operations
-  Research (COIN-OR) projects. These include vector, matrix, mps file
-  reading classes.
-</longdescription>
+    CoinUtils (Coin-or Utilities) is a collection of classes that are
+    generally useful to COmputational INfrastructure for Operations
+    Research (COIN-OR) projects. These include vector, matrix, mps
+    file reading classes.
+  </longdescription>
   <use>
-    <flag name="glpk">Enable GNU Linear Programming Kit
-  <pkg>sci-mathematics/glpk</pkg> support</flag>
+    <flag name="glpk">
+      Enable GNU Linear Programming Kit
+      <pkg>sci-mathematics/glpk</pkg> support
+    </flag>
   </use>
+  <upstream>
+    <remote-id type="github">coin-or/CoinUtils</remote-id>
+  </upstream>
 </pkgmetadata>

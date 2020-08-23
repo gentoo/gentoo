@@ -1,0 +1,11 @@
+diff -Naur kicad-5.1.5-orig/common/lib_tree_model.cpp kicad-5.1.5/common/lib_tree_model.cpp
+--- kicad-5.1.5-orig/common/lib_tree_model.cpp  2020-05-11 00:36:36.568301297 +0200
++++ kicad-5.1.5/common/lib_tree_model.cpp       2020-05-11 00:37:50.472359703 +0200
+@@ -21,6 +21,7 @@
+
+ #include <lib_tree_model.h>
+
++#include <algorithm>
+ #include <eda_pattern_match.h>
+ #include <lib_tree_item.h>
+ #include <make_unique.h>

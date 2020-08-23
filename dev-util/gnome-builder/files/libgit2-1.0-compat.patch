@@ -1,0 +1,26 @@
+From 582bf0281358437cc35d96d363f0af81a1b21068 Mon Sep 17 00:00:00 2001
+From: Igor Raits <i.gnatenko.brain@gmail.com>
+Date: Tue, 3 Mar 2020 13:17:31 +0100
+Subject: [PATCH] plugins/git: Fix compatibility with libgit2 0.99.x
+
+Signed-off-by: Igor Raits <i.gnatenko.brain@gmail.com>
+---
+ src/plugins/git/daemon/ipc-git-repository-impl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/plugins/git/daemon/ipc-git-repository-impl.c b/src/plugins/git/daemon/ipc-git-repository-impl.c
+index abcca5476..f2631945d 100644
+--- a/src/plugins/git/daemon/ipc-git-repository-impl.c
++++ b/src/plugins/git/daemon/ipc-git-repository-impl.c
+@@ -34,7 +34,7 @@
+ #include "ipc-git-types.h"
+ #include "ipc-git-util.h"
+ 
+-#if LIBGIT2_SOVERSION >= 28
++#if LIBGIT2_VER_MAJOR > 0 || (LIBGIT2_VER_MAJOR == 0 && LIBGIT2_VER_MINOR >= 28)
+ G_DEFINE_AUTO_CLEANUP_CLEAR_FUNC (git_buf, git_buf_dispose)
+ #else
+ G_DEFINE_AUTO_CLEANUP_CLEAR_FUNC (git_buf, git_buf_free)
+-- 
+2.26.2
+

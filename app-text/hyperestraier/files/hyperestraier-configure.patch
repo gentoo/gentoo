@@ -1,3 +1,13 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -67,6 +67,7 @@
+ SKLIBS = @MYSKLIBS@
+ APPLIBS = @MYAPPLIBS@
+ LDENV = LD_RUN_PATH=/lib:/usr/lib:$(MYLIBDIR):$(HOME)/lib:/usr/local/lib:@MYRUNPATH@:.
++AR = @AR@
+ RUNENV = LD_LIBRARY_PATH=.:/lib:/usr/lib:$(MYLIBDIR):$(HOME)/lib:/usr/local/lib:@MYRUNPATH@
+ MYPOSTCMD = @MYPOSTCMD@
+ 
 --- a/configure.in
 +++ b/configure.in
 @@ -24,24 +24,6 @@
@@ -33,8 +43,17 @@
    enables="$enables (debug)"
    stable="yes"
  fi
-@@ -187,19 +169,20 @@
+@@ -180,26 +161,28 @@
+   then
+     MYCFLAGS="-Wall -fPIC -fsigned-char -O1"
+   fi
+-  if gcc --version | egrep -i '^2\.(8|9)' > /dev/null 2>&1
++  if $CC --version | egrep -i '^2\.(8|9)' > /dev/null 2>&1
+   then
+     MYCFLAGS="-Wall -fPIC -fsigned-char -O1"
+   fi
  fi
++AC_CHECK_TOOL(AR, ar)
  
  # Underlying libraries
 +PKG_PROG_PKG_CONFIG
@@ -110,6 +129,15 @@
  
  
  #================================================================
+@@ -134,7 +112,7 @@
+ then
+   MYCFLAGS="-Wall -fPIC -fsigned-char -O1"
+ fi
+-if gcc --version | egrep -i '^2\.(8|9)' > /dev/null 2>&1
++if $CC --version | egrep -i '^2\.(8|9)' > /dev/null 2>&1
+ then
+   MYCFLAGS="-Wall -fPIC -fsigned-char -O1"
+ fi
 @@ -158,7 +136,7 @@
  AC_CHECK_LIB(lzo2, main)
  AC_CHECK_LIB(bz2, main)

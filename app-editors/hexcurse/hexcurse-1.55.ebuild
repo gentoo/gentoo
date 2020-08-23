@@ -10,7 +10,7 @@ SRC_URI="http://www.jewfish.net/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ppc s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm hppa ppc s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND=">=sys-libs/ncurses-5.2:0="
 DEPEND="

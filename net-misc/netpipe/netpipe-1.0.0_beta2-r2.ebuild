@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,8 +18,8 @@ S="${WORKDIR}/${PN}"
 
 src_prepare() {
 	sed -i \
-		-e "s:^OPT=.*:OPT = ${CFLAGS} ${LDFLAGS}:" \
-		-e "s:^CC=.*:CC = $(tc-getCC):" \
+		-e "s|^OPT=.*|OPT = ${CFLAGS} ${LDFLAGS}|" \
+		-e "s|^CC=.*|CC = $(tc-getCC)|" \
 		Makefile || die "sed failed"
 	default
 }
