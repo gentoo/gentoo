@@ -1,9 +1,0 @@
-diff --git a/harness/Darcs/Test/Patch.hs b/harness/Darcs/Test/Patch.hs
-index f50f6b9..f0f4e2a 100644
---- a/harness/Darcs/Test/Patch.hs
-+++ b/harness/Darcs/Test/Patch.hs
-@@ -244,3 +244,3 @@ properties :: forall thing gen. (Show1 gen, Arbitrary (Sealed gen)) =>
- properties gen prefix genname tests =
--  [ cond name condition check | (name, condition, check) <- tests ]
-+  [ cond name condition check | (name, condition :: TestCondition thing, check :: TestCheck thing testable) <- tests ]
-   where cond :: forall testable. Testable testable
