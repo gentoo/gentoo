@@ -185,7 +185,7 @@ EGO_SUM=(
 	"rsc.io/binaryregexp v0.2.0/go.mod"
 	)
 go-module_set_globals
-SRC_URI="https://${EGO_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/cesanta/docker_auth/archive/${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_SUM_SRC_URI}"
 
 LICENSE="Apache-2.0 BSD BSD-2 LGPL-3 MIT ZLIB"
