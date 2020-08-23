@@ -3,7 +3,7 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <upstream>
-    <remote-id type="bitbucket">izi/polib</remote-id>
+    <remote-id type="github">izimobil/polib</remote-id>
     <remote-id type="pypi">polib</remote-id>
   </upstream>
 </pkgmetadata>
