@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A persistence framework for session data"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~x86"
+KEYWORDS="~alpha ~amd64 ~ppc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
