@@ -16,12 +16,9 @@
 		<flag name="mssql">Enable Microsoft SQL Server support (via ODBC) for
 			data storage</flag>
 		<flag name="mysql">Enable MySQL support for data storage</flag>
-		<flag name="nls">Enable character set conversion for mod_irc</flag>
 		<flag name="odbc">Enable ODBC support to access data storage</flag>
 		<flag name="postgres">Enable PostgreSQL support for data storage</flag>
 		<flag name="redis">Enable Redis support for transient data</flag>
-		<flag name="riak">Enable support for Riak - distributed NoSQL key-value
-			data store</flag>
 		<flag name="roster-gw">Turn on workaround for processing gateway subscriptions</flag>
 		<flag name="sqlite">Enable SQLite database support</flag>
 		<flag name="sip">Enable SIP support</flag>
