@@ -4762,6 +4762,7 @@ media-sound/ncmpcpp:visualizer - Enable visualizer screen with sound wave/freque
 media-sound/patchage:jack-dbus - Use Jack via D-Bus instead of libjack
 media-sound/patchage:session - Include experimental Jack session management (save/restore) support
 media-sound/picard:discid - Enable reading the ID of the inserted CD
+media-sound/picard:fingerprints - Enable calculation and lookup of AcoustID fingerprints
 media-sound/pithos:keybinder - Use keybinder to enable global key bindings
 media-sound/pms:regex - Enable regular expression searches
 media-sound/pragha:glyr - Enable music metadata searchengine support using media-libs/glyr
