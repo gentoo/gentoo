@@ -23,6 +23,7 @@ ruby_add_rdepend ">=dev-ruby/activerecord-4.2:*"
 
 ruby_add_bdepend "
 	test? (
+		dev-ruby/mocha
 		dev-ruby/test-unit:2
 		dev-ruby/activerecord[sqlite]
 	)"
