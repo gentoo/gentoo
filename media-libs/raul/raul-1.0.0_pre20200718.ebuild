@@ -8,9 +8,13 @@ PYTHON_REQ_USE='threads(+)'
 
 inherit waf-utils python-any-r1 eutils
 
+COMMIT="496e70e420811c7d744a8bcc44a2ac1b51b676b5"
+COMMIT_AUTOWAF="6c6c1d29bfe4c28dd26b5cde7ea4a1a148ee700d"
+
 DESCRIPTION="C++ utility library primarily aimed at audio/musical applications"
 HOMEPAGE="http://wiki.drobilla.net/Raul"
-SRC_URI="https://gitlab.com/drobilla/raul/-/archive/496e70e420811c7d744a8bcc44a2ac1b51b676b5.tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="https://gitlab.com/drobilla/raul/-/archive/${COMMIT}.tar.bz2 -> ${P}.tar.bz2
+	https://gitlab.com/drobilla/autowaf/-/archive/${COMMIT_AUTOWAF}.tar.bz2 -> drobilla-autowaf.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -19,18 +23,25 @@ IUSE="debug doc test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/boost
-	>=dev-libs/glib-2.14.0"
+	dev-libs/glib"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
+S="${WORKDIR}/${PN}-${COMMIT}"
+
 RAUL_TESTS="atomic_test atom_test list_test midi_ringbuffer_test path_test quantize_test queue_test ringbuffer_test smf_test table_test thread_test time_test"
-DOCS=( AUTHORS README ChangeLog )
+DOCS=( AUTHORS NEWS README )
+
+src_prepare() {
+	default
+	rm -r "${S}/waflib" || die
+	ln -s "${WORKDIR}/autowaf-${COMMIT_AUTOWAF}" "${S}/waflib" || die
+}
 
 src_configure() {
 	waf-utils_src_configure \
-		--htmldir=/usr/share/doc/${PF}/html \
 		$(use debug && echo "--debug") \
 		$(use doc && echo "--docs") \
 		$(use test && echo "--test")
