@@ -96,7 +96,6 @@ dev-python/jplephem
 dev-python/natgrid
 dev-python/pcapy
 dev-python/promises
-dev-python/pycuda
 dev-python/pydotplus
 dev-python/pyds9
 dev-python/pyflann
