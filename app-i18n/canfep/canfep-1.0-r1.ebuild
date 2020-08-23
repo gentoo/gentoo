@@ -13,7 +13,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz
 
 LICENSE="canfep"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc ~sparc x86"
+KEYWORDS="~alpha amd64 ppc ~sparc x86"
 IUSE="unicode"
 
 RDEPEND="app-i18n/canna
