@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Implements an algorithm to find good values for chart axis"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~mips ~ppc ~x86"
+KEYWORDS="~amd64 ~hppa ~mips ~ppc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
