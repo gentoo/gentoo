@@ -13131,7 +13131,7 @@ media-libs/libcuefile 477-r1: Cue File library from Musepack
 media-libs/libdc1394 2.2.5-r1: Library to interface with IEEE 1394 cameras following the IIDC specification
 media-libs/libdca 0.0.5-r3 0.0.7: Library for decoding DTS Coherent Acoustics streams used in DVD
 media-libs/libde265 1.0.3 1.0.5 9999: Open h.265 video codec implementation
-media-libs/libdiscid 0.6.1 0.6.2: Client library to create MusicBrainz enabled tagging applications
+media-libs/libdiscid 0.6.2: Client library to create MusicBrainz enabled tagging applications
 media-libs/libdmtx 0.7.4 0.7.5: Barcode data matrix reading and writing library
 media-libs/libdv 1.0.0-r4: Software codec for dv-format video (camcorders etc)
 media-libs/libdvbcsa 1.1.0: Free implementation of the DVB Common Scrambling Algorithm - DVB/CSA
@@ -16173,7 +16173,7 @@ sci-libs/Shapely 1.6.4_p2-r1 1.7.0: Geometric objects, predicates, and operation
 sci-libs/ViSP 3.3.0: Visual Servoing Platform: visual tracking and visual servoing library
 sci-libs/adolc 2.4.1 2.6.3-r1 2.7.2 9999: Automatic differentiation system for C/C++
 sci-libs/alglib 3.10.0-r1: Numerical analysis and data processing library
-sci-libs/amd 2.3.1 2.4.6: Library to order a sparse matrix prior to Cholesky factorization
+sci-libs/amd 2.4.6: Library to order a sparse matrix prior to Cholesky factorization
 sci-libs/armadillo 8.300.2 9.800.3 9.850.1: Streamlined C++ linear algebra library
 sci-libs/arpack 3.1.5 3.4.0 3.5.0 9999: Arnoldi package library to solve large scale eigenvalue problems
 sci-libs/arprec 2.2.18 2.2.19: Arbitrary precision float arithmetics and functions
@@ -16187,7 +16187,7 @@ sci-libs/bmrblib 1.0.3 1.0.4: API abstracting the BioMagResBank (BMRB) NMR-STAR 
 sci-libs/brial 1.2.8: A C++ library for polynomials over boolean rings
 sci-libs/btf 1.2.6: Algorithm for matrix permutation into block triangular form
 sci-libs/buddy 2.4-r1: Binary Decision Diagram Package
-sci-libs/camd 2.3.1 2.4.6: Library to order a sparse matrix prior to Cholesky factorization
+sci-libs/camd 2.4.6: Library to order a sparse matrix prior to Cholesky factorization
 sci-libs/cantera 2.4.0-r4 2.4.0-r5: Object-oriented tool suite for chemical kinetics, thermodynamics, and transport
 sci-libs/cartopy 0.18.0_beta1 0.18.0: Python package for geospatial data processing and analysis
 sci-libs/cbflib 0.9.3.3: Library providing a simple mechanism for accessing CBF files and imgCIF files
@@ -16234,7 +16234,7 @@ sci-libs/coinor-smi 0.93.4: COIN-OR Stochastic modelling interface
 sci-libs/coinor-symphony 5.5.7: COIN-OR solver for mixed-integer linear programs
 sci-libs/coinor-utils 2.11.4: COIN-OR Matrix, Vector and other utility classes
 sci-libs/coinor-vol 1.5.4: COIN-OR volume algorithm linear program solver
-sci-libs/colamd 2.8.0 2.9.6: Column approximate minimum degree ordering algorithm
+sci-libs/colamd 2.9.6: Column approximate minimum degree ordering algorithm
 sci-libs/colpack 1.0.10: C++ algorithms for specialized vertex coloring problems
 sci-libs/cqrlib 1.1.3: Utility library for quaternion arithmetic / rotation math (ANSI C implemented)
 sci-libs/cxsparse 3.2.0: Extended sparse matrix package
