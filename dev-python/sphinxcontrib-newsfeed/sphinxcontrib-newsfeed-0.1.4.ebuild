@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="News Feed extension for Sphinx"
-HOMEPAGE="https://bitbucket.org/prometheus/sphinxcontrib-newsfeed"
+HOMEPAGE="https://github.com/prometheusresearch/sphinxcontrib-newsfeed"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"
