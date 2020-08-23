@@ -53,8 +53,16 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DUSE_COMGR_LIBRARY=yes
-		-DROCclr_DIR=/usr/include/rocclr
-		-DLIBROCclr_STATIC_DIR=/usr/lib64/cmake/rocclr
+		-DROCclr_DIR="${EPREFIX}/usr/include/rocclr"
+		-DLIBROCclr_STATIC_DIR="${EPREFIX}/usr/lib64/cmake/rocclr"
 	)
 	cmake_src_configure
+}
+
+src_install() {
+	cd "${BUILD_DIR}" || die
+	insinto /etc/OpenCL/vendors
+	doins amdocl64.icd
+	insinto /usr/lib64
+	doins lib/libamdocl64.so
 }
