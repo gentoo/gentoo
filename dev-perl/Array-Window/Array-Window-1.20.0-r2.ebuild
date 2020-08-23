@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Calculate windows/subsets/pages of arrays"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc sparc ~x86"
+KEYWORDS="~amd64 ~ia64 ~ppc sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
