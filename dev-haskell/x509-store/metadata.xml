@@ -5,9 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<use>
-		<flag name="executable">Build the executable</flag>
-	</use>
 	<longdescription>
 		X.509 collection accessing and storing methods for certificate, crl, exception list
 	</longdescription>
