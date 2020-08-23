@@ -123,7 +123,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.0-fix_paths_in_libvirt-guests_sh.patch
-	"${FILESDIR}"/${PN}-6.1.0-fix-paths-for-apparmor.patch
+	"${FILESDIR}"/${PN}-6.5.0-fix-paths-for-apparmor.patch
 	"${FILESDIR}"/${PN}-6.5.0-do-not-use-sysconfig.patch
 )
 
