@@ -839,14 +839,6 @@ glibc_do_configure() {
 			# https://sourceware.org/PR24202
 			myconf+=( --enable-stack-protector=no )
 			;;
-		powerpc-*)
-			# Currently gcc on powerpc32 generates invalid code for
-			# __builtin_return_address(0) calls. Normally programs
-			# don't do that but malloc hooks in glibc do:
-			# https://gcc.gnu.org/PR81996
-			# https://bugs.gentoo.org/629054
-			myconf+=( --enable-stack-protector=no )
-			;;
 		*)
 			# Use '=strong' instead of '=all' to protect only functions
 			# worth protecting from stack smashes.
