@@ -4785,7 +4785,7 @@ dev-java/jamon 2.81: Java API to monitor production applications
 dev-java/jamvm 2.0.0-r1: An extremely small and specification-compliant virtual machine
 dev-java/janino 2.7.0: An embedded compiler for run-time compilation purposes
 dev-java/jansi 1.5-r2 1.11-r1: A library that allows you to use ANSI escape sequences in your console output
-dev-java/jansi-native 1.5: Native JNI component for dev-java/jansi
+dev-java/jansi-native 1.5 1.8: Native JNI component for dev-java/jansi
 dev-java/japitools 0.9.7-r4: Java API compatibility testing tools
 dev-java/jarbundler 1.8.1-r2 2.3.1: Jar Bundler Ant Task
 dev-java/jargs 1.0: Command-line argument parsing library in Java
