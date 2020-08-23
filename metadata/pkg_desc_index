@@ -4622,7 +4622,7 @@ dev-java/bcel 6.0_rc3: The Byte Code Engineering Library: analyze, create, manip
 dev-java/bcmail 1.38-r6 1.45-r5 1.50-r3 1.52-r3: Java cryptography APIs
 dev-java/bcpg 1.50-r1 1.50-r2 1.52-r1 1.52-r2: Java cryptography APIs
 dev-java/bcpkix 1.50-r2 1.52-r1: Java cryptography APIs
-dev-java/bcprov 1.38-r4 1.40-r2 1.45-r2 1.48-r2 1.49-r4 1.50-r2 1.50-r3 1.50-r4 1.52-r1 1.52-r2 1.52-r3 1.54: Java cryptography APIs
+dev-java/bcprov 1.38-r4 1.40-r2 1.45-r2 1.48-r2 1.49-r4 1.50-r2 1.50-r3 1.50-r4 1.52-r1 1.52-r2 1.52-r3 1.54 1.66: Java cryptography APIs
 dev-java/bctsp 1.45-r1: Java cryptography APIs
 dev-java/beansbinding 1.2.1-r3: Implementation of JSR295
 dev-java/blowfishj 2.14-r3: Blowfish implementation in Java
@@ -13252,7 +13252,7 @@ media-libs/libtiger 0.3.4-r1: A rendering library for Kate streams using Pango a
 media-libs/libtimidity 0.2.4 0.2.6: MIDI to WAVE converter library
 media-libs/libuninameslist 20091231-r1: Library of unicode annotation data
 media-libs/libuvc 0.0.6-r1: A cross-platform library for USB video devices, built atop libusb
-media-libs/libv4l 1.6.2 1.10.1 1.16.3 1.16.6 1.18.0 1.18.1: Separate libraries ebuild from upstream v4l-utils package
+media-libs/libv4l 1.10.1 1.16.6 1.20.0: Separate libraries ebuild from upstream v4l-utils package
 media-libs/libvisio 0.1.7 9999: Library parsing the file format of MS Visio documents
 media-libs/libvisual 0.4.0-r3: Libvisual is an abstraction library that comes between applications and audio visualisation plugins
 media-libs/libvorbis 1.3.6-r1 1.3.7: The Ogg Vorbis sound file format library
@@ -14073,7 +14073,7 @@ media-tv/tvbrowser-bin 4.2.1: Themeable and easy to use TV Guide - written in Ja
 media-tv/tvheadend 4.2.8-r1 9999: Tvheadend is a TV streaming server and digital video recorder
 media-tv/tvnamer 2.4 2.5: Automatic TV episode file renamer, data from thetvdb.com
 media-tv/v4l-dvb-saa716x 0.0.1_p20170225-r3 0.0.1_p20170225-r4: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
-media-tv/v4l-utils 1.10.1 1.16.3 1.16.3-r1 1.16.6 1.18.0: Separate utilities ebuild from upstream v4l-utils package
+media-tv/v4l-utils 1.10.1 1.16.6 1.20.0: Separate utilities ebuild from upstream v4l-utils package
 media-tv/w_scan 20141122 20170107: Scan DVB-C/DVB-T/DVB-S channels
 media-tv/xmltv 0.5.70 0.6.1: Set of utilities to manage TV listings stored in the XMLTV format
 media-video/acidrip 0.14-r4: A gtk-perl mplayer/mencoder frontend for ripping DVDs
