@@ -7,7 +7,7 @@ DESCRIPTION="Tomoe GTK+ interface widget library"
 HOMEPAGE="http://tomoe.osdn.jp/"
 SRC_URI="mirror://sourceforge/tomoe/${P}.tar.gz"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
