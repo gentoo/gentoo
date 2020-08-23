@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl extension to create simple calendars"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~x86 ~ppc-aix"
+KEYWORDS="~amd64 ~hppa ~ppc x86 ~ppc-aix"
 IUSE="minimal test"
 RESTRICT="!test? ( test )"
 
