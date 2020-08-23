@@ -11173,6 +11173,7 @@ games-arcade/ninvaders 0.1.2: a Space Invaders clone based on ncurses for ASCII 
 games-arcade/njam 1.25-r1: Multi or single-player network Pacman-like game in SDL
 games-arcade/notpacman 1.0.4-r1: A mashup of "Not" and "Pacman"
 games-arcade/nottetris2 1-r1: The spiritual successor of the classic Tetris mixed with physics
+games-arcade/open-supaplex 7.1.2: OSS reimplementation of Supaplex in C and SDL
 games-arcade/openbubbles 1.2-r1: A clone of Evan Bailey's game Bubbles
 games-arcade/openmortal 0.7-r2: A spoof of the famous Mortal Kombat game
 games-arcade/opensonic 0.1.4-r2: A free open-source game based on the Sonic the Hedgehog universe
@@ -11879,7 +11880,7 @@ gnome-extra/gnome-shell-extensions 3.34.2 3.36.2 3.36.3: JavaScript extensions f
 gnome-extra/gnome-shell-extensions-topicons-plus 27: Moves legacy tray icons to top panel
 gnome-extra/gnome-shell-frippery 3.34.2: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-software 3.34.2 3.36.1: Gnome install & update software
-gnome-extra/gnome-system-monitor 3.32.1: The Gnome System Monitor
+gnome-extra/gnome-system-monitor 3.32.1 3.36.1: The Gnome System Monitor
 gnome-extra/gnome-tweaks 3.34.0: Customize advanced GNOME 3 options
 gnome-extra/gnome-user-docs 3.34.2 3.36.2: GNOME end user documentation
 gnome-extra/gnome-user-share 3.34.0: Personal file sharing for the GNOME desktop
