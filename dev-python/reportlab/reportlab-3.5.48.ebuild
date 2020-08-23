@@ -10,8 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Tools for generating printable PDF documents from any data source"
 HOMEPAGE="
 	https://www.reportlab.com/
-	https://pypi.org/project/reportlab/
-	https://bitbucket.org/rptlab/reportlab/"
+	https://pypi.org/project/reportlab/"
 SRC_URI="
 	mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz
 	https://www.reportlab.com/ftp/fonts/pfbfer-20070710.zip"
