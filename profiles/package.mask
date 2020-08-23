@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2020-08-23)
+# Ported to py3 but not yet released
+# Masked to allow py2.7 removal
+dev-lang/spark
+
 # Jack Todaro <solpeth@posteo.org> (2020-08-23)
 # Its only reverse dependency is app-emacs/ghc-mod,
 # which is masked and dead upstream.
