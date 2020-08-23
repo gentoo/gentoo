@@ -6,6 +6,6 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="bitbucket">osslugaru/lugaru</remote-id>
+		<remote-id type="gitlab">osslugaru/lugaru</remote-id>
 	</upstream>
 </pkgmetadata>
