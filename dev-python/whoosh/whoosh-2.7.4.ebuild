@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{6..9} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Fast, pure-Python full text indexing, search and spell checking library"
-HOMEPAGE="https://bitbucket.org/mchaput/whoosh/wiki/Home/ https://pypi.org/project/Whoosh/"
+HOMEPAGE="https://pypi.org/project/Whoosh/"
 SRC_URI="mirror://pypi/W/${PN^}/${P^}.tar.gz"
 S="${WORKDIR}/${P^}"
 

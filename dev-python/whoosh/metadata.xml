@@ -18,6 +18,5 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">Whoosh</remote-id>
-		<remote-id type="bitbucket">mchaput/whoosh</remote-id>
 	</upstream>
 </pkgmetadata>
