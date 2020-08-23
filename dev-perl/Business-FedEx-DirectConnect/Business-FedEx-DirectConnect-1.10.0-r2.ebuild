@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Interface to FedEx Ship Manager Direct"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~x86"
+KEYWORDS="~amd64 ~ia64 x86"
 
 RDEPEND="dev-perl/libwww-perl
 	dev-perl/Tie-StrictHash"
