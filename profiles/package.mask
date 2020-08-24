@@ -791,11 +791,6 @@ app-dicts/sword-WEB
 dev-tex/metapost
 app-eselect/eselect-mpost
 
-# Ulrich Müller <ulm@gentoo.org> (2020-07-25)
-# No longer needed without the separate dev-tex/pdftex package.
-# Removal in 30 days. Bug #533080.
-app-eselect/eselect-pdftex
-
 # Hans de Graaff <graaff@gentoo.org> (2020-07-22)
 # Mask old obsolete slots for removal in 30 days.
 # Use a newer slot of the same package instead.
