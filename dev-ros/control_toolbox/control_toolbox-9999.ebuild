@@ -23,4 +23,5 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-ros/control_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	test? ( dev-cpp/gtest )
 "
