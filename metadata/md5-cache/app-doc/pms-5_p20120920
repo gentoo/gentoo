@@ -1,4 +1,4 @@
-BDEPEND=dev-texlive/texlive-bibtexextra dev-texlive/texlive-fontsrecommended dev-texlive/texlive-latex >=dev-texlive/texlive-latexextra-2020-r2 dev-texlive/texlive-latexrecommended dev-texlive/texlive-mathscience html? ( app-text/recode >=dev-tex/tex4ht-20090115_p0029 )
+BDEPEND=dev-texlive/texlive-bibtexextra dev-texlive/texlive-fontsrecommended dev-texlive/texlive-latex >=dev-texlive/texlive-latexextra-2020-r2 dev-texlive/texlive-latexrecommended dev-texlive/texlive-mathscience html? ( app-text/recode >=dev-tex/tex4ht-20090611_p1038-r11 )
 DEFINED_PHASES=compile install
 DESCRIPTION=Gentoo Package Manager Specification
 EAPI=7
@@ -9,4 +9,4 @@ LICENSE=CC-BY-SA-3.0
 RDEPEND=!app-doc/pms-bin
 SLOT=20120920
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/pms-5.tar.xz
-_md5_=a852df32622d541b97031dfb7e79c0fe
+_md5_=fe023802da1a4c8452e880ed91aadc67
