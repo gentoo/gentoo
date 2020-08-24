@@ -90,6 +90,9 @@ pkg_pretend() {
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
+	# Apply b0ed587308eb3cbfafe9abcb1c59f24f48b97cdc for bug 738766.
+	sed "/scheduler.wait()/d" -i lib/portage/util/futures/iter_completed.py || die
+
 	sed -e "s:^VERSION = \"HEAD\"$:VERSION = \"${PV}\":" -i lib/portage/__init__.py || die
 
 	if use gentoo-dev; then
