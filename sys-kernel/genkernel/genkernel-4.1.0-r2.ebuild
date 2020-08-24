@@ -277,10 +277,26 @@ pkg_postinst() {
 	fi
 
 	local n_root_args=$(grep -o -- '\<root=' /proc/cmdline 2>/dev/null | wc -l)
-	if [[ ${n_root_args} > 1 ]]; then
+	if [[ ${n_root_args} > 1 ]] ; then
 		ewarn "WARNING: Multiple root arguments (root=) on kernel command-line detected!"
 		ewarn "If you are appending non-persistent device names to kernel command-line,"
 		ewarn "next reboot could fail in case running system and initramfs do not agree"
 		ewarn "on detected root device name!"
+	fi
+
+	if [[ -d /run ]] ; then
+		local permission_run_expected="drwxr-xr-x"
+		local permission_run=$(stat -c "%A" /run)
+		if [[ "${permission_run}" != "${permission_run_expected}" ]] ; then
+			ewarn "Found the following problematic permissions:"
+			ewarn ""
+			ewarn "    ${permission_run} /run"
+			ewarn ""
+			ewarn "Expected:"
+			ewarn ""
+			ewarn "    ${permission_run_expected} /run"
+			ewarn ""
+			ewarn "This is known to be causing problems for any UDEV-enabled service."
+		fi
 	fi
 }
