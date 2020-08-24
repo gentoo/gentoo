@@ -7,7 +7,7 @@ inherit toolchain-funcs multilib-minimal
 
 DESCRIPTION="Audio processing system for plugins to extract information from audio data"
 HOMEPAGE="https://www.vamp-plugins.org"
-SRC_URI="https://github.com/c4dm/${PN}/archive/${PN}-v${PV}.tar.gz -> {P}.tar.gz"
+SRC_URI="https://github.com/c4dm/${PN}/archive/${PN}-v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
