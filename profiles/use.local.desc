@@ -2191,7 +2191,10 @@ dev-libs/libcbor:custom-alloc - Custom, dynamically defined allocator support
 dev-libs/libcdio:minimal - Only build the libcdio library and little more, just to be used to link against from multimedia players. With this USE flag enabled, none of the command-line utilities are built, nor is the CDDA library.
 dev-libs/libcec:cubox - Enable support for enable support for the TDA995x
 dev-libs/libcec:exynos - Enable support for Exynos chipsets
+dev-libs/libcec:kernel-cec - Enable support for Linux kernel CEC framework
 dev-libs/libcec:raspberry-pi - Enable support for the Raspberry Pi
+dev-libs/libcec:tools - Enable build of cec-client and other test and demo executable tools
+dev-libs/libcec:udev - Enable detection of USB-CEC port by udev
 dev-libs/libcec:xrandr - Enable detection of active HDMI using xrandr extensions
 dev-libs/libcgroup:daemon - Install the configuration tools and init/config files.
 dev-libs/libcgroup:tools - Install the cgroup rules processing daemon and init/config files.
