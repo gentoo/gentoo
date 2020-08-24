@@ -28,3 +28,11 @@ DEPEND="${RDEPEND}
 	dev-ros/shape_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	test? ( dev-cpp/gtest dev-ros/rosunit )
 "
+
+src_prepare() {
+	ros-catkin_src_prepare
+	# https://bugs.gentoo.org/738556
+	# http://eigen.tuxfamily.org/dox-devel/group__TopicUnalignedArrayAssert.html
+	append-cxxflags '-std=c++17'
+	sed -e 's/add_compile_options(/#\0/g' -i CMakeLists.txt || die
+}
