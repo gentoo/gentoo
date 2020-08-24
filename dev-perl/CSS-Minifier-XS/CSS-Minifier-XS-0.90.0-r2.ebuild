@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="XS based CSS minifier"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DEPEND="
 	dev-perl/Module-Build
