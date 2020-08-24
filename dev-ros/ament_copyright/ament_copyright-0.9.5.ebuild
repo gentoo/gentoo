@@ -44,3 +44,8 @@ DEPEND="${RDEPEND}
 BDEPEND=""
 
 distutils_enable_tests pytest
+
+python_test() {
+	distutils_install_for_testing
+	pytest -vv || die "Tests failed with ${EPYTHON}"
+}
