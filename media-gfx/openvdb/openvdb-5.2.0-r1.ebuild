@@ -14,7 +14,7 @@ SRC_URI="https://github.com/AcademySoftwareFoundation/${PN}/archive/v${PV}.tar.g
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="abi3-compat abi4-compat abi5-compat doc python test"
+IUSE="abi3-compat abi4-compat +abi5-compat doc python test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
