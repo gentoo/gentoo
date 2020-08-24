@@ -2010,6 +2010,7 @@ dev-lang/rust:system-bootstrap - Bootstrap using installed rust compiler
 dev-lang/rust:system-llvm - Use the system LLVM install
 dev-lang/rust:wasm - Build support for the wasm32-unknown-unknown target
 dev-lang/rust-bin:clippy - Install clippy, Rust code linter
+dev-lang/rust-bin:rls - Install rls, Rust Language Server (used with IDEs supporting RLS protocol)
 dev-lang/rust-bin:rustfmt - Install rustfmt, Rust code formatter
 dev-lang/scala:binary - Install from (Gentoo-compiled) binary instead of building from sources. Set this when you run out of memory during build.
 dev-lang/smlnj:pax_kernel - Enable if the user plans to run the package under a pax enabled hardened kernel
@@ -8074,6 +8075,7 @@ sys-auth/sssd:locator - Install sssd's Kerberos plugin
 sys-auth/sssd:manpages - Build man pages with dev-libs/libxslt
 sys-auth/sssd:netlink - Add support for netlink protocol via dev-libs/libnl
 sys-auth/sssd:nfsv4 - Add support for the nfsv4 idmapd plugin provided by net-libs/libnfsidmap
+sys-auth/sssd:pac - Add Privileged Attribute Certificate Support for Kerberos
 sys-auth/sssd:ssh - Build helper to let net-misc/openssh use sssd provided information
 sys-auth/sssd:sudo - Build helper to let app-admin/sudo use sssd provided information
 sys-auth/sssd:valgrind - Depend on dev-util/valgrind for test suite
