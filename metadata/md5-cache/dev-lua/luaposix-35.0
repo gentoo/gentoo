@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile install
+DEPEND=dev-lang/lua:0= dev-lua/lua-bit32
+DESCRIPTION=Bindings for POSIX APIs
+EAPI=7
+HOMEPAGE=https://luaposix.github.io/luaposix/ https://github.com/luaposix/luaposix
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=MIT
+RDEPEND=dev-lang/lua:0= dev-lua/lua-bit32
+SLOT=0
+SRC_URI=https://github.com/luaposix/luaposix/archive/v35.0.tar.gz -> luaposix-35.0.tar.gz
+_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=95bc6cb35324790f0ed1a3f142cd0635
