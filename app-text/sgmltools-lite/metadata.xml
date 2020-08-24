@@ -7,8 +7,8 @@
 	</maintainer>
 	<use>
 		<flag name="jadetex">
-			Add support for <pkg>app-text/jadetex</pkg> (for processing
-			tex files produced by the TeX backend of Jade)
+			Add support for processing tex files produced by the TeX
+			backend of Jade
 		</flag>
 	</use>
 	<upstream>
