@@ -1,5 +1,5 @@
 BDEPEND=virtual/pkgconfig >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile configure install test unpack
+DEFINED_PHASES=compile configure install postinst postrm test unpack
 DEPEND=>=app-text/zathura-0.3.9 dev-libs/girara dev-libs/glib:2 x11-libs/cairo
 DESCRIPTION=Comic book plug-in for zathura with 7zip, rar, tar and zip support
 EAPI=7
@@ -8,5 +8,5 @@ LICENSE=ZLIB
 PROPERTIES=live
 RDEPEND=>=app-text/zathura-0.3.9 dev-libs/girara dev-libs/glib:2 x11-libs/cairo
 SLOT=0
-_eclasses_=git-r3	8ec5b53812bce105ae7943930e4660f8	meson	71d293a701d6362387e1214da368c848	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=e198d1472d4f71941f3c4eced3a5a37b
+_eclasses_=git-r3	8ec5b53812bce105ae7943930e4660f8	meson	71d293a701d6362387e1214da368c848	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=939d7c2144620b6a3ab019510caed05a

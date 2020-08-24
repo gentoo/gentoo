@@ -3040,7 +3040,7 @@ app-text/tessdata_legacy 4.0.0: Trained models for app-text/tesseract compatible
 app-text/tesseract 3.05.02 4.1.0-r1 4.1.1 9999: An OCR Engine, originally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2020-r7: A complete TeX distribution
-app-text/texlive-core 2020-r7 2020-r8: A complete TeX distribution
+app-text/texlive-core 2020-r9: A complete TeX distribution
 app-text/tidy-html5 5.6.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
@@ -5717,7 +5717,7 @@ dev-libs/yaz 3.0.53: C/C++ toolkit for Z39.50v3 clients and servers
 dev-libs/zlog 1.2.14-r1: A reliable, thread safe, clear-model, pure C logging library.
 dev-libs/zookeeper-c 3.4.8 3.4.9 3.4.10: C client interface to Zookeeper server
 dev-libs/zthread 2.3.2-r4: platform-independent multi-threading and synchronization library for C++
-dev-libs/zziplib 0.13.69-r1 0.13.71-r1: Lightweight library for extracting data from files archived in a single zip file
+dev-libs/zziplib 0.13.69-r1 0.13.71-r1 0.13.71-r2: Lightweight library for extracting data from files archived in a single zip file
 dev-lisp/abcl 1.5.0: Armed Bear Common Lisp is a Common Lisp implementation for the JVM.
 dev-lisp/alexandria 20171029: A collection of portable utilities for Common Lisp
 dev-lisp/asdf 3.1.5 3.3.1 3.3.2 3.3.2-r1: ASDF is Another System Definition Facility for Common Lisp
@@ -14896,7 +14896,7 @@ net-libs/libsearpc 3.0.8-r3 3.2.0-r1: A simple C language RPC framework
 net-libs/libsignal-protocol-c 2.3.2 2.3.3 9999: Signal Protocol C Library
 net-libs/libsignon-glib 2.1: GLib binding for the D-Bus API provided by signond
 net-libs/libslirp 4.3.1: A general purpose TCP-IP emulator used by virtual machine hypervisors to provide virtual networking services.
-net-libs/libsmi 0.4.8-r1 0.5.0: A Library to Access SMI MIB Information
+net-libs/libsmi 0.4.8-r1 0.5.0-r1: A Library to Access SMI MIB Information
 net-libs/libsoup 2.70.0: HTTP client/server library for GNOME
 net-libs/libsrsirc 0.0.14-r1: A lightweight, cross-platform IRC library
 net-libs/libsrtp 1.6.0-r1 2.2.0 2.3.0-r1: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
@@ -17779,7 +17779,7 @@ sys-process/daemontools 0.76-r8: Collection of tools for managing UNIX services
 sys-process/daemontools-encore 1.10 1.11: Collection of tools for managing UNIX services
 sys-process/dcron 4.5-r2: A cute little cron from Matt Dillon
 sys-process/dumb-init 1.2.0 1.2.1: A minimal init system for Linux containers
-sys-process/evisum 0.5.1 0.5.3: System and process monitor written with EFL
+sys-process/evisum 0.5.1 0.5.4: System and process monitor written with EFL
 sys-process/fcron 3.2.1-r1 3.2.1-r3 3.3.0_beta-r1: A command scheduler with extended capabilities over cron and anacron
 sys-process/ftop 1.0 1.0-r1: Monitor open files and filesystems
 sys-process/glances 2.11.1 3.1.0 3.1.4.1-r1: CLI curses based monitoring tool
@@ -18945,7 +18945,7 @@ x11-themes/comix-xcursors 0.8.2: X11 mouse theme with a comics feeling
 x11-themes/commonbox-styles 0.6: Common styles for fluxbox, blackbox, and openbox
 x11-themes/commonbox-styles-extra 0.2-r2: Extra styles pack for flux|black|open(box)
 x11-themes/constantine-backgrounds 12.1.1.4-r1: Fedora 12 official background artwork
-x11-themes/e-flat-theme 0_pre20200602: A modern, flat theme for Enlightenment WM
+x11-themes/e-flat-theme 0_pre20200602 0_pre20200824: A modern, flat theme for Enlightenment WM
 x11-themes/e-gtk-theme 0.19.3: A GTK theme to match Enlightenment WM's default theme
 x11-themes/e16-themes 1.0.2: All the official E16 themes
 x11-themes/echo-icon-theme 0.3.89.0_pre20081031: SVG icon theme from the Echo Icon project
