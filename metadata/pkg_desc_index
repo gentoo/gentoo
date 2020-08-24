@@ -8032,13 +8032,13 @@ dev-python/coreapi 2.3.3-r1: Python client library for Core API
 dev-python/coreschema 0.0.4: Core Schema
 dev-python/corner 2.0.1: Make scatter matrix corner plots
 dev-python/couchdb-python 1.1: Python library for working with CouchDB
-dev-python/cov-core 1.15.0 1.15.0-r1: plugin core for use by pytest-cov, nose-cov and nose2-cov
+dev-python/cov-core 1.15.0-r1: plugin core for use by pytest-cov, nose-cov and nose2-cov
 dev-python/coverage 4.5.2 4.5.4 5.1 5.2.1: Code coverage measurement for Python
 dev-python/coverage-test-runner 1.15: fail Python program unit tests unless they test everything
 dev-python/cppy 1.1.0: C++ header library which makes it easier to write Python extension modules
 dev-python/crcmod 1.7-r3: Python CRC Generator module
 dev-python/croniter 0.3.30: Python module to provide iteration for datetime object
-dev-python/cryptography 2.8-r1 2.9 3.0: Library providing cryptographic recipes and primitives
+dev-python/cryptography 2.9 3.0: Library providing cryptographic recipes and primitives
 dev-python/css-parser 1.0.4-r1: A CSS Cascading Style Sheets library (fork of cssutils)
 dev-python/cssselect 1.1.0: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssselect2 0.3.0: Parses CSS3 Selectors and translates them to XPath 1.0
@@ -8274,7 +8274,7 @@ dev-python/humanize 2.4.1 2.6.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 19.0.0 20.0.1: A featureful, correct URL for Python
-dev-python/hypothesis 4.57.1 5.16.3 5.21.0 5.24.3 5.24.4 5.27.0 5.28.0: A library for property based testing
+dev-python/hypothesis 4.57.1 5.21.0 5.24.3 5.24.4 5.27.0 5.28.0: A library for property based testing
 dev-python/icalendar 4.0.6: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.8 2.10: Internationalized Domain Names in Applications (IDNA)
@@ -8694,7 +8694,7 @@ dev-python/pycryptodome 3.9.8: A self-contained cryptographic library for Python
 dev-python/pycson 0.7: A python parser for the Coffeescript Object Notation (CSON)
 dev-python/pycuda 2019.1.2: Python wrapper for NVIDIA CUDA
 dev-python/pycups 1.9.73-r2: Python bindings for the CUPS API
-dev-python/pycurl 7.43.0.3 7.43.0.5: python binding for curl/libcurl
+dev-python/pycurl 7.43.0.5: python binding for curl/libcurl
 dev-python/pycxx 7.1.2-r2: Set of facilities to extend Python with C++
 dev-python/pydecomp 0.3 9999: A python library of common (de)compression and contents handling
 dev-python/pydiff 0.2-r1: Diffs two Python files at the bytecode level
@@ -9091,7 +9091,7 @@ dev-python/snapshottest 0.5.1: Snapshot Testing utils for Python
 dev-python/snowballstemmer 2.0.0: Stemmer algorithms generated from Snowball algorithms
 dev-python/socketio-client 0.7.2: A socket.io client library for Python
 dev-python/socketio-client-nexus 0.7.6: A socket.io 2.x client library for Python
-dev-python/socketpool 0.5.3-r2 0.5.3-r3: A simple Python socket pool
+dev-python/socketpool 0.5.3-r3: A simple Python socket pool
 dev-python/sortedcollections 0.5.3: Python library to sort collections and containers
 dev-python/sortedcontainers 2.2.2: Python library to sort collections and containers
 dev-python/soupsieve 1.9.5 1.9.6 2.0.1: A modern CSS selector implementation for BeautifulSoup
@@ -9112,22 +9112,22 @@ dev-python/sphinx-testing 1.0.1-r1: Testing utility classes and functions for Sp
 dev-python/sphinx_celery 2.0.0-r1: Celery Sphinx Theme and Utilities
 dev-python/sphinx_rtd_theme 0.2.4 0.4.3-r1: ReadTheDocs.org theme for Sphinx
 dev-python/sphinx_selective_exclude 1.0.3: Sphinx selective rendition extensions
-dev-python/sphinxcontrib-applehelp 1.0.1 1.0.2: Sphinx extension which outputs Apple help book
+dev-python/sphinxcontrib-applehelp 1.0.2: Sphinx extension which outputs Apple help book
 dev-python/sphinxcontrib-asyncio 0.2.0-r2: sphinx extension to support coroutines in markup
 dev-python/sphinxcontrib-blockdiag 2.0.0: A sphinx extension for embedding block diagrams using blockdiag
-dev-python/sphinxcontrib-devhelp 1.0.1 1.0.2: Sphinx extension which outputs Devhelp documents
+dev-python/sphinxcontrib-devhelp 1.0.2: Sphinx extension which outputs Devhelp documents
 dev-python/sphinxcontrib-doxylink 1.6.1: Extension to link to external Doxygen API documentation
 dev-python/sphinxcontrib-github-alt 1.1-r2: Link to GitHub issues, pull requests, commits and users from Sphinx docs
-dev-python/sphinxcontrib-htmlhelp 1.0.2 1.0.3: Sphinx extension which outputs HTML help book
+dev-python/sphinxcontrib-htmlhelp 1.0.3: Sphinx extension which outputs HTML help book
 dev-python/sphinxcontrib-httpdomain 1.7.0: Extension providing a Sphinx domain for describing RESTful HTTP APIs
 dev-python/sphinxcontrib-httpexample 0.10.3: Adds example directive for sphinx-contrib httpdomain
 dev-python/sphinxcontrib-issuetracker 0.11-r1 0.11-r2: Extension to sphinx to create links to issue trackers
-dev-python/sphinxcontrib-jsmath 1.0.1 1.0.1-r1: Sphinx extension which renders display math in HTML via JavaScript
+dev-python/sphinxcontrib-jsmath 1.0.1-r1: Sphinx extension which renders display math in HTML via JavaScript
 dev-python/sphinxcontrib-napoleon 0.6.1: Allow a different format in dosctrings for better clarity
 dev-python/sphinxcontrib-newsfeed 0.1.4: News Feed extension for Sphinx
 dev-python/sphinxcontrib-pretty-searchresults 0.3.5: Decently styled search results for sphinx-doc projects
 dev-python/sphinxcontrib-programoutput 0.16: Extension to sphinx to include program output
-dev-python/sphinxcontrib-qthelp 1.0.2 1.0.3: Sphinx extension which outputs QtHelp documents
+dev-python/sphinxcontrib-qthelp 1.0.3: Sphinx extension which outputs QtHelp documents
 dev-python/sphinxcontrib-serializinghtml 1.1.4: Sphinx extension which outputs outputs serialized HTML files
 dev-python/sphinxcontrib-spelling 5.1.2 5.3.0: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.2.2 1.2.4: Sphinx websupport extension
@@ -9267,7 +9267,7 @@ dev-python/webob 1.8.6: WSGI request and response object
 dev-python/websocket-client 0.57.0: WebSocket client for python with hybi13 support
 dev-python/websockets 8.1: Library for building WebSocket servers and clients in Python
 dev-python/websockify 0.9.0: WebSockets support for any application/server
-dev-python/webtest 2.0.33 2.0.35: Helper to test WSGI applications
+dev-python/webtest 2.0.35: Helper to test WSGI applications
 dev-python/werkzeug 1.0.1: Collection of various utilities for WSGI applications
 dev-python/wheel 0.34.2 0.35.1: A built-package format for Python
 dev-python/whelk 2.7.1: Pretending python is a shell
