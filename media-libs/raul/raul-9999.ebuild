@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
-RAUL_TESTS="atomic_test atom_test list_test midi_ringbuffer_test path_test quantize_test queue_test ringbuffer_test smf_test table_test thread_test time_test"
+RAUL_TESTS="array_test build_test double_buffer_test maid_test path_test ringbuffer_test sem_test socket_test symbol_test thread_test time_test"
 DOCS=( AUTHORS NEWS README )
 
 src_configure() {
