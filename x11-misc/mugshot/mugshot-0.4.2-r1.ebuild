@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS="no"
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1 gnome2-utils xdg-utils
 
@@ -58,6 +58,8 @@ BDEPEND="
 "
 
 S="${WORKDIR}/${PN}-${P}"
+
+PATCHES=( "${FILESDIR}/${PN}-0.4.2-python39.patch" )
 
 python_install() {
 	distutils-r1_python_install
