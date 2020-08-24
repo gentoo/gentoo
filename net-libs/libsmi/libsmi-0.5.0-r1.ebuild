@@ -1,8 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils ltprune
+EAPI=7
 
 DESCRIPTION="A Library to Access SMI MIB Information"
 HOMEPAGE="https://www.ibr.cs.tu-bs.de/projects/libsmi/"
@@ -26,7 +25,9 @@ src_test() {
 
 src_install() {
 	default
-	dodoc smi.conf-example ANNOUNCE ChangeLog README THANKS TODO \
-		doc/{*.txt,smi.dia,smi.dtd,smi.xsd}
-	prune_libtool_files
+
+	dodoc ANNOUNCE ChangeLog README THANKS TODO \
+		doc/{*.txt,smi.dia,smi.dtd,smi.xsd} smi.conf-example
+
+	find "${ED}" -name '*.la' -delete || die
 }

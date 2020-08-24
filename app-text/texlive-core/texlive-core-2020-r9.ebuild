@@ -75,7 +75,7 @@ for i in ${TL_CORE_EXTRA_SRC_MODULES}; do
 done
 SRC_URI="${SRC_URI} )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris ~sparc64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris ~sparc64-solaris"
 IUSE="cjk X doc source tk +luajittex xetex xindy"
 
 TEXMF_PATH=/usr/share/texmf-dist
@@ -99,7 +99,7 @@ COMMON_DEPEND="${MODULAR_X_DEPEND}
 	media-gfx/graphite2
 	>=x11-libs/cairo-1.12
 	>=x11-libs/pixman-0.18
-	dev-libs/zziplib
+	dev-libs/zziplib:=
 	app-text/libpaper
 	dev-libs/gmp:0
 	dev-libs/mpfr:0=
