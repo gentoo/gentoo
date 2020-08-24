@@ -19,5 +19,5 @@ HOMEPAGE="https://github.com/RadeonOpenCompute/rocminfo"
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 
-RDEPEND="dev-libs/rocr-runtime"
+RDEPEND=">=dev-libs/rocr-runtime-${PV}"
 DEPEND="${RDEPEND}"
