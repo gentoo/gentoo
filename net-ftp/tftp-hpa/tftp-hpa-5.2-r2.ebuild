@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit systemd eutils toolchain-funcs
+inherit systemd toolchain-funcs
 
 DESCRIPTION="port of the OpenBSD TFTP server"
 HOMEPAGE="https://www.kernel.org/pub/software/network/tftp/"
@@ -17,10 +17,12 @@ IUSE="ipv6 readline selinux tcpd +client +server"
 CDEPEND="
 	readline? ( sys-libs/readline:0= )
 	tcpd? ( sys-apps/tcp-wrappers )
-	!net-ftp/atftp"
+	"
 
 DEPEND="${CDEPEND}
-	app-arch/xz-utils"
+	app-arch/xz-utils
+	!net-ftp/atftp
+	!net-ftp/uftpd"
 
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-tftp )"
@@ -48,23 +50,20 @@ src_compile() {
 	if use client; then
 		emake -C tftp
 	fi
-	if use daemon; then
+	if use server; then
 		emake -C tftpd
 	fi
 }
 
 src_install() {
 	dodoc README* CHANGES tftpd/sample.rules
-	emake INSTALLROOT="${D}" -C lib install
-	emake INSTALLROOT="${D}" -C common install
 
 	if use client; then
 		emake INSTALLROOT="${D}" -C tftp install
 	fi
-	if use daemon; then
+	if use server; then
+		emake INSTALLROOT="${D}" -C tftpd install
 
-		emake INSTALLROOT="${D}" install
-		# iputils installs this
 		rm "${ED}"/usr/share/man/man8/tftpd.8 || die
 
 		newconfd "${FILESDIR}"/in.tftpd.confd-0.44 in.tftpd
