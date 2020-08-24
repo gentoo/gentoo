@@ -3,10 +3,10 @@ DEPEND=>=dev-perl/Set-IntSpan-1.120.0 virtual/perl-Time-Local virtual/perl-ExtUt
 DESCRIPTION=Calculate business hours in a time period
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Business-Hours
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Set-IntSpan-1.120.0 virtual/perl-Time-Local dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/B/BP/BPS/Business-Hours-0.13.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=57a775afa7f36212e0e04b8e380748a8
+_md5_=5c92588e1c3ac5218a372133e9e7b124

@@ -5,10 +5,10 @@ DESCRIPTION=Integrate Cairo into the Glib type system
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/Cairo-GObject
 IUSE=examples
-KEYWORDS=~amd64 x86
+KEYWORDS=amd64 x86
 LICENSE=LGPL-2.1+
 RDEPEND=x11-libs/cairo[glib] >=dev-perl/glib-perl-1.224.0 >=dev-perl/Cairo-1.80.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/X/XA/XAOC/Cairo-GObject-1.005.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=daaa30201a985c4a1146333dd0af448d
+_md5_=d360039a7f503ac1fc88a1d7457bf03f

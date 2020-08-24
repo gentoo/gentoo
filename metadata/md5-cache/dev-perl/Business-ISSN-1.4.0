@@ -5,11 +5,11 @@ DESCRIPTION=Object and functions to work with International Standard Serial Numb
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/Business-ISSN
 IUSE=test
-KEYWORDS=~amd64 ~arm ~arm64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~x86
 LICENSE=Artistic-2
 RDEPEND=virtual/perl-Exporter dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/B/BD/BDFOY/Business-ISSN-1.004.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=33e242ff521f70ced22c1fef1a64bbc1
+_md5_=71adee5f4c82f7a99363b00ee09dacc3

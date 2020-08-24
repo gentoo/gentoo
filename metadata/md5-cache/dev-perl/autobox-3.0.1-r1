@@ -5,11 +5,11 @@ DESCRIPTION=Call methods on native types
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/autobox
 IUSE=test
-KEYWORDS=~amd64 x86
+KEYWORDS=amd64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Scope-Guard-0.210.0 >=virtual/perl-version-0.770.0 dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/C/CH/CHOCOLATE/autobox-v3.0.1.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=822b6a41aaf4ee61341e111042c68872
+_md5_=3c2537bf33dba2ea015daabf0355509a
