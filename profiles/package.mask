@@ -796,14 +796,6 @@ app-eselect/eselect-mpost
 # Removal in 30 days. Bug #533080.
 app-eselect/eselect-pdftex
 
-# Mikle Kolyada <zlogene@gentoo.org> (2020-07-24)
-# Both packages is a part of the texlive-formatsextra.collection
-# (or dev-texlive/texlive-formatsextra package).
-# jadetex abuses kpathsea configuration.
-# Both were last released in 2002.
-# Removal in 30 days.
-app-text/jadetex
-
 # Hans de Graaff <graaff@gentoo.org> (2020-07-22)
 # Mask old obsolete slots for removal in 30 days.
 # Use a newer slot of the same package instead.
