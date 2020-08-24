@@ -12,6 +12,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 s390 sparc x86"
 IUSE="static-libs"
+RESTRICT="test"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-CVE-2010-2891.patch
