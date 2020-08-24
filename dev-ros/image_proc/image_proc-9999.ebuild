@@ -30,5 +30,6 @@ DEPEND="${RDEPEND}
 	test? (
 		dev-ros/rostest
 		dev-cpp/gtest
+		dev-ros/camera_calibration_parsers
 	)
 "
