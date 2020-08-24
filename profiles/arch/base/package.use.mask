@@ -61,9 +61,7 @@ sys-firmware/seabios debug
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-28)
 # upstream tarballs for tier-2 arches do not ship docs
-# and starting with 1.37 no longer ship extra tools
 dev-lang/rust-bin doc
->=dev-lang/rust-bin-1.37 clippy rustfmt
 
 # Craig Andrews <candrews@gentoo.org> (2019-07-03)
 # Raspberry Pi support is only available on arm.
