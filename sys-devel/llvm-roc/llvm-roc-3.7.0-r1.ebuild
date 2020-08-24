@@ -15,8 +15,11 @@ KEYWORDS="~amd64"
 IUSE="debug"
 
 RDEPEND="virtual/cblas
-	dev-libs/rocr-runtime"
+	dev-libs/libxml2
+	sys-libs/zlib
+	sys-libs/ncurses:="
 DEPEND="${RDEPEND}"
+PDEPEND="dev-libs/rocr-runtime"
 
 S="${WORKDIR}/llvm-project-rocm-${PV}/llvm"
 
