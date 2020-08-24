@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( pypy3 python3_{6,7} )
+PYTHON_COMPAT=( pypy3 python3_{6,7,8,9} )
 
-inherit cmake-utils python-any-r1 user
+inherit cmake python-any-r1 systemd
 
 DESCRIPTION="Cross-platform Direct Connect client"
 HOMEPAGE="https://airdcpp-web.github.io/"
@@ -13,9 +13,11 @@ SRC_URI="https://github.com/airdcpp-web/${PN}/archive/${PV}.tar.gz -> ${P}.tar.g
 KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="nat-pmp +tbb +webui"
+IUSE="debug nat-pmp +tbb +webui"
 
 RDEPEND="
+	acct-user/airdcppd
+	acct-group/airdcppd
 	app-arch/bzip2
 	dev-cpp/websocketpp
 	dev-libs/boost:=
@@ -23,39 +25,32 @@ RDEPEND="
 	dev-libs/libmaxminddb:=
 	dev-libs/openssl:0=[-bindist]
 	net-libs/miniupnpc:=
-	sys-libs/zlib:=
+	sys-libs/zlib
 	virtual/libiconv
 	nat-pmp? ( net-libs/libnatpmp:= )
 	tbb? ( dev-cpp/tbb:= )
 "
-DEPEND="
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	${PYTHON_DEPS}
-	${RDEPEND}
 "
 PDEPEND="webui? ( www-apps/airdcpp-webui )"
 
-pkg_setup() {
-	python-any-r1_pkg_setup
-	enewgroup airdcppd
-	enewuser airdcppd -1 -1 /var/lib/airdcppd airdcppd
-}
-
 src_configure() {
 	local mycmakeargs=(
-		-DINSTALL_WEB_UI=OFF
 		-DENABLE_NATPMP=$(usex nat-pmp)
 		-DENABLE_TBB=$(usex tbb)
+		-DINSTALL_WEB_UI=OFF
 	)
-	cmake-utils_src_configure
+	CMAKE_BUILD_TYPE=$(usex debug Debug Gentoo) cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	newconfd "${FILESDIR}/airdcppd.confd" airdcppd
 	newinitd "${FILESDIR}/airdcppd.initd" airdcppd
-	keepdir /var/lib/airdcppd
-	fowners airdcppd:airdcppd /var/lib/airdcppd
+	systemd_dounit "${FILESDIR}/airdcppd.service"
 }
 
 pkg_postinst() {
