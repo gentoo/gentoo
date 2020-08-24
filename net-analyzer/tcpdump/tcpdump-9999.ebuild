@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit flag-o-matic toolchain-funcs user
+inherit autotools git-r3 user
 
 DESCRIPTION="A Tool for network monitoring and data acquisition"
 EGIT_REPO_URI="https://github.com/the-tcpdump-group/tcpdump"
@@ -32,9 +32,11 @@ RDEPEND="
 		libressl? ( dev-libs/libressl:= )
 	)
 "
+BDEPEND="
+	drop-root? ( virtual/pkgconfig )
+"
 DEPEND="
 	${RDEPEND}
-	drop-root? ( virtual/pkgconfig )
 	test? (
 		>=net-libs/libpcap-1.9.1
 		dev-lang/perl
@@ -52,22 +54,20 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
-
 	sed -i -e '/^eapon1/d;' tests/TESTLIST || die
 
 	# bug 630394
 	sed -i -e '/^nbns-valgrind/d' tests/TESTLIST || die
+
+	default
+
+	eautoreconf
 }
 
 src_configure() {
-	if use drop-root; then
-		append-cppflags -DHAVE_CAP_NG_H
-		export LIBS=$( $(tc-getPKG_CONFIG) --libs libcap-ng )
-	fi
-
 	econf \
 		$(use_enable samba smb) \
+		$(use_with drop-root cap-ng) \
 		$(use_with drop-root chroot '') \
 		$(use_with smi) \
 		$(use_with ssl crypto "${ESYSROOT}/usr") \

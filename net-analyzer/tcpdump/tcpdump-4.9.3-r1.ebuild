@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit flag-o-matic toolchain-funcs user
+inherit autotools user
 
 DESCRIPTION="A Tool for network monitoring and data acquisition"
 HOMEPAGE="
@@ -20,8 +20,8 @@ IUSE="+drop-root libressl smi ssl samba suid test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	drop-root? ( sys-libs/libcap-ng )
 	net-libs/libpcap
+	drop-root? ( sys-libs/libcap-ng )
 	smi? ( net-libs/libsmi )
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-0.9.6m:0= )
@@ -30,12 +30,14 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	drop-root? ( virtual/pkgconfig )
 	test? (
 		>=net-libs/libpcap-1.9.1
 		dev-lang/perl
 	)
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-9999-libdir.patch
+)
 
 pkg_setup() {
 	if use drop-root || use suid; then
@@ -44,14 +46,15 @@ pkg_setup() {
 	fi
 }
 
-src_configure() {
-	if use drop-root; then
-		append-cppflags -DHAVE_CAP_NG_H
-		export LIBS=$( $(tc-getPKG_CONFIG) --libs libcap-ng )
-	fi
+src_prepare() {
+	default
+	eautoreconf
+}
 
+src_configure() {
 	econf \
 		$(use_enable samba smb) \
+		$(use_with drop-root cap-ng) \
 		$(use_with drop-root chroot '') \
 		$(use_with smi) \
 		$(use_with ssl crypto "${ESYSROOT}/usr") \
