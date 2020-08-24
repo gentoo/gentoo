@@ -788,7 +788,6 @@ app-dicts/sword-WEB
 # unmaintained and had its last version bump in 2015.
 # Use app-text/texlive-core as replacement.
 # Removal in 30 days. Bug #733862.
-dev-tex/metapost
 app-eselect/eselect-mpost
 
 # Hans de Graaff <graaff@gentoo.org> (2020-07-22)
