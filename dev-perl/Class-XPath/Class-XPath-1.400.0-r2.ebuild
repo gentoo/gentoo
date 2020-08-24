@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="adds xpath matching to object trees"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 sparc x86"
+KEYWORDS="amd64 ~ia64 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
