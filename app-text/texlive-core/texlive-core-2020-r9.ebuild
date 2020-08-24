@@ -99,7 +99,7 @@ COMMON_DEPEND="${MODULAR_X_DEPEND}
 	media-gfx/graphite2
 	>=x11-libs/cairo-1.12
 	>=x11-libs/pixman-0.18
-	dev-libs/zziplib
+	dev-libs/zziplib:=
 	app-text/libpaper
 	dev-libs/gmp:0
 	dev-libs/mpfr:0=
