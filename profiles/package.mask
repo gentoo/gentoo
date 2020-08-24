@@ -137,7 +137,6 @@ media-libs/libxmlbird
 net-analyzer/nagstamon
 net-fs/s3ql
 net-misc/dmr_utils
-net-misc/s3cmd
 sci-chemistry/ParmEd
 sci-chemistry/freeon
 sci-chemistry/openbabel-python
