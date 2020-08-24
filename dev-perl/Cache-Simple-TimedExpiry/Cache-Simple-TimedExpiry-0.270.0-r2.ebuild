@@ -12,7 +12,7 @@ DESCRIPTION="A lightweight cache with timed expiration"
 # only an assumed one from 'license => perl' in Makefile.PL
 # Bug: https://bugs.gentoo.org/722854
 SLOT="0"
-KEYWORDS="~alpha ~amd64 hppa ~ia64 ~ppc sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ~ppc sparc x86"
 PATCHES=(
 	"${FILESDIR}/${PN}-0.27-no-dot-inc.patch"
 )
