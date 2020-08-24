@@ -24,7 +24,7 @@ BDEPEND="dev-texlive/texlive-bibtexextra
 	dev-texlive/texlive-mathscience
 	html? (
 		app-text/recode
-		>=dev-tex/tex4ht-20090611_p1038-r5
+		>=dev-tex/tex4ht-20090611_p1038-r11
 	)"
 RDEPEND="!app-doc/pms-bin"
 
