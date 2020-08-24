@@ -7,16 +7,21 @@ inherit toolchain-funcs multilib-minimal
 
 DESCRIPTION="Audio processing system for plugins to extract information from audio data"
 HOMEPAGE="https://www.vamp-plugins.org"
-SRC_URI="https://code.soundsoftware.ac.uk/attachments/download/2206/${P}.tar.gz"
+SRC_URI="https://github.com/c4dm/${PN}/archive/${PN}-v${PV}.tar.gz -> {P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc"
 
 RDEPEND="media-libs/libsndfile:0=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
+"
+
+S="${WORKDIR}/${PN}-${PN}-v${PV}"
 
 src_prepare() {
 	default
@@ -49,6 +54,9 @@ multilib_src_install() {
 		INSTALL_PKGCONFIG="${EPREFIX}"/usr/$(get_libdir)/pkgconfig \
 		INSTALL_PLUGINS="${EPREFIX}"/usr/$(get_libdir)/vamp \
 		install
+
+	# fix .pc files
+	sed -Ei "s/lib$/$(get_libdir)/g" "${D}"/usr/$(get_libdir)/pkgconfig/*.pc
 }
 
 multilib_src_install_all() {
