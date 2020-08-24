@@ -31,8 +31,8 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/roct-thunk-interface-${PV}
 	>=dev-libs/rocm-device-libs-${PV}
-	app-editors/vim-core"
-	# vim-core is needed for "xxd"
+	|| ( dev-util/xxdi app-editors/vim-core )"
+	# needed for "xxd"
 
 src_prepare() {
 	sed -e "s:get_version ( \"1.0.0\" ):get_version ( \"${PV}\" ):" -i CMakeLists.txt || die
