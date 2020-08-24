@@ -51,7 +51,7 @@ BDEPEND="
 	systemtap? ( >=dev-util/systemtap-1.3 )
 	${PYTHON_DEPS}
 	test? ( >=sys-apps/dbus-1.2.14 )
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 # TODO: >=dev-util/gdbus-codegen-${PV} test dep once we modify gio/tests/meson.build to use external gdbus-codegen
 

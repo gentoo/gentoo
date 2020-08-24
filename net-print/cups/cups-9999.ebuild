@@ -3,8 +3,6 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
-
 inherit autotools flag-o-matic linux-info xdg multilib-minimal pam systemd toolchain-funcs
 
 MY_PV="${PV/_rc/rc}"
@@ -57,7 +55,7 @@ DEPEND="${CDEPEND}"
 BDEPEND="
 	acct-group/lp
 	acct-group/lpadmin
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 RDEPEND="${CDEPEND}

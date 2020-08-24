@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
-	CODENAME="Leia"
+	CODENAME="Matrix"
 	SRC_URI="https://github.com/kodi-game/game.libretro.snes9x/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/game.libretro.snes9x-${PV}-${CODENAME}"
 fi

@@ -20,7 +20,7 @@ else
 	S="${WORKDIR}/${PN}-${P}"
 fi
 
-HOMEPAGE="http://pointclouds.org/"
+HOMEPAGE="https://pointclouds.org/"
 DESCRIPTION="2D/3D image and point cloud processing"
 LICENSE="BSD"
 SLOT="0/1.11"

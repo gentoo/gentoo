@@ -1,6 +1,26 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2020-07-03)
+# Rust is only available on some arches
+# Bug #728558
+media-video/ffmpeg rav1e
+
+# Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
+# Mask io-uring & zbc pending keywording
+sys-block/fio io-uring zbc
+
+# Marek Szuba <marecki@gentoo.org> (2020-06-17)
+# Mask flashrom drivers and tools which only work on few architectures:
+#  - ich_descriptors_tools (USE=tools) is only compiled on amd64 and x86,
+#  - internal is presently only supported on amd64/x86 and mipsel,
+#  - the others only work on x86 due to lack of PCI-port I/O support.
+sys-apps/flashrom atahpt atapromise internal nic3com nicnatsemi nicrealtek rayer-spi satamv tools
+
+# Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
+# requires clisp whichis keyworded on fewer arches
+app-text/texlive-core xindy
+
 # Thomas Deutschmann <whissi@gentoo.org> (2020-04-30)
 # Dependency is only keyworded on amd64 and x86
 app-metrics/collectd collectd_plugins_slurm
@@ -41,9 +61,7 @@ sys-firmware/seabios debug
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-28)
 # upstream tarballs for tier-2 arches do not ship docs
-# and starting with 1.37 no longer ship extra tools
 dev-lang/rust-bin doc
->=dev-lang/rust-bin-1.37 clippy rustfmt
 
 # Craig Andrews <candrews@gentoo.org> (2019-07-03)
 # Raspberry Pi support is only available on arm.
@@ -59,7 +77,7 @@ dev-java/openjdk:11 javafx
 >=dev-lang/spidermonkey-60 jit
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-05-09)
-# media-libs/libplacebo is not keyworded anywhere except amd64 yet
+# media-libs/libplacebo is not keyworded anywhere except amd64/ppc64/x86 yet
 media-video/vlc libplacebo
 
 # Denis Lisov <dennis.lissov@gmail.com> (2019-05-09)
@@ -119,10 +137,6 @@ app-admin/rsyslog mdblookup
 # spacetime is only supported on amd64 at the moment.
 # https://caml.inria.fr/pub/docs/manual-ocaml/spacetime.html
 dev-lang/ocaml spacetime
-
-# Alexis Ballier <aballier@gentoo.org> (2017-01-31)
-# nvenc requires nvidia drivers, apply same mask logic
-media-video/ffmpeg nvenc
 
 # Thomas Deutschmann <whissi@gentoo.org> (2017-01-30)
 # media-libs/raspberrypi-userland not keyworded
@@ -192,10 +206,6 @@ media-libs/libbluray bdplus
 # Michał Górny <mgorny@gentoo.org> (2015-03-01)
 # pidgin-opensteamworks is only available for amd64, ppc32 and x86
 net-im/telepathy-connection-managers steam
-
-# Mike Frysinger <vapier@gentoo.org> (2014-08-04)
-# Mask flashrom drivers that only work on x86 due to in/out asm insns #454024
-sys-apps/flashrom atahpt nic3com nicnatsemi nicrealtek rayer-spi satamv
 
 # Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (2014-04-24)
 # It's only supported on amd64

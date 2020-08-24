@@ -3,12 +3,11 @@
 
 EAPI=7
 
-inherit autotools eutils fortran-2 toolchain-funcs
+inherit autotools fortran-2 toolchain-funcs
 
-if [[ ${PV} = *9999* ]]; then
+if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/opencollab/arpack-ng"
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/opencollab/${PN}-ng/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
@@ -25,8 +24,8 @@ RDEPEND="
 	virtual/blas
 	virtual/lapack
 	mpi? ( virtual/mpi[fortran] )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
@@ -47,10 +46,9 @@ src_install() {
 	dodoc DOCUMENTS/*.doc
 	newdoc DOCUMENTS/README README.doc
 	if use examples; then
-		docinto /usr/share/doc/${PF}
 		dodoc -r EXAMPLES
 		if use mpi; then
-			docinto /usr/share/doc/${PF}/EXAMPLES/PARPACK
+			docinto EXAMPLES/PARPACK
 			dodoc -r PARPACK/EXAMPLES/MPI
 		fi
 	fi

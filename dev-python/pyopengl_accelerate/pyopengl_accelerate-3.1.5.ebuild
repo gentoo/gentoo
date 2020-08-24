@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1 virtualx
 
@@ -20,7 +20,7 @@ S=${WORKDIR}/pyopengl-${EGIT_COMMIT}/accelerate
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="dev-python/pyopengl[${PYTHON_USEDEP}]"

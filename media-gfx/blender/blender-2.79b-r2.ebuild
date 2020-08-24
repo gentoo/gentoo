@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit check-reqs cmake-utils xdg-utils flag-o-matic xdg-utils \
+inherit check-reqs cmake-utils flag-o-matic xdg-utils \
 	pax-utils python-single-r1 toolchain-funcs eapi7-ver
 
 DESCRIPTION="3D Creation/Animation/Publishing System"
@@ -77,7 +77,7 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	opensubdiv? ( >=media-libs/opensubdiv-3.3.0:=[cuda=,opencl=] )
 	openvdb? (
-		media-gfx/openvdb[${PYTHON_SINGLE_USEDEP},-abi3-compat(-),abi4-compat(+)]
+		<media-gfx/openvdb-7[abi4-compat]
 		dev-cpp/tbb
 		>=dev-libs/c-blosc-1.5.2
 	)
@@ -106,6 +106,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-gcc-8.patch"
 	"${FILESDIR}/${P}-ffmpeg-4-compat.patch"
 	"${FILESDIR}/${P}-fix-for-gcc9-new-openmp-data-sharing.patch"
+	"${FILESDIR}/${P}-fix-opencollada.patch"
 )
 
 blender_check_requirements() {

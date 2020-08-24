@@ -8,5 +8,4 @@
 		<email>shell-tools@gentoo.org</email>
 		<name>Gentoo Shell Tools Project</name>
 	</maintainer>
-	<longdescription>randomize lines can be used to randomize the contents of text files or standard input.</longdescription>
 </pkgmetadata>

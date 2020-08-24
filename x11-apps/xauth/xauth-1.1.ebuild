@@ -12,8 +12,8 @@ else
 fi
 
 DESCRIPTION="X authority file utility"
-IUSE="ipv6 test"
-RESTRICT="!test? ( test )"
+IUSE="ipv6"
+RESTRICT="test" # Depends on dead cmdtest package
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXau
@@ -21,15 +21,9 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXmu"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
-BDEPEND="test? ( dev-util/cmdtest )"
 
 pkg_setup() {
 	XORG_CONFIGURE_OPTIONS=(
 		$(use_enable ipv6)
 	)
-}
-
-src_test() {
-	addwrite /proc/self/comm
-	emake check
 }

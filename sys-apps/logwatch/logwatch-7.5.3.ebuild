@@ -12,11 +12,11 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ppc ppc64 sparc x86"
 fi
 
 DESCRIPTION="Analyzes and Reports on system logs"
-HOMEPAGE="http://www.logwatch.org/"
+HOMEPAGE="https://sourceforge.net/projects/logwatch/"
 
 LICENSE="MIT"
 SLOT="0"

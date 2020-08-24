@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>grozin@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+    A simple and modern GTK eBook viewer, built with GJS and Epub.js.
+    Supported formats:
+    epub, epub3, azw, azw3, mobi, fb2, fb2.zip, cbr, cbz, cbt, cb7, txt
+  </longdescription>
+  <use>
+    <flag name="handy">Use <pkg>gui-libs/libhandy</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="github">johnfactotum/foliate</remote-id>
+  </upstream>
+</pkgmetadata>

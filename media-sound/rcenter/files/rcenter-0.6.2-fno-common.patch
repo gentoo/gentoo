@@ -1,0 +1,29 @@
+--- a/button.h
++++ b/button.h
+@@ -60,8 +60,8 @@
+     button_max = 34
+ };
+ 
+-char *button_name[button_max];
+-int button_code[button_max];
++extern char *button_name[button_max];
++extern int button_code[button_max];
+ 
+ unsigned int speaker_code(unsigned int code);
+ 
+--- a/main.h
++++ b/main.h
+@@ -18,9 +18,9 @@
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ */
+-char *midi_device;
++extern char *midi_device;
+ 
+-int delay_sec;
+-int delay_usec;
++extern int delay_sec;
++extern int delay_usec;
+ 
+-int string_digit_limit;
++extern int string_digit_limit;

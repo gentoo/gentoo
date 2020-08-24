@@ -1,12 +1,24 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2020-08-22)
+# app-office/openoffice-bin is being removed.
+office_implementation_openoffice
+
+# Patrick Lauer <patrick@gentoo.org> (2020-08-18)
+# pg13 is currently beta and has no keywords yet
+postgres_targets_postgres13
+
+# Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
+# consolekit is masked for removal
+consolekit
+
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Ben Kohler <bkohler@gentoo.org> (2020-05-15)
-# Mask 9.4 target to match <9.5 package.mask entry
-postgres_targets_postgres9_4
+# Hans de Graaff <graaff@gentoo.org> (2020-06-13)
+# Mask Ruby 2.4 as EOL
+ruby_targets_ruby24
 
 # Matt Turner <mattst88@gentoo.org> (2020-03-25)
 # media-libs/libav is masked for removal
@@ -35,6 +47,9 @@ php_targets_php7-0
 # Matt Turner <mattst88@gentoo.org> (2018-11-11)
 # d3d9 only works on amd64/x86.
 d3d9
+
+# winssl is for prefix/windows/winnt only
+winssl
 
 # CURL_SSL=winssl is for prefix/windows/winnt only
 curl_ssl_winssl

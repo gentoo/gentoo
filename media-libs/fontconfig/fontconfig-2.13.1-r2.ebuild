@@ -17,7 +17,7 @@ IUSE="doc static-libs"
 
 BDEPEND="dev-util/gperf
 	>=sys-devel/gettext-0.19.8
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	doc? (
 		=app-text/docbook-sgml-dtd-3.1*
 		app-text/docbook-sgml-utils[jadetex]

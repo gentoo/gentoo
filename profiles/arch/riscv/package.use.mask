@@ -1,6 +1,23 @@
 # Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jakov Smolic <jakov.smolic@sartura.hr> (2020-08-14)
+# Large amount of missing keywords
+# Bug #724358
+>=dev-libs/json-c-0.15 doc
+
+# Sam James <sam@gentoo.org> (2020-07-31)
+# Large amount of missing keywords for cmake and friends
+# bug #720296, bug #724358
+dev-util/cmake doc test
+dev-libs/jsoncpp doc
+
+# Lars Wendler <polynomial-c@gentoo.org> (2020-06-25)
+# Missing keyword. Requires dev-util/cmake which also lacks keyword and
+# possibly a whole bunch of its deps as well
+# See https://bugs.gentoo.org/729582
+>=net-misc/rsync-3.2.0 lz4
+
 # Lars Wendler <polynomial-c@gentoo.org> (2020-05-10)
 # Missing keyword
 media-libs/freetype brotli
@@ -73,7 +90,9 @@ dev-libs/libusb doc
 dev-libs/libxslt python
 dev-libs/libyaml doc
 dev-python/cython doc test
+dev-python/jinja doc test
 dev-python/lxml test
+dev-python/markupsafe test
 dev-python/pygments doc test
 dev-python/setuptools test
 dev-python/snakeoil test
@@ -96,7 +115,7 @@ net-nds/openldap cxx kerberos sasl
 sys-apps/kmod doc
 sys-apps/portage apidoc
 sys-apps/rng-tools nistbeacon pkcs11
-sys-auth/pambase pam_krb5 pam_ssh passwdqc mktemp
+sys-auth/pambase gnome-keyring pam_krb5 pam_ssh passwdqc mktemp
 sys-block/thin-provisioning-tools test
 sys-devel/automake test
 sys-devel/gdb source-highlight

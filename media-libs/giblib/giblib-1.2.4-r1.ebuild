@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="a graphics library built on top of imlib2"
-HOMEPAGE="http://freecode.com/projects/giblib http://www.linuxbrit.co.uk/giblib/"
+HOMEPAGE="http://freshmeat.sourceforge.net/projects/giblib http://www.linuxbrit.co.uk/giblib/"
 SRC_URI="http://www.linuxbrit.co.uk/downloads/${P}.tar.gz"
 
 LICENSE="feh"

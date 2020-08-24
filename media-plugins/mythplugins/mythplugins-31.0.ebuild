@@ -6,7 +6,7 @@ EAPI=7
 # Grab only the major version number.
 MAJOR_PV=${PV%%.*}
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="xml"
 
 #BACKPORTS="03f44039848bd09444ff4baa8dc158bd61454079"
@@ -81,6 +81,7 @@ RDEPEND="
 		dev-perl/XML-Twig
 	)
 	mythmusic? (
+		dev-qt/qtwebkit:5
 		media-libs/flac
 		media-libs/libogg
 		media-libs/libvorbis

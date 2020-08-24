@@ -3,7 +3,7 @@
 
 EAPI=6
 
-POSTGRES_COMPAT=( 9.{4..6} {10..11} )
+POSTGRES_COMPAT=( 9.{5..6} {10..11} )
 PYTHON_COMPAT=( python3_{6..7} )
 
 inherit distutils-r1 postgres
@@ -11,7 +11,7 @@ inherit distutils-r1 postgres
 MY_P="PyGreSQL-${PV}"
 
 DESCRIPTION="A Python interface for the PostgreSQL database"
-HOMEPAGE="http://www.pygresql.org/"
+HOMEPAGE="https://pygresql.org/"
 SRC_URI="mirror://pypi/P/PyGreSQL/${MY_P}.tar.gz"
 
 LICENSE="POSTGRESQL"

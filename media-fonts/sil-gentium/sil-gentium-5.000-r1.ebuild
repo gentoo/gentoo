@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 2004-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="http://scripts.sil.org/cms/scripts/render_download.php?format=file&medi
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 s390 sparc x86 ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ppc ppc64 s390 sparc x86 ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="compact doc"
 
 DEPEND="app-arch/unzip"

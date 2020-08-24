@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This package provides functions for converting
+		emoji names to emoji characters and vice versa.
+		
+		How does it differ from the @emoji@ package?
+		
+		-   It supports a fuller range of emojis, including all those
+		supported by GitHub
+		-   It supports lookup of emoji aliases from emoji
+		-   It uses Text rather than String
+		-   It has a lighter dependency footprint: in particular, it
+		does not require aeson
+		-   It does not require TemplateHaskell
+	</longdescription>
+</pkgmetadata>

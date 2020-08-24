@@ -266,11 +266,30 @@ src_install() {
 }
 
 pkg_postinst() {
-	ewarn "Make sure the \"lvm\" init script is in the runlevels:"
-	ewarn "# rc-update add lvm boot"
-	ewarn
-	ewarn "Make sure to enable lvmetad in /etc/lvm/lvm.conf if you want"
-	ewarn "to enable lvm autoactivation and metadata caching."
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+		# This is a new installation
+		ewarn "Make sure the \"lvm\" init script is in the runlevels:"
+		ewarn "# rc-update add lvm boot"
+		ewarn
+		ewarn "Make sure to enable lvmetad in /etc/lvm/lvm.conf if you want"
+		ewarn "to enable lvm autoactivation and metadata caching."
+	fi
+
+	if use udev && [[ -d /run ]] ; then
+		local permission_run_expected="drwxr-xr-x"
+		local permission_run=$(stat -c "%A" /run)
+		if [[ "${permission_run}" != "${permission_run_expected}" ]] ; then
+			ewarn "Found the following problematic permissions:"
+			ewarn ""
+			ewarn "    ${permission_run} /run"
+			ewarn ""
+			ewarn "Expected:"
+			ewarn ""
+			ewarn "    ${permission_run_expected} /run"
+			ewarn ""
+			ewarn "This is known to be causing problems for UDEV-enabled LVM services."
+		fi
+	fi
 }
 
 src_test() {

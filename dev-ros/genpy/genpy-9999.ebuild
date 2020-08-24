@@ -9,16 +9,18 @@ KEYWORDS="~amd64 ~arm"
 inherit ros-catkin
 
 DESCRIPTION="Python ROS message and service generators"
-HOMEPAGE="http://wiki.ros.org/genpy"
+HOMEPAGE="https://wiki.ros.org/genpy"
 LICENSE="BSD"
 SLOT="0/${PV}"
 IUSE=""
 
-RDEPEND="dev-ros/genmsg[${PYTHON_USEDEP}]
-		dev-python/pyyaml[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-ros/genmsg[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep "dev-python/pyyaml[\${PYTHON_USEDEP}]")
+"
 DEPEND="${RDEPEND}
 	test? (
-		dev-python/nose[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
 	)
 "
 PATCHES=( "${FILESDIR}/yaml.patch" )

@@ -3,9 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
-
-inherit autotools gnome2-utils python-single-r1 xdg-utils
+inherit autotools gnome2-utils xdg-utils
 
 MY_P=${P/_/-}
 
@@ -16,8 +14,7 @@ HOMEPAGE="http://bluefish.openoffice.nl/"
 LICENSE="GPL-2"
 KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 SLOT="0"
-IUSE="+gtk3 gucharmap nls python spell"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+IUSE="+gtk3 gucharmap nls spell"
 
 RDEPEND="
 	sys-libs/zlib
@@ -26,7 +23,6 @@ RDEPEND="
 		x11-libs/gtk+:3
 		gucharmap? ( gnome-extra/gucharmap:2.90 )
 	)
-	python? ( ${PYTHON_DEPS} )
 	spell? ( >=app-text/enchant-1.4:0 )"
 DEPEND="${RDEPEND}
 	dev-libs/libxml2:2
@@ -48,8 +44,6 @@ pkg_setup() {
 		ewarn "gucharmap USE flag requires the gtk3 USE flag being enabled."
 		ewarn "Disabling charmap plugin."
 	fi
-
-	use python && python-single-r1_pkg_setup
 }
 
 PATCHES=(
@@ -71,7 +65,7 @@ src_configure() {
 		$(usex gtk3 "$(use_with gucharmap charmap)" '--without-charmap') \
 		$(use_enable nls) \
 		$(use_enable spell spell-check) \
-		$(use_enable python)
+		--disable-python
 }
 
 src_install() {

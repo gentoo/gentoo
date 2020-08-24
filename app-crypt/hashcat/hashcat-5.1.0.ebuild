@@ -12,7 +12,6 @@ SLOT="0"
 if [ "${PV}" = "9999" ]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/hashcat/hashcat.git"
-	KEYWORDS=""
 else
 	KEYWORDS="~amd64"
 	SRC_URI="https://github.com/hashcat/hashcat/archive/v${PV}.tar.gz -> ${P}.tar.gz"

@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="High availability environment tools for shell scripting"
-HOMEPAGE="http://www.fatalmind.com/software/hatools/"
+HOMEPAGE="https://www.fatalmind.com/software/hatools/"
 SRC_URI="http://www.fatalmind.com/software/hatools/${P}.tar.gz"
 
 LICENSE="GPL-2"

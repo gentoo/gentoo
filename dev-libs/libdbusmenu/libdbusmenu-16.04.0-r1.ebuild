@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 	dev-util/glib-utils
 	dev-util/intltool
 	sys-devel/gettext
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	introspection? ( $(vala_depend) )
 	test? (
 		>=dev-libs/json-glib-0.13.4[${MULTILIB_USEDEP}]

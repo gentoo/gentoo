@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Parse and format SQLite dates and times"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~x86-solaris"
 IUSE=""
 
 RDEPEND=">=dev-perl/DateTime-0.51

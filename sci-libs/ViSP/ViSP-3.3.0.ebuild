@@ -3,10 +3,10 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Visual Servoing Platform: visual tracking and visual servoing library"
-HOMEPAGE="http://www.irisa.fr/lagadic/visp/visp.html"
+HOMEPAGE="https://visp.inria.fr/"
 SRC_URI="http://gforge.inria.fr/frs/download.php/latestfile/475/visp-${PV}.tar.gz"
 
 LICENSE="GPL-2"
@@ -17,16 +17,23 @@ IUSE="
 	opencv pcl png test tutorials usb v4l X xml +zbar zlib
 	cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3
 "
+REQUIRED_USE="motif? ( coin )"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	coin? ( >=media-libs/coin-4 virtual/opengl )
+COMMON_DEPEND="
+	coin? (
+		>=media-libs/coin-4
+		virtual/opengl
+	)
 	dmtx? ( media-libs/libdmtx )
 	gsl? ( sci-libs/gsl )
 	ieee1394? ( media-libs/libdc1394 )
 	jpeg? ( virtual/jpeg:0 )
 	motif? ( media-libs/SoXt )
-	ogre? ( dev-games/ogre[ois(+)] dev-libs/boost:=[threads] )
+	ogre? (
+		dev-games/ogre[ois(+)]
+		dev-libs/boost:=[threads]
+	)
 	opencv? ( media-libs/opencv:=[contribdnn(+)] )
 	pcl? ( sci-libs/pcl:= )
 	png? ( media-libs/libpng:0= )
@@ -35,23 +42,30 @@ RDEPEND="
 	X? ( x11-libs/libX11 )
 	xml? ( dev-libs/libxml2 )
 	zbar? ( media-gfx/zbar )
-	zlib? ( sys-libs/zlib )
-"
-DEPEND="${RDEPEND}
+	zlib? ( sys-libs/zlib )"
+DEPEND="${COMMON_DEPEND}
 	v4l? ( virtual/os-headers )"
-RDEPEND="${RDEPEND}
+RDEPEND="${COMMON_DEPEND}
 	demos? ( sci-misc/ViSP-images )"
 BDEPEND="
 	virtual/pkgconfig
 	test? ( sci-misc/ViSP-images )
-	doc? ( app-doc/doxygen virtual/latex-base media-gfx/graphviz )"
-REQUIRED_USE="motif? ( coin )"
+	doc? (
+		app-doc/doxygen
+		media-gfx/graphviz
+		virtual/latex-base
+	)"
 
 S="${WORKDIR}/visp-${PV}"
-PATCHES=( "${FILESDIR}/${PN}-3.2.0-ocv.patch" "${FILESDIR}/${PN}-3.0.1-opencv.patch" )
+
+PATCHES=(
+	"${FILESDIR}/${PN}-3.2.0-ocv.patch"
+	"${FILESDIR}/${PN}-3.0.1-opencv.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
+		"-DBUILD_JAVA=OFF"
 		"-DBUILD_EXAMPLES=$(usex examples ON OFF)"
 		"-DBUILD_TESTS=$(usex test ON OFF)"
 		"-DBUILD_DEMOS=$(usex demos ON OFF)"
@@ -79,20 +93,19 @@ src_configure() {
 		"-DENABLE_SSE3=$(usex cpu_flags_x86_sse3 ON OFF)"
 		"-DENABLE_SSSE3=$(usex cpu_flags_x86_ssse3 ON OFF)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
-	use doc && cmake-utils_src_compile visp_doc
+	cmake_src_compile
+	use doc && cmake_src_compile visp_doc
 }
 
 src_install() {
-	cmake-utils_src_install
+	use doc && local HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
+	cmake_src_install
 	if use tutorials ; then
 		dodoc -r tutorial
 		docompress -x /usr/share/doc/${PF}/tutorial
 	fi
-	cd "${BUILD_DIR}"
-	use doc && dodoc -r doc/html
 }

@@ -68,7 +68,7 @@ BDEPEND="
 	doc? ( app-doc/doxygen )
 	app-doc/xmltoman
 	dev-util/intltool
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/avahi-qt5/qt-watch.h )

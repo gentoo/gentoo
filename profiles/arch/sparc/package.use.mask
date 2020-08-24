@@ -1,6 +1,22 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner <mattst88@gentoo.org> (2020-08-11)
+# No drivers on this architecture support Vulkan
+media-libs/mesa vulkan vulkan-overlay zink
+
+# Mart Raudsepp <leio@gentoo.org> (2020-08-02)
+# sparc has no virtual/rust support, needed by newer gnome-base/librsvg, et al
+>=media-gfx/eog-3.33.1 svg
+
+# Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
+# Mask io-uring & zbc pending keywording
+sys-block/fio -io-uring -zbc
+
+# Michał Górny <mgorny@gentoo.org> (2020-06-14)
+# Requires dev-python/networkx.
+app-portage/nattka depgraph-order
+
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
 # clisp is keyworded on sparc
 app-text/texlive-core -xindy
@@ -9,11 +25,6 @@ app-text/texlive-core -xindy
 # Avoid unkeyworded deps, we really need a minimal install
 # for imagemagick.
 media-gfx/inkscape cdr visio wpg
-
-# Michał Górny <mgorny@gentoo.org> (2020-05-06)
-# dev-vcs/mercurial is broken on SPARC and setuptools_scm tests
-# lack proper skipping (to be fixed).
-<=dev-python/setuptools_scm-3.5.0 test
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-05-06)
 # No keywords
@@ -34,7 +45,6 @@ dev-python/pyopengl test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-23)
 # don't bother keywording old versions
-<dev-qt/qtgui-5.14.2 wayland
 <net-analyzer/rrdtool-1.7.2 ruby
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-22)
@@ -210,10 +220,6 @@ dev-db/mariadb numa
 >=gnome-base/gnome-settings-daemon-3.24 test
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan vulkan-overlay
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=redis that is masked in this profile.
 mail-filter/pyzor test
 
@@ -277,10 +283,6 @@ gnome-extra/nm-applet teamd
 # Missing keywords on app-text/gspell - bug #587368
 >=app-editors/gedit-3.20 spell
 
-# Justin Lecher <jlec@gentoo.org> (2016-02-22)
-# Missing test deps keyword #575366
-dev-cpp/eigen test
-
 # Pacho Ramos <pacho@gentoo.org> (2016-02-20)
 # Missing keywords, bug #551580
 app-office/planner eds
@@ -311,10 +313,6 @@ dev-qt/qtchooser test
 # Sergey Popov <pinkbyte@gentoo.org> (2015-10-24)
 # Not tested
 net-mail/dovecot lz4
-
-# Justin Lecher <jlec@gentoo.org> (2015-10-14)
-# Requires dev-python/ipython which triggers a long dep chain
-dev-python/restkit cli
 
 # Brian Evans <grknight@gentoo.org> (2015-09-14)
 # Mask new USE flags for mariadb which all arches do not yet have dependencies

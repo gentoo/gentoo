@@ -15,7 +15,7 @@ HOMEPAGE="https://gitlab.freedesktop.org/xorg/app/xisxwayland"
 if [[ ${PV} = 9999* ]]; then
 	SRC_URI=""
 else
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 	SRC_URI="https://xorg.freedesktop.org/archive/individual/app/${P}.tar.xz"
 fi
 

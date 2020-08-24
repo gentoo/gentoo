@@ -14,7 +14,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-lang/php:*[curl,json,simplexml]"
-BDEPEND="test? ( ${RDEPEND} >=dev-php/phpunit-4 )"
+BDEPEND="test? ( ${RDEPEND} <dev-php/phpunit-6 )"
 
 src_install() {
 	insinto "/usr/share/php/${PN}"

@@ -1,0 +1,24 @@
+Prevents recompiling in install phase and sets default
+CC if not set
+Fix by David Denoncin
+
+--- a/Makefile	2020-08-01 23:19:09.000000000 -0000
++++ b/Makefile	2020-08-02 14:33:52.943061996 -0000
+@@ -150,7 +150,7 @@
+ # For Sun Solaris 2.x w/GNU gcc, use CC = gcc
+ #CC = gcc
+ #CC = /usr/bin/gcc
+-CC ?=
++CC ?= /usr/bin/gcc
+ 
+ # For HPUX, use LIBS = -L/usr/lib/X11R4 -lX11 -lm -lcurses -ltermcap
+ # For AIX or OSF/1, add -lbsd
+@@ -345,7 +345,7 @@
+ 	cd $(COMDIR) ; ${MAKE} clean
+ 	cd $(UDIR) ; ${MAKE} clean "AS=${AS}"
+ 
+-install: xfractint fractint.hlp
++install:
+ #	$(STRIP) xfractint
+ 	$(INSTALL) -d $(BINDIR) $(MANDIR) $(SRCDIR)/$(PDIR) $(SRCDIR)/$(FDIR) \
+ 		$(SRCDIR)/$(IDIR) $(SRCDIR)/$(LDIR) $(SRCDIR)/$(MDIR) $(SRCDIR)/$(XDIR)

@@ -10,7 +10,7 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
 DESCRIPTION="SqlAlchemy schema display script"
-HOMEPAGE="https://bitbucket.org/estin/sadisplay/wiki/Home"
+HOMEPAGE="https://pypi.org/project/sadisplay"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

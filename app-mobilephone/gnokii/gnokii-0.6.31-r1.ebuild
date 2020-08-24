@@ -4,14 +4,14 @@
 EAPI=6
 inherit autotools eutils linux-info
 
-HOMEPAGE="http://www.gnokii.org/"
+HOMEPAGE="https://www.gnokii.org/"
 if [[ $PV == *9999 ]]; then
 	EGIT_REPO_URI="
 		git://git.savannah.nongnu.org/${PN}.git
 		http://git.savannah.gnu.org/r/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="http://www.gnokii.org/download/${PN}/${P}.tar.bz2"
+	SRC_URI="https://www.gnokii.org/download/${PN}/${P}.tar.bz2"
 	KEYWORDS="amd64 ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 DESCRIPTION="User space driver and tools for use with mobile phones"

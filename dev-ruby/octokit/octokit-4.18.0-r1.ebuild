@@ -17,7 +17,7 @@ SRC_URI="https://github.com/octokit/octokit.rb/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 RUBY_S=octokit.rb-${PV}
@@ -31,7 +31,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/jwt
 	dev-ruby/mime-types
 	>=dev-ruby/netrc-0.7.7
-	dev-ruby/vcr:3
+	dev-ruby/vcr:3[json]
 	dev-ruby/webmock:3 )"
 
 all_ruby_prepare() {

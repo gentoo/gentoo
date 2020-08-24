@@ -73,6 +73,8 @@ DEPEND="${RDEPEND}
 	)
 "
 
+PATCHES=( "${FILESDIR}/${PV}-python-3.9.patch" )
+
 src_prepare() {
 	sed -e "s/find_program('rst2man-3'/find_program('rst2man.py', 'rst2man-3'/" -i man/meson.build
 	default_src_prepare

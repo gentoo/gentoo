@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>theology@gentoo.org</email>
+	<maintainer type="person">
+		<email>jakov.smolic@sartura.hr</email>
+		<name>Jakov Smolic</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">gnomesword</remote-id>
+		<remote-id type="github">karlkleinpaste/biblesync</remote-id>
 	</upstream>
 </pkgmetadata>

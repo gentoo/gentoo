@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( python2_7 python3_{6..9} )
 inherit check-reqs distutils-r1
 
 DESCRIPTION="Python driver for MongoDB"
@@ -14,20 +14,20 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 arm64 ~hppa x86"
 IUSE="doc kerberos test"
-
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	kerberos? ( dev-python/pykerberos[${PYTHON_USEDEP}] )
 "
-DEPEND="${RDEPEND}
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+BDEPEND="
 	test? (
 		>=dev-db/mongodb-2.6.0
 		dev-python/nose[${PYTHON_USEDEP}]
 	)
 "
 DISTUTILS_IN_SOURCE_BUILD=1
+
+distutils_enable_sphinx doc
 
 reqcheck() {
 	if use test; then
@@ -46,11 +46,15 @@ pkg_setup() {
 	reqcheck pkg_setup
 }
 
-python_compile_all() {
-	if use doc; then
-		mkdir html || die
-		sphinx-build doc html || die
-	fi
+src_prepare() {
+	# network-sandbox probably
+	rm test/test_srv_polling.py || die
+	sed -e 's:test_connection_timeout_ms_propagates_to_DNS_resolver:_&:' \
+		-i test/test_client.py || die
+	# relies on exact exception message
+	sed -e 's:abstract methods:abstract:' \
+		-i test/test_custom_types.py || die
+	distutils-r1_src_prepare
 }
 
 python_test() {
@@ -110,10 +114,4 @@ python_test() {
 	[[ ${failed} ]] && die "Tests fail with ${EPYTHON}"
 
 	rm -rf "${dbpath}" || die
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( html/. )
-
-	distutils-r1_python_install_all
 }

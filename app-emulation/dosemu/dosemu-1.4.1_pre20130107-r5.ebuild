@@ -58,6 +58,12 @@ PATCHES=(
 	"${FILESDIR}"/${P}-as.patch
 )
 
+pkg_pretend() {
+	if tc-is-clang; then
+		die "${P} does not work on clang due to missing 16-bit assembly support: https://bugs.gentoo.org/729240. Please try gcc."
+	fi
+}
+
 src_prepare() {
 	default
 

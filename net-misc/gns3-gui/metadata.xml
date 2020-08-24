@@ -2,8 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>bman@gentoo.org</email>
-		<name>Aaron Bauman</name>
+		<email>mmk@levelnine.at</email>
+		<name>Michael Mair-Keimberger</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">gns-3</remote-id>

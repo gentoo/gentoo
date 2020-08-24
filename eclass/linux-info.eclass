@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: linux-info.eclass
@@ -166,7 +166,7 @@ qeerror() { qout eerror "${@}" ; }
 # done by including the configfile, and printing the variable with Make.
 # It WILL break if your makefile has missing dependencies!
 getfilevar() {
-	local ERROR basefname basedname myARCH="${ARCH}" M="${S}"
+	local ERROR basefname basedname myARCH="${ARCH}"
 	ERROR=0
 
 	[ -z "${1}" ] && ERROR=1
@@ -184,11 +184,8 @@ getfilevar() {
 
 		# We use nonfatal because we want the caller to take care of things #373151
 		[[ ${EAPI:-0} == [0123] ]] && nonfatal() { "$@"; }
-		case ${EBUILD_PHASE_FUNC} in
-			pkg_info|pkg_nofetch|pkg_pretend) M="${T}" ;;
-		esac
 		echo -e "e:\\n\\t@echo \$(${1})\\ninclude ${basefname}" | \
-			nonfatal emake -C "${basedname}" M="${M}" ${BUILD_FIXES} -s -f - 2>/dev/null
+			nonfatal emake -C "${basedname}" M="${T}" ${BUILD_FIXES} -s -f - 2>/dev/null
 
 		ARCH=${myARCH}
 	fi

@@ -1,6 +1,35 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Thomas Deutschmann <whissi@gentoo.org> (2020-08-17)
+# Columnstore engine is supported on x86
+dev-db/mariadb -columnstore
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-07-27)
+# media-video/pipewire:0/0.3 is available for x86
+www-client/firefox -screencast
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-07-11)
+# net-libs/libslirp is not yet keyworded on x86, bug #732144
+app-emulation/qemu slirp
+
+# Sam James <sam@gentoo.org> (2020-07-03)
+# Rust is available here
+# Bug #728558
+media-video/ffmpeg -rav1e
+
+# Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
+# Mask io-uring & zbc pending keywording
+sys-block/fio -io-uring -zbc
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-06-20)
+# media-libs/nv-codec-headers is not available for x86
+>=media-video/ffmpeg-4.3 video_cards_nvidia
+
+# Marek Szuba <marecki@gentoo.org> (2020-06-17)
+# Unmask globally-masked flashrom drivers and tools which do work on x86
+sys-apps/flashrom -atahpt -atapromise -internal -nic3com -nicnatsemi -nicrealtek -rayer-spi -satamv -tools
+
 # Christopher Head <chead@chead.ca> (2020-06-10)
 # Requires dev-db/influxdb which is amd64-only
 dev-python/influxdb test
@@ -28,6 +57,7 @@ sys-libs/glibc -static-pie
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-03-11)
 # Encrypted Media Extensions (eme-free) can be disabled on x86
+mail-client/thunderbird -eme-free
 www-client/firefox -eme-free
 
 # Mart Raudsepp <leio@gentoo.org> (2020-03-01)
@@ -70,9 +100,8 @@ sys-block/fio -python -gnuplot
 sys-firmware/seabios -debug
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-28)
-# upstream provides docs and tools for tier-1 arches
+# upstream provides docs only for tier-1 arches
 dev-lang/rust-bin -doc
->=dev-lang/rust-bin-1.37 -clippy -rustfmt
 
 # Thomas Deutschmann <whissi@gentoo.org> (2019-08-03)
 # Early microcode loading is supported on x86
@@ -168,10 +197,6 @@ app-admin/rsyslog -mdblookup
 # which is only keyworded for amd64
 x11-wm/awesome doc
 
-# Alexis Ballier <aballier@gentoo.org> (2017-01-31)
-# nvidia drivers are unmasked here
-media-video/ffmpeg -nvenc
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2016-12-31)
 # on behalf of Andreas K. Hüttel <dilfridge@gentoo.org> (2016-12-14)
 # Fails to build with newly unmasked ffmpeg-3, so mask this useflag
@@ -232,10 +257,6 @@ net-im/telepathy-connection-managers -steam
 # Jeroen Roovers <jer@gentoo.org> (2015-01-31)
 # >x11-drivers/nvidia-drivers-346 on x86 has no UVM support (bug #534156)
 >x11-drivers/nvidia-drivers-346 uvm
-
-# Mike Frysinger <vapier@gentoo.org> (2014-08-04)
-# Unmask flashrom drivers that only work on x86 due to in/out asm insns #454024
-sys-apps/flashrom -atahpt -nic3com -nicnatsemi -nicrealtek -rayer-spi -satamv
 
 # Yixun Lan <dlan@gentoo.org> (2014-05-21)
 # sys-fs/zfs not keyworded on x86

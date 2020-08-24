@@ -39,7 +39,7 @@ texlive-common_handle_config_files() {
 	[[ -d ${ED}${TEXMF_PATH} ]] || return
 	cd "${ED}${TEXMF_PATH}" || die
 
-	while read -r -d '' i; do
+	while read -r f; do
 		if [[ ${f#*config} != ${f} || ${f#doc} != ${f} || ${f#source} != ${f} || ${f#tex} != ${f} ]] ; then
 			continue
 		fi
@@ -64,6 +64,7 @@ texlive-common_is_file_present_in_texmf() {
 	if [[ -d texmf-dist ]]; then
 		find texmf-dist -name ${1} -exec touch ${mark} {} + || die
 	fi
+	[ -f "${mark}" ]
 }
 
 # @FUNCTION: texlive-common_do_symlinks

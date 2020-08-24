@@ -86,8 +86,8 @@ src_install() {
 	# by texmf-update
 	rm -f "${ED}${TEXMF_PATH}/web2c/fmtutil.cnf"
 
-	dosym /../../../../etc/texmf/web2c/fmtutil.cnf ${TEXMF_PATH}/web2c/fmtutil.cnf
-	dosym /../../../../etc/texmf/web2c/texmf.cnf ${TEXMF_PATH}/web2c/texmf.cnf
+	dosym ../../../../etc/texmf/web2c/fmtutil.cnf ${TEXMF_PATH}/web2c/fmtutil.cnf
+	dosym ../../../../etc/texmf/web2c/texmf.cnf ${TEXMF_PATH}/web2c/texmf.cnf
 
 	newsbin "${S}/texmf-update" texmf-update
 

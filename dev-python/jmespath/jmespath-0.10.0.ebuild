@@ -8,7 +8,7 @@ inherit distutils-r1
 
 MY_P=jmespath.py-${PV}
 DESCRIPTION="JSON Matching Expressions"
-HOMEPAGE="https://github.com/jmespath/jmespath.py/
+HOMEPAGE="https://github.com/jmespath/jmespath.py
 	https://pypi.org/project/jmespath/"
 SRC_URI="
 	https://github.com/jmespath/jmespath.py/archive/${PV}.tar.gz
@@ -17,6 +17,6 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 x86 ~amd64-linux ~x86-linux"
 
 distutils_enable_tests nose

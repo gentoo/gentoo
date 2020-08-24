@@ -37,7 +37,7 @@ DEPEND="${COMMON_DEPEND}
 
 [[ ${PV} == *9999* ]] && DEPEND+=" dev-python/docutils"
 
-pkg_pretend() {
+pkg_setup() {
 	CONFIG_CHECK="
 		~ASYMMETRIC_KEY_TYPE
 		~ASYMMETRIC_PUBLIC_KEY_SUBTYPE

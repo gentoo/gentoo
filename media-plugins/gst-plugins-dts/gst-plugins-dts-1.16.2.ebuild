@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-bad
 inherit gstreamer
 
 DESCRIPTION="DTS audio decoder plugin for Gstreamer"
-KEYWORDS="~amd64 ~arm64 ~hppa ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~hppa ~mips ~ppc ~ppc64 x86"
 IUSE="+orc"
 
 RDEPEND="

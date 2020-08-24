@@ -19,7 +19,6 @@
 		<flag name="lm-sensors">Enable Gallium HUD lm-sensors support.</flag>
 		<flag name="opencl">Enable the Clover Gallium OpenCL state tracker.</flag>
 		<flag name="osmesa">Build the Mesa library for off-screen rendering.</flag>
-		<flag name="pax_kernel">Enable if the user plans to run the package under a pax enabled hardened kernel</flag>
 		<flag name="valgrind">Compile in valgrind memory hints</flag>
 		<flag name="vdpau">Enable the VDPAU acceleration interface for the Gallium3D Video Layer.</flag>
 		<flag name="vulkan">Enable Vulkan drivers</flag>
@@ -27,6 +26,7 @@
 		<flag name="wayland">Enable support for dev-libs/wayland</flag>
 		<flag name="xa">Enable the XA (X Acceleration) API for Gallium3D.</flag>
 		<flag name="xvmc">Enable the XvMC acceleration interface for the Gallium3D Video Layer.</flag>
+		<flag name="zink">Enable the Zink OpenGL-over-Vulkan Gallium driver</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:mesa3d:mesa</remote-id>

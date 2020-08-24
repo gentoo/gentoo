@@ -12,4 +12,4 @@ RDEPEND="
 	dev-lang/perl:=
 "
 
-# this is the dev-lang/perl-5.30 version but we need the security patch
+# this is the dev-lang/perl-5.30 and dev-lang/perl-5.32 version but we need the security patch

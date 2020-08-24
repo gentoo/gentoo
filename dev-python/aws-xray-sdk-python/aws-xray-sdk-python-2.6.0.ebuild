@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND=">=dev-python/botocore-1.12.122[${PYTHON_USEDEP}]
@@ -26,6 +26,7 @@ BDEPEND="
 		dev-python/bottle[${PYTHON_USEDEP}]
 		dev-python/flask-sqlalchemy[${PYTHON_USEDEP}]
 		dev-python/flask[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest-aiohttp[${PYTHON_USEDEP}]
 		dev-python/webtest[${PYTHON_USEDEP}]
 	)"

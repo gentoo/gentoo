@@ -1,0 +1,62 @@
+From d622460b08c7c13ce8e0c23e3afcbd1e4c65d019 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Sun, 16 Aug 2020 23:20:31 +0300
+Subject: [PATCH] build: Make gspell optional
+
+---
+ meson.build               | 3 ++-
+ meson_options.txt         | 4 ++++
+ plugins/spell/meson.build | 4 ++++
+ 3 files changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index edb2896a6..b8707f33d 100644
+--- a/meson.build
++++ b/meson.build
+@@ -63,7 +63,7 @@ libpeas_gtk_dep = dependency('libpeas-gtk-1.0', version: libpeas_req)
+ 
+ libgd_dep = libgd_subproject.get_variable('libgd_dep')
+ 
+-gspell_dep = dependency('gspell-1', version: '>= 1.0', required: true)
++gspell_dep = dependency('gspell-1', version: '>= 1.0', required: get_option('spell'))
+ x11_dep = dependency('x11', required: false)
+ 
+ introspection_dep = dependency('gobject-introspection-1.0', required: false)
+@@ -154,6 +154,7 @@ summary = [
+   '        User documentation:    @0@'.format(get_option('user_documentation')),
+   '        GObject Introspection: @0@'.format(generate_gir),
+   '        Vala API:              @0@'.format(generate_vapi),
++  '        Spell checker plugin:  @0@'.format(gspell_dep.found().to_string()),
+   '',
+ ]
+ message('\n'.join(summary))
+diff --git a/meson_options.txt b/meson_options.txt
+index d0cbf0720..03e07244e 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -10,6 +10,10 @@ option('gtk_doc',
+        type: 'boolean', value: false,
+        description: 'Build API reference for plugins (requires gtk-doc)')
+ 
++option('spell',
++       type: 'feature', value: 'enabled',
++       description: 'Build spell checking plugin')
++
+ # This option exists for the developers, to speed up the install.
+ option('user_documentation',
+        type: 'boolean', value: true,
+diff --git a/plugins/spell/meson.build b/plugins/spell/meson.build
+index 8ce7634b7..cccb42fc1 100644
+--- a/plugins/spell/meson.build
++++ b/plugins/spell/meson.build
+@@ -1,3 +1,7 @@
++if not gspell_dep.found()
++  subdir_done()
++endif
++
+ libspell_sources = files(
+   'gedit-spell-app-activatable.c',
+   'gedit-spell-plugin.c',
+-- 
+2.20.1
+

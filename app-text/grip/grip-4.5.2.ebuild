@@ -14,10 +14,11 @@ LICENSE="MIT"
 SLOT="0"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="
+	!media-sound/grip
 	>=dev-python/docopt-0.4.0
 	>=dev-python/flask-0.10.1
 	>=dev-python/markdown-2.5.1

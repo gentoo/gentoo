@@ -14,7 +14,7 @@ SRC_URI="https://community.download.adacore.com/v1/408ec35c3bb86bd227db3da55d3e1
 		-> ${MYP}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+shared static-libs static-pic"
 
 RDEPEND="dev-ada/xmlada[shared?,static-libs?,static-pic?,${ADA_USEDEP}]
@@ -22,10 +22,6 @@ RDEPEND="dev-ada/xmlada[shared?,static-libs?,static-pic?,${ADA_USEDEP}]
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 REQUIRED_USE="${ADA_REQUIRED_USE}"
-
-QA_FLAGS_IGNORED=(
-	/usr/lib/gpr/relocatable/gpr/libgpr.so
-)
 
 S="${WORKDIR}"/${MYP}
 

@@ -59,6 +59,7 @@ REQUIRED_USE="|| ( jack pulseaudio portaudio )"
 PATCHES=(
 	"${FILESDIR}/${P}-notest.patch"
 	"${FILESDIR}/${P}-qt-deprecated.patch"
+	"${FILESDIR}/${P}-qt-5.15-fix.patch"
 )
 
 sv_disable_opt() {

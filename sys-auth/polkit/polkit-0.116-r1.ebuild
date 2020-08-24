@@ -116,8 +116,8 @@ src_install() {
 	default
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins src/examples/{*.c,*.policy*}
+		docinto examples
+		dodoc src/examples/{*.c,*.policy*}
 	fi
 
 	diropts -m 0700 -o polkitd

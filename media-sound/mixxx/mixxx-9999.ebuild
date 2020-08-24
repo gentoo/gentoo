@@ -77,10 +77,6 @@ DEPEND="${RDEPEND}
 	dev-qt/qtxmlpatterns:5
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.2.0-lilv_include_fix.patch
-)
-
 src_prepare() {
 	# use multilib compatible directory for plugins
 	sed -i -e "/env.Alias('install', docs)/d;"'/unix_lib_path =/!b;n;'"s/'lib'/'$(get_libdir)'/" SConscript || die

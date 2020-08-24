@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-multilib
+inherit cmake
 
 DESCRIPTION="Transport Independent RPC library for nfs-ganesha"
 HOMEPAGE="https://github.com/nfs-ganesha/ntirpc"
@@ -21,10 +21,10 @@ RDEPEND="app-crypt/mit-krb5
 	rdma? ( sys-fabric/librdmacm )"
 DEPEND="${RDEPEND}"
 
-multilib_src_configure() {
+src_configure() {
 	local mycmakeargs=(
 		-DUSE_GSS="$(usex gssapi)"
 		-DUSE_RPC_RDMA="$(usex rdma)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

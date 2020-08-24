@@ -7,8 +7,8 @@ MY_PV=${PV/_p/+}
 MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="System for writing extensible parsers for programming languages"
-HOMEPAGE="https://github.com/ocaml/camlp4"
-SRC_URI="https://github.com/ocaml/camlp4/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/camlp4/camlp4"
+SRC_URI="https://github.com/camlp4/camlp4/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2-with-linking-exception"
 SLOT="0/${PV}"

@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.10
 	sys-devel/gettext
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 # The only existing test is broken

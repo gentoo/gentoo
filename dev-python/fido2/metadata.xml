@@ -10,6 +10,7 @@
   device over USB as well as verifying attestation and assertion
   signatures.
 </longdescription>
+<stabilize-allarches/>
 <upstream>
   <remote-id type="github">Yubico/python-fido2</remote-id>
 </upstream>

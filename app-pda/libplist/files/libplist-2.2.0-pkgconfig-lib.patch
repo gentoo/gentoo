@@ -1,0 +1,9 @@
+--- a/src/libplist-2.0.pc.in
++++ b/src/libplist-2.0.pc.in
+@@ -6,5 +6,5 @@
+ Name: @PACKAGE_NAME@
+ Description: A library to handle Apple Property Lists whereas they are binary or XML
+ Version: @PACKAGE_VERSION@
+-Libs: -L${libdir} -lplist-2.0
++Libs: -L${libdir} -lplist-2.0 -lplist
+ Cflags: -I${includedir}

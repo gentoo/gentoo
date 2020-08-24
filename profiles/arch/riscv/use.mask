@@ -12,9 +12,6 @@ fam
 # valgrind has no RISCV port.
 valgrind
 
-# The required library has not been ported to riscv yet.
-seccomp
-
 # Not tested yet
 bluetooth
 consolekit

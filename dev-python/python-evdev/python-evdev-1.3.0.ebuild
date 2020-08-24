@@ -26,5 +26,4 @@ python_compile() {
 python_test() {
 	pytest -vv tests/test_ecodes.py || die "ecodes test failed for ${EPYTHON}"
 	pytest -vv tests/test_events.py || die "events test failed for ${EPYTHON}"
-	pytest -vv tests/test_uinput.py || die "uinput test failed foe ${EPYTHON}"
 }

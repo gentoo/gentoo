@@ -15,7 +15,7 @@ IUSE="static-libs utils"
 
 RDEPEND="utils? ( dev-libs/libevent[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig[${MULTILIB_USEDEP}]"
+	virtual/pkgconfig"
 
 src_prepare() {
 	default

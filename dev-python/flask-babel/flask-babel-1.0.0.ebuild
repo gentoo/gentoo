@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
+PYTHON_COMPAT=( pypy3 python3_{6..9} )
 inherit distutils-r1
 
 MY_PN="Flask-Babel"
@@ -19,7 +19,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm arm64 x86"
 
 RDEPEND="
 	dev-python/Babel[${PYTHON_USEDEP}]

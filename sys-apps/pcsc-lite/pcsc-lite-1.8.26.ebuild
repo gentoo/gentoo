@@ -78,6 +78,8 @@ multilib_src_install_all() {
 	fi
 
 	python_fix_shebang "${ED}"/usr/bin/pcsc-spy
+
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {

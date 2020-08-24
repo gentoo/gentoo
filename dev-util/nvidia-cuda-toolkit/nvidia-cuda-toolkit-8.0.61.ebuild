@@ -49,6 +49,7 @@ src_unpack() {
 src_prepare() {
 	local cuda_supported_gcc
 
+	# ATTENTION: change requires revbump
 	cuda_supported_gcc="4.7 4.8 4.9 5.3 5.4"
 
 	sed \

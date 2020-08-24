@@ -11,6 +11,7 @@
 		It is an abstract machine that can be in exactly one of a
 		finite number of states at any given time.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<bugs-to>https://github.com/pytransitions/transitions/issues</bugs-to>
 		<remote-id type="github">pytransitions/transitions</remote-id>

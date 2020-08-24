@@ -11,6 +11,11 @@
 			memory usage, but should speed up the allocation/free
 			operations.
 		</flag>
+		<flag name="largepages64k">
+			Use (experimental) 64K pages for tcmalloc, this increases
+			memory usage, but should speed up the allocation/free
+			operations.
+		</flag>
 		<flag name="debug">
 			Build a set of libraries with debug support (so-called
 			debugalloc). These are available by default but are not needed

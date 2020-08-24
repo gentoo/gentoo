@@ -17,7 +17,7 @@ case ${PV} in
 	;;
 *)
 	KEYWORDS="~amd64 ~x86"
-	CODENAME="Leia"
+	CODENAME="Matrix"
 	SRC_URI="https://github.com/xbmc/audioencoder.wav/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/audioencoder.wav-${PV}-${CODENAME}"
 	;;

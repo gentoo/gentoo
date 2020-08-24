@@ -14,7 +14,7 @@ SRC_URI="https://download.enlightenment.org/rel/bindings/python/${P}.tar.xz"
 
 LICENSE="|| ( GPL-3 LGPL-3 )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc test"
 
 RESTRICT="!test? ( test )"
@@ -28,6 +28,8 @@ BDEPEND="virtual/pkgconfig
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		media-gfx/graphviz
 	)"
+
+PATCHES=( "${FILESDIR}/python-efl-1.24-clang.patch" )
 
 src_prepare() {
 	default

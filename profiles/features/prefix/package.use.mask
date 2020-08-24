@@ -38,10 +38,6 @@ app-editors/emacs m17n-lib
 # it currently causes failures on linux. It can be made a "less global" mask.
 dev-lang/python berkdb
 
-# Elias Pipping <pipping@gentoo.org> (2007-11-18)
-# feynmf fails to build documentation
-dev-tex/feynmf doc
-
 # Elias Pipping <pipping@gentoo.org> (2007-11-15)
 # pkg_postinst tries to create/delete a user, fails
 dev-libs/cyrus-sasl berkdb gdbm

@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_7 )
 inherit distutils-r1
 
 DESCRIPTION="An interactive, SSL-capable, man-in-the-middle HTTP proxy"

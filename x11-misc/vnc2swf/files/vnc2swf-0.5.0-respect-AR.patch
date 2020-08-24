@@ -1,0 +1,45 @@
+--- a/configure.in
++++ b/configure.in
+@@ -12,6 +12,9 @@
+ AC_PROG_MAKE_SET
+ AC_LANG_CPLUSPLUS
+ 
++AC_ARG_VAR([AR], [the archiver to use])
++AC_CHECK_TOOL([AR], [ar])
++
+ case "`(uname -sr) 2>/dev/null`" in
+ "SunOS 5"*)
+   SOLARIS=yes
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -95,7 +95,7 @@
+ LIBS = @LIBS@
+ LDFLAGS = @LDFLAGS@
+ RANLIB = @RANLIB@
+-AR = ar cq
++AR = @AR@ cq
+ 
+ prefix = /usr/X11R6
+ exec_prefix = $(prefix)
+--- a/rdr/Makefile.in
++++ b/rdr/Makefile.in
+@@ -37,7 +37,7 @@
+ LIBS = @LIBS@
+ LDFLAGS = @LDFLAGS@
+ RANLIB = @RANLIB@
+-AR = ar cq
++AR = @AR@ cq
+ 
+ .SUFFIXES:
+ .SUFFIXES: .cxx .c .o
+--- a/rfb/Makefile.in
++++ b/rfb/Makefile.in
+@@ -36,7 +36,7 @@
+ LIBS = @LIBS@
+ LDFLAGS = @LDFLAGS@
+ RANLIB = @RANLIB@
+-AR = ar cq
++AR = @AR@ cq
+ 
+ .SUFFIXES:
+ .SUFFIXES: .cxx .c .o

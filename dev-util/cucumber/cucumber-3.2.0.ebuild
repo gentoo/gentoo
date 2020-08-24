@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 # Documentation task depends on sdoc which we currently don't have.
 RUBY_FAKEGEM_TASK_DOC=""
@@ -40,7 +40,7 @@ ruby_add_rdepend "
 	dev-util/cucumber-core:3.2
 	>=dev-util/cucumber-expressions-6.0.1:6.0
 	>=dev-util/cucumber-wire-0.0.1:0
-	>=dev-ruby/diff-lcs-1.3:0
+	=dev-ruby/diff-lcs-1.3*:0
 	>=dev-ruby/gherkin-5.1.0:5
 	>=dev-ruby/multi_json-1.7.5
 	>=dev-ruby/multi_test-0.1.2

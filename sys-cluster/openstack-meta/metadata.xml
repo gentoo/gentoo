@@ -5,9 +5,6 @@
     <email>prometheanfire@gentoo.org</email>
     <name>Matthew Thode</name>
   </maintainer>
-  <longdescription lang="en">
-    An openstack meta package to allow for easier installation of openstack services.
-  </longdescription>
   <use>
     <flag name="keystone">Installs Openstack Keystone</flag>
     <flag name="swift">Installs Openstack Swift</flag>

@@ -1,8 +1,7 @@
-http://bugs.gentoo.org/451668
-http://pkgs.fedoraproject.org/cgit/lash.git/tree/lash-gcc47.patch
-
---- liblash/lash.c
-+++ liblash/lash.c
+diff --git a/liblash/lash.c b/liblash/lash.c
+index b47251d..f2a5095 100644
+--- a/liblash/lash.c
++++ b/liblash/lash.c
 @@ -22,6 +22,7 @@
  #include <string.h>
  #include <strings.h>

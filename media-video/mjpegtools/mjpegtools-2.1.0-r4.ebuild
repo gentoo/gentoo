@@ -16,7 +16,7 @@ IUSE="cpu_flags_x86_mmx dv gtk png quicktime sdl sdlgfx static-libs"
 REQUIRED_USE="sdlgfx? ( sdl )"
 
 BDEPEND="
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 RDEPEND="
 	virtual/jpeg:0=[${MULTILIB_USEDEP}]

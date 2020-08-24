@@ -28,6 +28,7 @@
     <remote-id type="cpan-module">Crypt::Cipher::Camellia</remote-id>
     <remote-id type="cpan-module">Crypt::Cipher::DES</remote-id>
     <remote-id type="cpan-module">Crypt::Cipher::DES_EDE</remote-id>
+    <remote-id type="cpan-module">Crypt::Cipher::IDEA</remote-id>
     <remote-id type="cpan-module">Crypt::Cipher::KASUMI</remote-id>
     <remote-id type="cpan-module">Crypt::Cipher::Khazad</remote-id>
     <remote-id type="cpan-module">Crypt::Cipher::MULTI2</remote-id>
@@ -41,6 +42,7 @@
     <remote-id type="cpan-module">Crypt::Cipher::SAFER_SK128</remote-id>
     <remote-id type="cpan-module">Crypt::Cipher::SAFER_SK64</remote-id>
     <remote-id type="cpan-module">Crypt::Cipher::SEED</remote-id>
+    <remote-id type="cpan-module">Crypt::Cipher::Serpent</remote-id>
     <remote-id type="cpan-module">Crypt::Cipher::Skipjack</remote-id>
     <remote-id type="cpan-module">Crypt::Cipher::Twofish</remote-id>
     <remote-id type="cpan-module">Crypt::Cipher::XTEA</remote-id>
@@ -54,6 +56,10 @@
     <remote-id type="cpan-module">Crypt::Digest::BLAKE2s_224</remote-id>
     <remote-id type="cpan-module">Crypt::Digest::BLAKE2s_256</remote-id>
     <remote-id type="cpan-module">Crypt::Digest::CHAES</remote-id>
+    <remote-id type="cpan-module">Crypt::Digest::Keccak224</remote-id>
+    <remote-id type="cpan-module">Crypt::Digest::Keccak256</remote-id>
+    <remote-id type="cpan-module">Crypt::Digest::Keccak384</remote-id>
+    <remote-id type="cpan-module">Crypt::Digest::Keccak512</remote-id>
     <remote-id type="cpan-module">Crypt::Digest::MD2</remote-id>
     <remote-id type="cpan-module">Crypt::Digest::MD4</remote-id>
     <remote-id type="cpan-module">Crypt::Digest::MD5</remote-id>
@@ -97,7 +103,9 @@
     <remote-id type="cpan-module">Crypt::PK::DH</remote-id>
     <remote-id type="cpan-module">Crypt::PK::DSA</remote-id>
     <remote-id type="cpan-module">Crypt::PK::ECC</remote-id>
+    <remote-id type="cpan-module">Crypt::PK::Ed25519</remote-id>
     <remote-id type="cpan-module">Crypt::PK::RSA</remote-id>
+    <remote-id type="cpan-module">Crypt::PK::X25519</remote-id>
     <remote-id type="cpan-module">Crypt::PRNG</remote-id>
     <remote-id type="cpan-module">Crypt::PRNG::ChaCha20</remote-id>
     <remote-id type="cpan-module">Crypt::PRNG::Fortuna</remote-id>
@@ -106,7 +114,10 @@
     <remote-id type="cpan-module">Crypt::PRNG::Yarrow</remote-id>
     <remote-id type="cpan-module">Crypt::Stream::ChaCha</remote-id>
     <remote-id type="cpan-module">Crypt::Stream::RC4</remote-id>
+    <remote-id type="cpan-module">Crypt::Stream::Rabbit</remote-id>
+    <remote-id type="cpan-module">Crypt::Stream::Salsa20</remote-id>
     <remote-id type="cpan-module">Crypt::Stream::Sober128</remote-id>
+    <remote-id type="cpan-module">Crypt::Stream::Sosemanuk</remote-id>
     <remote-id type="cpan-module">CryptX</remote-id>
     <remote-id type="cpan-module">Math::BigInt::LTM</remote-id>
   </upstream>

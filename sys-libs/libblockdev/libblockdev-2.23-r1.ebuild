@@ -98,18 +98,9 @@ src_configure() {
 		$(use_with lvm lvm-dbus)
 		$(use_with tools)
 		$(use_with vdo)
+		--without-python2
+		--with-python3
 	)
-	if python_is_python3 ; then
-		myeconfargs+=(
-			--without-python2
-			--with-python3
-		)
-	else
-		myeconfargs+=(
-			--with-python2
-			--without-python3
-		)
-	fi
 	econf "${myeconfargs[@]}"
 }
 

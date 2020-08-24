@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://www.kernel.org/pub/linux/utils/net/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv s390 sparc x86"
 fi
 
 DESCRIPTION="kernel routing and traffic control utilities"
@@ -48,6 +48,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.0-mtu.patch #291907
 	"${FILESDIR}"/${PN}-4.20.0-configure-nomagic.patch # bug 643722
 	"${FILESDIR}"/${PN}-5.1.0-portability.patch
+	"${FILESDIR}"/${PN}-5.7.0-mix-signal.h-include.patch
 )
 
 src_prepare() {

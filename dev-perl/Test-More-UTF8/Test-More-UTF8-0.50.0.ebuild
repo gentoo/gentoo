@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Enhancing Test::More for UTF8-based projects"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ~ppc x86"
+KEYWORDS="~alpha amd64 hppa ppc x86"
 
 IUSE=""
 

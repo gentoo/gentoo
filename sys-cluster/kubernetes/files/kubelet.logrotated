@@ -1,4 +1,4 @@
-/var/log/kubernetes/*.log {
+/var/log/kubelet/*.log {
 	missingok
 	size 5M
 	rotate 3

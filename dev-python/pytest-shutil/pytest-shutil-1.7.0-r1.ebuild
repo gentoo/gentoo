@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -45,12 +45,6 @@ python_prepare_all() {
 }
 
 python_test() {
-	# at this point let's not fix python2 stuff
-	if ! python_is_python3; then
-		ewarn "Tests broken on python2, not runninge tests for ${EPYTHON}"
-		return 0
-	fi
-
 	distutils_install_for_testing
 
 	esetup.py test || die "Tests failed under ${EPYTHON}"

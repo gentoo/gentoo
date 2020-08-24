@@ -59,7 +59,7 @@ LICENSE="
 	samba? ( GPL-3 )
 "
 if [ "${PV#9999}" = "${PV}" ] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 # Options to use as use_enable in the foo[:bar] form.
@@ -67,7 +67,7 @@ fi
 # or $(use_enable foo foo) if no :bar is set.
 # foo is added to IUSE.
 FFMPEG_FLAG_MAP=(
-		+bzip2:bzlib cpudetection:runtime-cpudetect debug gcrypt gnutls gmp
+		+bzip2:bzlib cpudetection:runtime-cpudetect debug gcrypt +gnutls gmp
 		+gpl hardcoded-tables +iconv libressl:libtls libxml2 lzma +network opencl
 		openssl +postproc samba:libsmbclient sdl:ffplay sdl:sdl2 vaapi vdpau vulkan
 		X:xlib X:libxcb X:libxcb-shm X:libxcb-xfixes +zlib
@@ -77,7 +77,7 @@ FFMPEG_FLAG_MAP=(
 		# indevs
 		libv4l:libv4l2 pulseaudio:libpulse libdrm jack:libjack
 		# decoders
-		amr:libopencore-amrwb amr:libopencore-amrnb codec2:libcodec2 dav1d:libdav1d fdk:libfdk-aac
+		amr:libopencore-amrwb amr:libopencore-amrnb codec2:libcodec2 +dav1d:libdav1d fdk:libfdk-aac
 		jpeg2k:libopenjpeg bluray:libbluray gme:libgme gsm:libgsm
 		libaribb24 mmal modplug:libmodplug opus:libopus libilbc librtmp ssh:libssh
 		speex:libspeex srt:libsrt svg:librsvg video_cards_nvidia:ffnvcodec
@@ -97,7 +97,7 @@ FFMPEG_FLAG_MAP=(
 FFMPEG_ENCODER_FLAG_MAP=(
 	amrenc:libvo-amrwbenc mp3:libmp3lame
 	kvazaar:libkvazaar libaom
-	openh264:libopenh264 snappy:libsnappy theora:libtheora twolame:libtwolame
+	openh264:libopenh264 rav1e:librav1e snappy:libsnappy theora:libtheora twolame:libtwolame
 	wavpack:libwavpack webp:libwebp x264:libx264 x265:libx265 xvid:libxvid
 )
 
@@ -184,7 +184,8 @@ RDEPEND="
 		amrenc? ( >=media-libs/vo-amrwbenc-0.1.2-r1[${MULTILIB_USEDEP}] )
 		kvazaar? ( >=media-libs/kvazaar-1.2.0[${MULTILIB_USEDEP}] )
 		mp3? ( >=media-sound/lame-3.99.5-r1[${MULTILIB_USEDEP}] )
-		openh264? ( >=media-libs/openh264-1.4.0-r1[${MULTILIB_USEDEP}] )
+		openh264? ( >=media-libs/openh264-1.4.0-r1:=[${MULTILIB_USEDEP}] )
+		rav1e? ( media-video/rav1e:=[capi] )
 		snappy? ( >=app-arch/snappy-1.1.2-r1:=[${MULTILIB_USEDEP}] )
 		theora? (
 			>=media-libs/libtheora-1.1.1[encode,${MULTILIB_USEDEP}]
@@ -288,7 +289,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	>=sys-devel/make-3.81
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	cpu_flags_x86_mmx? ( || ( >=dev-lang/nasm-2.13 >=dev-lang/yasm-1.3 ) )
 	cuda? ( >=sys-devel/clang-7[llvm_targets_NVPTX] )
 	doc? ( sys-apps/texinfo )
@@ -344,7 +345,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	local myconf=( ${EXTRA_FFMPEG_CONF} )
+	local myconf=( )
 
 	local ffuse=( "${FFMPEG_FLAG_MAP[@]}" )
 	use openssl || use libressl && use gpl && myconf+=( --enable-nonfree )
@@ -392,7 +393,7 @@ multilib_src_configure() {
 
 	# (temporarily) disable non-multilib deps
 	if ! multilib_is_native_abi; then
-		for i in frei0r libzmq ; do
+		for i in frei0r librav1e libzmq ; do
 			myconf+=( --disable-${i} )
 		done
 	fi
@@ -470,10 +471,13 @@ multilib_src_configure() {
 		--cc="$(tc-getCC)" \
 		--cxx="$(tc-getCXX)" \
 		--ar="$(tc-getAR)" \
+		--nm="$(tc-getNM)" \
 		--ranlib="$(tc-getRANLIB)" \
+		--pkg-config="$(tc-getPKG_CONFIG)" \
 		--optflags="${CFLAGS}" \
 		$(use_enable static-libs static) \
-		"${myconf[@]}"
+		"${myconf[@]}" \
+		${EXTRA_FFMPEG_CONF}
 	echo "${@}"
 	"${@}" || die
 

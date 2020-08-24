@@ -110,6 +110,12 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
+python_configure_all() {
+	# bug 721860
+	test-flag-FC -fallow-argument-mismatch &&
+		append-fflags -fallow-argument-mismatch
+}
+
 python_compile() {
 	# FIXME: parallel python building fails, bug #614464
 	export MAKEOPTS=-j1

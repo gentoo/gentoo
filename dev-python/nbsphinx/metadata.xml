@@ -13,6 +13,7 @@
     stored output cells -- will be automatically executed during the
     Sphinx build process.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">nbsphinx</remote-id>
     <remote-id type="github">spatialaudio/nbsphinx</remote-id>

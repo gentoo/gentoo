@@ -21,7 +21,7 @@ RDEPEND=">=dev-lua/LuaBitOp-1.0.1-r1[${MULTILIB_USEDEP}]
 	>=dev-lua/luajson-1.1.1
 	>=dev-lua/luasocket-3.0_rc1-r2[${MULTILIB_USEDEP}]"
 DEPEND="app-arch/xz-utils
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
+	virtual/pkgconfig"
 
 # tests fetch data from live websites
 RESTRICT="test"

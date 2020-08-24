@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,12 +9,12 @@ PYTHON_REQ_USE="threads(+)"
 inherit python-single-r1 waf-utils
 
 DESCRIPTION="A set of C++ wrappers around the LV2 C API"
-HOMEPAGE="http://lvtoolkit.org/"
+HOMEPAGE="https://lvtk.org/"
 SRC_URI="https://github.com/lvtk/lvtk/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug doc examples +gtk2 +tools"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -49,7 +49,7 @@ src_install() {
 
 	# It does not respect docdir properly, reported upstream
 	if use doc; then
-		mv "${ED}/usr/share/doc/${PF}/lvtk-1.0/html" "${ED}/usr/share/doc/${PF}/html" || die
-		rmdir "${ED}/usr/share/doc/${PF}/lvtk-1.0" || die
+		mv "${ED}/usr/share/doc/${PF}/lvtk-1/html" "${ED}/usr/share/doc/${PF}/html" || die
+		rmdir "${ED}/usr/share/doc/${PF}/lvtk-1" || die
 	fi
 }

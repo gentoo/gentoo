@@ -1,0 +1,12 @@
+--- a/Linux/Makefile
++++ b/Linux/Makefile
+@@ -28,9 +28,3 @@
+ 
+ clean:
+ 	${RM} *.o ../*.o ../spu/*.o sexypsf
+-
+-../%.o: ../%.c
+-	${CC} ${CFLAGS} -c -o $@ $<
+-
+-%.o: %.c
+-	${CC} ${CFLAGS} -c -o $@ $<

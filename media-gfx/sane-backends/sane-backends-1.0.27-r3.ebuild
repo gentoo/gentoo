@@ -149,7 +149,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	v4l? ( sys-kernel/linux-headers )
 	>=sys-devel/gettext-0.18.1
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 MULTILIB_CHOST_TOOLS=(

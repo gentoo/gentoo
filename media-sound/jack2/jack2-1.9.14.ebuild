@@ -18,7 +18,7 @@ else
 	MY_P="${PN}-${MY_PV}"
 	S="${WORKDIR}/${MY_P}"
 	SRC_URI="https://github.com/jackaudio/jack2/releases/download/v${MY_PV}/v${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~ppc x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 fi
 
 LICENSE="GPL-2"
@@ -54,6 +54,10 @@ RDEPEND="${CDEPEND}
 	!media-sound/jack-audio-connection-kit:0"
 
 DOCS=( ChangeLog.rst README.rst README_NETJACK2 )
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-doc.patch"
+)
 
 src_prepare() {
 	default

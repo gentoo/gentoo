@@ -3,16 +3,23 @@
 
 EAPI=7
 
-MY_P=${PN}-${PV%0}-src
-inherit qmake-utils subversion xdg-utils
+inherit qmake-utils xdg
 
 DESCRIPTION="Qt5 application to design electric diagrams"
 HOMEPAGE="https://qelectrotech.org/"
-ESVN_REPO_URI="svn://svn.tuxfamily.org/svnroot/qet/qet/trunk"
+
+if [[ ${PV} = *9999* ]]; then
+	inherit subversion
+	ESVN_REPO_URI="svn://svn.tuxfamily.org/svnroot/qet/qet/trunk"
+else
+	MY_P=${PN}-${PV%0}-src
+	SRC_URI="https://download.tuxfamily.org/qet/tags/20180823/${MY_P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}"/${MY_P}
+fi
 
 LICENSE="CC-BY-3.0 GPL-2+"
 SLOT="0"
-KEYWORDS=""
 IUSE="doc"
 
 BDEPEND="
@@ -28,10 +35,10 @@ RDEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
+	kde-frameworks/kcoreaddons:5
+	kde-frameworks/kwidgetsaddons:5
 "
 DEPEND="${RDEPEND}"
-
-S=${WORKDIR}/${MY_P}
 
 DOCS=( CREDIT ChangeLog README )
 
@@ -50,16 +57,4 @@ src_install() {
 	fi
 
 	einstalldocs
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	xdg_icon_cache_update
 }

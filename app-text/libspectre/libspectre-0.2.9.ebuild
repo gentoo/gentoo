@@ -11,14 +11,14 @@ SRC_URI="https://libspectre.freedesktop.org/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
 IUSE="debug doc"
 
 BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
-RDEPEND=">=app-text/ghostscript-gpl-9.24"
+RDEPEND=">=app-text/ghostscript-gpl-9.24:="
 DEPEND="${RDEPEND}"
 
 # does not actually test anything, see bug 362557

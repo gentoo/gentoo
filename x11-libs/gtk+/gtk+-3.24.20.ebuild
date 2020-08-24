@@ -18,7 +18,7 @@ REQUIRED_USE="
 	xinerama? ( X )
 "
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 # Upstream wants us to do their job:
 # https://bugzilla.gnome.org/show_bug.cgi?id=768662#c1
@@ -75,7 +75,7 @@ DEPEND="${COMMON_DEPEND}
 	gtk-doc? ( >=dev-util/gtk-doc-1.20
 		app-text/docbook-xml-dtd:4.3 )
 	>=sys-devel/gettext-0.19.7[${MULTILIB_USEDEP}]
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	X? ( x11-base/xorg-proto )
 	test? (
 		media-fonts/font-misc-misc

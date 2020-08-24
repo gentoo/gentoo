@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 PYTHON_REQ_USE="threads(+)"
 DISTUTILS_USE_SETUPTOOLS=no
 
@@ -27,10 +27,13 @@ RDEPEND="
 		sys-libs/db:4.8
 		sys-libs/db:4.7
 	)"
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}"
 
 DISTUTILS_IN_SOURCE_BUILD=1
+
+PATCHES=(
+	"${FILESDIR}"/${P}-py39.patch
+)
 
 python_prepare_all() {
 	# This list should be kept in sync with setup.py.
@@ -60,17 +63,6 @@ python_configure_all() {
 	export YES_I_HAVE_THE_RIGHT_TO_USE_THIS_BERKELEY_DB_VERSION=1
 }
 
-python_compile() {
-	if ! python_is_python3; then
-		local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
-	fi
-	distutils-r1_python_compile
-}
-
 python_test() {
-	if python_is_python3; then
-		PYTHONPATH=Lib3 "${EPYTHON}" test3.py -v || die "Testing failed with ${EPYTHON}"
-	else
-		PYTHONPATH=Lib "${EPYTHON}" test.py -v || die "Testing failed with ${EPYTHON}"
-	fi
+	PYTHONPATH=Lib3 "${EPYTHON}" test3.py -v || die "Testing failed with ${EPYTHON}"
 }

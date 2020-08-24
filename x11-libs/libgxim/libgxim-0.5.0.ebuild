@@ -1,8 +1,8 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-USE_RUBY="ruby24 ruby25 ruby26"
+EAPI="7"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 inherit autotools ruby-single
 
@@ -10,7 +10,7 @@ DESCRIPTION="GObject-based XIM protocol library"
 HOMEPAGE="https://tagoh.bitbucket.io/libgxim"
 SRC_URI="https://bitbucket.org/tagoh/${PN}/downloads/${P}.tar.bz2"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
 IUSE="${USE_RUBY//ruby/ruby_targets_ruby} static-libs test"
@@ -22,8 +22,8 @@ RDEPEND="dev-libs/dbus-glib
 	virtual/libintl
 	x11-libs/gtk+:2
 	x11-libs/libX11"
-DEPEND="${RDEPEND}
-	${RUBY_DEPS}
+DEPEND="${RDEPEND}"
+BDEPEND="${RUBY_DEPS}
 	dev-util/glib-utils
 	dev-util/intltool
 	sys-devel/autoconf-archive

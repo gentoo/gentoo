@@ -13,7 +13,7 @@ SRC_URI="https://gitlab.com/Remmina/Remmina/-/archive/v${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="appindicator crypt cups examples gnome-keyring kwallet libressl nls spice ssh rdp telepathy vnc webkit zeroconf"
 
 DEPEND="
@@ -58,6 +58,7 @@ DOCS=( AUTHORS CHANGELOG.md README.md THANKS.md )
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
+	eapply "${FILESDIR}"/${P}-with-examples.patch
 	cmake_src_prepare
 	xdg_src_prepare
 }

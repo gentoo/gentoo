@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit cmake xdg-utils
 
 DESCRIPTION="Qt Image Viewer"
 HOMEPAGE="https://lxqt.github.io/"
@@ -13,7 +13,7 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/lxqt/${PN}.git"
 else
 	SRC_URI="https://github.com/lxqt/${PN}/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 fi
 
 LICENSE="GPL-2 GPL-2+"
@@ -42,3 +42,11 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!lxqt-base/lxqt-l10n
 "
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+}

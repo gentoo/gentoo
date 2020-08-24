@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Hedgehog is a modern property-based testing system, in the spirit of
+		QuickCheck. Hedgehog uses integrated shrinking, so shrinks obey the
+		invariants of generated values by construction.
+		
+		To get started quickly, see the examples:
+		&lt;https://github.com/hedgehogqa/haskell-hedgehog/tree/master/hedgehog-example&gt;
+	</longdescription>
+</pkgmetadata>

@@ -80,7 +80,8 @@ EXPORT_FUNCTIONS pkg_setup
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_COMPAT_OVERRIDE
-# @INTERNAL
+# @USER_VARIABLE
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # This variable can be used when working with ebuilds to override
 # the in-ebuild PYTHON_COMPAT. It is a string naming the implementation
@@ -119,6 +120,7 @@ EXPORT_FUNCTIONS pkg_setup
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_DEPS
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated Python dependency string for all
 # implementations listed in PYTHON_COMPAT.
@@ -140,6 +142,7 @@ EXPORT_FUNCTIONS pkg_setup
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_SINGLE_USEDEP
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated USE-dependency string which can be used to
 # depend on another python-single-r1 package being built for the same
@@ -159,6 +162,7 @@ EXPORT_FUNCTIONS pkg_setup
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_USEDEP
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is a placeholder variable supported by python_gen_cond_dep,
 # in order to depend on python-r1 packages built for the same Python
@@ -177,11 +181,13 @@ EXPORT_FUNCTIONS pkg_setup
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_MULTI_USEDEP
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is a backwards-compatibility placeholder.  Use PYTHON_USEDEP
 # instead.
 
 # @ECLASS-VARIABLE: PYTHON_REQUIRED_USE
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated required-use expression which ensures
 # that exactly one PYTHON_SINGLE_TARGET value has been enabled.
@@ -266,8 +272,8 @@ unset -f _python_single_set_globals
 if [[ ! ${_PYTHON_SINGLE_R1} ]]; then
 
 # @FUNCTION: _python_gen_usedep
-# @INTERNAL
 # @USAGE: [<pattern>...]
+# @INTERNAL
 # @DESCRIPTION:
 # Output a USE dependency string for Python implementations which
 # are both in PYTHON_COMPAT and match any of the patterns passed
@@ -285,6 +291,7 @@ _python_gen_usedep() {
 
 	local impl matches=()
 
+	_python_verify_patterns "${@}"
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${impl}" "${@}"; then
 			matches+=(
@@ -327,6 +334,7 @@ python_gen_useflags() {
 
 	local impl matches=()
 
+	_python_verify_patterns "${@}"
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${impl}" "${@}"; then
 			matches+=( "python_single_target_${impl}" )
@@ -376,6 +384,7 @@ python_gen_cond_dep() {
 	local dep=${1}
 	shift
 
+	_python_verify_patterns "${@}"
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${impl}" "${@}"; then
 			# substitute ${PYTHON_SINGLE_USEDEP} if used
@@ -439,6 +448,7 @@ python_gen_impl_dep() {
 	local PYTHON_REQ_USE=${1}
 	shift
 
+	_python_verify_patterns "${@}"
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${impl}" "${@}"; then
 			local PYTHON_PKG_DEP

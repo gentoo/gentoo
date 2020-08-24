@@ -4,7 +4,6 @@
 EAPI=7
 
 ECM_TEST="forceoptional"
-KDE_APPS_MINIMAL=19.08.3
 KFMIN=5.60.0
 QTMIN=5.12.3
 VIRTUALX_REQUIRED="test"
@@ -24,18 +23,18 @@ SLOT="5"
 IUSE=""
 
 BDEPEND="
-	test? ( >=kde-apps/akonadi-${KDE_APPS_MINIMAL}:5[tools] )
+	test? ( <kde-apps/akonadi-20.04.50[tools] )
 "
 COMMON_DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtnetwork-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
-	>=kde-apps/akonadi-${KDE_APPS_MINIMAL}:5
-	>=kde-apps/akonadi-calendar-${KDE_APPS_MINIMAL}:5
-	>=kde-apps/akonadi-contacts-${KDE_APPS_MINIMAL}:5
-	>=kde-apps/kmime-${KDE_APPS_MINIMAL}:5
-	>=kde-apps/kontactinterface-${KDE_APPS_MINIMAL}:5
+	<kde-apps/akonadi-20.04.50
+	<kde-apps/akonadi-calendar-20.04.50
+	<kde-apps/akonadi-contacts-20.04.50
+	<kde-apps/kmime-20.04.50
+	<kde-apps/kontactinterface-20.04.50
 	>=kde-frameworks/kcalendarcore-${KFMIN}:5
 	>=kde-frameworks/kcodecs-${KFMIN}:5
 	>=kde-frameworks/kcompletion-${KFMIN}:5
@@ -59,5 +58,5 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	!kde-misc/zanshin:4
-	>=kde-apps/kdepim-runtime-${KDE_APPS_MINIMAL}:5
+	<kde-apps/kdepim-runtime-20.04.50
 "

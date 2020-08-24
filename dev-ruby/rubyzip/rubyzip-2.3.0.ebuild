@@ -48,4 +48,7 @@ all_ruby_prepare() {
 
 	# Add missing requires
 	sed -i -e '1irequire "forwardable"; require "pathname"' test/input_stream_test.rb || die
+
+	# Fix broken test that uses native endian
+	sed -i -e '/pack/ s/LLS/VVv/' test/file_extract_test.rb || die
 }

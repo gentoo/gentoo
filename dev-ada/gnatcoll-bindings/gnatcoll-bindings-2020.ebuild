@@ -16,7 +16,7 @@ SRC_URI="https://community.download.adacore.com/v1/3c54db553121bf88877e2f56ac4fc
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gmp iconv python readline +shared static-libs static-pic syslog"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )
@@ -32,7 +32,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 S="${WORKDIR}"/${MYP}-src
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	use python && python-single-r1_pkg_setup
 	ada_pkg_setup
 }
 

@@ -18,7 +18,10 @@ RESTRICT="!test? ( test )"
 DEPEND="test? ( dev-db/redis )"
 
 src_prepare() {
-	local PATCHES=( "${FILESDIR}/${PN}-0.13.3-disable-network-tests.patch" )
+	local PATCHES=(
+		"${FILESDIR}"/${PN}-0.13.3-disable-network-tests.patch
+		"${FILESDIR}"/${PN}-0.14.1-honor-AR.patch
+	)
 	default
 
 	# use GNU ld syntax on Solaris
@@ -31,9 +34,8 @@ _build() {
 		CC="$(tc-getCC)" \
 		PREFIX="${EPREFIX}/usr" \
 		LIBRARY_PATH="$(get_libdir)" \
-		ARCH= \
-		DEBUG= \
-		OPTIMIZATION="${CPPFLAGS}" \
+		DEBUG_FLAGS= \
+		OPTIMIZATION= \
 		"$@"
 }
 

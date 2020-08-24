@@ -7,8 +7,8 @@ inherit toolchain-funcs
 
 MY_P=${PN}-v${PV}
 DESCRIPTION="Web application framework written in Lua and C"
-HOMEPAGE="http://www.public-software-group.org/webmcp"
-SRC_URI="http://www.public-software-group.org/pub/projects/${PN}/v${PV}/${MY_P}.tar.gz"
+HOMEPAGE="https://www.public-software-group.org/webmcp"
+SRC_URI="https://www.public-software-group.org/pub/projects/${PN}/v${PV}/${MY_P}.tar.gz"
 
 LICENSE="HPND"
 KEYWORDS="~amd64"

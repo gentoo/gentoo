@@ -17,23 +17,26 @@ DESCRIPTION="Utility to manage compilers"
 HOMEPAGE="https://gitweb.gentoo.org/proj/gcc-config.git/"
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+native-symlinks"
+IUSE="+cc-wrappers +native-symlinks"
 
 RDEPEND=">=sys-apps/gentoo-functions-0.10"
 
-src_compile() {
-	emake CC="$(tc-getCC)" \
+_emake() {
+	emake \
 		PV="${PV}" \
 		SUBLIBDIR="$(get_libdir)" \
-		USE_NATIVE_LINKS="$(usex native-symlinks)"
+		USE_CC_WRAPPERS="$(usex cc-wrappers)" \
+		USE_NATIVE_LINKS="$(usex native-symlinks)" \
+		TOOLCHAIN_PREFIX="${CHOST}-" \
+		"$@"
+}
+
+src_compile() {
+	_emake
 }
 
 src_install() {
-	emake \
-		DESTDIR="${D}" \
-		PV="${PV}" \
-		SUBLIBDIR="$(get_libdir)" \
-		install
+	_emake DESTDIR="${D}" install
 }
 
 pkg_postinst() {

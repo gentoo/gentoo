@@ -1,32 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>stasibear@gentoo.org</email>
-		<name>Erik Mackdanz</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>virtualization@gentoo.org</email>
-		<name>Gentoo Virtualization Project</name>
-	</maintainer>
-	<longdescription>
-		By combining the speed and density of containers with
-		the security of traditional virtual machines, LXD is
-		the next-generation of container hypervisor for Linux
-		from Canonical.
-	</longdescription>
-	<upstream>
-		<remote-id type="github">lxc/lxd</remote-id>
-	</upstream>
-	<use>
-		<flag name="daemon">
-			Build the system daemon, not just the client tool
-		</flag>
-		<flag name="dnsmasq">
-			Depend on dnsmasq to provide DHCP and DNS
-		</flag>
-		<flag name="tools">
-			Build and install optional tools
-		</flag>
-	</use>
+  <maintainer type="person">
+    <email>stasibear@gentoo.org</email>
+    <name>Erik Mackdanz</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>virtualization@gentoo.org</email>
+    <name>Gentoo Virtualization Project</name>
+  </maintainer>
+  <use>
+    <flag name="apparmor">Enable AppArmor support</flag>
+  </use>
+  <longdescription>
+    By combining the speed and density of containers with
+    the security of traditional virtual machines, LXD is
+    the next-generation of container hypervisor for Linux
+    from Canonical.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">lxc/lxd</remote-id>
+  </upstream>
 </pkgmetadata>

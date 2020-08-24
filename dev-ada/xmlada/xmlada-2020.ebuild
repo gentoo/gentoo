@@ -15,7 +15,7 @@ SRC_URI="https://community.download.adacore.com/v1/c799502295baf074ad17b48c50f62
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+shared static-libs static-pic"
 REQUIRED_USE="|| ( shared static-libs static-pic )
 	${ADA_REQUIRED_USE}"
@@ -27,14 +27,6 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}"/${MYP}
 
 PATCHES=( "${FILESDIR}"/${PN}-2019-gentoo.patch )
-
-QA_FLAGS_IGNORED=(
-	/usr/lib/xmlada/xmlada_dom.relocatable/libxmlada_dom.so.2020
-	/usr/lib/xmlada/xmlada_input.relocatable/libxmlada_input_sources.so.2020
-	/usr/lib/xmlada/xmlada_sax.relocatable/libxmlada_sax.so.2020
-	/usr/lib/xmlada/xmlada_schema.relocatable/libxmlada_schema.so.2020
-	/usr/lib/xmlada/xmlada_unicode.relocatable/libxmlada_unicode.so.2020
-)
 
 src_configure() {
 	econf --prefix="${D}"/usr
@@ -89,5 +81,6 @@ src_install() {
 	einstalldocs
 	dodoc xmlada-roadmap.txt
 	rm -f "${D}"/usr/share/doc/${PN}/.buildinfo
+	rm -rf "${D}"/usr/share/examples
 	rm -rf "${D}"/usr/share/gpr/manifests
 }

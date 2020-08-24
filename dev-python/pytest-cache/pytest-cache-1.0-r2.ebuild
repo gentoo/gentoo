@@ -3,13 +3,12 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
+PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 
 inherit distutils-r1
 
 DESCRIPTION="mechanisms for caching across test runs"
 HOMEPAGE="https://pypi.org/project/pytest-cache/
-	https://bitbucket.org/hpk42/pytest-cache/
 	https://pythonhosted.org/pytest-cache/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

@@ -10,12 +10,14 @@ HOMEPAGE="https://github.com/cronie-crond/cronie"
 SRC_URI="https://github.com/cronie-crond/cronie/archive/${P}.tar.gz"
 
 LICENSE="ISC BSD BSD-2 GPL-2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="+anacron +inotify pam selinux"
 
 DEPEND="
 	pam? ( sys-libs/pam )
-	anacron? ( !sys-process/anacron
+	anacron? (
+		!sys-process/anacron
+		!sys-process/systemd-cron
 		elibc_musl? ( sys-libs/obstack-standalone )
 		elibc_uclibc? ( sys-libs/obstack-standalone )
 	)

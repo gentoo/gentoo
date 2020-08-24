@@ -31,7 +31,10 @@ all_ruby_prepare() {
 	eapply "${FILESDIR}/${P}-ox24.patch"
 
 	sed -i -e '/simplecov/,/^end/ s:^:#:' spec/helper.rb || die
-	sed -i -e '/bundler/I s:^:#:' -e '/yardstick/,/end/ s:^:#:' Rakefile || die
+	sed -e '/bundler/I s:^:#:' \
+		-e '/yardstick/,/end/ s:^:#:' \
+		-e '/rubocop/I s:^:#:' \
+		-i Rakefile || die
 }
 
 each_ruby_test() {

@@ -12,9 +12,8 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~arm ~m68k ~mips ~s390 ~x86"
-	MY_P="${PN}-v${PV}"
-	SRC_URI="https://www.rutschle.net/tech/${PN}/${MY_P}.tar.gz"
-	S=${WORKDIR}/${MY_P}
+	SRC_URI="https://github.com/yrutschle/sslh/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	S=${WORKDIR}/${P}
 fi
 
 LICENSE="GPL-2"

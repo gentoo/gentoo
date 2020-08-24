@@ -11,7 +11,7 @@ inherit autotools python-r1 pam systemd user
 
 DESCRIPTION="An extremely fast and tiny web server"
 SRC_URI="https://github.com/cherokee/webserver/archive/v${PV}.zip -> ${P}.zip"
-HOMEPAGE="http://www.cherokee-project.com/"
+HOMEPAGE="https://www.cherokee-project.com/"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -43,6 +43,7 @@ DEPEND="${COMMON_DEPEND}
 	nls? ( sys-devel/gettext )"
 RDEPEND="${COMMON_DEPEND}
 	rrdtool? ( net-analyzer/rrdtool )"
+BDEPEND="app-arch/unzip"
 
 RESTRICT="test"
 

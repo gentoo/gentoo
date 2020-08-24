@@ -1,10 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 DESCRIPTION="Fortune modules from the King James Bible scriptures"
-HOMEPAGE="http://scriptures.nephi.org/"
+HOMEPAGE="https://scriptures.nephi.org/"
 SRC_URI="mirror://sourceforge/mormon/${P}.tar.bz2"
 
 LICENSE="public-domain"

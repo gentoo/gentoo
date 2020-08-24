@@ -10,7 +10,7 @@ if [[ ${PV} = *9999 ]]; then
 else
 	MY_P="${PN}-${PV/_pre20200309/-alpha4}" # present as upgrade over previous snapshot
 	SRC_URI="https://github.com/annulen/webkit/releases/download/${MY_P}/${MY_P}.tar.xz"
-	KEYWORDS="amd64 arm arm64 ~ppc ppc64 x86"
+	KEYWORDS="amd64 arm arm64 ppc64 x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 PYTHON_COMPAT=( python3_{6,7,8} )
@@ -82,6 +82,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 CHECKREQS_DISK_BUILD="16G" # bug 417307
+
+PATCHES=( "${FILESDIR}/${P}-bison-3.7.patch" ) # bug 736499
 
 _check_reqs() {
 	if [[ ${MERGE_TYPE} != binary ]] && is-flagq "-g*" && ! is-flagq "-g*0"; then

@@ -19,7 +19,7 @@ RDEPEND="zlib? ( sys-libs/zlib )
 	readline? ( sys-libs/readline:0= )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( >=dev-libs/libressl-2.7.0:0= )
+		libressl? ( >=dev-libs/libressl-3.1.0:0= )
 	)
 	openct? ( >=dev-libs/openct-0.5.0 )
 	pcsc-lite? ( >=sys-apps/pcsc-lite-1.3.0 )
@@ -35,6 +35,10 @@ REQUIRED_USE="
 	openct? ( !pcsc-lite !ctapi )
 	ctapi? ( !pcsc-lite !openct )
 	|| ( pcsc-lite openct ctapi )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-gcc10.patch"
+)
 
 src_prepare() {
 	default

@@ -45,6 +45,8 @@ PATCHES=(
 	"${FILESDIR}/bpftrace-0.10.0-install-libs.patch"
 	"${FILESDIR}/bpftrace-0.10.0-dont-compress-man.patch"
 	"${FILESDIR}/bpftrace-0.10.0-llvm-multi.patch"
+	# bpf_detach_kfunc has always been a noop
+	"${FILESDIR}/bpftrace-0.10.0-no-bpf_detach_kfunc.patch"
 )
 
 # lots of fixing needed

@@ -8,7 +8,7 @@ MY_PV=$(get_version_component_range -2)
 VIDEOS_PV=2.2
 VIDEOS_P=${PN}-videos-${VIDEOS_PV}.wz
 DESCRIPTION="3D real-time strategy game"
-HOMEPAGE="http://wz2100.net/"
+HOMEPAGE="https://wz2100.net/"
 SRC_URI="mirror://sourceforge/warzone2100/${P}.tar.xz
 	videos? ( mirror://sourceforge/warzone2100/warzone2100/Videos/${VIDEOS_PV}/high-quality-en/sequences.wz -> ${VIDEOS_P} )"
 

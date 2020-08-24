@@ -1,0 +1,97 @@
+--- a/scripts/pgnfix.py
++++ b/scripts/pgnfix.py
+@@ -12,7 +12,6 @@
+ # put in the Site or Event field, and move them to the Date field.
+ 
+ import sys
+-import string
+ import re
+ 
+ if len(sys.argv) < 2:
+@@ -69,16 +68,16 @@
+             if match:
+                 full = match.group(0)
+                 last, first = match.groups()
+-                first = string.strip(first)
+-                full  = string.strip(full)
+-                last  = string.strip(last)
++                first = str.strip(first)
++                full  = str.strip(full)
++                last  = str.strip(last)
+                 if first:
+                     for name in (full, last,
+                                  last + " " + first,
+                                  last + ", " + first[0],
+                                  last + " " + first[0]):
+-                        name = string.lower(name)
+-                        if spelling.has_key(name):
++                        name = str.lower(name)
++                        if name in spelling:
+                             del spelling[name]
+                         else:
+                             spelling[name] = full
+@@ -107,16 +106,16 @@
+                 if error:
+                     out = sys.stderr
+                     error = 0
+-                out.write(string.join(current, ""))
++                out.write("".join(current))
+                 current = []
+                 bad_lines = []
+         else:
+             if headers:
+                 for field, value in specials.items():
+-                    if not headers.has_key(field):
++                    if not field in headers:
+                         headers[field] = value
+                 for field in order:
+-                    if headers.has_key(field):
++                    if field in headers:
+                         current.append('[%s "%s"]\n' % (field, headers[field]))
+                         del headers[field]
+                 for field, value in headers.items():
+@@ -172,7 +171,7 @@
+                 specials["Date"] = "%04d.%02d.%02d" % (year, month, day)
+                 value = re.sub("\(?([0-9]+)/([0-9]+)/([0-9]+)\)?", "", value)
+ 
+-        value = string.strip(value)
++        value = str.strip(value)
+ 
+         if field in ("White", "Black"):
+             name = re.sub("[MW][0-9]{5}", "", value)
+@@ -193,21 +192,21 @@
+                     name = re.sub("_", " ", name)
+                     name = re.sub("\.", "", name)
+                     name = re.sub("([A-Za-z])([0-9])", "\\1 \\2", name)
+-                    name = string.strip(name)
++                    name = str.strip(name)
+                     name = re.sub("^([A-Z]+?)\s*([A-Z][a-z].+)", "\\2, \\1",
+                                   name)
+ 
+                 name = re.sub(",\s*([GI]M)?$", "", name)
+ 
+-            name = string.strip(name)
+-            t = string.lower(name)
++            name = str.strip(name)
++            t = str.lower(name)
+ 
+-            if spelling.has_key(t):
++            if t in spelling:
+                 name = spelling[t]
+ 
+             headers[field] = name
+ 
+-        elif not bogus.has_key(field) or not re.search(bogus[field], value):
++        elif not field in bogus or not re.search(bogus[field], value):
+             headers[field] = value
+ 
+ if current:
+@@ -215,7 +214,7 @@
+     if error:
+         out = sys.stderr
+         error = 0
+-    out.write(string.join(current, ""))
++    out.write("".join(current))
+     current = []
+     bad_lines = []
+ 

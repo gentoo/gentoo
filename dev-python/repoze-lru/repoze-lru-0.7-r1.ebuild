@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python3_{6..9} pypy3 )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="repoze"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 arm arm64 ~ia64 ppc ~ppc64 x86"
 
 RDEPEND="dev-python/namespace-repoze[${PYTHON_USEDEP}]"
 

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE="tk?"
 inherit cmake desktop flag-o-matic python-single-r1 subversion xdg
 
@@ -58,8 +58,8 @@ DEPEND="${PYTHON_DEPS}
 	virtual/jpeg:0=
 	>=x11-libs/cairo-1.10.0[X,svg]
 	boost? ( >=dev-libs/boost-1.67:= )
-	hunspell? ( app-text/hunspell:= )
 	graphicsmagick? ( media-gfx/graphicsmagick:= )
+	hunspell? ( app-text/hunspell:= )
 	osg? ( dev-games/openscenegraph:= )
 	pdf? ( app-text/podofo:0= )
 	scripts? (

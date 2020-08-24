@@ -59,9 +59,9 @@ BDEPEND="
 	dev-qt/linguist-tools:5
 "
 RDEPEND="${COMMON_DEPEND}
-	media-libs/ladspa-cmt
 	media-plugins/calf
 	media-plugins/caps-plugins
+	media-plugins/cmt-plugins
 	media-plugins/swh-plugins
 	media-plugins/tap-plugins
 "

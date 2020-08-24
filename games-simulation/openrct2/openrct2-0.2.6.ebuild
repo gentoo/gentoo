@@ -24,7 +24,7 @@ SRC_URI="
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="dedicated libressl +lightfx +opengl test +truetype twitch"
 
 COMMON_DEPEND="
@@ -73,6 +73,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.2.4-include-additional-paths.patch"
+	"${FILESDIR}/${PN}-0.2.6-gtest-1.10.patch"
 )
 
 src_unpack() {

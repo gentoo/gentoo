@@ -15,7 +15,7 @@ KEYWORDS=""
 RDEPEND="
 	>=media-libs/giblib-1.2.3
 	x11-libs/libX11
-	x11-libs/libXcursor
+	x11-libs/libXcomposite
 	x11-libs/libXfixes
 	|| (
 		media-libs/imlib2[gif]
@@ -34,7 +34,10 @@ DOCS=(
 
 src_prepare() {
 	sed -i -e 's#-g -O3##g' src/Makefile.am || die
+	cat "${FILESDIR}"/ax_prefix_config_h.m4 >> acinclude.m4 || die
+
 	default
+
 	eautoreconf
 }
 

@@ -1,0 +1,19 @@
+Add more search pathes for potential libdirs
+
+Index: pluginlib/include/pluginlib/class_loader_imp.hpp
+===================================================================
+--- pluginlib.orig/include/pluginlib/class_loader_imp.hpp
++++ pluginlib/include/pluginlib/class_loader_imp.hpp
+@@ -323,6 +323,12 @@ std::vector<std::string> ClassLoader<T>:
+       boost::filesystem::path bin("bin");
+       lib_paths.push_back((path / bin).string());
+ #endif
++      boost::filesystem::path lib64("lib64");
++      lib_paths.push_back((path / lib64).string());
++      boost::filesystem::path lib32("lib32");
++      lib_paths.push_back((path / lib32).string());
++      boost::filesystem::path libx32("libx32");
++      lib_paths.push_back((path / libx32).string());
+       boost::filesystem::path lib("lib");
+       lib_paths.push_back((path / lib).string());
+     }

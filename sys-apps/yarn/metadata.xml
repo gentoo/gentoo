@@ -10,6 +10,10 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<maintainer type="person">
 		<email>zmedico@gentoo.org</email>
 		<name>Zac Medico</name>
 	</maintainer>

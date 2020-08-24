@@ -23,7 +23,7 @@ RDEPEND="
 	x11-libs/gtksourceview:4
 "
 DEPEND="${RDEPEND}"
-BDEPED="
+BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "

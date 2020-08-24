@@ -13,13 +13,13 @@ QMAIL_BIGTODO_F=notqmail-1.08-big-todo.patch
 
 QMAIL_LARGE_DNS="qmail-103.patch"
 
-inherit qmail
+inherit qmail systemd
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/notqmail/notqmail.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~hppa ~sparc"
+	KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 	SRC_URI="https://github.com/notqmail/notqmail/releases/download/${P}/${P}.tar.xz"
 fi
 
@@ -36,10 +36,20 @@ SRC_URI="${SRC_URI}
 		highvolume? (
 			https://github.com/notqmail/notqmail/commit/3a22b45974ddd1230da0dfa21f886c3401bee020.patch -> ${QMAIL_BIGTODO_F}
 		)
-		qmail-spp? ( mirror://sourceforge/qmail-spp/${QMAIL_SPP_F} )
-		https://github.com/notqmail/notqmail/commit/b224a3ceb63ff8ebc57648bf304e079d0bf55023.patch -> ${PN}-1.08-auth.patch
+		qmail-spp? (
+			ssl? (
+				https://github.com/notqmail/notqmail/commit/c467ba6880aaecfe1d3f592a7738de88cb5ac79a.patch -> ${PN}-1.08-auth.patch
+				https://github.com/notqmail/notqmail/commit/d950cc34491afe90432cafcaeda61d1c1a9508e9.patch -> ${PN}-1.08-tls-spp.patch
+			)
+			!ssl? (
+				https://github.com/notqmail/notqmail/commit/b36d52a0dd7315a969f2a9a7455717466e45be23.patch -> ${PN}-1.08-spp.patch
+			)
+		)
 		ssl? (
-			https://github.com/notqmail/notqmail/commit/ed58c2eff21612037bbcc633f4b3a8e708f522a0.patch -> ${QMAIL_TLS_F}
+			https://github.com/notqmail/notqmail/commit/0dc6a3aa9cb3440fe589ca5384ea27d683f05625.patch -> ${QMAIL_TLS_F}
+		)
+		!ssl? (
+			https://github.com/notqmail/notqmail/commit/c467ba6880aaecfe1d3f592a7738de88cb5ac79a.patch -> ${PN}-1.08-auth.patch
 		)
 	)
 "
@@ -47,14 +57,13 @@ SRC_URI="${SRC_URI}
 LICENSE="public-domain"
 SLOT="0"
 IUSE="authcram gencertdaily highvolume libressl -pop3 qmail-spp ssl test vanilla"
-REQUIRED_USE="vanilla? ( !ssl !qmail-spp !highvolume )"
+REQUIRED_USE="vanilla? ( !ssl !qmail-spp !highvolume !authcram !gencertdaily ) gencertdaily? ( ssl ) libressl? ( ssl )"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	net-dns/libidn2
 	net-mail/queue-repair
 	sys-apps/gentoo-functions
-	sys-apps/groff
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-1.1:0= )
 		libressl? ( dev-libs/libressl:= )
@@ -93,7 +102,6 @@ RDEPEND="${DEPEND}
 
 src_unpack() {
 	genqmail_src_unpack
-	use qmail-spp && qmail_spp_src_unpack
 
 	[[ ${PV} == "9999" ]] && git-r3_src_unpack
 	[[ ${PV} != "9999" ]] && default
@@ -105,25 +113,21 @@ PATCHES=(
 
 src_prepare() {
 	if ! use vanilla; then
-		if use ssl; then
+		if use qmail-spp; then
+			PATCHES+=( "${DISTDIR}/${P}-auth.patch" )
+		elif use ssl; then
 			PATCHES+=( "${DISTDIR}/${QMAIL_TLS_F}" )
 		else
 			PATCHES+=( "${DISTDIR}/${P}-auth.patch" )
 		fi
-		if use highvolume; then
-			PATCHES+=( "${DISTDIR}/${QMAIL_BIGTODO_F}" )
-		fi
+		use highvolume && PATCHES+=( "${DISTDIR}/${QMAIL_BIGTODO_F}" )
 
 		if use qmail-spp; then
 			if use ssl; then
-				SPP_PATCH="${QMAIL_SPP_S}/qmail-spp-smtpauth-tls-20060105.diff"
+				PATCHES+=( "${DISTDIR}/${PN}-1.08-tls-spp.patch" )
 			else
-				SPP_PATCH="${QMAIL_SPP_S}/netqmail-spp.diff"
+				PATCHES+=( "${DISTDIR}/${PN}-1.08-spp.patch" )
 			fi
-			# make the patch work with "-p1"
-			sed -e 's#^--- \([Mq]\)#--- a/\1#' -e 's#^+++ \([Mq]\)#+++ b/\1#' -i ${SPP_PATCH} || die
-
-			PATCHES+=( "${SPP_PATCH}" )
 		fi
 	fi
 
@@ -142,12 +146,14 @@ src_prepare() {
 }
 
 src_compile() {
-	qmail_src_compile
+	qmail_src_compile NROFF=true
+	emake qmail-send.service
 	use qmail-spp && qmail_spp_src_compile
 }
 
 src_install() {
 	qmail_src_install
+	systemd_dounit "${S}"/qmail-send.service
 }
 
 src_test() {

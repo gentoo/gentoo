@@ -29,10 +29,7 @@ RDEPEND="
 	${DEPEND}
 	sys-apps/hwids
 "
-DEPEND="
-	${DEPEND}
-	kmod? ( virtual/pkgconfig )
-"
+BDEPEND="kmod? ( virtual/pkgconfig )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.9-static-pc.patch

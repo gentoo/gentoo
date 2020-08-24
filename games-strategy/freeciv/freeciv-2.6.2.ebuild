@@ -70,6 +70,10 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-qt515.patch" #728254
+)
+
 pkg_setup() {
 	if use !dedicated && use !server ; then
 		ewarn "Disabling server USE flag will make it impossible"

@@ -20,7 +20,7 @@ IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
 BDEPEND=">=dev-libs/protobuf-3:0
-	virtual/pkgconfig[${MULTILIB_USEDEP}]"
+	virtual/pkgconfig"
 DEPEND=">=dev-libs/protobuf-3:0=[${MULTILIB_USEDEP}]"
 RDEPEND="${DEPEND}"
 

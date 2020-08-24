@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Database of countries, subdivisions, languages, currencies and script"
-HOMEPAGE="https://bitbucket.org/flyingcircus/pycountry"
+HOMEPAGE="https://github.com/flyingcircusio/pycountry"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

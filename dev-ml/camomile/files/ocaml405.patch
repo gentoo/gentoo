@@ -12,10 +12,10 @@ Date:   Fri Feb 24 22:30:23 2017 -0500
     (see MPR#7414, GPR#929). This commit adds enough annotations to avoid
     such underspecified variables in functors.
 
-diff --git a/Camomile/internal/unimap.ml b/Camomile/internal/unimap.ml
+diff --git a/internal/unimap.ml b/internal/unimap.ml
 index b6fdbde..6a7cc30 100644
---- a/Camomile/internal/unimap.ml
-+++ b/Camomile/internal/unimap.ml
+--- a/internal/unimap.ml
++++ b/internal/unimap.ml
 @@ -58,7 +58,7 @@ val of_name : string -> t
  end
  
@@ -25,10 +25,10 @@ index b6fdbde..6a7cc30 100644
  
  type mapping = {no_char : int; tbl : Tbl31.Bytes.t}
  
-diff --git a/Camomile/public/uCharInfo.ml b/Camomile/public/uCharInfo.ml
+diff --git a/public/uCharInfo.ml b/public/uCharInfo.ml
 index 69bf141..6a0337a 100644
---- a/Camomile/public/uCharInfo.ml
-+++ b/Camomile/public/uCharInfo.ml
+--- a/public/uCharInfo.ml
++++ b/public/uCharInfo.ml
 @@ -298,7 +298,7 @@ val load_composition_exclusion_tbl : unit -> UCharTbl.Bool.t
  
  end

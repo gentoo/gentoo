@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gienah@gentoo.org</email>
+		<name>Mark Wright</name>
+	</maintainer>
+	<longdescription lang="en">
+		build2 is an open source (MIT), cross-platform build toolchain
+		for developing and packaging C and C++ code. It is a hierarchy
+		of tools that includes the build system, package dependency
+		manager (for package consumption), and project dependency
+		manager (for project development). Key features:
+
+		Next-generation, Cargo-like integrated build toolchain for C
+		and C++.
+
+		Covers entire project lifecycle: creation, development,
+		testing, and delivery.
+
+		Uniform and consistent interface across all platforms and
+		compilers.
+
+		Fast, multi-threaded build system with parallel building and
+		testing.
+
+		Archive and version control-based package repositories.
+
+		Dependency-free, all you need is a C++ compiler.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">build2/build2</remote-id>
+	</upstream>
+</pkgmetadata>

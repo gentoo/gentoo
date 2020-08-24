@@ -32,6 +32,7 @@ RESTRICT="test"
 RDEPEND="
 	!app-admin/eselect-boost
 	!dev-libs/boost-numpy
+	!<dev-libs/leatherman-1.12.0-r1
 	bzip2? ( app-arch/bzip2:=[${MULTILIB_USEDEP}] )
 	icu? ( >=dev-libs/icu-3.6:=[${MULTILIB_USEDEP}] )
 	!icu? ( virtual/libiconv[${MULTILIB_USEDEP}] )
@@ -59,6 +60,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.73-boost-mpi-python-PEP-328.patch
 	# Remove annoying #pragma message
 	"${FILESDIR}"/${PN}-1.73-property-tree-include.patch
+	# https://github.com/boostorg/geometry/issues/721
+	"${FILESDIR}"/${PN}-1.73-geometry-private-inheritance.patch
 )
 
 python_bindings_needed() {

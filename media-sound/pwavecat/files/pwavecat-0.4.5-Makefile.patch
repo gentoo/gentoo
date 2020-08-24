@@ -1,0 +1,27 @@
+--- a/Makefile
++++ b/Makefile
+@@ -2,7 +2,7 @@
+ #CC=/usr/local/bin/gcc
+ 
+ 
+-CFLAGS = -O2 -Wall  -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64
++CFLAGS += -Wall
+ 
+ LIBRARY =
+ 
+@@ -14,14 +14,8 @@
+ pwavecat.o \
+ parts.o
+ 
+-all:
+-	gcc $(CFLAGS) -c $(SRC1)
+-
+-	gcc -o pwavecat   $(OBJECT1) $(LIBRARY)
+-
+ # DEPENDENCIES
+-pwavecat.o : pwavecat.c pwavecat.h pwavecat_proto.h parts.h wave_header.h
+-parts.o : parts.c parts.h pwavecat.h pwavecat_proto.h wave_header.h
++pwavecat: parts.o
+ 
+ install: 
+ 	cp pwavecat   /usr/local/bin/

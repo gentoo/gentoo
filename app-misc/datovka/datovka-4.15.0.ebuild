@@ -33,7 +33,8 @@ DEPEND="
 	>=dev-qt/linguist-tools-${QT_PV}
 	virtual/pkgconfig
 "
-PATCHES=( "${FILESDIR}/${P}-appdata-to-metainfo.patch" )
+PATCHES=( "${FILESDIR}/${P}-appdata-to-metainfo.patch"
+	  "${FILESDIR}/${P}-include-QPainterPath.patch" )
 DOCS=( ChangeLog README )
 
 src_configure() {

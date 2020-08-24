@@ -20,7 +20,7 @@ RDEPEND="app-crypt/gnupg
 	dev-lang/php:*[posix,unicode]
 	dev-php/PEAR-Console_CommandLine
 	dev-php/PEAR-Exception"
-DEPEND="test? (	${RDEPEND} dev-php/phpunit )"
+DEPEND="test? (	${RDEPEND} <dev-php/phpunit-6 )"
 
 S="${WORKDIR}/${MY_P}"
 

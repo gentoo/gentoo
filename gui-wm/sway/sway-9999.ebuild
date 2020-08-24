@@ -33,7 +33,7 @@ DEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/pango
 	x11-libs/pixman
-	media-libs/mesa[gles2]
+	media-libs/mesa[gles2,libglvnd]
 	elogind? ( >=sys-auth/elogind-239 )
 	swaybar? ( x11-libs/gdk-pixbuf:2 )
 	swaybg? ( gui-apps/swaybg )
@@ -47,17 +47,17 @@ if [[ ${PV} == 9999 ]]; then
 	DEPEND+="~gui-libs/wlroots-9999:=[elogind=,systemd=,X=]"
 else
 	DEPEND+="
-		>=gui-libs/wlroots-0.10.0:=[elogind=,systemd=,X=]
-		<gui-libs/wlroots-0.11.0:=[elogind=,systemd=,X=]
+		>=gui-libs/wlroots-0.11.0:=[elogind=,systemd=,X=]
+		<gui-libs/wlroots-0.12.0:=[elogind=,systemd=,X=]
 	"
 fi
 RDEPEND="
 	x11-misc/xkeyboard-config
-	!elogind? ( !systemd? ( sys-auth/consolekit ) )
 	${DEPEND}
 "
 BDEPEND="
 	>=dev-libs/wayland-protocols-1.14
+	>=dev-util/meson-0.53.0
 	virtual/pkgconfig
 "
 if [[ ${PV} == 9999 ]]; then

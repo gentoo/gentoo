@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools multilib-minimal
 
 DESCRIPTION="library for connecting and sending data to icecast servers"
-HOMEPAGE="http://www.icecast.org/"
+HOMEPAGE="https://www.icecast.org/"
 SRC_URI="http://downloads.xiph.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2"

@@ -5,7 +5,7 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="A simple fax program for single-user systems"
-HOMEPAGE="http://www.cce.com/efax"
+HOMEPAGE="https://www.cce.com/efax/"
 SRC_URI="
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV/_p*}.orig.tar.gz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV/_p*}-$(ver_cut 5).$(ver_cut 7).diff.gz

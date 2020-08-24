@@ -20,11 +20,7 @@ RDEPEND="!bundled-jdk? ( >=virtual/jre-1.8 )
 
 RESTRICT="mirror strip"
 
-QA_PREBUILT="opt/${PN}/bin/fsnotifier
-	opt/${PN}/bin/fsnotifier64
-	opt/${PN}/bin/fsnotifier-arm
-	opt/${PN}/bin/libyjpagent-linux.so
-	opt/${PN}/bin/libyjpagent-linux64.so"
+QA_PREBUILT="*"
 
 MY_PN=${PN/-professional/}
 S="${WORKDIR}/${MY_PN}-${PV}"

@@ -41,6 +41,12 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
 
+src_prepare() {
+	default
+	sed -i -e "/^PLATFORM_SYMBOLS/a \    '__gentoo_check_ldflags__'," \
+		bin/symbols-check.py || die
+}
+
 multilib_src_configure() {
 	local emesonargs=(
 		$(meson_feature X x11)

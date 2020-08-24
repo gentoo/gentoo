@@ -29,6 +29,7 @@ dmc - SANE_BACKENDS setting for building the dmc backend
 epjitsu - SANE_BACKENDS setting for building the epjitsu backend
 epson - SANE_BACKENDS setting for building the epson backend
 epson2 - SANE_BACKENDS setting for building the epson2 backend
+escl - SANE_BACKENDS setting for building the escl backend
 fujitsu - SANE_BACKENDS setting for building the fujitsu backend
 genesys - SANE_BACKENDS setting for building the genesys backend
 gt68xx - SANE_BACKENDS setting for building the gt68xx backend
@@ -69,6 +70,7 @@ plustek_pp - SANE_BACKENDS setting for building the plustek_pp backend
 pnm - SANE_BACKENDS settings for building the pnm test backend, considered a possible security risk
 qcam - SANE_BACKENDS setting for building the qcam backend
 ricoh - SANE_BACKENDS setting for building the ricoh backend
+ricoh2 - SANE_BACKENDS setting for building the ricoh2 backend
 rts8891 - SANE_BACKENDS setting for building the rts8891 backend
 s9036 - SANE_BACKENDS setting for building the s9036 backend
 sceptre - SANE_BACKENDS setting for building the sceptre backend

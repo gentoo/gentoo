@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>cjk@gentoo.org</email>
-    <name>Cjk</name>
-  </maintainer>
-  <longdescription lang="en">
-    eekboard is a virtual keyboard software package, including a set of tools
-    to implement desktop virtual keyboards.
-  </longdescription>
-  <use>
-    <flag name="libcanberra">Enable support for <pkg>media-libs/libcanberra</pkg></flag>
-    <flag name="xtest">Enable support for <pkg>x11-libs/libXtst</pkg></flag>
-  </use>
-  <upstream>
-    <remote-id type="github">ueno/eekboard</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<longdescription lang="en">
+		eekboard is a virtual keyboard software package, including a set of tools
+		to implement desktop virtual keyboards.
+	</longdescription>
+	<use>
+		<flag name="libcanberra">Enable support for <pkg>media-libs/libcanberra</pkg></flag>
+		<flag name="xtest">Enable support for <pkg>x11-libs/libXtst</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ueno/eekboard</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Interface to the pcap(3) LBL packet capture library"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc x86"
+KEYWORDS="~alpha amd64 ppc x86"
 IUSE=""
 
 RDEPEND="net-libs/libpcap

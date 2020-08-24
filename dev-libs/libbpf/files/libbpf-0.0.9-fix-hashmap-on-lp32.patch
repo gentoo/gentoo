@@ -1,0 +1,49 @@
+From cd016d93f7bf280fe6f2dfc723257786dd3ffd00 Mon Sep 17 00:00:00 2001
+From: Jakub Bogusz <qboosh@pld-linux.org>
+Date: Thu, 9 Jul 2020 15:57:23 -0700
+Subject: [PATCH] libbpf: Fix libbpf hashmap on (I)LP32 architectures
+
+On ILP32, 64-bit result was shifted by value calculated for 32-bit long type
+and returned value was much outside hashmap capacity.
+As advised by Andrii Nakryiko, this patch uses different hashing variant for
+architectures with size_t shorter than long long.
+
+Fixes: e3b924224028 ("libbpf: add resizable non-thread safe internal hashmap")
+Signed-off-by: Jakub Bogusz <qboosh@pld-linux.org>
+Signed-off-by: Andrii Nakryiko <andriin@fb.com>
+Signed-off-by: Alexei Starovoitov <ast@kernel.org>
+Link: https://lore.kernel.org/bpf/20200709225723.1069937-1-andriin@fb.com
+---
+ hashmap.h | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/hashmap.h b/hashmap.h
+index df59fd4..e0af36b 100644
+--- a/hashmap.h
++++ b/hashmap.h
+@@ -11,14 +11,18 @@
+ #include <stdbool.h>
+ #include <stddef.h>
+ #include <limits.h>
+-#ifndef __WORDSIZE
+-#define __WORDSIZE (__SIZEOF_LONG__ * 8)
+-#endif
+ 
+ static inline size_t hash_bits(size_t h, int bits)
+ {
+ 	/* shuffle bits and return requested number of upper bits */
+-	return (h * 11400714819323198485llu) >> (__WORDSIZE - bits);
++#if (__SIZEOF_SIZE_T__ == __SIZEOF_LONG_LONG__)
++	/* LP64 case */
++	return (h * 11400714819323198485llu) >> (__SIZEOF_LONG_LONG__ * 8 - bits);
++#elif (__SIZEOF_SIZE_T__ <= __SIZEOF_LONG__)
++	return (h * 2654435769lu) >> (__SIZEOF_LONG__ * 8 - bits);
++#else
++#	error "Unsupported size_t size"
++#endif
+ }
+ 
+ typedef size_t (*hashmap_hash_fn)(const void *key, void *ctx);
+-- 
+2.26.2
+

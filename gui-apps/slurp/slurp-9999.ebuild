@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,7 +23,8 @@ IUSE="+man"
 DEPEND="
 	>=dev-libs/wayland-protocols-1.14
 	dev-libs/wayland
-	x11-libs/cairo"
+	x11-libs/cairo
+	x11-libs/libxcb"
 
 RDEPEND="${DEPEND}"
 

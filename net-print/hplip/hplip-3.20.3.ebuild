@@ -49,7 +49,6 @@ RDEPEND="
 	${COMMON_DEPEND}
 	app-text/ghostscript-gpl
 	!minimal? (
-		$(python_gen_cond_dep 'dev-python/pygobject:2[${PYTHON_MULTI_USEDEP}]' 'python2*')
 		$(python_gen_cond_dep 'dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]' 'python3*')
 		kernel_linux? ( virtual/udev )
 		$(python_gen_cond_dep '

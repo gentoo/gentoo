@@ -1,0 +1,32 @@
+commit ad6d8397a05a
+Author: Dan Gohman <sunfish@mozilla.com>
+Date:   Thu May 22 11:15:06 2014 -0700
+
+    Bug 1012971 - SpiderMonkey: Fix various warnings. r=nbp
+---
+ js/public/RootingAPI.h         |  4 +++-
+ js/src/configure.in            |  1 +
+ js/src/jit/IonFrames.h         | 17 ++++++++---------
+ js/src/jit/MIR.h               | 12 +++++-------
+ js/src/jit/PerfSpewer.cpp      | 12 ++++++------
+ js/src/jit/RegisterSets.h      |  2 +-
+ js/src/jscntxt.h               |  2 +-
+ js/src/jsgcinlines.h           |  4 ++--
+ js/src/jsopcode.cpp            |  2 +-
+ js/src/jsscript.cpp            |  6 +++---
+ js/src/shell/js.cpp            |  2 +-
+ js/src/vm/ArrayBufferObject.h  | 16 ++++++++--------
+ js/src/vm/TypedArrayObject.cpp | 26 +++++++++++++-------------
+ 13 files changed, 53 insertions(+), 53 deletions(-)
+
+--- old/js/src/jsopcode.cpp.orig	2013-02-11 22:33:23 UTC
++++ new/js/src/jsopcode.cpp
+@@ -6067,7 +6067,7 @@ ExpressionDecompiler::write(JSString *s)
+ bool
+ ExpressionDecompiler::quote(JSString *s, uint32_t quote)
+ {
+-    return QuoteString(&sprinter, s, quote) >= 0;
++    return QuoteString(&sprinter, s, quote) != NULL;
+ }
+ 
+ JSAtom *

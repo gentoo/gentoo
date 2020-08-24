@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 inherit distutils-r1
 
 # upstream doesn't do tags
@@ -16,7 +16,7 @@ S=${WORKDIR}/${PN}-${EGIT_COMMIT}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 x86 ~amd64-linux ~x86-linux"
 IUSE="png"
 
 RDEPEND="

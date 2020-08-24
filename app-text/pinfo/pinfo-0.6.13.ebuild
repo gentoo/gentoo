@@ -34,6 +34,9 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	sed -i -e 's| -Werror||g' configure.ac || die
+
 	eautoreconf
 }
 

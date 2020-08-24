@@ -15,7 +15,7 @@ SRC_URI="
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 x86"
 IUSE=""
 
 RDEPEND="dev-python/idna[${PYTHON_USEDEP}]"

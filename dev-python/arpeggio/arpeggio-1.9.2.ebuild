@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 DISTUTILS_USE_SETUPTOOLS=bdepend
 inherit distutils-r1
 
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/igordejanovic/${MY_PN}/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

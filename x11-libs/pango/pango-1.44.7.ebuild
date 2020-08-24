@@ -35,7 +35,7 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 "
 BDEPEND="
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	gtk-doc? (
 		>=dev-util/gtk-doc-1.20
 		app-text/docbook-xml-dtd:4.2

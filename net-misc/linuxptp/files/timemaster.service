@@ -1,0 +1,12 @@
+[Unit]
+Description=LinuxPTP NTP timemaster 
+Conflicts=chronyd.service ntpd.service
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/timemaster -f /etc/timemaster.conf
+ProtectHome=yes
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,26 @@
+commit 497c1598cea9dcb13d210de59b1dc65425ca5fdb
+Author: Jan Tojnar <jtojnar@gmail.com>
+Date:   Thu Apr 16 20:09:11 2020 +0200
+
+    build: Produce more correct pc file with zzipsdldir
+    
+    Just like described in commit 892dea3b82208654cc9f57ffc4ef555d0d934cf5,
+    the CMAKE_INSTALL_INCLUDEDIR variable can be absolute path so simply
+    appending it to \${prefix} might not work.
+
+diff --git a/SDL/CMakeLists.txt b/SDL/CMakeLists.txt
+index 7ceba4a..6a4f860 100644
+--- a/SDL/CMakeLists.txt
++++ b/SDL/CMakeLists.txt
+@@ -49,9 +49,10 @@ if(SDL_FOUND)
+ if(UNIX)
+ join_paths(libdir "\${prefix}" "${CMAKE_INSTALL_LIBDIR}")
+ join_paths(includedir "\${prefix}" "${CMAKE_INSTALL_INCLUDEDIR}")
++join_paths(pc_zzipsdldir "\${prefix}" "${zzipsdldir}")
+ add_custom_command(OUTPUT SDL_rwops_zzip.pc
+    COMMAND ${BASH} -c "echo 'prefix=${CMAKE_INSTALL_PREFIX}' > SDL_rwops_zzip.pc"
+-   COMMAND ${BASH} -c "echo 'zzipsdldir=\${prefix}/${zzipsdldir}' >> SDL_rwops_zzip.pc"
++   COMMAND ${BASH} -c "echo 'zzipsdldir=${pc_zzipsdldir}' >> SDL_rwops_zzip.pc"
+    COMMAND ${BASH} -c "echo '' >> SDL_rwops_zzip.pc"
+    COMMAND ${BASH} -c "echo 'Name: SDL_rwops_zzip' >> SDL_rwops_zzip.pc"
+    COMMAND ${BASH} -c "echo 'Version: ${PROJECT_VERSION}' >> SDL_rwops_zzip.pc"

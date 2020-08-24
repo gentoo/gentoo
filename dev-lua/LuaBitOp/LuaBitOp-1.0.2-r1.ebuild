@@ -15,7 +15,7 @@ IUSE=""
 
 RDEPEND=">=dev-lang/lua-5.1.5-r2:*[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
+	virtual/pkgconfig"
 
 src_prepare() {
 	multilib_copy_sources

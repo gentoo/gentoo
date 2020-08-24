@@ -15,7 +15,9 @@ IUSE="+anacron +inotify pam selinux"
 
 DEPEND="
 	pam? ( sys-libs/pam )
-	anacron? ( !sys-process/anacron
+	anacron? (
+		!sys-process/anacron
+		!sys-process/systemd-cron
 		elibc_musl? ( sys-libs/obstack-standalone )
 		elibc_uclibc? ( sys-libs/obstack-standalone )
 	)

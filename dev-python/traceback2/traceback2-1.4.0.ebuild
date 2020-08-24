@@ -19,7 +19,10 @@ RDEPEND="
 	dev-python/linecache2[${PYTHON_USEDEP}]"
 BDEPEND="
 	dev-python/pbr[${PYTHON_USEDEP}]
-	test? ( dev-python/unittest2[${PYTHON_USEDEP}] )"
+	test? (
+		dev-python/contextlib2[${PYTHON_USEDEP}]
+		dev-python/unittest2[${PYTHON_USEDEP}]
+	)"
 
 distutils_enable_tests unittest
 

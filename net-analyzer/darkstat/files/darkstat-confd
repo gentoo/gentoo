@@ -6,10 +6,10 @@
 # The port for the embedded webserver
 #PORT="667"
 
-# The address embedded webserver should bind to
+# The address the embedded webserver should bind to
 #ADDRESS="0.0.0.0"
 
-# Set the filter. See tcpdump documenation for details.
+# Set the filter. See tcpdump documentation for details.
 #FILTER=""
 
 # Log  daily traffic statistics into the named file, relative to the

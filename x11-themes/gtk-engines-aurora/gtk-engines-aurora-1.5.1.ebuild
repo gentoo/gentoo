@@ -17,7 +17,7 @@ RDEPEND="
 	dev-libs/glib:2
 	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}"
-BDEPED="virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/aurora-${MY_MAJ}"
 

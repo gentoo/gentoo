@@ -16,7 +16,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/urg_c
 	dev-ros/tf
-	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
+	dev-ros/dynamic_reconfigure[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/nodelet
 	dev-ros/rosconsole
 	dev-ros/roscpp
@@ -27,4 +27,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	test? (
+		dev-ros/roslint
+		dev-ros/roslaunch
+	)
 "

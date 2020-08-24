@@ -29,7 +29,6 @@
 		Evaluate the security related to your requirements before using.
 	</longdescription>
 	<use>
-		<flag name="cpu-flags-x86-rdrand">allow compilation with RDRAND on system and architecture that supports it</flag>
 		<flag name="integer-gmp">Whether or not to use GMP for some functions</flag>
 	</use>
 	<upstream>

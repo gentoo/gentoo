@@ -16,7 +16,7 @@ HOMEPAGE="https://www.zenspider.com/projects/hoe.html"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc"
 
 ruby_add_bdepend "test? ( >=dev-ruby/minitest-5.9:5 )"
@@ -32,6 +32,9 @@ all_ruby_prepare() {
 
 	# Avoid test with random sort order
 	sed -i -e '/test_possibly_better/askip "ordering issues"' test/test_hoe.rb || die
+
+	# Avoid test that depends on specifics of merged packages
+	sed -i -e '/test_make_rdoc_cmd/askip "dependent on merged packages"' test/test_hoe_publish.rb || die
 }
 
 all_ruby_compile() {

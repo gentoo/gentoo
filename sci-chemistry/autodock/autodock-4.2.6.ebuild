@@ -1,38 +1,56 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+# Tests require python2
+#PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils python-any-r1 versionator
+inherit autotools readme.gentoo-r1 #python-any-r1
 
 MY_PN="autodocksuite"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A suite of automated docking tools"
 HOMEPAGE="http://autodock.scripps.edu/"
-SRC_URI="http://autodock.scripps.edu/downloads/autodock-registration/tars/dist$(delete_all_version_separators)/${MY_P}-src.tar.gz"
+SRC_URI="http://autodock.scripps.edu/downloads/autodock-registration/tars/dist$(ver_rs 1- '')/${MY_P}-src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples openmp test"
-RESTRICT="!test? ( test )"
+
+IUSE="examples openmp" #test
+#RESTRICT="!test? ( test )"
+
+# False positives caused by nested configure scripts
+QA_CONFIGURE_OPTIONS=".*"
 
 RDEPEND=""
-DEPEND="test? ( ${PYTHON_DEPS} )"
+DEPEND=""
+#DEPEND="test? ( ${PYTHON_DEPS} )"
 
 S="${WORKDIR}/src"
+
+DISABLE_AUTOFORMATTING="yes"
+DOC_CONTENTS="
+The AutoDock development team requests all users to fill out the
+registration form at:
+
+http://autodock.scripps.edu/downloads/autodock-registration
+
+The number of unique users of AutoDock is used by Prof. Arthur J.
+Olson and the Scripps Research Institude to support grant
+applications.
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-buildsystem.patch
 )
 
 src_prepare() {
-	local i
+	default
 
-	epatch "${PATCHES[@]}"
+	local i
 
 	sed \
 		-e "s/\tcsh/\tsh/" \
@@ -58,15 +76,15 @@ src_compile() {
 	emake -C autogrid
 }
 
-src_test() {
-	elog "Testing autodock"
-	cd "${S}/autodock/Tests" || die
-	cp ../*.dat . || die
-	${EPYTHON} test_autodock4.py || die "AutoDock tests failed."
-	einfo "Testing autogrid"
-	cd "${S}/autogrid/Tests" || die
-	${EPYTHON} test_autogrid4.py || die "AutoGrid tests failed."
-}
+#src_test() {
+#	elog "Testing autodock"
+#	cd "${S}/autodock/Tests" || die
+#	cp ../*.dat . || die
+#	${EPYTHON} test_autodock4.py || die "AutoDock tests failed."
+#	einfo "Testing autogrid"
+#	cd "${S}/autogrid/Tests" || die
+#	${EPYTHON} test_autogrid4.py || die "AutoGrid tests failed."
+#}
 
 src_install() {
 	if use openmp; then
@@ -79,7 +97,7 @@ src_install() {
 	insinto /usr/share/${PN}
 	doins -r \
 		autodock/{AD4_parameters.dat,AD4_PARM99.dat} \
-		$(usex examples "autodoc/EXAMPLES" "")
+		$(usex examples "autodock/EXAMPLES" "")
 
 	DOCS=(
 		RELEASENOTES
@@ -88,15 +106,9 @@ src_install() {
 		autodock/USERGUIDES/AutoDock4.2_UserGuide.pdf
 	)
 	einstalldocs
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	elog "The AutoDock development team requests all users to fill out the"
-	elog "registration form at:"
-	echo
-	elog "\thttp://autodock.scripps.edu/downloads/autodock-registration"
-	echo
-	elog "The number of unique users of AutoDock is used by Prof. Arthur J."
-	elog "Olson and the Scripps Research Institude to support grant"
-	elog "applications."
+	readme.gentoo_print_elog
 }

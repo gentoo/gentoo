@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,6 +37,7 @@ S="${WORKDIR}/me${PV:2}"
 PATCHES=(
 	"${FILESDIR}"/${PV}-ncurses.patch
 	"${FILESDIR}"/${PV}-linux3.patch
+	"${FILESDIR}"/${PV}-cc-detect.patch
 )
 
 src_unpack() {

@@ -1,0 +1,25 @@
+--- a/include/xplc/module.h
++++ b/include/xplc/module.h
+@@ -100,19 +100,19 @@
+    * XPLC module magic number. This is to ensure that it is in fact a
+    * valid XPLC module that has been loaded.
+    */
+-  unsigned long magic;
++  signed long magic;
+   /**
+    * The XPLC module ABI version that this module conforms to. This
+    * should always be the first member of the XPLC_ModuleInfo
+    * structure, as the meaning of the following members depend on it.
+    */
+-  unsigned int version_major;
++  signed int version_major;
+   /**
+    * The XPLC module ABI sub-version that this module conforms
+    * to. This is used for optional and backward-compatible changes in
+    * the module ABI.
+    */
+-  unsigned int version_minor;
++  signed int version_minor;
+ 
+   /**
+    * Description string for the module.

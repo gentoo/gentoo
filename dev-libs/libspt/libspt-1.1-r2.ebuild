@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 inherit autotools
 
@@ -17,8 +17,8 @@ RESTRICT="test"
 
 RDEPEND="!libtirpc? ( elibc_glibc? ( sys-libs/glibc[rpc(-)] ) )
 	libtirpc? ( net-libs/libtirpc )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-gentoo.patch"
@@ -34,5 +34,14 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_with libtirpc)
+	econf \
+		--disable-static \
+		$(use_with libtirpc)
+}
+
+src_install() {
+	default
+
+	# no static archives
+	find "${ED}" -name '*.la' -delete || die
 }

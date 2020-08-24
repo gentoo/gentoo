@@ -1,0 +1,21 @@
+https://serverfault.com/questions/996996/dstat-fails-to-start-trying-to-load-python3s-csv
+
+diff --git a/dstat b/dstat
+index 9359965..1682fb5 100755
+--- a/dstat
++++ b/dstat
+@@ -541,12 +541,12 @@ class dstat:
+ 
+         line = ''
+         for i, name in enumerate(self.vars):
+-            if isinstance(self.val[name], types.ListType) or isinstance(self.val[name], types.TupleType):
++            if isinstance(self.val[name], (tuple, list)):
+                 for j, val in enumerate(self.val[name]):
+                     line = line + printcsv(val)
+                     if j + 1 != len(self.val[name]):
+                         line = line + char['sep']
+-            elif isinstance(self.val[name], types.StringType):
++            elif isinstance(self.val[name], str):
+                 line = line + self.val[name]
+             else:
+                 line = line + printcsv(self.val[name])

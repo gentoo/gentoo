@@ -11,7 +11,7 @@ SRC_URI="https://github.com/lxc/lxcfs/archive/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # Omit all dbus.  Upstream appears to require it because systemd, but
 # lxcfs makes no direct use of dbus.

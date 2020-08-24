@@ -17,7 +17,7 @@ IUSE="static-libs"
 RDEPEND=""
 DEPEND=""
 BDEPEND="
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 DOCS=( AUTHORS NEWS ChangeLog THANKS ) # README points at README.md which wasn't disted with EAPI-7

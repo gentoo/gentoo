@@ -8,4 +8,7 @@
   <upstream>
     <remote-id type="github">myronmarston/vcr</remote-id>
   </upstream>
+  <use>
+    <flag name="json">Add support for casettes serialized with JSON</flag>
+  </use>
 </pkgmetadata>

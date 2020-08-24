@@ -19,7 +19,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://mesa.freedesktop.org/archive/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="MIT"
@@ -334,11 +334,9 @@ pkg_setup() {
 		ewarn "detected! This can cause problems. For details, see bug 459306."
 	fi
 
-	# os_same_file_description requires the kcmp syscall,
-	# which is only available with CONFIG_CHECKPOINT_RESTORE=y.
-	# Currently only AMDGPU utilizes this function, so only AMDGPU users would
-	# get a spooky warning message if the syscall fails.
-	if use gallium && use video_cards_radeonsi; then
+	if use video_cards_i965 ||
+	   use video_cards_iris ||
+	   use video_cards_radeonsi; then
 		CONFIG_CHECK="~CHECKPOINT_RESTORE"
 		linux-info_pkg_setup
 	fi

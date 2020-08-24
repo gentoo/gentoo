@@ -20,7 +20,7 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="bladerf hackrf plutosdr rtlsdr uhd"
+IUSE="airspy audio bladerf hackrf limesdr plutosdr rtlsdr sdrplay uhd"
 
 DEPEND="${PYTHON_DEPS}
 		net-wireless/gnuradio[zeromq]
@@ -28,10 +28,14 @@ DEPEND="${PYTHON_DEPS}
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pyzmq[${PYTHON_USEDEP}]
 		dev-python/cython[${PYTHON_USEDEP}]
+		airspy? ( net-wireless/airspy:= )
+		audio? ( dev-python/pyaudio[${PYTHON_USEDEP}] )
 		bladerf? ( net-wireless/bladerf:= )
 		hackrf? ( net-libs/libhackrf:= )
+		limesdr? ( net-wireless/limesuite:= )
 		plutosdr? ( net-libs/libiio:= )
 		rtlsdr? ( net-wireless/rtl-sdr:= )
+		sdrplay? ( net-wireless/sdrplay:= )
 		uhd?    ( net-wireless/uhd:= )"
 RDEPEND="${DEPEND}
 		dev-python/PyQt5[${PYTHON_USEDEP},testlib]
@@ -39,12 +43,13 @@ RDEPEND="${DEPEND}
 
 python_configure_all() {
 	mydistutilsargs=(
+			$(use_with airspy)
 			$(use_with bladerf)
 			$(use_with hackrf)
+			$(use_with limesdr)
 			$(use_with plutosdr)
 			$(use_with rtlsdr)
+			$(use_with sdrplay)
 			$(use_with uhd usrp)
-			--without-airspy
-			--without-limesdr
 			)
 }

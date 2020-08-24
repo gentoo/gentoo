@@ -1,30 +1,34 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
-inherit cmake-utils flag-o-matic python-single-r1
+inherit cmake flag-o-matic python-single-r1
 
-DESCRIPTION="Libs for the efficient manipulation of volumetric data"
+DESCRIPTION="Library for the efficient manipulation of volumetric data"
 HOMEPAGE="https://www.openvdb.org"
-SRC_URI="https://github.com/dreamworksanimation/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/AcademySoftwareFoundation/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~dracwyrm/patches/${P}-patchset-02.tar.xz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-IUSE="+abi3-compat doc python test"
+IUSE="abi3-compat +abi4-compat doc python test"
 RESTRICT="!test? ( test )"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+
+REQUIRED_USE="
+	python? ( ${PYTHON_REQUIRED_USE} )
+	^^ ( abi3-compat abi4-compat )
+"
 
 RDEPEND="
-	>=dev-libs/boost-1.62:=
-	>=dev-libs/c-blosc-1.5.0
-	dev-libs/jemalloc
-	dev-libs/log4cplus
-	media-libs/glfw:=
+	dev-libs/boost:=
+	dev-libs/c-blosc:=
+	dev-libs/jemalloc:=
+	dev-libs/log4cplus:=
+	media-libs/glfw
 	media-libs/openexr:=
 	sys-libs/zlib:=
 	x11-libs/libXcursor
@@ -34,13 +38,18 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			>=dev-libs/boost-1.62:=[python,${PYTHON_MULTI_USEDEP}]
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+			dev-libs/boost:=[python?,${PYTHON_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
 		')
-	)"
+	)
+"
 
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	dev-cpp/tbb
+"
+
+BDEPEND="
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
@@ -50,13 +59,16 @@ DEPEND="${RDEPEND}
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
 	)
-	test? ( dev-util/cppunit )"
+	test? ( dev-util/cppunit )
+"
 
 PATCHES=(
 	"${WORKDIR}/${P}-patchset-02/0001-use-gnuinstalldirs.patch"
 	"${WORKDIR}/${P}-patchset-02/0002-use-pkgconfig-for-ilmbase-and-openexr.patch"
 	"${WORKDIR}/${P}-patchset-02/0003-boost-1.65-numpy-support.patch"
 	"${FILESDIR}/${P}-findboost-fix.patch"
+	"${FILESDIR}/${P}-fix-const-correctness-for-unittest.patch"
+	"${FILESDIR}/${P}-fix-build-docs.patch"
 )
 
 pkg_setup() {
@@ -68,6 +80,15 @@ src_configure() {
 
 	# To stay in sync with Boost
 	append-cxxflags -std=c++14
+
+	local version
+	if use abi3-compat; then
+		version=3
+	elif use abi4-compat; then
+		version=4
+	else
+		die "Openvdb abi version is not compatible"
+	fi
 
 	local mycmakeargs=(
 		-DBLOSC_LOCATION="${myprefix}"
@@ -85,5 +106,5 @@ src_configure() {
 	use python && mycmakeargs+=( -DPYOPENVDB_INSTALL_DIRECTORY="$(python_get_sitedir)" )
 	use test && mycmakeargs+=( -DCPPUNIT_LOCATION="${myprefix}" )
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

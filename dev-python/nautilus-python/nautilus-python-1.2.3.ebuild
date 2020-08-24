@@ -13,7 +13,7 @@ HOMEPAGE="https://projects.gnome.org/nautilus-python/"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~x86"
+KEYWORDS="~alpha amd64 ~arm64 x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # Require pygobject:3 and USE=introspection on nautilus for sanity,

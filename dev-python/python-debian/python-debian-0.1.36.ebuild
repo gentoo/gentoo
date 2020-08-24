@@ -23,10 +23,7 @@ RDEPEND="
 
 BDEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? (
-		app-arch/dpkg
-		$(python_gen_cond_dep 'dev-python/unittest2[${PYTHON_USEDEP}]' -2)
-	)
+	test? ( app-arch/dpkg )
 "
 
 PATCHES=( "${FILESDIR}/0.1.36-disable-apt-pkg.patch" )

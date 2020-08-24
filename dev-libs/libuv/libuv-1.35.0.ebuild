@@ -15,7 +15,7 @@ IUSE="static-libs"
 RESTRICT="test"
 
 DEPEND="sys-devel/libtool
-	virtual/pkgconfig[${MULTILIB_USEDEP}]"
+	virtual/pkgconfig"
 
 src_prepare() {
 	default

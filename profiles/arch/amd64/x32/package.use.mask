@@ -10,7 +10,6 @@ app-emulation/libvirt rbd
 app-emulation/qemu rbd
 net-analyzer/rrdtool rados
 net-fs/samba ceph
-net-libs/xrootd rbd
 sys-block/fio rbd
 sys-block/tgt rbd
 sys-fs/multipath-tools rbd

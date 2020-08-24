@@ -6,7 +6,7 @@ EAPI=4
 inherit multilib user eutils
 
 DESCRIPTION="Nagios Service Check Acceptor"
-HOMEPAGE="http://www.nagios.org/"
+HOMEPAGE="https://www.nagios.org/"
 SRC_URI="mirror://sourceforge/nagios/${P}.tar.gz"
 
 LICENSE="GPL-2"

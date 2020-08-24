@@ -10,7 +10,7 @@ SRC_URI="http://tucnak.nagano.cz/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="ftdi"
 
 RDEPEND="dev-libs/glib:2
@@ -34,5 +34,11 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_with ftdi) --with-sdl \
-		--with-png --without-bfd
+		--with-png --without-bfd \
+		--disable-static
+}
+
+src_install() {
+	emake DESTDIR="${D}" install
+	find "${D}" -name '*.la' -type f -delete || die
 }

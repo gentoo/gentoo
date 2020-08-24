@@ -7,11 +7,12 @@ inherit autotools libtool multilib-minimal toolchain-funcs prefix
 
 DESCRIPTION="Contains error handling functions used by GnuPG software"
 HOMEPAGE="http://www.gnupg.org/related_software/libgpg-error"
-SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
+SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2
+	https://git.gnupg.org/cgi-bin/gitweb.cgi?p=libgpg-error.git;a=blob_plain;f=src/gen-lock-obj.sh;hb=libgpg-error-1.38 -> gen-lock-obj-1.38.sh"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv s390 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="common-lisp nls static-libs"
 
 RDEPEND="nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )"
@@ -26,7 +27,17 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/gpgrt.h
 )
 
-PATCHES=( "${FILESDIR}/${PN}-1.37-remove_broken_check.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-1.37-remove_broken_check.patch"
+	"${FILESDIR}/${P}-cross_compile.patch" #726520
+)
+
+src_unpack() {
+	[[ ${PV} == 1.38 ]] || die "Please remove gen-lock-obj.sh from SRC_URI and drop src_unpack"
+	unpack ${P}.tar.bz2
+	cp "${DISTDIR}"/gen-lock-obj-1.38.sh "${S}"/src/gen-lock-obj.sh || die
+	chmod +x "${S}"/src/gen-lock-obj.sh || die
+}
 
 src_prepare() {
 	default

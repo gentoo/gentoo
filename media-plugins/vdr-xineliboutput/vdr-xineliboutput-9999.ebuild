@@ -5,7 +5,7 @@ EAPI=7
 
 GENTOO_VDR_CONDITIONAL=yes
 
-inherit git-r3 toolchain-funcs vdr-plugin-2
+inherit flag-o-matic git-r3 toolchain-funcs vdr-plugin-2
 
 DESCRIPTION="VDR Plugin: Xinelib PlugIn"
 HOMEPAGE="https://sourceforge.net/projects/xineliboutput/"

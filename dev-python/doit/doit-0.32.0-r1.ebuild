@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	dev-python/cloudpickle[${PYTHON_USEDEP}]
@@ -23,6 +23,7 @@ RDEPEND="
 DEPEND="
 	test? (
 		${RDEPEND}
+		$(python_gen_impl_dep sqlite)
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pyflakes[${PYTHON_USEDEP}]
 		>=dev-python/pytest-5.4[${PYTHON_USEDEP}]

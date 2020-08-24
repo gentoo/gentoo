@@ -25,7 +25,7 @@ RESTRICT="!test? ( test )"
 
 SLOT="$(ver_cut 1-2)/$(ver_cut 3)"
 LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 REQUIRED_USE="
 	^^ ( c++11 c++14 c++17 )
@@ -102,7 +102,7 @@ CDEPEND="
 	)
 	vc? ( dev-libs/vc:= )
 	xml? ( dev-libs/libxml2:2= )
-	xrootd? ( net-libs/xrootd:0= )
+	xrootd? ( <net-libs/xrootd-5:0= )
 "
 
 DEPEND="${CDEPEND}

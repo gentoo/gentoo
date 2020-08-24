@@ -215,7 +215,7 @@ ceph_src_configure() {
 	local mycmakeargs=(
 		-DWITH_BABELTRACE=$(usex babeltrace)
 		-DWITH_CEPHFS=$(usex cephfs)
-		-DWITH_CEPHFS_SHELL=$(if python_is_python3; then usex cephfs; else echo OFF; fi)
+		-DWITH_CEPHFS_SHELL=$(usex cephfs)
 		-DWITH_DPDK=$(usex dpdk)
 		-DWITH_DPDK=$(usex spdk)
 		-DWITH_FUSE=$(usex fuse)
@@ -226,9 +226,9 @@ ceph_src_configure() {
 		-DWITH_MGR_DASHBOARD_FRONTEND=NO
 		-DWITH_NUMA=$(usex numa)
 		-DWITH_OPENLDAP=$(usex ldap)
-		-DMGR_PYTHON_VERSION=$(if python_is_python3; then echo 3; else echo 2; fi)
-		-DWITH_PYTHON3=$(if python_is_python3; then echo "ON"; else echo "OFF"; fi)
-		-DWITH_PYTHON2=$(if python_is_python3; then echo "OFF"; else echo "ON"; fi)
+		-DMGR_PYTHON_VERSION=3
+		-DWITH_PYTHON3=ON
+		-DWITH_PYTHON2=OFF
 		-DWITH_RADOSGW=$(usex radosgw)
 		-DWITH_RADOSGW_AMQP_ENDPOINT=$(usex rabbitmq)
 		-DWITH_SSL=$(usex ssl)

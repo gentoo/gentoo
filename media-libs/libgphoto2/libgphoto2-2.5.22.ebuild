@@ -66,7 +66,7 @@ DEPEND="${RDEPEND}
 	dev-util/gtk-doc-am
 	sys-devel/flex
 	>=sys-devel/gettext-0.14.1
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
 

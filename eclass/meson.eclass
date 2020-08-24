@@ -54,7 +54,7 @@ EXPORT_FUNCTIONS src_configure src_compile src_test src_install
 if [[ -z ${_MESON_ECLASS} ]]; then
 _MESON_ECLASS=1
 
-MESON_DEPEND=">=dev-util/meson-0.51.2
+MESON_DEPEND=">=dev-util/meson-0.54.0
 	>=dev-util/ninja-1.8.2"
 
 if [[ ${EAPI:-0} == [6] ]]; then
@@ -373,20 +373,7 @@ meson_src_configure() {
 	local -x BOOST_LIBRARYDIR="${BOOST_LIBRARYDIR-${EPREFIX}/usr/$(get_libdir)}"
 
 	(
-		# https://bugs.gentoo.org/720860
-		if ver_test "$(meson --version)" -lt "0.54"; then
-			local -x CFLAGS=${BUILD_CFLAGS}
-			local -x CPPFLAGS=${BUILD_CPPFLAGS}
-			local -x CXXFLAGS=${BUILD_CXXFLAGS}
-			local -x FFLAGS=${BUILD_FCFLAGS}
-			local -x OBJCFLAGS=${BUILD_OBJCFLAGS}
-			local -x OBJCXXFLAGS=${BUILD_OBJCXXFLAGS}
-			local -x LDFLAGS=${BUILD_LDFLAGS}
-		else
-			# https://bugs.gentoo.org/720818
-			export -n {C,CPP,CXX,F,OBJC,OBJCXX,LD}FLAGS PKG_CONFIG_{LIBDIR,PATH}
-		fi
-
+		export -n {C,CPP,CXX,F,OBJC,OBJCXX,LD}FLAGS PKG_CONFIG_{LIBDIR,PATH}
 		echo "${mesonargs[@]}" >&2
 		"${mesonargs[@]}"
 	) || die

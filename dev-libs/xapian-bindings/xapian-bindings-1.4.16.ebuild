@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python{2_7,3_6,3_7,3_8} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 PYTHON_REQ_USE="threads(+)"
 
 USE_PHP="php7-2 php7-3 php7-4"
@@ -192,12 +192,8 @@ src_configure() {
 			--without-php7
 			--without-ruby
 			--without-tcl
+			--with-python3
 		)
-		if python_is_python3; then
-			myconf+=( --with-python3 )
-		else
-			myconf+=( --with-python )
-		fi
 
 		# Avoid sandbox failures when compiling modules
 		addpredict "$(python_get_sitedir)"

@@ -11,7 +11,7 @@ SRC_URI="https://download.enlightenment.org/rel/apps/${PN}/${P}.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0.17/${PV%%_*}"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
 IUSE="acpi bluetooth connman doc geolocation nls pam policykit systemd udisks wayland wifi xwayland"
 
 REQUIRED_USE="xwayland? ( wayland )"
@@ -94,6 +94,7 @@ pkg_postinst() {
 	xdg_mimeinfo_database_update
 
 	elog "Additional programs to complete full EFL suite: "
+	optfeature "better monitor backlight and brightness controls" app-misc/ddcutil
 	optfeature "office file thumbnails" app-office/libreoffice app-office/libreoffice-bin
 	optfeature "an EFL-based IDE" dev-util/edi
 	optfeature "image viewer" media-gfx/ephoto

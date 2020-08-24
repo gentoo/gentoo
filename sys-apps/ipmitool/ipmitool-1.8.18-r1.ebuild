@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 #IUSE="freeipmi openipmi status"
 IUSE="libressl openipmi static"
 SLOT="0"
-KEYWORDS="amd64 hppa ~ia64 ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm64 hppa ~ia64 ppc ~ppc64 x86"
 LICENSE="BSD"
 
 RDEPEND="
@@ -31,6 +31,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-openssl-1.1.patch
+	"${FILESDIR}/ipmitool-1.8.18-fno-common.patch"
 )
 
 src_prepare() {

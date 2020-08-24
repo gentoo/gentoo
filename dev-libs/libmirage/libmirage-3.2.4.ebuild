@@ -30,6 +30,10 @@ BDEPEND="
 	doc? ( dev-util/gtk-doc )
 	introspection? ( >=dev-libs/gobject-introspection-1.30 )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc-10.patch
+)
+
 DOCS=( AUTHORS README )
 
 src_configure() {
