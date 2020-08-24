@@ -19,8 +19,8 @@ SLOT="0/21"
 IUSE="ldap libressl static-libs"
 
 RDEPEND="
-	>=app-arch/lz4-0_p131:=
-	app-arch/zstd:=
+	>=app-arch/lz4-0_p131:=[${MULTILIB_USEDEP}]
+	app-arch/zstd:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	ldap? ( dev-libs/cyrus-sasl:=[${MULTILIB_USEDEP}] )
 	libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
