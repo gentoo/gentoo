@@ -140,7 +140,7 @@ boostrap_rust_version_check() {
 
 	if ver_test "${rustc_version}" -lt "${rustc_wanted}" ; then
 		eerror "Rust >=${rustc_wanted} is required"
-		eerror "please run \'eselect rust\' and set correct rust version" 
+		eerror "please run \'eselect rust\' and set correct rust version"
 		die
 	else
 		einfo "Using rust ${rustc_version} to build"
