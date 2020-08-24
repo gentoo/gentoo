@@ -21,6 +21,6 @@ RDEPEND="
 	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
-	test? ( dev-ros/rostest )
+	test? ( dev-ros/rostest dev-cpp/gtest )
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
