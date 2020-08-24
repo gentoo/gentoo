@@ -13549,7 +13549,7 @@ media-plugins/kodi-vfs-libarchive 1.0.2 1.0.5 1.0.6 1.0.7 1.3.0 9999: Libarchive
 media-plugins/kodi-vfs-rar 2.2.0 2.2.1 2.2.2 2.2.3 2.3.0 2.3.1 3.4.0 9999: RAR VFS addon for Kodi
 media-plugins/kodi-vfs-sacd 1.0.3 1.0.4 1.3.0 9999: SACD VFS addon for Kodi
 media-plugins/kodi-vfs-sftp 1.0.1 1.0.3 1.0.4 1.0.5 1.0.6 1.3.0 9999: SFTP VFS addon for Kodi
-media-plugins/kodi-visualization-fishbmc 5.1.1 5.1.2 6.1.0 6.1.0-r1 9999: Fische visualizer for Kodi
+media-plugins/kodi-visualization-fishbmc 5.1.1 5.1.2 6.1.0 6.1.0-r1 6.2.0 9999: Fische visualizer for Kodi
 media-plugins/kodi-visualization-goom 2.1.0 2.2.0 2.2.1 2.2.1-r1 3.2.0 9999: Goom visualizer for Kodi
 media-plugins/kodi-visualization-nastyfft 9999: NastyFFT visualizer for Kodi
 media-plugins/kodi-visualization-projectm 2.3.5 2.3.5-r1 3.1.0 3.1.0-r1 9999: ProjectM visualizer for Kodi
