@@ -87,9 +87,8 @@ net-misc/curl -quiche
 sys-firmware/seabios -debug
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-28)
-# upstream provides docs and tools for tier-1 arches
+# upstream provides docs only for tier-1 arches
 dev-lang/rust-bin -doc
->=dev-lang/rust-bin-1.37 -clippy -rustfmt
 
 # Thomas Deutschmann <whissi@gentoo.org> (2019-08-03)
 # Early microcode loading is supported on amd64
