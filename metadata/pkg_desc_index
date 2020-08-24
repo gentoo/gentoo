@@ -9457,11 +9457,11 @@ dev-ros/cpp_common 0.7.2 9999: C++ code for doing things that are not necessaril
 dev-ros/cv_bridge 1.15.0 9999: Converts between ROS Image messages and OpenCV images
 dev-ros/depth_image_proc 1.15.2 9999: Nodelets for processing depth images such as those produced by OpenNI camera
 dev-ros/depthimage_to_laserscan 1.0.8 9999: Converts a depth image to a laser scan for use with navigation and localization
-dev-ros/diagnostic_aggregator 1.9.4-r1 9999: Aggregates ROS diagnostics
-dev-ros/diagnostic_analysis 1.9.4 9999: Converts diagnostics data into a series of CSV files
-dev-ros/diagnostic_common_diagnostics 1.9.4 9999: Generic nodes for monitoring a linux host
+dev-ros/diagnostic_aggregator 1.9.4-r1 1.9.6 1.10.1 9999: Aggregates ROS diagnostics
+dev-ros/diagnostic_analysis 1.9.4 1.9.6 1.10.1 9999: Converts diagnostics data into a series of CSV files
+dev-ros/diagnostic_common_diagnostics 1.9.4 1.9.6 1.10.1 9999: Generic nodes for monitoring a linux host
 dev-ros/diagnostic_msgs 1.13.0 9999: Standardized interface for the diagnostic and runtime monitoring systems in ROS
-dev-ros/diagnostic_updater 1.9.4 9999: Tools for updating diagnostics
+dev-ros/diagnostic_updater 1.9.4 1.9.6 1.10.1 9999: Tools for updating diagnostics
 dev-ros/driver_base 1.6.8 9999: Framework for writing drivers
 dev-ros/dwa_local_planner 1.17.0 9999: Dynamic Window Approach to local robot navigation on a plane
 dev-ros/dynamic_reconfigure 1.7.0 9999: Provides a means to change node parameters at runtime
@@ -9479,7 +9479,7 @@ dev-ros/geneus 3.0.0 9999: EusLisp ROS message and service generators
 dev-ros/genlisp 0.4.18 9999: Common-Lisp ROS message and service generators
 dev-ros/genmsg 0.5.16 9999: Python library for generating ROS message and service data structures
 dev-ros/gennodejs 2.0.1 9999: Javascript ROS message and service generators
-dev-ros/genpy 0.6.11 9999: Python ROS message and service generators
+dev-ros/genpy 0.6.11 0.6.14 9999: Python ROS message and service generators
 dev-ros/geodesy 0.5.5 9999: Python and C++ interfaces for manipulating geodetic coordinates
 dev-ros/geographic_msgs 0.5.5 9999: ROS messages for Geographic Information Systems
 dev-ros/geometric_shapes 0.7.0 9999: Generic definitions of geometric shapes and bodies
@@ -9513,7 +9513,7 @@ dev-ros/imu_filter_madgwick 1.2.2-r1 9999: Fuses angular velocities, acceleratio
 dev-ros/imu_processors 0.3.0 9999: Processors for sensor_msgs::Imu data
 dev-ros/imu_transformer 0.3.0 9999: Transforms sensor_msgs::Imu data from one frame into another
 dev-ros/interactive_marker_tutorials 0.11.0 9999: Interactive marker tutorials
-dev-ros/interactive_markers 1.12.0 9999: 3D interactive marker communication library for RViz and similar tools
+dev-ros/interactive_markers 1.12.0-r1 9999: 3D interactive marker communication library for RViz and similar tools
 dev-ros/interval_intersection 0.10.14 9999: Tools for calculating the intersection of interval messages
 dev-ros/ivcon 0.1.7 9999: Mesh Conversion Utility
 dev-ros/joint_limits_interface 0.19.1 9999: Interface for enforcing joint limits
@@ -9537,7 +9537,7 @@ dev-ros/mavros 1.2.0 9999: MAVLink extendable communication node for ROS
 dev-ros/mavros_extras 1.2.0 9999: Extra nodes and plugins for mavros
 dev-ros/mavros_msgs 1.2.0 9999: Messages for MAVROS
 dev-ros/media_export 0.3.0 9999: Allow ROS packages to export media paths to each other
-dev-ros/message_filters 1.15.7 1.15.8 9999: Set of message filters which take in messages and outputs those at a later time
+dev-ros/message_filters 1.15.8 9999: Set of message filters which take in messages and outputs those at a later time
 dev-ros/message_generation 0.4.1 9999: Build-time dependencies for generating language bindings of messages
 dev-ros/message_runtime 0.4.13 9999: Package modeling the run-time dependencies for language bindings of messages
 dev-ros/message_to_tf 0.3.0 9999: Translates pose information from different kind of common message types to tf
@@ -9602,15 +9602,15 @@ dev-ros/rosbridge_msgs 0.11.9 9999: Package containing message files for rosbrid
 dev-ros/rosbridge_server 0.11.9 9999: A WebSocket interface to rosbridge
 dev-ros/rosbuild 1.15.5 1.15.6 9999: Scripts for managing the CMake-based build system for ROS
 dev-ros/rosclean 1.15.5 1.15.6 9999: Cleanup filesystem resources (e.g. log files)
-dev-ros/rosconsole 1.14.0 9999: ROS console output library
+dev-ros/rosconsole 1.14.0 1.14.2 9999: ROS console output library
 dev-ros/rosconsole_bridge 0.5.4 9999: Connects console_bridge-based logging to rosconsole-based logging
 dev-ros/roscpp 1.15.7 1.15.8 9999: C++ implementation of ROS
 dev-ros/roscpp_serialization 0.7.2 9999: Code for serialization
 dev-ros/roscpp_traits 0.7.2 9999: Message traits code
 dev-ros/roscpp_tutorials 0.10.1 0.10.2 9999: Attempts to show the features of ROS step-by-step
 dev-ros/roscreate 1.15.6 9999: Tool that assists in the creation of ROS filesystem resources
-dev-ros/rosdiagnostic 1.9.4 9999: Command to print aggregated diagnostic contents to the command line
-dev-ros/rosgraph 1.15.7 1.15.8 9999: Prints information about the ROS Computation Graph
+dev-ros/rosdiagnostic 1.9.4 1.9.6 1.10.1 9999: Command to print aggregated diagnostic contents to the command line
+dev-ros/rosgraph 1.15.8 9999: Prints information about the ROS Computation Graph
 dev-ros/rosgraph_msgs 1.11.3 9999: Messages relating to ROS comm
 dev-ros/roslang 1.15.5 1.15.6 9999: Common package for all ROS client libraries
 dev-ros/roslaunch 1.15.8-r1 9999: Tool for easily launching multiple ROS nodes
@@ -9681,7 +9681,7 @@ dev-ros/rviz 1.14.1 9999: 3D visualization tool for ROS
 dev-ros/rviz_imu_plugin 1.2.2 9999: RVIZ plugin for IMU visualization
 dev-ros/rviz_plugin_tutorials 0.11.0 9999: Tutorials showing how to write plugins for RViz
 dev-ros/rviz_python_tutorial 0.11.0 9999: Tutorials showing how to call into rviz internals from python scripts
-dev-ros/self_test 1.9.4 9999: Robot self-test node
+dev-ros/self_test 1.9.4 1.9.6 1.10.1 9999: Robot self-test node
 dev-ros/sensor_msgs 1.13.0 9999: Messages for commonly used sensors: cameras and scanning laser rangefinders
 dev-ros/settlerlib 0.10.14 9999: Helper functions for creating a settler for a specific sensor channel
 dev-ros/shape_msgs 1.13.0 9999: Messages for defining shapes: simple solid object primitives, planes, and meshes
@@ -9695,7 +9695,7 @@ dev-ros/std_srvs 1.11.3 9999: Messages relating to ROS comm
 dev-ros/stereo_image_proc 1.15.2 9999: Stereo and single image rectification and disparity processing
 dev-ros/stereo_msgs 1.13.0 9999: Messages specific to stereo processing, such as disparity images
 dev-ros/test_bond 1.8.5 9999: Tests for bond, bondpy and bondcpp
-dev-ros/test_diagnostic_aggregator 1.9.4 9999: diagnostic_aggregator tests
+dev-ros/test_diagnostic_aggregator 1.9.4 1.9.6 1.10.1 9999: diagnostic_aggregator tests
 dev-ros/test_nodelet 1.10.0 9999: Nodelet unit tests
 dev-ros/test_nodelet_topic_tools 1.10.0 9999: Nodelet topic tools unit tests
 dev-ros/test_rosbag 1.15.8 9999: Unit tests for rosbag
@@ -12771,7 +12771,7 @@ media-gfx/asymptote 2.61 2.62 2.65 2.67: A vector graphics language that provide
 media-gfx/autopano-sift-C 2.5.1: SIFT algorithm for automatic panorama creation in C
 media-gfx/aview 1.3.0_rc1-r3: An ASCII Image Viewer
 media-gfx/birdfont 2.18.3: Font editor for the creation of vector graphics and export TTF, EOT & SVG fonts
-media-gfx/blender 2.79b-r2: 3D Creation/Animation/Publishing System
+media-gfx/blender 2.79b-r2 2.83.4: 3D Creation/Animation/Publishing System
 media-gfx/cairosvg 2.4.2: CLI and library to export SVG to PDF, PostScript, and PNG
 media-gfx/cellwriter 1.3.5 1.3.6: Grid-entry natural handwriting input panel
 media-gfx/chafa 1.4.0 1.4.1: versatile and fast Unicode/ASCII/ANSI graphics renderer
@@ -12907,7 +12907,7 @@ media-gfx/openexr_viewers 2.3.0: OpenEXR Viewers
 media-gfx/openmesh 7.1: A generic data structure to represent and manipulate polygonal meshes
 media-gfx/openscad 2019.05-r2 2019.05-r3 9999: The Programmers Solid 3D CAD Modeller
 media-gfx/opentoonz 1.1.2 1.2.1-r1 1.3.0 1.3.0-r1 1.4.0: An open-source full-featured 2D animation creation software
-media-gfx/openvdb 4.0.2-r3 5.2.0-r1: Libs for the efficient manipulation of volumetric data
+media-gfx/openvdb 4.0.2-r3 5.2.0-r1 6.2.1 7.0.0 7.1.0: Library for the efficient manipulation of volumetric data
 media-gfx/optipng 0.7.7 0.7.7-r1: Compress PNG files without affecting image quality
 media-gfx/panini 0.73.0: OpenGL-based panoramic image viewer
 media-gfx/pdf2svg 0.2.3: pdf2svg is based on poppler and cairo and can convert pdf to svg files
@@ -13547,13 +13547,13 @@ media-plugins/kodi-vfs-rar 2.2.0 2.2.1 2.2.2 2.2.3 2.3.0 2.3.1 3.4.0 9999: RAR V
 media-plugins/kodi-vfs-sacd 1.0.3 1.0.4 1.3.0 9999: SACD VFS addon for Kodi
 media-plugins/kodi-vfs-sftp 1.0.1 1.0.3 1.0.4 1.0.5 1.0.6 1.3.0 9999: SFTP VFS addon for Kodi
 media-plugins/kodi-visualization-fishbmc 5.1.1 5.1.2 6.1.0 6.1.0-r1 6.2.0 9999: Fische visualizer for Kodi
-media-plugins/kodi-visualization-goom 2.1.0 2.2.0 2.2.1 2.2.1-r1 3.2.0 9999: Goom visualizer for Kodi
+media-plugins/kodi-visualization-goom 2.1.0 2.2.0 2.2.1 2.2.1-r1 3.2.0 3.3.0 9999: Goom visualizer for Kodi
 media-plugins/kodi-visualization-nastyfft 9999: NastyFFT visualizer for Kodi
-media-plugins/kodi-visualization-projectm 2.3.5 2.3.5-r1 3.1.0 3.1.0-r1 9999: ProjectM visualizer for Kodi
-media-plugins/kodi-visualization-shadertoy 1.1.5 1.1.8 1.1.9 1.1.10 1.2.1 1.2.2 1.2.3 2.1.1 9999: Shadertoy visualizer for Kodi
-media-plugins/kodi-visualization-spectrum 3.0.3 3.2.0 9999: Spectrum visualizer for Kodi
-media-plugins/kodi-visualization-starburst 2.0.0 2.0.1 2.0.2 2.2.0 9999: StarBurst visualizer for Kodi
-media-plugins/kodi-visualization-waveform 2.0.1 3.0.2 3.1.0 3.1.1 4.2.0 9999: Waveform visualizer for Kodi
+media-plugins/kodi-visualization-projectm 2.3.5 2.3.5-r1 3.1.0 3.1.0-r1 3.2.0 9999: ProjectM visualizer for Kodi
+media-plugins/kodi-visualization-shadertoy 1.1.5 1.1.8 1.1.9 1.1.10 1.2.1 1.2.2 1.2.3 2.1.1 2.2.0 9999: Shadertoy visualizer for Kodi
+media-plugins/kodi-visualization-spectrum 3.0.3 3.2.0 3.3.0 9999: Spectrum visualizer for Kodi
+media-plugins/kodi-visualization-starburst 2.0.0 2.0.1 2.0.2 2.2.0 2.3.0 9999: StarBurst visualizer for Kodi
+media-plugins/kodi-visualization-waveform 2.0.1 3.0.2 3.1.0 3.1.1 4.2.0 4.3.0 9999: Waveform visualizer for Kodi
 media-plugins/ladspa-bs2b 0.9.1-r1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3 0.4.0-r4: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.1.0-r1: A libvisual graphical music visualization plugin similar to milkdrop
@@ -15297,7 +15297,7 @@ net-misc/rsync 3.2.2-r1 3.2.3 9999: File transfer program to keep remote files i
 net-misc/rwbs 0.27-r2: Roger Wilco base station
 net-misc/rwhoisd 1.5.9.6: ARIN rwhois daemon
 net-misc/rygel 0.38.3 0.38.4: Rygel is an open source UPnP/DLNA MediaServer
-net-misc/s3cmd 2.0.2: Command line client for Amazon S3
+net-misc/s3cmd 2.0.2 2.1.0: Command line client for Amazon S3
 net-misc/s6-networking 2.3.0.2 2.3.0.3 2.3.0.4 2.3.1.1: Suite of small networking utilities for Unix systems
 net-misc/samplicator 1.3.6 1.3.8_rc1: UDP packets forwarder and duplicator
 net-misc/scponly 4.8-r6 4.8-r7: A tiny pseudoshell which only permits scp and sftp
@@ -15739,7 +15739,7 @@ ros-meta/common_msgs 1.13.0 9999: Messages that are widely used by other ROS pac
 ros-meta/common_tutorials 0.1.12 0.2.0 9999: Metapackage that contains common tutorials
 ros-meta/desktop 1.5.0 9999: Metapackage for a basic ROS desktop install
 ros-meta/desktop_full 1.5.0 9999: Metapackage for ROS complete desktop install
-ros-meta/diagnostics 1.9.4 9999: Packages related to gathering, viewing, and analyzing diagnostics data
+ros-meta/diagnostics 1.9.4 1.9.6 1.10.1 9999: Packages related to gathering, viewing, and analyzing diagnostics data
 ros-meta/driver_common 1.6.8 9999: Classes and tools that are useful throughout the driver stacks
 ros-meta/executive_smach 2.5.0 9999: SMACH library and ROS SMACH integration packages
 ros-meta/gazebo_ros_pkgs 2.9.1 9999: Interface for using ROS with the gazebo simulator

@@ -4044,6 +4044,9 @@ media-gfx/apngasm:zopfli - Enable support for Zopfli compression
 media-gfx/asymptote:boehm-gc - Enables using the Boehm-Demers-Weiser conservative garbage collector
 media-gfx/asymptote:offscreen - Enables off-screen rendering
 media-gfx/asymptote:sigsegv - Enables using dev-libs/libsigsegv
+media-gfx/blender:abi6-compat - Build for OpenVDB ABI 6.
+media-gfx/blender:abi7-compat - Build for OpenVDB ABI 7.
+media-gfx/blender:alembic - Add support for Alembic through media-gfx/alembic.
 media-gfx/blender:bullet - Enable Bullet (Physics Engine).
 media-gfx/blender:collada - Add support for Collada interchange format through media-libs/opencollada.
 media-gfx/blender:color-management - Enable color management via media-libs/opencolorio.
@@ -4063,6 +4066,10 @@ media-gfx/blender:opensubdiv - Add rendering support form OpenSubdiv from Dreamw
 media-gfx/blender:openvdb - Add GPU preview rendering. Only works with nVidia cards.
 media-gfx/blender:osl - Add support for OpenShadingLanguage scripting.
 media-gfx/blender:player - Build the Blender Player. THis requires the Game engine.
+media-gfx/blender:standalone - Build the standalone version of Cycles.
+media-gfx/blender:system-numpy - Use the system numpy implementation rather than a local copy.
+media-gfx/blender:system-python - Use the system python implementation rather than a local copy.
+media-gfx/blender:tbb - Use threading building blocks library from dev-cpp/tbb.
 media-gfx/blender:test - Build the provided unit tests.
 media-gfx/blender:valgrind - Add support for memory debugging using dev-util/valgrind
 media-gfx/chafa:tools - Build command-line tools
@@ -4169,8 +4176,13 @@ media-gfx/nvidia-texture-tools:glew - Enable support for The OpenGL Extension Wr
 media-gfx/openclipart:gzip - Compresses clip art using gzip
 media-gfx/openexr_viewers:cg - Add support for nvidia's cg shaders
 media-gfx/openscad:ccache - Use dev-util/ccache to speed up rebuilds
-media-gfx/openvdb:abi3-compat - Disables newer features to maintain compatibility with ABI3. Enabled by default.
-media-gfx/openvdb:abi4-compat - Disables newer features to maintain compatibility with ABI4. Enabled by default.
+media-gfx/openvdb:abi3-compat - Disables newer features to maintain compatibility with ABI3.
+media-gfx/openvdb:abi4-compat - Disables newer features to maintain compatibility with ABI4.
+media-gfx/openvdb:abi5-compat - Disables newer features to maintain compatibility with ABI5.
+media-gfx/openvdb:abi6-compat - Disables newer features to maintain compatibility with ABI6.
+media-gfx/openvdb:abi7-compat - Disables newer features to maintain compatibility with ABI7.
+media-gfx/openvdb:numpy - Build pyopenvdb with support for dev-python/numpy
+media-gfx/openvdb:utils - Build utility binaries
 media-gfx/photoqt:devil - Support additional image formats using media-libs/devil
 media-gfx/photoqt:freeimage - Support additional image formats using media-libs/freeimage
 media-gfx/pngcrush:system-libs - Use libpng and libz provided by system
