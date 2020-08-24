@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+DISTUTILS_USE_SETUPTOOLS="bdepend"
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -21,8 +22,5 @@ RDEPEND="
 	dev-python/python-axolotl-curve25519[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
-python_test() {
-	esetup.py test
-}
+distutils_enable_tests pytest

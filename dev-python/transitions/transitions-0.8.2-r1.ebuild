@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..8} )
+DISTUTILS_USE_SETUPTOOLS="bdepend"
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -30,11 +31,8 @@ DEPEND="
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/pycodestyle[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 "
-
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
 

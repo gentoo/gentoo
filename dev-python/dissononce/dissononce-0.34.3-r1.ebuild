@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+DISTUTILS_USE_SETUPTOOLS="bdepend"
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -16,27 +17,16 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="examples test"
 
-# Currently no tests are available,
-# they will be added in future by upstream.
-RESTRICT="test"
-
 RDEPEND="
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/transitions[${PYTHON_USEDEP}]
 "
 
-DEPEND="
-	${RDEPEND}
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
-"
-
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}/${P}-fix-test-requirements.patch" )
 
-python_test() {
-	esetup.py test
-}
+distutils_enable_tests pytest
 
 src_install() {
 	distutils-r1_src_install
