@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit multilib user readme.gentoo-r1 systemd
 
 DESCRIPTION="An OpenPGP keyserver which is decentralized with highly reliable synchronization"
-HOMEPAGE="https://bitbucket.org/skskeyserver/sks-keyserver"
-SRC_URI="https://bitbucket.org/skskeyserver/sks-keyserver/downloads/${P}.tgz"
+HOMEPAGE="https://github.com/SKS-Keyserver/sks-keyserver"
+SRC_URI="https://github.com/SKS-Keyserver/sks-keyserver/releases/download/${PV}/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
