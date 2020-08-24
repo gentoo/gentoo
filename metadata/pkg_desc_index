@@ -3180,6 +3180,7 @@ app-vim/lightline 9999: vim plugin: A light and configurable statusline/tabline
 app-vim/locateopen 1.3-r1: vim plugin: open a file without supplying a path
 app-vim/lustyexplorer 4.3-r1: vim plugin: dynamic filesystem and buffer explorer
 app-vim/matrix 1.10-r1: vim plugin: Screensaver inspired by the Matrix
+app-vim/mediawiki 20151115: vim plugin: MediaWiki syntax highlighting
 app-vim/merginal 2.1.0 2.1.2 9999: vim script: fugitive extension to manage and merge git branches
 app-vim/minibufexpl 6.5.2: vim plugin: easily switch between buffers
 app-vim/molokai 0.1_p20151115: vim plugin: molokai color scheme
@@ -13846,7 +13847,7 @@ media-sound/linuxsampler 2.1.1 9999: Software audio sampler engine with professi
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
 media-sound/lltag 0.14.5 0.14.6: Automatic command-line mp3/ogg/flac file tagger and renamer
 media-sound/lmms 1.2.2 9999: Cross-platform music production software
-media-sound/lollypop 1.1.4.16 1.2.35: Modern music player for GNOME
+media-sound/lollypop 1.2.35: Modern music player for GNOME
 media-sound/loudness-scanner 0.5.1_p20190709 9999: Scans your music files and tags them with loudness information
 media-sound/lxmusic 0.4.7: A simple GUI XMMS2 client with minimal functionality
 media-sound/mac 4.11.4.5.7-r1: Monkey's Audio Codecs
@@ -18485,7 +18486,7 @@ x11-misc/cbatticon 1.6.5 1.6.9 1.6.10: A lightweight and fast battery icon that 
 x11-misc/cdm 0.6.1_pre20180107 0.7: The Console Display Manager
 x11-misc/chgres 0.1-r2: A very simple command line utility for changing X resolutions
 x11-misc/colord 1.3.5: System service to accurately color manage input and output devices
-x11-misc/compton 0.1_beta2 0.1_beta2-r1: A compositor for X, and a fork of xcompmgr-dana
+x11-misc/compton 0.1_beta2-r1: A compositor for X, and a fork of xcompmgr-dana
 x11-misc/dclock 2.2.2_p9: Digital clock for the X window system
 x11-misc/devilspie 0.23 0.23-r1: A Window Matching utility similar to Sawfish's Matched Windows feature
 x11-misc/devilspie2 0.42: Devilspie like window matching utility, using LUA for scripting
