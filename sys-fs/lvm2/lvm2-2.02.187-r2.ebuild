@@ -266,11 +266,14 @@ src_install() {
 }
 
 pkg_postinst() {
-	ewarn "Make sure the \"lvm\" init script is in the runlevels:"
-	ewarn "# rc-update add lvm boot"
-	ewarn
-	ewarn "Make sure to enable lvmetad in /etc/lvm/lvm.conf if you want"
-	ewarn "to enable lvm autoactivation and metadata caching."
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+		# This is a new installation
+		ewarn "Make sure the \"lvm\" init script is in the runlevels:"
+		ewarn "# rc-update add lvm boot"
+		ewarn
+		ewarn "Make sure to enable lvmetad in /etc/lvm/lvm.conf if you want"
+		ewarn "to enable lvm autoactivation and metadata caching."
+	fi
 
 	if use udev && [[ -d /run ]] ; then
 		local permission_run_expected="drwxr-xr-x"
