@@ -32,12 +32,18 @@
 
 #--- END OF EXAMPLES ---
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-23)
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-24)
+# Abandoned upstream.
+# Does not compile against ghc-8.8. Removal in 30 days.
+# Bug #736052.
+games-roguelike/mazesofmonad
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-24)
 # Obsolete package without reverse dependencies.
 # Does not compile against ghc-8.8. Removal in 30 days.
 dev-haskell/glade
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-23)
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-24)
 # Obsolete package without reverse dependencies.
 # Does not compile against ghc-8.8. Removal in 30 days.
 # Bug #735914.
