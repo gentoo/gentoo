@@ -4,10 +4,10 @@ DEPEND=dev-lang/perl
 DESCRIPTION=Represent a series of changes in annotate form
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/Algorithm-Annotate
-KEYWORDS=~alpha ~amd64 ~ia64 ~ppc sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Algorithm-Diff-1.150.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/C/CL/CLKAO/Algorithm-Annotate-0.10.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=c707ec430eb778cb786af83d6ece0ed4
+_md5_=d6ba075e153d984d8d465734135d2273

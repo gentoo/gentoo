@@ -5,11 +5,11 @@ DESCRIPTION=Generate fast XS accessors without runtime compilation
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/Class-XSAccessor
 IUSE=test
-KEYWORDS=~amd64 ~ppc ~x86 ~ppc-aix ~ppc-macos ~x86-solaris
+KEYWORDS=~amd64 ~ppc x86 ~ppc-aix ~ppc-macos ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Time-HiRes virtual/perl-XSLoader dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SM/SMUELLER/Class-XSAccessor-1.19.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=753a734e45a4451fd94df029867eb932
+_md5_=2813ee029ab27cd8bad13108d4dce092
