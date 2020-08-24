@@ -11,7 +11,7 @@ DESCRIPTION="persistent session data in CGI applications"
 # Bug: https://bugs.gentoo.org/show_bug.cgi?id=721398
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc x86"
+KEYWORDS="amd64 ~hppa ~ppc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
