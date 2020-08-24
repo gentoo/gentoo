@@ -1,5 +1,6 @@
 acct-group/abrt 0: A group for the automatic bug detection and reporting tool
 acct-group/adm 0: System group: adm
+acct-group/airdcppd 0: Group for net-p2p/airdcpp-webclient
 acct-group/amavis 0: Group for mail-filter/amavisd-new
 acct-group/amule 0: Group for net-p2p/amule
 acct-group/anope 0: Group for Anope IRC services
@@ -225,6 +226,7 @@ acct-group/x2gouser 0: Group for net-misc/x2goserver
 acct-group/xrootd 0: Group for the XRootD server
 acct-group/znc 0: Group for net-irc/znc
 acct-user/abrt 0: A user for the automatic bug detection and reporting tool
+acct-user/airdcppd 0: User for net-p2p/airdcpp-webclient
 acct-user/alias 0: alias user for qmail mail delivery
 acct-user/amavis 0: User for mail-filter/amavisd-new
 acct-user/amule 0: User for net-p2p/amule
@@ -15418,7 +15420,7 @@ net-nntp/slrn 1.0.2 1.0.3: A s-lang based newsreader
 net-nntp/sn 0.3.8: Hassle-free Usenet news system for small sites
 net-nntp/suck 4.3.3-r1 4.3.4: Grab news from a remote NNTP server and feed them to another
 net-nntp/tin 2.4.2: A threaded NNTP and spool based UseNet newsreader
-net-p2p/airdcpp-webclient 2.6.0 2.6.1: Cross-platform Direct Connect client
+net-p2p/airdcpp-webclient 2.6.1 2.8.1: Cross-platform Direct Connect client
 net-p2p/amule 2.3.2-r5 9999: aMule, the all-platform eMule p2p client
 net-p2p/automatic 0.8.3: RSS downloader for Tranmission
 net-p2p/bisq 0.6.3: The decentralized bitcoin exchange (non-atomic, with arbitration)
@@ -18047,7 +18049,7 @@ www-apache/passenger 6.0.4 6.0.5 6.0.6: Passenger makes deployment of Ruby on Ra
 www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/agendav 2.2.0: multilanguage CalDAV web client
-www-apps/airdcpp-webui 2.6.0 2.6.1: Web interface for airdcpp-webclient
+www-apps/airdcpp-webui 2.6.1 2.8.1: Web interface for airdcpp-webclient
 www-apps/ampache 3.8.3-r1 3.8.8-r1: PHP-based tool for managing,updating and playing audio files via a web interface
 www-apps/baikal 0.6.0 0.6.1 0.7.1: Lightweight CalDAV+CardDAV server
 www-apps/blazeblogger 1.2.0-r1: Simple, capable content management system for producing static content
