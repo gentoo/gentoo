@@ -11,6 +11,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="static-libs"
+RESTRICT="test"
 
 src_configure() {
 	econf $(use_enable static-libs static)

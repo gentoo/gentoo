@@ -1882,6 +1882,12 @@ gcc_movelibs() {
 		dodir "${HOSTLIBPATH#${EPREFIX}}"
 		mv "${ED}"/usr/$(get_libdir)/libcc1* "${D}${HOSTLIBPATH}" || die
 	fi
+	# libgccjit gets installed to /usr/lib, not /usr/$(get_libdir). Probably
+	# due to a bug in gcc build system.
+	if is_jit ; then
+		dodir "${LIBPATH#${EPREFIX}}"
+		mv "${ED}"/usr/lib/libgccjit* "${D}${LIBPATH}" || die
+	fi
 
 	# For all the libs that are built for CTARGET, move them into the
 	# compiler-specific CTARGET internal dir.
