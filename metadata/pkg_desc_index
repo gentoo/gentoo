@@ -759,10 +759,10 @@ app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
 app-backup/bacula 9.6.5: Featureful client/server network backup suite
 app-backup/bareos 17.2.10 18.2.9 19.2.8: Featureful client/server network backup suite
 app-backup/borgbackup 1.1.11-r2 1.1.13 9999: Deduplicating backup program with compression and authenticated encryption
-app-backup/borgmatic 1.5.6 1.5.8 1.5.9: Automatically create, prune and verify backups with borgbackup
+app-backup/borgmatic 1.5.6 1.5.8 1.5.9 1.5.10: Automatically create, prune and verify backups with borgbackup
 app-backup/borgweb 0.2.0-r2 0.3.0: Browser-based user interface for BorgBackup
 app-backup/btrbk 0.27.0 0.27.1 0.27.1-r1 0.27.2 0.28.0 0.28.1 0.28.2 0.28.3 0.29.0 0.29.1 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
-app-backup/burp 2.2.18-r1 2.3.30: Network backup and restore client and server for Unix and Windows
+app-backup/burp 2.2.18-r1 2.3.30 2.3.32: Network backup and restore client and server for Unix and Windows
 app-backup/cachedir 1.4: Tag/untag cache directories
 app-backup/ccollect 0.8: Pseudo incremental backup with different exclude lists using hardlinks and rsync
 app-backup/cdbackup 0.7.1-r1: Allows streaming backup utilities to dump/restore from CD-R(W)s or DVD(+/-RW)s
@@ -2429,7 +2429,7 @@ app-misc/go-jira 1.0.23: A simple JIRA commandline client in Go
 app-misc/golly 3.3-r3 3.4: simulator for Conway's Game of Life and other cellular automata
 app-misc/goobook 3.4-r1: Access your Google contacts from the command line
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
-app-misc/gramps 5.1.2-r1 5.1.2-r2: Genealogical Research and Analysis Management Programming System
+app-misc/gramps 5.1.2-r1 5.1.3: Genealogical Research and Analysis Management Programming System
 app-misc/graphlcd-base 1.0.2-r1 2.0.0: Contains the lowlevel lcd drivers for GraphLCD
 app-misc/grc 1.11-r1 1.11.3: Generic Colouriser beautifies your logfiles or output of commands
 app-misc/gtk-sunlight 0.4.2: Real-time Sunlight Wallpaper
@@ -2814,7 +2814,7 @@ app-text/bact 0.13-r1: Boosting Algorithm for Classification of Trees
 app-text/barcode 0.98-r1 0.99: barcode generator
 app-text/bdf2psf 1.104 1.155: Converter to generate console fonts from BDF source fonts
 app-text/bibclean 2.17: BibTeX bibliography prettyprinter and syntax checker
-app-text/bibletime 2.11.0 2.11.2: Qt Bible-study application using the SWORD library
+app-text/bibletime 2.11.0 2.11.2 3.0: Qt Bible-study application using the SWORD library
 app-text/bibutils 6.7: Interconverts between various bibliography formats using common XML intermediate
 app-text/binfind 0.0.3: Search files for a byte sequence specified on the command line
 app-text/blahtexml 0.9: TeX-to-MathML converter
@@ -5357,7 +5357,7 @@ dev-libs/kqoauth 0.98-r3: Library for Qt that implements the OAuth 1.0 authentic
 dev-libs/kreport 3.2.0: Framework for creation and generation of reports in multiple formats
 dev-libs/kuserfeedback 1.0.0: Framework to collect user feedback for applications via telemetry and surveys
 dev-libs/leatherman 1.3.0 1.11.0 1.12.0-r1 1.12.1 1.12.1-r2: A C++ toolkit
-dev-libs/level-zero 0.91.10: oneAPI Level Zero headers, loader and validation layer
+dev-libs/level-zero 0.91.10 1.0.0: oneAPI Level Zero headers, loader and validation layer
 dev-libs/leveldb 1.18-r2 1.20: a fast key-value storage library written at Google
 dev-libs/libIDL 0.8.14-r2: CORBA tree builder
 dev-libs/libaio 0.3.110 0.3.111 0.3.112 9999: Asynchronous input/output library that uses the kernels native interface
@@ -8763,7 +8763,7 @@ dev-python/pynvim 0.4.1: Python client for Neovim
 dev-python/pyocr 0.7.2: An optical character recognition (OCR) tool wrapper for python
 dev-python/pyode 1.2.0_p20100322-r1: Python bindings to the ODE physics engine
 dev-python/pyogg 1.3-r2: Python bindings for the ogg library
-dev-python/pyopencl 2020.2: Python wrapper for OpenCL
+dev-python/pyopencl 2020.2 2020.2.1: Python wrapper for OpenCL
 dev-python/pyopengl 3.1.0 3.1.5: Python OpenGL bindings
 dev-python/pyopengl_accelerate 3.1.5: Accelerate module for PyOpenGL
 dev-python/pyopenssl 19.1.0: Python interface to the OpenSSL library
@@ -8950,7 +8950,7 @@ dev-python/pythonutils 0.4.0-r1: Voidspace Python modules
 dev-python/pythonz-bd 1.11.4: Manage python installations in your system, berdario's shallow fork
 dev-python/pytidylib 0.3.2: Python wrapper for HTML Tidy (tidylib)
 dev-python/pytoml 0.1.20: A TOML-0.4.0 parser/writer for Python
-dev-python/pytools 2020.1 2020.3.1 9999: Collection of tools missing from the Python standard library
+dev-python/pytools 2020.1 2020.3.1 2020.4 9999: Collection of tools missing from the Python standard library
 dev-python/pytrie 0.3.1-r1: A pure Python implementation of the trie data structure
 dev-python/pytz 2020.1: World timezone definitions for Python
 dev-python/pyu2f 0.1.4-r1: Python based U2F host library
@@ -13066,7 +13066,7 @@ media-libs/glm 0.9.9.5 0.9.9.7 0.9.9.8 0.9.9.8-r1: OpenGL Mathematics
 media-libs/glpng 1.46-r1: OpenGL PNG image library
 media-libs/glu 9.0.1 9999: The OpenGL Utility Library
 media-libs/glyr 1.0.10: Music related metadata searchengine, both with commandline interface and C API
-media-libs/gmmlib 19.3.4 19.4.1 20.1.1 20.2.2 9999: Intel Graphics Memory Management Library
+media-libs/gmmlib 19.3.4 19.4.1 20.1.1 20.2.2 20.2.4 9999: Intel Graphics Memory Management Library
 media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplayer
 media-libs/gnonlin 1.4.0-r1: Set of GStreamer elements to ease the creation of non-linear multimedia editors
 media-libs/graphene 1.8.6 1.10.0 1.10.2: A thin layer of types for graphic libraries
@@ -14964,8 +14964,8 @@ net-libs/uhttpmock 0.5.1: HTTP web service mocking library
 net-libs/wandio 1.0.5 4.0.0 4.1.2 4.2.0 4.2.1 4.2.3_p1-r1: C library for simple and efficient file IO
 net-libs/webkit-gtk 2.28.4: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
-net-libs/xrootd 4.12.0 4.12.3 5.0.0: Extended ROOT remote file server
-net-libs/xrootd-ceph 4.12.0 4.12.3 5.0.0: xrootd OSS plug-in for interfacing with Ceph storage platform
+net-libs/xrootd 4.12.0 4.12.3 5.0.0 5.0.1: Extended ROOT remote file server
+net-libs/xrootd-ceph 4.12.0 4.12.3 5.0.0 5.0.1: xrootd OSS plug-in for interfacing with Ceph storage platform
 net-libs/zeromq 2.2.0 3.2.5 4.3.2: A brokerless kernel
 net-libs/zmqpp 4.2.0: ZeroMQ 'highlevel' C++ bindings
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
@@ -15456,7 +15456,7 @@ net-p2p/qbittorrent 4.2.1 4.2.3 4.2.5 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
 net-p2p/retroshare 0.6.5: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
-net-p2p/syncthing 1.3.4-r1 1.4.2 1.5.0 1.6.1 1.7.1: Open Source Continuous File Synchronization
+net-p2p/syncthing 1.3.4-r1 1.4.2 1.5.0 1.6.1 1.7.1 1.8.0: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6-r1 1.8.6-r2: A torrent file parser
 net-p2p/transmission 3.00-r1 9999: A fast, easy, and free BitTorrent client
@@ -17368,7 +17368,7 @@ sys-cluster/projections 6.2.1: Projections Performance Analysis Framework for Ch
 sys-cluster/rdma-core 30.0-r2 9999: Userspace components for the Linux Kernel's drivers/infiniband subsystem
 sys-cluster/resource-agents 3.9.6 4.0.1: Resources pack for Heartbeat / Pacemaker
 sys-cluster/sanlock 3.6.0 3.8.2: shared storage lock manager
-sys-cluster/singularity 3.6.0: Application containers for Linux
+sys-cluster/singularity 3.6.0 3.6.1: Application containers for Linux
 sys-cluster/slurm 20.02.3.1: A Highly Scalable Resource Manager
 sys-cluster/spark-bin 2.4.6: Lightning-fast unified analytics engine
 sys-cluster/swift 2.25.0 2020.1.9999: A highly available, distributed, and eventually consistent object/blob store
