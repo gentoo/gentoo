@@ -1,6 +1,6 @@
 BDEPEND=virtual/pkgconfig
-DEFINED_PHASES=configure
-DEPEND=x11-libs/gtk+:2 x11-libs/pango alsa? ( media-libs/alsa-lib:= ) jack? ( virtual/jack ) ladspa? ( media-libs/ladspa-sdk ) libsamplerate? ( media-libs/libsamplerate:= ) pulseaudio? ( media-sound/pulseaudio ) sdl? ( media-libs/libsdl:= ) sndfile? ( media-libs/libsndfile:= ) sox? ( media-sound/sox:= )
+DEFINED_PHASES=configure postinst postrm preinst prepare
+DEPEND=x11-libs/gtk+:2 x11-libs/pango alsa? ( media-libs/alsa-lib:= ) jack? ( virtual/jack ) ladspa? ( media-libs/ladspa-sdk ) libsamplerate? ( media-libs/libsamplerate:= ) pulseaudio? ( media-sound/pulseaudio ) sdl? ( media-libs/libsdl:= ) sndfile? ( media-libs/libsndfile:= ) sox? ( media-sound/sox:= ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=GTK+ Sound file editor (wav, and a few others.)
 EAPI=7
 HOMEPAGE=https://github.com/magnush/mhwaveedit/
@@ -10,4 +10,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/gtk+:2 x11-libs/pango alsa? ( media-libs/alsa-lib:= ) jack? ( virtual/jack ) ladspa? ( media-libs/ladspa-sdk ) libsamplerate? ( media-libs/libsamplerate:= ) pulseaudio? ( media-sound/pulseaudio ) sdl? ( media-libs/libsdl:= ) sndfile? ( media-libs/libsndfile:= ) sox? ( media-sound/sox:= )
 SLOT=0
 SRC_URI=https://github.com/magnush/mhwaveedit/archive/v1.4.24.tar.gz -> mhwaveedit-1.4.24.tar.gz
-_md5_=86cc656a7b504a6b3cb7ad5ae7869d70
+_eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=7225f6913436a7ada1eedfda6aa93ace
