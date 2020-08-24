@@ -25,6 +25,8 @@ RDEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}/tests.patch" )
 
 src_test() {
+	local sd="$(python_get_sitedir)"
+	local local_sd="${BUILD_DIR}/devel/${sd#${EPREFIX}/usr}"
 	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
-	ros-catkin_src_test
+	PYTHONPATH="${local_sd}:${PYTHONPATH}" ros-catkin_src_test
 }
