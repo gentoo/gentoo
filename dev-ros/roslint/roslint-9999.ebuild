@@ -14,3 +14,4 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="${RDEPEND}"
+CMAKE_MAKEFILE_GENERATOR="emake" # https://bugs.gentoo.org/738584

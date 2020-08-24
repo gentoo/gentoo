@@ -21,5 +21,5 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-ros/tf2_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	test? ( dev-ros/roscpp )
+	test? ( dev-ros/roscpp dev-cpp/gtest )
 "

@@ -20,4 +20,5 @@ DEPEND="${RDEPEND}
 	dev-ros/cmake_modules
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-cpp/eigen:3
+	test? ( dev-cpp/gtest )
 "

@@ -27,3 +27,8 @@ DEPEND="${RDEPEND}
 		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
 		dev-cpp/gtest
 	)"
+
+src_test() {
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	ros-catkin_src_test
+}
