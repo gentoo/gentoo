@@ -23,3 +23,8 @@ DEPEND="${RDEPEND}
 		$(python_gen_cond_dep "dev-python/mock[\${PYTHON_USEDEP}]")
 		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
 	)"
+
+src_test() {
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	ros-catkin_src_test
+}
