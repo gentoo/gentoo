@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic
 
@@ -22,13 +22,12 @@ HOMEPAGE="http://moarvm.org"
 LICENSE="Artistic-2"
 SLOT="0"
 
-#USE=optimize triggers makefile bug
-IUSE="asan clang debug doc +jit static-libs ubsan"
+IUSE="asan clang debug doc +jit optimize static-libs ubsan"
 
 RDEPEND="dev-libs/libatomic_ops
 		>=dev-libs/libuv-1.26
 		dev-lang/lua:=
-		virtual/libffi"
+		dev-libs/libffi"
 DEPEND="${RDEPEND}
 	clang? ( >=sys-devel/clang-3.1 )
 	dev-lang/perl"
@@ -37,9 +36,6 @@ DOCS=( CREDITS README.markdown )
 
 # Tests are conducted via nqp
 RESTRICT=test
-
-# known configure bug
-PATCHES="${FILESDIR}/fix-quoting.patch"
 
 src_configure() {
 	MAKEOPTS+=" NOISY=1"
@@ -57,6 +53,7 @@ src_configure() {
 		"--compiler" "$(usex clang clang gcc)"
 		"$(usex asan        --asan)"
 		"$(usex debug       --debug            --no-debug)"
+		"$(usex optimize    --optimize=        --no-optimize)"
 		"$(usex static-libs --static)"
 		"$(usex ubsan       --ubsan)"
 	)

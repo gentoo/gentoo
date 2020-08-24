@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit java-pkg-opt-2
 
@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 	KEYWORDS=""
 else
-	SRC_URI="https://rakudo.perl6.org/downloads/${PN}/${P}.tar.gz"
+	SRC_URI="https://rakudo.org/dl/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -24,7 +24,7 @@ IUSE="clang java +moar test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( java moar )"
 
-CDEPEND="~dev-lang/nqp-${PV}:${SLOT}=[java?,moar?,clang=]"
+CDEPEND="~dev-lang/nqp-${PV/.1/}:${SLOT}=[java?,moar?,clang=]"
 RDEPEND="${CDEPEND}
 	java? ( >=virtual/jre-1.7 )"
 DEPEND="${CDEPEND}
