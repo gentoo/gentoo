@@ -1,0 +1,14 @@
+# https://github.com/gdraheim/zziplib/issues/93
+diff --git a/docs/CMakeLists.txt b/docs/CMakeLists.txt
+index b679f7b..e2887ee 100644
+--- a/docs/CMakeLists.txt
++++ b/docs/CMakeLists.txt
+@@ -190,7 +190,7 @@ add_custom_target(install-manpages
+ endif()
+ if(ZZIP_MANPAGES)
+    install(CODE "message(STATUS \"Installing: man3 pages to ${mandir}/man3\")")
+-   install(DIRECTORY man3/ DESTINATION ${mandir}/man3 MESSAGE_NEVER)
++   install(DIRECTORY ${outdir}/man3/ DESTINATION ${mandir}/man3 MESSAGE_NEVER)
+ endif()
+ add_custom_target(install-docs DEPENDS install-manpages install-htmpages install-site)
+ add_custom_target(install-mans DEPENDS install-manpages)
