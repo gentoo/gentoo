@@ -783,13 +783,6 @@ app-dicts/sword-RST
 app-dicts/sword-SpaSEV
 app-dicts/sword-WEB
 
-# Ulrich Müller <ulm@gentoo.org> (2020-07-25)
-# Included with TeX Live. The separate Gentoo package is
-# unmaintained and had its last version bump in 2015.
-# Use app-text/texlive-core as replacement.
-# Removal in 30 days. Bug #733862.
-app-eselect/eselect-mpost
-
 # Hans de Graaff <graaff@gentoo.org> (2020-07-22)
 # Mask old obsolete slots for removal in 30 days.
 # Use a newer slot of the same package instead.
