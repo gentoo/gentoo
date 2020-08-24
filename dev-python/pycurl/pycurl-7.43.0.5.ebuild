@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=manual
 # The selftests fail with pypy, and urlgrabber segfaults for me.
 PYTHON_COMPAT=( python3_{6,7,8,9} )
 
@@ -54,6 +55,8 @@ PATCHES=(
 
 python_prepare_all() {
 	sed -e "/setup_args\['data_files'\] = /d" -i setup.py || die
+	# disable automagic use of setuptools
+	sed -e 's:import wheel:raise ImportError:' -i setup.py || die
 	# these tests are broken with newer versions of bottle
 	sed -e 's:test.*_invalid_utf8:_&:' -i tests/getinfo_test.py || die
 	distutils-r1_python_prepare_all
