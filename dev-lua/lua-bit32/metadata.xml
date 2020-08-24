@@ -10,6 +10,6 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">luaposix/luaposix</remote-id>
+    <remote-id type="github">keplerproject/lua-compat-5.3</remote-id>
   </upstream>
 </pkgmetadata>
