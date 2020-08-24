@@ -4,12 +4,12 @@ DEPEND=virtual/udev
 DESCRIPTION=Software for the Open Hardware Random Number Generator called OneRNG
 EAPI=7
 HOMEPAGE=https://www.onerng.info/
-IUSE=python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8
+IUSE=python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
 KEYWORDS=amd64 x86
 LICENSE=|| ( LGPL-2.1 LGPL-3 )
-RDEPEND=virtual/udev python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) app-crypt/gnupg python_single_target_python3_6? ( dev-python/python-gnupg[python_targets_python3_6(-)] ) python_single_target_python3_7? ( dev-python/python-gnupg[python_targets_python3_7(-)] ) python_single_target_python3_8? ( dev-python/python-gnupg[python_targets_python3_8(-)] ) sys-apps/rng-tools sys-process/at
-REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 )
+RDEPEND=virtual/udev python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) app-crypt/gnupg python_single_target_python3_6? ( dev-python/python-gnupg[python_targets_python3_6(-)] ) python_single_target_python3_7? ( dev-python/python-gnupg[python_targets_python3_7(-)] ) python_single_target_python3_8? ( dev-python/python-gnupg[python_targets_python3_8(-)] ) python_single_target_python3_9? ( dev-python/python-gnupg[python_targets_python3_9(-)] ) sys-apps/rng-tools sys-process/at
+REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 )
 SLOT=0
 SRC_URI=https://github.com/OneRNG/onerng.github.io/raw/master/sw/onerng_3.6.orig.tar.gz -> onerng-3.6.tar.gz
 _eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	udev	452708c3f55cf6e918b045adb949a9e6
-_md5_=26b9a90eec30cc7d63367eb0308dd138
+_md5_=f3b7248f2717f0d5963e236c59500bab

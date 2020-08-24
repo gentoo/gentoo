@@ -5434,7 +5434,7 @@ dev-libs/libgit2 0.28.5 1.0.1: A linkable library for Git
 dev-libs/libgit2-glib 0.28.0.1 0.28.0.1-r1 0.99.0.1-r1: Git library for GLib
 dev-libs/libgnome-games-support 1.4.4 1.6.1: Library for code common to Gnome games
 dev-libs/libgnt 2.14.0: Pidgin's GLib Ncurses Toolkit
-dev-libs/libgpg-error 1.36 1.37 1.38: Contains error handling functions used by GnuPG software
+dev-libs/libgpg-error 1.36 1.37 1.38 1.39: Contains error handling functions used by GnuPG software
 dev-libs/libgpiod 1.1.1 1.4.1: C library and tools for interacting with the linux GPIO character device
 dev-libs/libgpuarray 0.6.0 0.6.7: Library to manipulate tensors on the GPU
 dev-libs/libgudev 233-r1: GObject bindings for libudev
@@ -8022,7 +8022,7 @@ dev-python/configobj 5.0.6 5.0.6-r1: Simple config file reader and writer
 dev-python/configparser 3.5.0-r1: Backport of Python-3 built-in configparser
 dev-python/configshell-fb 1.1.28: A Python library for building configuration shells
 dev-python/confuse 1.0.0: Confuse is a configuration library for Python that uses YAML
-dev-python/consonance 0.1.3: WhatsApp's handshake implementation using Noise Protocol
+dev-python/consonance 0.1.3-r1: WhatsApp's handshake implementation using Noise Protocol
 dev-python/constantly 15.1.0-r1: Symbolic constants in Python
 dev-python/construct 2.10.56: A powerful declarative parser for binary data
 dev-python/contextlib2 0.6.0_p1: Backports and enhancements for the contextlib module
@@ -8073,7 +8073,7 @@ dev-python/diff-match-patch 20181111: Diff, match and patch algorithms for plain
 dev-python/dill 0.3.2: Serialize all of python (almost)
 dev-python/discogs-client 2.2.2: Official Python API client for Discogs
 dev-python/diskcache 4.1.0 5.0.1: Disk and file backed cache
-dev-python/dissononce 0.34.3: A python implementation for Noise Protocol Framework
+dev-python/dissononce 0.34.3-r1: A python implementation for Noise Protocol Framework
 dev-python/distlib 0.3.1: Low-level components of distutils2/packaging
 dev-python/distributed 1.18.0-r1: Python library for distributed computation
 dev-python/distro 1.5.0: Reliable machine-readable Linux distribution information for Python
@@ -8854,7 +8854,7 @@ dev-python/pytest-virtualenv 1.7.0-r1: Virtualenv fixture for py.test
 dev-python/pytest-xdist 1.33.0 1.34.0 2.0.0: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.13.1: Manage external processes across test runs
 dev-python/python-augeas 1.1.0: Python bindings for Augeas
-dev-python/python-axolotl 0.2.3: A python module for the axolotl protocol
+dev-python/python-axolotl 0.2.3-r1: A python module for the axolotl protocol
 dev-python/python-axolotl-curve25519 0.4.1_p2-r1: A python wrapper for the curve25519 library with ed25519 signatures
 dev-python/python-backoff 1.6.0: Function decoration for backoff and retry
 dev-python/python-barbicanclient 4.8.1: Client library for Barbican API.
@@ -8924,7 +8924,7 @@ dev-python/python-prctl 1.7: Control process attributes through prctl
 dev-python/python-redmine 2.3.0: Python interface to the Redmine REST API
 dev-python/python-saharaclient 2.2.1: This is a client for the OpenStack Sahara API, aka HADOOP
 dev-python/python-senlinclient 1.2.0: A client for the OpenStack Senlin API
-dev-python/python-sense-hat 2.2.0-r1: Raspberry Pi Sense HAT python library
+dev-python/python-sense-hat 2.2.0-r2: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-slugify 1.2.6 4.0.1: A Python Slugify application that handles Unicode
 dev-python/python-sshpubkeys 3.1.0: OpenSSH public key parser for Python
@@ -9204,7 +9204,7 @@ dev-python/tox 3.17.1 3.19.0: virtualenv-based automation of test activities
 dev-python/tqdm 4.47.0 4.48.2 9999: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0: Backports of the traceback module
 dev-python/traitlets 4.3.3: A configuration system for Python applications
-dev-python/transitions 0.8.2: A lightweight, object-oriented state machine implementation in Python
+dev-python/transitions 0.8.2-r1: A lightweight, object-oriented state machine implementation in Python
 dev-python/translate-toolkit 2.5.0: Toolkit to convert between many translation formats
 dev-python/treq 20.4.1: A requests-like API built on top of twisted.web's Agent
 dev-python/trustme 0.6.0: #1 quality TLS certs while you wait, for the discerning tester
@@ -11664,7 +11664,7 @@ games-rpg/wastesedge 0.3.5-r2: role playing game to showcase the adonthell engin
 games-rpg/xu4 0.9-r1: A remake of the computer game Ultima IV
 games-rpg/zsdx 1.9.0-r1: A free 2D Zelda fangame
 games-rpg/zsxd 1.9.0-r1: A free 2D Zelda fangame parody
-games-server/bedrock-server 1.16.1.02 1.16.20.03 1.16.20.03-r1: The official bedrock (non-java) based server for the sandbox video game
+games-server/bedrock-server 1.16.1.02 1.16.20.03-r1: The official bedrock (non-java) based server for the sandbox video game
 games-server/crossfire-server 1.71.0-r1: Server for the crossfire clients
 games-server/etqw-ded 1.5-r1: Enemy Territory: Quake Wars dedicated server
 games-server/mednafen-server 0.5.2-r1: Server for Mednafen emulator
@@ -17673,7 +17673,7 @@ sys-libs/libapparmor 2.13.4: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r2: Library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libblockdev 2.23-r1 2.24 9999: A library for manipulating block devices
 sys-libs/libcap 2.26-r2 2.27 2.41 2.42 2.43: POSIX 1003.1e capabilities
-sys-libs/libcap-ng 0.7.10: POSIX 1003.1e capabilities
+sys-libs/libcap-ng 0.7.10 0.7.11: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.1.5_rc2: Library for accessing chip cards via chip card readers (terminals)
 sys-libs/libcxx 9.0.1 10.0.0 10.0.1 11.0.0_rc1 11.0.0_rc2 11.0.0.9999 12.0.0.9999: New implementation of the C++ standard library, targeting C++11
 sys-libs/libcxxabi 9.0.1 10.0.0 10.0.1 11.0.0_rc1 11.0.0_rc2 11.0.0.9999 12.0.0.9999: Low level support for a standard C++ library
