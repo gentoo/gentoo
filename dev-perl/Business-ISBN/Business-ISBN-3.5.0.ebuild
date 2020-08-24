@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Work with ISBN as objects"
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="test barcode"
 RESTRICT="!test? ( test )"
 
