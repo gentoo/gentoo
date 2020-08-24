@@ -805,11 +805,6 @@ app-eselect/eselect-pdftex
 app-text/jadetex
 app-text/passivetex
 
-# Michał Górny <mgorny@gentoo.org> (2020-07-22)
-# Python 2 only.  No revdeps.
-# Removal in 30 days.  Bug #733494.
-dev-python/sphinxtogithub
-
 # Hans de Graaff <graaff@gentoo.org> (2020-07-22)
 # Mask old obsolete slots for removal in 30 days.
 # Use a newer slot of the same package instead.
