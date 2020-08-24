@@ -4308,7 +4308,7 @@ dev-haskell/prettyprinter-ansi-terminal 1.1.1.2: ANSI terminal backend for the "
 dev-haskell/primitive 0.5.0.1 0.5.1.0 0.5.4.0 0.6.1.0-r1 0.7.1.0: Primitive memory-related operations
 dev-haskell/primitive-addr 0.1.0.2: Addresses to unmanaged memory
 dev-haskell/process-conduit 1.1.0.0-r1 1.2.0.1: Conduits for processes (deprecated)
-dev-haskell/process-extras 0.3.3.6: Process extras
+dev-haskell/process-extras 0.7.4: Process extras
 dev-haskell/profunctor-extras 3.3.3.1 4.0: This package has been absorbed into profunctors 4.0
 dev-haskell/profunctors 3.3.0.1 4.0.4 4.3.2 4.4.1 5.1.2 5.2 5.5.1: Haskell98 profunctors package
 dev-haskell/project-template 0.2.0 0.2.0.1: Specify Haskell project templates and generate files
@@ -12420,7 +12420,7 @@ lxqt-base/lxqt-sudo 0.15.0: LXQt GUI frontend for sudo
 mail-client/aerc 0.4.0 9999: Email client for your terminal
 mail-client/alot 0.9 0.9.1 9999: Experimental terminal UI for net-mail/notmuch written in Python
 mail-client/alpine 2.23: An easy to use text-based based mail and news client
-mail-client/balsa 2.5.6-r1: Email client for GNOME
+mail-client/balsa 2.5.6-r1 2.6.1: Email client for GNOME
 mail-client/bower 0.10 0.11 0.12: Curses terminal client for the Notmuch email system
 mail-client/claws-mail 3.17.6-r1 9999: An email client (and news reader) based on GTK+
 mail-client/clawsker 1.1.0 1.3.1: Applet to edit Claws Mail's hidden preferences
