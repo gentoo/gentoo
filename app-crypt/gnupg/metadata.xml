@@ -5,6 +5,10 @@
 		<email>k_f@gentoo.org</email>
 		<name>Kristian Fiskerstrand</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
+	</maintainer>
 	<longdescription>
 	GnuPG is a complete and free implementation of the OpenPGP standard as
 	defined by RFC4880.
