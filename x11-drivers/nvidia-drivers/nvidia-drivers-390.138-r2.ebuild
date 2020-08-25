@@ -343,6 +343,9 @@ src_install() {
 
 		insinto /etc/vulkan/icd.d
 		doins nvidia_icd.json
+
+		insinto /etc/X11/xorg.conf.d
+		doins "${FILESDIR}"/nvidia-390.conf
 	fi
 
 	if use kernel_linux; then
