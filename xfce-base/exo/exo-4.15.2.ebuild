@@ -15,7 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~a
 
 RDEPEND=">=dev-libs/glib-2.42
 	>=x11-libs/gtk+-3.22:3
-	>=xfce-base/libxfce4ui-4.12:=[gtk3(+)]
+	>=xfce-base/libxfce4ui-4.15.1:=[gtk3(+)]
 	>=xfce-base/libxfce4util-4.12:="
 DEPEND="${RDEPEND}
 	dev-util/gtk-doc-am
