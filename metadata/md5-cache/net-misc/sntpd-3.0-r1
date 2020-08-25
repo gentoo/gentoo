@@ -1,3 +1,4 @@
+BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=configure install
 DEPEND=systemd? ( sys-apps/systemd )
 DESCRIPTION=A NTP (RFC-1305 and RFC-4330) client and server for unix-alike systems
@@ -9,4 +10,5 @@ LICENSE=GPL-2
 RDEPEND=systemd? ( sys-apps/systemd )
 SLOT=0
 SRC_URI=https://github.com/troglobit/sntpd/releases/download/v3.0/sntpd-3.0.tar.gz
-_md5_=ba38e29db6db19e09ca2c4e8801e5840
+_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=f3578e6e1f16e7b4face4ca33f4c6fda
