@@ -14,21 +14,24 @@ SRC_URI="https://github.com/AcademySoftwareFoundation/${PN}/archive/v${PV}.tar.g
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cpu_flags_x86_avx cpu_flags_x86_sse4_2 doc numpy python static-libs test utils abi6-compat +abi7-compat"
+IUSE="cpu_flags_x86_avx cpu_flags_x86_sse4_2 doc numpy python static-libs test utils abi5-compat abi6-compat +abi7-compat"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	numpy? ( python )
-	^^ ( abi6-compat abi7-compat )
+	^^ ( abi5-compat abi6-compat abi7-compat )
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
 RDEPEND="
+	dev-cpp/tbb
 	dev-libs/boost:=
 	dev-libs/c-blosc:=
 	dev-libs/jemalloc:=
 	dev-libs/log4cplus:=
 	media-libs/glfw
+	media-libs/glu
+	media-libs/ilmbase:=
 	media-libs/openexr:=
 	sys-libs/zlib:=
 	x11-libs/libXcursor
@@ -44,10 +47,7 @@ RDEPEND="
 	)
 "
 
-DEPEND="
-	${RDEPEND}
-	dev-cpp/tbb
-"
+DEPEND="${RDEPEND}"
 
 BDEPEND="
 	>=dev-util/cmake-3.16.2-r1
@@ -64,8 +64,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${P}-0001-Fix-multilib-header-source.patch"
-	"${FILESDIR}/${P}-0002-Fix-doc-install-dir.patch"
+	"${FILESDIR}/${PN}-7.1.0-0001-Fix-multilib-header-source.patch"
+	"${FILESDIR}/${PN}-7.1.0-0002-Fix-doc-install-dir.patch"
 )
 
 pkg_setup() {
@@ -76,7 +76,9 @@ src_configure() {
 	local myprefix="${EPREFIX}/usr/"
 
 	local version
-	if use abi6-compat; then
+	if use abi5-compat; then
+		version=5
+	elif use abi6-compat; then
 		version=6
 	elif use abi7-compat; then
 		version=7

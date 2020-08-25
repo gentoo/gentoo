@@ -9,25 +9,29 @@ inherit cmake flag-o-matic python-single-r1
 
 DESCRIPTION="Library for the efficient manipulation of volumetric data"
 HOMEPAGE="https://www.openvdb.org"
-SRC_URI="https://github.com/AcademySoftwareFoundation/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/AcademySoftwareFoundation/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~dracwyrm/patches/${P}-patchset-02.tar.xz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="abi4-compat abi5-compat +abi6-compat doc python test"
+KEYWORDS="amd64 ~x86"
+IUSE="abi3-compat +abi4-compat doc python test"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
-	^^ ( abi4-compat abi5-compat abi6-compat )
+	^^ ( abi3-compat abi4-compat )
 "
 
 RDEPEND="
+	dev-cpp/tbb
 	dev-libs/boost:=
 	dev-libs/c-blosc:=
 	dev-libs/jemalloc:=
 	dev-libs/log4cplus:=
 	media-libs/glfw
+	media-libs/glu
+	media-libs/ilmbase:=
 	media-libs/openexr:=
 	sys-libs/zlib:=
 	x11-libs/libXcursor
@@ -40,15 +44,12 @@ RDEPEND="
 			dev-libs/boost:=[python?,${PYTHON_USEDEP}]
 			dev-python/numpy[${PYTHON_USEDEP}]
 		')
-	)"
-
-DEPEND="
-	${RDEPEND}
-	dev-cpp/tbb
+	)
 "
 
+DEPEND="${RDEPEND}"
+
 BDEPEND="
-	>=dev-util/cmake-3.16.2-r1
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
@@ -62,9 +63,12 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${P}-fix-multilib-header-source.patch"
-	"${FILESDIR}/${PN}-4.0.2-fix-const-correctness-for-unittest.patch"
-	"${FILESDIR}/${P}-use-gnuinstalldirs.patch"
+	"${WORKDIR}/${P}-patchset-02/0001-use-gnuinstalldirs.patch"
+	"${WORKDIR}/${P}-patchset-02/0002-use-pkgconfig-for-ilmbase-and-openexr.patch"
+	"${WORKDIR}/${P}-patchset-02/0003-boost-1.65-numpy-support.patch"
+	"${FILESDIR}/${P}-findboost-fix.patch"
+	"${FILESDIR}/${P}-fix-const-correctness-for-unittest.patch"
+	"${FILESDIR}/${P}-fix-build-docs.patch"
 )
 
 pkg_setup() {
@@ -74,25 +78,29 @@ pkg_setup() {
 src_configure() {
 	local myprefix="${EPREFIX}/usr/"
 
+	# To stay in sync with Boost
+	append-cxxflags -std=c++14
+
 	local version
-	if use abi4-compat; then
+	if use abi3-compat; then
+		version=3
+	elif use abi4-compat; then
 		version=4
-	elif use abi5-compat; then
-		version=5
-	elif use abi6-compat; then
-		version=6
 	else
-		die "Openvdb ABI version not specified"
+		die "Openvdb abi version is not compatible"
 	fi
 
 	local mycmakeargs=(
+		-DBLOSC_LOCATION="${myprefix}"
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
-		-DOPENVDB_ABI_VERSION_NUMBER="${version}"
+		-DGLFW3_LOCATION="${myprefix}"
 		-DOPENVDB_BUILD_DOCS=$(usex doc)
 		-DOPENVDB_BUILD_PYTHON_MODULE=$(usex python)
 		-DOPENVDB_BUILD_UNITTESTS=$(usex test)
+		-DOPENVDB_ENABLE_3_ABI_COMPATIBLE=$(usex abi3-compat)
 		-DOPENVDB_ENABLE_RPATH=OFF
-		-DCHOST="${CHOST}"
+		-DTBB_LOCATION="${myprefix}"
+		-DUSE_GLFW3=ON
 	)
 
 	use python && mycmakeargs+=( -DPYOPENVDB_INSTALL_DIRECTORY="$(python_get_sitedir)" )

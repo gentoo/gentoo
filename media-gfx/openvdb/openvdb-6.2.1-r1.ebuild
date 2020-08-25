@@ -14,19 +14,23 @@ SRC_URI="https://github.com/AcademySoftwareFoundation/${PN}/archive/v${PV}.tar.g
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="abi3-compat abi4-compat +abi5-compat doc python test"
+IUSE="abi4-compat abi5-compat +abi6-compat doc python test"
 RESTRICT="!test? ( test )"
+
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
-	^^ ( abi3-compat abi4-compat abi5-compat )
+	^^ ( abi4-compat abi5-compat abi6-compat )
 "
 
 RDEPEND="
+	dev-cpp/tbb
 	dev-libs/boost:=
 	dev-libs/c-blosc:=
 	dev-libs/jemalloc:=
 	dev-libs/log4cplus:=
 	media-libs/glfw
+	media-libs/glu
+	media-libs/ilmbase:=
 	media-libs/openexr:=
 	sys-libs/zlib:=
 	x11-libs/libXcursor
@@ -39,15 +43,12 @@ RDEPEND="
 			dev-libs/boost:=[python?,${PYTHON_USEDEP}]
 			dev-python/numpy[${PYTHON_USEDEP}]
 		')
-	)
-"
+	)"
 
-DEPEND="
-	${RDEPEND}
-	dev-cpp/tbb
-"
+DEPEND="${RDEPEND}"
 
 BDEPEND="
+	>=dev-util/cmake-3.16.2-r1
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
@@ -61,10 +62,9 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${P}-use-gnuinstalldirs.patch"
-	"${FILESDIR}/${P}-use-pkgconfig-for-ilmbase-and-openexr.patch"
+	"${FILESDIR}/${P}-fix-multilib-header-source.patch"
 	"${FILESDIR}/${PN}-4.0.2-fix-const-correctness-for-unittest.patch"
-	"${FILESDIR}/${PN}-4.0.2-fix-build-docs.patch"
+	"${FILESDIR}/${P}-use-gnuinstalldirs.patch"
 )
 
 pkg_setup() {
@@ -75,27 +75,24 @@ src_configure() {
 	local myprefix="${EPREFIX}/usr/"
 
 	local version
-	if use abi3-compat; then
-		version=3
-	elif use abi4-compat; then
+	if use abi4-compat; then
 		version=4
 	elif use abi5-compat; then
 		version=5
+	elif use abi6-compat; then
+		version=6
 	else
 		die "Openvdb ABI version not specified"
 	fi
 
 	local mycmakeargs=(
-		-DBLOSC_LOCATION="${myprefix}"
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
-		-DGLFW3_LOCATION="${myprefix}"
 		-DOPENVDB_ABI_VERSION_NUMBER="${version}"
 		-DOPENVDB_BUILD_DOCS=$(usex doc)
 		-DOPENVDB_BUILD_PYTHON_MODULE=$(usex python)
 		-DOPENVDB_BUILD_UNITTESTS=$(usex test)
 		-DOPENVDB_ENABLE_RPATH=OFF
-		-DTBB_LOCATION="${myprefix}"
-		-DUSE_GLFW3=ON
+		-DCHOST="${CHOST}"
 	)
 
 	use python && mycmakeargs+=( -DPYOPENVDB_INSTALL_DIRECTORY="$(python_get_sitedir)" )
