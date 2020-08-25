@@ -19,18 +19,16 @@ pkg_postinst() {
 	elog
 	elog " * open:"
 	elog "    - dev-libs/intel-neo - integrated Intel GPUs from Broadwell onwards. 64-bit only;"
-	elog "    - dev-libs/rocm-opencl-runtime - AMD GPUs supported by the amdgpu kernel driver."
-	elog "      Image support still requires a proprietary extension [1]. 64-bit only;"
-	elog "    - media-libs/mesa[opencl] - some older AMD GPUs; see [2]. 32-bit support;"
+	elog "    - dev-libs/rocm-opencl-runtime - AMD GPUs supported by the amdgpu kernel driver. 64-bit only;"
+	elog "    - media-libs/mesa[opencl] - some older AMD GPUs; see [1]. 32-bit support;"
 	elog
 	elog " * proprietary:"
 	elog "    - dev-libs/amdgpu-pro-opencl - AMD Polaris GPUs. 32-bit support;"
 	elog "    - dev-util/intel-ocl-sdk - Intel CPUs (*not* GPUs). 64-bit only;"
 	elog "    - x11-drivers/nvidia-drivers[uvm] - Nvidia GPUs; specific package versions"
-	elog "      required for older devices [3]. 32-bit support."
+	elog "      required for older devices [2]. 32-bit support."
 	elog
-	elog " [1] dev-libs/hsa-ext-rocr"
-	elog " [2] https://dri.freedesktop.org/wiki/GalliumCompute/"
-	elog " [3] https://www.nvidia.com/en-us/drivers/unix/legacy-gpu/"
+	elog " [1] https://dri.freedesktop.org/wiki/GalliumCompute/"
+	elog " [2] https://www.nvidia.com/en-us/drivers/unix/legacy-gpu/"
 	elog
 }
