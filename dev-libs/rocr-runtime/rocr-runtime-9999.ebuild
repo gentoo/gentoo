@@ -17,18 +17,29 @@ fi
 
 DESCRIPTION="Radeon Open Compute Runtime"
 HOMEPAGE="https://github.com/RadeonOpenCompute/ROCR-Runtime"
+PATCHES=(
+	"${FILESDIR}/${PN}-3.7.0-cmake-install-paths.patch"
+)
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="non-free"
 
 COMMON_DEPEND="sys-process/numactl"
-RDEPEND="${COMMON_DEPEND}
-	non-free? ( dev-libs/hsa-ext-rocr )"
+RDEPEND="${COMMON_DEPEND}"
 DEPEND="${COMMON_DEPEND}
-	>=dev-libs/roct-thunk-interface-${PV}"
+	>=dev-libs/roct-thunk-interface-${PV}
+	>=dev-libs/rocm-device-libs-${PV}
+	app-editors/vim-core"
+	# vim-core is needed for "xxd"
 
 src_prepare() {
 	sed -e "s:get_version ( \"1.0.0\" ):get_version ( \"${PV}\" ):" -i CMakeLists.txt || die
+
+	# ... otherwise system llvm/clang is used ...
+	sed -e "s:find_package(Clang REQUIRED HINTS \${CMAKE_INSTALL_PREFIX}/llvm \${CMAKE_PREFIX_PATH}/llvm PATHS /opt/rocm/llvm ):find_package(Clang REQUIRED HINTS /usr/lib/llvm/roc ):" -i image/blit_src/CMakeLists.txt || die
+
+	# Gentoo installs "*.bc" to "/usr/lib" instead of a "[path]/bitcode" directory ...
+	sed -e "s:/opt/rocm/amdgcn/bitcode:/usr/lib:" -i image/blit_src/CMakeLists.txt || die
+
 	cmake_src_prepare
 }
