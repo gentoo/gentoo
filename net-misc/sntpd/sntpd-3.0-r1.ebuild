@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit systemd
+
 DESCRIPTION="A NTP (RFC-1305 and RFC-4330) client and server for unix-alike systems"
 HOMEPAGE="https://github.com/troglobit/sntpd"
 SRC_URI="https://github.com/troglobit/${PN}/releases/download/v${PV}/${P}.tar.gz"
@@ -28,6 +30,6 @@ src_configure() {
 src_install() {
 	default
 
-	newinitd "${FILESDIR}"/sntpd.initd sntpd
+	newinitd "${FILESDIR}"/sntpd.initd-r1 sntpd
 	newconfd "${FILESDIR}"/sntpd.confd sntpd
 }

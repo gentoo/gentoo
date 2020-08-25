@@ -6,7 +6,8 @@ name="sntpd"
 pidfile="/run/sntpd.pid"
 
 command="/usr/sbin/sntpd"
-command_args="${SNTPD_OPTS}"
+command_args="-n ${SNTPD_OPTS}"
+command_background="true"
 
 depend() {
 	use net dns logger
