@@ -5241,7 +5241,7 @@ dev-libs/busybee 0.7.0: A messaging abstraction on top of TCP sockets used in Hy
 dev-libs/c-blosc 1.11.2 1.19.0 1.20.0: Blocking, shuffling and lossless compression library
 dev-libs/c-capnproto 0.3: C library/compiler for the Cap'n Proto serialization/RPC protocol
 dev-libs/caliper 1.5.0: Application Introspection System
-dev-libs/capnproto 0.6.0 0.6.1 0.7.0: RPC/Serialization system with capabilities support
+dev-libs/capnproto 0.6.0 0.6.1 0.7.0 0.8.0: RPC/Serialization system with capabilities support
 dev-libs/capstone 4.0.2-r2: disassembly/disassembler framework + bindings
 dev-libs/cdk 5.0.20160131: A library of curses widgets
 dev-libs/cereal 1.3.0: Header-only C++11 serialization library
@@ -16365,7 +16365,7 @@ sci-libs/orocos_kdl 1.3.1-r1 1.4.0 9999: Kinematics and Dynamics Library (KDL)
 sci-libs/p4est 2.0 2.2 9999: Scalable Algorithms for Parallel Adaptive Mesh Refinement on Forests of Octrees
 sci-libs/parmetis 4.0.3-r1: Parallel (MPI) unstructured graph partitioning library
 sci-libs/pastix 5.2.2.22-r1 5.2.3: Parallel solver for very large sparse linear systems
-sci-libs/pcl 1.11.0 9999: 2D/3D image and point cloud processing
+sci-libs/pcl 1.11.0 1.11.1 9999: 2D/3D image and point cloud processing
 sci-libs/pgplot 5.2.2-r7: FORTRAN/C device-independent scientific graphic library
 sci-libs/plotmm 0.1.2: Plot widget for GTKmm
 sci-libs/plplot 5.15.0-r1: Multi-language scientific plotting library
@@ -16380,7 +16380,7 @@ sci-libs/qfits 6.2.0: ESO stand-alone C library offering easy access to FITS fil
 sci-libs/qrupdate 1.1.2-r1: Library for updating of QR and Cholesky decompositions
 sci-libs/rosetta-db 3.4: Essential database for rosetta
 sci-libs/rosetta-fragments 3.1-r1: Fragment library for rosetta
-sci-libs/rtabmap 0.19.3-r1 0.19.7 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
+sci-libs/rtabmap 0.19.3-r1 0.19.7 0.20.3 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
 sci-libs/scalapack 2.0.2-r1 2.1.0: Subset of LAPACK routines redesigned for heterogenous (MPI) computing
 sci-libs/scikits 0.1-r1 0.1-r2: Common files for python scikits
 sci-libs/scikits_image 0.13.0-r1: Image processing routines for SciPy
@@ -18118,7 +18118,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.5: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 84.0.4147.135 85.0.4183.76 86.0.4238.0: Open-source version of Google Chrome web browser
+www-client/chromium 84.0.4147.135 85.0.4183.83 86.0.4238.0: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r4 0.13_pre_pre20180225 0.13.4 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6 3.34.4 3.36.3 3.36.4: GNOME webbrowser based on Webkit
