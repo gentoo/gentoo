@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 
@@ -14,14 +14,15 @@ SRC_URI="https://sourceforge.net/projects/${PN}/files/${PN}/${PV}/${P}.tar.gz"
 KEYWORDS="amd64 x86"
 SLOT="0"
 LICENSE="GPL-2"
-IUSE=""
 
-RDEPEND="app-shells/bash
+RDEPEND="
+	app-shells/bash
 	sys-apps/coreutils
-	virtual/awk"
+	virtual/awk
+"
 
 PATCHES=(
-	# Respect users CFLAGS and LDFLAGS
+	"${FILESDIR}"/${PN}-1.7.4-clang.patch
 	"${FILESDIR}"/${PN}-1.7.4-fix-build-system.patch
 )
 
