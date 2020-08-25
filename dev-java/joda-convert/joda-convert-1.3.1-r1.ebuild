@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 JAVA_PKG_IUSE="doc source test"
 
 inherit java-pkg-2 java-ant-2
@@ -14,18 +14,19 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ppc64 x86"
 
-DEPEND=">=virtual/jdk-1.6
+DEPEND="virtual/jdk:1.8
 	test? (
 		dev-java/junit:4
 		dev-java/ant-junit:0
 	)"
-RDEPEND=">=virtual/jre-1.6"
+RDEPEND=">=virtual/jre-1.8"
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
 EANT_TEST_GENTOO_CLASSPATH="junit-4"
 EANT_EXTRA_ARGS="-Dmaven.build.finalName=${PN}"
 
-java_prepare() {
+src_prepare() {
+	default
 	cp "${FILESDIR}"/${P}-build.xml build.xml || die
 }
 

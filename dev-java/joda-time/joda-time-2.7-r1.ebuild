@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 JAVA_PKG_IUSE="doc examples source test"
 JAVA_ANT_REWRITE_CLASSPATH="true"
 
@@ -17,15 +17,17 @@ KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-s
 
 RESTRICT="test"
 
-DEPEND=">=virtual/jdk-1.5
+DEPEND=">=virtual/jdk-1.8
 	dev-java/joda-convert:0
 	test? (
 		dev-java/junit:0
 		dev-java/ant-junit:0
 	)"
-RDEPEND=">=virtual/jre-1.5"
+RDEPEND=">=virtual/jre-1.8"
 
-java_prepare() {
+src_prepare() {
+	default
+
 	rm -v *.jar || die "Failed to remove bundled jars."
 	cp "${FILESDIR}"/${P}-build.xml "${S}"/build.xml || die "Failed to copy build file."
 
