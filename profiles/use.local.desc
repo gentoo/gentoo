@@ -2353,7 +2353,6 @@ dev-libs/poco:util - Several utility classes (like logger, timer, config file pa
 dev-libs/poco:zip - Add support for the zip & gz archive formats
 dev-libs/ppl:cdd - Build the ppl_lcdd program for vertex/facet enumeration accepting the same input format as the programs shipped with sci-libs/cddlib and sci-libs/lrslib
 dev-libs/ppl:lpsol - Build the ppl_lpsol linear program solver that uses sci-mathematics/glpk for its input routines
-dev-libs/rocr-runtime:non-free - Enables HSA image support using dev-libs/hsa-ext-rocr
 dev-libs/serdisplib:tools - Build optional tools.
 dev-libs/softhsm:gost - Enable gost algorithm
 dev-libs/softhsm:migration-tool - Build db migration tool
