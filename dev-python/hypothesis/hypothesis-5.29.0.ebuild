@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 PYTHON_REQ_USE="threads(+),sqlite"
 
-inherit distutils-r1 eutils
+inherit distutils-r1 eutils multiprocessing
 
 DESCRIPTION="A library for property based testing"
 HOMEPAGE="https://github.com/HypothesisWorks/hypothesis https://pypi.org/project/hypothesis/"
@@ -36,16 +36,10 @@ BDEPEND="
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pexpect[${PYTHON_USEDEP}]
 		>=dev-python/pytest-5.3.5[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		!!<dev-python/typing-3.7.4.1
 	)
 "
-
-src_prepare() {
-	# avoid pytest-xdist dep for one test
-	sed -i -e 's:test_prints_statistics_given_option_under_xdist:_&:' \
-		tests/pytest/test_statistics.py || die
-	distutils-r1_src_prepare
-}
 
 python_prepare() {
 	if ! use cli || [[ ${EPYTHON} != python3.[678] ]]; then
@@ -54,7 +48,8 @@ python_prepare() {
 }
 
 python_test() {
-	pytest -vv tests/cover tests/pytest tests/quality ||
+	pytest -vv tests/cover tests/pytest tests/quality \
+		-n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")" ||
 		die "Tests fail with ${EPYTHON}"
 }
 
