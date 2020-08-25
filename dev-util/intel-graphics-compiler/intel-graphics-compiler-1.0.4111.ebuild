@@ -18,7 +18,9 @@ IUSE="debug"
 
 LLVM_MAX_SLOT=10
 
-COMMON="<=sys-devel/llvm-${LLVM_MAX_SLOT}.9999:=[${MULTILIB_USEDEP}]
+# Bug #738934
+#COMMON="<=sys-devel/llvm-${LLVM_MAX_SLOT}.9999:=[${MULTILIB_USEDEP}]
+COMMON="<sys-devel/llvm-10.0.1:=[${MULTILIB_USEDEP}]
 	<=dev-libs/opencl-clang-${LLVM_MAX_SLOT}.9999:=[${MULTILIB_USEDEP}]"
 DEPEND="${COMMON}"
 RDEPEND="${COMMON}"
