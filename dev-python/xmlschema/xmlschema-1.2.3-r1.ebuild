@@ -18,7 +18,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	=dev-python/elementpath-2.0.0*[${PYTHON_USEDEP}]"
+	>=dev-python/elementpath-2.0.0[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}
 	test? (
 		dev-python/lxml[${PYTHON_USEDEP}]
