@@ -3,16 +3,22 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
+
+if [[ ${PV} =~ [9]{4,} ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/libbpf/libbpf.git"
+else
+	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm64 ~x86"
+fi
+S="${WORKDIR}/${P}/src"
 
 HOMEPAGE="https://github.com/libbpf/libbpf"
 DESCRIPTION="Stand-alone build of libbpf from the Linux kernel"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${P}/src"
 
 LICENSE="GPL-2 LGPL-2.1 BSD-2"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+static-libs"
 
 COMMON_DEPEND="virtual/libelf
@@ -26,6 +32,7 @@ PATCHES=(
 )
 
 src_compile() {
+	append-cflags -fPIC
 	emake \
 		BUILD_SHARED=y \
 		LIBSUBDIR="$(get_libdir)" \
