@@ -28,8 +28,7 @@ COMMON_DEPEND="
 	sys-devel/clang:=
 	dev-libs/libbpf:=
 	>=sys-devel/llvm-3.7.1:=[llvm_targets_BPF(+)]
-	<sys-devel/clang-10:=
-	<sys-devel/llvm-10:=[llvm_targets_BPF(+)]
+	sys-devel/clang:=
 	>=dev-util/bcc-0.13.0:=
 	virtual/libelf
 "
@@ -68,7 +67,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	LLVM_MAX_SLOT=9 llvm_pkg_setup
+	LLVM_MAX_SLOT=11 llvm_pkg_setup
 }
 
 src_prepare() {

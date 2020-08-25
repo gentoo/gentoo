@@ -1,9 +1,9 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs linux-info cmake-utils
+inherit toolchain-funcs llvm linux-info cmake
 
 DESCRIPTION="High-level tracing language for eBPF"
 HOMEPAGE="https://github.com/iovisor/bpftrace"
@@ -23,38 +23,55 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="test"
 
-COMMON_DEPEND="dev-util/systemtap
+COMMON_DEPEND="
+	dev-util/systemtap
 	sys-devel/clang:=
 	dev-libs/libbpf:=
 	>=sys-devel/llvm-3.7.1:=[llvm_targets_BPF(+)]
-	>=dev-util/bcc-0.10.0:=
-	virtual/libelf"
+	sys-devel/clang:=
+	>=dev-util/bcc-0.13.0:=
+	virtual/libelf
+"
 DEPEND="${COMMON_DEPEND}
-	test? ( dev-cpp/gtest )"
+	test? ( dev-cpp/gtest )
+"
 RDEPEND="${COMMON_DEPEND}"
-BDEPEND+="dev-util/cmake
+BDEPEND+="
+	>=dev-util/cmake-3.8
 	sys-devel/flex
-	sys-devel/bison"
+	sys-devel/bison
+"
 
-S="${WORKDIR}/${PN}-${MY_PV}"
+S="${WORKDIR}/${PN}-${MY_PV:-${PV}}"
 QA_DT_NEEDED="/usr/lib.*/libbpftraceresources.so"
 
 PATCHES=(
-	"${FILESDIR}/bpftrace-0.10_pre20190614-install-libs.patch"
-	"${FILESDIR}/bpftrace-mandir.patch"
+	"${FILESDIR}/bpftrace-0.11.0-install-libs.patch"
+	"${FILESDIR}/bpftrace-0.10.0-dont-compress-man.patch"
 )
 
 # lots of fixing needed
 RESTRICT="test"
 
 pkg_pretend() {
-	local CONFIG_CHECK="~BPF ~BPF_SYSCALL ~BPF_JIT ~BPF_EVENTS"
+	local CONFIG_CHECK="
+		~BPF
+		~BPF_EVENTS
+		~BPF_JIT
+		~BPF_SYSCALL
+		~FTRACE_SYSCALLS
+		~HAVE_EBPF_JIT
+	"
 
 	check_extra_config
 }
 
+pkg_setup() {
+	LLVM_MAX_SLOT=11 llvm_pkg_setup
+}
+
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -64,5 +81,5 @@ src_configure() {
 		"-DBUILD_TESTING:BOOL=OFF"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
