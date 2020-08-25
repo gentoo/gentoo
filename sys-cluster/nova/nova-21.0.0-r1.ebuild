@@ -148,8 +148,9 @@ RDEPEND="
 	acct-user/nova
 	acct-group/nova"
 
-#PATCHES=(
-#)
+PATCHES=(
+	"${FILESDIR}/CVE-2020-17376.patch"
+)
 
 pkg_setup() {
 	linux-info_pkg_setup
