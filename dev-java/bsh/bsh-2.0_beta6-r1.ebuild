@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 JAVA_PKG_IUSE="doc source test"
 
@@ -14,7 +14,7 @@ MY_P="${PN}-${MY_PV}${MY_BETA}"
 
 DESCRIPTION="A small embeddable Java source interpreter"
 HOMEPAGE="https://github.com/beanshell/beanshell"
-SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/${MY_PV}${MY_BETA}.zip -> ${MY_P}.zip"
+SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/${MY_PV}${MY_BETA}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -28,13 +28,13 @@ CDEPEND="
 
 RDEPEND="
 	${CDEPEND}
-	>=virtual/jre-1.6"
+	>=virtual/jre-1.8"
 
 DEPEND="
 	${CDEPEND}
 	test? ( dev-java/ant-junit:0 )
 	source? ( app-arch/zip )
-	>=virtual/jdk-1.6"
+	virtual/jdk:1.8"
 
 S="${WORKDIR}/${MY_PN}-${MY_PV}${MY_BETA}"
 
