@@ -19,7 +19,7 @@ else
 	#MY_P="${PN}-${MY_PV}"
 	#SRC_URI="https://github.com/storaged-project/${PN}/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 	SRC_URI="https://github.com/storaged-project/${PN}/releases/download/${MY_PV}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 sparc x86"
 	#S="${WORKDIR}/${MY_P}"
 fi
 LICENSE="LGPL-2+"
@@ -96,18 +96,9 @@ src_configure() {
 		$(use_with lvm lvm-dbus)
 		$(use_with tools)
 		$(use_with vdo)
+		--without-python2
+		--with-python3
 	)
-	if python_is_python3 ; then
-		myeconfargs+=(
-			--without-python2
-			--with-python3
-		)
-	else
-		myeconfargs+=(
-			--with-python2
-			--without-python3
-		)
-	fi
 	econf "${myeconfargs[@]}"
 }
 

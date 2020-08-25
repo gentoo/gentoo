@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..9} )
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
 inherit flag-o-matic bash-completion-r1 ninja-utils toolchain-funcs cmake-utils python-r1
@@ -32,7 +32,7 @@ SRC_URI="https://git.archlinux.org/svntogit/community.git/snapshot/community-0ff
 # The entire source code is Apache-2.0, except for fastboot which is BSD-2.
 LICENSE="Apache-2.0 BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86 ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 x86 ~x86-linux"
 IUSE="python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

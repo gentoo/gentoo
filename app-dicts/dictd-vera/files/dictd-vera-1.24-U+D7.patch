@@ -1,0 +1,18 @@
+--- a/vera.h
++++ b/vera.h
+@@ -886,13 +886,13 @@
+ Hosted Virtual Desktop
+ 
+ @item HVGA
+-Half Video Graphics Array [320×480] (VGA)
++Half Video Graphics Array [320x480] (VGA)
+ 
+ @item HVM
+ Hardware Virtual Machine
+ 
+ @item HWE
+-HardWare Enablement [stack]] (Linux, Ubuntu)
++HardWare Enablement [stack] (Linux, Ubuntu)
+ 
+ @item HWMC
+ HardWare Motion Compensation

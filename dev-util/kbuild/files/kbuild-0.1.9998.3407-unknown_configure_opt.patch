@@ -1,0 +1,20 @@
+--- kbuild-0.1.9998.3407/bootstrap.gmk
++++ kbuild-0.1.9998.3407/bootstrap.gmk
+@@ -151,7 +151,7 @@
+ $(OUTDIR)/kmk/ts-configured: \
+ 		$(OUTDIR)/kmk/ts-autoreconf \
+ 		$(OUTDIR)/kmk/fts.h
+-	cd $(OUTDIR)/kmk && $(SRCDIR)/src/kmk/configure --disable-load --without-guile
++	cd $(OUTDIR)/kmk && $(SRCDIR)/src/kmk/configure --disable-load
+ 	echo done > $@
+ 
+ ifeq ($(KBUILD_HOST),solaris)
+@@ -182,7 +182,7 @@
+ 	echo done > $@
+ 
+ $(OUTDIR)/sed/ts-configured: $(OUTDIR)/sed/ts-autoreconf
+-	cd $(OUTDIR)/sed && $(SRCDIR)/src/sed/configure --without-libintl --disable-nls
++	cd $(OUTDIR)/sed && $(SRCDIR)/src/sed/configure --disable-nls
+ 	echo done > $@
+ 
+ $(OUTDIR)/sed/config.h: $(OUTDIR)/sed/ts-configured

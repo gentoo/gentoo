@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Autoresponder add on package for qmailadmin"
-HOMEPAGE="http://inter7.com/software/"
+HOMEPAGE="https://www.inter7.com/software/"
 SRC_URI="mirror://sourceforge/qmailadmin/${P}.tar.gz
 	mirror://gentoo/${PN}_${PV}-1.diff.gz"
 

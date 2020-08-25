@@ -1,5 +1,5 @@
---- quex-0.65.4/quex-exe.py.old	2017-12-13 21:42:48.633280478 +0100
-+++ quex-0.65.4/quex-exe.py	2017-12-13 21:43:02.066040530 +0100
+--- a/quex-exe.py	2017-12-13 21:42:48.633280478 +0100
++++ b/quex-exe.py	2017-12-13 21:43:02.066040530 +0100
 @@ -40,11 +40,6 @@
      print("error: Please, use Python versions 2.x.")
      sys.exit(-1)
@@ -12,17 +12,8 @@
  try:
      exception_checker.do_on_import(sys.argv)
      import quex.DEFINITIONS
---- quex-0.65.4/quex/DEFINITIONS.py.old	2017-12-13 21:48:52.887765325 +0100
-+++ quex-0.65.4/quex/DEFINITIONS.py	2017-12-13 21:52:29.805877359 +0100
-@@ -23,7 +23,7 @@
- QUEX_VERSION = '0.65.4'
- 
- try:
--    QUEX_INSTALLATION_DIR = os.environ["QUEX_PATH"]
-+    QUEX_INSTALLATION_DIR = "@PYTHON_SITEDIR@"
-     # Note, that windows can also deal with backslashes.
-     QUEX_INSTALLATION_DIR = QUEX_INSTALLATION_DIR.replace("\\", "/")
- except:
+--- a/quex/DEFINITIONS.py	2017-12-13 21:48:52.887765325 +0100
++++ b/quex/DEFINITIONS.py	2017-12-13 21:52:29.805877359 +0100
 @@ -49,15 +49,14 @@
      sys.exit(-1) # sys.exit(-1) is acceptable
  

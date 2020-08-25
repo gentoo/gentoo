@@ -32,8 +32,8 @@ RDEPEND="
 	dev-libs/libxml2:2
 	media-libs/audiofile:=
 	media-libs/ladspa-sdk
-	media-libs/ladspa-cmt
 	media-libs/liblrdf
+	media-plugins/cmt-plugins
 "
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto

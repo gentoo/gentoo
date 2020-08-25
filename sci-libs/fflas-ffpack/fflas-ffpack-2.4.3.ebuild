@@ -7,7 +7,7 @@ inherit autotools toolchain-funcs
 
 DESCRIPTION="Library for dense linear algebra over word-size finite fields"
 HOMEPAGE="https://linbox-team.github.io/fflas-ffpack/"
-SRC_URI="https://github.com/linbox-team/${PN}/releases/download/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/linbox-team/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

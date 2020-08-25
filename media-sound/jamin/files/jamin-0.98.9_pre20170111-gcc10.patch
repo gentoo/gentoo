@@ -1,0 +1,24 @@
+diff -rup jamin-0.97.16-orig/src/hdeq.c jamin-0.97.16/src/hdeq.c
+--- jamin-0.97.16-orig/src/hdeq.c	2007-07-01 17:33:18.000000000 +0200
++++ jamin-0.97.16/src/hdeq.c	2020-02-01 21:09:18.306430243 +0100
+@@ -122,6 +122,8 @@ void interpolate (float, int, float, flo
+ 
+ /* vi:set ts=8 sts=4 sw=4: */
+ 
++/* Defined once here */
++GtkNotebook *l_notebook1;
+ 
+ /*  HDEQ right-click popup menu.  */
+ 
+diff -rup jamin-0.97.16-orig/src/hdeq.h jamin-0.97.16/src/hdeq.h
+--- jamin-0.97.16-orig/src/hdeq.h	2007-06-13 04:20:08.000000000 +0200
++++ jamin-0.97.16/src/hdeq.h	2020-02-01 21:04:13.562907137 +0100
+@@ -62,7 +62,7 @@ void hdeq_notebook1_set_page (guint page
+ int get_current_notebook1_page ();
+ 
+ 
+-GtkNotebook *l_notebook1;
++extern GtkNotebook *l_notebook1;
+ 
+ 
+ #endif

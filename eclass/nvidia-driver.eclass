@@ -237,5 +237,5 @@ nvidia-driver_check() {
 	# nvidia-driver.eclass
 	nvidia-driver_check_gpu
 
-	use kernel_linux && nvidia-driver_check_kernel
+	use driver && use kernel_linux && nvidia-driver_check_kernel
 }

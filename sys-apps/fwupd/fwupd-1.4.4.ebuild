@@ -45,7 +45,7 @@ CDEPEND="${PYTHON_DEPS}
 	dev-libs/libgudev:=
 	>=dev-libs/libgusb-0.2.9[introspection?]
 	>=dev-libs/libjcat-0.1.0[gpg,pkcs7]
-	>=dev-libs/libxmlb-0.1.13
+	>=dev-libs/libxmlb-0.1.13:=
 	$(python_gen_cond_dep '
 		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
 		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]

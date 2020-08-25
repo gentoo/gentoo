@@ -1,11 +1,29 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
-# Mask io-uring & zbc pending keywording
-sys-block/fio io-uring zbc
+# James Le Cuirot <chewi@gentoo.org> (2020-08-19)
+# Cinnamon is not keyworded on this architecture.
+x11-themes/arc-theme cinnamon
 
-# Sam James <sam@cmpct.info> (2020-06-27)
+# Mart Raudsepp <leio@gentoo.org> (2020-08-02)
+# armv5 and older has no virtual/rust support yet, needed by newer
+# gnome-base/librsvg, et al
+>=media-gfx/eog-3.33.1 svg
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-28)
+# Requires dev-libs/boost[context] which is masked on arm, bug #727138
+dev-libs/msgpack boost
+
+# Sam James <sam@gentoo.org> (2020-07-11)
+# Don't drag in qtwebengine for Plasma right now
+# Not going for nuclear option of general mask
+# (or dropping keywords) because unclear if it's caused
+# by the use of a linux32 chroot.
+# See bug #713900
+kde-plasma/libksysguard webengine
+kde-plasma/kdeplasma-addons webengine
+
+# Sam James <sam@gentoo.org> (2020-06-27)
 # Tests require Valgrind, not available on <armv7a
 dev-libs/rapidjson test
 
@@ -40,10 +58,6 @@ net-misc/whois xcrypt
 # and as for now we have only stable mate versions
 mate-base/mate bluetooth
 
-# Adam Feldman <NP-Hardass@gentoo.org> (2020-04-06)
-# Mask until gui-libs/gtk-layer-shell is keyworded
-mate-base/mate-panel wayland
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
 # media-libs/libheif is not keyworded
 media-gfx/gimp heif
@@ -59,11 +73,6 @@ app-admin/syslog-ng test
 # Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
 # PPS should work on all arches, but only keyworded on some arches
 >=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-28)
-# >=sci-libs/vtk-8 is not keyworded, bug #649054
-media-libs/opencv vtk
-sci-libs/pcl vtk
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-10-29)
 # Neither sys-apps/bolt nor kde-plasma/plasma-thunderbolt are keyworded
@@ -105,10 +114,6 @@ sys-apps/fwupd dell thunderbolt
 # The corresponding Qt5 modules are not keyworded on arm, and we don't want to
 # keyword them solely because of PyQt5 while there are no other in-tree users.
 dev-python/PyQt5 networkauth
-
-# Michał Górny <mgorny@gentoo.org> (2018-10-18)
-# Requires unported sys-libs/netbsd-csu.
-sys-devel/clang-runtime crt
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-10-12)
 # Requires www-client/firefox which isn't available on ARM yet
@@ -160,10 +165,6 @@ sys-power/nut ups_drivers_nut-ipmipsu
 # Michał Górny <mgorny@gentoo.org> (2017-08-10)
 # Requires USE=octave which is masked in this profile.
 dev-python/ipython test
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan vulkan-overlay
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=opencl that is masked in this profile.
@@ -219,7 +220,6 @@ dev-db/mariadb -jdbc
 # media-gfx/graphicsmagick is not keyworded on arm, users will need
 # to enable imagemagick flag and disable graphicsmagick use flag
 # to enable conversion facilities
-sci-mathematics/octave graphicsmagick
 media-gfx/zbar graphicsmagick
 
 # Amy Winston <amynka@gentoo.org> (2016-06-12)
@@ -245,10 +245,6 @@ sci-mathematics/flint ntl
 # Markus Meier <maekke@gentoo.org> (2016-02-26)
 # unmask scanner for net-print/hplip, bug #518456
 media-sound/moc timidity
-
-# Justin Lecher <jlec@gentoo.org> (2016-02-22)
-# Missing test deps keyword #575366
-dev-cpp/eigen test
 
 # James Le Cuirot <chewi@gentoo.org> (2016-01-30)
 # scrollview requires SWT, which is currently unsupported on ARM.
@@ -303,10 +299,6 @@ media-libs/clutter-gtk wayland
 # Unkeyworded deps, bug #518742
 dev-python/ipython doc
 dev-python/oct2py doc
-
-# Michael Weber <xmw@gentoo.org> (2014-11-15)
-# missing keywords on media-libs/libharu
-www-client/netsurf pdf-writer
 
 # Markus Meier <maekke@gentoo.org> (2014-11-14)
 # Unkeyworded deps, bug #511532
@@ -401,7 +393,7 @@ sci-libs/linux-gpib firmware
 media-gfx/povray mkl
 
 # Benda Xu <heroxbd@gentoo.org> (2013-04-01)
-# Sam James <sam@cmpct.info> (2020-06-29)
+# Sam James <sam@gentoo.org> (2020-06-29)
 # net-misc/x11-ssh-askpass nor
 # net-misc/ssh-askpass-fullscreen keyworded
 net-misc/unison gtk
@@ -428,7 +420,6 @@ dev-vcs/subversion java
 media-libs/libjpeg-turbo java
 net-dns/libidn java
 net-misc/tigervnc java
-net-print/cups java
 sys-devel/gettext java
 sys-libs/db java
 

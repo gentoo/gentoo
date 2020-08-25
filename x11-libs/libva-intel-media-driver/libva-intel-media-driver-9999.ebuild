@@ -25,7 +25,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND=">=media-libs/gmmlib-${PV}
-	>=x11-libs/libva-2.7.1
+	>=x11-libs/libva-2.8.0
 	>=x11-libs/libpciaccess-0.13.1-r1:=
 "
 RDEPEND="${DEPEND}"

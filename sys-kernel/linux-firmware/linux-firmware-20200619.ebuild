@@ -4,11 +4,20 @@
 EAPI=7
 inherit mount-boot savedconfig
 
+# In case this is a real snapshot, fill in commit below.
+# For normal, tagged releases, leave blank
+MY_COMMIT=
+
 if [[ ${PV} == 99999999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/${PN}.git"
 else
-	SRC_URI="https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-${PV}.tar.gz"
+	if [[ -n "${MY_COMMIT}" ]]; then
+		SRC_URI="https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/snapshot/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
+	else
+		SRC_URI="https://mirrors.edge.kernel.org/pub/linux/kernel/firmware/${P}.tar.xz"
+	fi
+
 	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 fi
 

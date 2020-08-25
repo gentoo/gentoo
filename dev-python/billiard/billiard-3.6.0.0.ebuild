@@ -29,14 +29,6 @@ DEPEND="
 # The usual req'd for tests
 DISTUTILS_IN_SOURCE_BUILD=1
 
-python_compile() {
-	if !  python_is_python3; then
-		local CFLAGS=${CFLAGS}
-		append-cflags -fno-strict-aliasing
-	fi
-	distutils-r1_python_compile
-}
-
 python_compile_all() {
 	use doc && esetup.py build_sphinx --builder="html" --source-dir=Doc/
 }

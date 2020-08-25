@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,6 +24,7 @@ PATCHES=(
 	"${FILESDIR}"/1.0-asneeded.patch
 	"${FILESDIR}"/${PN}-1.1-cmath-fix.patch
 	"${FILESDIR}"/${PN}-1.1-automake-1.13.patch
+	"${FILESDIR}"/${PN}-1.1-glibc-2.31.patch
 )
 
 S="${WORKDIR}/${PN}"

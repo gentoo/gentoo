@@ -3,9 +3,9 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
-DESCRIPTION="header-only library for creating parsers according to Parsing Expression Grammar"
+DESCRIPTION="Header-only library for creating parsers according to Parsing Expression Grammar"
 HOMEPAGE="https://github.com/taocpp/PEGTL"
 SRC_URI="https://github.com/taocpp/PEGTL/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -13,9 +13,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-RESTRICT="!test? ( test )"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
+RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/PEGTL-${PV}"

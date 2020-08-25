@@ -13,7 +13,7 @@ SRC_URI="http://darwinsource.opendarwin.org/tarballs/apsl/diskdev_cmds-${MY_PV}.
 		 mirror://gentoo/diskdev_cmds-${PV}.patch.bz2"
 LICENSE="APSL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ppc ppc64 x86"
 IUSE="libressl"
 DEPEND="
 	!libressl? ( dev-libs/openssl:0= )
@@ -27,6 +27,7 @@ PATCHES=(
 	"${WORKDIR}"/diskdev_cmds-${PV}.patch
 	"${FILESDIR}"/${PN}-respect-cflags.patch
 	"${FILESDIR}"/${P}-AR.patch
+	"${FILESDIR}"/${P}-no-sysctl.patch
 )
 
 src_compile() {

@@ -1,0 +1,10 @@
+--- a/cbor/cbor.py	2020-07-19 13:24:39.497775767 -0700
++++ b/cbor/cbor.py	2020-07-19 13:24:39.497775767 -0700
+@@ -260,6 +260,8 @@
+     """
+     if data is None:
+         raise ValueError("got None for buffer to decode in loads")
++    elif data == b'':
++        raise ValueError("got zero length string loads")
+     fp = StringIO(data)
+     return _loads(fp)[0]

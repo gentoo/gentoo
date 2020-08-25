@@ -124,7 +124,7 @@ SRC_URI="https://gitlab.com/sane-project/backends/-/archive/${PV}/${MY_P}.tar.gz
 
 LICENSE="GPL-2 public-domain"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc ~x86 ~amd64-linux ~x86-linux"
 
 # For pixma: see https://gitlab.com/sane-project/backends/-/releases/1.0.28#build
 RDEPEND="
@@ -140,6 +140,11 @@ RDEPEND="
 		>=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}]
 	)
 	sane_backends_escl? (
+		|| (
+			net-dns/avahi[dbus]
+			net-dns/avahi[gtk]
+			net-dns/avahi[gtk2]
+		)
 		net-dns/avahi[${MULTILIB_USEDEP}]
 		net-misc/curl[${MULTILIB_USEDEP}]
 	)

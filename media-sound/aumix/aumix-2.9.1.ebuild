@@ -25,7 +25,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${P}-tinfo.patch" #578722
+	"${FILESDIR}"/${P}-tinfo.patch #578722
+	"${FILESDIR}"/${P}-fno-common.patch
 )
 
 src_prepare() {

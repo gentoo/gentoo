@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-08-08)
+# Ensure tools flag is enabled for @system set
+sys-apps/kmod tools
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-06-24)
 # Don't let people lose 'cc' or 'f77' by accident.
 sys-devel/gcc-config cc-wrappers
@@ -71,7 +75,6 @@ sys-libs/ncurses-compat tinfo
 # Security is not optional if available for the architecture/kernel.
 gnome-base/gnome-desktop seccomp
 app-misc/tracker-miners seccomp
->gnome-base/nautilus-3.29 seccomp
 net-libs/webkit-gtk seccomp
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-09-11)

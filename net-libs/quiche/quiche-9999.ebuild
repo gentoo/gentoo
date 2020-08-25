@@ -13,13 +13,13 @@ backtrace-0.3.37
 backtrace-sys-0.1.31
 bitflags-1.2.1
 bstr-0.2.12
-bumpalo-3.3.0
+bumpalo-3.4.0
 byteorder-1.3.4
 cast-0.2.3
-cc-1.0.53
+cc-1.0.58
 cfg-if-0.1.10
 clap-2.33.0
-cmake-0.1.43
+cmake-0.1.44
 criterion-0.3.1
 criterion-plot-0.4.1
 crossbeam-deque-0.7.3
@@ -35,13 +35,13 @@ hermit-abi-0.1.8
 idna-0.1.5
 iovec-0.1.4
 itertools-0.8.2
-itoa-0.4.5
-js-sys-0.3.39
+itoa-0.4.6
+js-sys-0.3.42
 kernel32-sys-0.2.2
 lazy_static-1.4.0
-libc-0.2.70
+libc-0.2.72
 libm-0.2.1
-log-0.4.8
+log-0.4.11
 matches-0.1.8
 maybe-uninit-2.0.0
 memchr-2.3.3
@@ -55,49 +55,50 @@ once_cell-1.4.0
 oorandom-11.1.0
 percent-encoding-1.0.1
 plotters-0.2.12
-proc-macro2-1.0.12
-qlog-0.2.0
-quote-1.0.5
+proc-macro2-1.0.18
+qlog-0.3.0
+quote-1.0.7
 rayon-1.3.0
 rayon-core-1.7.0
 regex-1.3.5
 regex-automata-0.1.9
 regex-syntax-0.6.17
-ring-0.16.13
+ring-0.16.15
 rustc_version-0.2.3
-ryu-1.0.4
+ryu-1.0.5
 same-file-1.0.6
 scopeguard-1.1.0
 semver-0.9.0
 semver-parser-0.7.0
-serde-1.0.110
-serde_derive-1.0.110
-serde_json-1.0.53
+serde-1.0.114
+serde_derive-1.0.114
+serde_json-1.0.56
 serde_with-1.4.0
 serde_with_macros-1.1.0
 slab-0.4.2
 smallvec-1.4.0
 spin-0.5.2
-syn-1.0.21
+syn-1.0.34
 textwrap-0.11.0
 tinytemplate-1.0.3
+tinyvec-0.3.3
 unicode-bidi-0.3.4
-unicode-normalization-0.1.12
+unicode-normalization-0.1.13
 unicode-width-0.1.7
 unicode-xid-0.1.0
-unicode-xid-0.2.0
+unicode-xid-0.2.1
 untrusted-0.7.1
 url-1.7.2
 walkdir-2.3.1
-wasm-bindgen-0.2.62
-wasm-bindgen-backend-0.2.62
-wasm-bindgen-macro-0.2.62
-wasm-bindgen-macro-support-0.2.62
-wasm-bindgen-shared-0.2.62
-wasm-bindgen-webidl-0.2.62
-web-sys-0.3.39
+wasm-bindgen-0.2.65
+wasm-bindgen-backend-0.2.65
+wasm-bindgen-macro-0.2.65
+wasm-bindgen-macro-support-0.2.65
+wasm-bindgen-shared-0.2.65
+wasm-bindgen-webidl-0.2.65
+web-sys-0.3.42
 winapi-0.2.8
-winapi-0.3.8
+winapi-0.3.9
 winapi-build-0.1.1
 winapi-i686-pc-windows-gnu-0.4.0
 winapi-util-0.1.3
@@ -136,8 +137,6 @@ DOCS=( CODEOWNERS  COPYING README.md )
 BDEPEND="
 	>=virtual/rust-1.39.0[${MULTILIB_USEDEP}]
 	dev-util/cmake
-	dev-lang/go
-	dev-lang/perl
 "
 DEPEND=""
 RDEPEND=""
@@ -184,4 +183,7 @@ multilib_src_install() {
 	doins target/release/quiche.pc
 	doheader -r include/*
 	dolib.so "target/$(rust_abi)/release/libquiche.so"
+	QA_FLAGS_IGNORED+=" usr/$(get_libdir)/libquiche.so" # rust libraries don't use LDFLAGS
+	QA_SONAME+=" usr/$(get_libdir)/libquiche.so" # https://github.com/cloudflare/quiche/issues/165
+
 }

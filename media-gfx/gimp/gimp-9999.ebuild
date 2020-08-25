@@ -36,11 +36,11 @@ COMMON_DEPEND="
 	dev-libs/libxml2
 	dev-libs/libxslt
 	>=gnome-base/librsvg-2.40.6:2
-	>=media-gfx/mypaint-brushes-1.3.0
-	>=media-libs/babl-0.1.78[introspection,lcms,vala]
+	>=media-gfx/mypaint-brushes-1.3.0:=
+	>=media-libs/babl-0.1.80[introspection,lcms,vala]
 	>=media-libs/fontconfig-2.12.4
 	>=media-libs/freetype-2.1.7
-	>=media-libs/gegl-0.4.24:0.4[cairo,introspection,lcms,vala]
+	>=media-libs/gegl-0.4.26:0.4[cairo,introspection,lcms,vala]
 	>=media-libs/gexiv2-0.10.6
 	>=media-libs/harfbuzz-0.9.19
 	>=media-libs/lcms-2.8:2
@@ -118,6 +118,10 @@ pkg_setup() {
 }
 
 src_prepare() {
+	if has_version "media-gfx/mypaint-brushes:2.0" ; then
+		sed -i -e 's/mypaint-brushes-1.0/mypaint-brushes-2.0/' configure.ac || die #737794
+	fi
+
 	sed -i -e 's/== "xquartz"/= "xquartz"/' configure.ac || die #494864
 	sed 's:-DGIMP_DISABLE_DEPRECATED:-DGIMP_protect_DISABLE_DEPRECATED:g' -i configure.ac || die #615144
 

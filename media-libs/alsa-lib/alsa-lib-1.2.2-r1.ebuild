@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit autotools multilib-minimal python-single-r1
 
 DESCRIPTION="Advanced Linux Sound Architecture Library"

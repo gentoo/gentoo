@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 inherit distutils-r1
 
 DESCRIPTION="Python filtering architecture for the Courier MTA"
-HOMEPAGE="https://bitbucket.org/gordonmessmer/courier-pythonfilter/src/default/"
+HOMEPAGE="https://pypi.org/project/courier-pythonfilter/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

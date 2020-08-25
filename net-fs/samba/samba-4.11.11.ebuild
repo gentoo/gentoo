@@ -15,7 +15,7 @@ SRC_PATH="stable"
 
 SRC_URI="mirror://samba/${SRC_PATH}/${MY_P}.tar.gz"
 [[ ${PV} = *_rc* ]] || \
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 
 DESCRIPTION="Samba Suite Version 4"
 HOMEPAGE="https://www.samba.org/"
@@ -144,6 +144,9 @@ WAF_BINARY="${S}/buildtools/bin/waf"
 SHAREDMODS=""
 
 pkg_setup() {
+	# Package fails to build with distcc
+	export DISTCC_DISABLE=1
+
 	python-single-r1_pkg_setup
 	if use cluster ; then
 		SHAREDMODS="idmap_rid,idmap_tdb2,idmap_ad"

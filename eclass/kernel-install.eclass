@@ -49,13 +49,17 @@ SRC_URI+="
 			https://dev.gentoo.org/~mgorny/dist/tinycorelinux-${TCL_VER}-amd64.qcow2
 		)
 		x86? (
-				https://dev.gentoo.org/~mgorny/dist/tinycorelinux-${TCL_VER}-x86.qcow2
+			https://dev.gentoo.org/~mgorny/dist/tinycorelinux-${TCL_VER}-x86.qcow2
 		)
 	)"
 
 SLOT="${PV}"
 IUSE="+initramfs test"
-RESTRICT+=" !test? ( test ) test? ( userpriv )"
+RESTRICT+="
+	!test? ( test )
+	test? ( userpriv )
+	arm? ( test )
+	arm64? ( test )"
 
 # install-DEPEND actually
 # note: we need installkernel with initramfs support!
@@ -228,9 +232,12 @@ kernel-install_test() {
 		"${T}/fs.qcow2" || die
 
 	cd "${T}" || die
+	local qemu_extra_args=
+	[[ ${qemu_arch} == x86_64 ]] && qemu_extra_args='-cpu max'
 	cat > run.sh <<-EOF || die
 		#!/bin/sh
 		exec qemu-system-${qemu_arch} \
+			${qemu_extra_args} \
 			-m 256M \
 			-display none \
 			-no-reboot \

@@ -18,6 +18,7 @@ else
 	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/heat/heat.conf.sample.ussuri -> heat.conf.sample-${PV}
 		https://tarballs.openstack.org/${PN}/openstack-${P}.tar.gz"
 	KEYWORDS="amd64 ~arm64 x86"
+	S="${WORKDIR}/openstack-${P}"
 fi
 
 LICENSE="Apache-2.0"

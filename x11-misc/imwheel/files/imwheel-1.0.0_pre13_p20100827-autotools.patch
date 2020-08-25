@@ -1,0 +1,32 @@
+--- a/configure.in
++++ b/configure.in
+@@ -15,6 +15,7 @@
+ AC_PROG_CC
+ AC_PROG_INSTALL
+ AC_PROG_RANLIB
++AM_PROG_AR
+ AC_PROG_MAKE_SET
+ dnl AC_PREFIX_PROGRAM(bin/imwheel)
+ AM_CONFIG_HEADER(config.h)
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -22,7 +22,7 @@
+ 		find $(distdir) -name CVS -exec rm -rvf '{}' ';' ; \
+ 	done
+ 
+-ETCDIR=/etc/X11/imwheel
++ETCDIR=$(DESTDIR)/etc/X11/imwheel
+ 
+ install-exec-hook:
+ if SUID
+@@ -31,8 +31,8 @@
+ 	chmod u+s $$progname
+ endif
+ 	$(mkinstalldirs) $(ETCDIR)
+-	-[ -f /etc/imwheelrc ] && mv /etc/imwheelrc $(ETCDIR)/imwheelrc || true
+-	-[ -f /etc/X11/imwheelrc ] && mv /etc/X11/imwheelrc $(ETCDIR)/imwheelrc || true
++	-[ -f $(DESTDIR)/etc/imwheelrc ] && mv $(DESTDIR)/etc/imwheelrc $(ETCDIR)/imwheelrc || true
++	-[ -f $(DESTDIR)/etc/X11/imwheelrc ] && mv $(DESTDIR)/etc/X11/imwheelrc $(ETCDIR)/imwheelrc || true
+ 	-[ -f $(ETCDIR)/imwheelrc ] && install -m 644 imwheelrc $(ETCDIR)/imwheelrc.new || install -m 644 imwheelrc $(ETCDIR)/imwheelrc
+ 
+ extras: $(EXTRA_PROGRAMS)

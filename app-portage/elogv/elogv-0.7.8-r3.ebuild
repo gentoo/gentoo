@@ -15,7 +15,7 @@ SRC_URI="https://github.com/gentoo/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 
 RDEPEND="sys-apps/portage[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
@@ -38,9 +38,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "Optional dependencies:"
-	elog "  dev-python/pyliblzma (for xz compressed elog files)"
-	elog
 	elog "In order to use this software, you need to activate"
 	elog "Portage's elog features.  Required is"
 	elog "		 PORTAGE_ELOG_SYSTEM=\"save\" "

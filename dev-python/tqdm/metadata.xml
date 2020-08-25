@@ -17,6 +17,7 @@
 		Instantly make your loops show a progress meter - just wrap 
 		any iterator with "tqdm(iterator)", and you're done!
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">tqdm</remote-id>
 		<remote-id type="github">tqdm/tqdm</remote-id>

@@ -12,6 +12,6 @@
 	</upstream>
 	<use>
 		<flag name="opencv">Build support for <pkg>media-libs/opencv</pkg></flag>
-		<flag name="plugins">Build plugins</flag>
+		<flag name="plugins">Build officially support plugins</flag>
 	</use>
 </pkgmetadata>

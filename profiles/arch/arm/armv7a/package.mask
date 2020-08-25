@@ -1,12 +1,15 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@cmpct.info> (2020-06-29)
+# Sam James <sam@gentoo.org> (2020-07-02)
 # Needs Rust, which is available here
-# Bug #677018
+-dev-util/cargo-c
+-dev-util/cbindgen
+-media-video/rav1e
 -net-news/newsboat
+-net-libs/quiche
 
-# Sam James <sam@cmpct.info> (2020-06-24)
+# Sam James <sam@gentoo.org> (2020-06-24)
 # Valgrind works on ARMv7
 -dev-util/valgrind
 

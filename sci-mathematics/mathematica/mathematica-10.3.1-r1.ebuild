@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit multilib versionator xdg
+inherit desktop multilib xdg
 
 DESCRIPTION="Wolfram Mathematica"
 SRC_URI="Mathematica_${PV}_LINUX.sh"
@@ -12,7 +12,7 @@ HOMEPAGE="https://www.wolfram.com/mathematica/"
 LICENSE="all-rights-reserved"
 KEYWORDS="-* ~amd64"
 SLOT="0"
-IUSE=""
+IUSE="+doc"
 
 RESTRICT="strip mirror bindist fetch"
 
@@ -26,8 +26,9 @@ RDEPEND="
 
 # we need this a few times
 MPN="Mathematica"
-MPV=$(get_version_component_range 1-2)
+MPV=$(ver_cut 1-2)
 M_BINARIES="MathKernel Mathematica MathematicaScript WolframKernel WolframScript math mathematica mcc wolfram"
+M_TARGET="opt/Wolfram/${MPN}/${MPV}"
 
 # we might as well list all files in all QA variables...
 QA_PREBUILT="opt/*"
@@ -35,11 +36,20 @@ QA_PREBUILT="opt/*"
 S=${WORKDIR}
 
 src_unpack() {
-	/bin/sh "${DISTDIR}/${A}" --nox11 --confirm --keep -- -auto "-targetdir=${S}/opt/Wolfram/${MPN}/${MPV}" "-execdir=${S}/opt/bin" || die
+	/bin/sh "${DISTDIR}/${A}" --nox11 --confirm -- -auto "-targetdir=${S}/${M_TARGET}" "-execdir=${S}/opt/bin" || die
 }
 
 src_install() {
 	local ARCH='-x86-64'
+
+	einfo 'Removing MacOS- and Windows-specific files'
+	find AddOns SystemFiles -type d -\( -name Windows -o -name Windows-x86-64 \
+		-o -name MacOSX -o -name MacOSX-x86-64 -\) -delete
+
+	if ! use doc; then
+		einfo "Removing documentation"
+		rm -r "${S}/${M_TARGET}/Documentation"
+	fi
 
 	# move all over
 	mv "${S}"/opt "${D}"/opt || die
@@ -51,7 +61,7 @@ src_install() {
 	for name in ${M_BINARIES} ; do
 		einfo "Generating wrapper for ${name}"
 		echo '#!/bin/sh' >> "${T}/${name}"
-		echo "LD_PRELOAD=/usr/$(get_libdir)/libfreetype.so.6:/$(get_libdir)/libz.so.1 /opt/Wolfram/${MPN}/${MPV}/Executables/${name} \$*" \
+		echo "LD_PRELOAD=/usr/$(get_libdir)/libfreetype.so.6:/$(get_libdir)/libz.so.1 /${M_TARGET}/Executables/${name} \$*" \
 			>> "${T}/${name}"
 		dobin "${T}/${name}"
 	done
@@ -61,17 +71,16 @@ src_install() {
 	done
 
 	# fix some embedded paths and install desktop files
-	insinto /usr/share/applications
-	for filename in $(find "${D}/opt/Wolfram/Mathematica/10.3/SystemFiles/Installation" -name "wolfram-mathematica.desktop") ; do
+	for filename in $(find "${D}/${M_TARGET}/SystemFiles/Installation" -name "wolfram-mathematica.desktop") ; do
 		echo Fixing "${filename}"
 		sed -e "s:${S}::g" -e 's:^\t\t::g' -i "${filename}"
 		echo "Categories=Physics;Science;Engineering;2DGraphics;Graphics;" >> "${filename}"
-		doins "${filename}"
+		domenu "${filename}"
 	done
 
 	# install mime types
 	insinto /usr/share/mime/application
-	for filename in $(find "${D}/opt/Wolfram/Mathematica/10.3/SystemFiles/Installation" -name "application-*.xml"); do
+	for filename in $(find "${D}/${M_TARGET}/SystemFiles/Installation" -name "application-*.xml"); do
 		basefilename=$(basename "${filename}")
 		mv "${filename}" "${T}/${basefilename#application-}"
 		doins "${T}/${basefilename#application-}"

@@ -11,7 +11,7 @@ SRC_URI="https://downloads.asterisk.org/pub/telephony/${PN}/releases/${P}.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 IUSE="ppp"
 PATCHES=(
 	"${FILESDIR}/dahdi-nondigium-blacklist.patch"
@@ -26,7 +26,11 @@ DEPEND="dev-libs/newt
 	sys-kernel/linux-headers
 	virtual/libusb:0
 	ppp? ( net-dialup/ppp )"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	dev-lang/perl:=
+	dev-perl/CGI"
+BDEPEND="dev-lang/perl
+	sys-apps/file"
 
 src_prepare() {
 	default

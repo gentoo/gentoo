@@ -42,7 +42,7 @@ DEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
-	media-libs/x264
+	media-libs/x264:=
 	media-video/ffmpeg:=[x264]
 	net-misc/curl
 	sys-apps/dbus
@@ -59,12 +59,7 @@ DEPEND="
 	imagemagick? ( media-gfx/imagemagick:= )
 	jack? ( virtual/jack )
 	luajit? ( dev-lang/luajit:2 )
-	nvenc? (
-		|| (
-			<media-video/ffmpeg-4[nvenc]
-			>=media-video/ffmpeg-4[video_cards_nvidia]
-		)
-	)
+	nvenc? ( >=media-video/ffmpeg-4[video_cards_nvidia] )
 	pulseaudio? ( media-sound/pulseaudio )
 	python? ( ${PYTHON_DEPS} )
 	speex? ( media-libs/speexdsp )

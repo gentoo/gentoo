@@ -1,0 +1,34 @@
+From fe9c973c5e92f24746dfa1be8796c14a2befec4f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 15 Jul 2020 07:54:53 +0200
+Subject: [PATCH] test_png: Use array.tobytes to fix py3.9 compatibility
+
+The deprecated array.tostring() method has been removed in Python 3.9.
+Use .tobytes() instead.
+---
+ code/test_png.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/test_png.py b/code/test_png.py
+index c858d18..447c314 100644
+--- a/code/test_png.py
++++ b/code/test_png.py
+@@ -448,13 +448,13 @@ class Test(unittest.TestCase):
+     def test_interlaced_array(self):
+         """Reading an interlaced PNG yields each row as an array."""
+         r = png.Reader(bytes=pngsuite.basi0g08)
+-        list(r.read()[2])[0].tostring
++        list(r.read()[2])[0].tobytes
+ 
+     def test_trns_array(self):
+         """A type 2 PNG with tRNS chunk yields each row
+         as an array (using asDirect)."""
+         r = png.Reader(bytes=pngsuite.tbrn2c08)
+-        list(r.asDirect()[2])[0].tostring
++        list(r.asDirect()[2])[0].tobytes
+ 
+     def test_flat(self):
+         """Test read_flat."""
+-- 
+2.27.0
+

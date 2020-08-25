@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -13,7 +13,7 @@ HOMEPAGE="http://forge.ocamlcore.org/projects/cryptokit/"
 SRC_URI="http://forge.ocamlcore.org/frs/download.php/1618/${P}.tar.gz"
 LICENSE="LGPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE="zlib"
 
 DEPEND="zlib? ( >=sys-libs/zlib-1.1 )

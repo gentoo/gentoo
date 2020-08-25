@@ -1,10 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 2002-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python2_7 )
+EAPI=7
+PYTHON_COMPAT=( python3_{6..9} )
 
-WANT_AUTOMAKE=1.14
 inherit autotools python-any-r1
 
 MY_P=xdelta3-${PV}
@@ -15,7 +14,7 @@ SRC_URI="https://github.com/jmacd/xdelta-gpl/releases/download/v${PV}/${MY_P}.ta
 
 LICENSE="GPL-2"
 SLOT="3"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
@@ -33,12 +32,13 @@ src_prepare() {
 	eapply_user
 
 	# huh
+	2to3 -w -n --no-diffs testing/*.py || die
 	sed -i -e '/python/s:2.6:2:' testing/xdelta3-regtest.py || die
 	sed -i -e '/python/s:2.7:2:' testing/xdelta3-test.py || die
 
 	# only build tests when required
 	sed -i -e '/xdelta3regtest/s:noinst_P:check_P:' Makefile.am || die
-	eautomake
+	eautoreconf
 }
 
 src_test() {

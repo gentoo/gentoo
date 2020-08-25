@@ -19,8 +19,8 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
-	sys-kernel/linux-headers
-	python? ( >=dev-lang/swig-2 )"
+	sys-kernel/linux-headers"
+BDEPEND="python? ( >=dev-lang/swig-2 )"
 
 src_prepare() {
 	default
@@ -44,12 +44,7 @@ src_configure() {
 	# set up python bindings build(s)
 	if use python ; then
 		setup_python_flags_configure() {
-			if python_is_python3; then
-				pythonconf=( --without-python --with-python3 )
-			else
-				pythonconf=( --with-python --without-python3 )
-				local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
-			fi
+			pythonconf=( --without-python --with-python3 )
 			run_in_build_dir econf "${pythonconf[@]}" "${myconf[@]}"
 		}
 

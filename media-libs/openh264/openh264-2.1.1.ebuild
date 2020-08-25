@@ -12,7 +12,7 @@ SRC_URI="https://github.com/cisco/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/mozilla/gmp-api/archive/Firefox${MOZVER}.tar.gz -> gmp-api-Firefox${MOZVER}.tar.gz"
 LICENSE="BSD"
 SLOT="0/6" # subslot = openh264 soname version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="cpu_flags_arm_neon cpu_flags_x86_avx2 +plugin utils"
 
 RESTRICT="bindist test"
@@ -27,6 +27,10 @@ PATCHES=( "${FILESDIR}/${PN}-2.1.0-pkgconfig-pathfix.patch" )
 
 src_prepare() {
 	default
+
+	sed -i -e 's/ | generate-version//g' Makefile || die
+	sed -e 's|$FULL_VERSION|""|g' codec/common/inc/version_gen.h.template > \
+		codec/common/inc/version_gen.h
 
 	multilib_copy_sources
 }

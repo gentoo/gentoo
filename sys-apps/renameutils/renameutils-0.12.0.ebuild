@@ -11,7 +11,7 @@ SRC_URI="https://savannah.nongnu.org/download/renameutils/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ~arm64 ppc x86"
 IUSE="nls"
 
 DEPEND="sys-libs/readline:="

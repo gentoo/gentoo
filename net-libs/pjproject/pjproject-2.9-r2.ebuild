@@ -8,7 +8,7 @@ inherit autotools flag-o-matic
 DESCRIPTION="Open source SIP, Media, and NAT Traversal Library"
 HOMEPAGE="https://www.pjsip.org/"
 SRC_URI="https://www.pjsip.org/release/${PV}/${P}.tar.bz2"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -78,7 +78,7 @@ src_configure() {
 
 	[ "${videnable}" = "--enable-video" ] && append-cflags -DPJMEDIA_HAS_VIDEO=1
 
-	econf \
+	LD="$(tc-getCC)" econf \
 		--enable-shared \
 		--with-external-srtp \
 		${videnable} \
@@ -101,8 +101,8 @@ src_configure() {
 }
 
 src_compile() {
-	emake dep
-	emake
+	emake dep LD="$(tc-getCC)"
+	emake LD="$(tc-getCC)"
 }
 
 src_install() {

@@ -17,7 +17,7 @@ case ${PV} in
 	;;
 *)
 	KEYWORDS="~amd64 ~x86"
-	CODENAME="Leia"
+	CODENAME="Matrix"
 	SRC_URI="https://github.com/kodi-pvr/pvr.vdr.vnsi/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/pvr.vdr.vnsi-${PV}-${CODENAME}"
 	;;

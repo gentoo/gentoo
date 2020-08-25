@@ -15,8 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-REPEND="dev-python/jsonschema[${PYTHON_USEDEP}]"
-BDEPEND="${REPEND}
+RDEPEND="dev-python/jsonschema[${PYTHON_USEDEP}]"
+BDEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_test() {

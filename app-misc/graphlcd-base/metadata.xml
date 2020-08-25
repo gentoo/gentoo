@@ -20,7 +20,6 @@
 	<use>
 		<flag name="fontconfig">Add support for <pkg>media-libs/fontconfig</pkg> font names.</flag>
 		<flag name="freetype">Add support for <pkg>media-libs/freetype</pkg>.</flag>
-		<flag name="g15">Add support for <pkg>app-misc/g15daemon</pkg>, used by the Logitech G15 keyboard.</flag>
 		<flag name="graphicsmagick">Add support for <pkg>media-gfx/graphicsmagick</pkg>.</flag>
 		<flag name="imagemagick">Add support for <pkg>media-gfx/imagemagick</pkg>.</flag>
 	</use>

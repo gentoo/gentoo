@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,13 +21,16 @@ IUSE=""
 RDEPEND="${ADA_DEPS}"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]
-	sys-libs/binutils-libs"
+	sys-libs/binutils-libs:="
 
 REQUIRED_USE="${ADA_REQUIRED_USE}"
 
 S="${WORKDIR}"/${MYP}
 
-PATCHES=( "${FILESDIR}"/${PN}-2018-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2018-gentoo.patch
+	"${FILESDIR}"/${P}-bfd.patch
+)
 
 src_prepare() {
 	default
@@ -37,7 +40,9 @@ src_prepare() {
 
 src_compile() {
 	gprbuild -v -Pgnatmem.gpr -j$(makeopts_jobs) \
-		-cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS}
+		-cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS} \
+		-largs ${LDFLAGS} \
+		|| die
 }
 
 src_install() {

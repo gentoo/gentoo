@@ -43,7 +43,7 @@ RDEPEND="
 	>=x11-libs/vte-0.40.2:2.91[introspection]
 	>=net-libs/webkit-gtk-2.12.0:4=[introspection]
 	>=dev-libs/libxml2-2.9.0
-	git? ( dev-libs/libgit2[ssh,threads]
+	git? ( dev-libs/libgit2:=[ssh,threads]
 		>=dev-libs/libgit2-glib-0.28.0.1[ssh]
 	)
 	dev-libs/libpcre:3
@@ -56,7 +56,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	clang? ( sys-devel/clang:= )
 	devhelp? ( >=dev-util/devhelp-3.25.1:= )
-	glade? ( >=dev-util/glade-3.22.0:3.10 )
+	glade? ( >=dev-util/glade-3.22.0:3.10= )
 	spell? ( >=app-text/gspell-1.8:0=
 		app-text/enchant:2 )
 	>=dev-util/sysprof-capture-3.33.1:3

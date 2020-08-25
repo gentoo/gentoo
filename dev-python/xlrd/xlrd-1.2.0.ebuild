@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python3_{6..9} )
 inherit distutils-r1
 
 DESCRIPTION="Library to extract data from Microsoft Excel spreadsheets"
-HOMEPAGE="http://www.python-excel.org/"
+HOMEPAGE="https://www.python-excel.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86 ~ppc-aix ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ~arm64 x86 ~ppc-aix ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 
 distutils_enable_tests unittest
 

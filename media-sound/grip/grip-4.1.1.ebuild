@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils flag-o-matic toolchain-funcs libtool
+inherit eutils flag-o-matic toolchain-funcs libtool xdg
 
 DESCRIPTION="GTK+ based Audio CD Player/Ripper"
 HOMEPAGE="https://sourceforge.net/projects/grip/"
@@ -17,6 +17,7 @@ IUSE="vorbis"
 # grip cannot convert ripped files to any format. So use them as
 # a sane default.
 RDEPEND="
+	!app-text/grip
 	dev-libs/glib:2
 	>=media-libs/id3lib-3.8.3
 	media-sound/cdparanoia

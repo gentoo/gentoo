@@ -1,6 +1,40 @@
-diff -ur cvoicecontrol-0.9alpha.orig/cvoicecontrol/cvoicecontrol.c cvoicecontrol-0.9alpha/cvoicecontrol/cvoicecontrol.c
---- cvoicecontrol-0.9alpha.orig/cvoicecontrol/cvoicecontrol.c	2002-09-05 19:09:06.000000000 +0300
-+++ cvoicecontrol-0.9alpha/cvoicecontrol/cvoicecontrol.c	2007-07-29 23:35:33.000000000 +0300
+--- a/cvoicecontrol/audio.c
++++ b/cvoicecontrol/audio.c
+@@ -32,6 +32,10 @@
+ 
+ int is_open = 0;
+ 
++int   fd_audio;
++char *dev_audio;
++signed short rec_level, stop_level, silence_level;
++
+ /********************************************************************************
+  * set name of audio device
+  ********************************************************************************/
+--- a/cvoicecontrol/audio.h
++++ b/cvoicecontrol/audio.h
+@@ -31,8 +31,8 @@
+ #define CONSECUTIVE_SPEECH_BLOCKS_THRESHOLD    3
+ #define CONSECUTIVE_NONSPEECH_BLOCKS_THRESHOLD 5
+ 
+-int   fd_audio;
+-char *dev_audio;
++extern int   fd_audio;
++extern char *dev_audio;
+ 
+ /********************************************************************************
+  * For now, microphone input level is used to start and stop recording
+@@ -43,7 +43,7 @@
+  * silence_level  average micro level of silence
+  ********************************************************************************/
+ 
+-signed short rec_level, stop_level, silence_level;
++extern signed short rec_level, stop_level, silence_level;
+ 
+ typedef struct
+ {
+--- a/cvoicecontrol/cvoicecontrol.c
++++ b/cvoicecontrol/cvoicecontrol.c
 @@ -38,6 +38,8 @@
  #include<sys/select.h>
  #endif
@@ -10,9 +44,62 @@ diff -ur cvoicecontrol-0.9alpha.orig/cvoicecontrol/cvoicecontrol.c cvoicecontrol
  #include "cvoicecontrol.h"
  
  #include "model.h"
-diff -ur cvoicecontrol-0.9alpha.orig/cvoicecontrol/microphone_config.c cvoicecontrol-0.9alpha/cvoicecontrol/microphone_config.c
---- cvoicecontrol-0.9alpha.orig/cvoicecontrol/microphone_config.c	2000-02-19 14:08:47.000000000 +0200
-+++ cvoicecontrol-0.9alpha/cvoicecontrol/microphone_config.c	2007-07-29 23:36:08.000000000 +0300
+@@ -53,6 +55,10 @@
+ #include "mixer.h"
+ #include "preprocess.h"
+ 
++int adjust_window_width;
++int sloppy_corner;
++float float_max;
++
+ Model *model; /***** speaker model */
+ 
+ Queue queue1; /***** thread-safe queue used to hand data from 'recording' to 'preprocessing' */
+@@ -341,7 +347,7 @@
+  * calculate euklidian distance of two feature vectors
+  ********************************************************************************/
+ 
+-inline float euklid_distance(float *a, float *b)
++float euklid_distance(float *a, float *b)
+ {
+   float result = 0; /***** resulting distance */
+   int i;
+--- a/cvoicecontrol/cvoicecontrol.h
++++ b/cvoicecontrol/cvoicecontrol.h
+@@ -66,7 +66,7 @@
+  *
+  *       Legend:  w = adjust_window_width
+  */
+-int adjust_window_width;
++extern int adjust_window_width;
+ 
+ /*
+  * strictly speaking, time-alignment in the DTW matrix starts
+@@ -87,19 +87,19 @@
+  *
+  *    Legend: x = distance value,  o = (infinity)
+  */
+-int sloppy_corner;
++extern int sloppy_corner;
+ 
+ /*****
+   time alignment scores must stay below this value
+   otherwise the according samples are ignored in
+   the further evaluation process
+   *****/
+-float score_threshold;
++extern float score_threshold;
+ 
+ /*****
+   a (very high) float value that is considered "infinity"
+   *****/
+-float float_max;
++extern float float_max;
+ 
+ /***** these macros are used in the DTW warping function
+   to calculate the maximum/minimum of two or three
+--- a/cvoicecontrol/microphone_config.c
++++ b/cvoicecontrol/microphone_config.c
 @@ -1099,8 +1099,6 @@
        free(command);
      }
@@ -22,9 +109,84 @@ diff -ur cvoicecontrol-0.9alpha.orig/cvoicecontrol/microphone_config.c cvoicecon
    }
    else /***** couldn't retrieve home directory -> store results in /tmp/ */
    {
-diff -ur cvoicecontrol-0.9alpha.orig/cvoicecontrol/semaphore.c cvoicecontrol-0.9alpha/cvoicecontrol/semaphore.c
---- cvoicecontrol-0.9alpha.orig/cvoicecontrol/semaphore.c	2000-02-12 18:05:24.000000000 +0200
-+++ cvoicecontrol-0.9alpha/cvoicecontrol/semaphore.c	2007-07-29 23:34:38.000000000 +0300
+--- a/cvoicecontrol/mixer.c
++++ b/cvoicecontrol/mixer.c
+@@ -30,6 +30,9 @@
+ 
+ char *dev_mixer = NULL;
+ 
++int mic_level;
++int igain_level;
++
+ /********************************************************************************
+  * set mixer device name
+  ********************************************************************************/
+--- a/cvoicecontrol/mixer.h
++++ b/cvoicecontrol/mixer.h
+@@ -37,7 +37,7 @@
+ #define MIXER_ERR -1
+ #define MIXER_OK  1
+ 
+-int mic_level;
+-int igain_level;
++extern int mic_level;
++extern int igain_level;
+ 
+ #endif
+--- a/cvoicecontrol/preprocess.c
++++ b/cvoicecontrol/preprocess.c
+@@ -23,6 +23,13 @@
+ 
+ int i,j; /***** counter variables */
+ 
++int   filter_banks[17];
++float power_spec[POWER_SPEC_SIZE];
++float hamming_window[HAMMING_SIZE];
++int   do_mean_sub;
++float channel_mean[FEAT_VEC_SIZE];
++float score_threshold;
++
+ /********************************************************************************
+  * initialize preprocessing s tuff
+  ********************************************************************************/
+--- a/cvoicecontrol/preprocess.h
++++ b/cvoicecontrol/preprocess.h
+@@ -51,12 +51,12 @@
+ /*****
+   used for reduction of short-time spectrum to mel scale coefficients
+   *****/
+-int   filter_banks[17];
++extern int   filter_banks[17];
+ 
+ /*****
+   contains the power spectrum
+   *****/
+-float power_spec[POWER_SPEC_SIZE];
++extern float power_spec[POWER_SPEC_SIZE];
+ 
+ /********************************************************************************
+  * Hamming window width = 16ms ! (256 Frames)
+@@ -68,15 +68,15 @@
+  * to reduce the number of artefacts in the power spectrum
+  ********************************************************************************/
+ 
+-float hamming_window[HAMMING_SIZE];
++extern float hamming_window[HAMMING_SIZE];
+ 
+ /*****
+   The characteristics of the recording channel
+   This is substracted from each feature vector to reduce
+   channel effects
+   *****/
+-int   do_mean_sub;
+-float channel_mean[FEAT_VEC_SIZE];
++extern int   do_mean_sub;
++extern float channel_mean[FEAT_VEC_SIZE];
+ 
+ 
+ int  initPreprocess();
+--- a/cvoicecontrol/semaphore.c
++++ b/cvoicecontrol/semaphore.c
 @@ -26,6 +26,7 @@
  ****************************************************************************/
  

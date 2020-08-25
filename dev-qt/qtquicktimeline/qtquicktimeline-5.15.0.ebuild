@@ -7,7 +7,7 @@ inherit qt5-build
 DESCRIPTION="Qt module for keyframe-based timeline construction"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
 DEPEND="

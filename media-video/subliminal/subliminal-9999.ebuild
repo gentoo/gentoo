@@ -3,13 +3,11 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE='xml(+)'
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
-
-SRC_URI=""
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
@@ -25,9 +23,14 @@ SRC_URI+=" test? ( mirror://sourceforge/matroska/test_files/matroska_test_w1_1.z
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
+BDEPEND="
+	test? (
+		app-arch/unzip
+		dev-python/sympy[${PYTHON_USEDEP}]
+		>=dev-python/vcrpy-1.6.1[${PYTHON_USEDEP}]
+	)
+"
 RDEPEND="
 	>=dev-python/appdirs-1.3[${PYTHON_USEDEP}]
 	>=dev-python/babelfish-0.5.2[${PYTHON_USEDEP}]
@@ -44,13 +47,6 @@ RDEPEND="
 	>=dev-python/requests-2.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-1.0.0[${PYTHON_USEDEP}]
-"
-BDEPEND="
-	test? (
-		app-arch/unzip
-		dev-python/sympy[${PYTHON_USEDEP}]
-		>=dev-python/vcrpy-1.6.1[${PYTHON_USEDEP}]
-	)
 "
 
 PATCHES=(

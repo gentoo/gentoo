@@ -79,7 +79,6 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.0-docs.patch
-	"${FILESDIR}"/${PN}-2.2.0-lilv_include_fix.patch
 	"${FILESDIR}"/${PN}-2.2.3-qt-5.14.patch
 	"${FILESDIR}"/${PN}-2.2.4-metadata.patch
 )

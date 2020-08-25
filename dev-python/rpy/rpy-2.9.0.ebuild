@@ -38,10 +38,6 @@ PDEPEND="dev-python/ipython[${PYTHON_USEDEP}]"
 S="${WORKDIR}/${MY_P}"
 
 python_compile() {
-	if ! python_is_python3; then
-		local CFLAGS=${CFLAGS}
-		append-cflags -fno-strict-aliasing
-	fi
 	distutils-r1_python_compile
 }
 

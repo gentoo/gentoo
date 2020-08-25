@@ -44,7 +44,7 @@ SRC_URI="${SRC_URI}
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 if [[ ${PV} != 9999* ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 IUSE="+client lzma multitarget nls +python +server source-highlight test vanilla xml xxhash"
 REQUIRED_USE="
@@ -91,6 +91,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.3.1-verbose-build.patch
 	"${FILESDIR}"/${PN}-9.1-ia64.patch
+	"${FILESDIR}"/${P}-sim-ppc-fno-common.patch
 )
 
 GDB_BUILD_DIR="${WORKDIR}"/${P}-build

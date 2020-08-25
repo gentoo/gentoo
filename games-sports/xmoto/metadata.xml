@@ -8,4 +8,7 @@
   <use>
     <flag name="double-precision">more precise calculations at the expense of speed</flag>
   </use>
+  <upstream>
+    <remote-id type="github">xmoto/xmoto</remote-id>
+  </upstream>
 </pkgmetadata>

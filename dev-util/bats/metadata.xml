@@ -2,15 +2,15 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>nelo@wallus.de</email>
-		<name>Nelo-Thara Wallus</name>
+		<email>henning@hennsch.de</email>
+		<name>Henning Schild</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>polynomial-c@gentoo.org</email>
-		<name>Lars Wendler</name>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">sstephenson/bats</remote-id>
+		<remote-id type="github">bats-core/bats-core</remote-id>
 	</upstream>
 	<longdescription lang="en">
 		Bats is a TAP-compliant testing framework for Bash. It provides a simple

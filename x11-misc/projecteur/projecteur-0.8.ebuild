@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jahnf/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
@@ -33,6 +33,15 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 BDEPEND="virtual/pkgconfig"
+
+src_prepare() {
+	default
+
+	cmake_src_prepare
+
+	# Don't treat all warnings as errors
+	sed -e '/add_compile_options/d' -i CMakeLists.txt || die
+}
 
 pkg_postinst() {
 	udev_reload

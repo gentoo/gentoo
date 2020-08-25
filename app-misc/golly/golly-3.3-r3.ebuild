@@ -4,7 +4,7 @@
 EAPI=7
 
 WX_GTK_VER=3.0-gtk3
-PYTHON_COMPAT=( python{2_7,3_{7,8,9}} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit autotools desktop python-single-r1 wxwidgets xdg-utils
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="tiff"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

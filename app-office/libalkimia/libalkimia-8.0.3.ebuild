@@ -7,11 +7,12 @@ ECM_TEST="forceoptional"
 KDE_ORG_NAME="alkimia"
 KFMIN=5.60.0
 QTMIN=5.12.3
+VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${KDE_ORG_NAME}/${PV}/${KDE_ORG_NAME}-${PV}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Library with common classes and functionality used by KDE finance applications"
@@ -65,4 +66,12 @@ src_configure() {
 		-DBUILD_APPLETS=$(usex plasma)
 	)
 	ecm_src_configure
+}
+
+src_test() {
+	# Depends on BUILD_WITH_WEBKIT, bug 736128
+	local myctestargs=(
+		-E "(alkonlinequotestest)"
+	)
+	ecm_src_test
 }

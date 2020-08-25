@@ -42,6 +42,7 @@ multilib_src_configure() {
 		--disable-asan
 		--disable-cfi
 		--disable-ubsan
+		--disable-static
 		$(use_enable man)
 	)
 
@@ -66,5 +67,5 @@ multilib_src_configure() {
 multilib_src_install() {
 	default
 
-	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
+	find "${ED}" -type f -name "*.la" -delete || die
 }

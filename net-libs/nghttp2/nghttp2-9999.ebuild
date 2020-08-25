@@ -43,8 +43,8 @@ RDEPEND="
 	)
 	xml? ( >=dev-libs/libxml2-2.7.7:2[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
 	test? ( >=dev-util/cunit-2.1[${MULTILIB_USEDEP}] )"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default

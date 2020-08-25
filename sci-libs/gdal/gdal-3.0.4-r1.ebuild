@@ -4,7 +4,7 @@
 EAPI=7
 
 GENTOO_DEPEND_ON_PERL="no"
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 DISTUTILS_OPTIONAL=1
 inherit autotools bash-completion-r1 perl-module distutils-r1 flag-o-matic java-pkg-opt-2 toolchain-funcs
 
@@ -89,6 +89,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.3.0-curl.patch" # bug 659840
 	"${FILESDIR}/${PN}-3.0.2-complete.patch"
 	"${FILESDIR}/${PN}-3.0.2-datadir.patch"
+	"${FILESDIR}/${P}-poppler-20.08.patch" # bug 735828
 )
 
 src_prepare() {

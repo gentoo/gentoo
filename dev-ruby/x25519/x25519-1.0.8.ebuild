@@ -19,7 +19,7 @@ SRC_URI="https://github.com/crypto-rb/x25519/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="BSD"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64"
+KEYWORDS="amd64 ~arm ppc ppc64 x86"
 IUSE=""
 
 all_ruby_prepare() {
@@ -30,6 +30,7 @@ all_ruby_prepare() {
 	# The precomputed implementation only works on amd64
 	if ! use amd64 ; then
 		sed -i -e '/\(x25519_precomputed\|X25519::Provider::Precomputed\)/ s:^:#:' lib/x25519.rb || die
+		rm -f spec/x25519/provider/precomputed_spec.rb || die
 	fi
 }
 

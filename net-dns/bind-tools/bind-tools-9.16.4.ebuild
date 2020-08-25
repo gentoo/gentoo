@@ -3,9 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
-
-inherit autotools flag-o-matic python-any-r1 toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 MY_PN=${PN//-tools}
 MY_PV=${PV/_p/-P}
@@ -14,11 +12,12 @@ MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="bind tools: dig, nslookup, host, nsupdate, dnssec-keygen"
 HOMEPAGE="https://www.isc.org/software/bind"
-SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${MY_P}.tar.xz"
+SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${MY_P}.tar.xz
+	https://dev.gentoo.org/~chutzpah/dist/misc/${P}-manpages.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="+caps doc gssapi idn ipv6 libedit libressl readline xml"
 # no PKCS11 currently as it requires OpenSSL to be patched, also see bug 409687
 
@@ -40,19 +39,13 @@ RDEPEND="${COMMON_DEPEND}"
 
 # sphinx required for man-page and html creation
 BDEPEND="${PYTHON_DEPS}
-	$(python_gen_any_dep '
-		dev-python/sphinx[${PYTHON_USEDEP}]
-	')
+	doc? ( dev-python/sphinx )
 	virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 
 # bug 479092, requires networking
 RESTRICT="test"
-
-python_check_deps() {
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
-}
 
 src_prepare() {
 	default

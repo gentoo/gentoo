@@ -15,6 +15,7 @@ IUSE="static-libs +tools"
 RDEPEND="
 	dev-libs/glib:2
 	media-gfx/imagemagick:0=
+	tools? ( >=media-libs/freetype-2.0.0 )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"

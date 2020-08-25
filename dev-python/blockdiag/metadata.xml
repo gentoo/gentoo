@@ -11,7 +11,7 @@
 			<name>Takeshi Komiya</name>
 		</maintainer>
 		<remote-id type="pypi">blockdiag</remote-id>
-		<remote-id type="bitbucket">blockdiag/blockdiag</remote-id>
+		<remote-id type="github">blockdiag/blockdiag</remote-id>
 	</upstream>
 	<longdescription>blockdiag generate block-diagram image file from spec-text
 	file.  Additional functionality is available with dev-python/reportlab

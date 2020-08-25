@@ -48,12 +48,12 @@ src_configure() {
 }
 
 src_install() {
-	dobin ${BUILD_DIR}/bin/ispc
+	dobin "${BUILD_DIR}"/bin/ispc
 	dodoc README.md
 
 	if use examples; then
 		insinto "/usr/share/doc/${PF}/examples"
 		docompress -x "/usr/share/doc/${PF}/examples"
-		doins -r ${BUILD_DIR}/examples/*
+		doins -r "${BUILD_DIR}"/examples/*
 	fi
 }

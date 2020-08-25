@@ -18,7 +18,7 @@ SRC_URI="https://github.com/pypa/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 #KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-KEYWORDS="~alpha ~amd64 arm ~arm64 hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
@@ -26,14 +26,16 @@ RESTRICT="!test? ( test )"
 RDEPEND=">=dev-python/setuptools-19.6.2[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}
 	test? (
-		>=dev-python/pip-19.3.1-r1[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/pypiserver[${PYTHON_USEDEP}]
-		dev-python/pytest-localserver[${PYTHON_USEDEP}]
-		dev-python/pytest-timeout[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/six[${PYTHON_USEDEP}]
-		dev-python/wheel[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/pip-19.3.1-r1[${PYTHON_USEDEP}]
+			dev-python/mock[${PYTHON_USEDEP}]
+			dev-python/pypiserver[${PYTHON_USEDEP}]
+			dev-python/pytest-localserver[${PYTHON_USEDEP}]
+			dev-python/pytest-timeout[${PYTHON_USEDEP}]
+			dev-python/pytest[${PYTHON_USEDEP}]
+			dev-python/six[${PYTHON_USEDEP}]
+			dev-python/wheel[${PYTHON_USEDEP}]
+		' -3)
 	)"
 
 DOCS=( docs/index.rst docs/changes.rst )
@@ -53,6 +55,11 @@ distutils_enable_sphinx docs \
 	dev-python/towncrier
 
 python_test() {
+	if ! python_is_python3; then
+		ewarn "Tests are skipped on py2, please test externally"
+		return
+	fi
+
 	cp "${S}"/LICENSE.txt "${BUILD_DIR}"/lib || \
 		die "Could not copy LICENSE.txt with ${EPYTHON}"
 

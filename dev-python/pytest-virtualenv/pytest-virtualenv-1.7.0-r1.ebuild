@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
 
 RDEPEND="
 	dev-python/pytest-fixture-config[${PYTHON_USEDEP}]
@@ -23,6 +23,7 @@ RDEPEND="
 	dev-python/virtualenv[${PYTHON_USEDEP}]
 "
 BDEPEND="
+	dev-python/setuptools-git[${PYTHON_USEDEP}]
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 	)

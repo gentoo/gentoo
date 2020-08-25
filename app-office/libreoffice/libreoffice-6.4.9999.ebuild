@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE="threads(+),xml"
 
 MY_PV="${PV/_alpha/.alpha}"
@@ -268,6 +268,10 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.4-system-pyuno.patch"
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
+
+	# git master
+	"${FILESDIR}/${PN}-6.4.3.2-boost-1.73.patch" # bug 721806
+	"${FILESDIR}/${PN}-6.4.6.2-llvm-10.patch" # bug 713574
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
@@ -547,6 +551,10 @@ src_install() {
 		dodir /etc/env.d
 		echo "CONFIG_PROTECT=/usr/$(get_libdir)/${PN}/program/sofficerc" > "${ED}"/etc/env.d/99${PN} || die
 	fi
+
+	# bug 703474
+	insinto /usr/include
+	doins -r include/LibreOfficeKit
 }
 
 pkg_postinst() {

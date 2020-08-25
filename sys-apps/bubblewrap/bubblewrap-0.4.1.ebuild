@@ -19,7 +19,8 @@ RDEPEND="
 	sys-libs/libcap
 	selinux? ( >=sys-libs/libselinux-2.1.9 )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	app-text/docbook-xml-dtd:4.3
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt

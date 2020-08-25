@@ -102,7 +102,7 @@ CDEPEND="
 	)
 	vc? ( dev-libs/vc:= )
 	xml? ( dev-libs/libxml2:2= )
-	xrootd? ( net-libs/xrootd:0= )
+	xrootd? ( <net-libs/xrootd-5:0= )
 "
 
 DEPEND="${CDEPEND}

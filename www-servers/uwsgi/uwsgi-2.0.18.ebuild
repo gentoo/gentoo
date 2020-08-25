@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
 RUBY_OPTIONAL="yes"
@@ -267,7 +267,7 @@ python_install_symlinks() {
 src_compile() {
 	mkdir -p "${T}/plugins" || die
 
-	python uwsgiconfig.py --build gentoo || die "building uwsgi failed"
+	CPUCOUNT=1 python uwsgiconfig.py --build gentoo || die "building uwsgi failed"
 
 	if use go ; then
 		python uwsgiconfig.py --plugin plugins/gccgo gentoo || die "building plugin for go failed"

@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit gnome2-utils multilib python-single-r1 qmake-utils xdg-utils
+inherit python-single-r1 qmake-utils xdg-utils
 
 DESCRIPTION="A general purpose tile map editor"
 HOMEPAGE="https://www.mapeditor.org/"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/bjorn/tiled/archive/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD BSD-2 GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="examples python"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

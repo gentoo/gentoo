@@ -1,0 +1,18 @@
+diff -Naur libspectrum-1.4.4/configure.ac libspectrum-1.4.4-patched/configure.ac
+--- libspectrum-1.4.4/configure.ac	2018-07-01 02:07:44.000000000 +0200
++++ libspectrum-1.4.4-patched/configure.ac	2020-07-28 16:38:22.636459194 +0200
+@@ -113,14 +113,6 @@
+ dnl Check for functions
+ AC_CHECK_FUNCS(_snprintf _stricmp _strnicmp snprintf strcasecmp strncasecmp)
+ 
+-dnl Allow the user to say that various libraries are in one place
+-AC_ARG_WITH(local-prefix,
+-[  --with-local-prefix=PFX local libraries installed in PFX (optional)],
+-CPPFLAGS="$CPPFLAGS -I$withval/include"; LDFLAGS="$LDFLAGS -L$withval/lib",
+-if test "$prefix" != "NONE"; then
+-  CPPFLAGS="$CPPFLAGS -I$prefix/include"; LDFLAGS="$LDFLAGS -L$prefix/lib"
+-fi)
+-
+ dnl Check whether to use zlib (the UNIX version is called z, Win32 zdll)
+ AC_MSG_CHECKING(whether to use zlib)
+ AC_ARG_WITH(zlib,

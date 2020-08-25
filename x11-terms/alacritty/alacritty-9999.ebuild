@@ -3,10 +3,12 @@
 
 EAPI=7
 
-CRATES=""
+CRATES="
+"
 
 MY_PV="${PV//_rc/-rc}"
-PYTHON_COMPAT=( python3_{7,8} ) # https://bugs.gentoo.org/725962
+# https://bugs.gentoo.org/725962
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit bash-completion-r1 cargo desktop python-any-r1
 
@@ -15,11 +17,11 @@ HOMEPAGE="https://github.com/alacritty/alacritty"
 
 if [ ${PV} == "9999" ] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/jwilm/alacritty"
+	EGIT_REPO_URI="https://github.com/alacritty/alacritty"
 else
 	SRC_URI="https://github.com/alacritty/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
-	KEYWORDS="~amd64 ~ppc64"
+	KEYWORDS="~amd64 ~arm64 ~ppc64"
 fi
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions Boost-1.0 BSD BSD-2 CC0-1.0 FTL ISC MIT MPL-2.0 Unlicense WTFPL-2 ZLIB"
@@ -29,7 +31,6 @@ IUSE="wayland +X"
 REQUIRED_USE="|| ( wayland X )"
 
 DEPEND="${PYTHON_DEPS}"
-BDEPEND="dev-util/cmake"
 
 COMMON_DEPEND="
 	media-libs/fontconfig:=
@@ -49,7 +50,7 @@ RDEPEND="${COMMON_DEPEND}
 	)
 "
 
-DOCS=( CHANGELOG.md docs/ansicode.txt INSTALL.md README.md alacritty.yml )
+BDEPEND="dev-util/cmake"
 
 QA_FLAGS_IGNORED="usr/bin/alacritty"
 
@@ -100,6 +101,11 @@ src_install() {
 	insinto /usr/share/alacritty/scripts
 	doins -r scripts/*
 
+	local DOCS=(
+		alacritty.yml
+		CHANGELOG.md INSTALL.md README.md
+		docs/{ansicode.txt,escape_support.md}
+	)
 	einstalldocs
 }
 

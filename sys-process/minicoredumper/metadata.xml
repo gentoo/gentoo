@@ -10,4 +10,7 @@
 		It can produce much smaller core dump files by making use of sparse files, compression,
 		and allowing the user to configure what parts of the process memory image should be dumped. 
 	</longdescription>
+	<upstream>
+		<remote-id type="github">diamon/minicoredumper</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools toolchain-funcs
 
@@ -22,8 +22,8 @@ RDEPEND="
 	>=sci-libs/cxsparse-3
 	sci-mathematics/glpk
 	gmp? ( dev-libs/gmp:0 )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}"/${P}-unbundle.patch )
 
@@ -37,10 +37,18 @@ src_configure() {
 	econf \
 		$(use_enable gmp) \
 		$(use_enable debug) \
+		--disable-static \
 		--disable-tls \
 		--with-external-arpack \
 		--with-external-blas \
 		--with-external-lapack \
 		--with-external-f2c \
 		--with-external-glpk
+}
+
+src_install() {
+	default
+
+	# no static archives
+	find "${D}" -name '*.la' -delete || die
 }

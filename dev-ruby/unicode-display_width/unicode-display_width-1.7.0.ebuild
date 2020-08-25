@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/janlelis/unicode-display_width"
 SRC_URI="https://github.com/janlelis/unicode-display_width/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 SLOT="$(ver_cut 1)"
 IUSE=""
 

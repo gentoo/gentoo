@@ -24,7 +24,12 @@ SLOT="3"
 IUSE="branding debug imlib nls session startup-notification static-libs svg xdg"
 REQUIRED_USE="xdg? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="dev-libs/glib:2
+BDEPEND="
+	sys-devel/gettext
+	virtual/pkgconfig
+"
+RDEPEND="
+	dev-libs/glib:2
 	>=dev-libs/libxml2-2.0
 	>=media-libs/fontconfig-2
 	x11-libs/cairo
@@ -46,9 +51,8 @@ RDEPEND="dev-libs/glib:2
 		')
 	)
 "
-DEPEND="${RDEPEND}
-	sys-devel/gettext
-	virtual/pkgconfig
+DEPEND="
+	${RDEPEND}
 	x11-base/xorg-proto
 "
 

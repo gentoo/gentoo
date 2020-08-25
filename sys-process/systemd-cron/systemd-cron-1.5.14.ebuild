@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( pypy3 python3_{6,7} )
+PYTHON_COMPAT=( pypy3 python3_{6,7,8,9} )
 inherit python-single-r1 systemd
 
 DESCRIPTION="systemd units to create timers for cron directories and crontab"
@@ -17,6 +17,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND=">=sys-apps/systemd-217
 	sys-apps/debianutils
+	!sys-process/cronie[anacron]
 	!etc-crontab-systemd? ( !sys-process/dcron )
 	${PYTHON_DEPS}
 	sys-process/cronbase"

@@ -11,7 +11,7 @@ SRC_URI="https://www.molspaces.com/dl/progs/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+lzo webengine +webkit"
 
 REQUIRED_USE="?? ( webkit webengine )"
@@ -41,6 +41,11 @@ src_prepare() {
 src_configure() {
 	eqmake5 \
 		$(use !lzo && echo -config disable_lzo)
+}
+
+src_compile() {
+	# bug #709940
+	emake -j1
 }
 
 src_install() {

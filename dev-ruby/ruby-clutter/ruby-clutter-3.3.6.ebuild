@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,14 +15,14 @@ RUBY_S=ruby-gnome2-all-${PV}/clutter
 DEPEND+=" media-libs/clutter"
 RDEPEND+=" media-libs/clutter"
 
-ruby_add_bdepend ">=dev-ruby/ruby-atk-${PV}
-	>=dev-ruby/ruby-gdkpixbuf2-${PV}
-	>=dev-ruby/ruby-glib2-${PV}
-	>=dev-ruby/ruby-gobject-introspection-${PV}
-	>=dev-ruby/ruby-pango-${PV}"
-ruby_add_rdepend ">=dev-ruby/ruby-cairo-gobject-${PV}
-	>=dev-ruby/ruby-gobject-introspection-${PV}
-	>=dev-ruby/ruby-pango-${PV}"
+ruby_add_bdepend "~dev-ruby/ruby-atk-${PV}
+	~dev-ruby/ruby-gdkpixbuf2-${PV}
+	~dev-ruby/ruby-glib2-${PV}
+	~dev-ruby/ruby-gobject-introspection-${PV}
+	~dev-ruby/ruby-pango-${PV}"
+ruby_add_rdepend "~dev-ruby/ruby-cairo-gobject-${PV}
+	~dev-ruby/ruby-gobject-introspection-${PV}
+	~dev-ruby/ruby-pango-${PV}"
 
 all_ruby_prepare() {
 	# Avoid unneeded dependency on test-unit-notify.

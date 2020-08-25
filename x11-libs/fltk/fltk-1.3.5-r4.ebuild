@@ -66,6 +66,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.4-conf-tests.patch
 	"${FILESDIR}"/${PN}-1.3.5-cmake.patch
 	"${FILESDIR}"/${PN}-1.3.5-optim.patch
+	"${FILESDIR}"/${PN}-1.3.5-AR.patch
 )
 
 src_prepare() {

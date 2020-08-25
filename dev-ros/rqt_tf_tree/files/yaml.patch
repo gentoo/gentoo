@@ -1,0 +1,13 @@
+Index: rqt_tf_tree-0.6.1/src/rqt_tf_tree/dotcode_tf.py
+===================================================================
+--- rqt_tf_tree-0.6.1.orig/src/rqt_tf_tree/dotcode_tf.py
++++ rqt_tf_tree-0.6.1/src/rqt_tf_tree/dotcode_tf.py
+@@ -93,7 +93,7 @@ class RosTfTreeDotcodeGenerator(object):
+             self.listen_duration = 0
+ 
+             yaml_data = tf2_frame_srv().frame_yaml
+-            data = yaml_parser.load(yaml_data)
++            data = yaml_parser.safe_load(yaml_data)
+             self.graph = self.generate(data, timer.now().to_sec())
+             self.dotcode = self.dotcode_factory.create_dot(self.graph)
+ 

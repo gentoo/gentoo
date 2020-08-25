@@ -5,6 +5,9 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<use>
+		<flag name="build-example">Build the example executable</flag>
+	</use>
 	<longdescription>
 		Simple interface to optparse-applicative
 	</longdescription>

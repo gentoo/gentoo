@@ -1,9 +1,10 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
+
 if [[ ${PV} =~ [9]{4,} ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/libbpf/libbpf.git"
@@ -11,8 +12,9 @@ else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
+S="${WORKDIR}/${P}/src"
 
-HOMEPAGE="https://www.kernel.org/doc/html/latest/bpf/bpf_devel_QA.html"
+HOMEPAGE="https://github.com/libbpf/libbpf"
 DESCRIPTION="Stand-alone build of libbpf from the Linux kernel"
 
 LICENSE="GPL-2 LGPL-2.1 BSD-2"
@@ -25,13 +27,12 @@ DEPEND="${COMMON_DEPEND}
 	sys-kernel/linux-headers"
 RDEPEND="${COMMON_DEPEND}"
 
-S="${WORKDIR}/${P}/src"
-
 PATCHES=(
 	"${FILESDIR}/libbpf-9999-paths.patch"
 )
 
 src_compile() {
+	append-cflags -fPIC
 	emake \
 		BUILD_SHARED=y \
 		LIBSUBDIR="$(get_libdir)" \

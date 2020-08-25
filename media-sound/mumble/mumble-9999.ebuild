@@ -129,8 +129,7 @@ multilib_src_install() {
 src_install() {
 	multilib_foreach_abi multilib_src_install
 
-	newdoc README.Linux README
-	dodoc CHANGES
+	dodoc CHANGES README.md
 	dobin scripts/mumble-overlay
 
 	insinto /usr/share/services
@@ -151,7 +150,7 @@ pkg_preinst() {
 pkg_postinst() {
 	xdg_pkg_postinst
 	echo
-	elog "Visit http://mumble.sourceforge.net/ for futher configuration instructions."
+	elog "Visit https://wiki.mumble.info/ for futher configuration instructions."
 	elog "Run mumble-overlay to start the OpenGL overlay (after starting mumble)."
 	echo
 }

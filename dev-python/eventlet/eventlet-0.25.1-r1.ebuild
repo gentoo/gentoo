@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/e/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~s390 ~sparc x86"
 IUSE="doc examples test"
 
 RDEPEND="
@@ -56,13 +56,6 @@ python_prepare_all() {
 	sed -e "s:'tests', :'tests', 'tests.*', :" -i setup.py || die
 
 	distutils-r1_python_prepare_all
-}
-
-python_prepare() {
-	if ! python_is_python3; then
-		# this is for python3 only
-		rm -r eventlet/green/http || die
-	fi
 }
 
 python_install_all() {

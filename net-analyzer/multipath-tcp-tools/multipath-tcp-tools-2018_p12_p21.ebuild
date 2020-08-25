@@ -24,6 +24,7 @@ S=${WORKDIR}/${P//_p/-}/network-traffic-analysis-tools
 src_prepare() {
 	sed -i \
 		-e 's|/man/man1|/share&|g' \
+		-e 's|$(LDLIBS)|$(LDFLAGS) &|g' \
 		Makefile || die
 
 	default

@@ -1,0 +1,22 @@
+Simply error out if the module is not found. Don't confuse the user
+with messages about compiling the module, which won't work outside of
+the package's source tree.
+
+--- a/vterm.el
++++ b/vterm.el
+@@ -121,14 +121,7 @@
+           (message "Compilation of `emacs-libvterm' module succeeded")
+         (error "Compilation of `emacs-libvterm' module failed!")))))
+ 
+-;; If the vterm-module is not compiled yet, compile it
+-(unless (require 'vterm-module nil t)
+-  (if (or vterm-always-compile-module
+-            (y-or-n-p "Vterm needs `vterm-module' to work.  Compile it now? "))
+-      (progn
+-        (vterm-module-compile)
+-        (require 'vterm-module))
+-    (error "Vterm will not work until `vterm-module' is compiled!")))
++(require 'vterm-module)
+ 
+ ;; Silence compiler warnings by informing it of what functions are defined
+ (declare-function display-line-numbers-update-width "display-line-numbers")

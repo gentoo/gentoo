@@ -1,59 +1,50 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-SCM=""
-if [ "${PV#9999}" != "${PV}" ] ; then
-	SCM="git-r3"
-	EGIT_REPO_URI="https://github.com/danfis/libccd"
-fi
+inherit cmake
 
-inherit ${SCM} cmake-utils toolchain-funcs
-
-if [ "${PV#9999}" != "${PV}" ] ; then
-	KEYWORDS=""
-	SRC_URI=""
+if [ "${PV}" = "9999" ] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/danfis/libccd/${PN}.git"
 else
+	SRC_URI="https://github.com/danfis/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm"
-	SRC_URI="http://libccd.danfis.cz/files/${P}.tar.gz"
 fi
 
 DESCRIPTION="Library for collision detection between two convex shapes"
-HOMEPAGE="http://libccd.danfis.cz/"
+HOMEPAGE="http://libccd.danfis.cz/
+	https://github.com/danfis/libccd"
+
 LICENSE="BSD"
 SLOT="0"
-IUSE="double doc"
+IUSE="+double-precision doc +shared test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=""
+
 DEPEND="${RDEPEND}
-	doc? ( dev-python/sphinx )"
-DOCS=( README.md )
+	doc? ( dev-python/sphinx )
+"
 
 src_configure() {
 	local mycmakeargs=(
-		"-DCCD_DOUBLE=$(usex double TRUE FALSE)"
+		-DBUILD_DOCUMENTATION=$(usex doc ON OFF)
+		-DBUILD_SHARED_LIBS=$(usex shared ON OFF)
+		-DENABLE_DOUBLE_PRECISION=$(usex double-precision ON OFF)
 	)
-	cmake-utils_src_configure
-}
 
-src_compile() {
-	cmake-utils_src_compile
-	if use doc ; then
-		cd "${S}/doc"
-		emake SPHINXBUILD=sphinx-build html
-	fi
-}
-
-src_test() {
-	cd src/testsuites
-	tc-export CC
-	LDFLAGS="-L${BUILD_DIR} ${LDFLAGS}" \
-	LD_LIBRARY_PATH="${BUILD_DIR}:${LD_LIBRARY_PATH}" \
-		emake check
+	local CMAKE_BUILD_TYPE="Release"
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
-	use doc && dohtml -r "${S}/doc/_build/html/"*
+	cmake_src_install
+
+	if use doc; then
+		local DOCS=( "${BUILD_DIR}"/doc/man )
+		local HTML_DOCS=( "${BUILD_DIR}"/doc/html )
+		einstalldocs
+	fi
 }

@@ -18,7 +18,4 @@
   version 4.1 onwards a configuration script facilitates the
   installation of LHAPDF.
 </longdescription>
-<use>
-  <flag name="octave">Add bindings for <pkg>sci-mathematics/octave</pkg></flag> 
-</use>
 </pkgmetadata>

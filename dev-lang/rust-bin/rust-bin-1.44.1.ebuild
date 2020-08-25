@@ -13,8 +13,8 @@ SRC_URI="$(rust_all_arch_uris ${MY_P})"
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 SLOT="stable"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="clippy cpu_flags_x86_sse2 doc rustfmt"
+KEYWORDS="amd64 arm arm64 ppc64 x86"
+IUSE="clippy cpu_flags_x86_sse2 doc rls rustfmt"
 
 DEPEND=""
 RDEPEND=">=app-eselect/eselect-rust-20190311"
@@ -45,11 +45,13 @@ multilib_src_install() {
 
 	# start native abi install
 	pushd "${S}" >/dev/null || die
-	local std
+	local analysis std
+	analysis="$(grep 'analysis' ./components)"
 	std="$(grep 'std' ./components)"
 	local components="rustc,cargo,${std}"
 	use doc && components="${components},rust-docs"
 	use clippy && components="${components},clippy-preview"
+	use rls && components="${components},rls-preview,${analysis}"
 	use rustfmt && components="${components},rustfmt-preview"
 	./install.sh \
 		--components="${components}" \
@@ -98,6 +100,13 @@ multilib_src_install() {
 		dosym "../../opt/${P}/bin/${clippy_driver}" "/usr/bin/${clippy_driver}"
 		dosym "../../opt/${P}/bin/${cargo_clippy}" "/usr/bin/${cargo_clippy}"
 	fi
+	if use rls; then
+		local rls=rls-bin-${PV}
+		mv "${ED}/opt/${P}/bin/rls" "${ED}/opt/${P}/bin/${rls}" || die
+
+		dosym "${rls}" "/opt/${P}/bin/rls"
+		dosym "../../opt/${P}/bin/${rls}" "/usr/bin/${rls}"
+	fi
 	if use rustfmt; then
 		local rustfmt=rustfmt-bin-${PV}
 		local cargo_fmt=cargo-fmt-bin-${PV}
@@ -126,6 +135,9 @@ multilib_src_install() {
 	if use clippy; then
 		echo /usr/bin/clippy-driver >> "${T}/provider-${P}"
 		echo /usr/bin/cargo-clippy >> "${T}/provider-${P}"
+	fi
+	if use rls; then
+		echo /usr/bin/rls >> "${T}/provider-${P}"
 	fi
 	if use rustfmt; then
 		echo /usr/bin/rustfmt >> "${T}/provider-${P}"
