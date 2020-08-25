@@ -99,3 +99,34 @@
      tcl8.6.10plus {wrong # args: should be "::string::token::shell ?-indices? ?-partial? ?--? text"}
      tcl8.6not10   {wrong # args: should be "shell ?-indices? ?-partial? ?--? text"}
      tcl8.5minus   {wrong # args: should be "::string::token::shell ?-indices? ?-partial? ?--? text"}
+--- a/modules/pki/pki.test	2020-08-25 10:17:32.102420666 +0200
++++ b/modules/pki/pki.test	2020-08-25 10:18:02.445984702 +0200
+@@ -123,28 +123,6 @@
+     unset privkey cakey cacert ca_arr ca password csr
+ } -result [asset-get result/cert-b]
+ 
+-test rsa-verify-certv1-1.0 {verify_cert} -setup {
+-    set pubcert [asset-get test-v1.crt]
+-    set cacert [asset-get CA.crt]
+-    set pubcert [::pki::x509::parse_cert $pubcert]
+-    set cacert [::pki::x509::parse_cert $cacert]
+-} -body {
+-    ::pki::x509::verify_cert $pubcert [list $cacert]
+-} -cleanup {
+-    unset pubcert cacert
+-} -result {true}
+-
+-test rsa-verify-certv3-1.0 {verify_cert} -setup {
+-    set pubcert [asset-get test-v3.crt]
+-    set cacert [asset-get CA.crt]
+-    set pubcert [::pki::x509::parse_cert $pubcert]
+-    set cacert [::pki::x509::parse_cert $cacert]
+-} -body {
+-    ::pki::x509::verify_cert $pubcert [list $cacert]
+-} -cleanup {
+-    unset pubcert cacert
+-} -result {true}
+-
+ test rsa-verify-badcertv1-1.0 {verify_cert} -setup {
+     set pubcert [asset-get test-v1.crt]
+     set cacert [asset-get test-v1.crt]
