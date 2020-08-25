@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ inherit games
 
 DESCRIPTION="Duke Nukem 3D 1.3d shareware data"
 HOMEPAGE="http://www.3drealms.com/duke3d/"
-SRC_URI="ftp://ftp.3drealms.com/share/3dduke13.zip"
+SRC_URI="https://dnr.duke4.net/dl/024fbc5/3dduke13.zip"
 
 LICENSE="DUKE3D"
 SLOT="0"

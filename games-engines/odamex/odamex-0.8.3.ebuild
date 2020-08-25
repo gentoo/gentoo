@@ -8,7 +8,7 @@ inherit cmake desktop prefix wxwidgets xdg
 
 DESCRIPTION="Online multiplayer free software engine for DOOM"
 HOMEPAGE="https://odamex.net/"
-SRC_URI="mirror://sourceforge/${PN}/Odamex/${PV}/${PN}-src-${PV}.tar.bz2"
+SRC_URI="mirror://sourceforge/${PN}/Odamex/${PV}/${PN}-src-${PV}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="GPL-2+ MIT"
 SLOT="0"
@@ -34,10 +34,8 @@ BDEPEND="games-util/deutex"
 S="${WORKDIR}/${PN}-src-${PV}"
 
 PATCHES=(
-	"${FILESDIR}"/odamex-0.8.1-miniupnpc.patch
-	"${FILESDIR}"/odamex-0.8.1-SearchDir.patch
-	"${FILESDIR}"/odamex-0.8.2-Fix-odamex.wad-build-flow.patch
-	"${FILESDIR}"/odamex-0.8.2-Remove-duplicate-build-rule-for-odamex.wad.patch
+	"${FILESDIR}/${PN}-0.8.1-miniupnpc.patch"
+	"${FILESDIR}/${P}-Use-C-11-on-odalaunch-target-for-wx-3.0.4-and-up.patch"
 )
 
 src_prepare() {
@@ -51,6 +49,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_DISABLE_FIND_PACKAGE_X11=$(usex !X)
 		-DBUILD_CLIENT=$(usex client)
 		-DBUILD_MASTER=$(usex master)
 		-DBUILD_ODALAUNCH=$(usex odalaunch)

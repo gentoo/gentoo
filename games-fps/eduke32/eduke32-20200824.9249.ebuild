@@ -5,7 +5,7 @@ EAPI=7
 
 inherit desktop toolchain-funcs xdg-utils
 
-EGIT_COMMIT="16a4d06be"
+EGIT_COMMIT="175ae4cd5"
 MY_BUILD="$(ver_cut 2)"
 MY_DATE="$(ver_cut 1)"
 MY_PV_HRP="5.4"
@@ -74,14 +74,17 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
-	cdinstall? ( games-fps/duke3d-data )
-	demo? ( games-fps/duke3d-demodata )
 	timidity? ( media-sound/timidity++ )
 "
 
 BDEPEND="
 	app-arch/unzip
 	x86? ( dev-lang/nasm )
+"
+
+PDEPEND="
+	cdinstall? ( games-fps/duke3d-data )
+	demo? ( games-fps/duke3d-demodata )
 "
 
 PATCHES=(
