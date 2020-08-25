@@ -13,7 +13,7 @@ SRC_URI="https://github.com/romis2012/aiohttp-socks/archive/v${PV}.tar.gz -> ${P
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 # Tests require Internet access, also they started failing when run
 # via ebuild (but work fine externally)
 RESTRICT="test"
