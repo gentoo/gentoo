@@ -34,7 +34,7 @@ SLOT="0"
 
 IUSE="accessibility +aio alsa bzip2 capstone +caps +curl debug doc
 	+fdt glusterfs gnutls gtk infiniband iscsi io-uring
-	jemalloc +jpeg kernel_linux
+	jack jemalloc +jpeg kernel_linux
 	kernel_FreeBSD lzo multipath
 	ncurses nfs nls numa opengl +oss +pin-upstream-blobs
 	plugins +png pulseaudio python rbd sasl +seccomp sdl sdl-image selinux
@@ -67,7 +67,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	qemu_softmmu_targets_ppc? ( fdt )
 	qemu_softmmu_targets_riscv32? ( fdt )
 	qemu_softmmu_targets_riscv64? ( fdt )
-	static? ( static-user !alsa !gtk !opengl !pulseaudio !plugins !rbd !snappy )
+	static? ( static-user !alsa !gtk !jack !opengl !pulseaudio !plugins !rbd !snappy )
 	static-user? ( !plugins )
 	virtfs? ( caps xattr )
 	vte? ( gtk )
@@ -122,6 +122,7 @@ SOFTMMU_TOOLS_DEPEND="
 	)
 	iscsi? ( net-libs/libiscsi )
 	io-uring? ( sys-libs/liburing[static-libs(+)] )
+	jack? ( virtual/jack )
 	jemalloc? ( dev-libs/jemalloc )
 	jpeg? ( virtual/jpeg:0=[static-libs(+)] )
 	lzo? ( dev-libs/lzo:2[static-libs(+)] )
@@ -507,6 +508,7 @@ qemu_src_configure() {
 			# Note: backend order matters here: #716202
 			# We iterate from higher-level to lower level.
 			$(usex pulseaudio pa "")
+			$(usev jack)
 			$(usev sdl)
 			$(usev alsa)
 			$(usev oss)
