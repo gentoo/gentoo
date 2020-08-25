@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 JAVA_PKG_IUSE="source" # doc (needs APIviz)
 
@@ -15,8 +15,8 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-RDEPEND=">=virtual/jre-1.7"
-DEPEND=">=virtual/jdk-1.7"
+RDEPEND=">=virtual/jre-1.8"
+DEPEND="virtual/jdk:1.8"
 
 S="${WORKDIR}/${P}.Final/"
 
