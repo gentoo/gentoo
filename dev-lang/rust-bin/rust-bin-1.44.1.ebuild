@@ -45,13 +45,14 @@ multilib_src_install() {
 
 	# start native abi install
 	pushd "${S}" >/dev/null || die
-	local std
+	local analysis std
+	analysis="$(grep 'analysis' ./components)"
 	std="$(grep 'std' ./components)"
 	local components="rustc,cargo,${std}"
 	use doc && components="${components},rust-docs"
 	use clippy && components="${components},clippy-preview"
-	use rls && components="${components},rls-preview"
-	use rustfmt && components="${components},rustfmt-preview,rust-analysis"
+	use rls && components="${components},rls-preview,${analysis}"
+	use rustfmt && components="${components},rustfmt-preview"
 	./install.sh \
 		--components="${components}" \
 		--disable-verify \
