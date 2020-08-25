@@ -17353,7 +17353,7 @@ sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured f
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 16.0.0 2020.1.9999: A virtual network service for Openstack
 sys-cluster/nomad 0.12.3: A simple and flexible workload orchestrator
-sys-cluster/nova 21.0.0 2020.1.9999: Cloud computing fabric controller
+sys-cluster/nova 21.0.0-r1 2020.1.9999: Cloud computing fabric controller
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/openmpi 1.4.5 1.6.5-r1 1.7.5-r1 1.8.8 1.10.7 2.0.4 2.1.6 3.0.4 3.1.4 4.0.2 4.0.3 4.0.4: A high-performance message passing library (MPI)
