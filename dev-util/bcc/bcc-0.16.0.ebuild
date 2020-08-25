@@ -42,7 +42,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-
 PATCHES=(
 	"${FILESDIR}/bcc-0.9.0-no-luajit-automagic-dep.patch"
 	"${FILESDIR}/bcc-0.14.0-cmakelists.patch"
