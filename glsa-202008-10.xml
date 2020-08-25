@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202008-10">
+  <title>Chromium, Google Chrome: Heap buffer overflow</title>
+  <synopsis>
+    A vulnerablity has been found in Chromium and Google Chrome that could
+    allow a remote attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">chromium,google-chrome</product>
+  <announced>2020-08-25</announced>
+  <revised count="1">2020-08-25</revised>
+  <bug>737942</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">84.0.4147.135</unaffected>
+      <vulnerable range="lt">84.0.4147.135</vulnerable>
+    </package>
+    <package name="www-client/google-chrome" auto="yes" arch="*">
+      <unaffected range="ge">84.0.4147.135</unaffected>
+      <vulnerable range="lt">84.0.4147.135</vulnerable>
+    </package>
+  </affected>
+  <background>
+    
+    <p>Chromium is an open-source browser project that aims to build a safer,
+      faster, and more stable way for all users to experience the web.
+    </p>
+    
+    <p>Google Chrome is one fast, simple, and secure browser for all your
+      devices.
+    </p>
+  </background>
+  <description>
+    <p>A buffer overflow has been discovered in Chromium and Google Chrome’s
+      SwiftShader component.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to visit a specially crafted
+      website, could execute arbitrary code with the privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-84.0.4147.135"
+    </code>
+    
+    <p>All Google Chrome users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/google-chrome-84.0.4147.135"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6556">CVE-2020-6556</uri>
+    <uri link="https://chromereleases.googleblog.com/2020/08/stable-channel-update-for-desktop_18.html">
+      Upstream advisory
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-08-24T00:46:35Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-08-25T12:53:21Z">sam_c</metadata>
+</glsa>
