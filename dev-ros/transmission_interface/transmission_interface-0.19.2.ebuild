@@ -8,27 +8,26 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Tests for the controller manager"
+DESCRIPTION="Transmission Interface"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/controller_manager[${PYTHON_SINGLE_USEDEP}]
-	dev-ros/controller_interface
-	dev-ros/control_toolbox
-	dev-libs/boost:=
+	dev-ros/hardware_interface
+	dev-ros/pluginlib
+		dev-libs/tinyxml2:=
 	dev-libs/console_bridge:=
-	dev-cpp/gtest
+	dev-ros/resource_retriever
+	dev-ros/roscpp
+	dev-libs/tinyxml
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
 	test? (
-		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
-		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
-		dev-ros/rosservice[${PYTHON_SINGLE_USEDEP}]
-	)"
-# needed by combined_robot_hw_tests
-mycatkincmakeargs=( "-DCATKIN_ENABLE_TESTING=ON" )
+		dev-cpp/gtest
+	)
+"
 
 src_test() {
 	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"

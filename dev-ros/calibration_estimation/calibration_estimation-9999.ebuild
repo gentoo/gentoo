@@ -37,3 +37,8 @@ src_prepare() {
 	sed -e 's/yaml.load/yaml.safe_load/g' -i src/*/*.py -i test/*.py || die
 	2to3 -w src/*/*.py src/*/*/*.py test/*.py || die
 }
+
+src_test() {
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	ros-catkin_src_test
+}
