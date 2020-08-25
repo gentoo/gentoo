@@ -12,7 +12,7 @@ SRC_URI="https://www.opensmtpd.org/archives/${P/_}.tar.gz"
 LICENSE="ISC BSD BSD-1 BSD-2 BSD-4"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="libressl pam +mta"
+IUSE="libressl pam +mta berkdb"
 
 DEPEND="
 	acct-user/smtpd
@@ -22,7 +22,7 @@ DEPEND="
 	elibc_musl? ( sys-libs/fts-standalone )
 	sys-libs/zlib
 	pam? ( sys-libs/pam )
-	sys-libs/db:=
+	berkdb? ( sys-libs/db:= )
 	dev-libs/libevent
 	app-misc/ca-certificates
 	net-mail/mailbase
@@ -53,7 +53,8 @@ src_configure() {
 		--with-user-smtpd=smtpd \
 		--with-user-queue=smtpq \
 		--with-group-queue=smtpq \
-		$(use_with pam auth-pam)
+		$(use_with pam auth-pam) \
+		$(use_with berkdb table-db)
 }
 
 src_install() {
