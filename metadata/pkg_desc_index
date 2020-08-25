@@ -4631,7 +4631,7 @@ dev-java/boilerpipe 1.2.0: Boilerplate Removal and Fulltext Extraction from HTML
 dev-java/boot-bin 2.7.1-r1 2.8.3: Build tooling for Clojure
 dev-java/browserlauncher2 1.3-r1: A library that facilitates opening a browser from a Java application
 dev-java/bsf 2.4.0-r2: Bean Script Framework
-dev-java/bsh 2.0_beta6: A small embeddable Java source interpreter
+dev-java/bsh 2.0_beta6-r1: A small embeddable Java source interpreter
 dev-java/btf 1.2: Generic interfaces to the classical builder pattern
 dev-java/byaccj 1.15-r2: A java extension of BSD YACC-compatible parser generator
 dev-java/bytelist 1.0.10: JRuby support library
@@ -4871,8 +4871,8 @@ dev-java/jnr-netdb 1.1.4: Network services database access for java
 dev-java/jnr-posix 3.0.10: Lightweight cross-platform POSIX emulation layer for Java
 dev-java/jnr-unixsocket 0.6-r1: Unix sockets for Java
 dev-java/jnr-x86asm 1.0.2-r1: A pure-java port of asmjit
-dev-java/joda-convert 1.3.1: Java library for conversion between Object and String
-dev-java/joda-time 2.7: A quality open-source replacement for the Java Date and Time classes
+dev-java/joda-convert 1.3.1-r1: Java library for conversion between Object and String
+dev-java/joda-time 2.7-r1: A quality open-source replacement for the Java Date and Time classes
 dev-java/joni 2.1.0: Java port of the Oniguruma regular expression engine
 dev-java/jopt-simple 4.6 5.0: A Java library for parsing command line options
 dev-java/jortho 1.0: A Java spell-checking library
