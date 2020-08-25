@@ -31,13 +31,13 @@ java_prepare() {
 	find -name '*.jar' -exec rm -v {} + || die
 }
 
-JAVA_SRC_DIR="src src-apache"
+JAVA_SRC_DIR=( "src" "src-apache" )
 JAVA_GENTOO_CLASSPATH="relaxng-datatype,xerces-2"
 
 src_compile() {
 	java-pkg-simple_src_compile
 
-	local dir; for dir in ${JAVA_SRC_DIR}; do
+	local dir; for dir in "${JAVA_SRC_DIR[@]}"; do
 		pushd ${dir} > /dev/null || die
 			jar -uf "${S}"/${PN}.jar $(find -name '*.properties') || die
 		popd > /dev/null

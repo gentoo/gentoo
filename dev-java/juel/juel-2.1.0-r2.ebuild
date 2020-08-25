@@ -26,7 +26,7 @@ DEPEND="
 
 S="${WORKDIR}/${P}"
 
-JAVA_SRC_DIR="src/api src/impl"
+JAVA_SRC_DIR=( "src/api" "src/impl" )
 
 java_prepare() {
 	java-pkg_clean
