@@ -37,7 +37,7 @@ DEPEND="
 	app-arch/unzip"
 
 S="${WORKDIR}/${MY_P}/src"
-JAVA_SRC_DIR="beaninfo java"
+JAVA_SRC_DIR=( "beaninfo" "java" )
 
 src_prepare() {
 	default
@@ -61,7 +61,7 @@ src_compile() {
 	java-pkg-simple_src_compile
 
 	local DIR
-	for DIR in ${JAVA_SRC_DIR}; do
+	for DIR in "${JAVA_SRC_DIR[@]}"; do
 		java-pkg_addres ${PN}.jar ${DIR}
 	done
 }

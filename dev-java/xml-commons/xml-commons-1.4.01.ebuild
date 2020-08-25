@@ -26,4 +26,4 @@ DEPEND="
 	>=virtual/jdk-1.6
 	source? ( app-arch/zip )"
 
-JAVA_SRC_DIR="org javax"
+JAVA_SRC_DIR=( "org" "javax" )
