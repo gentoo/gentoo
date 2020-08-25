@@ -18300,7 +18300,7 @@ x11-apps/xwud 1.0.5: image displayer for X
 x11-base/xcb-proto 1.14-r1: X C-language Bindings protocol headers
 x11-base/xorg-drivers 1.20-r2 9999: Meta package containing deps on all xorg drivers
 x11-base/xorg-proto 2020.1 9999: X.Org combined protocol headers
-x11-base/xorg-server 1.20.8-r1 9999: X.Org X servers
+x11-base/xorg-server 1.20.8-r1 1.20.9 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/nvidia-drivers 340.108-r1 390.132-r4 390.138-r1 435.21-r6 440.100-r2 450.57-r1 450.66: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.2: Elographics input driver
@@ -18358,7 +18358,7 @@ x11-libs/libGLw 8.0.0-r1: Mesa GLw library
 x11-libs/libICE 1.0.10: X.Org Inter-Client Exchange library
 x11-libs/libQGLViewer 2.7.1 2.7.2: C++ library based on Qt that eases the creation of OpenGL 3D viewers
 x11-libs/libSM 1.2.3: X.Org Session Management library
-x11-libs/libX11 1.6.9 1.6.10 1.6.11: X.Org X11 library
+x11-libs/libX11 1.6.9 1.6.10 1.6.11 1.6.12: X.Org X11 library
 x11-libs/libXScrnSaver 1.2.3: X.Org XScrnSaver library
 x11-libs/libXau 1.0.9: X.Org X authorization library
 x11-libs/libXaw 1.0.13-r1: X.Org Xaw library
