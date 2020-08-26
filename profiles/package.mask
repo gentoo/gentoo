@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2020-08-26)
+# ROCm has had open-source OpenCL image support since 3.3, and since 3.7
+# it no longer attempts to use the proprietary library even when it is
+# present. Last but not least, upstream no longer publishes this.
+# Removal in 30 days. Bug #739066.
+dev-libs/hsa-ext-rocr
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-08-24)
 # Abandoned upstream.
 # Does not compile against ghc-8.8. Removal in 30 days.
