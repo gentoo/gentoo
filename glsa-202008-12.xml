@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202008-12">
+  <title>Net-SNMP: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Net-SNMP, the worst of
+    which could result in privilege escalation.
+  </synopsis>
+  <product type="ebuild">Net-SNMP</product>
+  <announced>2020-08-26</announced>
+  <revised count="1">2020-08-26</revised>
+  <bug>729610</bug>
+  <bug>734994</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-analyzer/net-snmp" auto="yes" arch="*">
+      <unaffected range="ge">5.8.1_pre1</unaffected>
+      <vulnerable range="lt">5.8.1_pre1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Net-SNMP bundles software for generating and retrieving SNMP data.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Net-SNMP. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Net-SNMP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=net-analyzer/net-snmp-5.8.1_pre1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-20892">CVE-2019-20892</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-15861">CVE-2020-15861</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-15862">CVE-2020-15862</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-08-24T01:05:52Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-08-26T21:31:52Z">sam_c</metadata>
+</glsa>
