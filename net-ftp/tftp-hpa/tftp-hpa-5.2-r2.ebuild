@@ -14,33 +14,35 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-macos"
 IUSE="ipv6 readline selinux tcpd +client +server"
 
-CDEPEND="
+DEPEND="
 	readline? ( sys-libs/readline:0= )
 	tcpd? ( sys-apps/tcp-wrappers )
-	"
+"
 
-DEPEND="${CDEPEND}
-	app-arch/xz-utils
+RDEPEND="${DEPEND}
+	selinux? ( sec-policy/selinux-tftp )
 	!net-ftp/atftp
-	!net-ftp/uftpd"
-
-RDEPEND="${CDEPEND}
-	selinux? ( sec-policy/selinux-tftp )"
+	!net-ftp/uftpd
+	server? ( !net-misc/iputils[tftpd(+)] )
+"
 
 PATCHES=(
 	"${FILESDIR}"/tftp-hpa-5.2-gcc-10.patch
 )
 
 src_prepare() {
-	eapply_user
+	default
 	sed -i "/^AR/s:ar:$(tc-getAR):" MCONFIG.in || die
 }
 
 src_configure() {
-	econf \
-		$(use_with ipv6) \
-		$(use_with tcpd tcpwrappers) \
+	local myconf=(
+		ac_cv_search_bsd_signal=no
+		$(use_with ipv6)
+		$(use_with tcpd tcpwrappers)
 		$(use_with readline)
+	)
+	econf "${myconf[@]}"
 }
 
 src_compile() {
@@ -63,8 +65,6 @@ src_install() {
 	fi
 	if use server; then
 		emake INSTALLROOT="${D}" -C tftpd install
-
-		rm "${ED}"/usr/share/man/man8/tftpd.8 || die
 
 		newconfd "${FILESDIR}"/in.tftpd.confd-0.44 in.tftpd
 		newinitd "${FILESDIR}"/in.tftpd.rc6 in.tftpd
