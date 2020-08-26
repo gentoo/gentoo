@@ -30,9 +30,8 @@ ruby_add_bdepend "test? (
 
 all_ruby_prepare() {
 	sed -i -e "/bundler/d" -e "/BUNDLE/d" spec/app/config/boot.rb || die
-	sed -i -e "/Bundler/,+3d" \
+	sed -i -e "/Bundler/ s:^:#:" \
 		-e '/config.sass/ s:^:#:' spec/app/config/application.rb || die
-	sed -i -e '/standard/ s:^:#:' autoprefixer-rails.gemspec || die
 	sed -i -e '1igem "tzinfo", "~>1.0"' spec/spec_helper.rb || die
 	rm -f spec/rails_spec.rb || die
 }
