@@ -683,6 +683,8 @@ git-r3_fetch() {
 					"+refs/tags/*:refs/tags/*"
 					# notes in case something needs them
 					"+refs/notes/*:refs/notes/*"
+					# pullrequest refs are useful for testing incoming changes
+					"+refs/pull/*/head:refs/pull/*"
 					# and HEAD in case we need the default branch
 					# (we keep it in refs/git-r3 since otherwise --prune interferes)
 					"+HEAD:refs/git-r3/HEAD"
