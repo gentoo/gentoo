@@ -15,11 +15,20 @@ SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~m68k ~mips ~s390 ~x86 ~x64-cygwin ~amd64-linux ~x86-linux"
 IUSE="+gpg tools"
 
 RDEPEND="
-	gpg? ( >=app-crypt/gnupg-2.2.20-r1 )"
+	gpg? (
+		>=app-crypt/gnupg-2.2.20-r1
+		dev-python/requests[${PYTHON_USEDEP}]
+	)"
+BDEPEND="
+	test? (
+		>=app-crypt/gnupg-2.2.20-r1
+		dev-python/requests[${PYTHON_USEDEP}]
+		dev-python/responses[${PYTHON_USEDEP}]
+	)"
 
 distutils_enable_tests setup.py
 
