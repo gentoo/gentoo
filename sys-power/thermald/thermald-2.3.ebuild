@@ -18,8 +18,10 @@ RDEPEND="
 	dev-libs/dbus-glib:=
 	dev-libs/glib:=
 	dev-libs/libxml2:=
+	sys-power/upower
 	sys-apps/dbus:="
 DEPEND="${RDEPEND}
+	dev-util/gtk-doc
 	dev-util/glib-utils"
 
 S=${WORKDIR}/thermal_daemon-${PV}
