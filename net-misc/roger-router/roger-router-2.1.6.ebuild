@@ -5,7 +5,7 @@ EAPI=7
 
 inherit meson xdg-utils
 
-DESCRIPTION="A graphical user interface for Fritz!Box routers to send fax, retrieve call lists, make calls and access the address book."
+DESCRIPTION="A graphical user interface for Fritz!Box routers."
 HOMEPAGE="https://tabos.gitlab.io/project/rogerrouter/"
 
 SRC_URI="https://gitlab.com/tabos/rogerrouter/-/archive/v${PV}/rogerrouter-v${PV}.tar.bz2 -> ${P}.tar.bz2"

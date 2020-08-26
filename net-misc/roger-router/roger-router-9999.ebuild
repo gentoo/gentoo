@@ -5,7 +5,7 @@ EAPI=7
 
 inherit meson xdg-utils
 
-DESCRIPTION="A graphical user interface for Fritz!Box routers to send fax, retrieve call lists, make calls and access the address book."
+DESCRIPTION="A graphical user interface for Fritz!Box routers."
 HOMEPAGE="https://tabos.gitlab.io/project/rogerrouter/"
 
 inherit git-r3
@@ -23,5 +23,5 @@ RDEPEND="
 	app-text/libebook
 	dev-libs/libgdata
 	gui-libs/libhandy
-	=net-libs/librm-9999"
+	~net-libs/librm-9999"
 DEPEND="${RDEPEND}"
