@@ -1,0 +1,28 @@
+diff --git a/roger/journal.c b/roger/journal.c
+index cdbf6cb..b17f5d3 100644
+--- a/roger/journal.c
++++ b/roger/journal.c
+@@ -1043,9 +1043,9 @@ roger_journal_init (RogerJournal *self)
+ 
+   init_call_icons();
+ 
+-	if (g_settings_get_boolean (app_settings, "maximized")) {
+-		gtk_window_maximize (GTK_WINDOW (self));
+-	}
++	/* if (g_settings_get_boolean (app_settings, "maximized")) { */
++	/* 	gtk_window_maximize (GTK_WINDOW (self)); */
++	/* } */
+ 
+   g_type_ensure (G_TYPE_THEMED_ICON);
+   GtkBuilder *builder = gtk_builder_new_from_resource ("/org/tabos/roger/ui/journal-popover.ui");
+@@ -1090,8 +1090,8 @@ roger_journal_init (RogerJournal *self)
+   g_settings_bind (app_settings, "col-8-width", self->col8, "fixed-width", G_SETTINGS_BIND_DEFAULT);
+   g_settings_bind (app_settings, "col-8-visible", self->col8, "visible", G_SETTINGS_BIND_DEFAULT);
+ 
+-  g_settings_bind (app_settings, "width", self, "default-width", G_SETTINGS_BIND_DEFAULT);
+-  g_settings_bind (app_settings, "height", self, "default-height", G_SETTINGS_BIND_DEFAULT);
++  /* g_settings_bind (app_settings, "width", self, "default-width", G_SETTINGS_BIND_DEFAULT); */
++  /* g_settings_bind (app_settings, "height", self, "default-height", G_SETTINGS_BIND_DEFAULT); */
+ 
+   g_object_bind_property (self->search_button, "active", self->search_bar, "search-mode-enabled", 0);
+ 
