@@ -1,0 +1,10 @@
+--- a/Swift/QtUI/Roster/GroupItemDelegate.cpp
++++ b/Swift/QtUI/Roster/GroupItemDelegate.cpp
+@@ -7,6 +7,7 @@
+ #include <Swift/QtUI/Roster/GroupItemDelegate.h>
+ 
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QPen>
+ #include <QtDebug>
+ 

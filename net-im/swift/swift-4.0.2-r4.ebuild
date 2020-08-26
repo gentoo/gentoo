@@ -1,18 +1,22 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit gnome2-utils scons-utils toolchain-funcs
+PYTHON_COMPAT=( python3_{6..9} )
+
+inherit python-any-r1 scons-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="An elegant, secure, adaptable and intuitive XMPP Client"
 HOMEPAGE="https://www.swift.im/"
-SRC_URI="https://swift.im/downloads/releases/${P}/${P}.tar.gz"
+SRC_URI="
+	https://swift.im/downloads/releases/${P}/${P}.tar.gz
+	https://dev.gentoo.org/~conikost/distfiles/patches/swift-4.0.2-python3-compatibility.patch.gz"
 
 LICENSE="BSD BSD-1 CC-BY-3.0 GPL-3 OFL-1.1"
 SLOT="4/0"
-KEYWORDS="amd64"
-IUSE="client expat gconf +icu +idn lua spell test zeroconf"
+KEYWORDS="~amd64"
+IUSE="+client expat gconf +icu +idn lua spell test zeroconf"
 REQUIRED_USE="
 	|| ( icu idn )
 	gconf? ( client )
@@ -25,7 +29,7 @@ RDEPEND="
 	dev-libs/openssl:0=
 	net-libs/libnatpmp
 	net-libs/miniupnpc:=
-	sys-libs/zlib:=
+	sys-libs/zlib
 	client? (
 		dev-qt/qtcore:5
 		dev-qt/qtdbus:5
@@ -65,7 +69,7 @@ DOCS=(
 
 PATCHES=(
 	"${FILESDIR}"/${P}-boost-1.69-compatibility.patch
-	"${FILESDIR}"/${P}-make-generated-files-handle-unicode-characters.patch
+	"${WORKDIR}"/${P}-python3-compatibility.patch
 	"${FILESDIR}"/${P}-qt-5.11-compatibility.patch
 	"${FILESDIR}"/${P}-qt-5.15-compatibility.patch
 )
@@ -186,11 +190,11 @@ src_test() {
 
 src_install() {
 	local myesconsinstall=(
-		SWIFTEN_INSTALLDIR="${ED%/}/usr"
-		SWIFTEN_LIBDIR="${ED%/}/usr/$(get_libdir)"
-		$(usex client "SWIFT_INSTALLDIR=${ED%/}/usr" '')
-		$(usex lua "SLUIFT_DIR=${ED%/}/usr" '')
-		$(usex lua "SLUIFT_INSTALLDIR=${ED%/}/usr" '')
+		SWIFTEN_INSTALLDIR="${ED}/usr"
+		SWIFTEN_LIBDIR="${ED}/usr/$(get_libdir)"
+		$(usex client "SWIFT_INSTALLDIR=${ED}/usr" '')
+		$(usex lua "SLUIFT_DIR=${ED}/usr" '')
+		$(usex lua "SLUIFT_INSTALLDIR=${ED}/usr" '')
 		"${ED}"
 	)
 
@@ -204,9 +208,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	use client && gnome2_icon_cache_update
+	use client && xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	use client && gnome2_icon_cache_update
+	use client && xdg_icon_cache_update
 }
