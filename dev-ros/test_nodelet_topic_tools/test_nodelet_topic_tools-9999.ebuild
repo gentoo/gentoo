@@ -21,6 +21,7 @@ RDEPEND="
 	dev-ros/pluginlib
 	dev-ros/roscpp
 	dev-ros/rostest
+	dev-ros/rosmsg[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 
