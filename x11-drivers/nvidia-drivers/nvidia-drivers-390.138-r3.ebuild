@@ -176,6 +176,9 @@ src_prepare() {
 		cp nvidia_icd.json.template nvidia_icd.json || die
 		sed -i -e 's:__NV_VK_ICD__:libGLX_nvidia.so.0:g' nvidia_icd.json || die
 	fi
+
+	sed "s:%LIBDIR%:$(get_libdir):g" "${FILESDIR}/nvidia-390.conf" \
+		> "${T}/nvidia-390.conf" || die
 }
 
 src_compile() {
@@ -345,7 +348,7 @@ src_install() {
 		doins nvidia_icd.json
 
 		insinto /etc/X11/xorg.conf.d
-		doins "${FILESDIR}"/nvidia-390.conf
+		doins ${T}/nvidia-390.conf
 	fi
 
 	if use kernel_linux; then
