@@ -161,6 +161,8 @@ multilib_src_compile() {
 	export USE_SYSTEM_ZLIB=1
 	export ZLIB_LIBS=-lz
 	export ASFLAGS=""
+	# Fix build failure on arm64
+	export NS_USE_GCC=1
 
 	local d
 
