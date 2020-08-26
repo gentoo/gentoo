@@ -20,6 +20,10 @@ openmp postscript spell static-libs svg2 visio wpg"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+PATCHES=(
+	"${FILESDIR}/missing_atomic_include.patch"
+)
+
 BDEPEND="
 	dev-util/glib-utils
 	>=dev-util/intltool-0.40
