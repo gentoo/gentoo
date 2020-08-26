@@ -18,6 +18,7 @@ RDEPEND="
 	dev-libs/dbus-glib:=
 	dev-libs/glib:=
 	dev-libs/libxml2:=
+	dev-libs/libevdev
 	sys-power/upower
 	sys-apps/dbus:="
 DEPEND="${RDEPEND}
