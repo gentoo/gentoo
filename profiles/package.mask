@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Piotr Karbowski <slashbeast@gentoo.org> (2020-08-28)
+# Temporary mask due to multiple reports of segfaults at startup, bug #739056 
+=x11-base/xorg-server-1.20.9
+
 # Marek Szuba <marecki@gentoo.org> (2020-08-26)
 # ROCm has had open-source OpenCL image support since 3.3, and since 3.7
 # it no longer attempts to use the proprietary library even when it is
