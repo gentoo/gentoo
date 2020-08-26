@@ -13588,7 +13588,7 @@ media-plugins/vdr-devstatus 0.4.1 0.4.1-r1: VDR plugin: display the usage status
 media-plugins/vdr-dummydevice 2.0.0: VDR Plugin: dummy output device ,for recording server without any output devices
 media-plugins/vdr-duplicates 0.0.5 0.0.5-r1 0.1.0 1.0.1: VDR Plugin: show duplicated records
 media-plugins/vdr-dvbapi 2.2.4 2.2.5: VDR Plugin: allows connect VDR to OScam
-media-plugins/vdr-dvbhddevice 2.1.3_p20140115 2.2.0_p20180420: VDR Plugin: output device for the 'Full Featured' TechnoTrend S2-6400 DVB Card
+media-plugins/vdr-dvbhddevice 2.1.3_p20140115 2.2.0_p20180420-r1: VDR Plugin: output device for the 'Full Featured' TechnoTrend S2-6400 DVB Card
 media-plugins/vdr-dvbsddevice 2.0.0 2.2.0: VDR Plugin: output device for the 'Full Featured' SD DVB Card
 media-plugins/vdr-dvd 0.3.7_pre20090106-r1: VDR Plugin: DVD-Player
 media-plugins/vdr-dvdswitch 0.2.2 0.2.3: VDR Plugin: to play dvds and dvd file structures
@@ -18302,7 +18302,7 @@ x11-base/xorg-drivers 1.20-r2 9999: Meta package containing deps on all xorg dri
 x11-base/xorg-proto 2020.1 9999: X.Org combined protocol headers
 x11-base/xorg-server 1.20.8-r1 1.20.9 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
-x11-drivers/nvidia-drivers 340.108-r1 390.132-r4 390.138-r3 435.21-r6 440.100-r2 450.57-r1 450.66: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 340.108-r1 390.132-r4 390.138-r3 435.21-r6 440.100-r2 450.66: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.2: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
