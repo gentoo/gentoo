@@ -6222,7 +6222,7 @@ dev-perl/Crypt-SmbHash 0.120.0-r2 0.120.0-r3: LM/NT hashing, for Samba's smbpass
 dev-perl/Crypt-Twofish 2.170.0-r1 2.170.0-r2: The Twofish Encryption Algorithm
 dev-perl/Crypt-URandom 0.360.0: Provide non blocking randomness
 dev-perl/Crypt-X509 0.510.0 0.530.0: Parse a X.509 certificate
-dev-perl/CryptX 0.64.0 0.68.0: Self-contained crypto toolkit
+dev-perl/CryptX 0.64.0 0.68.0 0.69.0: Self-contained crypto toolkit
 dev-perl/Curses 1.360.0 1.360.0-r1: Curses interface modules for Perl
 dev-perl/Curses-UI 0.960.900-r2 0.960.900-r3: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r2 1.997.0-r3: Provide high level APIs for rapid user interface design on the console in Perl
