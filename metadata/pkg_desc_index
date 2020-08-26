@@ -7673,7 +7673,7 @@ dev-php/PEAR-Net_LDAP2 2.2.0-r1: OO interface for searching and manipulating LDA
 dev-php/PEAR-Net_LDAP3 1.0.5_pre20160405: PEAR:Net_LDAP2 successor, provides functionality for accessing LDAP
 dev-php/PEAR-Net_POP3 1.3.8-r1: Provides a POP3 class to access POP3 server
 dev-php/PEAR-Net_Ping 2.4.5-r2: OS independent wrapper class for executing ping calls
-dev-php/PEAR-Net_SMTP 1.7.2-r3 1.7.3 1.8.1 1.9.0 1.9.1: A PHP implementation of the SMTP protocol
+dev-php/PEAR-Net_SMTP 1.7.2-r3 1.7.3 1.8.1 1.9.0 1.9.1 1.9.2: A PHP implementation of the SMTP protocol
 dev-php/PEAR-Net_Sieve 1.5.2-r1 1.5.4: An API for talking to sieve (RFC 3028) servers
 dev-php/PEAR-Net_SmartIRC 1.1.10-r1 1.1.12 1.1.13 1.1.14: PHP class to communicate with IRC networks
 dev-php/PEAR-Net_Socket 1.2.2: PHP class interface to TCP sockets
@@ -7713,7 +7713,7 @@ dev-php/PEAR-XML_Serializer 0.21.0-r1: Swiss-army knife for reading and writing 
 dev-php/PEAR-XML_Util 1.4.2 1.4.3 1.4.4 1.4.5: XML utility class
 dev-php/PHPMailer 5.2.28 6.1.6 6.1.7: Full-featured email creation and transfer class for PHP
 dev-php/PHP_CodeCoverage 4.0.7-r2 7.0.10-r1: Collection, processing, and rendering for PHP code coverage
-dev-php/PHP_CodeSniffer 3.5.4: Detect violations of PHP code standards
+dev-php/PHP_CodeSniffer 3.5.4 3.5.6: Detect violations of PHP code standards
 dev-php/PHP_Timer 1.0.5 1.0.9 2.1.2-r1: Utility class for timing
 dev-php/PHP_TokenStream 1.4.11-r1 3.1.1: Wrapper around PHP's tokenizer extension
 dev-php/SabreAMF 1.5.0: SabreAMF is a Flash Remoting server and client for PHP
@@ -7945,7 +7945,7 @@ dev-python/billiard 3.6.0.0: Python multiprocessing fork
 dev-python/binaryornot 0.4.4: Ultra-lightweight pure Python package to guess whether a file is binary or text
 dev-python/bitarray 0.8.3: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.6 3.1.7: A pure Python module for creation and analysis of binary data
-dev-python/black 19.10_beta0: The uncompromising Python code formatter
+dev-python/black 19.10_beta0 20.8_beta1: The uncompromising Python code formatter
 dev-python/bleach 3.1.5: an easy whitelist-based HTML-sanitizing tool
 dev-python/blessed 1.17.9 1.17.10: Library for making terminal apps using colors, keyboard input and positioning
 dev-python/blessings 1.7-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
@@ -8458,7 +8458,7 @@ dev-python/munch 2.5.0-r1: A dot-accessible dictionary (a la JavaScript objects)
 dev-python/munkres 1.1.2: Module implementing munkres algorithm for the Assignment Problem
 dev-python/mygpoclient 1.8: A gpodder.net client library
 dev-python/mypy 0.760 0.781: Optional static typing for Python
-dev-python/mypy_extensions 0.4.3: Optional static typing for Python
+dev-python/mypy_extensions 0.4.3 0.4.3-r1: Optional static typing for Python
 dev-python/mysql-connector-python 8.0.21: Python client library for MariaDB/MySQL
 dev-python/mysql-python 1.2.5-r3: Python interface to MySQL
 dev-python/mysqlclient 1.4.6: Fork of MySQL-python
@@ -9221,7 +9221,7 @@ dev-python/txgithub 15.0.0-r1: GitHub API client implemented using Twisted
 dev-python/txrequests 0.9.6: Asynchronous Python HTTP for Humans
 dev-python/typed-ast 1.4.1: Python typed-ast backported
 dev-python/typing 3.7.4.3: Type Hints for Python
-dev-python/typing-extensions 3.7.4.1 3.7.4.2: Type Hint extensions from Python 3.8 backported
+dev-python/typing-extensions 3.7.4.1 3.7.4.2 3.7.4.3: Type Hint extensions from Python 3.8 backported
 dev-python/tzlocal 2.1: tzinfo object for the local timezone
 dev-python/u-msgpack 2.6.0 2.7.0: A portable, lightweight MessagePack serializer and deserializer
 dev-python/ubelt 0.8.8: A stdlib like feel, and extra batteries. Hashing, Caching, Timing, Progress
@@ -12444,8 +12444,8 @@ mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for 
 mail-client/roundcube 1.4.6 1.4.7 1.4.8: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.16 14.9.19: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.7.0-r1: A lightweight email client and newsreader
-mail-client/thunderbird 68.11.0: Thunderbird Mail Client
-mail-client/thunderbird-bin 68.11.0: Thunderbird Mail Client
+mail-client/thunderbird 68.11.0 68.12.0: Thunderbird Mail Client
+mail-client/thunderbird-bin 68.11.0 68.12.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r5 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 1.2.0 1.3.0-r1 2.0.0 3.0.0: Initial tagging script for Notmuch
