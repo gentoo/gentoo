@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
 inherit autotools eutils linux-info ltprune python-any-r1 systemd
 
@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]]; then
 
 	inherit git-r3
 else
-	KEYWORDS="amd64 arm ~arm64 hppa x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
 
 	SRC_URI="
 		https://www.rsyslog.com/files/download/${PN}/${P}.tar.gz
@@ -73,7 +73,7 @@ RDEPEND="
 	uuid? ( sys-apps/util-linux:0= )
 	xxhash? ( dev-libs/xxhash:= )
 	zeromq? (
-		>=net-libs/czmq-3.0.2
+		>=net-libs/czmq-4:=[drafts]
 	)"
 DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-archive-2015.02.24
