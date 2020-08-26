@@ -1,0 +1,27 @@
+From 405662edfda15bd4ba2a6e32023eeb8c5e73646f Mon Sep 17 00:00:00 2001
+From: William Breathitt Gray <vilhelm.gray@gmail.com>
+Date: Thu, 25 Jun 2020 11:13:55 -0400
+Subject: [PATCH] Add support for /usr/share/doom IWAD search path
+
+Some Linux distros such as Gentoo have deprecated the /usr/share/games
+directory. IWADs are typically installed under the /usr/share directory
+for these distros.
+---
+ src/d_iwad.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/d_iwad.c b/src/d_iwad.c
+index 09853a64..e112e4f4 100644
+--- a/src/d_iwad.c
++++ b/src/d_iwad.c
+@@ -657,6 +657,7 @@ static void AddXdgDirs(void)
+     // source ports is /usr/share/games/doom - we support this through the
+     // XDG_DATA_DIRS mechanism, through which it can be overridden.
+     AddIWADPath(env, "/games/doom");
++    AddIWADPath(env, "/doom");
+ 
+     // The convention set by RBDOOM-3-BFG is to install Doom 3: BFG
+     // Edition into this directory, under which includes the Doom
+-- 
+2.26.2
+

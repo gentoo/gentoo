@@ -1,0 +1,322 @@
+From c1f553b92a7a4873b33026463866101e18be8e76 Mon Sep 17 00:00:00 2001
+From: Jonathan Dowland <jon@dow.land>
+Date: Mon, 27 Nov 2017 22:24:04 +0000
+Subject: [PATCH] further manpage substitutions and fixes
+
+Convert chocolate-setup.6 into a template file and generate outputs
+based on @PROGRAM_PREFIX@.
+
+Add @PACKAGE_SHORTNAME@ to the list of parameters handed to docgen
+and make appropriate substitutions in the manpage templates.
+---
+ man/Makefile.am                           | 15 ++++++++----
+ man/docgen                                | 30 ++++++++++++++---------
+ man/heretic.template                      |  8 +++---
+ man/hexen.template                        |  8 +++---
+ man/{chocolate-setup.6 => setup.template} |  4 +--
+ man/strife.template                       | 14 +++++------
+ 6 files changed, 45 insertions(+), 34 deletions(-)
+ rename man/{chocolate-setup.6 => setup.template} (94%)
+
+diff --git a/man/Makefile.am b/man/Makefile.am
+index 5916edf9..f0099c79 100644
+--- a/man/Makefile.am
++++ b/man/Makefile.am
+@@ -30,6 +30,7 @@ GENERATED_MAN_PAGES =               \
+            @PROGRAM_PREFIX@strife.6       \
+            strife.cfg.5             \
+            @PROGRAM_PREFIX@strife.cfg.5   \
++           @PROGRAM_PREFIX@setup.6  \
+            @PROGRAM_PREFIX@server.6
+ 
+ SETUP_MAN_PAGES =                          \
+@@ -38,8 +39,7 @@ SETUP_MAN_PAGES =                          \
+            @PROGRAM_PREFIX@hexen-setup.6   \
+            @PROGRAM_PREFIX@strife-setup.6
+ 
+-man_MANS = chocolate-setup.6              \
+-           $(GENERATED_MAN_PAGES)         \
++man_MANS = $(GENERATED_MAN_PAGES)         \
+            $(SETUP_MAN_PAGES)
+ 
+ doomdocs_DATA    = INSTALL.doom    CMDLINE.doom
+@@ -51,10 +51,10 @@ CLEANFILES = $(GENERATED_MAN_PAGES) $(SETUP_MAN_PAGES) \
+              $(doomdocs_DATA) $(hereticdocs_DATA) \
+              $(hexendocs_DATA) $(strifedocs_DATA)
+ DOCGEN = $(srcdir)/docgen
+-DOCGEN_COMMON_ARGS = -n "@PROGRAM_SPREFIX@" -s "@PACKAGE_NAME@"
++DOCGEN_COMMON_ARGS = -n "@PROGRAM_SPREFIX@" -s "@PACKAGE_NAME@" -z "@PACKAGE_SHORTNAME@"
+ 
+-$(SETUP_MAN_PAGES): chocolate-setup.6
+-	cp $(srcdir)/chocolate-setup.6 $@
++$(SETUP_MAN_PAGES): @PROGRAM_PREFIX@setup.6
++	cp $(srcdir)/@PROGRAM_PREFIX@setup.6 $@
+ 
+ @PROGRAM_PREFIX@doom.6: $(top_srcdir)/src $(MANPAGE_GEN_FILES)
+ 	$(DOCGEN) $(DOCGEN_COMMON_ARGS) \
+@@ -138,6 +138,11 @@ INSTALL.hexen: INSTALL.template
+                   -g server -m $(srcdir)/server.template \
+                   $(top_srcdir)/src > $@
+ 
++@PROGRAM_PREFIX@setup.6: $(top_srcdir)/src $(MANPAGE_GEN_FILES)
++	$(DOCGEN) $(DOCGEN_COMMON_ARGS) \
++                  -g setup -m $(srcdir)/setup.template \
++                  $(top_srcdir)/src > $@
++
+ strife.cfg.5: $(top_srcdir)/src default.cfg.template
+ 	$(DOCGEN) $(DOCGEN_COMMON_ARGS) \
+                   -g strife -m $(srcdir)/default.cfg.template \
+diff --git a/man/docgen b/man/docgen
+index defb9060..1c8a2471 100755
+--- a/man/docgen
++++ b/man/docgen
+@@ -430,7 +430,7 @@ def process_files(path):
+ 
+         process_file(path)
+ 
+-def print_template(template_file, program_prefix, package_name, content):
++def print_template(template_file, program_prefix, package_name, package_shortname, content):
+     f = io.open(template_file, encoding='UTF-8')
+ 
+     try:
+@@ -440,16 +440,18 @@ def print_template(template_file, program_prefix, package_name, content):
+                 filename = match.group(1)
+                 filename = os.path.join(os.path.dirname(template_file),
+                                         filename)
+-                print_template(filename, program_prefix, package_name, content)
++                print_template(filename, program_prefix, package_name, package_shortname, content)
+             else:
+                 line = line.replace("@content", content)
+                 line = line.replace("@PROGRAM_SPREFIX@", program_prefix)
+-                line = line.replace("@PACKAGE_SHORTNAME@", package_name)
++                line = line.replace("@PACKAGE_NAME@", package_name)
++                if package_shortname:
++                    line = line.replace("@PACKAGE_SHORTNAME@", package_shortname)
+                 stdout(line.rstrip().encode('UTF-8') + b'\n')
+     finally:
+         f.close()
+ 
+-def manpage_output(targets, program_prefix, package_name, template_file):
++def manpage_output(targets, program_prefix, package_name, package_shortname, template_file):
+ 
+     content = ""
+ 
+@@ -458,7 +460,7 @@ def manpage_output(targets, program_prefix, package_name, template_file):
+ 
+     content = content.replace("-", "\\-")
+ 
+-    print_template(template_file, program_prefix, package_name, content)
++    print_template(template_file, program_prefix, package_name, package_shortname, content)
+ 
+ def wiki_output(targets, template):
+     read_wikipages()
+@@ -466,30 +468,31 @@ def wiki_output(targets, template):
+     for t in targets:
+         stdout(t.wiki_output().encode('UTF-8') + b'\n')
+ 
+-def plaintext_output(targets, program_prefix, package_name, template_file):
++def plaintext_output(targets, program_prefix, package_name, package_shortname, template_file):
+ 
+     content = ""
+ 
+     for t in targets:
+         content += t.plaintext_output() + "\n"
+ 
+-    print_template(template_file, program_prefix, package_name, content)
++    print_template(template_file, program_prefix, package_name, package_shortname, content)
+ 
+-def completion_output(targets, program_prefix, package_name, template_file):
++def completion_output(targets, program_prefix, package_name, package_shortname, template_file):
+ 
+     content = ""
+ 
+     for t in targets:
+         content += t.completion_output() + "\n"
+ 
+-    print_template(template_file, program_prefix, package_name, content)
++    print_template(template_file, program_prefix, package_name, package_shortname, content)
+ 
+ def usage():
+-    print("Usage: %s [-V] [-c tag] [-g game] -n name ( -m | -w | -p ) <dir>..." \
++    print("Usage: %s [-V] [-c tag] [-g game] -n program_name -s package_name [ -z shortname ] ( -m | -w | -p ) <dir>..." \
+             % sys.argv[0])
+     print("   -c :  Provide documentation for the specified configuration file")
+     print("         (matches the given tag name in the source file)")
+     print("   -s :  Package name (for substitution)")
++    print("   -z :  Package short-name (for substitution)")
+     print("   -n :  Program name (for substitution)")
+     print("   -m :  Manpage output")
+     print("   -w :  Wikitext output")
+@@ -501,7 +504,7 @@ def usage():
+ 
+ # Parse command line
+ 
+-opts, args = getopt.getopt(sys.argv[1:], "n:s:m:wp:b:c:g:V")
++opts, args = getopt.getopt(sys.argv[1:], "n:s:z:m:wp:b:c:g:V")
+ 
+ output_function = None
+ template = None
+@@ -509,12 +512,15 @@ doc_config_file = None
+ match_game = None
+ program_prefix = None
+ package_name = None
++package_shortname = None
+ 
+ for opt in opts:
+     if opt[0] == "-n":
+         program_prefix = opt[1]
+     if opt[0] == "-s":
+         package_name = opt[1]
++    if opt[0] == "-z":
++        package_shortname = opt[1]
+     if opt[0] == "-m":
+         output_function = manpage_output
+         template = opt[1]
+@@ -556,5 +562,5 @@ else:
+ 
+     # Generate the output
+ 
+-    output_function(documentation_targets, program_prefix, package_name, template)
++    output_function(documentation_targets, program_prefix, package_name, package_shortname, template)
+ 
+diff --git a/man/heretic.template b/man/heretic.template
+index c078c7c6..3fa4ce1d 100644
+--- a/man/heretic.template
++++ b/man/heretic.template
+@@ -6,7 +6,7 @@
+ [\fIOPTIONS\fR]
+ .SH DESCRIPTION
+ .PP
+-Chocolate Heretic is a port of Raven Software's 1994 game "Heretic" that
++@PACKAGE_SHORTNAME@ Heretic is a port of Raven Software's 1994 game "Heretic" that
+ aims to behave as similar to the original DOS version of Heretic as
+ possible.
+ .br
+@@ -14,16 +14,16 @@ possible.
+ .SH IWAD SEARCH PATHS
+ @include iwad_paths.man
+ .SH ENVIRONMENT
+-This section describes environment variables that control Chocolate Heretic's
++This section describes environment variables that control @PACKAGE_SHORTNAME@ Heretic's
+ behavior.
+ @include environ.man
+ .SH FILES
+ .TP
+ \fB$HOME/.local/share/@PROGRAM_SPREFIX@\-doom/heretic.cfg\fR
+-The main configuration file for Chocolate Heretic.  See \fBheretic.cfg\fR(5).
++The main configuration file for @PACKAGE_SHORTNAME@ Heretic.  See \fBheretic.cfg\fR(5).
+ .TP
+ \fB$HOME/.local/share/@PROGRAM_SPREFIX@\-doom/@PROGRAM_SPREFIX@\-heretic.cfg\fR
+-Extra configuration values that are specific to Chocolate Heretic and not
++Extra configuration values that are specific to @PACKAGE_SHORTNAME@ Heretic and not
+ present in Vanilla Heretic. See \fB@PROGRAM_SPREFIX@\-heretic.cfg\fR(5).
+ .SH SEE ALSO
+ \fB@PROGRAM_SPREFIX@\-doom\fR(6),
+diff --git a/man/hexen.template b/man/hexen.template
+index 9184a27e..fc953edf 100644
+--- a/man/hexen.template
++++ b/man/hexen.template
+@@ -6,7 +6,7 @@
+ [\fIOPTIONS\fR]
+ .SH DESCRIPTION
+ .PP
+-Chocolate Hexen is a port of Raven Software's 1995 game "Hexen" that
++@PACKAGE_SHORTNAME@ Hexen is a port of Raven Software's 1995 game "Hexen" that
+ aims to behave as similar to the original DOS version of Hexen as
+ possible.
+ .br
+@@ -14,16 +14,16 @@ possible.
+ .SH IWAD SEARCH PATHS
+ @include iwad_paths.man
+ .SH ENVIRONMENT
+-This section describes environment variables that control Chocolate Hexen's
++This section describes environment variables that control @PACKAGE_SHORTNAME@ Hexen's
+ behavior.
+ @include environ.man
+ .SH FILES
+ .TP
+ \fB$HOME/.local/share/@PROGRAM_SPREFIX@\-doom/hexen.cfg\fR
+-The main configuration file for Chocolate Hexen.  See \fBhexen.cfg\fR(5).
++The main configuration file for @PACKAGE_SHORTNAME@ Hexen.  See \fBhexen.cfg\fR(5).
+ .TP
+ \fB$HOME/.local/share/@PROGRAM_SPREFIX@\-doom/@PROGRAM_SPREFIX@\-hexen.cfg\fR
+-Extra configuration values that are specific to Chocolate Hexen and not
++Extra configuration values that are specific to @PACKAGE_SHORTNAME@ Hexen and not
+ present in Vanilla Hexen.  See \fB@PROGRAM_SPREFIX@\-hexen.cfg\fR(5).
+ .SH SEE ALSO
+ \fB@PROGRAM_SPREFIX@\-doom\fR(6),
+diff --git a/man/chocolate-setup.6 b/man/setup.template
+similarity index 94%
+rename from man/chocolate-setup.6
+rename to man/setup.template
+index 64f65937..2b5a45ea 100644
+--- a/man/chocolate-setup.6
++++ b/man/setup.template
+@@ -25,9 +25,9 @@ Load configuration from the specified file, instead of default.cfg.
+ \fB-extraconfig <file>\fR
+ Load extra configuration from the specified file, instead of @PROGRAM_SPREFIX@\-doom.cfg. 
+ .SH SEE ALSO
+-\fB@CHOCOLATE_SPREFIX@\-doom\fR(6),
++\fB@PROGRAM_SPREFIX@\-doom\fR(6),
+ \fBdefault.cfg\fR(5),
+-\fB@CHOCOLATE_SPREFIX@\-doom.cfg\fR(5)
++\fB@PROGRAM_SPREFIX@\-doom.cfg\fR(5)
+ .SH AUTHOR
+ Chocolate Doom is written and maintained by Simon Howard.
+ .PP
+diff --git a/man/strife.template b/man/strife.template
+index 9ca7f14e..b82c39d4 100644
+--- a/man/strife.template
++++ b/man/strife.template
+@@ -6,7 +6,7 @@
+ [\fIOPTIONS\fR]
+ .SH DESCRIPTION
+ .PP
+-Chocolate Strife is an accurate and complete recreation of Rogue
++@PACKAGE_SHORTNAME@ Strife is an accurate and complete recreation of Rogue
+ Entertainment's "Strife: Quest for the Sigil". It was created through
+ more than two years of reverse engineering effort with the blessings
+ of the original programmers of the game (see the section HISTORY below).
+@@ -16,17 +16,17 @@ of the original programmers of the game (see the section HISTORY below).
+ .SH IWAD SEARCH PATHS
+ @include iwad_paths.man
+ .SH ENVIRONMENT
+-This section describes environment variables that control Chocolate Strife's
++This section describes environment variables that control @PACKAGE_SHORTNAME@ Strife's
+ behavior.
+ @include environ.man
+ 
+ .SH FILES
+ .TP
+ \fB$HOME/.local/share/@PROGRAM_SPREFIX@\-doom/strife.cfg\fR
+-The main configuration file for Chocolate Strife.  See \fBstrife.cfg\fR(5).
++The main configuration file for @PACKAGE_SHORTNAME@ Strife.  See \fBstrife.cfg\fR(5).
+ .TP
+ \fB$HOME/.local/share/@PROGRAM_SPREFIX@\-doom/@PROGRAM_SPREFIX@\-strife.cfg\fR
+-Extra configuration values that are specific to Chocolate Strife and not
++Extra configuration values that are specific to @PACKAGE_SHORTNAME@ Strife and not
+ present in Vanilla Strife.  See \fB@PROGRAM_SPREFIX@\-strife.cfg\fR(5).
+ .SH SEE ALSO
+ \fB@PROGRAM_SPREFIX@\-doom\fR(6),
+@@ -57,15 +57,15 @@ and neither Rogue nor their publisher, Velocity, Inc., exist any longer as
+ legal entities, this is effectively legal permission.
+ 
+ .SH BUGS
+-Chocolate Strife is almost, but not entirely perfect, in recreating the
++@PACKAGE_SHORTNAME@ Strife is almost, but not entirely perfect, in recreating the
+ behavior of Vanilla Strife.  Help us by reporting any discrepancies you
+ might notice between this executable and the vanilla DOS program.
+ 
+ However, do *not* report any glitch that you can replicate in the vanilla EXE
+-as a bug. The point of Chocolate Strife, like Chocolate Doom before it, is to
++as a bug. The point of @PACKAGE_SHORTNAME Strife, like Chocolate Doom before it, is to
+ be as bug-compatible with the original game as possible. Also be aware that
+ some glitches are impossible to compatibly recreate, and wherever this is the
+-case, Chocolate Strife has erred on the side of not crashing the program,
++case, @PACKAGE_SHORTNAME@ Strife has erred on the side of not crashing the program,
+ for example by initializing pointers to NULL rather than using them without
+ setting a value first.
+ 
+-- 
+2.26.2
+
