@@ -2107,7 +2107,7 @@ app-i18n/ibus-handwrite 3.0.0: Hand write recognition/input for IBus
 app-i18n/ibus-hangul 1.5.3-r1: Korean Hangul engine for IBus
 app-i18n/ibus-input-pad 1.4.99_pre20140916: Input Pad for IBus
 app-i18n/ibus-kkc 1.5.22: Japanese Kana Kanji conversion engine for IBus
-app-i18n/ibus-libpinyin 1.11.1-r1 1.11.92: Intelligent Pinyin and Bopomofo input methods based on LibPinyin for IBus
+app-i18n/ibus-libpinyin 1.11.1-r1 1.11.92-r1: Intelligent Pinyin and Bopomofo input methods based on LibPinyin for IBus
 app-i18n/ibus-m17n 1.3.4 1.4.2: M17N engine for IBus
 app-i18n/ibus-pinyin 1.5.0-r3 1.5.0-r4: Chinese Pinyin and Bopomofo engines for IBus
 app-i18n/ibus-rime 1.2 1.3.0 1.4.0: Chinese Rime Input Method Engine for IBus
@@ -17763,7 +17763,7 @@ sys-power/powerstat 0.02.21 0.02.22 9999: Laptop power measuring tool
 sys-power/powertop 2.10 2.11 2.13 9999: tool to diagnose issues with power consumption and power management
 sys-power/sispmctl 4.0 4.1: GEMBIRD SiS-PM control utility
 sys-power/suspend 1.0_p20190605: Userspace Software Suspend and S2Ram
-sys-power/thermald 1.9.1 2.1 2.2: Thermal daemon for Intel architectures
+sys-power/thermald 2.2 2.3: Thermal daemon for Intel architectures
 sys-power/tuxedo-cc-wmi 0.1.4-r1: Kernel Module for Tuxedo WMI
 sys-power/uhubctl 1.8-r1: USB hub per-port power control
 sys-power/upower 0.99.9-r1 0.99.11: D-Bus abstraction for enumerating power devices, querying history and statistics
