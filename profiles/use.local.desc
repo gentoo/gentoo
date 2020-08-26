@@ -5811,6 +5811,8 @@ net-ftp/pure-ftpd:paranoidmsg - Display paranoid messages instead of normal ones
 net-ftp/pure-ftpd:resolveids - Resolve UIDs/GIDs
 net-ftp/pure-ftpd:sysquota - Enables system quota support (needs sys-fs/quota)
 net-ftp/pure-ftpd:vchroot - Enable support for virtual chroot (possible security risk)
+net-ftp/tftp-hpa:client - Compile and install the tftp client
+net-ftp/tftp-hpa:server - Compile and install the tftp server
 net-ftp/yafc:ssh - Build with SFTP support
 net-im/bitlbee:libevent - Use libevent for event handling
 net-im/bitlbee:msn - Enable MSN Messenger IM protocol support.
