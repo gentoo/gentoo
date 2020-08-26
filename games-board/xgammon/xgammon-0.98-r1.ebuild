@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit toolchain-funcs eutils
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="very nice backgammon game for X"
 HOMEPAGE="http://fawn.unibw-hamburg.de/steuer/xgammon/xgammon.html"
@@ -11,19 +12,23 @@ SRC_URI="http://fawn.unibw-hamburg.de/steuer/xgammon/Downloads/${P}a.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND="x11-libs/libXaw"
-DEPEND="${RDEPEND}
+RDEPEND="
+	x11-libs/libX11
+	x11-libs/libXaw
+	x11-libs/libXt"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	app-text/rman
 	x11-misc/imake"
 
-S=${WORKDIR}/${P}a
+S="${WORKDIR}/${P}a"
 
 PATCHES=(
-	"${FILESDIR}/${P}-broken.patch"
-	"${FILESDIR}/${P}-config.patch"
-	"${FILESDIR}/gcc33.patch"
+	"${FILESDIR}"/${P}-broken.patch
+	"${FILESDIR}"/${P}-config.patch
+	"${FILESDIR}"/${P}-glibc-2.32.patch
+	"${FILESDIR}"/${P}-fno-common.patch
 )
 
 src_configure() {
@@ -34,7 +39,7 @@ src_compile() {
 	env PATH=".:${PATH}" emake \
 		EXTRA_LDOPTIONS="${LDFLAGS}" \
 		CDEBUGFLAGS="${CFLAGS}" \
-		CC=$(tc-getCC)
+		CC="$(tc-getCC)"
 }
 
 pkg_postinst() {

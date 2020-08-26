@@ -1,0 +1,97 @@
+--- a/allow.c
++++ b/allow.c
+@@ -34,6 +34,8 @@
+ MOVE	     current_move[4] = {{0, 0}, {0, 0},
+ 			        {0, 0}, {0, 0}}; /* global only for un_do() */
+ 
++MOVE possible_moves[8000], *list;
++
+ int  test_move             (void);
+ int  create_possible_moves (int dice_to_set, int *w, int actual_pin);
+ int  move_is_allowed       (int from_pin, int to_pin);
+--- a/gammon.h
++++ b/gammon.h
+@@ -117,12 +117,14 @@
+ 	MoveFunc MoveFunction;
+ 	BOARD board;
+ 	X11SET X11Set;
+-} Player[2];
++};
++extern struct _Player Player[2];
+ 
+ struct  _PinTable {
+         int count;
+         int color;
+-} Pin[29], rollout_position[29];	/* 0, 25 = bar, 1 - 24 = board and 26, 27 finished[color] */
++};
++extern struct _PinTable Pin[29], rollout_position[29];	/* 0, 25 = bar, 1 - 24 = board and 26, 27 finished[color] */
+ 
+ 
+ /* if you have the dice values 1 and 1 and all stones are on different
+@@ -137,7 +139,7 @@
+         int to;
+ } MOVE;
+ 
+-MOVE possible_moves[8000], *list;
++extern MOVE possible_moves[8000], *list;
+ 
+ struct _move_hist {
+ 	int	    from [4];
+@@ -151,16 +153,17 @@
+ struct _Tournament {
+ 	unsigned int   game_number;
+ 	unsigned int   winning_point;
+-} tournament;
++};
++extern struct _Tournament tournament;
+ 
+ struct _RolloutSave {
+ 	int turn;
+ 	int doubler_value;
+ 	int doubler_owner;
+ 	int roll[2];
+-} rollout_save;
++};
+ 
+-FILE *endgame_database;
++extern FILE *endgame_database;
+ 
+ extern void switch_turn();
+ 
+--- a/rollout.c
++++ b/rollout.c
+@@ -48,6 +48,9 @@
+ void   rollout_roll_dice  ();
+ void   exec_rollout       ();
+ 
++struct _PinTable Pin[29], rollout_position[29];
++struct _RolloutSave rollout_save;
++
+ void RollOut (void)
+ {
+ 	Widget toplevel = Player[0].X11Set.toplevel;
+--- a/xgammon.c
++++ b/xgammon.c
+@@ -178,6 +178,10 @@
+ MOVE		*compi_choice;
+ 
+ FILE*		protokol_file = NULL;
++FILE*       endgame_database;
++struct _gammon_resource gammon_resource;
++struct _Tournament tournament;
++struct _Player Player[2];
+ 
+ char * greetings = "Wellcome to xgammon  version 0.98\n   (C) 1994   Lambert Klasen   Detlef Steuer\n    We hope you enjoy it\n\n";
+ 
+--- a/xgammon.h
++++ b/xgammon.h
+@@ -70,7 +70,8 @@
+ 	char	*server;
+ 	int     port;
+ 	int     button_move;
+-} gammon_resource;
++};
++extern struct _gammon_resource gammon_resource;
+ 
+ /* diawin.c */
+ extern void AppendDialogText ();
