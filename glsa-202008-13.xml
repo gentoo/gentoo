@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202008-13">
+  <title>PostgreSQL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in PostgreSQL, the worst
+    of which could result in privilege escalation.
+  </synopsis>
+  <product type="ebuild">postgresql</product>
+  <announced>2020-08-26</announced>
+  <revised count="1">2020-08-26</revised>
+  <bug>737032</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/postgresql" auto="yes" arch="*">
+      <unaffected range="ge" slot="9.5">9.5.23</unaffected>
+      <unaffected range="ge" slot="9.6">9.6.19</unaffected>
+      <unaffected range="ge" slot="10">10.14</unaffected>
+      <unaffected range="ge" slot="11">11.9</unaffected>
+      <unaffected range="ge" slot="12">12.4</unaffected>
+      <vulnerable range="lt" slot="9.5">9.5.23</vulnerable>
+      <vulnerable range="lt" slot="9.6">9.6.19</vulnerable>
+      <vulnerable range="lt" slot="10">10.14</vulnerable>
+      <vulnerable range="lt" slot="11">11.9</vulnerable>
+      <vulnerable range="lt" slot="12">12.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PostgreSQL is an open source object-relational database management
+      system.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in PostgreSQL. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PostgreSQL 9.5 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-9.5.23:9.5"
+    </code>
+    
+    <p>All PostgreSQL 9.6 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-9.6.19:9.6"
+    </code>
+    
+    <p>All PostgreSQL 10 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-10.14:10"
+    </code>
+    
+    <p>All PostgreSQL 11 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-11.9:11"
+    </code>
+    
+    <p>All PostgreSQL 12 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-12.4:12"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14349">CVE-2020-14349</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14350">CVE-2020-14350</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-08-24T15:56:48Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-08-26T21:32:33Z">sam_c</metadata>
+</glsa>
