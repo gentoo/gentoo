@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+inherit toolchain-funcs
 
 DESCRIPTION="C library for the MaxMind DB file format"
 HOMEPAGE="https://github.com/maxmind/libmaxminddb"
@@ -16,6 +17,7 @@ DOCS=( Changes.md )
 
 src_configure() {
 	econf $(use_enable static-libs static)
+	tc-export AR CC
 }
 
 src_install() {

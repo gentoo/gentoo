@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools git-r3
+inherit autotools git-r3 toolchain-funcs
 
 DESCRIPTION="C library for the MaxMind DB file format"
 HOMEPAGE="https://github.com/maxmind/libmaxminddb"
@@ -22,6 +22,7 @@ src_prepare() {
 
 src_configure() {
 	econf $(use_enable static-libs static)
+	tc-export AR CC
 }
 
 src_install() {
