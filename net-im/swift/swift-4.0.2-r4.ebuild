@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..9} )
 
-inherit gnome2-utils python-any-r1 scons-utils toolchain-funcs
+inherit python-any-r1 scons-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="An elegant, secure, adaptable and intuitive XMPP Client"
 HOMEPAGE="https://www.swift.im/"
@@ -71,6 +71,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-boost-1.69-compatibility.patch
 	"${WORKDIR}"/${P}-python3-compatibility.patch
 	"${FILESDIR}"/${P}-qt-5.11-compatibility.patch
+	"${FILESDIR}"/${P}-qt-5.15-compatibility.patch
 )
 
 src_prepare() {
@@ -207,9 +208,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	use client && gnome2_icon_cache_update
+	use client && xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	use client && gnome2_icon_cache_update
+	use client && xdg_icon_cache_update
 }

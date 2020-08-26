@@ -67,6 +67,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-boost-1.69-compatibility.patch
 	"${FILESDIR}"/${P}-make-generated-files-handle-unicode-characters.patch
 	"${FILESDIR}"/${P}-qt-5.11-compatibility.patch
+	"${FILESDIR}"/${P}-qt-5.15-compatibility.patch
 )
 
 src_prepare() {
