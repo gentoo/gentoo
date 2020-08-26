@@ -11,6 +11,6 @@ PROPERTIES=live
 RDEPEND=sys-libs/zlib nls? ( virtual/libintl ) virtual/libiconv >=dev-libs/gmp-4.3.2:0= >=dev-libs/mpfr-2.4.2:0= >=dev-libs/mpc-0.8.1:0= objc-gc? ( >=dev-libs/boehm-gc-7.4.2 ) graphite? ( >=dev-libs/isl-0.14:0= )
 RESTRICT=!test? ( test )
 SLOT=11
-SRC_URI=mirror://gentoo/gcc-11.0.0-patches-3.tar.bz2 https://dev.gentoo.org/~vapier/dist/gcc-11.0.0-patches-3.tar.bz2 https://dev.gentoo.org/~rhill/dist/gcc-11.0.0-patches-3.tar.bz2 https://dev.gentoo.org/~zorry/patches/gcc/gcc-11.0.0-patches-3.tar.bz2 https://dev.gentoo.org/~blueness/dist/gcc-11.0.0-patches-3.tar.bz2 https://dev.gentoo.org/~tamiko/distfiles/gcc-11.0.0-patches-3.tar.bz2 https://dev.gentoo.org/~slyfox/distfiles/gcc-11.0.0-patches-3.tar.bz2
+SRC_URI=mirror://gentoo/gcc-11.0.0-patches-4.tar.bz2 https://dev.gentoo.org/~vapier/dist/gcc-11.0.0-patches-4.tar.bz2 https://dev.gentoo.org/~rhill/dist/gcc-11.0.0-patches-4.tar.bz2 https://dev.gentoo.org/~zorry/patches/gcc/gcc-11.0.0-patches-4.tar.bz2 https://dev.gentoo.org/~blueness/dist/gcc-11.0.0-patches-4.tar.bz2 https://dev.gentoo.org/~tamiko/distfiles/gcc-11.0.0-patches-4.tar.bz2 https://dev.gentoo.org/~slyfox/distfiles/gcc-11.0.0-patches-4.tar.bz2
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	8ec5b53812bce105ae7943930e4660f8	gnuconfig	b8ec1c34be4ff9dac7ad4034d277936b	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	prefix	c2993e4c430c1ee24f278983d6189501	toolchain	f02a2b590b7268a6c5572fd8747576bb	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=fc984b510012c19b5b096a264fca265b
+_md5_=819f8b8ef4752a9e6dfc5693ab808fcb
