@@ -11,7 +11,7 @@ PATCHSET="python-gentoo-patches-2.7.17-r1"
 
 DESCRIPTION="A fast, compliant alternative implementation of the Python language"
 HOMEPAGE="https://pypy.org/"
-SRC_URI="https://bitbucket.org/pypy/pypy/downloads/${MY_P}-src.tar.bz2
+SRC_URI="https://downloads.python.org/pypy/${MY_P}-src.tar.bz2
 	https://dev.gentoo.org/~mgorny/dist/python/${PATCHSET}.tar.xz"
 S="${WORKDIR}/${MY_P}-src"
 
