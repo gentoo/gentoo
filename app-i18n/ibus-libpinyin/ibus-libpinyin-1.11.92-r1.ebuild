@@ -37,6 +37,9 @@ DEPEND="${PYTHON_DEPS}
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	sed -i \
+		-e "/^appdatadir/s:/appdata:/metainfo:" \
+		data/Makefile.am || die
 	default
 	eautoreconf
 }
