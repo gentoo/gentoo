@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202008-11">
+  <title>Chromium, Google Chrome: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Chromium and Google
+    Chrome, the worst of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">chromium,google-chrome</product>
+  <announced>2020-08-26</announced>
+  <revised count="1">2020-08-26</revised>
+  <bug>738998</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">85.0.4183.83</unaffected>
+      <vulnerable range="lt">85.0.4183.83</vulnerable>
+    </package>
+    <package name="www-client/google-chrome" auto="yes" arch="*">
+      <unaffected range="ge">85.0.4183.83</unaffected>
+      <vulnerable range="lt">85.0.4183.83</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open-source browser project that aims to build a safer,
+      faster, and more stable way for all users to experience the web.
+    </p>
+    
+    <p>Google Chrome is one fast, simple, and secure browser for all your
+      devices.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium and Google
+      Chrome. Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-85.0.4183.83"
+    </code>
+    
+    <p>All Google Chrome users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/google-chrome-85.0.4183.83"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6559">CVE-2020-6559</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6560">CVE-2020-6560</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6561">CVE-2020-6561</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6562">CVE-2020-6562</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6563">CVE-2020-6563</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6564">CVE-2020-6564</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6565">CVE-2020-6565</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6566">CVE-2020-6566</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6567">CVE-2020-6567</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6568">CVE-2020-6568</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6569">CVE-2020-6569</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6570">CVE-2020-6570</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6571">CVE-2020-6571</uri>
+    <uri link="https://chromereleases.googleblog.com/2020/08/stable-channel-update-for-desktop_25.html">
+      Upstream advisory
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-08-25T22:23:14Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-08-26T21:30:54Z">sam_c</metadata>
+</glsa>

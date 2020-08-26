@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202008-15">
+  <title>Docker: Information disclosure</title>
+  <synopsis>A flaw in Docker allowed possible information leakage.</synopsis>
+  <product type="ebuild">docker</product>
+  <announced>2020-08-26</announced>
+  <revised count="1">2020-08-26</revised>
+  <bug>729208</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-emulation/docker" auto="yes" arch="*">
+      <unaffected range="ge">19.03.12</unaffected>
+      <vulnerable range="lt">19.03.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Docker is the world’s leading software containerization platform.</p>
+  </background>
+  <description>
+    <p>It was found that Docker created network bridges which by default accept
+      IPv6 router advertisements.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker who gained access to a container with CAP_NET_RAW capability
+      may be able to to spoof router advertisements, resulting in information
+      disclosure or denial of service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Docker users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/docker-19.03.12"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-13401">CVE-2020-13401</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-08-26T14:40:16Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-08-26T21:33:28Z">sam_c</metadata>
+</glsa>
