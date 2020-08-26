@@ -111,7 +111,11 @@ src_configure() {
 src_compile() {
 	set_arch_to_kernel
 
-	myemakeargs=( V=1 )
+	myemakeargs=(
+		CROSS_COMPILE="${CHOST}-"
+		HOSTCC="$(tc-getBUILD_CC)"
+		V=1
+	)
 
 	emake "${myemakeargs[@]}"
 }
