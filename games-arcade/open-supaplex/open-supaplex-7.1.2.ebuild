@@ -38,7 +38,12 @@ src_test() {
 	# Avoid installing savegames, configs, etc, if any were written during the test
 	cp -R resources "${T}/test" || die
 	cd tests || die
-	OPENSUPAPLEX_PATH="${T}/test" ./run-tests.rb ./opensupaplex || die
+	# gems are not used by the test, but by default ruby fails to start if
+	# dev-ruby/rubygems is not installed. dev-lang/ruby depends on that package
+	# via PDEPEND which is why it's not available if ruby was pulled as a
+	# dependency to open-supaplex on clean machine.
+	# https://bugs.gentoo.org/739126
+	OPENSUPAPLEX_PATH="${T}/test" ruby --disable=gems ./run-tests.rb ./opensupaplex || die
 }
 
 src_install() {
