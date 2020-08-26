@@ -9,7 +9,7 @@ MY_PN="${PN/-bin/}"
 
 DESCRIPTION="Tool to control performance, energy, fan and comfort settings on TUXEDO laptops"
 HOMEPAGE="https://github.com/tuxedocomputers/tuxedo-control-center"
-SRC_URI="https://rpm.tuxedocomputers.com/opensuse/15.1/x86_64/${MY_PN}_${PV}.rpm"
+SRC_URI="https://rpm.tuxedocomputers.com/opensuse/15.2/x86_64/${MY_PN}_${PV}.rpm"
 
 LICENSE="GPL-3"
 SLOT="0"
