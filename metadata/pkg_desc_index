@@ -3992,7 +3992,7 @@ dev-haskell/exact-pi 0.5.0.1: Exact rational multiples of pi (and integer powers
 dev-haskell/exceptions 0.3.3 0.6.1 0.8.0.2 0.8.2.1 0.8.3 0.10.4: Extensible optionally-pure exceptions
 dev-haskell/executable-path 0.0.3-r1 0.0.3.1: Finding out the full path of the executable
 dev-haskell/extensible-exceptions 0.1.1.4: Extensible exceptions
-dev-haskell/extra 1.7.6: Extra functions I use
+dev-haskell/extra 1.7.7: Extra functions I use
 dev-haskell/fail 4.9.0.0: Forward-compatible MonadFail class
 dev-haskell/failure 0.2.0.3: A simple type class for success/failure computations. (deprecated)
 dev-haskell/fast-logger 2.4.6 2.4.7 3.0.1: A fast logging system
@@ -4084,7 +4084,7 @@ dev-haskell/highlighting-kate 0.5.5 0.5.14 0.6 0.6.1 0.6.2 0.6.3 0.6.4: Syntax h
 dev-haskell/hinotify 0.3.8.1 0.3.10: Haskell binding to inotify
 dev-haskell/hit 0.6.3: Git operations in haskell
 dev-haskell/hjsmin 0.1.5.1 0.2.0.2 0.2.0.4: Haskell implementation of a javascript minifier
-dev-haskell/hlint 1.8.57 1.9.21 1.9.35 2.1.17-r1: Source code suggestions
+dev-haskell/hlint 2.1.17-r1: Source code suggestions
 dev-haskell/hoauth2 1.8.9: Haskell OAuth2 authentication client
 dev-haskell/hostname 1.0-r1: A a cross-platform means of determining the hostname
 dev-haskell/hourglass 0.2.9 0.2.12: simple performant time related library
@@ -4542,7 +4542,7 @@ dev-haskell/wx 0.92.2.0: Portable and native GUI library built on wxWidgets
 dev-haskell/wxc 0.92.2.0 0.92.3.0: wxHaskell C++ wrapper
 dev-haskell/wxcore 0.92.2.0: wxHaskell core
 dev-haskell/wxdirect 0.92.2.0 0.92.2.0-r1 0.92.3.0-r1: helper tool for building wxHaskell
-dev-haskell/x11 1.6.1.1 1.6.1.2 1.8-r1 1.9.1: A binding to the X11 graphics library
+dev-haskell/x11 1.9.2: A binding to the X11 graphics library
 dev-haskell/x11-xft 0.3.1 0.3.1-r1: Bindings to the Xft, X Free Type interface library, and some Xrender parts
 dev-haskell/x509 1.6.5 1.7.5: X509 reader and writer
 dev-haskell/x509-store 1.6.7: X.509 collection accessing and storing methods
@@ -17628,7 +17628,7 @@ sys-kernel/ck-sources 5.4.37 5.4.48: Gentoo's genpatches for Linux , with Con Ko
 sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
-sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.0-r2 9999: Gentoo automatic kernel building scripts
+sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.0-r2 4.1.1 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.4.58 5.4.59 5.4.60 5.7.10 5.7.12 5.7.13 5.7.15 5.7.16 5.7.17 5.8.1 5.8.2 5.8.3: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.4.58 5.4.59 5.4.60 5.7.10 5.7.12 5.7.13 5.7.15 5.7.16 5.7.17 5.8.1 5.8.2 5.8.3: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.228 4.4.229 4.4.230 4.4.231 4.4.232 4.4.233 4.4.234 4.9.228 4.9.229 4.9.230 4.9.231 4.9.232 4.9.233 4.9.234 4.14.185 4.14.191 4.14.192 4.14.193 4.14.194 4.14.195 4.19.129 4.19.138 4.19.139 4.19.140 4.19.141 4.19.142 5.4.48 5.4.57 5.4.58 5.4.59 5.4.60 5.4.61 5.7.14 5.7.15 5.7.16 5.7.17 5.7.18 5.8.0 5.8.0-r1 5.8.1 5.8.2 5.8.3 5.8.4: Full sources including the Gentoo patchset for the 5.8 kernel tree
@@ -18702,7 +18702,7 @@ x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB exte
 x11-misc/xkeyboard-config 2.30 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2 2.47_p7: GUI frontend to xmodmap
 x11-misc/xlockmore 5.50 5.62 5.63 5.64 5.65: Just another screensaver application for X
-x11-misc/xmobar 0.24.3-r1 0.35.1: A Minimalistic Text Based Status Bar
+x11-misc/xmobar 0.36: A Minimalistic Text Based Status Bar
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
 x11-misc/xnee 3.19-r2: Program suite to record, replay and distribute user actions
 x11-misc/xnots 0.2.1-r2 9999: A desktop sticky note program for the unix geek

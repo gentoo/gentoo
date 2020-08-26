@@ -1775,7 +1775,6 @@ dev-haskell/warp:warp-debug - Add additional debuging information
 dev-haskell/wcwidth:cli - Enable command line tool
 dev-haskell/wreq:aws - Enable AWS tests
 dev-haskell/wreq:httpbin - Install client
-dev-haskell/x11:screensaver - whether to build XScreenSaver.
 dev-haskell/yaml:no-examples - don't build the examples
 dev-haskell/yaml:no-exe - don't install the yaml2json executable
 dev-haskell/yesod-auth:network-uri - Get Network.URI from the network-uri package
@@ -9043,7 +9042,6 @@ x11-misc/xkbset:tk - Install the dev-perl/Tk based xkbset-gui utility
 x11-misc/xlockmore:vtlock - Enables support for virtual terminal locking
 x11-misc/xlockmore:xlockrc - Enables xlockrc for people without PAM
 x11-misc/xmobar:alsa - Use alsa-mixer to get the volume from soundcards
-x11-misc/xmobar:conduit - Use conduit to fetch weather data.
 x11-misc/xmobar:dbus - Publish a service on the session bus for controlling xmobar
 x11-misc/xmobar:inotify - inotify support (modern Linux only). Required for the Mail and MBox plugins
 x11-misc/xmobar:iwlib - Wireless info support via Wext ioctls (deprecated)
