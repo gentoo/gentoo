@@ -29,6 +29,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-config.patch
 	"${FILESDIR}"/gcc33.patch
 	"${FILESDIR}"/${P}-glibc-2.32.patch
+	"${FILESDIR}"/${P}-fno-common.patch
 )
 
 src_configure() {
