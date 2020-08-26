@@ -38,6 +38,8 @@ RESTRICT="debug? ( strip ) test"
 
 DOCS=( AUTHORS COPYRIGHT META README.md )
 
+PATCHES=( "${FILESDIR}/${PV}-U__BMI__.patch" )
+
 pkg_setup() {
 	CONFIG_CHECK="
 		!DEBUG_LOCK_ALLOC
