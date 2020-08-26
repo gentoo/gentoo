@@ -22,6 +22,7 @@ RDEPEND="
 	"
 
 CONFIG_CHECK="~OVERLAY_FS"
+RESTRICT+=" test"
 
 src_compile() {
 	cd _dist/src/github.com/lxc/distrobuilder || die "cd failed"
