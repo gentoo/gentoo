@@ -15524,7 +15524,7 @@ net-proxy/privoxy 3.0.26 3.0.28-r1: A web proxy with advanced filtering capabili
 net-proxy/redsocks 0.5 0.5-r1 9999: Transparent redirector of any TCP connection to proxy
 net-proxy/rejik 3.2.10: A squid redirector used for blocking unwanted content
 net-proxy/shadowsocks-libev 3.3.4: A lightweight secured SOCKS5 proxy for embedded devices and low end boxes
-net-proxy/squid 4.12: A full-featured web proxy cache
+net-proxy/squid 4.13: A full-featured web proxy cache
 net-proxy/squidguard 1.6.0: Combined filter, redirector and access controller plugin for Squid
 net-proxy/squirm 1.26-r1: A redirector for Squid
 net-proxy/sshuttle 0.78.5 1.0.3: Transparent proxy server that works as a poor man's VPN using ssh
