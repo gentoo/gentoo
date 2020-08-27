@@ -77,6 +77,10 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/sss_certmap.h
 )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-glibc-2.32-compat.patch
+)
+
 pkg_setup() {
 	linux-info_pkg_setup
 }
