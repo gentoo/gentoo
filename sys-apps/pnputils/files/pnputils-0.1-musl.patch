@@ -1,0 +1,22 @@
+diff -ur a/lspnp.c b/lspnp.c
+--- a/lspnp.c
++++ b/lspnp.c
+@@ -28,6 +28,7 @@
+ #include <endian.h>
+ #include <ctype.h>
+ #include <asm/types.h>
++#include <sys/types.h>
+ 
+ #include "pnp_resource.h"
+ 
+diff -ur a/setpnp.c b/setpnp.c
+--- a/setpnp.c
++++ b/setpnp.c
+@@ -40,6 +40,7 @@
+ #include <endian.h>
+ #include <ctype.h>
+ #include <asm/types.h>
++#include <sys/types.h>
+ 
+ #include "pnp_resource.h"
+ 
