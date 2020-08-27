@@ -13,17 +13,22 @@ HOMEPAGE="https://pear.php.net/package/Net_SMTP"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="examples sasl"
+IUSE="examples sasl test"
 DEPEND=""
 RDEPEND="dev-lang/php:*
 	dev-php/PEAR-Net_Socket
 	dev-php/PEAR-PEAR
 	sasl? ( dev-php/PEAR-Auth_SASL )"
+BDEPEND="test? ( ${RDEPEND} )"
+RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${MY_P}"
 
 src_install() {
-	DOCS=( docs/guide.txt )
 	use examples && HTML_DOCS=( examples )
 	php-pear-r2_src_install
+}
+
+src_test() {
+	pear run-tests tests || die
 }
