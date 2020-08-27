@@ -3899,7 +3899,7 @@ dev-haskell/configurator 0.3.0.0-r1: Configuration management
 dev-haskell/connection 0.2.4 0.2.5 0.3.1: Simple and easy network connections API
 dev-haskell/constraints 0.4.1.3 0.8 0.11.2: Constraint manipulation
 dev-haskell/contravariant 0.4.4 0.6 1.2.0.1 1.3.3 1.4 1.5.2: Contravariant functors
-dev-haskell/contravariant-extras 0.3.5.1: Extras for the \\
+dev-haskell/contravariant-extras 0.3.5.2: Extras for the "contravariant" package
 dev-haskell/control-monad-loop 0.1: Simple monad transformer for imperative-style loops
 dev-haskell/convertible 1.1.1.0: Typeclasses and instances for converting between types
 dev-haskell/cookie 0.4.2 0.4.2.1 0.4.4: HTTP cookie parsing and rendering
@@ -3944,7 +3944,7 @@ dev-haskell/data-ordlist 0.4.7.0: Set and bag operations on ordered lists
 dev-haskell/dataenc 0.14.0.5 0.14.0.7: Data encoding library
 dev-haskell/date-cache 0.3.0-r1: Date cacher
 dev-haskell/dav 1.3.4: RFC 4918 WebDAV support
-dev-haskell/dbus 0.10.10 0.10.11-r1 0.10.12 0.10.13 1.2.16: A client library for the D-Bus IPC system
+dev-haskell/dbus 1.2.16: A client library for the D-Bus IPC system
 dev-haskell/dbus-core 0.9.3-r3: Low-level D-Bus protocol implementation
 dev-haskell/dec 0.0.3: Decidable propositions
 dev-haskell/deepseq-generics 0.1.1.2 0.2.0.0: GHC.Generics-based Control.DeepSeq.rnf implementation
@@ -4035,7 +4035,7 @@ dev-haskell/glib 0.12.5.4 0.13.2.2 0.13.4.1 0.13.7.0 0.13.8.1: Binding to the GL
 dev-haskell/glob 0.7.5 0.7.14 0.9.3: Globbing library
 dev-haskell/gluraw 1.3.0.0 1.4.0.1 1.5.0.1 2.0.0.3 2.0.0.4: A raw binding for the OpenGL graphics system
 dev-haskell/glut 2.5.1.1 2.7.0.11 2.7.0.15: A binding for the OpenGL Utility Toolkit
-dev-haskell/gnuidn 0.2.1 0.2.2 0.2.2-r1: Bindings for GNU IDN
+dev-haskell/gnuidn 0.2.2-r1: Bindings for GNU IDN
 dev-haskell/gnutls 0.2: Bindings for GNU libgnutls
 dev-haskell/graphviz 2999.18.0.2-r1 2999.18.1.2 2999.20.0.4: Bindings to Graphviz for graph visualisation
 dev-haskell/groupoids 3.0.1.1 4.0: This package has been absorbed into semigroupoids 4.0
@@ -4418,7 +4418,7 @@ dev-haskell/stringsearch 0.3.6.5 0.3.6.6 0.3.6.6-r1: Fast searching, splitting a
 dev-haskell/syb 0.4.3 0.4.4 0.5.1 0.7.1: Scrap Your Boilerplate
 dev-haskell/syb-with-class 0.6.1.6 0.6.1.7 0.6.1.11: Scrap Your Boilerplate With Class
 dev-haskell/system-fileio 0.3.16.3 0.3.16.4: Consistent filesystem interaction across GHC versions (deprecated)
-dev-haskell/system-filepath 0.4.8-r1 0.4.13.4 0.4.14: High-level, byte-based file and directory path manipulations (deprecated)
+dev-haskell/system-filepath 0.4.14: High-level, byte-based file and directory path manipulations (deprecated)
 dev-haskell/system-posix-redirect 1.1.0.1: A toy module to temporarily redirect a program's stdout
 dev-haskell/tagged 0.6.1 0.7.3 0.8.2 0.8.4 0.8.6: Haskell 98 phantom types to avoid unsafely passing dummy arguments
 dev-haskell/tagshare 0.0: TagShare - explicit sharing with tags
@@ -4438,7 +4438,7 @@ dev-haskell/tasty-quickcheck 0.3.1 0.8.3.2 0.8.4 0.10.1.1: QuickCheck support fo
 dev-haskell/tasty-rerun 1.1.5 1.1.6 1.1.13-r1 1.1.17: Run tests by filtering the tests depending on the result of previous runs
 dev-haskell/tasty-smallcheck 0.2 0.8 0.8.1: SmallCheck support for the Tasty test framework
 dev-haskell/tasty-th 0.1.3 0.1.4: Automatic tasty test case discovery using TH
-dev-haskell/template-haskell-compat-v0208 0.1.2.1: A backwards compatibility layer for Template Haskell newer than 2.8
+dev-haskell/template-haskell-compat-v0208 0.1.4: A backwards compatibility layer for Template Haskell newer than 2.8
 dev-haskell/temporary 1.1.2.4 1.2.0.3 1.2.0.4 1.3: Portable temporary file and directory support for Windows and Unix
 dev-haskell/temporary-rc 1.2.0.3: Portable temporary file and directory support for Windows and Unix
 dev-haskell/tensor 1.0.0.1 1.1.0.1: Tensor data types
@@ -7956,8 +7956,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r2 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.14.23 1.14.31 1.14.46 9999: The AWS SDK for Python
-dev-python/botocore 1.17.23 1.17.31 1.17.46 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.14.23 1.14.31 1.14.46 1.14.49 9999: The AWS SDK for Python
+dev-python/botocore 1.17.23 1.17.31 1.17.46 1.17.49 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.18: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.19: Syntax highlighting and autocompletion for the Python interpreter
@@ -8039,7 +8039,7 @@ dev-python/coverage-test-runner 1.15: fail Python program unit tests unless they
 dev-python/cppy 1.1.0: C++ header library which makes it easier to write Python extension modules
 dev-python/crcmod 1.7-r3: Python CRC Generator module
 dev-python/croniter 0.3.30: Python module to provide iteration for datetime object
-dev-python/cryptography 2.9 3.0: Library providing cryptographic recipes and primitives
+dev-python/cryptography 2.9 3.0 3.1: Library providing cryptographic recipes and primitives
 dev-python/css-parser 1.0.4-r1: A CSS Cascading Style Sheets library (fork of cssutils)
 dev-python/cssselect 1.1.0: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssselect2 0.3.0: Parses CSS3 Selectors and translates them to XPath 1.0
@@ -8073,7 +8073,7 @@ dev-python/diff-cover 2.3.0: Automatically find diff lines that need test covera
 dev-python/diff-match-patch 20181111: Diff, match and patch algorithms for plain text
 dev-python/dill 0.3.2: Serialize all of python (almost)
 dev-python/discogs-client 2.2.2: Official Python API client for Discogs
-dev-python/diskcache 4.1.0 5.0.1: Disk and file backed cache
+dev-python/diskcache 4.1.0 5.0.1 5.0.2: Disk and file backed cache
 dev-python/dissononce 0.34.3-r1: A python implementation for Noise Protocol Framework
 dev-python/distlib 0.3.1: Low-level components of distutils2/packaging
 dev-python/distributed 1.18.0-r1: Python library for distributed computation
@@ -8166,7 +8166,7 @@ dev-python/flask 1.1.2 9999: A microframework based on Werkzeug, Jinja2 and good
 dev-python/flask-api 2.0: Browsable web APIs for Flask
 dev-python/flask-appconfig 0.11.1-r1: Configures Flask applications in a canonical way
 dev-python/flask-assets 0.12: Flask webassets integration
-dev-python/flask-babel 1.0.0: i18n and l10n support for Flask based on Babel and pytz
+dev-python/flask-babel 1.0.0 2.0.0: i18n and l10n support for Flask based on Babel and pytz
 dev-python/flask-babelex 0.9.4: Adds i18n/l10n support to Flask applications
 dev-python/flask-cors 2.1.0: A Flask extension for Cross Origin Resource Sharing (CORS)
 dev-python/flask-debug 0.4.3: Flask extension that displays various debugging insights during development
@@ -8839,7 +8839,7 @@ dev-python/pytest-httpbin 1.0.0: Easily test your HTTP library against a local c
 dev-python/pytest-lazy-fixture 0.6.3: It helps to use fixtures in pytest.mark.parametrize
 dev-python/pytest-localserver 0.5.0: Py.test plugin to test server connections locally
 dev-python/pytest-metadata 1.8.0: A plugin for pytest that provides access to test session metadata
-dev-python/pytest-mock 1.11.2 2.0.0 3.2.0 3.3.0: Thin-wrapper around the mock package for easier use with pytest
+dev-python/pytest-mock 1.11.2 2.0.0 3.2.0 3.3.0 3.3.1: Thin-wrapper around the mock package for easier use with pytest
 dev-python/pytest-pep8 1.0.6-r1: pytest plugin to check PEP8 requirements
 dev-python/pytest-pylint 0.14.1: pytest plugin to check source code with pylint
 dev-python/pytest-qt 3.3.0: pytest plugin for PyQt4 or PyQt5 applications
@@ -15098,7 +15098,7 @@ net-misc/cbqinit 0.7.3-r3: Sets up class-based queue traffic control (QoS) with 
 net-misc/cbugzilla 0.2.1: CLI and C api to get data from Bugzilla
 net-misc/cfengine 2.2.10-r5 2.2.10-r6 3.3.9 3.4.5 3.5.3 3.6.2: An automated suite of programs for configuring and maintaining Unix-like computers
 net-misc/cgminer 4.9.2 4.10.0: Bitcoin CPU/GPU/FPGA/ASIC miner in C
-net-misc/chrony 3.5-r2 3.5-r4 3.5.1 4.0_pre2-r1 9999: NTP client and server programs
+net-misc/chrony 3.5-r2 3.5-r4 3.5.1 4.0_pre3 9999: NTP client and server programs
 net-misc/clockspeed 0.62-r6 0.62-r7: Simple Network Time Protocol (NTP) client
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
 net-misc/cmst 2020.05.09: Qt GUI for Connman with system tray icon
@@ -17629,8 +17629,8 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.0-r2 4.1.1 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.4.58 5.4.59 5.4.60 5.7.10 5.7.12 5.7.13 5.7.15 5.7.16 5.7.17 5.8.1 5.8.2 5.8.3: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.4.58 5.4.59 5.4.60 5.7.10 5.7.12 5.7.13 5.7.15 5.7.16 5.7.17 5.8.1 5.8.2 5.8.3: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.60 5.7.17 5.8.3: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.60 5.7.17 5.8.3: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.228 4.4.229 4.4.230 4.4.231 4.4.232 4.4.233 4.4.234 4.9.228 4.9.229 4.9.230 4.9.231 4.9.232 4.9.233 4.9.234 4.14.185 4.14.191 4.14.192 4.14.193 4.14.194 4.14.195 4.19.129 4.19.138 4.19.139 4.19.140 4.19.141 4.19.142 5.4.48 5.4.57 5.4.58 5.4.59 5.4.60 5.4.61 5.7.14 5.7.15 5.7.16 5.7.17 5.7.18 5.8.0 5.8.0-r1 5.8.1 5.8.2 5.8.3 5.8.4: Full sources including the Gentoo patchset for the 5.8 kernel tree
 sys-kernel/git-sources 5.9_rc1 5.9_rc2: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17645,7 +17645,7 @@ sys-kernel/pf-sources 5.6_p8 5.7_p1 5.7_p2 5.7_p3 5.7_p4 5.7_p5 5.7_p7 5.8_p1 5.
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p20190925 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.225_p198 4.4.231_p202 4.9.227_p146 4.9.232_p150 4.14.184_p84 4.14.192_p91 4.19.127_p54 4.19.135_p60 5.4.44_p27 5.4.54_p33 5.6.17_p10 5.6.19_p11: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.40 5.4.52 5.4.53 5.4.55 5.4.56 5.4.58 5.4.59 5.4.60 5.7.10 5.7.12 5.7.13 5.7.15 5.7.16 5.7.17 5.8.1 5.8.2 5.8.3: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.60 5.7.17 5.8.3: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.234 4.9.234 4.14.195 4.19.142 5.4.61 5.7.18 5.8.4: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
