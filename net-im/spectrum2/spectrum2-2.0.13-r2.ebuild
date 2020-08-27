@@ -58,7 +58,10 @@ DEPEND="
 	test? ( dev-util/cppunit )
 "
 
-PATCHES=( "${FILESDIR}/${P}-libpqxx-7-compatibility.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-libpqxx-7-compatibility.patch"
+	"${FILESDIR}/${P}-musl-compatibility.patch"
+)
 
 src_prepare() {
 	# Respect users LDFLAGS
