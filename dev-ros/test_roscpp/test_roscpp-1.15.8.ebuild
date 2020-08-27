@@ -32,5 +32,7 @@ PATCHES=( "${FILESDIR}/tests.patch" )
 
 src_test() {
 	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
-	ros-catkin_src_test
+	# Sometimes high number of tests running in parallel make them fail
+	# https://bugs.gentoo.org/738620
+	ros-catkin_src_test -j 1
 }
