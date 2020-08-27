@@ -12,7 +12,7 @@ SRC_URI="http://www.tntnet.org/download/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~sparc ~x86"
-IUSE="gnutls libressl server ssl examples"
+IUSE="gnutls libressl server ssl examples static-libs"
 
 RDEPEND=">=dev-libs/cxxtools-2.2.1
 	sys-libs/zlib[minizip]
@@ -90,5 +90,10 @@ src_install() {
 	if use server; then
 		rm -f "${D}/etc/init.d/tntnet"
 		newinitd "${FILESDIR}/tntnet.initd" tntnet
+	fi
+
+	# bug 737184
+	if ! use static-libs; then
+		find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
 	fi
 }
