@@ -289,6 +289,7 @@ RDEPEND="acct-group/syncthing
 		acct-user/stdiscosrv
 		acct-user/strelaysrv )
 	selinux? ( sec-policy/selinux-syncthing )"
+BDEPEND="<dev-lang/go-1.15"
 
 DOCS=( README.md AUTHORS CONTRIBUTING.md )
 
