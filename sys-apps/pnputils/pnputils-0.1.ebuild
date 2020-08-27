@@ -13,7 +13,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* amd64 x86"
 
-PATCHES=( "${FILESDIR}/${P}-makefile.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-makefile.patch"
+	"${FILESDIR}/${P}-musl.patch"
+)
 
 src_compile() {
 	emake CC="$(tc-getCC)" all
