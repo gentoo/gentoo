@@ -22,6 +22,9 @@ DEPEND="${RDEPEND}"
 
 BDEPEND="virtual/pkgconfig"
 
+# bug 731212
+QA_FLAGS_IGNORED="usr/bin/vdr2jpeg"
+
 DOCS=( README LIESMICH )
 
 src_prepare() {
