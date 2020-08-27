@@ -12,10 +12,11 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/openzfs/zfs.git"
 else
-	SRC_URI="https://github.com/openzfs/zfs/releases/download/zfs-${PV}/zfs-${PV}.tar.gz"
+	MY_PV="${PV/_rc/-rc}"
+	SRC_URI="https://github.com/openzfs/zfs/releases/download/zfs-${MY_PV}/zfs-${MY_PV}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64"
-	S="${WORKDIR}/zfs-${PV}"
-	ZFS_KERNEL_COMPAT="5.6"
+	S="${WORKDIR}/zfs-${PV%_rc?}"
+	ZFS_KERNEL_COMPAT="5.8"
 fi
 
 LICENSE="CDDL debug? ( GPL-2+ )"
