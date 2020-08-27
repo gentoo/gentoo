@@ -22,7 +22,6 @@ IUSE="udev"
 
 DEPEND="
 	dev-libs/hidapi:=
-	dev-libs/libbsd:=
 	dev-qt/qtcore:5=
 	dev-qt/qtgui:5=
 	dev-qt/qtwidgets:5=
@@ -33,13 +32,12 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}/OpenRGB-0.2-build-system.patch"
-)
-
 src_prepare() {
 	default
 	rm -rf dependencies/{hidapi,libusb}* || die
+	if [[ ${PV} != *9999* ]]; then
+		eapply "${FILESDIR}/OpenRGB-0.2-build-system.patch"
+	fi
 }
 
 src_configure() {
