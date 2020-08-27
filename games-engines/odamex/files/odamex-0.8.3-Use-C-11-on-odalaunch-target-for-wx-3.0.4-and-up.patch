@@ -1,4 +1,4 @@
-From 8b82b887fd1fb17162ad831bbe7a83076187499d Mon Sep 17 00:00:00 2001
+From 9e3ae8538475e6f15757ce51e214f5cd29f223e7 Mon Sep 17 00:00:00 2001
 From: Michael Wood <mwoodj@huntsvegas.org>
 Date: Tue, 25 Aug 2020 02:34:37 -0500
 Subject: [PATCH] Use C++11 on odalaunch target for wx 3.0.4 and up
