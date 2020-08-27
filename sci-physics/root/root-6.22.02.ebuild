@@ -1,15 +1,14 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 # ninja does not work due to fortran
 CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
-inherit cmake-utils cuda eapi7-ver elisp-common eutils fortran-2 \
-	prefix python-single-r1 toolchain-funcs
+inherit cmake cuda elisp-common fortran-2 prefix python-single-r1 toolchain-funcs
 
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
@@ -28,7 +27,7 @@ KEYWORDS="~amd64 ~x86"
 
 REQUIRED_USE="
 	^^ ( c++11 c++14 c++17 )
-	cuda? ( tmva !c++17 )
+	cuda? ( tmva )
 	cudnn? ( cuda )
 	!X? ( !asimage !opengl !qt5 )
 	davix? ( ssl xml )
@@ -126,12 +125,14 @@ pkg_setup() {
 src_prepare() {
 	use cuda && cuda_src_prepare
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -i "/CLING_BUILD_PLUGINS/d" interpreter/CMakeLists.txt || die
 
 	# CSS should use local images
 	sed -i -e 's,http://.*/,,' etc/html/ROOT.css || die "html sed failed"
+
+	eapply_user
 }
 
 # Note: ROOT uses bundled clang because it is patched and API-incompatible
@@ -154,7 +155,6 @@ src_configure() {
 		-DCMAKE_INSTALL_LIBDIR="lib"
 		-DDEFAULT_SYSROOT="${EPREFIX}"
 		-DCLING_BUILD_PLUGINS=OFF
-		-Dexplicitlink=ON
 		-Dexceptions=ON
 		-Dfail-on-missing=ON
 		-Dgnuinstall=OFF
@@ -184,11 +184,9 @@ src_configure() {
 		-Dbuiltin_xxhash=OFF
 		-Dbuiltin_zlib=OFF
 		-Dbuiltin_zstd=OFF
-		-Dx11=$(usex X)
 		-Dalien=OFF
 		-Darrow=OFF
 		-Dasimage=$(usex asimage)
-		-Dlibcxx=$(usex libcxx)
 		-Dccache=OFF # use ccache via portage
 		-Dcefweb=OFF
 		-Dclad=OFF
@@ -196,22 +194,21 @@ src_configure() {
 		-Dcuda=$(usex cuda)
 		-Dcudnn=$(usex cudnn)
 		-Dcxxmodules=OFF # requires clang, unstable
-		-Ddavix=$(usex davix)
 		-Ddataframe=ON
+		-Ddavix=$(usex davix)
 		-Ddcache=OFF
 		-Dfcgi=$(usex http)
 		-Dfftw3=$(usex fftw)
 		-Dfitsio=$(usex fits)
 		-Dfortran=$(usex fortran)
-		-Dftgl=$(usex opengl)
 		-Dgdml=$(usex gdml)
 		-Dgfal=OFF
-		-Dgl2ps=$(usex opengl)
 		-Dgminimal=OFF
 		-Dgsl_shared=$(usex gsl)
 		-Dgviz=$(usex graphviz)
 		-Dhttp=$(usex http)
 		-Dimt=$(usex tbb)
+		-Dlibcxx=$(usex libcxx)
 		-Dmathmore=$(usex gsl)
 		-Dmemstat=OFF # deprecated
 		-Dminimal=OFF
@@ -225,19 +222,20 @@ src_configure() {
 		-Dopengl=$(usex opengl)
 		-Doracle=$(usex oracle)
 		-Dpgsql=$(usex postgres)
+		-Dpyroot=$(usex python) # python was renamed to pyroot
+		-Dpyroot_legacy=OFF
 		-Dpythia6=$(usex pythia6)
 		-Dpythia8=$(usex pythia8)
-		-Dpyroot=$(usex python) # python was renamed to pyroot
-		-Dpyroot_experimental=OFF # use standard PyROOT for now
 		-Dqt5web=$(usex qt5)
+		-Dr=$(usex R)
 		-Droofit=$(usex roofit)
 		-Droot7=$(usex root7)
 		-Drootbench=OFF
 		-Droottest=OFF
 		-Drpath=OFF
-		-Druntime_cxxmodules=OFF # does not work yet
-		-Dr=$(usex R)
+		-Druntime_cxxmodules=OFF
 		-Dshadowpw=$(usex shadow)
+		-Dspectrum=ON
 		-Dsqlite=$(usex sqlite)
 		-Dssl=$(usex ssl)
 		-Dtcmalloc=OFF
@@ -245,28 +243,32 @@ src_configure() {
 		-Dtmva=$(usex tmva)
 		-Dtmva-cpu=$(usex tmva)
 		-Dtmva-gpu=$(usex cuda)
+		-Dtmva-pymva=$(usex tmva)
+		-Dtmva-rmva=$(usex R)
 		-Dunuran=$(usex unuran)
 		-Dvc=$(usex vc)
-		-Dvmc=$(usex vmc)
 		-Dvdt=OFF
 		-Dveccore=OFF
+		-Dvecgeom=OFF
+		-Dvmc=$(usex vmc)
+		-Dx11=$(usex X)
 		-Dxml=$(usex xml)
 		-Dxrootd=$(usex xrootd)
 		${EXTRA_ECONF}
 	)
 
 	CMAKE_BUILD_TYPE=$(usex debug Debug Release) \
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
 	# needed for hsimple.root
 	addwrite /dev/random
-	cmake-utils_src_compile
+	cmake_src_compile
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	ROOTSYS=${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)
 	ROOTENV="$((9999 - $(ver_cut 2)))${PN}-$(ver_cut 1-2)"

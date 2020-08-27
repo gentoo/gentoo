@@ -4,7 +4,7 @@
 EAPI=6
 
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python{2_7,3_{6,7,8}} )
+PYTHON_COMPAT=( python{2_7,3_{6,7,8,9}} )
 
 inherit gnome2 python-single-r1
 
@@ -30,6 +30,9 @@ DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.14
 	virtual/pkgconfig
 "
+
+# https://gitlab.gnome.org/GNOME/nautilus-python/-/merge_requests/7
+PATCHES=( "${FILESDIR}"/${P}-gcc10-fnocommon.patch )
 
 src_install() {
 	gnome2_src_install
