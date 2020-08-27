@@ -5,4 +5,8 @@
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>alexey+gentoo@asokolov.org</email>
+		<name>Alexey Sokolov</name>
+	</maintainer>
 </pkgmetadata>
