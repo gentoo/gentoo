@@ -41,7 +41,6 @@
     <flag name="roofit">Build RooFit function fitting package</flag>
     <flag name="root7">Build experimental features to be released with ROOT 7</flag>
     <flag name="shadow">Enable shadow authentication in rootd and proofd</flag>
-    <flag name="table">Build libTable contrib library</flag>
     <flag name="tbb">Enable implicit multi-threading (IMT) with <pkg>dev-cpp/tbb</pkg></flag>
     <flag name="tmva">Built TMVA (ROOT's multi-variate analysis toolkit for machine learning)</flag>
     <flag name="unuran">Enable support for <pkg>sci-mathematics/unuran</pkg></flag>
