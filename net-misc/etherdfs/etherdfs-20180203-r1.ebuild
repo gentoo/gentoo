@@ -25,7 +25,10 @@ BDEPEND="tsr? ( app-arch/unzip )"
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}/${P}-makefile.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-makefile.patch"
+	"${FILESDIR}/${P}-musl.patch"
+)
 
 DOCS=( "ethersrv-linux.txt" "history.txt" )
 
