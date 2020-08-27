@@ -59,6 +59,9 @@ python_prepare_all() {
 	sed -e 's:import wheel:raise ImportError:' -i setup.py || die
 	# these tests are broken with newer versions of bottle
 	sed -e 's:test.*_invalid_utf8:_&:' -i tests/getinfo_test.py || die
+	# temporary hack to make setuptools->distutils change less painful
+	# (suggested by Arfrever)
+	sed -e "/VERSION/s:${PV}:&.0:" -i setup.py || die
 	distutils-r1_python_prepare_all
 }
 
