@@ -35,5 +35,6 @@ DEPEND="${RDEPEND}
 		dev-ros/image_proc
 		dev-ros/topic_tools
 		dev-ros/compressed_image_transport
+		dev-ros/image_view
 	)
 "
