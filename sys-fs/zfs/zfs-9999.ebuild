@@ -140,6 +140,7 @@ src_configure() {
 		--with-systemdunitdir="$(systemd_get_systemunitdir)"
 		--with-systemdpresetdir="${EPREFIX}/lib/systemd/system-preset"
 		$(use_enable debug)
+		$(use_enable nls)
 		$(use_enable pam)
 		$(use_enable python pyzfs)
 		$(use_enable static-libs static)
