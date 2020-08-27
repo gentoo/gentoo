@@ -53,7 +53,12 @@ multilib_src_configure() {
 		$(use_enable cpu_flags_x86_3dnow 3dnow) \
 		$(use_enable nls) \
 		--enable-fast-install \
-		--disable-dependency-tracking
+		--disable-dependency-tracking \
+		RANLIB="$(tc-getRANLIB)"
+}
+
+multilib_src_compile() {
+	emake RANLIB="$(tc-getRANLIB)"
 }
 
 pkg_postinst() {
