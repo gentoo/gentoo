@@ -18,21 +18,15 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-
 IUSE="
-	+adns +caps +cmdmon html ipv6 libedit +nettle +ntp +phc pps readline +refclock +rtc
-	+seccomp +sechash selinux
+	+adns +caps +cmdmon html ipv6 libedit +nettle +ntp +phc pps readline
+	+refclock +rtc +seccomp +sechash selinux
 "
-
 REQUIRED_USE="
 	?? ( libedit readline )
 	sechash? ( nettle )
 "
-
 RESTRICT=test
-
-BDEPEND=""
-
 CDEPEND="
 	caps? ( acct-group/ntp acct-user/ntp sys-libs/libcap )
 	libedit? ( dev-libs/libedit )
@@ -40,28 +34,27 @@ CDEPEND="
 	readline? ( >=sys-libs/readline-4.1-r4:= )
 	seccomp? ( sys-libs/libseccomp )
 "
-
 DEPEND="
 	${CDEPEND}
 	html? ( dev-ruby/asciidoctor )
 	pps? ( net-misc/pps-tools )
 "
-
 RDEPEND="
 	${CDEPEND}
 	selinux? ( sec-policy/selinux-chronyd )
 "
-
-if [[ ${PV} == "9999" ]]; then
-	BDEPEND+=" virtual/w3m"
-fi
-
-S="${WORKDIR}/${P/_/-}"
-
+BDEPEND="
+	nettle? ( virtual/pkgconfig )
+"
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-pool-vendor-gentoo.patch
 	"${FILESDIR}"/${PN}-3.5-r3-systemd-gentoo.patch
 )
+S="${WORKDIR}/${P/_/-}"
+
+if [[ ${PV} == "9999" ]]; then
+	BDEPEND+=" virtual/w3m"
+fi
 
 src_prepare() {
 	default
@@ -70,13 +63,16 @@ src_prepare() {
 		-e 's:/etc/chrony\.conf:/etc/chrony/chrony.conf:g' \
 		doc/* examples/* || die
 
+	sed -i \
+		-e 's|pkg-config|${PKG_CONFIG}|g' \
+		configure || die
+
 	# Copy for potential user fixup
 	cp "${FILESDIR}"/chronyd.conf-r1 "${T}"/chronyd.conf
 	cp examples/chronyd.service "${T}"/chronyd.service
 }
 
 src_configure() {
-
 	# Set config for privdrop
 	if ! use caps; then
 		sed -i \
@@ -89,7 +85,8 @@ src_configure() {
 			-e 's/-F 1//' \
 			"${T}"/chronyd.conf "${T}"/chronyd.service || die
 	fi
-	tc-export CC
+
+	tc-export CC PKG_CONFIG
 
 	local CHRONY_EDITLINE
 	# ./configure legend:
@@ -103,6 +100,8 @@ src_configure() {
 		CHRONY_EDITLINE+=" $(usex libedit '' --without-editline)"
 	fi
 
+	# Note: ncurses and nss switches are mentioned in the configure script but
+	# do nothing
 	# not an autotools generated script
 	local myconf=(
 		$(use_enable seccomp scfilter)

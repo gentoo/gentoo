@@ -6,22 +6,31 @@ inherit systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="NTP client and server programs"
 HOMEPAGE="https://chrony.tuxfamily.org/"
-SRC_URI="https://download.tuxfamily.org/${PN}/${P/_/-}.tar.gz"
+
+if [[ ${PV} == "9999" ]]; then
+	EGIT_REPO_URI="https://git.tuxfamily.org/chrony/chrony.git"
+
+	inherit git-r3
+else
+	SRC_URI="https://download.tuxfamily.org/${PN}/${P/_/-}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+fi
+
 LICENSE="GPL-2"
 SLOT="0"
-
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="
-	+adns +caps +cmdmon html ipv6 libedit +ntp +phc pps readline +refclock +rtc
-	+seccomp selinux
+	+adns +caps +cmdmon html ipv6 libedit +nettle +ntp +phc pps readline
+	+refclock +rtc +seccomp +sechash selinux
 "
 REQUIRED_USE="
 	?? ( libedit readline )
+	sechash? ( nettle )
 "
-
+RESTRICT=test
 CDEPEND="
 	caps? ( acct-group/ntp acct-user/ntp sys-libs/libcap )
 	libedit? ( dev-libs/libedit )
+	nettle? ( dev-libs/nettle:= )
 	readline? ( >=sys-libs/readline-4.1-r4:= )
 	seccomp? ( sys-libs/libseccomp )
 "
@@ -34,21 +43,29 @@ RDEPEND="
 	${CDEPEND}
 	selinux? ( sec-policy/selinux-chronyd )
 "
-
-RESTRICT=test
-
-S="${WORKDIR}/${P/_/-}"
-
+BDEPEND="
+	nettle? ( virtual/pkgconfig )
+"
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-pool-vendor-gentoo.patch
 	"${FILESDIR}"/${PN}-3.5-r3-systemd-gentoo.patch
 )
+S="${WORKDIR}/${P/_/-}"
+
+if [[ ${PV} == "9999" ]]; then
+	BDEPEND+=" virtual/w3m"
+fi
 
 src_prepare() {
 	default
+
 	sed -i \
 		-e 's:/etc/chrony\.conf:/etc/chrony/chrony.conf:g' \
 		doc/* examples/* || die
+
+	sed -i \
+		-e 's|pkg-config|${PKG_CONFIG}|g' \
+		configure || die
 
 	# Copy for potential user fixup
 	cp "${FILESDIR}"/chronyd.conf-r1 "${T}"/chronyd.conf
@@ -69,7 +86,7 @@ src_configure() {
 			"${T}"/chronyd.conf "${T}"/chronyd.service || die
 	fi
 
-	tc-export CC
+	tc-export CC PKG_CONFIG
 
 	local CHRONY_EDITLINE
 	# ./configure legend:
@@ -83,6 +100,8 @@ src_configure() {
 		CHRONY_EDITLINE+=" $(usex libedit '' --without-editline)"
 	fi
 
+	# Note: ncurses and nss switches are mentioned in the configure script but
+	# do nothing
 	# not an autotools generated script
 	local myconf=(
 		$(use_enable seccomp scfilter)
@@ -90,15 +109,16 @@ src_configure() {
 		$(usex caps '' --disable-linuxcaps)
 		$(usex cmdmon '' --disable-cmdmon)
 		$(usex ipv6 '' --disable-ipv6)
+		$(usex nettle '' --without-nettle)
 		$(usex ntp '' --disable-ntp)
 		$(usex phc '' --disable-phc)
 		$(usex pps '' --disable-pps)
 		$(usex refclock '' --disable-refclock)
 		$(usex rtc '' --disable-rtc)
+		$(usex sechash '' --disable-sechash)
 		${CHRONY_EDITLINE}
 		${EXTRA_ECONF}
 		--chronysockdir="${EPREFIX}/run/chrony"
-		--disable-sechash
 		--docdir="${EPREFIX}/usr/share/doc/${PF}"
 		--mandir="${EPREFIX}/usr/share/man"
 		--prefix="${EPREFIX}/usr"
@@ -114,6 +134,11 @@ src_configure() {
 }
 
 src_compile() {
+	if [[ ${PV} == "9999" ]]; then
+		# uses w3m
+		emake -C doc man txt
+	fi
+
 	emake all docs $(usex html '' 'ADOC=true')
 }
 
