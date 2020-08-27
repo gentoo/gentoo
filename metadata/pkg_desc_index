@@ -14335,7 +14335,7 @@ net-analyzer/knocker 0.7.1-r3: Knocker is an easy to use security port scanner w
 net-analyzer/labrea 2.5-r2 2.5-r3: 'Sticky' Honeypot and IDS
 net-analyzer/lft 3.77 3.79 3.80 3.90 3.91-r1: Layer Four Traceroute (LFT) and WhoB
 net-analyzer/lilac 1.0.3: Web-based configuration tool written to configure Nagios
-net-analyzer/linkchecker 9.4.0-r1 9999: Check websites for broken links
+net-analyzer/linkchecker 9.4.0-r1 10.0.0_pre20200729 9999: Check websites for broken links
 net-analyzer/macchanger 1.7.0 1.7.0-r1 1.7.0_p5_p4: Utility for viewing/manipulating the MAC address of network interfaces
 net-analyzer/masscan 1.0.4 1.0.5: Mass IP port scanner
 net-analyzer/mbrowse 0.4.3 0.4.3-r1: MBrowse is a graphical MIB browser
