@@ -18,21 +18,15 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-
 IUSE="
-	+adns +caps +cmdmon html ipv6 libedit +nettle +ntp +phc pps readline +refclock +rtc
-	+seccomp +sechash selinux
+	+adns +caps +cmdmon html ipv6 libedit +nettle +ntp +phc pps readline
+	+refclock +rtc +seccomp +sechash selinux
 "
-
 REQUIRED_USE="
 	?? ( libedit readline )
 	sechash? ( nettle )
 "
-
 RESTRICT=test
-
-BDEPEND=""
-
 CDEPEND="
 	caps? ( acct-group/ntp acct-user/ntp sys-libs/libcap )
 	libedit? ( dev-libs/libedit )
@@ -40,28 +34,24 @@ CDEPEND="
 	readline? ( >=sys-libs/readline-4.1-r4:= )
 	seccomp? ( sys-libs/libseccomp )
 "
-
 DEPEND="
 	${CDEPEND}
 	html? ( dev-ruby/asciidoctor )
 	pps? ( net-misc/pps-tools )
 "
-
 RDEPEND="
 	${CDEPEND}
 	selinux? ( sec-policy/selinux-chronyd )
 "
-
-if [[ ${PV} == "9999" ]]; then
-	BDEPEND+=" virtual/w3m"
-fi
-
-S="${WORKDIR}/${P/_/-}"
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-pool-vendor-gentoo.patch
 	"${FILESDIR}"/${PN}-3.5-r3-systemd-gentoo.patch
 )
+S="${WORKDIR}/${P/_/-}"
+
+if [[ ${PV} == "9999" ]]; then
+	BDEPEND=" virtual/w3m"
+fi
 
 src_prepare() {
 	default
