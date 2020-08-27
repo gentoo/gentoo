@@ -15,8 +15,10 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3 linux-mod
 	EGIT_REPO_URI="https://github.com/openzfs/zfs.git"
 else
-	SRC_URI="https://github.com/openzfs/${PN}/releases/download/${P}/${P}.tar.gz"
+	MY_P="${P/_rc/-rc}"
+	SRC_URI="https://github.com/openzfs/${PN}/releases/download/${MY_P}/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64"
+	S="${WORKDIR}/${P%_rc?}"
 fi
 
 LICENSE="BSD-2 CDDL MIT"
