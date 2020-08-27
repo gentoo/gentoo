@@ -16,7 +16,7 @@ SRC_URI="
 
 KEYWORDS="-* amd64 x86"
 LICENSE="teamspeak3 || ( GPL-2 GPL-3 LGPL-3 )"
-SLOT="0"
+SLOT="3"
 IUSE="+alsa pulseaudio"
 REQUIRED_USE="|| ( alsa pulseaudio )"
 
