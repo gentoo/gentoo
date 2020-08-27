@@ -97,6 +97,8 @@ src_configure() {
 	filter-ldflags -Wl,*
 
 	local myconf=(
+		CROSS_COMPILE="${CHOST}-"
+		HOSTCC="$(tc-getBUILD_CC)"
 		--bindir="${EPREFIX}/bin"
 		--sbindir="${EPREFIX}/sbin"
 		--with-config=kernel
