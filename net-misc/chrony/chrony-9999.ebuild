@@ -43,6 +43,9 @@ RDEPEND="
 	${CDEPEND}
 	selinux? ( sec-policy/selinux-chronyd )
 "
+BDEPEND="
+	nettle? ( virtual/pkgconfig )
+"
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-pool-vendor-gentoo.patch
 	"${FILESDIR}"/${PN}-3.5-r3-systemd-gentoo.patch
@@ -50,7 +53,7 @@ PATCHES=(
 S="${WORKDIR}/${P/_/-}"
 
 if [[ ${PV} == "9999" ]]; then
-	BDEPEND=" virtual/w3m"
+	BDEPEND+=" virtual/w3m"
 fi
 
 src_prepare() {
@@ -59,6 +62,10 @@ src_prepare() {
 	sed -i \
 		-e 's:/etc/chrony\.conf:/etc/chrony/chrony.conf:g' \
 		doc/* examples/* || die
+
+	sed -i \
+		-e 's|pkg-config|${PKG_CONFIG}|g' \
+		configure || die
 
 	# Copy for potential user fixup
 	cp "${FILESDIR}"/chronyd.conf-r1 "${T}"/chronyd.conf
@@ -79,7 +86,7 @@ src_configure() {
 			"${T}"/chronyd.conf "${T}"/chronyd.service || die
 	fi
 
-	tc-export CC
+	tc-export CC PKG_CONFIG
 
 	local CHRONY_EDITLINE
 	# ./configure legend:
@@ -93,6 +100,8 @@ src_configure() {
 		CHRONY_EDITLINE+=" $(usex libedit '' --without-editline)"
 	fi
 
+	# Note: ncurses and nss switches are mentioned in the configure script but
+	# do nothing
 	# not an autotools generated script
 	local myconf=(
 		$(use_enable seccomp scfilter)
