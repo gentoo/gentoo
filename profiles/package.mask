@@ -35,6 +35,11 @@
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-08-27)
 # Abandoned upstream.
 # Does not compile against ghc-8.8. Removal in 30 days.
+dev-haskell/bio
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-27)
+# Abandoned upstream.
+# Does not compile against ghc-8.8. Removal in 30 days.
 # Bug #735844.
 dev-haskell/chell-quickcheck
 
