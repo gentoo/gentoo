@@ -32,6 +32,8 @@ BDEPEND="virtual/pkgconfig"
 
 DOCS=( "HISTORY" "README" "TODO" "docs/." )
 
+PATCHES=( "${FILESDIR}/${P}-musl.patch" )
+
 src_prepare() {
 	default
 
