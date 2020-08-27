@@ -348,7 +348,7 @@ src_install() {
 	doins extra/completions/_alacritty
 
 	domenu extra/linux/Alacritty.desktop
-	newicon extra/logo/alacritty-term.svg Alacritty.svg
+	newicon extra/logo/compat/alacritty-term.svg Alacritty.svg
 
 	newman extra/alacritty.man alacritty.1
 
