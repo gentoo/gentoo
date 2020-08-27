@@ -1,0 +1,33 @@
+diff --git a/gcc-config b/gcc-config
+index dee6f98..07a1a3e 100755
+--- a/gcc-config
++++ b/gcc-config
+@@ -52,6 +52,7 @@ usage() {
+ 	  -O, --use-old              Use the old profile if one was selected.
+ 	  -f, --force                Make sure all config files are regenerated.
+ 	  -c, --get-current-profile  Print current used gcc profile.
++	  -d, --unlink-current       Remove the symlinks installed for the current profile.
+ 	  -l, --list-profiles        Print a list of available profiles.
+ 	  -S, --split-profile        Split profiles into their components
+ 	  -E, --print-environ        Print environment that can be used to setup the
+@@ -845,6 +846,10 @@ get_current_profile() {
+ 	return 0
+ }
+ 
++unlink_current_profile() {
++	switch_profile get_current_profile
++}
++
+ list_profiles() {
+ 	local i=0
+ 	local filter=
+@@ -1016,6 +1021,9 @@ for x in "$@" ; do
+ 		-c|--get-current-profile)
+ 			set_doit get_current_profile
+ 			;;
++		-d|--unlink-current)
++			set_doit unlink_current_profile
++			;;
+ 		-l|--list-profiles)
+ 			set_doit list_profiles
+ 			;;

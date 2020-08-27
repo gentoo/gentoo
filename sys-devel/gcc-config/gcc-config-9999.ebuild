@@ -21,6 +21,12 @@ IUSE="+cc-wrappers +native-symlinks"
 
 RDEPEND=">=sys-apps/gentoo-functions-0.10"
 
+src_prepare() {
+	default
+
+	use native-symlinks && eapply "${FILESDIR}/gcc-config-add-USE_NATIVE_LINKS-no-as-prompt-option.patch"
+}
+
 _emake() {
 	emake \
 		PV="${PV}" \
