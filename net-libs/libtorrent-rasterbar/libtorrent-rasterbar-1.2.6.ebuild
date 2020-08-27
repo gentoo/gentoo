@@ -72,7 +72,7 @@ src_configure() {
 		$(use_enable ssl encryption)
 		$(use_enable static-libs static)
 		$(use_enable test tests)
-		--with-boost="${EPREFIX}/usr"
+		--with-boost
 		--with-libiconv
 		--enable-logging
 	)
