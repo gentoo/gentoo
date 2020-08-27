@@ -21,7 +21,7 @@ fi
 
 LICENSE="BSD-2 CDDL MIT"
 SLOT="0"
-IUSE="custom-cflags debug kernel-builtin libressl minimal pam python +rootfs test-suite static-libs"
+IUSE="custom-cflags debug kernel-builtin libressl minimal nls pam python +rootfs test-suite static-libs"
 
 DEPEND="
 	net-libs/libtirpc[static-libs?]
@@ -40,6 +40,7 @@ DEPEND="
 
 BDEPEND="virtual/awk
 	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
 	python? (
 		dev-python/setuptools[${PYTHON_USEDEP}]
 	)
