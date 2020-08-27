@@ -73,7 +73,9 @@ src_prepare() {
 	# Copy for potential user fixup
 	cp "${FILESDIR}"/chronyd.conf-r1 "${T}"/chronyd.conf
 	cp examples/chronyd.service "${T}"/chronyd.service
+}
 
+src_configure() {
 	# Set config for privdrop
 	if ! use caps; then
 		sed -i \
@@ -86,9 +88,7 @@ src_prepare() {
 			-e 's/-F 1//' \
 			"${T}"/chronyd.conf "${T}"/chronyd.service || die
 	fi
-}
 
-src_configure() {
 	tc-export CC
 
 	local CHRONY_EDITLINE
