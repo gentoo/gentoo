@@ -18,6 +18,11 @@ RDEPEND=">=dev-libs/boost-1.62.0:=[threads]
 DEPEND="${RDEPEND}"
 BDEPEND=""
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.1.9-test-clang-p1.patch
+	"${FILESDIR}"/${PN}-3.1.9-test-clang-p2.patch
+)
+
 src_configure() {
 	# required as rev-dep of dev-libs/boost-1.62.0
 	# https://wiki.gentoo.org/wiki/Project:C%2B%2B/Maintaining_ABI
