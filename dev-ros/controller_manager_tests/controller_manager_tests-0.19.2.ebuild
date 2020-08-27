@@ -22,11 +22,10 @@ RDEPEND="
 	dev-cpp/gtest
 "
 DEPEND="${RDEPEND}
-	test? (
-		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
-		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
-		dev-ros/rosservice[${PYTHON_SINGLE_USEDEP}]
-	)"
+	dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
+	dev-ros/rosservice[${PYTHON_SINGLE_USEDEP}]
+"
 # needed by combined_robot_hw_tests
 mycatkincmakeargs=( "-DCATKIN_ENABLE_TESTING=ON" )
 
