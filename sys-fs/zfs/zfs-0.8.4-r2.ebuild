@@ -21,10 +21,9 @@ fi
 
 LICENSE="BSD-2 CDDL MIT"
 SLOT="0"
-IUSE="custom-cflags debug kernel-builtin libressl python +rootfs test-suite static-libs"
+IUSE="custom-cflags debug kernel-builtin libressl minimal nls python +rootfs test-suite static-libs"
 
 DEPEND="
-	${PYTHON_DEPS}
 	net-libs/libtirpc[static-libs?]
 	sys-apps/util-linux[static-libs?]
 	sys-libs/zlib[static-libs(+)?]
@@ -32,6 +31,7 @@ DEPEND="
 	virtual/libudev[static-libs(-)?]
 	libressl? ( dev-libs/libressl:0=[static-libs?] )
 	!libressl? ( dev-libs/openssl:0=[static-libs?] )
+	!minimal? ( ${PYTHON_DEPS} )
 	python? (
 		virtual/python-cffi[${PYTHON_USEDEP}]
 	)
@@ -39,6 +39,7 @@ DEPEND="
 
 BDEPEND="virtual/awk
 	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
 	python? (
 		dev-python/setuptools[${PYTHON_USEDEP}]
 	)
@@ -64,7 +65,11 @@ RDEPEND="${DEPEND}
 	)
 "
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="
+	!minimal? ( ${PYTHON_REQUIRED_USE} )
+	python? ( !minimal )
+	test-suite? ( !minimal )
+"
 
 RESTRICT="test"
 
@@ -118,7 +123,7 @@ src_prepare() {
 
 src_configure() {
 	use custom-cflags || strip-flags
-	python_setup
+	use minimal || python_setup
 
 	local myconf=(
 		--bindir="${EPREFIX}/bin"
@@ -132,12 +137,13 @@ src_configure() {
 		--with-linux="${KV_DIR}"
 		--with-linux-obj="${KV_OUT_DIR}"
 		--with-udevdir="$(get_udevdir)"
-		--with-python="${EPYTHON}"
 		--with-systemdunitdir="$(systemd_get_systemunitdir)"
 		--with-systemdpresetdir="${EPREFIX}/lib/systemd/system-preset"
 		$(use_enable debug)
+		$(use_enable nls)
 		$(use_enable python pyzfs)
 		$(use_enable static-libs static)
+		$(usex minimal --without-python --with-python="${EPYTHON}")
 	)
 
 	econf "${myconf[@]}"
@@ -176,7 +182,7 @@ src_install() {
 	fi
 
 	# enforce best available python implementation
-	python_fix_shebang "${ED}/bin"
+	use minimal || python_fix_shebang "${ED}/bin"
 }
 
 pkg_postinst() {
