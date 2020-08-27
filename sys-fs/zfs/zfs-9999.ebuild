@@ -121,7 +121,7 @@ src_prepare() {
 
 src_configure() {
 	use custom-cflags || strip-flags
-	python_setup
+	use minimal || python_setup
 
 	local myconf=(
 		--bindir="${EPREFIX}/bin"
