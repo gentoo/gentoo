@@ -56,5 +56,9 @@ pkg_postinst() {
 	else
 		elog "You may want to restart the nessusd-bin service to use"
 		elog "the new version of Nessus."
+		elog "You also need to update your plugins.  When ready, it's done like this:"
+		elog "/etc/init.d/nessusd-bin stop"
+		elog "/opt/nessus/sbin/nessuscli update --all"
+		elog "/etc/init.d/nessusd-bin start"
 	fi
 }
