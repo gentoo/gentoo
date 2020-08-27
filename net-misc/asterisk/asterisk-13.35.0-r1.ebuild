@@ -18,7 +18,7 @@ IUSE_VOICEMAIL_STORAGE="
 	voicemail_storage_odbc
 	voicemail_storage_imap
 "
-IUSE="${IUSE_VOICEMAIL_STORAGE} alsa bluetooth calendar +caps cluster curl dahdi debug doc freetds gtalk http iconv ilbc ldap libressl lua mysql newt odbc oss pjproject portaudio postgres radius selinux snmp span speex srtp +ssl static statsd syslog unbound vorbis xmpp"
+IUSE="${IUSE_VOICEMAIL_STORAGE} alsa bluetooth calendar +caps cluster curl dahdi debug doc freetds gtalk http iconv ilbc ldap libressl lua mysql newt odbc oss pjproject portaudio postgres radius selinux snmp span speex srtp +ssl static statsd syslog vorbis xmpp"
 IUSE_EXPAND="VOICEMAIL_STORAGE"
 REQUIRED_USE="gtalk? ( xmpp )
 	^^ ( ${IUSE_VOICEMAIL_STORAGE/+/} )
@@ -33,11 +33,10 @@ DEPEND="acct-user/asterisk
 	acct-group/asterisk
 	dev-db/sqlite:3
 	dev-libs/popt
-	>=dev-libs/jansson-2.11
+	dev-libs/jansson
 	dev-libs/libedit
 	dev-libs/libxml2:2
 	dev-libs/libxslt
-	sys-apps/util-linux
 	sys-libs/ncurses:0=
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
@@ -64,13 +63,14 @@ DEPEND="acct-user/asterisk
 	mysql? ( dev-db/mysql-connector-c:= )
 	newt? ( dev-libs/newt )
 	odbc? ( dev-db/unixODBC )
-	pjproject? ( >=net-libs/pjproject-2.9 )
+	pjproject? ( net-libs/pjproject )
 	portaudio? ( media-libs/portaudio )
 	postgres? ( dev-db/postgresql:* )
 	radius? ( net-dialup/freeradius-client )
 	snmp? ( net-analyzer/net-snmp:= )
 	span? ( media-libs/spandsp )
 	speex? (
+		media-libs/libogg
 		media-libs/speex
 		media-libs/speexdsp
 	)
@@ -79,8 +79,10 @@ DEPEND="acct-user/asterisk
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
-	unbound? ( net-dns/unbound )
-	vorbis? ( media-libs/libvorbis )
+	vorbis? (
+		media-libs/libogg
+		media-libs/libvorbis
+	)
 	voicemail_storage_imap? ( virtual/imap-c-client )
 	xmpp? ( dev-libs/iksemel )
 "
@@ -120,22 +122,19 @@ src_configure() {
 		--with-popt \
 		--with-z \
 		--with-libedit \
-		--without-jansson-bundled \
-		--without-pjproject-bundled \
 		$(use_with caps cap) \
 		$(use_with http gmime) \
 		$(use_with newt) \
 		$(use_with pjproject) \
 		$(use_with portaudio) \
-		$(use_with ssl) \
-		$(use_with unbound)
+		$(use_with ssl)
 
 	_menuselect() {
 		menuselect/menuselect "$@" || die "menuselect $* failed."
 	}
 
 	_use_select() {
-		local state=$(use "$1" && echo enable || echo disable)
+		local state=$(usex "$1" enable disable)
 		shift # remove use from parameters
 
 		while [[ -n $1 ]]; do
@@ -153,7 +152,7 @@ src_configure() {
 	sed -i 's/NATIVE_ARCH=/NATIVE_ARCH=0/' build_tools/menuselect-deps || die "Unable to squelch noisy build system"
 
 	# Compile menuselect binary for optional components
-	emake NOISY_BUILD=yes menuselect.makeopts
+	emake NOISE_BUILD=yes menuselect.makeopts
 
 	# Disable BUILD_NATIVE (bug #667498)
 	_menuselect --disable build_native menuselect.makeopts
@@ -204,6 +203,7 @@ src_configure() {
 	_use_select snmp         res_snmp
 	_use_select span         res_fax_spandsp
 	_use_select speex        {codec,func}_speex
+	_use_select speex        format_ogg_speex
 	_use_select srtp         res_srtp
 	_use_select statsd       res_statsd res_{endpoint,chan}_stats
 	_use_select syslog       cdr_syslog
@@ -219,7 +219,7 @@ src_configure() {
 
 	if use debug; then
 		for o in DONT_OPTIMIZE DEBUG_THREADS BETTER_BACKTRACES; do
-			_menuselect --enable "${o}" menuselect.makeopts
+			_menuselect --enable $o menuselect.makeopts
 		done
 	fi
 }
