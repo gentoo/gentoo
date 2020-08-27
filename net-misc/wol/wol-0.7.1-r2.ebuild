@@ -14,6 +14,8 @@ SLOT="0"
 KEYWORDS="amd64 arm ppc ppc64 x86"
 IUSE="nls"
 
+PATCHES=( "${FILESDIR}/${P}-musl.patch" )
+
 src_configure() {
 	local myeconfargs=(
 		--disable-rpath
