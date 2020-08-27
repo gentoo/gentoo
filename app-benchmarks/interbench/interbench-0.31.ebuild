@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,10 @@ KEYWORDS="amd64 x86"
 LICENSE="GPL-2+"
 SLOT="0"
 
-PATCHES=( "${FILESDIR}/${P}-makefile.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-makefile.patch"
+	"${FILESDIR}/${P}-musl.patch"
+)
 
 DOCS=(
 	"readme"

@@ -1,10 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="ncurses"
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1 eutils linux-info
 
@@ -14,21 +15,23 @@ SRC_URI="https://github.com/nicolargo/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc test"
-RESTRICT="!test? ( test )"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+IUSE=""
 
-RDEPEND=">=dev-python/psutil-5.4.3[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/future[${PYTHON_USEDEP}]
+	>=dev-python/psutil-5.4.3[${PYTHON_USEDEP}]"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? (
-		dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
-	)
-	test? ( ${RDEPEND} )
-"
+# PYTHON_USEDEP omitted on purpose
+BDEPEND="doc? ( dev-python/sphinx_rtd_theme )"
 
 CONFIG_CHECK="~TASK_IO_ACCOUNTING ~TASK_DELAY_ACCT ~TASKSTATS"
+
+PATCHES=(
+	"${FILESDIR}/disable-update-check.patch"
+)
+
+distutils_enable_tests setup.py
+distutils_enable_sphinx docs --no-autodoc
 
 pkg_setup() {
 	linux-info_pkg_setup
@@ -42,29 +45,18 @@ python_prepare_all() {
 		-e "s/'CONTRIBUTING.md',//" \
 		-e "s:'conf/glances.conf':('${EPREFIX}/etc/glances', ['conf/glances.conf':g" \
 		-i setup.py || die
-
+	sed -i "s/, 'irq']/]/" unitest.py || die
 	distutils-r1_python_prepare_all
 }
 
 python_install_all() {
 	# add an intended file from original data set from setup.py to DOCS
 	local DOCS=( README.rst CONTRIBUTING.md conf/glances.conf )
-	# build docs
-	if use doc; then
-		pushd docs
-		make html
-		popd
-		local HTML_DOCS=( docs/_build/html/. )
-	fi
 	distutils-r1_python_install_all
 }
 
-python_test() {
-	esetup.py test
-}
-
 pkg_postinst() {
-	optfeature "Action script feature" dev-python/pystache
+	#optfeature "Action script feature" dev-python/pystache
 	optfeature "Autodiscover mode" dev-python/zeroconf
 	optfeature "Cloud support" dev-python/requests
 	optfeature "Quicklook CPU info" dev-python/py-cpuinfo
@@ -82,7 +74,6 @@ pkg_postinst() {
 	#	dev-python/prometheus_client \
 	#	dev-python/pyzmq \
 	#	dev-python/statsd
-	optfeature "Folder monitoring" dev-python/scandir
 	#optfeature "Nvidia GPU monitoring" unpackaged/nvidia-ml-py3
 	optfeature "SVG graph support" dev-python/pygal
 	optfeature "IP plugin" dev-python/netifaces
@@ -90,6 +81,7 @@ pkg_postinst() {
 	#optfeature "SMART support" unpackaged/pySMART.smartx
 	optfeature "RAID support" dev-python/pymdstat
 	optfeature "SNMP support" dev-python/pysnmp
+	#optfeature "sparklines plugin" unpackaged/sparklines
 	optfeature "Web server mode" dev-python/bottle dev-python/requests
 	optfeature "WIFI plugin" net-wireless/python-wifi
 }
