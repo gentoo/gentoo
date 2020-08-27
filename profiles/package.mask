@@ -769,11 +769,6 @@ app-cdr/cdcover
 # Removal in 30 days.
 app-arch/cfv
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-29)
-# Py2-only, unmaintained, last release in 2012, dead upstream.
-# Ancient unresolved bugs #453918, #505076. Removal in 30 days.
-app-admin/conkyforecast
-
 # Andrey Utkin <andrey_utkin@gentoo.org> (2020-07-28)
 # Not used by other packages anymore.
 # Removal in 30 days.
