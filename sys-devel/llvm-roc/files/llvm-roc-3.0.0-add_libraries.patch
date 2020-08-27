@@ -1,0 +1,20 @@
+diff -Naur a/clang/lib/Basic/CMakeLists.txt b/clang/lib/Basic/CMakeLists.txt
+--- a/clang/lib/Basic/CMakeLists.txt	2019-12-28 07:42:49.119055933 +0100
++++ b/clang/lib/Basic/CMakeLists.txt	2019-12-28 07:42:13.265056070 +0100
+@@ -2,6 +2,7 @@
+   Core
+   MC
+   Support
++  Option
+   )
+ 
+ find_first_existing_vc_file("${LLVM_MAIN_SRC_DIR}" llvm_vc)
+diff -Naur a/clang/lib/Driver/CMakeLists.txt b/clang/lib/Driver/CMakeLists.txt
+--- a/clang/lib/Driver/CMakeLists.txt	2019-12-28 07:41:39.521056199 +0100
++++ b/clang/lib/Driver/CMakeLists.txt	2019-12-28 07:40:23.998056487 +0100
+@@ -79,4 +79,5 @@
+   LINK_LIBS
+   clangBasic
+   ${system_libs}
++  pthread
+   )
