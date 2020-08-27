@@ -1,4 +1,4 @@
-BDEPEND=virtual/w3m virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=nettle? ( virtual/pkgconfig ) virtual/w3m virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install postinst preinst prepare unpack
 DEPEND=caps? ( acct-group/ntp acct-user/ntp sys-libs/libcap ) libedit? ( dev-libs/libedit ) nettle? ( dev-libs/nettle:= ) readline? ( >=sys-libs/readline-4.1-r4:= ) seccomp? ( sys-libs/libseccomp ) html? ( dev-ruby/asciidoctor ) pps? ( net-misc/pps-tools )
 DESCRIPTION=NTP client and server programs
@@ -12,4 +12,4 @@ REQUIRED_USE=?? ( libedit readline ) sechash? ( nettle )
 RESTRICT=test
 SLOT=0
 _eclasses_=git-r3	8ec5b53812bce105ae7943930e4660f8	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=dd2bd37ec2e5ea8d3dc2b503a45a7e1c
+_md5_=0569057228ebe2febf53fd6adf153792

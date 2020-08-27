@@ -15098,7 +15098,7 @@ net-misc/cbqinit 0.7.3-r3: Sets up class-based queue traffic control (QoS) with 
 net-misc/cbugzilla 0.2.1: CLI and C api to get data from Bugzilla
 net-misc/cfengine 2.2.10-r5 2.2.10-r6 3.3.9 3.4.5 3.5.3 3.6.2: An automated suite of programs for configuring and maintaining Unix-like computers
 net-misc/cgminer 4.9.2 4.10.0: Bitcoin CPU/GPU/FPGA/ASIC miner in C
-net-misc/chrony 3.5-r2 3.5-r4 3.5.1 4.0_pre3 9999: NTP client and server programs
+net-misc/chrony 3.5-r2 3.5-r4 3.5.1-r1 4.0_pre3 9999: NTP client and server programs
 net-misc/clockspeed 0.62-r6 0.62-r7: Simple Network Time Protocol (NTP) client
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
 net-misc/cmst 2020.05.09: Qt GUI for Connman with system tray icon
