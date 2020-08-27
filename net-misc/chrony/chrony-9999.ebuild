@@ -128,9 +128,9 @@ src_configure() {
 		--without-tomcrypt
 	)
 
-	# print the ./configure call to aid in future debugging
-	echo bash ./configure "${myconf[@]}" >&2
-	bash ./configure "${myconf[@]}" || die
+	# print the ./configure call
+	echo sh ./configure "${myconf[@]}" >&2
+	sh ./configure "${myconf[@]}" || die
 }
 
 src_compile() {
