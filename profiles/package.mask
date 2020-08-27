@@ -764,11 +764,6 @@ dev-tex/hlatex
 # Removal in 30 days.
 app-cdr/cdcover
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-29)
-# Py2-only, unmaintained, last release in 2009, dead upstream.
-# Removal in 30 days.
-app-arch/cfv
-
 # Andrey Utkin <andrey_utkin@gentoo.org> (2020-07-28)
 # Not used by other packages anymore.
 # Removal in 30 days.
