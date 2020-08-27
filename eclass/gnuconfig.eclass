@@ -1,7 +1,5 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-#
-# THIS ECLASS IS DEAD: It has been integrated into portage
 #
 # Author: Will Woods <wwoods@gentoo.org>
 #
@@ -26,12 +24,6 @@ DEPEND="sys-devel/gnuconfig"
 # config.sub and config.guess (old default behavior), otherwise update the
 # named files.
 gnuconfig_update() {
-
-# hmm some packages (like binutils gcc glibc) still use this ...
-#	echo
-#	ewarn "QA Notice: Please stop using me, portage updates files for you."
-#	echo
-
 	local startdir	# declared here ... used in gnuconfig_do_update
 
 	if [[ $1 == /* ]] ; then
