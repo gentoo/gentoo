@@ -1,0 +1,10 @@
+--- a/libmx5000/mx5000.c
++++ b/libmx5000/mx5000.c
+@@ -29,6 +29,7 @@
+ 
+ #include <asm/types.h>
+ #include <linux/hiddev.h>
++#include <linux/limits.h>
+ 
+ #include "libmx5000/mx5000.h"
+ 
