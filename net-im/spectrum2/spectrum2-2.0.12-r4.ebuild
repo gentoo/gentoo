@@ -62,6 +62,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-boost-173-compatibility.patch"
 	"${FILESDIR}/${P}-gcc-10-compatibility.patch"
 	"${FILESDIR}/${PN}-2.0.13-libpqxx-7-compatibility.patch"
+	"${FILESDIR}/${PN}-2.0.13-musl-compatibility.patch"
 )
 
 src_prepare() {
