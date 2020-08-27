@@ -15,7 +15,9 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/linkcheck/linkchecker.git"
 	inherit git-r3
 else
-	SRC_URI=""
+	GIT_COMMIT="a977e4d7129450ba9fda8389724c80c1bde66883"
+	SRC_URI="https://github.com/linkchecker/linkchecker/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${GIT_COMMIT}"
 	KEYWORDS="~amd64 ~x86"
 fi
 
