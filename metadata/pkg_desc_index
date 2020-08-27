@@ -8471,7 +8471,7 @@ dev-python/namespace-sphinxcontrib 1.0: Namespace package declaration for sphinx
 dev-python/namespace-zope 1: Namespace package declaration for zope
 dev-python/natgrid 0.2.1-r3: Matplotlib toolkit for gridding irreguraly spaced data
 dev-python/natsort 7.0.1: Natural sorting for Python
-dev-python/nautilus-python 1.2.2-r1 1.2.3: Python bindings for the Nautilus file manager
+dev-python/nautilus-python 1.2.3: Python bindings for the Nautilus file manager
 dev-python/nbconvert 5.6.1: Converting Jupyter Notebooks
 dev-python/nbdime 2.0.0: Diff and merge of Jupyter Notebooks
 dev-python/nbformat 5.0.7: Reference implementation of the Jupyter Notebook format
@@ -16548,7 +16548,7 @@ sci-physics/qmeq 1.0: Quantum master equation package for Quantum dot transport 
 sci-physics/qutip 4.2.0: Simulating dynamics of open quantum systems in Python.
 sci-physics/reduze 2.2: Program for reducing Feynman integrals
 sci-physics/rivet 2.6.0-r2: Toolkit for validation of Monte Carlo HEP event generators
-sci-physics/root 6.16.00-r5 6.18.04-r2 6.20.04 6.20.06 6.22.00 9999: C++ data analysis framework and interpreter from CERN
+sci-physics/root 6.18.04-r2 6.20.06 6.20.08 6.22.00 6.22.02 9999: C++ data analysis framework and interpreter from CERN
 sci-physics/sassena 1.4.2: Software for Calculating Scattering Diagrams on Massively Parallel Computers
 sci-physics/siscone 2.0.6 3.0.3: Hadron Seedless Infrared-Safe Cone jet algorithm
 sci-physics/thepeg 1.9.2 2.0.0 2.0.4: Toolkit for High Energy Physics Event Generation
@@ -17646,7 +17646,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p201909
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.225_p198 4.4.231_p202 4.9.227_p146 4.9.232_p150 4.14.184_p84 4.14.192_p91 4.19.127_p54 4.19.135_p60 5.4.44_p27 5.4.54_p33 5.6.17_p10 5.6.19_p11: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.60 5.4.61 5.7.17 5.7.18 5.8.3 5.8.4: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 4.4.234 4.9.234 4.14.195 4.19.142 5.4.61 5.7.18 5.8.4: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 4.4.234 4.9.234 4.14.195 4.19.142 5.4.61 5.7.18 5.8.5: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15 5.7.12: The Zen Kernel Live Sources
