@@ -41,9 +41,9 @@ BDEPEND="
 PATCHES=( "${FILESDIR}/${PN}-1.1.0-Rename-partconv.patch" )
 
 src_prepare() {
-	cmake_src_prepare
-
 	sed -e '/ADD_SUBDIRECTORY (src\/tests)/d' -i CMakeLists.txt || die
+
+	cmake_src_prepare
 }
 
 src_configure() {
