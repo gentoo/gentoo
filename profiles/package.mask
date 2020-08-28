@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (2020-08-28)
+# EAPI=4 and fails to compile
+# Dead upstream. Removal in 30 days
+net-mail/maildirtree
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-08-27)
 # Abandoned upstream.
 # Does not compile against ghc-8.8. Removal in 30 days.
