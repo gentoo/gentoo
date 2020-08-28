@@ -1,0 +1,34 @@
+--- a/buildlib
++++ b/buildlib
+@@ -28,11 +28,13 @@ if [ -n "$shared" ]; then
+ 			SHLIB="${LIB%.a}.dylib"
+ 			SHOPT="-dynamiclib -Wl,-all_load"
+ 			SHOPT2=
++			SONAME=
+ 			;;
+ 		*)
+ 			SHLIB="${LIB%.a}.so"
+ 			SHOPT="-shared -Wl,-whole-archive"
+ 			SHOPT2="-Wl,-no-whole-archive"
++			SONAME="-Wl,-soname=${SHLIB}.0"
+ 			;;
+ 	esac
+ fi
+@@ -108,5 +110,5 @@ echo "SRC=$SRC"
+ [ -z "$shared" ] ||
+ (
+ 	PS4= && set -ex
+-	"$CC" $FPIC $CFLAGS -o "$SHLIB" $SHOPT $LIB $SHOPT2
++	"$CC" $FPIC $CFLAGS $LDFLAGS -o "$SHLIB" $SHOPT $LIB $SHOPT2 ${SONAME}
+ ) || exit
+--- a/installlib
++++ b/installlib
+@@ -91,5 +91,7 @@ docmd "install -d "$DESTDIR"$includedir "$DESTDIR"$libdir"
+ docmd "install -m 644 $HEADER "$DESTDIR"$includedir/"
+ [ -z "$LIB" ] ||
+ docmd "install -m 644 $LIB "$DESTDIR"$libdir/"
+-[ -z "$SHLIB" ] ||
++[ -z "$SHLIB" ] || {
+ docmd "install -m $SHLIBMODE $SHLIB "$DESTDIR"$libdir/"
++docmd "ln -s $SHLIB "$DESTDIR"$libdir/${SHLIB}.0"
++}
