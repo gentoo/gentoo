@@ -40,18 +40,7 @@ case "${EAPI:-0}" in
 		;;
 esac
 
-inherit mount-boot
-
-TCL_VER=10.1
-SRC_URI+="
-	test? (
-		amd64? (
-			https://dev.gentoo.org/~mgorny/dist/tinycorelinux-${TCL_VER}-amd64.qcow2
-		)
-		x86? (
-			https://dev.gentoo.org/~mgorny/dist/tinycorelinux-${TCL_VER}-x86.qcow2
-		)
-	)"
+inherit mount-boot toolchain-funcs
 
 SLOT="${PV}"
 IUSE="+initramfs test"
@@ -59,8 +48,6 @@ RESTRICT+="
 	!test? ( test )
 	test? ( userpriv )
 	arm? ( test )
-	arm64? ( test )
-	ppc64? ( test )
 "
 
 # install-DEPEND actually
@@ -74,8 +61,12 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-tcltk/expect
+		sys-apps/coreutils
 		sys-kernel/dracut
+		sys-fs/e2fsprogs
 		amd64? ( app-emulation/qemu[qemu_softmmu_targets_x86_64] )
+		arm64? ( app-emulation/qemu[qemu_softmmu_targets_aarch64] )
+		ppc64? ( app-emulation/qemu[qemu_softmmu_targets_ppc64] )
 		x86? ( app-emulation/qemu[qemu_softmmu_targets_i386] )
 	)"
 
@@ -206,10 +197,66 @@ kernel-install_get_qemu_arch() {
 		arm64)
 			echo aarch64
 			;;
+		ppc64)
+			echo ppc64
+			;;
 		*)
 			die "${FUNCNAME}: unsupported ARCH=${ARCH}"
 			;;
 	esac
+}
+
+# @FUNCTION: kernel-install_create_init
+# @USAGE: <filename>
+# @DESCRIPTION:
+# Create minimal /sbin/init
+kernel-install_create_init() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	[[ ${#} -eq 1 ]] || die "${FUNCNAME}: invalid arguments"
+	[[ -z ${1} ]] && die "${FUNCNAME}: empty argument specified"
+
+	local output="${1}"
+	[[ -f ${output} ]] && die "${FUNCNAME}: ${output} already exists"
+
+	cat <<-_EOF_ >"${T}/init.c" || die
+		#include <stdio.h>
+		int main() {
+			printf("Hello, World!\n");
+			return 0;
+		}
+	_EOF_
+
+	$(tc-getBUILD_CC) -Os -static "${T}/init.c" -o "${output}" || die 
+	$(tc-getBUILD_STRIP) "${output}" || die
+}
+
+# @FUNCTION: kernel-install_create_qemu_image
+# @USAGE: <filename>
+# @DESCRIPTION:
+# Create minimal qemu raw image
+kernel-install_create_qemu_image() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	[[ ${#} -eq 1 ]] || die "${FUNCNAME}: invalid arguments"
+	[[ -z ${1} ]] && die "${FUNCNAME}: empty argument specified"
+
+	local image="${1}"
+	[[ -f ${image} ]] && die "${FUNCNAME}: ${image} already exists"
+
+	local imageroot="${T}/imageroot"
+	[[ -d ${imageroot} ]] && die "${FUNCNAME}: ${imageroot} already exists"
+	mkdir "${imageroot}" || die
+
+	# some layout needed to pass dracut's usable_root() validation
+	mkdir -p "${imageroot}"/{bin,dev,etc,lib,proc,root,sbin,sys} || die
+	touch "${imageroot}/lib/ld-fake.so" || die
+
+	kernel-install_create_init "${imageroot}/sbin/init"
+
+	# image may be smaller if needed
+	truncate -s 4M "${image}" || die
+	mkfs.ext4 -v -d "${imageroot}" -L groot "${image}" || die
 }
 
 # @FUNCTION: kernel-install_test
@@ -234,25 +281,43 @@ kernel-install_test() {
 		--no-hostonly \
 		--kmoddir "${modules}" \
 		"${T}/initrd" "${version}" || die
-	# get a read-write copy of the disk image
-	cp "${DISTDIR}/tinycorelinux-${TCL_VER}-${ARCH}.qcow2" \
-		"${T}/fs.qcow2" || die
+
+	kernel-install_create_qemu_image "${T}/fs.img"
 
 	cd "${T}" || die
+
 	local qemu_extra_args=
-	[[ ${qemu_arch} == x86_64 ]] && qemu_extra_args='-cpu max'
+	local qemu_extra_append=
+
+	case ${qemu_arch} in
+		aarch64)
+			qemu_extra_args="-M virt -cpu cortex-a57 -smp 1"
+			qemu_extra_append="console=ttyAMA0"
+			;;
+		i386|x86_64)
+			qemu_extra_args="-cpu max"
+			qemu_extra_append="console=ttyS0,115200n8"
+			;;
+		ppc64)
+			qemu_extra_args="-nodefaults"
+			;;
+		*)
+			:
+			;;
+	esac
+
 	cat > run.sh <<-EOF || die
 		#!/bin/sh
 		exec qemu-system-${qemu_arch} \
 			${qemu_extra_args} \
-			-m 256M \
-			-display none \
+			-m 512M \
+			-nographic \
 			-no-reboot \
 			-kernel '${image}' \
 			-initrd '${T}/initrd' \
 			-serial mon:stdio \
-			-hda '${T}/fs.qcow2' \
-			-append 'root=/dev/sda console=ttyS0,115200n8'
+			-drive file=fs.img,format=raw,index=0,media=disk \
+			-append 'root=LABEL=groot ${qemu_extra_append}'
 	EOF
 	chmod +x run.sh || die
 	# TODO: initramfs does not let core finish starting on some systems,
@@ -261,6 +326,14 @@ kernel-install_test() {
 		set timeout 900
 		spawn ./run.sh
 		expect {
+			"terminating on signal" {
+				send_error "\n* Qemu killed"
+				exit 1
+			}
+			"OS terminated" {
+				send_error "\n* Qemu terminated OS"
+				exit 1
+			}
 			"Kernel panic" {
 				send_error "\n* Kernel panic"
 				exit 1
@@ -269,7 +342,7 @@ kernel-install_test() {
 				send_error "\n* Initramfs failed to start the system"
 				exit 1
 			}
-			"Core 10.1" {
+			"Hello, World!" {
 				send_error "\n* Booted successfully"
 				exit 0
 			}
