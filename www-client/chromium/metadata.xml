@@ -10,6 +10,7 @@
 		<flag name="component-build">Split build into more shared libraries to speed up linking. Mostly intended for debugging and development, NOT RECOMMENDED for general use.</flag>
 		<flag name="headless">Build Ozone only with headless backend, NOT RECOMMENDED for general use.</flag>
 		<flag name="hangouts">Enable support for Google Hangouts features such as screen sharing</flag>
+		<flag name="official">Enable Official build instead of Developer build.</flag>
 		<flag name="ozone">Enable Ozone platform abstraction layer with X11 backend.</flag>
 		<flag name="pic">Disable optimized assembly code that is not PIC friendly</flag>
 		<flag name="proprietary-codecs">Enable proprietary codecs like H.264, MP3</flag>
