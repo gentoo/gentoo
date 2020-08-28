@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jakov.smolic@sartura.hr</email>
+		<name>Jakov Smolic</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="dav1d">Use <pkg>media-libs/dav1d</pkg> for decoding</flag>
+		<flag name="gdk-pixbuf">Enable <pkg>x11-libs/gdk-pixbuf</pkg> loader</flag>
+		<flag name="libaom">Use <pkg>media-libs/libaom</pkg> for encoding (and decoding if no other decoder is present)</flag>
+		<flag name="rav1e">Use <pkg>media-video/rav1e</pkg> for encoding</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">AOMediaCodec/libavif</remote-id>
+	</upstream>
+</pkgmetadata>
