@@ -14,8 +14,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="doc fox static-libs"
 
-RDEPEND="virtual/libusb:1[${MULTILIB_USEDEP}]
-	virtual/libudev:0[${MULTILIB_USEDEP}]"
+RDEPEND="
+	kernel_linux? (
+		virtual/libudev:0[${MULTILIB_USEDEP}]
+		virtual/libusb:1[${MULTILIB_USEDEP}]
+	)
+	kernel_FreeBSD? (
+		virtual/libusb:1[${MULTILIB_USEDEP}]
+	)
+"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	virtual/pkgconfig
