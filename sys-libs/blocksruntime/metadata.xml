@@ -5,10 +5,7 @@
 		<email>slyfox@gentoo.org</email>
 		<name>Sergei Trofimovich</name>
 	</maintainer>
-	<use>
-		<flag name="clang">Enable clang support (pull <pkg>sys-libs/blocksruntime</pkg> dependency).</flag>
-	</use>
 	<upstream>
-		<remote-id type="github">google/honggfuzz</remote-id>
+		<remote-id type="github">mackyle/blocksruntime</remote-id>
 	</upstream>
 </pkgmetadata>
