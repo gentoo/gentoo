@@ -50,15 +50,16 @@ src_install() {
 }
 
 pkg_postinst() {
+	# Actually update Nessus core components. According to upstream packages,
+	# harmless to invoke on fresh installations too - and it may make life easier
+	# for people who had restored Nessus state from backups, had it lying around
+	# from older installations and so on.
+	"${EROOT}"/opt/nessus/sbin/nessuscli install "${EROOT}"/opt/nessus/var/nessus/plugins-core.tar.gz
+
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		elog "To get started launch the nessusd-bin service, then point your Web browser to"
 		elog "  https://<yourhost>:8834/"
 	else
-		elog "You may want to restart the nessusd-bin service to use"
-		elog "the new version of Nessus."
-		elog "You also need to update your plugins.  When ready, it's done like this:"
-		elog "/etc/init.d/nessusd-bin stop"
-		elog "/opt/nessus/sbin/nessuscli update --all"
-		elog "/etc/init.d/nessusd-bin start"
+		elog "Please restart the nessusd-bin service to use the new version of Nessus"
 	fi
 }
