@@ -111,6 +111,11 @@ kernel-install_get_image_path() {
 		arm)
 			echo arch/arm/boot/zImage
 			;;
+		ppc64)
+			# ./ is required because of ${image_path%/*}
+			# substitutions in the code
+			echo ./vmlinux
+			;;
 		*)
 			die "${FUNCNAME}: unsupported ARCH=${ARCH}"
 			;;
