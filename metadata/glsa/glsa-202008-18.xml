@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202008-18">
+  <title>X.Org X11 library: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in X.org X11 library, the
+    worst of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">xorg x11 library</product>
+  <announced>2020-08-27</announced>
+  <revised count="1">2020-08-27</revised>
+  <bug>734974</bug>
+  <bug>738984</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="x11-libs/libX11" auto="yes" arch="*">
+      <unaffected range="ge">1.6.12</unaffected>
+      <vulnerable range="lt">1.6.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>X.Org is an implementation of the X Window System. The X.Org X11 library
+      provides the X11 protocol library files.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in X.org X11 library.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All X.org X11 library users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/libX11-1.6.12"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14344">CVE-2020-14344</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14363">CVE-2020-14363</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-08-25T22:22:34Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-08-27T23:55:44Z">sam_c</metadata>
+</glsa>
