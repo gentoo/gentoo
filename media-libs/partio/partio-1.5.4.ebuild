@@ -22,6 +22,14 @@ SLOT="0"
 IUSE="doc"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+RDEPEND="${PYTHON_DEPS}
+	media-libs/freeglut
+	sys-libs/zlib:=
+	virtual/opengl
+"
+
+DEPEND="${RDEPEND}"
+
 BDEPEND="
 	dev-lang/swig
 	doc? (
@@ -33,12 +41,6 @@ BDEPEND="
 		dev-texlive/texlive-latexextra
 	)
 "
-RDEPEND="${PYTHON_DEPS}
-	media-libs/freeglut
-	sys-libs/zlib
-	virtual/opengl
-"
-DEPEND="${RDEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
