@@ -49,7 +49,6 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package doc Doxygen)
-		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
 	)
 
 	cmake_src_configure
