@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools elisp-common eutils flag-o-matic multilib toolchain-funcs xdg-utils
+
+inherit autotools desktop elisp-common flag-o-matic toolchain-funcs xdg-utils
 
 DESCRIPTION="DVI previewer for X Window System"
 HOMEPAGE="http://xdvi.sourceforge.net/"
