@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${PN}-python-${PV}/${PN}-python"
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ia64 ~x86"
 IUSE="cli test"
 RESTRICT="!test? ( test )"
 
@@ -27,7 +27,7 @@ RDEPEND="
 		$(python_gen_cond_dep '
 			dev-python/black[${PYTHON_USEDEP}]
 			dev-python/click[${PYTHON_USEDEP}]
-		' python3_{6..8})
+		' python3_{6..9})
 	)
 "
 BDEPEND="
@@ -42,7 +42,7 @@ BDEPEND="
 "
 
 python_prepare() {
-	if ! use cli || [[ ${EPYTHON} != python3.[678] ]]; then
+	if ! use cli || [[ ${EPYTHON} != python* ]]; then
 		sed -i -e '/console_scripts/d' setup.py || die
 	fi
 }
