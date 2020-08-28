@@ -159,7 +159,7 @@
       <name>Kent Fredric</name>
       <role>Minion</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>leio@gentoo.org</email>
       <name>Mart Raudsepp</name>
     </member>
@@ -168,7 +168,7 @@
       <name>Roy Bamford</name>
       <role>Minion</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>sam@gentoo.org</email>
       <name>Sam James</name>
       <role>Anything/everything</role>
