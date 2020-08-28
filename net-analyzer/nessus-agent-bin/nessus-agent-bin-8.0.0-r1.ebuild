@@ -50,6 +50,12 @@ src_install() {
 }
 
 pkg_postinst() {
+	# Actually update Nessus core components. According to upstream packages,
+	# harmless to invoke on fresh installations too - and it may make life easier
+	# for people who had restored Nessus state from backups, had it lying around
+	# from older installations and so on.
+	"${EROOT}"/opt/nessus_agent/sbin/nessuscli install "${EROOT}"/opt/nessus_agent/var/nessus/plugins-core.tar.gz
+
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		elog "In order to link the agent to Tenable.io or an instance of Nessus Manager,"
 		elog "obtain an appropriate linking key and run"
@@ -57,5 +63,7 @@ pkg_postinst() {
 		elog "  /opt/nessus_agent/sbin/nessuscli agent link --key=<key> --host=<host> --port=<port> [optional parameters]"
 		elog ""
 		elog "This can be done before the agent is started."
+	else
+		elog "Please restart the nessusagent service to complete the update process"
 	fi
 }
