@@ -20,11 +20,14 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	media-libs/freeglut
-	virtual/opengl
 	sys-libs/zlib:=
+	virtual/opengl
 "
 
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+
+BDEPEND="
+	dev-lang/swig
 	doc? (
 		app-doc/doxygen
 		dev-texlive/texlive-bibtexextra
@@ -33,7 +36,6 @@ DEPEND="${RDEPEND}
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
 	)
-	dev-lang/swig:*
 "
 
 PATCHES=( "${FILESDIR}/${PN}-1.1.0-Rename-partconv.patch" )
