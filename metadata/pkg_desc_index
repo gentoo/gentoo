@@ -2735,7 +2735,7 @@ app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugrepo
 app-portage/pfl 3.1: Searchable online file/package database for Gentoo
 app-portage/portage-utils 0.87 0.88 0.89 9999: Small and fast Portage helper tools written in C
 app-portage/porticron 0.7.1: cron script to sync portage and send update mails to root
-app-portage/portpeek 2.1.27-r1 2.1.29 3.0.1 3.1.3: A helper program for maintaining the package.keyword and package.unmask files
+app-portage/portpeek 2.1.27-r1 2.1.29 3.0.1 3.1.3 3.1.4: A helper program for maintaining the package.keyword and package.unmask files
 app-portage/pqlop 0.02-r1: emerge.log parser written in python
 app-portage/pram 9: Tool to ease merging Pull Requests and git patches
 app-portage/prefix-toolkit 8 9: Utilities for users of Gentoo Prefix
@@ -6307,7 +6307,7 @@ dev-perl/DateTime-Format-SQLite 0.110.0 0.110.0-r1: Parse and format SQLite date
 dev-perl/DateTime-Format-Strptime 1.700.0 1.740.0 1.770.0: Parse and Format DateTimes using Strptime
 dev-perl/DateTime-Format-W3CDTF 0.70.0: Parse and format W3CDTF datetime strings
 dev-perl/DateTime-HiRes 0.10.0-r1 0.30.0: Create DateTime objects with sub-second current time resolution
-dev-perl/DateTime-Locale 0.460.0 1.20.0 1.30.0 1.50.0 1.160.0 1.260.0: Localization support for DateTime
+dev-perl/DateTime-Locale 0.460.0 1.20.0 1.30.0 1.50.0 1.160.0 1.260.0 1.270.0: Localization support for DateTime
 dev-perl/DateTime-Set 0.390.0 0.390.0-r1: Datetime sets and set math
 dev-perl/DateTime-TimeZone 1.930.0 1.940.0 2.10.0 2.110.0 2.130.0 2.390.0: Time zone object base class and factory
 dev-perl/DateTime-Tiny 1.60.0 1.70.0: A date object, with as little code as possible
