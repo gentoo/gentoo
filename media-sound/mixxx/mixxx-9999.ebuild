@@ -87,9 +87,6 @@ src_prepare() {
 src_configure() {
 	local myoptimize=0
 
-	# Required for >=qt-5.7.0 (bug #590690)
-	append-cxxflags -std=c++11
-
 	# Try to get cpu type based on CFLAGS.
 	# Bug #591968
 	for i in $(get-flag mcpu) $(get-flag march) ; do
