@@ -15,6 +15,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="ruby"
+RESTRICT="test"
 
 DEPEND=""
 RDEPEND="|| (
