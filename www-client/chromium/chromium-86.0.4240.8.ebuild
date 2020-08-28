@@ -12,7 +12,7 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
-PATCHSET="5"
+PATCHSET="6"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://files.pythonhosted.org/packages/ed/7b/bbf89ca71e722b7f9464ebffe4b5ee20a9e5c9a555a56e2d3914bb9119a6/setuptools-44.1.0.zip
@@ -21,7 +21,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="component-build cups cpu_flags_arm_neon +hangouts headless +js-type-check kerberos ozone pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-icu +system-libvpx +tcmalloc wayland widevine"
+IUSE="component-build cups cpu_flags_arm_neon +hangouts headless +js-type-check kerberos official ozone pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-icu +system-libvpx +tcmalloc wayland widevine"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 REQUIRED_USE="
 	component-build? ( !suid )
@@ -720,6 +720,16 @@ src_configure() {
 		else
 			myconf_gn+=" ozone_platform=\"headless\""
 		fi
+	fi
+
+	# Enable official builds
+	myconf_gn+=" is_official_build=$(usex official true false)"
+	if use official; then
+		# Allow building against system libraries in official builds
+		sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
+			tools/generate_shim_headers/generate_shim_headers.py || die
+		# Disable CFI: unsupported for GCC, requires clang+lto+lld
+		myconf_gn+=" is_cfi=false"
 	fi
 
 	einfo "Configuring Chromium..."
