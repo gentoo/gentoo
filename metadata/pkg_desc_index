@@ -487,7 +487,6 @@ app-admin/clog 1.3.0: clog is a colorized log tail utility
 app-admin/clsync 0.4.4 9999: Live sync tool based on inotify, written in GNU C
 app-admin/clustershell 1.8.3: Python framework for efficient cluster administration
 app-admin/conky 1.10.8-r9 1.10.8-r10 1.11.5 1.11.6: An advanced, highly configurable system monitor for X
-app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.2.3 8.2.4 8.2.5: Serial Console Manager
 app-admin/consul 1.7.4 1.7.6 1.7.7 1.8.0 1.8.1 1.8.2 1.8.3: A tool for service discovery, monitoring and configuration
 app-admin/consul-replicate 0.2.0: Consul cross-DC KV replication daemon
@@ -663,7 +662,6 @@ app-arch/brotli 1.0.6-r1 1.0.7 1.0.9 9999: Generic-purpose lossless compression 
 app-arch/bsdsfv 1.18-r2: all-in-one SFV checksum utility
 app-arch/bzip2 1.0.6-r11 1.0.7-r1 1.0.8-r1 9999: A high-quality data compressor used extensively by Gentoo Linux
 app-arch/cabextract 1.8 1.9-r2 1.9.1 9999: Extracts files from Microsoft cabinet archive files
-app-arch/cfv 1.18.3-r1: Utility to test and create .sfv, .csv, .crc and md5sum files
 app-arch/cksfv 1.3.14-r1: SFV checksum utility (simple file verification)
 app-arch/cpio 2.12-r1 2.13: A file archival tool which can also read and write tar files
 app-arch/deb2targz 1-r3: Convert a .deb file to a .tar.gz archive
@@ -838,7 +836,6 @@ app-cdr/brasero 3.12.2-r1: CD/DVD burning application for the GNOME desktop
 app-cdr/burncdda 1.8.3: Console app for copying burning audio cds
 app-cdr/ccd2iso 0.3: Convert CD images from ccd (CloneCD) to iso
 app-cdr/cdck 0.7.0-r2: Measure the read time per sector on CD or DVD to check the quality
-app-cdr/cdcover 0.7.4-r1: cdcover allows the creation of inlay-sheets for jewel cd-cases
 app-cdr/cddetect 2.1: Tool for detecting the type of a CD/DVD without mounting it
 app-cdr/cdemu 3.2.4: Command-line tool for controlling cdemu-daemon
 app-cdr/cdemu-daemon 3.2.4: Daemon of the CDEmu optical media image mounting suite
@@ -13769,7 +13766,6 @@ media-sound/drumstick 1.1.3: Qt/C++ wrapper for ALSA sequencer
 media-sound/dvda-author 10.06-r1: Author a DVD-Audio DVD
 media-sound/easytag 2.4.3-r1: GTK+ utility for editing MP2, MP3, MP4, FLAC, Ogg and other media tags
 media-sound/ecasound 2.6.0-r1 2.9.1-r1 2.9.3: a package for multitrack audio processing
-media-sound/edna 0.6: Greg Stein's python streaming audio server for desktop or LAN use
 media-sound/elisa 20.04.3 20.08.0: Simple music player by KDE
 media-sound/entagged-tageditor 0.35: Open-source audiofile tagger
 media-sound/erec 2.2.0.1-r1: Shared audio recording server
@@ -13862,7 +13858,6 @@ media-sound/mixxx 2.2.3-r2 2.2.4 9999: Advanced Digital DJ tool based on Qt
 media-sound/mmix 0.3-r1: A soundcard mixer for the OSS driver
 media-sound/moc 2.5.2-r1 2.6_alpha3-r1 2.6_alpha3-r2: Music On Console - ncurses interface for playing audio files
 media-sound/modplugtools 0.5.3: libmodplug based module players modplug123 and modplugplay
-media-sound/moosic 1.5.6-r1: Music player that focuses on easy playlist management
 media-sound/mp32ogg 0.11-r6: A perl script to convert MP3 files to Ogg Vorbis files
 media-sound/mp3_check 1.98-r1: MP3 consistency checker
 media-sound/mp3asm 0.1.3-r2: A command line tool to clean and edit mp3 files
@@ -13929,7 +13924,6 @@ media-sound/poc 0.4.1: mp3 and ogg streamer (include mp3cue and mp3cut)
 media-sound/podcatcher 3.1.6: Podcast client for the command-line written in Ruby
 media-sound/podget 0.7.14 0.8.1 0.8.2: A simple podcast aggregator optimized for running as a scheduled job
 media-sound/podracer 1.4-r2: A simple podcast aggregator, designed for cron
-media-sound/positron 1.1-r1: Synchronization manager for the Neuros Audio Computer
 media-sound/potamus 17: A lightweight audio player with a simple interface and an emphasis on high audio quality
 media-sound/pragha 1.3.99.1: A lightweight music player (for Xfce)
 media-sound/protux 0.50.100: Professional Audio Tools for GNU/Linux

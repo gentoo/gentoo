@@ -209,7 +209,6 @@ app-antivirus/clamtk:nautilus - Install the Nautilus plugin.
 app-antivirus/clamtk:nemo - Install the Nemo plugin.
 app-antivirus/clamtk:thunar - Install the Thunar plugin.
 app-arch/cabextract:extras - Install experimental extra tools: wince_info and wince_rename for examining and processing Windows CE installation cabinet header files; cabinfo for examining the structure of a cab file.
-app-arch/cfv:bittorrent - Enable support for checking .torrent files
 app-arch/dpkg:libmd - Use app-crypt/libmd library for message digest functions
 app-arch/dpkg:update-alternatives - Install update-alternatives
 app-arch/dump:ermt - encrypted rmt support
