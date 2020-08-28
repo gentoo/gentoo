@@ -484,14 +484,6 @@ dev-util/intel-ocl-sdk system-clang
 # Currently broken upstream.
 >=dev-lang/rakudo-2016.05 java
 
-# Michał Górny <mgorny@gentoo.org> (2016-05-14)
-# (on behalf of QA team)
-# sys-devel/gcc[jit]:
-# - violates strict multilib rules, #569608
-# - causes collisions between multiple gcc versions, #583010
-# Masking the flag until it is fixed.
-sys-devel/gcc jit
-
 # Mike Frysinger <vapier@gentoo.org> (2016-05-08)
 # Most targets do not support VTV #547040.
 sys-devel/gcc vtv
