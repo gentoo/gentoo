@@ -59,7 +59,9 @@ RESTRICT+="
 	!test? ( test )
 	test? ( userpriv )
 	arm? ( test )
-	arm64? ( test )"
+	arm64? ( test )
+	ppc64? ( test )
+"
 
 # install-DEPEND actually
 # note: we need installkernel with initramfs support!
@@ -108,6 +110,11 @@ kernel-install_get_image_path() {
 			;;
 		arm)
 			echo arch/arm/boot/zImage
+			;;
+		ppc64)
+			# ./ is required because of ${image_path%/*}
+			# substitutions in the code
+			echo ./vmlinux
 			;;
 		*)
 			die "${FUNCNAME}: unsupported ARCH=${ARCH}"
