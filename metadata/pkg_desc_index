@@ -13765,7 +13765,7 @@ media-sound/dir2ogg 0.13-r1: Converts mp3, m4a, wma, and wav files to Ogg Vorbis
 media-sound/drumstick 1.1.3: Qt/C++ wrapper for ALSA sequencer
 media-sound/dvda-author 10.06-r1: Author a DVD-Audio DVD
 media-sound/easytag 2.4.3-r1: GTK+ utility for editing MP2, MP3, MP4, FLAC, Ogg and other media tags
-media-sound/ecasound 2.6.0-r1 2.9.1-r1 2.9.3: a package for multitrack audio processing
+media-sound/ecasound 2.6.0-r1 2.9.3: a package for multitrack audio processing
 media-sound/elisa 20.04.3 20.08.0: Simple music player by KDE
 media-sound/entagged-tageditor 0.35: Open-source audiofile tagger
 media-sound/erec 2.2.0.1-r1: Shared audio recording server
