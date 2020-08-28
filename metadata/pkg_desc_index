@@ -850,7 +850,7 @@ app-cdr/cuetools 1.4.1: Utilities to manipulate and convert cue and toc files
 app-cdr/daa2iso 0.1.7e: Program for converting the DAA and GBI files to ISO
 app-cdr/disc-cover 1.5.6-r1: Creates CD-Covers via LaTeX by fetching cd-info from freedb.org or local file
 app-cdr/dolphin-plugins-mountiso 20.08.0: Dolphin plugin for ISO loopback device mounting
-app-cdr/dumpet 2.1_p20140601-r1 2.1_p20140601-r2: A tool to dump and debug bootable CD-like images
+app-cdr/dumpet 2.1_p20140601-r1 2.1_p20140601-r2 2.1_p20140601-r3: A tool to dump and debug bootable CD-like images
 app-cdr/dvd+rw-tools 7.1-r3: A set of tools for DVD+RW/-RW drives
 app-cdr/dvdisaster 0.79.5: Tool for creating error correction data (ecc) for optical media (DVD, CD, BD)
 app-cdr/dvdshrink 2.6.1_p10: Scriptable DVD copy software
