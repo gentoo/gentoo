@@ -14505,7 +14505,7 @@ net-analyzer/wireshark 3.2.5 3.2.6 99999999: A network protocol analyzer formerl
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2 9999: A framework for layer 2 attacks
-net-analyzer/zabbix 3.0.31-r1 4.0.22 4.0.23 5.0.2: ZABBIX is software for monitoring of your applications, network and servers
+net-analyzer/zabbix 3.0.31-r1 4.0.22 4.0.23 4.0.24 5.0.2 5.0.3: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 2.1.1-r1 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/accel-ppp 1.12.0-r1 9999: High performance PPTP, PPPoE and L2TP server
@@ -17646,6 +17646,7 @@ sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers 
 sys-kernel/zen-sources 5.4.15 5.7.12: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.33.1-r1 2.34-r1 2.34-r2 2.35: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
+sys-libs/blocksruntime 0_pre20171027: BlocksRuntime library needed for clang's -fblocks support
 sys-libs/compiler-rt 9.0.1 10.0.0 10.0.1 11.0.0_rc1 11.0.0_rc2 11.0.0.9999 12.0.0.9999: Compiler runtime library for clang (built-in part)
 sys-libs/compiler-rt-sanitizers 9.0.1 10.0.0 10.0.1 11.0.0_rc1 11.0.0_rc2 11.0.0.9999 12.0.0.9999: Compiler runtime libraries for clang (sanitizers & xray)
 sys-libs/cracklib 2.9.6-r2 2.9.7: Password Checking Library
