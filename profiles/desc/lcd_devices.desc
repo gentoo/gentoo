@@ -46,6 +46,7 @@ irlcd - Add support for the USBtiny DIY USB to IR receiver
 irman - Add support for the IrMan IR remote
 irtrans - Add support for the 16x2 IRTrans VFD device
 joy - Add support for the joystick input driver, used on various LCD keypads
+jw002 - Add support for PJRC JW002 24x8 LCD display
 ks0108 - Add support for KS0108 based graphical LCDs
 l4m - Add support for Linux4Media displays
 lb216 - Add support for RTN's LB216 display
