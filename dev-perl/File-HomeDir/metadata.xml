@@ -14,7 +14,6 @@
     <remote-id type="cpan-module">File::HomeDir::Driver</remote-id>
     <remote-id type="cpan-module">File::HomeDir::FreeDesktop</remote-id>
     <remote-id type="cpan-module">File::HomeDir::MacOS9</remote-id>
-    <remote-id type="cpan-module">File::HomeDir::TIE</remote-id>
     <remote-id type="cpan-module">File::HomeDir::Test</remote-id>
     <remote-id type="cpan-module">File::HomeDir::Unix</remote-id>
     <remote-id type="cpan-module">File::HomeDir::Windows</remote-id>
