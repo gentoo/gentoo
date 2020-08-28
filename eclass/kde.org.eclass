@@ -192,7 +192,7 @@ _kde.org_calculate_live_repo() {
 	# @DESCRIPTION:
 	# This variable allows overriding of default repository
 	# name. Specify only if this differs from PN and KDE_ORG_NAME.
-	EGIT_REPO_URI="${EGIT_MIRROR}/${EGIT_REPONAME:=$KDE_ORG_NAME}"
+	EGIT_REPO_URI="${EGIT_MIRROR}/${EGIT_REPONAME:=$KDE_ORG_NAME}.git"
 }
 
 case ${KDE_BUILD_TYPE} in
