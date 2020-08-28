@@ -176,6 +176,9 @@ kernel-build_src_install() {
 	local image_path=$(kernel-install_get_image_path)
 	cp -p "build/${image_path}" "${ED}/usr/src/linux-${ver}/${image_path}" || die
 
+	# building modules fails with 'vmlinux has no symtab?' if stripped
+	use ppc64 && dostrip -x "/usr/src/linux-${ver}/${image_path}"
+
 	# strip empty directories
 	find "${D}" -type d -empty -exec rmdir {} + || die
 
