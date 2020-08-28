@@ -2052,7 +2052,7 @@ app-forensics/chkrootkit 0.52 0.53: Tool to locally check for signs of a rootkit
 app-forensics/cmospwd 5.1-r1: CmosPwd decrypts password stored in cmos used to access BIOS SETUP
 app-forensics/dfxml 20170921-r1 99999999: Digital Forensics XML
 app-forensics/examiner 0.5-r3: Utilizes the objdump command to disassemble and comment foreign binaries
-app-forensics/foremost 1.5.7-r3: A console program to recover files based on their headers and footers
+app-forensics/foremost 1.5.7-r3: Console program to recover files based on their headers and footers
 app-forensics/galleta 20040505_p1: IE Cookie Parser
 app-forensics/honggfuzz 2.3.1: A general purpose fuzzer with feedback support
 app-forensics/libewf 20171104: Implementation of the EWF (SMART and EnCase) image format
@@ -17277,7 +17277,7 @@ sys-boot/mbr 1.1.11-r1: A replacement master boot record for IBM-PC compatible c
 sys-boot/mbr-gpt 0.0.1-r1: An MBR that can handle BIOS-based boot on GPT
 sys-boot/milo 2.4.18: The Alpha MIniLOader, for Alpha Machines without SRM
 sys-boot/mokutil 0.3.0_p20170404: The utility to manipulate machines owner keys which managed in shim
-sys-boot/netboot 0.10.2-r1: Allows to remote boot a computer over an IP network
+sys-boot/netboot 0.10.2-r2: Allows to remote boot a computer over an IP network
 sys-boot/nettrom 2.3.3: NetWinder ARM bootloader and utilities
 sys-boot/os-prober 1.77: Utility to detect other OSs on a set of drives
 sys-boot/palo 2.12-r1 2.13 2.14 9999: PALO : PArisc Linux Loader
