@@ -14,7 +14,7 @@ SRC_URI="https://github.com/mackyle/blocksruntime/archive/${COMMIT}.tar.gz -> ${
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="static-libs"
 
 RDEPEND=""
 DEPEND="${RDEPEND}"
@@ -37,5 +37,5 @@ src_install() {
 	prefix="${EPREFIX}/usr" \
 	libdir="${EPREFIX}/usr/$(get_libdir)" \
 	DESTDIR="${D}" \
-		./installlib || die
+		./installlib $(use static-libs || echo -shared) || die
 }
