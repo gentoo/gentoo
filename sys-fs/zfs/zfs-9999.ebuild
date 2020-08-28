@@ -141,6 +141,7 @@ src_configure() {
 		--with-pammoduledir="$(getpam_mod_dir)"
 		--with-systemdunitdir="$(systemd_get_systemunitdir)"
 		--with-systemdpresetdir="${EPREFIX}/lib/systemd/system-preset"
+		--with-vendor=gentoo
 		$(use_enable debug)
 		$(use_enable nls)
 		$(use_enable pam)
