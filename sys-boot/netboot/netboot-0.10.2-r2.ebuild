@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,11 +22,10 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-ldflags.patch" )
+
 src_prepare() {
 	default
-
-	# Respect users LDFLAGS
-	eapply "${FILESDIR}"/"${P}"-ldflags.patch
 
 	# Don't	install	support	binaries into libdir
 	sed -e "152s:nblibdir:bindir:" -e "153s:nblibdir:bindir:" -i misc/Makefile || die
@@ -46,9 +45,11 @@ src_configure() {
 		$(use_with lzo)
 		$(use_with odbc)
 		$(use_enable static-libs static)
-		--with-gnu-as86="$(tc-getAS)"
-		--with-gnu-cc86="$(tc-getCC)"
-		--with-gnu-ld86="$(tc-getLD)"
+		# Disable compilation of 16-bit assembler files,
+		# since it's broken on x86 and not supported on x86_64.
+		--with-gnu-as86="no"
+		--with-gnu-cc86="no"
+		--with-gnu-ld86="no"
 	)
 
 	econf "${myeconfargs[@]}"
