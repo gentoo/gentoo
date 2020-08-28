@@ -59,7 +59,9 @@ RESTRICT+="
 	!test? ( test )
 	test? ( userpriv )
 	arm? ( test )
-	arm64? ( test )"
+	arm64? ( test )
+	ppc64? ( test )
+"
 
 # install-DEPEND actually
 # note: we need installkernel with initramfs support!
