@@ -15005,7 +15005,7 @@ net-mail/mailfront 2.22: Mail server network protocol front-ends
 net-mail/mailgraph 1.14-r2: A mail statistics RRDtool frontend for Postfix
 net-mail/mailman 2.1.33 3.3.0 3.3.1: Mailman -- the GNU mailing list manager
 net-mail/mailshears 0.0.4: Mangle your mail garden
-net-mail/mailutils 3.8 3.9: A useful collection of mail servers, clients, and filters
+net-mail/mailutils 3.8 3.9 3.10: A useful collection of mail servers, clients, and filters
 net-mail/mairix 0.24: Indexes and searches Maildir/MH folders
 net-mail/mboxgrep 0.7.9-r1 0.7.9-r2: Grep for mbox files
 net-mail/mess822 0.58-r2: Collection of utilities for parsing Internet mail messages
@@ -19128,10 +19128,10 @@ x11-wm/xpra 3.0.2-r1 3.0.5-r1: X Persistent Remote Apps (xpra) and Partitioning 
 xfce-base/exo 0.12.11 4.15.1 4.15.2: Extensions, widgets and framework library with session support for Xfce
 xfce-base/garcon 0.6.4-r2 0.7.0 0.7.1: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.14.1 4.15.3-r1: Unified widget and session management libs for Xfce
-xfce-base/libxfce4util 4.14.0 4.15.2: A basic utility library for the Xfce desktop environment
+xfce-base/libxfce4util 4.14.0 4.15.2 4.15.3: A basic utility library for the Xfce desktop environment
 xfce-base/thunar 1.8.15 4.15.1 4.15.2: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.14.0 4.15.0 4.15.1: A tool to find and launch installed applications for the Xfce desktop
-xfce-base/xfce4-meta 4.14-r2: The Xfce Desktop Environment (meta package)
+xfce-base/xfce4-meta 4.14-r2 4.16_pre1: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.14.4 4.15.3 4.15.4: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.14.1 4.14.2 4.15.0: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.14.3 4.15.1-r1 4.15.2: Configuration system for the Xfce desktop environment
