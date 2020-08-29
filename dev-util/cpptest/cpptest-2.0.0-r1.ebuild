@@ -10,18 +10,20 @@ SRC_URI="https://github.com/cpptest/cpptest/releases/download/${PV}/${P}.tar.bz2
 LICENSE="LGPL-2.1"
 SLOT="1"  # for soversion 1.x.x
 KEYWORDS="amd64 ~arm ppc ppc64 x86"
-IUSE="doc static-libs"
+IUSE="doc"
 
-DEPEND="doc? ( app-doc/doxygen )"
 RDEPEND="!dev-util/cpptest:0"
+BDEPEND="doc? ( app-doc/doxygen )"
 
 DOCS=( AUTHORS BUGS NEWS README )
 
 src_configure() {
-	econf $(use_enable doc) $(use_enable static-libs static)
+	econf \
+		--disable-static \
+		$(use_enable doc)
 }
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
