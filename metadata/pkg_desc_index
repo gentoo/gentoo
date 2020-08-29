@@ -6480,7 +6480,7 @@ dev-perl/File-KeePass 2.30.0-r1: Interface to KeePass V1 and V2 database files
 dev-perl/File-LibMagic 1.150.0 1.220.0 1.220.0-r1: Perl wrapper for libmagic
 dev-perl/File-Listing 6.40.0-r1 6.40.0-r2: Parse directory listings
 dev-perl/File-MMagic 1.300.0-r1 1.300.0-r2: The Perl Image-Info Module
-dev-perl/File-Map 0.640.0: Memory mapping made simple and safe
+dev-perl/File-Map 0.640.0 0.670.0: Memory mapping made simple and safe
 dev-perl/File-MimeInfo 0.280.0: Determine file type
 dev-perl/File-NCopy 0.360.0-r2: Copy file, file Copy file[s] | dir[s], dir
 dev-perl/File-NFSLock 1.270.0: perl module to do NFS (or not) locking
@@ -7072,7 +7072,7 @@ dev-perl/Perl-Tidy 20171214.0.0 20190915.0.0: Perl script indenter and beautifie
 dev-perl/Perl-Unsafe-Signals 0.30.0-r1: Allow unsafe handling of signals in selected blocks
 dev-perl/Perl-Version 1.13.0: Parse and manipulate Perl version strings
 dev-perl/Perl6-Junction 1.600.0: Perl6 style Junction operators in Perl5
-dev-perl/PerlIO-Layers 0.11.0: Querying your filehandle's capabilities
+dev-perl/PerlIO-Layers 0.11.0 0.11.0-r1: Querying your filehandle's capabilities
 dev-perl/PerlIO-eol 0.160.0: PerlIO layer for normalizing line endings
 dev-perl/PerlIO-gzip 0.200.0: PerlIO layer to gzip/gunzip
 dev-perl/PerlIO-utf8_strict 0.7.0: Fast and correct UTF-8 IO
@@ -14711,7 +14711,7 @@ net-im/spectrum2 2.0.12-r4 2.0.13-r2: An open source instant messaging transport
 net-im/swift 4.0.2-r2 4.0.2-r4: An elegant, secure, adaptable and intuitive XMPP Client
 net-im/teams 1.3.00.958 1.3.00.5153 1.3.00.16851: Microsoft Teams, an Office 365 multimedia collaboration client, pre-release
 net-im/telegram-desktop 2.1.13 2.2.0-r1: Official desktop client for Telegram
-net-im/telegram-desktop-bin 2.1.13-r1: Official desktop client for Telegram (binary package)
+net-im/telegram-desktop-bin 2.1.13-r1 2.2.0 2.3.0: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.2: Daemon that centralizes the communication logging within the Telepathy framework
 net-im/telepathy-mission-control 5.16.5: An account manager and channel dispatcher for the Telepathy framework
