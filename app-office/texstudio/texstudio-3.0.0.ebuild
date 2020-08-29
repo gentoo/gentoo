@@ -5,7 +5,7 @@ EAPI=7
 
 inherit prefix qmake-utils xdg-utils desktop
 
-MY_PV="${PV/_/}"
+MY_PV="3.0.0alpha6"
 
 DESCRIPTION="Free cross-platform LaTeX editor (fork from texmakerX)"
 HOMEPAGE="https://www.texstudio.org https://github.com/texstudio-org/texstudio"
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/texstudio-org/texstudio/archive/${MY_PV}.tar.gz -> $
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="video"
 
 COMMON_DEPEND="
@@ -49,7 +49,6 @@ S=${WORKDIR}/${PN}-${MY_PV}
 
 src_prepare() {
 	default
-	# TODO: find hunspell quazip utilities/poppler-data qtsingleapplication -delete || die
 
 	if use video; then
 		sed "/^PHONON/s:$:true:g" -i ${PN}.pro || die
