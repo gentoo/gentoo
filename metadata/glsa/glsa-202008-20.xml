@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202008-20">
+  <title>GPL Ghostscript: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in GPL Ghostscript, the
+    worst of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">ghostscript</product>
+  <announced>2020-08-29</announced>
+  <revised count="1">2020-08-29</revised>
+  <bug>734322</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/ghostscript-gpl" auto="yes" arch="*">
+      <unaffected range="ge">9.52</unaffected>
+      <vulnerable range="lt">9.52</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Ghostscript is an interpreter for the PostScript language and for PDF.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GPL Ghostscript. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GPL Ghostscript users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-text/ghostscript-gpl-9.52"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-15900">CVE-2020-15900</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16287">CVE-2020-16287</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16288">CVE-2020-16288</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16289">CVE-2020-16289</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16290">CVE-2020-16290</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16291">CVE-2020-16291</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16292">CVE-2020-16292</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16293">CVE-2020-16293</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16294">CVE-2020-16294</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16295">CVE-2020-16295</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16296">CVE-2020-16296</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16297">CVE-2020-16297</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16298">CVE-2020-16298</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16299">CVE-2020-16299</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16300">CVE-2020-16300</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16301">CVE-2020-16301</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16302">CVE-2020-16302</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16303">CVE-2020-16303</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16304">CVE-2020-16304</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16305">CVE-2020-16305</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16306">CVE-2020-16306</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16307">CVE-2020-16307</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16308">CVE-2020-16308</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16309">CVE-2020-16309</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16310">CVE-2020-16310</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-17538">CVE-2020-17538</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-08-29T18:24:31Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-08-29T22:11:16Z">sam_c</metadata>
+</glsa>

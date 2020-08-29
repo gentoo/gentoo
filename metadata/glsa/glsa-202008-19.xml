@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202008-19">
+  <title>BIND: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in BIND, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">bind</product>
+  <announced>2020-08-29</announced>
+  <revised count="1">2020-08-29</revised>
+  <bug>738250</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/bind" auto="yes" arch="*">
+      <unaffected range="ge">9.16.6</unaffected>
+      <vulnerable range="lt">9.16.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>BIND (Berkeley Internet Name Domain) is a Name Server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in BIND. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All BIND users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dns/bind-9.16.6"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8620">CVE-2020-8620</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8621">CVE-2020-8621</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8622">CVE-2020-8622</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8623">CVE-2020-8623</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8624">CVE-2020-8624</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-08-29T20:46:51Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-08-29T22:10:45Z">sam_c</metadata>
+</glsa>
