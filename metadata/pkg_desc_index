@@ -6478,7 +6478,7 @@ dev-perl/File-Grep 0.20.0-r2: Find matches to a pattern in a series of files and
 dev-perl/File-HomeDir 1.2.0 1.4.0: Get home directory for self or other user
 dev-perl/File-KeePass 2.30.0-r1: Interface to KeePass V1 and V2 database files
 dev-perl/File-LibMagic 1.150.0 1.220.0 1.220.0-r1: Perl wrapper for libmagic
-dev-perl/File-Listing 6.40.0-r1: Parse directory listings
+dev-perl/File-Listing 6.40.0-r1 6.40.0-r2: Parse directory listings
 dev-perl/File-MMagic 1.300.0-r1: The Perl Image-Info Module
 dev-perl/File-Map 0.640.0: Memory mapping made simple and safe
 dev-perl/File-MimeInfo 0.280.0: Determine file type
@@ -13866,7 +13866,7 @@ media-sound/mp3c 0.31-r1: console based mp3 ripper, with cddb support
 media-sound/mp3cat 0.5: Reads and writes MP3 files
 media-sound/mp3check 0.8.7: Checks mp3 files for consistency and prints several errors and warnings
 media-sound/mp3diags 1.5.01: Qt-based MP3 diagnosis and repair tool
-media-sound/mp3gain 1.6.1 1.6.2: A program to analyze and adjust MP3 files to same volume
+media-sound/mp3gain 1.6.2: A program to analyze and adjust MP3 files to same volume
 media-sound/mp3info 0.8.5a-r1: An MP3 technical info viewer and ID3 1.x tag editor
 media-sound/mp3report 1.0.2: Perl script to create an HTML report of MP3 files in a directory
 media-sound/mp3splt 2.6.2: a command line utility to split mp3 and ogg files without decoding
