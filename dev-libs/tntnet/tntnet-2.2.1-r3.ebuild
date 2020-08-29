@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="Modular, multithreaded web application server extensible with C++"
 HOMEPAGE="http://www.tntnet.org/"
@@ -12,13 +12,14 @@ SRC_URI="http://www.tntnet.org/download/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~sparc ~x86"
-IUSE="gnutls libressl server ssl examples static-libs"
+IUSE="gnutls libressl server ssl examples"
 
-RDEPEND=">=dev-libs/cxxtools-2.2.1
+RDEPEND="
+	>=dev-libs/cxxtools-2.2.1
 	sys-libs/zlib[minizip]
 	ssl? (
 		gnutls? (
-			>=net-libs/gnutls-1.2.0
+			net-libs/gnutls:0=
 			dev-libs/libgcrypt:0
 		)
 		!gnutls? (
@@ -27,18 +28,19 @@ RDEPEND=">=dev-libs/cxxtools-2.2.1
 		)
 	)"
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig
-	app-arch/zip"
+BDEPEND="
+	app-arch/zip
+	virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${PN}-2.0-zlib-minizip.patch )
 
 src_prepare() {
 	# Both fixed in the next release
-	eapply "${FILESDIR}"/${PN}-2.0-zlib-minizip.patch
+	default
 	rm framework/common/{ioapi,unzip}.[ch] || die
 
 	# bug 426262
-	if has_version ">sys-devel/autoconf-2.13"; then
-		mv configure.in configure.ac
-	fi
+	mv configure.{in,ac} || die
 
 	# bug 423697
 	sed -e "s:unzip.h:minizip/unzip.h:" -i framework/defcomp/unzipcomp.cpp || die
@@ -46,54 +48,46 @@ src_prepare() {
 	eautoreconf
 
 	sed -i -e 's:@localstatedir@:/var:' etc/tntnet/tntnet.xml.in || die
-
-	default
 }
 
 src_configure() {
-	local myconf=""
+	# default enabled, will not compile without sdk
+	local myconf=( --with-sdk )
 
-	# Prefer gnutls above SSL
+	# Prefer gnutls over SSL
 	if use gnutls; then
 		einfo "Using gnutls for ssl support."
-		myconf="${myconf} --with-ssl=gnutls"
+		myconf+=( --with-ssl=gnutls )
 	elif use ssl; then
 		einfo "Using openssl for ssl support."
-		myconf="${myconf} --with-ssl=openssl"
+		myconf+=( --with-ssl=openssl )
 	else
-		myconf="${myconf} --with-ssl=no"
+		myconf+=( --with-ssl=no )
 	fi
 
-	# default enabled, will not compile without sdk
-	myconf="${myconf} --with-sdk"
-
 	econf \
+		--disable-static \
 		$(use_with server) \
-		${myconf}
+		"${myconf[@]}"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-
-	dodoc AUTHORS ChangeLog README TODO doc/tntnet.pdf
+	default
+	dodoc doc/tntnet.pdf
 
 	if use examples; then
-		cd "${S}/sdk/demos"
-		emake clean
-		rm -rf .deps */.deps .libs */.libs
-		cd "${S}"
+		emake -C sdk/demos maintainer-clean
+		rm -r sdk/demos/{Makefile*,*/Makefile*,*/*.{la,lo},*/.libs} || die
 
 		docinto examples
-		dodoc -r sdk/demos/*
+		dodoc -r sdk/demos/.
 	fi
 
 	if use server; then
-		rm -f "${D}/etc/init.d/tntnet"
-		newinitd "${FILESDIR}/tntnet.initd" tntnet
+		rm -f "${ED}"/etc/init.d/tntnet || die
+		newinitd "${FILESDIR}"/tntnet.initd tntnet
 	fi
 
 	# bug 737184
-	if ! use static-libs; then
-		find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
-	fi
+	find "${ED}" -name '*.la' -delete || die
 }
