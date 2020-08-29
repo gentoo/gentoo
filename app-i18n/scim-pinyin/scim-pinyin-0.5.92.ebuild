@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit autotools-utils
+inherit autotools
 
 DESCRIPTION="Smart Common Input Method (SCIM) Smart Pinyin Input Method"
 HOMEPAGE="http://www.scim-im.org/"
@@ -14,25 +14,33 @@ SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="nls"
 
-RDEPEND="x11-libs/libXt
+RDEPEND="
 	>=app-i18n/scim-1.1
+	x11-libs/libXt
 	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
-AUTOTOOLS_AUTORECONF=1
-PATCHES=(
-	"${FILESDIR}/${PN}-0.5.91-fixconfigure.patch"
-)
-DOCS=( AUTHORS NEWS README ChangeLog )
+
+PATCHES=( "${FILESDIR}"/${PN}-0.5.91-fixconfigure.patch )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
-	local myeconfargs=(
+	econf \
+		--disable-skim-support \
+		--disable-static \
+		--without-arts \
 		$(use_enable nls)
-		--disable-skim-support
-		--without-arts
-		--disable-static
-		--disable-depedency-tracking
-	)
-	autotools-utils_src_configure
+}
+
+src_install() {
+	default
+
+	# only plugins
+	find "${ED}" -name '*.la' -delete || die
 }
