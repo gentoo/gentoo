@@ -8,8 +8,7 @@ inherit toolchain-funcs flag-o-matic multilib
 DESCRIPTION="The extensible self-documenting text editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 SRC_URI="ftp://ftp.gnu.org/old-gnu/emacs/${P}.tar.gz
-	ftp://ftp.splode.com/pub/users/friedman/emacs/${P}-linux22x-elf-glibc21.diff.gz
-	https://dev.gentoo.org/~ulm/emacs/${P}-patches-12.tar.xz"
+	https://dev.gentoo.org/~ulm/emacs/${P}-patches-13.tar.xz"
 
 LICENSE="GPL-1+ GPL-2+ BSD HPND"
 SLOT="18"
@@ -35,7 +34,7 @@ BDEPEND="app-eselect/eselect-emacs
 RDEPEND="${RDEPEND}
 	app-eselect/eselect-emacs"
 
-PATCHES="../${P}-linux22x-elf-glibc21.diff ../patch"
+PATCHES="../patch"
 
 src_prepare() {
 	default
