@@ -1,17 +1,6 @@
-From 4f870752abbb756911d7b11405d49e9769d082bd Mon Sep 17 00:00:00 2001
-From: Emmanuel Leblond <emmanuel.leblond@gmail.com>
-Date: Fri, 8 Apr 2016 22:13:36 +0200
-Subject: [PATCH] Fix #68 when reading file with only \0 char
-
----
- src/iniparser.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/src/iniparser.c b/src/iniparser.c
-index be37fec..fb1b549 100644
 --- a/src/iniparser.c
 +++ b/src/iniparser.c
-@@ -678,7 +678,7 @@ dictionary * iniparser_load(const char * ininame)
+@@ -663,7 +663,7 @@
      while (fgets(line+last, ASCIILINESZ-last, in)!=NULL) {
          lineno++ ;
          len = (int)strlen(line)-1;
@@ -19,4 +8,4 @@ index be37fec..fb1b549 100644
 +        if (len<=0)
              continue;
          /* Safety check against buffer overflows */
-         if (line[len]!='\n' && !feof(in)) {
+         if (line[len]!='\n') {
