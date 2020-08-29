@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		The Palaver ZNC module provides push notifications through ZNC
+		for the iOS Palaver APP while being disconnected from IRC.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/cocodelabs/znc-palaver/issues</bugs-to>
+		<remote-id type="github">cocodelabs/znc-palaver</remote-id>
+	</upstream>
+</pkgmetadata>

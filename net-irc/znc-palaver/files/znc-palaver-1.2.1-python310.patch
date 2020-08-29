@@ -1,0 +1,48 @@
+From 3d5a1a3c2a7cb3de82c618b1e70618195ec4a1e7 Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conrad@kostecki.com>
+Date: Fri, 28 Aug 2020 23:48:23 +0200
+Subject: [PATCH] test/test_palaver.py: loop argument is deprecated
+
+DeprecationWarning: The loop argument is deprecated since Python 3.8,
+and scheduled for removal in Python 3.10.
+
+Signed-off-by: Conrad Kostecki <conrad@kostecki.com>
+---
+ test/test_palaver.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/test/test_palaver.py b/test/test_palaver.py
+index 1b27878..d22366a 100644
+--- a/test/test_palaver.py
++++ b/test/test_palaver.py
+@@ -50,10 +50,10 @@ async def setUp(event_loop):
+     running_as_root = os.getuid() == 0
+     allow_root = ' --allow-root' if running_as_root else ''
+ 
+-    proc = await asyncio.create_subprocess_shell(f'znc -d test/fixtures --foreground --debug{allow_root}', loop=event_loop)
++    proc = await asyncio.create_subprocess_shell(f'znc -d test/fixtures --foreground --debug{allow_root}')
+     time.sleep(31 if running_as_root else 1)
+ 
+-    (reader, writer) = await asyncio.open_connection('localhost', 6698, loop=event_loop)
++    (reader, writer) = await asyncio.open_connection('localhost', 6698)
+     writer.write(b'CAP LS 302\r\n')
+ 
+     line = await reader.readline()
+@@ -184,7 +184,7 @@ async def connected(reader, writer):
+ 
+         connected.called = True
+ 
+-    server = await asyncio.start_server(connected, host='127.0.0.1', port=0, loop=event_loop)
++    server = await asyncio.start_server(connected, host='127.0.0.1', port=0)
+     await asyncio.sleep(0.2)
+     addr = server.sockets[0].getsockname()
+     url = f'Serving on http://{addr[0]}:{addr[1]}/push'
+@@ -248,7 +248,7 @@ async def connected(reader, writer):
+ 
+         connected.called = True
+ 
+-    server = await asyncio.start_server(connected, host='127.0.0.1', port=0, loop=event_loop)
++    server = await asyncio.start_server(connected, host='127.0.0.1', port=0)
+     await asyncio.sleep(0.2)
+     addr = server.sockets[0].getsockname()
+     url = f'Serving on http://{addr[0]}:{addr[1]}/push'
