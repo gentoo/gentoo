@@ -55,6 +55,8 @@ RESTRICT="test"
 
 BDEPEND="acct-group/kvm"
 
+QA_FLAGS_IGNORED='.*'
+
 set_target_arch() {
 	case "$(tc-arch)" in
 		amd64) target_arch=x86_64 ;;
@@ -67,7 +69,7 @@ pkg_setup() {
 	if ! linux_config_exists; then
 			eerror "Unable to check your kernel for KVM support"
 	else
-		        CONFIG_CHECK+=" ~KVM_AMD" || \
+				CONFIG_CHECK+=" ~KVM_AMD" || \
 			CONFIG_CHECK+=" ~KVM_INTEL"
 			ERROR_KVM="${P} requires KVM in-kernel support."
 	fi
