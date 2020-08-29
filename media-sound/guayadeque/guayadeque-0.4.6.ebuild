@@ -11,10 +11,8 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI=${EGIT_REPO_URI:-https://github.com/anonbeat/guayadeque}
 	EGIT_BRANCH=${EGIT_BRANCH:-master}
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/anonbeat/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Music management program designed for all music enthusiasts"
@@ -22,6 +20,7 @@ HOMEPAGE="https://guayadeque.org/"
 
 LICENSE="GPL-3+"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="appindicator ipod +minimal"
 
 # No test available, Making src_test fail
@@ -57,7 +56,9 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.4.6-metadata.patch"
+	"${FILESDIR}/${PN}-0.4.5_p20170110-missing-aui-component.patch"
+	"${FILESDIR}/${P}-gcc10.patch"
+	"${FILESDIR}/${P}-metadata.patch"
 )
 
 # echo $(cat po/CMakeLists.txt | grep ADD_SUBDIRECTORY | sed 's#ADD_SUBDIRECTORY( \(\w\+\) )#\1#')
