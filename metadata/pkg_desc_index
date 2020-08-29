@@ -6307,7 +6307,7 @@ dev-perl/DateTime-Format-SQLite 0.110.0 0.110.0-r1: Parse and format SQLite date
 dev-perl/DateTime-Format-Strptime 1.700.0 1.740.0 1.770.0: Parse and Format DateTimes using Strptime
 dev-perl/DateTime-Format-W3CDTF 0.70.0: Parse and format W3CDTF datetime strings
 dev-perl/DateTime-HiRes 0.10.0-r1 0.30.0: Create DateTime objects with sub-second current time resolution
-dev-perl/DateTime-Locale 0.460.0 1.20.0 1.30.0 1.50.0 1.160.0 1.260.0 1.270.0: Localization support for DateTime
+dev-perl/DateTime-Locale 0.460.0 1.20.0 1.30.0 1.50.0 1.160.0 1.260.0 1.270.0 1.280.0: Localization support for DateTime
 dev-perl/DateTime-Set 0.390.0 0.390.0-r1: Datetime sets and set math
 dev-perl/DateTime-TimeZone 1.930.0 1.940.0 2.10.0 2.110.0 2.130.0 2.390.0: Time zone object base class and factory
 dev-perl/DateTime-Tiny 1.60.0 1.70.0: A date object, with as little code as possible
@@ -6479,7 +6479,7 @@ dev-perl/File-HomeDir 1.2.0 1.4.0: Get home directory for self or other user
 dev-perl/File-KeePass 2.30.0-r1: Interface to KeePass V1 and V2 database files
 dev-perl/File-LibMagic 1.150.0 1.220.0 1.220.0-r1: Perl wrapper for libmagic
 dev-perl/File-Listing 6.40.0-r1 6.40.0-r2: Parse directory listings
-dev-perl/File-MMagic 1.300.0-r1: The Perl Image-Info Module
+dev-perl/File-MMagic 1.300.0-r1 1.300.0-r2: The Perl Image-Info Module
 dev-perl/File-Map 0.640.0: Memory mapping made simple and safe
 dev-perl/File-MimeInfo 0.280.0: Determine file type
 dev-perl/File-NCopy 0.360.0-r2: Copy file, file Copy file[s] | dir[s], dir
@@ -14767,6 +14767,7 @@ net-irc/unrealircd 4.2.4.1 5.0.5.1 5.0.6: An advanced Internet Relay Chat daemon
 net-irc/weechat 2.8 2.9 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.7.5 1.8.1 9999: An advanced IRC Bouncer
+net-irc/znc-palaver 1.2.1: A ZNC module which provides push notifications to Palaver
 net-libs/NativeThread 0_pre20190914: NativeThread for priorities on linux for freenet
 net-libs/accounts-qml 0.7-r1: QML bindings for accounts-qt and signond
 net-libs/accounts-qt 1.16: Qt5 bindings for libaccounts-glib
