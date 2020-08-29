@@ -14,12 +14,24 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="cli doc"
 
-BDEPEND="app-doc/doxygen"
+BDEPEND="doc? ( app-doc/doxygen )"
 DEPEND="dev-libs/libpcre2:="
 RDEPEND="${DEPEND}
 	cli? ( !dev-python/editorconfig-core-py[cli] )"
 
-PATCHES=( "${FILESDIR}/${P}-no-static-libs.patch" )
+src_prepare() {
+	# Don't install the static library.
+	sed -e '/install(TARGETS editorconfig_static/,+5d' -i src/lib/CMakeLists.txt || die
+	cmake_src_prepare
+}
+
+src_configure() {
+	local -a mycmakeargs=(
+		-DBUILD_DOCUMENTATION=$(usex doc 'ON' 'OFF')
+		-DBUILD_STATICALLY_LINKED_EXE=OFF
+	)
+	cmake_src_configure
+}
 
 src_install() {
 	use doc && local HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
