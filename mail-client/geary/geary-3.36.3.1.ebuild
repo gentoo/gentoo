@@ -3,6 +3,7 @@
 
 EAPI=7
 VALA_MIN_API_VERSION="0.44"
+VALA_MAX_API_VERSION="0.48" # fails tests with 0.50 in v3.36.3.1 - https://gitlab.gnome.org/GNOME/geary/-/issues/958
 
 inherit gnome.org gnome2-utils meson vala virtualx xdg
 
