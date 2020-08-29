@@ -14,5 +14,6 @@
   <upstream>
     <remote-id type="cpan">File-LibMagic</remote-id>
     <remote-id type="cpan-module">File::LibMagic</remote-id>
+    <remote-id type="cpan-module">File::LibMagic::Constants</remote-id>
   </upstream>
 </pkgmetadata>
