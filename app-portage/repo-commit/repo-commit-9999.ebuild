@@ -1,29 +1,27 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-#if LIVE
-AUTOTOOLS_AUTORECONF=yes
-EGIT_REPO_URI="https://bitbucket.org/gentoo/${PN}.git"
+inherit out-of-source
 
-inherit git-r3
-#endif
-
-inherit autotools-utils
+if [[ ${PV} == *9999 ]]; then
+	EGIT_REPO_URI="https://bitbucket.org/gentoo/${PN}.git"
+	inherit autotools git-r3
+else
+	SRC_URI="https://www.bitbucket.org/gentoo/${PN}/downloads/${P}.tar.bz2"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 DESCRIPTION="A repository commit helper"
 HOMEPAGE="https://bitbucket.org/gentoo/repo-commit/"
-SRC_URI="https://www.bitbucket.org/gentoo/${PN}/downloads/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND=">=sys-apps/portage-2.2.0_alpha86"
-#if LIVE
+RDEPEND="sys-apps/portage"
 
-KEYWORDS=
-SRC_URI=
-#endif
+src_prepare() {
+	default
+	[[ ${PV} == *9999 ]] && eautoreconf
+}
