@@ -8052,7 +8052,7 @@ dev-python/cycler 0.10.0 0.10.0-r1: Composable style cycles
 dev-python/cython 0.29.15 0.29.20-r2 0.29.21: A Python to C compiler
 dev-python/cytoolz 0.10.0: Cython implementation of Toolz: High performance functional utilities
 dev-python/daemonize 2.5.0: Library for writing system daemons in Python
-dev-python/dask 1.2.0 2.22.0 2.23.0 2.24.0: Task scheduling and blocked algorithms for parallel processing
+dev-python/dask 1.2.0 2.22.0 2.23.0 2.24.0 2.25.0: Task scheduling and blocked algorithms for parallel processing
 dev-python/dataclasses 0.7: A backport of the dataclasses module for Python 3.6
 dev-python/dbus-python 1.2.16: Python bindings for the D-Bus messagebus
 dev-python/dbusmock 0.18.3 0.19: Easily create mock objects on D-Bus for software testing
@@ -8272,7 +8272,7 @@ dev-python/humanize 2.4.1 2.6.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 19.0.0 20.0.1: A featureful, correct URL for Python
-dev-python/hypothesis 4.57.1 5.21.0 5.24.3 5.24.4 5.27.0 5.28.0 5.29.0 5.29.3: A library for property based testing
+dev-python/hypothesis 4.57.1 5.21.0 5.24.3 5.24.4 5.27.0 5.28.0 5.29.0 5.29.3 5.29.4: A library for property based testing
 dev-python/icalendar 4.0.6: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.8 2.10: Internationalized Domain Names in Applications (IDNA)
@@ -8305,7 +8305,7 @@ dev-python/ipy 1.00: Class and tools for handling of IPv4 and IPv6 addresses and
 dev-python/ipykernel 5.3.3 5.3.4: IPython Kernel for Jupyter
 dev-python/ipynb 0.5.1: Package/Module importer for importing code from Jupyter Notebook files
 dev-python/ipyparallel 6.3.0: Interactive Parallel Computing with IPython
-dev-python/ipython 7.16.1 7.17.0: Advanced interactive shell for Python
+dev-python/ipython 7.16.1 7.17.0 7.18.0: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.2.0-r1: Vestigial utilities from IPython
 dev-python/ipywidgets 7.5.1: IPython HTML widgets for Jupyter
 dev-python/irc 18.0.0-r1: IRC client framework written in Python
@@ -8442,7 +8442,7 @@ dev-python/mock 3.0.5-r1: Rolling backport of unittest.mock for all Pythons
 dev-python/mongoengine 0.10.6 0.20.0: A Python Object-Document-Mapper for working with MongoDB
 dev-python/mongomock 3.20.0: Library to help testing Python code that interacts with MongoDB via Pymongo
 dev-python/monotonic 1.5-r1: An implementation of time.monotonic() for Python 2 & < 3.3
-dev-python/more-itertools 5.0.0 8.4.0: More routines for operating on iterables, beyond itertools
+dev-python/more-itertools 5.0.0 8.4.0 8.5.0: More routines for operating on iterables, beyond itertools
 dev-python/moto 1.3.14-r3: Mock library for boto
 dev-python/moviepy 1.0.1-r1: Video editing with Python
 dev-python/mox 0.5.3-r1: A mock object framework for Python, loosely based on EasyMock for Java
@@ -8503,7 +8503,7 @@ dev-python/nototools 0_pre20200207: Noto fonts support tools and scripts plus we
 dev-python/ntlm-auth 1.5.0: Calculates NTLM Authentication codes
 dev-python/ntplib 0.3.3: Python NTP library
 dev-python/nuitka 0.6.8: Python to native compiler
-dev-python/numexpr 2.7.1: Fast numerical array expression evaluator for Python and NumPy
+dev-python/numexpr 2.7.1 2.7.2: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.16.5-r1 1.17.4-r3 1.19.0 1.19.1: Fast array and numerical python library
 dev-python/numpy-python2 1.16.6: Fast array and numerical python library
 dev-python/numpydoc 0.9.1 1.1.0: Sphinx extension to support docstrings in Numpy format
@@ -8823,7 +8823,7 @@ dev-python/pytest-cache 1.0-r2: mechanisms for caching across test runs
 dev-python/pytest-catchlog 1.2.2: py.test plugin to catch log messages, fork of pytest-capturelog
 dev-python/pytest-cov 2.8.1: py.test plugin for coverage reporting
 dev-python/pytest-describe 1.0.0: Describe-style plugin for pytest
-dev-python/pytest-django 3.9.0: A Django plugin for py.test
+dev-python/pytest-django 3.9.0 3.10.0: A Django plugin for py.test
 dev-python/pytest-expect 1.1.0-r1: py.test plugin that stores test expectations by saving the set of failing tests
 dev-python/pytest-fixture-config 1.7.0-r1: Virtualenv fixture for py.test
 dev-python/pytest-flake8 0.9.1: py.test plugin for flake8
