@@ -4259,7 +4259,7 @@ dev-haskell/network-conduit 1.0.0-r1 1.0.2.2 1.1.0: Stream socket data using con
 dev-haskell/network-data 0.5.3: Library for network data structures and their serialization
 dev-haskell/network-info 0.2.0.8 0.2.0.10: Access the local computer's basic network configuration
 dev-haskell/network-multicast 0.0.11 0.1.0 0.3.2: Simple multicast library
-dev-haskell/network-protocol-xmpp 0.4.8: Client library for the XMPP protocol
+dev-haskell/network-protocol-xmpp 0.4.9: Client library for the XMPP protocol
 dev-haskell/network-uri 2.5.0.0 2.6.0.3 2.6.1.0 2.6.3.0: URI manipulation
 dev-haskell/newtype 0.2 0.2.2.0: A typeclass and set of functions for working with newtypes
 dev-haskell/newtype-generics 0.5.4: A typeclass for working with newtypes, with generics support
@@ -4434,7 +4434,7 @@ dev-haskell/system-posix-redirect 1.1.0.1: A toy module to temporarily redirect 
 dev-haskell/tagged 0.6.1 0.7.3 0.8.2 0.8.4 0.8.6: Haskell 98 phantom types to avoid unsafely passing dummy arguments
 dev-haskell/tagshare 0.0: TagShare - explicit sharing with tags
 dev-haskell/tagsoup 0.13.3-r1 0.13.8 0.13.10 0.14.8: Parsing and extracting information from (possibly malformed) HTML/XML documents
-dev-haskell/tagstream-conduit 0.5.5.3: streamlined html tag parser
+dev-haskell/tagstream-conduit 0.5.6: streamlined html tag parser
 dev-haskell/tar 0.5.1.1: Reading, writing and manipulating tar files
 dev-haskell/tar-conduit 0.3.2-r1: Extract and create tar files using conduit for streaming
 dev-haskell/tasty 0.3.1 0.5.2 0.8.1.2 0.11.0.4 1.2.3: Modern and extensible testing framework
