@@ -38,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}"/${PV}-ncurses.patch
 	"${FILESDIR}"/${PV}-linux3.patch
 	"${FILESDIR}"/${PV}-cc-detect.patch
+	"${FILESDIR}"/${PV}-glibc-2.32.patch
 )
 
 src_unpack() {
