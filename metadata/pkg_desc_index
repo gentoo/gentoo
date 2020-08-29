@@ -633,7 +633,7 @@ app-admin/system-config-printer 1.5.12-r1: Graphical user interface for CUPS adm
 app-admin/system-tools-backends 2.10.2-r1: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: Systemd managment utility
 app-admin/tenshi 0.17: Log parsing and notification program
-app-admin/terraform 0.12.24 0.12.28 0.12.29 0.13.0: A tool for building, changing, and combining infrastructure safely
+app-admin/terraform 0.12.24 0.12.28 0.12.29 0.13.0 0.13.1: A tool for building, changing, and combining infrastructure safely
 app-admin/testdisk 7.1: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.14: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11-r2: Files which haven't been accessed are removed from specified directories
@@ -3832,6 +3832,7 @@ dev-haskell/blaze-builder-conduit 1.0.0 1.1.0: Convert streams of builders to st
 dev-haskell/blaze-builder-enumerator 0.2.1.0 0.2.1.0-r1: Enumeratees for the incremental conversion of builders to bytestrings
 dev-haskell/blaze-html 0.6.1.2 0.6.1.3 0.7.1.0 0.8.1.1 0.8.1.2 0.9.1.2: A blazingly fast HTML combinator library for Haskell
 dev-haskell/blaze-markup 0.5.2.1 0.6.3.0 0.7.0.3 0.7.1.0 0.8.2.4: A blazingly fast markup combinator library for Haskell
+dev-haskell/blaze-textual 0.2.1.0: Fast rendering of common datatypes
 dev-haskell/bloomfilter 1.2.6.10-r2 2.0.1.0: Pure and impure Bloom Filter implementations
 dev-haskell/boolean 0.2.3 0.2.4: Generalized booleans and numbers
 dev-haskell/boundedchan 1.0.3.0: Implementation of bounded channels
@@ -3962,6 +3963,7 @@ dev-haskell/dns 4.0.1: DNS library in Haskell
 dev-haskell/doclayout 0.3: A prettyprinting library for laying out text documents
 dev-haskell/doctemplates 0.1.0.2 0.2.2.1 0.8.2: Pandoc-style document templates
 dev-haskell/doctest 0.9.12 0.10.1 0.11.1 0.16.3: Test interactive Haskell examples
+dev-haskell/double-conversion 2.0.2.0: Fast conversion between double precision floating point and text
 dev-haskell/drbg 0.5.5: Deterministic random bit generator (aka PRNG) based HMACs, Hashes, and Ciphers
 dev-haskell/drift 2.4.2: Program to derive type class instances
 dev-haskell/easy-file 0.2.1: Cross-platform File handling
@@ -3986,7 +3988,7 @@ dev-haskell/equivalence 0.2.5 0.3.1 0.3.5: Maintaining an equivalence relation i
 dev-haskell/erf 2.0.0.0-r1: The error function, erf, and related functions
 dev-haskell/errorcall-eq-instance 0.1.0 0.3.0: An orphan Eq instance for ErrorCall
 dev-haskell/errors 1.4.7 2.1.3 2.3.0: Simplified error-handling
-dev-haskell/esqueleto 2.4.3-r1: Type-safe EDSL for SQL queries on persistent backends
+dev-haskell/esqueleto 2.4.3-r1 3.3.3.2: Type-safe EDSL for SQL queries on persistent backends
 dev-haskell/exact-pi 0.5.0.1: Exact rational multiples of pi (and integer powers of pi)
 dev-haskell/exceptions 0.3.3 0.6.1 0.8.0.2 0.8.2.1 0.8.3 0.10.4: Extensible optionally-pure exceptions
 dev-haskell/executable-path 0.0.3-r1 0.0.3.1: Finding out the full path of the executable
@@ -4145,6 +4147,7 @@ dev-haskell/idna 0.2 0.3.0: Implements IDNA (RFC 3490)
 dev-haskell/ieee754 0.7.8: Utilities for dealing with IEEE floating point numbers
 dev-haskell/ifelse 0.85 0.85-r1: Anaphoric and miscellaneous useful control-flow
 dev-haskell/infer-license 0.2.0: Infer software license from a given license file
+dev-haskell/inspection-testing 0.4.2.4: GHC plugin to do inspection testing
 dev-haskell/integer-logarithms 1.0.3: Integer logarithms
 dev-haskell/integer-roots 1.0: Integer roots and perfect powers
 dev-haskell/interpolate 0.1.0 0.2.0: String interpolation done right
@@ -4242,6 +4245,8 @@ dev-haskell/murmur-hash 0.1.0.9: MurmurHash2 implementation for Haskell
 dev-haskell/mustache 2.3.1: A mustache template parser library
 dev-haskell/mutable-containers 0.3.2 0.3.2.1 0.3.3 0.3.4: Abstactions and concrete implementations of mutable containers
 dev-haskell/mwc-random 0.12.0.1 0.13.3.2 0.13.4.0: Fast, high quality pseudo random number generation
+dev-haskell/mysql 0.1.7: A low-level MySQL client library
+dev-haskell/mysql-simple 0.4.5: A mid-level MySQL client library
 dev-haskell/nanospec 0.1.0 0.2.0 0.2.1 0.2.2: A lightweight implementation of a subset of Hspec's API
 dev-haskell/nats 0.1.2 0.2 1 1.1.2: Natural numbers
 dev-haskell/neat-interpolation 0.3.2.1 0.3.2.6: A quasiquoter for neat and simple multiline text interpolation
@@ -4292,6 +4297,9 @@ dev-haskell/pcap 0.4.5.2-r1: A system-independent interface for user-level packe
 dev-haskell/pcre-light 0.4-r1 0.4.0.4 0.4.1.0: Portable regex library for Perl 5 compatible regular expressions
 dev-haskell/pem 0.1.2 0.2.2: Privacy Enhanced Mail (PEM) format reader and writer
 dev-haskell/persistent 2.1.6 2.6-r1 2.10.5.2: Type-safe, multi-backend data serialization
+dev-haskell/persistent-mysql 2.10.2.3: Backend for the persistent library using MySQL database server
+dev-haskell/persistent-postgresql 2.10.1.2: Backend for the persistent library using postgresql
+dev-haskell/persistent-qq 2.9.0: Provides a quasi-quoter for raw SQL for persistent
 dev-haskell/persistent-sqlite 2.1.4.2 2.6 2.10.6.2: Backend for the persistent library using sqlite3
 dev-haskell/persistent-template 2.8.2.3: Type-safe, non-relational, multi-backend persistence
 dev-haskell/persistent-test 2.0.3.0: Tests for Persistent
@@ -4300,6 +4308,8 @@ dev-haskell/pid1 0.1.0.1 0.1.2.0: Do signal handling and orphan reaping for Unix
 dev-haskell/pipes 4.1.7 4.1.9 4.3.14: Compositional pipelines
 dev-haskell/pointed 4.0 4.1.1 4.2.0.2 5-r1 5.0.1-r1: Pointed and copointed data
 dev-haskell/polyparse 1.9 1.11 1.13: A variety of alternative parser combinator libraries
+dev-haskell/postgresql-libpq 0.9.4.2-r2: low-level binding to libpq
+dev-haskell/postgresql-simple 0.6.2: Mid-Level PostgreSQL client library
 dev-haskell/pqueue 1.3.2 1.4.1.3: Reliable, persistent, fast priority queues
 dev-haskell/prelude-extras 0.4.0.3: Higher order versions of Prelude classes
 dev-haskell/preprocessor-tools 1.0.1 2.0.2: A framework for extending Haskell's syntax via quick-and-dirty preprocessors
@@ -10665,7 +10675,7 @@ dev-util/confix-wrapper 1: Wrapper to select either confix1.py or confix2.py
 dev-util/cookiecutter 1.7.2 1.7.2-r1: Command-line utility to create projects from cookiecutters (project templates)
 dev-util/cppcheck 1.86 1.87 1.88 9999: Static analyzer of C/C++ code
 dev-util/cppi 1.18: a cpp directive indenter
-dev-util/cpptest 1.1.2 2.0.0 2.0.0-r1: Simple but powerful unit testing framework for C++
+dev-util/cpptest 2.0.0-r1: Simple but powerful unit testing framework for C++
 dev-util/cppunit 1.14.0 9999: C++ port of the famous JUnit framework for unit testing
 dev-util/cpputest 3.8: unit testing and mocking framework for C/C++
 dev-util/cproto 4.7o: Generate C function prototypes from C source code
@@ -13259,7 +13269,7 @@ media-libs/libwebp 1.0.2 1.0.3 1.1.0: A lossy image compression format
 media-libs/libwmf 0.2.8.4-r7: A library for reading vector images in Microsoft's Windows Metafile Format (WMF)
 media-libs/libxmi 1.3: C/C++ function library for rasterizing 2-D vector graphics
 media-libs/libxmlbird 1.2.0: XML parser written in Vala
-media-libs/libxspf 1.2.0: Playlist handling library
+media-libs/libxspf 1.2.0 1.2.0-r1: Playlist handling library
 media-libs/libxtract 0.6.6: A simple, portable, lightweight library of audio feature extraction functions
 media-libs/libyami 1.0.1 1.1.0 1.2.0 1.3.0 9999: Yet Another Media Infrastructure: Media codec with hardware acceleration
 media-libs/libzen 0.4.38: Shared library for libmediainfo and mediainfo
