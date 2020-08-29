@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile install postinst postrm prepare unpack
-DEPEND=sys-libs/ncurses:0= X? ( x11-libs/libX11 xpm? ( x11-libs/libXpm ) ) nanoemacs? ( !app-editors/ne ) virtual/pkgconfig X? ( x11-base/xorg-proto x11-libs/libXt )
+DEPEND=sys-libs/ncurses:0= gui? ( x11-libs/libX11 xpm? ( x11-libs/libXpm ) ) nanoemacs? ( !app-editors/ne ) virtual/pkgconfig gui? ( x11-base/xorg-proto x11-libs/libXt )
 DESCRIPTION=Jasspa Microemacs
 EAPI=6
 HOMEPAGE=http://www.jasspa.com/
-IUSE=nanoemacs X xpm
+IUSE=gui nanoemacs xpm
 KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris
 LICENSE=GPL-2+
-RDEPEND=sys-libs/ncurses:0= X? ( x11-libs/libX11 xpm? ( x11-libs/libXpm ) ) nanoemacs? ( !app-editors/ne )
+RDEPEND=sys-libs/ncurses:0= gui? ( x11-libs/libX11 xpm? ( x11-libs/libXpm ) ) nanoemacs? ( !app-editors/ne )
 SLOT=0
 SRC_URI=http://www.jasspa.com/release_20090909/jasspa-mesrc-20091011.tar.gz !nanoemacs? ( http://www.jasspa.com/release_20090909/jasspa-memacros-20091017.tar.gz http://www.jasspa.com/release_20090909/jasspa-mehtml-20091011.tar.gz http://www.jasspa.com/release_20060909/meicons-extra.tar.gz )
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=59bf47db99593f9ef264e0e7c9655cc5
+_md5_=3b7afbde37ba8a905b98025213fdb99f
