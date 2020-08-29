@@ -16,7 +16,7 @@ fi
 DESCRIPTION="Updated config.sub and config.guess file from GNU"
 HOMEPAGE="https://savannah.gnu.org/projects/config"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3+-with-autoconf-exception"
 SLOT="0"
 IUSE=""
 

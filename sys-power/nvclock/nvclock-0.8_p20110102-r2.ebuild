@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
-inherit autotools eutils toolchain-funcs
+inherit autotools
 
 DESCRIPTION="NVIDIA Overclocking Utility"
 HOMEPAGE="http://www.linuxhardware.org/nvclock/"
@@ -19,27 +19,30 @@ RDEPEND="
 		x11-libs/gtk+:2
 		x11-libs/libX11
 	)
-	nvcontrol? ( x11-libs/libX11 x11-libs/libXext )
-"
+	nvcontrol? (
+		x11-libs/libX11
+		x11-libs/libXext
+	)"
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-r1-make.patch
+	"${FILESDIR}"/${P}-usleep.patch
+	"${FILESDIR}"/${P}-desktop.patch
+	"${FILESDIR}"/${P}-buffers.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-r1-make.patch \
-		"${FILESDIR}"/${P}-usleep.patch \
-		"${FILESDIR}"/${P}-desktop.patch \
-		"${FILESDIR}"/${P}-buffers.patch
+	default
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
 src_configure() {
-	sed -i \
-		-e "/^AR=ar/s:=.*:=$(tc-getAR):" \
-		src/*/Makefile.in || die
-
-	# Qt support would mean Qt 3.
+	# only <Qt-4 supported
 	econf \
-		--docdir=/usr/share/doc/${PF} \
 		--disable-qt \
 		$(use_enable gtk) \
 		$(use_enable nvcontrol)
@@ -51,8 +54,7 @@ src_compile() {
 }
 
 src_install() {
-	mkdir -p "${D}"/usr/bin || die
-
+	dodir /usr/bin
 	default
 
 	newinitd "${FILESDIR}"/nvclock_initd nvclock
