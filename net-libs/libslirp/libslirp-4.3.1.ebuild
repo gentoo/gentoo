@@ -13,6 +13,7 @@ HOMEPAGE="https://gitlab.freedesktop.org/slirp/libslirp"
 
 LICENSE="BSD"
 SLOT="0"
+IUSE="static-libs"
 
 RDEPEND="dev-libs/glib:="
 
@@ -24,4 +25,11 @@ src_prepare() {
 	default
 	echo "${PV}" > .tarball-version || die
 	echo -e "#!${BASH}\necho -n \$(cat '${S}/.tarball-version')" > build-aux/git-version-gen || die
+}
+
+src_configure() {
+	local emesonargs=(
+		-Ddefault_library=$(usex static-libs both shared)
+	)
+	meson_src_configure
 }
