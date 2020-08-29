@@ -9855,7 +9855,7 @@ dev-ruby/commander 4.5.2: The complete solution for Ruby command-line executable
 dev-ruby/compass 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-core 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-import-once 1.0.5: Speed up your Sass compilation by making @import only import each file once
-dev-ruby/concurrent-ruby 1.0.5: Modern concurrency tools including agents, futures, promises, thread pools, more
+dev-ruby/concurrent-ruby 1.0.5 1.1.7: Modern concurrency tools including agents, futures, promises, thread pools, more
 dev-ruby/connection_pool 2.2.2 2.2.3: Generic connection pooling for Ruby
 dev-ruby/contracts 0.16.0: provides contracts for Ruby
 dev-ruby/coolio 1.6.0: A high performance event framework for Ruby which uses the libev C library
