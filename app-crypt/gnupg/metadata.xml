@@ -9,10 +9,6 @@
 		<email>zlogene@gentoo.org</email>
 		<name>Mikle Kolyada</name>
 	</maintainer>
-	<longdescription>
-	GnuPG is a complete and free implementation of the OpenPGP standard as
-	defined by RFC4880.
-	</longdescription>
 	<use>
 		<flag name="smartcard">
 		Build scdaemon software. Enables usage of OpenPGP cards. For
