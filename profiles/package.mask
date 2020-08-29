@@ -877,13 +877,7 @@ net-libs/nDPI
 #
 # https://www.gentoo.org/support/news-items/2020-04-03-kubernetes-moving-to-single-package.html
 #
-# dev-lang/go-1.12.17 has been added to this mask because it will be
-# removed at the same time since it has been out of support upstream for
-# months and was kept only to allow these kubernetes split packages to
-# build.
-#
 # Removal in 60 days. Bug #731804
-=dev-lang/go-1.12*
 sys-cluster/kubeadm
 sys-cluster/kube-apiserver
 sys-cluster/kube-controller-manager
