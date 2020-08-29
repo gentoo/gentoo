@@ -8,9 +8,9 @@
  
  AC_LANG(C++)
  ACX_PTHREAD
-@@ -25,6 +26,12 @@
- AC_CHECK_HEADER([zlib.h], , AC_MSG_ERROR([zlib not found]))
- AC_CHECK_HEADER([cxxtools/net/tcpsocket.h], , AC_MSG_ERROR([cxxtools headers not found]))
+@@ -40,6 +41,12 @@
+ AC_CHECK_FUNCS([fopen64], ,[AM_CFLAGS=-DUSE_FILE32API])
+ AC_SUBST(AM_CFLAGS)
  
 +PKG_CHECK_MODULES([MINIZIP], [minizip],
 +  [HAVE_MINIZIP=true], [HAVE_MINIZIP=false])
@@ -23,7 +23,7 @@
    [epoll_option=$withval],
 --- a/framework/common/Makefile.am
 +++ b/framework/common/Makefile.am
-@@ -23,7 +23,6 @@ libtntnet_la_SOURCES = \
+@@ -23,7 +23,6 @@
  	httpparser.cpp \
  	httprequest.cpp \
  	httpreply.cpp \
@@ -31,7 +31,7 @@
  	job.cpp \
  	langlib.cpp \
  	listener.cpp \
-@@ -41,16 +40,13 @@ libtntnet_la_SOURCES = \
+@@ -40,16 +39,13 @@
  	stringlessignorecase.cpp \
  	tntconfig.cpp \
  	tntnet.cpp \
@@ -49,7 +49,7 @@
  
  nobase_include_HEADERS = \
  	tnt/applicationunlocker.h \
-@@ -145,3 +141,13 @@ noinst_HEADERS += \
+@@ -144,3 +140,13 @@
  	tnt/stressjob.h
  endif
  
