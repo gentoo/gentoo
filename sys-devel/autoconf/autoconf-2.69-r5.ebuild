@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.69-perl-5.26.patch
 	"${FILESDIR}"/${P}-fix-libtool-test.patch
 	"${FILESDIR}"/${PN}-2.69-perl-5.26-2.patch
+	"${FILESDIR}"/${P}-make-tests-bash5-compatible.patch
 
 	"${WORKDIR}"/patches/${P}-runstatedir.patch
 	"${WORKDIR}"/patches/${P}-texinfo.patch
