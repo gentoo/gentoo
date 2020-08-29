@@ -3948,6 +3948,7 @@ dev-haskell/deepseq-generics 0.1.1.2 0.2.0.0: GHC.Generics-based Control.DeepSeq
 dev-haskell/dense-linear-algebra 0.1.0.0: Simple and incomplete pure haskell implementation of linear algebra
 dev-haskell/derive 2.5.26: A program and library to derive instances for data types
 dev-haskell/deriving-compat 0.3.5 0.5.8: Backports of GHC deriving extensions
+dev-haskell/dictionary-sharing 0.1.0.0: Sharing/memoization of class members
 dev-haskell/diff 0.3.0 0.3.2 0.3.4 0.4.0: O(ND) diff algorithm in haskell
 dev-haskell/digest 0.0.1.2: Various cryptographic hashes for bytestrings; CRC32 and Adler32 for now
 dev-haskell/disk-free-space 0.1.0.1: Retrieve information about disk space usage
@@ -4385,6 +4386,7 @@ dev-haskell/silently 1.2.4.1 1.2.5 1.2.5.1: Prevent or capture writing to stdout
 dev-haskell/simple-reflect 0.3.2 0.3.3: Simple reflection of expressions containing variables
 dev-haskell/simple-sendfile 0.2.13 0.2.21 0.2.25 0.2.28: Cross platform library for the sendfile system call
 dev-haskell/singleton-bool 0.1.5-r1: Type level booleans
+dev-haskell/size-based 0.1.2.0: Sized functors, for size-based enumerations
 dev-haskell/skein 1.0.9.4: Skein, a family of cryptographic hash functions. Includes Skein-MAC as well
 dev-haskell/skylighting 0.1.1.5 0.3 0.8.5: syntax highlighting library
 dev-haskell/skylighting-core 0.8.5: syntax highlighting library
@@ -4447,7 +4449,8 @@ dev-haskell/test-framework-leancheck 0.0.1: LeanCheck support for test-framework
 dev-haskell/test-framework-quickcheck2 0.3.0.2 0.3.0.3-r2 0.3.0.5-r1: QuickCheck2 support for the test-framework package
 dev-haskell/test-framework-th 0.2.4: Automagically generate the HUnit and Quickcheck code using Template Haskell
 dev-haskell/test-framework-th-prime 0.0.7 0.0.8 0.0.9: Template Haskell for test framework
-dev-haskell/testing-feat 0.4.0.3: Functional Enumeration of Algebraic Types
+dev-haskell/testing-feat 0.4.0.3 1.1.0.0: Functional Enumeration of Algebraic Types
+dev-haskell/testing-type-modifiers 0.1.0.1: Data type modifiers for property based testing
 dev-haskell/testpack 2.1.3.0-r1: Test Utililty Pack for HUnit and QuickCheck (unmaintained)
 dev-haskell/texmath 0.12.0.2: Conversion between formats used to represent mathematics
 dev-haskell/text 0.11.3.1 1.1.1.3 1.2.2.0 1.2.2.1 1.2.3.1 1.2.4.0: An efficient packed Unicode text type
@@ -12422,14 +12425,14 @@ lxqt-base/lxqt-sudo 0.15.0: LXQt GUI frontend for sudo
 mail-client/aerc 0.4.0 9999: Email client for your terminal
 mail-client/alot 0.9 0.9.1 9999: Experimental terminal UI for net-mail/notmuch written in Python
 mail-client/alpine 2.23: An easy to use text-based based mail and news client
-mail-client/balsa 2.5.6-r1 2.6.1: Email client for GNOME
+mail-client/balsa 2.6.1: Email client for GNOME
 mail-client/bower 0.10 0.11 0.12: Curses terminal client for the Notmuch email system
 mail-client/claws-mail 3.17.6-r1 9999: An email client (and news reader) based on GTK+
 mail-client/clawsker 1.1.0 1.3.1: Applet to edit Claws Mail's hidden preferences
 mail-client/cone 1.0: CONE: COnsole News reader and Emailer
 mail-client/etpan-ng 0.7.1-r1: etPan is a console mail client that is based on libEtPan
 mail-client/evolution 3.36.4 3.36.5: Integrated mail, addressbook and calendaring functionality
-mail-client/geary 3.36.2: A lightweight, easy-to-use, feature-rich email client
+mail-client/geary 3.36.3.1: A lightweight, easy-to-use, feature-rich email client
 mail-client/hap 3.7-r1: A terminal mail notification program (replacement for biff)
 mail-client/kube 0.7.0-r1: Mail client based on KDE Frameworks
 mail-client/mailx 8.1.2.20160123 8.1.2.20180807: The $ mail program, which is used to send mail via shell scripts
