@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3 autotools
 else
 	SRC_URI="https://sigrok.org/download/source/${PN}/${P}.tar.gz"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Basic hardware drivers for logic analyzers and input/output file format support"
