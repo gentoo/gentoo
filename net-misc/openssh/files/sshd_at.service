@@ -5,4 +5,4 @@ After=syslog.target auditd.service
 [Service]
 ExecStart=-/usr/sbin/sshd -i -e
 StandardInput=socket
-StandardError=syslog
+StandardError=journal
