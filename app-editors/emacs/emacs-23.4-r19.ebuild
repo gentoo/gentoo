@@ -14,10 +14,9 @@ SRC_URI="mirror://gnu/emacs/${P}.tar.bz2
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="23"
 KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="alsa aqua athena dbus games gconf gif gpm gtk gzip-el jpeg kerberos livecd m17n-lib motif png sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
-REQUIRED_USE="?? ( aqua X )"
+IUSE="alsa aqua athena dbus games gconf gif gpm gtk gui gzip-el jpeg kerberos livecd m17n-lib motif png sound source svg tiff toolkit-scroll-bars Xaw3d xft +xpm"
 
-RDEPEND=">=app-emacs/emacs-common-gentoo-1.5[games?,X?]
+RDEPEND="app-emacs/emacs-common-gentoo[games?,gui(-)?]
 	net-libs/liblockfile
 	sys-libs/ncurses:0=
 	kerberos? ( virtual/krb5 )
@@ -25,7 +24,7 @@ RDEPEND=">=app-emacs/emacs-common-gentoo-1.5[games?,X?]
 	games? ( acct-group/gamestat )
 	gpm? ( sys-libs/gpm )
 	dbus? ( sys-apps/dbus )
-	X? (
+	gui? ( !aqua? (
 		x11-libs/libICE
 		x11-libs/libSM
 		x11-libs/libX11
@@ -71,15 +70,13 @@ RDEPEND=">=app-emacs/emacs-common-gentoo-1.5[games?,X?]
 				) )
 			)
 		)
-	)"
+	) )"
 
 DEPEND="${RDEPEND}
-	X? ( x11-base/xorg-proto )"
+	gui? ( !aqua? ( x11-base/xorg-proto ) )"
 
 BDEPEND="app-eselect/eselect-emacs
-	alsa? ( virtual/pkgconfig )
-	dbus? ( virtual/pkgconfig )
-	X? ( virtual/pkgconfig )
+	virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )"
 
 RDEPEND="${RDEPEND}
@@ -144,7 +141,14 @@ src_configure() {
 		myconf+=" $(use_with sound)"
 	fi
 
-	if use X; then
+	if ! use gui; then
+		einfo "Configuring to build without window system support"
+		myconf+=" --without-x --without-ns"
+	elif use aqua; then
+		einfo "Configuring to build with Nextstep (Macintosh Cocoa) support"
+		myconf+=" --with-ns --disable-ns-self-contained"
+		myconf+=" --without-x"
+	else
 		myconf+=" --with-x --without-ns"
 		myconf+=" $(use_with gconf)"
 		myconf+=" $(use_with toolkit-scroll-bars)"
@@ -191,12 +195,6 @@ src_configure() {
 			einfo "Configuring to build with no toolkit"
 			myconf+=" --with-x-toolkit=no"
 		fi
-	elif use aqua; then
-		einfo "Configuring to build with Nextstep (Cocoa) support"
-		myconf+=" --with-ns --disable-ns-self-contained"
-		myconf+=" --without-x"
-	else
-		myconf+=" --without-x --without-ns"
 	fi
 
 	# According to configure, this option is only used for GNU/Linux
@@ -313,7 +311,7 @@ src_install() {
 		it is strongly recommended that you use app-admin/emacs-updater
 		to rebuild all byte-compiled elisp files of the installed Emacs
 		packages."
-	use X && DOC_CONTENTS+="\\n\\nYou need to install some fonts for Emacs.
+	use gui && DOC_CONTENTS+="\\n\\nYou need to install some fonts for Emacs.
 		Installing media-fonts/font-adobe-{75,100}dpi on the X server's
 		machine would satisfy basic Emacs requirements under X11.
 		See also https://wiki.gentoo.org/wiki/Xft_support_for_GNU_Emacs
