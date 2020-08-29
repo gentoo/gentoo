@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (2020-08-29)
+# EAPI=4, simple script, relies on hardcoded
+# /usr/dict/words for generation. Removal in 30 days.
+app-admin/passook
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-08-29)
 # Abandoned upstream.
 # Does not compile against ghc-8.8. Removal in 30 days.
