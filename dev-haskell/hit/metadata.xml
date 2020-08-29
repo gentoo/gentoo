@@ -14,7 +14,4 @@
 		This is stricly only manipulating the git store (what's inside the .git directory),
 		and doesn't do anything with the index or your working directory files.
 	</longdescription>
-	<use>
-		<flag name="executable">Build the executable</flag>
-	</use>
 </pkgmetadata>
