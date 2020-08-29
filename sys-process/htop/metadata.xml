@@ -9,6 +9,9 @@
 		<email>polynomial-c@gentoo.org</email>
 		<name>Lars Wendler</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">htop-dev/htop</remote-id>
+	</upstream>
 	<use>
 		<flag name="openvz">Enable openvz support</flag>
 		<flag name="vserver">Enable vserver support</flag>
