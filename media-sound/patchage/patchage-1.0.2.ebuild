@@ -31,9 +31,9 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS NEWS README.md )
 
-#PATCHES=(
-#	"${FILESDIR}/${P}-string.patch"
-#)
+PATCHES=(
+	"${FILESDIR}/${P}-string.patch"
+)
 
 src_configure() {
 	waf-utils_src_configure \
