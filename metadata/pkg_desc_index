@@ -3979,7 +3979,7 @@ dev-haskell/ekg-json 0.1.0.6-r1: JSON encoding of ekg metrics
 dev-haskell/email-validate 1.0.0 2.0.1: Validating an email address string against RFC 5322
 dev-haskell/emojis 0.1: Conversion between emoji characters and their names.
 dev-haskell/enclosed-exceptions 1.0.1.1 1.0.2 1.0.3: Catching all exceptions from within an enclosed computation
-dev-haskell/encoding 0.6.7.2-r2 0.7.0.2-r1 0.8 0.8.1 0.8.2: A library for various character encodings
+dev-haskell/encoding 0.6.7.2-r2 0.7.0.2-r1 0.8 0.8.1 0.8.2 0.8.5: A library for various character encodings
 dev-haskell/entropy 0.2.2.4 0.3.7 0.4.1.6: A platform independent entropy source
 dev-haskell/enumerator 0.4.20: Reliable, high-performance processing with left-fold enumerators
 dev-haskell/equivalence 0.2.5 0.3.1 0.3.5: Maintaining an equivalence relation implemented as union-find using STT
