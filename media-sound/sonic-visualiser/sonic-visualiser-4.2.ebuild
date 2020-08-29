@@ -58,7 +58,7 @@ DEPEND="${RDEPEND}"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	|| ( jack pulseaudio portaudio )
-	test? ( mad )
+	test? ( id3tag mad )
 "
 
 PATCHES=(
