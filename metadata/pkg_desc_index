@@ -4025,6 +4025,7 @@ dev-haskell/getopt-generics 0.13.0.1 0.13.0.4: Create command line interfaces wi
 dev-haskell/ghc-paths 0.1.0.9 0.1.0.12-r1: Knowledge of GHC's installation directories
 dev-haskell/ghc-syb-utils 0.2.3: Scrap Your Boilerplate utilities for the GHC API
 dev-haskell/gio 0.12.5.3 0.13.1.1 0.13.3.1 0.13.6.0 0.13.8.1: Binding to GIO
+dev-haskell/git 0.3.0: Git operations in haskell
 dev-haskell/git-lfs 1.1.0: git-lfs protocol
 dev-haskell/githash 0.1.3.3: Compile git revision info into Haskell projects
 dev-haskell/gitrev 1.2.0 1.3.1: Compile git revision info into Haskell projects
@@ -4080,7 +4081,7 @@ dev-haskell/hgettext 0.1.30: Bindings to libintl.h (gettext, bindtextdomain)
 dev-haskell/hi-file-parser 0.1.0.0: Parser for GHC's hi files
 dev-haskell/highlighting-kate 0.5.5 0.5.14 0.6 0.6.1 0.6.2 0.6.3 0.6.4: Syntax highlighting
 dev-haskell/hinotify 0.3.8.1 0.3.10: Haskell binding to inotify
-dev-haskell/hit 0.6.3: Git operations in haskell
+dev-haskell/hit 0.7.0: Git operations in haskell
 dev-haskell/hjsmin 0.1.5.1 0.2.0.2 0.2.0.4: Haskell implementation of a javascript minifier
 dev-haskell/hlint 2.1.17-r1: Source code suggestions
 dev-haskell/hoauth2 1.8.9: Haskell OAuth2 authentication client
@@ -4459,7 +4460,7 @@ dev-haskell/text-conversions 0.3.0: Safe conversions between textual types
 dev-haskell/text-icu 0.7.0.1: Bindings to the ICU library
 dev-haskell/text-metrics 0.2.0 0.3.0: Calculate various string metrics efficiently
 dev-haskell/text-short 0.1.3: Memory-efficient representation of Unicode text strings
-dev-haskell/text-show 3.4: Efficient conversion of values into Text
+dev-haskell/text-show 3.8.5: Efficient conversion of values into Text
 dev-haskell/text-stream-decode 0.1.0.5: Streaming decoding functions for UTF encodings. (deprecated)
 dev-haskell/tf-random 0.5: High-quality splittable pseudorandom number generator
 dev-haskell/th-abstraction 0.3.2.0: Nicer interface for reified information about data types
@@ -14547,8 +14548,8 @@ net-dialup/wvdial 1.61: Excellent program to automatically configure PPP session
 net-dialup/xc 4.3.2-r3 4.3.2-r4: Modem dialout & serial terminal program
 net-dialup/xl2tpd 1.3.10 1.3.11 1.3.12 1.3.13 1.3.15: A modern version of the Layer 2 Tunneling Protocol (L2TP) daemon
 net-dns/avahi 0.7-r6 0.7-r7 0.8-r2: System which facilitates service discovery on a local network
-net-dns/bind 9.14.12 9.16.4 9.16.5 9.16.6: Berkeley Internet Name Domain - Name Server
-net-dns/bind-tools 9.14.12 9.16.4 9.16.5 9.16.6: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
+net-dns/bind 9.16.6: Berkeley Internet Name Domain - Name Server
+net-dns/bind-tools 9.16.6: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 net-dns/c-ares 1.16.1: C library that resolves names asynchronously
 net-dns/coredns 1.6.9 1.7.0: A DNS server that chains middleware
 net-dns/ddclient 3.9.1: Perl client used to update dynamic DNS entries
