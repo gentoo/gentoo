@@ -36,6 +36,7 @@
 # Abandoned upstream. Use dev-haskell/cryptonite instead.
 # Does not compile against ghc-8.8. Removal in 30 days.
 dev-haskell/cipher-blowfish
+dev-haskell/cryptocipher
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-28)
 # EAPI=4 and fails to compile
