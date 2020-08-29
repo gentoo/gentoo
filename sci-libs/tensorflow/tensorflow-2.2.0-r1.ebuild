@@ -85,12 +85,13 @@ RDEPEND="
 	mpi? ( virtual/mpi )
 	python? (
 		${PYTHON_DEPS}
-		>=dev-libs/flatbuffers-1.8.0
+		>=dev-libs/flatbuffers-1.12.0
 		dev-python/absl-py[${PYTHON_USEDEP}]
 		>=dev-python/astor-0.7.1[${PYTHON_USEDEP}]
 		dev-python/astunparse[${PYTHON_USEDEP}]
 		>=dev-python/gast-0.3.3[${PYTHON_USEDEP}]
-		>=dev-python/numpy-1.16[${PYTHON_USEDEP}]
+		dev-python/h5py[${PYTHON_USEDEP}]
+		>=dev-python/numpy-1.19[${PYTHON_USEDEP}]
 		>=dev-python/google-pasta-0.1.8[${PYTHON_USEDEP}]
 		dev-python/opt-einsum[${PYTHON_USEDEP}]
 		>=dev-python/protobuf-python-3.8.0[${PYTHON_USEDEP}]
@@ -101,7 +102,7 @@ RDEPEND="
 		>=net-libs/google-cloud-cpp-0.10.0
 		>=sci-libs/keras-applications-1.0.8[${PYTHON_USEDEP}]
 		>=sci-libs/keras-preprocessing-1.1.0[${PYTHON_USEDEP}]
-		>=sci-visualization/tensorboard-2.0.0[${PYTHON_USEDEP}]
+		>=sci-visualization/tensorboard-2.2.0[${PYTHON_USEDEP}]
 	)"
 DEPEND="${RDEPEND}
 	python? (
@@ -109,7 +110,7 @@ DEPEND="${RDEPEND}
 		dev-python/setuptools
 	)"
 PDEPEND="python? (
-		>=sci-libs/tensorflow-estimator-2.0.0[${PYTHON_USEDEP}]
+		>=sci-libs/tensorflow-estimator-2.2.0[${PYTHON_USEDEP}]
 	)"
 BDEPEND="
 	app-arch/unzip
