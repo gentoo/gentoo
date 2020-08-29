@@ -1,47 +1,55 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-AUTOTOOLS_AUTORECONF=1
-inherit autotools-utils autotools-multilib
+inherit autotools multilib-minimal
 
 DESCRIPTION="A free stand-alone ini file parsing library"
 HOMEPAGE="http://ndevilla.free.fr/iniparser/"
-
 SRC_URI="http://ndevilla.free.fr/iniparser/${P}.tar.gz"
+
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc examples static-libs"
-
-DEPEND="doc? ( app-doc/doxygen )
-		sys-devel/libtool"
-RDEPEND=""
-
+IUSE="doc examples"
 # the tests are rather examples than tests, no point in running them
 RESTRICT="test"
 
+BDEPEND="doc? ( app-doc/doxygen )"
+
 S="${WORKDIR}/${PN}"
 
-DOCS=( AUTHORS README )
-
 PATCHES=(
-	"${FILESDIR}/${PN}-3.0b-cpp.patch"
-	"${FILESDIR}/${PN}-3.0-autotools.patch"
-	"${FILESDIR}/${PN}-4.0-out-of-bounds-read.patch"
+	"${FILESDIR}"/${PN}-3.0b-cpp.patch
+	"${FILESDIR}"/${PN}-3.0-autotools.patch
+	"${FILESDIR}"/${PN}-4.0-out-of-bounds-read.patch
 )
 
-src_install() {
-	autotools-multilib_src_install
+src_prepare() {
+	default
+	eautoreconf
+}
 
+multilib_src_configure() {
+	ECONF_SOURCE="${S}" econf \
+		--disable-static
+}
+
+multilib_src_install_all() {
 	if use doc; then
 		emake -C doc
-		dohtml -r html/*
+		HTML_DOCS=( html/. )
 	fi
 
-	if use examples ; then
-		insinto /usr/share/doc/${PF}/examples
-		doins test/*.{c,ini,py}
+	einstalldocs
+
+	if use examples; then
+		docinto examples
+		dodoc test/*.{c,ini,py}
+		docompress -x /usr/share/doc/${PF}/examples
 	fi
+
+	# no static archives
+	find "${ED}" -name '*.la' -delete || die
 }
