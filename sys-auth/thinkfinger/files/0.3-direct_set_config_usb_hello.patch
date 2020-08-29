@@ -1,7 +1,5 @@
-Index: libthinkfinger/libthinkfinger.c
-===================================================================
---- libthinkfinger/libthinkfinger.c	(revision 118)
-+++ libthinkfinger/libthinkfinger.c	(working copy)
+--- a/libthinkfinger/libthinkfinger.c
++++ b/libthinkfinger/libthinkfinger.c
 @@ -265,18 +265,7 @@
  	int retval = -1;
  	char dummy[] = "\x10";

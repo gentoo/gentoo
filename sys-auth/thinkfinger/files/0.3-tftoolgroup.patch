@@ -1,5 +1,5 @@
---- tf-tool/tf-tool.c	2007-03-30 11:00:45.000000000 +0200
-+++ tf-tool/tf-tool.c	2009-02-18 14:57:24.316197097 +0100
+--- a/tf-tool/tf-tool.c
++++ b/tf-tool/tf-tool.c
 @@ -26,6 +26,9 @@
  #include <errno.h>
  #include <libgen.h>
