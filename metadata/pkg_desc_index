@@ -6477,7 +6477,7 @@ dev-perl/File-Flock 2014.10.0 2014.10.0-r1: flock() wrapper. Auto-create locks
 dev-perl/File-Grep 0.20.0-r2: Find matches to a pattern in a series of files and related functions
 dev-perl/File-HomeDir 1.2.0 1.4.0: Get home directory for self or other user
 dev-perl/File-KeePass 2.30.0-r1: Interface to KeePass V1 and V2 database files
-dev-perl/File-LibMagic 1.150.0 1.220.0: Perl wrapper for libmagic
+dev-perl/File-LibMagic 1.150.0 1.220.0 1.220.0-r1: Perl wrapper for libmagic
 dev-perl/File-Listing 6.40.0-r1: Parse directory listings
 dev-perl/File-MMagic 1.300.0-r1: The Perl Image-Info Module
 dev-perl/File-Map 0.640.0: Memory mapping made simple and safe
