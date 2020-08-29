@@ -1,0 +1,14 @@
+--- a/tests/psitest.pl
++++ b/tests/psitest.pl
+@@ -2793,9 +2793,9 @@
+ {
+   # It's better to use File::Temp but it doesn't seem to be installed by default
+   # use File::Temp;
+-  use POSIX qw(tmpnam);
++  use File::Temp ();
+ 
+-  my $tempfile = tmpnam();
++  my $tempfile = File::Temp->new();
+   my $psicmd = build_psi_cmd("psi3 -c", 0, $SRC_PATH,  $PSITEST_EXEC_PATH, " 1>$tempfile 2>/dev/null");
+   my $psi_fail = system($psicmd);
+   open(RE, "$tempfile") || die "cannot open $tempfile $!";
