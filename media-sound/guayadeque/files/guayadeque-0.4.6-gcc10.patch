@@ -1,0 +1,70 @@
+From 6be35ba2153f1c36400b8c535d8ba49292a1f51e Mon Sep 17 00:00:00 2001
+From: Juan Rios <anonbeat@gmail.com>
+Date: Wed, 20 May 2020 05:23:22 +0100
+Subject: [PATCH] Fix compilation with gcc and fix some warnings with wxString
+ Trim
+
+---
+ src/ui/jamendo/Jamendo.cpp                    | 5 ++---
+ src/ui/mediaviewer/playlists/PlayListFile.cpp | 4 ++--
+ src/ui/podcasts/PodcastsPanel.cpp             | 2 +-
+ 3 files changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/src/ui/jamendo/Jamendo.cpp b/src/ui/jamendo/Jamendo.cpp
+index 8725bb60..107cadd7 100644
+--- a/src/ui/jamendo/Jamendo.cpp
++++ b/src/ui/jamendo/Jamendo.cpp
+@@ -487,7 +487,7 @@ guJamendoUpdateThread::~guJamendoUpdateThread()
+     }
+ }
+ 
+-#if 0
++/*
+ <JamendoData epoch="1282819258" documentation="http://developer.jamendo.com/en/wiki/DatabaseDumps" type="artistalbumtrack">
+ <Artists>
+     <artist>
+@@ -538,8 +538,7 @@ guJamendoUpdateThread::~guJamendoUpdateThread()
+     </artist>
+ ...
+ </Artists>
+-#endif
+-
++*/
+ 
+ // -------------------------------------------------------------------------------- //
+ void ReadJamendoXmlTrack( wxXmlNode * xmlnode, guJamendoUpdateThread * thread, guTrack * track )
+diff --git a/src/ui/mediaviewer/playlists/PlayListFile.cpp b/src/ui/mediaviewer/playlists/PlayListFile.cpp
+index a7ae4a4d..e038e20b 100644
+--- a/src/ui/mediaviewer/playlists/PlayListFile.cpp
++++ b/src/ui/mediaviewer/playlists/PlayListFile.cpp
+@@ -287,7 +287,7 @@ bool guPlaylistFile::ReadM3uStream( wxInputStream &playlist, const wxString &pat
+         int Count = Lines.Count();
+         for( Index = 0; Index < Count; Index++ )
+         {
+-            Lines[ Index ].Trim( wxString::both );
++            Lines[ Index ].Trim( false ).Trim( true );
+             if( Lines[ Index ].IsEmpty() || ( Lines[ Index ].Find( wxT( "#EXTM3U" ) ) != wxNOT_FOUND ) )
+             {
+                 continue;
+@@ -676,7 +676,7 @@ bool guCuePlaylistFile::LoadFromText( const wxString &content )
+         int Count = Lines.Count();
+         for( Index = 0; Index < Count; Index++ )
+         {
+-            Lines[ Index ].Trim( wxString::both );
++            Lines[ Index ].Trim( false ).Trim( true );
+             wxString Line = Lines[ Index ];
+             //guLogMessage( wxT( "'%s'" ), Line.c_str() );
+             wxArrayString Keys = wxStringTokenize( Line, wxT( " " ) );
+diff --git a/src/ui/podcasts/PodcastsPanel.cpp b/src/ui/podcasts/PodcastsPanel.cpp
+index b715bd29..f242608d 100644
+--- a/src/ui/podcasts/PodcastsPanel.cpp
++++ b/src/ui/podcasts/PodcastsPanel.cpp
+@@ -1193,7 +1193,7 @@ void guPodcastPanel::AddChannel( wxCommandEvent &event )
+         wxSetCursor( * wxHOURGLASS_CURSOR );
+         wxTheApp->Yield();
+ 
+-        wxString PodcastUrl = NewPodcastChannel->GetValue().Trim( wxString::both );
++        wxString PodcastUrl = NewPodcastChannel->GetValue().Trim( false ).Trim( true );
+         if( !PodcastUrl.IsEmpty() )
+         {
+             // If we find an itunes link we replace the itpc to the standard http
