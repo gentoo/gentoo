@@ -12,4 +12,4 @@ RDEPEND=acct-group/vboxguest acct-group/vboxsf acct-user/vboxguest X? ( x11-apps
 SLOT=0
 SRC_URI=https://download.virtualbox.org/virtualbox/6.0.24/VirtualBox-6.0.24.tar.bz2 https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-6.0.24-patches-01.tar.xz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	linux-mod	63c06dfa12648f13855f5f4348af824c	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=52c031b14d49594666f35c01db57527d
+_md5_=6718ded24f5edd92c26f052d958cc389
