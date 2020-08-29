@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Property based testing libraries such as QuickCheck tend to include type modifiers. Most of them
+		are used to quantify over subsets of a type. For example a property on non-empty lists:
+		
+		@  prop_tail_length (NonEmpty xs) = length (tail xs) == length xs - 1 @
+		
+		This library is intended to supply these modifiers to be used by testing libraries, in an effort to make
+		properties more portable between testing frameworks.
+		
+		For every modifier it also provides an access function that converts to the underlying type, which
+		enables point-free style properties as such:
+		
+		@
+		prop_tail_length2 = (&gt; 0) . length . nonEmpty
+		@
+	</longdescription>
+</pkgmetadata>
