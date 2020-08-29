@@ -1,5 +1,5 @@
 --- /dev/null
-+++ Makefile.am
++++ b/Makefile.am
 @@ -0,0 +1,8 @@
 +ACLOCAL_AMFLAGS = -I config
 +
@@ -10,7 +10,7 @@
 +
 +include_HEADERS = src/dictionary.h  src/iniparser.h
 --- /dev/null
-+++ configure.ac
++++ b/configure.ac
 @@ -0,0 +1,24 @@
 +AC_PREREQ([2.65])
 +AC_INIT([iniparser], [3.0], [ndevilla@free.fr])
