@@ -18,4 +18,7 @@ htop is an interactive process viewer for Linux. It aims to be a 'better top':
 you can scroll the process list vertically and horizontally, and select a
 process to be killed with the arrow keys instead of by typing its process id.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">htop-dev/htop</remote-id>
+	</upstream>
 </pkgmetadata>
