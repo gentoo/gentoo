@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		A low-level client library for the MySQL database, implemented as
+		bindings to the C @mysqlclient@ API.
+		
+		/Important licensing note/: This library is BSD-licensed under the
+		terms of the MySQL FOSS License Exception
+		&lt;http://www.mysql.com/about/legal/licensing/foss-exception/&gt;.
+		
+		Since this library links against the GPL-licensed @mysqlclient@
+		library, a non-open-source application that uses it /may/ be
+		subject to the terms of the GPL.
+	</longdescription>
+</pkgmetadata>

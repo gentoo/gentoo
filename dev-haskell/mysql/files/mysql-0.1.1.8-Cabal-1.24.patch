@@ -1,0 +1,29 @@
+diff --git a/Setup.lhs b/Setup.lhs
+index 2bf8d37..8fb2d3f 100644
+--- a/Setup.lhs
++++ b/Setup.lhs
+@@ -14,15 +14,2 @@ import Distribution.Verbosity
+ 
+--- A Cabal 1.16 vs 1.18 compatibility hack, as in 1.18
+--- findProgramLocation has a new (unused in this case) parameter.
+--- ConstOrId adds this parameter when types say it is mandatory.
+-class ConstOrId a b where
+-    constOrId :: a -> b
+-
+-instance ConstOrId a a where
+-    constOrId = id
+-
+-instance ConstOrId a (b -> a) where
+-    constOrId = const
+-
+-
+ main = defaultMainWithHooks simpleUserHooks {
+@@ -39,5 +26,5 @@ main = defaultMainWithHooks simpleUserHooks {
+ mysqlConfigProgram = (simpleProgram "mysql_config") {
+-    programFindLocation = \verbosity -> constOrId $ liftM2 mplus
+-      (findProgramLocation verbosity "mysql_config")
+-      (findProgramLocation verbosity "mysql_config5")
++    programFindLocation = \verbosity path -> liftM2 mplus
++      (findProgramOnSearchPath verbosity path "mysql_config")
++      (findProgramOnSearchPath verbosity path "mysql_config5")
+   }
