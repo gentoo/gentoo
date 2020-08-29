@@ -2754,7 +2754,7 @@ app-shells/bashdb 4.4.1.0.1 5.0.1.1.0 5.0.1.1.2: bash source code debugging
 app-shells/bashish 2.2.4: Text console theme engine
 app-shells/ccsh 0.0.4-r4: UNIX Shell for people already familiar with the C language
 app-shells/ctypes-sh 1.2: Foreign function interface for bash
-app-shells/dash 0.5.10.2-r1 0.5.11 0.5.11.1: Debian Almquist Shell
+app-shells/dash 0.5.10.2-r1 0.5.11.1 0.5.11.2: Debian Almquist Shell
 app-shells/dsh 0.25.10-r1: Distributed Shell
 app-shells/esh 0.8.5-r2: A UNIX Shell with a simplified Scheme syntax
 app-shells/fish 2.7.1 3.0.2 3.1.0 3.1.2 9999: Friendly Interactive SHell
@@ -2867,7 +2867,7 @@ app-text/dvipng 1.15-r1: Translate DVI files into PNG or GIF graphics
 app-text/dvipsk 2020.1_p20200406: DVI-to-PostScript translator
 app-text/dvisvgm 2.1.3 2.6.1 2.7: Converts DVI files to SVG
 app-text/ebook-tools 0.2.2-r1: Tools for accessing and converting various ebook file formats
-app-text/editorconfig-core-c 0.12.1 0.12.2 0.12.3-r1 0.12.3-r2: EditorConfig core library written in C
+app-text/editorconfig-core-c 0.12.3-r2 0.12.4: EditorConfig core library written in C
 app-text/enchant 1.6.1-r1 2.2.8: Spellchecker wrapping library
 app-text/enscript 1.6.6: Powerful text-to-postscript converter
 app-text/epspdf 0.6.0-r1 0.6.3-r1: GUI and command-line converter for [e]ps and pdf
@@ -2883,7 +2883,7 @@ app-text/fbreader 0.99.4-r5: E-Book Reader. Supports many e-book formats
 app-text/fictionup 0.1 0.2.1: A command-line markdown to fb2 convertor
 app-text/flpsed 0.7.3: Pseudo PostScript editor
 app-text/foliate 2.4.2-r1: gtk ebook reader built with gjs
-app-text/ghostscript-gpl 9.50 9.52-r1: Interpreter for the PostScript language and PDF
+app-text/ghostscript-gpl 9.52-r1: Interpreter for the PostScript language and PDF
 app-text/gnome-doc-utils 0.20.10-r2: A collection of documentation utilities for the Gnome project
 app-text/gocr 0.50: An OCR (Optical Character Recognition) reader
 app-text/goldendict 1.5.0_rc2-r2: Feature-rich dictionary lookup program
@@ -9045,7 +9045,7 @@ dev-python/rq 1.4.3 1.5.1: simple, lightweight library for creating and processi
 dev-python/rsa 4.2: Pure-Python RSA implementation
 dev-python/rst-linker 2.0.0: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rtimulib 7.2.1-r1: Python Binding for RTIMULib, a versatile IMU library
-dev-python/rtslib-fb 2.1.69 2.1.73: A Python object API for managing the Linux LIO kernel target
+dev-python/rtslib-fb 2.1.73: A Python object API for managing the Linux LIO kernel target
 dev-python/ruamel-std-pathlib 0.6.4-r1: Ruamel enhancements to pathlib and pathlib2
 dev-python/ruamel-yaml 0.16.10: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/ruamel-yaml-clib 0.2.0: C-based reader/scanner and emitter for dev-python/ruamel-yaml
@@ -10733,7 +10733,7 @@ dev-util/dwarves 1.17: pahole (Poke-a-Hole) and other DWARF2 utilities
 dev-util/dwdiff 2.1.1 2.1.2: diff-like program operating at word level instead of line level
 dev-util/edb-debugger 1.2.0 9999: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
 dev-util/edi 0.8.0: An EFL-based IDE
-dev-util/editorconfig-geany 0.1_p20160725 0.2: EditorConfig plugin for Geany
+dev-util/editorconfig-geany 0.2: EditorConfig plugin for Geany
 dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
 dev-util/elfkickers 3.1a: collection of programs to manipulate ELF files: sstrip, rebind, elfls, elftoc
 dev-util/emilpro 3-r3 9999: a graphical disassembler for a large number of instruction sets
