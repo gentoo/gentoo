@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-29)
+# EAPI=4, latest release 4.3.19 in 2019.
+# Unmaintained. Removal in 30 days.
+app-cdr/pburn
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-29)
 # EAPI=4, simple script, relies on hardcoded
 # /usr/dict/words for generation. Removal in 30 days.
 app-admin/passook
