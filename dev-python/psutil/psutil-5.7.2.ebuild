@@ -21,6 +21,7 @@ DEPEND="
 		$(python_gen_cond_dep '
 			dev-python/mock[${PYTHON_USEDEP}]
 			dev-python/ipaddress[${PYTHON_USEDEP}]
+			dev-python/unittest2[${PYTHON_USEDEP}]
 		' -2)
 	)
 "
