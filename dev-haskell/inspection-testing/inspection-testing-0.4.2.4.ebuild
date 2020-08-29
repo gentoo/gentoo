@@ -22,7 +22,6 @@ RESTRICT=test # examples/Fusion.hs:22:1: sumUp1 === sumUp2 failed
 
 RDEPEND="dev-haskell/mtl:=[profile?]
 	>=dev-lang/ghc-8.0.1:=
-	>=dev-lang/ghc-8.0.2:=[profile?] <dev-lang/ghc-8.11:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.24.0.0
