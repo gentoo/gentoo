@@ -1,0 +1,11 @@
+--- a/src/tests/man-deleted-directory
++++ b/src/tests/man-deleted-directory
+@@ -8,6 +8,8 @@
+ 
+ : ${MAN=man}
+ 
++test -n "$SANDBOX_ACTIVE" && skip "Gentoo: Test known bad under sandbox (#699466)"
++
+ init
+ echo "MANDATORY_MANPATH $abstmpdir/usr/share/man" >"$tmpdir/manpath.config"
+ MANPATH="$abstmpdir/usr/share/man"
