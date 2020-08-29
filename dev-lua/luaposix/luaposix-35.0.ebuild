@@ -17,12 +17,20 @@ RDEPEND="dev-lang/lua:0=
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+src_prepare() {
+	default
+	# Temporary fix for respect LDFLAGS (#739050)
+	# Fixed in luke 0.2.1
+	sed -i -e "s:c_module,libdirs:c_module,'\$LDFLAGS',libdirs:g" \
+		build-aux/luke || die
+}
+
 src_compile() {
 	./build-aux/luke package="${PN}" version="${PV}" \
 		PREFIX="${ED}/usr" \
 		INST_LIBDIR="${ED}/$($(tc-getPKG_CONFIG) --variable INSTALL_CMOD lua)" \
 		INST_LUADIR="${ED}/$($(tc-getPKG_CONFIG) --variable INSTALL_LMOD lua)" \
-		CFLAGS="${CFLAGS}" CC="$(tc-getCC)" || die
+		CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" || die
 }
 
 src_install() {
