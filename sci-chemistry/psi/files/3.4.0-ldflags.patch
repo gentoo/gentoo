@@ -1,7 +1,7 @@
 Respect LDFLAGS
 
---- configure.ac
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -288,15 +288,13 @@
  )
  AC_SUBST(LDLIBS)

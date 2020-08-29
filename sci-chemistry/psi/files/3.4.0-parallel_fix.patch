@@ -1,5 +1,5 @@
---- Makefile.in
-+++ Makefile.in
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -17,62 +17,19 @@
  INSTALL = @INSTALL@
  INSTALL_PROGRAM = @INSTALL_PROGRAM@
@@ -70,8 +70,8 @@
  
  $(top_srcdir)/configure: $(top_srcdir)/configure.ac $(top_srcdir)/aclocal.m4
  	cd $(top_srcdir) && autoconf
---- lib/Makefile.in
-+++ lib/Makefile.in
+--- a/lib/Makefile.in
++++ b/lib/Makefile.in
 @@ -31,7 +31,7 @@
  	$(INSTALL_DATA) $(srcdir)/psi.dat $(DESTDIR)$(pkgdatadir)
  	for dir in $(subdirs); \
@@ -81,8 +81,8 @@
            done
  
  install_man: macro.psi
---- src/Makefile.in
-+++ src/Makefile.in
+--- a/src/Makefile.in
++++ b/src/Makefile.in
 @@ -6,53 +6,10 @@
  
  default: all
@@ -141,8 +141,8 @@
  
  top_srcdir = @top_srcdir@
  srcdir = @srcdir@
---- src/lib/Makefile.in
-+++ src/lib/Makefile.in
+--- a/src/lib/Makefile.in
++++ b/src/lib/Makefile.in
 @@ -4,56 +4,10 @@
  subdirs = libipv1 libciomr libchkpt libqt libpsio libiwl libdpd libutil \
            liboptions libmoinfo libbasis libmints
@@ -204,8 +204,8 @@
  
  #
  # keep the configuration information and makefile up-to-date
---- src/bin/Makefile.in
-+++ src/bin/Makefile.in
+--- a/src/bin/Makefile.in
++++ b/src/bin/Makefile.in
 @@ -13,55 +13,10 @@
  subdirs += psirb
  endif
@@ -266,8 +266,8 @@
  
  top_srcdir = @top_srcdir@
  srcdir = @srcdir@
---- src/samples/Makefile.in
-+++ src/samples/Makefile.in
+--- a/src/samples/Makefile.in
++++ b/src/samples/Makefile.in
 @@ -5,55 +5,10 @@
  
  subdirs = mints
@@ -328,8 +328,8 @@
  
  top_srcdir = @top_srcdir@
  srcdir = @srcdir@
---- src/util/Makefile.in
-+++ src/util/Makefile.in
+--- a/src/util/Makefile.in
++++ b/src/util/Makefile.in
 @@ -3,55 +3,10 @@
  
  subdirs = tocprint psi2molden
@@ -390,8 +390,8 @@
  
  top_srcdir = @top_srcdir@
  srcdir = @srcdir@
---- src/lib/libipv1/Makefile.in
-+++ src/lib/libipv1/Makefile.in
+--- a/src/lib/libipv1/Makefile.in
++++ b/src/lib/libipv1/Makefile.in
 @@ -58,4 +58,4 @@
  # in case DODEPEND is no
  #
