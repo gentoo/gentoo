@@ -1,0 +1,191 @@
+--- a/bindings/c/doc/configure.ac
++++ b/bindings/c/doc/configure.ac
+@@ -1,8 +1,8 @@
+ # Process this file with autoconf to produce a configure script.
+ AC_PREREQ(2.61)
+-AC_INIT(Doxyfile.in)
++AC_INIT(libxspf, 1.2.0)
+ AC_CONFIG_AUX_DIR([../../../build-aux])
+-AM_INIT_AUTOMAKE(xspf_c-doc, 1.2.0)
++AM_INIT_AUTOMAKE
+ 
+ 
+ ## Doxygen
+--- a/bindings/c/doc/Makefile.am
++++ b/bindings/c/doc/Makefile.am
+@@ -28,7 +28,7 @@
+ ## Install doc files
+ install-data-local:
+ 	$(MKDIR_P) "$(DESTDIR)$(docdir)/html"  ## Didn't work with installdirs-local
+-	$(INSTALL_DATA) html/*.{css,gif,html,png} "$(DESTDIR)$(docdir)/html/"
++	$(INSTALL_DATA) html/*.{css,html,png} "$(DESTDIR)$(docdir)/html/"
+ 	$(INSTALL_DATA) *.qch "$(DESTDIR)$(docdir)/"
+ 
+ 
+--- a/configure.ac
++++ b/configure.ac
+@@ -1,16 +1,15 @@
+ # Process this file with autoconf to produce a configure script.
+ AC_PREREQ(2.61)
+-AC_INIT(src/XspfReader.cpp)
++AC_INIT(libxspf, 1.2.0)
+ AC_CONFIG_AUX_DIR([build-aux])
+-AM_INIT_AUTOMAKE(libxspf, 1.2.0)
++AM_INIT_AUTOMAKE
+ 
+-AC_PROG_LIBTOOL
+-AC_PROG_INSTALL
+ AC_PROG_CC
+ AC_PROG_CXX
+ PKG_PROG_PKG_CONFIG
+ 
+ AC_HEADER_STDC
++LT_INIT
+ 
+ 
+ 
+@@ -29,40 +28,6 @@
+ 
+ 
+ 
+-# Expat
+-AC_ARG_WITH(expat, [
+-===========================================================================
+-Extra options:
+-AS_HELP_STRING([--with-expat=DIR], [override path of Expat])
+-AS_HELP_STRING([], [("/lib" and "/include" is appended)]
+-)], [
+-	if test "x${withval}" = "x"; then
+-		AC_MSG_ERROR([No path given for option --with-expat])
+-	fi
+-	LDFLAGS="-L${withval}/lib ${LDFLAGS}"
+-	CPPFLAGS="-I${withval}/include ${CPPFLAGS}"
+-], [])
+-
+-AC_ARG_WITH(expat-inc, [AS_HELP_STRING(
+-	[--with-expat-inc=DIR], [override include path of Expat]
+-)], [
+-	if test "x${withval}" = "x"; then
+-		AC_MSG_ERROR([No path given for option --with-expat-inc])
+-	fi
+-	CPPFLAGS="-I${withval} ${CPPFLAGS}"
+-], [])
+-
+-AC_ARG_WITH(expat-lib, [AS_HELP_STRING(
+-	[--with-expat-lib=DIR], [override library path of Expat]
+-)], [
+-	if test "x${withval}" = "x"; then
+-		AC_MSG_ERROR([No path given for option --with-expat-lib])
+-	fi
+-	LDFLAGS="-L${withval} ${LDFLAGS}"
+-], [])
+-
+-
+-
+ # uriparser
+ AC_ARG_WITH(uriparser, [AS_HELP_STRING(
+ 	[--with-uriparser=DIR], [override path of uriparser])
+@@ -110,29 +75,8 @@
+ 
+ 
+ 
+-# Local headers must come very first. Otherwise we
+-# risk including headers of an already installed
+-# libxspf version if its path is in CPPFLAGS
+-CPPFLAGS="-I${srcdir}/include ${CPPFLAGS}"
+-
+-
+-
+-# Append $prefix as a fallback at the very end
+-if test "x${prefix}" != "xNONE"; then
+-	WORKING_PREFIX=${prefix}
+-else
+-	WORKING_PREFIX=${ac_default_prefix}
+-fi
+-LDFLAGS="${LDFLAGS} -L${WORKING_PREFIX}/lib"
+-CPPFLAGS="${CPPFLAGS} -I${WORKING_PREFIX}/include"
+-
+-
+-
+ # Check presence
+-EXPAT_MISSING="Please install expat 1.95.8 or later.
+-   On a Debian-based system enter 'sudo apt-get install libexpat-dev'."
+-AC_CHECK_LIB(expat, XML_ResumeParser,, AC_MSG_ERROR(${EXPAT_MISSING}))
+-AC_CHECK_HEADER(expat.h,, AC_MSG_ERROR(${EXPAT_MISSING}))
++PKG_CHECK_MODULES([EXPAT], [expat])
+ 
+ PKG_CHECK_MODULES([URIPARSER], [
+ 	liburiparser >= 0.7.5
+--- a/doc/configure.ac
++++ b/doc/configure.ac
+@@ -1,8 +1,8 @@
+ ## Process this file with autoconf to produce a configure script.
+ AC_PREREQ(2.61)
+-AC_INIT(Doxyfile.in)
++AC_INIT(libxspf, 1.2.0)
+ AC_CONFIG_AUX_DIR([../build-aux])
+-AM_INIT_AUTOMAKE(libxspf-doc, 1.2.0)
++AM_INIT_AUTOMAKE
+ 
+ 
+ ## Doxygen
+@@ -30,7 +30,6 @@
+ fi
+ AC_SUBST(GENERATE_HTMLHELP)
+ AC_SUBST(QHG_LOCATION)
+-AC_SUBST(srcdir, [${ac_abs_confdir}])
+ 
+ 
+ AC_CONFIG_FILES([
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -26,7 +26,7 @@
+ ## Install doc files
+ install-data-local:
+ 	$(MKDIR_P) "$(DESTDIR)$(docdir)/html"  ## Didn't work with installdirs-local
+-	$(INSTALL_DATA) html/*.{css,gif,html,png} "$(DESTDIR)$(docdir)/html/"
++	$(INSTALL_DATA) html/*.{css,html,png} "$(DESTDIR)$(docdir)/html/"
+ 	$(INSTALL_DATA) *.qch "$(DESTDIR)$(docdir)/"
+ 
+ 
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,8 +1,10 @@
+ ## Process this file with automake to produce Makefile.in
+-AUTOMAKE_OPTIONS = 1.10.1 gnu dist-zip dist-bzip2 dist-lzma subdir-objects
++AUTOMAKE_OPTIONS = 1.10.1 gnu dist-zip dist-bzip2 subdir-objects
+ 
+ ACLOCAL_AMFLAGS = -I m4
+ 
++AM_CPPFLAGS = -I$(top_srcdir)/include
++
+ if GENERATE_DOC
+ SUBDIRS = \
+ 	. \
+@@ -39,9 +41,10 @@
+ endif
+ 
+ 
+-libxspf_la_CFLAGS = @URIPARSER_CFLAGS@
++libxspf_la_CFLAGS = $(URIPARSER_CFLAGS) $(EXPAT_CFLAGS)
++libxspf_la_LIBADD = $(URIPARSER_LIBS) $(EXPAT_LIBS)
+ 
+-libxspf_la_LDFLAGS = @URIPARSER_LIBS@ -version-info 4:1:0
++libxspf_la_LDFLAGS = -version-info 4:1:0
+ 
+ libxspf_la_SOURCES = \
+ 	src/XspfChunkCallback.cpp \
+@@ -146,11 +149,9 @@
+ if XSPF_TEST_ENABLED
+ test_xspf_test_CFLAGS = @CPPTEST_CFLAGS@
+ 
+-test_xspf_test_LDFLAGS = @CPPTEST_LIBS@
+-
+-test_xspf_test_LDADD = libxspf.la
++test_xspf_test_LDADD = libxspf.la @CPPTEST_LIBS@
+ 
+-test_xspf_test_CPPFLAGS = -DXSPF_SRCDIR=\"${srcdir}\"
++test_xspf_test_CPPFLAGS = -DXSPF_SRCDIR=\"${srcdir}\" -I$(top_srcdir)/include
+ 
+ test_xspf_test_SOURCES = \
+ 	test/ProjectOpus/ProjectOpusSuite.cpp \
