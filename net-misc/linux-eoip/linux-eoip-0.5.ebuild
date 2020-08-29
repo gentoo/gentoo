@@ -1,11 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-AUTOTOOLS_AUTORECONF=1
-AUTOTOOLS_IN_SOURCE_BUILD=1
+EAPI=7
 
-inherit eutils autotools-utils vcs-clean
+inherit autotools vcs-clean
 
 DESCRIPTION="Linux support for proprietary MIkrotik EoIP protocol"
 HOMEPAGE="https://code.google.com/p/linux-eoip/"
@@ -14,23 +12,21 @@ SRC_URI="https://linux-eoip.googlecode.com/files/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND="
-	dev-libs/lzo:2
-	"
+RDEPEND="dev-libs/lzo:2"
+DEPEND="${RDEPEND}"
 
-RDEPEND="${DEPEND}"
-DOCS=( README )
+PATCHES=( "${FILESDIR}"/${P}-sbin-automake.patch )
 
 src_prepare() {
+	default
 	esvn_clean
-	sed -e 's/bin_PROGRAMS/sbin_PROGRAMS/g' -i Makefile.am
-	autotools-utils_src_prepare
+	eautoreconf
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
+
 	insinto /etc
 	doins vip.cfg eoip.cfg
 }
