@@ -6,12 +6,14 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<longdescription>
-		An haskell implementation of git storage operations, allowing users
+		
+		A Haskell implementation of git storage operations, allowing users
 		to manipulate git repositories (read and write).
-
+		
 		This implementation is fully interoperable with the main C implementation.
-
-		This is stricly only manipulating the git store (what's inside the .git directory),
-		and doesn't do anything with the index or your working directory files.
+		
+		This is strictly only manipulating the git store (what&#39;s inside the .git directory),
+		and doesn&#39;t do anything with the index or your working directory files.
+		
 	</longdescription>
 </pkgmetadata>
