@@ -1,5 +1,5 @@
---- pam/pam_thinkfinger-uinput.c	2009-12-27 18:42:26.000000000 +0100
-+++ pam/pam_thinkfinger-uinput.c	2009-12-27 18:41:55.000000000 +0100
+--- a/pam/pam_thinkfinger-uinput.c
++++ b/pam/pam_thinkfinger-uinput.c
 @@ -34,27 +34,40 @@
  int uinput_cr (int *fd)
  {

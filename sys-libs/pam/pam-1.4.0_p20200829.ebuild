@@ -8,9 +8,9 @@ inherit autotools db-use fcaps toolchain-funcs usr-ldscript multilib-minimal
 DESCRIPTION="Linux-PAM (Pluggable Authentication Modules)"
 HOMEPAGE="https://github.com/linux-pam/linux-pam"
 
-COMMIT_HASH="d5cb4409ab6b04a6ed7c00245e2c9a430f352b16"
+COMMIT_HASH="e42e178c71c11bb25740a5177eed110ee17b8af2"
 SRC_URI="https://github.com/linux-pam/linux-pam/archive/${COMMIT_HASH}.tar.gz#/${PN}-${COMMIT_HASH}.tar.gz
-	https://dev.gentoo.org/~zlogene/distfiles/${CATEGORY}/${PN}/${P}-doc.tar.xz"
+	https://dev.gentoo.org/~zlogene/distfiles/${CATEGORY}/${PN}-1.4.0_p20200809-doc.tar.xz"
 
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
@@ -30,7 +30,8 @@ DEPEND="
 	audit? ( >=sys-process/audit-2.2.2[${MULTILIB_USEDEP}] )
 	berkdb? ( >=sys-libs/db-4.8.30-r1:=[${MULTILIB_USEDEP}] )
 	selinux? ( >=sys-libs/libselinux-2.2.2-r4[${MULTILIB_USEDEP}] )
-	nis? ( >=net-libs/libtirpc-0.2.4-r2[${MULTILIB_USEDEP}] )"
+	nis? ( net-libs/libnsl[${MULTILIB_USEDEP}]
+	>=net-libs/libtirpc-0.2.4-r2[${MULTILIB_USEDEP}] )"
 
 RDEPEND="${DEPEND}"
 
@@ -62,6 +63,7 @@ multilib_src_configure() {
 		--includedir="${EPREFIX}"/usr/include/security
 		--libdir="${EPREFIX}"/usr/$(get_libdir)
 		--exec-prefix="${EPREFIX}"
+		--enable-unix
 		--disable-prelude
 		--disable-cracklib
 		--disable-tally
@@ -107,7 +109,7 @@ multilib_src_install_all() {
 		d /run/sepermit 0755 root root
 	_EOF_
 
-	for i in "${WORKDIR}"/${P}-doc/*; do
+	for i in "${WORKDIR}"/${PN}-1.4.0_p20200809-doc/*; do
 		doman ${i}
 	done
 }
