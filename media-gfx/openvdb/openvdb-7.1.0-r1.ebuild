@@ -107,7 +107,7 @@ src_configure() {
 			-DOPENVDB_BUILD_PYTHON_MODULE=ON
 			-DUSE_NUMPY=$(usex numpy)
 			-DPYOPENVDB_INSTALL_DIRECTORY="$(python_get_sitedir)"
-			-DPython_EXECUTABLE="${EPYTHON}"
+			-DPython_EXECUTABLE="${PYTHON}"
 		)
 	fi
 
