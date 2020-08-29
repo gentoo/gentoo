@@ -1,13 +1,14 @@
-DEFINED_PHASES=compile configure install prepare test
-DEPEND=x11-libs/libXt >=app-i18n/scim-1.1 nls? ( virtual/libintl ) virtual/pkgconfig nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170815
+BDEPEND=virtual/pkgconfig nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
+DEPEND=>=app-i18n/scim-1.1 x11-libs/libXt nls? ( virtual/libintl )
 DESCRIPTION=Smart Common Input Method (SCIM) Smart Pinyin Input Method
-EAPI=4
+EAPI=7
 HOMEPAGE=http://www.scim-im.org/
 IUSE=nls
 KEYWORDS=amd64 ppc ppc64 x86
 LICENSE=GPL-2
-RDEPEND=x11-libs/libXt >=app-i18n/scim-1.1 nls? ( virtual/libintl )
+RDEPEND=>=app-i18n/scim-1.1 x11-libs/libXt nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=mirror://sourceforge/scim/scim-pinyin-0.5.92.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	autotools-utils	95db0904ad0f62535e18e5ccb67cce5e	desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	2477ebe553d3e4d2c606191fe6c33602	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=b74fe45c6967c6f7341b01300d1dd57e
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=8f5b16bde9465294bba2791ccc4f5c7a
