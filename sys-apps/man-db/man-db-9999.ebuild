@@ -46,6 +46,8 @@ RDEPEND="
 "
 PDEPEND="manpager? ( app-text/manpager )"
 
+PATCHES=( "${FILESDIR}"/${PN}-2.9.3-sandbox-env-tests.patch )
+
 pkg_setup() {
 	if (use gdbm && use berkdb) || (use !gdbm && use !berkdb) ; then #496150
 		ewarn "Defaulting to USE=gdbm due to ambiguous berkdb/gdbm USE flag settings"
