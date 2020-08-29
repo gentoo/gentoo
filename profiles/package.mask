@@ -736,12 +736,6 @@ media-sound/jack
 # Removal in 30 days.  Bug #735010.
 dev-python/distributed
 
-# Mikle Kolyada <zlogene@gentoo.org> (2020-07-31)
-# Broken package with dead upstream.
-# Libraries like tikz/pgf can be used as a replacement.
-# Removal in 30 days.
-dev-tex/herm-pic
-
 # Michał Górny <mgorny@gentoo.org> (2020-07-28)
 # Masked for the time being due to dep on LLVM 8.  Bug #720236.
 <=dev-ada/gps-2019-r1
