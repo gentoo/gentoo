@@ -52,6 +52,7 @@ acct-group/etcd 0: System group: etcd
 acct-group/exabgp 0: System group: exabgp
 acct-group/fetchmail 0: Group for net-mail/fetchmail
 acct-group/fhem 0: A group for the FHEM perl server for house automation
+acct-group/fingerprint 0: System group: fingerprint
 acct-group/ftp 0: File Transfer Protocol server user
 acct-group/fvwm-crystal 0: System group: fvwm-crystal
 acct-group/gamestat 0: Group for shared high-score and game state files
@@ -15384,7 +15385,7 @@ net-misc/youtube-viewer 3.7.4-r1 9999: A command line utility for viewing youtub
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
-net-nds/adtool 1.3.3: Utility for Active Directory administration
+net-nds/adtool 1.3.3-r1: Utility for Active Directory administration
 net-nds/gssproxy 0.8.2 0.8.3: daemon to proxy GSSAPI context establishment and channel handling
 net-nds/jxplorer 3.3.1 3.3.1.1 3.3.1.2: A fully functional ldap browser written in Java
 net-nds/ldapvi 1.7_p20101214: Manage LDAP entries with a text editor
@@ -15986,7 +15987,7 @@ sci-chemistry/bodr 9-r1 10: The Blue Obelisk Data Repository listing element and
 sci-chemistry/cara-bin 1.8.4-r2: Analysis of NMR spectra and Computer Aided Resonance Assignment
 sci-chemistry/chemex 2018.10.2 2018.10.3: Program to fit chemical exchange induced shift and relaxation data
 sci-chemistry/chemical-mime-data 0.1.94-r4: A collection of data files to add support for chemical MIME types
-sci-chemistry/chemtool 1.6.13 1.6.14: A GTK program for drawing organic molecules
+sci-chemistry/chemtool 1.6.14: A GTK program for drawing organic molecules
 sci-chemistry/clashlist 3.17-r1: Build lists of van der Waals clashes from an input PDB file
 sci-chemistry/cluster 1.3.081231-r1: Build lists of collections of interacting items
 sci-chemistry/dssp 2.2.1-r1: The protein secondary structure standard
@@ -17716,7 +17717,7 @@ sys-libs/nss-usrfiles 2.18.1: NSS module to read passwd/group files from CoreOS 
 sys-libs/nss_wrapper 1.1.6 1.1.10: Wrapper for the user, group and hosts NSS API
 sys-libs/obstack-standalone 1.1: A standalone library to implement GNU libc's obstack.
 sys-libs/openipmi 2.0.27-r1 2.0.28 2.0.29: Library interface to IPMI
-sys-libs/pam 1.3.1_p20200128-r1 1.4.0_p20200809: Linux-PAM (Pluggable Authentication Modules)
+sys-libs/pam 1.3.1_p20200128-r1 1.4.0_p20200829: Linux-PAM (Pluggable Authentication Modules)
 sys-libs/pam_wrapper 1.1.3: A tool to test PAM applications and PAM modules
 sys-libs/pinktrace 0.9.3: ptrace() easy wrapper library
 sys-libs/pwdb 0.62-r1: Password database
