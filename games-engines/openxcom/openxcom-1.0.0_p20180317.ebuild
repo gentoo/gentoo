@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/SupSuper/OpenXcom/archive/${COMMIT}.tar.gz -> ${P}.t
 
 LICENSE="GPL-3+ CC-BY-SA-4.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc"
 
 RDEPEND=">=dev-cpp/yaml-cpp-0.5.1
