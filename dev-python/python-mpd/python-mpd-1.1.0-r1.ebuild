@@ -15,13 +15,13 @@ SRC_URI="https://github.com/Mic92/${PN}2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-3+"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 SLOT="0"
-IUSE="examples test +twisted"
+IUSE="examples +twisted"
 
 REQUIRED_USE="test? ( twisted )"
 
 RDEPEND="twisted? ( dev-python/twisted[${PYTHON_USEDEP}] )"
 
-DEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 BDEPEND="
 	test? (
@@ -29,8 +29,6 @@ BDEPEND="
 		dev-python/toml[${PYTHON_USEDEP}]
 	)
 "
-
-RESTRICT="!test? ( test )"
 
 DOCS=( README.rst doc/{changes.rst,commands_header.txt} doc/topics/. )
 

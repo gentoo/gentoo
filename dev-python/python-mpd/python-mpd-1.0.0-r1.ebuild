@@ -3,41 +3,46 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+DISTUTILS_USE_SETUPTOOLS="bdepend"
+PYTHON_COMPAT=( python3_{6..9} )
+
 inherit distutils-r1
 
 DESCRIPTION="Python MPD client library"
 HOMEPAGE="https://github.com/Mic92/python-mpd2"
 SRC_URI="https://github.com/Mic92/${PN}2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="LGPL-3"
+LICENSE="LGPL-3+"
 KEYWORDS="amd64 ~ppc ~ppc64 x86"
 SLOT="0"
-IUSE="test +twisted"
+IUSE="examples +twisted"
 
 REQUIRED_USE="test? ( twisted )"
 
+RDEPEND="twisted? ( dev-python/twisted[${PYTHON_USEDEP}] )"
+
+DEPEND="${RDEPEND}"
+
 BDEPEND="
 	test? (
-		dev-python/filelock[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/toml[${PYTHON_USEDEP}]
-		dev-python/tox[${PYTHON_USEDEP}]
 	)
-	dev-python/setuptools[${PYTHON_USEDEP}]
 "
-DEPEND="twisted? ( dev-python/twisted[${PYTHON_USEDEP}] )"
-RDEPEND="${DEPEND}"
 
-RESTRICT="!test? ( test )"
-
-DOCS=( doc/changes.rst doc/topics/{advanced,commands,getting-started,logging}.rst README.rst )
+DOCS=( README.rst doc/{changes.rst,commands_header.txt} doc/topics/. )
 
 S="${WORKDIR}/${PN}2-${PV}"
 
-distutils_enable_tests setup.py
+distutils_enable_sphinx doc --no-autodoc
+distutils_enable_tests pytest
 
-python_prepare_all() {
-	distutils-r1_python_prepare_all
-	rm tox.ini || die
+python_test() {
+	pytest mpd/tests.py -vv || die "Tests fail with ${EPYTHON}"
+}
+
+python_install_all() {
+	distutils-r1_python_install_all
+
+	use examples && dodoc -r examples/.
 }

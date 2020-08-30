@@ -34,6 +34,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-fix-32bit-tests-build.patch
+)
+
 src_prepare() {
 	xdg_src_prepare
 	# These are installed by dev-util/sysprof-capture
