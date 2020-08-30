@@ -6,6 +6,9 @@
     <name>Andrew Savchenko</name>
   </maintainer>
   <longdescription>A transparent low-overhead system-wide profiler</longdescription>
+  <use>
+     <flag name="apidoc">Provide doxygen generated API docs.</flag>
+  </use>
   <upstream>
     <remote-id type="sourceforge">oprofile</remote-id>
   </upstream>
