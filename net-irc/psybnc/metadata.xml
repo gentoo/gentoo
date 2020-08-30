@@ -7,5 +7,4 @@
 		<flag name="scripting">Adds scripting support</flag>
 		<flag name="multinetwork">Adds support for multiple networks</flag>
 	</use>
-	<longdescription>psyBNC is a multi-user and multi-server gateway to IRC networks</longdescription>
 </pkgmetadata>
