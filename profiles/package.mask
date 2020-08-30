@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2020-08-30)
+# Serious security vulns, outdated.
+# bug 699834. Removal in 30 days.
+www-apps/ampache
+
+# Sam James <sam@gentoo.org> (2020-08-30)
 # Collection of quite dead net-irc/* pkgs
 # Please speak up if you use any of these
 # and a modern alternative doesn't work for you.
