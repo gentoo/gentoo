@@ -1,0 +1,108 @@
+From 9abdda396818842de1d9af9a153b66a1399f7c0f Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Tue, 7 Jul 2020 14:46:31 +0200
+Subject: [PATCH] Add double dash for exec command for files
+
+This prevents shenannigans with file names that might
+inject command line options.
+---
+ src/data/kleopatra_decryptverifyfiles.desktop   | 2 +-
+ src/data/kleopatra_decryptverifyfolders.desktop | 2 +-
+ src/data/kleopatra_import.desktop               | 2 +-
+ src/data/kleopatra_signencryptfiles.desktop     | 8 ++++----
+ src/data/kleopatra_signencryptfolders.desktop   | 4 ++--
+ 5 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/src/data/kleopatra_decryptverifyfiles.desktop b/src/data/kleopatra_decryptverifyfiles.desktop
+index 5f4832fe..1bd3200e 100644
+--- a/src/data/kleopatra_decryptverifyfiles.desktop
++++ b/src/data/kleopatra_decryptverifyfiles.desktop
+@@ -102,4 +102,4 @@ Name[x-test]=xxDecrypt/Verify Filexx
+ Name[zh_CN]=解密/验证文件
+ Name[zh_TW]=解密/檢查檔案
+ Icon=kleopatra
+-Exec=kleopatra --decrypt-verify %F
++Exec=kleopatra --decrypt-verify -- %F
+diff --git a/src/data/kleopatra_decryptverifyfolders.desktop b/src/data/kleopatra_decryptverifyfolders.desktop
+index 8b6af1e2..54644c8f 100644
+--- a/src/data/kleopatra_decryptverifyfolders.desktop
++++ b/src/data/kleopatra_decryptverifyfolders.desktop
+@@ -101,4 +101,4 @@ Name[x-test]=xxDecrypt/Verify All Files In Folderxx
+ Name[zh_CN]=文件夹中的全部解密/验证文件
+ Name[zh_TW]=解密/檢查所有資料夾中的檔案
+ Icon=kleopatra
+-Exec=kleopatra --decrypt-verify %F
++Exec=kleopatra --decrypt-verify -- %F
+diff --git a/src/data/kleopatra_import.desktop b/src/data/kleopatra_import.desktop
+index 2b886b24..8a99c81d 100644
+--- a/src/data/kleopatra_import.desktop
++++ b/src/data/kleopatra_import.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+ Icon=kleopatra
+-Exec=kleopatra --import-certificate %F
++Exec=kleopatra --import-certificate -- %F
+ MimeType=application/pkcs7-mime;application/x-x509-ca-cert;application/x-pkcs12;application/pgp-keys;
+ Categories=Qt;KDE;Utility;X-KDE-Utilities-PIM;
+ 
+diff --git a/src/data/kleopatra_signencryptfiles.desktop b/src/data/kleopatra_signencryptfiles.desktop
+index d3ea5f98..8656bccb 100644
+--- a/src/data/kleopatra_signencryptfiles.desktop
++++ b/src/data/kleopatra_signencryptfiles.desktop
+@@ -103,7 +103,7 @@ Name[x-test]=xxSign & Encrypt Filexx
+ Name[zh_CN]=签名并加密文件
+ Name[zh_TW]=簽署並加密檔案
+ Icon=kleopatra
+-Exec=kleopatra --encrypt-sign %F
++Exec=kleopatra --encrypt-sign -- %F
+ 
+ [Desktop Action kleoencryptfiles]
+ Name=Encrypt File
+@@ -159,7 +159,7 @@ Name[x-test]=xxEncrypt Filexx
+ Name[zh_CN]=加密文件
+ Name[zh_TW]=加密檔案
+ Icon=kleopatra
+-Exec=kleopatra --encrypt %F
++Exec=kleopatra --encrypt -- %F
+ 
+ [Desktop Action kleosignfilesopenpgp]
+ Name=OpenPGP-Sign File
+@@ -211,7 +211,7 @@ Name[x-test]=xxOpenPGP-Sign Filexx
+ Name[zh_CN]=OpenPGP 签名文件
+ Name[zh_TW]=OpenPGP─簽署檔案
+ Icon=kleopatra
+-Exec=kleopatra --openpgp --sign %F
++Exec=kleopatra --openpgp --sign -- %F
+ 
+ [Desktop Action kleosignfilescms]
+ Name=S/MIME-Sign File
+@@ -263,5 +263,5 @@ Name[x-test]=xxS/MIME-Sign Filexx
+ Name[zh_CN]=S/MIME 签名文件
+ Name[zh_TW]=S/MIME─簽署檔案
+ Icon=kleopatra
+-Exec=kleopatra --cms --sign %F
++Exec=kleopatra --cms --sign -- %F
+ 
+diff --git a/src/data/kleopatra_signencryptfolders.desktop b/src/data/kleopatra_signencryptfolders.desktop
+index 5ef802ce..b9146d5a 100644
+--- a/src/data/kleopatra_signencryptfolders.desktop
++++ b/src/data/kleopatra_signencryptfolders.desktop
+@@ -100,7 +100,7 @@ Name[x-test]=xxArchive, Sign && Encrypt Folderxx
+ Name[zh_CN]=归档、签名并加密文件夹
+ Name[zh_TW]=歸檔，簽署與加密資料夾
+ Icon=kleopatra
+-Exec=kleopatra --encrypt-sign %F
++Exec=kleopatra --encrypt-sign -- %F
+ 
+ [Desktop Action kleoencryptfolder]
+ Name=Archive && Encrypt Folder
+@@ -151,4 +151,4 @@ Name[x-test]=xxArchive && Encrypt Folderxx
+ Name[zh_CN]=归档并加密文件夹
+ Name[zh_TW]=歸檔並加密資料夾
+ Icon=kleopatra
+-Exec=kleopatra --encrypt %F
++Exec=kleopatra --encrypt -- %F
+-- 
+GitLab
+
