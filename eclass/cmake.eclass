@@ -147,6 +147,22 @@ _cmake_check_build_dir() {
 	einfo "Working in BUILD_DIR: \"$BUILD_DIR\""
 }
 
+# @FUNCTION: cmake_run_in
+# @USAGE: <working dir> <run command>
+# @DESCRIPTION:
+# Set the desired working dir for a function or command.
+cmake_run_in() {
+	if [[ -z ${2} ]]; then
+		die "${FUNCNAME[0]} must be passed at least two arguments"
+	fi
+
+	[[ -e ${1} ]] || die "${FUNCNAME[0]}: Nonexistent path: ${1}"
+
+	pushd ${1} > /dev/null || die
+		"${@:2}"
+	popd > /dev/null || die
+}
+
 # @FUNCTION: cmake_comment_add_subdirectory
 # @USAGE: <subdirectory>
 # @DESCRIPTION:
