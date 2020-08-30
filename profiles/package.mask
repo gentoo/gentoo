@@ -58,6 +58,7 @@ net-irc/ptlink-ircd
 net-irc/ptlink-opm
 net-irc/irc-server
 net-irc/xaric
+net-irc/nebula
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-29)
 # EAPI=4, use dev-embedded/libftd[tools] instead
