@@ -15,7 +15,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
-IUSE="gmp gnutls ipv6 socks5 ssl"
+IUSE="gmp gnutls ipv6 ssl"
 REQUIRED_USE="gnutls? ( ssl )"
 
 BDEPEND="virtual/pkgconfig"
@@ -49,7 +49,6 @@ src_configure() {
 	tc-export CC #397441, ancient autoconf
 	econf \
 		--with-default-server="irc.gentoo.org" \
-		$(use_with socks5) \
 		$(use_enable ipv6) \
 		--enable-regexp \
 		$(use_enable gmp fish) \
