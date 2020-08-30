@@ -13,7 +13,7 @@ plugins? ( https://github.com/${PN}/${PN}-plugins/archive/$(ver_cut 1-2).tar.gz 
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux"
 IUSE="+jpeg +opencv plugins raw +tiff zip"
 
 REQUIRED_USE="
