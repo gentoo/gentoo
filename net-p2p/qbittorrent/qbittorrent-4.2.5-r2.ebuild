@@ -27,9 +27,8 @@ RDEPEND="
 	>=dev-libs/boost-1.62.0-r1:=
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5[ssl]
-	>=dev-qt/qtsingleapplication-2.6.1_p20130904-r1[qt5(+),X?]
 	dev-qt/qtxml:5
-	<net-libs/libtorrent-rasterbar-1.2.9:0=
+	>=net-libs/libtorrent-rasterbar-1.2.0:0=
 	sys-libs/zlib
 	dbus? ( dev-qt/qtdbus:5 )
 	X? (
