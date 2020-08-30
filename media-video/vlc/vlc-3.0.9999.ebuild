@@ -29,16 +29,15 @@ HOMEPAGE="https://www.videolan.org/vlc/"
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5-9" # vlc - vlccore
 
-IUSE="a52 alsa aom archive aribsub bidi bluray cddb chromaprint chromecast
-	dav1d dbus dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac
-	fluidsynth fontconfig +gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate
-	libass libcaca libnotify +libsamplerate libtar libtiger linsys lirc
-	live lua macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses
-	nfs ogg omxil optimisememory opus png projectm pulseaudio +qt5 rdp
-	run-as-root samba sdl-image sftp shout sid skins soxr speex srt ssl svg taglib
-	theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vorbis vpx wayland +X
-	x264 x265 xml zeroconf zvbi cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_mmx
-	cpu_flags_x86_sse
+IUSE="a52 alsa aom archive aribsub bidi bluray cddb chromaprint chromecast dav1d dbus
+	dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth
+	fontconfig +gcrypt gme gnome-keyring gstreamer +gui ieee1394 jack jpeg kate
+	libass libcaca libnotify +libsamplerate libtar libtiger linsys lirc live lua
+	macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses nfs ogg
+	omxil optimisememory opus png projectm pulseaudio rdp run-as-root samba sdl-image
+	sftp shout sid skins soxr speex srt ssl svg taglib theora tremor truetype twolame
+	udev upnp vaapi v4l vdpau vnc vorbis vpx wayland +X x264 x265 xml zeroconf zvbi
+	cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse
 "
 REQUIRED_USE="
 	chromecast? ( encode )
@@ -47,7 +46,7 @@ REQUIRED_USE="
 	libcaca? ( X )
 	libtar? ( skins )
 	libtiger? ( kate )
-	skins? ( qt5 truetype X xml )
+	skins? ( gui truetype X xml )
 	ssl? ( gcrypt )
 	vaapi? ( ffmpeg X )
 	vdpau? ( ffmpeg X )
@@ -79,7 +78,7 @@ RDEPEND="
 	chromaprint? ( media-libs/chromaprint:= )
 	chromecast? (
 		>=dev-libs/protobuf-2.5.0:=
-		>=net-libs/libmicrodns-0.0.9:=
+		>=net-libs/libmicrodns-0.1.2:=
 	)
 	dav1d? ( media-libs/dav1d:= )
 	dbus? ( sys-apps/dbus )
@@ -109,6 +108,16 @@ RDEPEND="
 	gme? ( media-libs/game-music-emu )
 	gnome-keyring? ( app-crypt/libsecret )
 	gstreamer? ( >=media-libs/gst-plugins-base-1.4.5:1.0 )
+	gui? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtsvg:5
+		dev-qt/qtwidgets:5
+		X? (
+			dev-qt/qtx11extras:5
+			x11-libs/libX11
+		)
+	)
 	ieee1394? (
 		sys-libs/libavc1394
 		sys-libs/libraw1394
@@ -154,16 +163,6 @@ RDEPEND="
 		media-libs/libprojectm
 	)
 	pulseaudio? ( media-sound/pulseaudio )
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtsvg:5
-		dev-qt/qtwidgets:5
-		X? (
-			dev-qt/qtx11extras:5
-			x11-libs/libX11
-		)
-	)
 	rdp? ( >=net-misc/freerdp-2.0.0_rc0:=[client(+)] )
 	samba? ( >=net-fs/samba-4.0.0:0[client,-debug(-)] )
 	sdl-image? ( media-libs/sdl-image )
@@ -227,7 +226,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch # build system
 	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch # bug 590164
 	"${FILESDIR}"/${PN}-3.0.6-fdk-aac-2.0.0.patch # bug 672290
-	"${FILESDIR}"/${PN}-3.0.8-qt-5.15.patch # TODO: upstream
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
@@ -321,6 +319,7 @@ src_configure() {
 		$(use_enable gme)
 		$(use_enable gnome-keyring secret)
 		$(use_enable gstreamer gst-decode)
+		$(use_enable gui qt)
 		$(use_enable ieee1394 dv1394)
 		$(use_enable jack)
 		$(use_enable jpeg)
@@ -353,7 +352,6 @@ src_configure() {
 		$(use_enable png)
 		$(use_enable projectm)
 		$(use_enable pulseaudio pulse)
-		$(use_enable qt5 qt)
 		$(use_enable rdp freerdp)
 		$(use_enable run-as-root)
 		$(use_enable samba smbclient)

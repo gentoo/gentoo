@@ -79,7 +79,7 @@ RDEPEND="
 	chromaprint? ( media-libs/chromaprint:= )
 	chromecast? (
 		>=dev-libs/protobuf-2.5.0:=
-		>=net-libs/libmicrodns-0.0.9:=
+		>=net-libs/libmicrodns-0.1.2:=
 	)
 	dav1d? ( media-libs/dav1d:= )
 	dbus? ( sys-apps/dbus )
@@ -227,7 +227,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch # build system
 	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch # bug 590164
 	"${FILESDIR}"/${PN}-3.0.6-fdk-aac-2.0.0.patch # bug 672290
-	"${FILESDIR}"/${PN}-3.0.8-qt-5.15.patch # TODO: upstream
+	"${FILESDIR}"/${PN}-3.0.8-qt-5.15.patch
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )

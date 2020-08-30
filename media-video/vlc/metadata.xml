@@ -6,7 +6,7 @@
 		<name>Gentoo Video project</name>
 	</maintainer>
 	<use>
-		<flag name="aom">Enable experimental support for AV1 codec</flag>
+		<flag name="aom">Enable AV1 encoding/decoding support using <pkg>media-libs/libaom</pkg></flag>
 		<flag name="archive">Enable support for libarchive stream extractor</flag>
 		<flag name="aribsub">Enable support for decoding ARIB STD-B24 subtitles</flag>
 		<flag name="bluray">Enable libbluray for Blu-ray disc support</flag>
@@ -30,6 +30,7 @@
 		<flag name="libtiger">Enable Ogg Kate subtitles rendering using libtiger</flag>
 		<flag name="linsys">Enable support for Linux Linear Systems Ltd. SDI and HD-SDI input cards</flag>
 		<flag name="live">Enable live555 streaming media support (client support for rtsp)</flag>
+		<flag name="loudness">Enable loudness normalisation according to the EBU R128 standard using <pkg>media-libs/libebur128</pkg></flag>
 		<flag name="lua">Enable Lua scripting support, needed for including support for Jamendo (online music platform) and similar things</flag>
 		<flag name="macosx-notifications">Enable Mac OS X notifications module (formerly growl)</flag>
 		<flag name="matroska">Enable matroska support using reference libraries (fallback on other existing matroska support if disabled, i.e., matroska enabled FFmpeg)</flag>
