@@ -53,9 +53,11 @@ www-apps/ampache
 # the only distro packaging them in many cases.
 # Unmaintained. Removal in 30 days.
 # bug 724940, bug 708408, bug 716264, bug 633346
+# bug 706898, bug 731188
 net-irc/ptlink-ircd
 net-irc/ptlink-opm
 net-irc/irc-server
+net-irc/xaric
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-29)
 # EAPI=4, use dev-embedded/libftd[tools] instead
