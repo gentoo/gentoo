@@ -126,7 +126,7 @@ pkg_setup() {
 	if has_version --host-root dev-java/openjdk:${SLOT}; then
 		export JAVA_HOME=${EPREFIX}/usr/$(get_libdir)/openjdk-${SLOT}
 		export JDK_HOME="${JAVA_HOME}"
-		export ANT_RESPECT_JAVA_HOME=ture
+		export ANT_RESPECT_JAVA_HOME=true
 
 	else
 		if [[ ${MERGE_TYPE} != "binary" ]]; then
@@ -136,7 +136,7 @@ pkg_setup() {
 			JDK_HOME=${EPREFIX}/opt/${JDK_HOME%-r*}
 			export JDK_HOME
 			export JAVA_HOME="${JDK_HOME}"
-			export ANT_RESPECT_JAVA_HOME=ture
+			export ANT_RESPECT_JAVA_HOME=true
 		fi
 	fi
 }
