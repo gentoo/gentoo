@@ -17,7 +17,7 @@ case ${PV} in
 	DEPEND="~media-tv/kodi-9999"
 	;;
 *)
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 	CODENAME="Matrix"
 	SRC_URI="https://github.com/xbmc/audioencoder.flac/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/audioencoder.flac-${PV}-${CODENAME}"
