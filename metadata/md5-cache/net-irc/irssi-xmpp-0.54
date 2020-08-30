@@ -1,3 +1,4 @@
+BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=compile install prepare
 DEPEND=net-irc/irssi net-libs/loudmouth
 DESCRIPTION=An irssi plugin providing Jabber/XMPP support
@@ -7,6 +8,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=net-irc/irssi net-libs/loudmouth
 SLOT=0
-SRC_URI=https://github.com/cdidier/irssi-xmpp/archive/v0.54.tar.gz -> irssi-xmpp-0.54.tar.gz
+SRC_URI=https://github.com/cdidier/irssi-xmpp/archive/v0.54.tar.gz -> irssi-xmpp-0.54.tar.gz https://dev.gentoo.org/~sam/distfiles/net-irc/irssi-xmpp/irssi-xmpp-0.54-musl-build.patch
 _eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=737bbda6384ba9c9787b990e88f99c58
+_md5_=54b3336d8d2bfb1be0c20191272dc4d1
