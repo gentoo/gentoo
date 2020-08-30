@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>whissi@gentoo.org</email>
+		<name>Thomas Deutschmann</name>
+	</maintainer>
+	<longdescription>
+		The advanced playback module for ZNC makes it possible for IRC clients
+		to avoid undesired repetitive buffer playback. IRC clients may request
+		the module to send a partial buffer playback starting from and ending
+		to a certain point of time. The detailed instructions are available
+		at https://wiki.znc.in/Playback.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/jpnurmi/znc-playback/issues</bugs-to>
+		<remote-id type="github">jpnurmi/znc-playback</remote-id>
+	</upstream>
+</pkgmetadata>
