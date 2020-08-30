@@ -134,7 +134,6 @@ RDEPEND="
 	libnotify? (
 		dev-libs/glib:2
 		x11-libs/gdk-pixbuf:2
-		x11-libs/gtk+:3
 		x11-libs/libnotify
 	)
 	libplacebo? ( media-libs/libplacebo )
