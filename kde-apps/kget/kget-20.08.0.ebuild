@@ -18,6 +18,8 @@ SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="bittorrent gpg kde mms sqlite"
 
+RESTRICT+=" test" # bug 739670
+
 RDEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
