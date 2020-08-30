@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202008-22">
+  <title>targetcli-fb: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in targetcli-fb, the worst
+    of which could result in privilege escalation.
+  </synopsis>
+  <product type="ebuild">targetcli-fb</product>
+  <announced>2020-08-30</announced>
+  <revised count="1">2020-08-30</revised>
+  <bug>736086</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-block/targetcli-fb" auto="yes" arch="*">
+      <unaffected range="ge">2.1.53</unaffected>
+      <vulnerable range="lt">2.1.53</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Tool for managing the Linux LIO kernel target.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in targetcli-fb. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All targetcli-fb users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-block/targetcli-fb-2.1.53"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-10699">CVE-2020-10699</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-13867">CVE-2020-13867</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-08-29T02:17:40Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-08-30T21:08:50Z">b-man</metadata>
+</glsa>
