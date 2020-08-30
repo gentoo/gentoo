@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-java/java-config-2.2.0-r3
 SLOT=0
 SRC_URI=http://protux.sourceforge.net/releases/protux-0.50.100.tar.gz
-_eclasses_=java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	16d46032afaca1d6d0621f82084880cb
+_eclasses_=java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	ec7a89849c84f93e9c6db27812923888
 _md5_=7826788f96e9c2656019d4540b64f965

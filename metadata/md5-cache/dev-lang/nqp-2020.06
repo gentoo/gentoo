@@ -12,5 +12,5 @@ REQUIRED_USE=|| ( java moar )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/perl6/nqp/releases/download/2020.06/nqp-2020.06.tar.gz
-_eclasses_=java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	16d46032afaca1d6d0621f82084880cb	multibuild	b2c915190b051f55a23b9354b9849847
+_eclasses_=java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	ec7a89849c84f93e9c6db27812923888	multibuild	b2c915190b051f55a23b9354b9849847
 _md5_=0f39f2e431fcbcbea9e075dbbfb1d31a

@@ -10,5 +10,5 @@ RDEPEND=acct-group/minecraft acct-user/minecraft app-misc/dtach || ( >=virtual/j
 RESTRICT=bindist mirror
 SLOT=0
 SRC_URI=https://launcher.mojang.com/v1/objects/c5f6fb23c3876461d46ec380421e42b289789530/server.jar -> minecraft-server-1.16.2.jar
-_eclasses_=java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	16d46032afaca1d6d0621f82084880cb	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_eclasses_=java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	ec7a89849c84f93e9c6db27812923888	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
 _md5_=f5ddcdcbd42d6d997fcbd12b4a2d5416
