@@ -14,7 +14,7 @@ LICENSE="LGPL-2+ CC-BY-2.0"
 SLOT="0"
 
 IUSE="rdp"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # FIXME: qemu probably needs to depend on spice[smartcard] directly with USE=spice
 # FIXME: Check over libvirt USE=libvirtd,qemu and the smartcard/usbredir requirements
