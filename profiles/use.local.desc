@@ -5971,18 +5971,8 @@ net-im/vacuum:urlprocessor - Allows other plugins to load data from custom types
 net-im/vacuum:vcard - Enable obtaining peer's personal contact information
 net-im/vacuum:xmppuriqueries - Allow other plugins to handle XMPP URI queries
 net-im/zoom:bundled-libjpeg-turbo - Use bundled libturbojpeg instead of media-libs/libjpeg-turbo
-net-irc/anope:chanstats - Channel Statistics
-net-irc/anope:cs-fantasy-stats - Enables the STATS and GSTATS commands
-net-irc/anope:cs-fantasy-top - Enables the (G)TOP and (G)TOP10 commands
-net-irc/anope:irc2sql - Stores channel statistics in a mysql database
 net-irc/anope:ldap - Build LDAP modules for e.g. opertypes
-net-irc/anope:ldap-auth - Authorize through LDAP
-net-irc/anope:ldap-oper - Dynamically ties users to Anope opertypes via LDAP
-net-irc/anope:posix - Add support for POSIX Compatible Regular Expressions
 net-irc/anope:sql - Build modules which require SQL
-net-irc/anope:sql-auth - Authorize through SQL
-net-irc/anope:sql-log - Additional log target in SQL
-net-irc/anope:sql-oper - Allows granting users services operator privileges from SQL
 net-irc/anope:ssl - Provide SSL services using OpenSSL
 net-irc/anope:tre - Use dev-libs/tre for regular expressions
 net-irc/atheme-services:cracklib - Enable nickserv/cracklib module for enforcing strong account passwords
