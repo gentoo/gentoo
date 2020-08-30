@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202008-23">
+  <title>chrony: Symlink vulnerability</title>
+  <synopsis>A vulnerability in chrony may allow a privileged attacker to cause
+    data loss via a symlink.
+  </synopsis>
+  <product type="ebuild">chrony</product>
+  <announced>2020-08-30</announced>
+  <revised count="1">2020-08-30</revised>
+  <bug>738154</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-misc/chrony" auto="yes" arch="*">
+      <unaffected range="ge">3.5.1</unaffected>
+      <vulnerable range="lt">3.5.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>chrony is a versatile implementation of the Network Time Protocol (NTP).</p>
+  </background>
+  <description>
+    <p>It was found that chrony did not check whether its PID file was a
+      symlink.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could perform symlink attack(s) to overwrite arbitrary
+      files with root privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All chrony users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/chrony-3.5.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14367">CVE-2020-14367</uri>
+    <uri link="https://listengine.tuxfamily.org/chrony.tuxfamily.org/chrony-announce/2020/08/msg00000.html">
+      chrony-3.5.1 release announcement
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-08-25T23:32:37Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-08-30T21:09:20Z">sam_c</metadata>
+</glsa>

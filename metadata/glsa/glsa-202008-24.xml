@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202008-24">
+  <title>OpenJDK: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenJDK, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">openjdk</product>
+  <announced>2020-08-30</announced>
+  <revised count="1">2020-08-30</revised>
+  <bug>732624</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/openjdk" auto="yes" arch="*">
+      <unaffected range="ge" slot="8">8.262_p01</unaffected>
+      <vulnerable range="lt" slot="8">8.262_p01</vulnerable>
+    </package>
+    <package name="dev-java/openjdk-bin" auto="yes" arch="*">
+      <unaffected range="ge" slot="8">8.262_p01</unaffected>
+      <vulnerable range="lt" slot="8">8.262_p01</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenJDK is a free and open-source implementation of the Java Platform,
+      Standard Edition.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenJDK. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenJDK users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-java/openjdk-8.262_p01"
+    </code>
+    
+    <p>All OpenJDK binary users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-java/openjdk-bin-8.262_p01"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14556">CVE-2020-14556</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14562">CVE-2020-14562</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14573">CVE-2020-14573</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14578">CVE-2020-14578</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14579">CVE-2020-14579</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14583">CVE-2020-14583</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14593">CVE-2020-14593</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14621">CVE-2020-14621</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-08-26T14:46:09Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-08-30T21:12:11Z">sam_c</metadata>
+</glsa>
