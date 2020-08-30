@@ -25,6 +25,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # TODO Add Sage Mathematics Software backend (http://www.sagemath.org)
 DEPEND="
+	app-text/poppler[qt5]
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtprintsupport-${QTMIN}:5
 	>=dev-qt/qtsvg-${QTMIN}:5
