@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
@@ -19,7 +19,13 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="dev-python/QtPy[gui,testlib,${PYTHON_USEDEP}]"
 
-PATCHES=( "${FILESDIR}/${P}-skip-show-window-test.patch" )
+# Patch 1 skips a test that does not work inside the emerge environment:
+# pytestqt.exceptions.TimeoutError: widget <PyQt5.QtWidgets.QWidget object at 0x7f57d8527af8> not activated in 1000 ms.
+# Patch 2 fixes upstream bug 314
+PATCHES=(
+	"${FILESDIR}/${P}-skip-show-window-test.patch"
+	"${FILESDIR}/${P}-fix-file-match-test.patch"
+)
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
