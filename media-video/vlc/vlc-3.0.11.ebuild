@@ -79,7 +79,7 @@ RDEPEND="
 	chromaprint? ( media-libs/chromaprint:= )
 	chromecast? (
 		>=dev-libs/protobuf-2.5.0:=
-		>=net-libs/libmicrodns-0.0.9:=
+		>=net-libs/libmicrodns-0.1.2:=
 	)
 	dav1d? ( media-libs/dav1d:= )
 	dbus? ( sys-apps/dbus )
