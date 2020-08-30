@@ -12126,7 +12126,7 @@ kde-apps/kiten 20.04.3 20.08.0: KDE Japanese dictionary and reference
 kde-apps/kitinerary 20.04.3 20.08.0-r1: Data Model and Extraction System for Travel Reservation information
 kde-apps/kjumpingcube 20.04.3 20.08.0: Tactical one or two player game
 kde-apps/kldap 20.04.3 20.08.0: Library for interacting with LDAP servers
-kde-apps/kleopatra 20.04.3 20.04.3-r1 20.08.0: Certificate manager and GUI for OpenPGP and CMS cryptography
+kde-apps/kleopatra 20.04.3-r1 20.08.0: Certificate manager and GUI for OpenPGP and CMS cryptography
 kde-apps/klettres 20.04.3 20.08.0: Alphabet learning application
 kde-apps/klickety 20.04.3 20.08.0: An adaptation of the Clickomania game
 kde-apps/klines 20.04.3 20.08.0: A little KDE game about balls and how to get rid of them
