@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=net-irc/znc:=
+DESCRIPTION=A ZNC module which provides client specific buffers
+EAPI=7
+HOMEPAGE=https://github.com/CyberShadow/znc-clientbuffer
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=net-irc/znc:=
+SLOT=0
+SRC_URI=https://github.com/CyberShadow/znc-clientbuffer/archive/v1.0.48.tar.gz -> znc-clientbuffer-1.0.48.tar.gz
+_md5_=b03b85e14133f1dd03ab75cc839b4d07

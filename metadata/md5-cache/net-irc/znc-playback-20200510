@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DEPEND=net-irc/znc:=
+DESCRIPTION=A ZNC module to control buffer playback
+EAPI=7
+HOMEPAGE=https://github.com/jpnurmi/znc-playback
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=net-irc/znc:=
+SLOT=0
+SRC_URI=https://github.com/jpnurmi/znc-playback/archive/8dd128bfe2b24b2cc6a9ea2e2d28bfaa28d2a833.tar.gz -> znc-playback-20200510.tar.gz
+_md5_=f13c7179e6559e8b8e14f4c212898297

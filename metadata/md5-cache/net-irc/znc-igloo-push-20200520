@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DEPEND=net-irc/znc:=[ssl]
+DESCRIPTION=A ZNC module which provides push notifications for Igloo client
+EAPI=7
+HOMEPAGE=https://git.jordanko.ch/Igloo/Push
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=net-irc/znc:=[ssl]
+SLOT=0
+SRC_URI=https://git.jordanko.ch/Igloo/Push/archive/f952b87a1fc235917a28fbabbe8626719d622e4c.tar.gz -> znc-igloo-push-20200520.tar.gz
+_md5_=15f95517bd0d2a9140383a3b896d0eeb
