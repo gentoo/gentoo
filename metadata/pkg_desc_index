@@ -696,7 +696,7 @@ app-arch/lzma 9.20-r1 19.00: LZMA Stream Compressor from the SDK
 app-arch/lzop 1.04: Utility for fast (even real-time) compression/decompression
 app-arch/makeself 2.2.0-r2: shell script that generates a self-extractible tar.gz
 app-arch/mscompress 0.3-r1: Microsoft compress.exe/expand.exe compatible (de)compressor
-app-arch/mt-st 1.3 9999: control magnetic tape drive operation
+app-arch/mt-st 1.3 1.4 9999: control magnetic tape drive operation
 app-arch/ncompress 4.2.4.5 4.2.4.6: Classic compress & uncompress programs for .Z (LZW) files
 app-arch/p7zip 16.02-r4 16.02-r5 16.02-r6: Port of 7-Zip archiver for Unix
 app-arch/par2cmdline 0.7.3 0.7.4 0.8.0: A PAR-2.0 file verification and repair tool
@@ -14596,7 +14596,7 @@ net-dns/nsd 4.2.4 4.3.1 4.3.2: An authoritative only, high performance, open sou
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.9.0 3.9.2 3.10.0: A framework for managing DNS information
-net-dns/pdns 4.1.13 4.2.0 4.2.1 4.2.1-r1 4.2.2 4.3.0: The PowerDNS Daemon
+net-dns/pdns 4.3.0: The PowerDNS Daemon
 net-dns/pdns-recursor 4.3.2 4.3.3: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1 1.2.9a-r2: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998b-r2: DNS server designed to serve blacklist zones
@@ -15464,7 +15464,7 @@ net-p2p/mldonkey 3.1.5-r1 3.1.6 3.1.6-r1: Multi-network P2P application written 
 net-p2p/ncdc 1.20 1.21 9999: ncurses directconnect client
 net-p2p/nicotine+ 2.0.1-r1: A fork of nicotine, a Soulseek client in Python
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
-net-p2p/qbittorrent 4.2.1 4.2.3 4.2.5 9999: BitTorrent client in C++ and Qt
+net-p2p/qbittorrent 4.2.1 4.2.3 4.2.5-r1 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
 net-p2p/retroshare 0.6.5: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
