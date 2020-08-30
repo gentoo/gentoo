@@ -1,5 +1,5 @@
---- pbm2png.c.orig	2003-09-16 20:12:55.000000000 +0900
-+++ pbm2png.c	2004-02-21 22:09:57.415786664 +0900
+--- a/pbm2png.c
++++ b/pbm2png.c
 @@ -145,15 +145,13 @@
   sprintf(string,"%s%d.html",basename,index);
   f=fopen(string,"w");
