@@ -1,0 +1,32 @@
+https://git.alpinelinux.org/aports/plain/main/sic/musl-fix.patch?id=4b6138a5f4f5cd11d49d7f96e13da661fd37655e
+https://bugs.gentoo.org/712732
+----
+From d8e9e4a013196b98576a3a759b4b27c3edb2a0d2 Mon Sep 17 00:00:00 2001
+From: Natanael Copa <ncopa@alpinelinux.org>
+Date: Tue, 4 Feb 2014 10:06:53 +0000
+Subject: [PATCH] build fix for musl libc
+
+It fixes the following compile error with musl libc:
+sic.c:137:17: error: storage size of 'tv' isn't known
+  struct timeval tv;
+                 ^
+---
+ sic.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/sic.c b/sic.c
+index d93c2ec..e4bdb74 100644
+--- a/sic.c
++++ b/sic.c
+@@ -8,6 +8,8 @@
+ #include <time.h>
+ #include <unistd.h>
+ 
++#include <sys/time.h>
++
+ static char *host = "irc.oftc.net";
+ static char *port = "6667";
+ static char *password;
+-- 
+1.8.5.3
+
