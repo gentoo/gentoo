@@ -489,6 +489,10 @@ cmake_src_configure() {
 		SET (BUILD_SHARED_LIBS ON CACHE BOOL "")
 	_EOF_
 
+	if [[ -n ${_ECM_ECLASS} ]]; then
+		echo 'SET (ECM_DISABLE_QMLPLUGINDUMP ON CACHE BOOL "")' >> "${common_config}" || die
+	fi
+
 	# See bug 689410
 	if [[ "${ARCH}" == riscv ]]; then
 		echo 'SET (CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX '"${libdir#lib}"' CACHE STRING "library search suffix" FORCE)' >> "${common_config}" || die
