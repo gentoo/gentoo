@@ -1,3 +1,6 @@
+Drop unnecessary include path to workaround possible ldd bug
+https://bugs.gentoo.org/731168
+----
 diff --git a/config.mk b/config.mk
 index 5d42b38..61d085a 100644
 --- a/config.mk
