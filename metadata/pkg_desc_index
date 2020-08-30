@@ -12452,7 +12452,7 @@ mail-client/mutt 1.14.4-r1 1.14.5: A small but very powerful text-based mail cli
 mail-client/mutt-wizard 0_pre20200808 9999: A system for automatically configuring neomutt and isync
 mail-client/neomutt 20200626 20200626-r1 20200821 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
-mail-client/roundcube 1.4.6 1.4.7 1.4.8: A browser-based multilingual IMAP client with an application-like user interface
+mail-client/roundcube 1.4.8: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.16 14.9.19: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.7.0-r1: A lightweight email client and newsreader
 mail-client/thunderbird 68.12.0: Thunderbird Mail Client
@@ -17267,7 +17267,7 @@ sys-block/smp_utils 0.99: Utilities for SAS management protocol (SMP)
 sys-block/spindown 0.4.0-r5: Spindown is a daemon that can spin down idle disks
 sys-block/storcli 1.19.04 1.20.15 1.21.06 1.23.02 7.0504 7.0606 7.0709-r1 7.1017 7.1211 7.1316 7.1410: MegaRAID StorCLI (successor of the MegaCLI)
 sys-block/tapecat 1.0.0-r1: tapecat is a tape utility used to describe the physical content of a tape
-sys-block/targetcli-fb 2.1.49 2.1.51 2.1.53: Command shell for managing Linux LIO kernel target
+sys-block/targetcli-fb 2.1.49 2.1.53: Command shell for managing Linux LIO kernel target
 sys-block/tgt 1.0.78 1.0.79: Linux SCSI target framework (tgt)
 sys-block/thin-provisioning-tools 0.7.0 0.7.6 0.8.5 0.9.0 9999: A suite of tools for thin provisioning on Linux
 sys-block/tw_cli 10.2.2.1 10.2.2.1-r1: 3ware SATA/PATA/SAS RAID controller Command Line Interface tool
