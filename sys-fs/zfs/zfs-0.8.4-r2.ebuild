@@ -201,14 +201,19 @@ pkg_postinst() {
 		update_moduledb
 	fi
 
-	[[ -e "${EROOT}/etc/runlevels/boot/zfs-import" ]] || \
-		einfo "You should add zfs-import to the boot runlevel."
-	[[ -e "${EROOT}/etc/runlevels/boot/zfs-mount" ]]|| \
-		einfo "You should add zfs-mount to the boot runlevel."
-	[[ -e "${EROOT}/etc/runlevels/default/zfs-share" ]] || \
-		einfo "You should add zfs-share to the default runlevel."
-	[[ -e "${EROOT}/etc/runlevels/default/zfs-zed" ]] || \
-		einfo "You should add zfs-zed to the default runlevel."
+	if systemd_is_booted || has_version sys-apps/systemd; then
+		einfo "Please refer to ${EROOT}/lib/systemd/system-preset/50-zfs.preset"
+		einfo "for default zfs systemd service configuration"
+	else
+		[[ -e "${EROOT}/etc/runlevels/boot/zfs-import" ]] || \
+			einfo "You should add zfs-import to the boot runlevel."
+		[[ -e "${EROOT}/etc/runlevels/boot/zfs-mount" ]]|| \
+			einfo "You should add zfs-mount to the boot runlevel."
+		[[ -e "${EROOT}/etc/runlevels/default/zfs-share" ]] || \
+			einfo "You should add zfs-share to the default runlevel."
+		[[ -e "${EROOT}/etc/runlevels/default/zfs-zed" ]] || \
+			einfo "You should add zfs-zed to the default runlevel."
+	fi
 }
 
 pkg_postrm() {
