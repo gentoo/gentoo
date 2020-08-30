@@ -2725,7 +2725,7 @@ app-portage/grs 0.7 9999: Suite to build Gentoo Reference Systems
 app-portage/gs-elpa 0.1.3-r1: g-sorcery backend for elisp packages
 app-portage/gverify 2: gentoo.git signature verification tool
 app-portage/hackport 0.6.3 0.6.6 9999: Hackage and Portage integration tool
-app-portage/java-ebuilder 0.4.1 9999: Java team tool for semi-automatic creation of ebuilds from pom.xml
+app-portage/java-ebuilder 0.5.1 9999: Java team tool for semi-automatic creation of ebuilds from pom.xml
 app-portage/kuroo 0.90.5_p20180410 9999: Graphical Portage frontend based on KDE Frameworks
 app-portage/layman 2.4.3 9999: Tool to manage Gentoo overlays
 app-portage/metagen 0.7.2 9999: metadata.xml generator for ebuilds
