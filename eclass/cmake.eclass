@@ -169,16 +169,17 @@ cmake_run_in() {
 # Comment out one or more add_subdirectory calls in CMakeLists.txt in the current directory
 cmake_comment_add_subdirectory() {
 	if [[ -z ${1} ]]; then
-		die "comment_add_subdirectory must be passed at least one directory name to comment"
+		die "${FUNCNAME[0]} must be passed at least one directory name to comment"
 	fi
 
-	if [[ -e "CMakeLists.txt" ]]; then
-		local d
-		for d in $@; do
-			sed -e "/add_subdirectory[[:space:]]*([[:space:]]*${d//\//\\/}[[:space:]]*)/I s/^/#DONOTCOMPILE /" \
-				-i CMakeLists.txt || die "failed to comment add_subdirectory(${d})"
-		done
-	fi
+	[[ -e "CMakeLists.txt" ]] || return
+
+	local d
+	for d in $@; do
+		d=${d//\//\\/}
+		sed -e "/add_subdirectory[[:space:]]*([[:space:]]*${d}[[:space:]]*)/I s/^/#DONOTCOMPILE /" \
+			-i CMakeLists.txt || die "failed to comment add_subdirectory(${d})"
+	done
 }
 
 # @FUNCTION: comment_add_subdirectory
