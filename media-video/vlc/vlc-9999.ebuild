@@ -32,8 +32,8 @@ SLOT="0/12-9" # vlc - vlccore
 IUSE="a52 alsa aom archive aribsub bidi bluray cddb chromaprint chromecast dav1d dbus
 	dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth
 	fontconfig +gcrypt gme gnome-keyring gstreamer +gui ieee1394 jack jpeg kate kms
-	libass libcaca libnotify libplacebo +libsamplerate libtar libtiger linsys lirc
-	live lua macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses
+	libass libcaca libnotify libplacebo +libsamplerate libtar libtiger linsys lirc live
+	loudness lua macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses
 	nfs ogg omxil optimisememory opus png projectm pulseaudio rdp run-as-root samba
 	sdl-image sftp shout sid skins soxr speex srt ssl svg taglib theora tremor truetype
 	twolame udev upnp vaapi v4l vdpau vnc vorbis vpx wayland +X x264 x265 xml zeroconf
@@ -144,6 +144,7 @@ RDEPEND="
 	linsys? ( media-libs/zvbi )
 	lirc? ( app-misc/lirc )
 	live? ( media-plugins/live:= )
+	loudness? ( >=media-libs/libebur128-1.2.4:= )
 	lua? ( >=dev-lang/lua-5.1:0= )
 	mad? ( media-libs/libmad )
 	matroska? (
@@ -337,6 +338,7 @@ src_configure() {
 		$(use_enable linsys)
 		$(use_enable lirc)
 		$(use_enable live live555)
+		$(use_enable loudness ebur128)
 		$(use_enable lua)
 		$(use_enable macosx-notifications osx-notifications)
 		$(use_enable mad)
