@@ -9,7 +9,7 @@ HOMEPAGE="https://datatipp.se/mboxgrep/"
 
 SLOT="0"
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE="dmalloc"
 
 RDEPEND="
