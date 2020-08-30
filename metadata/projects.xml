@@ -820,6 +820,11 @@
     <name>Distribution Kernel</name>
     <url>https://wiki.gentoo.org/wiki/Project:Distribution_Kernel</url>
     <description>Dist-kernel project maintains packages providing for zero-effort kernel install and upgrades</description>
+    <member>
+      <email>gyakovlev@gentoo.org</email>
+      <name>Georgy Yakovlev</name>
+      <role>ppc64 maintenance, testing</role>
+    </member>
     <member is-lead="1">
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
