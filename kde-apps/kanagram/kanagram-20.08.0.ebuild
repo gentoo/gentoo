@@ -42,6 +42,11 @@ RDEPEND="${DEPEND}
 	>=kde-apps/kdeedu-data-${PVCUT}:5
 "
 
+src_prepare() {
+	ecm_src_prepare
+	ecm_punt_bogus_dep Qt5 OpenGL
+}
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package speech Qt5TextToSpeech)
