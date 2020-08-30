@@ -395,7 +395,6 @@ src_configure() {
 		--disable-asdcp
 		--disable-coverage
 		--disable-cprof
-		--disable-crystalhd
 		--disable-decklink
 		--disable-gles2
 		--disable-goom
