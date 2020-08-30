@@ -22,7 +22,7 @@ if [[ ${PV} == *9999 ]]
 		EGIT_REPO_URI="https://github.com/retext-project/retext.git"
 	else
 		SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
-		KEYWORDS="amd64 ~x86"
+		KEYWORDS="amd64 x86"
 		S="${WORKDIR}"/${MY_P}
 fi
 

@@ -15,7 +15,7 @@ SRC_URI="mirror://apache/${MY_P}/${MY_PN}/${MY_PN}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 RESTRICT="mirror binchecks"
 IUSE=""
 
