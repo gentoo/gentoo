@@ -9,4 +9,5 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>
