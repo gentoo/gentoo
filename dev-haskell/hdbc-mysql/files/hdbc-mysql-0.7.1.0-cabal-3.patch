@@ -1,0 +1,11 @@
+--- a/Setup.lhs
++++ b/Setup.lhs
+@@ -35,7 +35,7 @@ mysqlConfigProgram = (simpleProgram "mysql_config") {
+ 
+ mysqlBuildInfo :: LocalBuildInfo -> IO BuildInfo
+ mysqlBuildInfo lbi = do
+-  let mysqlConfig = rawSystemProgramStdoutConf verbosity mysqlConfigProgram (withPrograms lbi)
++  let mysqlConfig = getDbProgramOutput verbosity mysqlConfigProgram (withPrograms lbi)
+       ws = " \n\r\t"
+ 
+   includeDirs <- return . map (drop 2) . split ws =<< mysqlConfig ["--include"]
