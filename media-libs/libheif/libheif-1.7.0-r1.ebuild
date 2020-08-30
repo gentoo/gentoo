@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools xdg-utils multilib-minimal
+inherit autotools xdg multilib-minimal
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/strukturag/${PN}.git"
@@ -17,7 +17,7 @@ DESCRIPTION="ISO/IEC 23008-12:2017 HEIF file format decoder and encoder"
 HOMEPAGE="https://github.com/strukturag/libheif"
 
 LICENSE="GPL-3"
-SLOT="0/1.6"
+SLOT="0/1.7"
 IUSE="gdk-pixbuf go static-libs test +threads"
 RESTRICT="!test? ( test )"
 
@@ -59,12 +59,4 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	find "${ED}" -name '*.la' -delete || die
-}
-
-pkg_postinst() {
-	xdg_mimeinfo_database_update
-}
-
-pkg_postrm() {
-	xdg_mimeinfo_database_update
 }
