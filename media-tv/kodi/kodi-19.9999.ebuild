@@ -92,7 +92,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=media-libs/fontconfig-2.13.1
 	>=media-libs/freetype-2.10.1
 	>=media-libs/libass-0.13.4
-	!raspberry-pi? ( media-libs/mesa[egl,X(+)] )
+	!raspberry-pi? ( media-libs/mesa[egl] )
 	>=media-libs/taglib-1.11.1
 	system-ffmpeg? (
 		>=media-video/ffmpeg-${FFMPEG_VERSION}:=[dav1d,encode,postproc]
@@ -134,6 +134,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	webserver? ( >=net-libs/libmicrohttpd-0.9.55[messages(+)] )
 	X? (
+		media-libs/mesa[X]
 		x11-libs/libX11
 		x11-libs/libXrandr
 		x11-libs/libXrender
