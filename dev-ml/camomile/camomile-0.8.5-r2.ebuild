@@ -11,7 +11,7 @@ SRC_URI="https://github.com/yoriyuki/Camomile/releases/download/rel-${PV}/${P}.t
 
 LICENSE="LGPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE="debug +ocamlopt"
 
 PATCHES=( "${FILESDIR}"/ocaml-unsafe-string.patch )
