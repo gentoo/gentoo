@@ -31,6 +31,10 @@ ruby_add_rdepend "
 	|| ( dev-ruby/mini_magick dev-ruby/rmagick )
 "
 
+# Two of the tests require png/jpeg support in "magick identify",
+# see bug 738784.
+BDEPEND+=" test? ( virtual/imagemagick-tools[jpeg,png] )"
+
 all_ruby_prepare() {
 	default
 
