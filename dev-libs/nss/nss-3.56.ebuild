@@ -163,6 +163,12 @@ multilib_src_compile() {
 	export ASFLAGS=""
 	# Fix build failure on arm64
 	export NS_USE_GCC=1
+	# Detect compiler type and set proper environment value
+	if tc-is-gcc; then
+		export CC_IS_GCC=1
+	elif tc-is-clang; then
+		export CC_IS_CLANG=1
+	fi
 
 	local d
 
