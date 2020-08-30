@@ -135,6 +135,7 @@ acct-group/openntpd 0: System group: openntpd
 acct-group/openrct2 0: A group for the OpenRCT2 dedicated server
 acct-group/openvpn 0: System group: openvpn
 acct-group/openvpn_exporter 0: System group: openvpn_exporter
+acct-group/oprofile 0: A group for dev-util/oprofile JIT code processing
 acct-group/ossec 0: Group for net-analyzer/ossec-hids
 acct-group/pcscd 0: System group: pcscd
 acct-group/pdns 0: System group: pdns
@@ -347,6 +348,7 @@ acct-user/openntpd 0: user for openntpd daemon
 acct-user/openrct2 0: A user for the OpenRCT2 dedicated server
 acct-user/openvpn 0: User for net-vpn/openvpn
 acct-user/openvpn_exporter 0: user for openvpn_exporter
+acct-user/oprofile 0: A user for dev-util/oprofile JIT code processing
 acct-user/ossec 0: net-analyzer/ossec-hids (agentlessd, analysisd, monitord)
 acct-user/ossecm 0: net-analyzer/ossec-hids (csyslogd, maild)
 acct-user/ossecr 0: net-analyzer/ossec-hids (remoted)
@@ -2455,7 +2457,7 @@ app-misc/joymouse 0.5 0.5-r1: An application that translates joystick events to 
 app-misc/jq 1.6-r3: A lightweight and flexible command-line JSON processor
 app-misc/kanatest 0.4.8: Visual flashcard tool for memorizing the Japanese Hiragana and Katakana alphabet
 app-misc/khal 0.10.1-r1: A CalDAV based calendar
-app-misc/khard 0.13.0: Console CardDAV client
+app-misc/khard 0.13.0 0.17.0: Console CardDAV client
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
 app-misc/kryoflux-dtc 2.6 2.6-r1: KryoFlux Host Software
 app-misc/ktoblzcheck 1.49-r1 1.49-r2: Library to check account numbers and bank codes of German banks
@@ -6492,7 +6494,7 @@ dev-perl/File-Flock 2014.10.0 2014.10.0-r1: flock() wrapper. Auto-create locks
 dev-perl/File-Grep 0.20.0-r2: Find matches to a pattern in a series of files and related functions
 dev-perl/File-HomeDir 1.2.0 1.4.0: Get home directory for self or other user
 dev-perl/File-KeePass 2.30.0-r1: Interface to KeePass V1 and V2 database files
-dev-perl/File-LibMagic 1.150.0 1.220.0 1.220.0-r1: Perl wrapper for libmagic
+dev-perl/File-LibMagic 1.150.0 1.220.0 1.220.0-r1 1.230.0: Perl wrapper for libmagic
 dev-perl/File-Listing 6.40.0-r1 6.40.0-r2: Parse directory listings
 dev-perl/File-MMagic 1.300.0-r1 1.300.0-r2: The Perl Image-Info Module
 dev-perl/File-Map 0.640.0 0.670.0: Memory mapping made simple and safe
@@ -8923,7 +8925,7 @@ dev-python/python-memcached 1.59: Pure python memcached client
 dev-python/python-mimeparse 1.6.0-r1: Basic functions for handling mime-types in python
 dev-python/python-mistralclient 3.8.1: A client for the OpenStack Mistral API
 dev-python/python-monascaclient 1.15.0: A client for the OpenStack Monasca API
-dev-python/python-mpd 1.0.0 1.1.0: Python MPD client library
+dev-python/python-mpd 1.0.0-r1 1.1.0-r1: Python MPD client library
 dev-python/python-musicbrainz-ngs 0.7.1: Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices
 dev-python/python-nbxmpp 1.0.0 1.0.1: Python library to use Jabber/XMPP networks in a non-blocking way
 dev-python/python-netlink 0.1: Pure-Python client for the Linux NetLink interface
@@ -9266,7 +9268,7 @@ dev-python/virtualenv 16.7.10 20.0.31: Virtual Python Environment builder
 dev-python/virtualenv-clone 0.5.3: A script for cloning a non-relocatable virtualenv
 dev-python/virtualenvwrapper 4.8.4-r1: Set of extensions to Ian Bicking's virtualenv tool
 dev-python/visitor 0.1.3: A tiny pythonic visitor implementation
-dev-python/vobject 0.9.6.1-r1: Python package for parsing and generating vCard and vCalendar files
+dev-python/vobject 0.9.6.1-r1 0.9.6.1-r2: Python package for parsing and generating vCard and vCalendar files
 dev-python/voluptuous 0.11.5 0.11.7: A Python data validation library.
 dev-python/vpython 7.6.1-r1: VPython for Jupyter notebook
 dev-python/waitress 1.4.4: A pure-Python WSGI server
@@ -10846,7 +10848,7 @@ dev-util/objconv 2.51: object code file converted (COFF, ELF, OMF, MACHO)
 dev-util/omake 0.9.8.6.0_rc1 0.10.2 0.10.3: Make replacement
 dev-util/open-vcdiff 0.8.4-r1: An encoder/decoder for the VCDIFF (RFC3284) format
 dev-util/opencl-headers 2020.03.13-r1 2020.06.16: Unified C language headers for the OpenCL API
-dev-util/oprofile 1.3.0: A transparent low-overhead system-wide profiler
+dev-util/oprofile 1.3.0 1.4.0: A transparent low-overhead system-wide profiler
 dev-util/ostree 2018.9 2018.9-r1 2019.5: Operating system and container binary deployment and upgrades
 dev-util/packer 1.3.5 1.4.0 1.4.1 1.4.4 1.4.5: A tool to create identical machine images for multiple platforms
 dev-util/patchbin 20160208 99999999: Apply binary patches without git
@@ -14920,7 +14922,7 @@ net-libs/libssh2 1.9.0_p20190913 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 0.23 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 1.2.5 1.2.6: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ for *nix
-net-libs/libtorrent-rasterbar 1.1.14 1.2.6 1.2.7 1.2.8 1.2.9: C++ BitTorrent implementation focusing on efficiency and scalability
+net-libs/libtorrent-rasterbar 1.1.14 1.2.6 1.2.9: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libtrace 4.0.10_p1 4.0.11_p1 4.0.12_p1 4.0.13_p1 4.0.14_p1 99999: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.6.25 1.8.7 1.12.1 1.14.0: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.17.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
@@ -15464,7 +15466,7 @@ net-p2p/mldonkey 3.1.5-r1 3.1.6 3.1.6-r1: Multi-network P2P application written 
 net-p2p/ncdc 1.20 1.21 9999: ncurses directconnect client
 net-p2p/nicotine+ 2.0.1-r1: A fork of nicotine, a Soulseek client in Python
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
-net-p2p/qbittorrent 4.2.1 4.2.3 4.2.5-r1 9999: BitTorrent client in C++ and Qt
+net-p2p/qbittorrent 4.2.5-r2 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
 net-p2p/retroshare 0.6.5: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
