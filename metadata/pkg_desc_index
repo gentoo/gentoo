@@ -13812,7 +13812,7 @@ media-sound/gnome-sound-recorder 3.34.0: Simple sound recorder
 media-sound/gnump3d 3.0-r2: A streaming server for MP3, OGG vorbis and other streamable files
 media-sound/gogglesmm 1.2.1-r1: Fast and light music player
 media-sound/gom 0.29.103-r1: Console Mixer Program for OSS
-media-sound/gpodder 3.10.5-r1: A free cross-platform podcast aggregator
+media-sound/gpodder 3.10.5-r1 3.10.16: A free cross-platform podcast aggregator
 media-sound/gqradio 1.9.2: An FM radio tuner app from the people who brought you GQmpeg
 media-sound/gramofile 1.6_p9: Transfer sound from gramophone records to CD
 media-sound/grip 4.1.1 4.2.0: GTK+ based Audio CD Player/Ripper
