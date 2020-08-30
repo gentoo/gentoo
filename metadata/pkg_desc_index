@@ -1965,7 +1965,7 @@ app-emulation/simplevirt 0.0_p20181012-r1: Simple virtual machine manager for Li
 app-emulation/ski 1.3.2-r4: ia64 instruction set simulator
 app-emulation/skopeo 0.1.41 0.2.0 1.1.0 1.1.1: Command line utility foroperations on container images and image repositories
 app-emulation/slirp4netns 1.1.4: User-mode networking for unprivileged network namespaces
-app-emulation/softgun 0.21 0.22: ARM software emulator
+app-emulation/softgun 0.22: ARM software emulator
 app-emulation/spectemu 0.99.3-r1: 48k ZX Spectrum Emulator
 app-emulation/spice 0.14.3 9999: SPICE server
 app-emulation/spice-html5 0.2.1 0.2.2: Spice Javascript client
@@ -15628,7 +15628,7 @@ net-wireless/gr-ntsc-rc 9999: NTSC receiver and transmitter for 5 GHz drones
 net-wireless/gr-osmosdr 0.1.5-r1 0.2.0 9999: GNU Radio source block for OsmoSDR and rtlsdr and hackrf
 net-wireless/gr-paint 0.0_p20200418 0.0_p20200517 9999: Paints monochrome images into the waterfall of a receiver
 net-wireless/gr-ppm-wiegand 9999: GnuRadio PPM (Differential Pulse Position Modulation/Demodulation) plugin
-net-wireless/gr-rds 9999: GNU Radio FM RDS Receiver
+net-wireless/gr-rds 0.0_p20200807 9999: GNU Radio FM RDS Receiver
 net-wireless/gr-rftap 9999: RFtap Module for GNU Radio
 net-wireless/gr-scan 20160211: Frequency scanner for GNU Radio
 net-wireless/gr-specest 9999: A module adding spectral estimation routines to GNU Radio
