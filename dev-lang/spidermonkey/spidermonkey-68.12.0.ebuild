@@ -176,6 +176,13 @@ src_test() {
 	KNOWN_TESTFAILURES+=( non262/Date/toString-localized-posix.js )
 	KNOWN_TESTFAILURES+=( non262/Date/reset-time-zone-cache-same-offset.js )
 
+	if use x86 ; then
+		KNOWN_TESTFAILURES+=( test262/language/types/number/S8.5_A2.1.js )
+		KNOWN_TESTFAILURES+=( test262/language/types/number/S8.5_A2.2.js )
+		KNOWN_TESTFAILURES+=( test262/built-ins/Number/prototype/toPrecision/return-values.js )
+		KNOWN_TESTFAILURES+=( non262/Date/timeclip.js )
+	fi
+
 	echo "" > "${T}"/known_failures.list || die
 
 	local KNOWN_TESTFAILURE
