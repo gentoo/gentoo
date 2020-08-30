@@ -54,4 +54,7 @@ RDEPEND="${DEPEND}
 # tests completely broken, bug #641720
 RESTRICT+=" test"
 
-PATCHES=( "${FILESDIR}/${P}-CVE-2020-24972.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-CVE-2020-24972.patch"
+	"${FILESDIR}/${P}-exec-w-double-dash.patch"
+)
