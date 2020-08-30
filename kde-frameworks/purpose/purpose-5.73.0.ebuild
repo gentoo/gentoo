@@ -7,7 +7,7 @@ ECM_QTHELP="false"
 ECM_TEST="forceoptional"
 PVCUT=$(ver_cut 1-2)
 QTMIN=5.14.2
-inherit ecm kde.org
+inherit ecm kde.org xdg-utils
 
 DESCRIPTION="Library for providing abstractions to get the developer's purposes fulfilled"
 LICENSE="LGPL-2.1+"
@@ -48,11 +48,16 @@ src_configure() {
 	ecm_src_configure
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	ecm_pkg_postinst
+	xdg_icon_cache_update
 
 	if ! has_version "kde-misc/kdeconnect[app]" ; then
 		elog "Optional runtime dependency:"
 		elog "kde-misc/kdeconnect[app] (send through KDE Connect)"
 	fi
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
