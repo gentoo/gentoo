@@ -1,4 +1,4 @@
-# Copyright 2016-2019 Gentoo Authors
+# Copyright 2016-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,32 +27,18 @@ RDEPEND=">=virtual/jre-1.8
 S="${WORKDIR}/${P}"
 
 JAVA_SRC_DIR="src/main/java"
-JAVA_ADDRES_DIRS="src/main/resources"
+JAVA_RESOURCE_DIRS="src/main/resources"
 
-MAIN_CLASS="org.gentoo.java.ebuilder.Main"
+JAVA_LAUNCHER_FILENAME=${PN}
+JAVA_MAIN_CLASS="org.gentoo.java.ebuilder.Main"
 
 src_prepare() {
 	default
-
-	local base_dir="target/classes/"
-
-	[[ ! -d "${base_dir}" ]] &&mkdir -p "${base_dir}META-INF"
-	echo "Manifest-Version: 1.0
-Main-Class: ${MAIN_CLASS}" \
-		>> "${base_dir}META-INF/MANIFEST.MF"
-
-	hprefixify scripts/{{tree,meta}.sh,movl} java-ebuilder.conf
-}
-
-src_compile() {
-	java-pkg-simple_src_compile
-
-	jar uf ${JAVA_JAR_FILENAME} -C ${JAVA_ADDRES_DIRS} usage.txt || die "Failed to add resources"
+	hprefixify scripts/{bin/*,resources/Makefiles/*,movl} java-ebuilder.conf
 }
 
 src_install() {
 	java-pkg-simple_src_install
-	java-pkg_dolauncher ${PN} --main ${MAIN_CLASS}
 
 	insinto /var/lib/${PN}
 	doins -r maven
@@ -61,9 +47,10 @@ src_install() {
 
 	dodoc README maven.conf
 
-	exeinto /usr/lib/${PN}
-	doexe scripts/{tree,meta}.sh
-
+	exeinto /usr/lib/${PN}/bin
+	doexe scripts/bin/*
+	insinto /usr/lib/${PN}
+	doins -r scripts/resources/*
 	dobin scripts/movl
 
 	insinto /etc
