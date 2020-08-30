@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,6 +22,8 @@ SLOT="0"
 IUSE="anondel anonperm anonren anonres caps implicittls ldap libressl mysql noiplog pam paranoidmsg postgres resolveids selinux ssl sysquota vchroot xinetd"
 
 REQUIRED_USE="implicittls? ( ssl )"
+
+BDEPEND="sys-devel/autoconf-archive"
 
 DEPEND="caps? ( sys-libs/libcap )
 	ldap? ( >=net-nds/openldap-2.0.25 )

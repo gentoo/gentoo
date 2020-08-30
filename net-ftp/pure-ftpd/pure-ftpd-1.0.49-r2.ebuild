@@ -23,6 +23,8 @@ IUSE="anondel anonperm anonren anonres caps implicittls ldap libressl mysql noip
 
 REQUIRED_USE="implicittls? ( ssl )"
 
+BDEPEND="sys-devel/autoconf-archive"
+
 DEPEND="caps? ( sys-libs/libcap )
 	ldap? ( >=net-nds/openldap-2.0.25 )
 	mysql? ( || (
