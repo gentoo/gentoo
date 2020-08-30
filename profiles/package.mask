@@ -32,6 +32,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2020-08-30)
+# Collection of quite dead net-irc/* pkgs
+# Please speak up if you use any of these
+# and a modern alternative doesn't work for you.
+# None of these have alive upstreams, and we're
+# the only distro packaging them in many cases.
+# Unmaintained. Removal in 30 days.
+# bug 724940
+net-irc/ptlink-ircd
+net-irc/ptlink-opm
+
 # Aaron Bauman <bman@gentoo.org> (2020-08-29)
 # EAPI=4, latest release 4.3.19 in 2019.
 # Unmaintained. Removal in 30 days.
