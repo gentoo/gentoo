@@ -2658,7 +2658,7 @@ app-office/planner 0.14.6_p20130520-r2: Project manager for Gnome
 app-office/projectlibre-bin 1.6.2: An open source desktop alternative to Microsoft Project
 app-office/sc 7.16-r2: Spreadsheet Calculator
 app-office/scribus 1.5.5_p20200626 9999: Desktop publishing (DTP) and layout program
-app-office/skrooge 2.22.1 2.23.0: Personal finances manager, aiming at being simple and intuitive
+app-office/skrooge 2.23.0: Personal finances manager, aiming at being simple and intuitive
 app-office/texmacs 1.99.6-r2 1.99.9 1.99.10 1.99.11: Wysiwyg text processor with high-quality maths
 app-office/texmaker 5.0.3 5.0.4: A nice LaTeX-IDE
 app-office/texstudio 3.0.0_pre20200601 3.0.0 9999: Free cross-platform LaTeX editor (fork from texmakerX)
@@ -4007,7 +4007,7 @@ dev-haskell/file-location 0.4.9 0.4.9-r1 0.4.9.1: common functions that show fil
 dev-haskell/filelock 0.1.1.5: Portable interface to file locking (flock / LockFileEx)
 dev-haskell/filemanip 0.3.6.3: Expressive file and directory manipulation for Haskell
 dev-haskell/filepath-bytestring 1.4.2.1.6: Library for manipulating RawFilePaths in a cross platform way
-dev-haskell/filestore 0.6.1 0.6.2 0.6.3.4 0.6.4: Interface for versioning file stores
+dev-haskell/filestore 0.6.5: Interface for versioning file stores
 dev-haskell/findbin 0.0.5-r1: Locate directory of original program
 dev-haskell/fingertree 0.1.1.0 0.1.4.2: Generic finger-tree structure, with example instances
 dev-haskell/fixed 0.2.1.1: Signed 15.16 precision fixed point arithmetic
@@ -4344,7 +4344,7 @@ dev-haskell/readable 0.3.1: Reading from Text and ByteString
 dev-haskell/readargs 1.2.2 1.2.3: Simple command line argument parsing
 dev-haskell/readline 1.0.3.0 1.0.3.0-r1: An interface to the GNU readline library
 dev-haskell/rebase 1.4.1: A more progressive alternative to the 'base' package
-dev-haskell/recaptcha 0.1.0.3 0.1.0.4: Functions for using the reCAPTCHA service in web applications
+dev-haskell/recaptcha 0.1.0.4: Functions for using the reCAPTCHA service in web applications
 dev-haskell/reducers 3.10.3.2 3.12.1-r1 3.12.3: Semigroups, specialized containers and a general map/reduce framework
 dev-haskell/refact 0.3.0.2: Specify refactorings to perform with apply-refact
 dev-haskell/reflection 1.3.2 1.4 1.5.2.1 2.1.2 2.1.4: Reifies arbitrary terms into types that can be reflected back into terms
@@ -12024,7 +12024,7 @@ kde-apps/bomber 20.04.3 20.08.0: Single player arcade bombing game
 kde-apps/bovo 20.04.3 20.08.0: Five-in-a-row Board Game
 kde-apps/calendarjanitor 20.04.3 20.08.0: Tool to scan calendar data for buggy instances
 kde-apps/calendarsupport 20.04.3 20.08.0: Calendar support library
-kde-apps/cantor 20.04.3 20.08.0: Interface for doing mathematics and scientific computing
+kde-apps/cantor 20.04.3-r1 20.08.0: Interface for doing mathematics and scientific computing
 kde-apps/cervisia 20.04.3 20.08.0: CVS frontend by KDE
 kde-apps/dolphin 20.04.3 20.08.0: Plasma filemanager focusing on usability
 kde-apps/dolphin-plugins-dropbox 20.04.3 20.08.0: Dolphin plugin for Dropbox service integration
@@ -12122,7 +12122,7 @@ kde-apps/kiten 20.04.3 20.08.0: KDE Japanese dictionary and reference
 kde-apps/kitinerary 20.04.3 20.08.0-r1: Data Model and Extraction System for Travel Reservation information
 kde-apps/kjumpingcube 20.04.3 20.08.0: Tactical one or two player game
 kde-apps/kldap 20.04.3 20.08.0: Library for interacting with LDAP servers
-kde-apps/kleopatra 20.04.3 20.08.0: Certificate manager and GUI for OpenPGP and CMS cryptography
+kde-apps/kleopatra 20.04.3 20.04.3-r1 20.08.0: Certificate manager and GUI for OpenPGP and CMS cryptography
 kde-apps/klettres 20.04.3 20.08.0: Alphabet learning application
 kde-apps/klickety 20.04.3 20.08.0: An adaptation of the Clickomania game
 kde-apps/klines 20.04.3 20.08.0: A little KDE game about balls and how to get rid of them
@@ -12236,7 +12236,7 @@ kde-apps/svgpart 20.04.3 20.08.0: Kpart for viewing SVGs
 kde-apps/sweeper 20.04.3 20.08.0: Privacy settings widget to clean unwanted traces on the system
 kde-apps/thumbnailers 20.04.3 20.08.0: Thumbnail generators for PDF/PS and RAW files
 kde-apps/umbrello 20.04.3 20.08.0: KDE UML Modeller
-kde-apps/yakuake 20.04.3 20.04.3-r1 20.08.0: Quake-style terminal emulator based on konsole
+kde-apps/yakuake 20.04.3-r1 20.08.0: Quake-style terminal emulator based on konsole
 kde-apps/zeroconf-ioslave 20.04.3 20.08.0: DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
 kde-frameworks/attica 5.70.0 5.73.0: Framework providing access to Open Collaboration Services
 kde-frameworks/baloo 5.70.0 5.73.0: Framework for searching and managing metadata
@@ -12840,7 +12840,7 @@ media-gfx/gif2apng 1.9-r1: create an APNG from a GIF
 media-gfx/gif2png 2.5.9 2.5.12 2.5.14: Converts images from gif format to png format
 media-gfx/gifsicle 1.91 1.92: Create, manipulate, and optimize GIF images and animations
 media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
-media-gfx/gimp 2.10.14-r1 2.10.18-r1 2.10.18-r2 2.10.20-r1 9999: GNU Image Manipulation Program
+media-gfx/gimp 2.10.18-r1 2.10.18-r2 2.10.20-r1 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
 media-gfx/gmic 2.9.0 2.9.1: GREYC's Magic Image Converter
 media-gfx/gnofract4d 4.0.1_p1-r1: A program for drawing beautiful mathematically-based images known as fractals
@@ -13069,7 +13069,7 @@ media-libs/game-music-emu 0.6.2: Video game music file emulators
 media-libs/ganv 1.6.0 1.6.0-r1: A GTK+ widget for interactive graph-like environments
 media-libs/gavl 1.4.0-r1: library for handling uncompressed audio and video data
 media-libs/gd 2.3.0: Graphics library for fast image creation
-media-libs/gegl 0.4.18 0.4.18-r1 0.4.22 0.4.22-r1 0.4.24 9999: A graph based image processing framework
+media-libs/gegl 0.4.22 0.4.22-r1 0.4.24 9999: A graph based image processing framework
 media-libs/gexiv2 0.10.10-r1 0.12.0 0.12.0-r1 0.12.1 9999: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 5.2.1-r1: Library to handle, display and manipulate GIF images
@@ -13213,7 +13213,7 @@ media-libs/libmpeg3 1.8-r1: An mpeg library for linux
 media-libs/libmpris2client 0.1.0-r1: A library to control MPRIS2 compatible players
 media-libs/libmtp 1.1.16 1.1.17 9999: Implementation of Microsoft's Media Transfer Protocol (MTP)
 media-libs/libmygpo-qt 1.1.0 9999: Qt/C++ library wrapping the gpodder.net webservice
-media-libs/libmypaint 1.4.0 1.4.0-r1 1.6.1: Library for making brushstrokes
+media-libs/libmypaint 1.4.0-r1 1.6.1: Library for making brushstrokes
 media-libs/libnjb 2.2.7: Library for communicating with the Creative Nomad JukeBox digital audio player
 media-libs/libnsbmp 0.1.6-r1: decoding library for BMP and ICO image file formats, written in C
 media-libs/libnsgif 0.2.1-r1 0.2.1-r3: decoding library for the GIF image file format, written in C
@@ -16111,7 +16111,7 @@ sci-electronics/systemc 2.3.1-r1: A C++ based modeling platform for VLSI and sys
 sci-electronics/vbs 1.4.0: vbs - the Verilog Behavioral Simulator
 sci-electronics/voacapl 0.6.7 0.7.2: HF propagation prediction tool
 sci-electronics/xcircuit 3.9.73: Circuit drawing and schematic capture program
-sci-electronics/xnec2c 3.5.1: A GTK+ graphical interactive version of nec2c
+sci-electronics/xnec2c 3.5.1 4.1.1: A GTK+ graphical interactive version of nec2c
 sci-electronics/xoscope 2.0 2.1: Soundcard Oscilloscope for X
 sci-geosciences/GeographicLib 1.50.1: C++ classes for performing conversions between geographic coordinates
 sci-geosciences/bt747 2.1.7-r1 2.1.7-r2: MTK GPS Datalogger Device Control
