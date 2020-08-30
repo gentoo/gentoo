@@ -33,6 +33,14 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2020-08-30)
+# Serious security bug, unmaintained.
+# Stuck on long-obsolete EAPI 4.
+# Several open bugs.
+# bug 720732, bug 729714, bug 722644,
+# bug 724184.
+dev-db/sqliteodbc
+
+# Sam James <sam@gentoo.org> (2020-08-30)
 # Serious security vulns, outdated.
 # bug 699834. Removal in 30 days.
 www-apps/ampache
