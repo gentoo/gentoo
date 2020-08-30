@@ -4,10 +4,10 @@ DESCRIPTION=Allows to remote boot a computer over an IP network
 EAPI=7
 HOMEPAGE=http://netboot.sourceforge.net/
 IUSE=berkdb +bootrom +lzo odbc static-libs
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 x86
 LICENSE=GPL-2+
 RDEPEND=berkdb? ( sys-libs/db:= ) lzo? ( dev-libs/lzo:2= ) odbc? ( dev-db/unixODBC:= )
 SLOT=0
 SRC_URI=mirror://sourceforge/netboot/netboot-0.10.2.tar.gz
 _eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=4d7fb988d92ca3d4422e03cade0eb816
+_md5_=83827dfed0f193c656447bad84fe8885
