@@ -14,7 +14,7 @@ else
 	# Change this when you update the ebuild
 	RUNC_COMMIT=dc9208a3303feef5b3839f4323d9beb36df0a9dd
 	SRC_URI="https://${EGO_PN}/archive/${RUNC_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc64"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
 	inherit golang-build golang-vcs-snapshot
 fi
 
