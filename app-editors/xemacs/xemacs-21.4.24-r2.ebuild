@@ -65,6 +65,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/xemacs-21.4.24-glibc-macro.patch
 	# see bug 615544
 	eapply "${FILESDIR}"/xemacs-21.4.24-ncurses-tinfo.patch
+	eapply "${FILESDIR}"/xemacs-21.4.24-strsignal.patch
 
 	# Convert to utf-8
 	iconv -f iso-8859-1 -t utf-8 -o man/xemacs-faq.texi.tmp man/xemacs-faq.texi \
