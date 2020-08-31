@@ -29,6 +29,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/grpcio[${PYTHON_USEDEP}]
+		dev-python/rsa[${PYTHON_USEDEP}]
 	)
 "
 
