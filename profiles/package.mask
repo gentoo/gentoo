@@ -798,12 +798,6 @@ dev-python/distributed
 # Masked for the time being due to dep on LLVM 8.  Bug #720236.
 <=dev-ada/gps-2019-r1
 
-# Sergey Popov <pinkbyte@gentoo.org> (2020-07-30)
-# Python2-only, dead upstream
-# Recommended replacement - sys-fs/rar2fs
-# Masked for removal in 30 days.
-sys-fs/rarfs
-
 # Andrey Utkin <andrey_utkin@gentoo.org> (2020-07-28)
 # Not used by other packages anymore.
 # Removal in 30 days.
