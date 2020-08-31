@@ -34,6 +34,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.1-pcap-config.patch
+	"${FILESDIR}"/${PN}-1.10.0-usbmon.patch
 	"${FILESDIR}"/${PN}-9999-prefix-darwin.patch
 )
 
