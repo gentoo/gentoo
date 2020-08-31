@@ -7834,6 +7834,7 @@ sys-apps/flashrom:developerbox-spi - Enable Devloperbox SPI recovery support
 sys-apps/flashrom:digilent-spi - Enable support for Digilent iCEblink40 development board
 sys-apps/flashrom:drkaiser - Enable Dr. Kaiser programmer
 sys-apps/flashrom:dummy - Enable dummy tracing
+sys-apps/flashrom:ene-lpc - Enable ENE LPC interface keyboard controller
 sys-apps/flashrom:ft2232-spi - Enable ftdi programmer, flashing through FTDI/SPI USB interface
 sys-apps/flashrom:gfxnvidia - Enable NVIDIA programmer
 sys-apps/flashrom:internal - Enable internal/onboard support
@@ -7842,6 +7843,8 @@ sys-apps/flashrom:it8212 - Support for ITE IT8212F ATA/RAID controllers
 sys-apps/flashrom:jlink-spi - Support for SEGGER J-Link and compatible devices
 sys-apps/flashrom:linux-mtd - Enable support for Linux mtd SPI flash devices
 sys-apps/flashrom:linux-spi - Enable support for Linux userspace spidev interface
+sys-apps/flashrom:lspcon-i2c-spi - Enable support for Parade lspcon USB-C to HDMI protocol translator
+sys-apps/flashrom:mec1308 - Enable support for Microchip MEC1308 embedded controller
 sys-apps/flashrom:mstarddc-spi - Support for SPI flash ROMs accessible through DDC in MSTAR-equipped displays
 sys-apps/flashrom:nic3com - Enable 3Com NIC programmer
 sys-apps/flashrom:nicintel - Support for Intel NICs
@@ -7852,7 +7855,9 @@ sys-apps/flashrom:nicrealtek - Support for Realtek NICs
 sys-apps/flashrom:ogp-spi - Enable support for OGP (Open Graphics Project) SPI flashing
 sys-apps/flashrom:pickit2-spi - SUpport for SPI flash ROMs accessible via Microchip PICkit2
 sys-apps/flashrom:pony-spi - Enable support for SI-Prog like hardware by Lancos
+sys-apps/flashrom:raiden - Enable ChromiumOS Servo DUT debug board
 sys-apps/flashrom:rayer-spi - RayeR SPIPGM hardware support
+sys-apps/flashrom:realtek-mst-i2c-spi - Enable support for Realtek MultiStream Transport (MST)
 sys-apps/flashrom:satamv - Enable programmer for Marvell SATA controllers
 sys-apps/flashrom:satasii - Enable programmer for SiI SATA controllers
 sys-apps/flashrom:serprog - Enable Serial Flasher programmer
@@ -8735,6 +8740,7 @@ www-client/chromium:component-build - Split build into more shared libraries to 
 www-client/chromium:hangouts - Enable support for Google Hangouts features such as screen sharing
 www-client/chromium:headless - Build Ozone only with headless backend, NOT RECOMMENDED for general use.
 www-client/chromium:js-type-check - Enable JavaScript type-checking for Chrome's web technology-based UI. Requires Java.
+www-client/chromium:official - Enable Official build instead of Developer build.
 www-client/chromium:ozone - Enable Ozone platform abstraction layer with X11 backend.
 www-client/chromium:pic - Disable optimized assembly code that is not PIC friendly
 www-client/chromium:proprietary-codecs - Enable proprietary codecs like H.264, MP3

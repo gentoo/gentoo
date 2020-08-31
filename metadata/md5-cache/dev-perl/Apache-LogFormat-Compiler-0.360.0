@@ -5,11 +5,11 @@ DESCRIPTION=Compile an Apache log format string to perl-code
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/Apache-LogFormat-Compiler
 IUSE=test examples
-KEYWORDS=~alpha amd64 ~ia64 ~ppc ppc64 sparc x86
+KEYWORDS=~alpha amd64 ~ia64 ppc ppc64 sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/POSIX-strftime-Compiler-0.300.0 virtual/perl-Time-Local >=dev-lang/perl-5.8.4 dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/K/KA/KAZEBURO/Apache-LogFormat-Compiler-0.36.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=0979db68a44dfd69396677091ec87d16
+_md5_=337432f41038cdaa1b72f637585a54a8
