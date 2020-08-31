@@ -23,13 +23,12 @@ IUSE="+backup bindist columnstore cracklib debug extraengine galera innodb-lz4
 	innodb-lzo innodb-snappy jdbc jemalloc kerberos latin1 libressl mroonga
 	numa odbc oqgraph pam +perl profiling rocksdb selinux +server sphinx
 	sst-rsync sst-mariabackup static systemd systemtap s3 tcmalloc
-	test tokudb xml yassl"
+	test xml yassl"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
 RESTRICT="!bindist? ( bindist ) libressl? ( test ) !test? ( test )"
 
 REQUIRED_USE="jdbc? ( extraengine server !static )
-	server? ( tokudb? ( jemalloc !tcmalloc ) )
 	?? ( tcmalloc jemalloc )
 	static? ( yassl !pam )"
 
@@ -80,7 +79,6 @@ COMMON_DEPEND="
 		pam? ( sys-libs/pam:0= )
 		s3? ( net-misc/curl )
 		systemd? ( sys-apps/systemd:= )
-		tokudb? ( app-arch/snappy )
 	)
 	systemtap? ( >=dev-util/systemtap-1.3:0= )
 	tcmalloc? ( dev-util/google-perftools:0= )
@@ -195,13 +193,6 @@ pkg_setup() {
 		local GCC_MAJOR_SET=$(gcc-major-version)
 		local GCC_MINOR_SET=$(gcc-minor-version)
 
-		if use tokudb && [[ ${GCC_MAJOR_SET} -lt 4 || \
-			${GCC_MAJOR_SET} -eq 4 && ${GCC_MINOR_SET} -lt 7 ]] ; then
-			eerror "${PN} with tokudb needs to be built with gcc-4.7 or later."
-			eerror "Please use gcc-config to switch to gcc-4.7 or later version."
-			die
-		fi
-
 		# Bug 565584.  InnoDB now requires atomic functions introduced with gcc-4.7 on
 		# non x86{,_64} arches
 		if ! use amd64 && ! use x86 && [[ ${GCC_MAJOR_SET} -lt 4 || \
@@ -248,11 +239,6 @@ src_prepare() {
 	elif use tcmalloc; then
 		echo "TARGET_LINK_LIBRARIES(mariadbd tcmalloc)" >> "${S}/sql/CMakeLists.txt"
 	fi
-
-	# Don't build bundled xz-utils for tokudb
-	echo > "${S}/storage/tokudb/PerconaFT/cmake_modules/TokuThirdParty.cmake" || die
-	sed -i -e 's/ build_lzma//' -e 's/ build_snappy//' "${S}/storage/tokudb/PerconaFT/ft/CMakeLists.txt" || die
-	sed -i -e 's/add_dependencies\(tokuportability_static_conv build_jemalloc\)//' "${S}/storage/tokudb/PerconaFT/portability/CMakeLists.txt" || die
 
 	local plugin
 	local server_plugins=( handler_socket auth_socket feedback metadata_lock_info
@@ -400,7 +386,6 @@ src_configure() {
 			-DWITH_PCRE=system
 			-DPLUGIN_OQGRAPH=$(usex oqgraph DYNAMIC NO)
 			-DPLUGIN_SPHINX=$(usex sphinx YES NO)
-			-DPLUGIN_TOKUDB=$(usex tokudb YES NO)
 			-DPLUGIN_AUTH_PAM=$(usex pam YES NO)
 			-DPLUGIN_CRACKLIB_PASSWORD_CHECK=$(usex cracklib YES NO)
 			-DPLUGIN_CASSANDRA=NO
@@ -429,9 +414,6 @@ src_configure() {
 			-DWITH_SYSTEMD=$(usex systemd yes no)
 			-DWITH_NUMA=$(usex numa ON OFF)
 		)
-
-		# Workaround for MDEV-14524
-		use tokudb && mycmakeargs+=( -DTOKUDB_OK=1 )
 
 		if use test ; then
 			# This is needed for the new client lib which tests a real, open server
@@ -617,7 +599,7 @@ src_test() {
 
 	# run mysql-test tests
 	pushd "${TESTDIR}" &>/dev/null || die
-	perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder --skip-test=tokudb --skip-test-list="${T}/disabled.def"
+	perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder --skip-test-list="${T}/disabled.def"
 	retstatus_tests=$?
 
 	popd &>/dev/null || die
