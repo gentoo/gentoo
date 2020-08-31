@@ -17605,7 +17605,6 @@ sys-fs/progsreiserfs 0.3.1_rc8: Library for accessing and manipulating reiserfs 
 sys-fs/quota 4.04-r3 4.05-r1: Linux quota tools
 sys-fs/quotatool 1.6.2: command-line utility for filesystem quotas
 sys-fs/rar2fs 1.27.2-r1 1.28.0 1.29.0: A FUSE based filesystem that can mount one or multiple RAR archive(s)
-sys-fs/rarfs 0.1.1-r2: Fuse module to mount uncompressed RAR archives
 sys-fs/reiser4progs 1.2.1 2.0.2 2.0.3: reiser4progs: mkfs, fsck, etc...
 sys-fs/reiserfs-defrag 0.2.2: Small defragmentation tool for reiserfs
 sys-fs/reiserfsprogs 3.6.25 3.6.27: Reiserfs Utilities
@@ -18145,8 +18144,8 @@ www-client/elinks 0.12_pre6-r4 0.13_pre_pre20180225 0.13.4 9999: Advanced and we
 www-client/epiphany 3.30.5 3.32.6 3.34.4 3.36.3 3.36.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 68.11.0 68.12.0 79.0-r2 80.0: Firefox Web Browser
-www-client/firefox-bin 68.11.0 68.12.0 79.0 80.0: Firefox Web Browser
+www-client/firefox 68.12.0 80.0: Firefox Web Browser
+www-client/firefox-bin 68.12.0 80.0: Firefox Web Browser
 www-client/google-chrome 85.0.4183.83: The web browser from Google
 www-client/google-chrome-beta 85.0.4183.83: The web browser from Google
 www-client/google-chrome-unstable 86.0.4240.8: The web browser from Google
