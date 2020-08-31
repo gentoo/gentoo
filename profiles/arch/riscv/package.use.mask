@@ -108,4 +108,3 @@ sys-devel/gettext cvs
 sys-fs/squashfs-tools lzma
 sys-libs/libcap-ng python
 sys-process/audit gssapi python
-sys-process/procps test
