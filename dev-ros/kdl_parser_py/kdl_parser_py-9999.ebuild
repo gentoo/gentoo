@@ -25,6 +25,5 @@ DEPEND="${RDEPEND}
 
 src_test() {
 	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
-	rm -f "${S}/CATKIN_IGNORE"
 	ros-catkin_src_test
 }
