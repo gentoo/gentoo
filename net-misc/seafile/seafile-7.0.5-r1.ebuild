@@ -40,7 +40,7 @@ src_prepare() {
 
 src_install() {
 	default
-	# Remove unnecessary .la files, as recommended by ltprune.eclass
-	find "${ED}" -name '*.la' -delete || die
+	# Remove unnecessary files, as recommended by ltprune.eclass
+	find "${ED}" -name '*.la' -o -name '*.a' -delete || die
 	python_fix_shebang "${ED}"/usr/bin
 }
