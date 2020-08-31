@@ -19,8 +19,8 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="
-	+adns +caps +cmdmon html ipv6 libedit +nettle +ntp +phc pps readline
-	+refclock +rtc +seccomp +sechash selinux
+	+caps +cmdmon html ipv6 libedit +nettle +ntp +phc pps readline +refclock
+	+rtc +seccomp +sechash selinux
 "
 REQUIRED_USE="
 	?? ( libedit readline )
@@ -106,7 +106,6 @@ src_configure() {
 	# not an autotools generated script
 	local myconf=(
 		$(use_enable seccomp scfilter)
-		$(usex adns '' --disable-asyncdns)
 		$(usex caps '' --disable-linuxcaps)
 		$(usex cmdmon '' --disable-cmdmon)
 		$(usex ipv6 '' --disable-ipv6)
