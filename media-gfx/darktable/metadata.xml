@@ -15,7 +15,6 @@
 		<flag name="kwallet">Enable encrypted storage of passwords with <pkg>kde-frameworks/kwallet</pkg></flag>
 		<flag name="lto">Enable link-time optimisations in the RawSpeed library</flag>
 		<flag name="opencl">Enable opencl support</flag>
-		<flag name="pax_kernel">Triggers paxmarking of main darktable binary</flag>
 		<flag name="tools">Install tools for generating base curves and noise profiles</flag>
 	</use>
 	<upstream>

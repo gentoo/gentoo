@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake flag-o-matic pax-utils toolchain-funcs xdg
+inherit cmake flag-o-matic toolchain-funcs xdg
 
 DOC_PV="2.6.0"
 MY_PV="${PV/_/}"
@@ -21,7 +21,7 @@ KEYWORDS="amd64 x86"
 LANGS=" ca cs de es fi fr hu ja nb nl pl pt-BR ru sl"
 # TODO add lua once dev-lang/lua-5.2 is unmasked
 IUSE="colord cups cpu_flags_x86_sse3 doc flickr geolocation gnome-keyring gphoto2 graphicsmagick jpeg2k kwallet
-nls opencl openmp openexr pax_kernel webp
+nls opencl openmp openexr webp
 ${LANGS// / l10n_}"
 
 BDEPEND="
@@ -122,15 +122,6 @@ src_install() {
 				rm -r "${ED}"/usr/share/locale/${lang/-/_} || die
 			fi
 		done
-	fi
-
-	if use pax_kernel && use opencl ; then
-		pax-mark Cm "${ED}"/usr/bin/${PN} || die
-		eqawarn "USE=pax_kernel is set meaning that ${PN} will be run"
-		eqawarn "under a PaX enabled kernel. To do so, the ${PN} binary"
-		eqawarn "must be modified and this *may* lead to breakage! If"
-		eqawarn "you suspect that ${PN} is broken by this modification,"
-		eqawarn "please open a bug."
 	fi
 }
 
