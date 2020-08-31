@@ -82,6 +82,9 @@ src_configure() {
 			econf "${myeconfargs[@]}" \
 				--enable-python-binding \
 				--with-boost-python="boost_${EPYTHON/./}"
+				# git rid of c++11
+				sed s/-std=c++11//g < bindings/python/compile_cmd > bindings/python/compile_cmd.new || die
+				mv -f bindings/python/compile_cmd.new bindings/python/compile_cmd || die
 		}
 		distutils-r1_src_configure
 	fi
