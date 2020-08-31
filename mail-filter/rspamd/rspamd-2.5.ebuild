@@ -54,6 +54,7 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}/rspamd-2.5-replxx-gcc10.patch"
 	"${FILESDIR}/rspamd-2.5-unbundle-lua.patch"
 	"${FILESDIR}/rspamd-2.5-unbundle-zstd.patch"
 	"${FILESDIR}/rspamd-2.5-unbundle-snowball.patch"
