@@ -5,27 +5,21 @@ EAPI=7
 inherit autotools git-r3 user
 
 DESCRIPTION="A Tool for network monitoring and data acquisition"
-EGIT_REPO_URI="https://github.com/the-tcpdump-group/tcpdump"
 HOMEPAGE="
 	https://www.tcpdump.org/
 	https://github.com/the-tcpdump-group/tcpdump
 "
-
 LICENSE="BSD"
+EGIT_REPO_URI="https://github.com/the-tcpdump-group/tcpdump"
+
 SLOT="0"
 IUSE="+drop-root libressl smi ssl samba suid test"
 RESTRICT="!test? ( test )"
-if [[ ${PV} == "9999" ]] ; then
-	inherit git-r3
-	KEYWORDS=""
-else
-	SRC_URI="https://github.com/the-${PN}-group/${PN}/archive/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
-fi
+KEYWORDS=""
 
 RDEPEND="
-	drop-root? ( sys-libs/libcap-ng )
 	net-libs/libpcap
+	drop-root? ( sys-libs/libcap-ng )
 	smi? ( net-libs/libsmi )
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-0.9.6m:0= )
