@@ -23,7 +23,7 @@ SRC_URI+=" test? ( mirror://sourceforge/matroska/test_files/matroska_test_w1_1.z
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 BDEPEND="
 	test? (
