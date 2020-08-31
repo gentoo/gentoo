@@ -67,13 +67,14 @@ src_prepare() {
 		-e 's|pkg-config|${PKG_CONFIG}|g' \
 		configure || die
 
-	# Copy for potential user fixup
-	cp "${FILESDIR}"/chronyd.conf-r1 "${T}"/chronyd.conf
-	cp examples/chronyd.service "${T}"/chronyd.service
+	sed \
+		-e 's/-F 1/-F 0/' \
+		examples/chronyd.service > "${T}"/chronyd.service || die
+
+	cp "${FILESDIR}"/chronyd.conf-r1 "${T}"/chronyd.conf || die
 }
 
 src_configure() {
-	# Set config for privdrop
 	if ! use caps; then
 		sed -i \
 			-e 's/-u ntp//' \
@@ -82,7 +83,7 @@ src_configure() {
 
 	if ! use seccomp; then
 		sed -i \
-			-e 's/-F 1//' \
+			-e 's/-F 0//' \
 			"${T}"/chronyd.conf "${T}"/chronyd.service || die
 	fi
 
