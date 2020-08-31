@@ -40,6 +40,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	app-crypt/gcr[vala]
 	app-crypt/libsecret[vala]
+	gui-libs/libhandy:0.0[vala]
 "
 
 src_prepare() {
