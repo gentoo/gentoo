@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools git-r3 user
+inherit autotools user
 
 DESCRIPTION="A Tool for network monitoring and data acquisition"
 HOMEPAGE="
@@ -10,12 +10,14 @@ HOMEPAGE="
 	https://github.com/the-tcpdump-group/tcpdump
 "
 LICENSE="BSD"
-EGIT_REPO_URI="https://github.com/the-tcpdump-group/tcpdump"
+SRC_URI="
+	https://github.com/the-tcpdump-group/${PN}/archive/${P/_}.tar.gz
+"
 
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="+drop-root libressl smi ssl samba suid test"
 RESTRICT="!test? ( test )"
-KEYWORDS=""
 
 RDEPEND="
 	net-libs/libpcap
@@ -39,6 +41,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-libdir.patch
 )
+S=${WORKDIR}/${PN}-${P/_}
 
 pkg_setup() {
 	if use drop-root || use suid; then
@@ -48,11 +51,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -i -e '/^eapon1/d;' tests/TESTLIST || die
-
-	# bug 630394
-	sed -i -e '/^nbns-valgrind/d' tests/TESTLIST || die
-
 	default
 
 	eautoreconf

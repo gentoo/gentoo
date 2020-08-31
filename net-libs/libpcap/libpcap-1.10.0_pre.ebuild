@@ -2,19 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools git-r3 multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="A system-independent library for user-level network packet capture"
-EGIT_REPO_URI="https://github.com/the-tcpdump-group/libpcap"
 HOMEPAGE="
 	https://www.tcpdump.org/
 	https://github.com/the-tcpdump-group/libpcap
 "
+SRC_URI="
+	https://github.com/the-tcpdump-group/${PN}/archive/${P/_pre/-bp}.tar.gz
+"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="bluetooth dbus netlink rdma -remote static-libs usb -yydebug"
 KEYWORDS=""
+IUSE="bluetooth dbus netlink rdma -remote static-libs usb -yydebug"
 
 RDEPEND="
 	bluetooth? ( net-wireless/bluez:=[${MULTILIB_USEDEP}] )
@@ -32,14 +34,19 @@ BDEPEND="
 	dbus? ( virtual/pkgconfig )
 "
 
+S=${WORKDIR}/${PN}-${P/_pre/-bp}
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.1-pcap-config.patch
 	"${FILESDIR}"/${PN}-1.10.0-usbmon.patch
-	"${FILESDIR}"/${PN}-9999-prefix-darwin.patch
 )
 
 src_prepare() {
 	default
+
+	if ! [[ -f VERSION ]]; then
+		echo ${PV} > VERSION || die
+	fi
 
 	eautoreconf
 }
@@ -62,7 +69,7 @@ multilib_src_compile() {
 }
 
 multilib_src_install_all() {
-	dodoc CREDITS CHANGES VERSION TODO README*
+	dodoc CREDITS CHANGES VERSION TODO README.* doc/README.*
 
 	# remove static libraries (--disable-static does not work)
 	if ! use static-libs; then
