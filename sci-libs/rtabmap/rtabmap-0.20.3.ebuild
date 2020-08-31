@@ -33,7 +33,7 @@ RDEPEND="
 	sys-libs/zlib
 	sci-libs/octomap:=
 	dev-libs/boost:=
-	ieee1394? ( media-libs/libdc1394 )
+	ieee1394? ( media-libs/libdc1394:2= )
 	openni2? ( dev-libs/OpenNI2 )
 	qt5? (
 		dev-qt/qtwidgets:5
@@ -44,6 +44,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+PATCHES=( "${FILESDIR}/pcl.patch" )
 
 src_configure() {
 	local mycmakeargs=(
