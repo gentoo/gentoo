@@ -20,7 +20,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="
 	+caps +cmdmon html ipv6 libedit +nettle +ntp +phc pps readline +refclock
-	+rtc +seccomp +sechash selinux
+	+rtc samba +seccomp +sechash selinux
 "
 REQUIRED_USE="
 	?? ( libedit readline )
@@ -64,6 +64,7 @@ src_prepare() {
 		doc/* examples/* || die
 
 	sed -i \
+		-e 's|RELOADDNS||g' \
 		-e 's|pkg-config|${PKG_CONFIG}|g' \
 		configure || die
 
@@ -115,6 +116,7 @@ src_configure() {
 		$(usex pps '' --disable-pps)
 		$(usex refclock '' --disable-refclock)
 		$(usex rtc '' --disable-rtc)
+		$(usex samba --enable-ntp-signd '')
 		$(usex sechash '' --disable-sechash)
 		${CHRONY_EDITLINE}
 		${EXTRA_ECONF}
