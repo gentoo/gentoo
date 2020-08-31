@@ -9445,9 +9445,9 @@ dev-ros/audio_capture 0.3.6 0.3.7 9999: Transports audio from a source to a dest
 dev-ros/audio_common_msgs 0.3.6 0.3.7 9999: Messages for transmitting audio via ROS
 dev-ros/audio_play 0.3.6 0.3.7 9999: Outputs audio to a speaker from a source node
 dev-ros/base_local_planner 1.17.0 9999: Trajectory Rollout and Dynamic Window approaches to robot navigation on a plane
-dev-ros/bond 1.8.5 9999: A bond allows two processes, A and B, to know when the other has terminated
-dev-ros/bondcpp 1.8.5 9999: C++ implementation of bond, for checking when another process has terminated
-dev-ros/bondpy 1.8.5 9999: Python implementation of bond, for checking when another process has terminated
+dev-ros/bond 1.8.5 1.8.6 9999: A bond allows two processes, A and B, to know when the other has terminated
+dev-ros/bondcpp 1.8.5 1.8.6 9999: C++ implementation of bond, for checking when another process has terminated
+dev-ros/bondpy 1.8.5 1.8.6 9999: Python implementation of bond, for checking when another process has terminated
 dev-ros/calibration_estimation 0.10.14 9999: Runs an optimization to estimate the a robot's kinematic parameters
 dev-ros/calibration_launch 0.10.14 9999: Launch files for configuring the calibration stack to run on your robot
 dev-ros/calibration_msgs 0.10.14 9999: Messages for storing calibration samples to be used in calibration procedures
@@ -9485,7 +9485,7 @@ dev-ros/diagnostic_msgs 1.13.0 9999: Standardized interface for the diagnostic a
 dev-ros/diagnostic_updater 1.9.4 1.9.6 1.10.1 9999: Tools for updating diagnostics
 dev-ros/driver_base 1.6.8 9999: Framework for writing drivers
 dev-ros/dwa_local_planner 1.17.0 9999: Dynamic Window Approach to local robot navigation on a plane
-dev-ros/dynamic_reconfigure 1.7.0 9999: Provides a means to change node parameters at runtime
+dev-ros/dynamic_reconfigure 1.7.1 9999: Provides a means to change node parameters at runtime
 dev-ros/eigen_conversions 1.13.2 9999: Conversion functions between Eigen and KDL and Eigen and geometry_msgs
 dev-ros/eigen_stl_containers 0.1.8 9999: Provides a set of typedef's that allow using Eigen datatypes in STL containers
 dev-ros/fake_localization 1.17.0 9999: A ROS node that simply forwards odometry information
@@ -9542,8 +9542,8 @@ dev-ros/joint_state_publisher 1.15.0 9999: Tool for setting and publishing joint
 dev-ros/joint_state_publisher_gui 1.15.0 9999: Tool for setting and publishing joint state values for a given URDF
 dev-ros/joint_states_settler 0.10.14 9999: Reports how long a subset of joints has been settled
 dev-ros/kdl_conversions 1.13.2 9999: Conversion functions between KDL and geometry_msgs types
-dev-ros/kdl_parser 1.14.0-r1 9999: Constructs a KDL tree from an XML robot representation in URDF
-dev-ros/kdl_parser_py 1.14.0 9999: Python tools to construct a KDL tree from an XML robot representation in URDF
+dev-ros/kdl_parser 1.14.1 9999: Constructs a KDL tree from an XML robot representation in URDF
+dev-ros/kdl_parser_py 1.14.1 9999: Python tools to construct a KDL tree from an XML robot representation in URDF
 dev-ros/laser_assembler 1.7.8 9999: Nodes to assemble point clouds from either LaserScan or PointCloud messages
 dev-ros/laser_cb_detector 0.10.14 9999: Extracts checkerboard corners from a dense laser snapshot
 dev-ros/laser_filters 1.8.11 9999: Assorted filters designed to operate on 2D planar laser scanners
@@ -9578,7 +9578,7 @@ dev-ros/nodelet_tutorial_math 0.1.12 0.2.0 9999: Nodelet tutorial
 dev-ros/object_recognition_msgs 0.4.1 9999: ROS message and the actionlib definition used in object_recognition_core
 dev-ros/octomap_msgs 0.3.5 9999: Messages and serializations / conversion for the OctoMap library
 dev-ros/octomap_ros 0.4.1 9999: Conversion functions between ROS / PCL and OctoMap's native types
-dev-ros/opencv_apps 2.0.1 9999: OpenCV applications for ROS
+dev-ros/opencv_apps 2.0.2 9999: OpenCV applications for ROS
 dev-ros/opencv_tests 1.15.0 9999: Tests for ROS OpenCV integration
 dev-ros/openni2_camera 1.4.2 9999: ROS drivers for the Asus Xtion and Primesense Devices
 dev-ros/openni2_launch 1.4.2 9999: Launch files to start the openni2_camera drivers using rgbd_launch
@@ -9709,13 +9709,13 @@ dev-ros/shape_msgs 1.13.0 9999: Messages for defining shapes: simple solid objec
 dev-ros/smach 2.5.0 9999: Task-level architecture for rapidly creating complex robot behavior
 dev-ros/smach_msgs 2.5.0 9999: Set of messages that are used by the introspection interfaces for smach
 dev-ros/smach_ros 2.5.0 9999: Extensions for the SMACH library to integrate it tightly with ROS
-dev-ros/smclib 1.8.5 9999: The SMC converts the description of a state machine into source code
+dev-ros/smclib 1.8.5 1.8.6 9999: The SMC converts the description of a state machine into source code
 dev-ros/stage_ros 1.8.0 9999: ROS specific hooks and tools for the Stage simulator
 dev-ros/std_msgs 0.5.13 9999: Standard ROS Messages
 dev-ros/std_srvs 1.11.3 9999: Messages relating to ROS comm
 dev-ros/stereo_image_proc 1.15.2 9999: Stereo and single image rectification and disparity processing
 dev-ros/stereo_msgs 1.13.0 9999: Messages specific to stereo processing, such as disparity images
-dev-ros/test_bond 1.8.5 9999: Tests for bond, bondpy and bondcpp
+dev-ros/test_bond 1.8.5 1.8.6 9999: Tests for bond, bondpy and bondcpp
 dev-ros/test_diagnostic_aggregator 1.9.4 1.9.6 1.10.1 9999: diagnostic_aggregator tests
 dev-ros/test_nodelet 1.10.0 9999: Nodelet unit tests
 dev-ros/test_nodelet_topic_tools 1.10.0 9999: Nodelet topic tools unit tests
@@ -9729,18 +9729,18 @@ dev-ros/test_rosmaster 1.15.8 9999: Unit tests for rosmaster
 dev-ros/test_rosparam 1.15.7 1.15.8 9999: Unit tests for rosparam
 dev-ros/test_rospy 1.15.8 9999: Unit tests for rospy
 dev-ros/test_rosservice 1.15.8 9999: Unit tests for rospy
-dev-ros/test_tf2 0.7.2 9999: TF2 unit tests
+dev-ros/test_tf2 0.7.2 0.7.3 9999: TF2 unit tests
 dev-ros/tf 1.13.2-r1 9999: Maintains the relationship between frames in a tree structure over time
-dev-ros/tf2 0.7.2 9999: The second generation Transform Library in ROS
-dev-ros/tf2_bullet 0.7.2 9999: TF2 bullet support
-dev-ros/tf2_eigen 0.7.2 9999: TF2 eigen support
-dev-ros/tf2_geometry_msgs 0.7.2 9999: The second generation Transform Library in ROS
-dev-ros/tf2_kdl 0.7.2 9999: KDL binding for tf2
-dev-ros/tf2_msgs 0.7.2 9999: TF2 messages
-dev-ros/tf2_py 0.7.2 9999: TF2 python bindings
-dev-ros/tf2_ros 0.7.2 9999: ROS bindings for the tf2 library, for both Python and C++
-dev-ros/tf2_sensor_msgs 0.7.2 9999: Transform sensor_msgs with tf. Most notably, PointCloud2
-dev-ros/tf2_tools 0.7.2 9999: Tools for 2nd gen Transform library
+dev-ros/tf2 0.7.2 0.7.3 9999: The second generation Transform Library in ROS
+dev-ros/tf2_bullet 0.7.2 0.7.3 9999: TF2 bullet support
+dev-ros/tf2_eigen 0.7.2 0.7.3 9999: TF2 eigen support
+dev-ros/tf2_geometry_msgs 0.7.2 0.7.3 9999: The second generation Transform Library in ROS
+dev-ros/tf2_kdl 0.7.2 0.7.3 9999: KDL binding for tf2
+dev-ros/tf2_msgs 0.7.2 0.7.3 9999: TF2 messages
+dev-ros/tf2_py 0.7.2 0.7.3 9999: TF2 python bindings
+dev-ros/tf2_ros 0.7.2 0.7.3 9999: ROS bindings for the tf2 library, for both Python and C++
+dev-ros/tf2_sensor_msgs 0.7.2 0.7.3 9999: Transform sensor_msgs with tf. Most notably, PointCloud2
+dev-ros/tf2_tools 0.7.2 0.7.3 9999: Tools for 2nd gen Transform library
 dev-ros/tf_conversions 1.13.2-r1 9999: Functions to convert common tf datatypes into those used by other libraries
 dev-ros/theora_image_transport 1.14.0 9999: Plugin for transparently sending an image stream encoded with the Theora codec
 dev-ros/timestamp_tools 1.6.8-r1 9999: Classes to help timestamp hardware events
@@ -13115,7 +13115,7 @@ media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
 media-libs/jpeg 9d: Library to load, handle and manipulate images in the JPEG format
 media-libs/kodi-platform 18.0_pre20180301 18.0_pre20190429 9999: Kodi platform support library
-media-libs/kvazaar 1.2.0-r1 9999: Open-source HEVC encoder
+media-libs/kvazaar 1.2.0-r1 2.0.0 9999: Open-source HEVC encoder
 media-libs/ladspa-sdk 1.13-r2 1.15-r1: The Linux Audio Developer's Simple Plugin API
 media-libs/lasi 1.1.2: C++ library for postscript stream output
 media-libs/lastfmlib 0.4.0: C++ library to scrobble tracks on Last.fm
@@ -13126,7 +13126,7 @@ media-libs/lib3ds 1.3.0-r1 1.3.0-r2 2.0.0_rc1 2.0.0_rc1-r1: library for managing
 media-libs/lib3mf 1.8.1: Implementation of the 3D Manufacturing Format file standard
 media-libs/libXcm 0.5.4 9999: Reference implementation of the X Color Management specification
 media-libs/libaacplus 2.0.2-r2 2.0.2-r3: HE-AAC+ v2 library, based on the reference implementation
-media-libs/libaacs 0.9.0 0.10.0: Open implementation of the Advanced Access Content System (AACS) specification
+media-libs/libaacs 0.9.0 0.10.0 0.11.0: Open implementation of the Advanced Access Content System (AACS) specification
 media-libs/libafterimage 1.20-r2 1.20-r3: Afterstep's standalone generic image manipulation library
 media-libs/libao 1.2.2-r1: The Audio Output library
 media-libs/libaom 1.0.0-r2 2.0.0 9999: Alliance for Open Media AV1 Codec SDK
@@ -13145,7 +13145,7 @@ media-libs/libchamplain 0.12.20: Clutter based world map renderer
 media-libs/libclastfm 0.5: C API library to the last.fm web service (unofficial)
 media-libs/libcue 2.2.1: CUE Sheet Parser Library
 media-libs/libcuefile 477-r1: Cue File library from Musepack
-media-libs/libdc1394 2.2.5-r1: Library to interface with IEEE 1394 cameras following the IIDC specification
+media-libs/libdc1394 2.2.5-r1 2.2.6: Library to interface with IEEE 1394 cameras following the IIDC specification
 media-libs/libdca 0.0.5-r3 0.0.7: Library for decoding DTS Coherent Acoustics streams used in DVD
 media-libs/libde265 1.0.3 1.0.5 9999: Open h.265 video codec implementation
 media-libs/libdiscid 0.6.2: Client library to create MusicBrainz enabled tagging applications
@@ -13258,7 +13258,7 @@ media-libs/libsidplay 1.36.59-r2 2.1.1-r5: C64 SID player library
 media-libs/libsidplayfp 1.8.8: Library for the sidplay2 fork with resid-fp
 media-libs/libsixel 1.8.6: A lightweight, fast implementation of DEC SIXEL graphics codec
 media-libs/libsmf 1.3: Standard MIDI File format library
-media-libs/libsndfile 1.0.28-r4 1.0.29_pre2_p20191024 9999: C library for reading and writing files containing sampled sound
+media-libs/libsndfile 1.0.28-r4 1.0.29_pre2_p20191024 1.0.29 9999: C library for reading and writing files containing sampled sound
 media-libs/libsoundio 2.0.0: C library for cross-platform real-time audio input and output
 media-libs/libsoundtouch 2.1.2: Audio processing library for changing tempo, pitch and playback rates
 media-libs/libsvgtiny 0.1.7-r2: framebuffer abstraction library, written in C
@@ -13280,7 +13280,7 @@ media-libs/libxmi 1.3: C/C++ function library for rasterizing 2-D vector graphic
 media-libs/libxmlbird 1.2.0: XML parser written in Vala
 media-libs/libxspf 1.2.0 1.2.0-r1: Playlist handling library
 media-libs/libxtract 0.6.6: A simple, portable, lightweight library of audio feature extraction functions
-media-libs/libyami 1.0.1 1.1.0 1.2.0 1.3.0 9999: Yet Another Media Infrastructure: Media codec with hardware acceleration
+media-libs/libyami 1.0.1 1.1.0 1.2.0 1.3.0 1.3.2 9999: Yet Another Media Infrastructure: Media codec with hardware acceleration
 media-libs/libzen 0.4.38: Shared library for libmediainfo and mediainfo
 media-libs/libzmf 0.0.2 9999: Library for parsing Zoner Callisto/Draw documents
 media-libs/lilv 0.24.6-r2 0.24.8-r1: Library to make the use of LV2 plugins as simple as possible for applications
@@ -13296,7 +13296,7 @@ media-libs/mutagen 1.43.0 1.44.0: Audio metadata tag reader and writer implement
 media-libs/nas 1.9.4-r2: Network Audio System
 media-libs/netpbm 10.66.00 10.70.00 10.76.00: A set of utilities for converting to/from the netpbm (and related) formats
 media-libs/noise-suppression-for-voice 0.9_p20200705 9999: A real-time noise suppression plugin for voice
-media-libs/nv-codec-headers 8.1.24.2 9.0.18.1 9.1.23.1: FFmpeg version of headers required to interface with Nvidias codec APIs
+media-libs/nv-codec-headers 8.1.24.2 9.0.18.1 9.1.23.1 10.0.26.0: FFmpeg version of headers required to interface with Nvidias codec APIs
 media-libs/openal 1.20.0 1.20.1: A software implementation of the OpenAL 3D audio API
 media-libs/opencollada 1.6.63-r1 1.6.68: Stream based read/write library for COLLADA files
 media-libs/opencolorio 1.1.0-r4: A color management framework for visual effects and animation
@@ -13398,7 +13398,7 @@ media-libs/x264 0.0.20190214 0.0.20190903 0.0.20190903-r1 9999: A free library f
 media-libs/x265 2.8 2.9 3.0 3.1 3.1.2 3.2 3.2.1 3.3 3.4 9999: Library for encoding video streams into the H.265/HEVC format
 media-libs/xine-lib 1.2.9-r2 1.2.9999: Core libraries for Xine movie player
 media-libs/xvid 1.3.5 1.3.5-r1: High performance/quality MPEG-4 video de-/encoding solution
-media-libs/zimg 2.8 2.9.2 9999: Scaling, colorspace conversion, and dithering library
+media-libs/zimg 2.8 2.9.2 3.0.1 9999: Scaling, colorspace conversion, and dithering library
 media-libs/zita-alsa-pcmi 0.3.2: Provides easy access to ALSA PCM devices
 media-libs/zita-convolver 4.0.3: C++ library implementing a real-time convolution matrix
 media-libs/zita-resampler 1.6.2: C++ library for real-time resampling of audio signals
@@ -13798,7 +13798,7 @@ media-sound/flack 2.0.6: edit FLAC tags from command line
 media-sound/flacon 5.5.1: Extracts audio tracks from an audio CD image to separate tracks
 media-sound/flake 0.11: An alternative to the FLAC reference encoder
 media-sound/fluid-soundfont 3.1: The Fluid R3 soundfont
-media-sound/fluidsynth 2.1.0: Software real-time synthesizer based on the Soundfont 2 specifications
+media-sound/fluidsynth 2.1.0 2.1.4: Software real-time synthesizer based on the Soundfont 2 specifications
 media-sound/fmdrv 1.0.7: Console mode MIDI player with builtin userland OPL2 driver
 media-sound/fmit 1.0.15-r3: Free Music Instrument Tuner
 media-sound/fmtools 2.0.7: A collection of programs for controlling v4l radio card drivers
@@ -15754,7 +15754,7 @@ perl-core/podlators 2.5.3: Format POD source into various output formats
 perl-core/version 0.990.800: Perl extension for Version Objects
 ros-meta/ament_cmake 0.9.6 1.0.0 9999: The entry point package for the ament buildsystem
 ros-meta/audio_common 0.3.6 0.3.7 9999: Common code for working with audio in ROS
-ros-meta/bond_core 1.8.5 9999: A bond allows two processes, A and B, to know when the other has terminated
+ros-meta/bond_core 1.8.5 1.8.6 9999: A bond allows two processes, A and B, to know when the other has terminated
 ros-meta/calibration 0.10.14 9999: Provides a toolchain running through the robot calibration process
 ros-meta/common_msgs 1.13.0 9999: Messages that are widely used by other ROS packages
 ros-meta/common_tutorials 0.1.12 0.2.0 9999: Metapackage that contains common tutorials
@@ -15766,7 +15766,7 @@ ros-meta/executive_smach 2.5.0 9999: SMACH library and ROS SMACH integration pac
 ros-meta/gazebo_ros_pkgs 2.9.1 9999: Interface for using ROS with the gazebo simulator
 ros-meta/geographic_info 0.5.5 9999: Geographic information metapackage
 ros-meta/geometry 1.13.2 9999: Common geometric calculations
-ros-meta/geometry2 0.7.2 9999: The second generation Transform Library in ros
+ros-meta/geometry2 0.7.2 0.7.3 9999: The second generation Transform Library in ros
 ros-meta/geometry_tutorials 0.2.3 9999: Metapackage of geometry tutorials ROS
 ros-meta/hector_localization 0.3.0 9999: Collection of packages, that provide the full 6DOF pose of a robot or platform
 ros-meta/hector_slam 0.4.1 9999: hector_mapping and related packages
@@ -16400,7 +16400,7 @@ sci-libs/qfits 6.2.0: ESO stand-alone C library offering easy access to FITS fil
 sci-libs/qrupdate 1.1.2-r1: Library for updating of QR and Cholesky decompositions
 sci-libs/rosetta-db 3.4: Essential database for rosetta
 sci-libs/rosetta-fragments 3.1-r1: Fragment library for rosetta
-sci-libs/rtabmap 0.19.3-r1 0.19.7 0.20.3 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
+sci-libs/rtabmap 0.20.3 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
 sci-libs/scalapack 2.0.2-r1 2.1.0: Subset of LAPACK routines redesigned for heterogenous (MPI) computing
 sci-libs/scikits 0.1-r1 0.1-r2: Common files for python scikits
 sci-libs/scikits_image 0.13.0-r1: Image processing routines for SciPy
