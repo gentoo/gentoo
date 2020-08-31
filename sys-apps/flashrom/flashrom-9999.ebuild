@@ -33,6 +33,7 @@ IUSE_PROGRAMMERS="
 	+digilent-spi
 	+drkaiser
 	+dummy
+	+ene-lpc
 	+ft2232-spi
 	+gfxnvidia
 	+internal
@@ -40,6 +41,8 @@ IUSE_PROGRAMMERS="
 	jlink-spi
 	+linux-mtd
 	+linux-spi
+	lspcon-i2c-spi
+	+mec1308
 	mstarddc-spi
 	+nic3com
 	+nicintel
@@ -50,7 +53,9 @@ IUSE_PROGRAMMERS="
 	+ogp-spi
 	+pickit2-spi
 	+pony-spi
+	+raiden
 	+rayer-spi
+	realtek-mst-i2c-spi
 	+satamv
 	+satasii
 	+serprog
