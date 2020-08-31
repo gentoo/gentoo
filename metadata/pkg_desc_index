@@ -14877,7 +14877,7 @@ net-libs/libmicrodns 0.1.2 9999: Minimal mDNS resolver (and announcer) library
 net-libs/libmicrohttpd 0.9.65 0.9.68 0.9.69 0.9.70 0.9.71: Small C library to run an HTTP server as part of another application
 net-libs/libmirisdr 9999: Software for the Mirics MSi2500 + MSi001 SDR platform
 net-libs/libmnl 1.0.3-r1 1.0.4: Minimalistic netlink library
-net-libs/libmrss 0.19.2: A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams
+net-libs/libmrss 0.19.2 0.19.2-r1: A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams
 net-libs/libnatpmp 20150609: An alternative protocol to UPnP IGD specification
 net-libs/libndp 1.7: Library for Neighbor Discovery Protocol
 net-libs/libnet 1.0.2a-r7 1.2 1.2.9999: library providing an API for commonly used low-level network functions
@@ -14896,7 +14896,7 @@ net-libs/libnipper 0.12.6-r1: A router configuration security analysis library
 net-libs/libnma 1.8.24 1.8.28 1.8.30: NetworkManager GUI library
 net-libs/libnsl 0-r1 1.2.0 1.3.0-r1: Public client interface for NIS(YP) and NIS+ in a IPv6 ready version
 net-libs/libntlm 1.6: Microsoft's NTLM authentication (libntlm) library
-net-libs/libnxml 0.18.3: A C-library for parsing and writing XML 1.0/1.1 files or streams
+net-libs/libnxml 0.18.3 0.18.3-r1: A C-library for parsing and writing XML 1.0/1.1 files or streams
 net-libs/liboauth 1.0.3-r1: C library implementing the OAuth secure authentication protocol
 net-libs/liboping 1.10.0-r2: Protocol independent ANSI-C ping library and command line utility
 net-libs/libosmo-abis 9999: Osmocom library for A-bis interface
@@ -15425,7 +15425,7 @@ net-news/liferea 1.12.7-r1 1.12.8: News Aggregator for RDF/RSS/CDF/Atom/Echo fee
 net-news/newsboat 2.13 2.19-r1: An RSS/Atom feed reader for text terminals
 net-news/quiterss 0.19.3 0.19.4 9999: Qt-based RSS/Atom feed reader
 net-news/rssguard 3.5.9-r1: Tiny RSS and Atom feed reader
-net-news/rsstail 1.8: A tail-like RSS-reader
+net-news/rsstail 1.8 2.1 2.1_p20200310: A tail-like RSS-reader
 net-news/rsstool 1.0.1_rc2: cmdline tool to read, parse, merge, and write RSS (and Atom) feeds
 net-news/snownews 1.5.12-r1 1.5.13 1.6.10: Command-line RSS feed reader
 net-news/yydecode 0.2.10-r1: A decoder for yENC format, popular on Usenet

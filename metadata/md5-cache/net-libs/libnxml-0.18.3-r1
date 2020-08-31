@@ -1,0 +1,13 @@
+BDEPEND=doc? ( app-doc/doxygen )
+DEFINED_PHASES=compile configure install prepare
+DEPEND=net-misc/curl
+DESCRIPTION=A C-library for parsing and writing XML 1.0/1.1 files or streams
+EAPI=7
+HOMEPAGE=https://www.autistici.org/bakunin/libnxml/doc/
+IUSE=doc examples
+KEYWORDS=~amd64 ~arm ~mips ~ppc ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=net-misc/curl
+SLOT=0
+SRC_URI=https://www.autistici.org/bakunin/libnxml/libnxml-0.18.3.tar.gz
+_md5_=79adc4649e7d0c9a615b4cdd8be7ec35

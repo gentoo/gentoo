@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen )
+DEFINED_PHASES=compile configure install prepare
+DEPEND=net-libs/libnxml net-misc/curl
+DESCRIPTION=A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams
+EAPI=7
+HOMEPAGE=https://www.autistici.org/bakunin/libmrss/doc/
+IUSE=doc examples
+KEYWORDS=~amd64 ~arm ~mips ~ppc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=net-libs/libnxml net-misc/curl
+SLOT=0
+SRC_URI=https://www.autistici.org/bakunin/libmrss/libmrss-0.19.2.tar.gz
+_md5_=9815b0bbd4ee405514629abab9b70fa3
