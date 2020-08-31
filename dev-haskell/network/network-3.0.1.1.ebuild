@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/haskell/network"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
-SLOT="3/${PV}" # NOTE: remember to set SLOT="3/${PV}"
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
