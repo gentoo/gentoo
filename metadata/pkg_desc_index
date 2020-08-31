@@ -9893,7 +9893,7 @@ dev-ruby/daemons 1.3.1: Wrap existing ruby scripts to be run as a daemon
 dev-ruby/dalli 2.7.10 2.7.10-r1: A high performance pure Ruby client for accessing memcached servers
 dev-ruby/database_cleaner 1.7.0: Strategies for cleaning databases
 dev-ruby/date_validator 0.10.0: Simple, ORM agnostic, Ruby 1.9 compatible date validator for Rails 3
-dev-ruby/dbf 4.1.2: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
+dev-ruby/dbf 4.1.2 4.1.3: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
 dev-ruby/ddmemoize 1.0.0: Adds support for memoizing functions
 dev-ruby/ddmetrics 1.0.1: Non-timeseries measurements for Ruby programs
 dev-ruby/ddplugin 1.0.2: Provides plugin management for Ruby projects
