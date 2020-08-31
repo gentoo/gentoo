@@ -64,6 +64,7 @@ src_prepare() {
 		doc/* examples/* || die
 
 	sed -i \
+		-e 's|RELOADDNS||g' \
 		-e 's|pkg-config|${PKG_CONFIG}|g' \
 		configure || die
 
