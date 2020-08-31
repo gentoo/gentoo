@@ -148,3 +148,4 @@ slotmove ~app-editors/emacs-27.0.91 27-vcs 27
 slotmove =app-editors/emacs-27.1_rc* 27-vcs 27
 move net-misc/ntpclient net-misc/sntpd
 slotmove <media-sound/teamspeak-client-5 0 3
+slotmove dev-haskell/network 3 0
