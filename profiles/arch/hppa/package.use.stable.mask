@@ -41,7 +41,7 @@ media-libs/libtheora examples
 
 # Matt Turner <mattst88@gentoo.org> (2020-04-01)
 # net-libs/mbedtls has no stable keywords
-net-misc/curl curl_ssl_mbedtls
+net-misc/curl curl_ssl_mbedtls mbedtls
 dev-libs/libzip mbedtls
 net-libs/libssh mbedtls
 net-libs/libssh2 mbedtls
