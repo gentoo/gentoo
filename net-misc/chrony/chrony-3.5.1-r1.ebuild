@@ -125,6 +125,7 @@ src_configure() {
 		--mandir="${EPREFIX}/usr/share/man"
 		--prefix="${EPREFIX}/usr"
 		--sysconfdir="${EPREFIX}/etc/chrony"
+		--with-hwclockfile="${EPREFIX}/etc/adjtime"
 		--with-pidfile="${EPREFIX}/run/chrony/chronyd.pid"
 		--without-nss
 		--without-tomcrypt
