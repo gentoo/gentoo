@@ -28,7 +28,7 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
 	sci-libs/scipy[${PYTHON_USEDEP}]
-	dev-python/pillow[${PYTHON_USEDEP}]
+	dev-python/pillow[jpeg,${PYTHON_USEDEP}]
 	sci-libs/gdal[python,${PYTHON_USEDEP}]
 "
 
