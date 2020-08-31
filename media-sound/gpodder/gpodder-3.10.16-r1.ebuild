@@ -56,6 +56,8 @@ src_test() {
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
+
 	elog
 	elog "If you want to use Youtube-dl extension, you need"
 	elog "to emerge net-misc/youtube-dl."
