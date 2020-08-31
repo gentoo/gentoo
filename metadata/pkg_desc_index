@@ -6007,14 +6007,14 @@ dev-perl/Archive-Tar-Stream 0.30.0-r1: pure perl IO-friendly tar file management
 dev-perl/Archive-Tar-Wrapper 0.370.0: API wrapper around the 'tar' utility
 dev-perl/Archive-Zip 1.640.0 1.680.0: A wrapper that lets you read Zip archive members as if they were files
 dev-perl/Array-Compare 3.0.1 3.0.3: Perl extension for comparing arrays
-dev-perl/Array-RefElem 1.0.0-r1 1.0.0-r2 1.0.0-r3: Set up array elements as aliases
+dev-perl/Array-RefElem 1.0.0-r1 1.0.0-r3: Set up array elements as aliases
 dev-perl/Array-Window 1.20.0-r1 1.20.0-r2: Calculate windows/subsets/pages of arrays
 dev-perl/Astro-FITS-Header 3.70.0 3.70.0-r1: Interface to FITS headers
 dev-perl/AtExit 2.30.0: atexit() function to register exit-callbacks
 dev-perl/Audio-CD-disc-cover 0.05-r2 0.05-r3: Perl Module needed for app-cdr/disc-cover
 dev-perl/Audio-DSP 0.20.0-r2 0.20.0-r3: Perl interface to *NIX digital audio device
-dev-perl/Audio-FLAC-Header 2.400.0-r1 2.400.0-r2 2.400.0-r3: Access to FLAC audio metadata
-dev-perl/Audio-Mixer 0.700.0-r2 0.700.0-r3 0.700.0-r4: Perl extension for Sound Mixer control
+dev-perl/Audio-FLAC-Header 2.400.0-r1 2.400.0-r3: Access to FLAC audio metadata
+dev-perl/Audio-Mixer 0.700.0-r2 0.700.0-r4: Perl extension for Sound Mixer control
 dev-perl/Audio-Musepack 1.0.1-r1: An OO interface to Musepack file information and APE tag fields
 dev-perl/Audio-Scan 1.10.0-r1: Fast C metadata and tag reader for all common audio file formats
 dev-perl/Audio-WMA 1.300.0-r1: extension for reading WMA/ASF metadata
@@ -6039,19 +6039,19 @@ dev-perl/B-Hooks-OP-Check 0.220.0 0.220.0-r1: Wrap OP check callbacks
 dev-perl/B-Hooks-Parser 0.210.0-r1: Interface to perls parser variables
 dev-perl/B-Keywords 1.190.0 1.210.0: Lists of reserved barewords and symbol names
 dev-perl/B-OPCheck 0.320.0-r1: PL_check hacks using Perl callbacks
-dev-perl/B-Utils 0.270.0 0.270.0-r1 0.270.0-r2: Helper functions for op tree manipulation
+dev-perl/B-Utils 0.270.0 0.270.0-r2: Helper functions for op tree manipulation
 dev-perl/BDB 1.920.0-r1: Asynchronous Berkeley DB access
-dev-perl/BSD-Resource 1.291.100 1.291.100-r1 1.291.100-r2: Perl module for BSD process resource limit and priority functions
+dev-perl/BSD-Resource 1.291.100 1.291.100-r2: Perl module for BSD process resource limit and priority functions
 dev-perl/BSON 1.12.1 1.12.2: BSON serialization and deserialization (EOL)
 dev-perl/BZ-Client 4.400.200: A client for the Bugzilla web services API.
 dev-perl/Benchmark-Timer 0.711.200: Perl code benchmarking tool
-dev-perl/BerkeleyDB 0.550.0 0.630.0 0.630.0-r1 0.630.0-r2: This module provides Berkeley DB interface for Perl
+dev-perl/BerkeleyDB 0.550.0 0.630.0-r1 0.630.0-r2: This module provides Berkeley DB interface for Perl
 dev-perl/Bio-ASN1-EntrezGene 1.720.0: Regular expression-based Perl Parser for NCBI Entrez Gene
 dev-perl/Bio-DB-HTS 3.10.0-r1: Perl bindings for sci-libs/htslib
 dev-perl/Bio-Das 1.170.0-r2: Interface to Distributed Annotation System
 dev-perl/Bio-Graphics 2.390.0 2.400.0: Generate images from Bio::Seq objects for visualization purposes
 dev-perl/Bio-SamTools 1.430.0-r2: Read SAM/BAM database files
-dev-perl/Bit-Vector 7.400.0 7.400.0-r1 7.400.0-r2: Efficient bit vector, set of integers and big int math library
+dev-perl/Bit-Vector 7.400.0 7.400.0-r2: Efficient bit vector, set of integers and big int math library
 dev-perl/Bit-Vector-Minimal 1.300.0-r1 1.300.0-r2: Object-oriented wrapper around vec()
 dev-perl/Boulder 1.300.0-r2: An API for hierarchical tag/value structures
 dev-perl/Browser-Open 0.40.0: Open a browser at a given URL
@@ -6090,7 +6090,7 @@ dev-perl/CPAN-DistnameInfo 0.120.0-r2: Extract distribution name and version fro
 dev-perl/CPAN-Meta-Check 0.14.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.16: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.350.0: Inject modules into a CPAN::Mini mirror
-dev-perl/CPAN-Perl-Releases 3.760.0 5.202.3.200 5.202.4.280 5.202.6.200 5.202.7.170 5.202.8.200: Mapping Perl releases on CPAN to the location of the tarballs
+dev-perl/CPAN-Perl-Releases 3.760.0 5.202.4.280 5.202.7.170 5.202.8.200: Mapping Perl releases on CPAN to the location of the tarballs
 dev-perl/CPAN-Uploader 0.103.14 0.103.15: upload things to the CPAN
 dev-perl/CQL-Parser 1.130.0-r1: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r2: Perl extension for minifying CSS
@@ -6104,8 +6104,8 @@ dev-perl/Cache-FastMmap 1.490.0-r1: Uses an mmaped file to act as a shared memor
 dev-perl/Cache-Memcached 1.300.0-r1 1.300.0-r2: Perl API for memcached
 dev-perl/Cache-Memcached-Fast 0.260.0-r1: Perl client for memcached, in C language
 dev-perl/Cache-Simple-TimedExpiry 0.270.0-r1 0.270.0-r2: A lightweight cache with timed expiration
-dev-perl/Cairo 1.106.0 1.107.0 1.107.0-r1: Perl interface to the cairo library
-dev-perl/Cairo-GObject 1.4.0-r1 1.5.0 1.5.0-r1: Integrate Cairo into the Glib type system
+dev-perl/Cairo 1.106.0 1.107.0-r1: Perl interface to the cairo library
+dev-perl/Cairo-GObject 1.4.0-r1 1.5.0-r1: Integrate Cairo into the Glib type system
 dev-perl/Calendar-Simple 1.230.0 2.0.0: Perl extension to create simple calendars
 dev-perl/Canary-Stability 2012.0.0 2013.0.0: Canary to check perl compatibility for schmorp's modules
 dev-perl/Capture-Tiny 0.480.0: Capture STDOUT and STDERR from Perl, XS or external programs
@@ -6118,7 +6118,7 @@ dev-perl/Chart-Math-Axis 1.60.0-r2 1.60.0-r3: Implements an algorithm to find go
 dev-perl/Chatbot-Eliza 1.80.0: A clone of the classic Eliza program
 dev-perl/Cisco-IPPhone 0.50.0-r2: Cisco IP Phone interface using XML Objects
 dev-perl/Cisco-Reconfig 0.912.0: Parse and generate Cisco configuration files
-dev-perl/Class-Accessor 0.340.0-r1 0.500.0 0.510.0: Automated accessor generation
+dev-perl/Class-Accessor 0.340.0-r1 0.510.0: Automated accessor generation
 dev-perl/Class-Accessor-Chained 0.10.0-r1 0.10.0-r2: Perl module to make chained class accessors
 dev-perl/Class-Accessor-Grouped 0.100.120 0.100.140: Lets you build groups of accessors
 dev-perl/Class-Accessor-Lite 0.80.0 0.80.0-r1: A minimalistic variant of Class::Accessor
@@ -6127,7 +6127,7 @@ dev-perl/Class-Autouse 2.10.0-r2 2.10.0-r3: Runtime aspect loading of one or mor
 dev-perl/Class-Base 0.90.0: Useful base class for deriving other modules
 dev-perl/Class-C3 0.330.0 0.340.0: A pragma to use the C3 method resolution order algortihm
 dev-perl/Class-C3-Componentised 1.1.2: Load mix-ins or components to your C3-based class
-dev-perl/Class-C3-XS 0.140.0 0.150.0 0.150.0-r1: XS speedups for Class::C3
+dev-perl/Class-C3-XS 0.140.0 0.150.0-r1: XS speedups for Class::C3
 dev-perl/Class-Container 0.120.0-r2 0.130.0: Glue object frameworks together transparently
 dev-perl/Class-DBI 3.0.17-r2: Simple Database Abstraction
 dev-perl/Class-DBI-AbstractSearch 0.70.0-r2: Abstract Class::DBI's SQL with SQL::Abstract::Limit
@@ -6148,7 +6148,7 @@ dev-perl/Class-Loader 2.30.0-r1 2.30.0-r2: Load modules and create objects on de
 dev-perl/Class-MakeMethods 1.10.0-r1 1.10.0-r2: Automated method creation module for Perl
 dev-perl/Class-Member 1.600.0-r2: A set of modules to make the module developement easier
 dev-perl/Class-Method-Modifiers 2.120.0 2.130.0: provides Moose-like method modifiers
-dev-perl/Class-MethodMaker 2.240.0 2.240.0-r1 2.240.0-r2: Create generic methods for OO Perl
+dev-perl/Class-MethodMaker 2.240.0 2.240.0-r2: Create generic methods for OO Perl
 dev-perl/Class-Mix 0.6.0 0.6.0-r1: dynamic class mixing
 dev-perl/Class-ReturnValue 0.550.0-r1 0.550.0-r2: A return-value object that lets you treat it as as a boolean, array or object
 dev-perl/Class-Singleton 1.500.0 1.500.0-r1: Implementation of a Singleton class
@@ -6167,7 +6167,7 @@ dev-perl/Clone 0.390.0 0.450.0: Recursively copy Perl datatypes
 dev-perl/Clone-PP 1.70.0: Recursively copy Perl datatypes
 dev-perl/Color-Calc 1.74.0: Simple calculations with RGB colors
 dev-perl/Color-Library 0.21.0-r1 0.21.0-r2: An easy-to-use and comprehensive named-color library
-dev-perl/Compress-Bzip2 2.260.0 2.270.0 2.280.0: Interface to Bzip2 compression library
+dev-perl/Compress-Bzip2 2.260.0 2.280.0: Interface to Bzip2 compression library
 dev-perl/Compress-LZF 3.800.0-r1: extremely light-weight Lempel-Ziv-Free compression
 dev-perl/Conf-Libconfig 0.100.0 0.100.0-r1: Perl extension for libconfig
 dev-perl/Config-Any 0.320.0: Load configuration from different file formats, transparently
@@ -6251,7 +6251,7 @@ dev-perl/DBD-mysql 4.44.0-r1 4.50.0 4.50.0-r1: MySQL driver for the Perl5 Databa
 dev-perl/DBI 1.637.0 1.643.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r2 11.960.0 11.970.0: Interactive command shell for the DBI
 dev-perl/DBICx-TestDatabase 0.50.0-r1: create a temporary database from a DBIx::Class::Schema
-dev-perl/DBIx-Class 0.82.841-r1 0.82.842: Extensible and flexible object <-> relational mapper
+dev-perl/DBIx-Class 0.82.842: Extensible and flexible object <-> relational mapper
 dev-perl/DBIx-Class-DynamicDefault 0.40.0-r1: Automatically set and update fields
 dev-perl/DBIx-Class-InflateColumn-Boolean 0.3.0: Auto-create boolean objects from columns
 dev-perl/DBIx-Class-InflateColumn-IP 0.20.30-r2: Auto-create NetAddr::IP objects from columns
@@ -6302,7 +6302,7 @@ dev-perl/Data-Uniqid 0.120.0-r1 0.120.0-r2: Perl extension for simple generating
 dev-perl/Data-Utilities 0.40.0-r1 0.40.0-r2: Merge nested Perl data structures
 dev-perl/Data-Validate-Domain 0.140.0: Domain and host name validation
 dev-perl/Data-Validate-IP 0.270.0: Lightweight IPv4 and IPv6 validation module
-dev-perl/Data-Visitor 0.300.0-r1 0.300.0-r2 0.310.0: Visitor style traversal of Perl data structures
+dev-perl/Data-Visitor 0.300.0-r2 0.310.0: Visitor style traversal of Perl data structures
 dev-perl/Date-Calc 6.400.0 6.400.0-r1: Gregorian calendar date calculations
 dev-perl/Date-Extract 0.60.0: Extract probable dates from strings
 dev-perl/Date-ICal 2.678.0-r1 2.678.0-r2: ICal format date base module for Perl
@@ -6316,37 +6316,37 @@ dev-perl/DateTime-Event-ICal 0.130.0: Perl DateTime extension for computing rfc2
 dev-perl/DateTime-Event-Recurrence 0.190.0: DateTime::Set extension for create basic recurrence sets
 dev-perl/DateTime-Format-Builder 0.810.0-r1 0.820.0 0.830.0: Create DateTime parser classes and objects
 dev-perl/DateTime-Format-DateParse 0.50.0-r1 0.50.0-r2: Parses Date::Parse compatible formats
-dev-perl/DateTime-Format-Flexible 0.280.0 0.320.0: Flexibly parse strings and turn them into DateTime objects
+dev-perl/DateTime-Format-Flexible 0.320.0: Flexibly parse strings and turn them into DateTime objects
 dev-perl/DateTime-Format-HTTP 0.420.0 0.420.0-r1: Date conversion routines
 dev-perl/DateTime-Format-Human-Duration 0.640.0: Get a locale specific string describing the span of a given duration
-dev-perl/DateTime-Format-ICal 0.90.0 0.90.0-r1: Parse and format iCal datetime and duration strings
+dev-perl/DateTime-Format-ICal 0.90.0-r1: Parse and format iCal datetime and duration strings
 dev-perl/DateTime-Format-ISO8601 0.80.0-r1 0.80.0-r2 0.140.0: Parses ISO8601 formats
 dev-perl/DateTime-Format-Mail 0.403.0: Convert between DateTime and RFC2822/822 formats
 dev-perl/DateTime-Format-Natural 1.50.0 1.100.0: Parse informal natural language date/time strings
-dev-perl/DateTime-Format-SQLite 0.110.0 0.110.0-r1: Parse and format SQLite dates and times
+dev-perl/DateTime-Format-SQLite 0.110.0-r1: Parse and format SQLite dates and times
 dev-perl/DateTime-Format-Strptime 1.700.0 1.740.0 1.770.0: Parse and Format DateTimes using Strptime
 dev-perl/DateTime-Format-W3CDTF 0.70.0: Parse and format W3CDTF datetime strings
-dev-perl/DateTime-HiRes 0.10.0-r1 0.30.0: Create DateTime objects with sub-second current time resolution
-dev-perl/DateTime-Locale 0.460.0 1.20.0 1.30.0 1.50.0 1.160.0 1.260.0 1.270.0 1.280.0: Localization support for DateTime
+dev-perl/DateTime-HiRes 0.30.0: Create DateTime objects with sub-second current time resolution
+dev-perl/DateTime-Locale 0.460.0 1.30.0 1.160.0 1.260.0 1.270.0 1.280.0: Localization support for DateTime
 dev-perl/DateTime-Set 0.390.0 0.390.0-r1: Datetime sets and set math
-dev-perl/DateTime-TimeZone 1.930.0 1.940.0 2.10.0 2.110.0 2.130.0 2.390.0: Time zone object base class and factory
-dev-perl/DateTime-Tiny 1.60.0 1.70.0: A date object, with as little code as possible
-dev-perl/DateTimeX-Easy 0.89.0 0.89.0-r1: Parse a date/time string using the best method available
-dev-perl/Debug-Client 0.310.0 0.310.0-r1: Client side code for perl debugger
-dev-perl/Deliantra 1.300.0 2.10.0: Deliantra suppport module to read/write archetypes, maps etc
+dev-perl/DateTime-TimeZone 1.930.0 2.10.0 2.130.0 2.390.0: Time zone object base class and factory
+dev-perl/DateTime-Tiny 1.70.0: A date object, with as little code as possible
+dev-perl/DateTimeX-Easy 0.89.0-r1: Parse a date/time string using the best method available
+dev-perl/Debug-Client 0.310.0-r1: Client side code for perl debugger
+dev-perl/Deliantra 2.10.0: Deliantra suppport module to read/write archetypes, maps etc
 dev-perl/DelimMatch 1.06-r1 1.60.0-r2: A Perl 5 module for locating delimited substrings with proper nesting
-dev-perl/Devel-ArgNames 0.30.0-r1 0.30.0-r2: Figure out the names of variables passed into subroutines
+dev-perl/Devel-ArgNames 0.30.0-r2: Figure out the names of variables passed into subroutines
 dev-perl/Devel-CallChecker 0.8.0 0.8.0-r1: Custom OP checking attached to subroutines
 dev-perl/Devel-Caller 2.60.0 2.60.0-r2: Meatier versions of caller
 dev-perl/Devel-CheckBin 0.40.0: check that a command is available
 dev-perl/Devel-CheckCompiler 0.70.0: Check the compiler's availability
 dev-perl/Devel-CheckLib 1.110.0 1.130.0 1.140.0: check that a library is available
-dev-perl/Devel-CheckOS 1.810.0 1.830.0: require that we are running on a particular OS
-dev-perl/Devel-Cover 1.290.0-r1 1.360.0: Code coverage metrics for Perl
+dev-perl/Devel-CheckOS 1.830.0: require that we are running on a particular OS
+dev-perl/Devel-Cover 1.360.0: Code coverage metrics for Perl
 dev-perl/Devel-Cycle 1.120.0 1.120.0-r1: Find memory cycles in objects
-dev-perl/Devel-Declare 0.6.19 0.6.22: (DEPRECATED) Adding keywords to perl, in perl
-dev-perl/Devel-Dumpvar 1.60.0-r1 1.60.0-r2: Pure-OO reimplementation of dumpvar.pl
-dev-perl/Devel-FindPerl 0.14.0 0.15.0: Find the path to your perl
+dev-perl/Devel-Declare 0.6.22: (DEPRECATED) Adding keywords to perl, in perl
+dev-perl/Devel-Dumpvar 1.60.0-r2: Pure-OO reimplementation of dumpvar.pl
+dev-perl/Devel-FindPerl 0.15.0: Find the path to your perl
 dev-perl/Devel-GlobalDestruction 0.140.0: Returns the equivalent of ${^GLOBAL_PHASE} eq DESTRUCT for older perls
 dev-perl/Devel-GlobalPhase 0.3.3: Detect perl's global phase on older perls
 dev-perl/Devel-Hide 0.0.900 0.1.300: Forces the unavailability of specified Perl modules (for testing)
@@ -6356,7 +6356,7 @@ dev-perl/Devel-NYTProf 6.60.0 6.60.0-r1: Powerful feature-rich perl source code 
 dev-perl/Devel-OverloadInfo 0.4.0 0.5.0: Introspect overloaded operators
 dev-perl/Devel-PatchPerl 1.520.0 1.920.0 2.0.0: Patch perl source a la Devel::PPPort's buildperl.pl
 dev-perl/Devel-REPL 1.3.28: A modern perl interactive shell
-dev-perl/Devel-Refactor 0.50.0-r1 0.50.0-r2: Perl extension for refactoring Perl code
+dev-perl/Devel-Refactor 0.50.0-r2: Perl extension for refactoring Perl code
 dev-perl/Devel-SimpleTrace 0.80.0: See where you code warns and dies using stack traces
 dev-perl/Devel-Size 0.820.0 0.830.0: Perl extension for finding the memory usage of Perl variables
 dev-perl/Devel-SmallProf 2.20.0-r4: Per-line Perl profiler
@@ -7584,7 +7584,7 @@ dev-perl/aliased 0.340.0-r1: Use shorter versions of class names
 dev-perl/asa 1.30.0-r1 1.40.0: Lets your class/object say it works like something else
 dev-perl/autobox 3.0.1 3.0.1-r1: Call methods on native types
 dev-perl/autovivification 0.180.0 0.180.0-r1: Lexically disable autovivification
-dev-perl/bareword-filehandles 0.6.0 0.7.0 0.7.0-r1: Disables bareword filehandles
+dev-perl/bareword-filehandles 0.6.0 0.7.0-r1: Disables bareword filehandles
 dev-perl/boolean 0.460.0: Boolean support for Perl
 dev-perl/capitalization 0.30.0-r1 0.30.0-r2: no capitalization on method names
 dev-perl/common-sense 3.740.0-r1 3.750.0: Save a tree AND a kitten, use common::sense!
@@ -17684,7 +17684,7 @@ sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify so
 sys-libs/freeipmi 1.5.7 1.6.4 1.6.5: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.13-r2 1.14.1 1.17 1.18 1.18.1: Standard GNU database libraries
-sys-libs/glibc 2.19-r2 2.25-r11 2.30-r8 2.30-r9 2.31-r6 2.32 9999: GNU libc C library
+sys-libs/glibc 2.19-r2 2.25-r11 2.30-r8 2.30-r9 2.31-r6 2.32 2.32-r1 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 5.1.2: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.1.0: Library for managing partitions
