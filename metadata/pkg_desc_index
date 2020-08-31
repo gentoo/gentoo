@@ -572,7 +572,7 @@ app-admin/mktwpol 1.0.0 1.0.1: Bash scripts to install tripwire and generate tri
 app-admin/mms-agent 3.7.0.212_p1 6.0.0.381_p1: MongoDB MMS agents
 app-admin/mongo-tools 3.6.13 3.6.17 4.0.12 4.0.16 4.0.19 4.2.3 4.2.6 4.2.8: A high-performance, open source, schema-free document-oriented database
 app-admin/monit 5.25.3 5.26.0 5.27.0: Monitoring and managing daemons or similar programs running on a Unix system
-app-admin/mtail 3.0.0_rc35: A tool for extracting metrics from application logs
+app-admin/mtail 3.0.0_rc35 3.0.0_rc36: A tool for extracting metrics from application logs
 app-admin/multilog-watch 1.12-r1: Watches a multilog file for irregularities
 app-admin/needrestart 3.3 3.5 9999: Restart daemons after library updates
 app-admin/newsyslog 1.1-r1 1.1.0.81: a highly configurable program for managing and archiving log files
@@ -6503,9 +6503,9 @@ dev-perl/File-MMagic 1.300.0-r1 1.300.0-r2: The Perl Image-Info Module
 dev-perl/File-Map 0.640.0 0.670.0: Memory mapping made simple and safe
 dev-perl/File-MimeInfo 0.280.0 0.290.0: Determine file type
 dev-perl/File-NCopy 0.360.0-r2: Copy file, file Copy file[s] | dir[s], dir
-dev-perl/File-NFSLock 1.270.0: perl module to do NFS (or not) locking
-dev-perl/File-Next 1.160.0 1.180.0: File::Next is an iterator-based module for finding files
-dev-perl/File-Path-Expand 1.20.0-r1: Expand filenames
+dev-perl/File-NFSLock 1.270.0 1.290.0: perl module to do NFS (or not) locking
+dev-perl/File-Next 1.160.0 1.180.0 1.180.0-r1: An iterator-based module for finding files
+dev-perl/File-Path-Expand 1.20.0-r1 1.20.0-r2: Expand filenames
 dev-perl/File-ReadBackwards 1.50.0-r1: The Perl File-ReadBackwards Module
 dev-perl/File-Remove 1.570.0: Remove files and directories
 dev-perl/File-RsyncP 0.740.0: An rsync perl module
@@ -17650,7 +17650,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.0-r2 4.1.2 9999: Gentoo automatic kernel
 sys-kernel/gentoo-kernel 5.4.60 5.4.61 5.7.17 5.7.18 5.7.19 5.8.3 5.8.4 5.8.5: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.60 5.4.61 5.7.17 5.7.18 5.7.19 5.7.19-r1 5.8.3 5.8.4 5.8.5 5.8.5-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.228 4.4.229 4.4.230 4.4.231 4.4.232 4.4.233 4.4.234 4.9.228 4.9.229 4.9.230 4.9.231 4.9.232 4.9.233 4.9.234 4.14.185 4.14.191 4.14.192 4.14.193 4.14.194 4.14.195 4.19.129 4.19.138 4.19.139 4.19.140 4.19.141 4.19.142 5.4.48 5.4.57 5.4.58 5.4.59 5.4.60 5.4.61 5.7.14 5.7.15 5.7.16 5.7.17 5.7.18 5.7.19 5.8.0 5.8.0-r1 5.8.1 5.8.2 5.8.3 5.8.4 5.8.5: Full sources including the Gentoo patchset for the 5.8 kernel tree
-sys-kernel/git-sources 5.9_rc1 5.9_rc2: The very latest -git version of the Linux kernel
+sys-kernel/git-sources 5.9_rc1 5.9_rc2 5.9_rc3: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
 sys-kernel/kergen 0.1.4 0.1.5: Kernel config generator
