@@ -6506,8 +6506,8 @@ dev-perl/File-NCopy 0.360.0-r2: Copy file, file Copy file[s] | dir[s], dir
 dev-perl/File-NFSLock 1.270.0 1.290.0: perl module to do NFS (or not) locking
 dev-perl/File-Next 1.160.0 1.180.0 1.180.0-r1: An iterator-based module for finding files
 dev-perl/File-Path-Expand 1.20.0-r1 1.20.0-r2: Expand filenames
-dev-perl/File-ReadBackwards 1.50.0-r1: The Perl File-ReadBackwards Module
-dev-perl/File-Remove 1.570.0: Remove files and directories
+dev-perl/File-ReadBackwards 1.50.0-r1 1.50.0-r2: Read a file backwards by lines
+dev-perl/File-Remove 1.570.0 1.580.0: Remove files and directories
 dev-perl/File-RsyncP 0.740.0: An rsync perl module
 dev-perl/File-Scan-ClamAV 1.950.0: Connect to a local Clam Anti-Virus clamd service and send commands
 dev-perl/File-SearchPath 0.70.0: Search for a file in an environment variable path
