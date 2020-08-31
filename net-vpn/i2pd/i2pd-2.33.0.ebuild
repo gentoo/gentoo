@@ -21,7 +21,7 @@ RDEPEND="
 		dev-libs/boost:=[threads]
 		!libressl? ( dev-libs/openssl:0=[-bindist] )
 		libressl? ( dev-libs/libressl:0= )
-		upnp? ( net-libs/miniupnpc )
+		upnp? ( net-libs/miniupnpc:= )
 	)"
 DEPEND="${RDEPEND}
 	static? (
@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}
 		sys-libs/zlib[static-libs]
 		!libressl? ( dev-libs/openssl:0=[static-libs] )
 		libressl? ( dev-libs/libressl:0=[static-libs] )
-		upnp? ( net-libs/miniupnpc[static-libs] )
+		upnp? ( net-libs/miniupnpc:=[static-libs] )
 	)"
 
 CMAKE_USE_DIR="${S}/build"
