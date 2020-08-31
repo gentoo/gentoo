@@ -44,6 +44,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+PATCHES=( "${FILESDIR}/pcl.patch" )
 
 src_configure() {
 	local mycmakeargs=(
