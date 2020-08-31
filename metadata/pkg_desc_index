@@ -11256,7 +11256,7 @@ games-board/eboard 1.1.1-r2: chess interface for POSIX systems
 games-board/four-in-a-row 3.34.4 3.36.4: Make lines of the same color to win
 games-board/freedoko 0.7.16 0.7.16-r1: FreeDoko is a Doppelkopf-game
 games-board/fruit 2.1-r1: UCI-only chess engine
-games-board/gambit 1.0.4: Qt-based chess application + engine "gupta"
+games-board/gambit 1.0.4-r1: Qt-based chess application + engine "gupta"
 games-board/gmchess 0.29.6-r2: Chinese chess with gtkmm and c++
 games-board/gnome-chess 3.34.0 3.36.1: Play the classic two-player boardgame of chess
 games-board/gnome-hearts 0.3.1-r2: A clone of classic hearts card game
@@ -15061,7 +15061,7 @@ net-mail/relay-ctrl 3.1.1-r2 3.1.1-r3 3.2: SMTP Relaying Control designed for qm
 net-mail/renattach 1.2.4-r1: Filter that renames/deletes dangerous email attachments
 net-mail/ripmime 1.4.0.10: extract attachment files out of a MIME-encoded email pack
 net-mail/ripole 0.2.2: Program/library to pull out attachment from OLE2 data files
-net-mail/rss2email 3.11 3.11-r1 3.12.1: A python script that converts RSS/Atom newsfeeds to email
+net-mail/rss2email 3.11 3.11-r1 3.12.1 3.12.2: A python script that converts RSS/Atom newsfeeds to email
 net-mail/safecat 1.13: Safecat implements qmail's maildir algorithm, safely copying standard input
 net-mail/sendEmail 1.56-r1 1.56-r2: Command line based, SMTP email agent
 net-mail/serialmail 0.75-r4: A serialmail is a collection of tools for passing mail across serial links
