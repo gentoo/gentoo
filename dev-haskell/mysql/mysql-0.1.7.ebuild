@@ -23,6 +23,9 @@ RESTRICT=test # needs local mysql
 RDEPEND=">=dev-haskell/semigroups-0.11:=[profile?] <dev-haskell/semigroups-0.19:=[profile?]
 	>=dev-lang/ghc-7.4.1:=
 "
+
+RDEPEND+=" dev-db/mysql-connector-c:="
+
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.8
 	test? ( dev-haskell/hspec )
