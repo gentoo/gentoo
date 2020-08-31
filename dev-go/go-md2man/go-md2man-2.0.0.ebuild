@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/cpuguy83/go-md2man"
 
 LICENSE="BSD-2 MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 # restrict tests because they need network-sandbox disabled
 # bug https://bugs.gentoo.org/715028
