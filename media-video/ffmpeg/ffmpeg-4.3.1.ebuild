@@ -214,7 +214,7 @@ RDEPEND="
 		>=sys-libs/libavc1394-0.5.4-r1[${MULTILIB_USEDEP}]
 	)
 	ieee1394? (
-		>=media-libs/libdc1394-2.2.1[${MULTILIB_USEDEP}]
+		>=media-libs/libdc1394-2.2.1:2=[${MULTILIB_USEDEP}]
 		>=sys-libs/libraw1394-2.1.0-r1[${MULTILIB_USEDEP}]
 	)
 	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
