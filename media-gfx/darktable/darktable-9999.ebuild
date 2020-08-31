@@ -12,7 +12,7 @@ HOMEPAGE="https://www.darktable.org/"
 
 LICENSE="GPL-3 CC-BY-3.0"
 SLOT="0"
-#KEYWORDS="~amd64 ~x86"
+#KEYWORDS="~amd64 ~arm64"
 LANGS=" af ca cs da de el es fi fr gl he hu it ja nb nl pl pt-BR pt-PT ro ru sk sl sq sv th uk zh-CN zh-TW"
 # TODO add lua once dev-lang/lua-5.2 is unmasked
 IUSE="colord cups cpu_flags_x86_sse3 doc flickr geolocation gnome-keyring gphoto2 graphicsmagick jpeg2k kwallet
