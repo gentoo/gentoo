@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
 inherit cmake-utils distutils-r1 toolchain-funcs
 
@@ -25,6 +25,9 @@ DEPEND="${RDEPEND}
 "
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
+#TODO: needs upstream fixes
+#distutils_enable_tests setup.py
+
 S=${WORKDIR}/${P/_rc/-rc}
 
 PATCHES=(
@@ -32,9 +35,14 @@ PATCHES=(
 )
 
 wrap_python() {
+	local phase=$1
+	shift
+
 	if use python; then
 		pushd bindings/python >/dev/null || die
-		distutils-r1_${1} "$@"
+		echo distutils-r1_${phase} "$@"
+		pwd
+		distutils-r1_${phase} "$@"
 		popd >/dev/null
 	fi
 }
