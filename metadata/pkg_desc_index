@@ -13315,7 +13315,7 @@ media-libs/opus 1.3.1-r1: Open codec for interactive speech and music transmissi
 media-libs/opusfile 0.11 0.12: A high-level decoding and seeking API for .opus files
 media-libs/osl 1.10.10: Advanced shading language for production GI renderers
 media-libs/oyranos 0.9.6-r1 9999: Colour management system allowing to share settings across apps and services
-media-libs/partio 1.1.0_p20170829 1.5.4 9999: Library for particle IO and manipulation
+media-libs/partio 1.1.0_p20170829 1.5.4 1.10.1 9999: Library for particle IO and manipulation
 media-libs/phat 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
 media-libs/phonon 4.11.1-r1: KDE multimedia abstraction library
 media-libs/phonon-gstreamer 4.10.0: GStreamer backend for the Phonon multimedia library
@@ -14907,7 +14907,7 @@ net-libs/libosmo-netif 9999: Utility functions for OsmocomBB, OpenBSC and relate
 net-libs/libosmocore 0.8.0 0.10.2 9999: Utility functions for OsmocomBB, OpenBSC and related projects
 net-libs/libotr 4.1.1: (OTR) Messaging allows you to have private conversations over instant messaging
 net-libs/libpcap 1.9.1 1.9.1-r3 1.10.0_pre 9999: A system-independent library for user-level network packet capture
-net-libs/libpcapnav 0.8: Libpcap wrapper library to navigate to arbitrary packets in a tcpdump trace file
+net-libs/libpcapnav 0.8 0.8-r1: Libpcap wrapper library to navigate to arbitrary packets in a tcpdump trace file
 net-libs/libpri 1.6.0: Primary Rate ISDN (PRI) library
 net-libs/libprotoident 2.0.12 2.0.13 2.0.14_p1 9999: A library that performs application layer protocol identification for flows
 net-libs/libproxy 0.4.15-r1: Library for automatic proxy configuration management
@@ -17700,7 +17700,7 @@ sys-libs/libcxxabi 9.0.1 10.0.0 10.0.1 11.0.0_rc1 11.0.0_rc2 11.0.0.9999 12.0.0.
 sys-libs/libfaketime 0.9.6-r2 0.9.7 0.9.8: Report faked system time to programs
 sys-libs/libhugetlbfs 2.21 2.22: easy hugepage access
 sys-libs/libhx 3.22-r1 3.24: Platform independent library providing basic system functions
-sys-libs/libieee1284 0.2.11-r4 0.2.11-r5 0.2.11-r6: Library to query devices using IEEE1284
+sys-libs/libieee1284 0.2.11-r4 0.2.11-r5 0.2.11-r6 0.2.11-r7: Library to query devices using IEEE1284
 sys-libs/libixp 0.5_p20110208-r3: A stand-alone client/server 9P library including ixpc client
 sys-libs/libkudzu 1.2.57.1: Red Hat Hardware detection tools
 sys-libs/libnih 1.0.3-r3 1.0.3-r4: Light-weight 'standard library' of C functions
