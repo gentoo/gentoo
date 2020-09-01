@@ -3,10 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
-DISTUTILS_OPTIONAL=1
-
-inherit multilib cmake-utils python-single-r1
+inherit multilib cmake-utils
 
 DESCRIPTION="A library to decode Bluetooth baseband packets"
 HOMEPAGE="http://libbtbb.sourceforge.net/"
@@ -24,9 +21,9 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-IUSE="extras static-libs wireshark-plugins"
+IUSE="static-libs wireshark-plugins"
 
-RDEPEND="extras? ( ${PYTHON_DEPS} )
+RDEPEND="
 	wireshark-plugins? (
 		>=net-analyzer/wireshark-1.8.3-r1:=
 	)
@@ -34,8 +31,6 @@ RDEPEND="extras? ( ${PYTHON_DEPS} )
 DEPEND="${RDEPEND}
 	wireshark-plugins? ( dev-libs/glib
 			virtual/pkgconfig )"
-
-REQUIRED_USE="extras? ( ${PYTHON_REQUIRED_USE} )"
 
 get_PV() { local pv=$(best_version $1); pv=${pv#$1-}; pv=${pv%-r*}; pv=${pv//_}; echo ${pv}; }
 
@@ -74,7 +69,7 @@ src_configure() {
 	CMAKE_USE_DIR="${S}"
 	BUILD_DIR="${S}"_build
 	local mycmakeargs=(
-		-DENABLE_PYTHON=$(usex extras)
+		-DENABLE_PYTHON=OFF
 		-DBUILD_STATIC_LIB=$(usex static-libs)
 		-DBUILD_ROOT="${ED}"
 	)
