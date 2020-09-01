@@ -89,7 +89,7 @@ src_install() {
 	insopts -m 0600 -o "${PN}" -g "${PN}"
 	newins "${FILESDIR}"/${PN}-r1.ini ${PN}.ini
 
-	dodoc {ABOUT,ISSUES}.txt README.mkd licenses/*
+	dodoc ISSUES.txt README.mkd
 
 	systemd_newunit "${FILESDIR}"/sabnzbd_at.service 'sabnzbd@.service'
 }
