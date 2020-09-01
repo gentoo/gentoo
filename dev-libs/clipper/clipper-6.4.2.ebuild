@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/project/polyclipping/${MY_P}.zip -> ${P}.zip"
 
 LICENSE="Boost-1.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 IUSE=""
 
