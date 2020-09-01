@@ -25,13 +25,17 @@ RDEPEND="
 	app-arch/zstd
 	dev-db/sqlite:3
 	dev-libs/glib:2
+	dev-libs/hiredis:=
 	dev-libs/icu:=
 	dev-libs/libev
 	dev-libs/libsodium
 	dev-libs/snowball-stemmer
 	net-libs/libnsl
 	sys-apps/file
-	blas? ( sci-libs/openblas )
+	blas? (
+		virtual/blas
+		virtual/lapack
+	)
 	cpu_flags_x86_ssse3? ( dev-libs/hyperscan )
 	jemalloc? ( dev-libs/jemalloc )
 	jit? (
@@ -54,15 +58,16 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/rspamd-2.5-unbundle-lua.patch"
-	"${FILESDIR}/rspamd-2.5-unbundle-zstd.patch"
+	"${FILESDIR}/rspamd-9999-unbundle-lua.patch"
+	"${FILESDIR}/rspamd-9999-unbundle-zstd.patch"
 	"${FILESDIR}/rspamd-2.5-unbundle-snowball.patch"
+	"${FILESDIR}/rspamd-9999-unbundle-hiredis.patch"
 )
 
 src_prepare() {
 	cmake_src_prepare
 
-	rm -vrf contrib/{lua-{bit,lpeg},snowball,zstd} || die
+	rm -vrf contrib/{hiredis,lua-{bit,lpeg},snowball,zstd} || die
 
 	sed -i -e 's/User=_rspamd/User=rspamd/g' \
 		rspamd.service \
