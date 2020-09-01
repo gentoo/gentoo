@@ -40,7 +40,8 @@ src_prepare() {
 
 src_test() {
 	local pkgver=$(best_version sys-cluster/zookeeper-bin)
-	export ZOOKEEPER_VERSION=${pkgver##*-}
+	pkgver=${pkgver#sys-cluster/zookeeper-bin-}
+	export ZOOKEEPER_VERSION=${pkgver%-r*}
 	export ZOOKEEPER_PATH=${BROOT}/opt/zookeeper-bin
 	distutils-r1_src_test
 }
