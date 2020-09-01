@@ -4,9 +4,9 @@
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
-inherit cmake-utils distutils-r1 toolchain-funcs
+inherit cmake distutils-r1 toolchain-funcs
 
 DESCRIPTION="disassembly/disassembler framework + bindings"
 HOMEPAGE="http://www.capstone-engine.org/"
@@ -25,6 +25,9 @@ DEPEND="${RDEPEND}
 "
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
+#TODO: needs upstream fixes
+#distutils_enable_tests setup.py
+
 S=${WORKDIR}/${P/_rc/-rc}
 
 PATCHES=(
@@ -32,15 +35,20 @@ PATCHES=(
 )
 
 wrap_python() {
+	local phase=$1
+	shift
+
 	if use python; then
 		pushd bindings/python >/dev/null || die
-		distutils-r1_${1} "$@"
+		echo distutils-r1_${phase} "$@"
+		pwd
+		distutils-r1_${phase} "$@"
 		popd >/dev/null
 	fi
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	wrap_python ${FUNCNAME}
 }
@@ -50,25 +58,25 @@ src_configure() {
 		-DCAPSTONE_BUILD_TESTS="$(usex test)"
 		-DCAPSTONE_BUILD_STATIC="$(usex static-libs)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 
 	wrap_python ${FUNCNAME}
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	wrap_python ${FUNCNAME}
 }
 
 src_test() {
-	cmake-utils_src_test
+	cmake_src_test
 
 	wrap_python ${FUNCNAME}
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	wrap_python ${FUNCNAME}
 }
