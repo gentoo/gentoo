@@ -10,7 +10,7 @@ inherit meson
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://git.sr.ht/~kennylevinsen/gtkgreet.git"
+	EGIT_REPO_URI="https://git.sr.ht/~kennylevinsen/gtkgreet"
 else
 	SRC_URI="https://git.sr.ht/~kennylevinsen/gtkgreet/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~ppc64 ~x86"
@@ -22,7 +22,7 @@ IUSE="+layershell +man"
 
 DEPEND="
 	dev-libs/json-c:=
-	gui-libs/gtk-layer-shell
+	layershell? ( gui-libs/gtk-layer-shell )
 	x11-libs/gtk+:3
 "
 RDEPEND="
