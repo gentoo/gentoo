@@ -5,6 +5,10 @@
 # Dependencies not keyworded
 app-editors/emacs gui
 
+# Yixun Lan <dlan@gentoo.org> (2020-09-01)
+# Dependencies not keyworded
+dev-libs/jansson doc
+
 # Jakov Smolic <jakov.smolic@sartura.hr> (2020-08-14)
 # Large amount of missing keywords
 # Bug #724358
