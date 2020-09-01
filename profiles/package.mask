@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2020-09-01)
+# Uses golang-* eclasses, only a library, all former reverse
+# dependencies have long since switched to vendoring.
+# Removal in 30 days. Bug #732130.
+dev-go/siphash
+
 # Michał Górny <mgorny@gentoo.org> (2020-09-01)
 # The following packages are Python 2 only.  All but sys-boot/udk have
 # no reverse dependencies; sys-boot/udk's only revdep is sys-boot/refind
