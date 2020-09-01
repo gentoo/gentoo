@@ -302,7 +302,7 @@ java-pkg-simple_prepend_resources() {
 	# add resources directory to classpath
 	for resource in "${resources[@]}"; do
 		cp -rT "${resource:-.}" "${destination}"\
-			|| die "Could copy resources to ${destination}"
+			|| die "Could not copy resources from ${resource:-.} to ${destination}"
 	done
 }
 
