@@ -3141,6 +3141,7 @@ games-action/supermariowar:server - Compile and install Super Mario War server f
 games-action/supertuxkart:fribidi - Support for right-to-left languages
 games-action/supertuxkart:nettle - Use dev-libs/nettle crypto backend
 games-action/supertuxkart:recorder - Enable recording with media-libs/libopenglrecorder
+games-action/supertuxkart:sqlite - Record IP bans, statistics in server mode with dev-db/sqlite
 games-action/supertuxkart:wiimote - Support for wiimote input devices
 games-action/swordandsworcery:bundled-libs - Use the upstream provided bundled libraries.
 games-action/trine:launcher - Install GTK+ launcher

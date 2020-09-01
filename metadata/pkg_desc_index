@@ -4513,7 +4513,7 @@ dev-haskell/unicode-transforms 0.3.7: Unicode normalization
 dev-haskell/uniplate 1.6.12: Help writing simple, concise and fast generic operations
 dev-haskell/uniqueid 0.1.1: Splittable Unique Identifier Supply
 dev-haskell/unix-compat 0.4.1.3 0.4.1.4 0.4.2.0 0.4.3.1 0.5.2: Portable POSIX-compatibility layer
-dev-haskell/unix-time 0.3.5 0.3.6 0.3.7 0.4.7: Unix time parser/formatter and utilities
+dev-haskell/unix-time 0.4.7: Unix time parser/formatter and utilities
 dev-haskell/unixutils 1.54.1: A crude interface between Haskell and Unix-like operating systems
 dev-haskell/unliftio 0.2.12.1: The MonadUnliftIO typeclass for unlifting monads to IO (batteries included)
 dev-haskell/unliftio-core 0.1.2.0: The MonadUnliftIO typeclass for unlifting monads to IO
@@ -11101,7 +11101,7 @@ games-action/solar2 1.10: An open-world, sandbox game set in an infinite abstrac
 games-action/spacearyarya-kxl 1.0.2-r2: A 2D/3D shooting game
 games-action/super-hexagon 20160217: A minimal action game by Terry Cavanagh, with music by Chipzel
 games-action/supermariowar 2.0_beta1-r1: Fan-made multiplayer Super Mario Bros. style deathmatch game
-games-action/supertuxkart 1.1: A kart racing game starring Tux, the linux penguin (TuxKart fork)
+games-action/supertuxkart 1.1 1.2: A kart racing game starring Tux, the linux penguin (TuxKart fork)
 games-action/swordandsworcery 1.02: An exploratory action adventure game with an emphasis on audiovisual style
 games-action/teeworlds 0.7.5: Online multi-player platform 2D shooter
 games-action/towbowl-tactics 0.5: Tow Bowl Tactics is a game based on Games Workshop's Blood Bowl
