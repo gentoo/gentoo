@@ -2723,7 +2723,7 @@ app-portage/gentoopm 0.3.1 9999: A common interface to Gentoo package managers
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
 app-portage/golop 0.0.1 0.0.1-r1 9999: A pure Go re-implementation of genlop
 app-portage/gpytage 0.3.0_rc1-r1: GTK Utility to help manage Portage's user config files
-app-portage/gpyutils 0.4.2 9999: Utitilies for maintaining Python packages
+app-portage/gpyutils 0.4.2 0.4.3 9999: Utitilies for maintaining Python packages
 app-portage/grs 0.7 9999: Suite to build Gentoo Reference Systems
 app-portage/gs-elpa 0.1.3-r1: g-sorcery backend for elisp packages
 app-portage/gverify 2: gentoo.git signature verification tool
