@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2020-09-01)
+# sys-boot/udk is being removed, and newest revision of refind does not
+# support it already.
+sys-boot/refind gnuefi
+
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-08)
 # Ensure tools flag is enabled for @system set
 sys-apps/kmod tools
