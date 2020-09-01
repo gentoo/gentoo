@@ -14,8 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE="doc python static-libs"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+IUSE="doc static-libs"
 
 BDEPEND="doc? (
 		app-text/docbook-sgml-utils
@@ -23,14 +22,6 @@ BDEPEND="doc? (
 		app-text/docbook-dsssl-stylesheets
 		dev-perl/XML-RegExp
 	)"
-
-DEPEND="python? ( ${PYTHON_DEPS} )"
-
-RDEPEND="${DEPEND}"
-
-pkg_setup() {
-	use python && python-single-r1_pkg_setup
-}
 
 src_prepare() {
 	default
@@ -43,8 +34,8 @@ src_prepare() {
 multilib_src_configure() {
 	local myeconfargs=(
 		--enable-shared
+		--without-python
 		$(use_enable static-libs static)
-		$(multilib_native_use_with python)
 	)
 
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
