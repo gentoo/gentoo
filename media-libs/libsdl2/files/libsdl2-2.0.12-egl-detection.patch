@@ -1,0 +1,24 @@
+Fix wayland support on systems without X11.
+
+Bug: https://bugzilla.libsdl.org/show_bug.cgi?id=5270
+
+--- a/configure	Tue Aug 25 04:05:36 2020 +0200
++++ a/configure	Tue Aug 25 06:40:03 2020 -0700
+@@ -22306,6 +22306,7 @@
+           #define LINUX
+           #define EGL_API_FB
+           #define MESA_EGL_NO_X11_HEADERS
++          #define EGL_NO_X11
+           #include <EGL/egl.h>
+           #include <EGL/eglext.h>
+
+--- a/configure.ac	Tue Aug 25 04:05:36 2020 +0200
++++ a/configure.ac	Tue Aug 25 06:40:03 2020 -0700
+@@ -2373,6 +2373,7 @@
+           #define LINUX
+           #define EGL_API_FB
+           #define MESA_EGL_NO_X11_HEADERS
++          #define EGL_NO_X11
+           #include <EGL/egl.h>
+           #include <EGL/eglext.h>
+         ],[
