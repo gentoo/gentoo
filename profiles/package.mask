@@ -254,7 +254,6 @@ sci-chemistry/openbabel-python
 sci-libs/minfx
 sci-mathematics/pymc3
 sci-physics/qutip
-sci-visualization/fityk
 sci-visualization/yt
 sys-apps/elivepatch-client
 sys-apps/elivepatch-server
