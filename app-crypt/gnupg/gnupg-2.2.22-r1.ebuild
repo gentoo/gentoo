@@ -50,6 +50,7 @@ DOCS=(
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.1.20-gpgscm-Use-shorter-socket-path-lengts-to-improve-tes.patch"
+	"${FILESDIR}/${P}-card-status.patch"
 )
 
 src_prepare() {
