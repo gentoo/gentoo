@@ -33,6 +33,19 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-01)
+# The following packages are Python 2 only.  All but sys-boot/udk have
+# no reverse dependencies; sys-boot/udk's only revdep is sys-boot/refind
+# and it removed support for udk in its newest version.  Their
+# maintainers have either not replied or requested removing the package.
+# Please do not remove the mask unless you port the package to py3.7+.
+# Removal in 30 days.  Package bugs found blocking tracker bug #694800.
+dev-cpp/icnc
+dev-db/tokumx
+net-fs/nfstest
+sys-boot/udk
+sys-cluster/pbs-python
+
+# Michał Górny <mgorny@gentoo.org> (2020-09-01)
 # The GitHub repository is gone and upstream's homepage lists only old
 # versions.  Python 2 only.  Debian has a py3 patch but it is incomplete
 # and fbless crashes when opening a file.
@@ -241,7 +254,6 @@ sci-chemistry/openbabel-python
 sci-libs/minfx
 sci-mathematics/pymc3
 sci-physics/qutip
-sci-visualization/fityk
 sci-visualization/yt
 sys-apps/elivepatch-client
 sys-apps/elivepatch-server
