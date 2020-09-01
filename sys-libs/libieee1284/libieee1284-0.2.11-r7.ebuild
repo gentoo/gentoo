@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -17,25 +17,29 @@ KEYWORDS="amd64 ppc x86"
 IUSE="doc python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="
-	python? ( ${PYTHON_DEPS} )"
-DEPEND="${RDEPEND}
-	doc? (
+BDEPEND="doc? (
 		app-text/docbook-sgml-utils
 		>=app-text/docbook-sgml-dtd-4.1
 		app-text/docbook-dsssl-stylesheets
 		dev-perl/XML-RegExp
 	)"
 
+DEPEND="python? ( ${PYTHON_DEPS} )"
+
+RDEPEND="${DEPEND}"
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE="${S}" econf \
-		--enable-shared \
-		$(use_enable static-libs static) \
+	local myeconfargs=(
+		--enable-shared
+		$(use_enable static-libs static)
 		$(multilib_native_use_with python)
+	)
+
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_install_all() {
@@ -43,6 +47,6 @@ multilib_src_install_all() {
 	dodoc doc/interface*
 
 	if ! use static-libs; then
-		find "${D}" -name '*.la' -delete || die
+		find "${ED}" -name '*.la' -delete || die
 	fi
 }
