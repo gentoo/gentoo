@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit autotools git-r3 python-any-r1
 
@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="bittorrent brotli bzip2 debug finger ftp gopher gpm gnutls guile idn ipv6
-	javascript libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib"
+	libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib zstd"
 
 BDEPEND="virtual/pkgconfig"
 RDEPEND="
@@ -37,15 +37,18 @@ RDEPEND="
 		gnutls? ( net-libs/gnutls:= )
 	)
 	tre? ( dev-libs/tre )
-	X? ( x11-libs/libX11 x11-libs/libXt )
+	X? (
+		x11-libs/libX11
+		x11-libs/libXt
+	)
 	xml? ( >=dev-libs/expat-1.95.4 )
-	zlib? ( >=sys-libs/zlib-1.1.4 )"
+	zlib? ( >=sys-libs/zlib-1.1.4 )
+	zstd? ( app-arch/zstd:= )"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-parallel-make.patch
-	"${FILESDIR}"/${PN}-0.13.4-ruby-gcc10.patch
 )
 
 src_unpack() {
@@ -75,12 +78,13 @@ src_configure() {
 		$(use_with bzip2 bzlib)
 		$(use_with guile)
 		$(use_with idn)
-		--with-luapkg=$(usev lua)
+		$(use_with lua luapkg lua)
 		$(use_with perl)
 		$(use_with ruby)
 		$(use_with tre)
 		$(use_with X x)
 		$(use_with zlib)
+		$(use_with zstd)
 		$(use_enable bittorrent)
 		$(use_enable finger)
 		$(use_enable ftp)
