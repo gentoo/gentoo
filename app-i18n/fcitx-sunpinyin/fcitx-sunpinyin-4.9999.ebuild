@@ -28,7 +28,8 @@ BDEPEND="virtual/pkgconfig"
 DEPEND=">=app-i18n/fcitx-4.2.9:4
 	>=app-i18n/sunpinyin-2.0.4_alpha:=
 	virtual/libintl"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	app-i18n/sunpinyin-data"
 
 DOCS=(AUTHORS)
 
