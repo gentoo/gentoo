@@ -33,6 +33,8 @@ DEPEND="${RDEPEND}
 
 RESTRICT="!test? ( test )"
 
+PATCHES=( "${FILESDIR}"/${P}-missing-files.patch )
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
