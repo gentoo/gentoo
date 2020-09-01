@@ -21,7 +21,7 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	GIT_COMMIT="a3d5f733751021dcd172954f5b618934b80a4a55"
 	SRC_URI+=" https://github.com/xbmc/xbmc/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 	S=${WORKDIR}/xbmc-${GIT_COMMIT}
 fi
 
