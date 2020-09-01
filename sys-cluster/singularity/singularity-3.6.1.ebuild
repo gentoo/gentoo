@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-info
+inherit linux-info toolchain-funcs
 
 DESCRIPTION="Application containers for Linux"
 HOMEPAGE="https://sylabs.io"
@@ -34,6 +34,10 @@ S=${WORKDIR}/${PN}
 
 src_configure() {
 	local myconfargs=(
+		-c "$(tc-getBUILD_CC)" \
+		-x "$(tc-getBUILD_CXX)" \
+		-C "$(tc-getCC)" \
+		-X "$(tc-getCXX)" \
 		--prefix=/usr \
 		--sysconfdir=/etc \
 		--runstatedir=/run \
