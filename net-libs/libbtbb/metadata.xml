@@ -6,7 +6,6 @@
 		<name>Rick Farina</name>
 	</maintainer>
 	<use>
-		<flag name="extras">Install pcapdump and btaptap tools</flag>
 		<flag name="wireshark-plugins">Build the wireshark plugins for bluetooth baseband sniffing</flag>
 	</use>
 	<upstream>
