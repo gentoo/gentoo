@@ -147,22 +147,39 @@ _cmake_check_build_dir() {
 	einfo "Working in BUILD_DIR: \"$BUILD_DIR\""
 }
 
+# @FUNCTION: cmake_run_in
+# @USAGE: <working dir> <run command>
+# @DESCRIPTION:
+# Set the desired working dir for a function or command.
+cmake_run_in() {
+	if [[ -z ${2} ]]; then
+		die "${FUNCNAME[0]} must be passed at least two arguments"
+	fi
+
+	[[ -e ${1} ]] || die "${FUNCNAME[0]}: Nonexistent path: ${1}"
+
+	pushd ${1} > /dev/null || die
+		"${@:2}"
+	popd > /dev/null || die
+}
+
 # @FUNCTION: cmake_comment_add_subdirectory
 # @USAGE: <subdirectory>
 # @DESCRIPTION:
 # Comment out one or more add_subdirectory calls in CMakeLists.txt in the current directory
 cmake_comment_add_subdirectory() {
 	if [[ -z ${1} ]]; then
-		die "comment_add_subdirectory must be passed at least one directory name to comment"
+		die "${FUNCNAME[0]} must be passed at least one directory name to comment"
 	fi
 
-	if [[ -e "CMakeLists.txt" ]]; then
-		local d
-		for d in $@; do
-			sed -e "/add_subdirectory[[:space:]]*([[:space:]]*${d//\//\\/}[[:space:]]*)/I s/^/#DONOTCOMPILE /" \
-				-i CMakeLists.txt || die "failed to comment add_subdirectory(${d})"
-		done
-	fi
+	[[ -e "CMakeLists.txt" ]] || return
+
+	local d
+	for d in $@; do
+		d=${d//\//\\/}
+		sed -e "/add_subdirectory[[:space:]]*([[:space:]]*${d}[[:space:]]*)/I s/^/#DONOTCOMPILE /" \
+			-i CMakeLists.txt || die "failed to comment add_subdirectory(${d})"
+	done
 }
 
 # @FUNCTION: comment_add_subdirectory
@@ -471,6 +488,10 @@ cmake_src_configure() {
 		SET (CMAKE_INSTALL_DOCDIR "${EPREFIX}/usr/share/doc/${PF}" CACHE PATH "")
 		SET (BUILD_SHARED_LIBS ON CACHE BOOL "")
 	_EOF_
+
+	if [[ -n ${_ECM_ECLASS} ]]; then
+		echo 'SET (ECM_DISABLE_QMLPLUGINDUMP ON CACHE BOOL "")' >> "${common_config}" || die
+	fi
 
 	# See bug 689410
 	if [[ "${ARCH}" == riscv ]]; then
