@@ -775,7 +775,7 @@ app-backup/consul-backinator 1.6.5: consul backup and restore utility
 app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
 app-backup/dar 2.5.11 2.5.18 2.6.5 2.6.9 2.6.10: A full featured backup tool, aimed for disks
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
-app-backup/duplicity 0.8.12.1612-r1 0.8.13: Secure backup system using gnupg to encrypt data
+app-backup/duplicity 0.8.12.1612-r1 0.8.13 0.8.15: Secure backup system using gnupg to encrypt data
 app-backup/duply 1.9.2 1.11.2 1.11.3 2.0.1 2.0.2 2.0.3 2.2.2: A shell frontend for duplicity
 app-backup/flexbackup 1.2.1-r13: Flexible backup script using perl
 app-backup/fsarchiver 0.8.5: Flexible filesystem archiver for backup and deployment tool
@@ -9102,7 +9102,7 @@ dev-python/six 1.15.0: Python 2 and 3 compatibility library
 dev-python/slackclient 2.5.0: Client for Slack supporting the Slack Web and Real Time Messaging API
 dev-python/sleekxmpp 1.3.1-r1: Python library for XMPP
 dev-python/slimit 0.8.1-r1: A JavaScript minifier written in Python
-dev-python/slixmpp 1.4.2: Python 3 library for XMPP
+dev-python/slixmpp 1.4.2 1.5.2: Python 3 library for XMPP
 dev-python/smmap 3.0.4: A pure Python implementation of a sliding window memory map manager
 dev-python/smmap2 2.0.3: A pure python implementation of a sliding window memory map manager
 dev-python/snakeoil 0.8.8 9999: misc common functionality and useful optimizations
@@ -14715,7 +14715,7 @@ net-im/mcabber 1.1.0-r1 1.1.0-r2 9999: A small Jabber console client with variou
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
 net-im/openmittsu 0.9.13.46 0.9.15.0: An open source chat client for Threema-style end-to-end encrypted chat networks
 net-im/pidgin 2.13.0-r7 2.13.0-r8 2.14.1: GTK Instant Messenger client
-net-im/poezio 0.12 9999: Console XMPP client that looks like most famous IRC clients
+net-im/poezio 0.12 0.13.1 9999: Console XMPP client that looks like most famous IRC clients
 net-im/profanity 0.6.0 0.7.1: A console based XMPP client inspired by Irssi
 net-im/prosody 0.11.5: Prosody is a flexible communications server for Jabber/XMPP written in Lua
 net-im/psi 1.4 9999: Qt XMPP client
