@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 eutils java-utils-2 user
+inherit eutils java-utils-2 user
 
 MY_P="zookeeper"
 MY_PN=${MY_P}-${PV}
@@ -33,11 +32,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# python
-	sed -e "s|src/c/zookeeper.c|zookeeper.c|g" \
-		-e "s|../../../|${S}|g" \
-		-i contrib/zkpython/src/python/setup.py || die
-
 	# whyyyy u -Werror ?! so horribal!
 	sed -e 's/-Werror//g' -i src/c/Makefile.* || die "Failed to rectify the Makefile"
 }
@@ -54,13 +48,6 @@ src_compile() {
 
 src_install() {
 	local DATA_DIR=/var/lib/${MY_P}
-
-	# python
-	cd "${S}"/contrib/zkpython/ || die
-	mv src/python/setup.py .
-	mv src/c/* .
-	python_foreach_impl distutils-r1_src_install
-	cd "${S}" || die
 
 	# cleanup sources
 	rm -rf src/ || die
