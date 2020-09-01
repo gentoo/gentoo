@@ -5,6 +5,10 @@
 # Dependencies not keyworded
 app-editors/emacs gui
 
+# Yixun Lan <dlan@gentoo.org> (2020-09-01)
+# Dependencies not keyworded
+dev-libs/jansson doc
+
 # Jakov Smolic <jakov.smolic@sartura.hr> (2020-08-14)
 # Large amount of missing keywords
 # Bug #724358
@@ -94,7 +98,7 @@ net-fs/nfs-utils nfsv41
 net-libs/gnutls doc test-full
 net-libs/ldns doc python
 net-libs/libpcap rdma
-net-misc/curl brotli curl_ssl_libressl curl_ssl_mbedtls curl_ssl_nss http2 rtmp ssh
+net-misc/curl brotli curl_ssl_libressl curl_ssl_mbedtls curl_ssl_nss rtmp ssh
 net-misc/ntp openntpd snmp vim-syntax zeroconf
 net-nds/openldap cxx kerberos sasl
 sys-apps/kmod doc
