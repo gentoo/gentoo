@@ -22,12 +22,14 @@ REQUIRED_USE="
 	http-proxy? ( client )
 	smtp? ( libuv )
 	ssl? ( ?? ( libressl mbedtls ) )
+	mbedtls? ( ssl )
 	?? ( libev libevent )
 "
 
 RDEPEND="
 	sys-libs/zlib
 	caps? ( sys-libs/libcap )
+	dbus? ( sys-apps/dbus )
 	http-proxy? ( net-libs/libhubbub )
 	libev? ( dev-libs/libev )
 	libevent? ( dev-libs/libevent:= )
