@@ -5771,7 +5771,7 @@ dev-lua/lua-cjson 2.1.0.6 2.1.0.7: A fast JSON encoding/parsing module for Lua
 dev-lua/lua-openssl 0.7.8_p0: OpenSSL binding for Lua
 dev-lua/lua-term 0.3 0.7: Terminal functions for Lua
 dev-lua/lua-utf8 0.1.1: UTF-8 support for Lua
-dev-lua/lua-zlib 1.1: Lua bindings to zlib
+dev-lua/lua-zlib 1.1 1.2: Lua bindings to zlib
 dev-lua/lua_cliargs 2.5_p5 3.0_p1 3.0_p2: A command-line argument parser.
 dev-lua/luacheck 0.20.0 0.23.0: A tool for linting and static analysis of Lua code
 dev-lua/luacov 0.8: LuaCov is a simple coverage analyzer for Lua scripts
@@ -10790,7 +10790,7 @@ dev-util/icemon 3.1.0: Monitor program for use with Icecream compile clusters ba
 dev-util/icmake 9.02.09 9.03.01: Hybrid between a make utility and a shell scripting language
 dev-util/idea-community 2020.2.1.202.6948.69: A complete toolset for web, mobile and enterprise development
 dev-util/ignition-cmake 0.2.0 0.4.0 2.2.0: CMake modules to be used by the Ignition projects.
-dev-util/imediff2 1.1.2-r5: An interactive, user friendly 2-way merge tool in text mode
+dev-util/imediff2 1.1.2-r5 1.1.2-r6: An interactive, user friendly 2-way merge tool in text mode
 dev-util/include-what-you-use 10.0: Find unused include directives in C/C++ programs
 dev-util/indent 2.2.11-r1 2.2.11_p5 2.2.12: Indent program source files
 dev-util/intel-graphics-compiler 1.0.4111: LLVM-based OpenCL compiler targetting Intel Gen graphics hardware
@@ -17759,7 +17759,7 @@ sys-libs/zlib 1.2.11-r2: Standard (de)compression library
 sys-power/acpi 1.7-r1: Displays information about ACPI devices
 sys-power/acpi_call 1.1.0-r3 1.1.0-r4 1.1.0-r5 3.17-r2 9999: A kernel module that enables you to call ACPI methods
 sys-power/acpid 2.0.31 2.0.32 2.0.32-r1 2.0.32-r2: Daemon for Advanced Configuration and Power Interface
-sys-power/acpilight 1.1 1.2: Replacement for xbacklight that uses the ACPI interface to set brightness
+sys-power/acpilight 1.2 1.2-r1: Replacement for xbacklight that uses the ACPI interface to set brightness
 sys-power/acpitool 0.5.1-r1: A small command line application, intended to be a replacement for the apm tool
 sys-power/apcupsd 3.14.13 3.14.14-r2: APC UPS daemon with integrated tcp/ip remote shutdown
 sys-power/athcool 0.3.12: small utility to toggle Powersaving mode for AMD Athlon/Duron processors
