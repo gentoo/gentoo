@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit meson bash-completion-r1 eutils linux-info python-any-r1 readme.gentoo-r1 systemd
 
