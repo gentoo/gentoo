@@ -1236,6 +1236,8 @@ glibc_do_src_install() {
 		ppc     /lib/ld.so.1
 		ppc64   /lib64/ld64.so.1
 		# riscv
+		ilp32d  /lib/ld-linux-riscv32-ilp32d.so.1
+		ilp32   /lib/ld-linux-riscv32-ilp32.so.1
 		lp64d   /lib/ld-linux-riscv64-lp64d.so.1
 		lp64    /lib/ld-linux-riscv64-lp64.so.1
 		# s390
