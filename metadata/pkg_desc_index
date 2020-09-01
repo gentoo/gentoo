@@ -14514,7 +14514,7 @@ net-analyzer/tracebox 0.2 0.4.4: A Middlebox Detection Tool
 net-analyzer/traceproto 1.1.2_beta1: A traceroute-like utility that sends packets based on protocol
 net-analyzer/traceroute 2.1.0: Utility to trace the route of IP packets
 net-analyzer/traceroute-nanog 6.4.2-r1 6.4.2_p1: Traceroute with AS lookup, TOS support, MTU discovery and other features
-net-analyzer/trafshow 5.2.3: Full screen visualization of the network traffic
+net-analyzer/trafshow 5.2.3 5.2.3-r1: Full screen visualization of the network traffic
 net-analyzer/tsung 1.7.0: Erlang's multi-protocol distributed load testing tool
 net-analyzer/ttcp 1.12-r2: Tool to test TCP and UDP throughput
 net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
