@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="A class for types with a default value"
-HOMEPAGE="http://hackage.haskell.org/package/data-default-class"
+HOMEPAGE="https://hackage.haskell.org/package/data-default-class"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
