@@ -715,11 +715,6 @@ sys-auth/consolekit
 sec-policy/selinux-consolekit
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-01)
-# Py3.6 only. Dead upstream.
-# Removal in 30 days. Bug #718898
-dev-python/cloudlib
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-01)
 # Py2 only. Last upstream release 2013.
 # Removal in 30 days. Last 2 have deps on cddb.
 <media-sound/jack-4.0.0_pre
