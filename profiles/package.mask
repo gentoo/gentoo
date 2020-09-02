@@ -738,7 +738,6 @@ app-accessibility/sphinxbase
 # Py2 only. Upstream has py3 versions
 # m-n. Removal in 30 days.
 www-apps/scgi
-www-apache/mod_scgi
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-01)
 # Py2 only. Last upstream release 2013.
