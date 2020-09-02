@@ -3,14 +3,14 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 COMMIT="f46159bd6519cebcebf59e9334a7920371111d75"
 
 DESCRIPTION="A distributed, collaborative spam detection and filtering network"
 HOMEPAGE="https://github.com/SpamExperts/pyzor"
-SRC_URI="https://github.com/SpamExperts/pyzor/archive/${COMMIT}.tar.gz -> ${PN}-${COMMIT}.tar.gz"
+SRC_URI="https://github.com/SpamExperts/pyzor/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -40,6 +40,7 @@ REQUIRED_USE="
 	pyzord? ( || ( gdbm redis ) )
 	test? ( gdbm redis )
 "
+
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 distutils_enable_sphinx "docs"
@@ -53,9 +54,9 @@ src_install() {
 
 	if use pyzord; then
 		dodir /usr/sbin
-		mv "${D}"/usr/bin/pyzord* "${ED}/usr/sbin" \
+		mv "${ED}"/usr/bin/pyzord* "${ED}/usr/sbin" \
 		   || die "failed to relocate pyzord"
 	else
-		rm "${D}"/usr/bin/pyzord* || die "failed to remove pyzord"
+		rm "${ED}"/usr/bin/pyzord* || die "failed to remove pyzord"
 	fi
 }
