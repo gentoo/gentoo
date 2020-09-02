@@ -606,11 +606,6 @@ sys-auth/pam_radius
 # Removal in 30 days. bug #658448.
 net-analyzer/nikto
 
-# Michał Górny <mgorny@gentoo.org> (2020-08-03)
-# Unmaintained.  Last release in 2011.  Py2 only.
-# Removal in 30 days.  Bug #735362.
-dev-vcs/svnmailer
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
 # consolekit is abandoned upstream.
 # People are encouraged to switch to any logind
