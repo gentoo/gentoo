@@ -16,7 +16,7 @@ SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
 LICENSE="GPL-2"
 SLOT="0"
 [[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="X"
 
 # automount Error: VBoxServiceAutoMountWorker: Group "vboxsf" does not exist
