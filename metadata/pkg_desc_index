@@ -2652,7 +2652,7 @@ app-office/scribus 1.5.5_p20200626 9999: Desktop publishing (DTP) and layout pro
 app-office/skrooge 2.23.0: Personal finances manager, aiming at being simple and intuitive
 app-office/texmacs 1.99.6-r2 1.99.9 1.99.10 1.99.11: Wysiwyg text processor with high-quality maths
 app-office/texmaker 5.0.3 5.0.4: A nice LaTeX-IDE
-app-office/texstudio 3.0.0_pre20200601 3.0.0 9999: Free cross-platform LaTeX editor (fork from texmakerX)
+app-office/texstudio 3.0.0_pre20200601 3.0.1 9999: Free cross-platform LaTeX editor (fork from texmakerX)
 app-office/unoconv 0.8.2 0.9 0.9.0: Convert between document formats supported by LibreOffice
 app-office/upwork 5.3.3.860 5.4.2.8: Project collaboration and tracking software for upwork.com
 app-office/worklog-assistant-bin 2.1.3580: Hassle-free time tracking for JIRA self-hosted and OnDemand
@@ -13718,7 +13718,7 @@ media-sound/cdplay 1.0: A commandline CD Player
 media-sound/cdstatus 0.97.03: Tool for diagnosing cdrom drive and digital data (audio) extraction
 media-sound/cdtool 2.1.8-r1: collection of command-line utilities to control cdrom devices
 media-sound/chordii 4.5.3: A guitar music typesetter
-media-sound/chuck 1.4.0.0 1.4.0.1: Strongly-timed, concurrent, and on-the-fly audio programming language
+media-sound/chuck 1.4.0.1: Strongly-timed, concurrent, and on-the-fly audio programming language
 media-sound/clementine 1.4.0_rc1 9999: Modern music player and library organizer based on Amarok 1.4 and Qt
 media-sound/cmix 1.6: command line audio mixer
 media-sound/cmus 2.8.0 9999: Ncurses based music player with plugin support for many formats
