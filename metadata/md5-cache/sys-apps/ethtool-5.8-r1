@@ -9,4 +9,4 @@ LICENSE=GPL-2
 RDEPEND=netlink? ( net-libs/libmnl )
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/software/network/ethtool/ethtool-5.8.tar.xz
-_md5_=ad963c60f1e38790cb77cfd2480f7ff0
+_md5_=bf43364214cf4752edf9b4b591caa082

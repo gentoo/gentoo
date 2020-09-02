@@ -4498,6 +4498,8 @@ media-libs/xine-lib:vpx - Enable VP8 codec support via media-libs/libvpx.
 media-libs/xine-lib:xvmc - Enable support for XVideo Motion Compensation (accelerated mpeg playback).
 media-libs/xvid:pic - disable optimized assembly code that is not PIC friendly
 media-libs/zita-resampler:tools - Install zresample and zretune tools
+media-libs/zmusic:fluidsynth - Enable support for MIDI via media-sound/fluidsynth
+media-libs/zmusic:mpg123 - Enable support for MPEG audio playback via media-sound/mpg123
 media-plugins/alsa-plugins:arcam_av - Enables Arcam AV control plugin
 media-plugins/alsa-plugins:mix - Enables upmix and vdownmix plugin
 media-plugins/alsa-plugins:usb_stream - Enables usb_stream plugin
