@@ -683,11 +683,6 @@ app-misc/evemu
 # Removal in 30 days. Bug #718196
 app-backup/cachedir
 
-# Michał Górny <mgorny@gentoo.org> (2020-08-02)
-# Discontinued.  Last patch in 2008.  Py2 only.
-# Removal in 30 days.  Bug #734632.
-x11-misc/pypanel
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
 # consolekit is abandoned upstream.
 # People are encouraged to switch to any logind
