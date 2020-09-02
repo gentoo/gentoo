@@ -37,7 +37,6 @@ src_configure() {
 			-DENABLE_SYNC=$(usex sync)
 			-DTASK_DOCDIR=share/doc/${PF}
 			-DTASK_RCDIR=share/${PN}/rc
-			-DCMAKE_BUILD_TYPE=release
 	)
 
 	cmake_src_configure
