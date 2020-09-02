@@ -658,7 +658,6 @@ media-gfx/cptutils
 # Aaron Bauman <bman@gentoo.org> (2020-08-02)
 # Py2 only. m-n. Bug #709932
 # Removal in 30 days
-net-wireless/cpyrit-cuda
 net-wireless/cpyrit-opencl
 net-wireless/pyrit
 
@@ -1070,7 +1069,6 @@ sys-devel/automake:1.10
 # (updated 2017-12-27 with cuda < 8 because of gcc < 5 mask)
 <dev-util/nvidia-cuda-sdk-8
 <dev-util/nvidia-cuda-toolkit-8
-net-wireless/cpyrit-cuda
 
 # Michael Orlitzky <mjo@gentoo.org> (2017-01-07)
 # This package has some dangerous quality and security issues, but
