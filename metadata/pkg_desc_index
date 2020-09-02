@@ -12505,7 +12505,7 @@ mail-filter/postfwd 1.35-r3 2.00-r1 2.02: Versatile Postfix policy server with a
 mail-filter/postgrey 1.34-r3 1.35-r2 1.36-r1 1.37: Postgrey is a Postfix policy server implementing greylisting
 mail-filter/postsrsd 1.4 1.4-r1 1.6: Postfix Sender Rewriting Scheme daemon
 mail-filter/procmail 3.22-r14: Mail delivery agent/filter
-mail-filter/pyzor 1.0.0-r1: A distributed, collaborative spam detection and filtering network
+mail-filter/pyzor 1.0.0-r1 1.0.0_p20200523: A distributed, collaborative spam detection and filtering network
 mail-filter/razor 2.85-r3: Distributed, collaborative spam detection and filtering network
 mail-filter/rblcheck 1.5-r2: Perform lookups in RBL-styles services
 mail-filter/rmilter 1.9.2 1.10.0 1.10.0-r1 1.10.0-r2 9999: Another sendmail milter for different mail checks
