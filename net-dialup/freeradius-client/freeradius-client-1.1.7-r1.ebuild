@@ -24,7 +24,7 @@ DOCS=(
 )
 
 PATCHES=(
-	"${FILESDIR}/${P}-ar-configure.in.patch"
+	"${FILESDIR}/${PN}-1.1.7-ar-configure.in.patch"
 )
 
 src_prepare() {
