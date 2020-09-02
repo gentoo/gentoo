@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Sharing/memoization of class members"
-HOMEPAGE="http://hackage.haskell.org/package/dictionary-sharing"
+HOMEPAGE="https://hackage.haskell.org/package/dictionary-sharing"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
