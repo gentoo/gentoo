@@ -1,5 +1,3 @@
-https://salsa.debian.org/games-team/supertuxkart/-/raw/master/debian/patches/irrlicht/use-system-libs.diff
-----
 Subject: [PATCH] debian/use-system-libs
 
 Path to build irrlicht using the system libraries for png,zlib and
