@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit autotools eutils multilib user python-single-r1
+inherit autotools eutils multilib user python-single-r1 udev
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://www.kismetwireless.net/git/${PN}.git"
@@ -21,11 +21,11 @@ else
 	SRC_URI="https://www.kismetwireless.net/code/${MY_P}.tar.xz"
 
 	#but sometimes we want a git commit
-	#COMMIT="6d6d486831c0f7ac712ffb8a3ff122c5063c3b2a"
+	#COMMIT="9ca7e469cf115469f392db7436816151867e1654"
 	#SRC_URI="https://github.com/kismetwireless/kismet/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	#S="${WORKDIR}/${PN}-${COMMIT}"
 
-	KEYWORDS="amd64 arm ~arm64 ~ppc x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 fi
 
 DESCRIPTION="IEEE 802.11 wireless LAN sniffer"
@@ -33,8 +33,8 @@ HOMEPAGE="https://www.kismetwireless.net"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-IUSE="lm-sensors mousejack networkmanager +pcre selinux +suid"
-REQUIRED_USE=${PYTHON_REQUIRED_USE}
+IUSE="libusb lm-sensors networkmanager +pcre rtlsdr selinux +suid ubertooth udev"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 CDEPEND="
 	${PYTHON_DEPS}
@@ -48,7 +48,7 @@ CDEPEND="
 			dev-libs/libnl:3
 			net-libs/libpcap
 			)
-	mousejack? ( virtual/libusb:1 )
+	libusb? ( virtual/libusb:1 )
 	dev-libs/protobuf-c:=
 	dev-libs/protobuf:=
 	$(python_gen_cond_dep '
@@ -58,6 +58,7 @@ CDEPEND="
 	lm-sensors? ( sys-apps/lm-sensors )
 	pcre? ( dev-libs/libpcre )
 	suid? ( sys-libs/libcap )
+	ubertooth? ( net-wireless/ubertooth:= )
 	"
 
 DEPEND="${CDEPEND}
@@ -70,6 +71,13 @@ RDEPEND="${CDEPEND}
 	')
 	selinux? ( sec-policy/selinux-kismet )
 "
+PDEPEND="
+	rtlsdr? (
+		$(python_gen_cond_dep '
+			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		')
+		net-wireless/rtl-sdr
+	)"
 
 src_prepare() {
 	sed -i -e "s:^\(logtemplate\)=\(.*\):\1=/tmp/\2:" \
@@ -92,10 +100,11 @@ src_prepare() {
 
 src_configure() {
 	econf \
+		$(use_enable libusb libusb) \
 		$(use_enable pcre) \
 		$(use_enable lm-sensors lmsensors) \
-		$(use_enable mousejack libusb) \
 		$(use_enable networkmanager libnm) \
+		$(use_enable ubertooth) \
 		--sysconfdir=/etc/kismet \
 		--disable-optimization
 }
@@ -104,6 +113,7 @@ src_install() {
 	emake DESTDIR="${D}" commoninstall
 	python_optimize
 	emake DESTDIR="${D}" forceconfigs
+	use udev && udev_dorules packaging/udev/*.rules
 
 	insinto /usr/share/${PN}
 	doins Makefile.inc
@@ -137,9 +147,9 @@ pkg_preinst() {
 
 migrate_config() {
 	einfo "Kismet Configuration files are now read from /etc/kismet/"
-	if [ -n "$(ls ${EROOT}/etc/kismet_*.conf)" ]; then
+	ewarn "Please keep user specific settings in /etc/kismet/kismet_site.conf"
+	if [ -n "$(ls ${EROOT}/etc/kismet_*.conf 2> /dev/null)" ]; then
 		ewarn "Files at /etc/kismet_*.conf will not be read and should be removed"
-		ewarn "Please keep user specific settings in /etc/kismet/kismet_site.conf"
 	fi
 	if [ -f "${EROOT}/etc/kismet_site.conf" ] && [ ! -f "${EROOT}/etc/kismet/kismet_site.conf" ]; then
 		mv /etc/kismet_site.conf /etc/kismet/kismet_site.conf || die "Failed to migrate kismet_site.conf to new location"
