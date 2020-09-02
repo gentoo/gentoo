@@ -631,12 +631,6 @@ dev-util/tailor
 # Removal in 30 days.  Bug #717490.
 sys-fs/traydevice
 
-# Michał Górny <mgorny@gentoo.org> (2020-08-03)
-# Unmaintained.  Py2 only.  The current Gentoo version is from 2015.
-# No reverse dependencies.
-# Removal in 30 days.  Bug #721476.
-net-mail/libpst
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
 # consolekit is abandoned upstream.
 # People are encouraged to switch to any logind
