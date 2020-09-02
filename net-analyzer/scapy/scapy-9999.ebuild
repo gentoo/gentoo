@@ -12,9 +12,6 @@ EGIT_REPO_URI="https://github.com/secdev/${PN}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-RDEPEND="
-	net-analyzer/tcpdump
-"
 S=${WORKDIR}/${P/_/}
 DOC_CONTENTS="
 Scapy has optional support for the following packages:
@@ -24,7 +21,9 @@ Scapy has optional support for the following packages:
 	dev-python/matplotlib
 	dev-python/pyx
 	media-gfx/graphviz
+	net-analyzer/tcpdump
 	net-analyzer/tcpreplay
+	net-libs/libpcap
 	virtual/imagemagick-tools
 
 	See also ""${EPREFIX}/usr/share/doc/${PF}/installation.rst""

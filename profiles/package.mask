@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-02)
+# Masked for removal. No revdeps.
+dev-python/ansimarkup
+
 # Rick Farina <zerochaos@gentoo.org> (2020-09-02)
 # Masked for removal in 30 days. Obsolete versions
 # of kismet and tools which use it are no longer maintained.
