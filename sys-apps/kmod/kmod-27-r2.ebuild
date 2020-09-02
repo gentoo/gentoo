@@ -63,6 +63,8 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DOCS="NEWS README TODO"
 
+PATCHES=( "${FILESDIR}"/${P}-depmod-do-not-output-.bin-to-stdout.patch )
+
 src_prepare() {
 	default
 
