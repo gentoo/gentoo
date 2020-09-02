@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python3_7 python3_8 )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit eutils python-r1 distutils-r1
 
@@ -50,5 +50,5 @@ src_prepare() {
 
 	mv ${PN}.py ${PN} || die
 
-	rm -rf "${S}/Nagstamon/thirdparty/Xlib/" || die
+	rm -r "${S}/Nagstamon/thirdparty/Xlib/" || die
 }
