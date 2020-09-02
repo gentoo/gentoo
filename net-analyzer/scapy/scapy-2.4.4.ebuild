@@ -7,7 +7,7 @@ inherit distutils-r1 readme.gentoo-r1
 
 DESCRIPTION="A Python interactive packet manipulation program for mastering the network"
 HOMEPAGE="https://scapy.net/ https://github.com/secdev/scapy"
-SRC_URI="https://github.com/secdev/${PN}/archive/v${PV/_/}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/secdev/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -15,7 +15,6 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	net-analyzer/tcpdump
 "
-S=${WORKDIR}/${P/_/}
 DOC_CONTENTS="
 Scapy has optional support for the following packages:
 
@@ -31,7 +30,11 @@ Scapy has optional support for the following packages:
 "
 
 src_prepare() {
-	echo ${PV/_/} > ${PN}/VERSION || die
+	if ! [[ -f ${PN}/VERSION ]]; then
+		echo ${PV} > ${PN}/VERSION || die
+	else
+		die
+	fi
 
 	distutils-r1_src_prepare
 }
