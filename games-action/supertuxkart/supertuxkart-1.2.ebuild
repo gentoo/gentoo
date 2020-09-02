@@ -24,7 +24,6 @@ RDEPEND="
 	dev-cpp/libmcpp
 	sqlite? ( dev-db/sqlite:3 )
 	dev-libs/angelscript:=
-	dev-libs/fribidi
 	media-libs/freetype:2
 	media-libs/glew:0=
 	media-libs/harfbuzz:=
