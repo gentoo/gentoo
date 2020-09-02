@@ -32,6 +32,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Rick Farina <zerochaos@gentoo.org> (2020-09-02)
+# Masked for removal in 30 days. Obsolete versions
+# of kismet and tools which use it are no longer maintained.
+# Users should upgrade to a newer version of kismet which
+# is supported.
+dev-perl/Net-Kismet
+net-wireless/kismet-ubertooth
+<net-wireless/kismet-2017
+
 # Bernard Cafarelli <voyageur@gentoo.org> (2020-09-02)
 # Abandoned upstream in favor of media-libs/libinsane
 # No more in-tree users
