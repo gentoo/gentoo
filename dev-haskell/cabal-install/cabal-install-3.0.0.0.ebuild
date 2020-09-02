@@ -10,7 +10,7 @@ CABAL_FEATURES=""
 inherit haskell-cabal
 
 DESCRIPTION="The command-line interface for Cabal and Hackage"
-HOMEPAGE="http://www.haskell.org/cabal/"
+HOMEPAGE="https://www.haskell.org/cabal/"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
