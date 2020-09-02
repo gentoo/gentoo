@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 PYTHON_REQ_USE='ncurses,xml,threads(+)'
 
 inherit bash-completion-r1 flag-o-matic multilib python-single-r1 toolchain-funcs
@@ -17,16 +17,16 @@ if [[ $PV == *9999 ]]; then
 	S="${WORKDIR}/${REPO}"
 else
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	UPSTREAM_VER=1
-	SECURITY_VER=
+	UPSTREAM_VER=0
+	SECURITY_VER=28
 	# xen-tools's gentoo patches tarball
-	GENTOO_VER=21
+	GENTOO_VER=22
 	# xen-tools's gentoo patches version which apply to this specific ebuild
 	GENTOO_GPV=0
 	# xen-tools ovmf's patches
 	OVMF_VER=
 
-	SEABIOS_VER="1.12.1"
+	SEABIOS_VER="1.13.0"
 	EDK2_COMMIT="20d2e5a125e34fc8501026613a71549b2a1a3e54"
 	EDK2_OPENSSL_VERSION="1_1_1b"
 	EDK2_SOFTFLOAT_COMMIT="b64af41c3276f97f0e181920400ee056b9c88037"
@@ -36,7 +36,8 @@ else
 		UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P/-tools/}-upstream-patches-${UPSTREAM_VER}.tar.xz
 		https://github.com/hydrapolic/gentoo-dist/raw/master/xen/${P/-tools/}-upstream-patches-${UPSTREAM_VER}.tar.xz"
 	[[ -n ${SECURITY_VER} ]] && \
-		SECURITY_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${PN/-tools}-security-patches-${SECURITY_VER}.tar.xz"
+		SECURITY_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${PN/-tools}-security-patches-${SECURITY_VER}.tar.xz
+		https://github.com/hydrapolic/gentoo-dist/raw/master/xen/${PN/-tools/}-security-patches-${SECURITY_VER}.tar.xz"
 	[[ -n ${GENTOO_VER} ]] && \
 		GENTOO_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${PN/-tools}-gentoo-patches-${GENTOO_VER}.tar.xz
 		https://github.com/hydrapolic/gentoo-dist/raw/master/xen/${PN/-tools/}-gentoo-patches-${GENTOO_VER}.tar.xz"
@@ -275,6 +276,11 @@ src_prepare() {
 		cp "${WORKDIR}/patches-gentoo/xen-tools-4.13.0-ipxe-gcc10.patch" tools/firmware/etherboot/patches/ipxe-gcc10.patch || die
 		echo ipxe-gcc10.patch >> tools/firmware/etherboot/patches/series || die
 	fi
+
+	# gcc 10
+	# libxlu_pci.c:32:18: error: 'func' may be used uninitialized in this function
+	sed -e '/CFLAGS/s/Werror/Wno-error/g' \
+		-i tools/libxl/Makefile || die
 
 	mv tools/qemu-xen/qemu-bridge-helper.c tools/qemu-xen/xen-bridge-helper.c || die
 
