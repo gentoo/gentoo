@@ -14,7 +14,7 @@ SRC_URI="https://github.com/akermu/${MY_PN}/archive/${COMMIT}.tar.gz -> ${P}.tar
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 DEPEND="dev-libs/libvterm"
 RDEPEND="${DEPEND}
