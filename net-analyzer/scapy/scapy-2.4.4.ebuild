@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	net-analyzer/tcpdump
+	net-libs/libpcap
 "
 DOC_CONTENTS="
 Scapy has optional support for the following packages:
