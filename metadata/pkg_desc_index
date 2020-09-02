@@ -14683,7 +14683,7 @@ net-im/ricochet 1.1.4 9999: Privacy-focused instant messaging through Tor hidden
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
 net-im/signal-desktop-bin 1.34.5: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
-net-im/skypeforlinux 8.62.0.85 8.63.0.76: Instant messaging client, with support for audio and video
+net-im/skypeforlinux 8.63.0.76 8.64.0.67: Instant messaging client, with support for audio and video
 net-im/slack 4.3.2-r2 4.4.2 4.4.3: Team collaboration tool
 net-im/spectrum2 2.0.13-r2: An open source instant messaging transport
 net-im/swift 4.0.2-r2 4.0.2-r4: An elegant, secure, adaptable and intuitive XMPP Client
@@ -17006,7 +17006,7 @@ sys-apps/noexec 1.1.0-r1: a package for preventing processes from using exec sys
 sys-apps/nosig 2: Block signals before running programs (a generic "nohup")
 sys-apps/nvme-cli 1.9-r3 1.10.1 1.11.1: NVM-Express user space tooling for Linux
 sys-apps/onerng 3.6-r3: Software for the Open Hardware Random Number Generator called OneRNG
-sys-apps/opal-utils 6.5.2 6.6 6.6.1 6.6.2: OPAL firmware utilities
+sys-apps/opal-utils 6.5.2 6.6.2: OPAL firmware utilities
 sys-apps/openrc 0.41.2 0.42.1 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 0.1.3-r1 0.2 9999: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/osinfo-db 20200325 20200529: osinfo database files
