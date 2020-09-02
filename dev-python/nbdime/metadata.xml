@@ -5,9 +5,6 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-  <longdescription>
-    nbdime provides tools for diffing and merging of Jupyter Notebooks.
-  </longdescription>
   <upstream>
     <remote-id type="github">jupyter/nbdime</remote-id>
     <remote-id type="pypi">nbdime</remote-id>
