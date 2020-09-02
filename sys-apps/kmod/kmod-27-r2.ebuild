@@ -21,7 +21,7 @@ HOMEPAGE="https://git.kernel.org/?p=utils/kernel/kmod/kmod.git"
 
 LICENSE="LGPL-2"
 SLOT="0"
-IUSE="debug doc libressl lzma pkcs7 python static-libs +tools zlib"
+IUSE="debug doc libressl +lzma pkcs7 python static-libs +tools +zlib"
 
 # Upstream does not support running the test suite with custom configure flags.
 # I was also told that the test suite is intended for kmod developers.
