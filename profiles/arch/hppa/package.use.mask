@@ -14,7 +14,7 @@ media-libs/mesa vulkan vulkan-overlay zink
 
 # Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
 # Mask io-uring & zbc pending keywording
-sys-block/fio -io-uring zbc
+sys-block/fio -io-uring -zbc
 
 # Michał Górny <mgorny@gentoo.org> (2020-06-14)
 # Requires dev-python/networkx.
