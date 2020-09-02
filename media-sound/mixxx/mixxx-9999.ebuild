@@ -1,9 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit flag-o-matic scons-utils toolchain-funcs
+PYTHON_COMPAT=( python2_7 python3_{6,7,8})
+
+inherit flag-o-matic python-any-r1 scons-utils toolchain-funcs
 
 DESCRIPTION="Advanced Digital DJ tool based on Qt"
 HOMEPAGE="https://www.mixxx.org/"
@@ -75,6 +77,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	dev-qt/qttest:5
 	dev-qt/qtxmlpatterns:5
+	${PYTHON_DEPS}
 "
 
 src_prepare() {
@@ -96,7 +99,7 @@ src_configure() {
 		fi
 	done
 
-	myesconsargs=(
+	MYSCONS=(
 		prefix="${EPREFIX}/usr"
 		qtdir="${EPREFIX}/usr/$(get_libdir)/qt5"
 		faad="$(usex aac 1 0)"
@@ -117,13 +120,13 @@ src_configure() {
 
 src_compile() {
 	CC="$(tc-getCC)" CXX="$(tc-getCXX)" LINKFLAGS="${LDFLAGS}" \
-	LIBDIR="${EPREFIX}/usr/$(get_libdir)" escons ${myesconsargs[@]}
+	LIBDIR="${EPREFIX}/usr/$(get_libdir)" escons ${MYSCONS[@]}
 }
 
 src_install() {
 	CC="$(tc-getCC)" CXX="$(tc-getCXX)" LINKFLAGS="${LDFLAGS}" \
-	LIBDIR="${EPREFIX}/usr/$(get_libdir)" escons ${myesconsargs[@]} \
-		install_root="${ED%/}"/usr install
+	LIBDIR="${EPREFIX}/usr/$(get_libdir)" escons ${MYSCONS[@]} \
+		install_root="${ED}"/usr install
 
 	dodoc README Mixxx-Manual.pdf
 }
