@@ -10980,7 +10980,7 @@ dev-vcs/lab 0.17.2: Lab wraps Git or Hub, making it simple to interact with repo
 dev-vcs/mercurial 5.2.2-r1 5.3.2 5.4.2 9999: Scalable distributed SCM
 dev-vcs/mr 1.20170129 1.20171231 1.20180726 1.99999999: Multiple Repository management tool
 dev-vcs/notify-webhook 0.1.0: Git post-receive web hook notifier in Python.
-dev-vcs/python-gitlab 1.7.0 1.8.0 1.9.0 1.13.0 2.2.0 2.3.1: Python command line interface to gitlab API
+dev-vcs/python-gitlab 1.7.0 1.8.0 1.9.0 1.13.0 2.2.0 2.3.1 2.5.0: Python command line interface to gitlab API
 dev-vcs/qgit 2.9: Qt GUI for git repositories
 dev-vcs/rcs 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files
@@ -15157,7 +15157,7 @@ net-misc/ip-sentinel 0.12 0.12-r1: Prevent unauthorized usage of IP addresses
 net-misc/ipcalc 0.41: IP Calculator prints broadcast/network/etc for an IP address and netmask
 net-misc/iperf 2.0.13 2.0.14a 2.99999.99999 3.6 3.7 3.8.1 3.9 3.99999.99999: A TCP, UDP, and SCTP network bandwidth measurement tool
 net-misc/ipmiview 2.15.0.190109 2.17.0.200505: A GUI application that allows to manage multiple target systems through BMC
-net-misc/iprange 1.0.4: iprange utility
+net-misc/iprange 1.0.4: A tool capable of managing sets of IPs
 net-misc/ipsorcery 2.0.9-r2: Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets
 net-misc/ipsvd 1.0.0-r2: ipsvd is a set of internet protocol service daemons for Unix
 net-misc/iputils 20190709-r1 20200821 99999999: Network monitoring tools including ping and ping6
@@ -15490,7 +15490,7 @@ net-proxy/haproxy 1.8.25-r1 2.0.14 2.0.14-r1 2.0.15 2.0.16 2.0.9999 2.1.4 2.1.4-
 net-proxy/hatop 0.7.7 0.8.0: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/microsocks 1.0.1_p20200805: Multithreaded, small, efficient SOCKS5 server
-net-proxy/mitmproxy 5.1.1: An interactive, SSL-capable, man-in-the-middle HTTP proxy
+net-proxy/mitmproxy 5.1.1 5.2: An interactive, SSL-capable, man-in-the-middle HTTP proxy
 net-proxy/nutcracker 0.2.4 0.3.0 0.4.1-r1: A fast, light-weight proxy for Memcached and Redis. (Twitter's Twemproxy)
 net-proxy/obfs4proxy 0.0.11-r1: An obfuscating proxy supporting Tor's pluggable transport protocol obfs4
 net-proxy/pingtunnel 0.72: Tunnel TCP over ICMP
