@@ -18,7 +18,6 @@ Chrony はコンピュータのシステム・クロックの精度を保つた�
 な接続でも機能します。
 </longdescription>
 <use>
-<flag name="adns">Support for asynchronous DNS</flag>
 <flag name="cmdmon">Support for command and monitoring</flag>
 <flag name="html">Install HTML documentation</flag>
 <flag name="nettle">Use <pkg>dev-libs/nettle</pkg> for hash functions</flag>
