@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -33,7 +33,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-ghc-7.10.patch
 
 	if has_version "<dev-haskell/haddock-2.9.2"; then
-		# Workaround http://hackage.haskell.org/trac/hackage/ticket/626
+		# Workaround https://hackage.haskell.org/trac/hackage/ticket/626
 		# The haddock --hoogle option does not like unicode characters, which causes
 		# haddock 2.7.2 to fail like:
 		# haddock: internal Haddock or GHC error: dist/doc/html/enumerator/enumerator.txt: commitAndReleaseBuffer: invalid argument (Invalid or incomplete multibyte or wide character)
