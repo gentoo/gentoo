@@ -673,11 +673,6 @@ www-misc/nx_util
 # #722408,723344
 app-mobilephone/obexftp
 
-# Aaron Bauman <bman@gentoo.org> (2020-08-02)
-# Dead upstream. Py3.6 only.
-# Removal in 30 days. Bug #722334,#713686
-app-misc/evemu
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
 # consolekit is abandoned upstream.
 # People are encouraged to switch to any logind
