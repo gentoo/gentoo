@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Mid-Level PostgreSQL client library"
-HOMEPAGE="http://hackage.haskell.org/package/postgresql-simple"
+HOMEPAGE="https://hackage.haskell.org/package/postgresql-simple"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
