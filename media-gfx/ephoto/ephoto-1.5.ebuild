@@ -1,7 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit xdg
 
 DESCRIPTION="Enlightenment image viewer written with EFL"
 HOMEPAGE="https://www.enlightenment.org/about-ephoto"
