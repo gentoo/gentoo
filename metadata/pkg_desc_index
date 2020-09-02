@@ -12959,7 +12959,7 @@ media-gfx/w3mimgfb 0.9.1: Image viewer for w3m under frame buffer environment
 media-gfx/waifu2x-ncnn-vulkan 20200224 20200414 20200818: waifu2x converter using ncnn and vulkan
 media-gfx/wings 2.1.5 2.1.6 2.1.7 2.2.5 2.2.6.1: Wings 3D is an advanced subdivision modeler
 media-gfx/wkhtmltopdf 0.12.5: Convert html to pdf (and various image formats) using webkit
-media-gfx/word_cloud 1.6.0: A little word cloud generator in Python
+media-gfx/word_cloud 1.6.0 1.8.0: A little word cloud generator in Python
 media-gfx/xdot 1.1 9999: Interactive viewer for Graphviz dot files
 media-gfx/xfig 3.2.6a-r1: A menu-driven tool to draw and manipulate objects interactively in an X window
 media-gfx/xli 1.17.0-r5: X Load Image: view images or load them to root window
