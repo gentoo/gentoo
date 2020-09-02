@@ -667,12 +667,6 @@ net-wireless/pyrit
 # Removal in 30 days
 www-misc/nx_util
 
-# Aaron Bauman <bman@gentoo.org> (2020-08-02)
-# Dead upstream. Py3.6 only. Build issues.
-# Removal in 30 days. Bug #677900,#716384
-# #722408,723344
-app-mobilephone/obexftp
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
 # consolekit is abandoned upstream.
 # People are encouraged to switch to any logind
