@@ -828,16 +828,6 @@ dev-python/distributed
 # Removal in 30 days.
 dev-python/ruamel-std-pathlib
 
-# Marek Szuba <marecki@gentoo.org> (2020-07-27)
-# No longer available upstream. Potentially copyrighted.
-# Specifics where known:
-#  - Dan has been obsoleted by DaOT1931NT1907, which contains the same
-#    source material but considerably better digitised;
-#  - FreLSG has been obsoleted by FreSegond1910;
-#  - RST has been replaced by RusSynodal.
-# Removal in 30 days. Bug #734116.
-app-dicts/sword-Dan
-
 # Hans de Graaff <graaff@gentoo.org> (2020-07-22)
 # Mask old obsolete slots for removal in 30 days.
 # Use a newer slot of the same package instead.
