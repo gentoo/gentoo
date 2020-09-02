@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit autotools eutils multilib user python-single-r1 udev
+inherit autotools eutils multilib user python-single-r1 udev systemd
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://www.kismetwireless.net/git/${PN}.git"
@@ -83,9 +83,14 @@ src_prepare() {
 	sed -i -e "s:^\(logtemplate\)=\(.*\):\1=/tmp/\2:" \
 		conf/kismet_logging.conf || die
 
+	#this was added to quiet macosx builds but it makes gcc builds noisier
+	sed -i -e 's#-Wno-unknown-warning-option ##g' Makefile.inc.in || die
+
+	#sed -i -e 's#root#kismet#g' packaging/systemd/kismet.service.in
+
 	# Don't strip and set correct mangrp
 	sed -i -e 's| -s||g' \
-		-e 's|@mangrp@|root|g' Makefile.in
+		-e 's|@mangrp@|root|g' Makefile.in || die
 
 	eapply_user
 
@@ -121,6 +126,7 @@ src_install() {
 	dodoc CHANGELOG README*
 	newinitd "${FILESDIR}"/${PN}.initd-r3 kismet
 	newconfd "${FILESDIR}"/${PN}.confd-r2 kismet
+	systemd_dounit packaging/systemd/kismet.service
 }
 
 pkg_preinst() {
