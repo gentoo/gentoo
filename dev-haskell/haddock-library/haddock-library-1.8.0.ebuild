@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile test-suite" # haddock hoogle hscolour
 inherit haskell-cabal
 
 DESCRIPTION="Library exposing some functionality of Haddock"
-HOMEPAGE="http://www.haskell.org/haddock/"
+HOMEPAGE="https://www.haskell.org/haddock/"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD-2"
