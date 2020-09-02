@@ -678,11 +678,6 @@ app-mobilephone/obexftp
 # Removal in 30 days. Bug #722334,#713686
 app-misc/evemu
 
-# Aaron Bauman <bman@gentoo.org> (2020-08-02)
-# Needs bump. Py3 tests fail. Last release 2yrs.
-# Removal in 30 days. Bug #718196
-app-backup/cachedir
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
 # consolekit is abandoned upstream.
 # People are encouraged to switch to any logind
