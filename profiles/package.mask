@@ -818,11 +818,6 @@ dev-python/distributed
 # Masked for the time being due to dep on LLVM 8.  Bug #720236.
 <=dev-ada/gps-2019-r1
 
-# Andrey Utkin <andrey_utkin@gentoo.org> (2020-07-28)
-# Not used by other packages anymore.
-# Removal in 30 days.
-dev-python/ruamel-std-pathlib
-
 # Hans de Graaff <graaff@gentoo.org> (2020-07-22)
 # Mask old obsolete slots for removal in 30 days.
 # Use a newer slot of the same package instead.
