@@ -14685,7 +14685,7 @@ net-im/signal-desktop-bin 1.34.5: Allows you to send and receive messages of Sig
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.62.0.85 8.63.0.76: Instant messaging client, with support for audio and video
 net-im/slack 4.3.2-r2 4.4.2 4.4.3: Team collaboration tool
-net-im/spectrum2 2.0.12-r4 2.0.13-r2: An open source instant messaging transport
+net-im/spectrum2 2.0.13-r2: An open source instant messaging transport
 net-im/swift 4.0.2-r2 4.0.2-r4: An elegant, secure, adaptable and intuitive XMPP Client
 net-im/teams 1.3.00.958 1.3.00.5153 1.3.00.16851: Microsoft Teams, an Office 365 multimedia collaboration client, pre-release
 net-im/telegram-desktop 2.1.13 2.2.0-r1: Official desktop client for Telegram
@@ -15535,7 +15535,7 @@ net-vpn/networkmanager-openconnect 1.2.6: NetworkManager OpenConnect plugin
 net-vpn/networkmanager-openvpn 1.8.12: NetworkManager OpenVPN plugin
 net-vpn/networkmanager-pptp 1.2.8-r2: NetworkManager PPTP VPN plugin
 net-vpn/networkmanager-sstp 1.2.0-r1: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
-net-vpn/networkmanager-strongswan 1.4.5-r2 1.5.2: NetworkManager StrongSwan plugin
+net-vpn/networkmanager-strongswan 1.5.2: NetworkManager StrongSwan plugin
 net-vpn/networkmanager-vpnc 1.2.6-r2: NetworkManager VPNC plugin
 net-vpn/networkmanager-wireguard 0_pre20191128-r5 9999: NetworkManager WireGuard plugin
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
