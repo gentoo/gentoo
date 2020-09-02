@@ -642,7 +642,6 @@ net-mail/libpst
 # bindings.  dev-util/coccinelle has py2 bindings and fails to build
 # with python disabled (bug #701904).  Both packages are unmaintained.
 # Removal in 30 days.  Bug #734630.
-dev-util/coccigrep
 dev-util/coccinelle
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
