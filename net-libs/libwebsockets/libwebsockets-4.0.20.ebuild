@@ -82,5 +82,7 @@ src_configure() {
 		-DLWS_WITHOUT_TESTAPPS=ON
 	)
 
+	use dbus && mycmakeargs+=( -DLWS_DBUS_INCLUDE2="/usr/$(get_libdir)/dbus-1.0/include" )
+
 	cmake_src_configure
 }
