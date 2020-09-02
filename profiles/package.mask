@@ -842,7 +842,6 @@ app-dicts/sword-HNV
 app-dicts/sword-KJVD
 app-dicts/sword-RST
 app-dicts/sword-SpaSEV
-app-dicts/sword-WEB
 
 # Hans de Graaff <graaff@gentoo.org> (2020-07-22)
 # Mask old obsolete slots for removal in 30 days.
