@@ -513,7 +513,7 @@ app-admin/emacs-updater 1.16: Rebuild Emacs packages
 app-admin/entr 4.3 4.4 4.5: Run arbitrary commands when files change
 app-admin/eselect 1.4.15 1.4.16 9999: Gentoo's multi-purpose configuration and management tool
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
-app-admin/exo 1.15.0 1.16.0: Command-line tool for everything at Exoscale: compute, storage, dns.
+app-admin/exo 1.16.1: Command-line tool for everything at Exoscale: compute, storage, dns.
 app-admin/fam 2.7.0_p17_p2 2.7.0_p17_p3: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.4-r1: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1-r1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
@@ -538,7 +538,7 @@ app-admin/graylog 3.3.3: Free and open source log management
 app-admin/gtkdiskfree 2.0.1-r1 2.0.3 2.0.4_p20200224: Graphical tool to show free disk space like df
 app-admin/hardinfo 0.5.2_pre20130823: System information and benchmark tool for Linux systems
 app-admin/haskell-updater 1.2.9 1.2.10 1.2.12-r1 1.3.1 1.3.2: Rebuild Haskell dependencies in Gentoo
-app-admin/hcloud 1.17.0 1.18.0: A command-line interface for Hetzner Cloud
+app-admin/hcloud 1.17.0 1.18.0 1.19.1: A command-line interface for Hetzner Cloud
 app-admin/hddtemp 0.3_beta15-r28: A simple utility to read the temperature of SMART capable hard drives
 app-admin/helm 2.16.1 2.16.7 2.16.9 3.2.4: Kubernetes Package Manager
 app-admin/ide-smart 1.4-r2: A tool to read SMART information from harddiscs
@@ -4046,7 +4046,7 @@ dev-haskell/half 0.2.2.3: Half-precision floating-point
 dev-haskell/hamlet 1.1.9.2 1.2.0: Haml-like template files that are compile-time checked (deprecated)
 dev-haskell/hans 3.0.1: Network Stack
 dev-haskell/happstack-server 7.6.0: Web related tools and services
-dev-haskell/happy 1.19.5: Happy is a parser generator for Haskell
+dev-haskell/happy 1.19.12: Happy is a parser generator for Haskell
 dev-haskell/harp 0.4.1 0.4.2 0.4.3.2: HaRP allows pattern-matching with regular expressions
 dev-haskell/hashable 1.2.1.0 1.2.4.0 1.2.7.0: A class for types that can be converted to a hash value
 dev-haskell/hashable-time 0.2 0.2.0.2 0.2.0.2-r1: Hashable instances for Data.Time
@@ -8299,12 +8299,12 @@ dev-python/ipaddr 2.2.0: Python IP address manipulation library
 dev-python/ipaddress 1.0.23: IPv4/IPv6 manipulation library, backport of the ipaddress module
 dev-python/ipdb 0.10.3: IPython-enabled pdb
 dev-python/ipy 1.00: Class and tools for handling of IPv4 and IPv6 addresses and networks
-dev-python/ipykernel 5.3.3 5.3.4: IPython Kernel for Jupyter
+dev-python/ipykernel 5.3.3 5.3.4 5.3.4-r1: IPython Kernel for Jupyter
 dev-python/ipynb 0.5.1: Package/Module importer for importing code from Jupyter Notebook files
-dev-python/ipyparallel 6.3.0: Interactive Parallel Computing with IPython
+dev-python/ipyparallel 6.3.0 6.3.0-r1: Interactive Parallel Computing with IPython
 dev-python/ipython 7.16.1 7.17.0 7.18.0 7.18.1: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.2.0-r1: Vestigial utilities from IPython
-dev-python/ipywidgets 7.5.1: IPython HTML widgets for Jupyter
+dev-python/ipywidgets 7.5.1 7.5.1-r1: IPython HTML widgets for Jupyter
 dev-python/irc 18.0.0-r1: IRC client framework written in Python
 dev-python/iso8601 0.1.12: Simple module to parse ISO 8601 dates
 dev-python/isodate 0.6.0-r1: ISO 8601 date/time/duration parser and formatter
@@ -8347,7 +8347,7 @@ dev-python/jsonrpclib 0.4.1 9999: python implementation of the JSON-RPC spec (1.
 dev-python/jsonschema 3.2.0: An implementation of JSON-Schema validation for Python
 dev-python/jsonxs 0.6: Get/set values in JSON and Python datastructures
 dev-python/jupyter 1.0.0-r2: Jupyter metapackage. Install all the Jupyter components in one go
-dev-python/jupyter_client 6.1.5 6.1.6-r1: Jupyter protocol implementation and client libraries
+dev-python/jupyter_client 6.1.5 6.1.6-r1 6.1.6-r2: Jupyter protocol implementation and client libraries
 dev-python/jupyter_console 6.1.0-r1: A terminal-based console frontend for Jupyter kernels
 dev-python/jupyter_core 4.6.3: Core common functionality of Jupyter projects
 dev-python/jwcrypto 0.7.0: Implements JWK,JWS,JWE specifications using python-cryptography
@@ -8467,10 +8467,10 @@ dev-python/namespace-zope 1: Namespace package declaration for zope
 dev-python/natgrid 0.2.1-r3: Matplotlib toolkit for gridding irreguraly spaced data
 dev-python/natsort 7.0.1: Natural sorting for Python
 dev-python/nautilus-python 1.2.3: Python bindings for the Nautilus file manager
-dev-python/nbconvert 5.6.1: Converting Jupyter Notebooks
+dev-python/nbconvert 5.6.1 5.6.1-r1: Converting Jupyter Notebooks
 dev-python/nbdime 2.0.0: Diff and merge of Jupyter Notebooks
 dev-python/nbformat 5.0.7: Reference implementation of the Jupyter Notebook format
-dev-python/nbsphinx 0.7.1: Jupyter Notebook Tools for Sphinx
+dev-python/nbsphinx 0.7.1 0.7.1-r1: Jupyter Notebook Tools for Sphinx
 dev-python/nbval 0.9.1: A py.test plugin to validate Jupyter notebooks
 dev-python/ndg-httpsclient 0.4.0 0.4.2-r1 0.5.1: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
 dev-python/neovim-remote 2.2.1 9999: A tool that helps control neovim processes
@@ -8494,7 +8494,7 @@ dev-python/nose2 0.9.1-r1: Next generation unittest with plugins
 dev-python/nose_fixes 1.3: A plugin to make nose behave better
 dev-python/nose_warnings_filters 0.1.5-r3: A python module to inject warning filters during nosetest
 dev-python/nosexcover 1.0.11-r1: Extends nose.plugins.cover to add Cobertura-style XML reports
-dev-python/notebook 6.0.3 6.1.3: Jupyter Interactive Notebook
+dev-python/notebook 6.0.3 6.1.3 6.1.3-r1: Jupyter Interactive Notebook
 dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
 dev-python/notify2 0.3.1-r1: Python interface to DBus notifications.
 dev-python/nototools 0_pre20200207: Noto fonts support tools and scripts plus web site generation
@@ -8958,7 +8958,7 @@ dev-python/qdarkstyle 2.8.1: A dark style sheet for QtWidgets application
 dev-python/qrcode 6.1: QR Code generator on top of PIL
 dev-python/qscintilla-python 2.11.5: Python bindings for QScintilla
 dev-python/qtawesome 0.7.2: Enables iconic fonts such as Font Awesome in PyQt
-dev-python/qtconsole 4.7.5 4.7.6: Qt-based console for Jupyter with support for rich media output
+dev-python/qtconsole 4.7.5 4.7.6 4.7.6-r1: Qt-based console for Jupyter with support for rich media output
 dev-python/qtsass 0.3.0: Compile SASS files to Qt stylesheets
 dev-python/quantities 0.12.4: Support for physical quantities with units, based on numpy
 dev-python/quex 0.65.4 0.71.0-r1: Mode Oriented Directly Coded Lexical Analyser Generator
@@ -9262,7 +9262,7 @@ dev-python/whelk 2.7.1: Pretending python is a shell
 dev-python/whichcraft 0.6.1: Cross-platform cross-python shutil.which functionality
 dev-python/whisper 1.1.5: Fixed size round-robin style database
 dev-python/whoosh 2.7.4: Fast, pure-Python full text indexing, search and spell checking library
-dev-python/widgetsnbextension 3.5.1: IPython HTML widgets for Jupyter
+dev-python/widgetsnbextension 3.5.1 3.5.1-r1: IPython HTML widgets for Jupyter
 dev-python/wrapt 1.12.1: Module for decorators, wrappers and monkey patching
 dev-python/ws4py 0.5.1-r1 9999: WebSocket client and server library for Python 2 and 3 as well as PyPy
 dev-python/wsaccel 0.6.2_p20170108: Accelerator for ws4py, autobahn and tornado
