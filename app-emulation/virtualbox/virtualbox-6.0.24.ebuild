@@ -18,7 +18,7 @@ SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
 LICENSE="GPL-2 dtrace? ( CDDL )"
 SLOT="0"
 [[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="alsa debug doc dtrace headless java libressl lvm +opus pam pax_kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
 
 CDEPEND="
