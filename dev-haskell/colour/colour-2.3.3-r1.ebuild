@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	if has_version "<dev-haskell/haddock-2.9.2"; then
-		# Workaround http://hackage.haskell.org/trac/hackage/ticket/626
+		# Workaround https://hackage.haskell.org/trac/hackage/ticket/626
 		# The haddock --hoogle option does not like unicode characters, which causes
 		# haddock 2.7.2 to fail like:
 		# haddock: internal Haddock or GHC error: dist/doc/html/enumerator/enumerator.txt: commitAndReleaseBuffer: invalid argument (Invalid or incomplete multibyte or wide character)
