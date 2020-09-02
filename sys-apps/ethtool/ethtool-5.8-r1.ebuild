@@ -15,7 +15,10 @@ IUSE="+netlink"
 DEPEND="app-arch/xz-utils"
 RDEPEND="netlink? ( net-libs/libmnl )"
 
-PATCHES=( "${FILESDIR}/${PN}-5.8-avoid_bashisms.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-5.8-avoid_bashisms.patch"
+	"${FILESDIR}/${P}-only-memset-non-NULL-link-settings.patch"
+)
 
 src_configure() {
 	econf $(use_enable netlink)
