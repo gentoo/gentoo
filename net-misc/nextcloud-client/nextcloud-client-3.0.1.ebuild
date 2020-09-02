@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils gnome2-utils
+inherit cmake xdg
 
 DESCRIPTION="Desktop Syncing Client for Nextcloud"
 HOMEPAGE="https://github.com/nextcloud/desktop"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/nextcloud/desktop/archive/v${PV/_/-}.tar.gz -> ${P}.
 
 LICENSE="CC-BY-3.0 GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc dolphin nautilus shibboleth test"
 
 COMMON_DEPEND=">=dev-db/sqlite-3.4:3
@@ -20,9 +20,12 @@ COMMON_DEPEND=">=dev-db/sqlite-3.4:3
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
+	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5[ssl]
+	dev-qt/qtquickcontrols2:5
 	dev-qt/qtsql:5
+	dev-qt/qtsvg:5
 	dev-qt/qtwebengine:5[widgets]
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
@@ -62,7 +65,7 @@ src_prepare() {
 		cmake_comment_add_subdirectory nautilus
 		popd > /dev/null || die
 	fi
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -75,17 +78,13 @@ src_configure() {
 		-DUNIT_TESTING=$(usex test)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
 	if ! use doc ; then
 		elog "Documentation and man pages not installed"
 		elog "Enable doc USE-flag to generate them"
 	fi
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
 }

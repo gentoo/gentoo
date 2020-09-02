@@ -5,6 +5,10 @@
 		<email>printing@gentoo.org</email>
 		<name>Gentoo Printing Project</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">hplip</remote-id>
 	</upstream>

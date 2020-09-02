@@ -1,0 +1,10 @@
+--- a/configure.in	2020-07-08 19:20:38.180447370 +0200
++++ b/configure.in	2020-07-08 19:21:00.840479965 +0200
+@@ -33,6 +33,6 @@
+ 
+ dnl Needed for normal compile
+-AC_PATH_PROG(AR, ar)
++AM_PROG_AR
+ AM_PROG_LIBTOOL
+ 
+ dnl HAVE_SHADOW_PASSWORDS
