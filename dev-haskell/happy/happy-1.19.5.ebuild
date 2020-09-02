@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ CABAL_FEATURES="bin test-suite"
 inherit eutils haskell-cabal autotools
 
 DESCRIPTION="Happy is a parser generator for Haskell"
-HOMEPAGE="http://www.haskell.org/happy/"
+HOMEPAGE="https://www.haskell.org/happy/"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
