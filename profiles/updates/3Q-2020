@@ -65,7 +65,6 @@ move app-dicts/sword-jps app-dicts/sword-JPS
 move app-dicts/sword-jst app-dicts/sword-JST
 move app-dicts/sword-jubilee2000 app-dicts/sword-Jubilee2000
 move app-dicts/sword-kjv app-dicts/sword-KJV
-move app-dicts/sword-kjvd app-dicts/sword-KJVD
 move app-dicts/sword-klv app-dicts/sword-KLV
 move app-dicts/sword-klven_iklingon app-dicts/sword-KLVen_iklingon
 move app-dicts/sword-klviklingon_en app-dicts/sword-KLViklingon_en
