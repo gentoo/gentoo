@@ -3,12 +3,12 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{7..8} )
 
 inherit distutils-r1
 
 DESCRIPTION="VPython for Jupyter notebook"
-HOMEPAGE="http://www.vpython.org/ https://pypi.org/project/vpython/"
+HOMEPAGE="https://www.vpython.org/ https://pypi.org/project/vpython/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 RDEPEND="
