@@ -39,7 +39,6 @@ move app-dicts/sword-finney app-dicts/sword-Finney
 move app-dicts/sword-finpr app-dicts/sword-FinPR
 move app-dicts/sword-frebbb app-dicts/sword-FreBBB
 move app-dicts/sword-frecrampon app-dicts/sword-FreCrampon
-move app-dicts/sword-frelsg app-dicts/sword-FreLSG
 move app-dicts/sword-fremartin app-dicts/sword-FreBDM1744
 move app-dicts/sword-fresegond app-dicts/sword-FreSegond1910
 move app-dicts/sword-geneva app-dicts/sword-Geneva
