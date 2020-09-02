@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 WX_GTK_VER="3.0"
 
-inherit autotools wxwidgets
+inherit autotools wxwidgets xdg
 
 DESCRIPTION="XML Copy Editor is a fast, free, validating XML editor"
 HOMEPAGE="http://xml-copy-editor.sourceforge.net/"
