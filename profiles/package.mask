@@ -606,106 +606,6 @@ sys-auth/pam_radius
 # Removal in 30 days. bug #658448.
 net-analyzer/nikto
 
-# Matt Turner <mattst88@gentoo.org> (2020-08-03)
-# Package is dead and upstream maintainer asked that it be removed.
-# Removal in 30 days. Bug #735314
-dev-util/cmdtest
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-03)
-# Unmaintained.  Last release in 2011.  Py2 only.
-# Removal in 30 days.  Bug #735362.
-dev-vcs/svnmailer
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-03)
-# Unmaintained.  Last release in 2016.  Py2 only.
-# Removal in 30 days.  Bug #735336.
-dev-vcs/gitinspector
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-03)
-# Unmaintained.  Homepage gone.  Last bumped in 2009.  Py2 only.
-# Removal in 30 days.  Bug #735328.
-dev-util/tailor
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-03)
-# Last release in 2012.  Py2 only.  Has build failure reported.
-# Removal in 30 days.  Bug #717490.
-sys-fs/traydevice
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-03)
-# Unmaintained.  Py2 only.  The current Gentoo version is from 2015.
-# No reverse dependencies.
-# Removal in 30 days.  Bug #721476.
-net-mail/libpst
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-03)
-# dev-util/coccigrep is py2-only and requires coccinelle with Python
-# bindings.  dev-util/coccinelle has py2 bindings and fails to build
-# with python disabled (bug #701904).  Both packages are unmaintained.
-# Removal in 30 days.  Bug #734630.
-dev-util/coccigrep
-dev-util/coccinelle
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-02)
-# Py2 only. m-n. Bug #735340
-# Removal in 30 days
-dev-vcs/rapidsvn
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-02)
-# Py2 only. m-n. Bug #735364
-# Removal in 30 days
-media-gfx/cptutils
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-02)
-# Py2 only. m-n. Bug #709932
-# Removal in 30 days
-net-wireless/cpyrit-cuda
-net-wireless/cpyrit-opencl
-net-wireless/pyrit
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-02)
-# Py2 only. m-n. Bug #735524
-# Removal in 30 days
-www-misc/nx_util
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-02)
-# Dead upstream. Py3.6 only. Build issues.
-# Removal in 30 days. Bug #677900,#716384
-# #722408,723344
-app-mobilephone/obexftp
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-02)
-# Dead upstream. Py3.6 only.
-# Removal in 30 days. Bug #722334,#713686
-app-misc/evemu
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-02)
-# Needs bump. Py3 tests fail. Last release 2yrs.
-# Removal in 30 days. Bug #718196
-app-backup/cachedir
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-02)
-# Discontinued.  Last patch in 2008.  Py2 only.
-# Removal in 30 days.  Bug #734632.
-x11-misc/pypanel
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-02)
-# Stuck on py2.  Last release in 2010, last commit in 2014.  No revdeps.
-# Blocks dev-python/mysql-python removal.
-# Removal in 30 days.  Bug #735178.
-dev-python/python-openid
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-02)
-# Discontinued upstream in favor of dev-python/mock.  Py2 only.
-# The only revdep is last rited now.
-# Removal in 30 days.  Bug #735158.
-dev-python/mox
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-02)
-# Discontinued upstream in 2015.  Python 2 only.  No revdeps.
-# abseil-py (not package) is the suggested replacement.
-# Removal in 30 days.  Bug #735156.
-dev-python/google-apputils
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
 # consolekit is abandoned upstream.
 # People are encouraged to switch to any logind
@@ -713,58 +613,6 @@ dev-python/google-apputils
 # Removal in 60 days (bug #727730)
 sys-auth/consolekit
 sec-policy/selinux-consolekit
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-01)
-# Py3.6 only. Dead upstream.
-# Removal in 30 days. Bug #718898
-dev-python/cloudlib
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-01)
-# Py2 only. Dead upstream.
-# Removal in 30 days. Bug #722060
-app-arch/cfv
-app-arch/ipkg-utils
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-01)
-# Py2 only. Dead upstream.
-# Removal in 30 days
-# Bug #568602,#340164,#560840,#716420,#560254
-# #476424,#643982
-app-accessibility/SphinxTrain
-app-accessibility/sphinx3
-app-accessibility/sphinxbase
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-01)
-# Py2 only. Upstream has py3 versions
-# m-n. Removal in 30 days.
-www-apps/scgi
-www-apache/mod_scgi
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-01)
-# Py2 only. Dead upstream.
-# Removal in 30 days
-app-crypt/openssl-blacklist
-app-crypt/ssh-multiadd
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-01)
-# Py2 only. Upstream has py3 version
-# Removal in 30 days. Bug #709278
-media-gfx/printrun
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-01)
-# Py2 only. Dead upstream.
-# Removal in 30 days
-dev-python/pyvorbis
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-01)
-# Py2 only. Dead upstream.
-# Removal in 30 days
-dev-python/pyrex
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-01)
-# Py2 only. Dead upstream. Fails to build
-# Removal in 30 days. Bug #662572,#730328
-dev-python/pyode
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-01)
 # Py2 only. Last upstream release 2013.
@@ -1166,7 +1014,6 @@ sys-devel/automake:1.10
 # (updated 2017-12-27 with cuda < 8 because of gcc < 5 mask)
 <dev-util/nvidia-cuda-sdk-8
 <dev-util/nvidia-cuda-toolkit-8
-net-wireless/cpyrit-cuda
 
 # Michael Orlitzky <mjo@gentoo.org> (2017-01-07)
 # This package has some dangerous quality and security issues, but
