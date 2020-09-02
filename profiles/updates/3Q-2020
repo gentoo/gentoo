@@ -24,7 +24,6 @@ move app-dicts/sword-common app-dicts/sword-Common
 move app-dicts/sword-cro app-dicts/sword-CroSaric
 move app-dicts/sword-czebkr app-dicts/sword-CzeBKR
 move app-dicts/sword-daily app-dicts/sword-Daily
-move app-dicts/sword-dan app-dicts/sword-Dan
 move app-dicts/sword-darby app-dicts/sword-Darby
 move app-dicts/sword-diaglott app-dicts/sword-Diaglott
 move app-dicts/sword-drc app-dicts/sword-DRC
