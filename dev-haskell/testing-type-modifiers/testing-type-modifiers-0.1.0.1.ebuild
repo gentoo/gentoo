@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Data type modifiers for property based testing"
-HOMEPAGE="http://hackage.haskell.org/package/testing-type-modifiers"
+HOMEPAGE="https://hackage.haskell.org/package/testing-type-modifiers"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="public-domain"
