@@ -54,3 +54,7 @@ src_install() {
 		dodoc docs/*.html
 	fi
 }
+
+src_test() {
+	python_foreach_impl emake test
+}
