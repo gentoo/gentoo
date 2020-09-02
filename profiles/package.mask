@@ -32,6 +32,25 @@
 
 #--- END OF EXAMPLES ---
 
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-09-01)
+# Abandoned long time ago. Last release in 2008. Not ported to GTK+ 3.
+# Masked for deletion in 30 days.
+# Replacement: Sinhala Wijesekera input method is also provided by M17N library
+# which can be used through:
+# - app-i18n/fcitx-m17n
+# - app-i18n/ibus-m17n
+# - app-i18n/scim-m17n
+app-i18n/scim-wijesekera
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-09-01)
+# Mismatched version (bug #695022). Masked to force upgrade to 2.0.4_pre20200306162733.
+# (Mask should remain after ebuilds are deleted, until 2021-03-01 or
+# until new upstream release with proper versioning.)
+~app-i18n/sunpinyin-3.0.0_rc1
+~app-i18n/ibus-sunpinyin-3.0.0_rc1
+~app-i18n/scim-sunpinyin-3.0.0_rc1
+~app-i18n/xsunpinyin-3.0.0_rc1
+
 # Marek Szuba <marecki@gentoo.org> (2020-09-01)
 # Uses golang-* eclasses, only a library, all former reverse
 # dependencies have long since switched to vendoring.

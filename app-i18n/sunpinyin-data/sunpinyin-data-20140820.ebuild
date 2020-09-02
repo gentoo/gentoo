@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2013-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 DICT_VERSION="20131214"
 LM_VERSION="${PV}"
 
-DESCRIPTION="Data sets for Sunpinyin"
+DESCRIPTION="Data sets for SunPinyin"
 HOMEPAGE="https://github.com/sunpinyin/open-gram"
 SRC_URI="mirror://sourceforge/open-gram/dict.utf8-${DICT_VERSION}.tar.bz2
 	mirror://sourceforge/open-gram/lm_sc.3gm.arpa-${LM_VERSION}.tar.bz2"
@@ -16,7 +16,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
-DEPEND="=app-i18n/sunpinyin-3*"
+# https://github.com/sunpinyin/sunpinyin/commit/0fff1e78d9a409205e025736286838721a2ccbf8
+BDEPEND=">=app-i18n/sunpinyin-2.0.4_pre20140819192400"
+DEPEND=""
+RDEPEND=""
 
 src_unpack() {
 	default
