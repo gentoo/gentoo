@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Simple and incomplete pure haskell implementation of linear algebra"
-HOMEPAGE="http://hackage.haskell.org/package/dense-linear-algebra"
+HOMEPAGE="https://hackage.haskell.org/package/dense-linear-algebra"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD-2"
