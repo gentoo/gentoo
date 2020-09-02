@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://download.tuxfamily.org/${PN}/${P/_/-}.tar.gz"
-	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ppc ppc64 sparc x86"
+	KEYWORDS="~alpha amd64 arm ~arm64 hppa ppc ppc64 sparc x86"
 fi
 
 LICENSE="GPL-2"
@@ -68,24 +68,20 @@ src_prepare() {
 		-e 's|pkg-config|${PKG_CONFIG}|g' \
 		configure || die
 
-	sed \
-		-e 's/-F 1/-F 0/' \
-		examples/chronyd.service > "${T}"/chronyd.service || die
-
 	cp "${FILESDIR}"/chronyd.conf-r1 "${T}"/chronyd.conf || die
 }
 
 src_configure() {
 	if ! use caps; then
 		sed -i \
-			-e 's/-u ntp//' \
-			"${T}"/chronyd.conf "${T}"/chronyd.service || die
+			-e 's/ -u ntp//' \
+			"${T}"/chronyd.conf examples/chronyd.service || die
 	fi
 
 	if ! use seccomp; then
 		sed -i \
-			-e 's/-F 0//' \
-			"${T}"/chronyd.conf "${T}"/chronyd.service || die
+			-e 's/ -F 0//' \
+			"${T}"/chronyd.conf examples/chronyd.service || die
 	fi
 
 	tc-export CC PKG_CONFIG
@@ -176,7 +172,7 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/chrony-2.4-r1.logrotate chrony
 
-	systemd_dounit "${T}"/chronyd.service
+	systemd_dounit examples/chronyd.service
 	systemd_dounit examples/chrony-wait.service
 	systemd_enable_ntpunit 50-chrony chronyd.service
 }
