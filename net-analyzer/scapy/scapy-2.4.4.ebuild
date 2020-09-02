@@ -12,10 +12,6 @@ SRC_URI="https://github.com/secdev/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RDEPEND="
-	net-analyzer/tcpdump
-	net-libs/libpcap
-"
 DOC_CONTENTS="
 Scapy has optional support for the following packages:
 
@@ -24,7 +20,9 @@ Scapy has optional support for the following packages:
 	dev-python/matplotlib
 	dev-python/pyx
 	media-gfx/graphviz
+	net-analyzer/tcpdump
 	net-analyzer/tcpreplay
+	net-libs/libpcap
 	virtual/imagemagick-tools
 
 	See also ""${EPREFIX}/usr/share/doc/${PF}/installation.rst""
