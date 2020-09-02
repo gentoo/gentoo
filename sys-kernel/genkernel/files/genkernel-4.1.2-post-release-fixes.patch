@@ -1,0 +1,190 @@
+--- a/defaults/initrd.defaults
++++ b/defaults/initrd.defaults
+@@ -101,9 +101,11 @@ GK_UDEV_TIMEOUT=120
+ GK_USERINTERACTION_DISABLED_STATEFILE='/tmp/user-interaction.disabled'
+ 
+ CRYPT_ENV_FILE='/etc/CRYPT_ENV.conf'
+-CRYPT_KEYFILE_ROOT='/tmp/root.key'
+-CRYPT_KEYFILE_SWAP='/tmp/swap.key'
++CRYPT_ROOT_KEYDEV_FSTYPE='auto'
++CRYPT_ROOT_KEYFILE='/tmp/root.key'
+ CRYPT_ROOT_OPENED_LOCKFILE='/tmp/ROOT.opened'
++CRYPT_SWAP_KEYDEV_FSTYPE='auto'
++CRYPT_SWAP_KEYFILE='/tmp/swap.key'
+ CRYPT_SWAP_OPENED_LOCKFILE='/tmp/SWAP.opened'
+ 
+ ZFS_ENC_ENV_FILE='/etc/ZFS_ENC_ENV.conf'
+--- a/defaults/initrd.scripts
++++ b/defaults/initrd.scripts
+@@ -1780,7 +1780,7 @@ openLUKS() {
+ 		exit 1
+ 	fi
+ 
+-	case $1 in
++	case ${1} in
+ 		root)
+ 			local TYPE=ROOT
+ 			;;
+@@ -1789,8 +1789,12 @@ openLUKS() {
+ 			;;
+ 	esac
+ 
+-	eval local LUKS_DEVICE='"${CRYPT_'${TYPE}'}"' LUKS_NAME="$1" LUKS_KEY='"${CRYPT_'${TYPE}'_KEY}"'
+-	eval local LUKS_KEYDEV='"${CRYPT_'${TYPE}'_KEYDEV}"' LUKS_TRIM='"${CRYPT_'${TYPE}'_TRIM}"'
++	local LUKS_NAME="${1}"
++	eval local LUKS_DEVICE='"${CRYPT_'${TYPE}'}"'
++	eval local LUKS_KEY='"${CRYPT_'${TYPE}'_KEY}"'
++	eval local LUKS_KEYDEV='"${CRYPT_'${TYPE}'_KEYDEV}"'
++	eval local LUKS_KEYDEV_FSTYPE='"${CRYPT_'${TYPE}'_KEYDEV_FSTYPE}"'
++	eval local LUKS_TRIM='"${CRYPT_'${TYPE}'_TRIM}"'
+ 	eval local OPENED_LOCKFILE='"${CRYPT_'${TYPE}'_OPENED_LOCKFILE}"'
+ 	local DEV_ERROR=0 KEY_ERROR=0 KEYDEV_ERROR=0
+ 	local mntkey="/mnt/key/" crypt_filter_ret=
+@@ -1886,7 +1890,10 @@ openLUKS() {
+ 						# At this point a device was recognized, now let's see if the key is there
+ 						[ ! -d "${mntkey}" ] && mkdir -p "${mntkey}" >/dev/null 2>&1
+ 
+-						if ! run mount -n -o ro ${REAL_LUKS_KEYDEV} ${mntkey} >/dev/null 2>&1
++						# determine fs -- 'auto' will not trigger module loading!
++						LUKS_KEYDEV_FSTYPE=$(determine_fs "${REAL_LUKS_KEYDEV}" "${LUKS_KEYDEV_FSTYPE}")
++
++						if ! run mount -n -t ${LUKS_KEYDEV_FSTYPE} -o ro ${REAL_LUKS_KEYDEV} ${mntkey} >/dev/null 2>&1
+ 						then
+ 							KEYDEV_ERROR=1
+ 							bad_msg "Mounting of device ${REAL_LUKS_KEYDEV} failed." ${CRYPT_SILENT}
+--- a/defaults/linuxrc
++++ b/defaults/linuxrc
+@@ -2,7 +2,7 @@
+ 
+ # shellcheck source=initrd.defaults
+ . /etc/initrd.defaults
+-# shellche2ck source=initrd.scripts
++# shellcheck source=initrd.scripts
+ . /etc/initrd.scripts
+ 
+ # shellcheck source=/dev/null
+@@ -257,6 +257,9 @@ do
+ 		root_keydev=*)
+ 			CRYPT_ROOT_KEYDEV=${x#*=}
+ 		;;
++		root_keydev_fstype=*)
++			CRYPT_ROOT_KEYDEV_FSTYPE=${x#*=}
++		;;
+ 		root_trim=*)
+ 			CRYPT_ROOT_TRIM=${x#*=}
+ 		;;
+@@ -266,6 +269,9 @@ do
+ 		swap_keydev=*)
+ 			CRYPT_SWAP_KEYDEV=${x#*=}
+ 		;;
++		swap_keydev_fstype=*)
++			CRYPT_SWAP_KEYDEV_FSTYPE=${x#*=}
++		;;
+ 		real_resume=*|resume=*)
+ 			REAL_RESUME=${x#*=}
+ 		;;
+--- a/defaults/login-remote.sh
++++ b/defaults/login-remote.sh
+@@ -24,10 +24,10 @@ fi
+ receivefile() {
+ 	case ${1} in
+ 		root)
+-			file=${CRYPT_KEYFILE_ROOT}
++			file=${CRYPT_ROOT_KEYFILE}
+ 			;;
+ 		swap)
+-			file=${CRYPT_KEYFILE_SWAP}
++			file=${CRYPT_SWAP_KEYFILE}
+ 			;;
+ 		'')
+ 			bad_msg "No keyfile specified." "${CRYPT_SILENT}"
+--- a/defaults/unlock-luks.sh
++++ b/defaults/unlock-luks.sh
+@@ -43,8 +43,11 @@ main() {
+ 		exit 1
+ 	fi
+ 
+-	eval local LUKS_DEVICE='"${CRYPT_'${TYPE}'}"' LUKS_NAME="${NAME}" LUKS_KEY='"${CRYPT_KEYFILE_'${TYPE}'}"'
+-	eval local LUKS_TRIM='"${CRYPT_'${TYPE}'_TRIM}"' OPENED_LOCKFILE='"${CRYPT_'${TYPE}'_OPENED_LOCKFILE}"'
++	local LUKS_NAME="${NAME}"
++	eval local LUKS_DEVICE='"${CRYPT_'${TYPE}'}"'
++	eval local LUKS_KEY='"${CRYPT_'${TYPE}'_KEY}"'
++	eval local LUKS_TRIM='"${CRYPT_'${TYPE}'_TRIM}"'
++	eval local OPENED_LOCKFILE='"${CRYPT_'${TYPE}'_OPENED_LOCKFILE}"'
+ 
+ 	while true
+ 	do
+--- a/doc/genkernel.8.txt
++++ b/doc/genkernel.8.txt
+@@ -646,6 +646,9 @@ recognized by the kernel itself.
+     root_key.   If unset while using root_key, it will automatically
+     look for the device in every boot.
+ 
++*root_keydev_fstype*=<...>::
++    Used filesystem for *root_keydev*. See *rootfstype* for more details.
++
+ *root_trim*=(yes|no)::
+     Enables TRIM support for a LUKS-based root device.  Only useful
+     with SSD setups.  Have a look at 'https://en.wikipedia.org/wiki/TRIM'
+@@ -657,6 +660,9 @@ recognized by the kernel itself.
+ *swap_keydev*=<...>::
+     Same as root_keydev for swap.
+ 
++*swap_keydev_fstype*=<...>::
++    Used filesystem for *swap_keydev*. See *rootfstype* for more details.
++
+ *crypt_silent*::
+     Set this to silent all the output related to the cryptographic
+     software,  and in case your encrypted device isn't open with the
+@@ -790,7 +796,8 @@ when not set. This will allow remote user to provide answer through
+ *rootfstype*=<...>::
+     Specify the file system type to mount the real root filesystem as.
+     This can be useful when support for ext2/ext3/ext4 are
+-    in competition.  Default is "auto".
++    in competition or used filesystem was not built into kernel.
++    Default is "auto".
+ 
+ *docache*::
+ *nocache*::
+--- a/gen_determineargs.sh
++++ b/gen_determineargs.sh
+@@ -415,7 +415,6 @@ determine_real_args() {
+ 	set_config_with_override BOOL   GENZIMAGE                             CMD_GENZIMAGE                             "no"
+ 	set_config_with_override BOOL   KEYMAP                                CMD_KEYMAP                                "yes"
+ 	set_config_with_override BOOL   DOKEYMAPAUTO                          CMD_DOKEYMAPAUTO                          "no"
+-	set_config_with_override STRING BUSYBOX_CONFIG                        CMD_BUSYBOX_CONFIG
+ 	set_config_with_override STRING STRIP_TYPE                            CMD_STRIP_TYPE                            "modules"
+ 	set_config_with_override BOOL   INSTALL                               CMD_INSTALL                               "yes"
+ 	set_config_with_override BOOL   CLEANUP                               CMD_CLEANUP                               "yes"
+--- a/gen_funcs.sh
++++ b/gen_funcs.sh
+@@ -1853,7 +1853,7 @@ check_disk_space_requirements() {
+ 			gen_die "--check-free-disk-space-bootdir value '${CHECK_FREE_DISK_SPACE_BOOTDIR}' is not a valid number!"
+ 		fi
+ 
+-		available_free_disk_space=$(unset POSIXLY_CORRECT && df -BM "${BOOTDIR}" | awk '$3 ~ /[0-9]+/ { print $4 }')
++		available_free_disk_space=$(unset POSIXLY_CORRECT && LC_ALL="C" df -BM "${BOOTDIR}" | awk '$3 ~ /[0-9]+/ { print $4 }')
+ 		if [ -n "${available_free_disk_space}" ]
+ 		then
+ 			print_info 2 '' 1 0
+@@ -1890,7 +1890,7 @@ check_disk_space_requirements() {
+ 			gen_die "--check-free-disk-space-kerneloutputdir value '${CHECK_FREE_DISK_SPACE_KERNELOUTPUTDIR}' is not a valid number!"
+ 		fi
+ 
+-		available_free_disk_space=$(unset POSIXLY_CORRECT && df -BM "${KERNEL_OUTPUTDIR}" | awk '$3 ~ /[0-9]+/ { print $4 }')
++		available_free_disk_space=$(unset POSIXLY_CORRECT && LC_ALL="C" df -BM "${KERNEL_OUTPUTDIR}" | awk '$3 ~ /[0-9]+/ { print $4 }')
+ 		if [ -n "${available_free_disk_space}" ]
+ 		then
+ 			print_info 2 '' 1 0
+--- a/genkernel.conf
++++ b/genkernel.conf
+@@ -378,7 +378,7 @@ DEFAULT_KERNEL_SOURCE="/usr/src/linux"
+ # Compress generated initramfs
+ #COMPRESS_INITRD="yes"
+ 
+-# Types of compression: best, xz, lzma, bzip2, gzip, lzop, fastest
++# Types of compression: best, xz, lzma, bzip2, gzip, lzop, lz4, zstd, fastest
+ # "best" selects the best available compression method
+ # "fastest" selects the fastest available compression method
+ #COMPRESS_INITRD_TYPE="best"
+ 
