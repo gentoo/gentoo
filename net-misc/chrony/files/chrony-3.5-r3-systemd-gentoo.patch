@@ -6,7 +6,7 @@
  PIDFile=/run/chrony/chronyd.pid
 -EnvironmentFile=-/etc/sysconfig/chronyd
 -ExecStart=/usr/sbin/chronyd $OPTIONS
-+ExecStart=/usr/sbin/chronyd -u ntp -F 1
++ExecStart=/usr/sbin/chronyd -u ntp -F 0
  PrivateTmp=yes
  ProtectHome=yes
  ProtectSystem=full
