@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=ncurses? ( sys-libs/ncurses:0 ) wayland? ( dev-libs/wayland dev-libs/wayland-protocols x11-libs/cairo x11-libs/pango ) X? ( x11-libs/libxcb x11-libs/libXext x11-libs/libX11 x11-libs/cairo[X] x11-libs/pango[X] x11-libs/libXinerama )
 REQUIRED_USE=|| ( ncurses wayland X )
 SLOT=0
-_eclasses_=git-r3	8ec5b53812bce105ae7943930e4660f8
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=002cf7b5e4d071f6ef16175b83d8a4db

@@ -9,5 +9,5 @@ LICENSE=CC-BY-4.0 OFL-1.1
 PROPERTIES=live
 REQUIRED_USE=|| ( otf ttf )
 SLOT=0/5
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45	git-r3	8ec5b53812bce105ae7943930e4660f8
+_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=e0893ade2de0674867a58e8874028e69

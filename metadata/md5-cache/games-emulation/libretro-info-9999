@@ -6,5 +6,5 @@ HOMEPAGE=https://github.com/libretro/libretro-super
 LICENSE=GPL-3
 PROPERTIES=live
 SLOT=0
-_eclasses_=git-r3	8ec5b53812bce105ae7943930e4660f8
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=c4ce5b6321123a48f6f4fe3397b06416

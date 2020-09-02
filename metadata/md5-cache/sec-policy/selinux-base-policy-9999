@@ -9,5 +9,5 @@ PDEPEND=unconfined? ( sec-policy/selinux-unconfined )
 PROPERTIES=live
 RDEPEND==sec-policy/selinux-base-9999[systemd?]
 SLOT=0
-_eclasses_=git-r3	8ec5b53812bce105ae7943930e4660f8
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=1e0b39080738b27a52a07af4a516bd49

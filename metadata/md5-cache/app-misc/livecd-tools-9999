@@ -7,5 +7,5 @@ LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=dev-util/dialog net-dialup/mingetty >=sys-apps/baselayout-2 >=sys-apps/openrc-0.8.2-r1 sys-apps/pciutils sys-apps/gawk sys-apps/sed
 SLOT=0
-_eclasses_=git-r3	8ec5b53812bce105ae7943930e4660f8
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=bc7bf1ad6c21f05abc6b7aae266079a4

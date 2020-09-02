@@ -8,5 +8,5 @@ LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=sys-apps/gentoo-functions
 SLOT=0
-_eclasses_=git-r3	8ec5b53812bce105ae7943930e4660f8	prefix	c2993e4c430c1ee24f278983d6189501
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	prefix	c2993e4c430c1ee24f278983d6189501
 _md5_=cdbeb644b00c5960463b63ea4b601fe3

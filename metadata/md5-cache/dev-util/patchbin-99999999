@@ -8,5 +8,5 @@ LICENSE=LGPL-2.1
 PROPERTIES=live
 RDEPEND=app-shells/bash sys-apps/coreutils sys-apps/gawk sys-apps/grep sys-apps/util-linux sys-devel/patch
 SLOT=0
-_eclasses_=git-r3	8ec5b53812bce105ae7943930e4660f8
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=86b08a965678692fca27d4c478b70973
