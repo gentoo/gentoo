@@ -124,7 +124,6 @@ move app-dicts/sword-ukrainian app-dicts/sword-Ukrainian
 move app-dicts/sword-uma app-dicts/sword-Uma
 move app-dicts/sword-vulgate app-dicts/sword-Vulgate
 move app-dicts/sword-vulgate_hebps app-dicts/sword-Vulgate_HebPs
-move app-dicts/sword-web app-dicts/sword-WEB
 move app-dicts/sword-webster app-dicts/sword-Webster
 move app-dicts/sword-webstersdict app-dicts/sword-Webster1913
 move app-dicts/sword-wesley app-dicts/sword-Wesley
