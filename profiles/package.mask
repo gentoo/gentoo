@@ -658,7 +658,6 @@ media-gfx/cptutils
 # Aaron Bauman <bman@gentoo.org> (2020-08-02)
 # Py2 only. m-n. Bug #709932
 # Removal in 30 days
-net-wireless/cpyrit-opencl
 net-wireless/pyrit
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
