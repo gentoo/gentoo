@@ -2102,7 +2102,7 @@ app-i18n/ibus-libpinyin 1.11.1-r1 1.11.92-r1: Intelligent Pinyin and Bopomofo in
 app-i18n/ibus-m17n 1.4.2 1.4.3: M17N engine for IBus
 app-i18n/ibus-pinyin 1.5.0-r4: Chinese Pinyin and Bopomofo engines for IBus
 app-i18n/ibus-rime 1.2 1.3.0 1.4.0: Chinese Rime Input Method Engine for IBus
-app-i18n/ibus-skk 1.4.2: Japanese SKK engine for IBus
+app-i18n/ibus-skk 1.4.2 1.4.3: Japanese SKK engine for IBus
 app-i18n/ibus-sunpinyin 3.0.0_rc1-r1: Chinese SunPinyin engine for IBus
 app-i18n/ibus-table 1.9.21-r2 1.11.0 1.12.0: Tables engines for IBus
 app-i18n/ibus-table-chinese 1.8.2: Chinese tables for IBus-Table
