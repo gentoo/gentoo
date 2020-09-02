@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit xdg
+
 MY_PN=${PN}2
 MY_P=${MY_PN}-${PV}
 
