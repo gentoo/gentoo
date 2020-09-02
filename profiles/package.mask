@@ -744,7 +744,6 @@ www-apache/mod_scgi
 # Py2 only. Dead upstream.
 # Removal in 30 days
 app-crypt/openssl-blacklist
-app-crypt/ssh-multiadd
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-01)
 # Py2 only. Last upstream release 2013.
