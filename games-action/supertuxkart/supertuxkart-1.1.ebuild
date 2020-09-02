@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/SuperTuxKart/${PV}/${P}-src.tar.xz
 LICENSE="GPL-2 GPL-3 CC-BY-SA-3.0 CC-BY-SA-4.0 CC0-1.0 public-domain ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug fribidi libressl nettle recorder wiimote"
+IUSE="debug libressl nettle recorder wiimote"
 
 # don't unbundle irrlicht and bullet
 # both are modified and system versions will break the game
