@@ -5,9 +5,6 @@
     <email>sci-mathematics@gentoo.org</email>
     <name>Gentoo Mathematics Project</name>
   </maintainer>
-  <longdescription lang="en">
-    A Jupyter kernel for Octave.    
-  </longdescription>
   <upstream>
     <remote-id type="pypi">octave_kernel</remote-id>
     <remote-id type="github">Calysto/octave_kernel</remote-id>
