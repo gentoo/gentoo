@@ -438,7 +438,6 @@ acct-user/x2goprint 0: User for net-misc/x2goserver
 acct-user/x2gouser 0: User for net-misc/x2goserver
 acct-user/xrootd 0: User for the XRootD server
 acct-user/znc 0: User for net-irc/znc
-app-accessibility/SphinxTrain 1.0.8: Speech Recognition (Training Module)
 app-accessibility/accerciser 3.36.2: Interactive Python accessibility explorer
 app-accessibility/at-spi2-atk 2.34.2: Gtk module for bridging AT-SPI to Atk
 app-accessibility/at-spi2-core 2.34.0 2.36.0: D-Bus accessibility specifications and registration daemon
@@ -465,8 +464,6 @@ app-accessibility/speech-dispatcher 0.8.7-r3 0.9.1: Speech synthesis interface
 app-accessibility/speech-tools 2.1-r4 2.5.0: Speech tools for Festival Text to Speech engine
 app-accessibility/speechd-el 2.5: Emacs speech support
 app-accessibility/sphinx2 0.6: CMU Speech Recognition-engine
-app-accessibility/sphinx3 0.8-r1: CMU Speech Recognition engine
-app-accessibility/sphinxbase 0.8: Support library required by the Sphinx Speech Recognition Engine
 app-accessibility/yasr 0.6.9-r1: General-purpose console screen reader
 app-admin/abrt 2.14.0 2.14.1 2.14.2: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 3.6.13-r2 4.0.19-r1: Web UI based monitoring tool for Aerospike Community Edition Server
@@ -686,7 +683,6 @@ app-arch/gtk-splitter 2.2.1-r1: Split files into smaller pieces and combine them
 app-arch/gzip 1.9 1.10: Standard GNU compressor
 app-arch/hardlink 0.3.2: A tool which replaces copies of a file with hardlinks
 app-arch/innoextract 1.7 1.8: A tool to unpack installers created by Inno Setup
-app-arch/ipkg-utils 1.7.050831-r3: Tools for working with the ipkg binary package format
 app-arch/lbzip2 2.5_p20181227-r1: Parallel bzip2 utility
 app-arch/lcab 1.0_beta12: CAB file creation tool
 app-arch/lha 114i_p20201004: Utility for creating and opening lzh archives
@@ -769,7 +765,6 @@ app-backup/borgmatic 1.5.6 1.5.8 1.5.9 1.5.10: Automatically create, prune and v
 app-backup/borgweb 0.2.0-r2 0.3.0: Browser-based user interface for BorgBackup
 app-backup/btrbk 0.27.0 0.27.1 0.27.1-r1 0.27.2 0.28.0 0.28.1 0.28.2 0.28.3 0.29.0 0.29.1 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
 app-backup/burp 2.2.18-r1 2.3.30 2.3.32: Network backup and restore client and server for Unix and Windows
-app-backup/cachedir 1.4: Tag/untag cache directories
 app-backup/ccollect 0.8: Pseudo incremental backup with different exclude lists using hardlinks and rsync
 app-backup/cdbackup 0.7.1-r1: Allows streaming backup utilities to dump/restore from CD-R(W)s or DVD(+/-RW)s
 app-backup/cdbkup 1.0-r2: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
@@ -976,7 +971,6 @@ app-crypt/nwipe 0.25: Securely erase disks using a variety of recognized methods
 app-crypt/onak 0.5.0: onak is an OpenPGP keyserver
 app-crypt/openpgp-keys-gentoo-auth 20191030 20200704: Gentoo Authority Keys (GLEP 79)
 app-crypt/openpgp-keys-gentoo-release 20191030 20200704: OpenPGP keys used for Gentoo releases (snapshots, stages)
-app-crypt/openssl-blacklist 0.5.3: Detection of weak ssl keys produced by certain debian versions in 2006-2008
 app-crypt/ophcrack 3.8.0: A time-memory-trade-off-cracker
 app-crypt/ophcrack-tables 1.0-r2: Tables available for ophcrack
 app-crypt/osslsigncode 2.0: Platform-independent tool for Authenticode signing of EXE/CAB files
@@ -1008,7 +1002,6 @@ app-crypt/signify 20 23 24: Cryptographically sign and verify files
 app-crypt/signing-party 2.10-r1 2.11: A collection of several tools related to OpenPGP
 app-crypt/simple-tpm-pk11 0.06: Simple PKCS11 provider for TPM chips
 app-crypt/ssdeep 2.14.1: Computes context triggered piecewise hashes (fuzzy hashes)
-app-crypt/ssh-multiadd 1.3.2-r1: Adds multiple ssh keys to the ssh authentication agent
 app-crypt/ssss 0.5-r1: Shamir's Secret Sharing Scheme
 app-crypt/stan 0.4.1-r1: Stan analyzes binary streams and calculates statistical information
 app-crypt/stoken 0.92-r1: Software Token for Linux/UNIX
@@ -2390,7 +2383,6 @@ app-misc/emelfm2 0.9.1-r1 0.9.1-r2 0.9.1-r3: A file manager that implements the 
 app-misc/empty 0.6.20b: Small shell utility, similar to expect(1)
 app-misc/enum 1.1-r1: Replacement for GNU seq and BSD jot
 app-misc/esekeyd 1.2.7: Multimedia key daemon that uses the Linux event interface
-app-misc/evemu 2.7.0: tools and bindings for kernel evdev device emulation, data capture, and replay
 app-misc/evtest 1.33 1.34: test program for capturing input device events
 app-misc/faq 0.0.6: Format agnostic jQ
 app-misc/fdupes 1.5.1 1.6.1 1.6.1-r1 9999: Identify/delete duplicate files residing within specified directories
@@ -2607,7 +2599,6 @@ app-mobilephone/gammu 1.38.5 1.39.0-r1 1.40.0 1.41.0: A tool to handle your cell
 app-mobilephone/gnocky 0.0.7: GTK-2 version of gnokii
 app-mobilephone/gnokii 0.6.31-r1 0.6.31-r2 0.6.31-r3 9999: User space driver and tools for use with mobile phones
 app-mobilephone/heimdall 1.4.2 9999: Tool suite used to flash firmware onto Samsung Galaxy S devices
-app-mobilephone/obexftp 0.24.2: File transfer over OBEX for mobile phones
 app-mobilephone/qtadb 0.8.1-r1: Android phone manager via ADB
 app-mobilephone/scmxx 0.9.0: Exchange data with Siemens phones
 app-mobilephone/smsclient 2.0.9a-r1: Utility to send SMS messages to mobile phones and pagers
@@ -8016,7 +8007,6 @@ dev-python/click-plugins 1.0.3 1.1.1: Module for click to enable registering CLI
 dev-python/click-threading 0.4.4: Multithreaded Click apps made easy.
 dev-python/cliff 3.3.0 3.4.0: Command Line Interface Formulation Framework
 dev-python/clint 0.5.1-r1: Python Command-line Application Tools
-dev-python/cloudlib 0.5.0: Cloud middleware for in application use.
 dev-python/cloudpickle 1.5.0 1.6.0: Extended pickling support for Python objects
 dev-python/cmd2 1.2.1 1.3.4 1.3.5 1.3.8: Extra features for standard library's cmd module
 dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
@@ -8240,7 +8230,6 @@ dev-python/gntp 1.0.3: Python library for working with the Growl Notification Tr
 dev-python/google-api-core 1.17.0: Core Library for Google Client Libraries
 dev-python/google-api-python-client 1.6.5 1.8.3-r1: Google API Client for Python
 dev-python/google-apitools 0.5.31: Python library to manipulate Google APIs
-dev-python/google-apputils 0.4.2-r2: Collection of utilities for building Python applications
 dev-python/google-auth 1.14.3-r2 1.20.1: Google Authentication Library
 dev-python/google-auth-httplib2 0.0.3 0.0.4: httplib2 Transport for Google Auth
 dev-python/google-auth-oauthlib 0.4.1: Google Authentication Library
@@ -8454,7 +8443,6 @@ dev-python/monotonic 1.5-r1: An implementation of time.monotonic() for Python 2 
 dev-python/more-itertools 5.0.0 8.4.0 8.5.0: More routines for operating on iterables, beyond itertools
 dev-python/moto 1.3.14-r3: Mock library for boto
 dev-python/moviepy 1.0.1-r1: Video editing with Python
-dev-python/mox 0.5.3-r1: A mock object framework for Python, loosely based on EasyMock for Java
 dev-python/mox3 0.24.0: Mock object framework for Python
 dev-python/mpdlcd 0.5.2: A small tool to display the MPD status on a LCDproc server.
 dev-python/mpi4py 3.0.3: Message Passing Interface for Python
@@ -8766,7 +8754,6 @@ dev-python/pynacl 1.4.0: Python binding to the Networking and Cryptography (NaCl
 dev-python/pynput 1.6.8 9999: Sends virtual input commands
 dev-python/pynvim 0.4.1: Python client for Neovim
 dev-python/pyocr 0.7.2: An optical character recognition (OCR) tool wrapper for python
-dev-python/pyode 1.2.0_p20100322-r1: Python bindings to the ODE physics engine
 dev-python/pyogg 1.3-r2: Python bindings for the ogg library
 dev-python/pyopencl 2020.2 2020.2.1: Python wrapper for OpenCL
 dev-python/pyopengl 3.1.0 3.1.5: Python OpenGL bindings
@@ -8800,7 +8787,6 @@ dev-python/pyqt-distutils 0.3.0: distutils extension to work with PyQt applicati
 dev-python/pyqtgraph 0.11.0_rc0: A pure-python graphics and GUI library built on PyQt and numpy
 dev-python/pyquery 1.4.1-r1: A jQuery-like library for python
 dev-python/pyre2 1.0.7: Python bindings for dev-libs/re2
-dev-python/pyrex 0.9.9-r1: A language for writing Python extension modules
 dev-python/pyrfc3339 1.1: Generates and parses RFC 3339 timestamps
 dev-python/pyro 4.80: Distributed object middleware for Python (RPC)
 dev-python/pyroute2 0.5.12-r1: A pure Python netlink and Linux network configuration library.
@@ -8921,7 +8907,6 @@ dev-python/python-neutronclient 6.12.1 7.1.1: A client for the OpenStack Quantum
 dev-python/python-novaclient 17.0.0: A client for the OpenStack Nova API
 dev-python/python-ntpdshm 0.2.1: Python interface to ntpd shared memory driver 28
 dev-python/python-octaviaclient 1.8.0: A client for the OpenStack Zun API
-dev-python/python-openid 2.2.5-r1: OpenID support for servers and consumers
 dev-python/python-openstackclient 5.2.1: A client for the OpenStack APIs
 dev-python/python-podman 1.6.0: A library to interact with a Podman server
 dev-python/python-poppler-qt5 0.75.0: Python binding for libpoppler-qt5
@@ -8961,7 +8946,6 @@ dev-python/pytz 2020.1: World timezone definitions for Python
 dev-python/pyu2f 0.1.4-r1: Python based U2F host library
 dev-python/pyudev 0.22.0: Python binding to libudev
 dev-python/pyusb 1.0.2: USB support for Python
-dev-python/pyvorbis 1.4-r4: Python bindings for the ogg.vorbis library
 dev-python/pywavelets 0.5.2-r1: Discrete Wavelet Transforms in Python
 dev-python/pywinrm 0.4.1: Windows Remote Management through Python
 dev-python/pyx 0.15: Python package for the generation of encapsulated PostScript figures
@@ -10651,10 +10635,7 @@ dev-util/clion 2020.2: A complete toolset for C and C++ development
 dev-util/cloc 1.84: Count Lines of Code
 dev-util/cmake 3.13.5 3.16.5 3.17.3 3.17.4 3.18.0 3.18.1: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
-dev-util/cmdtest 0.30 0.32: black box tests Unix command line tools
 dev-util/cmocka 1.1.5: Unit testing framework for C
-dev-util/coccigrep 1.13: A semantic grep for the C language
-dev-util/coccinelle 1.0.5 1.0.6 1.0.8: Program matching and transformation engine
 dev-util/codeblocks 17.12-r302 17.12-r303 20.03 20.03-r1 9999: The open source, cross platform, free C, C++ and Fortran IDE
 dev-util/colm 0.13.0.4 0.13.0.5 0.13.0.6 0.13.0.6-r1 0.13.0.7: COmputer Language Manipulation
 dev-util/colorgcc 1.3.2-r7: Perl script to colorise the gcc output.
@@ -10916,7 +10897,6 @@ dev-util/sysdig-kmod 0.26.6-r1 0.26.7-r1 0.27.0: Kernel module for dev-util/sysd
 dev-util/sysprof 3.34.1-r1 3.36.0: System-wide Linux Profiler
 dev-util/sysprof-capture 3.34.1-r1 3.36.0: Static library for sysprof capture data generation
 dev-util/systemtap 2.4-r1 3.1-r1 4.0-r1: A linux trace/probe tool
-dev-util/tailor 0.9.35-r1: A tool to migrate changesets between version control systems
 dev-util/tinlink 1.0.0-r1: Tool to create very small elf binary from pure binary files
 dev-util/tkdiff 4.2: Graphical front end to the diff program
 dev-util/tmake 2.12-r1: A Cross platform Makefile tool
@@ -10986,7 +10966,6 @@ dev-vcs/git-spindle 3.3-r1: Git subcommands for interacting with central service
 dev-vcs/git-tools 2017.10 2019.11: Assorted git-related scripts
 dev-vcs/gitg 3.32.1-r1: git repository viewer for GNOME
 dev-vcs/github-pages-publish 0.1.3: A script that commits files from a directory to Github Pages
-dev-vcs/gitinspector 0.4.4: Statistical analysis tool for git repositories
 dev-vcs/gitolite 2.3.1-r1 3.6.11: Highly flexible server for git directory version tracker
 dev-vcs/gitolite-gentoo 2.3.1-r1 2.3.3-r1 3.5.3.1 3.6.1 3.6.1-r1 3.6.2.1 3.6.2.2 3.6.2.3 3.6.2.4 3.6.3 3.6.3.2 3.6.4 3.6.4.1 3.6.4.1-r1 3.6.5 3.6.6 3.6.6.1 3.6.6.1-r1: Highly flexible server for git directory version tracker, Gentoo fork
 dev-vcs/gitsh 0.11.2: An interactive shell for git
@@ -11003,7 +10982,6 @@ dev-vcs/mr 1.20170129 1.20171231 1.20180726 1.99999999: Multiple Repository mana
 dev-vcs/notify-webhook 0.1.0: Git post-receive web hook notifier in Python.
 dev-vcs/python-gitlab 1.7.0 1.8.0 1.9.0 1.13.0 2.2.0 2.3.1: Python command line interface to gitlab API
 dev-vcs/qgit 2.9: Qt GUI for git repositories
-dev-vcs/rapidsvn 0.12.1-r3: Cross-platform GUI front-end for the Subversion revision system
 dev-vcs/rcs 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files
 dev-vcs/repo 1.27 2.5 2.8: Google tool for managing git, particularly multiple repos
@@ -11013,7 +10991,6 @@ dev-vcs/subversion 1.13.0-r1 1.14.0: Advanced version control system
 dev-vcs/svn2cl 0.12 0.14: Create a GNU-style ChangeLog from subversion's svn log --xml output
 dev-vcs/svn2git 1.0.16 1.0.17 1.0.18 9999: Tool for one-time conversion from svn to git
 dev-vcs/svneverever 1.3.2 1.4.2 1.5.0: Tool collecting path entries across SVN history
-dev-vcs/svnmailer 1.0.9-r2: A subversion commit notifier written in Python
 dev-vcs/tig 2.5.1 9999: text mode interface for git
 dev-vcs/tkcvs 8.2.3 9.3.2: Tcl/Tk-based graphical interface to CVS with Subversion support
 dev-vcs/topgit 0.9-r1 0.19.12: A different patch queue manager
@@ -12782,7 +12759,6 @@ media-gfx/chafa 1.4.0 1.4.1: versatile and fast Unicode/ASCII/ANSI graphics rend
 media-gfx/clockphoto 1.2: Adjusts photo timestamps based on clock photos
 media-gfx/colorhug-client 0.2.8: Client tools for the ColorHug display colorimeter
 media-gfx/converseen 0.9.6.2: Batch image converter and resizer based on ImageMagick
-media-gfx/cptutils 1.72: A number of utilities for the manipulation of color gradient files
 media-gfx/cropgui 0.4.1: GUI for lossless cropping of jpeg images
 media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
 media-gfx/cura 3.4.1 3.6.0 4.2.1 4.3.0-r1 4.6.1: A 3D model slicing application for 3D printing
@@ -12936,7 +12912,6 @@ media-gfx/povray 3.7.0.0 3.7.0.0-r1: The Persistence of Vision Raytracer
 media-gfx/povtree 1.5-r1: Tree generator for POVray based on TOMTREE macro
 media-gfx/pqiv 2.11 9999: powerful GTK 3 based command-line image viewer with a minimal UI
 media-gfx/pqstego 0.0.1: Tools for Perturbed Quantization Steganography
-media-gfx/printrun 20150310-r4 99999999: GUI interface for 3D printing on RepRap and other printers
 media-gfx/propaganda 1.0-r1: Propaganda Volume 1-14 + E. Tiling images for your desktop
 media-gfx/psftools 1.0.10: Utilities for manipulation of console fonts in PSF format
 media-gfx/pstoedit 3.70-r1: Translate PostScript and PDF graphics into other vector formats
@@ -14997,7 +14972,6 @@ net-mail/imapsync 1.592-r1 1.836 1.882: Tool for incremental and recursive IMAP 
 net-mail/isync 1.3.1 9999: MailDir mailbox synchronizer
 net-mail/lbdb 0.41 0.47: Little Brother database
 net-mail/libdbx 1.0.3: Tools and library for reading Outlook Express mailboxes (.dbx format)
-net-mail/libpst 0.6.66-r3: Tools and library for reading Outlook files (.pst format)
 net-mail/list-remote-forwards 0.0.1-r2: List all remote forwards for mail accounts stored in a database
 net-mail/mailbase 1.5-r1: MTA layout package
 net-mail/mailbox-count 0.0.5: Count mailboxes in a SQL database
@@ -15597,8 +15571,6 @@ net-wireless/broadcom-sta 6.30.223.271-r6: Broadcom's IEEE 802.11a/b/g/n hybrid 
 net-wireless/bss 0.8-r1: Bluetooth stack smasher / fuzzer
 net-wireless/btcrack 9999: linux port of Thierry Zollers' BTCrack
 net-wireless/chirp 20200807 99999999: Free open-source tool for programming your amateur radio
-net-wireless/cpyrit-cuda 0.5.0: A sub-package that adds CUDA-capability to Pyrit
-net-wireless/cpyrit-opencl 0.5.0: A sub-package that adds OpenCL-capability to Pyrit
 net-wireless/crackle 0.1 9999: Crackle cracks BLE Encryption (AKA Bluetooth Smart)
 net-wireless/crda 3.18-r3 4.14: Central Regulatory Domain Agent for wireless networks
 net-wireless/cubicsdr 0.2.3-r2 9999: Cross-Platform and Open-Source Software Defined Radio Application
@@ -15656,7 +15628,6 @@ net-wireless/osmobts 9999: Osmocom BTS-Side code (Abis, scheduling)
 net-wireless/osmocom-bb 9999: OsmocomBB MS-side GSM Protocol stack (L1, L2, L3) excluding firmware
 net-wireless/portapack-firmware 20190405: Firmware and scripts for controlling the Portapack from Sharebrained
 net-wireless/portapack-havoc 0.0_p20180612: Custom firmware for the HackRF SDR + PortaPack H1 addon
-net-wireless/pyrit 0.4.0-r1 0.5.0-r1: GPU-accelerated attack against WPA-PSK authentication
 net-wireless/python-wifi 0.5.0-r3: Provides r/w access to a wireless network card's capabilities
 net-wireless/qradiolink 9999: Multimode SDR experimentation GUI for GNUradio
 net-wireless/reaver 1.6.5: Brute force attack against Wifi Protected Setup
@@ -17602,7 +17573,6 @@ sys-fs/squashfuse 0.1.100 0.1.103: FUSE filesystem to mount squashfs archives
 sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
 sys-fs/tmsu 0.6.1 0.7.0 0.7.4: Files tagger and virtual tag-based filesystem
-sys-fs/traydevice 1.6.2-r2: A little desktop application displaying systray icon for UDisks
 sys-fs/treesize 0.54.1-r1: A disk consumption analyzing tool
 sys-fs/udev 242 243-r2 245.5-r1 246-r1 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 33 34 9999: udev startup scripts for openrc
@@ -18039,7 +18009,6 @@ www-apache/mod_nss 1.0.12-r1: SSL/TLS module for the Apache HTTP server
 www-apache/mod_perl 2.0.11: An embedded Perl interpreter for Apache2
 www-apache/mod_qos 11.61 11.65: A QOS module for the apache webserver
 www-apache/mod_rpaf 0.6-r1: Reverse proxy add forward module
-www-apache/mod_scgi 1.14-r1: Apache module for a replacement of the CGI protocol, similar to FastCGI
 www-apache/mod_security 2.9.1-r1 2.9.3: Application firewall and intrusion detection for Apache
 www-apache/mod_vdbh 1.0.3-r2: An Apache2 module for mass virtual hosting using a MySQL database
 www-apache/mod_vhost_ldap 2.4.0-r1: Store and configure Apache virtual hosts using LDAP
@@ -18111,7 +18080,6 @@ www-apps/rocketwiki-lqfb 0.4: Small parser which translates a wiki dialect to HT
 www-apps/roundup 1.6.1-r1 2.0.0: Issue-tracking system with command-line, web, and e-mail interfaces
 www-apps/rt 4.4.4: RT is an enterprise-grade ticketing system
 www-apps/rutorrent 3.8-r1 9999: ruTorrent is a front-end for the popular Bittorrent client rTorrent
-www-apps/scgi 1.14-r1: A Python package for implementing SCGI servers
 www-apps/trac 1.2.5: Enhanced wiki and issue tracking system for software development projects
 www-apps/trickster 0.1.9: Dashboard Accelerator for Prometheus
 www-apps/tt-rss 20180105 20190523 99999999: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
@@ -18164,7 +18132,6 @@ www-misc/log-toolkit 0.9.6-r1: set of tools to manipulate and maintain webserver
 www-misc/mergelog 4.5-r2: A utility to merge apache logs in chronological order
 www-misc/monitorix 3.11.0: A lightweight system monitoring tool
 www-misc/multisort 1.1-r2: Merges httpd logfiles in the Common Log Format
-www-misc/nx_util 0.52.1 0.53.1: Whitelist & Reports generation for Naxsi (Web App Firewall module for Nginx)
 www-misc/profile-sync-daemon 5.75 6.31 6.35 9999: Symlinks and syncs browser profile dirs to RAM.
 www-misc/shellinabox 2.20-r4: Export command line tools to a web based terminal emulator
 www-misc/urlwatch 2.17 2.18-r1 2.21: A tool for monitoring webpages for updates
@@ -18588,7 +18555,6 @@ x11-misc/polybar 3.4.2-r1 3.4.3: A fast and easy-to-use tool for creating status
 x11-misc/primus 0.2 0.2-r1: Faster OpenGL offloading for Bumblebee
 x11-misc/projecteur 0.8: Linux Desktop Application for the Logitech Spotlight device
 x11-misc/py3status 3.28: py3status is an extensible i3status wrapper written in python
-x11-misc/pypanel 2.4-r2: A lightweight panel/taskbar for X11 window managers
 x11-misc/qarma 1: Zenity Clone for Qt5
 x11-misc/qcomicbook 0.9.1: A viewer for comic book archives containing jpeg/png images
 x11-misc/qlipper 5.0.0 5.1.2: Lightweight and cross-platform clipboard history applet
