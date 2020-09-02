@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit xdg
+
 DESCRIPTION="The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG"
 HOMEPAGE="http://gpa.wald.intevation.org"
 SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
