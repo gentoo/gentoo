@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS=""
 RDEPEND="
 	net-analyzer/tcpdump
+	net-libs/libpcap
 "
 S=${WORKDIR}/${P/_/}
 DOC_CONTENTS="
