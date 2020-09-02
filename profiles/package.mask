@@ -762,11 +762,6 @@ dev-python/pyvorbis
 dev-python/pyrex
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-01)
-# Py2 only. Dead upstream. Fails to build
-# Removal in 30 days. Bug #662572,#730328
-dev-python/pyode
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-01)
 # Py2 only. Last upstream release 2013.
 # Removal in 30 days. Last 2 have deps on cddb.
 <media-sound/jack-4.0.0_pre
