@@ -735,11 +735,6 @@ app-accessibility/sphinx3
 app-accessibility/sphinxbase
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-01)
-# Py2 only. Upstream has py3 versions
-# m-n. Removal in 30 days.
-www-apps/scgi
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-01)
 # Py2 only. Last upstream release 2013.
 # Removal in 30 days. Last 2 have deps on cddb.
 <media-sound/jack-4.0.0_pre
