@@ -12,8 +12,8 @@ inherit distutils-r1 eutils virtualx xdg
 COMMIT=bd600c20921afff7b02fc0a76ab79242ebd0896d
 
 DESCRIPTION="A program for drawing beautiful mathematically-based images known as fractals"
-HOMEPAGE="http://edyoung.github.io/gnofract4d/"
-SRC_URI="https://github.com/edyoung/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/fract4d/gnofract4d"
+SRC_URI="https://github.com/fract4d/gnofract4d/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -69,6 +69,7 @@ python_install_all() {
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
 	elog "Optional missing features:"
 	optfeature "creating videos" media-video/ffmpeg[vpx,zlib]
 }
