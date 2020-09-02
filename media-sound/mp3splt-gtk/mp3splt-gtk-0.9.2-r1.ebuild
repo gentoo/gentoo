@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools xdg
 
 DESCRIPTION="A GTK+ based utility to split mp3 and ogg files without decoding"
 HOMEPAGE="http://mp3splt.sourceforge.net"
