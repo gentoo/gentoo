@@ -92,7 +92,6 @@ move app-dicts/sword-rkjnt app-dicts/sword-RKJNT
 move app-dicts/sword-rnkjv app-dicts/sword-RNKJV
 move app-dicts/sword-robinson app-dicts/sword-Robinson
 move app-dicts/sword-rotherham app-dicts/sword-Rotherham
-move app-dicts/sword-rst app-dicts/sword-RST
 move app-dicts/sword-rusmakarij app-dicts/sword-RusMakarij
 move app-dicts/sword-rwebster app-dicts/sword-RWebster
 move app-dicts/sword-rwp app-dicts/sword-RWP
