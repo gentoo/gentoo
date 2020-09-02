@@ -162,10 +162,6 @@ sys-boot/grub -libzfs
 # [cuda] is unmasked in this profiles.
 media-libs/opencv -contribxfeatures2d
 
-# David Seifert <soap@gentoo.org> (2017-05-20)
-# cpyrit-cuda does not support GCC 4.9 or later
-net-wireless/pyrit cuda
-
 # Thomas Deutschmann <whissi@gentoo.org> (2017-03-01)
 # dev-libs/libmaxminddb is keyworded on amd64
 app-admin/rsyslog -mdblookup
