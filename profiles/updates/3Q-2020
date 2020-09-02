@@ -103,7 +103,6 @@ move app-dicts/sword-sme app-dicts/sword-SME
 move app-dicts/sword-smith app-dicts/sword-Smith
 move app-dicts/sword-sparv app-dicts/sword-SpaRV
 move app-dicts/sword-sparvg2004 app-dicts/sword-SpaRVG
-move app-dicts/sword-spasev app-dicts/sword-SpaSEV
 move app-dicts/sword-spavnt app-dicts/sword-SpaVNT
 move app-dicts/sword-spurious app-dicts/sword-Spurious
 move app-dicts/sword-strongsgreek app-dicts/sword-StrongsGreek
