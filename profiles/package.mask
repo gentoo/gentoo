@@ -694,12 +694,6 @@ x11-misc/pypanel
 # Removal in 30 days.  Bug #735178.
 dev-python/python-openid
 
-# Michał Górny <mgorny@gentoo.org> (2020-08-02)
-# Discontinued upstream in favor of dev-python/mock.  Py2 only.
-# The only revdep is last rited now.
-# Removal in 30 days.  Bug #735158.
-dev-python/mox
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
 # consolekit is abandoned upstream.
 # People are encouraged to switch to any logind
