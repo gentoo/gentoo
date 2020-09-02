@@ -991,13 +991,6 @@ net-misc/termpkg
 # regarding runstatedir (not using /run).
 =net-misc/networkmanager-1.22.10-r11
 
-# Michael Orlitzky <mjo@gentoo.org> (2020-04-19)
-# Stuck on Python 3.6, support for which already required
-# backporting patches to a release from 2014. Upstream's git
-# HEAD works fine, but they can't be bothered to make a new
-# release. Bug 718326. Removal whenever it becomes an issue.
-mail-filter/pyzor
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-18)
 # Unmaintained, vulnerable oracle java ebuilds, even fetching distfiles
 # requires agreement to restrictive license
