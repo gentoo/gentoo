@@ -82,6 +82,7 @@ acct-group/kafka 0: System group: kafka
 acct-group/kapacitor 0: System group: kapacitor
 acct-group/keystone 0: System group: keystone
 acct-group/kibana 0: Kibana program group
+acct-group/kismet 0: net-wireless/kismet
 acct-group/kmem 0: System group: kmem
 acct-group/knot 0: System group: knot
 acct-group/kube-apiserver 0: System group: kube-apiserver
@@ -304,6 +305,7 @@ acct-user/kafka 0: User for kafka
 acct-user/kapacitor 0: User for kapacitor
 acct-user/keystone 0: user for the keystone openstack service
 acct-user/kibana 0: Kibana program user
+acct-user/kismet 0: net-wireless/kismet
 acct-user/knot 0: User for knot DNS server
 acct-user/kube-apiserver 0: user for kube-apiserver
 acct-user/kube-controller-manager 0: user for kube-controller-manager
@@ -15652,7 +15654,7 @@ net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 4.9 4.14 5.0.1 5.3 5.4: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
 net-wireless/iwd 1.5 1.6 1.7 1.7-r1 1.8 1.8-r1 9999: Wireless daemon for linux
 net-wireless/jackit 0.0_p20170918-r1: Exploit Code for Mousejack
-net-wireless/kismet 2016.07.1-r2 2019.09.1-r2 2019.12.2-r1 2020.04.3 9999: IEEE 802.11 wireless LAN sniffer
+net-wireless/kismet 2020.04.3 2020.09.1 9999: IEEE 802.11 wireless LAN sniffer
 net-wireless/kismet-rest 2019.05.02 9999: Kismet REST Python API
 net-wireless/kismet-ubertooth 2017.03.2 9999: Provides basic bluetooth support in kismet
 net-wireless/kismetdb 2019.05.05 9999: Kismetdb database log helper library
