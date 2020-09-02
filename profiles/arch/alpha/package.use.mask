@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2020-09-02)
+# dev-python/mysqlclient lacks keywords here
+mail-filter/pyzor mysql
+
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No drivers on this architecture support Vulkan
 media-libs/mesa vulkan vulkan-overlay zink
