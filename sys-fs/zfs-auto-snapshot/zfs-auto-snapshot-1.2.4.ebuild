@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	MY_P="${PN}-upstream-${PV}"
 	SRC_URI="https://github.com/zfsonlinux/${PN}/archive/upstream/${PV}.tar.gz -> ${MY_P}.tar.gz"
-	KEYWORDS="amd64 ~ppc64"
+	KEYWORDS="amd64 ~arm64 ppc64"
 	S="${WORKDIR}/${MY_P}"
 fi
 
