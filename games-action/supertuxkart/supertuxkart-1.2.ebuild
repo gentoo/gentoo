@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/stk-code/releases/download/${PV}/${MY_P}.tar.x
 LICENSE="GPL-2 GPL-3 CC-BY-SA-3.0 CC-BY-SA-4.0 CC0-1.0 public-domain ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug fribidi libressl nettle recorder sqlite wiimote"
+IUSE="debug libressl nettle recorder sqlite wiimote"
 
 # don't unbundle irrlicht and bullet
 # both are modified and system versions will break the game
