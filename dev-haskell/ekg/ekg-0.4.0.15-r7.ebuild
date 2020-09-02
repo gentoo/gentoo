@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	default
 
-	# As per http://hackage.haskell.org/package/ekg-0.4.0.15/revisions/
+	# As per https://hackage.haskell.org/package/ekg-0.4.0.15/revisions/
 	cabal_chdeps \
 		'base >= 4.5 && < 4.12'	'base >=4.5' \
 		'aeson >= 0.4 && < 1.3'	'aeson >= 0.4' \
