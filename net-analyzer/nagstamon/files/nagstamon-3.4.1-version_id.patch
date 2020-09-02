@@ -1,0 +1,26 @@
+diff --git a/Nagstamon/Helpers.py b/Nagstamon/Helpers.py
+index f4e6ca6..561e2bf 100644
+--- a/Nagstamon/Helpers.py
++++ b/Nagstamon/Helpers.py
+@@ -454,14 +454,18 @@ def get_distro():
+             for property in os_release_file.read_text().splitlines():
+                 key, value = property.split('=', 1)
+                 os_release_dict[key] = value.strip('"').strip("'")
+-            return (os_release_dict['ID'], os_release_dict['VERSION_ID'], os_release_dict['NAME'])
++            return (os_release_dict.get('ID').lower(),
++                os_release_dict.get('VERSION_ID', 'unknown').lower(),
++                os_release_dict.get('NAME').lower())
+         else:
+             return False
+     else:
+-        return platform.dist()
++        # fix for non-working build on Debian<10
++        dist_name, dist_version, dist_id = platform.dist()
++        return dist_name.lower(), dist_version, dist_id
+ 
+ 
+-    # depending on column different functions have to be used
++# depending on column different functions have to be used
+ # 0 + 1 are column "Hosts", 1 + 2 are column "Service" due to extra font flag pictograms
+ SORT_COLUMNS_FUNCTIONS = {0: compare_host,
+         1: compare_host,
