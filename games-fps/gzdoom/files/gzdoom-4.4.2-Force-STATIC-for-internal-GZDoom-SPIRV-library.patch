@@ -1,0 +1,30 @@
+From c904b7521657e55843bae34f1f958d689538b13b Mon Sep 17 00:00:00 2001
+From: William Breathitt Gray <vilhelm.gray@gmail.com>
+Date: Wed, 17 Jun 2020 15:17:49 -0400
+Subject: [PATCH] Force STATIC for internal GZDoom SPIRV library
+
+This makes sure the internal version of this library bundled with the
+GZDoom source code is used. This prevents the system from building
+GZDoom for dynamic linking with an incompatible external library (see
+commit 6fafa297bfe0f82696d898d66e39c50f4f5eef16 and
+<https://forum.zdoom.org/viewtopic.php?f=2&t=64633>).
+---
+ libraries/glslang/spirv/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libraries/glslang/spirv/CMakeLists.txt b/libraries/glslang/spirv/CMakeLists.txt
+index 453ac16b5..d39a6e300 100644
+--- a/libraries/glslang/spirv/CMakeLists.txt
++++ b/libraries/glslang/spirv/CMakeLists.txt
+@@ -49,7 +49,7 @@ set(SPVREMAP_HEADERS
+     SPVRemapper.h
+     doc.h)
+ 
+-add_library(SPIRV ${LIB_TYPE} ${SOURCES} ${HEADERS})
++add_library(SPIRV STATIC ${LIB_TYPE} ${SOURCES} ${HEADERS})
+ set_property(TARGET SPIRV PROPERTY FOLDER glslang)
+ set_property(TARGET SPIRV PROPERTY POSITION_INDEPENDENT_CODE ON)
+ target_include_directories(SPIRV PUBLIC
+-- 
+2.26.2
+
