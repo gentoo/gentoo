@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools xdg
 
 DESCRIPTION="a graphical music player daemon (MPD) client using GTK+2"
 HOMEPAGE="https://launchpad.net/gimmix"
