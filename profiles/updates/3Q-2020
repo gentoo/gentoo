@@ -52,7 +52,6 @@ move app-dicts/sword-greekhebrew app-dicts/sword-GreekHebrew
 move app-dicts/sword-hebrewgreek app-dicts/sword-HebrewGreek
 move app-dicts/sword-heretics app-dicts/sword-Heretics
 move app-dicts/sword-hitchcock app-dicts/sword-Hitchcock
-move app-dicts/sword-hnv app-dicts/sword-HNV
 move app-dicts/sword-hunkar app-dicts/sword-HunKar
 move app-dicts/sword-institutes app-dicts/sword-Institutes
 move app-dicts/sword-isbe app-dicts/sword-ISBE
