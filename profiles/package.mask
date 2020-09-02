@@ -531,11 +531,6 @@ media-sound/specimen
 # Removal in 30 days. bug #736300
 media-sound/jackbeat
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-08)
-# Was not ported to >=ghc-8. Old dev-vcs/darcs was the only user.
-# Removal in 30 days. bug #736250
-dev-haskell/shellish
-
 # Michał Górny <mgorny@gentoo.org> (2020-08-07)
 # Last upstream (pre-)release in 2016.  Python 3 porting effort is not
 # progressing since February, and PRs are stuck.  Homepage is gone.
@@ -772,77 +767,13 @@ dev-python/pyrex
 dev-python/pyode
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-01)
-# Py2 only. Dead upstream.
-# Removal in 30 days
-dev-python/pylzma
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-01)
-# Py2 only. Dead upstream
-# Removal in 30 days
-dev-python/pyid3lib
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-01)
-# Py2 only. Dead upstream
-# Removal in 30 days
-dev-python/pupynere
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-01)
-# Py2 only. Dead upstream
-# Removal in 30 days
-dev-python/id3-py
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-01)
-# Py2 only. Dead upstream.
-# Removal in 30 days. Bug #706238
-dev-python/flup
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-01)
-# Python 2 backport, not used by anything anymore.
-# Removal in 30 days.
-dev-python/backports-abc
-dev-python/backports-lzma
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-01)
-# Py2 only. Use dev-python/lxml instead.
-# Removal in 30 days
-dev-python/elementtree
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-01)
 # Py2 only. Last upstream release 2013.
 # Removal in 30 days. Last 2 have deps on cddb.
-dev-python/cddb-py
-media-sound/jack
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-01)
-# This package's tests are seriously broken (they access random Internet
-# hosts for no good reason all the time), and it has no real revdeps.
-# Removal in 30 days.  Bug #735010.
-dev-python/distributed
+<media-sound/jack-4.0.0_pre
 
 # Michał Górny <mgorny@gentoo.org> (2020-07-28)
 # Masked for the time being due to dep on LLVM 8.  Bug #720236.
 <=dev-ada/gps-2019-r1
-
-# Andrey Utkin <andrey_utkin@gentoo.org> (2020-07-28)
-# Not used by other packages anymore.
-# Removal in 30 days.
-dev-python/ruamel-std-pathlib
-
-# Marek Szuba <marecki@gentoo.org> (2020-07-27)
-# No longer available upstream. Potentially copyrighted.
-# Specifics where known:
-#  - Dan has been obsoleted by DaOT1931NT1907, which contains the same
-#    source material but considerably better digitised;
-#  - FreLSG has been obsoleted by FreSegond1910;
-#  - RST has been replaced by RusSynodal.
-# Removal in 30 days. Bug #734116.
-app-dicts/sword-Dan
-app-dicts/sword-FreLSG
-app-dicts/sword-HNV
-app-dicts/sword-KJVD
-app-dicts/sword-RST
-app-dicts/sword-SpaSEV
-app-dicts/sword-WEB
 
 # Hans de Graaff <graaff@gentoo.org> (2020-07-22)
 # Mask old obsolete slots for removal in 30 days.

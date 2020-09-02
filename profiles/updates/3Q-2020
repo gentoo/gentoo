@@ -24,7 +24,6 @@ move app-dicts/sword-common app-dicts/sword-Common
 move app-dicts/sword-cro app-dicts/sword-CroSaric
 move app-dicts/sword-czebkr app-dicts/sword-CzeBKR
 move app-dicts/sword-daily app-dicts/sword-Daily
-move app-dicts/sword-dan app-dicts/sword-Dan
 move app-dicts/sword-darby app-dicts/sword-Darby
 move app-dicts/sword-diaglott app-dicts/sword-Diaglott
 move app-dicts/sword-drc app-dicts/sword-DRC
@@ -39,7 +38,6 @@ move app-dicts/sword-finney app-dicts/sword-Finney
 move app-dicts/sword-finpr app-dicts/sword-FinPR
 move app-dicts/sword-frebbb app-dicts/sword-FreBBB
 move app-dicts/sword-frecrampon app-dicts/sword-FreCrampon
-move app-dicts/sword-frelsg app-dicts/sword-FreLSG
 move app-dicts/sword-fremartin app-dicts/sword-FreBDM1744
 move app-dicts/sword-fresegond app-dicts/sword-FreSegond1910
 move app-dicts/sword-geneva app-dicts/sword-Geneva
@@ -52,7 +50,6 @@ move app-dicts/sword-greekhebrew app-dicts/sword-GreekHebrew
 move app-dicts/sword-hebrewgreek app-dicts/sword-HebrewGreek
 move app-dicts/sword-heretics app-dicts/sword-Heretics
 move app-dicts/sword-hitchcock app-dicts/sword-Hitchcock
-move app-dicts/sword-hnv app-dicts/sword-HNV
 move app-dicts/sword-hunkar app-dicts/sword-HunKar
 move app-dicts/sword-institutes app-dicts/sword-Institutes
 move app-dicts/sword-isbe app-dicts/sword-ISBE
@@ -65,7 +62,6 @@ move app-dicts/sword-jps app-dicts/sword-JPS
 move app-dicts/sword-jst app-dicts/sword-JST
 move app-dicts/sword-jubilee2000 app-dicts/sword-Jubilee2000
 move app-dicts/sword-kjv app-dicts/sword-KJV
-move app-dicts/sword-kjvd app-dicts/sword-KJVD
 move app-dicts/sword-klv app-dicts/sword-KLV
 move app-dicts/sword-klven_iklingon app-dicts/sword-KLVen_iklingon
 move app-dicts/sword-klviklingon_en app-dicts/sword-KLViklingon_en
@@ -92,7 +88,6 @@ move app-dicts/sword-rkjnt app-dicts/sword-RKJNT
 move app-dicts/sword-rnkjv app-dicts/sword-RNKJV
 move app-dicts/sword-robinson app-dicts/sword-Robinson
 move app-dicts/sword-rotherham app-dicts/sword-Rotherham
-move app-dicts/sword-rst app-dicts/sword-RST
 move app-dicts/sword-rusmakarij app-dicts/sword-RusMakarij
 move app-dicts/sword-rwebster app-dicts/sword-RWebster
 move app-dicts/sword-rwp app-dicts/sword-RWP
@@ -103,7 +98,6 @@ move app-dicts/sword-sme app-dicts/sword-SME
 move app-dicts/sword-smith app-dicts/sword-Smith
 move app-dicts/sword-sparv app-dicts/sword-SpaRV
 move app-dicts/sword-sparvg2004 app-dicts/sword-SpaRVG
-move app-dicts/sword-spasev app-dicts/sword-SpaSEV
 move app-dicts/sword-spavnt app-dicts/sword-SpaVNT
 move app-dicts/sword-spurious app-dicts/sword-Spurious
 move app-dicts/sword-strongsgreek app-dicts/sword-StrongsGreek
@@ -124,7 +118,6 @@ move app-dicts/sword-ukrainian app-dicts/sword-Ukrainian
 move app-dicts/sword-uma app-dicts/sword-Uma
 move app-dicts/sword-vulgate app-dicts/sword-Vulgate
 move app-dicts/sword-vulgate_hebps app-dicts/sword-Vulgate_HebPs
-move app-dicts/sword-web app-dicts/sword-WEB
 move app-dicts/sword-webster app-dicts/sword-Webster
 move app-dicts/sword-webstersdict app-dicts/sword-Webster1913
 move app-dicts/sword-wesley app-dicts/sword-Wesley

@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Vector & affine spaces, linear maps, and derivatives"
-HOMEPAGE="http://hackage.haskell.org/package/vector-space"
+HOMEPAGE="https://hackage.haskell.org/package/vector-space"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
