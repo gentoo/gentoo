@@ -3583,7 +3583,7 @@ dev-db/sqliteman 1.2.2-r4: Powerful GUI manager for the Sqlite3 database
 dev-db/sqliteodbc 0.99: ODBC driver to access local SQLite database files
 dev-db/sqlitestudio 3.2.1-r1: Powerful cross-platform SQLite database manager
 dev-db/textsearch_ja 9.0.0: Integrated Full-Text-Search for Japanese language using morphological analyze
-dev-db/tinycdb 0.77-r2: A very fast and simple package for creating and reading constant data bases
+dev-db/tinycdb 0.77-r2 0.78: A very fast and simple package for creating and reading constant data bases
 dev-db/tokumx 1.5.0-r2 2.0.2-r2: An open source, high-performance distribution of MongoDB
 dev-db/tokyocabinet 1.4.48-r1: A library of routines for managing a database
 dev-db/tora 3.2-r1 9999: SQL IDE for Oracle, MySQL and PostgreSQL dbs
@@ -5524,7 +5524,7 @@ dev-libs/libsigsegv 2.11 2.12 2.12-r1: Library for handling page faults in user 
 dev-libs/libslz 1.1.0: stateless, zlib-compatible, and very fast compression library
 dev-libs/libsodium 1.0.18: A portable fork of NaCl, a higher-level cryptographic library
 dev-libs/libspnav 0.2.3 0.2.3-r1: libspnav is a replacement for the magellan library with a cleaner API
-dev-libs/libspt 1.1-r2 1.1-r4: Library for handling root privilege
+dev-libs/libspt 1.1-r4: Library for handling root privilege
 dev-libs/libstrl 0.5.1-r1: Compat library for functions like strlcpy(), strlcat(), strnlen(), getline()
 dev-libs/libstroke 0.5.1-r1: A Stroke and Gesture recognition Library
 dev-libs/libstrophe 0.9.2 0.9.3: A simple, lightweight C library for writing XMPP clients
@@ -15606,7 +15606,7 @@ net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 4.9 4.14 5.0.1 5.3 5.4: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
 net-wireless/iwd 1.5 1.6 1.7 1.7-r1 1.8 1.8-r1 9999: Wireless daemon for linux
 net-wireless/jackit 0.0_p20170918-r1: Exploit Code for Mousejack
-net-wireless/kismet 2020.04.3 2020.09.1 9999: IEEE 802.11 wireless LAN sniffer
+net-wireless/kismet 2016.07.1-r2 2020.04.3 2020.09.1 9999: IEEE 802.11 wireless LAN sniffer
 net-wireless/kismet-rest 2019.05.02 9999: Kismet REST Python API
 net-wireless/kismet-ubertooth 2017.03.2 9999: Provides basic bluetooth support in kismet
 net-wireless/kismetdb 2019.05.05 9999: Kismetdb database log helper library
@@ -17598,7 +17598,7 @@ sys-kernel/ck-sources 5.4.37 5.4.48: Gentoo's genpatches for Linux , with Con Ko
 sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
-sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2 9999: Gentoo automatic kernel building scripts
+sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r1 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.60 5.4.61 5.7.17 5.7.18 5.7.19 5.8.3 5.8.4 5.8.5: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.60 5.4.61 5.7.17 5.7.18 5.7.19 5.7.19-r1 5.8.3 5.8.4 5.8.5 5.8.5-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.228 4.4.229 4.4.230 4.4.231 4.4.232 4.4.233 4.4.234 4.9.228 4.9.229 4.9.230 4.9.231 4.9.232 4.9.233 4.9.234 4.14.185 4.14.191 4.14.192 4.14.193 4.14.194 4.14.195 4.19.129 4.19.138 4.19.139 4.19.140 4.19.141 4.19.142 5.4.48 5.4.57 5.4.58 5.4.59 5.4.60 5.4.61 5.7.14 5.7.15 5.7.16 5.7.17 5.7.18 5.7.19 5.8.0 5.8.0-r1 5.8.1 5.8.2 5.8.3 5.8.4 5.8.5: Full sources including the Gentoo patchset for the 5.8 kernel tree

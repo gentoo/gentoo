@@ -2276,7 +2276,6 @@ dev-libs/libsecp256k1:test-openssl - Enable OpenSSL comparison tests
 dev-libs/libslz:tools - Install additional tools (zenc, zdec)
 dev-libs/libsodium:asm - Enables assembly implementations
 dev-libs/libsodium:urandom - Use /dev/urandom instead of /dev/random
-dev-libs/libspt:libtirpc - Build against net-libs/libtirpc for RPC support
 dev-libs/libtasn1:valgrind - Enable usage of dev-util/valgrind in debug
 dev-libs/libtermkey:demos - Install demos, which pulls in dev-libs/glib
 dev-libs/libucl:regex - Enable regex support
@@ -7101,9 +7100,18 @@ net-wireless/iwd:crda - Use net-wireless/crda for regulatory domain loading inst
 net-wireless/iwd:monitor - Enable iwmon monitor tool
 net-wireless/iwd:ofono - Enable support for oFono SIM authentication
 net-wireless/iwd:wired - Enable ethernet authentication daemon
+net-wireless/kismet:client - Build the ncurses-based user interface
 net-wireless/kismet:libusb - Support libusb based capture sources such as mousejack, cc2540(ble), and nrf51822(ble)
 net-wireless/kismet:pcre - Build with pcre support
+net-wireless/kismet:plugin-autowep - Build the autowep plugin
+net-wireless/kismet:plugin-btscan - Build the btscan plugin
+net-wireless/kismet:plugin-dot15d4 - Build the dot15d4 plugin
+net-wireless/kismet:plugin-ptw - Build the ptw plugin
+net-wireless/kismet:plugin-spectools - Build the spectools plugin. This uses net-wireless/spectools
+net-wireless/kismet:plugin-syslog - Build the syslog plugin.
 net-wireless/kismet:rtlsdr - Enable rtlsdr based kismet capture sources
+net-wireless/kismet:ruby - Build extras which are written in ruby, example plugins and the like.
+net-wireless/kismet:speech - Audio support using app-accessibility/flite
 net-wireless/kismet:suid - Install a setuid root helper binary with limited functionality; this allows running kismet as a normal user, significantly reducing security risks
 net-wireless/kismet:ubertooth - Enable capture source for ubertooth to sniff bluetooth low energy
 net-wireless/neard:tools - build and install extra helper utilities
