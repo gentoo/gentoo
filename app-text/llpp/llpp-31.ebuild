@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs xdg-utils
+inherit toolchain-funcs xdg
 
 DESCRIPTION="Graphical PDF viewer which aims to superficially resemble less(1)"
 HOMEPAGE="https://github.com/moosotc/llpp"
@@ -14,24 +14,25 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="+ocamlopt static-libs"
 
-RDEPEND="=app-text/mupdf-1.16*:0=[static-libs?]
+BDEPEND="
+	app-text/asciidoc
+	virtual/pkgconfig"
+RDEPEND="
+	=app-text/mupdf-1.16*:0=[static-libs?]
 	app-arch/bzip2[static-libs?]
 	media-libs/fontconfig:1.0[static-libs?]
 	media-libs/freetype:2[static-libs?]
 	media-libs/jbig2dec:=[static-libs?]
-	media-libs/openjpeg:2[static-libs?]
-	sys-libs/zlib[static-libs?]
+	media-libs/openjpeg:2=[static-libs?]
+	sys-libs/zlib:=[static-libs?]
 	virtual/jpeg:0[static-libs?]
 	x11-libs/libX11[static-libs?]
 	x11-libs/libXau[static-libs?]
 	x11-libs/libXdmcp[static-libs?]
 	x11-misc/xsel"
 DEPEND="${RDEPEND}
-	dev-ml/lablgl[glut,ocamlopt?]"
-BDEPEND="
 	>=dev-lang/ocaml-4.09[ocamlopt?]
-	app-text/asciidoc
-	virtual/pkgconfig"
+	dev-ml/lablgl[glut,ocamlopt?]"
 
 RESTRICT="!ocamlopt? ( strip )"
 
@@ -55,16 +56,6 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="/usr" install
+	emake DESTDIR="${ED}" PREFIX="/usr" install
 	dodoc README Thanks
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
 }
