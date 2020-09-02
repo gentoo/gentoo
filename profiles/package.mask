@@ -662,11 +662,6 @@ net-wireless/cpyrit-cuda
 net-wireless/cpyrit-opencl
 net-wireless/pyrit
 
-# Aaron Bauman <bman@gentoo.org> (2020-08-02)
-# Py2 only. m-n. Bug #735524
-# Removal in 30 days
-www-misc/nx_util
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
 # consolekit is abandoned upstream.
 # People are encouraged to switch to any logind
