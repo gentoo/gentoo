@@ -34,9 +34,9 @@ src_prepare() {
 
 src_configure() {
 	mycmakeargs=(
-			-DENABLE_SYNC=$(usex sync)
-			-DTASK_DOCDIR=share/doc/${PF}
-			-DTASK_RCDIR=share/${PN}/rc
+		-DENABLE_SYNC=$(usex sync)
+		-DTASK_DOCDIR=share/doc/${PF}
+		-DTASK_RCDIR=share/${PN}/rc
 	)
 
 	cmake_src_configure
