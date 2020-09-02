@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit autotools eutils multilib user python-single-r1 udev systemd
+inherit autotools eutils multilib python-single-r1 udev systemd
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://www.kismetwireless.net/git/${PN}.git"
@@ -38,6 +38,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 CDEPEND="
 	${PYTHON_DEPS}
+	acct-user/kismet
+	acct-group/kismet
 	networkmanager? ( net-misc/networkmanager:= )
 	dev-libs/glib:=
 	dev-libs/elfutils:=
@@ -131,7 +133,6 @@ src_install() {
 
 pkg_preinst() {
 	if use suid; then
-		enewgroup kismet
 		fowners root:kismet /usr/bin/kismet_cap_linux_bluetooth
 		fowners root:kismet /usr/bin/kismet_cap_linux_wifi
 		fowners root:kismet /usr/bin/kismet_cap_pcapfile
