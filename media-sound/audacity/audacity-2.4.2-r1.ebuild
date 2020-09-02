@@ -65,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-fix-gettimeofday.patch"
 	"${FILESDIR}/${P}-fix-metainfo.patch"
 	"${FILESDIR}/${P}-add-missing-include-portaudio.patch"
+	"${FILESDIR}/${P}-disable-ccache.patch"
 )
 
 src_prepare() {
