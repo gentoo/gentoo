@@ -1241,7 +1241,6 @@ app-dicts/sword-DaNT1819 1.0.1: Danish New Testament from 1819 with original ort
 app-dicts/sword-DaOT1871NT1907 1.0: Danish OT1871 + NT1907 with original orthography
 app-dicts/sword-DaOT1931NT1907 1.01: Danish OT1931 + NT1907 with original orthography
 app-dicts/sword-Daily 1.0: Jonathan Bagster's Daily Light on the Daily Path
-app-dicts/sword-Dan 2.1: Danske Bibel
 app-dicts/sword-Darby 1.1: Darby Bible (1889)
 app-dicts/sword-Dari 1.0.2: Dari Translation
 app-dicts/sword-DarkNightOfTheSoul 1.0: 'The Dark Night of the Soul' by St. John of the Cross
@@ -1280,7 +1279,6 @@ app-dicts/sword-FreGBM 1.0: Glossary of the Bible David Martin 1744
 app-dicts/sword-FreGeneve1669 1.0.3: Le Nouveau Testament de la Bible de Genève de 1669
 app-dicts/sword-FreJND 1.24: Bible J.N.Darby en français (1975)
 app-dicts/sword-FreKhan 1.0.2: La Bible de Zadoc Khan
-app-dicts/sword-FreLSG 1.3: French Louis Segond (1910)
 app-dicts/sword-FreLSN1872 1.0: Bible de Lausanne (1872)
 app-dicts/sword-FreLXX 1.1: Traduction de la LXX par P. GIGUET et autres traducteurs, 1872.
 app-dicts/sword-FreOltramare1874 1.0.3: Le Nouveau Testament Version Oltramare 1874
@@ -1312,7 +1310,6 @@ app-dicts/sword-Godbey 1.0: 1902 William Baxter Godbey NT
 app-dicts/sword-GodsWord 1.3.1: God'S Word to the Nations
 app-dicts/sword-GreVamvas 1.0.2: Neophytos Vamvas's translation of the Holy Bible into modern Greek (1850)
 app-dicts/sword-GreekHebrew 1.1: Greek to Hebrew Dictionary of Septuagint Words
-app-dicts/sword-HNV 1.8: Hebrew Names Version of the World English Bible
 app-dicts/sword-Haitian 1.5: Haitian Creole Bible
 app-dicts/sword-HebDelitzsch 1.2: Hebrew New Testament with Niqqud, based on Delitzsch's translation
 app-dicts/sword-HebModern 1.2: Modern Hebrew Bible
@@ -1351,7 +1348,6 @@ app-dicts/sword-Jubilee2000 1.1: English Jubilee 2000 Bible
 app-dicts/sword-KD 1.0: Keil and Delitzsch Biblical Commentary on the Old Testament
 app-dicts/sword-KJV 2.9: King James Version (1769) with Strongs Numbers and Morphology
 app-dicts/sword-KJVA 3.0.1: King James Version (1769) incl. Apocrypha, with Strongs Numbers and Morphology
-app-dicts/sword-KJVD 1.1: King James Dictionary
 app-dicts/sword-KJVPCE 1.0: King James Version: Pure Cambridge Edition
 app-dicts/sword-KLV 2.2: Klingon Language Version of the World English Bible
 app-dicts/sword-KLVen_iklingon 2.1: Klingon Language Version English to Klingon mapping lexicon
@@ -1434,7 +1430,6 @@ app-dicts/sword-Practice 1.0: The Practice of the Presence of God: The Best Rule
 app-dicts/sword-QuotingPassages 1.2: Scripture Passages Quoting Scripture
 app-dicts/sword-RKJNT 1.0: Revised King James New Testament
 app-dicts/sword-RNKJV 1.5: Restored Name King James Version
-app-dicts/sword-RST 1.6: Russian Synodal Translation
 app-dicts/sword-RWP 2.0: Robertson's Word Pictures
 app-dicts/sword-RWebster 1.3: Revised Webster Version (1833)
 app-dicts/sword-RecVer 1.0: Text Only Recovery Version (no outlines)
@@ -1477,7 +1472,6 @@ app-dicts/sword-SpaRV 1.6: Spanish Biblia Reina-Valera (1909)
 app-dicts/sword-SpaRV1865 1.1: Spanish Reina-Valera Bible (1865) with updated orthography
 app-dicts/sword-SpaRV1909 1.0.1: Spanish Reina-Valera 1909 with Strong's numbers
 app-dicts/sword-SpaRVG 1.3: Spanish Reina Valera Gomez Bible
-app-dicts/sword-SpaSEV 1.1: Spanish Sagradas Escrituras Version Antigua (1569)
 app-dicts/sword-SpaTDP 1.0: Spanish Traducción de dominio público (Mateo a Romanos)
 app-dicts/sword-SpaVNT 1.2.1: Spanish 1858 Reina Valera New Testament
 app-dicts/sword-Spurious 1.0: Tischendorf's Spurious Passages of the GNT
@@ -1527,7 +1521,6 @@ app-dicts/sword-VulgHetzenauer 1.0.2: Vulgata Clementina, Hetzenauer editore
 app-dicts/sword-VulgSistine 1.0.2: Vulgata Sistina
 app-dicts/sword-Vulgate 1.1: Latin Vulgate
 app-dicts/sword-Vulgate_HebPs 1.1: Latin Vulgate Psalms from Hebrew
-app-dicts/sword-WEB 1.8: World English Bible
 app-dicts/sword-WHNU 2.4: Westcott-Hort with NA27/UBS4 variants (1881)
 app-dicts/sword-WLC 1.9: Westminster Leningrad Codex
 app-dicts/sword-Webster 1.2: Webster Bible
@@ -3785,7 +3778,7 @@ dev-haskell/aeson-compat 0.3.9-r2: Compatibility layer for aeson
 dev-haskell/aeson-diff 1.1.0.8: Extract and apply patches to JSON documents
 dev-haskell/aeson-pretty 0.7.1 0.7.2 0.8.2 0.8.8: JSON pretty-printing library and command-line tool
 dev-haskell/aeson-qq 0.7.4 0.8.1 0.8.3: JSON quasiquoter for Haskell
-dev-haskell/alex 3.1.3 3.1.7 3.2.1 3.2.4 3.2.5: Alex is a tool for generating lexical analysers in Haskell
+dev-haskell/alex 3.2.5: Alex is a tool for generating lexical analysers in Haskell
 dev-haskell/alex-tools 0.4: A set of functions for a common use case of Alex
 dev-haskell/alsa-core 0.5.0.1-r2: Binding to the ALSA Library API (Exceptions)
 dev-haskell/alsa-mixer 0.1.2-r2 0.2.0.2 0.2.0.3 0.3.0: Bindings to the ALSA simple mixer API
@@ -3859,7 +3852,7 @@ dev-haskell/c2hs 0.16.4 0.16.5 0.17.2 0.20.1 0.25.2 0.27.1 0.28.3 0.28.6: C->Has
 dev-haskell/cabal 1.18.1.2 1.18.1.3 1.18.1.5 1.20.0.2 1.22.8.0 1.24.2.0 2.0.0.2 2.4.0.1 3.0.1.0: A framework for packaging Haskell software
 dev-haskell/cabal-doctest 1 1.0.8: A Setup.hs helper for doctests running
 dev-haskell/cabal-helper 0.6.1.0 0.6.3.1 0.7.3.0: Simple interface to some of Cabal's configuration state used by ghc-mod
-dev-haskell/cabal-install 1.18.1.0 1.20.0.3-r2 1.22.7.0 1.24.0.2 3.0.0.0: The command-line interface for Cabal and Hackage
+dev-haskell/cabal-install 1.24.0.2 3.0.0.0: The command-line interface for Cabal and Hackage
 dev-haskell/cairo 0.12.5.3 0.13.1.1 0.13.3.1 0.13.6.1: Binding to the Cairo library
 dev-haskell/call-stack 0.1.0 0.2.0: Use GHC call-stacks in a backward compatible way
 dev-haskell/casa-client 0.0.1: Client for Casa
@@ -3892,7 +3885,7 @@ dev-haskell/cmark-gfm 0.2.1: Fast, accurate GitHub Flavored Markdown parser and 
 dev-haskell/cmdargs 0.10.7 0.10.13 0.10.14 0.10.20: Command line argument processing
 dev-haskell/cmdlib 0.3.5-r1 0.3.6: a library for command line parsing & online help
 dev-haskell/code-page 0.1.1 0.1.3: Windows code page library for Haskell
-dev-haskell/colour 2.3.3-r1 2.3.5: A model for human colour/color perception
+dev-haskell/colour 2.3.5: A model for human colour/color perception
 dev-haskell/comonad 3.1 4.0 4.2.7.2 5 5.0.5 5.0.6: Haskell 98 compatible comonads
 dev-haskell/comonad-transformers 3.1 4.0: This package has been merged into comonad 4.0
 dev-haskell/comonads-fd 3.0.3 4.0: This package has been merged into comonad 4.0
@@ -4062,7 +4055,7 @@ dev-haskell/half 0.2.2.3: Half-precision floating-point
 dev-haskell/hamlet 1.1.9.2 1.2.0: Haml-like template files that are compile-time checked (deprecated)
 dev-haskell/hans 3.0.1: Network Stack
 dev-haskell/happstack-server 7.6.0: Web related tools and services
-dev-haskell/happy 1.19.4 1.19.5 1.19.12: Happy is a parser generator for Haskell
+dev-haskell/happy 1.19.5: Happy is a parser generator for Haskell
 dev-haskell/harp 0.4.1 0.4.2 0.4.3.2: HaRP allows pattern-matching with regular expressions
 dev-haskell/hashable 1.2.1.0 1.2.4.0 1.2.7.0: A class for types that can be converted to a hash value
 dev-haskell/hashable-time 0.2 0.2.0.2 0.2.0.2-r1: Hashable instances for Data.Time
@@ -4182,7 +4175,7 @@ dev-haskell/language-haskell-extract 0.2.4: Module to automatically extract func
 dev-haskell/language-javascript 0.5.14.2 0.6.0.9 0.6.0.14: Parser for JavaScript
 dev-haskell/language-lua 0.10.0 0.11.0.1: Lua parser and pretty-printer
 dev-haskell/language-python 0.5.4 0.5.8: Parsing and pretty printing of Python code
-dev-haskell/lazysmallcheck 0.6: A library for demand-driven testing of Haskell programs
+dev-haskell/lazysmallcheck 0.6-r1: A library for demand-driven testing of Haskell programs
 dev-haskell/lcs 0.2-r1: Find longest common sublist of two lists
 dev-haskell/leancheck 0.9.3: Enumerative property-based testing
 dev-haskell/lens 4.19.1: Lenses, Folds and Traversals
@@ -4399,7 +4392,6 @@ dev-haskell/shakespeare-i18n 1.0.0.5 1.1.0: A type-based approach to internation
 dev-haskell/shakespeare-js 1.1.4.1 1.2.0.4 1.3.0: Stick your haskell variables into javascript/coffeescript at compile time
 dev-haskell/shakespeare-text 1.0.2 1.1.0: Interpolation with quasi-quotation: put variables strings (deprecated)
 dev-haskell/shell-escape 0.2.0: Shell escaping library
-dev-haskell/shellish 0.1.4: shell-/perl- like (systems) programming in Haskell
 dev-haskell/shelly 1.5.6-r1 1.6.5 1.6.6 1.6.8.1 1.9.0: shell-like (systems) programming in Haskell
 dev-haskell/shuffle 0.1.3.3: Shuffle tool for UHC
 dev-haskell/silently 1.2.4.1 1.2.5 1.2.5.1: Prevent or capture writing to stdout and other handles
@@ -4428,7 +4420,7 @@ dev-haskell/store 0.7.6: Fast binary serialization
 dev-haskell/store-core 0.4.4.3: Fast and lightweight binary serialization
 dev-haskell/stream 0.4.7.2: A library for manipulating infinite lists
 dev-haskell/streaming-commons 0.1.12.1 0.1.15 0.1.15.4 0.1.16 0.2.1.2: Common lower-level functions needed by various streaming data libraries
-dev-haskell/strict 0.3.2: Strict data types and String IO
+dev-haskell/strict 0.3.2-r1: Strict data types and String IO
 dev-haskell/string-qq 0.0.2 0.0.4: QuasiQuoter for non-interpolated strings, texts and bytestrings
 dev-haskell/stringable 0.1.3: A Stringable type class, in the spirit of Foldable and Traversable
 dev-haskell/stringbuilder 0.4.0 0.5.0 0.5.1: A writer monad for multi-line string literals
@@ -4563,7 +4555,7 @@ dev-haskell/wxc 0.92.2.0 0.92.3.0: wxHaskell C++ wrapper
 dev-haskell/wxcore 0.92.2.0 0.92.3.0: wxHaskell core
 dev-haskell/wxdirect 0.92.2.0 0.92.2.0-r1 0.92.3.0-r1: helper tool for building wxHaskell
 dev-haskell/x11 1.9.2: A binding to the X11 graphics library
-dev-haskell/x11-xft 0.3.1 0.3.1-r1: Bindings to the Xft, X Free Type interface library, and some Xrender parts
+dev-haskell/x11-xft 0.3.1-r1: Bindings to the Xft, X Free Type interface library, and some Xrender parts
 dev-haskell/x509 1.6.5 1.7.5: X509 reader and writer
 dev-haskell/x509-store 1.6.7: X.509 collection accessing and storing methods
 dev-haskell/x509-system 1.6.6: Handle per-operating-system X.509 accessors and storage
@@ -7942,10 +7934,8 @@ dev-python/awscli 1.18.117: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backcall 0.2.0: Specifications for callback functions passed in to an API
 dev-python/backports 1.0: Namespace for backported Python features
-dev-python/backports-abc 0.5: Backport of Python 3.5's 'collections.abc' module
 dev-python/backports-csv 1.0.7: Backport of Python 3's 'csv' module
 dev-python/backports-functools-lru-cache 1.6.1: Backport of functools.lru_cache from Python 3.3
-dev-python/backports-lzma 0.0.13: Backport of Python 3.3's lzma module for XZ/LZMA compressed files
 dev-python/backports-os 0.1.1: Backport of new features in Python's os module
 dev-python/backports-tempfile 1.0: Backport of new features in Python's tempfile module
 dev-python/backports-unittest-mock 1.5-r1: Backport of unittest.mock
@@ -7998,7 +7988,6 @@ dev-python/casttube 0.2.0: casttube provides a way to interact with the Youtube 
 dev-python/catkin_pkg 0.4.22 9999: Standalone Python library for the catkin package system
 dev-python/cbor 1.0.0-r1: RFC 7049 - Concise Binary Object Representation
 dev-python/cbor2 5.1.0 5.1.2: Pure Python CBOR (de)serializer with extensive tag support
-dev-python/cddb-py 1.4-r1: CDDB Module for Python
 dev-python/celery 4.3.0: Asynchronous task queue/job queue based on distributed message passing
 dev-python/certifi 10001: Thin replacement for certifi using system certificate store
 dev-python/cffi 1.14.0-r2: Foreign Function Interface for Python calling C code
@@ -8096,7 +8085,6 @@ dev-python/discogs-client 2.2.2: Official Python API client for Discogs
 dev-python/diskcache 4.1.0 5.0.1 5.0.2: Disk and file backed cache
 dev-python/dissononce 0.34.3-r1: A python implementation for Noise Protocol Framework
 dev-python/distlib 0.3.1: Low-level components of distutils2/packaging
-dev-python/distributed 1.18.0-r1: Python library for distributed computation
 dev-python/distro 1.5.0: Reliable machine-readable Linux distribution information for Python
 dev-python/dj-database-url 0.5.0: Use Database URLs in your Django Application
 dev-python/django 2.2.13 2.2.15 2.2.16 3.0.8 3.0.9 3.0.10 3.1 3.1.1: High-level Python web framework
@@ -8149,7 +8137,6 @@ dev-python/editorconfig-core-py 0.12.0: Clone of EditorConfig core written in Py
 dev-python/elasticsearch-curator 5.8.1-r1: Tending time-series indices in Elasticsearch
 dev-python/elasticsearch-py 7.7.0: Official Python low-level client for Elasticsearch
 dev-python/elementpath 1.4.6 2.0.0 2.0.1: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
-dev-python/elementtree 1.2.6-r3: A light-weight XML object model for Python
 dev-python/emcee 3.0.2: Python ensemble sampling toolkit for affine-invariant MCMC
 dev-python/emoji 0.5.4: Emoji for Python
 dev-python/empy 3.3.3: A powerful and robust templating system for Python
@@ -8215,7 +8202,6 @@ dev-python/flit_core 2.1.0: Simplified packaging of Python modules (core module)
 dev-python/flufl-bounce 3.0.1: Email bounce detectors.
 dev-python/flufl-i18n 2.0.2: A high level API for Python internationalization.
 dev-python/flufl-lock 3.2: NFS-safe file locking with timeouts for POSIX systems.
-dev-python/flup 1.0.2-r1: Random assortment of WSGI servers
 dev-python/fonttools 4.1.0: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
 dev-python/fqdn 1.2.0: RFC-compliant FQDN validation and manipulation for Python
 dev-python/freezegun 0.3.15: Let your Python tests travel through time
@@ -8297,7 +8283,6 @@ dev-python/hyperframe 5.2.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 19.0.0 20.0.1: A featureful, correct URL for Python
 dev-python/hypothesis 4.57.1 5.21.0 5.24.3 5.24.4 5.27.0 5.28.0 5.29.0 5.29.3 5.29.4 5.30.0: A library for property based testing
 dev-python/icalendar 4.0.6: Package used for parsing and generating iCalendar files (RFC 2445)
-dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.8 2.10: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0: Patch ssl.match_hostname for Unicode(idna) domains support
 dev-python/ifaddr 0.1.6: Enumerate IP addresses on the local network adapters
@@ -8675,7 +8660,6 @@ dev-python/ptvsd 4.3.2: Visual Studio remote debugging server for Python
 dev-python/ptyprocess 0.6.0: Run a subprocess in a pseudo terminal
 dev-python/publicsuffix 2.20191221: Get a public suffix for a domain name using the Public Suffix List.
 dev-python/pudb 2019.2: A full-screen, console-based Python debugger
-dev-python/pupynere 1.0.15-r2: Pupynere is a PUre PYthon NEtcdf REader
 dev-python/pure-sasl 0.6.1: High-level SASL client written in pure Python
 dev-python/pushbullet-py 0.11.0-r1: A simple python client for pushbullet.com
 dev-python/pweave 0.30.3: Scientific report generator and literate programming tool
@@ -8753,7 +8737,6 @@ dev-python/pygsl 2.1.1: Python interface for the GNU scientific library (gsl)
 dev-python/pygtk 2.24.0-r5: GTK+2 bindings for Python
 dev-python/pyh2o 9999: Python API for sci-libs/libh2o
 dev-python/pyhamcrest 2.0.2: Hamcrest framework for matcher objects
-dev-python/pyid3lib 0.5.1-r2: Module for manipulating ID3 tags in Python
 dev-python/pyilmbase 2.3.0-r2 2.5.2-r1: IlmBase Python bindings
 dev-python/pyinotify 0.9.6: Python module used for monitoring filesystems events
 dev-python/pyinsane 2.0.13: Python implementation of the Sane API and abstration layer
@@ -8768,7 +8751,6 @@ dev-python/pylibacl 0.5.3 0.5.4_p20191217: POSIX ACLs (Access Control Lists) for
 dev-python/pylibmc 1.6.1-r1: Libmemcached wrapper written as a Python extension
 dev-python/pylint 2.5.3: Python code static checker
 dev-python/pylru 1.2.0: A least recently used (LRU) cache for Python
-dev-python/pylzma 0.4.9: Python bindings for the LZMA compression library
 dev-python/pymad 0.10: Python wrapper for libmad MP3 decoding in python
 dev-python/pymdstat 0.4.2-r1: Python library to parse Linux /proc/mdstat
 dev-python/pymediainfo 4.2.1: A wrapper around the mediainfo library
@@ -9056,7 +9038,6 @@ dev-python/rsa 4.2: Pure-Python RSA implementation
 dev-python/rst-linker 2.0.0: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rtimulib 7.2.1-r1: Python Binding for RTIMULib, a versatile IMU library
 dev-python/rtslib-fb 2.1.73: A Python object API for managing the Linux LIO kernel target
-dev-python/ruamel-std-pathlib 0.6.4-r1: Ruamel enhancements to pathlib and pathlib2
 dev-python/ruamel-yaml 0.16.10: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/ruamel-yaml-clib 0.2.0: C-based reader/scanner and emitter for dev-python/ruamel-yaml
 dev-python/ryu 4.26-r1: Component-based Software-defined Networking Framework
@@ -13843,7 +13824,6 @@ media-sound/id3ted 1.0: A Command-line ID3 Tag Editor
 media-sound/id3tool 1.2a: Tool for easy manipulation of the ID3 tags present in MP3 audio files
 media-sound/id3v2 0.1.12-r1: A command line editor for id3v2 tags
 media-sound/jaaa 0.9.2: JACK and ALSA Audio Analyser is an audio signal generator and spectrum analyser
-media-sound/jack 3.1.1-r3: A frontend for several cd-rippers and mp3 encoders
 media-sound/jack-audio-connection-kit 0.125.0 0.125.0-r1: A low-latency audio server
 media-sound/jack-keyboard 2.5 2.7.2-r1: A virtual MIDI keyboard for JACK MIDI
 media-sound/jack-rack 1.4.8_rc1-r1: JACK Rack is an effects rack for the JACK low latency audio API
@@ -13877,7 +13857,7 @@ media-sound/meterbridge 0.9.3: Software meterbridge for the UNIX based JACK audi
 media-sound/mhwaveedit 1.4.24: GTK+ Sound file editor (wav, and a few others.)
 media-sound/mikmod 3.2.8: A console MOD-Player based on libmikmod
 media-sound/milkytracker 1.02.00-r1: FastTracker 2 inspired music tracker
-media-sound/mixxx 2.2.3-r2 2.2.4 9999: Advanced Digital DJ tool based on Qt
+media-sound/mixxx 2.2.4 9999: Advanced Digital DJ tool based on Qt
 media-sound/mmix 0.3-r1: A soundcard mixer for the OSS driver
 media-sound/moc 2.5.2-r1 2.6_alpha3-r1 2.6_alpha3-r2: Music On Console - ncurses interface for playing audio files
 media-sound/modplugtools 0.5.3: libmodplug based module players modplug123 and modplugplay
@@ -18139,7 +18119,7 @@ www-apps/webdavcgi 0.8.3 0.8.4 1.1.1: A Perl CGI for accessing and sharing files
 www-apps/webmcp 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
-www-apps/wordpress 5.5: Wordpress PHP and MySQL based content management system (CMS)
+www-apps/wordpress 5.5.1: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
 www-client/chromium 85.0.4183.83 86.0.4240.8: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
