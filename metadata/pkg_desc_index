@@ -2543,7 +2543,7 @@ app-misc/splitvt 1.6.6-r3: Splitting terminals into two shells
 app-misc/srm 1.2.15: A command-line compatible rm which destroys file contents before unlinking
 app-misc/supercat 0.5.5-r2 0.5.6: A text file colorizer using powerful regular expressions
 app-misc/symlinks 1.4-r3: Scans for and fixes broken or messy symlinks
-app-misc/task 2.5.1-r1: Taskwarrior is a command-line todo list manager
+app-misc/task 2.5.1-r1 2.5.1-r2: Taskwarrior is a command-line todo list manager
 app-misc/taskd 1.1.0-r2: Server part of Taskwarrior, a command-line todo list manager
 app-misc/tdfsb 0.0.10-r1: SDL based graphical file browser
 app-misc/tdl 1.5.2-r3: Command line To Do List manager
@@ -5421,7 +5421,7 @@ dev-libs/libf2c 20130927-r1: Library that converts FORTRAN to C source
 dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for liblognorm processing
 dev-libs/libffi 3.3-r1 3.3-r2: a portable, high level programming interface to various calling conventions
 dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to various calling conventions
-dev-libs/libfido2 1.3.1 1.4.0: Provides library functionality for FIDO 2.0
+dev-libs/libfido2 1.3.1 1.4.0 1.5.0: Provides library functionality for FIDO 2.0
 dev-libs/libfilezilla 0.20.2 0.21.0 0.22.0 0.23.0 0.24.0 0.24.1: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.4.0_pre20200314: Struct of arrays library with object oriented interface for C++
 dev-libs/libfmt 6.1.2 7.0.3 9999: Small, safe and fast formatting library
@@ -8585,7 +8585,7 @@ dev-python/pathtools 0.1.2-r3: Pattern matching and various utilities for file s
 dev-python/patsy 0.5.1: Python module to describe statistical models and design matrices
 dev-python/paver 1.3.4-r1: Python-based software project scripting tool along the lines of Make
 dev-python/pbkdf2 1.3-r1: Implementation of PBKDF2, specified in RSA PKCS#5 v2.0
-dev-python/pbr 5.4.5: Inject some useful and sensible default behaviors into setuptools
+dev-python/pbr 5.4.5 5.5.0: Inject some useful and sensible default behaviors into setuptools
 dev-python/pcapy 0.11.2: Python pcap extension
 dev-python/pdfrw 0.4: PDF file reader/writer library
 dev-python/pebble 4.5.3: Threading and multiprocessing eye-candy
@@ -8596,7 +8596,7 @@ dev-python/pep8 1.7.1: Python style guide checker
 dev-python/pew 1.1.1: tool to manage multiple virtualenvs written in pure python
 dev-python/pexpect 4.8.0: Python module for spawning child apps and responding to expected patterns
 dev-python/pgspecial 1.11.9: Python implementation of postgres meta commands
-dev-python/phonenumbers 8.12.6 8.12.8: Python port of Google's libphonenumber
+dev-python/phonenumbers 8.12.6 8.12.8 8.12.9: Python port of Google's libphonenumber
 dev-python/picklemagic 0.0_pre20160415: A library for analysing python pickles safely
 dev-python/pickleshare 0.7.5: A small 'shelve' like datastore with concurrency support
 dev-python/pid 2.2.5: Pidfile featuring stale detection and file-locking
@@ -8689,7 +8689,7 @@ dev-python/pycryptodome 3.9.8: A self-contained cryptographic library for Python
 dev-python/pycson 0.7: A python parser for the Coffeescript Object Notation (CSON)
 dev-python/pycuda 2019.1.2: Python wrapper for NVIDIA CUDA
 dev-python/pycups 1.9.73-r2: Python bindings for the CUPS API
-dev-python/pycurl 7.43.0.5 7.43.0.5-r1: python binding for curl/libcurl
+dev-python/pycurl 7.43.0.5 7.43.0.5-r1 7.43.0.6: python binding for curl/libcurl
 dev-python/pycxx 7.1.2-r2: Set of facilities to extend Python with C++
 dev-python/pydecomp 0.3 9999: A python library of common (de)compression and contents handling
 dev-python/pydiff 0.2-r1: Diffs two Python files at the bytecode level
@@ -9138,7 +9138,7 @@ dev-python/stapler 1.0_pre20191215-r1: Suite of tools for PDF files manipulation
 dev-python/statsd 3.3.0: A simple statsd client
 dev-python/statsmodels 0.11.1 0.12.0 9999: Statistical computations and models for use with SciPy
 dev-python/stestr 2.1.0-r1: A parallel Python test runner built around subunit
-dev-python/stevedore 3.2.0: Manage dynamic plugins for Python applications
+dev-python/stevedore 3.2.0 3.2.1: Manage dynamic plugins for Python applications
 dev-python/strict-rfc3339 0.7-r1: Strict, simple, lightweight RFC3339 functions
 dev-python/stripe 2.46.0: Stripe python bindings
 dev-python/subprocess32 3.5.4: A backport of the subprocess module from Python 3.2/3.3 for use on 2.x
@@ -9191,7 +9191,7 @@ dev-python/towncrier 19.2.0: Building newsfiles for your project
 dev-python/tox 3.17.1 3.19.0 3.20.0: virtualenv-based automation of test activities
 dev-python/tqdm 4.47.0 4.48.2 9999: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0: Backports of the traceback module
-dev-python/traitlets 4.3.3: A configuration system for Python applications
+dev-python/traitlets 4.3.3 5.0.2: A configuration system for Python applications
 dev-python/transitions 0.8.2-r1: A lightweight, object-oriented state machine implementation in Python
 dev-python/translate-toolkit 2.5.0: Toolkit to convert between many translation formats
 dev-python/treq 20.4.1: A requests-like API built on top of twisted.web's Agent
