@@ -621,11 +621,6 @@ dev-vcs/svnmailer
 # Removal in 30 days.  Bug #735336.
 dev-vcs/gitinspector
 
-# Michał Górny <mgorny@gentoo.org> (2020-08-03)
-# Unmaintained.  Homepage gone.  Last bumped in 2009.  Py2 only.
-# Removal in 30 days.  Bug #735328.
-dev-util/tailor
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
 # consolekit is abandoned upstream.
 # People are encouraged to switch to any logind
