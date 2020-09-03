@@ -10124,7 +10124,7 @@ dev-ruby/power_assert 1.1.5 1.1.6 1.1.7 1.2.0: Shows each value of variables and
 dev-ruby/prawn 2.2.2: Fast, Nimble PDF Generation For Ruby
 dev-ruby/prawn-table 0.2.2-r1: Provides support for tables in Prawn
 dev-ruby/pry 0.13.1: Pry is a powerful alternative to the standard IRB shell for Ruby
-dev-ruby/public_suffix 3.1.1 4.0.3 4.0.4 4.0.5: Parse and decompose a domain name into top level domain, domain and subdomains
+dev-ruby/public_suffix 3.1.1 4.0.3 4.0.4 4.0.5 4.0.6: Parse and decompose a domain name into top level domain, domain and subdomains
 dev-ruby/pundit 1.1.0 2.1.0: Object oriented authorization for Rails applications
 dev-ruby/puppet_forge 2.3.2 2.3.3: Tools to access Forge API information on Modules, Users, and Releases
 dev-ruby/puppetdb-termini 6.10.0 6.11.2 6.12.0: Library needed to connect puppet to puppetdb
