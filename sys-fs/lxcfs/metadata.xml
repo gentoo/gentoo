@@ -5,10 +5,6 @@
 		<email>stasibear@gentoo.org</email>
 		<name>Erik Mackdanz</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>john@irc.tm</email>
-		<name>John Cooke</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>virtualization@gentoo.org</email>
 		<name>Gentoo Virtualization Project</name>
