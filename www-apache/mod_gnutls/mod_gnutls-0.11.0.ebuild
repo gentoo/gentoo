@@ -54,8 +54,12 @@ python_check_deps() {
 }
 
 pkg_setup() {
+	# Calling depend.apache_pkg_setup fails because we do not have
+	# "apache2" in IUSE but the function expects this in order to call
+	# _init_apache2_late which sets the APACHE_MODULESDIR variable.
 	_init_apache2
 	_init_apache2_late
+
 	python-any-r1_pkg_setup
 }
 
