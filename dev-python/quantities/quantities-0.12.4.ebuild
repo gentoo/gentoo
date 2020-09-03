@@ -18,7 +18,7 @@ SRC_URI="https://github.com/python-quantities/${MY_PN}/archive/v${MY_PV}.tar.gz 
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 RDEPEND="
 	dev-python/numpy[$PYTHON_USEDEP]
