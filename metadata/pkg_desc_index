@@ -8901,7 +8901,7 @@ dev-python/python-mistralclient 3.8.1: A client for the OpenStack Mistral API
 dev-python/python-monascaclient 1.15.0: A client for the OpenStack Monasca API
 dev-python/python-mpd 1.0.0-r1 1.1.0-r1: Python MPD client library
 dev-python/python-musicbrainz-ngs 0.7.1: Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices
-dev-python/python-nbxmpp 1.0.0 1.0.1: Python library to use Jabber/XMPP networks in a non-blocking way
+dev-python/python-nbxmpp 1.0.0 1.0.1 1.0.2: Python library to use Jabber/XMPP networks in a non-blocking way
 dev-python/python-netlink 0.1: Pure-Python client for the Linux NetLink interface
 dev-python/python-neutronclient 6.12.1 7.1.1: A client for the OpenStack Quantum API
 dev-python/python-novaclient 17.0.0: A client for the OpenStack Nova API
@@ -14660,7 +14660,7 @@ net-im/ekg2 0.4_pre20190315 9999: Text-based, multi-protocol instant messenger
 net-im/element-desktop-bin 1.7.4: A glossy Matrix collaboration client for desktop (binary package)
 net-im/empathy 3.12.14: Telepathy instant messaging and video/audio call client for GNOME
 net-im/err 6.1.4: Multiprotocol chatbot designed to be easily deployable and maintainable
-net-im/gajim 1.1.3-r1 1.1.3-r2 1.2.0 1.2.1: Jabber client written in PyGTK
+net-im/gajim 1.2.1 1.2.2: Jabber client written in PyGTK
 net-im/gg-transport 2.2.6: Gadu-Gadu transport for Jabber
 net-im/gitter-bin 3.1.0 4.1.0: Chat and network platform
 net-im/jabber-base 0.01-r1: Jabber servers and transports layout package

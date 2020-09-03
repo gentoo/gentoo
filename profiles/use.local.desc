@@ -5855,7 +5855,6 @@ net-im/err:irc - Pull optional dependencies, needed for IRC backend
 net-im/gajim:crypt - End to end encryption and GPG encryption
 net-im/gajim:geolocation - Sharing your location
 net-im/gajim:jingle - Audio and video calls
-net-im/gajim:networkmanager - Network lose detection using NetworkManager
 net-im/gajim:remote - Controling Gajim instance from command line with gajim-remote
 net-im/gajim:rst - Generating XHTML output from RST code
 net-im/gajim:spell - Spellchecking of composed messages
