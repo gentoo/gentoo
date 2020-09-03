@@ -59,6 +59,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.3.2-libupnp-1.6.patch"
 	"${FILESDIR}/${PN}-2.3.2-Fixed-compilation-with-newer-bfd.patch"
 	"${FILESDIR}/${PN}-2.3.2-desktop-mimetype.patch"
+	"${FILESDIR}/${PN}-2.3.2-libupnp-1.14.patch"
 )
 
 pkg_setup() {
