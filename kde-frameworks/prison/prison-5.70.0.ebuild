@@ -13,13 +13,15 @@ LICENSE="GPL-2"
 KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE="qml"
 
-DEPEND="
+RDEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
 	media-gfx/qrencode:=
 	media-libs/libdmtx
 	qml? ( >=dev-qt/qtdeclarative-${QTMIN}:5 )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	test? ( >=dev-qt/qtwidgets-${QTMIN}:5 )
+"
 
 src_configure() {
 	local mycmakeargs=(
