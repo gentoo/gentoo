@@ -21,7 +21,10 @@ RDEPEND="
 "
 DEPEND="virtual/opengl"
 
-PATCHES=( "${FILESDIR}/primus-0.2-libglvnd-workaround.patch" )
+PATCHES=(
+	"${FILESDIR}/primus-0.2-libglvnd-workaround.patch"
+	"${FILESDIR}/primus-0.2-respect-ldflags.patch"
+)
 
 src_prepare() {
 	default
