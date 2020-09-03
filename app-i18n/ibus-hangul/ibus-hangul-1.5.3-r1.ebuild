@@ -10,7 +10,7 @@ DESCRIPTION="Korean Hangul engine for IBus"
 HOMEPAGE="https://github.com/libhangul/ibus-hangul/wiki"
 SRC_URI="https://github.com/libhangul/${PN}/releases/download/${PV}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="nls"
