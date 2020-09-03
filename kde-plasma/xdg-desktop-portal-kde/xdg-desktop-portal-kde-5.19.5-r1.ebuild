@@ -43,6 +43,8 @@ RDEPEND="${COMMON_DEPEND}
 	sys-apps/xdg-desktop-portal[screencast?]
 "
 
+PATCHES=( "${FILESDIR}"/${P}-valid-desktop-file.patch )
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_PIPEWIRE=$(usex screencast)
