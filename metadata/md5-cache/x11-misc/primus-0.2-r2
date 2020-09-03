@@ -10,4 +10,4 @@ RDEPEND=x11-misc/bumblebee x11-drivers/nvidia-drivers[libglvnd(-)=]
 SLOT=0
 SRC_URI=https://github.com/amonakov/primus/archive/v0.2.tar.gz -> primus-0.2.tar.gz
 _eclasses_=multibuild	b2c915190b051f55a23b9354b9849847	multilib	2477ebe553d3e4d2c606191fe6c33602	multilib-build	8ad5b5535b73a8971881f09277b939f4	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=fa8dc3cb9cf05c37e4d32dca15e2f0b4
+_md5_=ab6deba832faf531f05b023cb4ab6672
