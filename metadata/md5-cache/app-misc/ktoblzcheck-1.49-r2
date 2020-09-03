@@ -3,9 +3,9 @@ DEPEND=app-text/recode:0= sys-apps/grep sys-apps/sed virtual/awk || ( net-misc/w
 DESCRIPTION=Library to check account numbers and bank codes of German banks
 EAPI=7
 HOMEPAGE=http://ktoblzcheck.sourceforge.net/
-KEYWORDS=~amd64 ~arm64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~amd64 ~arm64 ~ppc ~ppc64 ~sparc x86
 LICENSE=LGPL-2.1
 RDEPEND=app-text/recode:0= sys-apps/grep sys-apps/sed virtual/awk || ( net-misc/wget www-client/lynx )
 SLOT=0
 SRC_URI=mirror://sourceforge/ktoblzcheck/ktoblzcheck-1.49.tar.gz
-_md5_=a1fcf6b9d27188ab6b25db9969aded2a
+_md5_=0e10dbbeb2e7e2299a0f73c40c782280
