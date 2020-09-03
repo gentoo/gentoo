@@ -28,8 +28,6 @@ RDEPEND="${DEPEND}"
 
 REQUIRED_USE="|| ( alsa jack pulseaudio )"
 
-PATCHES=( "${FILESDIR}/${PN}-0.4.0-qt5-tagging.patch" )
-
 src_prepare() {
 	default
 	eautoreconf
