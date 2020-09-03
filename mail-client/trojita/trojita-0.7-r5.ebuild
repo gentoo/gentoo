@@ -71,6 +71,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DWITH_RAGEL=OFF # bug 739866, broken by ragel-7
 		-DWITH_CRYPTO_MESSAGES=$(usex crypt)
 		-DWITH_GPGMEPP=$(usex crypt)
 		-DWITH_MIMETIC=$(usex crypt)
