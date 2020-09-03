@@ -1,0 +1,14 @@
+BDEPEND=app-text/docbook2X sys-devel/bison sys-devel/flex >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install preinst prepare setup
+DEPEND=sys-apps/tcp-wrappers sys-libs/zlib mysql? ( dev-db/mysql-connector-c:0= ) postgres? ( dev-db/postgresql:* ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
+DESCRIPTION=library and programs to process reports from NetFlow data
+EAPI=7
+HOMEPAGE=https://github.com/5u623l20/flow-tools/
+IUSE=debug libressl mysql postgres ssl static-libs
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=BSD GPL-3
+RDEPEND=sys-apps/tcp-wrappers sys-libs/zlib mysql? ( dev-db/mysql-connector-c:0= ) postgres? ( dev-db/postgresql:* ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
+SLOT=0
+SRC_URI=https://github.com/5u623l20/flow-tools/archive/v0.68.6.tar.gz -> flow-tools-0.68.6.tar.gz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_md5_=ad6575212d62966a45f983b89ad9195e
