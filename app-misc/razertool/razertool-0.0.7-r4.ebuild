@@ -13,10 +13,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gtk"
 
-RDEPEND="virtual/libusb:0
+RDEPEND="dev-libs/glib:2
+	virtual/libusb:0
 	gtk? (
 		dev-libs/atk
-		dev-libs/glib:2
 		>=gnome-base/librsvg-2.0
 		>=x11-libs/cairo-1.0.0
 		x11-libs/gdk-pixbuf
