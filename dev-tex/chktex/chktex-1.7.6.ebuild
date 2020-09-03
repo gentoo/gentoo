@@ -28,7 +28,8 @@ BDEPEND="virtual/latex-base
 	dev-lang/perl:="
 
 PATCHES=( "${FILESDIR}/${PN}-1.7.1-asneeded.patch"
-	  "${FILESDIR}/tex-inputenc.patch" )
+		  "${FILESDIR}/tex-inputenc.patch"
+		  "${FILESDIR}/exit-status.patch")
 
 AT_M4DIR="${S}/m4"
 
@@ -51,7 +52,7 @@ src_compile() {
 src_install() {
 	default
 	if use doc ; then
-	      dodoc HTML/ChkTeX.tex
+		  dodoc HTML/ChkTeX.tex
 	fi
 	dodoc ChkTeX.dvi NEWS
 	doman *.1

@@ -1,0 +1,22 @@
+--- a/FindErrs.c	2016/09/10 04:22:18	308
++++ b/FindErrs.c	2016/09/28 03:52:31	314
+@@ -1872,7 +1872,6 @@
+             }
+             else
+             {
+-                FoundErr = EXIT_FAILURE;
+                 Context = LaTeXMsgs[Error].Context;
+ 
+                 if (!HeadErrOut)
+@@ -1889,9 +1888,11 @@
+                 {
+                 case etWarn:
+                     WarnPrint++;
++                    FoundErr = EXIT_FAILURE;
+                     break;
+                 case etErr:
+                     ErrPrint++;
++                    FoundErr = EXIT_FAILURE;
+                     break;
+                 case etMsg:
+                     break;
