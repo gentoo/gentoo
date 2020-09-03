@@ -1,5 +1,5 @@
---- ./src/acl2.h
-+++ ./src/acl2.h
+--- a/src/acl2.h
++++ b/src/acl2.h
 @@ -48,7 +48,7 @@
  #define ACL_TYPE_STD  1
  #define ACL_TYPE_EXT  2
