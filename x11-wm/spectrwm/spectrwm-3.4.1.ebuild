@@ -26,6 +26,7 @@ DEPEND="
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.0-gentoo.patch
+	"${FILESDIR}"/${PN}-3.4.1-musl.patch
 )
 S=${WORKDIR}/${PN}-${PN^^}_${PV//./_}
 
