@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 DESCRIPTION="Various tables for IBus-Table"
 HOMEPAGE="https://github.com/moebiuscurve/ibus-table-others"
@@ -17,5 +17,5 @@ RDEPEND="app-i18n/ibus-table
 	!app-i18n/ibus-table-cyrillic
 	!app-i18n/ibus-table-latin
 	!app-i18n/ibus-table-tv"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
