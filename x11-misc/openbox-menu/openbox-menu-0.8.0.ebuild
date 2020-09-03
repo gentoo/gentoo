@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,8 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="Another dynamic menu generator for Openbox"
 HOMEPAGE="http://fabrice.thiroux.free.fr/openbox-menu_en.html"
-SRC_URI="https://bitbucket.org/fabriceT/${PN}/downloads/${P}.tar.bz2"
+# FIXME: find suitable SRC_URI
+SRC_URI="https://bitbucket-archive.softwareheritage.org/static/ad/ad3004d2-fb2f-4c91-8aa1-a698e888ed11/attachments/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

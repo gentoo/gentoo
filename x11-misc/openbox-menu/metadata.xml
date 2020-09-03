@@ -10,8 +10,7 @@
 			<email>fabrice.thiroux@free.fr</email>
 			<name>Fabrice Thiroux</name>
 		</maintainer>
-		<doc lang="en">https://bitbucket.org/fabriceT/openbox-menu</doc>
-		<remote-id type="bitbucket">fabriceT/openbox-menu</remote-id>
+		<remote-id type="github">fabriceT/openbox-menu</remote-id>
 	</upstream>
 	<use>
 		<flag name="icons">Enable support for icons in menus</flag>
