@@ -7,6 +7,5 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">catkin</remote-id>
-		<remote-id type="bitbucket">IndigoJo/qtm-1.3</remote-id>
 	</upstream>
 </pkgmetadata>
