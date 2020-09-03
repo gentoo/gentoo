@@ -15,8 +15,8 @@ IUSE="ipv6 nls selinux X"
 RDEPEND=">=sys-libs/ncurses-5.7-r7:0=
 	nls? ( virtual/libintl )
 	selinux? ( sys-libs/libselinux )"
-DEPEND="${RDEPEND}
-	>=sys-devel/libtool-2.2.6b
+DEPEND="${RDEPEND}"
+BDEPEND=">=sys-devel/libtool-2.2.6b
 	nls? ( sys-devel/gettext )"
 
 DOCS=( AUTHORS ChangeLog NEWS README )
