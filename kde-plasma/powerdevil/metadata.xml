@@ -11,6 +11,7 @@
 	</upstream>
 	<use>
 		<flag name="brightness-control">Enable screen brightness control using <pkg>app-misc/ddcutil</pkg></flag>
+		<flag name="caps">Capabilities support for scheduled wakeup which can wake from suspend (CAP_WAKE_ALARM)</flag>
 		<flag name="wireless">Enable wireless energy saving actions via <pkg>kde-frameworks/bluez-qt</pkg> and <pkg>kde-frameworks/networkmanager-qt</pkg></flag>
 	</use>
 </pkgmetadata>
