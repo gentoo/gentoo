@@ -135,3 +135,11 @@ src_install() {
 	emake DESTDIR="${D}" install
 	systemd_dounit "${S}/docs"/kmscon{,vt@}.service
 }
+
+pkg_postinst() {
+	grep -e "^ERASECHAR" "${EROOT}"/etc/login.defs && \
+	ewarn "It is recommended that you comment out the ERASECHAR line in" && \
+	ewarn " /etc/login.defs for proper backspace functionality at the" && \
+	ewarn " kmscon login prompt.  For details see:" && \
+	ewarn "https://github.com/dvdhrm/kmscon/issues/69#issuecomment-13827797"
+}
