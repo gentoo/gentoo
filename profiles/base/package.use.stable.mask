@@ -8,11 +8,6 @@
 # app-text/pandoc is hard to stabilize #737612
 sys-apps/earlyoom docs
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-08-03)
-# dev-qt/qtquicktimeline-5.15.0 not yet stable, bug 711120
-# dev-libs/libclangformat-ide not stable and unclear maintainer, bug 711120
->=dev-qt/qt-creator-4.12 clang qmldesigner
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-06)
 # dev-python/wxpython:4.0 w/ py3 is not stable, bug #714566
 dev-python/matplotlib wxwidgets
