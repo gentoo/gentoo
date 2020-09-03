@@ -8626,7 +8626,7 @@ dev-python/polygon 3.0.7: Python package to handle polygonal shapes in 2D
 dev-python/pony 0.7.13: Python ORM with beautiful query syntax
 dev-python/portend 2.6: TCP port monitoring utilities
 dev-python/poyo 0.5.0: A lightweight YAML Parser for Python
-dev-python/precis-i18n 1.0.1: Internationalized Usernames and Passwords
+dev-python/precis-i18n 1.0.1 1.0.2: Internationalized Usernames and Passwords
 dev-python/pretend 1.0.9: A library for stubbing in Python
 dev-python/pretty-yaml 20.4.0: PyYAML-based module to produce pretty and readable YAML-serialized data
 dev-python/prettytable 0.7.2-r1: Easily displaying tabular data in a visually appealing ASCII table format
@@ -14438,7 +14438,7 @@ net-analyzer/snmptt 1.4.2: SNMP Trap Translator
 net-analyzer/snort 2.9.8.3-r2 2.9.12 2.9.15 2.9.15.1 2.9.16: The de facto standard for intrusion detection/prevention
 net-analyzer/snortalog 2.4.3-r1: a powerful perl script that summarizes snort logs
 net-analyzer/snortsam 2.70: Snort plugin that allows automated blocking of IP addresses on several firewalls
-net-analyzer/softflowd 0.9.9-r1: flow-based network traffic analyser capable of Cisco NetFlow data export
+net-analyzer/softflowd 0.9.9-r1 1.0.0: flow-based network traffic analyser capable of Cisco NetFlow data export
 net-analyzer/speedtest-cli 2.1.2: Command line interface for testing internet bandwidth using speedtest.net
 net-analyzer/sqlninja 0.2.6_p1-r1: A SQL Server injection & takeover tool
 net-analyzer/squid-graph 3.2-r1: Squid logfile analyzer and traffic grapher
@@ -14460,7 +14460,7 @@ net-analyzer/tcpreplay 4.3.3 999999: utilities for editing and replaying previou
 net-analyzer/tcpslice 1.2a_p3-r1 1.2a_p3_p4: Extract and concatenate portions of pcap files
 net-analyzer/tcpstat 1.5-r3 1.5_p8: Reports network interface statistics
 net-analyzer/tcptrace 6.6.7_p4_p1 6.6.7_p5: A Tool for analyzing network packet dumps
-net-analyzer/tcptraceroute 1.5_beta7-r2: tcptraceroute is a traceroute implementation using TCP packets
+net-analyzer/tcptraceroute 1.5_beta7-r2 1.5_beta7-r3: tcptraceroute is a traceroute implementation using TCP packets
 net-analyzer/tcptrack 1.4.2: Passive per-connection tcp bandwidth monitor
 net-analyzer/telegraf 1.10.4 1.11.5 1.12.1 1.13.3 1.14.5 1.15.2: The plugin-driven server agent for collecting & reporting metrics.
 net-analyzer/testssl 3.0.2: Tool to check TLS/SSL cipher support
@@ -15331,7 +15331,7 @@ net-misc/tipcutils 2.0.3: Utilities for TIPC (Transparent Inter-Process Communic
 net-misc/ttytter 2.1.00: A multi-functional, console-based Twitter client
 net-misc/ubridge 0.9.18: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces
 net-misc/ucarp 1.5.2-r3 1.5.2-r4 1.5.2-r5: Portable userland implementation of Common Address Redundancy Protocol (CARP)
-net-misc/udpcast 20120424 20120424-r1: Multicast file transfer tool
+net-misc/udpcast 20120424 20120424-r1 20200328: Multicast file transfer tool
 net-misc/udpxy 1.0.23.7-r2: Small daemon to relay multicast UDP traffic to client's TCP (HTTP) connection
 net-misc/uftp 4.10.1: Encrypted UDP based FTP with multicast
 net-misc/unison 2.48.4 2.48.4-r1 2.51.2: Two-way cross-platform file synchronizer
