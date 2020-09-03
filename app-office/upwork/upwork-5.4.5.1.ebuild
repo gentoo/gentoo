@@ -26,6 +26,8 @@ RDEPEND="
 	sys-apps/dbus
 	sys-libs/libcap
 	x11-libs/gtk+:3[cups]
+	x11-libs/libXinerama
+	x11-libs/libXScrnSaver
 "
 
 S="${WORKDIR}"
