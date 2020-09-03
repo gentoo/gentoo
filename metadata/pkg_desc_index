@@ -11938,7 +11938,7 @@ gui-apps/gtkgreet 0.6 9999: gtk based greeter for greetd
 gui-apps/kanshi 1.1.0 9999: dynamic display configuration (autorandr for wayland)
 gui-apps/lavalauncher 1.7.1 9999: simple launcher for wayland
 gui-apps/mako 1.4.1 9999: A lightweight notification daemon for Wayland. Works on Sway.
-gui-apps/nm-tray 0.4.3: A simple Qt-based NetworkManager front-end
+gui-apps/nm-tray 0.4.3-r1: A simple Qt-based NetworkManager front-end
 gui-apps/slurp 1.2.0 9999: Select a region in a Wayland compositor and print it to the standard output.
 gui-apps/swaybg 1.0 9999: A wallpaper utility for Wayland
 gui-apps/swayidle 1.6 9999: Idle management daemon for Wayland
@@ -14184,7 +14184,7 @@ media-video/totem 3.34.1: Media player for GNOME
 media-video/transcode 1.1.7-r4 1.1.7-r5: Utilities for transcoding video and audio codecs in different containers
 media-video/tsmuxer 2.6.11-r1: Utility to create and demux TS and M2TS files
 media-video/ttcut 0.19.6_p1-r1: Tool for cutting MPEG files especially for removing commercials
-media-video/unifi-video 3.10.10 3.10.11 3.10.12: UniFi Video Server
+media-video/unifi-video 3.10.10 3.10.11 3.10.12 3.10.13: UniFi Video Server
 media-video/ushare 1.1a-r9: uShare is a UPnP (TM) A/V & DLNA Media Server
 media-video/v4l2loopback 0.12.5-r1 9999: v4l2 loopback device which output is it's own input
 media-video/vamps 0.99.2-r2: Very fast requantisizing tool for backup DVDs
@@ -17761,7 +17761,7 @@ sys-process/fcron 3.2.1-r1 3.2.1-r3 3.3.0_beta-r1: A command scheduler with exte
 sys-process/ftop 1.0 1.0-r1: Monitor open files and filesystems
 sys-process/glances 3.1.4.1-r1 3.1.5: CLI curses based monitoring tool
 sys-process/gnome-usage 3.32.0: A nice way to view information about use of system resources.
-sys-process/htop 2.2.0 3.0.0: interactive process viewer
+sys-process/htop 2.2.0 3.0.0 3.0.1: interactive process viewer
 sys-process/incron 0.5.12_p20191114: inotify based cron daemon
 sys-process/iotop 0.6: Top-like UI used to show which process is using the I/O
 sys-process/latencytop 0.5-r1: tool for identifying where in the system latency is happening
