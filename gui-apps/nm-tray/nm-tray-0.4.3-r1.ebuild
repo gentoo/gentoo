@@ -15,8 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 BDEPEND=">=dev-util/cmake-3.10"
-DEPEND="
-	dev-qt/linguist:5
+RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
@@ -24,7 +23,10 @@ DEPEND="
 	dev-qt/qtwidgets:5
 	kde-frameworks/networkmanager-qt
 "
-RDEPEND="${DEPEND}"
+DEPEND="
+	${RDEPEND}
+	dev-qt/linguist-tools:5
+"
 
 PATCHES=( "${FILESDIR}"/nm-tray-0.4.3-missing-include-qmetaenum.patch )
 
