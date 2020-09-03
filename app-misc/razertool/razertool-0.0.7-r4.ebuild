@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils
+inherit autotools eutils
 
 DESCRIPTION="Unofficial tool for controlling the Razer Copperhead mouse"
 HOMEPAGE="http://razertool.sourceforge.net/"
@@ -27,17 +27,21 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
+PATCHES=( "${FILESDIR}"/${P}-ar.patch )
+
 src_prepare() {
 	default
 
 	sed -i razertool.rules.example \
 		-e 's:ACTION=="add", ::;s:BUS=:SUBSYSTEMS=:;s:SYSFS{:ATTRS{:g' \
-		|| die "sed razertool.rules.example action failed"
+		|| die
 
 	# plugdev group may not exist (created by hal), default to usb
 	sed -i razertool.rules.example \
 		-e 's:plugdev:usb:' \
-		|| die "sed razertool.rules.example plugdev failed"
+		|| die
+
+	eautoreconf
 }
 
 src_configure() {
@@ -51,8 +55,10 @@ src_install() {
 	newins razertool.rules.example 90-razertool.rules
 
 	# Icon and desktop entry
-	dosym ../razertool/pixmaps/razertool-icon.png /usr/share/pixmaps/razertool-icon.png
-	make_desktop_entry "razertool-gtk" "RazerTool" ${PN}-icon "GTK;Settings;HardwareSettings"
+	if use gtk; then
+		dosym ../razertool/pixmaps/razertool-icon.png /usr/share/pixmaps/razertool-icon.png
+		make_desktop_entry "razertool-gtk" "RazerTool" ${PN}-icon "GTK;Settings;HardwareSettings"
+	fi
 }
 
 pkg_postinst() {
