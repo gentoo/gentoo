@@ -1,0 +1,13 @@
+diff --git a/src/disintegrator.cpp b/src/disintegrator.cpp
+index 867fe37..7563a5d 100644
+--- a/src/disintegrator.cpp
++++ b/src/disintegrator.cpp
+@@ -67,7 +67,7 @@ namespace disintegrator {
+     };
+ 
+     template<OutputFunction write_output>
+-    static void run(LADSPA_Handle instance,
++    void run(LADSPA_Handle instance,
+ 	            unsigned long sample_count) {
+ 	
+ 	Plugin *pp = (Plugin *) instance;

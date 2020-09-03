@@ -22,6 +22,7 @@ RDEPEND=""
 
 PATCHES=(
 	"${FILESDIR}/${P}-makefile.patch"
+	"${FILESDIR}/${P}-clang.patch"
 )
 
 DOCS="../README"
