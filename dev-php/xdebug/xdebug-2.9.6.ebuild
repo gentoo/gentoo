@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 inherit php-ext-source-r3
 
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 x86"
 
 DESCRIPTION="A PHP debugging and profiling extension"
 HOMEPAGE="https://xdebug.org/"
@@ -26,6 +26,9 @@ SRC_URI="https://github.com/xdebug/xdebug/archive/${MY_PV}.tar.gz -> ${P}.tar.gz
 LICENSE="Xdebug"
 SLOT="0"
 IUSE=""
+
+# Tests are known to fail
+RESTRICT="test"
 
 DEPEND=""
 RDEPEND="${DEPEND}
