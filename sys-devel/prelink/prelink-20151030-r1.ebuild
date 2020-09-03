@@ -31,6 +31,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-20130503-libiberty-md5.patch
 )
 
+# tests were fixed only in development version after 20151030
+RESTRICT=test
+
 src_prepare() {
 	default
 
