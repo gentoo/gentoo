@@ -17115,7 +17115,7 @@ sys-apps/xinetd 2.3.15-r3 2.3.15.3 2.3.15.3-r2 2.3.15.4: powerful replacement fo
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-apps/yarn 1.22.4 1.22.5: Fast, reliable, and secure node dependency management
 sys-apps/zorroutils 0.04 0.05: Zorro bus utility for Amigas running 2.1 and later kernels
-sys-auth/AusweisApp2 1.20.1 9999: Official authentication app for German ID cards and residence permits
+sys-auth/AusweisApp2 1.20.1 1.20.2 9999: Official authentication app for German ID cards and residence permits
 sys-auth/authenticator 0.2.4-r1 9999: Two-factor authentication code generator for GNOME
 sys-auth/consolekit 0.4.6 1.1.0-r1 1.1.2 1.2.0 1.2.1 9999: Framework for defining and tracking users, login sessions and seats
 sys-auth/docker_auth 1.3.1 1.4.0 1.5.0: Docker Registry 2 authentication server
@@ -18090,7 +18090,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.5.1: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 85.0.4183.83 86.0.4240.8: Open-source version of Google Chrome web browser
+www-client/chromium 85.0.4183.83 86.0.4240.22: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r4 0.13_pre_pre20180225 0.13.4 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6 3.34.4 3.36.3 3.36.4: GNOME webbrowser based on Webkit
