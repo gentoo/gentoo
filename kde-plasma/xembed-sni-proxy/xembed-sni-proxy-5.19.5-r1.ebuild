@@ -22,7 +22,7 @@ DEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtx11extras-${QTMIN}:5
 	>=kde-frameworks/extra-cmake-modules-${KFMIN}:5
-	>=kde-frameworks/kwindowsystem-${KFMIN}:5
+	>=kde-frameworks/kwindowsystem-${KFMIN}:5[X]
 	x11-libs/libxcb
 	x11-libs/libXtst
 	x11-libs/xcb-util-image
