@@ -93,6 +93,10 @@ pkg_setup() {
 	check_extra_config
 
 	if ! use crda; then
+		if use kernel_linux && kernel_is -lt 4 15; then
+			ewarn "POSSIBLE REGULATORY DOMAIN PROBLEM:"
+			ewarn "Regulatory domain support for kernels older than 4.15 requires crda."
+		fi
 		if linux_config_exists && linux_chkconfig_builtin CFG80211 &&
 			[[ $(linux_chkconfig_string EXTRA_FIRMWARE) != *regulatory.db* ]]
 		then
