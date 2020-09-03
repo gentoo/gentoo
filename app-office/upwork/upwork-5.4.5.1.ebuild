@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop pax-utils rpm
+inherit desktop pax-utils rpm xdg-utils
 
 DESCRIPTION="Project collaboration and tracking software for upwork.com"
 HOMEPAGE="https://www.upwork.com/"
@@ -49,4 +49,12 @@ src_install() {
 
 	domenu usr/share/applications/upwork.desktop
 	doicon usr/share/icons/hicolor/128x128/apps/upwork.png
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
