@@ -9,6 +9,10 @@
 		<email>zlogene@gentoo.org</email>
 		<name>Mikle Kolyada</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
 	<use>
 		<flag name="smartcard">
 		Build scdaemon software. Enables usage of OpenPGP cards. For
