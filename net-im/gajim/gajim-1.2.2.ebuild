@@ -3,15 +3,16 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE="sqlite,xml"
 DISTUTILS_SINGLE_IMPL=1
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1 xdg-utils
 
 DESCRIPTION="Jabber client written in PyGTK"
 HOMEPAGE="https://gajim.org/"
-SRC_URI="https://gajim.org/downloads/$(ver_cut 1-2)/${P}.tar.bz2"
+SRC_URI="https://gajim.org/downloads/$(ver_cut 1-2)/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -35,12 +36,15 @@ RDEPEND="${COMMON_DEPEND}
 		dev-python/pycurl[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
 		>=dev-python/pyopenssl-0.14[${PYTHON_USEDEP}]
-		>=dev-python/python-nbxmpp-0.6.9[${PYTHON_USEDEP}]
+		>=dev-python/python-nbxmpp-1.0.2[${PYTHON_USEDEP}]
 		x11-libs/libXScrnSaver
 		app-crypt/libsecret[crypt,introspection]
 		dev-python/keyring[${PYTHON_USEDEP}]
 		>=dev-python/secretstorage-3.1.1[${PYTHON_USEDEP}]
-		>=dev-python/cssutils-1.0.2[${PYTHON_USEDEP}]
+		dev-python/css-parser[${PYTHON_USEDEP}]
+		dev-python/packaging[${PYTHON_USEDEP}]
+		net-libs/libsoup[introspection]
+		media-libs/gsound[introspection]
 		crypt? (
 			dev-python/pycryptodome[${PYTHON_USEDEP}]
 			>=dev-python/python-gnupg-0.4.0[${PYTHON_USEDEP}] )

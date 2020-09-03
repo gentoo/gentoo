@@ -16,7 +16,7 @@ index 159dd46..5c2c0f4 100644
  plugin:	$(PLUGIN_LIB)
  
 +%.o: %.cpp
-+	$(CXX) $(INCLUDES) $(CFLAGS) -c -o $*.o $*.cpp
++	$(CXX) $(INCLUDES) $(CFLAGS) -fPIC -c -o $*.o $*.cpp
 +
 +
  targets:	$(PLUGIN_LIB)
