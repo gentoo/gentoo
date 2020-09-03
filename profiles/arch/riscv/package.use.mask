@@ -87,7 +87,7 @@ dev-python/numpy lapack
 dev-python/pygments doc test
 dev-python/setuptools test
 dev-python/snakeoil test
-dev-python/sphinx latext
+dev-python/sphinx latext doc test
 dev-util/catalyst iso
 dev-util/meson test
 dev-util/ninja doc test
