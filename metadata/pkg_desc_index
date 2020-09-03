@@ -7878,7 +7878,7 @@ dev-python/aiohttp-socks 0.2.2 0.5.3: SOCKS proxy connector for aiohttp
 dev-python/aiorpcX 0.18.4: Generic async RPC implementation, including JSON-RPC
 dev-python/aiosmtpd 1.2: asyncio based SMTP server
 dev-python/alabaster 0.7.12: A configurable sidebar-enabled Sphinx theme
-dev-python/alagitpull 0.0.23: alabaster sub-theme used on git-pull docs
+dev-python/alagitpull 0.0.23 0.0.23-r1: alabaster sub-theme used on git-pull docs
 dev-python/alembic 1.4.2: database migrations tool, written by the author of SQLAlchemy
 dev-python/ament_package 0.9.2: Parser for the manifest files in the ament buildsystem
 dev-python/amodem 1.15.1: Transmit data between two computers using audio
@@ -9697,18 +9697,18 @@ dev-ros/test_rosmaster 1.15.8 9999: Unit tests for rosmaster
 dev-ros/test_rosparam 1.15.7 1.15.8 9999: Unit tests for rosparam
 dev-ros/test_rospy 1.15.8 9999: Unit tests for rospy
 dev-ros/test_rosservice 1.15.8 9999: Unit tests for rospy
-dev-ros/test_tf2 0.7.2 0.7.3 9999: TF2 unit tests
+dev-ros/test_tf2 0.7.2 0.7.3 0.7.5 9999: TF2 unit tests
 dev-ros/tf 1.13.2-r1 9999: Maintains the relationship between frames in a tree structure over time
-dev-ros/tf2 0.7.2 0.7.3 9999: The second generation Transform Library in ROS
-dev-ros/tf2_bullet 0.7.2 0.7.3 9999: TF2 bullet support
-dev-ros/tf2_eigen 0.7.2 0.7.3 9999: TF2 eigen support
-dev-ros/tf2_geometry_msgs 0.7.2 0.7.3 9999: The second generation Transform Library in ROS
-dev-ros/tf2_kdl 0.7.2 0.7.3 9999: KDL binding for tf2
-dev-ros/tf2_msgs 0.7.2 0.7.3 9999: TF2 messages
-dev-ros/tf2_py 0.7.2 0.7.3 9999: TF2 python bindings
-dev-ros/tf2_ros 0.7.2 0.7.3 9999: ROS bindings for the tf2 library, for both Python and C++
-dev-ros/tf2_sensor_msgs 0.7.2 0.7.3 9999: Transform sensor_msgs with tf. Most notably, PointCloud2
-dev-ros/tf2_tools 0.7.2 0.7.3 9999: Tools for 2nd gen Transform library
+dev-ros/tf2 0.7.2 0.7.3 0.7.5 9999: The second generation Transform Library in ROS
+dev-ros/tf2_bullet 0.7.2 0.7.3 0.7.5 9999: TF2 bullet support
+dev-ros/tf2_eigen 0.7.2 0.7.3 0.7.5 9999: TF2 eigen support
+dev-ros/tf2_geometry_msgs 0.7.2 0.7.3 0.7.5 9999: The second generation Transform Library in ROS
+dev-ros/tf2_kdl 0.7.2 0.7.3 0.7.5 9999: KDL binding for tf2
+dev-ros/tf2_msgs 0.7.2 0.7.3 0.7.5 9999: TF2 messages
+dev-ros/tf2_py 0.7.2 0.7.3 0.7.5 9999: TF2 python bindings
+dev-ros/tf2_ros 0.7.2 0.7.3 0.7.5 9999: ROS bindings for the tf2 library, for both Python and C++
+dev-ros/tf2_sensor_msgs 0.7.2 0.7.3 0.7.5 9999: Transform sensor_msgs with tf. Most notably, PointCloud2
+dev-ros/tf2_tools 0.7.2 0.7.3 0.7.5 9999: Tools for 2nd gen Transform library
 dev-ros/tf_conversions 1.13.2-r1 9999: Functions to convert common tf datatypes into those used by other libraries
 dev-ros/theora_image_transport 1.14.0 9999: Plugin for transparently sending an image stream encoded with the Theora codec
 dev-ros/timestamp_tools 1.6.8-r1 9999: Classes to help timestamp hardware events
@@ -15721,7 +15721,7 @@ ros-meta/executive_smach 2.5.0 9999: SMACH library and ROS SMACH integration pac
 ros-meta/gazebo_ros_pkgs 2.9.1 9999: Interface for using ROS with the gazebo simulator
 ros-meta/geographic_info 0.5.5 9999: Geographic information metapackage
 ros-meta/geometry 1.13.2 9999: Common geometric calculations
-ros-meta/geometry2 0.7.2 0.7.3 9999: The second generation Transform Library in ros
+ros-meta/geometry2 0.7.2 0.7.3 0.7.5 9999: The second generation Transform Library in ros
 ros-meta/geometry_tutorials 0.2.3 9999: Metapackage of geometry tutorials ROS
 ros-meta/hector_localization 0.3.0 9999: Collection of packages, that provide the full 6DOF pose of a robot or platform
 ros-meta/hector_slam 0.4.1 9999: hector_mapping and related packages
@@ -17593,7 +17593,7 @@ sys-fs/zfs 0.8.4-r2 2.0.0_rc1-r1 9999: Userland utilities for ZFS Linux kernel m
 sys-fs/zfs-auto-snapshot 1.2.4 9999: ZFS Automatic Snapshot Service for Linux
 sys-fs/zfs-kmod 0.8.4-r1 2.0.0_rc1 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.14.138 4.14.143 4.14.144 4.14.145 4.14.146 4.14.147 4.14.148 4.14.149 4.14.150 4.19.66 4.19.72 4.19.73 4.19.74 4.19.75 4.19.76 4.19.77 4.19.78 4.19.79 4.19.80 5.2.13 5.2.14 5.2.15 5.2.16 5.2.17 5.2.18 5.2.19 5.2.20 5.3.0 5.3.1 5.3.2 5.3.4 5.3.5 5.3.6-r1 5.3.7: Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs5 support
-sys-kernel/bliss-initramfs 8.1.0-r1 9.1.0: Boot your system's rootfs from Encrypted/OpenZFS.
+sys-kernel/bliss-initramfs 8.1.0-r1 9.1.0 9.2.0: Boot your system's rootfs from Encrypted/OpenZFS.
 sys-kernel/bliss-kernel-bin 4.14.178 5.4.51: Precompiled Vanilla Kernel (Kernel Ready-to-Eat [KRE])
 sys-kernel/ck-sources 5.4.37 5.4.48: Gentoo's genpatches for Linux , with Con Kolivas' MuQSS process scheduler.
 sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel cryptographic drivers
