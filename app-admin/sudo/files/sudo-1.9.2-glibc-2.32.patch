@@ -1,0 +1,308 @@
+
+# HG changeset patch
+# User Todd C. Miller <Todd.Miller@sudo.ws>
+# Date 1598395693 21600
+# Node ID e30482f26924b07775d87ae591e54ad72e794d5e
+# Parent  1ede927d99b3cb06ba514c9fd2fd7fa9a014a1b2
+Use sigabbrev_np(3) to access signal abbreviations if supported.
+glibc-2.32 has removed sys_sigabbrev[], we can use sigabbrev_np(3) instead.
+
+diff -r 1ede927d99b3 -r e30482f26924 config.h.in
+--- a/config.h.in	Mon Aug 17 19:37:09 2020 -0600
++++ b/config.h.in	Tue Aug 25 16:48:13 2020 -0600
+@@ -740,6 +740,9 @@
+ /* Define to 1 if you have the `sig2str' function. */
+ #undef HAVE_SIG2STR
+ 
++/* Define to 1 if you have the `sigabbrev_np' function. */
++#undef HAVE_SIGABBREV_NP
++
+ /* Define to 1 if you use S/Key. */
+ #undef HAVE_SKEY
+ 
+diff -r 1ede927d99b3 -r e30482f26924 configure
+--- a/configure	Mon Aug 17 19:37:09 2020 -0600
++++ b/configure	Tue Aug 25 16:48:13 2020 -0600
+@@ -23687,9 +23687,21 @@
+ 
+ 
+ if test x"${ac_cv_func_sig2str}${ac_cv_func_str2sig}" != x"yesyes"; then
+-    COMPAT_TEST_PROGS="${COMPAT_TEST_PROGS}${COMPAT_TEST_PROGS+ }strsig_test"
+-    HAVE_SIGNAME="false"
+-    ac_fn_c_check_decl "$LINENO" "sys_signame" "ac_cv_have_decl_sys_signame" "
++    for ac_func in sigabbrev_np
++do :
++  ac_fn_c_check_func "$LINENO" "sigabbrev_np" "ac_cv_func_sigabbrev_np"
++if test "x$ac_cv_func_sigabbrev_np" = xyes; then :
++  cat >>confdefs.h <<_ACEOF
++#define HAVE_SIGABBREV_NP 1
++_ACEOF
++
++fi
++done
++
++    if test x"${ac_cv_func_sigabbrev_np}" != x"yes"; then
++	COMPAT_TEST_PROGS="${COMPAT_TEST_PROGS}${COMPAT_TEST_PROGS+ }strsig_test"
++	HAVE_SIGNAME="false"
++	ac_fn_c_check_decl "$LINENO" "sys_signame" "ac_cv_have_decl_sys_signame" "
+ $ac_includes_default
+ #include <signal.h>
+ 
+@@ -23705,7 +23717,7 @@
+ _ACEOF
+ if test $ac_have_decl = 1; then :
+ 
+-	HAVE_SIGNAME="true"
++	    HAVE_SIGNAME="true"
+ 
+ fi
+ ac_fn_c_check_decl "$LINENO" "_sys_signame" "ac_cv_have_decl__sys_signame" "
+@@ -23724,7 +23736,7 @@
+ _ACEOF
+ if test $ac_have_decl = 1; then :
+ 
+-	HAVE_SIGNAME="true"
++	    HAVE_SIGNAME="true"
+ 
+ fi
+ ac_fn_c_check_decl "$LINENO" "sys_sigabbrev" "ac_cv_have_decl_sys_sigabbrev" "
+@@ -23743,12 +23755,12 @@
+ _ACEOF
+ if test $ac_have_decl = 1; then :
+ 
+-	HAVE_SIGNAME="true"
+-
+-fi
+-
+-    if test "$HAVE_SIGNAME" != "true"; then
+-	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for undeclared sys_sigabbrev" >&5
++	    HAVE_SIGNAME="true"
++
++fi
++
++	if test "$HAVE_SIGNAME" != "true"; then
++	    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for undeclared sys_sigabbrev" >&5
+ $as_echo_n "checking for undeclared sys_sigabbrev... " >&6; }
+ if ${sudo_cv_var_sys_sigabbrev+:} false; then :
+   $as_echo_n "(cached) " >&6
+@@ -23777,17 +23789,18 @@
+ fi
+ { $as_echo "$as_me:${as_lineno-$LINENO}: result: $sudo_cv_var_sys_sigabbrev" >&5
+ $as_echo "$sudo_cv_var_sys_sigabbrev" >&6; }
+-	if test "$sudo_cv_var_sys_sigabbrev" = yes; then
+-	    $as_echo "#define HAVE_SYS_SIGABBREV 1" >>confdefs.h
+-
+-	else
+-	    case " $LIBOBJS " in
++	    if test "$sudo_cv_var_sys_sigabbrev" = yes; then
++		$as_echo "#define HAVE_SYS_SIGABBREV 1" >>confdefs.h
++
++	    else
++		case " $LIBOBJS " in
+   *" signame.$ac_objext "* ) ;;
+   *) LIBOBJS="$LIBOBJS signame.$ac_objext"
+  ;;
+ esac
+ 
+-	    SIGNAME=signame.lo
++		SIGNAME=signame.lo
++	    fi
+ 	fi
+     fi
+ fi
+diff -r 1ede927d99b3 -r e30482f26924 configure.ac
+--- a/configure.ac	Mon Aug 17 19:37:09 2020 -0600
++++ b/configure.ac	Tue Aug 25 16:48:13 2020 -0600
+@@ -3498,29 +3498,32 @@
+ dnl Also enable unit tests for sig2str() and str2sig().
+ dnl
+ if test x"${ac_cv_func_sig2str}${ac_cv_func_str2sig}" != x"yesyes"; then
+-    COMPAT_TEST_PROGS="${COMPAT_TEST_PROGS}${COMPAT_TEST_PROGS+ }strsig_test"
+-    HAVE_SIGNAME="false"
+-    AC_CHECK_DECLS([sys_signame, _sys_signame, sys_sigabbrev], [
+-	HAVE_SIGNAME="true"
+-    ], [ ], [
++    AC_CHECK_FUNCS([sigabbrev_np])
++    if test x"${ac_cv_func_sigabbrev_np}" != x"yes"; then
++	COMPAT_TEST_PROGS="${COMPAT_TEST_PROGS}${COMPAT_TEST_PROGS+ }strsig_test"
++	HAVE_SIGNAME="false"
++	AC_CHECK_DECLS([sys_signame, _sys_signame, sys_sigabbrev], [
++	    HAVE_SIGNAME="true"
++	], [ ], [
+ AC_INCLUDES_DEFAULT
+ #include <signal.h>
+-    ])
+-    if test "$HAVE_SIGNAME" != "true"; then
+-	AC_CACHE_CHECK([for undeclared sys_sigabbrev],
+-	    [sudo_cv_var_sys_sigabbrev],
+-	    [AC_LINK_IFELSE(
+-		[AC_LANG_PROGRAM([[extern char **sys_sigabbrev;]], [[return sys_sigabbrev[1];]])],
+-		    [sudo_cv_var_sys_sigabbrev=yes],
+-		    [sudo_cv_var_sys_sigabbrev=no]
+-		)
+-	    ]
+-	)
+-	if test "$sudo_cv_var_sys_sigabbrev" = yes; then
+-	    AC_DEFINE(HAVE_SYS_SIGABBREV)
+-	else
+-	    AC_LIBOBJ(signame)
+-	    SIGNAME=signame.lo
++	])
++	if test "$HAVE_SIGNAME" != "true"; then
++	    AC_CACHE_CHECK([for undeclared sys_sigabbrev],
++		[sudo_cv_var_sys_sigabbrev],
++		[AC_LINK_IFELSE(
++		    [AC_LANG_PROGRAM([[extern char **sys_sigabbrev;]], [[return sys_sigabbrev[1];]])],
++			[sudo_cv_var_sys_sigabbrev=yes],
++			[sudo_cv_var_sys_sigabbrev=no]
++		    )
++		]
++	    )
++	    if test "$sudo_cv_var_sys_sigabbrev" = yes; then
++		AC_DEFINE(HAVE_SYS_SIGABBREV)
++	    else
++		AC_LIBOBJ(signame)
++		SIGNAME=signame.lo
++	    fi
+ 	fi
+     fi
+ fi
+diff -r 1ede927d99b3 -r e30482f26924 lib/util/sig2str.c
+--- a/lib/util/sig2str.c	Mon Aug 17 19:37:09 2020 -0600
++++ b/lib/util/sig2str.c	Tue Aug 25 16:48:13 2020 -0600
+@@ -1,7 +1,7 @@
+ /*
+  * SPDX-License-Identifier: ISC
+  *
+- * Copyright (c) 2012-2015, 2017-2019 Todd C. Miller <Todd.Miller@sudo.ws>
++ * Copyright (c) 2012-2015, 2017-2020 Todd C. Miller <Todd.Miller@sudo.ws>
+  *
+  * Permission to use, copy, modify, and distribute this software for any
+  * purpose with or without fee is hereby granted, provided that the above
+@@ -32,20 +32,24 @@
+ #include <unistd.h>
+ 
+ #include "sudo_compat.h"
++#include "sudo_util.h"
+ 
+-#if defined(HAVE_DECL_SYS_SIGNAME) && HAVE_DECL_SYS_SIGNAME == 1
+-#  define sudo_sys_signame	sys_signame
+-#elif defined(HAVE_DECL__SYS_SIGNAME) && HAVE_DECL__SYS_SIGNAME == 1
+-#  define sudo_sys_signame	_sys_signame
+-#elif defined(HAVE_DECL_SYS_SIGABBREV) && HAVE_DECL_SYS_SIGABBREV == 1
+-#  define sudo_sys_signame	sys_sigabbrev
+-#else
+-# ifdef HAVE_SYS_SIGABBREV
+-   /* sys_sigabbrev is not declared by glibc */
+-#  define sudo_sys_signame	sys_sigabbrev
++#if !defined(HAVE_SIGABBREV_NP)
++# if defined(HAVE_DECL_SYS_SIGNAME) && HAVE_DECL_SYS_SIGNAME == 1
++#   define sigabbrev_np(_x)	sys_signame[(_x)]
++# elif defined(HAVE_DECL__SYS_SIGNAME) && HAVE_DECL__SYS_SIGNAME == 1
++#   define sigabbrev_np(_x)	_sys_signame[(_x)]
++# elif defined(HAVE_SYS_SIGABBREV)
++#   define sigabbrev_np(_x)	sys_sigabbrev[(_x)]
++#  if defined(HAVE_DECL_SYS_SIGABBREV) && HAVE_DECL_SYS_SIGABBREV == 0
++    /* sys_sigabbrev is not declared by glibc */
++    extern const char *const sys_sigabbrev[NSIG];
++#  endif
++# else
++#   define sigabbrev_np(_x)	sudo_sys_signame[(_x)]
++    extern const char *const sudo_sys_signame[NSIG];
+ # endif
+-extern const char *const sudo_sys_signame[NSIG];
+-#endif
++#endif /* !HAVE_SIGABBREV_NP */
+ 
+ /*
+  * Translate signal number to name.
+@@ -77,15 +81,18 @@
+ 	return 0;
+     }
+ #endif
+-    if (signo > 0 && signo < NSIG && sudo_sys_signame[signo] != NULL) {
+-	strlcpy(signame, sudo_sys_signame[signo], SIG2STR_MAX);
+-	/* Make sure we always return an upper case signame. */
+-	if (islower((unsigned char)signame[0])) {
+-	    int i;
+-	    for (i = 0; signame[i] != '\0'; i++)
+-		signame[i] = toupper((unsigned char)signame[i]);
++    if (signo > 0 && signo < NSIG) {
++	const char *cp = sigabbrev_np(signo);
++	if (cp != NULL) {
++	    strlcpy(signame, cp, SIG2STR_MAX);
++	    /* Make sure we always return an upper case signame. */
++	    if (islower((unsigned char)signame[0])) {
++		int i;
++		for (i = 0; signame[i] != '\0'; i++)
++		    signame[i] = toupper((unsigned char)signame[i]);
++	    }
++	    return 0;
+ 	}
+-	return 0;
+     }
+     errno = EINVAL;
+     return -1;
+diff -r 1ede927d99b3 -r e30482f26924 lib/util/str2sig.c
+--- a/lib/util/str2sig.c	Mon Aug 17 19:37:09 2020 -0600
++++ b/lib/util/str2sig.c	Tue Aug 25 16:48:13 2020 -0600
+@@ -1,7 +1,7 @@
+ /*
+  * SPDX-License-Identifier: ISC
+  *
+- * Copyright (c) 2019 Todd C. Miller <Todd.Miller@sudo.ws>
++ * Copyright (c) 2019-2020 Todd C. Miller <Todd.Miller@sudo.ws>
+  *
+  * Permission to use, copy, modify, and distribute this software for any
+  * purpose with or without fee is hereby granted, provided that the above
+@@ -37,19 +37,22 @@
+ #include "sudo_compat.h"
+ #include "sudo_util.h"
+ 
+-#if defined(HAVE_DECL_SYS_SIGNAME) && HAVE_DECL_SYS_SIGNAME == 1
+-#  define sudo_sys_signame	sys_signame
+-#elif defined(HAVE_DECL__SYS_SIGNAME) && HAVE_DECL__SYS_SIGNAME == 1
+-#  define sudo_sys_signame	_sys_signame
+-#elif defined(HAVE_DECL_SYS_SIGABBREV) && HAVE_DECL_SYS_SIGABBREV == 1
+-#  define sudo_sys_signame	sys_sigabbrev
+-#else
+-# ifdef HAVE_SYS_SIGABBREV
+-   /* sys_sigabbrev is not declared by glibc */
+-#  define sudo_sys_signame	sys_sigabbrev
++#if !defined(HAVE_SIGABBREV_NP)
++# if defined(HAVE_DECL_SYS_SIGNAME) && HAVE_DECL_SYS_SIGNAME == 1
++#   define sigabbrev_np(_x)	sys_signame[(_x)]
++# elif defined(HAVE_DECL__SYS_SIGNAME) && HAVE_DECL__SYS_SIGNAME == 1
++#   define sigabbrev_np(_x)	_sys_signame[(_x)]
++# elif defined(HAVE_SYS_SIGABBREV)
++#   define sigabbrev_np(_x)	sys_sigabbrev[(_x)]
++#  if defined(HAVE_DECL_SYS_SIGABBREV) && HAVE_DECL_SYS_SIGABBREV == 0
++    /* sys_sigabbrev is not declared by glibc */
++    extern const char *const sys_sigabbrev[NSIG];
++#  endif
++# else
++#   define sigabbrev_np(_x)	sudo_sys_signame[(_x)]
++    extern const char *const sudo_sys_signame[NSIG];
+ # endif
+-extern const char *const sudo_sys_signame[NSIG];
+-#endif
++#endif /* !HAVE_SIGABBREV_NP */
+ 
+ /*
+  * Many systems use aliases for source backward compatibility.
+@@ -154,11 +157,11 @@
+ 	}
+     }
+ 
+-    /* Check sys_signame[]. */
+     for (signo = 1; signo < NSIG; signo++) {
+-	if (sudo_sys_signame[signo] != NULL) {
++	const char *cp = sigabbrev_np(signo);
++	if (cp != NULL) {
+ 	    /* On macOS sys_signame[] may contain lower-case names. */
+-	    if (strcasecmp(signame, sudo_sys_signame[signo]) == 0) {
++	    if (strcasecmp(signame, cp) == 0) {
+ 		*result = signo;
+ 		return 0;
+ 	    }
+
