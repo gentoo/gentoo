@@ -35,7 +35,10 @@ CDEPEND="
 	dev-qt/qtxml:5
 	dev-qt/qtxmlpatterns:5"
 RDEPEND="${CDEPEND}"
-DEPEND="${CDEPEND}"
+DEPEND="
+	${CDEPEND}
+	dev-qt/qttest:5
+"
 
 src_configure() {
 	local locales=""
