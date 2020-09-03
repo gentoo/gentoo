@@ -1,6 +1,6 @@
 BDEPEND=virtual/pkgconfig dev-util/intltool >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
-DEFINED_PHASES=configure prepare
-DEPEND=media-libs/libmpd:= gnome-base/libglade:= x11-libs/gtk+:2 cover? ( net-libs/libnxml:= net-misc/curl:= ) lyrics? ( net-libs/libnxml:= net-misc/curl:= ) taglib? ( media-libs/taglib:= )
+DEFINED_PHASES=configure postinst postrm preinst prepare
+DEPEND=media-libs/libmpd:= gnome-base/libglade:= x11-libs/gtk+:2 cover? ( net-libs/libnxml:= net-misc/curl:= ) lyrics? ( net-libs/libnxml:= net-misc/curl:= ) taglib? ( media-libs/taglib:= ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=a graphical music player daemon (MPD) client using GTK+2
 EAPI=7
 HOMEPAGE=https://launchpad.net/gimmix
@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libmpd:= gnome-base/libglade:= x11-libs/gtk+:2 cover? ( net-libs/libnxml:= net-misc/curl:= ) lyrics? ( net-libs/libnxml:= net-misc/curl:= ) taglib? ( media-libs/taglib:= )
 SLOT=0
 SRC_URI=mirror://gentoo/gimmix-0.5.7.2.tar.bz2
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=73fa22529fde77bd121d4f2e5e9e9652
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=e1852d532657e8738b586050fe85f0ba

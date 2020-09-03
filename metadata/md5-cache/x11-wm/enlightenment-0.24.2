@@ -5,11 +5,11 @@ DESCRIPTION=Enlightenment window manager
 EAPI=7
 HOMEPAGE=https://www.enlightenment.org
 IUSE=acpi bluetooth connman doc geolocation nls pam policykit systemd udisks wayland wifi xwayland
-KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
+KEYWORDS=amd64 ~arm ~ppc ~ppc64 x86
 LICENSE=BSD-2
 RDEPEND=>=dev-libs/efl-1.24.1[eet,fontconfig,X] virtual/udev x11-libs/libXext x11-libs/libxcb x11-libs/xcb-util-keysyms x11-misc/xkeyboard-config acpi? ( sys-power/acpid ) bluetooth? ( net-wireless/bluez ) connman? ( dev-libs/efl[connman] ) geolocation? ( app-misc/geoclue:2.0 ) pam? ( sys-libs/pam ) policykit? ( sys-auth/polkit ) systemd? ( sys-apps/systemd ) udisks? ( sys-fs/udisks:2 ) wayland? ( >=dev-libs/efl-1.22.0[drm,wayland] dev-libs/wayland x11-libs/libxkbcommon x11-libs/pixman ) xwayland? ( dev-libs/efl[X,wayland] x11-base/xorg-server[wayland] )
 REQUIRED_USE=xwayland? ( wayland )
 SLOT=0.17/0.24.2
 SRC_URI=https://download.enlightenment.org/rel/apps/enlightenment/enlightenment-0.24.2.tar.xz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	meson	71d293a701d6362387e1214da368c848	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=b4a94a820381ec906279876d214c5cc8
+_md5_=1112e7fd61ce75d8c04e421a7cddc76c

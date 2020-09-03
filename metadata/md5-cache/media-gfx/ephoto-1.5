@@ -1,6 +1,6 @@
 BDEPEND=virtual/pkgconfig nls? ( sys-devel/gettext )
-DEFINED_PHASES=configure
-DEPEND=dev-libs/efl[eet,X]
+DEFINED_PHASES=configure postinst postrm preinst prepare
+DEPEND=dev-libs/efl[eet,X] dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Enlightenment image viewer written with EFL
 EAPI=7
 HOMEPAGE=https://www.enlightenment.org/about-ephoto
@@ -10,4 +10,5 @@ LICENSE=BSD-2
 RDEPEND=dev-libs/efl[eet,X]
 SLOT=0
 SRC_URI=https://download.enlightenment.org/rel/apps/ephoto/ephoto-1.5.tar.xz -> ephoto-1.5-1.tar.xz
-_md5_=4e592c7e07b5c19db35032aeda4aed6a
+_eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=296ce0223e4d8e32fd1737ab18800a64
