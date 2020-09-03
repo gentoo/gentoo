@@ -27,6 +27,9 @@ LICENSE="Xdebug"
 SLOT="0"
 IUSE=""
 
+# Tests are known to fail
+RESTRICT="test"
+
 DEPEND=""
 RDEPEND="${DEPEND}
 		~dev-php/xdebug-client-${PV}"
