@@ -11921,7 +11921,7 @@ gnustep-base/gnustep-base 1.24.9-r1 1.25.0 1.25.1 1.26.0 1.26.0-r1 1.27.0: A lib
 gnustep-base/gnustep-gui 0.25.0 0.25.1 0.26.2 0.27.0 0.28.0: Library of GUI classes written in Obj-C
 gnustep-base/gnustep-make 2.6.8 2.7.0 2.8.0: GNUstep Makefile Package
 gnustep-base/gnustep-updater 0.3-r1: Helper tool to upgrade Gentoo GNUstep installations
-gnustep-base/libobjc2 1.8 1.8.1 2.0: GNUstep Objective-C runtime
+gnustep-base/libobjc2 2.0 2.1: GNUstep Objective-C runtime
 gnustep-base/mknfonts 0.5-r2 0.5-r3: A tool to create .nfont packages for use with gnustep-back-art
 gnustep-libs/cenonlibrary 4.0.0: Default library required to run Cenon
 gnustep-libs/dbuskit 0.1.1 0.1.1-r1: framework that interfaces Objective-C applications with the D-Bus IPC service
@@ -14444,7 +14444,7 @@ net-analyzer/sqlninja 0.2.6_p1-r1: A SQL Server injection & takeover tool
 net-analyzer/squid-graph 3.2-r1: Squid logfile analyzer and traffic grapher
 net-analyzer/squidsites 1.01-r2: A tool that parses Squid access log file and generates a report of the most visited sites
 net-analyzer/squidview 0.86: Interactive console program to analyse squid logs
-net-analyzer/ssldump 0.9_beta3: An SSLv3/TLS network protocol analyzer
+net-analyzer/ssldump 0.9_beta3 1.1: An SSLv3/TLS network protocol analyzer
 net-analyzer/sslscan 1.11.13-r1 2.0.0: Fast SSL configuration scanner
 net-analyzer/sslsplit 0.5.4 0.5.5 9999: Transparent SSL/TLS interception
 net-analyzer/ssmping 0.9.1: Tool for testing multicast connectivity
