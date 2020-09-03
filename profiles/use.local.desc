@@ -7099,6 +7099,8 @@ net-wireless/iwd:client - Enable iwctl client tool
 net-wireless/iwd:crda - Use net-wireless/crda for regulatory domain loading instead of in-kernel (4.15+) support
 net-wireless/iwd:monitor - Enable iwmon monitor tool
 net-wireless/iwd:ofono - Enable support for oFono SIM authentication
+net-wireless/iwd:standalone - Enable standalone mode with built-in DHCP client and DNS handling"
+net-wireless/iwd:systemd - Use systemd-resolve rather than resolvconf for DNS handling in standalone mode
 net-wireless/iwd:wired - Enable ethernet authentication daemon
 net-wireless/kismet:client - Build the ncurses-based user interface
 net-wireless/kismet:libusb - Support libusb based capture sources such as mousejack, cc2540(ble), and nrf51822(ble)
