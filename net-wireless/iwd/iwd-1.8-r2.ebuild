@@ -13,7 +13,7 @@ if [[ ${PV} == *9999* ]]; then
 	ELL_EGIT_REPO_URI="https://git.kernel.org/pub/scm/libs/ell/ell.git"
 else
 	SRC_URI="https://www.kernel.org/pub/linux/network/wireless/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 DESCRIPTION="Wireless daemon for linux"
@@ -21,19 +21,30 @@ HOMEPAGE="https://git.kernel.org/pub/scm/network/wireless/iwd.git/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+client +crda +monitor ofono wired cpu_flags_x86_aes cpu_flags_x86_ssse3"
+IUSE="+client +crda +monitor ofono wired cpu_flags_x86_aes cpu_flags_x86_ssse3
+standalone systemd"
 
-COMMON_DEPEND="sys-apps/dbus
-	client? ( sys-libs/readline:0= )"
+COMMON_DEPEND="
+	sys-apps/dbus
+	client? ( sys-libs/readline:0= )
+"
 
 [[ -z "${ELL_REQ}" ]] || COMMON_DEPEND+=" >=dev-libs/ell-${ELL_REQ}"
 
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="
+	${COMMON_DEPEND}
 	net-wireless/wireless-regdb
-	crda? ( net-wireless/crda )"
+	crda? ( net-wireless/crda )
+	standalone? (
+		systemd? ( sys-apps/systemd )
+		!systemd? ( virtual/resolvconf )
+	)
+"
 
-DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig"
+DEPEND="
+	${COMMON_DEPEND}
+	virtual/pkgconfig
+"
 
 [[ ${PV} == *9999* ]] && DEPEND+=" dev-python/docutils"
 
@@ -156,5 +167,13 @@ src_install() {
 	if [[ ${PV} == *9999* ]] ; then
 		exeinto /usr/share/iwd/scripts/
 		doexe test/*
+	fi
+
+	if use standalone ; then
+		dodir /etc/iwd
+		echo "[General]" > ${ED}/etc/iwd/main.conf
+		echo "EnableNetworkConfiguration=true" >> "${ED}"/etc/iwd/main.conf
+		echo "NameResolvingService=$(usex systemd systemd resolvconf)" >> "${ED}"/etc/iwd/main.conf
+		echo "rc_provide=\"net\"" > ${ED}/etc/conf.d/iwd
 	fi
 }
