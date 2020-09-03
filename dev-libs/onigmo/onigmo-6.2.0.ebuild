@@ -11,7 +11,7 @@ SRC_URI="https://github.com/k-takata/${PN^o}/releases/download/${P^o}/${P}.tar.g
 
 LICENSE="BSD-2"
 SLOT="0/6"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="combination-explosion-check crnl-as-line-terminator static-libs"
 
 DOCS=( AUTHORS HISTORY README{,.ja} doc/{API,FAQ,RE}{,.ja} doc/UnicodeProps.txt )
