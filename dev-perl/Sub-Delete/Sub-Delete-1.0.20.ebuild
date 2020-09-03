@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Perl module enabling one to delete subroutines"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 
 RDEPEND="
 	>=virtual/perl-Exporter-5.570.0
