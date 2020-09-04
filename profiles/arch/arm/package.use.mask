@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2020-09-05)
+# nvidia-texture-tools not useful here
+media-libs/devil nvtt
+games-strategy/0ad nvtt
+
 # James Le Cuirot <chewi@gentoo.org> (2020-08-19)
 # Cinnamon is not keyworded on this architecture.
 x11-themes/arc-theme cinnamon
