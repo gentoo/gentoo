@@ -8695,7 +8695,7 @@ dev-python/pydecomp 0.3 9999: A python library of common (de)compression and con
 dev-python/pydiff 0.2-r1: Diffs two Python files at the bytecode level
 dev-python/pydispatcher 2.1.2: Multi-producer-multi-consumer signal dispatching mechanism
 dev-python/pydns 3.2.1: Python DNS (Domain Name System) library
-dev-python/pydocstyle 5.0.2: Python docstring style checker
+dev-python/pydocstyle 5.0.2 5.1.1: Python docstring style checker
 dev-python/pydot 1.4.1: Python interface to Graphviz's Dot language
 dev-python/pydotplus 2.0.2: Improved version of the old pydot project
 dev-python/pyds9 1.8.1: Python interface to XPA to communicate with DS9
@@ -13501,7 +13501,7 @@ media-plugins/kodi-pvr-demo 3.6.1 6.0.1 9999: Demo PVR for Kodi
 media-plugins/kodi-pvr-dvblink 4.7.1 4.7.2 7.0.0 9999: Kodi's DVBLink client addon
 media-plugins/kodi-pvr-dvbviewer 3.7.5 3.7.8 3.7.11 6.0.6 9999: Kodi's DVBViewer client addon
 media-plugins/kodi-pvr-filmon 2.4.4 2.4.6 5.1.0 9999: Kodi's Filmon client addon
-media-plugins/kodi-pvr-hts 4.4.12 4.4.13 4.4.14 4.4.16 4.4.17 4.4.18 4.4.20 7.1.1 9999: Tvheadend Live TV and Radio PVR client addon for Kodi
+media-plugins/kodi-pvr-hts 4.4.12 4.4.13 4.4.14 4.4.16 4.4.17 4.4.18 4.4.20 7.1.1 7.1.4 9999: Tvheadend Live TV and Radio PVR client addon for Kodi
 media-plugins/kodi-pvr-iptvsimple 3.8.8 6.2.4 6.3.0 6.3.1 9999: Kodi's IPTVSimple client addon
 media-plugins/kodi-pvr-mediaportal-tvserver 3.5.16 3.5.17 6.0.0 6.0.1 9999: Kodi's MediaPortal TVServer client addon
 media-plugins/kodi-pvr-mythtv 5.10.15 5.10.16 5.10.18 5.10.19 7.0.5 9999: MythTV PVR for Kodi
@@ -14559,7 +14559,7 @@ net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.9.0 3.9.2 3.10.0: A framework for managing DNS information
 net-dns/pdns 4.3.0: The PowerDNS Daemon
-net-dns/pdns-recursor 4.3.2 4.3.3: The PowerDNS Recursor
+net-dns/pdns-recursor 4.3.3: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1 1.2.9a-r2: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998b-r2: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.5 1.1.6: Wrapper for DNS name resolving or DNS faking
