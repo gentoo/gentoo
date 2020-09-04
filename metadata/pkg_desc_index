@@ -12368,7 +12368,7 @@ kde-plasma/powerdevil 5.18.5 5.18.5-r1 5.19.5: Power management for KDE Plasma S
 kde-plasma/sddm-kcm 5.18.5 5.19.5: KDE Plasma control module for SDDM
 kde-plasma/systemsettings 5.18.5 5.19.5: Control Center to configure KDE Plasma desktop
 kde-plasma/user-manager 5.18.5 5.19.5: Simple system settings module to manage the users of your system
-kde-plasma/xdg-desktop-portal-kde 5.18.5 5.19.5: Backend implementation for xdg-desktop-portal that is using Qt/KDE Frameworks
+kde-plasma/xdg-desktop-portal-kde 5.18.5 5.19.5-r1: Backend implementation for xdg-desktop-portal that is using Qt/KDE Frameworks
 kde-plasma/xembed-sni-proxy 5.18.5 5.19.5-r1: Legacy xembed tray icons support for SNI-only system trays
 lxde-base/lxappearance 0.6.3 0.6.3-r1: LXDE GTK+ theme switcher
 lxde-base/lxappearance-obconf 0.2.1 0.2.3: LXAppearance plugin for configuring OpenBox
@@ -18453,7 +18453,7 @@ x11-misc/colord 1.3.5: System service to accurately color manage input and outpu
 x11-misc/compton 0.1_beta2-r1: A compositor for X, and a fork of xcompmgr-dana
 x11-misc/dclock 2.2.2_p9 2.2.2_p12: Digital clock for the X window system
 x11-misc/devilspie 0.23 0.23-r1: A Window Matching utility similar to Sawfish's Matched Windows feature
-x11-misc/devilspie2 0.42: Devilspie like window matching utility, using LUA for scripting
+x11-misc/devilspie2 0.42 0.43: Devilspie like window matching utility, using LUA for scripting
 x11-misc/dex 0.8.0: DesktopEntry eXecution - tool to manage and launch autostart entries
 x11-misc/dmenu 4.6 4.8 4.9 5.0 9999: a generic, highly customizable, and efficient menu for the X Window System
 x11-misc/dsx 0.1-r1: Command line selection of your X desktop environment
@@ -18627,7 +18627,7 @@ x11-misc/x11vnc 0.9.16-r2 0.9.16-r3: VNC server for real X displays
 x11-misc/x2vnc 1.7.2-r1: Control a remote computer running VNC from X
 x11-misc/x2x 1.27-r3: A utility to connect the Mouse and KeyBoard to another X
 x11-misc/xaos 3.6: Very fast real-time fractal zoomer
-x11-misc/xautolock 2.2_p5_p1 2.2_p5_p1-r1 2.2_p5_p2 2.2_p6: An automatic X screen-locker/screen-saver
+x11-misc/xautolock 2.2_p5_p1 2.2_p5_p1-r1 2.2_p5_p2 2.2_p6 2.2_p7: An automatic X screen-locker/screen-saver
 x11-misc/xautomation 1.09-r1: Control X from command line and find things on screen
 x11-misc/xbatt 1.3_rc1: Notebook battery indicator for X
 x11-misc/xbattbar 1.4.8 1.4.9: Advanced Power Management battery status display for X
@@ -18949,7 +18949,7 @@ x11-themes/gnustep-neos-theme 0.1: GNUstep theme closely following the original 
 x11-themes/gnustep-silver-theme 3.1-r1: a GNUstep silver theme
 x11-themes/goddard-backgrounds 13.0.0.3-r1: Fedora 13 official background artwork
 x11-themes/golden-xcursors 0.8-r1: A high quality set of Xfree 4.3.0 animated mouse cursors
-x11-themes/greybird 3.20.1-r2 3.22.9 3.22.10 3.22.11 9999: The default theme from Xubuntu
+x11-themes/greybird 3.20.1-r2 3.22.9 3.22.10 3.22.11 3.22.12 9999: The default theme from Xubuntu
 x11-themes/gtk-chtheme 0.3.1-r3: GTK-2.0 Theme Switcher
 x11-themes/gtk-engines 2.20.2-r2: GTK+2 standard engines and themes
 x11-themes/gtk-engines-adwaita 3.28: Adwaita GTK+2 theme engine
