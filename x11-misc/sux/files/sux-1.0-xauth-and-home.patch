@@ -13,11 +13,11 @@
    # cookie, e.g. an MIT cookie, and there's still a stale XDM cookie hanging 
    # around.
 -  export TERM="xauth -q remove $DISPLAY 2>/dev/null;"
-+  export TERM="/usr/X11R6/bin/xauth -q remove $DISPLAY 2>/dev/null;"
++  export TERM="/usr/bin/xauth -q remove $DISPLAY 2>/dev/null;"
    if [ -n "$sux_unix_display" ]
    then
 -    TERM="$TERM xauth -q remove $sux_unix_display;"
-+    TERM="$TERM /usr/X11R6/bin/xauth -q remove $sux_unix_display;"
++    TERM="$TERM /usr/bin/xauth -q remove $sux_unix_display;"
    fi
  
    # Note that there may be more than one cookie to transfer, hence 
@@ -26,11 +26,11 @@
      if [ $sux_i -eq 9 ]
      then
 -      TERM="$TERM | xauth nmerge - ;"
-+      TERM="$TERM | /usr/X11R6/bin/xauth nmerge - ;"
++      TERM="$TERM | /usr/bin/xauth nmerge - ;"
        sux_i=0
      fi
    done
-@@ -316,12 +316,12 @@
+@@ -316,12 +315,12 @@
  # wouldn't have the proper access rights anyway...
  unset XAUTHORITY
  
@@ -44,7 +44,7 @@
    if [ -z "$sux_home" ]
    then
      echo "WARNING: --preserve-environment has been set, but no good value was found for XAUTHORITY, expect trouble" >&2
-@@ -334,4 +334,4 @@
+@@ -334,4 +333,4 @@
  ##
  # Execute su
  exec su $sux_su_opts -c "$sux_xauth_cmd \
