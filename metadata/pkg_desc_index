@@ -2039,7 +2039,7 @@ app-eselect/eselect-wine 1.2.2: Manage active wine version
 app-eselect/eselect-wxwidgets 20140423 20180529: Eselect module and wrappers for wxWidgets
 app-eselect/eselect-xvmc 0.4: Manages XvMC implementations
 app-forensics/afflib 3.7.18: Library that implements the AFF image standard
-app-forensics/afl 2.52b 2.55b 2.56b: american fuzzy lop - compile-time instrumentation fuzzer
+app-forensics/afl 2.56b: american fuzzy lop - compile-time instrumentation fuzzer
 app-forensics/aide 0.16-r1 0.16.2_p20200614: AIDE (Advanced Intrusion Detection Environment) is a file integrity checker
 app-forensics/air 2.0.0-r2: A GUI front-end to dd/dc3dd
 app-forensics/chkrootkit 0.52 0.53: Tool to locally check for signs of a rootkit
