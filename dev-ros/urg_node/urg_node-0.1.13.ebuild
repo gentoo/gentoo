@@ -32,3 +32,6 @@ DEPEND="${RDEPEND}
 		dev-ros/roslaunch
 	)
 "
+
+# https://bugs.gentoo.org/735106
+CMAKE_MAKEFILE_GENERATOR=emake
