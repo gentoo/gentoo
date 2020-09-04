@@ -22,8 +22,10 @@ DEPEND="
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-tftp )
 	!net-ftp/atftp
-	!net-ftp/uftpd
-	server? ( !net-misc/iputils[tftpd(+)] )
+	server? (
+		!net-misc/iputils[tftpd(+)]
+		!net-ftp/uftpd
+	)
 "
 
 PATCHES=(
