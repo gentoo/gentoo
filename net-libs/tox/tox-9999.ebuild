@@ -35,8 +35,10 @@ RDEPEND="
 
 src_prepare() {
 	cmake_src_prepare
-	#remove faulty tests
+
+	# Remove faulty tests
 	local faultytest=(lan_discovery save_compatibility)
+	local testname=
 	for testname in "${faultytest[@]}"; do
 		sed -i -e "/^auto_test(${testname})$/d" CMakeLists.txt || die
 	done
@@ -51,14 +53,16 @@ src_configure() {
 		-DDHT_BOOTSTRAP=$(usex dht-node)
 		-DENABLE_SHARED=ON
 		-DENABLE_STATIC=$(usex static-libs)
-		-DMUST_BUILD_TOXAV=$(usex av))
+		-DMUST_BUILD_TOXAV=$(usex av)
+	)
+
 	if use test; then
 		mycmakeargs+=(
 			-DTEST_TIMEOUT_SECONDS=120
-			-DUSE_IPV6=$(usex ipv6))
+			-DUSE_IPV6=$(usex ipv6)
+		)
 	else
-		mycmakeargs+=(
-			-DUSE_IPV6=OFF)
+		mycmakeargs+=(-DUSE_IPV6=OFF)
 	fi
 
 	if use log-trace; then
