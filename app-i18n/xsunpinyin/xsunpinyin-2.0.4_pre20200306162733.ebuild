@@ -32,8 +32,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-BDEPEND="${PYTHON_DEPS}
-	virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig"
 DEPEND="~app-i18n/sunpinyin-${PV}
 	dev-libs/glib:2
 	x11-libs/cairo
