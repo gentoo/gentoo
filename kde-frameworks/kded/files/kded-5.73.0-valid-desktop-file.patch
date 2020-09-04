@@ -1,0 +1,28 @@
+From f32ac7a083662ca9bf72a9168cab2efd331436ed Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 3 Sep 2020 22:26:58 +0200
+Subject: [PATCH] org.kde.kded5.desktop: Add missing required key "Name"
+
+BUG: 408802
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ org.kde.kded5.desktop | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/org.kde.kded5.desktop b/org.kde.kded5.desktop
+index b51ec4e..57ce242 100644
+--- a/org.kde.kded5.desktop
++++ b/org.kde.kded5.desktop
+@@ -1,6 +1,7 @@
+ [Desktop Entry]
+-#This .desktop file is never shown in a menu, hence no real Name or Exec
++#This .desktop file is never shown in a menu, hence no Exec
+ #it's here mostly so wayland can get an icon on popups
++Name=KDED
+ Type=Service
+ Icon=kde-frameworks
+ NoDisplay=true
+-- 
+2.28.0
+

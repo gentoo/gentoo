@@ -30,6 +30,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-valid-desktop-file.patch )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package man KF5DocTools)
