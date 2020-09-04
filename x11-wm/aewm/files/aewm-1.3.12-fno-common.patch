@@ -1,4 +1,4 @@
---- aedesk.c
+--- a/aedesk.c
 +++ b/aedesk.c
 @@ -11,10 +11,6 @@
  
@@ -11,7 +11,7 @@
  static unsigned long parse_desk(char *spec);
  
  int main(int argc, char **argv)
---- aepanel.c
+--- a/aepanel.c
 +++ b/aepanel.c
 @@ -36,9 +36,6 @@
  void sig_handler(int);
