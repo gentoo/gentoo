@@ -18593,7 +18593,7 @@ x11-misc/sselp 0.2-r1 9999: Simple X selection printer
 x11-misc/stalonetray 0.8.3: System tray utility including support for KDE system tray icons
 x11-misc/sunflower 0.4_p20200716-r1: Small and highly customizable twin-panel file manager with plugin-support
 x11-misc/superswitcher 0.6-r1: A more feature-full replacement of the Alt-Tab window switching behavior
-x11-misc/sux 1.0-r4: "su" wrapper which transfers X credentials
+x11-misc/sux 1.0-r4 1.0.1: "su" wrapper which transfers X credentials
 x11-misc/sw-notify-send 1.2.1 9999: A system-wide variant of tinynotify-send
 x11-misc/sxhkd 0.6.1: Simple X hotkey daemon
 x11-misc/synergy 1.9.1 2.0.0: Lets you easily share a single mouse and keyboard between multiple computers
