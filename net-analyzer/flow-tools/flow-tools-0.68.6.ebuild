@@ -27,7 +27,7 @@ DEPEND="
 	${RDEPEND}
 "
 BDEPEND="
-	app-text/docbook2X
+	app-text/docbook-sgml-utils
 	sys-devel/bison
 	sys-devel/flex
 "
