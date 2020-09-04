@@ -13791,7 +13791,7 @@ media-sound/guitarix 0.39.0 0.40.0 0.41.0 9999: Virtual guitar amplifier for Lin
 media-sound/helm 0.9.0-r1: Open source polyphonic software synthesizer with lots of modulation
 media-sound/herrie 2.2-r1: Herrie is a command line music player
 media-sound/horgand 1.14-r2: Opensource software organ
-media-sound/hydrogen 1.0.0_rc1-r1 1.0.0 9999: Advanced drum machine
+media-sound/hydrogen 1.0.0_rc1-r1 1.0.0 1.0.1 9999: Advanced drum machine
 media-sound/icecream 1.3: Extracts and records individual MP3 tracks from shoutcast streams
 media-sound/id3 0.15-r1: changes the id3 tag in an mp3 file
 media-sound/id3ed 1.10.4-r1: ID3 tag editor for mp3 files
@@ -15261,7 +15261,7 @@ net-misc/python-x2go 0.6.0.2 0.6.1.1 0.6.1.2 0.6.1.3: X2Go client-side Python AP
 net-misc/qtm 1.3.19: Qt blogging client
 net-misc/quagga 1.2.4: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
 net-misc/r8168 8.048.00-r1 8.048.02-r1 8.048.03-r1: r8168 driver for Realtek 8111/8168 PCI-E NICs
-net-misc/rabbitmq-server 3.8.4: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
+net-misc/rabbitmq-server 3.8.4 3.8.7: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/radvd 2.14 2.17-r1 2.17-r2 2.18 2.18-r1: Linux IPv6 Router Advertisement Daemon
 net-misc/rclone 1.51.0 1.52.1 9999: A program to sync files to and from various cloud storage providers
 net-misc/rdate 1.4-r4 1.10: Use TCP or UDP to retrieve the current time of another machine
@@ -17508,7 +17508,7 @@ sys-fs/ext4magic 0.3.2-r1: Tool for recovery of deleted or overwritten files on 
 sys-fs/extundelete 0.2.4: A utility to undelete files from an ext3 or ext4 partition
 sys-fs/f2fs-tools 1.13.0 1.14.0: Tools for Flash-Friendly File System (F2FS)
 sys-fs/fatcat 1.1.0-r1: FAT filesystems explore, extract, repair, and forensic tool
-sys-fs/fatresize 1.0.4: Resize FAT partitions using libparted
+sys-fs/fatresize 1.0.4 1.1.0: Resize FAT partitions using libparted
 sys-fs/fatsort 1.6.2.605 1.6.3.622: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fragview 0.1.1 9999: Disk fragmentation visualizer based on FIEMAP and FIBMAP ioctls
 sys-fs/fuse 2.9.9-r1 3.9.1 3.9.2 3.9.3: An interface for filesystems implemented in userspace
@@ -18105,7 +18105,7 @@ www-client/lynx 2.8.9_p1 2.9.0_pre4 2.9.0_pre5: An excellent console-based web b
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r3: a free, open source web browser
-www-client/opera 70.0.3728.144: A fast and secure web browser
+www-client/opera 70.0.3728.144 70.0.3728.154: A fast and secure web browser
 www-client/opera-beta 71.0.3770.50 71.0.3770.81: A fast and secure web browser
 www-client/opera-developer 72.0.3779.0 72.0.3784.0 72.0.3791.0 72.0.3798.0: A fast and secure web browser
 www-client/otter 1.0.01 1.0.01-r1 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5

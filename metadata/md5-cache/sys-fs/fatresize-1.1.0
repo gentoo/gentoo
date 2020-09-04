@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=>=sys-block/parted-2.4
+DESCRIPTION=Resize FAT partitions using libparted
+EAPI=7
+HOMEPAGE=https://github.com/ya-mouse/fatresize
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=sys-block/parted-2.4
+SLOT=0
+SRC_URI=https://github.com/ya-mouse/fatresize/archive/v1.1.0.tar.gz -> fatresize-1.1.0.tar.gz
+_md5_=b7609955211057acb8202c51afbc8b76
