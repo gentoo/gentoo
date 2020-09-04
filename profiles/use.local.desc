@@ -3886,14 +3886,6 @@ mail-filter/amavisd-new:spamassassin - Add support for mail-filter/spamassassin
 mail-filter/amavisd-new:zmq - Add support for zeromq sockets
 mail-filter/bogofilter:tokyocabinet - Enable Tokyo Cabinet database support
 mail-filter/dcc:rrdtool - Enable net-analyzer/rrdtool interface scripts
-mail-filter/dspam:daemon - Enable support for DSPAM to run in --daemon mode
-mail-filter/dspam:debug - Enable debugging support (don't enable this unless something needs testing!)
-mail-filter/dspam:domain-scale - Build for domain scale setups - puts data to $HOME/data/domain.com/user
-mail-filter/dspam:hash - Enable support for the file-orientated hash driver
-mail-filter/dspam:large-scale - Build for large scale setups - puts data to $HOME/data/u/s/user
-mail-filter/dspam:small-scale - Build for small scale setups - puts data to $HOME/data/user
-mail-filter/dspam:user-homedirs - Build with user homedir support
-mail-filter/dspam:virtual-users - Build with virtual-users support
 mail-filter/libmilter:poll - Use poll instead of select
 mail-filter/maildrop:authlib - Add courier-authlib support
 mail-filter/maildrop:dovecot - Add dovecot authentication support
@@ -3919,8 +3911,6 @@ mail-filter/pyzor:gevent - Use dev-python/gevent to enable asynchronous operatio
 mail-filter/pyzor:mysql - Enables the MySQL back-end database engine for pyzord through dev-python/mysqlclient.
 mail-filter/pyzor:pyzord - Enable the pyzord server daemon
 mail-filter/pyzor:redis - Enables the redis back-end database engine for pyzord through dev-python/redis-py
-mail-filter/rmilter:dkim - Enable support for DomainKeys Identified Mail
-mail-filter/rmilter:memcached - Enable support for memcached
 mail-filter/rspamd:pcre2 - Use dev-libs/libpcre2
 mail-filter/spamassassin:cron - Install a cron job to update SpamAssassin's rules daily.
 mail-filter/spamassassin:qmail - Build qmail functionality and docs
