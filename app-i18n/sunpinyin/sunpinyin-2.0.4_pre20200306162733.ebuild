@@ -29,8 +29,7 @@ SLOT="0/3"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
-BDEPEND="${PYTHON_DEPS}
-	dev-lang/perl
+BDEPEND="dev-lang/perl
 	virtual/pkgconfig"
 DEPEND="dev-db/sqlite:3"
 RDEPEND="${DEPEND}"
