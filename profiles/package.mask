@@ -623,7 +623,6 @@ dev-haskell/hans
 # bug #520844, bug #665910, bug #626474,
 # bug #490322, bug #692436, bug #707274,
 # bug #713404. bug #680486, bug #459724.
-mail-filter/dspam
 www-apps/dspam-web
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
