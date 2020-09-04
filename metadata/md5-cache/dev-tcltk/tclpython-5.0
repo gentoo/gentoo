@@ -4,11 +4,11 @@ DESCRIPTION=Python package for Tcl
 EAPI=6
 HOMEPAGE=http://jfontain.free.fr/tclpython.htm
 IUSE=python_single_target_python3_6 python_single_target_python3_7
-KEYWORDS=amd64 ~ppc x86
+KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
 RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) dev-lang/tcl:0=
 REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 )
 SLOT=0
 SRC_URI=https://github.com/amykyta3/tclpython/archive/5.0.tar.gz -> tclpython-5.0.tar.gz
 _eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=1cbc099cec16ff0532ec5f25b9b8b02d
+_md5_=903d8d659847d5d09192abd657c16295
