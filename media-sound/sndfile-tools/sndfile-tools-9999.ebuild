@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-DESCRIPTION="A small collection of programs that use libsndfile"
+DESCRIPTION="Small collection of programs that use libsndfile"
 HOMEPAGE="http://www.mega-nerd.com/libsndfile/tools/"
 
 if [[ ${PV} == *9999 ]]; then
@@ -18,15 +18,17 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="jack"
 
-RDEPEND="
-	media-libs/libsndfile:=
-	media-libs/libsamplerate:=
-	x11-libs/cairo:=
-	sci-libs/fftw:3.0=
-	jack? ( media-sound/jack-audio-connection-kit:= )"
 DEPEND="
-	virtual/pkgconfig
-	${RDEPEND}"
+	media-libs/libsamplerate
+	media-libs/libsndfile
+	x11-libs/cairo
+	sci-libs/fftw:3.0=
+	jack? ( virtual/jack )
+"
+RDEPEND="${DEPEND}
+	!<media-libs/libsamplerate-0.1.9-r1
+"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
