@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/erikd/sndfile-tools.git"
 else
-	SRC_URI="http://www.mega-nerd.com/libsndfile/files/${P}.tar.bz2"
+	SRC_URI="http://www.mega-nerd.com/libsndfile/files/${P}.tar.bz2 -> ${P}a.tar.bz2"
 	KEYWORDS="~amd64"
 fi
 
