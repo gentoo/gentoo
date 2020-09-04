@@ -297,7 +297,6 @@ dev-python/pydotplus
 dev-python/pyds9
 dev-python/pyflann
 dev-python/pygsl
-dev-python/pyqt-distutils
 dev-python/python-ntpdshm
 dev-python/sphinxcontrib-napoleon
 dev-python/textfsm
