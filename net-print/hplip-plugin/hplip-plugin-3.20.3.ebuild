@@ -25,15 +25,7 @@ S=${WORKDIR}
 HPLIP_HOME=/usr/share/hplip
 
 # Binary prebuilt package
-QA_PRESTRIPPED="
-	/usr/share/hplip/fax/plugins/fax_marvell.so
-	/usr/share/hplip/prnt/plugins/hbpl1.so
-	/usr/share/hplip/prnt/plugins/lj.so
-	/usr/share/hplip/scan/plugins/bb_escl.so
-	/usr/share/hplip/scan/plugins/bb_marvell.so
-	/usr/share/hplip/scan/plugins/bb_soapht.so
-	/usr/share/hplip/scan/plugins/bb_soap.so
-"
+QA_PREBUILT="${HPLIP_HOME}/*.so"
 
 # License does not allow us to redistribute the "source" package
 RESTRICT="mirror"
