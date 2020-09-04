@@ -1,0 +1,12 @@
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -19,8 +19,7 @@
+ #-# 
+ SUBDIRS = Pixmaps
+ 
+-gamesdir = $(exec_prefix)/games
+-games_PROGRAMS = xsnow
++bin_PROGRAMS = xsnow
+ 
+ xsnow_CPPFLAGS = $(XML_CFLAGS) $(GTK_CFLAGS) $(DBUS_CFLAGS) -DUSE_LIST_NODE_ALLOCATOR 
+ xsnow_LDADD    = $(XML_LIBS)   $(GTK_LIBS)   $(DBUS_LIBS)
