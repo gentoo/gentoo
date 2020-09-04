@@ -12,7 +12,6 @@
   </longdescription>
   <use>
     <flag name="emoji">Enable support for Emoji</flag>
-    <flag name="gconf">Enable support for <pkg>gnome-base/gconf</pkg></flag>
     <flag name="gtk2">Enable support for <pkg>x11-libs/gtk+</pkg>:2</flag>
     <flag name="unicode">Enable support for Unicode choice</flag>
   </use>
