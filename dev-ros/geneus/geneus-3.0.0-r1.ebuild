@@ -15,3 +15,4 @@ IUSE=""
 
 RDEPEND="dev-ros/genmsg[${PYTHON_SINGLE_USEDEP}]"
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/allow_dupes.patch" )
