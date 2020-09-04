@@ -84,6 +84,7 @@ dev-python/jinja doc test
 dev-python/lxml test
 dev-python/markupsafe test
 dev-python/numpy lapack
+dev-python/pypiserver test
 dev-python/pygments doc test
 dev-python/setuptools test
 dev-python/snakeoil test
