@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="WAI application for static serving"
-HOMEPAGE="http://www.yesodweb.com/book/web-application-interface"
+HOMEPAGE="https://www.yesodweb.com/book/web-application-interface"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
