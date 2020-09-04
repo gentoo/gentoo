@@ -616,15 +616,6 @@ dev-haskell/dbus-core
 # activity since January 2018.
 dev-haskell/hans
 
-# Sam James <sam@gentoo.org> (2020-08-04)
-# Dead upstream, unmaintained.
-# Open security bug. Large number of other bugs.
-# Removal in 30 days. bug #630884.
-# bug #520844, bug #665910, bug #626474,
-# bug #490322, bug #692436, bug #707274,
-# bug #713404. bug #680486, bug #459724.
-www-apps/dspam-web
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
 # consolekit is abandoned upstream.
 # People are encouraged to switch to any logind
