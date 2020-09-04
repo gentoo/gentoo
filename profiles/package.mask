@@ -632,12 +632,6 @@ www-apps/dspam-web
 # Removal in 30 days. bug #630990
 mail-filter/rmilter
 
-# Sam James <sam@gentoo.org> (2020-08-04)
-# Unmaintained and out of date in Gentoo.
-# Has outstanding security issue.
-# Removal in 30 days. bug #710728, bug #588606
-sys-auth/pam_radius
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
 # consolekit is abandoned upstream.
 # People are encouraged to switch to any logind
