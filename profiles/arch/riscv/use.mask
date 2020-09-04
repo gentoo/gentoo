@@ -14,7 +14,6 @@ valgrind
 
 # Not tested yet
 bluetooth
-consolekit
 dbus
 elogind
 emacs
