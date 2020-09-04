@@ -21,7 +21,8 @@ DEPEND="
 	${RDEPEND}
 	!net-misc/uftp
 	!net-ftp/atftp
-	!net-ftp/tftp-hpa[server]
+	!=net-ftp/tftp-hpa-5.2-r1
+	!>=net-ftp/tftp-hpa-5.2-r2[server]
 	test? (
 		net-ftp/ftp
 		net-ftp/tnftp
