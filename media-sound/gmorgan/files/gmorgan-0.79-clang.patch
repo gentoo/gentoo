@@ -1,0 +1,13 @@
+diff --git a/src/NotGenerated.cxx b/src/NotGenerated.cxx
+index c2d6425..d7c6910 100644
+--- a/src/NotGenerated.cxx
++++ b/src/NotGenerated.cxx
+@@ -16139,7 +16139,7 @@ GMORGAN::cb_BPSave (Fl_Menu_ * o, void *v)
+ void GMORGAN::cb_BPPrint_i(Fl_Menu_*, void*) {
+   char *filename;
+ #define EXT ".ly"
+-filename=fl_file_chooser(gettext("Print Song:"),"(*"EXT")",NULL,0);
++filename=fl_file_chooser(gettext("Print Song:"),"(*" EXT ")",NULL,0);
+ if (filename==NULL) return;
+ filename=fl_filename_setext(filename,EXT);
+ #undef EXT

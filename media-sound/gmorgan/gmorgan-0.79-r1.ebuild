@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,6 +25,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-remove-dirs.patch
 	"${FILESDIR}"/${P}-remove-old-docs.patch
 	"${FILESDIR}"/${P}-gcc6.patch
+	"${FILESDIR}"/${P}-clang.patch
 )
 
 src_prepare() {
