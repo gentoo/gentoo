@@ -13474,8 +13474,8 @@ media-plugins/gst-transcoder 1.8.2-r1 1.14.1: GStreamer Transcoding API
 media-plugins/hexter 1.1.0: Yamaha DX7 modeling DSSI plugin
 media-plugins/imlib2_loaders 1.6.1: Additional image loaders for Imlib2
 media-plugins/ir_lv2 1.2.4 1.3.4-r1: LV2 convolver plugin especially for creating reverb effects
-media-plugins/kodi-audiodecoder-modplug 2.0.3 2.1.3 9999: Modplug decoder addon for Kodi
-media-plugins/kodi-audiodecoder-nosefart 2.0.0 2.0.1 2.0.2 2.3.0 9999: Nosefart decoder addon for Kodi
+media-plugins/kodi-audiodecoder-modplug 2.0.3 3.0.0 9999: Modplug decoder addon for Kodi
+media-plugins/kodi-audiodecoder-nosefart 2.0.0 2.0.1 2.0.2 3.0.0 9999: Nosefart decoder addon for Kodi
 media-plugins/kodi-audiodecoder-sidplay 1.2.2 2.1.3 3.0.0 9999: SidPlay decoder addon for Kodi
 media-plugins/kodi-audiodecoder-snesapu 2.0.0 2.0.1 2.0.2 2.1.3 3.0.0 9999: SPC decoder addon for Kodi
 media-plugins/kodi-audiodecoder-stsound 2.0.0 2.0.1 2.0.2 2.1.3 3.0.0 9999: SPC decoder addon for Kodi
