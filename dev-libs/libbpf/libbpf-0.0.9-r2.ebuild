@@ -23,26 +23,11 @@ RDEPEND="${COMMON_DEPEND}"
 S="${WORKDIR}/${P}/src"
 
 PATCHES=(
-	"${FILESDIR}/libbpf-0.0.7-paths.patch"
 	"${FILESDIR}/libbpf-0.0.9-fix-hashmap-on-lp32.patch"
 )
 
-src_compile() {
-	emake \
-		BUILD_SHARED=y \
-		LIBSUBDIR="$(get_libdir)" \
-		$(usex static-libs 'BUILD_STATIC=y' '' '' '') \
-		CC="$(tc-getCC)"
-}
-
-src_install() {
-	emake \
-		BUILD_SHARED=y \
-		LIBSUBDIR="$(get_libdir)" \
-		DESTDIR="${D}" \
-		$(usex static-libs 'BUILD_STATIC=y' '' '' '') \
-		install install_uapi_headers
-
-	insinto /usr/$(get_libdir)/pkgconfig
-	doins ${PN}.pc
+src_configure() {
+	tc-export CC
+	export PREFIX="${EPREFIX}/usr"
+	export LIBSUBDIR="$(get_libdir)"
 }
