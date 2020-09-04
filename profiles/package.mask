@@ -644,11 +644,6 @@ dev-haskell/hans
 sys-auth/consolekit
 sec-policy/selinux-consolekit
 
-# Aaron Bauman <bman@gentoo.org> (2020-08-01)
-# Py2 only. Last upstream release 2013.
-# Removal in 30 days. Last 2 have deps on cddb.
-<media-sound/jack-4.0.0_pre
-
 # Michał Górny <mgorny@gentoo.org> (2020-07-28)
 # Masked for the time being due to dep on LLVM 8.  Bug #720236.
 <=dev-ada/gps-2019-r1
