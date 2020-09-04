@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit cmake-utils python-single-r1
+inherit cmake python-single-r1
 
 DESCRIPTION="GNU Radio source block for OsmoSDR and rtlsdr and hackrf"
 HOMEPAGE="http://sdr.osmocom.org/trac/wiki/GrOsmoSDR"
@@ -57,11 +57,11 @@ src_configure() {
 		-DENABLE_NONFREE="$(usex sdrplay)"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	if use python; then
 		python_fix_shebang "${ED}"/usr/bin
 		python_optimize
