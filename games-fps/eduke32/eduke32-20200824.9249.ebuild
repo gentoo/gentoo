@@ -30,7 +30,7 @@ SRC_URI="
 
 LICENSE="BUILDLIC GPL-2 HRP"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="cdinstall demo flac fluidsynth gtk hrp offensive opengl opl png psx sc-55 server sdk timidity tools vorbis voxels vpx xmp"
 REQUIRED_USE="
 	cdinstall? ( !demo )

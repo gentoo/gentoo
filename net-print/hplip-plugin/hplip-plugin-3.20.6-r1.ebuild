@@ -11,12 +11,16 @@ SRC_URI="https://developers.hp.com/sites/default/files/hplip-${PV}-plugin.run"
 LICENSE="hplip-plugin"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE=""
+IUSE="orblite"
 
 RDEPEND="
 	~net-print/hplip-${PV}
-	virtual/libusb:0
 	virtual/udev
+	orblite? (
+		media-gfx/sane-backends
+		>=sys-libs/glibc-2.26
+		virtual/libusb:0
+	)
 "
 DEPEND=""
 
@@ -25,15 +29,7 @@ S=${WORKDIR}
 HPLIP_HOME=/usr/share/hplip
 
 # Binary prebuilt package
-QA_PRESTRIPPED="
-	/usr/share/hplip/fax/plugins/fax_marvell.so
-	/usr/share/hplip/prnt/plugins/hbpl1.so
-	/usr/share/hplip/prnt/plugins/lj.so
-	/usr/share/hplip/scan/plugins/bb_escl.so
-	/usr/share/hplip/scan/plugins/bb_marvell.so
-	/usr/share/hplip/scan/plugins/bb_soapht.so
-	/usr/share/hplip/scan/plugins/bb_soap.so
-"
+QA_PREBUILT="${HPLIP_HOME}/*.so"
 
 # License does not allow us to redistribute the "source" package
 RESTRICT="mirror"
@@ -53,8 +49,13 @@ src_install() {
 	for plugin in *-${hplip_arch}.so; do
 		local plugin_type=prnt
 		case "${plugin}" in
-			fax_*) plugin_type=fax ;;
-			bb_*)  plugin_type=scan ;;
+			bb_orblite-*)
+				use orblite || continue
+				plugin_type=scan ;;
+			bb_*)
+				plugin_type=scan ;;
+			fax_*)
+				plugin_type=fax ;;
 		esac
 
 		exeinto "${HPLIP_HOME}"/${plugin_type}/plugins

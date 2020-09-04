@@ -9,8 +9,8 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
 DESCRIPTION="Personal document indexing system"
-HOMEPAGE="https://finestructure.net/xapers/"
-SRC_URI="https://finestructure.net/xapers/releases/${P}.tar.gz"
+HOMEPAGE="https://finestructure.net/xapers/ https://gitlab.com/jrollins/xapers/"
+SRC_URI="https://gitlab.com/jrollins/${PN}/-/archive/${PV}/${P}.tar.gz"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
