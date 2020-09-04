@@ -616,34 +616,6 @@ dev-haskell/dbus-core
 # activity since January 2018.
 dev-haskell/hans
 
-# Sam James <sam@gentoo.org> (2020-08-04)
-# Dead upstream, unmaintained.
-# Open security bug. Large number of other bugs.
-# Removal in 30 days. bug #630884.
-# bug #520844, bug #665910, bug #626474,
-# bug #490322, bug #692436, bug #707274,
-# bug #713404. bug #680486, bug #459724.
-mail-filter/dspam
-www-apps/dspam-web
-
-# Sam James <sam@gentoo.org> (2020-08-04)
-# Dead upstream and now obsolete.
-# Not likely to work with newer rspam (>= 1.7)
-# Removal in 30 days. bug #630990
-mail-filter/rmilter
-
-# Sam James <sam@gentoo.org> (2020-08-04)
-# Unmaintained and out of date in Gentoo.
-# Has outstanding security issue.
-# Removal in 30 days. bug #710728, bug #588606
-sys-auth/pam_radius
-
-# Sam James <sam@gentoo.org> (2020-08-04)
-# Unmaintained, out of date, serious security
-# issue.
-# Removal in 30 days. bug #658448.
-net-analyzer/nikto
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
 # consolekit is abandoned upstream.
 # People are encouraged to switch to any logind
