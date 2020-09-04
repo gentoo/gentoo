@@ -1,5 +1,5 @@
---- xfishtank-2.1tp/read.c
-+++ xfishtank-2.1tp/read.c
+--- a/read.c
++++ b/read.c
 @@ -1,5 +1,7 @@
  #include <X11/Xlib.h>
  #include <stdio.h>
@@ -8,16 +8,16 @@
  #include "compact.h"
  #include "medcut.h"
  
---- xfishtank-2.1tp/medcut.c
-+++ xfishtank-2.1tp/medcut.c
+--- a/medcut.c
++++ b/medcut.c
 @@ -1,4 +1,5 @@
  #include <stdio.h>
 +#include <stdlib.h>
  #include "medcut.h"
  
  #define RED     0
---- xfishtank-2.1tp/xfish.c
-+++ xfishtank-2.1tp/xfish.c
+--- a/xfish.c
++++ b/xfish.c
 @@ -46,6 +46,9 @@
  #endif
  
@@ -51,8 +51,8 @@
      timeout.tv_sec = seconds;
      timeout.tv_usec = (seconds - timeout.tv_sec) * 1000000.0;
      select(0, &fds, &fds, &fds, &timeout);
---- xfishtank-2.1tp/makeh.c
-+++ xfishtank-2.1tp/makeh.c
+--- a/makeh.c
++++ b/makeh.c
 @@ -1,6 +1,6 @@
 -
 +#include <stdlib.h>
@@ -62,8 +62,8 @@
  main()
  {
  	FILE *fp;
---- xfishtank-2.1tp/gifread.c
-+++ xfishtank-2.1tp/gifread.c
+--- a/gifread.c
++++ b/gifread.c
 @@ -56,6 +56,8 @@
  
  #include <X11/Xlib.h>
