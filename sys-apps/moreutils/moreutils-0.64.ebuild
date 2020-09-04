@@ -31,6 +31,10 @@ DEPEND="
 		app-text/docbook-xml-dtd:4.4
 	)"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.64-respect-env.patch"
+)
+
 src_prepare() {
 	# don't build manpages
 	if ! use doc ; then
