@@ -18451,13 +18451,13 @@ x11-misc/cdm 0.6.1_pre20180107 0.7: The Console Display Manager
 x11-misc/chgres 0.1-r2: A very simple command line utility for changing X resolutions
 x11-misc/colord 1.3.5: System service to accurately color manage input and output devices
 x11-misc/compton 0.1_beta2-r1: A compositor for X, and a fork of xcompmgr-dana
-x11-misc/dclock 2.2.2_p9: Digital clock for the X window system
+x11-misc/dclock 2.2.2_p9 2.2.2_p12: Digital clock for the X window system
 x11-misc/devilspie 0.23 0.23-r1: A Window Matching utility similar to Sawfish's Matched Windows feature
 x11-misc/devilspie2 0.42: Devilspie like window matching utility, using LUA for scripting
 x11-misc/dex 0.8.0: DesktopEntry eXecution - tool to manage and launch autostart entries
 x11-misc/dmenu 4.6 4.8 4.9 5.0 9999: a generic, highly customizable, and efficient menu for the X Window System
 x11-misc/dsx 0.1-r1: Command line selection of your X desktop environment
-x11-misc/dunst 1.4.1 9999: Customizable and lightweight notification-daemon
+x11-misc/dunst 1.4.1 1.5.0 9999: Customizable and lightweight notification-daemon
 x11-misc/dxpc 3.9.2-r2: Differential X Protocol Compressor
 x11-misc/dzen 0.9.5-r1 0.9.5_p1: A general purpose messaging, notification and menuing program for X11
 x11-misc/e16-keyedit 0.9: Key binding editor for Enlightenment DR16
