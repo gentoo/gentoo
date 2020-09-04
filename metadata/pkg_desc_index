@@ -469,7 +469,7 @@ app-admin/abrt 2.14.0 2.14.1 2.14.2: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 3.6.13-r2 4.0.19-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0.13: A webserver log analyzer
-app-admin/ansible 2.9.12 2.10.0 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.9.12 2.9.13 2.10.0 9999: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-cmdb 1.28: Ansible Configuration Management Database
 app-admin/ansible-lint 4.0.1 4.1.0: Checks ansible playbooks for practices and behaviour that can be improved
 app-admin/apache-tools 2.4.41 2.4.43 2.4.46: Useful Apache tools - htdigest, htpasswd, ab, htdbm
@@ -14281,7 +14281,7 @@ net-analyzer/httping 2.5 9999999: like ping but for HTTP requests
 net-analyzer/hunt 1.5-r1 1.5-r3 1.5_p6_p1: tool for checking well known weaknesses in the TCP/IP protocol
 net-analyzer/hydra 9.0 9.0-r1 9.1 9999999: Parallelized network login hacker
 net-analyzer/ibmonitor 1.4 1.4-r1: Interactive bandwidth monitor
-net-analyzer/icinga2 2.11.4 2.11.5 2.12.0 9999: Distributed, general purpose, network monitoring engine
+net-analyzer/icinga2 2.11.5 2.12.0 9999: Distributed, general purpose, network monitoring engine
 net-analyzer/ifmetric 0.3-r2: Set metrics of all IPv4 routes attached to a given network interface at once
 net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for snmp targets
 net-analyzer/ifstatus 1.1.0-r2 2.0.0: A simple CLI program for displaying network statistics in real time
