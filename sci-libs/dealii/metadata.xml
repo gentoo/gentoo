@@ -25,10 +25,10 @@ and extra output. If you want to get meaningful backtraces see
 		<flag name="gmsh">Add support for gmsh (<pkg>sci-libs/gmsh</pkg>)</flag>
 		<flag name="metis">Add support for metis (<pkg>sci-libs/metis</pkg>)</flag>
 		<flag name="muparser">Add support for muparser (<pkg>dev-cpp/muParser</pkg>)</flag>
-		<flag name="nanoflann">Adds support for nanoflann (<pkg>sci-libs/nanoflann</pkg>)</flag>
 		<flag name="opencascade">Add support for opencascade (<pkg>sci-libs/opencascade</pkg>)</flag>
 		<flag name="p4est">Add support for p4est (<pkg>sci-libs/p4est</pkg>)</flag>
 		<flag name="petsc">Add support for petsc (<pkg>sci-mathematics/petsc</pkg>)</flag>
+		<flag name="nanoflann">Adds support for nanoflann (<pkg>sci-libs/nanoflann</pkg>)</flag>
 		<flag name="scalapack">Add support for ScaLAPACK (<pkg>sci-libs/scalapack</pkg>)</flag>
 		<flag name="slepc">Add support for slepc (<pkg>sci-mathematics/slepc</pkg>)</flag>
 		<flag name="sparse">Add support for suitesparse (<pkg>sci-libs/suitesparse</pkg>)</flag>
