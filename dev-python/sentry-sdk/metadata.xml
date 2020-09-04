@@ -12,4 +12,5 @@
 	<upstream>
 		<remote-id type="pypi">sentry-sdk</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
