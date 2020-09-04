@@ -1,0 +1,13 @@
+diff --git a/contrib/dlz/config.dlz.in b/contrib/dlz/config.dlz.in
+index f769cf1..721d480 100644
+--- a/contrib/dlz/config.dlz.in
++++ b/contrib/dlz/config.dlz.in
+@@ -396,7 +396,7 @@ case "$use_dlz_ldap" in
+ 	*)
+ 		DLZ_ADD_DRIVER(LDAP, dlz_ldap_driver,
+ 				[-I$use_dlz_ldap/include],
+-				[-L$use_dlz_ldap/lib -lldap -llber])
++				[-lldap -llber])
+ 
+ 		AC_MSG_RESULT(
+ [using LDAP from $use_dlz_ldap/lib and $use_dlz_ldap/include])
