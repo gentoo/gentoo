@@ -9,7 +9,7 @@ CABAL_FEATURES="bin lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Process WAVE files in Haskell"
-HOMEPAGE="http://bitbucket.org/robertmassaioli/wavy"
+HOMEPAGE="https://bitbucket.org/robertmassaioli/wavy"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
