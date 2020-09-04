@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Static file serving subsite for Yesod Web Framework"
-HOMEPAGE="http://www.yesodweb.com/"
+HOMEPAGE="https://www.yesodweb.com/"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
