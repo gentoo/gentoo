@@ -19,23 +19,27 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="^^ ( log-debug log-error log-info log-trace log-warn )
 		daemon? ( dht-node )"
 
-COMMON_DEPEND="
-	av? ( media-libs/libvpx
-		media-libs/opus )
-	daemon? ( acct-group/tox
-		acct-user/tox
-		dev-libs/libconfig )
-	>=dev-libs/libsodium-0.6.1:=[asm,urandom,-minimal]"
 BDEPEND="virtual/pkgconfig"
-
-DEPEND="${COMMON_DEPEND}"
-
-RDEPEND="${COMMON_DEPEND}"
+DEPEND=">dev-libs/libsodium-0.6.1:=[asm,urandom,-minimal]
+	av? (
+		media-libs/libvpx:=
+		media-libs/opus
+	)
+	daemon? ( dev-libs/libconfig )"
+RDEPEND="
+	${DEPEND}
+	daemon? (
+		acct-group/tox
+		acct-user/tox
+	)"
 
 src_prepare() {
 	cmake_src_prepare
-	#remove faulty tests
-	for testname in bootstrap lan_discovery save_compatibility tcp_relay tox_many_tcp; do
+
+	# Remove faulty tests
+	local faultytest=(lan_discovery save_compatibility)
+	local testname=
+	for testname in "${faultytest[@]}"; do
 		sed -i -e "/^auto_test(${testname})$/d" CMakeLists.txt || die
 	done
 }
@@ -44,20 +48,21 @@ src_configure() {
 	local mycmakeargs=(
 		-DAUTOTEST=$(usex test)
 		-DBOOTSTRAP_DAEMON=$(usex daemon)
+		-DBUILD_MISC_TESTS=$(usex test)
 		-DBUILD_TOXAV=$(usex av)
 		-DDHT_BOOTSTRAP=$(usex dht-node)
 		-DENABLE_SHARED=ON
 		-DENABLE_STATIC=$(usex static-libs)
-		-DMUST_BUILD_TOXAV=$(usex av))
+		-DMUST_BUILD_TOXAV=$(usex av)
+	)
+
 	if use test; then
 		mycmakeargs+=(
-			-DBUILD_AV_TEST=$(usex av)
 			-DTEST_TIMEOUT_SECONDS=120
-			-DUSE_IPV6=$(usex ipv6))
+			-DUSE_IPV6=$(usex ipv6)
+		)
 	else
-		mycmakeargs+=(
-			-DBUILD_AV_TEST=OFF
-			-DUSE_IPV6=OFF)
+		mycmakeargs+=(-DUSE_IPV6=OFF)
 	fi
 
 	if use log-trace; then
@@ -77,6 +82,10 @@ src_configure() {
 	cmake_src_configure
 }
 
+src_test() {
+	cmake_src_test -j1
+}
+
 src_install() {
 	cmake_src_install
 
@@ -91,21 +100,12 @@ src_install() {
 
 pkg_postinst() {
 	if use dht-node; then
-		ewarn "There is currently an unresolved issue with tox"
-		ewarn "DHT Bootstrap node that causes the program to be"
-		ewarn "built with a null library reference. This"
-		ewarn "causes an infinite loop for certain rev-dep-rebuild"
-		ewarn "commands. If you aren't running a node, please"
-		ewarn "consider disabling the dht-node flag"
-	fi
-	if use daemon; then
-		if [[ -f ${EROOT}/var/lib/tox-dht-bootstrap/key ]]; then
-			ewarn "Backwards compatability with the bootstrap daemon might have been"
-			ewarn "broken a while ago. To resolve this issue, REMOVE the following files:"
-			ewarn "    ${EROOT}/var/lib/tox-dht-bootstrap/key"
-			ewarn "    ${EROOT}/etc/tox-bootstrapd.conf"
-			ewarn "    ${EROOT}/run/tox-dht-bootstrap/tox-dht-bootstrap.pid"
-			ewarn "Then just re-emerge net-libs/tox"
-		fi
+		ewarn "There is currently an unresolved issuer with tox DHT"
+		ewarn "Bootstrap node that causes the program to be built"
+		ewarn "with a null libray reference. This causes an infinite"
+		ewarn "loop for certain revdep-rebuild commands. If you aren't"
+		ewarn "running a node, please consider disabling the dht node"
+		ewarn "use flag. For more information please refer to"
+		ewarn "https://github.com/toktok/c-toxcore/issues/1144"
 	fi
 }
