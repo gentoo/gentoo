@@ -77,7 +77,7 @@ RDEPEND="
 		sys-libs/libavc1394
 		sys-libs/libraw1394
 	)
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	java? ( dev-java/ant-core )
 	lame? ( media-sound/lame )
 	lcd? ( app-misc/lcdproc )
