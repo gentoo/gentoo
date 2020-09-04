@@ -8,7 +8,7 @@ games-strategy/0ad nvtt
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-08-20)
 # zfs is keyworded on arm64
-sys-boot/grub libzfs
+sys-boot/grub -libzfs
 
 # Sam James <sam@gentoo.org> (2020-08-19)
 # Needed for openstack, let's come back
