@@ -3440,7 +3440,7 @@ dev-cpp/catch 1.12.2 1.9999 2.5.0 2.7.0 2.9.1 9999: Modern C++ header-only frame
 dev-cpp/clucene 2.3.3.4-r6: High-performance, full-featured text search engine based off of lucene in C++
 dev-cpp/commoncpp2 1.8.1-r4: C++ library offering portable support for system-related services
 dev-cpp/cpp-hocon 0.2.1 0.3.0: Provides C++ support for the HOCON configuration file format
-dev-cpp/cpp-taskflow 2.4.0-r1: Modern C++ Parallel Task Programming
+dev-cpp/cpp-taskflow 2.4.0-r1 2.6.0: Modern C++ Parallel Task Programming
 dev-cpp/ctemplate 2.3-r1 2.4: A simple but powerful template language for C++
 dev-cpp/eigen 3.3.7 3.3.7-r1: C++ template library for linear algebra
 dev-cpp/gconfmm 2.28.3-r1: C++ bindings for GConf
@@ -14775,7 +14775,7 @@ net-libs/glib-networking 2.62.4 2.64.3: Network-related giomodules for glib
 net-libs/gloox 1.0.22: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.34.1 3.36.0: GNOME framework for accessing online accounts
-net-libs/gnutls 3.6.14: A TLS 1.2 and SSL 3.0 implementation for the GNU project
+net-libs/gnutls 3.6.14 3.6.15: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/google-cloud-cpp 0.2.0-r1 0.5.0 0.9.0 0.10.0 0.10.0-r1: Google Cloud Client Library for C++
 net-libs/grpc 1.26.0-r1 1.28.1-r1: Modern open source high performance RPC framework
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
@@ -15588,7 +15588,7 @@ net-wireless/gr-iio 0.3-r3 0.3_p20191219-r1 9999: GNU Radio IIO Blocks
 net-wireless/gr-iqbal 0.37.3 0.38.1 9999: gnuradio I/Q balancing
 net-wireless/gr-ntsc 9999: RTL2832U NTSC viewer
 net-wireless/gr-ntsc-rc 9999: NTSC receiver and transmitter for 5 GHz drones
-net-wireless/gr-osmosdr 0.1.5-r1 0.2.0 9999: GNU Radio source block for OsmoSDR and rtlsdr and hackrf
+net-wireless/gr-osmosdr 0.1.5-r1 0.2.0 0.2.2 9999: GNU Radio source block for OsmoSDR and rtlsdr and hackrf
 net-wireless/gr-paint 0.0_p20200418 0.0_p20200517 9999: Paints monochrome images into the waterfall of a receiver
 net-wireless/gr-ppm-wiegand 9999: GnuRadio PPM (Differential Pulse Position Modulation/Demodulation) plugin
 net-wireless/gr-rds 0.0_p20200807 9999: GNU Radio FM RDS Receiver
