@@ -79,7 +79,7 @@ dev-libs/libusb doc
 dev-libs/libxslt python
 dev-libs/libyaml doc
 dev-python/argcomplete test
-dev-python/aiohttp test
+dev-python/aiohttp doc test
 dev-python/cython doc test
 dev-python/jinja doc test
 dev-python/lxml test
