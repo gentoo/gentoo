@@ -19,7 +19,7 @@ IUSE="+luajit test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
-	>=dev-libs/libbpf-0.1.0-r1[static-libs(-)]
+	>=dev-libs/libbpf-0.1.0-r1
 	>=sys-kernel/linux-headers-4.14
 	>=dev-libs/elfutils-0.166:=
 	sys-devel/clang:=
