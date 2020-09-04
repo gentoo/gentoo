@@ -35,6 +35,7 @@ src_compile() {
 
 src_install() {
 	prefix="${EPREFIX}/usr" \
+	includedir="${EPREFIX}/usr/include/blocksruntime" \
 	libdir="${EPREFIX}/usr/$(get_libdir)" \
 	DESTDIR="${D}" \
 		./installlib $(use static-libs || echo -shared) || die
