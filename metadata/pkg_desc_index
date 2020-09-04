@@ -2746,7 +2746,7 @@ app-shells/bashdb 4.4.1.0.1 5.0.1.1.0 5.0.1.1.2: bash source code debugging
 app-shells/bashish 2.2.4: Text console theme engine
 app-shells/ccsh 0.0.4-r4: UNIX Shell for people already familiar with the C language
 app-shells/ctypes-sh 1.2: Foreign function interface for bash
-app-shells/dash 0.5.10.2-r1 0.5.11.1 0.5.11.2: Debian Almquist Shell
+app-shells/dash 0.5.11.1 0.5.11.2: Debian Almquist Shell
 app-shells/dsh 0.25.10-r1: Distributed Shell
 app-shells/esh 0.8.5-r2: A UNIX Shell with a simplified Scheme syntax
 app-shells/fish 2.7.1 3.0.2 3.1.0 3.1.2 9999: Friendly Interactive SHell
@@ -16865,7 +16865,7 @@ sys-apps/dbus-broker 22 23 9999: Linux D-Bus Message Broker
 sys-apps/dcfldd 1.3.4.1-r1 1.5 1.6 1.7: enhanced dd with features for forensics and security
 sys-apps/dchroot 0.12.1: Utility for managing chroots for non-root users
 sys-apps/debianutils 4.11.1: A selection of tools from Debian
-sys-apps/diffutils 3.6-r1 3.7 3.7-r1: Tools to make diffs and compare files
+sys-apps/diffutils 3.7-r1: Tools to make diffs and compare files
 sys-apps/dmapi 2.2.12-r1: XFS data management API library
 sys-apps/dmidecode 3.1 3.2: DMI (Desktop Management Interface) table related utilities
 sys-apps/dnotify 0.18.0: Execute a command when the contents of a directory change
@@ -16919,7 +16919,7 @@ sys-apps/haveged 1.9.2-r1 1.9.8c 1.9.13: A simple entropy daemon using the HAVEG
 sys-apps/hd-idle 1.05-r1: Utility for spinning down hard disks after a period of idle time
 sys-apps/hdparm 9.56 9.58: Utility to change hard drive performance parameters
 sys-apps/heirloom-tools 070715-r3: Heirloom toolchest - original Unix tools
-sys-apps/help2man 1.47.10 1.47.15 1.47.16: GNU utility to convert program --help output to a man page
+sys-apps/help2man 1.47.15 1.47.16: GNU utility to convert program --help output to a man page
 sys-apps/hexdump-esr 1.8: Eric Raymond's hex dumper
 sys-apps/highway 1.1.0: High performance source code search tool
 sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
@@ -18652,7 +18652,7 @@ x11-misc/xdock 0.3.0: emulates Window Maker docks (runs in any window manager)
 x11-misc/xdotool 3.20160805.1: Simulate keyboard input and mouse activity, move and resize windows
 x11-misc/xearth 1.1-r1: Xearth sets the X root window to an image of the Earth
 x11-misc/xfe 1.42 1.43.1 1.43.2: MS-Explorer-like minimalist file manager for X
-x11-misc/xfishtank 2.1-r2: Turns your root window into an aquarium
+x11-misc/xfishtank 2.1-r2 2.5: Turns your root window into an aquarium
 x11-misc/xflux 20130927-r1 20170103: Makes the color of your computer's display adapt to the time of the day
 x11-misc/xflux-gui 1.2.0-r1: A GUI for f.lux
 x11-misc/xfractint 20.04_p14 20.04_p16: A fractal generator
