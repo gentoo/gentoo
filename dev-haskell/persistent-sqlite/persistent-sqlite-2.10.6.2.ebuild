@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Backend for the persistent library using sqlite3"
-HOMEPAGE="http://www.yesodweb.com/book/persistent"
+HOMEPAGE="https://www.yesodweb.com/book/persistent"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
