@@ -30,7 +30,7 @@ RDEPEND=">=dev-haskell/fail-4.9:=[profile?] <dev-haskell/fail-4.10:=[profile?]
 	>=dev-haskell/parsec-3.1.13.0:=[profile?] <dev-haskell/parsec-3.2:=[profile?]
 	>=dev-haskell/semigroups-0.18.3:=[profile?] <dev-haskell/semigroups-0.20:=[profile?]
 	>=dev-haskell/text-1.2.3.0:=[profile?] <dev-haskell/text-1.3:=[profile?]
-	>=dev-lang/ghc-7.8.2:=
+	>=dev-lang/ghc-8.8:=
 "
 DEPEND="${RDEPEND}"
 
