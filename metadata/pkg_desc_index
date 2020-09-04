@@ -7843,7 +7843,7 @@ dev-python/3to2 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x synta
 dev-python/APScheduler 3.6.3: In-process task scheduler with Cron-like capabilities
 dev-python/Babel 2.8.0-r1: Collection of tools for internationalizing Python applications
 dev-python/BitVector 3.4.9: A pure-Python memory-efficient packed representation for bit arrays
-dev-python/GitPython 3.1.7: Library used to interact with Git repositories
+dev-python/GitPython 3.1.7 3.1.8: Library used to interact with Git repositories
 dev-python/GridDataFormats 0.4.0-r1: Reading and writing of data on regular grids in Python
 dev-python/HeapDict 1.0.0: Heap with decrease-key and increase-key operations
 dev-python/MechanicalSoup 0.12.0: A python library for automating interaction with websites
@@ -7957,8 +7957,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r2 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.14.23 1.14.31 1.14.46 1.14.49 1.14.52 9999: The AWS SDK for Python
-dev-python/botocore 1.17.23 1.17.31 1.17.46 1.17.49 1.17.52 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.14.23 1.14.31 1.14.46 1.14.49 1.14.52 1.14.55 9999: The AWS SDK for Python
+dev-python/botocore 1.17.23 1.17.31 1.17.46 1.17.49 1.17.52 1.17.55 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.18: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.19: Syntax highlighting and autocompletion for the Python interpreter
@@ -8008,7 +8008,7 @@ dev-python/click-threading 0.4.4: Multithreaded Click apps made easy.
 dev-python/cliff 3.3.0 3.4.0: Command Line Interface Formulation Framework
 dev-python/clint 0.5.1-r1: Python Command-line Application Tools
 dev-python/cloudpickle 1.5.0 1.6.0: Extended pickling support for Python objects
-dev-python/cmd2 1.2.1 1.3.4 1.3.5 1.3.8: Extra features for standard library's cmd module
+dev-python/cmd2 1.2.1 1.3.4 1.3.5 1.3.8 1.3.9: Extra features for standard library's cmd module
 dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
 dev-python/colorama 0.4.3: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/colorclass 2.2.0-r1: Colorful worry-free console applications for multiple platforms
@@ -8126,7 +8126,7 @@ dev-python/ecdsa 0.14.1-r1 0.15 0.16.0: ECDSA cryptographic signature library in
 dev-python/editorconfig-core-py 0.12.0: Clone of EditorConfig core written in Python
 dev-python/elasticsearch-curator 5.8.1-r1: Tending time-series indices in Elasticsearch
 dev-python/elasticsearch-py 7.7.0: Official Python low-level client for Elasticsearch
-dev-python/elementpath 1.4.6 2.0.0 2.0.1: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
+dev-python/elementpath 1.4.6 2.0.0 2.0.1 2.0.2: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
 dev-python/emcee 3.0.2: Python ensemble sampling toolkit for affine-invariant MCMC
 dev-python/emoji 0.5.4: Emoji for Python
 dev-python/empy 3.3.3: A powerful and robust templating system for Python
@@ -8270,7 +8270,7 @@ dev-python/humanize 2.4.1 2.6.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 19.0.0 20.0.1: A featureful, correct URL for Python
-dev-python/hypothesis 4.57.1 5.21.0 5.24.3 5.24.4 5.27.0 5.28.0 5.29.0 5.29.3 5.29.4 5.30.0: A library for property based testing
+dev-python/hypothesis 4.57.1 5.21.0 5.24.3 5.24.4 5.27.0 5.28.0 5.29.0 5.29.3 5.29.4 5.30.0 5.30.1: A library for property based testing
 dev-python/icalendar 4.0.6: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.8 2.10: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -8959,7 +8959,7 @@ dev-python/qdarkstyle 2.8.1: A dark style sheet for QtWidgets application
 dev-python/qrcode 6.1: QR Code generator on top of PIL
 dev-python/qscintilla-python 2.11.5: Python bindings for QScintilla
 dev-python/qtawesome 0.7.2: Enables iconic fonts such as Font Awesome in PyQt
-dev-python/qtconsole 4.7.5 4.7.6 4.7.6-r1: Qt-based console for Jupyter with support for rich media output
+dev-python/qtconsole 4.7.5 4.7.6 4.7.6-r1 4.7.7: Qt-based console for Jupyter with support for rich media output
 dev-python/qtsass 0.3.0: Compile SASS files to Qt stylesheets
 dev-python/quantities 0.12.4: Support for physical quantities with units, based on numpy
 dev-python/quex 0.65.4 0.71.0-r1: Mode Oriented Directly Coded Lexical Analyser Generator
@@ -9023,7 +9023,7 @@ dev-python/rsa 4.2: Pure-Python RSA implementation
 dev-python/rst-linker 2.0.0: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rtimulib 7.2.1-r1: Python Binding for RTIMULib, a versatile IMU library
 dev-python/rtslib-fb 2.1.73: A Python object API for managing the Linux LIO kernel target
-dev-python/ruamel-yaml 0.16.10: YAML parser/emitter that supports roundtrip comment preservation
+dev-python/ruamel-yaml 0.16.10 0.16.11: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/ruamel-yaml-clib 0.2.0: C-based reader/scanner and emitter for dev-python/ruamel-yaml
 dev-python/ryu 4.26-r1: Component-based Software-defined Networking Framework
 dev-python/s3fs 0.4.2: Pythonic file interface to S3
@@ -9046,7 +9046,7 @@ dev-python/serpent 1.30: A simple serialization library based on ast.literal_eva
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.10-r1: Allow customization of the process title
-dev-python/setuptools 46.4.0-r1 46.4.0-r2 49.6.0: Collection of extensions to Distutils
+dev-python/setuptools 46.4.0-r1 46.4.0-r2 49.6.0 50.1.0: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 4.1.2: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.1: A setuptools_scm plugin for git archives
@@ -9192,7 +9192,7 @@ dev-python/towncrier 19.2.0: Building newsfiles for your project
 dev-python/tox 3.17.1 3.19.0 3.20.0: virtualenv-based automation of test activities
 dev-python/tqdm 4.47.0 4.48.2 9999: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0: Backports of the traceback module
-dev-python/traitlets 4.3.3 5.0.2: A configuration system for Python applications
+dev-python/traitlets 4.3.3 5.0.2 5.0.3: A configuration system for Python applications
 dev-python/transitions 0.8.2-r1: A lightweight, object-oriented state machine implementation in Python
 dev-python/translate-toolkit 2.5.0: Toolkit to convert between many translation formats
 dev-python/treq 20.4.1: A requests-like API built on top of twisted.web's Agent
