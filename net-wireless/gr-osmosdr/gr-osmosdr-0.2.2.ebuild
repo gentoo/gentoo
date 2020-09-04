@@ -38,6 +38,11 @@ DEPEND="${RDEPEND}"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+src_prepare() {
+	cmake_src_prepare
+	sed -i "s:\${GR_DOC_DIR}/\${CMAKE_PROJECT_NAME}:\${GR_DOC_DIR}/${PF}:" CMakeLists.txt || die
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_DEFAULT=OFF
@@ -63,8 +68,10 @@ src_configure() {
 src_install() {
 	cmake_src_install
 	if use python; then
+		# Remove incorrectly byte-compiled Python files and replace
+		# https://github.com/gnuradio/gnuradio/issues/2944
+		find "${ED}"/usr/lib* -name "*.py[co]" -exec rm {} \; || die
 		python_fix_shebang "${ED}"/usr/bin
 		python_optimize
 	fi
-	mv "${ED}/usr/share/doc/${PN}" "${ED}/usr/share/doc/${P}"
 }
