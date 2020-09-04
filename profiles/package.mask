@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Louis Sautier <sbraz@gentoo.org> (2020-09-04)
+# Masked for removal in 30 days, no revdeps. Dependency of
+# previously removed dev-python/flask-bootstrap
+dev-python/flask-appconfig
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-02)
 # Masked for removal. No revdeps.
 dev-python/ansimarkup
