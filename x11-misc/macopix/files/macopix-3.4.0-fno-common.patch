@@ -1,0 +1,357 @@
+From f29175b892026dbc4a8ad321e426f22e0a09b248 Mon Sep 17 00:00:00 2001
+From: "Ying-Chun Liu (PaulLiu)" <paulliu@debian.org>
+Date: Sat, 8 Aug 2020 03:48:43 +0800
+Subject: [PATCH] Porting to gcc 10
+
+GCC will reject multiple definitions of global variables starting
+from gcc-10. We need to move the definitions to a real object file.
+And in headers we only extern it.
+
+Signed-off-by: Ying-Chun Liu (PaulLiu) <paulliu@debian.org>
+---
+ src/main.c |  42 ++++++++++++++++++
+ src/main.h | 123 +++++++++++++++++++++++++++++++----------------------
+ 2 files changed, 113 insertions(+), 52 deletions(-)
+
+diff --git a/src/main.c b/src/main.c
+index 7944618..ce187a1 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -35,6 +35,48 @@
+ // *** GLOBAL ARGUMENT ***
+ 
+ gboolean FlagInstalledMenu;
++enum MENU_EXT_t MENU_EXT;
++enum MaCoPiXFolder_t MaCoPiXFolder;
++enum ClockMode_t ClockMode;
++enum HomePos_t HomePos;
++enum MoveMode_t MoveMode;
++#ifdef USE_OSX
++enum MAC_LAYER_MODE_t MAC_LAYER_MODE;
++#endif
++enum FFPos_t FFPos;
++enum AutoBar_t AutoBar;
++enum PosBalloon_t PosBalloon;
++enum TypBalloon_t TypBalloon;
++enum DuetAnimeMode_t DuetAnimeMode;
++enum TypInterpolate_t TypInterpolate;
++enum ClockType_t ClockType;
++enum MenuSelect_t MenuSelect;
++enum GuiFontConf_t GuiFontConf;
++enum GuiColorConf_t GuiColorConf;
++enum SetReleaseData_t SetReleaseData;
++enum MailStatus0_t MailStatus0;
++enum MailPixPos_t MailPixPos;
++enum MailStatus_t MailStatus;
++enum SignalAction_t SignalAction;
++enum ConsMode_t ConsMode;
++enum ScanMenuDir_t ScanMenuDir;
++enum CompositeFlag_t CompositeFlag;
++#ifdef USE_GTK3
++GdkPixbuf *pixbuf_main, *pixbuf_clk, *pixbuf_bal;
++#ifdef USE_WIN32
++GdkPixbuf *pixbuf_sdw;
++#endif
++#else  // USE_GTK3
++GdkPixmap *pixmap_main, *pixmap_clk, *pixmap_bal;
++#ifdef USE_WIN32
++GdkPixmap *pixmap_sdw;
++#endif
++#endif // USE_GTK3
++gint window_x, window_y;
++gboolean supports_alpha;
++gboolean flag_balloon;
++
++pid_t http_pid;
+ 
+ // Prototype of functions in this file
+ #ifdef USE_GTK3
+diff --git a/src/main.h b/src/main.h
+index 496815e..42577a6 100644
+--- a/src/main.h
++++ b/src/main.h
+@@ -217,10 +217,11 @@
+ #define MENU_EXTRACT_GTAR_COMMAND "tar -zxf %s -C %s "
+ 
+ // MENU
+-enum{ MENU_MENU,
++enum MENU_EXT_t { MENU_MENU,
+ 	MENU_LHA,
+ 	MENU_TAR
+-	}MENU_EXT;
++};
++extern enum MENU_EXT_t MENU_EXT;
+ 
+ 
+ // 画像ファイル用拡張子
+@@ -252,11 +253,12 @@ enum{ MENU_MENU,
+ #define SOUNDDIR "sound" G_DIR_SEPARATOR_S
+ 
+ // Folder
+-enum{ FOLDER_DEFAULT,
++enum MaCoPiXFolder_t { FOLDER_DEFAULT,
+ 	FOLDER_PIX,
+ 	FOLDER_SOUND,
+ 	FOLDER_CURRENT
+-	}MaCoPiXFolder;
++};
++extern enum MaCoPiXFolder_t MaCoPiXFolder;
+ 
+ // 個人用セーブファイル
+ //  (USER_DIR中に作成 : マスコット非依存パラメータを保存)
+@@ -292,10 +294,11 @@ enum{ FOLDER_DEFAULT,
+ 
+ 
+ // CLOCK_MODE
+-enum{ CLOCK_NO,
++enum ClockMode_t { CLOCK_NO,
+       CLOCK_PIXMAP,
+       CLOCK_PANEL
+-}ClockMode;
++};
++extern enum ClockMode_t ClockMode;
+ 
+ //ANIME
+ #define MAX_PIXMAP   64
+@@ -330,47 +333,54 @@ enum{ CLOCK_NO,
+ #define ROOTOFF_Y (-10)
+ 
+ // Home Position Mode
+-enum{ HOMEPOS_NEVER, HOMEPOS_VANISH, HOMEPOS_BAR } HomePos;
++enum HomePos_t { HOMEPOS_NEVER, HOMEPOS_VANISH, HOMEPOS_BAR };
++extern enum HomePos_t HomePos;
+ 
+ // Titlebar Offset for Focus Follow
+ enum{ FF_BAR_ABS, FF_BAR_REL };
+ 
+ 
+ // MOVE mode
+-enum{
++enum MoveMode_t {
+   MOVE_FIX,
+   MOVE_FOCUS
+-}MoveMode;
++};
++extern enum MoveMode_t MoveMode;
+ 
+ #ifdef USE_OSX
+-enum {
++enum MAC_LAYER_MODE_t {
+      MAC_LAYER_DEFAULT,
+      MAC_LAYER_TOP,
+      NUM_MAC_LAYER
+-}MAC_LAYER_MODE;
++};
++extern enum MAC_LAYER_MODE_t MAC_LAYER_MODE;
+ #endif
+ 
+ // Focus Follow 基準位置
+-enum{ FF_SIDE_LEFT, FF_SIDE_RIGHT } FFPos;
++enum FFPos_t { FF_SIDE_LEFT, FF_SIDE_RIGHT };
++extern enum FFPos_t FFPos;
+ 
+ // Focus Autobar タイトルバー算出法
+-enum{ AUTOBAR_MANUAL, AUTOBAR_ORDINAL, AUTOBAR_COMPIZ } AutoBar;
++enum AutoBar_t { AUTOBAR_MANUAL, AUTOBAR_ORDINAL, AUTOBAR_COMPIZ };
++extern enum AutoBar_t AutoBar;
+ 
+ 
+ // Balloon Position
+-enum{
++enum PosBalloon_t{
+   BAL_POS_LEFT,
+     BAL_POS_RIGHT
+-    } PosBalloon;
++    };
++extern enum PosBalloon_t PosBalloon;
+ 
+ // Balloon Mode
+-enum{BALLOON_NORMAL,
++enum TypBalloon_t {BALLOON_NORMAL,
+        BALLOON_MAIL,
+        BALLOON_POPERROR,
+        BALLOON_SOCKMSG,
+        BALLOON_DUET,
+        BALLOON_SYS
+-       } TypBalloon;
++       };
++extern enum TypBalloon_t TypBalloon;
+ 
+ // Biff用 Balloonの自然消滅コマ数
+ #define BALLOON_EXPIRE    150
+@@ -394,39 +404,41 @@ typedef enum {
+ #define DEF_DUET_DELAY    20
+ 
+ // Duet Anime mode
+-enum{
++enum DuetAnimeMode_t {
+   DUET_CLICK,
+     DUET_RANDOM
+-    }DuetAnimeMode;
+-
++    };
++extern enum DuetAnimeMode_t DuetAnimeMode;
+ 
+ // Interpolation Style for Magnification
+-enum{	 MAG_IP_NEAREST,
++enum TypInterpolate_t {	 MAG_IP_NEAREST,
+ 	 MAG_IP_TILES,
+ 	 MAG_IP_BILINEAR,
+ 	 MAG_IP_HYPER
+-	   } TypInterpolate;
+-
++	   };
++extern enum TypInterpolate_t TypInterpolate;
+ 
+ //Clock タイプ
+-enum{ CLOCK_TYPE_24S, 
++enum ClockType_t { CLOCK_TYPE_24S, 
+ 	CLOCK_TYPE_24M, 
+ 	CLOCK_TYPE_12S, 
+-	CLOCK_TYPE_12M } ClockType;
+-
++	CLOCK_TYPE_12M };
++extern enum ClockType_t ClockType;
+ 
+ // Font size ratio for AM/PM sign
+ #define CLOCK_AMPM_RATIO 0.6
+ 
+ // Install mode
+-enum{   MENU_SELECT, 
++enum MenuSelect_t {   MENU_SELECT, 
+ 	MENU_INSTALL_USER,
+ 	MENU_INSTALL_COMMON,
+ 	START_MENU_SELECT,
+ 	START_MENU_INSTALL_USER,
+ 	START_MENU_INSTALL_COMMON,
+ 	NUM_INSTALL_MODE
+- } MenuSelect;
++ };
++extern enum MenuSelect_t MenuSelect;
++
+ 
+ //DEFAULT Alpha
+ #define DEF_ALPHA_MAIN 100
+@@ -542,14 +554,15 @@ static GdkColor color_lred=   {0, 0xFFFF, 0xBBBB, 0xBBBB};
+ 
+ 
+ // for Callback of Configuration Dialog
+-enum{CONF_FONT_CLK,	   
++enum GuiFontConf_t {CONF_FONT_CLK,	   
+        CONF_FONT_BAL,	   
+        CONF_DEF_FONT_CLK,
+        CONF_DEF_FONT_BAL,
+        INIT_DEF_FONT_CLK,
+-       INIT_DEF_FONT_BAL} GuiFontConf;
++       INIT_DEF_FONT_BAL};
++extern enum GuiFontConf_t GuiFontConf;
+ 
+-enum{CONF_COLOR_CLK,
++enum GuiColorConf_t {CONF_COLOR_CLK,
+      CONF_COLOR_CLKBG,
+      CONF_COLOR_CLKBD,
+      CONF_COLOR_CLKSD,
+@@ -568,19 +581,21 @@ enum{CONF_COLOR_CLK,
+      CONF_COLOR_FS_BG0,
+      CONF_COLOR_FS_BG1,
+      NUM_CONF_COLOR
+-} GuiColorConf;
+-
+-enum{ SET_RELEASE_BALLOON, SET_RELEASE_CLOCK } SetReleaseData;
+-
++};
++extern enum GuiColorConf_t GuiColorConf;
+ 
++enum SetReleaseData_t { SET_RELEASE_BALLOON, SET_RELEASE_CLOCK };
++extern enum SetReleaseData_t SetReleaseData;
+ 
+ // Setting for BIFF
+ #define DEF_MAIL_INTERVAL 60
+ 
+ 
+-enum{ MAIL_NO, MAIL_LOCAL, MAIL_POP3, MAIL_APOP, MAIL_QMAIL, MAIL_PROCMAIL } MailStatus0;
++enum MailStatus0_t { MAIL_NO, MAIL_LOCAL, MAIL_POP3, MAIL_APOP, MAIL_QMAIL, MAIL_PROCMAIL };
++extern enum MailStatus0_t MailStatus0;
+ 
+-enum{ MAIL_PIX_LEFT, MAIL_PIX_RIGHT } MailPixPos;
++enum MailPixPos_t { MAIL_PIX_LEFT, MAIL_PIX_RIGHT };
++extern enum MailPixPos_t MailPixPos;
+ 
+ #undef POP_DEBUG  /* pop3 debugging mode */
+ 
+@@ -609,7 +624,8 @@ enum{ MAIL_PIX_LEFT, MAIL_PIX_RIGHT } MailPixPos;
+ #define BIFF_TOOLTIPS   TRUE
+ 
+ 
+-enum{ NO_MAIL, OLD_MAIL, NEW_MAIL, KEEP_NEW_MAIL } MailStatus;
++enum MailStatus_t { NO_MAIL, OLD_MAIL, NEW_MAIL, KEEP_NEW_MAIL };
++extern enum MailStatus_t MailStatus;
+ 
+ // mail status; array subscripts
+ 
+@@ -637,14 +653,17 @@ enum{ NO_MAIL, OLD_MAIL, NEW_MAIL, KEEP_NEW_MAIL } MailStatus;
+ 
+ 
+ // 時報用設定
+-enum{ SIGACT_NO, SIGACT_CLICK, SIGACT_CHANGE } SignalAction;
++enum SignalAction_t { SIGACT_NO, SIGACT_CLICK, SIGACT_CHANGE };
++extern enum SignalAction_t SignalAction;
+ 
+ 
+ // Consistency Check
+-enum{ CONS_MANUAL, CONS_AUTOOW, CONS_IGNORE } ConsMode;
++enum ConsMode_t { CONS_MANUAL, CONS_AUTOOW, CONS_IGNORE };
++extern enum ConsMode_t ConsMode;
+ 
+ // メニューの場所
+-enum{ SMENU_DIR_COMMON, SMENU_DIR_USER } ScanMenuDir;
++enum ScanMenuDir_t { SMENU_DIR_COMMON, SMENU_DIR_USER };
++extern enum ScanMenuDir_t ScanMenuDir;
+ 
+ 
+ typedef enum {
+@@ -661,11 +680,11 @@ typedef enum {
+ 
+ 
+ // COMPOSITE_FLAG
+-enum{ COMPOSITE_FALSE,
++enum CompositeFlag_t { COMPOSITE_FALSE,
+       COMPOSITE_TRUE,
+       COMPOSITE_UNKNOWN
+-}CompositeFlag;
+-
++};
++extern enum CompositeFlag_t CompositeFlag;
+ 
+ 
+ 
+@@ -1137,21 +1156,21 @@ typedef struct{
+ 
+ ///////////   Global Arguments   //////////
+ #ifdef USE_GTK3
+-GdkPixbuf *pixbuf_main, *pixbuf_clk, *pixbuf_bal;
++extern GdkPixbuf *pixbuf_main, *pixbuf_clk, *pixbuf_bal;
+ #ifdef USE_WIN32
+-GdkPixbuf *pixbuf_sdw;
++extern GdkPixbuf *pixbuf_sdw;
+ #endif
+ #else  // USE_GTK3
+-GdkPixmap *pixmap_main, *pixmap_clk, *pixmap_bal;
++extern GdkPixmap *pixmap_main, *pixmap_clk, *pixmap_bal;
+ #ifdef USE_WIN32
+-GdkPixmap *pixmap_sdw;
++extern GdkPixmap *pixmap_sdw;
+ #endif
+ #endif // USE_GTK3
+-gint window_x, window_y;
+-gboolean supports_alpha;
+-gboolean flag_balloon;
++extern gint window_x, window_y;
++extern gboolean supports_alpha;
++extern gboolean flag_balloon;
+ 
+-pid_t http_pid;
++extern pid_t http_pid;
+ 
+ 
+ ///////////   Proto types   //////////
