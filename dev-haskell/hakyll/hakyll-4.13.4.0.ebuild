@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="A static website compiler library"
-HOMEPAGE="http://jaspervdj.be/hakyll"
+HOMEPAGE="https://jaspervdj.be/hakyll/"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
