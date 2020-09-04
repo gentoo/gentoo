@@ -14,7 +14,7 @@
 @@ -1,4 +1,4 @@
  
 -CFLAGS+= -D__LINUX_ALSA__ -D__PLATFORM_LINUX__ -O3 -fno-strict-aliasing -D__CK_SNDFILE_NATIVE__
-+CFLAGS+= -D__LINUX_ALSA__ -D__PLATFORM_LINUX__ -fno-strict-aliasing -D__CK_SNDFILE_NATIVE__
++CFLAGS+= -D__LINUX_ALSA__ -D__PLATFORM_LINUX__ -fno-strict-aliasing -D__CK_SNDFILE_NATIVE__ -fPIC
  LDFLAGS+= -lasound -lstdc++ -ldl -lm -lsndfile -lpthread
  
 --- chuck-1.4.0.0/src/core/makefile.x/makefile.jack
@@ -22,6 +22,6 @@
 @@ -1,4 +1,4 @@
  
 -CFLAGS+= -D__UNIX_JACK__ -D__PLATFORM_LINUX__ -O3 -fno-strict-aliasing -D__CK_SNDFILE_NATIVE__
-+CFLAGS+= -D__UNIX_JACK__ -D__PLATFORM_LINUX__ -fno-strict-aliasing -D__CK_SNDFILE_NATIVE__
++CFLAGS+= -D__UNIX_JACK__ -D__PLATFORM_LINUX__ -fno-strict-aliasing -D__CK_SNDFILE_NATIVE__ -fPIC
  LDFLAGS+= -lasound -ljack -lstdc++ -ldl -lm -lsndfile -lpthread
  
