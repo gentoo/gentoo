@@ -8320,7 +8320,7 @@ dev-python/jaraco-envs 2.0.0: Classes for orchestrating Python (virtual) environ
 dev-python/jaraco-functools 3.0.1: Additional functions used by other projects by developer jaraco
 dev-python/jaraco-itertools 4.4.2 5.0.0: Tools for working with iterables. Complements itertools and more_itertools
 dev-python/jaraco-logging 3.0.0-r1: Additional facilities to supplement Python's stdlib logging module
-dev-python/jaraco-packaging 6.2-r1 8.1.0: Tools to supplement packaging Python releases
+dev-python/jaraco-packaging 6.2-r1 8.1.0 8.1.0-r1: Tools to supplement packaging Python releases
 dev-python/jaraco-stream 3.0.0: Routines for handling streaming data
 dev-python/jaraco-text 3.2.0: Text utilities used by other projects by developer jaraco
 dev-python/jdcal 1.4.1: Julian dates from proleptic Gregorian and Julian calendars
