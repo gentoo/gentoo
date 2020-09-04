@@ -40,6 +40,10 @@ CDEPEND="
 RDEPEND="${CDEPEND}"
 DEPEND="${CDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.1-fix-clang.patch
+)
+
 src_prepare() {
 	sed -i -e "s/python3/${EPYTHON}/" \
 		data/cadence \
