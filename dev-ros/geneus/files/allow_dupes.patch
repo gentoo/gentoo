@@ -1,0 +1,13 @@
+Index: geneus-3.0.0/src/geneus/geneus_main.py
+===================================================================
+--- geneus-3.0.0.orig/src/geneus/geneus_main.py
++++ geneus-3.0.0/src/geneus/geneus_main.py
+@@ -53,7 +53,7 @@ def usage(progname):
+ def get_pkg_map():
+     pkg_map = {}
+     for ws in workspaces.get_spaces():
+-        pkgs = packages.find_packages(ws)
++        pkgs = packages.find_packages_allowing_duplicates(ws)
+         for pkg in pkgs.values():
+             # packages.find_packages(workspaces.get_spaces()) returns package in high-priority-first-order, so we should not overwirte package map which is already found
+             # https://github.com/ros-infrastructure/catkin_pkg/blob/fa4b136b16e2d2886ab97257684f6bff243edefb/src/catkin_pkg/workspaces.py#L43
