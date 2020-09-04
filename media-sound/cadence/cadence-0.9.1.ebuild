@@ -41,6 +41,7 @@ RDEPEND="${CDEPEND}"
 DEPEND="${CDEPEND}"
 
 PATCHES=(
+	"${FILESDIR}"/${P}-fix-clang.patch
 	"${FILESDIR}"/${P}-fix-qt5.15.patch
 )
 
