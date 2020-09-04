@@ -71,6 +71,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-no-nls.patch"
+	"${FILESDIR}/${P}-use-signed-int-for-atomic-operations.patch"
 )
 
 pkg_setup() {
