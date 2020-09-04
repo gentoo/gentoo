@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
+PYTHON_COMPAT=( pypy3 python3_{6,7,8,9} )
 # The package uses distutils
 DISTUTILS_USE_SETUPTOOLS=no
 
@@ -18,12 +18,12 @@ KEYWORDS="amd64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )
-"
+BDEPEND="test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
 PATCHES=( "${FILESDIR}/${P}-fix-tests.patch" )
 
+# distutils_enable_tests nose doesn't work here,
+# probably because the test file has a non-standard name
 python_test() {
 	nosetests test/tests.py || die "tests failed with ${EPYTHON}"
 }
