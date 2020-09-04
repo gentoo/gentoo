@@ -31,8 +31,8 @@ SLOT="0"
 IUSE="
 	adolc assimp arpack cpu_flags_x86_avx cpu_flags_x86_avx512f
 	cpu_flags_x86_sse2 cuda +debug doc +examples ginkgo gmsh +gsl hdf5
-	+lapack metis mpi muparser nanoflann opencascade netcdf p4est petsc
-	scalapack slepc +sparse static-libs sundials symengine +tbb trilinos
+	+lapack metis mpi muparser opencascade p4est petsc
+	scalapack slepc +sparse static-libs sundials symengine trilinos
 "
 
 # TODO: add slepc use flag once slepc is packaged for gentoo-science
@@ -44,6 +44,7 @@ REQUIRED_USE="
 RDEPEND="dev-libs/boost
 	app-arch/bzip2
 	sys-libs/zlib
+	dev-cpp/cpp-taskflow
 	adolc? ( sci-libs/adolc )
 	arpack? ( sci-libs/arpack[mpi=] )
 	assimp? ( media-libs/assimp )
@@ -56,8 +57,6 @@ RDEPEND="dev-libs/boost
 	metis? ( >=sci-libs/parmetis-4 )
 	mpi? ( virtual/mpi )
 	muparser? ( dev-cpp/muParser )
-	nanoflann? ( sci-libs/nanoflann )
-	netcdf? ( sci-libs/netcdf-cxx:0 )
 	opencascade? ( sci-libs/opencascade:* )
 	p4est? ( sci-libs/p4est[mpi] )
 	petsc? ( sci-mathematics/petsc[mpi=] )
@@ -66,7 +65,6 @@ RDEPEND="dev-libs/boost
 	sparse? ( sci-libs/umfpack )
 	sundials? ( <sci-libs/sundials-4:= )
 	symengine? ( >=sci-libs/symengine-0.4:= )
-	tbb? ( dev-cpp/tbb )
 	trilinos? ( sci-libs/trilinos )"
 
 DEPEND="${RDEPEND}
@@ -85,7 +83,6 @@ src_configure() {
 		-DDEAL_II_PACKAGE_VERSION=9999
 		-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=OFF
 		-DDEAL_II_ALLOW_AUTODETECTION=OFF
-		-DDEAL_II_ALLOW_BUNDLED=OFF
 		-DDEAL_II_ALLOW_PLATFORM_INTROSPECTION=OFF
 		-DDEAL_II_COMPILE_EXAMPLES=OFF
 		-DDEAL_II_DOCHTML_RELDIR="share/doc/${P}/html"
@@ -109,8 +106,6 @@ src_configure() {
 		-DDEAL_II_WITH_METIS="$(usex metis)"
 		-DDEAL_II_WITH_MPI="$(usex mpi)"
 		-DDEAL_II_WITH_MUPARSER="$(usex muparser)"
-		-DDEAL_II_WITH_NANOFLANN="$(usex nanoflann)"
-		-DDEAL_II_WITH_NETCDF="$(usex netcdf)"
 		-DOPENCASCADE_DIR="${CASROOT}"
 		-DDEAL_II_WITH_OPENCASCADE="$(usex opencascade)"
 		-DDEAL_II_WITH_P4EST="$(usex p4est)"
@@ -122,7 +117,7 @@ src_configure() {
 		-DDEAL_II_WITH_UMFPACK="$(usex sparse)"
 		-DBUILD_SHARED_LIBS="$(usex !static-libs)"
 		-DDEAL_II_PREFER_STATIC_LIBS="$(usex static-libs)"
-		-DDEAL_II_WITH_THREADS="$(usex tbb)"
+		-DDEAL_II_WITH_TASKFLOW=ON
 		-DDEAL_II_WITH_TRILINOS="$(usex trilinos)"
 	)
 
