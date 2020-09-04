@@ -23,8 +23,7 @@ src_unpack() {
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}"/${P}-r1.patch \
-		"${FILESDIR}"/${PN}-X11R6.patch \
+		"${FILESDIR}"/${PN}-1.0-xauth-and-home.patch \
 		"${FILESDIR}"/${P}-dash.patch
 }
 
