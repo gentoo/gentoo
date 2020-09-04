@@ -9465,7 +9465,7 @@ dev-ros/gazebo_plugins 2.9.1 9999: Robot-independent Gazebo plugins
 dev-ros/gazebo_ros 2.9.1 9999: ROS plugins that offer messages and services for interfacing with gazebo
 dev-ros/gazebo_ros_control 2.9.1 9999: ROS control plugins for gazebo
 dev-ros/gencpp 0.6.5 9999: ROS C++ message definition and serialization generators
-dev-ros/geneus 3.0.0 9999: EusLisp ROS message and service generators
+dev-ros/geneus 3.0.0-r1 9999: EusLisp ROS message and service generators
 dev-ros/genlisp 0.4.18 9999: Common-Lisp ROS message and service generators
 dev-ros/genmsg 0.5.16 9999: Python library for generating ROS message and service data structures
 dev-ros/gennodejs 2.0.1 9999: Javascript ROS message and service generators
@@ -12368,7 +12368,7 @@ kde-plasma/powerdevil 5.18.5 5.18.5-r1 5.19.5: Power management for KDE Plasma S
 kde-plasma/sddm-kcm 5.18.5 5.19.5: KDE Plasma control module for SDDM
 kde-plasma/systemsettings 5.18.5 5.19.5: Control Center to configure KDE Plasma desktop
 kde-plasma/user-manager 5.18.5 5.19.5: Simple system settings module to manage the users of your system
-kde-plasma/xdg-desktop-portal-kde 5.18.5 5.19.5-r1: Backend implementation for xdg-desktop-portal that is using Qt/KDE Frameworks
+kde-plasma/xdg-desktop-portal-kde 5.18.5 5.19.5: Backend implementation for xdg-desktop-portal that is using Qt/KDE Frameworks
 kde-plasma/xembed-sni-proxy 5.18.5 5.19.5-r1: Legacy xembed tray icons support for SNI-only system trays
 lxde-base/lxappearance 0.6.3 0.6.3-r1: LXDE GTK+ theme switcher
 lxde-base/lxappearance-obconf 0.2.1 0.2.3: LXAppearance plugin for configuring OpenBox
@@ -17620,7 +17620,7 @@ sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers 
 sys-kernel/zen-sources 5.4.15 5.7.12: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.33.1-r1 2.34-r1 2.34-r2 2.35: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
-sys-libs/blocksruntime 0_pre20171027: BlocksRuntime library needed for clang's -fblocks support
+sys-libs/blocksruntime 0_pre20171027-r1: BlocksRuntime library needed for clang's -fblocks support
 sys-libs/compiler-rt 9.0.1 10.0.0 10.0.1 11.0.0_rc1 11.0.0_rc2 11.0.0.9999 12.0.0.9999: Compiler runtime library for clang (built-in part)
 sys-libs/compiler-rt-sanitizers 9.0.1 10.0.0 10.0.1 11.0.0_rc1 11.0.0_rc2 11.0.0.9999 12.0.0.9999: Compiler runtime libraries for clang (sanitizers & xray)
 sys-libs/cracklib 2.9.6-r2 2.9.7: Password Checking Library
@@ -18685,7 +18685,7 @@ x11-misc/xsensors 0.70-r1 0.80: A hardware health information viewer, interface 
 x11-misc/xsetleds 0.1.3-r1 0.1.3-r2: small tool to report and change the keyboard LED states of an X display
 x11-misc/xsettingsd 1.0.0: Provides settings to X11 applications via the XSETTINGS specification
 x11-misc/xsnap 1.5.15-r1 1.5.15-r2: Program to interactively take a 'snapshot' of a region of the screen
-x11-misc/xsnow 1.42-r2: let it snow on your desktop and windows
+x11-misc/xsnow 1.42-r2 3.0.7: let it snow on your desktop and windows
 x11-misc/xsr 1.0.0: X Steps Recorder
 x11-misc/xsri 2.1.0-r3 2.1.0_p17_p12: The xsri wallpaper setter from RedHat
 x11-misc/xss-lock 0.3.0_p20140302-r1: Use external locker as X screen saver
