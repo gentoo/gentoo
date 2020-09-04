@@ -3,10 +3,10 @@ DEPEND=>=app-text/aspell-0.60
 DESCRIPTION=Polish language dictionary for aspell
 EAPI=6
 HOMEPAGE=http://www.sjp.pl/slownik/
-KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86
 LICENSE=GPL-2
 RDEPEND=>=app-text/aspell-0.60
 SLOT=0
 SRC_URI=http://www.sjp.pl/slownik/ort/sjp-aspell6-pl-6.0_20120418-0.tar.bz2
 _eclasses_=aspell-dict-r1	d72b0cd12aab80047c51d57eb5c8f420	estack	686eaab303305a908fd57b2fd7617800	versionator	2352c3fc97241f6a02042773c8287748
-_md5_=66bdbf3ad3fb31516fdec09211f22bc2
+_md5_=e7bfd52e074391c9402fc38f84b0df3e

@@ -18492,7 +18492,7 @@ x11-misc/gtk2fontsel 0.1-r1: A font selection tool similar to xfontsel
 x11-misc/gtkdialog 0.8.3-r2 0.8.3-r3 0.8.3_p20200202 99999: A small utility for fast and easy GUI building
 x11-misc/gxmessage 2.20.3 2.20.4 3.4.3: A GTK+ based xmessage clone
 x11-misc/habak 0.2.5-r2 0.2.5-r3: A simple but powerful tool to set desktop wallpaper
-x11-misc/hsetroot 1.0.2 1.0.2_p5: Tool which allows you to compose wallpapers ('root pixmaps') for X
+x11-misc/hsetroot 1.0.2 1.0.2_p5 1.0.5: Tool which allows you to compose wallpapers ('root pixmaps') for X
 x11-misc/i3blocks 1.4-r1 1.5: highly flexible status line for the i3 window manager
 x11-misc/i3lock 2.10-r1 2.11.1-r1 2.12-r1 2.12-r2: Simple screen locker
 x11-misc/i3status 2.12 2.13: generates a status bar for dzen2, xmobar or similar
@@ -18521,7 +18521,7 @@ x11-misc/lineak-xosdplugin 0.9.0-r2: Xosd plugin for LINEAK
 x11-misc/lineakd 0.9.0-r2 0.9.0-r3: Linux support for Easy Access and Internet Keyboards
 x11-misc/lndir 1.0.3-r2 9999: create a shadow directory of symbolic links to another directory tree
 x11-misc/lsw 0.3: list window names
-x11-misc/macopix 1.7.4-r1 1.7.4-r2: MaCoPiX (Mascot Constructive Pilot for X) is a desktop mascot application
+x11-misc/macopix 1.7.4-r1 1.7.4-r2 3.4.0: MaCoPiX (Mascot Constructive Pilot for X) is a desktop mascot application
 x11-misc/makedepend 1.0.6: create dependencies in makefiles
 x11-misc/matchbox-keyboard 0.1-r1: Matchbox-keyboard is an on screen 'virtual' or 'software' keyboard
 x11-misc/mate-notification-daemon 1.24.0: MATE Notification daemon

@@ -4,7 +4,7 @@ DESCRIPTION=Extensions to the standard Python datetime module
 EAPI=7
 HOMEPAGE=https://dateutil.readthedocs.org/ https://pypi.org/project/python-dateutil https://github.com/dateutil/dateutil/
 IUSE=test python_targets_pypy3 python_targets_python2_7 python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
-KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=BSD
 RDEPEND=>=dev-python/six-1.5[python_targets_pypy3(-)?,python_targets_python2_7(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] sys-libs/timezone-data python_targets_pypy3? ( >=dev-python/pypy3-7.3.0:0= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_pypy3(-)?,python_targets_python2_7(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
 REQUIRED_USE=|| ( python_targets_pypy3 python_targets_python2_7 python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://pypi/p/python-dateutil/python-dateutil-2.8.1.tar.gz
 _eclasses_=distutils-r1	eb92d1a6d9057e2422cc9610f79f919c	multibuild	b2c915190b051f55a23b9354b9849847	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8d03325e7e3cf3e1465d9c32031e2517	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=5c0888dcad7acd803d7108849b9b6a65
+_md5_=e499ed7c7a2c82e0ec9e0271b20b7a88
