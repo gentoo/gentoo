@@ -128,6 +128,7 @@ acct-group/node_exporter 0: System group: node_exporter
 acct-group/nofiles 0: System group: nofiles
 acct-group/nova 0: System group: nova
 acct-group/nsd 0: System group: nsd
+acct-group/nslcd 0: System group: nslcd
 acct-group/ntp 0: System group: ntp
 acct-group/oidentd 0: System group: oidentd
 acct-group/openct 0: System group: openct
@@ -344,6 +345,7 @@ acct-user/ngircd 0: User for ngircd (IRC daemon)
 acct-user/node_exporter 0: node_exporter User
 acct-user/nova 0: user for the openstack nova service
 acct-user/nsd 0: user for nsd daemon
+acct-user/nslcd 0: User for nss-pam-ldapd
 acct-user/ntp 0: user for ntp daemon
 acct-user/oidentd 0: System user: oidentd
 acct-user/opendkim 0: User for OpenDKIM
@@ -8783,7 +8785,7 @@ dev-python/pypy3 7.3.0 7.3.1-r2: A fast, compliant alternative implementation of
 dev-python/pypy3-exe 7.3.0 7.3.1: PyPy3 executable (build from source)
 dev-python/pypy3-exe-bin 7.3.0_p1 7.3.1_p1: PyPy3 executable (pre-built version)
 dev-python/pyqrcode 1.2.1-r1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
-dev-python/pyqt-distutils 0.3.0: distutils extension to work with PyQt applications and UI files
+dev-python/pyqt-distutils 0.7.3: distutils extension to work with PyQt applications and UI files
 dev-python/pyqtgraph 0.11.0_rc0: A pure-python graphics and GUI library built on PyQt and numpy
 dev-python/pyquery 1.4.1-r1: A jQuery-like library for python
 dev-python/pyre2 1.0.7: Python bindings for dev-libs/re2
@@ -8857,7 +8859,7 @@ dev-python/python-ceilometerclient 2.6.2-r2: This is a client library for Ceilom
 dev-python/python-cinderclient 4.2.2: A client for the OpenStack Cinder API
 dev-python/python-cstruct 1.8: C-style structs for Python
 dev-python/python-ctags 1.3.0-r1: Exuberant Ctags indexing python bindings
-dev-python/python-daemon 2.1.2: Library to implement a well-behaved Unix daemon process
+dev-python/python-daemon 2.1.2 2.2.4: Library to implement a well-behaved Unix daemon process
 dev-python/python-dateutil 2.8.1-r1: Extensions to the standard Python datetime module
 dev-python/python-debian 0.1.36: Python modules to work with Debian-related data formats
 dev-python/python-designateclient 4.0.0: Python bindings to the Designate API.
@@ -11274,7 +11276,7 @@ games-emulation/desmume 0.9.11-r2: Nintendo DS emulator
 games-emulation/dgen-sdl 1.33-r1: A Linux/SDL-Port of the famous DGen MegaDrive/Genesis-Emulator
 games-emulation/dolphin 5.0_p20200705 9999: Gamecube and Wii game emulator
 games-emulation/dosbox 0.74.3 0.75_pre4302 9999: DOS emulator
-games-emulation/dosbox-staging 0.75.0 0.75.1 0.75.1-r1: Modernized DOSBox soft-fork
+games-emulation/dosbox-staging 0.75.1-r1 0.75.1-r2: Modernized DOSBox soft-fork
 games-emulation/emutos 0.9.12: Single-user single-tasking operating system for 32-bit Atari computer emulators
 games-emulation/fakenes 0.5.8-r3: Portable, Open Source NES emulator which is written mostly in C
 games-emulation/fbzx 3.0.0-r1: Full Screen Sinclair Spectrum emulator
@@ -18122,7 +18124,7 @@ www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.8-r1: AWStats is short for Advanced Web Statistics
 www-misc/bookmarksync 0.3.4-r3: bookmarksync synchronizes various browser bookmark files
-www-misc/buku 4.3: Powerful command-line bookmark manager
+www-misc/buku 4.3 4.4: Powerful command-line bookmark manager
 www-misc/fcgiwrap 1.1.0-r1 9999: Simple FastCGI wrapper for CGI scripts (CGI support for nginx)
 www-misc/htdig 3.2.0_beta6-r5: HTTP/HTML indexing and searching system
 www-misc/litmus 0.13: WebDAV server protocol compliance test suite
