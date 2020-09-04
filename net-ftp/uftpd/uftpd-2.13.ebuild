@@ -25,7 +25,7 @@ DEPEND="
 	test? (
 		net-ftp/ftp
 		net-ftp/tnftp
-		net-ftp/tftp-hpa[client]
+		>=net-ftp/tftp-hpa-5.2-r2[client]
 	)"
 
 src_test() {
