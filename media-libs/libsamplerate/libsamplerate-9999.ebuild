@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit multilib-minimal
 
@@ -13,12 +13,12 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/erikd/libsamplerate.git"
 else
 	SRC_URI="http://www.mega-nerd.com/SRC/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 fi
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="static-libs test"
+IUSE="test"
 RESTRICT="!test? ( test )"
 
 # Alsa/FFTW are only required for tests
@@ -29,25 +29,25 @@ DEPEND="
 		media-libs/libsndfile[${MULTILIB_USEDEP}]
 		sci-libs/fftw:3.0[${MULTILIB_USEDEP}]
 	)
-	virtual/pkgconfig"
+"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
-
 	[[ ${PV} == *9999 ]] && eautoreconf
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE="${S}" econf \
-		$(use_enable static-libs static) \
-		$(use_enable test alsa) \
-		$(use_enable test fftw) \
+	local myeconfargs=(
+		--disable-static
+		$(use_enable test alsa)
+		$(use_enable test fftw)
 		$(use_enable test sndfile)
+	)
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_install_all() {
 	einstalldocs
-
-	# package provides .pc files
-	find "${D}" -name '*.la' -delete || die
+	find "${D}" -name '*.la' -type f -delete || die
 }
