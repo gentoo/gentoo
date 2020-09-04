@@ -10,7 +10,7 @@ SRC_URI="https://github.com/starwing/luautf8/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm ~ppc64"
 IUSE="luajit test"
 
 RESTRICT="!test? ( test )"
