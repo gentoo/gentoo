@@ -11,12 +11,16 @@ SRC_URI="https://developers.hp.com/sites/default/files/hplip-${PV}-plugin.run"
 LICENSE="hplip-plugin"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE=""
+IUSE="orblite"
 
 RDEPEND="
 	~net-print/hplip-${PV}
-	virtual/libusb:0
 	virtual/udev
+	orblite? (
+		media-gfx/sane-backends
+		>=sys-libs/glibc-2.26
+		virtual/libusb:0
+	)
 "
 DEPEND=""
 
@@ -45,8 +49,13 @@ src_install() {
 	for plugin in *-${hplip_arch}.so; do
 		local plugin_type=prnt
 		case "${plugin}" in
-			fax_*) plugin_type=fax ;;
-			bb_*)  plugin_type=scan ;;
+			bb_orblite-*)
+				use orblite || continue
+				plugin_type=scan ;;
+			bb_*)
+				plugin_type=scan ;;
+			fax_*)
+				plugin_type=fax ;;
 		esac
 
 		exeinto "${HPLIP_HOME}"/${plugin_type}/plugins
