@@ -61,6 +61,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.10-giflib-4.2.patch
 	"${FILESDIR}"/${PN}-2.14-Autoconf.patch
 	"${FILESDIR}"/${PN}-2.14-fno-common.patch
+	"${FILESDIR}"/${PN}-2.14-cpp.patch
 )
 
 src_configure() {
