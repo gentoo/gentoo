@@ -9793,7 +9793,7 @@ dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
 dev-ruby/barby 0.6.8: Ruby barcode generator that doesn't rely on 3rd party libraries
 dev-ruby/base32 0.3.2 0.3.4: A library which provides base32 decoding and encoding
 dev-ruby/bcat 0.6.2-r3: Pipe to browser utility for use at the shell and within editors
-dev-ruby/bcrypt-ruby 3.1.12 3.1.13 3.1.15: An easy way to keep your users' passwords secure
+dev-ruby/bcrypt-ruby 3.1.12 3.1.13 3.1.15 3.1.16: An easy way to keep your users' passwords secure
 dev-ruby/bcrypt_pbkdf 1.0.0 1.0.1: Implements bcrypt_pdkfd (a variant of PBKDF2 with bcrypt-based PRF)
 dev-ruby/best_in_place 3.1.1: In-place editor helper for Rails 3
 dev-ruby/bindata 2.4.1 2.4.6 2.4.7 2.4.8: Parsing Binary Data in Ruby
@@ -10096,7 +10096,7 @@ dev-ruby/optimist 3.0.1: A commandline option parser for Ruby that just gets out
 dev-ruby/optionable 0.2.0: Robust options validation for Ruby methods
 dev-ruby/org-ruby 0.9.12: Ruby routines for parsing org-mode files
 dev-ruby/origin 2.3.1: Origin is a simple DSL for generating MongoDB selectors and options
-dev-ruby/ox 2.10.1 2.11.0 2.12.0 2.12.1 2.13.1 2.13.2: A fast XML parser and Object marshaller
+dev-ruby/ox 2.10.1 2.12.1 2.13.2 2.13.3: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 2.2.0: Terminal painter
 dev-ruby/parallel 1.18.0 1.19.1 1.19.2: Run any code in parallel Processes or Threads
