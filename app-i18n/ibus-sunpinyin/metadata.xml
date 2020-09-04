@@ -5,6 +5,9 @@
 		<email>cjk@gentoo.org</email>
 		<name>Cjk</name>
 	</maintainer>
+	<use>
+		<flag name="gui">Install graphical user interface tool (ibus-setup-sunpinyin)</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">sunpinyin/sunpinyin</remote-id>
 	</upstream>
