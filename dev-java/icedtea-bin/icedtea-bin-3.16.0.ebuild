@@ -30,12 +30,9 @@ HOMEPAGE="http://icedtea.classpath.org"
 LICENSE="GPL-2-with-classpath-exception"
 SLOT="8"
 KEYWORDS="-* amd64 ~arm arm64 ppc64 x86"
-IUSE="+alsa big-endian cups doc examples +gtk headless-awt nsplugin pulseaudio selinux source webstart"
+IUSE="+alsa big-endian cups doc examples +gtk headless-awt pulseaudio selinux source"
 
-REQUIRED_USE="
-	gtk? ( !headless-awt )
-	nsplugin? ( !headless-awt )
-"
+REQUIRED_USE="gtk? ( !headless-awt )"
 
 RESTRICT="preserve-libs strip"
 QA_PREBUILT="opt/.*"
@@ -73,11 +70,7 @@ RDEPEND="
 	)
 "
 
-PDEPEND="
-	webstart? ( >=dev-java/icedtea-web-1.6.1:0 )
-	nsplugin? ( >=dev-java/icedtea-web-1.6.1:0[nsplugin] )
-	pulseaudio? ( dev-java/icedtea-sound )
-"
+PDEPEND="pulseaudio? ( dev-java/icedtea-sound )"
 
 S="${WORKDIR}"
 
