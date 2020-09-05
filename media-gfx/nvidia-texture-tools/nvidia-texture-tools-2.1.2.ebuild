@@ -12,7 +12,7 @@ SRC_URI="https://github.com/castano/nvidia-texture-tools/archive/${PV}.tar.gz ->
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="cpu_flags_x86_sse2 openmp"
 
 RDEPEND="
 	media-libs/ilmbase:=
@@ -29,11 +29,20 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}"/${P}-cmake.patch )
 DOCS=( ChangeLog README.md )
 
+pkg_pretend() {
+	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
+		tc-has-openmp || die "Please switch to an openmp compatible compiler"
+	fi
+}
+
 src_configure() {
 	# May be able to restore CUDA, but needs an old gcc
 	local mycmakeargs=(
 		-DCUDA_FOUND=OFF
-		-DNVTT_SHARED=TRUE
+		-DGCONFTOOL2=OFF
+		-DNVTT_SHARED=0
+		-DBUILD_SQUISH_WITH_OPENMP=$(usex openmp)
+		-DBUILD_SQUISH_WITH_SSE2=$(usex cpu_flags_x86_sse2)
 	)
 	cmake_src_configure
 }
