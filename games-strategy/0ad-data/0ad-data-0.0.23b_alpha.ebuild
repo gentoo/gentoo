@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ SRC_URI="http://releases.wildfiregames.com/${MY_P}-unix-data.tar.xz"
 
 LICENSE="GPL-2 CC-BY-SA-3.0 LPPL-1.3c BitstreamVera"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 S="${WORKDIR}/${MY_P}"
