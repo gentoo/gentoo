@@ -223,9 +223,7 @@ RDEPEND="${CDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
-	"${FILESDIR}"/${PN}-4.0.0-mkdir_systemtap.patch #684902
-	"${FILESDIR}"/${PN}-4.2.0-cflags.patch
-	"${FILESDIR}"/${PN}-5.1.0-pixman-for-vhost-user-gpu.patch
+	"${FILESDIR}"/${PN}-9999-cflags.patch
 )
 
 QA_PREBUILT="
@@ -412,7 +410,6 @@ qemu_src_configure() {
 		--datadir=/usr/share
 		--docdir=/usr/share/doc/${PF}/html
 		--mandir=/usr/share/man
-		--with-confsuffix=/qemu
 		--localstatedir=/var
 		--disable-bsd-user
 		--disable-containers # bug #732972

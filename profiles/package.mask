@@ -293,7 +293,6 @@ dev-python/jplephem
 dev-python/natgrid
 dev-python/pcapy
 dev-python/promises
-dev-python/pydotplus
 dev-python/pyds9
 dev-python/pyflann
 dev-python/pygsl
@@ -597,32 +596,6 @@ dev-ruby/json:0
 # Slot with known security issues. Please use a newer slot
 # instead. Removal in 30 days. Bug #733116.
 dev-ruby/kramdown:0
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-06)
-# Py2.7 only.  Last release in 2009.  No reverse dependencies left.
-# Removal in 30 days.  Bug #735610.
-dev-python/pythonutils
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-06)
-# Py3.6 only.  Apparently randomly fails to build (bug #515736).
-# Last release in 2016.  No reverse dependencies left.
-# Removal in 30 days.  Bug #718968.
-dev-python/gntp
-
-# Jimi Huotari <chiitoo@gentoo.org> (2020-08-04)
-# No consumers since 2015, and no known stand-alone use.
-# Removal in 30 days.
-dev-libs/liboobs
-
-# Jack Todaro <solpeth@posteo.org> (2020-08-04)
-# Deprecated in favour of dev-haskell/dbus.
-# Unmaintained since 2012.
-dev-haskell/dbus-core
-
-# Jack Todaro <solpeth@posteo.org> (2020-08-04)
-# Requires porting for MonadFail. No upstream
-# activity since January 2018.
-dev-haskell/hans
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
 # consolekit is abandoned upstream.
