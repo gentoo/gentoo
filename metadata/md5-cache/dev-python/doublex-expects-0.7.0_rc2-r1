@@ -5,7 +5,7 @@ DESCRIPTION=Expects matchers for Doublex test doubles assertions
 EAPI=7
 HOMEPAGE=https://github.com/jaimegildesagredo/doublex-expects
 IUSE=test python_targets_python3_6 python_targets_python3_7 python_targets_python3_8
-KEYWORDS=amd64
+KEYWORDS=amd64 ~arm64
 LICENSE=Apache-2.0
 RDEPEND=dev-python/doublex[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] >=dev-python/expects-0.8.0_rc1[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)]
 REQUIRED_USE=|| ( python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/jaimegildesagredo/doublex-expects/archive/v0.7.0rc2.tar.gz -> doublex-expects-0.7.0_rc2.tar.gz
 _eclasses_=distutils-r1	eb92d1a6d9057e2422cc9610f79f919c	multibuild	b2c915190b051f55a23b9354b9849847	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8d03325e7e3cf3e1465d9c32031e2517	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
-_md5_=f7bf4d3062c5c3485e7face23a7feeec
+_md5_=e40d4193abc2c8ad2aa5d19e9d6779a3
