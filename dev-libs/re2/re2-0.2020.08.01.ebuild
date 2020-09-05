@@ -16,14 +16,14 @@ SRC_URI="https://github.com/google/re2/archive/${RE2_VER}.tar.gz -> re2-${RE2_VE
 LICENSE="BSD"
 # NOTE: Always run libre2 through abi-compliance-checker!
 # https://abi-laboratory.pro/tracker/timeline/re2/
-SONAME="gentoo-2019-01-01"
+SONAME="8"
 SLOT="0/${SONAME}"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="icu"
 
-RDEPEND="icu? ( dev-libs/icu:0=[${MULTILIB_USEDEP}] )"
-DEPEND="${RDEPEND}"
 BDEPEND="icu? ( virtual/pkgconfig )"
+DEPEND="icu? ( dev-libs/icu:0=[${MULTILIB_USEDEP}] )"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/re2-${RE2_VER}"
 
@@ -32,7 +32,7 @@ HTML_DOCS=( doc/syntax.html )
 
 src_prepare() {
 	default
-	grep -qv '^SONAME=0$' Makefile || die "Check SONAME in Makefile"
+	grep -q "^SONAME=${SONAME}\$" Makefile || die "SONAME mismatch"
 	if use icu; then
 		sed -i -e 's:^# \(\(CC\|LD\)ICU=.*\):\1:' Makefile || die
 	fi
@@ -40,13 +40,13 @@ src_prepare() {
 }
 
 src_configure() {
-	tc-export AR CXX NM
+	tc-export AR CXX
 }
 
 multilib_src_compile() {
-	emake SONAME="${SONAME}"
+	emake SONAME="${SONAME}" shared
 }
 
 multilib_src_install() {
-	emake SONAME="${SONAME}" DESTDIR="${D}" prefix="${EPREFIX}/usr" libdir="\$(exec_prefix)/$(get_libdir)" install
+	emake SONAME="${SONAME}" DESTDIR="${D}" prefix="${EPREFIX}/usr" libdir="\$(exec_prefix)/$(get_libdir)" shared-install
 }
