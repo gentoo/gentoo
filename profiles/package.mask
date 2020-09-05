@@ -609,11 +609,6 @@ dev-python/pythonutils
 # Removal in 30 days.  Bug #718968.
 dev-python/gntp
 
-# Jimi Huotari <chiitoo@gentoo.org> (2020-08-04)
-# No consumers since 2015, and no known stand-alone use.
-# Removal in 30 days.
-dev-libs/liboobs
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
 # consolekit is abandoned upstream.
 # People are encouraged to switch to any logind
