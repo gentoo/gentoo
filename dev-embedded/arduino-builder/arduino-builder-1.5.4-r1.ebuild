@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -555,6 +555,7 @@ src_install() {
 	# the dev-embedded/arduino which copies those files in its "hardware" folder.
 	insinto "/usr/share/${PN}"
 	doins hardware/platform.keys.rewrite.txt
+	doins "${FILESDIR}/platform.txt"
 }
 
 pkg_postinst() {
