@@ -763,10 +763,10 @@ app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
 app-backup/bacula 9.6.5: Featureful client/server network backup suite
 app-backup/bareos 17.2.10 18.2.9 19.2.8: Featureful client/server network backup suite
 app-backup/borgbackup 1.1.11-r2 1.1.13 9999: Deduplicating backup program with compression and authenticated encryption
-app-backup/borgmatic 1.5.6 1.5.8 1.5.9 1.5.10: Automatically create, prune and verify backups with borgbackup
+app-backup/borgmatic 1.5.9 1.5.10: Automatically create, prune and verify backups with borgbackup
 app-backup/borgweb 0.2.0-r2 0.3.0: Browser-based user interface for BorgBackup
 app-backup/btrbk 0.27.0 0.27.1 0.27.1-r1 0.27.2 0.28.0 0.28.1 0.28.2 0.28.3 0.29.0 0.29.1 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
-app-backup/burp 2.2.18-r1 2.3.30 2.3.32: Network backup and restore client and server for Unix and Windows
+app-backup/burp 2.2.18-r1 2.3.32: Network backup and restore client and server for Unix and Windows
 app-backup/ccollect 0.8: Pseudo incremental backup with different exclude lists using hardlinks and rsync
 app-backup/cdbackup 0.7.1-r1: Allows streaming backup utilities to dump/restore from CD-R(W)s or DVD(+/-RW)s
 app-backup/cdbkup 1.0-r2: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
@@ -2807,7 +2807,7 @@ app-text/bact 0.13-r1: Boosting Algorithm for Classification of Trees
 app-text/barcode 0.98-r1 0.99: barcode generator
 app-text/bdf2psf 1.104 1.155: Converter to generate console fonts from BDF source fonts
 app-text/bibclean 2.17: BibTeX bibliography prettyprinter and syntax checker
-app-text/bibletime 2.11.0 2.11.2 3.0: Qt Bible-study application using the SWORD library
+app-text/bibletime 2.11.2 3.0: Qt Bible-study application using the SWORD library
 app-text/bibutils 6.7: Interconverts between various bibliography formats using common XML intermediate
 app-text/binfind 0.0.3: Search files for a byte sequence specified on the command line
 app-text/blahtexml 0.9: TeX-to-MathML converter
@@ -6356,7 +6356,7 @@ dev-perl/Digest-HMAC 1.30.0-r1 1.30.0-r2: Keyed Hashing for Message Authenticati
 dev-perl/Digest-JHash 0.100.0: Perl extension for 32 bit Jenkins Hashing Algorithm
 dev-perl/Digest-MD2 2.40.0 2.40.0-r1: Perl interface to the MD2 Algorithm
 dev-perl/Digest-MD4 1.900.0-r1 1.900.0-r2: MD4 message digest algorithm
-dev-perl/Digest-MD5-File 0.80.0-r1 0.80.0-r2: Perl extension for getting MD5 sums for files and urls
+dev-perl/Digest-MD5-File 0.80.0-r2: Perl extension for getting MD5 sums for files and urls
 dev-perl/Digest-Nilsimsa 0.60.0-r2 0.60.0-r3: Perl version of Nilsimsa code
 dev-perl/Digest-Perl-MD5 1.900.0 1.900.0-r1: Pure perl implementation of MD5
 dev-perl/Digest-SHA1 2.130.0-r1 2.130.0-r2: NIST SHA message digest algorithm
@@ -6368,26 +6368,26 @@ dev-perl/Dist-Zilla-Config-Slicer 0.202.0: Config::MVP::Slicer customized for Di
 dev-perl/Dist-Zilla-Plugin-AuthorsFromGit 0.6.0: Add per-file per-year copyright information
 dev-perl/Dist-Zilla-Plugin-CheckChangesHasContent 0.11.0: Ensure Changes has content before releasing
 dev-perl/Dist-Zilla-Plugin-CheckExtraTests 0.29.0-r1: check xt tests before release
-dev-perl/Dist-Zilla-Plugin-Config-Git 0.920.0 0.920.0-r1: Plugin configuration containing settings for a Git repo
+dev-perl/Dist-Zilla-Plugin-Config-Git 0.920.0-r1: Plugin configuration containing settings for a Git repo
 dev-perl/Dist-Zilla-Plugin-ContributorsFile 0.3.0: add a file listing all contributors
 dev-perl/Dist-Zilla-Plugin-CopyFilesFromBuild 0.170.880: Copy (or move) specific files after building (for SCM inclusion, etc.)
-dev-perl/Dist-Zilla-Plugin-CopyFilesFromRelease 0.6.0 0.7.0: Copy files from a release (for SCM inclusion, etc.)
-dev-perl/Dist-Zilla-Plugin-Git 2.42.0-r1 2.46.0: Update your git repository after release
+dev-perl/Dist-Zilla-Plugin-CopyFilesFromRelease 0.7.0: Copy files from a release (for SCM inclusion, etc.)
+dev-perl/Dist-Zilla-Plugin-Git 2.46.0: Update your git repository after release
 dev-perl/Dist-Zilla-Plugin-Git-Contributors 0.35.0: Add contributor names from git to your distribution
 dev-perl/Dist-Zilla-Plugin-GithubMeta 0.580.0: Automatically include GitHub meta information in META.yml
 dev-perl/Dist-Zilla-Plugin-LicenseFromModule 0.70.0: Extract License and Copyright from its main_module file
-dev-perl/Dist-Zilla-Plugin-MakeMaker-Awesome 0.390.0 0.480.0: A more awesome MakeMaker plugin for Dist::Zilla
-dev-perl/Dist-Zilla-Plugin-Meta-Contributors 0.3.0 0.3.0-r1: Generate an x_contributors section in distribution metadata
+dev-perl/Dist-Zilla-Plugin-MakeMaker-Awesome 0.480.0: A more awesome MakeMaker plugin for Dist::Zilla
+dev-perl/Dist-Zilla-Plugin-Meta-Contributors 0.3.0-r1: Generate an x_contributors section in distribution metadata
 dev-perl/Dist-Zilla-Plugin-MetaProvides 2.2.4: Generating and Populating 'provides' in your META.yml
 dev-perl/Dist-Zilla-Plugin-MetaProvides-Package 2.4.3: Extract namespaces/version from traditional packages for provides
 dev-perl/Dist-Zilla-Plugin-ModuleBuildTiny 0.15.0: Build a Build.PL that uses Module::Build::Tiny
 dev-perl/Dist-Zilla-Plugin-NameFromDirectory 0.40.0: Guess distribution name from the current directory
 dev-perl/Dist-Zilla-Plugin-NextVersion-Semantic 0.2.5: update the next version, semantic-wise
-dev-perl/Dist-Zilla-Plugin-OSPrereqs 0.8.0 0.11.0: List prereqs conditional on operating system
-dev-perl/Dist-Zilla-Plugin-OurPkgVersion 0.120.0 0.210.0: No line insertion and does Package version with our
+dev-perl/Dist-Zilla-Plugin-OSPrereqs 0.11.0: List prereqs conditional on operating system
+dev-perl/Dist-Zilla-Plugin-OurPkgVersion 0.210.0: No line insertion and does Package version with our
 dev-perl/Dist-Zilla-Plugin-PodWeaver 4.8.0: Weave your Pod together from configuration and Dist::Zilla
 dev-perl/Dist-Zilla-Plugin-Prereqs-FromCPANfile 0.80.0: Parse cpanfile for prereqs
-dev-perl/Dist-Zilla-Plugin-RPM 0.15.0 0.16.0: Build an RPM from your Dist::Zilla release
+dev-perl/Dist-Zilla-Plugin-RPM 0.16.0: Build an RPM from your Dist::Zilla release
 dev-perl/Dist-Zilla-Plugin-ReadmeAnyFromPod 0.163.250-r1: Automatically convert POD to a README in any format for Dist::Zilla
 dev-perl/Dist-Zilla-Plugin-ReadmeFromPod 0.370.0: dzil plugin to generate README from POD
 dev-perl/Dist-Zilla-Plugin-ReversionOnRelease 0.60.0: Bump and reversion $VERSION on release
@@ -8938,7 +8938,7 @@ dev-python/pythondialog 3.5.1: A Python module for making simple text/console-mo
 dev-python/pythonz-bd 1.11.4: Manage python installations in your system, berdario's shallow fork
 dev-python/pytidylib 0.3.2: Python wrapper for HTML Tidy (tidylib)
 dev-python/pytoml 0.1.20: A TOML-0.4.0 parser/writer for Python
-dev-python/pytools 2020.1 2020.3.1 2020.4 9999: Collection of tools missing from the Python standard library
+dev-python/pytools 2020.3.1 2020.4 9999: Collection of tools missing from the Python standard library
 dev-python/pytrie 0.3.1-r1: A pure Python implementation of the trie data structure
 dev-python/pytz 2020.1: World timezone definitions for Python
 dev-python/pyu2f 0.1.4-r1: Python based U2F host library
@@ -9020,7 +9020,7 @@ dev-python/rsa 4.2: Pure-Python RSA implementation
 dev-python/rst-linker 2.0.0: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rtimulib 7.2.1-r1: Python Binding for RTIMULib, a versatile IMU library
 dev-python/rtslib-fb 2.1.73: A Python object API for managing the Linux LIO kernel target
-dev-python/ruamel-yaml 0.16.10 0.16.11 0.16.12: YAML parser/emitter that supports roundtrip comment preservation
+dev-python/ruamel-yaml 0.16.10 0.16.12: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/ruamel-yaml-clib 0.2.0 0.2.2: C-based reader/scanner and emitter for dev-python/ruamel-yaml
 dev-python/ryu 4.26-r1: Component-based Software-defined Networking Framework
 dev-python/s3fs 0.4.2: Pythonic file interface to S3
@@ -13040,7 +13040,7 @@ media-libs/glm 0.9.9.5 0.9.9.7 0.9.9.8 0.9.9.8-r1: OpenGL Mathematics
 media-libs/glpng 1.46-r1: OpenGL PNG image library
 media-libs/glu 9.0.1 9999: The OpenGL Utility Library
 media-libs/glyr 1.0.10: Music related metadata searchengine, both with commandline interface and C API
-media-libs/gmmlib 19.3.4 19.4.1 20.1.1 20.2.2 20.2.5 9999: Intel Graphics Memory Management Library
+media-libs/gmmlib 20.2.2 20.2.5 9999: Intel Graphics Memory Management Library
 media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplayer
 media-libs/gnonlin 1.4.0-r1: Set of GStreamer elements to ease the creation of non-linear multimedia editors
 media-libs/graphene 1.8.6 1.10.0 1.10.2: A thin layer of types for graphic libraries
@@ -13962,7 +13962,7 @@ media-sound/specimen 0.5.2_rc3-r2: A Midi Controllable Audio Sampler
 media-sound/spek 0.8.3-r1: Analyse your audio files by showing their spectrogram
 media-sound/splay 0.9.5.2-r2: An audio player, primarily for the console
 media-sound/split2flac 122 9999: sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
-media-sound/spotify 1.0.72-r1 1.1.10-r1 1.1.26-r1: Spotify is a social music platform
+media-sound/spotify 1.0.72-r1 1.1.10-r1 1.1.26-r1 1.1.26-r2: Spotify is a social music platform
 media-sound/strawberry 0.6.13 0.7.2 9999: Modern music player and library organizer based on Clementine and Qt
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
 media-sound/streamtranscoder 1.2.4 3.1.11: Commandline program to transcode shoutcast/icecast streams to different bitrates
@@ -14753,7 +14753,7 @@ net-libs/aqbanking 6.0.1: Generic Online Banking Interface
 net-libs/axtls 2.1.5 2.1.5-r1: Embedded client/server TLSv1 SSL library and small HTTP(S) server
 net-libs/balde 0.1.1: A microframework for C based on GLib and bad intentions
 net-libs/balde-markdown 0.1: A balde extension that adds Markdown support
-net-libs/biblesync 1.1.2-r2 2.0.1 2.1.0: A multicast protocol to support Bible software shared co-navigation
+net-libs/biblesync 2.1.0: A multicast protocol to support Bible software shared co-navigation
 net-libs/c-client 2007f-r6: UW IMAP c-client library
 net-libs/canlock 2b: A library for creating and verifying Usenet cancel locks
 net-libs/courier-authlib 0.69.0-r1 0.70.0: Courier authentication library
@@ -15430,7 +15430,7 @@ net-p2p/qbittorrent 4.2.5-r2 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
 net-p2p/retroshare 0.6.5: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
-net-p2p/syncthing 1.3.4-r1 1.7.1 1.8.0: Open Source Continuous File Synchronization
+net-p2p/syncthing 1.7.1 1.8.0: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6-r2: A torrent file parser
 net-p2p/transmission 3.00-r1 9999: A fast, easy, and free BitTorrent client
@@ -17338,7 +17338,7 @@ sys-cluster/projections 6.2.1: Projections Performance Analysis Framework for Ch
 sys-cluster/rdma-core 30.0-r2 31.0 9999: Userspace components for the Linux Kernel's drivers/infiniband subsystem
 sys-cluster/resource-agents 3.9.6 4.0.1: Resources pack for Heartbeat / Pacemaker
 sys-cluster/sanlock 3.6.0 3.8.2: shared storage lock manager
-sys-cluster/singularity 3.6.0 3.6.1 3.6.2: Application containers for Linux
+sys-cluster/singularity 3.6.2: Application containers for Linux
 sys-cluster/slurm 20.02.3.1 20.02.4.1: A Highly Scalable Resource Manager
 sys-cluster/spark-bin 2.4.6: Lightning-fast unified analytics engine
 sys-cluster/swift 2.25.0 2020.1.9999: A highly available, distributed, and eventually consistent object/blob store
