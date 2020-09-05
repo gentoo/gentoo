@@ -113,7 +113,11 @@ DEPEND="${RDEPEND}
 		>=dev-libs/libxslt-1.1.2 )
 	!ghcbootstrap? ( ${PREBUILT_BINARY_DEPENDS} )"
 
-REQUIRED_USE="?? ( ghcbootstrap binary )"
+# we build binaries without profiling support
+REQUIRED_USE="
+	?? ( ghcbootstrap binary )
+	?? ( profile binary )
+"
 
 # haskell libraries built with cabal in configure mode, #515354
 QA_CONFIGURE_OPTIONS+=" --with-compiler --with-gcc"
