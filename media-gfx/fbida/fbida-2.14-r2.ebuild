@@ -25,12 +25,16 @@ CDEPEND="
 	app-text/poppler
 	media-libs/libepoxy
 	media-libs/libexif
-	media-libs/mesa[X(+)]
 	virtual/jpeg:*
 	virtual/ttf-fonts
 	x11-libs/cairo[opengl]
-	x11-libs/libdrm
 	curl? ( net-misc/curl )
+	fbcon? (
+		app-text/poppler[cairo]
+		media-libs/mesa[X(+),gbm]
+		x11-libs/libdrm
+		x11-libs/pixman
+	)
 	gif? ( media-libs/giflib:= )
 	lirc? ( app-misc/lirc )
 	png? ( media-libs/libpng:* )
