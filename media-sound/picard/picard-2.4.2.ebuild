@@ -29,7 +29,7 @@ BDEPEND="
 "
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/PyQt5[dbus,declarative,gui,network,widgets,${PYTHON_MULTI_USEDEP}]
+		dev-python/PyQt5[declarative,gui,network,widgets,${PYTHON_MULTI_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_MULTI_USEDEP}]
 	')
 	dev-qt/qtgui:5
