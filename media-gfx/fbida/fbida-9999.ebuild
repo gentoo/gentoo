@@ -17,7 +17,7 @@ CDEPEND="
 	!media-gfx/fbi
 	>=media-libs/fontconfig-2.2
 	>=media-libs/freetype-2.0
-	>=x11-libs/motif-2.3:0
+	>=x11-libs/motif-2.3:0[xft]
 	app-text/poppler
 	media-libs/giflib:=
 	media-libs/libepoxy
