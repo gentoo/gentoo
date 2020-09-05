@@ -24,6 +24,5 @@
 		<flag name="jbootstrap">Build OpenJDK twice, the second time using the result of the first</flag>
 		<flag name="source">Install JVM sources</flag>
 		<flag name="systemtap" restrict="&gt;=dev-java/openjdk-11">Enable SystemTAP/DTrace tracing</flag>
-		<flag name="webstart">Provide javaws command through symlink to icedtea-web</flag>
 	</use>
 </pkgmetadata>
