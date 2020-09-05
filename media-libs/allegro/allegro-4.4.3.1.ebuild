@@ -12,7 +12,7 @@ SRC_URI="https://github.com/liballeg/allegro5/releases/download/${PV}/${P}.tar.g
 
 LICENSE="Allegro MIT GPL-2+ ZLIB"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~mips ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm64 ~mips ppc ~ppc64 x86"
 IUSE="alsa doc fbcon jack jpeg opengl oss png svga vga vorbis X"
 
 RDEPEND="
