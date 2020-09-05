@@ -6140,7 +6140,7 @@ dev-perl/Class-Singleton 1.500.0 1.500.0-r1: Implementation of a Singleton class
 dev-perl/Class-Spiffy 0.150.0-r2: Spiffy Perl Interface Framework For You
 dev-perl/Class-Std 0.13.0: Support for creating standard "inside-out" classes
 dev-perl/Class-Std-Fast 0.0.8-r2: Faster but less secure than Class::Std
-dev-perl/Class-Tiny 1.6.0: Minimalist class construction
+dev-perl/Class-Tiny 1.6.0 1.8.0: Minimalist class construction
 dev-perl/Class-Trigger 0.140.0-r1 0.150.0: Mixin to add / call inheritable triggers
 dev-perl/Class-Unload 0.110.0: Unload a class
 dev-perl/Class-Virtual 0.80.0: Base class for virtual base classes
@@ -18113,8 +18113,8 @@ www-client/seamonkey 2.53.2 2.53.3: Seamonkey Web Browser
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 3.2.1967.47_p1 3.3.2022.26_p1 3.3.2022.30_p1: A browser for our friends
-www-client/vivaldi-snapshot 3.3.2001.3_p1 3.3.2009.3_p1 3.3.2020.3_p1 3.3.2022.6_p1 3.3.2022.23_p1 3.3.2022.27_p1: A browser for our friends
+www-client/vivaldi 3.2.1967.47_p1 3.3.2022.26_p1 3.3.2022.30_p1 3.3.2022.36_p1: A browser for our friends
+www-client/vivaldi-snapshot 3.3.2001.3_p1 3.3.2009.3_p1 3.3.2020.3_p1 3.3.2022.6_p1 3.3.2022.23_p1 3.3.2022.27_p1 3.3.2022.35_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.8-r1: AWStats is short for Advanced Web Statistics
