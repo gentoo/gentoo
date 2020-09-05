@@ -12,7 +12,7 @@ SRC_URI="https://github.com/leethomason/${PN}/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="ZLIB"
 SLOT="0/8"
-KEYWORDS="~amd64 arm arm64 hppa ~ppc64 sparc x86"
+KEYWORDS="amd64 arm arm64 hppa ~ppc64 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
