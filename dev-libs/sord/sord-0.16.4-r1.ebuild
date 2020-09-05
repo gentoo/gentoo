@@ -28,6 +28,10 @@ DEPEND="${RDEPEND}
 
 DOCS=( "AUTHORS" "NEWS" "README.md" )
 
+PATCHES=(
+	"${FILESDIR}/${P}-gcc10.patch"
+)
+
 src_prepare() {
 	sed -i -e 's/^.*run_ldconfig/#\0/' wscript || die
 	default
