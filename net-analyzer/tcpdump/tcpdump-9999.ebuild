@@ -13,9 +13,10 @@ LICENSE="BSD"
 EGIT_REPO_URI="https://github.com/the-tcpdump-group/tcpdump"
 
 SLOT="0"
-IUSE="+drop-root libressl smi ssl samba suid test"
-RESTRICT="!test? ( test )"
 KEYWORDS=""
+IUSE="+drop-root libressl +smi +ssl +samba suid test"
+RESTRICT="!test? ( test )"
+REQUIRED_USE="test? ( samba )"
 
 RDEPEND="
 	net-libs/libpcap
@@ -48,11 +49,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -i -e '/^eapon1/d;' tests/TESTLIST || die
-
-	# bug 630394
-	sed -i -e '/^nbns-valgrind/d' tests/TESTLIST || die
-
 	default
 
 	eautoreconf
