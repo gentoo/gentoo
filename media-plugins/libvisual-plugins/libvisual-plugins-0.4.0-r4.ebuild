@@ -38,6 +38,7 @@ DOCS=( AUTHORS ChangeLog NEWS README TODO )
 
 PATCHES=(
 	"${FILESDIR}/${P}-fno-common.patch"
+	"${FILESDIR}/${P}-clang.patch"
 )
 
 src_prepare() {
