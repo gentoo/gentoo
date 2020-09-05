@@ -11,7 +11,7 @@ SRC_URI="
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV/_p*}-$(ver_cut 5).$(ver_cut 7).diff.gz
 "
 
-KEYWORDS="~amd64 ppc x86"
+KEYWORDS="amd64 ppc x86"
 SLOT="0"
 LICENSE="GPL-2"
 PATCHES=(
