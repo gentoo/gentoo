@@ -24,12 +24,26 @@ pkg_setup() {
 src_prepare() {
 	default
 	sed -i -e 's:`uname -s`:Linux:' Makefile || die
+
+	# ship our own default settings
+	cat <<- EOF > "${S}/passwdqc.conf"
+		min=8,8,8,8,8
+		max=40
+		passphrase=3
+		match=4
+		similar=deny
+		random=47
+		enforce=everyone
+		retry=3
+	EOF
+
 }
 
 _emake() {
 	emake -j1 \
 		SHARED_LIBDIR="/usr/$(get_libdir)" \
 		SECUREDIR="$(getpam_mod_dir)" \
+		CONFDIR="/etc/security" \
 		CFLAGS="${CFLAGS} ${CPPFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
 		CC="$(tc-getCC)" \
