@@ -1,0 +1,452 @@
+diff --git a/pynslcd/Makefile.am b/pynslcd/Makefile.am
+index 383dd3c..39a3bfb 100644
+--- a/pynslcd/Makefile.am
++++ b/pynslcd/Makefile.am
+@@ -19,7 +19,7 @@
+ 
+ pynslcddir = $(datadir)/pynslcd
+ 
+-pynslcd_PYTHON = pynslcd.py attmap.py cache.py cfg.py common.py expr.py \
++pynslcd_PYTHON = main.py attmap.py cache.py cfg.py common.py expr.py \
+                  mypidfile.py invalidator.py search.py tio.py \
+                  config.py alias.py ether.py group.py host.py netgroup.py \
+                  network.py passwd.py protocol.py rpc.py service.py \
+@@ -38,6 +38,6 @@ constants.py: constants.py.in $(top_srcdir)/nslcd.h
+ # create a symbolic link for the pynslcd daemon and fix permissions
+ install-data-hook:
+ 	$(MKDIR_P) $(DESTDIR)$(sbindir)
+-	[ -L $(DESTDIR)$(sbindir)/pynslcd ] || $(LN_S) $(pynslcddir)/pynslcd.py $(DESTDIR)$(sbindir)/pynslcd
+-	chmod a+rx $(DESTDIR)$(pynslcddir)/pynslcd.py
+-	sed -i -e '1 s|^#!.*|#! $(PYTHON)|;1 s|^#! \([^/].*\)|#! /usr/bin/env \1|' $(DESTDIR)$(pynslcddir)/pynslcd.py
++	[ -L $(DESTDIR)$(sbindir)/pynslcd ] || $(LN_S) $(pynslcddir)/main.py $(DESTDIR)$(sbindir)/pynslcd
++	chmod a+rx $(DESTDIR)$(pynslcddir)/main.py
++	sed -i -e '1 s|^#!.*|#! $(PYTHON)|;1 s|^#! \([^/].*\)|#! /usr/bin/env \1|' $(DESTDIR)$(pynslcddir)/main.py
+diff --git a/pynslcd/alias.py b/pynslcd/alias.py
+index 8096309..614dd53 100644
+--- a/pynslcd/alias.py
++++ b/pynslcd/alias.py
+@@ -18,10 +18,10 @@
+ # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ # 02110-1301 USA
+ 
+-import cache
+-import common
+-import constants
+-import search
++from pynslcd import cache
++from pynslcd import common
++from pynslcd import constants
++from pynslcd import search
+ 
+ 
+ attmap = common.Attributes(
+diff --git a/pynslcd/attmap.py b/pynslcd/attmap.py
+index 61862df..4d450f6 100644
+--- a/pynslcd/attmap.py
++++ b/pynslcd/attmap.py
+@@ -45,7 +45,7 @@ import re
+ import ldap.dn
+ from ldap.filter import escape_filter_chars
+ 
+-from expr import Expression
++from pynslcd.expr import Expression
+ 
+ 
+ # exported names
+diff --git a/pynslcd/cfg.py b/pynslcd/cfg.py
+index 877d442..14ae850 100644
+--- a/pynslcd/cfg.py
++++ b/pynslcd/cfg.py
+@@ -133,8 +133,8 @@ _tls_reqcert_options = {'never': ldap.OPT_X_TLS_NEVER,
+ 
+ def _get_maps():
+     # separate function as not to pollute the namespace and avoid import loops
+-    import alias, ether, group, host, netgroup, network, passwd  # noqa: E401
+-    import protocol, rpc, service, shadow  # noqa: E401
++    from pynslcd import alias, ether, group, host, netgroup, network, passwd  # noqa: E401
++    from pynslcd import protocol, rpc, service, shadow  # noqa: E401
+     import sys
+     return dict(
+         alias=alias, aliases=alias,
+@@ -293,7 +293,7 @@ def read(filename):  # noqa: C901 (many simple branches)
+         # pam_authz_search <FILTER>
+         m = re.match(r'pam_authz_search\s+(?P<value>\S.*)', line, re.IGNORECASE)
+         if m:
+-            from expr import Expression
++            from pynslcd.expr import Expression
+             pam_authz_searches.append(Expression(m.group('value')))
+             # TODO: check pam_authz_search expression to only contain
+             # username, service, ruser, rhost, tty, hostname, fqdn, dn or
+diff --git a/pynslcd/common.py b/pynslcd/common.py
+index a5b168d..568ac2f 100644
+--- a/pynslcd/common.py
++++ b/pynslcd/common.py
+@@ -23,9 +23,9 @@ import sys
+ 
+ import ldap
+ 
+-from attmap import Attributes  # noqa: F401 (used by other modules)
+-import cfg
+-import constants
++from pynslcd.attmap import Attributes  # noqa: F401 (used by other modules)
++from pynslcd import cfg
++from pynslcd import constants
+ 
+ 
+ def is_valid_name(name):
+diff --git a/pynslcd/config.py b/pynslcd/config.py
+index ee57db3..ba8badb 100644
+--- a/pynslcd/config.py
++++ b/pynslcd/config.py
+@@ -18,9 +18,9 @@
+ # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ # 02110-1301 USA
+ 
+-import cfg
+-import common
+-import constants
++from pynslcd import cfg
++from pynslcd import common
++from pynslcd import constants
+ 
+ 
+ class ConfigGetRequest(common.Request):
+diff --git a/pynslcd/ether.py b/pynslcd/ether.py
+index 9462ef0..2edc5de 100644
+--- a/pynslcd/ether.py
++++ b/pynslcd/ether.py
+@@ -20,10 +20,10 @@
+ 
+ import struct
+ 
+-import cache
+-import common
+-import constants
+-import search
++from pynslcd import cache
++from pynslcd import common
++from pynslcd import constants
++from pynslcd import search
+ 
+ 
+ def ether_aton(ether):
+diff --git a/pynslcd/group.py b/pynslcd/group.py
+index 263e40c..422ee9e 100644
+--- a/pynslcd/group.py
++++ b/pynslcd/group.py
+@@ -23,12 +23,12 @@ import logging
+ import ldap
+ from ldap.filter import escape_filter_chars
+ 
+-import cache
+-import cfg
+-import common
+-import constants
+-import passwd
+-import search
++from pynslcd import cache
++from pynslcd import cfg
++from pynslcd import common
++from pynslcd import constants
++from pynslcd import passwd
++from pynslcd import search
+ 
+ 
+ def clean(lst):
+diff --git a/pynslcd/host.py b/pynslcd/host.py
+index c6639df..30259d6 100644
+--- a/pynslcd/host.py
++++ b/pynslcd/host.py
+@@ -18,10 +18,10 @@
+ # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ # 02110-1301 USA
+ 
+-import cache
+-import common
+-import constants
+-import search
++from pynslcd import cache
++from pynslcd import common
++from pynslcd import constants
++from pynslcd import search
+ 
+ 
+ attmap = common.Attributes(
+diff --git a/pynslcd/invalidator.py b/pynslcd/invalidator.py
+index 6d2eefe..b54946e 100644
+--- a/pynslcd/invalidator.py
++++ b/pynslcd/invalidator.py
+@@ -23,7 +23,7 @@ import logging
+ import os
+ import subprocess
+ 
+-import cfg
++from pynslcd import cfg
+ 
+ 
+ # the file descriptor used for sending messages to the child process
+diff --git a/pynslcd/mypidfile.py b/pynslcd/mypidfile.py
+index 42935e2..dd7d59a 100644
+--- a/pynslcd/mypidfile.py
++++ b/pynslcd/mypidfile.py
+@@ -22,7 +22,7 @@ import errno
+ import fcntl
+ import os
+ 
+-import cfg
++from pynslcd import cfg
+ 
+ 
+ class MyPIDLockFile(object):
+diff --git a/pynslcd/netgroup.py b/pynslcd/netgroup.py
+index 47a4c6e..8d0fbb2 100644
+--- a/pynslcd/netgroup.py
++++ b/pynslcd/netgroup.py
+@@ -20,10 +20,10 @@
+ 
+ import re
+ 
+-import cache
+-import common
+-import constants
+-import search
++from pynslcd import cache
++from pynslcd import common
++from pynslcd import constants
++from pynslcd import search
+ 
+ 
+ _netgroup_triple_re = re.compile(
+diff --git a/pynslcd/network.py b/pynslcd/network.py
+index da587b9..3b94d06 100644
+--- a/pynslcd/network.py
++++ b/pynslcd/network.py
+@@ -18,10 +18,10 @@
+ # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ # 02110-1301 USA
+ 
+-import cache
+-import common
+-import constants
+-import search
++from pynslcd import cache
++from pynslcd import common
++from pynslcd import constants
++from pynslcd import search
+ 
+ 
+ attmap = common.Attributes(
+diff --git a/pynslcd/pam.py b/pynslcd/pam.py
+index b372cdd..bb7add8 100644
+--- a/pynslcd/pam.py
++++ b/pynslcd/pam.py
+@@ -27,12 +27,12 @@ import ldap
+ from ldap.controls.ppolicy import PasswordPolicyControl, PasswordPolicyError
+ from ldap.filter import escape_filter_chars
+ 
+-import cfg
+-import common
+-import constants
+-import passwd
+-import search
+-import shadow
++from pynslcd import cfg
++from pynslcd import common
++from pynslcd import constants
++from pynslcd import passwd
++from pynslcd import search
++from pynslcd import shadow
+ 
+ 
+ random = random.SystemRandom()
+diff --git a/pynslcd/passwd.py b/pynslcd/passwd.py
+index 1274f21..51ae57e 100644
+--- a/pynslcd/passwd.py
++++ b/pynslcd/passwd.py
+@@ -20,11 +20,11 @@
+ 
+ import logging
+ 
+-import cache
+-import cfg
+-import common
+-import constants
+-import search
++from pynslcd import cache
++from pynslcd import cfg
++from pynslcd import common
++from pynslcd import constants
++from pynslcd import search
+ 
+ 
+ attmap = common.Attributes(
+diff --git a/pynslcd/protocol.py b/pynslcd/protocol.py
+index dc41c4b..396f337 100644
+--- a/pynslcd/protocol.py
++++ b/pynslcd/protocol.py
+@@ -18,10 +18,10 @@
+ # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ # 02110-1301 USA
+ 
+-import cache
+-import common
+-import constants
+-import search
++from pynslcd import cache
++from pynslcd import common
++from pynslcd import constants
++from pynslcd import search
+ 
+ 
+ attmap = common.Attributes(
+diff --git a/pynslcd/pynslcd.py b/pynslcd/pynslcd.py
+index 0691b61..973ecd9 100755
+--- a/pynslcd/pynslcd.py
++++ b/pynslcd/pynslcd.py
+@@ -30,13 +30,13 @@ import threading
+ import daemon
+ import ldap
+ 
+-import cfg
+-import common
+-import constants
+-import invalidator
+-import mypidfile
+-import search
+-from tio import TIOStream
++import pynslcd.cfg as cfg
++import pynslcd.common as common
++import pynslcd.constants as constants
++import pynslcd.invalidator as invalidator
++import pynslcd.mypidfile as mypidfile
++import pynslcd.search as search
++from pynslcd.tio import TIOStream
+ 
+ 
+ # the name of the program
+@@ -188,20 +188,20 @@ def getpeercred(fd):
+ 
+ 
+ handlers = {}
+-handlers.update(common.get_handlers('config'))
+-handlers.update(common.get_handlers('alias'))
+-handlers.update(common.get_handlers('ether'))
+-handlers.update(common.get_handlers('group'))
+-handlers.update(common.get_handlers('host'))
+-handlers.update(common.get_handlers('netgroup'))
+-handlers.update(common.get_handlers('network'))
+-handlers.update(common.get_handlers('passwd'))
+-handlers.update(common.get_handlers('protocol'))
+-handlers.update(common.get_handlers('rpc'))
+-handlers.update(common.get_handlers('service'))
+-handlers.update(common.get_handlers('shadow'))
+-handlers.update(common.get_handlers('pam'))
+-handlers.update(common.get_handlers('usermod'))
++handlers.update(common.get_handlers('pynslcd.config'))
++handlers.update(common.get_handlers('pynslcd.alias'))
++handlers.update(common.get_handlers('pynslcd.ether'))
++handlers.update(common.get_handlers('pynslcd.group'))
++handlers.update(common.get_handlers('pynslcd.host'))
++handlers.update(common.get_handlers('pynslcd.netgroup'))
++handlers.update(common.get_handlers('pynslcd.network'))
++handlers.update(common.get_handlers('pynslcd.passwd'))
++handlers.update(common.get_handlers('pynslcd.protocol'))
++handlers.update(common.get_handlers('pynslcd.rpc'))
++handlers.update(common.get_handlers('pynslcd.service'))
++handlers.update(common.get_handlers('pynslcd.shadow'))
++handlers.update(common.get_handlers('pynslcd.pam'))
++handlers.update(common.get_handlers('pynslcd.usermod'))
+ 
+ 
+ def acceptconnection(nslcd_serversocket, session):
+diff --git a/pynslcd/rpc.py b/pynslcd/rpc.py
+index 49d9c7c..e1ea4f5 100644
+--- a/pynslcd/rpc.py
++++ b/pynslcd/rpc.py
+@@ -18,10 +18,10 @@
+ # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ # 02110-1301 USA
+ 
+-import cache
+-import common
+-import constants
+-import search
++from pynslcd import cache
++from pynslcd import common
++from pynslcd import constants
++from pynslcd import search
+ 
+ 
+ attmap = common.Attributes(
+diff --git a/pynslcd/search.py b/pynslcd/search.py
+index 39850d2..f017451 100644
+--- a/pynslcd/search.py
++++ b/pynslcd/search.py
+@@ -24,7 +24,7 @@ import sys
+ import ldap
+ import ldap.ldapobject
+ 
+-import cfg
++from pynslcd import cfg
+ 
+ 
+ # global indicator that there was some error connection to an LDAP server
+diff --git a/pynslcd/service.py b/pynslcd/service.py
+index b0c53e3..96c2aaf 100644
+--- a/pynslcd/service.py
++++ b/pynslcd/service.py
+@@ -20,10 +20,10 @@
+ 
+ import datetime
+ 
+-import cache
+-import common
+-import constants
+-import search
++from pynslcd import cache
++from pynslcd import common
++from pynslcd import constants
++from pynslcd import search
+ 
+ 
+ attmap = common.Attributes(
+diff --git a/pynslcd/shadow.py b/pynslcd/shadow.py
+index 59e1af6..3ed695b 100644
+--- a/pynslcd/shadow.py
++++ b/pynslcd/shadow.py
+@@ -20,11 +20,11 @@
+ 
+ import logging
+ 
+-import cache
+-import cfg
+-import common
+-import constants
+-import search
++from pynslcd import cache
++from pynslcd import cfg
++from pynslcd import common
++from pynslcd import constants
++from pynslcd import search
+ 
+ 
+ attmap = common.Attributes(
+diff --git a/pynslcd/usermod.py b/pynslcd/usermod.py
+index 4e37ded..ffd651b 100644
+--- a/pynslcd/usermod.py
++++ b/pynslcd/usermod.py
+@@ -26,10 +26,10 @@ import os.path
+ 
+ import ldap
+ 
+-import cfg
+-import constants
+-import pam
+-import passwd
++from pynslcd import cfg
++from pynslcd import constants
++from pynslcd import pam
++from pynslcd import passwd
+ 
+ 
+ def list_shells():

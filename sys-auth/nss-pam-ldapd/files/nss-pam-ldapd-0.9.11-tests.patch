@@ -1,0 +1,34 @@
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index 1bbbcc2..4adf062 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -23,7 +23,7 @@ TESTS = test_dict test_set test_tio test_expr test_getpeercred test_cfg \
+         test_pamcmds.sh test_manpages.sh test_clock \
+         test_tio_timeout
+ if HAVE_PYTHON
+-  TESTS += test_pycompile.sh test_pylint.sh
++  TESTS += test_pycompile.sh
+ endif
+ if ENABLE_PYNSLCD
+   TESTS += test_pynslcd_cache.py test_doctest.sh
+@@ -48,7 +48,6 @@ EXTRA_DIST = README nslcd-test.conf usernames.txt testenv.sh test_myldap.sh \
+              test_nsscmds.sh test_ldapcmds.sh test_pamcmds.sh \
+              test_pamcmds.expect test_manpages.sh \
+              test_pycompile.sh test_doctest.sh \
+-             test_pylint.sh pylint.rc \
+              test_flake8.sh flake8.ini \
+              test_pynslcd_cache.py \
+              setup_slapd.sh config.ldif test.ldif
+diff --git a/tests/test_doctest.sh b/tests/test_doctest.sh
+index 5b3a13d..26c73e7 100755
+--- a/tests/test_doctest.sh
++++ b/tests/test_doctest.sh
+@@ -38,7 +38,7 @@ find_python() {
+     fi
+   done
+ }
+-interpreters=`find_python | sort -u`
++interpreters=${PYTHON}
+ 
+ # if Python is missing, ignore
+ if [ -z "$interpreters" ]
