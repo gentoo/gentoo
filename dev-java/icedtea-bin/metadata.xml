@@ -11,6 +11,5 @@
 	</maintainer>
 	<use>
 		<flag name="headless-awt">Don't install the X backend for AWT, needed by some GUIs (used to be X flag)</flag>
-		<flag name="webstart">Provide javaws command through symlink to icedtea-web</flag>
 	</use>
 </pkgmetadata>
