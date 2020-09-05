@@ -11,9 +11,8 @@ SRC_URI="https://github.com/${PN}-project/${PN}/archive/v${PV}.tar.gz -> ${P}.ta
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="dunstify"
 
-CDEPEND="
+DEPEND="
 	dev-libs/glib:2
 	sys-apps/dbus
 	x11-libs/cairo[X,glib]
@@ -22,15 +21,14 @@ CDEPEND="
 	x11-libs/libXScrnSaver
 	x11-libs/libXinerama
 	x11-libs/libXrandr
+	x11-libs/libnotify
 	x11-libs/pango[X]
-	dunstify? ( x11-libs/libnotify )
 "
-DEPEND="
-	${CDEPEND}
+BDEPEND="
 	dev-lang/perl
 	virtual/pkgconfig
 "
-RDEPEND="${CDEPEND}"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	sed -i -e "/^CFLAGS/ { s:-g::;s:-O.:: }" config.mk || die
@@ -38,16 +36,13 @@ src_prepare() {
 	default
 }
 
-src_compile() {
-	tc-export CC
-	emake
-	use dunstify && emake dunstify
+src_configure() {
+	tc-export CC PKG_CONFIG
+	default
 }
 
 src_install() {
 	emake DESTDIR="${D}" PREFIX="/usr" install
-
-	use dunstify && dobin dunstify
 
 	dodoc AUTHORS CHANGELOG.md README.md RELEASE_NOTES
 }
