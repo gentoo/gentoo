@@ -6503,7 +6503,7 @@ dev-perl/File-ShareDir-ProjectDistDir 1.0.9: Simple set-and-forget using of a '/
 dev-perl/File-Slurp 9999.270.0 9999.320.0: Simple and Efficient Reading/Writing/Modifying of Complete Files
 dev-perl/File-Slurp-Tiny 0.4.0 0.4.0-r1: A simple, sane and efficient file slurper
 dev-perl/File-Slurper 0.10.0 0.12.0: A simple, sane and efficient module to slurp a file
-dev-perl/File-Sort 1.10.0-r1: Sort a file or merge sort multiple files
+dev-perl/File-Sort 1.10.0-r1 1.10.0-r2: Sort a file or merge sort multiple files
 dev-perl/File-Spec-Native 1.4.0: Use native OS implementation of File::Spec from a subclass
 dev-perl/File-Stat-Bits 1.10.0-r1: File stat bit mask constants
 dev-perl/File-Sync 0.110.0: Perl access to fsync() and sync() function calls
@@ -15179,7 +15179,7 @@ net-misc/lksctp-tools 1.0.17 1.0.18-r1: Tools for Linux Kernel Stream Control Tr
 net-misc/lldpd 1.0.3 1.0.4 1.0.5-r1: Implementation of IEEE 802.1ab (LLDP)
 net-misc/mcproxy 1.1.1-r1: A multicast proxy for IGMP/MLD
 net-misc/megatools 1.10.3: Command line tools and C library for accessing Mega cloud storage
-net-misc/memcached 1.5.22 1.6.6: High-performance, distributed memory object caching system
+net-misc/memcached 1.5.22 1.6.6 1.6.7: High-performance, distributed memory object caching system
 net-misc/mico 2.3.13-r13 2.3.13-r14 9999: A freely available and fully compliant implementation of the CORBA standard
 net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies support
 net-misc/mikutter 4.0.6 9999: Simple, powerful and moeful twitter client
@@ -17157,7 +17157,7 @@ sys-auth/pam_ssh_agent_auth 0.10.3 9999: Simple module to authenticate users aga
 sys-auth/pam_u2f 1.0.8: Library for authenticating against PAM with a Yubikey
 sys-auth/pam_yubico 2.26: Library for authenticating against PAM with a Yubikey
 sys-auth/pambase 20200304 20200817: PAM base configuration files
-sys-auth/passwdqc 1.3.0 1.4.0: Password strength checking library (and PAM module)
+sys-auth/passwdqc 1.3.0 1.4.0-r1: Password strength checking library (and PAM module)
 sys-auth/polkit 0.115-r4 0.116-r1 0.117: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
 sys-auth/polkit-qt 0.113.0: Qt wrapper around polkit-1 client libraries

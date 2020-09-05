@@ -9,4 +9,4 @@ RDEPEND=sys-libs/pam
 SLOT=0
 SRC_URI=http://www.openwall.com/passwdqc/passwdqc-1.4.0.tar.gz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	multilib	2477ebe553d3e4d2c606191fe6c33602	pam	a1771fc1e5831c201eaf18451747d94b	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=22bae0a87c9a86707e11e30bb8fcb63b
+_md5_=218bc0f1f3b51ce9f4d13d96f453a5bb
