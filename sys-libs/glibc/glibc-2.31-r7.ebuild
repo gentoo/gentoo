@@ -16,14 +16,13 @@ SLOT="2.2"
 EMULTILIB_PKG="true"
 
 # Gentoo patchset (ignored for live ebuilds)
-PATCH_VER=16
-PATCH_DEV=slyfox
+PATCH_VER=9
+PATCH_DEV=dilfridge
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 else
 	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-	KEYWORDS=""
 	SRC_URI="mirror://gnu/glibc/${P}.tar.xz"
 	SRC_URI+=" https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
 fi
@@ -32,7 +31,7 @@ RELEASE_VER=${PV}
 
 GCC_BOOTSTRAP_VER=20180511
 
-LOCALE_GEN_VER=2.10
+LOCALE_GEN_VER=2.00
 
 SRC_URI+=" https://gitweb.gentoo.org/proj/locale-gen.git/snapshot/locale-gen-${LOCALE_GEN_VER}.tar.gz"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
@@ -117,13 +116,13 @@ RESTRICT="!test? ( test )"
 
 if [[ ${CATEGORY} == cross-* ]] ; then
 	BDEPEND+=" !headers-only? (
-		>=${CATEGORY}/binutils-2.27
+		>=${CATEGORY}/binutils-2.24
 		>=${CATEGORY}/gcc-6
 	)"
 	[[ ${CATEGORY} == *-linux* ]] && DEPEND+=" ${CATEGORY}/linux-headers"
 else
 	BDEPEND+="
-		>=sys-devel/binutils-2.27
+		>=sys-devel/binutils-2.24
 		>=sys-devel/gcc-6
 	"
 	DEPEND+=" virtual/os-headers "
@@ -847,6 +846,14 @@ glibc_do_configure() {
 			# https://sourceware.org/PR24202
 			myconf+=( --enable-stack-protector=no )
 			;;
+		powerpc-*)
+			# Currently gcc on powerpc32 generates invalid code for
+			# __builtin_return_address(0) calls. Normally programs
+			# don't do that but malloc hooks in glibc do:
+			# https://gcc.gnu.org/PR81996
+			# https://bugs.gentoo.org/629054
+			myconf+=( --enable-stack-protector=no )
+			;;
 		*)
 			# Use '=strong' instead of '=all' to protect only functions
 			# worth protecting from stack smashes.
@@ -1236,8 +1243,6 @@ glibc_do_src_install() {
 		ppc     /lib/ld.so.1
 		ppc64   /lib64/ld64.so.1
 		# riscv
-		ilp32d  /lib/ld-linux-riscv32-ilp32d.so.1
-		ilp32   /lib/ld-linux-riscv32-ilp32.so.1
 		lp64d   /lib/ld-linux-riscv64-lp64d.so.1
 		lp64    /lib/ld-linux-riscv64-lp64.so.1
 		# s390
