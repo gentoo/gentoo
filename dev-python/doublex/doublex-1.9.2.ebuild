@@ -13,7 +13,7 @@ SRC_URI="https://bitbucket.org/DavidVilla/python-${PN}/get/v${PV}.tar.gz -> ${P}
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~arm64"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
