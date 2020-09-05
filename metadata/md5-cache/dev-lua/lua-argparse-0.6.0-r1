@@ -5,11 +5,11 @@ DESCRIPTION=Command line argument parser for the Lua Programming Language
 EAPI=7
 HOMEPAGE=https://github.com/mpeterv/argparse
 IUSE=doc luajit test
-KEYWORDS=~amd64 ~ppc64
+KEYWORDS=~amd64 ~arm ~ppc64
 LICENSE=MIT
 RDEPEND=>=dev-lang/lua-5.1:= luajit? ( dev-lang/luajit:2 )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/mpeterv/argparse/archive/0.6.0.tar.gz -> lua-argparse-0.6.0.tar.gz
 _eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=81c1ac5edc118e12885e63c2759116c1
+_md5_=44246c7ee8105526e174919cc2a4cca8
