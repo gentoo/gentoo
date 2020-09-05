@@ -43,7 +43,14 @@ RDEPEND="
 
 S=${WORKDIR}/
 
-QA_PREBUILT="opt/spotify/spotify-client/spotify"
+QA_PREBUILT="
+	opt/spotify/spotify-client/spotify
+	opt/spotify/spotify-client/libEGL.so
+	opt/spotify/spotify-client/libGLESv2.so
+	opt/spotify/spotify-client/libcef.so
+	opt/spotify/spotify-client/swiftshader/libEGL.so
+	opt/spotify/spotify-client/swiftshader/libGLESv2.so
+"
 
 src_prepare() {
 	# Fix desktop entry to launch spotify-dbus.py for systray integration
