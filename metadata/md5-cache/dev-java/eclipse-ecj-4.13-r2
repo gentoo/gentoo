@@ -10,5 +10,5 @@ PDEPEND=ant? ( ~dev-java/ant-eclipse-ecj-4.13 )
 RDEPEND=app-eselect/eselect-java dev-java/ant-core:0 virtual/jre >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 SLOT=4.13
 SRC_URI=http://download.eclipse.org/eclipse/downloads/drops4/R-4.13-201909161045/ecjsrc-4.13.jar
-_eclasses_=java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-pkg-simple	3fd90e02b117fcb4e317b73e10d9b372	java-utils-2	ec7a89849c84f93e9c6db27812923888
+_eclasses_=java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-pkg-simple	a814c0c1adac3d7902bc7023902a2e1a	java-utils-2	ec7a89849c84f93e9c6db27812923888
 _md5_=8c9f5d7e56c84da1409f02cc68906e2b

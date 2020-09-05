@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RDEPEND=>=virtual/jre-1.5 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 SLOT=1.0
 SRC_URI=https://repository.jboss.org/nexus/service/local/repo_groups/public/content/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA-sources.jar
-_eclasses_=java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-pkg-simple	3fd90e02b117fcb4e317b73e10d9b372	java-utils-2	ec7a89849c84f93e9c6db27812923888
+_eclasses_=java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-pkg-simple	a814c0c1adac3d7902bc7023902a2e1a	java-utils-2	ec7a89849c84f93e9c6db27812923888
 _md5_=24d7306dca1cd29cdb642b90e2eeeb01

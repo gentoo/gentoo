@@ -9,5 +9,5 @@ LICENSE=EPL-1.0
 RDEPEND=~dev-java/eclipse-ecj-4.13:4.13 dev-java/ant-core:0 >=virtual/jre-11 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 SLOT=4.13
 SRC_URI=http://download.eclipse.org/eclipse/downloads/drops4/R-4.13-201909161045/ecjsrc-4.13.jar
-_eclasses_=java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-pkg-simple	3fd90e02b117fcb4e317b73e10d9b372	java-utils-2	ec7a89849c84f93e9c6db27812923888	prefix	c2993e4c430c1ee24f278983d6189501
+_eclasses_=java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-pkg-simple	a814c0c1adac3d7902bc7023902a2e1a	java-utils-2	ec7a89849c84f93e9c6db27812923888	prefix	c2993e4c430c1ee24f278983d6189501
 _md5_=8617a12553f9243e4edf74e02832fcd5
