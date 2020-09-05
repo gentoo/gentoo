@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
+DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1 virtualx xdg-utils
 
@@ -13,7 +14,7 @@ SRC_URI="https://github.com/otsaloma/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="spell test"
 RESTRICT="!test? ( test )"
 
@@ -24,7 +25,7 @@ RDEPEND="
 	x11-libs/gtk+:3[introspection]
 	spell? ( app-text/gspell[introspection] )
 "
-DEPEND="
+BDEPEND="
 	sys-devel/gettext
 	test? (
 		${RDEPEND}
@@ -37,7 +38,7 @@ DEPEND="
 
 DOCS=( AUTHORS.md NEWS.md TODO.md README.md README.aeidon.md )
 
-PATCHES=( "${FILESDIR}/${P}-fix-tests.patch" )
+PATCHES=( "${FILESDIR}/${P}-fix-audio-tracks-order.patch" )
 
 python_test() {
 	virtx pytest -vv
@@ -47,7 +48,9 @@ pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
-		elog "Previewing support requires MPV, MPlayer or VLC."
+		elog "The integrated video player requires media-plugins/gst-plugins-gtk."
+		elog ""
+		elog "External video previewing support requires MPV, MPlayer or VLC."
 		if use spell; then
 			elog ""
 			elog "Spell-checking requires a dictionary, any of app-dicts/myspell-*"
