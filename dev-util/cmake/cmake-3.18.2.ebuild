@@ -139,7 +139,7 @@ src_prepare() {
 		-e "$(usex prefix-guest "s|@GENTOO_HOST@||" "/@GENTOO_HOST@/d")" \
 		-e "s|@GENTOO_PORTAGE_EPREFIX@|${EPREFIX}/|g" \
 		Modules/Platform/{UnixPaths,Darwin}.cmake || die "sed failed"
-	if ! has_version -b \>=${CATEGORY}/${PN}-3.4.0_rc1 ; then
+	if ! has_version -b \>=${CATEGORY}/${PN}-3.4.0_rc1 || ! cmake --version &>/dev/null ; then
 		CMAKE_BINARY="${S}/Bootstrap.cmk/cmake"
 		cmake_src_bootstrap
 	fi
