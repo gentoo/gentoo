@@ -1,0 +1,12 @@
+--- a/configure
++++ b/configure
+@@ -6349,9 +6349,6 @@ if test "$debug_info" = "yes"; then
+   CFLAGS="-g $CFLAGS"
+   LDFLAGS="-g $LDFLAGS"
+ fi
+-if test "$debug" = "no"; then
+-  CFLAGS="-O2 $CFLAGS"
+-fi
+ 
+ case "$ARCH" in
+ alpha)
