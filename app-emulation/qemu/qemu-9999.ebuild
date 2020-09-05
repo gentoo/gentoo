@@ -410,7 +410,6 @@ qemu_src_configure() {
 		--datadir=/usr/share
 		--docdir=/usr/share/doc/${PF}/html
 		--mandir=/usr/share/man
-		--with-confsuffix=/qemu
 		--localstatedir=/var
 		--disable-bsd-user
 		--disable-containers # bug #732972
