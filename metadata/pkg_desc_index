@@ -2981,7 +2981,7 @@ app-text/pdftk 3.0.0 3.0.8 9999: gcj-free version of pdftk written in Java
 app-text/peg-markdown 0.4.14: Implementation of markdown in C, using a PEG grammar
 app-text/pelican 3.7.1 4.0.0 4.0.1 4.1.2 4.2.0 9999: A tool to generate a static blog, with restructured text or markdown input files
 app-text/pep 2.8-r2: General purpose filter and file cleaning program
-app-text/pinfo 0.6.10-r5 0.6.10-r7 0.6.13 99999: Hypertext info and man viewer based on (n)curses
+app-text/pinfo 0.6.13 99999: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.57 0.60 0.61: Tools to ease the translation of documentation
 app-text/podofo 0.9.6_p20190928: PoDoFo is a C++ library to work with the PDF file format
 app-text/poppler 0.88.0-r1 0.90.1 20.09.0 9999: PDF rendering library based on the xpdf-3.0 code base
@@ -6187,7 +6187,7 @@ dev-perl/Convert-UUlib 1.710.0: A Perl interface to the uulib library
 dev-perl/Cookie-Baker 0.80.0 0.110.0: Cookie string generator / parser
 dev-perl/Cookie-Baker-XS 0.80.0 0.110.0: Accelerate Cookie::Baker's crush_cookie
 dev-perl/Coro 6.550.0: The only real threads in perl
-dev-perl/Cpanel-JSON-XS 3.23.900 4.190.0 4.210.0: cPanel fork of JSON::XS, fast and correct serializing
+dev-perl/Cpanel-JSON-XS 3.23.900 4.190.0 4.210.0 4.230.0: cPanel fork of JSON::XS, fast and correct serializing
 dev-perl/Crypt-Blowfish 2.140.0-r1 2.140.0-r2: Perl Blowfish encryption module
 dev-perl/Crypt-CAST5_PP 1.40.0-r1 1.40.0-r2: CAST5 block cipher in pure Perl
 dev-perl/Crypt-CBC 2.330.0-r1 2.330.0-r2: Encrypt Data with Cipher Block Chaining Mode
@@ -17594,7 +17594,7 @@ sys-kernel/ck-sources 5.4.37 5.4.48: Gentoo's genpatches for Linux , with Con Ko
 sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
-sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r2 9999: Gentoo automatic kernel building scripts
+sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.60 5.4.61 5.4.62 5.7.17 5.7.18 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.60 5.4.61 5.4.62 5.4.62-r1 5.7.17 5.7.18 5.7.19 5.7.19-r1 5.8.3 5.8.4 5.8.5 5.8.5-r1 5.8.6 5.8.6-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.228 4.4.233 4.4.234 4.4.235 4.9.228 4.9.233 4.9.234 4.9.235 4.14.185 4.14.194 4.14.195 4.14.196 4.19.129 4.19.141 4.19.142 4.19.143 5.4.48 5.4.60 5.4.61 5.4.62 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6: Full sources including the Gentoo patchset for the 5.8 kernel tree
