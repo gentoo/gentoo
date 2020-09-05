@@ -89,7 +89,7 @@ src_install() {
 src_test() {
 	emake V=1 -C external/opal-prd test
 	emake V=1 -C external/gard check
-	# this test is fragile and fails because of filename path 
+	# this test is fragile and fails because of filename path
 	rm external/pflash/test/tests/01-info || die
 	emake V=1 -C external/pflash check
 	emake V=1 -C external/ffspart check
