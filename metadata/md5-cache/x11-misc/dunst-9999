@@ -1,13 +1,12 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile install prepare unpack
-DEPEND=dev-libs/glib:2 sys-apps/dbus x11-libs/cairo[X,glib] x11-libs/gdk-pixbuf x11-libs/libX11 x11-libs/libXScrnSaver x11-libs/libXinerama x11-libs/libXrandr x11-libs/pango[X] dunstify? ( x11-libs/libnotify ) dev-lang/perl virtual/pkgconfig
+BDEPEND=dev-lang/perl virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=dev-libs/glib:2 sys-apps/dbus x11-libs/cairo[X,glib] x11-libs/gdk-pixbuf x11-libs/libX11 x11-libs/libXScrnSaver x11-libs/libXinerama x11-libs/libXrandr x11-libs/libnotify x11-libs/pango[X]
 DESCRIPTION=Customizable and lightweight notification-daemon
 EAPI=7
 HOMEPAGE=https://dunst-project.org/ https://github.com/dunst-project/dunst
-IUSE=dunstify
 LICENSE=BSD
 PROPERTIES=live
-RDEPEND=dev-libs/glib:2 sys-apps/dbus x11-libs/cairo[X,glib] x11-libs/gdk-pixbuf x11-libs/libX11 x11-libs/libXScrnSaver x11-libs/libXinerama x11-libs/libXrandr x11-libs/pango[X] dunstify? ( x11-libs/libnotify )
+RDEPEND=dev-libs/glib:2 sys-apps/dbus x11-libs/cairo[X,glib] x11-libs/gdk-pixbuf x11-libs/libX11 x11-libs/libXScrnSaver x11-libs/libXinerama x11-libs/libXrandr x11-libs/libnotify x11-libs/pango[X]
 SLOT=0
 _eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=c1ed71b16b42d001fe447b3bfe9e85c7
+_md5_=62669cfae331bbc0ef1b044fbae31ce3

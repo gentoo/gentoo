@@ -5708,7 +5708,7 @@ dev-libs/voikko-fi 2.3: Finnish dictionary for libvoikko based spell checkers (v
 dev-libs/volume_key 0.3.11 0.3.12-r1: Library for manipulating and storing storage volume encryption keys
 dev-libs/wayland 1.18.0 9999: Wayland protocol libraries
 dev-libs/wayland-protocols 1.20 9999: Wayland protocol files
-dev-libs/weston 8.0.0 9999: Wayland reference compositor
+dev-libs/weston 8.0.0 9.0.0 9999: Wayland reference compositor
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
 dev-libs/xapian 1.2.25 1.4.14 1.4.15 1.4.16 1.4.17: Xapian Probabilistic Information Retrieval library
 dev-libs/xapian-bindings 1.2.25 1.4.14 1.4.15 1.4.16 1.4.17: SWIG and JNI bindings for Xapian
@@ -7909,7 +7909,7 @@ dev-python/async_generator 1.10: Making it easy to write async iterators in Pyth
 dev-python/async_timeout 3.0.1: Timeout context manager for asyncio programs
 dev-python/atomicwrites 1.4.0: Atomic file writes
 dev-python/atpublic 1.0: A decorator and function to polulate a module's __all__ and the module globals.
-dev-python/attrs 19.3.0 20.1.0: Attributes without boilerplate
+dev-python/attrs 19.3.0 20.1.0 20.2.0: Attributes without boilerplate
 dev-python/audioread 2.1.8-r2: Wrapper for audio file decoding using FFmpeg or GStreamer
 dev-python/authheaders 0.13.0: A library wrapping email authentication header verification and generation.
 dev-python/authres 1.2.0: Parse and generate Authentication-Results headers

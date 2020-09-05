@@ -2367,10 +2367,11 @@ dev-libs/weston:desktop - Enable the desktop shell
 dev-libs/weston:drm - Enable drm compositor support
 dev-libs/weston:editor - Install wayland-editor example application
 dev-libs/weston:fbdev - Enable fbdev compositor support
-dev-libs/weston:fullscreen - Enable fullscreen/kiosk shell
+dev-libs/weston:fullscreen - Enable fullscreen shell
 dev-libs/weston:gles2 - Use GLESv2 cairo instead of full GL
 dev-libs/weston:headless - Headless backend and a noop renderer, mainly for testing purposes
 dev-libs/weston:ivi - Enable the IVI shell
+dev-libs/weston:kiosk - Enable the kiosk shell
 dev-libs/weston:launch - Install weston-launch utility
 dev-libs/weston:pipewire - Enable virtual remote output with Pipewire on DRM backend
 dev-libs/weston:rdp - Enable Remote Desktop Protocol compositor support
