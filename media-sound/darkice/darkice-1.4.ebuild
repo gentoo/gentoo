@@ -29,6 +29,10 @@ REQUIRED_USE="|| ( aac aacplus mp3 opus twolame vorbis )
 
 DOCS=( AUTHORS ChangeLog FAQ NEWS README TODO )
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.3-include.patch"
+)
+
 src_configure() {
 	local myeconfargs=(
 		$(use_enable debug)
