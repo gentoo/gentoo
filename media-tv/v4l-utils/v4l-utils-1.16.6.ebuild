@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ppc64 ~sparc x86"
 IUSE="+bpf opengl qt5"
 
-RDEPEND=">=media-libs/libv4l-${PV}[jpeg]
+RDEPEND=">=media-libs/libv4l-${PV}[dvb(+),jpeg]
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
