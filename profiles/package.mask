@@ -307,7 +307,7 @@ dev-vcs/git-spindle
 media-gfx/birdfont
 media-gfx/sigal
 media-libs/libxmlbird
-net-analyzer/nagstamon
+<net-analyzer/nagstamon-3.4.1-r1
 net-fs/s3ql
 net-misc/dmr_utils
 sci-chemistry/ParmEd
