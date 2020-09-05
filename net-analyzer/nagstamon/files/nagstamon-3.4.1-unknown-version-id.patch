@@ -1,0 +1,14 @@
+Fix for unknown VERSION_ID which is now a fatal error in python
+3.7. Backported from upstream 638c7c7a22156ca7e542725d32dbbc71f2f008a9
+
+--- a/Nagstamon/Helpers.py.~1~	2020-01-24 16:12:12.000000000 +0100
++++ b/Nagstamon/Helpers.py	2020-08-29 07:39:26.999988228 +0200
+@@ -454,7 +454,7 @@
+             for property in os_release_file.read_text().splitlines():
+                 key, value = property.split('=', 1)
+                 os_release_dict[key] = value.strip('"').strip("'")
+-            return (os_release_dict['ID'], os_release_dict['VERSION_ID'], os_release_dict['NAME'])
++            return (os_release_dict['ID'], os_release_dict.get('VERSION_ID', 'unknown'), os_release_dict['NAME'])
+         else:
+             return False
+     else:
