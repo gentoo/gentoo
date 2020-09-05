@@ -25,7 +25,7 @@ fi
 LICENSE="MIT CC-BY-SA-3.0"
 SLOT="0"
 
-IUSE="colord +desktop +drm editor examples fbdev fullscreen +gles2 headless ivi jpeg +launch lcms pipewire rdp remoting +resize-optimization screen-sharing +suid systemd test wayland-compositor webp +X xwayland"
+IUSE="colord +desktop +drm editor examples fbdev fullscreen +gles2 headless ivi jpeg kiosk +launch lcms pipewire rdp remoting +resize-optimization screen-sharing +suid systemd test wayland-compositor webp +X xwayland"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -113,6 +113,7 @@ src_configure() {
 		$(meson_use desktop shell-desktop)
 		$(meson_use fullscreen shell-fullscreen)
 		$(meson_use ivi shell-ivi)
+		$(meson_use kiosk shell-kiosk)
 		$(meson_use lcms color-management-lcms)
 		$(meson_use colord color-management-colord)
 		$(meson_use systemd launcher-logind)
