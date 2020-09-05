@@ -1,4 +1,4 @@
-# Copyright 2004-2020 Gentoo Foundation
+# Copyright 2004-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-pkg-simple.eclass
