@@ -614,11 +614,6 @@ dev-python/gntp
 # Removal in 30 days.
 dev-libs/liboobs
 
-# Jack Todaro <solpeth@posteo.org> (2020-08-04)
-# Deprecated in favour of dev-haskell/dbus.
-# Unmaintained since 2012.
-dev-haskell/dbus-core
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
 # consolekit is abandoned upstream.
 # People are encouraged to switch to any logind
