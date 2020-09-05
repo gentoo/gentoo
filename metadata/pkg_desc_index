@@ -6497,8 +6497,8 @@ dev-perl/File-RsyncP 0.740.0 0.740.0-r1: An rsync perl module
 dev-perl/File-Scan-ClamAV 1.950.0: Connect to a local Clam Anti-Virus clamd service and send commands
 dev-perl/File-SearchPath 0.70.0 0.70.0-r1: Search for a file in an environment variable path
 dev-perl/File-Share 0.250.0: Extend File::ShareDir to local libraries
-dev-perl/File-ShareDir 1.104.0: Locate per-dist and per-module shared files
-dev-perl/File-ShareDir-Install 0.110.0: Install shared files
+dev-perl/File-ShareDir 1.104.0 1.116.0: Locate per-dist and per-module shared files
+dev-perl/File-ShareDir-Install 0.110.0 0.130.0: Install shared files
 dev-perl/File-ShareDir-ProjectDistDir 1.0.9: Simple set-and-forget using of a '/share' directory in your projects root
 dev-perl/File-Slurp 9999.270.0: Simple and Efficient Reading/Writing/Modifying of Complete Files
 dev-perl/File-Slurp-Tiny 0.4.0: A simple, sane and efficient file slurper
@@ -6737,7 +6737,7 @@ dev-perl/Linux-PipeMagic 0.30.0: Perl extension to use the zero copy IO syscalls
 dev-perl/Linux-Smaps 0.130.0: Perl interface to /proc/PID/smaps
 dev-perl/Lirc-Client 2.20.0: A client library for the Linux Infrared Remote Control (LIRC)
 dev-perl/List-AllUtils 0.90.0 0.140.0: Combines many List::* utility modules in one bite-sized package
-dev-perl/List-MoreUtils 0.418.0 0.419.0 0.426.0: Provide the missing functionality from List::Util
+dev-perl/List-MoreUtils 0.418.0 0.419.0 0.426.0 0.428.0: Provide the missing functionality from List::Util
 dev-perl/List-MoreUtils-XS 0.418.0 0.426.0 0.428.0: Compiled List::MoreUtils functions
 dev-perl/List-SomeUtils 0.560.0: A colletion of List utilities missing from List::Util
 dev-perl/List-SomeUtils-XS 0.550.0: XS implementation for List::SomeUtils
@@ -11351,7 +11351,7 @@ games-fps/doom-data 1.9: The IWAD used by the shareware version of Doom
 games-fps/doomsday 2.1.1-r1: A modern gaming engine for Doom, Heretic, and Hexen
 games-fps/duke3d-data 1.0-r4: Duke Nukem 3D data files
 games-fps/duke3d-demodata 1.3: Duke Nukem 3D 1.3d shareware data
-games-fps/eduke32 20200824.9249: An open source engine port of the classic PC first person shooter Duke Nukem 3D
+games-fps/eduke32 20200829.9253: An open source engine port of the classic PC first person shooter Duke Nukem 3D
 games-fps/etqw-bin 1.5-r2: Enemy Territory: Quake Wars
 games-fps/etqw-data 1.0-r1: Enemy Territory: Quake Wars data files
 games-fps/etqw-demo 2.0_p1-r2: Enemy Territory: Quake Wars demo
