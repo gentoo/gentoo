@@ -803,10 +803,7 @@ sci-mathematics/geogebra
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-03-27)
 # Vulnerable old version of icedtea-web #711392
-# new version is not packaged yet
-# package is not going away anytime soon, just masked
-# for security. unmask as needed.
-dev-java/icedtea-web
+<dev-java/icedtea-web-1.8.4
 
 # Eray Aslan <eras@gentoo.org> (2020-03-09)
 # Mask experimental software
