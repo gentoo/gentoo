@@ -29,11 +29,13 @@
  void InitJSNormLookupTable(void);
 --- a/src/preprocessors/spp_session.h
 +++ b/src/preprocessors/spp_session.h
-@@ -28,6 +28,8 @@
+@@ -28,6 +28,10 @@
  #include "decode.h"
  #include "session_common.h"
  
++#ifdef PERF_PROFILING
 +extern PreprocStats sessionPerfStats;
++#endif
 +
  /* list of function prototypes for this preprocessor */
  void SetupSessionManager(void);
@@ -97,10 +99,12 @@
  
 --- a/src/detection-plugins/sp_session.h
 +++ b/src/detection-plugins/sp_session.h
-@@ -29,5 +29,6 @@
+@@ -29,5 +29,8 @@
  void SetupSession(void);
  uint32_t SessionHash(void *d);
  int SessionCompare(void *l, void *r);
++#ifdef PERF_PROFILING
 +extern PreprocStats sp_sessionPerfStats;
++#endif
  
  #endif  /* __SP_SESSION_H__ */
