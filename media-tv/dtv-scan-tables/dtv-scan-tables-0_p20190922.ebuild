@@ -18,7 +18,7 @@ HOMEPAGE="https://linuxtv.org/"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 
-BDEPEND=">=media-tv/v4l-utils-1.4"
+BDEPEND=">=media-tv/v4l-utils-1.4[dvb(+)]"
 
 DOCS=( README )
 

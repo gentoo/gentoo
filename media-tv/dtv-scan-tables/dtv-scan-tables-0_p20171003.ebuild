@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ HOMEPAGE="https://linuxtv.org/"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 
-DEPEND=">=media-tv/v4l-utils-1.4"
+DEPEND=">=media-tv/v4l-utils-1.4[dvb(+)]"
 
 DOCS=( README )
 
