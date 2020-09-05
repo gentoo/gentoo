@@ -1931,7 +1931,7 @@ app-emulation/libguestfs 1.36.13 1.36.15 1.38.6: Tools for accessing, inspect an
 app-emulation/libguestfs-appliance 1.36.1 1.38.0: VM appliance disk image used in libguestfs package
 app-emulation/libpod 1.8.2 1.9.3 2.0.0 2.0.1 2.0.2 2.0.3 2.0.4 2.0.5: Library and podman tool for running OCI-based containers in Pods
 app-emulation/libspectrum 1.4.4: Spectrum emulation library
-app-emulation/libvirt 6.2.0-r2 6.5.0 9999: C toolkit to manipulate virtual machines
+app-emulation/libvirt 6.2.0-r2 6.5.0-r1 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
 app-emulation/lxc 4.0.3 4.0.4: LinuX Containers userspace utilities
@@ -10620,7 +10620,7 @@ dev-util/ccache 3.7.10 3.7.11: fast compiler cache
 dev-util/cccc 3.1.5-r1: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccls 0.20190823.5 0.20190823.6 9999: C/C++/ObjC language server
 dev-util/cflow 1.6: C function call hierarchy analyzer
-dev-util/cgdb 0.6.8 0.7.0-r1 9999: A curses front-end for GDB, the GNU debugger
+dev-util/cgdb 0.6.8 0.7.0-r2 0.7.1 9999: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.3: Minimal command-line source browsing tool similar to cscope
 dev-util/checkbashisms 2.19.7 2.20.1 2.20.2 2.20.3 2.20.4: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
@@ -17561,7 +17561,7 @@ sys-fs/reiserfsprogs 3.6.25 3.6.27: Reiserfs Utilities
 sys-fs/safecopy 1.7: Tool for fault-tolerant data recovery from damaged (io-errors) devices or files
 sys-fs/sandboxfs 0.1.1 0.2.0: A virtual file system for sandboxing
 sys-fs/shake 1.0: Defragmenter that runs in userspace while the system is used
-sys-fs/simple-mtpfs 0.3.0: Simple MTP fuse filesystem driver
+sys-fs/simple-mtpfs 0.3.0 0.4.0: Simple MTP fuse filesystem driver
 sys-fs/snapraid 11.4 11.5: a backup program for disk array for home media centers
 sys-fs/squashfs-tools 4.4 9999: tools to create and extract Squashfs filesystems
 sys-fs/squashfs-tools-ng 1.0.1 9999: A new set of tools for working with SquashFS images
