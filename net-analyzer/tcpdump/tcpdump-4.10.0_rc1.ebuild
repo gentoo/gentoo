@@ -16,8 +16,9 @@ SRC_URI="
 
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="+drop-root libressl smi ssl samba suid test"
+IUSE="+drop-root libressl +smi +ssl +samba suid test"
 RESTRICT="!test? ( test )"
+REQUIRED_USE="test? ( samba )"
 
 RDEPEND="
 	net-libs/libpcap
