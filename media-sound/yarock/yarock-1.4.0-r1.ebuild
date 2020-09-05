@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,7 @@ RDEPEND="
 	dev-qt/qtxml:5
 	media-libs/taglib
 	x11-libs/libX11
-	phonon? ( >=media-libs/phonon-4.10.1 )
+	phonon? ( >=media-libs/phonon-4.11.0 )
 	vlc? ( media-video/vlc:= )
 "
 DEPEND="${RDEPEND}
@@ -40,6 +40,14 @@ DEPEND="${RDEPEND}
 DOCS=( CHANGES.md README.md )
 
 S="${WORKDIR}/${MY_P}"
+
+src_prepare() {
+	cmake_src_prepare
+	sed -e "/^install.*org.yarock.appdata.xml/s:share/appdata:share/metadata:" \
+		-i CMakeLists.txt || die
+	sed -e "/^Version/d" \
+		-i data/org.yarock.desktop || die
+}
 
 src_configure() {
 	local mycmakeargs=(
