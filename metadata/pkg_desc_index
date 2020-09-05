@@ -4765,7 +4765,7 @@ dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
 dev-java/icedtea 3.16.0: A harness to build OpenJDK using Free Software build tools and dependencies
 dev-java/icedtea-bin 3.16.0: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
-dev-java/icedtea-web 1.6.1-r1 1.6.2: FOSS Java browser plugin and Web Start implementation
+dev-java/icedtea-web 1.6.1-r1 1.6.2 1.8.4: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 54.1.1 55.1 56.1: A set of Java libraries providing Unicode and Globalization support
 dev-java/ini4j 0.5.1 0.5.2: Simple Java API Windows style .ini file handling
 dev-java/invokebinder 1.6: Provide a friendly DSL for binding method handles
@@ -13837,7 +13837,7 @@ media-sound/mikmod 3.2.8: A console MOD-Player based on libmikmod
 media-sound/milkytracker 1.02.00-r1: FastTracker 2 inspired music tracker
 media-sound/mixxx 2.2.4 9999: Advanced Digital DJ tool based on Qt
 media-sound/mmix 0.3-r1: A soundcard mixer for the OSS driver
-media-sound/moc 2.5.2-r1 2.6_alpha3-r1 2.6_alpha3-r2: Music On Console - ncurses interface for playing audio files
+media-sound/moc 2.5.2-r1 2.6_alpha3-r2: Music On Console - ncurses interface for playing audio files
 media-sound/modplugtools 0.5.3: libmodplug based module players modplug123 and modplugplay
 media-sound/mp32ogg 0.11-r6: A perl script to convert MP3 files to Ogg Vorbis files
 media-sound/mp3_check 1.98-r1: MP3 consistency checker
