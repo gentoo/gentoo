@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit java-pkg-2 java-ant-2 xdg-utils
+inherit java-pkg-2 java-ant-2 xdg
 
 MY_PN="${PN^}"
 
@@ -68,14 +68,4 @@ src_install() {
 
 	doman "resources/installers/linux/${PN}.1"
 	einstalldocs
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
 }
