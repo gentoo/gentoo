@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!--maintainer-needed-->
+	<maintainer type="person">
+		<email>telans@posteo.de</email>
+		<name>Theo Anderson</name>
+	</maintainer>
+	<maintainer type="project">
+		<name>Proxy Maintainers</name>
+		<email>proxy-maint@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">kilobyte/compsize</remote-id>
+	</upstream>
 </pkgmetadata>
