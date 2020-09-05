@@ -15106,7 +15106,7 @@ net-misc/dropbear 2020.80-r1: small SSH 2 client/server designed for small memor
 net-misc/dropbox 98.4.158 103.4.383 104.4.175: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 19 2020.03.04: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/econnman 1.1-r1: ConnMan User Interface written with EFL & python
-net-misc/efax 0.9a-r4 0.9a_p19_p1: A simple fax program for single-user systems
+net-misc/efax 0.9a_p19_p1: A simple fax program for single-user systems
 net-misc/electron-cash 4.0.2-r2: Lightweight Bitcoin Cash client (BCH fork of Electrum)
 net-misc/electrum 3.3.8 4.0.2: User friendly Bitcoin client
 net-misc/electrum-ltc 3.3.4.1-r2: Litecoin thin client
