@@ -569,7 +569,7 @@ app-admin/mcelog 170: A tool to log and decode Machine Check Exceptions
 app-admin/mcollective 2.12.4 2.12.5: Framework to build server orchestration or parallel job execution systems
 app-admin/mei-amt-check 0_p20170515: AMT status checker
 app-admin/metalog 3-r2 20181125 20200113-r1: A highly configurable replacement for syslogd/klogd
-app-admin/mktwpol 1.0.0 1.0.1: Bash scripts to install tripwire and generate tripwire policy files
+app-admin/mktwpol 1.0.1: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1 6.0.0.381_p1: MongoDB MMS agents
 app-admin/mongo-tools 3.6.13 3.6.17 4.0.12 4.0.16 4.0.19 4.2.3 4.2.6 4.2.8: A high-performance, open source, schema-free document-oriented database
 app-admin/monit 5.25.3 5.26.0 5.27.0: Monitoring and managing daemons or similar programs running on a Unix system
@@ -2044,7 +2044,7 @@ app-forensics/afflib 3.7.18: Library that implements the AFF image standard
 app-forensics/afl 2.56b 2.57b: american fuzzy lop - compile-time instrumentation fuzzer
 app-forensics/aide 0.16-r1 0.16.2_p20200614: AIDE (Advanced Intrusion Detection Environment) is a file integrity checker
 app-forensics/air 2.0.0-r2: A GUI front-end to dd/dc3dd
-app-forensics/chkrootkit 0.52 0.53: Tool to locally check for signs of a rootkit
+app-forensics/chkrootkit 0.53: Tool to locally check for signs of a rootkit
 app-forensics/cmospwd 5.1-r1: CmosPwd decrypts password stored in cmos used to access BIOS SETUP
 app-forensics/dfxml 20170921-r1 99999999: Digital Forensics XML
 app-forensics/examiner 0.5-r3: Utilizes the objdump command to disassemble and comment foreign binaries
@@ -14963,7 +14963,7 @@ net-mail/cyrus-imapd 3.0.10-r1 3.0.11 3.0.13: The Cyrus IMAP Server
 net-mail/dbmail 3.2.3-r1 3.2.3-r2: Fast and scalable sql based email services
 net-mail/dot-forward 0.71-r4: reads sendmail's .forward files under qmail
 net-mail/dovecot 2.2.36.4 2.3.7.2 2.3.10.1 2.3.11.3: An IMAP and POP3 server written with security primarily in mind
-net-mail/email 3.1.3 3.1.3-r1: Advanced CLI tool for sending email
+net-mail/email 3.1.3-r1: Advanced CLI tool for sending email
 net-mail/eps 1.7-r1: Inter7 Email Processing and mht System library
 net-mail/ezmlm-idx 7.0.0-r3: Simple yet powerful mailing list manager for qmail
 net-mail/fdm 1.9 2.0: fetch, filter and deliver mail
@@ -17772,7 +17772,7 @@ sys-process/minit 0.10-r1: a small yet feature-complete init
 sys-process/nmon 16g 16i 16j 16m: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.12 2.0.13 9999: Utilities and libraries for NUMA systems
 sys-process/numad 0.5-r3 9999: The NUMA daemon that manages application locality
-sys-process/parallel 20200622 20200722 20200822: A shell tool for executing jobs in parallel locally or on remote machines
+sys-process/parallel 20200722 20200822: A shell tool for executing jobs in parallel locally or on remote machines
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.4: A utility for parallelizing execution of shell functions
 sys-process/procenv 0.51: command-line utility to show process environment
