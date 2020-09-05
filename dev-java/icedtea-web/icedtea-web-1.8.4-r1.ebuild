@@ -6,7 +6,7 @@ EAPI=7
 README_GENTOO_SUFFIX="-r2"
 CRATES="dunce-0.1.1"
 
-inherit autotools cargo readme.gentoo-r1
+inherit autotools bash-completion-r1 cargo readme.gentoo-r1
 
 DESCRIPTION="FOSS Java browser plugin and Web Start implementation"
 HOMEPAGE="https://github.com/AdoptOpenJDK/IcedTea-Web"
@@ -59,6 +59,8 @@ src_configure() {
 		--without-tagsoup
 		$(use_enable doc docs)
 	)
+	unset _JAVA_OPTIONS
+	export bashcompdir="$(get_bashcompdir)" # defaults to /etc if not found in pkg-config
 	export CARGO_HOME="${ECARGO_HOME}"
 	CONFIG_SHELL="${EPREFIX}/bin/bash" econf "${myconf[@]}"
 }
