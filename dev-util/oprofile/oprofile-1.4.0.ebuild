@@ -20,7 +20,7 @@ BDEPEND="
 CDEPEND="
 	>=dev-libs/popt-1.7-r1
 	sys-libs/binutils-libs:=
-	>=sys-libs/glibc-2.3.2-r1
+	elibc_glibc? ( >=sys-libs/glibc-2.3.2-r1 )
 	ppc64? ( dev-libs/libpfm )
 "
 DEPEND="${CDEPEND}
@@ -46,6 +46,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	eapply "${FILESDIR}/musl.patch"
 	# bug 723092
 	sed -i 's/==/=/g' configure.ac || die
 
