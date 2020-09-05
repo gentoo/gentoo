@@ -23,7 +23,7 @@ RESTRICT="test"
 
 BDEPEND="
 	app-arch/zip
-	>=virtual/jdk-1.8
+	virtual/jdk:1.8
 	virtual/pkgconfig
 	virtual/rust
 	doc? ( sys-devel/bc )
