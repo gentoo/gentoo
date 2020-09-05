@@ -68,7 +68,7 @@ src_prepare() {
 		-e 's|pkg-config|${PKG_CONFIG}|g' \
 		configure || die
 
-	cp "${FILESDIR}"/chronyd.conf-r1 "${T}"/chronyd.conf || die
+	cp "${FILESDIR}"/chronyd.conf "${T}"/chronyd.conf || die
 }
 
 src_configure() {
