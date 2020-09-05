@@ -8,6 +8,8 @@ app-editors/emacs gui
 # Yixun Lan <dlan@gentoo.org> (2020-09-01)
 # Dependencies not keyworded
 dev-libs/jansson doc
+# Dependencies not keyworded, require by dev-perl/Net-LibIDN, #737594
+net-dns/libidn mono
 
 # Jakov Smolic <jakov.smolic@sartura.hr> (2020-08-14)
 # Large amount of missing keywords
