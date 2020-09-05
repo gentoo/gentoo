@@ -34,6 +34,13 @@ PATCHES=("${FILESDIR}"/${P}-STRINGS.patch)
 
 multilib_src_configure() {
 	tc-export CC
+
+	if [[ ${ABI} == x86 || ${ABI} == amd64 ]]; then
+		export AS="nasm"
+	else
+		export AS="${CC}"
+	fi
+
 	local asm_conf=""
 
 	if [[ ${ABI} == x86* ]] && { use pic || use !cpu_flags_x86_sse ; } || [[ ${ABI} == "x32" ]] || [[ ${CHOST} == armv5* ]] || [[ ${ABI} == ppc* ]] && { use !cpu_flags_ppc_altivec ; }; then
