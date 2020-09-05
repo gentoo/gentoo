@@ -5,7 +5,7 @@ EAPI=7
 
 inherit desktop toolchain-funcs xdg-utils
 
-EGIT_COMMIT="175ae4cd5"
+EGIT_COMMIT="156963ddc"
 MY_BUILD="$(ver_cut 2)"
 MY_DATE="$(ver_cut 1)"
 MY_PV_HRP="5.4"
@@ -31,7 +31,7 @@ SRC_URI="
 LICENSE="BUILDLIC GPL-2 HRP"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="cdinstall demo flac fluidsynth gtk hrp offensive opengl opl png psx sc-55 server sdk timidity tools vorbis voxels vpx xmp"
+IUSE="cdinstall demo fluidsynth gtk hrp offensive opengl opl png psx sc-55 server sdk timidity tools vorbis voxels vpx xmp"
 REQUIRED_USE="
 	cdinstall? ( !demo )
 	demo? ( !cdinstall )
@@ -54,10 +54,10 @@ RESTRICT="bindist test"
 S="${WORKDIR}/${PN}_${MY_DATE}-${MY_BUILD}-${EGIT_COMMIT}"
 
 RDEPEND="
-	media-libs/libsdl2[joystick,opengl?,sound,video]
-	media-libs/sdl2-mixer[flac?,fluidsynth?,midi,timidity?,vorbis?]
+	media-libs/flac
+	media-libs/libsdl2[alsa,joystick,opengl?,sound,video]
+	media-libs/sdl2-mixer[flac,fluidsynth?,midi,timidity?,vorbis?]
 	sys-libs/zlib
-	flac? ( media-libs/flac )
 	gtk? ( x11-libs/gtk+:2 )
 	opengl? (
 		virtual/glu
@@ -128,7 +128,7 @@ src_compile() {
 		DEBUGANYWAY=0
 		F_JUMP_TABLES=""
 		FORCEDEBUG=0
-		HAVE_FLAC=$(usex flac 1 0)
+		HAVE_FLAC=1
 		HAVE_GTK2=$(usex gtk 1 0)
 		HAVE_VORBIS=$(usex vorbis 1 0)
 		HAVE_XMP=$(usex xmp 1 0)
