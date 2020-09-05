@@ -3,8 +3,7 @@
 
 EAPI=7
 
-# ready for 3_9, but fastimport isn't yet, #733838
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit distutils-r1
 

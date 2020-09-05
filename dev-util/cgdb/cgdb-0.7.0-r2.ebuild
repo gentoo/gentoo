@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,6 +36,11 @@ RDEPEND="
 	sys-devel/gdb"
 
 DOCS=( AUTHORS ChangeLog FAQ INSTALL NEWS README.md )
+
+PATCHES=(
+	# Bugs: #730138, #678006, #630512, #682386
+	"${FILESDIR}/${PN}-test.patch"
+)
 
 src_prepare() {
 	default
