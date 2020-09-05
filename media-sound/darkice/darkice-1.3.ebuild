@@ -27,6 +27,10 @@ DEPEND="${RDEPEND}"
 REQUIRED_USE="|| ( aac aacplus mp3 opus twolame vorbis )
 		|| ( alsa jack pulseaudio )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-include.patch"
+)
+
 src_configure() {
 	local myeconfargs=(
 		$(use_enable debug)
