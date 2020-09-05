@@ -5,6 +5,10 @@
     <email>idl0r@gentoo.org</email>
     <name>Christian Ruppert</name>
   </maintainer>
+  <maintainer type="person">
+    <email>graaff@gentoo.org</email>
+    <name>Hans de Graaff</name>
+  </maintainer>
   <maintainer type="project">
     <email>sysadmin@gentoo.org</email>
     <name>Gentoo Sysadmin Project</name>
