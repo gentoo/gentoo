@@ -5671,7 +5671,7 @@ dev-libs/skalibs 2.3.2.0 2.6.1.0 2.6.3.0 2.6.4.0 2.7.0.0 2.8.1.0 2.9.1.0: Genera
 dev-libs/smack 0.5.0: low-level IO storage which packs data into sorted compressed blobs
 dev-libs/snowball-stemmer 0.20140325: All you need to include the snowball stemming algorithms into a C project
 dev-libs/softhsm 2.5.0 2.6.1: A software PKCS#11 implementation
-dev-libs/sord 0.16.4: Library for storing RDF data in memory
+dev-libs/sord 0.16.4-r1 9999: Library for storing RDF data in memory
 dev-libs/spdlog 1.5.0-r1 1.6.1 1.6.1-r1 1.7.0 9999: Very fast, header only, C++ logging library
 dev-libs/spsdeclib 5.1-r1: Kryoflux SPS Decoder Library
 dev-libs/squareball 0.2.0 9999: A general-purpose library for C99
