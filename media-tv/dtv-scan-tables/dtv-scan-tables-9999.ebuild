@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ if [[ ${PV#9999} != ${PV} ]]; then
 else
 	COMMIT="f07bde777d4d"
 	SRC_URI="https://linuxtv.org/downloads/dtv-scan-tables/dtv-scan-tables-${PV:3:4}-${PV:7:2}-${PV:9:2}-${COMMIT}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 	S="${WORKDIR}/usr/share/dvb"
 fi
 
@@ -18,7 +18,7 @@ HOMEPAGE="https://linuxtv.org/"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 
-BDEPEND=">=media-tv/v4l-utils-1.4"
+BDEPEND=">=media-tv/v4l-utils-1.4[dvb(+)]"
 
 DOCS=( README )
 

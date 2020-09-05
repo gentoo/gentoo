@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ppc ~ppc64 ~sparc x86"
 IUSE="qt5 udev"
 
-RDEPEND=">=media-libs/libv4l-${PV}
+RDEPEND=">=media-libs/libv4l-${PV}[dvb(+)]
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
