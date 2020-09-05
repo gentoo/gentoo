@@ -2360,7 +2360,7 @@ app-misc/crunch 3.6: A wordlist generator
 app-misc/cstream 3.1.1-r1: general-purpose stream-handling tool like UNIX dd
 app-misc/cw 1.0.16-r3: A non-intrusive real-time ANSI color wrapper for common unix-based commands
 app-misc/dailystrips 1.0.28-r3: dailystrips automatically downloads your favorite online comics from the web
-app-misc/datefudge 1.22: A program (and preload library) to fake system date
+app-misc/datefudge 1.22 1.24: A program (and preload library) to fake system date
 app-misc/dateutils 0.4.6 0.4.7 9999: command line date and time utilities
 app-misc/datovka 4.15.0 4.15.1: GUI to access the Czech data box e-government system
 app-misc/ddate 0.2.2 0.2.2_p20160627: Perpetual date converter from gregorian to poee calendar
@@ -13206,7 +13206,7 @@ media-libs/librosprite 0.1.3-r2: framebuffer abstraction library, written in C
 media-libs/libsamplerate 0.1.9 0.1.9-r1 9999: Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio
 media-libs/libsbsms 2.0.2-r1: A library for high quality time and pitch scale modification
 media-libs/libsdl 1.2.15-r9: Simple Direct Media Layer
-media-libs/libsdl2 2.0.10-r1 2.0.12-r1: Simple Direct Media Layer
+media-libs/libsdl2 2.0.10-r1 2.0.12-r1 2.0.12-r2: Simple Direct Media Layer
 media-libs/libsfml 2.5.1: Simple and Fast Multimedia Library (SFML)
 media-libs/libshout 2.4.1-r2 2.4.2 2.4.3: library for connecting and sending data to icecast servers
 media-libs/libsidplay 1.36.59-r2 2.1.1-r5: C64 SID player library
