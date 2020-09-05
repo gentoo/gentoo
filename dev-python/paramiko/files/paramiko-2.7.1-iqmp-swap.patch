@@ -1,0 +1,23 @@
+From 81064206bf3cec2ca4372257ff138481e1227b91 Mon Sep 17 00:00:00 2001
+From: Alex Gaynor <alex.gaynor@gmail.com>
+Date: Sat, 18 Jul 2020 14:18:07 -0400
+Subject: [PATCH] fix RSA key loading: p and q were being swapped
+
+This currently works, because OpenSSL simply re-computes iqmp when it doesn't match the p & q values. However a future pyca/cryptography patch enforces this.
+---
+ paramiko/rsakey.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/paramiko/rsakey.py b/paramiko/rsakey.py
+index 9707b268c..172f42d41 100644
+--- a/paramiko/rsakey.py
++++ b/paramiko/rsakey.py
+@@ -189,7 +189,7 @@ def _decode_key(self, data):
+             except ValueError as e:
+                 raise SSHException(str(e))
+         elif pkformat == self._PRIVATE_KEY_FORMAT_OPENSSH:
+-            n, e, d, iqmp, q, p = self._uint32_cstruct_unpack(data, "iiiiii")
++            n, e, d, iqmp, p, q = self._uint32_cstruct_unpack(data, "iiiiii")
+             public_numbers = rsa.RSAPublicNumbers(e=e, n=n)
+             key = rsa.RSAPrivateNumbers(
+                 p=p,
