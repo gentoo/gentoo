@@ -20,9 +20,9 @@ REQUIRED_USE="
 
 CDEPEND="
 	!media-gfx/fbi
-	app-text/poppler
 	>=media-libs/fontconfig-2.2
 	>=media-libs/freetype-2.0
+	app-text/poppler
 	media-libs/libepoxy
 	media-libs/libexif
 	media-libs/mesa[X(+)]
@@ -38,7 +38,7 @@ CDEPEND="
 	tiff? ( media-libs/tiff:* )
 	webp? ( media-libs/libwebp )
 	X? (
-		>=x11-libs/motif-2.3:0
+		>=x11-libs/motif-2.3:0[xft]
 		x11-libs/libX11
 		x11-libs/libXpm
 		x11-libs/libXt
