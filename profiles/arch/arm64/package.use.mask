@@ -1,9 +1,14 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2020-09-05)
+# nvidia-texture-tools not useful here
+media-libs/devil nvtt
+games-strategy/0ad nvtt
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-08-20)
 # zfs is keyworded on arm64
-sys-boot/grub libzfs
+sys-boot/grub -libzfs
 
 # Sam James <sam@gentoo.org> (2020-08-19)
 # Needed for openstack, let's come back
