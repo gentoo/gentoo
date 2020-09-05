@@ -13,6 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-linux"
 
 RDEPEND="
+	media-libs/imlib2[X]
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXt
