@@ -10,8 +10,10 @@ inherit cmake xdg check-reqs
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${PN}/MuseScore.git"
+	KEYWORDS=""
 else
 	SRC_URI="https://github.com/musescore/MuseScore/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 	S="${WORKDIR}/MuseScore-${PV}"
 fi
 
@@ -23,7 +25,6 @@ SRC_URI+=" https://dev.gentoo.org/~fordfrog/distfiles/MuseScore_General-0.2.0.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="alsa debug jack mp3 osc omr portaudio portmidi pulseaudio +sf3 sfz webengine"
 REQUIRED_USE="portmidi? ( portaudio )"
 
