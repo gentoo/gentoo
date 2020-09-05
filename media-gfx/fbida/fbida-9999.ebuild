@@ -13,12 +13,13 @@ SRC_URI="
 LICENSE="GPL-2 IJG"
 SLOT="0"
 KEYWORDS=""
+
 CDEPEND="
 	!media-gfx/fbi
 	>=media-libs/fontconfig-2.2
 	>=media-libs/freetype-2.0
 	>=x11-libs/motif-2.3:0[xft]
-	app-text/poppler
+	app-text/poppler[cairo]
 	media-libs/giflib:=
 	media-libs/libepoxy
 	media-libs/libexif
@@ -34,6 +35,8 @@ CDEPEND="
 	x11-libs/libXpm
 	x11-libs/libXt
 	x11-libs/libdrm
+	x11-libs/libxkbcommon
+	x11-libs/pixman
 "
 DEPEND="
 	${CDEPEND}
