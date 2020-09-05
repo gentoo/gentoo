@@ -9,7 +9,7 @@ CRATES="dunce-0.1.1"
 inherit autotools cargo readme.gentoo-r1
 
 DESCRIPTION="FOSS Java browser plugin and Web Start implementation"
-HOMEPAGE="http://icedtea.classpath.org"
+HOMEPAGE="https://github.com/AdoptOpenJDK/IcedTea-Web"
 SRC_URI="https://github.com/AdoptOpenJDK/${PN}/archive/${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
 LICENSE="GPL-2 GPL-2-with-linking-exception LGPL-2"
