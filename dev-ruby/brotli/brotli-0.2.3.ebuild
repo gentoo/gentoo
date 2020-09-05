@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby24 ruby25 ruby26 ruby27"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
@@ -28,6 +28,12 @@ DEPEND+=" >=app-arch/brotli-1.0.7"
 
 # Depends on the test data in app-arch/brotli
 RESTRICT="test"
+
+all_ruby_prepare() {
+	sed -e 's/git ls-files -z -- spec/find spec -print0/' \
+		-e 's/git ls-files -z/find . -print0/' \
+		-i ${RUBY_FAKEGEM_GEMSPEC} || die
+}
 
 each_ruby_configure() {
 	${RUBY} -Cext/brotli extconf.rb || die
