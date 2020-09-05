@@ -1,4 +1,4 @@
-# Copyright 2004-2015 Gentoo Foundation
+# Copyright 2004-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-pkg-simple.eclass
@@ -10,11 +10,10 @@
 # @DESCRIPTION:
 # This class is intended to build pure Java packages from Java sources
 # without the use of any build instructions shipped with the sources.
-# There is no support for resources besides the generated class files,
-# or for generating source files, or for controlling the META-INF of
-# the resulting jar, although these issues may be addressed by an
-# ebuild by putting corresponding files into the target directory
-# before calling the src_compile function of this eclass.
+# There is no support for generating source files, or for controlling
+# the META-INF of the resulting jar, although these issues may be
+# addressed by an ebuild by putting corresponding files into the target
+# directory before calling the src_compile function of this eclass.
 
 inherit java-utils-2
 
@@ -73,7 +72,7 @@ fi
 # @ECLASS-VARIABLE: JAVA_NEEDS_TOOLS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# add tools.jar to the gentoo.classpath. Should only be used
+# Add tools.jar to the gentoo.classpath. Should only be used
 # for build-time purposes, the dependency is not recorded to
 # package.env.
 
@@ -188,7 +187,7 @@ fi
 # It is almost equivalent to ${JAVA_RESOURCE_DIRS} in src_test.
 
 # @FUNCTION: java-pkg-simple_getclasspath
-# @USAGE: java-pkg-simple_getclasspath [--runtime-only]
+# @USAGE: java-pkg-simple_getclasspath
 # @INTERNAL
 # @DESCRIPTION:
 # Get proper ${classpath} from ${JAVA_GENTOO_CLASSPATH_EXTRA},
@@ -196,12 +195,12 @@ fi
 # ${JAVA_GENTOO_CLASSPATH}. We use it inside
 # java-pkg-simple_src_compile and java-pkg-simple_src_test.
 #
-# Note that if you need to define a "classpath" variable before
+# Note that the variable "classpath" needs to be defined before
 # calling this function.
 java-pkg-simple_getclasspath() {
 	debug-print-function ${FUNCNAME} $*
 
-	local denpendency
+	local dependency
 	local deep_jars="--with-dependencies"
 	local buildonly_jars="--build-only"
 
@@ -242,7 +241,7 @@ java-pkg-simple_getclasspath() {
 # @INTERNAL
 # @DESCRIPTION:
 # use japi-compliance-checker the ensure the compabitily of \*.class files,
-# Besides, use pkgdiff to ensure the compabilty of resources.
+# Besides, use pkgdiff to ensure the compatibility of resources.
 java-pkg-simple_test_with_pkgdiff_() {
 	debug-print-function ${FUNCNAME} $*
 
@@ -418,7 +417,7 @@ java-pkg-simple_src_test() {
 	local tests_to_run classpath
 
 	# do not continue if the USE FLAG 'test' is explicitly unset
-	# or no ${JAVA_TESTING_FRSerializingCAMEWORKS} specified
+	# or no ${JAVA_TESTING_FRAMEWORKS} is specified
 	if ! has test ${JAVA_PKG_IUSE}; then
 		return
 	elif ! use test; then
@@ -459,7 +458,7 @@ java-pkg-simple_src_test() {
 	tests_to_run=${tests_to_run//\//.}
 
 	# exclude extra test classes, usually corner cases
-	#   that the code above cannot handle
+	# that the code above cannot handle
 	for class in "${JAVA_TEST_EXCLUDES[@]}"; do
 		tests_to_run=${tests_to_run//${class}}
 	done
