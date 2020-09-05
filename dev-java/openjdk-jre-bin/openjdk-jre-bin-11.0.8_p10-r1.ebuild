@@ -22,7 +22,7 @@ DESCRIPTION="Prebuilt Java JRE binaries provided by AdoptOpenJDK"
 HOMEPAGE="https://adoptopenjdk.net"
 LICENSE="GPL-2-with-classpath-exception"
 KEYWORDS="~amd64"
-IUSE="alsa cups +gentoo-vm headless-awt nsplugin selinux webstart"
+IUSE="alsa cups +gentoo-vm headless-awt selinux"
 
 RDEPEND="
 	media-libs/fontconfig:1.0
@@ -41,9 +41,6 @@ RDEPEND="
 		x11-libs/libXrender
 		x11-libs/libXtst
 	)"
-
-PDEPEND="webstart? ( >=dev-java/icedtea-web-1.6.1:0 )
-	nsplugin? ( >=dev-java/icedtea-web-1.6.1:0[nsplugin] )"
 
 RESTRICT="preserve-libs splitdebug"
 QA_PREBUILT="*"
