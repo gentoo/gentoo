@@ -13368,7 +13368,7 @@ media-libs/zxing-cpp 1.0.8-r1 1.1.0: C++ Multi-format 1D/2D barcode image proces
 media-plugins/alsa-plugins 1.2.2: ALSA extra plugins
 media-plugins/alsaequal 0.7.1: A real-time adjustable equalizer plugin for ALSA
 media-plugins/amb-plugins 0.8.1-r1: AMB-plugins ladspa plugin package. Filters by Fons Adriaensen
-media-plugins/ams-lv2 1.2.1 1.2.2: A port of the AMS internal modules to LV2 plugins to create modular synthesizers
+media-plugins/ams-lv2 1.2.2: A port of the AMS internal modules to LV2 plugins to create modular synthesizers
 media-plugins/audacious-plugins 3.10.1-r3 4.0.5 9999: Lightweight and versatile audio player
 media-plugins/calf 0.90.3 9999: A set of open source instruments and effects for digital audio workstations
 media-plugins/caps-plugins 0.9.24 0.9.26: The CAPS Audio Plugin Suite - LADSPA plugin suite
@@ -13746,7 +13746,7 @@ media-sound/dir2ogg 0.13-r1: Converts mp3, m4a, wma, and wav files to Ogg Vorbis
 media-sound/drumstick 1.1.3: Qt/C++ wrapper for ALSA sequencer
 media-sound/dvda-author 10.06-r1: Author a DVD-Audio DVD
 media-sound/easytag 2.4.3-r1: GTK+ utility for editing MP2, MP3, MP4, FLAC, Ogg and other media tags
-media-sound/ecasound 2.6.0-r1 2.9.3: a package for multitrack audio processing
+media-sound/ecasound 2.9.3: a package for multitrack audio processing
 media-sound/elisa 20.04.3 20.08.1: Simple music player by KDE
 media-sound/entagged-tageditor 0.35: Open-source audiofile tagger
 media-sound/erec 2.2.0.1-r1: Shared audio recording server
