@@ -28,7 +28,7 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1)"
 KEYWORDS="amd64 ppc64 x86"
-IUSE="alsa debug cups doc examples headless-awt +jbootstrap nsplugin +pch selinux source webstart"
+IUSE="alsa debug cups doc examples headless-awt +jbootstrap +pch selinux source"
 
 COMMON_DEPEND="
 	media-libs/freetype:2=
@@ -71,11 +71,6 @@ DEPEND="
 		dev-java/openjdk:${SLOT}
 		dev-java/icedtea:${SLOT}
 	)
-"
-
-PDEPEND="
-	webstart? ( >=dev-java/icedtea-web-1.6.1:0 )
-	nsplugin? ( >=dev-java/icedtea-web-1.6.1:0[nsplugin] )
 "
 
 S="${WORKDIR}/jdk${SLOT}u-jdk${MY_PV}"
@@ -223,4 +218,5 @@ src_install() {
 
 pkg_postinst() {
 	java-vm-2_pkg_postinst
+	einfo "JavaWebStart functionality provided by icedtea-web package"
 }
