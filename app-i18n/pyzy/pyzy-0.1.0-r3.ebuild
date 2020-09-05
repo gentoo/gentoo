@@ -16,7 +16,7 @@ SRC_URI="https://dev.gentoo.org/~dlan/distfiles/${P}.tar.xz
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="boost doc opencc"
 
 RDEPEND="dev-db/sqlite:3
