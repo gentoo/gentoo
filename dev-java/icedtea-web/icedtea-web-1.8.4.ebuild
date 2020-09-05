@@ -1,12 +1,12 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
 
-README_GENTOO_SUFFIX="-r1"
+README_GENTOO_SUFFIX="-r2"
 CRATES="dunce-0.1.1"
 
-inherit autotools eutils multilib readme.gentoo-r1 java-pkg-2 cargo xdg-utils
+inherit autotools cargo readme.gentoo-r1
 
 DESCRIPTION="FOSS Java browser plugin and Web Start implementation"
 HOMEPAGE="http://icedtea.classpath.org"
@@ -14,77 +14,75 @@ SRC_URI="https://github.com/AdoptOpenJDK/${PN}/archive/${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
 LICENSE="GPL-2 GPL-2-with-linking-exception LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="doc javascript nsplugin tagsoup test"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+IUSE="doc"
+
+# tests require ton of java deps we don't have packaged/working
+# but rust tests pass.
 RESTRICT="test"
 
-CDEPEND="javascript? ( dev-java/rhino:1.6 )
-	nsplugin? ( >=dev-libs/glib-2.16:2= )
-	tagsoup? ( dev-java/tagsoup:0 )"
-
-DEPEND="${CDEPEND}
+BDEPEND="
 	app-arch/zip
-	>=virtual/jdk-1.7
+	>=virtual/jdk-1.8
 	virtual/pkgconfig
 	virtual/rust
-	nsplugin? ( net-misc/npapi-sdk )
-	test? (	>=dev-java/junit-4.8:4 )"
+	doc? ( sys-devel/bc )
+"
 
-RDEPEND="${CDEPEND}
+RDEPEND="
 	>=app-eselect/eselect-java-0.2.0
-	>=virtual/jre-1.7
-	nsplugin? (
-		!dev-java/oracle-jdk-bin[nsplugin]
-		!dev-java/oracle-jre-bin[nsplugin]
-	)"
+	>=virtual/jre-1.8
+"
 
 S="${WORKDIR}/IcedTea-Web-${P}"
 
+QA_FLAGS_IGNORED="usr/bin/.*"
+
 src_prepare() {
 	eapply_user
-
-	if java-pkg_is-vm-version-ge "1.8" ; then
-		sed -i 's/JAVADOC_OPTS=/\0-Xdoclint:none /g' Makefile.am || die
-	fi
-
+	sed -i 's/JAVADOC_OPTS=/\0-Xdoclint:none /g' Makefile.am || die
 	eautoreconf
 	cargo_gen_config
 }
 
 src_configure() {
-	local tagsoup
-	use tagsoup && tagsoup="$(java-pkg_getjars tagsoup)"
-
-	local config=(
-		# Rename javaws to itweb-javaws as eselect java-vm manages
-		# javaws to prevent a clash with Oracle's implementation.
+	# some functionality (tagsoup rhino) is disabled, because dev-java is
+	# unmaintained and a lot of things simply does not build anymore.
+	# native plugins also disabled, modern browsers no longer support it.
+	local myconf=(
+		--disable-native-plugin
 		--program-transform-name='s/^javaws$/itweb-javaws/'
-		--libdir="${EPREFIX}"/usr/$(get_libdir)/nsbrowser/plugins
-		--with-java="${EPREFIX}"/usr/bin/java
-		--with-jdk-home="${JAVA_HOME}"
+		--with-java="${EPREFIX}/usr/bin/java"
+		--with-jdk-home="${EPREFIX}/etc/java-config-2/current-system-vm"
 		--with-itw-libs=DISTRIBUTION
+		--without-rhino
+		--without-tagsoup
 		$(use_enable doc docs)
-		$(use_enable nsplugin native-plugin)
-		$(use_with javascript rhino)
-		$(use_with tagsoup tagsoup "${tagsoup}")
 	)
-
-	# See bug #573060.
-	xdg_environment_reset
-
-	# Rely on the --with-jdk-home option given above.
-	unset JAVA_HOME JDK_HOME CLASSPATH JAVAC JAVACFLAGS
-
-	CONFIG_SHELL="${BASH}" econf "${config[@]}"
+	export CARGO_HOME="${ECARGO_HOME}"
+	CONFIG_SHELL="${EPREFIX}/bin/bash" econf "${myconf[@]}"
 }
 
 src_compile() {
-	emake CARGO_HOME="${ECARGO_HOME}"
+	# races in makefile
+	emake -j1 #nowarn
 }
 
 src_install() {
 	default
+	rm -v "${ED}/usr/bin/itw-modularjdk.args" || die
+	rename -v '.bash' '' "${ED}/usr/share/bash-completion/completions/"*.bash || die
+	rename -v 'javaws' 'itweb-javaws' "${ED}/usr/share/man/man1/"javaws.1* || die
+	mv -v "${ED}/usr/share/bash-completion/completions/"{javaws,itweb-javaws} || die
+	sed -i 's/javaws/itweb-javaws/g' \
+		"${ED}/usr/share/bash-completion/completions/itweb-javaws" || die
+
 	readme.gentoo_create_doc
+}
+
+src_test() {
+	# we want to override cargo.eclass' src_test
+	:
 }
 
 pkg_postinst() {
