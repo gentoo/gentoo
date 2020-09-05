@@ -8193,7 +8193,7 @@ dev-python/flufl-i18n 2.0.2: A high level API for Python internationalization.
 dev-python/flufl-lock 3.2: NFS-safe file locking with timeouts for POSIX systems.
 dev-python/fonttools 4.1.0: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
 dev-python/fqdn 1.2.0: RFC-compliant FQDN validation and manipulation for Python
-dev-python/freezegun 0.3.15: Let your Python tests travel through time
+dev-python/freezegun 0.3.15 1.0.0: Let your Python tests travel through time
 dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static files
 dev-python/frozendict 1.2: A simple immutable mapping for python
 dev-python/fs 2.4.9-r1: Filesystem abstraction layer
@@ -9043,7 +9043,7 @@ dev-python/serpent 1.30: A simple serialization library based on ast.literal_eva
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.10-r1: Allow customization of the process title
-dev-python/setuptools 46.4.0-r1 46.4.0-r2 49.6.0 50.1.0 50.2.0: Collection of extensions to Distutils
+dev-python/setuptools 46.4.0-r1 46.4.0-r2 49.6.0 50.1.0 50.2.0 50.3.0: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 4.1.2: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.1: A setuptools_scm plugin for git archives
@@ -17595,8 +17595,8 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.60 5.4.61 5.4.62 5.7.17 5.7.18 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.60 5.4.61 5.4.62 5.4.62-r1 5.7.17 5.7.18 5.7.19 5.7.19-r1 5.8.3 5.8.4 5.8.5 5.8.5-r1 5.8.6 5.8.6-r1: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.60 5.4.61 5.4.62 5.4.63 5.7.17 5.7.18 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6 5.8.7: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.60 5.4.61 5.4.62 5.4.62-r1 5.4.63 5.7.17 5.7.18 5.7.19 5.7.19-r1 5.8.3 5.8.4 5.8.5 5.8.5-r1 5.8.6 5.8.6-r1 5.8.7: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.228 4.4.233 4.4.234 4.4.235 4.9.228 4.9.233 4.9.234 4.9.235 4.14.185 4.14.194 4.14.195 4.14.196 4.19.129 4.19.141 4.19.142 4.19.143 5.4.48 5.4.60 5.4.61 5.4.62 5.4.63 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6 5.8.7: Full sources including the Gentoo patchset for the 5.8 kernel tree
 sys-kernel/git-sources 5.9_rc1 5.9_rc2 5.9_rc3: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17611,7 +17611,7 @@ sys-kernel/pf-sources 5.6_p8 5.7_p5 5.7_p7 5.8_p1 5.8_p2 5.8_p3: Linux kernel fo
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p20190925 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.225_p198 4.4.231_p202 4.9.227_p146 4.9.232_p150 4.14.184_p84 4.14.192_p91 4.19.127_p54 4.19.135_p60 5.4.44_p27 5.4.54_p33 5.6.17_p10 5.6.19_p11: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.60 5.4.61 5.4.62 5.7.17 5.7.18 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.60 5.4.61 5.4.62 5.4.63 5.7.17 5.7.18 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6 5.8.7: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.235 4.9.235 4.14.196 4.19.143 5.4.63 5.7.18 5.8.7: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
