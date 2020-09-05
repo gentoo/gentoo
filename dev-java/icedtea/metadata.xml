@@ -27,7 +27,6 @@
 		<flag name="jamvm">Use the JamVM virtual machine rather than HotSpot.</flag>
 		<flag name="jbootstrap">If possible, recompile the final IcedTea executables with itself.</flag>
 		<flag name="kerberos">Link against Kerberos in order to obtain the cache location.</flag>
-		<flag name="nsplugin">Enable browser plugin (NPPlugin), requires also the webstart flag to be enabled.</flag>
 		<flag name="pax_kernel">Apply patch needed for pax enabled kernels.</flag>
 		<flag name="pch">Build using pre-compiled headers.</flag>
 		<flag name="sctp">Build the SCTP NIO channel implementation against lksctp</flag>
@@ -35,6 +34,5 @@
 		<flag name="smartcard">Build the PCSC driver against pcsc-lite</flag>
 		<flag name="system-lcms">Build against the system LCMS installation rather than the in-tree copy.</flag>
 		<flag name="zero">Enable Zero assembler port (usually for non-HotSpot architectures)</flag>
-		<flag name="webstart">Enable Web Start support (via NetX).</flag>
 	</use>
 </pkgmetadata>
