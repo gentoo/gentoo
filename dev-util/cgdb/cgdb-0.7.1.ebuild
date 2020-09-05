@@ -15,7 +15,7 @@ fi
 inherit multilib-minimal
 
 DESCRIPTION="A curses front-end for GDB, the GNU debugger"
-HOMEPAGE="http://cgdb.github.io/"
+HOMEPAGE="https://cgdb.github.io/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="test"
