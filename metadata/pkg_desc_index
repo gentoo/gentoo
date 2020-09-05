@@ -6500,7 +6500,7 @@ dev-perl/File-Share 0.250.0: Extend File::ShareDir to local libraries
 dev-perl/File-ShareDir 1.104.0 1.116.0: Locate per-dist and per-module shared files
 dev-perl/File-ShareDir-Install 0.110.0 0.130.0: Install shared files
 dev-perl/File-ShareDir-ProjectDistDir 1.0.9: Simple set-and-forget using of a '/share' directory in your projects root
-dev-perl/File-Slurp 9999.270.0: Simple and Efficient Reading/Writing/Modifying of Complete Files
+dev-perl/File-Slurp 9999.270.0 9999.320.0: Simple and Efficient Reading/Writing/Modifying of Complete Files
 dev-perl/File-Slurp-Tiny 0.4.0: A simple, sane and efficient file slurper
 dev-perl/File-Slurper 0.10.0: A simple, sane and efficient module to slurp a file
 dev-perl/File-Sort 1.10.0-r1: Sort a file or merge sort multiple files
@@ -17362,7 +17362,7 @@ sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34-r1 2.34-r2 2.35 9999: Tools ne
 sys-devel/binutils-apple 3.2 3.2.6 4.3-r2 5.1-r1 6.1-r1 6.3-r2 7.0-r1 7.1-r1 7.2-r1 7.3.1 8.1 8.2.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 8.2.1
 sys-devel/binutils-config 5.3.2 9999: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34-r1 2.34-r2 2.35: Tools necessary to build programs
-sys-devel/bison 3.1 3.6.4 3.7 3.7.1: A general-purpose (yacc-compatible) parser generator
+sys-devel/bison 3.1 3.6.4 3.7 3.7.1 3.7.2: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20200318: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/clang 9.0.1 10.0.0 10.0.1 11.0.0_rc1 11.0.0_rc2 11.0.0.9999 12.0.0.9999: C language family frontend for LLVM
@@ -18090,7 +18090,7 @@ www-client/elinks 0.12_pre6-r4 0.13_pre_pre20180225 0.13.4 9999: Advanced and we
 www-client/epiphany 3.30.5 3.32.6 3.34.4 3.36.3 3.36.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 68.12.0 80.0 80.0.1: Firefox Web Browser
+www-client/firefox 68.12.0 80.0 80.0.1 80.0.1-r1: Firefox Web Browser
 www-client/firefox-bin 68.12.0 80.0 80.0.1: Firefox Web Browser
 www-client/google-chrome 85.0.4183.83: The web browser from Google
 www-client/google-chrome-beta 85.0.4183.83: The web browser from Google

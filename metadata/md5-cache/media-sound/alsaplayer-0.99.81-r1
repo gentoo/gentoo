@@ -1,5 +1,5 @@
-DEFINED_PHASES=configure install prepare
-DEPEND=media-libs/libsndfile:= sys-libs/zlib:= alsa? ( media-libs/alsa-lib ) audiofile? ( media-libs/audiofile ) flac? ( media-libs/flac ) gtk? ( >=x11-libs/gtk+-2.10:2 ) id3tag? ( media-libs/libid3tag ) jack? ( virtual/jack ) mad? ( media-libs/libmad ) mikmod? ( media-libs/libmikmod:0 ) nas? ( media-libs/nas ) ogg? ( media-libs/libogg ) opengl? ( virtual/opengl ) vorbis? ( media-libs/libvorbis ) xosd? ( x11-libs/xosd ) virtual/pkgconfig doc? ( app-doc/doxygen ) nls? ( sys-devel/gettext ) oss? ( virtual/os-headers ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install postinst postrm preinst prepare
+DEPEND=media-libs/libsndfile:= sys-libs/zlib:= alsa? ( media-libs/alsa-lib ) audiofile? ( media-libs/audiofile ) flac? ( media-libs/flac ) gtk? ( >=x11-libs/gtk+-2.10:2 ) id3tag? ( media-libs/libid3tag ) jack? ( virtual/jack ) mad? ( media-libs/libmad ) mikmod? ( media-libs/libmikmod:0 ) nas? ( media-libs/nas ) ogg? ( media-libs/libogg ) opengl? ( virtual/opengl ) vorbis? ( media-libs/libvorbis ) xosd? ( x11-libs/xosd ) virtual/pkgconfig doc? ( app-doc/doxygen ) nls? ( sys-devel/gettext ) oss? ( virtual/os-headers ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=A heavily multi-threaded pluggable audio player
 EAPI=6
 HOMEPAGE=http://www.alsaplayer.org/
@@ -10,5 +10,5 @@ RDEPEND=media-libs/libsndfile:= sys-libs/zlib:= alsa? ( media-libs/alsa-lib ) au
 REQUIRED_USE=|| ( alsa jack nas oss )
 SLOT=0
 SRC_URI=http://www.alsaplayer.org/alsaplayer-0.99.81.tar.bz2
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=01b55a8ee2cfaf1a7945201f89756d8b
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=4b97696ce210f20a005f5f79f8d9ade9

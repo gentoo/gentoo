@@ -1,6 +1,6 @@
 BDEPEND=dev-util/ninja dev-util/cmake
-DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-util/cmake x11-libs/fox:1.7 x11-libs/libSM x11-libs/libICE dev-db/sqlite media-libs/taglib dev-libs/expat dev-libs/libgcrypt:= dbus? ( sys-apps/dbus ) flac? ( media-libs/flac ) mad? ( media-libs/libmad ) vorbis? ( media-libs/libvorbis ) ogg? ( media-libs/libogg ) opus? ( media-libs/opus ) aac? ( media-libs/faad2 ) pulseaudio? ( media-sound/pulseaudio ) opengl? ( media-libs/libepoxy virtual/glu )
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=dev-util/cmake x11-libs/fox:1.7 x11-libs/libSM x11-libs/libICE dev-db/sqlite media-libs/taglib dev-libs/expat dev-libs/libgcrypt:= dbus? ( sys-apps/dbus ) flac? ( media-libs/flac ) mad? ( media-libs/libmad ) vorbis? ( media-libs/libvorbis ) ogg? ( media-libs/libogg ) opus? ( media-libs/opus ) aac? ( media-libs/faad2 ) pulseaudio? ( media-sound/pulseaudio ) opengl? ( media-libs/libepoxy virtual/glu ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Fast and light music player
 EAPI=7
 HOMEPAGE=https://gogglesmm.github.io
@@ -10,5 +10,5 @@ LICENSE=GPL-3
 RDEPEND=x11-libs/fox:1.7 x11-libs/libSM x11-libs/libICE dev-db/sqlite media-libs/taglib dev-libs/expat dev-libs/libgcrypt:= dbus? ( sys-apps/dbus ) flac? ( media-libs/flac ) mad? ( media-libs/libmad ) vorbis? ( media-libs/libvorbis ) ogg? ( media-libs/libogg ) opus? ( media-libs/opus ) aac? ( media-libs/faad2 ) pulseaudio? ( media-sound/pulseaudio ) opengl? ( media-libs/libepoxy virtual/glu )
 SLOT=0
 SRC_URI=https://github.com/gogglesmm/gogglesmm/archive/1.2.1.tar.gz -> gogglesmm-1.2.1.tar.gz
-_eclasses_=cmake	9f6da23aab151395c55f018fb13a11b2	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=15ebbc1dcb15b1d02783c54aaa1900c4
+_eclasses_=cmake	9f6da23aab151395c55f018fb13a11b2	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=6de700ee68012a06a3944fd95525fffb
