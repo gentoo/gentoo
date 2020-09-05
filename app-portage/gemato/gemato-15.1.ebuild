@@ -26,6 +26,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		>=app-crypt/gnupg-2.2.20-r1
+		>=dev-python/pytest-5[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
 	)"
