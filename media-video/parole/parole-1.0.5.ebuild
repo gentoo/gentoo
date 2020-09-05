@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit xdg-utils
+inherit xdg
 
 DESCRIPTION="A simple Xfce4 media player using GStreamer"
 HOMEPAGE="https://docs.xfce.org/apps/parole/start"
@@ -37,6 +37,11 @@ DEPEND="${COMMON_DEPEND}
 
 DOCS=( AUTHORS ChangeLog README THANKS TODO )
 
+PATCHES=(
+	# 740516
+	"${FILESDIR}"/${P}-desktop-QA.patch
+)
+
 src_configure() {
 	local myconf=(
 		# clutter backend does not work with new GTK+3 versions
@@ -51,14 +56,4 @@ src_configure() {
 src_install() {
 	default
 	find "${D}" -name '*.la' -delete || die
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
 }
