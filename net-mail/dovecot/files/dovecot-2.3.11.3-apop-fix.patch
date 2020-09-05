@@ -1,0 +1,60 @@
+From 3c5917d1abee8f4af43b5016ddb897154912eb8d Mon Sep 17 00:00:00 2001
+From: Aki Tuomi <aki.tu...@open-xchange.com>
+Date: Thu, 13 Aug 2020 19:13:49 +0300
+Subject: [PATCH 2/2] auth: test-mech - Fix type mismatch
+
+---
+ src/auth/test-mech.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/auth/test-mech.c b/src/auth/test-mech.c
+index 0a030a2be0..0a22ff46d0 100644
+--- a/src/auth/test-mech.c
++++ b/src/auth/test-mech.c
+@@ -192,7 +192,7 @@ static void test_mech_handle_challenge(struct auth_request *request,
+ }
+ 
+ static inline const unsigned char *
+-test_mech_construct_apop_challenge(unsigned int connect_uid, unsigned long *len_r)
++test_mech_construct_apop_challenge(unsigned int connect_uid, size_t *len_r)
+ {
+ 	string_t *apop_challenge = t_str_new(128);
+ 
+@@ -323,7 +323,7 @@ static void test_mechs(void)
+ 		struct test_case *test_case = &tests[running_test];
+ 		const struct mech_module *mech = test_case->mech;
+ 		struct auth_request *request;
+-		const char *testname = t_strdup_printf("auth mech %s %d/%lu",
++		const char *testname = t_strdup_printf("auth mech %s %d/%zu",
+ 						       mech->mech_name,
+ 						       running_test+1,
+ 						       N_ELEMENTS(tests));
+-- 
+2.11.0
+
+From 47ebfeef07d0908ba6b66344b0f630a21b81bcab Mon Sep 17 00:00:00 2001
+From: Aki Tuomi <aki.tu...@open-xchange.com>
+Date: Thu, 13 Aug 2020 19:13:04 +0300
+Subject: [PATCH 1/2] auth: test-mech - Fix APOP challenge format
+
+---
+ src/auth/test-mech.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/auth/test-mech.c b/src/auth/test-mech.c
+index cf05370035..0a030a2be0 100644
+--- a/src/auth/test-mech.c
++++ b/src/auth/test-mech.c
+@@ -196,8 +196,8 @@ test_mech_construct_apop_challenge(unsigned int connect_uid, unsigned long *len_
+ {
+ 	string_t *apop_challenge = t_str_new(128);
+ 
+-	str_printfa(apop_challenge,"<%lx.%u.%"PRIdTIME_T"", (unsigned long) getpid(),
+-		    connect_uid, process_start_time+10);
++	str_printfa(apop_challenge,"<%lx.%lx.%"PRIxTIME_T".", (unsigned long)getpid(),
++		    (unsigned long)connect_uid, process_start_time+10);
+ 	str_append_data(apop_challenge, "\0testuser\0responseoflen16-", 26);
+ 	*len_r = apop_challenge->used;
+ 	return apop_challenge->data;
+-- 
+2.11.0

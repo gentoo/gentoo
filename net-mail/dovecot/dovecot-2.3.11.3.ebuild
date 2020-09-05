@@ -69,6 +69,8 @@ RDEPEND="${DEPEND}
 	acct-user/dovenull
 	net-mail/mailbase"
 
+PATCHES=( "${FILESDIR}"/${P}-apop-fix.patch )
+
 pkg_setup() {
 	if use managesieve && ! use sieve; then
 		ewarn "managesieve USE flag selected but sieve USE flag unselected"
