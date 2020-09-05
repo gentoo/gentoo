@@ -4005,7 +4005,7 @@ dev-haskell/findbin 0.0.5-r1: Locate directory of original program
 dev-haskell/fingertree 0.1.1.0 0.1.4.2: Generic finger-tree structure, with example instances
 dev-haskell/fixed 0.2.1.1: Signed 15.16 precision fixed point arithmetic
 dev-haskell/fmlist 0.9 0.9.3: FoldMap lists
-dev-haskell/foldl 1.0.7 1.1.3 1.2.3 1.4.7: Composable, streaming, and efficient left folds
+dev-haskell/foldl 1.4.7: Composable, streaming, and efficient left folds
 dev-haskell/foundation 0.0.25: Alternative prelude with batteries and no dependencies
 dev-haskell/free 4.2 4.5 4.9 4.10.0.1 4.11 4.12.4 5.1.3: Monads for free
 dev-haskell/frown 0.6.2.3: LALR(k) parser generator
@@ -9776,7 +9776,7 @@ dev-ruby/ast 2.4.0 2.4.1: A library for working with abstract syntax trees
 dev-ruby/astrolabe 1.3.1 1.3.1-r1: An object-oriented AST extension for Parser
 dev-ruby/async_sinatra 1.3.0: Asynchronous response API for Sinatra and Thin
 dev-ruby/atomic 1.1.101: An atomic reference implementation for JRuby, Rubinius, and MRI
-dev-ruby/autoprefixer-rails 7.2.6 8.6.5 9.6.5 9.7.6 9.8.5 9.8.6 9.8.6.1 9.8.6.2 9.8.6.3: Add vendor prefixes to CSS rules using values from the Can I Use website
+dev-ruby/autoprefixer-rails 9.8.5 9.8.6.3: Add vendor prefixes to CSS rules using values from the Can I Use website
 dev-ruby/aws-eventstream 1.0.3 1.1.0: Amazon Web Services event stream library
 dev-ruby/aws-partitions 1.248.0 1.281.0 1.297.0 1.298.0: Provides interfaces to enumerate AWS partitions, regions, and services
 dev-ruby/aws-s3 0.6.3: Client library for Amazon's Simple Storage Service's REST API
@@ -9815,7 +9815,7 @@ dev-ruby/c21e 1.2.1: Run cross-platform executables
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
 dev-ruby/capistrano 2.15.5-r2 3.12.1 3.13.0 3.14.0 3.14.1: A distributed application deployment system
 dev-ruby/capistrano-stats 1.1.1: Official metrics to help the development direction of Capistrano
-dev-ruby/capybara 2.18.0 3.31.0 3.32.2 3.33.0: Capybara aims to simplify the process of integration testing Rack applications
+dev-ruby/capybara 3.31.0 3.32.2 3.33.0: Capybara aims to simplify the process of integration testing Rack applications
 dev-ruby/certificate_authority 0.1.6-r2 1.0.0: Managing the core functions outlined in RFC-3280 for PKI
 dev-ruby/charlock_holmes 0.7.7: Character encoding detecting library for Ruby using ICU
 dev-ruby/childlabor 0.0.3-r1: A scripting framework that replaces rake and sake
@@ -9826,7 +9826,7 @@ dev-ruby/cinch 2.3.4: IRC Bot Building Framework
 dev-ruby/classifier-reborn 2.2.0: Module to allow Bayesian and other types of classifications
 dev-ruby/climate_control 0.2.0: Easily manage your environment
 dev-ruby/cliver 0.3.2: An easy way to detect and use command-line dependencies
-dev-ruby/cmdparse 2.0.6-r1 3.0.6: Advanced command line parser supporting commands
+dev-ruby/cmdparse 3.0.6: Advanced command line parser supporting commands
 dev-ruby/coderay 1.1.2 1.1.3-r1: A Ruby library for syntax highlighting
 dev-ruby/coercible 1.0.0: Powerful, flexible and configurable coercion library
 dev-ruby/coffee-rails 4.2.2-r1 5.0.0: Coffee Script adapter for the Rails asset pipeline
@@ -9935,7 +9935,7 @@ dev-ruby/google-protobuf 3.8.0 3.9.2 3.10.1 3.11.2 3.11.3 3.11.4: Protocol Buffe
 dev-ruby/gpgme 2.0.18 2.0.19 2.0.20: Ruby language binding for GnuPG Made Easy
 dev-ruby/gruff 0.7.0-r2 0.8.0: Beautiful graphs for one or multiple datasets
 dev-ruby/haml 5.1.2: A ruby web page templating engine
-dev-ruby/haml-rails 1.0.0 2.0.0 2.0.1: Provides Haml generators for Rails 4
+dev-ruby/haml-rails 2.0.0 2.0.1: Provides Haml generators for Rails 4
 dev-ruby/hamster 3.0.0-r1: Efficient, immutable, thread-safe collection classes for Ruby
 dev-ruby/hashdiff 1.0.0 1.0.1: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashery 2.1.2: The Hashery is a tight collection of Hash-like classes
@@ -9947,7 +9947,7 @@ dev-ruby/hiera 3.6.0: A simple pluggable Hierarchical Database
 dev-ruby/hiera-eyaml 3.0.0 3.1.0 3.1.1: Encrypted YAML backend for hiera
 dev-ruby/hiera-eyaml-gpg 0.7.4: A GPG backend for hiera-eyaml
 dev-ruby/hiera-eyaml-plaintext 0.6-r1: A plaintext backend for hiera-eyaml
-dev-ruby/highline 1.7.8 2.0.3: Highline is a high-level command-line IO library for ruby
+dev-ruby/highline 2.0.3: Highline is a high-level command-line IO library for ruby
 dev-ruby/hipchat 1.6.0: Ruby library to interact with HipChat
 dev-ruby/hiredis 0.6.3: Wrapper for hiredis (protocol serialization/deserialization and blocking I/O)
 dev-ruby/histogram 0.2.4.1: Gives objects the ability to 'histogram' in several useful ways
@@ -9961,7 +9961,7 @@ dev-ruby/htmlentities 4.3.4: A simple library for encoding/decoding entities in 
 dev-ruby/http 3.3.0 4.1.1: An easy-to-use client library for making requests from Ruby
 dev-ruby/http-accept 1.7.0 2.1.0 2.1.1: Parse Accept and Accept-Language HTTP headers
 dev-ruby/http-cookie 1.0.3: A ruby library to handle HTTP cookies
-dev-ruby/http-form_data 1.0.3 2.2.0 2.3.0: Utility-belt to build form data request bodies
+dev-ruby/http-form_data 2.2.0 2.3.0: Utility-belt to build form data request bodies
 dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response parser
 dev-ruby/httparty 0.17.1 0.17.3 0.18.0 0.18.1: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpauth 0.2.1: Library implementing the full HTTP Authentication protocol (RFC 2617)
@@ -9982,11 +9982,11 @@ dev-ruby/jbuilder 2.10.0: Create JSON structures via a Builder-style DSL
 dev-ruby/jmespath 1.4.0: Implements JMESPath for Ruby
 dev-ruby/journey 1.0.4-r1: Journey is a router. It routes requests
 dev-ruby/jquery-rails 4.4.0: jQuery! For Rails! So great
-dev-ruby/jquery-ui-rails 5.0.5-r1 6.0.1-r1: The jQuery UI assets for the Rails 3.2+ asset pipeline
+dev-ruby/jquery-ui-rails 6.0.1-r1: The jQuery UI assets for the Rails 3.2+ asset pipeline
 dev-ruby/jsobfu 0.4.2: A Javascript code obfuscator
 dev-ruby/json 1.8.6-r1 2.3.0 2.3.1: A JSON implementation as a Ruby extension
 dev-ruby/json_schema 0.20.8 0.20.9: A JSON Schema V4 and Hyperschema V4 parser and validator
-dev-ruby/jwt 1.5.6 2.1.0 2.2.0 2.2.1 2.2.2: A Ruby implementation of JSON Web Token draft 06
+dev-ruby/jwt 2.1.0 2.2.0 2.2.1 2.2.2: A Ruby implementation of JSON Web Token draft 06
 dev-ruby/kirbybase 2.6.1-r2: A simple Ruby DBMS that stores data in plaintext files
 dev-ruby/kissfft 0.0.2: ruby interface to kissfft
 dev-ruby/kpeg 1.1.0-r1: A simple PEG library for Ruby
@@ -9998,9 +9998,9 @@ dev-ruby/lemon 0.9.1: Lemon is a unit testing framework
 dev-ruby/letter_opener 1.7.0: Preview mail in the browser instead of sending
 dev-ruby/levenshtein 0.2.2-r2: Levenshtein distance algorithm
 dev-ruby/libusb 0.6.4: binding that gives Ruby programmers access to arbitrary USB devices
-dev-ruby/liquid 2.6.2 3.0.6 4.0.3: Template engine for Ruby
-dev-ruby/liquid-c 3.0.0 4.0.0: Liquid performance extension in C
-dev-ruby/listen 0.7.3-r2 1.3.1-r4 3.2.1: Listens to file modifications and notifies you about the changes
+dev-ruby/liquid 4.0.3: Template engine for Ruby
+dev-ruby/liquid-c 4.0.0: Liquid performance extension in C
+dev-ruby/listen 1.3.1-r4 3.2.1: Listens to file modifications and notifies you about the changes
 dev-ruby/litc 1.0.3-r1: A tiny ruby module for Amazon EC2 intance metadata
 dev-ruby/little-plugger 1.1.4: Module that provides Gem based plugin management
 dev-ruby/locale 2.1.3: A pure ruby library which provides basic APIs for localization
@@ -10027,11 +10027,11 @@ dev-ruby/memoize 1.3.1-r1: A Ruby library that lets you memoize methods
 dev-ruby/mercenary 0.4.0: Lightweight and flexible library for writing command-line apps
 dev-ruby/metaclass 0.0.4: Adds a __metaclass__ method to all Ruby objects
 dev-ruby/metaid 1.0-r3: An aid to Ruby metaprogramming
-dev-ruby/metasm 1.0.2-r4 1.0.4: cross-architecture assembler, disassembler, linker, and debugger
+dev-ruby/metasm 1.0.4: cross-architecture assembler, disassembler, linker, and debugger
 dev-ruby/meterpreter_bins 0.0.22: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/method_source 0.9.2 1.0.0: Retrieve the source code for a method
 dev-ruby/middleware 0.1.0: Generalized implementation of the middleware abstraction for Ruby
-dev-ruby/mime-types 1.25.1 2.99.2 3.2.2 3.3 3.3.1: Provides a mailcap-like MIME Content-Type lookup for Ruby
+dev-ruby/mime-types 2.99.2 3.2.2 3.3 3.3.1: Provides a mailcap-like MIME Content-Type lookup for Ruby
 dev-ruby/mime-types-data 3.2019.1009 3.2020.0425 3.2020.0512: Registry for information about MIME media type definitions
 dev-ruby/mimemagic 0.3.4 0.3.5: Fast mime detection by extension or content
 dev-ruby/mini_magick 4.9.5 4.10.1: Manipulate images with minimal use of memory
@@ -10077,7 +10077,7 @@ dev-ruby/netrc 0.11.0: This library reads and writes .netrc files
 dev-ruby/network_interface 0.0.2: network_interface layer from metasploit pcaprub
 dev-ruby/nexpose 7.2.1: API client for Nexpose vulnerability managment product
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
-dev-ruby/nio4r 1.2.1-r1 2.4.0 2.5.2: A high performance selector API for monitoring IO objects
+dev-ruby/nio4r 2.4.0 2.5.2: A high performance selector API for monitoring IO objects
 dev-ruby/nokogiri 1.10.4 1.10.10: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/nokogumbo 2.0.2: A Nokogiri interface to the Gumbo HTML5 parser
@@ -10088,7 +10088,7 @@ dev-ruby/oauth2 1.4.3 1.4.4: Wrapper for the OAuth 2.0 protocol with a similar s
 dev-ruby/octokit 4.17.0 4.18.0 4.18.0-r1: Ruby toolkit for the Github API
 dev-ruby/omniauth 1.9.1: A generalized Rack framework for multiple-provider authentication
 dev-ruby/open4 1.3.4: Open3::popen3 with exit status
-dev-ruby/openssl-ccm 1.2.1 1.2.2: OpenSSL CBC-MAC (CCM) ruby gem
+dev-ruby/openssl-ccm 1.2.2: OpenSSL CBC-MAC (CCM) ruby gem
 dev-ruby/optimist 3.0.1: A commandline option parser for Ruby that just gets out of your way.
 dev-ruby/optionable 0.2.0: Robust options validation for Ruby methods
 dev-ruby/org-ruby 0.9.12: Ruby routines for parsing org-mode files
@@ -10123,7 +10123,7 @@ dev-ruby/prawn 2.2.2: Fast, Nimble PDF Generation For Ruby
 dev-ruby/prawn-table 0.2.2-r1: Provides support for tables in Prawn
 dev-ruby/pry 0.13.1: Pry is a powerful alternative to the standard IRB shell for Ruby
 dev-ruby/public_suffix 3.1.1 4.0.3 4.0.4 4.0.5 4.0.6: Parse and decompose a domain name into top level domain, domain and subdomains
-dev-ruby/pundit 1.1.0 2.1.0: Object oriented authorization for Rails applications
+dev-ruby/pundit 2.1.0: Object oriented authorization for Rails applications
 dev-ruby/puppet_forge 2.3.2 2.3.3: Tools to access Forge API information on Modules, Users, and Releases
 dev-ruby/puppetdb-termini 6.10.0 6.11.2 6.12.0: Library needed to connect puppet to puppetdb
 dev-ruby/pusher-client 0.6.2: Client for consuming WebSockets from http://pusher.com
@@ -10131,10 +10131,10 @@ dev-ruby/pygments_rb 1.2.1-r1: Pygments syntax highlighting in ruby
 dev-ruby/qed 2.9.2: QED (Quality Ensured Demonstrations) is a TDD/BDD framework
 dev-ruby/racc 1.4.14 1.4.16-r1: A LALR(1) parser generator for Ruby
 dev-ruby/rack 1.6.12 2.0.9 2.1.4 2.2.3: A modular Ruby webserver interface
-dev-ruby/rack-attack 5.4.2 6.2.2 6.3.1: A DSL for blocking & throttling abusive clients
+dev-ruby/rack-attack 6.2.2 6.3.1: A DSL for blocking & throttling abusive clients
 dev-ruby/rack-cache 1.10.0 1.11.1 1.12.0: Enable HTTP caching for Rack-based applications that produce freshness info
 dev-ruby/rack-openid 1.4.2: Provides a more HTTPish API around the ruby-openid library
-dev-ruby/rack-protection 1.5.5 2.0.8.1: This gem protects against typical web attacks
+dev-ruby/rack-protection 2.0.8.1: This gem protects against typical web attacks
 dev-ruby/rack-ssl 1.4.1: Force SSL/TLS in your app
 dev-ruby/rack-test 1.1.0: Rack::Test is a small, simple testing API for Rack apps
 dev-ruby/radius 0.7.5: Powerful tag-based template system
@@ -10142,7 +10142,7 @@ dev-ruby/rails 5.2.4.3 6.0.3.2: ruby on rails is a web-application and persistan
 dev-ruby/rails-dom-testing 2.0.3 2.0.3-r1: Compare doms and assert certain elements exists in doms using Nokogiri
 dev-ruby/rails-html-sanitizer 1.2.0 1.3.0 1.3.0-r1: Sanitize HTML fragments in Rails applications
 dev-ruby/railties 5.2.4.3 6.0.3.2: Tools for creating, working with, and running Rails applications
-dev-ruby/rainbow 1.1.4-r1 2.2.2 3.0.0: Colorize printed text on ANSI terminals
+dev-ruby/rainbow 3.0.0: Colorize printed text on ANSI terminals
 dev-ruby/rake 12.3.3 13.0.0 13.0.1: Make-like scripting in Ruby
 dev-ruby/rake-compiler 1.0.7 1.1.0 1.1.1: Provide a standard and simplified way to build and package Ruby extensions
 dev-ruby/rake-remote_task 2.4.3-r1: Extends Rake with remote task goodness
@@ -10165,7 +10165,7 @@ dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
 dev-ruby/recog 2.3.6 2.3.7: Pattern recognition for hosts, services, and content
 dev-ruby/redcarpet 3.4.0 3.5.0: A Ruby wrapper for Upskirt
 dev-ruby/redcloth 4.3.2-r1: A module for using Textile in Ruby
-dev-ruby/redis 3.3.5 4.0.1 4.1.4: A Ruby client library for Redis
+dev-ruby/redis 4.0.1 4.1.4: A Ruby client library for Redis
 dev-ruby/ref 2.0.0: Implements weak, soft, and strong references in Ruby
 dev-ruby/regexp_parser 0.5.0 1.5.1 1.6.0 1.7.0 1.7.1: A library for tokenizing, lexing, and parsing Ruby regular expressions
 dev-ruby/regexp_property_values 0.3.5 1.0.0: See which property values are supported by the regular expression engine
@@ -10279,7 +10279,7 @@ dev-ruby/sassc-rails 2.1.2-r1: Integrate SassC-Ruby with Rails
 dev-ruby/sawyer 0.8.2: Secret User Agent of HTTP
 dev-ruby/sdoc 1.0.0 1.1.0: rdoc generator html with javascript search index
 dev-ruby/seed-fu 2.3.9: Advanced seed data handling for Rails
-dev-ruby/selenium-webdriver 2.53.4-r1 3.142.6 3.142.7 3.142.7-r1: This gem provides Ruby bindings for WebDriver
+dev-ruby/selenium-webdriver 3.142.6 3.142.7 3.142.7-r1: This gem provides Ruby bindings for WebDriver
 dev-ruby/semantic_puppet 1.0.2: Library of tools for working with Semantic Versions and module dependencies
 dev-ruby/semver2 3.4.2: maintain versions as per http://semver.org
 dev-ruby/serialport 1.3.1: a library for serial port (rs232) access in ruby
@@ -10299,7 +10299,7 @@ dev-ruby/simple-rss 1.3.3: A simple, flexible, extensible, and liberal RSS and A
 dev-ruby/simple_oauth 0.3.1: Simply builds and verifies OAuth headers
 dev-ruby/simplecov 0.17.1 0.18.5 0.19.0: Code coverage with a configuration library and merging across test suites
 dev-ruby/simplecov-html 0.10.2 0.11.0 0.12.0 0.12.1 0.12.2: Generates a HTML report of your SimpleCov ruby code coverage results
-dev-ruby/sinatra 1.4.8 2.0.8.1 2.0.8.1-r1: A DSL for quickly creating web applications in Ruby with minimal effort
+dev-ruby/sinatra 2.0.8.1 2.0.8.1-r1: A DSL for quickly creating web applications in Ruby with minimal effort
 dev-ruby/sinatra-partial 1.0.1: Just the partials helper in a gem
 dev-ruby/six 0.2.0: An ultra lite authorization library
 dev-ruby/slim 3.0.9 3.0.9-r1 4.1.0: A template language aiming to reduce the syntax to the essential parts
@@ -10368,7 +10368,7 @@ dev-ruby/tty-which 0.4.1: Platform independent implementation of Unix which comm
 dev-ruby/turbolinks 5.2.1: Makes following links in your web application faster
 dev-ruby/turbolinks-source 5.2.0: Turbolinks JavaScript assets
 dev-ruby/twitter 6.2.0 7.0.0: Ruby wrapper around the Twitter API
-dev-ruby/twitter-text 1.14.7 2.1.0 3.0.0 3.1.0: Text handling for Twitter
+dev-ruby/twitter-text 3.1.0: Text handling for Twitter
 dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Arrays
 dev-ruby/typhoeus 0.6.9-r1 1.3.1 1.4.0: Runs HTTP requests in parallel while cleanly encapsulating handling logic
 dev-ruby/tzinfo 1.2.5 1.2.7 2.0.2: Daylight-savings aware timezone library
@@ -10398,10 +10398,10 @@ dev-ruby/windows_error 0.1.2: reference for standard Windows API Error Codes
 dev-ruby/wirble 0.1.3-r4: Wirble is a set of enhancements for Irb
 dev-ruby/wisper 2.0.0 2.0.1: A micro library providing objects with Publish-Subscribe capabilities
 dev-ruby/x25519 1.0.8: Key exchange via the X25519 (Curve25519) Elliptic Curve Diffie-Hellman function
-dev-ruby/xdr 2.0.0 3.0.0 3.0.1: Read/write XDR encoded data structures
+dev-ruby/xdr 3.0.1: Read/write XDR encoded data structures
 dev-ruby/xml-simple 1.1.5: Easy API to maintain XML. A Ruby port of Grant McLean's Perl module XML::Simple
 dev-ruby/xmlrpc 0.3.0: XMLRPC is a lightweight protocol that enables remote procedure calls over HTTP
-dev-ruby/xpath 2.1.0 3.2.0: XPath is a Ruby DSL around a subset of XPath 1.0
+dev-ruby/xpath 3.2.0: XPath is a Ruby DSL around a subset of XPath 1.0
 dev-ruby/yajl-ruby 1.4.1: Ruby C bindings to the Yajl JSON stream-based parser library
 dev-ruby/yard 0.9.20 0.9.24 0.9.25: Documentation generation tool for the Ruby programming language
 dev-ruby/zeitwerk 2.3.1 2.4.0: Efficient and thread-safe code loader for Ruby
@@ -12783,7 +12783,7 @@ media-gfx/exif 0.6.21 0.6.22: Small CLI util to show EXIF infos hidden in JPEG f
 media-gfx/exiv2 0.27.3: EXIF, IPTC and XMP metadata C++ library and command line utility
 media-gfx/farbfeld 4 9999: farbfeld simple image format tools
 media-gfx/fbgrab 1.3 1.3.3: Framebuffer screenshot utility
-media-gfx/fbida 2.12 2.13-r1 2.14-r1 9999: Image viewers for the framebuffer console (fbi) and X11 (ida)
+media-gfx/fbida 2.12 2.13-r1 2.14-r2 9999: Image viewers for the framebuffer console (fbi) and X11 (ida)
 media-gfx/fdm-materials 3.4.1 3.6.0 4.2.0 4.3.0 4.6.1 4.6.1-r1: FDM materials for media-gfx/cura
 media-gfx/feh 3.3 3.4 3.4.1 3.5: A fast, lightweight imageviewer using imlib2
 media-gfx/figurine 1.0.5-r1: A vector based graphics editor similar to xfig, but simpler
@@ -14340,7 +14340,7 @@ net-analyzer/nagios-plugins-flameeyes 9999: Flameeyes's custom Nagios/Icinga plu
 net-analyzer/nagios-plugins-linux-madrisan 26-r1 27: Additional and alternative Nagios plugins for Linux
 net-analyzer/nagios-plugins-snmp 0.6.0-r2: Additional Nagios plugins for monitoring SNMP capable devices
 net-analyzer/nagircbot 0.0.33: An irc bot that alerts you to nagios changes
-net-analyzer/nagstamon 2.0.1 3.0.2-r1 3.2.1 3.4.1: systray monitor for displaying realtime status of several monitoring systems
+net-analyzer/nagstamon 2.0.1 3.0.2-r1 3.2.1 3.4.1 3.4.1-r1: systray monitor for displaying realtime status of several monitoring systems
 net-analyzer/nagtrap 0.1.3-r1: Integrated snmptt visualization addon for the Nagios monitoring system
 net-analyzer/nast 0.2.0-r1 0.2.0-r2: NAST - Network Analyzer Sniffer Tool
 net-analyzer/nbtscan 1.5.1-r3 1.6: NBTscan is a program for scanning IP networks for NetBIOS name information
