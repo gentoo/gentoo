@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -48,6 +48,12 @@ PATCHES=(
 	# -sox", bug #604288
 	"${FILESDIR}"/${P}-gtkcombotext.patch
 )
+
+src_prepare() {
+	# 740502
+	sed -i 's/\Application;//g' terminatorX.desktop  || die "Sed failed"
+	default
+}
 
 src_configure() {
 	gnome2_src_configure \
