@@ -51,7 +51,14 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
-	emake check
+	_test() {
+		pushd tests || die
+		cmake -S "${S}/tests" -B . || die
+		emake test_ringbuffer
+		ctest -j "$(makeopts_jobs)" --test-load "$(makeopts_loadavg)" || die
+		popd || die
+	}
+	multilib_foreach_abi _test
 }
 
 multilib_src_install_all() {
