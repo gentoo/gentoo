@@ -51,4 +51,6 @@ src_install() {
 		mandir="${ED}/usr/share/man" \
 		sysconfdir="${ED}/etc" \
 		install
+
+	find "${ED}" -name '*.la' -delete || die
 }
