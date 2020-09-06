@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit desktop
+inherit desktop toolchain-funcs
 
 DESCRIPTION="Robbo, a popular Atari XE/XL game ported to Linux"
 HOMEPAGE="http://gnurobbo.sourceforge.net/"
@@ -26,12 +26,14 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${P}-cflags-d.patch"
+	"${FILESDIR}/${P}-flags.patch"
 	"${DISTDIR}/${P}-single-variable-declarations.patch"
 )
 
 src_compile() {
 	emake \
+		CC="$(tc-getCC)" \
+		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
 		PACKAGE_DATA_DIR="${EPREFIX}/usr/share/${PN}"
 }
 
