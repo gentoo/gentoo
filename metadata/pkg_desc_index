@@ -11518,7 +11518,7 @@ games-puzzle/gnome-taquin 3.34.4 3.36.4: Move tiles so that they reach their pla
 games-puzzle/gnome-tetravex 3.34.4 3.36.4: Complete the puzzle by matching numbered tiles
 games-puzzle/gnome2048 3.36.0 3.36.4: Move the tiles until you obtain the 2048 tile
 games-puzzle/gnudoku 0.93-r1: A program for creating and solving Su Doku puzzles
-games-puzzle/gnurobbo 0.66-r1: Robbo, a popular Atari XE/XL game ported to Linux
+games-puzzle/gnurobbo 0.68: Robbo, a popular Atari XE/XL game ported to Linux
 games-puzzle/gottet 1.1.9: Tetris clone based on Qt5
 games-puzzle/greedy 0.2.0-r1: fun little ncurses puzzle game
 games-puzzle/groundhog 1.4-r1: Put the balls in the pockets of the same color by manipulating a maze of tubes
