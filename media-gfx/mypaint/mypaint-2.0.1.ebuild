@@ -50,6 +50,11 @@ PATCHES=(
 
 distutils_enable_tests setup.py
 
+# TODO: Allow openmp support (patched out)
+# There's no urgency on this given that it currently
+# breaks runtime use [0]
+# [0] https://github.com/mypaint/mypaint/issues/1107.
+
 src_install() {
 	distutils-r1_src_install
 
