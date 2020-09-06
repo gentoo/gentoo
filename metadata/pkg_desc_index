@@ -8270,9 +8270,9 @@ dev-python/httpstat 1.2.1-r1: httpstat visualizes cURL statistics in a way of be
 dev-python/humanfriendly 4.18: Human friendly output for text interfaces using Python
 dev-python/humanize 2.4.1 2.6.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0: HTTP/2 State-Machine based protocol implementation
-dev-python/hyperframe 5.2.0: HTTP/2 framing layer for Python
+dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 19.0.0 20.0.1: A featureful, correct URL for Python
-dev-python/hypothesis 4.57.1 5.21.0 5.24.3 5.24.4 5.27.0 5.28.0 5.29.0 5.29.3 5.29.4 5.30.0 5.30.1 5.32.0: A library for property based testing
+dev-python/hypothesis 4.57.1 5.21.0 5.24.3 5.24.4 5.27.0 5.28.0 5.29.0 5.29.3 5.29.4 5.30.0 5.30.1 5.32.0 5.33.0: A library for property based testing
 dev-python/icalendar 4.0.6: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.8 2.10: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0: Patch ssl.match_hostname for Unicode(idna) domains support
