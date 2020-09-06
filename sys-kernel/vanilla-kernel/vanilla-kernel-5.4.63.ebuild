@@ -21,6 +21,10 @@ SRC_URI+=" https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.x
 		https://src.fedoraproject.org/rpms/kernel/raw/${CONFIG_HASH}/f/kernel-aarch64.config
 			-> kernel-aarch64.config.${CONFIG_VER}
 	)
+	ppc64? (
+		https://src.fedoraproject.org/rpms/kernel/raw/${CONFIG_HASH}/f/kernel-ppc64le.config
+			-> kernel-ppc64le.config.${CONFIG_VER}
+	)
 	x86? (
 		https://src.fedoraproject.org/rpms/kernel/raw/${CONFIG_HASH}/f/kernel-i686.config
 			-> kernel-i686.config.${CONFIG_VER}
@@ -53,6 +57,9 @@ src_prepare() {
 			;;
 		arm64)
 			cp "${DISTDIR}/kernel-aarch64.config.${CONFIG_VER}" .config || die
+			;;
+		ppc64)
+			cp "${DISTDIR}/kernel-ppc64le.config.${CONFIG_VER}" .config || die
 			;;
 		x86)
 			cp "${DISTDIR}/kernel-i686.config.${CONFIG_VER}" .config || die
