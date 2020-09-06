@@ -3,8 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
-inherit meson python-r1 vala vcs-snapshot
+PYTHON_COMPAT=( python3_{6,7,8,9} )
+inherit meson python-r1 vala
 
 DESCRIPTION="GLib binding for the D-Bus API provided by signond"
 HOMEPAGE="https://01.org/gsso/"
@@ -27,7 +27,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
-BDEPEND="
+BDEPEND="$(vala_depend)
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	doc? ( dev-util/gtk-doc )
@@ -37,9 +37,10 @@ BDEPEND="
 # needs more love
 RESTRICT="test"
 
+S="${WORKDIR}/${PN}-VERSION_${PV}"
+
 src_prepare() {
 	default
-
 	vala_src_prepare
 
 	use doc || sed -e "/^subdir('docs')$/d" -i meson.build || die
@@ -87,6 +88,7 @@ src_install() {
 
 	if use python; then
 		python_foreach_impl run_in_build_dir meson_src_install
+		python_foreach_impl python_optimize
 	else
 		meson_src_install
 	fi

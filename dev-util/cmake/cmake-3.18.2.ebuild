@@ -3,7 +3,7 @@
 
 EAPI=7
 
-CMAKE_MAKEFILE_GENERATOR="emake"
+CMAKE_MAKEFILE_GENERATOR="emake" # TODO: Re-check with 3.19, see commit 491dddfb; bug #596460
 CMAKE_REMOVE_MODULES_LIST=( none )
 inherit bash-completion-r1 cmake elisp-common flag-o-matic multiprocessing \
 	toolchain-funcs virtualx xdg-utils
@@ -22,8 +22,8 @@ IUSE="doc emacs ncurses qt5 test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	app-crypt/rhash
 	>=app-arch/libarchive-3.3.3:=
+	app-crypt/rhash
 	>=dev-libs/expat-2.0.1
 	>=dev-libs/jsoncpp-1.9.2-r2:0=
 	>=dev-libs/libuv-1.10.0:=
@@ -66,13 +66,13 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.8.10.2-FindPythonLibs.patch
 	"${FILESDIR}"/${PN}-3.9.0_rc2-FindPythonInterp.patch
 
-	"${FILESDIR}"/${PN}-3.18.0-filter_distcc_warning.patch #691544
+	"${FILESDIR}"/${PN}-3.18.0-filter_distcc_warning.patch # bug 691544
 
 	# upstream fixes (can usually be removed with a version bump)
 )
 
 cmake_src_bootstrap() {
-	# disable running of cmake in boostrap command
+	# disable running of cmake in bootstrap command
 	sed -i \
 		-e '/"${cmake_bootstrap_dir}\/cmake"/s/^/#DONOTRUN /' \
 		bootstrap || die "sed failed"
@@ -103,17 +103,17 @@ cmake_src_test() {
 	[[ -n ${TEST_VERBOSE} ]] && ctestargs="--extra-verbose --output-on-failure"
 
 	# Excluded tests:
-	#    BootstrapTest: we actualy bootstrap it every time so why test it.
+	#    BootstrapTest: we actually bootstrap it every time so why test it.
 	#    BundleUtilities: bundle creation broken
 	#    CMakeOnly.AllFindModules: pthread issues
-	#    CTest.updatecvs: which fails to commit as root
+	#    CTest.updatecvs: fails to commit as root
 	#    Fortran: requires fortran
 	#    RunCMake.CompilerLauncher: also requires fortran
 	#    RunCMake.CPack_RPM: breaks if app-arch/rpm is installed because
 	#        debugedit binary is not in the expected location
 	#    RunCMake.CPack_DEB: breaks if app-arch/dpkg is installed because
 	#        it can't find a deb package that owns libc
-	#    TestUpload, which requires network access
+	#    TestUpload: requires network access
 	"${BUILD_DIR}"/bin/ctest \
 		-j "$(makeopts_jobs)" \
 		--test-load "$(makeopts_loadavg)" \
@@ -139,7 +139,7 @@ src_prepare() {
 		-e "$(usex prefix-guest "s|@GENTOO_HOST@||" "/@GENTOO_HOST@/d")" \
 		-e "s|@GENTOO_PORTAGE_EPREFIX@|${EPREFIX}/|g" \
 		Modules/Platform/{UnixPaths,Darwin}.cmake || die "sed failed"
-	if ! has_version -b \>=${CATEGORY}/${PN}-3.4.0_rc1 ; then
+	if ! has_version -b \>=${CATEGORY}/${PN}-3.4.0_rc1 || ! cmake --version &>/dev/null ; then
 		CMAKE_BINARY="${S}/Bootstrap.cmk/cmake"
 		cmake_src_bootstrap
 	fi
@@ -159,13 +159,7 @@ src_configure() {
 		-DBUILD_CursesDialog="$(usex ncurses)"
 		-DBUILD_TESTING=$(usex test)
 	)
-
-	if use qt5 ; then
-		mycmakeargs+=(
-			-DBUILD_QtDialog=ON
-			$(cmake_use_find_package qt5 Qt5Widgets)
-		)
-	fi
+	use qt5 && mycmakeargs+=( -DBUILD_QtDialog=ON )
 
 	cmake_src_configure
 }

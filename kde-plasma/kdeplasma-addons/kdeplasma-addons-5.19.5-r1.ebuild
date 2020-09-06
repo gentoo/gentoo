@@ -53,7 +53,10 @@ RDEPEND="${DEPEND}
 	>=kde-plasma/plasma-workspace-${PVCUT}:5
 "
 
-PATCHES=( "${FILESDIR}/${PN}-5.19.3-kross-optional.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-fix-potd.patch" # in Plasma/5.20
+	"${FILESDIR}/${PN}-5.19.3-kross-optional.patch" # downstream patch
+)
 
 src_configure() {
 	local mycmakeargs=(
