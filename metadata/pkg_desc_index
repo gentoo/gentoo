@@ -9787,12 +9787,12 @@ dev-ruby/aws-sdk-core 2.11.79 2.11.488 3.94.0: Provides API clients for AWS
 dev-ruby/aws-sdk-resources 2.11.79 2.11.488: Official SDK for Amazon Web Services
 dev-ruby/aws-sigv4 1.1.2 1.1.4: Amazon Web Services Signature Version 4 signing library
 dev-ruby/axiom-types 0.1.1: Define types with optional constraints for use within axiom and other libraries
-dev-ruby/backports 3.15.0 3.16.1 3.17.2 3.18.1: Backports of Ruby features for older Ruby
+dev-ruby/backports 3.15.0 3.16.1 3.17.2 3.18.1 3.18.2: Backports of Ruby features for older Ruby
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
 dev-ruby/barby 0.6.8: Ruby barcode generator that doesn't rely on 3rd party libraries
 dev-ruby/base32 0.3.2 0.3.4: A library which provides base32 decoding and encoding
 dev-ruby/bcat 0.6.2-r3: Pipe to browser utility for use at the shell and within editors
-dev-ruby/bcrypt-ruby 3.1.12 3.1.13 3.1.15 3.1.16: An easy way to keep your users' passwords secure
+dev-ruby/bcrypt-ruby 3.1.13 3.1.15 3.1.16: An easy way to keep your users' passwords secure
 dev-ruby/bcrypt_pbkdf 1.0.0 1.0.1: Implements bcrypt_pdkfd (a variant of PBKDF2 with bcrypt-based PRF)
 dev-ruby/best_in_place 3.1.1: In-place editor helper for Rails 3
 dev-ruby/bindata 2.4.1 2.4.6 2.4.7 2.4.8: Parsing Binary Data in Ruby
@@ -9807,7 +9807,7 @@ dev-ruby/bourne 1.6.0: Extends mocha to allow tracking and querying of stub and 
 dev-ruby/brass 1.2.1: BRASS is a very basic assertions framework for Ruby
 dev-ruby/brotli 0.2.3: Brotli compressor/decompressor
 dev-ruby/bsearch 1.5.0-r2 1.5.0-r3: A binary search library for Ruby
-dev-ruby/bson 4.7.1 4.8.2 4.9.2 4.9.4: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
+dev-ruby/bson 4.7.1 4.8.2 4.9.2 4.9.4 4.10.0: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
 dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.2.3 3.2.4: A builder to facilitate programatic generation of XML markup
 dev-ruby/bundler 1.17.3 1.17.3-r1 2.1.4: An easy way to vendor gem dependencies
@@ -10086,7 +10086,7 @@ dev-ruby/nokogumbo 2.0.2: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
 dev-ruby/oauth 0.5.4: A RubyGem for implementing both OAuth clients and servers
-dev-ruby/oauth2 1.4.3 1.4.4: Wrapper for the OAuth 2.0 protocol with a similar style to the OAuth gem
+dev-ruby/oauth2 1.4.4: Wrapper for the OAuth 2.0 protocol with a similar style to the OAuth gem
 dev-ruby/octokit 4.17.0 4.18.0 4.18.0-r1: Ruby toolkit for the Github API
 dev-ruby/omniauth 1.9.1: A generalized Rack framework for multiple-provider authentication
 dev-ruby/open4 1.3.4: Open3::popen3 with exit status
@@ -10271,7 +10271,7 @@ dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
 dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubytest
 dev-ruby/rubytter 1.5.1-r1: Rubytter is a simple twitter library
 dev-ruby/rubyzip 1.3.0 2.2.0 2.3.0: A ruby library for reading and writing zip files
-dev-ruby/safe_yaml 1.0.5: Parse YAML safely, alternative implementation of YAML.load
+dev-ruby/safe_yaml 1.0.5 1.0.5-r1: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/sanitize 5.2.1: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.4.25 3.4.25-r1 3.5.7 3.5.7-r1 3.7.4: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/sass-listen 4.0.0: Fork of guard/listen provides a stable API for users of the ruby Sass CLI
@@ -10394,11 +10394,11 @@ dev-ruby/webrobots 0.1.2-r1: A library to help write robots.txt compliant web ro
 dev-ruby/websocket 1.2.8: Universal Ruby library to handle WebSocket protocol
 dev-ruby/websocket-driver 0.6.5 0.7.2 0.7.3: A complete implementation of the WebSocket protocols
 dev-ruby/websocket-extensions 0.1.4 0.1.5: Generic extension manager for WebSocket connections
-dev-ruby/whole_history_rating 0.1.2 0.1.2-r1: A pure ruby implementation of Remi Coulom's Whole-History Rating algorithm
-dev-ruby/will_paginate 3.2.1 3.3.0: Most awesome pagination solution for Ruby
+dev-ruby/whole_history_rating 0.1.2-r1: A pure ruby implementation of Remi Coulom's Whole-History Rating algorithm
+dev-ruby/will_paginate 3.3.0: Most awesome pagination solution for Ruby
 dev-ruby/windows_error 0.1.2: reference for standard Windows API Error Codes
 dev-ruby/wirble 0.1.3-r4: Wirble is a set of enhancements for Irb
-dev-ruby/wisper 2.0.0 2.0.1: A micro library providing objects with Publish-Subscribe capabilities
+dev-ruby/wisper 2.0.1: A micro library providing objects with Publish-Subscribe capabilities
 dev-ruby/x25519 1.0.8: Key exchange via the X25519 (Curve25519) Elliptic Curve Diffie-Hellman function
 dev-ruby/xdr 3.0.1: Read/write XDR encoded data structures
 dev-ruby/xml-simple 1.1.5: Easy API to maintain XML. A Ruby port of Grant McLean's Perl module XML::Simple
