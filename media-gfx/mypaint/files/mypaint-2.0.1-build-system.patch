@@ -1,0 +1,22 @@
+diff --git a/setup.py b/setup.py
+index 670df4d..703f9d2 100644
+--- a/setup.py
++++ b/setup.py
+@@ -471,9 +471,6 @@ class BuildExt (build_ext):
+             linkflags.extend([
+                 "-O0",
+             ])
+-        else:
+-            linkflags.append("-O3")
+-            ccflags.append("-O3")
+ 
+         return build_ext.build_extension(self, ext)
+ 
+@@ -869,7 +866,6 @@ def get_ext_modules():
+         '-Wno-write-strings',
+         '-D_POSIX_C_SOURCE=200809L',
+         "-DNO_TESTS",  # FIXME: we're building against shared libmypaint now
+-        '-g',  # always include symbols, for profiling
+     ]
+     extra_link_args = []
+ 

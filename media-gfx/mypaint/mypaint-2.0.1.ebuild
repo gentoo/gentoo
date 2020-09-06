@@ -4,10 +4,11 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
+DISTUTILS_SINGLE_IMPL=1
 
-inherit desktop distutils-r1 gnome2-utils xdg xdg-utils
+inherit desktop distutils-r1 xdg
 
-DESCRIPTION="fast and easy graphics application for digital painters"
+DESCRIPTION="Fast and easy graphics application for digital painters"
 HOMEPAGE="http://mypaint.org/"
 SRC_URI="https://github.com/mypaint/${PN}/releases/download/v${PV}/${P}.tar.xz"
 
@@ -18,6 +19,7 @@ KEYWORDS="~amd64 ~x86"
 LANGS="cs de en_CA en_GB es fr hu id it ja ko nb nn_NO pl pt_BR ro ru sl sv uk zh_CN zh_TW"
 
 BDEPEND="
+	${PYTHON_DEPS}
 	dev-lang/swig
 	sys-devel/gettext
 	virtual/pkgconfig
@@ -42,9 +44,9 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-# Need to poke at failing tests
-# Dying on a numpy assert
-RESTRICT="test"
+PATCHES=(
+	"${FILESDIR}/${PN}-2.0.1-build-system.patch"
+)
 
 distutils_enable_tests setup.py
 
@@ -59,19 +61,4 @@ src_install() {
 			rm -rf "${ED}"/usr/share/locale/${lang} || die
 		fi
 	done
-}
-
-pkg_preinst() {
-	xdg_pkg_preinst
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	xdg_pkg_postinst
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_pkg_postrm
-	xdg_mimeinfo_database_update
 }
