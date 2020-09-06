@@ -16958,7 +16958,7 @@ sys-apps/kcheck 0.0.2-r1 9999: Record and check required kernel symbols are set
 sys-apps/kexec-tools 2.0.20-r3 9999: Load another kernel from the currently executing Linux kernel
 sys-apps/keyutils 1.6.1 1.6.3: Linux Key Management Utilities
 sys-apps/kmod 26-r5 27-r2 9999: library and tools for managing linux kernel modules
-sys-apps/kmscon 8-r1 8_p20180906: KMS/DRM based virtual Console Emulator
+sys-apps/kmscon 8-r1 8_p20180906 8_p20180906-r1: KMS/DRM based virtual Console Emulator
 sys-apps/lcdsplash 0.3: splash Gentoo boot information on LCD's
 sys-apps/lcdtest 1.18: Displays test patterns to spot dead/hot pixels on LCD screens
 sys-apps/lcdutils 0.2-r1: (Sun) Cobalt Qube/RaQ button reading and LCD writing utilities
