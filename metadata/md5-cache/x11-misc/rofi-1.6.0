@@ -1,0 +1,15 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure prepare
+DEPEND=dev-libs/glib:2 gnome-base/librsvg:2 media-libs/freetype x11-libs/cairo[X,xcb(+)] x11-libs/libXft x11-libs/libXinerama x11-libs/libxcb x11-libs/libxkbcommon[X] x11-libs/pango[X] x11-libs/startup-notification x11-libs/xcb-util x11-libs/xcb-util-wm x11-libs/xcb-util-xrm virtual/pkgconfig x11-base/xorg-proto test? ( >=dev-libs/check-0.11 )
+DESCRIPTION=A window switcher, run dialog and dmenu replacement
+EAPI=7
+HOMEPAGE=https://github.com/davatorium/rofi
+IUSE=+drun test +windowmode
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=MIT
+RDEPEND=dev-libs/glib:2 gnome-base/librsvg:2 media-libs/freetype x11-libs/cairo[X,xcb(+)] x11-libs/libXft x11-libs/libXinerama x11-libs/libxcb x11-libs/libxkbcommon[X] x11-libs/pango[X] x11-libs/startup-notification x11-libs/xcb-util x11-libs/xcb-util-wm x11-libs/xcb-util-xrm
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/davatorium/rofi/releases/download/1.6.0/rofi-1.6.0.tar.gz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=f385f576661b7625bbbff53b9ca5fe2b
