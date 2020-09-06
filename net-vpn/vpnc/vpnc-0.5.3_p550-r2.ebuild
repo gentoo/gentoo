@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-info systemd toolchain-funcs vcs-snapshot
+inherit linux-info systemd tmpfiles toolchain-funcs vcs-snapshot
 
 DESCRIPTION="Free client for Cisco VPN routing software"
 HOMEPAGE="https://www.unix-ag.uni-kl.de/~massar/vpnc/"
@@ -23,8 +23,7 @@ DEPEND="
 	!gnutls? ( dev-libs/openssl:0= )"
 RDEPEND="${DEPEND}
 	resolvconf? ( virtual/resolvconf )
-	selinux? ( sec-policy/selinux-vpn )
-"
+	selinux? ( sec-policy/selinux-vpn )"
 
 CONFIG_CHECK="~TUN"
 
@@ -45,7 +44,7 @@ src_install() {
 	newconfd "${FILESDIR}"/vpnc.confd vpnc
 	sed -e "s:/usr/local:${EPREFIX}/usr:" -i "${ED}"/etc/vpnc/vpnc-script || die
 
-	systemd_dotmpfilesd "${FILESDIR}"/vpnc-tmpfiles.conf
+	dotmpfiles "${FILESDIR}"/vpnc-tmpfiles.conf
 	systemd_newunit "${FILESDIR}"/vpnc.service vpnc@.service
 
 	# COPYING file resides here, should not be installed
@@ -53,6 +52,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process vpnc-tmpfiles.conf
+
 	elog "You can generate a configuration file from the original Cisco profiles of your"
 	elog "connection by using /usr/bin/pcf2vpnc to convert the .pcf file"
 	elog "A guide is available at https://wiki.gentoo.org/wiki/Vpnc"
