@@ -31,3 +31,9 @@ PATCHES=(
 	"${FILESDIR}/${P}-gentoo.patch"
 	"${FILESDIR}/${P}-fno-common.patch"
 )
+
+src_install() {
+	cmake-multilib_src_install
+
+	find "${ED}" -name '*.la' -delete || die
+}
