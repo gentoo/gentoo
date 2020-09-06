@@ -28,7 +28,7 @@ HOMEPAGE="https://www.dovecot.org/"
 
 SLOT="0"
 LICENSE="LGPL-2.1 MIT"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sparc x86"
 
 IUSE_DOVECOT_AUTH="kerberos ldap lua mysql pam postgres sqlite vpopmail"
 IUSE_DOVECOT_COMPRESS="bzip2 lzma lz4 zlib"
@@ -68,6 +68,8 @@ RDEPEND="${DEPEND}
 	acct-user/dovecot
 	acct-user/dovenull
 	net-mail/mailbase"
+
+PATCHES=( "${FILESDIR}"/${P}-apop-fix.patch )
 
 pkg_setup() {
 	if use managesieve && ! use sieve; then

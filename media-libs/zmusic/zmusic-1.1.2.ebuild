@@ -12,7 +12,7 @@ SRC_URI="https://github.com/coelckers/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="BSD DUMB-0.9.3 GPL-3 LGPL-2.1+ LGPL-3 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="alsa fluidsynth mpg123 sndfile"
 
 DEPEND="
