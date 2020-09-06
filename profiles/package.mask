@@ -710,11 +710,11 @@ sys-cluster/kube-scheduler
 # Bug #730640
 net-misc/termpkg
 
-# Stephan Hartmann <stha09@googlemail.com> (2020-06-29)
+# Stephan Hartmann <sultan@gentoo.org> (2020-09-06)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
 # and accept a more unstable release.
->=www-client/chromium-86
+>=www-client/chromium-87
 
 # Mart Raudsepp <leio@gentoo.org> (2020-06-06)
 # Meson port does not handle multilib yet and has issues
