@@ -10,4 +10,4 @@ RDEPEND=x11-libs/libX11 x11-libs/libXaw x11-libs/libXt
 SLOT=0
 SRC_URI=http://fawn.unibw-hamburg.de/steuer/xgammon/Downloads/xgammon-0.98a.tar.gz
 _eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=8c75a6468666c7ea91ed985d93ae30e5
+_md5_=304ef905e0284cb98bf5111cae79f41a
