@@ -3,21 +3,19 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python2_7 python3_{6..8} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit bash-completion-r1 elisp-common eutils distutils-r1 mercurial flag-o-matic
+inherit bash-completion-r1 elisp-common eutils distutils-r1 flag-o-matic
 
 DESCRIPTION="Scalable distributed SCM"
 HOMEPAGE="https://www.mercurial-scm.org/"
-EHG_REPO_URI="https://www.mercurial-scm.org/repo/hg"
+SRC_URI="https://www.mercurial-scm.org/release/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="+chg emacs gpg test tk zsh-completion"
-
-BDEPEND="dev-python/docutils[${PYTHON_USEDEP}]"
 
 RDEPEND="
 	app-misc/ca-certificates
@@ -39,7 +37,6 @@ python_prepare_all() {
 	# fix up logic that won't work in Gentoo Prefix (also won't outside in
 	# certain cases), bug #362891
 	sed -i -e 's:xcodebuild:nocodebuild:' setup.py || die
-	sed -i -e '/    hgenv =/a\' -e '    hgenv.pop("PYTHONPATH", None)' setup.py || die
 	# Use absolute import for zstd
 	sed -i -e 's/from \.* import zstd/import zstd/' \
 		mercurial/utils/compression.py \
@@ -56,7 +53,6 @@ python_compile() {
 
 python_compile_all() {
 	rm -r contrib/win32 || die
-	emake doc
 	if use chg; then
 		emake -C contrib/chg
 	fi
