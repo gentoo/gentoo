@@ -33,6 +33,7 @@ PATCHES=(
 	"${WORKDIR}"/${P}-patchset/${P}-demoMake.patch
 	"${WORKDIR}"/${P}-patchset/${P}-mesa-10.x.patch
 	"${WORKDIR}"/${P}-patchset/${P}-jpeg-9a.patch
+	"${FILESDIR}/${P}-remove-sys-sysctl.h.patch"
 )
 
 DOCS=( changes.txt readme.txt )

@@ -26,8 +26,6 @@ src_prepare() {
 	default
 	# Don't try to install a gzipped manfile during emake install
 	sed -i -e $'s/\.gz//' -e $'s/gzip.*/install \-Dm755 \$\< \$\@/' Makefile || die
-	# sys-fs/compsize > 1.3 removes '/usr' from install paths in Makefile
-	sed -i $'s/(PREFIX)/(PREFIX)\/usr/' Makefile || die
 }
 
 src_configure() {
