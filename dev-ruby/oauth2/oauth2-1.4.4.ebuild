@@ -24,7 +24,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/faraday-0.8 <dev-ruby/faraday-2.0
-	|| ( dev-ruby/jwt:2 dev-ruby/jwt:0 )
+	dev-ruby/jwt:2
 	>=dev-ruby/multi_json-1.3 =dev-ruby/multi_json-1*
 	>=dev-ruby/multi_xml-0.5:0
 	>=dev-ruby/rack-1.2:* <dev-ruby/rack-3:*"
