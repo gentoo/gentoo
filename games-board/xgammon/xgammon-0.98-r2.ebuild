@@ -26,7 +26,7 @@ S="${WORKDIR}/${P}a"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-broken.patch
-	"${FILESDIR}"/${P}-config.patch
+	"${FILESDIR}"/${P}-r2-config.patch
 	"${FILESDIR}"/${P}-glibc-2.32.patch
 	"${FILESDIR}"/${P}-fno-common.patch
 )

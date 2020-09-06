@@ -26,13 +26,17 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/check )
 "
 
-PATCHES=("${FILESDIR}/${P}-install-man-page.patch")
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.1.1-install-man-page.patch
+	"${FILESDIR}"/${PN}-2.1.1-tests-optional.patch
+)
 
 S="${WORKDIR}/${PN}-${P}"
 
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_STATIC_LIB=OFF
+		-DBUILD_TESTING=$(usex test)
 	)
 	cmake_src_configure
 }

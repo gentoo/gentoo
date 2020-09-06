@@ -5,7 +5,7 @@ EAPI=5
 
 inherit eutils linux-info ltprune multilib
 
-DESCRIPTION="Userspace library providing interface to extended accounting infrastructure of NetFilter"
+DESCRIPTION="library providing interface to extended accounting infrastructure"
 HOMEPAGE="https://netfilter.org/projects/libnetfilter_acct/"
 SRC_URI="https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2"
 
