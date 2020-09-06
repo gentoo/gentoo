@@ -2,16 +2,17 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-	<email>jer@gentoo.org</email>
+<email>jer@gentoo.org</email>
 </maintainer>
 <maintainer type="project">
-	<email>desktop-misc@gentoo.org</email>
-	<name>Gentoo Desktop Miscellaneous Project</name>
+<email>desktop-misc@gentoo.org</email>
+<name>Gentoo Desktop Miscellaneous Project</name>
 </maintainer>
 <use>
-	<flag name="windowmode">Enable normal window mode</flag>
+<flag name="drun">Enable desktop file run dialog</flag>
+<flag name="windowmode">Enable normal window mode</flag>
 </use>
 <upstream>
-	<remote-id type="github">DaveDavenport/rofi</remote-id>
+<remote-id type="github">DaveDavenport/rofi</remote-id>
 </upstream>
 </pkgmetadata>
