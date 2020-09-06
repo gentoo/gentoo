@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 depend() {
@@ -17,7 +17,7 @@ check_config() {
 		return 1
 	fi
 
-	if [ ${CHROOT} = "yes" ] ; then
+	if [ "${CHROOT}" = "yes" ] ; then
 		if [ ! -u /usr/bin/sobexsrv ] ; then
 			eerror "The \$CHROOT option requires /usr/bin/sobexsrv to be suid root!"
 			return 1
@@ -47,7 +47,7 @@ start() {
 
 	OPTIONS="-I -r ${INBOX} ${OPTIONS} ${SOBEXSRV_OPT}"
 
-	start-stop-daemon --chuid ${USER}:${GROUP} --start --quiet --exec /usr/bin/sobexsrv -- $OPTIONS
+	start-stop-daemon --user ${USER}:${GROUP} --start --quiet --exec /usr/bin/sobexsrv -- $OPTIONS
 	eend $?
 }
 
