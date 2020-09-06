@@ -6,6 +6,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2020-09-06)
+# media-libs/libmypaint[openmp] breaks reverse dependency
+# media-gfx/mypaint, and possibly others.
+# bug #739122
+>=media-libs/libmypaint-1.6.1 openmp
+
 # Michał Górny <mgorny@gentoo.org> (2020-08-22)
 # These flags depend on dev-python/pygtk that is masked for removal.
 app-mobilephone/sobexsrv gtk
