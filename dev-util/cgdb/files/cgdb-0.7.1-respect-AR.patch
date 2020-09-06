@@ -1,0 +1,32 @@
+From: Jakov Smolic <jakov.smolic@sartura.hr>
+Date: Sun, 6 Sep 2020 11:33:02 +0200
+Subject: [PATCH] configure.init: respect AR
+Bug: https://bugs.gentoo.org/724256
+Patch taken from https://github.com/cgdb/cgdb/pull/142
+
+Signed-off-by: Jakov Smolic <jakov.smolic@sartura.hr>
+---
+ configure.init | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/configure.init b/configure.init
+index 920b2a3..d2f696d 100644
+--- a/configure.init
++++ b/configure.init
+@@ -13,6 +13,13 @@ AC_PROG_INSTALL
+ AC_PROG_RANLIB
+ AM_PROG_LEX
+ AC_PROG_YACC
++m4_ifndef([AC_PROG_AR],[dnl
++  AN_MAKEVAR([AR], [AC_PROG_AR])
++  AN_PROGRAM([ar], [AC_PROG_AR])
++  AC_DEFUN([AC_PROG_AR],
++  [AC_CHECK_TOOL(AR, ar, :)])
++])
++AC_PROG_AR
+ 
+ dnl determine if we are running in linux, cygwin, solaris, or freebsd
+ AC_CANONICAL_HOST
+-- 
+2.26.2
+

@@ -12,7 +12,8 @@ else
 	SRC_URI="https://github.com/cgdb/cgdb/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 fi
-inherit multilib-minimal
+inherit autotools multilib-minimal
+AT_M4DIR=config
 
 DESCRIPTION="A curses front-end for GDB, the GNU debugger"
 HOMEPAGE="https://cgdb.github.io/"
@@ -40,11 +41,14 @@ DOCS=( AUTHORS ChangeLog FAQ INSTALL NEWS README.md )
 PATCHES=(
 	# Bugs: #730138, #678006, #630512
 	"${FILESDIR}/${PN}-test.patch"
+	# Bug: #724256
+	"${FILESDIR}/${P}-respect-AR.patch"
 )
 
 src_prepare() {
+	cp configure.{init,ac} || die "cp failed"
 	default
-	./autogen.sh || die
+	eautoreconf
 }
 
 multilib_src_test() {
