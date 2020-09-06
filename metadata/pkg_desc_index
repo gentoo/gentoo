@@ -1015,7 +1015,7 @@ app-crypt/tpm2-abrmd 2.1.1-r2 2.3.1: TPM2 Access Broker & Resource Manager
 app-crypt/tpm2-pkcs11 1.3.1: A PKCS#11 interface for TPM2 hardware
 app-crypt/tpm2-tools 4.2.1-r1: Tools for the TPM 2.0 TSS
 app-crypt/tpm2-totp 0.2.1-r1: Attest the trustworthiness of a device against a human using time-based OTP
-app-crypt/tpm2-tss 2.4.1: TCG Trusted Platform Module 2.0 Software Stack
+app-crypt/tpm2-tss 2.4.1 2.4.2 3.0.0: TCG Trusted Platform Module 2.0 Software Stack
 app-crypt/tpm2-tss-engine 1.1.0_rc1: OpenSSL Engine for TPM2 devices
 app-crypt/trousers 0.3.14-r2 0.3.14-r3: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-crypt/ubuntu-keyring 2018.02.28 2018.09.18.1 2020.02.11.2: GnuPG archive keys of the Ubuntu archive
@@ -2174,7 +2174,7 @@ app-i18n/tomoe 0.6.0-r6: Japanese handwriting recognition engine
 app-i18n/tomoe-gtk 0.6.0-r6: Tomoe GTK+ interface widget library
 app-i18n/transifex-client 0.13.9: A command line interface for Transifex
 app-i18n/translate-shell 0.9.6.11 0.9.6.12: Online command-line translator
-app-i18n/uchardet 0.0.6-r2 9999: An encoding detector library
+app-i18n/uchardet 0.0.6-r2 0.0.7 9999: An encoding detector library
 app-i18n/uim 1.8.8: A multilingual input method framework
 app-i18n/uim-tomoe-gtk 0.6.0: Japanese input method Tomoe IMEngine for uim
 app-i18n/unicode-cldr 33.0 35.1 37.0: Unicode Common Locale Data Repository
@@ -3437,6 +3437,7 @@ dev-cpp/aixlog 1.2.1 9999: Header-only C++ logging library
 dev-cpp/antlr-cpp 2.7.7-r1 4.7.2: The ANTLR 4 C++ Runtime
 dev-cpp/asio 1.10.8 1.16.1 1.17.0 1.18.0: Asynchronous Network Library
 dev-cpp/atkmm 2.28.0: C++ interface for the ATK library
+dev-cpp/benchmark 1.5.1: A microbenchmark support library
 dev-cpp/cairomm 1.12.0-r1: C++ bindings for the Cairo vector graphics library
 dev-cpp/catch 1.12.2 1.9999 2.5.0 2.7.0 2.9.1 9999: Modern C++ header-only framework for unit-tests
 dev-cpp/clucene 2.3.3.4-r6: High-performance, full-featured text search engine based off of lucene in C++
@@ -3476,6 +3477,7 @@ dev-cpp/pangomm 2.42.1: C++ interface for pango
 dev-cpp/picojson 1.3.0: Header-file-only, JSON parser serializer in C++
 dev-cpp/pngpp 0.2.9: A simple but powerful C++ interface to libpng
 dev-cpp/popl 1.2.0 9999: Header-only C++ program options parser library
+dev-cpp/prometheus-cpp 0.9.0: Prometheus Client Library for Modern C++
 dev-cpp/pstreams 0.7.0 0.8.1 1.0.0 1.0.1: C++ wrapper for the POSIX.2 functions popen(3) and pclose(3)
 dev-cpp/random123 1.09-r1: library of counter-based random number generators (CBRNGs)
 dev-cpp/range-v3 0.10.0-r1: Range library for C++14/17/20, basis for C++20's std::ranges
@@ -17475,7 +17477,7 @@ sys-fs/btrfs-progs 4.19 5.4.1 5.6.1 5.7 9999: Btrfs filesystem utilities
 sys-fs/btrfsmaintenance 0.4.2 0.5: Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag
 sys-fs/cachefilesd 0.10.9 0.10.10-r1: Provides a caching directory on an already mounted filesystem
 sys-fs/clamfs 1.0.1-r3: A FUSE-based user-space file system with on-access anti-virus file scanning
-sys-fs/compsize 1.1 9999: Utility to find btrfs compression ratio
+sys-fs/compsize 1.1 1.3 9999: Utility to find btrfs compression type/ratio on a file or set of files
 sys-fs/copyfs 1.0.1-r1: fuse-based filesystem for maintaining configuration files
 sys-fs/cramfs 1.1 2.1: Linux filesystem designed to be simple, small, and to compress things well
 sys-fs/cryfs 0.10.2: Encrypted FUSE filesystem that conceals metadata

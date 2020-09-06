@@ -350,6 +350,7 @@ app-crypt/tpm-tools:pkcs11 - Build Token data management utilities based on Open
 app-crypt/tpm2-tools:fapi - Enable feature API tools
 app-crypt/tpm2-tss:fapi - Enable feature API (requires openssl as crypto backend)
 app-crypt/tpm2-tss:gcrypt - Use dev-libs/libgcrypt as crypto engine
+app-crypt/tpm2-tss:mbedtls - Use net-libs/mbedtls as crypto engine
 app-crypt/tpm2-tss:openssl - Use dev-libs/openssl as crypto engine
 app-crypt/veracrypt:asm - Enable assembly for optimization
 app-crypt/zulucrypt:gnome - Enable support for the freedesktop.org Secret Service API via app-crypt/libsecret
@@ -3126,6 +3127,7 @@ games-action/hotline-miami:bundled-libs - Use bundled libraries.
 games-action/hotline-miami:launcher - Install qt launcher
 games-action/minetest:client - Build Minetest client
 games-action/minetest:leveldb - Enable LevelDB backend
+games-action/minetest:prometheus - Enable prometheus client support
 games-action/minetest:redis - Enable redis backend via dev-libs/hiredis
 games-action/minetest:server - Build Minetest server
 games-action/minetest:spatial - Enable SpatialIndex AreaStore backend

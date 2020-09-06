@@ -11,4 +11,4 @@ RDEPEND=app-arch/bzip2 ~dev-games/irrlicht-headers-1.8.4 media-libs/libpng:0= sy
 SLOT=0
 SRC_URI=mirror://sourceforge/irrlicht/irrlicht-1.8.4.zip https://dev.gentoo.org/~mgorny/dist/irrlicht-1.8.4-patchset.tar.bz2
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=dd1ad66baf8fc137fbcf96fb7e721763
+_md5_=94d366831ca5641c5dc8c9ec8911796d
