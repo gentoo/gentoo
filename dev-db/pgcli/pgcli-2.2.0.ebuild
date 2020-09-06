@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="CLI for Postgres with auto-completion and syntax highlighting"
 HOMEPAGE="https://www.pgcli.com https://github.com/dbcli/pgcli"
-SRC_URI="https://github.com/dbcli/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dbcli/pgcli/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD MIT"
 SLOT="0"
