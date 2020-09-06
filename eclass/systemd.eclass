@@ -448,7 +448,7 @@ systemd_tmpfiles_create() {
 
 	[[ ${EBUILD_PHASE} == postinst ]] || die "${FUNCNAME}: Only valid in pkg_postinst"
 	[[ ${#} -gt 0 ]] || die "${FUNCNAME}: Must specify at least one filename"
-	[[ ${ROOT} == / ]] || return 0
+	[[ ${ROOT:-/} == / ]] || return 0
 	type systemd-tmpfiles &> /dev/null || return 0
 	systemd-tmpfiles --create "${@}"
 }
