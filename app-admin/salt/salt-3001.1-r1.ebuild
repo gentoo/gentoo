@@ -34,6 +34,7 @@ RDEPEND="
 	>=dev-python/msgpack-0.5[${PYTHON_USEDEP}]
 	<dev-python/msgpack-1.0[${PYTHON_USEDEP}]
 	>=dev-python/pycryptodome-3.9.7[${PYTHON_USEDEP}]
+	dev-python/pycryptodomex[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/markupsafe[${PYTHON_USEDEP}]
 	>=dev-python/requests-1.0.0[${PYTHON_USEDEP}]
@@ -100,23 +101,11 @@ REQUIRED_USE="|| ( raet zeromq )
 RESTRICT="!test? ( test ) x86? ( test )"
 
 PATCHES=(
-	#"${FILESDIR}/salt-2017.7.0-dont-realpath-tmpdir.patch"
 	"${FILESDIR}/salt-2019.2.0-skip-tests-that-oom-machine.patch"
 	"${FILESDIR}/salt-3001.1-tests.patch"
-	#"${FILESDIR}/salt-3000.2-tests.patch"
-
-	# https://github.com/saltstack/salt/pull/55410
-	#"${FILESDIR}/salt-3000.2-py38.patch"
-
-	# https://github.com/saltstack/salt/pull/55900
-	#"${FILESDIR}/salt-3000.2-py38-abc.patch"
-
-	# misc py38 fixups
-	#"${WORKDIR}/salt-3000.2-py38-misc.patch"
-	#"${FILESDIR}/salt-3000.2-py38-logwarn.patch"
 )
 
-python_prepare() {
+python_prepare_all() {
 	# remove tests with external dependencies that may not be available
 	rm tests/unit/{test_zypp_plugins.py,utils/test_extend.py} || die
 	rm tests/unit/modules/test_{file,boto_{vpc,secgroup,elb}}.py || die
@@ -129,13 +118,14 @@ python_prepare() {
 	# make sure pkg_resources doesn't bomb because pycrypto isn't installed
 	find . -name '*.txt' -print0 | xargs -0 sed -e '/pycrypto>/ d' -i || die
 
+	distutils-r1_python_prepare_all
+}
+
+python_prepare() {
 	einfo "Fixing collections.abc warnings for ${EPYTHON}"
 	local abc
 	abc="$("${EPYTHON}" -c 'import collections.abc; print("|".join((c for c in dir(collections.abc) if not c.startswith("_"))))')" || die
 	find -name '*.py' -type f -print0 | xargs -0 sed -r -e "s:collections\\.(${abc}):collections.abc.\\1:g" -i || die
-
-	# allow the use of the renamed msgpack
-	sed -i '/^msgpack/d' requirements/base.txt || die
 }
 
 python_install_all() {
