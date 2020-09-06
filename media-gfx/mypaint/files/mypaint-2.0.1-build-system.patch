@@ -20,3 +20,18 @@ index 670df4d..703f9d2 100644
      ]
      extra_link_args = []
  
+diff --git a/setup.py b/setup.py
+index 703f9d2..cc8abbd 100644
+--- a/setup.py
++++ b/setup.py
+@@ -456,10 +456,6 @@ class BuildExt (build_ext):
+         ccflags = ext.extra_compile_args
+         linkflags = ext.extra_link_args
+ 
+-        if sys.platform != "darwin" and not self.disable_openmp:
+-            linkflags.append(OPENMP_CFLAG)
+-            ccflags.append(OPENMP_LDFLAG)
+-
+         if self.debug:
+             skip = ["-DNDEBUG"]
+             ccflags[:] = [f for f in ccflags if f not in skip]
