@@ -3732,7 +3732,7 @@ dev-games/quake4-sdk 1.4.2 1.4.2-r1: Quake4 SDK
 dev-games/recastnavigation 1.5.1_p20200511: Navigation mesh construction toolset for games
 dev-games/simgear 2020.1.2 9999: Development library for simulation games
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
-dev-games/tiled 1.4.1: A general purpose tile map editor
+dev-games/tiled 1.4.1 1.4.2: A general purpose tile map editor
 dev-games/wfmath 1.0.2: Worldforge math library
 dev-go/blackfriday 1.2_p20150720 1.4 9999: a markdown processor implemented in Go
 dev-go/coveraggregator 0_pre20170216-r1: Cover profile aggregator for golang
@@ -8358,6 +8358,7 @@ dev-python/kaitaistruct 0.8: Kaitai Struct runtime for Python
 dev-python/kaptan 0.5.12-r1: Configuration manager in your pocket
 dev-python/kazoo 2.7.0 2.8.0: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/kconfiglib 14.1.0: A flexible Python Kconfig implementation
+dev-python/keep 2.9: Personal shell command keeper and snippets manager
 dev-python/keyring 21.2.1 21.3.0 21.3.1 21.4.0: Provides access to the system keyring service
 dev-python/keystoneauth 4.0.1: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 7.0.1: A middleware for the OpenStack Keystone API
@@ -10748,7 +10749,7 @@ dev-util/gyp 20170904022846-r1 99999999999999: GYP (Generate Your Projects) meta
 dev-util/heaptrack 9999: Fast heap memory profiler
 dev-util/herdtools7 7.47 7.51: The Herd toolsuite to deal with .cat memory models
 dev-util/hfstospell 0.5.1: HFST spell checker library and command line tool
-dev-util/howdoi 1.2.1: A code search tool
+dev-util/howdoi 1.2.1 2.0.5: A code search tool
 dev-util/huc 0.1-r1: HTML umlaut conversion tool
 dev-util/hxd 0.70.02-r2: Binary to hexadecimal converter
 dev-util/hxtools 20180301 20190428: A collection of tools and scripts
@@ -14482,7 +14483,7 @@ net-analyzer/wapiti 3.0.3 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1 0.2.0-r2: Poor man's web vulnerability scanner
 net-analyzer/wireshark 3.2.5 3.2.6 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
-net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
+net-analyzer/xprobe 0.3 0.3-r1: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2 9999: A framework for layer 2 attacks
 net-analyzer/zabbix 3.0.31-r1 4.0.22 4.0.23 4.0.24 5.0.2 5.0.3: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 2.1.1-r1 9999: Fast network scanner designed for Internet-wide network surveys
