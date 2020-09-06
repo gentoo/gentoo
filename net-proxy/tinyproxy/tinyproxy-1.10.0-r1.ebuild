@@ -60,7 +60,7 @@ src_install() {
 
 	newinitd "${FILESDIR}"/${PN}-1.10.0.initd tinyproxy
 	systemd_newunit "${FILESDIR}"/${PN}-1.10.0.service tinyproxy.service
-	systemd_dotmpfilesd "${FILESDIR}"/${PN}.tmpfiles.conf
+	dotmpfiles "${FILESDIR}"/${PN}.tmpfiles.conf
 }
 
 pkg_postinst() {
