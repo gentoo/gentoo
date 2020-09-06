@@ -32,9 +32,7 @@ PATCHES=(
 
 src_compile() {
 	emake \
-		PACKAGE_DATA_DIR="${EPREFIX}/usr/share/${PN}" \
-		BINDIR="/usr/bin" \
-		DOCDIR="/usr/share/doc/${PF}"
+		PACKAGE_DATA_DIR="${EPREFIX}/usr/share/${PN}"
 }
 
 src_install() {
