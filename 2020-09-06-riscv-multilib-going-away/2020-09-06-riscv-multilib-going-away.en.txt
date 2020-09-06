@@ -1,0 +1,21 @@
+Title: riscv multilib profile is going away
+Author: Andreas K. Hüttel <dilfridge@gentoo.org>
+Posted: 2020-09-06
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Profile: default/linux/riscv/17.0/rv64gc
+
+The Gentoo RISC-V team is discontinuing the riscv64 multilib stages and
+profile. The main reason for this is that with the upcoming introduction
+of riscv32 a multilib stage would contain both 32bit and 64bit binaries,
+and so far no hardware exists that is able to run both and thus update
+the stage or installation (unless you use qemu).
+
+Please switch to the rv64gc/lp64d profile. This is done by
+* selecting default/linux/riscv/17.0/rv64gc/lp64d with eselect profile
+* rebuilding gcc
+    emerge -1 sys-devel/gcc
+* and then rebuilding your system
+    emerge -ev @world
+
+The default/linux/riscv/17.0/rv64gc profile will stop functioning soon.
