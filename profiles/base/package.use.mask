@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Stephan Hartmann <sultan@gentoo.org> (2020-09-06)
+# Causes seccomp sandbox violation or chromium might hang on startup.
+>=www-client/chromium-87 wayland
+
 # Sam James <sam@gentoo.org> (2020-09-06)
 # media-libs/libmypaint[openmp] breaks reverse dependency
 # media-gfx/mypaint, and possibly others.
