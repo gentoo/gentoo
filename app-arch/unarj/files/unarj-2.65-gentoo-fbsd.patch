@@ -7,3 +7,4 @@
 -extern time_t time();
  extern char   *strcpy();
  extern voidp  *malloc();
+ 
