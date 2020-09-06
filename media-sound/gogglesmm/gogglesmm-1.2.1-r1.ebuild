@@ -34,6 +34,10 @@ DEPEND="dev-util/cmake ${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/"${P}"-use-fox-1.7.67.patch )
 
+src_prepare() {
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_DBUS="$(usex dbus)"
