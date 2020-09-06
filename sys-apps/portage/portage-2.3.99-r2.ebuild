@@ -34,6 +34,7 @@ DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
 RDEPEND="
 	>=app-arch/tar-1.27
 	dev-lang/python-exec:2
+	>=sys-apps/findutils-4.4
 	!build? (
 		>=sys-apps/sed-4.0.5
 		app-shells/bash:0[readline]
