@@ -18,8 +18,8 @@ RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtxml:5
 	dev-qt/qtxmlpatterns:5
 	dev-libs/libxml2:2"
-BDEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-qt/linguist-tools:5"
 
 src_prepare () {
 	cmake_src_prepare
