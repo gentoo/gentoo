@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202009-01">
+  <title>GnuTLS: Denial of service</title>
+  <synopsis>A flaw was found in GnuTLS, possibly allowing a Denial of Service
+    condition. 
+  </synopsis>
+  <product type="ebuild">gnutls</product>
+  <announced>2020-09-06</announced>
+  <revised count="1">2020-09-06</revised>
+  <bug>740390</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-libs/gnutls" auto="yes" arch="*">
+      <unaffected range="ge">3.6.15</unaffected>
+      <vulnerable range="lt">3.6.15</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GnuTLS is an Open Source implementation of the TLS and SSL protocols.</p>
+  </background>
+  <description>
+    <p>It was found that GnuTLS didn’t handle “no_renegotiation” alert
+      properly.
+    </p>
+  </description>
+  <impact type="low">
+    <p>A remote attacker could entice a user to connect to a malicious TLS
+      endpoint using an application linked against GnuTLS, possibly resulting
+      in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GnuTLS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/gnutls-3.6.15"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-24659">CVE-2020-24659</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-09-05T22:09:30Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-09-06T00:19:19Z">sam_c</metadata>
+</glsa>
