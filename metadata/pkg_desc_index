@@ -618,7 +618,7 @@ app-admin/rex 1.12.1 9999: (R)?ex, the friendly automation framework
 app-admin/rsyslog 8.2004.0 8.2006.0 8.2008.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 0.2.3-r1 1.0.0_rc3 1.0.0_rc3-r1: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
-app-admin/salt 2019.2.5-r1 3000.2-r4 3000.3 3001.1: Salt is a remote execution and configuration manager
+app-admin/salt 2019.2.5-r1 3000.2-r4 3000.3 3001.1-r1: Salt is a remote execution and configuration manager
 app-admin/serf 0.8.1-r1: Service orchestration and management tool
 app-admin/setools 4.2.2 9999: Policy Analysis Tools for SELinux
 app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
@@ -8689,6 +8689,7 @@ dev-python/pycollada 0.7.1: Python library for reading and writing COLLADA docum
 dev-python/pycountry 19.8.18: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.20: C parser and AST generator written in Python
 dev-python/pycryptodome 3.9.8: A self-contained cryptographic library for Python
+dev-python/pycryptodomex 3.9.8: A self-contained cryptographic library for Python
 dev-python/pycson 0.7 0.8: A python parser for the Coffeescript Object Notation (CSON)
 dev-python/pycuda 2019.1.2: Python wrapper for NVIDIA CUDA
 dev-python/pycups 1.9.73-r2: Python bindings for the CUPS API
