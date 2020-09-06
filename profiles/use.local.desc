@@ -1558,6 +1558,7 @@ dev-haskell/cabal-install:noprefs - Ignore 'preferred-versions' file from hackag
 dev-haskell/certificate:executable - Build the executable
 dev-haskell/cgi:extensible-exceptions-in-base - Required to be enabled for >=dev-lang/ghc-7.
 dev-haskell/cgi:network-uri - Get Network.URI from the network-uri package.
+dev-haskell/chaselev-deque:debug - Enable the extra internal checks.
 dev-haskell/chell:color-output - use colors in program output
 dev-haskell/chimera:representable - Define Representable instance from adjunctions package
 dev-haskell/citeproc-hs:bibutils - use Chris Putnam's app-text/bibutils

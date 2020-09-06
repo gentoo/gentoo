@@ -2419,7 +2419,7 @@ app-misc/gnote 3.36.1 3.36.2: Desktop note-taking application
 app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency of most daily tasks
 app-misc/gnutu 2.9: GNU Student's Timetable for polish users
 app-misc/go-jira 1.0.23: A simple JIRA commandline client in Go
-app-misc/golly 3.3-r3 3.4: simulator for Conway's Game of Life and other cellular automata
+app-misc/golly 3.4: simulator for Conway's Game of Life and other cellular automata
 app-misc/goobook 3.4-r1: Access your Google contacts from the command line
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
 app-misc/gramps 5.1.2-r1 5.1.3: Genealogical Research and Analysis Management Programming System
@@ -3763,7 +3763,7 @@ dev-go/qr 0_p20161121: Basic QR code library for Go
 dev-go/sanitized-anchor-name 0_pre20150822 0_pre20151027 9999: A Go function to provide sanitized anchor names
 dev-go/siphash 1.0.0 1.2.1: Go implementation of SipHash-2.4
 dev-go/twofactor 0_p20180418: Two-factor authentication library for Go
-dev-haskell/abstract-deque 0.2.2 0.3: Abstract, parameterized interface to mutable Deques
+dev-haskell/abstract-deque 0.3: Abstract, parameterized interface to mutable Deques
 dev-haskell/abstract-deque-tests 0.3: A test-suite for any queue or double-ended queue satisfying an interface
 dev-haskell/abstract-par 0.3.3-r1: Type classes generalizing the functionality of the 'monad-par' library
 dev-haskell/ac-ppm 1.1.1: Trivial package for writing PPM images
@@ -3859,7 +3859,7 @@ dev-haskell/cereal-vector 0.2.0.1: Serialize instances for Data.Vector types
 dev-haskell/certificate 1.3.9: Certificates and Key Reader/Writer
 dev-haskell/cgi 3001.1.8.3 3001.1.8.4 3001.1.8.4-r1 3001.2.2.2 3001.5.0.0: A library for writing CGI programs
 dev-haskell/charset 0.3.7.1-r1: Fast unicode character sets based on complemented PATRICIA tries
-dev-haskell/chaselev-deque 0.4 0.5.0.5: Chase & Lev work-stealing lock-free double-ended queues (deques)
+dev-haskell/chaselev-deque 0.5.0.5: Chase & Lev work-stealing lock-free double-ended queues (deques)
 dev-haskell/chasingbottoms 1.3.0.11-r1 1.3.0.13 1.3.0.14 1.3.1.2 1.3.1.9: For testing partial and infinite values
 dev-haskell/chell 0.4.0.1 0.4.0.2: A simple and intuitive library for automated testing
 dev-haskell/chell-quickcheck 0.2.5 0.2.5-r1: QuickCheck support for the Chell testing library
@@ -4557,7 +4557,7 @@ dev-haskell/xhtml 3000.2.1-r1 3000.2.2.1: An XHTML combinator library
 dev-haskell/xml 1.3.13 1.3.14: A simple XML library
 dev-haskell/xml-conduit 1.1.0.9 1.2.3.3 1.3.1 1.3.3 1.3.4.2 1.9.0.0: Pure-Haskell utilities for dealing with XML with the conduit package
 dev-haskell/xml-hamlet 0.5.0.1: Hamlet-style quasiquoter for XML content
-dev-haskell/xml-types 0.3.4 0.3.6: Basic types for representing XML
+dev-haskell/xml-types 0.3.8: Basic types for representing XML
 dev-haskell/xmlgen 0.6.2.2: Fast XML generation library
 dev-haskell/xss-sanitize 0.3.6: sanitize untrusted HTML to prevent XSS attacks
 dev-haskell/yaml 0.11.5.0: Support for parsing and rendering YAML documents
@@ -5123,7 +5123,7 @@ dev-lang/coffee-script 1.9.3-r1 1.12.5 2.3.2: A little language that compiles in
 dev-lang/crystal 0.35.1: The Crystal Programming Language
 dev-lang/cxprolog 0.98.2: A WAM based Prolog system
 dev-lang/duktape 2.4.0 2.5.0-r1: Embeddable Javascript engine
-dev-lang/elixir 1.10.3 1.10.4: Elixir programming language
+dev-lang/elixir 1.10.4: Elixir programming language
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
 dev-lang/erlang 22.3.2 22.3.4 23.0.1 23.0.2 23.0.3: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
@@ -5170,7 +5170,7 @@ dev-lang/mono-basic 4.8: Visual Basic Compiler and Runtime
 dev-lang/mozart 1.4.0-r3 1.4.0-r4 2.0.1: Advanced development platform for intelligent, distributed applications
 dev-lang/mozart-stdlib 1.4.0-r2 2.0.1: The Mozart Standard Library
 dev-lang/mujs 1.0.6 1.0.7: An embeddable Javascript interpreter in C.
-dev-lang/nasm 2.14.02 2.15.03 2.15.04 2.15.05: groovy little assembler
+dev-lang/nasm 2.15.03 2.15.05: groovy little assembler
 dev-lang/nim 1.2.6: compiled, garbage-collected systems programming language
 dev-lang/nqp 2020.05 2020.06 2020.07 2020.08 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
@@ -5288,7 +5288,7 @@ dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/editline 1.17.1: line editing library for UNIX call compatible with the FSF readline
 dev-libs/eekboard 1.0.8_p20121001-r1: An easy to use virtual keyboard toolkit
 dev-libs/efl 1.24.3: Enlightenment Foundation Libraries all-in-one package
-dev-libs/elfutils 0.177 0.180: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
+dev-libs/elfutils 0.180: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.28 0.31 0.32 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.2.8 2.2.9: Stream-oriented XML parser library
@@ -10366,7 +10366,7 @@ dev-ruby/tty-platform 0.2.0 0.2.1 0.3.0: Query methods for detecting different o
 dev-ruby/tty-prompt 0.19.0 0.20.0 0.21.0 0.22.0: A beautiful and powerful interactive command line prompt
 dev-ruby/tty-reader 0.6.0-r1 0.7.0 0.8.0: Methods for processing keyboard input in character, line and multiline modes
 dev-ruby/tty-screen 0.7.0 0.7.1 0.8.0 0.8.1: Terminal screen size detection which works on Linux, OS X and Windows/Cygwin
-dev-ruby/tty-which 0.4.1: Platform independent implementation of Unix which command
+dev-ruby/tty-which 0.4.1 0.4.2: Platform independent implementation of Unix which command
 dev-ruby/turbolinks 5.2.1: Makes following links in your web application faster
 dev-ruby/turbolinks-source 5.2.0: Turbolinks JavaScript assets
 dev-ruby/twitter 6.2.0 7.0.0: Ruby wrapper around the Twitter API
@@ -10845,7 +10845,7 @@ dev-util/radare2 4.5.0 4.5.1 9999: unix-like reverse engineering framework and c
 dev-util/ragel 6.10 7.0.0.9 7.0.0.10 7.0.0.10-r1 7.0.0.10-r2 7.0.0.12: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 1.0.2 1.0.3: Command line tools for use with Review Board
-dev-util/re2c 1.3-r1 2.0.2 2.0.3: tool for generating C-based recognizers from regular expressions
+dev-util/re2c 1.3-r1 2.0.3: tool for generating C-based recognizers from regular expressions
 dev-util/rebar 2.6.4 2.6.4-r1: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/rebar-bin 3.6.2 3.13.2: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/redo 0.42a 0.42c 99999: Smaller, easier, more powerful, and more reliable than make
@@ -17371,13 +17371,13 @@ sys-devel/clang 9.0.1 10.0.0 10.0.1 11.0.0_rc1 11.0.0_rc2 11.0.0.9999 12.0.0.999
 sys-devel/clang-common 9.0.1 10.0.0 10.0.1 11.0.0_rc1 11.0.0_rc2 11.0.0.9999 12.0.0.9999: Common files shared between multiple slots of clang
 sys-devel/clang-runtime 9.0.1 10.0.0 10.0.1 11.0.0_rc1 11.0.0_rc2 11.0.0.9999 12.0.0.9999: Meta-ebuild for clang runtime libraries
 sys-devel/cons 2.3.0: Extensible perl-based build utility
-sys-devel/crossdev 20200326 20200801 99999999: Gentoo Cross-toolchain generator
+sys-devel/crossdev 20200801 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.23.0 1.24.0: crosstool-ng is a tool to build cross-compiling toolchains
 sys-devel/dev86 0.16.21-r3: Bruce's C compiler - Simple C compiler to generate 8086 code
 sys-devel/distcc 3.3.3-r1: Distribute compilation of C code across several machines on a network
 sys-devel/dwz 0.12-r1: DWARF optimization and duplicate removal tool
 sys-devel/flex 2.6.1 2.6.3 2.6.3-r1 2.6.4 2.6.4-r1: The Fast Lexical Analyzer
-sys-devel/gcc 4.9.4-r1 5.5.0 6.5.0-r2 6.5.0-r3 7.5.0-r1 8.4.0-r1 9.3.0-r1 10.2.0 10.2.0-r1 10.2.1_pre9999 11.0.0_pre9999: The GNU Compiler Collection
+sys-devel/gcc 4.9.4-r1 5.5.0 6.5.0-r2 6.5.0-r3 7.5.0-r1 8.4.0-r1 9.3.0-r1 10.2.0-r1 10.2.1_pre9999 11.0.0_pre9999: The GNU Compiler Collection
 sys-devel/gcc-apple 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection, Developer Tools 4.0
 sys-devel/gcc-config 2.3 2.3.1 2.3.2 9999: Utility to manage compilers
 sys-devel/gdb 9.1 9.2 9999: GNU debugger
