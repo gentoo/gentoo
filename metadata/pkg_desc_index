@@ -175,6 +175,7 @@ acct-group/slurm 0: A group for the slurm - Highly Scalable Resource Manager
 acct-group/smmsp 0: System group: smmsp
 acct-group/smtpd 0: daemon group for smtpd
 acct-group/smtpq 0: queue group for smtpd
+acct-group/sobexsrv 0: A group for sobexsrv: a secure OBEX server
 acct-group/sogo 0: Group for gnustep-apps/sogo
 acct-group/spamd 0: Group for the SpamAssassin daemon
 acct-group/spectrum 0: A group for the Spectrum messaging transport
@@ -395,6 +396,7 @@ acct-user/slurm 0: User for the slurm - Highly Scalable Resource Manager
 acct-user/smmsp 0: user for sendmail daemon
 acct-user/smtpd 0: daemon user for smtpd
 acct-user/smtpq 0: queue user for smtpd
+acct-user/sobexsrv 0: A user for sobexsrv: a secure OBEX server
 acct-user/sogo 0: User for gnustep-apps/sogo
 acct-user/spamd 0: User for the SpamAssassin daemon
 acct-user/spectrum 0: A user for the Spectrum messaging transport
@@ -2605,7 +2607,7 @@ app-mobilephone/qtadb 0.8.1-r1: Android phone manager via ADB
 app-mobilephone/scmxx 0.9.0: Exchange data with Siemens phones
 app-mobilephone/smsclient 2.0.9a-r1: Utility to send SMS messages to mobile phones and pagers
 app-mobilephone/smstools 3.1.15-r2 3.1.21-r1: Send and receive short messages through GSM modems
-app-mobilephone/sobexsrv 1.0.1-r2: Scripting/Secure OBEX Server (for BlueZ Linux)
+app-mobilephone/sobexsrv 1.0.1-r2 1.0.1-r3: Scripting/Secure OBEX Server (for BlueZ Linux)
 app-mobilephone/vmoconv 1.0-r1: A tool that converts Siemens phones VMO and VMI audio files to gsm and wav
 app-office/abiword 3.0.4: Fully featured yet light and fast cross platform word processor
 app-office/abiword-docs 3.0.2: Fully featured yet light and fast cross platform word processor documentation
@@ -14740,7 +14742,7 @@ net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/scrollz 2.3: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremely simple IRC client
 net-irc/telepathy-idle 0.2.0-r2: Full-featured IRC connection manager for Telepathy
-net-irc/unrealircd 4.2.4.1 5.0.5.1 5.0.6: An advanced Internet Relay Chat daemon
+net-irc/unrealircd 4.2.4.1 5.0.6: An advanced Internet Relay Chat daemon
 net-irc/weechat 2.8 2.9 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.7.5 1.8.1 9999: An advanced IRC Bouncer
@@ -15549,7 +15551,7 @@ net-vpn/strongswan 5.8.4 5.9.0: IPsec-based VPN solution, supporting IKEv1/IKEv2
 net-vpn/tailscale 0.98 0.98_p0: Tailscale vpn client
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17-r1: tinc is an easy to configure VPN implementation
 net-vpn/tor 0.4.2.8 0.4.3.6 0.4.4.4_rc: Anonymizing overlay network for TCP
-net-vpn/vpnc 0.5.3_p550-r1: Free client for Cisco VPN routing software
+net-vpn/vpnc 0.5.3_p550-r2: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
 net-vpn/wireguard-modules 1.0.20200729-r1: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
