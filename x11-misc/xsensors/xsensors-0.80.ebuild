@@ -23,16 +23,13 @@ DEPEND="
 BDEPEND="
 	virtual/pkgconfig
 "
+PATCHES=(
+	"${FILESDIR}"/${P}-gtk220.patch
+	"${FILESDIR}"/${P}-Werror.patch
+)
 
 src_prepare() {
 	default
-
-	sed -i \
-		-e '/-DG.*_DISABLE_DEPRECATED/d' \
-		-e 's#-Werror#-Wall#g' \
-		-e 's#==#=#g' \
-		-e 's#pkg-config#${PKG_CONFIG}#g' \
-		src/Makefile.am configure.ac || die
 
 	eautoreconf
 }
