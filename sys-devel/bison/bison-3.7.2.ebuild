@@ -5,7 +5,7 @@ EAPI=7
 
 inherit flag-o-matic
 
-PATCH_TAR="${PN}-3.7.2-patches-01.tar.xz"
+PATCH_TAR="${PN}-3.7.2-patches-02.tar.xz"
 
 DESCRIPTION="A general-purpose (yacc-compatible) parser generator"
 HOMEPAGE="https://www.gnu.org/software/bison/"
@@ -31,16 +31,12 @@ BDEPEND="
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO ) # ChangeLog-2012 ChangeLog-1998 PACKAGING README-alpha README-release
 
-PATCHES=(
-	"${WORKDIR}"/patches/${PN}-3.5-optional-perl.patch #538300
-	"${WORKDIR}"/patches/${PN}-3.7.2-avoid_autoreconf.patch
-)
-
 src_prepare() {
 	# Record date to avoid 'config.status --recheck' & regen of 'tests/package.m4'
 	touch -r configure.ac old.configure.ac || die
 	touch -r configure old.configure || die
 
+	eapply "${WORKDIR}"/patches
 	default
 
 	# Restore date after patching
