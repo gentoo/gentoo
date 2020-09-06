@@ -1,7 +1,8 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
 inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="Tail with multiple windows"
@@ -12,31 +13,29 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug examples unicode"
+RESTRICT="test" # bug 492270
 
-RDEPEND="
-	sys-libs/ncurses:0=[unicode?]
-"
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
-RESTRICT="test" # bug #492270
+RDEPEND="sys-libs/ncurses:0=[unicode?]"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${PN}-6.4.1-gentoo.patch )
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-6.4.1-gentoo.patch
+	default
 
 	sed \
-		-e "/^DESTDIR/s:=.*$:=${EROOT}:g" \
+		-e "/^DESTDIR/s:=.*$:=${EPREFIX}:g" \
 		-i Makefile || die
 
 	sed \
 		-e "s:/usr/bin/xclip:${EPREFIX}/usr/bin/xclip:g" \
 		-i xclip.c ${PN}.conf || die
+}
 
+src_configure() {
 	tc-export CC PKG_CONFIG
-
-	use debug && append-flags "-D_DEBUG"
+	use debug && append-flags -D_DEBUG
 }
 
 src_compile() {
