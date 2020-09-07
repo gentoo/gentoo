@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils leechcraft
+inherit leechcraft optfeature
 
 DESCRIPTION="Quark handling text and images droppend onto it"
 
