@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit bash-completion-r1 eutils go-module
+inherit bash-completion-r1 go-module optfeature
 
 DESCRIPTION="A general-purpose command-line fuzzy finder, written in GoLang"
 HOMEPAGE="https://github.com/junegunn/fzf"
