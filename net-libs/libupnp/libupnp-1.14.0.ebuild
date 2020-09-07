@@ -14,6 +14,9 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 hppa ~ppc ~ppc64 sparc ~x86 ~amd64-linux"
 IUSE="blocking-tcp debug doc ipv6 +reuseaddr samples static-libs"
 
+# bug 733750
+RESTRICT="test"
+
 DOCS="ChangeLog"
 
 src_prepare() {
