@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake eutils xdg
+inherit cmake optfeature xdg
 
 MY_P="${PN^}-v${PV}"
 
