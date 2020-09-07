@@ -12446,7 +12446,7 @@ mail-filter/dkimproxy 1.4.1: An SMTP proxy server for adding DKIM headers
 mail-filter/dovecot_deleted_to_trash 0.6: Deleted to trash IMAP plugin for Dovecot
 mail-filter/exim-geoip 0.1-r1: This is an IPv4 and IPv6 capable GeoIP dlfunc library for Exim
 mail-filter/exim-p0f 0.1-r1: This is p0f version 3 dlfunc library for Exim
-mail-filter/gld 1.7-r2 1.7-r4: A standalone anti-spam greylisting algorithm on top of Postfix
+mail-filter/gld 1.7-r4: A standalone anti-spam greylisting algorithm on top of Postfix
 mail-filter/imapfilter 2.6.16: An IMAP mail filtering utility
 mail-filter/libmilter 1.0.2 1.0.2_p1 1.0.2_p1-r1: The Sendmail Filter API (Milter)
 mail-filter/libsieve 2.2.7: A library for parsing, sorting and filtering your mail
@@ -14748,7 +14748,7 @@ net-irc/telepathy-idle 0.2.0-r2: Full-featured IRC connection manager for Telepa
 net-irc/unrealircd 4.2.4.1 5.0.6: An advanced Internet Relay Chat daemon
 net-irc/weechat 2.8 2.9 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
-net-irc/znc 1.7.5 1.8.1 9999: An advanced IRC Bouncer
+net-irc/znc 1.7.5 1.8.1 1.8.2 9999: An advanced IRC Bouncer
 net-irc/znc-clientbuffer 1.0.48: A ZNC module which provides client specific buffers
 net-irc/znc-igloo-push 20200520: A ZNC module which provides push notifications for Igloo client
 net-irc/znc-palaver 1.2.1: A ZNC module which provides push notifications to Palaver
