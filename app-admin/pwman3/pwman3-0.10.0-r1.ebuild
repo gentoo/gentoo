@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="sqlite"
 DISTUTILS_USE_SETUPTOOLS=rdepend
-inherit distutils-r1 eutils
+inherit distutils-r1 optfeature
 
 DESCRIPTION="A lightweight password-manager with multiple database backends"
 HOMEPAGE="https://pwman3.github.io/pwman3/"
