@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
-inherit eutils python-r1
+inherit optfeature python-r1
 
 DESCRIPTION="Stylish way of giving presentations with Python"
 HOMEPAGE="http://impressive.sourceforge.net/"
