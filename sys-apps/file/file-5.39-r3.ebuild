@@ -37,8 +37,9 @@ RDEPEND="${DEPEND}
 	seccomp? ( sys-libs/libseccomp[${MULTILIB_USEDEP}] )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-5.39-portage_sandbox.patch" #713710 #728978
-	"${FILESDIR}/${P}-add-missing-termios.patch" #728416
+	"${FILESDIR}/file-5.39-add-missing-termios.patch" #728416
+	"${FILESDIR}/file-5.39-seccomp-musl.patch"
+	"${FILESDIR}/file-5.39-portage-sandbox.patch" #713710 #728978
 )
 
 src_prepare() {
