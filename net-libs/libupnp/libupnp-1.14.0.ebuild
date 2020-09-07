@@ -3,18 +3,23 @@
 
 EAPI=7
 
-inherit eutils flag-o-matic autotools vcs-snapshot
+inherit autotools flag-o-matic
 
 DESCRIPTION="An Portable Open Source UPnP Development Kit"
 HOMEPAGE="http://pupnp.sourceforge.net/"
 SRC_URI="https://github.com/mrjimenez/pupnp/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
-SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 hppa ~ppc ~ppc64 sparc ~x86 ~amd64-linux"
+SLOT="0/17"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 hppa ~ppc ~ppc64 sparc x86 ~amd64-linux"
 IUSE="blocking-tcp debug doc ipv6 +reuseaddr samples static-libs"
 
+# bug 733750
+RESTRICT="test"
+
 DOCS="ChangeLog"
+
+S="${WORKDIR}/pupnp-release-${PV}"
 
 src_prepare() {
 	default
@@ -39,5 +44,7 @@ src_configure() {
 src_install() {
 	default
 
-	use static-libs || find "${D}" -name '*.la' -delete || die
+	if ! use static-libs ; then
+		find "${D}" -name '*.la' -delete || die
+	fi
 }
