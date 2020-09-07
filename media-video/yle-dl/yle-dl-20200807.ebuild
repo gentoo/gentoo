@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6..8} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1 eutils
+inherit distutils-r1 optfeature
 
 DESCRIPTION="Download media files from Yle Areena"
 HOMEPAGE="https://aajanki.github.io/yle-dl/ https://github.com/aajanki/yle-dl"
