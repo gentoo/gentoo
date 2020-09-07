@@ -165,6 +165,9 @@ src_install() {
 	rm "${ED}${INSTDIR}/program/pythonscript.py" || die
 	rm "${ED}${INSTDIR}/program/python-core-2.7.6/lib/lib-dynload/_bsddb.so" || die
 	rm "${ED}${INSTDIR}/program/python-core-2.7.6/lib/lib-dynload/dbm.so" || die
+
+	# remove obsolete gstreamer-0.10 plugin
+	rm "${ED}${INSTDIR}/program/libavmediagst.so" || die
 }
 
 pkg_preinst() {
