@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit leechcraft
+inherit leechcraft optfeature
 
 DESCRIPTION="Auscrie, LeechCraft auto screenshooter"
 
