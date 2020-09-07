@@ -5,7 +5,7 @@ EAPI=7
 
 DIST_TEST="do"
 
-inherit eutils perl-module virtualx xdg-utils
+inherit optfeature perl-module virtualx xdg-utils
 
 DESCRIPTION="Scan documents, perform OCR, produce PDFs and DjVus"
 HOMEPAGE="http://gscan2pdf.sourceforge.net/"
