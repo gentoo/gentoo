@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6..9} )
 PYTHON_REQ_USE="sqlite?"
 
-inherit bash-completion-r1 distutils-r1 eutils
+inherit bash-completion-r1 distutils-r1 optfeature
 
 DESCRIPTION="Check websites for broken links"
 HOMEPAGE="https://github.com/linkcheck/linkchecker"
