@@ -38,4 +38,8 @@ For lighttpd you may want to check [2][3] and for nginx [4][5].
  [4] - https://www.drupal.org/node/1030854
  [5] - https://www.nginx.com/resources/wiki/start/topics/recipes/drupal/
 
+PHP-FPM also supports user.ini files with per-directory settings[6].
+
+ [6] - http://php.net/manual/en/configuration.file.per-user.php
+
 After that you can start to use drupal.
