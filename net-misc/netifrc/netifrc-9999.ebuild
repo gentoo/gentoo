@@ -1,15 +1,15 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils systemd udev
+inherit systemd udev
 
 DESCRIPTION="Gentoo Network Interface Management Scripts"
 HOMEPAGE="https://www.gentoo.org/proj/en/base/openrc/"
 
 if [[ ${PV} == "9999" ]]; then
-	EGIT_REPO_URI="git://anongit.gentoo.org/proj/${PN}.git"
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/netifrc.git"
 	#EGIT_REPO_URI="https://github.com/gentoo/${PN}" # Alternate
 	inherit git-r3
 else
@@ -21,11 +21,11 @@ LICENSE="BSD-2"
 SLOT="0"
 IUSE=""
 
-DEPEND="kernel_linux? ( virtual/pkgconfig )
-	!<sys-fs/udev-172"
+DEPEND="!<sys-fs/udev-172"
 RDEPEND="sys-apps/gentoo-functions
 	>=sys-apps/openrc-0.15
 	!<sys-fs/udev-init-scripts-27"
+BDEPEND="kernel_linux? ( virtual/pkgconfig )"
 
 src_prepare() {
 	if [[ ${PV} == "9999" ]] ; then
@@ -35,8 +35,7 @@ src_prepare() {
 		GIT_DIR="${S}/.git" git log >"${S}"/ChangeLog
 	fi
 
-	# Allow user patches to be applied without modifying the ebuild
-	epatch_user
+	default
 }
 
 src_compile() {
@@ -44,7 +43,7 @@ src_compile() {
 		UDEVDIR=${EPREFIX}$(get_udevdir)
 		LIBEXECDIR=${EPREFIX}/lib/${PN} PF=${PF}"
 
-	use prefix && MAKE_ARGS="${MAKE_ARGS} MKPREFIX=yes PREFIX=${EPREFIX}"
+	use prefix && MAKE_ARGS+=" MKPREFIX=yes PREFIX=${EPREFIX}"
 
 	emake ${MAKE_ARGS} all
 }
@@ -54,15 +53,15 @@ src_install() {
 	dodoc README CREDITS FEATURE-REMOVAL-SCHEDULE STYLE TODO
 
 	# Install the service file
-	LIBEXECDIR=${EPREFIX}/lib/${PN}
-	UNIT_DIR="$(systemd_get_unitdir)"
+	LIBEXECDIR="${EPREFIX}/lib/${PN}"
+	UNIT_DIR="$(systemd_get_systemunitdir)"
 	sed "s:@LIBEXECDIR@:${LIBEXECDIR}:" "${S}/systemd/net_at.service.in" > "${T}/net_at.service" || die
 	systemd_newunit "${T}/net_at.service" 'net@.service'
 	dosym "${UNIT_DIR#${EPREFIX}}/net@.service" "${UNIT_DIR#${EPREFIX}}/net@lo.service"
 }
 
 pkg_postinst() {
-	if [[ ! -e "${EROOT}"/etc/conf.d/net && -z $REPLACING_VERSIONS ]]; then
+	if [[ ! -e "${EROOT}"/etc/conf.d/net && -z ${REPLACING_VERSIONS} ]]; then
 		elog "The network configuration scripts will use dhcp by"
 		elog "default to set up your interfaces."
 		elog "If you need to set up something more complete, see"
