@@ -20,11 +20,15 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 IUSE="examples nls static test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=sys-devel/m4-1.4.16"
-DEPEND="${RDEPEND}"
+# gettext _IS_ required in RDEPEND because >=bison-3.7 links against
+# libtextstyle.so!!! (see bug #740754)
+DEPEND="
+	>=sys-devel/m4-1.4.16
+	>=sys-devel/gettext-0.21
+"
+RDEPEND="${DEPEND}"
 BDEPEND="
 	sys-devel/flex
-	>=sys-devel/gettext-0.21
 	examples? ( dev-lang/perl )
 	test? ( dev-lang/perl )
 "
