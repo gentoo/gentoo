@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="provides an XS boost for some of Type::Tiny's built-in type constraints"
 
 SLOT="0"
-KEYWORDS="amd64 hppa ppc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="amd64 hppa ppc ~riscv x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE="test minimal"
 RESTRICT="!test? ( test )"
 
