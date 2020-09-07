@@ -58,6 +58,12 @@ src_configure() {
 		econf "${myeconfargs[@]}"
 }
 
+src_test() {
+	# See https://github.com/grke/burp/issues/869
+	local -x CK_DEFAULT_TIMEOUT=10
+	default
+}
+
 src_install() {
 	default
 	keepdir /var/spool/burp
