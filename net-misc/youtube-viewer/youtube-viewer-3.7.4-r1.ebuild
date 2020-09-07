@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils perl-module xdg-utils
+inherit desktop optfeature perl-module xdg-utils
 
 DESCRIPTION="A command line utility for viewing youtube-videos in Mplayer"
 HOMEPAGE="https://trizenx.blogspot.com/2012/03/gtk-youtube-viewer.html"
