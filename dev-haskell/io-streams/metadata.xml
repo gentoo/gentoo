@@ -5,20 +5,24 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<use>
+		<flag name="network">Include network support</flag>
+		<flag name="zlib">Include zlib support</flag>
+	</use>
 	<longdescription>
 		/Overview/
 		
 		The io-streams library contains simple and easy-to-use primitives for I/O
 		using streams. Most users will want to import the top-level convenience
-		module "System.IO.Streams", which re-exports most of the library:
+		module &quot;System.IO.Streams&quot;, which re-exports most of the library:
 		
 		@
-		import           "System.IO.Streams" (InputStream, OutputStream)
-		import qualified "System.IO.Streams" as Streams
+		import           System.IO.Streams (InputStream, OutputStream)
+		import qualified System.IO.Streams as Streams
 		@
 		
 		For first-time users, @io-streams@ comes with an included tutorial, which can
-		be found in the "System.IO.Streams.Tutorial" module.
+		be found in the &quot;System.IO.Streams.Tutorial&quot; module.
 		
 		/Features/
 		
@@ -27,13 +31,13 @@
 		
 		@
 		\-\- read an item from an input stream
-		Streams.'System.IO.Streams.read' :: 'System.IO.Streams.InputStream' a -&gt; IO (Maybe a)
+		Streams.read :: InputStream a -&gt; IO (Maybe a)
 		
 		\-\- push an item back to an input stream
-		Streams.'System.IO.Streams.unRead' :: a -&gt; 'System.IO.Streams.InputStream' a -&gt; IO ()
+		Streams.unRead :: a -&gt; InputStream a -&gt; IO ()
 		
 		\-\- write to an output stream
-		Streams.'System.IO.Streams.write' :: Maybe a -&gt; 'System.IO.Streams.OutputStream' a -&gt; IO ()
+		Streams.write :: Maybe a -&gt; OutputStream a -&gt; IO ()
 		@
 		
 		Streams can be transformed by composition and hooked together with provided combinators:
@@ -46,19 +50,19 @@
 		Stream composition leaves the original stream accessible:
 		
 		@
-		ghci&gt; input \&lt;- Streams.fromByteString \"long string\"
+		ghci&gt; input \&lt;- Streams.fromByteString \&quot;long string\&quot;
 		ghci&gt; wrapped \&lt;- Streams.takeBytes 4 input
 		ghci&gt; Streams.read wrapped
-		Just \"long\"
+		Just \&quot;long\&quot;
 		ghci&gt; Streams.read wrapped
 		Nothing
 		ghci&gt; Streams.read input
-		Just \" string\"
+		Just \&quot; string\&quot;
 		@
 		
 		Simple types and operations in the IO monad mean straightforward and simple
 		exception handling and resource cleanup using Haskell standard library
-		facilities like 'Control.Exception.bracket'.
+		facilities like &#39;Control.Exception.bracket&#39;.
 		
 		@io-streams@ comes with:
 		
@@ -73,66 +77,5 @@
 		* support for parsing from streams using @attoparsec@.
 		
 		* support for spawning processes and communicating with them using streams.
-		
-		/ChangeLog/
-		
-		[@1.1.4.2@] Fixed a build error with network versions older than 2.4.
-		
-		[@1.1.4.1@] @System.IO.Streams.Network@: scalability improvement: buffers
-		for socket reads are now allocated by system malloc rather than
-		by pinned pointers in GHC (currently pinned pointer allocation
-		takes a global lock).
-		
-		[@1.1.4.0@] Widened @attoparsec@ and @text@ library dependencies to allow
-		the latest versions.
-		
-		[@1.1.3.0@] Added @System.IO.Streams.ByteString.takeExactly@. Widened
-		@network@ dependency to include 2.3. Added a
-		@NoInteractiveTests@ flag to selectively disable some tests for
-		environments where spawning interactive processes is
-		impossible.
-		
-		[@1.1.2.2@] Allowed newest versions of the @process@, @test-framework@,
-		and @text@ libraries.
-		
-		[@1.1.2.1@] Fixed build error when compiled against attoparsec-0.10.0.x.
-		
-		[@1.1.2.0@] Added @System.IO.Streams.Concurrent.makeChanPipe@, to create a
-		simple concurrent pipe between an @InputStream@/@OutputStream@
-		pair.
-		
-		[@1.1.1.0@] Added @System.IO.Streams.Network.socketToStreamsWithBufferSize@,
-		allowing control over the size of the receive buffers used when
-		reading from sockets.
-		
-		[@1.1.0.3@] Fixed an inconsistent version upper bound in the test suite.
-		
-		[@1.1.0.2@] Fixed a typo in the tutorial.
-		
-		[@1.1.0.1@] A couple of Haddock markup fixes.
-		
-		[@1.1.0.0@] Reworked, simplified, and streamlined the internals of the
-		library. Exports from "System.IO.Streams.Internal" relying on
-		Sources and Sinks were deleted because they are no longer
-		necessary: Source(..), Sink(..), defaultPushback,
-		withDefaultPushback, nullSource, nullSink, singletonSource,
-		simpleSource, sourceToStream, sinkToStream, generatorToSource,
-		and consumerToSink.
-		
-		[@1.0.2.2@] Fixed a bug in which \"takeBytes 0\" was erroneously requesting
-		input from the wrapped stream.
-		
-		[@1.0.2.1@] Fixed a compile error on GHC 7.0.x.
-		
-		[@1.0.2.0@] Added "System.IO.Streams.Process" (support for communicating
-		with system processes using streams), added new functions to
-		"System.IO.Streams.Handle" for converting @io-streams@ types to
-		'System.IO.Handle's. (Now you can pass streams from this
-		library to places that expect Handles and everything will
-		work.)
-		
-		[@1.0.1.0@] Added 'System.IO.Streams.Combinators.ignoreEof'.
-		
-		[@1.0.0.1@] Fixed some haddock markup.
 	</longdescription>
 </pkgmetadata>
