@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit distutils-r1 eutils
+inherit distutils-r1 optfeature
 
 DESCRIPTION="Tool suite for analysis and visualization of DNS and DNSSEC"
 HOMEPAGE="https://dnsviz.net/"
@@ -38,10 +38,9 @@ pkg_postinst() {
 
 	# Warn about extra requirements for >=OpenSSL 1.1.0
 	if has_version '=dev-libs/openssl-1.1*'; then
-	   echo
-	   ewarn "With OpenSSL version 1.1.0 and later,the OpenSSL GOST Engine"
-	   ewarn "is necessary to validate DNSSEC signatures with algorithm 12"
-	   ewarn "(GOST R 34.10-2001) and digests of type 3 (GOST R 34.11-94)"
-	   ewarn "OpenSSL GOST Engine can be get from --> dev-libs/gost-engine"
+		ewarn "With OpenSSL version 1.1.0 and later,the OpenSSL GOST Engine"
+		ewarn "is necessary to validate DNSSEC signatures with algorithm 12"
+		ewarn "(GOST R 34.10-2001) and digests of type 3 (GOST R 34.11-94)"
+		ewarn "OpenSSL GOST Engine can be get from --> dev-libs/gost-engine"
 	fi
 }
