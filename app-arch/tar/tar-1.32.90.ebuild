@@ -21,9 +21,9 @@ LIB_DEPEND="acl? ( virtual/acl[static-libs(+)] )"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	selinux? ( sys-libs/libselinux )"
 DEPEND="${RDEPEND}
-	nls? ( >=sys-devel/gettext-0.10.35 )
 	static? ( ${LIB_DEPEND} )
 	xattr? ( elibc_glibc? ( sys-apps/attr ) )"
+BDEPEND="nls? ( sys-devel/gettext )"
 
 src_prepare() {
 	default

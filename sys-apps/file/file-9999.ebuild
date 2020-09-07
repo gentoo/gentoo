@@ -6,11 +6,11 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6..9} )
 DISTUTILS_OPTIONAL=1
 
-inherit autotools distutils-r1 libtool toolchain-funcs multilib-minimal
+inherit distutils-r1 libtool toolchain-funcs multilib-minimal
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/glensc/file.git"
-	inherit git-r3
+	inherit autotools git-r3
 else
 	SRC_URI="ftp://ftp.astron.com/pub/file/${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
@@ -37,12 +37,16 @@ RDEPEND="${DEPEND}
 	seccomp? ( sys-libs/libseccomp[${MULTILIB_USEDEP}] )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-5.39-portage_sandbox.patch" #713710 #728978
+	"${FILESDIR}/file-5.39-portage-sandbox.patch" #713710 #728978
 )
 
 src_prepare() {
 	default
-	eautoreconf
+
+	if [[ ${PV} == 9999 ]]; then
+		eautoreconf
+	fi
+
 	elibtoolize
 
 	# don't let python README kill main README #60043

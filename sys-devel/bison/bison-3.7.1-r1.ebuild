@@ -5,7 +5,7 @@ EAPI=7
 
 inherit flag-o-matic
 
-PATCH_TAR="${PN}-3.7-patches-01.tar.xz"
+PATCH_TAR="${PN}-3.7.1-patches-01.tar.xz"
 
 DESCRIPTION="A general-purpose (yacc-compatible) parser generator"
 HOMEPAGE="https://www.gnu.org/software/bison/"
@@ -16,15 +16,19 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="examples nls static test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=sys-devel/m4-1.4.16"
-DEPEND="${RDEPEND}"
+# gettext _IS_ required in RDEPEND because >=bison-3.7 links against
+# libtextstyle.so!!! (see bug #740754)
+DEPEND="
+	>=sys-devel/m4-1.4.16
+	>=sys-devel/gettext-0.21
+"
+RDEPEND="${DEPEND}"
 BDEPEND="
 	sys-devel/flex
-	>=sys-devel/gettext-0.21
 	examples? ( dev-lang/perl )
 	test? ( dev-lang/perl )
 "
@@ -33,7 +37,7 @@ DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO ) # ChangeLog-2012 ChangeLog-19
 
 PATCHES=(
 	"${WORKDIR}"/patches/${PN}-3.5-optional-perl.patch #538300
-	"${WORKDIR}"/patches/${PN}-3.7-avoid_autoreconf.patch
+	"${WORKDIR}"/patches/${PN}-3.7.1-avoid_autoreconf.patch
 )
 
 src_prepare() {
