@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7,8} )
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit eutils distutils-r1
+inherit distutils-r1 optfeature
 
 DESCRIPTION="An implementation of the Language Server Protocol for Python"
 HOMEPAGE="https://github.com/palantir/python-language-server"
