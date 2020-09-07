@@ -6512,7 +6512,7 @@ dev-perl/File-Spec-Native 1.4.0: Use native OS implementation of File::Spec from
 dev-perl/File-Stat-Bits 1.10.0-r1 1.10.0-r2: File stat bit mask constants
 dev-perl/File-Sync 0.110.0 0.110.0-r1: Perl access to fsync() and sync() function calls
 dev-perl/File-Tail 1.300.0: Perl extension for reading from continously updated files
-dev-perl/File-Tempdir 0.20.0-r1: This module provide an object interface to tempdir() from File::Temp
+dev-perl/File-Tempdir 0.20.0-r1 0.20.0-r2: This module provide an object interface to tempdir() from File::Temp
 dev-perl/File-Type 0.220.0-r1: Determine file type using magic
 dev-perl/File-Which 1.220.0: Perl module implementing 'which' internally
 dev-perl/File-chdir 0.101.100: An alternative to File::Spec and CWD
