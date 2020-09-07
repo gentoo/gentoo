@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1 desktop eutils flag-o-matic xdg-utils
+inherit distutils-r1 desktop optfeature flag-o-matic xdg-utils
 
 DESCRIPTION="A Python-extensible molecular graphics system"
 HOMEPAGE="https://www.pymol.org/"
@@ -81,7 +81,7 @@ python_install_all() {
 
 	# These environment variables should not go in the wrapper script, or else
 	# it will be impossible to use the PyMOL libraries from Python.
-	cat >> "${T}"/20pymol <<- EOF
+	cat >> "${T}"/20pymol <<- EOF || die
 		PYMOL_PATH="${EPREFIX}/usr/share/pymol"
 		PYMOL_DATA="${EPREFIX}/usr/share/pymol/data"
 		PYMOL_SCRIPTS="${EPREFIX}/usr/share/pymol/scripts"
