@@ -17,9 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
-# Thomas Deutschmann <whissi@gentoo.org> (2020-08-05)
+# Thomas Deutschmann <whissi@gentoo.org> (2020-09-07)
 # sys-cluster/slurm has no stable keywords
-app-metrics/collectd collectd_plugins_slurm
+# dev-util/nvidia-cuda-toolkit has no stable keywords
+app-metrics/collectd collectd_plugins_slurm collectd_plugins_gpu_nvidia
 
 # Joonas Niilola <juippis@gentoo.org> (2020-06-21)
 # sys-apps/apparmor doesn't have stable keywords.

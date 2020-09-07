@@ -52,8 +52,8 @@ COLLECTD_TESTED_PLUGINS="aggregation amqp apache apcups ascent battery bind
 	buddyinfo capabilities ceph cgroups check_uptime chrony connectivity
 	conntrack contextswitch cpu cpufreq cpusleep csv curl curl_json
 	curl_xml dbi df disk dns drbd email entropy ethstat exec fhcount
-	filecount fscache gmond gps hddtemp hugepages interface ipc ipmi
-	iptables ipvs irq java lua load logfile logparser log_logstash
+	filecount fscache gmond gps gpu_nvidia hddtemp hugepages interface ipc
+	ipmi iptables ipvs irq java lua load logfile logparser log_logstash
 	madwifi match_empty_counter match_hashed match_regex match_timediff
 	match_value mbmon mcelog md memcachec memcached memory modbus mqtt
 	multimeter mysql netlink network network nfs nginx notify_desktop
@@ -101,6 +101,7 @@ COMMON_DEPEND="
 	collectd_plugins_dns?			( net-libs/libpcap )
 	collectd_plugins_gmond?			( sys-cluster/ganglia )
 	collectd_plugins_gps?			( sci-geosciences/gpsd:= )
+	collectd_plugins_gpu_nvidia?		( dev-util/nvidia-cuda-toolkit )
 	collectd_plugins_ipmi?			( >=sys-libs/openipmi-2.0.16-r1 )
 	collectd_plugins_iptables?		( >=net-firewall/iptables-1.4.13:0= )
 	collectd_plugins_log_logstash?		( dev-libs/yajl:= )
@@ -412,6 +413,12 @@ src_configure() {
 	use collectd_plugins_redis    || use collectd_plugins_write_redis || myconf+=" --with-libhiredis=no"
 	use collectd_plugins_smart    || myconf+=" --with-libatasmart=no"
 	use collectd_plugins_gps      || myconf+=" --with-libgps=no"
+
+	if use collectd_plugins_gpu_nvidia; then
+		myconf+=" --with-cuda=${EPREFIX}/opt/cuda"
+	else
+		myconf+=" --with-cuda=no"
+	fi
 
 	if use perl; then
 		myconf+=" --with-perl-bindings=INSTALLDIRS=vendor"
