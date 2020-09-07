@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..9} )
 
-inherit distutils-r1 eutils
+inherit distutils-r1 optfeature
 
 DESCRIPTION="Statistical computations and models for use with SciPy"
 HOMEPAGE="https://www.statsmodels.org/stable/index.html"
