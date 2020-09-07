@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/linux-pam/linux-pam"
 
 COMMIT_HASH="e42e178c71c11bb25740a5177eed110ee17b8af2"
 SRC_URI="https://github.com/linux-pam/linux-pam/archive/${COMMIT_HASH}.tar.gz#/${PN}-${COMMIT_HASH}.tar.gz
-	https://dev.gentoo.org/~zlogene/distfiles/${CATEGORY}/${PN}-1.4.0_p20200809-doc.tar.xz"
+	https://dev.gentoo.org/~zlogene/distfiles/${CATEGORY}/${PN}/${PN}-1.4.0_p20200809-doc.tar.xz"
 
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
