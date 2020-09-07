@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
-inherit vim-plugin distutils-r1
+inherit vim-plugin distutils-r1 optfeature
 
 SRC_URI="mirror://pypi/p/${PN}/${P}.tar.gz"
 
