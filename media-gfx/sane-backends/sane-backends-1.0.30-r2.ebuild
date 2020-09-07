@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools eutils flag-o-matic multilib-minimal systemd toolchain-funcs udev user
+inherit autotools flag-o-matic multilib-minimal optfeature systemd toolchain-funcs udev user
 
 # gphoto and v4l are handled by their usual USE flags.
 # The pint backend was disabled because I could not get it to compile.
