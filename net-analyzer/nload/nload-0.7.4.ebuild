@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit autotools eutils
 
-DESCRIPTION="console application which monitors network traffic and bandwidth usage in real time"
+DESCRIPTION="Real time network traffic monitor for the command line interface"
 HOMEPAGE="http://www.roland-riegel.de/nload/index.html"
 SRC_URI="http://www.roland-riegel.de/nload/${P}.tar.gz"
 
