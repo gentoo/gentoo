@@ -88,6 +88,7 @@ BDEPEND="
 	test? (
 		virtual/perl-File-Temp
 		dev-perl/Test-Deep
+		dev-perl/Test-Output
 		>=dev-perl/Test-UseAllModules-0.150.0
 		virtual/perl-autodie
 	)
@@ -122,6 +123,7 @@ dzil_src_prep() {
 		-e '/^Test::PerlTidy =/d' \
 		-e '/^Test::Pod =/d' \
 		-e '/^\[Test::CPAN::Changes\]/{N;d}' \
+		-e '/^\[OptionalFeature/,/^$/d' \
 		-e '/^\[Test::MinimumVersion\]/{N;d}' \
 		-i dist.ini || die "Can't patch dist.ini"
 }
