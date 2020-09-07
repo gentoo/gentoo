@@ -569,7 +569,6 @@ dev-vcs/git-bz
 # modutils is obsolete and does not build.
 # No consumers in the tree.
 # Removal in 30 days.
-sys-apps/modutils
 virtual/modutils
 
 # Hans de Graaff <graaff@gentoo.org> (2020-08-07)
