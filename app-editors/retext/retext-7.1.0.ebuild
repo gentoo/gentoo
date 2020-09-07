@@ -7,7 +7,7 @@ EAPI=7
 # https://bitbucket.org/pypy/compatibility/wiki/Home#!gui-library-bindings
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit distutils-r1 eutils virtualx xdg-utils
+inherit distutils-r1 optfeature virtualx xdg-utils
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 MY_PN="ReText"
