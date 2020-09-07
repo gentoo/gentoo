@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_{6..9} )
 DISTUTILS_IN_SOURCE_BUILD=1
-inherit distutils-r1 eutils
+inherit distutils-r1 optfeature
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/pkgcore/pkgcheck.git"

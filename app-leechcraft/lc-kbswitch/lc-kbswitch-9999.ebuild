@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils leechcraft
+inherit leechcraft optfeature
 
 DESCRIPTION="Provides plugin- or tab-grained keyboard layout control"
 

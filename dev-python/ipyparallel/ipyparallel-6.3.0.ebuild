@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6..9} )
 PYTHON_REQ_USE="threads(+)"
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1 eutils
+inherit distutils-r1 optfeature
 
 DESCRIPTION="Interactive Parallel Computing with IPython"
 HOMEPAGE="https://ipyparallel.readthedocs.io/"

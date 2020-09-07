@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils
+inherit optfeature
 
 DESCRIPTION="A system for automatically configuring neomutt and isync"
 HOMEPAGE="https://github.com/LukeSmithxyz/mutt-wizard"

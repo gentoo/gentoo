@@ -5,7 +5,7 @@ EAPI=7
 
 DIST_AUTHOR=MLEHMANN
 DIST_VERSION=7.17
-inherit perl-module eutils virtualx
+inherit perl-module optfeature virtualx
 
 DESCRIPTION="Provides a uniform interface to various event loops"
 
@@ -29,6 +29,7 @@ PERL_RM_FILES=(
 	t/70_uv_0{1_basic,2_signals,3_child,4_condvar,5_dns,7_io,9_multi}.t
 
 )
+
 pkg_postinst() {
 	optfeature "improved event-loop performance" 		'>=dev-perl/EV-4.0.0'
 	optfeature "improved performance of Guard objects"	'>=dev-perl/Guard-1.20.0'
@@ -37,6 +38,7 @@ pkg_postinst() {
 	# AnyEvent::AIO
 	# Async::Interrupts
 }
+
 src_test() {
 	# optional:
 	# - install dev-perl/glib-perl for Glib for AnyEvent::Impl::Glib
