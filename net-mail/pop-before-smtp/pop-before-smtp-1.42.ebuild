@@ -1,9 +1,9 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 
-DESCRIPTION="a simple daemon to allow email relay control based on successful POP or IMAP logins"
+DESCRIPTION="Simple daemon to controll email relay based on successful POP or IMAP logins"
 HOMEPAGE="http://popbsmtp.sourceforge.net"
 SRC_URI="mirror://sourceforge/popbsmtp/${P}.tar.gz"
 
