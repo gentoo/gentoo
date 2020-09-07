@@ -29,8 +29,6 @@ DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
 # Require sandbox-2.2 for bug #288863.
 # For whirlpool hash, require python[ssl] (bug #425046).
 # For compgen, require bash[readline] (bug #445576).
-# app-portage/gemato goes without PYTHON_USEDEP since we're calling
-# the executable.
 RDEPEND="
 	app-arch/zstd
 	>=app-arch/tar-1.27
@@ -41,7 +39,7 @@ RDEPEND="
 		app-shells/bash:0[readline]
 		>=app-admin/eselect-1.2
 		rsync-verify? (
-			>=app-portage/gemato-14.4-r1[${PYTHON_USEDEP}]
+			>=app-portage/gemato-14.5[${PYTHON_USEDEP}]
 			>=app-crypt/openpgp-keys-gentoo-release-20180706
 			>=app-crypt/gnupg-2.2.4-r2[ssl(-)]
 		)
