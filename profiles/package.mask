@@ -572,11 +572,6 @@ dev-vcs/git-bz
 sys-apps/modutils
 virtual/modutils
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2020-08-08)
-# HOMEPAGE dead.
-# Removal in 30 days. bug #736326
-media-sound/tapiir
-
 # Hans de Graaff <graaff@gentoo.org> (2020-08-07)
 # Slot with known security issues. Please use a newer slot
 # instead. Removal in 30 days. Bug #713478.
