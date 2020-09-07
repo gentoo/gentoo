@@ -11,7 +11,7 @@ SRC_URI="http://www.gasmi.net/down/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="libressl postgres"
 # Not adding a mysql USE flag. The package defaults to it, so we will too.
 DEPEND="sys-libs/zlib
