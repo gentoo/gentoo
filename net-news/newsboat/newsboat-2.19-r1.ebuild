@@ -120,7 +120,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0 BSD-2 CC0-1.0 ISC MIT Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ppc64 x86"
 IUSE="libressl"
 
 RDEPEND="
