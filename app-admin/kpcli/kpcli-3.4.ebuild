@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils
+inherit optfeature
 
 DESCRIPTION="A command line interface to KeePass database files"
 HOMEPAGE="http://kpcli.sourceforge.net"
