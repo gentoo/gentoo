@@ -1,0 +1,24 @@
+diff -ru stfl-0.24.orig/Makefile stfl-0.24/Makefile
+--- stfl-0.24.orig/Makefile	2015-02-12 14:14:33.000000000 +0100
++++ stfl-0.24/Makefile	2020-09-07 14:08:04.125833347 +0200
+@@ -67,7 +67,7 @@
+ 	ln -fs libstfl.so.$(VERSION) $(DESTDIR)$(prefix)/$(libdir)/libstfl.so
+ 
+ stfl.pc: stfl.pc.in
+-	sed 's,@VERSION@,$(VERSION),g' < $< | sed 's,@PREFIX@,$(prefix),g' > $@
++	sed 's,@VERSION@,$(VERSION),g' < $< | sed 's,@PREFIX@,$(prefix),g' | sed 's,@LIBDIR@,${libdir},g' > $@
+ 
+ ifeq ($(FOUND_SPL),1)
+ include spl/Makefile.snippet
+diff -ru stfl-0.24.orig/stfl.pc.in stfl-0.24/stfl.pc.in
+--- stfl-0.24.orig/stfl.pc.in	2009-03-30 20:33:37.000000000 +0200
++++ stfl-0.24/stfl.pc.in	2020-09-07 14:08:07.784854088 +0200
+@@ -2,7 +2,7 @@
+ 
+ prefix=@PREFIX@
+ exec_prefix=${prefix}
+-libdir=${exec_prefix}/lib
++libdir=${exec_prefix}/@LIBDIR@
+ includedir=${prefix}/include
+ 
+ Name: STFL
