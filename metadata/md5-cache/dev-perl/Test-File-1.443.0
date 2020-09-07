@@ -4,11 +4,11 @@ DESCRIPTION=Test file attributes
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Test-File
 IUSE=test
-KEYWORDS=amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~riscv ~s390 ~sparc ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/B/BD/BDFOY/Test-File-1.443.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=7572d1f0067f6bda6b612357a6936f83
+_md5_=547b89a46ed970666bda073e58fca57d

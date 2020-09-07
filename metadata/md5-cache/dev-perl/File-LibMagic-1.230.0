@@ -5,11 +5,11 @@ DESCRIPTION=Perl wrapper for libmagic
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/File-LibMagic
 IUSE=test
-KEYWORDS=~amd64 ~hppa ~ppc64 ~sparc ~x86
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=sys-apps/file virtual/perl-Carp virtual/perl-Exporter virtual/perl-XSLoader virtual/perl-Scalar-List-Utils dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DR/DROLSKY/File-LibMagic-1.23.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=cd5b8d6b0f7c98bea0cc28164a9d540e
+_md5_=99071ac339190a043974ed6e8b0d87a0

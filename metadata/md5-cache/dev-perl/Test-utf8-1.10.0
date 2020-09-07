@@ -3,10 +3,10 @@ DEPEND=virtual/perl-ExtUtils-MakeMaker dev-lang/perl
 DESCRIPTION=Handy utf8 tests
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Test-utf8
-KEYWORDS=amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~riscv ~s390 ~sparc ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MA/MARKF/Test-utf8-1.01.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=4e2b52e4d45009e6ad049fed0b0fccf5
+_md5_=ec24813e7e14b287306f33ecb1430a58
