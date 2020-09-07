@@ -106,6 +106,7 @@ acct-group/milter-regex 0: Group for mail-filter/milter-regex
 acct-group/minecraft 0: A group for the Minecraft server
 acct-group/minetest 0: A group for the Minetest server
 acct-group/mongodb 0: MongoDB program group
+acct-group/mongodb_exporter 0: System group: mongodb_exporter
 acct-group/monitorix 0: Monitorix system tool group
 acct-group/monkeysphere 0: monkeysphere program group
 acct-group/mosquitto 0: A group for the mosquitto MQTT broker
@@ -324,6 +325,7 @@ acct-user/milter-regex 0: User for mail-filter/milter-regex
 acct-user/minecraft 0: A user for the Minecraft server
 acct-user/minetest 0 1: A user for the Minetest server
 acct-user/mongodb 0: MongoDB program user
+acct-user/mongodb_exporter 0: user for mongodb_exporter
 acct-user/monitorix 0: Monitorix system tool user
 acct-user/monkeysphere 0: monkeysphere program user
 acct-user/mosquitto 0: A user for the mosquitto MQTT broker
@@ -2290,7 +2292,7 @@ app-metrics/fusioninventory-agent 2.5.2: The FusionInventory agent is a generic 
 app-metrics/github-exporter 04 04-r1 1.0.1: Github statistics exporter for prometheus
 app-metrics/grok_exporter 0.2.6: Unstructured log data exporter for Prometheus
 app-metrics/memcached_exporter 0.5.0 0.6.0: Prometheus exporter for memcached
-app-metrics/mongodb_exporter 0.6.2-r1 0.11.0: Prometheus exporter for MongoDB
+app-metrics/mongodb_exporter 0.6.2-r1 0.11.0 0.11.1: Prometheus exporter for MongoDB
 app-metrics/mysqld_exporter 0.10.0-r1 0.11.0 0.12.1_p20200622: Prometheus exporter for MySQL server metrics
 app-metrics/nginx-lua-prometheus 0.1_pre20170610: Library that exports Nginx metrics to Prometheus
 app-metrics/nginx-vts-exporter 0.10.3 0.10.7 0.10.7-r1: Nginx virtual host traffic stats exporter for Prometheus
@@ -5292,7 +5294,7 @@ dev-libs/editline 1.17.1: line editing library for UNIX call compatible with the
 dev-libs/eekboard 1.0.8_p20121001-r1: An easy to use virtual keyboard toolkit
 dev-libs/efl 1.24.3: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfutils 0.180: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
-dev-libs/ell 0.28 0.31 0.32 9999: Embedded Linux Library provides core, low-level functionality for system daemons
+dev-libs/ell 0.28 0.31 0.32 0.33 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.2.8 2.2.9: Stream-oriented XML parser library
 dev-libs/faxpp 0.4-r1: Small, fast and conformant XML pull parser written in C
@@ -5572,7 +5574,7 @@ dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories S
 dev-libs/libxdiff 0.23-r2: Library for creating diff files
 dev-libs/libxls 1.5.3 1.6.0: A library which can read Excel (xls) files
 dev-libs/libxml2 2.9.9-r3 2.9.10 2.9.10-r1: XML C parser and toolkit
-dev-libs/libxmlb 0.1.15 0.2.0: Library to help create and query binary XML blobs
+dev-libs/libxmlb 0.1.15 0.2.0 0.2.1: Library to help create and query binary XML blobs
 dev-libs/libxslt 1.1.33-r1 1.1.34 1.1.34-r1: XSLT libraries and tools
 dev-libs/libyaml 0.2.2 0.2.5: YAML 1.1 parser and emitter written in C
 dev-libs/libzia 4.21 4.22: platform abstraction code for tucnak package
@@ -16902,7 +16904,7 @@ sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from
 sys-apps/flashrom 1.2-r1 1.2-r2 9999: Utility for reading, writing, erasing and verifying flash ROM chips
 sys-apps/frandom 1.1-r1: Fast kernel-land pseudo-random number generator using the RC4 algorithm
 sys-apps/fwts 20.05.00: Firmware Test Suite
-sys-apps/fwupd 1.3.10 1.3.11 1.4.4 1.4.5: Aims to make updating firmware on Linux automatic, safe and reliable
+sys-apps/fwupd 1.3.10 1.3.11 1.4.5 1.4.6: Aims to make updating firmware on Linux automatic, safe and reliable
 sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 4.2.1-r1 5.0.1 5.1.0: GNU awk pattern-matching language
 sys-apps/gcp 0.2.1: File copying utility with progress and I/O indicator

@@ -1,0 +1,14 @@
+BDEPEND=>=dev-lang/go-1.12 app-arch/unzip
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=acct-group/mongodb_exporter acct-user/mongodb_exporter
+DESCRIPTION=Prometheus exporter for MongoDB
+EAPI=7
+HOMEPAGE=https://github.com/percona/mongodb_exporter
+KEYWORDS=~amd64
+LICENSE=Apache-2.0 AGPL-3 BSD MIT
+RDEPEND=acct-group/mongodb_exporter acct-user/mongodb_exporter
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/percona/mongodb_exporter/archive/v0.11.1.tar.gz -> mongodb_exporter-0.11.1.tar.gz
+_eclasses_=go-module	45394825d9260b479aa1cf252ea58e01
+_md5_=868ffa873f65eb02a762d506478e5833
