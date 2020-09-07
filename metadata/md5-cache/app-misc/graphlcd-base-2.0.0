@@ -11,5 +11,5 @@ RDEPEND=dev-libs/libhid net-libs/libvncserver freetype? ( media-libs/freetype:2=
 REQUIRED_USE=?? ( graphicsmagick imagemagick )
 SLOT=0
 SRC_URI=https://projects.vdr-developer.org/git/graphlcd-base.git/snapshot/graphlcd-base-2.0.0.tar.bz2
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	optfeature	81a350480e88dcebfe32c0cb172e17ed	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	udev	452708c3f55cf6e918b045adb949a9e6
+_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	optfeature	6c9aa35fc16df43d7142ef2660e00e25	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=c77f27f563e142dbba33f50786d23b67
