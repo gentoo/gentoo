@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit autotools eutils python-single-r1
+inherit autotools optfeature python-single-r1
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
