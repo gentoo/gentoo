@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit bash-completion-r1 eutils linux-info systemd toolchain-funcs
+inherit bash-completion-r1 linux-info optfeature systemd toolchain-funcs
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
