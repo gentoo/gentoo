@@ -26,7 +26,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}"/${P}-cmake.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-cmake.patch
+	"${FILESDIR}"/${P}-test_path.patch
+	)
 DOCS=( ChangeLog README.md )
 
 pkg_pretend() {
