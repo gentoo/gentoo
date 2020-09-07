@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_BUILD_TYPE=RelWithDebInfo
-inherit cmake-utils vcs-snapshot
+inherit cmake vcs-snapshot
 
 DESCRIPTION="A small, fast, and high performance math library for robot applications"
 HOMEPAGE="https://ignitionrobotics.org/libraries/math"
