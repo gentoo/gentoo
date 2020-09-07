@@ -5,7 +5,7 @@ EAPI=6
 
 DIST_AUTHOR=EXODIST
 DIST_VERSION=0.008
-inherit perl-module eutils
+inherit perl-module optfeature
 
 DESCRIPTION="Format a header and rows into a table"
 SLOT="0"
