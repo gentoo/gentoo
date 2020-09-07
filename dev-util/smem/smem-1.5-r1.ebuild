@@ -6,7 +6,7 @@ EAPI=7
 EGIT_COMMIT="2ab5040d5633"
 PYTHON_COMPAT=( python3_{6..9} )
 
-inherit eutils python-single-r1 toolchain-funcs
+inherit optfeature python-single-r1 toolchain-funcs
 
 DESCRIPTION="A tool that can give numerous reports on memory usage on Linux systems"
 HOMEPAGE="https://www.selenic.com/smem/"
