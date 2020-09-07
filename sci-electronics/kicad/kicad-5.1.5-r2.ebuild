@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 
 WX_GTK_VER="3.0-gtk3"
 
-inherit check-reqs cmake eutils python-single-r1 toolchain-funcs wxwidgets xdg-utils
+inherit check-reqs cmake optfeature python-single-r1 toolchain-funcs wxwidgets xdg-utils
 
 DESCRIPTION="Electronic Schematic and PCB design tools"
 HOMEPAGE="https://www.kicad-pcb.org"
