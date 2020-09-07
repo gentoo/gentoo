@@ -34,7 +34,7 @@
 
 # Joonas Niilola <juippis@gentoo.org> (2020-09-07)
 # Nothing in the tree uses this lib anymore. Removing as redundant.
-# Bug #740868.
+# Removal in ~30 days. Bug #740868.
 dev-python/mini-amf
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-09-04)
