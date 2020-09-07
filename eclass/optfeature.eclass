@@ -6,7 +6,7 @@
 # base-system@gentoo.org
 # @BLURB: Advertise optional functionality that might be useful to users
 
-case "${EAPI:-0}" in
+case ${EAPI:-0} in
 	[0-7]) ;;
 	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
 esac
