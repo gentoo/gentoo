@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils linux-info systemd
+inherit linux-info optfeature systemd
 
 MY_DATE="$(ver_cut 4)"
 MY_PN="${PN^^}"
