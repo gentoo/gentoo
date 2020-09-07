@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE='readline,sqlite,threads(+)'
 
-inherit distutils-r1 eutils virtualx
+inherit distutils-r1 optfeature virtualx
 
 DESCRIPTION="Advanced interactive shell for Python"
 HOMEPAGE="https://ipython.org/ https://github.com/ipython/ipython/"
