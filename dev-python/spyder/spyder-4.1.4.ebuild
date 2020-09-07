@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_7 )
 
-inherit eutils xdg distutils-r1 virtualx
+inherit optfeature xdg distutils-r1 virtualx
 
 # Commit of documentation to fetch
 DOCS_PV="0d5afe26b8e28f3eb9f36f4ec3828bf8375c339e"
