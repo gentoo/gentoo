@@ -7801,7 +7801,7 @@ dev-php/phpdocumentor-type-resolver 0.2.1: PSR-5 based resolver of Class names, 
 dev-php/phpmd 2.6.0 2.8.2: PHP mess detector
 dev-php/phpspec-prophecy 1.7.0 1.8.0 1.9.0 1.10.0 1.10.1 1.10.3-r1: Highly opinionated mocking framework
 dev-php/phptal 1.3.1: A templating engine for PHP5 that implements Zope Page Templates syntax
-dev-php/phpunit 5.7.15-r3 8.5.0 8.5.1 8.5.2 8.5.4 8.5.5: A PHP Unit Testing framework
+dev-php/phpunit 5.7.15-r3 8.5.5: A PHP Unit Testing framework
 dev-php/phpunit-mock-objects 3.4.3 3.4.3-r1: Mock Object library for PHPUnit
 dev-php/psr-log 1.0.2 1.1.0 1.1.2 1.1.3: Common interface for logging libraries
 dev-php/realpath_turbo 2.0.0: PHP extension to re-enable realpath cache when using open_basedir restriction
