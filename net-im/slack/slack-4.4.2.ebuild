@@ -5,7 +5,7 @@ EAPI=7
 
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit desktop eutils multilib-build pax-utils unpacker xdg-utils
+inherit desktop multilib-build optfeature pax-utils unpacker xdg-utils
 
 DESCRIPTION="Team collaboration tool"
 HOMEPAGE="https://www.slack.com"
