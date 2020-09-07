@@ -5,7 +5,7 @@ DESCRIPTION=irc to IM gateway that support multiple IM protocols
 EAPI=7
 HOMEPAGE=https://www.bitlbee.org/
 IUSE=debug +gnutls ipv6 libevent libressl nss otr +plugins selinux test xinetd msn oscar purple twitter +xmpp
-KEYWORDS=amd64 ~ppc ~ppc64 x86
+KEYWORDS=amd64 ppc ~ppc64 x86
 LICENSE=GPL-2
 RDEPEND=acct-group/bitlbee acct-user/bitlbee dev-libs/glib:2 purple? ( net-im/pidgin ) libevent? ( dev-libs/libevent:= ) otr? ( >=net-libs/libotr-4 ) gnutls? ( net-libs/gnutls:= ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:0= ) ) ) xinetd? ( sys-apps/xinetd )
 REQUIRED_USE=|| ( purple xmpp msn oscar ) xmpp? ( !nss ) test? ( plugins )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://get.bitlbee.org/src/bitlbee-3.6.tar.gz
 _eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=9ee1a80e56a23cb7f2bbc5faae69b214
+_md5_=3d682bdaed1744e0e769d5e59048ab2e
