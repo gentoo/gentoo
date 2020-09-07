@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit eutils
+inherit eutils xdg
 
 DESCRIPTION="DLNA compliant UPNP server for streaming media to Playstation 3"
 HOMEPAGE="https://github.com/ps3mediaserver/ps3mediaserver"
@@ -77,6 +77,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		ewarn "Don't forget to disable transcoding engines for software"
 		ewarn "that you don't have installed (such as having the VLC"
