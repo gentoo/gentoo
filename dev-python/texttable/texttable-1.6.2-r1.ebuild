@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..9} )
 
-inherit distutils-r1 eutils
+inherit distutils-r1 optfeature
 
 DESCRIPTION="Module for creating simple ASCII tables"
 HOMEPAGE="https://github.com/foutaise/texttable https://pypi.org/project/texttable/"
