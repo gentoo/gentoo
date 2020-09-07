@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit flag-o-matic optfeature toolchain-funcs
 
 DESCRIPTION="Tail with multiple windows"
 HOMEPAGE="http://www.vanheusden.com/multitail/"
