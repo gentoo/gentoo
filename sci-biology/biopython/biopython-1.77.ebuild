@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..9} )
 
-inherit distutils-r1 eutils
+inherit distutils-r1 optfeature
 
 DESCRIPTION="Python modules for computational molecular biology"
 HOMEPAGE="https://www.biopython.org/ https://pypi.org/project/biopython/"
