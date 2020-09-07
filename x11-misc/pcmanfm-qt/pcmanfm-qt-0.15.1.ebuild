@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake eutils xdg-utils
+inherit cmake optfeature xdg-utils
 
 DESCRIPTION="Qt GUI Tabbed Filemanager"
 HOMEPAGE="https://lxqt.github.io/"
