@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,6 +17,6 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="${RDEPEND}
-	dev-util/ignition-cmake[${MULTILIB_USEDEP}]"
+	dev-util/ignition-cmake:0[${MULTILIB_USEDEP}]"
 
 S="${WORKDIR}/${PN}4_${PV}"
