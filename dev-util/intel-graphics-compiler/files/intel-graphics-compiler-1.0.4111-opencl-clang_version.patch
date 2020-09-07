@@ -1,0 +1,27 @@
+--- a/IGC/BiFModule/CMakeLists.txt
++++ b/IGC/BiFModule/CMakeLists.txt
+@@ -160,20 +160,10 @@
+ 
+ if(UNIX)
+   if(NOT ${CCLANG_BUILD_INTREE_LLVM})
+-    # Get common clang library soname
+-    get_target_property(CCLANG_LIB_PATH opencl-clang-lib "IMPORTED_LOCATION")
+-    execute_process(
+-      COMMAND readelf -d ${CCLANG_LIB_PATH}
+-      OUTPUT_VARIABLE CCLANG_READELF_CALL)
+-    string(REGEX MATCH "\\[${COMMON_CLANG_LIB_FULL_NAME}\\.([0-9](\\.[0-9]*)*[a-zA-Z0-9]*)\\]" CCLANG_SONAME_VERSION "${CCLANG_READELF_CALL}")
+-    set(CCLANG_SONAME_VERSION "${CMAKE_MATCH_1}")
+-
+-    # Check if common clang library is newer than 5.0.0 version on which we have SPIR-V support
+-    if("${CCLANG_SONAME_VERSION}" VERSION_GREATER "5.0.0")
+-      set_property(TARGET opencl-clang-lib PROPERTY "IMPORTED_SONAME" "${COMMON_CLANG_LIB_FULL_NAME}.${CCLANG_SONAME_VERSION}")
+-    else()
+-      message(FATAL_ERROR "[IGC\\BiFModule] : Version ${CCLANG_SONAME_VERSION} of library ${COMMON_CLANG_LIB_FULL_NAME} is below version 5.0.0 (where it's starts support of SPIR-V), please upgrade this library at least to version 5.0.0")
+-    endif()
++    # Workaround for https://bugs.gentoo.org/739138 : instead of checking
++    # the version of opencl-clang, have ebuilds set CCLANG_SONAME_VERSION
++    # for us.
++    set_property(TARGET opencl-clang-lib PROPERTY "IMPORTED_SONAME" "${COMMON_CLANG_LIB_FULL_NAME}.${CCLANG_SONAME_VERSION}")
+   endif()
+   if (NOT CCLANG_FROM_SYSTEM)
+     install(FILES $<TARGET_FILE:opencl-clang-lib> DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR} COMPONENT igc-opencl)

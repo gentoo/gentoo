@@ -27,6 +27,7 @@ RDEPEND="${COMMON}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.9-no_Werror.patch
+	"${FILESDIR}"/${PN}-1.0.4111-opencl-clang_version.patch
 )
 
 S="${WORKDIR}"/${PN}-igc-${PV}
@@ -45,6 +46,7 @@ multilib_src_configure() {
 	use debug || append-cppflags -DNDEBUG
 
 	local mycmakeargs=(
+		-DCCLANG_SONAME_VERSION=${llvm_slot}
 		-DCMAKE_LIBRARY_PATH=$(get_llvm_prefix ${llvm_slot})/$(get_libdir)
 		-DIGC_OPTION__FORCE_SYSTEM_LLVM=ON
 		-DIGC_PREFERRED_LLVM_VERSION=${llvm_slot}
