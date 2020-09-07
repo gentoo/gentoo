@@ -156,9 +156,3 @@ src_install() {
 
 	systemd_douserunit doc/examples/systemd-user/*.{service,socket}
 }
-
-pkg_postinst() {
-	elog "See https://wiki.gentoo.org/wiki/GnuPG for documentation on gnupg"
-	elog
-	elog "If you wish to use 'gpg-wks-client --send', you must install an MTA!"
-}
