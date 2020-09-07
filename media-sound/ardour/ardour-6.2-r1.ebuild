@@ -74,6 +74,11 @@ PATCHES=(
 	"${FILESDIR}/${P}-use-signed-int-for-atomic-operations.patch"
 )
 
+pkg_pretend() {
+	[[ $(tc-getLD) == *gold* ]] && (has_version sci-libs/fftw[openmp] || has_version sci-libs/fftw[threads]) && \
+		ewarn "Linking with gold linker might produce broken executable, see bug #733972"
+}
+
 pkg_setup() {
 	if has_version \>=dev-libs/libsigc++-2.6 ; then
 		append-cxxflags -std=c++11
