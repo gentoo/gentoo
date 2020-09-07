@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils meson xdg-utils
+inherit meson optfeature xdg-utils
 
 DESCRIPTION="Enlightenment window manager"
 HOMEPAGE="https://www.enlightenment.org"
