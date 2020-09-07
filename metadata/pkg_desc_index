@@ -1907,6 +1907,7 @@ app-emulation/dynamips 0.2.18 0.2.21: Cisco 7200/3600 Simulator
 app-emulation/edumips64 1.1 1.2: A visual and cross-platform MIPS64 CPU Simulator
 app-emulation/faudio 19.06 19.09 20.02 9999: FAudio - Accuracy-focused XAudio reimplementation for open platforms
 app-emulation/firecracker 0.21.1-r1: Secure and fast microVMs for serverless computing
+app-emulation/firecracker-bin 0.22.0: Secure and fast microVMs for serverless computing (static build)
 app-emulation/flannel 0.11.0: An etcd backed network fabric for containers
 app-emulation/free42 2.0.20 2.5.14 2.5.16 2.5.17 2.5.18: An HP-42S Calculator Simulator
 app-emulation/fs-uae 3.0.5: Integrates the most accurate Amiga emulation code available from WinUAE
@@ -2530,7 +2531,7 @@ app-misc/rundeck-bin 2.6.8: Job Scheduler and Runbook Automation
 app-misc/rundeck-cli-bin 0.1.8 0.1.11: Command line tool for rundeck
 app-misc/screen 4.8.0 9999: screen manager with VT100/ANSI terminal emulation
 app-misc/screenfetch 3.9.1 9999: Bash Screenshot Information Tool
-app-misc/screenie 1.30.0-r1 20120406: A small and lightweight screen wrapper
+app-misc/screenie 20120406: A small and lightweight screen wrapper
 app-misc/scrub 2.5.2 2.6.1: Overwrite files with iterative patterns.
 app-misc/selecta 0.0.7 9999: A fuzzy text selector for files and anything else you need to select
 app-misc/skim 0.6.9 0.7.0 0.8.1: Command-line fuzzy finder
