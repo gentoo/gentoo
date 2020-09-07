@@ -5,7 +5,7 @@ EAPI=6
 
 DIST_AUTHOR=MLEHMANN
 DIST_VERSION=7.14
-inherit perl-module eutils
+inherit perl-module optfeature
 
 DESCRIPTION="Provides a uniform interface to various event loops"
 
@@ -18,6 +18,7 @@ DEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.520.0
 	dev-perl/Canary-Stability
 "
+
 pkg_postinst() {
 	optfeature "improved event-loop performance" 		'>=dev-perl/EV-4.0.0'
 	optfeature "improved performance of Guard objects"	'>=dev-perl/Guard-1.20.0'
