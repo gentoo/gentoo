@@ -7,7 +7,9 @@ PYTHON_COMPAT=( python3_{6..9} )
 
 WANT_AUTOCONF="2.1"
 
-inherit autotools check-reqs multiprocessing python-any-r1
+LLVM_MAX_SLOT=10
+
+inherit autotools check-reqs llvm multiprocessing python-any-r1
 
 MY_PN="mozjs"
 MY_PV="${PV/_pre*}" # Handle Gentoo pre-releases
@@ -58,6 +60,7 @@ IUSE="debug +jit test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="${PYTHON_DEPS}
+	sys-devel/clang
 	>=virtual/rust-1.43.0
 	virtual/pkgconfig"
 
@@ -75,6 +78,15 @@ RDEPEND="${CDEPEND}"
 
 S="${WORKDIR}/firefox-${MY_PV}/js/src"
 
+llvm_check_deps() {
+	if ! has_version -b "sys-devel/clang:${LLVM_SLOT}" ; then
+		ewarn "sys-devel/clang:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
+		return 1
+	fi
+
+	einfo "Will use LLVM slot ${LLVM_SLOT}!" >&2
+}
+
 python_check_deps() {
 	if use test ; then
 		has_version "dev-python/six[${PYTHON_USEDEP}]"
@@ -85,7 +97,7 @@ pkg_pretend() {
 	if use test ; then
 		CHECKREQS_DISK_BUILD="6400M"
 	else
-		CHECKREQS_DISK_BUILD="5300M"
+		CHECKREQS_DISK_BUILD="5600M"
 	fi
 
 	check-reqs_pkg_pretend
@@ -95,10 +107,12 @@ pkg_setup() {
 	if use test ; then
 		CHECKREQS_DISK_BUILD="6400M"
 	else
-		CHECKREQS_DISK_BUILD="5300M"
+		CHECKREQS_DISK_BUILD="5600M"
 	fi
 
 	check-reqs_pkg_setup
+
+	llvm_pkg_setup
 
 	python-any-r1_pkg_setup
 }
