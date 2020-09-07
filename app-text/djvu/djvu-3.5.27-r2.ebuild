@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools desktop eutils flag-o-matic xdg-utils
+inherit autotools desktop flag-o-matic optfeature xdg-utils
 
 COMMIT="a00b7618c22fb35b030582147a4479c4cf41c349"
 MY_P="${PN}-${PN}libre-git-${COMMIT}"
