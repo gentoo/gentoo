@@ -1,86 +1,82 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit systemd user
+EAPI=7
+
+inherit systemd
 
 DESCRIPTION="High-performance interface between the MTA and content checkers"
 HOMEPAGE="https://gitlab.com/amavis/amavis"
-SRC_URI="https://gitlab.com/amavis/amavis/-/archive/${P}/amavis-${P}.tar.gz"
+SRC_URI="https://gitlab.com/amavis/amavis/-/archive/v${PV}/amavis-v${PV}.tar.bz2"
 
 LICENSE="GPL-2 BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ppc64 sparc x86"
-IUSE="clamav courier dkim ldap mysql postgres qmail razor snmp spamassassin zmq"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+IUSE="clamav courier dkim ldap mysql postgres qmail razor rspamd rspamd-https snmp spamassassin zmq"
 
-DEPEND=">=sys-apps/sed-4
-	>=dev-lang/perl-5.10.0"
-
+MY_RSPAMD_DEPEND="dev-perl/HTTP-Message
+	dev-perl/JSON
+	dev-perl/LWP-UserAgent-Determined"
+DEPEND="acct-user/amavis"
 RDEPEND="${DEPEND}
-	>=sys-apps/coreutils-5.0-r3
+	app-arch/arc
+	app-arch/bzip2
+	app-arch/cabextract
 	app-arch/cpio
 	app-arch/gzip
-	app-arch/bzip2
-	app-arch/arc
-	app-arch/cabextract
 	app-arch/lha
 	app-arch/lrzip
 	app-arch/lzop
 	app-arch/ncompress
 	app-arch/p7zip
 	app-arch/pax
-	app-arch/unarj
+	app-arch/arj
 	app-arch/unrar
 	app-arch/xz-utils
 	app-arch/zoo
-	net-mail/ripole
-	>=dev-perl/Archive-Zip-1.14
-	>=virtual/perl-IO-Compress-1.35
-	>=virtual/perl-Compress-Raw-Zlib-2.017
-	net-mail/tnef
-	virtual/perl-MIME-Base64
-	>=dev-perl/MIME-tools-5.415
-	>=dev-perl/MailTools-1.58
-	>=dev-perl/Net-Server-0.91
-	virtual/perl-Digest-MD5
-	dev-perl/IO-stringy
-	virtual/perl-IO-Socket-IP
-	>=virtual/perl-Time-HiRes-1.49
-	dev-perl/Unix-Syslog
-	dev-perl/Net-LibIDN
-	dev-perl/File-LibMagic
-	>=sys-libs/db-4.4.20
+	dev-lang/perl:*
+	dev-perl/Archive-Zip
 	dev-perl/BerkeleyDB
 	dev-perl/Convert-BinHex
-	>=dev-perl/Mail-DKIM-0.31
-	virtual/perl-File-Temp
-	dev-perl/Net-SSLeay
+	dev-perl/File-LibMagic
 	dev-perl/IO-Socket-SSL
+	dev-perl/IO-stringy
+	>=dev-perl/Mail-DKIM-0.31
+	>=dev-perl/MailTools-1.58
+	>=dev-perl/MIME-tools-5.415
+	dev-perl/Net-LibIDN
+	>=dev-perl/Net-Server-0.91
+	dev-perl/Net-SSLeay
+	dev-perl/Unix-Syslog
+	net-mail/ripole
+	net-mail/tnef
+	>=sys-apps/coreutils-5.0-r3
+	>=sys-libs/db-4.4.20
 	virtual/mta
+	virtual/perl-Compress-Raw-Zlib
+	virtual/perl-Digest-MD5
+	virtual/perl-File-Temp
+	virtual/perl-IO-Compress
+	virtual/perl-IO-Socket-IP
+	virtual/perl-MIME-Base64
+	virtual/perl-Time-HiRes
 	clamav? ( app-antivirus/clamav )
 	ldap? ( >=dev-perl/perl-ldap-0.33 )
 	mysql? ( dev-perl/DBD-mysql )
 	postgres? ( dev-perl/DBD-Pg )
 	razor? ( mail-filter/razor )
+	rspamd? ( ${MY_RSPAMD_DEPEND} )
+	rspamd-https? ( ${MY_RSPAMD_DEPEND}
+		dev-perl/LWP-Protocol-https
+		dev-perl/Net-SSLeay )
 	snmp? ( net-analyzer/net-snmp[perl] )
 	spamassassin? ( mail-filter/spamassassin dev-perl/Image-Info )
 	zmq? ( dev-perl/ZMQ-LibZMQ3 )"
 
-AMAVIS_ROOT="/var/amavis"
-S="${WORKDIR}/amavis-${P}"
-
-pkg_setup() {
-	# Create the user beforehand so that we can install the config file
-	# (and some directories) with group "amavis" in src_install().
-	enewgroup amavis
-	enewuser amavis -1 -1 "${AMAVIS_ROOT}" amavis
-}
+AMAVIS_ROOT="/var/lib/amavishome"
+S="${WORKDIR}/amavis-v${PV}"
 
 src_prepare() {
-	# amavisd-new version 2.11.0 breaks DKIM signing of outbound mail,
-	# see https://bugs.gentoo.org/603582
-	eapply "${FILESDIR}/amavisd-2.11.0-dkim.patch"
-
 	if use courier ; then
 		eapply -p0 amavisd-new-courier.patch
 	fi
@@ -93,7 +89,7 @@ src_prepare() {
 	# though we're going to run it in the foreground, because it calls
 	# "drop_priv" unconditionally and will crash if its user/group
 	# doesn't exist.
-	sed -i  \
+	sed -i	\
 		-e '/daemon/s/vscan/amavis/' \
 		-e "s:'/var/virusmails':\"\$MYHOME/quarantine\":" \
 		"${S}/amavisd.conf" "${S}/amavis-mc" || die "missing conf file"
@@ -140,7 +136,6 @@ src_install() {
 	fi
 
 	if use ldap ; then
-		dodir /etc/openldap/schema
 		insinto /etc/openldap/schema
 		newins LDAP.schema "${PN}.schema"
 	fi
@@ -193,5 +188,16 @@ pkg_preinst() {
 			sed -i -e "s:debuglevel\([ ]*\)= .:debuglevel\1= 0:g" \
 				"${D}/${AMAVIS_ROOT}/.razor/razor-agent.conf" || die
 		fi
+	fi
+}
+
+pkg_postinst() {
+	local d="/var/amavis"
+	if [ -d ${d} ]; then
+		elog "Existing data found. Please make sure to manually copy it to amavis' new"
+		elog "home directory by executing the following command as root from a shell:"
+		elog
+		elog "  cp -a ${d}/* ${d}/.??* ${AMAVIS_ROOT}/ && rm -r ${d}"
+		elog
 	fi
 }
