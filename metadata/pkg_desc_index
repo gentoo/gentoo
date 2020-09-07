@@ -10352,14 +10352,14 @@ dev-ruby/tidy-ext 0.1.14-r3: W3C HTML Tidy library implemented as a Ruby extensi
 dev-ruby/tidy_table 0.0.5-r4 0.0.5-r5: Tool to convert an array of struct into an HTML table
 dev-ruby/tilt 2.0.9 2.0.10: Thin interface over template engines to make their usage as generic as possible
 dev-ruby/timecop 0.9.1: A gem providing 'time travel' and 'time freezing' capabilities
-dev-ruby/timers 4.3.0: Pure Ruby one-shot and periodic timers
+dev-ruby/timers 4.3.0 4.3.2: Pure Ruby one-shot and periodic timers
 dev-ruby/tins 1.20.2 1.22.2 1.24.1 1.25.0: All the stuff that isn't good enough for a real library
 dev-ruby/tokyocabinet 1.32.0: Ruby bindings for Tokyo Cabinet
 dev-ruby/tomlrb 1.2.8: A racc based toml parser
 dev-ruby/totoridipjp 0.1.0: A ruby binding to use totori.dip.jp Web API
 dev-ruby/transaction-simple 1.4.0.2-r2: Provides transaction support at the object level
 dev-ruby/travis 1.9.1: Travis CI Client (CLI and Ruby library)
-dev-ruby/treetop 1.6.10: Treetop is a language for describing languages
+dev-ruby/treetop 1.6.10 1.6.11: Treetop is a language for describing languages
 dev-ruby/trollop 2.1.3 2.9.10: Trollop is a commandline option parser for Ruby
 dev-ruby/ttfunk 1.5.1 1.6.2.1: A TrueType font parser written in pure ruby
 dev-ruby/tty-color 0.4.3 0.5.0 0.5.1 0.5.2: Terminal color capabilities detection
@@ -12567,7 +12567,7 @@ media-fonts/fantasque-sans-mono 2014.07: Functional programming font designed wi
 media-fonts/farsi-fonts 0.4: Farsi (Persian) Unicode fonts
 media-fonts/fgdc-emergency 2.20: FGDC Emergency Response Symbology Prototype
 media-fonts/fifth-leg 0.6-r1: Simplistic, technical sans serif - openSUSE font
-media-fonts/fira-code 2 3 3.1 4 5.2: Monospaced font with programming ligatures
+media-fonts/fira-code 3.1 4 5.2: Monospaced font with programming ligatures
 media-fonts/fira-mono 3.205: Default monospaced typeface for FirefoxOS, designed for legibility
 media-fonts/fira-sans 4.002 4.105: Default typeface for FirefoxOS, designed for legibility
 media-fonts/font-adobe-100dpi 1.0.3-r1 1.0.3-r2: X.Org Adobe bitmap fonts
@@ -18090,7 +18090,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.5.1: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 85.0.4183.83 86.0.4240.22: Open-source version of Google Chrome web browser
+www-client/chromium 85.0.4183.83 86.0.4240.22 87.0.4252.0: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r4 0.13_pre_pre20180225 0.13.4 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6 3.34.4 3.36.3 3.36.4: GNOME webbrowser based on Webkit
