@@ -58,6 +58,7 @@ IUSE="debug +jit test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="${PYTHON_DEPS}
+	>=virtual/rust-1.43.0
 	virtual/pkgconfig"
 
 CDEPEND=">=dev-libs/icu-67.1:=
@@ -66,7 +67,6 @@ CDEPEND=">=dev-libs/icu-67.1:=
 	>=sys-libs/zlib-1.2.3"
 
 DEPEND="${CDEPEND}
-	>=virtual/rust-1.43.0
 	test? (
 		$(python_gen_any_dep 'dev-python/six[${PYTHON_USEDEP}]')
 	)"
