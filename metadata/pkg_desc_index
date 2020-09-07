@@ -2281,7 +2281,7 @@ app-metrics/alertmanager 0.18.0 0.19.0 0.21.0: Alertmanager for alerts sent by c
 app-metrics/bind_exporter 0.3.0: Prometheus exporter for BIND
 app-metrics/blackbox_exporter 0.15.1 0.16.0 0.17.0: Prometheus exporter for blackbox probing via HTTP, HTTPS, DNS, TCP and ICMP
 app-metrics/burrow_exporter 0.0.6 0.0.6-r1: Prometheus exporter for Burrow
-app-metrics/collectd 5.11.0-r3: Collects system statistics and provides mechanisms to store the values
+app-metrics/collectd 5.11.0-r3 5.12.0: Collects system statistics and provides mechanisms to store the values
 app-metrics/consul_exporter 0.4.0 0.6.0: Prometheus exporter for consul metrics
 app-metrics/dnsmasq_exporter 0.2.0-r1: prometheus exporter for dnsmasq
 app-metrics/elasticsearch_exporter 1.0.2 1.0.4_rc1 1.1.0_rc1 1.1.0: Elasticsearch stats exporter for Prometheus
@@ -17586,7 +17586,7 @@ sys-fs/unionfs-fuse 1.0 2.0 2.1 9999: Self-syncing tree-merging file system base
 sys-fs/vhba 20200106-r1: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/xfsdump 3.1.8 3.1.9: xfs dump/restore utilities
-sys-fs/xfsprogs 5.4.0-r1 5.6.0 5.7.0: xfs filesystem utilities
+sys-fs/xfsprogs 5.4.0-r1 5.6.0 5.7.0 5.8.0: xfs filesystem utilities
 sys-fs/xwmfs 0.86: FUSE-based X11 Window-Manager file system
 sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.0.4 1.1.1: Zeroes out all free space on a filesystem
