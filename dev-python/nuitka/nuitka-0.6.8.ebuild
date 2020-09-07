@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS="rdepend"
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1 eutils
+inherit distutils-r1 optfeature
 
 DESCRIPTION="Python to native compiler"
 HOMEPAGE="https://www.nuitka.net"
