@@ -97,7 +97,7 @@ pkg_pretend() {
 	if use test ; then
 		CHECKREQS_DISK_BUILD="6400M"
 	else
-		CHECKREQS_DISK_BUILD="5300M"
+		CHECKREQS_DISK_BUILD="5600M"
 	fi
 
 	check-reqs_pkg_pretend
@@ -107,7 +107,7 @@ pkg_setup() {
 	if use test ; then
 		CHECKREQS_DISK_BUILD="6400M"
 	else
-		CHECKREQS_DISK_BUILD="5300M"
+		CHECKREQS_DISK_BUILD="5600M"
 	fi
 
 	check-reqs_pkg_setup
