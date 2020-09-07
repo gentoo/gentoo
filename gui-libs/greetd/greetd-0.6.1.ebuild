@@ -59,7 +59,7 @@ winapi-x86_64-pc-windows-gnu-0.4.0
 ws2_32-sys-0.2.1
 "
 
-inherit cargo systemd eutils
+inherit cargo optfeature systemd
 
 DESCRIPTION="ipc based login daemon"
 
