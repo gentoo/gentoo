@@ -1,0 +1,48 @@
+From bd0efd1f062bfba5dd2d6b1fe30b6949f8e0a8ef Mon Sep 17 00:00:00 2001
+From: sterlingjensen <5555776+sterlingjensen@users.noreply.github.com>
+Date: Mon, 24 Aug 2020 22:41:05 -0500
+Subject: [PATCH] Mark lua setjmp/longjmp for powerpc weak
+
+Linux already defines setjmp/longjmp for powerpc, which leads to
+duplicate symbols in a statically linked build.
+
+Signed-off-by: Sterlng Jensen <sterlingjensen@users.noreply.github.com>
+---
+ module/lua/setjmp/setjmp_ppc.S | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/module/lua/setjmp/setjmp_ppc.S b/module/lua/setjmp/setjmp_ppc.S
+index f787ef34913..72aa5d5ab5b 100644
+--- a/module/lua/setjmp/setjmp_ppc.S
++++ b/module/lua/setjmp/setjmp_ppc.S
+@@ -56,7 +56,7 @@
+ #define	ENTRY(name) \
+ 	.align 2 ; \
+ 	.type name,@function; \
+-	.globl name; \
++	.weak name; \
+ name:
+ 
+ #else /* PPC64_ELF_ABI_v1 */
+@@ -65,8 +65,8 @@ name:
+ #define	GLUE(a,b) XGLUE(a,b)
+ #define	ENTRY(name) \
+ 	.align 2 ; \
+-	.globl name; \
+-	.globl GLUE(.,name); \
++	.weak name; \
++	.weak GLUE(.,name); \
+ 	.pushsection ".opd","aw"; \
+ name: \
+ 	.quad GLUE(.,name); \
+@@ -83,8 +83,8 @@ GLUE(.,name):
+ #define	ENTRY(name) \
+ 	.text; \
+ 	.p2align 4; \
+-	.globl  name; \
+-	.type   name,@function; \
++	.weak name; \
++	.type name,@function; \
+ name:
+ 
+ #endif /* __powerpc64__ */
