@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils readme.gentoo-r1
+inherit optfeature readme.gentoo-r1
 
 DESCRIPTION="A tool to probe for hardware, check it's operability and find drivers"
 HOMEPAGE="https://github.com/linuxhw/hw-probe/"
