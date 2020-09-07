@@ -42,7 +42,7 @@
  	@gcc -dynamiclib -fpic -Wl, -o $@ $(PIC_OBJECTS) -lc
  else
 -	@gcc -shared -fpic -Wl,-soname,$(SONAME) -o $@ $(PIC_OBJECTS) -lc
-+	@gcc -shared -fpic -Wl,-soname,$(SONAME) $(LDFLAGS) -o $@ $(PIC_OBJECTS) -lc
++	@$(LINKER) -shared -fpic -Wl,-soname,$(SONAME) $(LDFLAGS) -o $@ $(PIC_OBJECTS) -lc
  endif
  
  .PHONY: shared_lib
