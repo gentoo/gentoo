@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 VIRTUALX_REQUIRED="manual"
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1 eutils flag-o-matic virtualx
+inherit distutils-r1 flag-o-matic optfeature virtualx
 
 DESCRIPTION="Powerful data structures for data analysis and statistics"
 HOMEPAGE="https://pandas.pydata.org/"
