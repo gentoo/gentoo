@@ -9,7 +9,7 @@ EAPI=7
 CRATES="
 "
 
-inherit cargo eutils
+inherit cargo optfeature
 
 DESCRIPTION="ccache/distcc like tool with support for rust and cloud storage"
 HOMEPAGE="https://github.com/mozilla/sccache/"
