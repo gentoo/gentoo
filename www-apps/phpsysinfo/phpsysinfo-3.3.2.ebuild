@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils webapp
+inherit optfeature webapp
 
 DESCRIPTION="A customizable PHP script that displays information about your system nicely"
 HOMEPAGE="https://rk4an.github.com/phpsysinfo/"
