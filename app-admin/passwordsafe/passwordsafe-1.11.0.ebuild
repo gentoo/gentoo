@@ -5,7 +5,7 @@ EAPI=7
 
 WX_GTK_VER="3.0-gtk3"
 
-inherit cmake desktop eutils flag-o-matic wxwidgets
+inherit cmake desktop flag-o-matic optfeature wxwidgets
 
 MY_PV="${PV/_beta/BETA}"
 DESCRIPTION="Password manager with wxGTK based frontend"
