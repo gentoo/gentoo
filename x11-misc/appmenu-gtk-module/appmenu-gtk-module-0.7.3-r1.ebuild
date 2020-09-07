@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.com/vala-panel-project/vala-panel-appmenu/uploads/570a2d
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND="
