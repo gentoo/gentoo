@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1 eutils virtualx
+inherit distutils-r1 optfeature virtualx
 
 MYPN="${PN/scikits_/scikit-}"
 MYP="${MYPN}-${PV}"
