@@ -13176,7 +13176,7 @@ media-libs/libmms 0.6.4: Common library for accessing Microsoft Media Server (MM
 media-libs/libmng 2.0.3: Multiple Image Networkgraphics lib (animated png's)
 media-libs/libmodplug 0.8.9.0: Library for playing MOD-like music files
 media-libs/libmp3splt 0.9.2-r1: a library for mp3splt to split mp3 and ogg files without decoding
-media-libs/libmp4v2 2.0.0-r1 2.0.0-r2: Functions for accessing ISO-IEC:14496-1:2001 MPEG-4 standard
+media-libs/libmp4v2 2.0.0-r2: Functions for accessing ISO-IEC:14496-1:2001 MPEG-4 standard
 media-libs/libmpd 11.8.17-r1: A library handling connections to a MPD server
 media-libs/libmpdclient 2.16 2.19: Library for interfacing Music Player Daemon (media-sound/mpd)
 media-libs/libmpeg2 0.5.1-r2: library for decoding mpeg-2 and mpeg-1 video
@@ -14948,7 +14948,7 @@ net-libs/webkit-gtk 2.28.4: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
 net-libs/xrootd 4.12.0 4.12.3 5.0.0 5.0.1: Extended ROOT remote file server
 net-libs/xrootd-ceph 4.12.0 4.12.3 5.0.0 5.0.1: xrootd OSS plug-in for interfacing with Ceph storage platform
-net-libs/zeromq 2.2.0 3.2.5 4.3.2: A brokerless kernel
+net-libs/zeromq 2.2.0 3.2.5 4.3.2 4.3.3: A brokerless kernel
 net-libs/zmqpp 4.2.0: ZeroMQ 'highlevel' C++ bindings
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
 net-mail/amavis-logwatch 1.51.03-r5: A log analyzer for amavisd-new
@@ -15001,7 +15001,7 @@ net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.29.3-r2 0.30-r1: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/pflogsumm 1.1.5-r1 1.1.5-r2: Pflogsumm is a log analyzer for Postfix logs
 net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Postfix queued messages
-net-mail/pop-before-smtp 1.42: a simple daemon to allow email relay control based on successful POP or IMAP logins
+net-mail/pop-before-smtp 1.42: Simple daemon to controll email relay based on successful POP or IMAP logins
 net-mail/pop2imap 1.21: Synchronize mailboxes between a pop and an imap servers
 net-mail/popa3d 1.0.2-r1: A security oriented POP3 server
 net-mail/poppassd_ceti 1.8.7: Password change daemon with PAM support
@@ -15031,7 +15031,7 @@ net-mail/smtptools 0.2.3 0.2.3-r1: A collection of tools to send or receive mail
 net-mail/swaks 20130209.0-r1 20190914.0: Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
 net-mail/t-prot 3.4: TOFU protection - display filter for RFC822 messages
 net-mail/tnef 1.4.18: Decodes MS-TNEF MIME attachments
-net-mail/tpop3d 1.5.5 1.5.5-r1: An extensible POP3 server with vmail-sql/MySQL support
+net-mail/tpop3d 1.5.5-r1: An extensible POP3 server with vmail-sql/MySQL support
 net-mail/vacation 1.2.7.0: automatic mail answering program
 net-mail/vchkuser 0.4: qmail-spp plugin to check recipient existance with vpopmail
 net-mail/vpopmail 5.4.33-r6 5.4.33-r7: Collection of programs to manage virtual email on Qmail servers
