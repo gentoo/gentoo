@@ -1,5 +1,6 @@
+BDEPEND=nls? ( sys-devel/gettext )
 DEFINED_PHASES=configure install prepare
-DEPEND=!static? ( acl? ( virtual/acl ) ) selinux? ( sys-libs/libselinux ) nls? ( >=sys-devel/gettext-0.10.35 ) static? ( acl? ( virtual/acl[static-libs(+)] ) ) xattr? ( elibc_glibc? ( sys-apps/attr ) )
+DEPEND=!static? ( acl? ( virtual/acl ) ) selinux? ( sys-libs/libselinux ) static? ( acl? ( virtual/acl[static-libs(+)] ) ) xattr? ( elibc_glibc? ( sys-apps/attr ) )
 DESCRIPTION=Use this to make tarballs :)
 EAPI=7
 HOMEPAGE=https://www.gnu.org/software/tar/
@@ -9,4 +10,4 @@ RDEPEND=!static? ( acl? ( virtual/acl ) ) selinux? ( sys-libs/libselinux )
 SLOT=0
 SRC_URI=mirror://gnu/tar/tar-1.32.90.tar.xz mirror://gnu-alpha/tar/tar-1.32.90.tar.xz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=94602f53f5a25bca24ab404948cc3ddb
+_md5_=9956d61cdc0631073890de20b6a28dec

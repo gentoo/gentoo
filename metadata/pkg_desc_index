@@ -627,7 +627,7 @@ app-admin/sshguard 2.4.0 2.4.1 99999: protects hosts from brute force attacks ag
 app-admin/stow 2.2.2-r1 2.3.1: GNU Stow is a symlink farm manager
 app-admin/su-exec 0.2: Switch user and group id and exec
 app-admin/sud 1.3-r1: A daemon to execute processes with special privileges in a nosuid environment
-app-admin/sudo 1.8.31 1.8.31_p1 1.8.31_p2 1.9.2 9999: Allows users or groups to run commands as other users
+app-admin/sudo 1.8.31 1.8.31_p1 1.8.31_p2 1.9.2 1.9.2-r1 9999: Allows users or groups to run commands as other users
 app-admin/superadduser 1.0.9 1.15: Interactive adduser script from Slackware
 app-admin/supervisor 4.0.4 4.1.0 4.2.0 4.2.1: A system for controlling process state under UNIX
 app-admin/swatchdog 3.2.4-r1: Simple log watcher
@@ -1616,7 +1616,7 @@ app-editors/gummi 0.6.6-r2 0.8.1: Simple LaTeX editor for GTK+ users
 app-editors/gvim 8.2.0360 8.2.0508 8.2.0638 8.2.0814 9999: GUI version of the Vim text editor
 app-editors/hexcurse 1.55 1.60.0: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
-app-editors/hteditor 2.1.0-r1 2.1.1_pre20161206: A file viewer, editor and analyzer for text, binary, and executable files
+app-editors/hteditor 2.1.1_pre20161206: A file viewer, editor and analyzer for text, binary, and executable files
 app-editors/jasspa-microemacs 20091011-r3: Jasspa Microemacs
 app-editors/jed 0.99.19-r1: Console S-Lang-based editor
 app-editors/jedit 5.2.0-r1 5.4.0: Programmer's editor written in Java
@@ -5424,7 +5424,7 @@ dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
 dev-libs/libezV24 0.1.1-r1: library that provides an easy API to Linux serial ports
 dev-libs/libf2c 20130927-r1: Library that converts FORTRAN to C source
 dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for liblognorm processing
-dev-libs/libffi 3.3-r1 3.3-r2: a portable, high level programming interface to various calling conventions
+dev-libs/libffi 3.3-r2: a portable, high level programming interface to various calling conventions
 dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to various calling conventions
 dev-libs/libfido2 1.3.1 1.4.0 1.5.0: Provides library functionality for FIDO 2.0
 dev-libs/libfilezilla 0.20.2 0.21.0 0.22.0 0.23.0 0.24.0 0.24.1: C++ library offering some basic functionality for platform-independent programs
@@ -5596,7 +5596,7 @@ dev-libs/mmtf-cpp 1.0.0: The pure C++ implementation of the MMTF API, decoder an
 dev-libs/mongo-c-driver 0.98.2 1.1.2-r1 1.1.10 1.3.5 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0-r1 1.13.1 1.14.0 1.15.1 1.16.2 1.17.0: Client library written in C for MongoDB
 dev-libs/mongo-cxx-driver 0.0.2.6.7-r1 1.0.0 1.0.5 1.1.2-r1: C++ Driver for MongoDB
 dev-libs/mpc 1.1.0-r1 1.2.0: A library for multiprecision complex arithmetic with exact rounding
-dev-libs/mpfr 4.0.2 4.1.0: library for multiple-precision floating-point computations with exact rounding
+dev-libs/mpfr 4.1.0: library for multiple-precision floating-point computations with exact rounding
 dev-libs/msgpack 1.1.0 3.1.1 3.2.0 3.2.1: MessagePack is a binary-based efficient data interchange format
 dev-libs/mxml 3.1: A small XML parsing library that you can use to read XML data files or strings
 dev-libs/nanomsg 1.1.5: High-performance messaging interface for distributed applications
@@ -8865,7 +8865,7 @@ dev-python/python-cstruct 1.8: C-style structs for Python
 dev-python/python-ctags 1.3.0-r1: Exuberant Ctags indexing python bindings
 dev-python/python-daemon 2.1.2 2.2.4: Library to implement a well-behaved Unix daemon process
 dev-python/python-dateutil 2.8.1-r1: Extensions to the standard Python datetime module
-dev-python/python-debian 0.1.36: Python modules to work with Debian-related data formats
+dev-python/python-debian 0.1.36 0.1.37: Python modules to work with Debian-related data formats
 dev-python/python-designateclient 4.0.0: Python bindings to the Designate API.
 dev-python/python-discid 1.2.0: Python bindings for libdiscid
 dev-python/python-distutils-extra 2.45: Gettext support, themed icons and scrollkeeper-based documentation in distutils
@@ -13200,7 +13200,7 @@ media-libs/libpagemaker 0.0.4 9999: C++ Library that parses the file format of A
 media-libs/libpano13 2.9.19: Helmut Dersch's panorama toolbox library
 media-libs/libpgf 6.12.27: Library to load, handle and manipulate images in the PGF format
 media-libs/libplacebo 2.43.0 2.72.0 9999: Reusable library for GPU-accelerated image processing primitives
-media-libs/libpng 1.6.37: Portable Network Graphics library
+media-libs/libpng 1.6.37 1.6.37-r1: Portable Network Graphics library
 media-libs/libpng-compat 1.2.59 1.5.30: Portable Network Graphics library
 media-libs/libpqstego 0.0.1: Library for Perturbed Quantization Steganography
 media-libs/libprojectm 2.1.0-r2 3.1.7 9999: A graphical music visualization plugin similar to milkdrop
@@ -14635,7 +14635,7 @@ net-ftp/gproftpd 8.3.2-r1 8.3.2-r2: GTK frontend to proftpd
 net-ftp/lftp 4.8.4-r1 4.9.0 4.9.1 4.9.2 9999: A sophisticated ftp/sftp/http/https/torrent client and file transfer program
 net-ftp/linksys-tftp 1.2.1-r3: TFTP client suitable for uploading to the Linksys WRT54G Wireless Router
 net-ftp/ncftp 3.2.6 3.2.6-r1 3.2.6-r2: An extremely configurable ftp client
-net-ftp/proftpd 1.3.7_rc4-r1 1.3.7a: An advanced and very configurable FTP server
+net-ftp/proftpd 1.3.7a: An advanced and very configurable FTP server
 net-ftp/profxp 3_pre2-r2: FXP (server-to-server FTP) commandline client written in Perl
 net-ftp/pure-ftpd 1.0.49-r2 9999: Fast, production-quality, standard-conformant FTP server
 net-ftp/pureadmin 0.4-r1: GUI tool used to make the management of Pure-FTPd a little easier
@@ -16821,7 +16821,7 @@ sec-policy/selinux-xserver 2.20190201-r1 2.20190609-r1 9999: SELinux policy for 
 sec-policy/selinux-zabbix 2.20190201-r1 2.20190609-r1 9999: SELinux policy for zabbix
 sys-apps/accountsservice 0.6.50-r1 0.6.55: D-Bus interfaces for querying and manipulating user account information
 sys-apps/ack 3.0.0 3.2.0 3.3.1 3.4.0: ack is a tool like grep, optimized for programmers
-sys-apps/acl 2.2.53: access control list utilities, libraries and headers
+sys-apps/acl 2.2.53 2.2.53-r1: access control list utilities, libraries and headers
 sys-apps/agedu 20200617 20200705: A utility for tracking down wasted disk space
 sys-apps/aix-miscutils 0.1.1671: Miscellaneous helpers for AIX (currently just ldd)
 sys-apps/apmd 3.2.2_p14-r1: Advanced Power Management Daemon
@@ -16829,7 +16829,7 @@ sys-apps/apparmor 2.13.4: Userspace utils and init scripts for the AppArmor appl
 sys-apps/apparmor-utils 2.13.4-r1: Additional userspace utils to assist with AppArmor profile management
 sys-apps/apply-default-acl 0.4.4: Apply default POSIX ACLs to files and directories
 sys-apps/arrayprobe 2.0-r2: Utility to report status of an HP (Compaq) array controller (both IDA & CCISS)
-sys-apps/attr 2.4.48-r3 9999: Extended attributes tools
+sys-apps/attr 2.4.48-r3 2.4.48-r4 9999: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
 sys-apps/baobab 3.34.0 3.34.1: Disk usage browser for GNOME
 sys-apps/bar 1.11.1: Console Progress Bar
@@ -17366,7 +17366,7 @@ sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34-r1 2.34-r2 2.35 9999: Tools ne
 sys-devel/binutils-apple 3.2 3.2.6 4.3-r2 5.1-r1 6.1-r1 6.3-r2 7.0-r1 7.1-r1 7.2-r1 7.3.1 8.1 8.2.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 8.2.1
 sys-devel/binutils-config 5.3.2 9999: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34-r1 2.34-r2 2.35: Tools necessary to build programs
-sys-devel/bison 3.1 3.6.4 3.7 3.7.1 3.7.2: A general-purpose (yacc-compatible) parser generator
+sys-devel/bison 3.1 3.6.4 3.7.1-r1 3.7.2: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20200318: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/clang 9.0.1 10.0.0 10.0.1 11.0.0_rc1 11.0.0_rc2 11.0.0.9999 12.0.0.9999: C language family frontend for LLVM
@@ -17635,7 +17635,7 @@ sys-libs/efivar 37: Tools and library to manipulate EFI variables
 sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify source.
 sys-libs/freeipmi 1.5.7 1.6.5 1.6.6: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
-sys-libs/gdbm 1.13-r2 1.14.1 1.17 1.18 1.18.1: Standard GNU database libraries
+sys-libs/gdbm 1.13-r2 1.14.1 1.17 1.18 1.18.1 1.18.1-r1: Standard GNU database libraries
 sys-libs/glibc 2.19-r2 2.25-r11 2.30-r8 2.30-r9 2.31-r6 2.31-r7 2.32 2.32-r1 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 5.1.2: Multi-platform helper library for other libraries

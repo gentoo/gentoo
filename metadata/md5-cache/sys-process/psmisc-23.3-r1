@@ -1,5 +1,6 @@
+BDEPEND=>=sys-devel/libtool-2.2.6b nls? ( sys-devel/gettext )
 DEFINED_PHASES=configure install
-DEPEND=>=sys-libs/ncurses-5.7-r7:0= nls? ( virtual/libintl ) selinux? ( sys-libs/libselinux ) >=sys-devel/libtool-2.2.6b nls? ( sys-devel/gettext )
+DEPEND=>=sys-libs/ncurses-5.7-r7:0= nls? ( virtual/libintl ) selinux? ( sys-libs/libselinux )
 DESCRIPTION=A set of tools that use the proc filesystem
 EAPI=7
 HOMEPAGE=http://psmisc.sourceforge.net/
@@ -9,4 +10,4 @@ LICENSE=GPL-2
 RDEPEND=>=sys-libs/ncurses-5.7-r7:0= nls? ( virtual/libintl ) selinux? ( sys-libs/libselinux )
 SLOT=0
 SRC_URI=mirror://sourceforge/psmisc/psmisc-23.3.tar.xz
-_md5_=0d452f494590c42febeea111ee39b6b8
+_md5_=ef1fc9e3c96b23fa697166b5af6216cd
