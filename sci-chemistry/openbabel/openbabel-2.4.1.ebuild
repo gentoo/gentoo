@@ -5,7 +5,7 @@ EAPI=6
 
 WX_GTK_VER="3.0"
 
-inherit cmake-utils eutils toolchain-funcs wxwidgets
+inherit cmake-utils optfeature toolchain-funcs wxwidgets
 
 DESCRIPTION="Interconverts file formats used in molecular modeling"
 HOMEPAGE="http://openbabel.sourceforge.net/"
