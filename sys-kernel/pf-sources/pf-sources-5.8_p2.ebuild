@@ -23,7 +23,7 @@ K_SECURITY_UNSUPPORTED="1"
 # already included in pf-sources
 K_WANT_GENPATCHES="base extras"
 
-inherit eutils kernel-2
+inherit optfeature kernel-2
 detect_version
 
 DESCRIPTION="Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches"
