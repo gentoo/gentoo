@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 DISTUTILS_USE_SETUPTOOLS="rdepend"
 
-inherit desktop distutils-r1 eutils xdg-utils
+inherit desktop distutils-r1 optfeature xdg-utils
 
 DESCRIPTION="A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine"
 HOMEPAGE="https://www.qutebrowser.org/ https://github.com/qutebrowser/qutebrowser"

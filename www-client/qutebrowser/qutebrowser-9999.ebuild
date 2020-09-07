@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 DISTUTILS_USE_SETUPTOOLS="rdepend"
 
-inherit desktop distutils-r1 eutils xdg-utils
+inherit desktop distutils-r1 optfeature xdg-utils
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
