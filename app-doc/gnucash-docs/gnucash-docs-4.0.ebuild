@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils gnome2
+inherit autotools gnome2 optfeature
 
 DESCRIPTION="Documentation package for GnuCash"
 HOMEPAGE="http://www.gnucash.org/"
