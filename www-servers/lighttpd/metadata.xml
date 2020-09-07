@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>zlogene@gentoo.org</email>
-		<name>Mikle Kolyada</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		lighttpd is a secure, fast, compliant and very flexible web-server
 		which has been optimized for high-performance environments. It has a very
