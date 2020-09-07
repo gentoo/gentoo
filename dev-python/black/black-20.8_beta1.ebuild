@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
-inherit eutils distutils-r1
+inherit distutils-r1 optfeature
 
 MY_PV="${PV//_beta/b}"
 MY_P="${PN}-${MY_PV}"
