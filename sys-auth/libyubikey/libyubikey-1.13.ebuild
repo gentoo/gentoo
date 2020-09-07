@@ -12,7 +12,7 @@ SRC_URI="http://opensource.yubico.com/yubico-c/releases/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD-2"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 IUSE="static-libs"
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS )

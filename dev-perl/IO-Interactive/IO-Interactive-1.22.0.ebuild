@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Utilities for interactive I/O"
 
 SLOT="0"
-KEYWORDS="amd64 ~riscv x86"
+KEYWORDS="amd64 ~ppc ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
