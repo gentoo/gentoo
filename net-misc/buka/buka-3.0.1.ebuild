@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils
+inherit optfeature
 
 COMMIT="45e6b32de708759a4e15181a8e2ad5de55cc78ef"
 S=${WORKDIR}/${P}-${COMMIT}
