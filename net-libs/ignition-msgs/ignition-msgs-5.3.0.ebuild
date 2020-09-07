@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Protobuf messages and functions for robot applications"
 HOMEPAGE="https://ignitionrobotics.org/libraries/messages https://bitbucket.org/ignitionrobotics/ign-msgs https://github.com/ignitionrobotics/ign-msgs"
