@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils flag-o-matic toolchain-funcs
+inherit epatch eutils flag-o-matic optfeature toolchain-funcs
 
 DESCRIPTION="Tail with multiple windows"
 HOMEPAGE="http://www.vanheusden.com/multitail/"
