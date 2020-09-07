@@ -111,6 +111,10 @@ src_configure() {
 	)
 
 	cmake_src_configure
+
+	# if git is not installed, this (empty) file is not being created and the compilation fails
+	# so we create it manually
+	touch "${BUILD_DIR}/src/private/RevisionIdent.h" || die "failed to create file"
 }
 
 src_install() {
