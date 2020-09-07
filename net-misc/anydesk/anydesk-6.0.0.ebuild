@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit desktop eutils systemd xdg-utils
+inherit desktop optfeature systemd xdg-utils
 
 DESCRIPTION="Feature rich multi-platform remote desktop application"
 HOMEPAGE="https://anydesk.com"
