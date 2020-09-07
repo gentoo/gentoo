@@ -330,7 +330,7 @@ xattr-0.2.2
 zip-0.4.2
 "
 
-inherit cargo eutils
+inherit cargo optfeature
 
 DESCRIPTION="ccache/distcc like tool with support for rust and cloud storage"
 HOMEPAGE="https://github.com/mozilla/sccache/"
