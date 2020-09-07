@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit eutils distutils-r1 user
+inherit distutils-r1 optfeature user
 
 MY_PN="Radicale"
 MY_P="${MY_PN}-${PV}"
