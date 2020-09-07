@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (2020-09-07)
+# dev-util/nvidia-cuda-toolkit is keyworded on amd64
+app-metrics/collectd -collectd_plugins_gpu_nvidia
+
 # Thomas Deutschmann <whissi@gentoo.org> (2020-08-17)
 # Columnstore engine is supported on amd64
 dev-db/mariadb -columnstore
