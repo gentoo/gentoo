@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="sqlite"
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1 eutils xdg-utils
+inherit distutils-r1 optfeature xdg-utils
 
 DESCRIPTION="Movie slideshow creator using Ken Burns effect"
 HOMEPAGE="https://www.photofilmstrip.org/en/ https://github.com/PhotoFilmStrip"
