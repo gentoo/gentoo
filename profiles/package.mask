@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2020-09-07)
+# Nothing in the tree uses this lib anymore. Removing as redundant.
+# Removal in ~30 days. Bug #740868.
+dev-python/mini-amf
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-09-04)
 # No maintainer, defunct with modern browsers, bug #694024.
 # Masked for removal in 30 days.
