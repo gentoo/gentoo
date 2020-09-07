@@ -1,0 +1,65 @@
+From 586579d5c9fad63eb8780c556f34b80d0302e6b9 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Fri, 22 May 2020 10:09:22 +0200
+Subject: [PATCH] net/dhcpcd.sh: Put user args into a temp file
+
+So we still use the correct PID even if the user has changed his
+configuration between start and stop.
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ net/dhcpcd.sh | 20 ++++++++++++++------
+ 1 file changed, 14 insertions(+), 6 deletions(-)
+
+diff --git a/net/dhcpcd.sh b/net/dhcpcd.sh
+index c0639e0..dcc6817 100644
+--- a/net/dhcpcd.sh
++++ b/net/dhcpcd.sh
+@@ -16,11 +16,14 @@ _config_vars="$_config_vars dhcp dhcpcd"
+ 
+ dhcpcd_start()
+ {
+-	# check for pidfile after we gathered the user's opts because they can
++	# check for pidfile after we gathered the user's args because they can
+ 	# alter the pidfile's name (#718114)
+-	local args= opt= pidfile= opts= new=true
++	# Save the args into a file so dhcpcd_stop can later re-use the very
++	# same args later.
++	local args= opt= pidfile= opts= new=true argsfile=/run/netifrc_dhcpcd_${IFACE}_args
+ 	eval args=\$dhcpcd_${IFVAR}
+ 	[ -z "${args}" ] && args=${dhcpcd}
++	echo "${args}" > ${argsfile}
+ 	pidfile="$(dhcpcd -P ${args} ${IFACE})"
+ 
+ 	# Get our options
+@@ -78,12 +81,16 @@ dhcpcd_start()
+ 
+ dhcpcd_stop()
+ {
+-	local args= pidfile= opts= sig=SIGTERM
++	local args= pidfile= opts= sig=SIGTERM argsfile=/run/netifrc_dhcpcd_${IFACE}_args
+ 
+-	# check for pidfile after we gathered the user's opts because they can
++	# check for pidfile after we gathered the user's args because they can
+ 	# alter the pidfile's name (#718114)
+-	eval args=\$dhcpcd_${IFVAR}
+-	[ -z "${args}" ] && args=${dhcpcd}
++	if [ -f "${argsfile}" ] ; then
++		args="$(cat ${argsfile})"
++	else
++		eval args=\$dhcpcd_${IFVAR}
++		[ -z "${args}" ] && args=${dhcpcd}
++	fi
+ 	pidfile="$(dhcpcd -P ${args} ${IFACE})"
+ 	[ ! -f "${pidfile}" ] && return 0
+ 
+@@ -94,5 +101,6 @@ dhcpcd_stop()
+ 		*" release "*) dhcpcd -k "${IFACE}" ;;
+ 		*) dhcpcd -x "${IFACE}" ;;
+ 	esac
++	[ -f "${argsfile}" ] && rm -f "${argsfile}"
+ 	eend $?
+ }
+-- 
+2.27.0.rc0
+
