@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils
+inherit optfeature
 
 DESCRIPTION="Online command-line translator"
 HOMEPAGE="https://www.soimort.org/translate-shell/"
