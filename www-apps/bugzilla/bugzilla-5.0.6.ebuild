@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils webapp
+inherit optfeature webapp
 
 DESCRIPTION="Bugzilla is the Bug-Tracking System from the Mozilla project"
 SRC_URI="https://ftp.mozilla.org/pub/mozilla.org/webtools/${P}.tar.gz"
