@@ -41,6 +41,7 @@ filecount - Build the filecount input plugin (counts the number of files in a di
 fscache - Build the fscache input plugin (collects information about the file-system based caching infrastructure for network file-systems and other slow media)
 gmond - Build the gmond input plugin (receives data from gmond, the client daemon of the Ganglia project)
 gps - Build the gps input plugin (collects number of satellites seen by a GPS receiver using sci-geosciences/gpsd)
+gpu_nvidia - Build the NVIDIA GPU input plugin (collects stats from NVIDIA GPU)
 hddtemp - Build the hddtemp input plugin (collects the temperature of disks from hddtemp daemon)
 hugepages - Build the hugepages input plugin (collects the number of used and free hugepages on Linux)
 interface - Build the interface input plugin (collects information about the traffic, packets per second and errors of interfaces)
