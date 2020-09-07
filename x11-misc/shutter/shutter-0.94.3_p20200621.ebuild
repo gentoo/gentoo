@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils xdg-utils
+inherit desktop optfeature xdg-utils
 
 DESCRIPTION="Feature-rich screenshot program"
 HOMEPAGE="https://shutter-project.org/"
