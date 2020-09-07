@@ -37,6 +37,8 @@ RESTRICT="debug? ( strip ) test"
 
 DOCS=( AUTHORS COPYRIGHT META README.md )
 
+PATCHES=( "${FILESDIR}/${PV}-powerpc_jmp_weak.patch" )
+
 pkg_setup() {
 	CONFIG_CHECK="
 		!DEBUG_LOCK_ALLOC
