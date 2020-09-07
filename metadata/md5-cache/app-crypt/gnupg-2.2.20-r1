@@ -1,5 +1,5 @@
 BDEPEND=virtual/pkgconfig doc? ( sys-apps/texinfo ) nls? ( sys-devel/gettext ) virtual/pkgconfig
-DEFINED_PHASES=compile configure install postinst prepare test
+DEFINED_PHASES=compile configure install prepare test
 DEPEND=>=dev-libs/libassuan-2.5.0 >=dev-libs/libgcrypt-1.7.3 >=dev-libs/libgpg-error-1.28 >=dev-libs/libksba-1.3.4 >=dev-libs/npth-1.2 >=net-misc/curl-7.10 bzip2? ( app-arch/bzip2 ) ldap? ( net-nds/openldap ) readline? ( sys-libs/readline:0= ) smartcard? ( usb? ( virtual/libusb:1 ) ) ssl? ( >=net-libs/gnutls-3.0:0= ) sys-libs/zlib tofu? ( >=dev-db/sqlite-3.7 )
 DESCRIPTION=The GNU Privacy Guard, a GPL OpenPGP implementation
 EAPI=7
@@ -11,4 +11,4 @@ RDEPEND=>=dev-libs/libassuan-2.5.0 >=dev-libs/libgcrypt-1.7.3 >=dev-libs/libgpg-
 SLOT=0
 SRC_URI=mirror://gnupg/gnupg/gnupg-2.2.20.tar.bz2
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=9c87b6c57002b2a124d6be0534d7a47d
+_md5_=bde7161c1b308ad24383a5974b75b7a1
