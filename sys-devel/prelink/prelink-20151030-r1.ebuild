@@ -15,7 +15,7 @@ SRC_URI="https://git.yoctoproject.org/cgit/cgit.cgi/${MY_PN}/snapshot/${MY_P}.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ppc ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ppc ppc64 x86"
 IUSE="doc selinux"
 
 RDEPEND=">=dev-libs/elfutils-0.100
