@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	media-libs/libmtp
-	sys-fs/fuse:="
+	sys-fs/fuse:0"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	sys-devel/autoconf-archive
