@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils savedconfig toolchain-funcs
+inherit optfeature savedconfig toolchain-funcs
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
