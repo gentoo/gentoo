@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit distutils-r1
 
@@ -25,7 +25,6 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	ctags? ( dev-python/python-ctags[${PYTHON_USEDEP}] )
 "
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 # The tests can only be run from a git repository
 # so they are not included in the source distributions
