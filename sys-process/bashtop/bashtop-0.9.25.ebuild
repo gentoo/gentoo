@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils
+inherit optfeature
 
 DESCRIPTION="Resource monitor that shows usage and stats"
 HOMEPAGE="https://github.com/aristocratos/bashtop"
