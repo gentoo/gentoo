@@ -8,7 +8,7 @@ MY_P="${MY_PN}-${PV}"
 
 PYTHON_COMPAT=( python3_{6,7,8,9} )
 
-inherit distutils-r1 eutils
+inherit distutils-r1 optfeature
 
 DESCRIPTION="A Python library for creating LaTeX files and snippets"
 HOMEPAGE="https://github.com/JelteF/PyLaTeX"
