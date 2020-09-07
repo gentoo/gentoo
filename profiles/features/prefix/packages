@@ -18,7 +18,6 @@
 -*sys-apps/kbd
 -*sys-fs/e2fsprogs
 -*virtual/dev-manager
--*virtual/modutils
 -*sys-apps/shadow
 
 # we don't want this either (as baselayout-prefix provides the functions.sh
