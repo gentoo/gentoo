@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils
+inherit optfeature
 
 DESCRIPTION="A fast pipe/static menu generator for the Openbox Window Manager"
 HOMEPAGE="https://github.com/trizen/obmenu-generator"
