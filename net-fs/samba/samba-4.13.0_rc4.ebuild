@@ -212,7 +212,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with pam)
 		$(multilib_native_usex pam "--with-pammodulesdir=${EPREFIX}/$(get_libdir)/security" '')
 		$(multilib_native_use_with quota quotas)
-		$(multilib_native_use_enable snapper)
+		$(multilib_native_usex snapper '' '--with-shared-modules=!vfs_snapper')
 		$(multilib_native_use_with syslog)
 		$(multilib_native_use_with systemd)
 		--systemd-install-services
