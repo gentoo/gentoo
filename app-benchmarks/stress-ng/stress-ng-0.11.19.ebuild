@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils toolchain-funcs
+inherit optfeature toolchain-funcs
 
 DESCRIPTION="Stress test for a computer system with various selectable ways"
 HOMEPAGE="https://kernel.ubuntu.com/~cking/stress-ng/"
