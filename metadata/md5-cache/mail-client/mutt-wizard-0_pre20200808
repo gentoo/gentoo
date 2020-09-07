@@ -7,5 +7,5 @@ LICENSE=GPL-3
 RDEPEND=app-admin/pass mail-client/neomutt[notmuch] mail-mta/msmtp net-mail/isync[ssl]
 SLOT=0
 SRC_URI=https://github.com/LukeSmithxyz/mutt-wizard/archive/1492a11b3ee0a1c3f5544a351089ff154521b68b.tar.gz -> mutt-wizard-0_pre20200808.tar.gz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5
-_md5_=59b6c120d5b53c3a3205cdd71ed9ee84
+_eclasses_=optfeature	81a350480e88dcebfe32c0cb172e17ed
+_md5_=588fc5c27141df5512bd85e486e58df6

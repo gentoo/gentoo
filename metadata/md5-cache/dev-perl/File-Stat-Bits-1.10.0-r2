@@ -1,0 +1,13 @@
+BDEPEND=dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=File stat bit mask constants
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/File-Stat-Bits
+KEYWORDS=~amd64 ~s390 ~x86
+LICENSE=GPL-2+
+RDEPEND=dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/F/FE/FEDOROV/File-Stat-Bits-1.01.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=c7503e3dfedb655c14c5d12deb71dbc6

@@ -457,7 +457,7 @@ app-accessibility/espeakup 0.71-r1 0.80 9999: espeakup is a small lightweight co
 app-accessibility/flite 1.4-r4 2.1: Flite text to speech engine
 app-accessibility/freetts 1.2.2: A speech synthesis system written entirely in Java
 app-accessibility/julius 4.2.2: Large Vocabulary Continuous Speech Recognition Engine
-app-accessibility/kontrast 1.0.1: Tool to check contrast for colors to verify they are correctly accessible
+app-accessibility/kontrast 1.0.2: Tool to check contrast for colors to verify they are correctly accessible
 app-accessibility/mbrola 3.0.1h-r6: Speech synthesizer based on the concatenation of diphones. Includes samples
 app-accessibility/nfbtrans 7.74-r2: braille translator from the National Federation of the Blind
 app-accessibility/orca 3.34.2-r1 3.36.5: Extensible screen reader that provides access to the desktop
@@ -6509,7 +6509,7 @@ dev-perl/File-Slurp-Tiny 0.4.0 0.4.0-r1: A simple, sane and efficient file slurp
 dev-perl/File-Slurper 0.10.0 0.12.0: A simple, sane and efficient module to slurp a file
 dev-perl/File-Sort 1.10.0-r1 1.10.0-r2: Sort a file or merge sort multiple files
 dev-perl/File-Spec-Native 1.4.0: Use native OS implementation of File::Spec from a subclass
-dev-perl/File-Stat-Bits 1.10.0-r1: File stat bit mask constants
+dev-perl/File-Stat-Bits 1.10.0-r1 1.10.0-r2: File stat bit mask constants
 dev-perl/File-Sync 0.110.0: Perl access to fsync() and sync() function calls
 dev-perl/File-Tail 1.300.0: Perl extension for reading from continously updated files
 dev-perl/File-Tempdir 0.20.0-r1: This module provide an object interface to tempdir() from File::Temp
@@ -14675,7 +14675,7 @@ net-im/pidgin 2.13.0-r7 2.13.0-r8 2.14.1: GTK Instant Messenger client
 net-im/poezio 0.12 0.13.1 9999: Console XMPP client that looks like most famous IRC clients
 net-im/profanity 0.6.0 0.7.1: A console based XMPP client inspired by Irssi
 net-im/prosody 0.11.5: Prosody is a flexible communications server for Jabber/XMPP written in Lua
-net-im/psi 1.4 9999: Qt XMPP client
+net-im/psi 1.4 1.5 9999: Qt XMPP client
 net-im/psimedia 9999: Psi/Psi+ plugin for voice/video calls
 net-im/purple-events 0.99.1: Allows a fine-grained control over libpurple events
 net-im/qtox 1.16.3-r1 9999: Most feature-rich GUI for net-libs/tox using Qt5

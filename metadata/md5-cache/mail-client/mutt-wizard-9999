@@ -7,5 +7,5 @@ LICENSE=GPL-3
 PROPERTIES=live
 RDEPEND=app-admin/pass mail-client/neomutt[notmuch] mail-mta/msmtp net-mail/isync[ssl]
 SLOT=0
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	3e7ec3d6619213460c85e2aa48398441
-_md5_=5aa1a75c3d3e7efbf7d1c668c04ecec0
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	optfeature	81a350480e88dcebfe32c0cb172e17ed
+_md5_=037937ea8f5b6ea28d715475101cf214

@@ -7,5 +7,5 @@ LICENSE=LGPL-2.1+
 RDEPEND=dev-lang/perl dev-perl/Digest-SHA1 net-misc/curl sys-apps/dmidecode sys-apps/edid-decode sys-apps/hwinfo sys-apps/pciutils sys-apps/smartmontools sys-apps/usbutils virtual/perl-Data-Dumper
 SLOT=0
 SRC_URI=https://github.com/linuxhw/hw-probe/archive/1.6-beta.tar.gz -> hw-probe-1.6_beta2.tar.gz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
-_md5_=845864c207ac9c8f00fa9b519de09f8a
+_eclasses_=optfeature	81a350480e88dcebfe32c0cb172e17ed	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_md5_=901879c5dde5571666506c9d87ba80f5

@@ -10,5 +10,5 @@ RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-
 RESTRICT=binchecks strip
 SLOT=5.8_p2
 SRC_URI=https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.8.tar.xz https://github.com/pfactum/pf-kernel/compare/v5.8...v5.8-pf2.diff -> pf-sources-5.8_p2.patch https://dev.gentoo.org/~mpagano/genpatches/tarballs/genpatches-5.8-1.base.tar.xz https://dev.gentoo.org/~mpagano/genpatches/tarballs/genpatches-5.8-1.extras.tar.xz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	kernel-2	b018f94025c867de0d2a56af55679a7a	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	2477ebe553d3e4d2c606191fe6c33602	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=4574f37786b15b23b805dda59cc78f9c
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	estack	686eaab303305a908fd57b2fd7617800	kernel-2	b018f94025c867de0d2a56af55679a7a	multilib	2477ebe553d3e4d2c606191fe6c33602	optfeature	81a350480e88dcebfe32c0cb172e17ed	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=81909829d73580edff12101160a473b2
