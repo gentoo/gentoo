@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7,8,9}} )
 
-inherit distutils-r1 eutils
+inherit distutils-r1 optfeature
 
 MY_P=${P^}
 DESCRIPTION="A Python templating language"
