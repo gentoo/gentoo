@@ -316,7 +316,6 @@ app-crypt/hashcat:brain - Enable the hashcat brain
 app-crypt/heimdal:hdb-ldap - Adds support for LDAP as a database backend
 app-crypt/heimdal:lmdb - Add support for using dev-db/lmdb for lookup tables
 app-crypt/heimdal:otp - Adds support for one-time passwords
-app-crypt/heimdal:pkinit - Adds support for PKINIT for the initial ticket
 app-crypt/hmaccalc:fips - Enable NSS FIPS mode and support only the FIPS-compliant functions
 app-crypt/johntheripper-jumbo:opencl - Build with opencl/GPU cracking support
 app-crypt/johntheripper-jumbo:pcap - Build with pcap support

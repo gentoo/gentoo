@@ -937,7 +937,7 @@ app-crypt/gpgstats 0.5-r1: GPGstats calculates statistics on the keys in your ke
 app-crypt/hashalot 0.3-r2: Reads a passphrase and prints a hash
 app-crypt/hashcat 5.1.0 6.0.0-r1 9999: World's fastest and most advanced password recovery utility
 app-crypt/hashcat-utils 1.9: a set of small utilities that are useful in advanced password cracking
-app-crypt/heimdal 7.5.0 7.6.0 7.7.0-r1: Kerberos 5 implementation from KTH
+app-crypt/heimdal 7.6.0 7.7.0-r1: Kerberos 5 implementation from KTH
 app-crypt/hmaccalc 0.9.14: Tools for computing and checking HMAC values for files
 app-crypt/ima-evm-utils 1.1-r1 9999: Supporting tools for IMA and EVM
 app-crypt/jacksum 1.7.0: Java utility for computing and verifying checksums: CRC*, MD*, etc.
@@ -13081,7 +13081,7 @@ media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution 
 media-libs/jpeg 9d: Library to load, handle and manipulate images in the JPEG format
 media-libs/kodi-platform 18.0_pre20180301 18.0_pre20190429 9999: Kodi platform support library
 media-libs/kvazaar 1.2.0-r1 2.0.0 9999: Open-source HEVC encoder
-media-libs/ladspa-sdk 1.13-r2 1.15-r1: The Linux Audio Developer's Simple Plugin API
+media-libs/ladspa-sdk 1.15-r1: The Linux Audio Developer's Simple Plugin API
 media-libs/lasi 1.1.2: C++ library for postscript stream output
 media-libs/lastfmlib 0.4.0: C++ library to scrobble tracks on Last.fm
 media-libs/lcms 2.9 2.10 2.11: A lightweight, speed optimized color management engine
@@ -14961,7 +14961,7 @@ net-mail/checkpassword-pam 0.99-r1: checkpassword-compatible authentication prog
 net-mail/cmd5checkpw 0.30-r2 0.30-r3: A checkpassword compatible authentication program that used CRAM-MD5 authentication mode
 net-mail/courier-imap 4.18.2 5.0.7 5.0.8 5.0.10: An IMAP daemon designed specifically for maildirs
 net-mail/courierpassd 1.1.2-r1: Courierpassd is a utility for changing a user's password from across a network
-net-mail/cyrus-imapd 3.0.10-r1 3.0.11 3.0.13: The Cyrus IMAP Server
+net-mail/cyrus-imapd 3.0.13: The Cyrus IMAP Server
 net-mail/dbmail 3.2.3-r1 3.2.3-r2: Fast and scalable sql based email services
 net-mail/dot-forward 0.71-r4: reads sendmail's .forward files under qmail
 net-mail/dovecot 2.2.36.4 2.3.7.2 2.3.10.1 2.3.11.3: An IMAP and POP3 server written with security primarily in mind
@@ -17448,7 +17448,7 @@ sys-firmware/ipw2100-firmware 1.3: Firmware for the Intel PRO/Wireless 2100 3B m
 sys-firmware/ipw2200-firmware 3.1: Firmware for the Intel PRO/Wireless 2200BG/2915ABG miniPCI and 2225BG PCI
 sys-firmware/ipxe 1.0.0_p20180211 1.0.0_p20190728: Open source network boot (PXE) firmware
 sys-firmware/ivtv-firmware 20080701-r1: firmware for Hauppauge PVR-x50 and Conexant 2341x based cards
-sys-firmware/iwl1000-ucode 39.31.5.1 128.50.3.1: Intel (R) Wireless WiFi Link 1000BGN ucode
+sys-firmware/iwl1000-ucode 39.31.5.1-r1: Intel (R) Wireless WiFi Link 1000BGN ucode
 sys-firmware/iwl3160-7260-bt-ucode 37.8.10 37.8.10_p1 37.8.10_p2: Firmware for Intel (R) Wireless 3160, 7260, 7265 Bluetooth
 sys-firmware/iwl3160-ucode 0.7.1.22 0.8.15.22 0.8.24.22 0.9.214.23 0.9.228.25 0.10.11.23 0.10.15.23 0.12.16.25 0.12.17.25 0.13.30.25 0.15.227938 0.16.242414: Firmware for Intel (R) Dual Band Wireless-AC 3160
 sys-firmware/iwl6005-ucode 17.168.5.3 18.168.6.1: Intel (R) Wireless WiFi Advanced N 6005 ucode
@@ -18118,8 +18118,8 @@ www-client/seamonkey 2.53.2 2.53.3: Seamonkey Web Browser
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 3.2.1967.47_p1 3.3.2022.26_p1 3.3.2022.30_p1 3.3.2022.36_p1: A browser for our friends
-www-client/vivaldi-snapshot 3.3.2001.3_p1 3.3.2009.3_p1 3.3.2020.3_p1 3.3.2022.6_p1 3.3.2022.23_p1 3.3.2022.27_p1 3.3.2022.35_p1: A browser for our friends
+www-client/vivaldi 3.3.2022.39_p1: A browser for our friends
+www-client/vivaldi-snapshot 3.3.2022.35_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.8-r1: AWStats is short for Advanced Web Statistics

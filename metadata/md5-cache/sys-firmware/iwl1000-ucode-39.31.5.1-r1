@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=Intel (R) Wireless WiFi Link 1000BGN ucode
+EAPI=7
+HOMEPAGE=https://wireless.wiki.kernel.org/en/users/Drivers/iwlwifi
+KEYWORDS=amd64 x86
+LICENSE=ipw3945
+SLOT=0
+SRC_URI=https://wireless.wiki.kernel.org/_media/en/users/drivers/iwlwifi-1000-ucode-39.31.5.1.tgz
+_md5_=7c31c0ae36e741b998928a5649895846
