@@ -885,7 +885,7 @@ app-cdr/xbiso 0.6.1-r2 0.6.1-r3: Xbox xdvdfs ISO extraction utility
 app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD writing
 app-cdr/xfburn 0.6.2: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
-app-crypt/acme 1.6.0 1.7.0 9999: An implementation of the ACME protocol
+app-crypt/acme 1.7.0 9999: An implementation of the ACME protocol
 app-crypt/acme-client 0.1.16: a secure ACME client
 app-crypt/acme-sh 2.8.3 2.8.5 9999: An ACME Shell script
 app-crypt/acme-tiny 4.0.4 9999: A tiny, auditable script for Let's Encrypt's ACME Protocol
@@ -902,10 +902,10 @@ app-crypt/bsign 0.4.5-r1: embed secure hashes (SHA1) and digital signatures (GNU
 app-crypt/cardpeek 0.7.2 0.8.4: Tool to read the contents of smartcards
 app-crypt/ccid 1.4.30 1.4.31 1.4.32 1.4.33: CCID free software driver
 app-crypt/ccrypt 1.11 1.11-r1: Encryption and decryption
-app-crypt/certbot 1.6.0 1.7.0 9999: Let's encrypt client to automate deployment of X.509 certificates
-app-crypt/certbot-apache 1.6.0 1.7.0 9999: Apache plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot 1.7.0 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/certbot-apache 1.7.0 9999: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/certbot-dns-nsone 0.39.0-r1: NS1 DNS Authenticator plugin for Certbot (Let's Encrypt Client)
-app-crypt/certbot-nginx 1.6.0 1.7.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot-nginx 1.7.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
 app-crypt/cfssl 1.4.1: Cloudflare's PKI and TLS toolkit
 app-crypt/chntpw 140201: Offline Windows NT Password & Registry Editor
 app-crypt/ckpass 0.2-r1: ncurses based password database client compatible with KeePass 1.x databases
@@ -2692,7 +2692,7 @@ app-portage/deltup 0.4.6-r1: Delta-Update - patch system for updating source-arc
 app-portage/demerge 0.047-r3: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r4 9999: A utility to maintain package.unmask entries up-to-date with masks
 app-portage/distpatch 0.1.2-r2: Distfile Patching Support for Gentoo Linux (tools)
-app-portage/eix 0.34.4 0.34.5 0.34.6: Search and query ebuilds
+app-portage/eix 0.34.4 0.34.5 0.34.6 0.34.7: Search and query ebuilds
 app-portage/elicense 1.0.2 9999: Tool to find installed packages in Gentoo with non-accepted license(s)
 app-portage/elogv 0.7.8-r1 0.7.8-r2 0.7.8-r3: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 3.0-r2: Elog viewer for Gentoo
@@ -17264,7 +17264,7 @@ sys-boot/netboot 0.10.2-r2: Allows to remote boot a computer over an IP network
 sys-boot/nettrom 2.3.3: NetWinder ARM bootloader and utilities
 sys-boot/os-prober 1.77: Utility to detect other OSs on a set of drives
 sys-boot/palo 2.12-r1 2.13 2.14 9999: PALO : PArisc Linux Loader
-sys-boot/plymouth 0.9.3-r1 0.9.3-r2 0.9.4-r1 0.9.5-r1 9999: Graphical boot animation (splash) and logger
+sys-boot/plymouth 0.9.3-r1 0.9.5-r1 9999: Graphical boot animation (splash) and logger
 sys-boot/plymouth-openrc-plugin 0.1.3: Plymouth plugin for OpenRC
 sys-boot/raspberrypi-firmware 1.20190215 1.20190709 1.20190925 9999: Raspberry Pi (all versions) bootloader and GPU firmware
 sys-boot/refind 0.11.4 0.12.0 0.12.0-r1: The UEFI Boot Manager by Rod Smith
