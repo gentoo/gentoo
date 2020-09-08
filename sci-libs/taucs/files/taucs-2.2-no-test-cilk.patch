@@ -1,5 +1,5 @@
---- testscript.orig	2012-07-06 19:42:51.000000000 +0100
-+++ testscript	2012-07-06 19:43:17.000000000 +0100
+--- a/testscript
++++ b/testscript
 @@ -12,17 +12,6 @@
  ulimit -s >> testscript.log
  echo '==============' >> testscript.log
