@@ -16,6 +16,7 @@
     * Support for other API-compatible networks like Libre.fm
     * Python3-friendly (Starting from 0.5).
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">pylast</remote-id>
     <remote-id type="github">pylast/pylast</remote-id>
