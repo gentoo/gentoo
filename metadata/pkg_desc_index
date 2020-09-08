@@ -6520,7 +6520,7 @@ dev-perl/File-Type 0.220.0-r1 0.220.0-r2: Determine file type using magic
 dev-perl/File-Which 1.220.0 1.230.0: Perl module implementing 'which' internally
 dev-perl/File-chdir 0.101.100: An alternative to File::Spec and CWD
 dev-perl/File-chmod 0.420.0 0.420.0-r1: Implements symbolic and ls chmod modes
-dev-perl/File-pushd 1.14.0: Change directory temporarily for a limited scope
+dev-perl/File-pushd 1.14.0 1.16.0: Change directory temporarily for a limited scope
 dev-perl/FileHandle-Unget 0.162.800: A FileHandle which supports ungetting of multiple bytes
 dev-perl/Filesys-Df 0.920.0-r2: Disk free based on Filesys::Statvfs
 dev-perl/Filesys-DiskSpace 0.50.0-r2: Disk space information
