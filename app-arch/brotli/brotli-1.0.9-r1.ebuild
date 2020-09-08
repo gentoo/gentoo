@@ -35,6 +35,10 @@ fi
 
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}/${PV}-linker.patch"
+)
+
 src_prepare() {
 	use python && distutils-r1_src_prepare
 	cmake-utils_src_prepare
