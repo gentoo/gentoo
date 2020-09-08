@@ -39,7 +39,6 @@ DEPEND="${COMMON_DEPEND}
 	>=sys-kernel/linux-headers-4.14
 "
 RDEPEND="${COMMON_DEPEND}
-	acct-group/mail
 	pam? ( >=sys-auth/pambase-20150213 )
 	su? ( !sys-apps/util-linux[su(-)] )
 "
