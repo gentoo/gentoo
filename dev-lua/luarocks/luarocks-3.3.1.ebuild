@@ -9,7 +9,7 @@ SRC_URI="http://luarocks.org/releases/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 x86"
 IUSE="libressl"
 
 DEPEND="dev-lang/lua:="
