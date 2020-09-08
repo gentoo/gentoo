@@ -54,8 +54,14 @@ src_configure() {
 		$(meson_feature introspection)
 		$(meson_feature pulseaudio)
 		$(meson_feature sasl)
-		-Dwith-coroutine=auto # gthread on windows, libc ucontext elsewhere; neither has extra deps
 		$(meson_feature vala with-vala)
 	)
+
+	if use elibc_musl; then
+		emesonargs+=( -Dwith-coroutine=gthread )
+	else
+		emesonargs+=( -Dwith-coroutine=auto )
+	fi
+
 	meson_src_configure
 }
