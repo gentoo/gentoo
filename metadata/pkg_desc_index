@@ -10087,7 +10087,7 @@ dev-ruby/netrc 0.11.0: This library reads and writes .netrc files
 dev-ruby/network_interface 0.0.2: network_interface layer from metasploit pcaprub
 dev-ruby/nexpose 7.2.1: API client for Nexpose vulnerability managment product
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
-dev-ruby/nio4r 2.4.0 2.5.2: A high performance selector API for monitoring IO objects
+dev-ruby/nio4r 2.4.0 2.5.2 2.5.3: A high performance selector API for monitoring IO objects
 dev-ruby/nokogiri 1.10.4 1.10.10: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/nokogumbo 2.0.2: A Nokogiri interface to the Gumbo HTML5 parser
@@ -10284,7 +10284,7 @@ dev-ruby/sanitize 5.2.1: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.4.25 3.4.25-r1 3.5.7 3.5.7-r1 3.7.4: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/sass-listen 4.0.0: Fork of guard/listen provides a stable API for users of the ruby Sass CLI
 dev-ruby/sass-rails 5.0.8 5.1.0: Official Ruby-on-Rails Integration with Sass
-dev-ruby/sassc 2.0.1-r1 2.2.1: Use libsass with Ruby
+dev-ruby/sassc 2.2.1: Use libsass with Ruby
 dev-ruby/sassc-rails 2.1.2-r1: Integrate SassC-Ruby with Rails
 dev-ruby/sawyer 0.8.2: Secret User Agent of HTTP
 dev-ruby/sdoc 1.0.0 1.1.0: rdoc generator html with javascript search index
@@ -10293,7 +10293,7 @@ dev-ruby/selenium-webdriver 3.142.6 3.142.7 3.142.7-r1: This gem provides Ruby b
 dev-ruby/semantic_puppet 1.0.2: Library of tools for working with Semantic Versions and module dependencies
 dev-ruby/semver2 3.4.2: maintain versions as per http://semver.org
 dev-ruby/serialport 1.3.1: a library for serial port (rs232) access in ruby
-dev-ruby/serverengine 2.1.1 2.2.0 2.2.1: A framework to implement robust multiprocess servers
+dev-ruby/serverengine 2.2.1: A framework to implement robust multiprocess servers
 dev-ruby/session 3.2.0: A set of classes to drive external programs via pipe
 dev-ruby/settingslogic 2.0.9: A simple configuration / settings solution that uses an ERB enabled YAML file
 dev-ruby/sexp_processor 4.12.0 4.15.0: Processor for s-expressions created as part of the ParseTree project
@@ -10302,12 +10302,12 @@ dev-ruby/shorturl 1.0.0-r2: A very simple library to use URL shortening services
 dev-ruby/shotgun 0.9.2: Forking implementation of rackup
 dev-ruby/shoulda 2.11.3-r2 3.6.0 3.6.0-r1: Making tests easy on the fingers and eyes
 dev-ruby/shoulda-context 1.2.2: Context framework extracted from Shoulda
-dev-ruby/shoulda-matchers 3.1.3 3.1.3-r1 4.3.0 4.3.0-r1: Making tests easy on the fingers and eyes
+dev-ruby/shoulda-matchers 3.1.3 3.1.3-r1 4.3.0 4.3.0-r1 4.4.1: Making tests easy on the fingers and eyes
 dev-ruby/sigar 0.7.3: System Information Gatherer And Reporter
 dev-ruby/sigdump 0.2.4: Setup signal handler which dumps backtrace of threads and allocated objects
 dev-ruby/simple-rss 1.3.3: A simple, flexible, extensible, and liberal RSS and Atom reader for Ruby
 dev-ruby/simple_oauth 0.3.1: Simply builds and verifies OAuth headers
-dev-ruby/simplecov 0.17.1 0.18.5 0.19.0: Code coverage with a configuration library and merging across test suites
+dev-ruby/simplecov 0.18.5 0.19.0: Code coverage with a configuration library and merging across test suites
 dev-ruby/simplecov-html 0.10.2 0.11.0 0.12.0 0.12.1 0.12.2: Generates a HTML report of your SimpleCov ruby code coverage results
 dev-ruby/sinatra 2.0.8.1 2.0.8.1-r1: A DSL for quickly creating web applications in Ruby with minimal effort
 dev-ruby/sinatra-partial 1.0.1: Just the partials helper in a gem
@@ -10320,7 +10320,7 @@ dev-ruby/sourcemap 0.1.1: Ruby source maps
 dev-ruby/sparklines 0.5.2-r6: Create sparklines, small graphs to be used inline in texts
 dev-ruby/spork 0.9.2-r2: Spork is Tim Harper's implementation of test server
 dev-ruby/spreadsheet 1.2.6: Ruby library to read and write spreadsheet documents
-dev-ruby/spring 2.1.0: Rails application preloader
+dev-ruby/spring 2.1.0 2.1.1: Rails application preloader
 dev-ruby/sprockets 3.7.2 4.0.2: Ruby library for compiling and serving web assets
 dev-ruby/sprockets-rails 3.2.1: Sprockets implementation for Rails 4.x (and beyond) Asset Pipeline
 dev-ruby/spy 1.0.0: A simple opinionated mocking framework
@@ -10366,9 +10366,9 @@ dev-ruby/travis 1.9.1: Travis CI Client (CLI and Ruby library)
 dev-ruby/treetop 1.6.10 1.6.11: Treetop is a language for describing languages
 dev-ruby/trollop 2.1.3 2.9.10: Trollop is a commandline option parser for Ruby
 dev-ruby/ttfunk 1.5.1 1.6.2.1: A TrueType font parser written in pure ruby
-dev-ruby/tty-color 0.4.3 0.5.0 0.5.1 0.5.2: Terminal color capabilities detection
-dev-ruby/tty-command 0.8.2 0.9.0: Terminal color capabilities detection
-dev-ruby/tty-cursor 0.7.0 0.7.1: Move the terminal cursor around and manipulate text using intuitive method calls
+dev-ruby/tty-color 0.4.3 0.5.2: Terminal color capabilities detection
+dev-ruby/tty-command 0.9.0: Terminal color capabilities detection
+dev-ruby/tty-cursor 0.7.1: Move the terminal cursor around and manipulate text using intuitive method calls
 dev-ruby/tty-file 0.7.0 0.10.0: File manipulation utility methods
 dev-ruby/tty-platform 0.3.0: Query methods for detecting different operating systems
 dev-ruby/tty-prompt 0.20.0 0.21.0 0.22.0: A beautiful and powerful interactive command line prompt
@@ -13065,7 +13065,7 @@ media-libs/gstreamer 1.14.5 1.16.2: Open source multimedia framework
 media-libs/gstreamer-editing-services 1.14.5: SDK for making video editors and more
 media-libs/guilib 1.2.1-r1: Simple widget set for SDL
 media-libs/gupnp-dlna 0.10.5: Library providing DLNA-related functionality for MediaServers
-media-libs/hamlib 3.3: Ham radio backend rig control libraries
+media-libs/hamlib 3.3 4.0_rc2: Ham radio backend rig control libraries
 media-libs/harfbuzz 2.6.5 2.6.7 2.6.8 2.7.1 2.7.2 9999: An OpenType text shaping engine
 media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing/offset
 media-libs/icc-profiles-openicc 1.3.1: ICC color profiles by OpenICC
