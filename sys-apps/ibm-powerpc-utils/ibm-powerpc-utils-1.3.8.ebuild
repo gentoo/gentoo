@@ -2,16 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools git-r3
+inherit autotools
 
 DESCRIPTION="Utilities for the maintainance of the IBM and Apple PowerPC platforms"
 HOMEPAGE="https://github.com/ibm-power-utilities/powerpc-utils"
-EGIT_REPO_URI="https://github.com/ibm-power-utilities/powerpc-utils"
+SRC_URI="https://github.com/ibm-power-utilities/${PN//ibm-}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 IUSE="+rtas"
+
+S="${WORKDIR}/${P//ibm-}"
 
 SLOT="0"
 LICENSE="GPL-2+"
-KEYWORDS=""
+KEYWORDS="~ppc ~ppc64"
 
 RDEPEND="
 	!sys-apps/powerpc-utils
@@ -28,5 +30,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_with rtas librtas)
+	econf \
+		--disable-werror \
+		$(use_with rtas librtas)
 }
