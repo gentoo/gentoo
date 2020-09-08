@@ -48,10 +48,6 @@ src_prepare() {
 	sed -i /node_version_validator/d \
 		src/setup_node_env/index.js \
 		src/setup_node_env/prebuilt_dev_only_entry.js || die
-
-	# https://github.com/elastic/kibana/issues/75550
-	sed -i "/readKeystore/s/get('path.data')//g" \
-		src/cli/serve/serve.js || die
 }
 
 src_install() {
