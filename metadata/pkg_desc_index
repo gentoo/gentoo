@@ -6521,7 +6521,7 @@ dev-perl/File-Which 1.220.0 1.230.0: Perl module implementing 'which' internally
 dev-perl/File-chdir 0.101.100: An alternative to File::Spec and CWD
 dev-perl/File-chmod 0.420.0 0.420.0-r1: Implements symbolic and ls chmod modes
 dev-perl/File-pushd 1.14.0 1.16.0: Change directory temporarily for a limited scope
-dev-perl/FileHandle-Unget 0.162.800: A FileHandle which supports ungetting of multiple bytes
+dev-perl/FileHandle-Unget 0.162.800 0.163.400: A FileHandle which supports ungetting of multiple bytes
 dev-perl/Filesys-Df 0.920.0-r2: Disk free based on Filesys::Statvfs
 dev-perl/Filesys-DiskSpace 0.50.0-r2: Disk space information
 dev-perl/Filesys-Notify-Simple 0.120.0: Simple and dumb file system watcher
@@ -7293,6 +7293,7 @@ dev-perl/Test-ClassAPI 1.70.0: Provides basic first-pass API testing for large c
 dev-perl/Test-CleanNamespaces 0.220.0 0.240.0: Check for uncleaned imports
 dev-perl/Test-Command 0.110.0: Test routines for external commands
 dev-perl/Test-Command-Simple 0.50.0: Test external commands (nearly) as easily as loaded modules
+dev-perl/Test-Compile 2.4.1: Check whether Perl files compile correctly
 dev-perl/Test-Deep 1.126.0 1.127.0: Extremely flexible deep comparison testing
 dev-perl/Test-Deep-JSON 0.40.0: Compare JSON with Test::Deep
 dev-perl/Test-Dependencies 0.230.0: Ensure that your dependency listing is complete
@@ -14961,7 +14962,7 @@ net-mail/checkpassword-pam 0.99-r1: checkpassword-compatible authentication prog
 net-mail/cmd5checkpw 0.30-r2 0.30-r3: A checkpassword compatible authentication program that used CRAM-MD5 authentication mode
 net-mail/courier-imap 4.18.2 5.0.7 5.0.8 5.0.10: An IMAP daemon designed specifically for maildirs
 net-mail/courierpassd 1.1.2-r1: Courierpassd is a utility for changing a user's password from across a network
-net-mail/cyrus-imapd 3.0.13: The Cyrus IMAP Server
+net-mail/cyrus-imapd 3.0.13 3.0.14: The Cyrus IMAP Server
 net-mail/dbmail 3.2.3-r1 3.2.3-r2: Fast and scalable sql based email services
 net-mail/dot-forward 0.71-r4: reads sendmail's .forward files under qmail
 net-mail/dovecot 2.2.36.4 2.3.7.2 2.3.10.1 2.3.11.3: An IMAP and POP3 server written with security primarily in mind
