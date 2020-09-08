@@ -9180,7 +9180,7 @@ dev-python/testscenarios 0.5.0: A pyunit extension for dependency injection
 dev-python/testtools 2.4.0: Extensions to the Python standard library unit testing framework
 dev-python/text-unidecode 1.3: Tthe most basic port of the Text::Unidecode Perl library
 dev-python/textfsm 0.4.0: Python module for parsing semi-structured text into python tables.
-dev-python/texttable 1.6.2-r1: Module for creating simple ASCII tables
+dev-python/texttable 1.6.2-r1 1.6.3: Module for creating simple ASCII tables
 dev-python/textx 1.4: Meta-language for DSL implementation inspired by Xtext
 dev-python/theano 1.0.5: Define and optimize multi-dimensional arrays mathematical expressions
 dev-python/threadpoolctl 2.1.0: Limit the number of threads used in native libs that have their own threadpool
