@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} == *9999 ]] ; then
 	SCM="git-r3"
@@ -22,6 +22,7 @@ SLOT="0/10"
 IUSE="a52 aac alsa debug dvb ffmpeg ipv6 jack jpeg jpeg2k libressl mad opengl oss png
 	pulseaudio sdl ssl static-libs theora truetype vorbis xml xvid X"
 
+BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	media-libs/libogg
 	a52? ( media-libs/a52dec )
@@ -30,7 +31,7 @@ RDEPEND="
 	ffmpeg? ( media-video/ffmpeg:0= )
 	jack? ( virtual/jack )
 	jpeg? ( virtual/jpeg:0 )
-	jpeg2k? ( media-libs/openjpeg:0 )
+	jpeg2k? ( media-libs/openjpeg:2 )
 	mad? ( media-libs/libmad )
 	opengl? (
 		media-libs/freeglut
@@ -53,15 +54,18 @@ RDEPEND="
 		x11-libs/libXv
 		x11-libs/libXext
 	)
-	xml? ( dev-libs/libxml2:2 )
+	xml? ( dev-libs/libxml2:2= )
 	xvid? ( media-libs/xvid )
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+DEPEND="
+	${RDEPEND}
 	dvb? ( sys-kernel/linux-headers )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-0.8.1-configure.patch" "${FILESDIR}/zlib.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-0.8.1-configure.patch"
+	"${FILESDIR}/${PN}-1.0.0-zlib-compile.patch"
+)
 
 DOCS=(
 	share/doc/CODING_STYLE
@@ -72,6 +76,7 @@ DOCS=(
 	Changelog
 	README.md
 )
+
 HTML_DOCS="share/doc/*.html"
 
 my_use() {
@@ -94,7 +99,7 @@ src_configure() {
 	local myeconfargs=(
 		--extra-cflags="${CFLAGS}"
 		--cc="$(tc-getCC)"
-		--libdir="/$(get_libdir)"
+		--libdir="$(get_libdir)"
 		--verbose
 		--enable-pic
 		--enable-svg
@@ -133,6 +138,6 @@ src_configure() {
 
 src_install() {
 	einstalldocs
-	emake STRIP="true" DESTDIR="${D}" install
-	emake STRIP="true" DESTDIR="${D}" install-lib
+	emake STRIP="true" DESTDIR="${ED}" install
+	emake STRIP="true" DESTDIR="${ED}" install-lib
 }
