@@ -8398,7 +8398,7 @@ dev-python/locket 0.2.0-r1: File-based locks for Python
 dev-python/lockfile 0.12.2-r2: Platform-independent file locking module
 dev-python/logbook 1.5.3: A logging replacement for Python
 dev-python/logfury 0.1.2-r1: Boilerplate library for logging method calls
-dev-python/loguru 0.5.1: Python logging made (stupidly) simple
+dev-python/loguru 0.5.1 0.5.2: Python logging made (stupidly) simple
 dev-python/logutils 0.3.5: The logutils package provides a set of handlers for the Python standard
 dev-python/loky 2.8.0-r1: Robust and reusable Executor for joblib
 dev-python/lunr 0.5.6: A Python implementation of Lunr.js
