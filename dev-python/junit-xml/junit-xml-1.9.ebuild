@@ -21,7 +21,7 @@ S=${WORKDIR}/python-junit-xml-${EGIT_COMMIT}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
 
