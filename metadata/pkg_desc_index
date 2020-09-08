@@ -669,7 +669,7 @@ app-arch/arc 5.21p: Create & extract files from DOS .ARC files
 app-arch/arj 3.10.22-r7: Utility for opening arj archives
 app-arch/atool 0.39.0-r1: Script for managing file archives of various types
 app-arch/bloscpack 0.16.0: Command line interface for Blosc compression
-app-arch/brotli 1.0.6-r1 1.0.7 1.0.9 9999: Generic-purpose lossless compression algorithm
+app-arch/brotli 1.0.6-r1 1.0.7 1.0.9-r1 9999: Generic-purpose lossless compression algorithm
 app-arch/bsdsfv 1.18-r2: all-in-one SFV checksum utility
 app-arch/bzip2 1.0.6-r11 1.0.7-r1 1.0.8-r1 9999: A high-quality data compressor used extensively by Gentoo Linux
 app-arch/cabextract 1.8 1.9-r2 1.9.1 9999: Extracts files from Microsoft cabinet archive files
@@ -15558,8 +15558,8 @@ net-vpn/tor 0.4.2.8 0.4.3.6 0.4.4.4_rc: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550-r2: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
-net-vpn/wireguard-modules 1.0.20200729-r1: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
-net-vpn/wireguard-tools 1.0.20200513 1.0.20200820: Required tools for WireGuard, such as wg(8) and wg-quick(8)
+net-vpn/wireguard-modules 1.0.20200908: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
+net-vpn/wireguard-tools 1.0.20200513 1.0.20200827: Required tools for WireGuard, such as wg(8) and wg-quick(8)
 net-wireless/aircrack-ng 1.5.2 1.6-r1 1.6_p20200722 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airspy 1.0.9 9999: Usemode driver and associated tools for airspy
 net-wireless/airtraf 1.1-r3 1.1-r4: AirTraf 802.11b Wireless traffic sniffer
