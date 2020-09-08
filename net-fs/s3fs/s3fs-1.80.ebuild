@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,7 @@ CDEPEND="
 	gnutls? ( net-libs/gnutls )
 	nettle? ( dev-libs/nettle )
 	>=net-misc/curl-7.0
-	>=sys-fs/fuse-2.8.4"
+	>=sys-fs/fuse-2.8.4:0"
 
 RDEPEND="
 	${CDEPEND}
