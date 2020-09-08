@@ -26,6 +26,10 @@ DEPEND="${RDEPEND}
 		dev-cpp/gtest
 	)"
 
+PATCHES=(
+	"${FILESDIR}/${P}-core-Skip-serialization-test-if-locale-is-not-availa.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_PULL=yes
