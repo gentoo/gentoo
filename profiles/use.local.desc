@@ -8725,7 +8725,7 @@ www-client/chromium:js-type-check - Enable JavaScript type-checking for Chrome's
 www-client/chromium:official - Enable Official build instead of Developer build.
 www-client/chromium:ozone - Enable Ozone platform abstraction layer with X11 backend.
 www-client/chromium:pic - Disable optimized assembly code that is not PIC friendly
-www-client/chromium:proprietary-codecs - Enable proprietary codecs like H.264, MP3
+www-client/chromium:proprietary-codecs - Enable codecs for patent-encumbered audio and video formats.
 www-client/chromium:suid - Build the SUID sandbox, which is only needed on CONFIG_USER_NS=n kernels
 www-client/chromium:system-ffmpeg - Use system ffmpeg instead of the bundled one
 www-client/chromium:system-icu - Use system icu instead of the bundled one
