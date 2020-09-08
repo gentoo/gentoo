@@ -48,6 +48,7 @@ DOCS="AUTHORS HACKING NEWS README"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1-ia64.patch
+	"${FILESDIR}"/${PN}-4.0-AR.patch
 )
 
 pkg_setup() {
