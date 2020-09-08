@@ -6516,7 +6516,7 @@ dev-perl/File-Stat-Bits 1.10.0-r1 1.10.0-r2: File stat bit mask constants
 dev-perl/File-Sync 0.110.0 0.110.0-r1: Perl access to fsync() and sync() function calls
 dev-perl/File-Tail 1.300.0: Perl extension for reading from continously updated files
 dev-perl/File-Tempdir 0.20.0-r1 0.20.0-r2: This module provide an object interface to tempdir() from File::Temp
-dev-perl/File-Type 0.220.0-r1: Determine file type using magic
+dev-perl/File-Type 0.220.0-r1 0.220.0-r2: Determine file type using magic
 dev-perl/File-Which 1.220.0: Perl module implementing 'which' internally
 dev-perl/File-chdir 0.101.100: An alternative to File::Spec and CWD
 dev-perl/File-chmod 0.420.0: Implements symbolic and ls chmod modes
@@ -13161,7 +13161,7 @@ media-libs/libkate 0.4.1-r4: Codec for karaoke and text encapsulation for Ogg
 media-libs/liblastfm 1.1.0_pre20150206: Collection of libraries to integrate Last.fm services
 media-libs/libldac 2.0.2-r1: LDAC codec library from AOSP
 media-libs/liblingoteach 0.2.3: A library to support lingoteach-ui and for generic lesson development
-media-libs/liblo 0.30 0.31: Lightweight OSC (Open Sound Control) implementation
+media-libs/liblo 0.31: Lightweight OSC (Open Sound Control) implementation
 media-libs/liblqr 0.4.2-r1: An easy to use C/C++ seam carving library
 media-libs/liblrdf 0.6.1: Library for manipulation of RDF files in LADSPA plugins
 media-libs/liblscp 0.6.0 0.6.2 9999: C++ library for the Linux Sampler control protocol
@@ -15363,7 +15363,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1355-r1 0.4.1432: utility to download media contents from the web
-net-misc/youtube-dl 2020.07.28 2020.09.06 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.09.06 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r1 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -18108,7 +18108,7 @@ www-client/lynx 2.8.9_p1 2.9.0_pre4 2.9.0_pre5: An excellent console-based web b
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r3: a free, open source web browser
-www-client/opera 70.0.3728.144 70.0.3728.154: A fast and secure web browser
+www-client/opera 70.0.3728.154: A fast and secure web browser
 www-client/opera-beta 71.0.3770.50 71.0.3770.81 71.0.3770.97: A fast and secure web browser
 www-client/opera-developer 72.0.3779.0 72.0.3784.0 72.0.3791.0 72.0.3798.0: A fast and secure web browser
 www-client/otter 1.0.01 1.0.01-r1 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
