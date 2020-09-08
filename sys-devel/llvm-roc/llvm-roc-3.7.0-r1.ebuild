@@ -23,6 +23,10 @@ PDEPEND="dev-libs/rocr-runtime"
 
 S="${WORKDIR}/llvm-project-rocm-${PV}/llvm"
 
+PATCHES=(
+	"${FILESDIR}/${P}-current_pos.patch"
+)
+
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
 src_prepare() {
