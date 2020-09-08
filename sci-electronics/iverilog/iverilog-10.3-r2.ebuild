@@ -26,18 +26,14 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="examples"
 
-# If you are building from git, you will also need gperf to generate
-# the configure scripts.
-RDEPEND="
+DEPEND="
 	sys-libs/readline:=
 	sys-libs/zlib
 "
-
-DEPEND="
-	dev-util/gperf
+RDEPEND="${DEPEND}"
+BDEPEND="dev-util/gperf
 	sys-devel/bison
 	sys-devel/flex
-	${RDEPEND}
 "
 
 PATCHES=(
