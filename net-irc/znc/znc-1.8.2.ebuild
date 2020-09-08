@@ -28,7 +28,9 @@ fi
 
 HOMEPAGE="https://znc.in"
 LICENSE="Apache-2.0"
-SLOT="0"
+# "If you upgrade your ZNC version you must recompile all your modules."
+# - https://wiki.znc.in/Compiling_modules
+SLOT="0/${PV}"
 IUSE="+ipv6 +icu libressl nls perl python +ssl sasl tcl test +zlib"
 RESTRICT="!test? ( test )"
 
