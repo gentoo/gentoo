@@ -33,6 +33,5 @@ all_ruby_prepare() {
 all_ruby_install() {
 	all_fakegem_install
 
-	insinto /usr/share/doc/${PF}/examples
 	dodoc -r examples
 }
