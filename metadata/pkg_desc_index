@@ -2637,10 +2637,10 @@ app-office/kraft 0.90: Software to manage quotes and invoices in small enterpris
 app-office/ktimetracker 5.0.1: Todo management and time tracker
 app-office/ledger 3.1.2-r1 3.2.0: Double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 8.0.3: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 6.4.3.2 6.4.5.2 6.4.6.2 6.4.9999 9999: A full office productivity suite
+app-office/libreoffice 6.4.3.2 6.4.6.2-r1 6.4.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 6.4.3.2: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 6.4.3.2: LibreOffice, a full office productivity suite. Binary package, debug info
-app-office/libreoffice-l10n 6.4.3.2 6.4.5.2 6.4.6.2: Translations for the Libreoffice suite
+app-office/libreoffice-l10n 6.4.3.2 6.4.6.2: Translations for the Libreoffice suite
 app-office/libreoffice-voikko 5.0: Free Finnish spell checking and hyphenation for LibreOffice
 app-office/lyx 2.3.3 2.3.5.2: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a_p20121015-r1: An X11 based presentation tool
@@ -5435,7 +5435,7 @@ dev-libs/libfmt 6.1.2 7.0.3 9999: Small, safe and fast formatting library
 dev-libs/libfstrcmp 0.7 0.7-r1: Make fuzzy comparisons of strings and byte arrays
 dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the Logitech G15 keyboard
 dev-libs/libg15render 1.2-r2: Small library for display text and graphics on a Logitech G15 keyboard
-dev-libs/libgamin 0.1.10-r5 0.1.10-r6: Library providing the FAM File Alteration Monitor API
+dev-libs/libgamin 0.1.10-r6: Library providing the FAM File Alteration Monitor API
 dev-libs/libgaminggear 0.15.1: Provides functionality for gaming input devices
 dev-libs/libgcrypt 1.8.5 1.8.6: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgcrypt-compat 1.5.6: Old version of libgcrypt needed by some binaries
@@ -5578,7 +5578,7 @@ dev-libs/libxmlb 0.1.15 0.2.0 0.2.1: Library to help create and query binary XML
 dev-libs/libxslt 1.1.33-r1 1.1.34 1.1.34-r1: XSLT libraries and tools
 dev-libs/libyaml 0.2.2 0.2.5: YAML 1.1 parser and emitter written in C
 dev-libs/libzia 4.21 4.22: platform abstraction code for tucnak package
-dev-libs/libzip 1.6.1-r1 1.7.3: Library for manipulating zip archives
+dev-libs/libzip 1.7.3: Library for manipulating zip archives
 dev-libs/light 1.2.2: A program to control backlights (and other hardware lights)
 dev-libs/link-grammar 5.3.11 5.8.0: A Syntactic English parser
 dev-libs/lockdev 1.0.3.1.2-r3: Library for locking devices
@@ -9326,7 +9326,7 @@ dev-qt/pixeltool 5.14.2 5.15.0: Qt screen magnifier
 dev-qt/qdbus 5.14.2 5.15.0: Interface to Qt applications communicating over D-Bus
 dev-qt/qdbusviewer 5.14.2 5.15.0: Graphical tool that lets you introspect D-Bus objects and messages
 dev-qt/qdoc 5.14.2 5.15.0: Qt documentation generator
-dev-qt/qt-creator 4.8.2 4.12.3 9999: Lightweight IDE for C++/QML development centering around Qt
+dev-qt/qt-creator 4.12.3 9999: Lightweight IDE for C++/QML development centering around Qt
 dev-qt/qt-docs 5.14.2_p202003291239 5.14.2_p202003291239-r1 5.15.0_p202005140838: Qt5 documentation, for use with Qt Creator and other tools
 dev-qt/qt3d 5.14.2 5.15.0: 3D rendering module for the Qt5 framework
 dev-qt/qtbluetooth 5.14.2-r1 5.15.0-r1: Bluetooth support library for the Qt5 framework
@@ -10779,10 +10779,10 @@ dev-util/jfrog-cli 1.35.3: Command line utility foroperations on container image
 dev-util/kbuild 0.1.9998.3149 0.1.9998.3407 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 3.0.1: Graphical debugger interface
-dev-util/kdevelop 5.5.2: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
+dev-util/kdevelop 5.5.2 5.6.0: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-pg-qt 2.2.1: LL(1) parser generator used mainly by KDevelop language plugins
-dev-util/kdevelop-php 5.5.2: PHP plugin for KDevelop
-dev-util/kdevelop-python 5.5.2: Python plugin for KDevelop
+dev-util/kdevelop-php 5.5.2 5.6.0: PHP plugin for KDevelop
+dev-util/kdevelop-python 5.5.2 5.6.0: Python plugin for KDevelop
 dev-util/kdstatemachineeditor 1.2.4 9999: Framework for creating Qt State Machine metacode using graphical user interfaces
 dev-util/kernelshark 1.0 9999: Graphical reader for trace-cmd output
 dev-util/kubebuilder 2.3.1: SDK for building Kubernetes APIs using CRDs
@@ -12362,7 +12362,7 @@ kde-plasma/oxygen 5.18.5 5.19.5: Oxygen visual style for the Plasma desktop
 kde-plasma/plasma-browser-integration 5.18.5 5.19.5: Integrate Chrome/Firefox better into Plasma through browser extensions
 kde-plasma/plasma-desktop 5.18.5-r1 5.18.5-r2 5.19.5: KDE Plasma desktop
 kde-plasma/plasma-integration 5.18.5 5.19.5: Qt Platform Theme integration plugins for the Plasma workspaces
-kde-plasma/plasma-meta 5.18.5 5.19.4 5.19.5: Merge this to pull in all Plasma 5 packages
+kde-plasma/plasma-meta 5.18.5 5.19.5: Merge this to pull in all Plasma 5 packages
 kde-plasma/plasma-nm 5.18.5-r1 5.19.5: KDE Plasma applet for NetworkManager
 kde-plasma/plasma-pa 5.18.5 5.19.5: Plasma applet for audio volume management using PulseAudio
 kde-plasma/plasma-sdk 5.18.5 5.19.5: Useful applications for Plasma development
@@ -13361,7 +13361,7 @@ media-libs/webvfx 1.2.0: Video effects library based on web technologies
 media-libs/woff2 1.0.2-r1 1.0.2-r2: Encode/decode WOFF2 font format
 media-libs/wxsvg 1.5.9 1.5.11: C++ library to create, manipulate and render SVG files
 media-libs/x264 0.0.20190214 0.0.20190903 0.0.20190903-r1 9999: A free library for encoding X264/AVC streams
-media-libs/x265 2.8 2.9 3.0 3.1 3.1.2 3.2 3.2.1 3.3 3.4 9999: Library for encoding video streams into the H.265/HEVC format
+media-libs/x265 3.4 9999: Library for encoding video streams into the H.265/HEVC format
 media-libs/xine-lib 1.2.9-r2 1.2.10 1.2.9999: Core libraries for Xine movie player
 media-libs/xvid 1.3.5 1.3.5-r1: High performance/quality MPEG-4 video de-/encoding solution
 media-libs/zimg 2.8 2.9.2 3.0.1 9999: Scaling, colorspace conversion, and dithering library
