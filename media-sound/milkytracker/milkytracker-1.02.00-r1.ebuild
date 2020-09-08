@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-CVE-2019-1449x.patch"
 	"${FILESDIR}/${P}-CVE-2020-15569.patch"
 	"${FILESDIR}/${P}-fix-hard-dependency-on-rtmidi.patch"
+	"${FILESDIR}/${P}-clang.patch"
 )
 
 S="${WORKDIR}/MilkyTracker-${PV}"
