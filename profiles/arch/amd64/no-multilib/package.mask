@@ -78,6 +78,7 @@ games-misc/papers-please
 games-puzzle/triptych
 games-roguelike/adom
 games-rpg/baldurs-gate-ee
+games-rpg/broken-age
 games-rpg/costume-quest
 games-rpg/dear-esther
 games-rpg/dungeon-defenders
