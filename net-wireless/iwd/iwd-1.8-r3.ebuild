@@ -13,7 +13,7 @@ if [[ ${PV} == *9999* ]]; then
 	ELL_EGIT_REPO_URI="https://git.kernel.org/pub/scm/libs/ell/ell.git"
 else
 	SRC_URI="https://www.kernel.org/pub/linux/network/wireless/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 arm arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 fi
 
 DESCRIPTION="Wireless daemon for linux"
@@ -26,7 +26,7 @@ IUSE="+client +crda +monitor ofono wired cpu_flags_x86_aes cpu_flags_x86_ssse3"
 COMMON_DEPEND="sys-apps/dbus
 	client? ( sys-libs/readline:0= )"
 
-[[ -z "${ELL_REQ}" ]] || COMMON_DEPEND+=" >=dev-libs/ell-${ELL_REQ}"
+[[ -z "${ELL_REQ}" ]] || COMMON_DEPEND+=" ~dev-libs/ell-${ELL_REQ}"
 
 RDEPEND="${COMMON_DEPEND}
 	net-wireless/wireless-regdb
@@ -36,6 +36,8 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
 
 [[ ${PV} == *9999* ]] && DEPEND+=" dev-python/docutils"
+
+PATCHES=( "${FILESDIR}"/iwd-1.8-eapol-prevent-key-reinstallation.patch )
 
 pkg_setup() {
 	CONFIG_CHECK="
@@ -91,6 +93,10 @@ pkg_setup() {
 	check_extra_config
 
 	if ! use crda; then
+		if use kernel_linux && kernel_is -lt 4 15; then
+			ewarn "POSSIBLE REGULATORY DOMAIN PROBLEM:"
+			ewarn "Regulatory domain support for kernels older than 4.15 requires crda."
+		fi
 		if linux_config_exists && linux_chkconfig_builtin CFG80211 &&
 			[[ $(linux_chkconfig_string EXTRA_FIRMWARE) != *regulatory.db* ]]
 		then

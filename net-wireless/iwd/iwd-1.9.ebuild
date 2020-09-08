@@ -5,7 +5,7 @@ EAPI=6
 inherit flag-o-matic linux-info systemd
 
 #Set this variable to the required external ell version
-ELL_REQ="0.30"
+ELL_REQ="0.33"
 
 if [[ ${PV} == *9999* ]]; then
 	inherit autotools git-r3
@@ -21,23 +21,34 @@ HOMEPAGE="https://git.kernel.org/pub/scm/network/wireless/iwd.git/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+client +crda +monitor ofono wired cpu_flags_x86_aes cpu_flags_x86_ssse3"
+IUSE="+client +crda +monitor ofono wired cpu_flags_x86_aes cpu_flags_x86_ssse3
+standalone systemd"
 
-COMMON_DEPEND="sys-apps/dbus
-	client? ( sys-libs/readline:0= )"
+COMMON_DEPEND="
+	sys-apps/dbus
+	client? ( sys-libs/readline:0= )
+"
 
-[[ -z "${ELL_REQ}" ]] || COMMON_DEPEND+=" >=dev-libs/ell-${ELL_REQ}"
+[[ -z "${ELL_REQ}" ]] || COMMON_DEPEND+=" ~dev-libs/ell-${ELL_REQ}"
 
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="
+	${COMMON_DEPEND}
 	net-wireless/wireless-regdb
-	crda? ( net-wireless/crda )"
+	crda? ( net-wireless/crda )
+	standalone? (
+		systemd? ( sys-apps/systemd )
+		!systemd? ( virtual/resolvconf )
+	)
+"
 
-DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig"
+DEPEND="
+	${COMMON_DEPEND}
+	virtual/pkgconfig
+"
 
 [[ ${PV} == *9999* ]] && DEPEND+=" dev-python/docutils"
 
-pkg_pretend() {
+pkg_setup() {
 	CONFIG_CHECK="
 		~ASYMMETRIC_KEY_TYPE
 		~ASYMMETRIC_PUBLIC_KEY_SUBTYPE
@@ -91,6 +102,10 @@ pkg_pretend() {
 	check_extra_config
 
 	if ! use crda; then
+		if use kernel_linux && kernel_is -lt 4 15; then
+			ewarn "POSSIBLE REGULATORY DOMAIN PROBLEM:"
+			ewarn "Regulatory domain support for kernels older than 4.15 requires crda."
+		fi
 		if linux_config_exists && linux_chkconfig_builtin CFG80211 &&
 			[[ $(linux_chkconfig_string EXTRA_FIRMWARE) != *regulatory.db* ]]
 		then
@@ -150,5 +165,13 @@ src_install() {
 	if [[ ${PV} == *9999* ]] ; then
 		exeinto /usr/share/iwd/scripts/
 		doexe test/*
+	fi
+
+	if use standalone ; then
+		dodir /etc/iwd
+		echo "[General]" > ${ED}/etc/iwd/main.conf
+		echo "EnableNetworkConfiguration=true" >> "${ED}"/etc/iwd/main.conf
+		echo "NameResolvingService=$(usex systemd systemd resolvconf)" >> "${ED}"/etc/iwd/main.conf
+		echo "rc_provide=\"net\"" > ${ED}/etc/conf.d/iwd
 	fi
 }
