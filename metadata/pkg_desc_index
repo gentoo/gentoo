@@ -2692,7 +2692,7 @@ app-portage/deltup 0.4.6-r1: Delta-Update - patch system for updating source-arc
 app-portage/demerge 0.047-r3: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r4 9999: A utility to maintain package.unmask entries up-to-date with masks
 app-portage/distpatch 0.1.2-r2: Distfile Patching Support for Gentoo Linux (tools)
-app-portage/eix 0.34.4 0.34.5: Search and query ebuilds
+app-portage/eix 0.34.4 0.34.5 0.34.6: Search and query ebuilds
 app-portage/elicense 1.0.2 9999: Tool to find installed packages in Gentoo with non-accepted license(s)
 app-portage/elogv 0.7.8-r1 0.7.8-r2 0.7.8-r3: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 3.0-r2: Elog viewer for Gentoo
@@ -2709,7 +2709,7 @@ app-portage/g-cpan 0.16.9-r1 0.17.0 9999: Autogenerate and install ebuilds for C
 app-portage/g-octave 0.4.1-r7: A tool that generates and installs ebuilds for Octave-Forge
 app-portage/g-sorcery 0.2.1-r1: framework for ebuild generators
 app-portage/gander 0.0.1: Statistic submission client for Goose (anser.gentoo.org)
-app-portage/gemato 14.4-r1 14.5 15.0 15.1 15.2 16.0 9999: Stand-alone Manifest generation & verification tool
+app-portage/gemato 14.4-r1 14.5 15.0 15.1 15.2 16.0 16.1 9999: Stand-alone Manifest generation & verification tool
 app-portage/genlop 0.30.9-r1 0.30.10-r1 0.30.10-r2 9999: A nice emerge.log parser
 app-portage/gentoolkit 0.4.6 0.4.7 0.4.8 0.5.0 9999: Collection of administration scripts for Gentoo
 app-portage/gentoopm 0.3.1 9999: A common interface to Gentoo package managers
@@ -5249,7 +5249,7 @@ dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL lib
 dev-libs/botan 2.9.0 2.14.0-r1 2.15.0: C++ crypto library
 dev-libs/boxfort 0.0.1_pre20200110: Convenient & cross-platform sandboxing C library
 dev-libs/busybee 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
-dev-libs/c-blosc 1.11.2 1.19.0 1.20.0: Blocking, shuffling and lossless compression library
+dev-libs/c-blosc 1.11.2 1.19.0 1.20.0 1.20.1: Blocking, shuffling and lossless compression library
 dev-libs/c-capnproto 0.3: C library/compiler for the Cap'n Proto serialization/RPC protocol
 dev-libs/caliper 1.5.0: Application Introspection System
 dev-libs/capnproto 0.6.0 0.6.1 0.7.0 0.8.0: RPC/Serialization system with capabilities support
@@ -8502,7 +8502,7 @@ dev-python/nose2 0.9.1-r1: Next generation unittest with plugins
 dev-python/nose_fixes 1.3: A plugin to make nose behave better
 dev-python/nose_warnings_filters 0.1.5-r3: A python module to inject warning filters during nosetest
 dev-python/nosexcover 1.0.11-r1: Extends nose.plugins.cover to add Cobertura-style XML reports
-dev-python/notebook 6.0.3 6.1.3 6.1.3-r1: Jupyter Interactive Notebook
+dev-python/notebook 6.0.3 6.1.3 6.1.3-r1 6.1.4: Jupyter Interactive Notebook
 dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
 dev-python/notify2 0.3.1-r1: Python interface to DBus notifications.
 dev-python/nototools 0_pre20200207: Noto fonts support tools and scripts plus web site generation
@@ -8613,7 +8613,7 @@ dev-python/pika 0.13.0: Pure-Python implementation of the AMQP
 dev-python/pikepdf 1.18.0: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 6.2.2 7.0.0 7.1.2 7.2.0: Python Imaging Library (fork)
-dev-python/pip 20.0.2 20.1.1 20.2.2: Installs python packages -- replacement for easy_install
+dev-python/pip 20.0.2 20.1.1 20.2.2 20.2.3: Installs python packages -- replacement for easy_install
 dev-python/pipenv 2020.6.2: Python Development Workflow for Humans
 dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requirements.txt file
 dev-python/pkgconfig 1.5.1: Interface Python with pkg-config
@@ -9221,7 +9221,7 @@ dev-python/typing-extensions 3.7.4.1 3.7.4.2 3.7.4.3: Type Hint extensions from 
 dev-python/tzlocal 2.1: tzinfo object for the local timezone
 dev-python/u-msgpack 2.6.0 2.7.0: A portable, lightweight MessagePack serializer and deserializer
 dev-python/ubelt 0.8.8: A stdlib like feel, and extra batteries. Hashing, Caching, Timing, Progress
-dev-python/ujson 1.35-r1 3.0.0 3.1.0: Ultra fast JSON encoder and decoder for Python
+dev-python/ujson 1.35-r1 3.0.0 3.1.0 3.2.0: Ultra fast JSON encoder and decoder for Python
 dev-python/uncertainties 3.1.4: Python module for calculations with uncertainties
 dev-python/unicodecsv 0.14.1-r1: Drop-in replacement for python stdlib csv module supporting unicode
 dev-python/unidecode 0.04.21 1.1.1: Module providing ASCII transliterations of Unicode text
@@ -18190,7 +18190,7 @@ x11-apps/editres 1.0.7: a dynamic resource editor for X Toolkit applications
 x11-apps/fonttosfnt 1.1.0: X.Org fonttosfnt application
 x11-apps/fslsfonts 1.0.5-r1: list fonts served by X font server
 x11-apps/fstobdf 1.0.6: generate BDF font from X font server
-x11-apps/iceauth 1.0.8: ICE authority file utility
+x11-apps/iceauth 1.0.8 1.0.8-r1: ICE authority file utility
 x11-apps/ico 1.0.5: animate an icosahedron or other polyhedron
 x11-apps/igt-gpu-tools 1.25 9999: Intel GPU userland tools
 x11-apps/listres 1.0.4: list resources in widgets
@@ -18200,7 +18200,7 @@ x11-apps/mkfontscale 1.2.1: create an index of scalable font files for X
 x11-apps/oclock 1.0.4: round X clock
 x11-apps/radeon-profile 20200504-r1 20200824 99999999: Read current clocks of ATi/AMD Radeon cards
 x11-apps/radeon-profile-daemon 20190603-r1 99999999: Daemon for radeon-profile GUI
-x11-apps/rgb 1.0.6: uncompile an rgb color-name database
+x11-apps/rgb 1.0.6 1.0.6-r1: uncompile an rgb color-name database
 x11-apps/rstart 1.0.5-r1: X.Org rstart application
 x11-apps/scripts 1.0.1-r1: start an X program on a remote machine
 x11-apps/sessreg 1.1.2: manage utmp/wtmp entries for non-init clients
@@ -18249,7 +18249,7 @@ x11-apps/xlsclients 1.1.4: X.Org xlsclients application
 x11-apps/xlsfonts 1.0.6: X.Org xlsfonts application
 x11-apps/xmag 1.0.6: X.Org xmag application
 x11-apps/xman 1.1.5: Manual page display program for the X Window System
-x11-apps/xmessage 1.0.5: display a message or query in a window (X-based /bin/echo)
+x11-apps/xmessage 1.0.5 1.0.5-r1: display a message or query in a window (X-based /bin/echo)
 x11-apps/xmodmap 1.0.10: utility for modifying keymaps and pointer button mappings in X
 x11-apps/xmore 1.0.3: plain text display program for the X Window System
 x11-apps/xpr 1.0.5: X.Org xpr application
@@ -18328,11 +18328,11 @@ x11-libs/libFS 1.0.8: X.Org FS library
 x11-libs/libGLw 8.0.0-r1: Mesa GLw library
 x11-libs/libICE 1.0.10: X.Org Inter-Client Exchange library
 x11-libs/libQGLViewer 2.7.1 2.7.2: C++ library based on Qt that eases the creation of OpenGL 3D viewers
-x11-libs/libSM 1.2.3: X.Org Session Management library
+x11-libs/libSM 1.2.3 1.2.3-r1: X.Org Session Management library
 x11-libs/libX11 1.6.9 1.6.10 1.6.11 1.6.12: X.Org X11 library
 x11-libs/libXScrnSaver 1.2.3: X.Org XScrnSaver library
 x11-libs/libXau 1.0.9: X.Org X authorization library
-x11-libs/libXaw 1.0.13-r1: X.Org Xaw library
+x11-libs/libXaw 1.0.13-r1 1.0.13-r2: X.Org Xaw library
 x11-libs/libXaw3d 1.6.3: X.Org Xaw3d library
 x11-libs/libXaw3dXft 1.6.2d: Xaw3dXft library
 x11-libs/libXcomposite 0.4.5: X.Org Xcomposite library
@@ -18340,23 +18340,23 @@ x11-libs/libXcursor 1.2.0: X.Org Xcursor library
 x11-libs/libXdamage 1.1.5: X.Org Xdamage library
 x11-libs/libXdmcp 1.1.3: X.Org X Display Manager Control Protocol library
 x11-libs/libXext 1.3.4: X.Org Xext library
-x11-libs/libXfixes 5.0.3-r1: X.Org Xfixes library
+x11-libs/libXfixes 5.0.3-r1 5.0.3-r2: X.Org Xfixes library
 x11-libs/libXfont2 2.0.4 9999: X.Org Xfont library
 x11-libs/libXft 2.3.3: X.Org Xft library
 x11-libs/libXi 1.7.10: X.Org Xi library
-x11-libs/libXinerama 1.1.4: X.Org Xinerama library
+x11-libs/libXinerama 1.1.4 1.1.4-r1: X.Org Xinerama library
 x11-libs/libXmu 1.1.3: X.Org Xmu library
 x11-libs/libXpm 3.5.13: X.Org Xpm library
 x11-libs/libXpresent 1.0.0-r1: X Present Extension C Library
 x11-libs/libXrandr 1.5.2: X.Org Xrandr library
-x11-libs/libXrender 0.9.10-r1: X.Org Xrender library
+x11-libs/libXrender 0.9.10-r1 0.9.10-r2: X.Org Xrender library
 x11-libs/libXres 1.2.0-r1: X.Org XRes library
 x11-libs/libXt 1.2.0: X.Org X Toolkit Intrinsics library
 x11-libs/libXtst 1.2.3-r1: X.Org Xlib-based client API for the XTEST & RECORD extensions library
-x11-libs/libXv 1.0.11-r1: X.Org Xv library
+x11-libs/libXv 1.0.11-r1 1.0.11-r2: X.Org Xv library
 x11-libs/libXvMC 1.0.12: X.Org XvMC library
 x11-libs/libXxf86dga 1.1.5: X.Org Xxf86dga library
-x11-libs/libXxf86vm 1.1.4-r1: X.Org Xxf86vm library
+x11-libs/libXxf86vm 1.1.4-r1 1.1.4-r2: X.Org Xxf86vm library
 x11-libs/libast 0.7-r2: LIBrary of Assorted Spiffy Things
 x11-libs/libclxclient 3.9.2: C++ wrapper library around the X Window System API
 x11-libs/libcryptui 3.12.2-r1: User interface components for OpenPGP
