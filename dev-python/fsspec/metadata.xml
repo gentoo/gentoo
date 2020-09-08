@@ -4,4 +4,5 @@
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>

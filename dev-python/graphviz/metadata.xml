@@ -10,6 +10,7 @@
     descriptions in the DOT language of the Graphviz graph drawing
     software (repo) from Python.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">graphviz</remote-id>
   </upstream>

@@ -14,6 +14,7 @@
 		the creation and analysis of binary data
 		as simple and natural as possible
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="google-code">python-bitstring</remote-id>
 		<remote-id type="github">scott-griffiths/bitstring</remote-id>
