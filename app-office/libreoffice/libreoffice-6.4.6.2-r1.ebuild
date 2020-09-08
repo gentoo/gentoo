@@ -268,6 +268,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 
+	# 6.4 branch (in 6.4.7)
+	"${FILESDIR}/${P}-qaccessiblecache-assert.patch" # bug 680186
+
 	# git master
 	"${FILESDIR}/${PN}-6.4.3.2-boost-1.73.patch" # bug 721806
 	"${FILESDIR}/${PN}-6.4.6.2-llvm-10.patch" # bug 713574
