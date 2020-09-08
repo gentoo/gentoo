@@ -6522,7 +6522,7 @@ dev-perl/File-chdir 0.101.100: An alternative to File::Spec and CWD
 dev-perl/File-chmod 0.420.0 0.420.0-r1: Implements symbolic and ls chmod modes
 dev-perl/File-pushd 1.14.0 1.16.0: Change directory temporarily for a limited scope
 dev-perl/FileHandle-Unget 0.162.800 0.163.400: A FileHandle which supports ungetting of multiple bytes
-dev-perl/Filesys-Df 0.920.0-r2: Disk free based on Filesys::Statvfs
+dev-perl/Filesys-Df 0.920.0-r2 0.920.0-r3: Disk free based on Filesys::Statvfs
 dev-perl/Filesys-DiskSpace 0.50.0-r2: Disk space information
 dev-perl/Filesys-Notify-Simple 0.120.0: Simple and dumb file system watcher
 dev-perl/Filesys-SmbClient 3.200.0-r3: Provide Perl API for libsmbclient.so
