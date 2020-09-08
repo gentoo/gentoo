@@ -263,4 +263,3 @@ src_install() {
 		"${ED}"/usr/include/mozjs-${MY_MAJOR}/js-config.h \
 		|| die
 }
-
