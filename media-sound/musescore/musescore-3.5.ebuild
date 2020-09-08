@@ -10,10 +10,9 @@ inherit cmake xdg check-reqs
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${PN}/MuseScore.git"
-	KEYWORDS="amd64 x86"
 else
 	SRC_URI="https://github.com/musescore/MuseScore/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 x86"
+	KEYWORDS="amd64 ~arm64 x86"
 	S="${WORKDIR}/MuseScore-${PV}"
 fi
 
