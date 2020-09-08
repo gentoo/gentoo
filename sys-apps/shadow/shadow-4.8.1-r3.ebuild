@@ -43,6 +43,9 @@ RDEPEND="${COMMON_DEPEND}
 	pam? ( >=sys-auth/pambase-20150213 )
 	su? ( !sys-apps/util-linux[su(-)] )
 "
+PDEPEND="
+	acct-group/mail
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.1.3-dots-in-usernames.patch"
