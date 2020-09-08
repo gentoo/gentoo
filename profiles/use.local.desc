@@ -1636,6 +1636,8 @@ dev-haskell/httpd-shed:network-bsd - Get Network.BSD from the network-bsd packag
 dev-haskell/httpd-shed:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/hxt:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/icalendar:network-uri - use network-uri package
+dev-haskell/io-streams:network - Include network support
+dev-haskell/io-streams:zlib - Include zlib support
 dev-haskell/json:mapdict - Encode Haskell maps as JSON dicts
 dev-haskell/json:parsec - Add support for parsing with Parsec
 dev-haskell/json:pretty - Add support for using pretty printing combinators
