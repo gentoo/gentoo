@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: oasis.eclass
@@ -6,7 +6,7 @@
 # maintainer-needed@gentoo.org
 # @AUTHOR:
 # Original Author: Alexis Ballier <aballier@gentoo.org>
-# @SUPPORTED_EAPIS: 3 4 5 6 7
+# @SUPPORTED_EAPIS: 3 4 5
 # @BLURB: Provides common ebuild phases for oasis-based packages.
 # @DESCRIPTION:
 # Provides common ebuild phases for oasis-based packages.
@@ -51,6 +51,7 @@
 
 inherit multilib findlib eutils base
 
+# Implicitly limited to EAPI 5 or earlier because of base.eclass
 case ${EAPI:-0} in
 	0|1|2) die "You need at least EAPI-3 to use oasis.eclass";;
 	3|4) RDEPEND=">=dev-lang/ocaml-3.12[ocamlopt?]";;
