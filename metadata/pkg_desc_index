@@ -13671,7 +13671,7 @@ media-radio/tlf 1.4.1: Console-mode amateur radio contest logger
 media-radio/tqsl 2.3.1 2.4.1 2.4.3 2.5.1: ARRL Logbook of the World
 media-radio/tucnak 4.21 4.22: Amateur Radio VHF Contest Logbook
 media-radio/unixcw 3.5.1-r1: A package of programs that fit together to form a morse code tutor program
-media-radio/wsjtx 2.1.2 2.2.0 2.2.2: Weak signal ham radio communication
+media-radio/wsjtx 2.1.2 2.2.2: Weak signal ham radio communication
 media-radio/xastir 2.1.6: X Amateur Station Tracking and Information Reporting
 media-radio/xdx 2.5.0: a GTK+ TCP/IP DX-cluster and ON4KST chat client
 media-radio/xlog 2.0.17 2.0.19: An amateur radio logging program
