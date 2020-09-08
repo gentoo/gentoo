@@ -445,6 +445,14 @@ qemu_src_configure() {
 			use_enable "$@"
 		fi
 	}
+	# Ennable option only for softmmu build, but not 'user' or 'tools'
+	conf_softmmu() {
+		if [[ ${buildtype} == "softmmu" ]] ; then
+			use_enable "$@"
+		else
+			echo "--disable-${2:-$1}"
+		fi
+	}
 	conf_opts+=(
 		$(conf_notuser accessibility brlapi)
 		$(conf_notuser aio linux-aio)
@@ -473,7 +481,7 @@ qemu_src_configure() {
 		$(conf_notuser rbd)
 		$(conf_notuser sasl vnc-sasl)
 		$(conf_notuser sdl)
-		$(conf_notuser sdl-image)
+		$(conf_softmmu sdl-image)
 		$(conf_notuser seccomp)
 		$(conf_notuser slirp slirp system)
 		$(conf_notuser smartcard)
