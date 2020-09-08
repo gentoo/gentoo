@@ -1,13 +1,12 @@
 BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=configure prepare unpack
-DEPEND=sys-devel/bc
 DESCRIPTION=Utilities for the maintainance of the IBM and Apple PowerPC platforms
 EAPI=7
 HOMEPAGE=https://github.com/ibm-power-utilities/powerpc-utils
 IUSE=+rtas
 LICENSE=GPL-2+
 PROPERTIES=live
-RDEPEND=sys-devel/bc !sys-apps/powerpc-utils rtas? ( >=sys-libs/librtas-2.0.2 )
+RDEPEND=!sys-apps/powerpc-utils rtas? ( >=sys-libs/librtas-2.0.2 )
 SLOT=0
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=a63a6633df6fee3f389fa93a663f355c
+_md5_=f9e413bdbd15e5ef28b1965ecd2641a5
