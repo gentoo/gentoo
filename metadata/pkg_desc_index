@@ -10252,8 +10252,8 @@ dev-ruby/ruby-opengl 0.10.0: OpenGL / GLUT bindings for ruby
 dev-ruby/ruby-openid 2.9.2: A robust library for verifying and serving OpenID identities
 dev-ruby/ruby-pango 3.3.2 3.3.6 3.3.7 3.4.3: Ruby Pango bindings
 dev-ruby/ruby-poppler 3.3.2 3.3.6 3.3.7 3.4.3: Ruby poppler-glib bindings
-dev-ruby/ruby-prof 0.18.0: A module for profiling Ruby code
-dev-ruby/ruby-progressbar 1.10.0 1.10.1 1.10.1-r1: A Text Progress Bar Library for Ruby
+dev-ruby/ruby-prof 0.18.0 1.4.1: A module for profiling Ruby code
+dev-ruby/ruby-progressbar 1.10.1 1.10.1-r1: A Text Progress Bar Library for Ruby
 dev-ruby/ruby-rc4 0.1.5-r2: A pure Ruby implementation of the Rc4 algorithm
 dev-ruby/ruby-romkan 0.4-r6: A Romaji <-> Kana conversion library for Ruby
 dev-ruby/ruby-rsvg 3.3.2 3.3.6 3.3.7 3.4.3: Ruby bindings for librsvg
@@ -15609,7 +15609,7 @@ net-wireless/hostapd 2.9-r1 2.9-r2 9999: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/inspectrum 0.2.2 9999: Tool for analysing captured signals from software-defined radio receivers
 net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 4.9 4.14 5.0.1 5.3 5.4: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
-net-wireless/iwd 1.5 1.6 1.7 1.7-r1 1.8 1.8-r1 1.8-r2 9999: Wireless daemon for linux
+net-wireless/iwd 1.8-r3 1.9 9999: Wireless daemon for linux
 net-wireless/jackit 0.0_p20170918-r1: Exploit Code for Mousejack
 net-wireless/kismet 2016.07.1-r2 2020.04.3 2020.09.1 9999: IEEE 802.11 wireless LAN sniffer
 net-wireless/kismet-rest 2019.05.02 9999: Kismet REST Python API
