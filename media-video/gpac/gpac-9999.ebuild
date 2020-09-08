@@ -64,7 +64,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.8.1-configure.patch"
-	"${FILESDIR}/zlib.patch"
+	"${FILESDIR}/${PN}-1.0.0-zlib-compile.patch"
 )
 
 DOCS=(
