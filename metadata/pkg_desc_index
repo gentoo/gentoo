@@ -13924,7 +13924,7 @@ media-sound/qastools 0.22.0 0.23.0: Qt5 GUI ALSA tools: mixer, configuration bro
 media-sound/qjackctl 0.6.2 0.6.3 9999: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiarp 0.6.5: Arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
-media-sound/qmmp 1.3.2-r1 1.3.7 1.4.0 1.4.1 9999: Qt5-based audio player with winamp/xmms skins support
+media-sound/qmmp 1.3.2-r1 1.3.7 1.4.1 9999: Qt5-based audio player with winamp/xmms skins support
 media-sound/qsampler 0.5.6 0.6.3 9999: Graphical frontend to the LinuxSampler engine
 media-sound/qsynth 0.6.2 0.6.3 9999: Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
@@ -14565,7 +14565,7 @@ net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.9.0 3.9.2 3.10.0: A framework for managing DNS information
 net-dns/pdns 4.3.0: The PowerDNS Daemon
-net-dns/pdns-recursor 4.3.3: The PowerDNS Recursor
+net-dns/pdns-recursor 4.3.3 4.3.4: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1 1.2.9a-r2: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998b-r2: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.5 1.1.6: Wrapper for DNS name resolving or DNS faking
