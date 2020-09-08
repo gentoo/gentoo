@@ -28,8 +28,8 @@ COMMON_DEPEND="sys-process/numactl"
 RDEPEND="${COMMON_DEPEND}"
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/roct-thunk-interface-${PV}
-	>=dev-libs/rocm-device-libs-${PV}
-	app-editors/vim-core"
+	>=dev-libs/rocm-device-libs-${PV}"
+BDEPEND="	app-editors/vim-core"
 	# vim-core is needed for "xxd"
 
 src_prepare() {
