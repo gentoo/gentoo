@@ -1,5 +1,6 @@
 BDEPEND=app-admin/chrpath
-DEFINED_PHASES=install postinst postrm prepare unpack
+DEFINED_PHASES=install postinst postrm preinst prepare unpack
+DEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Allows you to send and receive messages of Signal Messenger on your computer
 EAPI=7
 HOMEPAGE=https://signal.org/ https://github.com/signalapp/Signal-Desktop
@@ -8,6 +9,6 @@ LICENSE=GPL-3 MIT MIT-with-advertising BSD-1 BSD-2 BSD Apache-2.0 ISC openssl ZL
 RDEPEND=app-accessibility/at-spi2-atk app-accessibility/at-spi2-core dev-libs/atk dev-libs/expat dev-libs/glib dev-libs/nspr dev-libs/nss media-libs/alsa-lib media-libs/mesa[X(+)] net-print/cups sys-apps/dbus[X] x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:3[X] x11-libs/libX11 x11-libs/libxcb x11-libs/libXcomposite x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXrandr x11-libs/libXrender x11-libs/libXScrnSaver x11-libs/libXtst x11-libs/pango
 RESTRICT=splitdebug
 SLOT=0
-SRC_URI=https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop/signal-desktop_1.34.5_amd64.deb
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	optfeature	6c9aa35fc16df43d7142ef2660e00e25	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	unpacker	8ee8c1a2f31437d1766aac890d07a7f4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=fd6dff913d70be2f6cb322406dd23fc3
+SRC_URI=https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop/signal-desktop_1.35.1_amd64.deb
+_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	optfeature	6c9aa35fc16df43d7142ef2660e00e25	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	unpacker	8ee8c1a2f31437d1766aac890d07a7f4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=ccd805858d6cfec9fbca0cf267f5c8ca

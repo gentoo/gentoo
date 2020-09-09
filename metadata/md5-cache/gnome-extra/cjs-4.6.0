@@ -1,0 +1,15 @@
+BDEPEND=sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DEFINED_PHASES=configure install prepare test
+DEPEND=dev-lang/spidermonkey:52 >=dev-libs/glib-2.42:2 >=dev-libs/gobject-introspection-1.41.4:= sys-libs/readline:0= dev-libs/libffi:0= cairo? ( x11-libs/cairo[X,glib] ) gtk? ( x11-libs/gtk+:3 ) sys-devel/autoconf-archive test? ( sys-apps/dbus )
+DESCRIPTION=Linux Mint's fork of gjs for Cinnamon
+EAPI=7
+HOMEPAGE=https://projects.linuxmint.com/cinnamon/
+IUSE=+cairo examples gtk test test
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT || ( MPL-1.1 LGPL-2+ GPL-2+ )
+RDEPEND=dev-lang/spidermonkey:52 >=dev-libs/glib-2.42:2 >=dev-libs/gobject-introspection-1.41.4:= sys-libs/readline:0= dev-libs/libffi:0= cairo? ( x11-libs/cairo[X,glib] ) gtk? ( x11-libs/gtk+:3 )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/linuxmint/cjs/archive/4.6.0.tar.gz -> cjs-4.6.0.tar.gz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	virtualx	e49dbce7ac14426e1155497476915307	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=22c17df47983fc6d08f7b24ac7bb930e
