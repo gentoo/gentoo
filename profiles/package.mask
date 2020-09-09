@@ -38,6 +38,14 @@
 dev-python/backports-unittest-mock
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
+# Multiple unresolved vulnerabilities.  Last release in 2013 (but has
+# some activity in git).  Not touched by maintainer since 2015.  Stuck
+# on Python 2 (bug #735522) with incorrect eclass usage (bug #710258).
+# Apparently broken with openssl-1.1 (bug #674246).
+# Removal in 30 days.  Bug #715204.
+www-servers/cherokee
+
+# Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # Last release in 2008.  Fails to build with gcc-10 (bug #706712).
 # Not ported to Python 3 (bug #735226).  The current revision
 # is misconfigured by default (bug #481454), and the newer revision
