@@ -15639,7 +15639,7 @@ net-wireless/qradiolink 9999: Multimode SDR experimentation GUI for GNUradio
 net-wireless/reaver 1.6.5: Brute force attack against Wifi Protected Setup
 net-wireless/rfcat 0.0.170508 0.0.190423 9999: The swiss army knife of subGHz
 net-wireless/rfkill 0.5-r2 0.5-r3: Tool to read and control rfkill status through /dev/rfkill
-net-wireless/rtl-sdr 0.5.3_p20170919 0.5.4 0.6.0-r1 9999: turns your Realtek RTL2832 based DVB dongle into a SDR receiver
+net-wireless/rtl-sdr 0.5.3_p20170919 0.5.4 0.6.0-r1 0.6.0_p2020802 9999: turns your Realtek RTL2832 based DVB dongle into a SDR receiver
 net-wireless/rtl_433 0.1_p20190709-r1 20.02_p20200327 9999: Decode OOK modulated signals
 net-wireless/rtl_power_fftw 0.0_p20180528 9999: power spectrum for RTLSDR dongles
 net-wireless/sdrplay 2.13.1-r1: SDRplay API/HW driver for all RSPs
