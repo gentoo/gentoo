@@ -2,7 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+
+PYTHON_COMPAT=( python3_{6,7,8,9} )
+# [options.entry_points] is present in setup.cfg but it is empty
+DISTUTILS_USE_SETUPTOOLS=manual
 
 inherit distutils-r1
 
@@ -12,7 +15,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
@@ -29,7 +32,9 @@ RDEPEND="
 	>=dev-python/tempora-1.6[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	>=dev-python/setuptools_scm-3.4.1[${PYTHON_USEDEP}]
+	dev-python/toml[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
@@ -41,10 +46,7 @@ distutils_enable_sphinx docs '>=dev-python/jaraco-packaging-3.2' \
 
 python_test() {
 	# Override pytest options to skip flake8
-	# Skip a test that fails with 3.8 until it is fixed
-	# https://github.com/jaraco/irc/issues/165
 	pytest -vv --override-ini="addopts=--doctest-modules" \
-		--deselect irc/tests/test_client_aio.py::test_privmsg_sends_msg \
 		|| die "Tests failed with ${EPYTHON}"
 }
 
