@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mate.eclass
@@ -120,7 +120,7 @@ mate_src_configure() {
 	local mateconf=()
 
 	# Pass --disable-static whenever possible
-	if ! use_if_iuse static-libs; then
+	if ! in_iuse static-libs || ! use static-libs; then
 		if grep -q "enable-static" "${ECONF_SOURCE:-.}"/configure; then
 			mateconf+=( --disable-static )
 		fi

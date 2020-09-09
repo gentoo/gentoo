@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: chromium-2.eclass
@@ -126,7 +126,7 @@ chromium_pkg_die() {
 	fi
 
 	# No ricer bugs.
-	if use_if_iuse custom-cflags; then
+	if in_iuse custom-cflags && use custom-cflags; then
 		ewarn
 		ewarn "You have enabled the custom-cflags USE flag."
 		ewarn "Please disable it before reporting a bug."
