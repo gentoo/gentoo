@@ -1,0 +1,11 @@
+--- a/scripts/vmd/chemical2vmd.old	2020-09-09 18:40:56.795215443 +0200
++++ b/scripts/vmd/chemical2vmd	2020-09-09 18:41:09.648348701 +0200
+@@ -61,7 +61,7 @@
+ 
+ 
+ # Make a temp. file to store the load command
+-$ENV{'TMPDIR'} = '/usr/tmp' if !$ENV{'TMPDIR'};
++$ENV{'TMPDIR'} = '/tmp' if !$ENV{'TMPDIR'};
+ sub tmpfile {
+     local ($tempfile) = $ENV{'TMPDIR'} . '/chemical2vmd.' . $$;
+     local ($i);

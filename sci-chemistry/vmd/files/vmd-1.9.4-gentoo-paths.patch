@@ -1,0 +1,276 @@
+--- a/bin/vmd.sh.old	2020-09-09 18:02:09.135798193 +0200
++++ b/bin/vmd.sh	2020-09-09 18:37:22.355511675 +0200
+@@ -436,6 +436,7 @@
+ 
+ # set the path to a few external programs
+ # Stride -- used to generate cartoon representations etc.
++export STRIDE_BIN="gentoo-stride"
+ if [ -z "$STRIDE_BIN" ]
+ then
+   if [ -x "$MASTERVMDDIR/stride_$ARCH" ]
+@@ -446,6 +447,7 @@
+ fi
+ 
+ # Surf -- used to generate molecular surfaces
++export SURF_BIN="gentoo-surf"
+ if [ -z "$SURF_BIN" ]
+ then
+   if [ -x "$MASTERVMDDIR/surf_$ARCH" ]
+@@ -456,6 +458,7 @@
+ fi
+ 
+ # Tachyon -- used to generate ray traced graphics
++export TACHYON_BIN="gentoo-tachyon"
+ if [ -z "$TACHYON_BIN" ]
+ then
+   if [ -x "$MASTERVMDDIR/tachyon_$ARCH" ]
+--- a/configure.old	2020-09-09 18:05:55.778655084 +0200
++++ b/configure	2020-09-09 18:38:01.607083112 +0200
+@@ -13,11 +13,10 @@
+ $install_name = "vmd";
+ 
+ # Directory where VMD startup script is installed, should be in users' paths.
+-$install_bin_dir="/usr/local/bin";
++$install_bin_dir="gentoo-bindir";
+ 
+ # Directory where VMD files and executables are installed
+-$install_library_dir="/usr/local/lib/$install_name";
+-
++$install_library_dir="gentoo-libdir/$install_name";
+ 
+ # optionally override hard-coded defaults above with environment variables
+ if ($ENV{VMDINSTALLNAME}) {
+@@ -143,29 +142,6 @@
+ # Configure script code begins here
+ ############################################################################
+ 
+-## Test for existence of a properly compiled plugin tree
+-if (!(-e "plugins")) {
+-  print "\n";
+-  print "VMD plugin directory not found.\n";
+-  print "Please compile the VMD plugins and do 'make distrib' to copy them\n";
+-  print "into a 'plugins' directory linked or located in this directory.\n";
+-  print "Be sure your PLUGINDIR environment variable is set before running\n";
+-  print "'make distrib' in the plugin build area.\n";
+-  print "\n";
+-  die "Halting configuration until VMD plugins are built.\n";
+-} else {
+-  if (!(-e "plugins/include/vmdplugin.h")) {
+-    print "\n";
+-    print "VMD plugin include files or directory not found.\n";
+-    print "Please compile the VMD plugins and do 'make distrib' to copy them\n";
+-    print "into a 'plugins' directory linked or located in this directory.\n";
+-    print "Be sure your PLUGINDIR environment variable is set before running\n";
+-    print "'make distrib' in the plugin build area.\n";
+-    print "\n";
+-    die "Halting configuration until VMD plugins are built.\n";
+-  }
+-} 
+-
+ #################### Parse command line options   ###########
+ # list of allowed architectures
+ @archlist=('AIX6_64', 'ANDROIDARMV7A', 'BLUEGENEQ', 'BLUEWATERS', 'CRAY_XC', 'CRAY_XK', 'FREEBSD', 'FREEBSDAMD64', 'LINUX', 'LINUXAMD64', 'LINUXARM64', 'LINUXCARMA', 'LINUXPPC64', 'MACOSX', 'MACOSXX86', 'MACOSXX86_64', 'OPENPOWER', 'SUMMIT', 'SUMMITDEV', 'SOLARIS2', 'SOLARIS2_64', 'SOLARISX86', 'SOLARISX86_64', 'WIN32', 'WIN64');
+@@ -493,7 +469,7 @@
+ 
+ $arch_cc          = "cc";
+ $arch_ccpp        = "CC";
+-$arch_nvcc        = "/usr/local/cuda-10.2/bin/nvcc";
++$arch_nvcc        = "gentoo-nvcc";
+ $arch_nvccflags   = "-lineinfo --ptxas-options=-v " . 
+                     "-gencode arch=compute_30,code=compute_30 " .
+                     "-gencode arch=compute_30,code=sm_35 " .
+@@ -537,7 +513,7 @@
+ 
+ ################ Plugin options
+ #
+-$plugin_dir	= "../plugins";
++$plugin_dir    = "gentoo-plugindir";
+ $plugin_include = "-I$plugin_dir/include";
+ $plugin_library = "";
+ $plugin_libs    = "";
+@@ -550,7 +526,7 @@
+ @plugin_extra   = ();
+ 
+ if ($config_staticplugin) {
+-  $molfile_dir = "$plugin_dir/$config_arch/molfile";
++  $molfile_dir = "$plugin_dir/compile/lib_LINUX/molfile";
+   $plugin_include .= " -I$molfile_dir";
+   $plugin_library .= " -L$molfile_dir";
+   $plugin_libs    .= " -lmolfile_plugin";
+@@ -715,8 +691,8 @@
+ ################ FLTK GUI
+ $fltk_defines     = "-DVMDGUI -DVMDFLTK";
+ $fltk_dir         = "$vmd_library_dir/fltk";
+-$fltk_include     = "-I$fltk_dir/include";
+-$fltk_library     = "-L$fltk_dir/$config_arch";
++$fltk_include     = "-Igentoo-fltk-include";
++$fltk_library     = "-Lgentoo-fltk-libs";
+ $fltk_libs        = "-lfltk -lX11";
+ #@fltk_cc          = ('forms_ui.c');
+ @fltk_cu          = ();
+@@ -777,8 +753,8 @@
+ if ($config_tk) { $tcl_include .= " -I$stock_tk_include_dir"; }
+ $tcl_library      = "-L$stock_tcl_library_dir";
+ if ($config_tk) { $tcl_library .= " -L$stock_tk_library_dir"; }
+-$tcl_libs         = "-ltcl8.5";  
+-if ($config_tk) { $tcl_libs = "-ltk8.5 -lX11 " . $tcl_libs; }
++$tcl_libs         = "-ltcl";  
++if ($config_tk) { $tcl_libs = "-ltk -lX11 " . $tcl_libs; }
+ 
+ @tcl_cc           = ();
+ @tcl_cu           = ();
+@@ -1289,8 +1265,8 @@
+ # This may be commented out if not required.
+ $libtachyon_defines     = "-DVMDLIBTACHYON";
+ $libtachyon_dir         = "$vmd_library_dir/tachyon";
+-$libtachyon_include     = "-I$libtachyon_dir/include";
+-$libtachyon_library     = "-L$libtachyon_dir/lib_$config_arch";
++$libtachyon_include     = "-Igentoo-libtachyon-include";
++$libtachyon_library     = "-Lgentoo-libtachyon-libs";
+ $libtachyon_libs        = "-ltachyon";
+ @libtachyon_cc          = ();
+ @libtachyon_cu          = ();
+@@ -1541,8 +1517,8 @@
+ #######################
+ $netcdf_defines     = "";
+ $netcdf_dir         = "$vmd_library_dir/netcdf";
+-$netcdf_include     = "-I$netcdf_dir/include";
+-$netcdf_library     = "-L$netcdf_dir/lib_$config_arch";
++$netcdf_include     = "-Igentoo-netcdf-include";
++$netcdf_library     = "-Lgentoo-netcdf-libs";
+ $netcdf_libs        = "-lnetcdf";
+ @netcdf_cc          = ();
+ @netcdf_cu          = ();
+@@ -1595,6 +1571,7 @@
+ #$stock_python_library_dir=$ENV{"PYTHON_LIBRARY_DIR"} || "/usr/local/lib";
+ $stock_python_include_dir=$ENV{"PYTHON_INCLUDE_DIR"} || "$vmd_library_dir/python/lib_$config_arch/include/python2.5";
+ $stock_python_library_dir=$ENV{"PYTHON_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.5/config";
++$stock_python_library=$ENV{"PYTHON_LIBRARY"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.5/config";
+ 
+ #$stock_numpy_include_dir=$ENV{"NUMPY_INCLUDE_DIR"} || "/usr/local/include";
+ #$stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "/usr/local/lib";
+@@ -1604,7 +1581,7 @@
+ $python_defines     = "-DVMDPYTHON";
+ $python_include     = "-I$stock_python_include_dir -I$stock_numpy_include_dir -I$stock_numpy_library_dir";
+ $python_library     = "-L$stock_python_library_dir";
+-$python_libs        = "-lpython2.5 -lpthread";
++$python_libs        = "$stock_python_library -lpthread";
+ @python_h           = ('PythonTextInterp.h',
+                        'VMDTkinterMenu.h',
+ 		       'py_commands.h',
+@@ -2350,8 +2327,8 @@
+ 
+     # XFree 4.0 Direct Rendering Interface and GLX 
+     $opengl_dep_dir         = "/usr/X11R6";
+-    $opengl_dep_include     = "-I$opengl_dep_dir/include";
+-    $opengl_dep_library     = "-L$opengl_dep_dir/lib";
++    $opengl_dep_include     = "-Igentoo-opengl-include";
++    $opengl_dep_library     = "-Lgentoo-opengl-libs";
+     $opengl_dep_libs        = "-lGL"; 
+     # $opengl_dep_libs      = "-L/usr/X11R6/lib -lGL -lXext -lX11";
+ 
+@@ -2381,15 +2358,15 @@
+       $arch_lopts       .= "-i-static ";
+     } else {
+       # compling with GCC
+-      $arch_cc          = "gcc";
+-      $arch_ccpp        = "g++";
++      $arch_cc          = "gentoo-gcc";
++      $arch_ccpp        = "gentoo-g++";
+       $arch_depend_flag = "-MM";
+-      $arch_shld        = "g++ -shared";
++      $arch_shld        = "gentoo-g++ -shared";
+       $arch_shlibname   = "so";
+       $arch_shcppopts   = "-fPIC";
+-      $arch_shldopts    = "";
+-      $arch_opt_flag    = "-m32 -fno-for-scope -Wno-deprecated -Wall -Wno-unknown-pragmas -O3";
+-      $arch_copts       = "-m32 -Wall -Wno-unknown-pragmas -O3";
++      $arch_shldopts    = "gentoo-ldflags";
++      $arch_opt_flag    = "gentoo-cflags";
++      $arch_copts       = "gentoo-cflags";
+ 
+       if ($config_static) {
+         $arch_lopts       = "-static";
+@@ -2407,14 +2384,13 @@
+ 
+     $arch_cppopts     = "";
+     if ($config_cuda) {
+-      $arch_nvcc     = "/usr/local/cuda-4.0/bin/nvcc";
+       $arch_nvccflags  = "--ptxas-options=-v " . 
+                     "-gencode arch=compute_13,code=sm_13 " .
+                     "-gencode arch=compute_20,code=sm_20 " .
+                     "-gencode arch=compute_20,code=compute_20 " .
+                     "--ftz=true ";
+-      $arch_nvccflags .= " --machine 32 -O3 -Xcompiler \"-m32\" $cuda_include";
+-      $cuda_library     = "-L/usr/local/cuda-4.0/lib";
++      $arch_nvccflags .= "gentoo-nvflags $cuda_include";
++      $cuda_library     = "-Lgentoo-cuda-lib";
+       $cuda_libs       = "-Wl,-rpath -Wl,\$\$ORIGIN/ -lcudart";
+     }
+     # this is to make tcl happy
+@@ -2513,7 +2489,7 @@
+ 
+     if ($config_cuda) {
+       $arch_nvccflags   .= " --machine 64 -O3 $cuda_include";
+-      $cuda_library     = "-L/usr/local/cuda-10.2/lib64";
++      $cuda_library     = "-Lgentoo-cuda-lib";
+     }
+ 
+     $arch_lex		= "flex"; # has problems with vendor lex
+@@ -3502,11 +3478,11 @@
+ DEFINES     = $DEFINES
+ 
+ # compiler and compiler directives 
+-CC          = $arch_cc
+-CFLAGS      = $arch_copts -DARCH_$config_arch \$(DEFINES) \$(INCDIRS) $rpm_optflags
++CC          = gentoo-gcc
++CFLAGS      = gentoo-cflags -DARCH_$config_arch \$(DEFINES) \$(INCDIRS) $rpm_optflags
+ 
+-CCPP	    = $arch_ccpp
+-CPPFLAGS    = $arch_opt_flag $arch_cppopts -DARCH_$config_arch \$(DEFINES) \$(INCDIRS) $rpm_optflags
++CCPP        = gentoo-g++
++CPPFLAGS    = gentoo-cxxflags $arch_cppopts -DARCH_$config_arch \$(DEFINES) \$(INCDIRS) $rpm_optflags
+ 
+ NVCC        = $arch_nvcc
+ NVCCFLAGS   = $arch_nvccflags -DARCH_$config_arch \$(DEFINES) \$(INCDIRS)
+@@ -3555,7 +3531,7 @@
+ $config_progname: y.tab.h \$(VMD_OBJS) \$(VMD_PTX)
+ 	\$(ECHO) "Linking " \$\@ "..."; \\
+ 	\$(CD) $vmd_arch_dir ; \\
+-	\$(CCPP) \$(CPPFLAGS) -I$vmd_src_dir -o \$\@ \$(VMD_OBJS) \$(LOADLIBES) ; 
++	\$(CCPP) \$(LDFLAGS) \$(CPPFLAGS) -I$vmd_src_dir -o \$\@ \$(VMD_OBJS) \$(LOADLIBES) ; 
+ 	\$(COMPILERC) \$(RCFLAGS)
+ 
+ install:
+@@ -3596,8 +3572,7 @@
+ 	-\$(COPY) ../data/.vmdrc ../data/.vmdsensors ../data/vmd_completion.dat "$install_library_dir"
+ 	\$(CD) $vmd_bin_dir ; \\
+ 	if [ -f run_vmd_tmp ]; then \$(DELETE) run_vmd_tmp; fi ; \\
+-	if [ ! -x "/bin/csh" ]; then \\
+-		\$(ECHO) "Info: /bin/csh shell not found, installing Bourne shell startup script instead" ; \\
++	if [ -x "/bin/bash" ]; then \\
+ 		\$(ECHO) '#!/bin/sh' >> run_vmd_tmp ; \\
+ 		\$(ECHO) 'defaultvmddir="$install_library_dir"' >> run_vmd_tmp ; \\
+ 		\$(ECHO) 'vmdbasename=vmd' >> run_vmd_tmp ; \\
+--- a/src/Makefile.old	2020-09-09 18:22:46.234818925 +0200
++++ b/src/Makefile	2020-09-09 18:37:22.356511690 +0200
+@@ -647,7 +647,7 @@
+ vmd_LINUXAMD64: y.tab.h $(VMD_OBJS) $(VMD_PTX)
+ 	$(ECHO) "Linking " $@ "..."; \
+ 	$(CD) ../LINUXAMD64 ; \
+-	$(CCPP) $(CPPFLAGS) -I../src -o $@ $(VMD_OBJS) $(LOADLIBES) ; 
++	$(CCPP) $(LDFLAGS) $(CPPFLAGS) -I../src -o $@ $(VMD_OBJS) $(LOADLIBES) ; 
+ 	$(COMPILERC) $(RCFLAGS)
+ 
+ install:
+@@ -660,10 +660,6 @@
+ 	if [ ! -d "/usr/local/lib/vmd"/doc ]; then \
+ 		$(MAKEDIR) "/usr/local/lib/vmd"/doc; \
+ 	fi
+-	-$(COPY) ../Announcement  "/usr/local/lib/vmd"
+-	-$(COPY) ../README        "/usr/local/lib/vmd"
+-	-$(COPY) ../LICENSE       "/usr/local/lib/vmd"
+-	-$(COPY) ../doc/ug.pdf        "/usr/local/lib/vmd"/doc
+ 	if [ -f /usr/local/lib/vmd/vmd_LINUXAMD64 ]; then \
+            $(MOVE) "/usr/local/lib/vmd/vmd_LINUXAMD64" "/usr/local/lib/vmd/OLD_vmd_LINUXAMD64" ; $(DELETE) "/usr/local/lib/vmd/OLD_vmd_LINUXAMD64" ; fi
+ 	-$(COPY) ../LINUXAMD64/vmd_LINUXAMD64 "/usr/local/lib/vmd"
