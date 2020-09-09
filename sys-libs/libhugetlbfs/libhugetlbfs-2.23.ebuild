@@ -21,6 +21,7 @@ DEPEND="test? ( ${PYTHON_DEPS} )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.6-fixup-testsuite.patch
+	"${FILESDIR}"/${PN}-2.23-uncompressed-man-pages.patch
 )
 
 src_prepare() {
