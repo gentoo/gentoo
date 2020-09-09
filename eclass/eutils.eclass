@@ -79,6 +79,9 @@ path_exists() {
 #
 # Note that this function should not be used in the global scope.
 use_if_iuse() {
+	eqawarn "use_if_iuse is deprecated."
+	eqawarn "Define it as a local function, or inline it:"
+	eqawarn "    in_iuse foo && use foo"
 	in_iuse $1 || return 1
 	use $1
 }
