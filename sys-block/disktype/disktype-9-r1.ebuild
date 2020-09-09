@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/disktype/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 arm ~ppc ~sparc x86"
+KEYWORDS="~amd64 arm ~ppc sparc x86"
 
 src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
