@@ -1,0 +1,11 @@
+[Unit]
+Description=Logitech G15 extra-key and LCD manager
+
+[Service]
+Type=forking
+PIDFile=/run/g15daemon.pid
+ExecStart=/usr/sbin/g15daemon
+ExecStop=/usr/sbin/g15daemon -k
+
+[Install]
+WantedBy=multi-user.target
