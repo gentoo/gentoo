@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>hanno@gentoo.org</email>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="designer">Build plugins for <pkg>dev-qt/designer</pkg></flag>
 		<flag name="fox">Use <pkg>x11-libs/fox</pkg> graphical toolkit</flag>
