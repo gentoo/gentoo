@@ -14235,7 +14235,7 @@ net-analyzer/braa 0.82 0.82-r1: Quick and dirty mass SNMP scanner
 net-analyzer/bwbar 1.2.3: The kernel.org "Current bandwidth utilization" bar
 net-analyzer/bwm-ng 0.6.1-r1: Bandwidth Monitor NG is a small and simple console-based bandwidth monitor
 net-analyzer/bwmon 1.3-r2: Simple ncurses bandwidth monitor
-net-analyzer/bwping 1.17: A tool to measure bandwidth and RTT between two hosts using ICMP
+net-analyzer/bwping 1.17 2.0: A tool to measure bandwidth and RTT between two hosts using ICMP
 net-analyzer/cacti 1.2.13 1.2.14: Cacti is a complete frontend to rrdtool
 net-analyzer/cacti-spine 1.2.13 1.2.14 99999: Spine is a fast poller for Cacti (formerly known as Cactid)
 net-analyzer/calamaris 2.59 2.99.4.0 2.99.4.5: parses logfiles of a wide variety of web proxy servers and generates reports
@@ -18112,7 +18112,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r3: a free, open source web browser
 www-client/opera 70.0.3728.154: A fast and secure web browser
 www-client/opera-beta 71.0.3770.50 71.0.3770.81 71.0.3770.97: A fast and secure web browser
-www-client/opera-developer 72.0.3779.0 72.0.3784.0 72.0.3791.0 72.0.3798.0: A fast and secure web browser
+www-client/opera-developer 72.0.3779.0 72.0.3784.0 72.0.3791.0 72.0.3798.0 72.0.3807.0: A fast and secure web browser
 www-client/otter 1.0.01 1.0.01-r1 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.12.0 1.13.0 1.13.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
@@ -18121,7 +18121,7 @@ www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 3.3.2022.39_p1: A browser for our friends
-www-client/vivaldi-snapshot 3.4.2035.3_p1: A browser for our friends
+www-client/vivaldi-snapshot 3.4.2035.3_p1 3.4.2036.3_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.8-r1: AWStats is short for Advanced Web Statistics
