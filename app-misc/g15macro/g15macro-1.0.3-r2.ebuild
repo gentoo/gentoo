@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils
+EAPI=7
+inherit autotools
 
 DESCRIPTION="Macro recording plugin to G15daemon"
 HOMEPAGE="https://sourceforge.net/projects/g15daemon/"
@@ -23,10 +23,14 @@ RDEPEND="${DEPEND}
 	sys-libs/zlib
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-Makefile.am.patch
+	"${FILESDIR}"/${P}-configure.in.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-Makefile.am.patch
-	epatch "${FILESDIR}"/${P}-configure.in.patch
-	mv configure.in configure.ac || die
+	default
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
@@ -36,5 +40,5 @@ src_configure() {
 
 src_install() {
 	default
-	rm -rf "${ED}"/usr/share/doc/${P}
+	rm -rf "${ED}"/usr/share/doc/${P} || die
 }
