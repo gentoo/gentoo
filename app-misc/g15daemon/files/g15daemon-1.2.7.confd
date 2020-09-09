@@ -2,7 +2,7 @@
 
 # Key to switch the client-screens. Default is the MR key,
 # Set to "yes" to use L1 key instead (black round key below the LCD, above the multimedia keys).
-CLIENT_SWITCH_L1="no"
+CLIENT_SWITCH_L1="yes"
 
 # Set to "yes" to switch off the lcd backlight when stopping g15daemon.
 BACKLIGHT_OFF="no"
