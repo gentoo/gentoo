@@ -32,6 +32,21 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-09-09)
+# These packages still require Python 3.6.  They are either dead
+# upstream or their maintainers are simply unresponsive.
+# Please do not remove any packages from this list unless you actually
+# port them to Python 3.7 *and* 3.8 (3.9 would also be nice).
+# Removal in 30 days.  Please find relevant bugs on tracker bug #695996.
+app-crypt/acmebot
+app-vim/conque
+dev-python/redlock-py
+dev-python/root_numpy
+dev-python/rootpy
+dev-util/setconf
+sci-misc/vitables
+
+# Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
 # They are either dead upstream, their Python 3 porting efforts are
 # not progressing or their maintainers are simply unresponsive.
