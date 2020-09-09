@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=virtual/libusb:0
 SLOT=0
 SRC_URI=mirror://sourceforge/g15tools/libg15-1.2.7.tar.bz2
-_md5_=25b06f3579de38a2c810184e9065bf0b
+_md5_=9a1ef09fc0454d59ac09e978b429c469

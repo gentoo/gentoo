@@ -1,0 +1,13 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=prepare
+DEPEND=>=app-misc/g15daemon-1.9.0 dev-libs/libg15 dev-libs/libg15render sys-libs/zlib
+DESCRIPTION=A simple message/alert client for G15daemon
+EAPI=7
+HOMEPAGE=https://sourceforge.net/projects/g15daemon/
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=app-misc/g15daemon-1.9.0 dev-libs/libg15 dev-libs/libg15render sys-libs/zlib
+SLOT=0
+SRC_URI=mirror://sourceforge/g15daemon/g15message-1.0.0.tar.bz2
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=abd0fcace9633838e52f70d66cf776f0
