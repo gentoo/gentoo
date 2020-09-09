@@ -7,7 +7,7 @@ inherit multilib
 
 MAIN_PV="$(ver_cut 1-3)"
 if [[ ${PV} = *_beta* ]] || [[ ${PV} = *_rc* ]] ; then
-	MY_PV="${MAIN_PV}_$(ver_cut 5)"
+	MY_PV="${MAIN_PV}_$(ver_cut 5-6)"
 	DEP_PV="${MY_PV}"
 	MY_PV="${MY_PV/beta/BETA}"
 	MY_PV="${MY_PV/rc/RC}"
@@ -25,11 +25,12 @@ SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.vbox-extpac
 
 LICENSE="PUEL"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+[[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
+KEYWORDS="~amd64"
 IUSE=""
 RESTRICT="bindist mirror strip"
 
-RDEPEND="~app-emulation/virtualbox-${DEP_PV}"
+RDEPEND="=app-emulation/virtualbox-${DEP_PV}*"
 
 S="${WORKDIR}"
 
