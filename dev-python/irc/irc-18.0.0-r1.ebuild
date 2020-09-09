@@ -32,7 +32,6 @@ BDEPEND="
 	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
-		dev-python/backports-unittest-mock[${PYTHON_USEDEP}]
 		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
 	)
 "
