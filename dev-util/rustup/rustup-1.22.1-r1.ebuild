@@ -239,7 +239,7 @@ zeroize-1.1.0
 zeroize_derive-1.0.0
 "
 
-inherit bash-completion-r1 cargo
+inherit bash-completion-r1 cargo prefix
 
 HOME_CRATE_COMMIT="a243ee2fbee6022c57d56f5aa79aefe194eabe53"
 
@@ -252,13 +252,13 @@ SRC_URI="https://github.com/rust-lang/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 CC0-1.0 MIT Unlicense ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
-IUSE="libressl"
+IUSE=""
 
+# requires old libressl-2.5, so openssl only for now.
 DEPEND="
 	app-arch/xz-utils
 	net-misc/curl:=[http2,ssl]
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 "
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/rust"
@@ -283,7 +283,7 @@ src_install() {
 	cargo_src_install --features no-self-update
 	einstalldocs
 	exeinto /usr/share/rustup
-	newexe "${FILESDIR}/symlink_rustup.sh" symlink_rustup
+	newexe "$(prefixify_ro "${FILESDIR}"/symlink_rustup.sh)" symlink_rustup
 
 	ln -s "${ED}/usr/bin/rustup-init" rustup || die
 	./rustup completions bash rustup > "${T}/rustup" || die
