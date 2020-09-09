@@ -9,8 +9,6 @@
 if [[ -z ${_WRAPPER_ECLASS} ]]; then
 _WRAPPER_ECLASS=1
 
-inherit eutils      # for emktemp
-
 # @FUNCTION: make_wrapper
 # @USAGE: <wrapper> <target> [chdir] [libpaths] [installpath]
 # @DESCRIPTION:
@@ -20,7 +18,7 @@ inherit eutils      # for emktemp
 # libpaths followed by optionally changing directory to chdir.
 make_wrapper() {
 	local wrapper=$1 bin=$2 chdir=$3 libdir=$4 path=$5
-	local tmpwrapper=$(emktemp)
+	local tmpwrapper="${T}/tmp.wrapper.${wrapper##*/}"
 	has "${EAPI:-0}" 0 1 2 && local EPREFIX=""
 
 	(
