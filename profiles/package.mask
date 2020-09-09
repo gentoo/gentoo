@@ -32,6 +32,40 @@
 
 #--- END OF EXAMPLES ---
 
+# These packages (or package versions) still require Python 2.7.
+# They are either dead upstream, their Python 3 porting efforts are
+# not progressing or their maintainers are simply unresponsive.
+# Please do not remove any packages from this list unless you actually
+# port them to Python 3.
+# Removal in 30 days.  Please find relevant bugs on tracker bug #694800.
+app-misc/mswinurl_launcher
+app-misc/mtail
+app-text/silvercity
+dev-libs/qrosspython
+dev-python/SchemaObject
+dev-python/oauth
+dev-ruby/pygments_rb
+dev-util/doxy-coverage
+dev-util/mpatch
+dev-vcs/cvs2svn
+dev-vcs/gitstats
+games-rpg/adonthell
+games-rpg/wastesedge
+games-strategy/0ad
+media-sound/codecgraph
+net-misc/pssh
+net-misc/ris-linux
+net-wireless/mousejack
+net-wireless/python-wifi
+sci-biology/amos
+sci-biology/embassy-meme
+sci-biology/meme
+sci-biology/shrimp
+sci-misc/gato
+sci-physics/rivet
+sys-cluster/heartbeat
+x11-misc/dsx
+
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages are stuck on Python 2.7.  While the Python dependency
 # is optional, I can't test removing it because the packages fail
