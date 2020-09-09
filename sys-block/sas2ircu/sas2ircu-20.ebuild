@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SLOT="0"
 KEYWORDS="-* ~amd64 ~ppc64 ~x86 ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="efi doc"
 RESTRICT="strip fetch mirror"
-DEPEND=""
+DEPEND="app-arch/unzip"
 RDEPEND=""
 QA_PREBUILT="opt/lsi/sas2ircu boot/efi/sas2ircu.efi"
 
@@ -23,6 +23,7 @@ DISTFILE_DOC=SAS2_IR_User_Guide.pdf
 DOC_PV=12
 
 SRC_URI="
+https://docs.broadcom.com/docs/${DISTFILE_BIN}
 https://docs.broadcom.com/docs-and-downloads/host-bus-adapters/host-bus-adapters-common-files/sas_sata_6g_p20_point6/$DISTFILE_BIN
 doc? ( https://docs.broadcom.com/docs-and-downloads/host-bus-adapters/host-bus-adapters-common-files/SAS2_IR_User_Guide.pdf )
 "
@@ -34,6 +35,7 @@ S="${WORKDIR}/${MY_P}"
 pkg_nofetch() {
 	elog "LSI has a mandatory click-through license on thier binaries."
 	elog "Please visit $HOMEPAGE and download ${DISTFILE_BIN} from the Management Software and Tools section."
+	elog "If the file has been moved again, the license form might be available at https://docs.broadcom.com/docs/${DISTFILE_BIN}"
 	elog "After downloading, move ${DISTFILE_BIN} into your DISTDIR directory"
 	if use doc; then
 		elog "Please also download 'SAS-2 Integrated RAID Configuration Utility User Guide' (${DISTFILE_DOC}) "
