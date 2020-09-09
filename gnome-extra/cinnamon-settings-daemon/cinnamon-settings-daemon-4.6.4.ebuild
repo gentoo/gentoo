@@ -1,10 +1,8 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-GNOME2_LA_PUNT="yes"
-
-inherit autotools eutils gnome2 virtualx
+EAPI=7
+inherit autotools eutils gnome2-utils virtualx xdg
 
 DESCRIPTION="Cinnamon's settings daemon"
 HOMEPAGE="https://projects.linuxmint.com/cinnamon/"
@@ -14,14 +12,14 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+colord cups input_devices_wacom smartcard systemd"
-RESTRICT=test
+RESTRICT="test"
 
 # udev is non-optional since lots of plugins, not just gudev, pull it in
 RDEPEND="
 	>=dev-libs/glib-2.38:2
 	dev-libs/libgudev:=
 	>=gnome-base/libgnomekbd-3.6
-	>=gnome-extra/cinnamon-desktop-4.4:0=
+	>=gnome-extra/cinnamon-desktop-4.6:0=
 	media-libs/fontconfig
 	>=media-libs/lcms-2.2:2
 	media-libs/libcanberra:0=[gtk3]
@@ -53,31 +51,37 @@ RDEPEND="
 	!systemd? ( sys-auth/elogind:0= )
 "
 DEPEND="${RDEPEND}
+	dev-libs/libxml2:2
+	x11-base/xorg-proto
+"
+BDEPEND="
 	dev-util/glib-utils
 	dev-util/gdbus-codegen
-	dev-libs/libxml2:2
 	>=dev-util/intltool-0.37.1
-	x11-base/xorg-proto
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	# Make account-services optional
+	"${FILESDIR}"/${PN}-3.8.0-accountservice.patch
+)
+
 src_prepare() {
-	# make colord and wacom optional
-	eapply "${FILESDIR}"/${PN}-3.0.1-optional.patch
-	eapply "${FILESDIR}"/${PN}-3.8.0-accountservice.patch
-	eapply "${FILESDIR}"/${PN}-4.4.0-systemd.patch
+	xdg_src_prepare
+	eautoreconf
+	gnome2_disable_deprecation_warning
 
 	# Disable broken test
 	sed -e '/g_test_add_func ("\/color\/edid/d' \
 		-i plugins/color/gcm-self-test.c || die
-
-	eautoreconf
-	gnome2_src_prepare
 }
 
 src_configure() {
 	# no point in disabling gudev since other plugins pull it in
-	gnome2_src_configure \
+	econf \
+		--disable-maintainer-mode \
+		--disable-schemas-compile \
+		--enable-compile-warnings=minimum \
 		--disable-static \
 		--enable-gudev \
 		--enable-polkit \
@@ -91,4 +95,20 @@ src_configure() {
 
 src_test() {
 	virtx emake check
+}
+
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete || die
+	dodoc MAINTAINERS
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+	gnome2_schemas_update
+}
+
+pkg_postrm() {
+	xdg_pkg_postrm
+	gnome2_schemas_update
 }

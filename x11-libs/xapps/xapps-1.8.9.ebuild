@@ -8,10 +8,11 @@ VALA_USE_DEPEND="vapigen"
 inherit gnome2-utils vala meson python-r1 xdg-utils
 
 DESCRIPTION="Cross-desktop libraries and common resources"
-HOMEPAGE="https://github.com/linuxmint/xapps/"
+HOMEPAGE="https://github.com/linuxmint/xapp/"
 LICENSE="GPL-3"
 
-SRC_URI="https://github.com/linuxmint/xapps/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/linuxmint/xapp/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/xapp-${PV}"
 KEYWORDS="~amd64 ~x86"
 
 SLOT="0"
@@ -71,7 +72,7 @@ src_install() {
 		einfo "gobject overrides directory: $PYTHON_GI_OVERRIDESDIR"
 		mkdir -p "${ED}/$PYTHON_GI_OVERRIDESDIR/"
 		cp -r "${D}"/pygobject/* "${ED}/$PYTHON_GI_OVERRIDESDIR/" || die
-		python_optimize
+		python_optimize "${ED}/$PYTHON_GI_OVERRIDESDIR/"
 	}
 	python_foreach_impl install_pygobject_override
 	rm -rf "${D}/pygobject" || die

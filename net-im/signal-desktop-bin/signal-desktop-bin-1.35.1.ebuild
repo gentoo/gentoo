@@ -5,7 +5,7 @@ EAPI=7
 
 MY_PN="${PN/-bin/}"
 
-inherit optfeature pax-utils unpacker xdg-utils
+inherit optfeature pax-utils unpacker xdg
 
 DESCRIPTION="Allows you to send and receive messages of Signal Messenger on your computer"
 HOMEPAGE="https://signal.org/
@@ -15,7 +15,6 @@ SRC_URI="https://updates.signal.org/desktop/apt/pool/main/s/${MY_PN}/${MY_PN}_${
 LICENSE="GPL-3 MIT MIT-with-advertising BSD-1 BSD-2 BSD Apache-2.0 ISC openssl ZLIB APSL-2 icu Artistic-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE=""
 
 BDEPEND="app-admin/chrpath"
 RDEPEND="
@@ -57,6 +56,12 @@ QA_PREBUILT="opt/Signal/signal-desktop
 	opt/Signal/libVkICD_mock_icd.so
 	opt/Signal/libvk_swiftshader.so
 	opt/Signal/swiftshader/libGLESv2.so
+	opt/Signal/resources/app.asar.unpacked/node_modules/curve25519-n/build/Release/curve.node
+	opt/Signal/resources/app.asar.unpacked/node_modules/@journeyapps/sqlcipher/lib/binding/electron-v8.3-linux-x64/node_sqlite3.node
+	opt/Signal/resources/app.asar.unpacked/node_modules/zkgroup/node_modules/ref-napi/build/Release/binding.node
+	opt/Signal/resources/app.asar.unpacked/node_modules/ref-napi/build/Release/binding.node
+	opt/Signal/resources/app.asar.unpacked/node_modules/ringrtc/build/linux/libringrtc.node
+	opt/Signal/resources/app.asar.unpacked/node_modules/ffi-napi/build/Release/ffi_bindings.node
 	opt/Signal/resources/app.asar.unpacked/node_modules/sharp/build/Release/sharp.node
 	opt/Signal/resources/app.asar.unpacked/node_modules/sharp/vendor/lib/*
 	opt/Signal/resources/app.asar.unpacked/node_modules/zkgroup/libzkgroup.so"
@@ -93,13 +98,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-
+	xdg_pkg_postinst
 	optfeature "using the tray icon in Xfce desktop environments" xfce-extra/xfce4-statusnotifier-plugin
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
 }
