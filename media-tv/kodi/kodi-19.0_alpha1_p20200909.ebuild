@@ -19,7 +19,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/xbmc/xbmc.git"
 	inherit git-r3
 else
-	GIT_COMMIT="a3d5f733751021dcd172954f5b618934b80a4a55"
+	GIT_COMMIT="eb609cbe43eeacf045ddf1fa303c9224e3ca0799"
 	SRC_URI+=" https://github.com/xbmc/xbmc/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 	S=${WORKDIR}/xbmc-${GIT_COMMIT}
