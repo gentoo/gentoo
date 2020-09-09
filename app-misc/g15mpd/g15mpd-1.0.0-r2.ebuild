@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils
+EAPI=7
+inherit autotools
 
 DESCRIPTION="MPD (music player daemon) plugin to G15daemon"
 HOMEPAGE="https://sourceforge.net/projects/g15daemon/"
@@ -25,13 +25,19 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 
+PATCHES=(
+	"${FILESDIR}/${P}-libmpd.patch"
+	"${FILESDIR}/${P}-cflags-and-lib-fix.patch"
+	"${FILESDIR}/${P}-docdir.patch"
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-libmpd.patch
-	epatch "${FILESDIR}/${PN}-1.0.0-cflags-and-lib-fix.patch"
+	default
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	rm "${D}"/usr/share/doc/${P}/{COPYING,NEWS}
+	default
+	rm "${ED}"/usr/share/doc/${PF}/{COPYING,NEWS} || die
 }
