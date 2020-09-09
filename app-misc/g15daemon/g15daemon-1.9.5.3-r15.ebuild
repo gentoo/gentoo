@@ -13,11 +13,11 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="perl static-libs"
 
 DEPEND="virtual/libusb:0
-	>=dev-libs/libg15-9999
+	>=dev-libs/libg15-1.2.4
 	>=dev-libs/libg15render-1.2
 	perl? (
 		dev-lang/perl
@@ -29,7 +29,6 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}/${P}-forgotten-open-mode.patch"
 	"${FILESDIR}/${P}-overflow-fix.patch"
-	"${FILESDIR}/${P}-g510-keys.patch"
 	"${FILESDIR}/${P}-docdir.patch"
 	"${FILESDIR}/${P}-avoid_bashisms.patch"
 )
