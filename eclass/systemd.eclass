@@ -240,6 +240,8 @@ systemd_install_serviced() {
 # @FUNCTION: systemd_dotmpfilesd
 # @USAGE: <tmpfilesd>...
 # @DESCRIPTION:
+# Deprecated in favor of tmpfiles.eclass.
+#
 # Install systemd tmpfiles.d files. Uses doins, thus it is fatal
 # in EAPI 4 and non-fatal in earlier EAPIs.
 systemd_dotmpfilesd() {
@@ -260,6 +262,8 @@ systemd_dotmpfilesd() {
 # @FUNCTION: systemd_newtmpfilesd
 # @USAGE: <old-name> <new-name>.conf
 # @DESCRIPTION:
+# Deprecated in favor of tmpfiles.eclass.
+#
 # Install systemd tmpfiles.d file under a new name. Uses newins, thus it
 # is fatal in EAPI 4 and non-fatal in earlier EAPIs.
 systemd_newtmpfilesd() {
@@ -435,6 +439,8 @@ systemd_is_booted() {
 # @FUNCTION: systemd_tmpfiles_create
 # @USAGE: <tmpfilesd> ...
 # @DESCRIPTION:
+# Deprecated in favor of tmpfiles.eclass.
+#
 # Invokes systemd-tmpfiles --create with given arguments.
 # Does nothing if ROOT != / or systemd-tmpfiles is not in PATH.
 # This function should be called from pkg_postinst.
@@ -448,7 +454,7 @@ systemd_tmpfiles_create() {
 
 	[[ ${EBUILD_PHASE} == postinst ]] || die "${FUNCNAME}: Only valid in pkg_postinst"
 	[[ ${#} -gt 0 ]] || die "${FUNCNAME}: Must specify at least one filename"
-	[[ ${ROOT} == / ]] || return 0
+	[[ ${ROOT:-/} == / ]] || return 0
 	type systemd-tmpfiles &> /dev/null || return 0
 	systemd-tmpfiles --create "${@}"
 }
