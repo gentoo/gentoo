@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Louis Sautier <sbraz@gentoo.org> (2020-09-09)
+# Masked for removal in 30 days, no revdeps.
+# Backport of a module included in Python >= 3.3.
+dev-python/backports-unittest-mock
+
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # Last release in 2008.  Fails to build with gcc-10 (bug #706712).
 # Not ported to Python 3 (bug #735226).  The current revision
