@@ -34,5 +34,5 @@ src_install() {
 	default
 
 	# no static archives
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -type f -name '*.la' -delete || die
 }

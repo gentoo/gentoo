@@ -1,5 +1,5 @@
---- ./g15daemon-1.9.5.3/g15daemon/utility_funcs.c	2008-01-26 06:02:07.000000000 +0100
-+++ ./g15daemon-1.9.5.3/g15daemon/utility_funcs.c	2009-02-01 17:00:55.203009264 +0100
+--- g15daemon-1.9.5.3/g15daemon/utility_funcs.c
++++ g15daemon-1.9.5.3/g15daemon/utility_funcs.c
 @@ -356,7 +356,7 @@
      config_items_t * item=NULL;
      char line[1024];
