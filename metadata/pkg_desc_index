@@ -616,7 +616,7 @@ app-admin/rcm 1.3.1 1.3.3: rc file (dotfile) management
 app-admin/recursos 2.0-r1: Script to create html and text report about your system
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
 app-admin/restart-services 0.14.1 0.15.2: Tool to manage OpenRC services that need to be restarted
-app-admin/rex 1.12.1 9999: (R)?ex, the friendly automation framework
+app-admin/rex 1.12.1 1.12.2 9999: (R)?ex, the friendly automation framework
 app-admin/rsyslog 8.2004.0 8.2006.0 8.2008.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 0.2.3-r1 1.0.0_rc3 1.0.0_rc3-r1: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer

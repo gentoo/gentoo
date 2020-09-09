@@ -8,4 +8,4 @@ LICENSE=MIT boehm-gc GPL-2+
 SLOT=0
 SRC_URI=https://github.com/ivmai/libatomic_ops/releases/download/v7.6.10/libatomic_ops-7.6.10.tar.gz
 _eclasses_=multibuild	b2c915190b051f55a23b9354b9849847	multilib	2477ebe553d3e4d2c606191fe6c33602	multilib-build	8ad5b5535b73a8971881f09277b939f4	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=fcb9d4b6752f7d508961dc0b8da60352
+_md5_=1325b0a28b6d2c38b64bcc604c684394
