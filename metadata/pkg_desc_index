@@ -1745,7 +1745,6 @@ app-emacs/filladapt 2.12-r1: Filladapt enhances the behavior of Emacs' fill func
 app-emacs/flashcard 2.3.3: An Emacs Lisp package for drilling on questions and answers
 app-emacs/flim 1.14.9-r2 1.14.9_p20190526: A library to provide basic features about message representation or encoding
 app-emacs/folding 2019.0524.1621: A folding-editor-like Emacs minor mode
-app-emacs/ghc-mod 5.4.0.0 5.5.0.0-r1 5.7.0.0: Happy Haskell Programming
 app-emacs/ghub 2.0.1 3.2.0 3.3.0: Minuscule client library for the Git forge APIs
 app-emacs/gnuplot-mode 0.7.0: Gnuplot mode for Emacs
 app-emacs/gnuserv 3.12.8-r5: Attach to an already running Emacs
@@ -3808,11 +3807,11 @@ dev-haskell/aws 0.22-r1: Amazon Web Services (AWS) for Haskell
 dev-haskell/base-compat 0.11.1: A compatibility layer for base
 dev-haskell/base-compat-batteries 0.11.1: base-compat with extra batteries
 dev-haskell/base-noprelude 4.13.0.0: "base" package sans "Prelude" module
-dev-haskell/base-orphans 0.3.2 0.5.4 0.8.2: Backwards-compatible orphan instances for base
-dev-haskell/base-prelude 1.0.1.1 1.3: The most complete prelude formed solely from the "base" package
-dev-haskell/base-unicode-symbols 0.2.2.4 0.2.4.2: Unicode alternatives for common functions and operators
+dev-haskell/base-orphans 0.8.2: Backwards-compatible orphan instances for base
+dev-haskell/base-prelude 1.3: The most complete prelude formed solely from the "base" package
+dev-haskell/base-unicode-symbols 0.2.4.2: Unicode alternatives for common functions and operators
 dev-haskell/base16-bytestring 0.1.1.6: Fast base16 (hex) encoding and decoding for ByteStrings
-dev-haskell/base64-bytestring 1.0.0.1 1.0.0.2 1.0.0.3: Fast base64 encoding and decoding for ByteStrings
+dev-haskell/base64-bytestring 1.0.0.3: Fast base64 encoding and decoding for ByteStrings
 dev-haskell/basement 0.0.11: Foundation scrap box of array & string
 dev-haskell/basic-prelude 0.3.11 0.4.1 0.7.0: An enhanced core prelude; a common foundation for alternate preludes
 dev-haskell/bencode 0.5-r1 0.6.0.0 0.6.1.1: Parser and printer for bencoded data
@@ -3851,7 +3850,6 @@ dev-haskell/bzlib 0.5.0.5 0.5.1.0: Compression and decompression in the bzip2 fo
 dev-haskell/c2hs 0.16.4 0.16.5 0.17.2 0.20.1 0.25.2 0.27.1 0.28.3 0.28.6: C->Haskell FFI tool that gives some cross-language type safety
 dev-haskell/cabal 1.18.1.2 1.18.1.3 1.18.1.5 1.20.0.2 1.22.8.0 1.24.2.0 2.0.0.2 2.4.0.1 3.0.1.0: A framework for packaging Haskell software
 dev-haskell/cabal-doctest 1 1.0.8: A Setup.hs helper for doctests running
-dev-haskell/cabal-helper 0.6.1.0 0.6.3.1 0.7.3.0: Simple interface to some of Cabal's configuration state used by ghc-mod
 dev-haskell/cabal-install 1.24.0.2 3.0.0.0: The command-line interface for Cabal and Hackage
 dev-haskell/cairo 0.12.5.3 0.13.1.1 0.13.3.1 0.13.6.1: Binding to the Cairo library
 dev-haskell/call-stack 0.1.0 0.2.0: Use GHC call-stacks in a backward compatible way
@@ -3974,7 +3972,7 @@ dev-haskell/edisoncore 1.3.1.1 1.3.2.1-r1: A library of efficent, purely-functio
 dev-haskell/edit-distance 0.2.2.1 0.2.2.1-r1: Levenshtein and restricted Damerau-Levenshtein edit distances
 dev-haskell/edit-distance-vector 1.0.0.4: Calculate edit distances and edit scripts between vectors
 dev-haskell/editline 0.2.1.1 0.2.1.1-r1: Bindings to the editline library (libedit)
-dev-haskell/either 4.3.3.2 4.4.1 4.4.1.1 5.0.1.1: An either monad transformer
+dev-haskell/either 5.0.1.1: An either monad transformer
 dev-haskell/ekg 0.4.0.15-r7: Remote monitoring of processes
 dev-haskell/ekg-core 0.1.1.0 0.1.1.1 0.1.1.6: Tracking of system metrics
 dev-haskell/ekg-json 0.1.0.6-r1: JSON encoding of ekg metrics
@@ -3987,7 +3985,7 @@ dev-haskell/enumerator 0.4.20: Reliable, high-performance processing with left-f
 dev-haskell/equivalence 0.2.5 0.3.1 0.3.5: Maintaining an equivalence relation implemented as union-find using STT
 dev-haskell/erf 2.0.0.0-r1: The error function, erf, and related functions
 dev-haskell/errorcall-eq-instance 0.1.0 0.3.0: An orphan Eq instance for ErrorCall
-dev-haskell/errors 1.4.7 2.1.3 2.3.0: Simplified error-handling
+dev-haskell/errors 2.3.0: Simplified error-handling
 dev-haskell/esqueleto 2.4.3-r1 3.3.3.2: Type-safe EDSL for SQL queries on persistent backends
 dev-haskell/exact-pi 0.5.0.1: Exact rational multiples of pi (and integer powers of pi)
 dev-haskell/exceptions 0.3.3 0.6.1 0.8.0.2 0.8.2.1 0.8.3 0.10.4: Extensible optionally-pure exceptions
@@ -4014,7 +4012,7 @@ dev-haskell/fixed 0.2.1.1: Signed 15.16 precision fixed point arithmetic
 dev-haskell/fmlist 0.9 0.9.3: FoldMap lists
 dev-haskell/foldl 1.4.7: Composable, streaming, and efficient left folds
 dev-haskell/foundation 0.0.25: Alternative prelude with batteries and no dependencies
-dev-haskell/free 4.2 4.5 4.9 4.10.0.1 4.11 4.12.4 5.1.3: Monads for free
+dev-haskell/free 5.1.3: Monads for free
 dev-haskell/frown 0.6.2.3: LALR(k) parser generator
 dev-haskell/fsnotify 0.0.11 0.1.0.3 0.2.1 0.3.0.1: Cross platform library for file change notification
 dev-haskell/generic-deriving 1.6.3 1.7.0 1.11.1 1.13.1: Generic programming library for generalised deriving
@@ -4161,8 +4159,8 @@ dev-haskell/js-flot 0.8.3: Obtain minified flot code
 dev-haskell/js-jquery 3.1.1 3.2.1 3.3.1: Obtain minified jQuery code
 dev-haskell/json 0.9.3 0.10: Support for serialising Haskell to and from JSON
 dev-haskell/juicypixels 3.2.5.3 3.2.7 3.2.8 3.3.5: Picture loading/serialization (in png, jpeg, bitmap, gif, tga, tiff and others)
-dev-haskell/kan-extensions 4.2.3 5.0.1 5.2: Kan extensions, lifts, forms of the Yoneda lemma, and (co)density (co)monads
-dev-haskell/keys 3.10.2 3.11 3.12.3: Keyed functors and containers
+dev-haskell/kan-extensions 5.2: Kan extensions, lifts, forms of the Yoneda lemma, and (co)density (co)monads
+dev-haskell/keys 3.12.3: Keyed functors and containers
 dev-haskell/language-bash 0.6.1 0.9.0: Parsing and pretty-printing Bash shell scripts
 dev-haskell/language-c 0.4.7 0.7.1 0.8.3: Analysis and generation of C code
 dev-haskell/language-css 0.0.3: CSS 2.1 syntax
@@ -4222,7 +4220,7 @@ dev-haskell/mmorph 1.0.0 1.0.5 1.0.6 1.0.9 1.1.3: Monad morphisms
 dev-haskell/mockery 0.3.2 0.3.3 0.3.5: Support functions for automated testing
 dev-haskell/mod 0.1.1.0: Fast type-safe modular arithmetic
 dev-haskell/monad-control 0.3.2.2 0.3.3.0 1.0.0.4 1.0.1.0 1.0.2.3: Lift control operations, like exception catching, through monad transformers
-dev-haskell/monad-journal 0.7.1 0.7.2 0.8.1: Pure logger typeclass and monad transformer
+dev-haskell/monad-journal 0.8.1: Pure logger typeclass and monad transformer
 dev-haskell/monad-logger 0.3.17 0.3.18 0.3.20.1 0.3.32: A class of monads which can log messages
 dev-haskell/monad-loops 0.4.3: Monadic loops
 dev-haskell/monad-par 0.3.4.7 0.3.4.8 0.3.5: A library for parallel programming based on a monad
@@ -4305,7 +4303,7 @@ dev-haskell/persistent-test 2.0.3.0: Tests for Persistent
 dev-haskell/pgp-wordlist 0.1.0.2 0.1.0.3: Translate between binary data and a human-readable collection of words
 dev-haskell/pid1 0.1.0.1 0.1.2.0: Do signal handling and orphan reaping for Unix PID1 init processes
 dev-haskell/pipes 4.1.7 4.1.9 4.3.14: Compositional pipelines
-dev-haskell/pointed 4.0 4.1.1 4.2.0.2 5-r1 5.0.1-r1: Pointed and copointed data
+dev-haskell/pointed 5.0.1-r1: Pointed and copointed data
 dev-haskell/polyparse 1.9 1.11 1.13: A variety of alternative parser combinator libraries
 dev-haskell/postgresql-libpq 0.9.4.2-r2: low-level binding to libpq
 dev-haskell/postgresql-simple 0.6.2: Mid-Level PostgreSQL client library
@@ -4322,7 +4320,7 @@ dev-haskell/primitive-addr 0.1.0.2: Addresses to unmanaged memory
 dev-haskell/process-conduit 1.1.0.0-r1 1.2.0.1: Conduits for processes (deprecated)
 dev-haskell/process-extras 0.7.4: Process extras
 dev-haskell/profunctor-extras 3.3.3.1 4.0: This package has been absorbed into profunctors 4.0
-dev-haskell/profunctors 3.3.0.1 4.0.4 4.3.2 4.4.1 5.1.2 5.2 5.5.1: Haskell98 profunctors package
+dev-haskell/profunctors 5.5.1: Haskell98 profunctors package
 dev-haskell/project-template 0.2.0 0.2.0.1: Specify Haskell project templates and generate files
 dev-haskell/psqueue 1.1-r1 1.1.0.1: Priority Search Queue
 dev-haskell/psqueues 0.2.0.3 0.2.2.1 0.2.2.2 0.2.2.3 0.2.7.2: Pure priority search queues
@@ -14894,7 +14892,7 @@ net-libs/libssh2 1.9.0_p20190913 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 0.23 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 1.2.5 1.2.6: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ for *nix
-net-libs/libtorrent-rasterbar 1.1.14 1.2.6 1.2.9: C++ BitTorrent implementation focusing on efficiency and scalability
+net-libs/libtorrent-rasterbar 1.1.14 1.2.6 1.2.9 1.2.10: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libtrace 4.0.10_p1 4.0.11_p1 4.0.12_p1 4.0.13_p1 4.0.14_p1 99999: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.6.25 1.8.7 1.12.1 1.14.0: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.17.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
