@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: l10n.eclass
@@ -13,6 +13,9 @@
 # These are meant to prevent code duplication for such boring tasks as
 # determining the cross-section between the user's set LINGUAS and what
 # is offered by the package.
+
+if [[ -z ${_L10N_ECLASS} ]]; then
+_L10N_ECLASS=1
 
 # @ECLASS-VARIABLE: PLOCALES
 # @DEFAULT_UNSET
@@ -120,3 +123,5 @@ l10n_get_locales() {
 	fi
 	printf "%s" "${locs}"
 }
+
+fi
