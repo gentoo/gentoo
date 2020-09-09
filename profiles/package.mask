@@ -32,6 +32,23 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-09-09)
+# These packages are stuck on Python 2.7.  While the Python dependency
+# is optional, I can't test removing it because the packages fail
+# to build anyway.
+#
+# net-analyzer/mk-livestatus: py3 bug #735394, build failure bug #705430
+# sci-biology/vienna-rna: py3 bug #735438, build failure bug #707158
+# sci-libs/gmsh: py3 bug #735478, build failure bug #708386
+# sys-cluster/ganglia: py3 bug #735496, build failure bug #631270
+# sys-fs/owfs: py3 bug #735502, build failure bug #707438
+net-analyzer/mk-livestatus
+sci-biology/vienna-rna
+sci-libs/gmsh
+sys-cluster/ganglia
+sys-cluster/ganglia-web
+sys-fs/owfs
+
 # Louis Sautier <sbraz@gentoo.org> (2020-09-09)
 # Masked for removal in 30 days, no revdeps.
 # Backport of a module included in Python >= 3.3.
