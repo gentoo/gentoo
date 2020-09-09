@@ -1,7 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="CPU, memory, swap, network stats for G15 Keyboard"
 HOMEPAGE="https://sourceforge.net/projects/g15daemon/"
@@ -18,25 +20,25 @@ RDEPEND=">=app-misc/g15daemon-1.9.0
 	sys-libs/zlib
 	gnome-base/libgtop"
 
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}/${P}-docdir.patch" )
 
 src_prepare() {
-	sh autogen.sh
+	default
+	mv configure.{in,ac} || die
+	eautoreconf
 }
 
 src_configure() {
-	export CPPFLAGS=$CFLAGS
+	export CPPFLAGS="${CFLAGS}"
 	econf
 }
 
-src_compile() {
-	emake
-}
-
 src_install() {
-	emake DESTDIR="${D}" install
-	rm "$D"/usr/share/doc/${P}/{COPYING,NEWS}
+	default
+	rm "${D}"/usr/share/doc/${PF}/{COPYING,NEWS} || die
 
 	newconfd "${FILESDIR}/${PN}-1.9.7.confd" ${PN}
 	newinitd "${FILESDIR}/${PN}-1.9.7.initd" ${PN}
