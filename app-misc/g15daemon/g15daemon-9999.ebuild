@@ -1,14 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 )
 GENTOO_DEPEND_ON_PERL="no"
 ESVN_PROJECT=${PN}/trunk
 ESVN_REPO_URI="https://svn.code.sf.net/p/${PN}/code/trunk/${PN}-wip"
 
-inherit eutils linux-info perl-module python-r1 base subversion autotools
+inherit eutils linux-info perl-module base subversion autotools
 
 DESCRIPTION="Takes control of the G15 keyboard, through the linux kernel uinput device driver"
 HOMEPAGE="https://sourceforge.net/projects/g15daemon/"
@@ -17,7 +16,7 @@ HOMEPAGE="https://sourceforge.net/projects/g15daemon/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="perl python static-libs"
+IUSE="perl static-libs"
 
 DEPEND="virtual/libusb:0
 	>=dev-libs/libg15-9999
@@ -26,10 +25,8 @@ DEPEND="virtual/libusb:0
 		dev-lang/perl
 		dev-perl/GDGraph
 		>=dev-perl/Inline-0.4
-	)
-	python? ( ${PYTHON_DEPS} )"
+	)"
 RDEPEND="${DEPEND}"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.9.5.3-g510-keys.patch"
@@ -67,9 +64,6 @@ src_unpack() {
 	fi
 	if use perl; then
 		unpack "./${P}/lang-bindings/perl-G15Daemon-0.2.tar.gz"
-	fi
-	if use python; then
-		unpack "./${P}/lang-bindings/pyg15daemon-0.0.tar.bz2"
 	fi
 }
 
@@ -144,16 +138,6 @@ src_install() {
 		cd "${WORKDIR}/G15Daemon-0.2"
 		docinto perl
 		perl-module_src_install
-	fi
-
-	if use python; then
-		ebegin "Installing Python Bindings (g15daemon.py)"
-		cd "${WORKDIR}/pyg15daemon"
-
-		python_foreach_impl python_domodule g15daemon.py
-
-		docinto python
-		dodoc AUTHORS
 	fi
 }
 
