@@ -1,0 +1,11 @@
+--- g15mpd-1.0.0/Makefile.am
++++ g15mpd-1.0.0/Makefile.am
+@@ -3,7 +3,7 @@
+ METASOURCES = AUTO
+ bin_PROGRAMS = g15mpd
+ 
+-docdir = $(prefix)/share/doc/$(PACKAGE)-$(VERSION)
++docdir = @docdir@
+ doc_DATA = README ChangeLog AUTHORS NEWS COPYING
+ 
+ LIBS = -lg15daemon_client -lg15render -lX11 -lXtst -lmpd 
