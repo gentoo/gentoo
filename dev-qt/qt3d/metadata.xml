@@ -6,8 +6,7 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<use>
-		<flag name="gamepad">Add support for gamepad hardware via
-			<pkg>dev-qt/qtgamepad</pkg></flag>
+		<flag name="gamepad">Add support for gamepad hardware via <pkg>dev-qt/qtgamepad</pkg></flag>
 		<flag name="qml">Build QML/QtQuick bindings</flag>
 	</use>
 	<upstream>
