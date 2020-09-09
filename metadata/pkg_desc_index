@@ -2151,7 +2151,7 @@ app-i18n/nkf 2.1.4 2.1.5: Network Kanji code conversion Filter with UTF-8/16 sup
 app-i18n/opencc 1.0.5 9999: Libraries for conversion between Traditional and Simplified Chinese
 app-i18n/poedit 2.2.4 2.3.1: GUI gettext translations editor
 app-i18n/pology 0.12-r2 9999: A framework for custom processing of PO files
-app-i18n/pyzy 0.1.0-r2 0.1.0-r3: The Chinese PinYin and Bopomofo conversion library
+app-i18n/pyzy 0.1.0-r3: The Chinese PinYin and Bopomofo conversion library
 app-i18n/qkc 1.00: Quick KANJI code Converter
 app-i18n/rime-data 0.35 0.38.20180515: Data resources for Rime Input Method Engine
 app-i18n/scim 1.4.18: Smart Common Input Method (SCIM) is an Input Method (IM) development platform
