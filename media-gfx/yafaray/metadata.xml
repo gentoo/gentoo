@@ -14,7 +14,6 @@
 		An render engine consists of a "faceless" computer program that interacts with a host 3D application to provide very specific raytracing capabilties "on demand". Blender 3D is the host application of YafaRay.
 	</longdescription>
 	<use>
-		<flag name="blender">Install addon for <pkg>media-gfx/blender</pkg></flag>
 		<flag name="fastmath">Enable mathematic approximations to make code faster</flag>
 		<flag name="fasttrig">Enable trigonometric approximations to make code faster</flag>
 		<flag name="opencv">Use <pkg>media-libs/opencv</pkg></flag>
