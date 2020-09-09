@@ -61,6 +61,7 @@ multilib_src_configure() {
 		$(use_enable threads thread-safety) \
 		$(use_enable valgrind) \
 		--disable-debuginfod \
+		--disable-libdebuginfod \
 		--program-prefix="eu-" \
 		--with-zlib \
 		$(use_with bzip2 bzlib) \
