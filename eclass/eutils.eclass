@@ -22,9 +22,9 @@ _EUTILS_ECLASS=1
 case ${EAPI:-0} in
 	0|1|2|3|4|5|6)
 		inherit desktop edos2unix epatch estack ltprune multilib \
-			preserve-libs toolchain-funcs vcs-clean
+			preserve-libs toolchain-funcs vcs-clean wrapper
 		;;
-	7) inherit edos2unix ;;
+	7) inherit edos2unix wrapper ;;
 	*) die "${ECLASS} is banned in EAPI ${EAPI}" ;;
 esac
 
@@ -110,53 +110,6 @@ strip-linguas() {
 	[[ -n ${nols} ]] \
 		&& einfo "Sorry, but ${PN} does not support the LINGUAS:" ${nols}
 	export LINGUAS=${newls:1}
-}
-
-# @FUNCTION: make_wrapper
-# @USAGE: <wrapper> <target> [chdir] [libpaths] [installpath]
-# @DESCRIPTION:
-# Create a shell wrapper script named wrapper in installpath
-# (defaults to the bindir) to execute target (default of wrapper) by
-# first optionally setting LD_LIBRARY_PATH to the colon-delimited
-# libpaths followed by optionally changing directory to chdir.
-make_wrapper() {
-	local wrapper=$1 bin=$2 chdir=$3 libdir=$4 path=$5
-	local tmpwrapper=$(emktemp)
-	has "${EAPI:-0}" 0 1 2 && local EPREFIX=""
-
-	(
-	echo '#!/bin/sh'
-	if [[ -n ${libdir} ]] ; then
-		local var
-		if [[ ${CHOST} == *-darwin* ]] ; then
-			var=DYLD_LIBRARY_PATH
-		else
-			var=LD_LIBRARY_PATH
-		fi
-		cat <<-EOF
-			if [ "\${${var}+set}" = "set" ] ; then
-				export ${var}="\${${var}}:${EPREFIX}${libdir}"
-			else
-				export ${var}="${EPREFIX}${libdir}"
-			fi
-		EOF
-	fi
-	[[ -n ${chdir} ]] && printf 'cd "%s" &&\n' "${EPREFIX}${chdir}"
-	# We don't want to quote ${bin} so that people can pass complex
-	# things as ${bin} ... "./someprog --args"
-	printf 'exec %s "$@"\n' "${bin/#\//${EPREFIX}/}"
-	) > "${tmpwrapper}"
-	chmod go+rx "${tmpwrapper}"
-
-	if [[ -n ${path} ]] ; then
-		(
-		exeopts -m 0755
-		exeinto "${path}"
-		newexe "${tmpwrapper}" "${wrapper}"
-		) || die
-	else
-		newbin "${tmpwrapper}" "${wrapper}" || die
-	fi
 }
 
 path_exists() {
