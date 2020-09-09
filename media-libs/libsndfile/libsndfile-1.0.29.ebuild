@@ -42,6 +42,11 @@ if [[ ${PV} == *9999 ]]; then
 	"
 fi
 
+PATCHES=(
+	# bug 719020: backported, remove on version bump
+	"${FILESDIR}"/${P}-pointer-aliasing.patch
+)
+
 pkg_setup() {
 	if use test || [[ ${PV} == *9999 ]]; then
 		python-any-r1_pkg_setup
