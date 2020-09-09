@@ -1,7 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="A simple message/alert client for G15daemon"
 HOMEPAGE="https://sourceforge.net/projects/g15daemon/"
@@ -18,3 +20,11 @@ RDEPEND=">=app-misc/g15daemon-1.9.0
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-docdir.patch" )
+
+src_prepare() {
+	default
+	mv configure.{in,ac} || die
+	eautoreconf
+}
