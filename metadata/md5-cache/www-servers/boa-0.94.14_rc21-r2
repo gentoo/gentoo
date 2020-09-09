@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~mips ~ppc ~sparc ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.boa.org/boa-0.94.14rc21.tar.gz
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=ee72daf7b336dbb96d5c5e92cc16c8d6

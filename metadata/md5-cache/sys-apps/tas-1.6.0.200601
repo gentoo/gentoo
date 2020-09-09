@@ -10,5 +10,5 @@ RDEPEND=net-misc/networkmanager sys-apps/ethtool sys-apps/net-tools sys-apps/sma
 RESTRICT=bindist fetch mirror
 SLOT=0
 SRC_URI=TAS_1.6.0_build.200601.zip
-_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	2477ebe553d3e4d2c606191fe6c33602	optfeature	6c9aa35fc16df43d7142ef2660e00e25	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	2477ebe553d3e4d2c606191fe6c33602	optfeature	6c9aa35fc16df43d7142ef2660e00e25	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=f2ec4474bf8345d27685d9c81e543814

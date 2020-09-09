@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.38:2 sys-apps/dbus:= introspection? ( dev-libs/gobject-introspection:= ) kernel_linux? ( dev-libs/libgudev:= virtual/libusb:1 virtual/udev ios? ( >=app-pda/libimobiledevice-1:= >=app-pda/libplist-1:= ) ) selinux? ( sec-policy/selinux-devicekit )
 SLOT=0/3
 SRC_URI=https://gitlab.freedesktop.org/upower/upower/uploads/93cfe7c8d66ed486001c4f3f55399b7a/upower-0.99.11.tar.xz
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=0bbd3cbf0fc296b47dd81c1aca603ee9

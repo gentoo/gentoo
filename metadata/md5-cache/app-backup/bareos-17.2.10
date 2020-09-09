@@ -12,5 +12,5 @@ REQUIRED_USE=static? ( clientonly )
 RESTRICT=mirror
 SLOT=0
 SRC_URI=https://github.com/bareos/bareos/archive/Release/17.2.10.tar.gz -> bareos-17.2.10.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=b617a02cdc52405ce010563d94e5788b

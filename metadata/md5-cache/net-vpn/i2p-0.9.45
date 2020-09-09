@@ -11,5 +11,5 @@ RDEPEND=dev-java/bcprov:1.50 dev-java/jrobin:0 dev-java/slf4j-api:0 dev-java/tom
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://download.i2p2.de/releases/0.9.45/i2psource_0.9.45.tar.bz2
-_eclasses_=java-ant-2	8d9cb415f1ca9fc7ebc5a74bacec300c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	ec7a89849c84f93e9c6db27812923888	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=java-ant-2	8d9cb415f1ca9fc7ebc5a74bacec300c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	ec7a89849c84f93e9c6db27812923888	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=927e81b5d9ebd99ca4aad9a66872c045

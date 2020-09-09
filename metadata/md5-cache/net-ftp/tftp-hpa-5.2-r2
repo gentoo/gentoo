@@ -10,5 +10,5 @@ LICENSE=BSD-4
 RDEPEND=readline? ( sys-libs/readline:0= ) tcpd? ( sys-apps/tcp-wrappers ) selinux? ( sec-policy/selinux-tftp ) !net-ftp/atftp !net-ftp/uftpd server? ( !net-misc/iputils[tftpd(+)] )
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/software/network/tftp/tftp-hpa/tftp-hpa-5.2.tar.xz
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=405619fc410e1dae487de9fa40e2b60e

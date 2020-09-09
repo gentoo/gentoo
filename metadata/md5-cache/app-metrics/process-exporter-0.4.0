@@ -8,5 +8,5 @@ LICENSE=MIT
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/ncabatoff/process-exporter/archive/v0.4.0.tar.gz -> process-exporter-0.4.0.tar.gz
-_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=7de3e728ab2a75d18795369f15194f78
