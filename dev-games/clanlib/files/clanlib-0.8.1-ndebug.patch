@@ -9,8 +9,8 @@ This patch adds the missing declaration, thus make the
 file compile with or without -DNDEBUG.
 
 diff -Naur clanlib-0.7.8-r2.orig/work/ClanLib-0.7.8/Sources/Core/System/Unix/init_linux.cpp clanlib-0.7.8-r2/work/ClanLib-0.7.8/Sources/Core/System/Unix/init_linux.cpp
---- clanlib-0.7.8-r2.orig/work/ClanLib-0.7.8/Sources/Core/System/Unix/init_linux.cpp	2003-09-19 10:33:02.000000000 +0000
-+++ clanlib-0.7.8-r2/work/ClanLib-0.7.8/Sources/Core/System/Unix/init_linux.cpp	2007-10-26 13:36:39.000000000 +0000
+--- a/Sources/Core/System/Unix/init_linux.cpp	2003-09-19 10:33:02.000000000 +0000
++++ b/Sources/Core/System/Unix/init_linux.cpp	2007-10-26 13:36:39.000000000 +0000
 @@ -52,6 +52,7 @@
  	_begin_time = (long) tv.tv_sec*(long) 1000+(long) tv.tv_usec/(long) 1000;
  
