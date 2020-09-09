@@ -3,10 +3,9 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
 WX_GTK_VER=3.0
 
-inherit cmake-utils eutils python-single-r1 wxwidgets multilib flag-o-matic
+inherit cmake-utils eutils wxwidgets multilib flag-o-matic
 
 DESCRIPTION="Math Graphics Library"
 HOMEPAGE="http://mathgl.sourceforge.net/"
@@ -16,7 +15,7 @@ LICENSE="LGPL-3"
 SLOT="0/7.5.0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc fltk gif glut gsl hdf hdf5 jpeg lua mpi octave opengl openmp pdf
-	png python qt5 static-libs threads wxwidgets zlib"
+	png qt5 static-libs threads wxwidgets zlib"
 
 LANGS="ru"
 for l in ${LANGS}; do
@@ -38,15 +37,6 @@ RDEPEND="
 	openmp? ( sys-cluster/openmpi )
 	pdf? ( media-libs/libharu )
 	png? ( media-libs/libpng:0 )
-	python? (
-		$(python_gen_cond_dep '
-			|| (
-				dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
-				dev-python/numpy[${PYTHON_MULTI_USEDEP}]
-			)
-		')
-		${PYTHON_DEPS}
-	)
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
@@ -58,15 +48,13 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	doc? ( app-text/texi2html virtual/texi2dvi )
-	octave? ( dev-lang/swig )
-	python? ( dev-lang/swig )"
+	octave? ( dev-lang/swig )"
 
 REQUIRED_USE="
 	mpi? ( hdf5 )
 	openmp? ( !threads )
 	png? ( zlib )
-	pdf? ( png )
-	python? ( ${PYTHON_REQUIRED_USE} )"
+	pdf? ( png )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-mutex.patch
@@ -74,7 +62,6 @@ PATCHES=(
 
 pkg_setup() {
 	use mpi && export CC=mpicc CXX=mpicxx
-	use python && python-single-r1_pkg_setup
 }
 
 src_unpack() {
@@ -100,9 +87,6 @@ src_prepare() {
 	sed -i -e 's/update-mime-database/true/' udav/CMakeLists.txt || die
 	sed -i -e 's/update-desktop-database/true/' udav/CMakeLists.txt || die
 
-	use python && \
-		append-cppflags \
-		-I"$(${EPYTHON} -c 'import numpy; print(numpy.get_include())')"
 	use wxwidgets && need-wxwidgets unicode
 	cmake-utils_src_prepare
 }
@@ -138,17 +122,11 @@ src_configure() {
 		-Denable-qt5asqt=$(usex qt5)
 		-Denable-pthread=$(usex threads)
 		-Denable-pthr-widget=$(usex threads)
-		-Denable-python=$(usex python)
+		-Denable-python=OFF
 		-Denable-wx=$(usex wxwidgets)
 		-Denable-zlib=$(usex zlib)
 	)
 	cmake-utils_src_configure
-	# to whoever cares: TODO: do for multiple python ABI
-	if use python; then
-		sed -i \
-			-e "s:--prefix=\(.*\) :--prefix=\$ENV{DESTDIR}\1 :" \
-			"${CMAKE_BUILD_DIR}"/lang/cmake_install.cmake || die
-	fi
 }
 
 src_install() {
@@ -168,7 +146,6 @@ src_install() {
 		insinto /usr/share/${PN}/octave
 		doins "${CMAKE_BUILD_DIR}"/lang/${PN}.tar.gz
 	fi
-	use python && python_optimize
 }
 
 pkg_postinst() {
