@@ -14,7 +14,7 @@ SRC_URI="
 LICENSE="BSD-2 CC-BY-ND-3.0 FTL MIT LGPL-2 openssl dropbox"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-linux"
-IUSE="+librsync-bundled selinux X"
+IUSE="selinux X"
 
 RESTRICT="mirror strip"
 
@@ -26,27 +26,22 @@ BDEPEND="dev-util/patchelf"
 # Be sure to have GLIBCXX_3.4.9, #393125
 RDEPEND="
 	X? (
-		dev-libs/glib:2
-		media-libs/fontconfig
-		media-libs/freetype
-		virtual/jpeg
-		x11-libs/libSM
-		x11-libs/libX11
-		x11-libs/libXinerama
-		x11-libs/libXxf86vm
-		x11-libs/pango[X]
-		x11-misc/wmctrl
 		x11-themes/hicolor-icon-theme
 	)
-	!librsync-bundled? ( <net-libs/librsync-2 )
 	selinux? ( sec-policy/selinux-dropbox )
 	app-arch/bzip2
+	dev-libs/glib:2
 	dev-libs/libffi-compat:6
-	dev-libs/popt
+	media-libs/fontconfig
+	media-libs/freetype
 	net-misc/wget
-	>=sys-devel/gcc-4.2.0
 	sys-libs/zlib
-	sys-libs/ncurses-compat:5"
+	sys-libs/ncurses-compat:5
+	virtual/opengl
+	x11-libs/libICE
+	x11-libs/libSM
+	x11-libs/libX11
+"
 
 src_unpack() {
 	unpack ${A}
@@ -59,19 +54,16 @@ src_unpack() {
 
 src_prepare() {
 	default
-
-	rm -vf libGL.so.1 libX11* libdrm.so.2 libffi.so.6 libpopt.so.0 wmctrl || die
-	# tray icon doesnt load when removing libQt5* (bug 641416)
-	#rm -vrf libQt5* libicu* qt.conf plugins/ || die
+	# we supply all of these in RDEPEND
+	rm -vf libGL.so.1 libX11* libffi.so.6 || die
+	# some of these do not appear to be used
+	rm -vf libQt5{OpenGL,PrintSupport,Qml,Quick,Sql,WebKit,WebKitWidgets}.so.5 \
+		PyQt5.QtPrintSupport.* PyQt5.QtQml.* PyQt5.QtQuick.*  \
+		wmctrl libdrm.so.2 libpopt.so.0 || die
 	if use X ; then
 		mv images/hicolor/16x16/status "${T}" || die
 	else
 		rm -vrf images || die
-	fi
-	if use librsync-bundled ; then
-		patchelf --set-rpath '$ORIGIN' librsyncffi_native.*.so || die
-	else
-		rm -vf librsync.so.1 || die
 	fi
 	patchelf --set-rpath '$ORIGIN' \
 		apex._apex.*.so \
