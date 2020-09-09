@@ -1,0 +1,17 @@
+These functions are obsolete and a noop in OpenSSL 1.1.
+
+diff -Naurp a/src/crypto.c b/src/crypto.c
+--- a/src/crypto.c	2016-09-23 09:52:47.000000000 +0200
++++ b/src/crypto.c	2020-09-09 11:20:44.291423666 +0200
+@@ -67,11 +67,6 @@ EXPORT_SYMBOL int cryptmount_init(void)
+ 			pthread_mutex_unlock(&ehd_init_lock);
+ 			return ret;
+ 		}
+-#ifdef HAVE_LIBCRYPTO
+-		OpenSSL_add_all_algorithms();
+-		OpenSSL_add_all_ciphers();
+-		OpenSSL_add_all_digests();
+-#endif
+ 	}
+ 	++ehd_use_count;
+ 	pthread_mutex_unlock(&ehd_init_lock);
