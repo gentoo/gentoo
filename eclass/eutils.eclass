@@ -31,9 +31,11 @@ esac
 # @FUNCTION: emktemp
 # @USAGE: [temp dir]
 # @DESCRIPTION:
-# Cheap replacement for when debianutils (and thus mktemp)
-# does not exist on the users system.
+# Cheap replacement for when coreutils (and thus mktemp) does not exist
+# on the user's system.
 emktemp() {
+	eqawarn "emktemp is deprecated. Create a temporary file in \${T} instead."
+
 	local exe="touch"
 	[[ $1 == -d ]] && exe="mkdir" && shift
 	local topdir=$1
