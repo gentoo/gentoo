@@ -67,7 +67,8 @@ src_install() {
 	rm "${ED}/usr/$(get_libdir)/ocaml/ld.conf" || die
 	dosym lablgtk2/liblablgtk2.a \
 		/usr/$(get_libdir)/ocaml/liblablgtk2.a
-	dosym lablgtk2/liblablgtksourceview2.a \
+	use sourceview && \
+		dosym lablgtk2/liblablgtksourceview2.a \
 		/usr/$(get_libdir)/ocaml/liblablgtksourceview2.a
 
 	if use examples; then
