@@ -5,7 +5,7 @@ EAPI=7
 
 MY_PN="${PN/-bin/}"
 
-inherit eutils pax-utils unpacker xdg-utils
+inherit optfeature pax-utils unpacker xdg
 
 DESCRIPTION="Allows you to send and receive messages of Signal Messenger on your computer"
 HOMEPAGE="https://signal.org/
@@ -15,7 +15,6 @@ SRC_URI="https://updates.signal.org/desktop/apt/pool/main/s/${MY_PN}/${MY_PN}_${
 LICENSE="GPL-3 MIT MIT-with-advertising BSD-1 BSD-2 BSD Apache-2.0 ISC openssl ZLIB APSL-2 icu Artistic-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE=""
 
 BDEPEND="app-admin/chrpath"
 RDEPEND="
@@ -99,13 +98,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-
+	xdg_pkg_postinst
 	optfeature "using the tray icon in Xfce desktop environments" xfce-extra/xfce4-statusnotifier-plugin
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
 }
