@@ -10735,7 +10735,7 @@ dev-util/github-cli 0.8.0 0.9.0-r1 0.10.1 0.11.0 9999: GitHub CLI
 dev-util/gitlab-ci-linter 2.2.0: linter for .gitlab-ci.yml files
 dev-util/glade 3.22.2 3.36.0: A user interface designer for GTK+ and GNOME
 dev-util/glib-utils 2.62.6 2.64.4 2.64.5: Build utilities for GLib using projects
-dev-util/global 6.3.1 6.5.7 6.6.4: tag system to find an object location in various sources
+dev-util/global 6.6.4: tag system to find an object location in various sources
 dev-util/glslang 7.12.3353_pre20191027-r2 8.13.3559 8.13.3560_pre20200404 8.13.3743-r1 9999: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
 dev-util/gn 0.1726 0.1807: GN is a meta-build system that generates build files for Ninja
 dev-util/gnome-builder 3.34.1-r1 3.36.1: An IDE for writing GNOME-based software
@@ -14649,7 +14649,7 @@ net-ftp/tnftp 20141104 20151004: NetBSD FTP client with several advanced feature
 net-ftp/uftpd 2.13: The no nonsense TFTP/FTP server
 net-ftp/vsftpd 3.0.3-r3: Very Secure FTP Daemon written with speed, size and security in mind
 net-ftp/yafc 1.3.7: Console ftp client with a lot of nifty features
-net-im/bitlbee 3.5.1 3.6-r1 9999: irc to IM gateway that support multiple IM protocols
+net-im/bitlbee 3.6-r1 9999: irc to IM gateway that support multiple IM protocols
 net-im/bitlbee-facebook 1.2.0 9999: Facebook protocol plugin for BitlBee
 net-im/bitlbee-steam 1.4.2 9999: Steam protocol plugin for BitlBee
 net-im/centerim 5.0.1: CenterIM is a ncurses ICQ/Yahoo!/AIM/IRC/MSN/Jabber/GaduGadu/RSS/LiveJournal Client
