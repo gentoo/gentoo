@@ -20,12 +20,6 @@ app-metrics/collectd collectd_plugins_gmond
 app-metrics/collectd collectd_plugins_onewire
 sci-libs/dealii gmsh
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-09)
-# app-misc/g15daemon is masked for removal.
-app-misc/lcdproc lcd_devices_g15
-media-sound/mangler g15
-media-sound/mumble g15
-
 # Stephan Hartmann <sultan@gentoo.org> (2020-09-06)
 # Causes seccomp sandbox violation or chromium might hang on startup.
 >=www-client/chromium-87 wayland
