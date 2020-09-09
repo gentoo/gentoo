@@ -40,5 +40,5 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	DOCS=( ANNOUNCE CHANGES libpng-manual.txt README TODO )
 	einstalldocs
-	find "${ED}" -name '*.la' -type f -delete || die
+	find "${ED}" \( -type f -o -type l \) -name '*.la' -delete || die
 }
