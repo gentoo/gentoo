@@ -1653,7 +1653,6 @@ dev-haskell/lens:test-templates - Build the test templates if we're building tes
 dev-haskell/lens:trustworthy - Assert that we are trustworthy when we can
 dev-haskell/libyaml:no-unicode - Don't enable unicode output. Instead, unicode characters will be escaped.
 dev-haskell/libyaml:system-libyaml - Use the system-wide libyaml instead of the bundled copy
-dev-haskell/lifted-async:monad-control-1 - Use moand-control == 1.*
 dev-haskell/linear:template-haskell - You can disable the use of the `template-haskell` package using `-f-template-haskell`. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
 dev-haskell/lukko:ofd-locking - Enable open file descriptor locking. Available on Linux (kernel 3.15, released Jun 8, 2014).
 dev-haskell/missingh:network-3 - Use network-3

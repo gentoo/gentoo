@@ -2692,7 +2692,7 @@ app-portage/deltup 0.4.6-r1: Delta-Update - patch system for updating source-arc
 app-portage/demerge 0.047-r3: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r4 9999: A utility to maintain package.unmask entries up-to-date with masks
 app-portage/distpatch 0.1.2-r2: Distfile Patching Support for Gentoo Linux (tools)
-app-portage/eix 0.34.4 0.34.5 0.34.6 0.34.7: Search and query ebuilds
+app-portage/eix 0.34.4 0.34.5 0.34.6 0.34.7 0.34.8: Search and query ebuilds
 app-portage/elicense 1.0.2 9999: Tool to find installed packages in Gentoo with non-accepted license(s)
 app-portage/elogv 0.7.8-r1 0.7.8-r2 0.7.8-r3: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 3.0-r2: Elog viewer for Gentoo
@@ -3772,40 +3772,40 @@ dev-haskell/abstract-deque 0.3: Abstract, parameterized interface to mutable Deq
 dev-haskell/abstract-deque-tests 0.3: A test-suite for any queue or double-ended queue satisfying an interface
 dev-haskell/abstract-par 0.3.3-r1: Type classes generalizing the functionality of the 'monad-par' library
 dev-haskell/ac-ppm 1.1.1: Trivial package for writing PPM images
-dev-haskell/adjunctions 4.2.2 4.3 4.4: Adjunctions and representable functors
+dev-haskell/adjunctions 4.4: Adjunctions and representable functors
 dev-haskell/aeson 1.4.7.1: Fast JSON parsing and encoding
 dev-haskell/aeson-compat 0.3.9-r2: Compatibility layer for aeson
 dev-haskell/aeson-diff 1.1.0.8: Extract and apply patches to JSON documents
-dev-haskell/aeson-pretty 0.7.1 0.7.2 0.8.2 0.8.8: JSON pretty-printing library and command-line tool
-dev-haskell/aeson-qq 0.7.4 0.8.1 0.8.3: JSON quasiquoter for Haskell
+dev-haskell/aeson-pretty 0.8.8: JSON pretty-printing library and command-line tool
+dev-haskell/aeson-qq 0.8.3: JSON quasiquoter for Haskell
 dev-haskell/alex 3.2.5: Alex is a tool for generating lexical analysers in Haskell
 dev-haskell/alex-tools 0.4: A set of functions for a common use case of Alex
 dev-haskell/alsa-core 0.5.0.1-r2: Binding to the ALSA Library API (Exceptions)
-dev-haskell/alsa-mixer 0.1.2-r2 0.2.0.2 0.2.0.3 0.3.0: Bindings to the ALSA simple mixer API
-dev-haskell/alut 2.4.0.2 2.4.0.3: A binding for the OpenAL Utility Toolkit
+dev-haskell/alsa-mixer 0.3.0: Bindings to the ALSA simple mixer API
+dev-haskell/alut 2.4.0.3: A binding for the OpenAL Utility Toolkit
 dev-haskell/annotated-wl-pprint 0.7.0: The Wadler/Leijen Pretty Printer, with annotation support
-dev-haskell/ansi-terminal 0.6.2.1 0.6.2.3 0.10.3: Simple ANSI terminal support, with Windows compatibility
-dev-haskell/ansi-wl-pprint 0.6.7.1 0.6.7.3 0.6.8.2-r1: The Wadler/Leijen Pretty Printer for colored ANSI terminal output
-dev-haskell/appar 0.1.4 0.1.8: A simple applicative parser
+dev-haskell/ansi-terminal 0.10.3: Simple ANSI terminal support, with Windows compatibility
+dev-haskell/ansi-wl-pprint 0.6.8.2-r1: The Wadler/Leijen Pretty Printer for colored ANSI terminal output
+dev-haskell/appar 0.1.8: A simple applicative parser
 dev-haskell/argparser 0.3.4: Command line parsing framework for console applications
-dev-haskell/arithmoi 0.4.1.3 0.4.2.0 0.4.3.0 0.11.0.1: Efficient basic number-theoretic functions. Primes, powers, integer logarithms
-dev-haskell/arrows 0.4.4.1-r1 0.4.4.2: Arrow classes and transformers
+dev-haskell/arithmoi 0.11.0.1: Efficient basic number-theoretic functions. Primes, powers, integer logarithms
+dev-haskell/arrows 0.4.4.2: Arrow classes and transformers
 dev-haskell/ascii-progress 0.2.1.2: A simple progress bar for the console
 dev-haskell/asn1-data 0.7.1-r1 0.7.2: ASN1 data reader and writer in RAW, BER and DER forms
-dev-haskell/asn1-encoding 0.8.1.3 0.9.0 0.9.3 0.9.4 0.9.6: ASN1 data reader and writer in RAW, BER and DER forms
-dev-haskell/asn1-parse 0.8.1 0.9.1 0.9.4: Simple monadic parser for ASN1 stream types
-dev-haskell/asn1-types 0.2.0 0.2.3 0.3.0 0.3.2 0.3.3: ASN.1 types
-dev-haskell/async 2.0.1.4 2.0.2 2.1.1 2.2.2: Run IO operations asynchronously and wait for their results
-dev-haskell/atomic-primops 0.4-r1 0.6.1.1 0.7 0.8.0.4 0.8.3: A safe approach to CAS and other atomic ops in Haskell
-dev-haskell/attoparsec 0.10.4.0 0.11.2.1 0.12.1.5 0.13.0.1 0.13.0.2 0.13.1.0 0.13.2.3: Fast combinator parsing for bytestrings and text
-dev-haskell/attoparsec-conduit 1.0.1.2 1.1.0: Consume attoparsec parsers via conduit. (deprecated)
+dev-haskell/asn1-encoding 0.9.6: ASN1 data reader and writer in RAW, BER and DER forms
+dev-haskell/asn1-parse 0.9.4: Simple monadic parser for ASN1 stream types
+dev-haskell/asn1-types 0.3.3: ASN.1 types
+dev-haskell/async 2.2.2: Run IO operations asynchronously and wait for their results
+dev-haskell/atomic-primops 0.8.3: A safe approach to CAS and other atomic ops in Haskell
+dev-haskell/attoparsec 0.13.2.3: Fast combinator parsing for bytestrings and text
+dev-haskell/attoparsec-conduit 1.1.0: Consume attoparsec parsers via conduit. (deprecated)
 dev-haskell/attoparsec-enumerator 0.3.4: Pass input from an enumerator to an Attoparsec parser
 dev-haskell/attoparsec-iso8601 1.0.1.0-r1: Parsing of ISO 8601 dates, originally from aeson
-dev-haskell/authenticate 1.3.2.11 1.3.3.1 1.3.3.2 1.3.5: Authentication methods for Haskell web applications
+dev-haskell/authenticate 1.3.5: Authentication methods for Haskell web applications
 dev-haskell/authenticate-oauth 1.6.0.1: Library to authenticate with OAuth for Haskell web applications
-dev-haskell/auto-update 0.1.2.2 0.1.3 0.1.4 0.1.6: Efficiently run periodic, on-demand actions
+dev-haskell/auto-update 0.1.6: Efficiently run periodic, on-demand actions
 dev-haskell/aws 0.22-r1: Amazon Web Services (AWS) for Haskell
-dev-haskell/base-compat 0.2.1 0.4.2 0.5.0 0.8.2 0.9.1 0.11.1: A compatibility layer for base
+dev-haskell/base-compat 0.11.1: A compatibility layer for base
 dev-haskell/base-compat-batteries 0.11.1: base-compat with extra batteries
 dev-haskell/base-noprelude 4.13.0.0: "base" package sans "Prelude" module
 dev-haskell/base-orphans 0.3.2 0.5.4 0.8.2: Backwards-compatible orphan instances for base
@@ -3866,7 +3866,7 @@ dev-haskell/cgi 3001.1.8.3 3001.1.8.4 3001.1.8.4-r1 3001.2.2.2 3001.5.0.0: A lib
 dev-haskell/charset 0.3.7.1-r1: Fast unicode character sets based on complemented PATRICIA tries
 dev-haskell/chaselev-deque 0.5.0.5: Chase & Lev work-stealing lock-free double-ended queues (deques)
 dev-haskell/chasingbottoms 1.3.0.11-r1 1.3.0.13 1.3.0.14 1.3.1.2 1.3.1.9: For testing partial and infinite values
-dev-haskell/chell 0.4.0.1 0.4.0.2: A simple and intuitive library for automated testing
+dev-haskell/chell 0.4.0.2: A simple and intuitive library for automated testing
 dev-haskell/chell-quickcheck 0.2.5 0.2.5-r1: QuickCheck support for the Chell testing library
 dev-haskell/chimera 0.3.1.0: Lazy infinite streams with O(1) indexing
 dev-haskell/chunked-data 0.1.0.1 0.3.0: Typeclasses for dealing with various chunked data representations
@@ -3890,7 +3890,7 @@ dev-haskell/comonad 3.1 4.0 4.2.7.2 5 5.0.5 5.0.6: Haskell 98 compatible comonad
 dev-haskell/comonad-transformers 3.1 4.0: This package has been merged into comonad 4.0
 dev-haskell/comonads-fd 3.0.3 4.0: This package has been merged into comonad 4.0
 dev-haskell/concurrent-extra 0.7.0.10 0.7.0.12: Extra concurrency primitives
-dev-haskell/concurrent-output 1.7.3 1.7.6 1.7.7 1.7.8 1.10.11: Ungarble output from several threads or commands
+dev-haskell/concurrent-output 1.10.11: Ungarble output from several threads or commands
 dev-haskell/conduit 1.0.15.1 1.1.6 1.2.6.1 1.2.6.6 1.2.8 1.2.12.1 1.3.2: Streaming data processing library
 dev-haskell/conduit-combinators 1.3.0: Commonly used conduit functions, for both chunked and unchunked data
 dev-haskell/conduit-extra 1.1.9.1 1.1.9.2 1.1.13.1 1.1.15 1.3.4: Batteries included conduit: adapters for common libraries
@@ -4039,7 +4039,7 @@ dev-haskell/gluraw 1.3.0.0 1.4.0.1 1.5.0.1 2.0.0.3 2.0.0.4: A raw binding for th
 dev-haskell/glut 2.5.1.1 2.7.0.11 2.7.0.15: A binding for the OpenGL Utility Toolkit
 dev-haskell/gnuidn 0.2.2-r1: Bindings for GNU IDN
 dev-haskell/gnutls 0.2: Bindings for GNU libgnutls
-dev-haskell/graphviz 2999.18.0.2-r1 2999.18.1.2 2999.20.0.4: Bindings to Graphviz for graph visualisation
+dev-haskell/graphviz 2999.20.0.4: Bindings to Graphviz for graph visualisation
 dev-haskell/groupoids 3.0.1.1 4.0: This package has been absorbed into semigroupoids 4.0
 dev-haskell/gsasl 0.3.6: Bindings for GNU libgsasl
 dev-haskell/gtk 0.14.10-r3 0.15.5-r1: Binding to the Gtk+ graphical user interface library
@@ -4183,11 +4183,11 @@ dev-haskell/lens-family-core 1.2.1 1.2.3: Haskell 98 Lens Families
 dev-haskell/lens-family-th 0.4.1.0: Generate lens-family style lenses
 dev-haskell/lens-simple 0.1.0.9: simplified import of elementary lens-family combinators
 dev-haskell/lhs2tex 1.24: Preprocessor for typesetting Haskell sources with LaTeX
-dev-haskell/libmpd 0.8.0.4-r1 0.9.0.2 0.9.0.4 0.9.0.6 0.9.1.0: An MPD client library
+dev-haskell/libmpd 0.9.1.0: An MPD client library
 dev-haskell/libxml 0.1.1: Binding to libxml2
 dev-haskell/libxml-sax 0.7.5: Bindings for the libXML2 SAX interface
 dev-haskell/libyaml 0.1.2: Low-level, streaming YAML interface
-dev-haskell/lifted-async 0.2.0.2-r1 0.6.0.1 0.7.0.2 0.8.0.1-r1 0.9.1.1-r1 0.10.0.6: Run lifted IO operations asynchronously and wait for their results
+dev-haskell/lifted-async 0.10.0.6: Run lifted IO operations asynchronously and wait for their results
 dev-haskell/lifted-base 0.2.3.6-r2 0.2.3.10 0.2.3.12: lifted IO operations from the base library
 dev-haskell/linear 1.20.5 1.20.6 1.20.9: Linear Algebra
 dev-haskell/list 0.5.2 0.6.2: List monad transformer and class
@@ -4545,7 +4545,7 @@ dev-haskell/weigh 0.0.3 0.0.16: Measure allocations of a Haskell functions/value
 dev-haskell/with-location 0.0.0 0.1.0: Use ImplicitParams-based source locations in a backward compatible way
 dev-haskell/wl-pprint 1.2 1.2.1: The Wadler/Leijen Pretty Printer
 dev-haskell/wl-pprint-annotated 0.1.0.1: Wadler/Leijen pretty printer with annotations and slightly modernized API
-dev-haskell/wl-pprint-text 1.1.0.4 1.1.1.0 1.2.0.1: A Wadler/Leijen Pretty Printer for Text values
+dev-haskell/wl-pprint-text 1.2.0.1: A Wadler/Leijen Pretty Printer for Text values
 dev-haskell/word8 0.1.2 0.1.3: Word8 library
 dev-haskell/wreq 0.5.3.2: An easy-to-use HTTP client library
 dev-haskell/wx 0.92.2.0: Portable and native GUI library built on wxWidgets
@@ -7964,8 +7964,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r2 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.14.23 1.14.31 1.14.46 1.14.49 1.14.52 1.14.55 9999: The AWS SDK for Python
-dev-python/botocore 1.17.23 1.17.31 1.17.46 1.17.49 1.17.52 1.17.55 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.14.23 1.14.31 1.14.46 1.14.49 1.14.52 1.14.55 1.14.57 9999: The AWS SDK for Python
+dev-python/botocore 1.17.23 1.17.31 1.17.46 1.17.49 1.17.52 1.17.55 1.17.57 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.18: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.19: Syntax highlighting and autocompletion for the Python interpreter
@@ -8079,7 +8079,7 @@ dev-python/diff-cover 2.3.0: Automatically find diff lines that need test covera
 dev-python/diff-match-patch 20181111: Diff, match and patch algorithms for plain text
 dev-python/dill 0.3.2: Serialize all of python (almost)
 dev-python/discogs-client 2.2.2: Official Python API client for Discogs
-dev-python/diskcache 4.1.0 5.0.1 5.0.2: Disk and file backed cache
+dev-python/diskcache 4.1.0 5.0.1 5.0.2 5.0.3: Disk and file backed cache
 dev-python/dissononce 0.34.3-r1: A python implementation for Noise Protocol Framework
 dev-python/distlib 0.3.1: Low-level components of distutils2/packaging
 dev-python/distro 1.5.0: Reliable machine-readable Linux distribution information for Python
@@ -8449,7 +8449,7 @@ dev-python/mongoengine 0.10.6 0.20.0: A Python Object-Document-Mapper for workin
 dev-python/mongomock 3.20.0: Library to help testing Python code that interacts with MongoDB via Pymongo
 dev-python/monotonic 1.5-r1: An implementation of time.monotonic() for Python 2 & < 3.3
 dev-python/more-itertools 5.0.0 8.4.0 8.5.0: More routines for operating on iterables, beyond itertools
-dev-python/moto 1.3.14-r3 1.3.15: Mock library for boto
+dev-python/moto 1.3.14-r3 1.3.15 1.3.16: Mock library for boto
 dev-python/moviepy 1.0.1-r1: Video editing with Python
 dev-python/mox3 0.24.0: Mock object framework for Python
 dev-python/mpdlcd 0.5.2: A small tool to display the MPD status on a LCDproc server.
@@ -8785,8 +8785,8 @@ dev-python/pyprof2calltree 1.4.4: convert python profile data to kcachegrind cal
 dev-python/pyproj 2.4.2-r1: Python interface to the PROJ library
 dev-python/pyproject2setuppy 7: Cheap setup.py hack to install flit & poetry-based projects
 dev-python/pypugjs 5.9.4-r1: Pug (Jade) syntax adapter for Django, Jinja2 and Mako templates
-dev-python/pypy 7.3.0 7.3.1-r2: A fast, compliant alternative implementation of the Python language
-dev-python/pypy-exe 7.3.0 7.3.1: PyPy executable (build from source)
+dev-python/pypy 7.3.0 7.3.1-r2 7.3.2_rc1: A fast, compliant alternative implementation of the Python language
+dev-python/pypy-exe 7.3.0 7.3.1 7.3.2_rc1: PyPy executable (build from source)
 dev-python/pypy-exe-bin 7.3.0_p1 7.3.1_p1: PyPy executable (pre-built version)
 dev-python/pypy3 7.3.0 7.3.1-r2: A fast, compliant alternative implementation of the Python (3.6) language
 dev-python/pypy3-exe 7.3.0 7.3.1: PyPy3 executable (build from source)
@@ -8800,7 +8800,7 @@ dev-python/pyrfc3339 1.1: Generates and parses RFC 3339 timestamps
 dev-python/pyro 4.80: Distributed object middleware for Python (RPC)
 dev-python/pyroute2 0.5.12-r1: A pure Python netlink and Linux network configuration library.
 dev-python/pyrqlite 2.0: Python client for rqlite
-dev-python/pyrsistent 0.15.6 0.16.0: Persistent/Functional/Immutable data structures
+dev-python/pyrsistent 0.15.6 0.16.0 0.17.0: Persistent/Functional/Immutable data structures
 dev-python/pysaml2 4.6.5-r1: Python implementation of SAML Version 2 to be used in a WSGI environment
 dev-python/pyscard 1.9.9: Smart cards support in python
 dev-python/pysendfile 2.0.1-r1: A python interface to the sendfile(2) system call
@@ -9099,7 +9099,7 @@ dev-python/sphinx 2.0.1-r1 2.4.4 3.1.2 3.2.1: Python documentation generator
 dev-python/sphinx-aiohttp-theme 0.1.6: Sphinx theme for aiohttp
 dev-python/sphinx-bootstrap-theme 0.6.5: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx-epytext 0.0.4: Sphinx epytext extension
-dev-python/sphinx-gallery 0.3.1-r1: Sphinx extension to automatically generate an examples gallery
+dev-python/sphinx-gallery 0.3.1-r1 0.8.0: Sphinx extension to automatically generate an examples gallery
 dev-python/sphinx-issues 1.2.0: A Sphinx extension for linking to your project's issue tracker
 dev-python/sphinx-jinja 0.3.0: A sphinx extension to include jinja based templates into a sphinx doc
 dev-python/sphinx-notfound-page 0.4: Create a custom 404 page with absolute URLs hardcoded.
