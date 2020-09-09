@@ -6,7 +6,7 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<use>
-		<flag name="gstreamer">Enable audio support via <pkg>media-libs/gstreamer</pkg> using SLOT 1.0</flag>
+		<flag name="gstreamer">Enable audio support via <pkg>media-libs/gstreamer</pkg></flag>
 		<flag name="qml">Build QML/QtQuick bindings and imports</flag>
 		<flag name="widgets">Build the QtMultimediaWidgets module</flag>
 	</use>
