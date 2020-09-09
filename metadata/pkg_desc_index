@@ -7957,7 +7957,7 @@ dev-python/blessed 1.17.9 1.17.10: Library for making terminal apps using colors
 dev-python/blessings 1.7-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.4-r1: Fast, simple object-to-object and broadcast signaling
 dev-python/blockdiag 1.5.4 2.0.1: Generate block-diagram image from text
-dev-python/blosc 1.9.1-r1: High performance compressor optimized for binary data
+dev-python/blosc 1.9.1-r1 1.9.2: High performance compressor optimized for binary data
 dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutines
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
