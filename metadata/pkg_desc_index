@@ -3134,7 +3134,7 @@ app-vim/diffchar 8.2 8.6: vim plugin: highlight the exact differences, based on 
 app-vim/dirdiff 1.1.5-r1: vim plugin: diff and merge two directories recursively
 app-vim/easy-align 2.10.0-r1: vim plugin: a simple alignment plugin
 app-vim/ebnf-syntax 1.1-r2: vim plugin: EBNF (ISO/IEC 14997) file syntax highlighting
-app-vim/editorconfig-vim 0.3.3-r2 1.0.0_beta 1.1.1: vim plugin: Support EditorConfig files
+app-vim/editorconfig-vim 1.1.1: vim plugin: Support EditorConfig files
 app-vim/emmet 0.85-r1 9999: vim plugin: HTML and CSS hi-speed coding
 app-vim/enhancedcommentify 2.3-r1: vim plugin: enhanced comment creation
 app-vim/errsign 0.1-r1: vim plugin: display marks on lines with errors
