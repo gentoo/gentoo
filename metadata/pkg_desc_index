@@ -18049,7 +18049,7 @@ www-apps/icingaweb2-module-director 1.6.2 9999: Icinga Web 2 plugin for configur
 www-apps/icingaweb2-module-graphite 1.0.1-r1 9999: Icinga Web 2 plugin for Graphite
 www-apps/icingaweb2-module-pnp4nagios 1.0.1 9999: Icinga Web 2 plugin for pnp4nagios
 www-apps/ikiwiki 3.20170111 3.20171001 3.20190228: A wiki compiler
-www-apps/jekyll 3.8.5 4.1.0 4.1.1: A simple, blog aware, static site generator
+www-apps/jekyll 4.1.1: A simple, blog aware, static site generator
 www-apps/jekyll-coffeescript 1.2.2 2.0.0: A CoffeeScript Converter for Jekyll
 www-apps/jekyll-sass-converter 1.5.2 2.1.0: A basic Sass converter for Jekyll
 www-apps/jekyll-sitemap 0.13.0 1.4.0: Automatically generate a sitemap.xml for your Jekyll site
