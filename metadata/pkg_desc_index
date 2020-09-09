@@ -15824,7 +15824,7 @@ sci-biology/bioperl-run 1.6.9: Perl wrapper modules for key bioinformatics appli
 sci-biology/biopython 1.77: Python modules for computational molecular biology
 sci-biology/biosql 1.0.1-r1: A generic bioinformatics relational database model
 sci-biology/blat 34-r2: The BLAST-Like Alignment Tool, a fast genomic sequence aligner
-sci-biology/bowtie 1.1.2-r1 2.2.9: Popular short read aligner for Next-generation sequencing data
+sci-biology/bowtie 2.2.9: Popular short read aligner for Next-generation sequencing data
 sci-biology/bwa 0.7.16a: Burrows-Wheeler Alignment Tool, a fast short genomic sequence aligner
 sci-biology/cd-hit 4.6.6: Clustering Database at High Identity with Tolerance
 sci-biology/clustal-omega 1.2.4: Scalable multiple alignment of protein sequences
@@ -15920,7 +15920,7 @@ sci-biology/rmblast 1.2-r1: RepeatMasker compatible version of NCBI BLAST+
 sci-biology/rnaview 20040713-r4: Generates 2D displays of RNA/DNA secondary structures with tertiary interactions
 sci-biology/samtools 0.1.20-r4 1.10: Utilities for analysing and manipulating the SAM/BAM alignment formats
 sci-biology/seaview 4.3.5 4.5.4 4.6: A graphical multiple sequence alignment editor
-sci-biology/seqan 1.4.2-r1 2.2.0-r1 2.4.0 9999: C++ Sequence Analysis Library
+sci-biology/seqan 2.4.0 9999: C++ Sequence Analysis Library
 sci-biology/shrimp 2.2.3: SHort Read Mapping Package
 sci-biology/sibsim4 0.20: A rewrite and improvement upon sim4, a DNA-mRNA aligner
 sci-biology/sim4 20030921-r2: A program to align cDNA and genomic DNA
