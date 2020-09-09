@@ -32,6 +32,32 @@
 
 #--- END OF EXAMPLES ---
 
+# Louis Sautier <sbraz@gentoo.org> (2020-09-09)
+# Masked for removal in 30 days, no revdeps.
+# Backport of a module included in Python >= 3.3.
+dev-python/backports-unittest-mock
+
+# Michał Górny <mgorny@gentoo.org> (2020-09-09)
+# Multiple unresolved vulnerabilities.  Last release in 2013 (but has
+# some activity in git).  Not touched by maintainer since 2015.  Stuck
+# on Python 2 (bug #735522) with incorrect eclass usage (bug #710258).
+# Apparently broken with openssl-1.1 (bug #674246).
+# Removal in 30 days.  Bug #715204.
+www-servers/cherokee
+
+# Michał Górny <mgorny@gentoo.org> (2020-09-09)
+# Last release in 2008.  Fails to build with gcc-10 (bug #706712).
+# Not ported to Python 3 (bug #735226).  The current revision
+# is misconfigured by default (bug #481454), and the newer revision
+# is masked for since 2012 (bug #587008).
+# Removal in 30 days.  Bug #741382.
+app-misc/g15daemon
+app-misc/g15composer
+app-misc/g15macro
+app-misc/g15message
+app-misc/g15mpd
+app-misc/g15stats
+
 # Joonas Niilola <juippis@gentoo.org> (2020-09-07)
 # Nothing in the tree uses this lib anymore. Removing as redundant.
 # Removal in ~30 days. Bug #740868.
