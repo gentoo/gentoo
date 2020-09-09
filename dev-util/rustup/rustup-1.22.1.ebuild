@@ -239,7 +239,7 @@ zeroize-1.1.0
 zeroize_derive-1.0.0
 "
 
-inherit cargo
+inherit bash-completion-r1 cargo
 
 HOME_CRATE_COMMIT="a243ee2fbee6022c57d56f5aa79aefe194eabe53"
 
@@ -284,6 +284,15 @@ src_install() {
 	einstalldocs
 	exeinto /usr/share/rustup
 	newexe "${FILESDIR}/symlink_rustup.sh" symlink_rustup
+
+	ln -s "${ED}/usr/bin/rustup-init" rustup || die
+	./rustup completions bash rustup > "${T}/rustup" || die
+	./rustup completions zsh rustup > "${T}/_rustup" || die
+
+	dobashcomp "${T}/rustup"
+
+	insinto /usr/share/zsh/site-functions
+	doins "${T}/_rustup"
 }
 
 src_test() {
