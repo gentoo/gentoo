@@ -5247,7 +5247,7 @@ dev-libs/boehm-gc 8.0.4: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.72.0-r1 1.73.0 1.74.0: Boost Libraries for C++
 dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL library
 dev-libs/botan 2.9.0 2.14.0-r1 2.15.0: C++ crypto library
-dev-libs/boxfort 0.0.1_pre20200110: Convenient & cross-platform sandboxing C library
+dev-libs/boxfort 0.0.1_pre20200110 0.0.1_pre20200902: Convenient & cross-platform sandboxing C library
 dev-libs/busybee 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
 dev-libs/c-blosc 1.11.2 1.19.0 1.20.0 1.20.1: Blocking, shuffling and lossless compression library
 dev-libs/c-capnproto 0.3: C library/compiler for the Cap'n Proto serialization/RPC protocol
@@ -10662,7 +10662,7 @@ dev-util/cppunit 1.14.0 9999: C++ port of the famous JUnit framework for unit te
 dev-util/cpputest 3.8: unit testing and mocking framework for C/C++
 dev-util/cproto 4.7o: Generate C function prototypes from C source code
 dev-util/cpuinfo-collection 20101114: huge collection of /proc/cpuinfo files
-dev-util/cram 0.7: Functional testing framework for command line applications
+dev-util/cram 0.7 0.7-r1: Functional testing framework for command line applications
 dev-util/crash 7.2.8-r1: Red Hat crash utility; used for analyzing kernel core dumps
 dev-util/creduce 2.11.0_pre20191110: C-Reduce - a plugin-based C program reducer
 dev-util/cscope 15.8a-r1 15.8a-r2 15.9: Interactively examine a C program
