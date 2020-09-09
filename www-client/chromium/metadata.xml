@@ -19,7 +19,7 @@
 		<flag name="system-icu">Use system icu instead of the bundled one</flag>
 		<flag name="system-libvpx">Use system libvpx instead of the bundled one</flag>
 		<flag name="tcmalloc">Use bundled tcmalloc instead of system malloc</flag>
-		<flag name="wayland">Enable Wayland backend for Ozone.</flag>
+		<flag name="ozone-wayland">Enable Wayland backend for Ozone.</flag>
 		<flag name="widevine">Unsupported closed-source DRM capability (required by Netflix VOD)</flag>
 	</use>
 </pkgmetadata>
