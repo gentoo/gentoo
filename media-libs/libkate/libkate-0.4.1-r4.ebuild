@@ -3,8 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
-inherit multilib-minimal python-single-r1
+inherit multilib-minimal
 
 DESCRIPTION="Codec for karaoke and text encapsulation for Ogg"
 HOMEPAGE="https://code.google.com/p/libkate/"
@@ -14,31 +13,18 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 ~sparc x86"
 
-IUSE="debug doc wxwidgets"
-REQUIRED_USE="wxwidgets? ( ${PYTHON_REQUIRED_USE} )"
+IUSE="debug doc"
 
-COMMON_DEPEND="
+RDEPEND="
 	media-libs/libogg:=[${MULTILIB_USEDEP}]
 	media-libs/libpng:0=[${MULTILIB_USEDEP}]
 "
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-devel/flex[${MULTILIB_USEDEP}]
 	sys-devel/bison
 	doc? ( app-doc/doxygen )
 "
-RDEPEND="${COMMON_DEPEND}
-	wxwidgets? (
-		${PYTHON_DEPS}
-		$(python_gen_cond_dep '
-			dev-python/wxpython:3.0[${PYTHON_MULTI_USEDEP}]
-		')
-		media-libs/liboggz )
-"
-
-pkg_setup() {
-	use wxwidgets && python-single-r1_pkg_setup
-}
 
 multilib_src_configure() {
 	local ECONF_SOURCE=${S}
@@ -46,11 +32,10 @@ multilib_src_configure() {
 		--disable-static \
 		$(use_enable debug) \
 		$(multilib_native_use_enable doc) \
-		$(multilib_native_usex wxwidgets '' 'PYTHON=:')
+		PYTHON=:
 }
 
 multilib_src_install_all() {
 	einstalldocs
 	find "${D}" -name '*.la' -delete || die
-	use wxwidgets && python_fix_shebang "${D}"
 }
