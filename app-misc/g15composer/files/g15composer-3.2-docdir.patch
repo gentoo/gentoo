@@ -1,0 +1,11 @@
+--- g15composer-3.2/Makefile.am
++++ g15composer-3.2/Makefile.am
+@@ -3,7 +3,7 @@
+ EXTRA_DIST = g15composer.l g15composer.y debian examples doc
+ noinst_HEADERS = g15composer.h g15c_logo.h
+ man1_MANS = $(top_srcdir)/doc/g15composer.1
+-docdir = $(prefix)/share/doc/$(PACKAGE)-$(VERSION)
++docdir = @docdir@
+ doc_DATA = AUTHORS ChangeLog COPYING NEWS README
+ 
+ g15composer.tab.c: g15composer.lex.c g15composer.y g15composer.h

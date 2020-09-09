@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -16,13 +16,12 @@ IUSE="truetype examples"
 
 DEPEND="app-misc/g15daemon
 	>=dev-libs/libg15render-1.2[truetype?]
-	truetype? (
-		media-libs/freetype
-		virtual/pkgconfig
-	)"
+	truetype? ( media-libs/freetype	)"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.2-freetype_pkgconfig.patch
+	"${FILESDIR}/${P}-freetype_pkgconfig.patch"
+	"${FILESDIR}/${P}-docdir.patch"
 )
 
 src_prepare() {
