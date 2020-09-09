@@ -1,9 +1,9 @@
-#!/bin/bash
+#!@GENTOO_PORTAGE_EPREFIX@/bin/bash
 
 set -euo pipefail
 IFS=$'\n\t'
 
-SYMLINK_RUSTUP_VERSION="0.0.1"
+SYMLINK_RUSTUP_VERSION="0.0.2"
 
 : "${CARGO_HOME:=${HOME}/.cargo}"
 : "${RUSTUP_HOME:=${HOME}/.rustup}"
@@ -37,6 +37,7 @@ help() {
 	echo " ${CARGO_HOME}"
 	echo
 	echo "Options:"
+	echo "	-a, --apply	Apply changes (required)"
 	echo "	-C, --nocolor	Disable colored output"
 	echo "	-d, --debug	Debug mode (sets -x shell option)"
 	echo "	-V, --version	Print version number"
@@ -52,7 +53,7 @@ symlink_rustup() {
 		rust{c,doc,fmt,-gdb,-lldb,up}
 	)
 
-	binpath="${EPREFIX:-}/usr/bin/rustup-init"
+	binpath="@GENTOO_PORTAGE_EPREFIX@/usr/bin/rustup-init"
 	gentoo_rust="$(eselect --brief rust show 2>/dev/null)"
 
 	mkdir -p "${CARGO_HOME}/bin" || die
@@ -62,15 +63,15 @@ symlink_rustup() {
 		if [[ -e "${symlink_path}" ]]; then
 			die "${symlink_path} ${__err_exists}"
 		else
-			ln -sv "${binpath}" "${symlink_path}" || die
+			ln -s ${QUIET--v} "${binpath}" "${symlink_path}" || die
 		fi
 	done
 
 	good "Setting gentoo ${gentoo_rust// /} as default toolchain"
-	"${CARGO_HOME}/bin/rustup" -v toolchain link gentoo "${EPREFIX:-}/usr" || die
-	"${CARGO_HOME}/bin/rustup" -v default gentoo || die
-	"${CARGO_HOME}/bin/rustup" -V || die
-	"${CARGO_HOME}/bin/rustup" show || die
+	[[ ${QUIET+set} != set ]] && "${CARGO_HOME}/bin/rustup" -V
+	"${CARGO_HOME}/bin/rustup" ${QUIET--v} toolchain link gentoo "/usr"
+	"${CARGO_HOME}/bin/rustup" ${QUIET--v} default gentoo
+	[[ ${QUIET+set} != set ]] && "${CARGO_HOME}/bin/rustup" show
 
 	good "Prepend ${CARGO_HOME}/bin to your PATH to use rustup"
 	good "rustup selfupdate is disabled, it will be updated by portage"
@@ -82,6 +83,9 @@ main(){
 	me="$(basename "${BASH_SOURCE[${#BASH_SOURCE[@]} - 1]}")"
 	while [[ ${#} -gt 0 ]]; do
 		case ${1} in
+			-a|--apply)
+				APPLY=true
+				;;
 			-h|--help)
 				help
 				exit 0
@@ -106,7 +110,11 @@ main(){
 		esac
 		shift
 	done
-	symlink_rustup
+	if [[ ${APPLY:-false} == true ]]; then
+		symlink_rustup
+	else
+		help
+	fi
 } # main()
 
 
