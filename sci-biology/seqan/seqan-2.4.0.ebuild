@@ -1,12 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
-PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils multibuild python-any-r1 toolchain-funcs
+inherit cmake-utils multibuild toolchain-funcs
 
 DESCRIPTION="C++ Sequence Analysis Library"
 HOMEPAGE="http://www.seqan.de/"
@@ -24,7 +23,7 @@ fi
 
 LICENSE="BSD GPL-3"
 SLOT="0"
-IUSE="cpu_flags_x86_sse4_1 doc tools"
+IUSE="cpu_flags_x86_sse4_1 tools"
 REQUIRED_USE="cpu_flags_x86_sse4_1"
 
 RDEPEND="
@@ -34,21 +33,12 @@ RDEPEND="
 	!!sci-biology/seqan:2.1
 	!!sci-biology/seqan:2.2"
 DEPEND="
-	${RDEPEND}
-	doc? (
-		$(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]')
-		${PYTHON_DEPS}
-	)"
+	${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${PN}-2.4.0-fix-pthread.patch )
 
-python_check_deps() {
-	use doc && has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
-}
-
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
-		use doc && python-any-r1_pkg_setup
 		use tools && tc-check-openmp
 
 		MULTIBUILD_VARIANTS=(
@@ -60,18 +50,19 @@ pkg_setup() {
 
 src_configure() {
 	my_configure() {
-		local mycmakeargs=( -DCMAKE_INSTALL_DOCDIR="share/doc/${PF}" )
+		local mycmakeargs=(
+			-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
+			-DSEQAN_NO_DOX=ON
+		)
 		case "${MULTIBUILD_ID}" in
 			tools)
 				mycmakeargs+=(
 					-DSEQAN_BUILD_SYSTEM=SEQAN_RELEASE_APPS
-					-DSEQAN_NO_DOX=ON
 				)
 				;;
 			library)
 				mycmakeargs+=(
 					-DSEQAN_BUILD_SYSTEM=SEQAN_RELEASE_LIBRARY
-					-DSEQAN_NO_DOX=$(usex !doc)
 				)
 				;;
 			*)
