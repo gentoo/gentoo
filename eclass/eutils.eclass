@@ -21,10 +21,10 @@ _EUTILS_ECLASS=1
 # implicitly inherited (now split) eclasses
 case ${EAPI:-0} in
 	0|1|2|3|4|5|6)
-		inherit desktop epatch estack ltprune multilib preserve-libs \
-			toolchain-funcs vcs-clean
+		inherit desktop edos2unix epatch estack ltprune multilib \
+			preserve-libs toolchain-funcs vcs-clean
 		;;
-	7) ;;
+	7) inherit edos2unix ;;
 	*) die "${ECLASS} is banned in EAPI ${EAPI}" ;;
 esac
 
@@ -61,18 +61,6 @@ emktemp() {
 			TMPDIR="${topdir}" mktemp -dt tmp.XXXXXXXXXX
 		fi
 	fi
-}
-
-# @FUNCTION: edos2unix
-# @USAGE: <file> [more files ...]
-# @DESCRIPTION:
-# A handy replacement for dos2unix, recode, fixdos, etc...  This allows you
-# to remove all of these text utilities from DEPEND variables because this
-# is a script based solution.  Just give it a list of files to convert and
-# they will all be changed from the DOS CRLF format to the UNIX LF format.
-edos2unix() {
-	[[ $# -eq 0 ]] && return 0
-	sed -i 's/\r$//' -- "$@" || die
 }
 
 # @FUNCTION: strip-linguas
