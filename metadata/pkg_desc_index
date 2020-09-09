@@ -14913,7 +14913,7 @@ net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP pr
 net-libs/nghttp2 1.41.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 12.16.1 12.18.3 14.2.0 14.4.0 14.8.0 14.9.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 12.16.1 12.18.3 14.2.0 14.4.0 14.8.0 14.9.0 14.10.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.7.4 1.8.1 3.2 3.3: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -18122,7 +18122,7 @@ www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 3.3.2022.39_p1: A browser for our friends
-www-client/vivaldi-snapshot 3.3.2022.35_p1: A browser for our friends
+www-client/vivaldi-snapshot 3.4.2035.3_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.8-r1: AWStats is short for Advanced Web Statistics
