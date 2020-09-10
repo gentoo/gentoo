@@ -14707,7 +14707,7 @@ net-im/transwhat 0.2.2_p20190426: A WhatsApp XMPP Gateway based on Spectrum 2 an
 net-im/vacuum 1.3.0_pre20180105 9999: Qt Crossplatform Jabber client
 net-im/yowsup 3.2.3_p20190905: A library that enables you to build applications which use the WhatsApp service
 net-im/ysm 2.9.9.1-r1: A console ICQ client supporting versions 7/8
-net-im/zoom 5.2.446620.0816 5.2.454870.0831: Video conferencing and web conferencing service
+net-im/zoom 5.2.454870.0831 5.2.458699.0906: Video conferencing and web conferencing service
 net-irc/anope 2.0.7: Anope IRC Services
 net-irc/atheme-services 7.2.10_p2-r2: A portable and secure set of open-source and modular IRC services
 net-irc/bnc 2.9.4-r1: BNC (BouNCe) is used as a gateway to an IRC Server
@@ -14767,8 +14767,8 @@ net-libs/balde-markdown 0.1: A balde extension that adds Markdown support
 net-libs/biblesync 2.1.0: A multicast protocol to support Bible software shared co-navigation
 net-libs/c-client 2007f-r6: UW IMAP c-client library
 net-libs/canlock 2b: A library for creating and verifying Usenet cancel locks
-net-libs/courier-authlib 0.69.0-r1 0.70.0: Courier authentication library
-net-libs/courier-unicode 1.3 1.4 2.1: Unicode library used by the courier mail server
+net-libs/courier-authlib 0.69.0-r1 0.70.0 0.71.0: Courier authentication library
+net-libs/courier-unicode 2.1 2.1-r1: Unicode library used by the courier mail server
 net-libs/cppzmq 0_pre150606 4.6.0: High-level CPP Binding for ZeroMQ
 net-libs/cvm 0.96-r1 0.97: Credential Validation Modules by Bruce Guenter
 net-libs/czmq 2.2.0-r2 3.0.2-r1 4.2.0: High-level C Binding for ZeroMQ
@@ -18093,7 +18093,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.5.1: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 85.0.4183.102 86.0.4240.22 87.0.4252.0: Open-source version of Google Chrome web browser
+www-client/chromium 85.0.4183.102 86.0.4240.30 87.0.4252.0: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r4 0.13_pre_pre20180225 0.13.4 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6 3.34.4 3.36.3 3.36.4: GNOME webbrowser based on Webkit
@@ -18102,7 +18102,7 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 68.12.0 80.0 80.0.1 80.0.1-r1: Firefox Web Browser
 www-client/firefox-bin 68.12.0 80.0 80.0.1: Firefox Web Browser
 www-client/google-chrome 85.0.4183.102: The web browser from Google
-www-client/google-chrome-beta 86.0.4240.22: The web browser from Google
+www-client/google-chrome-beta 86.0.4240.30: The web browser from Google
 www-client/google-chrome-unstable 87.0.4252.0: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
@@ -18145,7 +18145,7 @@ www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution 
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/adobe-flash 32.0.0.433: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 85.0.4183.102 86.0.4240.22_beta 87.0.4252.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 85.0.4183.102 86.0.4240.30_beta 87.0.4252.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
