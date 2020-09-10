@@ -22,7 +22,9 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
+		dev-python/asttokens[${PYTHON_USEDEP}]
 		<dev-python/dnspython-2[${PYTHON_USEDEP}]
+		dev-python/executing[${PYTHON_USEDEP}]
 		dev-python/flask-login[${PYTHON_USEDEP}]
 		dev-python/gevent[${PYTHON_USEDEP}]
 		dev-python/pytest-aiohttp[${PYTHON_USEDEP}]
@@ -40,9 +42,6 @@ distutils_enable_tests pytest
 
 python_test() {
 	local deselect=(
-		# unpackaged 'executing'
-		--ignore tests/test_client.py
-		--ignore tests/integrations/django/test_basic.py
 		# unpackaged 'fakeredis'
 		--ignore tests/integrations/redis/test_redis.py
 		--ignore tests/integrations/rq/test_rq.py
@@ -55,6 +54,12 @@ python_test() {
 		# TODO
 		--deselect
 		'tests/test_basics.py::test_auto_enabling_integrations_catches_import_error'
+		--deselect
+		tests/test_client.py::test_databag_depth_stripping
+		--deselect
+		tests/test_client.py::test_databag_string_stripping
+		--deselect
+		tests/test_client.py::test_databag_breadth_stripping
 		# test_filename: apparently unhappy about pytest being called pytest
 		--deselect 'tests/utils/test_general.py::test_filename'
 		# test_circular_references: apparently fragile
