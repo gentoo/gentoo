@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Louis Sautier <sbraz@gentoo.org> (2020-09-10)
+# Masked for removal in 30 days, no revdeps.
+# All former consumers now use os.sendfile available in Python >= 3.3.
+dev-python/pysendfile
+
 # Mikle Kolyada <zlogene@gentoo.org> (2020-09-10)
 # Merged into the app-text/texlive-core package.
 # Removal in 30 days
