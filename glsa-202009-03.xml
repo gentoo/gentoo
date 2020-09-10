@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202009-03">
+  <title>Chromium, Google Chrome: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Chromium and Google
+    Chrome, the worst of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">chromium,google-chrome</product>
+  <announced>2020-09-10</announced>
+  <revised count="1">2020-09-10</revised>
+  <bug>741312</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">85.0.4183.102</unaffected>
+      <vulnerable range="lt">85.0.4183.102</vulnerable>
+    </package>
+    <package name="www-client/google-chrome" auto="yes" arch="*">
+      <unaffected range="ge">85.0.4183.102</unaffected>
+      <vulnerable range="lt">85.0.4183.102</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open-source browser project that aims to build a safer,
+      faster, and more stable way for all users to experience the web.
+    </p>
+    
+    <p>Google Chrome is one fast, simple, and secure browser for all your
+      devices.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium and Google
+      Chrome. Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-85.0.4183.102"
+    </code>
+    
+    <p>All Google Chrome users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/google-chrome-85.0.4183.102"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-15959">CVE-2020-15959</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6573">CVE-2020-6573</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6575">CVE-2020-6575</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6576">CVE-2020-6576</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-09-08T19:09:18Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-09-10T00:02:20Z">sam_c</metadata>
+</glsa>
