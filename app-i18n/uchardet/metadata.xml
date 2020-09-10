@@ -10,6 +10,6 @@
         <name>Proxy Maintainers</name>
     </maintainer>
     <upstream>
-        <bugs-to>https://bugs.freedesktop.org/enter_bug.cgi?product=uchardet</bugs-to>
+        <bugs-to>https://gitlab.freedesktop.org/uchardet/uchardet/-/issues</bugs-to>
     </upstream>
 </pkgmetadata>
