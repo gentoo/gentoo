@@ -34,9 +34,9 @@ index 06fab989..57a7130f 100644
  #include <llvm/IR/Instructions.h>
  #include <llvm/IR/Module.h>
 +#include <llvm/Support/raw_ostream.h>
- #include <map>
- #include <set>
- #include <vector>
+
+ #ifdef ISPC_GENX_ENABLED
+ #include <llvm/GenXIntrinsics/GenXIntrinsics.h>
 @@ -1394,7 +1395,7 @@ static void lDumpValue(llvm::Value *v, std::set<llvm::Value *> &done) {
          return;
  

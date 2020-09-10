@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit cmake toolchain-funcs python-any-r1
 
@@ -30,19 +30,22 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	${PYTHON_DEPS}
+	"
+BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
 	"
 
 PATCHES=(
-	"${FILESDIR}/${P}-cmake-gentoo-release.patch"
-	"${FILESDIR}/${P}-llvm-10.patch"
-	"${FILESDIR}/${P}-werror.patch"
+	"${FILESDIR}/${PN}-1.13.0-cmake-gentoo-release.patch"
+	"${FILESDIR}/${PN}-1.14.0-llvm-10.patch"
+	"${FILESDIR}/${PN}-1.13.0-werror.patch"
 )
 
 src_configure() {
 	local mycmakeargs=(
 		"-DARM_ENABLED=$(usex arm)"
+		"-DCMAKE_SKIP_RPATH=ON"
 	)
 	cmake_src_configure
 }
@@ -56,4 +59,8 @@ src_install() {
 		docompress -x "/usr/share/doc/${PF}/examples"
 		doins -r "${BUILD_DIR}"/examples/*
 	fi
+}
+
+src_test() {
+	${EPYTHON} run_tests.py || die "Testing failed."
 }
