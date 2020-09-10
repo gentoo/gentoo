@@ -8204,7 +8204,7 @@ dev-python/fqdn 1.2.0: RFC-compliant FQDN validation and manipulation for Python
 dev-python/freezegun 0.3.15 1.0.0: Let your Python tests travel through time
 dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static files
 dev-python/frozendict 1.2: A simple immutable mapping for python
-dev-python/fs 2.4.9-r1: Filesystem abstraction layer
+dev-python/fs 2.4.9-r1 2.4.11: Filesystem abstraction layer
 dev-python/fsspec 0.7.4 0.8.0 0.8.1: A specification that python filesystems should adhere to
 dev-python/fudge 1.1.1: Replace real objects with fakes (mocks, stubs, etc) while testing
 dev-python/funcparserlib 0.3.6-r1: Recursive descent parsing library based on functional combinators
