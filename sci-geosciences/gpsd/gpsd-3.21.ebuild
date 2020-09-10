@@ -19,7 +19,7 @@ fi
 DESCRIPTION="GPS daemon and library for USB/serial GPS devices and GPS/mapping clients"
 HOMEPAGE="https://gpsd.io/"
 
-LICENSE="BSD"
+LICENSE="BSD GPL-2"
 SLOT="0/27"
 
 GPSD_PROTOCOLS=(
