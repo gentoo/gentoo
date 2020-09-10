@@ -4,6 +4,7 @@
 # @ECLASS: eutils.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: many extra (but common) functions that are used in ebuilds
 # @DESCRIPTION:
 # The eutils eclass contains a suite of functions that complement
@@ -19,10 +20,12 @@ _EUTILS_ECLASS=1
 
 # implicitly inherited (now split) eclasses
 case ${EAPI:-0} in
-0|1|2|3|4|5|6)
-	inherit desktop epatch estack ltprune multilib preserve-libs \
-		toolchain-funcs vcs-clean
-	;;
+	0|1|2|3|4|5|6)
+		inherit desktop epatch estack ltprune multilib preserve-libs \
+			toolchain-funcs vcs-clean
+		;;
+	7) ;;
+	*) die "${ECLASS} is banned in EAPI ${EAPI}" ;;
 esac
 
 # @FUNCTION: emktemp
