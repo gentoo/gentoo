@@ -12462,7 +12462,7 @@ mail-filter/milter-regex 2.6 2.7: A milter-based regular expression filter
 mail-filter/mimedefang 2.84: Antispam, antivirus and other customizable filters for MTAs with Milter support
 mail-filter/normalizemime 1.19: Helper program to normalize MIME encoded messages
 mail-filter/opendkim 2.10.3-r17 2.10.3-r18: A milter providing DKIM signing and verification
-mail-filter/opendmarc 1.3.2-r3: Open source DMARC implementation
+mail-filter/opendmarc 1.3.2-r3 1.3.3: Open source DMARC implementation
 mail-filter/opensmtpd-filter-rspamd 0.1.6: OpenSMTPD filter for putting emails through rspamd
 mail-filter/policyd 1.82-r3: Policy daemon for postfix and other MTAs
 mail-filter/policyd-weight 0.1.15.2-r2: Weighted Policy daemon for Postfix
