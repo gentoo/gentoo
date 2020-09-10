@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
+PYTHON_COMPAT=( pypy3 python3_{6,7,8,9} )
 
 inherit distutils-r1
 
@@ -15,8 +15,6 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~s390 sparc x86"
 IUSE=""
 LICENSE="MIT"
 SLOT="0"
-
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_test() {
 	"${EPYTHON}" test/test_sendfile.py || die "tests failed with ${EPYTHON}"
