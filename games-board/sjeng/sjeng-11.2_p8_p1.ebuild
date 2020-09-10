@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit prefix
+inherit autotools prefix
 
 MY_PV=$(ver_cut 1-2)
 # 11.2_p8_p1 -> 11.2-8.1
@@ -33,6 +33,10 @@ src_prepare() {
 	eapply "${WORKDIR}/sjeng_${MY_DEB_PV}.diff"
 	QUILT_PATCHES="debian/patches" QUILT_SERIES="debian/patches/series" quilt push -a || die
 	hprefixify book.c rcfile.c
+
+	# Files generated with ancient autotools, regenerate to respect CC.
+	mv configure.{in,ac} || die
+	eautoreconf
 }
 
 src_install() {
