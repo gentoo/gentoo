@@ -32,7 +32,7 @@
 
 #--- END OF EXAMPLES ---
 
-# Mikle Kolyada <zlogene@gentoo,org> (2020-09-10)
+# Mikle Kolyada <zlogene@gentoo.org> (2020-09-10)
 # Merged into the app-text/texlive-core package.
 # Removal in 30 days
 dev-tex/dvi2tty
