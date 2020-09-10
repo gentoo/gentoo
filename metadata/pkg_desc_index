@@ -6525,7 +6525,7 @@ dev-perl/Filesys-DiskSpace 0.50.0-r2: Disk space information
 dev-perl/Filesys-Notify-Simple 0.120.0 0.140.0: Simple and dumb file system watcher
 dev-perl/Filesys-SmbClient 3.200.0-r3 3.200.0-r4: Provide Perl API for libsmbclient.so
 dev-perl/Filesys-Statvfs 0.820.0 0.820.0-r1: Perl extension for statvfs() and fstatvfs()
-dev-perl/Filter 1.570.0: Interface for creation of Perl Filters
+dev-perl/Filter 1.570.0 1.600.0: Interface for creation of Perl Filters
 dev-perl/Finance-Quote 1.470.0: Get stock and mutual fund quotes from various exchanges
 dev-perl/Finance-YahooQuote 0.250.0-r1: Get stock quotes from Yahoo! Finance
 dev-perl/Font-AFM 1.200.0-r1: Parse Adobe Font Metric files
@@ -12489,7 +12489,7 @@ mail-filter/spamprobe 1.4d-r1: Fast, intelligent, automatic spam detector using 
 mail-filter/spf-engine 2.0.2-r1 2.9.2: Policy daemon and milter for Postfix SPF verification
 mail-filter/sqlgrey 1.7.6-r2 1.8.0: A postfix policy service implementing a grey-listing policy
 mail-filter/zdkimfilter 1.8 2.1 2.2: DKIM filter for Courier-MTA
-mail-mta/courier 1.0.5 1.0.13: An MTA designed specifically for maildirs
+mail-mta/courier 1.0.5 1.0.13 1.0.14: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
 mail-mta/exim 4.93.0.4-r1 4.94-r1: A highly configurable, drop-in replacement for sendmail
 mail-mta/msmtp 1.8.7-r1 1.8.10 1.8.11 1.8.12: An SMTP client and SMTP plugin for mail user agents such as Mutt
