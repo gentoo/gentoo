@@ -2783,6 +2783,7 @@ dev-qt/qtdiag:network - Report network information
 dev-qt/qtdiag:widgets - Report widget style information
 dev-qt/qtgamepad:evdev - Enable support for input devices via evdev
 dev-qt/qtgamepad:qml - Build QML bindings
+dev-qt/qtgui:X - Build the XCB platform plugin and enable X11 integration
 dev-qt/qtgui:egl - Enable EGL integration
 dev-qt/qtgui:eglfs - Build the EGL Full Screen/Single Surface platform plugin
 dev-qt/qtgui:evdev - Enable support for input devices via evdev
@@ -2792,7 +2793,7 @@ dev-qt/qtgui:tslib - Enable support for touchscreen devices via x11-libs/tslib
 dev-qt/qtgui:tuio - Build plugin to receive touch events over the TUIO protocol
 dev-qt/qtgui:vulkan - Enable support for Vulkan
 dev-qt/qtgui:wayland - Provide dev-qt/qtwayland to ensure Qt applications can be run as Wayland clients
-dev-qt/qtmultimedia:gstreamer - Enable audio support via media-libs/gstreamer using SLOT 1.0
+dev-qt/qtmultimedia:gstreamer - Enable audio support via media-libs/gstreamer
 dev-qt/qtmultimedia:qml - Build QML/QtQuick bindings and imports
 dev-qt/qtmultimedia:widgets - Build the QtMultimediaWidgets module
 dev-qt/qtnetwork:bindist - Disable EC support via dev-libs/openssl
@@ -2823,6 +2824,7 @@ dev-qt/qtwebkit:orientation - Enable device orientation detection via dev-qt/qts
 dev-qt/qtwebkit:printsupport - Enable printing via dev-qt/qtprintsupport
 dev-qt/qtwebkit:qml - Build QML/QtQuick bindings
 dev-qt/qtwebsockets:qml - Build QML bindings
+dev-qt/qtwidgets:gtk - Build the GTK platform theme plugin
 dev-qt/qtxmlpatterns:qml - Build the XmlListModel import for QtQuick (requires QtDeclarative)
 dev-ros/rosbag:lz4 - Add support for lz4 compressed bags.
 dev-ros/rosconsole:glog - Use dev-cpp/glog as log backend.
