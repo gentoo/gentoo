@@ -8149,6 +8149,7 @@ dev-python/executing 0.5.2: Get information about what a Python frame is current
 dev-python/expects 0.8.0-r1: Expressive and extensible TDD/BDD assertion library for Python
 dev-python/extras 1.0.0: Useful extra bits for Python that should be in the standard library
 dev-python/eyeD3 0.8.11-r1 0.9.5: Module for manipulating ID3 (v1 + v2) tags in Python
+dev-python/fakeredis 1.4.3: Fake implementation of redis API for testing purposes
 dev-python/falcon 2.0.0: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.15: Python package that provides useful locks
 dev-python/faulthandler 3.0 3.1: functions to dump Python tracebacks explicitly (on fault, user signal, timeout)
@@ -8205,7 +8206,7 @@ dev-python/freezegun 0.3.15 1.0.0: Let your Python tests travel through time
 dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static files
 dev-python/frozendict 1.2: A simple immutable mapping for python
 dev-python/fs 2.4.9-r2 2.4.11: Filesystem abstraction layer
-dev-python/fsspec 0.7.4 0.8.0 0.8.1: A specification that python filesystems should adhere to
+dev-python/fsspec 0.7.4 0.8.0 0.8.1 0.8.2: A specification that python filesystems should adhere to
 dev-python/fudge 1.1.1: Replace real objects with fakes (mocks, stubs, etc) while testing
 dev-python/funcparserlib 0.3.6-r1: Recursive descent parsing library based on functional combinators
 dev-python/funcsigs 1.0.2-r1: Python function signatures backport from PEP362 for Python 2.7-3.5
@@ -9049,7 +9050,7 @@ dev-python/semantic_version 2.8.5: Python library providing a few tools handling
 dev-python/semver 2.10.2: A Python module for semantic versioning
 dev-python/send2trash 1.5.0-r1: Sends files to the Trash (or Recycle Bin)
 dev-python/sentinels 1.0.0: Python Sentinels class which are objects with special meanings.
-dev-python/sentry-sdk 0.14.4 0.16.3 0.16.3-r1: Python client for Sentry
+dev-python/sentry-sdk 0.14.4 0.16.3 0.16.3-r1 0.17.4: Python client for Sentry
 dev-python/serpent 1.30: A simple serialization library based on ast.literal_eval
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0: Service identity verification for pyOpenSSL
@@ -11263,7 +11264,7 @@ games-board/pychess 1.0.0 1.0.2: A chess client for GNOME
 games-board/pysolfc 2.6.4-r1: An exciting collection of more than 1000 solitaire card games
 games-board/scid 4.6.2-r1: a free chess database application
 games-board/simsu 1.3.9: Basic sudoku game
-games-board/sjeng 11.2-r2: Console based chess interface
+games-board/sjeng 11.2_p8_p1: Console based chess interface
 games-board/spider 1.2_p4-r2: Spider Solitaire
 games-board/stockfish 10 11: Free UCI chess engine, claimed to be the strongest in the world
 games-board/tablebase-syzygy 0_pre20131213 0_pre20131213-r100: Syzygy chess endgame tablebases for up to 6 pieces
