@@ -12,6 +12,7 @@
     <remote-id type="cpan-module">Filter::cpp</remote-id>
     <remote-id type="cpan-module">Filter::decrypt</remote-id>
     <remote-id type="cpan-module">Filter::exec</remote-id>
+    <remote-id type="cpan-module">Filter::m4</remote-id>
     <remote-id type="cpan-module">Filter::sh</remote-id>
     <remote-id type="cpan-module">Filter::tee</remote-id>
   </upstream>
