@@ -25,6 +25,7 @@ BDEPEND="
 		dev-python/asttokens[${PYTHON_USEDEP}]
 		<dev-python/dnspython-2[${PYTHON_USEDEP}]
 		dev-python/executing[${PYTHON_USEDEP}]
+		dev-python/fakeredis[${PYTHON_USEDEP}]
 		dev-python/flask-login[${PYTHON_USEDEP}]
 		dev-python/gevent[${PYTHON_USEDEP}]
 		dev-python/pytest-aiohttp[${PYTHON_USEDEP}]
@@ -42,9 +43,6 @@ distutils_enable_tests pytest
 
 python_test() {
 	local deselect=(
-		# unpackaged 'fakeredis'
-		--ignore tests/integrations/redis/test_redis.py
-		--ignore tests/integrations/rq/test_rq.py
 		# tests require Internet access
 		--ignore tests/integrations/stdlib/test_httplib.py
 		--ignore tests/integrations/requests/test_requests.py
