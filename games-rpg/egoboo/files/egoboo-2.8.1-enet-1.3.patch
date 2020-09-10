@@ -1,0 +1,50 @@
+From 851cd415952c06042647cf2a721d8a699a11fde2 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Thu, 10 Sep 2020 18:39:45 +0300
+Subject: [PATCH] Add support for enet-1.3
+
+---
+ src/game/network.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/game/network.c b/src/game/network.c
+index ee557b4..16ea1cc 100755
+--- a/src/game/network.c
++++ b/src/game/network.c
+@@ -1845,7 +1845,7 @@ int cl_joinGame( const char* hostname )
+         log_info( "cl_joinGame: Creating client network connection... " );
+         // Create my host thingamabober
+         /// @todo Should I limit client bandwidth here?
+-        net_myHost = enet_host_create( NULL, 1, 0, 0 );
++        net_myHost = enet_host_create( NULL, 1, 0, 0, 0 );
+         if ( NULL == net_myHost )
+         {
+             // can't create a network connection at all
+@@ -1861,7 +1861,7 @@ int cl_joinGame( const char* hostname )
+         log_info( "cl_joinGame: Attempting to connect to %s:%d\n", hostname, NET_EGOBOO_PORT );
+         enet_address_set_host( &address, hostname );
+         address.port = NET_EGOBOO_PORT;
+-        net_gameHost = enet_host_connect( net_myHost, &address, NET_EGOBOO_NUM_CHANNELS );
++        net_gameHost = enet_host_connect( net_myHost, &address, NET_EGOBOO_NUM_CHANNELS, 0 );
+         if ( NULL == net_gameHost )
+         {
+             log_info( "cl_joinGame: No available peers to create a connection!\n" );
+@@ -1904,7 +1904,7 @@ int sv_hostGame()
+         address.port = NET_EGOBOO_PORT;
+ 
+         log_info( "sv_hostGame: Creating game on port %d\n", NET_EGOBOO_PORT );
+-        net_myHost = enet_host_create( &address, MAX_PLAYER, 0, 0 );
++        net_myHost = enet_host_create( &address, MAX_PLAYER, 0, 0, 0 );
+         if ( NULL == net_myHost )
+         {
+             log_info( "sv_hostGame: Could not create network connection!\n" );
+@@ -2180,4 +2180,4 @@ player_t* chr_get_ppla( const CHR_REF ichr )
+     if ( !VALID_PLA( iplayer ) ) return NULL;
+ 
+     return PlaStack.lst + iplayer;
+-}
+\ No newline at end of file
++}
+-- 
+2.26.2
+
