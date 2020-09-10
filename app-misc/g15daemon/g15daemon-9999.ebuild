@@ -7,7 +7,7 @@ GENTOO_DEPEND_ON_PERL="no"
 ESVN_PROJECT=${PN}/trunk
 ESVN_REPO_URI="https://svn.code.sf.net/p/${PN}/code/trunk/${PN}-wip"
 
-inherit autotools flag-o-matic linux-info perl-module subversion toolchain-funcs udev
+inherit autotools flag-o-matic linux-info perl-module subversion systemd toolchain-funcs udev
 
 DESCRIPTION="Takes control of the G15 keyboard, through the linux kernel uinput device driver"
 HOMEPAGE="https://sourceforge.net/projects/g15daemon/"
@@ -125,6 +125,7 @@ src_install() {
 
 	newconfd "${FILESDIR}/${PN}-1.2.7.confd" ${PN}
 	newinitd "${FILESDIR}/${PN}-1.9.5.3.initd" ${PN}
+	systemd_dounit "${FILESDIR}/${PN}.service"
 	dobin "${FILESDIR}/g15daemon-hotplug"
 	udev_dorules "${FILESDIR}/99-g15daemon.rules"
 

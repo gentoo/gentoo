@@ -9,7 +9,7 @@ inherit autotools distutils-r1
 
 DESCRIPTION="simplified, portable interface to several low-level networking routines"
 HOMEPAGE="https://github.com/ofalk/libdnet"
-SRC_URI="https://dev.gentoo.org/~jer/${P}.tar.xz"
+SRC_URI="https://github.com/ofalk/${PN}/archive/${P}.tar.gz"
 LICENSE="LGPL-2"
 
 SLOT="0"
@@ -25,6 +25,7 @@ RDEPEND="
 RESTRICT="test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 DOCS=( README.md THANKS TODO )
+S=${WORKDIR}/${PN}-${P}
 
 src_prepare() {
 	default
