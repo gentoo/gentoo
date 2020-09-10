@@ -5139,7 +5139,7 @@ dev-lang/gforth 0.7.3-r1: GNU Forth is a fast and portable implementation of the
 dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5 8.8.1 8.8.2 8.8.3 8.8.4 8.10.1: The Glasgow Haskell Compiler
 dev-lang/gnat-gpl 2016-r4 2017-r1 2018-r3 2019-r2: GNAT Ada Compiler - GPL version
 dev-lang/gnuprologjava 0.2.6 0.2.6-r1: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
-dev-lang/go 1.14.7 1.14.8 1.15 1.15.1 9999: A concurrent garbage collected and typesafe programming language
+dev-lang/go 1.14.7 1.14.8 1.14.9 1.15 1.15.1 1.15.2 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/go-bootstrap 1.13.6: Bootstrap package for dev-lang/go
 dev-lang/gprolog 1.4.4 1.4.5: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/helium 1.8.1: The Helium Compiler
@@ -6235,7 +6235,7 @@ dev-perl/Curses-UI 0.960.900-r2 0.960.900-r3: Perl UI framework based on the cur
 dev-perl/CursesWidgets 1.997.0-r2 1.997.0-r3: Provide high level APIs for rapid user interface design on the console in Perl
 dev-perl/Cwd-Guard 0.50.0: Temporary changing working directory (chdir)
 dev-perl/DBD-MariaDB 1.210.0-r1: MariaDB and MySQL driver for the Perl5 Database Interface (DBI)
-dev-perl/DBD-Pg 3.5.3 3.7.0 3.10.0 3.13.0 3.14.0 3.14.2: PostgreSQL database driver for the DBI module
+dev-perl/DBD-Pg 3.5.3 3.7.0 3.10.0 3.14.0 3.14.2: PostgreSQL database driver for the DBI module
 dev-perl/DBD-SQLite 1.560.0 1.580.0 1.640.0 1.660.0: Self Contained RDBMS in a DBI Driver
 dev-perl/DBD-mysql 4.44.0-r1 4.50.0 4.50.0-r1: MySQL driver for the Perl5 Database Interface (DBI)
 dev-perl/DBI 1.643.0: Database independent interface for Perl
@@ -6259,7 +6259,7 @@ dev-perl/Danga-Socket 1.610.0-r1 1.620.0: A non-blocking socket object; uses epo
 dev-perl/Data-AMF 0.90.0-r1 0.90.0-r2: (de)serializer perl module for Adobe's AMF (Action Message Format)
 dev-perl/Data-Buffer 0.40.0-r1 0.40.0-r2: Read/write buffer class
 dev-perl/Data-Compare 1.250.0 1.270.0-r1: Compare perl data structures
-dev-perl/Data-Diver 1.010.1 1.10.100-r1 1.10.100-r2: Simple, ad-hoc access to elements of deeply nested structures
+dev-perl/Data-Diver 1.010.1 1.10.100-r2: Simple, ad-hoc access to elements of deeply nested structures
 dev-perl/Data-Dump 1.230.0 1.230.0-r1: Pretty printing of data structures
 dev-perl/Data-Dump-Streamer 2.400.0-r1: Accurately serialize a data structure as Perl code
 dev-perl/Data-DumpXML 1.60.0-r1 1.60.0-r2: Dump arbitrary data structures as XML
@@ -6292,7 +6292,7 @@ dev-perl/Data-Uniqid 0.120.0-r1 0.120.0-r2: Perl extension for simple generating
 dev-perl/Data-Utilities 0.40.0-r1 0.40.0-r2: Merge nested Perl data structures
 dev-perl/Data-Validate-Domain 0.140.0: Domain and host name validation
 dev-perl/Data-Validate-IP 0.270.0: Lightweight IPv4 and IPv6 validation module
-dev-perl/Data-Visitor 0.300.0-r2 0.310.0: Visitor style traversal of Perl data structures
+dev-perl/Data-Visitor 0.310.0: Visitor style traversal of Perl data structures
 dev-perl/Date-Calc 6.400.0 6.400.0-r1: Gregorian calendar date calculations
 dev-perl/Date-Extract 0.60.0: Extract probable dates from strings
 dev-perl/Date-ICal 2.678.0-r1 2.678.0-r2: ICal format date base module for Perl
@@ -6401,16 +6401,16 @@ dev-perl/Dist-Zilla-Plugin-StaticInstall 0.12.0: Identify a distribution as elig
 dev-perl/Dist-Zilla-Plugin-SurgicalPodWeaver 0.2.300: Surgically apply PodWeaver
 dev-perl/Dist-Zilla-Plugin-Test-CPAN-Changes 0.12.0: release tests for your changelog
 dev-perl/Dist-Zilla-Plugin-Test-Compile 2.58.0: Common tests to check syntax of your modules, using only core modules
-dev-perl/Dist-Zilla-Plugin-Test-MinimumVersion 2.0.7 2.0.10: Release tests for minimum required versions
+dev-perl/Dist-Zilla-Plugin-Test-MinimumVersion 2.0.10: Release tests for minimum required versions
 dev-perl/Dist-Zilla-Plugin-Test-Perl-Critic 3.1.0: Tests to check your code against best practices
 dev-perl/Dist-Zilla-Plugin-VersionFromMainModule 0.40.0: Set the distribution version from your main module's
 dev-perl/Dist-Zilla-Role-FileWatcher 0.6.0: Receive notification when something changes a file's contents
-dev-perl/Dist-Zilla-Role-ModuleMetadata 0.4.0 0.6.0: A role for plugins that use Module::Metadata
+dev-perl/Dist-Zilla-Role-ModuleMetadata 0.6.0: A role for plugins that use Module::Metadata
 dev-perl/Dist-Zilla-Role-PluginBundle-PluginRemover 0.105.0: Add '-remove' functionality to a bundle
 dev-perl/Dumbbench 0.111.0: More reliable benchmarking with the least amount of thinking
 dev-perl/DynaLoader-Functions 0.3.0: Deconstructed Dynamic C Library Loading
 dev-perl/EV 4.220.0 4.330.0: Perl interface to libev, a high performance full-featured event loop
-dev-perl/Emacs-PDE 0.2.16-r2 0.2.17: Perl Develop Environment in Emacs
+dev-perl/Emacs-PDE 0.2.17: Perl Develop Environment in Emacs
 dev-perl/Email-Abstract 3.8.0: unified interface to mail representations
 dev-perl/Email-Address 1.912.0: RFC 2822 Address Parsing and Creation
 dev-perl/Email-Address-List 0.60.0 0.60.0-r1: RFC close address list parsing
