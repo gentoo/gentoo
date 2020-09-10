@@ -45,6 +45,7 @@ PATCHES=(
 src_configure() {
 	local mycmakeargs=(
 		"-DARM_ENABLED=$(usex arm)"
+		"-DCMAKE_SKIP_RPATH=ON"
 	)
 	cmake_src_configure
 }
