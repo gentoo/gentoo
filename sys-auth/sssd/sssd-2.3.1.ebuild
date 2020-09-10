@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="acl doc +locator +netlink nfsv4 nls +manpages pac python samba selinux sudo systemd test valgrind"
+IUSE="acl doc +locator +netlink nfsv4 nls +man pac python samba selinux sudo systemd test valgrind"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="pac? ( samba )
@@ -50,7 +50,7 @@ DEPEND="
 	nls? ( >=sys-devel/gettext-0.18 )
 	pac? (
 		app-crypt/mit-krb5[${MULTILIB_USEDEP}]
-		net-fs/samba[${MULTILIB_USEDEP}]
+		net-fs/samba
 	)
 	python? ( ${PYTHON_DEPS} )
 	samba? ( >=net-fs/samba-4.10.2[winbind] )
@@ -70,6 +70,7 @@ RDEPEND="${DEPEND}
 	selinux? ( >=sec-policy/selinux-sssd-2.20120725-r9 )
 	"
 BDEPEND="${DEPEND}
+	>=sys-devel/autoconf-2.69-r5
 	doc? ( app-doc/doxygen )
 	test? (
 		dev-libs/check
@@ -82,7 +83,7 @@ BDEPEND="${DEPEND}
 		sys-libs/uid_wrapper
 		valgrind? ( dev-util/valgrind )
 	)
-	manpages? (
+	man? (
 		app-text/docbook-xml-dtd:4.4
 		>=dev-libs/libxslt-1.1.26
 		nls? ( app-text/po4a )
@@ -132,6 +133,7 @@ multilib_src_configure() {
 
 	myconf+=(
 		--localstatedir="${EPREFIX}"/var
+		--runstatedir="${EPREFIX}"/run
 		--with-pid-path="${EPREFIX}"/run
 		--with-plugin-path="${EPREFIX}"/usr/$(get_libdir)/sssd
 		--enable-pammoddir="${EPREFIX}"/$(getpam_mod_dir)
@@ -152,6 +154,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with systemd kcm)
 		$(multilib_native_use_with systemd secrets)
 		$(use_with samba)
+		--with-smb-idmap-interface-version=6
 		$(multilib_native_use_enable acl cifs-idmap-plugin)
 		$(multilib_native_use_with selinux)
 		$(multilib_native_use_with selinux semanage)
@@ -160,7 +163,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with nfsv4 nfsv4-idmapd-plugin)
 		$(use_enable nls)
 		$(multilib_native_use_with netlink libnl)
-		$(multilib_native_use_with manpages)
+		$(multilib_native_use_with man manpages)
 		$(multilib_native_use_with sudo)
 		$(multilib_native_with autofs)
 		$(multilib_native_with ssh)
@@ -188,6 +191,7 @@ multilib_src_configure() {
 			# ldb lib fails... but it does not seem to bother
 			{DHASH,COLLECTION,INI_CONFIG_V{0,1,1_1,1_3}}_{CFLAGS,LIBS}=' '
 			{PCRE,CARES,SYSTEMD_LOGIN,SASL,GLIB2,DBUS,CRYPTO,P11_KIT}_{CFLAGS,LIBS}=' '
+			{NDR_NBT,SMBCLIENT,NDR_KRB5PAC}_{CFLAGS,LIBS}=' '
 
 			# use native include path for dbus (needed for build)
 			DBUS_CFLAGS="${native_dbus_cflags}"
@@ -206,7 +210,7 @@ multilib_src_compile() {
 	if multilib_is_native_abi; then
 		default
 		use doc && emake docs
-		if use manpages || use nls; then
+		if use man || use nls; then
 			emake update-po
 		fi
 	else
