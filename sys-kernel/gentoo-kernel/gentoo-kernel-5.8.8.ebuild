@@ -37,9 +37,7 @@ S=${WORKDIR}/${MY_P}
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="debug"
-REQUIRED_USE="
-	arm? ( savedconfig )
-	arm64? ( savedconfig )"
+REQUIRED_USE="arm? ( savedconfig )"
 
 RDEPEND="
 	!sys-kernel/vanilla-kernel:${SLOT}
