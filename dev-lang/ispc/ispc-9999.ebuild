@@ -62,5 +62,6 @@ src_install() {
 }
 
 src_test() {
-	${EPYTHON} run_tests.py || die "Testing failed."
+	# Inject path to prevent using system ispc
+	PATH="${BUILD_DIR}/bin:${PATH}" ${EPYTHON} run_tests.py || die "Testing failed with ${EPYTHON}"
 }
