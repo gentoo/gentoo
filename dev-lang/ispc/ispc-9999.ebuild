@@ -45,6 +45,7 @@ PATCHES=(
 src_configure() {
 	local mycmakeargs=(
 		"-DARM_ENABLED=$(usex arm)"
+		"-DCMAKE_SKIP_RPATH=ON"
 	)
 	cmake_src_configure
 }
@@ -61,5 +62,6 @@ src_install() {
 }
 
 src_test() {
-	${EPYTHON} run_tests.py || die "Testing failed."
+	# Inject path to prevent using system ispc
+	PATH="${BUILD_DIR}/bin:${PATH}" ${EPYTHON} run_tests.py || die "Testing failed with ${EPYTHON}"
 }
