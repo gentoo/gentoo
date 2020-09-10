@@ -5244,7 +5244,7 @@ dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures an
 dev-libs/boehm-gc 8.0.4: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.72.0-r1 1.73.0 1.74.0: Boost Libraries for C++
 dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL library
-dev-libs/botan 2.9.0 2.14.0-r1 2.15.0: C++ crypto library
+dev-libs/botan 2.14.0-r1 2.15.0: C++ crypto library
 dev-libs/boxfort 0.0.1_pre20200110 0.0.1_pre20200902: Convenient & cross-platform sandboxing C library
 dev-libs/busybee 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
 dev-libs/c-blosc 1.11.2 1.19.0 1.20.0 1.20.1: Blocking, shuffling and lossless compression library
@@ -6523,8 +6523,8 @@ dev-perl/FileHandle-Unget 0.162.800 0.163.400: A FileHandle which supports unget
 dev-perl/Filesys-Df 0.920.0-r2 0.920.0-r3: Disk free based on Filesys::Statvfs
 dev-perl/Filesys-DiskSpace 0.50.0-r2: Disk space information
 dev-perl/Filesys-Notify-Simple 0.120.0 0.140.0: Simple and dumb file system watcher
-dev-perl/Filesys-SmbClient 3.200.0-r3: Provide Perl API for libsmbclient.so
-dev-perl/Filesys-Statvfs 0.820.0: Disk free based on Filesys::Statvfs
+dev-perl/Filesys-SmbClient 3.200.0-r3 3.200.0-r4: Provide Perl API for libsmbclient.so
+dev-perl/Filesys-Statvfs 0.820.0 0.820.0-r1: Perl extension for statvfs() and fstatvfs()
 dev-perl/Filter 1.570.0: Interface for creation of Perl Filters
 dev-perl/Finance-Quote 1.470.0: Get stock and mutual fund quotes from various exchanges
 dev-perl/Finance-YahooQuote 0.250.0-r1: Get stock quotes from Yahoo! Finance
@@ -16095,7 +16095,7 @@ sci-geosciences/gmt 4.5.18-r1 5.4.4: Powerful map generator
 sci-geosciences/gnome-maps 3.34.3 3.36.4: A map application for GNOME
 sci-geosciences/gpsbabel 1.5.4-r1 9999: GPS waypoints, tracks and routes converter
 sci-geosciences/gpscorrelate 1.6.1-r1: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
-sci-geosciences/gpsd 3.17-r3 3.17-r4 3.18.1 3.19 3.20 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
+sci-geosciences/gpsd 3.17-r3 3.17-r4 3.18.1 3.19 3.20 3.21 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gpx-viewer 0.4.0-r1: Simple program to visualize a gpx file
 sci-geosciences/gpxsee 7.29 7.30 7.31: A viewer and analyzer that supports gpx, tcx, kml, fit, igc and nmea files
 sci-geosciences/grass 7.4.4 7.4.4-r3: A free GIS with raster and vector functionality, as well as 3D vizualization
