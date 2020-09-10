@@ -7,9 +7,9 @@ IUSE=debug savedconfig +initramfs test
 KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=GPL-2
 RDEPEND=!sys-kernel/vanilla-kernel:5.7.17 !sys-kernel/vanilla-kernel-bin:5.7.17 || ( sys-kernel/installkernel-gentoo sys-kernel/installkernel-systemd-boot ) initramfs? ( >=sys-kernel/dracut-049-r3 )
-REQUIRED_USE=arm? ( savedconfig ) arm64? ( savedconfig )
+REQUIRED_USE=arm? ( savedconfig )
 RESTRICT=!test? ( test ) test? ( userpriv ) arm? ( test )
 SLOT=5.7.17
 SRC_URI=https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.7.tar.xz https://dev.gentoo.org/~alicef/dist/genpatches/genpatches-5.7-18.base.tar.xz https://dev.gentoo.org/~alicef/dist/genpatches/genpatches-5.7-18.extras.tar.xz amd64? ( https://src.fedoraproject.org/rpms/kernel/raw/14d239184a721485a823f30f5aede1c6190558ad/f/kernel-x86_64-fedora.config -> kernel-x86_64-fedora.config.5.7.8 ) arm64? ( https://src.fedoraproject.org/rpms/kernel/raw/14d239184a721485a823f30f5aede1c6190558ad/f/kernel-aarch64-fedora.config -> kernel-aarch64.config.5.7.8 ) x86? ( https://src.fedoraproject.org/rpms/kernel/raw/14d239184a721485a823f30f5aede1c6190558ad/f/kernel-i686-fedora.config -> kernel-i686-fedora.config.5.7.8 )
 _eclasses_=kernel-build	8313686ad2b467fc26c11eef8543f683	kernel-install	2a4af308756b3204b376d8b3fd5adbbf	mount-boot	20014ae7a3e81eb2c65a4d4d86d2560d	multilib	2477ebe553d3e4d2c606191fe6c33602	portability	e8f7ef3a41965b21a734550f8a94c1c6	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=b8f40252e346dcba51c0a2352c36a151
+_md5_=1f494760e6c76b4ce63e6233dab28891

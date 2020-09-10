@@ -17604,7 +17604,7 @@ sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs genera
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.60 5.4.61 5.4.62 5.4.63 5.7.17 5.7.18 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6 5.8.7 5.8.8: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.60 5.4.61 5.4.62 5.4.62-r1 5.4.63 5.4.63-r1 5.7.17 5.7.18 5.7.19 5.7.19-r1 5.8.3 5.8.4 5.8.5 5.8.5-r1 5.8.6 5.8.6-r1 5.8.7 5.8.7-r1 5.8.8: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel-bin 5.4.60 5.4.61 5.4.62 5.4.62-r1 5.4.63 5.4.63-r1 5.7.17 5.7.18 5.7.19 5.7.19-r1 5.8.3 5.8.4 5.8.5 5.8.5-r1 5.8.6 5.8.6-r1 5.8.7 5.8.7-r1 5.8.8 5.8.8-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.228 4.4.233 4.4.234 4.4.235 4.9.228 4.9.233 4.9.234 4.9.235 4.14.185 4.14.194 4.14.195 4.14.196 4.14.197 4.19.129 4.19.141 4.19.142 4.19.143 4.19.144 5.4.48 5.4.60 5.4.61 5.4.62 5.4.63 5.4.64 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6 5.8.7 5.8.8: Full sources including the Gentoo patchset for the 5.8 kernel tree
 sys-kernel/git-sources 5.9_rc1 5.9_rc2 5.9_rc3 5.9_rc4: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -18091,7 +18091,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.5.1: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 85.0.4183.83 85.0.4183.102 86.0.4240.22 87.0.4252.0: Open-source version of Google Chrome web browser
+www-client/chromium 85.0.4183.102 86.0.4240.22 87.0.4252.0: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r4 0.13_pre_pre20180225 0.13.4 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6 3.34.4 3.36.3 3.36.4: GNOME webbrowser based on Webkit
