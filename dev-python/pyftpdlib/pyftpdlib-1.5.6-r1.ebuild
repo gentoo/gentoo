@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE="ssl(+)"
 
 inherit distutils-r1
@@ -19,13 +20,10 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	ssl? ( dev-python/pyopenssl[${PYTHON_USEDEP}] )
-	dev-python/pysendfile[${PYTHON_USEDEP}]
 "
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
+BDEPEND="
 	test? (
 		${RDEPEND}
-		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
@@ -40,6 +38,8 @@ python_test() {
 	pytest ${PN}/test/test_misc.py || die "Tests failed with ${EPYTHON}"
 	# Some of these tests tend to fail
 	local skipped_tests=(
+		# Those tests are run separately
+		pyftpdlib/test/test_misc.py
 		# https://github.com/giampaolo/pyftpdlib/issues/470
 		# https://bugs.gentoo.org/659108
 		pyftpdlib/test/test_functional_ssl.py::TestTimeouts::test_idle_data_timeout2
@@ -62,8 +62,7 @@ python_test() {
 		pyftpdlib/test/test_servers.py::TestFtpAuthentication::test_auth_failed
 	)
 	# Tests fail with TZ=GMT, see https://bugs.gentoo.org/666623
-	TZ=UTC+1 pytest -vv \
-		--ignore ${PN}/test/test_misc.py ${skipped_tests[@]/#/--deselect } \
+	TZ=UTC+1 pytest -vv ${skipped_tests[@]/#/--deselect } \
 			|| die "Tests failed with ${EPYTHON}"
 }
 
@@ -74,13 +73,4 @@ python_install_all() {
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
 	distutils-r1_python_install_all
-}
-
-pkg_postinst() {
-	if [[ -z ${REPLACING_VERSIONS} ]] && \
-		[[ ${PYTHON_TARGETS} == *python2_7* ]] && \
-		! has_version dev-python/pysendfile ; then
-		elog "dev-python/pysendfile is not installed"
-		elog "It can considerably speed up file transfers for Python 2"
-	fi
 }
