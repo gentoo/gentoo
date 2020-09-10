@@ -168,10 +168,12 @@ src_install() {
 	fi
 
 	if use standalone ; then
+		local iwdconf="${ED}/etc/iwd/main.conf"
 		dodir /etc/iwd
-		echo "[General]" > ${ED}/etc/iwd/main.conf
-		echo "EnableNetworkConfiguration=true" >> "${ED}"/etc/iwd/main.conf
-		echo "NameResolvingService=$(usex systemd systemd resolvconf)" >> "${ED}"/etc/iwd/main.conf
+		echo "[General]" > "${iwdconf}"
+		echo "EnableNetworkConfiguration=true" >> "${iwdconf}"
+		echo "[Network]" >> "${iwdconf}"
+		echo "NameResolvingService=$(usex systemd systemd resolvconf)" >> "${iwdconf}"
 		echo "rc_provide=\"net\"" > ${ED}/etc/conf.d/iwd
 	fi
 }
