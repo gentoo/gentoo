@@ -86,6 +86,7 @@ MODULAR_X_DEPEND="X? (
 	)"
 
 COMMON_DEPEND="${MODULAR_X_DEPEND}
+	!dev-tex/dvi2tty
 	!app-text/vlna
 	!app-eselect/eselect-mpost
 	!app-eselect/eselect-pdftex
@@ -103,6 +104,7 @@ COMMON_DEPEND="${MODULAR_X_DEPEND}
 	app-text/libpaper
 	dev-libs/gmp:0
 	dev-libs/mpfr:0=
+	>=dev-libs/ptexenc-1.3.8
 	xetex? (
 		>=app-text/teckit-2.5.3
 		media-libs/fontconfig
@@ -111,7 +113,6 @@ COMMON_DEPEND="${MODULAR_X_DEPEND}
 	media-libs/freetype:2
 	>=dev-libs/icu-50:=
 	>=dev-libs/kpathsea-6.3.2
-	cjk? ( >=dev-libs/ptexenc-1.3.8 )
 	>=app-text/poppler-0.87.0:="
 
 BDEPEND="sys-apps/ed
@@ -214,6 +215,7 @@ src_configure() {
 		--disable-dialog \
 		--disable-multiplatform \
 		--enable-epsfwin \
+		--enable-dvi2tty \
 		--enable-mftalkwin \
 		--enable-regiswin \
 		--enable-tektronixwin \
@@ -238,9 +240,9 @@ src_configure() {
 		--disable-cjkutils \
 		--disable-xdvik \
 		--enable-luatex \
-		--disable-dvi2tty \
 		--disable-dvisvgm \
 		--enable-shared \
+		--disable-static \
 		--disable-native-texlive-build \
 		--disable-largefile \
 		--disable-build-in-source-tree \
@@ -341,6 +343,8 @@ src_install() {
 	# like non-existing targets
 	dosym tex /usr/bin/virtex
 	dosym pdftex /usr/bin/pdfvirtex
+
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
