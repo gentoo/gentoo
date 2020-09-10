@@ -92,3 +92,11 @@ src_install() {
 
 	dodoc "${T}"/{README,ACKNOWLEDGEMENTS}
 }
+
+pkg_postinst() {
+	einfo "Warning: while running, dropbox may attempt to autoupdate itself in"
+	einfo " your user's home directory.  To prevent this, run the following as"
+	einfo " each user who will run dropbox:"
+	einfo ""
+	einfo "install -dm0 ~/.dropbox-dist"
+}
