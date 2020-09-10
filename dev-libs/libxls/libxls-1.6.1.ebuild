@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/libxls/libxls"
 SRC_URI="https://github.com/libxls/libxls/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD-2"
-SLOT="0/1" # libxlsreader.so.1
+SLOT="0/8" # libxlsreader.so.8
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
