@@ -15612,7 +15612,7 @@ net-wireless/hostapd 2.9-r1 2.9-r2 9999: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/inspectrum 0.2.2 9999: Tool for analysing captured signals from software-defined radio receivers
 net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 4.9 4.14 5.0.1 5.3 5.4: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
-net-wireless/iwd 1.8-r3 1.9 9999: Wireless daemon for linux
+net-wireless/iwd 1.8-r3 1.9-r1 9999: Wireless daemon for linux
 net-wireless/jackit 0.0_p20170918-r1: Exploit Code for Mousejack
 net-wireless/kismet 2016.07.1-r2 2020.04.3 2020.09.1 9999: IEEE 802.11 wireless LAN sniffer
 net-wireless/kismet-rest 2019.05.02 9999: Kismet REST Python API
