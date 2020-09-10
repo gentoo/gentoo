@@ -427,7 +427,6 @@ app-misc/workrave
 app-portage/etc-proposals
 app-portage/gpytage
 dev-db/mysql-workbench
-dev-lang/ispc
 dev-util/bam
 media-gfx/displaycal
 media-plugins/gimp-resynthesizer
