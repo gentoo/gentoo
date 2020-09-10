@@ -22,7 +22,7 @@ for lala in ${LANGS}; do
 done
 
 COMMON_DEPEND="
-	app-text/texlive[dvi2tty,extra,graphics,png,pstricks,science,truetype,xml,X,luatex,xetex,humanities,publishers]
+	app-text/texlive[extra,graphics,png,pstricks,science,truetype,xml,X,luatex,xetex,humanities,publishers]
 	app-text/poppler:=
 	dev-perl/XML-LibXML
 	media-libs/netpbm
