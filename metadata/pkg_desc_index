@@ -971,7 +971,7 @@ app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT K
 app-crypt/monkeysphere 0.36-r1 0.36-r2 0.37 0.38 0.39 0.41 0.42 0.44: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
 app-crypt/moolticute 0.43.19 9999: Mooltipass crossplatform daemon/tools
 app-crypt/nasty 0.6-r1: Proof-of-concept GPG passphrase recovery tool
-app-crypt/nitrocli 0.3.1 0.3.2 0.3.3: A command line tool for interacting with Nitrokey devices.
+app-crypt/nitrocli 0.3.1 0.3.2 0.3.3 0.3.4: A command line tool for interacting with Nitrokey devices
 app-crypt/nitrokey-app 1.4-r1 1.4.2 9999: Cross platform personalization tool for the Nitrokey
 app-crypt/nwipe 0.25: Securely erase disks using a variety of recognized methods
 app-crypt/onak 0.5.0: onak is an OpenPGP keyserver
