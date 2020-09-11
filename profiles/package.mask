@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (2020-09-11)
+# These versions are not compatible with current stable
+# dev-libs/openssl version, bug #741622.
+# Removal in 30 days. Please migrate to newer slots.
+dev-db/mariadb:5.5
+dev-db/mariadb:10.1
+
 # Michał Górny <mgorny@gentoo.org> (2020-09-11)
 # 7.3.2 release candidates.  Masked for testing.
 =dev-python/pypy-7.3.2_rc*
