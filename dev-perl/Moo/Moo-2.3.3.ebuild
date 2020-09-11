@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Minimalist Object Orientation (with Moose compatiblity)"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa ppc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="amd64 ~arm hppa ppc ~riscv x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
