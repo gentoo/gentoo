@@ -4,3 +4,5 @@
 # Unmask the multilib flags for this arch.
 -abi_riscv_lp64d
 -abi_riscv_lp64
+-abi_riscv_ilp32d
+-abi_riscv_ilp32
