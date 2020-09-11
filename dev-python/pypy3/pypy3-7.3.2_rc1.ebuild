@@ -58,23 +58,13 @@ src_prepare() {
 	popd > /dev/null || die
 
 	# see http://buildbot.pypy.org/summary?branch=py3.6&builder=pypy-c-jit-linux-x86-64
-	sed -i -e 's:test_runeval_step:_&:' \
-		lib-python/3/test/test_bdb.py || die
-	sed -i -e 's:test_crashing_decode_handler:_&:' \
-		lib-python/3/test/test_codeccallbacks.py || die
 	sed -i -e 's:test_jumpy:_&:' \
 		lib-python/3/test/test_dis.py || die
-	sed -i -e 's:test_ast_line_numbers:_&:' \
-		-e 's:test_backslashes_in_string_part:_&:' \
-		lib-python/3/test/test_fstring.py || die
-	sed -i -e 's:test_listdir_bytes_like:_&:' \
+	sed -i -e 's:test_get_and_set_scheduler_and_param:_&:' \
 		lib-python/3/test/test_posix.py || die
 	sed -i -e 's:test_auto_history:_&:' \
 		-e 's:test_history_size:_&:' \
 		lib-python/3/test/test_readline.py || die
-	sed -i -e 's:test_pha_optional:_&:' \
-		-e 's:test_pha_required:_&:' \
-		lib-python/3/test/test_ssl.py || die
 	sed -i -e 's:test_eval_bytes_invalid_escape:_&:' \
 		-e 's:test_eval_str_invalid_escape:_&:' \
 		lib-python/3/test/test_string_literals.py || die
@@ -87,13 +77,10 @@ src_prepare() {
 	sed -i -e 's:test_circular_imports:_&:' \
 		lib-python/3/test/test_threaded_import.py || die
 
-	# fixed in git
-	sed -i -e 's:test_SOCK_CLOEXEC:_&:' \
-		lib-python/3/test/test_socket.py || die
-
 	# the first one's broken by sandbox, the second by our env
 	sed -i -e 's:test_empty_env:_&:' \
-		-e 's:test_executable:_&:' \
+		-e 's:test_executable(:_&:' \
+		-e 's:test_executable_without_cwd:_&:' \
 		lib-python/3/test/test_subprocess.py || die
 
 	# XXX
