@@ -2,4 +2,4 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Force the flag corresponding to the default ABI.
-abi_riscv_lp64d
+abi_riscv_ilp32d

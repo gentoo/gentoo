@@ -15,3 +15,8 @@ EGIT_BRANCH=master
 
 RDEPEND=""
 BDEPEND="${CATEGORY}/binutils"
+
+src_prepare() {
+	has_version '>=sys-libs/glibc-2.32-r1' && rm -v "${WORKDIR}/patch/23_all_disable-riscv32-ABIs.patch"
+	toolchain_src_prepare
+}
