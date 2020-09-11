@@ -3,3 +3,7 @@
 
 # Force the flag which corresponds to ARCH.
 riscv
+
+# Right now we have only one Python available, so we must use it
+python_targets_python3_7
+python_single_target_python3_7
