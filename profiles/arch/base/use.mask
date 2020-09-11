@@ -197,6 +197,8 @@ abi_ppc_32
 abi_ppc_64
 abi_riscv_lp64d
 abi_riscv_lp64
+abi_riscv_ilp32d
+abi_riscv_ilp32
 abi_s390_32
 abi_s390_64
 
