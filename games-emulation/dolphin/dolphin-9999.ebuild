@@ -89,6 +89,10 @@ src_prepare() {
 		# no support for for using system library
 		glslang
 		imgui
+
+		# not packaged, tiny header library
+		rangeset
+
 		# FIXME: xxhash can't be found by cmake
 		xxhash
 		# no support for for using system library
@@ -152,6 +156,9 @@ src_configure() {
 		# All dolphin's libraries are private
 		# and rely on circular dependency resolution.
 		-DBUILD_SHARED_LIBS=OFF
+
+		# Avoid warning spam around unset variables.
+		-Wno-dev
 	)
 
 	cmake_src_configure
