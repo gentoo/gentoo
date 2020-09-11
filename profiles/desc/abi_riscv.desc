@@ -7,3 +7,5 @@
 # on gentoo-dev.
 lp64d - 64-bit (rv64) double hard-float libraries
 lp64 - 64-bit (rv64) soft-float libraries
+ilp32d - 32-bit (rv32) double hard-float libraries
+ilp32 - 32-bit (rv32) soft-float libraries
