@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-12-26)
+# Depends on masked media-libs/qt-gstreamer and kde-apps/ktp-call-ui
+kde-apps/artikulate gstreamer
+kde-apps/plasma-telepathy-meta gstreamer
+
 # Michał Górny <mgorny@gentoo.org> (2020-12-21)
 # LSAN is currently broken (due to new glibc?)
 <sys-libs/compiler-rt-sanitizers-12 lsan
