@@ -11,7 +11,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 fi
 
-IUSE="bindist connman gssapi libproxy networkmanager sctp +ssl"
+IUSE="bindist connman gssapi libressl libproxy networkmanager sctp +ssl"
 
 DEPEND="
 	~dev-qt/qtcore-${PV}:5=
@@ -21,7 +21,10 @@ DEPEND="
 	libproxy? ( net-libs/libproxy )
 	networkmanager? ( ~dev-qt/qtdbus-${PV} )
 	sctp? ( kernel_linux? ( net-misc/lksctp-tools ) )
-	ssl? ( dev-libs/openssl:0=[bindist=] )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0=[bindist=] )
+		libressl? ( dev-libs/libressl:0= )
+	)
 "
 RDEPEND="${DEPEND}
 	connman? ( net-misc/connman )
