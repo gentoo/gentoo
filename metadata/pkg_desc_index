@@ -8084,11 +8084,13 @@ dev-python/distlib 0.3.1: Low-level components of distutils2/packaging
 dev-python/distro 1.5.0: Reliable machine-readable Linux distribution information for Python
 dev-python/dj-database-url 0.5.0: Use Database URLs in your Django Application
 dev-python/django 2.2.16 3.0.10 3.1.1: High-level Python web framework
+dev-python/django-allauth 0.42.0: Django 3rd party (social) account authentication
 dev-python/django-auth-ldap 2.1.0: Django LDAP authentication backend
 dev-python/django-cacheops 4.2: ORM cache with automatic granular event-driven invalidation for Django
 dev-python/django-cors-headers 3.2.1: Django App that adds CORS (Cross-Origin Resource Sharing) headers to responses
 dev-python/django-debug-toolbar 2.2: A configurable set of panels that display debug information
 dev-python/django-filter 2.2.0: Django app allowing declarative dynamic QuerySet filtering from URL parameters
+dev-python/django-gravatar2 1.4.4: Essential Gravatar support for Django
 dev-python/django-js-asset 1.2.2: script tag with additional attributes for django.forms.Media
 dev-python/django-mptt 0.11.0: utilities for modified preorder tree traversal and trees of model instances
 dev-python/django-otp 1.0.0: Django framework adding two-factor authentication using one-time passwords
@@ -8947,6 +8949,7 @@ dev-python/python-zaqarclient 1.13.1: A client for the OpenStack Zaqar API
 dev-python/python-zipstream 1.1.4: A zip archive generator
 dev-python/python-zunclient 4.0.1: A client for the OpenStack Zun API
 dev-python/python3-lxc 3.0.2: Python bindings for LXC
+dev-python/python3-openid 3.2.0: OpenID support for modern servers and consumers
 dev-python/python3-saml 1.9.0: OneLogin's SAML Python Toolkit
 dev-python/python_orocos_kdl 1.4.0-r1 9999: Python bindings for KDL
 dev-python/pythondialog 3.5.1: A Python module for making simple text/console-mode user interfaces
