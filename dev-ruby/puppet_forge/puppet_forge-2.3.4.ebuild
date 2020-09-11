@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -34,10 +34,13 @@ all_ruby_prepare() {
 	# Avoid integration and user specs since they all require network access
 	rm -rf spec/integration spec/unit/forge/v3/user_spec.rb || die
 
+	# Load correct faraday versions
+	sed -i -e '1igem "faraday_middleware", "~> 0.0"' spec/spec_helper.rb || die
+
 	# Fix overly restrictive dependencies
 	sed -i \
-		-e '/faraday/ s/0.15.0/0.99.0/' \
-		-e '/faraday_middleware/ s/0.13.0/0.99.0/' \
+		-e '/faraday/ s/0.18.0/0.99.0/' \
+		-e '/faraday_middleware/ s/0.14.0/0.99.0/' \
 		${RUBY_FAKEGEM_GEMSPEC} || die
 
 	sed -i -e 's/git ls-files -z/find . -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
