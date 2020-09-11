@@ -1,0 +1,6 @@
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Unmask the multilib flags for this arch.
+-abi_riscv_ilp32d
+-abi_riscv_ilp32

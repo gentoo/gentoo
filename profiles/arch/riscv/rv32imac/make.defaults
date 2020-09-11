@@ -1,0 +1,23 @@
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# RISC-V profile for rv32imac multilib
+#
+# This immediate profile is ONLY useful for internal purposes. It can NOT
+# generate stages or a working system due to limitations in gcc.
+
+CHOST="riscv32-unknown-linux-gnu"
+
+# Multilib ABIs
+MULTILIB_ABIS="ilp32d ilp32"
+DEFAULT_ABI="ilp32d"
+ABI="ilp32d"
+
+# Enable lp64d by default
+ABI_RISCV="ilp32d"
+
+# Unhide the riscv/rv64gc-specific USE_EXPANDs
+USE_EXPAND_HIDDEN="-ABI_RISCV"
+
+# Implicitly enable lp64d in ebuilds without multilib support
+IUSE_IMPLICIT="abi_riscv_ilp32d"
