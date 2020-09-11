@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=>=dev-lang/lua-5.1:= www-servers/nginx[nginx_modules_http_lua]
 SLOT=0
 SRC_URI=https://github.com/knyar/nginx-lua-prometheus/archive/0.1-20170610.tar.gz -> nginx-lua-prometheus-0.1_pre20170610.tar.gz
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=554b49a8911474e680da8968a4276e04

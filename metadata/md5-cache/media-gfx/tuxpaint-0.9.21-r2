@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=app-text/libpaper dev-libs/fribidi gnome-base/librsvg:2 >=media-libs/libpng-1.2:0= >=media-libs/freetype-2:2 media-libs/libsdl media-libs/sdl-image[png] media-libs/sdl-mixer media-libs/sdl-pango media-libs/sdl-ttf x11-libs/cairo
 SLOT=0
 SRC_URI=mirror://sourceforge/tuxpaint/tuxpaint-0.9.21.tar.gz
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=8bab7c015fe8f7b640eabd2f25f24e2d

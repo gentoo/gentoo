@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl[sound,video] media-libs/sdl-image media-libs/sdl-mixer
 SLOT=0
 SRC_URI=http://noe.falzon.free.fr/prog/formido-1.0.1.tar.gz http://koti.mbnet.fi/lsoft/formido/formido-music.tar.bz2
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=32cb7d56e15cd54da1b2ff6c9c70bb7b

@@ -10,5 +10,5 @@ RDEPEND=~app-text/mecab-0.996 ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_ta
 REQUIRED_USE=|| ( ruby_targets_ruby25 ruby_targets_ruby26 ruby_targets_ruby27 )
 SLOT=0
 SRC_URI=https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/mecab/mecab-ruby-0.996.tar.gz
-_eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	2477ebe553d3e4d2c606191fe6c33602	ruby-ng	676004cfb6cdf3dedf1c778d56346624	ruby-utils	9991225e034c8185d67fbc7a8816559f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	98584e405e2b0264d37e8f728327fed1	ruby-ng	676004cfb6cdf3dedf1c778d56346624	ruby-utils	9991225e034c8185d67fbc7a8816559f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=54d81a019187cd360f863fcd21491383

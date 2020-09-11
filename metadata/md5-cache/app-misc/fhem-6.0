@@ -10,5 +10,5 @@ LICENSE=GPL-2+
 RDEPEND=acct-group/fhem acct-user/fhem dev-perl/Crypt-CBC dev-perl/Device-SerialPort dev-perl/Digest-CRC dev-perl/JSON
 SLOT=0
 SRC_URI=https://www.fhem.de/fhem-6.0.tar.gz
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=7e7efc674ba7d2a2d2a1aaef0fd15512

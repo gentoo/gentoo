@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=alsa? ( media-libs/alsa-lib ) media-libs/libsdl2 media-libs/openal x11-libs/wxGTK:3.0[tiff,X]
 SLOT=0
 SRC_URI=https://pcem-emulator.co.uk/files/PCemV16Linux.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312
 _md5_=e68a215d3f62ad4e8d8ccf1166e9e89c

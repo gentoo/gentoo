@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=ncurses? ( >=sys-libs/ncurses-5.2:0= ) gtk? ( x11-libs/gtk+:2 ) dev-libs/glib:2 nls? ( virtual/libintl ) sdl? ( media-libs/libsdl media-libs/sdl-mixer )
 SLOT=0
 SRC_URI=mirror://sourceforge/dopewars/dopewars-1.5.12.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=7be1631208ad68d374a789bbe31b48ae

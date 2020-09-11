@@ -9,5 +9,5 @@ RDEPEND=!app-emulation/firecracker acct-group/kvm
 RESTRICT=test strip
 SLOT=0
 SRC_URI=amd64? ( https://github.com/firecracker-microvm/firecracker/releases/download/v0.22.0/firecracker-v0.22.0-x86_64 https://github.com/firecracker-microvm/firecracker/releases/download/v0.22.0/jailer-v0.22.0-x86_64 ) arm64? ( https://github.com/firecracker-microvm/firecracker/releases/download/v0.22.0/firecracker-v0.22.0-aarch64 https://github.com/firecracker-microvm/firecracker/releases/download/v0.22.0/jailer-v0.22.0-aarch64 )
-_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=f2f3b911441cef3bb4e23639bea26d9a

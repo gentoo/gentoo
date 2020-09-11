@@ -11,5 +11,5 @@ RDEPEND=dev-db/sqlite:3 aspell? ( app-text/aspell ) hunspell? ( app-text/hunspel
 REQUIRED_USE=python? ( || ( python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 ) )
 SLOT=0
 SRC_URI=https://www.abisource.com/downloads/link-grammar/5.8.0/link-grammar-5.8.0.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	ec7a89849c84f93e9c6db27812923888	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	b2c915190b051f55a23b9354b9849847	multilib	2477ebe553d3e4d2c606191fe6c33602	out-of-source	15edba2977da53bbf4d1e5a60abc0e34	python-r1	8d03325e7e3cf3e1465d9c32031e2517	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	ec7a89849c84f93e9c6db27812923888	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	b2c915190b051f55a23b9354b9849847	multilib	98584e405e2b0264d37e8f728327fed1	out-of-source	15edba2977da53bbf4d1e5a60abc0e34	python-r1	8d03325e7e3cf3e1465d9c32031e2517	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=74597a8050aca9f1423d6b25bb632f34

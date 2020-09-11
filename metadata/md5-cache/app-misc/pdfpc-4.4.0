@@ -10,5 +10,5 @@ LICENSE=GPL-2+
 RDEPEND=app-text/poppler:=[cairo] dev-libs/glib:2 dev-libs/libgee:0.8= gnome-base/librsvg sys-apps/dbus x11-libs/gtk+:3 gstreamer? ( media-libs/gstreamer:1.0= media-libs/gst-plugins-base:1.0= )
 SLOT=0
 SRC_URI=https://github.com/pdfpc/pdfpc/archive/v4.4.0.tar.gz -> pdfpc-4.4.0.tar.gz
-_eclasses_=cmake	9f6da23aab151395c55f018fb13a11b2	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vala	2cd99cd72bb91f3f190fa4ca576be580	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=cmake	9f6da23aab151395c55f018fb13a11b2	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vala	2cd99cd72bb91f3f190fa4ca576be580	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=a4b3ccd71e99054e6a5e49a746d8d5f7

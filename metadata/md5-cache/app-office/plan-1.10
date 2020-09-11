@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=x11-libs/libX11 x11-libs/libXt x11-libs/motif:0
 SLOT=0
 SRC_URI=ftp://ftp.fu-berlin.de/unix/X11/apps/plan/plan-1.10.tar.gz https://dev.gentoo.org/~soap/distfiles/plan-1.10-patches.txz
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=b3d77413e2bd37353c08a83c7cc8b6f0

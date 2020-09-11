@@ -8,5 +8,5 @@ LICENSE=BSD-1
 RDEPEND=>=dev-libs/libbsd-0.7
 SLOT=0
 SRC_URI=https://github.com/aperezdc/signify/archive/v23.tar.gz -> signify-23.tar.gz
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=5de153a1cb0b3cd3168bcd6697b105e9

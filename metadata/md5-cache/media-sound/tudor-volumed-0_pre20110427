@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=media-libs/alsa-lib:= x11-libs/libX11
 SLOT=0
 SRC_URI=https://github.com/darvid/tudor-volumed/tarball/7fc04cb2fb71e6f8815ddd87fd7ef5d02022edeb -> tudor-volumed-0_pre20110427.tar.gz
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=5a629b1b0001a8e4404407215e258ede

@@ -10,5 +10,5 @@ RDEPEND=app-eselect/eselect-sndpeek media-libs/freeglut virtual/glu virtual/open
 REQUIRED_USE=|| ( alsa jack oss )
 SLOT=0
 SRC_URI=http://soundlab.cs.princeton.edu/software/sndpeek/files/sndpeek-1.41.tgz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=b7b84a223c5cda97d5fd1d9f1c1b45de

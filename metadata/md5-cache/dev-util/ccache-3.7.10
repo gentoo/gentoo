@@ -10,5 +10,5 @@ RDEPEND=app-arch/xz-utils sys-libs/zlib dev-util/shadowman sys-apps/gentoo-funct
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/ccache/ccache/releases/download/v3.7.10/ccache-3.7.10.tar.xz
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=4e17f2ca072fc6e3e85c9ed0d732cf2c

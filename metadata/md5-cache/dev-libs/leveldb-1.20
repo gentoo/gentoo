@@ -11,5 +11,5 @@ REQUIRED_USE=snappy? ( !static-libs )
 RESTRICT=!test? ( test )
 SLOT=0/1
 SRC_URI=https://github.com/google/leveldb/archive/v1.20.tar.gz -> leveldb-1.20.tar.gz
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=319f77e61e38e2337380177d8d7c14ec

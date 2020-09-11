@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=>=net-libs/liblockfile-1.03 dev-libs/libbsd virtual/mta mail-client/mailx-support !mail-client/nail !net-mail/mailutils
 SLOT=0
 SRC_URI=http://http.debian.net/debian/pool/main/b/bsd-mailx/bsd-mailx_8.1.2-0.20180807cvs.orig.tar.xz http://http.debian.net/debian/pool/main/b/bsd-mailx/bsd-mailx_8.1.2-0.20180807cvs-1.debian.tar.xz
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=48fff87fa1ca5edf4da93b21a93a8830

@@ -6,5 +6,5 @@ IUSE=ipv6 poll
 LICENSE=Sendmail
 SLOT=0/1.0.2_p1
 SRC_URI=ftp://ftp.sendmail.org/pub/sendmail/sendmail.8.16.1.tar.gz
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=15038b94c2a4a1087d7bb337ff360cbd

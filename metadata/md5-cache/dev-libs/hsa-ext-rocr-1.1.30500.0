@@ -8,5 +8,5 @@ LICENSE=AMD-GPU-PRO-EULA
 RESTRICT=bindist strip
 SLOT=0
 SRC_URI=https://repo.radeon.com/rocm/apt/debian/pool/main/h/hsa-ext-rocr-dev/hsa-ext-rocr-dev_1.1.30500.0-rocm-rel-3.5-30-def83d8_amd64.deb
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	unpacker	8ee8c1a2f31437d1766aac890d07a7f4
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	unpacker	8ee8c1a2f31437d1766aac890d07a7f4
 _md5_=11819db2ea23d168c153cc2693bf4967

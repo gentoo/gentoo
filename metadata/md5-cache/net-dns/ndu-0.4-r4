@@ -7,5 +7,5 @@ LICENSE=GPL-2
 RDEPEND=sys-apps/ed
 SLOT=0
 SRC_URI=http://uranus.it.swin.edu.au/~jn/linux/ndu-0.4.tar.gz
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=c222323a0130e0a1e684dbaa274817dd

@@ -8,5 +8,5 @@ KEYWORDS=amd64 ~arm64 ppc x86
 LICENSE=GPL-2 LGPL-2.1
 SLOT=0
 SRC_URI=https://github.com/ar-/incron/archive/1eedfbc9b318372efd119fd17f4abdbde561a53d.tar.gz -> incron-0.5.12_p20191114.tar.gz
-_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	98584e405e2b0264d37e8f728327fed1	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=77ac213b7abe46c6df4595258799ba2b

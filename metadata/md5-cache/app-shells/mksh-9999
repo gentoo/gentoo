@@ -9,5 +9,5 @@ LICENSE=BSD
 PROPERTIES=live
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=cvs	6625b4ea3655a11531b433946cebd6b3	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=cvs	6625b4ea3655a11531b433946cebd6b3	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=3fc6d803811e3916f61b01dc60438bf6

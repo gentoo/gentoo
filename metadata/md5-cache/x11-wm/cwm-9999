@@ -8,5 +8,5 @@ LICENSE=ISC
 PROPERTIES=live
 RDEPEND=x11-libs/libXft x11-libs/libXinerama x11-libs/libXrandr
 SLOT=0
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=3a9fae011137eec18d59807450b0727a

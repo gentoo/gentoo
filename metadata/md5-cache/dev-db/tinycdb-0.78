@@ -9,5 +9,5 @@ RDEPEND=!dev-db/cdb
 RESTRICT=test
 SLOT=0
 SRC_URI=http://www.corpit.ru/mjt/tinycdb/tinycdb-0.78.tar.gz
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=cd33526d7aec570e94ef8ec0d74f7398

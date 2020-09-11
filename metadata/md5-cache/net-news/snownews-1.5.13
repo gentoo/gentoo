@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=>=dev-libs/libxml2-2.5.6 >=sys-libs/ncurses-5.3:0=[unicode?] dev-libs/openssl:0= dev-perl/XML-LibXML dev-perl/libwww-perl
 SLOT=0
 SRC_URI=https://github.com/kouya/snownews/archive/v1.5.13.tar.gz -> snownews-1.5.13.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=6d461bff1b5a524d0a0ef85b7bb4eb19

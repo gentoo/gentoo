@@ -9,5 +9,5 @@ LICENSE=Toyoda
 RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=https://github.com/mtoyoda/sl/archive/5.02.tar.gz -> sl-5.02.tar.gz
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=5e3200e713c0f76db09293252badb9c8

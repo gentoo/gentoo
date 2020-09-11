@@ -9,5 +9,5 @@ LICENSE=BSD-2
 PROPERTIES=live
 RDEPEND=!!dev-libs/ucl lua? ( >=dev-lang/lua-5.1:= ) urls? ( net-misc/curl ) sign? ( dev-libs/openssl:0 )
 SLOT=0
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=175b89a3d62a7dfc345d7575c096211b

@@ -9,5 +9,5 @@ LICENSE=BSD-2
 RDEPEND=sys-apps/gentoo-functions >=sys-apps/openrc-0.15 !<sys-fs/udev-init-scripts-27
 SLOT=0
 SRC_URI=https://gitweb.gentoo.org/proj/netifrc.git/snapshot/netifrc-0.7.1.tar.gz
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	udev	452708c3f55cf6e918b045adb949a9e6
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=59e2db1fcf5575fad49948b2ed818dd9

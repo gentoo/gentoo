@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-3
 SLOT=0
 SRC_URI=mirror://sourceforge/pstreams/pstreams-1.0.0.tar.gz doc? ( mirror://sourceforge/pstreams/pstreams-docs-1.0.0.tar.gz )
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=0bcb95a4a42e755eb77250bd1498a532

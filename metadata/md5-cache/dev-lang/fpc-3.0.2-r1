@@ -9,5 +9,5 @@ RDEPEND=ide? ( !dev-lang/fpc-ide )
 RESTRICT=strip
 SLOT=0
 SRC_URI=mirror://sourceforge/freepascal/fpcbuild-3.0.2.tar.gz mirror://sourceforge/freepascal/fpc-3.0.2.source.tar.gz amd64? ( mirror://sourceforge/freepascal/fpc-3.0.2.x86_64-linux.tar ) x86? ( mirror://sourceforge/freepascal/fpc-3.0.2.i386-linux.tar ) doc? ( mirror://sourceforge/freepascal/Documentation/3.0.2/doc-html.tar.gz -> fpc-3.0.2-doc-html.tar.gz )
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=3629ef6c52b6e2ce3b958c62b9cb14f2

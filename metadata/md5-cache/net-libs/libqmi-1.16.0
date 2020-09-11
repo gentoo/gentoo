@@ -9,5 +9,5 @@ LICENSE=LGPL-2
 RDEPEND=>=dev-libs/glib-2.32 mbim? ( >=net-libs/libmbim-1.14.0 )
 SLOT=0/5.1
 SRC_URI=https://www.freedesktop.org/software/libqmi/libqmi-1.16.0.tar.xz
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=e3962a0a091e9db09f1d4ae1fc5bf7ee

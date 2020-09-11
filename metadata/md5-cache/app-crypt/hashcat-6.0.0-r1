@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=app-arch/lzma brain? ( dev-libs/xxhash ) video_cards_nvidia? ( >x11-drivers/nvidia-drivers-440.64 || ( dev-util/nvidia-cuda-toolkit virtual/opencl ) ) !video_cards_nvidia? ( virtual/opencl )
 SLOT=0
 SRC_URI=https://github.com/hashcat/hashcat/archive/v6.0.0.tar.gz -> hashcat-6.0.0.tar.gz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	2477ebe553d3e4d2c606191fe6c33602	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	98584e405e2b0264d37e8f728327fed1	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=8b768c044a03f1d30108877340e5b821

@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=gtk2? ( x11-themes/gnome-themes-standard x11-themes/gtk-engines-murrine )
 SLOT=0
 SRC_URI=https://github.com/jnsh/arc-theme/releases/download/20200819/arc-theme-20200819.tar.xz pre-rendered? ( https://dev.gentoo.org/~chewi/distfiles/arc-theme-20200819-pngs.tar.xz )
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=1e3f2e1844979d493a9f8a6dcb9823f4

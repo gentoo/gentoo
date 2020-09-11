@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0 X? ( x11-libs/libX11 )
 SLOT=0
 SRC_URI=http://wwwhome.cs.utwente.nl/~ptdeboer/ham/ibp-0.21.tgz
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=c356ae1b1799afa75b7fc9d694ca9271

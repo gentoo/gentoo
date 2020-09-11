@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 gnome-base/libglade:2.0
 SLOT=0
 SRC_URI=https://linux-wbfs-manager.googlecode.com/files/linux-wbfs-manager-0.1.12.tar.gz
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=f7882b5aee292f3f826a4cb53deef04e

@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://gregory.kokanosky.free.fr/v4/linux/nrg2iso-0.4.tar.gz test? ( https://yegortimoshenko.s3.amazonaws.com/nrg2iso-test.iso https://yegortimoshenko.s3.amazonaws.com/nrg2iso-test.nrg )
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=13efb9f8f58666b7e7170588318d4330

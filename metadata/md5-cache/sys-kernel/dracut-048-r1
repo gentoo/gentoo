@@ -10,5 +10,5 @@ RDEPEND=>=sys-apps/kmod-23[tools] virtual/pkgconfig virtual/udev app-arch/cpio >
 RESTRICT=test
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/linux/utils/boot/dracut/dracut-048.tar.xz
-_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	2477ebe553d3e4d2c606191fe6c33602	optfeature	6c9aa35fc16df43d7142ef2660e00e25	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	98584e405e2b0264d37e8f728327fed1	optfeature	6c9aa35fc16df43d7142ef2660e00e25	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=e513a837adde8dc777ad2f2672f85b2f

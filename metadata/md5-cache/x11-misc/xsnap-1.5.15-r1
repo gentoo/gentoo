@@ -8,5 +8,5 @@ LICENSE=GPL-3+
 RDEPEND=media-libs/libpng:0 virtual/jpeg:0 x11-libs/libX11 x11-libs/libXft x11-libs/libXpm media-fonts/font-misc-misc
 SLOT=0
 SRC_URI=ftp://ftp.ac-grenoble.fr/ge/Xutils/xsnap-1.5.15.tar.bz2
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=56f937c54246969b6db9a7dc9b333755

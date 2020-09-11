@@ -4,12 +4,12 @@ DEPEND=test? ( media-video/ffmpeg ) abi_x86_32? ( >=dev-lang/yasm-1.2.0 ) abi_x8
 DESCRIPTION=Open-source HEVC encoder
 EAPI=7
 HOMEPAGE=http://ultravideo.cs.tut.fi/ https://github.com/ultravideo/kvazaar
-IUSE=static-libs test abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_riscv_lp64d abi_riscv_lp64 abi_s390_32 abi_s390_64
+IUSE=static-libs test abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_riscv_lp64d abi_riscv_lp64 abi_riscv_ilp32d abi_riscv_ilp32 abi_s390_32 abi_s390_64
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=LGPL-2.1
 REQUIRED_USE=test? ( static-libs )
 RESTRICT=!test? ( test )
 SLOT=0/6
 SRC_URI=https://github.com/ultravideo/kvazaar/archive/v2.0.0.tar.gz -> kvazaar-2.0.0.tar.gz test? ( https://github.com/silentbicycle/greatest/archive/v1.2.1.tar.gz -> greatest-1.2.1.tar.gz )
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	b2c915190b051f55a23b9354b9849847	multilib	2477ebe553d3e4d2c606191fe6c33602	multilib-build	8ad5b5535b73a8971881f09277b939f4	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	b2c915190b051f55a23b9354b9849847	multilib	98584e405e2b0264d37e8f728327fed1	multilib-build	6cbe156168ae85dbada8a9b5bd5857a5	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=30f373f1b77fb123e79a8719aa9dc43b

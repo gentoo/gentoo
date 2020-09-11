@@ -10,5 +10,5 @@ RDEPEND=!luajit? ( >=dev-lang/lua-5.1:= ) luajit? ( dev-lang/luajit:2 ) >=dev-lu
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/Olivine-Labs/luassert/archive/v1.7.10.tar.gz -> luassert-1.7.10.tar.gz
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=b82edea128b3b12e196d2cdd2c3da60d

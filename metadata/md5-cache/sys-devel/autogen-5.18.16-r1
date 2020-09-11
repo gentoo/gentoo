@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-scheme/guile-2.0:= dev-libs/libxml2
 SLOT=0
 SRC_URI=mirror://gnu/autogen/rel5.18.16/autogen-5.18.16.tar.xz https://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=blob_plain;f=lib/verify.h;h=3b57ddee0acffd23cc51bc8910a15cf879f90619;hb=537a5511ab0b1326e69b32f87593a50aedb8a589 -> autogen-5.18.16-gnulib-3b57ddee0acffd23cc51bc8910a15cf879f90619-lib-verify.h
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=2f567031dbb2968fe14ff23602ccfb9f

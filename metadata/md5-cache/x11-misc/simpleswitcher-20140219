@@ -8,5 +8,5 @@ LICENSE=MIT
 RDEPEND=x11-libs/libX11 x11-libs/libXft x11-libs/libXinerama x11-libs/libXres
 SLOT=0
 SRC_URI=https://github.com/seanpringle/simpleswitcher/archive/cbc89a71a61fd2d164c3fdc3ef4d3fa809c1741a.tar.gz -> simpleswitcher-20140219-cbc89a71a61fd2d164c3fdc3ef4d3fa809c1741a.tar.gz
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=6ac54368e4c1c90d2809720f73d22a90

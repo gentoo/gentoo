@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=net-libs/libmrss-0.17.1
 SLOT=0
 SRC_URI=https://github.com/flok99/rsstail/archive/0b23b367c98de8882b58a451742a3f2e385c4ba0.tar.gz -> rsstail-2.1_p20200310.tar.gz
-_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=ba1d0fb9f617547eac9d29f7500d2e5a
