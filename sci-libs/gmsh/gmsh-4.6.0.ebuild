@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit cmake-utils flag-o-matic fortran-2 python-any-r1 toolchain-funcs
 
@@ -26,7 +26,7 @@ RDEPEND="
 	cgns? ( sci-libs/cgnslib )
 	jpeg? ( virtual/jpeg:0 )
 	lua? ( dev-lang/lua:0 )
-	med? ( sci-libs/med )
+	med? ( sci-libs/med[mpi] )
 	opencascade? ( sci-libs/opencascade:* )
 	png? ( media-libs/libpng:0 )
 	petsc? ( sci-mathematics/petsc )
@@ -57,6 +57,7 @@ src_configure() {
 		-DENABLE_FLTK="$(usex X)"
 		-DENABLE_GRAPHICS="$(usex X)"
 		-DENABLE_MED="$(usex med)"
+		-DENABLE_MPI="$(usex mpi)"
 		-DENABLE_METIS="$(usex metis)"
 		-DENABLE_NETGEN="$(usex netgen)"
 		-DENABLE_OCC="$(usex opencascade)"
