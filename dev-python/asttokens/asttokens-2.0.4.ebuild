@@ -28,6 +28,13 @@ distutils_enable_tests pytest
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
+src_prepare() {
+	# Kill off useless wheel dep
+	sed -i -e 's/wheel; //' setup.cfg || die
+
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	local deselect=()
 	[[ ${EPYTHON} == python3.9 ]] && deselect+=(
