@@ -6,3 +6,5 @@ multilib
 
 # Mask the other multilib flags back for non-multilib profile.
 abi_riscv_lp64
+abi_riscv_ilp32d
+abi_riscv_ilp32
