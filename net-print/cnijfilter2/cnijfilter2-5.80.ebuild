@@ -66,7 +66,7 @@ src_prepare() {
 }
 
 src_configure() {
-	LDFLAGS="-L"${S}"/${LIBDIR}" econf --enable-progpath="${EPREFIX}/usr/bin"
+	econf --enable-progpath="${EPREFIX}/usr/bin" LDFLAGS="-L"${S}"/${LIBDIR} ${LDFLAGS}"
 }
 
 src_install() {
