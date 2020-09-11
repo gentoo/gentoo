@@ -7,25 +7,22 @@ PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit distutils-r1 git-r3
 
-DESCRIPTION="arch testing tool"
+DESCRIPTION="Arch testing tool"
 HOMEPAGE="https://github.com/gentoo/tatt"
 EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/tatt.git
 	https://github.com/gentoo/tatt.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="+templates"
 
 RDEPEND="
 	app-portage/eix
 	app-portage/gentoolkit[${PYTHON_USEDEP}]
+	app-portage/nattka[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	www-client/pybugz
-"
-BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 
 python_install_all() {
