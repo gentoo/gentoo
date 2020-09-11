@@ -1,10 +1,10 @@
 DEFINED_PHASES=install
 DESCRIPTION=Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
-EAPI=6
+EAPI=7
 HOMEPAGE=https://ece.uwaterloo.ca/~aplevich/dpic
 IUSE=examples
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=BSD-2 CC-BY-3.0 GPL-2+
 SLOT=0
-SRC_URI=https://ece.uwaterloo.ca/~aplevich/dpic/dpic-2016.08.24.tar.gz
-_md5_=81ca4b237c83655d5ccec95d8a39aa3e
+SRC_URI=https://ece.uwaterloo.ca/~aplevich/dpic/dpic-2020.09.01.tar.gz
+_md5_=bc9f208eb46b69c0b6dfe188d00b25d3

@@ -2031,7 +2031,7 @@ app-eselect/eselect-postgresql 2.4: Utility to select the default PostgreSQL slo
 app-eselect/eselect-python 20190417 20200719 99999999: Eselect module for management of multiple Python versions
 app-eselect/eselect-rails 0.24: Manages Ruby on Rails symlinks
 app-eselect/eselect-renpy 0.7: Manages renpy symlink
-app-eselect/eselect-repository 7: Manage repos.conf via eselect
+app-eselect/eselect-repository 7 8: Manage repos.conf via eselect
 app-eselect/eselect-ruby 20170723 20190121 20191222: Manages multiple Ruby versions
 app-eselect/eselect-rust 20200419: Eselect module for management of multiple Rust versions
 app-eselect/eselect-scala 0.1.1: Manages multiple Scala versions
@@ -3060,7 +3060,6 @@ app-text/unrtf 0.21.9 0.21.10: Converts RTF files to various formats
 app-text/uudeview 0.5.20-r2: uu, xx, base64, binhex decoder
 app-text/vgrep 2.3.1 2.3.3 2.4.0: A pager for grep, git-grep and similar grep implementations
 app-text/vilistextum 2.6.9-r1 2.8.0.20191023-r1: HTML to ASCII converter programmed to handle incorrect html
-app-text/vlna 1.5: Add nonbreakable spaces after some prepositions in Czech texts
 app-text/wdiff 1.2.2 1.2.2-r1: Create a diff disregarding formatting
 app-text/webgen 1.7.1: A template-based static website generator
 app-text/wgetpaste 2.29-r1: Command-line interface to various pastebins
@@ -3072,7 +3071,7 @@ app-text/wv2 0.4.2-r2: Excellent MS Word filter lib, used in most Office suites
 app-text/xapers 0.9.0: Personal document indexing system
 app-text/xapian-omega 1.2.25 1.4.14 1.4.15 1.4.16 1.4.17: An application built on Xapian, consisting of indexers and a CGI search frontend
 app-text/xchm 1.23-r1 1.29 1.30 1.31 9999: Utility for viewing Compiled HTML Help (CHM) files
-app-text/xdvik 22.87.03-r1 22.87.03-r2: DVI previewer for X Window System
+app-text/xdvik 22.87.03-r2: DVI previewer for X Window System
 app-text/xhtml1 20020801-r6: DTDs for the eXtensible HyperText Markup Language 1.0
 app-text/xhtml11 20101123: DTDs for the eXtensible HyperText Markup Language 1.0
 app-text/xiphos 4.0.6a-r2 4.2.1: A Gtk+-based Bible-study frontend for SWORD
@@ -8793,8 +8792,8 @@ dev-python/pypugjs 5.9.4-r1: Pug (Jade) syntax adapter for Django, Jinja2 and Ma
 dev-python/pypy 7.3.0 7.3.1-r2 7.3.2_rc1: A fast, compliant alternative implementation of the Python language
 dev-python/pypy-exe 7.3.0 7.3.1 7.3.2_rc1: PyPy executable (build from source)
 dev-python/pypy-exe-bin 7.3.0_p1 7.3.1_p1: PyPy executable (pre-built version)
-dev-python/pypy3 7.3.0 7.3.1-r2: A fast, compliant alternative implementation of the Python (3.6) language
-dev-python/pypy3-exe 7.3.0 7.3.1: PyPy3 executable (build from source)
+dev-python/pypy3 7.3.0 7.3.1-r2 7.3.2_rc1: A fast, compliant alternative implementation of the Python (3.6) language
+dev-python/pypy3-exe 7.3.0 7.3.1 7.3.2_rc1: PyPy3 executable (build from source)
 dev-python/pypy3-exe-bin 7.3.0_p1 7.3.1_p1: PyPy3 executable (pre-built version)
 dev-python/pyqrcode 1.2.1-r1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqt-distutils 0.7.3: distutils extension to work with PyQt applications and UI files
@@ -8967,7 +8966,7 @@ dev-python/pyxattr 0.7.1: Python interface to xattr
 dev-python/pyxdg 0.26-r1: A Python module to deal with freedesktop.org specifications
 dev-python/pyyaml 5.3.1: YAML parser and emitter for Python
 dev-python/pyzbar 0.1.8: Read one-dimensional barcodes and QR codes from Python
-dev-python/pyzmq 19.0.1_p20200608: Lightweight and super-fast messaging library built on top of the ZeroMQ library
+dev-python/pyzmq 19.0.1_p20200608 19.0.2: Lightweight and super-fast messaging library built on top of the ZeroMQ library
 dev-python/qdarkstyle 2.8.1: A dark style sheet for QtWidgets application
 dev-python/qrcode 6.1: QR Code generator on top of PIL
 dev-python/qscintilla-python 2.11.5: Python bindings for QScintilla
@@ -12785,7 +12784,7 @@ media-gfx/digikam 6.4.0-r1 7.0.0 7.1.0: Digital photo management application
 media-gfx/displaycal 3.8.8.1-r1 3.8.9.3-r1: Display calibration and characterization powered by Argyll CMS
 media-gfx/ditaa 0.10 0.11.0: A utility that converts ascii-art diagrams to bitmap diagrams
 media-gfx/dmtx-utils 0.7.5 0.7.6: Tools for reading and writing Data Matrix barcodes
-media-gfx/dpic 20130310 20160824: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
+media-gfx/dpic 20200901: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
 media-gfx/duhdraw 2.8.13-r1: ASCII art editor
 media-gfx/ebdftopcf 2: Optimally generate PCF files from BDF files
 media-gfx/enblend 4.2.0_p20161007-r1: Image Blending with Multiresolution Splines
