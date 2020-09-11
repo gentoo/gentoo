@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Beierlein <tomjbe@gentoo.org> (2020-09-09)
+# Depends on obsolete gnome-base/libgnomeui. 
+# Upstream promised to have a better version 
+# for nearly a year now, but no release in sight.
+# Masked for removal in 30 days.
+sci-electronics/linsmith
+
 # Louis Sautier <sbraz@gentoo.org> (2020-09-10)
 # Masked for removal in 30 days, no revdeps.
 # All former consumers now use os.sendfile available in Python >= 3.3.
