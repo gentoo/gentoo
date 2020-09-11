@@ -83,6 +83,7 @@ RDEPEND="
 		dev-qt/qthelp:5
 		dev-qt/qtopengl:5[-gles2-only]
 		dev-qt/qtsql:5
+		dev-qt/qtsvg:5
 		dev-qt/qttest:5
 		dev-qt/qtx11extras:5
 		dev-qt/qtxmlpatterns:5
