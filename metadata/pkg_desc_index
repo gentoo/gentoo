@@ -8794,8 +8794,8 @@ dev-python/pypugjs 5.9.4-r1: Pug (Jade) syntax adapter for Django, Jinja2 and Ma
 dev-python/pypy 7.3.0 7.3.1-r2 7.3.2_rc1: A fast, compliant alternative implementation of the Python language
 dev-python/pypy-exe 7.3.0 7.3.1 7.3.2_rc1: PyPy executable (build from source)
 dev-python/pypy-exe-bin 7.3.0_p1 7.3.1_p1: PyPy executable (pre-built version)
-dev-python/pypy3 7.3.0 7.3.1-r2 7.3.2_rc1: A fast, compliant alternative implementation of the Python (3.6) language
-dev-python/pypy3-exe 7.3.0 7.3.1 7.3.2_rc1: PyPy3 executable (build from source)
+dev-python/pypy3 7.3.0 7.3.1-r2 7.3.2_rc1 7.3.2_rc1-r100: A fast, compliant alternative implementation of the Python (3.7) language
+dev-python/pypy3-exe 7.3.0 7.3.1 7.3.2_rc1 7.3.2_rc1-r100: PyPy3 executable (build from source)
 dev-python/pypy3-exe-bin 7.3.0_p1 7.3.1_p1: PyPy3 executable (pre-built version)
 dev-python/pyqrcode 1.2.1-r1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqt-distutils 0.7.3: distutils extension to work with PyQt applications and UI files
