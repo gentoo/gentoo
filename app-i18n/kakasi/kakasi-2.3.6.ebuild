@@ -3,8 +3,6 @@
 
 EAPI="7"
 
-inherit toolchain-funcs
-
 DESCRIPTION="Converts Japanese text between kanji, kana, and romaji"
 HOMEPAGE="http://kakasi.namazu.org/"
 SRC_URI="http://${PN}.namazu.org/stable/${P}.tar.gz"
