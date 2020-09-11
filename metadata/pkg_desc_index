@@ -10196,7 +10196,7 @@ dev-ruby/rmagick 3.2.0 4.1.1 4.1.2: An interface between Ruby and the ImageMagic
 dev-ruby/roadie 3.5.0 3.5.1 4.0.0: Making HTML emails comfortable for the Rails rockstars
 dev-ruby/roadie-rails 1.3.0 2.1.1: Hooks Roadie into your Rails application to help with email generation
 dev-ruby/robots 0.10.1-r2: A simple Ruby library to parse robots.txt
-dev-ruby/rouge 3.19.0 3.20.0 3.21.0 3.22.0: Yet-another-markdown-parser using a strict syntax definition in pure Ruby
+dev-ruby/rouge 3.19.0 3.20.0 3.21.0 3.22.0 3.23.0: Yet-another-markdown-parser using a strict syntax definition in pure Ruby
 dev-ruby/rqrcode 0.10.1 1.1.1: Library for encoding QR Codes
 dev-ruby/rqrcode_core 0.1.0 0.1.2: Library for encoding QR Codes
 dev-ruby/rr 1.2.1: A double framework featuring a selection of double techniques and a terse syntax
@@ -10274,7 +10274,7 @@ dev-ruby/ruby2_keywords 0.0.2: Shim library for Module#ruby2_keywords
 dev-ruby/ruby2ruby 2.4.2 2.4.4: Generates readable ruby from ParseTree
 dev-ruby/ruby_dep 1.5.0: Creates a version constraint of supported Rubies,suitable for a gemspec file
 dev-ruby/ruby_gntp 0.3.4: Ruby library for GNTP(Growl Notification Transport Protocol)
-dev-ruby/ruby_parser 3.13.1 3.14.2: A ruby parser written in pure ruby
+dev-ruby/ruby_parser 3.13.1 3.14.2 3.15.0: A ruby parser written in pure ruby
 dev-ruby/ruby_smb 1.1.0: pure Ruby implementation of the SMB Protocol Family
 dev-ruby/rubygems 2.7.10 3.0.3 3.0.4-r1 3.0.6 3.0.8 3.1.2 3.1.3 3.1.4: Centralized Ruby extension management system
 dev-ruby/rubyntlm 0.6.2: Ruby/NTLM provides message creator and parser for the NTLM authentication.
@@ -10317,7 +10317,7 @@ dev-ruby/sinatra 2.0.8.1 2.0.8.1-r1: A DSL for quickly creating web applications
 dev-ruby/sinatra-partial 1.0.1: Just the partials helper in a gem
 dev-ruby/six 0.2.0: An ultra lite authorization library
 dev-ruby/slim 3.0.9 3.0.9-r1 4.1.0: A template language aiming to reduce the syntax to the essential parts
-dev-ruby/slop 4.8.1: A simple option parser with an easy to remember syntax and friendly API
+dev-ruby/slop 4.8.1 4.8.2: A simple option parser with an easy to remember syntax and friendly API
 dev-ruby/slow_enumerator_tools 1.1.0: Transform Ruby enumerators that produce data slowly and unpredictably
 dev-ruby/source_map 3.0.1: Provides an API for parsing, and an API for generating source maps in ruby
 dev-ruby/sourcemap 0.1.1: Ruby source maps
@@ -10333,7 +10333,7 @@ dev-ruby/sshkey 2.0.0: SSH private and public key generator in pure Ruby
 dev-ruby/sshkit 1.20.0 1.21.0: SSHKit makes it easy to write structured, testable SSH commands in Ruby
 dev-ruby/stamp 0.6.0: Date and time formatting for humans
 dev-ruby/state_machine 1.2.0: Adds support for creating state machines for attributes on any Ruby class
-dev-ruby/stomp 1.4.9: Ruby bindings for the stomp messaging protocol
+dev-ruby/stomp 1.4.9 1.4.10: Ruby bindings for the stomp messaging protocol
 dev-ruby/stringex 2.8.5: Extensions for Ruby's String class
 dev-ruby/strptime 0.2.3 0.2.4: A fast strptime/strftime engine which uses VM
 dev-ruby/subexec 0.2.3-r1: Subexec spawns an external command with a timeout
