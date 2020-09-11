@@ -624,11 +624,6 @@ dev-tex/crosstex
 # Bug #629272
 app-admin/apg
 
-# Sam James <sam@gentoo.org> (2020-08-12)
-# Obsolete. Now included in texlive.
-# Removal in 30 days.
-app-text/vlna
-
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No longer needed with virtual/opencl-3
 # Masked for removal in 30 days. Bug #728284
