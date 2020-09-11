@@ -18,6 +18,7 @@ S="${WORKDIR}/uucp-${PV}"
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-gentoo.patch
 	epatch "${FILESDIR}"/${P}-fprintf.patch
+	epatch "${FILESDIR}"/${P}-remove-extern.patch
 	mv configure.{in,ac} || die
 	sed -i 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' configure.ac || die
 	eautoreconf
