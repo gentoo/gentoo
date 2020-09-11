@@ -26,7 +26,7 @@ RDEPEND="
 	cgns? ( sci-libs/cgnslib )
 	jpeg? ( virtual/jpeg:0 )
 	lua? ( dev-lang/lua:0 )
-	med? ( sci-libs/med )
+	med? ( sci-libs/med[mpi] )
 	opencascade? ( sci-libs/opencascade:* )
 	png? ( media-libs/libpng:0 )
 	petsc? ( sci-mathematics/petsc )
@@ -57,6 +57,7 @@ src_configure() {
 		-DENABLE_FLTK="$(usex X)"
 		-DENABLE_GRAPHICS="$(usex X)"
 		-DENABLE_MED="$(usex med)"
+		-DENABLE_MPI="$(usex mpi)"
 		-DENABLE_METIS="$(usex metis)"
 		-DENABLE_NETGEN="$(usex netgen)"
 		-DENABLE_OCC="$(usex opencascade)"
