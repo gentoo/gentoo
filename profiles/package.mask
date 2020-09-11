@@ -32,6 +32,37 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (2020-09-11)
+# These versions are not compatible with current stable
+# dev-libs/openssl version, bug #741622.
+# Removal in 30 days. Please migrate to newer slots.
+dev-db/mariadb:5.5
+dev-db/mariadb:10.1
+
+# Michał Górny <mgorny@gentoo.org> (2020-09-11)
+# 7.3.2 release candidates.  Masked for testing.
+=dev-python/pypy-7.3.2_rc*
+=dev-python/pypy3-7.3.2_rc*
+=dev-python/pypy-exe-7.3.2_rc*
+=dev-python/pypy3-exe-7.3.2_rc*
+
+# Thomas Beierlein <tomjbe@gentoo.org> (2020-09-09)
+# Depends on obsolete gnome-base/libgnomeui. 
+# Upstream promised to have a better version 
+# for nearly a year now, but no release in sight.
+# Masked for removal in 30 days.
+sci-electronics/linsmith
+
+# Louis Sautier <sbraz@gentoo.org> (2020-09-10)
+# Masked for removal in 30 days, no revdeps.
+# All former consumers now use os.sendfile available in Python >= 3.3.
+dev-python/pysendfile
+
+# Mikle Kolyada <zlogene@gentoo.org> (2020-09-10)
+# Merged into the app-text/texlive-core package.
+# Removal in 30 days
+dev-tex/dvi2tty
+
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # Last release in <2003.  Fails to build (bug #691690).
 # Removal in 30 days.  Bug #731008.
@@ -606,11 +637,6 @@ dev-tex/crosstex
 # Masked for removal after 2020-10-01.
 # Bug #629272
 app-admin/apg
-
-# Sam James <sam@gentoo.org> (2020-08-12)
-# Obsolete. Now included in texlive.
-# Removal in 30 days.
-app-text/vlna
 
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No longer needed with virtual/opencl-3
