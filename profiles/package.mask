@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-09-11)
+# 7.3.2 release candidates.  Masked for testing.
+=dev-python/pypy-7.3.2_rc*
+=dev-python/pypy3-7.3.2_rc*
+=dev-python/pypy-exe-7.3.2_rc*
+=dev-python/pypy3-exe-7.3.2_rc*
+
 # Thomas Beierlein <tomjbe@gentoo.org> (2020-09-09)
 # Depends on obsolete gnome-base/libgnomeui. 
 # Upstream promised to have a better version 
