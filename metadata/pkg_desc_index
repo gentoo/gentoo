@@ -9104,7 +9104,7 @@ dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3 0.3-r1: A PEG-based parser interpreter with memoization
 dev-python/sphinx 2.0.1-r1 2.4.4 3.1.2 3.2.1: Python documentation generator
 dev-python/sphinx-aiohttp-theme 0.1.6: Sphinx theme for aiohttp
-dev-python/sphinx-bootstrap-theme 0.6.5: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
+dev-python/sphinx-bootstrap-theme 0.6.5 0.8.0: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx-epytext 0.0.4: Sphinx epytext extension
 dev-python/sphinx-gallery 0.3.1-r1 0.8.0 0.8.1: Sphinx extension to automatically generate an examples gallery
 dev-python/sphinx-issues 1.2.0: A Sphinx extension for linking to your project's issue tracker
