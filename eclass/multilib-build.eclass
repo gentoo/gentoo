@@ -49,6 +49,8 @@ _MULTILIB_FLAGS=(
 #	abi_ppc_64:ppc64
 	abi_riscv_lp64d:lp64d
 	abi_riscv_lp64:lp64
+	abi_riscv_ilp32d:ilp32d
+	abi_riscv_ilp32:ilp32
 	abi_s390_32:s390
 	abi_s390_64:s390x
 )
@@ -492,12 +494,18 @@ multilib_prepare_wrappers() {
 #		error "abi_mips_o32 not supported by the package."
 #	endif
 #elif defined(__riscv)
-#	if defined(__riscv_float_abi_double)
+#	if (__WORDSIZE == 64) && defined(__riscv_float_abi_double)
 #		error "abi_riscv_lp64d not supported by the package."
-#	elif defined(__riscv_float_abi_single)
+#	elif (__WORDSIZE == 64) && defined(__riscv_float_abi_single)
 #		error "abi_riscv_lp64f not supported by the package."
-#	else
+#	elif (__WORDSIZE == 64)
 #		error "abi_riscv_lp64 not supported by the package."
+#	elif (__WORDSIZE == 32) && defined(__riscv_float_abi_double)
+#		error "abi_riscv_ilp32d not supported by the package."
+#	elif (__WORDSIZE == 32) && defined(__riscv_float_abi_single)
+#		error "abi_riscv_ilp32f not supported by the package."
+#	else
+#		error "abi_riscv_ilp32 not supported by the package."
 #	endif
 #elif defined(__sparc__)
 #	if defined(__arch64__)
