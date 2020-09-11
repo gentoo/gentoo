@@ -1,0 +1,38 @@
+From 9603da9d4eda1656219a4c79e1f9d1a958165151 Mon Sep 17 00:00:00 2001
+From: Austin Pua <pua.austin.anderson@gmail.com>
+Date: Wed, 1 Jul 2020 21:48:09 +0800
+Subject: [PATCH] Fix copy paste issue in auth webviews
+
+---
+ lutris/services/gog.py          | 3 ++-
+ lutris/services/humblebundle.py | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/lutris/services/gog.py b/lutris/services/gog.py
+index 0eed7778c..099f9083d 100644
+--- a/lutris/services/gog.py
++++ b/lutris/services/gog.py
+@@ -279,7 +279,8 @@ def connect(parent=None):
+     """Connect to GOG"""
+     logger.debug("Connecting to GOG")
+     dialog = WebConnectDialog(SERVICE, parent)
+-    dialog.run()
++    dialog.set_modal(True)
++    dialog.show()
+ 
+ 
+ def disconnect():
+diff --git a/lutris/services/humblebundle.py b/lutris/services/humblebundle.py
+index 6dcfe6911..056ef9460 100644
+--- a/lutris/services/humblebundle.py
++++ b/lutris/services/humblebundle.py
+@@ -152,7 +152,8 @@ def is_connected():
+ def connect(parent=None):
+     """Connect to Humble Bundle"""
+     dialog = WebConnectDialog(SERVICE, parent)
+-    dialog.run()
++    dialog.set_modal(True)
++    dialog.show()
+ 
+ 
+ def disconnect():
