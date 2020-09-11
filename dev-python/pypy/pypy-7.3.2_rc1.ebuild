@@ -56,11 +56,6 @@ src_prepare() {
 	# this test relies on pypy-c hardcoding correct build time paths
 	sed -i -e 's:test_executable_without_cwd:_&:' \
 		lib-python/2.7/test/test_subprocess.py || die
-	# broken upstream
-	# see http://buildbot.pypy.org/summary?branch=%3Ctrunk%3E
-	sed -i -e 's:test_alpn_protocols:_&:' \
-		-e 's:test_default_ecdh_curve:_&:' \
-		lib-python/2.7/test/test_ssl.py || die
 	# requires Internet
 	sed -i -e '/class NetworkedTests/i@unittest.skip("Requires networking")' \
 		lib-python/2.7/test/test_ssl.py || die
