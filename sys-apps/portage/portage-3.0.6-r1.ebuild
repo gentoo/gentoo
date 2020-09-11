@@ -80,7 +80,8 @@ prefix_src_archives() {
 
 TARBALL_PV=${PV}
 SRC_URI="mirror://gentoo/${PN}-${TARBALL_PV}.tar.bz2
-	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.bz2)"
+	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.bz2)
+	https://github.com/gentoo/portage/commit/a8f0e05d35b0ba2747827ce03dff42682192def8.patch -> ${P}-selinux-utf8-bug-741194.patch"
 
 pkg_pretend() {
 	local CONFIG_CHECK="~IPC_NS ~PID_NS ~NET_NS ~UTS_NS"
@@ -90,6 +91,8 @@ pkg_pretend() {
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
+
+	eapply "${DISTDIR}/${P}-selinux-utf8-bug-741194.patch"
 
 	sed -e "s:^VERSION = \"HEAD\"$:VERSION = \"${PV}\":" -i lib/portage/__init__.py || die
 
