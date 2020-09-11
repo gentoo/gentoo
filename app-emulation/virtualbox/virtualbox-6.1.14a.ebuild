@@ -64,7 +64,10 @@ CDEPEND="
 DEPEND="
 	${CDEPEND}
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
-	!headless? ( x11-libs/libXinerama )
+	!headless? (
+		x11-libs/libXinerama
+		opengl? ( virtual/opengl )
+	)
 	pam? ( sys-libs/pam )
 	pax_kernel? ( sys-apps/elfix )
 	pulseaudio? ( media-sound/pulseaudio )
