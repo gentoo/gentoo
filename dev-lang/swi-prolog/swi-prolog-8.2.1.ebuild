@@ -62,6 +62,7 @@ src_prepare() {
 	eapply_user
 
 	sed -i -e "s|\(SWIPL_INSTALL_PREFIX\)   lib/.*)|\1   $(get_libdir)/swipl)|" CMakeLists.txt || die
+	sed -i -e "s|\(SWIPL_INSTALL_CMAKE_CONFIG_DIR\) lib/|\1   $(get_libdir)/|" CMakeLists.txt || die
 
 	cmake-utils_src_prepare
 }
