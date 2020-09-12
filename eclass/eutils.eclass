@@ -14,6 +14,10 @@
 #
 # Due to the nature of this eclass, some functions may have maintainers
 # different from the overall eclass!
+#
+# This eclass is DEPRECATED and must not be inherited by any new ebuilds
+# or eclasses.  Use the more specific split eclasses instead, or native
+# package manager functions when available.
 
 if [[ -z ${_EUTILS_ECLASS} ]]; then
 _EUTILS_ECLASS=1
