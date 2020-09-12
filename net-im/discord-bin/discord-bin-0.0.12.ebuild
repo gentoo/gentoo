@@ -6,7 +6,7 @@ EAPI=7
 MY_PN=${PN/-bin/}
 MY_BIN="D${MY_PN/d/}"
 
-inherit desktop pax-utils unpacker xdg-utils
+inherit desktop pax-utils unpacker xdg
 
 DESCRIPTION="All-in-one voice and text chat for gamers"
 HOMEPAGE="https://discordapp.com"
@@ -31,7 +31,6 @@ RDEPEND="
 	net-print/cups
 	sys-apps/dbus
 	sys-apps/util-linux
-	sys-libs/libcxx
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
@@ -50,7 +49,7 @@ RDEPEND="
 	x11-libs/pango
 "
 
-S=${WORKDIR}
+S="${WORKDIR}"
 
 QA_PREBUILT="
 	opt/discord/${MY_BIN}
@@ -82,16 +81,4 @@ src_install() {
 	dosym ../../opt/${MY_PN}/${MY_BIN} usr/bin/${MY_PN}
 
 	pax-mark -m "${ED}"/opt/${MY_PN}/${MY_PN}
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	xdg_icon_cache_update
 }
