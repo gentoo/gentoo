@@ -86,6 +86,7 @@ MODULAR_X_DEPEND="X? (
 	)"
 
 COMMON_DEPEND="${MODULAR_X_DEPEND}
+	!dev-tex/detex
 	!dev-tex/dvi2tty
 	!app-text/vlna
 	!app-eselect/eselect-mpost
@@ -215,6 +216,7 @@ src_configure() {
 		--disable-dialog \
 		--disable-multiplatform \
 		--enable-epsfwin \
+		--enable-detex \
 		--enable-dvi2tty \
 		--enable-mftalkwin \
 		--enable-regiswin \
@@ -234,7 +236,6 @@ src_configure() {
 		--disable-pdfopen \
 		--disable-ps2eps \
 		--disable-ps2pk \
-		--disable-detex \
 		--disable-ttf2pk2 \
 		--disable-tex4htk \
 		--disable-cjkutils \
