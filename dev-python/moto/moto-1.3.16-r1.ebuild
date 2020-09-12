@@ -59,6 +59,10 @@ BDEPEND="
 distutils_enable_tests nose
 
 python_prepare_all() {
+	# unping indirect dep on ecdsa that's supposed to workaround pip
+	# bugs
+	sed -i -e '/ecdsa/s:<0.15::' setup.py || die
+
 	# Disable tests that fail with network-sandbox.
 	sed -e 's|^\(def \)\(test_context_manager()\)|\1_\2|' \
 		-e 's|^\(def \)\(test_decorator_start_and_stop()\)|\1_\2|' \
