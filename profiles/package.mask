@@ -319,12 +319,6 @@ net-mail/maildirtree
 # Does not compile against ghc-8.8. Removal in 30 days.
 dev-haskell/bio
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-27)
-# Abandoned upstream.
-# Does not compile against ghc-8.8. Removal in 30 days.
-# Bug #735844.
-dev-haskell/chell-quickcheck
-
 # Piotr Karbowski <slashbeast@gentoo.org> (2020-08-28)
 # Temporary mask due to multiple reports of segfaults at startup, bug #739056 
 =x11-base/xorg-server-1.20.9
