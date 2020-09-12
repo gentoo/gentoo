@@ -47,7 +47,6 @@ RDEPEND="${PYTHON_DEPS}
 		app-text/ps2eps
 		app-text/texlive
 		dev-tex/chktex
-		dev-tex/dvipost
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-mathscience
