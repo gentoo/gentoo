@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 MY_P="${P/_}"
 inherit desktop flag-o-matic font python-single-r1 qmake-utils toolchain-funcs xdg-utils
@@ -46,7 +46,6 @@ RDEPEND="${PYTHON_DEPS}
 		app-text/ghostscript-gpl
 		app-text/ps2eps
 		app-text/texlive
-		dev-tex/chktex
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-mathscience
@@ -75,8 +74,6 @@ DEPEND="${RDEPEND}
 "
 
 DOCS=( ANNOUNCE NEWS README RELEASE-NOTES UPGRADING )
-
-PATCHES=( "${FILESDIR}"/${PN}-2.3.0-python.patch )
 
 S="${WORKDIR}/${MY_P}"
 
