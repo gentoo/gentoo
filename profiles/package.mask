@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2020-09-12)
+# Merged into dev-texlive/texlive-bibtexextra
+# Removal in 30 days
+dev-tex/biblatex-apa
+
 # Mikle Kolyada <zlogene@gentoo.org> (2020-09-12)
 # Merged into the texlive-core package.
 # Removal in 30 days
