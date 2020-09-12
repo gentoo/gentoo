@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
+
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit autotools flag-o-matic desktop python-any-r1 xdg
 
 MY_PV=$(ver_rs 2 '')
@@ -37,6 +38,10 @@ BDEPEND="
 
 S="${WORKDIR}/${PN}-${MY_PV^^}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fnocommon.patch"
+)
+
 src_prepare() {
 	default
 
@@ -56,7 +61,7 @@ src_configure() {
 	local myconf=(
 		--disable-fastmath
 		--with-embedded-lua
-		--localedir=/usr/share/locale
+		--localedir="${EPREFIX}/usr/share/locale"
 		$(use_enable nls)
 		$(use_enable opengl)
 		$(use_enable sound)
