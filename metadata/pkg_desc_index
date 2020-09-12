@@ -8459,7 +8459,7 @@ dev-python/mox3 0.24.0: Mock object framework for Python
 dev-python/mpdlcd 0.5.2: A small tool to display the MPD status on a LCDproc server.
 dev-python/mpi4py 3.0.3: Message Passing Interface for Python
 dev-python/mpmath 1.1.0: Python library for arbitrary-precision floating-point arithmetic
-dev-python/msgpack 0.6.2: MessagePack (de)serializer for Python
+dev-python/msgpack 0.6.2 1.0.0: MessagePack (de)serializer for Python
 dev-python/multidict 4.7.6: multidict implementation
 dev-python/munch 2.5.0-r1: A dot-accessible dictionary (a la JavaScript objects)
 dev-python/munkres 1.1.2: Module implementing munkres algorithm for the Assignment Problem
@@ -8488,7 +8488,7 @@ dev-python/nbval 0.9.1-r1: A py.test plugin to validate Jupyter notebooks
 dev-python/ndg-httpsclient 0.4.0 0.4.2-r1 0.5.1: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
 dev-python/neovim-remote 2.2.1 9999: A tool that helps control neovim processes
 dev-python/nest_asyncio 1.4.0: Patch asyncio to allow nested event loops
-dev-python/netaddr 0.7.19: Network address representation and manipulation library
+dev-python/netaddr 0.7.19 0.8.0: Network address representation and manipulation library
 dev-python/netcdf4-python 1.2.2-r1: Python/numpy interface to the netCDF C library
 dev-python/netifaces 0.10.9: Portable network interface information
 dev-python/networkx 2.4-r1 2.5: Python tools to manipulate graphs and complex networks
@@ -15060,11 +15060,11 @@ net-misc/apt-cacher-ng 3.3.1_p2 3.4_p1 3.5_p1-r1 9999999: Yet another caching HT
 net-misc/aria2 1.34.0-r2: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
 net-misc/arpsponge 3.12.2 3.17.11: Sweeps up stray ARP queries from a peering LAN
-net-misc/asterisk 11.25.3-r1 13.33.0 13.34.0 13.35.0 16.11.1 16.12.0: Asterisk: A Modular Open Source PBX System
-net-misc/asterisk-core-sounds 1.4.21-r1 1.4.22 1.6.1 1.6.1-r1: Core sounds for asterisk
-net-misc/asterisk-extra-sounds 1.4.11-r1 1.5.2: Extra sounds for asterisk
+net-misc/asterisk 11.25.3-r1 13.34.0 13.35.0-r1 13.36.0 16.12.0-r1 16.13.0: Asterisk: A Modular Open Source PBX System
+net-misc/asterisk-core-sounds 1.6.1-r1: Core sounds for asterisk
+net-misc/asterisk-extra-sounds 1.5.2: Extra sounds for asterisk
 net-misc/asterisk-g729 11.0.3.1.9 13.0.3.1.9 16.0.3.1.9: G.729 codec and supporting files for asterisk
-net-misc/asterisk-moh-opsound 2.03 2.03-r1: asterisk moh music
+net-misc/asterisk-moh-opsound 2.03-r1: asterisk moh music
 net-misc/asterisk-opus 13.0.1.3.0 16.0.1.3.0: OPUS codec and supporting files for asterisk
 net-misc/astmanproxy 1.28.2: Proxy for the Asterisk manager interface
 net-misc/autossh 1.4g: Automatically restart SSH sessions and tunnels
