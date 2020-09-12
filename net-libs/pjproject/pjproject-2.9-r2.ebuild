@@ -39,7 +39,10 @@ RDEPEND="net-libs/libsrtp:=
 	portaudio? ( media-libs/portaudio )
 	resample? ( media-libs/libsamplerate )
 	sdl? ( media-libs/libsdl )
-	speex? ( media-libs/speexdsp )
+	speex? (
+		media-libs/speex
+		media-libs/speexdsp
+	)
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
