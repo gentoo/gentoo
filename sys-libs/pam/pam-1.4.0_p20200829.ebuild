@@ -27,6 +27,7 @@ BDEPEND="
 DEPEND="
 	virtual/libcrypt:=[${MULTILIB_USEDEP}]
 	>=virtual/libintl-0-r1[${MULTILIB_USEDEP}]
+	virtual/yacc
 	audit? ( >=sys-process/audit-2.2.2[${MULTILIB_USEDEP}] )
 	berkdb? ( >=sys-libs/db-4.8.30-r1:=[${MULTILIB_USEDEP}] )
 	selinux? ( >=sys-libs/libselinux-2.2.2-r4[${MULTILIB_USEDEP}] )
