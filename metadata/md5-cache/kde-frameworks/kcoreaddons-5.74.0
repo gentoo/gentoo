@@ -1,0 +1,15 @@
+BDEPEND=nls? ( >=dev-qt/linguist-tools-5.14.2:5 ) dev-util/ninja dev-util/cmake doc? ( >=app-doc/doxygen-1.8.13-r1 dev-qt/qthelp:5 ) >=kde-frameworks/extra-cmake-modules-5.74:5
+DEFINED_PHASES=compile configure install nofetch postinst postrm preinst prepare setup test unpack
+DEPEND=>=dev-qt/qtcore-5.14.2:5[icu] fam? ( virtual/fam ) test? ( dev-qt/qttest:5 ) doc? ( dev-qt/qt-docs:5 ) dev-qt/qtcore:5
+DESCRIPTION=Framework for solving common problems such as caching, randomisation, and more
+EAPI=7
+HOMEPAGE=https://kde.org/products/frameworks/
+IUSE=fam nls debug doc test
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
+LICENSE=LGPL-2+
+RDEPEND=>=dev-qt/qtcore-5.14.2:5[icu] fam? ( virtual/fam ) >=kde-frameworks/kf-env-4 doc? ( dev-qt/qt-docs:5 ) dev-qt/qtcore:5
+RESTRICT=!test? ( test )
+SLOT=5/5.74
+SRC_URI=mirror://kde/stable/frameworks/5.74/kcoreaddons-5.74.0.tar.xz
+_eclasses_=cmake	9f6da23aab151395c55f018fb13a11b2	ecm	f6ac7d31239fbaacf94ec10be0fb8066	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	kde.org	074252323c6185f751658b74c09b68ff	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	virtualx	e49dbce7ac14426e1155497476915307	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=44518fcb248fd68072748d8ed5059486
