@@ -65,16 +65,16 @@ QA_FLAGS_IGNORED_amd64=" usr/lib64/vmd/plugins/LINUX/tcl/volutil/volutil"
 QA_FLAGS_IGNORED_x86=" usr/lib/vmd/plugins/LINUX/tcl/volutil/volutil"
 
 pkg_nofetch() {
-	elog "Please download ${P}.src.tar from"
+	elog "Please download ${MY_P}.src.tar from"
 	elog "${VMD_DOWNLOAD}"
 	elog "after agreeing to the license and get"
-	elog "https://dev.gentoo.org/~jlec/distfiles/${P}-gentoo-patches.tar.xz"
+	elog "https://dev.gentoo.org/~jlec/distfiles/${PN}-1.9.3-gentoo-patches.tar.xz"
 	elog "Place both into your DISTDIR directory"
 	elog
 	elog "Due to an upstream bug (https://bugs.gentoo.org/640440) sources"
 	elog "file may get downloaded as a compressed tarball or not. In that case"
 	elog "you will need to ensure you uncompress the file and rename it"
-	elog "as ${P}.src.tar"
+	elog "to ${MY_P}.src.tar"
 }
 
 src_prepare() {
