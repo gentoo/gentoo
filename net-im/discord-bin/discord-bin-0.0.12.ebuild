@@ -63,7 +63,7 @@ QA_PREBUILT="
 	opt/discord/libffmpeg.so
 "
 
-CONFIG_CHECK="USER_NS"
+CONFIG_CHECK="~USER_NS"
 
 src_prepare() {
 	default
