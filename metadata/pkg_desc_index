@@ -1016,7 +1016,7 @@ app-crypt/tc-play 2.0-r1: a free, pretty much fully featured and stable TrueCryp
 app-crypt/tpm-emulator 0.7.5-r2: Emulator driver for tpm
 app-crypt/tpm-tools 1.3.9.1-r1: TrouSerS' support tools for the Trusted Platform Modules
 app-crypt/tpm2-abrmd 2.1.1-r2 2.3.1: TPM2 Access Broker & Resource Manager
-app-crypt/tpm2-pkcs11 1.3.1: A PKCS#11 interface for TPM2 hardware
+app-crypt/tpm2-pkcs11 1.3.2 1.4.0: A PKCS#11 interface for TPM2 hardware
 app-crypt/tpm2-tools 4.2.1-r1: Tools for the TPM 2.0 TSS
 app-crypt/tpm2-totp 0.2.1-r1: Attest the trustworthiness of a device against a human using time-based OTP
 app-crypt/tpm2-tss 2.4.1 2.4.2 3.0.0: TCG Trusted Platform Module 2.0 Software Stack
@@ -3827,26 +3827,25 @@ dev-haskell/biosff 0.3.7.1: Library and executables for working with SFF files
 dev-haskell/bitarray 0.0.1.1: Mutable and immutable bit arrays
 dev-haskell/bits-atomic 0.1.3-r1: Atomic bit operations on memory locations for low-level synchronization
 dev-haskell/bitwise 1.0.0.1: fast multi-dimensional unboxed bit packed Bool arrays
-dev-haskell/blaze-builder 0.3.3.2 0.3.3.4 0.4.0.1 0.4.0.2 0.4.1.0: Efficient buffered output
-dev-haskell/blaze-builder-conduit 1.0.0 1.1.0: Convert streams of builders to streams of bytestrings. (deprecated)
-dev-haskell/blaze-builder-enumerator 0.2.1.0 0.2.1.0-r1: Enumeratees for the incremental conversion of builders to bytestrings
-dev-haskell/blaze-html 0.6.1.2 0.6.1.3 0.7.1.0 0.8.1.1 0.8.1.2 0.9.1.2: A blazingly fast HTML combinator library for Haskell
-dev-haskell/blaze-markup 0.5.2.1 0.6.3.0 0.7.0.3 0.7.1.0 0.8.2.4: A blazingly fast markup combinator library for Haskell
+dev-haskell/blaze-builder 0.4.1.0: Efficient buffered output
+dev-haskell/blaze-builder-conduit 1.1.0: Convert streams of builders to streams of bytestrings. (deprecated)
+dev-haskell/blaze-html 0.9.1.2: A blazingly fast HTML combinator library for Haskell
+dev-haskell/blaze-markup 0.8.2.4: A blazingly fast markup combinator library for Haskell
 dev-haskell/blaze-textual 0.2.1.0: Fast rendering of common datatypes
-dev-haskell/bloomfilter 1.2.6.10-r2 2.0.1.0: Pure and impure Bloom Filter implementations
-dev-haskell/boolean 0.2.3 0.2.4: Generalized booleans and numbers
+dev-haskell/bloomfilter 2.0.1.0: Pure and impure Bloom Filter implementations
+dev-haskell/boolean 0.2.4: Generalized booleans and numbers
 dev-haskell/boundedchan 1.0.3.0: Implementation of bounded channels
-dev-haskell/boxes 0.1.4 0.1.5: 2D text pretty-printing library
+dev-haskell/boxes 0.1.5: 2D text pretty-printing library
 dev-haskell/bsb-http-chunked 0.0.0.4: Chunked HTTP transfer encoding for bytestring builders
 dev-haskell/byteable 0.1.1: Type class for sequence of bytes
 dev-haskell/bytedump 1.0: Flexible byte dump helpers for human readers
 dev-haskell/byteorder 1.0.4: Exposes the native endianness or byte ordering of the system
-dev-haskell/bytes 0.15.2 0.15.5 0.17: Sharing code for serialization between binary and cereal
-dev-haskell/bytestring-builder 0.10.6.0.0 0.10.8.1.0 0.10.8.2.0: The new bytestring builder, packaged outside of GHC
-dev-haskell/bytestring-handle 0.1.0.4 0.1.0.6: ByteString-backed Handles
+dev-haskell/bytes 0.17: Sharing code for serialization between binary and cereal
+dev-haskell/bytestring-builder 0.10.8.2.0: The new bytestring builder, packaged outside of GHC
+dev-haskell/bytestring-handle 0.1.0.6: ByteString-backed Handles
 dev-haskell/bytestring-mmap 0.2.2-r1: mmap support for strict ByteStrings
-dev-haskell/bytestring-show 0.3.5.6 0.3.5.6-r1: Efficient conversion of values into readable byte strings
-dev-haskell/bzlib 0.5.0.5 0.5.1.0: Compression and decompression in the bzip2 format
+dev-haskell/bytestring-show 0.3.5.6-r1: Efficient conversion of values into readable byte strings
+dev-haskell/bzlib 0.5.1.0: Compression and decompression in the bzip2 format
 dev-haskell/c2hs 0.16.4 0.16.5 0.17.2 0.20.1 0.25.2 0.27.1 0.28.3 0.28.6: C->Haskell FFI tool that gives some cross-language type safety
 dev-haskell/cabal 1.18.1.2 1.18.1.3 1.18.1.5 1.20.0.2 1.22.8.0 1.24.2.0 2.0.0.2 2.4.0.1 3.0.1.0: A framework for packaging Haskell software
 dev-haskell/cabal-doctest 1 1.0.8: A Setup.hs helper for doctests running
@@ -4049,7 +4048,7 @@ dev-haskell/haddock-api 2.16.1 2.17.3 2.23.1: A documentation-generation tool fo
 dev-haskell/haddock-library 1.1.1 1.2.1 1.4.2 1.8.0: Library exposing some functionality of Haddock
 dev-haskell/hakyll 4.13.4.0: A static website compiler library
 dev-haskell/half 0.2.2.3: Half-precision floating-point
-dev-haskell/hamlet 1.1.9.2 1.2.0: Haml-like template files that are compile-time checked (deprecated)
+dev-haskell/hamlet 1.2.0: Haml-like template files that are compile-time checked (deprecated)
 dev-haskell/happstack-server 7.6.0: Web related tools and services
 dev-haskell/happy 1.19.12: Happy is a parser generator for Haskell
 dev-haskell/harp 0.4.1 0.4.2 0.4.3.2: HaRP allows pattern-matching with regular expressions
@@ -4079,7 +4078,7 @@ dev-haskell/hex 0.1.2: Convert strings into hexadecimal and back
 dev-haskell/hexpat 0.20.9 0.20.10 0.20.11 0.20.13: XML parser/formatter based on expat
 dev-haskell/hgettext 0.1.30: Bindings to libintl.h (gettext, bindtextdomain)
 dev-haskell/hi-file-parser 0.1.0.0: Parser for GHC's hi files
-dev-haskell/highlighting-kate 0.5.5 0.5.14 0.6 0.6.1 0.6.2 0.6.3 0.6.4: Syntax highlighting
+dev-haskell/highlighting-kate 0.6.4: Syntax highlighting
 dev-haskell/hinotify 0.3.8.1 0.3.10: Haskell binding to inotify
 dev-haskell/hit 0.7.0: Git operations in haskell
 dev-haskell/hjsmin 0.1.5.1 0.2.0.2 0.2.0.4: Haskell implementation of a javascript minifier
@@ -4114,8 +4113,8 @@ dev-haskell/hsyaml 0.2.1.0: Pure Haskell YAML 1.2 parser
 dev-haskell/hsyaml-aeson 0.2.0.0: JSON to YAML Adapter
 dev-haskell/htf 0.14.0.3: The Haskell Test Framework
 dev-haskell/html 1.0.1.2-r1: HTML combinator library
-dev-haskell/html-conduit 1.1.1.1 1.2.1 1.2.1.1 1.3.2.1: Parse HTML documents using xml-conduit datatypes
-dev-haskell/http 4000.2.8 4000.2.17 4000.2.20 4000.2.22 4000.3.5 4000.3.14: A library for client-side HTTP
+dev-haskell/html-conduit 1.3.2.1: Parse HTML documents using xml-conduit datatypes
+dev-haskell/http 4000.3.14: A library for client-side HTTP
 dev-haskell/http-api-data 0.3.3 0.4.1.1: Converting to/from HTTP API data like URL pieces, headers and query parameters
 dev-haskell/http-attoparsec 0.1.1-r2 0.1.1-r3: Attoparsec parsers for http-types
 dev-haskell/http-client 0.4.18.1 0.4.30 0.5.5 0.5.7.0 0.6.4.1: An HTTP client engine, intended as a base layer for more user-friendly packages
@@ -4124,7 +4123,7 @@ dev-haskell/http-client-multipart 0.2.0.0 0.3.0.0: Generate multipart uploads fo
 dev-haskell/http-client-restricted 0.0.3: restricting the servers that http-client will use
 dev-haskell/http-client-tls 0.2.2 0.2.4 0.3.3 0.3.5.3: http-client backend using the connection package and tls library
 dev-haskell/http-common 0.8.2.0: Common types for HTTP clients and servers
-dev-haskell/http-conduit 2.1.7.2 2.1.8 2.1.10.1 2.2.3 2.3.7.3: HTTP client package with conduit interface and HTTPS support
+dev-haskell/http-conduit 2.3.7.3: HTTP client package with conduit interface and HTTPS support
 dev-haskell/http-date 0.0.6.1 0.0.8: HTTP Date parser/formatter
 dev-haskell/http-download 0.2.0.0: Verified downloads with retries
 dev-haskell/http-reverse-proxy 0.1.1.6 0.2.0 0.4.3 0.4.3.2: Reverse proxy HTTP requests, either over raw sockets or with WAI
@@ -4529,14 +4528,14 @@ dev-haskell/vector-instances 3.3.1 3.4: Orphan Instances for 'Data.Vector'
 dev-haskell/vector-space 0.16: Vector & affine spaces, linear maps, and derivatives
 dev-haskell/vector-th-unbox 0.2.1.3 0.2.1.6 0.2.1.7: Deriver for Data.Vector.Unboxed using Template Haskell
 dev-haskell/void 0.6.1 0.7.1 0.7.3: A Haskell 98 logically uninhabited data type
-dev-haskell/wai 1.4.0.2 2.0.0 2.1.0 3.0.3.0 3.0.5.0 3.2.1.1 3.2.2.1: Web Application Interface
+dev-haskell/wai 3.2.2.1: Web Application Interface
 dev-haskell/wai-app-static 3.1.7.2: WAI application for static serving
-dev-haskell/wai-conduit 3.0.0.2 3.0.0.3: conduit wrappers for WAI
-dev-haskell/wai-extra 3.0.10 3.0.14 3.0.15.1 3.0.18 3.0.29.1: Provides some basic WAI handlers and middleware
+dev-haskell/wai-conduit 3.0.0.3: conduit wrappers for WAI
+dev-haskell/wai-extra 3.0.29.1: Provides some basic WAI handlers and middleware
 dev-haskell/wai-logger 2.2.4.1 2.2.7 2.3.6: A logging system for WAI
-dev-haskell/wai-test 1.3.1.1 2.0.0.2 3.0.0: Unit test framework (built on HUnit) for WAI applications. (deprecated)
-dev-haskell/warp 3.0.13.1 3.1.10 3.2.11 3.3.13: A fast, light-weight web server for WAI applications
-dev-haskell/warp-tls 3.0.4.2 3.1.5 3.2.3 3.2.12: HTTP over TLS support for Warp via the TLS package
+dev-haskell/wai-test 3.0.0: Unit test framework (built on HUnit) for WAI applications. (deprecated)
+dev-haskell/warp 3.3.13: A fast, light-weight web server for WAI applications
+dev-haskell/warp-tls 3.2.12: HTTP over TLS support for Warp via the TLS package
 dev-haskell/wavy 0.1.0.0: Process WAVE files in Haskell
 dev-haskell/wcwidth 0.0.2: Native wcwidth
 dev-haskell/weigh 0.0.3 0.0.16: Measure allocations of a Haskell functions/values
@@ -4558,7 +4557,7 @@ dev-haskell/x509-system 1.6.6: Handle per-operating-system X.509 accessors and s
 dev-haskell/x509-validation 1.6.11: X.509 Certificate and CRL validation
 dev-haskell/xhtml 3000.2.1-r1 3000.2.2.1: An XHTML combinator library
 dev-haskell/xml 1.3.13 1.3.14: A simple XML library
-dev-haskell/xml-conduit 1.1.0.9 1.2.3.3 1.3.1 1.3.3 1.3.4.2 1.9.0.0: Pure-Haskell utilities for dealing with XML with the conduit package
+dev-haskell/xml-conduit 1.9.0.0: Pure-Haskell utilities for dealing with XML with the conduit package
 dev-haskell/xml-hamlet 0.5.0.1: Hamlet-style quasiquoter for XML content
 dev-haskell/xml-types 0.3.8: Basic types for representing XML
 dev-haskell/xmlgen 0.6.2.2: Fast XML generation library
@@ -14977,7 +14976,7 @@ net-mail/cyrus-imapd 3.0.13 3.0.14: The Cyrus IMAP Server
 net-mail/dbmail 3.2.3-r1 3.2.3-r2: Fast and scalable sql based email services
 net-mail/django-mailman3 1.3.4: Django-based interfaces interacting with Mailman 3
 net-mail/dot-forward 0.71-r4: reads sendmail's .forward files under qmail
-net-mail/dovecot 2.2.36.4 2.3.7.2 2.3.10.1 2.3.11.3: An IMAP and POP3 server written with security primarily in mind
+net-mail/dovecot 2.2.36.4 2.3.7.2 2.3.10.1 2.3.11.3 2.3.11.3-r1: An IMAP and POP3 server written with security primarily in mind
 net-mail/email 3.1.3-r1: Advanced CLI tool for sending email
 net-mail/eps 1.7-r1: Inter7 Email Processing and mht System library
 net-mail/ezmlm-idx 7.0.0-r3: Simple yet powerful mailing list manager for qmail
@@ -16000,7 +15999,7 @@ sci-chemistry/mdtraj 1.9.1 1.9.4: Read, write and analyze MD trajectories with o
 sci-chemistry/mm-align 20120321: Protein Complex Structural Alignment
 sci-chemistry/molden 5.5: Display molecular density from GAMESS-UK, GAMESS-US, GAUSSIAN and Mopac/Ampac
 sci-chemistry/moldy 2.16e-r2: Molecular dynamics simulations platform
-sci-chemistry/molequeue 0.9.0: Abstract, manage and coordinate execution of tasks
+sci-chemistry/molequeue 0.9.0 0.9.0-r1: Abstract, manage and coordinate execution of tasks
 sci-chemistry/molmol 2k_p2-r5: Publication-quality molecular visualization package
 sci-chemistry/molscript 2.1.2-r2: Display 3D molecules (e.g., proteins) in schematic and detailed representations
 sci-chemistry/molsketch 0.4.1-r1: A drawing tool for 2D molecular structures
