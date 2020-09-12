@@ -6526,7 +6526,7 @@ dev-perl/Filesys-Notify-Simple 0.120.0 0.140.0: Simple and dumb file system watc
 dev-perl/Filesys-SmbClient 3.200.0-r3 3.200.0-r4: Provide Perl API for libsmbclient.so
 dev-perl/Filesys-Statvfs 0.820.0 0.820.0-r1: Perl extension for statvfs() and fstatvfs()
 dev-perl/Filter 1.570.0 1.600.0: Interface for creation of Perl Filters
-dev-perl/Finance-Quote 1.470.0: Get stock and mutual fund quotes from various exchanges
+dev-perl/Finance-Quote 1.470.0 1.490.0: Get stock and mutual fund quotes from various exchanges
 dev-perl/Finance-YahooQuote 0.250.0-r1: Get stock quotes from Yahoo! Finance
 dev-perl/Font-AFM 1.200.0-r1: Parse Adobe Font Metric files
 dev-perl/Font-TTF 1.60.0: module for compiling and altering fonts
@@ -7224,6 +7224,7 @@ dev-perl/String-RewritePrefix 0.7.0: Rewrite strings based on a set of known pre
 dev-perl/String-ShellQuote 1.40.0-r1: Quote strings for passing through the shell
 dev-perl/String-Tokenizer 0.60.0: A simple string tokenizer
 dev-perl/String-Truncate 1.100.602: Module for when strings are too long to be displayed in...
+dev-perl/String-Util 1.310.0: String processing utility functions
 dev-perl/Struct-Compare 1.0.1: Recursive diff for perl structures
 dev-perl/Sub-Delete 1.0.20: Perl module enabling one to delete subroutines
 dev-perl/Sub-Exporter 0.987.0: A sophisticated exporter for custom-built routines
