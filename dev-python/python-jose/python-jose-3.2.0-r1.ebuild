@@ -27,7 +27,9 @@ RDEPEND="
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	sed -e '/pytest-runner/d' -i setup.py || die
+	sed -e '/pytest-runner/d' \
+		-e '/ecdsa/s:<0.15::' \
+		-i setup.py || die
 	sed -e '/addopts/d' -i setup.cfg || die
 	sed -e 's:test_key_too_short:_&:' \
 		-i tests/algorithms/test_EC.py || die
