@@ -97,7 +97,7 @@ src_configure() {
 	tc-export CC CXX AR RANLIB
 
 	local myeconfargs=(
-		--extra-cflags="${CFLAGS} $(usex cpu_flags_x86_sse2 '-msse2' '')"
+		--extra-cflags="${CFLAGS} $(usex cpu_flags_x86_sse2 '-msse2' '-mno-sse2')"
 		--cc="$(tc-getCC)"
 		--libdir="$(get_libdir)"
 		--verbose
