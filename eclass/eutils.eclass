@@ -1,9 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: eutils.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: many extra (but common) functions that are used in ebuilds
 # @DESCRIPTION:
 # The eutils eclass contains a suite of functions that complement
@@ -13,24 +14,32 @@
 #
 # Due to the nature of this eclass, some functions may have maintainers
 # different from the overall eclass!
+#
+# This eclass is DEPRECATED and must not be inherited by any new ebuilds
+# or eclasses.  Use the more specific split eclasses instead, or native
+# package manager functions when available.
 
 if [[ -z ${_EUTILS_ECLASS} ]]; then
 _EUTILS_ECLASS=1
 
 # implicitly inherited (now split) eclasses
 case ${EAPI:-0} in
-0|1|2|3|4|5|6)
-	inherit desktop epatch estack ltprune multilib preserve-libs \
-		toolchain-funcs vcs-clean
-	;;
+	0|1|2|3|4|5|6)
+		inherit desktop edos2unix epatch estack l10n ltprune multilib \
+			preserve-libs toolchain-funcs vcs-clean wrapper
+		;;
+	7) inherit edos2unix l10n wrapper ;;
+	*) die "${ECLASS} is banned in EAPI ${EAPI}" ;;
 esac
 
 # @FUNCTION: emktemp
 # @USAGE: [temp dir]
 # @DESCRIPTION:
-# Cheap replacement for when debianutils (and thus mktemp)
-# does not exist on the users system.
+# Cheap replacement for when coreutils (and thus mktemp) does not exist
+# on the user's system.
 emktemp() {
+	eqawarn "emktemp is deprecated. Create a temporary file in \${T} instead."
+
 	local exe="touch"
 	[[ $1 == -d ]] && exe="mkdir" && shift
 	local topdir=$1
@@ -60,114 +69,6 @@ emktemp() {
 	fi
 }
 
-# @FUNCTION: edos2unix
-# @USAGE: <file> [more files ...]
-# @DESCRIPTION:
-# A handy replacement for dos2unix, recode, fixdos, etc...  This allows you
-# to remove all of these text utilities from DEPEND variables because this
-# is a script based solution.  Just give it a list of files to convert and
-# they will all be changed from the DOS CRLF format to the UNIX LF format.
-edos2unix() {
-	[[ $# -eq 0 ]] && return 0
-	sed -i 's/\r$//' -- "$@" || die
-}
-
-# @FUNCTION: strip-linguas
-# @USAGE: [<allow LINGUAS>|<-i|-u> <directories of .po files>]
-# @DESCRIPTION:
-# Make sure that LINGUAS only contains languages that
-# a package can support.  The first form allows you to
-# specify a list of LINGUAS.  The -i builds a list of po
-# files found in all the directories and uses the
-# intersection of the lists.  The -u builds a list of po
-# files found in all the directories and uses the union
-# of the lists.
-strip-linguas() {
-	local ls newls nols
-	if [[ $1 == "-i" ]] || [[ $1 == "-u" ]] ; then
-		local op=$1; shift
-		ls=$(find "$1" -name '*.po' -exec basename {} .po ';'); shift
-		local d f
-		for d in "$@" ; do
-			if [[ ${op} == "-u" ]] ; then
-				newls=${ls}
-			else
-				newls=""
-			fi
-			for f in $(find "$d" -name '*.po' -exec basename {} .po ';') ; do
-				if [[ ${op} == "-i" ]] ; then
-					has ${f} ${ls} && newls="${newls} ${f}"
-				else
-					has ${f} ${ls} || newls="${newls} ${f}"
-				fi
-			done
-			ls=${newls}
-		done
-	else
-		ls="$@"
-	fi
-
-	nols=""
-	newls=""
-	for f in ${LINGUAS} ; do
-		if has ${f} ${ls} ; then
-			newls="${newls} ${f}"
-		else
-			nols="${nols} ${f}"
-		fi
-	done
-	[[ -n ${nols} ]] \
-		&& einfo "Sorry, but ${PN} does not support the LINGUAS:" ${nols}
-	export LINGUAS=${newls:1}
-}
-
-# @FUNCTION: make_wrapper
-# @USAGE: <wrapper> <target> [chdir] [libpaths] [installpath]
-# @DESCRIPTION:
-# Create a shell wrapper script named wrapper in installpath
-# (defaults to the bindir) to execute target (default of wrapper) by
-# first optionally setting LD_LIBRARY_PATH to the colon-delimited
-# libpaths followed by optionally changing directory to chdir.
-make_wrapper() {
-	local wrapper=$1 bin=$2 chdir=$3 libdir=$4 path=$5
-	local tmpwrapper=$(emktemp)
-	has "${EAPI:-0}" 0 1 2 && local EPREFIX=""
-
-	(
-	echo '#!/bin/sh'
-	if [[ -n ${libdir} ]] ; then
-		local var
-		if [[ ${CHOST} == *-darwin* ]] ; then
-			var=DYLD_LIBRARY_PATH
-		else
-			var=LD_LIBRARY_PATH
-		fi
-		cat <<-EOF
-			if [ "\${${var}+set}" = "set" ] ; then
-				export ${var}="\${${var}}:${EPREFIX}${libdir}"
-			else
-				export ${var}="${EPREFIX}${libdir}"
-			fi
-		EOF
-	fi
-	[[ -n ${chdir} ]] && printf 'cd "%s" &&\n' "${EPREFIX}${chdir}"
-	# We don't want to quote ${bin} so that people can pass complex
-	# things as ${bin} ... "./someprog --args"
-	printf 'exec %s "$@"\n' "${bin/#\//${EPREFIX}/}"
-	) > "${tmpwrapper}"
-	chmod go+rx "${tmpwrapper}"
-
-	if [[ -n ${path} ]] ; then
-		(
-		exeopts -m 0755
-		exeinto "${path}"
-		newexe "${tmpwrapper}" "${wrapper}"
-		) || die
-	else
-		newbin "${tmpwrapper}" "${wrapper}" || die
-	fi
-}
-
 path_exists() {
 	eerror "path_exists has been removed.  Please see the following post"
 	eerror "for a replacement snippet:"
@@ -182,53 +83,11 @@ path_exists() {
 #
 # Note that this function should not be used in the global scope.
 use_if_iuse() {
+	eqawarn "use_if_iuse is deprecated."
+	eqawarn "Define it as a local function, or inline it:"
+	eqawarn "    in_iuse foo && use foo"
 	in_iuse $1 || return 1
 	use $1
-}
-
-# @FUNCTION: optfeature
-# @USAGE: <short description> <package atom to match> [other atoms]
-# @DESCRIPTION:
-# Print out a message suggesting an optional package (or packages)
-# not currently installed which provides the described functionality.
-#
-# The following snippet would suggest app-misc/foo for optional foo support,
-# app-misc/bar or app-misc/baz[bar] for optional bar support
-# and either both app-misc/a and app-misc/b or app-misc/c for alphabet support.
-# @CODE
-#	optfeature "foo support" app-misc/foo
-#	optfeature "bar support" app-misc/bar app-misc/baz[bar]
-#	optfeature "alphabet support" "app-misc/a app-misc/b" app-misc/c
-# @CODE
-optfeature() {
-	debug-print-function ${FUNCNAME} "$@"
-	local i j msg
-	local desc=$1
-	local flag=0
-	shift
-	for i; do
-		for j in ${i}; do
-			if has_version "${j}"; then
-				flag=1
-			else
-				flag=0
-				break
-			fi
-		done
-		if [[ ${flag} -eq 1 ]]; then
-			break
-		fi
-	done
-	if [[ ${flag} -eq 0 ]]; then
-		for i; do
-			msg=" "
-			for j in ${i}; do
-				msg+=" ${j} and"
-			done
-			msg="${msg:0: -4} for ${desc}"
-			elog "${msg}"
-		done
-	fi
 }
 
 case ${EAPI:-0} in

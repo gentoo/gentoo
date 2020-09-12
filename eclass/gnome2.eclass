@@ -296,7 +296,7 @@ gnome2_src_install() {
 	if has ${EAPI:-0} 4; then
 		if [[ "${GNOME2_LA_PUNT}" != "no" ]]; then
 			ebegin "Removing .la files"
-			if ! use_if_iuse static-libs ; then
+			if ! in_iuse static-libs || ! use static-libs ; then
 				find "${D}" -name '*.la' -exec rm -f {} + || die "la file removal failed"
 			fi
 			eend

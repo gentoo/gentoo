@@ -398,10 +398,13 @@ SRC_URI=$(get_gcc_src_uri)
 #---->> pkg_pretend <<----
 
 toolchain_pkg_pretend() {
-	if ! use_if_iuse cxx ; then
-		use_if_iuse go && ewarn 'Go requires a C++ compiler, disabled due to USE="-cxx"'
-		use_if_iuse objc++ && ewarn 'Obj-C++ requires a C++ compiler, disabled due to USE="-cxx"'
-		use_if_iuse gcj && ewarn 'GCJ requires a C++ compiler, disabled due to USE="-cxx"'
+	if ! _tc_use_if_iuse cxx ; then
+		_tc_use_if_iuse go && \
+			ewarn 'Go requires a C++ compiler, disabled due to USE="-cxx"'
+		_tc_use_if_iuse objc++ && \
+			ewarn 'Obj-C++ requires a C++ compiler, disabled due to USE="-cxx"'
+		_tc_use_if_iuse gcj && \
+			ewarn 'GCJ requires a C++ compiler, disabled due to USE="-cxx"'
 	fi
 
 	want_minispecs
@@ -461,7 +464,8 @@ toolchain_src_prepare() {
 		*) die "Update toolchain_src_prepare() for ${EAPI}." ;;
 	esac
 
-	if ( tc_version_is_at_least 4.8.2 || use_if_iuse hardened ) && ! use vanilla ; then
+	if ( tc_version_is_at_least 4.8.2 || _tc_use_if_iuse hardened ) \
+		   && ! use vanilla ; then
 		make_gcc_hard
 	fi
 
@@ -481,7 +485,7 @@ toolchain_src_prepare() {
 	fi
 
 	# >= gcc-4.3 doesn't bundle ecj.jar, so copy it
-	if tc_version_is_at_least 4.3 && use_if_iuse gcj ; then
+	if tc_version_is_at_least 4.3 && _tc_use_if_iuse gcj ; then
 		if tc_version_is_at_least 4.5 ; then
 			einfo "Copying ecj-4.5.jar"
 			cp -pPR "${DISTDIR}/ecj-4.5.jar" "${S}/ecj.jar" || die
@@ -578,13 +582,13 @@ make_gcc_hard() {
 
 	# Gcc >= 6.X we can use configurations options to turn pie/ssp on as default
 	if tc_version_is_at_least 6.0 ; then
-		if use_if_iuse pie ; then
+		if _tc_use_if_iuse pie ; then
 			einfo "Updating gcc to use automatic PIE building ..."
 		fi
-		if use_if_iuse ssp ; then
+		if _tc_use_if_iuse ssp ; then
 			einfo "Updating gcc to use automatic SSP building ..."
 		fi
-		if use_if_iuse hardened ; then
+		if _tc_use_if_iuse hardened ; then
 			# Will add some hardened options as default, like:
 			# -fstack-clash-protection
 			# -z now
@@ -594,7 +598,7 @@ make_gcc_hard() {
 			BRANDING_GCC_PKGVERSION=${BRANDING_GCC_PKGVERSION/Gentoo/Gentoo Hardened}
 		fi
 	else
-		if use_if_iuse hardened ; then
+		if _tc_use_if_iuse hardened ; then
 			# rebrand to make bug reports easier
 			BRANDING_GCC_PKGVERSION=${BRANDING_GCC_PKGVERSION/Gentoo/Gentoo Hardened}
 			if hardened_gcc_works ; then
@@ -830,12 +834,12 @@ toolchain_src_configure() {
 	fi
 
 	# Build compiler itself using LTO
-	if tc_version_is_at_least 9.1 && use_if_iuse lto ; then
+	if tc_version_is_at_least 9.1 && _tc_use_if_iuse lto ; then
 		confgcc+=( --with-build-config=bootstrap-lto )
 	fi
 
 	# Support to disable pch when building libstdcxx
-	if tc_version_is_at_least 6.0 && ! use_if_iuse pch ; then
+	if tc_version_is_at_least 6.0 && ! _tc_use_if_iuse pch ; then
 		confgcc+=( --disable-libstdcxx-pch )
 	fi
 
@@ -1124,13 +1128,13 @@ toolchain_src_configure() {
 	fi
 
 	if tc_version_is_at_least 4.0 ; then
-		if use_if_iuse libssp ; then
+		if _tc_use_if_iuse libssp ; then
 			confgcc+=( --enable-libssp )
 		else
 			if hardened_gcc_is_stable ssp; then
 				export gcc_cv_libc_provides_ssp=yes
 			fi
-			if use_if_iuse ssp; then
+			if _tc_use_if_iuse ssp; then
 				# On some targets USE="ssp -libssp" is an invalid
 				# configuration as target libc does not provide
 				# stack_chk_* functions. Do not disable libssp there.
@@ -1569,7 +1573,7 @@ gcc_do_make() {
 		# resulting binaries natively ^^;
 		GCC_MAKE_TARGET=${GCC_MAKE_TARGET-all}
 	else
-		if tc_version_is_at_least 3.3 && use_if_iuse pgo; then
+		if tc_version_is_at_least 3.3 && _tc_use_if_iuse pgo; then
 			GCC_MAKE_TARGET=${GCC_MAKE_TARGET-profiledbootstrap}
 		else
 			GCC_MAKE_TARGET=${GCC_MAKE_TARGET-bootstrap-lean}
@@ -1623,7 +1627,7 @@ gcc_do_make() {
 		emake -C gcc gnattools
 	fi
 
-	if ! is_crosscompile && use_if_iuse cxx && use_if_iuse doc ; then
+	if ! is_crosscompile && _tc_use_if_iuse cxx && _tc_use_if_iuse doc ; then
 		if type -p doxygen > /dev/null ; then
 			if tc_version_is_at_least 4.3 ; then
 				cd "${CTARGET}"/libstdc++-v3/doc
@@ -2220,44 +2224,48 @@ gcc-lang-supported() {
 	has $1 ${TOOLCHAIN_ALLOWED_LANGS}
 }
 
+_tc_use_if_iuse() {
+	in_iuse $1 && use $1
+}
+
 is_ada() {
 	gcc-lang-supported ada || return 1
-	use_if_iuse ada
+	_tc_use_if_iuse ada
 }
 
 is_cxx() {
 	gcc-lang-supported 'c++' || return 1
-	use_if_iuse cxx
+	_tc_use_if_iuse cxx
 }
 
 is_d() {
 	gcc-lang-supported d || return 1
-	use_if_iuse d
+	_tc_use_if_iuse d
 }
 
 is_f77() {
 	gcc-lang-supported f77 || return 1
-	use_if_iuse fortran
+	_tc_use_if_iuse fortran
 }
 
 is_f95() {
 	gcc-lang-supported f95 || return 1
-	use_if_iuse fortran
+	_tc_use_if_iuse fortran
 }
 
 is_fortran() {
 	gcc-lang-supported fortran || return 1
-	use_if_iuse fortran
+	_tc_use_if_iuse fortran
 }
 
 is_gcj() {
 	gcc-lang-supported java || return 1
-	use_if_iuse cxx && use_if_iuse gcj
+	_tc_use_if_iuse cxx && _tc_use_if_iuse gcj
 }
 
 is_go() {
 	gcc-lang-supported go || return 1
-	use_if_iuse cxx && use_if_iuse go
+	_tc_use_if_iuse cxx && _tc_use_if_iuse go
 }
 
 is_jit() {
@@ -2266,22 +2274,22 @@ is_jit() {
 	# to generate code for a target. On target like avr
 	# libgcclit.so can't link at all: bug #594572
 	is_crosscompile && return 1
-	use_if_iuse jit
+	_tc_use_if_iuse jit
 }
 
 is_multilib() {
 	tc_version_is_at_least 3 || return 1
-	use_if_iuse multilib
+	_tc_use_if_iuse multilib
 }
 
 is_objc() {
 	gcc-lang-supported objc || return 1
-	use_if_iuse objc
+	_tc_use_if_iuse objc
 }
 
 is_objcxx() {
 	gcc-lang-supported 'obj-c++' || return 1
-	use_if_iuse cxx && use_if_iuse objc++
+	_tc_use_if_iuse cxx && _tc_use_if_iuse objc++
 }
 
 # Grab a variable from the build system (taken from linux-info.eclass)
@@ -2306,12 +2314,12 @@ hardened_gcc_works() {
 		[[ ${CTARGET} == *-freebsd* ]] && return 1
 
 		want_pie || return 1
-		use_if_iuse nopie && return 1
+		_tc_use_if_iuse nopie && return 1
 		hardened_gcc_is_stable pie
 		return $?
 	elif [[ $1 == "ssp" ]] ; then
 		[[ -n ${SPECS_VER} ]] || return 1
-		use_if_iuse nossp && return 1
+		_tc_use_if_iuse nossp && return 1
 		hardened_gcc_is_stable ssp
 		return $?
 	else
@@ -2349,12 +2357,12 @@ want_minispecs() {
 	if tc_version_is_at_least 6.0 ; then
 		return 0
 	fi
-	if tc_version_is_at_least 4.3.2 && use_if_iuse hardened ; then
+	if tc_version_is_at_least 4.3.2 && _tc_use_if_iuse hardened ; then
 		if ! want_pie ; then
 			ewarn "PIE_VER or SPECS_VER is not defined in the GCC ebuild."
 		elif use vanilla ; then
 			ewarn "You will not get hardened features if you have the vanilla USE-flag."
-		elif use_if_iuse nopie && use_if_iuse nossp ; then
+		elif _tc_use_if_iuse nopie && _tc_use_if_iuse nossp ; then
 			ewarn "You will not get hardened features if you have the nopie and nossp USE-flag."
 		elif ! hardened_gcc_works ; then
 			ewarn "Your $(tc-arch) arch is not supported."
@@ -2368,11 +2376,12 @@ want_minispecs() {
 }
 
 want_pie() {
-	! use_if_iuse hardened && [[ -n ${PIE_VER} ]] && use_if_iuse nopie && return 1
+	! _tc_use_if_iuse hardened && [[ -n ${PIE_VER} ]] \
+		&& _tc_use_if_iuse nopie && return 1
 	[[ -n ${PIE_VER} ]] && [[ -n ${SPECS_VER} ]] && return 0
 	tc_version_is_at_least 4.3.2 && return 1
 	[[ -z ${PIE_VER} ]] && return 1
-	use_if_iuse nopie || return 0
+	_tc_use_if_iuse nopie || return 0
 	return 1
 }
 
