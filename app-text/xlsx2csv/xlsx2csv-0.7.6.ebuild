@@ -1,8 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
-PYTHON_COMPAT=( python{3_6,3_7} )
+EAPI=7
+
+PYTHON_COMPAT=( python3_{6..9} )
 PYTHON_REQ_USE="xml"
 
 inherit distutils-r1
@@ -15,7 +16,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="dev-lang/perl"
+BDEPEND="dev-lang/perl"
 
 PATCHES=( "${FILESDIR}"/${P}-tests.patch )
 
@@ -24,7 +25,7 @@ python_compile_all() {
 }
 
 python_test() {
-	"${PYTHON}" test/run || die "tests failed with ${EPYTHON}"
+	"${EPYTHON}" test/run || die "tests failed with ${EPYTHON}"
 }
 
 python_install_all() {
