@@ -1585,7 +1585,6 @@ dev-haskell/gtk2hs-buildtools:closuresignals - Use the the GClosure-based signal
 dev-haskell/gtk3:fmode-binary - Set the default file translation mode for file I/O operations to _O_BINARY.
 dev-haskell/gtk3:gio - Depend on GIO package, thereby enabling certain features.
 dev-haskell/hackage-security:network-uri - Get Network.URI from the network-uri package.
-dev-haskell/hackage-security:use-network-uri - Get Network.URI from the network-uri package.
 dev-haskell/hakyll:buildwebsite - Build the hakyll website
 dev-haskell/hakyll:checkexternal - Include external link checking
 dev-haskell/hakyll:previewserver - Include the preview server
@@ -1611,8 +1610,6 @@ dev-haskell/hps:build-exec - Build the `hps-fractals' executable
 dev-haskell/hs3:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/hslogger:buildtests - Build the executable to run unit tests.
 dev-haskell/hslogger:network-3 - Use network-3
-dev-haskell/hslua:apicheck - Compile Lua with -DLUA_USE_APICHECK..
-dev-haskell/hslua:system-lua - Use the system-wide lua instead of the bundled copy.
 dev-haskell/hsopenssl:fast-bignum - Enable fast moving of bignums between OpenSSL and GMP (GHC Only)
 dev-haskell/http:conduit10 - Use version 1.0.x or below of the conduit package (for the test suite).
 dev-haskell/http:network-uri - Get Network.URI from the network-uri package.
@@ -1621,7 +1618,6 @@ dev-haskell/http-streams:network-uri - Get Network.URI from the network-uri pack
 dev-haskell/httpd-shed:buildexamples - Build example executables.
 dev-haskell/httpd-shed:network-bsd - Get Network.BSD from the network-bsd package.
 dev-haskell/httpd-shed:network-uri - Get Network.URI from the network-uri package.
-dev-haskell/hxt:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/icalendar:network-uri - use network-uri package
 dev-haskell/io-streams:network - Include network support
 dev-haskell/io-streams:zlib - Include zlib support
