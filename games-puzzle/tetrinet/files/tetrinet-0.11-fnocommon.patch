@@ -1,0 +1,11 @@
+--- a/tetris.h	2003-09-07 16:29:29.000000000 -0000
++++ b/tetris.h	2020-09-12 21:13:50.978870902 -0000
+@@ -50,7 +50,7 @@ typedef struct {
+     char shape[4][4];	/* Shape data for the piece */
+ } PieceData;
+ 
+-PieceData piecedata[7][4];
++extern PieceData piecedata[7][4];
+ 
+ extern int current_piece, current_rotation;
+ 
