@@ -11,9 +11,6 @@
 		
 		The implementations are made in C with a haskell FFI wrapper that hide the C implementation.
 	</longdescription>
-	<use>
-		<flag name="cryptoapi">Defines crypto-api instances</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">vincenthz/hs-cryptohash</remote-id>
 	</upstream>
