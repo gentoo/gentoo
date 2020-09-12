@@ -6,8 +6,8 @@ EAPI=7
 MY_P=${P/-/_}
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="gives you a quick MD5 Password from any string"
-HOMEPAGE="http://linux.netpimpz.com/quickcrypt/"
-SRC_URI="http://linux.netpimpz.com/quickcrypt/download/${MY_P}.tar.gz"
+HOMEPAGE="https://linux.netpimpz.com/quickcrypt/"
+SRC_URI="https://linux.netpimpz.com/quickcrypt/download/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
