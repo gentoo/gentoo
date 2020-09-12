@@ -24,12 +24,6 @@ sci-libs/dealii gmsh
 # Causes seccomp sandbox violation or chromium might hang on startup.
 >=www-client/chromium-87 wayland
 
-# Sam James <sam@gentoo.org> (2020-09-06)
-# media-libs/libmypaint[openmp] breaks reverse dependency
-# media-gfx/mypaint, and possibly others.
-# bug #739122
->=media-libs/libmypaint-1.6.1 openmp
-
 # Michał Górny <mgorny@gentoo.org> (2020-08-22)
 # These flags depend on dev-python/pygtk that is masked for removal.
 app-mobilephone/sobexsrv gtk
