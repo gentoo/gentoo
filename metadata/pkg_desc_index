@@ -1907,7 +1907,7 @@ app-emulation/docker-swarm 1.2.9: Swarm Classic: a container clustering system
 app-emulation/dosemu 1.4.1_pre20130107-r5: DOS Emulator
 app-emulation/dynamips 0.2.18 0.2.21: Cisco 7200/3600 Simulator
 app-emulation/edumips64 1.1 1.2: A visual and cross-platform MIPS64 CPU Simulator
-app-emulation/faudio 19.06 19.09 20.02 9999: FAudio - Accuracy-focused XAudio reimplementation for open platforms
+app-emulation/faudio 19.06 19.09 20.02 20.09 9999: FAudio - Accuracy-focused XAudio reimplementation for open platforms
 app-emulation/firecracker 0.21.1-r1: Secure and fast microVMs for serverless computing
 app-emulation/firecracker-bin 0.22.0: Secure and fast microVMs for serverless computing (static build)
 app-emulation/flannel 0.11.0: An etcd backed network fabric for containers
@@ -4328,97 +4328,97 @@ dev-haskell/quickcheck-classes-base 0.6.0.0: QuickCheck common typeclasses from 
 dev-haskell/quickcheck-instances 0.3.22: Common quickcheck instances
 dev-haskell/quickcheck-io 0.2.0: Use HUnit assertions as QuickCheck properties
 dev-haskell/quickcheck-unicode 1.0.1.0: Generator and shrink functions for testing Unicode-related software
-dev-haskell/random 1.0.1.1-r1 1.1: random number library
+dev-haskell/random 1.1: random number library
 dev-haskell/ranges 0.2.4-r1: Ranges and various functions on them
 dev-haskell/raw-strings-qq 1.1: Raw string literals for Haskell
 dev-haskell/readable 0.3.1: Reading from Text and ByteString
-dev-haskell/readargs 1.2.2 1.2.3: Simple command line argument parsing
-dev-haskell/readline 1.0.3.0 1.0.3.0-r1: An interface to the GNU readline library
+dev-haskell/readargs 1.2.3: Simple command line argument parsing
+dev-haskell/readline 1.0.3.0-r1: An interface to the GNU readline library
 dev-haskell/rebase 1.4.1: A more progressive alternative to the 'base' package
 dev-haskell/recaptcha 0.1.0.4: Functions for using the reCAPTCHA service in web applications
-dev-haskell/reducers 3.10.3.2 3.12.1-r1 3.12.3: Semigroups, specialized containers and a general map/reduce framework
+dev-haskell/reducers 3.12.3: Semigroups, specialized containers and a general map/reduce framework
 dev-haskell/refact 0.3.0.2: Specify refactorings to perform with apply-refact
-dev-haskell/reflection 1.3.2 1.4 1.5.2.1 2.1.2 2.1.4: Reifies arbitrary terms into types that can be reflected back into terms
+dev-haskell/reflection 2.1.4: Reifies arbitrary terms into types that can be reflected back into terms
 dev-haskell/regex-applicative 0.3.3: Regex-based parsing with applicative interface
 dev-haskell/regex-applicative-text 0.1.0.1: regex-applicative on text
-dev-haskell/regex-base 0.93.2-r1 0.94.0.0: Replaces/Enhances Text.Regex
-dev-haskell/regex-compat 0.95.1-r1 0.95.2.0: Replaces/Enhances Text.Regex
+dev-haskell/regex-base 0.94.0.0: Replaces/Enhances Text.Regex
+dev-haskell/regex-compat 0.95.2.0: Replaces/Enhances Text.Regex
 dev-haskell/regex-compat-tdfa 0.95.1.4: Unicode Support version of Text.Regex, using regex-tdfa
 dev-haskell/regex-pcre 0.94.4-r1 0.95.0.0: Replaces/Enhances Text.Regex
-dev-haskell/regex-pcre-builtin 0.94.4.8.8.35 0.95.1.1.8.43: Replaces/Enhances Text.Regex
+dev-haskell/regex-pcre-builtin 0.95.1.1.8.43: Replaces/Enhances Text.Regex
 dev-haskell/regex-posix 0.96.0.0: Replaces/Enhances Text.Regex
-dev-haskell/regex-tdfa 1.2.0 1.2.1 1.2.2 1.3.1.0: Replaces/Enhances Text.Regex
+dev-haskell/regex-tdfa 1.2.2 1.3.1.0: Replaces/Enhances Text.Regex
 dev-haskell/regex-tdfa-rc 1.1.8.3: Replaces/Enhances Text.Regex (fork by Roman Cheplyaka)
 dev-haskell/rerebase 1.4.1: Reexports from 'base' with a bunch of other standard libraries
 dev-haskell/resolv 0.1.2.0: Domain Name Service (DNS) lookup via the libresolv standard library routines
 dev-haskell/resource-pool 0.2.3.2: A high-performance striped resource pooling implementation
-dev-haskell/resourcet 0.4.9 0.4.10 1.1.2.2 1.1.7 1.1.7.4 1.1.9 1.2.4.2: Deterministic allocation and freeing of scarce resources
+dev-haskell/resourcet 1.2.4.2: Deterministic allocation and freeing of scarce resources
 dev-haskell/retry 0.8.1.1: Retry combinators for monadic actions that may fail
-dev-haskell/rfc5051 0.1.0.3 0.1.0.4: Simple unicode collation as per RFC5051
+dev-haskell/rfc5051 0.1.0.4: Simple unicode collation as per RFC5051
 dev-haskell/riff 0.3.0.1: RIFF parser for Haskell
 dev-haskell/rio 0.1.18.0: A standard library for Haskell
 dev-haskell/rio-orphans 0.1.1.0: Orphan instances for the RIO type in the rio package
 dev-haskell/rio-prettyprint 0.1.1.0: Pretty-printing for RIO
 dev-haskell/rsa 2.3.1: Implementation of RSA, using the padding schemes of PKCS#1 v2.1
-dev-haskell/safe 0.3.9 0.3.17: Library of safe (exception free) functions
+dev-haskell/safe 0.3.17: Library of safe (exception free) functions
 dev-haskell/safe-exceptions 0.1.7.0: Safe, consistent, and easy exception handling
 dev-haskell/safesemaphore 0.10.1: Much safer replacement for QSemN, QSem, and SampleVar
 dev-haskell/sandi 0.5: Data encoding library
 dev-haskell/say 0.1.0.0: Initial project template from stack
 dev-haskell/scientific 0.3.6.2: Numbers represented using scientific notation
-dev-haskell/securemem 0.1.3 0.1.9 0.1.10: abstraction to an auto scrubbing and const time eq, memory chunk
+dev-haskell/securemem 0.1.10: abstraction to an auto scrubbing and const time eq, memory chunk
 dev-haskell/selective 0.3: Selective applicative functors
-dev-haskell/semigroupoid-extras 3.0.1 4.0 5: Semigroupoids that depend on PolyKinds
+dev-haskell/semigroupoid-extras 5: Semigroupoids that depend on PolyKinds
 dev-haskell/semigroupoids 5.3.4: Semigroupoids: Category sans id
 dev-haskell/semigroups 0.9.2 0.11-r1 0.12.1 0.12.2 0.15.1 0.16.2.2 0.18.2 0.18.5: Anything that associates
 dev-haskell/semirings 0.5.3: two monoids as one, in holy haskimony
-dev-haskell/sendfile 0.7.9 0.7.11.1: A portable sendfile library
-dev-haskell/setenv 0.1.1.1 0.1.1.3: A cross-platform library for setting environment variables
-dev-haskell/setlocale 1.0.0.3 1.0.0.4 1.0.0.9: Haskell bindings to setlocale
-dev-haskell/sha 1.6.4.2 1.6.4.4: Implementations of the SHA suite of message digest functions
-dev-haskell/shakespeare 1.0.5.1 1.2.1.1 2.0.7 2.0.12.1 2.0.21: A toolkit for making compile-time interpolated templates
-dev-haskell/shakespeare-css 1.0.6.6 1.1.0: Stick your haskell variables into css at compile time. (deprecated)
-dev-haskell/shakespeare-i18n 1.0.0.5 1.1.0: A type-based approach to internationalization. (deprecated)
-dev-haskell/shakespeare-js 1.1.4.1 1.2.0.4 1.3.0: Stick your haskell variables into javascript/coffeescript at compile time
-dev-haskell/shakespeare-text 1.0.2 1.1.0: Interpolation with quasi-quotation: put variables strings (deprecated)
+dev-haskell/sendfile 0.7.11.1: A portable sendfile library
+dev-haskell/setenv 0.1.1.3: A cross-platform library for setting environment variables
+dev-haskell/setlocale 1.0.0.9: Haskell bindings to setlocale
+dev-haskell/sha 1.6.4.4: Implementations of the SHA suite of message digest functions
+dev-haskell/shakespeare 2.0.21: A toolkit for making compile-time interpolated templates
+dev-haskell/shakespeare-css 1.1.0: Stick your haskell variables into css at compile time. (deprecated)
+dev-haskell/shakespeare-i18n 1.1.0: A type-based approach to internationalization. (deprecated)
+dev-haskell/shakespeare-js 1.3.0: Stick your haskell variables into javascript/coffeescript at compile time
+dev-haskell/shakespeare-text 1.1.0: Interpolation with quasi-quotation: put variables strings (deprecated)
 dev-haskell/shell-escape 0.2.0: Shell escaping library
 dev-haskell/shelly 1.9.0: shell-like (systems) programming in Haskell
 dev-haskell/shuffle 0.1.3.3: Shuffle tool for UHC
-dev-haskell/silently 1.2.4.1 1.2.5 1.2.5.1: Prevent or capture writing to stdout and other handles
-dev-haskell/simple-reflect 0.3.2 0.3.3: Simple reflection of expressions containing variables
-dev-haskell/simple-sendfile 0.2.13 0.2.21 0.2.25 0.2.28: Cross platform library for the sendfile system call
+dev-haskell/silently 1.2.5.1: Prevent or capture writing to stdout and other handles
+dev-haskell/simple-reflect 0.3.3: Simple reflection of expressions containing variables
+dev-haskell/simple-sendfile 0.2.28: Cross platform library for the sendfile system call
 dev-haskell/singleton-bool 0.1.5-r1: Type level booleans
 dev-haskell/size-based 0.1.2.0: Sized functors, for size-based enumerations
 dev-haskell/skein 1.0.9.4: Skein, a family of cryptographic hash functions. Includes Skein-MAC as well
-dev-haskell/skylighting 0.1.1.5 0.3 0.8.5: syntax highlighting library
+dev-haskell/skylighting 0.8.5: syntax highlighting library
 dev-haskell/skylighting-core 0.8.5: syntax highlighting library
-dev-haskell/smallcheck 1.1.1 1.1.5 1.2.0: A property-based testing library
+dev-haskell/smallcheck 1.2.0: A property-based testing library
 dev-haskell/snap-core 1.0.1.0 1.0.4.2: Snap: A Haskell Web Framework (core interfaces and types)
 dev-haskell/snap-server 1.0.1.1 1.1.1.2: A fast, iteratee-based, epoll-enabled web server for the Snap Framework
-dev-haskell/socks 0.5.4 0.5.5 0.6.1: Socks proxy (version 5) implementation
+dev-haskell/socks 0.6.1: Socks proxy (version 5) implementation
 dev-haskell/sop-core 0.5.0.1: True Sums of Products
-dev-haskell/split 0.2.2 0.2.3 0.2.3.1 0.2.3.3 0.2.3.4: Combinator library for splitting lists
+dev-haskell/split 0.2.3.4: Combinator library for splitting lists
 dev-haskell/splitmix 0.0.4: Fast Splittable PRNG
 dev-haskell/stack 2.3.3: The Haskell Tool Stack
-dev-haskell/stack-bin 1.5.1 1.6.1 1.7.1 2.1.3 2.3.1: The Haskell Tool Stack (Binary)
-dev-haskell/statevar 1.0.0.0-r1 1.0.1.0 1.1.0.3 1.1.0.4 1.1.1.1: State variables
-dev-haskell/statistics 0.10.5.2 0.11.0.3 0.13.2.3 0.13.3.0 0.15.2.0: A library of statistical types, data, and functions
-dev-haskell/stm 2.4.2 2.4.4.1 2.5.0.0: Software Transactional Memory
+dev-haskell/stack-bin 2.3.1: The Haskell Tool Stack (Binary)
+dev-haskell/statevar 1.1.1.1: State variables
+dev-haskell/statistics 0.15.2.0: A library of statistical types, data, and functions
+dev-haskell/stm 2.5.0.0: Software Transactional Memory
 dev-haskell/stm-chans 3.0.0.4: Additional types of channels for STM
-dev-haskell/stmonadtrans 0.3.3 0.3.4 0.4.4: A monad transformer version of the ST monad
+dev-haskell/stmonadtrans 0.4.4: A monad transformer version of the ST monad
 dev-haskell/store 0.7.6: Fast binary serialization
 dev-haskell/store-core 0.4.4.3: Fast and lightweight binary serialization
 dev-haskell/stream 0.4.7.2: A library for manipulating infinite lists
-dev-haskell/streaming-commons 0.1.12.1 0.1.15 0.1.15.4 0.1.16 0.2.1.2: Common lower-level functions needed by various streaming data libraries
+dev-haskell/streaming-commons 0.2.1.2: Common lower-level functions needed by various streaming data libraries
 dev-haskell/strict 0.3.2-r1: Strict data types and String IO
-dev-haskell/string-qq 0.0.2 0.0.4: QuasiQuoter for non-interpolated strings, texts and bytestrings
+dev-haskell/string-qq 0.0.4: QuasiQuoter for non-interpolated strings, texts and bytestrings
 dev-haskell/stringable 0.1.3: A Stringable type class, in the spirit of Foldable and Traversable
-dev-haskell/stringbuilder 0.4.0 0.5.0 0.5.1: A writer monad for multi-line string literals
-dev-haskell/stringprep 0.1.5 1.0.0: Implements the StringPrep algorithm
-dev-haskell/stringsearch 0.3.6.5 0.3.6.6 0.3.6.6-r1: Fast searching, splitting and replacing of ByteStrings
-dev-haskell/syb 0.4.3 0.4.4 0.5.1 0.7.1: Scrap Your Boilerplate
-dev-haskell/syb-with-class 0.6.1.6 0.6.1.7 0.6.1.11: Scrap Your Boilerplate With Class
-dev-haskell/system-fileio 0.3.16.3 0.3.16.4: Consistent filesystem interaction across GHC versions (deprecated)
+dev-haskell/stringbuilder 0.5.1: A writer monad for multi-line string literals
+dev-haskell/stringprep 1.0.0: Implements the StringPrep algorithm
+dev-haskell/stringsearch 0.3.6.6-r1: Fast searching, splitting and replacing of ByteStrings
+dev-haskell/syb 0.7.1: Scrap Your Boilerplate
+dev-haskell/syb-with-class 0.6.1.11: Scrap Your Boilerplate With Class
+dev-haskell/system-fileio 0.3.16.4: Consistent filesystem interaction across GHC versions (deprecated)
 dev-haskell/system-filepath 0.4.14: High-level, byte-based file and directory path manipulations (deprecated)
 dev-haskell/system-posix-redirect 1.1.0.1: A toy module to temporarily redirect a program's stdout
 dev-haskell/tagged 0.6.1 0.7.3 0.8.2 0.8.4 0.8.6: Haskell 98 phantom types to avoid unsafely passing dummy arguments
@@ -4471,7 +4471,7 @@ dev-haskell/th-lift-instances 0.1.11 0.1.14: Lift instances for template-haskell
 dev-haskell/th-orphans 0.8.2 0.11.1 0.13.3: Orphan instances for TH datatypes
 dev-haskell/th-reify-many 0.1.3 0.1.6 0.1.9: Recurseively reify template haskell datatype info
 dev-haskell/th-utilities 0.2.0.1 0.2.3.0: Collection of useful functions for use with Template Haskell
-dev-haskell/threads 0.5.1.4 0.5.1.6: Fork threads and wait for their result
+dev-haskell/threads 0.5.1.6: Fork threads and wait for their result
 dev-haskell/thyme 0.3.5.5: A faster time library
 dev-haskell/time-compat 0.1.0.3 1.9.3: This packages tries to compat as much of \'time\' features as possible
 dev-haskell/time-locale-compat 0.1.1.1 0.1.1.3 0.1.1.5: Compatibility of TimeLocale between old-locale and time-1.5
