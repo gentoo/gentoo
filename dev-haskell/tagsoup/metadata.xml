@@ -13,10 +13,6 @@
 		
 		Users should start from the "Text.HTML.TagSoup" module.
 	</longdescription>
-	<use>
-		<flag name="download">Build with Download module.</flag>
-		<flag name="testprog">Build the test program.</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">ndmitchell/tagsoup</remote-id>
 	</upstream>
