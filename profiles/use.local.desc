@@ -1567,18 +1567,13 @@ dev-haskell/cmdargs:testprog - Build the test program
 dev-haskell/comonad:containers - You can disable the use of the `containers` package using `-f-containers`. Disabing this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
 dev-haskell/comonad:distributive - You can disable the use of the `distributive` package using `-f-distributive`. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users. If disabled we will not supply instances of `Distributive`
 dev-haskell/comonad:test-doctests - Run the doctests test suite
-dev-haskell/conduit:nohandles - experimental code to use raw system calls in place of handles. Not recommended for general use
-dev-haskell/contravariant:safe - Get Safe guarantees rather than merely Trustworthy, but with worse constant factors.
 dev-haskell/contravariant:semigroups - You can disable the use of the `semigroups` package using `-f-semigroups`. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
 dev-haskell/contravariant:statevar - You can disable the use of the `StateVar` package using `-f-StateVar`. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
 dev-haskell/contravariant:tagged - You can disable the use of the `tagged` package on older versons of GHC using `-f-tagged`. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
 dev-haskell/cpu:executable - build 'cpuid' tool
 dev-haskell/criterion:embed-data-files - Embed the data files in the binary for a relocatable executable
 dev-haskell/crypto-api:all-cpolys - Build all the CMAC polynomes up to 10000 bits instead of just the usual ones
-dev-haskell/crypto-conduit:conduit11 - Use conduit >= 1.1.
-dev-haskell/cryptohash:cryptoapi - Defines crypto-api instances
 dev-haskell/cryptonite:integer-gmp - Whether or not to use GMP for some functions
-dev-haskell/distributive:lib-werror - Compile with the ghc -Werror option
 dev-haskell/encoding:systemencoding - Provide the getSystemEncoding action to query the locale.
 dev-haskell/entropy:halvm - Build for the HaLVM.
 dev-haskell/filestore:maxcount - Make use of a recent (>= 2.3.0) Darcs feature which vastly improves the performance of 'latest'. You should disable this flag if you plan to use gitit with an older version of Darcs, or 'latest' will raise an error.
@@ -1622,7 +1617,6 @@ dev-haskell/hslua:system-lua - Use the system-wide lua instead of the bundled co
 dev-haskell/hsopenssl:fast-bignum - Enable fast moving of bignums between OpenSSL and GMP (GHC Only)
 dev-haskell/http:conduit10 - Use version 1.0.x or below of the conduit package (for the test suite).
 dev-haskell/http:network-uri - Get Network.URI from the network-uri package.
-dev-haskell/http-api-data:use-text-show - Use text-show library for efficient ToHttpApiData implementations
 dev-haskell/http-client:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/http-streams:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/httpd-shed:buildexamples - Build example executables.
@@ -1694,7 +1688,6 @@ dev-haskell/recaptcha:network-uri - Get Network.URI from the network-uri package
 dev-haskell/reflection:template-haskell - Enable template haskell.
 dev-haskell/rfc5051:mkunicodedata - build codes generator itself
 dev-haskell/sandi:conduit - Build with conduit
-dev-haskell/sandi:with-conduit - Build with conduit
 dev-haskell/semigroupoid-extras:profunctors - You can disable the use of the `profunctors` package using `-f-profunctors`. Disabing this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
 dev-haskell/semigroupoids:comonad - You can disable the use of the `comonad` package using `-f-comonad`. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users. If disabled we will not supply instances of `Comonad`
 dev-haskell/semigroupoids:containers - You can disable the use of the `containers` package using `-f-containers`. Disabing this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
