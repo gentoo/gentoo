@@ -19082,7 +19082,7 @@ x11-wm/openbox 3.6.1-r3 9999: A standards compliant, fast, light-weight, extensi
 x11-wm/oroborus 2.0.20-r1: Small and fast window manager
 x11-wm/page 1.9.8 1.9.9-r3: A mouse friendly tiling window manager
 x11-wm/pekwm 0.1.17-r1 0.1.17-r2: A lightweight window manager initially based on aewm++
-x11-wm/qtile 0.15.1 0.16.0 9999: A full-featured, hackable tiling window manager written in Python
+x11-wm/qtile 0.15.1 0.16.0: A full-featured, hackable tiling window manager written in Python
 x11-wm/ratpoison 1.4.8-r1 1.4.9 9999: window manager without mouse dependency
 x11-wm/sawfish 1.12.0-r1 1.12.90: Extensible window manager using a Lisp-based scripting language
 x11-wm/selectwm 0.4.1-r1: window manager selector tool
