@@ -3555,7 +3555,7 @@ dev-db/percona-xtrabackup 2.4.15 2.4.20 8.0.13: Hot backup utility for MySQL bas
 dev-db/percona-xtrabackup-bin 2.4.13: MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
 dev-db/pg_activity 1.6.1: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 3.7.0: 'top' for PostgreSQL
-dev-db/pgadmin4 4.17-r1: GUI administration and development platform for PostgreSQL
+dev-db/pgadmin4 4.17-r1 4.25: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 3.4.0-r3 4.0.0 4.0.0-r1: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 10.3 11.0: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.9.0 1.10.0 1.11.0 1.12.0 1.14.0: Lightweight connection pooler for PostgreSQL
@@ -8173,6 +8173,7 @@ dev-python/flask-appconfig 0.11.1-r1: Configures Flask applications in a canonic
 dev-python/flask-assets 0.12: Flask webassets integration
 dev-python/flask-babel 1.0.0 2.0.0: i18n and l10n support for Flask based on Babel and pytz
 dev-python/flask-babelex 0.9.4: Adds i18n/l10n support to Flask applications
+dev-python/flask-compress 1.5.0: Compress responses in your Flask app with gzip
 dev-python/flask-cors 2.1.0: A Flask extension for Cross Origin Resource Sharing (CORS)
 dev-python/flask-debug 0.4.3 0.4.3-r1: Flask extension that displays various debugging insights during development
 dev-python/flask-gravatar 0.5.0: Small extension for Flask to make usage of Gravatar service easy
