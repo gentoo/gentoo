@@ -9,10 +9,6 @@
 		Haskell 98 contravariant functors
 	</longdescription>
 	<use>
-		<flag name="safe">
-			Get Safe guarantees rather than merely
-			Trustworthy, but with worse constant factors.
-		</flag>
 		<flag name="semigroups">
 			You can disable the use of the `semigroups`
 			package using `-f-semigroups`. Disabling this is an unsupported
