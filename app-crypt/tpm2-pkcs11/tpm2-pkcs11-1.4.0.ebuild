@@ -17,12 +17,16 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64"
 
+IUSE="fapi"
+
 # Test requires the IBM TPM simulator that's not in portage
 RESTRICT="test"
 
 RDEPEND="app-crypt/p11-kit
 	app-crypt/tpm2-abrmd
-	app-crypt/tpm2-tss
+	app-crypt/tpm2-tools[fapi?]
+	!fapi? ( app-crypt/tpm2-tss )
+	fapi? ( >=app-crypt/tpm2-tss-3.0.0[fapi] )
 	dev-db/sqlite:3
 	dev-libs/openssl
 	dev-python/cryptography[${PYTHON_USEDEP}]
@@ -35,7 +39,8 @@ BDEPEND="sys-devel/autoconf-archive
 	virtual/pkgconfig"
 
 src_configure() {
-	default
+	econf \
+		$(use_enable fapi)
 }
 
 src_compile() {
