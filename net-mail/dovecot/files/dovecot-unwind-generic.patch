@@ -1,0 +1,15 @@
+Bug 728336
+--- a/m4/want_unwind.m4
++++ b/m4/want_unwind.m4
+@@ -4,9 +4,9 @@
+     PKG_CHECK_EXISTS([libunwind], [
+       PKG_CHECK_MODULES([LIBUNWIND], [libunwind],[
+         dnl see if there is target-specific library
+-        AC_CHECK_LIB([unwind-${build_cpu}], [_U${build_cpu}_init_local],[
++        PKG_CHECK_MODULES([LIBUNWIND_GENERIC], [libunwind-generic],[
+           have_libunwind=yes
+-          LIBUNWIND_LIBS="$LIBUNWIND_LIBS -lunwind-${build_cpu}"
++          LIBUNWIND_LIBS="$LIBUNWIND_LIBS $LIBUNWIND_GENERIC_LIBS"
+           AC_DEFINE([HAVE_LIBUNWIND],,[Define this if you have libunwind])
+         ],[
+            have_libunwind=no
