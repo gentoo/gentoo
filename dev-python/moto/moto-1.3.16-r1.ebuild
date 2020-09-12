@@ -33,6 +33,7 @@ RDEPEND="
 	>=dev-python/botocore-1.12.201[${PYTHON_USEDEP}]
 	dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
+	dev-python/more-itertools[${PYTHON_USEDEP}]
 	dev-python/pretty-yaml[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-5.1[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.1[${PYTHON_USEDEP}]
@@ -45,6 +46,7 @@ RDEPEND="
 	dev-python/xmltodict[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9[${PYTHON_USEDEP}]
 	dev-python/werkzeug[${PYTHON_USEDEP}]
+	dev-python/zipp[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? ( ${RDEPEND}
