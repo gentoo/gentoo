@@ -33,6 +33,13 @@
 #--- END OF EXAMPLES ---
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-09-12)
+# Has been a part of a cstex macro for a long time.
+# The cste xmacro is provided by the
+# dev-texlive/texlive-langczechslovak package.
+# Removal in 30 days
+dev-tex/csindex
+
+# Mikle Kolyada <zlogene@gentoo.org> (2020-09-12)
 # Dead upstream and does not build.
 # Removal in 30 days
 dev-tex/dvipost
