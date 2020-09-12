@@ -774,12 +774,6 @@ sys-cluster/kube-scheduler
 <net-wireless/gr-iqbal-0.38.1
 <net-wireless/gr-osmosdr-0.2.0
 
-# Jonas Stein <jstein@gentoo.org> (2020-07-04)
-# Last rite, dead upstream, several open bugs.
-# Removal after 2020-09-01
-# Bug #730640
-net-misc/termpkg
-
 # Stephan Hartmann <sultan@gentoo.org> (2020-09-06)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
