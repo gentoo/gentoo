@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=dev-lang/ocaml:=[ocamlopt?]
 SLOT=0/5.3.4.08.0
 SRC_URI=https://github.com/alainfrisch/ppx_tools/archive/5.3+4.08.0.tar.gz -> ppx_tools-5.3.4.08.0.tar.gz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	findlib	17c71a5d96323df925f9f6db1215668a
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	findlib	17c71a5d96323df925f9f6db1215668a	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974
 _md5_=39ba17f3c0cb2ec896824a689ce31d7c

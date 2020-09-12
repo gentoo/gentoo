@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=x11-libs/gtk+:2 dbus? ( dev-libs/dbus-glib )
 SLOT=0
 SRC_URI=mirror://sourceforge/lxde/lxappearance-0.6.3.tar.xz
-_eclasses_=l10n	97f2753e3f1f3753d53d856c7c0bbb0b
+_eclasses_=l10n	8cdd85e169b835d518bc2fd59f780d8e
 _md5_=7d17217fec16c60814be0a78da37244f

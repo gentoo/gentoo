@@ -9,5 +9,5 @@ RDEPEND=!games-fps/ut2004 !games-fps/ut2004-data games-fps/ut2004-bonuspack-ece 
 RESTRICT=bindist mirror strip
 SLOT=0
 SRC_URI=https://ut2004.ut-files.com/Entire_Server_Download/dedicatedserver3339-bonuspack.zip https://ut2004.ut-files.com/Patches/Linux/ut2004-lnxpatch3369-2.tar.bz2 https://dev.gentoo.org/~chewi/distfiles/ut2004-v3369-3-linux-dedicated.7z
-_eclasses_=check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	eutils	fcb2aa98e1948b835b5ae66ca52868c5
+_eclasses_=check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974
 _md5_=26e385279304d0b2870623171ef8cf89

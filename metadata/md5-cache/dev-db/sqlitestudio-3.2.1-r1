@@ -12,5 +12,5 @@ REQUIRED_USE=test? ( cli )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://sqlitestudio.pl/files/sqlitestudio3/complete/tar/sqlitestudio-3.2.1.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	estack	686eaab303305a908fd57b2fd7617800	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	98584e405e2b0264d37e8f728327fed1	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	estack	686eaab303305a908fd57b2fd7617800	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	98584e405e2b0264d37e8f728327fed1	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=15f65e79012aab83c4d9df58cd463e0a

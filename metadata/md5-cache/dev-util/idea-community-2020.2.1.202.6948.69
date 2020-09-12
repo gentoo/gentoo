@@ -12,5 +12,5 @@ REQUIRED_USE=jbr8? ( !jbr11 )
 RESTRICT=splitdebug
 SLOT=0
 SRC_URI=https://download.jetbrains.com/idea/ideaIC-2020.2.1-no-jbr.tar.gz -> ideaIC-2.1.202.6948.69.tar.gz jbr8? ( x86? ( https://bintray.com/jetbrains/intellij-jdk/download_file?file_path=jbrx-8u202-linux-i586-b1483.37.tar.gz -> jbrx-8u202-linux-i586-b1483.37.tar.gz ) amd64? ( https://bintray.com/jetbrains/intellij-jdk/download_file?file_path=jbrx-8u202-linux-x64-b1483.37.tar.gz -> jbrx-8u202-linux-x64-b1483.37.tar.gz ) ) jbr11? ( amd64? ( https://bintray.com/jetbrains/intellij-jdk/download_file?file_path=jbr-11_0_2-linux-x64-b164.tar.gz -> jbr-11_0_2-linux-x64-b164.tar.gz ) )
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974
 _md5_=05442bd3ae88bffa45105c0c809d4f93

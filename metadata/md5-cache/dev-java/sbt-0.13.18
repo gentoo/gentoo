@@ -10,5 +10,5 @@ RDEPEND=>=virtual/jre-1.8:* >=dev-java/java-config-2.2.0-r3
 RESTRICT=test
 SLOT=0
 SRC_URI=!binary? ( https://github.com/sbt/sbt/archive/v0.13.18.tar.gz -> sbt-0.13.18.tar.gz https://dev.gentoo.org/~gienah/snapshots/sbt-0.13.18-ivy2-deps.tar.xz https://dev.gentoo.org/~gienah/snapshots/sbt-0.13.18-sbt-deps.tar.xz http://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.13.18/sbt-launch.jar -> sbt-launch-0.13.18.jar ) binary? ( https://dev.gentoo.org/~gienah/files/dist/sbt-0.13.18-gentoo-binary.tar.xz )
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	ec7a89849c84f93e9c6db27812923888
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	ec7a89849c84f93e9c6db27812923888	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974
 _md5_=e52210c06189a66de556f0507b08cfb4
