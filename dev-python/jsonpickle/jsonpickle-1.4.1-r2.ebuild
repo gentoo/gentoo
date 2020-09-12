@@ -23,6 +23,9 @@ RDEPEND="
 	dev-python/simplejson[${PYTHON_USEDEP}]
 	dev-python/feedparser[${PYTHON_USEDEP}]
 	dev-python/ujson[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/importlib_metadata[${PYTHON_USEDEP}]
+	' python3_{6,7})
 "
 # toml via setuptools_scm[toml]
 BDEPEND="
@@ -31,6 +34,10 @@ BDEPEND="
 
 distutils_enable_sphinx "docs/source"
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/jsonpickle-1.4.1-importlib-metadata.patch
+)
 
 python_prepare_all() {
 	# too many dependencies
