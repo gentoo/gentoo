@@ -8,7 +8,4 @@
 	<longdescription>
 		QuickCheck support for the Tasty test framework.
 	</longdescription>
-	<use>
-		<flag name="old-quickcheck">Use Quick-Check &lt; 2.7.</flag>
-	</use>
 </pkgmetadata>
