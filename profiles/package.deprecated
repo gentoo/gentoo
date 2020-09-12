@@ -88,15 +88,6 @@ virtual/pypy3
 dev-java/oracle-jdk-bin
 dev-java/oracle-jre-bin
 
-# Ulrich Müller <ulm@gentoo.org> (2019-12-21)
-# Live ebuilds for Emacs from Git have been consolidated into the
-# app-editors/emacs package, which makes the virtual unnecessary.
-# Packages should depend on >=app-editors/emacs-23.1:* instead.
-# See the documentation of elisp-common.eclass for details.
-# Removal (without prior masking) after ~app-editors/emacs-27.1
-# is marked stable. Bug #291296.
-virtual/emacs
-
 # Michał Górny <mgorny@gentoo.org> (2019-12-09)
 # Test coverage reporting is not useful for Gentoo ebuilds.  The deps
 # against coverage plugins are either entirely spurious, or the build
