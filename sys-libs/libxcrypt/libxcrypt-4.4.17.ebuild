@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 inherit autotools multibuild python-any-r1 multilib-minimal
 
 DESCRIPTION="Extended crypt library for descrypt, md5crypt, bcrypt, and others "
@@ -62,6 +62,7 @@ get_xclibdir() {
 
 multilib_src_configure() {
 	local -a myconf=(
+		--disable-werror
 		--libdir=$(get_xclibdir)
 		--with-pkgconfigdir=/usr/$(get_libdir)/pkgconfig
 		--includedir="${EPREFIX}/usr/include/$(usex system '' 'xcrypt')"
