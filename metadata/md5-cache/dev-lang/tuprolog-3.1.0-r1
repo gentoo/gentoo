@@ -4,11 +4,11 @@ DESCRIPTION=tuProlog is a light-weight Prolog for Internet applications and infr
 EAPI=7
 HOMEPAGE=http://tuprolog.unibo.it/
 IUSE=doc examples test elibc_FreeBSD elibc_FreeBSD
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=LGPL-3 BSD
 RDEPEND=>=virtual/jdk-1.8:= dev-java/javassist:3 dev-java/commons-lang:3.1 >=dev-java/java-config-2.2.0-r3
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~keri/distfiles/tuprolog/tuprolog-3.1.0.tar.gz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	java-ant-2	8d9cb415f1ca9fc7ebc5a74bacec300c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	ec7a89849c84f93e9c6db27812923888	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=ae96617c6b476c5de3c5cea5de5553cc
+_md5_=57125da5d63d00643a65327b89402ac3
