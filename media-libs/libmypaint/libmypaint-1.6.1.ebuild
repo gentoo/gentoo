@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
-inherit autotools python-any-r1 toolchain-funcs xdg-utils
+inherit autotools python-any-r1 toolchain-funcs
 
 MY_PV=${PV/_beta/-beta.}
 MY_P=${PN}-${MY_PV}
@@ -45,14 +45,14 @@ RDEPEND="
 src_configure() {
 	tc-ld-disable-gold # bug 589266
 	econf \
-			--disable-debug \
-			--disable-docs \
-			$(use_enable gegl) \
-			--disable-gperftools \
-			$(use_enable nls i18n) \
-			$(use_enable introspection) \
-			$(use_enable openmp) \
-			--disable-profiling
+		--disable-debug \
+		--disable-docs \
+		$(use_enable gegl) \
+		--disable-gperftools \
+		$(use_enable nls i18n) \
+		$(use_enable introspection) \
+		$(use_enable openmp) \
+		--disable-profiling
 }
 
 src_install() {
