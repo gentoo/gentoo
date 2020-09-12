@@ -494,15 +494,15 @@ multilib_prepare_wrappers() {
 #		error "abi_mips_o32 not supported by the package."
 #	endif
 #elif defined(__riscv)
-#	if (__WORDSIZE == 64) && defined(__riscv_float_abi_double)
+#	if (__riscv_xlen == 64) && defined(__riscv_float_abi_double)
 #		error "abi_riscv_lp64d not supported by the package."
-#	elif (__WORDSIZE == 64) && defined(__riscv_float_abi_single)
+#	elif (__riscv_xlen == 64) && defined(__riscv_float_abi_single)
 #		error "abi_riscv_lp64f not supported by the package."
-#	elif (__WORDSIZE == 64)
+#	elif (__riscv_xlen == 64)
 #		error "abi_riscv_lp64 not supported by the package."
-#	elif (__WORDSIZE == 32) && defined(__riscv_float_abi_double)
+#	elif (__riscv_xlen == 32) && defined(__riscv_float_abi_double)
 #		error "abi_riscv_ilp32d not supported by the package."
-#	elif (__WORDSIZE == 32) && defined(__riscv_float_abi_single)
+#	elif (__riscv_xlen == 32) && defined(__riscv_float_abi_single)
 #		error "abi_riscv_ilp32f not supported by the package."
 #	else
 #		error "abi_riscv_ilp32 not supported by the package."
