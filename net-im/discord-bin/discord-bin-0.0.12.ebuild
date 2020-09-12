@@ -6,7 +6,7 @@ EAPI=7
 MY_PN=${PN/-bin/}
 MY_BIN="D${MY_PN/d/}"
 
-inherit desktop pax-utils unpacker xdg
+inherit desktop linux-info pax-utils unpacker xdg
 
 DESCRIPTION="All-in-one voice and text chat for gamers"
 HOMEPAGE="https://discordapp.com"
@@ -62,6 +62,8 @@ QA_PREBUILT="
 	opt/discord/libVkICD_mock_icd.so
 	opt/discord/libffmpeg.so
 "
+
+CONFIG_CHECK="USER_NS"
 
 src_prepare() {
 	default
