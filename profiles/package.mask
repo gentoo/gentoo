@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Louis Sautier <sbraz@gentoo.org> (2020-09-12)
+# Masked for removal in 30 days, unmaintained, no revdeps.
+# Former dependency of app-admin/supervisor.
+dev-python/meld3
+
 # Zac Medico <zmedico@gentoo.org> (2020-09-11)
 # Upstream is inactive and does not support OpenSSL 1.1.
 # Removal in 30 days. Bug #741614.
