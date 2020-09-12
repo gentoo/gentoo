@@ -29,7 +29,10 @@ RDEPEND="
 	geant4? ( >=sci-physics/geant-4.10.03 )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[dot] )
-	test? ( sci-physics/geant-vmc[g4root] )"
+	test? (
+		sci-physics/geant[gdml]
+		sci-physics/geant-vmc[g4root]
+	)"
 RESTRICT="
 	!geant4? ( test )
 	!root? ( test )
