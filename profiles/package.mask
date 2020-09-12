@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2020-09-12)
+# Merged into dev-texlive/texlive-bibtexextra
+# Removal in 30 days
+dev-tex/biblatex-apa
+
 # Mikle Kolyada <zlogene@gentoo.org> (2020-09-12)
 # Merged into the texlive-core package.
 # Removal in 30 days
@@ -642,22 +647,6 @@ dev-tex/crosstex
 # Bug #629272
 app-admin/apg
 
-# Matt Turner <mattst88@gentoo.org> (2020-08-11)
-# No longer needed with virtual/opencl-3
-# Masked for removal in 30 days. Bug #728284
-app-eselect/eselect-opencl
-
-# Matt Turner <mattst88@gentoo.org> (2020-08-11)
-# Replaced by media-libs/libglvnd.
-# Masked for removal in 30 days. Bug #728286
-app-eselect/eselect-opengl
-
-# Matt Turner <mattst88@gentoo.org> (2020-08-11)
-# NVIDIA declared this branch to have reached end of life about six months ago.
-# Blocks removal of app-eselect/eselect-opengl and app-eselect/eselect-opencl.
-# Masked for removal in 30 days. Bug #728290
-x11-drivers/nvidia-drivers:0/340
-
 # Michał Górny <mgorny@gentoo.org> (2020-08-09)
 # Build tool with no revdeps left.
 # Removal in 30 days.  Bug #736517.
@@ -784,12 +773,6 @@ sys-cluster/kube-scheduler
 <net-wireless/gr-ieee802154-0.0_p20191006
 <net-wireless/gr-iqbal-0.38.1
 <net-wireless/gr-osmosdr-0.2.0
-
-# Jonas Stein <jstein@gentoo.org> (2020-07-04)
-# Last rite, dead upstream, several open bugs.
-# Removal after 2020-09-01
-# Bug #730640
-net-misc/termpkg
 
 # Stephan Hartmann <sultan@gentoo.org> (2020-09-06)
 # Dev channel releases are only for people who
