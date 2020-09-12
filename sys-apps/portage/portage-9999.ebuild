@@ -15,8 +15,10 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
 LICENSE="GPL-2"
 KEYWORDS=""
 SLOT="0"
-IUSE="apidoc build doc gentoo-dev +ipc +native-extensions +rsync-verify selinux xattr"
+IUSE="apidoc build doc gentoo-dev +ipc +native-extensions +rsync-verify selinux test xattr"
+RESTRICT="!test? ( test )"
 
+BDEPEND="test? ( dev-vcs/git )"
 DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
 	>=app-arch/tar-1.27
 	dev-lang/python-exec:2
