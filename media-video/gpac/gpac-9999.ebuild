@@ -19,7 +19,7 @@ HOMEPAGE="https://gpac.wp.imt.fr/"
 LICENSE="GPL-2"
 # subslot == libgpac major
 SLOT="0/10"
-IUSE="a52 aac alsa debug dvb ffmpeg ipv6 jack jpeg jpeg2k libressl mad opengl oss png
+IUSE="a52 aac alsa cpu_flags_x86_sse2 debug dvb ffmpeg ipv6 jack jpeg jpeg2k libressl mad opengl oss png
 	pulseaudio sdl ssl static-libs theora truetype vorbis xml xvid X"
 
 BDEPEND="virtual/pkgconfig"
@@ -63,7 +63,7 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.8.1-configure.patch"
+	"${FILESDIR}/${PN}-1.0.1-configure.patch"
 	"${FILESDIR}/${PN}-1.0.0-zlib-compile.patch"
 )
 
@@ -97,7 +97,7 @@ src_configure() {
 	tc-export CC CXX AR RANLIB
 
 	local myeconfargs=(
-		--extra-cflags="${CFLAGS}"
+		--extra-cflags="${CFLAGS} $(usex cpu_flags_x86_sse2 '-msse2' '-mno-sse2')"
 		--cc="$(tc-getCC)"
 		--libdir="$(get_libdir)"
 		--verbose
