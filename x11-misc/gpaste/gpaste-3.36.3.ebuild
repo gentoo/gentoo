@@ -19,16 +19,17 @@ IUSE="+applet gnome vala"
 
 CDEPEND="
 	dev-libs/appstream-glib
-	>=dev-libs/glib-2.48:2
+	>=dev-libs/glib-2.58:2
 	>=dev-libs/gobject-introspection-1.48.0
 	sys-apps/dbus
-	>=x11-libs/gdk-pixbuf-2.34:2
-	>=x11-libs/gtk+-3.20:3
+	>=x11-libs/gdk-pixbuf-2.38:2
+	>=x11-libs/gtk+-3.24:3
 	x11-libs/libX11
 	x11-libs/libXi
 	gnome? (
 		gnome-base/gnome-control-center:2
 		media-libs/clutter
+		>=x11-wm/mutter-3.36.0
 		x11-libs/pango
 	)
 "
