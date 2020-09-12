@@ -9,7 +9,7 @@ HOMEPAGE="http://tug.org/texlive/"
 LICENSE="metapackage"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="cjk context detex extra epspdf games graphics
+IUSE="cjk context extra epspdf games graphics
 humanities luatex metapost music pdfannotextractor png pstricks publishers
 science tex4ht texi2html truetype xetex xml X"
 
@@ -33,7 +33,6 @@ RDEPEND="${DEPEND}
 	app-text/t1utils
 	>=app-text/lcdf-typetools-2.92[kpathsea]
 	truetype? ( >=app-text/ttf2pk2-2.0_p20150521 )
-	detex? ( dev-tex/detex )
 	app-text/ps2eps
 	png? ( app-text/dvipng )
 	X? ( >=app-text/xdvik-22.87 )
@@ -127,7 +126,7 @@ RDEPEND="${DEPEND}
 	l10n_ro?    ( >=${TEXLIVE_CAT}/texlive-langeuropean-${PV} )
 	l10n_sq?    ( >=${TEXLIVE_CAT}/texlive-langeuropean-${PV} )
 	l10n_sr?    ( >=${TEXLIVE_CAT}/texlive-langeuropean-${PV}
-	              >=${TEXLIVE_CAT}/texlive-langcyrillic-${PV} )
+				  >=${TEXLIVE_CAT}/texlive-langcyrillic-${PV} )
 	l10n_sl?    ( >=${TEXLIVE_CAT}/texlive-langeuropean-${PV} )
 	l10n_tr?    ( >=${TEXLIVE_CAT}/texlive-langeuropean-${PV} )
 	l10n_pl?    ( >=${TEXLIVE_CAT}/texlive-langpolish-${PV} )
