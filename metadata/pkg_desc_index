@@ -3846,28 +3846,27 @@ dev-haskell/bytestring-handle 0.1.0.6: ByteString-backed Handles
 dev-haskell/bytestring-mmap 0.2.2-r1: mmap support for strict ByteStrings
 dev-haskell/bytestring-show 0.3.5.6-r1: Efficient conversion of values into readable byte strings
 dev-haskell/bzlib 0.5.1.0: Compression and decompression in the bzip2 format
-dev-haskell/c2hs 0.16.4 0.16.5 0.17.2 0.20.1 0.25.2 0.27.1 0.28.3 0.28.6: C->Haskell FFI tool that gives some cross-language type safety
+dev-haskell/c2hs 0.28.6: C->Haskell FFI tool that gives some cross-language type safety
 dev-haskell/cabal 1.18.1.2 1.18.1.3 1.18.1.5 1.20.0.2 1.22.8.0 1.24.2.0 2.0.0.2 2.4.0.1 3.0.1.0: A framework for packaging Haskell software
-dev-haskell/cabal-doctest 1 1.0.8: A Setup.hs helper for doctests running
-dev-haskell/cabal-install 1.24.0.2 3.0.0.0: The command-line interface for Cabal and Hackage
-dev-haskell/cairo 0.12.5.3 0.13.1.1 0.13.3.1 0.13.6.1: Binding to the Cairo library
-dev-haskell/call-stack 0.1.0 0.2.0: Use GHC call-stacks in a backward compatible way
+dev-haskell/cabal-doctest 1.0.8: A Setup.hs helper for doctests running
+dev-haskell/cabal-install 3.0.0.0: The command-line interface for Cabal and Hackage
+dev-haskell/cairo 0.13.6.1: Binding to the Cairo library
+dev-haskell/call-stack 0.2.0: Use GHC call-stacks in a backward compatible way
 dev-haskell/casa-client 0.0.1: Client for Casa
 dev-haskell/casa-types 0.0.1: Types for Casa
-dev-haskell/case-insensitive 1.0.0.2-r1 1.1.0.3 1.2.0.5 1.2.0.7 1.2.1.0: Case insensitive string comparison
-dev-haskell/cassava 0.4.4.0 0.4.5.0 0.5.2.0: A CSV parsing and encoding library
-dev-haskell/cereal 0.3.5.2 0.4.0.1 0.4.1.1 0.5.8.1: A binary serialization library
+dev-haskell/case-insensitive 1.2.1.0: Case insensitive string comparison
+dev-haskell/cassava 0.5.2.0: A CSV parsing and encoding library
+dev-haskell/cereal 0.5.8.1: A binary serialization library
 dev-haskell/cereal-vector 0.2.0.1: Serialize instances for Data.Vector types
 dev-haskell/certificate 1.3.9: Certificates and Key Reader/Writer
-dev-haskell/cgi 3001.1.8.3 3001.1.8.4 3001.1.8.4-r1 3001.2.2.2 3001.5.0.0: A library for writing CGI programs
+dev-haskell/cgi 3001.5.0.0: A library for writing CGI programs
 dev-haskell/charset 0.3.7.1-r1: Fast unicode character sets based on complemented PATRICIA tries
 dev-haskell/chaselev-deque 0.5.0.5: Chase & Lev work-stealing lock-free double-ended queues (deques)
-dev-haskell/chasingbottoms 1.3.0.11-r1 1.3.0.13 1.3.0.14 1.3.1.2 1.3.1.9: For testing partial and infinite values
+dev-haskell/chasingbottoms 1.3.1.9: For testing partial and infinite values
 dev-haskell/chell 0.4.0.2: A simple and intuitive library for automated testing
-dev-haskell/chell-quickcheck 0.2.5 0.2.5-r1: QuickCheck support for the Chell testing library
 dev-haskell/chimera 0.3.1.0: Lazy infinite streams with O(1) indexing
-dev-haskell/chunked-data 0.1.0.1 0.3.0: Typeclasses for dealing with various chunked data representations
-dev-haskell/cipher-aes 0.2.5 0.2.11: Fast AES cipher implementation with advanced mode of operations
+dev-haskell/chunked-data 0.3.0: Typeclasses for dealing with various chunked data representations
+dev-haskell/cipher-aes 0.2.11: Fast AES cipher implementation with advanced mode of operations
 dev-haskell/cipher-aes128 0.7.0.5-r1: AES and common modes using AES-NI when available
 dev-haskell/cipher-blowfish 0.0.3: Blowfish cipher
 dev-haskell/cipher-camellia 0.0.2: Camellia block cipher primitives
@@ -3875,18 +3874,17 @@ dev-haskell/cipher-des 0.0.6: DES and 3DES primitives
 dev-haskell/cipher-rc4 0.1.4: Fast RC4 cipher implementation
 dev-haskell/citeproc-hs 0.3.10-r1: A Citation Style Language implementation in Haskell
 dev-haskell/classy-prelude 1.5.0: A typeclass-based Prelude
-dev-haskell/clientsession 0.9.1.1 0.9.1.2: Securely store session data in a client-side cookie
-dev-haskell/clock 0.4.1.3 0.5.1 0.7.2: High-resolution clock functions: monotonic, realtime, cputime
-dev-haskell/cmark 0.3.4 0.4.0.1 0.5.5 0.5.6 0.6: Fast, accurate CommonMark (Markdown) parser and renderer
+dev-haskell/clientsession 0.9.1.2: Securely store session data in a client-side cookie
+dev-haskell/clock 0.7.2: High-resolution clock functions: monotonic, realtime, cputime
+dev-haskell/cmark 0.6: Fast, accurate CommonMark (Markdown) parser and renderer
 dev-haskell/cmark-gfm 0.2.1: Fast, accurate GitHub Flavored Markdown parser and renderer
-dev-haskell/cmdargs 0.10.7 0.10.13 0.10.14 0.10.20: Command line argument processing
-dev-haskell/cmdlib 0.3.5-r1 0.3.6: a library for command line parsing & online help
-dev-haskell/code-page 0.1.1 0.1.3: Windows code page library for Haskell
+dev-haskell/cmdargs 0.10.20: Command line argument processing
+dev-haskell/code-page 0.1.3: Windows code page library for Haskell
 dev-haskell/colour 2.3.5: A model for human colour/color perception
-dev-haskell/comonad 3.1 4.0 4.2.7.2 5 5.0.5 5.0.6: Haskell 98 compatible comonads
-dev-haskell/comonad-transformers 3.1 4.0: This package has been merged into comonad 4.0
-dev-haskell/comonads-fd 3.0.3 4.0: This package has been merged into comonad 4.0
-dev-haskell/concurrent-extra 0.7.0.10 0.7.0.12: Extra concurrency primitives
+dev-haskell/comonad 5.0.6: Haskell 98 compatible comonads
+dev-haskell/comonad-transformers 4.0: This package has been merged into comonad 4.0
+dev-haskell/comonads-fd 4.0: This package has been merged into comonad 4.0
+dev-haskell/concurrent-extra 0.7.0.12: Extra concurrency primitives
 dev-haskell/concurrent-output 1.10.11: Ungarble output from several threads or commands
 dev-haskell/conduit 1.0.15.1 1.1.6 1.2.6.1 1.2.6.6 1.2.8 1.2.12.1 1.3.2: Streaming data processing library
 dev-haskell/conduit-combinators 1.3.0: Commonly used conduit functions, for both chunked and unchunked data
@@ -4276,7 +4274,7 @@ dev-haskell/optparse-applicative 0.5.2.1 0.7.0.2 0.8.1-r1 0.9.1.1 0.11.0.2 0.13.
 dev-haskell/optparse-simple 0.1.1.3: Simple interface to optparse-applicative
 dev-haskell/pandoc-citeproc 0.17.0.1: Supports using pandoc with citeproc
 dev-haskell/pandoc-types 1.20: Types for representing a structured document
-dev-haskell/pango 0.12.5.3 0.13.1.1 0.13.3.1 0.13.6.1 0.13.8.1: Binding to the Pango text rendering engine
+dev-haskell/pango 0.13.8.1: Binding to the Pango text rendering engine
 dev-haskell/pantry 0.4.0.2: Content addressable Haskell package management
 dev-haskell/parallel 3.2.0.3 3.2.1.0 3.2.2.0: Parallel programming library
 dev-haskell/parallel-io 0.3.3-r3: Combinators for executing IO actions in parallel on a thread pool
@@ -4374,7 +4372,7 @@ dev-haskell/scientific 0.3.6.2: Numbers represented using scientific notation
 dev-haskell/securemem 0.1.3 0.1.9 0.1.10: abstraction to an auto scrubbing and const time eq, memory chunk
 dev-haskell/selective 0.3: Selective applicative functors
 dev-haskell/semigroupoid-extras 3.0.1 4.0 5: Semigroupoids that depend on PolyKinds
-dev-haskell/semigroupoids 3.1 4.0.2.1 4.2 4.3 5.0.0.4 5.1 5.3.4: Semigroupoids: Category sans id
+dev-haskell/semigroupoids 5.3.4: Semigroupoids: Category sans id
 dev-haskell/semigroups 0.9.2 0.11-r1 0.12.1 0.12.2 0.15.1 0.16.2.2 0.18.2 0.18.5: Anything that associates
 dev-haskell/semirings 0.5.3: two monoids as one, in holy haskimony
 dev-haskell/sendfile 0.7.9 0.7.11.1: A portable sendfile library
