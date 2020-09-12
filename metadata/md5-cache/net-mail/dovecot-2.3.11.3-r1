@@ -5,10 +5,10 @@ DESCRIPTION=An IMAP and POP3 server written with security primarily in mind
 EAPI=7
 HOMEPAGE=https://www.dovecot.org/
 IUSE=kerberos ldap lua mysql pam postgres sqlite vpopmail bzip2 lzma lz4 zlib zstd argon2 caps doc ipv6 libressl lucene managesieve rpc selinux sieve solr static-libs suid tcpd textcat unwind
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86
+KEYWORDS=~alpha ~amd64 arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86
 LICENSE=LGPL-2.1 MIT
 RDEPEND=argon2? ( dev-libs/libsodium ) bzip2? ( app-arch/bzip2 ) caps? ( sys-libs/libcap ) kerberos? ( virtual/krb5 ) ldap? ( net-nds/openldap ) lua? ( dev-lang/lua:* ) lucene? ( >=dev-cpp/clucene-2.3 ) lzma? ( app-arch/xz-utils ) lz4? ( app-arch/lz4 ) mysql? ( dev-db/mysql-connector-c:0= ) pam? ( sys-libs/pam ) postgres? ( dev-db/postgresql:* !dev-db/postgresql[ldap,threads] ) rpc? ( net-libs/libtirpc net-libs/rpcsvc-proto ) selinux? ( sec-policy/selinux-dovecot ) solr? ( net-misc/curl dev-libs/expat ) sqlite? ( dev-db/sqlite:* ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) suid? ( acct-group/mail ) tcpd? ( sys-apps/tcp-wrappers ) textcat? ( app-text/libexttextcat ) unwind? ( sys-libs/libunwind ) vpopmail? ( net-mail/vpopmail ) zlib? ( sys-libs/zlib ) zstd? ( app-arch/zstd ) virtual/libiconv dev-libs/icu:= acct-group/dovecot acct-group/dovenull acct-user/dovecot acct-user/dovenull net-mail/mailbase
 SLOT=0
 SRC_URI=https://dovecot.org/releases/2.3/dovecot-2.3.11.3.tar.gz sieve? ( https://pigeonhole.dovecot.org/releases/2.3/dovecot-2.3-pigeonhole-0.5.11.tar.gz ) managesieve? ( https://pigeonhole.dovecot.org/releases/2.3/dovecot-2.3-pigeonhole-0.5.11.tar.gz )
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	ssl-cert	876f0e74ef1cc2e7c4edd9bca336d350	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=58e31420b7f423e70022506deb42e686
+_md5_=0ff3292ef5208993ded30700cb797e0f

@@ -3040,7 +3040,7 @@ app-text/tessdata_legacy 4.0.0: Trained models for app-text/tesseract compatible
 app-text/tesseract 3.05.02 4.1.0-r1 4.1.1 9999: An OCR Engine, originally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2020-r8: A complete TeX distribution
-app-text/texlive-core 2020-r10: A complete TeX distribution
+app-text/texlive-core 2020-r11: A complete TeX distribution
 app-text/tidy-html5 5.6.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
@@ -17615,7 +17615,7 @@ sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via s
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.60 5.4.61 5.4.62 5.4.63 5.4.64 5.7.17 5.7.18 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6 5.8.7 5.8.8: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.60 5.4.61 5.4.62 5.4.62-r1 5.4.63 5.4.63-r1 5.4.64 5.4.64-r1 5.7.17 5.7.18 5.7.19 5.7.19-r1 5.8.3 5.8.4 5.8.5 5.8.5-r1 5.8.6 5.8.6-r1 5.8.7 5.8.7-r1 5.8.8 5.8.8-r1: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.228 4.4.233 4.4.234 4.4.235 4.4.236 4.9.228 4.9.233 4.9.234 4.9.235 4.9.236 4.14.185 4.14.194 4.14.195 4.14.196 4.14.197 4.14.198 4.19.129 4.19.141 4.19.142 4.19.143 4.19.144 4.19.145 5.4.48 5.4.60 5.4.61 5.4.62 5.4.63 5.4.64 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6 5.8.7 5.8.8: Full sources including the Gentoo patchset for the 5.8 kernel tree
+sys-kernel/gentoo-sources 4.4.228 4.4.233 4.4.234 4.4.235 4.4.236 4.9.228 4.9.233 4.9.234 4.9.235 4.9.236 4.14.185 4.14.194 4.14.195 4.14.196 4.14.197 4.14.198 4.19.129 4.19.141 4.19.142 4.19.143 4.19.144 4.19.145 5.4.48 5.4.60 5.4.61 5.4.62 5.4.63 5.4.64 5.4.65 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6 5.8.7 5.8.8 5.8.9: Full sources including the Gentoo patchset for the 5.8 kernel tree
 sys-kernel/git-sources 5.9_rc1 5.9_rc2 5.9_rc3 5.9_rc4: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
