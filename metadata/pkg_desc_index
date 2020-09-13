@@ -468,7 +468,7 @@ app-accessibility/simon 9999: Open-source speech recognition program for replaci
 app-accessibility/sound-icons 0.1: a collection of Sound Icons for speech-dispatcher
 app-accessibility/speech-dispatcher 0.8.7-r3 0.9.1: Speech synthesis interface
 app-accessibility/speech-tools 2.1-r4 2.5.0: Speech tools for Festival Text to Speech engine
-app-accessibility/speechd-el 2.5: Emacs speech support
+app-accessibility/speechd-el 2.5 2.8: Emacs speech support
 app-accessibility/sphinx2 0.6: CMU Speech Recognition-engine
 app-accessibility/yasr 0.6.9-r1: General-purpose console screen reader
 app-admin/abrt 2.14.0 2.14.1 2.14.2: Automatic bug detection and reporting tool
