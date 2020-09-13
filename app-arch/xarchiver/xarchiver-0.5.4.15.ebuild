@@ -50,7 +50,7 @@ pkg_postinst() {
 
 	elog "You need external programs for some formats, including:"
 	elog "7zip - app-arch/p7zip"
-	elog "arj - app-arch/unarj app-arch/arj"
+	elog "arj - app-arch/arj"
 	elog "lha - app-arch/lha"
 	elog "lzop - app-arch/lzop"
 	elog "rar - app-arch/unrar app-arch/rar"
