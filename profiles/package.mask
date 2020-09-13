@@ -32,7 +32,7 @@
 
 #--- END OF EXAMPLES ---
 
-# James Le Cuirot <chewi@gentoo.org> (2017-12-17)
+# James Le Cuirot <chewi@gentoo.org> (2020-09-13)
 # License issues. app-arch/arj is a better alternative. Removal in 30
 # days. See bug #694746.
 app-arch/unarj
