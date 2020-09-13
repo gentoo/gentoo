@@ -14625,7 +14625,7 @@ net-fs/netatalk 3.1.12: Open Source AFP server
 net-fs/nfs-utils 2.4.1-r4 2.4.3 2.5.1: NFS client and server daemons
 net-fs/nfs4-acl-tools 0.3.5 0.3.7: Commandline and GUI tools that deal directly with NFSv4 ACLs
 net-fs/nfstest 1.0.2 2.1.2: Tools for testing either the NFS client or the NFS server
-net-fs/openafs 1.6.22.1 1.6.22.2 1.8.2-r2: The OpenAFS distributed file system
+net-fs/openafs 1.6.22.1 1.6.22.2 1.8.2-r2 1.8.6: The OpenAFS distributed file system
 net-fs/openafs-kernel 1.6.22.1-r1 1.6.22.2-r1: The OpenAFS distributed file system kernel module
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
 net-fs/s3backer 1.4.5: FUSE-based single file backing store via Amazon S3

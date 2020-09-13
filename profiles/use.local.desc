@@ -5702,7 +5702,7 @@ net-fs/nfs-utils:nfsidmap - Enable support for newer nfsidmap helper
 net-fs/nfs-utils:nfsv4 - Enable support for NFSv4
 net-fs/nfs-utils:nfsv41 - Enable support for NFSv4.1
 net-fs/nfs-utils:uuid - Support UUID lookups in rpc.mountd
-net-fs/openafs:api - Build API documentation using app-doc/doxygen. May take a *long* time to build.
+net-fs/openafs:apidoc - Build API documentation using app-doc/doxygen. May take a *long* time to build.
 net-fs/openafs:bitmap-later - Enable fast startup of file server by not reading bitmap till needed.
 net-fs/openafs:fuse - Build fuse client.
 net-fs/openafs:kauth - Install the DEPRECATED kauth server, PAM modules, and utilities
