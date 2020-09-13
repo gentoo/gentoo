@@ -6521,7 +6521,7 @@ dev-perl/Filesys-SmbClient 3.200.0-r3 3.200.0-r4: Provide Perl API for libsmbcli
 dev-perl/Filesys-Statvfs 0.820.0 0.820.0-r1: Perl extension for statvfs() and fstatvfs()
 dev-perl/Filter 1.570.0 1.600.0: Interface for creation of Perl Filters
 dev-perl/Finance-Quote 1.470.0 1.490.0: Get stock and mutual fund quotes from various exchanges
-dev-perl/Finance-YahooQuote 0.250.0-r1: Get stock quotes from Yahoo! Finance
+dev-perl/Finance-YahooQuote 0.250.0-r1 0.260.0: Get stock quotes from Yahoo! Finance
 dev-perl/Font-AFM 1.200.0-r1: Parse Adobe Font Metric files
 dev-perl/Font-TTF 1.60.0: module for compiling and altering fonts
 dev-perl/Format-Human-Bytes 0.60.0-r1: Format a bytecount and make it human readable
