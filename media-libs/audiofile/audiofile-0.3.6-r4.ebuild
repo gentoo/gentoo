@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools gnome.org multilib-minimal
 
 DESCRIPTION="An elegant API for accessing audio files"
-HOMEPAGE="http://www.68k.org/~michael/audiofile/"
+HOMEPAGE="https://audiofile.68k.org/"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/1" # subslot = soname major version
