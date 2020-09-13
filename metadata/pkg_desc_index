@@ -8667,7 +8667,7 @@ dev-python/pushbullet-py 0.11.0-r1: A simple python client for pushbullet.com
 dev-python/pweave 0.30.3-r1: Scientific report generator and literate programming tool
 dev-python/py 1.8.0 1.9.0: library with cross-python path, ini-parsing, io, code, log facilities
 dev-python/py-amqp 2.5.2: Low-level AMQP client for Python (fork of amqplib)
-dev-python/py-cpuinfo 6.0.0: Get CPU info with pure Python 2 & 3
+dev-python/py-cpuinfo 6.0.0 7.0.0: Get CPU info with pure Python 2 & 3
 dev-python/py-gfm 0.1.4: Github-Flavored Markdown for Python-Markdown
 dev-python/py-ubjson 0.16.1: Universal Binary JSON encoder/decoder
 dev-python/pyClamd 0.4.0-r1 0.4.0-r2: python interface to Clamd (Clamav daemon)
