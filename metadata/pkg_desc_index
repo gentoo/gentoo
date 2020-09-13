@@ -10898,7 +10898,7 @@ dev-util/shunit2 2.1.6-r1: Unit-test framework for Bourne-based shell scripts
 dev-util/smem 1.5-r1: A tool that can give numerous reports on memory usage on Linux systems
 dev-util/source-highlight 3.1.9: Generate highlighted source code as an (x)html document
 dev-util/spirv-headers 1.5.3 9999: Machine-readable files for the SPIR-V Registry
-dev-util/spirv-llvm-translator 9.0.1.1 10.0.0: Bi-directional translator between SPIR-V and LLVM IR
+dev-util/spirv-llvm-translator 9.0.1.1 10.0.0 10.0.0_p20200909: Bi-directional translator between SPIR-V and LLVM IR
 dev-util/spirv-tools 2020.3 9999: Provides an API and commands for processing SPIR-V modules
 dev-util/splint 3.1.2-r1 3.1.2-r2: Check C programs for vulnerabilities and programming mistakes
 dev-util/squashdelta 0.1.1 9999: Efficient (partially uncompressed) SquashFS binary delta tool
@@ -11500,7 +11500,7 @@ games-puzzle/amoebax 0.2.1-r1: A cute and addictive action-puzzle game, similar 
 games-puzzle/anagramarama 0.2-r1: Create as many words as you can before the time runs out
 games-puzzle/angrydd 1.0.1_p13-r1: Angry, Drunken Dwarves, a falling blocks game similar to Puzzle Fighter
 games-puzzle/arrows 0.6-r1: Simple maze-like game where you navigate around and destroy arrows
-games-puzzle/atomix 3.22.0 3.34.0: Mind game - build molecules out of single atoms
+games-puzzle/atomix 3.34.0-r1: Mind game - build molecules out of single atoms
 games-puzzle/bastet 0.43.2: a simple, evil, ncurses-based Tetris(R) clone
 games-puzzle/bff-or-die 20200614: Time travelling alien couch co-op puzzle game for 1-4 players
 games-puzzle/biniax2 1.30-r1: Logic game with arcade and tactics modes
