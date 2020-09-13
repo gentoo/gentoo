@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Louis Sautier <sbraz@gentoo.org> (2020-09-13)
+# Masked for removal in 30 days, unmaintained, no more revdeps.
+dev-python/args
+
 # Sam James <sam@gentoo.org> (2020-09-13)
 # Dead upstream, EAPI 4, no maintainer
 # Removal in 30 days
