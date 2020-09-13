@@ -24,14 +24,14 @@ LICENSE="IBM BSD openafs-krb5-a APSL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
-IUSE="api bitmap-later debug doc fuse kauth kerberos +modules +namei
+IUSE="apidoc bitmap-later debug doc fuse kauth kerberos +modules +namei
 ncurses perl +pthreaded-ubik +supergroups tsm ubik-read-while-write"
 
 BDEPEND="
 	dev-lang/perl
 	sys-devel/flex
 	virtual/yacc
-	api? (
+	apidoc? (
 		app-doc/doxygen
 		media-gfx/graphviz
 	)
@@ -153,7 +153,7 @@ src_configure() {
 		$(use_enable pthreaded-ubik) \
 		$(use_enable supergroups) \
 		$(use_enable ubik-read-while-write) \
-		$(use_with api dot) \
+		$(use_with apidoc dot) \
 		$(use_with doc docbook-stylesheets /usr/share/sgml/docbook/xsl-stylesheets) \
 		$(use_with kerberos krb5) \
 		$(use_with kerberos gssapi) \
@@ -170,7 +170,7 @@ src_compile() {
 		emake -C doc/xml/QuickStartUnix auqbg000.pdf
 		emake -C doc/xml/UserGuide auusg000.pdf
 	fi
-	use api && doxygen doc/doxygen/Doxyfile
+	use apidoc && doxygen doc/doxygen/Doxyfile
 }
 
 src_install() {
@@ -243,7 +243,7 @@ src_install() {
 		newdoc doc/xml/QuickStartUnix/auqbg000.pdf QuickStartUnix.pdf
 		newdoc doc/xml/UserGuide/auusg000.pdf UserGuide.pdf
 	fi
-	use api && DOCS+=( doc/doxygen/output/html )
+	use apidoc && DOCS+=( doc/doxygen/output/html )
 	einstalldocs
 
 	# Gentoo related scripts
