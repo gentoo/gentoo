@@ -48,8 +48,8 @@ RDEPEND="
 	x11-libs/libXt
 	x11-libs/libXtst
 	x11-libs/pango
-	x11-libs/pangox-compat
 "
+BDEPEND="dev-util/patchelf"
 
 RESTRICT="bindist mirror"
 
@@ -58,9 +58,11 @@ QA_PREBUILT="opt/${PN}/*"
 src_install() {
 	local dst="/opt/${PN}"
 
-	dodir ${dst}
 	exeinto ${dst}
 	doexe ${PN}
+
+	# bug 706344
+	patchelf --remove-needed libpangox-1.0.so.0 "${ED}"${dst}/${PN} || die
 
 	dodir /opt/bin
 	dosym ${dst}/${PN} /opt/bin/${PN}
