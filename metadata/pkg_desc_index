@@ -7731,7 +7731,7 @@ dev-php/agavi 1.0.8: PHP MVC application framework
 dev-php/awl 0.61: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.1.3: Find the system CA bundle or fall back to the Mozilla one
 dev-php/cli-prompt 1.0.0 1.0.3: Allows you to prompt for user input on the command line
-dev-php/composer 1.9.3 1.10.1 1.10.5 1.10.6 1.10.7 1.10.8 1.10.9 1.10.10: Dependency Manager for PHP
+dev-php/composer 1.9.3 1.10.1 1.10.5 1.10.6 1.10.7 1.10.8 1.10.9 1.10.10 1.10.13: Dependency Manager for PHP
 dev-php/cphplib 0.51-r1: Cute PHP Library (cphplib)
 dev-php/doctrine 1.2.5 2.4.6 2.6.1 2.6.4: An object relational mapper for PHP
 dev-php/doctrine-instantiator 1.0.5 1.1.0 1.3.0 1.3.1: Utility to instantiate objects in PHP without invoking their constructors
@@ -7740,7 +7740,7 @@ dev-php/geos-php 1.0.0: A PHP interface to GEOS - Geometry Engine, Open Source
 dev-php/igbinary 3.1.5: A fast drop-in replacement for the standard PHP serialize
 dev-php/jpgraph 4.0.2 4.2.0: Object-oriented graphing library for PHP
 dev-php/json-schema 5.2.8 5.2.9 5.2.10: PHP implementation of JSON schema
-dev-php/jsonlint 1.7.1 1.7.2: JSON Lint for PHP
+dev-php/jsonlint 1.7.1 1.7.2 1.8.2: JSON Lint for PHP
 dev-php/libchart 1.3: Easy-to-use chart creation library for PHP
 dev-php/libvirt-php 0.5.4 0.5.5 9999: PHP bindings for libvirt
 dev-php/maxmind-db-reader 1.4.1 1.6.0: PHP reader for the MaxMind database format
@@ -7789,7 +7789,7 @@ dev-php/pecl-yaz 1.2.3: This extension implements a Z39.50 client for PHP using 
 dev-php/pecl-zmq 1.1.3-r2 9999: PHP Bindings for ZeroMQ messaging
 dev-php/phar-io-manifest 1.0.3: Reading phar.io manifest information from a PHP Archive (PHAR)
 dev-php/phar-io-version 2.0.1: Library for handling version information and constraints
-dev-php/phar-utils 1.0.0 1.0.1 1.1.0: PHAR file format utilities, for when PHP phars you up
+dev-php/phar-utils 1.0.0 1.0.1 1.1.0 1.1.1: PHAR file format utilities, for when PHP phars you up
 dev-php/phing 2.16.1 2.16.3: PHP project build system based on Apache Ant
 dev-php/php-codebrowser 1.0.2-r1: Creates highlighted code by reading xml reports from codesniffer or phpunit
 dev-php/php-redmine-api 1.5.9 1.5.16: A simple, object-oriented, PHP Redmine API client
@@ -7820,10 +7820,10 @@ dev-php/sebastian-resource-operations 1.0.0 2.0.1: Provides a list of PHP built-
 dev-php/sebastian-type 1.1.3: Collection of value objects that represent the types of the PHP type system
 dev-php/sebastian-version 2.0.1: Helps with managing the version number of Git-hosted PHP projects
 dev-php/securimage 3.6.5: PHP captcha creator and validator library
-dev-php/semver 1.4.2 1.5.1: Semantic versioning utilities, constraint parsing, and checking
+dev-php/semver 1.4.2 1.5.1 1.7.0: Semantic versioning utilities, constraint parsing, and checking
 dev-php/simpletest 1.1.7: A PHP testing framework
 dev-php/smarty 3.1.33: A template engine for PHP
-dev-php/spdx-licenses 1.2.0 1.4.0-r1 1.5.0 1.5.3: Tools for working with and validating SPDX licenses
+dev-php/spdx-licenses 1.2.0 1.4.0-r1 1.5.0 1.5.3 1.5.4: Tools for working with and validating SPDX licenses
 dev-php/stringparser_bbcode 0.3.3-r1: A PHP class to parse BB codes
 dev-php/swoole 4.2.13 4.4.12 4.4.14 4.4.15 4.4.16 4.4.19: Event-driven asynchronous & concurrent & coroutine networking engine
 dev-php/swoole-async 4.4.12 4.4.16: An extension of Swoole, including the async callback style API
@@ -7841,7 +7841,7 @@ dev-php/twig 1.40.1-r1 1.42.3 1.42.3-r1: PHP templating engine with syntax simil
 dev-php/webmozart-assert 1.2.0 1.4.0: Assertions to validate method input/output with nice error messages
 dev-php/xdebug 2.9.4 2.9.5 2.9.6: A PHP debugging and profiling extension
 dev-php/xdebug-client 2.9.4 2.9.5 2.9.6: Xdebug client for the Common Debugger Protocol (DBGP)
-dev-php/xdebug-handler 1.3.0 1.3.1 1.4.1: Restart a CLI process without loading the xdebug extension
+dev-php/xdebug-handler 1.3.0 1.3.1 1.4.1 1.4.3: Restart a CLI process without loading the xdebug extension
 dev-php/xhprof 0.9.10 2.1.4: A Hierarchical Profiler for PHP
 dev-python/3to2 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x syntax
 dev-python/APScheduler 3.6.3: In-process task scheduler with Cron-like capabilities
@@ -10634,7 +10634,7 @@ dev-util/cargo-license 0.3.0: Cargo subcommand to see license of dependencies
 dev-util/catalyst 3.0.9 3.0.12 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.4.13: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.8.3-r1 0.8.8-r1 9999: Cmake macros and associated python code used to build some parts of ROS
-dev-util/cbindgen 0.14.3 0.14.4: A tool for generating C bindings to Rust code
+dev-util/cbindgen 0.14.4: A tool for generating C bindings to Rust code
 dev-util/ccache 3.7.10 3.7.11: fast compiler cache
 dev-util/cccc 3.1.5-r1: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccls 0.20190823.5 0.20190823.6 9999: C/C++/ObjC language server
@@ -14906,7 +14906,7 @@ net-libs/libtrace 4.0.10_p1 4.0.11_p1 4.0.12_p1 4.0.13_p1 4.0.14_p1 99999: A lib
 net-libs/libupnp 1.6.21 1.6.25 1.8.7 1.12.1 1.14.0: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.17.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
 net-libs/libvncserver 0.9.13: library for creating vnc servers
-net-libs/libwebsockets 3.2.1 4.0.20: A flexible pure-C library for implementing network protocols
+net-libs/libwebsockets 3.2.1 4.0.20 4.1.0: A flexible pure-C library for implementing network protocols
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/liquid-dsp 1.3.0 1.3.1 9999: digital signal processing library for software-defined radios
 net-libs/loudmouth 1.5.3-r1 1.5.3-r2 1.5.3-r3: Lightweight C Jabber library
@@ -15011,7 +15011,7 @@ net-mail/mswatch 1.2.0-r1: A utility to watch mailstores for changes and initiat
 net-mail/mu 1.4.10 1.4.12 1.4.13: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/muchsync 5: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
-net-mail/notmuch 0.29.3-r2 0.30-r1: Thread-based e-mail indexer, supporting quick search and tagging
+net-mail/notmuch 0.29.3-r2 0.30-r1 0.31: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/pflogsumm 1.1.5-r1 1.1.5-r2: Pflogsumm is a log analyzer for Postfix logs
 net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Postfix queued messages
 net-mail/pop-before-smtp 1.42: Simple daemon to controll email relay based on successful POP or IMAP logins
