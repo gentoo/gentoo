@@ -11,7 +11,7 @@
 #
 # Discouraged. Whenever possible, please use much simpler:
 # @CODE
-# find "${ED}" -name '*.la' -remove || die
+# find "${ED}" -name '*.la' -delete || die
 # @CODE
 
 if [[ -z ${_LTPRUNE_ECLASS} ]]; then
