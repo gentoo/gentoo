@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202009-12">
+  <title>ZeroMQ: Denial of service</title>
+  <synopsis>A vulnerability in ZeroMQ could lead to a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">zeromq</product>
+  <announced>2020-09-13</announced>
+  <revised count="1">2020-09-13</revised>
+  <bug>740574</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-libs/zeromq" auto="yes" arch="*">
+      <unaffected range="ge">4.3.3</unaffected>
+      <vulnerable range="lt">4.3.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Looks like an embeddable networking library but acts like a concurrency
+      framework.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that ZeroMQ does not properly handle connecting peers
+      before a handshake is completed.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An unauthenticated remote attacker able to connect to a ZeroMQ endpoint,
+      even with CURVE encryption/authentication enabled, can cause a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ZeroMQ users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/zeromq-4.3.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-15166">CVE-2020-15166</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-09-12T19:44:05Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-09-13T23:27:38Z">whissi</metadata>
+</glsa>
