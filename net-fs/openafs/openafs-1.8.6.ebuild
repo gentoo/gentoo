@@ -3,12 +3,12 @@
 
 EAPI=7
 
-inherit autotools linux-mod flag-o-matic pam systemd toolchain-funcs
+inherit autotools linux-mod flag-o-matic pam systemd tmpfiles toolchain-funcs
 
 MY_PV=${PV/_/}
 MY_P="${PN}-${MY_PV}"
-PVER=20190106
-KERNEL_LIMIT=4.21
+PVER=20200913
+KERNEL_LIMIT=5.10
 
 DESCRIPTION="The OpenAFS distributed file system"
 HOMEPAGE="https://www.openafs.org/"
@@ -32,7 +32,7 @@ BDEPEND="
 	sys-devel/flex
 	virtual/yacc
 	apidoc? (
-		app-doc/doxygen
+		app-doc/doxygen[dot]
 		media-gfx/graphviz
 	)
 	doc? (
@@ -251,7 +251,7 @@ src_install() {
 	newconfd "${OPENRCDIR}"/openafs-client.confd openafs-client
 	newinitd "${OPENRCDIR}"/openafs-server.initd openafs-server
 	newconfd "${OPENRCDIR}"/openafs-server.confd openafs-server
-	systemd_dotmpfilesd "${SYSTEMDDIR}"/tmpfiles.d/openafs-client.conf
+	dotmpfiles "${SYSTEMDDIR}"/tmpfiles.d/openafs-client.conf
 	systemd_dounit "${SYSTEMDDIR}"/openafs-client.service
 	systemd_dounit "${SYSTEMDDIR}"/openafs-server.service
 	systemd_install_serviced "${SYSTEMDDIR}"/openafs-client.service.conf
@@ -289,6 +289,8 @@ pkg_postinst() {
 		use kernel_FreeBSD && /usr/sbin/kldxref "${EPREFIX}/boot/modules"
 		use kernel_linux && linux-mod_pkg_postinst
 	fi
+
+	tmpfiles_process openafs-client.conf
 
 	elog "This installation should work out of the box (at least the"
 	elog "client part doing global afs-cell browsing, unless you had"
