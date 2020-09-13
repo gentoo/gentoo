@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2020-09-13)
+# mpv bash completion is no longer needed and the package is not
+# compatible with the remaining packages.
+# Masked for removal after 2020-11-01.
+# Bug #742395
+app-shells/mpv-bash-completion
+
 # Louis Sautier <sbraz@gentoo.org> (2020-09-13)
 # Masked for removal in 30 days, unmaintained, no more revdeps.
 dev-python/args
