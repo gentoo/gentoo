@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake xdg-utils
+inherit cmake xdg
 
 DESCRIPTION="A terminal emulator designed to integrate with the ROX environment"
 HOMEPAGE="https://github.com/realh/roxterm"
@@ -26,10 +26,6 @@ DEPEND="${RDEPEND}
 	dev-libs/libxslt"
 BDEPEND="virtual/pkgconfig"
 
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
+src_prepare() {
+	cmake_src_prepare
 }
