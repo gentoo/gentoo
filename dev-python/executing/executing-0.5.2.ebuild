@@ -20,6 +20,8 @@ KEYWORDS="~amd64 ~x86"
 
 # asttokens is optional runtime dep
 BDEPEND="
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/toml[${PYTHON_USEDEP}]
 	test? (
 		dev-python/asttokens[${PYTHON_USEDEP}]
 	)"
@@ -27,6 +29,13 @@ BDEPEND="
 distutils_enable_tests pytest
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
+
+src_prepare() {
+	# Kill off useless wheel dep
+	sed -i -e 's/wheel; //' setup.cfg || die
+
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	# this test explodes when collected by pytest
