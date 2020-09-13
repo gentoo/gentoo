@@ -5611,7 +5611,7 @@ dev-libs/ntl 11.4.3: High-performance and portable C++ number theory library
 dev-libs/ocl-icd 2.2.12-r3: Alternative to vendor specific OpenCL ICD loaders
 dev-libs/onigmo 6.1.3 6.2.0: Onigmo is a regular expressions library forked from Oniguruma
 dev-libs/oniguruma 6.9.4 9999: Regular expression library for different character encodings
-dev-libs/opencl-clang 9.0.1 10.0.0.1: OpenCL-oriented thin wrapper library around clang
+dev-libs/opencl-clang 9.0.1 10.0.0.1 10.0.0.2: OpenCL-oriented thin wrapper library around clang
 dev-libs/opencl-icd-loader 2020.03.13-r1 2020.06.16: Official Khronos OpenCL ICD Loader
 dev-libs/opencryptoki 3.4.1 3.6.1: PKCS#11 provider cryptographic hardware
 dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
