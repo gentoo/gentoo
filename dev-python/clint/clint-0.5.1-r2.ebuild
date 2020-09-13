@@ -22,7 +22,9 @@ DEPEND="
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "
-RDEPEND="dev-python/args[${PYTHON_USEDEP}]"
+
+# https://github.com/kennethreitz-archive/clint/pull/180
+PATCHES=( "${FILESDIR}/${P}-disable-args-dependency.patch" )
 
 python_compile_all() {
 	use doc && emake -C docs html
