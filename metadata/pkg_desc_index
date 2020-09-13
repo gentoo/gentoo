@@ -13264,7 +13264,7 @@ media-libs/lv2 1.18.0: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0 1.2.0-r1: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 20.0.8 20.1.6 20.1.7 20.2.0_rc2 20.2.0_rc3 20.2.0_rc4 9999: OpenGL-like graphic library for Linux
-media-libs/mlt 6.20.0-r2: Open source multimedia framework for television broadcasting
+media-libs/mlt 6.20.0-r2 6.22.1: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.43.0 1.44.0: Audio metadata tag reader and writer implemented in pure Python
@@ -15054,7 +15054,7 @@ net-misc/AQtion 2.2.7-r1 2.3.1-r1 2.3.4-r1: Aquantia AQC multigigabit NIC linux 
 net-misc/adjtimex 1.29-r2: display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Perform two optimisations on a list of prefixes to reduce the length of the list
-net-misc/anydesk 5.5.0-r1 5.5.1 5.5.4 5.5.6 6.0.0: Feature rich multi-platform remote desktop application
+net-misc/anydesk 5.5.6-r1 6.0.0-r1: Feature rich multi-platform remote desktop application
 net-misc/apt-cacher-ng 3.3.1_p2 3.4_p1 3.5_p1-r1 9999999: Yet another caching HTTP proxy for Debian/Ubuntu software packages
 net-misc/aria2 1.34.0-r2: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
@@ -17188,7 +17188,7 @@ sys-auth/thinkfinger 0.3-r3: Support for the UPEK/SGS Thomson fingerprint reader
 sys-auth/ykclient 2.15: Yubico C client library
 sys-auth/ykneo-ccid-tools 0.0.0: Tools for Yubico's YubiKey NEO in CCID mode
 sys-auth/ykpers 1.19.3-r1 1.20.0: Library and tool for personalization of Yubico's YubiKey
-sys-auth/yubico-piv-tool 2.1.1 2.1.1-r1: Command line tool for the YubiKey PIV application
+sys-auth/yubico-piv-tool 2.1.1 2.1.1-r1 2.1.1-r2: Command line tool for the YubiKey PIV application
 sys-auth/yubikey-personalization-gui 3.1.25: GUI for personalization of Yubico's YubiKey
 sys-block/aoetools 36 37: tools for ATA over Ethernet (AoE) network storage protocol
 sys-block/arcconf 2.01.22270-r1 3.04.23699: Microsemi Adaptec RAID Controller Command Line Utility
