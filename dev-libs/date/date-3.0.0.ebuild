@@ -12,7 +12,7 @@ SRC_URI="https://github.com/HowardHinnant/${PN}/archive/v${PV}.tar.gz -> ${P}.ta
 KEYWORDS="~amd64"
 
 LICENSE="MIT"
-SLOT="0"
+SLOT="0/3.0.0"
 IUSE="only-c-locale test"
 RESTRICT="!test? ( test )"
 
