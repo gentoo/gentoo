@@ -40,7 +40,7 @@ src_install() {
 	default
 	# autoconf-2.60 for instance, first checks gm4, then m4.  If we don't have
 	# gm4, it might find gm4 from outside the prefix on for instance Darwin
-	use prefix && dosym "${EPREFIX}"/usr/bin/m4 /usr/bin/gm4
+	use prefix && dosym m4 /usr/bin/gm4
 	if use examples ; then
 		docinto examples
 		dodoc -r examples/
