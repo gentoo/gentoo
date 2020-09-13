@@ -9909,7 +9909,7 @@ dev-ruby/ethon 0.12.0: Very lightweight libcurl wrapper
 dev-ruby/evented-spec 0.9.0: A set of helpers to help you test your asynchronous code
 dev-ruby/eventmachine 1.2.7: EventMachine is a fast, simple event-processing library for Ruby programs
 dev-ruby/execjs 2.7.0: ExecJS lets you run JavaScript code from Ruby
-dev-ruby/exifr 1.3.6: A library to read EXIF info from JPEG and TIFF images
+dev-ruby/exifr 1.3.6 1.3.7: A library to read EXIF info from JPEG and TIFF images
 dev-ruby/expression_parser 0.9.0_p20130518: A math parser
 dev-ruby/facter 3.14.12 3.14.13 9999: A cross-platform ruby library for retrieving facts from operating systems
 dev-ruby/factory_girl 4.8.1: factory_girl provides a framework and DSL for defining and using factories
@@ -15296,7 +15296,7 @@ net-misc/scponly 4.8-r6 4.8-r7: A tiny pseudoshell which only permits scp and sf
 net-misc/seafile 6.2.11 7.0.2 7.0.4 7.0.5-r1: File syncing and sharing software with file encryption and group sharing
 net-misc/seafile-client 6.2.11 7.0.2 7.0.4 7.0.5: Seafile desktop client
 net-misc/secpanel 0.6.1-r1: Graphical frontend for managing and running SSH and SCP connections
-net-misc/selfdhcp 0.2a-r1: a small stealth network autoconfigure software
+net-misc/selfdhcp 0.2a-r2: Small stealth network autoconfigure software
 net-misc/ser2net 2.10.0: Serial To Network Proxy
 net-misc/sgopherd 18.08: Small Gopher Server written in GNU Bash
 net-misc/shigofumi 0.3-r1 9999: Command line client for ISDS
