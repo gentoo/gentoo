@@ -49,6 +49,10 @@ DEPEND="
 	"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.9.3-fix-crash-with-fmt.patch"
+	)
+
 src_configure() {
 	local emesonargs=(
 		$(meson_feature mpd)
