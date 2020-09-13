@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Early unlocking of encrypted systems via ssh for dracut"
 HOMEPAGE="https://github.com/dracut-crypt-ssh/dracut-crypt-ssh"
@@ -13,7 +13,14 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="sys-kernel/dracut"
 RDEPEND="${DEPEND}
-	net-misc/dhcp
+	|| (
+		net-misc/connman
+		net-misc/dhcp
+		net-misc/dhcpcd
+		net-misc/netifrc
+		net-misc/networkmanager
+		sys-apps/systemd
+	)
 	net-misc/dropbear"
 
 DOCS=("README.md")

@@ -36,7 +36,7 @@ DEPEND="
 	dev-libs/wayland
 	dev-libs/wayland-protocols
 	gui-libs/wlroots
-	x11-libs/gtk+:3=[wayland]
+	x11-libs/gtk+:3[wayland]
 	mpd? ( media-libs/libmpdclient )
 	network? ( dev-libs/libnl:3 )
 	popups? ( gui-libs/gtk-layer-shell )
