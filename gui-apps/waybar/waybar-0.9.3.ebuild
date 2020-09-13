@@ -15,6 +15,7 @@ else
 	SRC_URI="https://github.com/Alexays/${PN^}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 fi
+S="${WORKDIR}/${PN^}-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
@@ -31,10 +32,11 @@ DEPEND="
 	dev-libs/libsigc++:2
 	>=dev-libs/libfmt-5.3.0:=
 	>=dev-libs/spdlog-1.3.1:=
-	dev-libs/date
+	dev-libs/date:=
 	dev-libs/wayland
 	dev-libs/wayland-protocols
 	gui-libs/wlroots
+	x11-libs/gtk+:3=[wayland]
 	mpd? ( media-libs/libmpdclient )
 	network? ( dev-libs/libnl:3 )
 	popups? ( gui-libs/gtk-layer-shell )
