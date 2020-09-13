@@ -10,15 +10,17 @@ inherit python-single-r1
 
 DESCRIPTION="A script that converts a CHM file into a single PDF file"
 HOMEPAGE="https://code.google.com/p/chm2pdf/"
-EGIT_REPO_URI="https://github.com/mesonbuild/meson"
-inherit git-r3
+SRC_URI="https://github.com/Zaryob/chm2pdf/releases/download/0.9.2/chm2pdf-0.9.2.tar.gz"
+
+# EGIT_REPO_URI="https://github.com/Zaryob/chm2pdf"
+# inherit git-r3
 
 LICENSE="GPL-2"
 KEYWORDS="amd64 x86"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-python/pychm[${PYTHON_USEDEP}]
+RDEPEND="dev-python/pychm
 	app-text/htmldoc
 	>=dev-libs/chmlib-0.40-r1[examples]
 	${PYTHON_DEPS}"
@@ -30,6 +32,7 @@ pkg_setup() {
 }
 
 src_prepare(){
+    default
 	python_fix_shebang .
 }
 
