@@ -5158,8 +5158,8 @@ dev-lang/logtalk 3.36.0: Open source object-oriented logic programming language
 dev-lang/lua 5.1.5-r4 5.1.5-r5 5.1.5-r100 5.1.5-r101 5.1.5-r102 5.1.5-r103 5.2.3 5.2.3-r1 5.2.3-r2 5.2.3-r3 5.2.4 5.2.4-r1 5.2.4-r2 5.3.3 5.3.3-r1 5.3.3-r2 5.3.5 5.3.5-r1 5.3.5-r2: A powerful light-weight programming language designed for extending applications
 dev-lang/luajit 2.0.5-r2 2.1.0_beta3-r1: Just-In-Time Compiler for the Lua programming language
 dev-lang/maude 2.7: High-level specification language for equational and logic programming
-dev-lang/mercury 14.01.1-r1 20.01 20.01.1 20.01.2: Mercury is a modern general-purpose logic/functional programming language
-dev-lang/mercury-extras 14.01.1 20.01 20.01.1 20.01.2: Additional libraries and tools that are not part of the Mercury standard library
+dev-lang/mercury 14.01.1-r1 20.01 20.01.1 20.01.2 20.06: Mercury is a modern general-purpose logic/functional programming language
+dev-lang/mercury-extras 14.01.1 20.01 20.01.1 20.01.2 20.06: Additional libraries and tools that are not part of the Mercury standard library
 dev-lang/micropython 1.11: Python implementation for microcontrollers
 dev-lang/mlton 20130715 20180207: Standard ML optimizing compiler and libraries
 dev-lang/mmix 20160804-r1: Donald Knuth's MMIX Assembler and Simulator
