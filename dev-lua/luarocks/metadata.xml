@@ -9,12 +9,6 @@
 		<email>gyakovlev@gentoo.org</email>
 		<name>Georgy Yakovlev</name>
 	</maintainer>
-	<use>
-		<flag name="curl">Uses <pkg>net-misc/curl</pkg> for fetching lua
-			packages instead of <pkg>net-misc/wget</pkg>.</flag>
-		<flag name="openssl">Uses <pkg>dev-libs/openssl</pkg> for verifying lua
-			packages instead of md5sum.</flag>
-	</use>
 	<longdescription lang="en">
 		Package manager for Lua.
 
