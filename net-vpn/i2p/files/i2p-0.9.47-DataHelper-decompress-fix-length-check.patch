@@ -1,0 +1,25 @@
+# from https://trac.i2p2.de/ticket/2770
+From ceb0749e0d5c3c496b4a91bc3a9d3b5e296fc456 Mon Sep 17 00:00:00 2001
+From: zzz <zzz@mail.i2p>
+Date: Wed, 2 Sep 2020 15:57:04 +0000
+Subject: [PATCH] Util: Fix decompression of compressed zero bytes (ticket
+ #2770)
+
+---
+ core/java/src/net/i2p/data/DataHelper.java | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/core/java/src/net/i2p/data/DataHelper.java b/core/java/src/net/i2p/data/DataHelper.java
+index aaa47797c3..39f766e6fa 100644
+--- a/core/java/src/net/i2p/data/DataHelper.java
++++ b/core/java/src/net/i2p/data/DataHelper.java
+@@ -1902,7 +1902,8 @@ public static String unescapeHTML(String escaped) {
+      */
+     public static byte[] decompress(byte orig[], int offset, int length) throws IOException {
+         if (orig == null) return orig;
+-        if (length < 23)
++        // normal overhead is 23 bytes, but a compress of zero bytes is 20 bytes
++        if (length < 20)
+             throw new IOException("length");
+         if (length < 65559 && orig[offset + 10] == 0x01)
+             return zeroDecompress(orig, offset, length);

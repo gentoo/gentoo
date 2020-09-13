@@ -54,6 +54,10 @@ EANT_BUILD_TARGET="pkg"
 EANT_TEST_TARGET="junit.test"
 JAVA_ANT_ENCODING="UTF-8"
 
+PATCHES=(
+	"${FILESDIR}/${P}-DataHelper-decompress-fix-length-check.patch"
+)
+
 src_prepare() {
 	if use test; then
 		# no *streaming as requiring >dev-java/mockito-1.9.5
