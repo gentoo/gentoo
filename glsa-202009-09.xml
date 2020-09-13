@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202009-09">
+  <title>Nextcloud Desktop Sync client: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Nextcloud Desktop Sync
+    client, the worst of which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">nextcloud-client</product>
+  <announced>2020-09-13</announced>
+  <revised count="1">2020-09-13</revised>
+  <bug>736649</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/nextcloud-client" auto="yes" arch="*">
+      <unaffected range="ge">2.6.5</unaffected>
+      <vulnerable range="lt">2.6.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Nextcloud Desktop Sync client can synchronize one or more directories to
+      Nextcloud server.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Nextcloud Desktop Sync
+      client. Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Nextcloud Desktop Sync client users should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/nextcloud-client-2.6.5"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8189">CVE-2020-8189</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8224">CVE-2020-8224</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8227">CVE-2020-8227</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-09-12T20:28:32Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-09-13T23:26:38Z">whissi</metadata>
+</glsa>
