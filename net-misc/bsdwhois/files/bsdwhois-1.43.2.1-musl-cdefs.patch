@@ -1,0 +1,12 @@
+diff --git a/whois.c b/whois.c
+index 329559a..d2f6561 100644
+--- a/whois.c
++++ b/whois.c
+@@ -43,7 +43,6 @@ static char sccsid[] = "@(#)whois.c	8.1 (Berkeley) 6/6/93";
+ #endif /* not lint */
+ #endif
+ 
+-#include <sys/cdefs.h>
+ #ifdef __FBSDID
+ __FBSDID("$FreeBSD: /repoman/r/ncvs/src/usr.bin/whois/whois.c,v 1.43.2.1 2006/01/31 18:11:21 jhay Exp $");
+ #endif
