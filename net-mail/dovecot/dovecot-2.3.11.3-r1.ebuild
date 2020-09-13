@@ -86,8 +86,8 @@ pkg_setup() {
 src_prepare() {
 	default
 	# bug 657108
-	elibtoolize
-	#eautoreconf
+	#elibtoolize
+	eautoreconf
 }
 
 src_configure() {
