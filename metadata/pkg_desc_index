@@ -8011,7 +8011,7 @@ dev-python/click-log 0.3.2: Logging integration for Click.
 dev-python/click-plugins 1.0.3 1.1.1: Module for click to enable registering CLI commands via setuptools entry-points
 dev-python/click-threading 0.4.4: Multithreaded Click apps made easy.
 dev-python/cliff 3.3.0 3.4.0: Command Line Interface Formulation Framework
-dev-python/clint 0.5.1-r2: Python Command-line Application Tools
+dev-python/clint 0.5.1-r2 0.5.1-r3: Python Command-line Application Tools
 dev-python/cloudpickle 1.5.0 1.6.0: Extended pickling support for Python objects
 dev-python/cmd2 1.2.1 1.3.4 1.3.5 1.3.8 1.3.9: Extra features for standard library's cmd module
 dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
