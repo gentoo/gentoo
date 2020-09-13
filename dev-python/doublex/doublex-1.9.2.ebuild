@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit distutils-r1 vcs-snapshot
 
@@ -26,6 +26,16 @@ DEPEND="
 RDEPEND="${CDEPEND}"
 
 distutils_enable_tests setup.py
+
+python_prepare_all() {
+	# Disable broken tests
+	# https://bitbucket.org/DavidVilla/python-doublex/issues/5/support-for-python-36-37-38-tests-failing
+	sed -i "s/test_*hamcrest_/_&/" doublex/test/report_tests.py || die
+	# https://bitbucket.org/DavidVilla/python-doublex/issues/6/more-failing-tests-with-python-39
+	sed -i -r "s/test_(proxyspy_get_stubbed_property|stub_property|custom_equality_comparable_objects)/_&/" \
+		doublex/test/unit_tests.py || die
+	distutils-r1_python_prepare_all
+}
 
 python_compile_all() {
 	use doc && emake -C docs
