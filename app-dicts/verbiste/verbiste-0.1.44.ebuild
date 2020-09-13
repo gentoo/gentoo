@@ -11,7 +11,7 @@ SRC_URI="http://sarrazip.com/dev/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ppc ~x86"
 
 IUSE="gtk"
 
