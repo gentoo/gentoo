@@ -13,8 +13,3 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
-
-PATCHES=(
-	"${FILESDIR}/${P}-pkgconfig-libs.patch" # git master
-	"${FILESDIR}/${P}-pkgconfig-version.patch" # bug 716818
-)
