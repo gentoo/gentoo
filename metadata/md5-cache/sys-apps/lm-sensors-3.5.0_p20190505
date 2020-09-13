@@ -10,5 +10,5 @@ LICENSE=GPL-2+ LGPL-2.1
 RDEPEND=sensord? ( net-analyzer/rrdtool virtual/logger ) dev-lang/perl !<sys-apps/openrc-0.36
 SLOT=0/5.0.0
 SRC_URI=https://github.com/lm-sensors/lm-sensors/archive/2c8cca3d6cd60121b401734c1a24cfec7daed4fc.tar.gz -> lm-sensors-3.5.0_p20190505.tar.gz
-_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multibuild	b2c915190b051f55a23b9354b9849847	multilib	98584e405e2b0264d37e8f728327fed1	multilib-build	6cbe156168ae85dbada8a9b5bd5857a5	multilib-minimal	8bddda43703ba94d8341f4e247f97566	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multibuild	b2c915190b051f55a23b9354b9849847	multilib	98584e405e2b0264d37e8f728327fed1	multilib-build	20e68da7a5efff72f76cd8adaa5cdfdf	multilib-minimal	8bddda43703ba94d8341f4e247f97566	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=e7a6063c8953be31b2ae9c1d3330b05c

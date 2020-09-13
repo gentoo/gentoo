@@ -11,5 +11,5 @@ RDEPEND=jpeg? ( >=virtual/jpeg-0-r2:0[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(
 RESTRICT=!test? ( test )
 SLOT=2
 SRC_URI=mirror://sourceforge/lcms/lcms2-2.10.tar.gz
-_eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	b2c915190b051f55a23b9354b9849847	multilib	98584e405e2b0264d37e8f728327fed1	multilib-build	6cbe156168ae85dbada8a9b5bd5857a5	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	b2c915190b051f55a23b9354b9849847	multilib	98584e405e2b0264d37e8f728327fed1	multilib-build	20e68da7a5efff72f76cd8adaa5cdfdf	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=d1d9e20f0d2344a11e7ab34a2f7c7993
