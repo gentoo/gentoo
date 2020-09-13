@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202009-08">
+  <title>GNOME Shell: Information disclosure</title>
+  <synopsis>An information disclosure vulnerability in GNOME Shell might allow
+    local attackers to obtain sensitive information.
+  </synopsis>
+  <product type="ebuild">gnome-shell</product>
+  <announced>2020-09-13</announced>
+  <revised count="1">2020-09-13</revised>
+  <bug>736802</bug>
+  <access>local</access>
+  <affected>
+    <package name="gnome-base/gnome-shell" auto="yes" arch="*">
+      <unaffected range="ge">3.34.5-r1</unaffected>
+      <vulnerable range="lt">3.34.5-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GNOME Shell provides core user interface functions for the GNOME 3
+      desktop, like switching to windows and launching applications.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that GNOME Shell incorrectly handled the login screen
+      password dialog.
+    </p>
+  </description>
+  <impact type="low">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GNOME Shell users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=gnome-base/gnome-shell-3.34.5-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-17489">CVE-2020-17489</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-09-13T22:02:20Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-09-13T23:26:21Z">whissi</metadata>
+</glsa>
