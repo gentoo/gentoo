@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202009-07">
+  <title>Perl DBI: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in the Perl module DBI,
+    the worst of which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">dbi</product>
+  <announced>2020-09-13</announced>
+  <revised count="1">2020-09-13</revised>
+  <bug>732636</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-perl/DBI" auto="yes" arch="*">
+      <unaffected range="ge">1.643.0</unaffected>
+      <vulnerable range="lt">1.643.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A database access module for the Perl programming language.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in the Perl module DBI.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="low">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Perl DBI module users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-perl/DBI-1.643.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14392">CVE-2020-14392</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14393">CVE-2020-14393</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-09-13T21:54:26Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-09-13T23:26:05Z">whissi</metadata>
+</glsa>
