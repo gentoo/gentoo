@@ -30,6 +30,7 @@ acct-group/clamav 0: System group: clamav
 acct-group/cmd5checkpw 0: System group: cmd5checkpw
 acct-group/consul 0: System group: consul
 acct-group/consul-template 0: System group: consul-template
+acct-group/consul_exporter 0: System group: consul_exporter
 acct-group/cvmfs 0: Group for the CernVM-FS network file system
 acct-group/davfs2 0: System group: davfs2
 acct-group/ddclient 0: A group for the dynamic DNS client
@@ -262,6 +263,7 @@ acct-user/clamav 0: System user: clamav
 acct-user/cmd5checkpw 0: User for cmd5checkpw
 acct-user/consul 0: User for consul
 acct-user/consul-template 0: User for consul-template
+acct-user/consul_exporter 0: user for consul_exporter
 acct-user/cvmfs 0: User for the CernVM-FS network file system
 acct-user/cyrus 0-r1: user for cyrus-imapd daemon
 acct-user/davfs2 0: System user: davfs2
@@ -2283,7 +2285,7 @@ app-metrics/bind_exporter 0.3.0: Prometheus exporter for BIND
 app-metrics/blackbox_exporter 0.15.1 0.16.0 0.17.0: Prometheus exporter for blackbox probing via HTTP, HTTPS, DNS, TCP and ICMP
 app-metrics/burrow_exporter 0.0.6 0.0.6-r1: Prometheus exporter for Burrow
 app-metrics/collectd 5.11.0-r3 5.12.0: Collects system statistics and provides mechanisms to store the values
-app-metrics/consul_exporter 0.4.0 0.6.0: Prometheus exporter for consul metrics
+app-metrics/consul_exporter 0.4.0 0.6.0 0.7.1: Prometheus exporter for consul metrics
 app-metrics/dnsmasq_exporter 0.2.0-r1: prometheus exporter for dnsmasq
 app-metrics/elasticsearch_exporter 1.0.2 1.0.4_rc1 1.1.0_rc1 1.1.0: Elasticsearch stats exporter for Prometheus
 app-metrics/fusioninventory-agent 2.5.2: The FusionInventory agent is a generic management agent
