@@ -1,0 +1,26 @@
+Fixes build with -fno-common
+
+diff -Nurp atomix-3.34.0/src/level.c atomix-3.34.0-fix/src/level.c
+--- atomix-3.34.0/src/level.c	2019-09-09 19:14:36.000000000 -0000
++++ atomix-3.34.0-fix/src/level.c	2020-09-12 23:21:04.917492187 -0000
+@@ -31,7 +31,7 @@ static void level_class_init (GObjectCla
+ static void level_init (Level *level);
+ static void level_finalize (GObject *object);
+ 
+-GObjectClass *parent_class;
++static GObjectClass *parent_class;
+ 
+ /*=================================================================
+  
+diff -Nurp atomix-3.34.0/src/theme.c atomix-3.34.0-fix/src/theme.c
+--- atomix-3.34.0/src/theme.c	2019-09-09 19:14:36.000000000 -0000
++++ atomix-3.34.0-fix/src/theme.c	2020-09-12 23:21:19.557735891 -0000
+@@ -32,7 +32,7 @@ static void theme_init (Theme *theme);
+ static void theme_finalize (GObject *object);
+ static void destroy_theme_image (gpointer data);
+ 
+-GObjectClass *parent_class;
++static GObjectClass *parent_class;
+ 
+ GType theme_get_type (void)
+ {
