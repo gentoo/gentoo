@@ -787,7 +787,6 @@ net-libs/nDPI
 # https://www.gentoo.org/support/news-items/2020-04-03-kubernetes-moving-to-single-package.html
 #
 # Removal in 60 days. Bug #731804
-sys-cluster/kubeadm
 sys-cluster/kube-apiserver
 sys-cluster/kube-controller-manager
 sys-cluster/kubectl
