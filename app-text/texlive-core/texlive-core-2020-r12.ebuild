@@ -92,6 +92,7 @@ COMMON_DEPEND="${MODULAR_X_DEPEND}
 	!app-eselect/eselect-mpost
 	!app-eselect/eselect-pdftex
 	!app-text/xindy
+	!dev-tex/chktex
 	!~dev-texlive/texlive-basic-2019
 	!~dev-texlive/texlive-fontutils-2019
 	sys-libs/zlib
@@ -215,6 +216,7 @@ src_configure() {
 		--without-texinfo \
 		--disable-dialog \
 		--disable-multiplatform \
+		--enable-chktex \
 		--enable-epsfwin \
 		--enable-detex \
 		--enable-dvi2tty \
@@ -231,7 +233,6 @@ src_configure() {
 		--disable-bibtex-x \
 		--disable-dvipng \
 		--disable-dvipsk \
-		--disable-chktex \
 		--disable-lcdf-typetools \
 		--disable-pdfopen \
 		--disable-ps2eps \
