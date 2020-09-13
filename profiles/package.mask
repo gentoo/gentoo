@@ -35,6 +35,11 @@
 # Sam James <sam@gentoo.org> (2020-09-13)
 # Dead upstream, EAPI 4, no maintainer
 # Removal in 30 days
+net-dialup/tkvoice
+
+# Sam James <sam@gentoo.org> (2020-09-13)
+# Dead upstream, EAPI 4, no maintainer
+# Removal in 30 days
 # bug #740954
 dev-lang/cll1h
 
