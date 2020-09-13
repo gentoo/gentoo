@@ -5274,6 +5274,7 @@ dev-libs/cyberjack 3.99.5_p14-r2: REINER SCT cyberJack USB chipcard reader user 
 dev-libs/cyrus-sasl 2.1.27-r3 2.1.27-r4: The Cyrus SASL (Simple Authentication and Security Layer)
 dev-libs/d0_blind_id 0.5 1.0: Blind-ID library for user identification using RSA blind signatures
 dev-libs/darts 0.32 0.32h_pre20181117064816 9999: Darts-clone (Double-ARray Trie System) C++ library
+dev-libs/date 3.0.0: A date and time library based on the C++11/14/17 <chrono> header
 dev-libs/dbus-c++ 0.9.0-r3: Provides a C++ API for D-BUS
 dev-libs/dbus-glib 0.110: D-Bus bindings for glib
 dev-libs/device-atlas-api-c 2.1.4: API to detect devices based on the User-Agent HTTP header
@@ -11961,7 +11962,7 @@ gui-apps/swaybg 1.0 9999: A wallpaper utility for Wayland
 gui-apps/swayidle 1.6 9999: Idle management daemon for Wayland
 gui-apps/swaylock 1.3 1.5 9999: Screen locker for Wayland
 gui-apps/tuigreet 0.1.1: TUI greeter for greetd login manager
-gui-apps/waybar 0.8.0 9999: Highly customizable Wayland bar for Sway and Wlroots based compositors.
+gui-apps/waybar 0.8.0 0.9.3 9999: Highly customizable Wayland bar for Sway and Wlroots based compositors
 gui-apps/wcm 0.4.0-r1 0.5.0 9999: Wayfire Config Manager
 gui-apps/wf-recorder 0.2.1-r1 9999: Screen recorder for wlroots-based compositors
 gui-apps/wf-shell 0.4.0-r1 0.5.0 9999: A compiz like 3D wayland compositor
