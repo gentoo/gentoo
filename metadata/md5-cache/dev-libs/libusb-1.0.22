@@ -10,5 +10,5 @@ RDEPEND=udev? ( >=virtual/libudev-208:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x3
 RESTRICT=!test? ( test )
 SLOT=1
 SRC_URI=https://github.com/libusb/libusb/releases/download/v1.0.22/libusb-1.0.22.tar.bz2
-_eclasses_=ltprune	a14405e17e299ca22f79c9c86e459c19	multibuild	b2c915190b051f55a23b9354b9849847	multilib	98584e405e2b0264d37e8f728327fed1	multilib-build	20e68da7a5efff72f76cd8adaa5cdfdf	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	usr-ldscript	7c918d239d0f9098867d0c8e33348fc9
+_eclasses_=ltprune	db8b7ce9d0e663594bcb4a4e72131a79	multibuild	b2c915190b051f55a23b9354b9849847	multilib	98584e405e2b0264d37e8f728327fed1	multilib-build	20e68da7a5efff72f76cd8adaa5cdfdf	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	usr-ldscript	7c918d239d0f9098867d0c8e33348fc9
 _md5_=89c6f4534f3c91895122564e0ff5cf02
