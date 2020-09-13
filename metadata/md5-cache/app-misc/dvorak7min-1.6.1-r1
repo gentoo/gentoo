@@ -1,10 +1,13 @@
-DEFINED_PHASES=compile install prepare
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile install
+DEPEND=sys-libs/ncurses:=
 DESCRIPTION=Simple ncurses-based typing tutor for learning the Dvorak keyboard layout
-EAPI=4
+EAPI=7
 HOMEPAGE=http://www.linalco.com/comunidad.html
 KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:=
 SLOT=0
 SRC_URI=http://www.linalco.com/ragnar/dvorak7min-1.6.1.tar.gz
 _eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=5e15658685f621796367cc3afdd68e90
+_md5_=8c20203ed48289544cc695c02041444b

@@ -2379,7 +2379,7 @@ app-misc/devtodo 0.1.20-r3: A nice command line todo list for developers
 app-misc/dfshow 0.8.2_beta: DF-SHOW is a Unix-like rewrite of some of the applications from DF-EDIT
 app-misc/digitemp 3.7.1: Temperature logging and reporting using Maxim's iButtons and 1-Wire protocol
 app-misc/dtach 0.9: Emulates the detach feature of screen
-app-misc/dvorak7min 1.6.1: Simple ncurses-based typing tutor for learning the Dvorak keyboard layout
+app-misc/dvorak7min 1.6.1-r1: Simple ncurses-based typing tutor for learning the Dvorak keyboard layout
 app-misc/dvorakng 0.6.0: Dvorak typing tutor
 app-misc/dvtm 0.14-r1 0.15-r2 0.15-r3 9999: Dynamic virtual terminal manager
 app-misc/editor-wrapper 4-r1: Wrapper scripts that will execute EDITOR or PAGER
@@ -8155,7 +8155,7 @@ dev-python/fasteners 0.15: Python package that provides useful locks
 dev-python/faulthandler 3.0 3.1: functions to dump Python tracebacks explicitly (on fault, user signal, timeout)
 dev-python/fdsend 0.1: flexible file descriptor passing
 dev-python/feedgenerator 1.9.1: Standalone version of django.utils.feedgenerator
-dev-python/feedparser 5.2.1 6.0.0_beta1: Parse RSS and Atom feeds in Python
+dev-python/feedparser 5.2.1 6.0.0_beta1 6.0.0: Parse RSS and Atom feeds in Python
 dev-python/fido2 0.7.3 0.8.1: Python based FIDO 2.0 library
 dev-python/fields 5.0.0-r2: Container class boilerplate killer
 dev-python/filelock 3.0.12: A platform independent file lock for Python
@@ -8479,7 +8479,7 @@ dev-python/natgrid 0.2.1-r3: Matplotlib toolkit for gridding irreguraly spaced d
 dev-python/natsort 7.0.1: Natural sorting for Python
 dev-python/nautilus-python 1.2.3: Python bindings for the Nautilus file manager
 dev-python/nbclient 0.5.0: A client library for executing Jupyter notebooks
-dev-python/nbconvert 5.6.1 5.6.1-r1 6.0.1: Converting Jupyter Notebooks
+dev-python/nbconvert 5.6.1 5.6.1-r1 6.0.1 6.0.2: Converting Jupyter Notebooks
 dev-python/nbdime 2.0.0-r1: Diff and merge of Jupyter Notebooks
 dev-python/nbformat 5.0.7: Reference implementation of the Jupyter Notebook format
 dev-python/nbsphinx 0.7.1 0.7.1-r1: Jupyter Notebook Tools for Sphinx
