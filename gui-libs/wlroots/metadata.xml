@@ -23,6 +23,7 @@
 	<use>
 		<flag name="elogind">Enable support for rootless session via elogind</flag>
 		<flag name="icccm">Use xcb-icccm (from <pkg>x11-libs/xcb-util-wm</pkg>) util library for improved Xwayland introspection</flag>
+		<flag name="seatd">Enable support for rootless session via <pkg>sys-auth/seatd</pkg></flag>
 		<flag name="x11-backend">Enable support for handling input/output devices through <pkg>x11-libs/libxcb</pkg></flag>
 		<flag name="X">Enable support for X11 applications (XWayland)</flag>
 	</use>
