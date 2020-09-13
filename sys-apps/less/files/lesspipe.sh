@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Preprocessor for 'less'. Used when this environment variable is set:
@@ -135,7 +135,7 @@ lesspipe() {
 	*.cpi|*.cpio) cpio -itv < "$1" ;;
 	*.ace)        unace l "$1" ;;
 	*.arc)        arc v "$1" ;;
-	*.arj)        unarj l -- "$1" ;;
+	*.arj)        arj l -- "$1" || unarj l "$1" ;;
 	*.cab)        cabextract -l -- "$1" ;;
 	*.lha|*.lzh)  lha v "$1" ;;
 	*.zoo)        zoo -list "$1" || unzoo -l "$1" ;;
