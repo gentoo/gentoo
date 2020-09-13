@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Tests for Persistent"
-HOMEPAGE="http://www.yesodweb.com/book/persistent"
+HOMEPAGE="https://www.yesodweb.com/book/persistent"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
