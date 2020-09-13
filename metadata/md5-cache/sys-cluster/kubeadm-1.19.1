@@ -1,13 +1,13 @@
 BDEPEND=>=dev-lang/go-1.12 app-arch/unzip
-DEFINED_PHASES=compile install postinst prepare unpack
-DEPEND=>=dev-lang/go-1.13 dev-go/go-bindata
+DEFINED_PHASES=compile install postinst unpack
 DESCRIPTION=CLI to Easily bootstrap a secure Kubernetes cluster
 EAPI=7
-HOMEPAGE=https://github.com/kubernetes/kubernetes https://kubernetes.io
+HOMEPAGE=https://kubernetes.io
+IUSE=hardened
 KEYWORDS=~amd64
 LICENSE=Apache-2.0
-RESTRICT=test
+RESTRICT=strip test
 SLOT=0
-SRC_URI=https://github.com/kubernetes/kubernetes/archive/v1.17.4.tar.gz -> kubernetes-1.17.4.tar.gz
+SRC_URI=https://github.com/kubernetes/kubernetes/archive/v1.19.1.tar.gz -> kubeadm-1.19.1.tar.gz
 _eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	go-module	45394825d9260b479aa1cf252ea58e01	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=94c8ff020e23600190d935c833cee01f
+_md5_=2281e08a654536d94a8ab98e4e41ce5f
