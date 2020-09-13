@@ -10,7 +10,7 @@ SRC_URI="https://github.com/kubernetes/kubernetes/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 AGENT="kubelet"
 CLI="kubectl"
@@ -20,7 +20,6 @@ for x in ${AGENT} ${CLI} ${SERVICES}; do
 	IUSE+=" +${x}"
 done
 
-BDEPEND="=dev-lang/go-1.14*"
 COMMON_DEPEND="
 	kube-apiserver? (
 		acct-group/kube-apiserver
@@ -37,7 +36,6 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}
 	kube-proxy? ( net-firewall/conntrack-tools )
-	!sys-cluster/kubeadm
 	!sys-cluster/kubectl
 	!sys-cluster/kubelet
 	!sys-cluster/kube-apiserver
