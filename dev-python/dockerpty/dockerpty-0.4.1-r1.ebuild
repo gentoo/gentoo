@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit distutils-r1
 
@@ -26,6 +26,4 @@ DEPEND="
 "
 RDEPEND=">=dev-python/six-1.3.0[${PYTHON_USEDEP}]"
 
-python_test() {
-	py.test tests || die "Tests failed under ${EPYTHON}"
-}
+distutils_enable_tests pytest
