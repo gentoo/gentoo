@@ -13,7 +13,7 @@ SRC_URI="http://repo1.maven.org/maven2/org/swinglabs/${PN}/${PV}/${P}-sources.ja
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND=">=virtual/jre-1.5"
