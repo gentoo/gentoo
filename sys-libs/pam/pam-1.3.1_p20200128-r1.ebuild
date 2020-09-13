@@ -23,12 +23,12 @@ BDEPEND="app-text/docbook-xml-dtd:4.1.2
 	dev-libs/libxslt
 	sys-devel/flex
 	sys-devel/gettext
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	virtual/yacc"
 
 DEPEND="
 	virtual/libcrypt:=[${MULTILIB_USEDEP}]
 	>=virtual/libintl-0-r1[${MULTILIB_USEDEP}]
-	virtual/yacc
 	audit? ( >=sys-process/audit-2.2.2[${MULTILIB_USEDEP}] )
 	berkdb? ( >=sys-libs/db-4.8.30-r1:=[${MULTILIB_USEDEP}] )
 	cracklib? ( >=sys-libs/cracklib-2.9.1-r1[${MULTILIB_USEDEP}] )
