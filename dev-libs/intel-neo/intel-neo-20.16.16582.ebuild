@@ -21,7 +21,7 @@ BDEPEND="virtual/pkgconfig"
 COMMON=">=virtual/opencl-3
 	>=dev-util/intel-graphics-compiler-1.0.3826
 	>=media-libs/gmmlib-20.1.1
-	l0? ( >=dev-libs/level-zero-0.91.10 )
+	l0? ( <dev-libs/level-zero-1.0.0 )
 	vaapi? (
 		x11-libs/libdrm[video_cards_intel]
 		x11-libs/libva
