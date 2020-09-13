@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=app-text/htmltidy dev-libs/uriparser net-misc/curl sys-devel/gettext virtual/libiconv virtual/libintl metalink? ( media-libs/libmetalink checksum? ( dev-libs/openssl ) )
+DESCRIPTION=Download agent similar to wget/curl
+EAPI=7
+HOMEPAGE=http://mulk.sourceforge.net/
+IUSE=checksum debug metalink
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=app-text/htmltidy dev-libs/uriparser net-misc/curl sys-devel/gettext virtual/libiconv virtual/libintl metalink? ( media-libs/libmetalink checksum? ( dev-libs/openssl ) )
+REQUIRED_USE=checksum? ( metalink )
+SLOT=0
+SRC_URI=mirror://sourceforge/mulk/mulk-0.7.0.tar.gz
+_md5_=a40b9429b7e8946487cacb5e74c83bb4
