@@ -17,7 +17,9 @@ RDEPEND="dev-libs/dbus-glib
 	dev-libs/glib:2
 	dev-libs/libpcre2
 	sys-apps/dbus
+	x11-libs/cairo
 	x11-libs/gtk+:3
+	x11-libs/pango
 	x11-libs/vte:2.91[vanilla]"
 # vanilla vte due to https://github.com/realh/roxterm/issues/222
 DEPEND="${RDEPEND}
