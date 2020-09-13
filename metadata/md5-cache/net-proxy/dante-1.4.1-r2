@@ -9,5 +9,5 @@ LICENSE=BSD GPL-2
 RDEPEND=kerberos? ( virtual/krb5 ) pam? ( sys-libs/pam ) tcpd? ( sys-apps/tcp-wrappers ) upnp? ( net-libs/miniupnpc:= ) userland_GNU? ( sys-apps/shadow ) selinux? ( sec-policy/selinux-dante )
 SLOT=0
 SRC_URI=https://www.inet.no/dante/files/dante-1.4.1.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	98584e405e2b0264d37e8f728327fed1	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	a14405e17e299ca22f79c9c86e459c19	multilib	98584e405e2b0264d37e8f728327fed1	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
 _md5_=6eb4e20ac9a15bc1c18d50da4abadc2b
