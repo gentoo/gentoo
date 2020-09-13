@@ -1,11 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI="7"
 
 DESCRIPTION="Name Service Switch module for resolving the local hostname"
-HOMEPAGE="http://0pointer.de/lennart/projects/nss-myhostname/"
-SRC_URI="http://0pointer.de/lennart/projects/${PN}/${P}.tar.gz"
+HOMEPAGE="https://0pointer.de/lennart/projects/nss-myhostname/"
+SRC_URI="https://0pointer.de/lennart/projects/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
@@ -21,6 +21,7 @@ src_prepare() {
 	# The documentation in doc/ is just the README file in other formats
 	sed -e 's:SUBDIRS *= *doc:SUBDIRS =:' -i Makefile.{am,in} ||
 		die "sed failed"
+	default
 }
 
 src_configure() {
