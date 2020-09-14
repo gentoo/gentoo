@@ -32,7 +32,7 @@ RDEPEND="
 	>=dev-python/cycler-0.10.0-r1[${PYTHON_USEDEP}]
 	>=dev-python/kiwisolver-1.2.0[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.18.2[${PYTHON_USEDEP}]
-	>=dev-python/pillow-7.1.1[${PYTHON_USEDEP}]
+	>=dev-python/pillow-7.1.1[jpeg,${PYTHON_USEDEP}]
 	>=dev-python/pyparsing-1.5.6[${PYTHON_USEDEP}]
 	dev-python/python-dateutil:0[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2019.3[${PYTHON_USEDEP}]
