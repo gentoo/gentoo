@@ -23,17 +23,16 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 x86"
 IUSE="cairo doc excel examples gtk3 latex qt5 tk wxwidgets"
 
 # internal copy of pycxx highly patched
 #	dev-python/pycxx
 RDEPEND="
-	dev-python/certifi[${PYTHON_USEDEP}]
 	>=dev-python/cycler-0.10.0-r1[${PYTHON_USEDEP}]
 	>=dev-python/kiwisolver-1.2.0[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.18.2[${PYTHON_USEDEP}]
-	>=dev-python/pillow-7.1.1[${PYTHON_USEDEP}]
+	>=dev-python/pillow-7.1.1[jpeg,${PYTHON_USEDEP}]
 	>=dev-python/pyparsing-1.5.6[${PYTHON_USEDEP}]
 	dev-python/python-dateutil:0[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2019.3[${PYTHON_USEDEP}]
@@ -145,7 +144,8 @@ python_prepare_all() {
 #	EOF
 
 	local PATCHES=(
-		"${FILESDIR}"/matplotlib-3.3.0-test.patch
+		"${FILESDIR}"/matplotlib-3.1.2-qhull.patch
+		"${FILESDIR}"/matplotlib-3.2.2-test.patch
 	)
 
 	# requires jupyter-nbconvert
@@ -188,9 +188,6 @@ python_configure() {
 		[provide_packages]
 		pytz = False
 		dateutil = False
-		[libs]
-		system_freetype = True
-		system_qhull = True
 		[packages]
 		tests = $(usex test True False)
 		[gui_support]
@@ -244,14 +241,12 @@ src_test() {
 python_test() {
 	# we need to rebuild mpl against bundled freetype, otherwise
 	# over 1000 tests will fail because of mismatched font rendering
-	grep -v system_freetype "${BUILD_DIR}"/setup.cfg \
-		> "${BUILD_DIR}"/test-setup.cfg || die
-	local -x MPLSETUPCFG="${BUILD_DIR}"/test-setup.cfg
+	local -x MPLLOCALFREETYPE=1
 	ln -s "${WORKDIR}/freetype-${FT_PV}" "${BUILD_DIR}" || die
-	distutils-r1_python_compile -j1 --build-lib="${BUILD_DIR}"/test-lib
+	wrap_setup distutils-r1_python_compile --build-lib="${BUILD_DIR}"/test-lib
 	local -x PYTHONPATH=${BUILD_DIR}/test-lib:${PYTHONPATH}
 
-	"${EPYTHON}" -c "import sys, matplotlib as m; sys.exit(m.test(argv=['-m', 'not network'], verbosity=2))" || die
+	"${EPYTHON}" -c "import sys, matplotlib as m; sys.exit(m.test(verbosity=2))" || die
 }
 
 python_install() {
