@@ -16,6 +16,7 @@ LICENSE="Apache-2.0"
 SLOT="${IGN_MAJOR}"
 KEYWORDS="~amd64"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/tinyxml2:=
