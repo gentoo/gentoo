@@ -24,7 +24,7 @@ IUSE="mpd network popups pulseaudio tray +udev"
 BDEPEND="
 	>=app-text/scdoc-1.9.2
 	virtual/pkgconfig
-	"
+"
 DEPEND="
 	dev-cpp/gtkmm:3.0
 	dev-libs/jsoncpp:=
@@ -46,12 +46,12 @@ DEPEND="
 		dev-libs/libappindicator
 	)
 	udev? ( virtual/libudev:= )
-	"
+"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.9.3-fix-crash-with-fmt.patch"
-	)
+	"${FILESDIR}/${P}-fix-crash-with-fmt.patch"
+)
 
 src_configure() {
 	local emesonargs=(
