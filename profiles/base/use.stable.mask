@@ -20,5 +20,4 @@ python_single_target_pypy3
 
 # Hans de Graaff <graaff@gentoo.org> (2019-12-26)
 # Currently in testing and not ready to go stable yet.
-ruby_targets_ruby26
 ruby_targets_ruby27
