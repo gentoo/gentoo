@@ -4,7 +4,7 @@
 EAPI=7
 
 EGIT_REPO_URI="https://github.com/accel-ppp/accel-ppp.git"
-inherit cmake-utils flag-o-matic git-r3 linux-info linux-mod
+inherit cmake flag-o-matic git-r3 linux-info linux-mod
 
 DESCRIPTION="High performance PPTP, PPPoE and L2TP server"
 HOMEPAGE="https://sourceforge.net/projects/accel-ppp/"
@@ -51,7 +51,7 @@ src_prepare() {
 	# Bug #549918
 	append-ldflags -Wl,-z,lazy
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -71,11 +71,11 @@ src_configure() {
 		-DSHAPER="$(usex shaper)"
 		$(use debug && echo "-DVALGRIND=$(usex valgrind)")
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 }
 
 src_install() {
@@ -84,7 +84,7 @@ src_install() {
 		linux-mod_src_install
 	fi
 
-	cmake-utils_src_install
+	cmake_src_install
 
 	use doc && dodoc -r rfc
 
