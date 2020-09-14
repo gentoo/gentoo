@@ -3,7 +3,7 @@
 
 EAPI=7
 
-EGIT_REPO_URI="https://git.code.sf.net/p/accel-ppp/code"
+EGIT_REPO_URI="https://github.com/accel-ppp/accel-ppp.git"
 inherit cmake-utils flag-o-matic git-r3 linux-info linux-mod
 
 DESCRIPTION="High performance PPTP, PPPoE and L2TP server"
