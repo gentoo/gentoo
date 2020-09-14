@@ -20,12 +20,10 @@ IUSE="doc sdl static-libs test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	doc? (
-		${PYTHON_DEPS}
-	)
+	doc? ( ${PYTHON_DEPS} )
 	test? (
-		${PYTHON_DEPS}
 		app-arch/zip
+		${PYTHON_DEPS}
 	)
 "
 DEPEND="
@@ -42,7 +40,9 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	if use doc || use test; then
+		python-any-r1_pkg_setup
+	fi
 }
 
 src_configure() {
