@@ -41,8 +41,9 @@ src_prepare() {
 }
 
 src_compile() {
-	# Note: We override CDEBUGFLAGS instead of CFLAGS because otherwise
-	#       we lose the INCLUDES in the makefile.
+	# We override CDEBUGFLAGS instead of CFLAGS because otherwise
+	# we lose the INCLUDES in the makefile. The same flags are used
+	# for both.
 	# bug #295741
 	local args=(
 		AR="$(tc-getAR)"
@@ -56,7 +57,5 @@ src_compile() {
 
 src_install() {
 	dobin vncsnapshot
-
-	cp vncsnapshot.man1 vncsnapshot.1 || die
-	doman vncsnapshot.1
+	newman vncsnapshot.man1 vncsnapshot.1
 }
