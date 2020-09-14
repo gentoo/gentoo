@@ -22,7 +22,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0/24"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="emacs examples static-libs test zlib"
 RESTRICT="!test? ( test )"
 
@@ -42,11 +42,24 @@ DOCS=(CHANGES.txt CONTRIBUTORS.txt README.md)
 
 src_prepare() {
 	default
+
+	# https://github.com/protocolbuffers/protobuf/issues/7413
+	sed -e "/^AC_PROG_CXX_FOR_BUILD$/d" -i configure.ac || die
+
+	# https://github.com/protocolbuffers/protobuf/issues/7682
+	sed -e "/^[[:space:]]*static_assert(alignof(T) <= 8, \"T is overaligned, see b\/151247138\");$/d" -i src/google/protobuf/arena.h || die
+
 	eautoreconf
 }
 
 src_configure() {
 	append-cppflags -DGOOGLE_PROTOBUF_NO_RTTI
+
+	if tc-ld-is-gold; then
+		# https://sourceware.org/bugzilla/show_bug.cgi?id=24527
+		tc-ld-disable-gold
+	fi
+
 	multilib-minimal_src_configure
 }
 
