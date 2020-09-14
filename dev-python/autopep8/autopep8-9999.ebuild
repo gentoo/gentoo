@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python3_{6..9} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -15,14 +15,15 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="MIT"
 SLOT="0"
 
-RDEPEND=">=dev-python/pycodestyle-2.5.0[${PYTHON_USEDEP}]"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pydiff[${PYTHON_USEDEP}] )"
+RDEPEND="
+	>=dev-python/pycodestyle-2.6.0[${PYTHON_USEDEP}]
+	dev-python/toml[${PYTHON_USEDEP}]"
+BDEPEND="test? ( dev-python/pydiff[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests setup.py
