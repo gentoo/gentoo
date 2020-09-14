@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202009-04">
+  <title>Qt GUI: Buffer overflow</title>
+  <synopsis>Qt GUI has a buffer overflow with unspecified impact.</synopsis>
+  <product type="ebuild">qtgui</product>
+  <announced>2020-09-13</announced>
+  <revised count="1">2020-09-13</revised>
+  <bug>736924</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-qt/qtgui" auto="yes" arch="*">
+      <unaffected range="ge">5.14.2-r1</unaffected>
+      <vulnerable range="lt">5.14.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The GUI module and platform plugins for the Qt5 framework.</p>
+  </background>
+  <description>
+    <p>It was discovered that Qt GUI’s XBM parser did not properly handle X
+      BitMap files.
+    </p>
+  </description>
+  <impact type="low">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Qt GUI users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-qt/qtgui-5.14.2-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-17507">CVE-2020-17507</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-09-13T22:36:51Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-09-13T23:24:26Z">whissi</metadata>
+</glsa>

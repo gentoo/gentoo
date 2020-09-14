@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202009-11">
+  <title>ProFTPD: Denial of service</title>
+  <synopsis>A vulnerability in ProFTPD could lead to a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">proftpd</product>
+  <announced>2020-09-13</announced>
+  <revised count="1">2020-09-13</revised>
+  <bug>733376</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-ftp/proftpd" auto="yes" arch="*">
+      <unaffected range="ge">1.3.7a</unaffected>
+      <vulnerable range="lt">1.3.7a</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ProFTPD is an advanced and very configurable FTP server.</p>
+  </background>
+  <description>
+    <p>It was found that ProFTPD did not properly handle invalid SCP commands.</p>
+  </description>
+  <impact type="low">
+    <p>An authenticated remote attacker could issue invalid SCP commands,
+      possibly resulting in  a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ProFTPD users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-ftp/proftpd-1.3.7a"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://github.com/proftpd/proftpd/issues/1043">Invalid SCP
+      command leads to null pointer dereference
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-09-12T20:04:18Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-09-13T23:27:17Z">whissi</metadata>
+</glsa>

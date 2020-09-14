@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202009-10">
+  <title>PHP: Denial of service</title>
+  <synopsis>A vulnerabilities in PHP could lead to a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">PHP</product>
+  <announced>2020-09-13</announced>
+  <revised count="1">2020-09-13</revised>
+  <bug>736158</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-lang/php" auto="yes" arch="*">
+      <unaffected range="ge" slot="7.2">7.2.33</unaffected>
+      <unaffected range="ge" slot="7.3">7.3.21</unaffected>
+      <unaffected range="ge" slot="7.4">7.4.9</unaffected>
+      <vulnerable range="lt" slot="7.2">7.2.33</vulnerable>
+      <vulnerable range="lt" slot="7.3">7.3.21</vulnerable>
+      <vulnerable range="lt" slot="7.4">7.4.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PHP is an open source general-purpose scripting language that is
+      especially suited for web development.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that PHP did not properly handle PHAR files.</p>
+  </description>
+  <impact type="low">
+    <p>A remote attacker could entice a user to open a specially crafted PHAR
+      file using PHP, possibly allowing attacker to obtain sensitive
+      information or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PHP 7.2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-7.2.33"
+    </code>
+    
+    <p>All PHP 7.3 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-7.3.21"
+    </code>
+    
+    <p>All PHP 7.4 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-7.4.9"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-7068">CVE-2020-7068</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-09-12T20:12:49Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-09-13T23:26:59Z">whissi</metadata>
+</glsa>
