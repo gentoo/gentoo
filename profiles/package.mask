@@ -679,11 +679,6 @@ dev-python/paver
 # Removal in 30 days.  Bug #735334.
 dev-vcs/git-bz
 
-# Hans de Graaff <graaff@gentoo.org> (2020-08-07)
-# Slot with known security issues. Please use a newer slot
-# instead. Removal in 30 days. Bug #713478.
-dev-ruby/json:0
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
 # consolekit is abandoned upstream.
 # People are encouraged to switch to any logind
