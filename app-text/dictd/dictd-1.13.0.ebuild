@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit readme.gentoo-r1 systemd user
 
 DESCRIPTION="Dictionary Client/Server for the DICT protocol"
@@ -13,6 +14,7 @@ SLOT="0"
 LICENSE="GPL-2 ISOC-rfc"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
 IUSE="dbi judy minimal test"
+RESTRICT="!test? ( test )"
 
 # <gawk-3.1.6 makes tests fail.
 RDEPEND="
@@ -22,9 +24,7 @@ RDEPEND="
 	dbi? ( dev-db/libdbi )
 	judy? ( dev-libs/judy )
 "
-DEPEND="
-	${RDEPEND}
-"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	>=sys-apps/gawk-3.1.6
 	virtual/yacc
@@ -39,6 +39,7 @@ DOC_CONTENTS="
 	\nIf you are running systemd, you will need to review the instructions
 	explained in /etc/dict/dictd.conf comments.
 "
+
 PATCHES=(
 	"${FILESDIR}"/dictd-1.10.11-colorit-nopp-fix.patch
 	"${FILESDIR}"/dictd-1.12.0-build.patch
@@ -78,15 +79,15 @@ src_test() {
 	if [[ ${EUID} -eq 0 ]]; then
 		# If dictd is run as root user (-userpriv) it drops its privileges to
 		# dictd user and group. Give dictd group write access to test directory.
-		chown :dictd "${WORKDIR}" "${S}/test"
-		chmod 770 "${WORKDIR}" "${S}/test"
+		chown :dictd "${WORKDIR}" "${S}/test" || die
+		chmod 770 "${WORKDIR}" "${S}/test" || die
 	fi
 	emake test
 }
 
 src_install() {
 	if use minimal; then
-		emake DESTDIR="${D}" install.dictzip install.dict install.dictfmt
+		emake DESTDIR="${ED}" install.dictzip install.dict install.dictfmt
 	else
 		default
 

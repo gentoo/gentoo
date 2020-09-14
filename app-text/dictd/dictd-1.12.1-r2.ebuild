@@ -13,6 +13,7 @@ SLOT="0"
 LICENSE="GPL-2 ISOC-rfc"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
 IUSE="dbi judy minimal test"
+RESTRICT="!test? ( test )"
 
 # <gawk-3.1.6 makes tests fail.
 RDEPEND="
@@ -78,9 +79,9 @@ src_test() {
 
 src_install() {
 	if use minimal; then
-		emake DESTDIR="${D}" install.dictzip install.dict install.dictfmt
+		emake DESTDIR="${ED}" install.dictzip install.dict install.dictfmt
 	else
-		emake DESTDIR="${D}" install
+		emake DESTDIR="${ED}" install
 
 		dodoc doc/{dicf.ms,rfc.ms,rfc.sh,rfc2229.txt}
 		dodoc doc/{security.doc,toc.ms}
