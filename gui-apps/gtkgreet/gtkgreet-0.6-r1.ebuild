@@ -23,8 +23,8 @@ IUSE="+layershell +man"
 
 DEPEND="
 	dev-libs/json-c:=
-	layershell? ( gui-libs/gtk-layer-shell )
 	x11-libs/gtk+:3
+	layershell? ( gui-libs/gtk-layer-shell )
 "
 RDEPEND="
 	${DEPEND}
