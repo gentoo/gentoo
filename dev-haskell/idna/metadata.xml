@@ -5,7 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Implements IDNA - Internationalized Domain Names in Applications (RFC 3490).
-	</longdescription>
 </pkgmetadata>

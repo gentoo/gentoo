@@ -13,7 +13,4 @@
 		<email>virtualization@gentoo.org</email>
 		<name>Gentoo Virtualization Project</name>
 	</maintainer>
-	<longdescription lang="en">
-		Spice Javascript client
-	</longdescription>
 </pkgmetadata>

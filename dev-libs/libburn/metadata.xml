@@ -5,8 +5,4 @@
 <email>billie@gentoo.org</email>
 <name>Daniel Pielmeier</name>
 </maintainer>
-<longdescription lang="en">
-Libburn is an open-source library for reading, mastering and writing optical
-discs.
-</longdescription>
 </pkgmetadata>

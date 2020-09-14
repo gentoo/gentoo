@@ -5,8 +5,4 @@
 		<email>mips@gentoo.org</email>
 		<name>Mips Team</name>
 	</maintainer>
-
-	<longdescription>
-		sgibootcd - Creates a burnable CD image for SGI LiveCDs
-	</longdescription>
 </pkgmetadata>

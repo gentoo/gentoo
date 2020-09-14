@@ -5,9 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Some classes for generalized boolean operations.
-		
-		Copyright 2009 Conal Elliott; BSD3 license.
-	</longdescription>
 </pkgmetadata>

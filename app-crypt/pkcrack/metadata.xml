@@ -2,7 +2,4 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-<longdescription>
-pkcrack is a password cracking program for zip files. It works using a plain text cipher attack.
-</longdescription>
 </pkgmetadata>

@@ -5,7 +5,4 @@
 	<email>cjk@gentoo.org</email>
 	<name>Cjk</name>
 </maintainer>
-<longdescription lang="en">
-This package provides the Sayura Sinhala input method for SCIM.
-</longdescription>
 </pkgmetadata>

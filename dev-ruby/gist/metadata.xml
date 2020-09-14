@@ -9,9 +9,6 @@
 		<email>ruby@gentoo.org</email>
 		<name>Gentoo Ruby Project</name>
 	</maintainer>
-	<longdescription>
-		Commandline tool for GitHub Gist interaction, including editing &amp; listing.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">defunkt/gist</remote-id>
 	</upstream>

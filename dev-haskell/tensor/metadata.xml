@@ -5,8 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		This package contains tensor data types and their instances for some basic
-		type classes.
-	</longdescription>
 </pkgmetadata>

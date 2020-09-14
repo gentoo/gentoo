@@ -5,8 +5,4 @@
 	<email>gnustep@gentoo.org</email>
 	<name>Gentoo GNUstep Project</name>
 </maintainer>
-<longdescription>
-	This virtual provides a gnustep back-end component for the GNUstep 
-	GUI Library. 
-</longdescription>
 </pkgmetadata>

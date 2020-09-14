@@ -5,10 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		zlib-enum is a stop-gap package to provide enumeratees for
-		zlib compression/decompression.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">maltem/zlib-enum</remote-id>
 	</upstream>

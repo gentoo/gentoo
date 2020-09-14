@@ -5,10 +5,6 @@
 		<email>sci@gentoo.org</email>
 		<name>Gentoo Science Project</name>
 	</maintainer>
-	<longdescription lang="en">
-		PyGSL provides a python interface for the GNU scientific library
-		(gsl).
-	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">pygsl</remote-id>
 	</upstream>

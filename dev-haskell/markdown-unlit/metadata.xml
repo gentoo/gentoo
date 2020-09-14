@@ -5,7 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Documentation is here: &lt;https://github.com/sol/markdown-unlit#readme&gt;
-	</longdescription>
 </pkgmetadata>

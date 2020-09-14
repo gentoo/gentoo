@@ -2,7 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <!-- maintainer-needed -->
-  <longdescription>Compression library programmed in C to perform very good, but slow, deflate or zlib compression.</longdescription>
   <upstream>
     <remote-id type="github">google/zopfli</remote-id>
   </upstream>

@@ -5,10 +5,6 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-  <longdescription lang="en">
-  lttoolbox is a toolbox for lexical processing, morphological analysis and
-  generation of words
-</longdescription>
   <upstream>
     <remote-id type="sourceforge">apertium</remote-id>
   </upstream>

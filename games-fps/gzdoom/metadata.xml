@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<longdescription lang="en">
-		GZDoom is a modder-friendly OpenGL source port based on the DOOM engine
-	</longdescription>
 	<maintainer type="person">
 		<email>vilhelm.gray@gmail.com</email>
 		<name>William Breathitt Gray</name>

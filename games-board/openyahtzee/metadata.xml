@@ -5,9 +5,6 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<longdescription lang="en">
-Open Yhatzee is an open-source (free) version of the classic dice game Yahtzee.
-</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">openyahtzee</remote-id>
 	</upstream>

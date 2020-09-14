@@ -5,7 +5,6 @@
 		<email>heroxbd@gentoo.org</email>
 		<name>Benda Xu</name>
 	</maintainer>
-	<longdescription>An SGML System Conforming to International Standard ISO 8879.</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">openjade</remote-id>
 	</upstream>

@@ -5,6 +5,4 @@
 	<email>embedded@gentoo.org</email>
 	<name>Embedded Gentoo</name>
 </maintainer>
-<longdescription>a pic16xxx series microcontroller programmer software for the simple serial port 
-device</longdescription>
 </pkgmetadata>

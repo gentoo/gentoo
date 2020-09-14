@@ -9,9 +9,6 @@
 		<email>cluster@gentoo.org</email>
 		<name>Gentoo Cluster Project</name>
 	</maintainer>
-	<longdescription>
-iSCSI Target daemon with rdma support
-	</longdescription>
 	<use>
 		<flag name="ibmvio">Add support for IBM Virtual I/O</flag>
 		<flag name="fcp">Add support for new FC protocol</flag>

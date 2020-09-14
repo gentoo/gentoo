@@ -5,7 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Happy is a parser generator for Haskell
-	</longdescription>
 </pkgmetadata>

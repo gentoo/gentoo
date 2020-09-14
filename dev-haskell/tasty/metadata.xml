@@ -5,7 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		See &lt;http://documentup.com/feuerbach/tasty&gt;
-	</longdescription>
 </pkgmetadata>

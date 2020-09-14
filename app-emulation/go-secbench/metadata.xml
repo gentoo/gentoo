@@ -5,7 +5,4 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
-	<longdescription lang="en">
-		This tool runs and evaluates the docker security benchmark.
-	</longdescription>
 </pkgmetadata>

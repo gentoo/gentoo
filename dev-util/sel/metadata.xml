@@ -2,8 +2,4 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <!-- maintainer-needed -->
-<longdescription>
-sel is a file selection utility for use on the shell and in shell scripts
-</longdescription>
 </pkgmetadata>
-

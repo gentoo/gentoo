@@ -5,7 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Fast parser and formatter for HTTP Date
-	</longdescription>
 </pkgmetadata>

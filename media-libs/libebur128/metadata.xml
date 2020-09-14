@@ -5,9 +5,6 @@
 	<email>amynka@gentoo.org</email>
 	<name>Amy Liffey</name>
 </maintainer>
-<longdescription lang="en">
-	libebur128 is a library that implements the EBU R128 standard for loudness normalisation.
-</longdescription>
 <upstream>
 	<maintainer status="active">
 		<email>jan.kokemueller@gmail.com</email>

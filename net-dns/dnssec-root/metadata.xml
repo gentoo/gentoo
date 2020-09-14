@@ -9,5 +9,4 @@
 		<email>whissi@gentoo.org</email>
 		<name>Thomas Deutschmann</name>
 	</maintainer>
-	<longdescription>This package distributes the ICANN DNSSEC root key</longdescription>
 </pkgmetadata>

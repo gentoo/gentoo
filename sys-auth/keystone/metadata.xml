@@ -13,10 +13,6 @@
     <email>openstack@gentoo.org</email>
     <name>Openstack</name>
   </maintainer>
-  <longdescription lang="en">
-    Keystone is the Openstack authentication, authorization, and service
-  catalog written in Python.
-  </longdescription>
   <upstream>
     <remote-id type="launchpad">keystone</remote-id>
   </upstream>

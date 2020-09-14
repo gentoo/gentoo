@@ -5,7 +5,4 @@
 		<email>perfinion@gentoo.org</email>
 		<name>Jason Zaman</name>
 	</maintainer>
-	<longdescription lang="en">
-		CRC32C implementation with support for CPU-specific acceleration instructions
-	</longdescription>
 </pkgmetadata>

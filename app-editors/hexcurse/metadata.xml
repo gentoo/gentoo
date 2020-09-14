@@ -5,9 +5,6 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
-	<longdescription>
-		A console-based hex editor for the *NIX platform which uses the ncurses library.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">LonnyGomes/hexcurse</remote-id>
 	</upstream>

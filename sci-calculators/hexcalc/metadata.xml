@@ -5,8 +5,4 @@
 		<email>sci@gentoo.org</email>
 		<name>Gentoo Science Project</name>
 	</maintainer>
-	<longdescription>
-		hexcalc is a mutli-radix calculator that offers the standard C
-		integer operations.
-	</longdescription>
 </pkgmetadata>

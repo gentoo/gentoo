@@ -13,10 +13,6 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
-  <longdescription lang="en">
-    The Virtual Geometry Model (VGM) is an
-    abstraction layer between the Geant4 and ROOT software.
-  </longdescription>
   <use>
     <flag name="c++11">Build using the C++11 standard</flag>
     <flag name="c++14">Build using the C++14 standard</flag>

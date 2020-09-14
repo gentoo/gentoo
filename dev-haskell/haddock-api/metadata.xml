@@ -5,8 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Haddock is a documentation-generation tool for Haskell
-		libraries
-	</longdescription>
 </pkgmetadata>

@@ -9,9 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>
-		Text User Interface (TUI) that implements the well known CUA widgets.
-	</longdescription>
 	<use>
 		<flag restrict="&gt;dev-libs/tvision-2.2.1-r4" name="gpm">
 			Support text mode mouse through <pkg>sys-libs/gpm</pkg>

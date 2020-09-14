@@ -5,7 +5,4 @@
 	<email>gnustep@gentoo.org</email>
 	<name>Gentoo GNUstep Project</name>
 </maintainer>
-<longdescription>
-mknfonts is a tool that offers ease of creating new font sets for the gnustep-back-art package.
-</longdescription>
 </pkgmetadata>

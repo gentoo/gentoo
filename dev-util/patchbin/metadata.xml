@@ -5,9 +5,6 @@
 		<email>NP-Hardass@gentoo.org</email>
 		<name>NP-Hardass</name>
 	</maintainer>
-	<longdescription lang="en">
-		Apply binary patches without git
-	</longdescription>
 	<upstream>
 		<remote-id type="github">wine-compholio/wine-staging</remote-id>
 		<maintainer>

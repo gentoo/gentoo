@@ -5,9 +5,6 @@
 		<email>mva@gentoo.org</email>
 		<name>Vadim Misbakh-Soloviov</name>
 	</maintainer>
-	<longdescription lang="en">
-		Library to interact with PS Vita's USB MTP protocol.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">codestation/vitamtp</remote-id>
 	</upstream>

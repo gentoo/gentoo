@@ -5,7 +5,6 @@
         <email>candrews@gentoo.org</email>
         <name>Craig Andrews</name>
     </maintainer>
-    <longdescription>SPC decoder addon for Kodi</longdescription>
     <upstream>
         <remote-id type="github">notspiff/audiodecoder.snesapu</remote-id>
     </upstream>

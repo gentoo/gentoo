@@ -8,7 +8,4 @@
     <upstream>
         <remote-id type="github">RadeonOpenCompute/ROCm-OpenCL-Runtime</remote-id>
     </upstream>
-    <longdescription lang="en">
-        Radeon Open Compute OpenCL Compatible Runtime
-    </longdescription>
 </pkgmetadata>

@@ -8,7 +8,4 @@
   <email>accessibility@gentoo.org</email>
   <name>Gentoo Accessibility Project</name>
 </maintainer>
-<longdescription lang="en">
-This is a collection of sound icons which can be used by speech dispatcher.
-</longdescription>
 </pkgmetadata>

@@ -5,9 +5,6 @@
 		<email>hardened@gentoo.org</email>
 		<name>Gentoo Hardened</name>
 	</maintainer>
-	<longdescription lang="en">
-Supporting tools for IMA and EVM
-	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">linux-ima</remote-id>
 	</upstream>

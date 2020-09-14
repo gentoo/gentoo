@@ -5,5 +5,4 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-  <longdescription>Use this package, if you package needs a fortran compiler</longdescription>
 </pkgmetadata>

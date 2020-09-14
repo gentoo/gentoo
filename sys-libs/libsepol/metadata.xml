@@ -5,7 +5,6 @@
 		<email>selinux@gentoo.org</email>
 		<name>SELinux Team</name>
 	</maintainer>
-	<longdescription>SELinux library for manipulating binary security policies</longdescription>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:selinuxproject:libsepol</remote-id>
 		<remote-id type="github">SELinuxProject/selinux</remote-id>

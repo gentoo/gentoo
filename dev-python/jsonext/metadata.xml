@@ -8,7 +8,4 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
-	<longdescription lang="en">
-		jsonext makes it easy to serialize objects outside of the standard Python primitives to JSON.
-	</longdescription>
 </pkgmetadata>

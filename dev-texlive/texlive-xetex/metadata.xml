@@ -9,8 +9,4 @@
 		<email>tex@gentoo.org</email>
 		<name>Gentoo TeX Project</name>
 	</maintainer>
-	<longdescription lang="en">
-		Packages for XeTeX, the Unicode/OpenType-enabled TeX by Jonathan Kew,
-		http://tug.org/xetex.
-	</longdescription>
 </pkgmetadata>

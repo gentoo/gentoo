@@ -5,9 +5,6 @@
     <email>mattst88@gentoo.org</email>
     <name>Matt Turner</name>
   </maintainer>
-  <longdescription>
-  Interactive viewer for Graphviz dot files
-  </longdescription>
   <upstream>
     <remote-id type="github">jrfonseca/xdot.py</remote-id>
     <bugs-to>https://github.com/jrfonseca/xdot.py</bugs-to>

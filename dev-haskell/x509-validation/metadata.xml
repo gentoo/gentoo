@@ -5,9 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		X.509 Certificate and CRL validation
-	</longdescription>
 	<upstream>
 		<remote-id type="github">vincenthz/hs-certificate</remote-id>
 	</upstream>

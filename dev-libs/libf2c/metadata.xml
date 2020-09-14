@@ -5,7 +5,4 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-  <longdescription lang="en">
-  A library to conver FORTRAN 77 to C/C++ source code.
-</longdescription>
 </pkgmetadata>

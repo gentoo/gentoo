@@ -2,5 +2,4 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <!-- maintainer-needed -->
-  <longdescription>Framework to synchronize changes within a text documents to other participants of a session</longdescription>
 </pkgmetadata>

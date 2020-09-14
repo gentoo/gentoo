@@ -5,7 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Fast Unicode 8.0 normalization in Haskell (NFC, NFKC, NFD, NFKD).
-	</longdescription>
 </pkgmetadata>

@@ -9,9 +9,6 @@
     <email>openstack@gentoo.org</email>
     <name>Openstack</name>
   </maintainer>
-  <longdescription lang="en">
-    Cursive implements OpenStack-specific validation of digital signatures.
-  </longdescription>
   <upstream>
     <remote-id type="pypi">cursive</remote-id>
     <remote-id type="github">openstack/cursive</remote-id>

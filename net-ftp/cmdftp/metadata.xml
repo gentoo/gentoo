@@ -2,8 +2,4 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <!-- maintainer-needed -->
-<longdescription lang="en">
-  Light weight, yet robust command line FTP client with shell-like
-  functions.
-</longdescription>
 </pkgmetadata>

@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<longdescription lang="en">
-		Cuneiform is an multi-language OCR system.
-	</longdescription>
 	<upstream>
 		<remote-id type="launchpad">cuneiform-linux</remote-id>
 	</upstream>

@@ -5,8 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		The "Network.Multicast" module is for sending
-		UDP datagrams over multicast (class D) addresses.
-	</longdescription>
 </pkgmetadata>

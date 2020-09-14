@@ -5,9 +5,6 @@
 		<email>rafaelmartins@gentoo.org</email>
 		<name>Rafael G. Martins</name>
 	</maintainer>
-	<longdescription lang="en">
-		A microframework for C based on GLib and bad intentions.
-	</longdescription>
 	<upstream>
 		<maintainer status="active">
 			<email>rafaelmartins@gentoo.org</email>

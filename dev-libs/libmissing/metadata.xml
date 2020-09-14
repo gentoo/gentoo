@@ -5,8 +5,4 @@
 	<email>prefix@gentoo.org</email>
 	<name>Prefix Project</name>
 </maintainer>
-<longdescription lang="en">
-	libmissing provides missing POSIX functions using the gnulib sources
-	as library and system headers.
-</longdescription>
 </pkgmetadata>

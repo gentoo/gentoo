@@ -9,8 +9,4 @@
 		<email>printing@gentoo.org</email>
 		<name>Gentoo Printing Project</name>
 	</maintainer>
-	<longdescription lang="en">
-		Tool for generating Encapsulated Postscript Format (EPS,EPSF) files
-		from one-page Postscript documents
-	</longdescription>
 </pkgmetadata>

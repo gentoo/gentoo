@@ -2,7 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<longdescription>etPan is a console mail client that is based on libEtPan!</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">libetpan</remote-id>
 	</upstream>

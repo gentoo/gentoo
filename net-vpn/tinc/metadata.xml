@@ -9,7 +9,6 @@
 		<email>dlan@gentoo.org</email>
 		<name>Yixun Lan</name>
 	</maintainer>
-	<longdescription>tinc is an easy to configure VPN implementation.</longdescription>
 	<use>
 		<!--
 		<flag name="gcrypt">Add support for encrypted log files using <pkg>dev-libs/libgcrypt</pkg></flag>

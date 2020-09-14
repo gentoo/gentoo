@@ -5,7 +5,4 @@
 	<email>games@gentoo.org</email>
 	<name>Gentoo Games Project</name>
 </maintainer>
-<longdescription lang="en">
-Fruit is a UCI-only chess engine.
-</longdescription>
 </pkgmetadata>

@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <!-- maintainer-needed -->
-  <longdescription>
-  An understated pager for Blackbox.
-  </longdescription>
   <upstream>
     <remote-id type="sourceforge">bbtools</remote-id>
   </upstream>

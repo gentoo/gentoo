@@ -5,7 +5,4 @@
 		<email>sci-geosciences@gentoo.org</email>
 		<name>Gentoo Geosciences Project</name>
 	</maintainer>
-	<longdescription lang="en">
-		World Boundaries data from openstreetmap needed by mapnik
-	</longdescription>
 </pkgmetadata>

@@ -4,5 +4,4 @@
 	<maintainer type="project">
 		<email>perl@gentoo.org</email>
 	</maintainer>
-	<longdescription>A Perl Module for PC/SC SmartCard access (required for pcsc_scan and the gscriptor GUI).</longdescription>
 </pkgmetadata>

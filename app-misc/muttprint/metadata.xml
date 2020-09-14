@@ -2,12 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<longdescription lang="en">
-		Pretty printing of your mails
-	</longdescription>
-	<longdescription lang="es">
-		Impresión elegante de sus correos
-	</longdescription>
 	<use>
 		<flag name="doc">Builds documentation</flag>
 	</use>

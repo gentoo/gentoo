@@ -5,9 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		This is a Haskell library for writing CGI programs.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">cheecheeo/haskell-cgi</remote-id>
 	</upstream>

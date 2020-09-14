@@ -5,7 +5,4 @@
 		<email>gstreamer@gentoo.org</email>
 		<name>GStreamer package maintainers</name>
 	</maintainer>
-	<longdescription lang="en">
-		Snappy is a gstreamer + clutter media player with powerful features in mind
-	</longdescription>
 </pkgmetadata>

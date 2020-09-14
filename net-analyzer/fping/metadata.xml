@@ -5,7 +5,6 @@
 		<email>netmon@gentoo.org</email>
 		<name>Gentoo network monitoring and analysis project</name>
 	</maintainer>
-	<longdescription>A utility to ping multiple hosts at once</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">fping</remote-id>
 	</upstream>

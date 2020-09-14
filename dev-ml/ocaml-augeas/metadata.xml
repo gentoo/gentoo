@@ -4,7 +4,4 @@
 <maintainer type="person">
 <email>prometheanfire@gentoo.org</email>
 </maintainer>
-<longdescription lang="en">
-ocaml-augeas is a set of Ocaml bindings around augeas.
-</longdescription>
 </pkgmetadata>

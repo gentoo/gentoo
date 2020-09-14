@@ -5,7 +5,4 @@
 	<email>cluster@gentoo.org</email>
 	<name>Gentoo Cluster Project</name>
 </maintainer>
-<longdescription>
-OpenIB - driver for Chelsio T3-based iWARP (RDMA over IP/ethernet)
-</longdescription>
 </pkgmetadata>

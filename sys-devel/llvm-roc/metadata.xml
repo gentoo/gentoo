@@ -8,7 +8,4 @@
     <upstream>
         <remote-id type="github">RadeonOpenCompute/llvm</remote-id>
     </upstream>
-    <longdescription lang="en">
-        Radeon Open Compute llvm, clang, and lld
-    </longdescription>
 </pkgmetadata>

@@ -5,9 +5,5 @@
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
-<longdescription>
-  This module provides support for writing and executing regression
-  tests for Emacs Lisp code.
-</longdescription>
 <stabilize-allarches/>
 </pkgmetadata>

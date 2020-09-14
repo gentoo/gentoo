@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>alicef@gentoo.org</email>
 	</maintainer>
-	<longdescription lang="en">Dynamic kernel patching for the Linux kernel</longdescription>
 <use>
 		<flag name="kpatch-build">Enable tools which convert a source diff patch to a patch module.</flag>
 		<flag name="kpatch">Enable a command-line tool which allows a user to manage a collection of patch modules.</flag>

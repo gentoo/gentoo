@@ -5,10 +5,6 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-  <longdescription>
-     This package contains the Python bindings to libgpuarray which
-     are build in the top of NumPy.
-  </longdescription>
   <upstream>
     <remote-id type="github">Theano/libgpuarray</remote-id>
   </upstream>

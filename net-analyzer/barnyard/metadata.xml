@@ -5,7 +5,6 @@
 		<email>netmon@gentoo.org</email>
 		<name>Gentoo network monitoring and analysis project</name>
 	</maintainer>
-	<longdescription>Fast output system for Snort</longdescription>
 	<use>
 		<flag name="sguil">Enable sguil (The Analyst Console for Network Security
 Monitoring) support</flag>
