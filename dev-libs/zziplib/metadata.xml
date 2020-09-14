@@ -10,6 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">gdraheim/zziplib</remote-id>
 		<remote-id type="sourceforge">zziplib</remote-id>
 	</upstream>
 </pkgmetadata>
