@@ -841,7 +841,7 @@ app-benchmarks/sysbench 1.0.15-r1 1.0.19 9999: System performance benchmark
 app-benchmarks/tiobench 0.4.2: Portable, robust, fully-threaded I/O benchmark program
 app-benchmarks/wrk 4.1.0-r2: A HTTP benchmarking tool
 app-cdr/b5i2iso 0.2-r1: Convert CD images from b5i (BlindWrite) to iso
-app-cdr/bashburn 3.1.0: A shell script for burning optical media
+app-cdr/bashburn 3.1.0-r1: A shell script for burning optical media
 app-cdr/bchunk 1.2.2: Convert CD images from bin/cue to iso+wav/cdr
 app-cdr/bin2iso 19b-r2: converts RAW format (.bin/.cue) files to ISO/WAV format
 app-cdr/brasero 3.12.2-r1: CD/DVD burning application for the GNOME desktop
@@ -3988,7 +3988,7 @@ dev-haskell/exact-pi 0.5.0.1: Exact rational multiples of pi (and integer powers
 dev-haskell/exceptions 0.10.4: Extensible optionally-pure exceptions
 dev-haskell/executable-path 0.0.3.1: Finding out the full path of the executable
 dev-haskell/extensible-exceptions 0.1.1.4: Extensible exceptions
-dev-haskell/extra 1.7.7: Extra functions I use
+dev-haskell/extra 1.7.8: Extra functions I use
 dev-haskell/fail 4.9.0.0: Forward-compatible MonadFail class
 dev-haskell/failure 0.2.0.3: A simple type class for success/failure computations. (deprecated)
 dev-haskell/fast-logger 3.0.1: A fast logging system
