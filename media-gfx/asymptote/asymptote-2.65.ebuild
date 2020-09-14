@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit autotools elisp-common latex-package python-r1
 
 DESCRIPTION="A vector graphics language that provides a framework for technical drawing"
-HOMEPAGE="http://asymptote.sourceforge.net/"
+HOMEPAGE="https://asymptote.sourceforge.net/"
 SRC_URI="mirror://sourceforge/asymptote/${P}.src.tgz"
 
 LICENSE="GPL-3"
