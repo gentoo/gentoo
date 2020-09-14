@@ -9107,7 +9107,7 @@ dev-python/sphinx-epytext 0.0.4: Sphinx epytext extension
 dev-python/sphinx-gallery 0.3.1-r1 0.8.0 0.8.1: Sphinx extension to automatically generate an examples gallery
 dev-python/sphinx-issues 1.2.0: A Sphinx extension for linking to your project's issue tracker
 dev-python/sphinx-jinja 0.3.0: A sphinx extension to include jinja based templates into a sphinx doc
-dev-python/sphinx-notfound-page 0.4: Create a custom 404 page with absolute URLs hardcoded.
+dev-python/sphinx-notfound-page 0.4 0.5: Create a custom 404 page with absolute URLs hardcoded.
 dev-python/sphinx-prompt 1.2.0: Sphinx directive to add unselectable prompt
 dev-python/sphinx-py3doc-enhanced-theme 2.3.2-r1: Enhanced Sphinx theme (based on Python 3 docs)
 dev-python/sphinx-testing 1.0.1-r1: Testing utility classes and functions for Sphinx extensions
