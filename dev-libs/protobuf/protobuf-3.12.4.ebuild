@@ -46,6 +46,9 @@ src_prepare() {
 	# https://github.com/protocolbuffers/protobuf/issues/7413
 	sed -e "/^AC_PROG_CXX_FOR_BUILD$/d" -i configure.ac || die
 
+	# https://github.com/protocolbuffers/protobuf/issues/7682
+	sed -e "/^[[:space:]]*static_assert(alignof(T) <= 8, \"T is overaligned, see b\/151247138\");$/d" -i src/google/protobuf/arena.h || die
+
 	eautoreconf
 }
 
