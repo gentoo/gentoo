@@ -26,6 +26,7 @@ else
 	KEYWORDS="~amd64"
 fi
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-libs/poco-1.6.1
