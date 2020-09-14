@@ -1,3 +1,7 @@
+# Hans de Graaff <graaff@gentoo.org> (2020-09-14)
+# Masked per-arch to facilitate stabling, bug 728192
+ruby_targets_ruby26
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-08-13)
 # media-gfx/gimp is ~hppa only
 gimp

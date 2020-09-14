@@ -23,3 +23,6 @@ VIDEO_CARDS="exynos fbdev omap"
 # Unhide the ARM-specific USE_EXPANDs.
 USE_EXPAND_HIDDEN="-CPU_FLAGS_ARM"
 
+# Hans de Graaff <graaff@gentoo.org> (2020-09-14)
+# Set per-arch to facilitate stabling, bug 728192
+RUBY_TARGETS="ruby25"
