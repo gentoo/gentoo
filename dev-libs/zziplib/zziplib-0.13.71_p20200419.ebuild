@@ -37,9 +37,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	if use test; then
-		python-any-r1_pkg_setup
-	fi
+	python-any-r1_pkg_setup
 }
 
 src_configure() {
