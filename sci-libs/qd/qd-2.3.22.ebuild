@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ FORTRAN_NEEDED=fortran
 inherit autotools fortran-2
 
 DESCRIPTION="Quad-double and double-double float arithmetics"
-HOMEPAGE="http://crd-legacy.lbl.gov/~dhbailey/mpdist/"
+HOMEPAGE="https://www.davidhbailey.com/dhbsoftware/"
 SRC_URI="http://crd.lbl.gov/~dhbailey/mpdist/${P}.tar.gz"
 
 SLOT="0"
