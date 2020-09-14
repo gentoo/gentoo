@@ -1,0 +1,70 @@
+--- a/scripts/build_3rdparty.py	(original)
++++ b/scripts/build_3rdparty.py	(refactored)
+@@ -237,7 +237,7 @@
+         dependentInstallFile = os.path.join( uppercaseLib + "-prefix", "src", uppercaseLib + "-build", "cmake_install.cmake" )
+         dependentInstallDirectory = '"' + os.path.join( installDirectory, "external", dependentLib ) + '"'
+         dependent_install_call = "cmake -DCMAKE_INSTALL_CONFIG_NAME=" + config + " -DCMAKE_INSTALL_PREFIX=" + dependentInstallDirectory + " -P " + dependentInstallFile + " .."
+-        print( "dependent install call = " + dependent_install_call )
++        print(( "dependent install call = " + dependent_install_call ))
+         subprocess.check_call( dependent_install_call, shell = True )
+ 
+ 
+@@ -254,7 +254,7 @@
+ 
+     sourcePlatform = platform.system()
+     if not sourcePlatform in platformEnvironments:
+-        print( "Platform " + sourcePlatform + " not supported as a build platform" )
++        print(( "Platform " + sourcePlatform + " not supported as a build platform" ))
+         return 1
+ 
+     platformEnv = platformEnvironments[ sourcePlatform ]
+@@ -292,12 +292,12 @@
+         shutil.rmtree( installDirectory )
+ 
+     if not architecture in platformBuildTargets:
+-        print( "No definition for target architecture " + architecture )
++        print(( "No definition for target architecture " + architecture ))
+         return 1
+ 
+     targetPlatformDef = platformBuildTargets[ architecture ]
+     if not sourcePlatform in targetPlatformDef[ 'buildPlatforms' ]:
+-        print( "Platform " + sourcePlatform + " does not support building for architecture " + architecture )
++        print(( "Platform " + sourcePlatform + " does not support building for architecture " + architecture ))
+         return 1
+ 
+     buildEnvironment = buildEnvironments[ targetPlatformDef[ 'build_environment' ] ]
+@@ -338,18 +338,18 @@
+                 cmake_call_list = cmake_call_list + " -DCUSTOM_PLATFORM_DIR=\"" + customPlatformDir + "\""
+ 
+             cmake_call_list = cmake_call_list + " " + quotedSourceDir
+-            print( "cmake call = " + cmake_call_list )
++            print(( "cmake call = " + cmake_call_list ))
+             subprocess.check_call( cmake_call_list, shell = True )
+ 
+             parallelBuildOption = buildEnvironment[ 'parallel_option' ].replace("??", str(parallelJobs))
+             build_call_list = buildEnvironment[ 'global_build_call' ] + archConfig[ 'build_params' ]
+             if parallelBuildOption != "":
+                 build_call_list = build_call_list + [ parallelBuildOption ]
+-            print( "build call = " + str( build_call_list ) )
++            print(( "build call = " + str( build_call_list ) ))
+             subprocess.check_call( build_call_list )
+ 
+             install_call = "cmake -DCMAKE_INSTALL_CONFIG_NAME=" + archConfig[ 'config' ] + " -DCMAKE_INSTALL_PREFIX=" + quotedInstallDirectory + " -P cmake_install.cmake " + quotedSourceDir
+-            print( "install call = " + install_call )
++            print(( "install call = " + install_call ))
+             subprocess.check_call( install_call, shell = True )
+ 
+             # platform specific stuff
+@@ -365,9 +365,9 @@
+             os.chdir( ".." )
+ 
+         else:
+-            print("Build target config " + targetConfig + " does not exist for architecture " + architecture)
+-
+-    print( "Aws SDK for C++  finished 3rd party installation into: " + installDirectory )
++            print(("Build target config " + targetConfig + " does not exist for architecture " + architecture))
++
++    print(( "Aws SDK for C++  finished 3rd party installation into: " + installDirectory ))
+     
+ 
+ # On windows: Run from powershell; make sure msbuild is in PATH environment variable  
