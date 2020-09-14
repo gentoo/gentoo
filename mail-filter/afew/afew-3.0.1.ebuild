@@ -20,13 +20,13 @@ IUSE="doc"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/chardet[${PYTHON_MULTI_USEDEP}]
-		dev-python/dkimpy[${PYTHON_MULTI_USEDEP}]
-		net-mail/notmuch[python,${PYTHON_MULTI_USEDEP}]
+		dev-python/chardet[${PYTHON_USEDEP}]
+		dev-python/dkimpy[${PYTHON_USEDEP}]
+		net-mail/notmuch[python,${PYTHON_USEDEP}]
 	')"
-DEPEND="
+BDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
+		dev-python/sphinx[${PYTHON_USEDEP}]
 	')"
 
 DOCS=( "README.rst" )
