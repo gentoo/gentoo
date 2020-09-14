@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 
 IUSE="defs examples extra-test -fortran memfs netcdf jpeg2k png python szip test threads"
-
+RESTRICT="!test? ( test )"
 REQUIRED_USE="threads? ( !fortran ) test? ( defs !memfs ) extra-test? ( test ) !test? ( memfs? ( python ) )"
 
 RDEPEND="
