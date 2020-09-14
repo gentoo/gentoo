@@ -8,7 +8,4 @@
 	<use>
 		<flag name="fontforge">Use <pkg>media-gfx/fontforge</pkg> to build fonts from source</flag>
 	</use>
-	<longdescription lang="en">
-		A GPL-2 Helvetica/Times/Courier replacement TrueType font set, courtesy of Red Hat
-	</longdescription>
 </pkgmetadata>

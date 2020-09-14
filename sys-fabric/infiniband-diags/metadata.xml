@@ -5,7 +5,4 @@
 		<email>cluster@gentoo.org</email>
 		<name>Gentoo Cluster Project</name>
 	</maintainer>
-	<longdescription>
-OpenIB diagnostic programs and scripts needed to diagnose an IB subnet.
-</longdescription>
 </pkgmetadata>

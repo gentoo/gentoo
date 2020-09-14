@@ -9,7 +9,4 @@
 		<email>java@gentoo.org</email>
 		<name>Gentoo Java team</name>
 	</maintainer>
-	<longdescription lang="en">
-		Rundeck is a tool for job automation.
-	</longdescription>
 </pkgmetadata>

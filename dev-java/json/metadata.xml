@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<longdescription lang="en">
-		JSON (JavaScript Object Notation) is a lightweight data-interchange format.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">douglascrockford/JSON-java</remote-id>
 	</upstream>

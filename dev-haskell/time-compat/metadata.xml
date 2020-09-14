@@ -5,8 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Compatibility with the &lt;old-time&gt; package for the \"new\"
-		&lt;time&gt; package.
-	</longdescription>
 </pkgmetadata>

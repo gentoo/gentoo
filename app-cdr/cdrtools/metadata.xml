@@ -12,5 +12,4 @@
 		</maintainer>
 		<remote-id type="sourceforge">cdrtools</remote-id>
 	</upstream>
-	<longdescription>CD and DVD command line recording and ripping tools.</longdescription>
 </pkgmetadata>

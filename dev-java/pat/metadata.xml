@@ -5,8 +5,4 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
-	<longdescription lang="en">
-		Package pat provides a mechanism for compiling and matching regular
-		expressions in java.
-	</longdescription>
 </pkgmetadata>

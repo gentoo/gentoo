@@ -4,7 +4,6 @@
 	<maintainer type="project">
 		<email>media-video@gentoo.org</email>
 	</maintainer>
-	<longdescription>An open source library for media applications</longdescription>
 	<use>
 		<flag name="bluray">
 			Enable playback of Blu-ray filesystems using <pkg>media-libs/libbluray</pkg>

@@ -5,8 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		This package provides extensible exceptions for both new and
-		old versions of GHC (i.e., &lt; 6.10).
-	</longdescription>
 </pkgmetadata>

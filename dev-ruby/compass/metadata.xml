@@ -5,8 +5,4 @@
 		<email>ruby@gentoo.org</email>
 		<name>Gentoo Ruby Project</name>
 	</maintainer>
-	<longdescription lang="en">
-		Compass is a Sass-based Stylesheet Framework that streamlines the
-		creation and maintenance of CSS.
-	</longdescription>
 </pkgmetadata>

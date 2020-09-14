@@ -7,7 +7,4 @@
     please consider bumping sys-firmware/iwl3160-ucode and 
     sys-firmware/iwl7260-ucode as well.</description>
   </maintainer>
-<longdescription lang="en">
-Firmware for Intel (R) Wireless 3160, 7260, 7265 Bluetooth.
-</longdescription>
 </pkgmetadata>

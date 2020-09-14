@@ -5,7 +5,6 @@
 		<email>gnustep@gentoo.org</email>
 		<name>Gentoo GNUstep Project</name>
 	</maintainer>
-	<longdescription>Small CD Audio Player for GNUstep</longdescription>
 	<upstream>
 		<remote-id type="github">schik/cdplayer</remote-id>
 	</upstream>

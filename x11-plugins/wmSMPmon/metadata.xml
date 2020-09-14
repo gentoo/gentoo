@@ -5,9 +5,4 @@
 	<email>voyageur@gentoo.org</email>
 	<name>Bernard Cafarelli</name>
 </maintainer>
-
-<longdescription>
-wmSMPmon is a Window Maker applet for monitoring
-the CPUs, memory, and swap of SMP systems. 
-</longdescription>
 </pkgmetadata>

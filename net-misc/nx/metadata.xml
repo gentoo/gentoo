@@ -8,5 +8,4 @@
 <upstream>
 	<remote-id type="github">ArcticaProject/nx-libs</remote-id>
 </upstream>
-<longdescription>Special versions of the X11 libraries to support NX compression</longdescription>
 </pkgmetadata>

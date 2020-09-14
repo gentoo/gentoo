@@ -5,7 +5,6 @@
 		<email>selinux@gentoo.org</email>
 		<name>SELinux Team</name>
 	</maintainer>
-	<longdescription>SELinux policy management libraries</longdescription>
 	<upstream>
 		<remote-id type="github">SELinuxProject/selinux</remote-id>
 	</upstream>

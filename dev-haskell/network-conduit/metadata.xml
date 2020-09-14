@@ -5,9 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Stream socket data using conduits.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">snoyberg/conduit</remote-id>
 	</upstream>

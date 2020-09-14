@@ -9,7 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>Provides python bindings for <pkg>media-libs/ilmbase</pkg></longdescription>
 	<use>
 		<flag name="exceptions">
 			Enable runtime floating point exceptions in PyIMath.

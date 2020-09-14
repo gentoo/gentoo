@@ -9,9 +9,6 @@
     <email>openstack@gentoo.org</email>
     <name>Openstack</name>
   </maintainer>
-  <longdescription lang="en">
-     A Python object API for managing the Linux LIO kernel target
-  </longdescription>
   <upstream>
     <maintainer status="active">
       <email>mlombard@redhat.com</email>

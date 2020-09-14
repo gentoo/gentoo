@@ -5,7 +5,6 @@
 		<email>netmon@gentoo.org</email>
 		<name>Gentoo network monitoring and analysis project</name>
 	</maintainer>
-	<longdescription>the network swiss army knife</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">nc110</remote-id>
 		<remote-id type="cpe">cpe:/a:netcat_project:netcat</remote-id>

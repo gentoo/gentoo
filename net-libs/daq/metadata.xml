@@ -9,7 +9,6 @@
 		<email>netmon@gentoo.org</email>
 		<name>Gentoo network monitoring and analysis project</name>
 	</maintainer>
-	<longdescription>Data Acquisition library, for packet I/O with Snort 2.9 and later</longdescription>
 	<use>
 		<flag name="afpacket">
 		Build the AFPacket data acquisition module. Functions similar to the PCAP 

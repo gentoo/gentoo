@@ -5,9 +5,6 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
-	<longdescription lang="en">
-		LuaCov is a coverage analyzer for Lua scripts.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">keplerproject/luacov</remote-id>
 	</upstream>

@@ -6,10 +6,7 @@
 		<name>Gentoo Webapps</name>
 	</maintainer>
 	<use>
-		<flag name='enscript'>Add enscript support to colorize code
+		<flag name="enscript">Add enscript support to colorize code
 			stored in the repository</flag>
 	</use>
-	<longdescription>
-		Web based Subversion repository browser written in PHP
-	</longdescription>
 </pkgmetadata>

@@ -2,9 +2,4 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<longdescription lang="en">
-		The Portable Coroutine Library (PCL) implements the low level
-		functionality for coroutines
-	</longdescription>
 </pkgmetadata>
-
