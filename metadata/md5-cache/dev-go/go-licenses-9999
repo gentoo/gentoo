@@ -10,5 +10,5 @@ RDEPEND=dev-go/licenseclassifier
 RESTRICT=test
 SLOT=0
 SRC_URI=
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	go-module	45394825d9260b479aa1cf252ea58e01
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	go-module	92660621959e7fab813173772987588b
 _md5_=584f2bdcf52be93ef2127fbb6925fc15

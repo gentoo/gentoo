@@ -10,5 +10,5 @@ RDEPEND=acct-group/nginx-vts-exporter acct-user/nginx-vts-exporter
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/hnlq715/nginx-vts-exporter/archive/v0.10.7.tar.gz -> nginx-vts-exporter-0.10.7.tar.gz
-_eclasses_=go-module	45394825d9260b479aa1cf252ea58e01
+_eclasses_=go-module	92660621959e7fab813173772987588b
 _md5_=967377a43cf695ca5509aa6e6cd824ef
