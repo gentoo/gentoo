@@ -19,7 +19,7 @@ IUSE="doc"
 
 DISTUTILS_IN_SOURCE_BUILD=1
 
-distutils_enable_sphinx doc
+distutils_enable_sphinx doc --no-autodoc
 
 python_compile() {
 	if ! python_is_python3; then
