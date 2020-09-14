@@ -8038,7 +8038,7 @@ dev-python/coreschema 0.0.4: Core Schema
 dev-python/corner 2.0.1: Make scatter matrix corner plots
 dev-python/couchdb-python 1.1: Python library for working with CouchDB
 dev-python/cov-core 1.15.0-r1: plugin core for use by pytest-cov, nose-cov and nose2-cov
-dev-python/coverage 4.5.2 4.5.4 5.1 5.2.1: Code coverage measurement for Python
+dev-python/coverage 4.5.2 4.5.4 5.1 5.2.1 5.3: Code coverage measurement for Python
 dev-python/coverage-test-runner 1.15: fail Python program unit tests unless they test everything
 dev-python/cppy 1.1.0: C++ header library which makes it easier to write Python extension modules
 dev-python/crcmod 1.7-r3: Python CRC Generator module
@@ -8806,7 +8806,7 @@ dev-python/pyrfc3339 1.1: Generates and parses RFC 3339 timestamps
 dev-python/pyro 4.80: Distributed object middleware for Python (RPC)
 dev-python/pyroute2 0.5.12-r1: A pure Python netlink and Linux network configuration library.
 dev-python/pyrqlite 2.0: Python client for rqlite
-dev-python/pyrsistent 0.15.6 0.16.0 0.17.0 0.17.2: Persistent/Functional/Immutable data structures
+dev-python/pyrsistent 0.15.6 0.16.0 0.17.0 0.17.2 0.17.3: Persistent/Functional/Immutable data structures
 dev-python/pysaml2 4.6.5-r1: Python implementation of SAML Version 2 to be used in a WSGI environment
 dev-python/pyscard 1.9.9: Smart cards support in python
 dev-python/pysendfile 2.0.1-r1: A python interface to the sendfile(2) system call
@@ -9297,7 +9297,7 @@ dev-python/xlrd 1.2.0: Library to extract data from Microsoft Excel spreadsheets
 dev-python/xlsxwriter 1.2.9 1.3.3: Python module for creating Excel XLSX files
 dev-python/xlutils 2.0.0-r1: provides a collection of utilities for working with Excel files
 dev-python/xlwt 1.3.0 1.3.0-r1: Python library to create spreadsheet files compatible with Excel
-dev-python/xmlschema 1.2.2 1.2.3-r1: An XML Schema validator and decoder
+dev-python/xmlschema 1.2.2 1.2.3-r1 1.2.4: An XML Schema validator and decoder
 dev-python/xmltodict 0.12.0-r1: Makes working with XML feel like you are working with JSON
 dev-python/xvfbwrapper 0.2.9: Python wrapper for running a display inside X virtual framebuffer
 dev-python/xxhash 2.0.0: Python binding for the xxHash library

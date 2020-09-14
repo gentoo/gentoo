@@ -1149,7 +1149,7 @@ app-text/dbacl:interactive - Enable the interactive mailinspect ability
 app-text/dblatex:inkscape - Use inkscape to convert SVG. Disable to use gnome-base/librsvg instead.
 app-text/dictd:judy - Build Judy-based (dev-libs/judy) plugin implementing fast "exact" and especially "lev" strategies
 app-text/dictd:minimal - Don't build server but dict client, dictzip and dictfmt only.
-app-text/docbook-sgml-utils:jadetex - Add support for app-text/jadetex (for processing tex files produced by the TeX backend of Jade)
+app-text/docbook-sgml-utils:jadetex - Add support for processing tex files produced by the TeX backend of Jade
 app-text/docbook-xsl-ns-stylesheets:ruby - Install the Ruby-based dbtoepub script; requires an interpreter compatible with app-eselect/eselect-ruby.
 app-text/docbook-xsl-stylesheets:ruby - Install the Ruby-based dbtoepub script; requires an interpreter compatible with app-eselect/eselect-ruby.
 app-text/ebook-tools:lit2epub - Install lit2epub script
