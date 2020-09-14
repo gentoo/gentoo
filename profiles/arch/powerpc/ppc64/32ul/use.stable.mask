@@ -1,0 +1,4 @@
+# Sam James <sam@gentoo.org> (2020-09-14)
+# Temporary mask until ppc64 has ruby26 stabled
+# bug #728192
+-ruby_targets_ruby26
