@@ -338,7 +338,7 @@ _go-module_src_unpack_verify_gosum() {
 		die "go-module_set_globals must be called in global scope"
 	fi
 
-	cd "${S}"
+	cd "${S}" || die "cd failed"
 
 	# Cleanup the modules before starting anything else
 	# This will print 'downloading' messages, but it's accessing content from
