@@ -96,5 +96,5 @@ src_install() {
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}d
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}d
 
-	dodir /var/log/accel-ppp
+	keepdir /var/log/accel-ppp
 }
