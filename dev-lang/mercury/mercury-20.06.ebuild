@@ -68,6 +68,11 @@ src_compile() {
 	echo "EXTRA_LD_LIBFLAGS = ${LDFLAGS}" >> Mmake.params
 	echo "EXTRA_MLFLAGS = --no-strip" >> Mmake.params
 
+	if use trail; then
+		echo "CFLAGS-int = -O0" >> Mmake.params
+		echo "CFLAGS-uint = -O0" >> Mmake.params
+	fi
+
 	echo "EXTRA_LD_LIBFLAGS += -Wl,-soname=libgc.so" >> boehm_gc/Mmake.boehm_gc.params
 	echo "EXTRA_LD_LIBFLAGS += -Wl,-soname=libmer_rt.so" >> runtime/Mmake.runtime.params
 	echo "EXTRA_LD_LIBFLAGS += -Wl,-soname=libmer_std.so" >> library/Mmake.library.params
