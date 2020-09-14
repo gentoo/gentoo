@@ -4,6 +4,10 @@
 	<maintainer type="person">
 		<email>amit.prakash.ambasta@gmail.com</email>
 	</maintainer>
+	<maintainer type="person">
+		<email>sven.eden@prydeworx.com</email>
+		<name>Sven Eden</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
@@ -27,19 +31,28 @@
 
 		<flag name="access-management">
 			AWS Access Management, a meta-flag that enables:
-			AWS Certificate Manager (ACM): Provision, manage, and deploy SSL/TLS certificates on AWS managed
-				resources.
+			AWS Certificate Manager (ACM): Provision, manage, and deploy SSL/TLS certificates on AWS
+				managed resources.
+			AWS Data Exchange            : A service that makes it easy for customers to find, subscribe
+				to, and use third-party data in the AWS Cloud.
+			AWS IAM Access Analyzer      : Identify any policies that grant access to an external
+				principal.
 			Identity and Access Management (IAM): A web service for securely controlling access to AWS
 				services.
 			Resource Access Manager (RAM): Customers who operate multiple accounts can create resources
-				centrally and use AWS RAM to share them with all of their accounts to reduce operational
-				overhead.
-			Also enables acm-pca, identity-management and sts (Security Token Service).
+				centrally and use AWS RAM to share them with all of their accounts to reduce
+				operational overhead.
+			SSO : AWS Single Sign-On (SSO) makes it easy to centrally manage access to multiple AWS
+				accounts and business applications and provide users with single sign-on access to all
+				their assigned accounts and applications from one place.
+			Also enables acm-pca, identity-management, identitystore, sso-oidc and sts (Security Token
+			Service).
 		</flag>
 		<flag name="apigateway">
 			Create and deploy your own REST and WebSocket APIs at any scale.
 			Also enables apigatewaymanagementapi and apigatewayv2.
 		</flag>
+		<flag name="appconfig">Quickly deploy application configurations to applications of any size.</flag>
 		<flag name="backup">AWS Backup is a fully managed backup service</flag>
 		<flag name="batch">Run batch computing workloads on the AWS Cloud</flag>
 		<flag name="budgets">
@@ -58,16 +71,22 @@
 				internal websites and web apps from mobile devices.
 			WorkMail     : Managed email and calendaring service.
 			WorkSpaces   : Cloud-based desktop experience for end users.
+			Also enabled workmailmessageflow.
 		</flag>
 		<flag name="cloud-dev">
 			Enables in-cloud developer tools:
 			Cloud9      : Cloud-based integrated development environment IDE to write, run, and debug code.
+			CodeArtifact: Secure and scalable artifact management service for software development.
 			CodeBuild   : Managed build service that compiles, runs unit tests and produces artifacts.
 			CodeCommit  : Privately store and manage Git repositories in the AWS cloud.
 			CodeDeploy  : Automate the deployment and updating of applications.
+			CodeGuru    : Provides intelligent recommendations for improving application performance,
+				efficiency, and code quality in your Java applications.
 			CodePipeline: Continuous delivery service to model, visualize, and automate the steps required
 				to release software.
-			CodeStar    : Quickly develop, build, and deploy applications on AWS.
+			CodeStar    : Quickly develop, build, and deploy applications on AWS. Also enables
+				codestar-connections and codestar-notifications.
+			Honey Code  : Fully managed service to quickly build mobile and web apps for teams.
 			Queues      : Simple queue class. Allows standard queue operations top, delete, and push. Also
 				has higher level, asynchronous interface with callbacks.
 			X-Ray       : Provides request tracing, exception collection, and profiling capabilities.
@@ -127,15 +146,18 @@
 			CloudTrail          : Monitor AWS deployments in the cloud by getting a history of AWS API
 				calls, including API calls made via the AWS Management Console, the AWS SDKs, the
 				command line tools, and higher-level AWS services.
+			Compute Optimizer   : Recommends optimal AWS compute resources for your workloads.
 			GuardDuty           : Continuous security monitoring service.
 			Health              : Provides personalized information about events that can affect the AWS
-				infrastructure, guides through scheduled changes, and accelerates the troubleshooting of
-				issues that affect AWS resources and accounts.
+				infrastructure, guides through scheduled changes, and accelerates the troubleshooting
+				of issues that affect AWS resources and accounts.
 			Inspector           : A security vulnerability assessment service that helps improve the
 				security and compliance of
 			AWS resources.
 			Logs                : Monitor, store, and access log files from Amazon EC2 instances, AWS
 				CloudTrail, or other sources.
+			Synthetics          : Create canaries, configurable scripts that run on a schedule, to monitor
+				your endpoints and APIs.
 		</flag>
 		<flag name="cognito">
 			Create unique identities, authenticate these identities with identity providers and save mobile
@@ -152,13 +174,23 @@
 			Manage the lifecycle of AWS resources. Create lifecycle policies to automate operations on
 			specified resources.
 		</flag>
+		<flag name="ebs">
+			Amazon Elastic Block Store (Amazon EBS) is a web service that provides block level storage
+			volumes for use with EC2 instances. EBS volumes are highly available and reliable storage
+			volumes that can be attached to any running instance and used like a hard drive.
+		</flag>
 		<flag name="ec2">
 			Amazon Elastic Compute Cloud (EC2) is a web service that provides resizeable computing capacity.
 			This flag also enables the following modules:
 			Auto Scaling       : Set up dynamic and predictive scaling for scalable AWS resources. Also
 				enables autoscaling-plans and application-autoscaling.
+			EC2 Image Builder  : Fully-managed AWS service that makes it easier to automate the creation,
+				management, and deployment of customized, secure, and up-to-date “golden” server images
+				that are pre-installed and pre-configured with software and settings to meet specific IT
+				standards.
 			Elastic File System: EFS provides file storage for Amazon EC2 instances.
-
+			Savings Plan       : Flexible pricing model that helps you save a significant percentage on
+				Amazon EC2 and Fargate usage.
 		</flag>
 		<flag name="ecr">
 			Amazon Elastic Container Registry (ECR) is a fully managed Docker container registry.
@@ -167,12 +199,19 @@
 			Amazon Elastic Container Service (ECS) is a highly scalable, fast, container management service.
 		</flag>
 		<flag name="eks">
-			Amazon Elastic Kubernetes Service (EKS) is a managed service to run Kubernetes on AWS without own Kubernetes clusters.
+			Amazon Elastic Kubernetes Service (EKS) is a managed service to run Kubernetes on AWS without
+			own Kubernetes clusters.
 		</flag>
 		<flag name="elasticache">
 			Set up, manage, and scale distributed in-memory cache environments in the AWS Cloud
 		</flag>
 		<flag name="elasticbeanstalk">Quickly deploy and manage applications in the AWS Cloud.</flag>
+		<flag name="elasticinference">
+			Amazon Elastic Inference is a service that allows you to attach low-cost GPU-powered
+			acceleration to many Amazon machine instances in order to reduce the cost of running deep
+			learning inference by up to 75%. Amazon Elastic Inference supports TensorFlow, Apache MXNet, and
+			ONNX models through MXNet.
+		</flag>
 		<flag name="elasticloadbalancing">
 			Automatically distribute incoming application traffic across multiple targets, such as EC2
 			instances.
@@ -186,6 +225,7 @@
 			Amazon Simple Email Service (Amazon SES):
 			An email platform to send and receive email using ones own email addresses and domains.
 			See: https://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html
+			Also enables sesv2
 		</flag>
 		<flag name="es">
 			Amazon Elasticsearch Configuration Service (ES) is an API to create, configure, and manage
@@ -194,6 +234,18 @@
 		<flag name="events">
 			Serverless event bus service to connect applications with data from a variety of sources.
 			Also enables eventbridge.
+		</flag>
+		<flag name="forecast">
+			Amazon Forecast is a fully managed deep learning service for time-series forecasting. Time-
+			series forecasting is useful in multiple domains, including retail, financial planning, supply
+			chain, and healthcare.
+			Also enables the forecastquery module.
+		</flag>
+		<flag name="frauddetector">
+			Amazon Fraud Detector is a fully managed service that helps you detect suspicious online
+			activities such as the creation of fake accounts and online payment fraud. With Amazon Fraud
+			Detector, you can create a fraud detection ML model with just a few clicks and use it to
+			evaluate online activities in milliseconds.
 		</flag>
 		<flag name="fsx">Amazon FSx is a fully managed service to launch and use shared file storage.</flag>
 		<flag name="globalaccelerator">
@@ -212,20 +264,28 @@
 			iotanalytics  : Provides advanced data analysis for AWS IoT.
 			iotevents     : Monitor equipment or device fleets for failures or changes in operation, and
 				trigger actions when such events occur.
+			iotsitewise   : Easily collect, organize, and analyze data from industrial equipment at scale.
 			iotthingsgraph: Integrated set of tools that enable developers to build IoT applications using
-				devices and services that use different data representation standards and communication protocols.
-			Also enables iot1click-devices, iot1click-projects, iot-data, iotevents-data and iot-jobs-data.
+				devices and services that use different data representation standards and communication
+				protocols.
+			Also enables iot1click-devices, iot1click-projects, iot-data, iotevents-data, iot-jobs-data and
+			iotsecuretunneling.
+		</flag>
+		<flag name="kendra">
+			Amazon Kendra is a search service, powered by machine learning, that enables users to search
+			unstructured text using natural language.
 		</flag>
 		<flag name="kinesis">
 			Amazon Kinesis
 			Collect, process, and analyze video and data streams in real time. The following modules besides
 			kinesis are enabled:
-			firehose                    : Load data streams into AWS data stores.
-			kinesisanalytics            : Process and analyze streaming data using SQL or Java. (Also
-				enables kinesisanalyticsv2)
-			kinesisvideo                : Capture, process, and store video streams for analytics and
-				machine learning.
-			Additionally kinesis-video-archived-media and kinesis-video-media are enabled.
+			firehose        : Load data streams into AWS data stores.
+			ivs             : Managed live streaming solution for creating interactive video experiences.
+			kinesisanalytics: Process and analyze streaming data using SQL or Java. (Also enables 
+				kinesisanalyticsv2)
+			kinesisvideo    : Capture, process, and store video streams for analytics and machine learning.
+			Additionally kinesis-video-archived-media, kinesis-video-media and kinesis-video-signaling are
+			enabled.
 		</flag>
 		<flag name="kms">
 			AWS Key Management Service (KMS)
@@ -251,6 +311,7 @@
 		<flag name="macie">
 			A security service that uses machine learning to automatically discover, classify, and protect
 			sensitive data in AWS.
+			Also enables macie2
 		</flag>
 		<flag name="managedblockchain">
 			Create and manage scalable blockchain networks using popular open source frameworks. Currently,
@@ -266,7 +327,11 @@
 			Marketplace Metering Service   : A pricing and metering feature that AWS Marketplace sellers can
 				use to directly charge for their software along one of four dimensions: users, data,
 				bandwidth, or hosts.
-			Also enables pricing.
+			Also enables marketplace-catalog and pricing.
+		</flag>
+		<flag name="networkmanager">
+			Transit Gateway Network Manager (Network Manager) enables you to create a global network, in
+			which you can monitor your AWS and on-premises networks that are built around transit gateways.
 		</flag>
 		<flag name="organizations">
 			Account management service that to consolidate multiple AWS accounts into an organization to be
@@ -281,11 +346,17 @@
 			you would like to have any of the following modules to have their own USE flag, please open a
 			bug report and it will most probably get one.
 			The modules are:
-			AWSMigrationHub, alexaforbusiness, clouddirectory, comprehend, comprehendmedical, connect,
-			datapipeline, datasync, directconnect, discovery, dms, docdb, ds, dynamodb, gamelift, glue,
-			groundstation, importexport, kafka, lakeformation, mq, mturk-requester, neptune, quicksight,
-			redshift, robomaker, sdb, service-quotas, servicecatalog, servicediscovery, signer, sms,
-			snowball, ssm, states, storagegateway, support and swf.
+			AWSMigrationHub, alexaforbusiness, appflow, braket, clouddirectory, comprehend,
+			comprehendmedical, connect, datapipeline, datasync, directconnect, discovery, dms, docdb, ds,
+			dynamodb, gamelift, glue, groundstation, importexport, kafka, lakeformation, migrationhub-
+			config, mq, mturk-requester, neptune, quicksight, redshift, robomaker, sdb, schemas, service-
+			quotas, servicecatalog, servicediscovery, signer, sms, snowball, ssm, states, storagegateway,
+			support and swf.
+		</flag>
+		<flag name="outposts">
+			AWS Outposts brings native AWS services, infrastructure, and operating models to virtually any
+			data center, co-location space, or on-premises facility. You can use the same services, tools,
+			and partner solutions to develop for the cloud and on premises.
 		</flag>
 		<flag name="personalize">
 			Real-time personalization and recommendations, based on the same technology used at Amazon.com.
@@ -294,7 +365,14 @@
 		<flag name="polly">
 			Amazon Polly
 			A Text-to-Speech (TTS) cloud service that converts text into lifelike speech.
-			Also enables text-to-speech.
+			Also enables text-to-speech, which needs you to enable pulseaudio support to work.
+		</flag>
+		<flag name="qldb">
+			Amazon Quantum Ledger Database (Amazon QLDB) is a fully managed ledger database that provides a
+			transparent, immutable, and cryptographically verifiable transaction log owned by a central
+			trusted authority. You can use Amazon QLDB to track all application data changes, and maintain
+			a complete and verifiable history of changes over time.
+			Also enables qldb-session.
 		</flag>
 		<flag name="queues">
 			AWS Queues is a simple queue class.
@@ -330,7 +408,7 @@
 			Fully managed machine learning service. With Amazon SageMaker, data scientists and developers
 			can quickly and easily build and train machine learning models, and then directly deploy them
 			into a production-ready hosted environment.
-			Also enables sagemaker-runtime.
+			Also enables sagemaker-a2i-runtime and sagemaker-runtime.
 		</flag>
 		<flag name="secretsmanager">
 			Encrypt, store, and retrieve credentials for databases and other services.
@@ -367,7 +445,7 @@
 			CloudFront distributions or an Application Load Balancer. Can also be used to block or allow
 			requests based on conditions such as the IP addresses that requests originate from or values in
 			the requests.
-			Also enables fms and waf-regional.
+			Also enables fms, waf-regional and wafv2
 		</flag>
 	</use>
 </pkgmetadata>
