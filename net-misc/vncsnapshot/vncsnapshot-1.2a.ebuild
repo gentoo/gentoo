@@ -14,8 +14,9 @@ SLOT="0"
 KEYWORDS="~amd64 ppc x86"
 
 DEPEND="
+	sys-libs/zlib
 	virtual/jpeg
-	>=sys-libs/zlib-1.1.4"
+"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
