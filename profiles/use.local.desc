@@ -1592,8 +1592,6 @@ dev-haskell/hakyll:usepandoc - Include Pandoc support
 dev-haskell/hakyll:watchserver - wait for filesystem changes and rebuild pages
 dev-haskell/happstack-server:network-uri - Get Network.URI from the network-uri package
 dev-haskell/happstack-server:template-haskell - Description: Template Haskell is available on this system
-dev-haskell/hashed-storage:diff - Provide the Storage.Hashed.Diff module.
-dev-haskell/hashed-storage:hpc - Compile with the profiling ghc flag -fhpc.
 dev-haskell/hashtables:bounds-checking - if on, use bounds-checking array accesses
 dev-haskell/hashtables:detailed-profiling - add detailed profiling information to profiled build-depends
 dev-haskell/hashtables:portable - if on, use only pure Haskell code and no GHC extensions.
