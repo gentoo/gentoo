@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools-utils multilib toolchain-funcs
 
 DESCRIPTION="Sparse Cholesky factorization and update/downdate library"
-HOMEPAGE="http://faculty.cse.tamu.edu/davis/suitesparse.html"
+HOMEPAGE="https://people.engr.tamu.edu/davis/suitesparse.html"
 SRC_URI="https://dev.gentoo.org/~bicatali/distfiles/${P}.tar.bz2"
 
 LICENSE="minimal? ( LGPL-2.1 ) !minimal? ( GPL-2 )"
