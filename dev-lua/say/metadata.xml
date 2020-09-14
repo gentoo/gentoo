@@ -5,9 +5,6 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
-	<longdescription lang="en">
-		Useful for internationalization.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">Olivine-Labs/say</remote-id>
 	</upstream>

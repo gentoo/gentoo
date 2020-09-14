@@ -5,7 +5,6 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
-	<longdescription>Generic interfaces to the classical builder pattern and the less classical "freeze/thaw" pattern</longdescription>
 	<upstream>
 		<remote-id type="github">fge/btf</remote-id>
 	</upstream>

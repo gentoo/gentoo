@@ -6,5 +6,4 @@
 		<email>sysadmin@gentoo.org</email>
 		<name>Gentoo Sysadmin Project</name>
 	</maintainer>
-	<longdescription>Simple graphical mirror monitor with html output to analyze whether data is being kept in sync.</longdescription>
 </pkgmetadata>

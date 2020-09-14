@@ -5,10 +5,6 @@
 		<email>rafaelmartins@gentoo.org</email>
 		<name>Rafael G. Martins</name>
 	</maintainer>
-	<longdescription lang="en">
-		A script that commits files from a directory to the gh-pages branch
-		of the current Git repository.
-	</longdescription>
 	<upstream>
 		<maintainer status="active">
 			<email>rafaelmartins@gentoo.org</email>

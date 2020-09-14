@@ -8,7 +8,4 @@
 	<use>
 		<flag name="build-example">Build the example executable</flag>
 	</use>
-	<longdescription>
-		Simple interface to optparse-applicative
-	</longdescription>
 </pkgmetadata>

@@ -5,8 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		A stable version of Hspec which is used to test the
-		in-development version of Hspec.
-	</longdescription>
 </pkgmetadata>

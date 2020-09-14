@@ -5,9 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Auxiliary Haskell code used by Agda's standard library.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">agda/agda-stdlib</remote-id>
 	</upstream>

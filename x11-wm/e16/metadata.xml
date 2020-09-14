@@ -21,9 +21,6 @@
     <flag name="xsync">Enable X Sync support</flag>
     <flag name="zoom">Support resolution change of current window (zoom) using<pkg>x11-libs/libXxf86vm</pkg> (xvidtune)</flag>
   </use>
-  <longdescription>
-    Enlightenment DR16 (E16) is a classic lightweighth X11 window manager.
-  </longdescription>
   <upstream>
     <remote-id type="sourceforge">enlightenment</remote-id>
   </upstream>

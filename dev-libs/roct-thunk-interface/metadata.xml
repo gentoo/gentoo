@@ -16,7 +16,4 @@
     <upstream>
         <remote-id type="github">RadeonOpenCompute/ROCT-Thunk-Interface</remote-id>
     </upstream>
-    <longdescription lang="en">
-        Radeon Open Compute Thunk Interface
-    </longdescription>
 </pkgmetadata>

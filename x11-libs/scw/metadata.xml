@@ -2,8 +2,4 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<longdescription lang="en">
-		Scw is a widget set specifically designed for chat programs. It extends
-		the Gtk+ widget set.
-	</longdescription>
 </pkgmetadata>

@@ -5,7 +5,4 @@
 	<email>gnome@gentoo.org</email>
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
-<longdescription lang="en">
-	moserial is a clean, friendly gtk-based serial terminal for the gnome desktop.
-</longdescription>
 </pkgmetadata>

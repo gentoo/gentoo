@@ -9,7 +9,4 @@
 		<email>perl@gentoo.org</email>
 		<name>Gentoo Perl Project</name>
 	</maintainer>
-	<longdescription lang="en">
-		demerge makes it easy to revert to previous installation states.
-	</longdescription>
 </pkgmetadata>

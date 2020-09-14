@@ -5,9 +5,6 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
-	<longdescription lang="en">
-		A lightweight notification daemon for Wayland. Works on Sway.
-	</longdescription>
 	<use>
 		<flag name="icons">Enable support for icons</flag>
 	</use>

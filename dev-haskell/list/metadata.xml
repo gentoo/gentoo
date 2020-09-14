@@ -5,10 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		A List monad transformer and a List class.
-		With standard list operations for Lists
-	</longdescription>
 	<upstream>
 		<remote-id type="github">yairchu/generator</remote-id>
 	</upstream>

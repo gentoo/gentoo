@@ -5,10 +5,6 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
-	<longdescription lang="en">
-		AdvanceCOMP is a set of recompression utilities for .PNG, .MNG, .ZIP
-		and .GZ files
-	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">advancemame</remote-id>
 		<remote-id type="github">amadvance/advancecomp</remote-id>

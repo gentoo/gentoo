@@ -5,8 +5,4 @@
 	<email>games@gentoo.org</email>
 	<name>Gentoo Games Project</name>
 </maintainer>
-<longdescription lang="en">
-Afternoon Stalker, a clone of the 1981 Night Stalker video game by Mattel
-Electronics.
-</longdescription>
 </pkgmetadata>

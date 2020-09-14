@@ -5,9 +5,6 @@
 		<email>hattya@gentoo.org</email>
 		<name>Akinori Hattori</name>
 	</maintainer>
-	<longdescription>
-		Gauche extension module to use GTK.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">shirok/Gauche-gtk2</remote-id>
 	</upstream>

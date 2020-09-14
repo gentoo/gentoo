@@ -17,8 +17,4 @@
 		<flag name="debug">Module installing additional tools like strace, file
 			editor, ssh and more</flag>
 	</use>
-	<longdescription lang="en">
-	Generic, modular initramfs generation tool that can be used across various
-	distributions.
-	</longdescription>
 </pkgmetadata>

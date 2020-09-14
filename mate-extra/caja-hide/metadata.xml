@@ -5,9 +5,6 @@
 		<email>mate@gentoo.org</email>
 		<name>Gentoo MATE Desktop</name>
 	</maintainer>
-	<longdescription lang="en">
-			An extension for Caja that hiding files without renaming them
-	</longdescription>
 	<upstream>
 		<remote-id type="github">Fred-Barclay/caja-hide</remote-id>
 	</upstream>

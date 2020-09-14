@@ -9,9 +9,6 @@
     <email>openstack@gentoo.org</email>
     <name>Openstack</name>
   </maintainer>
-  <longdescription lang="en">
-  Simplify the writing of REST APIs, and extend them with additional protocols.
-  </longdescription>
   <upstream>
     <remote-id type="pypi">WSME</remote-id>
   </upstream>

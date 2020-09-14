@@ -11,7 +11,4 @@
       from Lua 5.2 that are unlikely to break existing code.
     </flag>
   </use>
-  <longdescription lang="en">
-    LuaJIT is a Just-In-Time Compiler for the Lua programming language.
-  </longdescription>
 </pkgmetadata>

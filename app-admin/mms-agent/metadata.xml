@@ -5,9 +5,6 @@
 		<email>ultrabug@gentoo.org</email>
 		<name>Alexys Jacob</name>
 	</maintainer>
-	<longdescription lang="en">
-	MongoDB MMS agents collection.
-	</longdescription>
 	<use>
 		<flag name="monitoring">Install the monitoring agent</flag>
 	</use>

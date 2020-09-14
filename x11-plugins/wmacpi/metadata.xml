@@ -5,8 +5,4 @@
 	<email>voyageur@gentoo.org</email>
 	<name>Bernard Cafarelli</name>
 </maintainer>
-
-<longdescription>
-WMaker DockApp: ACPI status monitor for laptops
-</longdescription>
 </pkgmetadata>

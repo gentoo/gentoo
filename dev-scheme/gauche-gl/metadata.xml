@@ -5,9 +5,6 @@
 		<email>hattya@gentoo.org</email>
 		<name>Akinori Hattori</name>
 	</maintainer>
-	<longdescription>
-		OpenGL binding of Gauche
-	</longdescription>
 	<use>
 		<flag name="cg">Enable NVidia Cg binding</flag>
 	</use>

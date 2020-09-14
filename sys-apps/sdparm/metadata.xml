@@ -5,7 +5,4 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
-<longdescription lang="en">
-	Utility to output and modify parameters on a SCSI device, like hdparm.
-</longdescription>
 </pkgmetadata>

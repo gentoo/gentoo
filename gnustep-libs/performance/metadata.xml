@@ -5,5 +5,4 @@
 		<email>gnustep@gentoo.org</email>
 		<name>Gentoo GNUstep Project</name>
 	</maintainer>
-	<longdescription>A collection of classes to help improve/tune performance of your software </longdescription>
 </pkgmetadata>

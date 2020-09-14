@@ -9,7 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>Microsoft's implmentation of the Guidelines Support Library.</longdescription>
 	<upstream>
 		<remote-id type="github">Microsoft/GSL</remote-id>
 	</upstream>

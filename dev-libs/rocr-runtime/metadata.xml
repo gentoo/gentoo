@@ -12,7 +12,4 @@
     <upstream>
         <remote-id type="github">RadeonOpenCompute/ROCR-Runtime</remote-id>
     </upstream>
-    <longdescription lang="en">
-        Radeon Open Compute Platform Runtime
-    </longdescription>
 </pkgmetadata>

@@ -5,8 +5,4 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
-	<longdescription lang="en">
-		Open source framework for processing, monitoring and alerting on
-		time series data.
-	</longdescription>
 </pkgmetadata>

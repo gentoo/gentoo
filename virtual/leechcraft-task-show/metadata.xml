@@ -9,5 +9,4 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>Virtual for plugins that can show IDownloads and IJobHolders</longdescription>
 </pkgmetadata>

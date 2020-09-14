@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<longdescription lang="en">
-		A gdk-pixbuf plugin that allows GTK applications to view webp images.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">aruiz/webp-pixbuf-loader</remote-id>
 	</upstream>

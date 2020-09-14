@@ -5,7 +5,6 @@
 		<email>maksbotan@gentoo.org</email>
 		<name>Maxim Koltsov</name>
 	</maintainer>
-	<longdescription>A program that manages the installation of software packages.</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">xstow</remote-id>
 	</upstream>

@@ -9,8 +9,6 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
-  <longdescription>Get a locale specific string describing the span of a given
-  duration.</longdescription>
   <upstream>
     <remote-id type="cpan">DateTime-Format-Human-Duration</remote-id>
     <remote-id type="cpan-module">DateTime::Format::Human::Duration</remote-id>

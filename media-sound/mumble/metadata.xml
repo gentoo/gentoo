@@ -5,9 +5,6 @@
 		<email>polynomial-c@gentoo.org</email>
 		<name>Lars Wendler</name>
 	</maintainer>
-	<longdescription lang="en">
-Mumble is an open source, low-latency, high quality voice chat software primarily intended for use while gaming.
-	</longdescription>
 	<use>
 		<flag name="g15">Enable support for the Logitech G15 LCD (and compatible devices).</flag>
 		<flag name="rnnoise">Enable alternative noise suppression option based on RNNoise.</flag>

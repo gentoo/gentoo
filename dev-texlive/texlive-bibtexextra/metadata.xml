@@ -9,8 +9,4 @@
 		<email>tex@gentoo.org</email>
 		<name>Gentoo TeX Project</name>
 	</maintainer>
-	<longdescription lang="en">
-		Additional BibTeX styles and bibliography data(bases),
-		notably including BibLaTeX.
-	</longdescription>
 </pkgmetadata>

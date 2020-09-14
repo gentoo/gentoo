@@ -9,7 +9,4 @@
 		<remote-id type="github">airdcpp-web/airdcpp-webui</remote-id>
 		<bugs-to>https://github.com/airdcpp-web/airdcpp-webclient/issues</bugs-to>
 	</upstream>
-	<longdescription lang="en">
-		AirDC++ Web UI written in Javascript. Communicates with AirDC++ Core via AirDC++ Web API.
-	</longdescription>
 </pkgmetadata>

@@ -4,9 +4,6 @@
   <maintainer type="person">
     <email>hanno@gentoo.org</email>
   </maintainer>
-  <longdescription>
-    A fully featured and easy to use GTK+ Jabber client written in PyGTK.
-  </longdescription>
   <use>
     <flag name="crypt">End to end encryption and GPG encryption</flag>
     <flag name="geolocation">Sharing your location</flag>

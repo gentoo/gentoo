@@ -5,9 +5,6 @@
 		<email>NP-Hardass@gentoo.org</email>
 		<name>NP-Hardass</name>
 	</maintainer>
-	<longdescription lang="en">
-		Minimal mDNS resolver (and announcer) library
-	</longdescription>
 	<upstream>
 		<remote-id type="github">videolabs/libmicrodns</remote-id>
 	</upstream>

@@ -4,8 +4,4 @@
 	<maintainer type="project">
 		<email>media-video@gentoo.org</email>
 	</maintainer>
-	<longdescription lang="en">
-		Counterpart for the blinkentools and viewing the Blinkenlight-movies in
-		blm-format.
-	</longdescription>
 </pkgmetadata>

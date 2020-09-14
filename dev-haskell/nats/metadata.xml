@@ -5,9 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Haskell 98 natural numbers
-	</longdescription>
 	<use>
 		<flag name="binary">enable binary instances</flag>
 		<flag name="hashable">enable hashable instances</flag>

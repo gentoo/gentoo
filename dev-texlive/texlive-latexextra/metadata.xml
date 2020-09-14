@@ -9,7 +9,4 @@
 		<email>tex@gentoo.org</email>
 		<name>Gentoo TeX Project</name>
 	</maintainer>
-	<longdescription lang="en">
-		A very large collection of add-on packages for LaTeX.
-	</longdescription>
 </pkgmetadata>

@@ -5,7 +5,6 @@
     <email>voyageur@gentoo.org</email>
     <name>Bernard Cafarelli</name>
   </maintainer>
-  <longdescription lang="en">Trained models for app-text/tesseract compatible with the legacy engine</longdescription>
   <upstream>
     <remote-id type="github">tesseract-ocr/tessdata</remote-id>
   </upstream>

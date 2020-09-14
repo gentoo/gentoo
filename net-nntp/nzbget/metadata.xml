@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -9,7 +9,6 @@
 		<email>sbraz@gentoo.org</email>
 		<name>Louis Sautier</name>
 	</maintainer>
-	<longdescription>A command-line based binary newsgrabber supporting .nzb files.</longdescription>
 	<use>
 		<flag name="parcheck">Enable support for checking PAR archives</flag>
 	</use>

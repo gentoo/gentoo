@@ -5,10 +5,6 @@
 		<email>sci-geosciences@gentoo.org</email>
 		<name>Gentoo Geosciences Project</name>
 	</maintainer>
-	<longdescription lang="en">
-An open-source utility for compressing LAS-stored LiDAR information in a
-lossless format.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">LASzip/LASzip</remote-id>
 	</upstream>

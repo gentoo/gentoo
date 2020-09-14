@@ -5,9 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Simple random generators API for cryptography related code
-	</longdescription>
 	<upstream>
 		<remote-id type="github">vincenthz/hs-crypto-random-api</remote-id>
 	</upstream>

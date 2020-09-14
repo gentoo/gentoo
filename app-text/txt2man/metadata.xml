@@ -2,8 +2,4 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<longdescription lang="en">
-		Simple shell script that creates a manpage starting from a simple
-		structured text file.
-	</longdescription>
 </pkgmetadata>

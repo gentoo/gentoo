@@ -9,9 +9,6 @@
     <email>polynomial-c@gentoo.org</email>
     <name>Lars Wendler</name>
   </maintainer>
-  <longdescription lang="en">
-  The native linux ftp/sftp client GUI built on wxGTK
-</longdescription>
   <upstream>
     <remote-id type="sourceforge">filezilla</remote-id>
   </upstream>

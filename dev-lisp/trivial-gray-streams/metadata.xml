@@ -5,8 +5,4 @@
 		<email>common-lisp@gentoo.org</email>
 		<name>Gentoo Common Lisp Project</name>
 	</maintainer>
-	<longdescription lang="en">
-		This system provides an extremely thin compatibility layer for
-		Gray streams
-	</longdescription>
 </pkgmetadata>

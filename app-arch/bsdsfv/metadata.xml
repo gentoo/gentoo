@@ -2,7 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <!--maintainer-needed-->
-  <longdescription>A all in one SFV utility.</longdescription>
   <upstream>
     <remote-id type="sourceforge">bsdsfv</remote-id>
   </upstream>

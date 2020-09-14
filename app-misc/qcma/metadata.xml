@@ -5,9 +5,6 @@
 		<email>mva@gentoo.org</email>
 		<name>Vadim Misbakh-Soloviov</name>
 	</maintainer>
-	<longdescription lang="en">
-		Cross-platform content manager assistant for the PS Vita.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">codestation/qcma</remote-id>
 	</upstream>

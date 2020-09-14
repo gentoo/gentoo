@@ -5,9 +5,6 @@
     <email>candrews@gentoo.org</email>
     <name>Craig Andrews</name>
   </maintainer>
-  <longdescription>
-    A reference implementation of the Russian GOST crypto algorithms for OpenSSL.
-  </longdescription>
   <upstream>
     <remote-id type="github">gost-engine/engine</remote-id>
   </upstream>

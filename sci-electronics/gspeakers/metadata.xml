@@ -5,9 +5,6 @@
     <email>sci-electronics@gentoo.org</email>
     <name>Gentoo Electronics Project</name>
   </maintainer>
-  <longdescription>
-    GSpeakers is a GTK based loudspeaker and crossovernetwork design program.
-  </longdescription>
   <upstream>
     <remote-id type="sourceforge">gspeakers</remote-id>
   </upstream>

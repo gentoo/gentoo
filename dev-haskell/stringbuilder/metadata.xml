@@ -5,7 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		&lt;https://github.com/sol/stringbuilder#readme&gt;
-	</longdescription>
 </pkgmetadata>

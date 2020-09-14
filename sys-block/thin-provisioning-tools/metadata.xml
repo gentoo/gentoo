@@ -8,9 +8,6 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
-	<longdescription lang="en">
-A suite of tools for thin provisioning on Linux.
-</longdescription>
 	<upstream>
 		<remote-id type="github">jthornber/thin-provisioning-tools</remote-id>
 	</upstream>

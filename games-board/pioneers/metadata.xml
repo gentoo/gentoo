@@ -5,9 +5,6 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<longdescription>
-	Pio (Pioneers) is a clone of the board game The Settlers of Catan.
-</longdescription>
 	<use>
 		<flag name="help">Enable gnome ingame help via scrollkeeper</flag>
 	</use>

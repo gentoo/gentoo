@@ -5,9 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		See initial blog post for explanation: &lt;http://www.yesodweb.com/blog/2012/09/project-templates&gt;
-	</longdescription>
 	<upstream>
 		<remote-id type="github">fpco/haskell-ide</remote-id>
 	</upstream>

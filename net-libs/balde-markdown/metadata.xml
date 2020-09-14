@@ -5,9 +5,6 @@
 		<email>rafaelmartins@gentoo.org</email>
 		<name>Rafael G. Martins</name>
 	</maintainer>
-	<longdescription lang="en">
-		A balde extension that adds Markdown support.
-	</longdescription>
 	<upstream>
 		<maintainer status="active">
 			<email>rafaelmartins@gentoo.org</email>

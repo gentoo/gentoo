@@ -10,8 +10,4 @@
     <flag name="session">Include experimental Jack session management
       (save/restore) support</flag>
   </use>
-  <longdescription lang="en">
-    Patchage is a modular patch bay for audio and MIDI for Jack based audio
-    systems.
-  </longdescription>
 </pkgmetadata>

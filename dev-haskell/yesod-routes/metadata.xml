@@ -5,7 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Provides an efficient routing system, a parser and TH code generation.
-	</longdescription>
 </pkgmetadata>

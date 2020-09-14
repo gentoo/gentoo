@@ -5,7 +5,4 @@
     <email>heroxbd@gentoo.org</email>
     <name>Benda Xu</name>
 </maintainer>
-<longdescription lang="en">
-    This package provides the openbsd linux port of netcat.
-</longdescription>
 </pkgmetadata>

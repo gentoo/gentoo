@@ -5,9 +5,6 @@
 		<email>ultrabug@gentoo.org</email>
 		<name>Alexys Jacob</name>
 	</maintainer>
-	<longdescription lang="en">
-	MongoDB operation tools such as mongodump, mongoexport, mongorestore, bsondump...
-	</longdescription>
 	<upstream>
 		<remote-id type="github">mongodb/mongo-tools</remote-id>
 	</upstream>

@@ -2,8 +2,4 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <!-- maintainer-needed -->
-<longdescription>
-dvdrtools is a fork of cdrtools, with the primary goal of supporting
-writable DVD drives.
-</longdescription>
 </pkgmetadata>

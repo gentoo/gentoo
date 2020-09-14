@@ -5,7 +5,6 @@
     <email>voyageur@gentoo.org</email>
     <name>Bernard Cafarelli</name>
   </maintainer>
-  <longdescription lang="en">Most accurate trained models for app-text/tesseract</longdescription>
   <upstream>
     <remote-id type="github">tesseract-ocr/tessdata_best</remote-id>
   </upstream>

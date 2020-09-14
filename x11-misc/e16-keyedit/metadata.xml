@@ -11,7 +11,4 @@
   <upstream>
     <remote-id type="sourceforge">enlightenment</remote-id>
   </upstream>
-  <longdescription>
-    e16-keyedit provides a graphical interface for managing keybindings in Enlightenment E16
-  </longdescription>
 </pkgmetadata>

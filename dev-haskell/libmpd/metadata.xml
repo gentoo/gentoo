@@ -5,10 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		A client library for MPD, the Music Player Daemon
-		(&lt;https://www.musicpd.org/&gt;).
-	</longdescription>
 	<upstream>
 		<remote-id type="github">vimus/libmpd-haskell#readme</remote-id>
 	</upstream>

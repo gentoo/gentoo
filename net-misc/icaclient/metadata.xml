@@ -5,13 +5,4 @@
 		<email>polynomial-c@gentoo.org</email>
 		<name>Lars Wendler</name>
 	</maintainer>
-	<longdescription>
-		ICAClient is a Linux client to a Citrix Metaframe Server.
-	</longdescription>
-	<longdescription lang="ja">
-		ICAClient は Citrix Metaframe Server への Linux 用クライアントです。
-	</longdescription>
-	<longdescription lang="de">
-		ICAClient ist ein Programm zum Zugriff auf Citrix Metaframe Server.
-	</longdescription>
 </pkgmetadata>

@@ -5,10 +5,6 @@
     <email>cjk@gentoo.org</email>
     <name>Cjk</name>
   </maintainer>
-  <longdescription lang="en">
-    The Chewing engine for IBus. It provides a Chinese input method from
-    <pkg>app-i18n/libchewing</pkg>.
-  </longdescription>
   <use>
     <flag name="gconf">Enable support for <pkg>gnome-base/gconf</pkg></flag>
   </use>

@@ -5,7 +5,4 @@
 	<email>gstreamer@gentoo.org</email>
 	<name>GStreamer package maintainers</name>
 </maintainer>
-<longdescription lang="en">
-	GStreamer DV demuxer and decoder plugin based on libdv (libdv.sf.net)
-</longdescription>
 </pkgmetadata>

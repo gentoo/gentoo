@@ -5,9 +5,6 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-  <longdescription lang="en">
-  A Python module for numerical optimization.
-</longdescription>
   <upstream>
     <remote-id type="pypi">scikits.optimization</remote-id>
   </upstream>

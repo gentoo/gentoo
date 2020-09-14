@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<longdescription lang="en">
-		A ncurses-based tool for handling postfix queues.
-	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">pfqueue</remote-id>
 	</upstream>

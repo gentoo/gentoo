@@ -9,7 +9,4 @@
   <email>sci-physics@gentoo.org</email>
   <name>Gentoo Physics Project</name>
 </maintainer>
-<longdescription lang="en">
-  A program for reducing Feynman integrals
-</longdescription>
 </pkgmetadata>

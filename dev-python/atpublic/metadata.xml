@@ -8,7 +8,4 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
-	<longdescription lang="en">
-		This is a very simple decorator and function which populates a module's __all__ and optionally the module globals.
-	</longdescription>
 </pkgmetadata>

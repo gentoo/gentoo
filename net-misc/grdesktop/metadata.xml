@@ -5,6 +5,4 @@
 	<email>gnome@gentoo.org</email>
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
-<longdescription>Gtk2 frontend for rdesktop</longdescription>
-<longdescription lang="ja">リモート・デスクトップの GTK2 フロントエンドです。</longdescription>
 </pkgmetadata>
