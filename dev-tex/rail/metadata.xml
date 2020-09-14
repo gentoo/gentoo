@@ -5,7 +5,4 @@
 	<email>tex@gentoo.org</email>
 	<name>Gentoo TeX Project</name>
 </maintainer>
-<longdescription lang="en">
-A C program and LaTeX package to draw syntax diagrams specified in EBNF.
-</longdescription>
 </pkgmetadata>

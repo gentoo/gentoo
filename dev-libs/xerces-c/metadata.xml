@@ -2,7 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <!-- maintainer-needed -->
-<longdescription>xerces-c is a C++ library specializing in XML parsing. It is released by the Apache Foundation</longdescription>
 <use>
   <flag name="iconv">Use iconv (<pkg>virtual/libiconv</pkg>) as message loader
     and transcoder (in general it would be possible to use iconv only as

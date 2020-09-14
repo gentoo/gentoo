@@ -9,10 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription lang="en">
-	A shell script to automatically issue and renew the free certificates
-	from Let's Encrypt
-	</longdescription>
 	<upstream>
 		<remote-id type="github">Neilpang/acme.sh</remote-id>
 	</upstream>

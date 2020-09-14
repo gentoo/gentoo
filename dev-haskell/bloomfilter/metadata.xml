@@ -5,9 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Pure and impure Bloom Filter implementations.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">bos/bloomfilter</remote-id>
 	</upstream>

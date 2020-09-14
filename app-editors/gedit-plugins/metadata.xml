@@ -5,7 +5,6 @@
 	<email>gnome@gentoo.org</email>
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
-<longdescription>Official plugins for gedit</longdescription>
 <use>
 	<flag name="charmap">Insert special characters just by clicking on
 		them</flag>

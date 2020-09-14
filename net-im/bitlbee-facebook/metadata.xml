@@ -9,10 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription lang="en">
-		The Facebook protocol plugin for bitlbee. This plugin uses the Facebook
-		Mobile API.
-	</longdescription>
 	<upstream>
 		<maintainer status="active">
 			<email>jgeboski@gmail.com</email>

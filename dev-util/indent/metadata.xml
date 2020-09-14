@@ -5,8 +5,4 @@
 	<email>jer@gentoo.org</email>
 	<name>Jeroen Roovers</name>
 </maintainer>
-<longdescription lang="en">
-Indent is the GNU indenting program. It is used to beautify C program source
-files.
-</longdescription>
 </pkgmetadata>

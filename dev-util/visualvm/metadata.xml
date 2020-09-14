@@ -5,7 +5,6 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
-	<longdescription>VisualVM is a visual tool integrating commandline JDK tools and lightweight profiling capabilities.</longdescription>
 	<upstream>
 		<remote-id type="github">oracle/visualvm</remote-id>
 	</upstream>

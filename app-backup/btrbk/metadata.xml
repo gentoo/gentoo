@@ -9,9 +9,6 @@
         <email>axel@tty0.ch</email>
         <name>Axel Burri</name>
     </maintainer>
-    <longdescription lang="en">
-        Tool for creating snapshots and remote backups of btrfs subvolumes
-    </longdescription>
     <upstream>
         <maintainer status="active">
             <email>axel@tty0.ch</email>
@@ -23,7 +20,7 @@
         <remote-id type="github">digint/btrbk</remote-id>
     </upstream>
     <use>
-        <flag name='pv'>Use sys-apps/pv to enable progress bar functionality</flag>
-        <flag name='mbuffer'>Use sys-block/mbuffer to enable progress bar and buffering/limiting functionality</flag>
+        <flag name="pv">Use sys-apps/pv to enable progress bar functionality</flag>
+        <flag name="mbuffer">Use sys-block/mbuffer to enable progress bar and buffering/limiting functionality</flag>
     </use>
 </pkgmetadata>

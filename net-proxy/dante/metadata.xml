@@ -2,5 +2,4 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person"><email>robbat2@gentoo.org</email></maintainer>
-<longdescription>A free socks4, socks5 and msproxy implementation</longdescription>
 </pkgmetadata>

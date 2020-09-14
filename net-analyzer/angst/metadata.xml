@@ -5,7 +5,6 @@
 		<email>netmon@gentoo.org</email>
 		<name>Gentoo network monitoring and analysis project</name>
 	</maintainer>
-	<longdescription>an active sniffer that provides methods for aggressive sniffing on switched LAN</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">angst</remote-id>
 	</upstream>

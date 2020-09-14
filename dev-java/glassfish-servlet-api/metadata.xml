@@ -5,8 +5,4 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
-	<longdescription>
-	The Glassfish Reference implementation of the Servlet/JSP API
-	specifications.
-	</longdescription>
 </pkgmetadata>

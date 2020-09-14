@@ -5,5 +5,4 @@
 	<email>embedded@gentoo.org</email>
 	<name>Embedded Gentoo</name>
 </maintainer>
-<longdescription>Communication package providing the X, Y, and ZMODEM file transfer protocols</longdescription>
 </pkgmetadata>

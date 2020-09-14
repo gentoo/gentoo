@@ -2,8 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<longdescription>A utility for linux laptop users to use multiple network
-	profiles, and switch effortlessly.</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">quickswitch</remote-id>
 	</upstream>

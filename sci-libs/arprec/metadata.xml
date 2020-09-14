@@ -5,9 +5,6 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-  <longdescription>
-  Arbitrary precision library for float arithmetics and mathematical functions.
-</longdescription>
   <use>
     <flag name="qd">Use <pkg>sci-libs/qd</pkg> for quad-double datatype</flag>
   </use>

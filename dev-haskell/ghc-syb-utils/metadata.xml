@@ -5,9 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Scrap Your Boilerplate utilities for the GHC API.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">nominolo/ghc-syb</remote-id>
 	</upstream>
