@@ -1,0 +1,10 @@
+--- a/CI/ConstructReleaseDoc.py	(original)
++++ b/CI/ConstructReleaseDoc.py	(refactored)
+@@ -35,6 +35,6 @@
+     releases.append(release)
+     changeDoc["releases"] = releases
+ 
+-    print(json.dumps(changeDoc))
++    print((json.dumps(changeDoc)))
+ 
+ Main()

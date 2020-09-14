@@ -1,0 +1,28 @@
+--- a/android-build/build_and_test_android.py	(original)
++++ b/android-build/build_and_test_android.py	(refactored)
+@@ -120,13 +120,13 @@
+  
+     validTests = GetTestList( buildSharedObjects )
+     if runTest not in validTests:
+-        print( 'Invalid value for runtest option: ' + runTest )
++        print(( 'Invalid value for runtest option: ' + runTest ))
+         print( 'Valid values are: ' )
+-        print( '  ' + ", ".join( validTests ) )
++        print(( '  ' + ", ".join( validTests ) ))
+         raise ArgumentException('runtest', runTest)
+         
+     if not IsValidABI(abi):
+-        print('Invalid argument value for abi: ', abi)
++        print(('Invalid argument value for abi: ', abi))
+         print('  Valid values are "armeabi-v7a"')
+         raise ArgumentException('abi', abi)
+ 
+@@ -140,7 +140,7 @@
+         avd = FindAVDForABI(abi, avdABIs)
+ 
+     if not IsValidAVD(avd, abi, avdABIs):
+-        print('Invalid virtual device: ', avd)
++        print(('Invalid virtual device: ', avd))
+         print('  Use --avd to set the virtual device')
+         print('  Use "android lists avds" to see all usable virtual devices')
+         raise ArgumentException('avd', avd)
