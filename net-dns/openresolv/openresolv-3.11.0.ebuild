@@ -38,3 +38,5 @@ pkg_config() {
 		einfo "The dummy interface will disappear when you next reboot"
 	fi
 }
+
+DOCS=( LICENSE README.md )

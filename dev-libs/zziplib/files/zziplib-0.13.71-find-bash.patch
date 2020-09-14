@@ -9,7 +9,7 @@ index 7ceba4a..c1b8172 100644
 +find_package ( UnixCommands REQUIRED ) # bash
  join_paths(libdir "\${prefix}" "${CMAKE_INSTALL_LIBDIR}")
  join_paths(includedir "\${prefix}" "${CMAKE_INSTALL_INCLUDEDIR}")
- add_custom_command(OUTPUT SDL_rwops_zzip.pc
+ join_paths(pc_zzipsdldir "\${prefix}" "${zzipsdldir}")
 diff --git a/zzip/CMakeLists.txt b/zzip/CMakeLists.txt
 index a9f6e3a..2cdd275 100644
 --- a/zzip/CMakeLists.txt
