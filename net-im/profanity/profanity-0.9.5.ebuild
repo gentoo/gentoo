@@ -14,7 +14,7 @@ KEYWORDS="~amd64"
 IUSE="libnotify omemo otr gpg test xscreensaver"
 RESTRICT="!test? ( test )"
 
-DEPEND="
+COMMON_DEPEND="
 	dev-db/sqlite
 	dev-libs/expat
 	dev-libs/glib
@@ -30,12 +30,14 @@ DEPEND="
 		dev-libs/libgcrypt
 	)
 	otr? ( net-libs/libotr )
-	test? ( dev-util/cmocka )
 	xscreensaver? (
 		x11-libs/libXScrnSaver
 		x11-libs/libX11 )
 	"
-RDEPEND="${DEPEND}"
+DEPEND="${COMMON_DEPEND}
+	test? ( dev-util/cmocka )
+"
+RDEPEND="${COMMON_DEPEND}"
 
 src_configure() {
 	econf \
