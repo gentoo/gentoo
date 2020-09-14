@@ -17,6 +17,7 @@ KEYWORDS="amd64 ~ppc ~ppc64 x86"
 
 IUSE="aqbanking debug doc examples gnome-keyring +gui mysql nls ofx postgres
 	  python quotes -register2 smartcard sqlite test"
+RESTRICT="!test? ( test )"
 
 # Examples doesn't build unless GUI is also built
 REQUIRED_USE="
