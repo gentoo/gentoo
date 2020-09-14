@@ -6,7 +6,7 @@ inherit bash-completion-r1 go-module
 
 DESCRIPTION="CLI to Easily bootstrap a secure Kubernetes cluster"
 HOMEPAGE="https://kubernetes.io"
-SRC_URI="https://github.com/kubernetes/kubernetes/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/kubernetes/kubernetes/archive/v${PV}.tar.gz -> kubernetes-${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
