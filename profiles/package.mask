@@ -669,11 +669,6 @@ dev-tex/crosstex
 # Bug #629272
 app-admin/apg
 
-# Michał Górny <mgorny@gentoo.org> (2020-08-09)
-# Build tool with no revdeps left.
-# Removal in 30 days.  Bug #736517.
-dev-python/paver
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
 # consolekit is abandoned upstream.
 # People are encouraged to switch to any logind
