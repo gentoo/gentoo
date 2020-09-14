@@ -7920,7 +7920,7 @@ dev-python/authres 1.2.0: Parse and generate Authentication-Results headers
 dev-python/autobahn 20.4.3 20.7.1: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automat 20.2.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 1.12.1: Friendly state machines for python.
-dev-python/autopep8 1.4.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
+dev-python/autopep8 1.4.4 1.5.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/awesome-slugify 1.6.5: Python flexible slugify function
 dev-python/aws-sam-translator 1.25.0 1.26.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0: AWS X-Ray SDK for Python
