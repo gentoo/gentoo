@@ -8596,7 +8596,6 @@ dev-python/pathlib2 2.3.5: Fork of pathlib aiming to support the full stdlib Pyt
 dev-python/pathspec 0.8.0: Utility library for gitignore style pattern matching of file paths.
 dev-python/pathtools 0.1.2-r3: Pattern matching and various utilities for file systems paths
 dev-python/patsy 0.5.1: Python module to describe statistical models and design matrices
-dev-python/paver 1.3.4-r1: Python-based software project scripting tool along the lines of Make
 dev-python/pbkdf2 1.3-r1: Implementation of PBKDF2, specified in RSA PKCS#5 v2.0
 dev-python/pbr 5.4.5 5.5.0: Inject some useful and sensible default behaviors into setuptools
 dev-python/pcapy 0.11.2: Python pcap extension
@@ -10002,13 +10001,13 @@ dev-ruby/journey 1.0.4-r1: Journey is a router. It routes requests
 dev-ruby/jquery-rails 4.4.0: jQuery! For Rails! So great
 dev-ruby/jquery-ui-rails 6.0.1-r1: The jQuery UI assets for the Rails 3.2+ asset pipeline
 dev-ruby/jsobfu 0.4.2: A Javascript code obfuscator
-dev-ruby/json 1.8.6-r1 2.3.0 2.3.1: A JSON implementation as a Ruby extension
+dev-ruby/json 2.3.0 2.3.1: A JSON implementation as a Ruby extension
 dev-ruby/json_schema 0.20.8 0.20.9: A JSON Schema V4 and Hyperschema V4 parser and validator
 dev-ruby/jwt 2.2.2: A Ruby implementation of JSON Web Token draft 06
 dev-ruby/kirbybase 2.6.1-r2: A simple Ruby DBMS that stores data in plaintext files
 dev-ruby/kissfft 0.0.2: ruby interface to kissfft
 dev-ruby/kpeg 1.1.0-r1: A simple PEG library for Ruby
-dev-ruby/kramdown 1.17.0-r2 2.3.0: Yet-another-markdown-parser but fast, pure Ruby, using strict syntax definition
+dev-ruby/kramdown 2.3.0: Yet-another-markdown-parser but fast, pure Ruby, using strict syntax definition
 dev-ruby/kramdown-parser-gfm 1.1.0: A kramdown parser for the GFM dialect of Markdown
 dev-ruby/kramdown-syntax-coderay 1.0.1: Uses coderay to highlight code blocks/spans
 dev-ruby/launchy 2.4.3-r2 2.5.0: Helper class for launching cross-platform applications
@@ -10500,7 +10499,6 @@ dev-tex/bibtexu 3.71_p20200406: 8-bit Implementation of BibTeX 0.99 with a Very 
 dev-tex/catdvi 0.14-r2: DVI to plain text translator
 dev-tex/chktex 1.7.6: Checks latex source for common mistakes
 dev-tex/cpp2latex 2.3-r2: A program to convert C++ code to LaTeX source
-dev-tex/crosstex 0.6-r3: CrossTeX - object oriented BibTeX replacement
 dev-tex/csindex 2.11c-r2: Utility for creating Czech/Slovak-sorted LaTeX index-files
 dev-tex/culmus-latex 0.7-r1: Culmus fonts support for latex
 dev-tex/detex 2.8-r1: A filter program that removes the LaTeX (or TeX) control sequences
@@ -10967,7 +10965,6 @@ dev-vcs/easygit 1.7.5.2: Easy GIT (eg), a frontend for git designed for former c
 dev-vcs/fossil 2.11.1 2.12.1: Simple, high-reliability, source control management, and more
 dev-vcs/git 2.23.3 2.24.3 2.25.4 2.26.2 2.27.0 2.28.0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 8.20200810: manage files with git, without checking their contents into git
-dev-vcs/git-bz 0.2015.09.08: Bugzilla subcommand for git
 dev-vcs/git-cola 3.5-r1: The highly caffeinated git GUI
 dev-vcs/git-crypt 0.6.0: transparent file encryption in git
 dev-vcs/git-deploy 6.0.1_p20131024-r1: make deployments so easy that you'll let new hires do them on their first day
@@ -15630,7 +15627,6 @@ net-wireless/kismetmobiledashboard 1.5_beta1-r2 9999: Mobile UI for kismet
 net-wireless/limesuite 19.04.0: Driver and GUI for LMS7002M-based SDR platforms
 net-wireless/linssid 3.6-r1: Graphical wireless scanning for Linux
 net-wireless/lorcon 0.0_p20150109 0.0_p20180409-r1 0.0_p20200214 9999: A generic library for injecting 802.11 frames
-net-wireless/lorcon-old 9999: A generic library for injecting 802.11 frames
 net-wireless/madwimax 0.1.1-r1: Reverse-engineered driver for WiMAX devices based on Samsung CMC-730 chip
 net-wireless/mdk 3.6-r1: Wireless injection tool with various functions
 net-wireless/mfoc 0.10.7-r1: Mifare Classic Offline Cracker
@@ -18607,6 +18603,7 @@ x11-misc/stalonetray 0.8.3: System tray utility including support for KDE system
 x11-misc/sunflower 0.4_p20200716-r1: Small and highly customizable twin-panel file manager with plugin-support
 x11-misc/superswitcher 0.6-r1: A more feature-full replacement of the Alt-Tab window switching behavior
 x11-misc/sux 1.0-r4 1.0.1: "su" wrapper which transfers X credentials
+x11-misc/svkbd 0.2: Simple Virtual Keyboard
 x11-misc/sw-notify-send 1.2.1 9999: A system-wide variant of tinynotify-send
 x11-misc/sxhkd 0.6.1: Simple X hotkey daemon
 x11-misc/synergy 1.9.1 2.0.0: Lets you easily share a single mouse and keyboard between multiple computers
