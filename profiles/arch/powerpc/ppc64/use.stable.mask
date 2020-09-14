@@ -3,7 +3,3 @@
 
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
-
-# Hans de Graaff <graaff@gentoo.org> (2020-09-14)
-# Masked per-arch to facilitate stabling, bug 728192
-ruby_targets_ruby26
