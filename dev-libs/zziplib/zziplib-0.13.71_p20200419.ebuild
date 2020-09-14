@@ -15,16 +15,13 @@ SRC_URI="https://github.com/gdraheim/${PN}/archive/${MY_COMMIT}.tar.gz -> ${P}.t
 LICENSE="|| ( LGPL-2.1 MPL-1.1 )"
 SLOT="0/13"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc sdl static-libs test"
+IUSE="sdl static-libs test"
 
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	doc? ( ${PYTHON_DEPS} )
-	test? (
-		app-arch/zip
-		${PYTHON_DEPS}
-	)
+	${PYTHON_DEPS}
+	test? ( app-arch/zip )
 "
 DEPEND="
 	sys-libs/zlib
@@ -40,7 +37,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	if use doc || use test; then
+	if use test; then
 		python-any-r1_pkg_setup
 	fi
 }
@@ -53,7 +50,7 @@ src_configure() {
 		-DBUILD_STATIC_LIBS="$(usex static-libs)"
 		-DBUILD_TESTS="$(usex test)"
 		-DZZIPTEST="$(usex test)"
-		-DZZIPDOCS="$(usex doc)"
+		-DZZIPDOCS=ON
 		-DZZIPWRAP=OFF
 	)
 
