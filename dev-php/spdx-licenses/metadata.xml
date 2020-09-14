@@ -12,9 +12,6 @@
   <maintainer type="project">
     <email>php-bugs@gentoo.org</email>
   </maintainer>
-  <longdescription>
-    Tools for working with the SPDX license list and validating licenses.
-  </longdescription>
   <upstream>
     <remote-id type="github">composer/spdx-licenses</remote-id>
   </upstream>

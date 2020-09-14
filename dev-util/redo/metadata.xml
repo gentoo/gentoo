@@ -4,8 +4,4 @@
 <maintainer type="person">
 <email>jer@gentoo.org</email>
 </maintainer>
-<longdescription lang="en">
-Smaller, easier, more powerful, and more reliable than make. An implementation
-of djb's redo.
-</longdescription>
 </pkgmetadata>

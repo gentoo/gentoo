@@ -8,7 +8,4 @@
 	<use>
 		<flag name="force-alignment">No description</flag>
 	</use>
-	<longdescription>
-		Fast and lightweight binary serialization
-	</longdescription>
 </pkgmetadata>

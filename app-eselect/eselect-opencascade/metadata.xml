@@ -9,8 +9,4 @@
 	<email>proxy-maint@gentoo.org</email>
 	<name>Proxy Maintainers project</name>
 </maintainer>
-<longdescription>
-Utility to switch between the different OpenCASCADE implementations
-on your system.
-</longdescription>
 </pkgmetadata>

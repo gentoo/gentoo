@@ -2,7 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <!-- maintainer-needed -->
-  <longdescription>Tools for ATM.</longdescription>
   <upstream>
     <remote-id type="sourceforge">linux-atm</remote-id>
   </upstream>

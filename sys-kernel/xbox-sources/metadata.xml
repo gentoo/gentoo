@@ -5,7 +5,6 @@
 		<email>kernel@gentoo.org</email>
 		<name>Gentoo Kernel Project</name>
 	</maintainer>
-	<longdescription>Full sources for the Xbox Linux kernel</longdescription>
 	<upstream>
 		<remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>
 		<remote-id type="sourceforge">xbox-linux</remote-id>

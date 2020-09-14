@@ -8,7 +8,4 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
-	<longdescription lang="en">
-		Create configuration schemas, and process and validate configurations.
-	</longdescription>
 </pkgmetadata>

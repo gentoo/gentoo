@@ -5,8 +5,4 @@
 		<email>vim@gentoo.org</email>
 		<name>Gentoo Vim Project</name>
 	</maintainer>
-	<longdescription>
-		Vim spell files for Hebrew (he). Supported character sets are UTF-8 and
-		ISO-8859-8.
-	</longdescription>
 </pkgmetadata>

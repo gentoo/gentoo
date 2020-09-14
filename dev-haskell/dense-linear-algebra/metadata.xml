@@ -5,8 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		This library is simply collection of linear-algebra related modules
-		split from statistics library.
-	</longdescription>
 </pkgmetadata>

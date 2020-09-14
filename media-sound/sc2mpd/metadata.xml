@@ -4,5 +4,4 @@
 <maintainer type="person">
 	<email>stasibear@gentoo.org</email>
 </maintainer>
-<longdescription>Implements the SongCast protocol for use by upmpdcli and mpd</longdescription>
 </pkgmetadata>

@@ -5,8 +5,4 @@
 	<email>java@gentoo.org</email>
 	<name>Java</name>
 </maintainer>
-<longdescription lang="en">
-JFlex is a lexical analyzer generator (also known as scanner generator) for
-Java(tm).
-</longdescription>
 </pkgmetadata>

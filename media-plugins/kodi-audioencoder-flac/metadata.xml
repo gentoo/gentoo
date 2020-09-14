@@ -5,7 +5,6 @@
         <email>candrews@gentoo.org</email>
         <name>Craig Andrews</name>
     </maintainer>
-    <longdescription>Flac encoder addon for Kodi</longdescription>
     <upstream>
         <remote-id type="github">xbmc/audioencoder.flac</remote-id>
     </upstream>

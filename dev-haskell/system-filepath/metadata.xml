@@ -5,9 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		High-level, byte-based file and directory path manipulations
-	</longdescription>
 	<upstream>
 		<remote-id type="github">fpco/haskell-filesystem</remote-id>
 	</upstream>

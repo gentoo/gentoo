@@ -5,7 +5,6 @@
   <email>kerberos@gentoo.org</email>
   <name>Kerberos</name>
 </maintainer>
-<longdescription>Kerberos 5 reference implementation from MIT</longdescription>
 <use>
   <flag name="doc">
     Creates and installs the API and implementation

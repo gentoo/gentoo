@@ -5,6 +5,4 @@
 		<email>gnome@gentoo.org</email>
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
-	<longdescription>GNOME Remote Desktop implements remote desktop functionality for
-the GNOME platform.</longdescription>
 </pkgmetadata>

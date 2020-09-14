@@ -5,12 +5,6 @@
     <email>voyageur@gentoo.org</email>
     <name>Bernard Cafarelli</name>
   </maintainer>
-  <longdescription lang="en">
-     An HP-42S Calculator Simulator
-  </longdescription>
-  <longdescription lang="es">
-    Un simulador de la calculadora HP-42S
-  </longdescription>
   <upstream>
     <remote-id type="github">thomasokken/free42</remote-id>
   </upstream>

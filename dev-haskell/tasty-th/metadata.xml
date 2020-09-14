@@ -5,9 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		A fork of of test-framework-th modified to use tasty instead of test-framework.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">bennofs/tasty-th</remote-id>
 	</upstream>

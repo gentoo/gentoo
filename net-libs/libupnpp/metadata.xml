@@ -4,8 +4,4 @@
 <maintainer type="person">
 	<email>stasibear@gentoo.org</email>
 </maintainer>
-<longdescription>
-	The libupnpp C++ library wraps libupnp for easier use by upmpdcli and
-upplay
-</longdescription>
 </pkgmetadata>

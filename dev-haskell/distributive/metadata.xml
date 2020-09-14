@@ -5,9 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Haskell 98 Distributive functors -- Dual to Traversable
-	</longdescription>
 	<upstream>
 		<remote-id type="github">ekmett/distributive</remote-id>
 	</upstream>

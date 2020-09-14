@@ -8,7 +8,4 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
-	<longdescription lang="en">
-		This is a client for the OpenStack Blazar API.
-	</longdescription>
 </pkgmetadata>

@@ -5,7 +5,6 @@
     <email>voyageur@gentoo.org</email>
     <name>Bernard Cafarelli</name>
   </maintainer>
-  <longdescription lang="en">Fast integer versions of trained models for app-text/tesseract</longdescription>
   <upstream>
     <remote-id type="github">tesseract-ocr/tessdata_fast</remote-id>
   </upstream>

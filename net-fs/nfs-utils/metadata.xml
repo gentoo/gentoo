@@ -5,7 +5,6 @@
     <email>base-system@gentoo.org</email>
     <name>Gentoo Base System</name>
   </maintainer>
-  <longdescription>NFS client and server daemons</longdescription>
   <use>
     <flag name="junction">Enable NFS junction support in nfsref</flag>
     <flag name="ldap">Add ldap support</flag>

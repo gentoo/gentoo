@@ -5,10 +5,6 @@
 		<email>rafaelmartins@gentoo.org</email>
 		<name>Rafael G. Martins</name>
 	</maintainer>
-	<longdescription lang="en">
-		blogc(1) is a blog compiler. It converts source files and templates
-		into blog/website resources.
-	</longdescription>
 	<upstream>
 		<maintainer status="active">
 			<email>rafael@rafaelmartins.eng.br</email>

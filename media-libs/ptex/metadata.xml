@@ -9,9 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>
-		Per-Face Texture Mapping for Production Rendering.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">wdas/ptex</remote-id>
 	</upstream>

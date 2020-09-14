@@ -9,9 +9,6 @@
     <email>sci-mathematics@gentoo.org</email>
     <name>Gentoo Mathematics Project</name>
   </maintainer>
-  <longdescription lang="en">
-FriCAS is a fork of Axiom computer algebra system.
-</longdescription>
   <use>
     <flag name="clisp">Add support for GNU CLISP
     (<pkg>dev-lisp/clisp</pkg>)</flag>
