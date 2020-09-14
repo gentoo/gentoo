@@ -25,6 +25,7 @@ BDEPEND="
 		dev-python/asttokens[${PYTHON_USEDEP}]
 		<dev-python/dnspython-2[${PYTHON_USEDEP}]
 		dev-python/executing[${PYTHON_USEDEP}]
+		dev-python/eventlet[${PYTHON_USEDEP}]
 		dev-python/fakeredis[${PYTHON_USEDEP}]
 		dev-python/flask-login[${PYTHON_USEDEP}]
 		dev-python/gevent[${PYTHON_USEDEP}]
@@ -75,5 +76,10 @@ python_test() {
 		--deselect
 		'tests/test_transport.py::test_transport_works[greenlet'
 	)
+
+	# Prevent tests/integrations/modules/test_modules.py:test_basic failure
+	# Needs to detect sentry-sdk in the installed modules
+	distutils_install_for_testing
+
 	pytest -vv "${deselect[@]}" || die "Tests failed with ${EPYTHON}"
 }

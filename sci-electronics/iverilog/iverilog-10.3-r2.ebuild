@@ -36,6 +36,12 @@ BDEPEND="dev-util/gperf
 	sys-devel/flex
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-10.3-file-missing.patch #705412
+	"${FILESDIR}"/${PN}-10.3-fno-common.patch #706366
+	"${FILESDIR}"/${PN}-10.3-gen-bison-header.patch #734760
+)
+
 src_prepare() {
 	default
 
