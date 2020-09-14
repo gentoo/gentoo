@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit autotools
+
 DESCRIPTION="Useful set of performance and usability-oriented extensions to C"
 HOMEPAGE="https://github.com/atheme/libmowgli-2"
 SRC_URI="https://github.com/atheme/libmowgli-2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -27,7 +29,15 @@ PATCHES=(
 
 S="${WORKDIR}/${PN}-2-${PV}"
 
+src_prepare() {
+	default
+
+	# $(MAKE) invocation will handle passing down flags.
+	sed -i -e 's/${MFLAGS}//' buildsys.mk.in || die
+
+	AT_M4DIR="m4" eautoreconf
+}
+
 src_configure() {
-	econf \
-		$(use_with ssl openssl)
+	econf $(use_with ssl openssl)
 }
