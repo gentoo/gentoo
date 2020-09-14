@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( pypy3 python3_{6..9} )
 inherit distutils-r1
 
 DESCRIPTION="Fake implementation of redis API for testing purposes"
@@ -21,7 +21,14 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 RDEPEND="
 	dev-python/redis-py[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/sortedcontainers[${PYTHON_USEDEP}]"
+	dev-python/sortedcontainers[${PYTHON_USEDEP}]
+"
+BDEPEND="
+	test? (
+		dev-python/hypothesis[${PYTHON_USEDEP}]
+		dev-python/pytest-mock[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest
 
