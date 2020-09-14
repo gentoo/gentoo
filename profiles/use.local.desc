@@ -4040,6 +4040,7 @@ media-gfx/blender:test - Build the provided unit tests.
 media-gfx/blender:valgrind - Add support for memory debugging using dev-util/valgrind
 media-gfx/chafa:tools - Build command-line tools
 media-gfx/cura:usb - Access 3D printers via USB
+media-gfx/curaengine:arcus - Build with support for communication library between internal components for Ultimaker software
 media-gfx/darktable:flickr - Add support for uploading photos to flickr
 media-gfx/darktable:geolocation - Enable geotagging support
 media-gfx/darktable:kwallet - Enable encrypted storage of passwords with kde-frameworks/kwallet
