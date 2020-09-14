@@ -13,10 +13,7 @@ KEYWORDS="~amd64 ~x86"
 
 DOCS=( FORMAT )
 
-IUSE="test"
-RESTRICT="!test? ( test )"
-
 src_test() {
-	default
+	# There's an empty check target, so can't call default.
 	emake test
 }
