@@ -478,6 +478,7 @@ app-admin/aerospike-amc-community 3.6.13-r2 4.0.19-r1: Web UI based monitoring t
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0.13: A webserver log analyzer
 app-admin/ansible 2.9.12 2.9.13 2.10.0 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible-base 2.10.0: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-cmdb 1.28: Ansible Configuration Management Database
 app-admin/ansible-lint 4.0.1 4.1.0: Checks ansible playbooks for practices and behaviour that can be improved
 app-admin/apache-tools 2.4.41 2.4.43 2.4.46: Useful Apache tools - htdigest, htpasswd, ab, htdbm
@@ -11985,7 +11986,7 @@ gui-libs/libhandy 0.0.13: Library with GTK widgets for mobile phones
 gui-libs/libwpe 1.4.0.1: Platform-agnostic interfaces for WPE WebKit
 gui-libs/tepl 4.2.1 4.4.0: GtkSourceView-based text editors and IDE helper library
 gui-libs/wf-config 0.4.1 0.5.0 9999: library for managing wayfire configuration files
-gui-libs/wlroots 0.11.0 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
+gui-libs/wlroots 0.10.0 0.10.1 0.11.0 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
 gui-libs/wpebackend-fdo 1.4.0: WPE backend designed for Linux desktop systems
 gui-libs/xdg-desktop-portal-wlr 9999: xdg-desktop-portal backend for wlroots
 gui-wm/hikari 1.2.0 2.0.2 2.1.1: Wayland compositor inspired by CWM
@@ -15663,6 +15664,8 @@ net-wireless/rtl-sdr 0.5.3_p20170919 0.5.4 0.6.0-r1 0.6.0_p2020802 9999: turns y
 net-wireless/rtl_433 0.1_p20190709-r1 20.02_p20200327 9999: Decode OOK modulated signals
 net-wireless/rtl_power_fftw 0.0_p20180528 9999: power spectrum for RTLSDR dongles
 net-wireless/sdrplay 2.13.1-r1: SDRplay API/HW driver for all RSPs
+net-wireless/sigdigger 0.1.0: The free digital signal analyzer
+net-wireless/sigutils 0.1.0: signal processing library for blind signal analysis and automatic demodulation
 net-wireless/soapy_power 1.6.1-r1 9999: Obtain power spectrum from SoapySDR devices
 net-wireless/soapybladerf 0.4.1 9999: Soapy SDR plugin for the Blade RF
 net-wireless/soapyhackrf 0.3.3-r1 9999: SoapySDR HackRF module
@@ -15674,6 +15677,8 @@ net-wireless/soapysdrplay 0.1.0 0.2.0 9999: Soapy SDR plugin for SDRPlay
 net-wireless/soapyuhd 0.3.6 9999: Soapy SDR plugins for UHD supported SDR devices
 net-wireless/spectools 2016.01.1 9999: Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware
 net-wireless/srslte 19.09-r2 20.04.1-r1 9999: Open source SDR LTE software suite from Software Radio Systems
+net-wireless/suscan 0.1.0: a realtime DSP processing library
+net-wireless/suwidgets 0.1.0: graphical library containing all SigDigger's custom widgets
 net-wireless/tempestsdr 0.0_p20200221 9999: Remote video eavesdropping using a software-defined radio platform
 net-wireless/ubertooth 2018.12.1 9999: open source wireless development platform suitable for Bluetooth experimentation
 net-wireless/uhd 3.15.0.0-r1 3.15.0.0-r100: Universal Software Radio Peripheral (USRP) Hardware Driver
