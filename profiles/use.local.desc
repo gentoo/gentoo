@@ -3085,8 +3085,6 @@ games-action/dxx-rebirth:d1x - Install Descent 1 resources and executable
 games-action/dxx-rebirth:d2x - Install Descent 2 resources and executable
 games-action/dxx-rebirth:data - Ensure some game levels are present; if the full game's level data is not already installed then install the playable demo data (i.e. shareware levels)
 games-action/dxx-rebirth:debug - Enable various debugging code paths and sanity checks, not just output. Some of these checks date back to the retail build, and choke on some custom levels because the game was never coded to sufficiently distrust inputs
-games-action/dxx-rebirth:descent1 - Install Descent 1 resources and executable (used prior to version 0.61)
-games-action/dxx-rebirth:descent2 - Install Descent 2 resources and executable (used prior to version 0.61)
 games-action/dxx-rebirth:editor - Enable level editor support
 games-action/dxx-rebirth:l10n_de - Provides German translations for the game's briefings, robot descriptions, and outro of the original campaign
 games-action/dxx-rebirth:midi - Enforce that SDL-mixer is used and has midi support
@@ -3094,7 +3092,6 @@ games-action/dxx-rebirth:music - Enable music support
 games-action/dxx-rebirth:opl3-musicpack - Include alternate version of the game's music, recorded with the Yamaha YMF262 OPL3 soundchip
 games-action/dxx-rebirth:sc55-musicpack - Include alternate version of the game's music, recorded with the Roland Sound Canvas SC-55 MIDI module
 games-action/dxx-rebirth:sdl2 - Use libSDL2, SDL2-mixer instead of libSDL-1* and SDL-mixer-1*
-games-action/dxx-rebirth:textures - Include high resolution (640x480) backgrounds, briefing images and fonts (for Descent 1)
 games-action/dxx-rebirth:tracker - Enable support for the PHP-based multiplayer game tracker
 games-action/dxx-rebirth:valgrind - Include a Valgrind header in build in order to support Memcheck client requests
 games-action/hotline-miami:bundled-libs - Use bundled libraries.
