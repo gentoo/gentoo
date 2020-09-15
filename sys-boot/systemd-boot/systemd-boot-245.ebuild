@@ -52,6 +52,7 @@ src_configure() {
 		-Dgnu-efi=true
 		-Defi-cc="$(tc-getCC)"
 		-Defi-ld="$(tc-getLD)"
+		-Defi-libdir="/usr/$(get_libdir)"
 		-Dsplit-usr=true
 		-Drootprefix="${EPREFIX:-/}"
 
