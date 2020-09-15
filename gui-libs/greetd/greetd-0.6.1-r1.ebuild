@@ -104,6 +104,7 @@ src_install() {
 	doins config.toml
 
 	systemd_dounit greetd.service
+	newinitd "${FILESDIR}"/${PN}.init ${PN}
 
 	if use man; then
 		doman agreety.1 greetd.1 greetd.5 greetd-ipc.7
