@@ -13,12 +13,13 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 -ppc x86"
 
-PATCHES=( "${FILESDIR}/${P}-makefile.patch" )
+PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
-src_compile() {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
+src_configure() {
+	tc-export CC
 }
 
 src_install() {
 	dobin spicctrl
+	einstalldocs
 }
