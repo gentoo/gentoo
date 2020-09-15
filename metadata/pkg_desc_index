@@ -9797,12 +9797,12 @@ dev-ruby/autoprefixer-rails 9.8.5 9.8.6.3: Add vendor prefixes to CSS rules usin
 dev-ruby/aws-eventstream 1.0.3 1.1.0: Amazon Web Services event stream library
 dev-ruby/aws-partitions 1.248.0 1.281.0 1.297.0 1.298.0: Provides interfaces to enumerate AWS partitions, regions, and services
 dev-ruby/aws-s3 0.6.3: Client library for Amazon's Simple Storage Service's REST API
-dev-ruby/aws-sdk 2.11.79 2.11.488: Official SDK for Amazon Web Services
-dev-ruby/aws-sdk-core 2.11.79 2.11.488 3.94.0: Provides API clients for AWS
-dev-ruby/aws-sdk-resources 2.11.79 2.11.488: Official SDK for Amazon Web Services
+dev-ruby/aws-sdk 2.11.488: Official SDK for Amazon Web Services
+dev-ruby/aws-sdk-core 2.11.488 3.94.0: Provides API clients for AWS
+dev-ruby/aws-sdk-resources 2.11.488: Official SDK for Amazon Web Services
 dev-ruby/aws-sigv4 1.1.2 1.1.4: Amazon Web Services Signature Version 4 signing library
 dev-ruby/axiom-types 0.1.1: Define types with optional constraints for use within axiom and other libraries
-dev-ruby/backports 3.15.0 3.16.1 3.17.2 3.18.1 3.18.2: Backports of Ruby features for older Ruby
+dev-ruby/backports 3.15.0 3.17.2 3.18.2: Backports of Ruby features for older Ruby
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
 dev-ruby/barby 0.6.8: Ruby barcode generator that doesn't rely on 3rd party libraries
 dev-ruby/base32 0.3.2 0.3.4: A library which provides base32 decoding and encoding
@@ -9811,7 +9811,7 @@ dev-ruby/bcrypt-ruby 3.1.13 3.1.15 3.1.16: An easy way to keep your users' passw
 dev-ruby/bcrypt_pbkdf 1.0.0 1.0.1: Implements bcrypt_pdkfd (a variant of PBKDF2 with bcrypt-based PRF)
 dev-ruby/best_in_place 3.1.1: In-place editor helper for Rails 3
 dev-ruby/bindata 2.4.1 2.4.6 2.4.7 2.4.8: Parsing Binary Data in Ruby
-dev-ruby/bindex 0.7.0 0.8.1: Bindings for your Ruby exceptions
+dev-ruby/bindex 0.8.1: Bindings for your Ruby exceptions
 dev-ruby/binding_of_caller 0.8.0: Retrieve the binding of a method's caller
 dev-ruby/bit-struct 0.16: Library for packed binary data stored in ruby Strings
 dev-ruby/blankslate 3.1.3: Base class with almost all of the methods from Object and Kernel being removed
@@ -9827,7 +9827,7 @@ dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.2.3 3.2.4: A builder to facilitate programatic generation of XML markup
 dev-ruby/bundler 1.17.3 1.17.3-r1 2.1.4: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.7.0.1: Provides patch-level verification for Bundled apps
-dev-ruby/bunny 2.14.4 2.15.0-r1 2.16.1: Another synchronous Ruby AMQP client
+dev-ruby/bunny 2.16.1 2.17.0: Another synchronous Ruby AMQP client
 dev-ruby/c21e 1.2.1: Run cross-platform executables
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
 dev-ruby/capistrano 2.15.5-r2 3.12.1 3.13.0 3.14.0 3.14.1: A distributed application deployment system
@@ -18675,7 +18675,7 @@ x11-misc/xkblayout-state 0_p20180118 9999: A small program to get/set the curren
 x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.30 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2 2.47_p7: GUI frontend to xmodmap
-x11-misc/xlockmore 5.50 5.62 5.63 5.64 5.65: Just another screensaver application for X
+x11-misc/xlockmore 5.50 5.62 5.63 5.64 5.65 5.66_alpha00: Just another screensaver application for X
 x11-misc/xmobar 0.36: A Minimalistic Text Based Status Bar
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
 x11-misc/xnee 3.19-r2: Program suite to record, replay and distribute user actions
