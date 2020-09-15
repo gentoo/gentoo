@@ -10129,7 +10129,7 @@ dev-ruby/pdf-reader 1.4.1-r2 2.4.0: PDF parser conforming as much as possible to
 dev-ruby/permutation 0.1.8-r1: Library performing operations with permutations of sequences (strings, arrays)
 dev-ruby/pg 0.21.0 1.2.2: Ruby extension library providing an API to PostgreSQL
 dev-ruby/pg_array_parser 0.0.9-r2: Simple library to parse PostgreSQL arrays into a array of strings
-dev-ruby/pkg-config 1.4.1 1.4.2: A pkg-config implementation by Ruby
+dev-ruby/pkg-config 1.4.1 1.4.2 1.4.3: A pkg-config implementation by Ruby
 dev-ruby/plist 3.5.0: A library to manipulate Property List files, also known as plists
 dev-ruby/pluggaloid 1.2.0 1.3.1 1.4.0 1.4.1 1.5.0: Pluggaloid is extensible plugin system for mikutter
 dev-ruby/podcast 0.0.4-r2: A pure Ruby library for generating podcasts from mp3 files
@@ -10193,7 +10193,7 @@ dev-ruby/rexml 3.2.4: An XML toolkit for Ruby
 dev-ruby/rgen 0.8.4: Ruby Modelling and Generator Framework
 dev-ruby/rinku 2.0.6: A Ruby library that does autolinking
 dev-ruby/ritex 1.0.1: Converts expressions from WebTeX into MathML
-dev-ruby/rjb 1.6.1: Rjb is a Ruby-Java software bridge
+dev-ruby/rjb 1.6.1 1.6.2: Rjb is a Ruby-Java software bridge
 dev-ruby/rkelly-remix 0.0.7: RKelly Remix is a fork of the RKelly JavaScript parser
 dev-ruby/rmagick 3.2.0 4.1.1 4.1.2: An interface between Ruby and the ImageMagick(TM) image processing library
 dev-ruby/roadie 3.5.0 3.5.1 4.0.0: Making HTML emails comfortable for the Rails rockstars
