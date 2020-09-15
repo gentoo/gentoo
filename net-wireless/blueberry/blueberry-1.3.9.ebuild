@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit eutils gnome2-utils python-single-r1 xdg-utils
+inherit gnome2-utils python-single-r1 xdg-utils
 
 DESCRIPTION="A Bluetooth configuration tool"
 HOMEPAGE="https://github.com/linuxmint/blueberry"
@@ -48,10 +48,6 @@ src_install() {
 	doexe usr/lib/blueberry/*
 	insinto /usr
 	doins -r usr/share
-}
-
-pkg_preinst() {
-	gnome2_schemas_savelist
 }
 
 pkg_postinst() {
