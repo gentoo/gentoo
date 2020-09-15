@@ -15547,7 +15547,7 @@ net-vpn/6tunnel 0.12 0.13: TCP proxy for applications that don't speak IPv6
 net-vpn/badvpn 1.999.126 1.999.127 1.999.128 1.999.129 1.999.130: Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
 net-vpn/corkscrew 2.0: a tool for tunneling SSH through HTTP proxies
 net-vpn/freelan 2.2: Peer-to-peer VPN software that abstracts a LAN over the Internet
-net-vpn/httptunnel 3.3-r2: httptunnel can create IP tunnels through firewalls/proxies using HTTP
+net-vpn/httptunnel 3.3-r2 3.3_p20180119: httptunnel can create IP tunnels through firewalls/proxies using HTTP
 net-vpn/i2p 0.9.45 0.9.47: A privacy-centric, anonymous network
 net-vpn/i2pd 2.31.0 2.32.0 2.32.1 2.33.0: A C++ daemon for accessing the I2P anonymous network
 net-vpn/iodine 0.7.0-r2: IP over DNS tunnel
@@ -18447,7 +18447,7 @@ x11-libs/xforms 1.2.4: A graphical user interface toolkit for X
 x11-libs/xosd 2.2.14_p2_p1: Library for overlaying text in X-Windows X-On-Screen-Display
 x11-libs/xpa 2.1.15 2.1.17 2.1.18: Messaging system providing communication between programs
 x11-libs/xtrans 1.4.0: X.Org xtrans library
-x11-misc/3ddesktop 0.2.9-r1: OpenGL virtual desktop switching
+x11-misc/3ddesktop 0.2.9-r1 0.2.9-r2: OpenGL virtual desktop switching
 x11-misc/3dfb 0.6.1-r1: 3D File Browser
 x11-misc/3dfm 1.0-r1: OpenGL-based 3D File Manager
 x11-misc/accessx 0951-r2: Interface to the XKEYBOARD extension in X11
@@ -18473,7 +18473,7 @@ x11-misc/bbweather 0.6.3-r2: blackbox weather monitor
 x11-misc/birdtray 1.8.1 9999: A new mail system tray notification icon for Thunderbird
 x11-misc/blockdpy 1-r1: Tool to block access via the physical display while x11vnc is running
 x11-misc/bumblebee 3.2.1_p20170130 3.2.1_p20190421 9999: Service providing elegant and stable means of managing Optimus graphics chipsets
-x11-misc/cairo-clock 0.3.4-r1: An analog clock displaying the system-time
+x11-misc/cairo-clock 0.3.4-r1 0.3.4-r2: An analog clock displaying the system-time
 x11-misc/cbatticon 1.6.5 1.6.9 1.6.10: A lightweight and fast battery icon that sits in your system tray
 x11-misc/cdm 0.6.1_pre20180107 0.7: The Console Display Manager
 x11-misc/chgres 0.1-r2: A very simple command line utility for changing X resolutions
