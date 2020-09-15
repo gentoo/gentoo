@@ -17,10 +17,14 @@ else
 	SRC_URI="https://github.com/rfjakob/earlyoom/archive/v$PV.tar.gz -> $P.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
-IUSE="systemd docs"
+IUSE="docs systemd test"
 
-DEPEND="docs? ( app-text/pandoc )"
 RDEPEND=""
+DEPEND=""
+BDEPEND="
+	docs? ( app-text/pandoc )
+	test? ( dev-lang/go )
+"
 
 src_compile() {
 	VERSION="v${PV}" emake earlyoom
