@@ -9187,7 +9187,7 @@ dev-python/taskflow 4.1.0: A library to do [jobs, tasks, flows] in a HA manner u
 dev-python/tblib 1.6.0 1.7.0: Traceback fiddling library for Python
 dev-python/tempita 0.5.3-r2: A very small text templating language
 dev-python/tempora 3.0.0 4.0.0: Objects and routines pertaining to date and time
-dev-python/tenacity 6.1.0-r1: General-purpose retrying library
+dev-python/tenacity 6.1.0-r1 6.2.0: General-purpose retrying library
 dev-python/termcolor 1.1.0-r2: ANSII Color formatting for output in terminal
 dev-python/terminado 0.8.3: Terminals served to term.js using Tornado websockets
 dev-python/terminaltables 3.1.0 9999: Generate simple tables in terminals from a nested list of strings
@@ -14844,7 +14844,7 @@ net-libs/libflowmanager 3.0.0-r1: A library that measures and reports on packet 
 net-libs/libgadu 1.11.4 1.12.2-r1: Client-side library for the Gadu-Gadu protocol
 net-libs/libgfbgraph 0.2.3-r1: A GObject library for Facebook Graph API
 net-libs/libgrss 0.5.0-r1 0.7.0: LibGRSS is a library for easy management of RSS/Atom/Pie feeds
-net-libs/libgsasl 1.8.0-r1: The GNU SASL library
+net-libs/libgsasl 1.8.0-r1 1.8.1: The GNU SASL library
 net-libs/libgssglue 0.4-r1: Exports a gssapi interface which calls other random gssapi libraries
 net-libs/libhackrf 2018.01.1 9999: library for communicating with HackRF SDR platform
 net-libs/libhtp 0.5.33: security-aware parser for the HTTP protocol and the related bits and pieces
@@ -15161,7 +15161,7 @@ net-misc/gns3-server 2.2.11: GNS3 server to asynchronously manage emulators
 net-misc/gofish 1.2: Gofish gopher server
 net-misc/grdesktop 0.23-r1 0.23-r2: Gtk3 frontend for rdesktop
 net-misc/grive 0.5.1_pre20171005 0.5.1: An open source Linux client for Google Drive
-net-misc/gsasl 1.8.0-r1: The GNU SASL client, server, and library
+net-misc/gsasl 1.8.0-r1 1.8.1: The GNU SASL client, server, and library
 net-misc/gsutil 4.41 4.45 4.47 4.50: command line tool for interacting with cloud storage services
 net-misc/gupnp-tools 0.10.0: Collection of developer-oriented UPnP tools
 net-misc/gvrpcd 1.3: A program for announcing VLANs using GVRP
