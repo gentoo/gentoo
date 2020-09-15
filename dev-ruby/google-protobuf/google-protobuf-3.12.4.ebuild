@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
@@ -20,10 +20,14 @@ SLOT="3"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND+=" test? ( >=dev-libs/protobuf-3.7.0 )"
+DEPEND+=" test? ( >=dev-libs/protobuf-3.12.0 )"
 
-each_ruby_prepare() {
-	sed -i -e 's:../src/protoc:protoc: ; /^task :build/ s/:compile,//' Rakefile || die
+all_ruby_prepare() {
+	sed -e '/extensiontask/ s:^:#:' \
+		-e '/ExtensionTask/,/^  end/ s:^:#:' \
+		-e 's:../src/protoc:protoc:' \
+		-e 's/:compile,//' \
+		-i Rakefile || die
 }
 
 each_ruby_configure() {

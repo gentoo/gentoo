@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_RECIPE_TEST="rake"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
@@ -31,6 +31,9 @@ all_ruby_prepare() {
 		-i tests/tc_curl_easy.rb || die
 	sed -e '/test_connection_keepalive/aomit "network connection needed"' \
 		-i tests/tc_curl_multi.rb || die
+
+	# Fix test that expects wrong output
+	sed -i -e 's/200 OK /200 OK/' tests/tc_curl_easy.rb || die
 
 	# avoid failing tests where failure condition seems weird, no
 	# upstream travis so not clear if the test is indeed broken.
