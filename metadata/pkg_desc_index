@@ -15332,7 +15332,7 @@ net-misc/stunnel 5.50-r1 5.55 5.56-r1: TLS/SSL - Port Wrapper
 net-misc/stuntman 1.2.15: Open source implementation of the STUN protocol
 net-misc/suite3270 3.5_p12 3.6_p8: Complete 3270 access package
 net-misc/taptap 1.0: A program to link two /dev/net/tun to form virtual ethernet
-net-misc/taylor-uucp 1.07-r3: Taylor UUCP
+net-misc/taylor-uucp 1.07-r4: Taylor UUCP
 net-misc/tcpsound 0.3.1-r1: Play sounds in response to network traffic
 net-misc/teamviewer 15.0.8397 15.1.3937 15.2.2756 15.3.2682 15.4.4445 15.5.3: All-In-One Solution for Remote Access and Support over the Internet
 net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 support
