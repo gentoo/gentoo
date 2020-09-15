@@ -28,5 +28,7 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	mv configure.{in,ac} || die
 	eautoreconf
 }
