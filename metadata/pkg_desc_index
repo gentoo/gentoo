@@ -1018,7 +1018,7 @@ app-crypt/swtpm 0.3.2: Libtpms-based TPM emulator
 app-crypt/tc-play 2.0-r1: a free, pretty much fully featured and stable TrueCrypt implementation
 app-crypt/tpm-emulator 0.7.5-r2: Emulator driver for tpm
 app-crypt/tpm-tools 1.3.9.1-r1: TrouSerS' support tools for the Trusted Platform Modules
-app-crypt/tpm2-abrmd 2.1.1-r2 2.3.1: TPM2 Access Broker & Resource Manager
+app-crypt/tpm2-abrmd 2.3.3: TPM2 Access Broker & Resource Manager
 app-crypt/tpm2-pkcs11 1.3.2 1.4.0: A PKCS#11 interface for TPM2 hardware
 app-crypt/tpm2-tools 4.2.1-r1: Tools for the TPM 2.0 TSS
 app-crypt/tpm2-totp 0.2.1-r1: Attest the trustworthiness of a device against a human using time-based OTP
@@ -1924,7 +1924,7 @@ app-emulation/ganeti 2.15.2-r11 2.16.0_rc1 2.17.0_beta1: Ganeti is a virtual ser
 app-emulation/ganeti-instance-debootstrap 0.11-r1 0.16: Scripts to build Ganeti VMs with debootstrap
 app-emulation/ganeti-instance-image 0.6-r2: Scripts to build out CD or image based VMs using Ganeti
 app-emulation/ganeti-os-noop 0.2: Dummy OS provider for Ganeti
-app-emulation/genymotion-bin 3.1.0: Complete set of tools that provide a virtual environment for Android
+app-emulation/genymotion-bin 3.1.1: Complete set of tools that provide a virtual environment for Android
 app-emulation/glean 1.10.3 1.17.0: Simple program to write static config from config-drive
 app-emulation/go-secbench 0.1.0 0.1.0-r1: run and evaluate the docker security benchmark
 app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Protocol
@@ -3584,7 +3584,7 @@ dev-db/slony1 2.2.6 2.2.7: A replication system for the PostgreSQL Database Mana
 dev-db/spatialite 4.3.0a: A complete Spatial DBMS in a nutshell built upon sqlite
 dev-db/spatialite-tools 4.3.0-r1: A collection of CLI tools supporting SpatiaLite
 dev-db/sqlcipher 3.4.2 4.0.1: Full Database Encryption for SQLite
-dev-db/sqlcl-bin 19.4.0.354.0937: Oracle SQLcl is the new SQL*Plus
+dev-db/sqlcl-bin 20.2.0.174.1557: Oracle SQLcl is the new SQL*Plus
 dev-db/sqldeveloper 4.2.0.17.089.1709: Oracle SQL Developer is a graphical tool for database development
 dev-db/sqlite 3.32.3 3.32.3-r1: SQL database engine
 dev-db/sqlitebrowser 3.11.1-r1: SQLite Database Browser
@@ -10669,7 +10669,7 @@ dev-util/colm 0.13.0.4 0.13.0.5 0.13.0.6 0.13.0.6-r1 0.13.0.7: COmputer Language
 dev-util/colorgcc 1.3.2-r7: Perl script to colorise the gcc output.
 dev-util/comparator 2.10 2.12: ESR's utility for making fast comparisons among large source trees
 dev-util/complexity 1.10: a tool designed for analyzing the complexity of C program functions
-dev-util/conan 1.28.0: Distributed C/C++ package manager
+dev-util/conan 1.28.0 1.28.1: Distributed C/C++ package manager
 dev-util/conf2struct 1.0 1.3 9999: Create C parsers for libconfig and command-line
 dev-util/confix-wrapper 1: Wrapper to select either confix1.py or confix2.py
 dev-util/cookiecutter 1.7.2 1.7.2-r1: Command-line utility to create projects from cookiecutters (project templates)
@@ -10846,7 +10846,7 @@ dev-util/open-vcdiff 0.8.4-r1: An encoder/decoder for the VCDIFF (RFC3284) forma
 dev-util/opencl-headers 2020.03.13-r1 2020.06.16: Unified C language headers for the OpenCL API
 dev-util/oprofile 1.3.0 1.4.0: A transparent low-overhead system-wide profiler
 dev-util/ostree 2018.9 2018.9-r1 2019.5: Operating system and container binary deployment and upgrades
-dev-util/packer 1.3.5 1.4.0 1.4.1 1.4.4 1.4.5: A tool to create identical machine images for multiple platforms
+dev-util/packer 1.4.0 1.4.5 1.5.6: A tool to create identical machine images for multiple platforms
 dev-util/patchbin 20160208 99999999: Apply binary patches without git
 dev-util/patchelf 0.10 0.11 0.12: Small utility to modify the dynamic linker and RPATH of ELF executables
 dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch files
@@ -15589,7 +15589,7 @@ net-wireless/b43-fwcutter 019: Firmware Tool for Broadcom 43xx based wireless ne
 net-wireless/bladerf 2018.08 2019.07 9999: Libraries for supporing the BladeRF hardware from Nuand
 net-wireless/bladerf-firmware 2.2.0 2.3.2: bladeRF FX3 firmware images
 net-wireless/bladerf-fpga 0.7.3 0.11.0: bladeRF FPGA bitstreams
-net-wireless/blueberry 1.3.6: A Bluetooth configuration tool
+net-wireless/blueberry 1.3.9: A Bluetooth configuration tool
 net-wireless/blueman 2.1.2 2.1.3 9999: Simple and intuitive GTK+ Bluetooth Manager
 net-wireless/bluez 5.54 5.55: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
@@ -17291,7 +17291,7 @@ sys-boot/sgibootcd 0.12: Creates burnable CD images for SGI LiveCDs
 sys-boot/shim 15.5-r1: Fedora's signed UEFI shim
 sys-boot/silo 1.4.14_p20120819-r1 1.4.14_p20170829 1.4.14_p20200602: SPARC/UltraSPARC Improved Loader, a boot loader for sparc
 sys-boot/syslinux 6.04_pre1 6.04_pre1-r2: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
-sys-boot/systemd-boot 243 245: UEFI boot manager from systemd (formerly gummiboot)
+sys-boot/systemd-boot 245: UEFI boot manager from systemd (formerly gummiboot)
 sys-boot/tboot 1.9.11: Performs a measured and verified boot using Intel Trusted Execution Technology
 sys-boot/udk 2015-r1 2018-r1: Tianocore UEFI Development kit
 sys-boot/unetbootin 661 675 677-r1 681: UNetbootin installs Linux/BSD distributions to a partition or USB drive

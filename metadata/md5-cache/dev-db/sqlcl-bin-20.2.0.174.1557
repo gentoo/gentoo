@@ -8,5 +8,5 @@ LICENSE=OTN
 RDEPEND=dev-db/oracle-instantclient dev-java/java-config:2 virtual/jre:1.8
 RESTRICT=bindist fetch mirror
 SLOT=0
-SRC_URI=sqlcl-19.4.0.354.0937.zip
+SRC_URI=sqlcl-20.2.0.174.1557.zip
 _md5_=b70fe36bb515c8adb9b06054a983a13b
