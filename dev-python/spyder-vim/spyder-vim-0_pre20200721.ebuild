@@ -3,11 +3,11 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_7 )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit distutils-r1 virtualx
 
-COMMIT="0a5f982392a03a0f6448f2cfdfa116d027dc52b1"
+COMMIT="c6f6ad75d1298d4cdadab69d57b2b4e2d235d8f3"
 
 DESCRIPTION="Plugin for Spyder to enable Vim keybindings"
 HOMEPAGE="https://github.com/spyder-ide/spyder-vim"
@@ -20,8 +20,10 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND=">dev-python/spyder-4.0.0[${PYTHON_USEDEP}]"
 
 DEPEND="test? (
-	dev-python/mock[${PYTHON_USEDEP}]
-	dev-python/pytest-qt[${PYTHON_USEDEP}] )"
+	dev-python/flaky[${PYTHON_USEDEP}]
+	dev-python/pytest-mock[${PYTHON_USEDEP}]
+	dev-python/pytest-qt[${PYTHON_USEDEP}]
+)"
 
 DOCS=( "README.rst" "doc/example.gif" )
 
