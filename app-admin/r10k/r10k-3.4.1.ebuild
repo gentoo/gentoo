@@ -22,7 +22,7 @@ IUSE="+git"
 
 ruby_add_rdepend "
 	~dev-ruby/colored-1.2
-	~dev-ruby/cri-2.15.6
+	>=dev-ruby/cri-2.15.10:0
 	>=dev-ruby/gettext-setup-0.24:0
 	~dev-ruby/log4r-1.1.10
 	>=dev-ruby/multi_json-1.10:0
