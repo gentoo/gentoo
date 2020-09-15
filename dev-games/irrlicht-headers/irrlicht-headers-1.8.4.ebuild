@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils
+inherit edos2unix
 
 MY_PN="irrlicht"
 MY_P="${MY_PN}-${PV}"
