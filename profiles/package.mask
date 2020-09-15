@@ -125,8 +125,8 @@ dev-db/mariadb:10.1
 =dev-python/pypy3-exe-7.3.2_rc*
 
 # Thomas Beierlein <tomjbe@gentoo.org> (2020-09-09)
-# Depends on obsolete gnome-base/libgnomeui. 
-# Upstream promised to have a better version 
+# Depends on obsolete gnome-base/libgnomeui.
+# Upstream promised to have a better version
 # for nearly a year now, but no release in sight.
 # Masked for removal in 30 days.
 sci-electronics/linsmith
@@ -387,7 +387,7 @@ net-mail/maildirtree
 dev-haskell/bio
 
 # Piotr Karbowski <slashbeast@gentoo.org> (2020-08-28)
-# Temporary mask due to multiple reports of segfaults at startup, bug #739056 
+# Temporary mask due to multiple reports of segfaults at startup, bug #739056
 =x11-base/xorg-server-1.20.9
 
 # Marek Szuba <marecki@gentoo.org> (2020-08-26)
