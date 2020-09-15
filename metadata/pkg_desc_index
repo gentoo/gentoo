@@ -5230,7 +5230,7 @@ dev-libs/avro-c 1.9.1: c library for the apache avro data serialization system
 dev-libs/aws-c-common 0.4.11: Core c99 package for AWS SDK for C
 dev-libs/aws-c-event-stream 0.1.3: C99 implementation of the vnd.amazon.eventstream content-type
 dev-libs/aws-checksums 0.1.3: Cross-Platform HW accelerated CRC32c and CRC32 with software fallbacks
-dev-libs/aws-sdk-cpp 1.7.178: AWS SDK for C++
+dev-libs/aws-sdk-cpp 1.8.46: AWS SDK for C++
 dev-libs/bareos-fastlzlib 0_pre20140912 0_pre20150524: Fork of zlib-like interface to fast block compression (LZ4 or FastLZ) libraries
 dev-libs/bcm2835 1.52 1.57: Provides access to GPIO and other IO functions on the Broadcom BCM2835
 dev-libs/bemenu 0.4.1 0.5.0 9999: dmenu clone for wayland
