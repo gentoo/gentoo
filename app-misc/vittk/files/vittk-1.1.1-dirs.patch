@@ -1,5 +1,5 @@
---- vittk-1.1.1.orig/vittk.in
-+++ vittk-1.1.1/vittk.in
+--- a/vittk.in
++++ b/vittk.in
 @@ -17,7 +17,7 @@
  
  set font "@FONT@"
@@ -20,8 +20,8 @@
  }
  
  ReadRcs
---- vittk-1.1.1.orig/vittk.man.in
-+++ vittk-1.1.1/vittk.man.in
+--- a/vittk.man.in
++++ b/vittk.man.in
 @@ -89,13 +89,13 @@
  in Taskwarrior.  At this time, various other parts of the VITtk color
  scheme can only be changed system-wide by altering the variables in
