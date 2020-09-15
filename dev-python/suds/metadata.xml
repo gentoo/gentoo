@@ -3,6 +3,9 @@
 <pkgmetadata>
 	<!--maintainer-needed-->
 	<upstream>
-		<remote-id type="pypi">suds</remote-id>
+		<remote-id type="pypi">suds-community</remote-id>
+		<remote-id type="github">suds-community/suds</remote-id>
+		<bugs-to>https://github.com/suds-community/suds/issues</bugs-to>
+		<changelog>https://github.com/suds-community/suds/blob/master/CHANGELOG.md</changelog>
 	</upstream>
 </pkgmetadata>
