@@ -40,6 +40,14 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
+src_prepare() {
+	sed -e "/^topsrcdir/s:..\/..::" \
+		-e "/^bindir/s:\.\.:${WORKDIR}/${P}_build:" \
+		-e 's:\(..\/\)\+{exe}:{exe}:' \
+		-i test/zziptests.py || die
+	cmake_src_prepare
+}
+
 src_configure() {
 	append-flags -fno-strict-aliasing # bug reported upstream
 
@@ -53,4 +61,9 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	cd "$S"/test/ || die
+	${EPYTHON} "$S"/test/zziptests.py || die
 }
