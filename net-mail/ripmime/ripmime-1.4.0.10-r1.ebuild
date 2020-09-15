@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
-inherit eutils multilib toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="extract attachment files out of a MIME-encoded email pack"
 HOMEPAGE="http://pldaniels.com/ripmime/"
@@ -12,18 +12,18 @@ SRC_URI="http://www.pldaniels.com/ripmime/${P}.tar.gz"
 LICENSE="Sendmail"
 SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
-IUSE="static-libs"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.4.0.9-makefile.patch \
-		"${FILESDIR}"/${PN}-1.4.0.9-buffer-overflow.patch
-}
+PATCHES=(
+	"${FILESDIR}/${PN}-1.4.0.9-makefile.patch"
+	"${FILESDIR}/${PN}-1.4.0.9-buffer-overflow.patch"
+)
 
 src_compile() {
-	local maketargets="default solib"
-	use static-libs && maketargets="${maketargets} libripmime.a"
-
-	emake CC="$(tc-getCC)" AR="$(tc-getAR)" CFLAGS="${CFLAGS}" ${maketargets}
+	emake \
+		CC="$(tc-getCC)" \
+		AR="$(tc-getAR)" \
+		CFLAGS="${CFLAGS}" \
+		default solib
 }
 
 src_install() {
@@ -37,8 +37,4 @@ src_install() {
 	dolib.so libripmime.so.1.4.0
 	dosym libripmime.so.1.4.0 /usr/$(get_libdir)/libripmime.so
 	dosym libripmime.so.1.4.0 /usr/$(get_libdir)/libripmime.so.1
-
-	if use static-libs ; then
-		dolib.a libripmime.a
-	fi
 }
