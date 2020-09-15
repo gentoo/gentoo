@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2020-09-15)
+# No longer exists upstream, stuck on long-obsolete EAPI 4,
+# and fails to build with glibc-2.32.
+# Vestige of Gentoo/FreeBSD.
+# bug #715506, #737892, #740916, #547244.
+sys-fs/ufsutils
+
 # Stephan Hartmann <sultan@gentoo.org> (2020-09-15)
 # Stuck on EAPI 4, does not build, homepage gone, no maintainer.
 # Removal in 30 days. See bugs #717188, #725212, #736607,
@@ -118,8 +125,8 @@ dev-db/mariadb:10.1
 =dev-python/pypy3-exe-7.3.2_rc*
 
 # Thomas Beierlein <tomjbe@gentoo.org> (2020-09-09)
-# Depends on obsolete gnome-base/libgnomeui. 
-# Upstream promised to have a better version 
+# Depends on obsolete gnome-base/libgnomeui.
+# Upstream promised to have a better version
 # for nearly a year now, but no release in sight.
 # Masked for removal in 30 days.
 sci-electronics/linsmith
@@ -380,7 +387,7 @@ net-mail/maildirtree
 dev-haskell/bio
 
 # Piotr Karbowski <slashbeast@gentoo.org> (2020-08-28)
-# Temporary mask due to multiple reports of segfaults at startup, bug #739056 
+# Temporary mask due to multiple reports of segfaults at startup, bug #739056
 =x11-base/xorg-server-1.20.9
 
 # Marek Szuba <marecki@gentoo.org> (2020-08-26)
