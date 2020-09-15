@@ -1,0 +1,21 @@
+We already have pre-generated docs. Don't bother looking for Doxygen.
+----
+diff --git a/configure b/configure
+index c366701..3895d4f 100755
+--- a/configure
++++ b/configure
+@@ -1106,13 +1106,7 @@ rm -f _test_end*
+ 
+ printf "checking for Doxygen... "
+ 
+-if (doxygen --version); then
+-	# Version is printed, if found.
+-	DOXYGEN=doxygen
+-else
+-	# Not found is already printed, if doxygen is not found.
+-	DOXYGEN="\#"
+-fi
++DOXYGEN="\#"
+ 
+ 
+ ###############################################################################
