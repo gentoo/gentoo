@@ -67,11 +67,11 @@ mercury_pkgs() {
 		net/net:lib:
 		net/echo:bin:
 		$(use ssl && echo mopenssl/mopenssl:lib:openssl)
-		$(use odbc && echo odbc/odbc:lib:)
+		$(use odbc && echo odbc/odbc:lib:odbc)
 		$(use iodbc && echo odbc/odbc:lib:libiodbc)
 		posix/posix:lib:
 		$(has_version dev-lang/mercury[trail] && echo \
-			references/global:lib: trailed_update/trailed_update:lib:)
+			references/global:lib:)
 		show_ops/show_ops:bin:
 		solver_types/library/any:lib:
 		$(use xml && echo xml/xml:lib:)"
@@ -90,43 +90,33 @@ mercury_pkg_setup() {
 
 	echo ">> Preparing Mercury package: ${mercury_pkg}"
 
-	if ! test -f "${S}"/${mercury_pkg_dir}/gentoo.params; then
-		echo "LIBGRADES := \$(filter-out java,\$(LIBGRADES))" \
-			> "${S}"/${mercury_pkg_dir}/gentoo.params
-		echo "LIBGRADES := \$(filter-out erlang,\$(LIBGRADES))" \
-			>> "${S}"/${mercury_pkg_dir}/gentoo.params
-		echo "LIBGRADES := \$(filter-out csharp,\$(LIBGRADES))" \
-			>> "${S}"/${mercury_pkg_dir}/gentoo.params
-		echo "include gentoo.params" > "${S}"/${mercury_pkg_dir}/Mmakefile
-	fi
+	echo "MCFLAGS += --libgrades-exclude java" \
+		>> "${S}"/${mercury_pkg_dir}/Mercury.options
+	echo "MCFLAGS += --libgrades-exclude erlang" \
+		>> "${S}"/${mercury_pkg_dir}/Mercury.options
+	echo "MCFLAGS += --libgrades-exclude csharp" \
+		>> "${S}"/${mercury_pkg_dir}/Mercury.options
 
 	if test -n "$mercury_pkg_deps"; then
 		echo "EXTRA_CFLAGS += $(pkg-config --cflags ${mercury_pkg_deps/,/ })" \
-			>> "${S}"/${mercury_pkg_dir}/gentoo.params
-		echo "EXTRA_MLLIBS += $(pkg-config --libs ${mercury_pkg_deps/,/ })" \
-			>> "${S}"/${mercury_pkg_dir}/gentoo.params
+			>> "${S}"/${mercury_pkg_dir}/Mercury.options
+		echo "EXTRA_LDFLAGS += $(pkg-config --libs ${mercury_pkg_deps/,/ })" \
+			>> "${S}"/${mercury_pkg_dir}/Mercury.options
 	fi
 
 	if test ${mercury_pkg_name} = dl; then
-		echo "EXTRA_MLLIBS = -ldl" >> "${S}"/${mercury_pkg_dir}/gentoo.params
+		echo "EXTRA_LDFLAGS += -ldl" >> "${S}"/${mercury_pkg_dir}/Mercury.options
 	elif test ${mercury_pkg_name} = gmp_int; then
-		echo "EXTRA_MLLIBS = -lgmp" >> "${S}"/${mercury_pkg_dir}/gentoo.params
+		echo "EXTRA_LDFLAGS += -lgmp" >> "${S}"/${mercury_pkg_dir}/Mercury.options
 	elif test ${mercury_pkg_name} = mercury_tcltk; then
 		echo "EXTRA_CFLAGS += -DUSE_INTERP_RESULT" \
-			>> "${S}"/${mercury_pkg_dir}/gentoo.params
-	elif test ${mercury_pkg_name} = mopenssl; then
-		local net_libdir="${D}/usr/$(get_libdir)/mercury/extras/lib/\$(GRADE)"
-		echo "EXTRA_MLLIBS += -L${net_libdir} -L../net -lnet" \
-			>> "${S}"/${mercury_pkg_dir}/gentoo.params
-		echo "net%:" >> "${S}"/${mercury_pkg_dir}/gentoo.params
-		echo "	cp ../net/\$@ \$@" >> "${S}"/${mercury_pkg_dir}/gentoo.params
+			>> "${S}"/${mercury_pkg_dir}/Mercury.options
 	elif test ${mercury_pkg_name} = odbc && use odbc; then
-		echo "EXTRA_CFLAGS = -DMODBC_UNIX -DMODBC_MYSQL" \
-			>> "${S}"/${mercury_pkg_dir}/Mmakefile
-		echo "EXTRA_MLLIBS = -lodbc" >> "${S}"/${mercury_pkg_dir}/gentoo.params
+		echo "EXTRA_CFLAGS += -DMODBC_UNIX -DMODBC_MYSQL" \
+			>> "${S}"/${mercury_pkg_dir}/Mercury.options
 	elif test ${mercury_pkg_name} = odbc && use iodbc; then
 		echo "EXTRA_CFLAGS += -DMODBC_IODBC -DMODBC_MYSQL" \
-			>> "${S}"/${mercury_pkg_dir}/gentoo.params
+			>> "${S}"/${mercury_pkg_dir}/Mercury.options
 	fi
 }
 
@@ -148,20 +138,16 @@ mercury_pkg_compile() {
 		mercury_mmc_target=lib${mercury_pkg_name}
 	fi
 
-	# Mercury dependency generation must be run single-threaded
 	mmc -f *.m || die "mmc -f .m failed"
-	mmake -j1 \
-		${mercury_pkg_name}.depend \
-		|| die "mmake ${mercury_pkg} depend failed"
 
-	# Compiling Mercury submodules is not thread-safe
-	mmake -j1 \
-		MLFLAGS=--no-strip \
-		CFLAGS="${CFLAGS}" \
-		LDFLAGS="${LDFLAGS}" \
-		LD_LIBFLAGS="${LDFLAGS}" \
-		${mercury_mmc_target} || die "mmake ${mercury_pkg} failed"
-
+	mmc \
+		--make \
+		--verbose-commands \
+		--no-strip \
+		--cflags "${CFLAGS}" \
+		--ld-flags "${LDFLAGS}" \
+		--ld-libflags "${LDFLAGS}" \
+		${mercury_mmc_target} || die "mmc ${mercury_mmc_target} failed"
 }
 
 mercury_pkg_install() {
@@ -180,14 +166,15 @@ mercury_pkg_install() {
 		into /usr/$(get_libdir)/mercury/extras
 		dobin ${mercury_pkg_name}
 	else
-		# Compiling Mercury submodules is not thread-safe
-		mmake -j1 \
-			MLFLAGS=--no-strip \
-			CFLAGS="${CFLAGS}" \
-			LDFLAGS="${LDFLAGS}" \
-			LD_LIBFLAGS="${LDFLAGS}" \
-			INSTALL_LIBDIR="${D}/usr/$(get_libdir)/mercury/extras" \
-			lib${mercury_pkg_name}.install || die "mmake ${mercury_pkg} failed"
+		mmc \
+			--make \
+			--verbose-commands \
+			--no-strip \
+			--cflags "${CFLAGS}" \
+			--ld-flags "${LDFLAGS}" \
+			--ld-libflags "${LDFLAGS}" \
+			--install-prefix "${D}/usr/$(get_libdir)/mercury/extras" \
+			lib${mercury_pkg_name}.install || die "mmc lib${mercury_pkg_name}.install failed"
 	fi
 }
 
@@ -202,6 +189,8 @@ src_prepare() {
 	for mercury_pkg in $(mercury_pkgs); do
 		mercury_pkg_setup ${mercury_pkg}
 	done
+
+	cp "${S}"/net/*.m "${S}"/mopenssl/ || die
 }
 
 src_compile() {
@@ -302,9 +291,6 @@ src_install() {
 
 			docinto samples/trail
 			dodoc trail/*.m
-
-			docinto samples/trailed_update
-			dodoc trailed_update/samples/*.m
 		fi
 
 		if use xml; then
