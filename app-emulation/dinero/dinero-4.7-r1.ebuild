@@ -1,7 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 inherit autotools toolchain-funcs
 
@@ -14,13 +14,22 @@ SRC_URI="ftp://ftp.cs.wisc.edu/markhill/DineroIV/${MY_P}.tar.gz"
 LICENSE="free-noncomm"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE=""
 
 src_prepare() {
+	default
+
+	# 331837
 	sed -e "s/\$(CC)/& \$(LDFLAGS)/" \
-	  -i Makefile.in || die #331837
+	  -i Makefile.in || die
+
+	mv configure.{in,ac} || die
+
 	eautoreconf
+}
+
+src_configure() {
 	tc-export AR
+	default
 }
 
 src_install() {
