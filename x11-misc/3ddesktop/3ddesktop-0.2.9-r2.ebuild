@@ -1,16 +1,16 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils
+EAPI=7
+inherit autotools
 
 DESCRIPTION="OpenGL virtual desktop switching"
-HOMEPAGE="http://desk3d.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/desk3d/"
 SRC_URI="mirror://sourceforge/desk3d/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND="
 	>=media-libs/freetype-2
@@ -27,16 +27,17 @@ DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto
 "
-
 DOCS=( AUTHORS TODO ChangeLog README README.windowmanagers )
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc4.patch
+	"${FILESDIR}"/${P}-asneeded.patch
+	"${FILESDIR}"/${P}-missing-include.patch
+	"${FILESDIR}"/${P}-gl_init.patch
+	"${FILESDIR}"/${P}-Options_Options.patch
+)
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-gcc4.patch \
-		"${FILESDIR}"/${P}-asneeded.patch \
-		"${FILESDIR}"/${P}-missing-include.patch \
-		"${FILESDIR}"/${P}-gl_init.patch \
-		"${FILESDIR}"/${P}-Options_Options.patch
+	default
 
 	eautoreconf
 }
