@@ -478,7 +478,7 @@ app-admin/aerospike-amc-community 3.6.13-r2 4.0.19-r1: Web UI based monitoring t
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0.13: A webserver log analyzer
 app-admin/ansible 2.9.12 2.9.13 2.10.0 9999: Model-driven deployment, config management, and command execution framework
-app-admin/ansible-base 2.10.0: Model-driven deployment, config management, and command execution framework
+app-admin/ansible-base 2.10.0 2.10.1: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-cmdb 1.28: Ansible Configuration Management Database
 app-admin/ansible-lint 4.0.1 4.1.0: Checks ansible playbooks for practices and behaviour that can be improved
 app-admin/apache-tools 2.4.41 2.4.43 2.4.46: Useful Apache tools - htdigest, htpasswd, ab, htdbm
@@ -18492,7 +18492,7 @@ x11-misc/e16-keyedit 0.9: Key binding editor for Enlightenment DR16
 x11-misc/e16menuedit2 0.0.3: Menu editor for Enlightenment DR16 written in GTK2
 x11-misc/easystroke 0.6.0-r3: a gesture-recognition application for X11
 x11-misc/efax-gtk 3.2.14 3.2.15: A graphical frontend for the 'efax' application
-x11-misc/evolvotron 0.7.1: Generative art image evolver
+x11-misc/evolvotron 0.7.1 0.7.1-r1: Generative art image evolver
 x11-misc/fbdesk 1.4.1: fluxbox-util application that creates and manage icons on your Fluxbox desktop
 x11-misc/fbpager 20090221-r1: A Pager for fluxbox
 x11-misc/fbpanel 7.0 7.0-r1 7.0-r2: light-weight X11 desktop panel
