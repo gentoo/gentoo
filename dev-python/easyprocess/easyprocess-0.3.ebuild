@@ -19,6 +19,7 @@ BDEPEND="test? (
 	dev-python/pytest-timeout[${PYTHON_USEDEP}]
 	dev-python/pyvirtualdisplay[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
+	x11-base/xorg-server[xvfb]
 )"
 
 S="${WORKDIR}/EasyProcess-${PV}"
