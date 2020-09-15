@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,15 +14,22 @@ IUSE="doc"
 
 RDEPEND="
 	dev-libs/glib:2
-	x11-libs/gtk+:2
-"
-DEPEND="
-	${RDEPEND}
-	doc? ( dev-util/gtk-doc )
+	x11-libs/gtk+:2"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/glib-utils
 	virtual/pkgconfig
-"
+	doc? ( dev-util/gtk-doc )"
 
 src_configure() {
-	econf $(use_enable doc gtk-doc)
+	econf \
+		--disable-static \
+		$(use_enable doc gtk-doc)
+}
+
+src_install() {
+	default
+
+	# no static archives
+	find "${ED}" -name '*.la' -delete || die
 }
