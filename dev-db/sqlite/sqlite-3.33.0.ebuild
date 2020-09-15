@@ -22,7 +22,7 @@ fi
 
 LICENSE="public-domain"
 SLOT="3"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="debug doc icu +readline secure-delete static-libs tcl test tools"
 if [[ "${PV}" == "9999" ]]; then
 	PROPERTIES="live"
@@ -99,15 +99,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	eapply "${FILESDIR}/${PN}-3.32.1-full_archive-build_1.patch"
-	eapply "${FILESDIR}/${PN}-3.32.1-full_archive-build_2.patch"
-	eapply "${FILESDIR}/${PN}-3.32.3-security_fixes.patch"
+	eapply "${FILESDIR}/"${PN}-3.33.0-build_{1.1,1.2,2.1,2.2}.patch
 
 	eapply_user
-
-	# Fix AC_CHECK_FUNCS.
-	# https://mailinglists.sqlite.org/cgi-bin/mailman/private/sqlite-dev/2016-March/002762.html
-	sed -e "s/AC_CHECK_FUNCS(.*)/AC_CHECK_FUNCS([fdatasync fullfsync gmtime_r isnan localtime_r localtime_s malloc_usable_size posix_fallocate pread pread64 pwrite pwrite64 strchrnul usleep utime])/" -i configure.ac || die "sed failed"
 
 	eautoreconf
 
@@ -128,22 +122,27 @@ multilib_src_configure() {
 	append-cppflags -DSQLITE_ENABLE_API_ARMOR
 
 	# Support bytecode and tables_used virtual tables.
+	# https://sqlite.org/compile.html#enable_bytecode_vtab
 	# https://sqlite.org/bytecodevtab.html
 	append-cppflags -DSQLITE_ENABLE_BYTECODE_VTAB
 
 	# Support column metadata functions.
+	# https://sqlite.org/compile.html#enable_column_metadata
 	# https://sqlite.org/c3ref/column_database_name.html
 	append-cppflags -DSQLITE_ENABLE_COLUMN_METADATA
 
 	# Support sqlite_dbpage virtual table.
+	# https://sqlite.org/compile.html#enable_dbpage_vtab
 	# https://sqlite.org/dbpage.html
 	append-cppflags -DSQLITE_ENABLE_DBPAGE_VTAB
 
 	# Support dbstat virtual table.
+	# https://sqlite.org/compile.html#enable_dbstat_vtab
 	# https://sqlite.org/dbstat.html
 	append-cppflags -DSQLITE_ENABLE_DBSTAT_VTAB
 
 	# Support sqlite3_serialize() and sqlite3_deserialize() functions.
+	# https://sqlite.org/compile.html#enable_deserialize
 	# https://sqlite.org/c3ref/serialize.html
 	# https://sqlite.org/c3ref/deserialize.html
 	append-cppflags -DSQLITE_ENABLE_DESERIALIZE
@@ -153,6 +152,10 @@ multilib_src_configure() {
 	append-cppflags -DSQLITE_ENABLE_EXPLAIN_COMMENTS
 
 	# Support Full-Text Search versions 3, 4 and 5.
+	# https://sqlite.org/compile.html#enable_fts3
+	# https://sqlite.org/compile.html#enable_fts3_parenthesis
+	# https://sqlite.org/compile.html#enable_fts4
+	# https://sqlite.org/compile.html#enable_fts5
 	# https://sqlite.org/fts3.html
 	# https://sqlite.org/fts5.html
 	append-cppflags -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_FTS3_PARENTHESIS -DSQLITE_ENABLE_FTS4
@@ -162,10 +165,12 @@ multilib_src_configure() {
 	append-cppflags -DSQLITE_ENABLE_HIDDEN_COLUMNS
 
 	# Support JSON1 extension.
+	# https://sqlite.org/compile.html#enable_json1
 	# https://sqlite.org/json1.html
 	append-cppflags -DSQLITE_ENABLE_JSON1
 
 	# Support memsys5 memory allocator.
+	# https://sqlite.org/compile.html#enable_memsys5
 	# https://sqlite.org/malloc.html#memsys5
 	append-cppflags -DSQLITE_ENABLE_MEMSYS5
 
@@ -174,53 +179,66 @@ multilib_src_configure() {
 	append-cppflags -DSQLITE_ENABLE_NORMALIZE
 
 	# Support sqlite_offset() function.
+	# https://sqlite.org/compile.html#enable_offset_sql_func
 	# https://sqlite.org/lang_corefunc.html#sqlite_offset
 	append-cppflags -DSQLITE_ENABLE_OFFSET_SQL_FUNC
 
 	# Support pre-update hook functions.
+	# https://sqlite.org/compile.html#enable_preupdate_hook
 	# https://sqlite.org/c3ref/preupdate_count.html
 	append-cppflags -DSQLITE_ENABLE_PREUPDATE_HOOK
 
 	# Support Resumable Bulk Update extension.
+	# https://sqlite.org/compile.html#enable_rbu
 	# https://sqlite.org/rbu.html
 	append-cppflags -DSQLITE_ENABLE_RBU
 
 	# Support R*Trees.
+	# https://sqlite.org/compile.html#enable_rtree
+	# https://sqlite.org/compile.html#enable_geopoly
 	# https://sqlite.org/rtree.html
 	# https://sqlite.org/geopoly.html
 	append-cppflags -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_GEOPOLY
 
+	# Support Session extension.
+	# https://sqlite.org/compile.html#enable_session
+	# https://sqlite.org/sessionintro.html
+	append-cppflags -DSQLITE_ENABLE_SESSION
+
 	# Support scan status functions.
+	# https://sqlite.org/compile.html#enable_stmt_scanstatus
 	# https://sqlite.org/c3ref/stmt_scanstatus.html
 	# https://sqlite.org/c3ref/stmt_scanstatus_reset.html
 	append-cppflags -DSQLITE_ENABLE_STMT_SCANSTATUS
 
 	# Support sqlite_stmt virtual table.
+	# https://sqlite.org/compile.html#enable_stmtvtab
 	# https://sqlite.org/stmt.html
 	append-cppflags -DSQLITE_ENABLE_STMTVTAB
-
-	# Support Session extension.
-	# https://sqlite.org/sessionintro.html
-	options+=(--enable-session)
 
 	# Support unknown() function.
 	# https://sqlite.org/compile.html#enable_unknown_sql_function
 	append-cppflags -DSQLITE_ENABLE_UNKNOWN_SQL_FUNCTION
 
 	# Support unlock notification.
+	# https://sqlite.org/compile.html#enable_unlock_notify
+	# https://sqlite.org/c3ref/unlock_notify.html
 	# https://sqlite.org/unlock_notify.html
 	append-cppflags -DSQLITE_ENABLE_UNLOCK_NOTIFY
 
 	# Support LIMIT and ORDER BY clauses on DELETE and UPDATE statements.
+	# https://sqlite.org/compile.html#enable_update_delete_limit
 	# https://sqlite.org/lang_delete.html#optional_limit_and_order_by_clauses
 	# https://sqlite.org/lang_update.html#optional_limit_and_order_by_clauses
 	append-cppflags -DSQLITE_ENABLE_UPDATE_DELETE_LIMIT
 
 	# Support soundex() function.
+	# https://sqlite.org/compile.html#soundex
 	# https://sqlite.org/lang_corefunc.html#soundex
 	append-cppflags -DSQLITE_SOUNDEX
 
 	# Support URI filenames.
+	# https://sqlite.org/compile.html#use_uri
 	# https://sqlite.org/uri.html
 	append-cppflags -DSQLITE_USE_URI
 
@@ -247,6 +265,7 @@ multilib_src_configure() {
 	# secure-delete USE flag.
 	if use secure-delete; then
 		# Enable secure_delete pragma by default.
+		# https://sqlite.org/compile.html#secure_delete
 		# https://sqlite.org/pragma.html#pragma_secure_delete
 		append-cppflags -DSQLITE_SECURE_DELETE
 	fi
@@ -258,6 +277,8 @@ multilib_src_configure() {
 	options+=(--enable-tcl)
 
 	if [[ "${CHOST}" == *-mint* ]]; then
+		# sys/mman.h not available in MiNTLib.
+		# https://sqlite.org/compile.html#omit_wal
 		append-cppflags -DSQLITE_OMIT_WAL
 	fi
 
@@ -331,10 +352,16 @@ multilib_src_install_all() {
 	doman sqlite3.1
 
 	if use doc; then
-		rm "${WORKDIR}/${PN}-doc-${DOC_PV}/"*.{db,txt} || die
+		if [[ "${PV}" == "9999" ]]; then
+			pushd "${WORKDIR}/${PN}-doc" > /dev/null || die
+		else
+			pushd "${WORKDIR}/${PN}-doc-${DOC_PV}" > /dev/null || die
+		fi
+		rm *.db *.txt || die
 		(
 			docinto html
-			dodoc -r "${WORKDIR}/${PN}-doc-${DOC_PV}/"*
+			dodoc -r *
 		)
+		popd > /dev/null || die
 	fi
 }
