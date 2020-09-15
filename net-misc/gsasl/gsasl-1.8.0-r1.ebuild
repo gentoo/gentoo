@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="The GNU SASL client, server, and library"
 HOMEPAGE="https://www.gnu.org/software/gsasl/"
@@ -14,28 +14,42 @@ KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc gcrypt idn kerberos nls ntlm static-libs +threads"
 
 DEPEND="
-	gcrypt? ( dev-libs/libgcrypt:0 )
-	idn? ( net-dns/libidn )
+	gcrypt? ( dev-libs/libgcrypt:0= )
+	idn? ( net-dns/libidn:= )
 	kerberos? ( virtual/krb5 )
 	nls? ( >=sys-devel/gettext-0.18.1 )
 	ntlm? ( net-libs/libntlm )
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.8.0-sasl-gss-extra.patch"
+)
+
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-gss-extra.patch"
+	default
+
 	sed -i -e '/gl_WARN_ADD(\[-Werror/d' \
 		-e 's/ -Werror//' configure.ac || die
 	sed -i -e 's/ -Werror//' lib/configure.ac || die
+
 	eautoreconf
 }
 
 src_configure() {
 	local krb5_impl
+
 	if use kerberos; then
 		krb5_impl="--with-gssapi-impl="
-		krb5_impl+=$(has_version app-crypt/mit-krb5 && echo "mit" || echo "heimdal")
+
+		# These are the two providers of virtual/krb5
+		if has_version app-crypt/mit-krb5; then
+			krb5_impl+="mit"
+		else
+			krb5_impl+="heimdal"
+		fi
 	fi
+
 	econf \
 		--enable-client \
 		--enable-server \
@@ -58,14 +72,17 @@ src_configure() {
 
 src_install() {
 	default
+
 	if ! use static-libs; then
-		rm -f "${D}"/usr/lib*/lib*.la
+		rm -f "${ED}"/usr/lib*/lib*.la || die
 	fi
+
 	doman doc/gsasl.1 doc/man/*.3
 
 	if use doc; then
 		dodoc doc/*.{eps,ps,pdf}
-		dohtml doc/*.html
+		docinto html
+		dodoc doc/*.html
 		docinto examples
 		dodoc examples/*.c
 	fi
