@@ -20,8 +20,6 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.0-gcc46.patch
-	"${FILESDIR}"/${P}-fix-mymkstemp.patch # Bug 441558
-	"${FILESDIR}"/${P}-fix-mkstemp-test.patch # Bug 441558
 	"${FILESDIR}"/${PN}-0.6.0-no-doxygen.patch
 )
 

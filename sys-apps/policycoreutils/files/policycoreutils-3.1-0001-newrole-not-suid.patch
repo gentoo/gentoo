@@ -1,0 +1,11 @@
+--- a/newrole/Makefile
++++ b/newrole/Makefile
+@@ -50,7 +50,7 @@ ifeq ($(NAMESPACE_PRIV),y)
+ 	IS_SUID=y
+ endif
+ ifeq ($(IS_SUID),y)
+-	MODE := 4555
++	MODE := 0555
+ 	override LDLIBS += -lcap-ng
+ else
+ 	MODE := 0555
