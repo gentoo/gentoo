@@ -9751,7 +9751,7 @@ dev-ros/visualization_msgs 1.12.7 1.13.0 9999: Messages used by higher level pac
 dev-ros/voxel_grid 1.16.6 1.17.0 9999: Implementation of an efficient 3D voxel grid
 dev-ros/xacro 1.14.1 9999: XML macro language
 dev-ros/xmlrpcpp 1.15.8 9999: C++ implementation of the XML-RPC protocol
-dev-ruby/GeoRuby 2.5.2: Ruby data holder for OGC Simple Features
+dev-ruby/GeoRuby 2.5.2 2.5.2-r1: Ruby data holder for OGC Simple Features
 dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method in Ruby
 dev-ruby/acme-client 2.0.4 2.0.5 2.0.6: A Ruby client for the letsencrypt's ACME protocol.
 dev-ruby/actioncable 5.2.4.3 5.2.4.4 6.0.3.2 6.0.3.3: Integrated WebSockets for Rails
@@ -9855,7 +9855,7 @@ dev-ruby/colored 1.2: Console coloring
 dev-ruby/colored2 3.1.2: Console coloring
 dev-ruby/colorize 0.8.1 0.8.1-r1: Adds methods to set color, background color and text effect on console easier
 dev-ruby/columnize 0.9.0 0.9.0-r1: Sorts an array in column order
-dev-ruby/combustion 1.2.0 1.3.0: Elegant Rails Engine Testing
+dev-ruby/combustion 1.3.0: Elegant Rails Engine Testing
 dev-ruby/commander 4.5.2: The complete solution for Ruby command-line executables
 dev-ruby/compass 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-core 1.0.3-r1: Compass Stylesheet Authoring Framework
@@ -9868,10 +9868,10 @@ dev-ruby/countdownlatch 1.0.0-r1: Synchronization aid to allow threads to wait f
 dev-ruby/crack 0.4.3-r2: Really simple JSON and XML parsing, ripped from Merb and Rails
 dev-ruby/crass 1.0.6: Ruby CSS parser that's fully compliant with the CSS Syntax Level 3 specification
 dev-ruby/creole 0.5.0: Creole-to-HTML converter for Creole, the lightweight markup language
-dev-ruby/cri 2.15.5 2.15.6 2.15.7 2.15.9 2.15.10: Cri is a library for building easy-to-use commandline tools
+dev-ruby/cri 2.15.10: Cri is a library for building easy-to-use commandline tools
 dev-ruby/css_parser 1.7.1: Sass-based Stylesheet Framework
 dev-ruby/curb 0.9.10: Ruby-language bindings for libcurl
-dev-ruby/curses 1.3.1 1.3.2: Ruby binding for curses, ncurses, and PDCurses
+dev-ruby/curses 1.3.2: Ruby binding for curses, ncurses, and PDCurses
 dev-ruby/d3_rails 4.1.1: Ruby on Rails integration for the Javascript Data Visualization Framework, D3
 dev-ruby/daemon_controller 1.2.0-r1: Library to start and stop specific daemons programmatically in a robust manner
 dev-ruby/daemons 1.3.1: Wrap existing ruby scripts to be run as a daemon
@@ -9884,8 +9884,8 @@ dev-ruby/ddmetrics 1.0.1: Non-timeseries measurements for Ruby programs
 dev-ruby/ddplugin 1.0.2: Provides plugin management for Ruby projects
 dev-ruby/debug_inspector 0.0.3: A Ruby wrapper for the MRI 2.0 debug_inspector API
 dev-ruby/deep_merge 1.2.1: A simple set of utility functions for Hash
-dev-ruby/delayer 0.0.2 1.0.0 1.1.1 1.1.2: Delay the processing
-dev-ruby/delayer-deferred 2.1.1 2.1.3 2.2.0: Ruby implementation of JSDeferred
+dev-ruby/delayer 0.0.2 1.1.2: Delay the processing
+dev-ruby/delayer-deferred 2.1.3 2.2.0: Ruby implementation of JSDeferred
 dev-ruby/dependor 1.0.1: Reduces duplication when doing manual dependency injection
 dev-ruby/deprecated 3.0.1-r2: A Ruby library for handling deprecated code
 dev-ruby/descendants_tracker 0.0.4: Module that adds descendant tracking to a class
@@ -9895,7 +9895,7 @@ dev-ruby/diva 1.0.2 1.0.2-r1: Implementation of expression for handling things.
 dev-ruby/dnsruby 1.61.2 1.61.3: A pure Ruby DNS client library
 dev-ruby/docile 1.3.2: Turns any Ruby object into a DSL
 dev-ruby/domain_name 0.5.20180417 0.5.20190701: Domain Name manipulation library for Ruby
-dev-ruby/dotenv 2.7.3 2.7.4 2.7.5 2.7.6: Loads environment variables from .env into ENV
+dev-ruby/dotenv 2.7.6: Loads environment variables from .env into ENV
 dev-ruby/dust 0.1.7-r2: Descriptive block syntax definition for Test::Unit
 dev-ruby/ecma-re-validator 0.2.0 0.2.1: Validate a regular expression string against what ECMA-262 can actually do
 dev-ruby/ed25519 1.2.4: Library for the Ed25519 public-key signature system
@@ -9904,7 +9904,7 @@ dev-ruby/elasticsearch-api 6.8.0 6.8.1 6.8.2: Ruby integrations for ES, elastics
 dev-ruby/elasticsearch-transport 6.8.0 6.8.1 6.8.2: Ruby integrations for ES, elasticsearch-transport module
 dev-ruby/em-websocket 0.5.1: EventMachine based WebSocket server
 dev-ruby/equalizer 0.0.11: Module to define equality, equivalence and inspection methods
-dev-ruby/equatable 0.5.0 0.6.0 0.6.1: Allows ruby objects to implement equality comparison and inspection methods
+dev-ruby/equatable 0.6.1: Allows ruby objects to implement equality comparison and inspection methods
 dev-ruby/erubi 1.9.0: a ERB template engine for ruby; a simplified fork of Erubis
 dev-ruby/erubis 2.7.0-r2: Erubis is an implementation of eRuby
 dev-ruby/ethon 0.12.0: Very lightweight libcurl wrapper
@@ -9942,14 +9942,14 @@ dev-ruby/forwardable-extended 2.6.0-r1: Forwardable with hash, and instance vari
 dev-ruby/fuubar 2.5.0 2.5.0-r1: Instafailing RSpec progress bar formatter
 dev-ruby/gettext-setup 0.30 0.31 0.34 0.34-r1 0.34-r2: A gem to ease i18n
 dev-ruby/gettext_i18n_rails 1.8.1: FastGettext / Rails integration
-dev-ruby/gh 0.16.0 0.17.0 0.18.0: multi-layer client for the github api v3
+dev-ruby/gh 0.18.0: multi-layer client for the github api v3
 dev-ruby/gherkin 5.1.0: Fast Gherkin lexer and parser
 dev-ruby/gist 5.1.0: Potentially the best command line gister.
 dev-ruby/git 1.7.0: Library for using Git in Ruby
 dev-ruby/globalid 0.4.2 0.4.2-r1: Reference models by URI
 dev-ruby/gnuplot 2.6.2-r2: Gnuplot drawing library - Ruby Bindings
-dev-ruby/google-protobuf 3.8.0 3.9.2 3.10.1 3.11.2 3.11.3 3.11.4: Protocol Buffers are Google's data interchange format
-dev-ruby/gpgme 2.0.18 2.0.19 2.0.20: Ruby language binding for GnuPG Made Easy
+dev-ruby/google-protobuf 3.8.0 3.10.1 3.11.4 3.12.4: Protocol Buffers are Google's data interchange format
+dev-ruby/gpgme 2.0.20: Ruby language binding for GnuPG Made Easy
 dev-ruby/gruff 0.7.0-r2 0.8.0: Beautiful graphs for one or multiple datasets
 dev-ruby/haml 5.1.2: A ruby web page templating engine
 dev-ruby/haml-rails 2.0.0 2.0.1: Provides Haml generators for Rails 4
