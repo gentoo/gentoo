@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="A Machine Emulator, Mainly emulates MIPS, but supports other CPU types"
 HOMEPAGE="http://gxemul.sourceforge.net/"
@@ -18,10 +18,16 @@ RDEPEND="X? ( x11-libs/libX11 )"
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.6.0-gcc46.patch
+	"${FILESDIR}"/${P}-fix-mymkstemp.patch # Bug 441558
+	"${FILESDIR}"/${P}-fix-mkstemp-test.patch # Bug 441558
+	"${FILESDIR}"/${PN}-0.6.0-no-doxygen.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PV}-gcc46.patch
-	epatch "${FILESDIR}"/${PV}-fix-mymkstemp.patch # Bug 441558
-	epatch "${FILESDIR}"/${PV}-fix-mkstemp-test.patch # Bug 441558
+	default
+
 	sed -i configure -e 's|-O3||g' || die "sed configure"
 	tc-export CC CXX
 }
@@ -31,12 +37,14 @@ src_configure() {
 	./configure \
 		--disable-valgrind \
 		$(use debug && echo --debug) \
-		$(use X || echo --disable-x) || die "configure failed"
+		$(use X || echo --disable-x) \
+	|| die "configure failed"
 }
 
 src_install() {
 	dobin gxemul
 	doman man/gxemul.1
 	dodoc HISTORY README
-	dohtml -r doc/*
+	docinto html
+	dodoc -r doc/.
 }
