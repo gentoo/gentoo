@@ -18389,7 +18389,7 @@ x11-libs/libfm-qt 0.15.1-r1: Qt Library for Building File Managers
 x11-libs/libfontenc 1.1.4: X.Org fontenc library
 x11-libs/libgxim 0.5.0: GObject-based XIM protocol library
 x11-libs/libnotify 0.7.8 0.7.9: A library for sending desktop notifications
-x11-libs/liboglappth 1.0.0: Libary for OpenGL applications with easy-to-code scene setup and selection
+x11-libs/liboglappth 1.0.0-r1: Libary for OpenGL applications with easy-to-code scene setup and selection
 x11-libs/libpciaccess 0.16: Library providing generic access to the PCI bus and devices
 x11-libs/librfm 5.3.16.3-r1: The basic library used by some rfm applications, such as Rodent filemanager
 x11-libs/libtinynotify 0.2.1 9999: A lightweight implementation of Desktop Notification Spec
@@ -18422,9 +18422,9 @@ x11-libs/qtermwidget 0.14.1 0.15.0 9999: Qt terminal emulator widget
 x11-libs/qwt 6.1.4: 2D plotting library for Qt5
 x11-libs/qwtpolar 1.1.1-r2: Library for displaying values on a polar coordinate system
 x11-libs/rep-gtk 0.90.8.3: GTK+/libglade/GNOME bindings for the librep Lisp environment
-x11-libs/scw 0.4.7-r1: A GTK+ widget set specifically designed for chat programs
+x11-libs/scw 0.4.7-r2: A GTK+ widget set specifically designed for chat programs
 x11-libs/snorenotify 0.7.0-r1: Multi platform Qt notification framework
-x11-libs/spread-sheet-widget 0.3: GNU Spread Sheet Widget
+x11-libs/spread-sheet-widget 0.3-r1: GNU Spread Sheet Widget
 x11-libs/startup-notification 0.12-r1: Application startup notification and feedback library
 x11-libs/tslib 1.21: Touchscreen Access Library
 x11-libs/vte 0.28.2-r208 0.58.3 0.60.3: Library providing a virtual terminal emulator widget
