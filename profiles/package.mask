@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Stephan Hartmann <sultan@gentoo.org> (2020-09-15)
+# Stuck on EAPI 4, does not build, homepage gone, no maintainer.
+# Removal in 30 days. See bugs #717188, #725212, #736607,
+# #742158.
+net-nntp/sn
+
 # James Le Cuirot <chewi@gentoo.org> (2020-09-13)
 # License issues. app-arch/arj is a better alternative. Removal in 30
 # days. See bug #694746.
