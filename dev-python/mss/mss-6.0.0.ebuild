@@ -21,6 +21,7 @@ S="${WORKDIR}/python-${PN}-${PV}"
 BDEPEND="test? (
 	dev-python/flaky[${PYTHON_USEDEP}]
 	dev-python/wheel[${PYTHON_USEDEP}]
+	sys-process/lsof
 )"
 
 distutils_enable_tests pytest
