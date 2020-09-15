@@ -16,8 +16,10 @@ LICENSE="BSD-with-disclosure"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-BDEPEND="dev-python/pytest-regressions[${PYTHON_USEDEP}]
-	test? ( dev-python/beautifulsoup[${PYTHON_USEDEP}] )"
+BDEPEND="test? (
+	dev-python/beautifulsoup[${PYTHON_USEDEP}]
+	dev-python/pytest-regressions[${PYTHON_USEDEP}]
+)"
 
 RDEPEND="dev-python/sphinx[${PYTHON_USEDEP}]"
 
