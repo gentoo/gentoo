@@ -1,5 +1,5 @@
---- bootstrap
-+++ bootstrap
+--- a/bootstrap
++++ b/bootstrap
 @@ -26,8 +26,8 @@
  	INCLUDES="-I m4"
  fi
