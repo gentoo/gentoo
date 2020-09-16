@@ -8239,6 +8239,7 @@ dev-python/gitdb 4.0.5: GitDB is a pure-Python git object database
 dev-python/gitdb2 2.0.3: GitDB is a pure-Python git object database
 dev-python/github3 1.3.0: A wrapper for the GitHub API written in python
 dev-python/glance_store 1.0.1: A library for glance
+dev-python/glooey 0.3.1: An object-oriented GUI library for pyglet
 dev-python/gmpy 2.0.8-r1: Python bindings for GMP, MPC, MPFR and MPIR libraries
 dev-python/google-api-core 1.17.0: Core Library for Google Client Libraries
 dev-python/google-api-python-client 1.6.5 1.8.3-r1: Google API Client for Python
