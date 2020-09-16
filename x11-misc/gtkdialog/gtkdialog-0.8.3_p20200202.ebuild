@@ -32,6 +32,7 @@ DEPEND="
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.8.3-fno-common.patch
+	"${FILESDIR}"/${PN}-0.8.3-do_variables_count_widgets.patch
 )
 
 src_prepare() {
