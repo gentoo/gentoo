@@ -13,12 +13,11 @@ if [ "${PV}" = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/srsLTE/srsLTE.git"
 else
 	inherit vcs-snapshot
-	#This version has not earned keywords:
-	#https://github.com/srsLTE/srsLTE/issues/526
-	#https://github.com/srsLTE/srsLTE/issues/527
-	#KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~x86"
 	MY_PV=${PV//./_}
 	SRC_URI="https://github.com/srsLTE/srsLTE/archive/release_${MY_PV}.tar.gz -> ${P}.tar.gz"
+	#https://github.com/srsLTE/srsLTE/issues/537
+	RESTRICT=test
 fi
 
 LICENSE="GPL-3"
