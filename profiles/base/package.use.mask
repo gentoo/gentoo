@@ -18,7 +18,6 @@ sys-cluster/pacemaker heartbeat
 # The respective dependencies are masked for removal.
 app-metrics/collectd collectd_plugins_gmond
 app-metrics/collectd collectd_plugins_onewire
-sci-libs/dealii gmsh
 
 # Stephan Hartmann <sultan@gentoo.org> (2020-09-06)
 # Causes seccomp sandbox violation or chromium might hang on startup.
