@@ -10,7 +10,7 @@ PYSDL="${PN}-2.1.0"
 
 DESCRIPTION="Reimplementation of portions of the pygame API using SDL2"
 HOMEPAGE="https://github.com/renpy/pygame_sdl2"
-SRC_URI="http://www.renpy.org/dl/${PV}/${PYSDL}-for-renpy-${PV}.tar.gz"
+SRC_URI="https://www.renpy.org/dl/${PV}/${PYSDL}-for-renpy-${PV}.tar.gz"
 
 LICENSE="LGPL-2.1 ZLIB"
 SLOT="0"
