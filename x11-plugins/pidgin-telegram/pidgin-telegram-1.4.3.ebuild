@@ -35,7 +35,10 @@ S="${WORKDIR}/telegram-purple"
 
 DOCS=( "AUTHORS" "CHANGELOG.md" "HACKING.md" "HACKING.BUILD.md" "README.md" )
 
-PATCHES="${FILESDIR}/${P}-change-metadata-location.patch"
+PATCHES=(
+	"${FILESDIR}/${P}-change-metadata-location.patch"
+	"${FILESDIR}/${P}-clang.patch"
+)
 
 src_prepare() {
 	default
