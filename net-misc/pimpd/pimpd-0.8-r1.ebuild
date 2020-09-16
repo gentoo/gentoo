@@ -11,8 +11,7 @@ SRC_URI="http://cats.meow.at/~peter/pimpd_${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc sparc ~x86"
-IUSE=""
+KEYWORDS="~amd64 ppc sparc x86"
 
 src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
