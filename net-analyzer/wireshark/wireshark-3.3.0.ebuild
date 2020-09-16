@@ -3,15 +3,15 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
-inherit fcaps flag-o-matic git-r3 multilib python-any-r1 qmake-utils user xdg-utils cmake
+inherit fcaps flag-o-matic multilib python-any-r1 qmake-utils user xdg-utils cmake
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
-EGIT_REPO_URI="https://code.wireshark.org/review/wireshark"
+SRC_URI="https://www.wireshark.org/download/src/all-versions/${P/_/}.tar.xz"
 LICENSE="GPL-2"
 
 SLOT="0/${PV}"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86"
 IUSE="
 	androiddump bcg729 brotli +capinfos +captype ciscodump +dftest doc dpauxmon
 	+dumpcap +editcap http2 ilbc kerberos libxml2 lto lua lz4 maxminddb
@@ -88,6 +88,7 @@ RDEPEND="
 REQUIRED_USE="
 	plugin-ifdemo? ( plugins )
 "
+RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
 	"${FILESDIR}"/${PN}-99999999-ui-needs-wiretap.patch
