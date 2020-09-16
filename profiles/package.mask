@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2020-09-16)
+# Stuck on EAPI 4, only source is mirror://gentoo,
+# unmaintained, HOMEPAGE gone.
+app-admin/recursos
+
 # David Seifert <soap@gentoo.org> (2020-09-16)
 # EAPI 4, last release in 2001, the Fortran source code
 # is terrible and has buffer overflows.
