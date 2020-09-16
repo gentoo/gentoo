@@ -1,12 +1,13 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit toolchain-funcs flag-o-matic
+inherit toolchain-funcs
 
 MY_PV="${PV//.}"
 MY_P="${PN}${MY_PV}"
+
 DESCRIPTION="An assembler and disassembler for 12 and 14-bit PIC chips"
 HOMEPAGE="http://www.iki.fi/trossi/pic/"
 SRC_URI="http://www.iki.fi/trossi/pic/${MY_P}.tar.bz2"
@@ -14,17 +15,13 @@ SRC_URI="http://www.iki.fi/trossi/pic/${MY_P}.tar.bz2"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 x86"
-IUSE=""
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
-src_prepare() {
-	sed -i -e 's:$(CC):\0 $(LDFLAGS):' Makefile || die
-}
+PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
-src_compile() {
-	append-cflags -DBUILTIN_INCLUDE1=\\\"/usr/share/picasm/include\\\"
-	emake CFLAGS="${CFLAGS}" CC="$(tc-getCC)"
+src_configure() {
+	tc-export CC
 }
 
 src_install() {
@@ -34,8 +31,10 @@ src_install() {
 	insinto /usr/share/picasm/include
 	doins device_definitions/*.i
 
-	dohtml picasm.html
 	docinto examples
 	dodoc examples/*.*
 	docompress -x /usr/share/doc/${PF}/examples
+
+	docinto html
+	dodoc picasm.html
 }
