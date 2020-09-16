@@ -55,9 +55,9 @@ src_configure() {
 		-Dsystemd=true
 		-Dbash-completion=true
 		-Dzsh-completion=true
-		-Dx-keybinder=true
 		$(meson_use introspection introspection)
 		$(meson_use vala vapi)
+		$(meson_use gnome x-keybinder)
 		$(meson_use gnome gnome-shell)
 	)
 	meson_src_configure
