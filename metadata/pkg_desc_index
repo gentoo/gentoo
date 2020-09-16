@@ -477,7 +477,7 @@ app-admin/abrt 2.14.0 2.14.1 2.14.2: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 3.6.13-r2 4.0.19-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0.13: A webserver log analyzer
-app-admin/ansible 2.9.12 2.9.13 2.10.0 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.9.12 2.9.13 9999: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-base 2.10.0 2.10.1: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-cmdb 1.28: Ansible Configuration Management Database
 app-admin/ansible-lint 4.0.1 4.1.0: Checks ansible playbooks for practices and behaviour that can be improved
@@ -5992,7 +5992,7 @@ dev-perl/AppConfig 1.710.0 1.710.0-r1: Perl5 module for reading configuration fi
 dev-perl/Archive-Any 0.94.500 0.94.600: Single interface to deal with file archives
 dev-perl/Archive-Extract 0.800.0 0.860.0: Generic archive extracting mechanism
 dev-perl/Archive-Tar-Stream 0.30.0-r1: pure perl IO-friendly tar file management
-dev-perl/Archive-Tar-Wrapper 0.370.0: API wrapper around the 'tar' utility
+dev-perl/Archive-Tar-Wrapper 0.370.0 0.380.0: API wrapper around the 'tar' utility
 dev-perl/Archive-Zip 1.640.0 1.680.0: A wrapper that lets you read Zip archive members as if they were files
 dev-perl/Array-Compare 3.0.1 3.0.3: Perl extension for comparing arrays
 dev-perl/Array-RefElem 1.0.0-r1 1.0.0-r3: Set up array elements as aliases
@@ -6220,7 +6220,7 @@ dev-perl/Crypt-RSA 1.990.0-r1 1.990.0-r2: RSA public-key cryptosystem
 dev-perl/Crypt-Random 1.520.0: Cryptographically Secure, True Random Number Generator
 dev-perl/Crypt-Random-Source 0.120.0 0.140.0: Get weak or strong random data from pluggable sources
 dev-perl/Crypt-Rijndael 1.140.0 1.140.0-r1: Crypt::CBC compliant Rijndael encryption module
-dev-perl/Crypt-SMIME 0.250.0-r1 0.260.0: S/MIME message signing, verification, encryption and decryption
+dev-perl/Crypt-SMIME 0.250.0-r1 0.260.0 0.270.0: S/MIME message signing, verification, encryption and decryption
 dev-perl/Crypt-SSLeay 0.720.0-r2 0.720.0-r3: OpenSSL support for LWP
 dev-perl/Crypt-Simple 0.60.0-r1 0.60.0-r2: encrypt stuff simply
 dev-perl/Crypt-SmbHash 0.120.0-r2 0.120.0-r3: LM/NT hashing, for Samba's smbpasswd entries
@@ -14507,7 +14507,7 @@ net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
 net-analyzer/vnstat 1.17 2.4 2.5 2.6 9999: Console-based network traffic monitor that keeps statistics of network usage
 net-analyzer/wapiti 3.0.3 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1 0.2.0-r2: Poor man's web vulnerability scanner
-net-analyzer/wireshark 3.2.5 3.2.6 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 3.2.5 3.2.6 3.3.0 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3 0.3-r1: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2 9999: A framework for layer 2 attacks
@@ -18136,7 +18136,7 @@ www-client/lynx 2.8.9_p1 2.9.0_pre4 2.9.0_pre5: An excellent console-based web b
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r3: a free, open source web browser
-www-client/opera 70.0.3728.154 70.0.3728.178: A fast and secure web browser
+www-client/opera 70.0.3728.154 70.0.3728.178 71.0.3770.148: A fast and secure web browser
 www-client/opera-beta 71.0.3770.50 71.0.3770.81 71.0.3770.97 71.0.3770.126: A fast and secure web browser
 www-client/opera-developer 72.0.3779.0 72.0.3784.0 72.0.3791.0 72.0.3798.0 72.0.3807.0: A fast and secure web browser
 www-client/otter 1.0.01 1.0.01-r1 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
