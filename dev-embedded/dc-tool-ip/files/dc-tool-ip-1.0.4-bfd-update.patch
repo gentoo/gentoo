@@ -1,5 +1,5 @@
---- host-src/tool/dc-tool.c.orig	2004-11-13 19:38:50.007151024 -0500
-+++ host-src/tool/dc-tool.c	2004-11-13 19:38:58.320887144 -0500
+--- a/host-src/tool/dc-tool.c
++++ b/host-src/tool/dc-tool.c
 @@ -431,13 +431,13 @@
  		if ((section->flags & SEC_HAS_CONTENTS) && (section->flags & SEC_LOAD)) {
  		    printf("Section %s, ",section->name);
