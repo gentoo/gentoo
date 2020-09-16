@@ -9180,7 +9180,7 @@ dev-python/stripe 2.46.0: Stripe python bindings
 dev-python/subprocess32 3.5.4: A backport of the subprocess module from Python 3.2/3.3 for use on 2.x
 dev-python/subunit 1.4.0: A streaming protocol for test results
 dev-python/subvertpy 0.10.1: Alternative Python bindings for Subversion
-dev-python/suds 0.6-r1: Lightweight SOAP client (Jurko's fork) (py3 support) (active development)
+dev-python/suds 0.6-r1 0.8.4: Lightweight SOAP client
 dev-python/sure 1.4.11: idiomatic assertion toolkit with human-friendly failure messages
 dev-python/svg-path 3.0: SVG path objects and parser
 dev-python/svgwrite 1.4: Python Package to write SVG files
@@ -12481,7 +12481,7 @@ mail-filter/imapfilter 2.6.16: An IMAP mail filtering utility
 mail-filter/libmilter 1.0.2 1.0.2_p1 1.0.2_p1-r1: The Sendmail Filter API (Milter)
 mail-filter/libsieve 2.2.7: A library for parsing, sorting and filtering your mail
 mail-filter/libspf2 1.2.10: libspf2 implements the Sender Policy Framework, a part of the SPF/SRS protocols
-mail-filter/libsrs2 1.0.18: libsrs2 is the next generation Sender Rewriting Scheme library
+mail-filter/libsrs2 1.0.18-r1: libsrs2 is the next generation Sender Rewriting Scheme library
 mail-filter/libsrs_alt 1.0-r1: Sender Rewriting Scheme library for use with Exim
 mail-filter/maildrop 3.0.0: Mail delivery agent/filter
 mail-filter/mailfilter 0.8.4: Mailfilter is a utility to get rid of unwanted spam mails
@@ -15034,7 +15034,7 @@ net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.29.3-r2 0.30-r1 0.31: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/pflogsumm 1.1.5-r1 1.1.5-r2: Pflogsumm is a log analyzer for Postfix logs
 net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Postfix queued messages
-net-mail/pop-before-smtp 1.42: Simple daemon to controll email relay based on successful POP or IMAP logins
+net-mail/pop-before-smtp 1.42: Simple daemon to control email relay based on successful POP or IMAP logins
 net-mail/pop2imap 1.21: Synchronize mailboxes between a pop and an imap servers
 net-mail/popa3d 1.0.2-r1: A security oriented POP3 server
 net-mail/poppassd_ceti 1.8.7: Password change daemon with PAM support
@@ -15278,7 +15278,7 @@ net-misc/packETH 1.7.3 1.8.1 1.9 2.1: Packet generator tool for ethernet
 net-misc/pcapfix 1.1.4: Repair and fix broken pcap files
 net-misc/pedro 1.6: Pedro is a subscription/notification communications system
 net-misc/pen 0.34.1: TCP Load Balancing Port Forwarder
-net-misc/pimpd 0.8 0.8-r1: RFC1413-compliant identd server supporting masqueraded connections
+net-misc/pimpd 0.8-r1: RFC1413-compliant identd server supporting masqueraded connections
 net-misc/pingu 1.5 9999: Policy routing daemon with failover and load-balancing
 net-misc/pipes 1.16.1 1.16.1-r1: Very versatile TCP pipes
 net-misc/plowshare 2.1.6 2.1.7 9999: Command-line downloader and uploader for file-sharing websites
