@@ -1,5 +1,5 @@
---- Makefile.in
-+++ Makefile.in
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -44,17 +44,19 @@
  	./mkinstalldirs $(i_bindir) $(i_mandir)
  

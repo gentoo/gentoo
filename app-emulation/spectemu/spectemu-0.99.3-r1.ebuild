@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="48k ZX Spectrum Emulator"
 HOMEPAGE="http://kempelen.iit.bme.hu/~mszeredi/spectemu/spectemu.html"
@@ -16,17 +16,25 @@ IUSE="readline svga +X"
 
 REQUIRED_USE="|| ( svga X )"
 
-DEPEND="X? ( x11-base/xorg-proto
+DEPEND="
+	X? (
+		x11-base/xorg-proto
 		>=x11-libs/libX11-1.0.0
 		>=x11-libs/libXext-1.0.0
-		>=x11-libs/libXxf86vm-1.0.0 )
-	readline? ( sys-libs/readline )"
+		>=x11-libs/libXxf86vm-1.0.0
+	)
+	readline? ( sys-libs/readline:= )
+"
 RDEPEND="${DEPEND}
 	svga? ( media-libs/svgalib )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-automagic.patch
+	"${FILESDIR}"/${P}-build.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-automagic.patch
-	epatch "${FILESDIR}"/${P}-build.patch
+	default
 	eautoreconf
 }
 
@@ -38,5 +46,5 @@ src_configure() {
 }
 
 src_install() {
-	emake install_root="${D}" install
+	emake install_root="${ED}" install
 }
