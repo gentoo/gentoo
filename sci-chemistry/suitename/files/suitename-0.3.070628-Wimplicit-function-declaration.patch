@@ -1,0 +1,33 @@
+--- a/suitename.c
++++ b/suitename.c
+@@ -25,7 +25,7 @@
+ /*0.2.070628 triage reports zeta-1, epsilon-1, delta-1,... Ltriage codes */
+ 
+ /****main()*******************************************************************/
+-main(int argc, char** argv)
++int main(int argc, char** argv)
+ {
+    int  LOK=1,ibin=0,jclst=0;
+    char sour[32];
+--- a/suiteninit.c
++++ b/suiteninit.c
+@@ -9,6 +9,8 @@
+ #include "suiteninpt.h"
+ #include "suitenout.h"
+ 
++#include <ctype.h>
++
+ /****initializations()********************************************************/
+ int  initializations(void)
+ {
+--- a/suitenutil.c
++++ b/suitenutil.c
+@@ -6,6 +6,8 @@
+ 
+ #include "suiteninit.h"
+ 
++#include <ctype.h>
++
+ /****vector7ab()**************************************************************/
+ void vector7ab(float* atob, float* a, float* b)
+ {
