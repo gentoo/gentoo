@@ -12,7 +12,7 @@ SRC_URI="http://cr.yp.to/software/${P}.tar.gz
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ppc x86"
 IUSE="static"
 RESTRICT="mirror bindist test"
 
