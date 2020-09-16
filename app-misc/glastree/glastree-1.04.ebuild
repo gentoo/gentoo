@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 inherit eutils
 
@@ -12,17 +12,16 @@ DEPEND="dev-lang/perl
 	dev-perl/Date-Calc"
 SLOT="0"
 KEYWORDS="~amd64 ppc x86"
-IUSE=""
 LICENSE="public-domain"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-posix-make.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-posix-make.patch
+)
 
 src_compile() { :; }
 
 src_install() {
 	dodir /usr/share/man/man1
-	emake INSTROOT="${D}"/usr INSTMAN=share/man install
+	emake INSTROOT="${ED}"/usr INSTMAN=share/man install
 	dodoc README CHANGES THANKS TODO
 }
