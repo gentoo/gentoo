@@ -5,6 +5,7 @@
 		<email>cedk@gentoo.org</email>
 		<name>Cédric Krier</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<use>
 		<flag name="vies">Enable VIES</flag>
 	</use>
