@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit eutils
-
 DESCRIPTION="glastree is a poor mans snapshot utility using hardlinks written in perl"
 HOMEPAGE="http://www.igmus.org/code/"
 SRC_URI="http://www.igmus.org/files/${P}.tar.gz"
