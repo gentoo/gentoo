@@ -3,9 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
-
-inherit bash-completion-r1 python-single-r1
+inherit bash-completion-r1
 
 DESCRIPTION="Yet more Objects for (High Energy Physics) Data Analysis"
 HOMEPAGE="http://yoda.hepforge.org/"
@@ -15,31 +13,24 @@ LICENSE="GPL-2"
 
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="python root static-libs"
+IUSE="root static-libs"
 
 RDEPEND="
-	python? ( ${PYTHON_DEPS} )
-	root? ( sci-physics/root:=[python=,${PYTHON_SINGLE_USEDEP}] )"
-DEPEND="${RDEPEND}
-	python? (
-		$(python_gen_cond_dep '
-			dev-python/cython[${PYTHON_MULTI_USEDEP}]
-		')
-	)"
-
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+	root? ( sci-physics/root:= )"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${P^^}"
 
-pkg_setup() {
-	use python && python-single-r1_pkg_setup
-}
-
 src_configure() {
 	econf \
-		$(use_enable python pyext) \
+		--disable-pyext \
 		$(use_enable root) \
 		$(use_enable static-libs static)
+}
+
+src_test() {
+	# PYTESTS and SHTESTS both require python tools
+	emake check PYTESTS= SHTESTS=
 }
 
 src_install() {
