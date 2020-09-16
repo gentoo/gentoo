@@ -51,7 +51,6 @@ DEPEND="
 
 src_prepare() {
 	default
-	sed -i 's/ -Werror//' configure.ac || die
 	eautoreconf
 }
 
@@ -64,6 +63,8 @@ src_configure() {
 		--libdir="${EPREFIX}"/usr/lib
 		# Attempts to call python-exec directly otherwise.
 		--with-sphinx-python=${PYTHON}
+		# This disables -Werror, see also: https://github.com/hpc/charliecloud/pull/808
+		--enable-buggy-build
 	)
 	econf "${econf_args[@]}"
 }
