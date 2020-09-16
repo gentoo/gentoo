@@ -1750,7 +1750,7 @@ app-emacs/filladapt 2.12-r1: Filladapt enhances the behavior of Emacs' fill func
 app-emacs/flashcard 2.3.3: An Emacs Lisp package for drilling on questions and answers
 app-emacs/flim 1.14.9-r2 1.14.9_p20190526: A library to provide basic features about message representation or encoding
 app-emacs/folding 2019.0524.1621: A folding-editor-like Emacs minor mode
-app-emacs/ghub 2.0.1 3.2.0 3.3.0: Minuscule client library for the Git forge APIs
+app-emacs/ghub 3.2.0 3.3.0 3.4.1: Minuscule client library for the Git forge APIs
 app-emacs/gnuplot-mode 0.7.0: Gnuplot mode for Emacs
 app-emacs/gnuserv 3.12.8-r5: Attach to an already running Emacs
 app-emacs/go-mode 1.5.0: An improved Go mode for emacs
@@ -1779,7 +1779,7 @@ app-emacs/lookup 1.99.96_pre20180209: An interface to search CD-ROM books and ne
 app-emacs/lua-mode 20151025: An Emacs major mode for editing Lua scripts
 app-emacs/lyskom-elisp-client 0.48_p20180410 0.48_p20200226: Elisp client for the LysKOM conference system
 app-emacs/magit 2.13.1 2.90.1: A Git porcelain inside Emacs
-app-emacs/magit-popup 2.12.3 2.12.4 2.13.0 2.13.2: Define prefix-infix-suffix command combos
+app-emacs/magit-popup 2.13.0 2.13.2 2.13.3: Define prefix-infix-suffix command combos
 app-emacs/mailcrypt 3.5.9-r3: Provides a simple interface to public key cryptography with OpenPGP
 app-emacs/markdown-mode 2.3: Major mode for editing Markdown-formatted text files
 app-emacs/matlab 3.3.6_pre20191010-r1: Major modes for MATLAB .m and .tlc files
@@ -1850,7 +1850,7 @@ app-emacs/teco 7-r2: TECO interpreter for GNU Emacs
 app-emacs/template 3.3b: Use templates, decorate comments, auto-update buffers
 app-emacs/tempo-snippets 0.1.5: Visual insertion of tempo templates
 app-emacs/thinks 1.12: Insert text in a think bubble
-app-emacs/treepy 0.1.1 0.1.1-r1: Generic tree traversing tools for Emacs Lisp
+app-emacs/treepy 0.1.1 0.1.1-r1 0.1.2: Generic tree traversing tools for Emacs Lisp
 app-emacs/tuareg-mode 2.2.0: An Objective Caml/Camllight mode for Emacs
 app-emacs/twittering-mode 2.0.0 3.0.0 9999: Emacs major mode for Twitter
 app-emacs/typing 1.1.4: The Typing of Emacs -- an Elisp parody of The Typing of the Dead for Dreamcast
@@ -1869,7 +1869,7 @@ app-emacs/wgrep 2.3.0 2.3.2: Writable grep buffer and apply the changes to files
 app-emacs/whine 20091222: Complaint generator for GNU Emacs
 app-emacs/wikipedia-mode 0.5-r2: Mode for editing Wikipedia articles off-line
 app-emacs/windows 2.53: Window manager for GNU Emacs
-app-emacs/with-editor 2.8.3 2.9.2: Use the Emacsclient as the $EDITOR of child processes
+app-emacs/with-editor 2.8.3 2.9.2 2.9.4: Use the Emacsclient as the $EDITOR of child processes
 app-emacs/xclip 1.9: Emacs Interface to XClip
 app-emacs/xrdb-mode 3.0-r1: An Emacs major mode for editing X resource database files
 app-emacs/xslide 0.2.2-r1: An Emacs major mode for editing XSL stylesheets and running XSL processes
@@ -8263,7 +8263,7 @@ dev-python/guzzle_sphinx_theme 0.7.11-r1: Sphinx theme used by Guzzle
 dev-python/h11 0.10.0: A pure-Python implementation of HTTP/1.1 inspired by hyper-h2
 dev-python/h5py 2.10.0-r1: Simple Python interface to HDF5 files
 dev-python/hacking 2.0.0: A client for the OpenStack Nova API
-dev-python/hcloud-python 1.8.1 1.8.2 1.9.0: Official Hetzner Cloud python library
+dev-python/hcloud-python 1.9.0: Official Hetzner Cloud python library
 dev-python/helpdev 0.7.1: Helping users and developers to get information about the environment
 dev-python/hgdistver 0.25: utility lib to generate python package version infos from mercurial tags
 dev-python/hiredis 1.0.1: Python extension that wraps hiredis
