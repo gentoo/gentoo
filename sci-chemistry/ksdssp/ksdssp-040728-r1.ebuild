@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -9,19 +9,18 @@ DESCRIPTION="An open source implementation of sci-chemistry/dssp"
 HOMEPAGE="http://www.cgl.ucsf.edu/Overview/software.html"
 SRC_URI="mirror://gentoo/${P}.shar"
 
-SLOT="0"
 LICENSE="BSD"
+SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE=""
 
 RDEPEND="sci-libs/libpdb++"
-DEPEND="${RDEPEND}
-	app-arch/sharutils"
+DEPEND="${RDEPEND}"
+BDEPEND="app-arch/sharutils"
 
-S="${WORKDIR}"/${PN}
+S="${WORKDIR}/${PN}"
 
 src_unpack() {
-	"${EPREFIX}/usr/bin/unshar" "${DISTDIR}"/${A} || die
+	unshar "${DISTDIR}"/${A} || die
 }
 
 src_compile() {
@@ -39,8 +38,10 @@ src_compile() {
 }
 
 src_install() {
-	dobin ${PN}{,.csh}
-	dodoc README
-	dohtml ${PN}.html
-	doman ${PN}.1
+	dobin ksdssp{,.csh}
+
+	HTML_DOCS=( ksdssp.html )
+	einstalldocs
+
+	doman ksdssp.1
 }
