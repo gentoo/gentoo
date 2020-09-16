@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -12,31 +12,21 @@ SRC_URI="http://www.ks.uiuc.edu/Research/vmd/extsrcs/surf.tar.Z -> ${P}.tar.Z"
 LICENSE="SURF"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x86-macos"
-IUSE=""
 
-DEPEND="
-	!www-client/surf
-	sys-apps/ed
-	x11-misc/makedepend"
-RDEPEND=""
+RDEPEND="!www-client/surf"
 
-S=${WORKDIR}
+S="${WORKDIR}"
 
-src_prepare() {
-	sed \
-		-e 's:$(CC) $(CFLAGS) $(OBJS):$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS):g' \
-		-i Makefile || die
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-makefile.patch
+	"${FILESDIR}"/${P}-Wreturn-type.patch
+)
 
-src_compile() {
-	emake depend \
-		&& emake \
-			CC="$(tc-getCC)" \
-			OPT_CFLAGS="${CFLAGS} \$(INCLUDE)" \
-			CFLAGS="${CFLAGS} \$(INCLUDE)"
+src_configure() {
+	tc-export CC
 }
 
 src_install() {
-	dobin ${PN}
-	dodoc README
+	dobin surf
+	einstalldocs
 }
