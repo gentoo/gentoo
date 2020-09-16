@@ -3,18 +3,23 @@
 
 EAPI=7
 
-inherit git-r3 meson xdg
+PYTHON_COMPAT=( python3_{6,7,8,9} )
+inherit meson python-any-r1 virtualx xdg
 
 DESCRIPTION="A lightweight compositor for X11 (previously a compton fork)"
 HOMEPAGE="https://github.com/yshui/picom"
-EGIT_REPO_URI="https://github.com/yshui/picom.git"
+SRC_URI="https://github.com/yshui/picom/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MPL-2.0 MIT"
 SLOT="0"
-KEYWORDS=""
-IUSE="+config-file dbus +doc +drm opengl pcre"
+KEYWORDS="~amd64 ~ppc64 ~x86"
+IUSE="+config-file dbus +doc +drm opengl pcre test"
 
-RDEPEND="dev-libs/libev
+REQUIRED_USE="test? ( dbus )" # avoid "DBus support not compiled in!"
+RESTRICT="test" # but tests require dbus_next
+
+RDEPEND="
+	dev-libs/libev
 	dev-libs/uthash
 	x11-libs/libX11
 	x11-libs/libxcb
@@ -34,7 +39,9 @@ RDEPEND="dev-libs/libev
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 BDEPEND="virtual/pkgconfig
-	doc? ( app-text/asciidoc )"
+	doc? ( app-text/asciidoc )
+	test? ( $(python_gen_any_dep 'dev-python/xcffib[${PYTHON_USEDEP}]') )
+"
 
 src_configure() {
 	local emesonargs=(
@@ -46,4 +53,8 @@ src_configure() {
 	)
 
 	meson_src_configure
+}
+
+src_test() {
+	virtx "${S}/tests/run_tests.sh" "${BUILD_DIR}/src/${PN}"
 }
