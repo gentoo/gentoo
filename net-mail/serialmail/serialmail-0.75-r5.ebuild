@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit toolchain-funcs
+
 DESCRIPTION="A serialmail is a collection of tools for passing mail across serial links"
 HOMEPAGE="http://cr.yp.to/serialmail.html"
 SRC_URI="http://cr.yp.to/software/${P}.tar.gz
@@ -26,18 +28,22 @@ PATCHES=(
 	"${WORKDIR}"/${P}-smtpauth.patch
 	"${WORKDIR}"/${P}-smtpauth_comp.patch
 	"${FILESDIR}"/${P}-implicit.patch
+	"${FILESDIR}"/${PN}-0.75-respect-AR-RANLIB.patch
 )
 
 src_prepare() {
 	default
 
-	sed -i "s|@CFLAGS@|${CFLAGS}|" conf-cc || die
-	use static && LDFLAGS="${LDFLAGS} -static"
-	sed -i "s|@LDFLAGS@|${LDFLAGS}|" conf-ld || die
+	use static && LDFLAGS+="${LDFLAGS} -static"
+
+	echo "$(tc-getCC) ${CFLAGS}" > conf-cc
+	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld
 }
 
 src_compile() {
 	sed -i -e '/(man|doc)/d' hier.c || die
+
+	tc-export AR RANLIB
 	emake it man
 }
 
