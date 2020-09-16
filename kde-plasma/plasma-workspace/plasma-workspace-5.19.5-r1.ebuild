@@ -127,6 +127,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.14.2-split-libkworkspace.patch"
 	"${FILESDIR}/${PN}-5.19.2-use-PlasmaExtras.PlaceholderMessage.patch" # KDE-Bug #422684
 	"${FILESDIR}/${P}-gpsd-3.21.patch" # bug 742392
+	"${FILESDIR}/${P}-login-button-size.patch"
 )
 
 RESTRICT+=" test"
