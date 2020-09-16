@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Molecular dynamics simulations platform"
 HOMEPAGE="http://www.ccp5.ac.uk/moldy/moldy.html"
@@ -12,15 +12,16 @@ SRC_URI="ftp://ftp.earth.ox.ac.uk/pub/keith/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="doc examples"
+IUSE="doc"
 
-DEPEND="doc? ( virtual/latex-base )"
-RDEPEND=""
+BDEPEND="doc? ( virtual/latex-base )"
 
 S="${WORKDIR}"
 
+PATCHES=( "${FILESDIR}"/${PV}-as-needed.patch )
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PV}-as-needed.patch
+	default
 	sed \
 		-e 's:-O2::g' \
 		-e 's:-ffast-math::g' \
@@ -47,6 +48,7 @@ src_configure() {
 
 src_compile() {
 	emake
+
 	# To prevent sandbox violations by metafont
 	if use doc; then
 		VARTEXFONTS="${T}"/fonts emake moldy.pdf
@@ -58,13 +60,12 @@ src_install() {
 	emake prefix="${ED}"/usr install
 	dodoc BENCHMARK READ.ME RELNOTES
 
-	if use examples; then
-		rm Makefile.in configure.in config.h.in
-		insinto /usr/share/${PN}/examples/
-		doins *.in *.out control.*
-	fi
+	rm Makefile.in configure.in config.h.in || die
+	insinto /usr/share/${PN}/examples/
+	doins *.in *.out control.*
+
 	if use doc; then
-		insinto /usr/share/doc/${PF}/pdf
-		newins moldy.pdf moldy-manual.pdf
+		docinto pdf
+		newdoc moldy.pdf moldy-manual.pdf
 	fi
 }
