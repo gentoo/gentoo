@@ -1,0 +1,11 @@
+--- a/src/variables.c
++++ b/src/variables.c
+@@ -1113,7 +1113,7 @@
+ 		actual = root;
+ 
+ 	if (actual == NULL)
+-		return;
++		return 0;
+ 
+ 	if (actual->left != NULL)
+ 		n = do_variables_count_widgets(actual->left, n);
