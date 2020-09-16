@@ -1,6 +1,5 @@
-diff -urN preload-0.6.orig/src/preload.conf.in preload-0.6/src/preload.conf.in
---- preload-0.6.orig/src/preload.conf.in	2008-07-24 02:02:11.000000000 +0200
-+++ preload-0.6/src/preload.conf.in	2008-07-24 16:32:28.565184094 +0200
+--- a/src/preload.conf.in	2008-07-24 02:02:11.000000000 +0200
++++ b/src/preload.conf.in	2008-07-24 16:32:28.565184094 +0200
 @@ -132,7 +132,7 @@
  # preload doesn't special-handle device files internally.
  #
