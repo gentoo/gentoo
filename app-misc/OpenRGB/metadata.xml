@@ -9,4 +9,7 @@
 		<email>alexey+gentoo@asokolov.org</email>
 		<name>Alexey Sokolov</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="gitlab">CalcProgrammer1/OpenRGB</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -12,7 +12,7 @@ LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="static"
-RESTRICT="mirror bindist"
+RESTRICT="mirror bindist test"
 
 BDEPEND="sys-apps/groff"
 DEPEND=">=sys-apps/ucspi-tcp-0.88"
