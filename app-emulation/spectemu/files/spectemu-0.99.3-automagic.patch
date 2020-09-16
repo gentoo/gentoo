@@ -1,5 +1,5 @@
---- configure.in
-+++ configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -121,13 +121,22 @@
  dnl -----------------------------------------------------------
  dnl Check for SVGALIB
