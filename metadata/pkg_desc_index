@@ -2076,7 +2076,7 @@ app-forensics/unhide 20130526: A forensic tool to find hidden processes and TCP/
 app-forensics/yasat 848: Security and system auditing tool
 app-forensics/zzuf 0.15-r1: Transparent application input fuzzer
 app-i18n/anthy 9100h-r2: Anthy -- free and secure Japanese input system
-app-i18n/bidiv 1.5-r1 1.5_p4: A commandline tool displaying logical Hebrew/Arabic
+app-i18n/bidiv 1.5_p4: A commandline tool displaying logical Hebrew/Arabic
 app-i18n/canfep 1.0-r1: Canna Japanese kana-kanji frontend processor on console
 app-i18n/canna 3.7_p3-r1 3.7_p3-r2 3.7_p3-r3: A client-server based Kana-Kanji conversion system
 app-i18n/cstools 3.42-r1: A charset conversion tool cstocs and two Perl modules for Czech language
@@ -15389,7 +15389,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1355-r1 0.4.1432: utility to download media contents from the web
-net-misc/youtube-dl 2020.09.06 2020.09.14 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.09.14 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r1 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -18576,7 +18576,7 @@ x11-misc/parcellite 1.2.1: A lightweight GTK+ based clipboard manager
 x11-misc/pcmanfm 1.3.1 9999: Fast lightweight tabbed filemanager
 x11-misc/pcmanfm-qt 0.15.1: Qt GUI Tabbed Filemanager
 x11-misc/peksystray 0.4.0: A system tray dockapp for window managers supporting docking
-x11-misc/picom 7.5-r1 8 9999: A lightweight compositor for X11 (previously a compton fork)
+x11-misc/picom 7.5-r1 8 8.1 9999: A lightweight compositor for X11 (previously a compton fork)
 x11-misc/piedock 1.6.6-r1 1.6.9: A little bit like the famous OS X dock but in shape of a pie menu
 x11-misc/polybar 3.4.2-r1 3.4.3: A fast and easy-to-use tool for creating status bars
 x11-misc/primus 0.2 0.2-r2: Faster OpenGL offloading for Bumblebee
