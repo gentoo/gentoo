@@ -12,12 +12,3 @@ CHOST="riscv32-unknown-linux-gnu"
 MULTILIB_ABIS="ilp32d ilp32"
 DEFAULT_ABI="ilp32d"
 ABI="ilp32d"
-
-# Enable ilp32d by default
-ABI_RISCV="ilp32d"
-
-# Unhide the riscv/riscv-specific USE_EXPANDs
-USE_EXPAND_HIDDEN="-ABI_RISCV"
-
-# Implicitly enable ilp32d in ebuilds without multilib support
-IUSE_IMPLICIT="abi_riscv_ilp32d"

@@ -12,12 +12,3 @@ CHOST="riscv64-unknown-linux-gnu"
 MULTILIB_ABIS="lp64d lp64 ilp32d ilp32"
 DEFAULT_ABI="lp64d"
 ABI="lp64d"
-
-# Enable lp64d by default
-ABI_RISCV="lp64d"
-
-# Unhide the riscv/rv64gc-specific USE_EXPANDs
-USE_EXPAND_HIDDEN="-ABI_RISCV"
-
-# Implicitly enable lp64d in ebuilds without multilib support
-IUSE_IMPLICIT="abi_riscv_lp64d"
