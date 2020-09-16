@@ -21,7 +21,7 @@ IUSE="debug nls unicode"
 RDEPEND="
 	app-i18n/libchewing
 	>=app-i18n/libtabe-0.2.6
-	>=sys-libs/db-4.5
+	>=sys-libs/db-4.5:*
 	x11-libs/libX11
 	unicode? ( media-fonts/arphicfonts )"
 DEPEND="${RDEPEND}"
