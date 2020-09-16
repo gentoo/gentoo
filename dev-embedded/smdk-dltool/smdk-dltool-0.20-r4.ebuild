@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs
 
 DESCRIPTION="Tool to communicate with Samsung SMDK boards"
 HOMEPAGE="http://www.fluff.org/ben/smdk/tools/"
@@ -13,18 +13,20 @@ SRC_URI="http://www.fluff.org/ben/smdk/tools/downloads/smdk-tools-v${PV}.tar.gz"
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 RESTRICT="mirror bindist"
 
 RDEPEND="virtual/libusb:1"
 DEPEND="${RDEPEND}"
 
-S=${WORKDIR}/releases/smdk-tools-v${PV}/dltool
+S="${WORKDIR}/releases/smdk-tools-v${PV}/dltool"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-add-S3C64xx-support.patch
-	epatch "${FILESDIR}"/${P}-build.patch
-	epatch "${FILESDIR}"/${P}-libusb-1.0-r1.patch
+PATCHES=(
+	"${FILESDIR}"/${P}-add-S3C64xx-support.patch
+	"${FILESDIR}"/${P}-build.patch
+	"${FILESDIR}"/${P}-libusb-1.0-r1.patch
+)
+
+src_configure() {
 	tc-export CC PKG_CONFIG
 }
 
