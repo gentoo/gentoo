@@ -1,5 +1,2 @@
-# Un-force the original multilib default-abi flag
--abi_riscv_ilp32d
-
-# Force the abi of this profile here
-abi_riscv_ilp32
+# Copyright 2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
