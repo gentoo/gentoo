@@ -38,12 +38,6 @@
 # Removal in 30 days.  Bug #664120, #742008.
 sci-chemistry/ortep3
 
-# No longer exists upstream, stuck on long-obsolete EAPI 4,
-# and fails to build with glibc-2.32.
-# Vestige of Gentoo/FreeBSD.
-# bug #715506, #737892, #740916, #547244.
-sys-fs/ufsutils
-
 # Hans de Graaff <graaff@gentoo.org> (2020-09-16)
 # Mask old ruby slots for removal in 30 days. Please use a newer slot
 # instead.
