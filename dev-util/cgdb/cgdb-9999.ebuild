@@ -12,8 +12,8 @@ else
 	SRC_URI="https://github.com/cgdb/cgdb/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 fi
+
 inherit autotools multilib-minimal
-AT_M4DIR=config
 
 DESCRIPTION="A curses front-end for GDB, the GNU debugger"
 HOMEPAGE="https://cgdb.github.io/"
@@ -46,7 +46,7 @@ PATCHES=(
 src_prepare() {
 	cp configure.{init,ac} || die "cp failed"
 	default
-	eautoreconf
+	AT_M4DIR="config" eautoreconf
 }
 
 multilib_src_test() {
