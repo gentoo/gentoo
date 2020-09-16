@@ -12485,7 +12485,7 @@ mail-filter/libsrs2 1.0.18: libsrs2 is the next generation Sender Rewriting Sche
 mail-filter/libsrs_alt 1.0-r1: Sender Rewriting Scheme library for use with Exim
 mail-filter/maildrop 3.0.0: Mail delivery agent/filter
 mail-filter/mailfilter 0.8.4: Mailfilter is a utility to get rid of unwanted spam mails
-mail-filter/mapson 3.3: A challenge/response-based white-list spam filter
+mail-filter/mapson 3.3-r1 3.3.1: A challenge/response-based white-list spam filter
 mail-filter/milter-regex 2.6 2.7: A milter-based regular expression filter
 mail-filter/mimedefang 2.84: Antispam, antivirus and other customizable filters for MTAs with Milter support
 mail-filter/normalizemime 1.19: Helper program to normalize MIME encoded messages
@@ -13511,6 +13511,7 @@ media-plugins/imlib2_loaders 1.6.1: Additional image loaders for Imlib2
 media-plugins/ir_lv2 1.2.4 1.3.4-r1: LV2 convolver plugin especially for creating reverb effects
 media-plugins/kodi-audiodecoder-modplug 2.0.3 3.0.0 9999: Modplug decoder addon for Kodi
 media-plugins/kodi-audiodecoder-nosefart 2.0.0 2.0.1 2.0.2 3.0.0 9999: Nosefart decoder addon for Kodi
+media-plugins/kodi-audiodecoder-sacd 0.1.1 9999: Super Audio CD ISO-Image decoder addon for Kodi
 media-plugins/kodi-audiodecoder-sidplay 1.2.2 2.1.3 3.0.0 9999: SidPlay decoder addon for Kodi
 media-plugins/kodi-audiodecoder-snesapu 2.0.0 2.0.1 2.0.2 2.1.3 3.0.0 9999: SPC decoder addon for Kodi
 media-plugins/kodi-audiodecoder-stsound 2.0.0 2.0.1 2.0.2 2.1.3 3.0.0 9999: SPC decoder addon for Kodi
@@ -13535,41 +13536,41 @@ media-plugins/kodi-peripheral-joystick 1.4.6 1.4.7 1.4.8 1.4.9 1.6.0 1.6.1 1.7.0
 media-plugins/kodi-peripheral-steamcontroller 9999: Steam controller driver for Kodi
 media-plugins/kodi-pvr-argustv 3.5.4 3.5.6 6.0.1 9999: Kodi's ARGUS TV client addon
 media-plugins/kodi-pvr-demo 3.6.1 6.0.1 9999: Demo PVR for Kodi
-media-plugins/kodi-pvr-dvblink 4.7.1 4.7.2 7.0.0 9999: Kodi's DVBLink client addon
+media-plugins/kodi-pvr-dvblink 4.7.1 4.7.2 7.0.0 8.0.0 9999: Kodi's DVBLink client addon
 media-plugins/kodi-pvr-dvbviewer 3.7.5 3.7.8 3.7.11 6.0.6 9999: Kodi's DVBViewer client addon
 media-plugins/kodi-pvr-filmon 2.4.4 2.4.6 5.1.0 9999: Kodi's Filmon client addon
 media-plugins/kodi-pvr-hts 4.4.12 4.4.13 4.4.14 4.4.16 4.4.17 4.4.18 4.4.20 7.1.1 7.1.4 9999: Tvheadend Live TV and Radio PVR client addon for Kodi
 media-plugins/kodi-pvr-iptvsimple 3.8.8 6.2.4 6.3.0 6.3.1 9999: Kodi's IPTVSimple client addon
 media-plugins/kodi-pvr-mediaportal-tvserver 3.5.16 3.5.17 6.0.0 6.0.1 9999: Kodi's MediaPortal TVServer client addon
 media-plugins/kodi-pvr-mythtv 5.10.15 5.10.16 5.10.18 5.10.19 7.0.5 9999: MythTV PVR for Kodi
-media-plugins/kodi-pvr-nextpvr 3.3.17 3.3.18 3.3.19 3.3.20 3.3.21 6.0.5 6.2.0 6.2.1 9999: Kodi's NextPVR client addon
+media-plugins/kodi-pvr-nextpvr 3.3.17 3.3.18 3.3.19 3.3.20 3.3.21 6.0.5 6.2.0 6.2.1 7.0.0 9999: Kodi's NextPVR client addon
 media-plugins/kodi-pvr-njoy 3.4.2 6.0.0 9999: Kodi's Njoy N7 client addon
 media-plugins/kodi-pvr-pctv 2.4.5 2.4.7 5.0.0 9999: Kodi's PCTV client addon
 media-plugins/kodi-pvr-stalker 3.4.8 3.4.9 3.4.10 6.0.0 9999: Kodi's Stalker client addon
 media-plugins/kodi-pvr-vbox 4.4.6 4.4.7 4.4.8 4.5.0 4.6.0 4.7.0 7.0.0 9999: Kodi's VBox Home TV Gateway PVR client addon
-media-plugins/kodi-pvr-vdr-vnsi 3.6.2 3.6.3 3.6.3-r1 6.0.0 9999: Kodi PVR addon VNSI
+media-plugins/kodi-pvr-vdr-vnsi 3.6.2 3.6.3 3.6.3-r1 6.0.0 7.0.0 9999: Kodi PVR addon VNSI
 media-plugins/kodi-pvr-vuplus 3.28.0 3.28.1 3.28.2 3.28.4 3.28.5 3.28.6 3.28.7 3.28.8 3.28.9 6.1.1 9999: Kodi's VuPlus client addon
 media-plugins/kodi-pvr-wmc 2.4.4 2.4.5 2.4.6 5.0.1 5.0.2 9999: Kodi's Windows Media Center client addon
 media-plugins/kodi-screensaver-asteroids 2.1.0 2.3.2 2.4.2 2.4.2-r1 9999: Asteroids screensaver for Kodi
 media-plugins/kodi-screensaver-biogenesis 1.1.0 2.0.0 2.2.3 2.3.2 2.3.2-r1 9999: Biogenesis screensaver for Kodi
 media-plugins/kodi-screensaver-crystalmorph 9999: Crystalmorph screensaver for Kodi
 media-plugins/kodi-screensaver-greynetic 1.1.0 2.0.0 2.2.2 2.3.1 2.3.1-r1 9999: Greynetic screensaver for Kodi
-media-plugins/kodi-screensaver-matrixtrails 2.2.3 2.4.2 2.5.0 2.5.1 9999: Matrix Trails screensaver for Kodi
+media-plugins/kodi-screensaver-matrixtrails 2.2.3 2.4.2 2.5.0 2.5.1 2.6.0 9999: Matrix Trails screensaver for Kodi
 media-plugins/kodi-screensaver-pingpong 1.1.0 2.0.0 2.1.2 2.2.2 2.2.2-r1 9999: Ping-pong screensaver for Kodi
-media-plugins/kodi-screensaver-pyro 2.0.0 3.0.0 3.0.1 3.1.2 3.2.0 9999: Pyro screensaver for Kodi
+media-plugins/kodi-screensaver-pyro 2.0.0 3.0.0 3.0.1 3.1.2 3.2.0 3.3.0 9999: Pyro screensaver for Kodi
 media-plugins/kodi-screensaver-rsxs 9999: RSXS screensaver for Kodi
-media-plugins/kodi-vfs-libarchive 1.0.2 1.0.5 1.0.6 1.0.7 1.3.0 9999: Libarchive VFS add-on for Kodi
-media-plugins/kodi-vfs-rar 2.2.0 2.2.1 2.2.2 2.2.3 2.3.0 2.3.1 3.4.0 9999: RAR VFS addon for Kodi
-media-plugins/kodi-vfs-sacd 1.0.3 1.0.4 1.3.0 9999: SACD VFS addon for Kodi
+media-plugins/kodi-vfs-libarchive 1.0.2 1.0.5 1.0.6 1.0.7 1.3.0 2.0.0 9999: Libarchive VFS add-on for Kodi
+media-plugins/kodi-vfs-rar 2.2.0 2.2.1 2.2.2 2.2.3 2.3.0 2.3.1 3.4.0 4.0.0 9999: RAR VFS addon for Kodi
+media-plugins/kodi-vfs-sacd 1.0.3 1.0.4 1.3.0 2.0.0 9999: SACD VFS addon for Kodi
 media-plugins/kodi-vfs-sftp 1.0.1 1.0.3 1.0.4 1.0.5 1.0.6 1.3.0 9999: SFTP VFS addon for Kodi
-media-plugins/kodi-visualization-fishbmc 5.1.1 5.1.2 6.1.0 6.1.0-r1 6.2.0 6.2.1 9999: Fische visualizer for Kodi
-media-plugins/kodi-visualization-goom 2.1.0 2.2.0 2.2.1 2.2.1-r1 3.2.0 3.3.0 3.3.1 9999: Goom visualizer for Kodi
+media-plugins/kodi-visualization-fishbmc 5.1.1 5.1.2 6.1.0 6.1.0-r1 6.2.0 6.2.1 6.3.0 9999: Fische visualizer for Kodi
+media-plugins/kodi-visualization-goom 2.1.0 2.2.0 2.2.1 2.2.1-r1 3.2.0 3.3.0 3.3.1 3.4.0 9999: Goom visualizer for Kodi
 media-plugins/kodi-visualization-nastyfft 9999: NastyFFT visualizer for Kodi
-media-plugins/kodi-visualization-projectm 2.3.5 2.3.5-r1 3.1.0 3.1.0-r1 3.2.0 9999: ProjectM visualizer for Kodi
+media-plugins/kodi-visualization-projectm 2.3.5 2.3.5-r1 3.1.0 3.1.0-r1 3.2.0 3.3.0 9999: ProjectM visualizer for Kodi
 media-plugins/kodi-visualization-shadertoy 1.1.5 1.1.8 1.1.9 1.1.10 1.2.1 1.2.2 1.2.3 2.1.1 2.2.0 2.2.1 9999: Shadertoy visualizer for Kodi
-media-plugins/kodi-visualization-spectrum 3.0.3 3.2.0 3.3.0 9999: Spectrum visualizer for Kodi
-media-plugins/kodi-visualization-starburst 2.0.0 2.0.1 2.0.2 2.2.0 2.3.0 2.3.1 9999: StarBurst visualizer for Kodi
-media-plugins/kodi-visualization-waveform 2.0.1 3.0.2 3.1.0 3.1.1 4.2.0 4.3.0 4.3.1 9999: Waveform visualizer for Kodi
+media-plugins/kodi-visualization-spectrum 3.0.3 3.2.0 3.3.0 3.4.0 9999: Spectrum visualizer for Kodi
+media-plugins/kodi-visualization-starburst 2.0.0 2.0.1 2.0.2 2.2.0 2.3.0 2.3.1 2.4.0 9999: StarBurst visualizer for Kodi
+media-plugins/kodi-visualization-waveform 2.0.1 3.0.2 3.1.0 3.1.1 4.2.0 4.3.0 4.3.1 4.4.0 9999: Waveform visualizer for Kodi
 media-plugins/ladspa-bs2b 0.9.1-r1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3 0.4.0-r4: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.1.0-r1: A libvisual graphical music visualization plugin similar to milkdrop
@@ -14069,7 +14070,7 @@ media-tv/gentoo-vdr-scripts 2.8: Scripts necessary for use of VDR as a set-top-b
 media-tv/gtk-v4l 0.4: A control application for Video 4 Linux (based on C and GTK+)
 media-tv/ivtv-utils 1.4.1: IVTV utilities for Hauppauge PVR PCI cards
 media-tv/ivtvplayer 0.1.3-r2: Simple IVTV command line TV and radio player with support of LIRC
-media-tv/kodi 18.7 18.8 19.0_alpha1_p20200914 19.9999 9999: A free and open source media-player and entertainment hub
+media-tv/kodi 18.7 18.8 19.0_alpha1_p20200916 19.9999 9999: A free and open source media-player and entertainment hub
 media-tv/linuxtv-dvb-apps 1.1.1.20140321 1.1.1.20140321-r1: Small utils for DVB to scan, zap, view signal strength
 media-tv/mythtv 30.0_p20190808-r3 31.0-r3: Open Source DVR and media center hub
 media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the command prompt
@@ -16046,7 +16047,7 @@ sci-chemistry/propka 3.2.0: pKa-value prediction of ionizable groups in protein 
 sci-chemistry/psi 3.4.0-r2: Suite for ab initio quantum chemistry computing various molecular properties
 sci-chemistry/pymol 2.3.0-r3: A Python-extensible molecular graphics system
 sci-chemistry/rasmol 2.7.5.2-r2: Molecular Graphics Visualisation Tool
-sci-chemistry/raster3d 3.0.2 3.0.3: Generation high quality raster images of proteins or other molecules
+sci-chemistry/raster3d 3.0.6: Generation high quality raster images of proteins or other molecules
 sci-chemistry/suitename 0.3.070628: The ROC RNA Ontology nomenclature and conformer-list development
 sci-chemistry/surf 1.0: Solvent accesible Surface calculator
 sci-chemistry/theseus 2.0.6 3.0.0 3.3.0: Maximum likelihood superpositioning and analysis of macromolecular structures
