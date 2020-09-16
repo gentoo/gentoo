@@ -1,26 +1,24 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
-inherit eutils versionator
-
-MY_PV="$(get_version_component_range 1-3)-$(get_version_component_range 4-)"
+MY_PV="$(ver_cut 1-3)-$(ver_cut 4-)"
 MY_P="${PN}-${MY_PV}"
 
-DESCRIPTION="utility to write u-boot images to NAND on Freescale iMX devices"
+DESCRIPTION="Utility to write u-boot images to NAND on Freescale iMX devices"
 HOMEPAGE="http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=IMX6_SW"
 SRC_URI="http://storage.googleapis.com/chromeos-localmirror/distfiles/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE=""
 
 S="${WORKDIR}/${MY_P}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/kobs-ng-fix-mtd-defines.patch
-	epatch "${FILESDIR}"/kobs-ng-fix-open-without-mode.patch
-	epatch "${FILESDIR}"/kobs-ng-fix-array-violation.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-fix-mtd-defines.patch
+	"${FILESDIR}"/${PN}-fix-open-without-mode.patch
+	"${FILESDIR}"/${PN}-fix-array-violation.patch
+	"${FILESDIR}"/${PN}-fix-stdint.patch
+)
