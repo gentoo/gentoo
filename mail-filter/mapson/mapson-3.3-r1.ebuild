@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit eutils
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="A challenge/response-based white-list spam filter"
 HOMEPAGE="http://mapson.sourceforge.net/"
@@ -13,11 +14,20 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="debug"
 
-RDEPEND="virtual/mta"
+RDEPEND="
+	acct-user/mail
+	virtual/mta
+"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.3-gcc6.patch
+	"${FILESDIR}"/${PN}-3.3-respect-AR.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gcc6.patch
+	default
+	eautoreconf
 }
 
 src_configure() {
@@ -25,17 +35,20 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	emake DESTDIR="${ED}" install
 
 	dodoc AUTHORS INSTALL NEWS README
 	doman doc/mapson.1
-	dohtml doc/mapson.html
-	dodir /etc/mapson
+
+	docinto html
+	dodoc doc/mapson.html
+
 	insinto /etc/mapson
 	newins sample-config mapson.config
-	dodir /usr/share/mapson
+
 	insinto /usr/share/mapson
 	newins sample-challenge-template challenge-template
-	rm -f "${D}"/etc/sample-config
-	rm -f "${D}"/usr/share/{mapson.html,sample-challenge-template}
+
+	rm -f "${ED}"/etc/sample-config || die
+	rm -f "${ED}"/usr/share/{mapson.html,sample-challenge-template} || die
 }
