@@ -7856,9 +7856,9 @@ dev-python/PyECLib 1.6.0: Messaging API for RPC and notifications over different
 dev-python/PyGithub 1.51 1.53: Python library to access the Github API v3
 dev-python/PyICU 2.5: Python bindings for dev-libs/icu
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
-dev-python/PyQt5 5.14.2-r1 5.15.0-r1: Python bindings for the Qt framework
+dev-python/PyQt5 5.14.2-r1 5.15.0-r1 5.15.1: Python bindings for the Qt framework
 dev-python/PyQt5-sip 4.19.22-r1 4.19.23-r1 4.19.24: Private sip module for PyQt5
-dev-python/PyQtWebEngine 5.14.0 5.15.1_pre2006110847: Python bindings for QtWebEngine
+dev-python/PyQtWebEngine 5.14.0 5.15.1_pre2006110847 5.15.1: Python bindings for QtWebEngine
 dev-python/PyRSS2Gen 1.1-r1: RSS feed generator written in Python
 dev-python/PySDL2 0.9.7: Python (ctypes) bindings for SDL2 libraries
 dev-python/PySensors 0.0.4: Python bindings to libsensors (via ctypes)
@@ -17821,7 +17821,7 @@ sys-process/unixtop 3.8_beta1-r3: top for UNIX systems
 sys-process/usbtop 0.2 1.0: utility that shows an estimated instantaneous bandwidth on USB buses and devices
 sys-process/wait_on_pid 0.0.2-r1: small utility to wait for an arbitrary process to exit
 sys-process/watchpid 0.1-r2: Watches a process for termination
-sys-process/xjobs 20190725: Reads commands line by line and executes them in parallel
+sys-process/xjobs 20190725 20200726: Reads commands line by line and executes them in parallel
 virtual/acl 0 0-r1 0-r2: Virtual for acl support (sys/acl.h)
 virtual/awk 1: Virtual for awk implementation
 virtual/bitcoin-leveldb 0-r2: Virtual for LevelDB versions known to be compatible with Bitcoin Core 0.9+
