@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -41,7 +41,7 @@
+ 
+ 
+ linux:	fwdl.C fwdl-linux.c
+-	$(COMPILE_LINUX) -o $(APP) -Dlinux $(EXTRA_DEFINES) fwdl.C fwdl-linux.c
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) -o $(APP) -Dlinux fwdl.C fwdl-linux.c
+ 
+ prisa:  fwdl.C fwdl-prisa.C
+ 	$(COMPILE_SGI) -o $(APP) -Dsgi $(EXTRA_DEFINES) fwdl.C fwdl-prisa.C \
