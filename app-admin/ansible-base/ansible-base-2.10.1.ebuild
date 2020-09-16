@@ -29,8 +29,10 @@ RDEPEND="
 	dev-python/pexpect[${PYTHON_USEDEP}]
 	net-misc/sshpass
 	virtual/ssh
+	!app-admin/ansible
 "
 DEPEND="
+	!app-admin/ansible
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/packaging-16.6[${PYTHON_USEDEP}]
 	doc? (
