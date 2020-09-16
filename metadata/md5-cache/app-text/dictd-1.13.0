@@ -5,11 +5,11 @@ DESCRIPTION=Dictionary Client/Server for the DICT protocol
 EAPI=7
 HOMEPAGE=http://www.dict.org/ https://sourceforge.net/projects/dict/
 IUSE=dbi judy minimal test
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
 LICENSE=GPL-2 ISOC-rfc
 RDEPEND=>=sys-apps/coreutils-6.10 dev-libs/libmaa sys-libs/zlib dbi? ( dev-db/libdbi ) judy? ( dev-libs/judy )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://sourceforge/dict/dictd-1.13.0.tar.gz
 _eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
-_md5_=fd5831a5141f0cc55a7c1cc577590252
+_md5_=cb3c6e42e55a22516e66c04dcf01165d
