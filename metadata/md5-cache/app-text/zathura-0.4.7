@@ -1,14 +1,15 @@
-BDEPEND=doc? ( dev-python/sphinx ) test? ( dev-libs/appstream-glib dev-libs/check ) virtual/pkgconfig >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost ) >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile configure install test unpack
+BDEPEND=doc? ( dev-python/sphinx ) test? ( dev-libs/appstream-glib dev-libs/check ) virtual/pkgconfig >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DEFINED_PHASES=compile configure install test
 DEPEND=>=dev-libs/girara-0.3.3 >=dev-libs/glib-2.50:2 >=sys-devel/gettext-0.19.8 x11-libs/cairo >=x11-libs/gtk+-3.22:3 magic? ( sys-apps/file ) seccomp? ( sys-libs/libseccomp ) sqlite? ( >=dev-db/sqlite-3.5.9:3 ) synctex? ( app-text/texlive-core )
 DESCRIPTION=A highly customizable and functional document viewer
 EAPI=7
 HOMEPAGE=https://pwmt.org/projects/zathura/
 IUSE=doc +magic seccomp sqlite synctex test test
+KEYWORDS=~amd64 ~arm ~x86 ~amd64-linux ~x86-linux
 LICENSE=ZLIB
-PROPERTIES=live
 RDEPEND=>=dev-libs/girara-0.3.3 >=dev-libs/glib-2.50:2 >=sys-devel/gettext-0.19.8 x11-libs/cairo >=x11-libs/gtk+-3.22:3 magic? ( sys-apps/file ) seccomp? ( sys-libs/libseccomp ) sqlite? ( >=dev-db/sqlite-3.5.9:3 ) synctex? ( app-text/texlive-core )
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	meson	71d293a701d6362387e1214da368c848	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	virtualx	e49dbce7ac14426e1155497476915307
+SRC_URI=https://github.com/pwmt/zathura/archive/0.4.7.tar.gz -> zathura-0.4.7.tar.gz
+_eclasses_=meson	71d293a701d6362387e1214da368c848	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	virtualx	e49dbce7ac14426e1155497476915307
 _md5_=2fa1f3d0662eb99f3ad59cc2ed9c88ee

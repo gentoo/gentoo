@@ -3090,7 +3090,7 @@ app-text/xournalpp 1.0.17 1.0.18 9999: Handwriting notetaking software with PDF 
 app-text/xpdf 4.02-r4: The PDF viewer and tools
 app-text/yelp-tools 3.32.2: Collection of tools for building and converting documentation
 app-text/yodl 4.02.01 4.02.02-r1: Your Own Document Language: a pre-document language and tools to process it
-app-text/zathura 0.4.3 0.4.4 0.4.5 9999: A highly customizable and functional document viewer
+app-text/zathura 0.4.3 0.4.4 0.4.5 0.4.7 9999: A highly customizable and functional document viewer
 app-text/zathura-cb 0.1.8 9999: Comic book plug-in for zathura with 7zip, rar, tar and zip support
 app-text/zathura-djvu 0.2.8 0.2.9 9999: DjVu plug-in for zathura
 app-text/zathura-meta 0: Meta package for app-text/zathura plugins
