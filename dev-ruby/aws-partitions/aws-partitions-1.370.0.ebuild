@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby24 ruby25 ruby26 ruby27"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 # Not packaged and upstream not tagged.
 RUBY_FAKEGEM_RECIPE_TEST="none"
