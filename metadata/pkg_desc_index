@@ -2312,7 +2312,7 @@ app-metrics/redis_exporter 0.20.2 1.1.1 1.2.0 1.2.1: Prometheus Exporter for Red
 app-metrics/snmp_exporter 0.15.0: Prometheus exporter for snmp metrics
 app-metrics/uwsgi_exporter 0.7.0 0.8.0: uWSGI metrics exporter for prometheus.io
 app-metrics/vault_exporter 0.1.2: Vault exporter for Prometheus
-app-misc/OpenRGB 0.3-r1 0.3-r3 9999: Open source RGB lighting control that doesn't depend on manufacturer software
+app-misc/OpenRGB 0.3-r3 0.4 9999: Open source RGB lighting control that doesn't depend on manufacturer software
 app-misc/abduco 0.5 0.6: lightweight session manager with {de,at}tach support
 app-misc/abook 0.6.1-r2: Abook is a text-based addressbook program designed to use with mutt mail client
 app-misc/acdctl 1.1-r1: Apple Cinema Display Control
@@ -9066,7 +9066,7 @@ dev-python/semantic_version 2.8.5: Python library providing a few tools handling
 dev-python/semver 2.10.2: A Python module for semantic versioning
 dev-python/send2trash 1.5.0-r1: Sends files to the Trash (or Recycle Bin)
 dev-python/sentinels 1.0.0: Python Sentinels class which are objects with special meanings.
-dev-python/sentry-sdk 0.16.3 0.17.5 0.17.6: Python client for Sentry
+dev-python/sentry-sdk 0.16.3 0.17.6: Python client for Sentry
 dev-python/serpent 1.30: A simple serialization library based on ast.literal_eval
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0: Service identity verification for pyOpenSSL
