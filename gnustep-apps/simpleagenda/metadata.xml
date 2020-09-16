@@ -5,4 +5,7 @@
 		<email>gnustep@gentoo.org</email>
 		<name>Gentoo GNUstep Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">poroussel/simpleagenda</remote-id>
+	</upstream>
 </pkgmetadata>
