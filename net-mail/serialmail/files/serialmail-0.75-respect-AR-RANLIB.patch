@@ -1,0 +1,22 @@
+diff --git a/Makefile b/Makefile
+index 4edccea..7530107 100644
+--- a/Makefile
++++ b/Makefile
+@@ -369,7 +369,7 @@ warn-auto.sh systype
+ 	( cat warn-auto.sh; \
+ 	echo 'main="$$1"; shift'; \
+ 	echo 'rm -f "$$main"'; \
+-	echo 'ar cr "$$main" $${1+"$$@"}'; \
++	echo '"$(AR)" cr "$$main" $${1+"$$@"}'; \
+ 	case "`cat systype`" in \
+ 	sunos-5.*) ;; \
+ 	unix_sv*) ;; \
+@@ -378,7 +378,7 @@ warn-auto.sh systype
+ 	dgux-*) ;; \
+ 	hp-ux-*) ;; \
+ 	sco*) ;; \
+-	*) echo 'ranlib "$$main"' ;; \
++	*) echo '"$(RANLIB)" "$$main"' ;; \
+ 	esac \
+ 	) > makelib
+ 	chmod 755 makelib
