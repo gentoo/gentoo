@@ -18780,7 +18780,7 @@ x11-plugins/i8krellm 2.5-r2: GKrellM2 Plugin for the Dell Inspiron and Latitude 
 x11-plugins/lurch 0.6.8: OMEMO encryption for libpurple (XEP-0384)
 x11-plugins/pidgin-birthday-reminder 1.7-r1: Plugin for Pidgin that reminds you of your buddies birthdays
 x11-plugins/pidgin-bot-sentry 1.3.0: Bot Sentry is a Pidgin plugin to prevent Instant Message (IM) spam
-x11-plugins/pidgin-encryption 3.1: Pidgin IM Encryption PlugIn
+x11-plugins/pidgin-encryption 3.1-r1: Pidgin IM Encryption PlugIn
 x11-plugins/pidgin-extprefs 0.7-r1: Extra preferences that are desired but are not worthy for Pidgin
 x11-plugins/pidgin-funyahoo-plusplus 9999: Yahoo! (2016) Protocol Plugin for Pidgin
 x11-plugins/pidgin-gnome-keyring 2.0: Integrates Pidgin (and libpurple) with the system keyring
