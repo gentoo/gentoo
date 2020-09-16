@@ -13,7 +13,7 @@ SRC_URI="amd64? ( linuxx64-${PV}.tar.gz )
 
 LICENSE="icaclient"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="l10n_de l10n_es l10n_fr l10n_ja l10n_zh-CN"
 RESTRICT="mirror strip userpriv fetch"
 
@@ -95,7 +95,7 @@ src_install() {
 	dodir "${ICAROOT}"
 
 	exeinto "${ICAROOT}"
-	doexe *.DLL libAnalyticsInterfacePd.so libproxy.so wfica AuthManagerDaemon PrimaryAuthManager selfservice ServiceRecord
+	doexe *.DLL libproxy.so wfica AuthManagerDaemon PrimaryAuthManager selfservice ServiceRecord
 
 	exeinto "${ICAROOT}"/lib
 	rm lib/ctxjpeg_fb_8.so || die
