@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit toolchain-funcs xdg
 
 DESCRIPTION="Real-time Sunlight Wallpaper"
 HOMEPAGE="http://realtimesunlightwallpaper.weebly.com/"
