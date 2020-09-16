@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils autotools
+inherit autotools
 
 DESCRIPTION="libsrs2 is the next generation Sender Rewriting Scheme library"
 HOMEPAGE="https://www.libsrs2.org/"
@@ -14,11 +14,18 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="static-libs"
 
-DEPEND="!dev-perl/Mail-SRS"
+DEPEND="
+	!dev-perl/Mail-SRS
+	!mail-filter/libsrs_alt
+"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-parallel-make.diff"
+)
+
 src_prepare() {
-	epatch "${FILESDIR}/${P}-parallel-make.diff"
+	default
 	eautoreconf
 }
 
@@ -29,5 +36,5 @@ src_configure() {
 
 src_install() {
 	default
-	use static-libs || find "${D}" -name '*.la' -delete
+	use static-libs || find "${ED}" -name '*.la' -delete
 }
