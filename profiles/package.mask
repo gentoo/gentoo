@@ -642,19 +642,6 @@ dev-haskell/yesod-platform
 # Does not compile against current ghc-8.8. Removal in 30 days.
 dev-haskell/yesod-routes
 
-# Hans de Graaff <graaff@gentoo.org> (2020-08-16)
-# Old unmaintained package without reverse dependencies. Block removal
-# of insecure dev-ruby/rack versions, bug 730786. Masked for removal
-# in 30 days.
-dev-ruby/bcat
-
-# Hans de Graaff <graaff@gentoo.org> (2020-08-16)
-# Mask old obsolete slots for removal in 30 days.
-# Use a newer slot of the same package instead.
-dev-ruby/mysql2:0.4
-dev-ruby/regexp_property_values:0
-dev-ruby/request_store:1.0.5
-
 # Mart Raudsepp <leio@gentoo.org> (2020-08-15)
 # Development release, needs testing to ensure valac-0.50
 # works for existing packages
