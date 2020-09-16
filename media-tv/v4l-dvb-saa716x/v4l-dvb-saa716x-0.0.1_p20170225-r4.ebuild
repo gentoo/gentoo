@@ -6,13 +6,13 @@ EAPI=7
 inherit linux-info linux-mod
 
 DESCRIPTION="driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD"
-HOMEPAGE="https://bitbucket.org/powARman/v4l-dvb-saa716x/overview"
+HOMEPAGE="https://bitbucket.org/powARman/v4l-dvb-saa716x"
 
-HG_REVISION="3b9fce66666a"
-HG_REVISION_DATE="20160322"
+REVISION="83f3bfd93a95"
+REVISION_DATE="20160322"
 
-SRC_URI="https://bitbucket.org/powARman/v4l-dvb-saa716x/get/${HG_REVISION}.tar.gz
--> v4l-dvb-saa716x-0.0.1_p${HG_REVISION_DATE}.tar.gz"
+SRC_URI="https://bitbucket.org/powARman/v4l-dvb-saa716x/get/${REVISION}.tar.bz2
+-> v4l-dvb-saa716x-0.0.1_p${REVISION_DATE}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -23,7 +23,7 @@ DEPEND=""
 RDEPEND="${DEPEND}
 	firmware? ( sys-firmware/tt-s2-6400-firmware )"
 
-S="${WORKDIR}/powARman-v4l-dvb-saa716x-${HG_REVISION}"
+S="${WORKDIR}/powARman-v4l-dvb-saa716x-${REVISION}"
 
 BUILD_TARGETS="modules"
 MODULE_NAMES="

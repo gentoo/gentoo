@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 inherit python-any-r1
 
 DESCRIPTION="GNU Image Manipulation Program help files"
@@ -22,6 +22,10 @@ BDEPEND="${PYTHON_DEPS}
 DEPEND="$(python_gen_any_dep 'dev-libs/libxml2[python,${PYTHON_USEDEP}]')
 	dev-libs/libxslt
 "
+
+# Adds python3 build support, bug 725940
+# patch is from https://gitlab.gnome.org/GNOME/gimp-help/-/issues/201
+PATCHES=( "${FILESDIR}/${P}-python3.patch" )
 
 python_check_deps() {
 	has_version "dev-libs/libxml2[${PYTHON_USEDEP}]"
