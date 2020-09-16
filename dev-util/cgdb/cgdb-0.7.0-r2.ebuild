@@ -46,8 +46,8 @@ PATCHES=(
 )
 
 src_prepare() {
-	cp configure.{init,ac} || die "cp failed"
 	default
+	cp configure.{init,ac} || die "cp failed"
 	AT_M4DIR="config" eautoreconf
 }
 
