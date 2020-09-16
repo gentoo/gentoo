@@ -20,7 +20,12 @@ IUSE=""
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]"
 DEPEND="
-	dev-python/numpy[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/numpy[${PYTHON_USEDEP}]
+	' -3)
+	$(python_gen_cond_dep '
+		dev-python/numpy-python2[${PYTHON_USEDEP}]
+	' -2)
 	media-libs/libpng:0=
 	media-libs/libsdl2:=[video]
 	media-libs/sdl2-image:=[png,jpeg]
