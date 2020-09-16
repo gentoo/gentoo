@@ -1,0 +1,87 @@
+--- a/fixchksum/Makefile
++++ b/fixchksum/Makefile
+@@ -2,11 +2,9 @@
+ # Makefile for fixchksum
+ #
+ 
+-CC=gcc
+ APP=fixchksum
+-INCLUDES=-I.
+-OPTIONS=-O2 -Wall
+-CFLAGS=$(INCLUDES) $(OPTIONS)
++CPPFLAGS+=-I.
++CFLAGS+=-Wall -std=gnu99
+ SRCS=fixchksum.c
+ OBJECTS = fixchksum.o
+ 
+@@ -17,10 +15,6 @@
+ 
+ all: $(APP)
+ 
+-$(APP): $(OBJECTS)
+-	$(CC) $(OBJECTS) -o $(APP)
+-	strip $(APP)
+-
+ clean:
+ 	rm -f $(APP).o
+ 	rm -f $(APP)
+--- a/Makefile
++++ b/Makefile
+@@ -3,11 +3,9 @@
+ # PIC programmer interface
+ #
+ 
+-CC=gcc
+ APP=picp
+-INCLUDES=-I.
+-OPTIONS=-O2 -Wall -x c++
+-CFLAGS=$(INCLUDES) $(OPTIONS)
++CPPFLAGS+=-I.
++CFLAGS+=-Wall -std=gnu99
+ SRCS=main.c serial.c record.c parse.c atoi_base.c
+ OBJECTS = main.o serial.o record.o parse.o atoi_base.o
+ 
+@@ -19,16 +17,7 @@
+ all: $(APP) convert convertshort
+ 
+ $(APP): $(OBJECTS)
+-	$(CC) $(OBJECTS) -lstdc++ -o $(APP)
+-	strip $(APP)
+-
+-convert: convert.c
+-	$(CC) -O2 -Wall -o convert convert.c
+-	strip convert
+-
+-convertshort: convertshort.c
+-	$(CC) -O2 -Wall -o convertshort convertshort.c
+-	strip convertshort
++	$(CC) $(LDFLAGS) $(OBJECTS) -o $(APP)
+ 
+ clean:
+ 	rm -f *.o
+--- a/picsnoop/Makefile
++++ b/picsnoop/Makefile
+@@ -3,12 +3,9 @@
+ #
+ 
+ APP=picsnoop
+-CC=gcc
+ 
+-INCLUDES=
+-OPTIONS=-O2 -Wall -x c++
+-CFLAGS=$(INCLUDES) $(OPTIONS)
+-OBJECTS = picsnoop.o serial.o
++CFLAGS+=-Wall -std=gnu99
++OBJECTS = serial.o
+ 
+ WINCC=/usr/local/cross-tools/bin/i386-mingw32msvc-gcc
+ WINCFLAGS=-Wall -O2 -fomit-frame-pointer -s -I/usr/local/cross-tools/include -D_WIN32 -DWIN32
+@@ -18,8 +15,6 @@
+ all : $(APP)
+ 
+ $(APP) : $(OBJECTS)
+-	$(CC) $(OBJECTS) -lstdc++ -o $(APP)
+-	strip $(APP)
+ 
+ clean :
+ 	rm -f *.o
