@@ -6526,7 +6526,7 @@ dev-perl/Filesys-Statvfs 0.820.0 0.820.0-r1: Perl extension for statvfs() and fs
 dev-perl/Filter 1.570.0 1.600.0: Interface for creation of Perl Filters
 dev-perl/Finance-Quote 1.470.0 1.490.0: Get stock and mutual fund quotes from various exchanges
 dev-perl/Finance-YahooQuote 0.250.0-r1 0.260.0: Get stock quotes from Yahoo! Finance
-dev-perl/Font-AFM 1.200.0-r1: Parse Adobe Font Metric files
+dev-perl/Font-AFM 1.200.0-r1 1.200.0-r2: Parse Adobe Font Metric files
 dev-perl/Font-TTF 1.60.0: module for compiling and altering fonts
 dev-perl/Format-Human-Bytes 0.60.0-r1: Format a bytecount and make it human readable
 dev-perl/FreezeThaw 0.500.100-r1: converting Perl structures to strings and back
@@ -8521,7 +8521,7 @@ dev-python/ntlm-auth 1.5.0: Calculates NTLM Authentication codes
 dev-python/ntplib 0.3.3: Python NTP library
 dev-python/nuitka 0.6.8: Python to native compiler
 dev-python/numexpr 2.7.1 2.7.2: Fast numerical array expression evaluator for Python and NumPy
-dev-python/numpy 1.16.5-r1 1.17.4-r3 1.19.0 1.19.1 1.19.2: Fast array and numerical python library
+dev-python/numpy 1.19.0 1.19.1 1.19.2: Fast array and numerical python library
 dev-python/numpy-python2 1.16.6: Fast array and numerical python library
 dev-python/numpydoc 0.9.1 1.1.0: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth 1.0.1-r1: Python OAuth module
@@ -8730,7 +8730,7 @@ dev-python/pyformance 0.4-r1: Performance metrics, based on Coda Hale's Yammer m
 dev-python/pyftpdlib 1.5.6-r1: Python FTP server library
 dev-python/pygal 2.4.0-r1: A python SVG charts generator
 dev-python/pygame 1.9.6-r1 2.0.0_pre10 9999: Python bindings for SDL multimedia library
-dev-python/pygame_sdl2 6.99.12.4-r2 6.99.12.4-r3 7.3.5: Reimplementation of portions of the pygame API using SDL2
+dev-python/pygame_sdl2 6.99.12.4-r4 6.99.12.4-r5 7.3.5-r1: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.2.1: Python bindings for libgit2
 dev-python/pyglet 1.2.4 1.5.3 1.5.7: Cross-platform windowing and multimedia library for Python
@@ -16553,14 +16553,14 @@ sci-physics/qmeq 1.0-r1: Quantum master equation package for Quantum dot transpo
 sci-physics/qutip 4.2.0: Simulating dynamics of open quantum systems in Python.
 sci-physics/reduze 2.2: Program for reducing Feynman integrals
 sci-physics/rivet 2.6.0-r2: Toolkit for validation of Monte Carlo HEP event generators
-sci-physics/root 6.18.04-r2 6.20.06 6.20.08 6.22.00 6.22.02 9999: C++ data analysis framework and interpreter from CERN
+sci-physics/root 6.18.04-r3 6.20.06 6.20.08 6.22.00 6.22.02-r1 9999: C++ data analysis framework and interpreter from CERN
 sci-physics/sassena 1.4.2: Software for Calculating Scattering Diagrams on Massively Parallel Computers
 sci-physics/siscone 2.0.6 3.0.3: Hadron Seedless Infrared-Safe Cone jet algorithm
 sci-physics/thepeg 1.9.2 2.0.0 2.0.4: Toolkit for High Energy Physics Event Generation
 sci-physics/vgm 4.5 4.8 9999: Virtual Geometry Model for High Energy Physics Experiments
 sci-physics/vmc 1.0_p2 9999: The Virtual Monte Carlo core library.
 sci-physics/xfoil 6.97-r1 6.99: Design and analysis of subsonic isolated airfoils
-sci-physics/yoda 1.6.5 1.7.0-r1: Yet more Objects for (High Energy Physics) Data Analysis
+sci-physics/yoda 1.7.0-r2: Yet more Objects for (High Energy Physics) Data Analysis
 sci-visualization/circos 0.55-r1: Circular layout visualization of genomic and other data
 sci-visualization/epix 1.2.11-r2: 2- and 3-D plotter for creating images (to be used in LaTeX)
 sci-visualization/fig2sxd 0.22.1: Utility to convert files in xfig format to OpenOffice.org Draw format
