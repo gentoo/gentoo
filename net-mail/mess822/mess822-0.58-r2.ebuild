@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit multilib toolchain-funcs eutils
+inherit toolchain-funcs
 
 DESCRIPTION="Collection of utilities for parsing Internet mail messages"
 SRC_URI="http://cr.yp.to/software/${P}.tar.gz"
@@ -18,15 +18,22 @@ RDEPEND=">=sys-apps/sed-4"
 DEPEND="${RDEPEND}"
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-implicit.patch
+)
+
 src_prepare() {
+	default
+
 	echo "$(tc-getCC) ${CFLAGS}" > conf-cc
 	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld
 	echo "/usr" > conf-home
 
 	# fix errno.h problem; bug #26165
-	sed -i 's/^extern int errno;/#include <errno.h>/' error.h
+	sed -i 's/^extern int errno;/#include <errno.h>/' error.h || die
 
-	epatch "${FILESDIR}"/${P}-implicit.patch
+	sed -i -e "s/ar/$(tc-getAR)/" make-makelib.sh || die
+	sed -i -e "s/ranlib/$(tc-getRANLIB)/" make-makelib.sh || die
 }
 
 src_install() {
@@ -35,16 +42,16 @@ src_install() {
 
 	# Now that the commands are compiled, update the conf-home file to point
 	# to the installation image directory.
-	echo "${D}/usr/" > conf-home
-	sed -i -e "s:\"/etc\":\"${D}/etc\":" hier.c || die "sed hier.c failed"
+	echo "${ED}/usr/" > conf-home
+	sed -i -e "s:\"/etc\":\"${ED}/etc\":" hier.c || die "sed hier.c failed"
 
 	emake setup
 
 	# Move the man pages into /usr/share/man
-	mv "${D}/usr/man" "${D}/usr/share/"
+	mv "${ED}/usr/man" "${ED}/usr/share/" || die
 
 	dodir /usr/$(get_libdir)
-	mv "${D}/usr/lib/${PN}.a" "${D}/usr/$(get_libdir)/${PN}.a"
-	rmdir "${D}/usr/lib"
+	mv "${ED}/usr/lib/${PN}.a" "${ED}/usr/$(get_libdir)/${PN}.a" || die
+	rmdir "${ED}/usr/lib" || die
 	dodoc BLURB CHANGES INSTALL README THANKS TODO VERSION
 }
