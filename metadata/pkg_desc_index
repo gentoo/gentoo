@@ -343,7 +343,7 @@ acct-user/mythtv 0: Mythtv mythbackend server/daemon user
 acct-user/nagios 0: System user: nagios
 acct-user/named 0: User for net-dns/bind
 acct-user/netbox 0: user for netbox
-acct-user/netdata 0: user for netdata
+acct-user/netdata 1: user for netdata
 acct-user/neutron 0: user for the openstack neutron service
 acct-user/nginx-vts-exporter 0: user for nginx-vts-exporter
 acct-user/ngircd 0: User for ngircd (IRC daemon)
