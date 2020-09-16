@@ -3,14 +3,14 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6,3_7,3_8} )
 inherit distutils-r1
 
 PYSDL="${PN}-2.1.0"
 
 DESCRIPTION="Reimplementation of portions of the pygame API using SDL2"
 HOMEPAGE="https://github.com/renpy/pygame_sdl2"
-SRC_URI="http://www.renpy.org/dl/${PV}/${PYSDL}-for-renpy-${PV}.tar.gz"
+SRC_URI="https://www.renpy.org/dl/${PV}/${PYSDL}-for-renpy-${PV}.tar.gz"
 
 LICENSE="LGPL-2.1 ZLIB"
 SLOT="0"
@@ -20,7 +20,12 @@ IUSE=""
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]"
 DEPEND="
-	dev-python/numpy[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/numpy[${PYTHON_USEDEP}]
+	' -3)
+	$(python_gen_cond_dep '
+		dev-python/numpy-python2[${PYTHON_USEDEP}]
+	' -2)
 	media-libs/libpng:0=
 	media-libs/libsdl2:=[video]
 	media-libs/sdl2-image:=[png,jpeg]
@@ -30,8 +35,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${PYSDL}-for-renpy-${PV}
-
-PATCHES=( "${FILESDIR}/pygame_sdl2-6.99.12.4-mixer.patch" )
 
 # PyGame distribution for this version has some pregenerated files;
 # we need to remove them
