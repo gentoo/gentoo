@@ -6,11 +6,10 @@ EAPI=6
 inherit bash-completion-r1
 
 DESCRIPTION="Yet more Objects for (High Energy Physics) Data Analysis"
-HOMEPAGE="http://yoda.hepforge.org/"
+HOMEPAGE="https://yoda.hepforge.org/"
+SRC_URI="https://www.hepforge.org/archive/${PN}/${P^^}.tar.bz2"
 
-SRC_URI="http://www.hepforge.org/archive/${PN}/${P^^}.tar.bz2"
 LICENSE="GPL-2"
-
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="root static-libs"
