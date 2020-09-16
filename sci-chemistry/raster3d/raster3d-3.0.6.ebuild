@@ -1,12 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils fortran-2 flag-o-matic multilib toolchain-funcs versionator prefix
+inherit fortran-2 flag-o-matic prefix toolchain-funcs
 
 MY_PN="Raster3D"
-MY_PV=$(replace_version_separator 2 -)
+MY_PV=$(ver_rs 2 -)
 MY_P="${MY_PN}_${MY_PV}"
 
 DESCRIPTION="Generation high quality raster images of proteins or other molecules"
@@ -19,16 +19,19 @@ KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="gd tiff"
 
 RDEPEND="
-	tiff? ( media-libs/tiff:0 )
-	gd? ( media-libs/gd[jpeg,png] )"
+	gd? ( media-libs/gd[jpeg,png] )
+	tiff? ( media-libs/tiff:0 )"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/3.0.2-as-needed.patch
+	"${FILESDIR}"/3.0.2-gentoo-prefix.patch
+)
+
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/3.0.2-as-needed.patch \
-		"${FILESDIR}"/3.0.2-gentoo-prefix.patch
+	default
 
 	sed \
 		-e "s:MYPF:${PF}:" \
@@ -62,14 +65,13 @@ src_prepare() {
 
 src_compile() {
 	local target
-	local i
-
 	if [[ $(tc-getFC) =~ gfortran ]]; then
 		target="linux"
 	else
 		target="linux-$(tc-getFC)"
 	fi
 
+	local i
 	for i in render.o ${target} all; do
 		emake \
 			CFLAGS="${CFLAGS}" \
@@ -85,17 +87,16 @@ src_compile() {
 
 src_install() {
 	emake prefix="${ED}"/usr \
-			bindir="${ED}"/usr/bin \
-			datadir="${ED}"/usr/share/Raster3D/materials \
-			mandir="${ED}"/usr/share/man/man1 \
-			htmldir="${ED}"/usr/share/doc/${PF}/html \
-			examdir="${ED}"/usr/share/Raster3D/examples \
-			install
+		bindir="${ED}"/usr/bin \
+		datadir="${ED}"/usr/share/Raster3D/materials \
+		mandir="${ED}"/usr/share/man/man1 \
+		htmldir="${ED}"/usr/share/doc/${PF}/html \
+		examdir="${ED}"/usr/share/Raster3D/examples \
+		install
 
-	dodir /etc/env.d
-	echo -e "R3D_LIB=${EPREFIX}/usr/share/${NAME}/materials" > \
-		"${ED}"/etc/env.d/10raster3d || \
-		die "Failed to install env file."
+	newenvd - 10raster3d <<-EOF
+		R3D_LIB="${EPREFIX}/usr/share/${NAME}/materials"
+	EOF
 }
 
 pkg_postinst() {
