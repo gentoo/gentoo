@@ -15,8 +15,7 @@ KEYWORDS="~amd64 ~x86"
 
 src_configure() {
 	mycmakeargs=(
-		-DCMAKE_BUILD_TYPE=release
-		-DTIMEW_DOCDIR=share/doc/"${PF}"
+		-DTIMEW_DOCDIR=share/doc/${PF}
 	)
 
 	cmake_src_configure
