@@ -19,15 +19,6 @@ IUSE="introspection gnome vala"
 REQUIRED_USE="vala? ( introspection )"
 
 DEPEND="
-	vala? ( $(vala_depend) )
-	virtual/pkgconfig
-"
-RDEPEND="${DEPEND}
-	gnome? (
-		gnome-base/gnome-shell
-	)
-"
-BDEPEND="
 	dev-libs/appstream-glib
 	>=dev-libs/glib-2.48:2
 	>=dev-libs/gobject-introspection-1.48.0
@@ -42,6 +33,16 @@ BDEPEND="
 		x11-libs/pango
 	)
 "
+BDEPEND="
+	vala? ( $(vala_depend) )
+	virtual/pkgconfig
+"
+RDEPEND="${DEPEND}
+	gnome? (
+		gnome-base/gnome-shell
+	)
+"
+
 S=${WORKDIR}/GPaste-${PV}
 
 src_prepare() {
