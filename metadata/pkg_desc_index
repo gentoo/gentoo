@@ -3634,7 +3634,7 @@ dev-embedded/gputils 1.5.0: Tools including assembler, linker and librarian for 
 dev-embedded/icdprog 0.5: Microchip PIC Programmer using ICD hardware
 dev-embedded/include 0.4.2: A collection of useful, independent include files for C/Assembler developers
 dev-embedded/jal 0.4.62: A high-level language for Microchip PIC and Ubicom SX microcontrollers
-dev-embedded/kobs-ng 3.0.35.4.1.0: utility to write u-boot images to NAND on Freescale iMX devices
+dev-embedded/kobs-ng 3.0.35.4.1.0: Utility to write u-boot images to NAND on Freescale iMX devices
 dev-embedded/libdisasm 0.23: Provides basic disassembly of Intel x86 instructions from a binary stream
 dev-embedded/libftd2xx 1.1.12-r1: Library that allows a direct access to a USB device
 dev-embedded/libftdi 0.20-r1 1.4 9999: Userspace access to FTDI USB interface chips
@@ -3654,7 +3654,7 @@ dev-embedded/platformio 4.3.4: An open source ecosystem for IoT development
 dev-embedded/ponyprog 2.07c-r2 3.0.0: EEPROM and microcontroller programmer/flasher
 dev-embedded/powersoftplus-libftdi 0.1.8-r1: Library which includes a table of VIDs and PIDs of Ever UPS devices
 dev-embedded/sdcc 3.8.0-r1 4.0.0 9999: Small device C compiler (for various microprocessors)
-dev-embedded/smdk-dltool 0.20-r3 0.20-r4: Tool to communicate with Samsung SMDK boards
+dev-embedded/smdk-dltool 0.20-r4: Tool to communicate with Samsung SMDK boards
 dev-embedded/srecord 1.64: A collection of powerful tools for manipulating EPROM load files
 dev-embedded/stlink 1.6.0 9999: stm32 discovery line linux programmer
 dev-embedded/stm32flash 0.5: Open source flash program for STM32 using the ST serial bootloader
