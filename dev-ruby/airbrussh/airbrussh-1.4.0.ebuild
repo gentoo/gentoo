@@ -21,7 +21,7 @@ IUSE=""
 
 ruby_add_rdepend ">dev-ruby/sshkit-1.7.0"
 
-ruby_add_bdepend "test? ( dev-ruby/mocha )"
+ruby_add_bdepend "test? ( dev-ruby/bundler dev-ruby/mocha )"
 
 all_ruby_prepare() {
 	sed -i -e 's/git ls-files -z/find . -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
