@@ -7923,6 +7923,7 @@ dev-python/autobahn 20.4.3 20.7.1: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automat 20.2.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 1.12.1: Friendly state machines for python.
 dev-python/autopep8 1.4.4 1.5.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
+dev-python/autoprop 1.0.2: Infer properties from accessor methods
 dev-python/awesome-slugify 1.6.5: Python flexible slugify function
 dev-python/aws-sam-translator 1.25.0 1.26.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0: AWS X-Ray SDK for Python
@@ -8156,6 +8157,7 @@ dev-python/fakeredis 1.4.3: Fake implementation of redis API for testing purpose
 dev-python/falcon 2.0.0: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.15: Python package that provides useful locks
 dev-python/faulthandler 3.0 3.1: functions to dump Python tracebacks explicitly (on fault, user signal, timeout)
+dev-python/fcl 0.0.12: Python bindings for the Flexible Collision Library
 dev-python/fdsend 0.1: flexible file descriptor passing
 dev-python/feedgenerator 1.9.1: Standalone version of django.utils.feedgenerator
 dev-python/feedparser 5.2.1 6.0.0_beta1 6.0.0 6.0.1: Parse RSS and Atom feeds in Python
@@ -9260,6 +9262,7 @@ dev-python/vcstools 0.1.42: Python library for interacting with various VCS syst
 dev-python/vcversioner 2.16.0.0: Use version control tags to discover version numbers
 dev-python/vdf 3.3: A module for (de)serialization to and from VDF, Valve's key-value text format
 dev-python/vdirsyncer 0.16.8: Synchronize calendars and contacts
+dev-python/vecrec 0.3.0: 2D vector and rectangle classes
 dev-python/verboselogs 1.7: Verbose logging for Python's logging module
 dev-python/versioneer 0.18 0.18-r1: Easy VCS-based management of project version strings
 dev-python/vine 1.3.0: Python Promises
