@@ -1,6 +1,5 @@
-diff -Naur libsrs2-1.0.18/libsrs2/Makefile.am libsrs2-1.0.18-1/libsrs2/Makefile.am
---- libsrs2-1.0.18/libsrs2/Makefile.am	2004-06-10 11:33:28.000000000 +0200
-+++ libsrs2-1.0.18-1/libsrs2/Makefile.am	2009-09-29 16:08:29.000000000 +0200
+--- a/libsrs2/Makefile.am	2004-06-10 11:33:28.000000000 +0200
++++ b/libsrs2/Makefile.am	2009-09-29 16:08:29.000000000 +0200
 @@ -3,9 +3,6 @@
  include_HEADERS = srs2.h
  noinst_HEADERS = win32.h

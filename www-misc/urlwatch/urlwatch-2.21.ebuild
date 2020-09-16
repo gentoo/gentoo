@@ -42,6 +42,8 @@ BDEPEND="
 
 DOCS=( CHANGELOG.md README.md )
 
+distutils_enable_sphinx docs/source dev-python/alabaster
+
 python_test() {
 	local skipped_tests=(
 		# Require the pdftotext module
