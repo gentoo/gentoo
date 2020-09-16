@@ -16,6 +16,7 @@
  extensible. SymPy is written entirely in Python and does not require
  any external libraries, except optionally for plotting support.
 </longdescription>
+  <stabilize-allarches/>
   <use>
     <flag name="ipython">Add support for <pkg>dev-python/ipython</pkg></flag>
     <flag name="imaging">Add support for <pkg>dev-python/pillow</pkg></flag>
