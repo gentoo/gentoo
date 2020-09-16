@@ -1,7 +1,7 @@
 respect env build settings
 
---- a/releases/smdk-tools-v0.20/dltool/Makefile
-+++ b/releases/smdk-tools-v0.20/dltool/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -7,8 +7,13 @@
  
  .PHONY:	clean
