@@ -608,6 +608,7 @@ python_optimize() {
 
 	local PYTHON=${PYTHON}
 	[[ ${PYTHON} ]] || _python_export PYTHON
+	[[ -x ${PYTHON} ]] || die "PYTHON (${PYTHON}) is not executable"
 
 	# default to sys.path
 	if [[ ${#} -eq 0 ]]; then
