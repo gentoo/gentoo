@@ -1,0 +1,40 @@
+--- a/cmd/ixpc.c
++++ b/cmd/ixpc.c
+@@ -10,6 +10,8 @@
+ #include <unistd.h>
+ #include <ixp_local.h>
+ 
++char *argv0;
++
+ /* Temporary */
+ #define fatal(...) ixp_eprint("ixpc: fatal: " __VA_ARGS__); \
+ 
+--- a/include/ixp.h
++++ b/include/ixp.h
+@@ -66,13 +66,13 @@
+ 
+ typedef unsigned char	uchar;
+ typedef uint16_t	ushort;
+-typedef uint32_t	ulong;
++typedef unsigned long	ulong;
+ typedef uint64_t	uvlong;
+ 
+ typedef int64_t		vlong;
+ 
+ # define respond ixp_respond
+-# define serve_9pcon ixp_serve9pconn
++# define serve_9pcon ixp_serve9conn
+ #endif
+ 
+ #undef	uint
+--- a/include/ixp_local.h
++++ b/include/ixp_local.h
+@@ -12,7 +12,7 @@
+ typedef char* va_list;
+ #endif
+ 
+-char *argv0;
++extern char *argv0;
+ #define ARGBEGIN \
+ 		int _argtmp=0, _inargv=0; char *_argv=nil; \
+ 		if(!argv0) {argv0=*argv; argv++, argc--;} \
