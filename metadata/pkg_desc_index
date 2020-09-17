@@ -1025,7 +1025,7 @@ app-crypt/tpm2-tools 4.2.1-r1: Tools for the TPM 2.0 TSS
 app-crypt/tpm2-totp 0.2.1-r1: Attest the trustworthiness of a device against a human using time-based OTP
 app-crypt/tpm2-tss 2.4.1 2.4.2 3.0.0: TCG Trusted Platform Module 2.0 Software Stack
 app-crypt/tpm2-tss-engine 1.1.0_rc1: OpenSSL Engine for TPM2 devices
-app-crypt/trousers 0.3.14-r2 0.3.14-r3: An open-source TCG Software Stack (TSS) v1.1 implementation
+app-crypt/trousers 0.3.14-r3: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-crypt/ubuntu-keyring 2018.02.28 2018.09.18.1 2020.02.11.2: GnuPG archive keys of the Ubuntu archive
 app-crypt/veracrypt 1.24_p2 1.24_p4: Disk encryption with strong security based on TrueCrypt
 app-crypt/xca 2.1.2 2.2.1 2.3.0: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
@@ -5678,7 +5678,7 @@ dev-libs/spdlog 1.5.0-r1 1.6.1 1.6.1-r1 1.7.0 9999: Very fast, header only, C++ 
 dev-libs/spsdeclib 5.1-r1: Kryoflux SPS Decoder Library
 dev-libs/squareball 0.2.0 9999: A general-purpose library for C99
 dev-libs/starpu 1.2.6: Unified runtime system for heterogeneous multicore architectures
-dev-libs/stb 20180211 20200205: single-file public domain (or MIT licensed) libraries for C/C++
+dev-libs/stb 20200205: single-file public domain (or MIT licensed) libraries for C/C++
 dev-libs/stfl 0.24-r2 0.24-r3: A library which implements a curses-based widget set for text terminals
 dev-libs/stp 2.3.3: Simple Theorem Prover, an efficient SMT solver for bitvectors
 dev-libs/template-glib 3.32.0 3.34.0: Templating library for GLib
@@ -12955,7 +12955,7 @@ media-gfx/recoverjpeg 2.2.3-r1: Recover JPEG pictures from a possibly corrupted 
 media-gfx/ristretto 0.10.0: A fast and lightweight picture viewer for Xfce
 media-gfx/rotoscope 0.2: Graphics program that can be used to give photos a cartoon-like appearance
 media-gfx/sam2p 0.49.3: Utility to convert raster images to EPS, PDF and many others
-media-gfx/sane-backends 1.0.27-r3 1.0.30-r2: Scanner Access Now Easy - Backends
+media-gfx/sane-backends 1.0.30-r2: Scanner Access Now Easy - Backends
 media-gfx/sane-frontends 1.0.14-r3 1.0.14-r4: Scanner Access Now Easy
 media-gfx/scantailor-advanced 1.0.16-r1: Interactive post-processing tool for scanned pages
 media-gfx/scour 0.37: Take an SVG file and produce a cleaner and more concise file
@@ -17630,7 +17630,7 @@ sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs genera
 sys-kernel/dracut-crypt-ssh 1.0.6-r1 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.60 5.4.61 5.4.62 5.4.63 5.4.64 5.4.65 5.4.66 5.7.17 5.7.18 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6 5.8.7 5.8.8 5.8.9 5.8.10: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.60 5.4.61 5.4.62 5.4.62-r1 5.4.63 5.4.63-r1 5.4.64 5.4.64-r1 5.4.65 5.4.65-r1 5.4.66 5.7.17 5.7.18 5.7.19 5.7.19-r1 5.8.3 5.8.4 5.8.5 5.8.5-r1 5.8.6 5.8.6-r1 5.8.7 5.8.7-r1 5.8.8 5.8.8-r1 5.8.9 5.8.9-r1 5.8.10: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel-bin 5.4.60 5.4.61 5.4.62 5.4.62-r1 5.4.63 5.4.63-r1 5.4.64 5.4.64-r1 5.4.65 5.4.65-r1 5.4.66 5.4.66-r1 5.7.17 5.7.18 5.7.19 5.7.19-r1 5.8.3 5.8.4 5.8.5 5.8.5-r1 5.8.6 5.8.6-r1 5.8.7 5.8.7-r1 5.8.8 5.8.8-r1 5.8.9 5.8.9-r1 5.8.10: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.228 4.4.233 4.4.234 4.4.235 4.4.236 4.9.228 4.9.233 4.9.234 4.9.235 4.9.236 4.14.185 4.14.194 4.14.195 4.14.196 4.14.197 4.14.198 4.19.129 4.19.141 4.19.142 4.19.143 4.19.144 4.19.145 4.19.146 5.4.48 5.4.60 5.4.61 5.4.62 5.4.63 5.4.64 5.4.65 5.4.66 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6 5.8.7 5.8.8 5.8.9 5.8.10: Full sources including the Gentoo patchset for the 5.8 kernel tree
 sys-kernel/git-sources 5.9_rc1 5.9_rc2 5.9_rc3 5.9_rc4 5.9_rc5: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
