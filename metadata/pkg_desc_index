@@ -15686,7 +15686,7 @@ net-wireless/soapyremote 0.5.0 9999: Soapy SDR remote module
 net-wireless/soapyrtlsdr 0.3.0 9999: SoapySDR RTL-SDR Support Module
 net-wireless/soapysdr 0.7.1 9999: vendor and platform neutral SDR support library
 net-wireless/soapysdrplay 0.1.0 0.2.0 9999: Soapy SDR plugin for SDRPlay
-net-wireless/soapyuhd 0.3.6-r1 9999: Soapy SDR plugins for UHD supported SDR devices
+net-wireless/soapyuhd 0.4.0 9999: Soapy SDR plugins for UHD supported SDR devices
 net-wireless/spectools 2016.01.1 9999: Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware
 net-wireless/srslte 19.09-r2 20.04.2 9999: Open source SDR LTE software suite from Software Radio Systems
 net-wireless/suscan 0.1.0: a realtime DSP processing library
