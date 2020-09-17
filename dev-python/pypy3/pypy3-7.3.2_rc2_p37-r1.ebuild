@@ -6,19 +6,21 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 )
 inherit pax-utils python-any-r1 toolchain-funcs
 
-MY_P=pypy3.6-v${PV/_/}
+PYPY_PV=${PV%_p37}
+MY_P=pypy3.7-v${PYPY_PV/_/}
 
-DESCRIPTION="A fast, compliant alternative implementation of the Python (3.6) language"
+DESCRIPTION="A fast, compliant alternative implementation of the Python (3.7) language"
 HOMEPAGE="https://pypy.org/"
 SRC_URI="https://downloads.python.org/pypy/${MY_P}-src.tar.bz2"
 S="${WORKDIR}/${MY_P}-src"
 
 LICENSE="MIT"
 # pypy3 -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))'
-SLOT="0/pypy36-pp73"
+SLOT="0/pypy37-pp73"
 KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 gdbm +jit libressl ncurses sqlite test tk"
-RESTRICT="!test? ( test )"
+# pypy3.7 is in alpha state and a lot of tests are failing
+RESTRICT="test"
 
 RDEPEND="
 	|| (
@@ -47,7 +49,7 @@ pkg_setup() {
 src_prepare() {
 	eapply "${FILESDIR}/7.3.1-gentoo-path.patch"
 	eapply "${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
-	eapply "${FILESDIR}"/7.2.0-distutils-cxx.patch
+	eapply "${FILESDIR}/7.3.2-py37-distutils-cxx.patch"
 
 	sed -e "s^@EPREFIX@^${EPREFIX}^" \
 		-i lib-python/3/distutils/command/install.py || die
@@ -56,38 +58,6 @@ src_prepare() {
 	pushd lib-python/3 > /dev/null || die
 	eapply "${FILESDIR}"/python-3.5-distutils-OO-build.patch
 	popd > /dev/null || die
-
-	# see http://buildbot.pypy.org/summary?branch=py3.6&builder=pypy-c-jit-linux-x86-64
-	sed -i -e 's:test_jumpy:_&:' \
-		lib-python/3/test/test_dis.py || die
-	sed -i -e 's:test_get_and_set_scheduler_and_param:_&:' \
-		lib-python/3/test/test_posix.py || die
-	sed -i -e 's:test_auto_history:_&:' \
-		-e 's:test_history_size:_&:' \
-		lib-python/3/test/test_readline.py || die
-	sed -i -e 's:test_eval_bytes_invalid_escape:_&:' \
-		-e 's:test_eval_str_invalid_escape:_&:' \
-		lib-python/3/test/test_string_literals.py || die
-	sed -i -e 's:test_jump_out_of_async_for_block:_&:' \
-		-e 's:test_jump_over_async_for_block_before_else:_&:' \
-		-e 's:test_no_jump_.*wards_into_async_for_block:_&:' \
-		-e 's:test_no_jump_into_async_for_block_before_else:_&:' \
-		-e 's:test_no_jump_from_yield:_&:' \
-		lib-python/3/test/test_sys_settrace.py || die
-	sed -i -e 's:test_circular_imports:_&:' \
-		lib-python/3/test/test_threaded_import.py || die
-
-	# the first one's broken by sandbox, the second by our env
-	sed -i -e 's:test_empty_env:_&:' \
-		-e 's:test_executable(:_&:' \
-		-e 's:test_executable_without_cwd:_&:' \
-		lib-python/3/test/test_subprocess.py || die
-
-	# XXX
-	sed -i -e 's:test_locale:_&:' \
-		lib-python/3/test/test_format.py || die
-	sed -i -e 's:test_decompressor_bug_28275:_&:' \
-		lib-python/3/test/test_lzma.py || die
 
 	eapply_user
 }
@@ -98,8 +68,8 @@ src_configure() {
 
 src_compile() {
 	# copy over to make sys.prefix happy
-	cp -p "${BROOT}"/usr/lib/pypy3.6/pypy3-c-${PV} pypy3-c || die
-	cp -p "${BROOT}"/usr/lib/pypy3.6/include/${PV}/* include/ || die
+	cp -p "${BROOT}"/usr/lib/pypy3.7/pypy3-c-${PYPY_PV} pypy3-c || die
+	cp -p "${BROOT}"/usr/lib/pypy3.7/include/${PYPY_PV}/* include/ || die
 	# (not installed by pypy)
 	rm pypy/module/cpyext/include/_numpypy/numpy/README || die
 	mv pypy/module/cpyext/include/* include/ || die
@@ -156,24 +126,25 @@ src_test() {
 
 	# Test runner requires Python 2 too. However, it spawns PyPy3
 	# internally so that we end up testing the correct interpreter.
+	# (--deselect for failing doctests)
 	"${EPYTHON}" ./pypy/test_all.py --pypy=./pypy3-c -vv lib-python || die
 }
 
 src_install() {
-	local dest=/usr/lib/pypy3.6
+	local dest=/usr/lib/pypy3.7
 	einfo "Installing PyPy ..."
-	dosym pypy3-c-${PV} "${dest}/pypy3-c"
+	dosym pypy3-c-${PYPY_PV} "${dest}/pypy3-c"
 	insinto "${dest}"
 	# preserve mtimes to avoid obsoleting caches
 	insopts -p
 	doins -r include lib_pypy lib-python
 
 	# replace copied headers with symlinks
-	for x in "${BROOT}"/usr/lib/pypy3.6/include/${PV}/*; do
-		dosym "${PV}/${x##*/}" "${dest}/include/${x##*/}"
+	for x in "${BROOT}"/usr/lib/pypy3.7/include/${PYPY_PV}/*; do
+		dosym "${PYPY_PV}/${x##*/}" "${dest}/include/${x##*/}"
 	done
 
-	dosym ../lib/pypy3.6/pypy3-c /usr/bin/pypy3
+	dosym ../lib/pypy3.7/pypy3-c /usr/bin/pypy3
 	dodoc README.rst
 
 	if ! use gdbm; then
@@ -191,12 +162,17 @@ src_install() {
 	fi
 
 	local -x EPYTHON=pypy3
-	local -x PYTHON=${ED}${dest}/pypy3-c
+	local -x PYTHON=${ED}${dest}/pypy3-c-${PYPY_PV}
+	# temporarily copy to build tree to facilitate module builds
+	cp -p "${BROOT}${dest}/pypy3-c-${PYPY_PV}" "${PYTHON}" || die
 
 	echo "EPYTHON='${EPYTHON}'" > epython.py || die
-	python_moduleinto /usr/lib/pypy3.6/site-packages
+	python_moduleinto /usr/lib/pypy3.7/site-packages
 	python_domodule epython.py
 
 	einfo "Byte-compiling Python standard library..."
 	python_optimize "${ED}${dest}"
+
+	# remove to avoid collisions
+	rm "${PYTHON}" || die
 }

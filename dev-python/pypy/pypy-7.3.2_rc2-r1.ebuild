@@ -7,7 +7,7 @@ inherit pax-utils python-utils-r1
 
 MY_P=pypy2.7-v${PV/_/}
 # note: remember to update this to newest dev-lang/python:2.7 on bump
-PATCHSET="python-gentoo-patches-2.7.17-r1"
+PATCHSET="python-gentoo-patches-2.7.18-r1"
 
 DESCRIPTION="A fast, compliant alternative implementation of the Python language"
 HOMEPAGE="https://pypy.org/"
@@ -18,7 +18,7 @@ S="${WORKDIR}/${MY_P}-src"
 LICENSE="MIT"
 # pypy -c 'import sysconfig; print sysconfig.get_config_var("SOABI")'
 SLOT="0/73"
-KEYWORDS="amd64 ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 gdbm +jit libressl ncurses sqlite tk"
 
 RDEPEND="
@@ -55,11 +55,6 @@ src_prepare() {
 	# this test relies on pypy-c hardcoding correct build time paths
 	sed -i -e 's:test_executable_without_cwd:_&:' \
 		lib-python/2.7/test/test_subprocess.py || die
-	# broken upstream
-	# see http://buildbot.pypy.org/summary?branch=%3Ctrunk%3E
-	sed -i -e 's:test_alpn_protocols:_&:' \
-		-e 's:test_default_ecdh_curve:_&:' \
-		lib-python/2.7/test/test_ssl.py || die
 	# requires Internet
 	sed -i -e '/class NetworkedTests/i@unittest.skip("Requires networking")' \
 		lib-python/2.7/test/test_ssl.py || die
@@ -125,8 +120,6 @@ src_test() {
 		--ignore=lib-python/2.7/test/test_urllib2net.py
 		# lots of free space
 		--ignore=lib-python/2.7/test/test_zipfile64.py
-		# no module named 'worker' -- a lot
-		--ignore=lib-python/2.7/test/test_xpickle.py
 	)
 
 	./pypy-c ./pypy/test_all.py --pypy=./pypy-c -vv \
@@ -166,7 +159,9 @@ src_install() {
 	fi
 
 	local -x EPYTHON=pypy
-	local -x PYTHON=${ED}${dest}/pypy-c
+	local -x PYTHON=${ED}${dest}/pypy-c-${PV}
+	# temporarily copy to build tree to facilitate module builds
+	cp -p "${BROOT}${dest}/pypy-c-${PV}" "${PYTHON}" || die
 
 	echo "EPYTHON='${EPYTHON}'" > epython.py || die
 	python_moduleinto /usr/lib/pypy2.7/site-packages
@@ -174,4 +169,7 @@ src_install() {
 
 	einfo "Byte-compiling Python standard library..."
 	python_optimize "${ED}${dest}"
+
+	# remove to avoid collisions
+	rm "${PYTHON}" || die
 }
