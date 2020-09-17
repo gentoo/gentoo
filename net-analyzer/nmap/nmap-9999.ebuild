@@ -14,7 +14,7 @@ SRC_URI="https://dev.gentoo.org/~jer/nmap-logo-64.png"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="ipv6 libressl libssh2 ncat nmap-update nping +nse ssl system-lua"
+IUSE="ipv6 libressl libssh2 ncat nping +nse ssl system-lua"
 REQUIRED_USE="system-lua? ( nse )"
 
 RDEPEND="
@@ -24,10 +24,6 @@ RDEPEND="
 	libssh2? (
 		net-libs/libssh2[zlib]
 		sys-libs/zlib
-	)
-	nmap-update? (
-		dev-libs/apr
-		dev-vcs/subversion
 	)
 	nse? ( sys-libs/zlib )
 	ssl? (
@@ -43,7 +39,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.21-python.patch
 	"${FILESDIR}"/${PN}-6.46-uninstaller.patch
 	"${FILESDIR}"/${PN}-6.25-liblua-ar.patch
-	"${FILESDIR}"/${PN}-7.25-no-FORTIFY_SOURCE.patch
+	"${FILESDIR}"/${PN}-7.80SVN-no-FORTIFY_SOURCE.patch
 	"${FILESDIR}"/${PN}-7.25-CXXFLAGS.patch
 	"${FILESDIR}"/${PN}-7.25-libpcre.patch
 	"${FILESDIR}"/${PN}-7.31-libnl.patch
@@ -86,7 +82,6 @@ src_configure() {
 		$(use_with libssh2) \
 		$(use_with ncat) \
 		--without-ndiff \
-		$(use_with nmap-update) \
 		$(use_with nping) \
 		$(use_with ssl openssl) \
 		--without-zenmap \
@@ -104,7 +99,6 @@ src_compile() {
 	local directory
 	for directory in . libnetutil nsock/src \
 		$(usex ncat ncat '') \
-		$(usex nmap-update nmap-update '') \
 		$(usex nping nping '')
 	do
 		emake -C "${directory}" makefile.dep
@@ -121,14 +115,6 @@ src_install() {
 		STRIP=: \
 		nmapdatadir="${EPREFIX}"/usr/share/nmap \
 		install
-	if use nmap-update;then
-		LC_ALL=C emake -j1 \
-			-C nmap-update \
-			DESTDIR="${D}" \
-			STRIP=: \
-			nmapdatadir="${EPREFIX}"/usr/share/nmap \
-			install
-	fi
 
 	dodoc CHANGELOG HACKING docs/README docs/*.txt
 }
