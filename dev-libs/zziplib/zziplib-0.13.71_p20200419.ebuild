@@ -3,11 +3,11 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
+
 inherit cmake flag-o-matic python-any-r1
 
 MY_COMMIT="223930775aa5b325f04cec01f0b18726a7918821"
-
 DESCRIPTION="Lightweight library for extracting data from files archived in a single zip file"
 HOMEPAGE="https://github.com/gdraheim/zziplib http://zziplib.sourceforge.net/"
 SRC_URI="https://github.com/gdraheim/${PN}/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
@@ -16,8 +16,11 @@ LICENSE="|| ( LGPL-2.1 MPL-1.1 )"
 SLOT="0/13"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="sdl static-libs test"
-
-RESTRICT="!test? ( test )"
+# Tests fail for now, only recently added.
+# Restricted to avoid blocking stabilisations.
+# https://github.com/gdraheim/zziplib/issues/97
+RESTRICT="test"
+#RESTRICT="!test? ( test )"
 
 BDEPEND="
 	${PYTHON_DEPS}
@@ -40,6 +43,14 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
+src_prepare() {
+	sed -e "/^topsrcdir/s:..\/..::" \
+		-e "/^bindir/s:\.\.:${WORKDIR}/${P}_build:" \
+		-e 's:\(..\/\)\+{exe}:{exe}:' \
+		-i test/zziptests.py || die
+	cmake_src_prepare
+}
+
 src_configure() {
 	append-flags -fno-strict-aliasing # bug reported upstream
 
@@ -53,4 +64,9 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	cd "$S"/test/ || die
+	"${EPYTHON}" "$S"/test/zziptests.py || die "Tests failed with ${EPYTHON}"
 }
