@@ -7,5 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">bear/parsedatetime</remote-id>
+		<remote-id type="pypi">parsedatetime</remote-id>
+		<bugs-to>https://github.com/bear/parsedatetime/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
