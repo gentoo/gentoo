@@ -78,11 +78,15 @@ pkg_nofetch() {
 }
 
 src_prepare() {
+	# Apply user patches from ${WORKDIR} to allow patching on patches
+	# subdir too
+	cd "${WORKDIR}"
 	xdg_src_prepare
 
 	use cuda && cuda_sanitize
 
-	cd "${WORKDIR}"/plugins || die
+	# Prepare plugins
+	cd plugins || die
 
 	sed '/^.SILENT/d' -i $(find -name Makefile)
 
