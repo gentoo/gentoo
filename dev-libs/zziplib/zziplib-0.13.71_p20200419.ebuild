@@ -3,11 +3,11 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
+
 inherit cmake flag-o-matic python-any-r1
 
 MY_COMMIT="223930775aa5b325f04cec01f0b18726a7918821"
-
 DESCRIPTION="Lightweight library for extracting data from files archived in a single zip file"
 HOMEPAGE="https://github.com/gdraheim/zziplib http://zziplib.sourceforge.net/"
 SRC_URI="https://github.com/gdraheim/${PN}/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
