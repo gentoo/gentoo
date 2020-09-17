@@ -393,9 +393,9 @@ elisp-modules-install() {
 # @DESCRIPTION:
 # Install Emacs site-init file in SITELISP directory.  Automatically
 # inserts a standard comment header with the name of the package
-# (unless it is already present).  Tokens @SITELISP@, @SITEETC@, and
-# @EMACSMODULES@ are replaced by the path to the package's subdirectory
-# in SITELISP, SITEETC, and EMACSMODULES, respectively.
+# (unless it is already present).  Tokens @SITELISP@, @SITEETC@,
+# and @EMACSMODULES@ are replaced by the path to the package's
+# subdirectory in SITELISP, SITEETC, and EMACSMODULES, respectively.
 
 elisp-site-file-install() {
 	local sf="${1##*/}" my_pn="${2:-${PN}}" modules ret
