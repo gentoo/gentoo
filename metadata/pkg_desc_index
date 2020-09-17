@@ -8349,7 +8349,7 @@ dev-python/jinja2_pluralize 0.3.0: Jinja2 pluralize filters
 dev-python/jira 1.0.14-r3: Python library for interacting with the JIRA REST API
 dev-python/jmespath 0.10.0: JSON Matching Expressions
 dev-python/joblib 0.14.1 0.15.1 0.16.0: Tools to provide lightweight pipelining in Python
-dev-python/josepy 1.3.0: JOSE protocol implementation in Python
+dev-python/josepy 1.3.0 1.4.0: JOSE protocol implementation in Python
 dev-python/jplephem 2.6: Python version of NASA DE4xx ephemerides for Astronomical Alamanac
 dev-python/jsmin 2.2.2: JavaScript minifier
 dev-python/json-rpc 1.13.0: JSON-RPC transport implementation for python
