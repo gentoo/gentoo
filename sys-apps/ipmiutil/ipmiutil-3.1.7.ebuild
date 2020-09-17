@@ -18,9 +18,9 @@ DEPEND="${RDEPEND}
 	virtual/os-headers"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.9.8-flags.patch
+	"${FILESDIR}"/${PN}-3.1.7-flags.patch
 	"${FILESDIR}"/${PN}-2.9.9-lib_symlink.patch
-	"${FILESDIR}"/${PN}-3.1.5-fix-configure.patch
+	"${FILESDIR}"/${PN}-3.1.7-fix-configure.patch
 )
 
 src_prepare() {
@@ -30,13 +30,18 @@ src_prepare() {
 	sed -i -e 's|which rpm |which we_are_gentoo_rpm_is_a_guest |' configure.ac || die
 
 	# Don't compress man pages
-	sed '/gzip -f/d' -i doc/Makefile.am || die
+	sed '/gzip -nf/d' -i doc/Makefile.am || die
 
 	eautoreconf
 }
 
 src_configure() {
-	econf --disable-systemd --enable-sha256 --enable-lanplus
+	local myeconfargs=(
+		--disable-systemd
+		--enable-sha256
+		--enable-lanplus
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
@@ -58,6 +63,7 @@ src_install() {
 	# Init scripts are only for Fedora
 	rm -r "${ED}"/etc/init.d || die 'remove initscripts failed'
 
+	# --disable-static has no effect
 	if ! use static-libs ; then
 		find "${ED}" -type f -name '*.a' -delete || die
 	fi
