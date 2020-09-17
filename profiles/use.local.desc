@@ -4591,6 +4591,8 @@ media-sound/beets:thumbnail - Enable album thumbnails generation
 media-sound/beets:webserver - Enable embedded webserver support through dev-python/flask
 media-sound/bluez-alsa:hcitop - Enable top-like monitoring tool for HCI
 media-sound/bluez-alsa:ldac - Enable support for AOSP media-libs/libldac dispatcher
+media-sound/bluez-alsa:man - Generate (and install) man pages with app-text/pandoc
+media-sound/bluez-alsa:mpg123 - Enable support for MPEG audio playback via media-sound/mpg123
 media-sound/bluez-alsa:ofono - Enable ofono elephony support
 media-sound/cadence:a2jmidid - Enables support for legacy ALSA sequencer applications in JACK MIDI system
 media-sound/cantata:cdio - Use dev-libs/libcdio-paranoia for CD support (instead of cdparanoia)
