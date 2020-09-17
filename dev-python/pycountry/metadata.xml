@@ -8,5 +8,6 @@
 	<upstream>
 		<remote-id type="pypi">pycountry</remote-id>
 		<remote-id type="github">flyingcircusio/pycountry</remote-id>
+		<bugs-to>https://github.com/flyingcircusio/pycountry/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
