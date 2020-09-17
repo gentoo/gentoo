@@ -613,11 +613,6 @@ dev-python/pysha3
 # Removal in 30 days
 dev-perl/gnome2-vfs-perl
 
-# Michał Górny <mgorny@gentoo.org> (2020-08-17)
-# Dead pygtk-2 era library.  No reverse dependencies left.
-# Removal in 30 days.  Bug #706480.
-dev-python/notify-python
-
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
 # Masked to allow py2.7 removal
