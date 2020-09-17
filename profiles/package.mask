@@ -600,23 +600,11 @@ dev-haskell/regex-tdfa-rc
 # Bug #736248.
 dev-haskell/testpack
 
-# Michał Górny <mgorny@gentoo.org> (2020-08-18)
-# Backports of hash algorithms that are built-in since Python 3.6.
-# No reverse dependencies left.
-# Removal in 30 days.  Bug #737712.
-dev-python/pyblake2
-dev-python/pysha3
-
 # Kent Fredric <kentnl@gentoo.org> (2020-08-17)
 # No reverse dependencies, and gtk2 support is becoming
 # obsolete in Gentoo
 # Removal in 30 days
 dev-perl/gnome2-vfs-perl
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-17)
-# Dead pygtk-2 era library.  No reverse dependencies left.
-# Removal in 30 days.  Bug #706480.
-dev-python/notify-python
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
@@ -626,57 +614,11 @@ dev-ada/libadalang
 dev-ada/libadalang-tools
 dev-ada/gps
 
-# Zac Medico <zmedico@gentoo.org> (2020-08-16)
-# Not ported to py3.7. No reverse deps.
-# Removal in 30 days. Bug #719098.
-dev-python/mem_top
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-16)
-# Unmaintained.  Not ported to py3.7.  The only revdep is queued
-# for removal.
-# Removal in 30 days.  Bug #719544.
-dev-python/robotframework
-
-# Zac Medico <zmedico@gentoo.org> (2020-08-01)
-# Not ported to py3.7. No reverse deps.
-# Removal in 30 days. Bug #719542.
-dev-python/robotbackgroundlogger
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-08-16)
 # Obsolete package without reverse dependencies.
 # Does not compile against ghc-8.8. Removal in 30 days.
 # Bug #735902.
 dev-haskell/frown
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-16)
-# Unmaintained.  Not ported to py3.7.  Not bumped for over a year.
-# Removal in 30 days.  Bug #737400.
-media-video/photofilmstrip
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-16)
-# Unmaintained.  Broken with py3.7.  Upstream archived the repository.
-# No reverse dependencies left.
-# Removal in 30 days.  Bug #719554.
-dev-python/sleekxmpp
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-16)
-# Unmaintained.  Not ported to py3.7.  Not bumped since introduction
-# in 2015.
-# Removal in 30 days.  Bug #719422.
-dev-python/pyminuit
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-16)
-# Not maintained since 2017.  Not ported to py3.7.  No reverse
-# dependencies.
-# Removal in 30 days.  Bug #719412.
-dev-python/pygpu
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-16)
-# Unmaintained.  Not ported to py3.7.  'blocks' is a snapshot from 2013,
-# last activity in 2014.  It is the only revdep of 'maintboot'.
-# Removal in 30 days.  Bug #718522.
-dev-python/maintboot
-sys-block/blocks
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-08-16)
 # Obsolete package without reverse dependencies.
