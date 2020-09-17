@@ -17,7 +17,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="aac debug hcitop ldac ofono static-libs test upower"
+IUSE="aac debug hcitop lame ldac man mpg123 ofono static-libs test unwind upower"
 RESTRICT="!test? ( test )"
 
 # bluez-alsa does not directly link to upower but
@@ -30,16 +30,23 @@ RDEPEND="
 	sys-apps/dbus[${MULTILIB_USEDEP}]
 	sys-libs/readline:0=
 	aac? ( >=media-libs/fdk-aac-0.1.1:=[${MULTILIB_USEDEP}] )
+	lame? ( media-sound/lame[${MULTILIB_USEDEP}] )
+	mpg123? ( media-sound/mpg123[${MULTILIB_USEDEP}] )
 	hcitop? (
 		dev-libs/libbsd
 		sys-libs/ncurses:0=
 	)
 	ldac? ( >=media-libs/libldac-2.0.0 )
+	ofono? ( net-misc/ofono )
+	unwind? ( sys-libs/libunwind[${MULTILIB_USEDEP}] )
 	upower? ( sys-power/upower )
 "
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+	man? ( app-text/pandoc )
+"
 
 src_prepare() {
 	default
@@ -51,12 +58,16 @@ multilib_src_configure() {
 		--enable-rfcomm
 		$(use_enable aac)
 		$(use_enable debug)
-		$(use_enable ofono)
+		$(use_enable lame mp3lame)
+		$(use_enable man manpages)
+		$(use_enable mpg123)
 		$(use_enable static-libs static)
 		$(use_enable test)
 		$(multilib_native_use_enable hcitop)
 		$(multilib_native_use_enable ldac)
+		$(multilib_native_use_enable ofono)
 		$(multilib_native_use_enable upower)
+		$(use_with unwind libunwind)
 	)
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
