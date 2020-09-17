@@ -29,7 +29,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 IUSE=""
 
-DEPEND="
+DEPEND+="
 	media-sound/wavpack
 	virtual/libiconv"
 RDEPEND="${DEPEND}"
