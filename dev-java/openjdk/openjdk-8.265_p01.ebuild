@@ -122,15 +122,16 @@ pkg_setup() {
 
 src_unpack() {
 	default
-	mv -v "jdk${SLOT}u"* "${S}" || die
+	mv -v "jdk${SLOT}u"* "${P}" || die
+
+	local repo
+	for repo in corba hotspot jdk jaxp jaxws langtools nashorn; do
+		mv -v "${repo}-"* "${P}/${repo}" || die
+	done
 }
 
 src_prepare() {
 	default
-	local repo
-	for repo in corba hotspot jdk jaxp jaxws langtools nashorn; do
-		mv -v ../"${repo}-"* "${repo}" || die
-	done
 
 	# new warnings in new gcc https://bugs.gentoo.org/685426
 	sed -i '/^WARNINGS_ARE_ERRORS/ s/-Werror/-Wno-error/' \
@@ -210,7 +211,7 @@ src_install() {
 		rm -v jre/lib/$(get_system_arch)/libjsoundalsa.* || die
 	fi
 
-	# stupid build system does not remove that
+	# build system does not remove that
 	if use headless-awt ; then
 		rm -fvr jre/lib/$(get_system_arch)/lib*{[jx]awt,splashscreen}* \
 		{,jre/}bin/policytool bin/appletviewer || die
