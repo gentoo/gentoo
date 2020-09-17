@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>rossbridger.cc@gmail.com</email>
+		<name>Ross Charles Campbell</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription>
+Godot Engine is a feature-packed, cross-platform game engine to create 2D and
+3D games from a unified interface. It provides a comprehensive set of common
+tools, so users can focus on making games without having to reinvent the wheel.
+Games can be exported in one click to a number of platforms, including the major
+desktop platforms (Linux, macOS, Windows) as well as mobile (Android, iOS) and
+web-based (HTML5) platforms.
+	</longdescription>
+	<use>
+		<flag name="bullet">Enable support for <pkg>sci-physics/bullet</pkg></flag>
+		<flag name="enet">Enable support for <pkg>net-libs/enet</pkg></flag>
+		<flag name="lto">Enable support for link time optimization</flag>
+		<flag name="freetype">Enable support for <pkg>media-libs/freetype</pkg></flag>
+		<flag name="mbedtls">Enable support for <pkg>net-libs/mbedtls</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">godotengine/godot</remote-id>
+		<bugs-to>https://github.com/godotengine/godot/issues</bugs-to>
+		<doc lang="en">https://docs.godotengine.org/en/stable/index.html</doc>
+	</upstream>
+</pkgmetadata>

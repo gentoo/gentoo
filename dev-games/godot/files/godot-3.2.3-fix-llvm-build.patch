@@ -1,0 +1,36 @@
+diff --git a/SConstruct b/SConstruct
+index 26019e6..f460aef 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -170,6 +170,8 @@ opts.Add(BoolVariable("builtin_zstd", "Use the built-in Zstd library", True))
+ # Compilation environment setup
+ opts.Add("CXX", "C++ compiler")
+ opts.Add("CC", "C compiler")
++opts.Add("AR", "Archiver")
++opts.Add("RANLIB", "Random Access Library Indexer")
+ opts.Add("LINK", "Linker")
+ opts.Add("CCFLAGS", "Custom flags for both the C and C++ compilers")
+ opts.Add("CFLAGS", "Custom flags for the C compiler")
+diff --git a/platform/x11/detect.py b/platform/x11/detect.py
+index 716930d..28b1df4 100644
+--- a/platform/x11/detect.py
++++ b/platform/x11/detect.py
+@@ -130,7 +130,6 @@ def configure(env):
+             env["CXX"] = "clang++"
+             env["LINK"] = "clang++"
+         env.Append(CPPDEFINES=["TYPED_METHOD_BIND"])
+-        env.extra_suffix = ".llvm" + env.extra_suffix
+ 
+     if env["use_lld"]:
+         if env["use_llvm"]:
+@@ -173,10 +172,6 @@ def configure(env):
+                 env.Append(CCFLAGS=["-flto"])
+                 env.Append(LINKFLAGS=["-flto"])
+ 
+-        if not env["use_llvm"]:
+-            env["RANLIB"] = "gcc-ranlib"
+-            env["AR"] = "gcc-ar"
+-
+     env.Append(CCFLAGS=["-pipe"])
+     env.Append(LINKFLAGS=["-pipe"])
+ 
