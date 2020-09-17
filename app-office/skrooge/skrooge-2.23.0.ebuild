@@ -20,7 +20,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="5"
-IUSE="activities designer kde ofx webkit"
+IUSE="activities designer kde ofx"
 
 REQUIRED_USE="test? ( designer )"
 
@@ -41,6 +41,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtscript-${QTMIN}:5
 	>=dev-qt/qtsql-${QTMIN}:5=
 	>=dev-qt/qtsvg-${QTMIN}:5
+	>=dev-qt/qtwebengine-${QTMIN}:5[widgets]
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=dev-qt/qtxml-${QTMIN}:5
 	>=kde-frameworks/karchive-${KFMIN}:5
@@ -65,16 +66,14 @@ COMMON_DEPEND="
 	activities? ( >=kde-frameworks/kactivities-${KFMIN}:5 )
 	kde? ( >=kde-frameworks/krunner-${KFMIN}:5 )
 	ofx? ( dev-libs/libofx )
-	webkit? ( >=dev-qt/qtwebkit-5.212.0_pre20180120:5 )
-	!webkit? ( >=dev-qt/qtwebengine-${QTMIN}:5[widgets] )
 "
 DEPEND="${COMMON_DEPEND}
 	>=kde-frameworks/kguiaddons-${KFMIN}:5
 	>=kde-frameworks/kjobwidgets-${KFMIN}:5
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5
 	designer? (
-		>=kde-frameworks/kdesignerplugin-${KFMIN}:5
 		>=dev-qt/designer-${QTMIN}:5
+		>=kde-frameworks/kdesignerplugin-${KFMIN}:5
 	)
 "
 RDEPEND="${COMMON_DEPEND}
@@ -86,12 +85,12 @@ RESTRICT+=" test"
 
 src_configure() {
 	local mycmakeargs=(
-		-DSKG_BUILD_TEST=$(usex test)
-		-DSKG_DESIGNER=$(usex designer)
+		-DSKG_WEBENGINE=ON
 		$(cmake_use_find_package activities KF5Activities)
+		-DSKG_DESIGNER=$(usex designer)
 		$(cmake_use_find_package kde KF5Runner)
 		$(cmake_use_find_package ofx LibOfx)
-		-DSKG_WEBENGINE=$(usex !webkit)
+		-DSKG_BUILD_TEST=$(usex test)
 	)
 
 	ecm_src_configure
