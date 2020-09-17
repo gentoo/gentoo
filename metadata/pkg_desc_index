@@ -5960,7 +5960,7 @@ dev-perl/Algorithm-Dependency 1.110.0-r2 1.112.0: Toolkit for implementing depen
 dev-perl/Algorithm-Diff 1.190.300 1.190.300-r1: Compute intelligent differences between two files / lists
 dev-perl/Algorithm-Munkres 0.80.0-r1 0.80.0-r2: Munkres solution to classical Assignment problem
 dev-perl/Alien-Base-ModuleBuild 1.140.0 1.150.0: A Module::Build subclass for building Alien:: modules and their libraries
-dev-perl/Alien-Build 1.790.0 2.230.0 2.260.0 2.280.0 2.290.0 2.320.0: Build external dependencies for use in CPAN
+dev-perl/Alien-Build 1.790.0 2.230.0 2.280.0 2.290.0 2.320.0: Build external dependencies for use in CPAN
 dev-perl/Alien-Gnuplot 1.33.0: Find and verify functionality of the gnuplot executable
 dev-perl/Alien-LibGumbo 0.50.0-r2: Gumbo parser library
 dev-perl/Alien-Libxml2 0.90.0 0.160.0: Install the C libxml2 library on your system
@@ -6009,7 +6009,7 @@ dev-perl/Audio-WMA 1.300.0-r1: extension for reading WMA/ASF metadata
 dev-perl/Audio-Wav 0.140.0-r1 0.140.0-r2: Modules for reading & writing Microsoft WAV files
 dev-perl/Authen-DigestMD5 0.40.0-r1 0.40.0-r2: SASL DIGEST-MD5 authentication (RFC2831)
 dev-perl/Authen-Htpasswd 0.171.0-r1 0.171.0-r2: interface to read and modify Apache .htpasswd files
-dev-perl/Authen-Libwrap 0.230.0-r1 0.230.0-r2: A Perl access to the TCP Wrappers interface
+dev-perl/Authen-Libwrap 0.230.0-r2: A Perl access to the TCP Wrappers interface
 dev-perl/Authen-NTLM 1.90.0-r1 1.90.0-r2: An NTLM authentication module
 dev-perl/Authen-PAM 0.160.0-r2 0.160.0-r3: Interface to PAM library
 dev-perl/Authen-Radius 0.270.0 0.310.0: Communicate with a Radius server from Perl
@@ -6030,10 +6030,10 @@ dev-perl/B-OPCheck 0.320.0-r1: PL_check hacks using Perl callbacks
 dev-perl/B-Utils 0.270.0 0.270.0-r2: Helper functions for op tree manipulation
 dev-perl/BDB 1.920.0-r1: Asynchronous Berkeley DB access
 dev-perl/BSD-Resource 1.291.100 1.291.100-r2: Perl module for BSD process resource limit and priority functions
-dev-perl/BSON 1.12.1 1.12.2: BSON serialization and deserialization (EOL)
+dev-perl/BSON 1.12.2: BSON serialization and deserialization (EOL)
 dev-perl/BZ-Client 4.400.200: A client for the Bugzilla web services API.
 dev-perl/Benchmark-Timer 0.711.200: Perl code benchmarking tool
-dev-perl/BerkeleyDB 0.550.0 0.630.0-r1 0.630.0-r2: This module provides Berkeley DB interface for Perl
+dev-perl/BerkeleyDB 0.550.0 0.630.0-r2: This module provides Berkeley DB interface for Perl
 dev-perl/Bio-ASN1-EntrezGene 1.720.0: Regular expression-based Perl Parser for NCBI Entrez Gene
 dev-perl/Bio-DB-HTS 3.10.0-r1: Perl bindings for sci-libs/htslib
 dev-perl/Bio-Das 1.170.0-r2: Interface to Distributed Annotation System
@@ -6220,7 +6220,7 @@ dev-perl/Crypt-RSA 1.990.0-r1 1.990.0-r2: RSA public-key cryptosystem
 dev-perl/Crypt-Random 1.520.0: Cryptographically Secure, True Random Number Generator
 dev-perl/Crypt-Random-Source 0.120.0 0.140.0: Get weak or strong random data from pluggable sources
 dev-perl/Crypt-Rijndael 1.140.0 1.140.0-r1: Crypt::CBC compliant Rijndael encryption module
-dev-perl/Crypt-SMIME 0.250.0-r1 0.260.0 0.270.0: S/MIME message signing, verification, encryption and decryption
+dev-perl/Crypt-SMIME 0.260.0 0.270.0: S/MIME message signing, verification, encryption and decryption
 dev-perl/Crypt-SSLeay 0.720.0-r2 0.720.0-r3: OpenSSL support for LWP
 dev-perl/Crypt-Simple 0.60.0-r1 0.60.0-r2: encrypt stuff simply
 dev-perl/Crypt-SmbHash 0.120.0-r2 0.120.0-r3: LM/NT hashing, for Samba's smbpasswd entries
@@ -6527,7 +6527,7 @@ dev-perl/Filter 1.570.0 1.600.0: Interface for creation of Perl Filters
 dev-perl/Finance-Quote 1.470.0 1.490.0: Get stock and mutual fund quotes from various exchanges
 dev-perl/Finance-YahooQuote 0.250.0-r1 0.260.0: Get stock quotes from Yahoo! Finance
 dev-perl/Font-AFM 1.200.0-r1 1.200.0-r2 1.200.0-r3: Parse Adobe Font Metric files
-dev-perl/Font-TTF 1.60.0: module for compiling and altering fonts
+dev-perl/Font-TTF 1.60.0 1.60.0-r1: module for compiling and altering fonts
 dev-perl/Format-Human-Bytes 0.60.0-r1: Format a bytecount and make it human readable
 dev-perl/FreezeThaw 0.500.100-r1: converting Perl structures to strings and back
 dev-perl/Fuse 0.16.1 0.16.1-r1: Fuse module for perl
