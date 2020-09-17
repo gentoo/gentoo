@@ -15238,7 +15238,7 @@ net-misc/mrouted 3.9.5-r1 3.9.8: IP multicast routing daemon
 net-misc/mulk 0.7.0-r1: Download agent similar to wget/curl
 net-misc/nat-traverse 0.6: Traverse NAT gateways with the Use of UDP
 net-misc/ncman 0.0.1_p20190327-r2 9999: An ncurses UI for connman, forked from connman-json-client
-net-misc/ncp 1.2.4-r1: Utility for copying files in a LAN (npoll, npush)
+net-misc/ncp 1.2.4-r2: Utility for copying files in a LAN (npoll, npush)
 net-misc/ndisc6 1.0.3: Recursive DNS Servers discovery Daemon (rdnssd) for IPv6
 net-misc/ndppd 0.2.5: Proxies NDP messages between interfaces
 net-misc/nemesis 1.4-r1 1.4-r2: A commandline-based, portable human IP stack for UNIX/Linux
