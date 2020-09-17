@@ -628,12 +628,6 @@ dev-ada/gps
 dev-haskell/frown
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-16)
-# Unmaintained.  Not ported to py3.7.  Not bumped since introduction
-# in 2015.
-# Removal in 30 days.  Bug #719422.
-dev-python/pyminuit
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-16)
 # Unmaintained.  Not ported to py3.7.  'blocks' is a snapshot from 2013,
 # last activity in 2014.  It is the only revdep of 'maintboot'.
 # Removal in 30 days.  Bug #718522.
