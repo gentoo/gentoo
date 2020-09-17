@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 MODULES=(
 	access-management apigateway appconfig backup batch budgets chime cloud-desktop cloud-dev cloud-media
 	cloud-mobile cloudformation cloudfront cloudhsm cloudsearch cloudwatch cognito config dlm ebs ec2 ecr ecs eks
-	elasticache elasticbeanstalk elasticinference elasticloadbalancing elasticmapreduce email es events forecast
+	elasticache elasticbeanstalk elastic-inference elasticloadbalancing elasticmapreduce email es events forecast
 	frauddetector fsx globalaccelerator iot kendra kinesis kms lambda lex license-manager lightsail machinelearning
 	macie managedblockchain marketplace networkmanager opsworks organizations other outposts personalize polly qldb
 	queues rds rekognition resource-groups route53 s3 sagemaker secretsmanager securityhub serverlessrepo shield sns
@@ -36,9 +36,9 @@ DEPEND="
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
-	dev-libs/aws-c-common
+	>=dev-libs/aws-c-common-0.4.26:=[static-libs=]
 	dev-libs/aws-checksums
-	dev-libs/aws-c-event-stream
+	>=dev-libs/aws-c-event-stream-0.1.6:=[static-libs=]
 	sys-libs/zlib
 "
 RDEPEND="
