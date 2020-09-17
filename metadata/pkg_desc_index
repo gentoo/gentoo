@@ -8419,7 +8419,6 @@ dev-python/lxml 4.5.1 4.5.2: A Pythonic binding for the libxml2 and libxslt libr
 dev-python/lz4 3.0.2: LZ4 Bindings for Python
 dev-python/m2crypto 0.35.2 0.36.0: A Python crypto and SSL toolkit
 dev-python/m2r 0.2.1: Markdown to reStructuredText converter
-dev-python/maintboot 0.1.0: Run maintenance tasks outside the OS
 dev-python/mako 1.1.3: A Python templating language
 dev-python/mamba 0.11.0 0.11.1: Python test runner born under the banner of Behavior Driven Development
 dev-python/mando 0.6.4: Create Python CLI apps with little to no effort at all!
@@ -8438,7 +8437,6 @@ dev-python/mecab-python 0.996: Python binding for MeCab
 dev-python/mechanize 0.4.5: Stateful programmatic web browsing in Python
 dev-python/mediafile 0.2.0: Read and write audio files' tags in Python
 dev-python/meld3 2.0.0: meld3 is an HTML/XML templating engine
-dev-python/mem_top 0.1.6: Shows top suspects for memory leaks in your Python program
 dev-python/memory_profiler 0.57: A module for monitoring memory usage of a python program
 dev-python/mergedict 1.0.0: A Python 'dict' with a merge() method
 dev-python/metakernel 0.25.0-r1: Metakernel for Jupyter
@@ -8518,7 +8516,6 @@ dev-python/nose_fixes 1.3: A plugin to make nose behave better
 dev-python/nose_warnings_filters 0.1.5-r3: A python module to inject warning filters during nosetest
 dev-python/nosexcover 1.0.11-r1: Extends nose.plugins.cover to add Cobertura-style XML reports
 dev-python/notebook 6.0.3 6.1.3 6.1.3-r1 6.1.4: Jupyter Interactive Notebook
-dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
 dev-python/notify2 0.3.1-r1: Python interface to DBus notifications.
 dev-python/nototools 0_pre20200207: Noto fonts support tools and scripts plus web site generation
 dev-python/ntlm-auth 1.5.0: Calculates NTLM Authentication codes
@@ -8692,7 +8689,6 @@ dev-python/pyasn1-modules 0.2.8: pyasn1 modules
 dev-python/pyatspi 2.34.0 2.36.0: Python client bindings for D-Bus AT-SPI
 dev-python/pyaudio 0.2.11-r1: Python bindings for PortAudio
 dev-python/pybind11 2.5.0: AST-based Python refactoring library
-dev-python/pyblake2 1.1.2: BLAKE2 hash function extension module
 dev-python/pybluez 0.23: Python bindings for Bluez Bluetooth Stack
 dev-python/pybtex 0.22.2: BibTeX-compatible bibliography processor
 dev-python/pycadf 2.9.0-r1: python implementation of DMTF Cloud Audit (CADF) data model
@@ -8743,7 +8739,6 @@ dev-python/pygments 2.5.2 2.6.1 2.7.0: Pygments is a syntax highlighting package
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
 dev-python/pygobject 2.28.6-r55 3.34.0 3.36.1: Python bindings for GObject Introspection
 dev-python/pygpgme 0.3-r2: A Python wrapper for the GPGME library
-dev-python/pygpu 0.6.7: Python bindings to libgpuarray
 dev-python/pygraphviz 1.5 1.6: Python wrapper for the Graphviz Agraph data structure
 dev-python/pygresql 5.1 5.2: A Python interface for the PostgreSQL database
 dev-python/pygsl 2.1.1: Python interface for the GNU scientific library (gsl)
@@ -8769,7 +8764,6 @@ dev-python/pymdstat 0.4.2-r1: Python library to parse Linux /proc/mdstat
 dev-python/pymediainfo 4.2.1: A wrapper around the mediainfo library
 dev-python/pymetar 1.1-r1: Downloads and decodes to the weather report for a given station ID
 dev-python/pymilter 1.0.4-r1: Python interface to sendmail milter API
-dev-python/pyminuit 1.2.1-r1: Minuit numerical function minimization in Python
 dev-python/pymongo 3.10.1 3.11.0: Python driver for MongoDB
 dev-python/pymountboot 0.2.3 9999: Python extension module to (re)mount /boot
 dev-python/pympler 0.6: Memory profiling for Python applications
@@ -8822,7 +8816,6 @@ dev-python/pyscard 1.9.9: Smart cards support in python
 dev-python/pyscreenshot 2.2: Python screenshot library
 dev-python/pysendfile 2.0.1-r1: A python interface to the sendfile(2) system call
 dev-python/pyserial 3.4: Python Serial Port extension
-dev-python/pysha3 1.0.2-r1: SHA-3 (Keccak) for Python 2.7 - 3.5
 dev-python/pyside2 5.14.2: Python bindings for the Qt framework
 dev-python/pysmi 0.3.4: Python Lex & Yacc
 dev-python/pysnmp 4.4.12-r1 999999: Python SNMP library
@@ -9040,8 +9033,6 @@ dev-python/rfc3986-validator 0.1.1: Pure python RFC3986 validator
 dev-python/rfc3987 1.3.8-r1: Parsing and validation of URIs (RFC 3986) and IRIs (RFC 3987)
 dev-python/rjsmin 1.1.0: Javascript minifier written in python.
 dev-python/robot-detection 0.4.0: Module to detect if a given HTTP User Agent is a web crawler.
-dev-python/robotbackgroundlogger 1.2: Helper module for logging to Robot Framework log from background threads
-dev-python/robotframework 3.0.4: Test automation framework for acceptance testing & test-driven development
 dev-python/roman 3.2: An Integer to Roman numerals converter
 dev-python/root_numpy 4.7.3-r1: Interface between ROOT and numpy
 dev-python/rootpy 1.0.1-r1: Pythonic layer on top of the ROOT framework's PyROOT bindings
@@ -9103,7 +9094,6 @@ dev-python/singledispatch 3.4.0.3: A library to bring functools.singledispatch f
 dev-python/sip 4.19.22-r1 4.19.24: Python extension module generator for C and C++ libraries
 dev-python/six 1.15.0: Python 2 and 3 compatibility library
 dev-python/slackclient 2.5.0: Client for Slack supporting the Slack Web and Real Time Messaging API
-dev-python/sleekxmpp 1.3.1-r1: Python library for XMPP
 dev-python/slimit 0.8.1-r1: A JavaScript minifier written in Python
 dev-python/slixmpp 1.4.2 1.5.2: Python 3 library for XMPP
 dev-python/smmap 3.0.4: A pure Python implementation of a sliding window memory map manager
@@ -14185,7 +14175,6 @@ media-video/oxine 0.7.1-r2: OSD frontend for Xine
 media-video/parole 1.0.5: A simple Xfce4 media player using GStreamer
 media-video/peek 1.4.0-r1 1.5.1: Simple animated Gif screen recorder
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
-media-video/photofilmstrip 3.7.1-r1: Movie slideshow creator using Ken Burns effect
 media-video/pipewire 0.2.7 0.3.10: Multimedia processing graphs
 media-video/pitivi 0.999-r3: A non-linear video editor using the GStreamer multimedia framework
 media-video/projectx 0.91.0.10-r2: Converts, splits and demuxes DVB and other MPEG recordings
@@ -17221,7 +17210,6 @@ sys-auth/yubikey-personalization-gui 3.1.25: GUI for personalization of Yubico's
 sys-block/aoetools 36 37: tools for ATA over Ethernet (AoE) network storage protocol
 sys-block/arcconf 2.01.22270-r1 3.04.23699: Microsemi Adaptec RAID Controller Command Line Utility
 sys-block/blktrace 1.1.0 1.1.0-r1 1.2.0: show detailed info about what is happening on a block device io queue
-sys-block/blocks 0.1.4_pre131210-r1 9999: Conversion tools for block devices
 sys-block/buffer 1.19-r2: a tapedrive tool for speeding up reading from and writing to tape
 sys-block/cec 14: Coraid Ethernet Console client
 sys-block/devio 1.2: correctly read (or write) a region of a block device

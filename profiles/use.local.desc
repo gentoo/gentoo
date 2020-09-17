@@ -2583,8 +2583,6 @@ dev-python/pillow:imagequant - Build with Image Quantization Library support
 dev-python/py-amqp:extras - Install extra tools to generate initial Python mod from an AMQP XML file
 dev-python/pygame:midi - Enable midi support using media-libs/portmidi
 dev-python/pyglet:image - Enable support for image formats other than PNG and BMP
-dev-python/pygpu:cuda - Enable NVIDIA CUDA toolkit support
-dev-python/pygpu:opencl - Enable OpenCL support
 dev-python/pyilmbase:exceptions - Enable runtime floating point exceptions in PyIMath.
 dev-python/pyilmbase:numpy - Add bindings for dev-python/numpy use.
 dev-python/pyocr:cuneiform - Enable support for the app-text/cuneiform OCR engine
