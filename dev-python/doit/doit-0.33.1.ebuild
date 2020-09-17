@@ -22,7 +22,6 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="
 	test? (
-		${RDEPEND}
 		$(python_gen_impl_dep sqlite)
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pyflakes[${PYTHON_USEDEP}]
