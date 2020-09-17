@@ -8646,6 +8646,7 @@ dev-python/podcastparser 0.6.5: Podcast parser for the gpodder client
 dev-python/polib 1.1.0-r1: A library to manipulate gettext files (.po and .mo files)
 dev-python/polygon 3.0.7: Python package to handle polygonal shapes in 2D
 dev-python/pony 0.7.13: Python ORM with beautiful query syntax
+dev-python/pooch 1.2.0: manages your Python library's sample data files
 dev-python/portend 2.6: TCP port monitoring utilities
 dev-python/poyo 0.5.0: A lightweight YAML Parser for Python
 dev-python/precis-i18n 1.0.1 1.0.2: Internationalized Usernames and Passwords
@@ -8800,12 +8801,12 @@ dev-python/pyprof2calltree 1.4.4: convert python profile data to kcachegrind cal
 dev-python/pyproj 2.4.2-r1: Python interface to the PROJ library
 dev-python/pyproject2setuppy 7: Cheap setup.py hack to install flit & poetry-based projects
 dev-python/pypugjs 5.9.4-r1: Pug (Jade) syntax adapter for Django, Jinja2 and Mako templates
-dev-python/pypy 7.3.0 7.3.1-r2 7.3.2_rc1 7.3.2_rc2: A fast, compliant alternative implementation of the Python language
-dev-python/pypy-exe 7.3.0 7.3.1 7.3.2_rc1 7.3.2_rc2: PyPy executable (build from source)
-dev-python/pypy-exe-bin 7.3.0_p1 7.3.1_p1: PyPy executable (pre-built version)
-dev-python/pypy3 7.3.0 7.3.1-r2 7.3.2_rc1 7.3.2_rc1-r100 7.3.2_rc2 7.3.2_rc2_p37: A fast, compliant alternative implementation of the Python (3.7) language
-dev-python/pypy3-exe 7.3.0 7.3.1 7.3.2_rc1 7.3.2_rc1-r100 7.3.2_rc2 7.3.2_rc2_p37: PyPy3 executable (build from source)
-dev-python/pypy3-exe-bin 7.3.0_p1 7.3.1_p1: PyPy3 executable (pre-built version)
+dev-python/pypy 7.3.1-r3 7.3.2_rc2-r1: A fast, compliant alternative implementation of the Python language
+dev-python/pypy-exe 7.3.1 7.3.2_rc2: PyPy executable (build from source)
+dev-python/pypy-exe-bin 7.3.1_p1: PyPy executable (pre-built version)
+dev-python/pypy3 7.3.1-r3 7.3.2_rc2-r1 7.3.2_rc2_p37-r1: A fast, compliant alternative implementation of the Python (3.7) language
+dev-python/pypy3-exe 7.3.1 7.3.2_rc2 7.3.2_rc2_p37: PyPy3 executable (build from source)
+dev-python/pypy3-exe-bin 7.3.1_p1: PyPy3 executable (pre-built version)
 dev-python/pyqrcode 1.2.1-r1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqt-distutils 0.7.3: distutils extension to work with PyQt applications and UI files
 dev-python/pyqtgraph 0.11.0_rc0: A pure-python graphics and GUI library built on PyQt and numpy
@@ -17642,7 +17643,7 @@ sys-kernel/dracut-crypt-ssh 1.0.6-r1 1.0.7: Early unlocking of encrypted systems
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.60 5.4.61 5.4.62 5.4.63 5.4.64 5.4.65 5.7.17 5.7.18 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6 5.8.7 5.8.8 5.8.9: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.60 5.4.61 5.4.62 5.4.62-r1 5.4.63 5.4.63-r1 5.4.64 5.4.64-r1 5.4.65 5.4.65-r1 5.7.17 5.7.18 5.7.19 5.7.19-r1 5.8.3 5.8.4 5.8.5 5.8.5-r1 5.8.6 5.8.6-r1 5.8.7 5.8.7-r1 5.8.8 5.8.8-r1 5.8.9 5.8.9-r1: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.228 4.4.233 4.4.234 4.4.235 4.4.236 4.9.228 4.9.233 4.9.234 4.9.235 4.9.236 4.14.185 4.14.194 4.14.195 4.14.196 4.14.197 4.14.198 4.19.129 4.19.141 4.19.142 4.19.143 4.19.144 4.19.145 5.4.48 5.4.60 5.4.61 5.4.62 5.4.63 5.4.64 5.4.65 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6 5.8.7 5.8.8 5.8.9: Full sources including the Gentoo patchset for the 5.8 kernel tree
+sys-kernel/gentoo-sources 4.4.228 4.4.233 4.4.234 4.4.235 4.4.236 4.9.228 4.9.233 4.9.234 4.9.235 4.9.236 4.14.185 4.14.194 4.14.195 4.14.196 4.14.197 4.14.198 4.19.129 4.19.141 4.19.142 4.19.143 4.19.144 4.19.145 4.19.146 5.4.48 5.4.60 5.4.61 5.4.62 5.4.63 5.4.64 5.4.65 5.4.66 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6 5.8.7 5.8.8 5.8.9 5.8.10: Full sources including the Gentoo patchset for the 5.8 kernel tree
 sys-kernel/git-sources 5.9_rc1 5.9_rc2 5.9_rc3 5.9_rc4 5.9_rc5: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
