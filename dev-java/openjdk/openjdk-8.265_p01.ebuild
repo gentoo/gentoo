@@ -9,25 +9,41 @@ inherit check-reqs eapi7-ver flag-o-matic java-pkg-2 java-vm-2 multiprocessing p
 # as _p component of the gentoo version string.
 
 MY_PV=$(ver_rs 1 'u' 2 '-' ${PV%_p*}-ga)
+MY_PN_AARCH64="${PN}-aarch64-shenandoah"
+MY_PV_AARCH64="$(ver_rs 1 'u' 2 '-' ${PV/_p/-b})"
+MY_P_AARCH64="${MY_PN_AARCH64/#${PN}-}-jdk${MY_PV_AARCH64}"
 
 BASE_URI="https://hg.${PN}.java.net/jdk8u/jdk8u"
+AARCH64_URI="https://hg.${PN}.java.net/aarch64-port/jdk8u-shenandoah"
 
 DESCRIPTION="Open source implementation of the Java programming language"
 HOMEPAGE="https://openjdk.java.net"
 SRC_URI="
-	${BASE_URI}/archive/jdk${MY_PV}.tar.bz2 -> ${P}.tar.bz2
-	${BASE_URI}/corba/archive/jdk${MY_PV}.tar.bz2 -> ${PN}-corba-${PV}.tar.bz2
-	${BASE_URI}/hotspot/archive/jdk${MY_PV}.tar.bz2 -> ${PN}-hotspot-${PV}.tar.bz2
-	${BASE_URI}/jaxp/archive/jdk${MY_PV}.tar.bz2 -> ${PN}-jaxp-${PV}.tar.bz2
-	${BASE_URI}/jaxws/archive/jdk${MY_PV}.tar.bz2 -> ${PN}-jaxws-${PV}.tar.bz2
-	${BASE_URI}/jdk/archive/jdk${MY_PV}.tar.bz2 -> ${PN}-jdk-${PV}.tar.bz2
-	${BASE_URI}/langtools/archive/jdk${MY_PV}.tar.bz2 -> ${PN}-langtools-${PV}.tar.bz2
-	${BASE_URI}/nashorn/archive/jdk${MY_PV}.tar.bz2 -> ${PN}-nashorn-${PV}.tar.bz2
+	!arm64? (
+		${BASE_URI}/archive/jdk${MY_PV}.tar.bz2 -> ${P}.tar.bz2
+		${BASE_URI}/corba/archive/jdk${MY_PV}.tar.bz2 -> ${PN}-corba-${PV}.tar.bz2
+		${BASE_URI}/hotspot/archive/jdk${MY_PV}.tar.bz2 -> ${PN}-hotspot-${PV}.tar.bz2
+		${BASE_URI}/jaxp/archive/jdk${MY_PV}.tar.bz2 -> ${PN}-jaxp-${PV}.tar.bz2
+		${BASE_URI}/jaxws/archive/jdk${MY_PV}.tar.bz2 -> ${PN}-jaxws-${PV}.tar.bz2
+		${BASE_URI}/jdk/archive/jdk${MY_PV}.tar.bz2 -> ${PN}-jdk-${PV}.tar.bz2
+		${BASE_URI}/langtools/archive/jdk${MY_PV}.tar.bz2 -> ${PN}-langtools-${PV}.tar.bz2
+		${BASE_URI}/nashorn/archive/jdk${MY_PV}.tar.bz2 -> ${PN}-nashorn-${PV}.tar.bz2
+	)
+	arm64? (
+		${AARCH64_URI}/archive/${MY_P_AARCH64}.tar.bz2 -> ${MY_PN_AARCH64}-${PV}.tar.bz2
+		${AARCH64_URI}/corba/archive/${MY_P_AARCH64}.tar.bz2 -> ${MY_PN_AARCH64}-corba-${PV}.tar.bz2
+		${AARCH64_URI}/hotspot/archive/${MY_P_AARCH64}.tar.bz2 -> ${MY_PN_AARCH64}-hotspot-${PV}.tar.bz2
+		${AARCH64_URI}/jaxp/archive/${MY_P_AARCH64}.tar.bz2 -> ${MY_PN_AARCH64}-jaxp-${PV}.tar.bz2
+		${AARCH64_URI}/jaxws/archive/${MY_P_AARCH64}.tar.bz2 -> ${MY_PN_AARCH64}-jaxws-${PV}.tar.bz2
+		${AARCH64_URI}/jdk/archive/${MY_P_AARCH64}.tar.bz2 -> ${MY_PN_AARCH64}-jdk-${PV}.tar.bz2
+		${AARCH64_URI}/langtools/archive/${MY_P_AARCH64}.tar.bz2 -> ${MY_PN_AARCH64}-langtools-${PV}.tar.bz2
+		${AARCH64_URI}/nashorn/archive/${MY_P_AARCH64}.tar.bz2 -> ${MY_PN_AARCH64}-nashorn-jdk${PV}.tar.bz2
+	)
 "
 
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1)"
-KEYWORDS="amd64 ppc64 x86"
+KEYWORDS="amd64 ~arm64 ppc64 x86"
 IUSE="alsa debug cups doc examples headless-awt +jbootstrap +pch selinux source"
 
 COMMON_DEPEND="
@@ -73,8 +89,6 @@ DEPEND="
 	)
 "
 
-S="${WORKDIR}/jdk${SLOT}u-jdk${MY_PV}"
-
 # The space required to build varies wildly depending on USE flags,
 # ranging from 2GB to 16GB. This function is certainly not exact but
 # should be close enough to be useful.
@@ -106,16 +120,23 @@ pkg_setup() {
 	java-pkg-2_pkg_setup
 }
 
+src_unpack() {
+	default
+	mv -v "jdk${SLOT}u"* "${S}" || die
+}
+
 src_prepare() {
 	default
-	chmod +x configure || die
 	local repo
 	for repo in corba hotspot jdk jaxp jaxws langtools nashorn; do
-		ln -s ../"${repo}-jdk${MY_PV}" "${repo}" || die
+		mv -v ../"${repo}-"* "${repo}" || die
 	done
+
 	# new warnings in new gcc https://bugs.gentoo.org/685426
 	sed -i '/^WARNINGS_ARE_ERRORS/ s/-Werror/-Wno-error/' \
 		hotspot/make/linux/makefiles/gcc.make || die
+
+	chmod +x configure || die
 }
 
 src_configure() {
@@ -127,6 +148,8 @@ src_configure() {
 
 	# Work around -fno-common ( GCC10 default ), bug #706638
 	append-flags -fcommon
+
+	tc-export_build_env CC CXX PKG_CONFIG STRIP
 
 	local myconf=(
 			--disable-ccache
@@ -162,6 +185,7 @@ src_configure() {
 		unset _JAVA_OPTIONS JAVA JAVA_TOOL_OPTIONS JAVAC XARGS
 		CFLAGS= CXXFLAGS= LDFLAGS= \
 		CONFIG_SITE=/dev/null \
+		CONFIG_SHELL="${EPREFIX}/bin/bash"
 		econf "${myconf[@]}"
 	)
 }
