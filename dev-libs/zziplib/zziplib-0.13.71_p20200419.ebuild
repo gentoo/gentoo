@@ -16,11 +16,8 @@ LICENSE="|| ( LGPL-2.1 MPL-1.1 )"
 SLOT="0/13"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="sdl static-libs test"
-# Tests fail for now, only recently added.
-# Restricted to avoid blocking stabilisations.
-# https://github.com/gdraheim/zziplib/issues/97
-RESTRICT="test"
-#RESTRICT="!test? ( test )"
+
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	${PYTHON_DEPS}
@@ -37,6 +34,7 @@ S="${WORKDIR}/${PN}-${MY_COMMIT}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.13.69-009-perror.patch
 	"${FILESDIR}"/${PN}-0.13.71-installing-man3-pages.patch
+	"${FILESDIR}"/${PN}-0.13.71-CTest.patch
 )
 
 pkg_setup() {
@@ -44,15 +42,22 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -e "/^topsrcdir/s:..\/..::" \
-		-e "/^bindir/s:\.\.:${WORKDIR}/${P}_build:" \
-		-e 's:\(..\/\)\+{exe}:{exe}:' \
+	# Disable six failing tests to avoid blocking stabilisations.
+	# https://github.com/gdraheim/zziplib/issues/97
+	sed -e "/def\ test_59750/,/self.rm_testdir/d" \
+		-e "/def\ test_59800/,/self.rm_testdir/d" \
+		-e "/def\ test_65430/,/self.rm_testdir/d" \
+		-e "/def\ test_65440/,/self.rm_testdir/d" \
+		-e "/def\ test_65470/,/self.rm_testdir/d" \
+		-e "/def\ test_65480/,/self.rm_testdir/d" \
 		-i test/zziptests.py || die
+
 	cmake_src_prepare
 }
 
 src_configure() {
-	append-flags -fno-strict-aliasing # bug reported upstream
+	# https://github.com/gdraheim/zziplib/commit/f3bfc0dd6663b7df272cc0cf17f48838ad724a2f#diff-b7b1e314614cf326c6e2b6eba1540682R100
+	append-flags -fno-strict-aliasing
 
 	local mycmakeargs=(
 		-DZZIPSDL="$(usex sdl)"
@@ -64,9 +69,4 @@ src_configure() {
 	)
 
 	cmake_src_configure
-}
-
-src_test() {
-	cd "$S"/test/ || die
-	"${EPYTHON}" "$S"/test/zziptests.py || die "Tests failed with ${EPYTHON}"
 }
