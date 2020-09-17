@@ -6434,7 +6434,7 @@ dev-perl/Encode-Detect 1.10.0-r1 1.10.0-r2: An Encode::Encoding subclass that de
 dev-perl/Encode-EUCJPASCII 0.30.0 0.30.0-r1: An eucJP-open mapping
 dev-perl/Encode-HanConvert 0.350.0-r1 0.350.0-r2: Traditional and Simplified Chinese mappings
 dev-perl/Encode-HanExtra 0.230.0-r2 0.230.0-r3: Extra sets of Chinese encodings
-dev-perl/Encode-IMAPUTF7 1.50.0-r1 1.50.0-r2: Modification of UTF-7 encoding for IMAP
+dev-perl/Encode-IMAPUTF7 1.50.0-r2: Modification of UTF-7 encoding for IMAP
 dev-perl/Encode-JIS2K 0.30.0 0.30.0-r1: JIS X 0212 (aka JIS 2000) Encodings
 dev-perl/Encode-Locale 1.50.0: Determine the locale encoding
 dev-perl/Encode-compat 0.70.0-r2 0.70.0-r3: Encode.pm emulation layer
@@ -6444,7 +6444,7 @@ dev-perl/Eval-LineNumbers 0.340.0 0.340.0-r1: Add line numbers to hereis blocks 
 dev-perl/Event 1.260.0 1.270.0: Fast, generic event loop
 dev-perl/Event-ExecFlow 0.640.0-r1 0.640.0-r2: High level API for event-based execution flow control
 dev-perl/Event-RPC 1.100.0 1.100.0-r1: Event based transparent Client/Server RPC framework
-dev-perl/Exception-Base 0.250.100 0.250.100-r1: Error handling with exception class
+dev-perl/Exception-Base 0.250.100-r1: Error handling with exception class
 dev-perl/Exception-Class 1.430.0 1.440.0: A module that allows you to declare real exception classes in Perl
 dev-perl/Exception-Died 0.60.0-r2: Convert simple die into real exception object
 dev-perl/Exception-System 0.110.0-r1 0.110.0-r2: Exception class for system or library calls
@@ -8704,7 +8704,7 @@ dev-python/pychroot 0.10.1 9999: a python library and cli tool that simplify chr
 dev-python/pyclipper 1.2.0: Cython wrapper for the C++ translation of the Angus Johnson's Clipper library
 dev-python/pycodestyle 2.6.0: Python style guide checker (fka pep8)
 dev-python/pycollada 0.7.1: Python library for reading and writing COLLADA documents
-dev-python/pycountry 19.8.18: Database of countries, subdivisions, languages, currencies and script
+dev-python/pycountry 19.8.18 20.7.3: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.20: C parser and AST generator written in Python
 dev-python/pycryptodome 3.9.8: A self-contained cryptographic library for Python
 dev-python/pycryptodomex 3.9.8: A self-contained cryptographic library for Python
@@ -10789,7 +10789,7 @@ dev-util/hxd 0.70.02-r2: Binary to hexadecimal converter
 dev-util/hxtools 20180301 20190428: A collection of tools and scripts
 dev-util/icemon 3.1.0: Monitor program for use with Icecream compile clusters based on KDE Frameworks
 dev-util/icmake 9.02.09 9.03.01: Hybrid between a make utility and a shell scripting language
-dev-util/idea-community 2020.2.1.202.6948.69: A complete toolset for web, mobile and enterprise development
+dev-util/idea-community 2020.2.1.202.6948.69 2020.2.2.202.7319.50: A complete toolset for web, mobile and enterprise development
 dev-util/ignition-cmake 0.2.0 0.4.0 2.2.0: CMake modules to be used by the Ignition projects.
 dev-util/imediff2 1.1.2-r5 1.1.2-r6: An interactive, user friendly 2-way merge tool in text mode
 dev-util/include-what-you-use 10.0: Find unused include directives in C/C++ programs
