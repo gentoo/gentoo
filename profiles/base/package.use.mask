@@ -39,10 +39,6 @@ sci-geosciences/qgis grass
 # CMake checks will only allow on amd64 & x86
 dev-db/mariadb columnstore
 
-# Michał Górny <mgorny@gentoo.org> (2020-08-16)
-# dev-python/pyminuit is being removed.
-sci-visualization/veusz minuit
-
 # Michał Górny <mgorny@gentoo.org> (2020-08-01)
 # Require dev-python/twisted with py2.7.
 net-voip/telepathy-haze test
