@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit bash-completion-r1 distutils-r1
@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-python/cloudpickle[${PYTHON_USEDEP}]
@@ -22,7 +22,6 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="
 	test? (
-		${RDEPEND}
 		$(python_gen_impl_dep sqlite)
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pyflakes[${PYTHON_USEDEP}]
@@ -32,11 +31,6 @@ PDEPEND=">=dev-python/doit-py-0.4.0[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
 distutils_enable_sphinx doc dev-python/sphinx_rtd_theme
-
-PATCHES=(
-	"${FILESDIR}/${P}_pytest5.4.patch"
-	"${FILESDIR}/${P}_unpickable.patch"
-)
 
 src_prepare() {
 	default
