@@ -30,7 +30,7 @@ RUBY_S="rails-${PV}/${PN}"
 ruby_add_rdepend "~dev-ruby/activesupport-${PV}
 	~dev-ruby/activemodel-${PV}
 	sqlite? ( >=dev-ruby/sqlite3-1.4 )
-	mysql? ( || ( dev-ruby/mysql2:0.5 >=dev-ruby/mysql2-0.4.4:0.4 ) )
+	mysql? ( dev-ruby/mysql2:0.5 )
 	postgres? ( || ( dev-ruby/pg:1 >=dev-ruby/pg-0.18.0:0 ) )"
 
 ruby_add_bdepend "
