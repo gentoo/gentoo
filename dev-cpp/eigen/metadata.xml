@@ -21,6 +21,6 @@
 		<flag name="cuda">Build with cuda support</flag>
 	</use>
 	<upstream>
-		<remote-id type="bitbucket">libeigen/eigen</remote-id>
+		<remote-id type="gitlab">libeigen/eigen</remote-id>
 	</upstream>
 </pkgmetadata>
