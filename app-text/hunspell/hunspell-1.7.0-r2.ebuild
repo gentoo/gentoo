@@ -2,16 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+LANGS="af bg ca cs cy da de de-1901 el en eo es et fo fr ga gl he hr hu ia id is
+it kk km ku lt lv mi mk ms nb nl nn pl pt pt-BR ro ru sk sl sq sv sw tn uk zu"
 inherit autotools flag-o-matic
 
-MY_P="${PN}-${PV/_beta/b}"
-
-DESCRIPTION="Hunspell spell checker - an improved replacement for myspell in OOo"
+DESCRIPTION="Spell checker, morphological analyzer library and command-line tool"
+HOMEPAGE="https://hunspell.github.io/"
 SRC_URI="https://github.com/hunspell/hunspell/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-HOMEPAGE="https://github.com/hunspell"
 
-SLOT="0/$(ver_cut 1-2)"
 LICENSE="MPL-1.1 GPL-2 LGPL-2.1"
+SLOT="0/$(ver_cut 1-2)"
 IUSE="ncurses nls readline static-libs"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 
@@ -19,13 +20,8 @@ RDEPEND="
 	ncurses? ( sys-libs/ncurses:0= )
 	readline? ( sys-libs/readline:= )
 "
-DEPEND="${RDEPEND}
-	sys-devel/gettext
-"
-
-LANGS="af bg ca cs cy da de de-1901 el en eo es et fo fr ga gl he hr hu ia id
-is it kk km ku lt lv mi mk ms nb nl nn pl pt pt-BR ro ru sk sl sq sv sw tn uk
-zu"
+DEPEND="${RDEPEND}"
+BDEPEND="sys-devel/gettext"
 
 PDEPEND=""
 for lang in ${LANGS}; do
@@ -39,12 +35,7 @@ for lang in ${LANGS}; do
 done
 unset dict lang LANGS
 
-S="${WORKDIR}/${MY_P}"
-
-DOCS=(
-	AUTHORS ChangeLog NEWS THANKS license.hunspell
-	license.myspell README.md
-)
+DOCS=( AUTHORS ChangeLog NEWS THANKS license.{hunspell,myspell} README.md )
 
 PATCHES=(
 	# Upstream package creates some executables which names are too generic
