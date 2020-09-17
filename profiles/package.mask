@@ -32,6 +32,28 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2020-09-17)
+# Mask old unmaintained or obsolete ruby packages for removal in 30
+# days.
+# No longer maintained upstream, ruby27 issues, no deps
+dev-ruby/bluecloth
+# No longer maintained upstream, no deps
+dev-ruby/calendar_date_select
+# Obsolete, no deps
+dev-ruby/capistrano-stats
+# No longer maintained, git snapshot from 2013, no deps
+dev-ruby/expression_parser
+# No longer needed, no deps
+dev-ruby/hoe-seattlerb
+# No longer maintained upstream, ruby27 issues, no deps
+dev-ruby/inifile
+# Obsolete (merged into rails 4)
+dev-ruby/journey
+# No longer maintained, ruby27 issues, no deps
+dev-ruby/rgen
+# No longer maintained, no deps
+dev-ruby/ruby_dep
+
 # Sam James <sam@gentoo.org> (2020-09-16)
 # Stuck on EAPI 4, only source is mirror://gentoo,
 # unmaintained, HOMEPAGE gone.
