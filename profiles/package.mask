@@ -628,11 +628,6 @@ dev-ada/gps
 dev-haskell/frown
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-16)
-# Unmaintained.  Not ported to py3.7.  Not bumped for over a year.
-# Removal in 30 days.  Bug #737400.
-media-video/photofilmstrip
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-16)
 # Unmaintained.  Broken with py3.7.  Upstream archived the repository.
 # No reverse dependencies left.
 # Removal in 30 days.  Bug #719554.
