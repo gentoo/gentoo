@@ -1,1 +1,0 @@
-PRELINK_PATH_MASK="/usr/lib{,64}/tls/libnvidia-tls*:/usr/lib{,64}/libnvidia*:/usr/lib{,64}/libGL*:/usr/lib{,64}/opengl/nvidia/*:/usr/lib{,64}/OpenCL/vendors/nvidia/*:/usr/lib{,64}/xorg/modules/drivers/nvidia*:/usr/lib{,64}/libvdpau_nvidia*:/usr/lib{,64}/libXvMCNVIDIA*:/usr/lib{,64}/libcuda*:/usr/lib{,64}/libnvcuvid*"
