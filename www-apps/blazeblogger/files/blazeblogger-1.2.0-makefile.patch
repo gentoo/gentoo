@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -84,8 +84,6 @@
+ 	$(INSTALL) -m 644 TODO $(docsdir)
+ 	$(INSTALL) -m 644 README $(docsdir)
+ 	$(INSTALL) -m 644 AUTHORS $(docsdir)
+-	$(INSTALL) -m 644 COPYING $(docsdir)
+-	$(INSTALL) -m 644 INSTALL $(docsdir)
+ 	-$(INSTALL) -m 644 ChangeLog $(docsdir)
+ 
+ install_man: $(MAN1)
