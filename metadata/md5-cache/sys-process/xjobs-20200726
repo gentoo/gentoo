@@ -5,9 +5,9 @@ DESCRIPTION=Reads commands line by line and executes them in parallel
 EAPI=7
 HOMEPAGE=https://www.maier-komor.de/xjobs.html
 IUSE=examples
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=https://www.maier-komor.de/xjobs/xjobs-20200726.tgz
-_md5_=46a1028a1a6df273118d48f07ab57dd8
+_md5_=c7b95caf39c8c4d606380258bf37d933

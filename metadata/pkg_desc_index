@@ -6528,8 +6528,8 @@ dev-perl/Finance-Quote 1.470.0 1.490.0: Get stock and mutual fund quotes from va
 dev-perl/Finance-YahooQuote 0.250.0-r1 0.260.0: Get stock quotes from Yahoo! Finance
 dev-perl/Font-AFM 1.200.0-r1 1.200.0-r2 1.200.0-r3: Parse Adobe Font Metric files
 dev-perl/Font-TTF 1.60.0 1.60.0-r1: module for compiling and altering fonts
-dev-perl/Format-Human-Bytes 0.60.0-r1: Format a bytecount and make it human readable
-dev-perl/FreezeThaw 0.500.100-r1: converting Perl structures to strings and back
+dev-perl/Format-Human-Bytes 0.60.0-r1 0.60.0-r2: Format a bytecount and make it human readable
+dev-perl/FreezeThaw 0.500.100-r1 0.500.100-r2: converting Perl structures to strings and back
 dev-perl/Fuse 0.16.1 0.16.1-r1: Fuse module for perl
 dev-perl/GD 2.560.0-r1 2.560.0-r2 2.660.0: Interface to Thomas Boutell's gd library
 dev-perl/GD-Barcode 1.150.0-r1: GD::Barcode - Create barcode image with GD
@@ -7839,8 +7839,8 @@ dev-php/tcpdf 6.2.25 6.2.26: TCPDF is a FLOSS PHP class for generating PDF docum
 dev-php/theseer-tokenizer 1.1.0 1.1.3: Convert tokenized PHP source code into XML and other formats
 dev-php/twig 1.40.1-r1 1.42.3 1.42.3-r1: PHP templating engine with syntax similar to Django
 dev-php/webmozart-assert 1.2.0 1.4.0: Assertions to validate method input/output with nice error messages
-dev-php/xdebug 2.9.4 2.9.5 2.9.6: A PHP debugging and profiling extension
-dev-php/xdebug-client 2.9.4 2.9.5 2.9.6: Xdebug client for the Common Debugger Protocol (DBGP)
+dev-php/xdebug 2.9.4 2.9.5 2.9.6 2.9.7: A PHP debugging and profiling extension
+dev-php/xdebug-client 2.9.4 2.9.5 2.9.6 2.9.7: Xdebug client for the Common Debugger Protocol (DBGP)
 dev-php/xdebug-handler 1.3.0 1.3.1 1.4.1 1.4.3: Restart a CLI process without loading the xdebug extension
 dev-php/xhprof 0.9.10 2.1.4: A Hierarchical Profiler for PHP
 dev-python/3to2 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x syntax
@@ -8097,6 +8097,7 @@ dev-python/django-js-asset 1.2.2: script tag with additional attributes for djan
 dev-python/django-mptt 0.11.0: utilities for modified preorder tree traversal and trees of model instances
 dev-python/django-otp 1.0.0: Django framework adding two-factor authentication using one-time passwords
 dev-python/django-pglocks 1.0.4: PostgreSQL locking context managers and functions for Django
+dev-python/django-picklefield 3.0.1: Pickled object field for Django.
 dev-python/django-prometheus 2.0.0: Library to export django metrics for prometheus
 dev-python/django-redis 4.10.0: Full featured redis cache backend for Django.
 dev-python/django-rq 2.3.2: An app that provides django integration for RQ (Redis Queue)
@@ -14717,7 +14718,7 @@ net-im/purple-events 0.99.1: Allows a fine-grained control over libpurple events
 net-im/qtox 1.16.3-r1 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/ricochet 1.1.4 9999: Privacy-focused instant messaging through Tor hidden services
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
-net-im/signal-desktop-bin 1.35.1: Allows you to send and receive messages of Signal Messenger on your computer
+net-im/signal-desktop-bin 1.36.1: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.64.0.81: Instant messaging client, with support for audio and video
 net-im/slack 4.3.2-r2 4.4.2 4.4.3: Team collaboration tool
@@ -17656,7 +17657,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p201909
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.225_p198 4.4.231_p202 4.9.227_p146 4.9.232_p150 4.14.184_p84 4.14.192_p91 4.19.127_p54 4.19.135_p60 5.4.44_p27 5.4.54_p33 5.6.17_p10 5.6.19_p11: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.60 5.4.61 5.4.62 5.4.63 5.4.64 5.4.65 5.7.17 5.7.18 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6 5.8.7 5.8.8 5.8.9: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 4.4.236 4.9.236 4.14.198 4.19.145 5.4.65 5.7.18 5.8.9: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 4.4.236 4.9.236 4.14.198 4.19.146 5.4.66 5.7.18 5.8.10: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15 5.8.7: The Zen Kernel Live Sources
@@ -17832,7 +17833,7 @@ sys-process/unixtop 3.8_beta1-r3: top for UNIX systems
 sys-process/usbtop 0.2 1.0: utility that shows an estimated instantaneous bandwidth on USB buses and devices
 sys-process/wait_on_pid 0.0.2-r1: small utility to wait for an arbitrary process to exit
 sys-process/watchpid 0.1-r2: Watches a process for termination
-sys-process/xjobs 20190725 20200726: Reads commands line by line and executes them in parallel
+sys-process/xjobs 20200726: Reads commands line by line and executes them in parallel
 virtual/acl 0 0-r1 0-r2: Virtual for acl support (sys/acl.h)
 virtual/awk 1: Virtual for awk implementation
 virtual/bitcoin-leveldb 0-r2: Virtual for LevelDB versions known to be compatible with Bitcoin Core 0.9+

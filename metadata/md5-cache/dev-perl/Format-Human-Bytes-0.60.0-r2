@@ -1,0 +1,15 @@
+BDEPEND=>=virtual/perl-ExtUtils-MakeMaker-6.420.0 test? ( virtual/perl-Test-Simple ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=Format a bytecount and make it human readable
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/Format-Human-Bytes
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/S/SE/SEWI/Format-Human-Bytes-0.06.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=5f8a592896be797551753d55cf303d3d
