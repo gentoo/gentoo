@@ -12362,7 +12362,7 @@ kde-misc/ultimate-gmail-feed 2.1: Plasma 5 widget showing your Gmail feed
 kde-misc/wacomtablet 3.2.0: System settings module for Wacom tablets
 kde-misc/zanshin 0.5.71-r1 0.5.71-r2: Getting things done application by KDE
 kde-plasma/bluedevil 5.18.5 5.19.5: Bluetooth stack for KDE Plasma
-kde-plasma/breeze 5.18.5 5.19.5: Breeze visual style for the Plasma desktop
+kde-plasma/breeze 5.18.5 5.19.5-r1: Breeze visual style for the Plasma desktop
 kde-plasma/breeze-grub 5.18.5 5.19.5: Breeze theme for GRUB
 kde-plasma/breeze-gtk 5.18.5 5.19.5: Official GTK+ port of Plasma's Breeze widget style
 kde-plasma/breeze-plymouth 5.18.5 5.19.5: Breeze theme for Plymouth
@@ -17201,7 +17201,7 @@ sys-auth/pam_ssh 2.3: Uses ssh-agent to provide single sign-on
 sys-auth/pam_ssh_agent_auth 0.10.3 9999: Simple module to authenticate users against their ssh-agent keys
 sys-auth/pam_u2f 1.0.8: Library for authenticating against PAM with a Yubikey
 sys-auth/pam_yubico 2.26: Library for authenticating against PAM with a Yubikey
-sys-auth/pambase 20200304 20200817: PAM base configuration files
+sys-auth/pambase 20200304 20200817 20200917: PAM base configuration files
 sys-auth/passwdqc 1.3.0 1.4.0-r1: Password strength checking library (and PAM module)
 sys-auth/polkit 0.115-r4 0.116-r1 0.117 0.118: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
