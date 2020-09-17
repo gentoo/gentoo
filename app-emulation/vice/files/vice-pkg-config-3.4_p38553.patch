@@ -1,9 +1,9 @@
 https://sourceforge.net/p/vice-emu/patches/218/
 
-Index: configure.proto
+Index: configure.ac
 ===================================================================
---- a/configure.proto	(revision 37525)
-+++ b/configure.proto	(working copy)
+--- a/configure.ac	(revision 38502)
++++ b/configure.ac	(working copy)
 @@ -1275,6 +1275,14 @@
    fi
  

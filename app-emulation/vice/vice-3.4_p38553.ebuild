@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools multibuild
+inherit autotools multibuild xdg
 
 MY_P="vice-emu-code-r${PV##*_p}-trunk-vice"
 
@@ -32,7 +32,9 @@ RDEPEND="
 	gtk? (
 		dev-libs/glib:2
 		media-libs/fontconfig:1.0
+		x11-libs/cairo
 		x11-libs/gtk+:3
+		x11-libs/pango
 		opengl? (
 			media-libs/glew:0=
 			virtual/opengl
@@ -75,7 +77,7 @@ S="${WORKDIR}/${MY_P}"
 ECONF_SOURCE="${S}"
 
 PATCHES=(
-	"${FILESDIR}"/vice-pkg-config.patch
+	"${FILESDIR}"/vice-pkg-config-${PV}.patch
 )
 
 src_prepare() {
@@ -83,8 +85,6 @@ src_prepare() {
 
 	# Delete some bundled libraries.
 	rm -r src/lib/lib{ffmpeg,lame,x264} || die
-
-	sed "s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/g" < configure.proto > configure.ac || die
 
 	local DIR
 	for DIR in src/resid src/resid-dtv .; do
@@ -118,9 +118,6 @@ multibuild_enable() {
 multibuild_src_configure() {
 	# Some dependencies lack configure options so prevent them becoming
 	# automagic by using configure cache variables.
-	use flac || export ac_cv_header_FLAC_stream_decoder_h=no
-	use mpg123 || export ac_cv_header_mpg123_h=no
-	use ogg || export ac_cv_header_vorbis_vorbisfile_h=no
 	use pci || export ac_cv_header_pci_pci_h=no
 
 	# Ensure we use giflib, not ungif.
@@ -135,31 +132,35 @@ multibuild_src_configure() {
 
 	econf \
 		--program-transform-name="${xform}" \
+		--disable-arch \
+		$(use_enable debug) \
+		$(use_enable debug debug-gtk3ui) \
+		$(use_enable ffmpeg external-ffmpeg) \
+		$(multibuild_enable headless headlessui) \
+		--enable-html-docs \
+		$(use_enable ethernet) \
+		$(use_enable opengl hwscale) \
+		$(use_enable ipv6) \
+		$(use_enable lame) \
+		$(use_enable parport libieee1284) \
+		$(multibuild_enable gtk native-gtk3ui) \
+		$(use_enable doc pdf-docs) \
+		$(use_enable portaudio) \
 		--disable-sdlui \
 		$(multibuild_enable sdl sdlui2) \
-		$(multibuild_enable gtk native-gtk3ui) \
-		$(use_enable debug debug-gtk3ui) \
-		$(multibuild_enable headless headlessui) \
-		$(use_enable opengl hwscale) \
 		--disable-shared-ffmpeg \
 		--disable-static-ffmpeg \
-		$(use_enable ffmpeg external-ffmpeg) \
-		$(use_enable ethernet) \
-		$(use_enable ipv6) \
-		$(use_enable parport libieee1284) \
-		$(use_enable portaudio) \
-		$(use_enable lame) \
-		$(use_enable debug) \
-		--disable-arch \
-		$(use_enable doc pdf-docs) \
-		--enable-html-docs \
-		$(use_with pulseaudio pulse) \
+		$(multibuild_enable gtk desktop-files) \
 		$(use_with alsa) \
-		$(use_with oss) \
-		$(use_with jpeg) \
-		$(use_with png) \
 		$(use_with gif) \
-		$(use_with zlib)
+		$(use_with jpeg) \
+		$(use_with oss) \
+		$(use_with png) \
+		$(use_with pulseaudio pulse) \
+		$(use_with zlib) \
+		$(use_with mpg123) \
+		$(use_with ogg vorbis) \
+		$(use_with flac)
 }
 
 src_compile() {
@@ -167,7 +168,13 @@ src_compile() {
 }
 
 src_install() {
-	multibuild_foreach_variant run_in_build_dir default
+	# Get xdg-desktop-menu to play nicely while doing the install.
+	dodir /etc/xdg/menus /usr/share/{applications,desktop-directories}
+	XDG_UTILS_INSTALL_MODE=system \
+	XDG_DATA_DIRS="${ED}"/usr/share \
+	XDG_CONFIG_DIRS="${ED}"/etc/xdg \
+		multibuild_foreach_variant run_in_build_dir default
+	rm -f "${ED}"/usr/share/applications/*.cache || die
 	dodoc FEEDBACK
 
 	# Delete the bundled fonts. These could be packaged separately but
