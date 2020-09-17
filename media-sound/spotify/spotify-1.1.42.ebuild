@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 IUSE="libnotify libressl systray pax_kernel pulseaudio"
 RESTRICT="mirror strip"
 
-BDEPEND=">=dev-util/patchelf-0.10"
+BDEPEND="dev-util/patchelf"
 RDEPEND="
 	dev-libs/nss
 	dev-python/dbus-python
