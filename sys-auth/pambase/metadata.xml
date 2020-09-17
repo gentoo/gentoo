@@ -39,6 +39,12 @@
 			or providing example passwords when changing your system password.
 			It is used by default by OpenWall GNU/*/Linux and by FreeBSD.
 		</flag>
+		<flag name="pwhistory">
+			Enable pam_pwhistory module on system auth stack to save
+			the last passwords for each user in order to force password
+			change history and keep the user from alternating between
+			the same password too frequently.
+		</flag>
 		<flag name="pwquality">
 			Enable pam_pwquality module on system auth stack for passwd
 			quality validation. It is used be dafault by Fedora GNU/*/Linux.
@@ -78,11 +84,10 @@
 		</flag>
 		<flag name="minimal">
 			Disables the standard PAM modules that provide extra information
-			to users on login; this includes pam_tally (and pam_tally2 for
-			Linux PAM 1.1 and later), pam_lastlog, pam_motd and other
-			similar modules. This might not be a good idea on a multi-user
-			system but could reduce slightly the overhead on single-user
-			non-networked systems.
+			to users on login; this includes pam_lastlog, pam_motd, pam_mail
+			and other similar modules. This might not be a good idea on 
+			a multi-user system but could reduce slightly the overhead on
+			single-user non-networked systems.
 		</flag>
 		<flag name="nullok">
 			Enable the nullok option with the pam_unix module. This allows
