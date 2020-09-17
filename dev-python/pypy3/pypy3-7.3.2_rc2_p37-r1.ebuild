@@ -162,7 +162,9 @@ src_install() {
 	fi
 
 	local -x EPYTHON=pypy3
-	local -x PYTHON=${ED}${dest}/pypy3-c
+	local -x PYTHON=${ED}${dest}/pypy3-c-${PYPY_PV}
+	# temporarily copy to build tree to facilitate module builds
+	cp -p "${BROOT}${dest}/pypy3-c-${PYPY_PV}" "${PYTHON}" || die
 
 	echo "EPYTHON='${EPYTHON}'" > epython.py || die
 	python_moduleinto /usr/lib/pypy3.7/site-packages
@@ -170,4 +172,7 @@ src_install() {
 
 	einfo "Byte-compiling Python standard library..."
 	python_optimize "${ED}${dest}"
+
+	# remove to avoid collisions
+	rm "${PYTHON}" || die
 }
