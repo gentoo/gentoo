@@ -32,7 +32,7 @@ BDEPEND="dev-qt/linguist-tools:5"
 
 DOCS=( AUTHORS ChangeLog README TODO TRANSLATORS )
 
-PATCHES=( "${FILESDIR}"/${PN}-0.6.3-Makefile.patch )
+PATCHES=( "${FILESDIR}"/${P}-Makefile.patch )
 
 src_prepare() {
 	default
