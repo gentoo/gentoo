@@ -53,6 +53,5 @@ src_compile() {
 src_install() {
 	default
 
-	gunzip "${D}/usr/share/man/man1/qjackctl.fr.1.gz" || die
 	gunzip "${D}/usr/share/man/man1/qjackctl.1.gz" || die
 }
