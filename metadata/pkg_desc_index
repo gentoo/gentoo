@@ -8588,7 +8588,7 @@ dev-python/pandocfilters 1.4.2-r2: Utilities for writing pandoc filters in pytho
 dev-python/parameterized 0.7.4: Parameterized testing with any Python test framework
 dev-python/parametrized 0.1: Parameterized testing with any Python test framework
 dev-python/paramiko 2.7.1: SSH2 protocol library
-dev-python/parsedatetime 2.4-r1: Parse human-readable date/time strings
+dev-python/parsedatetime 2.4-r1 2.6: Parse human-readable date/time strings
 dev-python/parso 0.7.0 0.7.1 0.8.0: a python parser that supports error recovery and round-trip parsing
 dev-python/partd 1.1.0: Appendable key-value storage
 dev-python/parver 0.3: Parse and manipulate version numbers
