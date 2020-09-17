@@ -6354,11 +6354,9 @@ net-misc/bfgminer:ztex - Enable support for mining with Ztex FPGAs
 net-misc/bird:client - Build the ncurses/readline full featured CLI
 net-misc/casync:fuse - Enable fuse support
 net-misc/casync:man - Build and install man pages
-net-misc/cfengine:html - Install HTML documentation
 net-misc/cfengine:libvirt - Enable support for virtual machine management through app-emulation/libvirt
 net-misc/cfengine:masterfiles - Install the Masterfiles Policy Framework
 net-misc/cfengine:qdbm - Use dev-db/qdbm as database backend
-net-misc/cfengine:tests - Install test files
 net-misc/cfengine:tokyocabinet - Use dev-db/tokyocabinet as database backend
 net-misc/cgminer:ants1 - Enable support for Antminer S1 Bitmain
 net-misc/cgminer:ants2 - Enable support for Antminer S2 Bitmain
