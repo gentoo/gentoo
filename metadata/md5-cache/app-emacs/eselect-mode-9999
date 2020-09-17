@@ -7,5 +7,5 @@ LICENSE=GPL-2+
 PROPERTIES=live
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	cae18e9c43c86703b074d0b15dcdb9e2	git-r3	3e7ec3d6619213460c85e2aa48398441
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	848a95b01913ff6374bcb5eae09c52ba	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=56b653dc070aca53252610b5c684f5fa

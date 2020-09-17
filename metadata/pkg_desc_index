@@ -11771,7 +11771,7 @@ games-strategy/wargus 2.4.1: Warcraft II for the Stratagus game engine
 games-strategy/wargus-data 0-r1: Warcraft II data for wargus (needs DOS CD)
 games-strategy/warmux 11.04.1-r1: A free Worms clone
 games-strategy/warzone2100 3.2.3 3.3.0: 3D real-time strategy game
-games-strategy/wesnoth 1.14.11 1.14.13 1.15.3: Battle for Wesnoth - A fantasy turn-based strategy game
+games-strategy/wesnoth 1.14.13 1.14.14 1.15.4: Battle for Wesnoth - A fantasy turn-based strategy game
 games-strategy/widelands 0.20-r1 9999: A game similar to Settlers 2
 games-strategy/xbattleai 1.2.2-r2: A multi-player game of strategy and coordination
 games-util/acc 1.57: ACS script compiler for use with ZDoom and Hexen
@@ -13853,7 +13853,7 @@ media-sound/klick 0.12.2-r2: An advanced command-line based metronome for JACK
 media-sound/kmetronome 1.0.1: MIDI based metronome using ALSA sequencer
 media-sound/lame 3.100-r3: LAME Ain't an MP3 Encoder
 media-sound/lash 0.5.4-r3 0.5.4-r4: LASH Audio Session Handler
-media-sound/lilypond 2.21.4-r1 2.21.5 9999: GNU Music Typesetter
+media-sound/lilypond 2.21.4-r1 2.21.5 2.21.6 9999: GNU Music Typesetter
 media-sound/lingot 1.0.1: Accurate, easy to use, and highly configurable musical instrument tuner
 media-sound/linuxsampler 2.1.1 9999: Software audio sampler engine with professional grade features
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
