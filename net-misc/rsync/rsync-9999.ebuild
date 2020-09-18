@@ -37,7 +37,7 @@ LIB_DEPEND="acl? ( virtual/acl[static-libs(+)] )
 	system-zlib? ( sys-libs/zlib[static-libs(+)] )
 	xattr? ( kernel_linux? ( sys-apps/attr[static-libs(+)] ) )
 	xxhash? ( dev-libs/xxhash[static-libs(+)] )
-	zstd? ( app-arch/zstd[static-libs(+)] )
+	zstd? ( >=app-arch/zstd-1.4[static-libs(+)] )
 	>=dev-libs/popt-1.5[static-libs(+)]"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	iconv? ( virtual/libiconv )"
