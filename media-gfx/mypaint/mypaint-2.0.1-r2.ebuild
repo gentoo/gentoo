@@ -40,6 +40,7 @@ RDEPEND="
 	media-libs/libpng:0=
 	sys-devel/gettext
 	sys-libs/libomp
+	x11-libs/gdk-pixbuf[jpeg]
 	x11-libs/gtk+:3
 "
 DEPEND="${RDEPEND}"
