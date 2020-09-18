@@ -623,7 +623,7 @@ app-admin/rex 1.12.1 1.12.2 9999: (R)?ex, the friendly automation framework
 app-admin/rsyslog 8.2004.0 8.2006.0 8.2008.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 0.2.3-r1 1.0.0_rc3 1.0.0_rc3-r1: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
-app-admin/salt 2019.2.5-r1 3000.2-r4 3000.3 3001.1-r1: Salt is a remote execution and configuration manager
+app-admin/salt 2019.2.5-r1 3000.2-r4 3000.3 3001.1-r2: Salt is a remote execution and configuration manager
 app-admin/serf 0.8.1-r1: Service orchestration and management tool
 app-admin/setools 4.2.2 4.3.0 9999: Policy Analysis Tools for SELinux
 app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
@@ -8289,7 +8289,7 @@ dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1: A featureful, correct URL for Python
 dev-python/hypothesis 4.57.1 5.24.4 5.29.4 5.35.3: A library for property based testing
 dev-python/icalendar 4.0.6 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
-dev-python/idna 2.8 2.10: Internationalized Domain Names in Applications (IDNA)
+dev-python/idna 2.10: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0: Patch ssl.match_hostname for Unicode(idna) domains support
 dev-python/ifaddr 0.1.6: Enumerate IP addresses on the local network adapters
 dev-python/ijson 3.1_p0 3.1.1: Iterative JSON parser with a Pythonic interface
@@ -10630,15 +10630,15 @@ dev-util/bsdiff 4.3-r4: bsdiff: Binary Differencer using a suffix alg
 dev-util/btyacc 3.0-r3: Backtracking YACC - modified from Berkeley YACC
 dev-util/build 0.3.10: A massively-parallel software build system implemented on top of GNU make
 dev-util/build2 0.13.0: cross-platform toolchain for building and packaging C++ code
-dev-util/buildbot 2.7.0 2.8.0 2.8.2-r1 9999: BuildBot build automation system
-dev-util/buildbot-badges 2.8.0 2.8.2: Buildbot badges plugin produces an image in SVG or PNG format...
-dev-util/buildbot-console-view 2.7.0 2.8.0 2.8.2: Buildbot console-view plugin
-dev-util/buildbot-grid-view 2.7.0 2.8.0 2.8.2: BuildBot grid view web interface
-dev-util/buildbot-pkg 2.7.0 2.8.0 2.8.2: BuildBot common www build tools for packaging releases
-dev-util/buildbot-waterfall-view 2.7.0 2.8.0 2.8.2: Buildbot waterfall-view plugin
-dev-util/buildbot-worker 2.7.0 2.8.0 2.8.2 9999: BuildBot Worker (slave) Daemon
-dev-util/buildbot-wsgi-dashboards 2.7.0 2.8.0 2.8.2: Buildbot plugin to integrate flask or bottle dashboards to buildbot UI
-dev-util/buildbot-www 2.7.0 2.8.0 2.8.2: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
+dev-util/buildbot 2.8.2-r1 9999: BuildBot build automation system
+dev-util/buildbot-badges 2.8.2: Buildbot badges plugin produces an image in SVG or PNG format...
+dev-util/buildbot-console-view 2.8.2: Buildbot console-view plugin
+dev-util/buildbot-grid-view 2.8.2: BuildBot grid view web interface
+dev-util/buildbot-pkg 2.8.2: BuildBot common www build tools for packaging releases
+dev-util/buildbot-waterfall-view 2.8.2: Buildbot waterfall-view plugin
+dev-util/buildbot-worker 2.8.2 9999: BuildBot Worker (slave) Daemon
+dev-util/buildbot-wsgi-dashboards 2.8.2: Buildbot plugin to integrate flask or bottle dashboards to buildbot UI
+dev-util/buildbot-www 2.8.2: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
 dev-util/bustle 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20200330 20200910: the best variant of the Yacc parser generator
 dev-util/cargo-c 0.6.2: Helper program to build and install c-like libraries
