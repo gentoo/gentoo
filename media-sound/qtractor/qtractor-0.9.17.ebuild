@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/qtractor/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="aubio cpu_flags_x86_sse debug dssi libsamplerate mad osc rubberband vorbis zlib"
 
@@ -44,7 +44,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.9.13-dont-compress-manpages.patch"
+	"${FILESDIR}/${P}-dont-compress-manpages.patch"
 )
 
 src_configure() {
