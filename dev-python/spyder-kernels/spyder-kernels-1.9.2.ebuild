@@ -30,7 +30,7 @@ DEPEND="test? (
 	dev-python/mock[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/pandas[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}]
+	dev-python/scipy[${PYTHON_USEDEP}]
 	dev-python/xarray[${PYTHON_USEDEP}]
 )"
 

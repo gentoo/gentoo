@@ -18,10 +18,6 @@
 		<flag name="sendmail">Allow sudo to send emails with sendmail</flag>
 		<flag name="sssd">Add System Security Services Daemon support</flag>
 		<flag name="secure-path">Replace PATH variable with compile time secure paths</flag>
-		<flag name="system-digest">
-			Use message digest functions from <pkg>dev-libs/libgcrypt</pkg>, <pkg>dev-libs/libressl</pkg>
-			or <pkg>dev-libs/openssl</pkg> instead of sudo's internal SHA2 implementation
-		</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:todd_miller:sudo</remote-id>

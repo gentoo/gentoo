@@ -29,11 +29,11 @@ RDEPEND="
 	pandas? (
 		>=dev-python/pandas-0.23.3[${PYTHON_USEDEP}]
 	)
-	scipy? ( >=sci-libs/scipy-1.1.0[${PYTHON_USEDEP}] )
+	scipy? ( >=dev-python/scipy-1.1.0[${PYTHON_USEDEP}] )
 	xml? ( >=dev-python/lxml-4.2.3[${PYTHON_USEDEP}] )
 	yaml? ( >=dev-python/pyyaml-3.13[${PYTHON_USEDEP}] )"
 BDEPEND="
-	test? ( >=sci-libs/scipy-1.1.0[${PYTHON_USEDEP}] )"
+	test? ( >=dev-python/scipy-1.1.0[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
 

@@ -20,12 +20,12 @@ RDEPEND="
 	>=dev-python/numpy-1.15[${PYTHON_USEDEP}]
 	>=dev-python/pandas-0.23.0[${PYTHON_USEDEP}]
 	dev-python/patsy[${PYTHON_USEDEP}]
-	>=sci-libs/scipy-1.1[${PYTHON_USEDEP}]
+	>=dev-python/scipy-1.1[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.15[${PYTHON_USEDEP}]
-	>=sci-libs/scipy-1.1[${PYTHON_USEDEP}]
+	>=dev-python/scipy-1.1[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 	)

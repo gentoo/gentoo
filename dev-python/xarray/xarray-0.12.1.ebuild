@@ -25,7 +25,7 @@ DEPEND="
 	test? (
 		>=dev-python/dask-0.18.2[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
-		>=sci-libs/scipy-1.1[${PYTHON_USEDEP}]
+		>=dev-python/scipy-1.1[${PYTHON_USEDEP}]
 	)"
 
 PATCHES=(

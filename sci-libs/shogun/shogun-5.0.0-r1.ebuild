@@ -72,7 +72,7 @@ DEPEND="${RDEPEND}
 	python? (
 		>=dev-lang/swig-3.0.12
 		test? (
-			sci-libs/scipy
+			dev-python/scipy
 		)
 	)
 	R? ( >=dev-lang/swig-3.0.12 )
