@@ -3,16 +3,16 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/STEllAR-GROUP/hpx.git"
 else
-	SRC_URI="https://stellar.cct.lsu.edu/files/${PN}_${PV}.tar.gz"
+	SRC_URI="https://github.com/STEllAR-GROUP/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 fi
-inherit cmake fortran-2 python-single-r1 check-reqs multiprocessing
+inherit check-reqs cmake multiprocessing python-single-r1
 
 DESCRIPTION="C++ runtime system for parallel and distributed applications"
 HOMEPAGE="https://stellar.cct.lsu.edu/tag/hpx/"
@@ -35,7 +35,7 @@ BDEPEND="
 		$(python_gen_cond_dep '
 			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
 			dev-python/sphinx_rtd_theme[${PYTHON_MULTI_USEDEP}]
-			>=dev-python/breathe-4.14[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/breathe-4.22[${PYTHON_MULTI_USEDEP}]
 		')
 	)
 	test? ( ${PYTHON_DEPS} )
