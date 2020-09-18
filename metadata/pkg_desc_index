@@ -761,7 +761,7 @@ app-arch/zoo 2.10-r5: Manipulate archives of files in compressed form
 app-arch/zopfli 1.0.2 1.0.3: Very good, but slow, deflate or zlib compression
 app-arch/zpaq 7.15: Journaling incremental deduplicating archiving compressor
 app-arch/zpaq-extras 3: A set of additional compression profiles for app-arch/zpaq
-app-arch/zstd 1.3.7-r1 1.4.4-r3 1.4.4-r4 1.4.5: zstd fast compression library
+app-arch/zstd 1.4.4-r4 1.4.5: zstd fast compression library
 app-backup/amanda 3.3.9 3.4.1 3.4.2 3.4.3 3.4.4 3.4.5 3.5-r1 3.5.1-r1: The Advanced Maryland Automatic Network Disk Archiver
 app-backup/attic 0.16-r1 9999: Attic is a deduplicating backup program written in Python.
 app-backup/backintime 1.2.1 9999: Backup system inspired by TimeVault and FlyBack
@@ -3076,7 +3076,7 @@ app-text/xchm 1.23-r1 1.29 1.30 1.31 9999: Utility for viewing Compiled HTML Hel
 app-text/xdvik 22.87.03-r2: DVI previewer for X Window System
 app-text/xhtml1 20020801-r6: DTDs for the eXtensible HyperText Markup Language 1.0
 app-text/xhtml11 20101123: DTDs for the eXtensible HyperText Markup Language 1.0
-app-text/xiphos 4.0.6a-r2 4.2.1: A Gtk+-based Bible-study frontend for SWORD
+app-text/xiphos 4.2.1: A Gtk+-based Bible-study frontend for SWORD
 app-text/xlhtml 0.5.1_p6: Convert MS Excel and Powerpoint files to HTML
 app-text/xlsx2csv 0.7.6: Convert MS Office xlsx files to CSV
 app-text/xml2 0.5: These tools are used to convert XML and HTML to and from a line-oriented format
@@ -10640,7 +10640,7 @@ dev-util/buildbot-worker 2.7.0 2.8.0 2.8.2 9999: BuildBot Worker (slave) Daemon
 dev-util/buildbot-wsgi-dashboards 2.7.0 2.8.0 2.8.2: Buildbot plugin to integrate flask or bottle dashboards to buildbot UI
 dev-util/buildbot-www 2.7.0 2.8.0 2.8.2: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
 dev-util/bustle 0.5.4: Draw sequence diagrams of D-Bus traffic
-dev-util/byacc 20191125 20200330 20200910: the best variant of the Yacc parser generator
+dev-util/byacc 20200330 20200910: the best variant of the Yacc parser generator
 dev-util/cargo-c 0.6.2: Helper program to build and install c-like libraries
 dev-util/cargo-ebuild 0.2.0 0.3.0 0.3.1: Generates an ebuild for a package using the in-tree eclasses.
 dev-util/cargo-license 0.3.0: Cargo subcommand to see license of dependencies
@@ -14397,7 +14397,7 @@ net-analyzer/netwox 5.39.0: Toolbox of 217 utilities for testing Ethernet/IP net
 net-analyzer/nfdump 1.6.19 1.6.20 1.6.21: A set of tools to collect and process netflow data
 net-analyzer/ngrep 1.45-r3 1.47: A grep for network layers
 net-analyzer/nipper 0.12.0: Router configuration security analysis tool
-net-analyzer/nload 0.7.4 0.7.4-r1: Real time network traffic monitor for the command line interface
+net-analyzer/nload 0.7.4-r1: Real time network traffic monitor for the command line interface
 net-analyzer/nmap 7.80-r1 9999: A utility for network discovery and security auditing
 net-analyzer/nmapsi 0.5_alpha2: Qt frontend to nmap
 net-analyzer/nmbscan 1.2.5-r1: Scans the shares of a SMB/NetBIOS network
@@ -15302,7 +15302,7 @@ net-misc/redir 3.2 3.3: Redir is a port redirector
 net-misc/remmina 1.4.5 1.4.7 1.4.8: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
-net-misc/rsync 3.2.2-r1 3.2.3 9999: File transfer program to keep remote files into sync
+net-misc/rsync 3.2.3 9999: File transfer program to keep remote files into sync
 net-misc/rwbs 0.27-r2: Roger Wilco base station
 net-misc/rwhoisd 1.5.9.6: ARIN rwhois daemon
 net-misc/rygel 0.38.3 0.38.4: Rygel is an open source UPnP/DLNA MediaServer
@@ -17014,7 +17014,7 @@ sys-apps/mawk 1.3.4_p20161120 1.3.4_p20190203-r1 1.3.4_p20200106-r1: an (often f
 sys-apps/mcstrans 2.9 3.0 3.1 9999: SELinux context translation to human readable names
 sys-apps/memtest86 4.3.7-r2: A stand alone memory test for x86 computers
 sys-apps/memtest86+ 5.01-r4 5.01-r5: Memory tester based on memtest86
-sys-apps/memtester 4.3.0: userspace utility for testing the memory subsystem for faults
+sys-apps/memtester 4.3.0 4.4.0: userspace utility for testing the memory subsystem for faults
 sys-apps/miller 5.3.0: A tool like sed, awk, cut, join, and sort for name-indexed data (CSV, JSON, ..)
 sys-apps/minijail 9 12: helper binary and library for sandboxing & restricting privs of service
 sys-apps/minised 1.15: a smaller, cheaper and faster sed implementation
@@ -17095,7 +17095,7 @@ sys-apps/servicelog 1.1.14: Provides utilities for logging service-related event
 sys-apps/setserial 2.17-r5: Configure your serial ports with it
 sys-apps/sg3_utils 1.42 1.44 1.45-r1: Apps for querying the sg SCSI interface
 sys-apps/shadow 4.8-r5 4.8.1-r3: Utilities to deal with user accounts
-sys-apps/smartmontools 7.0-r1 7.1 9999: Tools to monitor storage systems to provide advanced warning of disk degradation
+sys-apps/smartmontools 7.1 9999: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/smc-sum 2.4.0.20191206: Updates the BIOS and IPMI firmware and system settings on Supermicro mainboards
 sys-apps/smc-sum-driver 1.6.0.20151201-r4: Supermicro Update Manager (SUM) kernel module
 sys-apps/smcipmitool 2.21.0.181029 2.23.0.191216: An out-of-band utility for interfacing with SuperBlade and IPMI devices via CLI
