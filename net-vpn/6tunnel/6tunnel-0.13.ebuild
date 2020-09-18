@@ -5,9 +5,12 @@ EAPI=7
 
 DESCRIPTION="TCP proxy for applications that don't speak IPv6"
 HOMEPAGE="https://github.com/wojtekka/6tunnel"
-SRC_URI="https://github.com/wojtekka/${PN}/releases/download/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/wojtekka/6tunnel/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~s390 ~x86"
-IUSE=""
+
+PATCHES=(
+	"${FILESDIR}/${P}-test.patch"
+)
