@@ -23,7 +23,7 @@ RDEPEND="
 	>=dev-python/pandas-0.22.0[${PYTHON_USEDEP}]
 	dev-python/patsy[${PYTHON_USEDEP}]
 	dev-python/statsmodels[${PYTHON_USEDEP}]
-	>=sci-libs/scipy-1.0.1[${PYTHON_USEDEP}]
+	>=dev-python/scipy-1.0.1[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	test? (

@@ -31,7 +31,7 @@ BDEPEND="
 		dev-python/numexpr[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		>=dev-python/s3fs-0.0.8[${PYTHON_USEDEP}]
-		sci-libs/scipy[${PYTHON_USEDEP}]
+		dev-python/scipy[${PYTHON_USEDEP}]
 	)
 "
 

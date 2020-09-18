@@ -28,7 +28,7 @@ BDEPEND="
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/toolz[${PYTHON_USEDEP}]
-		>=sci-libs/scipy-1.1[${PYTHON_USEDEP}]
+		>=dev-python/scipy-1.1[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_tests pytest

@@ -90,7 +90,7 @@ BDEPEND="test? (
 	dev-python/pytest-qt[${PYTHON_USEDEP}]
 	dev-python/pytest-xvfb[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}]
+	dev-python/scipy[${PYTHON_USEDEP}]
 	dev-python/sympy[${PYTHON_USEDEP}]
 )"
 
@@ -190,7 +190,7 @@ pkg_postinst() {
 		optfeature "View and edit DataFrames and Series in the Variable Explorer" dev-python/pandas
 		optfeature "View and edit two or three dimensional arrays in the Variable Explorer" dev-python/numpy
 		optfeature "Symbolic mathematics in the IPython console" dev-python/sympy
-		optfeature "Import Matlab workspace files in the Variable Explorer" sci-libs/scipy
+		optfeature "Import Matlab workspace files in the Variable Explorer" dev-python/scipy
 		optfeature "Run Cython files in the IPython console" dev-python/cython
 		optfeature "The hdf5/h5py plugin" dev-python/h5py
 		optfeature "The line profiler plugin" dev-python/spyder-line-profiler

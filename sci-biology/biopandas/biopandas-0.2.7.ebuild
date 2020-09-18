@@ -26,7 +26,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/pandas[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}]"
+	dev-python/scipy[${PYTHON_USEDEP}]"
 
 distutils_enable_tests nose
 

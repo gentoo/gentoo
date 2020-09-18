@@ -23,7 +23,7 @@ RDEPEND="
 
 DEPEND="test? (
 		dev-python/pandas[${PYTHON_USEDEP}]
-		sci-libs/scipy[${PYTHON_USEDEP}] )"
+		dev-python/scipy[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
 distutils_enable_sphinx doc dev-python/mock

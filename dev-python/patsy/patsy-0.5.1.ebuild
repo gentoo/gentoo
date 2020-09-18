@@ -18,7 +18,7 @@ IUSE="doc"
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}]
+	dev-python/scipy[${PYTHON_USEDEP}]
 	"
 BDEPEND="
 	doc? (
