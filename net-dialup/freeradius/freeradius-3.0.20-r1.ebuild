@@ -246,7 +246,6 @@ src_install() {
 			-e 's:^WatchdogSec=.*::g' -e 's:^NotifyAccess=all.*::g' \
 			"${S}"/debian/freeradius.service
 	fi
-	systemd_newtmpfilesd "${FILESDIR}"/freeradius.tmpfiles freeradius.conf
 	systemd_dounit "${S}"/debian/freeradius.service
 
 	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
