@@ -664,7 +664,7 @@ app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yadm 2.4.0: A dotfile manager for the config files in your home folder
 app-antivirus/clamav 0.102.4: Clam Anti-Virus Scanner
-app-antivirus/clamtk 6.03-r1 6.05: A graphical front-end for ClamAV
+app-antivirus/clamtk 6.05: A graphical front-end for ClamAV
 app-antivirus/fangfrisch 1.2.0-r1: Update and verify unofficial Clam Anti-Virus signatures
 app-arch/advancecomp 2.2_pre20190301: Recompress ZIP, PNG and MNG, considerably improving compression
 app-arch/afio 2.5.1-r2: Afio creates cpio-format archives.
@@ -2370,7 +2370,7 @@ app-misc/dailystrips 1.0.28-r3: dailystrips automatically downloads your favorit
 app-misc/datefudge 1.22 1.24: A program (and preload library) to fake system date
 app-misc/dateutils 0.4.6 0.4.7 9999: command line date and time utilities
 app-misc/datovka 4.15.0 4.15.1: GUI to access the Czech data box e-government system
-app-misc/ddate 0.2.2 0.2.2_p20160627: Perpetual date converter from gregorian to poee calendar
+app-misc/ddate 0.2.2_p20160627: Perpetual date converter from gregorian to poee calendar
 app-misc/ddccontrol 0.4.2_p20140105-r2 0.4.4 0.4.4_p20180123 0.4.4_p20200630: DDCControl allows control of monitor parameters via DDC
 app-misc/ddccontrol-db 20061014_p20121105 20190826 20190826_p20200613: DDCControl monitor database
 app-misc/ddcutil 0.9.1 0.9.5 0.9.9: Program for querying and changing monitor settings
@@ -2458,7 +2458,7 @@ app-misc/kanatest 0.4.8: Visual flashcard tool for memorizing the Japanese Hirag
 app-misc/khal 0.10.1-r1: A CalDAV based calendar
 app-misc/khard 0.13.0 0.17.0: Console CardDAV client
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
-app-misc/kryoflux-dtc 2.6 2.6-r1: KryoFlux Host Software
+app-misc/kryoflux-dtc 2.6-r1: KryoFlux Host Software
 app-misc/ktoblzcheck 1.49-r1 1.49-r2: Library to check account numbers and bank codes of German banks
 app-misc/lcd4linux 0.11.0_pre20170527-r5: A small program that grabs information and displays it on an external LCD
 app-misc/lcdproc 0.5.9-r1 0.5.9_p20200721: Displays real-time system information from your Linux/*BSD box on a LCD
@@ -5446,7 +5446,7 @@ dev-libs/libgpuarray 0.6.0 0.6.7: Library to manipulate tensors on the GPU
 dev-libs/libgudev 233-r1: GObject bindings for libudev
 dev-libs/libgusb 0.3.3 0.3.4 0.3.5: GObject wrapper for libusb
 dev-libs/libgweather 3.34.0 3.36.1: Location and timezone database and weather-lookup library
-dev-libs/libhid 0.2.16-r4 0.2.17: Provides a generic and flexible way to access and interact with USB HID devices
+dev-libs/libhid 0.2.17: Provides a generic and flexible way to access and interact with USB HID devices
 dev-libs/libical 3.0.8: An implementation of basic iCAL protocols
 dev-libs/libiconv 1.15: GNU charset conversion library for libc which doesn't implement it
 dev-libs/libindicate 12.10.1-r3: Library to raise flags on DBus for other components of the desktop
@@ -8505,7 +8505,7 @@ dev-python/nltk-data 20200312-r1: Data files for NLTK
 dev-python/nnpy 1.4.2: cffi-based Python bindings for nanomsg
 dev-python/node-semver 0.8.0: Python version of node-semver, the semantic versioner for npm
 dev-python/nodeenv 1.3.5: Node.js virtual environment builder
-dev-python/nose 1.3.7-r5: Unittest extension with automatic test suite discovery and easy test authoring
+dev-python/nose 1.3.7-r6: Unittest extension with automatic test suite discovery and easy test authoring
 dev-python/nose-cover3 0.1.0-r1: Coverage 3.x support for Nose
 dev-python/nose-exclude 0.5.0-r1: Exclude specific directories from nosetests runs
 dev-python/nose-parameterized 0.5.0: Parameterized testing with any Python test framework
@@ -9073,7 +9073,7 @@ dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing file
 dev-python/service_identity 18.1.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.10-r1: Allow customization of the process title
 dev-python/setuptools 46.4.0-r1 46.4.0-r2 49.6.0 50.1.0 50.2.0 50.3.0: Collection of extensions to Distutils
-dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
+dev-python/setuptools-git 1.2-r1: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 4.1.2: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.1: A setuptools_scm plugin for git archives
 dev-python/setuptools_trial 0.6.0-r1: Setuptools plugin that makes unit tests execute with trial instead of pyunit
@@ -10705,7 +10705,7 @@ dev-util/d-feet 0.3.14-r1: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 19.04.0-r1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r4: Graphical front-end for command-line debuggers
 dev-util/debhelper 9.20160814 13.1 13.2 13.2.1: Collection of programs that can be used to automate common tasks in debian/rules
-dev-util/debootstrap 1.0.115 1.0.116 1.0.117 1.0.123: Debian/Ubuntu bootstrap scripts
+dev-util/debootstrap 1.0.123: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 4.15.1: Stand-alone debugedit from RPM
 dev-util/dejagnu 1.6 1.6.2: Framework for testing other programs
 dev-util/desktop-file-utils 0.24 0.26: Command line utilities to work with desktop menu entries
@@ -13952,7 +13952,7 @@ media-sound/qsampler 0.5.6 0.6.3 9999: Graphical frontend to the LinuxSampler en
 media-sound/qsynth 0.6.2 0.6.3 9999: Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
 media-sound/qtgain 1.0.0: Simple frontend to mp3gain, vorbisgain and metaflac
-media-sound/qtractor 0.9.15 0.9.16: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
+media-sound/qtractor 0.9.16 0.9.17: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.3 1.4.4: Qt5 client for the music player daemon (MPD)
 media-sound/quodlibet 4.2.1 4.3.0: audio library tagger, manager, and player for GTK+
@@ -16909,7 +16909,7 @@ sys-apps/duc 1.4.1-r1 1.4.3-r1 9999: A library and suite of tools for inspecting
 sys-apps/earlyoom 1.3 9999: Early OOM Daemon for Linux
 sys-apps/ed 1.15-r1 1.16: Your basic line editor
 sys-apps/edac-utils 0.18: Userspace helper for Linux kernel EDAC drivers
-sys-apps/edid-decode 0_pre20200422 0_pre20200720 9999: Decode EDID data in a human-readable format
+sys-apps/edid-decode 0_pre20200720 9999: Decode EDID data in a human-readable format
 sys-apps/edid-fixdim 1: Tool to fix screen dimensions in EDID data dumps
 sys-apps/elfix 0.9.5 9999: A suite of tools to work with ELF objects on Hardened Gentoo
 sys-apps/elivepatch-client 0.1 9999: Live patch installer client working with elivepatch-server
@@ -17063,7 +17063,7 @@ sys-apps/progress 0.13 0.15: Coreutils Viewer: show progress for cp, rm, dd, and
 sys-apps/proot 5.1.0-r2: User-space implementation of chroot, mount --bind, and binfmt_misc
 sys-apps/pv 1.6.0-r1 1.6.6: Pipe Viewer: a tool for monitoring the progress of data through a pipe
 sys-apps/qcontrol 0.4.2-r1: Send commands to some microcontrollers, e.g., to change LEDs or sound a buzzer
-sys-apps/qdirstat 1.6.1 1.7: Qt-based directory statistics
+sys-apps/qdirstat 1.7: Qt-based directory statistics
 sys-apps/qingy 1.0.0-r4: A DirectFB getty replacement
 sys-apps/razercfg 0.39-r2 0.42: Utility for advanced configuration of Razer mice
 sys-apps/readahead-list 1.20060421.1016-r3: Preloads files into the page cache to accelerate program loading
@@ -18058,7 +18058,7 @@ www-apps/blohg 0.13-r4 9999: A Mercurial (or Git) based blogging engine
 www-apps/bugzilla 5.0.6: Bugzilla is the Bug-Tracking System from the Mozilla project
 www-apps/cgisysinfo 0.4.1: A small cgi utility to show basic system information
 www-apps/cgit 1.2.1 1.2.3 9999: a fast web-interface for git repositories
-www-apps/cgp 1_p20181209 1_p20190510: A graphical web-based front-end for visualizing RRD collected by collectd
+www-apps/cgp 1_p20190510: A graphical web-based front-end for visualizing RRD collected by collectd
 www-apps/chromedriver-bin 83.0.4103.39-r1 84.0.4147.30 85.0.4183.83: WebDriver for Chrome
 www-apps/cvsweb 3.0.6-r1: WWW interface to a CVS tree
 www-apps/davical 1.1.9.3: A CalDAV and CardDAV Server
