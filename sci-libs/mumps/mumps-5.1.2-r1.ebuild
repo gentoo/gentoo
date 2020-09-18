@@ -178,7 +178,7 @@ src_test() {
 	einfo "The solutions should be close to (1,2,3,4,5)"
 	${dotest} ./c_example || die
 	einfo "The solution should be close to (1,2)"
-	emake clean || die
+	emake clean
 }
 
 src_install() {
