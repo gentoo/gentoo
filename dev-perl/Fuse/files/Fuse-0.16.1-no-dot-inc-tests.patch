@@ -1,0 +1,286 @@
+From 64eb5b9e760a90a78d4a508bf916242849212b41 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Fri, 18 Sep 2020 04:26:16 +1200
+Subject: Hack around path resolution problems caused by '.' removal
+
+This avoids problems on perl 5.26+ where cwd ('.') is no longer in the
+@INC search path.
+---
+ test/chmod.t    | 3 ++-
+ test/chown.t    | 3 ++-
+ test/getattr.t  | 3 ++-
+ test/getdir.t   | 3 ++-
+ test/helper.pm  | 2 +-
+ test/link.t     | 3 ++-
+ test/mkdir.t    | 3 ++-
+ test/mknod.t    | 3 ++-
+ test/open.t     | 3 ++-
+ test/read.t     | 3 ++-
+ test/readlink.t | 3 ++-
+ test/rename.t   | 3 ++-
+ test/rmdir.t    | 3 ++-
+ test/s/mount.t  | 3 ++-
+ test/s/umount.t | 3 ++-
+ test/statfs.t   | 3 ++-
+ test/symlink.t  | 3 ++-
+ test/truncate.t | 3 ++-
+ test/unlink.t   | 3 ++-
+ test/utime.t    | 3 ++-
+ test/write.t    | 3 ++-
+ 21 files changed, 41 insertions(+), 21 deletions(-)
+
+diff --git a/test/chmod.t b/test/chmod.t
+index 1ccb3ef..26ddbf9 100644
+--- a/test/chmod.t
++++ b/test/chmod.t
+@@ -1,5 +1,6 @@
+ #!/usr/bin/perl
+-use test::helper qw($_real $_point);
++use lib './test/';
++use helper qw($_real $_point);
+ use Test::More;
+ plan tests => 4;
+ chdir($_point);
+diff --git a/test/chown.t b/test/chown.t
+index 74adb14..194f2fb 100644
+--- a/test/chown.t
++++ b/test/chown.t
+@@ -1,5 +1,6 @@
+ #!/usr/bin/perl
+-use test::helper qw($_real $_point);
++use lib './test/';
++use helper qw($_real $_point);
+ use Test::More;
+ use English;
+ plan tests => 4;
+diff --git a/test/getattr.t b/test/getattr.t
+index 5d8c85d..ba575c1 100644
+--- a/test/getattr.t
++++ b/test/getattr.t
+@@ -1,5 +1,6 @@
+ #!/usr/bin/perl
+-use test::helper qw($_real $_point);
++use lib './test/';
++use helper qw($_real $_point);
+ use Test::More;
+ use Data::Dumper;
+ plan tests => 203;
+diff --git a/test/getdir.t b/test/getdir.t
+index e6d402a..789b667 100644
+--- a/test/getdir.t
++++ b/test/getdir.t
+@@ -1,5 +1,6 @@
+ #!/usr/bin/perl
+-use test::helper qw($_real $_point);
++use lib './test/';
++use helper qw($_real $_point);
+ use Test::More;
+ my (@names) = qw(abc def ghi jkl mno pqr stu jlk sfdaljk  sdfakjlsdfa kjldsf kjl;sdf akjl;asdf klj;asdf lkjsdflkjsdfkjlsdfakjsdfakjlsadfkjl;asdfklj;asdfkjl;asdfklj;asdfkjl;asdfkjlasdflkj;sadf);
+ @names = sort(@names);
+diff --git a/test/helper.pm b/test/helper.pm
+index d44b486..f210105 100644
+--- a/test/helper.pm
++++ b/test/helper.pm
+@@ -1,6 +1,6 @@
+ #!/usr/bin/perl
+ package # avoid cpan indexing
+-	test::helper;
++	helper;
+ use strict;
+ use Exporter;
+ use Config;
+diff --git a/test/link.t b/test/link.t
+index f617c93..f301ee8 100644
+--- a/test/link.t
++++ b/test/link.t
+@@ -1,5 +1,6 @@
+ #!/usr/bin/perl
+-use test::helper qw($_real $_point);
++use lib './test/';
++use helper qw($_real $_point);
+ use Test::More;
+ plan tests => 8;
+ chdir($_point);
+diff --git a/test/mkdir.t b/test/mkdir.t
+index 90ec6f3..b622aa9 100644
+--- a/test/mkdir.t
++++ b/test/mkdir.t
+@@ -1,5 +1,6 @@
+ #!/usr/bin/perl
+-use test::helper qw($_real $_point);
++use lib './test/';
++use helper qw($_real $_point);
+ use Test::More;
+ plan tests => 3;
+ chdir($_point);
+diff --git a/test/mknod.t b/test/mknod.t
+index c35853a..7c867c6 100644
+--- a/test/mknod.t
++++ b/test/mknod.t
+@@ -1,5 +1,6 @@
+ #!/usr/bin/perl
+-use test::helper qw($_real $_point);
++use lib './test/';
++use helper qw($_real $_point);
+ use Test::More;
+ plan tests => 24;
+ use English;
+diff --git a/test/open.t b/test/open.t
+index b3afaf6..c3b79b6 100644
+--- a/test/open.t
++++ b/test/open.t
+@@ -1,5 +1,6 @@
+ #!/usr/bin/perl
+-use test::helper qw($_real $_point);
++use lib './test/';
++use helper qw($_real $_point);
+ use Test::More;
+ plan tests => 1;
+ chdir($_real);
+diff --git a/test/read.t b/test/read.t
+index b4297f3..4477ab7 100644
+--- a/test/read.t
++++ b/test/read.t
+@@ -1,5 +1,6 @@
+ #!/usr/bin/perl
+-use test::helper qw($_real $_point);
++use lib './test/';
++use helper qw($_real $_point);
+ use Test::More;
+ plan tests => 3;
+ chdir($_real);
+diff --git a/test/readlink.t b/test/readlink.t
+index 85b9ffc..14457da 100644
+--- a/test/readlink.t
++++ b/test/readlink.t
+@@ -1,5 +1,6 @@
+ #!/usr/bin/perl
+-use test::helper qw($_point $_real);
++use lib './test/';
++use helper qw($_point $_real);
+ use Test::More;
+ plan tests => 4;
+ chdir($_real);
+diff --git a/test/rename.t b/test/rename.t
+index 454da8b..6f61e56 100644
+--- a/test/rename.t
++++ b/test/rename.t
+@@ -1,5 +1,6 @@
+ #!/usr/bin/perl
+-use test::helper qw($_real $_point);
++use lib './test/';
++use helper qw($_real $_point);
+ use Test::More;
+ if ($^O eq 'openbsd') { exit(); }
+ plan tests => 5;
+diff --git a/test/rmdir.t b/test/rmdir.t
+index 36f0378..b8a5bfc 100644
+--- a/test/rmdir.t
++++ b/test/rmdir.t
+@@ -1,5 +1,6 @@
+ #!/usr/bin/perl
+-use test::helper qw($_real $_point);
++use lib './test/';
++use helper qw($_real $_point);
+ use Test::More;
+ plan tests => 5;
+ chdir($_real);
+diff --git a/test/s/mount.t b/test/s/mount.t
+index 97b47ea..0f545b7 100644
+--- a/test/s/mount.t
++++ b/test/s/mount.t
+@@ -1,5 +1,6 @@
+ #!/usr/bin/perl -w
+-use test::helper qw($_point $_loop $_opts $_real $_pidfile);
++use lib './test/';
++use helper qw($_point $_loop $_opts $_real $_pidfile);
+ use strict;
+ use Errno qw(:POSIX);
+ use Test::More tests => 3;
+diff --git a/test/s/umount.t b/test/s/umount.t
+index c77301a..d964b28 100644
+--- a/test/s/umount.t
++++ b/test/s/umount.t
+@@ -1,5 +1,6 @@
+ #!/usr/bin/perl
+-use test::helper qw($_point $_real $_pidfile);
++use lib './test/';
++use helper qw($_point $_real $_pidfile);
+ use strict;
+ use Test::More tests => 1;
+ use POSIX qw(WEXITSTATUS);
+diff --git a/test/statfs.t b/test/statfs.t
+index 52fa3ce..eaaa3f9 100644
+--- a/test/statfs.t
++++ b/test/statfs.t
+@@ -1,5 +1,6 @@
+ #!/usr/bin/perl
+-use test::helper qw($_real $_point);
++use lib './test/';
++use helper qw($_real $_point);
+ use Test::More;
+ use Config;
+ use Filesys::Statvfs;
+diff --git a/test/symlink.t b/test/symlink.t
+index 25e1934..ad99dae 100644
+--- a/test/symlink.t
++++ b/test/symlink.t
+@@ -1,5 +1,6 @@
+ #!/usr/bin/perl
+-use test::helper qw($_point $_real);
++use lib './test/';
++use helper qw($_point $_real);
+ use Test::More;
+ plan tests => 6;
+ chdir($_point);
+diff --git a/test/truncate.t b/test/truncate.t
+index 0e9ceab..1b9f693 100644
+--- a/test/truncate.t
++++ b/test/truncate.t
+@@ -1,5 +1,6 @@
+ #!/usr/bin/perl
+-use test::helper qw($_real $_point);
++use lib './test/';
++use helper qw($_real $_point);
+ use Test::More;
+ plan tests => 5;
+ chdir($_point);
+diff --git a/test/unlink.t b/test/unlink.t
+index 85c255f..fc52531 100644
+--- a/test/unlink.t
++++ b/test/unlink.t
+@@ -1,5 +1,6 @@
+ #!/usr/bin/perl
+-use test::helper qw($_real $_point);
++use lib './test/';
++use helper qw($_real $_point);
+ use Test::More;
+ plan tests => 4;
+ chdir($_point);
+diff --git a/test/utime.t b/test/utime.t
+index e6bc7b8..53f637c 100644
+--- a/test/utime.t
++++ b/test/utime.t
+@@ -1,5 +1,6 @@
+ #!/usr/bin/perl
+-use test::helper qw($_real $_point);
++use lib './test/';
++use helper qw($_real $_point);
+ use Test::More;
+ plan tests => 3;
+ my (@stat);
+diff --git a/test/write.t b/test/write.t
+index 406a7e3..e914045 100644
+--- a/test/write.t
++++ b/test/write.t
+@@ -1,5 +1,6 @@
+ #!/usr/bin/perl
+-use test::helper qw($_real $_point);
++use lib './test/';
++use helper qw($_real $_point);
+ use Test::More;
+ plan tests => 15;
+ my ($data);
+-- 
+2.28.0
+
