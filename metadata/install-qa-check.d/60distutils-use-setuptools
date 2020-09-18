@@ -1,0 +1,60 @@
+# Copyright 2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# QA check: verify correctness of DISTUTILS_USE_SETUPTOOLS
+# Maintainer: Python project <python@gentoo.org>
+
+get_expected_distutils_use_setuptools() {
+	local sitedir=${D}$(python_get_sitedir)
+	local egg new_expected
+	while read -d $'\0' -r egg; do
+		if [[ -f ${egg} ]]; then
+			# if .egg-info is a file, it's plain distutils
+			new_expected=no
+		elif grep -q -s -F '[console_scripts]' "${egg}"/entry_points.txt
+		then
+			# entry_points == we need rdepend
+			new_expected=rdepend
+		else
+			new_expected=bdepend
+		fi
+
+		if [[ ${expected} && ${new_expected} != ${expected} ]]; then
+			expected=integrity-error
+		else
+			expected=${new_expected}
+		fi
+	done < <(find "${sitedir}" -name '*.egg-info' -print0)
+}
+
+distutils_use_setuptools_check() {
+	# applicable only to ebuilds inheriting distutils-r1
+	[[ ${_DISTUTILS_R1} ]] || return
+	# 'manual' means no checking
+	[[ ${DISTUTILS_USE_SETUPTOOLS} == manual ]] && return
+	# pyproject.toml is verified by using it
+	[[ ${DISTUTILS_USE_SETUPTOOLS} == pyproject.toml ]] && return
+
+	local expected
+	_distutils-r1_run_foreach_impl get_expected_distutils_use_setuptools
+
+	if [[ ${expected} == integrity-error ]]; then
+		eerror "DISTUTILS_USE_SETUPTOOLS integrity error!"
+		eerror "expected was:    ${expected}"
+		eerror "new_expected is: ${new_expected}"
+		eerror "Please report a bug about this and CC python@"
+	elif [[ ${DISTUTILS_USE_SETUPTOOLS} != ${expected} ]]; then
+			local def=
+			[[ ${DISTUTILS_USE_SETUPTOOLS} == bdepend ]] && def=' (or unset)'
+
+			eqawarn "DISTUTILS_USE_SETUPTOOLS value is probably incorrect"
+			eqawarn "  have:     DISTUTILS_USE_SETUPTOOLS=${DISTUTILS_USE_SETUPTOOLS}${def}"
+			eqawarn "  expected: DISTUTILS_USE_SETUPTOOLS=${expected}"
+	fi
+}
+
+distutils_use_setuptools_check
+
+: # guarantee successful exit
+
+# vim:ft=ebuild
