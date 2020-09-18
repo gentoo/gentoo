@@ -25,7 +25,7 @@ DEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 RDEPEND="
-	sci-libs/scipy[${PYTHON_USEDEP}]
+	dev-python/scipy[${PYTHON_USEDEP}]
 	sci-libs/scikits[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
 	dev-python/pytables[${PYTHON_USEDEP}]"

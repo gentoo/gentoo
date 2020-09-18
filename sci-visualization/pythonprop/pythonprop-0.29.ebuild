@@ -23,7 +23,7 @@ RDEPEND="
 		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
 		dev-python/matplotlib[${PYTHON_MULTI_USEDEP}]
 		sci-libs/cartopy[${PYTHON_MULTI_USEDEP}]
-		sci-libs/scipy[${PYTHON_MULTI_USEDEP}]
+		dev-python/scipy[${PYTHON_MULTI_USEDEP}]
 	')
 	dev-python/cairocffi
 	sci-electronics/voacapl

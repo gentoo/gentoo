@@ -40,7 +40,7 @@ DEPEND="test? (
 	dev-python/matplotlib[${PYTHON_USEDEP}]
 	dev-python/nose[${PYTHON_USEDEP}]
 	dev-python/notebook[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}] )"
+	dev-python/scipy[${PYTHON_USEDEP}] )"
 
 S="${WORKDIR}/${MY_P}"
 

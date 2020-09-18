@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}]
+	dev-python/scipy[${PYTHON_USEDEP}]
 	dev-python/pandas[${PYTHON_USEDEP}]
 	dev-python/pytables[${PYTHON_USEDEP}]
 	dev-python/networkx[${PYTHON_USEDEP}]

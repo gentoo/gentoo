@@ -32,7 +32,7 @@ RDEPEND="
 	dev-python/sphinx[${PYTHON_USEDEP}]
 	>=dev-python/theano-0.9[${PYTHON_USEDEP}]
 	>=dev-python/tqdm-4.8.4[${PYTHON_USEDEP}]
-	>=sci-libs/scipy-0.12[${PYTHON_USEDEP}]
+	>=dev-python/scipy-0.12[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]

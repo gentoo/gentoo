@@ -28,7 +28,7 @@ RDEPEND="
 	>=dev-libs/boost-1.70:=[context,python,${PYTHON_USEDEP}]
 	dev-libs/expat:=
 	dev-python/numpy[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}]
+	dev-python/scipy[${PYTHON_USEDEP}]
 	sci-mathematics/cgal:=
 	cairo? (
 		dev-cpp/cairomm

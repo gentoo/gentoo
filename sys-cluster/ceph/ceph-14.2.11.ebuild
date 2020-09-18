@@ -148,7 +148,7 @@ RDEPEND="${DEPEND}
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/routes[${PYTHON_USEDEP}]
 		diskprediction? (
-			$(python_gen_cond_dep '<sci-libs/scipy-1.4.0[${PYTHON_USEDEP}]' python3_{6,7})
+			$(python_gen_cond_dep '<dev-python/scipy-1.4.0[${PYTHON_USEDEP}]' python3_{6,7})
 		)
 		sci-libs/scikits_learn[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]

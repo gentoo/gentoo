@@ -21,7 +21,7 @@ SLOT="0"
 
 COMMON_DEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}]
+	dev-python/scipy[${PYTHON_USEDEP}]
 "
 RDEPEND="
 	${COMMON_DEPEND}

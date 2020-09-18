@@ -19,4 +19,4 @@ IUSE=""
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="
 	>=dev-python/numpy-1.0.3[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}]"
+	dev-python/scipy[${PYTHON_USEDEP}]"
