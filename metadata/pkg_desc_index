@@ -5656,8 +5656,8 @@ dev-libs/replicant 0.8.1: Hyperdex replicant support library
 dev-libs/rinutils 0.4.0 0.4.1: Set of C headers containing macros and static functions
 dev-libs/rlog 1.4: A C++ logging library
 dev-libs/rocclr 3.7.0-r1: Radeon Open Compute Common Language Runtime
-dev-libs/rocm-comgr 3.7.0: Radeon Open Compute Code Object Manager
-dev-libs/rocm-device-libs 3.7.0 9999: Radeon Open Compute Device Libraries
+dev-libs/rocm-comgr 3.7.0 3.8.0: Radeon Open Compute Code Object Manager
+dev-libs/rocm-device-libs 3.7.0 3.8.0 9999: Radeon Open Compute Device Libraries
 dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
 dev-libs/rocm-opencl-runtime 3.7.0: Radeon Open Compute OpenCL Compatible Runtime
 dev-libs/rocr-runtime 3.7.0 9999: Radeon Open Compute Runtime
@@ -17422,7 +17422,7 @@ sys-devel/libtool 2.4.6-r6 9999: A shared library tool for developers
 sys-devel/lld 9.0.1 10.0.0 10.0.1 11.0.0_rc1 11.0.0_rc2 11.0.0.9999 12.0.0.9999: The LLVM linker (link editor)
 sys-devel/llvm 9.0.1 10.0.0 10.0.1 11.0.0_rc1 11.0.0_rc2 11.0.0.9999 12.0.0.9999: Low Level Virtual Machine
 sys-devel/llvm-common 9.0.1 10.0.0 10.0.1 11.0.0_rc1 11.0.0_rc2 11.0.0.9999 12.0.0.9999: Common files shared between multiple slots of LLVM
-sys-devel/llvm-roc 3.7.0-r1: Radeon Open Compute llvm,lld,clang
+sys-devel/llvm-roc 3.7.0-r1 3.8.0: Radeon Open Compute llvm,lld,clang
 sys-devel/llvmgold 9 10 11 12: LLVMgold plugin symlink for autoloading
 sys-devel/m4 1.4.17 1.4.18-r1: GNU macro processor
 sys-devel/make 4.2.1-r4 4.3: Standard tool to compile source trees
@@ -18473,7 +18473,7 @@ x11-misc/bbtime 0.1.5-r1: blackbox time watcher
 x11-misc/bbweather 0.6.3-r2: blackbox weather monitor
 x11-misc/birdtray 1.8.1 9999: A new mail system tray notification icon for Thunderbird
 x11-misc/blockdpy 1-r1: Tool to block access via the physical display while x11vnc is running
-x11-misc/bumblebee 3.2.1_p20170130 3.2.1_p20190421 9999: Service providing elegant and stable means of managing Optimus graphics chipsets
+x11-misc/bumblebee 3.2.1_p20170130-r1 3.2.1_p20190421-r1 9999: Service providing elegant and stable means of managing Optimus graphics chipsets
 x11-misc/cairo-clock 0.3.4-r1 0.3.4-r2: An analog clock displaying the system-time
 x11-misc/cbatticon 1.6.5 1.6.9 1.6.10: A lightweight and fast battery icon that sits in your system tray
 x11-misc/cdm 0.6.1_pre20180107 0.7: The Console Display Manager
