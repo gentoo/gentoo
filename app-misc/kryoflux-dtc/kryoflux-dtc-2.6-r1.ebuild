@@ -15,7 +15,7 @@ SRC_URI="
 	gui? ( https://www.kryoflux.com/download/${MY_P_WINDOWS}.zip )
 "
 
-KEYWORDS="-* amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 LICENSE="SPS"
 SLOT="0"
 IUSE="demos doc fast-firmware gui static"
