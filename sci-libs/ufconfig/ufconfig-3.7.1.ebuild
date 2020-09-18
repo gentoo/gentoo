@@ -1,35 +1,39 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit multilib toolchain-funcs
+EAPI=7
+
+inherit toolchain-funcs
 
 MY_PN=UFconfig
 DESCRIPTION="Common configuration scripts for the SuiteSparse libraries"
 HOMEPAGE="http://www.cise.ufl.edu/research/sparse/UFconfig"
 SRC_URI="http://www.cise.ufl.edu/research/sparse/${MY_PN}/${MY_PN}-${PV}.tar.gz"
+S="${WORKDIR}/${MY_PN}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="static-libs"
-DEPEND=""
-
-S="${WORKDIR}/${MY_PN}"
 
 src_compile() {
-	echo  "$(tc-getCC) ${CFLAGS} -fPIC -c UFconfig.c -o UFconfig.lo"
+	elog "Running: $(tc-getCC) ${CFLAGS} -fPIC -c UFconfig.c -o UFconfig.lo"
 	$(tc-getCC) ${CFLAGS} -fPIC -c UFconfig.c -o UFconfig.lo || die
+
 	local sharedlink="-shared -Wl,-soname,libufconfig$(get_libname ${PV})"
-	[[ ${CHOST} == *-darwin* ]] && \
+	if [[ ${CHOST} == *-darwin* ]]; then
 		sharedlink="-dynamiclib -install_name ${EPREFIX}/usr/$(get_libdir)/libufconfig$(get_libname ${PV})"
-	echo "$(tc-getCC) ${LDFLAGS} ${sharedlink} -o libufconfig$(get_libname ${PV}) UFconfig.lo"
+	fi
+
+	elog "Running: $(tc-getCC) ${LDFLAGS} ${sharedlink} -o libufconfig$(get_libname ${PV}) UFconfig.lo"
 	$(tc-getCC) ${LDFLAGS} ${sharedlink} -o libufconfig$(get_libname ${PV}) UFconfig.lo || die
+
 	if use static-libs; then
-		echo "$(tc-getCC) ${CFLAGS} -c UFconfig.c -o UFconfig.o"
+		elog "Running: $(tc-getCC) ${CFLAGS} -c UFconfig.c -o UFconfig.o"
 		$(tc-getCC) ${CFLAGS} -c UFconfig.c -o UFconfig.o || die
-		echo "$(tc-getAR) libufconfig.a UFconfig.o"
-		$(tc-getAR) cr libufconfig.a UFconfig.o
+
+		elog "Running: $(tc-getAR) libufconfig.a UFconfig.o"
+		$(tc-getAR) cr libufconfig.a UFconfig.o || die
 	fi
 }
 
