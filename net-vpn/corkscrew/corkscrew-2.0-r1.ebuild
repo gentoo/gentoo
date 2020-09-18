@@ -12,7 +12,7 @@ SRC_URI="http://www.agroman.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~sparc x86"
 IUSE=""
 
 DOCS="AUTHORS ChangeLog README TODO"
