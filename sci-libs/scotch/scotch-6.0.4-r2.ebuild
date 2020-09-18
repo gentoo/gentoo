@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,25 +7,27 @@ inherit eutils toolchain-funcs versionator flag-o-matic multilib
 
 # use esmumps version to allow linking with mumps
 MYP="${PN}_${PV}_esmumps"
-# download id on gforge changes every goddamn release
+# download id on gforge changes every release(!)
 DID=34618
 SOVER=$(get_major_version)
 
 DESCRIPTION="Software for graph, mesh and hypergraph partitioning"
 HOMEPAGE="http://www.labri.u-bordeaux.fr/perso/pelegrin/scotch/"
 SRC_URI="http://gforge.inria.fr/frs/download.php/${DID}/${MYP}.tar.gz"
+S="${WORKDIR}/${P/-/_}"
 
 LICENSE="CeCILL-2"
 SLOT="0/${SOVER}"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
-IUSE="doc int64 mpi static-libs tools threads"
+IUSE="doc int64 mpi static-libs test tools threads"
+# bug #532620
+REQUIRED_USE="test? ( threads )"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	sys-libs/zlib
 	mpi? ( virtual/mpi )"
 RDEPEND="${DEPEND}"
-
-S=${WORKDIR}/${P/-/_}
 
 static_to_shared() {
 	local libstatic=${1}; shift
