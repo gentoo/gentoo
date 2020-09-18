@@ -294,10 +294,6 @@ kde-apps/libkgeomap
 # previously removed dev-python/flask-bootstrap
 dev-python/flask-appconfig
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-02)
-# Masked for removal. No revdeps.
-dev-python/ansimarkup
-
 # Rick Farina <zerochaos@gentoo.org> (2020-09-02)
 # Masked for removal in 30 days. Obsolete versions
 # of kismet and tools which use it are no longer maintained.
