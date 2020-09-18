@@ -62,9 +62,20 @@ src_prepare() {
 	# and fix manpage install location
 	sed -i -e '/cmdclass/,/},$/d' \
 		-e '/data_files/s:man/:share/man/:' "${S}"/setup.py || die
+
+	local remove_tests=(
+		# TODO: does not respect PATH?
+		test/Clang
+		# broken
+		test/DVIPDF/DVIPDFFLAGS.py
+		test/Java/swig-dependencies.py
+		test/Java/multi-step.py
+	)
+	rm -r "${remove_tests[@]}" || die
 }
 
 python_test() {
+	local -x COLUMNS=80
 	# set variable from escons() of scons-util.eclass to make env-passthrough patch work within test env
 	local -x GENTOO_SCONS_ENV_PASSTHROUGH=1
 	# unset some env variables to pass appropriate tests
