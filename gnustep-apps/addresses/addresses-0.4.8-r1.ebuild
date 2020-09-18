@@ -10,7 +10,7 @@ SRC_URI="https://savannah.nongnu.org/download/gap/${P/a/A}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 S="${WORKDIR}/${P/a/A}"
 
