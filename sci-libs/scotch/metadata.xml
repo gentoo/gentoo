@@ -11,7 +11,7 @@
 </maintainer>
 <use>
   <flag name="int64">Build the 64 bits integer library (needed for &gt; 2^31 vertices)</flag>
-  <flag name="tools">Build and install extra exec tools</flag>
+  <flag name="tools">Provides the graph, mesh, architecture, mapping/ordering, output handling programs (see Scotch User's Guide).</flag>
 </use>
 <longdescription lang="en">
   SCOTCH is a software package and libraries for graph, mesh and
