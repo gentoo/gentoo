@@ -822,12 +822,6 @@ net-misc/gnome-remote-desktop
 # v3.6.1 is the latest version without this issue
 >=dev-libs/libsass-3.6.2
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-26)
-# Starting with Firefox 74 Mozilla removes xpi sideloading support
-# install from addons.mozilla.org
-# passff-host remains in the tree
-www-plugins/passff
-
 # Victor Payno <vpayno+gentoo@gmail.com> (2020-01-23)
 # Requires slotted lua.
 =dev-lang/lua-5.1.5-r103
