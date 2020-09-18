@@ -228,6 +228,10 @@ src_install() {
 
 	pamd_mimic_system radiusd auth account password session
 
+	# fix #711756
+	fowners -R radius:radius /etc/raddb
+	fowners -R radius:radius /var/log/radius
+
 	dodoc CREDITS
 
 	rm "${ED}/usr/sbin/rc.radiusd" || die
@@ -246,6 +250,7 @@ src_install() {
 	systemd_dounit "${S}"/debian/freeradius.service
 
 	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
+
 }
 
 pkg_config() {
