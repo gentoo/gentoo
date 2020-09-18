@@ -7890,7 +7890,6 @@ dev-python/aniso8601 8.0.0: A library for parsing ISO 8601 strings
 dev-python/ansi 0.1.5: ANSI cursor movement and graphics in Python
 dev-python/ansi2html 1.5.2-r1 1.5.2-r2: Convert text with ANSI color codes to HTML
 dev-python/ansicolor 0.2.6-r1 9999: Produce ansi color output and colored highlighting and diffing
-dev-python/ansimarkup 1.4.0: XML-like markup for producing colored terminal text
 dev-python/anyqt 0.0.8-r1: PyQt4/PyQt5 compatibility layer
 dev-python/aodhclient 1.2.0: A client for the OpenStack Aodh API
 dev-python/apipkg 1.5: Namespace control and lazy-import mechanism
@@ -16349,7 +16348,7 @@ sci-libs/mkl 10.0.5.025-r1: Intel(R) Math Kernel Library: linear algebra, fft, m
 sci-libs/mkl-rt 2019.4.243: Intel Math Kernel Library (Runtime)
 sci-libs/mpfi 1.5.3: Multiple precision interval arithmetic library based on MPFR
 sci-libs/mpir 2.6.0-r2 2.7.2 3.0.0: Library for arbitrary precision integer arithmetic (fork of gmp)
-sci-libs/mumps 5.1.2-r1: MUltifrontal Massively Parallel sparse direct matrix Solver
+sci-libs/mumps 5.1.2-r1 5.3.3: MUltifrontal Massively Parallel sparse direct matrix Solver
 sci-libs/nanoflann 1.2.3 9999: C++ header-only library for Nearest Neighbor (NN) search wih KD-trees
 sci-libs/neartree 5.1.1: Function library efficiently solving the Nearest Neighbor Problem
 sci-libs/nemesis 6.09: Enhancement to the EXODUSII finite element database model
@@ -18172,7 +18171,6 @@ www-plugins/chrome-binary-plugins 85.0.4183.102 86.0.4240.42_beta 87.0.4263.3_al
 www-plugins/freshplayerplugin 0.3.9-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
-www-plugins/passff 1.9.1: zx2c4 pass manager extension for Firefox
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
 www-plugins/pdfjs 1.9.426 2.1.266 2.4.456: A PDF reader in JavaScript
 www-servers/adsf 1.4.3: A Dead Simple Fileserver is a static file server that can launch in a directory
