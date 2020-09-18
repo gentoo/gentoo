@@ -7,6 +7,3 @@
 MULTILIB_ABIS="ilp32"
 DEFAULT_ABI="ilp32"
 ABI="ilp32"
-
-# We hide the useflags for the ABIs
-USE_EXPAND_HIDDEN="ABI_RISCV"

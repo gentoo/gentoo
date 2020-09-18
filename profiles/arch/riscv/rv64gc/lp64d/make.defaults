@@ -10,6 +10,3 @@ FCFLAGS="${CFLAGS}"
 
 # We have only one ABI
 MULTILIB_ABIS="lp64d"
-
-# We hide the useflags for the ABIs
-USE_EXPAND_HIDDEN="ABI_RISCV"
