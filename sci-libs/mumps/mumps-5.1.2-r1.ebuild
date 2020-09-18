@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic fortran-2 toolchain-funcs multilib
+inherit fortran-2 toolchain-funcs
 
 MYP=MUMPS_${PV}
 
@@ -18,10 +18,12 @@ IUSE="doc examples metis mpi +scotch static-libs"
 
 RDEPEND="
 	virtual/blas
-	metis? ( || ( >=sci-libs/metis-5 >=sci-libs/parmetis-4 )
-		mpi? ( >=sci-libs/parmetis-4 ) )
+	metis? (
+		   || ( >=sci-libs/metis-5 >=sci-libs/parmetis-4 )
+		   mpi? ( >=sci-libs/parmetis-4 )
+	)
 	mpi? ( sci-libs/scalapack )
-	scotch? ( >=sci-libs/scotch-6.0.1[mpi=] )
+	scotch? ( >=sci-libs/scotch-6.0.1:=[mpi=] )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
@@ -34,7 +36,8 @@ get_version_component_count() {
 }
 
 static_to_shared() {
-	local libstatic=${1}; shift
+	local libstatic=${1}
+	shift
 	local libname=$(basename ${libstatic%.a})
 	local soname=${libname}$(get_libname $(ver_cut 1-2))
 	local libdir=$(dirname ${libstatic})
@@ -50,9 +53,12 @@ static_to_shared() {
 			-shared -Wl,-soname=${soname} \
 			-Wl,--whole-archive ${libstatic} -Wl,--no-whole-archive \
 			"$@" -o ${libdir}/${soname} || die "${soname} failed"
-		[[ $(get_version_component_count) -gt 1 ]] && \
-			ln -s ${soname} ${libdir}/${libname}$(get_libname $(ver_cut 1))
-		ln -s ${soname} ${libdir}/${libname}$(get_libname)
+
+		if [[ $(get_version_component_count) -ge 1 ]] ; then
+			ln -s ${soname} ${libdir}/${libname}$(get_libname $(ver_cut 1)) || die
+		fi
+
+		ln -s ${soname} ${libdir}/${libname}$(get_libname) || die
 	fi
 }
 
@@ -95,14 +101,14 @@ src_configure() {
 	if use scotch && use mpi; then
 		sed -i \
 			-e "s:#\s*\(LSCOTCH\s*=\).*:\1-lptesmumps -lptscotch -lptscotcherr:" \
-			-e "s:#\s*\(ISCOTCH\s*=\).*:\1-I${EROOT}/usr/include/scotch:" \
+			-e "s:#\s*\(ISCOTCH\s*=\).*:\1-I${ESYSROOT}/usr/include/scotch:" \
 			Makefile.inc || die
 		LIBADD="${LIBADD} -lptesmumps -lptscotch -lptscotcherr"
 		ord="${ord} -Dptscotch"
 	elif use scotch; then
 		sed -i \
 			-e "s:#\s*\(LSCOTCH\s*=\).*:\1-lesmumps -lscotch -lscotcherr:" \
-			-e "s:#\s*\(ISCOTCH\s*=\).*:\1-I${EROOT}/usr/include/scotch:" \
+			-e "s:#\s*\(ISCOTCH\s*=\).*:\1-I${ESYSROOT}/usr/include/scotch:" \
 			Makefile.inc || die
 		LIBADD="${LIBADD} -lesmumps -lscotch -lscotcherr"
 		ord="${ord} -Dscotch"
@@ -139,6 +145,7 @@ src_compile() {
 		LIBADD+=" -Llibseq -lmpiseq"
 		static_to_shared libseq/libmpiseq.a
 	fi
+
 	static_to_shared lib/libpord.a ${LIBADD}
 	static_to_shared lib/libmumps_common.a ${LIBADD}
 
@@ -146,6 +153,7 @@ src_compile() {
 	for i in c d s z; do
 		static_to_shared lib/lib${i}mumps.a -Llib -lmumps_common ${LIBADD}
 	done
+
 	if use static-libs; then
 		emake clean
 		emake -j1 alllib
@@ -154,12 +162,14 @@ src_compile() {
 
 src_test() {
 	emake all
+
 	local dotest
 	if use mpi; then
 		dotest="mpirun -np 2"
 	else
 		export LD_LIBRARY_PATH="${S}/libseq:${LD_LIBRARY_PATH}"
 	fi
+
 	cd examples
 	${dotest} ./ssimpletest < input_simpletest_real || die
 	${dotest} ./dsimpletest < input_simpletest_real || die
@@ -168,13 +178,14 @@ src_test() {
 	einfo "The solutions should be close to (1,2,3,4,5)"
 	${dotest} ./c_example || die
 	einfo "The solution should be close to (1,2)"
-	make clean
+	emake clean || die
 }
 
 src_install() {
 	dolib.so lib/lib*$(get_libname)*
 	use static-libs && dolib.a lib/lib*.a
 	insinto /usr
+
 	doins -r include
 	if ! use mpi; then
 		dolib.so libseq/lib*$(get_libname)*
@@ -182,10 +193,10 @@ src_install() {
 		doins libseq/*.h
 		use static-libs && dolib.a libseq/libmpiseq.a
 	fi
+
 	dodoc README ChangeLog VERSION
 	use doc && dodoc doc/*.pdf
 	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r examples
+		dodoc -r examples
 	fi
 }
