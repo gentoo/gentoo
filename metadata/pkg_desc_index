@@ -9880,7 +9880,7 @@ dev-ruby/connection_pool 2.2.2 2.2.3: Generic connection pooling for Ruby
 dev-ruby/contracts 0.16.0: provides contracts for Ruby
 dev-ruby/coolio 1.6.0: A high performance event framework for Ruby which uses the libev C library
 dev-ruby/countdownlatch 1.0.0-r1: Synchronization aid to allow threads to wait for operations in other threads
-dev-ruby/crack 0.4.3-r2: Really simple JSON and XML parsing, ripped from Merb and Rails
+dev-ruby/crack 0.4.3-r2 0.4.4: Really simple JSON and XML parsing, ripped from Merb and Rails
 dev-ruby/crass 1.0.6: Ruby CSS parser that's fully compliant with the CSS Syntax Level 3 specification
 dev-ruby/creole 0.5.0: Creole-to-HTML converter for Creole, the lightweight markup language
 dev-ruby/cri 2.15.10: Cri is a library for building easy-to-use commandline tools
@@ -10691,7 +10691,7 @@ dev-util/cucumber 3.1.2 3.2.0: Executable feature scenarios
 dev-util/cucumber-core 3.2.1: Executable feature scenarios
 dev-util/cucumber-cucumber-expressions 10.2.0 10.2.1 10.3.0: a simpler alternative to Regular Expressions
 dev-util/cucumber-expressions 6.0.1: a simpler alternative to Regular Expressions
-dev-util/cucumber-messages 7.0.0: Protocol Buffer messages for Cucumber's inter-process communication
+dev-util/cucumber-messages 13.1.0: Protocol Buffer messages for Cucumber's inter-process communication
 dev-util/cucumber-rails 1.8.0 2.0.0-r1 2.1.0: Executable feature scenarios for Rails
 dev-util/cucumber-tag-expressions 2.0.4: Cucumber tag expressions for ruby
 dev-util/cucumber-tag_expressions 1.1.1: Cucumber tag expressions for ruby
