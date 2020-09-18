@@ -32,6 +32,7 @@ DEPEND="dev-db/libzdb
 RDEPEND="${DEPEND}
 	acct-group/dbmail
 	acct-user/dbmail"
+DOCS=( AUTHORS README.md INSTALL THANKS UPGRADING )
 
 src_configure() {
 	econf \
@@ -47,8 +48,6 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" SYSTEMD_UNIT_DIR="$(systemd_get_systemunitdir)" install
-
-	DOCS=( AUTHORS README.md INSTALL THANKS UPGRADING )
 	einstalldocs
 
 	docompress -x /usr/share/doc/${PF}/sql
@@ -66,10 +65,6 @@ src_install() {
 
 	# change config path to our default and use the conf.d and init.d files from the contrib dir
 	sed -i -e "s:/etc/dbmail.conf:/etc/dbmail/dbmail.conf:" contrib/startup-scripts/gentoo/init.d-dbmail || die
-	#sed -i -e "s:exit 0:return 1:" contrib/startup-scripts/gentoo/init.d-dbmail || die
-	#sed -i -e "s:/var/run:/var/run/dbmail:" contrib/startup-scripts/gentoo/init.d-dbmail || die
-	#newconfd contrib/startup-scripts/gentoo/conf.d-dbmail dbmail
-	#newinitd contrib/startup-scripts/gentoo/init.d-dbmail dbmail
 	# use custom init scripts until updated in upstream contrib
 	newinitd "${FILESDIR}/dbmail-imapd.initd" dbmail-imapd
 	newinitd "${FILESDIR}/dbmail-lmtpd.initd" dbmail-lmtpd
@@ -89,9 +84,6 @@ src_install() {
 	keepdir /var/lib/dbmail
 	fperms 750 /var/lib/dbmail
 	fowners dbmail:dbmail /var/lib/dbmail
-	# create this through init-scripts instead of at install time (bug #455002)
-	#keepdir /run/dbmail
-	#fowners dbmail:dbmail /run/dbmail
 }
 
 pkg_postinst() {
