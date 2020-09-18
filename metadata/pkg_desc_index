@@ -615,7 +615,7 @@ app-admin/r10k 3.4.1: Puppet environment and module deployment
 app-admin/radmind 1.15.1: Command-line tools and server to remotely administer multiple Unix filesystems
 app-admin/ranpwd 1.2: Generate random passwords using the in-kernel cryptographically
 app-admin/rasdaemon 0.6.1-r1 0.6.2-r1 0.6.2-r3 0.6.2-r4 0.6.5 0.6.6: Reliability, Availability and Serviceability logging tool
-app-admin/rcm 1.3.1 1.3.3: rc file (dotfile) management
+app-admin/rcm 1.3.3 1.3.4: rc file (dotfile) management
 app-admin/recursos 2.0-r1: Script to create html and text report about your system
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
 app-admin/restart-services 0.14.1 0.15.2: Tool to manage OpenRC services that need to be restarted
