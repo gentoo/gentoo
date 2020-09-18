@@ -13,7 +13,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+mpv qtav qtmedia"
 
-DEPEND=">=dev-qt/qtquickcontrols-5.8:5
+DEPEND=">=dev-qt/qtdbus-5.8:5
+	>=dev-qt/qtquickcontrols-5.8:5
 	>=dev-qt/qtquickcontrols2-5.8:5
 	>=dev-qt/qtsvg-5.8:5
 	>=dev-qt/qtwebengine-5.8:5
