@@ -552,7 +552,7 @@ app-admin/hddtemp 0.3_beta15-r28: A simple utility to read the temperature of SM
 app-admin/helm 2.16.1 2.16.7 2.16.9 3.2.4: Kubernetes Package Manager
 app-admin/ide-smart 1.4-r2: A tool to read SMART information from harddiscs
 app-admin/integrit 4.1-r1: file integrity verification program
-app-admin/keepass 2.44 2.45: A free, open source, light-weight and easy-to-use password manager
+app-admin/keepass 2.44 2.45 2.46: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassxc 2.5.4 2.6.0 2.6.1 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.4: A command line interface to KeePass database files
@@ -979,8 +979,8 @@ app-crypt/nitrocli 0.3.1 0.3.2 0.3.3 0.3.4: A command line tool for interacting 
 app-crypt/nitrokey-app 1.4-r1 1.4.2 9999: Cross platform personalization tool for the Nitrokey
 app-crypt/nwipe 0.25: Securely erase disks using a variety of recognized methods
 app-crypt/onak 0.5.0: onak is an OpenPGP keyserver
-app-crypt/openpgp-keys-gentoo-auth 20191030 20200704: Gentoo Authority Keys (GLEP 79)
-app-crypt/openpgp-keys-gentoo-release 20191030 20200704: OpenPGP keys used for Gentoo releases (snapshots, stages)
+app-crypt/openpgp-keys-gentoo-auth 20200704: Gentoo Authority Keys (GLEP 79)
+app-crypt/openpgp-keys-gentoo-release 20200704: OpenPGP keys used for Gentoo releases (snapshots, stages)
 app-crypt/ophcrack 3.8.0: A time-memory-trade-off-cracker
 app-crypt/ophcrack-tables 1.0-r2: Tables available for ophcrack
 app-crypt/osslsigncode 2.0: Platform-independent tool for Authenticode signing of EXE/CAB files
@@ -1001,7 +1001,7 @@ app-crypt/rainbowcrack 1.7: Hash cracker that precomputes plaintext - ciphertext
 app-crypt/rhash 1.3.6-r1 1.4.0: Console utility and library for computing and verifying file hash sums
 app-crypt/rotix 0.83 0.83-r1: Rotix allows you to generate rotational obfuscations
 app-crypt/sbsigntools 0.6-r2 0.9.1-r1 0.9.2: Utilities for signing and verifying files for UEFI Secure Boot
-app-crypt/scdrand 0.3.4 0.3.5: Feed kernel entropy pool from smartcard's TRNG
+app-crypt/scdrand 0.3.5: Feed kernel entropy pool from smartcard's TRNG
 app-crypt/scrypt 1.3.0 1.3.1: A simple password-based encryption utility using scrypt key derivation function
 app-crypt/scute 1.5.0 1.6.0: A PKCS #11 module for OpenPGP smartcards
 app-crypt/seahorse 3.34.1 3.36.2: Manage your passwords and encryption keys
@@ -2689,12 +2689,12 @@ app-pda/pilot-link 0.12.5-r2 0.12.5-r3: Suite of tools for moving data between a
 app-pda/usbmuxd 1.1.0 1.1.1_pre20200121 1.1.1: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-portage/cfg-update 1.8.9: Easy to use GUI & CLI alternative for etc-update
 app-portage/conf-update 1.0.3-r1: conf-update is a ncurses-based config management utility
-app-portage/cpuid2cpuflags 10 11 9999: Tool to guess CPU_FLAGS_* flags for the host
+app-portage/cpuid2cpuflags 11 9999: Tool to guess CPU_FLAGS_* flags for the host
 app-portage/deltup 0.4.6-r1: Delta-Update - patch system for updating source-archives.
 app-portage/demerge 0.047-r3: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r4 9999: A utility to maintain package.unmask entries up-to-date with masks
 app-portage/distpatch 0.1.2-r2: Distfile Patching Support for Gentoo Linux (tools)
-app-portage/eix 0.34.4 0.34.5 0.34.6 0.34.7 0.34.8 0.34.9: Search and query ebuilds
+app-portage/eix 0.34.4 0.34.9: Search and query ebuilds
 app-portage/elicense 1.0.2 9999: Tool to find installed packages in Gentoo with non-accepted license(s)
 app-portage/elogv 0.7.8-r1 0.7.8-r2 0.7.8-r3: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 3.0-r2: Elog viewer for Gentoo
@@ -2711,7 +2711,7 @@ app-portage/g-cpan 0.16.9-r1 0.17.0 9999: Autogenerate and install ebuilds for C
 app-portage/g-octave 0.4.1-r7: A tool that generates and installs ebuilds for Octave-Forge
 app-portage/g-sorcery 0.2.1-r1: framework for ebuild generators
 app-portage/gander 0.0.1: Statistic submission client for Goose (anser.gentoo.org)
-app-portage/gemato 14.4-r1 14.5 15.0 15.1 15.2 16.0 16.1 9999: Stand-alone Manifest generation & verification tool
+app-portage/gemato 14.4-r1 15.2 16.1 9999: Stand-alone Manifest generation & verification tool
 app-portage/genlop 0.30.9-r1 0.30.10-r1 0.30.10-r2 9999: A nice emerge.log parser
 app-portage/gentoolkit 0.4.6 0.4.7 0.4.8 0.5.0 9999: Collection of administration scripts for Gentoo
 app-portage/gentoopm 0.3.1 0.3.2 9999: A common interface to Gentoo package managers
@@ -2727,9 +2727,9 @@ app-portage/java-ebuilder 0.5.1 9999: Java team tool for semi-automatic creation
 app-portage/kuroo 0.90.5_p20180410 9999: Graphical Portage frontend based on KDE Frameworks
 app-portage/layman 2.4.3 9999: Tool to manage Gentoo overlays
 app-portage/metagen 0.7.2 9999: metadata.xml generator for ebuilds
-app-portage/mgorny-dev-scripts 4 5 6: Handy scripts for ebuild development and more
+app-portage/mgorny-dev-scripts 6: Handy scripts for ebuild development and more
 app-portage/mirrorselect 2.2.3 2.2.4-r1 2.2.6-r1 9999: Tool to help select distfiles mirrors for Gentoo
-app-portage/nattka 0.2.6 0.2.7 0.2.8 0.2.9 0.2.10 9999: A New Arch Tester Toolkit -- open-source stable-bot replacement
+app-portage/nattka 0.2.9 0.2.10 9999: A New Arch Tester Toolkit -- open-source stable-bot replacement
 app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-package basis
 app-portage/overlint 0.5.3-r1 0.5.3-r2: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl
@@ -2747,10 +2747,10 @@ app-portage/smart-live-rebuild 1.3.6 9999: Check live packages for updates and e
 app-portage/splat 0.08-r1: Simple Portage Log Analyzer Tool
 app-portage/tatt 0.7-r1 9999: Arch testing tool
 app-portage/ufed 0.96 9999: Gentoo Linux USE flags editor
-app-portage/unsymlink-lib 17-r1 18 9999: Convert your system to SYMLINK_LIB=no
+app-portage/unsymlink-lib 18: Convert your system to SYMLINK_LIB=no
 app-shells/autojump 22.5.3: change directory command that learns
 app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r2 4.4_p23-r2 5.0_p17 5.0_p18: The standard GNU Bourne again shell
-app-shells/bash-completion 2.10 2.11 9999: Programmable Completion for bash
+app-shells/bash-completion 2.11 9999: Programmable Completion for bash
 app-shells/bashdb 4.4.1.0.1 5.0.1.1.0 5.0.1.1.2: bash source code debugging
 app-shells/bashish 2.2.4: Text console theme engine
 app-shells/ccsh 0.0.4-r4: UNIX Shell for people already familiar with the C language
@@ -2779,7 +2779,7 @@ app-shells/peco 0.5.7: Simplistic interactive filtering tool
 app-shells/posh 0.14.1: Reimplementation of Bourne shell based on pdksh
 app-shells/powerline 2.7-r1 9999: The ultimate statusline/prompt utility.
 app-shells/psh 1.8.1-r3: Combines the interactive nature of a Unix shell with the power of Perl
-app-shells/push 2.0-r1 3.3 3.4: A POSIX shell function to treat a variable like an array, quoting args
+app-shells/push 2.0-r1 3.4: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 3.0_p2-r1 4.2: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/rc 1.7.4-r1: A reimplementation of the Plan 9 shell
 app-shells/rrs 1.70-r2: Reverse Remote Shell
@@ -5243,7 +5243,7 @@ dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL lib
 dev-libs/botan 2.14.0-r1 2.15.0: C++ crypto library
 dev-libs/boxfort 0.0.1_pre20200110 0.0.1_pre20200902: Convenient & cross-platform sandboxing C library
 dev-libs/busybee 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
-dev-libs/c-blosc 1.11.2 1.19.0 1.20.0 1.20.1: Blocking, shuffling and lossless compression library
+dev-libs/c-blosc 1.20.0 1.20.1: Blocking, shuffling and lossless compression library
 dev-libs/c-capnproto 0.3: C library/compiler for the Cap'n Proto serialization/RPC protocol
 dev-libs/caliper 1.5.0: Application Introspection System
 dev-libs/capnproto 0.6.0 0.6.1 0.7.0 0.8.0: RPC/Serialization system with capabilities support
@@ -5436,8 +5436,8 @@ dev-libs/libgcrypt 1.8.5 1.8.6: General purpose crypto library based on the code
 dev-libs/libgcrypt-compat 1.5.6: Old version of libgcrypt needed by some binaries
 dev-libs/libgdata 0.17.12: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.20.3: GObject-based interfaces and classes for commonly used data structures
-dev-libs/libgit2 0.28.5 1.0.1: A linkable library for Git
-dev-libs/libgit2-glib 0.28.0.1 0.28.0.1-r1 0.99.0.1-r1: Git library for GLib
+dev-libs/libgit2 1.0.1: A linkable library for Git
+dev-libs/libgit2-glib 0.99.0.1-r1: Git library for GLib
 dev-libs/libgnome-games-support 1.4.4 1.6.1: Library for code common to Gnome games
 dev-libs/libgnt 2.14.0: Pidgin's GLib Ncurses Toolkit
 dev-libs/libgpg-error 1.36 1.37 1.38 1.39: Contains error handling functions used by GnuPG software
@@ -5673,7 +5673,7 @@ dev-libs/skalibs 2.3.2.0 2.6.1.0 2.6.3.0 2.6.4.0 2.7.0.0 2.8.1.0 2.9.1.0: Genera
 dev-libs/smack 0.5.0: low-level IO storage which packs data into sorted compressed blobs
 dev-libs/snowball-stemmer 0.20140325: All you need to include the snowball stemming algorithms into a C project
 dev-libs/softhsm 2.5.0 2.6.1: A software PKCS#11 implementation
-dev-libs/sord 0.16.4-r1 9999: Library for storing RDF data in memory
+dev-libs/sord 0.16.4-r1 0.16.4_p20200803 9999: Library for storing RDF data in memory
 dev-libs/spdlog 1.5.0-r1 1.6.1 1.6.1-r1 1.7.0 9999: Very fast, header only, C++ logging library
 dev-libs/spsdeclib 5.1-r1: Kryoflux SPS Decoder Library
 dev-libs/squareball 0.2.0 9999: A general-purpose library for C99
@@ -8287,7 +8287,7 @@ dev-python/humanize 2.4.1 2.6.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 19.0.0 20.0.1: A featureful, correct URL for Python
-dev-python/hypothesis 4.57.1 5.24.4 5.29.4 5.35.0 5.35.2 5.35.3: A library for property based testing
+dev-python/hypothesis 4.57.1 5.24.4 5.29.4 5.35.3: A library for property based testing
 dev-python/icalendar 4.0.6 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.8 2.10: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -10188,7 +10188,7 @@ dev-ruby/rb-readline-r7 0.5.2.0: Ruby implementation of the GNU readline C libra
 dev-ruby/rbnacl 4.0.2-r1 5.0.0-r1 7.1.1: Provides a high-level toolkit for building cryptographic systems and protocols
 dev-ruby/rbpdf 1.20.1-r2: Ruby on Rails RBPDF plugin
 dev-ruby/rbpdf-font 1.19.1: Font files for the Ruby on Rails RBPDF plugin
-dev-ruby/rbst 0.5.1 0.6.5: A simple Ruby wrapper for processing rST via docutils
+dev-ruby/rbst 0.6.5: A simple Ruby wrapper for processing rST via docutils
 dev-ruby/rcairo 1.16.2 1.16.4 1.16.5 1.16.6: Ruby bindings for cairo
 dev-ruby/rchardet 1.8.0: Character encoding auto-detection in Ruby
 dev-ruby/rdiscount 2.2.0.1 2.2.0.2: Implementation of John Gruber's Markdown
@@ -10699,7 +10699,7 @@ dev-util/cucumber-wire 0.0.1-r1: Executable feature scenarios
 dev-util/cunit 2.1_p3: C Unit Test Framework
 dev-util/cutils 1.6-r4: C language utilities
 dev-util/cutter 1.11.0 1.12.0: A Qt and C++ GUI for radare2 reverse engineering framework
-dev-util/cvise 1.1.0 1.6.0: Super-parallel Python port of the C-Reduce
+dev-util/cvise 1.6.0: Super-parallel Python port of the C-Reduce
 dev-util/cwdiff 0.2.8 0.3.0 0.3.1 0.4.0 9999: A script that wraps wdiff to support directories and colorize the output
 dev-util/d-feet 0.3.14-r1: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 19.04.0-r1: Run executables under a new DBus session for testing
@@ -10775,7 +10775,7 @@ dev-util/gyp 20170904022846-r1 99999999999999: GYP (Generate Your Projects) meta
 dev-util/heaptrack 9999: Fast heap memory profiler
 dev-util/herdtools7 7.47 7.51: The Herd toolsuite to deal with .cat memory models
 dev-util/hfstospell 0.5.1: HFST spell checker library and command line tool
-dev-util/howdoi 1.2.1 2.0.5: A code search tool
+dev-util/howdoi 1.2.1 2.0.5 2.0.6: A code search tool
 dev-util/huc 0.1-r1: HTML umlaut conversion tool
 dev-util/hxd 0.70.02-r2: Binary to hexadecimal converter
 dev-util/hxtools 20180301 20190428: A collection of tools and scripts
@@ -10895,7 +10895,7 @@ dev-util/scala-ide 4.7.0: The Scala IDE
 dev-util/scanmem 0.17: Locate and modify variables in executing processes
 dev-util/sccache 0.2.12 0.2.13 9999: ccache/distcc like tool with support for rust and cloud storage
 dev-util/schroot 1.6.10_p7: Utility to execute commands in a chroot environment
-dev-util/scons 3.1.1 3.1.2 4.0.0 4.0.1: Extensible Python-based build utility
+dev-util/scons 3.1.1 3.1.2 4.0.1: Extensible Python-based build utility
 dev-util/sel 0.08.4-r2: A filemanager for shell scripts
 dev-util/serialtalk 1.2-r1 9999: simple command-line tool to talk to serial devices
 dev-util/setconf 0.6.6 0.6.7: A small python based utility used to change configuration files
@@ -10923,8 +10923,8 @@ dev-util/strace 5.3 5.4 5.7 5.8 9999: A useful diagnostic, instructional, and de
 dev-util/stressapptest 1.0.9: Stressful Application Test
 dev-util/stripe-mock 0.79.0 0.88.0: Mock HTTP server that responds like the real Stripe API
 dev-util/stubgen 2.08: A member function stub generator for C++
-dev-util/sysdig 0.26.6 0.26.7 0.27.0: A system exploration and troubleshooting tool
-dev-util/sysdig-kmod 0.26.6-r1 0.26.7-r1 0.27.0: Kernel module for dev-util/sysdig
+dev-util/sysdig 0.27.0: A system exploration and troubleshooting tool
+dev-util/sysdig-kmod 0.27.0: Kernel module for dev-util/sysdig
 dev-util/sysprof 3.34.1-r1 3.36.0: System-wide Linux Profiler
 dev-util/sysprof-capture 3.34.1-r1 3.36.0: Static library for sysprof capture data generation
 dev-util/systemtap 2.4-r1 3.1-r1 4.0-r1: A linux trace/probe tool
@@ -11297,7 +11297,7 @@ games-board/xscrabble 2.10-r2: An X11 clone of the well-known Scrabble
 games-board/xskat 4.0-r1: Famous german card game
 games-emulation/advancemame 3.9: GNU/Linux port of the MAME emulator with GUI menu
 games-emulation/advancescan 1.16-r1: A command line rom manager for MAME, MESS, AdvanceMAME, AdvanceMESS and Raine
-games-emulation/atari800 3.1.0-r1 4.2.0: Atari 800 emulator
+games-emulation/atari800 4.2.0: Atari 800 emulator
 games-emulation/caps 20071115: Support library for accessing and using C.A.P.S. images
 games-emulation/desmume 0.9.11-r2: Nintendo DS emulator
 games-emulation/dgen-sdl 1.33-r1: A Linux/SDL-Port of the famous DGen MegaDrive/Genesis-Emulator
@@ -11326,7 +11326,7 @@ games-emulation/libretro-nestopia 0.0.1_pre20180723 9999: Nestopia libretro port
 games-emulation/libretro-snes9x 0.0.1_pre20180723 0.0.2_pre20200107 9999: Snes9x libretro port
 games-emulation/libretro-twentyfortyeight 0.0.1_pre20180723 9999: Port of 2048 puzzle game to the libretro API
 games-emulation/lxdream 0.9.1-r3: An emulator for the Sega Dreamcast system
-games-emulation/m64py 0.2.4 0.2.5: A frontend for Mupen64Plus
+games-emulation/m64py 0.2.5: A frontend for Mupen64Plus
 games-emulation/mamory 0.2.25-r1: ROM management tools and library
 games-emulation/mastergear-bin 4.5: SEGA Master System / Game Gear emulator
 games-emulation/mednafen 0.9.46: Argument-driven multi-system emulator utilizing OpenGL and SDL
@@ -12804,7 +12804,7 @@ media-gfx/duhdraw 2.8.13-r1: ASCII art editor
 media-gfx/ebdftopcf 2: Optimally generate PCF files from BDF files
 media-gfx/enblend 4.2.0_p20161007-r1: Image Blending with Multiresolution Splines
 media-gfx/engauge 10.6: Convert an image file showing a graph or map into numbers
-media-gfx/entangle 2.0 3.0: Tethered Camera Control & Capture
+media-gfx/entangle 3.0: Tethered Camera Control & Capture
 media-gfx/eog 3.32.2 3.36.3: The Eye of GNOME image viewer
 media-gfx/eog-plugins 3.26.4-r1 3.26.5: Eye of GNOME plugins
 media-gfx/eom 1.24.0-r2: The MATE image viewer
@@ -13938,7 +13938,7 @@ media-sound/pragha 1.3.99.1: A lightweight music player (for Xfce)
 media-sound/protux 0.50.100: Professional Audio Tools for GNU/Linux
 media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
 media-sound/pulseaudio 13.0: A networked sound server with an advanced plugin system
-media-sound/pulseaudio-ctl 1.66 1.67: CLI utility to control PulseAudio volume
+media-sound/pulseaudio-ctl 1.67: CLI utility to control PulseAudio volume
 media-sound/pulseaudio-modules-bt 1.3-r2 1.4 9999: PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth
 media-sound/pulseeffects 4.7.2-r1 4.7.3 4.8.0 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pulsemixer 1.5.1 9999: CLI and curses mixer for PulseAudio
@@ -15218,7 +15218,7 @@ net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies suppo
 net-misc/mikutter 4.0.6 9999: Simple, powerful and moeful twitter client
 net-misc/minidlna 1.2.1-r1: DLNA/UPnP-AV compliant media server
 net-misc/minissdpd 1.5.20190824: MiniSSDP Daemon
-net-misc/miniupnpd 2.1.20200329 2.1.20200510: MiniUPnP IGD Daemon
+net-misc/miniupnpd 2.1.20200510: MiniUPnP IGD Daemon
 net-misc/mobile-broadband-provider-info 20190618: Database of mobile broadband service providers
 net-misc/modemmanager 1.8.2-r1 1.10.0: Modem and mobile broadband management libraries
 net-misc/monmotha 2.3.8-r1: MonMotha IPTables-based firewall script
@@ -15592,7 +15592,7 @@ net-wireless/bladerf 2018.08 2019.07 9999: Libraries for supporing the BladeRF h
 net-wireless/bladerf-firmware 2.2.0 2.3.2: bladeRF FX3 firmware images
 net-wireless/bladerf-fpga 0.7.3 0.11.0: bladeRF FPGA bitstreams
 net-wireless/blueberry 1.3.9: A Bluetooth configuration tool
-net-wireless/blueman 2.1.2 2.1.3 9999: Simple and intuitive GTK+ Bluetooth Manager
+net-wireless/blueman 2.1.3 9999: Simple and intuitive GTK+ Bluetooth Manager
 net-wireless/bluez 5.54 5.55: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/bluez-tools 0_p20161212: A set of tools to manage bluetooth devices for linux
@@ -17050,7 +17050,7 @@ sys-apps/pcsc-lite 1.8.25-r1 1.8.26 1.9.0: PC/SC Architecture smartcard middlewa
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.5.6 1.5.7: PC/SC Architecture smartcard tools
 sys-apps/pick 3.0.1: a fuzzy search tool for the command-line
-sys-apps/pkgcore 0.10.12 0.10.13 9999: a framework for package management
+sys-apps/pkgcore 0.10.13 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r5 0.9.99_alpha-r6: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
@@ -18193,7 +18193,7 @@ www-servers/nginx 1.18.0-r2 1.19.2-r1: Robust, small and high performance http a
 www-servers/nginx-unit 1.17.0 1.18.0: Dynamic web and application server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
-www-servers/pshs 0.3.3 0.3.4 9999: Pretty small HTTP server -- a command-line tool to share files
+www-servers/pshs 0.3.4 9999: Pretty small HTTP server -- a command-line tool to share files
 www-servers/puma 3.12.5-r1 4.3.4-r1: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
 www-servers/resin 4.0.48-r1: A fast Servlet and JSP engine
 www-servers/servefile 0.4.4_p20200211: Serve a single file via HTTP
@@ -18585,7 +18585,7 @@ x11-misc/qarma 1: Zenity Clone for Qt5
 x11-misc/qcomicbook 0.9.1: A viewer for comic book archives containing jpeg/png images
 x11-misc/qlipper 5.0.0 5.1.2: Lightweight and cross-platform clipboard history applet
 x11-misc/qps 2.1.0-r1: Qt GUI Process Manager
-x11-misc/qt5ct 1.0 1.1: Qt5 configuration tool, similar to qtconfig for Qt4
+x11-misc/qt5ct 1.1: Qt5 configuration tool, similar to qtconfig for Qt4
 x11-misc/qterm 0.7.1 0.7.3: A BBS client based on Qt
 x11-misc/qtfm 6.2.0 99999: Small, lightweight file manager based on pure Qt
 x11-misc/quitcount 3.1.3: A simple applet that shows what you saved since you quit smoking.
@@ -19119,19 +19119,19 @@ x11-wm/xmonad 0.15: A tiling window manager
 x11-wm/xmonad-contrib 0.16: Third party extensions for xmonad
 x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
 x11-wm/xpra 3.0.2-r1 3.0.5-r1: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
-xfce-base/exo 0.12.11 4.15.1 4.15.2: Extensions, widgets and framework library with session support for Xfce
-xfce-base/garcon 0.6.4-r2 0.7.0 0.7.1: Xfce's freedesktop.org specification compatible menu implementation library
+xfce-base/exo 0.12.11 4.15.2: Extensions, widgets and framework library with session support for Xfce
+xfce-base/garcon 0.6.4-r2 0.7.1: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.14.1 4.15.3-r1: Unified widget and session management libs for Xfce
-xfce-base/libxfce4util 4.14.0 4.15.2 4.15.3: A basic utility library for the Xfce desktop environment
-xfce-base/thunar 1.8.15 4.15.1 4.15.2: File manager for the Xfce desktop environment
-xfce-base/xfce4-appfinder 4.14.0 4.15.0 4.15.1: A tool to find and launch installed applications for the Xfce desktop
+xfce-base/libxfce4util 4.14.0 4.15.3: A basic utility library for the Xfce desktop environment
+xfce-base/thunar 1.8.15 4.15.2: File manager for the Xfce desktop environment
+xfce-base/xfce4-appfinder 4.14.0 4.15.1: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.14-r2 4.16_pre1: The Xfce Desktop Environment (meta package)
-xfce-base/xfce4-panel 4.14.4 4.15.3 4.15.4: Panel for the Xfce desktop environment
-xfce-base/xfce4-session 4.14.1 4.14.2 4.15.0: A session manager for the Xfce desktop environment
-xfce-base/xfce4-settings 4.14.3 4.15.1-r1 4.15.2: Configuration system for the Xfce desktop environment
+xfce-base/xfce4-panel 4.14.4 4.15.4: Panel for the Xfce desktop environment
+xfce-base/xfce4-session 4.14.2 4.15.0: A session manager for the Xfce desktop environment
+xfce-base/xfce4-settings 4.14.3 4.15.2: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.14.1 4.14.3 4.15.0: A configuration management system for Xfce
 xfce-base/xfdesktop 4.14.2 4.15.0: Desktop manager for the Xfce desktop environment
-xfce-base/xfwm4 4.14.2 4.14.3 4.14.4 4.14.5 4.15.0 4.15.1: Window manager for the Xfce desktop environment
+xfce-base/xfwm4 4.14.2 4.14.5 4.15.1: Window manager for the Xfce desktop environment
 xfce-extra/eatmonkey 0.1.4-r1: A download manager that works exclusively with aria2
 xfce-extra/multiload-nandhp 0.3-r4: A port of the GNOME multiload applet for the Xfce panel
 xfce-extra/thunar-archive-plugin 0.4.0: Archive plug-in for the Thunar filemanager
@@ -19143,7 +19143,7 @@ xfce-extra/transd 0_p20120503-r1: A small daemon to watch for window creation an
 xfce-extra/tumbler 0.2.8 0.2.9 0.3.0: A thumbnail service for Thunar
 xfce-extra/xfce4-alsa-plugin 0.3.0: Simple ALSA volume control for xfce4-panel
 xfce-extra/xfce4-battery-plugin 1.1.3: A battery monitor panel plugin for the Xfce desktop environment
-xfce-extra/xfce4-clipman-plugin 1.4.4 1.6.1: A clipboard manager plug-in for the Xfce panel
+xfce-extra/xfce4-clipman-plugin 1.6.1: A clipboard manager plug-in for the Xfce panel
 xfce-extra/xfce4-cpufreq-plugin 1.2.1: A panel plugin for showing information about cpufreq settings
 xfce-extra/xfce4-cpugraph-plugin 1.1.0: A system load plug-in for the Xfce panel
 xfce-extra/xfce4-datetime-plugin 0.8.0: A panel plug-in with date, time and embedded calender
@@ -19173,15 +19173,15 @@ xfce-extra/xfce4-sensors-plugin 1.3.0-r1 1.3.92-r1: A panel plug-in for acpi, lm
 xfce-extra/xfce4-smartbookmark-plugin 0.5.1: Smart bookmark plug-in for the Xfce desktop environment
 xfce-extra/xfce4-statusnotifier-plugin 0.2.2: A panel area for fd.o Status Notifiers (systray replacement)
 xfce-extra/xfce4-systemload-plugin 1.2.3: System load plug-in for Xfce panel
-xfce-extra/xfce4-taskmanager 1.2.2 1.2.3: Easy to use task manager
-xfce-extra/xfce4-time-out-plugin 1.1.0 1.1.1: A panel plug-in to take periodical breaks from the computer
-xfce-extra/xfce4-timer-plugin 1.7.0 1.7.1: A simple timer plug-in for the Xfce desktop environment
+xfce-extra/xfce4-taskmanager 1.2.3: Easy to use task manager
+xfce-extra/xfce4-time-out-plugin 1.1.1: A panel plug-in to take periodical breaks from the computer
+xfce-extra/xfce4-timer-plugin 1.7.1: A simple timer plug-in for the Xfce desktop environment
 xfce-extra/xfce4-vala 4.10.3-r7: Vala bindings for the Xfce desktop environment
 xfce-extra/xfce4-verve-plugin 2.0.0: A comfortable command line plugin for the Xfce panel
 xfce-extra/xfce4-volumed-pulse 0.2.3: Daemon to control volume up/down and mute keys for pulseaudio
 xfce-extra/xfce4-wavelan-plugin 0.6.1: A panel plug-in to display wireless interface statistics
 xfce-extra/xfce4-weather-plugin 0.10.1: A weather plug-in for the Xfce desktop environment
-xfce-extra/xfce4-whiskermenu-plugin 2.4.4 2.4.5 2.4.6: Alternate application launcher for Xfce
+xfce-extra/xfce4-whiskermenu-plugin 2.4.6: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.4.6-r3: Xfce plugin puts the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-xkb-plugin 0.8.1: XKB layout switching panel plug-in for the Xfce desktop environment
 xfce-extra/xfdashboard 0.7.5: Maybe a GNOME shell like dashboard for the Xfce desktop environment
