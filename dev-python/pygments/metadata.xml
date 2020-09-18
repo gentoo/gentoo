@@ -9,6 +9,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">Pygments</remote-id>
-		<remote-id type="bitbucket">birkenfeld/pygments-main</remote-id>
+		<remote-id type="github">pygments/pygments</remote-id>
 	</upstream>
 </pkgmetadata>
