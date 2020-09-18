@@ -6530,7 +6530,7 @@ dev-perl/Font-AFM 1.200.0-r1 1.200.0-r2 1.200.0-r3: Parse Adobe Font Metric file
 dev-perl/Font-TTF 1.60.0 1.60.0-r1: module for compiling and altering fonts
 dev-perl/Format-Human-Bytes 0.60.0-r1 0.60.0-r2: Format a bytecount and make it human readable
 dev-perl/FreezeThaw 0.500.100-r1 0.500.100-r2: converting Perl structures to strings and back
-dev-perl/Fuse 0.16.1 0.16.1-r1: Fuse module for perl
+dev-perl/Fuse 0.16.1 0.16.1-r1 0.16.1-r2: Fuse module for perl
 dev-perl/GD 2.560.0-r1 2.560.0-r2 2.660.0: Interface to Thomas Boutell's gd library
 dev-perl/GD-Barcode 1.150.0-r1: GD::Barcode - Create barcode image with GD
 dev-perl/GD-Graph3d 0.630.0-r1 0.630.0-r2: Create 3D Graphs with GD and GD::Graph
@@ -6717,7 +6717,7 @@ dev-perl/LaTeX-Table 1.0.6-r1: Perl extension for the automatic generation of La
 dev-perl/Lab-Measurement 3.692 3.721 9999: Measurement control and automation with Perl
 dev-perl/Lab-VXI11 0.20.0: Perl interface to the VXI-11 Test&Measurement backend
 dev-perl/Lab-Zhinst 0.30.0 0.50.0 1.20.0 9999: Perl bindings to the LabOne API of Zurich Instruments
-dev-perl/Lchown 1.10.0-r2: Use the lchown(2) system call from Perl
+dev-perl/Lchown 1.10.0-r2 1.10.0-r3: Use the lchown(2) system call from Perl
 dev-perl/Lexical-Persistence 1.23.0: Bind lexicals to persistent data
 dev-perl/Lexical-SealRequireHints 0.11.0: Prevent leakage of lexical hints
 dev-perl/Lingua-EN-Inflect 1.902.0: Perl module to pluralize English words

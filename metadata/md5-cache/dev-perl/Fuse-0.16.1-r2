@@ -1,0 +1,15 @@
+BDEPEND=virtual/perl-ExtUtils-MakeMaker test? ( sys-fs/fuse:0= dev-perl/Filesys-Statvfs dev-perl/Lchown dev-perl/Unix-Mknod ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sys-fs/fuse:0= dev-lang/perl
+DESCRIPTION=Fuse module for perl
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/Fuse
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=sys-fs/fuse:0= dev-perl/Filesys-Statvfs dev-perl/Lchown dev-perl/Unix-Mknod dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DP/DPATES/Fuse-0.16.1.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=f5762046262de4210653584ede6c4049
