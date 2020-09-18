@@ -7478,7 +7478,7 @@ sci-libs/rtabmap:openni2 - Adds support for Kinect-like 3D sensors devices with 
 sci-libs/scikits_image:freeimage - Enable support for image i/o via media-libs/freeimage
 sci-libs/scikits_image:pyamg - Enable support for algebraic solvers via dev-python/pyamg
 sci-libs/scotch:int64 - Build the 64 bits integer library (needed for > 2^31 vertices)
-sci-libs/scotch:tools - Build and install extra exec tools
+sci-libs/scotch:tools - Provides the graph, mesh, architecture, mapping/ordering, output handling programs (see Scotch User's Guide).
 sci-libs/shogun:R - Enable support for dev-lang/R
 sci-libs/shogun:octave - Enable support for sci-mathematics/octave
 sci-libs/shogun:opencl - Enable support for building against OpenCL

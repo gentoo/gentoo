@@ -16349,7 +16349,7 @@ sci-libs/mkl 10.0.5.025-r1: Intel(R) Math Kernel Library: linear algebra, fft, m
 sci-libs/mkl-rt 2019.4.243: Intel Math Kernel Library (Runtime)
 sci-libs/mpfi 1.5.3: Multiple precision interval arithmetic library based on MPFR
 sci-libs/mpir 2.6.0-r2 2.7.2 3.0.0: Library for arbitrary precision integer arithmetic (fork of gmp)
-sci-libs/mumps 5.1.2: MUltifrontal Massively Parallel sparse direct matrix Solver
+sci-libs/mumps 5.1.2-r1: MUltifrontal Massively Parallel sparse direct matrix Solver
 sci-libs/nanoflann 1.2.3 9999: C++ header-only library for Nearest Neighbor (NN) search wih KD-trees
 sci-libs/neartree 5.1.1: Function library efficiently solving the Nearest Neighbor Problem
 sci-libs/nemesis 6.09: Enhancement to the EXODUSII finite element database model
@@ -16394,7 +16394,7 @@ sci-libs/scikits_image 0.13.0-r1: Image processing routines for SciPy
 sci-libs/scikits_learn 0.19.0-r1 0.20.2 0.20.4 0.22.2_p1: Machine learning library for Python
 sci-libs/scikits_optimization 0.3-r1: Python module for numerical optimization
 sci-libs/scikits_timeseries 0.91.3-r2: SciPy module for manipulating, reporting, and plotting time series
-sci-libs/scotch 5.1.12b 6.0.4-r2: Software for graph, mesh and hypergraph partitioning
+sci-libs/scotch 6.0.4-r2: Software for graph, mesh and hypergraph partitioning
 sci-libs/shapelib 1.5.0: Library for manipulating ESRI Shapefiles
 sci-libs/shogun 5.0.0-r1: Large Scale Machine Learning Toolbox
 sci-libs/silo 4.10.2-r1: A mesh and field I/O library and scientific database
