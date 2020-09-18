@@ -61,6 +61,9 @@ python_prepare_all() {
 	sed -e "/'nosetests%s = nose:run_exit' % py_vers_tag,/d" \
 		-i setup.py || die "sed2 failed"
 
+	# fix manpage install path
+	sed -i -e 's:man/:share/&:' setup.py || die
+
 	distutils-r1_python_prepare_all
 }
 
