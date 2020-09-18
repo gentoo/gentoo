@@ -87,6 +87,8 @@ PATCHES=(
 	# should fix https://bugs.gentoo.org/741162 taken from:
 	# https://gitlab.isc.org/isc-projects/bind9/-/merge_requests/4073
 	"${FILESDIR}/bind-9.16.6-bug-741162.patch"
+
+	"${FILESDIR}/ldap-library-path-on-multilib-machines.patch"
 )
 
 # bug 479092, requires networking
