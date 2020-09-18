@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc examples mpi"
 
 RDEPEND="
@@ -33,6 +33,7 @@ src_prepare() {
 }
 
 src_configure() {
+	# Fix should land in 3.8.0
 	test-flag-FC -fallow-argument-mismatch &&
 		append-fflags -fallow-argument-mismatch
 
@@ -56,4 +57,7 @@ src_install() {
 			dodoc -r PARPACK/EXAMPLES/MPI
 		fi
 	fi
+
+	# no static archives
+	find "${ED}" -name '*.la' -delete || die
 }
