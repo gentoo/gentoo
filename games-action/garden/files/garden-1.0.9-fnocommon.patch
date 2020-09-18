@@ -1,0 +1,11 @@
+--- a/src/main.c	2020-09-18 22:43:49.545959883 -0000
++++ b/src/main.c	2020-09-18 22:43:40.465778941 -0000
+@@ -55,7 +55,7 @@ struct enemystruct enemy [NO_ENEMIES];
+ struct ebulletstruct ebullet [NO_EBULLETS];
+ struct pbulletstruct pbullet [NO_PBULLETS];
+ struct arenastruct arena;
+-struct eclassstruct eclass [NO_ENEMY_TYPES];
++extern struct eclassstruct eclass [NO_ENEMY_TYPES];
+ struct cloudstruct cloud [NO_CLOUDS];
+ struct bossstruct boss;
+ 
