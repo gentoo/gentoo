@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-09-18)
+# media-libs/libilbc is not ported to ia64
+net-analyzer/wireshark ilbc
+
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No drivers on this architecture support Vulkan
 media-libs/mesa vulkan vulkan-overlay zink
@@ -38,7 +42,7 @@ app-text/texlive context l10n_ja
 # Requires unsupported dev-python/gevent.
 dev-python/socketpool eventlet gevent
 
-# # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-12)
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-04-12)
 # ruby-2.7 dropped ia64 support, mask dependencies requiring ruby.
 # These pull in:
 # - direct ruby dependency:
