@@ -10,7 +10,7 @@ SRC_URI="http://offog.org/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE="+ao audiofile flac jack mad modplug opus vorbis"
 
 BDEPEND="
