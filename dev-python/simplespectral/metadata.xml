@@ -10,7 +10,7 @@
 		<name>Radio</name>
 	</maintainer>
 	<use>
-		<flag name="faster">Use <pkg>sci-libs/scipy</pkg> to speed up drawing</flag>
+		<flag name="faster">Use <pkg>dev-python/scipy</pkg> to speed up drawing</flag>
 		<flag name="fastest">Use <pkg>dev-python/pyFFTW</pkg> to speed up drawing to the max</flag>
 	</use>
 	<upstream>

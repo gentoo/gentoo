@@ -22,7 +22,7 @@ RDEPEND="
 	dev-ros/calibration_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	$(python_gen_cond_dep "dev-python/matplotlib[\${PYTHON_USEDEP}]")
 	$(python_gen_cond_dep "dev-python/python_orocos_kdl[\${PYTHON_USEDEP}]")
-	$(python_gen_cond_dep "sci-libs/scipy[\${PYTHON_USEDEP}]")
+	$(python_gen_cond_dep "dev-python/scipy[\${PYTHON_USEDEP}]")
 	$(python_gen_cond_dep "dev-python/urdf_parser_py[\${PYTHON_USEDEP}]")
 "
 DEPEND="${RDEPEND}

@@ -21,7 +21,7 @@ RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	>=dev-python/pandas-0.23.0[${PYTHON_USEDEP}]
 	dev-python/patsy[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}]
+	dev-python/scipy[${PYTHON_USEDEP}]
 "
 BDEPEND="dev-python/cython[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}

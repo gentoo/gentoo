@@ -21,7 +21,7 @@ IUSE="examples"
 RDEPEND="
 	>=dev-python/numpy-1.12[${PYTHON_USEDEP}]
 	>=dev-python/octave_kernel-0.31.0[${PYTHON_USEDEP}]
-	>=sci-libs/scipy-0.17[${PYTHON_USEDEP}]"
+	>=dev-python/scipy-0.17[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? (
 		dev-python/ipython[${PYTHON_USEDEP}]

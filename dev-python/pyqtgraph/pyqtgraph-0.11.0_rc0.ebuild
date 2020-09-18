@@ -20,7 +20,7 @@ KEYWORDS="amd64 x86"
 IUSE="examples opengl svg"
 
 RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}]
+	dev-python/scipy[${PYTHON_USEDEP}]
 	dev-python/PyQt5[gui,widgets,opengl=,svg=,${PYTHON_USEDEP}]
 	opengl? ( dev-python/pyopengl[${PYTHON_USEDEP}] )"
 

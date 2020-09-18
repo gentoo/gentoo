@@ -25,7 +25,7 @@ RDEPEND="
 		>=dev-python/matplotlib-1.1[${PYTHON_MULTI_USEDEP}]
 		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
 		dev-python/setuptools_scm[${PYTHON_MULTI_USEDEP}]
-		>=sci-libs/scipy-0.11[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/scipy-0.11[${PYTHON_MULTI_USEDEP}]
 	')
 "
 DEPEND="${RDEPEND}"

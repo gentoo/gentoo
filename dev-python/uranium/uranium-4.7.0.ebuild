@@ -34,7 +34,7 @@ DEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/PyQt5[${PYTHON_USEDEP},declarative,network,svg]
 		dev-python/numpy[${PYTHON_USEDEP}]
-		>=sci-libs/scipy-1.1[${PYTHON_USEDEP}]
+		>=dev-python/scipy-1.1[${PYTHON_USEDEP}]
 		sci-libs/Shapely[${PYTHON_USEDEP}]
 	')"
 

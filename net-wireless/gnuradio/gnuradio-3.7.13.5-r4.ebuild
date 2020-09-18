@@ -78,8 +78,8 @@ RDEPEND="${PYTHON_DEPS}
 		dev-python/six[${PYTHON_MULTI_USEDEP}]
 		filter? (
 			|| (
-				sci-libs/scipy-python2[${PYTHON_MULTI_USEDEP}]
-				sci-libs/scipy[${PYTHON_MULTI_USEDEP}]
+				dev-python/scipy-python2[${PYTHON_MULTI_USEDEP}]
+				dev-python/scipy[${PYTHON_MULTI_USEDEP}]
 			)
 		)
 		grc? (
