@@ -63,6 +63,7 @@ DEPEND="
 
 BDEPEND="
 	app-arch/unzip
+	app-text/dos2unix
 	dev-embedded/xa
 	dev-lang/perl
 	sys-apps/texinfo
