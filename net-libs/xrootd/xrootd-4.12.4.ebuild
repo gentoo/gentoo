@@ -42,12 +42,16 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
-PATCHES=( "${FILESDIR}"/xrootd-4.8.3-crc32.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.8.3-crc32.patch
+	"${FILESDIR}"/${PN}-4.12.4-http_secret_leakage.patch
+)
 
 # xrootd plugins are not intended to be linked with,
 # they are to be loaded at runtime by xrootd,
 # see https://github.com/xrootd/xrootd/issues/447
-QA_SONAME="/usr/lib.*/libXrd.*-$(ver_cut 1).so"
+QA_SONAME="/usr/lib.*/libXrd.*-$(ver_cut 1).so
+	/usr/lib.*/libXrdClTests\.so"
 
 pkg_setup() {
 	use python && python_setup
