@@ -63,15 +63,17 @@ src_prepare() {
 	sed -i -e '/cmdclass/,/},$/d' \
 		-e '/data_files/s:man/:share/man/:' "${S}"/setup.py || die
 
-	local remove_tests=(
-		# TODO: does not respect PATH?
-		test/Clang
-		# broken
-		test/DVIPDF/DVIPDFFLAGS.py
-		test/Java/swig-dependencies.py
-		test/Java/multi-step.py
-	)
-	rm -r "${remove_tests[@]}" || die
+	if use test; then
+		local remove_tests=(
+			# TODO: does not respect PATH?
+			test/Clang
+			# broken
+			test/DVIPDF/DVIPDFFLAGS.py
+			test/Java/swig-dependencies.py
+			test/Java/multi-step.py
+		)
+		rm -r "${remove_tests[@]}" || die
+	fi
 }
 
 python_test() {
