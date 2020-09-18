@@ -7,7 +7,7 @@ USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 # The test target also contains test:exe but that requires
 # shoulda-context which we do not have packaged yet.
-RUBY_FAKEGEM_TASK_TEST="test:functional test:units"
+RUBY_FAKEGEM_TASK_TEST="spec test:functional test:units"
 
 RUBY_FAKEGEM_TASK_DOC="doc"
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -31,6 +31,8 @@ IUSE=""
 # requires redcloth-4.2.2. We don't depend on this version to make
 # bootstrapping rspec with new versions easier, since redcloth depends
 # on rake-compiler.
+
+ruby_add_bdepend "test? ( dev-ruby/rspec:3 )"
 
 all_ruby_prepare() {
 	sed -i -e "/[Bb]undler/d" Rakefile || die
