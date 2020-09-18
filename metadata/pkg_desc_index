@@ -8020,7 +8020,7 @@ dev-python/colorama 0.4.3: ANSI escape character sequences for colored terminal 
 dev-python/colorclass 2.2.0-r1: Colorful worry-free console applications for multiple platforms
 dev-python/coloredlogs 10.0: Colored stream handler for the logging module
 dev-python/colorlog 3.1.4: Log formatting with colors
-dev-python/colorspacious 1.1.0 1.1.2: Powerful, accurate, and easy-to-use Python library for colorspace conversions
+dev-python/colorspacious 1.1.2: Powerful, accurate, and easy-to-use Python library for colorspace conversions
 dev-python/commonmark 0.9.1: Python parser for the CommonMark Markdown spec
 dev-python/configargparse 1.2.3: Drop-in replacement for argparse supporting config files and env variables
 dev-python/configclass 0.2.0: A Python to class to hold configuration values
@@ -8215,7 +8215,7 @@ dev-python/freezegun 0.3.15 1.0.0: Let your Python tests travel through time
 dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static files
 dev-python/frozendict 1.2: A simple immutable mapping for python
 dev-python/fs 2.4.9-r2 2.4.11: Filesystem abstraction layer
-dev-python/fsspec 0.7.4 0.8.2: A specification that python filesystems should adhere to
+dev-python/fsspec 0.7.4 0.8.0 0.8.2: A specification that python filesystems should adhere to
 dev-python/fudge 1.1.1: Replace real objects with fakes (mocks, stubs, etc) while testing
 dev-python/funcparserlib 0.3.6-r1: Recursive descent parsing library based on functional combinators
 dev-python/funcsigs 1.0.2-r1: Python function signatures backport from PEP362 for Python 2.7-3.5
@@ -8283,10 +8283,10 @@ dev-python/httplib2 0.18.1: A comprehensive HTTP client library
 dev-python/httpretty 0.9.6 1.0.2-r1: HTTP client mock for Python
 dev-python/httpstat 1.2.1-r1: httpstat visualizes cURL statistics in a way of beauty and clarity
 dev-python/humanfriendly 4.18: Human friendly output for text interfaces using Python
-dev-python/humanize 2.4.1 2.6.0: Common humanization utilities
+dev-python/humanize 2.6.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
-dev-python/hyperlink 19.0.0 20.0.1: A featureful, correct URL for Python
+dev-python/hyperlink 20.0.1: A featureful, correct URL for Python
 dev-python/hypothesis 4.57.1 5.24.4 5.29.4 5.35.3: A library for property based testing
 dev-python/icalendar 4.0.6 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.8 2.10: Internationalized Domain Names in Applications (IDNA)
@@ -8303,7 +8303,7 @@ dev-python/importlib_resources 1.5.0-r1 3.0.0-r1: Read resources from Python pac
 dev-python/incremental 17.5.0: Incremental is a small library that versions your Python projects
 dev-python/indexed_gzip 0.8.10: Fast random access of gzip files in Python
 dev-python/inflect 3.0.2 4.1.0: Correctly inflect words and numbers
-dev-python/inflection 0.5.0 0.5.1: A port of Ruby on Rails' inflector to Python
+dev-python/inflection 0.5.1: A port of Ruby on Rails' inflector to Python
 dev-python/influxdb 5.3.0-r1: InfluxDB client
 dev-python/iniconfig 1.0.0: Brain-dead simple config-ini parsing
 dev-python/iniparse 0.4-r2: Better INI parser for Python
@@ -8373,10 +8373,10 @@ dev-python/jwcrypto 0.7.0: Implements JWK,JWS,JWE specifications using python-cr
 dev-python/kafka-python 1.4.7: Kafka protocol support in Python
 dev-python/kaitaistruct 0.8: Kaitai Struct runtime for Python
 dev-python/kaptan 0.5.12-r1: Configuration manager in your pocket
-dev-python/kazoo 2.7.0 2.8.0: A high-level Python library that makes it easier to use Apache Zookeeper
+dev-python/kazoo 2.8.0: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/kconfiglib 14.1.0: A flexible Python Kconfig implementation
 dev-python/keep 2.9: Personal shell command keeper and snippets manager
-dev-python/keyring 21.2.1 21.3.0 21.3.1 21.4.0: Provides access to the system keyring service
+dev-python/keyring 21.3.0 21.4.0: Provides access to the system keyring service
 dev-python/keystoneauth 4.0.1: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 7.0.1: A middleware for the OpenStack Keystone API
 dev-python/kiwisolver 1.0.1 1.2.0: An efficient C++ implementation of the Cassowary constraint solving algorithm
@@ -8392,7 +8392,7 @@ dev-python/ldap3 2.7: A strictly RFC 4511 conforming LDAP V3 pure Python client
 dev-python/ldappool 2.4.1: A connection pool for python-ldap
 dev-python/lesscpy 0.14.0: A compiler written in Python for the LESS language
 dev-python/libarchive-c 2.9: A Python interface to libarchive
-dev-python/libcloud 3.0.0 3.1.0: Unified Interface to the Cloud - python support libs
+dev-python/libcloud 3.1.0: Unified Interface to the Cloud - python support libs
 dev-python/liblarch 3.0.1: Library to handle directed acyclic graphs
 dev-python/libnacl 1.6.1: Python ctypes wrapper for libsodium
 dev-python/libpillowfight 0.3.0: Small library containing various image processing algorithms
@@ -8403,7 +8403,7 @@ dev-python/line_profiler 3.0.2: Line-by-line profiler
 dev-python/linecache2 1.0.0: Backports of the linecache module
 dev-python/lit 9.0.1 10.0.0 10.0.1 11.0.0_rc1 11.0.0_rc2 11.0.0.9999 12.0.0.9999: A stand-alone install of the LLVM suite testing tool
 dev-python/livereload 2.6.1: Python LiveReload is an awesome tool for web developers
-dev-python/llfuse 1.3.5 1.3.6: Python bindings for the low-level FUSE API
+dev-python/llfuse 1.3.6: Python bindings for the low-level FUSE API
 dev-python/llvmlite 0.32.1 0.33.0 0.33.0-r1 0.34.0: Python wrapper around the llvm C++ library
 dev-python/lmdb 0.92: Python bindings for the Lightning Database
 dev-python/lmfit 1.0.1: Non-Linear Least-Squares Minimization and Curve-Fitting for Python
@@ -8411,11 +8411,11 @@ dev-python/locket 0.2.0-r1: File-based locks for Python
 dev-python/lockfile 0.12.2-r2: Platform-independent file locking module
 dev-python/logbook 1.5.3: A logging replacement for Python
 dev-python/logfury 0.1.2-r1: Boilerplate library for logging method calls
-dev-python/loguru 0.5.1 0.5.2: Python logging made (stupidly) simple
+dev-python/loguru 0.5.2: Python logging made (stupidly) simple
 dev-python/logutils 0.3.5: The logutils package provides a set of handlers for the Python standard
 dev-python/loky 2.8.0-r1: Robust and reusable Executor for joblib
 dev-python/lunr 0.5.6: A Python implementation of Lunr.js
-dev-python/lxml 4.5.1 4.5.2: A Pythonic binding for the libxml2 and libxslt libraries
+dev-python/lxml 4.5.2: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 3.0.2: LZ4 Bindings for Python
 dev-python/m2crypto 0.35.2 0.36.0: A Python crypto and SSL toolkit
 dev-python/m2r 0.2.1: Markdown to reStructuredText converter
@@ -11914,8 +11914,8 @@ gnome-extra/synapse 0.2.99.4: A program launcher in the style of GNOME Do
 gnome-extra/yelp 3.34.0 3.36.0: Help browser for GNOME
 gnome-extra/yelp-xsl 3.34.2 3.36.0: XSL stylesheets for yelp
 gnome-extra/zenity 3.32.0: Tool to display dialogs from the commandline and shell scripts
-gnustep-apps/aclock 0.4.0 0.4.0-r1: Analog dockapp clock for GNUstep
-gnustep-apps/addresses 0.4.8 0.4.8-r1: Apple Addressbook work alike (standalone and for GNUMail)
+gnustep-apps/aclock 0.4.0-r1: Analog dockapp clock for GNUstep
+gnustep-apps/addresses 0.4.8-r1: Apple Addressbook work alike (standalone and for GNUMail)
 gnustep-apps/affiche 0.6.0-r4: Affiche allows people to 'stick' notes
 gnustep-apps/batmon 0.8: displays the status of your laptop battery
 gnustep-apps/cdplayer 0.6.0: Small CD Audio Player for GNUstep
@@ -11924,7 +11924,7 @@ gnustep-apps/cynthiune 1.0.0: Free software and romantic music player for GNUste
 gnustep-apps/fisicalab 0.3.5: educational application to solve physics problems
 gnustep-apps/ftp 0.5 0.6: FTP client for GNUstep
 gnustep-apps/gemas 0.4: a simple code editor for GNUstep
-gnustep-apps/gmines 0.2 0.2-r1: The well-known minesweeper game
+gnustep-apps/gmines 0.2-r1: The well-known minesweeper game
 gnustep-apps/gnumail 1.2.2 1.2.3 1.3.0: A fully featured mail application for GNUstep
 gnustep-apps/gorm 1.2.23 1.2.24 1.2.26: A clone of the NeXTstep Interface Builder application for GNUstep
 gnustep-apps/graphos 0.6 0.7: vector drawing application centered around bezier paths
