@@ -19,7 +19,10 @@ SLOT="52"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 x86"
 IUSE="debug minimal +system-icu test"
 
-RESTRICT="!test? ( test ) ia64? ( test )"
+# Disable tests:
+# Version is dead and most issues are related to the use of
+# system's ICU.
+RESTRICT="test"
 
 S="${WORKDIR}/${MY_P%.rc*}"
 BUILDDIR="${S}/jsobj"
