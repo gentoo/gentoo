@@ -77,7 +77,7 @@ src_configure() {
 src_test() { :; }
 
 src_install() {
-	local DOC_CONTENTS
+	DOC_CONTENTS=
 
 	if use passwdqc; then
 		DOC_CONTENTS="To amend the existing password policy please see the man 5 passwdqc.conf
@@ -89,11 +89,11 @@ src_install() {
 				page and then edit the /etc/security/pwquality.conf file"
 	fi
 
-	readme.gentoo_create_doc
+	! [[ -z "${DOC_CONTENTS}" ]] && readme.gentoo_create_doc
 
 	dopamd -r stack/.
 }
 
 pkg_postinst() {
-	readme.gentoo_print_elog
+	! [[ -z "${DOC_CONTENTS}" ]] && readme.gentoo_print_elog
 }
