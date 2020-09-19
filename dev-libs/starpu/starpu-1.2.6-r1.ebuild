@@ -25,8 +25,7 @@ RDEPEND="
 	sys-apps/hwloc:0=
 	blas? ( virtual/blas )
 	cuda? ( dev-util/nvidia-cuda-toolkit
-			x11-drivers/nvidia-drivers
-			blas? ( sci-libs/magma ) )
+			x11-drivers/nvidia-drivers )
 	fftw? ( sci-libs/fftw:3.0= )
 	mpi? ( virtual/mpi )
 	opencl? ( virtual/opencl )
@@ -55,7 +54,7 @@ src_configure() {
 	use blas && export BLAS_LIBS="$($(tc-getPKG_CONFIG) --libs blas)"
 
 	econf \
-		$(use cuda && use_enable blas magma) \
+		--disable-magma \
 		$(use mpi && use_enable test mpi-check) \
 		$(use_enable cuda) \
 		$(use_enable doc build-doc) \
