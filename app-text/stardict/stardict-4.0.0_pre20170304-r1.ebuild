@@ -8,9 +8,8 @@ EAPI=6
 #       seperate for now.
 
 GNOME2_LA_PUNT=yes
-PYTHON_COMPAT=( python2_7 )
 
-inherit autotools flag-o-matic gnome2 python-single-r1
+inherit autotools flag-o-matic gnome2
 
 DESCRIPTION="A international dictionary supporting fuzzy and glob style matching"
 HOMEPAGE="http://stardict-4.sourceforge.net/
@@ -24,7 +23,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="advertisement cal debug dictdotcn espeak examples flite
 fortune gucharmap +htmlparse info man perl +powerwordparse
-pronounce python qqwry spell tools updateinfo +wikiparse +wordnet
+pronounce qqwry spell tools updateinfo +wikiparse +wordnet
 +xdxfparse youdaodict"
 
 RESTRICT="test"
@@ -47,7 +46,6 @@ COMMON_DEPEND="
 		dev-libs/expat
 		dev-libs/libpcre:=
 		dev-libs/libxml2:=
-		python? ( ${PYTHON_DEPS} )
 	)
 "
 RDEPEND="${COMMON_DEPEND}
@@ -63,7 +61,6 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
 "
-REQUIRED_USE="tools? ( python? ( ${PYTHON_REQUIRED_USE} ) )"
 
 # docs are messy, installed manually below
 DOCS=""
@@ -79,17 +76,6 @@ src_prepare() {
 
 	# libsigc++ started to require c++11 support
 	append-cxxflags "-std=c++11"
-
-	if use python; then
-		local f
-		# force python shebangs handlable by python_doscript
-		for f in tools/src/*.py; do
-			[[ $(head -n1 "${f}") =~ ^#! ]] || continue
-			sed -i '1 s|.*|#!/usr/bin/python|' tools/src/*.py || die
-		done
-		# script contains UTF-8 symbols, but has no ecoding set
-		sed -i '1 a # -*- coding: utf-8 -*-' tools/src/uyghur2dict.py || die
-	fi
 
 	# bug 604318
 	sed -i '/AM_GCONF_SOURCE_2/d' dict/configure.ac || die
@@ -179,8 +165,6 @@ src_install() {
 			${PN}-text2bin ${PN}-bin2text ${PN}-repair"
 
 		use perl && apps+=" dicts-dump.pl ncce2stardict.pl parse-oxford.perl"
-		use python && apps+=" hanzim2dict.py jm2stardict.py lingea-trd-decoder.py
-			makevietdict.py uyghur2dict.py"
 
 		for app in ${apps}; do
 			if [[ "${app}" =~ ^${PN} ]]; then
@@ -189,7 +173,6 @@ src_install() {
 				newbin "tools/src/${app}" "${PN}_${app}"
 			fi
 		done
-		use python && python_doscript "${ED}"usr/bin/*.py
 
 		docinto tools
 		dodoc tools/{AUTHORS,ChangeLog,README}
