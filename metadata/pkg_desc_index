@@ -6029,7 +6029,7 @@ dev-perl/BSD-Resource 1.291.100 1.291.100-r2: Perl module for BSD process resour
 dev-perl/BSON 1.12.2: BSON serialization and deserialization (EOL)
 dev-perl/BZ-Client 4.400.200: A client for the Bugzilla web services API.
 dev-perl/Benchmark-Timer 0.711.200: Perl code benchmarking tool
-dev-perl/BerkeleyDB 0.550.0 0.630.0-r2: This module provides Berkeley DB interface for Perl
+dev-perl/BerkeleyDB 0.550.0 0.630.0-r2 0.640.0: This module provides Berkeley DB interface for Perl
 dev-perl/Bio-ASN1-EntrezGene 1.720.0: Regular expression-based Perl Parser for NCBI Entrez Gene
 dev-perl/Bio-DB-HTS 3.10.0-r1: Perl bindings for sci-libs/htslib
 dev-perl/Bio-Das 1.170.0-r2: Interface to Distributed Annotation System
@@ -14764,7 +14764,7 @@ net-irc/scrollz 2.3: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremely simple IRC client
 net-irc/telepathy-idle 0.2.0-r3: Full-featured IRC connection manager for Telepathy
 net-irc/unrealircd 4.2.4.1 5.0.6: An advanced Internet Relay Chat daemon
-net-irc/weechat 2.8 2.9 9999: Portable and multi-interface IRC client
+net-irc/weechat 2.9 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.8.1 1.8.2 9999: An advanced IRC Bouncer
 net-irc/znc-clientbuffer 1.0.48: A ZNC module which provides client specific buffers
