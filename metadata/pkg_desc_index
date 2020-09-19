@@ -3984,7 +3984,7 @@ dev-haskell/equivalence 0.3.5: Maintaining an equivalence relation implemented a
 dev-haskell/erf 2.0.0.0-r1: The error function, erf, and related functions
 dev-haskell/errorcall-eq-instance 0.3.0: An orphan Eq instance for ErrorCall
 dev-haskell/errors 2.3.0: Simplified error-handling
-dev-haskell/esqueleto 3.3.3.2: Type-safe EDSL for SQL queries on persistent backends
+dev-haskell/esqueleto 3.3.4.0: Type-safe EDSL for SQL queries on persistent backends
 dev-haskell/exact-pi 0.5.0.1: Exact rational multiples of pi (and integer powers of pi)
 dev-haskell/exceptions 0.10.4: Extensible optionally-pure exceptions
 dev-haskell/executable-path 0.0.3.1: Finding out the full path of the executable
@@ -4292,7 +4292,7 @@ dev-haskell/pem 0.2.2: Privacy Enhanced Mail (PEM) format reader and writer
 dev-haskell/persistent 2.10.5.2: Type-safe, multi-backend data serialization
 dev-haskell/persistent-mysql 2.10.2.3: Backend for the persistent library using MySQL database server
 dev-haskell/persistent-postgresql 2.10.1.2: Backend for the persistent library using postgresql
-dev-haskell/persistent-qq 2.9.0: Provides a quasi-quoter for raw SQL for persistent
+dev-haskell/persistent-qq 2.9.2: Provides a quasi-quoter for raw SQL for persistent
 dev-haskell/persistent-sqlite 2.10.6.2: Backend for the persistent library using sqlite3
 dev-haskell/persistent-template 2.8.2.3: Type-safe, non-relational, multi-backend persistence
 dev-haskell/persistent-test 2.0.3.0: Tests for Persistent
@@ -4528,7 +4528,7 @@ dev-haskell/void 0.7.3: A Haskell 98 logically uninhabited data type
 dev-haskell/wai 3.2.2.1: Web Application Interface
 dev-haskell/wai-app-static 3.1.7.2: WAI application for static serving
 dev-haskell/wai-conduit 3.0.0.3: conduit wrappers for WAI
-dev-haskell/wai-extra 3.0.29.1: Provides some basic WAI handlers and middleware
+dev-haskell/wai-extra 3.0.31: Provides some basic WAI handlers and middleware
 dev-haskell/wai-logger 2.3.6: A logging system for WAI
 dev-haskell/wai-test 3.0.0: Unit test framework (built on HUnit) for WAI applications. (deprecated)
 dev-haskell/warp 3.3.13: A fast, light-weight web server for WAI applications
@@ -10923,7 +10923,7 @@ dev-util/sysdig 0.27.0: A system exploration and troubleshooting tool
 dev-util/sysdig-kmod 0.27.0: Kernel module for dev-util/sysdig
 dev-util/sysprof 3.34.1-r1 3.36.0: System-wide Linux Profiler
 dev-util/sysprof-capture 3.34.1-r1 3.36.0: Static library for sysprof capture data generation
-dev-util/systemtap 2.4-r1 3.1-r1 4.0-r1: A linux trace/probe tool
+dev-util/systemtap 4.0-r1: A linux trace/probe tool
 dev-util/tinlink 1.0.0-r1: Tool to create very small elf binary from pure binary files
 dev-util/tkdiff 4.2: Graphical front end to the diff program
 dev-util/tmake 2.12-r1: A Cross platform Makefile tool
@@ -11010,10 +11010,10 @@ dev-vcs/python-gitlab 1.7.0 1.8.0 1.9.0 1.13.0 2.2.0 2.3.1 2.5.0: Python command
 dev-vcs/qgit 2.9: Qt GUI for git repositories
 dev-vcs/rcs 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files
-dev-vcs/repo 1.27 2.5 2.8: Google tool for managing git, particularly multiple repos
+dev-vcs/repo 2.5 2.8: Google tool for managing git, particularly multiple repos
 dev-vcs/rsvndump 0.6 0.6-r1: Dump a remote Subversion repository
 dev-vcs/stgit 0.21 0.22 0.23: Manage a stack of patches using GIT as a backend
-dev-vcs/subversion 1.13.0-r1 1.14.0: Advanced version control system
+dev-vcs/subversion 1.13.0-r2 1.14.0-r1: Advanced version control system
 dev-vcs/svn2cl 0.12 0.14: Create a GNU-style ChangeLog from subversion's svn log --xml output
 dev-vcs/svn2git 1.0.16 1.0.17 1.0.18 9999: Tool for one-time conversion from svn to git
 dev-vcs/svneverever 1.3.2 1.4.2 1.5.0: Tool collecting path entries across SVN history
@@ -11303,7 +11303,7 @@ games-emulation/dosbox-staging 0.75.1-r1 0.75.1-r2: Modernized DOSBox soft-fork
 games-emulation/emutos 0.9.12: Single-user single-tasking operating system for 32-bit Atari computer emulators
 games-emulation/fakenes 0.5.8-r3: Portable, Open Source NES emulator which is written mostly in C
 games-emulation/fbzx 3.0.0-r1: Full Screen Sinclair Spectrum emulator
-games-emulation/fceux 2.2.3-r1 2.2.3-r2: A portable Famicom/NES emulator, an evolution of the original FCE Ultra
+games-emulation/fceux 2.2.3-r2: A portable Famicom/NES emulator, an evolution of the original FCE Ultra
 games-emulation/gambatte 0.5.0_p20131102-r2: An accuracy-focused Gameboy / Gameboy Color emulator
 games-emulation/gcube 0.4-r2: Gamecube emulator
 games-emulation/generator 0.35_p4-r1: Sega Genesis / Mega Drive emulator
@@ -11478,7 +11478,7 @@ games-misc/lolcat 90.8.8-r1 100.0.1 100.0.1-r1: Rainbows and unicorns!
 games-misc/lucidlife 0.9.2-r1: A Conway's Life simulator written in GTK+2 - fork from Gtklife
 games-misc/nyancat 1.5.1: Nyan Cat Telnet Server
 games-misc/opengfx 0.5.4-r1 0.5.5: OpenGFX data files for OpenTTD
-games-misc/openmsx 0.3.1-r2 0.3.1-r4: Open source music base set for OpenTTD
+games-misc/openmsx 0.3.1-r4: Open source music base set for OpenTTD
 games-misc/opensfx 0.2.3-r1: OpenSFX data files for OpenTTD
 games-misc/papers-please 1.1.65: A Dystopian Document Thriller
 games-misc/ponysay 3.0.3: cowsay reimplemention for ponies
@@ -11831,7 +11831,7 @@ gnome-base/gsettings-desktop-schemas 3.34.0 3.36.1: Collection of GSettings sche
 gnome-base/gvfs 1.42.2 1.44.1: Virtual filesystem implementation for GIO
 gnome-base/libbonobo 2.24.3-r1: GNOME CORBA framework
 gnome-base/libbonoboui 2.24.5-r1: User Interface part of libbonobo
-gnome-base/libglade 2.6.4-r2 2.6.4-r3: Library to construct graphical interfaces at runtime
+gnome-base/libglade 2.6.4-r3: Library to construct graphical interfaces at runtime
 gnome-base/libgnome 2.32.1-r1: Essential Gnome Libraries
 gnome-base/libgnome-keyring 3.12.0-r1: Compatibility library for accessing secrets
 gnome-base/libgnomecanvas 2.30.3-r1: The Gnome 2 Canvas library
@@ -18993,7 +18993,7 @@ x11-themes/human-icon-theme 0.36: A nice and well polished icon theme
 x11-themes/iceicons 0.10.0-r1: IceWM Icons is a set of XPM 16x16, 32x32, and 48x48 XPM and PNG icons for IceWM
 x11-themes/icewm-extra-themes 1.1 1.2: Extra themes for IceWM
 x11-themes/kfaenza 0.8.9-r2: Faenza-Cupertino icon theme for KDE Plasma
-x11-themes/kvantum 0.16.0: SVG-based theme engine for Qt5, KDE Plasma and LXQt
+x11-themes/kvantum 0.16.1: SVG-based theme engine for Qt5, KDE Plasma and LXQt
 x11-themes/larry-backgrounds 20110822-r1: Wallpapers featuring Gentoo mascot Larry the cow
 x11-themes/laughlin-backgrounds 14.1.0.3-r1: Fedora 14 official background artwork
 x11-themes/leonidas-backgrounds 11.0.0.2-r1: Fedora 11 official background artwork
