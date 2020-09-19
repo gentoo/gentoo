@@ -42,6 +42,7 @@
 app-admin/github-backup-utils
 app-backup/genbackupdata
 app-i18n/pology
+app-pda/gtkpod
 app-text/pdf2djvu
 app-text/sgmltools-lite
 dev-util/anjuta
