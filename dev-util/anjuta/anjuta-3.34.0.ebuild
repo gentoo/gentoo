@@ -3,7 +3,7 @@
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python2_7 ) # python loader crashes on load with py3 in 3.34.0
+PYTHON_COMPAT=( python3_{7..9} )
 # libanjuta-language-vala.so links to a specific slot of libvala; we want to
 # avoid automagic behavior.
 VALA_MIN_API_VERSION="0.46" # 3.34.0 upstream release supports up to 0.44, but 0.46 vala LTS support was added without any other adjustments post-release; 0.48 will need patches
