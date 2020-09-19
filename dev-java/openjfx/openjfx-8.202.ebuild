@@ -46,7 +46,7 @@ REQUIRED_USE="amd64? ( cpu_flags_x86_sse2 )"
 RESTRICT="test" # needs junit version we don't have, fragile
 
 # FIXME: majority of flags are honored, needs a bit more patching
-QA_FLAGS_IGNORED="*"
+QA_FLAGS_IGNORED=".*"
 
 S="${WORKDIR}/rt-${MY_PV}"
 
@@ -67,6 +67,7 @@ PATCHES=(
 	"${FILESDIR}"/8/07-disable-assembler-on-unsupported-archs.patch
 	"${FILESDIR}"/8/10-javadoc-locale.patch
 	"${FILESDIR}"/8/Wno-error.patch
+	"${FILESDIR}"/8/0001-don-t-force-msse.patch
 )
 
 egradle() {
