@@ -1,0 +1,54 @@
+diff --git a/build.gradle b/build.gradle
+index df82f63..3f920b6 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -1135,17 +1135,17 @@ allprojects {
+     // "artifact" in the pattern below. Note that the closed builds use different repositories
+     // so if you are debugging a closed-build artifact related build issue, check out the
+     // closed gradle file instead.
+-    if (!BUILD_CLOSED) {
+-        repositories {
+-            mavenCentral()
+-            ivy {
+-                url "http://download.eclipse.org/eclipse/updates/4.6/R-4.6.3-201703010400/plugins/"
+-                layout "pattern", {
+-                    artifact "[artifact].[ext]"
+-                }
+-            }
+-        }
+-    }
++    // if (!BUILD_CLOSED) {
++    //     repositories {
++    //         mavenCentral()
++    //         ivy {
++    //             url "http://download.eclipse.org/eclipse/updates/4.6/R-4.6.3-201703010400/plugins/"
++    //             layout "pattern", {
++    //                 artifact "[artifact].[ext]"
++    //             }
++    //         }
++    //     }
++    // }
+ 
+     // We want to configure all projects as java projects and use the same compile settings
+     // etc, except for the root project which we just want to ignore (and for now media)
+@@ -1785,13 +1785,13 @@ project(":fxpackager") {
+     }
+     // fxpackager has a dependency on ant in order to build the ant jar,
+     // and as such needs to point to the apache binary repository
+-    if (!BUILD_CLOSED) {
+-        repositories {
+-            maven {
+-                url "https://repository.apache.org"
+-            }
+-        }
+-    }
++    // if (!BUILD_CLOSED) {
++    //     repositories {
++    //         maven {
++    //             url "https://repository.apache.org"
++    //         }
++    //     }
++    // }
+ 
+     dependencies {
+         compile group: "org.apache.ant", name: "ant", version: "1.8.2"
