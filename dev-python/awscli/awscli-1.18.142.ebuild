@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit bash-completion-r1 distutils-r1
 
@@ -21,7 +21,7 @@ IUSE="test"
 RESTRICT="test"
 
 RDEPEND="
-	>=dev-python/botocore-1.16.20[${PYTHON_USEDEP}]
+	=dev-python/botocore-1.18*[${PYTHON_USEDEP}]
 	<dev-python/colorama-0.4.4[${PYTHON_USEDEP}]
 	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/rsa[${PYTHON_USEDEP}]
