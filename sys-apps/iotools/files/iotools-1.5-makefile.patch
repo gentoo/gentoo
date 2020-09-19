@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -33,7 +33,7 @@
+ IOTOOLS_DEBUG = -O2 -DNDEBUG
+ endif
+ 
+-CFLAGS = -Wall -Werror $(DEFS) $(ARCHFLAGS) $(EXTRA_CFLAGS) \
++CFLAGS = -Wall  $(DEFS) $(ARCHFLAGS) $(EXTRA_CFLAGS) \
+          $(IOTOOLS_STATIC) $(IOTOOLS_DEBUG)
+ DEFS = -D_GNU_SOURCE -DVER_MAJOR=$(VER_MAJOR) -DVER_MINOR=$(VER_MINOR)
+ SBINDIR ?= /usr/local/sbin
