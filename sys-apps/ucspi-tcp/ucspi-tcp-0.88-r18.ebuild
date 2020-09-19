@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
-inherit eutils qmail toolchain-funcs
+inherit qmail toolchain-funcs
 
 DESCRIPTION="Collection of tools for managing UNIX services"
 HOMEPAGE="https://cr.yp.to/ucspi-tcp.html"
@@ -12,8 +12,7 @@ SRC_URI="
 	mirror://qmail/ucspi-rss.diff
 	http://smarden.org/pape/djb/manpages/${P}-man.tar.gz
 	http://xs3.b92.net/tomislavr/${P}-rblspp.patch
-	ipv6? ( https://www.fefe.de/ucspi/${P}-ipv6.diff19.bz2 )
-"
+	ipv6? ( https://www.fefe.de/ucspi/${P}-ipv6.diff19.bz2 )"
 
 LICENSE="public-domain"
 SLOT="0"
@@ -21,30 +20,29 @@ KEYWORDS="~alpha amd64 arm hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~amd6
 IUSE="ipv6 qmail-spp selinux"
 RESTRICT="test"
 
-DEPEND=""
-RDEPEND="${DEPEND}
+RDEPEND="
 	!app-doc/ucspi-tcp-man
 	selinux? ( sec-policy/selinux-ucspitcp )"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PV}-protos.patch
+	eapply "${FILESDIR}"/${PV}-protos.patch
 	if use ipv6; then
-		epatch "${WORKDIR}"/${P}-ipv6.diff19
-		epatch "${FILESDIR}"/${PV}-protos-ipv6.patch
-		epatch "${FILESDIR}"/${PV}-tcprules.patch #135571
-		epatch "${FILESDIR}"/${PV}-bigendian.patch #18892
+		eapply "${WORKDIR}"/${P}-ipv6.diff19
+		eapply "${FILESDIR}"/${PV}-protos-ipv6.patch
+		eapply "${FILESDIR}"/${PV}-tcprules.patch #135571
+		eapply "${FILESDIR}"/${PV}-bigendian.patch #18892
 	else
-		epatch "${FILESDIR}"/${PV}-protos-no-ipv6.patch
+		eapply "${FILESDIR}"/${PV}-protos-no-ipv6.patch
 	fi
-	epatch "${DISTDIR}"/ucspi-rss.diff
-	epatch "${FILESDIR}"/${PV}-rblsmtpd-ignore-on-RELAYCLIENT.patch
-	epatch "${DISTDIR}"/${P}-rblspp.patch
-	epatch "${FILESDIR}"/${PV}-protos-rblspp.patch
-	epatch "${FILESDIR}"/${PV}-large-responses.patch
-	epatch "${FILESDIR}"/${PV}-uint-headers.patch
-	epatch "${FILESDIR}"/${PV}-ar-ranlib.patch
+	eapply "${DISTDIR}"/ucspi-rss.diff
+	eapply "${FILESDIR}"/${PV}-rblsmtpd-ignore-on-RELAYCLIENT.patch
+	eapply "${DISTDIR}"/${P}-rblspp.patch
+	eapply "${FILESDIR}"/${PV}-protos-rblspp.patch
+	eapply "${FILESDIR}"/${PV}-large-responses.patch
+	eapply "${FILESDIR}"/${PV}-uint-headers.patch
+	eapply "${FILESDIR}"/${PV}-ar-ranlib.patch
 
-	epatch_user
+	eapply_user
 }
 
 src_configure() {
@@ -53,7 +51,7 @@ src_configure() {
 	# See also the patch above for generating the "makelib" script.
 	tc-export AR RANLIB
 
-	echo "${EPREFIX}/usr/" > conf-home
+	echo "${EPREFIX}/usr/" > conf-home || die
 }
 
 src_install() {
