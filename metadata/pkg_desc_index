@@ -10214,7 +10214,7 @@ dev-ruby/rouge 3.19.0 3.20.0 3.21.0 3.22.0 3.23.0: Yet-another-markdown-parser u
 dev-ruby/rqrcode 0.10.1 1.1.1: Library for encoding QR Codes
 dev-ruby/rqrcode_core 0.1.0 0.1.2: Library for encoding QR Codes
 dev-ruby/rr 1.2.1: A double framework featuring a selection of double techniques and a terse syntax
-dev-ruby/rrdtool-bindings 1.6.0 1.7.1-r1 1.7.2: Ruby bindings for rrdtool
+dev-ruby/rrdtool-bindings 1.7.2: Ruby bindings for rrdtool
 dev-ruby/rspec 2.99.0 3.8.0 3.9.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-collection_matchers 1.2.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-core 2.99.2-r2 3.8.2 3.9.1: A Behaviour Driven Development (BDD) framework for Ruby
@@ -13171,7 +13171,7 @@ media-libs/libiec61883 1.2.0-r1: Library for capturing video (dv or mpeg2) over 
 media-libs/libifp 1.0.0.2-r1: A general-purpose library for iRiver's iFP portable audio players
 media-libs/libilbc 2.0.2 9999: Packaged version of iLBC codec from the WebRTC project
 media-libs/libinsane 1.0.4 1.0.7: Crossplatform access to image scanners
-media-libs/libiptcdata 1.0.4-r1 1.0.5: Library for International Press Telecommunications Council (IPTC) metadata
+media-libs/libiptcdata 1.0.5: Library for International Press Telecommunications Council (IPTC) metadata
 media-libs/libirman 0.4.5: library for Irman control of Unix software
 media-libs/libjpeg-turbo 1.5.3-r3 2.0.3 2.0.4-r1 2.0.5-r1: MMX, SSE, and SSE2 SIMD accelerated JPEG library
 media-libs/libjsw 1.5.8: provide a uniform API and user configuration for joysticks and game controllers
@@ -13839,7 +13839,7 @@ media-sound/kid3 3.8.3: Simple tag editor based on Qt
 media-sound/klick 0.12.2-r2: An advanced command-line based metronome for JACK
 media-sound/kmetronome 1.0.1: MIDI based metronome using ALSA sequencer
 media-sound/lame 3.100-r3: LAME Ain't an MP3 Encoder
-media-sound/lash 0.5.4-r3 0.5.4-r4: LASH Audio Session Handler
+media-sound/lash 0.5.4-r4: LASH Audio Session Handler
 media-sound/lilypond 2.21.4-r1 2.21.5 2.21.6 9999: GNU Music Typesetter
 media-sound/lingot 1.0.1: Accurate, easy to use, and highly configurable musical instrument tuner
 media-sound/linuxsampler 2.1.1 9999: Software audio sampler engine with professional grade features
@@ -14433,14 +14433,14 @@ net-analyzer/quidscor 1.2.48-r1: Qualys IDS Correlation Daemon
 net-analyzer/raddump 0.3.1: RADIUS packet interpreter
 net-analyzer/rain 1.2.9_beta1 1.2.9_beta1-r1: powerful tool for testing stability of utilizing IP protocols
 net-analyzer/rrdcollect 0.2.9: Read system statistical data and feed it to RRDtool
-net-analyzer/rrdtool 1.6.0-r1 1.7.1 1.7.2 1.7.2-r1: A system to store and display time-series data
+net-analyzer/rrdtool 1.7.2 1.7.2-r1: A system to store and display time-series data
 net-analyzer/rtpbreak 1.3a-r1: Analyze any RTP session through heuristics over UDP network traffic
 net-analyzer/sancp 1.6.1-r4 1.6.1-r5: collect network traffic statistics and store them in pcap format
 net-analyzer/sarg 2.4.0: Squid Analysis Report Generator
 net-analyzer/sbd 1.37-r1: Netcat-clone, designed to be portable and offer strong encryption
 net-analyzer/scanlogd 2.2.7: a port scan detection tool
 net-analyzer/scanssh 2.1 2.1-r2 2.1.2: network scanner that gathers info on SSH protocols and versions
-net-analyzer/scapy 2.4.2 2.4.3 2.4.4 9999: A Python interactive packet manipulation program for mastering the network
+net-analyzer/scapy 2.4.3 2.4.4 9999: A Python interactive packet manipulation program for mastering the network
 net-analyzer/scli 0.4.0-r1: SNMP Command Line Interface
 net-analyzer/sec 2.7.6-r1 2.8.1 2.8.2 2.8.3: Simple Event Correlator
 net-analyzer/sflowtool 3.34 3.41 5.02 5.04 5.05: sflowtool is a utility for collecting and processing sFlow data
@@ -14543,7 +14543,7 @@ net-dialup/tkvoice 1.5: Voice mail and Fax frontend program
 net-dialup/wvdial 1.61: Excellent program to automatically configure PPP sessions
 net-dialup/xc 4.3.2-r3 4.3.2-r4: Modem dialout & serial terminal program
 net-dialup/xl2tpd 1.3.10 1.3.11 1.3.12 1.3.13 1.3.15: A modern version of the Layer 2 Tunneling Protocol (L2TP) daemon
-net-dns/avahi 0.7-r6 0.7-r7 0.8-r2: System which facilitates service discovery on a local network
+net-dns/avahi 0.8-r2: System which facilitates service discovery on a local network
 net-dns/bind 9.16.6 9.16.6-r2: Berkeley Internet Name Domain - Name Server
 net-dns/bind-tools 9.16.6: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 net-dns/c-ares 1.16.1: C library that resolves names asynchronously
@@ -14573,7 +14573,7 @@ net-dns/knot 2.8.5 2.9.5: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.7.0-r1 1.7.1: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.35 1.36: Internationalized Domain Names (IDN) implementation
 net-dns/libidn2 2.3.0 99999: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
-net-dns/maradns 2.0.16 3.5.0005: A security-aware DNS server
+net-dns/maradns 3.5.0005: A security-aware DNS server
 net-dns/mdns-repeater 1.11: Multicast DNS repeater
 net-dns/mydns 1.2.8.31-r1 1.2.8.31-r2: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
@@ -14713,7 +14713,7 @@ net-im/teams 1.3.00.958 1.3.00.5153 1.3.00.16851: Microsoft Teams, an Office 365
 net-im/telegram-desktop 2.1.13 2.2.0-r1: Official desktop client for Telegram
 net-im/telegram-desktop-bin 2.1.13-r1 2.2.0 2.3.0 2.3.2: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
-net-im/telepathy-logger 0.8.2: Daemon that centralizes the communication logging within the Telepathy framework
+net-im/telepathy-logger 0.8.2-r1: Daemon that centralizes the communication logging within the Telepathy framework
 net-im/telepathy-mission-control 5.16.5: An account manager and channel dispatcher for the Telepathy framework
 net-im/tkabber 1.1.2: A jabber client written in Tcl/Tk
 net-im/toxic 0.8.3-r1: A curses-based client for Tox
@@ -14762,7 +14762,7 @@ net-irc/rbot 0.9.15_p20160325-r1: A ruby IRC bot
 net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/scrollz 2.3: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremely simple IRC client
-net-irc/telepathy-idle 0.2.0-r2: Full-featured IRC connection manager for Telepathy
+net-irc/telepathy-idle 0.2.0-r3: Full-featured IRC connection manager for Telepathy
 net-irc/unrealircd 4.2.4.1 5.0.6: An advanced Internet Relay Chat daemon
 net-irc/weechat 2.8 2.9 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
@@ -14817,7 +14817,7 @@ net-libs/kdav2 0.3.0: KJob based DAV protocol implementation
 net-libs/kdsoap 1.9.50_pre20200317: Qt-based client-side and server-side SOAP component
 net-libs/kdsoap-ws-discovery-client 0.2_pre20200317: WS-Discovery client library based on KDSoap
 net-libs/kimap2 0.3.0: Library for interacting with IMAP servers - successor of kimap
-net-libs/ldns 1.7.0-r2 1.7.1-r1: a library with the aim to simplify DNS programming in C
+net-libs/ldns 1.7.1-r1: a library with the aim to simplify DNS programming in C
 net-libs/liba53 9999: A5/3 Call encryption library
 net-libs/libaccounts-glib 1.25-r1: Accounts SSO (Single Sign-On) management library for GLib applications
 net-libs/libad9361-iio 0.1-r2 9999: IIO AD9361 library for filter design and handling, multi-chip sync, etc.
@@ -14895,7 +14895,7 @@ net-libs/libpsl 0.21.0 0.21.1: C library for the Public Suffix List
 net-libs/libqmi 1.12.6 1.14.0 1.16.0 1.16.2 1.16.4 1.18.0 1.18.2 1.20.0 1.20.2 1.22.2 9999: Qualcomm MSM (Mobile Station Modem) Interface (QMI) modem protocol helper library
 net-libs/librouteros 1.1.2: Library for accessing MikroTik's RouterOS via its API
 net-libs/librsync 0.9.7-r3 2.0.1-r1 2.0.2 2.1.0 2.2.1 2.3.0 2.3.1: Remote delta-compression library
-net-libs/libsearpc 3.0.8-r3 3.2.0-r1: A simple C language RPC framework
+net-libs/libsearpc 3.2.0-r1: A simple C language RPC framework
 net-libs/libsignal-protocol-c 2.3.2 2.3.3 9999: Signal Protocol C Library
 net-libs/libsignon-glib 2.1: GLib binding for the D-Bus API provided by signond
 net-libs/libslirp 4.3.1: A general purpose TCP-IP emulator used by virtual machine hypervisors to provide virtual networking services.
@@ -14928,7 +14928,7 @@ net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP pr
 net-libs/nghttp2 1.41.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 10.19.0 10.22.1 12.16.1 12.18.3 12.18.4 14.2.0 14.4.0 14.8.0 14.9.0 14.10.0 14.10.1 14.11.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 12.16.1 12.18.3 12.18.4 14.2.0 14.4.0 14.8.0 14.9.0 14.10.0 14.10.1 14.11.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.7.4 1.8.1 3.2 3.3: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -15140,7 +15140,7 @@ net-misc/etherdfs 20180203-r1: An ethernet-based file system for DOS
 net-misc/ethertypes 0: Maps ethernet frame ids to symbolic names
 net-misc/ethflop 20191003: A network-backed floppy emulator for DOS
 net-misc/eventd 0.27.0-r1: A small daemon to act on remote or local events
-net-misc/exabgp 3.4.28-r2 4.2.7-r3: The BGP swiss army knife of networking
+net-misc/exabgp 4.2.7-r3: The BGP swiss army knife of networking
 net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
 net-misc/fatrat 1.2.0_beta2_p20161204: Qt5-based download/upload manager
 net-misc/felix 3.1.3: Calico's per-host agent, responsible for programming routes and security policy
@@ -15254,7 +15254,7 @@ net-misc/ofono 1.16 1.30 1.31: Open Source mobile telephony (GSM/UMTS) daemon
 net-misc/oidc-agent 3.3.1: oidc-agent for managing OpenID Connect tokens on the command line
 net-misc/oidentd 2.5.0: Another (RFC1413 compliant) ident daemon
 net-misc/olsrd 0.9.6.1 0.9.6.1-r1 0.9.7 0.9.8: An implementation of the Optimized Link State Routing protocol
-net-misc/omniORB 4.1.4-r2 4.2.2: A robust, high-performance CORBA 2 ORB
+net-misc/omniORB 4.2.2: A robust, high-performance CORBA 2 ORB
 net-misc/omnisync 1.0_p20200130: A driver for NTPd for people who are firewall-challenged
 net-misc/openntpd 6.0_p1 6.2_p3 6.2_p3-r1 6.2_p3-r2: Lightweight NTP server ported from OpenBSD
 net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling protocol
@@ -15304,8 +15304,8 @@ net-misc/s3cmd 2.1.0: Command line client for Amazon S3
 net-misc/s6-networking 2.3.0.2 2.3.0.3 2.3.0.4 2.3.1.1: Suite of small networking utilities for Unix systems
 net-misc/samplicator 1.3.6 1.3.8_rc1: UDP packets forwarder and duplicator
 net-misc/scponly 4.8-r6 4.8-r7: A tiny pseudoshell which only permits scp and sftp
-net-misc/seafile 6.2.11 7.0.2 7.0.4 7.0.5-r1: File syncing and sharing software with file encryption and group sharing
-net-misc/seafile-client 6.2.11 7.0.2 7.0.4 7.0.5: Seafile desktop client
+net-misc/seafile 7.0.5-r1: File syncing and sharing software with file encryption and group sharing
+net-misc/seafile-client 7.0.5: Seafile desktop client
 net-misc/secpanel 0.6.1-r1: Graphical frontend for managing and running SSH and SCP connections
 net-misc/selfdhcp 0.2a-r2: Small stealth network autoconfigure software
 net-misc/ser2net 2.10.0: Serial To Network Proxy
