@@ -7581,7 +7581,7 @@ dev-perl/common-sense 3.740.0-r1 3.750.0: Save a tree AND a kitten, use common::
 dev-perl/constant-boolean 0.20.0-r2: Define TRUE and FALSE constants
 dev-perl/constant-defer 6.0.0 6.0.0-r1: constant subs with deferred value calculation
 dev-perl/enum 1.110.0: C style enumerated types and bitmask flags in Perl
-dev-perl/forks 0.360.0-r1: Emulate threads with fork
+dev-perl/forks 0.360.0-r1 0.360.0-r2: Emulate threads with fork
 dev-perl/frontier-rpc 0.07_beta4-r2: Perform remote procedure calls using extensible markup language
 dev-perl/glib-perl 1.329.100: Glib - Perl wrappers for the GLib utility and Object libraries
 dev-perl/gnome2-canvas 1.2.0-r2: Perl interface to the Gnome Canvas
@@ -10166,7 +10166,7 @@ dev-ruby/rack 1.6.12 2.0.9 2.1.4 2.2.3: A modular Ruby webserver interface
 dev-ruby/rack-attack 6.3.1: A DSL for blocking & throttling abusive clients
 dev-ruby/rack-cache 1.12.0: Enable HTTP caching for Rack-based applications that produce freshness info
 dev-ruby/rack-openid 1.4.2: Provides a more HTTPish API around the ruby-openid library
-dev-ruby/rack-protection 2.0.8.1: This gem protects against typical web attacks
+dev-ruby/rack-protection 2.0.8.1 2.1.0: This gem protects against typical web attacks
 dev-ruby/rack-ssl 1.4.1: Force SSL/TLS in your app
 dev-ruby/rack-test 1.1.0: Rack::Test is a small, simple testing API for Rack apps
 dev-ruby/radius 0.7.5: Powerful tag-based template system
@@ -10331,7 +10331,7 @@ dev-ruby/simple-rss 1.3.3: A simple, flexible, extensible, and liberal RSS and A
 dev-ruby/simple_oauth 0.3.1: Simply builds and verifies OAuth headers
 dev-ruby/simplecov 0.18.5 0.19.0: Code coverage with a configuration library and merging across test suites
 dev-ruby/simplecov-html 0.10.2 0.11.0 0.12.0 0.12.1 0.12.2: Generates a HTML report of your SimpleCov ruby code coverage results
-dev-ruby/sinatra 2.0.8.1 2.0.8.1-r1: A DSL for quickly creating web applications in Ruby with minimal effort
+dev-ruby/sinatra 2.0.8.1 2.0.8.1-r1 2.1.0: A DSL for quickly creating web applications in Ruby with minimal effort
 dev-ruby/sinatra-partial 1.0.1: Just the partials helper in a gem
 dev-ruby/six 0.2.0: An ultra lite authorization library
 dev-ruby/slim 3.0.9 3.0.9-r1 4.1.0: A template language aiming to reduce the syntax to the essential parts
