@@ -1,0 +1,21 @@
+Description: Set the locale of the javadoc to make the build reproducible
+Author: Emmanuel Bourg <ebourg@apache.org>
+Forwarded: no
+--- a/build.gradle
++++ b/build.gradle
+@@ -1218,6 +1218,7 @@
+         } else {
+             options.links(JDK_DOCS);
+         }
++        options.locale("en");
+         options.addBooleanOption("XDignore.symbol.file").setValue(true);
+         options.addBooleanOption("Xdoclint:none").setValue(!IS_DOC_LINT);
+         options.addBooleanOption("javafx").setValue(true);
+@@ -2769,6 +2770,7 @@
+     options.windowTitle("${javadocTitle}")
+     options.header("${javadocHeader}")
+     options.bottom("${javadocBottom}")
++    options.locale("en");
+     if (BUILD_CLOSED) {
+         options.linksOffline(JDK_DOCS, JDK_DOCS_CLOSED);
+     } else {
