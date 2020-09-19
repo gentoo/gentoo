@@ -48,7 +48,6 @@ dev-util/anjuta
 dev-util/gyp
 app-i18n/mozc
 sci-libs/magma
-sys-firmware/nvidia-firmware
 
 # Hans de Graaff <graaff@gentoo.org> (2020-09-19)
 # Mask insecure rack slot for removal in 30 days, bug 730786
