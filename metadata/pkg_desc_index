@@ -6381,7 +6381,7 @@ dev-perl/Dist-Zilla-Plugin-MetaProvides 2.2.4: Generating and Populating 'provid
 dev-perl/Dist-Zilla-Plugin-MetaProvides-Package 2.4.3: Extract namespaces/version from traditional packages for provides
 dev-perl/Dist-Zilla-Plugin-ModuleBuildTiny 0.15.0: Build a Build.PL that uses Module::Build::Tiny
 dev-perl/Dist-Zilla-Plugin-NameFromDirectory 0.40.0: Guess distribution name from the current directory
-dev-perl/Dist-Zilla-Plugin-NextVersion-Semantic 0.2.5: update the next version, semantic-wise
+dev-perl/Dist-Zilla-Plugin-NextVersion-Semantic 0.2.5 0.2.5-r1: update the next version, semantic-wise
 dev-perl/Dist-Zilla-Plugin-OSPrereqs 0.11.0: List prereqs conditional on operating system
 dev-perl/Dist-Zilla-Plugin-OurPkgVersion 0.210.0: No line insertion and does Package version with our
 dev-perl/Dist-Zilla-Plugin-PodWeaver 4.8.0: Weave your Pod together from configuration and Dist::Zilla
