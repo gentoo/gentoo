@@ -80,8 +80,8 @@ EGO_SUM=(
 	"github.com/apparentlymart/go-textseg v1.0.0/go.mod"
 	"github.com/apparentlymart/go-textseg/v12 v12.0.0"
 	"github.com/apparentlymart/go-textseg/v12 v12.0.0/go.mod"
-	"github.com/apparentlymart/go-userdirs v0.0.0-20190512014041-4a23807e62b9"
-	"github.com/apparentlymart/go-userdirs v0.0.0-20190512014041-4a23807e62b9/go.mod"
+	"github.com/apparentlymart/go-userdirs v0.0.0-20200915174352-b0c018a67c13"
+	"github.com/apparentlymart/go-userdirs v0.0.0-20200915174352-b0c018a67c13/go.mod"
 	"github.com/apparentlymart/go-versions v1.0.0"
 	"github.com/apparentlymart/go-versions v1.0.0/go.mod"
 	"github.com/armon/circbuf v0.0.0-20190214190532-5111143e8da2"
@@ -102,8 +102,6 @@ EGO_SUM=(
 	"github.com/bgentry/go-netrc v0.0.0-20140422174119-9fd32a8b3d3d/go.mod"
 	"github.com/bgentry/speakeasy v0.1.0"
 	"github.com/bgentry/speakeasy v0.1.0/go.mod"
-	"github.com/blang/semver v3.5.1+incompatible"
-	"github.com/blang/semver v3.5.1+incompatible/go.mod"
 	"github.com/bmatcuk/doublestar v1.1.5"
 	"github.com/bmatcuk/doublestar v1.1.5/go.mod"
 	"github.com/boltdb/bolt v1.3.1"
@@ -393,8 +391,6 @@ EGO_SUM=(
 	"github.com/mitchellh/go-wordwrap v1.0.0/go.mod"
 	"github.com/mitchellh/gox v1.0.1"
 	"github.com/mitchellh/gox v1.0.1/go.mod"
-	"github.com/mitchellh/hashstructure v1.0.0"
-	"github.com/mitchellh/hashstructure v1.0.0/go.mod"
 	"github.com/mitchellh/iochan v1.0.0"
 	"github.com/mitchellh/iochan v1.0.0/go.mod"
 	"github.com/mitchellh/mapstructure v1.1.2"
@@ -706,7 +702,6 @@ EGO_SUM=(
 	"sigs.k8s.io/structured-merge-diff v0.0.0-20190525122527-15d366b2352e/go.mod"
 	"sigs.k8s.io/yaml v1.1.0"
 	"sigs.k8s.io/yaml v1.1.0/go.mod"
-
 )
 
 go-module_set_globals
@@ -716,7 +711,7 @@ HOMEPAGE="https://www.terraform.io/"
 SRC_URI="https://github.com/hashicorp/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_SUM_SRC_URI}"
 
-LICENSE="Apache-2.0 BSD-2 BSD-4 ECL-2.0 imagemagick ISC JSON MIT MIT-with-advertising MPL-2.0 unicode"
+LICENSE="Apache-2.0 BSD-2 BSD-4 ECL-2.0 ISC JSON MIT MIT-with-advertising MPL-2.0 unicode"
 SLOT="0"
 KEYWORDS="~amd64"
 
