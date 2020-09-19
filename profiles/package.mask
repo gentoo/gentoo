@@ -772,7 +772,6 @@ dev-python/matplotlib-python2
 # https://bugs.gentoo.org/681828
 dev-java/oracle-jdk-bin
 dev-java/oracle-jre-bin
-app-text/jabref-bin
 dev-java/netbeans-platform
 dev-java/netbeans-harness
 games-util/pogo-manager-bin
