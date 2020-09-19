@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Tool to manage OpenRC services that need to be restarted"
 HOMEPAGE="https://dev.gentoo.org/~mschiff/restart-services/"
@@ -9,13 +9,14 @@ SRC_URI="https://dev.gentoo.org/~mschiff/src/${PN}/${P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
 RDEPEND="
 	app-admin/lib_users
 	sys-apps/openrc
+	app-portage/portage-utils
 "
 
 src_install() {
@@ -25,9 +26,6 @@ src_install() {
 	insinto /etc
 	doins restart-services.conf
 	dodoc README CHANGES
-
-	# remove after 2018/07/01
-	dosym restart-services /usr/sbin/restart_services
 
 	sed -i 's/^#include/include/' "${D}"/etc/restart-services.conf
 	cat>"${D}"/etc/restart-services.d/00-local.conf<<-EOF
@@ -48,34 +46,16 @@ pkg_postinst() {
 		MINOR=${MINOR#*.}
 
 		if [[ $MAJOR -eq 0 && $MINOR -lt 14 ]]; then
-			einfo "Migrating config"
-			if [[ -e /etc/restart-services.d ]]; then
-				ewarn "/etc/restart-services.d already exists?!"
-				return
-			fi
-			if [[ -e /etc/restart-services.conf ]]; then
-				ewarn "/etc/restart-services.conf already exists?!"
-				return
-			fi
-
-			if [[ -f /etc/restart_services.d/00-local.conf ]]; then
-				sed -i 's/restart_services/restart-services/g' \
-					/etc/restart_services.d/00-local.conf
-			fi
-			if [[ $(ls /etc/restart_services.d/) ]]; then
-				mv -v /etc/restart_services.d/* /etc/restart-services.d/
-			fi
-			if [[ -f /etc/restart_services.d/.keep_app-admin_restart_services-0 ]]; then
-				rm -v /etc/restart_services.d/.keep_app-admin_restart_services-0
+			einfo "Checking for old config"
+			if [[ -f /etc/restart_services.conf ]]; then
+				ewarn "Old config file found: /etc/restart_services.conf"
+				ewarn "It will be ignored so please migrate settings to a file in"
+				ewarn "/etc/restart-services.d/ and/or remove /etc/restart_services.conf"
 			fi
 			if [[ -d /etc/restart_services.d ]]; then
-				rmdir -v /etc/restart_services.d
-			fi
-
-			if [[ -f /etc/restart_services.conf ]]; then
-				sed -i 's/restart_services/restart-services/g' \
-					/etc/restart_services.conf
-				mv /etc/restart_services.conf /etc/restart-services.conf
+				ewarn "Old config directory found: /etc/restart_services.d"
+				ewarn "It will be ignored so please migrate files to /etc/restart-services.d"
+				ewarn "and/or remove /etc/restart_services.d"
 			fi
 			einfo "done"
 		fi
