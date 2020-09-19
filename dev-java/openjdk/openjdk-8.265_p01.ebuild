@@ -44,7 +44,7 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1)"
 KEYWORDS="amd64 ~arm64 ppc64 x86"
-IUSE="alsa debug cups doc examples headless-awt +jbootstrap +pch selinux source"
+IUSE="alsa debug cups doc examples headless-awt javafx +jbootstrap +pch selinux source"
 
 COMMON_DEPEND="
 	media-libs/freetype:2=
@@ -88,6 +88,8 @@ DEPEND="
 		dev-java/icedtea:${SLOT}
 	)
 "
+
+PDEPEND="javafx? ( dev-java/openjfx:${SLOT} )"
 
 # The space required to build varies wildly depending on USE flags,
 # ranging from 2GB to 16GB. This function is certainly not exact but
