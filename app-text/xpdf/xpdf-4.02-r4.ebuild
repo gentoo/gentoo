@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils desktop xdg
+inherit cmake desktop xdg
 
 DESCRIPTION="The PDF viewer and tools"
 HOMEPAGE="https://www.xpdfreader.com"
@@ -65,7 +65,8 @@ src_prepare() {
 		sed -i "s|/usr/local|${EPREFIX}/usr|" "${WORKDIR}"/*/add-to-xpdfrc || die
 	fi
 
-	cmake-utils_src_prepare
+	xdg_environment_reset
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -80,11 +81,11 @@ src_configure() {
 		-DXPDFWIDGET_PRINTING=$(usex cups)
 		-DSYSTEM_XPDFRC="${EPREFIX}/etc/xpdfrc"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	if use icons; then
 		# in some cases inkscape tries to write font cache to the
@@ -104,7 +105,7 @@ src_compile() {
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	domenu "${FILESDIR}/xpdf.desktop"
 	newicon -s scalable xpdf-qt/xpdf-icon.svg xpdf.svg
