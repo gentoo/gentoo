@@ -25,7 +25,9 @@ distutils_enable_tests unittest
 PATCHES=( "${FILESDIR}"/${PN}-0.2.1-gentoo-fhs.patch )
 
 src_test() {
+	export $(dbus-launch)
 	virtx distutils-r1_src_test
+	kill -9 "${DBUS_SESSION_BUS_PID}"
 }
 
 python_test() {
