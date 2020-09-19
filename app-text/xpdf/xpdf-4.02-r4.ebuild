@@ -87,6 +87,9 @@ src_compile() {
 	cmake-utils_src_compile
 
 	if use icons; then
+		# in some cases inkscape tries to write font cache to the
+		# system dir, see bug 739166
+		addpredict /usr/share/inkscape/fonts
 		local inkarg="-e"
 		has_version -b '>media-gfx/inkscape-0.99' && inkarg="-o"
 
