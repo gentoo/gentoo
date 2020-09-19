@@ -3,9 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python2_7 )
-
-inherit autotools python-single-r1 multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="Library to query devices using IEEE1284"
 HOMEPAGE="http://cyberelk.net/tim/software/libieee1284/"
