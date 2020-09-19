@@ -29,7 +29,7 @@ COMMON_DEPEND="
 	gnome-base/dconf:0=
 	>=x11-libs/libnotify-0.7:=
 	x11-libs/libX11
-	>=x11-libs/xapps-1.4.0
+	>=x11-libs/xapps-1.8.0
 
 	exif? ( >=media-libs/libexif-0.6.20:= )
 	tracker? ( >=app-misc/tracker-2.0:= )
