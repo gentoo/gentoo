@@ -1,0 +1,24 @@
+From 26d59b7c8cc2b40277756f55387606ba8a852b31 Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Fri, 18 Sep 2020 21:43:57 -0700
+Subject: [PATCH] fxpackager: don't include obsolete sys/sysctl.h
+
+---
+ .../fxpackager/src/main/native/library/common/PosixPlatform.cpp  | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/modules/fxpackager/src/main/native/library/common/PosixPlatform.cpp b/modules/fxpackager/src/main/native/library/common/PosixPlatform.cpp
+index 5ea3bc6..b5d167b 100644
+--- a/modules/fxpackager/src/main/native/library/common/PosixPlatform.cpp
++++ b/modules/fxpackager/src/main/native/library/common/PosixPlatform.cpp
+@@ -43,7 +43,6 @@
+ #include <sys/types.h>
+ #include <sys/wait.h>
+ #include <unistd.h>
+-#include <sys/sysctl.h>
+ #include <iostream>
+ #include <dlfcn.h>
+ #include <signal.h>
+-- 
+2.28.0
+
