@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,12 +15,9 @@ SLOT="0"
 DEPEND="app-arch/unzip"
 
 RDEPEND="
-		|| (
-		dev-java/oracle-jre-bin:1.8[javafx]
-		dev-java/oracle-jdk-bin:1.8[javafx]
-		)
-		>=virtual/jre-1.8
-		"
+	dev-java/openjdk:8[javafx]
+	>=virtual/jre-1.8
+"
 
 S="${WORKDIR}"
 
