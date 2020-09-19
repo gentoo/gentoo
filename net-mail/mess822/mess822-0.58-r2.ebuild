@@ -25,9 +25,9 @@ PATCHES=(
 src_prepare() {
 	default
 
-	echo "$(tc-getCC) ${CFLAGS}" > conf-cc
-	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld
-	echo "/usr" > conf-home
+	echo "$(tc-getCC) ${CFLAGS}" > conf-cc || die
+	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld || die
+	echo "/usr" > conf-home || die
 
 	# fix errno.h problem; bug #26165
 	sed -i 's/^extern int errno;/#include <errno.h>/' error.h || die
@@ -42,7 +42,7 @@ src_install() {
 
 	# Now that the commands are compiled, update the conf-home file to point
 	# to the installation image directory.
-	echo "${ED}/usr/" > conf-home
+	echo "${ED}/usr/" > conf-home || die
 	sed -i -e "s:\"/etc\":\"${ED}/etc\":" hier.c || die "sed hier.c failed"
 
 	emake setup
