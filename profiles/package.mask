@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2020-09-19)
+# Mask insecure rack slot for removal in 30 days, bug 730786
+dev-ruby/rack:1.6
+
 # Hans de Graaff <graaff@gentoo.org> (2020-09-17)
 # Mask old unmaintained or obsolete ruby packages for removal in 30
 # days.
