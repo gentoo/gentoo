@@ -39,12 +39,12 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.21-python.patch
 	"${FILESDIR}"/${PN}-6.46-uninstaller.patch
 	"${FILESDIR}"/${PN}-6.25-liblua-ar.patch
-	"${FILESDIR}"/${PN}-7.80SVN-no-FORTIFY_SOURCE.patch
 	"${FILESDIR}"/${PN}-7.25-CXXFLAGS.patch
 	"${FILESDIR}"/${PN}-7.25-libpcre.patch
 	"${FILESDIR}"/${PN}-7.31-libnl.patch
 	"${FILESDIR}"/${PN}-7.80-ac-config-subdirs.patch
 	"${FILESDIR}"/${PN}-9999-netutil-else.patch
+	"${FILESDIR}"/${PN}-9999-no-FORTIFY_SOURCE.patch
 )
 S="${WORKDIR}/${MY_P}"
 
