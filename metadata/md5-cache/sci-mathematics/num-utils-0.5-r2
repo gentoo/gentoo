@@ -1,3 +1,4 @@
+BDEPEND=dev-lang/perl
 DEFINED_PHASES=install postinst prepare
 DESCRIPTION=A set of programs for dealing with numbers from the command line
 EAPI=7
@@ -5,5 +6,5 @@ HOMEPAGE=https://suso.suso.org/programs/num-utils/index.phtml
 KEYWORDS=~amd64 ~arm ~ppc ~x86
 LICENSE=GPL-2
 SLOT=0
-SRC_URI=http://suso.suso.org/programs/num-utils/downloads/num-utils-0.5.tar.gz mirror://debian/pool/main/n/num-utils/num-utils_0.5-11.diff.gz
-_md5_=7a8cf6ab6ea0a908fd8ee86b06cd2d8f
+SRC_URI=http://suso.suso.org/programs/num-utils/downloads/num-utils-0.5.tar.gz mirror://debian/pool/main/n/num-utils/num-utils_0.5-15.debian.tar.xz
+_md5_=5b6f5ea0723bddf2c43491da361b312a
