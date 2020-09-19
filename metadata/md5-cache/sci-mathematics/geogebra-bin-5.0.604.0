@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm preinst prepare test unpack
+DEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Mathematics software for geometry
+EAPI=7
+HOMEPAGE=https://www.geogebra.org
+KEYWORDS=~amd64 ~ppc64
+LICENSE=Geogebra CC-BY-NC-SA-3.0 GPL-3 Apache-2.0 BSD-2 BSD BSD-4 colt EPL-1.0 icu LGPL-2.1 LGPL-2.1+ MIT W3C || ( GPL-2 CDDL )
+RDEPEND=dev-java/openjdk[javafx] !sci-mathematics/geogebra
+RESTRICT=test
+SLOT=0
+SRC_URI=https://download.geogebra.org/installers/5.0/GeoGebra-Linux-Portable-5-0-604-0.tar.bz2 https://dev.gentoo.org/~gyakovlev/distfiles/Geogebra.svg
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	prefix	c2993e4c430c1ee24f278983d6189501	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=ec40d9d15803e4feb8bebb550d6c6360
