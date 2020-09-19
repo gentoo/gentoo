@@ -4,7 +4,7 @@
 
 depend() {
 	need xdm
-  want vgl
+	want vgl
 }
 
 PIDFILE="${PIDFILE:-/var/run/bumblebee.pid}"
