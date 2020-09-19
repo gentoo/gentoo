@@ -68,6 +68,7 @@ PATCHES=(
 	"${FILESDIR}"/8/10-javadoc-locale.patch
 	"${FILESDIR}"/8/Wno-error.patch
 	"${FILESDIR}"/8/0001-don-t-force-msse.patch
+	"${FILESDIR}"/8/fxpackager-don-t-include-obsolete-sys-sysctl.h.patch
 )
 
 egradle() {
