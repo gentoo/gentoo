@@ -16,7 +16,7 @@ DEPEND="app-arch/unzip"
 
 RDEPEND="
 	dev-java/openjdk:8[javafx]
-	>=virtual/jre-1.8
+	virtual/jre:1.8
 "
 
 S="${WORKDIR}"
