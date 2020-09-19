@@ -5710,7 +5710,7 @@ dev-libs/wayland-protocols 1.20 9999: Wayland protocol files
 dev-libs/weston 8.0.0 9.0.0 9999: Wayland reference compositor
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
 dev-libs/xapian 1.2.25 1.4.14 1.4.15 1.4.16 1.4.17: Xapian Probabilistic Information Retrieval library
-dev-libs/xapian-bindings 1.2.25 1.4.14 1.4.15 1.4.16 1.4.17: SWIG and JNI bindings for Xapian
+dev-libs/xapian-bindings 1.4.14 1.4.15 1.4.16 1.4.17: SWIG and JNI bindings for Xapian
 dev-libs/xbyak 5.73: JIT assembler for x86(IA-32)/x64(AMD64, x86-64)
 dev-libs/xerces-c 3.2.2-r1 3.2.3 9999: A validating XML parser written in a portable subset of C++
 dev-libs/xmlrpc-c 1.39.11-r1: A lightweigt RPC library based on XML and HTTP
@@ -8740,7 +8740,7 @@ dev-python/pygsl 2.1.1: Python interface for the GNU scientific library (gsl)
 dev-python/pygtk 2.24.0-r5: GTK+2 bindings for Python
 dev-python/pyh2o 9999: Python API for sci-libs/libh2o
 dev-python/pyhamcrest 2.0.2: Hamcrest framework for matcher objects
-dev-python/pyilmbase 2.3.0-r2 2.5.2-r1: IlmBase Python bindings
+dev-python/pyilmbase 2.5.2-r1: IlmBase Python bindings
 dev-python/pyinotify 0.9.6: Python module used for monitoring filesystems events
 dev-python/pyinsane 2.0.13: Python implementation of the Sane API and abstration layer
 dev-python/pyjwt 1.7.1-r1: JSON Web Token implementation in Python
@@ -10664,7 +10664,7 @@ dev-util/cmocka 1.1.5: Unit testing framework for C
 dev-util/codeblocks 17.12-r302 17.12-r303 20.03 20.03-r1 9999: The open source, cross platform, free C, C++ and Fortran IDE
 dev-util/colm 0.13.0.4 0.13.0.5 0.13.0.6 0.13.0.6-r1 0.13.0.7: COmputer Language Manipulation
 dev-util/colorgcc 1.3.2-r7: Perl script to colorise the gcc output.
-dev-util/comparator 2.10 2.12: ESR's utility for making fast comparisons among large source trees
+dev-util/comparator 2.12: ESR's utility for making fast comparisons among large source trees
 dev-util/complexity 1.10: a tool designed for analyzing the complexity of C program functions
 dev-util/conan 1.28.0 1.28.1: Distributed C/C++ package manager
 dev-util/conf2struct 1.0 1.3 9999: Create C parsers for libconfig and command-line
@@ -10738,7 +10738,7 @@ dev-util/envman 1.2.0 1.2.1 2.1.0 2.1.1: Environment variable manager for Bitris
 dev-util/eric 18.03 19.11-r1: A full featured Python IDE using PyQt and QScintilla
 dev-util/findbugs 3.0.1: Find Bugs in Java Programs
 dev-util/fix-la-relink-command 0.1.1: Helps prevent .la files from relinking to libraries outside a build tree
-dev-util/flawfinder 1.31 2.0.7 2.0.8 2.0.10 2.0.11: Examines C/C++ source code for security flaws
+dev-util/flawfinder 2.0.11: Examines C/C++ source code for security flaws
 dev-util/ftjam 2.5.3_rc2-r2: A 100% compatible, enhanced implementation of the make alternative Jam
 dev-util/ftnchek 3.3.1-r2: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6-r1: Stress-tests programs by giving them random input
@@ -10849,7 +10849,7 @@ dev-util/patchelf 0.10 0.11 0.12: Small utility to modify the dynamic linker and
 dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch files
 dev-util/patdiff 0.9.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.15-r1 0.1.18: Recursive-descent parser generators for C
-dev-util/perf 4.14.33-r1 4.20.3 5.4.20 5.7-r1 5.8: Userland tools for Linux Performance Counters
+dev-util/perf 5.4.20 5.7-r1 5.8: Userland tools for Linux Performance Counters
 dev-util/pkgcheck 0.7.6-r1 0.7.7 9999: pkgcore-based QA utility for ebuild repos
 dev-util/pkgconf 1.6.3 1.7.2 1.7.3 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
@@ -15148,7 +15148,7 @@ net-misc/freerdp 2.2.0 2.9999 9999: Free implementation of the Remote Desktop Pr
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.0 3.1.1 4.0.3-r1 4.0.4 4.3.0: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.34: A daemon to serve the gopher protocol
-net-misc/gerbera 1.4.0-r1 1.5.0-r1 1.5.0-r2 9999: UPnP Media Server
+net-misc/gerbera 1.6.1 9999: UPnP Media Server
 net-misc/getdate 1.2-r2: Network Date/Time Query and Set Local Date/Time Utility
 net-misc/gnome-online-miners 3.34.0: Crawls through your online content
 net-misc/gnome-remote-desktop 0.1.7: Remote desktop daemon for GNOME using pipewire
@@ -16447,7 +16447,7 @@ sci-mathematics/form 4.1 4.2.0 4.2.1: Symbolic Manipulation System
 sci-mathematics/fricas 1.3.4 1.3.5 1.3.6: FriCAS is a fork of Axiom computer algebra system
 sci-mathematics/frobby 0.9.0-r2: Software system and project for computations with monomial ideals
 sci-mathematics/genius 1.0.23 1.0.25: Genius Mathematics Tool and the GEL Language
-sci-mathematics/geogebra-bin 5.0.604.0: Mathematics software for geometry
+sci-mathematics/geogebra-bin 5.0.604.0-r1: Mathematics software for geometry
 sci-mathematics/geomview 1.9.5-r1: Interactive Geometry Viewer
 sci-mathematics/gfan 0.6.2: Compute Groebner fans and tropical varieties
 sci-mathematics/ggnfs 0.77.1-r2: A suite of algorithms to help factoring large integers
@@ -18687,7 +18687,7 @@ x11-misc/xkblayout-state 0_p20180118 9999: A small program to get/set the curren
 x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.30 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2 2.47_p7: GUI frontend to xmodmap
-x11-misc/xlockmore 5.50 5.62 5.63 5.64 5.65 5.66_alpha00: Just another screensaver application for X
+x11-misc/xlockmore 5.50 5.62 5.63 5.64 5.65 5.66_alpha00 5.66_alpha04: Just another screensaver application for X
 x11-misc/xmobar 0.36: A Minimalistic Text Based Status Bar
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
 x11-misc/xnee 3.19-r2: Program suite to record, replay and distribute user actions
