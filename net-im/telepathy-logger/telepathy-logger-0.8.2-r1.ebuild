@@ -3,13 +3,15 @@
 
 EAPI="5"
 GCONF_DEBUG="no"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6..9} )
 
-inherit gnome2 python-any-r1 virtualx
+inherit epatch gnome2 python-any-r1 virtualx
 
 DESCRIPTION="Daemon that centralizes the communication logging within the Telepathy framework"
 HOMEPAGE="https://telepathy.freedesktop.org/wiki/Logger"
-SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.bz2"
+SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.bz2
+	https://gitlab.freedesktop.org/telepathy/telepathy-logger/-/merge_requests/1.patch
+		-> ${P}-py3.patch"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/3"
@@ -33,6 +35,11 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.35
 	virtual/pkgconfig
 "
+
+src_prepare() {
+	epatch "${DISTDIR}"/${P}-py3.patch
+	gnome2_src_prepare
+}
 
 src_configure() {
 	# --enable-debug needed due to https://bugs.freedesktop.org/show_bug.cgi?id=83390
