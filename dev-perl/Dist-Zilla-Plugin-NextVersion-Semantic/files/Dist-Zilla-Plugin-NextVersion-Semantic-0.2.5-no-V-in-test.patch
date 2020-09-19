@@ -1,0 +1,40 @@
+From e38c5bfa847361ab251ce533fdd6e8993afbd2f3 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sat, 19 Sep 2020 22:13:21 +1200
+Subject: t/basic.t: Don't become broken when MAKEOPTS includes V=1
+
+Some people set MAKEOPTS to include V=1, in order to coax autotools
+based makefiles into being more verbose.
+
+But when that ENV var is used to direct perl ebuilds for Dzil things,
+well, it unintentionally uses "1" as the *next version*, and so breaks
+all code that isn't expecting that to happen.
+
+Given its not the job of tests to tell people their system is weird, it
+just makes the scope "normal" ( that is, defaulting V to be unset
+internally )
+
+Bug: https://bugs.gentoo.org/737308
+Bug: https://github.com/yanick/Dist-Zilla-Plugin-NextVersion-Semantic/pull/6
+---
+ t/basic.t | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/t/basic.t b/t/basic.t
+index 22d04fe..b2942c8 100644
+--- a/t/basic.t
++++ b/t/basic.t
+@@ -6,6 +6,10 @@ use Test::Exception;
+ 
+ use Test::DZil;
+ 
++# V=1 is common in MAKEOPTS for gnu autotools
++# to set "verbose mode"
++delete $ENV{V} if exists $ENV{V};
++
+ my $changes = make_changes(<<'END_CHANGES');
+     - got included in an awesome test suite
+ END_CHANGES
+-- 
+2.28.0
+
