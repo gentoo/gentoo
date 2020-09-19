@@ -4,18 +4,16 @@
 EAPI=6
 GNOME2_LA_PUNT="yes"
 GNOME2_EAUTORECONF="yes"
-PYTHON_COMPAT=( python2_7 )
 VALA_USE_DEPEND="vapigen"
 
-inherit db-use eutils flag-o-matic gnome2 java-pkg-opt-2 python-single-r1 vala
+inherit db-use eutils flag-o-matic gnome2 java-pkg-opt-2 vala
 
 DESCRIPTION="GNOME database access library"
 HOMEPAGE="https://www.gnome-db.org/"
 LICENSE="GPL-2+ LGPL-2+"
 
-IUSE="berkdb canvas debug firebird gnome-keyring gtk graphviz http +introspection json ldap mdb mysql oci8 postgres reports sourceview ssl vala"
+IUSE="berkdb canvas debug firebird gnome-keyring gtk graphviz http +introspection json ldap mdb mysql oci8 postgres sourceview ssl vala"
 REQUIRED_USE="
-	reports? ( ${PYTHON_REQUIRED_USE} )
 	canvas? ( gtk )
 	graphviz? ( gtk )
 	sourceview? ( gtk )
@@ -49,10 +47,6 @@ RDEPEND="
 	mdb? ( >app-office/mdbtools-0.5:= )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	postgres? ( dev-db/postgresql:= )
-	reports? (
-		${PYTHON_DEPS}
-		dev-java/fop
-		dev-python/reportlab )
 	ssl? ( dev-libs/openssl:0= )
 	>=dev-db/sqlite-3.10.2:3=
 	vala? ( dev-libs/libgee:0.8 )
@@ -81,7 +75,6 @@ RESTRICT="
 
 pkg_setup() {
 	java-pkg-opt-2_pkg_setup
-	use reports && python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -90,10 +83,10 @@ src_prepare() {
 
 	use berkdb && append-cppflags "-I$(db_includedir)"
 
-	use reports ||
-		sed -e '/SUBDIRS =/ s/trml2html//' \
-			-e '/SUBDIRS =/ s/trml2pdf//' \
-			-i libgda-report/RML/Makefile.{am,in} || die
+	# They need python2
+	sed -e '/SUBDIRS =/ s/trml2html//' \
+		-e '/SUBDIRS =/ s/trml2pdf//' \
+		-i libgda-report/RML/Makefile.{am,in} || die
 
 	# Prevent file collisions with libgda:4
 	eapply "${FILESDIR}/${PN}-4.99.1-gda-browser-doc-collision.patch"
@@ -156,14 +149,4 @@ src_configure() {
 pkg_preinst() {
 	gnome2_pkg_preinst
 	java-pkg-opt-2_pkg_preinst
-}
-
-src_install() {
-	gnome2_src_install
-	if use reports; then
-		for t in trml2{html,pdf}; do
-			python_scriptinto /usr/share/libgda-5.0/gda_${t}
-			python_doscript libgda-report/RML/${t}/${t}.py
-		done
-	fi
 }
