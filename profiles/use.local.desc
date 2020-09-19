@@ -1829,19 +1829,6 @@ dev-java/openjdk-jre-bin:gentoo-vm - Allow this JDK to be recognised by Gentoo (
 dev-java/openjdk-jre-bin:headless-awt - Don't install the X backend for AWT, needed by some GUIs (used to be X flag)
 dev-java/openjfx:media - Compile media module, based on gstreamer-minimal (does not pull gstreamer)
 dev-java/openjfx:source - Install JavaFX sources
-dev-java/oracle-jdk-bin:commercial - Install features requiring a commercial license for production use
-dev-java/oracle-jdk-bin:gentoo-vm - Allow this JDK to be recognised by Gentoo (package manager, eselect, java-config, EXPERIMENTAL!)
-dev-java/oracle-jdk-bin:gtk2 - Enable GTK+ 2 support in JavaFX
-dev-java/oracle-jdk-bin:gtk3 - Enable GTK+ 3 support in JavaFX
-dev-java/oracle-jdk-bin:headless-awt - Don't install the X backend for AWT, needed by some GUIs (used to be X flag)
-dev-java/oracle-jdk-bin:javafx - Install JavaFX libraries
-dev-java/oracle-jdk-bin:jce - Install Java Cryptographic Extension Unlimited Strength Jurisdiction Policy Files
-dev-java/oracle-jdk-bin:source - Install JVM (and optionally JavaFX) sources
-dev-java/oracle-jdk-bin:visualvm - Install VisualVM debugging tool
-dev-java/oracle-jre-bin:commercial - Install features requiring a commercial license for production use
-dev-java/oracle-jre-bin:headless-awt - Don't install the X backend for AWT, needed by some GUIs (used to be X flag)
-dev-java/oracle-jre-bin:javafx - Install JavaFX libraries
-dev-java/oracle-jre-bin:jce - Install Java Cryptographic Extension Unlimited Strength Jurisdiction Policy Files
 dev-java/rxtx:lfd - Installs and uses LockFileServer daemon (lfd)
 dev-java/sbt:binary - Install from (Gentoo-compiled) binary instead of building from sources. Set this when you run out of memory during build.
 dev-lang/bas:lr0 - Use the LR0 parser instead of the recursive descending parser
@@ -3578,7 +3565,7 @@ kde-apps/keditbookmarks:man - Build and install man pages
 kde-apps/kget:bittorrent - Enable bittorrent transfer plugin through net-libs/libktorrent
 kde-apps/kget:gpg - Enable signature verification by GpgME++ via app-crypt/gpgme
 kde-apps/kget:mms - Enable MMS (Microsoft Media Server) plugin through media-libs/libmms
-kde-apps/kig:geogebra - Support files created by sci-mathematics/geogebra
+kde-apps/kig:geogebra - Support files created by sci-mathematics/geogebra-bin
 kde-apps/kig:scripting - Support Python scripting
 kde-apps/kio-extras:X - Enable support for XCursor thumbnails via x11-libs/libX11
 kde-apps/kio-extras:activities - Enable activities kioslave and fileitem plugin

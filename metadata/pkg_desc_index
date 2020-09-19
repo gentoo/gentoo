@@ -455,7 +455,7 @@ app-accessibility/edbrowse 3.7.5.1: Combination editor, browser, and mail client
 app-accessibility/eflite 0.4.1-r3: A speech server that allows screen readers to interact with festival lite
 app-accessibility/emacspeak 39.0-r2 9999: the emacspeak audio desktop
 app-accessibility/emacspeak-ss 1.9.1: adds support for several speech synthesizers to emacspeak
-app-accessibility/epos 2.5.37-r2: language independent text-to-speech system
+app-accessibility/epos 2.5.37-r3: language independent text-to-speech system
 app-accessibility/espeak 1.47.11-r1 1.48.04 1.48.04-r1: Speech synthesizer for English and other languages
 app-accessibility/espeakup 0.71-r1 0.80 9999: espeakup is a small lightweight connector for espeak and speakup
 app-accessibility/flite 1.4-r4 2.1: Flite text to speech engine
@@ -2000,9 +2000,9 @@ app-emulation/winetricks 20190912 20191224 20200412 99999999: Easy way to instal
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
-app-emulation/xen 4.12.3-r2 4.12.3-r3 4.13.1-r3 4.14.0-r1: The Xen virtual machine monitor
-app-emulation/xen-pvgrub 4.12.3 4.13.1 4.14.0: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
-app-emulation/xen-tools 4.12.3-r2 4.12.3-r3 4.13.1-r3 4.14.0-r1: Xen tools including QEMU and xl
+app-emulation/xen 4.13.1-r3 4.14.0-r1: The Xen virtual machine monitor
+app-emulation/xen-pvgrub 4.13.1 4.14.0: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
+app-emulation/xen-tools 4.13.1-r3 4.14.0-r1: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r5: Radio Shack TRS-80 emulator
 app-eselect/eselect-audicle 1.0.1-r1: Manages the /usr/bin/audicle symlink
 app-eselect/eselect-awk 0.2 0.3: Manages the {,/usr}/bin/awk symlink
@@ -2459,7 +2459,7 @@ app-misc/khal 0.10.1-r1: A CalDAV based calendar
 app-misc/khard 0.13.0 0.17.0: Console CardDAV client
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
 app-misc/kryoflux-dtc 2.6-r1: KryoFlux Host Software
-app-misc/ktoblzcheck 1.49-r1 1.49-r2: Library to check account numbers and bank codes of German banks
+app-misc/ktoblzcheck 1.49-r2: Library to check account numbers and bank codes of German banks
 app-misc/lcd4linux 0.11.0_pre20170527-r5: A small program that grabs information and displays it on an external LCD
 app-misc/lcdproc 0.5.9-r1 0.5.9_p20200721: Displays real-time system information from your Linux/*BSD box on a LCD
 app-misc/leave 20100918-r1: FreeBSD command-line tool that reminds you when its time to leave
@@ -2524,7 +2524,7 @@ app-misc/regex-markup 0.10.0-r1: A tool to color syslog files as well
 app-misc/regionset 0.2: Sets the region on DVD drives
 app-misc/remind 03.01.15 03.02.00 03.03.00 03.03.01: Ridiculously functional reminder program
 app-misc/reptyr 0.6.2 0.7.0: A utility to attach a running program to a new terminal
-app-misc/resolve-march-native 0.9 0.9.2 0.9.3 0.9.4: Resolve GCC flag -march=native
+app-misc/resolve-march-native 0.9.4: Resolve GCC flag -march=native
 app-misc/rioutil 1.5.4: A utility for accessing various Rio media players
 app-misc/rl 0.2.7-r1: Randomize lines from text files or stdin
 app-misc/rlwrap 0.42 0.42-r1 0.43: GNU readline wrapper
@@ -2637,7 +2637,7 @@ app-office/kexi 3.2.0-r1: Visual database applications creator
 app-office/kmymoney 5.1.0: Personal finance manager based on KDE Frameworks
 app-office/kraft 0.90: Software to manage quotes and invoices in small enterprises
 app-office/ktimetracker 5.0.1: Todo management and time tracker
-app-office/ledger 3.1.2-r1 3.2.0: Double-entry accounting system with a command-line reporting interface
+app-office/ledger 3.2.0: Double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 8.0.3: Library with common classes and functionality used by KDE finance applications
 app-office/libreoffice 6.4.3.2 6.4.6.2-r1 6.4.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 6.4.3.2 6.4.6.2-r1: A full office productivity suite. Binary package
@@ -2982,7 +2982,7 @@ app-text/pdf2oo 20090715-r1: Converts pdf files to odf
 app-text/pdfarranger 1.3.1 1.5.3-r1 1.6.2: Merge or split pdfs; rearrange, rotate, crop pages.
 app-text/pdfgrep 1.4.1-r1 2.0.1 2.1.2: A tool similar to grep which searches text in PDFs
 app-text/pdfjam 2.08-r1: pdfnup, pdfjoin and pdf90
-app-text/pdfminer 20140328 20140328-r1 20191020: Python tool for extracting information from PDF documents
+app-text/pdfminer 20191020: Python tool for extracting information from PDF documents
 app-text/pdfsandwich 0.1.4-r1 0.1.7: generator of sandwich OCR pdf files
 app-text/pdftk 3.0.0 3.0.8 9999: gcj-free version of pdftk written in Java
 app-text/peg-markdown 0.4.14: Implementation of markdown in C, using a PEG grammar
@@ -3028,7 +3028,7 @@ app-text/silvercity 0.9.7-r1: A lexical analyser for many languages
 app-text/simple-fb2-reader 1.1.3: A simple gtk3 reader for fb2 ebooks
 app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a large number of languages
 app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellchecking in mails, etc.)
-app-text/stardict 3.0.6-r3 4.0.0_pre20170304: A international dictionary supporting fuzzy and glob style matching
+app-text/stardict 3.0.6-r4 4.0.0_pre20170304-r1: A international dictionary supporting fuzzy and glob style matching
 app-text/sword 1.8.1-r1: Library for Bible reading software
 app-text/sword-modules 2.1: All the unlocked modules for app-text/sword, grouped by language
 app-text/t1utils 1.41-r2: Type 1 Font utilities
@@ -3054,7 +3054,7 @@ app-text/ttf2pk2 2.0_p20200406: Freetype 2 based TrueType font to TeX's PK forma
 app-text/ttf2pt1 3.4.4-r1: True Type Font to Postscript Type 1 Converter
 app-text/txt2man 1.6.0 1.7.0 1.7.1: Scripts to convert regular ASCII text to man pages
 app-text/txt2pdbdoc 1.4.4: Text/HTML to Doc file converter for the Palm Pilot
-app-text/txt2tags 2.6-r1 3.3: Generate marked up documents (HTML, etc.)from a plain text file with markup
+app-text/txt2tags 3.3: Generate marked up documents (HTML, etc.)from a plain text file with markup
 app-text/u2ps 0.8.4 1.1: A text to PostScript converter like a2ps, but supports UTF-8
 app-text/unac 1.8.0: Library and command-line tool for removing accents from characters
 app-text/unpaper 6.1-r1 9999: Post-processor for scanned and photocopied book pages
@@ -4957,8 +4957,6 @@ dev-java/myfaces-builder-annotations 1.0.9: Apache MyFaces API - Builder annotat
 dev-java/nachocalendar 0.23-r1: Flexible Calendar component to the Java Platform
 dev-java/nanoxml 2.2.3-r4: NanoXML is a small non-validating parser for Java
 dev-java/nekohtml 1.9.18-r1: A simple HTML scanner and tag balancer using standard XML interfaces
-dev-java/netbeans-harness 8.2: Netbeans Harness
-dev-java/netbeans-platform 8.2: Netbeans Platform
 dev-java/netty-buffer 4.0.21 4.0.36: Async event-driven framework for high performance network applications
 dev-java/netty-codec 4.0.36: Async event-driven framework for high performance network applications
 dev-java/netty-codec-http 4.0.36: Async event-driven framework for high performance network applications
@@ -4978,8 +4976,6 @@ dev-java/openjdk-bin 8.265_p01 11.0.8_p10: Prebuilt Java JDK binaries provided b
 dev-java/openjdk-jre-bin 8.265_p01 11.0.8_p10-r1: Prebuilt Java JRE binaries provided by AdoptOpenJDK
 dev-java/openjfx 8.202 11.0.9_p0: Java OpenJFX client application platform
 dev-java/oracle-javamail 1.5.6: A Java-based framework to build multiplatform mail and messaging applications
-dev-java/oracle-jdk-bin 1.8.0.202 11.0.2: Oracle's Java SE Development Kit
-dev-java/oracle-jre-bin 1.8.0.202: Oracle's Java SE Runtime Environment
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
 dev-java/osgi-core-api 5.0.0-r1: OSGi Service Platform Core API (Companion Code)
 dev-java/osgi-enterprise-api 5.0.0: OSGi Enterprise Release 5 Companion Code
@@ -11791,7 +11787,6 @@ games-util/loki_patch 20091105: Loki Software binary patch tool
 games-util/lutris 0.5.7 0.5.7.1 9999: An open source gaming platform for GNU/Linux
 games-util/mcrcon 0.7.1: Remote connection client for Minecraft servers
 games-util/nml 0.4.5-r3 0.5.2: Compiler of NML files into GRF/NFO files
-games-util/pogo-manager-bin 0.1.6 0.1.7: Pokemon Go manager
 games-util/pyfa 2.22.1 2.24.1 9999: Python Fitting Assistant - a ship fitting application for EVE Online
 games-util/qjoypad 4.3.1: Translate gamepad/joystick input into key strokes/mouse actions in X
 games-util/qstat 2.11 2.14: Server statics collector supporting many FPS games
@@ -12347,7 +12342,7 @@ kde-misc/plasma-pass 1.1.0: Plasma applet to access password from pass
 kde-misc/playbar2 2.5-r1: MPRIS2 client, written in QML for Plasma 5
 kde-misc/rsibreak 0.12.13: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.2.0: Simple image scanning application based on libksane and KDE Frameworks
-kde-misc/tellico 3.3.2: Collection manager based on KDE Frameworks
+kde-misc/tellico 3.3.2 3.3.3: Collection manager based on KDE Frameworks
 kde-misc/ultimate-gmail-feed 2.1: Plasma 5 widget showing your Gmail feed
 kde-misc/wacomtablet 3.2.0: System settings module for Wacom tablets
 kde-misc/zanshin 0.5.71-r1 0.5.71-r2: Getting things done application by KDE
@@ -15430,7 +15425,6 @@ net-nntp/tin 2.4.2: A threaded NNTP and spool based UseNet newsreader
 net-p2p/airdcpp-webclient 2.6.1 2.8.1: Cross-platform Direct Connect client
 net-p2p/amule 2.3.2-r5 9999: aMule, the all-platform eMule p2p client
 net-p2p/automatic 0.8.3: RSS downloader for Tranmission
-net-p2p/bisq 0.6.3: The decentralized bitcoin exchange (non-atomic, with arbitration)
 net-p2p/bitcoin-cli 0.16.3 0.19.1 0.20.0 0.20.1: Command-line JSON-RPC client specifically for interfacing with bitcoind
 net-p2p/bitcoin-qt 0.16.3 0.19.1 0.20.0 0.20.1: An end-user Qt GUI for the Bitcoin crypto-currency
 net-p2p/bitcoind 0.16.3 0.19.1 0.20.0 0.20.1: Original Bitcoin crypto-currency wallet for automated services
@@ -16453,7 +16447,6 @@ sci-mathematics/form 4.1 4.2.0 4.2.1: Symbolic Manipulation System
 sci-mathematics/fricas 1.3.4 1.3.5 1.3.6: FriCAS is a fork of Axiom computer algebra system
 sci-mathematics/frobby 0.9.0-r2: Software system and project for computations with monomial ideals
 sci-mathematics/genius 1.0.23 1.0.25: Genius Mathematics Tool and the GEL Language
-sci-mathematics/geogebra 5.0.339.0_p20170308-r1: Mathematics software for geometry
 sci-mathematics/geogebra-bin 5.0.604.0: Mathematics software for geometry
 sci-mathematics/geomview 1.9.5-r1: Interactive Geometry Viewer
 sci-mathematics/gfan 0.6.2: Compute Groebner fans and tropical varieties
@@ -17851,10 +17844,10 @@ virtual/imagemagick-tools 0: Virtual for imagemagick command line tools
 virtual/imap-c-client 1 2: Virtual for IMAP c-client
 virtual/inetd 0: Virtual for the internet super-server daemon
 virtual/jack 0 1: Virtual for JACK Audio Connection Kit
-virtual/jdk 1.8.0-r3 1.8.0-r4 1.8.0-r5 11 11-r1: Virtual for Java Development Kit (JDK)
+virtual/jdk 1.8.0-r5 11-r1: Virtual for Java Development Kit (JDK)
 virtual/jpeg 100: Virtual to select between libjpeg-turbo and IJG jpeg for source-based packages
 virtual/jpeg-compat 62: A virtual for the libjpeg.so.62 ABI for binary-only programs
-virtual/jre 1.8.0-r1 1.8.0-r2 1.8.0-r3 11-r1 11-r2: Virtual for Java Runtime Environment (JRE)
+virtual/jre 1.8.0-r3 11-r2: Virtual for Java Runtime Environment (JRE)
 virtual/krb5 0-r1: Virtual for Kerberos V implementation
 virtual/lapack 3.0 3.1 3.6 3.7 3.8: Virtual for Linear Algebra Package FORTRAN 77 (LAPACK) implementation
 virtual/lapacke 3.8: Virtual for LAPACK C implementation
