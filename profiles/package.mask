@@ -32,6 +32,25 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-09-19)
+# These packages (or package versions) still require Python 2.7.
+# They are either dead upstream, their Python 3 porting efforts are
+# not progressing or their maintainers are simply unresponsive.
+# Please do not remove any packages from this list unless you actually
+# port them to Python 3.
+# Removal in 30 days.  Please find relevant bugs on tracker bug #694800.
+app-admin/github-backup-utils
+app-backup/genbackupdata
+app-i18n/pology
+app-pda/gtkpod
+app-text/pdf2djvu
+app-text/sgmltools-lite
+dev-util/anjuta
+dev-util/gyp
+app-i18n/mozc
+sci-libs/magma
+sys-firmware/nvidia-firmware
+
 # Hans de Graaff <graaff@gentoo.org> (2020-09-19)
 # Mask insecure rack slot for removal in 30 days, bug 730786
 dev-ruby/rack:1.6
