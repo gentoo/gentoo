@@ -22,8 +22,8 @@ IUSE="doc emacs ncurses qt5 test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	app-crypt/rhash
 	>=app-arch/libarchive-3.3.3:=
+	app-crypt/rhash
 	>=dev-libs/expat-2.0.1
 	>=dev-libs/jsoncpp-1.9.2-r2:0=
 	>=dev-libs/libuv-1.10.0:=
@@ -71,7 +71,7 @@ PATCHES=(
 )
 
 cmake_src_bootstrap() {
-	# disable running of cmake in boostrap command
+	# disable running of cmake in bootstrap command
 	sed -i \
 		-e '/"${cmake_bootstrap_dir}\/cmake"/s/^/#DONOTRUN /' \
 		bootstrap || die "sed failed"
@@ -104,22 +104,24 @@ cmake_src_test() {
 	[[ -n ${TEST_VERBOSE} ]] && ctestargs="--extra-verbose --output-on-failure"
 
 	# Excluded tests:
-	#    BootstrapTest: we actualy bootstrap it every time so why test it.
+	#    BootstrapTest: we actually bootstrap it every time so why test it.
 	#    BundleUtilities: bundle creation broken
 	#    CMakeOnly.AllFindModules: pthread issues
-	#    CTest.updatecvs: which fails to commit as root
+	#    CTest.updatecvs: fails to commit as root
 	#    Fortran: requires fortran
+	#    RunCMake.CommandLineTar: whatever...
 	#    RunCMake.CompilerLauncher: also requires fortran
 	#    RunCMake.CPack_RPM: breaks if app-arch/rpm is installed because
 	#        debugedit binary is not in the expected location
 	#    RunCMake.CPack_DEB: breaks if app-arch/dpkg is installed because
 	#        it can't find a deb package that owns libc
-	#    TestUpload, which requires network access
+	#    RunCMake.{IncompatibleQt,ObsoleteQtMacros}: Require Qt4
+	#    TestUpload: requires network access
 	"${BUILD_DIR}"/bin/ctest \
 		-j "$(makeopts_jobs)" \
 		--test-load "$(makeopts_loadavg)" \
 		${ctestargs} \
-		-E "(BootstrapTest|BundleUtilities|CMakeOnly.AllFindModules|CompileOptions|CTest.UpdateCVS|Fortran|RunCMake.CompilerLauncher|RunCMake.PrecompileHeaders|RunCMake.CPack_(DEB|RPM)|TestUpload)" \
+		-E "(BootstrapTest|BundleUtilities|CMakeOnly.AllFindModules|CompileOptions|CTest.UpdateCVS|Fortran|RunCMake.CommandLineTar|RunCMake.CompilerLauncher|RunCMake.IncompatibleQt|RunCMake.ObsoleteQtMacros|RunCMake.PrecompileHeaders|RunCMake.CPack_(DEB|RPM)|TestUpload)" \
 		|| die "Tests failed"
 
 	popd > /dev/null
