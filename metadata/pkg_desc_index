@@ -15305,7 +15305,7 @@ net-misc/rsync 3.2.3 9999: File transfer program to keep remote files into sync
 net-misc/rwbs 0.27-r2: Roger Wilco base station
 net-misc/rwhoisd 1.5.9.6: ARIN rwhois daemon
 net-misc/rygel 0.38.3 0.38.4: Rygel is an open source UPnP/DLNA MediaServer
-net-misc/s3cmd 2.0.2 2.1.0: Command line client for Amazon S3
+net-misc/s3cmd 2.1.0: Command line client for Amazon S3
 net-misc/s6-networking 2.3.0.2 2.3.0.3 2.3.0.4 2.3.1.1: Suite of small networking utilities for Unix systems
 net-misc/samplicator 1.3.6 1.3.8_rc1: UDP packets forwarder and duplicator
 net-misc/scponly 4.8-r6 4.8-r7: A tiny pseudoshell which only permits scp and sftp

@@ -5,7 +5,7 @@ DESCRIPTION=Extensible Python-based build utility
 EAPI=7
 HOMEPAGE=https://www.scons.org/
 IUSE=doc test python_targets_python3_6 python_targets_python3_7 python_targets_python3_8
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm arm64 hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
 LICENSE=MIT
 RDEPEND=python_targets_python3_6? ( dev-lang/python:3.6[threads(+)] ) python_targets_python3_7? ( dev-lang/python:3.7[threads(+)] ) python_targets_python3_8? ( dev-lang/python:3.8[threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)]
 REQUIRED_USE=|| ( python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://downloads.sourceforge.net/project/scons/scons/4.0.1/scons-4.0.1.tar.gz doc? ( https://www.scons.org/doc/4.0.1/PDF/scons-user.pdf -> scons-4.0.1-user.pdf https://www.scons.org/doc/4.0.1/HTML/scons-user.html -> scons-4.0.1-user.html ) test? ( https://github.com/scons/scons/archive/4.0.1.tar.gz -> scons-4.0.1.gh.tar.gz )
 _eclasses_=distutils-r1	eb92d1a6d9057e2422cc9610f79f919c	multibuild	b2c915190b051f55a23b9354b9849847	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8d03325e7e3cf3e1465d9c32031e2517	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=df62be07598b9ab99d2233acbcdcbf2b
+_md5_=93a53a9cca8fc4b6d554aca308578517
