@@ -18,7 +18,10 @@ KEYWORDS="~amd64 ~ppc64"
 IUSE=""
 
 RDEPEND="
-	dev-java/openjdk[javafx]
+	|| (
+		dev-java/openjdk:8[javafx]
+		dev-java/openjdk:11[javafx]
+	)
 	!sci-mathematics/geogebra
 "
 
