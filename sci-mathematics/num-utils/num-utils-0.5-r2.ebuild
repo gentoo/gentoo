@@ -3,34 +3,36 @@
 
 EAPI=7
 
-DEB_PR=11
+DEB_PR=15
 DESCRIPTION="A set of programs for dealing with numbers from the command line"
 HOMEPAGE="https://suso.suso.org/programs/num-utils/index.phtml"
 SRC_URI="
 	http://suso.suso.org/programs/num-utils/downloads/${P}.tar.gz
-	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV}-${DEB_PR}.diff.gz"
+	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV}-${DEB_PR}.debian.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 
-PATCHES=(
-	"${WORKDIR}/${PN}_${PV}-${DEB_PR}.diff"
-)
+# pod2man
+BDEPEND="dev-lang/perl"
 
 src_prepare() {
 	default
 
 	sed \
 		-e 's:../orig/num-utils-0.5/::g' \
-		-i "${S}"/debian/patches/*.diff || die
+		-i "${WORKDIR}"/debian/patches/*.diff || die
 
-	eapply -p0 "${S}"/debian/patches/*.diff
+	eapply "${WORKDIR}"/debian/patches/*.diff
+	eapply "${FILESDIR}"/${PN}-0.5-r2-Makefile.patch
 
 	local x
 	for x in average bound interval normalize random range round; do
 		mv $x num$x || die "renaming $x failed"
 	done
+
+	sed -i -e "s/\$(PROJECT)/${PF}/" Makefile || die
 
 	sed \
 		-e 's/^RPMDIR/#RPMDIR/' \
