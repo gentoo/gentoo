@@ -50,7 +50,7 @@ RDEPEND="${DEPEND}"
 CONFIG_CHECK="~INOTIFY_USER"
 
 PATCHES=(
-	"${FILESDIR}/${P}-incomplete-type-iohandler.patch"
+	"${FILESDIR}/${PN}-1.5.0-incomplete-type-iohandler.patch"
 )
 
 src_configure() {
