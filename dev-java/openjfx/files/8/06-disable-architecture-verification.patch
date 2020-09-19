@@ -1,0 +1,21 @@
+Description: Disable the architecture verification which is limited to i386 and amd64
+Author: Emmanuel Bourg <ebourg@apache.org>
+Forwarded: no
+--- a/build.gradle
++++ b/build.gradle
+@@ -699,6 +699,7 @@
+ // at present building on PI is not supported, but we would only need to make
+ // some changes on assumptions on what should be built (like SWT / Swing) and
+ // such and we could probably make it work.
++/*
+ if (!IS_MAC && !IS_WINDOWS && !IS_LINUX) logger.error("Unsupported build OS ${OS_NAME}")
+ if (IS_WINDOWS && OS_ARCH != "x86" && OS_ARCH != "amd64") {
+     throw new Exception("Unknown and unsupported build architecture: $OS_ARCH")
+@@ -707,6 +708,7 @@
+ } else if (IS_LINUX && OS_ARCH != "i386" && OS_ARCH != "amd64") {
+     throw new Exception("Unknown and unsupported build architecture: $OS_ARCH")
+ }
++*/
+ 
+ // Sanity check that we actually have a list of compile targets to execute
+ if (COMPILE_TARGETS == null || COMPILE_TARGETS == "") {
