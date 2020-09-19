@@ -1,0 +1,14 @@
+BDEPEND=dev-perl/XML-Parser dev-perl/libwww-perl virtual/perl-ExtUtils-MakeMaker dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=Perform remote procedure calls using extensible markup language
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/Frontier-RPC
+IUSE=examples
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/XML-Parser dev-perl/libwww-perl dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/K/KM/KMACLEOD/Frontier-RPC-0.07b4.tar.gz http://perl-xml.sourceforge.net/xml-rpc/Frontier-RPC-0.07b4.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=8b1f9eb4f95805c1d49f5b701dd4f950

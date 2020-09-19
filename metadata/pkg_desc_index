@@ -6530,6 +6530,7 @@ dev-perl/Font-AFM 1.200.0-r1 1.200.0-r2 1.200.0-r3: Parse Adobe Font Metric file
 dev-perl/Font-TTF 1.60.0 1.60.0-r1: module for compiling and altering fonts
 dev-perl/Format-Human-Bytes 0.60.0-r1 0.60.0-r2: Format a bytecount and make it human readable
 dev-perl/FreezeThaw 0.500.100-r1 0.500.100-r2: converting Perl structures to strings and back
+dev-perl/Frontier-RPC 0.07_beta4-r2 0.07_beta4-r3: Perform remote procedure calls using extensible markup language
 dev-perl/Fuse 0.16.1 0.16.1-r1 0.16.1-r2: Fuse module for perl
 dev-perl/GD 2.560.0-r1 2.560.0-r2 2.660.0: Interface to Thomas Boutell's gd library
 dev-perl/GD-Barcode 1.150.0-r1: GD::Barcode - Create barcode image with GD
@@ -7582,7 +7583,6 @@ dev-perl/constant-boolean 0.20.0-r2: Define TRUE and FALSE constants
 dev-perl/constant-defer 6.0.0 6.0.0-r1: constant subs with deferred value calculation
 dev-perl/enum 1.110.0: C style enumerated types and bitmask flags in Perl
 dev-perl/forks 0.360.0-r1 0.360.0-r2: Emulate threads with fork
-dev-perl/frontier-rpc 0.07_beta4-r2: Perform remote procedure calls using extensible markup language
 dev-perl/glib-perl 1.329.100: Glib - Perl wrappers for the GLib utility and Object libraries
 dev-perl/gnome2-canvas 1.2.0-r2: Perl interface to the Gnome Canvas
 dev-perl/gnome2-vfs-perl 1.83.0: Perl interface to the 2.x series of the Gnome Virtual File System libraries
