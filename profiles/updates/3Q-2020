@@ -143,3 +143,4 @@ move net-misc/ntpclient net-misc/sntpd
 slotmove <media-sound/teamspeak-client-5 0 3
 slotmove dev-haskell/network 3 0
 move sci-libs/scipy dev-python/scipy
+move dev-perl/frontier-rpc dev-perl/Frontier-RPC
