@@ -16,7 +16,7 @@ SRC_URI="https://gitlab.com/drobilla/${PN}/-/archive/${COMMIT}/${PN}-${COMMIT}.t
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc static-libs test"
 RESTRICT="!test? ( test )"
 
