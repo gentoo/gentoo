@@ -11818,7 +11818,7 @@ gnome-base/gnome-core-libs 3.34.4 3.36.4 3.36.5: Sub-meta package for the core l
 gnome-base/gnome-desktop 3.34.7 3.36.4 3.36.5: Library with common API for various GNOME modules
 gnome-base/gnome-extra-apps 3.34.4 3.36.5: Sub-meta package for the applications of GNOME 3
 gnome-base/gnome-flashback 3.34.2 3.36.3 3.36.4: GNOME Flashback session
-gnome-base/gnome-keyring 3.34.0 3.36.0: Password and keyring managing daemon
+gnome-base/gnome-keyring 3.34.0 3.36.0 3.36.0-r1: Password and keyring managing daemon
 gnome-base/gnome-light 3.34.4 3.36.5: Meta package for GNOME-Light, merge this package to install
 gnome-base/gnome-menus 3.32.0 3.36.0: Library and layout configuration for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
