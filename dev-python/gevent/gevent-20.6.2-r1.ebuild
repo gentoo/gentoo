@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE="ssl(+),threads(+)"
 
 inherit distutils-r1 flag-o-matic
@@ -31,10 +31,6 @@ DEPEND="${RDEPEND}
 	test? (
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			dev-python/futures[${PYTHON_USEDEP}]
-			dev-python/mock[${PYTHON_USEDEP}]
-		' -2)
 	)"
 
 distutils_enable_sphinx doc
