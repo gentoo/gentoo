@@ -3,13 +3,14 @@
 
 EAPI=6
 # Python is used during build for some scripted source files generation (and twisted tests)
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit gnome2 python-any-r1
 
 DESCRIPTION="A XMPP connection manager, handles single and multi user chats and voice calls"
 HOMEPAGE="https://telepathy.freedesktop.org/"
-SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
+SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz
+	https://src.fedoraproject.org/rpms/telepathy-gabble/raw/95adf4063c2456139dcc5d991ba6d012be850794/f/${P}-python3.patch"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -63,6 +64,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-build-fix-no-jingle.patch # build with USE=-jingle, bug #523230
 	"${FILESDIR}"/${P}-openssl-1.1.patch # bug #658902
+	"${DISTDIR}"/${P}-python3.patch
 )
 
 pkg_setup() {
