@@ -88,7 +88,8 @@ src_compile() {
 	local AWT_ARCH
 	local JAWTSO="libjawt.so"
 	if [[ $(tc-arch) == 'ppc64' ]] ; then
-		AWT_ARCH="ppc64"
+		# no big-endian support
+		AWT_ARCH="ppc64le"
 	else
 		AWT_ARCH="amd64"
 	fi
