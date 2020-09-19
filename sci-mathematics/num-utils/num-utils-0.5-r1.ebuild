@@ -1,14 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-
-inherit eutils
+EAPI=7
 
 DEB_PR=11
-
 DESCRIPTION="A set of programs for dealing with numbers from the command line"
-HOMEPAGE="http://suso.suso.org/programs/num-utils/"
+HOMEPAGE="https://suso.suso.org/programs/num-utils/index.phtml"
 SRC_URI="
 	http://suso.suso.org/programs/num-utils/downloads/${P}.tar.gz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV}-${DEB_PR}.diff.gz"
@@ -16,14 +13,19 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
-IUSE=""
+
+PATCHES=(
+	"${WORKDIR}/${PN}_${PV}-${DEB_PR}.diff"
+)
 
 src_prepare() {
-	epatch "${WORKDIR}"/${PN}_${PV}-${DEB_PR}.diff
+	default
+
 	sed \
 		-e 's:../orig/num-utils-0.5/::g' \
 		-i "${S}"/debian/patches/*.diff || die
-	epatch "${S}"/debian/patches/*.diff
+
+	eapply -p0 "${S}"/debian/patches/*.diff
 
 	local x
 	for x in average bound interval normalize random range round; do
