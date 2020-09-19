@@ -9,5 +9,9 @@
     <remote-id type="cpan">forks</remote-id>
     <remote-id type="cpan-module">forks</remote-id>
     <remote-id type="cpan-module">forks::shared</remote-id>
+    <remote-id type="cpan-module">threads::shared::array</remote-id>
+    <remote-id type="cpan-module">threads::shared::handle</remote-id>
+    <remote-id type="cpan-module">threads::shared::hash</remote-id>
+    <remote-id type="cpan-module">threads::shared::scalar</remote-id>
   </upstream>
 </pkgmetadata>
