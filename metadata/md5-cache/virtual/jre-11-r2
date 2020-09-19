@@ -1,0 +1,7 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for Java Runtime Environment (JRE)
+EAPI=7
+KEYWORDS=~amd64 ~arm64 ~ppc64
+RDEPEND=|| ( virtual/jdk:11 dev-java/openjdk-jre-bin:11[gentoo-vm(+)] )
+SLOT=11
+_md5_=1392bacade76b052188e9750ce364cef
