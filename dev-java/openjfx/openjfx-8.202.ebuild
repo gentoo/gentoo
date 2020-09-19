@@ -13,7 +13,7 @@ EGRADLE_VER="4.8"
 DESCRIPTION="Java OpenJFX 8 client application platform"
 HOMEPAGE="https://openjfx.io"
 SRC_URI="
-	http://hg.openjdk.java.net/${PN}/8u/rt/archive/${MY_PV}.tar.bz2 -> ${P}.tar.bz2
+	http://hg.openjdk.java.net/${PN}/8u-dev/rt/archive/${MY_PV}.tar.bz2 -> ${P}.tar.bz2
 	https://services.gradle.org/distributions/gradle-${EGRADLE_VER}-bin.zip
 "
 
