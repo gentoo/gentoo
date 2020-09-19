@@ -36,8 +36,8 @@ src_prepare() {
 
 	use static && LDFLAGS+="${LDFLAGS} -static"
 
-	echo "$(tc-getCC) ${CFLAGS}" > conf-cc
-	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld
+	echo "$(tc-getCC) ${CFLAGS}" > conf-cc || die
+	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld || die
 }
 
 src_compile() {
