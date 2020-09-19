@@ -42,10 +42,8 @@
 app-admin/github-backup-utils
 app-backup/genbackupdata
 app-i18n/pology
-app-pda/gtkpod
 app-text/pdf2djvu
 app-text/sgmltools-lite
-dev-util/anjuta
 dev-util/gyp
 app-i18n/mozc
 sci-libs/magma
