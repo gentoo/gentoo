@@ -31,3 +31,8 @@ BDEPEND="${RDEPEND}
 		>=virtual/perl-Test-Simple-0.900.0
 	)
 "
+# Parallel testing fails in t/04_fail.t
+# and t/06_old.t due to touching the same paths
+# Bug: https://bugs.gentoo.org/741038
+# Bug: https://rt.cpan.org/Ticket/Display.html?id=133368
+DIST_TEST="do"
