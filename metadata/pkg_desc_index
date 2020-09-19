@@ -618,7 +618,7 @@ app-admin/rasdaemon 0.6.1-r1 0.6.2-r1 0.6.2-r3 0.6.2-r4 0.6.5 0.6.6: Reliability
 app-admin/rcm 1.3.3 1.3.4: rc file (dotfile) management
 app-admin/recursos 2.0-r1: Script to create html and text report about your system
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
-app-admin/restart-services 0.14.1 0.15.2: Tool to manage OpenRC services that need to be restarted
+app-admin/restart-services 0.15.2 0.16.0: Tool to manage OpenRC services that need to be restarted
 app-admin/rex 1.12.1 1.12.2 9999: (R)?ex, the friendly automation framework
 app-admin/rsyslog 8.2004.0 8.2006.0 8.2008.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 0.2.3-r1 1.0.0_rc3 1.0.0_rc3-r1: Sagan is a multi-threaded, real time system and event log monitoring system
@@ -4595,7 +4595,7 @@ dev-java/ant-commons-logging 1.10.8: Apache Ant's optional tasks depending on co
 dev-java/ant-commons-net 1.10.8: Apache Ant's optional tasks depending on commons-net
 dev-java/ant-contrib 1.0_beta3-r2: A collection of tasks for Apache Ant
 dev-java/ant-core 1.10.8: Java-based build tool similar to 'make' that uses XML configuration files
-dev-java/ant-eclipse-ecj 4.2.1 4.4.2 4.5.1 4.10-r1 4.13: Ant Compiler Adapter for Eclipse Java Compiler
+dev-java/ant-eclipse-ecj 4.4.2 4.5.1 4.10-r1 4.13: Ant Compiler Adapter for Eclipse Java Compiler
 dev-java/ant-ivy 1.4.1-r1 2.3.0-r2: Ivy is a free java based dependency manager
 dev-java/ant-jai 1.10.8: Apache Ant's optional tasks depending on sun-jai-bin
 dev-java/ant-javamail 1.10.8: Apache Ant's optional tasks depending on gnu-jaf-1
@@ -4695,7 +4695,7 @@ dev-java/dynalang 0.4-r1: Library of interoperable metaobject protocols for dyna
 dev-java/easymock 3.3.1: Mock Objects for interfaces in JUnit tests by generating them on the fly
 dev-java/easymock-classextension 3.2-r1: Mock Objects for interfaces in JUnit tests by generating them on the fly
 dev-java/ecj-gcj 4.4.2: Subset of Eclipse Compiler for Java compiled by gcj, serving as javac in gcj-jdk
-dev-java/eclipse-ecj 4.2.1 4.4.2-r1 4.5.1 4.10 4.13-r2: Eclipse Compiler for Java
+dev-java/eclipse-ecj 4.4.2-r1 4.5.1 4.10 4.13-r2: Eclipse Compiler for Java
 dev-java/eclipsito 0_pre20130713 20180510: A small subset of Eclipse core libraries for modular applications
 dev-java/ecs 1.4.2-r2: Java library to generate markup language text such as HTML and XML
 dev-java/edtftpj 2.4.0: FTP client library written in Java
@@ -5973,7 +5973,7 @@ dev-perl/Apache-CGI-Builder 1.300.0-r2: CGI::Builder and Apache2/mod_perl2 integ
 dev-perl/Apache-DBI 1.120.0-r2: Authentication and Authorization via Perl's DBI
 dev-perl/Apache-LogFormat-Compiler 0.350.0 0.360.0: Compile an Apache log format string to perl-code
 dev-perl/Apache-Reload 0.130.0-r1: Automatically reload changed modules without restarting Apache
-dev-perl/Apache-Session 1.930.0 1.930.0-r1: A persistence framework for session data
+dev-perl/Apache-Session 1.930.0 1.930.0-r1 1.940.0: A persistence framework for session data
 dev-perl/Apache-SizeLimit 0.970.0-r1 0.970.0-r2: Graceful exit for large children
 dev-perl/Apache-Test 1.420.0: Test.pm wrapper with helpers for testing Apache
 dev-perl/Apache2-AuthenNTLM 0.20.0-r2: Perform Microsoft NTLM and Basic User Authentication
@@ -7922,7 +7922,7 @@ dev-python/autoprop 1.0.2: Infer properties from accessor methods
 dev-python/awesome-slugify 1.6.5: Python flexible slugify function
 dev-python/aws-sam-translator 1.26.0 1.27.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0: AWS X-Ray SDK for Python
-dev-python/awscli 1.18.117: Universal Command Line Environment for AWS
+dev-python/awscli 1.18.142: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backcall 0.2.0: Specifications for callback functions passed in to an API
 dev-python/backports 1.0: Namespace for backported Python features
