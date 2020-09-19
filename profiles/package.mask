@@ -765,23 +765,6 @@ dev-python/matplotlib-python2
 # regarding runstatedir (not using /run).
 =net-misc/networkmanager-1.22.10-r11
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-18)
-# Unmaintained, vulnerable oracle java ebuilds, even fetching distfiles
-# requires agreement to restrictive license
-# Revdeps that still depend on oracle variants require javafx
-# javafx package  for icedtea or openjdk is in the works and
-# will be commited before oracle-jdk is removed.
-# Oracle JDK Removal in 30 days.
-# Packages will get unmasked after switch to openjfx.
-# https://bugs.gentoo.org/681828
-dev-java/oracle-jdk-bin
-dev-java/oracle-jre-bin
-dev-java/netbeans-platform
-dev-java/netbeans-harness
-games-util/pogo-manager-bin
-net-p2p/bisq
-sci-mathematics/geogebra
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-03-27)
 # Vulnerable old version of icedtea-web #711392
 <dev-java/icedtea-web-1.8.4
