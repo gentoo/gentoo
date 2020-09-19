@@ -7914,7 +7914,7 @@ dev-python/async_generator 1.10: Making it easy to write async iterators in Pyth
 dev-python/async_timeout 3.0.1: Timeout context manager for asyncio programs
 dev-python/atomicwrites 1.4.0: Atomic file writes
 dev-python/atpublic 1.0: A decorator and function to polulate a module's __all__ and the module globals.
-dev-python/attrs 19.3.0 20.1.0 20.2.0: Attributes without boilerplate
+dev-python/attrs 20.1.0 20.2.0: Attributes without boilerplate
 dev-python/audioread 2.1.8-r2: Wrapper for audio file decoding using FFmpeg or GStreamer
 dev-python/authheaders 0.13.0: A library wrapping email authentication header verification and generation.
 dev-python/authres 1.2.0: Parse and generate Authentication-Results headers
@@ -7924,7 +7924,7 @@ dev-python/automaton 1.12.1: Friendly state machines for python.
 dev-python/autopep8 1.4.4 1.5.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/autoprop 1.0.2: Infer properties from accessor methods
 dev-python/awesome-slugify 1.6.5: Python flexible slugify function
-dev-python/aws-sam-translator 1.26.0: A library that transform SAM templates into AWS CloudFormation templates
+dev-python/aws-sam-translator 1.26.0 1.27.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0: AWS X-Ray SDK for Python
 dev-python/awscli 1.18.117: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
@@ -7952,7 +7952,7 @@ dev-python/binaryornot 0.4.4 0.4.4-r1: Ultra-lightweight pure Python package to 
 dev-python/bitarray 0.8.3: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.7: A pure Python module for creation and analysis of binary data
 dev-python/black 20.8_beta1: The uncompromising Python code formatter
-dev-python/bleach 3.1.5 3.2.0: an easy whitelist-based HTML-sanitizing tool
+dev-python/bleach 3.1.5 3.2.0 3.2.1: an easy whitelist-based HTML-sanitizing tool
 dev-python/blessed 1.17.10: Library for making terminal apps using colors, keyboard input and positioning
 dev-python/blessings 1.7-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.4-r1: Fast, simple object-to-object and broadcast signaling
@@ -7962,8 +7962,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.14.46 1.14.59 1.14.63 1.15.0 9999: The AWS SDK for Python
-dev-python/botocore 1.17.46 1.17.59 1.17.63 1.18.0 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.14.46 1.14.59 1.14.63 1.15.0 1.15.1 9999: The AWS SDK for Python
+dev-python/botocore 1.17.46 1.17.59 1.17.63 1.18.0 1.18.1 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.18: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.19: Syntax highlighting and autocompletion for the Python interpreter
@@ -8013,7 +8013,7 @@ dev-python/click-threading 0.4.4: Multithreaded Click apps made easy.
 dev-python/cliff 3.4.0: Command Line Interface Formulation Framework
 dev-python/clint 0.5.1-r2 0.5.1-r3: Python Command-line Application Tools
 dev-python/cloudpickle 1.5.0 1.6.0: Extended pickling support for Python objects
-dev-python/cmd2 1.2.1 1.3.8 1.3.10: Extra features for standard library's cmd module
+dev-python/cmd2 1.3.8 1.3.10: Extra features for standard library's cmd module
 dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
 dev-python/colorama 0.4.3: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/colorclass 2.2.0-r1: Colorful worry-free console applications for multiple platforms
@@ -8059,7 +8059,7 @@ dev-python/cycler 0.10.0-r1: Composable style cycles
 dev-python/cython 0.29.15 0.29.20-r2 0.29.21: A Python to C compiler
 dev-python/cytoolz 0.10.0: Cython implementation of Toolz: High performance functional utilities
 dev-python/daemonize 2.5.0: Library for writing system daemons in Python
-dev-python/dask 2.23.0 2.25.0 2.26.0: Task scheduling and blocked algorithms for parallel processing
+dev-python/dask 2.23.0 2.25.0 2.26.0 2.27.0: Task scheduling and blocked algorithms for parallel processing
 dev-python/dataclasses 0.7: A backport of the dataclasses module for Python 3.6
 dev-python/dbus-python 1.2.16: Python bindings for the D-Bus messagebus
 dev-python/dbusmock 0.19: Easily create mock objects on D-Bus for software testing
@@ -8403,7 +8403,7 @@ dev-python/linecache2 1.0.0: Backports of the linecache module
 dev-python/lit 9.0.1 10.0.0 10.0.1 11.0.0_rc1 11.0.0_rc2 11.0.0.9999 12.0.0.9999: A stand-alone install of the LLVM suite testing tool
 dev-python/livereload 2.6.1: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 1.3.6: Python bindings for the low-level FUSE API
-dev-python/llvmlite 0.32.1 0.33.0 0.33.0-r1 0.34.0: Python wrapper around the llvm C++ library
+dev-python/llvmlite 0.33.0 0.34.0: Python wrapper around the llvm C++ library
 dev-python/lmdb 0.92: Python bindings for the Lightning Database
 dev-python/lmfit 1.0.1: Non-Linear Least-Squares Minimization and Curve-Fitting for Python
 dev-python/locket 0.2.0-r1: File-based locks for Python
@@ -8732,7 +8732,7 @@ dev-python/pygal 2.4.0-r1: A python SVG charts generator
 dev-python/pygame 1.9.6-r1 2.0.0_pre10 9999: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.12.4-r4 6.99.12.4-r5 7.3.5-r1: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
-dev-python/pygit2 1.2.1: Python bindings for libgit2
+dev-python/pygit2 1.2.1 1.3.0: Python bindings for libgit2
 dev-python/pyglet 1.5.3 1.5.7: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.5.2 2.6.1 2.7.0 2.7.1: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
@@ -8849,7 +8849,7 @@ dev-python/pytest-httpbin 1.0.0: Easily test your HTTP library against a local c
 dev-python/pytest-lazy-fixture 0.6.3: It helps to use fixtures in pytest.mark.parametrize
 dev-python/pytest-localserver 0.5.0: Py.test plugin to test server connections locally
 dev-python/pytest-metadata 1.8.0: A plugin for pytest that provides access to test session metadata
-dev-python/pytest-mock 1.11.2 2.0.0 3.2.0 3.3.1: Thin-wrapper around the mock package for easier use with pytest
+dev-python/pytest-mock 2.0.0 3.2.0 3.3.1: Thin-wrapper around the mock package for easier use with pytest
 dev-python/pytest-ordering 0.6: pytest plugin to run your tests in a specific order
 dev-python/pytest-pep8 1.0.6-r1: pytest plugin to check PEP8 requirements
 dev-python/pytest-pylint 0.14.1: pytest plugin to check source code with pylint
@@ -9072,7 +9072,7 @@ dev-python/serpent 1.30: A simple serialization library based on ast.literal_eva
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.10-r1: Allow customization of the process title
-dev-python/setuptools 46.4.0-r1 46.4.0-r2 49.6.0 50.3.0: Collection of extensions to Distutils
+dev-python/setuptools 46.4.0-r2 50.3.0: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2-r1: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 4.1.2: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.1: A setuptools_scm plugin for git archives
@@ -9182,14 +9182,14 @@ dev-python/symengine 0.6.1-r1: Python wrappers to the symengine C++ library
 dev-python/sympy 1.6.2: Computer Algebra System in pure Python
 dev-python/tabulate 0.8.7: Pretty-print tabular data
 dev-python/tagpy 2018.1-r1: Python Bindings for TagLib
-dev-python/tappy 2.4-r1 2.6.2 3.0: Test Anything Protocol (TAP) tools
+dev-python/tappy 2.6.2 3.0: Test Anything Protocol (TAP) tools
 dev-python/taskflow 4.1.0: A library to do [jobs, tasks, flows] in a HA manner using different backends
 dev-python/tblib 1.7.0: Traceback fiddling library for Python
 dev-python/tempita 0.5.3-r2 0.5.3-r3: A very small text templating language
 dev-python/tempora 3.0.0 4.0.0: Objects and routines pertaining to date and time
 dev-python/tenacity 6.1.0-r1 6.2.0: General-purpose retrying library
 dev-python/termcolor 1.1.0-r2: ANSII Color formatting for output in terminal
-dev-python/terminado 0.8.3: Terminals served to term.js using Tornado websockets
+dev-python/terminado 0.8.3 0.9.0: Terminals served to term.js using Tornado websockets
 dev-python/terminaltables 3.1.0 9999: Generate simple tables in terminals from a nested list of strings
 dev-python/test_server 0.0.31: Server to test HTTP clients
 dev-python/testfixtures 6.14.1 6.14.2: A collection of helpers and mock objects for unit tests and doc tests
@@ -9308,7 +9308,7 @@ dev-python/xarray 0.12.1 0.16.0: N-D labeled arrays and datasets in Python
 dev-python/xcffib 0.10.1: A drop in replacement for xpyb, an XCB python binding
 dev-python/xdoctest 0.11.0: A rewrite of Python's builtin doctest module but without all the weirdness
 dev-python/xlrd 1.2.0: Library to extract data from Microsoft Excel spreadsheets
-dev-python/xlsxwriter 1.3.3: Python module for creating Excel XLSX files
+dev-python/xlsxwriter 1.3.3 1.3.4: Python module for creating Excel XLSX files
 dev-python/xlutils 2.0.0-r1: provides a collection of utilities for working with Excel files
 dev-python/xlwt 1.3.0-r1: Python library to create spreadsheet files compatible with Excel
 dev-python/xmlschema 1.2.3-r1 1.2.4: An XML Schema validator and decoder
@@ -9327,11 +9327,11 @@ dev-python/zconfig 3.5.0: A configuration library supporting a hierarchical sche
 dev-python/zeep 3.4.0: A modern/fast Python SOAP client based on lxml / requests
 dev-python/zeroconf 0.24.4: Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
 dev-python/zict 0.1.4: Mutable mapping tools
-dev-python/zipp 1.0.0 2.0.1 3.1.0: Backport of pathlib-compatible object wrapper for zip files
+dev-python/zipp 1.0.0 3.1.0: Backport of pathlib-compatible object wrapper for zip files
 dev-python/zope-component 4.4.1: Zope Component Architecture
 dev-python/zope-configuration 4.4.0: Zope Configuration Architecture
 dev-python/zope-deprecation 4.4.0: Zope Deprecation Infrastructure
-dev-python/zope-event 4.4: Event publishing / dispatch, used by Zope Component Architecture
+dev-python/zope-event 4.4 4.5.0: Event publishing / dispatch, used by Zope Component Architecture
 dev-python/zope-exceptions 4.4: General purpose exceptions for Zope packages
 dev-python/zope-i18nmessageid 5.0.1: Zope support for i18nmessageid (tagging source of i18n strings)
 dev-python/zope-interface 5.1.0: Interfaces for Python
@@ -15103,7 +15103,7 @@ net-misc/cbqinit 0.7.3-r3: Sets up class-based queue traffic control (QoS) with 
 net-misc/cbugzilla 0.2.1: CLI and C api to get data from Bugzilla
 net-misc/cfengine 3.6.2: An automated suite of programs for configuring and maintaining Unix-like computers
 net-misc/cgminer 4.9.2 4.10.0: Bitcoin CPU/GPU/FPGA/ASIC miner in C
-net-misc/chrony 3.5.1-r1 4.0_pre3 9999: NTP client and server programs
+net-misc/chrony 3.5.1-r1 4.0_pre3 4.0_pre4 9999: NTP client and server programs
 net-misc/clockspeed 0.62-r7: Simple Network Time Protocol (NTP) client
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
 net-misc/cmst 2020.05.09: Qt GUI for Connman with system tray icon
@@ -17880,7 +17880,7 @@ virtual/libusb 0-r2 1-r1 1-r2: Virtual for libusb
 virtual/linux-sources 3-r4: Virtual for Linux kernel sources
 virtual/linuxtv-dvb-headers 5.8: Virtual Package installing the Header files for DVB
 virtual/logger 0-r1: Virtual for system loggers
-virtual/mailx 1 2: Virtual for mail implementations
+virtual/mailx 1 2 3: Virtual for mail implementations
 virtual/man 0-r3: Virtual for man
 virtual/mda 0: Virtual for Message Delivery Agents
 virtual/mpi 2.0-r3 2.0-r4 2.0-r5: Virtual for Message Passing Interface (MPI) v2.0 implementation
@@ -18622,7 +18622,7 @@ x11-misc/stalonetray 0.8.3: System tray utility including support for KDE system
 x11-misc/sunflower 0.4_p20200716-r1: Small and highly customizable twin-panel file manager with plugin-support
 x11-misc/superswitcher 0.6-r1: A more feature-full replacement of the Alt-Tab window switching behavior
 x11-misc/sux 1.0-r4 1.0.1: "su" wrapper which transfers X credentials
-x11-misc/svkbd 0.2: Simple Virtual Keyboard
+x11-misc/svkbd 0.2 0.2.1: Simple Virtual Keyboard
 x11-misc/sw-notify-send 1.2.1 9999: A system-wide variant of tinynotify-send
 x11-misc/sxhkd 0.6.1: Simple X hotkey daemon
 x11-misc/synergy 1.9.1 2.0.0: Lets you easily share a single mouse and keyboard between multiple computers
