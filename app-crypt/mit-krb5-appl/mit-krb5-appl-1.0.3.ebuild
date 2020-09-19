@@ -1,28 +1,31 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit autotools eutils flag-o-matic toolchain-funcs versionator
+inherit autotools flag-o-matic toolchain-funcs
 
 MY_P=${P/mit-}
-MAJOR_MINOR="$( get_version_component_range 1-2 )"
+MAJOR_MINOR="$(ver_cut 1-2)"
 DESCRIPTION="Kerberized applications split from the main MIT Kerberos V distribution"
 HOMEPAGE="http://web.mit.edu/kerberos/www/"
 SRC_URI="http://web.mit.edu/kerberos/dist/krb5-appl/${MAJOR_MINOR}/${MY_P}-signed.tar"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="openafs-krb5-a BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
-IUSE=""
 
+BDEPEND="virtual/pkgconfig"
 RDEPEND=">=app-crypt/mit-krb5-1.8.0
 	sys-libs/e2fsprogs-libs
 	sys-libs/ncurses"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
 
-S=${WORKDIR}/${MY_P}
+PATCHES=(
+	"${FILESDIR}/${PN}-tinfo.patch"
+	"${FILESDIR}/${PN}-sig_t.patch"
+)
 
 src_unpack() {
 	unpack ${A}
@@ -30,9 +33,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-tinfo.patch"
-	epatch "${FILESDIR}/${PN}-sig_t.patch"
-	sed -i -e "s/-lncurses/$($(tc-getPKG_CONFIG) --libs ncurses)/" configure.ac
+	default
+
+	sed -i -e "s/-lncurses/$($(tc-getPKG_CONFIG) --libs ncurses)/" configure.ac || die
 	eautoreconf
 }
 
@@ -44,19 +47,19 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	emake DESTDIR="${ED}" install
 	for i in {telnetd,ftpd} ; do
-		mv "${D}"/usr/share/man/man8/${i}.8 "${D}"/usr/share/man/man8/k${i}.8 \
-		|| die "mv failed (man)"
-		mv "${D}"/usr/sbin/${i} "${D}"/usr/sbin/k${i} || die "mv failed"
+		mv "${ED}"/usr/share/man/man8/${i}.8 "${ED}"/usr/share/man/man8/k${i}.8 \
+			|| die "mv failed (man)"
+		mv "${ED}"/usr/sbin/${i} "${ED}"/usr/sbin/k${i} || die "mv failed"
 	done
 
 	for i in {rcp,rlogin,rsh,telnet,ftp} ; do
-		mv "${D}"/usr/share/man/man1/${i}.1 "${D}"/usr/share/man/man1/k${i}.1 \
-		|| die "mv failed (man)"
-		mv "${D}"/usr/bin/${i} "${D}"/usr/bin/k${i} || die "mv failed"
+		mv "${ED}"/usr/share/man/man1/${i}.1 "${ED}"/usr/share/man/man1/k${i}.1 \
+			|| die "mv failed (man)"
+		mv "${ED}"/usr/bin/${i} "${ED}"/usr/bin/k${i} || die "mv failed"
 	done
 
-	rm "${D}"/usr/share/man/man1/tmac.doc
+	rm "${ED}"/usr/share/man/man1/tmac.doc || die
 	dodoc README
 }
