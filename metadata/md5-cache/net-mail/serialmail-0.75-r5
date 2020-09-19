@@ -12,4 +12,4 @@ RESTRICT=mirror bindist test
 SLOT=0
 SRC_URI=http://cr.yp.to/software/serialmail-0.75.tar.gz mirror://gentoo/serialmail-0.75-patch.tar.bz2
 _eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=0d24b812379848bb238f653da9d7f208
+_md5_=0e44d37007d8c5d242c7a80e3eab4101
