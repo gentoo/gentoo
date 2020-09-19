@@ -3,7 +3,6 @@
 
 EAPI=6
 
-DIST_NAME=Frontier-RPC
 DIST_VERSION=0.07b4
 DIST_AUTHOR=KMACLEOD
 inherit perl-module
