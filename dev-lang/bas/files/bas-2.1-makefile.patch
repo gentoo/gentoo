@@ -4,8 +4,8 @@ Fixes makefile.in to respect AR during libbas build
 
 Patch by Kevin McCarthy <signals42@gmail.com>
 
---- Makefile.in
-+++ Makefile.in
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -27,7 +27,7 @@
  libbas.a:	auto.o bas.o fs.o global.o token.o program.o \
  		str.o value.o var.o
