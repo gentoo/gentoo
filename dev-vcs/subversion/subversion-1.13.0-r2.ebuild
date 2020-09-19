@@ -3,13 +3,13 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python2_7 )
 USE_RUBY="ruby26 ruby25 ruby24"
 DISTUTILS_OPTIONAL=1
 WANT_AUTOMAKE="none"
 GENTOO_DEPEND_ON_PERL="no"
 
-inherit autotools bash-completion-r1 db-use depend.apache distutils-r1 flag-o-matic java-pkg-opt-2 libtool perl-module ruby-single toolchain-funcs xdg-utils
+inherit autotools bash-completion-r1 db-use depend.apache flag-o-matic java-pkg-opt-2 libtool ltprune multilib perl-module python-any-r1 ruby-single toolchain-funcs xdg-utils
 
 MY_P="${P/_/-}"
 DESCRIPTION="Advanced version control system"
@@ -21,8 +21,8 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="Subversion GPL-2"
 SLOT="0"
 [[ "${PV}" = *_rc* ]] || \
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="apache2 berkdb ctypes-python debug doc extras gnome-keyring java kwallet nls perl python ruby sasl test"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+IUSE="apache2 berkdb debug doc +dso extras gnome-keyring +http java kwallet nls perl ruby sasl test vim-syntax"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -33,16 +33,15 @@ COMMON_DEPEND="
 	>=dev-libs/apr-util-1.3:1
 	dev-libs/expat
 	dev-libs/libutf8proc:=
-	>=net-libs/serf-1.3.4
 	sys-apps/file
 	sys-libs/zlib
 	berkdb? ( >=sys-libs/db-4.0.14:= )
-	ctypes-python? ( ${PYTHON_DEPS} )
 	gnome-keyring? (
 		dev-libs/glib:2
 		app-crypt/libsecret
 		sys-apps/dbus
 	)
+	http? ( >=net-libs/serf-1.3.4 )
 	kwallet? (
 		dev-qt/qtcore:5
 		dev-qt/qtdbus:5
@@ -53,31 +52,19 @@ COMMON_DEPEND="
 		sys-apps/dbus
 	)
 	perl? ( dev-lang/perl:= )
-	python? ( ${PYTHON_DEPS} )
 	ruby? ( ${RUBY_DEPS} )
-	sasl? ( dev-libs/cyrus-sasl )
-"
+	sasl? ( dev-libs/cyrus-sasl )"
 RDEPEND="${COMMON_DEPEND}
-	apache2? (
-		acct-group/apache
-		acct-user/apache
-		www-servers/apache[apache2_modules_dav]
-	)
-	!apache2? (
-		acct-group/svnusers
-		acct-user/svn
-	)
+	apache2? ( www-servers/apache[apache2_modules_dav] )
 	java? ( >=virtual/jre-1.8 )
 	nls? ( virtual/libintl )
-	perl? ( dev-perl/URI )
-"
+	perl? ( dev-perl/URI )"
 # Note: ctypesgen doesn't need PYTHON_USEDEP, it's used once
 DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig
 	!!<sys-apps/sandbox-1.6
-	ctypes-python? ( dev-python/ctypesgen )
 	doc? ( app-doc/doxygen )
 	gnome-keyring? ( virtual/pkgconfig )
+	http? ( virtual/pkgconfig )
 	java? ( >=virtual/jdk-1.8 )
 	kwallet? (
 		kde-frameworks/kdelibs4support:5
@@ -85,16 +72,11 @@ DEPEND="${COMMON_DEPEND}
 	)
 	nls? ( sys-devel/gettext )
 	perl? ( dev-lang/swig )
-	python? ( dev-lang/swig )
 	ruby? ( dev-lang/swig )
-	test? ( ${PYTHON_DEPS} )
-"
+	test? ( ${PYTHON_DEPS} )"
 
 REQUIRED_USE="
-	ctypes-python? ( ${PYTHON_REQUIRED_USE} )
-	python? ( ${PYTHON_REQUIRED_USE} )
-	test? ( ${PYTHON_REQUIRED_USE} )
-"
+	test? ( !dso )"
 
 want_apache
 
@@ -128,6 +110,13 @@ pkg_setup() {
 	depend.apache_pkg_setup
 
 	java-pkg-opt-2_pkg_setup
+
+	if ! use http ; then
+		ewarn "WebDAV support is disabled. You need WebDAV to"
+		ewarn "access repositories through the HTTP protocol."
+		ewarn "Consider enabling \"http\" USE flag"
+		echo -ne "\a"
+	fi
 
 	# https://issues.apache.org/jira/browse/SVN-4813#comment-16813739
 	append-cppflags -P
@@ -178,12 +167,6 @@ src_prepare() {
 	sed -e 's/\(libsvn_swig_py\)-\(1\.la\)/\1-$(EPYTHON)-\2/g' \
 		-i build-outputs.mk || die "sed failed"
 
-	if use python ; then
-		# XXX: make python_copy_sources accept path
-		S=${S}/subversion/bindings/swig/python python_copy_sources
-		rm -r "${S}"/subversion/bindings/swig/python || die
-	fi
-
 	xdg_environment_reset
 }
 
@@ -193,15 +176,15 @@ src_configure() {
 		$(use_with apache2 apache-libexecdir)
 		$(use_with apache2 apxs "${EPREFIX}"/usr/bin/apxs)
 		$(use_with berkdb berkeley-db "db.h:${EPREFIX}/usr/include/db${SVN_BDB_VERSION}::db-${SVN_BDB_VERSION}")
-		$(use_with ctypes-python ctypesgen "${EPREFIX}/usr")
-		--disable-runtime-module-search
+		--without-ctypesgen
+		$(use_enable dso runtime-module-search)
 		$(use_with gnome-keyring)
 		$(use_enable java javahl)
 		$(use_with java jdk "${JAVA_HOME}")
 		$(use_with kwallet)
 		$(use_enable nls)
 		$(use_with sasl)
-		--with-serf
+		$(use_with http serf)
 		--with-apr="${EPREFIX}/usr/bin/apr-1-config"
 		--with-apr-util="${EPREFIX}/usr/bin/apu-1-config"
 		--disable-experimental-libtool
@@ -211,7 +194,7 @@ src_configure() {
 		--enable-svnxx
 	)
 
-	if use python || use perl || use ruby; then
+	if use perl || use ruby; then
 		myconf+=( --with-swig )
 	else
 		myconf+=( --without-swig )
@@ -255,55 +238,21 @@ src_configure() {
 	#myconf+=( --disable-disallowing-of-undefined-references )
 
 	# for build-time scripts
-	if use ctypes-python || use python || use test; then
+	if use test; then
 		python_setup
-	fi
-
-	if use python && [[ ${CHOST} == *-darwin* ]] ; then
-		export ac_cv_python_link="$(tc-getCC) "'$(PYTHON_CFLAGS) -bundle -undefined dynamic_lookup $(PYTHON_LIBS)'
-		export ac_cv_python_libs='$(PYTHON_CFLAGS) -bundle -undefined dynamic_lookup $(PYTHON_LIBS)'
-		export ac_cv_python_compile="$(tc-getCC)"
 	fi
 
 	# Remove when >=dev-libs/libutf8proc-2.5.0 is stable
 	# https://bugs.gentoo.org/721300
 	append-cppflags -I"${EPREFIX}"/usr/include/libutf8proc
 
-	# allow overriding Python include directory
 	ac_cv_path_RUBY=$(usex ruby "${EPREFIX}/usr/bin/ruby${RB_VER}" "none") \
 	ac_cv_path_RDOC=$(usex ruby "${EPREFIX}/usr/bin/rdoc${RB_VER}" "none") \
-	ac_cv_python_includes='-I$(PYTHON_INCLUDEDIR)' \
 	econf "${myconf[@]}"
 }
 
 src_compile() {
 	emake local-all
-
-	if use ctypes-python ; then
-		# pre-generate .py files
-		use ctypes-python && emake ctypes-python
-
-		pushd subversion/bindings/ctypes-python >/dev/null || die
-		distutils-r1_src_compile
-		popd >/dev/null || die
-	fi
-
-	if use python ; then
-		swig_py_compile() {
-			local p=subversion/bindings/swig/python
-			rm -f ${p} || die
-			ln -s "${BUILD_DIR}" ${p} || die
-
-			python_export PYTHON_INCLUDEDIR
-			emake swig-py \
-				swig_pydir="$(python_get_sitedir)/libsvn" \
-				swig_pydir_extra="$(python_get_sitedir)/svn"
-		}
-
-		# this will give us proper BUILD_DIR for symlinking
-		BUILD_DIR=python \
-		python_foreach_impl swig_py_compile
-	fi
 
 	if use perl ; then
 		emake swig-pl
@@ -333,26 +282,6 @@ src_compile() {
 src_test() {
 	if has_version ~${CATEGORY}/${P} ; then
 		default
-
-		if use ctypes-python ; then
-			python_test() {
-				"${PYTHON}" subversion/bindings/ctypes-python/test/run_all.py \
-					|| die "ctypes-python tests fail with ${EPYTHON}"
-			}
-
-			distutils-r1_src_test
-		fi
-
-		if use python ; then
-			swig_py_test() {
-				pushd "${BUILD_DIR}" >/dev/null || die
-				"${PYTHON}" tests/run_all.py || die "swig-py tests fail with ${EPYTHON}"
-				popd >/dev/null || die
-			}
-
-			BUILD_DIR=subversion/bindings/swig/python \
-			python_foreach_impl swig_py_test
-		fi
 	else
 		ewarn "The test suite shows errors when there is an older version of"
 		ewarn "${CATEGORY}/${PN} installed. Please install =${CATEGORY}/${P}*"
@@ -363,29 +292,6 @@ src_test() {
 
 src_install() {
 	emake -j1 DESTDIR="${D}" local-install
-
-	if use ctypes-python ; then
-		pushd subversion/bindings/ctypes-python >/dev/null || die
-		distutils-r1_src_install
-		popd >/dev/null || die
-	fi
-
-	if use python ; then
-		swig_py_install() {
-			local p=subversion/bindings/swig/python
-			rm -f ${p} || die
-			ln -s "${BUILD_DIR}" ${p} || die
-
-			emake \
-				DESTDIR="${D}" \
-				swig_pydir="$(python_get_sitedir)/libsvn" \
-				swig_pydir_extra="$(python_get_sitedir)/svn" \
-				install-swig-py
-		}
-
-		BUILD_DIR=python \
-		python_foreach_impl swig_py_install
-	fi
 
 	if use perl ; then
 		emake DESTDIR="${D}" INSTALLDIRS="vendor" install-swig-pl
@@ -455,10 +361,6 @@ src_install() {
 		rm -fr tools/client-side/svnmucc
 		rm -fr tools/server-side/{svn-populate-node-origins-index,svnauthz-validate}*
 		rm -fr tools/{buildbot,dev,diff,po}
-
-		insinto /usr/share/${PN}
-		find tools -name '*.py' -exec sed -i -e '1s:python:&2:' {} + || die
-		doins -r tools
 	fi
 
 	if use doc ; then
@@ -470,7 +372,7 @@ src_install() {
 		fi
 	fi
 
-	find "${D}" -name '*.la' -type f -delete || die
+	prune_libtool_files --all
 
 	cd "${ED%/}"/usr/share/locale
 	for i in * ; do
@@ -532,6 +434,10 @@ pkg_config() {
 		fi
 		chmod -Rf go-rwx "${SVN_REPOS_LOC}/conf"
 		chmod -Rf o-rwx "${SVN_REPOS_LOC}/repos"
-		chown -Rf ${SVNSERVE_USER}:${SVNSERVE_GROUP} "${SVN_REPOS_LOC}/repos"
+		echo "Please create \"${SVNSERVE_GROUP}\" group if it does not exist yet."
+		echo "Afterwards please create \"${SVNSERVE_USER}\" user with homedir \"${SVN_REPOS_LOC}\""
+		echo "and as part of the \"${SVNSERVE_GROUP}\" group if it does not exist yet."
+		echo "Finally, execute \"chown -Rf ${SVNSERVE_USER}:${SVNSERVE_GROUP} ${SVN_REPOS_LOC}/repos\""
+		echo "to finish the configuration."
 	fi
 }
