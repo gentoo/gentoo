@@ -3,9 +3,8 @@
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2 python-any-r1
+inherit gnome2
 
 DESCRIPTION="Audio/video conferencing framework specifically designed for instant messengers"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/Farstream"
@@ -48,17 +47,14 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.2.8-make43.patch # remove when bumping and switching to Meson
 )
 
-pkg_setup() {
-	python-any-r1_pkg_setup
-}
-
 src_configure() {
 	plugins="fsrawconference,fsrtpconference,fsmsnconference,fsrtpxdata,fsfunnel,fsrtcpfilter,fsvideoanyrate"
 	gnome2_src_configure \
 		--disable-static \
 		$(use_enable introspection) \
 		$(use_enable upnp gupnp) \
-		--with-plugins=${plugins}
+		--with-plugins=${plugins} \
+		ac_cv_path_PYTHON=
 }
 
 src_compile() {
