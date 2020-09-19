@@ -31,7 +31,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/bundler
 	>=dev-ruby/rails-6.0
 	dev-ruby/arel
-	<dev-ruby/rack-2.1
+	dev-ruby/rack
 	dev-ruby/sqlite3
 	dev-ruby/mocha
 	www-servers/puma
@@ -40,7 +40,6 @@ ruby_add_bdepend "test? (
 all_ruby_prepare() {
 	# Use an installed rails version rather than live source from github.
 	sed -i -e '/\(rack\|arel\|rails\|simplecov\)/ s/,/#/'  \
-		-e '/rack/ s/rack"/rack", "<2.1"/' \
 		-e '/\(byebug\|simplecov\)/ s:^:#:' Gemfile || die
 
 	sed -i -e '/simplecov/I s:^:#:' test/test_helper.rb || die
