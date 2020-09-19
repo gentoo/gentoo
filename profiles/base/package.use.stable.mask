@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-18)
+# openjfx:8 will never be stabilized
+dev-java/openjdk:8 javafx
+
 # Pacho Ramos <pacho@gentoo.org> (2020-08-21)
 # app-text/pandoc is hard to stabilize #737612
 sys-apps/earlyoom docs
