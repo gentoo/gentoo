@@ -25,7 +25,7 @@ RDEPEND="
 	dev-qt/qtquickcontrols:5[widgets]
 	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
-	media-libs/mlt
+	>=media-libs/mlt-6.20.0
 	virtual/opengl
 "
 DEPEND="${RDEPEND}
