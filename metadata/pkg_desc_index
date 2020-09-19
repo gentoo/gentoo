@@ -2718,7 +2718,7 @@ app-portage/gentoopm 0.3.1 0.3.2 9999: A common interface to Gentoo package mana
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
 app-portage/golop 0.0.1 0.0.1-r1 9999: A pure Go re-implementation of genlop
 app-portage/gpytage 0.3.0_rc1-r1: GTK Utility to help manage Portage's user config files
-app-portage/gpyutils 0.4.2 0.4.3 0.4.4 9999: Utitilies for maintaining Python packages
+app-portage/gpyutils 0.4.2 0.4.3 0.4.4 0.4.5 9999: Utitilies for maintaining Python packages
 app-portage/grs 0.7 9999: Suite to build Gentoo Reference Systems
 app-portage/gs-elpa 0.1.3-r1: g-sorcery backend for elisp packages
 app-portage/gverify 2: gentoo.git signature verification tool
@@ -15509,7 +15509,7 @@ net-proxy/cntlm 0.93_beta5-r2: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
 net-proxy/dante 1.4.1-r2: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.17: The dnsproxy daemon is a proxy for DNS queries
 net-proxy/haproxy 1.8.25-r1 2.0.14 2.0.14-r1 2.0.15 2.0.16 2.0.9999 2.1.4 2.1.4-r1 2.1.7 2.1.9999 2.2.0 2.2.1 2.2.9999: A TCP/HTTP reverse proxy for high availability environments
-net-proxy/hatop 0.7.7 0.8.0: Ncurses client and real-time monitoring and displaying of HAProxy status
+net-proxy/hatop 0.8.0: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/microsocks 1.0.1_p20200805: Multithreaded, small, efficient SOCKS5 server
 net-proxy/mitmproxy 5.1.1 5.2: An interactive, SSL-capable, man-in-the-middle HTTP proxy
@@ -15533,7 +15533,7 @@ net-proxy/trojan 1.15.1 1.16.0 9999: An unidentifiable mechanism that helps you 
 net-proxy/tsocks 1.8_beta5-r8 1.8_beta5-r9: Transparent SOCKS v4 proxying library
 net-proxy/wwwoffle 2.9i-r1: Web caching proxy suitable for non-permanent Internet connections
 net-proxy/ziproxy 3.3.1-r1: A forwarding, non-caching, compressing web proxy server
-net-voip/telepathy-gabble 0.18.4-r1: A XMPP connection manager, handles single and multi user chats and voice calls
+net-voip/telepathy-gabble 0.18.4-r2: A XMPP connection manager, handles single and multi user chats and voice calls
 net-voip/telepathy-haze 0.8.0-r2: Telepathy connection manager providing libpurple supported protocols
 net-voip/telepathy-rakia 0.8.0: A SIP connection manager for Telepathy based around the Sofia-SIP library
 net-voip/telepathy-salut 0.8.1-r2: A link-local XMPP connection manager for Telepathy
@@ -15595,7 +15595,7 @@ net-wireless/bss 0.8-r1: Bluetooth stack smasher / fuzzer
 net-wireless/btcrack 9999: linux port of Thierry Zollers' BTCrack
 net-wireless/chirp 20200807 99999999: Free open-source tool for programming your amateur radio
 net-wireless/crackle 0.1 9999: Crackle cracks BLE Encryption (AKA Bluetooth Smart)
-net-wireless/crda 3.18-r3 4.14: Central Regulatory Domain Agent for wireless networks
+net-wireless/crda 4.14: Central Regulatory Domain Agent for wireless networks
 net-wireless/cubicsdr 0.2.3-r2 9999: Cross-Platform and Open-Source Software Defined Radio Application
 net-wireless/dump1090 3.7.2 9999: simple Mode S decoder for RTLSDR devices
 net-wireless/dump978 9999: simple Mode S decoder for soapysdr supported devices
@@ -15676,7 +15676,7 @@ net-wireless/suscan 0.1.0: a realtime DSP processing library
 net-wireless/suwidgets 0.1.0: graphical library containing all SigDigger's custom widgets
 net-wireless/tempestsdr 0.0_p20200221 9999: Remote video eavesdropping using a software-defined radio platform
 net-wireless/ubertooth 2018.12.1 9999: open source wireless development platform suitable for Bluetooth experimentation
-net-wireless/uhd 3.15.0.0-r1 3.15.0.0-r100 4.0.0.0: Universal Software Radio Peripheral (USRP) Hardware Driver
+net-wireless/uhd 3.15.0.0-r100 4.0.0.0: Universal Software Radio Peripheral (USRP) Hardware Driver
 net-wireless/unifi 5.6.42-r1 5.13.29 5.13.32 5.14.22 5.14.23 6.0.20 6.0.22 6.0.23: A Management Controller for Ubiquiti Networks UniFi APs
 net-wireless/urh 2.8.8 9999: Universal Radio Hacker: investigate wireless protocols like a boss
 net-wireless/wavemon 0.7.6 0.8.0: Ncurses based monitor for IEEE 802.11 wireless LAN cards
@@ -16007,7 +16007,7 @@ sci-chemistry/mdtraj 1.9.1 1.9.4: Read, write and analyze MD trajectories with o
 sci-chemistry/mm-align 20120321: Protein Complex Structural Alignment
 sci-chemistry/molden 5.5: Display molecular density from GAMESS-UK, GAMESS-US, GAUSSIAN and Mopac/Ampac
 sci-chemistry/moldy 2.16e-r2: Molecular dynamics simulations platform
-sci-chemistry/molequeue 0.9.0 0.9.0-r1: Abstract, manage and coordinate execution of tasks
+sci-chemistry/molequeue 0.9.0-r1: Abstract, manage and coordinate execution of tasks
 sci-chemistry/molmol 2k_p2-r5: Publication-quality molecular visualization package
 sci-chemistry/molscript 2.1.2-r2: Display 3D molecules (e.g., proteins) in schematic and detailed representations
 sci-chemistry/molsketch 0.4.1-r1: A drawing tool for 2D molecular structures
@@ -16040,7 +16040,7 @@ sci-chemistry/theseus 2.0.6 3.0.0 3.3.0: Maximum likelihood superpositioning and
 sci-chemistry/threeV 1.2-r1: 3V: Voss Volume Voxelator
 sci-chemistry/tinker 8.2.1: Molecular modeling package that includes force fields, such as AMBER and CHARMM
 sci-chemistry/tm-align 20150914: Quick & Accurate Structural Alignment
-sci-chemistry/vmd 1.9.3-r5 1.9.4_alpha43: Visual Molecular Dynamics
+sci-chemistry/vmd 1.9.4_alpha43: Visual Molecular Dynamics
 sci-chemistry/votca-csg 1.4 1.4.1 1.5 1.5.1 1.6_rc1 1.6 1.6.1 1.6.2 9999: Votca coarse-graining engine
 sci-chemistry/votca-csgapps 1.4 1.4.1 1.5 1.5.1 1.6_rc1 1.6 1.6.1 1.6.2 9999: Extra applications for votca-csg
 sci-chemistry/votca-ctp 1.5 1.5.1: Votca charge transport module
@@ -16896,7 +16896,7 @@ sys-apps/dmapi 2.2.12-r1: XFS data management API library
 sys-apps/dmidecode 3.1 3.2: DMI (Desktop Management Interface) table related utilities
 sys-apps/dnotify 0.18.0: Execute a command when the contents of a directory change
 sys-apps/dog 1.7-r6: Dog is better than cat
-sys-apps/dstat 0.7.3 0.7.4 0.7.4-r1 0.7.4-r2: Versatile replacement for vmstat, iostat and ifstat
+sys-apps/dstat 0.7.4-r2: Versatile replacement for vmstat, iostat and ifstat
 sys-apps/dtc 1.5.0 1.5.0-r2 1.6.0 9999: Open Firmware device tree compiler
 sys-apps/duc 1.4.1-r1 1.4.3-r1 9999: A library and suite of tools for inspecting disk usage
 sys-apps/earlyoom 1.3 9999: Early OOM Daemon for Linux
@@ -17123,7 +17123,7 @@ sys-apps/usb_modeswitch 2.2.6 2.3.0 2.4.0-r1 2.5.2: A tool for controlling 'flip
 sys-apps/usbguard 0.7.6-r1 0.7.8: Daemon protecting your computer against BadUSB
 sys-apps/usbmon 6-r1 6.1: Userland for USB monitoring framework
 sys-apps/usbredir 0.7.1_p20170503 0.7.1_p20180211 0.8.0 9999: TCP daemon and set of libraries for usbredir protocol (redirecting USB traffic)
-sys-apps/usbutils 009 010-r1 012: USB enumeration utilities
+sys-apps/usbutils 012: USB enumeration utilities
 sys-apps/usermode-utilities 20070815-r3 20070815-r4: Tools for use with Usermode Linux virtual machines
 sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (login) info
 sys-apps/util-linux 2.33.2 2.34-r3 2.35.1-r2 2.35.2 2.36 9999: Various useful Linux utilities
@@ -17210,7 +17210,7 @@ sys-block/di 4.47 4.47.3 4.48: Disk Information Utility
 sys-block/disktype 9-r1: Detect the content format of a disk or disk image
 sys-block/endpoint 0.1.0-r1: Endpoint turns a Linux machine with a firewire card into an SBP-2 device
 sys-block/f3 7.2: Utilities to detect broken or counterfeit flash storage
-sys-block/fio 2.15 2.16 3.2 3.7 3.16 3.16-r1 3.17 3.17-r1 3.19 3.20 3.20-r1: Jens Axboe's Flexible IO tester
+sys-block/fio 3.7 3.16 3.16-r1 3.17 3.17-r1 3.19 3.20 3.20-r1: Jens Axboe's Flexible IO tester
 sys-block/flashbench 20120606: Tool for benchmarking and classifying flash memory drives
 sys-block/fwdl 1.2.3: Seagate Fibre-Channel disk firmware upgrade tool
 sys-block/gpart 0.3: Partition table rescue/guessing tool
@@ -17308,7 +17308,7 @@ sys-cluster/cinder 16.1.0 2020.1.9999: Cinder is the OpenStack Block storage ser
 sys-cluster/classads 1.0.10: Condor's classified advertisement language
 sys-cluster/cluster-glue 1.0.11 1.0.12 1.0.12-r1: Library pack for Heartbeat / Pacemaker
 sys-cluster/corosync 2.3.5 2.4.2: OSI Certified implementation of a complete cluster engine
-sys-cluster/crmsh 2.1.1 3.0.3 4.1.0: Pacemaker command line interface for management and configuration
+sys-cluster/crmsh 3.0.3 4.1.0: Pacemaker command line interface for management and configuration
 sys-cluster/csync2 2.0 2.0-r2: Cluster synchronization tool
 sys-cluster/drbd-utils 8.9.3 8.9.6 8.9.6-r1: mirror/replicate block-devices across a network-connection
 sys-cluster/fake 1.1.10: Switch in backup servers on a LAN
@@ -17676,7 +17676,7 @@ sys-libs/libcxxabi 9.0.1 10.0.0 10.0.1 11.0.0_rc1 11.0.0_rc2 11.0.0.9999 12.0.0.
 sys-libs/libfaketime 0.9.6-r2 0.9.7 0.9.8: Report faked system time to programs
 sys-libs/libhugetlbfs 2.22 2.23: easy hugepage access
 sys-libs/libhx 3.22-r1 3.24: Platform independent library providing basic system functions
-sys-libs/libieee1284 0.2.11-r4 0.2.11-r5 0.2.11-r6 0.2.11-r7: Library to query devices using IEEE1284
+sys-libs/libieee1284 0.2.11-r8: Library to query devices using IEEE1284
 sys-libs/libixp 0.5_p20110208-r3: A stand-alone client/server 9P library including ixpc client
 sys-libs/libkudzu 1.2.57.1: Red Hat Hardware detection tools
 sys-libs/libnih 1.0.3-r3 1.0.3-r4: Light-weight 'standard library' of C functions
@@ -18946,7 +18946,7 @@ x11-themes/faenza-icon-theme 1.3.1: A scalable icon theme called Faenza
 x11-themes/fedora-backgrounds 27.0.1 28.1.5 29.1.3 30.1.2 31.0.4 32.2.2: A set of default and supplemental wallpapers for Fedora
 x11-themes/flatsvg 1.0: Flat SVG icon set
 x11-themes/fluxbox-styles-fluxmod 20050128-r1: A collection of FluxBox themes from FluxMod
-x11-themes/fvwm-crystal 3.2.3-r1 3.2.5-r1 3.4.1-r1 3.4.1-r2 3.6.5: Configurable FVWM theme with transparency and freedesktop compatible menu
+x11-themes/fvwm-crystal 3.6.5: Configurable FVWM theme with transparency and freedesktop compatible menu
 x11-themes/fvwm-themes 0.7.0-r1: A configuration framework for the fvwm window manager
 x11-themes/fvwm-themes-extra 0.7.0: Extra themes for fvwm-themes
 x11-themes/fvwm_icons 1.0: Icons for use with FVWM
