@@ -3439,7 +3439,6 @@ gnome-extra/libgda:canvas - Enable support for x11-libs/goocanvas
 gnome-extra/libgda:http - Enable embedded net-libs/libsoup based server
 gnome-extra/libgda:json - Enable support for JSON format
 gnome-extra/libgda:mdb - Enable support for Microsoft Access database using app-office/mdbtools
-gnome-extra/libgda:reports - Install tools for generating graphical reports
 gnome-extra/libgda:sourceview - Enable support for x11-libs/gtksourceview
 gnome-extra/libgsf:gtk - Enable use of gdk in thumbnailer
 gnome-extra/nemo:tracker - Add support for app-misc/tracker search
@@ -3604,6 +3603,7 @@ kde-apps/kopete:webpresence - Show your status and some more information on web.
 kde-apps/kopete:winpopup - Enable pop-up messages sending on windows. (same as good old "net send" messages ;])
 kde-apps/kopete:zeroconf - Enable Link-Local Messaging via the bonjour protocol.
 kde-apps/kpimtextedit:designer - Build plugins for dev-qt/designer
+kde-apps/ksystemlog:kdesu - Run as root using kdesu from kde-plasma/kde-cli-tools
 kde-apps/ktp-accounts-kcm:experimental - Enables disabled telepathy services (currently only steam)
 kde-apps/ktp-common-internals:otr - Enable support for encrypted conversations using Off-The-Records messaging
 kde-apps/ktp-common-internals:sso - Enable support for Single sign-on through KAccounts

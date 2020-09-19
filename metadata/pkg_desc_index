@@ -646,7 +646,7 @@ app-admin/system-config-printer 1.5.12-r1: Graphical user interface for CUPS adm
 app-admin/system-tools-backends 2.10.2-r1: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: Systemd managment utility
 app-admin/tenshi 0.17: Log parsing and notification program
-app-admin/terraform 0.12.24 0.12.28 0.13.2: A tool for building, changing, and combining infrastructure safely
+app-admin/terraform 0.12.28 0.13.3: A tool for building, changing, and combining infrastructure safely
 app-admin/testdisk 7.1: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.14: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11-r2: Files which haven't been accessed are removed from specified directories
@@ -2152,7 +2152,7 @@ app-i18n/nabi 1.0.0: Simple Hanguk X Input Method
 app-i18n/nkf 2.1.4 2.1.5: Network Kanji code conversion Filter with UTF-8/16 support
 app-i18n/opencc 1.0.5 9999: Libraries for conversion between Traditional and Simplified Chinese
 app-i18n/poedit 2.2.4 2.3.1: GUI gettext translations editor
-app-i18n/pology 0.12-r2 9999: A framework for custom processing of PO files
+app-i18n/pology 0.12-r2: A framework for custom processing of PO files
 app-i18n/pyzy 0.1.0-r3: The Chinese PinYin and Bopomofo conversion library
 app-i18n/qkc 1.00: Quick KANJI code Converter
 app-i18n/rime-data 0.35 0.38.20180515: Data resources for Rime Input Method Engine
@@ -10822,7 +10822,7 @@ dev-util/massif-visualizer 0.7.0-r1: Tool visualising massif data
 dev-util/mdds 1.6.0 9999: A collection of multi-dimensional data structure and indexing algorithm
 dev-util/meld 3.20.2-r1: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
-dev-util/meson 0.54.2 0.54.3 0.55.1 0.55.3 9999: Open source build system
+dev-util/meson 0.54.3 0.55.3 9999: Open source build system
 dev-util/min-cscope 16.1.0: Interactively examine a C program
 dev-util/mingw64-runtime 6.0.0-r3 7.0.0 7.0.0-r1: Free Win64 runtime and import library definitions
 dev-util/molecule 2: Meta package for dev-util/molecule-core and dev-util/molecule-plugins
@@ -12163,7 +12163,7 @@ kde-apps/ksnakeduel 20.04.3 20.08.1: KDE Tron game
 kde-apps/kspaceduel 20.04.3 20.08.1: Space Game by KDE
 kde-apps/ksquares 20.04.3 20.08.1: KDE clone of the game squares
 kde-apps/ksudoku 20.04.3 20.08.1: Logic-based symbol placement puzzle by KDE
-kde-apps/ksystemlog 20.04.3 20.08.1: System log viewer by KDE
+kde-apps/ksystemlog 20.04.3-r1 20.08.1-r1: System log viewer by KDE
 kde-apps/kteatime 20.04.3 20.08.1: KDE timer for making a fine cup of tea
 kde-apps/ktimer 20.04.3 20.08.1: Little tool to execute programs after some time
 kde-apps/ktouch 20.04.3 20.08.1: Program that helps to learn and practice touch typing
