@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-inherit flag-o-matic eutils
+inherit flag-o-matic
 
 DESCRIPTION="Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator"
 HOMEPAGE="http://www.hercules-390.eu/"
@@ -19,13 +19,17 @@ RDEPEND="bzip2? ( app-arch/bzip2 )
 	sys-libs/zlib"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.09-aliasing.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-3.09-aliasing.patch
+	default
 
 	# The local modules need local libs, so when doing a parallel install
 	# of the modules and libs breaks during relinking.  Force the libs to
 	# install first, and then the modules that use those libs.  #488126
-	echo "install-modexecLTLIBRARIES: install-libLTLIBRARIES" >> Makefile.in
+	echo "install-modexecLTLIBRARIES: install-libLTLIBRARIES" >> Makefile.in || die
 }
 
 src_configure() {
@@ -44,5 +48,6 @@ src_install() {
 	insinto /usr/share/hercules
 	doins hercules.cnf
 	dodoc README.* RELEASE.NOTES
-	dohtml -r html
+	docinto html
+	dodoc -r html
 }
