@@ -646,19 +646,6 @@ www-apps/trac
 # Removal in 30 days.  Bug #646748.
 games-action/openclonk
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-21)
-# Obsolete package without reverse dependencies.
-# Use dev-haskell/regex-tdfa.
-# Does not compile against ghc-8.8. Removal in 30 days.
-# Bug #736244.
-dev-haskell/regex-tdfa-rc
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-21)
-# Obsolete package without reverse dependencies.
-# Does not compile against ghc-8.8. Removal in 30 days.
-# Bug #736248.
-dev-haskell/testpack
-
 # Kent Fredric <kentnl@gentoo.org> (2020-08-17)
 # No reverse dependencies, and gtk2 support is becoming
 # obsolete in Gentoo
@@ -674,22 +661,6 @@ dev-ada/libadalang-tools
 dev-ada/gps
 dev-ada/gnatcoll-bindings
 dev-ada/gnatcoll-db
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-16)
-# Obsolete package without reverse dependencies.
-# Does not compile against ghc-8.8. Removal in 30 days.
-# Bug #735902.
-dev-haskell/frown
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-16)
-# Obsolete package without reverse dependencies.
-# A metapackage. Removal in 30 days.
-dev-haskell/yesod-platform
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-16)
-# Obsolete package without reverse dependencies.
-# Does not compile against current ghc-8.8. Removal in 30 days.
-dev-haskell/yesod-routes
 
 # Mart Raudsepp <leio@gentoo.org> (2020-08-15)
 # Development release, needs testing to ensure valac-0.50
