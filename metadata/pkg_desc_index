@@ -780,7 +780,7 @@ app-backup/cdbackup 0.7.1-r1: Allows streaming backup utilities to dump/restore 
 app-backup/cdbkup 1.0-r2: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
 app-backup/consul-backinator 1.6.5: consul backup and restore utility
 app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
-app-backup/dar 2.5.11 2.5.18 2.6.5 2.6.9 2.6.10: A full featured backup tool, aimed for disks
+app-backup/dar 2.5.11 2.6.10: A full featured backup tool, aimed for disks
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
 app-backup/duplicity 0.8.12.1612-r1 0.8.13 0.8.15: Secure backup system using gnupg to encrypt data
 app-backup/duply 1.9.2 1.11.2 1.11.3 2.0.1 2.0.2 2.0.3 2.2.2: A shell frontend for duplicity
@@ -7884,7 +7884,7 @@ dev-python/anyqt 0.0.8-r1: PyQt4/PyQt5 compatibility layer
 dev-python/aodhclient 1.2.0: A client for the OpenStack Aodh API
 dev-python/apipkg 1.5-r1: Namespace control and lazy-import mechanism
 dev-python/apispec 3.3.0: A pluggable API specification generator.
-dev-python/appdirs 1.4.4: Module for determining appropriate platform-specific dirs
+dev-python/appdirs 1.4.4-r1: Module for determining appropriate platform-specific dirs
 dev-python/apsw 3.32.2_p1: APSW - Another Python SQLite Wrapper
 dev-python/argcomplete 1.12.0-r1: Bash tab completion for argparse
 dev-python/argh 0.26.2-r2: A simple argparse wrapper
@@ -7976,7 +7976,7 @@ dev-python/cbor 1.0.0-r1: RFC 7049 - Concise Binary Object Representation
 dev-python/cbor2 5.1.0 5.1.2: Pure Python CBOR (de)serializer with extensive tag support
 dev-python/celery 4.3.0: Asynchronous task queue/job queue based on distributed message passing
 dev-python/certifi 10001: Thin replacement for certifi using system certificate store
-dev-python/cffi 1.14.0-r2: Foreign Function Interface for Python calling C code
+dev-python/cffi 1.14.0-r3: Foreign Function Interface for Python calling C code
 dev-python/cfn-python-lint 0.30.1 0.35.1 0.36.0: CloudFormation Linter
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.2: Easy to use mocking, stubbing and spying framework
@@ -8069,7 +8069,7 @@ dev-python/dill 0.3.2: Serialize all of python (almost)
 dev-python/discogs-client 2.2.2: Official Python API client for Discogs
 dev-python/diskcache 5.0.3: Disk and file backed cache
 dev-python/dissononce 0.34.3-r1: A python implementation for Noise Protocol Framework
-dev-python/distlib 0.3.1: Low-level components of distutils2/packaging
+dev-python/distlib 0.3.1-r1: Low-level components of distutils2/packaging
 dev-python/distro 1.5.0-r1: Reliable machine-readable Linux distribution information for Python
 dev-python/dj-database-url 0.5.0: Use Database URLs in your Django Application
 dev-python/django 2.2.16 3.0.10 3.1.1: High-level Python web framework
@@ -8155,7 +8155,7 @@ dev-python/feedgenerator 1.9.1: Standalone version of django.utils.feedgenerator
 dev-python/feedparser 5.2.1 6.0.0_beta1 6.0.1: Parse RSS and Atom feeds in Python
 dev-python/fido2 0.7.3 0.8.1: Python based FIDO 2.0 library
 dev-python/fields 5.0.0-r2: Container class boilerplate killer
-dev-python/filelock 3.0.12: A platform independent file lock for Python
+dev-python/filelock 3.0.12-r1: A platform independent file lock for Python
 dev-python/filetype 1.0.7: Small, dependency-free, fast Python package to infer binary file types checking
 dev-python/findimports 1.5.2: Python module import analysis tool
 dev-python/fitsio 0.9.11: Python library to read from and write to FITS files
@@ -8332,7 +8332,7 @@ dev-python/jedi 0.17.1-r1 0.17.2-r1: Autocompletion library for Python
 dev-python/jeepney 0.4.3: Low-level, pure Python DBus protocol wrapper
 dev-python/jellyfish 0.8.2: Python module for doing approximate and phonetic matching of strings
 dev-python/jikanpy 4.2.1: Python wrapper for jikan.moe API.
-dev-python/jinja 2.11.2: A full-featured template engine for Python
+dev-python/jinja 2.11.2-r1: A full-featured template engine for Python
 dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
 dev-python/jinja2_pluralize 0.3.0: Jinja2 pluralize filters
 dev-python/jira 1.0.14-r3: Python library for interacting with the JIRA REST API
@@ -8415,7 +8415,7 @@ dev-python/manuel 1.9.0: Manuel lets you build tested documentation
 dev-python/markdown 2.6.11 3.1.1-r1 3.2.2: Python implementation of the markdown markup language
 dev-python/markdown2 2.3.9: Python Markdown language reimplementation
 dev-python/markups 3.0.0-r1: A wrapper around various text markups
-dev-python/markupsafe 1.1.1: Implements a XML/HTML/XHTML Markup safe string for Python
+dev-python/markupsafe 1.1.1-r1: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/marshmallow 3.5.1: A lightweight library for converting complex datatypes to and from native Python datatypes.
 dev-python/matplotlib 3.2.2-r2 3.3.0-r1 3.3.2: Pure python plotting library with matlab like syntax
 dev-python/matplotlib-python2 2.2.5-r2: Pure python plotting library with matlab like syntax (py2 version)
@@ -8602,7 +8602,7 @@ dev-python/peewee 3.13.2: Small Python ORM
 dev-python/pelican-minify 0.9: An HTML minification plugin for Pelican, the static site generator.
 dev-python/pep8 1.7.1: Python style guide checker
 dev-python/pew 1.1.1: tool to manage multiple virtualenvs written in pure python
-dev-python/pexpect 4.8.0: Python module for spawning child apps and responding to expected patterns
+dev-python/pexpect 4.8.0-r1: Python module for spawning child apps and responding to expected patterns
 dev-python/pgspecial 1.11.9: Python implementation of postgres meta commands
 dev-python/phonenumbers 8.12.8 8.12.9: Python port of Google's libphonenumber
 dev-python/picklemagic 0.0_pre20160415: A library for analysing python pickles safely
@@ -8654,7 +8654,7 @@ dev-python/psutil 5.7.0-r1 5.7.2-r1: Retrieve information on running processes a
 dev-python/psycopg 2.7.7-r1 2.8.5-r1 2.8.6-r1: PostgreSQL database adapter for Python
 dev-python/ptpython 2.0.6: Python REPL build on top of prompt_toolkit
 dev-python/ptvsd 4.3.2: Visual Studio remote debugging server for Python
-dev-python/ptyprocess 0.6.0: Run a subprocess in a pseudo terminal
+dev-python/ptyprocess 0.6.0-r1: Run a subprocess in a pseudo terminal
 dev-python/publicsuffix 2.20191221: Get a public suffix for a domain name using the Public Suffix List.
 dev-python/pudb 2019.2: A full-screen, console-based Python debugger
 dev-python/pure-sasl 0.6.1: High-level SASL client written in pure Python
@@ -8853,7 +8853,7 @@ dev-python/pytest-shutil 1.7.0-r1: A goodie-bag of unix shell and environment to
 dev-python/pytest-subtesthack 0.1.1: A hack for test fixtures, needed for hypothesis inside py.test
 dev-python/pytest-tempdir 2019.10.12: Pytest plugin to support for a predictable and repeatable temporary directory
 dev-python/pytest-testmon 0.9.15: take TDD to a new level with py.test and testmon
-dev-python/pytest-timeout 1.3.4 1.4.2: py.test plugin to abort hanging tests
+dev-python/pytest-timeout 1.3.4-r1 1.4.2-r1: py.test plugin to abort hanging tests
 dev-python/pytest-virtualenv 1.7.0-r1: Virtualenv fixture for py.test
 dev-python/pytest-xdist 1.34.0-r1 2.1.0: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.13.1-r1: Manage external processes across test runs
@@ -8952,7 +8952,7 @@ dev-python/python3-saml 1.9.0: OneLogin's SAML Python Toolkit
 dev-python/python_orocos_kdl 1.4.0-r1 9999: Python bindings for KDL
 dev-python/pythondialog 3.5.1: A Python module for making simple text/console-mode user interfaces
 dev-python/pythonz-bd 1.11.4: Manage python installations in your system, berdario's shallow fork
-dev-python/pytidylib 0.3.2: Python wrapper for HTML Tidy (tidylib)
+dev-python/pytidylib 0.3.2-r1: Python wrapper for HTML Tidy (tidylib)
 dev-python/pytoml 0.1.20: A TOML-0.4.0 parser/writer for Python
 dev-python/pytools 2020.3.1 2020.4 9999: Collection of tools missing from the Python standard library
 dev-python/pytrie 0.3.1-r1: A pure Python implementation of the trie data structure
@@ -9254,7 +9254,7 @@ dev-python/vecrec 0.3.0: 2D vector and rectangle classes
 dev-python/verboselogs 1.7: Verbose logging for Python's logging module
 dev-python/versioneer 0.18-r1: Easy VCS-based management of project version strings
 dev-python/vine 1.3.0: Python Promises
-dev-python/virtualenv 16.7.10 20.0.31: Virtual Python Environment builder
+dev-python/virtualenv 16.7.10-r1 20.0.31-r1: Virtual Python Environment builder
 dev-python/virtualenv-clone 0.5.3: A script for cloning a non-relocatable virtualenv
 dev-python/virtualenvwrapper 4.8.4-r1: Set of extensions to Ian Bicking's virtualenv tool
 dev-python/visitor 0.1.3-r1: A tiny pythonic visitor implementation
@@ -10776,7 +10776,7 @@ dev-util/ignition-cmake 0.2.0 0.4.0 2.2.0: CMake modules to be used by the Ignit
 dev-util/imediff2 1.1.2-r5 1.1.2-r6: An interactive, user friendly 2-way merge tool in text mode
 dev-util/include-what-you-use 10.0: Find unused include directives in C/C++ programs
 dev-util/indent 2.2.11-r1 2.2.11_p5 2.2.12: Indent program source files
-dev-util/intel-graphics-compiler 1.0.4111: LLVM-based OpenCL compiler targetting Intel Gen graphics hardware
+dev-util/intel-graphics-compiler 1.0.4111 1.0.4944: LLVM-based OpenCL compiler targetting Intel Gen graphics hardware
 dev-util/intel-ocl-sdk 4.4.0.117-r2: Intel's implementation of the OpenCL standard
 dev-util/intltool 0.51.0-r2: Internationalization Tool Collection
 dev-util/its4 1.1.1-r1: ITS4: Software Security Tool
@@ -15150,7 +15150,7 @@ net-misc/gns3-gui 2.2.11: Graphical Network Simulator
 net-misc/gns3-server 2.2.11: GNS3 server to asynchronously manage emulators
 net-misc/gofish 1.2: Gofish gopher server
 net-misc/grdesktop 0.23-r2: Gtk3 frontend for rdesktop
-net-misc/grive 0.5.1_pre20171005 0.5.1: An open source Linux client for Google Drive
+net-misc/grive 0.5.1_pre20171005 0.5.1 0.5.1-r1: An open source Linux client for Google Drive
 net-misc/gsasl 1.8.0-r1 1.8.1: The GNU SASL client, server, and library
 net-misc/gsutil 4.41 4.45 4.47 4.50: command line tool for interacting with cloud storage services
 net-misc/gupnp-tools 0.10.0: Collection of developer-oriented UPnP tools
@@ -17975,7 +17975,7 @@ virtual/pmake 1: Virtual for BSD-like make (to be used with get_bmake)
 virtual/podofo-build 0.9.6: Virtual package for building against PoDoFo
 virtual/pypy 7.3.0: An obsolete virtual for PyPy Python implementation
 virtual/pypy3 7.3.0: An obsolete virtual for PyPy3 Python implementation
-virtual/python-cffi 0: A virtual for the Python cffi package
+virtual/python-cffi 1: A virtual for the Python cffi package
 virtual/python-greenlet 1.0-r2: A virtual for Python greenlet module
 virtual/qmail 1.03: Virtual for qmail
 virtual/resolvconf 1: Virtual to select between different resolvconf providers
