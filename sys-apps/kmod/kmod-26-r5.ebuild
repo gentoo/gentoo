@@ -190,7 +190,7 @@ pkg_postinst() {
 	fi
 
 	if [[ -e ${EROOT%/}/etc/runlevels/sysinit ]]; then
-		if [[ ! -e ${EROOT%/}/etc/runlevels/sysinit/kmod-static-nodes ]]; then
+		if ! has_version sys-apps/systemd && [[ ! -e ${EROOT%/}/etc/runlevels/sysinit/kmod-static-nodes ]]; then
 			ewarn
 			ewarn "You need to add kmod-static-nodes to the sysinit runlevel for"
 			ewarn "kernel modules to have required static nodes!"
