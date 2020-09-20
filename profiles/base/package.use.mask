@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2020-09-20)
+# The respective dependencies are masked for removal.
+net-nntp/pan gnome-keyring
+
 # Michał Górny <mgorny@gentoo.org> (2020-09-19)
 # The respective dependencies are masked for removal.
 app-office/lyx docbook
