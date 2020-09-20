@@ -1,10 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
+
 JAVA_PKG_IUSE="source"
 
-inherit eutils java-pkg-2 java-pkg-simple
+inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="JNLP API classes, repackaged from the icedtea-web fork of netx"
 HOMEPAGE="http://jcp.org/en/jsr/detail?id=56"
