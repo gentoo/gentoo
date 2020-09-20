@@ -1776,7 +1776,7 @@ app-emacs/jde 2.4.1-r1: Java Development Environment for Emacs
 app-emacs/keywiz 1.4: Emacs key sequence quiz
 app-emacs/ledger-mode 3.1.1: An Emacs major mode for editing ledger files
 app-emacs/lookup 1.99.96_pre20180209: An interface to search CD-ROM books and network dictionaries
-app-emacs/lua-mode 20151025: An Emacs major mode for editing Lua scripts
+app-emacs/lua-mode 20151025 20151025_p20200513: An Emacs major mode for editing Lua scripts
 app-emacs/lyskom-elisp-client 0.48_p20180410 0.48_p20200226: Elisp client for the LysKOM conference system
 app-emacs/magit 2.13.1 2.90.1: A Git porcelain inside Emacs
 app-emacs/magit-popup 2.13.0 2.13.2 2.13.3: Define prefix-infix-suffix command combos
@@ -1953,7 +1953,7 @@ app-emulation/phpvirtualbox 5.2.1: Web-based administration for VirtualBox in PH
 app-emulation/protontricks 1.4.1 1.4.1-r1: app-emulation/winetricks wrapper for Proton (Steam Play) games
 app-emulation/punes 0.106: Nintendo Entertainment System (NES) emulator
 app-emulation/q4wine 1.3.12: Qt GUI configuration tool for Wine
-app-emulation/qemu 5.0.0-r2 5.1.0 5.1.0-r1 9999: QEMU + Kernel-based Virtual Machine userland tools
+app-emulation/qemu 5.1.0 5.1.0-r1 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 3.1.0 4.0.0 4.2.0-r1 5.0.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qemu-init-scripts 0.3.0 0.3.0-r1: Kvm and qemu init scripts
 app-emulation/qemu-riscv64-bin 3.1.0-r4 5.0.0: Statically linked x86-64 binary of app-emulation/qemu, riscv64 emulator
@@ -2919,7 +2919,7 @@ app-text/jabref-bin 3.7 3.8 3.8.1 3.8.2 4.0 4.1 4.3.1 4.9999: Java GUI manages b
 app-text/jo 1.4 99999: JSON output from a shell
 app-text/kbibtex 0.9.2: BibTeX editor to edit bibliographies used with LaTeX
 app-text/kchmviewer 7.7-r1: Feature rich chm file viewer, based on Qt
-app-text/kjots 5.0.2-r1: Note taking utility by KDE
+app-text/kjots 5.0.2-r1 5.0.2-r2: Note taking utility by KDE
 app-text/krop 0.5.1-r1 9999: A tool to crop PDF files
 app-text/landslide 1.1.3: Generates a slideshow using the slides that power the html5-slides presentation
 app-text/languagetool 4.5 4.6: A proof-reading tool for many languages
@@ -7959,7 +7959,7 @@ dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
 dev-python/boto3 1.14.46 1.14.59 1.14.63 1.15.0 1.15.1 9999: The AWS SDK for Python
 dev-python/botocore 1.17.46 1.17.59 1.17.63 1.18.0 1.18.1 9999: Low-level, data-driven core of boto 3
-dev-python/bottle 0.12.18: A fast and simple micro-framework for small web-applications
+dev-python/bottle 0.12.18-r1: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.19: Syntax highlighting and autocompletion for the Python interpreter
 dev-python/breathe 4.14.1: Sphinx Doxygen renderer
@@ -8010,7 +8010,7 @@ dev-python/clint 0.5.1-r2 0.5.1-r3: Python Command-line Application Tools
 dev-python/cloudpickle 1.5.0 1.6.0: Extended pickling support for Python objects
 dev-python/cmd2 1.3.8 1.3.10: Extra features for standard library's cmd module
 dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
-dev-python/colorama 0.4.3: ANSI escape character sequences for colored terminal text & cursor positioning
+dev-python/colorama 0.4.3-r1: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/colorclass 2.2.0-r1: Colorful worry-free console applications for multiple platforms
 dev-python/coloredlogs 10.0: Colored stream handler for the logging module
 dev-python/colorlog 3.1.4: Log formatting with colors
@@ -8413,7 +8413,7 @@ dev-python/lxml 4.5.2: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 3.0.2: LZ4 Bindings for Python
 dev-python/m2crypto 0.35.2 0.36.0: A Python crypto and SSL toolkit
 dev-python/m2r 0.2.1: Markdown to reStructuredText converter
-dev-python/mako 1.1.3: A Python templating language
+dev-python/mako 1.1.3-r1: A Python templating language
 dev-python/mamba 0.11.0 0.11.1: Python test runner born under the banner of Behavior Driven Development
 dev-python/mando 0.6.4: Create Python CLI apps with little to no effort at all!
 dev-python/manuel 1.9.0: Manuel lets you build tested documentation
@@ -13321,7 +13321,7 @@ media-libs/raul 1.0.0_pre20200718 9999: C++ utility library primarily aimed at a
 media-libs/resid 0.16_p2-r1: C++ library to emulate the C64 SID chip
 media-libs/rlottie 0.1-r1 0.2: A platform independent standalone library that plays Lottie Animations
 media-libs/rtaudio 5.1.0: A set of cross-platform C++ classes for realtime audio I/O
-media-libs/rubberband 1.8.2-r1: An audio time-stretching and pitch-shifting library and utility program
+media-libs/rubberband 1.8.2-r1 1.9.0: An audio time-stretching and pitch-shifting library and utility program
 media-libs/sbc 1.4: Audio codec to connect bluetooth HQ audio devices as headphones or loudspeakers
 media-libs/sdl-gfx 2.0.25 2.0.26: Graphics drawing primitives library for SDL
 media-libs/sdl-image 1.2.12-r2: image file loading library
@@ -17131,7 +17131,7 @@ sys-apps/watchdog 5.15 5.16: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.21: Prints out location of specified executables that are in your path
 sys-apps/x86info 1.30_p20190617: Dave Jones' handy, informative x86 CPU diagnostic utility
 sys-apps/xdg-dbus-proxy 0.1.2: Filtering proxy for D-Bus connections
-sys-apps/xdg-desktop-portal 1.6.0-r2 1.7.2: Desktop integration portal
+sys-apps/xdg-desktop-portal 1.6.0-r2 1.7.2 1.8.0: Desktop integration portal
 sys-apps/xdg-desktop-portal-gtk 1.7.1_pre: portal backend implementation that is using GTK+ and various pieces of GNOME
 sys-apps/xinetd 2.3.15-r3 2.3.15.3 2.3.15.3-r2 2.3.15.4: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System

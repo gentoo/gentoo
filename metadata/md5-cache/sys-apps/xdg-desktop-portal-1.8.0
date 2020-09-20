@@ -1,0 +1,14 @@
+BDEPEND=dev-util/gdbus-codegen sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEFINED_PHASES=configure
+DEPEND=dev-libs/glib:2 dev-libs/json-glib media-libs/fontconfig sys-fs/fuse:0 geolocation? ( >=app-misc/geoclue-2.5.3:2.0 ) screencast? ( >=media-video/pipewire-0.3:= )
+DESCRIPTION=Desktop integration portal
+EAPI=7
+HOMEPAGE=https://flatpak.org/ https://github.com/flatpak/xdg-desktop-portal
+IUSE=geolocation screencast
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-libs/glib:2 dev-libs/json-glib media-libs/fontconfig sys-fs/fuse:0 geolocation? ( >=app-misc/geoclue-2.5.3:2.0 ) screencast? ( >=media-video/pipewire-0.3:= ) sys-apps/dbus
+SLOT=0
+SRC_URI=https://github.com/flatpak/xdg-desktop-portal/releases/download/1.8.0/xdg-desktop-portal-1.8.0.tar.xz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=5c2b9c8fb89e5cb1c2c938de9e3f6d0b
