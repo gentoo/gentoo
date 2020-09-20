@@ -4,7 +4,7 @@
 EAPI=7
 
 # This is a backport of Python 3.9's importlib.resources
-PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7,8}} )
+PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
 
 inherit distutils-r1
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 RDEPEND="
 	$(python_gen_cond_dep '
@@ -24,9 +24,8 @@ RDEPEND="
 		dev-python/typing[${PYTHON_USEDEP}]
 	' -2)
 	$(python_gen_cond_dep '
-		dev-python/importlib_metadata[${PYTHON_USEDEP}]
 		dev-python/zipp[${PYTHON_USEDEP}]
-	' pypy3 python3_{6,7})
+	' -2 pypy3 python3_{6,7})
 "
 BDEPEND="
 	dev-python/toml[${PYTHON_USEDEP}]
