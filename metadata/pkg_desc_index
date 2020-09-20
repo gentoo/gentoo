@@ -10597,7 +10597,7 @@ dev-util/appinventor 1.1: MIT App Inventor Setup package
 dev-util/archdiff 1.1.6: Utility to view the differences between two source code archives
 dev-util/argouml 0.34: Modelling tool that helps you do your design using UML
 dev-util/artifactory-bin 6.3.3: The world's most advanced repository manager for maven
-dev-util/aruba 0.6.2-r2 0.14.14 1.0.2 1.0.3: Cucumber steps for driving out command line applications
+dev-util/aruba 0.6.2-r2 0.14.14 1.0.2 1.0.3 1.0.3-r1: Cucumber steps for driving out command line applications
 dev-util/astyle 3.0.1-r1 3.1-r2: Artistic Style is a re-indenter and reformatter for C++, C and Java source code
 dev-util/autodia 2.140.0-r2: Parses source code, XML or data and produces an XML document in Dia format
 dev-util/autoproject 0.20_p5: Start a programming project using autotools and a command line parser generator
