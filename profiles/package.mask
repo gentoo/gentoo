@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2020-09-20)
+# EAPI 4, last release in 2012, sandbox violations and
+# full of bugs. Mainlined since 3.14, Removal in 30 days.
+# Bug #679502, #701406, #701408, #742116.
+sys-block/rts5229
+
 # David Seifert <soap@gentoo.org> (2020-09-19)
 # EAPI 4, last release in 2008, upstream pretty much dead,
 # tons of bugs, broken since at least 2016, lots of weird
