@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
 JAVA_PKG_IUSE="doc source"
 
@@ -14,7 +14,6 @@ SRC_URI="https://github.com/jruby/${PN}/tarball/${PV} -> ${P}-git.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE=""
 
 RDEPEND=">=virtual/jre-1.5"
 DEPEND=">=virtual/jdk-1.5"
@@ -24,7 +23,8 @@ src_unpack() {
 	mv jruby-${PN}-* ${P} || die
 }
 
-java_prepare() {
+src_prepare() {
+	default
 	cp "${FILESDIR}"/maven-build.xml build.xml || die
 }
 
