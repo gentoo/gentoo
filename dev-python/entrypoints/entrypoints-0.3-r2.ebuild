@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7,8,9}} )
+PYTHON_COMPAT=( pypy3 python3_{6,7,8,9} )
 
 inherit distutils-r1
 
@@ -18,16 +18,10 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~s390 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	$(python_gen_cond_dep '>=dev-python/configparser-3.5.0[${PYTHON_USEDEP}]' -2)
-"
 BDEPEND="
 	test? (
 		${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			dev-python/pathlib[${PYTHON_USEDEP}]
-		' -2)
 	)
 "
 
