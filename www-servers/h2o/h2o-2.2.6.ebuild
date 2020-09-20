@@ -33,6 +33,8 @@ DEPEND="${RDEPEND}
 		sys-devel/bison
 		virtual/pkgconfig
 	)"
+RDEPEND+="
+	!sci-libs/libh2o"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2-libressl-2.7.patch
