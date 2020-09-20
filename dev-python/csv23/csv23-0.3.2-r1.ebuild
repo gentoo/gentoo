@@ -18,6 +18,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 
 BDEPEND="
 	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
 		>=dev-python/pytest-4.6[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}] )"
 
