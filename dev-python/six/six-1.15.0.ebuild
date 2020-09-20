@@ -14,7 +14,20 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc"
+IUSE="doc test"
+RESTRICT="!test? ( test )"
+
+BDEPEND="
+	test? (
+		$(python_gen_cond_dep 'dev-python/pytest[${PYTHON_USEDEP}]' -3)
+	)"
 
 distutils_enable_sphinx documentation --no-autodoc
-distutils_enable_tests pytest
+
+python_test() {
+	if ! python_is_python3; then
+		einfo "Tests are skipped on Python 2 to unblock deps"
+		return
+	fi
+	pytest -vv || die "Tests failed with ${EPYTHON}"
+}
