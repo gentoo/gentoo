@@ -16,6 +16,7 @@ LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64"
 RESTRICT="mirror bindist"
+IUSE="appindicator"
 
 RDEPEND="
 	app-accessibility/at-spi2-atk:2
@@ -47,6 +48,7 @@ RDEPEND="
 	x11-libs/libXrender
 	x11-libs/libXtst
 	x11-libs/pango
+	appindicator? ( dev-libs/libappindicator:3[introspection] )
 "
 
 S="${WORKDIR}"
