@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} pypy3 )
+PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 
 inherit distutils-r1
 
@@ -24,9 +24,3 @@ RDEPEND="
 "
 
 distutils_enable_tests nose
-
-python_test() {
-	nosetests -v \
-		$(python_is_python3 || echo "--ignore-files=test_py3k_annotations.py") \
-		|| die
-}
