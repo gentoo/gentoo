@@ -12,7 +12,7 @@ Pcommit="d3949bf812e1648892959a169a7ff849cd7b69d5"
 DESCRIPTION="Quantum master equation package for Quantum dot transport calculations"
 HOMEPAGE="https://github.com/gedaskir/qmeq"
 SRC_URI="
-	https://github.com/gedaskir/qmeq/archive/${Pcommit}.zip -> ${PN}-${PV}.zip
+	https://github.com/gedaskir/qmeq/archive/${Pcommit}.tar.gz -> ${PN}-${PV}.tgz
 	examples? ( https://github.com/gedaskir/${PN}-examples/archive/1.0.tar.gz -> ${PN}-examples-1.0.tgz )
 "
 
