@@ -10,12 +10,4 @@
 		Rob Pike. It has garbage collection, coroutines, communication
 		channels and a clean syntax.  
 	</longdescription>
-	<use>
-		<flag name="gccgo">
-			Bootstrap using <pkg>sys-devel/gcc</pkg>[go]
-		</flag>
-		<flag name="system-bootstrap">
-			Bootstrap using previously installed <pkg>dev-lang/go</pkg>
-		</flag>
-	</use>
 </pkgmetadata>
