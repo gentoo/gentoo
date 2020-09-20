@@ -77,12 +77,13 @@ Exporters
     * Maya (meshes)
   </longdescription>
   <use>
+    <flag name="assimp" restrict="~dev-games/ogre-1.12.9">Use media-libs/assimp to import assets from 3D files</flag>
     <flag name="boost">Enable boost support</flag>
     <flag name="cache">Enable GL state cache support</flag>
     <flag name="cg">NVIDIA toolkit plugin</flag>
     <flag name="double-precision">More precise calculations at the expense of speed</flag>
     <flag name="egl">Use egl instead of glx</flag>
-    <flag name="deprecated" restrict="~dev-games/ogre-1.12.6">
+    <flag name="deprecated" restrict="~dev-games/ogre-1.12.9">
         Build deprecated component 'HLMS' and nodeless positioning of Lights and Cameras.
     </flag>
     <flag name="fine-granularity" restrict="~dev-games/ogre-2.1">
@@ -112,7 +113,9 @@ Exporters
         (default: case-insensitive + sensitive lookup in all groups)
     </flag>
     <flag name="tbb">When USE=threads, use tbb for threading</flag>
-    <flag name="tools">Build and install MeshUpgrader, VRMLConverter and XMLConverter</flag>
+    <flag name="tools">
+        Build and install AssimpConverter (assimp USE flag is enabled), MeshUpgrader, VRMLConverter and XMLConverter
+    </flag>
   </use>
   <upstream>
     <remote-id type="bitbucket">sinbad/ogre</remote-id>
