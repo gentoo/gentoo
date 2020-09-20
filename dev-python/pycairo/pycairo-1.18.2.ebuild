@@ -19,8 +19,10 @@ IUSE="examples"
 
 BDEPEND="
 	test? (
-		dev-python/hypothesis[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/hypothesis[${PYTHON_USEDEP}]
+			dev-python/pytest[${PYTHON_USEDEP}]
+		' -3)
 	)
 "
 RDEPEND="
@@ -33,6 +35,15 @@ PATCHES=( "${FILESDIR}/${PN}-1.19.1-py39.patch" )
 distutils_enable_sphinx docs \
 	dev-python/sphinx_rtd_theme
 distutils_enable_tests setup.py
+
+python_test() {
+	if ! python_is_python3; then
+		einfo "Skipping tests on Python 2 to unblock deps"
+		return
+	fi
+
+	esetup.py test
+}
 
 python_install() {
 	distutils-r1_python_install \
