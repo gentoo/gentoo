@@ -38,6 +38,7 @@ DEPEND="${RDEPEND}
 DOCS=( AUTHORS ChangeLog README THANKS )
 
 PATCHES=(
+	"${FILESDIR}"/multiple-definition.patch
 	"${FILESDIR}"/remove-local-prefix.patch
 )
 
