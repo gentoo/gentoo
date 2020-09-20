@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 JAVA_PKG_IUSE="doc source test"
 
@@ -24,7 +24,8 @@ DEPEND=">=virtual/jdk-1.5
 
 S="${WORKDIR}/${PN}-${PN}-${PV}"
 
-java_prepare() {
+src_prepare() {
+	default
 	cp "${FILESDIR}"/maven-build.xml build.xml || die
 }
 

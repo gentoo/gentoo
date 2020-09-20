@@ -1,14 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
+
 JAVA_PKG_IUSE="examples source test"
 
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="JZlib is a re-implementation of zlib in pure Java"
 HOMEPAGE="http://www.jcraft.com/jzlib/"
-SRC_URI="https://github.com/ymnk/${PN}/archive/${PV}.zip -> ${P}.zip"
+SRC_URI="https://github.com/ymnk/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="1.1.3"
@@ -27,7 +28,8 @@ RESTRICT="test"
 S="${WORKDIR}/${P}"
 JAVA_SRC_DIR="src/main/java"
 
-java_prepare() {
+src_prepare() {
+	default
 	rm pom.xml || die
 }
 
