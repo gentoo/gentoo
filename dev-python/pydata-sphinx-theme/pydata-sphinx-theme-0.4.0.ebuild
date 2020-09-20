@@ -4,7 +4,6 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -26,3 +25,8 @@ RDEPEND="dev-python/sphinx[${PYTHON_USEDEP}]"
 # ModuleNotFoundError: No module named 'plotly' even if dev-python/plotly is installed
 #distutils_enable_sphinx docs dev-python/commonmark dev-python/recommonmark dev-python/numpydoc dev-python/jupyter-sphinx dev-python/plotly
 distutils_enable_tests pytest
+
+python_test() {
+	PYTHONPATH="${S}"
+	pytest -vv || die "Tests failed with ${EPYTHON}"
+}
