@@ -14,11 +14,11 @@ SRC_URI="https://github.com/aide/aide/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="acl audit curl e2fs mhash postgres prelink selinux static xattr zlib"
+IUSE="acl audit curl e2fs mhash postgres prelink selinux xattr zlib"
 
 REQUIRED_USE="
 	postgres? ( !mhash )
-	static? ( !audit !curl !postgres )"
+	"
 
 COMMON_DEPEND="
 	dev-libs/libpcre
@@ -38,24 +38,10 @@ COMMON_DEPEND="
 	zlib? ( sys-libs/zlib )"
 
 RDEPEND="
-	!static? ( ${COMMON_DEPEND} )
+	${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-aide )"
 
-DEPEND="${COMMON_DEPEND}
-	static? (
-		dev-libs/libpcre[static-libs]
-		acl? ( >=virtual/acl-0-r1[static-libs] )
-		e2fs? ( sys-fs/e2fsprogs[static-libs] )
-		!mhash? (
-			dev-libs/libgcrypt:0[static-libs]
-			dev-libs/libgpg-error[static-libs]
-		)
-		mhash? ( app-crypt/mhash[static-libs] )
-		prelink? ( dev-libs/elfutils[static-libs] )
-		selinux? ( sys-libs/libselinux[static-libs] )
-		xattr? ( sys-apps/attr[static-libs] )
-		zlib? ( sys-libs/zlib[static-libs] )
-	)"
+DEPEND="${COMMON_DEPEND}"
 
 BDEPEND="
 	sys-devel/bison
@@ -110,7 +96,7 @@ src_configure() {
 		# Disable broken l10n support: https://sourceforge.net/p/aide/bugs/98/
 		# This doesn't affect anything because there are no localizations yet.
 		--without-locale
-		$(use_enable static)
+		--disable-static
 		$(use_with zlib)
 		$(use_with curl)
 		$(use_with acl posix-acl)
