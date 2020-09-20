@@ -5,7 +5,7 @@ EAPI=6
 
 MY_PV="${PV/_p/+}"
 SLOT="${MY_PV%%[.+]*}"
-EGRADLE_VER="4.8"
+EGRADLE_VER="4.10.3"
 
 inherit flag-o-matic java-pkg-2 multiprocessing
 
@@ -25,7 +25,7 @@ SRC_URI="https://hg.openjdk.java.net/${PN}/${SLOT}-dev/rt/archive/${MY_PV}.tar.b
 "
 
 LICENSE="GPL-2-with-classpath-exception"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* ~amd64 ~ppc64"
 
 IUSE="cpu_flags_x86_sse2 debug doc source +media"
 
@@ -48,9 +48,12 @@ RDEPEND="
 	x11-libs/pango
 	virtual/jpeg
 	virtual/opengl
-	|| (
-		dev-java/openjdk-bin:${SLOT}[doc?]
-		dev-java/openjdk:${SLOT}[doc?]
+	doc? ( dev-java/openjdk:${SLOT}[doc] )
+	!doc? (
+		|| (
+			dev-java/openjdk-bin:${SLOT}
+			dev-java/openjdk:${SLOT}
+		)
 	)
 "
 
@@ -66,7 +69,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-REQUIRED_USE="cpu_flags_x86_sse2"
+REQUIRED_USE="amd64? ( cpu_flags_x86_sse2 )"
 
 PATCHES=(
 	"${FILESDIR}"/11/disable-buildSrc-tests.patch
@@ -74,6 +77,8 @@ PATCHES=(
 	"${FILESDIR}"/11/respect-user-cflags.patch
 	"${FILESDIR}"/11/use-system-swt-jar.patch
 	"${FILESDIR}"/11/wno-error.patch
+	"${FILESDIR}"/11/don-t-force-msse.patch
+	"${FILESDIR}"/11/disable-architecture-verification.patch
 	"${FILESDIR}/11/${PV}-version.patch"
 )
 
@@ -180,8 +185,6 @@ src_configure() {
 		local jdk_doc
 		if has_version --host-root dev-java/openjdk:${SLOT}[doc]; then
 			jdk_doc="${EROOT%/}/usr/share/doc/openjdk-${SLOT}/html/api"
-		elif has_version --host-root dev-java/java-sdk-docs:${SLOT}; then
-			jdk_doc="${EROOT%/}/usr/share/doc/java-sdk-docs-${SLOT}/html/api"
 		fi
 		[[ -r ${jdk_doc}/element-list ]] || die "JDK Docs not found, terminating build early"
 	fi
