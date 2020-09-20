@@ -14,7 +14,8 @@ LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 
-RDEPEND=">=dev-libs/rocm-comgr-${PV}"
+RDEPEND=">=dev-libs/rocm-comgr-${PV}
+	>=dev-libs/rocr-runtime-${PV}"
 DEPEND="${RDEPEND}
 	>=dev-libs/rocm-comgr-${PV}
 	virtual/opengl
