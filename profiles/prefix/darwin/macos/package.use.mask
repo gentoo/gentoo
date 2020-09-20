@@ -13,12 +13,6 @@ sys-libs/ncurses-compat tinfo
 # hence it is masked in base profile. Bug #637482
 media-video/ffmpeg -appkit
 
-# James Le Cuirot <chewi@gentoo.org> (2015-07-29)
-# JavaFX is included on Mac OS. I think a browser plugin is too but as
-# libjvm rather than libnpjp2 like on Linux so keep nsplugin masked.
-dev-java/oracle-jdk-bin -javafx
-dev-java/oracle-jre-bin -javafx
-
 # Fabian Groffen <grobian@gentoo.org> (2009-10-30)
 # X and linux only
 media-video/mplayer xv dga X xinerama xscreensaver

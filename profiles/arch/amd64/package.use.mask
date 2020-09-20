@@ -226,11 +226,6 @@ sys-boot/grub:2 -grub_platforms_xen-32
 # sys-boot/gnu-efi is not supported on all archs.
 sys-apps/systemd -gnuefi
 
-# James Le Cuirot <chewi@gentoo.org> (2015-07-28)
-# JavaFX and the browser plugin are included on x64 Linux.
-dev-java/oracle-jdk-bin -javafx -nsplugin
-dev-java/oracle-jre-bin -javafx -nsplugin
-
 # Ben de Groot <yngwin@gentoo.org> (2015-03-15)
 # media-libs/libbdplus is keyworded on amd64, so unmask the useflag
 media-libs/libbluray -bdplus

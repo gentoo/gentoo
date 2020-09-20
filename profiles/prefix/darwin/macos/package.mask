@@ -20,9 +20,3 @@ sys-libs/darwin-libc-headers:10.14
 # -lSystem as looked for by clang/llvm.  If your system got this
 # package, you have to emerge -C cmake and re-emerge it.
 >=dev-util/cmake-3.14
-
-# James Le Cuirot <chewi@gentoo.org> (2015-07-29)
-# Recent Oracle releases only support recent Mac OS releases. We can't
-# keep old versions due to vulnerabilities.
-dev-java/oracle-jdk-bin
-dev-java/oracle-jre-bin
