@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools xdg
 
 DESCRIPTION="A GTK2 8085 Simulator"
 HOMEPAGE="http://gnusim8085.org"
