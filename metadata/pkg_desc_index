@@ -8278,7 +8278,7 @@ dev-python/httpretty 0.9.6 1.0.2-r1: HTTP client mock for Python
 dev-python/httpstat 1.2.1-r1: httpstat visualizes cURL statistics in a way of beauty and clarity
 dev-python/humanfriendly 4.18: Human friendly output for text interfaces using Python
 dev-python/humanize 2.6.0: Common humanization utilities
-dev-python/hyper-h2 3.2.0: HTTP/2 State-Machine based protocol implementation
+dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1: A featureful, correct URL for Python
 dev-python/hypothesis 4.57.1 5.24.4 5.29.4 5.35.3: A library for property based testing
@@ -8724,7 +8724,7 @@ dev-python/pyfltk 1.3.3: Python interface to Fltk library
 dev-python/pyformance 0.4-r1: Performance metrics, based on Coda Hale's Yammer metrics
 dev-python/pyftpdlib 1.5.6-r1: Python FTP server library
 dev-python/pygal 2.4.0-r1: A python SVG charts generator
-dev-python/pygame 1.9.6-r1 2.0.0_pre10 9999: Python bindings for SDL multimedia library
+dev-python/pygame 1.9.6-r1 2.0.0_pre10 2.0.0_pre12 9999: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.12.4-r4 6.99.12.4-r5 7.3.5-r1: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.2.1 1.3.0: Python bindings for libgit2
@@ -8945,7 +8945,7 @@ dev-python/python-troveclient 2.17.0: A client for the OpenStack Trove API, a sc
 dev-python/python-utils 2.3.0: Collection of small Python functions & classes
 dev-python/python-varlink 30.3.0: Python implementation of the Varlink protocol
 dev-python/python-vitrageclient 4.0.1: A client for the OpenStack Vitrage API
-dev-python/python-xlib 0.27: A fully functional X client library for Python, written in Python
+dev-python/python-xlib 0.27 0.28: A fully functional X client library for Python, written in Python
 dev-python/python-xmlsec 1.3.8: Python bindings for the XML Security Library
 dev-python/python-xmp-toolkit 2.0.1: Library for working with XMP metadata
 dev-python/python-zaqarclient 1.13.1: A client for the OpenStack Zaqar API
