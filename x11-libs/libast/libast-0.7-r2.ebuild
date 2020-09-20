@@ -31,13 +31,18 @@ src_prepare() {
 	default
 	local myregexp="posix"
 	use pcre && myregexp="pcre"
+}
+
+src_configure() {
 	econf \
 		$(use_with imlib) \
 		$(use_enable cpu_flags_x86_mmx mmx) \
-		--with-regexp="${myregexp}"
+		--with-regexp="${myregexp}" \
+		--disable-static
 }
 
 src_install() {
 	default
 	emake DESTDIR="${D}" install
+	find "${ED}" -name '*.la' -delete || die
 }
