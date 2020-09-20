@@ -1,7 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Console based tetrinet inc. standalone server"
@@ -13,19 +14,21 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="ipv6"
 
-RDEPEND=">=sys-libs/ncurses-5:0="
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-"
+RDEPEND="sys-libs/ncurses:0="
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-no-ipv6.patch
+	"${FILESDIR}"/${P}-build.patch
+	"${FILESDIR}"/${P}-fnocommon.patch
+)
 
 src_prepare() {
 	default
-	eapply \
-		"${FILESDIR}"/${P}-no-ipv6.patch \
-		"${FILESDIR}"/${P}-build.patch
 
 	use ipv6 && append-cflags -DHAVE_IPV6
-	tc-export PKG_CONFIG
+	tc-export CC PKG_CONFIG
 }
 
 src_install() {
