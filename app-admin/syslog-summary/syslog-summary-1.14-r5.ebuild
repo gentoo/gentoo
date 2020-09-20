@@ -13,7 +13,7 @@ SRC_URI="https://github.com/downloads/dpaleino/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc ~x86"
+KEYWORDS="~amd64 ~sparc x86"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
