@@ -24,7 +24,12 @@ RDEPEND="x11-base/xorg-proto
 	!<x11-libs/neXtaw-0.15.1-r1"
 DEPEND="${RDEPEND}"
 
+src_configure() {
+	econf --disable-static
+}
+
 src_install() {
 	emake DESTDIR="${D}" install
 	dodoc AUTHORS ChangeLog INSTALL NEWS README TODO
+	find "${ED}" -name '*.la' -delete || die
 }
