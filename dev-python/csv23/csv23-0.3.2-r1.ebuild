@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{6,7,8,9}} pypy3 )
+PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Python 2/3 unicode CSV compatibility layer"
@@ -16,9 +16,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 
-# note: upstream really uses mock at runtime
-RDEPEND="
-	$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' -2)"
 BDEPEND="
 	test? (
 		>=dev-python/pytest-4.6[${PYTHON_USEDEP}]
