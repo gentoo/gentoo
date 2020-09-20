@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{6..9}} pypy3 )
+PYTHON_COMPAT=( python3_{6..9} pypy3 )
 
 inherit distutils-r1
 
@@ -24,7 +24,6 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 # module name collision with app-arch/brotli
 RDEPEND="
 	virtual/python-cffi[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' -2)
 	!app-arch/brotli[python]"
 DEPEND="
 	test? (
