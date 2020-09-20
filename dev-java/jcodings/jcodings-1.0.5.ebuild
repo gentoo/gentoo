@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Byte-based encoding support library for Java"
 HOMEPAGE="https://github.com/codehaus"
-SRC_URI="https://github.com/jruby/${PN}/tarball/${PV} -> ${P}-git.tar.gz"
+SRC_URI="https://github.com/jruby/${PN}/archive/${PV}.tar.gz -> ${P}-git.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
