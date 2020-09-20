@@ -33,6 +33,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-20)
+# Obsolete GNOME libraries.  All remaining revdeps have been lastrited.
+# Removal in 30 days.  Bug #726784.
+gnome-base/libbonoboui
+gnome-base/libgnome
+gnome-base/libgnomeui
+
+# Michał Górny <mgorny@gentoo.org> (2020-09-20)
 # Abandoned upstream, homepage gone.  Last release in 2009.  Uses
 # deprecated gnome-base/libgnomeui.  Arch apparently has patches to keep
 # it alive, if anyone wants to.
