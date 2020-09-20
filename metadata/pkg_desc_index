@@ -5185,7 +5185,7 @@ dev-lang/scala-bin 2.13.1: The Scala Programming Language
 dev-lang/smlnj 110.82: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 1.1 1.4.1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
 dev-lang/spark 2018-r1 2019: Software development for high-reliability applications.
-dev-lang/spidermonkey 1.7.0-r3 1.8.5-r6 1.8.5-r7 1.8.5-r9 17.0.0-r5 38.3.0 45.0.2 52.9.1_pre1 52.9.1_pre1-r1 52.9.1_pre1-r2 60.5.2_p0-r2 60.5.2_p0-r3 60.5.2_p0-r4 68.7.0 68.8.0 68.9.0 68.10.0 68.11.0 68.12.0 78.2.0: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
+dev-lang/spidermonkey 1.8.5-r9 52.9.1_pre1-r2 60.5.2_p0-r4 68.12.0 78.2.0: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
 dev-lang/squirrel 3.1_p20200612: A interpreted language mainly used for games
 dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
 dev-lang/swi-prolog 8.0.3 8.2.0 8.2.1 8.3.6 8.3.7: versatile implementation of the Prolog programming language
@@ -8033,7 +8033,7 @@ dev-python/coverage-test-runner 1.15: fail Python program unit tests unless they
 dev-python/cppy 1.1.0: C++ header library which makes it easier to write Python extension modules
 dev-python/crcmod 1.7-r4: Python CRC Generator module
 dev-python/croniter 0.3.30: Python module to provide iteration for datetime object
-dev-python/cryptography 3.0 3.1: Library providing cryptographic recipes and primitives
+dev-python/cryptography 3.0-r1 3.1-r1: Library providing cryptographic recipes and primitives
 dev-python/css-parser 1.0.4-r1: A CSS Cascading Style Sheets library (fork of cssutils)
 dev-python/cssselect 1.1.0: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssselect2 0.3.0: Parses CSS3 Selectors and translates them to XPath 1.0
@@ -8119,7 +8119,7 @@ dev-python/doublex-expects 0.7.0_rc2-r1 0.7.1: Expects matchers for Doublex test
 dev-python/drf-yasg 1.17.1: Automated generation of Swagger/OpenAPI 2.0 schemas from Django Rest framework
 dev-python/duecredit 0.7.0: Publications (and donations) tracer
 dev-python/dugong 3.7.3: Python library for communicating with HTTP 1.1 servers
-dev-python/dulwich 0.19.15-r1 0.20.5-r1: Pure-Python implementation of the Git file formats and protocols
+dev-python/dulwich 0.19.15-r1 0.20.5-r1 0.20.6: Pure-Python implementation of the Git file formats and protocols
 dev-python/easy-thumbnails 2.7: Easy thumbnails for Django
 dev-python/easyprocess 0.3: Easy to use Python subprocess interface
 dev-python/ebuildtester 0.1.16: A dockerized approach to test a Gentoo package within a clean stage3 container
@@ -8278,7 +8278,7 @@ dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1: A featureful, correct URL for Python
 dev-python/hypothesis 4.57.1 5.24.4 5.29.4 5.35.3: A library for property based testing
 dev-python/icalendar 4.0.6 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
-dev-python/idna 2.10: Internationalized Domain Names in Applications (IDNA)
+dev-python/idna 2.10-r1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0: Patch ssl.match_hostname for Unicode(idna) domains support
 dev-python/ifaddr 0.1.6: Enumerate IP addresses on the local network adapters
 dev-python/ijson 3.1_p0 3.1.1: Iterative JSON parser with a Pythonic interface
@@ -8312,7 +8312,7 @@ dev-python/ipython 7.16.1 7.17.0 7.18.0 7.18.1: Advanced interactive shell for P
 dev-python/ipython_genutils 0.2.0-r1: Vestigial utilities from IPython
 dev-python/ipywidgets 7.5.1 7.5.1-r1: IPython HTML widgets for Jupyter
 dev-python/irc 18.0.0-r1 19.0.1: IRC client framework written in Python
-dev-python/iso8601 0.1.12: Simple module to parse ISO 8601 dates
+dev-python/iso8601 0.1.12-r1: Simple module to parse ISO 8601 dates
 dev-python/isodate 0.6.0-r1: ISO 8601 date/time/duration parser and formatter
 dev-python/isort 4.3.15 4.3.21_p2-r1: A python utility/library to sort imports
 dev-python/itsdangerous 1.1.0-r1: Various helpers to pass trusted data to untrusted environments and back
@@ -8651,7 +8651,7 @@ dev-python/protobuf-python 3.11.4 3.12.2 3.12.4 3.13.0 9999: Google's Protocol B
 dev-python/prov 1.5.3: W3C provenance data dodel library
 dev-python/pslab-python 1.0.1-r1: Python library for communicating with Pocket Science Lab
 dev-python/psutil 5.7.0-r1 5.7.2-r1: Retrieve information on running processes and system utilization
-dev-python/psycopg 2.7.7 2.8.5 2.8.6: PostgreSQL database adapter for Python
+dev-python/psycopg 2.7.7-r1 2.8.5-r1 2.8.6-r1: PostgreSQL database adapter for Python
 dev-python/ptpython 2.0.6: Python REPL build on top of prompt_toolkit
 dev-python/ptvsd 4.3.2: Visual Studio remote debugging server for Python
 dev-python/ptyprocess 0.6.0: Run a subprocess in a pseudo terminal
@@ -8673,8 +8673,8 @@ dev-python/pyacoustid 1.1.7: Python bindings for Chromaprint and the AcoustID we
 dev-python/pyaes 1.6.1-r2: Pure-Python Implementation of the AES block-cipher and common modes of operation
 dev-python/pyalsa 1.1.6-r1: Python bindings for ALSA library
 dev-python/pyamg 3.2.1-r1: Algebraic multigrid solvers in Python
-dev-python/pyasn1 0.4.8: ASN.1 library for Python
-dev-python/pyasn1-modules 0.2.8: pyasn1 modules
+dev-python/pyasn1 0.4.8-r1: ASN.1 library for Python
+dev-python/pyasn1-modules 0.2.8-r1: pyasn1 modules
 dev-python/pyatspi 2.34.0 2.36.0: Python client bindings for D-Bus AT-SPI
 dev-python/pyaudio 0.2.11-r1: Python bindings for PortAudio
 dev-python/pybind11 2.5.0: AST-based Python refactoring library
@@ -8766,7 +8766,7 @@ dev-python/pyogg 1.3-r2: Python bindings for the ogg library
 dev-python/pyopencl 2020.2 2020.2.1: Python wrapper for OpenCL
 dev-python/pyopengl 3.1.0 3.1.5: Python OpenGL bindings
 dev-python/pyopengl_accelerate 3.1.5: Accelerate module for PyOpenGL
-dev-python/pyopenssl 19.1.0: Python interface to the OpenSSL library
+dev-python/pyopenssl 19.1.0-r1: Python interface to the OpenSSL library
 dev-python/pyotherside 1.5.9: Asynchronous Python 3 Bindings for Qt 5
 dev-python/pyotp 2.4.0: PyOTP is a Python library for generating and verifying one-time passwords.
 dev-python/pypam 0.5.0-r6: Python Bindings for PAM (Pluggable Authentication Modules)
@@ -8956,7 +8956,7 @@ dev-python/pytidylib 0.3.2: Python wrapper for HTML Tidy (tidylib)
 dev-python/pytoml 0.1.20: A TOML-0.4.0 parser/writer for Python
 dev-python/pytools 2020.3.1 2020.4 9999: Collection of tools missing from the Python standard library
 dev-python/pytrie 0.3.1-r1: A pure Python implementation of the trie data structure
-dev-python/pytz 2020.1: World timezone definitions for Python
+dev-python/pytz 2020.1-r1: World timezone definitions for Python
 dev-python/pyu2f 0.1.4-r1: Python based U2F host library
 dev-python/pyudev 0.22.0: Python binding to libudev
 dev-python/pyusb 1.0.2-r1: USB support for Python
@@ -9281,7 +9281,7 @@ dev-python/wheel 0.35.1: A built-package format for Python
 dev-python/whelk 2.7.1: Pretending python is a shell
 dev-python/whichcraft 0.6.1: Cross-platform cross-python shutil.which functionality
 dev-python/whisper 1.1.5: Fixed size round-robin style database
-dev-python/whoosh 2.7.4: Fast, pure-Python full text indexing, search and spell checking library
+dev-python/whoosh 2.7.4-r1: Fast, pure-Python full text indexing, search and spell checking library
 dev-python/widgetsnbextension 3.5.1 3.5.1-r1: IPython HTML widgets for Jupyter
 dev-python/wrapt 1.12.1: Module for decorators, wrappers and monkey patching
 dev-python/ws4py 0.5.1-r1 9999: WebSocket client and server library for Python 2 and 3 as well as PyPy
@@ -10830,7 +10830,7 @@ dev-util/ninja 1.8.2 1.8.2-r1 1.8.2-r2 1.9.0 1.10.0 9999: A small build system s
 dev-util/ninka 2.0_pre1_p20170402: A license identification tool for source code
 dev-util/numdiff 5.9.0: File comparision, ignoring small numeric differences and formats
 dev-util/nvidia-cuda-sdk 6.5.19 7.5.18 8.0.44-r1 8.0.61 9.0.176 9.1.85 9.2.88 10.1.243 10.2.89: NVIDIA CUDA Software Development Kit
-dev-util/nvidia-cuda-toolkit 6.5.14 6.5.19-r1 7.5.18-r2 8.0.44 8.0.61 9.0.176 9.1.85 9.2.88 10.0.130 10.1.105-r3 10.1.168-r2 10.1.243-r3 10.2.89-r2: NVIDIA CUDA Toolkit (compiler and friends)
+dev-util/nvidia-cuda-toolkit 6.5.14 6.5.19-r1 7.5.18-r2 8.0.44 8.0.61 9.0.176 9.1.85 9.2.88 10.0.130 10.1.105-r3 10.1.168-r2 10.1.243-r3 10.2.89-r2 11.0.3: NVIDIA CUDA Toolkit (compiler and friends)
 dev-util/objconv 2.51: object code file converted (COFF, ELF, OMF, MACHO)
 dev-util/omake 0.9.8.6.0_rc1 0.10.2 0.10.3: Make replacement
 dev-util/open-vcdiff 0.8.4-r1: An encoder/decoder for the VCDIFF (RFC3284) format
@@ -17360,7 +17360,7 @@ sys-cluster/rdma-core 30.0-r2 31.0 9999: Userspace components for the Linux Kern
 sys-cluster/resource-agents 3.9.6 4.0.1: Resources pack for Heartbeat / Pacemaker
 sys-cluster/sanlock 3.6.0 3.8.2: shared storage lock manager
 sys-cluster/singularity 3.6.2: Application containers for Linux
-sys-cluster/slurm 20.02.3.1 20.02.4.1: A Highly Scalable Resource Manager
+sys-cluster/slurm 20.02.4.1 20.02.5.1: A Highly Scalable Resource Manager
 sys-cluster/spark-bin 2.4.6: Lightning-fast unified analytics engine
 sys-cluster/swift 2.25.0 2020.1.9999: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/teleport 4.0.9 4.0.10 4.1.1 4.1.4 9999: Modern SSH server for teams managing distributed infrastructure
@@ -17609,7 +17609,7 @@ sys-fs/zfs 0.8.4-r2 2.0.0_rc1-r1 2.0.0_rc2 9999: Userland utilities for ZFS Linu
 sys-fs/zfs-auto-snapshot 1.2.4 9999: ZFS Automatic Snapshot Service for Linux
 sys-fs/zfs-kmod 0.8.4-r1 2.0.0_rc1 2.0.0_rc2 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.14.138 4.14.143 4.14.144 4.14.145 4.14.146 4.14.147 4.14.148 4.14.149 4.14.150 4.19.66 4.19.72 4.19.73 4.19.74 4.19.75 4.19.76 4.19.77 4.19.78 4.19.79 4.19.80 5.2.13 5.2.14 5.2.15 5.2.16 5.2.17 5.2.18 5.2.19 5.2.20 5.3.0 5.3.1 5.3.2 5.3.4 5.3.5 5.3.6-r1 5.3.7: Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs5 support
-sys-kernel/bliss-initramfs 8.1.0-r1 9.1.0 9.2.0 9.3.0: Boot your system's rootfs from Encrypted/OpenZFS.
+sys-kernel/bliss-initramfs 8.1.0-r1 9.3.0: Boot your system's rootfs from Encrypted/OpenZFS.
 sys-kernel/bliss-kernel-bin 4.14.178 5.4.51: Precompiled Vanilla Kernel (Kernel Ready-to-Eat [KRE])
 sys-kernel/ck-sources 5.4.37 5.4.48: Gentoo's genpatches for Linux , with Con Kolivas' MuQSS process scheduler.
 sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel cryptographic drivers
@@ -18091,7 +18091,7 @@ www-apps/prewikka 5.1.1: Graphical front-end analysis console for the Prelude Fr
 www-apps/radicale 1.1.6 2.1.11-r1: A simple CalDAV calendar server
 www-apps/redmine 4.1.1-r1: Flexible project management web application using the Ruby on Rails framework
 www-apps/rocketwiki-lqfb 0.4: Small parser which translates a wiki dialect to HTML
-www-apps/roundup 1.6.1-r1 2.0.0: Issue-tracking system with command-line, web, and e-mail interfaces
+www-apps/roundup 2.0.0: Issue-tracking system with command-line, web, and e-mail interfaces
 www-apps/rt 4.4.4: RT is an enterprise-grade ticketing system
 www-apps/rutorrent 3.8-r1 9999: ruTorrent is a front-end for the popular Bittorrent client rTorrent
 www-apps/trac 1.2.5: Enhanced wiki and issue tracking system for software development projects
@@ -18105,7 +18105,7 @@ www-apps/wordpress 5.5.1: Wordpress PHP and MySQL based content management syste
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
 www-client/chromium 85.0.4183.102 86.0.4240.42 87.0.4263.3: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
-www-client/elinks 0.13.4 9999: Advanced and well-established text-mode web browser
+www-client/elinks 0.13.4-r1 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6 3.34.4 3.36.3 3.36.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
