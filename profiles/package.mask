@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-20)
+# Obsolete library, replaced by app-crypt/libsecret.  All remaining
+# revdeps have been masked.  Requires Python 2.
+# Removal in 30 days.  Bug #713010.
+gnome-base/libgnome-keyring
+
+# Michał Górny <mgorny@gentoo.org> (2020-09-20)
 # Obsolete GNOME libraries.  All remaining revdeps have been lastrited.
 # Removal in 30 days.  Bug #726784.
 gnome-base/libbonoboui
