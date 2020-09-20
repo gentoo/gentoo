@@ -686,11 +686,6 @@ dev-haskell/frown
 # A metapackage. Removal in 30 days.
 dev-haskell/yesod-platform
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-16)
-# Obsolete package without reverse dependencies.
-# Does not compile against current ghc-8.8. Removal in 30 days.
-dev-haskell/yesod-routes
-
 # Mart Raudsepp <leio@gentoo.org> (2020-08-15)
 # Development release, needs testing to ensure valac-0.50
 # works for existing packages
