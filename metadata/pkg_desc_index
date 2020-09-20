@@ -13730,7 +13730,7 @@ media-sound/bpmdetect 0.7.0_pre20170810: Automatic BPM detection utility
 media-sound/bristol 0.60.11-r1: Synthesizer keyboard emulation package: Moog, Hammond and others
 media-sound/brutefir 1.0k-r2: Software convolution engine for applying long FIR filters
 media-sound/cadence 0.9.1 9999: Collection of tools useful for audio production
-media-sound/cantata 2.4.1: Featureful and configurable Qt client for the music player daemon (MPD)
+media-sound/cantata 2.4.1 2.4.2: Featureful and configurable Qt client for the music player daemon (MPD)
 media-sound/cd-discid 1.4: returns the disc id for the cd in the cd-rom drive
 media-sound/cdcd 0.6.6-r2: a simple yet powerful command line cd player
 media-sound/cdparanoia 3.10.2-r7: An advanced CDDA reader with error correction
