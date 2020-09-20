@@ -41,6 +41,7 @@ dev-python/python-fchksum
 # Michał Górny <mgorny@gentoo.org> (2020-09-20)
 # Python 2 backports with no revdeps left.
 # Removal in 30 days.  Bug #743724.
+dev-python/futures
 dev-python/pathlib
 dev-python/subprocess32
 
