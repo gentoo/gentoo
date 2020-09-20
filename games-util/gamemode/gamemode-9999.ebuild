@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 
-inherit meson multilib-minimal ninja-utils user
+inherit meson multilib-minimal ninja-utils systemd
 
 DESCRIPTION="Optimise Linux system performance on demand"
 HOMEPAGE="https://github.com/FeralInteractive/gamemode"
@@ -22,13 +22,25 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE=""
+IUSE="systemd elogind"
+
+REQUIRED_USE="^^ ( systemd elogind )"
 
 RDEPEND="
-	>=sys-apps/systemd-236[${MULTILIB_USEDEP}]
+	acct-group/gamemode
+	dev-libs/inih
+	sys-apps/dbus[${MULTILIB_USEDEP},systemd(+)=,elogind(-)=]
 	sys-auth/polkit
+	sys-libs/libcap
 "
 DEPEND="${RDEPEND}"
+
+DOCS=(
+	CHANGELOG.md
+	LICENSE.txt
+	README.md
+	example/gamemode.ini
+)
 
 pkg_pretend() {
 	elog
@@ -64,14 +76,18 @@ pkg_pretend() {
 }
 
 multilib_src_configure() {
-	local myconf=()
+	local emesonargs=(
+		-Dwith-sd-bus-provider=$(usex systemd "systemd" "elogind")
+		-Dwith-systemd-user-unit-dir="$(systemd_get_userunitdir)"
+	)
 	if ! multilib_is_native_abi; then
-		myconf+=(
+		emesonargs+=(
 			-Dwith-examples=false
-			-Dwith-daemon=false
+			-Dwith-sd-bus-provider=no-daemon
 		)
 	fi
-	meson_src_configure "${myconf[@]}"
+
+	meson_src_configure
 }
 
 multilib_src_compile() {
@@ -89,17 +105,28 @@ multilib_src_install() {
 }
 
 pkg_postinst() {
-	enewgroup gamemode
-
 	elog
-	elog "GameMode can renice your games. You need to be in the gamemode group for this to work."
+	elog "GameMode has optional support for adjusting nice and ioprio of games"
+	elog "running with it. You may need to adjust your PAM limits to make use"
+	elog "of this. You need to be in the gamemode group for this to work."
+	elog
 	elog "Run the following command as root to add your user:"
 	elog "# gpasswd -a USER gamemode  # with USER = your user name"
 	elog
-
-	elog "Enable and start the daemon in your systemd user instance, then add"
-	elog "LD_PRELOAD=\$LD_PRELOAD:/usr/\$LIB/libgamemodeauto.so %command%"
-	elog "to the start options of any steam game to enable the performance"
-	elog "governor as you start the game."
+	elog "You can run the following command to test your settings:"
+	elog
+	elog "# gamemoded -t"
+	elog
+	elog "GameMode supports GPU optimizations. It defaults to OFF. Any"
+	elog "damage resulting from usage of this is your own responsibility."
+	elog
+	elog "systemd user sessions will automatically run the daemon on demand,"
+	elog "it does not need to be enabled explicitly. Games not supporting"
+	elog "GameMode natively can still make use of it, just add"
+	elog
+	elog "gamemoderun %command%"
+	elog
+	elog "to the start options of any steam game to enable optimizations"
+	elog "automatically as you start the game."
 	elog
 }
