@@ -23,7 +23,7 @@ S="${WORKDIR}/${P}/${PN}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-clang.patch"
-	"${FILESDIR}/fix_checksum_calculation.patch"
+	"${FILESDIR}/${P}-fix-checksum-calculation.patch"
 )
 
 CONFIG_CHECK="~IP_MULTICAST ~IP_MROUTE"
