@@ -653,12 +653,6 @@ games-action/openclonk
 # Bug #736244.
 dev-haskell/regex-tdfa-rc
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-21)
-# Obsolete package without reverse dependencies.
-# Does not compile against ghc-8.8. Removal in 30 days.
-# Bug #736248.
-dev-haskell/testpack
-
 # Kent Fredric <kentnl@gentoo.org> (2020-08-17)
 # No reverse dependencies, and gtk2 support is becoming
 # obsolete in Gentoo
