@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} pypy3 )
+PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 PYTHON_REQ_USE="ssl(+)"
 
 inherit distutils-r1
@@ -25,9 +25,6 @@ RDEPEND="
 	>=dev-python/cryptography-1.3.4[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-0.14[${PYTHON_USEDEP}]
 	>=dev-python/idna-2.0.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/ipaddress[${PYTHON_USEDEP}]
-	' -2)
 	brotli? ( dev-python/brotlipy[${PYTHON_USEDEP}] )
 "
 BDEPEND="
@@ -64,11 +61,6 @@ python_test() {
 	local -x CI=1
 	# FIXME: get tornado ported
 	case ${EPYTHON} in
-		python2*)
-			ewarn "Tests are being skipped for Python 2 in order to reduce the number"
-			ewarn "of circular dependencies for Python 2 removal.  Please test"
-			ewarn "manually in a virtualenv."
-			;;
 		python3*)
 			pytest -vv || die "Tests fail with ${EPYTHON}"
 			;;
