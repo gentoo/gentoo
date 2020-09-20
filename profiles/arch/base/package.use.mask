@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2020-09-20)
+# (for Mikle Kolyada <zlogene@gentoo.org>)
+# libgcrypt et al no longer support static-libs
+# Need to determine whether crypt is possible dynamically?
+sys-power/suspend crypt
 
 # Sam James <sam@gentoo.org> (2020-09-20)
 # (for Mikle Kolyada <zlogene@gentoo.org>)
