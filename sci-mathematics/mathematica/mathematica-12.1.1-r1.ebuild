@@ -36,7 +36,20 @@ QA_PREBUILT="opt/*"
 S=${WORKDIR}
 
 src_unpack() {
-	/bin/sh "${DISTDIR}/${A}" --nox11 --confirm -- -auto "-targetdir=${S}/${M_TARGET}" "-execdir=${S}/opt/bin" || die
+	/bin/sh "${DISTDIR}/${A}" --nox11 --keep --target "${S}/unpack" -- "-help" || die
+}
+
+src_prepare() {
+	default
+
+	pushd "${S}/unpack" > /dev/null || die
+
+	# fix ACCESS DENIED issue when installer check the avahi-daemon
+	sed -e "s:avahi-daemon -c:true:g" -i "Unix/Installer/MathInstaller" || die
+
+	/bin/sh "Unix/Installer/MathInstaller" -auto "-targetdir=${S}/${M_TARGET}" "-execdir=${S}/opt/bin" || die
+
+	popd > /dev/null || die
 }
 
 src_install() {
