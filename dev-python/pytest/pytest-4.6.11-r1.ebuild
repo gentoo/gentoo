@@ -15,7 +15,8 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~s390 sparc x86"
-RESTRICT="test"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 # When bumping, please check setup.py for the proper py version
 PY_VER="1.5.0"
@@ -40,6 +41,23 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/wcwidth[${PYTHON_USEDEP}]"
 
+# flake cause a number of tests to fail
+DEPEND="
+	test? (
+		${RDEPEND}
+		dev-python/argcomplete[${PYTHON_USEDEP}]
+		>=dev-python/hypothesis-3.56[${PYTHON_USEDEP}]
+		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/pexpect[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
+		!!dev-python/flaky
+		!!dev-python/pytest-aiohttp
+		!!dev-python/pytest-asyncio
+		!!dev-python/pytest-django
+		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' -2)
+	)"
+
 PATCHES=(
 	"${FILESDIR}/pytest-4.5.0-strip-setuptools_scm.patch"
 	"${FILESDIR}/pytest-4.6.10-timeout.patch"
@@ -48,5 +66,19 @@ PATCHES=(
 python_prepare_all() {
 	grep -qF "py>=${PY_VER}" setup.py || die "Incorrect dev-python/py dependency"
 
+	# Something in the ebuild environment causes this to hang/error.
+	# https://bugs.gentoo.org/598442
+	rm testing/test_pdb.py || die
+
 	distutils-r1_python_prepare_all
+}
+
+python_test() {
+	distutils_install_for_testing
+
+	# In v4.1.1, pytest started being picky about its own verbosity options.
+	# running pytest on itself with -vv made 3 tests fail. This is why we don't
+	# have it below.
+	"${EPYTHON}" "${BUILD_DIR}"/lib/pytest.py --lsof -rfsxX \
+		|| die "tests failed with ${EPYTHON}"
 }
