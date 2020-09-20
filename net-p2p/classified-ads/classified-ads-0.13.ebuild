@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit qmake-utils virtualx
+inherit qmake-utils virtualx xdg
 
 DESCRIPTION="Program for displaying classified advertisement items"
 HOMEPAGE="http://katiska.org/classified-ads/"

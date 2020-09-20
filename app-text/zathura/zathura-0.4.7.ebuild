@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit meson virtualx
+inherit meson virtualx xdg
 
 DESCRIPTION="A highly customizable and functional document viewer"
 HOMEPAGE="https://pwmt.org/projects/zathura/"
