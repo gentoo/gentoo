@@ -338,10 +338,6 @@ app-crypt/heimdal afs
 # Only available on some architectures.
 dev-java/icedtea -shenandoah
 
-# James Le Cuirot <chewi@gentoo.org> (2017-04-25)
-# Oracle doesn't include VisualVM on this platform.
-dev-java/oracle-jdk-bin visualvm
-
 # Markus Meier <maekke@gentoo.org> (2017-03-24)
 # unkeyworded deps, bug #552330
 app-portage/g-sorcery bson

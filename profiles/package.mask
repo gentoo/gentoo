@@ -884,19 +884,6 @@ app-office/texmacs
 # Requires >=dev-lang/lua-5.2 which is masked
 >=app-admin/conky-1.11.4
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-04-17)
-# The Oracle JDK License has changed for releases starting 2019-04-16
-# While it may be fine to use for some usecases it's not comepletely clear
-# what is considered "personal use" and if we can legally distribute it.
-# License states:
-# "You may not:
-# make the Programs available in any manner to any third party"
-# masking all future versions, removal will follow soon.
-# Alternatives: icedtea, icedtea-bin, openjdk, openjdk-bin, openjdk-jre-bin
-# Bug: https://bugs.gentoo.org/681828
->dev-java/oracle-jdk-bin-1.8.0.202:1.8
->dev-java/oracle-jre-bin-1.8.0.202:1.8
-
 # Robin H. Johnson <robbat2@gentoo.org> (2019-03-25)
 # Requires >=dev-lang/lua-5.3 which is masked
 sys-apps/likwid
@@ -963,9 +950,9 @@ dev-java/eclipse-ecj:4.10
 ~net-libs/rpcsvc-proto-0
 
 # James Le Cuirot <chewi@gentoo.org> (2017-12-17)
-# Java 9+ is not yet fully supported on Gentoo. Packages cannot depend
+# Java 11 is not yet fully supported on Gentoo. Packages cannot depend
 # on it so these virtuals are not yet required. If you wish to use
-# Java 9+ then install oracle-(jdk|jre)-bin or openjdk(-bin) directly.
+# Java 11 then install openjdk-(jdk|jre)-bin directly.
 virtual/jdk:11
 virtual/jre:11
 
