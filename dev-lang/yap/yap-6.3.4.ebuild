@@ -21,6 +21,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="R debug doc examples gmp java mpi mysql odbc postgres python raptor readline sqlite ssl static threads xml"
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 RDEPEND="dev-libs/libutf8proc
 	sys-libs/zlib
 	gmp? ( dev-libs/gmp:0 )
@@ -110,21 +112,21 @@ src_test() {
 src_install() {
 	cmake-utils_src_install
 
-	dodoc changes*.html README || die
+	dodoc changes*.html README
 
 	if use examples ; then
-		insinto /usr/share/doc/${PF}/examples/chr
-		doins packages/chr/Examples/* || die
+		docinto /usr/share/doc/${PF}/examples/chr
+		dodoc packages/chr/Examples/*
 		if use java ; then
-			insinto /usr/share/doc/${PF}/examples/jpl/prolog
-			doins packages/jpl/jpl/examples/prolog/* || die
-			insinto /usr/share/doc/${PF}/examples/jpl/java
-			doins packages/jpl/jpl/examples/java/README || die
-			doins -r packages/jpl/jpl/examples/java/*/*.{java,pl} || die
+			docinto /usr/share/doc/${PF}/examples/jpl/prolog
+			dodoc packages/jpl/jpl/examples/prolog/*
+			docinto /usr/share/doc/${PF}/examples/jpl/java
+			dodoc packages/jpl/jpl/examples/java/README
+			dodoc -r packages/jpl/jpl/examples/java/*/*.{java,pl}
 		fi
 		if use mpi ; then
-			insinto /usr/share/doc/${PF}/examples/mpi
-			doins library/mpi/examples/*.pl || die
+			docinto /usr/share/doc/${PF}/examples/mpi
+			dodoc library/mpi/examples/*.pl
 		fi
 	fi
 }
