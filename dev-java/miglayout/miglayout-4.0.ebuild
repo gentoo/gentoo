@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
 JAVA_PKG_IUSE="doc examples source"
 
@@ -16,17 +16,22 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="swt"
 
-COMMON_DEP="
-	swt? ( dev-java/swt:3.7 )"
-RDEPEND="${COMMON_DEP}
-	>=virtual/jre-1.5"
-DEPEND="${COMMON_DEP}
+COMMON_DEPEND="swt? ( dev-java/swt:3.7 )"
+BDEPEND="app-arch/unzip"
+RDEPEND="
+	${COMMON_DEPEND}
+	>=virtual/jre-1.5
+"
+DEPEND="
+	${COMMON_DEPEND}
 	>=virtual/jdk-1.5
-	app-arch/unzip"
+"
 
 S="${WORKDIR}"
 
-java_prepare() {
+src_prepare() {
+	default
+
 	mv net/miginfocom/{demo,examples} . || die
 	mv demo/* examples || die
 
