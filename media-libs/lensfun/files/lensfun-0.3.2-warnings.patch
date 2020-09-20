@@ -1,0 +1,48 @@
+Adapted from upstream commit
+
+From 694542f350fc7c9ccafa2d9acb4d4e00e690cbdc Mon Sep 17 00:00:00 2001
+From: Sebastian Kraft <mail@sebastiankraft.net>
+Date: Thu, 22 Dec 2016 18:51:29 +0100
+Subject: [PATCH] Fix some warnings which were introduced when swithcing to
+ C++11 mode
+
+---
+ libs/lensfun/cpuid.cpp  | 4 ++--
+ libs/lensfun/mod-pc.cpp | 8 ++++----
+ tests/test_modifier.cpp | 4 ++--
+ 3 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/libs/lensfun/cpuid.cpp b/libs/lensfun/cpuid.cpp
+index c435f8ac..d2d63972 100644
+--- a/libs/lensfun/cpuid.cpp
++++ b/libs/lensfun/cpuid.cpp
+@@ -92,9 +92,9 @@ guint _lf_detect_cpu_features ()
+ {
+ #define cpuid(cmd) \
+     __asm volatile ( \
+-        "push %%"R_BX"\n" \
++        "push %%" R_BX "\n" \
+         "cpuid\n" \
+-        "pop %%"R_BX"\n" \
++        "pop %%" R_BX "\n" \
+        : "=a" (ax), "=c" (cx),  "=d" (dx) \
+        : "0" (cmd))
+ 
+diff --git a/tests/test_modifier.cpp b/tests/test_modifier.cpp
+index f087917c..ffa3d4d7 100644
+--- a/tests/test_modifier.cpp
++++ b/tests/test_modifier.cpp
+@@ -78,8 +78,8 @@ void test_mod_projection_center(lfFixture* lfFix, gconstpointer data)
+ // check if output becomes NaN when processing geometry conversion
+ void test_mod_projection_borders(lfFixture* lfFix, gconstpointer data)
+ {
+-    float in[2]  = {lfFix->img_width, lfFix->img_height};
+-    float in2[2] = {(lfFix->img_width-1)/2, (lfFix->img_height-1)/2};
++    float in[2]  = {(float) lfFix->img_width, (float) lfFix->img_height};
++    float in2[2] = {(float) (lfFix->img_width-1)/2, (float) (lfFix->img_height-1)/2};
+     float res[2] = {0, 0};
+ 
+     lfLensType geom_types [] = {LF_RECTILINEAR, LF_PANORAMIC, LF_EQUIRECTANGULAR, LF_FISHEYE_STEREOGRAPHIC, LF_FISHEYE, LF_FISHEYE_EQUISOLID, LF_FISHEYE_ORTHOGRAPHIC, LF_FISHEYE_THOBY, LF_UNKNOWN};
+-- 
+2.26.2
+
