@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 JAVA_PKG_IUSE="doc source examples"
 
@@ -14,14 +14,10 @@ SRC_URI="http://www.jcraft.com/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE=""
 
-RDEPEND="
-	>=virtual/jre-1.6"
-
-DEPEND="
-	source? ( app-arch/zip )
-	>=virtual/jdk-1.6"
+BDEPEND="source? ( app-arch/zip )"
+RDEPEND=">=virtual/jre-1.6"
+DEPEND=">=virtual/jdk-1.6"
 
 S="${WORKDIR}/${P}"
 
