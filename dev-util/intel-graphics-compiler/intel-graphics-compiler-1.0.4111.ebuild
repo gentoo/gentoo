@@ -18,9 +18,7 @@ IUSE="debug"
 
 LLVM_MAX_SLOT=10
 
-# Bug #738934
-#COMMON="<=sys-devel/llvm-${LLVM_MAX_SLOT}.9999:=[${MULTILIB_USEDEP}]
-COMMON="<sys-devel/llvm-10.0.1:=[${MULTILIB_USEDEP}]
+COMMON="<=sys-devel/llvm-${LLVM_MAX_SLOT}.9999:=[${MULTILIB_USEDEP}]
 	<=dev-libs/opencl-clang-${LLVM_MAX_SLOT}.9999:=[${MULTILIB_USEDEP}]"
 DEPEND="${COMMON}"
 RDEPEND="${COMMON}"
@@ -31,6 +29,14 @@ PATCHES=(
 )
 
 S="${WORKDIR}"/${PN}-igc-${PV}
+
+pkg_pretend() {
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		if tc-is-clang && [[ $(clang-major-version) -ge 10 ]] ; then
+			die "Building IGC with clang-10 and newer is presently not supported (see Bug #738934). Please use clang-9 or gcc instead."
+		fi
+	fi
+}
 
 multilib_src_configure() {
 	# Select the same slot as the best opencl-clang
