@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python{2_7,3_{6,7,8,9}} pypy3 )
+PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 
 inherit distutils-r1
 
@@ -14,16 +14,23 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="test"
-RESTRICT="!test? ( test )"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
-RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]"
+# do not rdepend on pytest, it won't be used without it anyway
+# pytest-cov used to test compatibility
 BDEPEND="
 	test? (
-		${RDEPEND}
 		dev-python/pexpect[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pytest-cov[${PYTHON_USEDEP}]
+		' -3)
 	)"
+
+distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/pytest-timeout-1.4.2-optional-cov.patch
+)
 
 python_test() {
 	distutils_install_for_testing
