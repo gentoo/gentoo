@@ -89,11 +89,11 @@ src_install() {
 				page and then edit the /etc/security/pwquality.conf file"
 	fi
 
-	! [[ -z "${DOC_CONTENTS}" ]] && readme.gentoo_create_doc
+	{ use passwdqc || use pwquality; } && readme.gentoo_create_doc
 
 	dopamd -r stack/.
 }
 
 pkg_postinst() {
-	! [[ -z "${DOC_CONTENTS}" ]] && readme.gentoo_print_elog
+	{ use passwdqc || use pwquality; } && readme.gentoo_print_elog
 }
