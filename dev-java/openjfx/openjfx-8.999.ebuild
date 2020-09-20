@@ -29,6 +29,7 @@ DEPEND="
 	>=dev-java/ant-core-1.8.2:0
 	>=dev-java/antlr-2.7.7-r7:0
 	dev-java/antlr:3
+	dev-java/openjdk:8
 	dev-java/stringtemplate:0
 	dev-java/swt:4.10[cairo,opengl]
 	sys-devel/bison
