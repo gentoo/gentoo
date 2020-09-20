@@ -7,5 +7,6 @@
 </maintainer>
 <use>
 	<flag name="R">Enable support for connecting R to Prolog</flag>
+	<flag name="raptor">Enable support for Raptor RDF syntax libarary</flag>
 </use>
 </pkgmetadata>
