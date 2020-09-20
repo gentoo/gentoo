@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-09-20)
+# Abandoned upstream, homepage gone.  Last release in 2009.  Uses
+# deprecated gnome-base/libgnomeui.  Arch apparently has patches to keep
+# it alive, if anyone wants to.
+# Removal in 30 days.  Bug #726796.
+net-misc/gwget
+
 # David Seifert <soap@gentoo.org> (2020-09-20)
 # EAPI 4, last release in 2012, sandbox violations and
 # full of bugs. Mainlined since 3.14, Removal in 30 days.
