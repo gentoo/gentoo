@@ -101,8 +101,6 @@ pkg_setup() {
 
 	check-reqs_pkg_setup
 
-	llvm_pkg_setup
-
 	python-any-r1_pkg_setup
 }
 
