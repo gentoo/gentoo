@@ -15,11 +15,6 @@ net-libs/quiche
 # https://valgrind.org/info/platforms.html
 dev-util/valgrind
 
-# James Le Cuirot <chewi@gentoo.org> (2016-01-09)
-# This is built for armv6 and will not work on earlier generations.
-dev-java/oracle-jdk-bin
-dev-java/oracle-jre-bin
-
 # James Le Cuirot <chewi@gentoo.org> (2015-05-24)
 # This is built for armv7a and will not work on earlier generations.
 dev-java/icedtea-bin

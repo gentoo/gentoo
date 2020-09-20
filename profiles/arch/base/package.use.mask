@@ -198,11 +198,6 @@ media-video/ffmpeg mmal
 # sys-boot/gnu-efi is not supported on all archs.
 sys-apps/systemd gnuefi
 
-# James Le Cuirot <chewi@gentoo.org> (2015-07-29)
-# JavaFX and the browser plugin are not included on some platforms.
-dev-java/oracle-jdk-bin javafx nsplugin
-dev-java/oracle-jre-bin javafx nsplugin
-
 # Ben de Groot <yngwin@gentoo.org> (2015-03-15)
 # Mask bdplus support and unmask on arches where libbdplus is keyworded.
 media-libs/libbluray bdplus
