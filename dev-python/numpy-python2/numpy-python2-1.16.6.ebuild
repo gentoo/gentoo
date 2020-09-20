@@ -25,8 +25,8 @@ SRC_URI="
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc lapack test"
-RESTRICT="!test? ( test )"
+IUSE="doc lapack"
+RESTRICT="test"
 
 RDEPEND="
 	!<dev-python/numpy-1.17
@@ -41,9 +41,6 @@ BDEPEND="
 	app-arch/unzip
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	lapack? ( virtual/pkgconfig )
-	test? (
-		dev-python/pytest[${PYTHON_USEDEP}]
-	)
 "
 
 S="${WORKDIR}/${MY_PN}-${PV}"
@@ -136,18 +133,6 @@ python_compile() {
 	distutils-r1_python_compile \
 		${python_makeopts_jobs} \
 		${NUMPY_FCONFIG}
-}
-
-python_test() {
-	distutils_install_for_testing --single-version-externally-managed \
-		--record "${TMPDIR}/record.txt" ${NUMPY_FCONFIG}
-
-	cd "${TMPDIR}" || die
-
-	"${EPYTHON}" -c "
-import numpy, sys
-r = numpy.test(label='full', verbose=3)
-sys.exit(0 if r else 1)" || die "Tests fail with ${EPYTHON}"
 }
 
 python_install() {
