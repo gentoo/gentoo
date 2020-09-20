@@ -681,11 +681,6 @@ dev-ada/gnatcoll-db
 # Bug #735902.
 dev-haskell/frown
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-16)
-# Obsolete package without reverse dependencies.
-# A metapackage. Removal in 30 days.
-dev-haskell/yesod-platform
-
 # Mart Raudsepp <leio@gentoo.org> (2020-08-15)
 # Development release, needs testing to ensure valac-0.50
 # works for existing packages
