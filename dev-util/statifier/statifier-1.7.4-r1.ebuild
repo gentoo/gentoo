@@ -5,7 +5,7 @@ EAPI=7
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 
-inherit multilib-build toolchain-funcs
+inherit flag-o-matic multilib-build toolchain-funcs
 
 DESCRIPTION="Statifier is a tool for creating portable, self-containing Linux executables"
 HOMEPAGE="http://statifier.sourceforge.net"
@@ -32,12 +32,15 @@ src_prepare() {
 
 	# Don't compile 32-bit on amd64 no-multilib profile
 	if ! use abi_x86_32; then
-		sed -i -e 's/ELF32 .*/ELF32 := no/g' configs/config.x86_64 || die
+		sed -e 's/ELF32 .*/ELF32 := no/g' -i configs/config.x86_64 || die
 	fi
 }
 
 src_configure() {
 	tc-export CC
+
+	# Debug flags are known to cause compile failure
+	filter-flags "-g*"
 
 	# Fix permissions, as configure is not marked executable
 	chmod +x configure || die
@@ -53,6 +56,5 @@ src_install() {
 	# Package complains with MAKEOPTS > -j1
 	emake -j1 DESTDIR="${ED}" install
 
-	# Install docs
 	einstalldocs
 }
