@@ -28,17 +28,20 @@ DEPEND="
 	x11-libs/libX11
 	x11-libs/libXi
 	gnome? (
-		gnome-base/gnome-control-center:2
 		media-libs/clutter
 		x11-libs/pango
 	)
 "
 BDEPEND="
 	vala? ( $(vala_depend) )
+	gnome? (
+		gnome-base/gnome-control-center:2
+	)
 	virtual/pkgconfig
 "
 RDEPEND="${DEPEND}
 	gnome? (
+		gnome-base/gnome-control-center:2
 		gnome-base/gnome-shell
 	)
 "
@@ -55,9 +58,11 @@ src_configure() {
 		-Dsystemd=true
 		-Dbash-completion=true
 		-Dzsh-completion=true
+		-Dx-keybinder=true
+		-Dcontrol-center-keybindings-dir=$(usex gnome '' \
+		'/usr/share/gnome-control-center/keybindings')
 		$(meson_use introspection introspection)
 		$(meson_use vala vapi)
-		$(meson_use gnome x-keybinder)
 		$(meson_use gnome gnome-shell)
 	)
 	meson_src_configure
