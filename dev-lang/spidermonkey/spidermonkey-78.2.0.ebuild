@@ -61,7 +61,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="${PYTHON_DEPS}
 	sys-devel/clang
-	>=virtual/rust-1.43.0
+	>=virtual/rust-1.41.0
 	virtual/pkgconfig"
 
 CDEPEND=">=dev-libs/icu-67.1:=
