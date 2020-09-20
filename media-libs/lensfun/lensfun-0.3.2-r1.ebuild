@@ -34,6 +34,10 @@ DEPEND="${RDEPEND}"
 
 DOCS=( README.md docs/mounts.txt ChangeLog )
 
+PATCHES=(
+	"${FILESDIR}/${P}-warnings.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}"/usr/share/doc/${PF}/html
