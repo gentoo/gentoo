@@ -49,7 +49,9 @@ dev-python/python-fchksum
 # Python 2 backports with no revdeps left.
 # Removal in 30 days.  Bug #743724.
 dev-python/backports-functools-lru-cache
+dev-python/configparser
 dev-python/enum34
+dev-python/functools32
 dev-python/futures
 dev-python/ipaddress
 dev-python/pathlib
