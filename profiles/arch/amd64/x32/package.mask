@@ -4,6 +4,7 @@
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2020-09-20)
 # Binary-only with no x32 support
 app-office/libreoffice-bin
+app-office/libreoffice-bin-debug
 
 # Ben Kohler <bkohler@gentoo.org> (2020-08-12)
 # Breaks several portage features, see bug 736904
