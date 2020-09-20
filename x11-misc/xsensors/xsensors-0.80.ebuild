@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools
+inherit autotools xdg
 
 DESCRIPTION="A hardware health information viewer, interface to lm-sensors"
 HOMEPAGE="https://github.com/Mystro256/xsensors/"
