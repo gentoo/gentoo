@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-20)
+# Python 2 backport with no revdeps left.
+# Removal in 30 days.  Bug #743724.
+dev-python/pathlib
+
+# Michał Górny <mgorny@gentoo.org> (2020-09-20)
 # Unmaintained NIH libraries for app-backup/genbackupdata that is masked
 # for removal.
 # Removal in 30 days.  Bug #743721.
