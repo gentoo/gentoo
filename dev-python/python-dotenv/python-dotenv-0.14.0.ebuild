@@ -27,3 +27,10 @@ DEPEND="test? (
 DOCS=( CHANGELOG.md README.md )
 
 distutils_enable_tests pytest
+
+python_test() {
+	# Tests call the "dotenv" command which needs to be in PATH
+	# https://bugs.gentoo.org/743784
+	distutils_install_for_testing
+	pytest -vv || die "Tests fail with ${EPYTHON}"
+}
