@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} pypy3 )
+PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 PYTHON_REQ_USE="ssl(+),threads(+)"
 
 inherit bash-completion-r1 distutils-r1 multiprocessing
@@ -49,7 +49,6 @@ DEPEND="
 		<dev-python/virtualenv-20[${PYTHON_USEDEP}]
 		dev-python/werkzeug[${PYTHON_USEDEP}]
 		dev-python/wheel[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' -2)
 	)
 "
 
