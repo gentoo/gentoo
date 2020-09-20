@@ -675,12 +675,6 @@ dev-ada/gps
 dev-ada/gnatcoll-bindings
 dev-ada/gnatcoll-db
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-16)
-# Obsolete package without reverse dependencies.
-# Does not compile against ghc-8.8. Removal in 30 days.
-# Bug #735902.
-dev-haskell/frown
-
 # Mart Raudsepp <leio@gentoo.org> (2020-08-15)
 # Development release, needs testing to ensure valac-0.50
 # works for existing packages
