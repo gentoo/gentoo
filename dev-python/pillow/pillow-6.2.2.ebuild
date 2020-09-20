@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6..9} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
-inherit distutils-r1 toolchain-funcs virtualx
+inherit distutils-r1 toolchain-funcs
 
 MY_PN=Pillow
 MY_P=${MY_PN}-${PV}
@@ -19,9 +19,8 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="HPND"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="examples imagequant jpeg jpeg2k lcms test tiff tk truetype webp zlib"
-REQUIRED_USE="test? ( jpeg tiff )"
-RESTRICT="!test? ( test )"
+IUSE="examples imagequant jpeg jpeg2k lcms tiff tk truetype webp zlib"
+RESTRICT="test"
 
 RDEPEND="
 	dev-python/olefile[${PYTHON_USEDEP}]
@@ -35,10 +34,6 @@ RDEPEND="
 	zlib? ( sys-libs/zlib:0= )"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? (
-		dev-python/pytest[${PYTHON_USEDEP}]
-		media-gfx/imagemagick[png]
-	)
 "
 
 distutils_enable_sphinx docs \
@@ -71,16 +66,6 @@ python_configure_all() {
 
 	# We have patched in this env var.
 	tc-export PKG_CONFIG
-}
-
-src_test() {
-	virtx distutils-r1_src_test
-}
-
-python_test() {
-	"${EPYTHON}" selftest.py --installed || die "selftest failed with ${EPYTHON}"
-	# no:relaxed: pytest-relaxed plugin make our tests fail. deactivate if installed
-	pytest -vv -p no:relaxed || die "Tests fail with ${EPYTHON}"
 }
 
 python_install() {
