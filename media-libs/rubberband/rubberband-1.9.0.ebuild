@@ -41,11 +41,10 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	econf WITH_PROGRAMS=$(usex programs) WITH_LADSPA=$(usex ladspa) WITH_VAMP=$(usex vamp)
-}
-
-multilib_src_compile() {
-	emake WITH_PROGRAMS=$(usex programs) WITH_LADSPA=$(usex ladspa) WITH_VAMP=$(usex vamp)
+	econf \
+		$(use_enable programs ) \
+		$(use_enable ladspa ) \
+		$(use_enable vamp )
 }
 
 multilib_src_install() {
