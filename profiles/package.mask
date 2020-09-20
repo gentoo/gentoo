@@ -33,6 +33,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-20)
+# Bundles vulnerable version of Python 2.7, also boost and other
+# libraries in undetermined versions.  Simultaneously blocks removal
+# of Python 2.7 packages.
+# Removal in 30 days.  Bug #735396.
+media-tv/plex-media-server
+
+# Michał Górny <mgorny@gentoo.org> (2020-09-20)
 # Obsolete Python 2 packages with no revdeps.
 # Removal in 30 days.  Bug #743727.
 dev-python/pyogg
