@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,8 @@ SLOT="0"
 KEYWORDS=""
 IUSE="debug static-libs"
 
-DEPEND="virtual/pkgconfig"
+RDEPEND="!www-servers/h2o"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
