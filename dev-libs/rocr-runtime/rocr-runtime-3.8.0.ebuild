@@ -24,7 +24,8 @@ PATCHES=(
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 
-COMMON_DEPEND="sys-process/numactl"
+COMMON_DEPEND="sys-process/numactl
+	dev-libs/elfutils:="
 RDEPEND="${COMMON_DEPEND}"
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/roct-thunk-interface-${PV}
