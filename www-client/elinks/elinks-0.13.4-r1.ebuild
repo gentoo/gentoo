@@ -25,7 +25,6 @@ RDEPEND="
 	gpm? ( >=sys-libs/ncurses-5.2:0= >=sys-libs/gpm-1.20.0-r5 )
 	guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated] )
 	idn? ( net-dns/libidn:= )
-	javascript? ( dev-lang/spidermonkey:17= )
 	lua? ( >=dev-lang/lua-5:0= )
 	perl? ( dev-lang/perl:= )
 	ruby? ( dev-lang/ruby:* dev-ruby/rubygems:* )
@@ -65,12 +64,12 @@ src_configure() {
 		--enable-256-colors
 		--enable-true-color
 		--enable-html-highlight
+		--without-spidermonkey
 		$(use_with gpm)
 		$(use_with brotli)
 		$(use_with bzip2 bzlib)
 		$(use_with guile)
 		$(use_with idn)
-		$(use_with javascript spidermonkey)
 		--with-luapkg=$(usev lua)
 		$(use_with perl)
 		$(use_with ruby)
