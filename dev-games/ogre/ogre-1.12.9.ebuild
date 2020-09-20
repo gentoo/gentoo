@@ -7,7 +7,7 @@ CMAKE_REMOVE_MODULES_LIST="FindFreetype FindDoxygen FindZLIB"
 inherit cmake
 
 IMGUI_PN="imgui"
-IMGUI_PV="1.76"
+IMGUI_PV="1.77"
 IMGUI_P="${IMGUI_PN}-${IMGUI_PV}"
 
 DESCRIPTION="Object-oriented Graphics Rendering Engine"
@@ -19,7 +19,7 @@ LICENSE="MIT public-domain"
 SLOT="0/1.12"
 KEYWORDS="~amd64 ~arm ~x86"
 
-IUSE="+cache cg debug deprecated doc double-precision egl examples +freeimage
+IUSE="assimp +cache cg debug deprecated doc double-precision egl examples +freeimage
 	json openexr +opengl pch profile resman-pedantic tools"
 
 # Note: gles2 USE flag taken out for now. It seems like the Ogre Devs now rely
@@ -50,6 +50,7 @@ RDEPEND="
 	x11-libs/libXaw
 	x11-libs/libXrandr
 	x11-libs/libXt
+	assimp? ( media-libs/assimp )
 	cg? ( media-gfx/nvidia-cg-toolkit )
 	egl? ( media-libs/mesa[egl] )
 	freeimage? ( media-libs/freeimage )
@@ -75,18 +76,17 @@ PATCHES=(
 	"${FILESDIR}"/${P}-media_path.patch
 	"${FILESDIR}"/${P}-resource_path.patch
 	"${FILESDIR}"/${P}-fix_Simple_demo.patch
-	"${FILESDIR}"/${P}-upgrade_imgui.patch
+	"${FILESDIR}"/${P}-gentoolize_imgui_inclusion.patch
+	"${FILESDIR}"/${P}-fix_config_window_height.patch
 	"${FILESDIR}"/${PN}-1.10.12-use_system_tinyxml.patch
 )
 
 src_unpack() {
 	unpack ${P}.tar.gz || die "Unpacking ${P}.zip failed"
 
-	# Ogre 1.12.8 includes imgui, but as a submodule, it is not included
+	# Ogre 1.12.9 includes imgui, but as a submodule, it is not included
 	# in the release. The build system tries to download it, that may
-	# a) fail and
-	# b) uses an old release 1.73
-	# So we are doing it ourselves.
+	# fail and so we are doing it ourselves.
 	cd "${S}" || die "Unpack incomplete"
 	unpack ${IMGUI_P}.tar.gz || die "Unpacking ${IMGUI_P}.zip failed"
 }
