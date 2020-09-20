@@ -8,4 +8,7 @@
     <upstream>
         <remote-id type="github">RadeonOpenCompute/llvm</remote-id>
     </upstream>
+    <use>
+        <flag name="runtime">Builds the compiler runtime libraries.</flag>
+    </use>
 </pkgmetadata>
