@@ -36,7 +36,10 @@ PATCHES=(
 )
 
 src_configure() {
-	econf $(use_enable debug) --with-x
+	econf \
+		$(use_enable debug) \
+		--with-x \
+		--disable-static
 }
 
 src_install() {
@@ -54,4 +57,6 @@ src_install() {
 
 	insinto /etc/lineak
 	doins lineakd.conf.example lineakd.conf.kde.example
+
+	find "${ED}" -name '*.la' -delete || die
 }
