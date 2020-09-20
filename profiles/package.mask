@@ -646,13 +646,6 @@ www-apps/trac
 # Removal in 30 days.  Bug #646748.
 games-action/openclonk
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-21)
-# Obsolete package without reverse dependencies.
-# Use dev-haskell/regex-tdfa.
-# Does not compile against ghc-8.8. Removal in 30 days.
-# Bug #736244.
-dev-haskell/regex-tdfa-rc
-
 # Kent Fredric <kentnl@gentoo.org> (2020-08-17)
 # No reverse dependencies, and gtk2 support is becoming
 # obsolete in Gentoo
