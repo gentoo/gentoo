@@ -12,7 +12,7 @@ SRC_URI="https://github.com/RadeonOpenCompute/llvm-project/archive/rocm-${PV}.ta
 LICENSE="UoI-NCSA rc BSD public-domain"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="debug"
+IUSE="debug runtime"
 
 RDEPEND="virtual/cblas
 	dev-libs/libxml2
@@ -37,9 +37,15 @@ src_prepare() {
 }
 
 src_configure() {
+	PROJECTS="clang;lld"
+
+	if usex runtime; then
+		PROJECTS+=";compiler-rt"
+	fi
+
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/roc"
-		-DLLVM_ENABLE_PROJECTS="clang;lld"
+		-DLLVM_ENABLE_PROJECTS="${PROJECTS}"
 		-DLLVM_TARGETS_TO_BUILD="AMDGPU;X86"
 		-DLLVM_BUILD_DOCS=NO
 		-DLLVM_ENABLE_OCAMLDOC=OFF
