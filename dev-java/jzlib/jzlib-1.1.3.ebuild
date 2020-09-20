@@ -1,7 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
+
 JAVA_PKG_IUSE="examples source test"
 
 inherit java-pkg-2 java-pkg-simple
@@ -14,6 +15,7 @@ LICENSE="BSD"
 SLOT="1.1.3"
 KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
+BDEPEND="app-arch/unzip"
 RDEPEND="
 	>=virtual/jre-1.5"
 DEPEND="
@@ -27,7 +29,8 @@ RESTRICT="test"
 S="${WORKDIR}/${P}"
 JAVA_SRC_DIR="src/main/java"
 
-java_prepare() {
+src_prepare() {
+	default
 	rm pom.xml || die
 }
 
