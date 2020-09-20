@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{6..9}} pypy3 )
+PYTHON_COMPAT=( python3_{6..9} pypy3 )
 DISTUTILS_USE_SETUPTOOLS=manual
 
 inherit distutils-r1
@@ -29,15 +29,11 @@ RDEPEND="
 	>=dev-python/setuptools-41[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
-		>=dev-python/contextlib2-0.6.0[${PYTHON_USEDEP}]
-		>=dev-python/pathlib2-2.3.3[${PYTHON_USEDEP}]
-	' -2)
-	$(python_gen_cond_dep '
 		>=dev-python/importlib_metadata-0.12[${PYTHON_USEDEP}]
-	' -2 python3_{6,7} pypy3)
+	' python3_{6,7} pypy3)
 	$(python_gen_cond_dep '
 		>=dev-python/importlib_resources-1.0[${PYTHON_USEDEP}]
-	' -2 python3_6 pypy3)"
+	' python3_6 pypy3)"
 # coverage is used somehow magically in virtualenv, maybe it actually
 # tests something useful
 BDEPEND="
@@ -79,10 +75,7 @@ src_configure() {
 }
 
 python_test() {
-	if ! python_is_python3; then
-		ewarn "Tests are skipped on py2, please test externally"
-		return
-	elif [[ ${EPYTHON} == pypy3 ]]; then
+	if [[ ${EPYTHON} == pypy3 ]]; then
 		# TODO: skip with better granularity
 		ewarn "Skipping broken tests on pypy3"
 		return
@@ -91,4 +84,10 @@ python_test() {
 	distutils_install_for_testing
 
 	pytest -vv || die "Tests fail with ${EPYTHON}"
+}
+
+pkg_postinst() {
+	elog "Please note that while virtualenv package no longer supports"
+	elog "Python 2.7, you can still create py2.7 virtualenvs via:"
+	elog "  $ virtualenv -p 2.7 ..."
 }

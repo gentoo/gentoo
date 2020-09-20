@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{6,7,8,9}} pypy3 )
+PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 DISTUTILS_USE_SETUPTOOLS=manual
 
 inherit distutils-r1
@@ -26,16 +26,14 @@ RESTRICT="!test? ( test )"
 RDEPEND=">=dev-python/setuptools-19.6.2[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}
 	test? (
-		$(python_gen_cond_dep '
-			>=dev-python/pip-19.3.1-r1[${PYTHON_USEDEP}]
-			dev-python/mock[${PYTHON_USEDEP}]
-			dev-python/pypiserver[${PYTHON_USEDEP}]
-			dev-python/pytest-localserver[${PYTHON_USEDEP}]
-			dev-python/pytest-timeout[${PYTHON_USEDEP}]
-			dev-python/pytest[${PYTHON_USEDEP}]
-			dev-python/six[${PYTHON_USEDEP}]
-			dev-python/wheel[${PYTHON_USEDEP}]
-		' -3)
+		>=dev-python/pip-19.3.1-r1[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pypiserver[${PYTHON_USEDEP}]
+		dev-python/pytest-localserver[${PYTHON_USEDEP}]
+		dev-python/pytest-timeout[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/six[${PYTHON_USEDEP}]
+		dev-python/wheel[${PYTHON_USEDEP}]
 	)"
 
 DOCS=( docs/index.rst docs/changes.rst )
@@ -55,13 +53,14 @@ distutils_enable_sphinx docs \
 	dev-python/towncrier
 
 python_test() {
-	if ! python_is_python3; then
-		ewarn "Tests are skipped on py2, please test externally"
-		return
-	fi
-
 	cp "${S}"/LICENSE.txt "${BUILD_DIR}"/lib || \
 		die "Could not copy LICENSE.txt with ${EPYTHON}"
 
 	pytest -vv tests || die "Tests fail with ${EPYTHON}"
+}
+
+pkg_postinst() {
+	elog "Please note that while virtualenv package no longer supports"
+	elog "Python 2.7, you can still create py2.7 virtualenvs via:"
+	elog "  $ virtualenv -p /usr/bin/python2.7 ..."
 }

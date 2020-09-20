@@ -16,22 +16,12 @@ SRC_URI="https://github.com/HypothesisWorks/${PN}/archive/${PN}-python-${PV}.tar
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 s390 sparc x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
+RESTRICT="test"
 
 RDEPEND="
 	>=dev-python/attrs-19.2.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' 'python2*' pypy)
 	>=dev-python/sortedcontainers-2.1.0[${PYTHON_USEDEP}]
-"
-BDEPEND="
-	test? (
-		${RDEPEND}
-		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/pexpect[${PYTHON_USEDEP}]
-		>=dev-python/pytest-4.3[${PYTHON_USEDEP}]
-		!!<dev-python/typing-3.7.4.1
-	)
 "
 
 S="${WORKDIR}/${PN}-${PN}-python-${PV}/${PN}-python"
@@ -44,12 +34,6 @@ src_prepare() {
 	rm tests/py3/test_lookup.py || die
 
 	distutils-r1_src_prepare
-}
-
-python_test() {
-	local pyver=$(python_is_python3 && echo 3 || echo 2)
-	pytest -vv tests/cover tests/pytest tests/py${pyver} ||
-		die "Tests fail with ${EPYTHON}"
 }
 
 pkg_postinst() {

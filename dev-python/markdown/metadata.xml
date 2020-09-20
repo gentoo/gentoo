@@ -6,9 +6,6 @@
     <name>Python</name>
   </maintainer>
   <stabilize-allarches/>
-  <use>
-    <flag name="pygments">Enable fancy pygments support</flag>
-  </use>
   <upstream>
     <remote-id type="pypi">Markdown</remote-id>
     <remote-id type="github">waylan/Python-Markdown</remote-id>

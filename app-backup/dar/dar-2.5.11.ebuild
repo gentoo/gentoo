@@ -32,12 +32,6 @@ DEPEND="${RDEPEND}
 		app-arch/xz-utils[static-libs]
 		sys-libs/libcap[static-libs]
 		sys-libs/zlib[static-libs]
-		gcrypt? ( dev-libs/libgcrypt:0=[static-libs] )
-		gpg? (
-			app-crypt/gpgme[static-libs]
-			dev-libs/libassuan[static-libs]
-			dev-libs/libgpg-error[static-libs]
-		)
 		lzo? ( dev-libs/lzo[static-libs] )
 		xattr? ( sys-apps/attr[static-libs] )
 	)
