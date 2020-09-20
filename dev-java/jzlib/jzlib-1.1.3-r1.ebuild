@@ -9,13 +9,12 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="JZlib is a re-implementation of zlib in pure Java"
 HOMEPAGE="http://www.jcraft.com/jzlib/"
-SRC_URI="https://github.com/ymnk/${PN}/archive/${PV}.zip -> ${P}.zip"
+SRC_URI="https://github.com/ymnk/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="1.1.3"
 KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
-BDEPEND="app-arch/unzip"
 RDEPEND="
 	>=virtual/jre-1.5"
 DEPEND="
