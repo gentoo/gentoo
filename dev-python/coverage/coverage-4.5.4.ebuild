@@ -14,32 +14,9 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
-
-RDEPEND=""
-BDEPEND="
-	>=dev-python/setuptools-18.4[${PYTHON_USEDEP}]
-	test? (
-		dev-python/PyContracts[${PYTHON_USEDEP}]
-		dev-python/flaky[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
-		>=dev-python/unittest-mixins-1.4[${PYTHON_USEDEP}]
-	)
-"
+RESTRICT="test"
 
 DISTUTILS_IN_SOURCE_BUILD=1
-
-PATCHES=(
-	"${FILESDIR}/coverage-4.5.4-tests.patch"
-)
-
-src_prepare() {
-	# avoid the dep on xdist, run tests verbosely
-	sed -i -e '/^addopts/s:-n3:-v:' setup.cfg || die
-	distutils-r1_src_prepare
-}
 
 python_compile() {
 	if [[ ${EPYTHON} == python2.7 ]]; then
@@ -48,25 +25,4 @@ python_compile() {
 	fi
 
 	distutils-r1_python_compile
-}
-
-python_test() {
-	distutils_install_for_testing
-	local bindir=${TEST_DIR}/scripts
-
-	pushd tests/eggsrc >/dev/null || die
-	distutils_install_for_testing
-	popd >/dev/null || die
-
-	"${EPYTHON}" igor.py zip_mods || die
-	PATH="${bindir}:${PATH}" "${EPYTHON}" igor.py test_with_tracer py || die
-
-	# No C extensions under pypy
-	if [[ ${EPYTHON} != pypy* ]]; then
-		cp -l -- "${TEST_DIR}"/lib/*/coverage/*.so coverage/ || die
-		PATH="${bindir}:${PATH}" "${EPYTHON}" igor.py test_with_tracer c || die
-	fi
-
-	# clean up leftover "egg1" directory
-	rm -rf build/lib/egg1 || die
 }
