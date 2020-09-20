@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} pypy3 )
+PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 
 inherit distutils-r1
 
@@ -25,8 +25,6 @@ BDEPEND="
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/pluggy[${PYTHON_USEDEP}]
 		dev-python/wheel[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/idna[${PYTHON_USEDEP}]' -2)
-		$(python_gen_cond_dep 'dev-python/unittest2[${PYTHON_USEDEP}]' -2)
 	)"
 
 distutils_enable_tests pytest
