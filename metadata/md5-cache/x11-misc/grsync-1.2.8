@@ -1,6 +1,6 @@
 BDEPEND=virtual/pkgconfig dev-util/intltool
-DEFINED_PHASES=configure
-DEPEND=>=x11-libs/gtk+-2.16:2
+DEFINED_PHASES=configure postinst postrm preinst prepare
+DEPEND=>=x11-libs/gtk+-2.16:2 dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=A gtk frontend to rsync
 EAPI=7
 HOMEPAGE=http://www.opbyte.it/grsync/
@@ -9,4 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=x11-libs/gtk+-2.16:2 net-misc/rsync
 SLOT=0
 SRC_URI=http://www.opbyte.it/release/grsync-1.2.8.tar.gz
-_md5_=fe4fc927a8baaa416e1aa674d0b3238e
+_eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=40db7fc4dc7aab99cbf1cafb7b5f4a9f

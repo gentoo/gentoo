@@ -1,5 +1,5 @@
-DEFINED_PHASES=configure install prepare
-DEPEND=>=media-libs/libpng-1.4:0= virtual/jpeg:0 fltk? ( x11-libs/fltk:1 )
+DEFINED_PHASES=configure install postinst postrm preinst prepare
+DEPEND=>=media-libs/libpng-1.4:0= virtual/jpeg:0 fltk? ( x11-libs/fltk:1 ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Convert HTML pages into a PDF document
 EAPI=6
 HOMEPAGE=http://www.msweet.org/projects.php?Z1
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=media-libs/libpng-1.4:0= virtual/jpeg:0 fltk? ( x11-libs/fltk:1 )
 SLOT=0
 SRC_URI=https://github.com/michaelrsweet/htmldoc/releases/download/v1.8.30/htmldoc-1.8.30-source.tar.gz
-_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=5a4c3cc43b493e2ef6e8deb675d6c2cf
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=899241f3ddea1680985a3a0f87db9e58
