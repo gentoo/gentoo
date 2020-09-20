@@ -12,7 +12,7 @@ SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
 LICENSE="LGPL-2.1 MIT"
 SLOT="0/20" # subslot = soname major version
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc o-flag-munging static-libs"
+IUSE="doc o-flag-munging"
 
 RDEPEND=">=dev-libs/libgpg-error-1.25[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
@@ -42,8 +42,8 @@ multilib_src_configure() {
 	local myeconfargs=(
 		CC_FOR_BUILD=$(tc-getBUILD_CC)
 		--enable-noexecstack
+		--disable-static
 		$(use_enable o-flag-munging O-flag-munging)
-		$(use_enable static-libs static)
 
 		# disabled due to various applications requiring privileges
 		# after libgcrypt drops them (bug #468616)
