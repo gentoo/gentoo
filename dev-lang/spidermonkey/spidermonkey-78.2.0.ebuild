@@ -9,7 +9,7 @@ WANT_AUTOCONF="2.1"
 
 LLVM_MAX_SLOT=10
 
-inherit autotools check-reqs llvm multiprocessing python-any-r1
+inherit autotools check-reqs llvm multiprocessing python-any-r1 toolchain-funcs
 
 MY_PN="mozjs"
 MY_PV="${PV/_pre*}" # Handle Gentoo pre-releases
@@ -55,7 +55,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc64 ~s390 ~x86"
 
 SLOT="78"
 LICENSE="MPL-2.0"
-IUSE="debug +jit test"
+IUSE="cpu_flags_arm_neon debug +jit test"
 
 RESTRICT="!test? ( test )"
 
@@ -155,25 +155,40 @@ src_configure() {
 	# ../python/mach/mach/mixin/process.py fails to detect SHELL
 	export SHELL="${EPREFIX}/bin/bash"
 
-	# forcing system-icu allows us to skip patching bundled ICU for PPC
+	local -a myeconfargs=(
+		--host="${CBUILD:-${CHOST}}"
+		--target="${CHOST}"
+		--disable-jemalloc
+		--disable-optimize
+		--disable-strip
+		--enable-readline
+		--enable-shared-js
+		--with-intl-api
+		--with-system-icu
+		--with-system-nspr
+		--with-system-zlib
+		--with-toolchain-prefix="${CHOST}-"
+		$(use_enable debug)
+		$(use_enable jit)
+		$(use_enable test tests)
+	)
+
+	# Modifications to better support ARM, bug 717344
+	if use cpu_flags_arm_neon ; then
+		myeconfargs+=( --with-fpu=neon )
+
+		if ! tc-is-clang ; then
+			# thumb options aren't supported when using clang, bug 666966
+			myeconfargs+=( --with-thumb=yes )
+			myeconfargs+=( --with-thumb-interwork=no )
+		fi
+	fi
+
+	# Forcing system-icu allows us to skip patching bundled ICU for PPC
 	# and other minor arches
 	ECONF_SOURCE="${S}" \
-	econf \
-		--host="${CBUILD:-${CHOST}}" \
-		--target="${CHOST}" \
-		--disable-jemalloc \
-		--disable-optimize \
-		--disable-strip \
-		--enable-readline \
-		--enable-shared-js \
-		--with-intl-api \
-		--with-system-icu \
-		--with-system-nspr \
-		--with-system-zlib \
-		--with-toolchain-prefix="${CHOST}-" \
-		$(use_enable debug) \
-		$(use_enable jit) \
-		$(use_enable test tests) \
+		econf \
+		${myeconfargs[@]} \
 		XARGS="${EPREFIX}/usr/bin/xargs"
 }
 
