@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6..9} pypy3 )
+PYTHON_COMPAT=( python3_{6..9} pypy3 )
 
 inherit distutils-r1
 
@@ -17,3 +17,11 @@ KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 x86"
 
 distutils_enable_sphinx docs
 distutils_enable_tests pytest
+
+src_prepare() {
+	# tests rely on specific exception messages and fail occasionally
+	# upstream suggested skipping them
+	rm test/test_python_errors.py || die
+
+	distutils-r1_src_prepare
+}
