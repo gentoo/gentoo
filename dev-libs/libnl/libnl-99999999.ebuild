@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_OPTIONAL=1
-inherit autotools distutils-r1 git-r3 libtool multilib multilib-minimal
+inherit autotools distutils-r1 git-r3 multilib-minimal
 
 DESCRIPTION="Libraries providing APIs to netlink protocol based Linux kernel interfaces"
 HOMEPAGE="http://www.infradead.org/~tgr/libnl/ https://github.com/thom311/libnl"
@@ -23,19 +23,16 @@ DEPEND="
 "
 BDEPEND="
 	${RDEPEND}
-	python? ( dev-lang/swig )
 	sys-devel/bison
 	sys-devel/flex
+	python? ( dev-lang/swig )
 "
-
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
-
 DOCS=(
 	ChangeLog
 )
-
 MULTILIB_WRAPPED_HEADERS=(
 	# we do not install CLI stuff for non-native
 	/usr/include/libnl3/netlink/cli/addr.h
@@ -51,6 +48,9 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libnl3/netlink/cli/tc.h
 	/usr/include/libnl3/netlink/cli/utils.h
 )
+PATCHES=(
+	"${FILESDIR}"/${PN}-99999999-2to3.patch
+)
 
 src_prepare() {
 	default
@@ -58,8 +58,9 @@ src_prepare() {
 	eautoreconf
 
 	if use python; then
-		cd "${S}"/python || die
+		pushd "${S}"/python > /dev/null || die
 		distutils-r1_src_prepare
+		popd > /dev/null || die
 	fi
 
 	# out-of-source build broken
@@ -72,15 +73,17 @@ multilib_src_configure() {
 		$(multilib_native_use_enable utils cli) \
 		$(use_enable debug) \
 		$(use_enable static-libs static) \
-		$(use_enable threads)
+		$(use_enable threads) \
+		--disable-doc
 }
 
 multilib_src_compile() {
 	default
 
 	if multilib_is_native_abi && use python; then
-		cd python || die
+		pushd python > /dev/null || die
 		distutils-r1_src_compile
+		popd > /dev/null || die
 	fi
 }
 
@@ -90,8 +93,15 @@ multilib_src_install() {
 	if multilib_is_native_abi && use python; then
 		# Unset DOCS= since distutils-r1.eclass interferes
 		local DOCS=()
-		cd python || die
+
+		pushd python > /dev/null || die
+
 		distutils-r1_src_install
+
+		# For no obvious reason this is not done automatically
+		python_foreach_impl python_optimize
+
+		popd > /dev/null || die
 	fi
 }
 
