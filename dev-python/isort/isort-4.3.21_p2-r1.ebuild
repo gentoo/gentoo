@@ -20,10 +20,6 @@ KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 sparc x86"
 
 RDEPEND="
 	dev-python/pipfile[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/backports-functools-lru-cache[${PYTHON_USEDEP}]
-		dev-python/futures[${PYTHON_USEDEP}]
-	' -2)
 "
 BDEPEND="${RDEPEND}"
 
@@ -32,3 +28,8 @@ PATCHES=(
 )
 
 distutils_enable_tests pytest
+
+python_test() {
+	distutils_install_for_testing
+	pytest -vv || die "Tests failed with ${EPYTHON}"
+}
