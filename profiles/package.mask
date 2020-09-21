@@ -669,7 +669,6 @@ app-portage/gpytage
 dev-db/mysql-workbench
 dev-util/bam
 media-gfx/displaycal
-media-plugins/gimp-resynthesizer
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
