@@ -26,6 +26,8 @@ BDEPEND="
 	test? ( dev-lang/go )
 "
 
+RESTRICT="!test? ( test )"
+
 src_prepare() {
 	eapply "${FILESDIR}/${P}-test-fixed.patch"
 	default
