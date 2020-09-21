@@ -116,7 +116,7 @@ src_configure() {
 		$(use_enable debug)
 	)
 
-	econf "${myconf[@]}"
+	CONFIG_SHELL="${EPREFIX}/bin/bash" econf "${myconf[@]}"
 }
 
 src_compile() {
