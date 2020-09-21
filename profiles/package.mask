@@ -635,7 +635,6 @@ sci-chemistry/openbabel-python
 sci-libs/minfx
 sci-mathematics/pymc3
 sci-physics/qutip
-sci-visualization/yt
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
