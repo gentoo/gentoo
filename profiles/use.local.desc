@@ -2914,7 +2914,6 @@ dev-util/idea-community:jbr11 - Install and use the Java 11 based version of Jet
 dev-util/idea-community:jbr8 - Install and use the Java 8 based version of JetBrains Runtime.
 dev-util/intel-ocl-sdk:android - Install android related files
 dev-util/intel-ocl-sdk:system-boost - Use system boost (dev-libs/boost) instead of bundled one
-dev-util/intel-ocl-sdk:system-clang - Use system clang (sys-devel/clang) instead of bundled one
 dev-util/intel-ocl-sdk:system-tbb - Use system Thread Building Blocks (dev-cpp/tbb) instead of bundled one
 dev-util/kdevelop:gdbui - Enable GUI for attaching GDB to a running process
 dev-util/kdevelop:hex - Enable hex editor plugin via app-editors/okteta

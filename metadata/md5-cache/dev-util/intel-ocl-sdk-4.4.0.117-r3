@@ -1,0 +1,15 @@
+BDEPEND=>=app-arch/rpm2targz-9.0.0.3g
+DEFINED_PHASES=install prepare unpack
+DESCRIPTION=Intel's implementation of the OpenCL standard
+EAPI=7
+HOMEPAGE=https://software.intel.com/en-us/articles/opencl-sdk/
+IUSE=android +system-tbb +system-boost
+KEYWORDS=-* amd64
+LICENSE=Intel-SDP
+PDEPEND=dev-libs/glib media-libs/fontconfig media-libs/freetype x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXext x11-libs/libXrender sys-libs/zlib
+RDEPEND=>=virtual/opencl-3 sys-process/numactl system-tbb? ( >=dev-cpp/tbb-4.2.20131118 ) system-boost? ( >=dev-libs/boost-1.52.0:= )
+RESTRICT=bindist mirror
+SLOT=0
+SRC_URI=https://registrationcenter.intel.com/irc_nas/4181/intel_sdk_for_ocl_applications_2014_ubuntu_4.4.0.117_x64.tgz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	estack	686eaab303305a908fd57b2fd7617800	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	rpm	760ff223c2c4299b68ea901e24c4cabd	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=8afc37bcb2066f612f0e39f1d547b532
