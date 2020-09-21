@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit check-reqs python-r1 toolchain-funcs
 
@@ -74,6 +74,11 @@ src_compile() {
 }
 
 src_install() {
-	python_foreach_impl run_in_build_dir default
-	find "${D}" -name '*.la' -delete || die
+	python_install() {
+		default
+		python_optimize
+	}
+	python_foreach_impl run_in_build_dir python_install
+
+	find "${ED}" -name '*.la' -delete || die
 }
