@@ -5,7 +5,6 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8,9} )
 
-
 inherit distutils-r1 virtualx
 
 DESCRIPTION="pytest plugin for PyQt4 or PyQt5 applications"
