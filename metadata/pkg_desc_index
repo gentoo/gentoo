@@ -8068,14 +8068,17 @@ dev-python/django-cacheops 4.2: ORM cache with automatic granular event-driven i
 dev-python/django-compressor 2.4: Compresses linked and inline JavaScript or CSS into single cached files.
 dev-python/django-cors-headers 3.2.1: Django App that adds CORS (Cross-Origin Resource Sharing) headers to responses
 dev-python/django-debug-toolbar 2.2: A configurable set of panels that display debug information
+dev-python/django-extensions 3.0.9: A collection of custom extensions for the Django Framework
 dev-python/django-filter 2.2.0: Django app allowing declarative dynamic QuerySet filtering from URL parameters
 dev-python/django-gravatar2 1.4.4: Essential Gravatar support for Django
+dev-python/django-haystack 3.0: Pluggable search for Django
 dev-python/django-js-asset 1.2.2: script tag with additional attributes for django.forms.Media
 dev-python/django-mptt 0.11.0: utilities for modified preorder tree traversal and trees of model instances
 dev-python/django-otp 1.0.0: Django framework adding two-factor authentication using one-time passwords
 dev-python/django-pglocks 1.0.4: PostgreSQL locking context managers and functions for Django
 dev-python/django-picklefield 3.0.1: Pickled object field for Django.
 dev-python/django-prometheus 2.0.0: Library to export django metrics for prometheus
+dev-python/django-q 1.3.3: A multiprocessing distributed task queue for Django
 dev-python/django-redis 4.10.0: Full featured redis cache backend for Django.
 dev-python/django-rq 2.3.2: An app that provides django integration for RQ (Redis Queue)
 dev-python/django-sortedm2m 3.0.2: Drop-in replacement for django's many to many field with sorted relations
