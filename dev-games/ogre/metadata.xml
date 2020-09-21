@@ -91,8 +91,9 @@ Exporters
         not be enabled unless an application really needs it.
     </flag>
     <flag name="freeimage">Support images via media-libs/freeimage</flag>
-    <flag name="gl3plus">Build OpenGL 3+ RenderSystem (EXPERIMENTAL)</flag>
+    <flag name="gl3plus" restrict="~dev-games/ogre-1.9.0">Build OpenGL 3+ RenderSystem (EXPERIMENTAL)</flag>
     <flag name="gles2" restrict="~dev-games/ogre-1.9.0">Build OpenGL ES 2.x RenderSystem</flag>
+    <flag name="gles2" restrict="~dev-games/ogre-1.12.9">Build OpenGL ES2/3 RenderSystem</flag>
     <flag name="gles3" restrict="~dev-games/ogre-1.9.0">Enable OpenGL ES 3.x Features</flag>
     <flag name="json">Use dev-libs/rapidjson (needed by Hlms JSON materials)</flag>
     <flag name="legacy-animations">

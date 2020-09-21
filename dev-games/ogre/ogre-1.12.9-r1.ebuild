@@ -20,23 +20,10 @@ SLOT="0/1.12"
 KEYWORDS="~amd64 ~arm ~x86"
 
 IUSE="assimp +cache cg debug deprecated doc double-precision egl examples +freeimage
-	json openexr +opengl pch profile resman-pedantic tools"
+	gles2 json openexr +opengl pch profile resman-pedantic tools"
 
-# Note: gles2 USE flag taken out for now. It seems like the Ogre Devs now rely
-#       on HLSL2GLSL (https://github.com/aras-p/hlsl2glslfork) unconditionally
-#       for GLES2. So unless we have an ebuild for that, gles2/3 are off the
-#       table.
-#       ~~sed 2020-04-26 (yamakuzure@gmx.net)
-#
-# Note: Without gles2 USE flag, the opengl USE flag is next to useless. But
-#       there are packages which enforce it, so it has to stay.
-#
-# USE="gles2"
-# REQUIRED_USE="
-# 	|| ( gles2 opengl )
-# "
 REQUIRED_USE="
-	examples? ( opengl )
+	|| ( gles2 opengl )
 "
 
 RESTRICT="test" #139905
@@ -54,6 +41,7 @@ RDEPEND="
 	cg? ( media-gfx/nvidia-cg-toolkit )
 	egl? ( media-libs/mesa[egl] )
 	freeimage? ( media-libs/freeimage )
+	gles2? ( media-libs/mesa[gles2] )
 	json? ( dev-libs/rapidjson )
 	openexr? ( media-libs/openexr:= )
 	opengl? (
@@ -62,7 +50,6 @@ RDEPEND="
 	)
 	tools? ( dev-libs/tinyxml[stl] )
 "
-# 	gles2? ( media-libs/mesa[gles2] )
 DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto
@@ -146,14 +133,14 @@ src_configure() {
 		-DOGRE_BUILD_PLUGIN_EXRCODEC=$(usex openexr)
 		-DOGRE_BUILD_RENDERSYSTEM_GL=$(usex opengl)
 		-DOGRE_BUILD_RENDERSYSTEM_GL3PLUS=$(usex opengl)
-		-DOGRE_BUILD_RENDERSYSTEM_GLES2=no
+		-DOGRE_BUILD_RENDERSYSTEM_GLES2=$(usex gles2)
 		-DOGRE_BUILD_SAMPLES=$(usex examples)
 		-DOGRE_BUILD_TESTS=no
 		-DOGRE_BUILD_TOOLS=$(usex tools)
 		-DOGRE_CONFIG_DOUBLE=$(usex double-precision)
 		-DOGRE_CONFIG_ENABLE_GL_STATE_CACHE_SUPPORT=$(usex cache)
 		-DOGRE_CONFIG_ENABLE_GLES2_CG_SUPPORT=no
-		-DOGRE_CONFIG_ENABLE_GLES3_SUPPORT=no
+		-DOGRE_CONFIG_ENABLE_GLES3_SUPPORT=$(usex gles2)
 		-DOGRE_CONFIG_THREADS=3
 		-DOGRE_CONFIG_THREAD_PROVIDER=std
 		-DOGRE_ENABLE_PRECOMPILED_HEADERS=$(usex pch)
@@ -164,9 +151,10 @@ src_configure() {
 		-DOGRE_PROFILING=$(usex profile)
 		-DOGRE_RESOURCEMANAGER_STRICT=$(usex resman-pedantic 1 2)
 	)
-#		-DOGRE_BUILD_RENDERSYSTEM_GLES2=$(usex gles2)
-#		-DOGRE_CONFIG_ENABLE_GLES2_CG_SUPPORT=$(usex gles2 $(usex cg) no)
-#		-DOGRE_CONFIG_ENABLE_GLES3_SUPPORT=$(usex gles2)
+
+	# CG support for GLES2 does not work at the moment, this option will cause the build to fail.
+	# Reported upstream here: https://github.com/OGRECave/ogre/issues/1712
+	#		-DOGRE_CONFIG_ENABLE_GLES2_CG_SUPPORT=$(usex gles2 $(usex cg) no)
 
 	cmake_src_configure
 }
@@ -203,6 +191,6 @@ src_install() {
 pkg_postinst() {
 	elog "If you experience crashes when starting /usr/bin/SampleBrowser,"
 	elog "remove the cache directory at:"
-	elog "  '~/.cache/OGRE Sample Browser'"
+	elog "  '\$XDG_CACHE_HOME/OGRE Sample Browser'"
 	elog "first, before filing a bug report."
 }
