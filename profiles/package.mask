@@ -571,12 +571,6 @@ dev-lang/spark
 # Bug #735996.
 dev-haskell/hastache
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-22)
-# Obsolete package without reverse dependencies.
-# Does not compile against ghc-8.8. Removal in 30 days.
-# Bug #735782.
-dev-haskell/asn1-data
-
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
 # Masked to allow py2.7 removal
