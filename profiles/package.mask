@@ -648,7 +648,6 @@ app-office/openoffice-bin
 # Python 2 only.  No reverse dependencies left.
 # Removal in 30 days.  Bug #735604.
 dev-python/faulthandler
-dev-python/fdsend
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
