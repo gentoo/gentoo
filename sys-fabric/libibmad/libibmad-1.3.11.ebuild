@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -19,3 +19,12 @@ DEPEND="
 	"
 RDEPEND="${DEPEND}"
 block_other_ofed_versions
+
+src_configure() {
+	econf --disable-static
+}
+
+src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
+}
