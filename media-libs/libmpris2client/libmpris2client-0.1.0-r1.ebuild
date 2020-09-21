@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,6 @@ SRC_URI="https://github.com/matiasdelellis/${PN}/releases/download/V${PV}/${P}.t
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 RDEPEND=">=dev-libs/glib-2
 	x11-libs/gtk+:2"
@@ -20,10 +19,14 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS NEWS README TODO )
 
+src_configure() {
+	econf --disable-static
+}
+
 src_install() {
 	default
 
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
