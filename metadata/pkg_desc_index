@@ -3779,7 +3779,6 @@ dev-haskell/argparser 0.3.4: Command line parsing framework for console applicat
 dev-haskell/arithmoi 0.11.0.1: Efficient basic number-theoretic functions. Primes, powers, integer logarithms
 dev-haskell/arrows 0.4.4.2: Arrow classes and transformers
 dev-haskell/ascii-progress 0.2.1.2: A simple progress bar for the console
-dev-haskell/asn1-data 0.7.1-r1 0.7.2: ASN1 data reader and writer in RAW, BER and DER forms
 dev-haskell/asn1-encoding 0.9.6: ASN1 data reader and writer in RAW, BER and DER forms
 dev-haskell/asn1-parse 0.9.4: Simple monadic parser for ASN1 stream types
 dev-haskell/asn1-types 0.3.3: ASN.1 types
@@ -3847,7 +3846,6 @@ dev-haskell/case-insensitive 1.2.1.0: Case insensitive string comparison
 dev-haskell/cassava 0.5.2.0: A CSV parsing and encoding library
 dev-haskell/cereal 0.5.8.1: A binary serialization library
 dev-haskell/cereal-vector 0.2.0.1: Serialize instances for Data.Vector types
-dev-haskell/certificate 1.3.9: Certificates and Key Reader/Writer
 dev-haskell/cgi 3001.5.0.0: A library for writing CGI programs
 dev-haskell/charset 0.3.7.1-r1: Fast unicode character sets based on complemented PATRICIA tries
 dev-haskell/chaselev-deque 0.5.0.5: Chase & Lev work-stealing lock-free double-ended queues (deques)
@@ -4047,7 +4045,6 @@ dev-haskell/haskell-src 1.0.3.0: Support for manipulating Haskell source code
 dev-haskell/haskell-src-exts 1.17.1 1.21.1: Manipulating Haskell source: abstract syntax, lexer, parser, and pretty-printer
 dev-haskell/haskell-src-exts-util 0.2.5: Helper functions for working with haskell-src-exts trees
 dev-haskell/haskell-src-meta 0.8.5-r1: Parse source to template-haskell abstract syntax
-dev-haskell/hastache 0.6.1: Haskell implementation of Mustache templates
 dev-haskell/haxml 1.25.5-r1: Utilities for manipulating XML documents
 dev-haskell/hcg-minus 0.15: haskell cg (minus)
 dev-haskell/hcodecs 0.5.2: A library to read, write and manipulate MIDI, WAVE, and SoundFont2 files
@@ -5100,7 +5097,6 @@ dev-lang/crystal 0.35.1: The Crystal Programming Language
 dev-lang/cxprolog 0.98.2: A WAM based Prolog system
 dev-lang/duktape 2.4.0 2.5.0-r1: Embeddable Javascript engine
 dev-lang/elixir 1.10.4: Elixir programming language
-dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
 dev-lang/erlang 22.3.2 22.3.4 23.0.1 23.0.2 23.0.3: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0 2.3.0.3 2.3.0.4 2.5.0.1 2.5.1.0 2.5.3.0: A non-interactive scripting language
@@ -5505,7 +5501,7 @@ dev-libs/libspnav 0.2.3 0.2.3-r1: libspnav is a replacement for the magellan lib
 dev-libs/libspt 1.1-r4: Library for handling root privilege
 dev-libs/libstrl 0.5.1-r1: Compat library for functions like strlcpy(), strlcat(), strnlen(), getline()
 dev-libs/libstroke 0.5.1-r1: A Stroke and Gesture recognition Library
-dev-libs/libstrophe 0.9.2 0.9.3: A simple, lightweight C library for writing XMPP clients
+dev-libs/libstrophe 0.9.2 0.9.3 0.10.0: A simple, lightweight C library for writing XMPP clients
 dev-libs/libtar 1.2.20-r4: C library for manipulating tar archives
 dev-libs/libtasn1 4.13 4.15.0-r1 4.16.0: ASN.1 library
 dev-libs/libtecla 1.6.3: Tecla command-line editing library
@@ -6055,7 +6051,7 @@ dev-perl/CPAN-DistnameInfo 0.120.0-r2: Extract distribution name and version fro
 dev-perl/CPAN-Meta-Check 0.14.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.16: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.350.0: Inject modules into a CPAN::Mini mirror
-dev-perl/CPAN-Perl-Releases 3.760.0 5.202.4.280 5.202.7.170 5.202.8.200: Mapping Perl releases on CPAN to the location of the tarballs
+dev-perl/CPAN-Perl-Releases 3.760.0 5.202.4.280 5.202.7.170 5.202.8.200 5.202.9.200: Mapping Perl releases on CPAN to the location of the tarballs
 dev-perl/CPAN-Uploader 0.103.14 0.103.15: upload things to the CPAN
 dev-perl/CQL-Parser 1.130.0-r1: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r2: Perl extension for minifying CSS
@@ -8706,7 +8702,6 @@ dev-python/pygobject 3.34.0 3.36.1: Python bindings for GObject Introspection
 dev-python/pygpgme 0.3-r2: A Python wrapper for the GPGME library
 dev-python/pygraphviz 1.5 1.6: Python wrapper for the Graphviz Agraph data structure
 dev-python/pygresql 5.1 5.2: A Python interface for the PostgreSQL database
-dev-python/pygtk 2.24.0-r5: GTK+2 bindings for Python
 dev-python/pyh2o 9999: Python API for sci-libs/libh2o
 dev-python/pyhamcrest 2.0.2: Hamcrest framework for matcher objects
 dev-python/pyilmbase 2.5.2-r1: IlmBase Python bindings
@@ -13296,7 +13291,6 @@ media-libs/sg 1.5: Socket Graphics tool for displaying polygons
 media-libs/sge 030809: Graphics extensions library for SDL
 media-libs/shaderc 2018.0 2019.0-r1 2020.1 2020.2: Collection of tools, libraries and tests for shader compilation
 media-libs/simage 1.8.0: Image and video texturing library
-media-libs/slv2 0.6.6-r3: A library to make the use of LV2 plugins as simple as possible for applications
 media-libs/smpeg 0.4.4-r10: SDL MPEG Player Library
 media-libs/smpeg2 2.0.0-r3: SDL MPEG Player Library
 media-libs/soxr 0.1.3-r1: SoX Resampler library
