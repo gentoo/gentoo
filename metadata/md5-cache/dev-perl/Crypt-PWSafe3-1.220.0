@@ -1,0 +1,15 @@
+BDEPEND=!minimal? ( >=dev-perl/Bytes-Random-Secure-0.90.0 ) >=dev-perl/Crypt-CBC-2.300.0 >=dev-perl/Crypt-ECB-1.450.0 >=dev-perl/Crypt-Random-1.250.0 >=dev-perl/Crypt-Twofish-2.140.0 >=dev-perl/Data-UUID-1.217.0 >=dev-perl/Digest-HMAC-1.0.0 >=virtual/perl-Digest-SHA-1.0.0 virtual/perl-File-Temp >=dev-perl/Shell-0.500.0 virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Test-Simple ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=Read and write Passwordsafe v3 files
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/Crypt-PWSafe3
+IUSE=minimal test examples
+KEYWORDS=~amd64 ~x86
+LICENSE=Artistic-2
+RDEPEND=!minimal? ( >=dev-perl/Bytes-Random-Secure-0.90.0 ) >=dev-perl/Crypt-CBC-2.300.0 >=dev-perl/Crypt-ECB-1.450.0 >=dev-perl/Crypt-Random-1.250.0 >=dev-perl/Crypt-Twofish-2.140.0 >=dev-perl/Data-UUID-1.217.0 >=dev-perl/Digest-HMAC-1.0.0 >=virtual/perl-Digest-SHA-1.0.0 virtual/perl-File-Temp >=dev-perl/Shell-0.500.0 dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/T/TL/TLINDEN/Crypt-PWSafe3-1.22.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=f63523e653c5c6048616c3696ea00c09
