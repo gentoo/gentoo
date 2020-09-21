@@ -601,7 +601,6 @@ media-libs/slv2
 # Please do not remove any packages from this list unless you actually
 # port them to Python 3.7 *and* 3.8 (3.9 would also be nice).
 # Removal in 30 days.  Tracker bug #695996.
-app-portage/pqlop
 dev-python/corner
 dev-python/dogpile-core
 dev-python/girder-client
