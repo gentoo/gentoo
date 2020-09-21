@@ -66,10 +66,6 @@ dev-python/twisted conch crypt http2 test
 # net-libs/libnetfilter_conntrack is not keyworded on mips
 net-dns/dnsmasq conntrack
 
-# Thomas Deutschmann <whissi@gentoo.org> (2016-08-23)
-# net-libs/openpgm is not keyworded on mips
-net-libs/zeromq pgm
-
 # Davide Pesavento <pesa@gentoo.org> (2015-10-26)
 # Tests require non-keyworded qt5
 dev-qt/qtchooser test
