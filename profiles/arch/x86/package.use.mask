@@ -235,7 +235,6 @@ www-client/chromium widevine
 # Ian Delaney <idella4@gentoo.org> (2015-12-02)
 # mask revdeps of xen that emply a hypervisor in arch x86
 app-emulation/libvirt xen
-app-emulation/ganeti xen
 
 # Brian Evans <grknight@gentoo.org (2015-09-14)
 # Unmask new USE flags for mariadb on supported arches
