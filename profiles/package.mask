@@ -604,7 +604,6 @@ media-libs/slv2
 dev-python/corner
 dev-python/dogpile-core
 dev-python/girder-client
-dev-python/ipynb
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
