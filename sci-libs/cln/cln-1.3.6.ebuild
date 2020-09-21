@@ -33,6 +33,10 @@ src_prepare() {
 		Makefile.in || die
 }
 
+src_configure() {
+	econf --disable-static
+}
+
 src_compile() {
 	default
 	if use doc; then
@@ -51,4 +55,6 @@ src_install() {
 		docinto examples
 		dodoc examples/*.cc
 	fi
+
+	find "${ED}" -name '*.la' -delete || die
 }

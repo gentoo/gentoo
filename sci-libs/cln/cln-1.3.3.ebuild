@@ -35,6 +35,10 @@ src_prepare() {
 	autotools-utils_src_prepare
 }
 
+src_configure() {
+	econf --disable-static
+}
+
 src_compile() {
 	autotools-utils_src_compile
 	if use doc; then
@@ -53,4 +57,6 @@ src_install() {
 		insinto /usr/share/doc/${PF}/examples
 		doins examples/*.cc
 	fi
+
+	find "${ED}" -name '*.la' -delete || die
 }
