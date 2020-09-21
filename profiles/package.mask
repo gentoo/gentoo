@@ -667,7 +667,6 @@ app-misc/workrave
 app-portage/etc-proposals
 app-portage/gpytage
 dev-db/mysql-workbench
-dev-util/bam
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
@@ -879,10 +878,6 @@ dev-libs/OpenSRF
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 dev-java/ant-eclipse-ecj:4.13
 dev-java/eclipse-ecj:4.13
-
-# Stefan Strogin <steils@gentoo.org> (2019-09-27)
-# Requires >=dev-lang/lua-5.3 which is masked
->=dev-util/bam-0.5.0
 
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # TeXmacs is the only remaining package in tree that requires guile-1.8, which
