@@ -602,7 +602,6 @@ media-libs/slv2
 # port them to Python 3.7 *and* 3.8 (3.9 would also be nice).
 # Removal in 30 days.  Tracker bug #695996.
 app-portage/pqlop
-app-text/landslide
 dev-python/corner
 dev-python/dogpile-core
 dev-python/girder-client
