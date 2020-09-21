@@ -114,6 +114,13 @@ DEPEND="${RDEPEND}
 	zeromq? ( net-libs/cppzmq )
 "
 
+PATCHES=(
+	"${FILESDIR}/gnuradio-3.8.2.0-lamda-gr-qtgui.patch"
+	"${FILESDIR}/gnuradio-3.8.2.0-lamda-gr-uhd.patch"
+	"${FILESDIR}/gnuradio-3.8.2.0-lamda-most-components.patch"
+	"${FILESDIR}/gnuradio-3.8.2.0-lamda-set-msg-handlers.patch"
+)
+
 src_prepare() {
 	xdg_environment_reset #534582
 
