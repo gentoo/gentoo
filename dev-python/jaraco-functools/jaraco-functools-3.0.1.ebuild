@@ -4,8 +4,6 @@
 EAPI=7
 
 PYTHON_COMPAT=( pypy3 python3_{6,7,8,9} )
-# [options.entry_points] is present in setup.cfg but it is empty
-DISTUTILS_USE_SETUPTOOLS=manual
 
 inherit distutils-r1
 
@@ -26,7 +24,6 @@ RDEPEND="
 	dev-python/more-itertools[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/toml[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
