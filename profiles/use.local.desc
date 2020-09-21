@@ -1460,6 +1460,7 @@ dev-games/mygui:samples - Install MyGUI demos (needs ogre USE flag)
 dev-games/mygui:tools - Build the tools for development
 dev-games/ode:double-precision - more precise calculations at the expense of speed
 dev-games/ode:gyroscopic - enable gyroscopic term (may cause instability)
+dev-games/ogre:assimp - Use media-libs/assimp to import assets from 3D files
 dev-games/ogre:boost - Enable boost support
 dev-games/ogre:cache - Enable GL state cache support
 dev-games/ogre:cg - NVIDIA toolkit plugin
@@ -1477,7 +1478,7 @@ dev-games/ogre:ois - Pull in Object-oriented Input System library dev-games/ois 
 dev-games/ogre:poco - When USE=threads, use poco for threading
 dev-games/ogre:resman-pedantic - Resource Manager PEDANTIC : require an explicit resource group. Case sensitive lookup. Some demos might not work with this setting. (default: case-insensitive + sensitive lookup in all groups)
 dev-games/ogre:tbb - When USE=threads, use tbb for threading
-dev-games/ogre:tools - Build and install MeshUpgrader, VRMLConverter and XMLConverter
+dev-games/ogre:tools - Build and install AssimpConverter (assimp USE flag is enabled), MeshUpgrader, VRMLConverter and XMLConverter
 dev-games/openscenegraph:asio - Enable support for dev-cpp/asio library
 dev-games/openscenegraph:dicom - Enable DICOM medical image file support via sci-libs/dcmtk
 dev-games/openscenegraph:egl - Enable EGL support
