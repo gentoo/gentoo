@@ -21,6 +21,7 @@ BDEPEND="
 	dev-python/pbr[${PYTHON_USEDEP}]
 	test? (
 		dev-python/contextlib2[${PYTHON_USEDEP}]
+		dev-python/fixtures[${PYTHON_USEDEP}]
 		dev-python/unittest2[${PYTHON_USEDEP}]
 	)"
 
