@@ -45,8 +45,7 @@
 		Support management of Xen virtualisation (<pkg>app-emulation/xen</pkg>)
 	</flag>
 	<flag name="virtualbox">
-		Support management of VirtualBox virtualisation (one of <pkg>app-emulation/virtualbox</pkg> or
-		<pkg>app-emulation/virtualbox-bin</pkg>)
+		Support management of VirtualBox virtualisation (<pkg>app-emulation/virtualbox</pkg>)
 	</flag>
 	<!-- Miscellaneous flags -->
 	<flag name="apparmor">Enable AppArmor support</flag>
