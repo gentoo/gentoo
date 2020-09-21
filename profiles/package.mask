@@ -650,15 +650,6 @@ app-office/openoffice-bin
 dev-python/faulthandler
 dev-python/fdsend
 
-# Michał Górny <mgorny@gentoo.org> (2020-08-22)
-# These packages (or package versions) still require Python 2.7.
-# They are either dead upstream, their Python 3 porting efforts are
-# not progressing or their maintainers are simply unresponsive.
-# Please do not remove any packages from this list unless you actually
-# port it to Python 3.
-# Removal in 30 days.  Tracker bug #694800.
-app-emulation/ganeti
-
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
 # Masked to allow py2.7 removal
@@ -1010,11 +1001,6 @@ sys-devel/automake:1.10
 # people may still find it useful. It is masked to prevent accidental
 # use. See bugs 603346 and 604998 for more information.
 app-admin/amazon-ec2-init
-
-# Robin H. Johnson <robbat2@gentoo.org> (2017-01-05)
-# Masking for testing
-=app-emulation/ganeti-2.16*
-=app-emulation/ganeti-2.17*
 
 # Michał Górny <mgorny@gentoo.org> (2016-11-17)
 # New version masked for testing. It supports source-window buffer size

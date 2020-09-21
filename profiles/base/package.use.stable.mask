@@ -197,10 +197,6 @@ net-libs/gnutls test-full
 # on a vulnerable libgcrypt version is in tree
 dev-db/mariadb sst-xtrabackup
 
-# Sergey Popov <pinkbyte@gentoo.org> (2016-02-15)
-# Mask monitoring capabilities of Ganeti on stable branches
-app-emulation/ganeti monitoring
-
 # Pacho Ramos <pacho@gentoo.org> (2015-05-15)
 # Version compatible with current ffmpeg is not ready to be stabilized
 # bug #539212

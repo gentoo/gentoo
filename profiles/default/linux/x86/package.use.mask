@@ -6,7 +6,6 @@
 # it no longer build thanks to python2 removals
 # for some reason profiles/arch/x86 is not catching everything
 app-backup/bareos cephfs rados rados-striper
-app-emulation/ganeti rbd
 app-emulation/libvirt rbd
 app-emulation/qemu rbd
 net-analyzer/rrdtool rados
