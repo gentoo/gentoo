@@ -621,7 +621,6 @@ dev-python/textfsm
 dev-python/whelk
 dev-util/molecule
 dev-util/molecule-core
-dev-util/molecule-plugins
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
