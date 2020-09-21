@@ -18,6 +18,7 @@ KEYWORDS="~amd64 ~ppc64"
 IUSE=""
 
 RDEPEND="
+	dev-java/java-config
 	|| (
 		dev-java/openjdk:8[javafx]
 		dev-java/openjdk:11[javafx]
