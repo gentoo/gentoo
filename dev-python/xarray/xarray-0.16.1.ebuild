@@ -4,7 +4,7 @@
 EAPI=7
 
 # pkg_resources use in code
-DISTUTILS_USE_SETUPTOOLS=manual
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
@@ -19,8 +19,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	>=dev-python/numpy-1.15[${PYTHON_USEDEP}]
-	>=dev-python/pandas-0.25[${PYTHON_USEDEP}]
-	>=dev-python/setuptools-41.2[${PYTHON_USEDEP}]"
+	>=dev-python/pandas-0.25[${PYTHON_USEDEP}]"
 # note: most of test dependencies are optional
 BDEPEND="
 	test? (
