@@ -4,8 +4,6 @@
 EAPI=7
 
 PYTHON_COMPAT=( pypy3 python3_{6..9} )
-# [options.entry_points] is present in setup.cfg but it is empty
-DISTUTILS_USE_SETUPTOOLS=manual
 
 inherit distutils-r1
 
@@ -19,7 +17,6 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv s390 sparc x8
 IUSE="test"
 
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/toml[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm-3.4.2[${PYTHON_USEDEP}]
 	test? ( dev-python/jaraco-itertools[${PYTHON_USEDEP}] )
