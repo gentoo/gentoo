@@ -608,7 +608,6 @@ dev-python/ipynb
 dev-python/jira
 dev-python/jplephem
 dev-python/natgrid
-dev-python/pcapy
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
