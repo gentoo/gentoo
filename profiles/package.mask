@@ -602,7 +602,6 @@ media-libs/slv2
 # port them to Python 3.7 *and* 3.8 (3.9 would also be nice).
 # Removal in 30 days.  Tracker bug #695996.
 dev-python/corner
-dev-python/dogpile-core
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
