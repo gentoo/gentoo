@@ -3,7 +3,7 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=manual
+DISTUTILS_USE_SETUPTOOLS=no
 # The selftests fail with pypy, and urlgrabber segfaults for me.
 PYTHON_COMPAT=( python3_{6,7,8,9} )
 
