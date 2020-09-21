@@ -639,11 +639,6 @@ sci-visualization/yt
 sys-apps/elivepatch-client
 sys-apps/elivepatch-server
 
-# Michał Górny <mgorny@gentoo.org> (2020-08-22)
-# Python 2 only.  You can use app-office/libreoffice{,-bin} instead.
-# Removal in 30 days.  Bug #715400.
-app-office/openoffice-bin
-
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
 # Masked to allow py2.7 removal
