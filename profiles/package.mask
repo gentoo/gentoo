@@ -676,7 +676,6 @@ net-libs/openpgm
 <net-mail/mailman-3
 net-wireless/chirp
 net-wireless/rfcat
-sci-geosciences/gdal-grass
 sci-geosciences/grass
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
