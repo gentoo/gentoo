@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Software defined radio receiver powered by GNU Radio and Qt"
 HOMEPAGE="https://gqrx.dk/"
@@ -11,7 +11,6 @@ HOMEPAGE="https://gqrx.dk/"
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/csete/gqrx.git"
 	inherit git-r3
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/csete/gqrx/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~x86"
@@ -30,6 +29,7 @@ DEPEND=">=net-wireless/gnuradio-3.7_rc:=[audio,analog,filter]
 	dev-qt/qtnetwork:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
+	sci-libs/volk
 	pulseaudio? ( media-sound/pulseaudio:= )
 	portaudio? ( media-libs/portaudio:= )"
 RDEPEND="${DEPEND}"
@@ -38,7 +38,10 @@ src_prepare() {
 	if use !pulseaudio; then
 		sed -i 's/AUDIO_BACKEND = pulse/#AUDIO_BACKEND = pulse/' gqrx.pro || die
 	fi
-	cmake-utils_src_prepare
+	if use portaudio; then
+		sed -i 's#find_package(Portaudio#find_package(PORTAUDIO#' CMakeLists.txt || die
+	fi
+	cmake_src_prepare
 	eapply_user
 }
 
@@ -54,7 +57,7 @@ src_configure() {
 	local mycmakeargs=(
 		"-DLINUX_AUDIO_BACKEND=${LINUX_AUDIO_BACKEND}"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
