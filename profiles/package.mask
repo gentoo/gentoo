@@ -564,13 +564,6 @@ dev-haskell/drift
 # Masked to allow py2.7 removal
 dev-lang/spark
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-22)
-# Obsolete package without reverse dependencies.
-# Use dev-haskell/mustache instead.
-# Does not compile against ghc-8.8. Removal in 30 days.
-# Bug #735996.
-dev-haskell/hastache
-
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
 # Masked to allow py2.7 removal
