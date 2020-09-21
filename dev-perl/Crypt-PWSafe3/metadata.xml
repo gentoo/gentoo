@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Crypt-PWSafe3</remote-id>
+    <remote-id type="cpan-module">Crypt::PWSafe3</remote-id>
+    <remote-id type="cpan-module">Crypt::PWSafe3::Field</remote-id>
+    <remote-id type="cpan-module">Crypt::PWSafe3::HeaderField</remote-id>
+    <remote-id type="cpan-module">Crypt::PWSafe3::PasswordPolicy</remote-id>
+    <remote-id type="cpan-module">Crypt::PWSafe3::Record</remote-id>
+    <remote-id type="cpan-module">Crypt::PWSafe3::SHA256</remote-id>
+  </upstream>
+</pkgmetadata>
