@@ -619,7 +619,6 @@ dev-python/python-ntpdshm
 dev-python/sphinxcontrib-napoleon
 dev-python/textfsm
 dev-python/whelk
-dev-util/molecule
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
