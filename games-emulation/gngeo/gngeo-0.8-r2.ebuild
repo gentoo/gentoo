@@ -1,7 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit autotools desktop flag-o-matic
 
 DESCRIPTION="A NeoGeo emulator"
@@ -12,20 +13,24 @@ SRC_URI="https://gngeo.googlecode.com/files/${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND="virtual/opengl
+DEPEND="
 	media-libs/libsdl[joystick,opengl,sound,video]
-	sys-libs/zlib[minizip]"
+	sys-libs/zlib[minizip]
+	virtual/opengl
+"
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-execstacks.patch
+	"${FILESDIR}"/${P}-zlib.patch
+	"${FILESDIR}"/${P}-concurrentMake.patch
+	"${FILESDIR}"/${P}-cflags.patch
+	"${FILESDIR}"/${P}-fcommon.patch
+)
 
 src_prepare() {
 	default
-	eapply \
-		"${FILESDIR}"/${P}-execstacks.patch \
-		"${FILESDIR}"/${P}-zlib.patch \
-		"${FILESDIR}"/${P}-concurrentMake.patch \
-		"${FILESDIR}"/${P}-cflags.patch
 	mv configure.in configure.ac || die
 	eautoreconf
 	append-cflags -std=gnu89 # build with gcc5 (bug #571056)

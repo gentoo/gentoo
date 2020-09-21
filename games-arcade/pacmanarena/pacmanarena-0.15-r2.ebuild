@@ -1,7 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit autotools desktop
 
 DESCRIPTION="3D Pacman clone with a few surprises. Rockets, bombs and explosions abound"
@@ -12,20 +13,23 @@ SRC_URI="mirror://sourceforge/${PN}/pacman-arena-${PV}.tar.bz2
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
-	virtual/opengl
-	virtual/glu
 	media-libs/libsdl[sound]
 	media-libs/sdl-mixer[vorbis]
 	media-libs/sdl-net
+	virtual/glu
+	virtual/opengl
 "
-DEPEND="${RDEPEND}
-	app-arch/unzip
-"
+DEPEND="${RDEPEND}"
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}/pacman"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-underlink.patch
+	"${FILESDIR}"/${P}-fnocommon.patch
+)
 
 src_unpack() {
 	unpack pacman-arena-${PV}.tar.bz2
@@ -41,8 +45,7 @@ src_prepare() {
 		Makefile.in || die
 	sed -i \
 		-e '/CFLAGS/s:-g::' \
-		configure || die
-	eapply "${FILESDIR}"/${P}-underlink.patch
+		configure.ac || die
 	eautoreconf
 }
 
