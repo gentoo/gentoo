@@ -15,6 +15,10 @@ get_expected_distutils_use_setuptools() {
 		then
 			# entry_points == we need rdepend
 			new_expected=rdepend
+		elif grep -q -E -s '^setuptools' "${egg}"/requires.txt
+		then
+			# explicit rdepend in package metadata
+			new_expected=rdepend
 		else
 			new_expected=bdepend
 		fi
