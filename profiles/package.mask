@@ -627,7 +627,6 @@ media-gfx/birdfont
 media-gfx/sigal
 media-libs/libxmlbird
 <net-analyzer/nagstamon-3.4.1-r1
-net-fs/s3ql
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
