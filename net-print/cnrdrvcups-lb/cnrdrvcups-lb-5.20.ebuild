@@ -5,16 +5,16 @@ EAPI=7
 
 inherit autotools desktop flag-o-matic toolchain-funcs
 
-MY_DOWNLOAD_ID="8/0100007658/14"
+CANON_REL="05"
 MY_PV="${PV//\./}"
 
 DESCRIPTION="Canon UFR II / LIPSLX Printer Driver for Linux "
 HOMEPAGE="https://www.canon-europe.com/support/products/imagerunner/"
-SRC_URI="http://gdlp01.c-wss.com/gds/${MY_DOWNLOAD_ID}/linux-UFRII-drv-v${MY_PV}-uken-19.tar.gz"
+SRC_URI="https://dev.gentoo.org/~juippis/distfiles/linux-UFRII-drv-v${MY_PV}-uken-${CANON_REL}.tar.gz"
 
 LICENSE="Canon-UFR-II GPL-2 MIT"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-libs/libxml2:2
@@ -27,7 +27,7 @@ RDEPEND="${DEPEND}
 	!net-print/cndrvcups-lb"
 
 HTML_DOCS=(
-	"${WORKDIR}"/linux-UFRII-drv-v${MY_PV}-uken/Documents/README-ufr2-5.1xUK.html
+	"${WORKDIR}"/linux-UFRII-drv-v${MY_PV}-uken/Documents/README-ufr2-5.2xUK.html
 	"${WORKDIR}"/linux-UFRII-drv-v${MY_PV}-uken/Documents/UsersGuide-ufr2-UK.html
 )
 

@@ -2,10 +2,10 @@ Allow CATKIN_PREFIX_PATH to work as CMAKE_PREFIX_PATH:
 When building with SYSROOT!=/, CMAKE_PREFIX_PATH is the same as with SYSROOT=/
 but we need to find packages in SYSROOT.
 
-Index: catkin_pkg-0.4.6/src/catkin_pkg/workspaces.py
+Index: catkin_pkg-0.4.22/src/catkin_pkg/workspaces.py
 ===================================================================
---- catkin_pkg-0.4.6.orig/src/catkin_pkg/workspaces.py
-+++ catkin_pkg-0.4.6/src/catkin_pkg/workspaces.py
+--- catkin_pkg-0.4.22.orig/src/catkin_pkg/workspaces.py
++++ catkin_pkg-0.4.22/src/catkin_pkg/workspaces.py
 @@ -41,16 +41,17 @@ CATKIN_WORKSPACE_MARKER_FILE = '.catkin_
  
  def get_spaces(paths=None):
@@ -20,10 +20,11 @@ Index: catkin_pkg-0.4.6/src/catkin_pkg/workspaces.py
      if paths is None:
 -        if 'CMAKE_PREFIX_PATH' not in os.environ:
 -            raise RuntimeError('Neither the environment variable CMAKE_PREFIX_PATH is set nor was a list of paths passed.')
+-        paths = os.environ['CMAKE_PREFIX_PATH'].split(os.pathsep) if os.environ['CMAKE_PREFIX_PATH'] else []
 +        if 'CMAKE_PREFIX_PATH' not in os.environ and 'CATKIN_PREFIX_PATH' not in os.environ:
 +            raise RuntimeError('None of the environment variables CMAKE_PREFIX_PATH or CATKIN_PREFIX_PATH are set nor was a list of paths passed.')
-         paths = os.environ['CMAKE_PREFIX_PATH'].split(os.pathsep) if os.environ['CMAKE_PREFIX_PATH'] else []
-+        paths += os.environ['CATKIN_PREFIX_PATH'].split(os.pathsep) if os.environ['CATKIN_PREFIX_PATH'] else []
++        paths = os.environ['CMAKE_PREFIX_PATH'].split(os.pathsep) if os.environ.get('CMAKE_PREFIX_PATH') else []
++        paths += os.environ['CATKIN_PREFIX_PATH'].split(os.pathsep) if os.environ.get('CATKIN_PREFIX_PATH') else []
  
      spaces = []
      for path in paths:
