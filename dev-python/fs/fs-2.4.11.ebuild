@@ -6,8 +6,7 @@ EAPI=7
 # Not yet ready for 3.9
 # https://github.com/PyFilesystem/pyfilesystem2/issues/421
 PYTHON_COMPAT=( python3_{6,7,8} )
-# pkg_resources is used
-DISTUTILS_USE_SETUPTOOLS=manual
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1 optfeature
 
@@ -32,10 +31,8 @@ RDEPEND="
 	>=dev-python/appdirs-1.4.3[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		dev-python/pyftpdlib[${PYTHON_USEDEP}]
