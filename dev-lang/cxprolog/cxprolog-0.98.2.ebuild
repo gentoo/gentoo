@@ -93,6 +93,12 @@ src_compile() {
 cxprolog_src_test() {
 	cd "${S}"/pl
 
+	if use java; then
+		local test_javadir="${S}"/pl/$(get_libdir)/cxprolog/java
+		mkdir -p "${test_javadir}" || die
+		ln -s "${S}"/dist/prolog.jar "${test_javadir}"/prolog.jar || die
+	fi
+
 	LD_LIBRARY_PATH="${S}" \
 		"${S}"/cxprolog_shared \
 		--boot "${S}"/cx_dev_boot.pl \
