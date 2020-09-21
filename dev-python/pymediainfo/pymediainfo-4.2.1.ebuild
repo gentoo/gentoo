@@ -5,8 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( pypy3 python3_{6,7,8,9} )
 PYTHON_REQ_USE="xml(+)"
-# The package uses pkg_resources to determine its version
-DISTUTILS_USE_SETUPTOOLS=manual
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -19,11 +18,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	media-libs/libmediainfo
 "
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 "
 
