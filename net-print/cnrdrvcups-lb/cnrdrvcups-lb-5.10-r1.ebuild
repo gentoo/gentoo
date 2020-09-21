@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools desktop flag-o-matic
+inherit autotools desktop flag-o-matic toolchain-funcs
 
 MY_DOWNLOAD_ID="8/0100007658/14"
 MY_PV="${PV//\./}"
@@ -100,6 +100,9 @@ src_prepare() {
 		die "Failed to modify cnsetuputil2.desktop file."
 
 	append-cflags -fcommon
+
+	# For some reason, @AR@ is defined everywhere else correctly, but not here.
+	sed -i -e "s/AR = ar/AR = $(tc-getAR)/g" ./cnrdrvcups-common-${PV}/buftool/Makefile.in || die
 }
 
 src_configure() {
