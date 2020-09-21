@@ -555,7 +555,7 @@ app-admin/integrit 4.1-r1: file integrity verification program
 app-admin/keepass 2.44 2.45 2.46: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassxc 2.5.4 2.6.0 2.6.1 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
-app-admin/kpcli 3.4: A command line interface to KeePass database files
+app-admin/kpcli 3.4 3.5: A command line interface to KeePass database files
 app-admin/kube-bench 0.2.3-r1: Kubernetes Bench for Security runs the CIS Kubernetes Benchmark
 app-admin/kubectx 0.9.0 0.9.1: Fast way to switch between clusters and namespaces in kubectl
 app-admin/lastpass-binary-component 4.19.0-r1: Binary component required by the LastPass Password Manager browser extension
@@ -2702,7 +2702,6 @@ app-portage/elt-patches 20170317 20170422 20170815 20170826.1: Collection of pat
 app-portage/emerge-delta-webrsync 3.7.5 3.7.6: emerge-webrsync using patches to minimize bandwidth
 app-portage/epkg 0.4-r1: A simple portage wrapper which works like other package managers
 app-portage/esearch 1.3-r3 9999: Replacement for 'emerge --search' with search-index
-app-portage/etc-proposals 1.4.3-r3: a set of tools for updating gentoo config files
 app-portage/euses 2.5.9 2.6.0: look up USE flag descriptions fast
 app-portage/fetchcommandwrapper 0.8.1-r1 0.8.2 0.8.3 0.8.4: Wrapper integrating aria2 into portage's FETCHCOMMAND
 app-portage/flaggie 0.2.1-r1 9999: A smart CLI mangler for package.* files
@@ -2717,7 +2716,6 @@ app-portage/gentoolkit 0.4.6 0.4.7 0.4.8 0.5.0 9999: Collection of administratio
 app-portage/gentoopm 0.3.1 0.3.2 9999: A common interface to Gentoo package managers
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
 app-portage/golop 0.0.1 0.0.1-r1 9999: A pure Go re-implementation of genlop
-app-portage/gpytage 0.3.0_rc1-r1: GTK Utility to help manage Portage's user config files
 app-portage/gpyutils 0.4.2 0.4.3 0.4.4 0.4.5 9999: Utitilies for maintaining Python packages
 app-portage/grs 0.7 9999: Suite to build Gentoo Reference Systems
 app-portage/gs-elpa 0.1.3-r1: g-sorcery backend for elisp packages
@@ -3541,7 +3539,6 @@ dev-db/mysql-connector-c 8.0.21-r2: C client library for MariaDB/MySQL
 dev-db/mysql-connector-c++ 1.1.12-r1 8.0.19 8.0.20 8.0.21: MySQL database connector for C++ (mimics JDBC 4.0 API)
 dev-db/mysql-init-scripts 2.3-r3: Gentoo MySQL init scripts.
 dev-db/mysql-super-smack 1.3-r4: Benchmarking, stress testing, and load generation tool for MySQL & PostGreSQL
-dev-db/mysql-workbench 8.0.19-r1 8.0.20 8.0.21: MySQL Workbench
 dev-db/mysqltuner 1.6.18 1.7.13 1.7.15 1.7.17: MySQLTuner is a high-performance MySQL tuning script
 dev-db/mytop 1.6-r4 1.9.1: mytop - a top clone for mysql
 dev-db/ocp 0.2 0.3 9999: Oracle copy tool
@@ -10596,7 +10593,6 @@ dev-util/astyle 3.0.1-r1 3.1-r2: Artistic Style is a re-indenter and reformatter
 dev-util/autodia 2.140.0-r2: Parses source code, XML or data and produces an XML document in Dia format
 dev-util/autoproject 0.20_p5: Start a programming project using autotools and a command line parser generator
 dev-util/babeltrace 1.2.3 1.2.4: A command-line tool and library to read and convert trace files
-dev-util/bam 0.4.0-r1 0.5.1: Fast and flexible Lua-based build system
 dev-util/bats 0.4.0 0.4.0_p20170219 1.2.1: Bats-core: Bash Automated Testing System
 dev-util/bazel 0.22.0 0.24.1 0.27.2 0.29.1 1.0.1 1.2.0 1.2.0-r1 1.2.1 2.0.0 3.2.0: Fast and correct automated build system
 dev-util/bbe 0.2.2-r1: Sed-like editor for binary files
@@ -12783,7 +12779,6 @@ media-gfx/darktable 2.6.2 3.0.2 3.2.1 9999: A virtual lighttable and darkroom fo
 media-gfx/dawn 3.90b-r1: 3D geometrical postscript renderer
 media-gfx/dcraw 9.28.0-r1: Command-line decoder for raw digital photos
 media-gfx/digikam 6.4.0-r1 7.1.0: Digital photo management application
-media-gfx/displaycal 3.8.8.1-r1 3.8.9.3-r1: Display calibration and characterization powered by Argyll CMS
 media-gfx/ditaa 0.10 0.11.0: A utility that converts ascii-art diagrams to bitmap diagrams
 media-gfx/dmtx-utils 0.7.5 0.7.6: Tools for reading and writing Data Matrix barcodes
 media-gfx/dpic 20200901: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
@@ -13392,7 +13387,6 @@ media-plugins/fil-plugins 0.3.0-r1: FIL-plugins ladspa plugin package. Filters b
 media-plugins/frei0r-plugins 1.6.1: A minimalistic plugin API for video effects
 media-plugins/g2reverb 0.7.1: Stereo reverb LADSPA plugin.
 media-plugins/gimp-lqr 0.7.2: Content-aware resizing for the GIMP
-media-plugins/gimp-resynthesizer 2.0.3-r3: Suite of GIMP plugins for texture synthesis
 media-plugins/gkrellmpc 0.1_beta10: A gkrellm plugin to control the MPD (Music Player Daemon)
 media-plugins/gmpc-alarm 11.8.16: This plugin can start/stop/pause your music at a preset time
 media-plugins/gmpc-albumview 11.8.16: This plugin shows your music collection in albums
@@ -14322,7 +14316,7 @@ net-analyzer/knocker 0.7.1-r3: Knocker is an easy to use security port scanner w
 net-analyzer/labrea 2.5-r2 2.5-r3: 'Sticky' Honeypot and IDS
 net-analyzer/lft 3.77 3.79 3.80 3.90 3.91-r1: Layer Four Traceroute (LFT) and WhoB
 net-analyzer/lilac 1.0.3: Web-based configuration tool written to configure Nagios
-net-analyzer/linkchecker 9.4.0-r1 10.0.0_pre20200729 9999: Check websites for broken links
+net-analyzer/linkchecker 10.0.0_pre20200729 9999: Check websites for broken links
 net-analyzer/macchanger 1.7.0 1.7.0-r1 1.7.0_p5_p4: Utility for viewing/manipulating the MAC address of network interfaces
 net-analyzer/masscan 1.0.4 1.0.5: Mass IP port scanner
 net-analyzer/mbrowse 0.4.3 0.4.3-r1: MBrowse is a graphical MIB browser
@@ -14406,7 +14400,6 @@ net-analyzer/ostinato 0.9_p20180522: Packet generator and analyzer
 net-analyzer/p0f 3.09_beta: A tool to perform passive OS detection based on SYN packets
 net-analyzer/packit 1.6.1 1.7 9999: network packet generator and capture tool
 net-analyzer/pathload 1.3.2-r1: Non-intrusive utility for estimation of available bandwidth of Internet paths
-net-analyzer/pbgpp 0.2.10: PCAP BGP Parser
 net-analyzer/pbnj 2.04 2.04-r1: A tool for running Nmap scans and diff'ing the results
 net-analyzer/pinger 0.32e 0.33: Cyclic multi ping utility for selected adresses using GTK/ncurses
 net-analyzer/pktstat 1.8.5-r1: A network monitoring tool with bandwidth tracking
@@ -14925,7 +14918,6 @@ net-libs/ntirpc 1.7.4 1.8.1 3.2 3.3: Transport Independent RPC library for nfs-g
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
 net-libs/openmq-cclient 4.4.1: C-Client Library for Open Source Java Message Service (JMS)
-net-libs/openpgm 5.1.118-r1 5.2.122: Open source implementation of the Pragmatic General Multicast specification
 net-libs/ortp 0.23.0-r1: Open Real-time Transport Protocol (RTP, RFC3550) stack
 net-libs/pacparser 1.3.7-r1: Library to parse proxy auto-config files
 net-libs/phodav 2.2: WebDav server implementation using libsoup
@@ -14993,7 +14985,7 @@ net-mail/mailbox-count 0.0.5: Count mailboxes in a SQL database
 net-mail/maildirtree 0.6-r1: A utility that prints trees of Courier-style Maildirs
 net-mail/mailfront 2.22: Mail server network protocol front-ends
 net-mail/mailgraph 1.14-r2: A mail statistics RRDtool frontend for Postfix
-net-mail/mailman 2.1.33 3.3.0 3.3.1: Mailman -- the GNU mailing list manager
+net-mail/mailman 3.3.0 3.3.1: Mailman -- the GNU mailing list manager
 net-mail/mailmanclient 3.3.1: Python bindings for the GNU Mailman 3 REST API
 net-mail/mailshears 0.0.4: Mangle your mail garden
 net-mail/mailutils 3.8 3.9 3.10: A useful collection of mail servers, clients, and filters
@@ -15586,7 +15578,6 @@ net-wireless/bluez-tools 0_p20161212: A set of tools to manage bluetooth devices
 net-wireless/broadcom-sta 6.30.223.271-r6: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
 net-wireless/bss 0.8-r1: Bluetooth stack smasher / fuzzer
 net-wireless/btcrack 9999: linux port of Thierry Zollers' BTCrack
-net-wireless/chirp 20200807 99999999: Free open-source tool for programming your amateur radio
 net-wireless/crackle 0.1 9999: Crackle cracks BLE Encryption (AKA Bluetooth Smart)
 net-wireless/crda 4.14: Central Regulatory Domain Agent for wireless networks
 net-wireless/cubicsdr 0.2.3-r2 9999: Cross-Platform and Open-Source Software Defined Radio Application
@@ -15646,7 +15637,6 @@ net-wireless/portapack-havoc 0.0_p20180612: Custom firmware for the HackRF SDR +
 net-wireless/python-wifi 0.5.0-r3: Provides r/w access to a wireless network card's capabilities
 net-wireless/qradiolink 9999: Multimode SDR experimentation GUI for GNUradio
 net-wireless/reaver 1.6.5: Brute force attack against Wifi Protected Setup
-net-wireless/rfcat 0.0.170508 0.0.190423 9999: The swiss army knife of subGHz
 net-wireless/rfkill 0.5-r2 0.5-r3: Tool to read and control rfkill status through /dev/rfkill
 net-wireless/rtl-sdr 0.5.3_p20170919 0.5.4 0.6.0-r1 0.6.0_p2020802 9999: turns your Realtek RTL2832 based DVB dongle into a SDR receiver
 net-wireless/rtl_433 0.1_p20190709-r1 20.02_p20200327 9999: Decode OOK modulated signals
@@ -16101,7 +16091,6 @@ sci-geosciences/bt747 2.1.7-r1 2.1.7-r2: MTK GPS Datalogger Device Control
 sci-geosciences/congen 1.6.2-r1: Calculate speeds, equilibrium arguments, node factors of tidal constituents
 sci-geosciences/dcw-gmt 1.1.4: Digital Chart of the World for GMT 5 or later
 sci-geosciences/foxtrotgps 1.2.0: Easy to use, fast and lightweight mapping application (fork of tangogps)
-sci-geosciences/gdal-grass 2.1.3: GDAL plugin to access GRASS data
 sci-geosciences/geocode-glib 3.26.2: GLib helper library for geocoding services
 sci-geosciences/gmt 4.5.18-r1 5.4.4: Powerful map generator
 sci-geosciences/gnome-maps 3.34.3 3.36.4: A map application for GNOME
@@ -16110,7 +16099,6 @@ sci-geosciences/gpscorrelate 1.6.1-r1: Tool for adjusting EXIF tags of your phot
 sci-geosciences/gpsd 3.17-r3 3.17-r4 3.18.1 3.19 3.20 3.21 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gpx-viewer 0.4.0-r1: Simple program to visualize a gpx file
 sci-geosciences/gpxsee 7.29 7.30 7.31: A viewer and analyzer that supports gpx, tcx, kml, fit, igc and nmea files
-sci-geosciences/grass 7.4.4 7.4.4-r3: A free GIS with raster and vector functionality, as well as 3D vizualization
 sci-geosciences/gshhg-gmt 2.3.7: Global Self-consistent, Hierarchical, High-resolution Geography Database
 sci-geosciences/gshhs 1.13: Global Self-consistent, Hierarchical, High-resolution Shoreline programs
 sci-geosciences/gshhs-data 2.2.0: Global Self-consistent, Hierarchical, High-resolution Shoreline programs data
@@ -17628,7 +17616,7 @@ sys-kernel/linux-docs 4.19.114 5.4.39: Developer documentation generated from th
 sys-kernel/linux-firmware 20200316 20200421 20200519 20200619 20200721 20200817 20200918 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.14-r1 4.19 5.4 5.4-r1 5.5 5.6 5.7 5.8: Linux system headers
 sys-kernel/mips-sources 4.4.230 4.9.230 4.14.188 4.18.20 4.19.133 4.20.17: Kernel.org sources for MIPS-based machines
-sys-kernel/pf-sources 5.6_p8 5.7_p5 5.7_p7 5.8_p1 5.8_p2 5.8_p3 5.8_p4: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
+sys-kernel/pf-sources 5.6_p8 5.7_p5 5.7_p7 5.8_p1 5.8_p2 5.8_p3 5.8_p4 5.8_p5: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p20190925 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.225_p198 4.4.231_p202 4.9.227_p146 4.9.232_p150 4.14.184_p84 4.14.192_p91 4.19.127_p54 4.19.135_p60 5.4.44_p27 5.4.54_p33 5.6.17_p10 5.6.19_p11: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
@@ -18094,7 +18082,6 @@ www-apps/rocketwiki-lqfb 0.4: Small parser which translates a wiki dialect to HT
 www-apps/roundup 2.0.0: Issue-tracking system with command-line, web, and e-mail interfaces
 www-apps/rt 4.4.4: RT is an enterprise-grade ticketing system
 www-apps/rutorrent 3.8-r1 9999: ruTorrent is a front-end for the popular Bittorrent client rTorrent
-www-apps/trac 1.2.5: Enhanced wiki and issue tracking system for software development projects
 www-apps/trickster 0.1.9: Dashboard Accelerator for Prometheus
 www-apps/tt-rss 20180105 20190523 99999999: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
 www-apps/webdavcgi 0.8.3 0.8.4 1.1.1: A Perl CGI for accessing and sharing files, or calendar/addressbooks via WebDAV.
