@@ -678,7 +678,6 @@ net-wireless/chirp
 net-wireless/rfcat
 sci-geosciences/gdal-grass
 sci-geosciences/grass
-www-apps/trac
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
