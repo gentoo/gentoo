@@ -39,7 +39,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_PF}"
 
 src_configure() {
-	econf $(use_enable python)
+	econf $(use_enable python) --disable-static
 	if use python; then
 		cd "${S}/wrappers/python" && distutils-r1_src_prepare
 	fi
@@ -66,6 +66,7 @@ src_install() {
 	if use python; then
 	   cd "${S}/wrappers/python" && distutils-r1_src_install
 	fi
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
