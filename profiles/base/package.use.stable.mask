@@ -121,10 +121,6 @@ net-analyzer/wireshark doc
 # Depends on lots of unstable dependencies
 dev-python/s3fs test
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-03-03)
-# sci-geosciences/grass is not stable
-sci-geosciences/qgis grass
-
 # Matthias Maier <tamiko@gentoo.org> (2018-03-18)
 # dev-libs/capstone hasn't been stabilized yet
 app-emulation/qemu capstone
