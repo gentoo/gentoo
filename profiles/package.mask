@@ -665,7 +665,6 @@ app-forensics/openscap
 app-misc/email2trac
 app-misc/workrave
 app-portage/etc-proposals
-app-portage/gpytage
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
