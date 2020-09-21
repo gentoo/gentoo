@@ -4,8 +4,6 @@
 EAPI=7
 
 PYTHON_COMPAT=( pypy3 python3_{6,7,8,9} )
-# entry_points is present in setup.py but it is empty
-DISTUTILS_USE_SETUPTOOLS=manual
 
 inherit distutils-r1
 
@@ -23,7 +21,5 @@ S="${WORKDIR}/python-semver-${PV}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
-
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
