@@ -659,7 +659,6 @@ dev-python/fdsend
 # Removal in 30 days.  Tracker bug #694800.
 app-emulation/ganeti
 app-emulation/ganeti-instance-debootstrap
-app-emulation/ganeti-instance-image
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
