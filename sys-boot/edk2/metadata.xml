@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sveyret@gmail.com</email>
+		<name>Stéphane Veyret</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use lang="en">
+		<flag name="brotli">Adds the brotli external module</flag>
+		<flag name="cmocka">Adds the cmocka external module</flag>
+		<flag name="oniguruma">Adds the oniguruma external module</flag>
+		<flag name="openssl">Adds the openssl external module</flag>
+		<flag name="softfloat">Adds the softfloat external module</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">tianocore/edk2</remote-id>
+	</upstream>
+</pkgmetadata>
