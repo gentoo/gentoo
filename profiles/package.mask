@@ -595,14 +595,6 @@ dev-python/pygtk
 # Removal in 30 days.  Bug #735380.
 media-libs/slv2
 
-# Michał Górny <mgorny@gentoo.org> (2020-08-22)
-# These packages still require Python 3.6.  They are either dead
-# upstream or their maintainers are simply unresponsive.
-# Please do not remove any packages from this list unless you actually
-# port them to Python 3.7 *and* 3.8 (3.9 would also be nice).
-# Removal in 30 days.  Tracker bug #695996.
-dev-python/corner
-
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
 # Masked to allow py2.7 removal
