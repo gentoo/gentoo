@@ -633,7 +633,6 @@ sci-chemistry/ParmEd
 sci-chemistry/freeon
 sci-chemistry/openbabel-python
 sci-libs/minfx
-sci-mathematics/pymc3
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
