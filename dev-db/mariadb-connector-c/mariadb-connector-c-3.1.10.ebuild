@@ -62,6 +62,7 @@ multilib_src_configure() {
 		-DWITH_EXTERNAL_ZLIB=ON
 		-DWITH_SSL:STRING=$(usex ssl $(usex gnutls GNUTLS OPENSSL) OFF)
 		-DWITH_CURL=$(usex curl ON OFF)
+		-DWITH_ICONV=ON
 		-DCLIENT_PLUGIN_AUTH_GSSAPI_CLIENT:STRING=$(usex kerberos DYNAMIC OFF)
 		-DMARIADB_UNIX_ADDR="${EPREFIX}/var/run/mysqld/mysqld.sock"
 		-DINSTALL_LIBDIR="$(get_libdir)"
