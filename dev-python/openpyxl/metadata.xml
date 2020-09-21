@@ -7,8 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">openpyxl</remote-id>
-		<remote-id type="bitbucket">openpyxl/openpyxl</remote-id>
-		<bugs-to>https://bitbucket.org/openpyxl/openpyxl/issues</bugs-to>
+		<bugs-to>https://foss.heptapod.net/openpyxl/openpyxl/issues</bugs-to>
 		<changelog>https://openpyxl.readthedocs.io/en/stable/changes.html</changelog>
 	</upstream>
 </pkgmetadata>
