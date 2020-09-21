@@ -7850,7 +7850,7 @@ dev-python/aiofiles 0.5.0: File support for asyncio
 dev-python/aiohttp 3.6.2: http client/server for asyncio
 dev-python/aiohttp-cors 0.7.0-r1: Implements CORS support for aiohttp asyncio-powered asynchronous HTTP server
 dev-python/aiohttp-jinja2 0.15.0: jinja2 template renderer for aiohttp.web
-dev-python/aiohttp-socks 0.5.3: SOCKS proxy connector for aiohttp
+dev-python/aiohttp-socks 0.5.3 0.5.4: SOCKS proxy connector for aiohttp
 dev-python/aiorpcX 0.18.4: Generic async RPC implementation, including JSON-RPC
 dev-python/aiosmtpd 1.2: asyncio based SMTP server
 dev-python/alabaster 0.7.12: A configurable sidebar-enabled Sphinx theme
@@ -8256,7 +8256,7 @@ dev-python/humanize 2.6.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1: A featureful, correct URL for Python
-dev-python/hypothesis 5.24.4 5.29.4 5.35.3: A library for property based testing
+dev-python/hypothesis 5.24.4 5.29.4 5.35.3 5.35.4: A library for property based testing
 dev-python/icalendar 4.0.6 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -8900,6 +8900,7 @@ dev-python/python-senlinclient 1.2.0: A client for the OpenStack Senlin API
 dev-python/python-sense-hat 2.2.0-r2: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-slugify 1.2.6 4.0.1: A Python Slugify application that handles Unicode
+dev-python/python-socks 1.1.0: SOCKS4, SOCKS5, HTTP tunneling functionality for Python
 dev-python/python-sshpubkeys 3.1.0: OpenSSH public key parser for Python
 dev-python/python-stdnum 1.14: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.7.0: Python bindings to the OpenStack Object Storage API
@@ -9227,7 +9228,7 @@ dev-python/virtualenvwrapper 4.8.4-r1: Set of extensions to Ian Bicking's virtua
 dev-python/visitor 0.1.3-r1: A tiny pythonic visitor implementation
 dev-python/vncdotool 0.13.0 1.0.0: Command line VNC client
 dev-python/vobject 0.9.6.1-r1 0.9.6.1-r2: Python package for parsing and generating vCard and vCalendar files
-dev-python/voluptuous 0.11.5 0.11.7: A Python data validation library.
+dev-python/voluptuous 0.11.5 0.11.7 0.12.0: A Python data validation library.
 dev-python/vpython 7.6.1-r2: VPython for Jupyter notebook
 dev-python/waitress 1.4.4: A pure-Python WSGI server
 dev-python/wand 0.6.3: Ctypes-based simple ImageMagick binding for Python
