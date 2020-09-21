@@ -5355,7 +5355,7 @@ dev-libs/libbson 0.98.0 1.1.2 1.1.10 1.3.5 1.3.6 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0
 dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.5.2_p1: Open-source library for reading, mastering and writing optical discs
 dev-libs/libbytesize 2.2 2.3 2.4: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
-dev-libs/libcbor 0.5.0 0.6.0-r1 0.6.1 0.7.0: CBOR protocol implementation for C and others
+dev-libs/libcbor 0.5.0 0.6.0-r1 0.6.1 0.7.0 0.8.0: CBOR protocol implementation for C and others
 dev-libs/libcdio 2.0.0-r1 2.1.0-r1: A library to encapsulate CD-ROM reading and control
 dev-libs/libcdio-paranoia 0.93_p1-r1 0.94_p2-r2 2.0.0-r1 2.0.1: an advanced CDDA reader with error correction
 dev-libs/libcec 4.0.2-r2 4.0.4-r1 4.0.7: Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor
@@ -17578,7 +17578,7 @@ sys-kernel/vanilla-kernel 5.4.60 5.4.61 5.4.62 5.4.63 5.4.64 5.4.65 5.4.66 5.7.1
 sys-kernel/vanilla-sources 4.4.236 4.9.236 4.14.198 4.19.146 5.4.66 5.7.18 5.8.10: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
-sys-kernel/zen-sources 5.4.15 5.8.7: The Zen Kernel Live Sources
+sys-kernel/zen-sources 5.4.15 5.8.10: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.33.1-r1 2.34-r2 2.35: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
 sys-libs/blocksruntime 0_pre20171027-r1: BlocksRuntime library needed for clang's -fblocks support
