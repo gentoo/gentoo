@@ -1,7 +1,0 @@
-# create second tree of USB devices according to
-# http://www.virtualbox.org/ticket/7759#comment:5
-
-SUBSYSTEM=="usb_device", ACTION!="remove", RUN="%UDEVDIR%/VBoxCreateUSBNode.sh $major $minor $attr{bDeviceClass}"
-SUBSYSTEM=="usb", ACTION!="remove", ENV{DEVTYPE}=="usb_device", RUN="%UDEVDIR%/VBoxCreateUSBNode.sh $major $minor $attr{bDeviceClass}"
-SUBSYSTEM=="usb_device", ACTION=="remove", RUN="%UDEVDIR%/VBoxCreateUSBNode.sh --remove $major $minor"
-SUBSYSTEM=="usb", ACTION=="remove", ENV{DEVTYPE}=="usb_device", RUN="%UDEVDIR%/VBoxCreateUSBNode.sh --remove $major $minor"
