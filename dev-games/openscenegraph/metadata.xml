@@ -24,4 +24,7 @@
 		<flag name="sdl2">Use <pkg>media-libs/libsdl2</pkg> additionally to <pkg>media-libs/libsdl</pkg></flag>
 		<flag name="xrandr">Enable support for the X xrandr extension</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">openscenegraph/OpenSceneGraph</remote-id>
+	</upstream>
 </pkgmetadata>
