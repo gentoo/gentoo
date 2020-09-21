@@ -17,6 +17,10 @@ IUSE=""
 DEPEND=">=sys-devel/autoconf-2.58"
 RDEPEND=""
 
+src_configure() {
+	econf --disable-static
+}
+
 src_compile() {
 	emake CC=$(tc-getCC)
 }
