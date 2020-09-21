@@ -146,7 +146,7 @@ src_configure() {
 		$(usex minimal --without-python --with-python="${EPYTHON}")
 	)
 
-	econf "${myconf[@]}"
+	CONFIG_SHELL="${EPREFIX}/bin/bash" econf "${myconf[@]}"
 }
 
 src_compile() {
