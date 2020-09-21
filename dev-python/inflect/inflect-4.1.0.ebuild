@@ -4,8 +4,6 @@
 EAPI=7
 
 PYTHON_COMPAT=( pypy3 python3_{6,7,8,9} )
-# [options.entry_points] is present in setup.cfg but it is empty
-DISTUTILS_USE_SETUPTOOLS=manual
 
 inherit distutils-r1
 
@@ -23,7 +21,6 @@ RDEPEND="
 	$(python_gen_cond_dep 'dev-python/importlib_metadata[${PYTHON_USEDEP}]' pypy3 python3_{6,7})
 "
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm-3.4.1[${PYTHON_USEDEP}]
 	dev-python/toml[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
