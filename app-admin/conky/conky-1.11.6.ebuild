@@ -69,7 +69,7 @@ REQUIRED_USE="
 	lua-rsvg? ( X  bundled-toluapp )
 "
 
-CONFIG_CHECK=~IPV6
+CONFIG_CHECK="~IPV6"
 
 DOCS=( README.md AUTHORS )
 
