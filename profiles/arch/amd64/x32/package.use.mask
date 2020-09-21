@@ -5,7 +5,6 @@
 # sys-cluster/ceph no longer supports x86, versions that support
 # it no longer build thanks to python2 removals
 app-backup/bareos ceph cephfs rados rados-striper
-app-emulation/ganeti rbd
 app-emulation/libvirt rbd
 app-emulation/qemu rbd
 net-analyzer/rrdtool rados
