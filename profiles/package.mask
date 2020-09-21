@@ -686,12 +686,6 @@ www-apps/trac
 # Removal in 30 days.  Bug #646748.
 games-action/openclonk
 
-# Kent Fredric <kentnl@gentoo.org> (2020-08-17)
-# No reverse dependencies, and gtk2 support is becoming
-# obsolete in Gentoo
-# Removal in 30 days
-dev-perl/gnome2-vfs-perl
-
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
 # Masked to allow py2.7 removal
