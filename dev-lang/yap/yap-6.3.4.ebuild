@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="R debug doc examples gmp java mpi mysql odbc postgres python raptor readline sqlite ssl static threads xml"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="dev-libs/libutf8proc
 	sys-libs/zlib
