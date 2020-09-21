@@ -623,7 +623,6 @@ dev-util/molecule
 dev-util/molecule-core
 dev-util/molecule-plugins
 dev-vcs/git-spindle
-media-gfx/birdfont
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
