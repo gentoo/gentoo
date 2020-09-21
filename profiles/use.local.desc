@@ -535,7 +535,7 @@ app-emulation/libvirt:qemu - Support management of QEMU virtualisation (app-emul
 app-emulation/libvirt:rbd - Enable rados block device support via sys-cluster/ceph
 app-emulation/libvirt:vepa - Virtual Ethernet Port Aggregator (VEPA) / 802.1Qbg support. Relies on macvtap support.
 app-emulation/libvirt:virt-network - Enable virtual networking (NAT) support for guests. Includes all the dependencies for NATed network mode. Effectively any network setup that relies on libvirt to setup and configure network interfaces on your host. This can include bridged and routed networks ONLY if you are allowing libvirt to create and manage the underlying devices for you. In some cases this requires enabling the 'netcf' USE flag (currently unavailable).
-app-emulation/libvirt:virtualbox - Support management of VirtualBox virtualisation (one of app-emulation/virtualbox or app-emulation/virtualbox-bin)
+app-emulation/libvirt:virtualbox - Support management of VirtualBox virtualisation (app-emulation/virtualbox)
 app-emulation/libvirt:wireshark-plugins - Build the net-analyzer/wireshark plugin for the Libvirt RPC protocol
 app-emulation/libvirt:xen - Support management of Xen virtualisation (app-emulation/xen)
 app-emulation/libvirt:zfs - Enable ZFS backend storage sys-fs/zfs
@@ -2511,9 +2511,6 @@ dev-python/icalendar:doc - Generate examples and other extra documentation
 dev-python/ipython:matplotlib - Add support for dev-python/matplotlib
 dev-python/ipython:nbconvert - Enable support for converting notebooks to various formats using app-text/pandoc
 dev-python/ipython:notebook - Install requirements for the web notebook based on www-servers/tornado
-dev-python/jira:jirashell - Include dependencies for jirashell (ipython, oauthlib)
-dev-python/jira:kerberos - Support Kerberos authentication
-dev-python/jira:oauth - Support OAuth authentication
 dev-python/kombu:mongodb - Enables MongoDB backend
 dev-python/kombu:msgpack - Enables MessagePack (de)serializer for Python
 dev-python/kombu:redis - Enables Redis backend
@@ -2935,7 +2932,6 @@ dev-util/mingw64-runtime:idl - Install idl files.
 dev-util/mingw64-runtime:libraries - Build extra libraries: mangle, pseh, winpthreads.
 dev-util/mingw64-runtime:secure-api - Expose secure API (*_s function) by default.
 dev-util/mingw64-runtime:tools - Build extra tools: gendef, genidl.
-dev-util/molecule:plugins - Add plugins provided by dev-util/molecule-plugins
 dev-util/nemiver:memoryview - Enable the optional hexadecimal memory inspection with app-editors/ghex
 dev-util/nvidia-cuda-sdk:cuda - Build CUDA binaries
 dev-util/nvidia-cuda-sdk:opencl - Build OpenCL binaries
@@ -4126,7 +4122,6 @@ media-gfx/pstoedit:pptx - Enable support for generating PowerPoint pptx files
 media-gfx/qimgv:opencv - Enable HQ scaling via media-libs/opencv
 media-gfx/qimgv:video - Add support for gif/webm playback via libmpv
 media-gfx/shotwell:opencv - Enable face detection via media-libs/opencv
-media-gfx/sigal:s3 - Enables support for the Amazon S3 service.
 media-gfx/ufraw:contrast - enable contrast setting option
 media-gfx/ufraw:fits - Enable support for the FITS image format through sci-libs/cfitsio
 media-gfx/ufraw:timezone - enable DST correction for file timestamps
@@ -5683,7 +5678,6 @@ net-fs/s3fs:gnutls - Enable net-libs/gnutls crypto backend
 net-fs/s3fs:nettle - Use dev-libs/nettle network functions with GnuTLS.
 net-fs/s3fs:nss - Enable dev-libs/nss crypto backend
 net-fs/s3fs:openssl - Enable dev-libs/openssl crypto backend
-net-fs/s3ql:contrib - Install additional contributed scripts
 net-fs/samba:addc - Enable Active Directory Domain Controller support
 net-fs/samba:addns - Enable AD DNS integration
 net-fs/samba:ads - Enable Active Directory support
@@ -7686,7 +7680,6 @@ sci-visualization/paraview:nvcontrol - Add NVCONTROL support for OpenGL options
 sci-visualization/paraview:offscreen - Offscreen rendering through OSMesa
 sci-visualization/paraview:plugins - Build and install additional plugins
 sci-visualization/paraview:webengine - Add support for dev-qt/qtwebengine
-sci-visualization/yt:hub - Connect to the yt hub with dev-python/girder-client
 sec-policy/selinux-base:open_perms - Enable the open permissions for file object classes (SELinux policy capability).
 sec-policy/selinux-base:peer_perms - Enable the labeled networking peer permissions (SELinux policy capability).
 sec-policy/selinux-base:ubac - Enable User Based Access Control (UBAC) in the SELinux policy
