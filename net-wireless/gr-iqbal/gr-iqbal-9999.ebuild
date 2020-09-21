@@ -37,5 +37,5 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
-	python_optimize "${ED}/$(python_get_sitedir)"
+	python_optimize
 }
