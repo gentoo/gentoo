@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/taf2/curb"
 
 LICENSE="Ruby"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 DEPEND+=" net-misc/curl[ssl]"
