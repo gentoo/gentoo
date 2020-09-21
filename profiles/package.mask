@@ -613,7 +613,6 @@ dev-python/promises
 dev-python/pyds9
 dev-python/pyflann
 dev-python/pygsl
-dev-python/python-ntpdshm
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
