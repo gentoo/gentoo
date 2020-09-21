@@ -4,8 +4,6 @@
 EAPI=7
 
 PYTHON_COMPAT=( pypy3 python3_{6,7,8,9} )
-# entry_points is present in setup.py but it is empty
-DISTUTILS_USE_SETUPTOOLS=manual
 
 inherit distutils-r1
 
@@ -22,7 +20,6 @@ RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/namespace-jaraco-2[${PYTHON_USEDEP}]"
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
