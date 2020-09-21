@@ -22,6 +22,7 @@ RDEPEND=">=dev-python/sqlalchemy-1.1.0[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND}
+		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}] )"
 # For test phase
@@ -35,7 +36,7 @@ python_prepare_all() {
 }
 
 python_test() {
-	${EPYTHON} run_tests.py || die "Testing failed with ${EPYTHON}"
+	${EPYTHON} -m pytest --dropfirst || die "Testing failed with ${EPYTHON}"
 }
 
 python_install_all() {
