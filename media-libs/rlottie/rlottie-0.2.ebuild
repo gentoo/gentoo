@@ -11,7 +11,7 @@ SRC_URI="https://github.com/Samsung/rlottie/archive/v${PV}.tar.gz -> ${P}-1.tar.
 
 LICENSE="BSD FTL JSON MIT"
 SLOT="0/0.2"
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="debug examples test"
 
 RESTRICT="!test? ( test )"
