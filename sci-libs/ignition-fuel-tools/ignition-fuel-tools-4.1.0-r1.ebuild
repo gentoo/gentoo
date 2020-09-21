@@ -26,6 +26,7 @@ RDEPEND="
 	dev-libs/libzip:=
 	sci-libs/ignition-common:3=
 	net-libs/ignition-msgs:5=
+		dev-libs/protobuf:=
 "
 #igncurl
 DEPEND="${RDEPEND}
