@@ -3,8 +3,6 @@
 
 EAPI=7
 
-# upstream uses bad template
-DISTUTILS_USE_SETUPTOOLS=manual
 PYTHON_COMPAT=( python3_{6..9} pypy3 )
 
 inherit distutils-r1
@@ -23,7 +21,6 @@ RDEPEND="
 	>=dev-python/namespace-jaraco-2[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 "
 
