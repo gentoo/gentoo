@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=dev-haskell/mtl:=[profile?] >=dev-haskell/pandoc-types-1.20:=[profile?] <dev-haskell/pandoc-types-1.23:=[profile?] >=dev-haskell/parsec-3:=[profile?] >=dev-haskell/syb-0.4.2:=[profile?] <dev-haskell/syb-0.8:=[profile?] dev-haskell/text:=[profile?] dev-haskell/xml:=[profile?] >=dev-lang/ghc-7.10.1:= executable? ( dev-haskell/aeson:=[profile?] network-uri? ( >=dev-haskell/network-uri-2.6:=[profile?] ) !network-uri? ( <dev-haskell/network-2.6:=[profile?] ) ) >=dev-haskell/cabal-1.22.2.0 test? ( dev-haskell/temporary dev-haskell/utf8-string ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=Conversion between formats used to represent mathematics
+EAPI=7
+HOMEPAGE=https://github.com/jgm/texmath
+IUSE=executable +network-uri doc hscolour profile test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-haskell/mtl:=[profile?] >=dev-haskell/pandoc-types-1.20:=[profile?] <dev-haskell/pandoc-types-1.23:=[profile?] >=dev-haskell/parsec-3:=[profile?] >=dev-haskell/syb-0.4.2:=[profile?] <dev-haskell/syb-0.8:=[profile?] dev-haskell/text:=[profile?] dev-haskell/xml:=[profile?] >=dev-lang/ghc-7.10.1:= executable? ( dev-haskell/aeson:=[profile?] network-uri? ( >=dev-haskell/network-uri-2.6:=[profile?] ) !network-uri? ( <dev-haskell/network-2.6:=[profile?] ) )
+RESTRICT=!test? ( test )
+SLOT=0/0.12.0.3
+SRC_URI=https://hackage.haskell.org/package/texmath-0.12.0.3/texmath-0.12.0.3.tar.gz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	ghc-package	e3a4a688accbd5f1226e46b379cc1c3e	haskell-cabal	433b5153bec6b0ffe21c7be2210e8396	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=55872f0c742831d49e73e190f9b33b86
