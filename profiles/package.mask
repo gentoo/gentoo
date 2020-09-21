@@ -660,7 +660,6 @@ dev-python/fdsend
 app-emulation/ganeti
 app-emulation/ganeti-instance-debootstrap
 app-emulation/ganeti-instance-image
-app-emulation/virtualbox-bin
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
