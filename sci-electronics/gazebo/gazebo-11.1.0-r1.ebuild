@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils flag-o-matic
+inherit cmake flag-o-matic
 
 DESCRIPTION="A 3D multiple robot simulator with dynamics"
 HOMEPAGE="http://gazebosim.org/"
@@ -31,7 +31,7 @@ RDEPEND="
 	sci-libs/libccd
 	>=media-video/ffmpeg-2.6:0=
 	sci-libs/gts
-	>=sci-physics/bullet-2.82
+	>=sci-physics/bullet-2.82:=
 	>=dev-libs/sdformat-9.1:=
 	dev-qt/qtwidgets:5
 	dev-qt/qtcore:5
@@ -81,5 +81,5 @@ src_configure() {
 		"-DENABLE_SCREEN_TESTS=FALSE"
 		"-DUSE_EXTERNAL_TINYXML2=TRUE"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
