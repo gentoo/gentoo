@@ -603,7 +603,6 @@ media-libs/slv2
 # Removal in 30 days.  Tracker bug #695996.
 dev-python/corner
 dev-python/dogpile-core
-dev-python/girder-client
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
