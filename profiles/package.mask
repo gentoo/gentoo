@@ -663,7 +663,6 @@ app-emulation/ganeti-instance-image
 app-emulation/virtualbox-bin
 app-forensics/openscap
 app-misc/email2trac
-app-misc/workrave
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
