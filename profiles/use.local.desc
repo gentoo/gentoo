@@ -501,17 +501,6 @@ app-emulation/fuse:backend-sdl - Use SDL rendering backend
 app-emulation/fuse:backend-svga - Use svgalib rendering backend
 app-emulation/fuse:memlimit - Add compile-time memory usage limiting
 app-emulation/fuse-utils:gcrypt - Use dev-libs/libgcrypt for low-level crypto of some features, including logfiles.
-app-emulation/ganeti:drbd - Enable DRBD support
-app-emulation/ganeti:experimental - Enable experimental patches. Warning! This will break RPC within major versions if the patches applied differ!
-app-emulation/ganeti:haskell-daemons - Build haskell daemons instead of python
-app-emulation/ganeti:htools - Enable htools support
-app-emulation/ganeti:kvm - Enable KVM support
-app-emulation/ganeti:lxc - Enable Linux Countainers support
-app-emulation/ganeti:monitoring - Enable the ganeti monitoring daemon
-app-emulation/ganeti:multiple-users - Enable support for running VMs as different users
-app-emulation/ganeti:rbd - Enable rados block device support via sys-cluster/ceph
-app-emulation/ganeti:restricted-commands - Enable restricted commands in the node daemon
-app-emulation/ganeti:xen - Enable Xen support
 app-emulation/hyperd:libvirt - Enable support for KVM via libvirt
 app-emulation/hyperd:xen - Enable support for the Xen Hypervisor
 app-emulation/libcacard:passthrough - Enable smartcard passthrough support via sys-apps/pcsc-lite
@@ -643,12 +632,6 @@ app-emulation/virtualbox:pax_kernel - Apply patch needed for pax enabled kernels
 app-emulation/virtualbox:sdk - Enable building of SDK
 app-emulation/virtualbox:udev - Controls installation of special USB udev rules.
 app-emulation/virtualbox:vboxwebsrv - Build and install the VirtualBox webservice
-app-emulation/virtualbox-bin:additions - Install Guest System Tools ISO
-app-emulation/virtualbox-bin:chm - Install kchmviewer binary to enable online help (in MS CHM format)
-app-emulation/virtualbox-bin:headless - Install without any graphic frontend
-app-emulation/virtualbox-bin:rdesktop-vrdp - Install the rdesktop client integration
-app-emulation/virtualbox-bin:sdk - Enable building of SDK
-app-emulation/virtualbox-bin:vboxwebsrv - Install the VirtualBox webservice
 app-emulation/virtualbox-modules:pax_kernel - Apply patch needed for pax enabled kernels
 app-emulation/vkd3d:spirv-tools - Enable SPIRV shader debugging support using dev-util/spirv-tools
 app-emulation/wine-staging:capi - Enable ISDN support via CAPI
@@ -732,11 +715,6 @@ app-forensics/honggfuzz:clang - Enable clang support (pull sys-libs/blocksruntim
 app-forensics/libewf:bfio - Enables libbfio for chaining file in file handling
 app-forensics/libewf:fuse - Enable fuse support for ewfmount
 app-forensics/libewf:uuid - Enable UUID support in the ewftools
-app-forensics/openscap:gconf - Build the gconf independant probes
-app-forensics/openscap:nss - Prefer NSS over libgcrypt as the crypto engine
-app-forensics/openscap:rpm - Compiles the RPM probes
-app-forensics/openscap:sce - Enables Script Check Engine (SCE) support
-app-forensics/openscap:sql - Build the sql independant probes
 app-forensics/quickfuzz:archs - support archive formats
 app-forensics/quickfuzz:codes - support cource code formats
 app-forensics/quickfuzz:docs - support document formats
@@ -1009,8 +987,6 @@ app-misc/vifm:extended-keys - Support for extended keys (arrows, home etc)
 app-misc/vifm:gtk - Use gtk+ to determine mimetypes
 app-misc/vifm:vim - Install the vifm vim plugin and vim-compatible documentation
 app-misc/worker:avfs - Enable support for sys-fs/avfs
-app-misc/workrave:mate - Add support for MATE panel
-app-misc/workrave:xfce - Add support for XFCE panel
 app-misc/zygrib:maps - Installs additional GSHHS maps for high resolution coastline data and cities
 app-mobilephone/adb-sync:channel - Install the adb-channel script
 app-mobilephone/gammu:bluetooth - Enables bluetooth support
