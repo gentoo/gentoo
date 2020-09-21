@@ -680,12 +680,6 @@ sci-geosciences/gdal-grass
 sci-geosciences/grass
 www-apps/trac
 
-# Michał Górny <mgorny@gentoo.org> (2020-08-22)
-# Effectively unmaintained.  Optionally uses Python 2.  I could remove
-# that but it fails to build anyway.
-# Removal in 30 days.  Bug #646748.
-games-action/openclonk
-
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
 # Masked to allow py2.7 removal
