@@ -127,8 +127,6 @@ app-backup/genbackupdata
 app-i18n/pology
 app-text/pdf2djvu
 app-text/sgmltools-lite
-dev-util/gyp
-app-i18n/mozc
 sci-libs/magma
 
 # Hans de Graaff <graaff@gentoo.org> (2020-09-19)
