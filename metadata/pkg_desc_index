@@ -6247,6 +6247,7 @@ dev-perl/Data-ObjectDriver 0.150.0 0.190.0 0.200.0: Simple, transparent data int
 dev-perl/Data-OptList 0.110.0: parse and validate simple name/value option pairs
 dev-perl/Data-Page 2.20.0-r1 2.30.0: help when paging through sets of results
 dev-perl/Data-Page-Pageset 1.20.0-r1: change long page list to be shorter and well navigate
+dev-perl/Data-Password 1.120.0: Extension for assessing password quality
 dev-perl/Data-Perl 0.2.9-r1 0.2.11: Base classes wrapping fundamental Perl data types
 dev-perl/Data-Printer 0.400.0: Colored pretty-print of Perl data structures and objects
 dev-perl/Data-Random 0.120.0 0.130.0: A module used to generate random data
@@ -10727,7 +10728,7 @@ dev-util/gtk-builder-convert 2.24.32: Converts Glade files to GtkBuilder XML for
 dev-util/gtk-doc 1.32-r1 1.32-r2: GTK+ Documentation Generator
 dev-util/gtk-doc-am 1.32: Automake files from gtk-doc
 dev-util/gtk-update-icon-cache 3.24.16 3.24.20 3.24.21: GTK update icon cache
-dev-util/gyp 20170904022846-r1 99999999999999: GYP (Generate Your Projects) meta-build system
+dev-util/gyp 20200512145953 99999999999999: GYP (Generate Your Projects) meta-build system
 dev-util/heaptrack 9999: Fast heap memory profiler
 dev-util/herdtools7 7.47 7.51: The Herd toolsuite to deal with .cat memory models
 dev-util/hfstospell 0.5.1: HFST spell checker library and command line tool
