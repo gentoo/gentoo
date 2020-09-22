@@ -9,4 +9,4 @@ LICENSE=BSD
 RDEPEND=!www-servers/h2o
 SLOT=0
 SRC_URI=https://github.com/mgorny/libh2o/releases/download/libh2o-0.2.1/libh2o-0.2.1.tar.bz2
-_md5_=a830614e54cb89ae6f1733c51a78d9dc
+_md5_=b84673784d518fe76364a4cb26d6d7c8
