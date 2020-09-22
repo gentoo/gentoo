@@ -33,6 +33,19 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-22)
+# sci-libs/plotmm is unmaintained.  It had its last release in 2005.
+# It has no chances of porting to GTK+3.  It suffers from major compiler
+# warnings.
+#
+# sci-physics/h2o-gtk is its only reverse dependency.  It crashes
+# on start, possibly because of problems with plotmm.  I have
+# no intention of rewriting it right now.
+#
+# Removal in 30 days.  Bug #744073.
+sci-libs/plotmm
+sci-physics/h2o-gtk
+
+# Michał Górny <mgorny@gentoo.org> (2020-09-22)
 # No activity since Jan 2019.  Broken with current versions of werkzeug.
 # Removal in 30 days.  Bug #743259.
 dev-python/flask-themes
