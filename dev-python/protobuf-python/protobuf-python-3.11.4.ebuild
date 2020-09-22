@@ -3,7 +3,7 @@
 
 EAPI="7"
 PYTHON_COMPAT=(python{2_7,3_6,3_7,3_8})
-DISTUTILS_USE_SETUPTOOLS="manual"
+DISTUTILS_USE_SETUPTOOLS="rdepend"
 
 inherit distutils-r1
 
@@ -30,7 +30,6 @@ IUSE=""
 BDEPEND="${PYTHON_DEPS}
 	~dev-libs/protobuf-${PV}
 	dev-python/namespace-google[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${PYTHON_DEPS}
 	~dev-libs/protobuf-${PV}"
@@ -42,6 +41,14 @@ S="${WORKDIR}/protobuf-${PV}/python"
 if [[ "${PV}" == "9999" ]]; then
 	EGIT_CHECKOUT_DIR="${WORKDIR}/protobuf-${PV}"
 fi
+
+python_prepare_all() {
+	pushd "${WORKDIR}/protobuf-${PV}" > /dev/null || die
+	eapply_user
+	popd > /dev/null || die
+
+	distutils-r1_python_prepare_all
+}
 
 python_configure_all() {
 	mydistutilsargs=(--cpp_implementation)
