@@ -26,7 +26,12 @@ src_prepare() {
 	eautoreconf
 }
 
+src_configure() {
+	econf --disable-static
+}
+
 src_install() {
 	emake DESTDIR="${D}" install
 	dodoc CREDITS ChangeLog README
+	find "${ED}" -name '*.la' -delete || die
 }
