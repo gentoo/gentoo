@@ -1,8 +1,8 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools eutils fcaps flag-o-matic
+EAPI=7
+inherit autotools eutils fcaps
 
 DESCRIPTION="My TraceRoute, an Excellent network diagnostic tool"
 HOMEPAGE="https://www.bitwizard.nl/mtr/"
@@ -22,10 +22,10 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	sys-devel/autoconf
+"
+BDEPEND="
 	virtual/pkgconfig
 "
-
 DOCS=( AUTHORS NEWS SECURITY TODO )
 FILECAPS=( cap_net_raw usr/sbin/mtr-packet )
 PATCHES=(
@@ -41,9 +41,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# In the source's configure script -lresolv is commented out. Apparently it
-	# is needed for 64bit macos still.
-	[[ ${CHOST} == *-darwin* ]] && append-libs -lresolv
 	econf \
 		$(use_enable ipv6) \
 		$(use_with gtk) \
