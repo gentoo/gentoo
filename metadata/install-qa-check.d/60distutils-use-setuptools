@@ -5,6 +5,8 @@
 # Maintainer: Python project <python@gentoo.org>
 
 get_expected_distutils_use_setuptools() {
+	[[ ${integrity_error_new} ]] && return 1
+
 	local sitedir=${D}$(python_get_sitedir)
 	local egg new_expected
 	while read -d $'\0' -r egg; do
@@ -24,7 +26,8 @@ get_expected_distutils_use_setuptools() {
 		fi
 
 		if [[ ${expected} && ${new_expected} != ${expected} ]]; then
-			expected=integrity-error
+			integrity_error_new=${new_expected}
+			return 1
 		else
 			expected=${new_expected}
 		fi
@@ -39,13 +42,13 @@ distutils_use_setuptools_check() {
 	# pyproject.toml is verified by using it
 	[[ ${DISTUTILS_USE_SETUPTOOLS} == pyproject.toml ]] && return
 
-	local expected
+	local expected integrity_error_new
 	_distutils-r1_run_foreach_impl get_expected_distutils_use_setuptools
 
-	if [[ ${expected} == integrity-error ]]; then
+	if [[ ${integrity_error_new} ]]; then
 		eerror "DISTUTILS_USE_SETUPTOOLS integrity error!"
 		eerror "expected was:    ${expected}"
-		eerror "new_expected is: ${new_expected}"
+		eerror "new_expected is: ${integrity_error_new}"
 		eerror "Please report a bug about this and CC python@"
 	elif [[ ${DISTUTILS_USE_SETUPTOOLS} != ${expected} ]]; then
 			local def=
