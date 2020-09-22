@@ -43,7 +43,7 @@ DEPEND="
 
 # https://github.com/docker/docker/blob/master/project/PACKAGERS.md#runtime-dependencies
 # https://github.com/docker/docker/blob/master/project/PACKAGERS.md#optional-dependencies
-# also look at components/*/vendor.conf for exact version if ~pinned dependencies
+# also look at components/*/vendor.conf for exact version of ~pinned dependencies
 RDEPEND="
 	${DEPEND}
 	!sys-apps/systemd[-cgroup-hybrid(+)]
