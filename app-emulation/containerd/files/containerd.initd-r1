@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Containerd container runtime"
+command="/usr/bin/containerd"
+command_args="${command_args:-}"
+command_background="true"
+pidfile="${pidfile:-/run/${RC_SVCNAME}.pid}"
+start_stop_daemon_args="--stderr /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log --stdout /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
+
+start_pre() {
+	checkpath -m 0750 -d "/var/log/${RC_SVCNAME}"
+
+	ulimit -n 1048576
+
+	# Having non-zero limits causes performance problems due to accounting overhead
+	# in the kernel. We recommend using cgroups to do container-local accounting.
+	ulimit -u unlimited
+
+	return 0
+}
+
+start_post() {
+	ewaitfile 5 /run/containerd/containerd.sock
+}
