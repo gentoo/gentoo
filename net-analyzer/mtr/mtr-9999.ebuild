@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools bash-completion-r1 fcaps flag-o-matic git-r3
+inherit autotools bash-completion-r1 fcaps git-r3
 
 DESCRIPTION="My TraceRoute, an Excellent network diagnostic tool"
 HOMEPAGE="https://www.bitwizard.nl/mtr/"
@@ -41,9 +41,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# In the source's configure script -lresolv is commented out. Apparently it
-	# is still needed for 64-bit MacOS.
-	[[ ${CHOST} == *-darwin* ]] && append-libs -lresolv
 	econf \
 		$(use_enable ipv6) \
 		$(use_with gtk) \
