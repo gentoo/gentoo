@@ -1,10 +1,11 @@
 DEFINED_PHASES=install
-DEPEND=>=app-admin/eselect-1.2.4
+DEPEND=!dev-lang/lua:0 >=app-admin/eselect-1.2.4
 DESCRIPTION=Lua eselect module
-EAPI=5
+EAPI=7
 HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
-RDEPEND=>=app-admin/eselect-1.2.4
+PDEPEND=|| ( dev-lang/lua:5.1 dev-lang/lua:5.2 dev-lang/lua:5.3 ( dev-lang/luajit:2 app-eselect/eselect-luajit ) )
+RDEPEND=!dev-lang/lua:0 >=app-admin/eselect-1.2.4
 SLOT=0
-_md5_=bbb80012ebd2adea2ee089ae19b5b2c3
+_md5_=781e7621f796656b6fc552ac94b7a29e

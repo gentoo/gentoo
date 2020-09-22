@@ -2016,7 +2016,8 @@ app-eselect/eselect-java 0.4.0 0.4.2: A set of eselect modules for Java
 app-eselect/eselect-lapack 0.2: LAPACK module for eselect
 app-eselect/eselect-lcdfilter 2: Eselect module to choose Freetype infinality-enhanced LCD filtering settings
 app-eselect/eselect-lib-bin-symlink 0.1.1-r1 9999: An eselect library to manage executable symlinks
-app-eselect/eselect-lua 1: Lua eselect module
+app-eselect/eselect-lua 2: Lua eselect module
+app-eselect/eselect-luajit 1: Manages LuaJIT symlinks
 app-eselect/eselect-miniaudicle 1.0.1-r2: Manages the /usr/bin/miniAudicle symlink
 app-eselect/eselect-mpg123 0.1: Manage /usr/bin/mpg123 symlink
 app-eselect/eselect-notify-send 0.1: Manage /usr/bin/notify-send symlink
