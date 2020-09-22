@@ -13,7 +13,7 @@ SRC_URI="https://download.openvz.org/criu/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
 IUSE="doc python selinux setproctitle static-libs"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -55,6 +55,7 @@ criu_arch() {
 	case ${ARCH} in
 		amd64) echo "x86";;
 		arm64) echo "aarch64";;
+		ppc64*) echo "ppc64";;
 		*)     echo "${ARCH}";;
 	esac
 }
