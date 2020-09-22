@@ -1,0 +1,25 @@
+# This script is intended to rotate the logs for clamav-milter in its
+# default configuration on Gentoo, where clamav-milter writes to its
+# own log file but does not rotate that file itself. The clamav-milter
+# daemon is capable of rotating its own logs; if you have "LogRotate
+# yes" in clamav-milter.conf then you do not need this script (and
+# should disable it). Likewise, if you are logging to syslog
+# (LogSyslog yes), this is redundant.
+#
+# This is more complicated than the clamd/freshclam scripts because
+# the milter doesn't yet reopen its log files when it receives a
+# SIGHUP. See https://bugzilla.clamav.net/show_bug.cgi?id=12615
+# for that. Instead we have to attempt OpenRC/systemd service
+# restarts on (only) the machines that support them.
+/var/log/clamav/clamav-milter.log {
+  su clamav clamav
+  missingok
+  postrotate
+    if command -v rc-service 2>/dev/null; then
+      rc-service clamav-milter status 2>/dev/null 1>&2 && rc-service clamav-milter restart 1>/dev/null
+    fi
+    if command -v systemctl 2>/dev/null; then
+      systemctl try-restart clamav-milter
+    fi
+  endscript
+}
