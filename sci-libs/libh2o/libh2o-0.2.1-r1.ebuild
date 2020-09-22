@@ -18,7 +18,6 @@ BDEPEND="virtual/pkgconfig"
 src_configure() {
 	local myconf=(
 		$(use_enable debug)
-		$(use_enable static-libs static)
 	)
 
 	econf "${myconf[@]}"
