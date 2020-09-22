@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic systemd
+inherit autotools flag-o-matic systemd tmpfiles
 
 DESCRIPTION="Clam Anti-Virus Scanner"
 HOMEPAGE="https://www.clamav.net/"
@@ -12,7 +12,7 @@ SRC_URI="https://www.clamav.net/downloads/production/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
-IUSE="bzip2 doc clamonacc clamdtop clamsubmit iconv ipv6 libclamav-only libressl milter metadata-analysis-api selinux test uclibc xml"
+IUSE="bzip2 doc clamonacc clamdtop clamsubmit iconv ipv6 libclamav-only libressl milter metadata-analysis-api selinux systemd test uclibc xml"
 
 REQUIRED_USE="libclamav-only? ( !clamonacc !clamdtop !clamsubmit !milter !metadata-analysis-api )"
 
@@ -118,10 +118,19 @@ src_install() {
 	rm -rf "${ED}"/var/lib/clamav || die
 
 	if ! use libclamav-only ; then
-		systemd_dotmpfilesd "${FILESDIR}/tmpfiles.d/clamav.conf"
-		systemd_newunit "${FILESDIR}/clamd_at.service" "clamd@.service"
-		systemd_dounit "${FILESDIR}/clamd.service"
-		systemd_dounit "${FILESDIR}/freshclamd.service"
+		if use systemd; then
+			# The tmpfiles entry is behind USE=systemd because the
+			# upstream OpenRC service files should (and do) ensure that
+			# the directories they need exist and have the correct
+			# permissions without the help of opentmpfiles. There are
+			# years-old root exploits in opentmpfiles, the design is
+			# fundamentally flawed, and the maintainer is not up to
+			# the task of fixing it.
+			dotmpfiles "${FILESDIR}/tmpfiles.d/clamav.conf"
+			systemd_newunit "${FILESDIR}/clamd_at.service" "clamd@.service"
+			systemd_dounit "${FILESDIR}/clamd.service"
+			systemd_dounit "${FILESDIR}/freshclamd.service"
+		fi
 
 		insinto /etc/logrotate.d
 		newins "${FILESDIR}"/clamav.logrotate clamav
