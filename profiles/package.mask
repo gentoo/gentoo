@@ -32,6 +32,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (2020-09-22)
+# Fails to build with new Python or at all.
+# QA issues (byte compiling etc). All live ebuilds.
+# Removal in 14 days
+net-wireless/gr-baz
+net-wireless/gr-doa
+net-wireless/gr-foo
+net-wireless/gr-ntsc
+net-wireless/gr-ntsc-rc
+net-wireless/gr-ppm-wiegand
+net-wireless/gr-rftap
+net-wireless/gr-specest
+
 # Michał Górny <mgorny@gentoo.org> (2020-09-22)
 # Poorly maintained suite of NIH packages.  Only live ebuilds left
 # for over a year.  This really belongs in an overlay.  Some of them
