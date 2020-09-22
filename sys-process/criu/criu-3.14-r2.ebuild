@@ -14,16 +14,16 @@ SRC_URI="https://download.openvz.org/criu/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
-IUSE="doc python selinux setproctitle static-libs"
+IUSE="doc selinux setproctitle static-libs"
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
+	${PYTHON_DEPS}
 	dev-libs/protobuf-c
 	dev-libs/libnl:3
 	net-libs/libnet:1.1
 	sys-libs/libcap
-	python? ( ${PYTHON_DEPS} )
 	selinux? ( sys-libs/libselinux )
 	setproctitle? ( dev-libs/libbsd )"
 DEPEND="${RDEPEND}
@@ -32,14 +32,12 @@ DEPEND="${RDEPEND}
 		app-text/xmlto
 	)"
 RDEPEND="${RDEPEND}
-	python? (
-		dev-python/protobuf-python[${PYTHON_USEDEP}]
-		dev-python/ipaddr[${PYTHON_USEDEP}]
-	)"
+	dev-python/protobuf-python[${PYTHON_USEDEP}]
+	dev-python/ipaddr[${PYTHON_USEDEP}]
+"
 
 CONFIG_CHECK="~CHECKPOINT_RESTORE ~NAMESPACES ~PID_NS ~FHANDLE ~EVENTFD ~EPOLL ~INOTIFY_USER
-	~IA32_EMULATION ~UNIX_DIAG ~INET_DIAG ~INET_UDP_DIAG ~PACKET_DIAG ~NETLINK_DIAG ~TUN
-	~NETFILTER_XT_MARK"
+	~UNIX_DIAG ~INET_DIAG ~INET_UDP_DIAG ~PACKET_DIAG ~NETLINK_DIAG ~TUN ~NETFILTER_XT_MARK"
 
 # root access required for tests
 RESTRICT="test"
@@ -58,6 +56,11 @@ criu_arch() {
 		ppc64*) echo "ppc64";;
 		*)     echo "${ARCH}";;
 	esac
+}
+
+pkg_setup() {
+	use amd64 && CONFIG_CHECK+=" ~IA32_EMULATION"
+	linux-info_pkg_setup
 }
 
 src_prepare() {
@@ -81,7 +84,7 @@ src_configure() {
 
 src_compile() {
 	local target="all $(usex doc 'docs' '')"
-	RAW_LDFLAGS="$(raw-ldflags)" emake \
+	emake \
 		HOSTCC="$(tc-getBUILD_CC)" \
 		CC="$(tc-getCC)" \
 		LD="$(tc-getLD)" \
@@ -93,7 +96,6 @@ src_compile() {
 		ARCH="$(criu_arch)" \
 		V=1 WERROR=0 DEBUG=0 \
 		SETPROCTITLE=$(usex setproctitle) \
-		PYCRIU=$(usex python) \
 		${target}
 }
 
@@ -123,9 +125,7 @@ src_install() {
 
 	use doc && dodoc CREDITS README.md
 
-	if use python ; then
-		python_foreach_impl install_crit
-	fi
+	python_foreach_impl install_crit
 
 	if ! use static-libs; then
 		find "${D}" -name "*.a" -delete || die
