@@ -4,31 +4,6 @@
 # QA check: verify correctness of DISTUTILS_USE_SETUPTOOLS
 # Maintainer: Python project <python@gentoo.org>
 
-get_expected_distutils_use_setuptools() {
-	local sitedir=${D}$(python_get_sitedir)
-	local egg new_expected
-	while read -d $'\0' -r egg; do
-		if [[ -f ${egg} ]]; then
-			# if .egg-info is a file, it's plain distutils
-			new_expected=no
-		elif grep -q -s -F '[console_scripts]' "${egg}"/entry_points.txt
-		then
-			# entry_points == we need rdepend
-			new_expected=rdepend
-		elif grep -q -E -s '^setuptools' "${egg}"/requires.txt
-		then
-			# explicit rdepend in package metadata
-			new_expected=rdepend
-		else
-			new_expected=bdepend
-		fi
-
-		if ! has "${new_expected}" "${expected[@]}"; then
-			expected+=( "${new_expected[@]}" )
-		fi
-	done < <(find "${sitedir}" -name '*.egg-info' -print0)
-}
-
 distutils_use_setuptools_check() {
 	# applicable only to ebuilds inheriting distutils-r1
 	[[ ${_DISTUTILS_R1} ]] || return
@@ -38,18 +13,46 @@ distutils_use_setuptools_check() {
 	[[ ${DISTUTILS_USE_SETUPTOOLS} == pyproject.toml ]] && return
 
 	local expected=()
-	_distutils-r1_run_foreach_impl get_expected_distutils_use_setuptools
+	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
+		local EPYTHON PYTHON
+		_python_export "${impl}" EPYTHON PYTHON
+		[[ -x ${PYTHON} ]] || continue
+		local sitedir=${D}$(python_get_sitedir)
+		if [[ -d ${sitedir} ]]; then
+			local egg new_expected
+			while read -d $'\0' -r egg; do
+				if [[ -f ${egg} ]]; then
+					# if .egg-info is a file, it's plain distutils
+					new_expected=no
+				elif grep -q -s -F '[console_scripts]' \
+						"${egg}"/entry_points.txt
+				then
+					# entry_points == we need rdepend
+					new_expected=rdepend
+				elif grep -q -E -s '^setuptools' \
+						"${egg}"/requires.txt
+				then
+					# explicit rdepend in package metadata
+					new_expected=rdepend
+				else
+					new_expected=bdepend
+				fi
+
+				if ! has "${new_expected}" "${expected[@]}"; then
+					expected+=( "${new_expected[@]}" )
+				fi
+			done < <(find "${sitedir}" -name '*.egg-info' -print0)
+		fi
+	done
 
 	# at this point, expected can contain: no bdepend rdepend
-	if [[ ${#expected[@]} -eq 0 ]]; then
-		eerror "No .egg-info found.  Please report a bug and CC python@"
-	elif [[ ${#expected[@]} -gt 1 ]] && has no "${expected[@]}"; then
+	if [[ ${#expected[@]} -gt 1 ]] && has no "${expected[@]}"; then
 		# 'no' and '[rb]depend' are mutually exclusive
 		eerror "The package seems to have used distutils and setuptools simultaneously."
 		eerror "This could mean the package has bad conditions:"
 		eerror "https://dev.gentoo.org/~mgorny/python-guide/distutils.html#conditional-distutils-setuptools-use-in-packages"
 		eerror "Please report a bug about this and CC python@"
-	else
+	elif [[ ${#expected[@]} -gt 0 ]]; then
 		# bdepend+rdepend=rdepend
 		has rdepend "${expected[@]}" && expected=( rdepend )
 		# at this point, expected should have exactly one value
