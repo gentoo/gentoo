@@ -129,7 +129,8 @@ src_install() {
 			dotmpfiles "${FILESDIR}/tmpfiles.d/clamav.conf"
 			systemd_newunit "${FILESDIR}/clamd_at.service" "clamd@.service"
 			systemd_dounit "${FILESDIR}/clamd.service"
-			systemd_dounit "${FILESDIR}/freshclamd.service"
+			systemd_newunit "${FILESDIR}/freshclamd.service-r1" \
+							"freshclamd.service"
 		fi
 
 		insinto /etc/logrotate.d
