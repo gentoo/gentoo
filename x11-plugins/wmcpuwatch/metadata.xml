@@ -12,7 +12,4 @@ It is a fork of wmmon. wmmon shows the load of up to 10 CPUs. With a little twea
 
 wmcpuwatch now shows the load of all CPUs in the lower frame which allows 40 CPUs at max.
 </longdescription>
-<upstream>
-	<remote-id type="bitbucket">StarFire/wmcpuwatch</remote-id>
-</upstream>
 </pkgmetadata>
