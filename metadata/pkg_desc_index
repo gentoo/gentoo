@@ -6157,6 +6157,7 @@ dev-perl/Contextual-Return 0.4.14: Create context-sensitive return values
 dev-perl/Convert-ASCII-Armour 1.400.0-r1 1.400.0-r2: Convert binary octets into ASCII armoured messages
 dev-perl/Convert-ASN1 0.270.0-r1: Standard en/decode of ASN.1 structures
 dev-perl/Convert-BER 1.320.0-r1 1.320.0-r2: Class for encoding/decoding BER messages
+dev-perl/Convert-Base32 0.60.0: Encoding and decoding of base32 strings
 dev-perl/Convert-BinHex 1.125.0: Extract data from Macintosh BinHex files
 dev-perl/Convert-Binary-C 0.780.0-r1 0.790.0: Binary Data Conversion using C Types
 dev-perl/Convert-Color 0.110.0: Color space conversions and named lookups
