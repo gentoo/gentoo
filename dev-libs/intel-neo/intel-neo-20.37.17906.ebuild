@@ -19,7 +19,7 @@ IUSE="l0 vaapi"
 
 BDEPEND="virtual/pkgconfig"
 COMMON=">=virtual/opencl-3
-	>=dev-util/intel-graphics-compiler-1.0.3826
+	>=dev-util/intel-graphics-compiler-1.0.4944
 	>=media-libs/gmmlib-20.2.5
 	l0? ( >=dev-libs/level-zero-1.0.0 )
 	vaapi? (
