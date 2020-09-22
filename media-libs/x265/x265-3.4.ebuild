@@ -6,15 +6,16 @@ EAPI=7
 inherit cmake multilib-minimal multilib multibuild flag-o-matic
 
 if [[ ${PV} = 9999* ]]; then
-	inherit mercurial
-	EHG_REPO_URI="https://bitbucket.org/multicoreware/x265"
+	inherit git-r3
+	EGIT_REPO_URI="https://bitbucket.org/multicoreware/x265_git/"
+	S=${WORKDIR}/${P}/source
 else
-	SRC_URI="https://bitbucket.org/multicoreware/x265/downloads/${PN}_${PV}.tar.gz"
+	SRC_URI="https://bitbucket.org/multicoreware/x265_git/get/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 arm arm64 hppa ~ia64 ppc ppc64 x86"
 fi
 
 DESCRIPTION="Library for encoding video streams into the H.265/HEVC format"
-HOMEPAGE="http://x265.org/ https://bitbucket.org/multicoreware/x265/wiki/Home"
+HOMEPAGE="http://x265.org/ https://bitbucket.org/multicoreware/x265_git/wiki/Home"
 
 LICENSE="GPL-2"
 # subslot = libx265 soname
@@ -39,12 +40,10 @@ PATCHES=(
 
 src_unpack() {
 	if [[ ${PV} = 9999* ]]; then
-		mercurial_src_unpack
-		# Can't set it at global scope due to mercurial.eclass limitations...
-		export S=${WORKDIR}/${P}/source
+		git-r3_src_unpack
 	else
 		unpack ${A}
-		export S="$(echo "${WORKDIR}/${PN}_"*"/source")"
+		export S="$(echo "${WORKDIR}/multicoreware-${PN}_git-"*"/source")"
 	fi
 }
 

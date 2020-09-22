@@ -10,16 +10,16 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://bitbucket.org/multicoreware/x265_git/"
 	S=${WORKDIR}/${P}/source
 else
-	SRC_URI="https://bitbucket.org/multicoreware/x265/downloads/${PN}_${PV}.tar.gz"
+	SRC_URI="https://bitbucket.org/multicoreware/x265_git/get/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Library for encoding video streams into the H.265/HEVC format"
-HOMEPAGE="http://x265.org/ https://bitbucket.org/multicoreware/x265/wiki/Home"
+HOMEPAGE="http://x265.org/ https://bitbucket.org/multicoreware/x265_git/wiki/Home"
 
 LICENSE="GPL-2"
 # subslot = libx265 soname
-SLOT="0/195"
+SLOT="0/198"
 IUSE="+10bit +12bit cpu_flags_arm_neon cpu_flags_ppc_vsx2 numa pic test"
 RESTRICT="!test? ( test )"
 
@@ -43,7 +43,7 @@ src_unpack() {
 		git-r3_src_unpack
 	else
 		unpack ${A}
-		export S="$(echo "${WORKDIR}/${PN}_"*"/source")"
+		export S="$(echo "${WORKDIR}/multicoreware-${PN}_git-"*"/source")"
 	fi
 }
 
