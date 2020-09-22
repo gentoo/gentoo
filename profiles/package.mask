@@ -35,7 +35,7 @@
 # Aaron Bauman <bman@gentoo.org> (2020-09-22)
 # Fails to build with new Python or at all.
 # QA issues (byte compiling etc). All live ebuilds.
-# Removal in 14 days
+# Removal in 30 days
 net-wireless/gr-baz
 net-wireless/gr-doa
 net-wireless/gr-foo
