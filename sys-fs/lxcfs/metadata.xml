@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>stasibear@gentoo.org</email>
-		<name>Erik Mackdanz</name>
+		<email>juippis@gentoo.org</email>
+		<name>Joonas Niilola</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>virtualization@gentoo.org</email>
