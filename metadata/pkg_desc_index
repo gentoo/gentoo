@@ -8710,7 +8710,7 @@ dev-python/pygobject 3.34.0 3.36.1: Python bindings for GObject Introspection
 dev-python/pygpgme 0.3-r2: A Python wrapper for the GPGME library
 dev-python/pygraphviz 1.5 1.6: Python wrapper for the Graphviz Agraph data structure
 dev-python/pygresql 5.1 5.2: A Python interface for the PostgreSQL database
-dev-python/pyh2o 9999: Python API for sci-libs/libh2o
+dev-python/pyh2o 1: Python API for sci-libs/libh2o
 dev-python/pyhamcrest 2.0.2: Hamcrest framework for matcher objects
 dev-python/pyilmbase 2.5.2-r1: IlmBase Python bindings
 dev-python/pyinotify 0.9.6: Python module used for monitoring filesystems events
