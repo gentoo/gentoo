@@ -13,6 +13,10 @@ IUSE=""
 
 DEPEND="
 	!dev-lang/lua:0
+	>=app-admin/eselect-1.2.4
+"
+RDEPEND="${DEPEND}"
+PDEPEND="
 	|| (
 		dev-lang/lua:5.1
 		dev-lang/lua:5.2
@@ -22,12 +26,9 @@ DEPEND="
 			app-eselect/eselect-luajit
 		)
 	)
-	>=app-admin/eselect-1.2.4
 "
 #		dev-lang/lua:5.4
 # TODO: ^
-RDEPEND="${DEPEND}"
-
 S="${WORKDIR}"
 
 src_install() {
