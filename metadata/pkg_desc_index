@@ -2513,7 +2513,7 @@ app-misc/radeontop 1.2 9999: Utility to view Radeon GPU utilization
 app-misc/ranger 1.9.2 1.9.3 9999: A vim-inspired file manager for the console
 app-misc/razertool 0.0.7-r4: Unofficial tool for controlling the Razer Copperhead mouse
 app-misc/rbutil 1.4.1: Rockbox open source firmware manager for music players
-app-misc/realpath 1.17 1.18: Return the canonicalized absolute pathname
+app-misc/realpath 1.18: Return the canonicalized absolute pathname
 app-misc/recoll 1.25.19: A personal full text search package
 app-misc/regex-markup 0.10.0-r1: A tool to color syslog files as well
 app-misc/regionset 0.2: Sets the region on DVD drives
@@ -5261,7 +5261,7 @@ dev-libs/double-conversion 3.1.5: Binary-decimal and decimal-binary conversion r
 dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/editline 1.17.1: line editing library for UNIX call compatible with the FSF readline
 dev-libs/eekboard 1.0.8_p20121001-r1: An easy to use virtual keyboard toolkit
-dev-libs/efl 1.24.3: Enlightenment Foundation Libraries all-in-one package
+dev-libs/efl 1.24.3 1.24.3-r1: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfutils 0.180 0.181: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.28 0.31 0.32 0.33 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
