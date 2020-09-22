@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-09-22)
+# No activity since Jan 2019.  Broken with current versions of werkzeug.
+# Removal in 30 days.  Bug #743259.
+dev-python/flask-themes
+
 # Michael Orlitzky <mjo@gentoo.org> (2020-09-20)
 # Major OpenRC changes, masked for testing before we unleash it.
 =app-antivirus/clamav-0.103.0
