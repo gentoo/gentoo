@@ -10,7 +10,7 @@ SRC_URI="https://github.com/mgorny/libh2oxx/releases/download/${P}/${P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug static-libs"
+IUSE="debug"
 
 RDEPEND=">=sci-libs/libh2o-0.2:0="
 DEPEND="${RDEPEND}"
@@ -18,7 +18,6 @@ DEPEND="${RDEPEND}"
 src_configure() {
 	local myconf=(
 		$(use_enable debug)
-		$(use_enable static-libs static)
 	)
 
 	econf "${myconf[@]}"
