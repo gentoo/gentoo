@@ -31,6 +31,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc41.patch
 	"${FILESDIR}"/${P}-gcc45.patch
 	"${FILESDIR}"/${P}-stack-smash.patch
+	"${FILESDIR}"/${P}-gcc10.patch
 )
 
 src_prepare() {
