@@ -2,19 +2,22 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1 git-r3
+DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{6..9} )
+
+inherit distutils-r1
 
 DESCRIPTION="Python API for sci-libs/libh2o"
 HOMEPAGE="https://github.com/mgorny/pyh2o/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/mgorny/pyh2o.git"
+SRC_URI="
+	https://github.com/mgorny/pyh2o/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND=">=sci-libs/libh2o-0.2.1:="
 DEPEND="${RDEPEND}"
+
+distutils_enable_tests pytest
