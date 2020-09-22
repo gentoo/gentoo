@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 PDNS_CONFIGDIR="${PDNS_CONFIGDIR:-/etc/powerdns}"
@@ -10,7 +10,7 @@ PDNS_STOP_TIMEOUT="${PDNS_STOP_TIMEOUT:-10}"
 PDNS_CONFIG="${PDNS_CONFIGDIR}/pdns${PDNS_INSTANCE:+-${PDNS_INSTANCE}}.conf"
 PDNS_CHROOTDIR="$( awk -F = '$1 == "chroot" { print $2 }' "${PDNS_CONFIG}" )"
 PDNS_SOCKETDIR="$( awk -F = '$1 == "socket-dir" { print $2 }' "${PDNS_CONFIG}" )"
-[ -z "${PDNS_SOCKETDIR}" -a -z "${PDNS_CHROOTDIR}" ] && PDNS_SOCKETDIR="/var/run"
+[ -z "${PDNS_SOCKETDIR}" -a -z "${PDNS_CHROOTDIR}" ] && PDNS_SOCKETDIR="/var/run/pdns"
 
 name="PowerDNS Authoritative Server${PDNS_INSTANCE:+ (${PDNS_INSTANCE})}"
 description="Authoritative name server"
