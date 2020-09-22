@@ -15,13 +15,18 @@ SRC_URI="https://github.com/Keruspe/GPaste/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="introspection gnome vala"
-REQUIRED_USE="vala? ( introspection )"
+IUSE="+introspection +gnome vala"
+REQUIRED_USE="
+	vala? ( introspection )
+	gnome? ( introspection )
+"
 
 DEPEND="
 	dev-libs/appstream-glib
 	>=dev-libs/glib-2.48:2
-	>=dev-libs/gobject-introspection-1.48.0
+	introspection? (
+		>=dev-libs/gobject-introspection-1.48.0
+	)
 	sys-apps/dbus
 	>=x11-libs/gdk-pixbuf-2.34:2
 	>=x11-libs/gtk+-3.20:3
