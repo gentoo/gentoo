@@ -11,9 +11,8 @@ HOMEPAGE="https://github.com/merbanan/rtl_433"
 if [[ $PV == "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/merbanan/rtl_433"
-	KEYWORDS=""
 else
-	COMMIT="f82c02561dcde055143903d0f65257eb3211d45b"
+	COMMIT="105342a33271bac6837d06aa86c23eec9e9ecb6a"
 	SRC_URI="https://github.com/merbanan/rtl_433/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
 	#SRC_URI="https://github.com/merbanan/rtl_433/archive/${PV}.tar.gz -> ${P}.tar.gz"
@@ -22,17 +21,17 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+rtlsdr soapy"
+IUSE="+rtlsdr soapysdr"
 
 DEPEND="rtlsdr? ( net-wireless/rtl-sdr:=
 			virtual/libusb:1 )
-	soapy? ( net-wireless/soapysdr:= )"
+	soapysdr? ( net-wireless/soapysdr:= )"
 RDEPEND="${DEPEND}"
 
 src_configure() {
 	mycmakeargs=(
 		-DENABLE_RTLSDR="$(usex rtlsdr)"
-		-DENABLE_SOAPYSDR="$(usex soapy)"
+		-DENABLE_SOAPYSDR="$(usex soapysdr)"
 	)
 	cmake-utils_src_configure
 }
