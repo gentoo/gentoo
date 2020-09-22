@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-
-DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=(python{2_7,3_6,3_7,3_8,3_9})
+DISTUTILS_USE_SETUPTOOLS="rdepend"
 
 inherit distutils-r1
 
@@ -44,6 +43,10 @@ if [[ "${PV}" == "9999" ]]; then
 fi
 
 python_prepare_all() {
+	pushd "${WORKDIR}/protobuf-${PV}" > /dev/null || die
+	eapply_user
+	popd > /dev/null || die
+
 	distutils-r1_python_prepare_all
 
 	sed -e "/^[[:space:]]*setup_requires = \['wheel'\],$/d" -i setup.py || die
