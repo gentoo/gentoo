@@ -9,7 +9,7 @@ SRC_URI="https://github.com/intel/dptfxtract/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="ipw3945"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 RDEPEND=""
