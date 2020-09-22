@@ -1,21 +1,7 @@
-From 5a02f132107abc6a7d022eb349f7ff6338b71feb Mon Sep 17 00:00:00 2001
-From: Dave Andreoli <dave@gurumeditation.it>
-Date: Thu, 25 Jun 2020 18:54:03 +0200
-Subject: Do not fail when build with CC="clang"
-
-clang seems much better in building elementary, while gcc need a lot
-of ram and tend to fail badly
-
-So for now on clang is the suggested compiler to use
----
- setup.py | 16 ++++++++++------
- 1 file changed, 10 insertions(+), 6 deletions(-)
-
-diff --git a/setup.py b/setup.py
-index 3ed0028..a863a19 100755
---- a/setup.py
-+++ b/setup.py
-@@ -211,13 +211,17 @@ ext_modules = []
+diff -Naur a/setup.py b/setup.py
+--- a/setup.py	2020-04-23 08:20:55.742402600 +0300
++++ b/setup.py	2020-09-22 08:29:43.065243208 +0300
+@@ -211,13 +211,21 @@
  py_modules = []
  packages = ["efl"]
  common_cflags = [
@@ -35,10 +21,11 @@ index 3ed0028..a863a19 100755
 +# remove clang unknown flags
 +if os.getenv("CC") == "clang":
 +    common_cflags.remove('-fno-var-tracking-assignments')
++if os.getenv("CC") == "x86_64-pc-linux-gnu-clang":
++    common_cflags.remove('-fno-var-tracking-assignments')
++if os.getenv("CC") == "i686-pc-linux-gnu-clang":
++    common_cflags.remove('-fno-var-tracking-assignments')
 +
  
  if set(("build", "build_ext", "install", "bdist", "sdist")) & set(sys.argv):
      sys.stdout.write("Python-EFL: %s\n" % RELEASE)
--- 
-cgit v1.2.1
-
