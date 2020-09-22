@@ -39,7 +39,10 @@ if [[ "${PV}" == "9999" ]]; then
 fi
 
 src_prepare() {
-	default
+	pushd "${WORKDIR}/protobuf-${PV}" > /dev/null || die
+	eapply_user
+	popd > /dev/null || die
+
 	java-pkg-2_src_prepare
 }
 
