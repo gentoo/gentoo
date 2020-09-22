@@ -133,7 +133,10 @@ src_install() {
 		fi
 
 		insinto /etc/logrotate.d
-		newins "${FILESDIR}"/clamav.logrotate clamav
+		newins "${FILESDIR}/clamd.logrotate" clamd
+		newins "${FILESDIR}/freshclam.logrotate" freshclam
+		use milter && \
+			newins "${FILESDIR}/clamav-milter.logrotate" clamav-milter
 
 		# Modify /etc/{clamd,freshclam}.conf to be usable out of the box
 		sed -i -e "s:^\(Example\):\# \1:" \
