@@ -30,6 +30,7 @@ RDEPEND="
 	dev-libs/glib
 	dev-libs/nspr
 	dev-libs/nss
+	gnome-base/libgnome-keyring
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/mesa
