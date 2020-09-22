@@ -26,8 +26,15 @@ get_expected_distutils_use_setuptools() {
 		fi
 
 		if [[ ${expected} && ${new_expected} != ${expected} ]]; then
-			integrity_error_new=${new_expected}
-			return 1
+			if [[ ${expected}${new_expected} == [br]depend[br]depend ]]
+			then
+				# packages can have scripts that are installed
+				# conditionally to implementation
+				expected=rdepend
+			else
+				integrity_error_new=${new_expected}
+				return 1
+			fi
 		else
 			expected=${new_expected}
 		fi
