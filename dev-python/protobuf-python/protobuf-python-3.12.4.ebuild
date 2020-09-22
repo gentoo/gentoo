@@ -44,6 +44,7 @@ fi
 
 python_prepare_all() {
 	pushd "${WORKDIR}/protobuf-${PV}" > /dev/null || die
+	eapply "${FILESDIR}/${PN}-3.13.0-google.protobuf.pyext._message.PyUnknownFieldRef.patch"
 	eapply_user
 	popd > /dev/null || die
 
