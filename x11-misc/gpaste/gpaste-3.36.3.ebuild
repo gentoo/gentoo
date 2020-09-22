@@ -6,7 +6,7 @@ EAPI=7
 VALA_MIN_API_VERSION="0.30"
 VALA_USE_DEPEND="vapigen"
 
-inherit meson vala
+inherit meson vala gnome2-utils
 
 DESCRIPTION="Clipboard management system"
 HOMEPAGE="https://github.com/Keruspe/GPaste"
@@ -66,4 +66,12 @@ src_configure() {
 		$(meson_use gnome gnome-shell)
 	)
 	meson_src_configure
+}
+
+pkg_postinst() {
+	gnome2_schemas_update
+}
+
+pkg_postrm() {
+	gnome2_schemas_update
 }
