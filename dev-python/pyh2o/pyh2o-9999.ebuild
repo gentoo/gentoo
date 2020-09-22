@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+
+DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1 git-r3
 
@@ -18,3 +20,5 @@ IUSE=""
 
 RDEPEND=">=sci-libs/libh2o-0.2.1:="
 DEPEND="${RDEPEND}"
+
+distutils_enable_tests pytest
