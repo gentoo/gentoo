@@ -14885,7 +14885,7 @@ net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP pr
 net-libs/nghttp2 1.41.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 12.16.1 12.18.3 12.18.4 14.2.0 14.4.0 14.8.0 14.9.0 14.10.0 14.10.1 14.11.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 12.16.1 12.18.3 12.18.4 14.2.0 14.4.0 14.8.0 14.9.0 14.10.0 14.10.1 14.11.0 14.12.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.7.4 1.8.1 3.2 3.3: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -17713,7 +17713,7 @@ sys-process/atop 2.3.0-r1 2.4.0 2.5.0-r1: Resource-specific view of processes
 sys-process/audit 2.6.4 2.7.1 2.8.2 2.8.3 2.8.4 2.8.5 2.8.5-r1: Userspace utilities for storing and processing auditing records
 sys-process/bashtop 0.9.25: Resource monitor that shows usage and stats
 sys-process/bcron 0.10 0.11: A new cron system designed with secure operations in mind by Bruce Guenter
-sys-process/criu 3.6 3.11 3.12 3.14-r1: utility to checkpoint/restore a process tree
+sys-process/criu 3.6 3.11 3.12 3.14-r2: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
 sys-process/cronie 1.5.4-r1 1.5.5: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.9: Utilities to assist running batch processing jobs
@@ -18073,7 +18073,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r3: a free, open source web browser
 www-client/opera 70.0.3728.154 70.0.3728.178 71.0.3770.148: A fast and secure web browser
 www-client/opera-beta 71.0.3770.50 71.0.3770.81 71.0.3770.97 71.0.3770.126: A fast and secure web browser
-www-client/opera-developer 72.0.3779.0 72.0.3784.0 72.0.3791.0 72.0.3798.0 72.0.3807.0 72.0.3814.0: A fast and secure web browser
+www-client/opera-developer 72.0.3779.0 72.0.3784.0 72.0.3791.0 72.0.3798.0 72.0.3807.0 72.0.3814.0 73.0.3820.0: A fast and secure web browser
 www-client/otter 1.0.01 1.0.01-r1 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.12.0 1.13.0 1.13.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
@@ -18082,7 +18082,7 @@ www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 3.3.2022.47_p1: A browser for our friends
-www-client/vivaldi-snapshot 3.4.2035.3_p1 3.4.2036.3_p1 3.4.2038.4_p1: A browser for our friends
+www-client/vivaldi-snapshot 3.4.2035.3_p1 3.4.2036.3_p1 3.4.2038.4_p1 3.4.2049.2_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.8-r1: AWStats is short for Advanced Web Statistics
