@@ -57,14 +57,11 @@ src_configure() {
 		$(usev redis)
 		$(usev s3)
 	)
-}
-
-src_compile() {
-	cargo_src_compile ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
+	cargo_src_configure --no-default-features
 }
 
 src_install() {
-	cargo_src_install ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
+	cargo_src_install
 
 	keepdir /etc/sccache
 
@@ -84,7 +81,7 @@ src_test() {
 	if [[ "${PV}" == *9999* ]]; then
 		ewarn "tests are always broken for ${PV} (require network), skipping"
 	else
-		cargo_src_test ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
+		cargo_src_test
 	fi
 }
 
