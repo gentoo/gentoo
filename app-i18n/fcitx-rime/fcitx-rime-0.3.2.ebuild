@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit cmake-utils gnome2-utils
+inherit cmake-utils xdg-utils
 
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
@@ -42,9 +42,9 @@ src_configure() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
