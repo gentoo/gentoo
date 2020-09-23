@@ -20,20 +20,6 @@ index 12e7fcc28..a3c47e23a 100644
  lcov:
  	($(MAKE); cd unit_tests; $(MAKE) lcov)
  quick-check:
-diff --git a/clamav-config.h.in b/clamav-config.h.in
-index d7aff4a3b..ebd8ac256 100644
---- a/clamav-config.h.in
-+++ b/clamav-config.h.in
-@@ -402,6 +402,9 @@
- /* Use private fts() implementation which is LFS safe */
- #undef HAVE_SYSTEM_LFS_FTS
- 
-+/* don't link against system-wide tomsfastmath library */
-+#undef HAVE_SYSTEM_TOMSFASTMATH
-+
- /* Define to 1 if you have the <sys/cdefs.h> header file. */
- #undef HAVE_SYS_CDEFS_H
- 
 diff --git a/clamav-milter/Makefile.am b/clamav-milter/Makefile.am
 index 1ec4afff6..c75c2b4a3 100644
 --- a/clamav-milter/Makefile.am
@@ -207,10 +193,10 @@ index 181e22056..864a7fc2a 100644
  
 diff --git a/clamonacc/openrc/clamonacc.in.in b/clamonacc/openrc/clamonacc.in.in
 new file mode 100644
-index 000000000..64acf5d83
+index 000000000..844cd49dd
 --- /dev/null
 +++ b/clamonacc/openrc/clamonacc.in.in
-@@ -0,0 +1,12 @@
+@@ -0,0 +1,18 @@
 +#!/sbin/openrc-run
 +
 +command="@SBINDIR@/clamonacc"
@@ -223,8 +209,14 @@ index 000000000..64acf5d83
 +#
 +command_args="--foreground"
 +command_background=true
++
++depend() {
++  # Unlike the milter, the on-access scanner will simply fail to start
++  # until clamd is available.
++  need clamd
++}
 diff --git a/configure.ac b/configure.ac
-index 461342621..773787e49 100644
+index 7b2a777d4..8e0e810f8 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -79,6 +79,12 @@ if test "$enable_experimental" = "yes"; then
@@ -240,7 +232,7 @@ index 461342621..773787e49 100644
  build_configure_args=`echo "$ac_configure_args" | sed -e 's/[\"]//g'`
  AC_SUBST([BUILD_CONFIGURE_FLAGS], [$build_configure_args])
  
-@@ -105,6 +111,7 @@ m4_include([m4/reorganization/libs/libz.m4])
+@@ -104,6 +110,7 @@ m4_include([m4/reorganization/libs/libz.m4])
  m4_include([m4/reorganization/libs/bzip.m4])
  m4_include([m4/reorganization/libs/unrar.m4])
  m4_include([m4/reorganization/libs/systemd.m4])
@@ -248,7 +240,7 @@ index 461342621..773787e49 100644
  m4_include([m4/reorganization/code_checks/ipv6.m4])
  m4_include([m4/reorganization/code_checks/dns.m4])
  m4_include([m4/reorganization/code_checks/fanotify.m4])
-@@ -193,7 +200,10 @@ AC_CONFIG_FILES([
+@@ -192,7 +199,10 @@ AC_CONFIG_FILES([
                   libclamav.pc
                   platform.h
                   clamav-types.h
@@ -260,7 +252,7 @@ index 461342621..773787e49 100644
  if test "x$enable_libclamav_only" != "xyes"; then
      AC_CONFIG_FILES([
                       clamscan/Makefile
-@@ -203,10 +213,14 @@ if test "x$enable_libclamav_only" != "xyes"; then
+@@ -202,10 +212,14 @@ if test "x$enable_libclamav_only" != "xyes"; then
                       clamd/Makefile
                       clamd/clamav-daemon.service
                       clamd/clamav-daemon.socket
