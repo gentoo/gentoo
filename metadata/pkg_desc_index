@@ -537,7 +537,7 @@ app-admin/gamin 0.1.10-r1: Meta package providing the File Alteration Monitor AP
 app-admin/genromfs 0.5.2: Create space-efficient, small, read-only romfs filesystems
 app-admin/gentoo-perl-helpers 0.3.1-r1 0.4.0: Introspection and Upgrade Assistance tools for Gentoo Perl
 app-admin/gentoo-rsync-mirror 1.0-r5: Ebuild for setting up a Gentoo rsync mirror
-app-admin/github-backup-utils 2.10.0 2.10.0-r1 2.11.0 2.11.0-r1 2.11.1 2.11.1-r1 2.11.2 2.11.2-r1 2.13.0 2.13.2 2.14.2 2.15.0 2.15.1 2.16.1 2.17.0 2.18.0 2.19.1 2.20.2 2.21.0: Backup and recovery utilities for GitHub Enterprise
+app-admin/github-backup-utils 2.10.0 2.10.0-r1 2.11.0 2.11.0-r1 2.11.1 2.11.1-r1 2.11.2 2.11.2-r1 2.13.0 2.13.2 2.14.2 2.15.0 2.15.1 2.16.1 2.17.0 2.18.0 2.19.1 2.20.2 2.21.0 2.22.0: Backup and recovery utilities for GitHub Enterprise
 app-admin/gixy 0.1.20: Nginx configuration static analyzer
 app-admin/gkrellm 2.3.11-r1 9999: Single process stack of various system monitors
 app-admin/glance 20.0.0 20.0.1 2020.1.9999: Services for discovering, registering, and retrieving VM images
@@ -18048,7 +18048,7 @@ www-apps/rt 4.4.4: RT is an enterprise-grade ticketing system
 www-apps/rutorrent 3.8-r1 9999: ruTorrent is a front-end for the popular Bittorrent client rTorrent
 www-apps/trickster 0.1.9: Dashboard Accelerator for Prometheus
 www-apps/tt-rss 20200922 99999999: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
-www-apps/webdavcgi 0.8.3 0.8.4 1.1.1: A Perl CGI for accessing and sharing files, or calendar/addressbooks via WebDAV.
+www-apps/webdavcgi 1.1.1: A Perl CGI for accessing and sharing files, or calendar/addressbooks via WebDAV.
 www-apps/webmcp 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
