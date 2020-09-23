@@ -5,6 +5,10 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
+  <maintainer type="person">
+    <email>gentoo@aisha.cc</email>
+    <name>Aisha Tammy</name>
+  </maintainer>
   <longdescription lang="en">
     Python plotting library for collaborative, interactive, publication-quality
     graphs. Plotly is an online collaborative data analysis and graphing tool. 
