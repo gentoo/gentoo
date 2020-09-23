@@ -21,6 +21,6 @@ LICENSE="MIT"
 SLOT="0"
 
 RDEPEND="net-wireless/soapysdr:=
-		<net-wireless/uhd-4.0.0.0:=
+		net-wireless/uhd:=
 		dev-libs/boost:="
 DEPEND="${RDEPEND}"
