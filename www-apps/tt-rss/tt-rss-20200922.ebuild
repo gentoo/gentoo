@@ -3,13 +3,13 @@
 
 EAPI=7
 
-inherit git-r3 prefix webapp
+inherit prefix webapp
 
 DESCRIPTION="Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX"
 HOMEPAGE="https://tt-rss.org/"
-EGIT_REPO_URI="https://git.tt-rss.org/fox/${PN}.git"
+SRC_URI="https://dev.gentoo.org/~chewi/distfiles/${P}.tar.gz" # Upstream git frontend blocks wget?
 LICENSE="GPL-3"
-SLOT="${PV}" # Single live slot.
+KEYWORDS="~amd64 ~arm ~mips ~x86"
 IUSE="+acl daemon gd +mysqli postgres"
 REQUIRED_USE="|| ( mysqli postgres )"
 PHP_USE="gd?,mysqli?,postgres?,curl,fileinfo,intl,json,pdo,unicode,xml"
@@ -37,11 +37,14 @@ DEPEND="
 
 need_httpd_cgi # From webapp.eclass
 
+S="${WORKDIR}/${PN}"
+
 src_configure() {
 	hprefixify config.php-dist
 
 	sed -i -r \
 		-e "/'DB_TYPE'/s:,.*:, '$(usex mysqli mysql pgsql)'); // mysql or pgsql:" \
+		-e "/'CHECK_FOR_UPDATES'/s/true/false/" \
 		config.php-dist || die
 }
 
@@ -80,12 +83,5 @@ src_install() {
 
 pkg_postinst() {
 	elog "You need to merge config.php-dist into config.php manually when upgrading."
-
-	if use vhosts && [[ -n ${REPLACING_VERSIONS} ]]; then
-		elog
-		elog "The live ebuild does not automatically upgrade your installations so"
-		elog "don't forget to do so manually."
-	fi
-
 	webapp_pkg_postinst
 }
