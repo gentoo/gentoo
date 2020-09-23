@@ -1,5 +1,5 @@
 BDEPEND=virtual/rust >=virtual/rust-1.37.0 >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile install postinst test unpack
+DEFINED_PHASES=compile configure install postinst test unpack
 DEPEND=app-arch/xz-utils net-misc/curl:=[http2,ssl] dev-libs/openssl:0=
 DESCRIPTION=Rust toolchain installer
 EAPI=7
@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=app-arch/xz-utils net-misc/curl:=[http2,ssl] dev-libs/openssl:0=
 RESTRICT=test
 SLOT=0
-_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	cargo	59ecae2c29d723be70671fd182038195	git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=77136bf41867e390c743aa7604cac105
+_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	cargo	16808adb27d34df9e5106842af29c73c	git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=a8c2ce8030d3085ac7ef89bd761ed488
