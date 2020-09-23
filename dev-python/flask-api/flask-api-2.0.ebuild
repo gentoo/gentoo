@@ -3,12 +3,12 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( pypy3 python3_{6,7,8,9} )
 
 inherit distutils-r1
 
 DESCRIPTION="Browsable web APIs for Flask"
-HOMEPAGE="https://github.com/flask-api/flask-api"
+HOMEPAGE="https://www.flaskapi.org/"
 # pypi mirror don't have docs folder
 SRC_URI="https://github.com/flask-api/flask-api/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -16,10 +16,13 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-python/flask[${PYTHON_USEDEP}]
-	dev-python/markdown[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/flask[${PYTHON_USEDEP}]
+	dev-python/markdown[${PYTHON_USEDEP}]
+"
 
-DEPEND="${RDEPEND}"
+# https://github.com/flask-api/flask-api/pull/117
+PATCHES=( "${FILESDIR}/${P}-fix-pypy-tests.patch" )
 
 distutils_enable_tests pytest
 
