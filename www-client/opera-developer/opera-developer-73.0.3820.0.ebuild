@@ -33,6 +33,7 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
+	dev-libs/wayland
 	gnome-base/gconf:2
 	media-libs/alsa-lib
 	media-libs/fontconfig
@@ -55,6 +56,7 @@ RDEPEND="
 	x11-libs/libXrender
 	x11-libs/libXtst
 	x11-libs/libnotify
+	x11-libs/libxkbcommon
 	x11-libs/pango[X]
 "
 
