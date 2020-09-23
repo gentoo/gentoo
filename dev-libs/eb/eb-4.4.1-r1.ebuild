@@ -28,5 +28,10 @@ src_configure() {
 		$(use_enable ipv6) \
 		$(use_enable nls) \
 		$(use_enable threads pthread) \
-		--with-pkgdocdir=/usr/share/doc/${PF}/html
+		--with-pkgdocdir="${EPREFIX}"/usr/share/doc/${PF}/html \
+		--disable-static
+}
+
+src_install() {
+	find "${ED}" -name '*.la' -delete || die
 }
