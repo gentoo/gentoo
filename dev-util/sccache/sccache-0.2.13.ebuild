@@ -363,14 +363,11 @@ src_configure() {
 		$(usev redis)
 		$(usev s3)
 	)
-}
-
-src_compile() {
-	cargo_src_compile ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
+	cargo_src_configure --no-default-features
 }
 
 src_install() {
-	cargo_src_install ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
+	cargo_src_install
 
 	keepdir /etc/sccache
 
@@ -384,10 +381,6 @@ src_install() {
 		newinitd "${FILESDIR}"/scheduler.initd sccache-scheduler
 		newconfd "${FILESDIR}"/scheduler.confd sccache-scheduler
 	fi
-}
-
-src_test() {
-	cargo_src_test ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
 }
 
 pkg_postinst() {
