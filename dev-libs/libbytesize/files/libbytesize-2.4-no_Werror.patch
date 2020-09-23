@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/744286
+
+--- libbytesize-2.4/configure.ac
++++ libbytesize-2.4/configure.ac
+@@ -6,7 +6,7 @@
+ # This needs to be set before initializing automake
+ AC_DISABLE_STATIC
+ 
+-AM_INIT_AUTOMAKE([foreign -Wall -Werror -Wno-syntax -Wno-portability])
++AM_INIT_AUTOMAKE([foreign -Wall -Wno-syntax -Wno-portability])
+ AC_CONFIG_MACRO_DIR([m4])
+ 
+ # Check for the gettext programs
+--- libbytesize-2.4/src/Makefile.am
++++ libbytesize-2.4/src/Makefile.am
+@@ -2,7 +2,7 @@
+ LDADD = $(LIBINTL)
+ 
+ lib_LTLIBRARIES = libbytesize.la
+-libbytesize_la_CFLAGS = -Wall -Wextra -Werror -Wno-overflow -D_GNU_SOURCE
++libbytesize_la_CFLAGS = -Wall -Wextra -Wno-overflow -D_GNU_SOURCE
+ libbytesize_la_LIBADD = -lgmp -lmpfr $(PCRE2_LIBS)
+ libbytesize_la_LDFLAGS = -version-info 1:0:0
+ libbytesize_la_SOURCES = bs_size.c bs_size.h gettext.h
