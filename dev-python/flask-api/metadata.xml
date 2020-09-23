@@ -15,5 +15,6 @@
     </maintainer>
     <upstream>
         <remote-id type="github">flask-api/flask-api</remote-id>
+        <remote-id type="pypi">Flask-API</remote-id>
     </upstream>
 </pkgmetadata>
