@@ -285,6 +285,7 @@ src_install() {
 
 	doman man/man*/*
 
+	sed -i 's@dockerd\?\.exe@@g' contrib/completion/bash/docker || die
 	dobashcomp contrib/completion/bash/*
 	bashcomp_alias docker dockerd
 	insinto /usr/share/fish/vendor_completions.d/
