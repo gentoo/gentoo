@@ -8462,7 +8462,7 @@ dev-python/namespace-zope 1-r1: Namespace package declaration for zope
 dev-python/natsort 7.0.1: Natural sorting for Python
 dev-python/nautilus-python 1.2.3-r1: Python bindings for the Nautilus file manager
 dev-python/nbclient 0.5.0: A client library for executing Jupyter notebooks
-dev-python/nbconvert 5.6.1 5.6.1-r1 6.0.3 6.0.4 6.0.5: Converting Jupyter Notebooks
+dev-python/nbconvert 5.6.1 5.6.1-r1 6.0.3 6.0.4 6.0.5 6.0.6: Converting Jupyter Notebooks
 dev-python/nbdime 2.0.0-r1: Diff and merge of Jupyter Notebooks
 dev-python/nbformat 5.0.7: Reference implementation of the Jupyter Notebook format
 dev-python/nbsphinx 0.7.1-r1: Jupyter Notebook Tools for Sphinx
@@ -9037,7 +9037,7 @@ dev-python/semantic_version 2.8.5: Python library providing a few tools handling
 dev-python/semver 2.10.2: A Python module for semantic versioning
 dev-python/send2trash 1.5.0-r1: Sends files to the Trash (or Recycle Bin)
 dev-python/sentinels 1.0.0: Python Sentinels class which are objects with special meanings.
-dev-python/sentry-sdk 0.16.3 0.17.6 0.17.7: Python client for Sentry
+dev-python/sentry-sdk 0.16.3 0.17.6 0.17.7 0.17.8: Python client for Sentry
 dev-python/serpent 1.30: A simple serialization library based on ast.literal_eval
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenSSL
@@ -9286,7 +9286,7 @@ dev-python/yapf 0.30.0: A formatter for Python files
 dev-python/yappi 1.2.5-r1: Yet Another Python Profiler
 dev-python/yapsy 1.12.2: A fat-free DIY Python plugin management toolkit
 dev-python/yaql 1.1.3: YAQL: Yet Another Query Language
-dev-python/yarl 1.4.2 1.5.1: Yet another URL library
+dev-python/yarl 1.4.2 1.5.1 1.6.0: Yet another URL library
 dev-python/yaswfp 0.9.3-r1: Yet Another SWF Parser
 dev-python/zVMCloudConnector 1.4.1: a development sdk for managing z/VM
 dev-python/zc-lockfile 2.0: Basic inter-process locks
