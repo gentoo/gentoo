@@ -9,7 +9,7 @@ SRC_URI="https://github.com/mgorny/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="libressl +magic +netlink qrcode ssl upnp"
 
 RDEPEND=">=dev-libs/libevent-2:0=

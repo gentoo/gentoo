@@ -11,9 +11,9 @@ SRC_URI="https://fossil-scm.org/home/uv/fossil-src-${PV}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ppc ppc64 ~x86"
-IUSE="debug fusefs json -legacy-mv-rm -miniz system-sqlite +ssl static
-	  tcl tcl-stubs tcl-private-stubs th1-docs th1-hooks"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+IUSE="debug fusefs json -miniz system-sqlite +ssl static tcl tcl-stubs
+	  tcl-private-stubs th1-docs th1-hooks"
 
 REQUIRED_USE="ssl? ( !miniz )"
 
@@ -23,7 +23,7 @@ RDEPEND="
 		sys-libs/readline:0
 		dev-libs/libedit
 	)
-	system-sqlite? ( >=dev-db/sqlite-3.28.0:3 )
+	system-sqlite? ( >=dev-db/sqlite-3.33.0:3 )
 	ssl? ( dev-libs/openssl:0 )
 	tcl? ( dev-lang/tcl:0= )
 "
@@ -57,8 +57,7 @@ src_configure() {
 	use fusefs        || myconf+=' --disable-fusefs'
 
 	local u useflags
-	useflags=( legacy-mv-rm miniz tcl-stubs tcl-private-stubs
-			   th1-docs th1-hooks )
+	useflags=( miniz tcl-stubs tcl-private-stubs th1-docs th1-hooks )
 	for u in ${useflags[@]} ; do
 		use ${u} &&  myconf+=" --with-${u}"
 	done
