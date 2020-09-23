@@ -14,7 +14,7 @@ SRC_URI="https://github.com/containers/${PN}/releases/download/${PV}/${P}.tar.gz
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE="bpf +caps man seccomp systemd static-libs"
 
 DEPEND="
@@ -38,14 +38,14 @@ DOCS=( README.md )
 
 src_unpack() {
 	# dont' try to unpack the .lds file
-	A=( ${A[@]/libcrun.lds} )
-	unpack ${A}
+	MY_A=( ${A[@]/libcrun.lds} )
+	unpack ${MY_A}
 }
 
 src_prepare() {
 	default
 	eautoreconf
-	cp -v ${DISTDIR}/libcrun.lds ${S}/ || die "libcrun.lds could not be copied"
+	cp -v "${DISTDIR}"/libcrun.lds "${S}"/ || die "libcrun.lds could not be copied"
 }
 
 src_configure() {
