@@ -52,6 +52,11 @@ pkg_setup() {
 	use doc && python-any-r1_pkg_setup
 }
 
+src_prepare() {
+	default
+	sed "s@, '-Werror'@@" -i meson.build || die #744250
+}
+
 src_configure() {
 	# gui can be built but will not be installed
 	local emesonargs=(
