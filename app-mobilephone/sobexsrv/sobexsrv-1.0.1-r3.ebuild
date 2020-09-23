@@ -14,7 +14,7 @@ HOMEPAGE="http://www.mulliner.org/bluetooth/sobexsrv.php"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ppc ~x86"
 
 DEPEND="
 	>=dev-libs/openobex-1.7.2-r1
