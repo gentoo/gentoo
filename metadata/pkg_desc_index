@@ -5527,7 +5527,7 @@ dev-libs/libusb 1.0.19-r1 1.0.21-r1 1.0.22 1.0.23-r1: Userspace access to USB de
 dev-libs/libusb-compat 0.1.5-r2 0.1.5-r3: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libusbhp 1.0.2: Usb Hotplug Library
 dev-libs/libutf8proc 2.2.0_p1-r1 2.4.0 2.5.0: A clean C Library for processing UTF-8 Unicode data
-dev-libs/libuv 1.35.0 1.37.0 1.38.0-r1 1.38.1 1.39.0 9999: Cross-platform asychronous I/O
+dev-libs/libuv 1.39.0 9999: Cross-platform asychronous I/O
 dev-libs/libvarlink 16 18 19: C implementation of the Varlink protocol and command line tool
 dev-libs/libverto 0.2.5-r1 0.3.0 0.3.1: Main event loop abstraction library
 dev-libs/libvformat 1.13-r2: Library to read and write vcard files
@@ -14459,7 +14459,7 @@ net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
 net-analyzer/vnstat 1.17 2.4 2.5 2.6 9999: Console-based network traffic monitor that keeps statistics of network usage
 net-analyzer/wapiti 3.0.3 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1 0.2.0-r2: Poor man's web vulnerability scanner
-net-analyzer/wireshark 3.2.5 3.2.6 3.3.0 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 3.2.6 3.3.0 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3 0.3-r1: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2 9999: A framework for layer 2 attacks
@@ -17568,7 +17568,7 @@ sys-kernel/dracut-crypt-ssh 1.0.6-r1 1.0.7: Early unlocking of encrypted systems
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.60 5.4.61 5.4.62 5.4.63 5.4.64 5.4.65 5.4.66 5.7.17 5.7.18 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6 5.8.7 5.8.8 5.8.9 5.8.10: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.60 5.4.61 5.4.62 5.4.62-r1 5.4.63 5.4.63-r1 5.4.64 5.4.64-r1 5.4.65 5.4.65-r1 5.4.66 5.4.66-r1 5.7.17 5.7.18 5.7.19 5.7.19-r1 5.8.3 5.8.4 5.8.5 5.8.5-r1 5.8.6 5.8.6-r1 5.8.7 5.8.7-r1 5.8.8 5.8.8-r1 5.8.9 5.8.9-r1 5.8.10 5.8.10-r1: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.233 4.4.234 4.4.235 4.4.236 4.9.233 4.9.234 4.9.235 4.9.236 4.14.194 4.14.195 4.14.196 4.14.197 4.14.198 4.19.141 4.19.142 4.19.143 4.19.144 4.19.145 4.19.146 5.4.60 5.4.61 5.4.62 5.4.63 5.4.64 5.4.65 5.4.66 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6 5.8.7 5.8.8 5.8.9 5.8.10: Full sources including the Gentoo patchset for the 5.8 kernel tree
+sys-kernel/gentoo-sources 4.4.233 4.4.234 4.4.235 4.4.236 4.4.237 4.9.233 4.9.234 4.9.235 4.9.236 4.9.237 4.14.194 4.14.195 4.14.196 4.14.197 4.14.198 4.19.141 4.19.142 4.19.143 4.19.144 4.19.145 4.19.146 4.19.147 5.4.60 5.4.61 5.4.62 5.4.63 5.4.64 5.4.65 5.4.66 5.4.67 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6 5.8.7 5.8.8 5.8.9 5.8.10 5.8.11: Full sources including the Gentoo patchset for the 5.8 kernel tree
 sys-kernel/git-sources 5.9_rc1 5.9_rc2 5.9_rc3 5.9_rc4 5.9_rc5 5.9_rc6: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
@@ -18073,7 +18073,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r3: a free, open source web browser
 www-client/opera 70.0.3728.154 70.0.3728.178 71.0.3770.148: A fast and secure web browser
 www-client/opera-beta 71.0.3770.50 71.0.3770.81 71.0.3770.97 71.0.3770.126: A fast and secure web browser
-www-client/opera-developer 72.0.3779.0 72.0.3784.0 72.0.3791.0 72.0.3798.0 72.0.3807.0 72.0.3814.0 73.0.3820.0: A fast and secure web browser
+www-client/opera-developer 73.0.3820.0: A fast and secure web browser
 www-client/otter 1.0.01 1.0.01-r1 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.12.0 1.13.0 1.13.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
