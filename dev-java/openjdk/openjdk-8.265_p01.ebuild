@@ -107,7 +107,7 @@ openjdk_check_requirements() {
 pkg_pretend() {
 	openjdk_check_requirements
 	if [[ ${MERGE_TYPE} != binary ]]; then
-		has ccache ${FEATURES} && die "FEATURES=ccache doesn't work with ${PN}"
+		has ccache ${FEATURES} && die "FEATURES=ccache doesn't work with ${PN}, bug #677876"
 	fi
 }
 
