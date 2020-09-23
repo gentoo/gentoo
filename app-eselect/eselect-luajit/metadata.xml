@@ -5,6 +5,4 @@
     <email>mva@gentoo.org</email>
     <name>Vadim Misbakh-Soloviov</name>
   </maintainer>
-  <longdescription lang="en">eselect-module for choosing default LuaJIT interpreter</longdescription>
-  <longdescription lang="ru">eselect-модуль для выбора интерпретатора LuaJIT по умолчанию</longdescription>
 </pkgmetadata>
