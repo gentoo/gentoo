@@ -12,6 +12,8 @@ DESCRIPTION="A tool to probe for hardware, check it's operability and find drive
 HOMEPAGE="https://github.com/linuxhw/hw-probe/"
 SRC_URI="https://github.com/linuxhw/hw-probe/archive/${MY_PV_BETA}.tar.gz -> ${P}.tar.gz"
 
+S="${WORKDIR}/${PN}-${MY_PV_BETA}"
+
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -29,7 +31,7 @@ RDEPEND="
 	virtual/perl-Data-Dumper
 "
 
-S="${WORKDIR}/${PN}-${MY_PV_BETA}"
+PATCHES=( "${FILESDIR}/${PN}-1.5-disable-automatic-upload.patch" )
 
 src_compile() {
 	:;

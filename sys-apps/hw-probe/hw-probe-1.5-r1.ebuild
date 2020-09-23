@@ -26,6 +26,8 @@ RDEPEND="
 	virtual/perl-Data-Dumper
 "
 
+PATCHES=( "${FILESDIR}/${PN}-1.5-disable-automatic-upload.patch" )
+
 src_compile() {
 	:;
 }

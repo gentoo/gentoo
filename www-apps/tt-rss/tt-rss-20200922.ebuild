@@ -1,40 +1,43 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit prefix user webapp
+inherit prefix webapp
 
-COMMIT="c30f5e18119d1935e8fe6d422053b127e8f4f1b3"
 DESCRIPTION="Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX"
 HOMEPAGE="https://tt-rss.org/"
-SRC_URI="https://git.tt-rss.org/git/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~chewi/distfiles/${P}.tar.gz" # Upstream git frontend blocks wget?
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~arm ~mips ~x86"
-IUSE="+acl daemon +mysqli postgres"
+IUSE="+acl daemon gd +mysqli postgres"
 REQUIRED_USE="|| ( mysqli postgres )"
+PHP_USE="gd?,mysqli?,postgres?,curl,fileinfo,intl,json,pdo,unicode,xml"
 
-DEPEND="daemon? ( acl? ( sys-apps/acl ) )"
+DEPEND="
+	daemon? ( acl? ( sys-apps/acl ) )
+"
 
-RDEPEND="${DEPEND}
-	daemon? ( dev-lang/php:*[mysqli?,postgres?,curl,cli,pcntl,pdo] )
-	!daemon? ( dev-lang/php:*[mysqli?,postgres?,curl,pdo] )
-	virtual/httpd-php:*"
+RDEPEND="
+	${DEPEND}
+	daemon? (
+		acct-user/ttrssd
+		acct-group/ttrssd
+		dev-lang/php:*[${PHP_USE},cli,pcntl]
+	)
+	!daemon? (
+		dev-lang/php:*[${PHP_USE}]
+	)
+	virtual/httpd-php:*
+"
 
-DEPEND="!vhosts? ( ${DEPEND} )"
+DEPEND="
+	!vhosts? ( ${DEPEND} )
+"
 
 need_httpd_cgi # From webapp.eclass
 
 S="${WORKDIR}/${PN}"
-
-pkg_setup() {
-	webapp_pkg_setup
-
-	if use daemon; then
-		enewgroup ttrssd
-		enewuser ttrssd -1 /bin/sh /dev/null ttrssd
-	fi
-}
 
 src_configure() {
 	hprefixify config.php-dist
