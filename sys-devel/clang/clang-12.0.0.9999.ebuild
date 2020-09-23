@@ -79,8 +79,6 @@ src_prepare() {
 	BUILD_DIR=${WORKDIR}/x/y/clang
 
 	llvm.org_src_prepare
-
-	mv ../clang-tools-extra tools/extra || die
 }
 
 check_distribution_components() {
@@ -254,6 +252,7 @@ multilib_src_configure() {
 
 	if multilib_is_native_abi; then
 		mycmakeargs+=(
+			-DLLVM_EXTERNAL_CLANG_TOOLS_EXTRA_SOURCE_DIR="${WORKDIR}"/clang-tools-extra
 			# normally copied from LLVM_INCLUDE_DOCS but the latter
 			# is lacking value in stand-alone builds
 			-DCLANG_INCLUDE_DOCS=ON
