@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	SRC_URI="https://github.com/rust-lang/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 		$(cargo_crate_uris ${CRATES})"
-	KEYWORDS="~amd64 ~ppc64"
+	KEYWORDS="~amd64 ~arm64 ~ppc64"
 fi
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 CC0-1.0 MIT Unlicense ZLIB"
