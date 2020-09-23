@@ -235,11 +235,10 @@ src_compile() {
 	pushd components/cli || die
 
 	# build cli
-	emake \
+	DISABLE_WARN_OUTSIDE_CONTAINER=1 emake \
 		LDFLAGS="$(usex hardened '-extldflags -fno-PIC' '')" \
 		VERSION="$(cat ../../VERSION)" \
 		GITCOMMIT="${DOCKER_GITCOMMIT}" \
-		DISABLE_WARN_OUTSIDE_CONTAINER=1 \
 		dynbinary
 
 	# build man pages
