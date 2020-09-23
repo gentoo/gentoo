@@ -1108,7 +1108,6 @@ app-shells/bash-completion:eselect - Support blacklisting of completions via 'es
 app-shells/mksh:lksh - variant that uses POSIX-compliant arithmetics with the host “long” data type and is automatically in POSIX mode when called as /bin/sh
 app-shells/pdsh:rsh - This allows the use of rsh (remote shell) and rcp (remote copy) for authoring websites. sftp is a much more secure protocol and is preferred.
 app-shells/shish:diet - Use dev-libs/dietlibc
-app-text/asciidoc:highlight - Enable source code highlighting
 app-text/atril:caja - Enable property page extension in mate-base/caja
 app-text/atril:dvi - Enable build-in DVI viewer
 app-text/atril:epub - Enable build-in DVI viewer using net-libs/webkit-gtk

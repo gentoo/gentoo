@@ -639,7 +639,7 @@ app-admin/swatchdog 3.2.4-r1: Simple log watcher
 app-admin/sxid 4.2-r2: suid, sgid file and directory checking
 app-admin/sysklogd 2.1.2 9999: Standard log daemons
 app-admin/syslog-ng 3.22.1 3.24.1 3.25.1 3.26.1-r1 3.28.1-r2: syslog replacement with advanced filtering features
-app-admin/syslog-summary 1.14-r1 1.14-r2 1.14-r3 1.14-r4 1.14-r5: Summarizes the contents of a syslog log file
+app-admin/syslog-summary 1.14-r5: Summarizes the contents of a syslog log file
 app-admin/sysrqd 17 17-r1: Daemon providing access to the kernel sysrq functions via network
 app-admin/sysstat 12.2.1 12.2.2 12.2.3 12.4.0 999999: System performance tools for Linux
 app-admin/system-config-printer 1.5.12-r1: Graphical user interface for CUPS administration
@@ -891,7 +891,7 @@ app-cdr/xfburn 0.6.2: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
 app-crypt/acme 1.7.0 1.8.0 9999: An implementation of the ACME protocol
 app-crypt/acme-client 0.1.16: a secure ACME client
-app-crypt/acme-sh 2.8.3 2.8.5 9999: An ACME Shell script
+app-crypt/acme-sh 2.8.7 9999: An ACME Shell script
 app-crypt/acme-tiny 4.0.4 9999: A tiny, auditable script for Let's Encrypt's ACME Protocol
 app-crypt/acmebot 2.3.0-r1 2.7.0 9999: Certificate manager bot using ACME protocol
 app-crypt/acr38u 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
@@ -1569,7 +1569,7 @@ app-doc/e16-docs 0.16.8.0.2: The E16 online help
 app-doc/eclass-manpages 20200704 20200913 99999999: Collection of Gentoo eclass manpages
 app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5 25.3 26.3: The GNU Emacs Lisp Reference Manual
 app-doc/geant-docs 4.10.05 4.10.5_p2 4.10.6: User documentation for Geant4 physics simulation toolkit
-app-doc/gimp-help 2.8.2 2.10.0-r1: GNU Image Manipulation Program help files
+app-doc/gimp-help 2.10.0-r1: GNU Image Manipulation Program help files
 app-doc/gnucash-docs 3.8b 4.0 4.1: Documentation package for GnuCash
 app-doc/halibut 1.1 1.2: yet another free document preparation system
 app-doc/jargon 4.4.7-r1: A compendium of hacker slang illuminating many aspects of hackish tradition
@@ -2678,7 +2678,7 @@ app-pda/jpilot 1.8.2-r1: Desktop Organizer Software for the Palm Pilot
 app-pda/libimobiledevice 1.2.0-r1 1.2.1_pre20200220 1.3.0-r1: Support library to communicate with Apple iPhone/iPod Touch devices
 app-pda/libplist 2.1.0 2.2.0-r1 2.2.0-r2: Support library to deal with Apple Property Lists (Binary & XML)
 app-pda/libusbmuxd 1.0.10-r1 2.0.1 2.0.2-r1: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
-app-pda/pilot-link 0.12.5-r2 0.12.5-r3: Suite of tools for moving data between a Palm device and a desktop
+app-pda/pilot-link 0.12.5-r3: Suite of tools for moving data between a Palm device and a desktop
 app-pda/usbmuxd 1.1.0 1.1.1_pre20200121 1.1.1: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-portage/cfg-update 1.8.9: Easy to use GUI & CLI alternative for etc-update
 app-portage/conf-update 1.0.3-r1: conf-update is a ncurses-based config management utility
@@ -2797,7 +2797,7 @@ app-text/antiword 0.37-r1: free MS Word reader
 app-text/antixls 0.3b: Print out an XLS file with minimal formatting, or extract the data into CSV
 app-text/apvlv 0.1.5-r2: Alf's PDF Viewer Like Vim
 app-text/asa 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
-app-text/asciidoc 8.6.10_p20181016-r1 9.0.2: A plain text human readable/writable document format
+app-text/asciidoc 9.0.2: A plain text human readable/writable document format
 app-text/aspell 0.60.8: A spell checker replacement for ispell
 app-text/atril 1.24.0-r1: Atril document viewer for MATE
 app-text/bact 0.13-r1: Boosting Algorithm for Classification of Trees
@@ -3439,7 +3439,7 @@ dev-cpp/clucene 2.3.3.4-r6: High-performance, full-featured text search engine b
 dev-cpp/commoncpp2 1.8.1-r4: C++ library offering portable support for system-related services
 dev-cpp/cpp-hocon 0.2.1 0.3.0: Provides C++ support for the HOCON configuration file format
 dev-cpp/cpp-taskflow 2.4.0-r1 2.6.0: Modern C++ Parallel Task Programming
-dev-cpp/ctemplate 2.3-r1 2.4: A simple but powerful template language for C++
+dev-cpp/ctemplate 2.4: A simple but powerful template language for C++
 dev-cpp/eigen 3.3.7 3.3.7-r1: C++ template library for linear algebra
 dev-cpp/gconfmm 2.28.3-r1: C++ bindings for GConf
 dev-cpp/gflags 2.2.0 2.2.1 2.2.1-r1 9999: Google's C++ argument parsing library
@@ -5183,7 +5183,7 @@ dev-lang/vala 0.36.20 0.40.20 0.40.23 0.44.11 0.46.7 0.46.10 0.46.11 0.46.12 0.4
 dev-lang/whitespace 0.4: Whitespace, an esoteric programming language
 dev-lang/xsb 3.6.0 3.6.0-r1 3.7.0-r1 3.8.0: XSB is a logic programming and deductive database system
 dev-lang/yap 6.3.3-r1 6.3.4: YAP is a high-performance Prolog compiler
-dev-lang/yasm 1.3.0 1.3.0-r1 9999: An assembler for x86 and x86_64 instruction sets
+dev-lang/yasm 1.3.0-r1: An assembler for x86 and x86_64 instruction sets
 dev-lang/zig 0.5.0 9999: A robust, optimal, and maintainable programming language
 dev-libs/9libs 1.0-r4: A package of Plan 9 compatibility libraries
 dev-libs/Ice 3.6.5 3.6.5-r1: ICE middleware C++ library and generator tools
@@ -8131,7 +8131,7 @@ dev-python/enzyme 0.4.1-r2 9999: Python video metadata parser
 dev-python/eradicate 1.0: Removes commented-out code from Python files
 dev-python/errorhandler 2.0.1: Logging framework handler
 dev-python/et_xmlfile 1.0.1: An implementation of lxml.xmlfile for the standard library
-dev-python/eventlet 0.25.1-r1 0.26.1: Highly concurrent networking library
+dev-python/eventlet 0.26.1: Highly concurrent networking library
 dev-python/exam 0.10.6: Helpers for better testing
 dev-python/execnet 1.7.1-r1: Rapid multi-Python deployment
 dev-python/executing 0.5.2: Get information about what a Python frame is currently doing
@@ -10901,7 +10901,7 @@ dev-util/tup 0.7.8 9999: A file-based build system
 dev-util/txt2regex 0.8-r3: A Regular Expression wizard that converts human sentences to regexs
 dev-util/uftrace 0.9.4: Function (graph) tracer for user-space
 dev-util/umockdev 0.12.1: Mock hardware devices for creating unit tests
-dev-util/uncrustify 0.66.1 0.69.0 0.71.0 9999: C/C++/C#/D/Java/Pawn code indenter and beautifier
+dev-util/uncrustify 0.71.0 9999: C/C++/C#/D/Java/Pawn code indenter and beautifier
 dev-util/unifdef 2.10 2.11 2.12: remove #ifdef'ed lines from a file while otherwise leaving the file alone
 dev-util/usb-robot 0.2.0: USB Reverse engineering tools
 dev-util/valgrind 3.14.0 3.15.0 3.16.0 3.16.1 9999: An open-source memory debugger for GNU/Linux
@@ -11772,7 +11772,7 @@ games-util/xgamer 0.6.2: A launcher for starting games in a second X session
 games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
 gnome-base/dconf 0.34.0 0.36.0: Simple low-level configuration system
 gnome-base/dconf-editor 3.34.4 3.36.4: Graphical tool for editing the dconf configuration database
-gnome-base/gconf 3.2.6-r4 3.2.6-r5: GNOME configuration system and daemon
+gnome-base/gconf 3.2.6-r5: GNOME configuration system and daemon
 gnome-base/gdm 3.34.1 3.36.2 3.36.3: GNOME Display Manager for managing graphical display servers and user logins
 gnome-base/gnome 3.34.4 3.36.5: Meta package for GNOME 3, merge this package to install
 gnome-base/gnome-applets 3.34.0 3.36.4: Applets for the GNOME Flashback Panel
@@ -17712,7 +17712,7 @@ sys-process/at 3.1.23 3.2.1: Queues jobs for later execution
 sys-process/atop 2.3.0-r1 2.4.0 2.5.0-r1: Resource-specific view of processes
 sys-process/audit 2.6.4 2.7.1 2.8.2 2.8.3 2.8.4 2.8.5 2.8.5-r1: Userspace utilities for storing and processing auditing records
 sys-process/bashtop 0.9.25: Resource monitor that shows usage and stats
-sys-process/bcron 0.10 0.11: A new cron system designed with secure operations in mind by Bruce Guenter
+sys-process/bcron 0.11: A new cron system designed with secure operations in mind by Bruce Guenter
 sys-process/criu 3.6 3.11 3.12 3.14-r2: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
 sys-process/cronie 1.5.4-r1 1.5.5: Cronie is a standard UNIX daemon cron based on the original vixie-cron
@@ -18431,7 +18431,7 @@ x11-misc/efax-gtk 3.2.14 3.2.15: A graphical frontend for the 'efax' application
 x11-misc/evolvotron 0.7.1 0.7.1-r1: Generative art image evolver
 x11-misc/fbdesk 1.4.1: fluxbox-util application that creates and manage icons on your Fluxbox desktop
 x11-misc/fbpager 20090221-r1: A Pager for fluxbox
-x11-misc/fbpanel 7.0 7.0-r1 7.0-r2: light-weight X11 desktop panel
+x11-misc/fbpanel 7.0-r2: light-weight X11 desktop panel
 x11-misc/fireflies 2.08-r1: Fireflies screensaver: Wicked cool eye candy
 x11-misc/flow-pomodoro 1.2.0-r1: A pomodoro app that blocks distractions while you work
 x11-misc/fluxter 0.1.0: workspace pager dockapp, particularly useful with the Fluxbox window manager
@@ -18595,7 +18595,7 @@ x11-misc/xaos 3.6: Very fast real-time fractal zoomer
 x11-misc/xautolock 2.2_p5_p1 2.2_p5_p1-r1 2.2_p5_p2 2.2_p6 2.2_p7: An automatic X screen-locker/screen-saver
 x11-misc/xautomation 1.09-r1: Control X from command line and find things on screen
 x11-misc/xbatt 1.3_rc1: Notebook battery indicator for X
-x11-misc/xbattbar 1.4.8 1.4.9: Advanced Power Management battery status display for X
+x11-misc/xbattbar 1.4.9: Advanced Power Management battery status display for X
 x11-misc/xbindkeys 1.8.6-r1 1.8.7-r1: Tool for launching commands on keystrokes
 x11-misc/xbitmaps 1.1.2-r1: X.Org bitmaps data
 x11-misc/xcalendar 4.0-r2: A simple interactive calendar program with a notebook capability
