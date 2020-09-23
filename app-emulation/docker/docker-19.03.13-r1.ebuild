@@ -287,6 +287,7 @@ src_install() {
 	doman man/man*/*
 
 	dobashcomp contrib/completion/bash/*
+	bashcomp_alias docker dockerd
 	insinto /usr/share/fish/vendor_completions.d/
 	doins contrib/completion/fish/docker.fish
 	insinto /usr/share/zsh/site-functions
