@@ -10,18 +10,19 @@ DESCRIPTION="An ACME Shell script"
 HOMEPAGE="https://github.com/Neilpang/acme.sh"
 SRC_URI="https://github.com/Neilpang/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
 
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE=""
 
-RDEPEND="net-misc/curl
+RDEPEND="
+	net-misc/curl
 	|| ( dev-libs/libressl dev-libs/openssl:0 )
 	|| ( net-analyzer/netcat net-analyzer/openbsd-netcat )
 	|| ( net-misc/socat www-servers/apache:2 www-servers/nginx )
-	virtual/cron"
-
-S="${WORKDIR}/${MY_P}"
+	virtual/cron
+"
 
 src_install() {
 	einstalldocs
