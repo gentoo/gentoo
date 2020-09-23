@@ -3179,6 +3179,7 @@ games-engines/openmw:osg-fork - Use OpenSceneGraph forked by OpenMW instead of u
 games-engines/renpy:development - Install IDE for game developers and an empty game template
 games-engines/residualvm:mpeg2 - enable mpeg2 codec for cutscenes
 games-engines/scummvm:fluidsynth - compile with support for fluidsynth
+games-engines/scummvm:fribidi - Support for right-to-left languages via dev-libs/fribidi
 games-engines/scummvm:mpeg2 - enable mpeg2 codec for cutscenes
 games-engines/scummvm:net - enable cloud support via media-libs/sdl2-net
 games-engines/scummvm:speech - enable text-to-speech support through app-accessibility/speech-dispatcher
