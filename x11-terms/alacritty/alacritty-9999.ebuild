@@ -66,19 +66,20 @@ src_unpack() {
 }
 
 src_configure() {
-	myfeatures=(
+	local myfeatures=(
 		$(usex X x11 '')
 		$(usev wayland)
 	)
+	cargo_src_configure --no-default-features
 }
 
 src_compile() {
 	cd alacritty || die
-	cargo_src_compile ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
+	cargo_src_compile
 }
 
 src_install() {
-	CARGO_INSTALL_PATH="alacritty" cargo_src_install ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
+	cargo_src_install --path alacritty
 
 	newman extra/alacritty.man alacritty.1
 
