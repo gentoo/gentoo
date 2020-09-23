@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit python-r1
+inherit autotools python-r1
 
 DESCRIPTION="Tiny library providing a C \"class\" for working with arbitrary big sizes in bytes"
 HOMEPAGE="https://github.com/storaged-project/libbytesize"
@@ -42,12 +42,21 @@ DOCS=( README.md )
 
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.4-no_Werror.patch"
+)
+
 python_do() {
 	if use python; then
 		python_foreach_impl run_in_build_dir "$@"
 	else
 		"$@"
 	fi
+}
+
+src_prepare() {
+	default
+	eautoreconf
 }
 
 src_configure() {
