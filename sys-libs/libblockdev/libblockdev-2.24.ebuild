@@ -4,12 +4,12 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit python-single-r1 xdg-utils
+inherit autotools python-single-r1 xdg-utils
 
 DESCRIPTION="A library for manipulating block devices"
 HOMEPAGE="https://github.com/storaged-project/libblockdev"
 if [[ "${PV}" == *9999 ]] ; then
-	inherit autotools git-r3
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/storaged-project/libblockdev.git"
 	BDEPEND="
 		sys-devel/autoconf-archive
@@ -73,7 +73,12 @@ pkg_setup() {
 src_prepare() {
 	xdg_environment_reset #623992
 	default
-	[[ "${PV}" == *9999 ]] && eautoreconf
+
+	# https://bugs.gentoo.org/744289
+	find -type f \( -name "Makefile.am" -o -name "configure.ac" \) -print0 \
+		| xargs --null sed "s@ -Werror@@" -i || die
+
+	eautoreconf
 }
 
 src_configure() {
