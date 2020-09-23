@@ -235,11 +235,10 @@ src_compile() {
 	pushd components/cli || die
 
 	# build cli
-	emake \
+	DISABLE_WARN_OUTSIDE_CONTAINER=1 emake \
 		LDFLAGS="$(usex hardened '-extldflags -fno-PIC' '')" \
 		VERSION="$(cat ../../VERSION)" \
 		GITCOMMIT="${DOCKER_GITCOMMIT}" \
-		DISABLE_WARN_OUTSIDE_CONTAINER=1 \
 		dynbinary
 
 	# build man pages
@@ -286,7 +285,9 @@ src_install() {
 
 	doman man/man*/*
 
+	sed -i 's@dockerd\?\.exe@@g' contrib/completion/bash/docker || die
 	dobashcomp contrib/completion/bash/*
+	bashcomp_alias docker dockerd
 	insinto /usr/share/fish/vendor_completions.d/
 	doins contrib/completion/fish/docker.fish
 	insinto /usr/share/zsh/site-functions
