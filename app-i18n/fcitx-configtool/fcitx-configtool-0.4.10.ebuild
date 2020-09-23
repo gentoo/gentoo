@@ -24,7 +24,8 @@ SLOT="4"
 KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
-BDEPEND="virtual/pkgconfig"
+BDEPEND="dev-libs/glib:2
+	virtual/pkgconfig"
 DEPEND=">=app-i18n/fcitx-4.2.9:4
 	app-text/iso-codes
 	dev-libs/glib:2
