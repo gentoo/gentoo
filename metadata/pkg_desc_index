@@ -13232,7 +13232,7 @@ media-libs/lsp-plugins 1.1.5-r2 1.1.7-r1 1.1.10 1.1.22 1.1.24 9999: Linux Studio
 media-libs/lv2 1.18.0: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0 1.2.0-r1: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 20.0.8 20.1.6 20.1.7 20.2.0_rc2 20.2.0_rc3 20.2.0_rc4 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 20.0.8 20.1.6 20.1.7 20.1.8 20.2.0_rc2 20.2.0_rc3 20.2.0_rc4 9999: OpenGL-like graphic library for Linux
 media-libs/mlt 6.20.0-r2 6.22.1: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
@@ -18260,7 +18260,7 @@ x11-drivers/xf86-video-qxl 0.1.5: QEMU QXL paravirt video driver
 x11-drivers/xf86-video-r128 6.12.0: ATI Rage128 video driver
 x11-drivers/xf86-video-siliconmotion 1.7.9: Silicon Motion video driver
 x11-drivers/xf86-video-vboxvideo 1.0.0: VirtualBox guest video driver
-x11-drivers/xf86-video-vesa 2.4.0: Generic VESA video driver
+x11-drivers/xf86-video-vesa 2.4.0 2.5.0: Generic VESA video driver
 x11-drivers/xf86-video-vmware 13.3.0: VMware SVGA video driver
 x11-libs/agg 2.5-r3: High quality rendering engine library for C++
 x11-libs/c++-gtk-utils 2.0.27 2.0.33 2.0.34 2.2.10 2.2.18 2.2.19: A number of classes and functions for programming GTK+ programs using C++
@@ -18288,7 +18288,7 @@ x11-libs/libGLw 8.0.0-r1: Mesa GLw library
 x11-libs/libICE 1.0.10: X.Org Inter-Client Exchange library
 x11-libs/libQGLViewer 2.7.1 2.7.2: C++ library based on Qt that eases the creation of OpenGL 3D viewers
 x11-libs/libSM 1.2.3 1.2.3-r1: X.Org Session Management library
-x11-libs/libX11 1.6.9 1.6.10 1.6.11 1.6.12: X.Org X11 library
+x11-libs/libX11 1.6.12: X.Org X11 library
 x11-libs/libXScrnSaver 1.2.3: X.Org XScrnSaver library
 x11-libs/libXau 1.0.9: X.Org X authorization library
 x11-libs/libXaw 1.0.13-r1 1.0.13-r2: X.Org Xaw library
