@@ -1,14 +1,14 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=configure install postinst prerm setup unpack
+DEFINED_PHASES=configure install postinst prerm setup
 DEPEND=!vhosts? ( daemon? ( acl? ( sys-apps/acl ) ) ) || ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
 DESCRIPTION=Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
 EAPI=7
 HOMEPAGE=https://tt-rss.org/
 IUSE=+acl daemon gd +mysqli postgres vhosts
+KEYWORDS=~amd64 ~arm ~mips ~x86
 LICENSE=GPL-3
-PROPERTIES=live
 RDEPEND=daemon? ( acl? ( sys-apps/acl ) ) daemon? ( acct-user/ttrssd acct-group/ttrssd dev-lang/php:*[gd?,mysqli?,postgres?,curl,fileinfo,intl,json,pdo,unicode,xml,cli,pcntl] ) !daemon? ( dev-lang/php:*[gd?,mysqli?,postgres?,curl,fileinfo,intl,json,pdo,unicode,xml] ) virtual/httpd-php:* >=app-admin/webapp-config-1.50.15
 REQUIRED_USE=|| ( mysqli postgres )
-SLOT=99999999
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	prefix	c2993e4c430c1ee24f278983d6189501	webapp	16783e418aca3ffa461d68310bf7ab12
-_md5_=98f7997c77595afb52880f89e6a0b0d0
+SLOT=20200922
+SRC_URI=https://dev.gentoo.org/~chewi/distfiles/tt-rss-20200922.tar.gz
+_eclasses_=prefix	c2993e4c430c1ee24f278983d6189501	webapp	16783e418aca3ffa461d68310bf7ab12
+_md5_=8a361b5f98de5e8ba29e3cf8ddb9c156

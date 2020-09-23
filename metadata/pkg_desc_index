@@ -209,6 +209,7 @@ acct-group/tox 0: Group management for package net-libs/tox
 acct-group/transmission 0: System group: transmission
 acct-group/tsm 0: System group: tsm
 acct-group/tss 0: Trusted Software Stack for TPMs group
+acct-group/ttrssd 0: Group for www-apps/tt-rss
 acct-group/tty 0: System group: tty
 acct-group/turnserver 0: A group for a turn server like coturn
 acct-group/ubridge 0: Group for net-misc/ubridge
@@ -428,6 +429,7 @@ acct-user/tor 0: user for tor daemon
 acct-user/tox 0: User for package net-libs/tox
 acct-user/transmission 1: System user: transmission
 acct-user/tss 0: Trusted Software Stack for TPMs user
+acct-user/ttrssd 0: User for www-apps/tt-rss
 acct-user/turnserver 0: A user for a turn server like coturn
 acct-user/tvheadend 0: User for tvheadend
 acct-user/ultimaker 0: User for ultimaker
@@ -11655,7 +11657,7 @@ games-simulation/gl117 1.3.2-r1: An action flight simulator
 games-simulation/lincity 1.13.1-r1: city/country simulation game for X and Linux SVGALib
 games-simulation/lincity-ng 2.9_beta: City simulation game
 games-simulation/micropolis 1.0_p20180313: Free version of the well-known city building simulation
-games-simulation/openrct2 0.2.6 0.3.0 9999: An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2
+games-simulation/openrct2 0.3.0 9999: An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2
 games-simulation/openttd 1.10.2 9999: OpenTTD is a clone of Transport Tycoon Deluxe
 games-simulation/pmars-sdl 0.9.2e-r1: Portable redcode simulator's sdl port for core war
 games-simulation/searchandrescue 1.7.0: Helicopter based air rescue flight simulator
@@ -16895,7 +16897,7 @@ sys-apps/highway 1.1.0: High performance source code search tool
 sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
 sys-apps/hponcfg 4.6.0.0 5.4.0.0 5.5.0.0: HP Lights-Out Online Configuration Utility (HPONCFG)
 sys-apps/hprofile 3.0.6 3.1.1 3.2.2 6.1.3: Utility to manage hardware, network, power or other profiles (fork)
-sys-apps/hw-probe 1.5 1.6_beta2: A tool to probe for hardware, check it's operability and find drivers
+sys-apps/hw-probe 1.5-r1 1.6_beta2-r1: A tool to probe for hardware, check it's operability and find drivers
 sys-apps/hwdata-gentoo 0.4: Data for the hwsetup program
 sys-apps/hwids 20200204 20200306 20200813.1 99999999: Hardware (PCI, USB, OUI, IAB) IDs databases
 sys-apps/hwinfo 21.4 21.23: Hardware detection tool used in SuSE Linux
@@ -18045,7 +18047,7 @@ www-apps/roundup 2.0.0: Issue-tracking system with command-line, web, and e-mail
 www-apps/rt 4.4.4: RT is an enterprise-grade ticketing system
 www-apps/rutorrent 3.8-r1 9999: ruTorrent is a front-end for the popular Bittorrent client rTorrent
 www-apps/trickster 0.1.9: Dashboard Accelerator for Prometheus
-www-apps/tt-rss 20180105 20190523 99999999: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
+www-apps/tt-rss 20200922 99999999: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
 www-apps/webdavcgi 0.8.3 0.8.4 1.1.1: A Perl CGI for accessing and sharing files, or calendar/addressbooks via WebDAV.
 www-apps/webmcp 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
