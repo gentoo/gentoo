@@ -44,7 +44,9 @@ DEPEND="
 
 # https://github.com/docker/docker/blob/master/project/PACKAGERS.md#runtime-dependencies
 # https://github.com/docker/docker/blob/master/project/PACKAGERS.md#optional-dependencies
-# also look at components/*/vendor.conf for exact version of ~pinned dependencies
+# https://github.com/docker/docker-ce/tree/master/components/engine/hack/dockerfile/install
+# make sure containerd, docker-proxy, runc and tini pinned to exact versions from ^,
+# for appropriate brachch/version of course
 RDEPEND="
 	${DEPEND}
 	!sys-apps/systemd[-cgroup-hybrid(+)]
@@ -53,9 +55,9 @@ RDEPEND="
 	>=dev-vcs/git-1.7
 	>=app-arch/xz-utils-4.9
 	dev-libs/libltdl
-	~app-emulation/containerd-1.4.1[apparmor?,btrfs?,device-mapper?,seccomp?,selinux?]
-	~app-emulation/runc-1.0.0_rc92[apparmor?,seccomp?,selinux?]
-	~app-emulation/docker-proxy-0.8.0_p20191011
+	~app-emulation/containerd-1.3.7[apparmor?,btrfs?,device-mapper?,seccomp?,selinux?]
+	~app-emulation/runc-1.0.0_rc10[apparmor?,seccomp?,selinux(-)?]
+	~app-emulation/docker-proxy-0.8.0_p20200617
 	container-init? ( >=sys-process/tini-0.18.0[static] )
 "
 
@@ -254,7 +256,7 @@ src_compile() {
 src_install() {
 	dosym containerd /usr/bin/docker-containerd
 	dosym containerd-shim /usr/bin/docker-containerd-shim
-	dosym ../sbin/runc /usr/bin/docker-runc
+	dosym runc /usr/bin/docker-runc
 	use container-init && dosym tini /usr/bin/docker-init
 
 	pushd components/engine || die
