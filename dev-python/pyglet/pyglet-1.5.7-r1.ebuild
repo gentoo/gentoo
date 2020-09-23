@@ -23,6 +23,7 @@ BDEPEND="
 	)
 "
 RDEPEND="
+	virtual/glu
 	virtual/opengl
 	image? ( || (
 		dev-python/pillow[${PYTHON_USEDEP}]
