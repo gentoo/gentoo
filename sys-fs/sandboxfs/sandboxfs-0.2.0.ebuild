@@ -97,18 +97,13 @@ QA_FLAGS_IGNORED="/usr/bin/sandboxfs"
 S="${WORKDIR}/${PN}-${P}"
 
 src_configure() {
-	myfeatures=(
-		$(usex profile profiling '')
-	)
-}
-
-src_compile() {
-	cargo_src_compile ${myfeatures:+--features "${myfeatures[*]}"}
+	local myfeatures=( $(usex profile profiling '')	)
+	cargo_src_configure
 }
 
 src_install() {
 	mv man _man || die
-	cargo_src_install ${myfeatures:+--features "${myfeatures[*]}"}
+	cargo_src_install
 	doman _man/"${PN}.1"
 	einstalldocs
 }
