@@ -35,7 +35,7 @@ COMMON_DEPEND="
 		snmp? (
 			!libressl? ( dev-libs/openssl:0= )
 			libressl? ( dev-libs/libressl:= )
-			net-analyzer/net-snmp
+			net-analyzer/net-snmp:=
 		)
 	)
 "
