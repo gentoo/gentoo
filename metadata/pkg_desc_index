@@ -8875,9 +8875,9 @@ dev-python/python-heatclient 1.17.0: OpenStack Orchestration API Client Library
 dev-python/python-iptables 1.0.0: Python bindings for iptables
 dev-python/python-ironicclient 4.1.0: Python bindings for the Ironic API
 dev-python/python-jose 3.2.0-r1: A JavaScript Object Signing and Encryption (JOSE) implementation in Python
-dev-python/python-jsonrpc-server 0.3.4: A Python 2 and 3 asynchronous JSON RPC server
+dev-python/python-jsonrpc-server 0.3.4 0.4.0: A Python 2 and 3 asynchronous JSON RPC server
 dev-python/python-keystoneclient 4.0.0: Client Library for OpenStack Identity
-dev-python/python-language-server 0.34.1: An implementation of the Language Server Protocol for Python
+dev-python/python-language-server 0.34.1 0.35.1: An implementation of the Language Server Protocol for Python
 dev-python/python-ldap 3.2.0 9999: Various LDAP-related Python modules
 dev-python/python-levenshtein 0.12.0: Functions for fast computation of Levenshtein distance, and edit operations
 dev-python/python-lhafile 0.2.2: LHA archive support for Python
