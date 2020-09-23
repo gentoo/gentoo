@@ -24,7 +24,7 @@ DESCRIPTION="The core functions you need to create Docker images and run Docker 
 HOMEPAGE="https://www.docker.com/"
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="apparmor aufs btrfs +container-init device-mapper hardened +overlay seccomp selinux"
+IUSE="apparmor aufs btrfs +container-init device-mapper hardened overlay seccomp selinux"
 
 # https://github.com/docker/docker/blob/master/project/PACKAGERS.md#build-dependencies
 BDEPEND="
@@ -89,6 +89,10 @@ CONFIG_CHECK="
 	~CRYPTO ~CRYPTO_AEAD ~CRYPTO_GCM ~CRYPTO_SEQIV ~CRYPTO_GHASH ~XFRM_ALGO ~XFRM_USER
 	~IPVLAN
 	~MACVLAN ~DUMMY
+
+	~OVERLAY_FS
+	~EXT4_FS_SECURITY
+	~EXT4_FS_POSIX_ACL
 "
 
 ERROR_KEYS="CONFIG_KEYS: is mandatory"
@@ -176,12 +180,6 @@ pkg_setup() {
 	if use device-mapper; then
 		CONFIG_CHECK+="
 			~BLK_DEV_DM ~DM_THIN_PROVISIONING ~EXT4_FS ~EXT4_FS_POSIX_ACL ~EXT4_FS_SECURITY
-		"
-	fi
-
-	if use overlay; then
-		CONFIG_CHECK+="
-			~OVERLAY_FS ~EXT4_FS_SECURITY ~EXT4_FS_POSIX_ACL
 		"
 	fi
 
