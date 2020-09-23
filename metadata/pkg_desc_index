@@ -1784,7 +1784,7 @@ app-emacs/mailcrypt 3.5.9-r3: Provides a simple interface to public key cryptogr
 app-emacs/markdown-mode 2.3: Major mode for editing Markdown-formatted text files
 app-emacs/matlab 3.3.6_pre20191010-r1: Major modes for MATLAB .m and .tlc files
 app-emacs/mediawiki 2.2.9-r1: MediaWiki client for Emacs
-app-emacs/meson-mode 0.2-r1: A GNU Emacs major mode for Meson build-system files
+app-emacs/meson-mode 0.2-r1 0.3: A GNU Emacs major mode for Meson build-system files
 app-emacs/mew 6.8: Great MIME mail reader for Emacs/XEmacs
 app-emacs/mic-paren 3.11: Advanced highlighting of matching parentheses
 app-emacs/mldonkey 0.0.4b-r2: An Emacs Lisp interface to the MLDonkey core
@@ -9294,7 +9294,7 @@ dev-python/zconfig 3.5.0: A configuration library supporting a hierarchical sche
 dev-python/zeep 3.4.0: A modern/fast Python SOAP client based on lxml / requests
 dev-python/zeroconf 0.24.4: Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
 dev-python/zict 0.1.4: Mutable mapping tools
-dev-python/zipp 3.1.0: Backport of pathlib-compatible object wrapper for zip files
+dev-python/zipp 3.1.0 3.2.0: Backport of pathlib-compatible object wrapper for zip files
 dev-python/zope-component 4.4.1: Zope Component Architecture
 dev-python/zope-configuration 4.4.0: Zope Configuration Architecture
 dev-python/zope-deprecation 4.4.0: Zope Deprecation Infrastructure
