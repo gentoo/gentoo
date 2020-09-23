@@ -30,6 +30,7 @@ IUSE="apparmor aufs btrfs +container-init device-mapper hardened overlay seccomp
 BDEPEND="
 	>=dev-lang/go-1.13.12
 	dev-go/go-md2man
+	virtual/pkgconfig
 "
 
 DEPEND="
@@ -254,7 +255,7 @@ src_compile() {
 src_install() {
 	dosym containerd /usr/bin/docker-containerd
 	dosym containerd-shim /usr/bin/docker-containerd-shim
-	dosym runc /usr/bin/docker-runc
+	dosym ../sbin/runc /usr/bin/docker-runc
 	use container-init && dosym tini /usr/bin/docker-init
 
 	pushd components/engine || die
