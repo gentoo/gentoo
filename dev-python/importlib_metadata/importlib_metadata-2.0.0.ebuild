@@ -3,6 +3,7 @@
 
 EAPI=7
 
+# Included in Python >= 3.8
 PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
 
 inherit distutils-r1
@@ -15,9 +16,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
-RDEPEND="
-	dev-python/zipp[${PYTHON_USEDEP}]
-"
+RDEPEND="dev-python/zipp[${PYTHON_USEDEP}]"
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
@@ -33,7 +32,7 @@ distutils_enable_sphinx "${PN}/docs" \
 distutils_enable_tests unittest
 
 python_prepare_all() {
-	# remove dep on setuptools_scm
+	# Skip a test that requires pep517 which is not in the tree
 	sed -e 's:test_find_local:_&:' \
 		-i importlib_metadata/tests/test_integration.py || die
 
