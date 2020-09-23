@@ -1,0 +1,36 @@
+From 6a211f965c21f1aa2e8612bcd7e2966ce8e8c607 Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conikost@gentoo.org>
+Date: Wed, 23 Sep 2020 22:26:45 +0200
+Subject: [PATCH] hw-probe.pl: disable automatic upload
+
+Due security concerns, running 'hw-probe.pl' without any parameters
+shouldn't upload directly by default all data. Instead, the user should
+add '-upload' if he really wants that.
+
+Signed-off-by: Conrad Kostecki <conikost@gentoo.org>
+---
+ hw-probe.pl | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/hw-probe.pl b/hw-probe.pl
+index b71f250..1bceb0e 100644
+--- a/hw-probe.pl
++++ b/hw-probe.pl
+@@ -217,15 +217,13 @@
+ 
+ if($#ARGV_COPY==-1)
+ { # Run from STDIN
+-    print "Executing hw-probe -all -upload\n\n";
++    print "Executing hw-probe -all\n\n";
+     $Opt{"All"} = 1;
+-    $Opt{"Upload"} = 1;
+ }
+ elsif($#ARGV_COPY==0 and grep { $ARGV_COPY[0] eq $_ } ("-snap", "-flatpak"))
+ { # Run by desktop file
+-    print "Executing hw-probe -all -upload\n\n";
++    print "Executing hw-probe -all\n\n";
+     $Opt{"All"} = 1;
+-    $Opt{"Upload"} = 1;
+     
+     if($SNAP_DESKTOP or $FLATPAK_DESKTOP)
+     { # Desktop
