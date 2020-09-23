@@ -229,7 +229,6 @@ sci-mathematics/axiom
 # Please do not remove any packages from this list unless you actually
 # port them to Python 3.
 # Removal in 30 days.  Please find relevant bugs on tracker bug #694800.
-app-admin/github-backup-utils
 app-backup/genbackupdata
 app-i18n/pology
 app-text/pdf2djvu
