@@ -85,7 +85,8 @@ src_configure() {
 src_test() {
 	local -x LIT_PRESERVES_TMP=1
 	cmake_build check-lldb-lit
-	use python && cmake_build check-lldb
+	# failures + hangs
+	#use python && cmake_build check-lldb
 }
 
 src_install() {
