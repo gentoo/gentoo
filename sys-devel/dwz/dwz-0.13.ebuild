@@ -14,9 +14,15 @@ S="${WORKDIR}/${PN}"
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
-DEPEND="dev-libs/elfutils"
-RDEPEND="${DEPEND}"
+RDEPEND="dev-libs/elfutils"
+DEPEND="${RDEPEND}"
+BDEPEND="test? (
+	dev-util/dejagnu
+	dev-libs/elfutils[utils]
+)"
 
 src_prepare() {
 	default
