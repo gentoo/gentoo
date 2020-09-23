@@ -39,7 +39,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 # tests need busybox binary, and portage namespace
 # sandboxing disabled: mount-sandbox pid-sandbox ipc-sandbox
 # majority of tests pass
-RESTRICT="test"
+RESTRICT+=" test"
 
 src_compile() {
 	# Taken from app-emulation/docker-1.7.0-r1
