@@ -24,6 +24,7 @@ RDEPEND="
 
 DEPEND="
 	${CDEPEND}
+	app-arch/unzip
 	>=virtual/jdk-1.6"
 
 EANT_BUILD_TARGET="dist"
