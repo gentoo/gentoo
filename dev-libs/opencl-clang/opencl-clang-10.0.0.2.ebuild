@@ -20,10 +20,10 @@ KEYWORDS="~amd64"
 
 S="${WORKDIR}/${MY_P}"
 
-COMMON="sys-devel/clang:10=[static-analyzer,${MULTILIB_USEDEP}]"
-DEPEND="${COMMON}
+DEPEND="sys-devel/clang:10=[static-analyzer,${MULTILIB_USEDEP}]
+	sys-devel/llvm:10=[${MULTILIB_USEDEP}]
 	>=dev-util/spirv-llvm-translator-10.0.0_p20200909:10=[${MULTILIB_USEDEP}]"
-RDEPEND="${COMMON}"
+RDEPEND="${DEPEND}"
 
 LLVM_MAX_SLOT=10
 

@@ -15,10 +15,10 @@ SLOT="9"
 KEYWORDS="~amd64"
 
 BDEPEND="dev-vcs/git"
-COMMON="sys-devel/clang:9=[static-analyzer,${MULTILIB_USEDEP}]"
-DEPEND="${COMMON}
+DEPEND="sys-devel/clang:9=[static-analyzer,${MULTILIB_USEDEP}]
+	sys-devel/llvm:9=[${MULTILIB_USEDEP}]
 	dev-util/spirv-llvm-translator:9=[${MULTILIB_USEDEP}]"
-RDEPEND="${COMMON}"
+RDEPEND="${DEPEND}"
 
 LLVM_MAX_SLOT=9
 
