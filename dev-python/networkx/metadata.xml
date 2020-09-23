@@ -16,6 +16,7 @@
   The potential audience for NetworkX includes: mathematicians, physicists,
   biologists, computer scientists, social scientists.
 </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">networkx</remote-id>
     <remote-id type="github">networkx/networkx</remote-id>
