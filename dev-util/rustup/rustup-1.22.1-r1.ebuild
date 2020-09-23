@@ -274,13 +274,18 @@ src_prepare() {
 	sed -i "/^home =/s:.*:home = { path = \"../home-${HOME_CRATE_COMMIT}\" }:" Cargo.toml || die
 }
 
+src_configure() {
+	local myfeatures=( no-self-update )
+	cargo_src_configure
+}
+
 src_compile() {
 	export OPENSSL_NO_VENDOR=true
-	cargo_src_compile --features no-self-update
+	cargo_src_compile
 }
 
 src_install() {
-	cargo_src_install --features no-self-update
+	cargo_src_install
 	einstalldocs
 	exeinto /usr/share/rustup
 	newexe "$(prefixify_ro "${FILESDIR}"/symlink_rustup.sh)" symlink_rustup
@@ -293,10 +298,6 @@ src_install() {
 
 	insinto /usr/share/zsh/site-functions
 	doins "${T}/_rustup"
-}
-
-src_test() {
-	cargo_src_test --features no-self-update
 }
 
 pkg_postinst() {
