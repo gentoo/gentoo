@@ -3,8 +3,8 @@ Ripped from Fedora
 Add support for RLIMIT_NICE/RLIMIT_RTPRIO and add missing documentation
 for many other options
 
---- builtins/ulimit.def
-+++ builtins/ulimit.def
+--- a/builtins/ulimit.def
++++ b/builtins/ulimit.def
 @@ -24,7 +24,7 @@
  $BUILTIN ulimit
  $FUNCTION ulimit_builtin
@@ -58,8 +58,8 @@ for many other options
  #ifdef RLIMIT_STACK
    { 's',	RLIMIT_STACK, 1024,	"stack size",		"kbytes" },
  #endif
---- doc/bashref.texi
-+++ doc/bashref.texi
+--- a/doc/bashref.texi
++++ b/doc/bashref.texi
 @@ -3833,7 +3833,7 @@
  @item ulimit
  @btindex ulimit
@@ -89,8 +89,8 @@ for many other options
  @item -s
  The maximum stack size.
  
---- doc/bash.1
-+++ doc/bash.1
+--- a/doc/bash.1
++++ b/doc/bash.1
 @@ -8490,7 +8490,7 @@
  returns true if any of the arguments are found, false if
  none are found.

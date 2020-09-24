@@ -2,8 +2,8 @@ Don't barf on handled signals inside of scripts.  Makes for nicer output.
 
 patch by Martin Schlemmer <azarah@gentoo.org>
 
---- jobs.c
-+++ jobs.c
+--- a/jobs.c
++++ b/jobs.c
 @@ -2893,11 +2893,11 @@
  		}
  	      else if (IS_FOREGROUND (job))

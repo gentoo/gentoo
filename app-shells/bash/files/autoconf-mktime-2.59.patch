@@ -1,6 +1,6 @@
 http://bugs.gentoo.org/220040
---- configure
-+++ configure
+--- a/configure
++++ b/configure
 @@ -5299,26 +6059,25 @@
  cat >>conftest.$ac_ext <<_ACEOF
  /* end confdefs.h.  */

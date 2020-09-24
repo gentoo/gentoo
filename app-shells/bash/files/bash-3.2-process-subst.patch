@@ -1,7 +1,7 @@
 Fix process substitution on BSD
 
---- execute_cmd.c
-+++ execute_cmd.c
+--- a/execute_cmd.c
++++ b/execute_cmd.c
 @@ -2672,6 +2672,7 @@
  
  	  do_piping (pipe_in, pipe_out);
