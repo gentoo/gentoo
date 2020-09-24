@@ -3,7 +3,7 @@
 
 EAPI=7
 
-EGIT_COMMIT="c5f6fb23c3876461d46ec380421e42b289789530"
+EGIT_COMMIT="f02f4473dbf152c23d7d484952121db0b36698cb"
 README_GENTOO_SUFFIX="-r1"
 
 inherit readme.gentoo-r1 java-pkg-2
@@ -32,6 +32,10 @@ S="${WORKDIR}"
 
 src_unpack() {
 	cp "${DISTDIR}/${A}" "${WORKDIR}" || die
+}
+
+src_compile() {
+	:;
 }
 
 src_install() {
