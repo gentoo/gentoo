@@ -3,7 +3,7 @@
 
 EAPI="7"
 PYTHON_COMPAT=(python{2_7,3_6,3_7,3_8,3_9})
-DISTUTILS_USE_SETUPTOOLS="manual"
+DISTUTILS_USE_SETUPTOOLS="rdepend"
 
 inherit distutils-r1
 
@@ -24,13 +24,12 @@ fi
 
 LICENSE="BSD"
 SLOT="0/23"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE=""
 
 BDEPEND="${PYTHON_DEPS}
 	~dev-libs/protobuf-${PV}
 	dev-python/namespace-google[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${PYTHON_DEPS}
 	~dev-libs/protobuf-${PV}"
@@ -42,6 +41,15 @@ S="${WORKDIR}/protobuf-${PV}/python"
 if [[ "${PV}" == "9999" ]]; then
 	EGIT_CHECKOUT_DIR="${WORKDIR}/protobuf-${PV}"
 fi
+
+python_prepare_all() {
+	pushd "${WORKDIR}/protobuf-${PV}" > /dev/null || die
+	eapply "${FILESDIR}/${PN}-3.13.0-google.protobuf.pyext._message.PyUnknownFieldRef.patch"
+	eapply_user
+	popd > /dev/null || die
+
+	distutils-r1_python_prepare_all
+}
 
 python_configure_all() {
 	mydistutilsargs=(--cpp_implementation)

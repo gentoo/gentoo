@@ -23,7 +23,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0/23"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE=""
 
 BDEPEND="~dev-libs/protobuf-${PV}
@@ -39,7 +39,10 @@ if [[ "${PV}" == "9999" ]]; then
 fi
 
 src_prepare() {
-	default
+	pushd "${WORKDIR}/protobuf-${PV}" > /dev/null || die
+	eapply_user
+	popd > /dev/null || die
+
 	java-pkg-2_src_prepare
 }
 
