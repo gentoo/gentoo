@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,7 +28,8 @@ src_prepare() {
 src_configure() {
 	econf \
 		--with-egads-datadir="${EGADS_DATADIR}" \
-		--with-bindir=/usr/sbin
+		--with-bindir="${EPREFIX}"/usr/sbin \
+		--disable-static
 }
 
 src_compile() {
@@ -45,4 +46,6 @@ src_install() {
 		INCLUDEDIR="${D}"/usr/include
 
 	dodoc README* doc/*.txt doc/*.html
+
+	find "${ED}" -name '*.la' -delete || die
 }
