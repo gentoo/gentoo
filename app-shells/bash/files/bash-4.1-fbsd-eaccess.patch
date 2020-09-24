@@ -4,8 +4,8 @@ executable files when run by root on FreeBSD.
 See http://bugs.gentoo.org/303411
 
 Patch from Johan Hattne <johan.hattne@utsuthwestern.edu>
---- lib/sh/eaccess.c.orig
-+++ lib/sh/eaccess.c
+--- a/lib/sh/eaccess.c.orig
++++ b/lib/sh/eaccess.c
 @@ -198,11 +198,19 @@
       char *path;
       int mode;
