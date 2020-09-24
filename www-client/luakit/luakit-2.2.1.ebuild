@@ -1,16 +1,15 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+inherit toolchain-funcs xdg
 
-inherit toolchain-funcs
-
-DESCRIPTION="A fast, light, simple to use micro-browser using WebKit and Lua"
+DESCRIPTION="A fast, extensible, and customizable web browser"
 HOMEPAGE="https://luakit.github.io/luakit"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/luakit/luakit.git"
+	EGIT_REPO_URI="https://github.com/luakit/luakit.git"
 else
 	SRC_URI="https://github.com/luakit/luakit/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
@@ -28,48 +27,51 @@ RDEPEND="
 	net-libs/webkit-gtk:4=
 	x11-libs/gtk+:3
 	luajit? ( dev-lang/luajit:2 )
-	!luajit? ( dev-lang/lua:0 )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
+	!luajit? ( dev-lang/lua:0 )
+"
+DEPEND="
+	${RDEPEND}
 	test? (
 		dev-lua/luassert[luajit=]
 		dev-lua/luacheck[luajit=]
 		x11-base/xorg-server[xvfb]
-	)"
-
+	)
+"
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
+"
 PATCHES=(
-	"${FILESDIR}"/${PN}-cflags.patch
-	"${FILESDIR}"/${PN}-fix_tests.patch
+	"${FILESDIR}"/${PN}-2.2.1-make.patch
+	"${FILESDIR}"/${PN}-2.2.1-pkg-config.patch
 )
+
+src_configure() {
+	tc-export CC PKG_CONFIG
+}
 
 src_compile() {
 	emake \
-		CC=$(tc-getCC) \
+		LUA_PKG_NAME=$(usex luajit luajit lua) \
+		LUA_BIN_NAME=$(usex luajit luajit lua) \
 		PREFIX="${EPREFIX}/usr" \
-		XDGPREFIX="${EPREFIX}/etc/xdg" \
-		LUA_PKG_NAME=$(usex luajit 'luajit' 'lua') \
-		LUA_BIN_NAME=$(usex luajit 'luajit' 'lua') \
-		all
+		${PN}
 
 	use doc && emake doc
 }
 
 src_test() {
 	emake \
-		LUA_PKG_NAME=$(usex luajit 'luajit' 'lua') \
-		LUA_BIN_NAME=$(usex luajit 'luajit' 'lua') \
+		LUA_BIN_NAME=$(usex luajit luajit lua) \
 		run-tests
 }
 
 src_install() {
 	emake \
-		LUA_PKG_NAME=$(usex luajit 'luajit' 'lua') \
-		LUA_BIN_NAME=$(usex luajit 'luajit' 'lua') \
 		DESTDIR="${D}" \
 		PREFIX="${EPREFIX}/usr" \
-		DOCDIR="${ED}/usr/share/doc/${PF}" \
-		XDGPREFIX="${ED}/etc/xdg" \
+		DOCDIR="${EPREFIX}/usr/share/doc/${PF}" \
+		XDGPREFIX="${EPREFIX}/etc/xdg" \
 		install
 
 	rm "${ED}/usr/share/doc/${PF}/COPYING.GPLv3" || die
