@@ -1,0 +1,177 @@
+From 90c4cfb5355a36de6660df4ed0a1c405a830ca0e Mon Sep 17 00:00:00 2001
+From: Tom Anderson <thomasanderson@chromium.org>
+Date: Tue, 15 Sep 2020 12:02:17 -0700
+Subject: [PATCH] [XProto] Fix VAAPI build
+
+Fixes the build after [1] broke it.
+
+[1] https://chromium-review.googlesource.com/c/chromium/src/+/2392140
+
+Bug: 1066670, 1127532
+Change-Id: I340f91a1d4ba7214ea47fa4b1bb4a368fe5597f5
+R=mcasas
+CC=tmathmeyer
+---
+
+diff --git a/media/gpu/vaapi/vaapi_picture_native_pixmap_angle.cc b/media/gpu/vaapi/vaapi_picture_native_pixmap_angle.cc
+index 843cf22..91eb184 100644
+--- a/media/gpu/vaapi/vaapi_picture_native_pixmap_angle.cc
++++ b/media/gpu/vaapi/vaapi_picture_native_pixmap_angle.cc
+@@ -7,6 +7,8 @@
+ #include "media/gpu/vaapi/va_surface.h"
+ #include "media/gpu/vaapi/vaapi_wrapper.h"
+ #include "ui/base/ui_base_features.h"
++#include "ui/gfx/x/connection.h"
++#include "ui/gfx/x/xproto.h"
+ #include "ui/gl/gl_bindings.h"
+ #include "ui/gl/gl_image_egl_pixmap.h"
+ #include "ui/gl/scoped_binders.h"
+@@ -16,24 +18,27 @@
+ namespace {
+ 
+ inline Pixmap CreatePixmap(const gfx::Size& size) {
+-  auto* display = gfx::GetXDisplay();
++  auto* connection = x11::Connection::Get();
++  auto* display = connection->display();
+   if (!display)
+     return 0;
+ 
+-  int screen = DefaultScreen(display);
+-  auto root = XRootWindow(display, screen);
+-  if (root == BadValue)
+-    return 0;
++  auto root = connection->default_root();
+ 
+-  XWindowAttributes win_attr = {};
+-  // returns 0 on failure, see:
+-  // https://tronche.com/gui/x/xlib/introduction/errors.html#Status
+-  if (!XGetWindowAttributes(display, root, &win_attr))
++  uint8_t depth = 0;
++  if (auto reply = connection->GetGeometry({root}).Sync())
++    depth = reply->depth;
++  else
+     return 0;
+ 
+   // TODO(tmathmeyer) should we use the depth from libva instead of root window?
+-  return XCreatePixmap(display, root, size.width(), size.height(),
+-                       win_attr.depth);
++  auto pixmap = connection->GenerateId<x11::Pixmap>();
++  auto req = connection->CreatePixmap(
++      {depth, pixmap, root, base::checked_cast<uint16_t>(size.width()),
++       base::checked_cast<uint16_t>(size.height())});
++  if (req.Sync().error)
++    pixmap = x11::Pixmap::None;
++  return base::strict_cast<::Pixmap>(pixmap);
+ }
+ 
+ }  // namespace
+@@ -71,11 +76,8 @@
+     DCHECK_EQ(glGetError(), static_cast<GLenum>(GL_NO_ERROR));
+   }
+ 
+-  if (x_pixmap_) {
+-    if (auto* display = gfx::GetXDisplay()) {
+-      XFreePixmap(display, x_pixmap_);
+-    }
+-  }
++  if (x_pixmap_)
++    x11::Connection::Get()->FreePixmap({static_cast<x11::Pixmap>(x_pixmap_)});
+ }
+ 
+ Status VaapiPictureNativePixmapAngle::Allocate(gfx::BufferFormat format) {
+diff --git a/media/gpu/vaapi/vaapi_picture_tfp.cc b/media/gpu/vaapi/vaapi_picture_tfp.cc
+index 9ff0372..1c917a1 100644
+--- a/media/gpu/vaapi/vaapi_picture_tfp.cc
++++ b/media/gpu/vaapi/vaapi_picture_tfp.cc
+@@ -7,6 +7,7 @@
+ #include "media/gpu/vaapi/va_surface.h"
+ #include "media/gpu/vaapi/vaapi_wrapper.h"
+ #include "ui/base/ui_base_features.h"
++#include "ui/gfx/x/connection.h"
+ #include "ui/gfx/x/x11_types.h"
+ #include "ui/gl/gl_bindings.h"
+ #include "ui/gl/gl_image_glx.h"
+@@ -33,7 +34,8 @@
+                    texture_id,
+                    client_texture_id,
+                    texture_target),
+-      x_display_(gfx::GetXDisplay()),
++      connection_(x11::Connection::Get()),
++      x_display_(connection_->display()),
+       x_pixmap_(0) {
+   DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
+   DCHECK(!features::IsUsingOzonePlatform());
+@@ -49,7 +51,7 @@
+   }
+ 
+   if (x_pixmap_)
+-    XFreePixmap(x_display_, x_pixmap_);
++    connection_->FreePixmap({static_cast<x11::Pixmap>(x_pixmap_)});
+ }
+ 
+ Status VaapiTFPPicture::Initialize() {
+@@ -85,15 +87,20 @@
+   }
+ 
+   XWindowAttributes win_attr;
+-  int screen = DefaultScreen(x_display_);
+-  XGetWindowAttributes(x_display_, XRootWindow(x_display_, screen), &win_attr);
++  auto root = connection_->default_root();
++  XGetWindowAttributes(x_display_, static_cast<::Window>(root), &win_attr);
+   // TODO(posciak): pass the depth required by libva, not the RootWindow's
+   // depth
+-  x_pixmap_ = XCreatePixmap(x_display_, XRootWindow(x_display_, screen),
+-                            size_.width(), size_.height(), win_attr.depth);
+-  if (!x_pixmap_) {
++  auto pixmap = connection_->GenerateId<x11::Pixmap>();
++  if (connection_
++          ->CreatePixmap(
++              {win_attr.depth, pixmap, root, size_.width(), size_.height()})
++          .Sync()
++          .error) {
+     DLOG(ERROR) << "Failed creating an X Pixmap for TFP";
+     return StatusCode::kVaapiNoPixmap;
++  } else {
++    x_pixmap_ = static_cast<::Pixmap>(pixmap);
+   }
+ 
+   return Initialize();
+diff --git a/media/gpu/vaapi/vaapi_picture_tfp.h b/media/gpu/vaapi/vaapi_picture_tfp.h
+index c4eb2c1..a32955e 100644
+--- a/media/gpu/vaapi/vaapi_picture_tfp.h
++++ b/media/gpu/vaapi/vaapi_picture_tfp.h
+@@ -11,6 +11,7 @@
+ #include "base/memory/ref_counted.h"
+ #include "media/gpu/vaapi/vaapi_picture.h"
+ #include "ui/gfx/geometry/size.h"
++#include "ui/gfx/x/connection.h"
+ #include "ui/gl/gl_bindings.h"
+ 
+ namespace gl {
+@@ -47,6 +48,7 @@
+  private:
+   Status Initialize();
+ 
++  x11::Connection* const connection_;
+   Display* x_display_;
+ 
+   Pixmap x_pixmap_;
+diff --git a/media/gpu/vaapi/vaapi_wrapper.cc b/media/gpu/vaapi/vaapi_wrapper.cc
+index 2ad0b997..a988233 100644
+--- a/media/gpu/vaapi/vaapi_wrapper.cc
++++ b/media/gpu/vaapi/vaapi_wrapper.cc
+@@ -57,8 +57,13 @@
+ #include "ui/gl/gl_implementation.h"
+ 
+ #if defined(USE_X11)
+-#include <va/va_x11.h>
+ #include "ui/gfx/x/x11_types.h"  // nogncheck
++
++typedef XID Drawable;
++
++extern "C" {
++#include "media/gpu/vaapi/va_x11.sigs"
++}
+ #endif
+ 
+ #if defined(USE_OZONE)
