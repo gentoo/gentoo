@@ -507,7 +507,7 @@ app-admin/conserver 8.2.3 8.2.4 8.2.5: Serial Console Manager
 app-admin/consul 1.7.4 1.7.7 1.7.8 1.8.3 1.8.4: A tool for service discovery, monitoring and configuration
 app-admin/consul-replicate 0.2.0: Consul cross-DC KV replication daemon
 app-admin/consul-template 0.25.0: Generic template rendering and notifications with Consul
-app-admin/cpulimit 1.8 2.2 2.4: Limits the CPU usage of a process
+app-admin/cpulimit 2.4: Limits the CPU usage of a process
 app-admin/cronlocker 0.4.0_p20180710: synchronize a cron job across multiple hosts using the consul lock feature
 app-admin/cronolog 1.6.2-r5: Log rotation software
 app-admin/cygwin-rebase 4.4.4 9999: Core of the automatic rebase facility during postinstall on Cygwin
@@ -548,7 +548,7 @@ app-admin/gopass 1.9.2 1.10.1 1.10.1-r1: a simple but powerful password manager 
 app-admin/graylog 3.3.3: Free and open source log management
 app-admin/gtkdiskfree 2.0.1-r1 2.0.3 2.0.4_p20200224: Graphical tool to show free disk space like df
 app-admin/hardinfo 0.5.2_pre20130823: System information and benchmark tool for Linux systems
-app-admin/haskell-updater 1.2.9 1.2.10 1.2.12-r1 1.3.1 1.3.2: Rebuild Haskell dependencies in Gentoo
+app-admin/haskell-updater 1.2.12-r1 1.3.1 1.3.2: Rebuild Haskell dependencies in Gentoo
 app-admin/hcloud 1.17.0 1.18.0 1.19.1: A command-line interface for Hetzner Cloud
 app-admin/hddtemp 0.3_beta15-r28: A simple utility to read the temperature of SMART capable hard drives
 app-admin/helm 2.16.1 2.16.7 2.16.9 3.2.4: Kubernetes Package Manager
@@ -623,7 +623,7 @@ app-admin/reportmagic 2.21: Makes usable statistics from your web site log file 
 app-admin/restart-services 0.15.2 0.16.0: Tool to manage OpenRC services that need to be restarted
 app-admin/rex 1.12.1 1.12.2 9999: (R)?ex, the friendly automation framework
 app-admin/rsyslog 8.2004.0 8.2006.0 8.2008.0: An enhanced multi-threaded syslogd with database support and more
-app-admin/sagan 0.2.3 0.2.3-r1 1.0.0_rc3 1.0.0_rc3-r1: Sagan is a multi-threaded, real time system and event log monitoring system
+app-admin/sagan 1.0.0_rc3 1.0.0_rc3-r1: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
 app-admin/salt 2019.2.5-r1 3000.2-r4 3000.3 3001.1-r2: Salt is a remote execution and configuration manager
 app-admin/serf 0.8.1-r1: Service orchestration and management tool
@@ -785,7 +785,7 @@ app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
 app-backup/dar 2.5.11 2.6.10: A full featured backup tool, aimed for disks
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
 app-backup/duplicity 0.8.12.1612-r1 0.8.13 0.8.15: Secure backup system using gnupg to encrypt data
-app-backup/duply 1.9.2 1.11.2 1.11.3 2.0.1 2.0.2 2.0.3 2.2.2: A shell frontend for duplicity
+app-backup/duply 1.9.2 1.11.3 2.0.1 2.0.2 2.0.3 2.2.2: A shell frontend for duplicity
 app-backup/flexbackup 1.2.1-r13: Flexible backup script using perl
 app-backup/fsarchiver 0.8.5: Flexible filesystem archiver for backup and deployment tool
 app-backup/genbackupdata 1.9: Generate test data for backup software testing.
@@ -974,7 +974,7 @@ app-crypt/mhash 0.9.9.9-r2: library providing a uniform interface to a large num
 app-crypt/minisign 0.8 0.9 9999: Dead simple tool to sign files and verify signatures
 app-crypt/mit-krb5 1.18.2-r1: MIT Kerberos V
 app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT Kerberos V distribution
-app-crypt/monkeysphere 0.36-r1 0.36-r2 0.37 0.38 0.39 0.41 0.42 0.44: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
+app-crypt/monkeysphere 0.36-r2 0.41 0.44: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
 app-crypt/moolticute 0.43.19 9999: Mooltipass crossplatform daemon/tools
 app-crypt/nasty 0.6-r1: Proof-of-concept GPG passphrase recovery tool
 app-crypt/nitrocli 0.3.1 0.3.2 0.3.3 0.3.4: A command line tool for interacting with Nitrokey devices
@@ -8192,7 +8192,7 @@ dev-python/flufl-bounce 3.0.1: Email bounce detectors.
 dev-python/flufl-i18n 2.0.2: A high level API for Python internationalization.
 dev-python/flufl-lock 3.2: NFS-safe file locking with timeouts for POSIX systems.
 dev-python/fonttools 4.1.0: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
-dev-python/fqdn 1.2.0: RFC-compliant FQDN validation and manipulation for Python
+dev-python/fqdn 1.2.0 1.4.0: RFC-compliant FQDN validation and manipulation for Python
 dev-python/freezegun 0.3.15-r1 1.0.0-r1: Let your Python tests travel through time
 dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static files
 dev-python/frozendict 1.2: A simple immutable mapping for python
@@ -10668,7 +10668,7 @@ dev-util/cunit 2.1_p3: C Unit Test Framework
 dev-util/cutils 1.6-r4: C language utilities
 dev-util/cutter 1.11.0 1.12.0: A Qt and C++ GUI for radare2 reverse engineering framework
 dev-util/cvise 1.6.0: Super-parallel Python port of the C-Reduce
-dev-util/cwdiff 0.2.8 0.3.0 0.3.1 0.4.0 9999: A script that wraps wdiff to support directories and colorize the output
+dev-util/cwdiff 0.4.0 9999: A script that wraps wdiff to support directories and colorize the output
 dev-util/d-feet 0.3.14-r1: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 19.04.0-r1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r4: Graphical front-end for command-line debuggers
@@ -10961,7 +10961,7 @@ dev-vcs/git-tools 2017.10 2019.11: Assorted git-related scripts
 dev-vcs/gitg 3.32.1-r1: git repository viewer for GNOME
 dev-vcs/github-pages-publish 0.1.3: A script that commits files from a directory to Github Pages
 dev-vcs/gitolite 2.3.1-r1 3.6.11: Highly flexible server for git directory version tracker
-dev-vcs/gitolite-gentoo 2.3.1-r1 2.3.3-r1 3.5.3.1 3.6.1 3.6.1-r1 3.6.2.1 3.6.2.2 3.6.2.3 3.6.2.4 3.6.3 3.6.3.2 3.6.4 3.6.4.1 3.6.4.1-r1 3.6.5 3.6.6 3.6.6.1 3.6.6.1-r1: Highly flexible server for git directory version tracker, Gentoo fork
+dev-vcs/gitolite-gentoo 2.3.1-r1 3.6.6.1-r1: Highly flexible server for git directory version tracker, Gentoo fork
 dev-vcs/gitsh 0.11.2: An interactive shell for git
 dev-vcs/gitstats 0_pre131024 0_pre20151223 9999: Statistics generator for git
 dev-vcs/gti 9999: A silly git launcher, basically. Inspired by sl
@@ -12452,8 +12452,8 @@ mail-filter/policyd-weight 0.1.15.2-r2: Weighted Policy daemon for Postfix
 mail-filter/popfile 1.1.3-r1: Anti-spam bayesian filter
 mail-filter/postforward 1.1.0 1.1.1: Postfix Sender Rewriting Scheme forwarding agent
 mail-filter/postfwd 1.35-r3 2.00-r1 2.02: Versatile Postfix policy server with a flexible ruleset based configuration
-mail-filter/postgrey 1.34-r3 1.35-r2 1.36-r1 1.37: Postgrey is a Postfix policy server implementing greylisting
-mail-filter/postsrsd 1.4 1.4-r1 1.6: Postfix Sender Rewriting Scheme daemon
+mail-filter/postgrey 1.36-r1 1.37: Postgrey is a Postfix policy server implementing greylisting
+mail-filter/postsrsd 1.6: Postfix Sender Rewriting Scheme daemon
 mail-filter/procmail 3.22-r14: Mail delivery agent/filter
 mail-filter/pyzor 1.0.0-r1 1.0.0_p20200523: A distributed, collaborative spam detection and filtering network
 mail-filter/razor 2.85-r3: Distributed, collaborative spam detection and filtering network
@@ -12788,7 +12788,7 @@ media-gfx/fontforge 20200314: postscript font editor and converter
 media-gfx/fotowall 1.0: Qt5 tool for creating wallpapers
 media-gfx/fotoxx 15.05: Program for improving image files made with a digital camera
 media-gfx/freepv 0.3.0-r5: Panorama viewer (Quicktime, PangeaVR, GLPanoView formats)
-media-gfx/freewrl 1.22.13-r5 2.3.3-r2 3.0.0-r1 9999: VRML97 and X3D compliant browser, library, and web-browser plugin
+media-gfx/freewrl 3.0.0-r1 9999: VRML97 and X3D compliant browser, library, and web-browser plugin
 media-gfx/frogr 1.3 1.5: flickr applications for GNOME
 media-gfx/geeqie 1.5.1 9999: A lightweight GTK image viewer forked from GQview
 media-gfx/gif2apng 1.9-r1: create an APNG from a GIF
@@ -12853,7 +12853,7 @@ media-gfx/kuickshow 0.10.1: Image viewer based on KDE Frameworks
 media-gfx/kxstitch 2.2.0: Program to create cross stitch patterns
 media-gfx/libimagequant 2.11.7 2.12.2 2.12.3: Palette quantization library that powers pngquant and other PNG optimizers
 media-gfx/librecad 2.1.3-r5 9999: Generic 2D CAD program
-media-gfx/llgal 0.13.17-r2 0.13.18 0.13.19: Command-line static web gallery generator
+media-gfx/llgal 0.13.19: Command-line static web gallery generator
 media-gfx/luminance-hdr 2.6.0: Graphical user interface that provides a workflow for HDR imaging
 media-gfx/lximage-qt 0.15.0: Qt Image Viewer
 media-gfx/maim 5.6.3 9999: Commandline tool to take screenshots of the desktop
@@ -13226,7 +13226,7 @@ media-libs/libwmf 0.2.8.4-r7: A library for reading vector images in Microsoft's
 media-libs/libxmi 1.3: C/C++ function library for rasterizing 2-D vector graphics
 media-libs/libxspf 1.2.0 1.2.0-r1: Playlist handling library
 media-libs/libxtract 0.6.6: A simple, portable, lightweight library of audio feature extraction functions
-media-libs/libyami 1.0.1 1.1.0 1.2.0 1.3.0 1.3.2 9999: Yet Another Media Infrastructure: Media codec with hardware acceleration
+media-libs/libyami 1.3.2 9999: Yet Another Media Infrastructure: Media codec with hardware acceleration
 media-libs/libzen 0.4.38: Shared library for libmediainfo and mediainfo
 media-libs/libzmf 0.0.2 9999: Library for parsing Zoner Callisto/Draw documents
 media-libs/lilv 0.24.6-r2 0.24.8-r1: Library to make the use of LV2 plugins as simple as possible for applications
@@ -13246,7 +13246,7 @@ media-libs/nv-codec-headers 8.1.24.2 9.0.18.1 9.1.23.1 10.0.26.0: FFmpeg version
 media-libs/openal 1.20.0 1.20.1: A software implementation of the OpenAL 3D audio API
 media-libs/opencollada 1.6.63-r1 1.6.68: Stream based read/write library for COLLADA files
 media-libs/opencolorio 1.1.0-r4: A color management framework for visual effects and animation
-media-libs/opencore-amr 0.1.3-r1 0.1.4 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
+media-libs/opencore-amr 0.1.3-r1 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
 media-libs/opencv 4.1.2-r3: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 2.3.0 2.5.2: ILM's OpenEXR high dynamic-range image file format libraries
@@ -13560,7 +13560,7 @@ media-plugins/vdr-epgsearch 1.0.1_p20141227-r1 2.2.0 2.4.0 2.4.0_p20191202: VDR 
 media-plugins/vdr-epgsync 1.0.1 1.0.1-r1: VDR Plugin: Import the EPG of another VDR via vdr-svdrpservice
 media-plugins/vdr-exec 0.0.3: VDR plugin: Exec commands like timers at defined times
 media-plugins/vdr-extrecmenu 1.2.4 1.2.4-r1: VDR Plugin: Extended recordings menu
-media-plugins/vdr-femon 2.0.4 2.1.1 2.2.0 2.2.1 2.4.0: VDR Plugin: DVB Frontend Status Monitor (signal strength/noise)
+media-plugins/vdr-femon 2.0.4 2.4.0: VDR Plugin: DVB Frontend Status Monitor (signal strength/noise)
 media-plugins/vdr-ffnetdev 0.1.2: VDR Plugin: Output device which offers OSD via VNC and Video as raw mpeg over network
 media-plugins/vdr-filebrowser 0.2.1: VDR plugin: file manager plugin for moving or renaming files in VDR
 media-plugins/vdr-freecell 0.0.2-r3 0.0.2-r4: VDR plugin: play 'Freecell' on the On Screen Display
@@ -13594,18 +13594,18 @@ media-plugins/vdr-radio 0.9.1 1.1.0: VDR plugin: show background image for radio
 media-plugins/vdr-radiolist 0.0.2: VDR plugin: Filters channel list and only show the radio channels
 media-plugins/vdr-rcu 2.2.0: VDR plugin: Remote Control Unit consists mainly of an IR receiver, PIC 16C84
 media-plugins/vdr-recsearch 0.3.7: VDR Plugin: Search through your recordings and find the one you are looking for
-media-plugins/vdr-remote 0.6.0-r1 0.7.0: VDR Plugin: use various devices for controlling vdr (keyboards, lirc, remotes bundled with tv-cards)
+media-plugins/vdr-remote 0.7.0: VDR Plugin: use various devices for controlling vdr (keyboards, lirc, remotes bundled with tv-cards)
 media-plugins/vdr-remoteosd 1.0.0 1.0.0-r1: VDR Plugin: server/client remoteosd
 media-plugins/vdr-remotetimers 1.0.2 1.0.2-r1: VDR plugin: edit timers on remote vdr instances
 media-plugins/vdr-rpihddevice 1.0.3 1.0.5: VDR Plugin: Output Device for Raspberry Pi
-media-plugins/vdr-rssreader 2.0.0 2.0.1 2.2.0 2.2.1 2.2.1-r1: VDR Plugin: RSS reader
+media-plugins/vdr-rssreader 2.2.1-r1: VDR Plugin: RSS reader
 media-plugins/vdr-satip 2.2.3-r2 2.2.5 2.4.0_p20191027: VDR Plugin: integrates SAT>IP network devices seamlessly into VDR
 media-plugins/vdr-scheduler 0.1.3 0.1.6: VDR plugin: allows to control externel jobs from within VDR
 media-plugins/vdr-screenshot 0.0.15: VDR Plugin: takes screenshots of the current video or tv screen
 media-plugins/vdr-serial 0.0.6a-r1: VDR Plugin: attach some buttons with diodes to the serial port
 media-plugins/vdr-skincurses 2.2.0: VDR plugin: show content of menu in a shell window
 media-plugins/vdr-skinelchi 0.3.0-r1 0.3.0-r2: VDR Skin Plugin: skinelchi
-media-plugins/vdr-skinsoppalusikka 2.0.0 2.0.3 2.2.0 2.2.1 2.4.0: VDR Skin Plugin: soppalusikka
+media-plugins/vdr-skinsoppalusikka 2.0.0 2.4.0: VDR Skin Plugin: soppalusikka
 media-plugins/vdr-sleeptimer 0.6: VDR Plugin: Sleeptimer
 media-plugins/vdr-sndctl 0.1.5.1: VDR plugin: Control the vol level of diff controls of your soundcard
 media-plugins/vdr-solitaire 0.0.3: VDR Plugin: Solitaire game
@@ -13614,7 +13614,7 @@ media-plugins/vdr-streamdev 0.6.1 0.6.1_p20160320 0.6.1_p20170930: VDR Plugin: C
 media-plugins/vdr-suspendoutput 2.0.1: VDR Plugin: Show still image instead of live tv to safe cpu
 media-plugins/vdr-svdrposd 1.0.0: VDR plugin: export OSD via TCP to vdr-remoteosd
 media-plugins/vdr-svdrpservice 1.0.0: VDR Plugin: offers SVDRP connections as a service to other plugins
-media-plugins/vdr-systeminfo 0.1.1 0.1.3 0.1.4: VDR Plugin: systeminfo
+media-plugins/vdr-systeminfo 0.1.4: VDR Plugin: systeminfo
 media-plugins/vdr-ttxtsubs 0.3.0 0.3.0-r2: VDR Plugin: displaying, recording and replaying teletext based subtitles
 media-plugins/vdr-undelete 0.0.7 0.0.7-r1 2.3.0_pre1: VDR Plugin: Recover deleted recordings of VDR
 media-plugins/vdr-vcd 0.9-r3 0.9-r4: VDR plugin: play video cds
@@ -13914,7 +13914,7 @@ media-sound/quimup 1.4.3 1.4.4: Qt5 client for the music player daemon (MPD)
 media-sound/quodlibet 4.2.1 4.3.0: audio library tagger, manager, and player for GTK+
 media-sound/rawrec 0.9.991: CLI program to play and record audiofiles
 media-sound/rcenter 0.6.2: Rcenter - A program to control the EMU10K Remote Control
-media-sound/redoflacs 0.16.2 0.19 0.30: Bash commandline flac compressor, verifier, organizer, analyzer, retagger
+media-sound/redoflacs 0.30: Bash commandline flac compressor, verifier, organizer, analyzer, retagger
 media-sound/retrovol 0.13: Systemtray volume mixer applet from PuppyLinux
 media-sound/rexima 1.4-r1: A curses-based interactive mixer which can also be used from the command-line
 media-sound/rhythmbox 3.4.4: Music management and playback software for GNOME
@@ -14783,7 +14783,7 @@ net-libs/libad9361-iio 0.1-r2 9999: IIO AD9361 library for filter design and han
 net-libs/libasr 1.0.4: Async Resolver Library from OpenBSD/OpenSMTPD
 net-libs/libasyncns 0.8-r4: C library for executing name service queries asynchronously
 net-libs/libbitcoinconsensus 0.16.3 0.19.1 0.20.0 0.20.1: Bitcoin Core consensus library
-net-libs/libblkmaker 0.3.2 0.4.2 0.4.3 0.5.0 0.5.1 0.5.2 0.5.3: C implementation of getblocktemplate (BIP 22)
+net-libs/libblkmaker 0.3.2 0.4.3 0.5.3: C implementation of getblocktemplate (BIP 22)
 net-libs/libbloom 1.5-r1 1.5-r2: A simple and small bloom filter implementation in plain C.
 net-libs/libbtbb 2018.08.1 2018.12.1 9999: A library to decode Bluetooth baseband packets
 net-libs/libcapi 3.0.7-r1: CAPI library used by AVM products
@@ -15229,7 +15229,7 @@ net-misc/pipes 1.16.1 1.16.1-r1: Very versatile TCP pipes
 net-misc/plowshare 2.1.6 2.1.7 9999: Command-line downloader and uploader for file-sharing websites
 net-misc/pmsvn 1.0.7: Server's configuration management and monitoring tool
 net-misc/portfwd 0.29-r1: Port Forwarding Daemon
-net-misc/portspoof 1.1 1.3 9999: return SYN+ACK for every port connection attempt
+net-misc/portspoof 1.3 9999: return SYN+ACK for every port connection attempt
 net-misc/pps-tools 1.0.2: User-space tools for LinuxPPS
 net-misc/proxychains 4.12-r1 4.14: force any tcp connections to flow through a proxy (or proxy chain)
 net-misc/proxytunnel 1.10.20200907 9999: Connect stdin and stdout to a server via an HTTPS proxy
@@ -15272,7 +15272,7 @@ net-misc/shigofumi 0.3-r1 9999: Command line client for ISDS
 net-misc/shmux 1.0.2 1.0.2-r1: run the same command across many hosts in parallel
 net-misc/sipcalc 1.1.6: Sipcalc is an advanced console-based IP subnet calculator
 net-misc/sipp 3.6.0: A free Open Source test tool / traffic generator for the SIP protocol
-net-misc/sipsak 0.9.6_p1-r1 0.9.6_p1-r2: small command line tool for testing SIP applications and devices
+net-misc/sipsak 0.9.6_p1-r2: small command line tool for testing SIP applications and devices
 net-misc/sitecopy 0.16.6-r1: Maintain remote web sites with ease
 net-misc/sks 1.1.6-r2 1.1.6-r4 1.1.6-r5: An OpenPGP keyserver which is decentralized with highly reliable synchronization
 net-misc/smb4k 3.0.6: Advanced network neighborhood browser
@@ -16476,7 +16476,7 @@ sci-physics/cernlib 2006-r5 2006-r6 2006-r7: CERN program library for High Energ
 sci-physics/cernlib-montecarlo 2006-r3 2006-r4: Monte-carlo library and tools for the cernlib
 sci-physics/clhep 2.2.0.5 2.4.0.4 2.4.1.2 2.4.1.3-r1: High Energy Physics C++ library
 sci-physics/espresso 4.0_pre20170228 4.0.0-r2 4.1.3 9999: Extensible Simulation Package for Research on Soft matter
-sci-physics/fastjet 3.0.3-r1 3.0.6-r1: Fast implementation of several recombination jet algorithms
+sci-physics/fastjet 3.0.6-r1: Fast implementation of several recombination jet algorithms
 sci-physics/geant 4.10.05_p01 4.10.6_beta1-r1 4.10.6-r1 4.10.6_p1-r1 4.10.6_p2: Toolkit for simulation of passage of particles through matter
 sci-physics/geant-data 4.10.05 4.10.6_beta1-r1 4.10.6-r1 4.10.6_p1-r1: Data files for Geant4 physical processes
 sci-physics/geant-vmc 4.4.0 4.5.1_p1 9999: Virtual Monte Carlo Geant4 implementation
@@ -17065,7 +17065,7 @@ sys-apps/ucspi-tcp 0.88-r18: Collection of tools for managing UNIX services
 sys-apps/ucspi-unix 1.0: A UCSPI implementation for Unix domain sockets
 sys-apps/udevil 0.4.4-r3: mount and unmount removable devices without a password
 sys-apps/unscd 0.53: simple & stable nscd replacement
-sys-apps/usb_modeswitch 2.2.6 2.3.0 2.4.0-r1 2.5.2: A tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
+sys-apps/usb_modeswitch 2.5.2: A tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
 sys-apps/usbguard 0.7.6-r1 0.7.8: Daemon protecting your computer against BadUSB
 sys-apps/usbmon 6-r1 6.1: Userland for USB monitoring framework
 sys-apps/usbredir 0.7.1_p20170503 0.7.1_p20180211 0.8.0 9999: TCP daemon and set of libraries for usbredir protocol (redirecting USB traffic)
@@ -17283,8 +17283,8 @@ sys-cluster/kubeletctl 1.2 1.5: A client for kubelet
 sys-cluster/kubernetes 1.17.9 1.17.11 1.18.6 1.18.8 1.19.0 1.19.1: production-grade container orchestration
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18.05.0 18.12.0 19.06.0 9999: A data-centric parallel programming system
 sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1 0.3.0: API for distributing embarrassingly parallel workloads using self-stabilization
-sys-cluster/libqb 0.17.2 1.0.1 1.0.5 1.9.0: Library providing high performance logging, tracing, ipc, and poll
-sys-cluster/libquo 1.2 1.2.2 1.2.3 1.2.4-r1 1.2.9 9999: run-time tuning of process binding policies made easy
+sys-cluster/libqb 0.17.2 1.0.5 1.9.0: Library providing high performance logging, tracing, ipc, and poll
+sys-cluster/libquo 1.2.9 9999: run-time tuning of process binding policies made easy
 sys-cluster/lustre 2.13.0-r1: Lustre is a parallel distributed file system
 sys-cluster/maui 3.3.1-r3: Maui Cluster Scheduler
 sys-cluster/minikube 1.10.1 1.11.0: Single Node Kubernetes Cluster
@@ -17416,11 +17416,11 @@ sys-firmware/ipw2200-firmware 3.1: Firmware for the Intel PRO/Wireless 2200BG/29
 sys-firmware/ipxe 1.0.0_p20180211 1.0.0_p20190728: Open source network boot (PXE) firmware
 sys-firmware/ivtv-firmware 20080701-r1: firmware for Hauppauge PVR-x50 and Conexant 2341x based cards
 sys-firmware/iwl1000-ucode 39.31.5.1-r1: Intel (R) Wireless WiFi Link 1000BGN ucode
-sys-firmware/iwl3160-7260-bt-ucode 37.8.10 37.8.10_p1 37.8.10_p2: Firmware for Intel (R) Wireless 3160, 7260, 7265 Bluetooth
-sys-firmware/iwl3160-ucode 0.7.1.22 0.8.15.22 0.8.24.22 0.9.214.23 0.9.228.25 0.10.11.23 0.10.15.23 0.12.16.25 0.12.17.25 0.13.30.25 0.15.227938 0.16.242414: Firmware for Intel (R) Dual Band Wireless-AC 3160
+sys-firmware/iwl3160-7260-bt-ucode 37.8.10_p2: Firmware for Intel (R) Wireless 3160, 7260, 7265 Bluetooth
+sys-firmware/iwl3160-ucode 0.16.242414: Firmware for Intel (R) Dual Band Wireless-AC 3160
 sys-firmware/iwl6005-ucode 17.168.5.3 18.168.6.1: Intel (R) Wireless WiFi Advanced N 6005 ucode
 sys-firmware/iwl6030-ucode 17.168.5.2 18.168.6.1: Intel (R) Wireless WiFi Advanced N 6030 ucode
-sys-firmware/iwl7260-ucode 0.7.1.22 0.8.15.22 0.8.24.22 0.9.214.23 0.9.228.25 0.10.11.23 0.10.15.23 0.12.16.25 0.12.17.25 0.13.30.25 0.15.227938 0.16.242414: Firmware for Intel (R) Dual Band Wireless-AC 7260
+sys-firmware/iwl7260-ucode 0.16.242414: Firmware for Intel (R) Dual Band Wireless-AC 7260
 sys-firmware/iwl8000-ucode 16.242414.0: Firmware for Intel (R) Wireless 8260 and 4165
 sys-firmware/midisport-firmware 1.2-r1: Firmware for M-Audio/Midiman USB MIDI devices
 sys-firmware/nvidia-firmware 340.32-r1: Kernel and mesa firmware for nouveau (video accel and pgraph)
@@ -17441,7 +17441,7 @@ sys-fs/aufs-util 4.1_p20170130 4.14_p20180709 4.14_p20190603: Utilities are alwa
 sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
 sys-fs/avfs 1.1.1: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 3.2.0: Bash script that uses udisks to mount removable devices without GUI
-sys-fs/bcache-tools 1.0.5 1.0.8 1.0.8_p20140220-r1 9999: Tools for bcachefs
+sys-fs/bcache-tools 1.0.8_p20140220-r1 9999: Tools for bcachefs
 sys-fs/bees 0.6.1-r2 9999: Best-Effort Extent-Same, a btrfs dedup agent
 sys-fs/bindfs 1.14.5 1.14.7: FUSE filesystem for bind mounting with altered permissions
 sys-fs/btrfs-progs 4.19 5.4.1 5.6.1 5.7 9999: Btrfs filesystem utilities
@@ -17497,7 +17497,7 @@ sys-fs/hfsplusutils 1.0.4-r2: HFS+ Filesystem Access Utilities (a PPC filesystem
 sys-fs/hfsutils 3.2.6_p14: HFS FS Access utils
 sys-fs/inotify-tools 3.20.1 3.20.2.2: a set of command-line programs providing a simple interface to inotify
 sys-fs/iprutils 2.4.7 2.4.17.1 2.4.18.1: IBM's tools for support of the ipr SCSI controller
-sys-fs/jdiskreport-bin 1.2.5-r1 1.3.0 1.4.1: JDiskReport helps you to understand disk drive usage
+sys-fs/jdiskreport-bin 1.4.1: JDiskReport helps you to understand disk drive usage
 sys-fs/jfsutils 1.1.15-r1: IBM's Journaling Filesystem (JFS) Utilities
 sys-fs/jmtpfs 0.5-r1: A FUSE and libmtp based filesystem for accessing MTP devices
 sys-fs/ldapfuse 1.0-r2: A virtual filesystem for FUSE which allows navigation of an LDAP tree
@@ -17678,7 +17678,7 @@ sys-libs/uclibc-ng 1.0.30-r1 1.0.32 1.0.33 1.0.35 9999: C library for developing
 sys-libs/uid_wrapper 1.2.7 1.2.8: Wrapper to fake privilege separation
 sys-libs/zlib 1.2.11-r2: Standard (de)compression library
 sys-power/acpi 1.7-r1: Displays information about ACPI devices
-sys-power/acpi_call 1.1.0-r3 1.1.0-r4 1.1.0-r5 3.17-r2 9999: A kernel module that enables you to call ACPI methods
+sys-power/acpi_call 1.1.0-r5 3.17-r2 9999: A kernel module that enables you to call ACPI methods
 sys-power/acpid 2.0.31 2.0.32 2.0.32-r1 2.0.32-r2: Daemon for Advanced Configuration and Power Interface
 sys-power/acpilight 1.2 1.2-r1: Replacement for xbacklight that uses the ACPI interface to set brightness
 sys-power/acpitool 0.5.1-r1: A small command line application, intended to be a replacement for the apm tool
@@ -17696,7 +17696,7 @@ sys-power/nvclock 0.8_p20110102-r2: NVIDIA Overclocking Utility
 sys-power/nvram-reboot 2004.10.03-r1: PowerOff Boot-Images for nvram-wakeup (not needed for GRUB)
 sys-power/nvram-wakeup 1.1: read and write the WakeUp time in the BIOS
 sys-power/pm-quirks 20100619-r1: Video Quirks database for pm-utils
-sys-power/pm-utils 1.4.1-r6 1.4.1-r7: Suspend and hibernation utilities
+sys-power/pm-utils 1.4.1-r7: Suspend and hibernation utilities
 sys-power/pmtools 20110323-r1: Collection of tools for ACPI and power management
 sys-power/powermgmt-base 1.31-r1: Script to test whether computer is running on AC power
 sys-power/powernowd 1.00-r4 1.00-r5: Daemon to control the speed and voltage of CPUs
@@ -18012,7 +18012,7 @@ www-apps/icingaweb2 2.7.4 2.8.2 9999: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-director 1.6.2 9999: Icinga Web 2 plugin for configuration
 www-apps/icingaweb2-module-graphite 1.0.1-r1 9999: Icinga Web 2 plugin for Graphite
 www-apps/icingaweb2-module-pnp4nagios 1.0.1 9999: Icinga Web 2 plugin for pnp4nagios
-www-apps/ikiwiki 3.20170111 3.20171001 3.20190228: A wiki compiler
+www-apps/ikiwiki 3.20190228: A wiki compiler
 www-apps/jekyll 4.1.1: A simple, blog aware, static site generator
 www-apps/jekyll-coffeescript 1.2.2 2.0.0: A CoffeeScript Converter for Jekyll
 www-apps/jekyll-sass-converter 1.5.2 2.1.0: A basic Sass converter for Jekyll
@@ -18108,7 +18108,7 @@ www-plugins/adobe-flash 32.0.0.433: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
 www-plugins/chrome-binary-plugins 85.0.4183.121 86.0.4240.53_beta 87.0.4270.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
-www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
+www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
 www-plugins/pdfjs 1.9.426 2.1.266 2.4.456: A PDF reader in JavaScript
@@ -18374,16 +18374,16 @@ x11-libs/vte 0.28.2-r208 0.58.3 0.60.3: Library providing a virtual terminal emu
 x11-libs/wxGTK 3.0.4-r2 3.0.4-r302: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
 x11-libs/xapps 1.8.4 1.8.9: Cross-desktop libraries and common resources
 x11-libs/xbae 4.60.4: Motif-based widget to display a grid of cells as a spreadsheet
-x11-libs/xcb-util 0.4.0-r1 0.4.0-r2: X C-language Bindings sample implementations
-x11-libs/xcb-util-cursor 0.1.3-r2 0.1.3-r3: X C-language Bindings sample implementations
-x11-libs/xcb-util-image 0.4.0-r1 0.4.0-r2: X C-language Bindings sample implementations
-x11-libs/xcb-util-keysyms 0.4.0-r1 0.4.0-r2: X C-language Bindings sample implementations
-x11-libs/xcb-util-renderutil 0.3.9-r2 0.3.9-r3: X C-language Bindings sample implementations
-x11-libs/xcb-util-wm 0.4.1-r2 0.4.1-r3: X C-language Bindings sample implementations
+x11-libs/xcb-util 0.4.0-r2: X C-language Bindings sample implementations
+x11-libs/xcb-util-cursor 0.1.3-r3: X C-language Bindings sample implementations
+x11-libs/xcb-util-image 0.4.0-r2: X C-language Bindings sample implementations
+x11-libs/xcb-util-keysyms 0.4.0-r2: X C-language Bindings sample implementations
+x11-libs/xcb-util-renderutil 0.3.9-r3: X C-language Bindings sample implementations
+x11-libs/xcb-util-wm 0.4.1-r3: X C-language Bindings sample implementations
 x11-libs/xcb-util-xrm 1.3 1.3-r1: X C-language Bindings sample implementations
 x11-libs/xforms 1.2.4: A graphical user interface toolkit for X
 x11-libs/xosd 2.2.14_p2_p1: Library for overlaying text in X-Windows X-On-Screen-Display
-x11-libs/xpa 2.1.15 2.1.17 2.1.18: Messaging system providing communication between programs
+x11-libs/xpa 2.1.18: Messaging system providing communication between programs
 x11-libs/xtrans 1.4.0: X.Org xtrans library
 x11-misc/3ddesktop 0.2.9-r1 0.2.9-r2: OpenGL virtual desktop switching
 x11-misc/3dfb 0.6.1-r1: 3D File Browser
@@ -18456,7 +18456,7 @@ x11-misc/grub2-theme-preview 1.4.2 1.5.1: Preview a GRUB 2.x theme using KVM/QEM
 x11-misc/grun 0.9.3-r1: A GTK based Run dialog resembling the Windows Run dialog, just like xexec
 x11-misc/gtk2fontsel 0.1-r1: A font selection tool similar to xfontsel
 x11-misc/gtkdialog 0.8.3-r2 0.8.3-r3 0.8.3_p20200202 99999: A small utility for fast and easy GUI building
-x11-misc/gxmessage 2.20.3 2.20.4 3.4.3: A GTK+ based xmessage clone
+x11-misc/gxmessage 2.20.4 3.4.3: A GTK+ based xmessage clone
 x11-misc/habak 0.2.5-r2 0.2.5-r3: A simple but powerful tool to set desktop wallpaper
 x11-misc/hsetroot 1.0.2 1.0.2_p5 1.0.5: Tool which allows you to compose wallpapers ('root pixmaps') for X
 x11-misc/i3blocks 1.4-r1 1.5: highly flexible status line for the i3 window manager
@@ -18499,7 +18499,7 @@ x11-misc/mozo 1.24.0: Mozo menu editor for MATE
 x11-misc/mugshot 0.4.2-r1: A lightweight user-configuration application
 x11-misc/netwmpager 2.05: Pager that works with Openbox and other EWMH compliant window managers
 x11-misc/nitrogen 1.6.1 1.6.1-r1 99999: A background browser and setter for X
-x11-misc/notification-daemon 0.5.0 3.14.1 3.18.2 3.20.0: Notification daemon
+x11-misc/notification-daemon 3.20.0: Notification daemon
 x11-misc/notify-osd 0.9.34-r1: Canonical's on-screen-display notification agent
 x11-misc/numlockx 1.2: Turns on numlock in X
 x11-misc/obconf 2.0.4 9999: ObConf is a tool for configuring the Openbox window manager
@@ -18735,7 +18735,7 @@ x11-plugins/pidgin-otr 4.0.2: (OTR) Messaging allows you to have private convers
 x11-plugins/pidgin-privacy-please 0.7.1: pidgin plugin to stop spammers from annoying you
 x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with current info from Rhythmbox
 x11-plugins/pidgin-sipe 1.23.3 1.25.0: Pidgin Plug-in SIPE (Sip Exchange Protocol)
-x11-plugins/pidgin-skypeweb 1.1 1.2 1.2.2 1.4 1.5 9999: SkypeWeb Plugin for Pidgin
+x11-plugins/pidgin-skypeweb 1.5 9999: SkypeWeb Plugin for Pidgin
 x11-plugins/pidgin-telegram 1.4.3: A libpurple protocol plugin that adds support for the Telegram messenger
 x11-plugins/pidgin-window_merge 0.3: A Pidgin plugin that merges the Buddy List window with a conversation window
 x11-plugins/pidgin-xmpp-receipts 0.8: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
@@ -18854,7 +18854,7 @@ x11-terms/lilyterm 0.9.9.4-r2 99999: a terminal emulator based off of libvte tha
 x11-terms/mate-terminal 1.24.0: The MATE Terminal
 x11-terms/mlterm 3.8.9 3.9.0: A multi-lingual terminal emulator
 x11-terms/mrxvt 0.5.4: Multi-tabbed rxvt clone with XFT, transparent background and CJK support
-x11-terms/pangoterm 0.0_pre20150323 0.0_pre20150913 0.0_pre20151022 0.0_pre20160305 0.0_pre20171111: A GTK/Pango-based terminal that uses libvterm to provide terminal emulation
+x11-terms/pangoterm 0.0_pre20171111: A GTK/Pango-based terminal that uses libvterm to provide terminal emulation
 x11-terms/qterminal 0.14.1-r1 0.15.0 9999: Qt-based multitab terminal emulator
 x11-terms/root-tail 1.2-r4: Terminal to display (multiple) log files on the root window
 x11-terms/roxterm 3.9.3 3.9.4: A terminal emulator designed to integrate with the ROX environment
@@ -18930,7 +18930,7 @@ x11-themes/gtk-engines-qtpixmap 0.28-r2: Theme engine based on GTK pixmap engine
 x11-themes/gtk-engines-quartz 0.2: OSX GTK+ Theme Engine
 x11-themes/gtk-engines-rezlooks 0.6-r1: Rezlooks GTK+ Engine
 x11-themes/gtk-engines-ubuntulooks 0.9.12-r3: A derivative of the standard Clearlooks GTK+ 2.x engine with more orange feel
-x11-themes/gtk-engines-unico 1.0.3_pre20121212 1.0.3_pre20140109: The Unico GTK+ 3.x theming engine
+x11-themes/gtk-engines-unico 1.0.3_pre20140109: The Unico GTK+ 3.x theming engine
 x11-themes/gtk-theme-switch 2.1.0-r1: Utility to switch and preview GTK+ theme
 x11-themes/haematite-xcursors 1.0: A simple crispy dark-grey xcursor theme
 x11-themes/hicolor-icon-theme 0.17: Fallback theme for the freedesktop icon theme specification
@@ -19030,7 +19030,7 @@ x11-wm/metacity 3.34.1 3.36.1: GNOME Flashback window manager
 x11-wm/muffin 4.4.3 4.6.3: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r4: A simple dynamic window manager, with features nicked from ratpoison and dwm
 x11-wm/mutter 3.34.6-r1 3.34.6-r2 3.36.4 3.36.4-r1 3.36.5: GNOME 3 compositing window manager based on Clutter
-x11-wm/notion 3_p2013030200 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
+x11-wm/notion 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.6.1-r3 9999: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20-r1: Small and fast window manager
 x11-wm/page 1.9.8 1.9.9-r3: A mouse friendly tiling window manager
