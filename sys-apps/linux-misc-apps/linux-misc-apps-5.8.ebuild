@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit versionator eutils toolchain-funcs linux-info ltprune autotools flag-o-matic
+inherit eutils toolchain-funcs linux-info autotools flag-o-matic
 
 DESCRIPTION="Misc tools bundled with kernel sources"
 HOMEPAGE="https://kernel.org/"
@@ -16,17 +16,22 @@ IUSE="static-libs tcpd usbip"
 MY_PV="${PV/_/-}"
 MY_PV="${MY_PV/-pre/-git}"
 
-LINUX_V=$(get_version_component_range 1-2)
+LINUX_V=$(ver_cut 1-2)
+
+get_version_component_count() {
+	local cnt=( $(ver_rs 1- ' ') )
+	echo ${#cnt[@]} || die
+}
 
 if [ ${PV/_rc} != ${PV} ]; then
-	LINUX_VER=$(get_version_component_range 1-2).$(($(get_version_component_range 3)-1))
-	PATCH_VERSION=$(get_version_component_range 1-3)
+	LINUX_VER=$(ver_cut 1-2).$(($(ver_cut 3)-1))
+	PATCH_VERSION=$(ver_cut 1-3)
 	LINUX_PATCH=patch-${PV//_/-}.xz
 	SRC_URI="https://www.kernel.org/pub/linux/kernel/v3.x/testing/${LINUX_PATCH}
 		https://www.kernel.org/pub/linux/kernel/v3.x/testing/v${PATCH_VERSION}/${LINUX_PATCH}"
 elif [ $(get_version_component_count) == 4 ]; then
 	# stable-release series
-	LINUX_VER=$(get_version_component_range 1-3)
+	LINUX_VER=$(ver_cut 1-3)
 	LINUX_PATCH=patch-${PV}.xz
 	SRC_URI="https://www.kernel.org/pub/linux/kernel/v3.x/${LINUX_PATCH}"
 else
@@ -40,7 +45,7 @@ SRC_URI="${SRC_URI} https://www.kernel.org/pub/linux/kernel/v3.x/${LINUX_SOURCES
 # usbip available in seperate package now
 RDEPEND="sys-apps/hwids
 		>=dev-libs/glib-2.6
-		>=sys-kernel/linux-headers-$(get_version_component_range 1-2)
+		>=sys-kernel/linux-headers-${LINUX_V}
 		usbip? (
 			!net-misc/usbip
 			tcpd? ( sys-apps/tcp-wrappers )
@@ -59,7 +64,7 @@ TARGETS_SIMPLE=(
 	tools/accounting/getdelays.c
 	tools/cgroup/cgroup_event_listener.c
 	tools/laptop/freefall/freefall.c
-	tools/testing/selftests/networking/timestamping/timestamping.c
+	tools/testing/selftests/net/timestamping.c
 	tools/vm/slabinfo.c
 	usr/gen_init_cpio.c
 	# Broken:
@@ -116,6 +121,8 @@ src_prepare() {
 		-e '/^nosy-dump.*CFLAGS/d' \
 		-e '/^nosy-dump.*CPPFLAGS/s,CPPFLAGS =,CPPFLAGS +=,g' \
 		"${S}"/tools/firewire/Makefile
+
+	eapply_user
 }
 
 kernel_asm_arch() {
@@ -191,14 +198,19 @@ src_install() {
 		newdoc README README.usbip
 		newdoc AUTHORS AUTHORS.usbip
 		popd >/dev/null
-		dodoc Documentation/usb/usbip_protocol.txt
+		dodoc Documentation/usb/usbip_protocol.rst
+		find "${D}" -name 'libusbip*.la' -delete || die
 	fi
 
-	mv -f "${D}"/usr/sbin/{,iio_}generic_buffer
+	# At one point upstream it was moved, but be generic to detect if it's
+	# happened already
+	if [[ -f "${D}"/usr/sbin/generic_buffer ]] && \
+		[[ ! -f "${D}"/usr/sbin/iio_generic_buffer ]]; then
+		mv -f "${D}"/usr/sbin/{,iio_}generic_buffer || die
+	fi
 
 	newconfd "${FILESDIR}"/freefall.confd freefall
 	newinitd "${FILESDIR}"/freefall.initd freefall
-	prune_libtool_files
 }
 
 pkg_postinst() {
@@ -206,7 +218,7 @@ pkg_postinst() {
 	elog "The cpupower utility is maintained separately at sys-power/cpupower"
 	elog "The lguest utility no longer builds, and has been dropped."
 	elog "The hpfall tool has been renamed by upstream to freefall; update your config if needed"
-	if find /etc/runlevels/ -name hpfall ; then
+	if find "${ROOT}"/etc/runlevels/ -name hpfall ; then
 		ewarn "You must change hpfall to freefall in your runlevels!"
 	fi
 	if use usbip; then

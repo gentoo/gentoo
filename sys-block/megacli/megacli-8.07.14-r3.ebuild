@@ -1,17 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit rpm
 MY_PV="${PV//./-}"
 MY_P=${MY_PV}_MegaCLI
 
 DESCRIPTION="LSI Logic MegaRAID Command Line Interface management tool"
-# Avagotech now owns LSI
-HOMEPAGE="http://www.avagotech.com/cs/Satellite?pagename=AVG2/searchLayout&SearchKeyWord=8.07&searchType=DocumentFileExtension-zip&locale=avg_en&srchradio=within&within=8.07"
+HOMEPAGE="https://www.broadcom.com/support/knowledgebase/1211161498596/megacli-cheat-sheet--live-examples https://www.broadcom.com/support/knowledgebase/1211161496959/megacli-commands"
 # This file is '[zip]	MegaCLI 5.5 P2', Date: 01/20/2014   Size: 7753 KB
-SRC_URI="http://docs.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${MY_P}.zip"
+SRC_URI="https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${MY_P}.zip"
 
 LICENSE="LSI"
 SLOT="0"
