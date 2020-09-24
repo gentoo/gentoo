@@ -1,0 +1,31 @@
+diff --git a/buildSrc/linux.gradle b/buildSrc/linux.gradle
+index 6a4ca680..a4a01a91 100644
+--- a/buildSrc/linux.gradle
++++ b/buildSrc/linux.gradle
+@@ -227,7 +227,7 @@ FileTree ft_gtk = fileTree("${project(":graphics").projectDir}/src/main/native-g
+ LINUX.glass.glass = [:]
+ LINUX.glass.glass.nativeSource = ft_gtk_launcher.getFiles()
+ LINUX.glass.glass.compiler = compiler
+-LINUX.glass.glass.ccFlags = [cppFlags, "-Werror"].flatten()
++LINUX.glass.glass.ccFlags = [cppFlags].flatten()
+ LINUX.glass.glass.linker = linker
+ LINUX.glass.glass.linkFlags = IS_STATIC_BUILD? linkFlags : [linkFlags, "-lX11", "-ldl"].flatten()
+ LINUX.glass.glass.lib = "glass"
+@@ -237,7 +237,7 @@ LINUX.glass.glassgtk2.nativeSource =  ft_gtk.getFiles()
+ LINUX.glass.glassgtk2.compiler = compiler
+ LINUX.glass.glassgtk2.ccFlags = IS_STATIC_BUILD ?
+         ["-fno-threadsafe-statics", cppFlags, gtk2CCFlags].flatten() :
+-        [cppFlags, gtk2CCFlags, "-Werror"].flatten()
++        [cppFlags, gtk2CCFlags].flatten()
+ LINUX.glass.glassgtk2.linker = linker
+ LINUX.glass.glassgtk2.linkFlags = IS_STATIC_BUILD ? linkFlags : [linkFlags, gtk2LinkFlags].flatten()
+ LINUX.glass.glassgtk2.lib = "glassgtk2"
+@@ -247,7 +247,7 @@ LINUX.glass.glassgtk3.nativeSource =  ft_gtk.getFiles()
+ LINUX.glass.glassgtk3.compiler = compiler
+ LINUX.glass.glassgtk3.ccFlags = IS_STATIC_BUILD ?
+         ["-fno-threadsafe-statics", cppFlags, gtk3CCFlags].flatten() :
+-        [cppFlags, gtk3CCFlags, "-Werror"].flatten()
++        [cppFlags, gtk3CCFlags].flatten()
+ LINUX.glass.glassgtk3.linker = linker
+ LINUX.glass.glassgtk3.linkFlags = IS_STATIC_BUILD ? linkFlags : [linkFlags, gtk3LinkFlags].flatten()
+ LINUX.glass.glassgtk3.lib = "glassgtk3"
