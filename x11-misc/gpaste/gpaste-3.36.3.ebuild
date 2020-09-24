@@ -15,7 +15,7 @@ SRC_URI="https://github.com/Keruspe/GPaste/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+introspection +gnome vala"
+IUSE="+introspection +gnome vala systemd"
 REQUIRED_USE="
 	vala? ( introspection )
 	gnome? ( introspection )
@@ -43,11 +43,17 @@ BDEPEND="
 		gnome-base/gnome-control-center:2
 	)
 	virtual/pkgconfig
+	systemd? (
+		sys-apps/systemd
+	)
 "
 RDEPEND="${DEPEND}
 	gnome? (
 		gnome-base/gnome-control-center:2
 		gnome-base/gnome-shell
+	)
+	systemd? (
+		sys-apps/systemd
 	)
 "
 
@@ -60,7 +66,7 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
-		-Dsystemd=true
+		$(meson_use systemd systemd)
 		-Dbash-completion=true
 		-Dzsh-completion=true
 		-Dx-keybinder=true
