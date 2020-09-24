@@ -1,5 +1,5 @@
---- configure
-+++ configure
+--- a/configure
++++ b/configure
 @@ -46,6 +46,16 @@
  infodir='${prefix}/info'
  mandir='${prefix}/man'
