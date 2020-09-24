@@ -353,10 +353,6 @@ mail-filter/opendkim opendbx stats
 # app-text/pandoc is not keyworded on arm arch.
 app-emulation/xen-tools system-qemu doc
 
-# Markus Meier <maekke@gentoo.org> (2014-02-23)
-# Needs sci-physics/bullet tested #499974
-dev-libs/efl physics
-
 # Markus Meier <maekke@gentoo.org> (2013-12-26)
 # Unkeyworded deps, bug #488724
 app-office/gnumeric libgda
