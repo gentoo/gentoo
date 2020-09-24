@@ -5,10 +5,6 @@
 # app-office/openoffice-bin is being removed.
 office_implementation_openoffice
 
-# Patrick Lauer <patrick@gentoo.org> (2020-08-18)
-# pg13 is currently beta and has no keywords yet
-postgres_targets_postgres13
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
 # consolekit is masked for removal
 consolekit
