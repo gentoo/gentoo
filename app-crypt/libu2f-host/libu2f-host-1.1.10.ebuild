@@ -27,13 +27,17 @@ CONFIG_CHECK="~HIDRAW"
 
 PATCHES=( "${FILESDIR}/${P}-json-boolean.patch" )
 
+src_configure() {
+	econf --disable-static
+}
+
 src_install() {
 	default
 	if use kernel_linux; then
 		udev_dorules 70-u2f.rules
 	fi
 
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
