@@ -3547,7 +3547,7 @@ dev-db/percona-xtrabackup 2.4.15 2.4.20 8.0.13: Hot backup utility for MySQL bas
 dev-db/percona-xtrabackup-bin 2.4.13: MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
 dev-db/pg_activity 1.6.1: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 3.7.0: 'top' for PostgreSQL
-dev-db/pgadmin4 4.17-r1 4.25: GUI administration and development platform for PostgreSQL
+dev-db/pgadmin4 4.17-r1 4.25 4.26: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 3.4.0-r3 4.0.0 4.0.0-r1: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 10.3 11.0: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.9.0 1.10.0 1.11.0 1.12.0 1.14.0: Lightweight connection pooler for PostgreSQL
@@ -14301,7 +14301,7 @@ net-analyzer/monitoring-plugins 2.2-r2 2.2-r3 2.2-r4: 50+ standard plugins for I
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client
 net-analyzer/mrtg 2.17.7: A tool to monitor the traffic load on network-links
 net-analyzer/mrtg-ping-probe 2.2.0: Addon mrtg contrib for stats ping/loss packets
-net-analyzer/mtr 0.87 0.93-r2 9999: My TraceRoute, an Excellent network diagnostic tool
+net-analyzer/mtr 0.87 0.93-r2 0.94 9999: My TraceRoute, an Excellent network diagnostic tool
 net-analyzer/multimon-ng 1.1.8 9999: a fork of multimon, decodes multiple digital transmission modes
 net-analyzer/multipath-tcp-tools 2018_p12_p21 999999: Analysis tools for Multipath Transmission Control Protocol (MPTCP)
 net-analyzer/munin 2.0.52 2.0.56 2.0.59 2.0.61 2.0.63 2.0.64: Munin Server Monitoring Tool
