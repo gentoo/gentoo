@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Implementation of the EWF (SMART and EnCase) image format"
 HOMEPAGE="https://github.com/libyal/libewf"
@@ -16,6 +16,7 @@ IUSE="bfio bzip2 debug +fuse nls +ssl static-libs +uuid unicode zlib"
 
 # uses bundled libbfio until tree version is bumped
 RDEPEND="
+	bzip2? ( app-arch/bzip2 )
 	fuse? ( sys-fs/fuse:0= )
 	nls? (
 		virtual/libintl
