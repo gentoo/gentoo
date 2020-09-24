@@ -1,0 +1,21 @@
+--- a/config.mk
++++ b/config.mk
+@@ -98,15 +98,15 @@
+ PKGS += javascriptcoregtk-4.0
+ 
+ # Check user has correct packages installed (and found by pkg-config).
+-PKGS_OK := $(shell pkg-config --print-errors --exists $(PKGS) && echo 1)
++PKGS_OK := $(shell $(PKG_CONFIG) --print-errors --exists $(PKGS) && echo 1)
+ ifneq ($(PKGS_OK),1)
+     $(error Cannot find required package(s\) to build luakit. Please \
+     check you have the above packages installed and try again)
+ endif
+ 
+ # Add pkg-config options to compile flags.
+-CFLAGS  += $(shell pkg-config --cflags $(PKGS))
++CFLAGS  += $(shell $(PKG_CONFIG) --cflags $(PKGS))
+ CFLAGS  += -I./
+ 
+ # Add pkg-config options to linker flags.
+-LDFLAGS += $(shell pkg-config --libs $(PKGS))
++LDFLAGS += $(shell $(PKG_CONFIG) --libs $(PKGS))
