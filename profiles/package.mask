@@ -646,12 +646,6 @@ dev-haskell/bio
 # Removal in 30 days. Bug #739066.
 dev-libs/hsa-ext-rocr
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-24)
-# Abandoned upstream.
-# Does not compile against ghc-8.8. Removal in 30 days.
-# Bug #736052.
-games-roguelike/mazesofmonad
-
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-23)
 # Ported to py3 but not yet released
 # Masked to allow py2.7 removal
