@@ -1,24 +1,23 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-GCONF_DEBUG="yes"
+EAPI="6"
 GNOME2_LA_PUNT="yes"
-VALA_MIN_API_VERSION="0.16"
 VALA_USE_DEPEND="vapigen"
-PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2 python-any-r1 vala multilib-minimal
+inherit gnome2 vala multilib-minimal
 
 DESCRIPTION="Compatibility library for accessing secrets"
 HOMEPAGE="https://wiki.gnome.org/Projects/GnomeKeyring"
 
 LICENSE="LGPL-2+ GPL-2+" # tests are GPL-2
 SLOT="0"
-IUSE="debug +introspection test vala"
-RESTRICT="!test? ( test )"
+IUSE="debug +introspection vala"
 REQUIRED_USE="vala? ( introspection )"
 KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris"
+
+# tests need python2
+RESTRICT="test"
 
 RDEPEND="
 	>=dev-libs/glib-2.16.0:2[${MULTILIB_USEDEP}]
@@ -32,25 +31,11 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.35
 	sys-devel/gettext
 	virtual/pkgconfig
-	test? ( ${PYTHON_DEPS} $(python_gen_any_dep '
-		dev-python/pygobject:2[${PYTHON_USEDEP}]
-		dev-python/dbus-python[${PYTHON_USEDEP}]') )
 	vala? ( $(vala_depend) )
 "
 
-python_check_deps() {
-	if use test; then
-		has_version "dev-python/pygobject:2[${PYTHON_USEDEP}]" &&
-		has_version "dev-python/dbus-python[${PYTHON_USEDEP}]"
-	fi
-}
-
-pkg_setup() {
-	use test && python-any-r1_pkg_setup
-}
-
 src_prepare() {
-	epatch "${FILESDIR}"/${PV}-vala-0.42-compat.patch
+	eapply "${FILESDIR}"/${PV}-vala-0.42-compat.patch
 	use vala && vala_src_prepare
 	gnome2_src_prepare
 
@@ -62,6 +47,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" gnome2_src_configure \
+		$(usex debug --enable-debug=yes ' ') \
 		$(multilib_native_use_enable vala)
 
 	if multilib_is_native_abi; then
@@ -71,9 +57,4 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	gnome2_src_install
-}
-
-multilib_src_test() {
-	unset DBUS_SESSION_BUS_ADDRESS
-	dbus-launch emake check || die "tests failed"
 }
