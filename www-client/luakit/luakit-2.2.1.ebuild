@@ -47,13 +47,13 @@ PATCHES=(
 )
 
 src_configure() {
+	export LUA_BIN_NAME=$(usex luajit luajit lua)
+	export LUA_PKG_NAME=$(usex luajit luajit lua)
 	tc-export CC PKG_CONFIG
 }
 
 src_compile() {
 	emake \
-		LUA_PKG_NAME=$(usex luajit luajit lua) \
-		LUA_BIN_NAME=$(usex luajit luajit lua) \
 		PREFIX="${EPREFIX}/usr" \
 		${PN}
 
@@ -66,16 +66,14 @@ src_test() {
 		mv tests/async/${failing_test}.lua{,.disabled} || die
 	done
 
-	emake \
-		LUA_BIN_NAME=$(usex luajit luajit lua) \
-		run-tests
+	emake run-tests
 }
 
 src_install() {
 	emake \
 		DESTDIR="${D}" \
-		PREFIX="${EPREFIX}/usr" \
 		DOCDIR="${EPREFIX}/usr/share/doc/${PF}" \
+		PREFIX="${EPREFIX}/usr" \
 		XDGPREFIX="${EPREFIX}/etc/xdg" \
 		install
 
