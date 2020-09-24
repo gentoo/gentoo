@@ -54,6 +54,10 @@ BDEPEND="
 
 S="${WORKDIR}/${P/_/}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-ultima_engine_lua_dep.patch"
+)
+
 src_prepare() {
 	xdg_src_prepare
 
@@ -66,11 +70,6 @@ src_prepare() {
 		-e '/INSTALL.*\/pixmaps/d' \
 		-e 's/-s //' \
 		ports.mk || die
-
-	# Without lua linking of ultima engine fails
-	# Please remove with next version bump!!!
-	sed '/^add_engine/s@"$@ lua"@' \
-		-i engines/ultima/configure.engine || die
 }
 
 src_configure() {
