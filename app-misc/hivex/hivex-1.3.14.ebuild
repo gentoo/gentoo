@@ -82,6 +82,7 @@ src_configure() {
 		--disable-ruby
 		$(use_enable python)
 		--disable-rpath
+		--disable-static
 		)
 
 	econf ${myeconfargs[@]}
@@ -102,4 +103,6 @@ src_install() {
 	if use perl; then
 		perl_delete_localpod
 	fi
+
+	find "${ED}" -name '*.la' -delete || die
 }
