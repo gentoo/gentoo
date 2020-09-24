@@ -8,7 +8,7 @@ CHROMIUM_LANGS="
 	lv mk ml mr ms nb nl nn pl pt-BR pt-PT ro ru sc sk sl sq sr sv sw ta te th
 	tr uk vi zh-CN zh-TW
 "
-inherit chromium-2 multilib unpacker toolchain-funcs xdg-utils
+inherit chromium-2 multilib unpacker toolchain-funcs xdg
 
 #VIVALDI_BRANCH="snapshot"
 
@@ -112,14 +112,4 @@ src_install() {
 	dosym /${VIVALDI_HOME}/${PN} /usr/bin/${PN}
 
 	fperms 4711 /${VIVALDI_HOME}/${PN}-sandbox
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
 }
