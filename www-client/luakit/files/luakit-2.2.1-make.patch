@@ -1,0 +1,38 @@
+--- a/Makefile
++++ b/Makefile
+@@ -56,22 +56,18 @@
+ $(filter-out $(EXT_OBJS),$(OBJS)) $(EXT_OBJS): $(HEADS) config.mk
+ 
+ $(filter-out $(EXT_OBJS),$(OBJS)) : %.o : %.c
+-	@echo $(CC) -c $< -o $@
+-	@$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
++	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
+ 
+ $(EXT_OBJS) : %.o : %.c
+-	@echo $(CC) -c $< -o $@
+-	@$(CC) -c $(CFLAGS) -DLUAKIT_WEB_EXTENSION -fpic $(CPPFLAGS) $< -o $@
++	$(CC) -c $(CFLAGS) -DLUAKIT_WEB_EXTENSION -fpic $(CPPFLAGS) $< -o $@
+ 
+ widgets/webview.o: $(wildcard widgets/webview/*.c)
+ 
+ luakit: $(OBJS)
+-	@echo $(CC) -o $@ $(OBJS)
+-	@$(CC) -o $@ $(OBJS) $(LDFLAGS)
++	$(CC) -o $@ $(OBJS) $(LDFLAGS)
+ 
+ luakit.so: $(EXT_OBJS)
+-	@echo $(CC) -o $@ $(EXT_OBJS)
+-	@$(CC) -o $@ $(EXT_OBJS) -shared $(LDFLAGS)
++	$(CC) -o $@ $(EXT_OBJS) -shared $(LDFLAGS)
+ 
+ luakit.1: luakit.1.in
+ 	@sed "s|LUAKITVERSION|$(VERSION)|" $< > $@
+@@ -115,7 +111,7 @@
+ 	install -d $(DESTDIR)$(APPDIR)
+ 	install -m644 extras/luakit.desktop $(DESTDIR)$(APPDIR)
+ 	install -d $(DESTDIR)$(MANPREFIX)/man1/
+-	install -m644 luakit.1.gz $(DESTDIR)$(MANPREFIX)/man1/
++	install -m644 luakit.1 $(DESTDIR)$(MANPREFIX)/man1/
+ 	mkdir -p resources
+ 	find resources -type d -exec install -d $(DESTDIR)$(PREFIX)/share/luakit/'{}' \;
+ 	find resources -type f -exec sh -c 'f="{}"; install -m644 "$$f" "$(DESTDIR)$(PREFIX)/share/luakit/$$(dirname $$f)"' \;
