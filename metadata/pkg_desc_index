@@ -10801,7 +10801,7 @@ dev-util/mpatch 0.8-r1: Patch-like tool which can resolve common causes of patch
 dev-util/mutrace 0.2-r1: A mutex tracer/profiler
 dev-util/nemiver 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
 dev-util/netsurf-buildsystem 1.8-r1 1.9: Build system used for netsurf and its libs
-dev-util/ninja 1.8.2 1.8.2-r1 1.8.2-r2 1.9.0 1.10.0 9999: A small build system similar to make
+dev-util/ninja 1.10.0 1.10.1 9999: A small build system similar to make
 dev-util/ninka 2.0_pre1_p20170402: A license identification tool for source code
 dev-util/numdiff 5.9.0: File comparision, ignoring small numeric differences and formats
 dev-util/nvidia-cuda-sdk 6.5.19 7.5.18 8.0.44-r1 8.0.61 9.0.176 9.1.85 9.2.88 10.1.243 10.2.89: NVIDIA CUDA Software Development Kit
@@ -15288,7 +15288,7 @@ net-misc/spice-gtk 0.37-r2 0.38 9999: Set of GObject and Gtk objects for connect
 net-misc/spiped 1.6.0-r1: secure pipe daemon
 net-misc/spread 4.4.1 5.0.1: Distributed network messaging system
 net-misc/srf-ip-conn-srv 9999: SharkRF IP Connector Protocol server
-net-misc/ssh-askpass-fullscreen 1.0-r1 1.2: A small SSH Askpass replacement written with GTK2
+net-misc/ssh-askpass-fullscreen 1.2: A small SSH Askpass replacement written with GTK2
 net-misc/ssh-chain 20131217: ssh via a chain of intermediary hosts
 net-misc/sshpass 1.06: Tool for noninteractively performing password authentication with ssh
 net-misc/sshrc 0.6.1 0.6.2: Bring your .bashrc, .vimrc, etc. from your local machine when you ssh
@@ -15498,7 +15498,7 @@ net-voip/telepathy-salut 0.8.1-r2: A link-local XMPP connection manager for Tele
 net-voip/yate 6.0.0 6.1.0 9999: The Yate AV Suite
 net-vpn/6tunnel 0.12 0.13: TCP proxy for applications that don't speak IPv6
 net-vpn/badvpn 1.999.126 1.999.127 1.999.128 1.999.129 1.999.130: Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
-net-vpn/corkscrew 2.0 2.0-r1: a tool for tunneling SSH through HTTP proxies
+net-vpn/corkscrew 2.0-r1: a tool for tunneling SSH through HTTP proxies
 net-vpn/freelan 2.2: Peer-to-peer VPN software that abstracts a LAN over the Internet
 net-vpn/httptunnel 3.3-r2 3.3_p20180119: httptunnel can create IP tunnels through firewalls/proxies using HTTP
 net-vpn/i2p 0.9.45 0.9.47: A privacy-centric, anonymous network
@@ -17046,7 +17046,7 @@ sys-apps/superiotool 6637 99999999: util to detect Super I/O chips and functiona
 sys-apps/sydbox 1.0.7: ptrace-based sandbox
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 244.3 245.5 245.7-r1 246-r1 9999: System and service manager for Linux
+sys-apps/systemd 245.7-r1 246-r1 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/sysvinit 2.93 2.96 2.97: /sbin/init - parent of all processes
 sys-apps/tas 1.6.0.200601: Supermicro Thin-Agent Service for monitoring through the BMC/IPMI
