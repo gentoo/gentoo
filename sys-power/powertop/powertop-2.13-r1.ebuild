@@ -41,6 +41,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.8-ncurses_tinfo.patch
+	"${FILESDIR}"/0001-configure.ac-Use-PKG_PROG_PKG_CONFIG-macro.patch
 )
 
 pkg_setup() {

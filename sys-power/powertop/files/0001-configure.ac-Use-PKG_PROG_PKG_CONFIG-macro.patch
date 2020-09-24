@@ -1,0 +1,62 @@
+From 311b88d2a078aa68b042dc37b416a9bdb3f650e5 Mon Sep 17 00:00:00 2001
+From: Ed Baker <edward.baker@intel.com>
+Date: Thu, 3 Sep 2020 09:01:25 -0700
+Subject: [PATCH] configure.ac: Use PKG_PROG_PKG_CONFIG macro
+
+The goal of this commit is to fix an error encountered when building
+2.13 on Chromium OS.
+emerge-${board} powertop
+  <snip>
+  checking for libnl-3.0 >= 3.0 libnl-genl-3.0 >= 3.0... yes
+  checking for library containing inet_aton... none required
+   * pkg-config: ERROR: Do not call unprefixed tools directly.
+   * pkg-config: ERROR: For board tools, use `tc-export PKG_CONFIG` (or ${CHOST}-pkg-config).
+   * pkg-config: ERROR: For build-time-only tools, `tc-export BUILD_PKG_CONFIG` (or ${CBUILD}-pkg-config).
+   * python3 /mnt/data/chromiumos/chromite/bin/cros_sdk --enter --chrome_root=chrome_root
+   *   `-python3 /mnt/data/chromiumos/chromite/bin/cros_sdk --enter --chrome_root=chrome_root
+   *       `-bash
+   *           `-emerge -b /usr/lib/python-exec/python3.6/emerge --root-deps powertop
+   *               `-sandbox /usr/lib/portage/python3.6/ebuild.sh configure
+   *                   `-ebuild.sh /usr/lib/portage/python3.6/ebuild.sh configure
+   *                       `-ebuild.sh /usr/lib/portage/python3.6/ebuild.sh configure
+   *                           `-configure ./configure --prefix=/usr --build=x86_64-pc-linux-gnu --host=x86_64-cros-linux-gnu --mandir=/usr/share/man --infodir=/usr/share/info --datadir=/usr/share --sysconfdir=/etc --localstatedir=/var/lib --disable-dependency-tracking --disable-silent-rules --docdir=/usr/share/doc/powertop-2.13 --htmldir=/usr/share/doc/powertop-2.13/html --with-sysroot=/build/volteer --libdir=/usr/lib64 --disable-nls
+   *                               `-pkg-config /build/volteer/tmp/portage/sys-power/powertop-2.13/temp/build-toolchain-wrappers/pkg-config --exists bash-completion
+   *                                   `-pstree -a -A -s -l 10567
+   * ERROR: sys-power/powertop-2.13::portage-stable failed (configure phase):
+   *   Bad pkg-config [--exists bash-completion] invocation
+<snip>
+
+The environment variable is populated for board specific tooling.
+declare -x PKG_CONFIG="/build/volteer/build/bin/pkg-config"
+
+Signed-off-by: Ed Baker <edward.baker@intel.com>
+---
+ configure.ac | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 8daa48d..f191197 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -38,6 +38,7 @@ AC_PROG_INSTALL
+ AM_PROG_CC_C_O
+ AX_ADD_FORTIFY_SOURCE
+ AX_CXX_COMPILE_STDCXX([11], [noext], [mandatory])
++PKG_PROG_PKG_CONFIG
+ 
+ # Checks for libraries.
+ AX_PTHREAD([
+@@ -155,8 +156,8 @@ AC_SEARCH_LIBS([inet_aton], [resolv], [], [
+ ], [])
+ 
+ 
+-AS_IF([`pkg-config --exists bash-completion`], [
+-	bashcompletiondir=`pkg-config --variable=completionsdir --define-variable=prefix=${prefix} bash-completion`
++AS_IF([`${PKG_CONFIG} --exists bash-completion`], [
++	bashcompletiondir=`${PKG_CONFIG} --variable=completionsdir --define-variable=prefix=${prefix} bash-completion`
+ ], [
+ 	bashcompletiondir=${datadir}/bash-completion/completions
+ ])
+-- 
+2.17.1
+
