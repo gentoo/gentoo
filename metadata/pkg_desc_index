@@ -1902,7 +1902,7 @@ app-emulation/distrobuilder 1.1: System container image builder for LXC and LXD
 app-emulation/dlx 1.0.0 1.5.20: DLX Simulator
 app-emulation/docker 19.03.12 19.03.13-r2: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-bench-security 1.3.2 1.3.3: Test for best practices around deploying docker containers
-app-emulation/docker-compose 1.25.5 1.26.2 1.27.2 1.27.3: Multi-container orchestration for Docker
+app-emulation/docker-compose 1.25.5 1.26.2 1.27.2 1.27.3 1.27.4: Multi-container orchestration for Docker
 app-emulation/docker-credential-helpers 0.6.3: A suite of programs to use native stores to keep Docker credentials safe
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.13.0: Machine management for a container-centric world
@@ -2741,7 +2741,7 @@ app-portage/tatt 0.7-r1 9999: Arch testing tool
 app-portage/ufed 0.96 9999: Gentoo Linux USE flags editor
 app-portage/unsymlink-lib 18: Convert your system to SYMLINK_LIB=no
 app-shells/autojump 22.5.3: change directory command that learns
-app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r2 4.4_p23-r2 5.0_p17 5.0_p18: The standard GNU Bourne again shell
+app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r2 4.4_p23-r2 5.0_p18: The standard GNU Bourne again shell
 app-shells/bash-completion 2.11 9999: Programmable Completion for bash
 app-shells/bashdb 4.4.1.0.1 5.0.1.1.0 5.0.1.1.2: bash source code debugging
 app-shells/bashish 2.2.4: Text console theme engine
@@ -17328,7 +17328,7 @@ sys-devel/autoconf-archive 2018.03.13 2019.01.06: GNU Autoconf Macro Archive
 sys-devel/autoconf-wrapper 13-r1: wrapper for autoconf to manage multiple autoconf versions
 sys-devel/autogen 5.18.16-r1: Program and text file generation
 sys-devel/automake 1.4_p6-r2 1.5-r2 1.6.3-r2 1.7.9-r3 1.8.5-r5 1.9.6-r5 1.10.3-r3 1.11.6-r3 1.12.6-r2 1.13.4-r2 1.14.1-r2 1.15.1-r2 1.16.1-r1 1.16.1-r2 1.16.2 9999: Used to generate Makefile.in from Makefile.am
-sys-devel/automake-wrapper 10 11: wrapper for automake to manage multiple automake versions
+sys-devel/automake-wrapper 11: wrapper for automake to manage multiple automake versions
 sys-devel/bc 1.06.95-r2 1.07.1-r3: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
 sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34-r2 2.35 2.35.1 9999: Tools necessary to build programs
