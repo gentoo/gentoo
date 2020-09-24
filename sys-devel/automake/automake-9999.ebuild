@@ -2,20 +2,19 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_6 python3_7 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit python-any-r1
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/r/${PN}.git"
-
 	inherit git-r3
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 	if [[ ${PV/_beta} == ${PV} ]]; then
 		MY_P="${P}"
 		SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 			https://alpha.gnu.org/pub/gnu/${PN}/${MY_P}.tar.xz"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 	else
 		MY_PV="$(ver_cut 1).$(($(ver_cut 2)-1))b"
 		MY_P="${PN}-${MY_PV}"
