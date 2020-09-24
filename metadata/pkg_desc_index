@@ -5478,7 +5478,7 @@ dev-libs/libpfm 4.8.0 4.10.1 4.10.1-r1: Hardware-based performance monitoring in
 dev-libs/libpipeline 1.5.2 1.5.3: a pipeline manipulation library
 dev-libs/libplatform 2.0.1 2.1.0.1 2.1.0.1-r1 9999: Platform support library used by libCEC and binary add-ons for Kodi
 dev-libs/libpo6 0.8.0: Hyperdex libpo6 support library
-dev-libs/libpqxx 6.4.5 7.1.2: Standard front-end for writing C++ programs that use PostgreSQL
+dev-libs/libpqxx 7.1.2: Standard front-end for writing C++ programs that use PostgreSQL
 dev-libs/libprelude 4.0.0 4.1.0 5.1.1: Prelude-SIEM Framework Library
 dev-libs/libpreludedb 4.0.0-r1 4.1.0-r1 5.1.0: Framework to easy access to the Prelude database
 dev-libs/libpthread-stubs 0.4-r1: Pthread functions stubs for platforms missing them
