@@ -83,6 +83,10 @@ src_prepare() {
 	cd "${WORKDIR}"
 	xdg_src_prepare
 
+	# https://www.ks.uiuc.edu/Research/vmd/mailing_list/vmd-l/32121.html
+	# https://www.ks.uiuc.edu/Research/vmd/mailing_list/vmd-l/32116.html
+	eapply "${FILESDIR}"/${PN}-1.9.4-gentoo-plugins.patch
+
 	use cuda && cuda_sanitize
 
 	# Prepare plugins
@@ -117,6 +121,8 @@ src_prepare() {
 	cd "${S}" || die
 
 	eapply "${FILESDIR}"/${PN}-1.9.4-gentoo-paths.patch
+
+	# https://www.ks.uiuc.edu/Research/vmd/mailing_list/vmd-l/32122.html
 	eapply "${FILESDIR}"/${PN}-1.9.4-tmpdir.patch
 
 	# PREFIX
