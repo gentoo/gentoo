@@ -3,23 +3,22 @@
 
 EAPI=7
 
-# Change this when you update the ebuild
-RUNC_COMMIT=dc9208a3303feef5b3839f4323d9beb36df0a9dd
+inherit golang-vcs-snapshot linux-info
 
-inherit go-module linux-info
-
+# update on bump, look for https://github.com/docker\
+# docker-ce/blob/<docker ver OR branch>/components/engine/hack/dockerfile/install/runc.installer
+RUNC_COMMIT="dc9208a3303feef5b3839f4323d9beb36df0a9dd"
 CONFIG_CHECK="~USER_NS"
-
-MY_PV="${PV/_/-}"
-SRC_URI="https://github.com/opencontainers/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+EGO_PN="github.com/opencontainers/${PN}"
 
 DESCRIPTION="runc container cli tools"
 HOMEPAGE="http://runc.io"
+SRC_URI="https://github.com/opencontainers/${PN}/archive/v${RUNC_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0 BSD-2 BSD MIT"
 SLOT="0"
-IUSE="apparmor hardened +kmem +seccomp selinux test"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+IUSE="apparmor +ambient hardened +kmem +seccomp selinux test"
 
 DEPEND="seccomp? ( sys-libs/libseccomp )"
 
@@ -34,8 +33,6 @@ BDEPEND="
 	test? ( "${RDEPEND}" )
 "
 
-S="${WORKDIR}/${PN}-${MY_PV}"
-
 # tests need busybox binary, and portage namespace
 # sandboxing disabled: mount-sandbox pid-sandbox ipc-sandbox
 # majority of tests pass
@@ -49,6 +46,7 @@ src_compile() {
 
 	# build up optional flags
 	local options=(
+		$(usev ambient)
 		$(usev apparmor)
 		$(usev seccomp)
 		$(usev selinux)
@@ -56,14 +54,14 @@ src_compile() {
 	)
 
 	myemakeargs=(
+		BINDIR="${ED}/usr/bin"
 		BUILDTAGS="${options[*]}"
 		COMMIT=${RUNC_COMMIT}
 		DESTDIR="${ED}"
 		PREFIX="${ED}/usr"
+		GOPATH="${S}"
+		-C "src/${EGO_PN}"
 	)
-
-	# prevent double manpage generation
-	sed -i 's/^install-man: man/install-man:/' Makefile || die
 
 	emake "${myemakeargs[@]}" runc man
 }
@@ -71,7 +69,7 @@ src_compile() {
 src_install() {
 	emake "${myemakeargs[@]}" install install-man install-bash
 
-	local DOCS=( README.md PRINCIPLES.md docs/. )
+	local DOCS=( src/"${EGO_PN}"/{README.md,PRINCIPLES.md,docs/.} )
 	einstalldocs
 }
 

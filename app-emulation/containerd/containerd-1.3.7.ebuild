@@ -3,23 +3,22 @@
 
 EAPI=7
 
-# update on bump
-CONTAINERD_COMMIT="c623d1b"
+# update on bump, look for https://github.com/docker\
+# docker-ce/blob/<docker ver OR branch>/components/engine/hack/dockerfile/install/containerd.installer
+CONTAINERD_COMMIT="8fba4e9a7d01810a393d5d25a3621dc101981175"
 EGO_PN="github.com/containerd/${PN}"
-MY_PV="${PV/_rc/-rc.}"
 
 inherit golang-vcs-snapshot toolchain-funcs
 
 DESCRIPTION="A daemon to control runC"
 HOMEPAGE="https://containerd.io/"
-SRC_URI="https://github.com/containerd/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/containerd/${PN}/archive/${CONTAINERD_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="apparmor btrfs device-mapper +cri hardened +seccomp selinux test"
 
-# ~pinned dependencies described in vendor.conf
 DEPEND="
 	btrfs? ( sys-fs/btrfs-progs )
 	seccomp? ( sys-libs/libseccomp )
@@ -27,7 +26,7 @@ DEPEND="
 
 RDEPEND="
 	${DEPEND}
-	~app-emulation/runc-1.0.0_rc92
+	~app-emulation/runc-1.0.0_rc10
 "
 
 BDEPEND="
@@ -38,7 +37,7 @@ BDEPEND="
 
 # tests require root or docker
 # upstream does not recommend stripping binary
-RESTRICT="strip test"
+RESTRICT+=" strip test"
 
 S="${WORKDIR}/${P}/src/${EGO_PN}"
 
