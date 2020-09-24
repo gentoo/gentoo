@@ -7,8 +7,8 @@ http://lists.gnu.org/archive/html/bug-bash/2005-03/msg00168.html
 http://lists.gnu.org/archive/html/bug-bash/2005-03/msg00173.html
 http://bugs.gentoo.org/show_bug.cgi?id=87093
 
---- builtins/read.def
-+++ builtins/read.def
+--- a/builtins/read.def
++++ b/builtins/read.def
 @@ -276,7 +276,7 @@
    input_is_tty = isatty (fd);
    if (input_is_tty == 0)

@@ -1,7 +1,7 @@
 add missing docs for -e and -r options
 
---- builtins/ulimit.def
-+++ builtins/ulimit.def
+--- a/builtins/ulimit.def
++++ b/builtins/ulimit.def
 @@ -24,7 +24,7 @@
  $BUILTIN ulimit
  $FUNCTION ulimit_builtin

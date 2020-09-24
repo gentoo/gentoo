@@ -1,19 +1,19 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-inherit eutils flag-o-matic toolchain-funcs multilib
+inherit flag-o-matic toolchain-funcs multilib
 
 # Official patchlevel
 # See ftp://ftp.cwru.edu/pub/bash/bash-4.3-patches/
-PLEVEL=${PV##*_p}
-MY_PV=${PV/_p*}
-MY_PV=${MY_PV/_/-}
-MY_P=${PN}-${MY_PV}
+PLEVEL="${PV##*_p}"
+MY_PV="${PV/_p*}"
+MY_PV="${MY_PV/_/-}"
+MY_P="${PN}-${MY_PV}"
 [[ ${PV} != *_p* ]] && PLEVEL=0
 patches() {
-	local opt=$1 plevel=${2:-${PLEVEL}} pn=${3:-${PN}} pv=${4:-${MY_PV}}
+	local opt=${1} plevel=${2:-${PLEVEL}} pn=${3:-${PN}} pv=${4:-${MY_PV}}
 	[[ ${plevel} -eq 0 ]] && return 1
 	eval set -- {1..${plevel}}
 	set -- $(printf "${pn}${pv/\.}-%03d " "$@")
@@ -46,7 +46,7 @@ DEPEND=">=sys-libs/ncurses-5.2-r2:0=
 RDEPEND="${DEPEND}
 	!<sys-apps/portage-2.1.6.7_p1"
 # we only need yacc when the .y files get patched (bash42-005)
-DEPEND+=" virtual/yacc"
+BDEPEND="virtual/yacc"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.3-mapfile-improper-array-name-validation.patch
@@ -55,7 +55,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.4-popd-offset-overflow.patch #600174
 )
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	if is-flag -malign-double ; then #7332
@@ -75,26 +75,36 @@ src_unpack() {
 
 src_prepare() {
 	# Include official patches
-	[[ ${PLEVEL} -gt 0 ]] && epatch $(patches -s)
+	[[ ${PLEVEL} -gt 0 ]] && eapply -p0 $(patches -s)
 
 	# Clean out local libs so we know we use system ones w/releases.
 	if [[ ${PV} != *_rc* ]] ; then
-		rm -rf lib/{readline,termcap}/*
-		touch lib/{readline,termcap}/Makefile.in # for config.status
+		rm -rf lib/{readline,termcap}/* || die
+		touch lib/{readline,termcap}/Makefile.in || die # for config.status
 		sed -ri -e 's:\$[(](RL|HIST)_LIBSRC[)]/[[:alpha:]]*.h::g' Makefile.in || die
 	fi
 
 	# Avoid regenerating docs after patches #407985
 	sed -i -r '/^(HS|RL)USER/s:=.*:=:' doc/Makefile.in || die
-	touch -r . doc/*
+	touch -r . doc/* || die
 
-	epatch "${PATCHES[@]}"
-
-	epatch_user
+	default
 }
 
 src_configure() {
-	local myconf=()
+	local myconf=(
+		--docdir='$(datarootdir)'/doc/${PF}
+		--htmldir='$(docdir)/html'
+		--with-curses
+		$(use_with afs)
+		$(use_enable net net-redirections)
+		--disable-profiling
+		$(use_enable mem-scramble)
+		$(use_with mem-scramble bash-malloc)
+		$(use_enable readline)
+		$(use_enable readline history)
+		$(use_enable readline bang-history)
+	)
 
 	# For descriptions of these, see config-top.h
 	# bashrc/#26952 bash_logout/#90488 ssh/#24762 mktemp/#574426
@@ -145,19 +155,7 @@ src_configure() {
 			configure || die
 	fi
 	tc-export AR #444070
-	econf \
-		--docdir='$(datarootdir)'/doc/${PF} \
-		--htmldir='$(docdir)/html' \
-		--with-curses \
-		$(use_with afs) \
-		$(use_enable net net-redirections) \
-		--disable-profiling \
-		$(use_enable mem-scramble) \
-		$(use_with mem-scramble bash-malloc) \
-		$(use_enable readline) \
-		$(use_enable readline history) \
-		$(use_enable readline bang-history) \
-		"${myconf[@]}"
+	econf "${myconf[@]}"
 }
 
 src_compile() {

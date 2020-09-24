@@ -4,8 +4,8 @@ Ripped from Debian
 #     being optimized away as dead code.  In reality, the use of setjmp/longjmp
 #     makes it not dead code at all.
 
---- eval.old	2003-12-18 23:44:15.000000000 -0500
-+++ eval.c	2005-10-03 01:59:31.000000000 -0400
+--- a/eval.c
++++ b/eval.c
 @@ -63,7 +63,7 @@
  reader_loop ()
  {
