@@ -10882,7 +10882,7 @@ dev-util/spirv-tools 2020.3 9999: Provides an API and commands for processing SP
 dev-util/splint 3.1.2-r1 3.1.2-r2: Check C programs for vulnerabilities and programming mistakes
 dev-util/squashdelta 0.1.1 9999: Efficient (partially uncompressed) SquashFS binary delta tool
 dev-util/squashmerge 0.1 9999: dev-util/squashdelta delta merge tool
-dev-util/statifier 1.7.4 1.7.4-r1: Statifier is a tool for creating portable, self-containing Linux executables
+dev-util/statifier 1.7.4-r1: Statifier is a tool for creating portable, self-containing Linux executables
 dev-util/stepman 0.10.0 0.10.2 0.10.4 0.10.5: Step collection manager for Bitrise CLI
 dev-util/strace 5.3 5.4 5.7 5.8 9999: A useful diagnostic, instructional, and debugging tool
 dev-util/stressapptest 1.0.9: Stressful Application Test
@@ -17701,7 +17701,7 @@ sys-power/pmtools 20110323-r1: Collection of tools for ACPI and power management
 sys-power/powermgmt-base 1.31-r1: Script to test whether computer is running on AC power
 sys-power/powernowd 1.00-r4 1.00-r5: Daemon to control the speed and voltage of CPUs
 sys-power/powerstat 0.02.21 0.02.22 9999: Laptop power measuring tool
-sys-power/powertop 2.10 2.11 2.13-r1 9999: tool to diagnose issues with power consumption and power management
+sys-power/powertop 2.13-r1 9999: tool to diagnose issues with power consumption and power management
 sys-power/sispmctl 4.0 4.1: GEMBIRD SiS-PM control utility
 sys-power/suspend 1.0_p20190605: Userspace Software Suspend and S2Ram
 sys-power/thermald 2.2 2.3-r1: Thermal daemon for Intel architectures
