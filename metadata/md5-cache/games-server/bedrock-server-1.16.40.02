@@ -8,5 +8,5 @@ LICENSE=Mojang
 RDEPEND=acct-group/bedrock acct-user/bedrock app-misc/dtach dev-libs/openssl:0/1.1 net-misc/curl[ssl]
 RESTRICT=bindist mirror
 SLOT=0
-SRC_URI=https://minecraft.azureedge.net/bin-linux/bedrock-server-1.16.20.03.zip
+SRC_URI=https://minecraft.azureedge.net/bin-linux/bedrock-server-1.16.40.02.zip
 _md5_=98b7b87c8352e51e66b7ff8c793fc38e
