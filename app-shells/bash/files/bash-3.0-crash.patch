@@ -14,8 +14,8 @@
 
 Thanks for the report.  Here's a quick fix:
 
-*** arrayfunc.c~	Sat Nov  6 15:08:29 2004
---- arrayfunc.c	Mon Jan 31 11:56:21 2005
+*** a/arrayfunc.c
+--- b/arrayfunc.c
 ***************
 *** 709,713 ****
   	  return ((char *)NULL);
