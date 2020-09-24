@@ -2705,13 +2705,13 @@ app-portage/g-cpan 0.16.9-r1 0.17.0 9999: Autogenerate and install ebuilds for C
 app-portage/g-octave 0.4.1-r7: A tool that generates and installs ebuilds for Octave-Forge
 app-portage/g-sorcery 0.2.1-r1: framework for ebuild generators
 app-portage/gander 0.0.1: Statistic submission client for Goose (anser.gentoo.org)
-app-portage/gemato 14.4-r1 14.5 15.2 16.1 9999: Stand-alone Manifest generation & verification tool
+app-portage/gemato 15.2 16.1 9999: Stand-alone Manifest generation & verification tool
 app-portage/genlop 0.30.9-r1 0.30.10-r1 0.30.10-r2 9999: A nice emerge.log parser
 app-portage/gentoolkit 0.4.6 0.4.7 0.4.8 0.5.0 9999: Collection of administration scripts for Gentoo
 app-portage/gentoopm 0.3.1 0.3.2 9999: A common interface to Gentoo package managers
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
 app-portage/golop 0.0.1 0.0.1-r1 9999: A pure Go re-implementation of genlop
-app-portage/gpyutils 0.4.2 0.4.3 0.4.4 0.4.5 9999: Utitilies for maintaining Python packages
+app-portage/gpyutils 0.4.3 0.4.5 9999: Utitilies for maintaining Python packages
 app-portage/grs 0.7 9999: Suite to build Gentoo Reference Systems
 app-portage/gs-elpa 0.1.3-r1: g-sorcery backend for elisp packages
 app-portage/gverify 2: gentoo.git signature verification tool
@@ -7837,7 +7837,7 @@ dev-python/HeapDict 1.0.0: Heap with decrease-key and increase-key operations
 dev-python/MechanicalSoup 0.12.0: A python library for automating interaction with websites
 dev-python/PyContracts 1.8.14-r1: Declare constraints on function parameters and return values
 dev-python/PyECLib 1.6.0: Messaging API for RPC and notifications over different messaging transports
-dev-python/PyGithub 1.51 1.53: Python library to access the Github API v3
+dev-python/PyGithub 1.53: Python library to access the Github API v3
 dev-python/PyICU 2.5: Python bindings for dev-libs/icu
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
 dev-python/PyQt5 5.14.2-r1 5.15.0-r1 5.15.1: Python bindings for the Qt framework
@@ -10819,7 +10819,7 @@ dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch fil
 dev-util/patdiff 0.9.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.15-r1 0.1.18: Recursive-descent parser generators for C
 dev-util/perf 5.4.20 5.7-r1 5.8: Userland tools for Linux Performance Counters
-dev-util/pkgcheck 0.7.6-r1 0.7.7 9999: pkgcore-based QA utility for ebuild repos
+dev-util/pkgcheck 0.7.7 9999: pkgcore-based QA utility for ebuild repos
 dev-util/pkgconf 1.6.3 1.7.2 1.7.3 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgdiff 1.7.2 9999: Package Changes Analyzer (pkgdiff)
