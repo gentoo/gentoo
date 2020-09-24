@@ -17,6 +17,10 @@ DEPEND=" !libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.7.3-Remove-WError.patch"
+	)
+
 src_prepare() {
 	default
 	eautoreconf
