@@ -12,7 +12,7 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
-PATCHSET="3"
+PATCHSET="4"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://files.pythonhosted.org/packages/ed/7b/bbf89ca71e722b7f9464ebffe4b5ee20a9e5c9a555a56e2d3914bb9119a6/setuptools-44.1.0.zip
@@ -21,7 +21,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="component-build cups cpu_flags_arm_neon +hangouts headless +js-type-check kerberos official pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-icu +system-libvpx +tcmalloc wayland widevine"
+IUSE="component-build cups cpu_flags_arm_neon +hangouts headless +js-type-check kerberos official pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-icu +tcmalloc vaapi wayland widevine"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 REQUIRED_USE="
 	component-build? ( !suid )
@@ -41,6 +41,7 @@ COMMON_X_DEPEND="
 	x11-libs/libXtst:=
 	x11-libs/libXScrnSaver:=
 	x11-libs/libxcb:=
+	vaapi? ( >=x11-libs/libva-2.7:=[X,drm] )
 "
 
 COMMON_DEPEND="
@@ -57,7 +58,6 @@ COMMON_DEPEND="
 	>=media-libs/harfbuzz-2.4.0:0=[icu(-)]
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
-	system-libvpx? ( >=media-libs/libvpx-1.8.2:=[postproc] )
 	pulseaudio? ( media-sound/pulseaudio:= )
 	system-ffmpeg? (
 		>=media-video/ffmpeg-4.3:=
@@ -175,6 +175,10 @@ them in Chromium, then add --password-store=basic to CHROMIUM_FLAGS
 in /etc/chromium/default.
 "
 
+PATCHES=(
+	"${FILESDIR}/chromium-87-ozone-deps.patch"
+)
+
 pre_build_checks() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		local -x CPP="$(tc-getCXX) -E"
@@ -227,6 +231,10 @@ src_prepare() {
 	python_setup
 
 	eapply "${WORKDIR}/patches"
+	if use vaapi; then
+		eapply "${FILESDIR}/chromium-86-fix-vaapi-on-intel.patch"
+		eapply "${FILESDIR}/chromium-87-fix-vaapi-build.patch"
+	fi
 
 	default
 
@@ -304,6 +312,7 @@ src_prepare() {
 		third_party/devscripts
 		third_party/devtools-frontend
 		third_party/devtools-frontend/src/front_end/third_party/acorn
+		third_party/devtools-frontend/src/front_end/third_party/axe-core
 		third_party/devtools-frontend/src/front_end/third_party/chromium
 		third_party/devtools-frontend/src/front_end/third_party/codemirror
 		third_party/devtools-frontend/src/front_end/third_party/fabricjs
@@ -347,6 +356,8 @@ src_prepare() {
 		third_party/libsrtp
 		third_party/libsync
 		third_party/libudev
+		third_party/libvpx
+		third_party/libvpx/source/libvpx/third_party/x86inc
 		third_party/libwebm
 		third_party/libxml/chromium
 		third_party/libyuv
@@ -451,19 +462,6 @@ src_prepare() {
 	if ! use system-icu; then
 		keeplibs+=( third_party/icu )
 	fi
-	if ! use system-libvpx; then
-		keeplibs+=( third_party/libvpx )
-		keeplibs+=( third_party/libvpx/source/libvpx/third_party/x86inc )
-
-		# we need to generate ppc64 stuff because upstream does not ship it yet
-		# it has to be done before unbundling.
-		if use ppc64; then
-			pushd third_party/libvpx >/dev/null || die
-			mkdir -p source/config/linux/ppc64 || die
-			./generate_gni.sh || die
-			popd >/dev/null || die
-		fi
-	fi
 	if use tcmalloc; then
 		keeplibs+=( third_party/tcmalloc )
 	fi
@@ -483,6 +481,15 @@ src_prepare() {
 	if use arm64 || use ppc64 ; then
 		keeplibs+=( third_party/swiftshader/third_party/llvm-10.0 )
 	fi
+	# we need to generate ppc64 stuff because upstream does not ship it yet
+	# it has to be done before unbundling.
+	if use ppc64; then
+		pushd third_party/libvpx >/dev/null || die
+		mkdir -p source/config/linux/ppc64 || die
+		./generate_gni.sh || die
+		popd >/dev/null || die
+	fi
+
 	# Remove most bundled libraries. Some are still needed.
 	build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove || die
 }
@@ -562,9 +569,6 @@ src_configure() {
 	if use system-icu; then
 		gn_system_libraries+=( icu )
 	fi
-	if use system-libvpx; then
-		gn_system_libraries+=( libvpx )
-	fi
 	if [[ ${CHROMIUM_FORCE_LIBCXX} != yes ]]; then
 		# unbundle only without libc++, because libc++ is not fully ABI compatible with libstdc++
 		gn_system_libraries+=( libxml )
@@ -588,6 +592,7 @@ src_configure() {
 	myconf_gn+=" use_cups=$(usex cups true false)"
 	myconf_gn+=" use_kerberos=$(usex kerberos true false)"
 	myconf_gn+=" use_pulseaudio=$(usex pulseaudio true false)"
+	myconf_gn+=" use_vaapi=$(usex vaapi true false)"
 
 	# TODO: link_pulseaudio=true for GN.
 
