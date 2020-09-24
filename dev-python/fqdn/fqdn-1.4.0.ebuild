@@ -20,3 +20,4 @@ RDEPEND="dev-python/cached-property[${PYTHON_USEDEP}]"
 PATCHES=( "${FILESDIR}/1.4.0-tests.patch" )
 
 distutils_enable_tests unittest
+distutils_enable_sphinx docs
