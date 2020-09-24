@@ -3,7 +3,7 @@
 
 EAPI=7
 inherit go-module
-GIT_COMMIT=f6f50c6111b26072a76e8beb87566ff36c6a48b9
+GIT_COMMIT=27d895fb207c9367a2d516f739578bbcb5db0368
 
 DESCRIPTION="A client for kubelet"
 HOMEPAGE="https://github.com/cyberark/kubeletctl"
@@ -125,6 +125,8 @@ EGO_SUM=(
 	"github.com/grpc-ecosystem/go-grpc-middleware v1.0.0/go.mod"
 	"github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0/go.mod"
 	"github.com/grpc-ecosystem/grpc-gateway v1.9.0/go.mod"
+	"github.com/hashicorp/go-version v1.0.0"
+	"github.com/hashicorp/go-version v1.0.0/go.mod"
 	"github.com/hashicorp/golang-lru v0.5.0/go.mod"
 	"github.com/hashicorp/golang-lru v0.5.1/go.mod"
 	"github.com/hashicorp/hcl v1.0.0/go.mod"
@@ -171,6 +173,10 @@ EGO_SUM=(
 	"github.com/mattn/go-tty v0.0.3/go.mod"
 	"github.com/matttproud/golang_protobuf_extensions v1.0.1/go.mod"
 	"github.com/mitchellh/go-homedir v1.1.0/go.mod"
+	"github.com/mitchellh/gox v1.0.1"
+	"github.com/mitchellh/gox v1.0.1/go.mod"
+	"github.com/mitchellh/iochan v1.0.0"
+	"github.com/mitchellh/iochan v1.0.0/go.mod"
 	"github.com/mitchellh/mapstructure v1.1.2"
 	"github.com/mitchellh/mapstructure v1.1.2/go.mod"
 	"github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421/go.mod"
