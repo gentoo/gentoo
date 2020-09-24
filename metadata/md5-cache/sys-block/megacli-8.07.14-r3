@@ -1,0 +1,14 @@
+BDEPEND=>=app-arch/rpm2targz-9.0.0.3g
+DEFINED_PHASES=install postinst unpack
+DEPEND=app-arch/unzip app-admin/chrpath
+DESCRIPTION=LSI Logic MegaRAID Command Line Interface management tool
+EAPI=7
+HOMEPAGE=https://www.broadcom.com/support/knowledgebase/1211161498596/megacli-cheat-sheet--live-examples https://www.broadcom.com/support/knowledgebase/1211161496959/megacli-commands
+KEYWORDS=~amd64 ~x86
+LICENSE=LSI
+RDEPEND=sys-libs/ncurses-compat:5
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/8-07-14_MegaCLI.zip
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	estack	686eaab303305a908fd57b2fd7617800	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	rpm	760ff223c2c4299b68ea901e24c4cabd	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=66b39bae11897b7c36716ae2fd3bfc85

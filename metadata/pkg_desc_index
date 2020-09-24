@@ -495,7 +495,7 @@ app-admin/cancd 0.1.0-r4: CA NetConsole Daemon receives output from the Linux ne
 app-admin/ccze 0.2.1-r4: A flexible and fast logfile colorizer
 app-admin/cdist 5.1.3 6.0.0 6.5.4 6.5.6: A usable configuration management system
 app-admin/cgmanager 0.41 0.42: Control Group manager daemon
-app-admin/checksec 1.7.5 1.8.0 1.9.0 1.11.1 2.0.1 2.1.0 2.2.0 2.2.1 2.2.2 2.2.3: Tool to check properties of executables (e.g. ASLR/PIE, RELRO, PaX, Canaries)
+app-admin/checksec 1.9.0 1.11.1 2.0.1 2.1.0 2.2.0 2.2.1 2.2.2 2.2.3: Tool to check properties of executables (e.g. ASLR/PIE, RELRO, PaX, Canaries)
 app-admin/chroot_safe 1.4-r1: Chroot any dynamically linked application in a safe and sane manner
 app-admin/chrootuid 1.3-r2: Run a network service at low privilege level and restricted file system access
 app-admin/chrpath 0.13-r2 0.16: Chrpath can modify the rpath and runpath of ELF executables
@@ -801,7 +801,7 @@ app-backup/rdedup 1.0.2: data deduplication with compression and public key encr
 app-backup/rdiff-backup 2.0.0 2.0.3 2.0.5: Local/remote mirroring+incremental backup
 app-backup/rdumpfs 0.1: a rsync-based dump file system backup tool
 app-backup/rdup 1.1.15: Generate a file list suitable for full or incremental backups
-app-backup/rear 1.15-r1 1.17.0 1.17.1 2.4: Relax-and-Recover is a setup-and-forget bare metal disaster recovery solution
+app-backup/rear 2.4: Relax-and-Recover is a setup-and-forget bare metal disaster recovery solution
 app-backup/reoback 1.0_p3-r1: Reoback Backup Solution
 app-backup/restic 0.9.4 0.9.5 0.9.6: A backup program that is fast, efficient and secure
 app-backup/rsnapshot 1.4.2 1.4.3: A filesystem backup utility based on rsync
@@ -1551,7 +1551,7 @@ app-dicts/sword-f35 1.0.1: Wilbur Pickering's Greek New Testament According to F
 app-dicts/sword-la_en 1.1: Latin to English Glossary
 app-dicts/sword-sml_BL_2008 1.0.1: Kitab Awal-Jaman maka Kitab Injil
 app-dicts/sword-vlsJoNT 1.0.1: Het Nieuwe Testament by Nicolaas De Jonge
-app-dicts/verbiste 0.1.38-r1 0.1.41 0.1.44: French conjugation system
+app-dicts/verbiste 0.1.44: French conjugation system
 app-dicts/wnn-ldic 1.04: Wnn dictionary for librarian
 app-dicts/wordnet 3.0-r4 3.0-r5 3.1: A lexical database for the English language
 app-dicts/ydpdict 1.0.2 1.0.3: Interface for the Collins Dictionary
@@ -3101,7 +3101,7 @@ app-vim/bnf-syntax 1.2-r2: vim plugin: BNF file syntax highlighting
 app-vim/brainfuck-syntax 1.0.3-r1: vim plugin: BrainFuck source file syntax highlighting
 app-vim/breakpts 4.0-r1 4.0-r2: vim plugin: sets vim breakpoints visually
 app-vim/bufexplorer 7.4.18 7.4.19 9999: vim plugin: easily browse vim buffers
-app-vim/c-support 6.0 6.1 6.1.1: vim plugin: C/C++-IDE -- Write and run programs using menus and hotkeys
+app-vim/c-support 6.1.1: vim plugin: C/C++-IDE -- Write and run programs using menus and hotkeys
 app-vim/calendar 2.9-r1: vim plugin: calendar window
 app-vim/cctree 1.61-r1: vim plugin: Cscope based source-code browser and code flow analysis tool
 app-vim/cecutil 17: vim plugin: library used by many of Charles Campbell's plugins
@@ -3211,7 +3211,7 @@ app-vim/securemodelines 20140926: vim plugin: secure, user-configurable modeline
 app-vim/selinux-syntax 20041225-r1: vim plugin: SELinux type enforcement policy syntax
 app-vim/session 2.13.1: vim plugin: extended session management for vim
 app-vim/showmarks 2.2-r1: vim plugin: show location marks visually
-app-vim/sleuth 1.0 1.1: vim plugin: heuristically set buffer options
+app-vim/sleuth 1.1: vim plugin: heuristically set buffer options
 app-vim/snipmate 0.87-r1: vim plugin: TextMate-style snippets
 app-vim/splice 1.1.0-r3: vim plugin: resolve conflicts during three-way merges
 app-vim/sudoedit 0.21: vim plugin: edit files using sudo or su
@@ -3489,7 +3489,7 @@ dev-cpp/websocketpp 0.8.1-r1: C++/Boost Asio based websocket client/server libra
 dev-cpp/yaml-cpp 0.6.3-r3: YAML parser and emitter in C++
 dev-db/4store 1.1.5-r1: 4store is an efficient, scalable and stable RDF database
 dev-db/aerospike-server-community 3.13.0.9 3.14.1.8 3.15.1.4 3.16.0.6 4.0.0.1 4.0.0.4 4.1.0.1 9999: Flash-optimized, in-memory, nosql database
-dev-db/apgdiff 1.4 2.2.1 2.2.2 2.3 2.4: A simple PostgreSQL diff tool that is useful for schema upgrades
+dev-db/apgdiff 2.4: A simple PostgreSQL diff tool that is useful for schema upgrades
 dev-db/barman 2.10: Administration tool for disaster recovery of PostgreSQL servers
 dev-db/bucardo 5.4.1: An asynchronous PostgreSQL replication system
 dev-db/cdb 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
@@ -5156,7 +5156,7 @@ dev-lang/parrot 7.1.0-r1 7.5.0-r1 7.11.0-r1 8.1.0-r1 8.1.0-r2: Virtual machine d
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.3 5.30.3-r1 5.30.3-r2 5.32.0 5.32.0-r1: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 7.2.33 7.3.21 7.3.22 7.4.9 7.4.10: The PHP language runtime engine
-dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6 5.8: Poly/ML is a full implementation of Standard ML
+dev-lang/polyml 5.6 5.8: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.18-r1 2.7.18-r2 2.7.18-r3 3.6.11-r2 3.6.12 3.7.8-r2 3.7.9 3.8.4-r1 3.8.5 3.9.0_rc1 3.9.0_rc2: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r1 9999: Python script wrapper
 dev-lang/qu-prolog 10.4 10.5 10.6: Extended Prolog supporting quantifiers, object-variables and substitutions
@@ -5761,7 +5761,7 @@ dev-lua/mpack 1.0.4: Lua bindings for libmpack
 dev-lua/penlight 1.3.2 1.5.4 1.7.0: Lua utility libraries loosely based on the Python standard libraries
 dev-lua/say 1.3_p1 1.3_p1-r1: Lua String Hashing/Indexing Library
 dev-lua/toluapp 1.0.93_p20190513-r1: A tool to integrate C/C++ code with Lua
-dev-ml/alcotest 0.8.1 0.8.2: A lightweight and colourful test framework
+dev-ml/alcotest 0.8.2: A lightweight and colourful test framework
 dev-ml/astring 0.8.3: Alternative String module for OCaml
 dev-ml/async 0.9.0: Jane Street Capital's asynchronous execution library
 dev-ml/async_extra 0.9.0: Jane Street Capital's asynchronous execution library (extra)
@@ -5855,7 +5855,7 @@ dev-ml/ocamlbuild 0.10.1 0.11.0 0.14.0: Generic build tool with built-in rules f
 dev-ml/ocamlgraph 1.8.7 1.8.8: O'Caml Graph library
 dev-ml/ocamlify 0.0.2: OCamlify creates OCaml code by including files into strings or string lists
 dev-ml/ocamlmod 0.0.8 0.0.9: Generate OCaml modules from source files
-dev-ml/ocamlnet 4.1.2 4.1.3 4.1.4: Modules for OCaml application-level Internet protocols
+dev-ml/ocamlnet 4.1.2 4.1.4: Modules for OCaml application-level Internet protocols
 dev-ml/ocamlsdl 0.9.1: OCaml SDL Bindings
 dev-ml/ocamlweb 1.39: O'Caml literate programming tool
 dev-ml/ocplib-endian 1.0: Functions to read and write int16/32/64 from strings, bytes, and bigarrays
@@ -5864,7 +5864,7 @@ dev-ml/octavius 1.1.0: ocamldoc comment syntax parser
 dev-ml/ocurl 0.6.1 0.7.9 0.7.10: OCaml interface to the libcurl library
 dev-ml/opam 1.3.1-r1: A source-based package manager for OCaml
 dev-ml/optcomp 1.6-r1: Optional compilation for OCaml with cpp-like directives
-dev-ml/ounit 2.0.0 2.0.5 2.0.6: Unit testing framework for OCaml
+dev-ml/ounit 2.0.6: Unit testing framework for OCaml
 dev-ml/parmap 1.0_rc7-r1 1.0_rc8: Library to exploit multicore architectures for OCaml programs
 dev-ml/patience_diff 0.9.0: Tool and library implementing patience diff
 dev-ml/pcre-ocaml 7.2.3 7.3.0 7.3.2 7.3.3: Perl Compatibility Regular Expressions for O'Caml
@@ -10561,7 +10561,7 @@ dev-util/abootimg 20150323: Manipulate Android boot images.
 dev-util/ald 0.1.7-r2: Assembly Language Debugger
 dev-util/amtterm 1.6: A nice tool to manage amt-enabled machines
 dev-util/android-ndk 9 9b 9c 9d 10 10b 10d 10e 11c 11c-r1 13b 14b 16b 18: Open Handset Alliance's Android NDK (Native Dev Kit)
-dev-util/android-sdk-update-manager 21 21.1 22 22.0.1 22.0.1-r1 22.0.4 22.0.5 22.0.5-r1 22.2.1 22.3 22.6 22.6.1 23 23-r1 24.4.1: Open Handset Alliance's Android SDK
+dev-util/android-sdk-update-manager 24.4.1: Open Handset Alliance's Android SDK
 dev-util/android-studio 3.5.3.0.191.6010548 3.6.0.21.192.6200805 3.6.1.0.192.6241897 3.6.2.0.192.6308749 3.6.3.0.192.6392135 4.0.1.0.193.6626763: Android development environment based on IntelliJ IDEA
 dev-util/android-tools 5.1.1_p13 6.0.1_p79 8.1.0_p1 9.0.0_p3 9.0.0_p3-r1: Android platform tools (adb, fastboot, and mkbootimg)
 dev-util/anjuta 3.34.0: A versatile IDE for GNOME
@@ -12654,7 +12654,7 @@ media-fonts/mikachan-font-ttc 9.1: Mikachan Japanese TrueType Collection fonts
 media-fonts/mikachan-font-ttf 8.9-r2: Mikachan Japanese TrueType fonts
 media-fonts/mix-mplus-ipa 20130617-r1: Mixing mplus and IPA fonts
 media-fonts/monafont 2.90-r2: Japanese bitmap and TrueType fonts suitable for browsing 2ch
-media-fonts/monoid 0.60 0.61: Open source coding font
+media-fonts/monoid 0.61: Open source coding font
 media-fonts/montecarlo 0-r1: monospace font, created by programmers, for programmers
 media-fonts/mplus-fonts 2.2.4-r1: M+ Japanese bitmap fonts
 media-fonts/mplus-outline-fonts 0_pre063 0_pre063_p1: M+ Japanese outline fonts
@@ -12711,7 +12711,7 @@ media-fonts/thaifonts-scalable 0.6.1: A collection of Free fonts for Thai
 media-fonts/tibetan-machine-font 1.901: Fonts for the Tibetan and Himalayan languages
 media-fonts/ttf-bitstream-vera 1.10-r3: Bitstream Vera font family
 media-fonts/ubuntu-font-family 0.83-r1: A set of matching libre/open fonts funded by Canonical
-media-fonts/umeplus-fonts 20130511 20131109 20150115 20160402: UmePlus fonts are modified Ume and M+ fonts for Japanese
+media-fonts/umeplus-fonts 20160402: UmePlus fonts are modified Ume and M+ fonts for Japanese
 media-fonts/unfonts 1.0.2_pre080608-r1: Korean Un fonts collection
 media-fonts/unfonts-extra 1.0.2_pre080608-r1: Korean Un fonts extras collection
 media-fonts/unifont 10.0.06 13.0.01: GNU Unifont - a Pan-Unicode X11 bitmap iso10646 font
@@ -14404,9 +14404,9 @@ net-analyzer/scapy 2.4.3 2.4.4 9999: A Python interactive packet manipulation pr
 net-analyzer/scli 0.4.0-r1: SNMP Command Line Interface
 net-analyzer/sec 2.7.6-r1 2.8.1 2.8.2 2.8.3: Simple Event Correlator
 net-analyzer/sflowtool 3.34 3.41 5.02 5.04 5.05: sflowtool is a utility for collecting and processing sFlow data
-net-analyzer/sguil-client 0.8.0 0.9.0 1.0.0: GUI Console for sguil Network Security Monitoring
-net-analyzer/sguil-sensor 0.8.0 0.9.0 1.0.0: Sensor part of sguil Network Security Monitoring
-net-analyzer/sguil-server 0.8.0 0.9.0 1.0.0: Daemon for Sguil Network Security Monitoring
+net-analyzer/sguil-client 1.0.0: GUI Console for sguil Network Security Monitoring
+net-analyzer/sguil-sensor 1.0.0: Sensor part of sguil Network Security Monitoring
+net-analyzer/sguil-server 1.0.0: Daemon for Sguil Network Security Monitoring
 net-analyzer/sinfo 0.0.48: A monitoring tool for networked computers
 net-analyzer/siphon 666-r1 666-r2: A portable passive network mapping suite
 net-analyzer/slurm 0.3.3-r2 0.4.3: Realtime network interface monitor based on FreeBSD's pppstatus
@@ -14501,7 +14501,7 @@ net-dialup/sercd 3.0.0-r2: RFC2217-compliant serial port redirector
 net-dialup/speedtouch-usb 3.0.1.2-r3: Firmware and configuration instructions for Alcatel SpeedTouch USB modems
 net-dialup/tkvoice 1.5: Voice mail and Fax frontend program
 net-dialup/wvdial 1.61: Excellent program to automatically configure PPP sessions
-net-dialup/xc 4.3.2-r3 4.3.2-r4: Modem dialout & serial terminal program
+net-dialup/xc 4.3.2-r4: Modem dialout & serial terminal program
 net-dialup/xl2tpd 1.3.10 1.3.11 1.3.12 1.3.13 1.3.15: A modern version of the Layer 2 Tunneling Protocol (L2TP) daemon
 net-dns/avahi 0.8-r2: System which facilitates service discovery on a local network
 net-dns/bind 9.16.6 9.16.6-r2: Berkeley Internet Name Domain - Name Server
@@ -14539,7 +14539,7 @@ net-dns/mydns 1.2.8.31-r1 1.2.8.31-r2: A DNS-Server which gets its data from a M
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
 net-dns/nsd 4.2.4 4.3.1 4.3.2: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
-net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
+net-dns/opendnssec 2.0.3-r1: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.9.0 3.9.2 3.10.0 3.11.0: A framework for managing DNS information
 net-dns/pdns 4.3.0 4.3.1: The PowerDNS Daemon
 net-dns/pdns-recursor 4.3.3 4.3.4: The PowerDNS Recursor
@@ -14812,7 +14812,7 @@ net-libs/libisds 0.10.6 0.10.7 0.10.8 0.11 9999: Client library for accessing IS
 net-libs/libktorrent 2.2.0-r1: BitTorrent library based on KDE Frameworks
 net-libs/libkvkontakte 5.0.0-r1: Library for accessing the features of social networking site vkontakte.ru
 net-libs/liblockfile 1.16: Implements functions designed to lock the standard mailboxes
-net-libs/libmbim 1.6.0 1.10.0 1.12.2 1.12.4 1.14.0 1.14.4 1.16.0 1.16.2 1.18.0: Mobile Broadband Interface Model (MBIM) modem protocol helper library
+net-libs/libmbim 1.14.0 1.14.4 1.16.0 1.16.2 1.18.0: Mobile Broadband Interface Model (MBIM) modem protocol helper library
 net-libs/libmediawiki 5.37.0-r1: C++ interface for MediaWiki based web service as wikipedia.org
 net-libs/libmicrodns 0.1.2 9999: Minimal mDNS resolver (and announcer) library
 net-libs/libmicrohttpd 0.9.65 0.9.68 0.9.69 0.9.70 0.9.71: Small C library to run an HTTP server as part of another application
@@ -15003,7 +15003,7 @@ net-mail/ripmime 1.4.0.10-r1: extract attachment files out of a MIME-encoded ema
 net-mail/ripole 0.2.2: Program/library to pull out attachment from OLE2 data files
 net-mail/rss2email 3.11 3.11-r1 3.12.1 3.12.2: A python script that converts RSS/Atom newsfeeds to email
 net-mail/safecat 1.13: Safecat implements qmail's maildir algorithm, safely copying standard input
-net-mail/sendEmail 1.56-r1 1.56-r2: Command line based, SMTP email agent
+net-mail/sendEmail 1.56-r2: Command line based, SMTP email agent
 net-mail/serialmail 0.75-r5: A serialmail is a collection of tools for passing mail across serial links
 net-mail/signify 1.14: A (semi-)random e-mail signature rotator
 net-mail/smtptools 0.2.3-r1: A collection of tools to send or receive mails with SMTP
@@ -15311,7 +15311,7 @@ net-misc/tigervnc 1.9.0-r1: Remote desktop viewer display system
 net-misc/tipcutils 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
 net-misc/ttytter 2.1.00: A multi-functional, console-based Twitter client
 net-misc/ubridge 0.9.18: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces
-net-misc/ucarp 1.5.2-r3 1.5.2-r4 1.5.2-r5: Portable userland implementation of Common Address Redundancy Protocol (CARP)
+net-misc/ucarp 1.5.2-r3 1.5.2-r5: Portable userland implementation of Common Address Redundancy Protocol (CARP)
 net-misc/udpcast 20120424 20120424-r1 20200328: Multicast file transfer tool
 net-misc/udpxy 1.0.23.7-r2: Small daemon to relay multicast UDP traffic to client's TCP (HTTP) connection
 net-misc/uftp 4.10.1: Encrypted UDP based FTP with multicast
@@ -15328,7 +15328,7 @@ net-misc/vmnet 0.4: A simple virtual networking program - SLIP over stdin/out
 net-misc/vmpsd 1.4: An open-source VLAN management system
 net-misc/vncrec 0.2-r2: VNC session recorder and player
 net-misc/vncsnapshot 1.2a: A command-line tool for taking JPEG snapshots of VNC servers
-net-misc/vrrpd 1.0 1.9: Virtual Router Redundancy Protocol Daemon
+net-misc/vrrpd 1.9: Virtual Router Redundancy Protocol Daemon
 net-misc/wakeonlan 0.41-r2 0.41-r3: Client for Wake-On-LAN
 net-misc/wget 1.20.3-r1 1.20.3-r3: Network utility to retrieve files from the WWW
 net-misc/wget2 1.99.2: GNU Wget2 is a file and recursive website downloader
@@ -15433,7 +15433,7 @@ net-print/cndrvcups-lb 3.60-r2 3.70: Canon UFR II / LIPSLX Printer Driver for Li
 net-print/cnijfilter2 5.20 5.40 5.50 5.70 5.80: IJ Printer Driver
 net-print/cnrdrvcups-lb 5.10-r1 5.20: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.3.3-r1 9999: The Common Unix Printing System
-net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
+net-print/cups-bjnp 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
 net-print/cups-filters 1.27.4 1.27.5 1.28.2 9999: Cups filters
 net-print/cups-pdf 3.0.1: Provides a virtual printer for CUPS to produce PDF files
 net-print/cups-pk-helper 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
@@ -15497,7 +15497,7 @@ net-voip/telepathy-rakia 0.8.0: A SIP connection manager for Telepathy based aro
 net-voip/telepathy-salut 0.8.1-r2: A link-local XMPP connection manager for Telepathy
 net-voip/yate 6.0.0 6.1.0 9999: The Yate AV Suite
 net-vpn/6tunnel 0.12 0.13: TCP proxy for applications that don't speak IPv6
-net-vpn/badvpn 1.999.126 1.999.127 1.999.128 1.999.129 1.999.130: Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
+net-vpn/badvpn 1.999.127 1.999.129 1.999.130: Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
 net-vpn/corkscrew 2.0-r1: a tool for tunneling SSH through HTTP proxies
 net-vpn/freelan 2.2: Peer-to-peer VPN software that abstracts a LAN over the Internet
 net-vpn/httptunnel 3.3-r2 3.3_p20180119: httptunnel can create IP tunnels through firewalls/proxies using HTTP
@@ -15895,7 +15895,7 @@ sci-biology/repeatmasker-libraries 20120418: A special version of RepBase used b
 sci-biology/rmblast 1.2-r1: RepeatMasker compatible version of NCBI BLAST+
 sci-biology/rnaview 20040713-r4: Generates 2D displays of RNA/DNA secondary structures with tertiary interactions
 sci-biology/samtools 0.1.20-r4 1.10: Utilities for analysing and manipulating the SAM/BAM alignment formats
-sci-biology/seaview 4.3.5 4.5.4 4.6: A graphical multiple sequence alignment editor
+sci-biology/seaview 4.5.4 4.6: A graphical multiple sequence alignment editor
 sci-biology/seqan 2.4.0 9999: C++ Sequence Analysis Library
 sci-biology/shrimp 2.2.3: SHort Read Mapping Package
 sci-biology/sibsim4 0.20: A rewrite and improvement upon sim4, a DNA-mRNA aligner
@@ -15989,7 +15989,7 @@ sci-chemistry/rasmol 2.7.5.2-r2: Molecular Graphics Visualisation Tool
 sci-chemistry/raster3d 3.0.6: Generation high quality raster images of proteins or other molecules
 sci-chemistry/suitename 0.3.070628: The ROC RNA Ontology nomenclature and conformer-list development
 sci-chemistry/surf 1.0: Solvent accesible Surface calculator
-sci-chemistry/theseus 2.0.6 3.0.0 3.3.0: Maximum likelihood superpositioning and analysis of macromolecular structures
+sci-chemistry/theseus 3.3.0: Maximum likelihood superpositioning and analysis of macromolecular structures
 sci-chemistry/threeV 1.2-r1: 3V: Voss Volume Voxelator
 sci-chemistry/tinker 8.2.1: Molecular modeling package that includes force fields, such as AMBER and CHARMM
 sci-chemistry/tm-align 20150914: Quick & Accurate Structural Alignment
@@ -16004,7 +16004,7 @@ sci-chemistry/xyza2pipe 20121001: Cross conversion environment of NMR spectra
 sci-electronics/Stage 4.1.1 4.3.0 9999: The Stage Robot Simulator
 sci-electronics/alliance 5.0.20110203: Digital IC design tools (simulation, synthesis, place/route, etc...)
 sci-electronics/drahnr-oregano 0.84.40: Application for the schematic capturing and simulation of electrical circuits
-sci-electronics/drawtiming 0.7.1-r1 0.7.1-r2: Command line tool for drawing timing diagrams
+sci-electronics/drawtiming 0.7.1-r2: Command line tool for drawing timing diagrams
 sci-electronics/eagle 7.3.0-r1 7.4.0-r1 7.6.0-r1 7.7.0-r1: CadSoft EAGLE schematic and printed circuit board (PCB) layout editor
 sci-electronics/electric 9.03: Complete Electronic Design Automation system for many forms of circuit design
 sci-electronics/electronics-menu 1.0-r1: Creates an "Electronics" desktop menu
@@ -16037,7 +16037,7 @@ sci-electronics/ktechlab 0.50.0: IDE for microcontrollers and electronics
 sci-electronics/labone 16.12.42529: Platform independent instrument control for Zurich Instruments devices
 sci-electronics/librepcb 0.1.3: Free EDA software to develop printed circuit boards
 sci-electronics/linsmith 0.99.30-r1 0.99.31: Smith charting program, mainly designed for educational use
-sci-electronics/magic 7.5.202-r1 7.5.231 8.0.138 8.0.207: The VLSI design CAD tool
+sci-electronics/magic 7.5.202-r1 8.0.207: The VLSI design CAD tool
 sci-electronics/netgen 1.4.52: LVS tool (layout versus schematic comparison)
 sci-electronics/ngspice 27 27-r1 31-r1: The Next Generation Spice (Electronic Circuit Simulator)
 sci-electronics/osqoop 1.2.0_pre20170131: Multi-platform open source software oscilloscope based on Qt
@@ -16066,7 +16066,7 @@ sci-geosciences/gmt 4.5.18-r1 5.4.4: Powerful map generator
 sci-geosciences/gnome-maps 3.34.3 3.36.4: A map application for GNOME
 sci-geosciences/gpsbabel 1.5.4-r1 9999: GPS waypoints, tracks and routes converter
 sci-geosciences/gpscorrelate 1.6.1-r1: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
-sci-geosciences/gpsd 3.17-r3 3.17-r4 3.18.1 3.19 3.20 3.21 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
+sci-geosciences/gpsd 3.17-r3 3.17-r4 3.20 3.21 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gpx-viewer 0.4.0-r1: Simple program to visualize a gpx file
 sci-geosciences/gpxsee 7.29 7.30 7.31: A viewer and analyzer that supports gpx, tcx, kml, fit, igc and nmea files
 sci-geosciences/gshhg-gmt 2.3.7: Global Self-consistent, Hierarchical, High-resolution Geography Database
@@ -16170,7 +16170,7 @@ sci-libs/coinor-cbc 2.10.5: COIN-OR branch-and-cut mixed integer program solver
 sci-libs/coinor-cgl 0.60.3: COIN-OR cut-generation library
 sci-libs/coinor-clp 1.17.6: COIN-OR linear programming solver
 sci-libs/coinor-couenne 0.4.7: COIN-OR Convex Over and Under ENvelopes for Nonlinear Estimation
-sci-libs/coinor-cppad 20140204 20140519 20140519-r1: COIN-OR C++ Algorithmic Differentiation
+sci-libs/coinor-cppad 20140519-r1: COIN-OR C++ Algorithmic Differentiation
 sci-libs/coinor-csdp 6.1.1-r1: COIN-OR C Library for Semi-Definite Programming
 sci-libs/coinor-dip 0.9.8: COIN-OR Decomposition in Integer Programming library
 sci-libs/coinor-dylp 1.10.4: COIN-OR dynamic simplex linear program solver
@@ -16256,7 +16256,7 @@ sci-libs/libghemical 3.0.0: Chemical quantum mechanics and molecular mechanics
 sci-libs/libh2o 0.2.1-r1: Library of routines for IF97 water & steam properties
 sci-libs/libh2oxx 0.2-r1: C++ bindings for libh2o
 sci-libs/libhomfly 1.02.6: Library to compute the homfly polynomial of a link
-sci-libs/libint 1.1.6 2.0.5 2.6.0: Matrix elements (integrals) evaluation over Cartesian Gaussian functions
+sci-libs/libint 1.1.6 2.6.0: Matrix elements (integrals) evaluation over Cartesian Gaussian functions
 sci-libs/libmems 1.6_p1-r3 9999: Library for sci-biology/mauve
 sci-libs/libmuscle 3.7-r3: Library for sci-biology/mauve
 sci-libs/libnova 0.16.0: Celestial Mechanics and Astronomical Calculation Library
@@ -16269,11 +16269,11 @@ sci-libs/libsigrok 0.5.2 9999: Basic hardware drivers for logic analyzers and in
 sci-libs/libsigrokdecode 0.5.3 9999: Provide (streaming) protocol decoding functionality
 sci-libs/libspatialindex 1.8.5-r1 1.9.3: C++ implementation of R*-tree, an MVR-tree and a TPR-tree with C API
 sci-libs/libsvm 3.22 3.24: Library for Support Vector Machines
-sci-libs/libticables2 1.3.3-r1 1.3.4 1.3.5: Library to handle different link cables for TI calculators
+sci-libs/libticables2 1.3.5: Library to handle different link cables for TI calculators
 sci-libs/libticalcs2 1.1.8 1.1.9: Library for communication with TI calculators
 sci-libs/libticonv 1.1.4 1.1.5: Charset conversion library for TI calculators
 sci-libs/libtifiles2 1.1.6-r1 1.1.7: Library for TI calculator files
-sci-libs/libxc 2.1.3 2.2.3 3.0.0: A library of exchange-correlation functionals for use in DFT
+sci-libs/libxc 2.2.3 3.0.0: A library of exchange-correlation functionals for use in DFT
 sci-libs/linbox 1.6.3: C++ template library for integer and finite-field linear algebra
 sci-libs/linux-gpib 4.3.0 4.3.2 4.3.3: Driver library for GPIB (IEEE 488.2) hardware
 sci-libs/linux-gpib-modules 4.3.0-r1 4.3.2-r1 4.3.3-r1: Kernel modules for GPIB (IEEE 488.2) hardware
@@ -16370,9 +16370,9 @@ sci-libs/vtk 8.2.0: The Visualization Toolkit
 sci-libs/xdmf2 1.0_p141226-r4: eXtensible Data Model and Format
 sci-libs/xdrfile 1.1.1 1.1.4: Library to read gromacs trajectory and topology files
 sci-libs/xgks-pmel 2.5.5: PMEL fork of XGKS, an X11-based version of the ANSI Graphical Kernel System
-sci-libs/xkaapi 2.1 2.2 3.0.3: Kernel for Adaptative, Asynchronous Parallel and Interactive programming
+sci-libs/xkaapi 2.2 3.0.3: Kernel for Adaptative, Asynchronous Parallel and Interactive programming
 sci-libs/xylib 1.2: Experimental x-y data reading library
-sci-mathematics/4ti2 1.6.2 1.6.5 1.6.6 1.6.7: Software package for algebraic, geometric and combinatorial problems
+sci-mathematics/4ti2 1.6.2 1.6.6 1.6.7: Software package for algebraic, geometric and combinatorial problems
 sci-mathematics/agda 2.4.2.5-r2 2.5.2-r1 2.5.2-r2: A dependently typed functional programming language and proof assistant
 sci-mathematics/agda-lib-ffi 0.0.2 0.0.2-r2: Auxiliary Haskell code used by Agda's standard library
 sci-mathematics/agda-stdlib 2.4.2.5 2.5.2.0.13: Agda standard library
@@ -16896,7 +16896,7 @@ sys-apps/hexdump-esr 1.8: Eric Raymond's hex dumper
 sys-apps/highway 1.1.0: High performance source code search tool
 sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
 sys-apps/hponcfg 4.6.0.0 5.4.0.0 5.5.0.0: HP Lights-Out Online Configuration Utility (HPONCFG)
-sys-apps/hprofile 3.0.6 3.1.1 3.2.2 6.1.3: Utility to manage hardware, network, power or other profiles (fork)
+sys-apps/hprofile 6.1.3: Utility to manage hardware, network, power or other profiles (fork)
 sys-apps/hw-probe 1.5-r1 1.6_beta2-r1: A tool to probe for hardware, check it's operability and find drivers
 sys-apps/hwdata-gentoo 0.4: Data for the hwsetup program
 sys-apps/hwids 20200204 20200306 20200813.1 99999999: Hardware (PCI, USB, OUI, IAB) IDs databases
@@ -16933,9 +16933,9 @@ sys-apps/lcdtest 1.18: Displays test patterns to spot dead/hot pixels on LCD scr
 sys-apps/lcdutils 0.2-r1: (Sun) Cobalt Qube/RaQ button reading and LCD writing utilities
 sys-apps/less 551 562 563: Excellent text file viewer
 sys-apps/likwid 4.3.3 4.3.4: A performance-oriented tool suite for x86 multicore environments
-sys-apps/linux-misc-apps 3.6-r2 3.18 4.4 4.4-r1 4.19 5.6: Misc tools bundled with kernel sources
+sys-apps/linux-misc-apps 5.6 5.8: Misc tools bundled with kernel sources
 sys-apps/lm-sensors 3.5.0 3.5.0_p20190505 3.6.0: Hardware Monitoring user-space utilities
-sys-apps/lmctfy 0.2.0 0.3.0 0.3.1 0.5.0 0.5.0-r1: Linux application container management from Google
+sys-apps/lmctfy 0.5.0-r1: Linux application container management from Google
 sys-apps/lnxhc 1.2-r1: Linux Health Checker
 sys-apps/logwatch 7.5.3 7.5.4 9999: Analyzes and Reports on system logs
 sys-apps/lsadb 0.1.3-r1: Prints out information on all devices attached to the ADB bus
@@ -17168,7 +17168,7 @@ sys-block/io-scheduler-udev-rules 1: Udev rules to allow easier customization of
 sys-block/libzbc 5.5.1: A library and tools for working with ZBC and ZAC disks
 sys-block/lsiutil 1.62-r1 1.62-r2: LSI Logic Fusion MPT Command Line Interface management tool
 sys-block/mbuffer 20200505: M(easuring)buffer is a replacement for buffer with additional functionality
-sys-block/megacli 8.07.10 8.07.14 8.07.14-r1 8.07.14-r2: LSI Logic MegaRAID Command Line Interface management tool
+sys-block/megacli 8.07.14-r2 8.07.14-r3: LSI Logic MegaRAID Command Line Interface management tool
 sys-block/megactl 0.4.1-r3: LSI MegaRAID control utility
 sys-block/megamgr 5.20-r2: LSI Logic MegaRAID Text User Interface management tool
 sys-block/megarc 1.11-r2: LSI Logic MegaRAID Text User Interface management tool
