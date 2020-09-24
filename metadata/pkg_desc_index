@@ -3949,7 +3949,6 @@ dev-haskell/doctemplates 0.8.2: Pandoc-style document templates
 dev-haskell/doctest 0.16.3: Test interactive Haskell examples
 dev-haskell/double-conversion 2.0.2.0: Fast conversion between double precision floating point and text
 dev-haskell/drbg 0.5.5: Deterministic random bit generator (aka PRNG) based HMACs, Hashes, and Ciphers
-dev-haskell/drift 2.4.2: Program to derive type class instances
 dev-haskell/easy-file 0.2.1: Cross-platform File handling
 dev-haskell/echo 0.1.3: A cross-platform, cross-console way to handle echoing terminal input
 dev-haskell/ed25519 0.0.5.0: Ed25519 cryptographic signatures
@@ -4015,7 +4014,6 @@ dev-haskell/git 0.3.0: Git operations in haskell
 dev-haskell/git-lfs 1.1.0: git-lfs protocol
 dev-haskell/githash 0.1.3.3: Compile git revision info into Haskell projects
 dev-haskell/gitrev 1.3.1: Compile git revision info into Haskell projects
-dev-haskell/glade 0.13.1: Binding to the glade library
 dev-haskell/glib 0.13.8.1: Binding to the GLIB library for Gtk2Hs
 dev-haskell/glob 0.9.3: Globbing library
 dev-haskell/gluraw 2.0.0.4: A raw binding for the OpenGL graphics system
@@ -5100,7 +5098,7 @@ dev-lang/crystal 0.35.1: The Crystal Programming Language
 dev-lang/cxprolog 0.98.2: A WAM based Prolog system
 dev-lang/duktape 2.4.0 2.5.0-r1: Embeddable Javascript engine
 dev-lang/elixir 1.10.4: Elixir programming language
-dev-lang/erlang 22.3.2 22.3.4 23.0.1 23.0.2 23.0.3: Erlang programming language, runtime environment and libraries (OTP)
+dev-lang/erlang 22.3.2 22.3.4 23.0.2 23.0.3: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0 2.3.0.3 2.3.0.4 2.5.0.1 2.5.1.0 2.5.3.0: A non-interactive scripting language
 dev-lang/f2c 20100827-r1: Fortran to C converter
@@ -5568,7 +5566,7 @@ dev-libs/mm 1.4.2-r2: Shared Memory Abstraction Library
 dev-libs/mmtf-cpp 1.0.0: The pure C++ implementation of the MMTF API, decoder and encoder
 dev-libs/mongo-c-driver 0.98.2 1.1.2-r1 1.1.10 1.3.5 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0-r1 1.13.1 1.14.0 1.15.1 1.16.2 1.17.0: Client library written in C for MongoDB
 dev-libs/mongo-cxx-driver 0.0.2.6.7-r1 1.0.0 1.0.5 1.1.2-r1: C++ Driver for MongoDB
-dev-libs/mpc 1.1.0-r1 1.2.0: A library for multiprecision complex arithmetic with exact rounding
+dev-libs/mpc 1.2.0: A library for multiprecision complex arithmetic with exact rounding
 dev-libs/mpfr 4.1.0: library for multiple-precision floating-point computations with exact rounding
 dev-libs/msgpack 1.1.0 3.1.1 3.2.0 3.2.1: MessagePack is a binary-based efficient data interchange format
 dev-libs/mxml 3.1: A small XML parsing library that you can use to read XML data files or strings
@@ -11580,7 +11578,6 @@ games-roguelike/angband 4.1.3 4.2.1 4.2.1-r1: A roguelike dungeon exploration ga
 games-roguelike/crossfire-client 1.71.0-r2: Client for the nethack-style but more in the line of UO
 games-roguelike/dwarf-fortress 0.44.12: A single-player fantasy game
 games-roguelike/hengband 1.6.2-r1: An Angband variant, with a Japanese/fantasy theme
-games-roguelike/mazesofmonad 1.0.9-r3: Console-based roguelike Role Playing Game similar to nethack
 games-roguelike/moria 5.7.12-r1: The Dungeons of Moria, a single player roguelike game, also known as Umoria
 games-roguelike/neon-chrome 1.1.12: A ruthless top-down cyberpunk shooter with rogue-like elements
 games-roguelike/nethack 3.6.6: The ultimate old-school single player dungeon exploration game
@@ -17371,7 +17368,7 @@ sys-devel/native-cctools 4: Host OS native assembler as and static linker ld
 sys-devel/parity 2.0.1 9999: A POSIX to native Win32 Cross-Compiler Tool (requires Visual Studio)
 sys-devel/patch 2.7.6-r4: Utility to apply diffs to files
 sys-devel/pmake 1.111.3.3: BSD build tool to create programs in parallel. Debian's version of NetBSD's make
-sys-devel/prelink 20151030 20151030-r1 99999999: Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times
+sys-devel/prelink 20151030-r1 99999999: Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times
 sys-devel/qconf 2.5: ./configure like generator for qmake-based projects
 sys-devel/remake 4.2.1.1.4-r1: patched version of GNU make with improved error reporting, tracing and debugging
 sys-devel/slibtool 0.5.28: A skinny libtool implementation, written in C
