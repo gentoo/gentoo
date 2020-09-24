@@ -2057,7 +2057,7 @@ app-forensics/examiner 0.5-r3: Utilizes the objdump command to disassemble and c
 app-forensics/foremost 1.5.7-r3: Console program to recover files based on their headers and footers
 app-forensics/galleta 20040505_p1: IE Cookie Parser
 app-forensics/honggfuzz 2.3.1: A general purpose fuzzer with feedback support
-app-forensics/libewf 20171104: Implementation of the EWF (SMART and EnCase) image format
+app-forensics/libewf 20171104-r1: Implementation of the EWF (SMART and EnCase) image format
 app-forensics/lynis 3.0.0: Security and system auditing tool
 app-forensics/mac-robber 1.02: mac-robber is a digital forensics and incident response tool that collects data
 app-forensics/magicrescue 1.1.10: Find deleted files in block devices
@@ -17701,7 +17701,7 @@ sys-power/pmtools 20110323-r1: Collection of tools for ACPI and power management
 sys-power/powermgmt-base 1.31-r1: Script to test whether computer is running on AC power
 sys-power/powernowd 1.00-r4 1.00-r5: Daemon to control the speed and voltage of CPUs
 sys-power/powerstat 0.02.21 0.02.22 9999: Laptop power measuring tool
-sys-power/powertop 2.10 2.11 2.13 9999: tool to diagnose issues with power consumption and power management
+sys-power/powertop 2.10 2.11 2.13-r1 9999: tool to diagnose issues with power consumption and power management
 sys-power/sispmctl 4.0 4.1: GEMBIRD SiS-PM control utility
 sys-power/suspend 1.0_p20190605: Userspace Software Suspend and S2Ram
 sys-power/thermald 2.2 2.3-r1: Thermal daemon for Intel architectures
@@ -18054,7 +18054,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.5.1: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 85.0.4183.121 86.0.4240.42 87.0.4270.0: Open-source version of Google Chrome web browser
+www-client/chromium 85.0.4183.121 86.0.4240.53 87.0.4270.0: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.4-r1 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6 3.34.4 3.36.3 3.36.4: GNOME webbrowser based on Webkit
