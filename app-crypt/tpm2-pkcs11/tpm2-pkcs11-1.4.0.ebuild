@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7,8} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_REQ_USE="sqlite"
 
-inherit distutils-r1
+inherit autotools distutils-r1
 
 DESCRIPTION="A PKCS#11 interface for TPM2 hardware"
 HOMEPAGE="https://tpm2-software.github.io/"
@@ -37,6 +37,15 @@ RDEPEND="app-crypt/p11-kit
 DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/autoconf-archive
 	virtual/pkgconfig"
+
+PATCHES=(
+	"$FILESDIR/${PN}-1.3.2-Remove-WError.patch"
+	)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \
