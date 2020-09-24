@@ -7,7 +7,7 @@ CHROMIUM_LANGS="
 	ja ko lt lv ms nb nl pl pt-BR pt-PT ro ru sk sr sv sw ta te th tr uk vi
 	zh-CN zh-TW
 "
-inherit chromium-2 multilib unpacker xdg-utils
+inherit chromium-2 multilib unpacker xdg
 
 DESCRIPTION="A fast and secure web browser"
 HOMEPAGE="https://www.opera.com/"
@@ -100,16 +100,4 @@ src_install() {
 	mv * "${D}" || die
 	dosym ../$(get_libdir)/${PN}/${PN} /usr/bin/${PN}
 	fperms 4711 /usr/$(get_libdir)/${PN}/opera_sandbox
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
 }
