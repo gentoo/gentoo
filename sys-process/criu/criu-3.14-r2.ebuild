@@ -94,7 +94,7 @@ src_compile() {
 		OBJCOPY="$(tc-getOBJCOPY)" \
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 		ARCH="$(criu_arch)" \
-		V=1 WERROR=0 DEBUG=0 \
+		V=1 WERROR=0 DEBUG=0 GCOV= \
 		SETPROCTITLE=$(usex setproctitle) \
 		${target}
 }
