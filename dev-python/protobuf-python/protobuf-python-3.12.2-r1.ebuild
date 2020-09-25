@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=(python{2_7,3_6,3_7,3_8})
+PYTHON_COMPAT=(python3_{6..9})
 DISTUTILS_USE_SETUPTOOLS="rdepend"
 
 inherit distutils-r1
@@ -23,8 +23,8 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0/22"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+SLOT="0/23"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE=""
 
 BDEPEND="${PYTHON_DEPS}
