@@ -6,6 +6,7 @@
 		<name>Gentoo MATE Desktop</name>
 	</maintainer>
 	<use>
+		<flag name="gles2">Build with support for GLESv2 acceleration sessions</flag>
 		<flag name="xtrans">Build with Xtrans support; 
 		WARNING: Disabling this flag will result in ICE binding on all interfaces</flag>
 	</use>
