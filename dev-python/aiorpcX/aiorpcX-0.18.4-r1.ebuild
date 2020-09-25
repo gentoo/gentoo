@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..8} )
 
 inherit distutils-r1
 
@@ -24,6 +24,10 @@ BDEPEND="
 		dev-python/uvloop[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/${P}-py38.patch
+)
 
 src_prepare() {
 	# websockets are optional and not packaged in Gentoo
