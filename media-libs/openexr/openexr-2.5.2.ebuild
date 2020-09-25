@@ -17,7 +17,7 @@ IUSE="cpu_flags_x86_avx doc examples static-libs utils test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	media-libs/ilmbase:=
+	media-libs/ilmbase:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
