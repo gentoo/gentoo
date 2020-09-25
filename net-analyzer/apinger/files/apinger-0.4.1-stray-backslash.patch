@@ -1,4 +1,4 @@
---- acinclude.m4
+--- a/acinclude.m4
 +++ b/acinclude.m4
 @@ -39,8 +39,8 @@
  		[$jk_inet_includes
