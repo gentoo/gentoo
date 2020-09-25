@@ -416,7 +416,6 @@ dev-python/redlock-py
 dev-python/root_numpy
 dev-python/rootpy
 dev-util/setconf
-sci-misc/vitables
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
