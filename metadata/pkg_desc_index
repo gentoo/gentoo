@@ -7944,8 +7944,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.14.46 1.14.59 1.14.63 1.15.0 1.15.1 1.15.2 1.15.3 1.15.4 9999: The AWS SDK for Python
-dev-python/botocore 1.17.46 1.17.59 1.17.63 1.18.0 1.18.1 1.18.2 1.18.3 1.18.4 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.14.46 1.14.59 1.14.63 1.15.0 1.15.1 1.15.2 1.15.3 1.15.4 1.15.5 9999: The AWS SDK for Python
+dev-python/botocore 1.17.46 1.17.59 1.17.63 1.18.0 1.18.1 1.18.2 1.18.3 1.18.4 1.18.5 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.18-r1: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.19: Syntax highlighting and autocompletion for the Python interpreter
@@ -8568,7 +8568,7 @@ dev-python/parso 0.7.0-r1 0.7.1-r1 0.8.0: a python parser that supports error re
 dev-python/partd 1.1.0: Appendable key-value storage
 dev-python/parver 0.3: Parse and manipulate version numbers
 dev-python/passlib 1.7.2: Password hashing framework supporting over 20 schemes
-dev-python/paste 3.4.3 3.4.4: Tools for using a Web Server Gateway Interface stack
+dev-python/paste 3.4.3 3.4.4 3.4.5: Tools for using a Web Server Gateway Interface stack
 dev-python/pastedeploy 2.1.0: Load, configure, and compose WSGI applications and servers
 dev-python/patch-ng 1.17.4: Library to parse and apply unified diffs, fork of dev-python/patch
 dev-python/path-and-address 2.0.1: Functions for server CLI applications used by humans
@@ -8828,7 +8828,7 @@ dev-python/pytest-regressions 2.0.1: Easy to use fixtures to write regression te
 dev-python/pytest-rerunfailures 8.0: pytest plugin to re-run tests to eliminate flaky failures
 dev-python/pytest-salt 2019.2.1_p1 2020.1.27: PyTest Salt Plugin
 dev-python/pytest-salt-factories 0.92.0: The new generation of the pytest-salt Plugin
-dev-python/pytest-services 2.1.0: Collection of fixtures and utility functions to run service processes for pytest
+dev-python/pytest-services 2.1.0 2.2.0: Collection of fixtures and utility functions to run service processes for pytest
 dev-python/pytest-shutil 1.7.0-r1: A goodie-bag of unix shell and environment tools for py.test
 dev-python/pytest-subtesthack 0.1.1: A hack for test fixtures, needed for hypothesis inside py.test
 dev-python/pytest-tempdir 2019.10.12: Pytest plugin to support for a predictable and repeatable temporary directory
@@ -8836,7 +8836,7 @@ dev-python/pytest-testmon 0.9.15: take TDD to a new level with py.test and testm
 dev-python/pytest-timeout 1.3.4-r1 1.4.2-r1: py.test plugin to abort hanging tests
 dev-python/pytest-virtualenv 1.7.0-r1: Virtualenv fixture for py.test
 dev-python/pytest-xdist 1.34.0-r1 2.1.0: Distributed testing and loop-on-failing modes
-dev-python/pytest-xprocess 0.13.1-r1: Manage external processes across test runs
+dev-python/pytest-xprocess 0.13.1-r1 0.14.0: Manage external processes across test runs
 dev-python/pytest-xvfb 2.0.0: A pytest plugin to run Xvfb for tests
 dev-python/python-augeas 1.1.0: Python bindings for Augeas
 dev-python/python-axolotl 0.2.3-r1: A python module for the axolotl protocol
@@ -9181,7 +9181,7 @@ dev-python/tinyrpc 1.0.1: A protocol neutral RPC library that supports JSON-RPC 
 dev-python/tld 0.12.2: Extract the top level domain (TLD) from the URL given
 dev-python/tldextract 2.2.1: Accurately separate the TLD from the registered domain and subdomains of a URL.
 dev-python/toml 0.10.1-r1: Python library for handling TOML files
-dev-python/toolz 0.10.0 0.11.0: List processing tools and functional utilities
+dev-python/toolz 0.10.0 0.11.0 0.11.1: List processing tools and functional utilities
 dev-python/tooz 1.60.1: Library centralizing the most common distributed primitives
 dev-python/towncrier 19.2.0: Building newsfiles for your project
 dev-python/tox 3.19.0 3.20.0: virtualenv-based automation of test activities
@@ -10882,7 +10882,7 @@ dev-util/squashdelta 0.1.1 9999: Efficient (partially uncompressed) SquashFS bin
 dev-util/squashmerge 0.1 9999: dev-util/squashdelta delta merge tool
 dev-util/statifier 1.7.4-r1: Statifier is a tool for creating portable, self-containing Linux executables
 dev-util/stepman 0.10.0 0.10.2 0.10.4 0.10.5: Step collection manager for Bitrise CLI
-dev-util/strace 5.3 5.4 5.7 5.8 9999: A useful diagnostic, instructional, and debugging tool
+dev-util/strace 5.4 5.8 5.9 9999: A useful diagnostic, instructional, and debugging tool
 dev-util/stressapptest 1.0.9: Stressful Application Test
 dev-util/stripe-mock 0.79.0 0.88.0: Mock HTTP server that responds like the real Stripe API
 dev-util/stubgen 2.08: A member function stub generator for C++
@@ -15432,7 +15432,7 @@ net-print/cnijfilter2 5.20 5.40 5.50 5.70 5.80: IJ Printer Driver
 net-print/cnrdrvcups-lb 5.10-r1 5.20: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.3.3-r1 9999: The Common Unix Printing System
 net-print/cups-bjnp 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
-net-print/cups-filters 1.27.4 1.27.5 1.28.2 9999: Cups filters
+net-print/cups-filters 1.27.4 1.27.5 1.28.2 1.28.3 9999: Cups filters
 net-print/cups-pdf 3.0.1: Provides a virtual printer for CUPS to produce PDF files
 net-print/cups-pk-helper 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
@@ -17371,6 +17371,7 @@ sys-devel/pmake 1.111.3.3: BSD build tool to create programs in parallel. Debian
 sys-devel/prelink 20151030-r1 99999999: Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times
 sys-devel/qconf 2.5: ./configure like generator for qmake-based projects
 sys-devel/remake 4.2.1.1.4-r1: patched version of GNU make with improved error reporting, tracing and debugging
+sys-devel/rust-std 1.46.0: Rust standard library, standalone (for crossdev)
 sys-devel/slibtool 0.5.28: A skinny libtool implementation, written in C
 sys-devel/smatch 1.60 9999: static analysis tool for C
 sys-devel/sparse 0.6.1 0.6.2 9999: C semantic parser
