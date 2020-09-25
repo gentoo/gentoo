@@ -12,7 +12,4 @@
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
-<use>
-  <flag name="brltty">brltty support</flag>
-</use>
 </pkgmetadata>
