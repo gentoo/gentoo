@@ -57,7 +57,7 @@ src_configure() {
 		-DABSL_ENABLE_INSTALL=TRUE
 		-DABSL_LOCAL_GOOGLETEST_DIR="${WORKDIR}/googletest-${GTEST_COMMIT}"
 		-DABSL_RUN_TESTS=$(usex test)
-		-DBUILD_TESTING=$(usex test)
+		$(usex test -DBUILD_TESTING=ON '') #intentional usex
 	)
 	cmake_src_configure
 }
