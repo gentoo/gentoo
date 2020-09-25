@@ -41,6 +41,10 @@ src_install() {
 		INCLUDE_PATH="${ED}"/usr/include \
 		LIB_PATH="${ED}"/usr/$(get_libdir) \
 		install
+
+	# This file is not compatible with Gentoo and in any case, we generally
+	# let the users load such agents themselves.
+	rm -f "${ED}"/etc/X11/Xsession.d/91${PN}
 }
 
 pkg_postinst() {
