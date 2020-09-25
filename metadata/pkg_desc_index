@@ -13669,7 +13669,7 @@ media-sound/alsaplayer 0.99.81-r1: A heavily multi-threaded pluggable audio play
 media-sound/amsynth 1.8.0: Virtual analogue synthesizer
 media-sound/apetag 1.12-r3: Command-line ape 2.0 tagger
 media-sound/apulse 0.1.12-r4 0.1.13: PulseAudio emulation for ALSA
-media-sound/aqualung 1.0-r5: Music player for a wide range of formats designed for gapless playback
+media-sound/aqualung 1.0-r5 1.1: Music player for a wide range of formats designed for gapless playback
 media-sound/ardour 6.2-r1 6.3 9999: Digital Audio Workstation
 media-sound/ario 1.6: GTK client for MPD inspired by Rhythmbox but much lighter and faster
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
@@ -15446,8 +15446,8 @@ net-print/foomatic-db-engine 4.0.12: Generates ppds out of xml foomatic printer 
 net-print/foomatic-db-ppds 4.0.20170331 4.0.20180126 4.0.20190226: linuxprinting.org PPD files for postscript printers
 net-print/gtklp 1.3.1: A GUI for cupsd
 net-print/gutenprint 5.3.3: Ghostscript and cups printer drivers
-net-print/hplip 3.19.12-r1 3.20.3 3.20.6-r1 3.20.6-r2: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
-net-print/hplip-plugin 3.19.12 3.20.3 3.20.6-r1: Proprietary plugins and firmware for HPLIP
+net-print/hplip 3.20.6-r1 3.20.6-r2: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
+net-print/hplip-plugin 3.20.6-r1: Proprietary plugins and firmware for HPLIP
 net-print/ink 0.5.1 0.5.2: A command line utility to display the ink level of your printer
 net-print/kyocera-1x2x-mfp-driver 1.1203-r1: Printer descriptions (PPDs) and filters for Kyocera 1x2x MFP
 net-print/kyocera-mita-ppds 8.4-r1: PPD description files for (some) Kyocera Mita Printers
@@ -17441,7 +17441,7 @@ sys-fs/aufs-util 4.1_p20170130 4.14_p20180709 4.14_p20190603: Utilities are alwa
 sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
 sys-fs/avfs 1.1.1: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 3.2.0: Bash script that uses udisks to mount removable devices without GUI
-sys-fs/bcache-tools 1.0.8_p20140220-r1 9999: Tools for bcachefs
+sys-fs/bcache-tools 1.0.8_p20140220-r1 1.1: Tools for bcache
 sys-fs/bees 0.6.1-r2 9999: Best-Effort Extent-Same, a btrfs dedup agent
 sys-fs/bindfs 1.14.5 1.14.7: FUSE filesystem for bind mounting with altered permissions
 sys-fs/btrfs-progs 4.19 5.4.1 5.6.1 5.7 9999: Btrfs filesystem utilities
