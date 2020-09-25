@@ -14340,7 +14340,7 @@ net-analyzer/netdata 1.23.2 1.24.0 1.25.0 9999: Linux real time system monitorin
 net-analyzer/netdiscover 0.3_beta6-r3 0.3_beta6-r4 0.7: An active/passive address reconnaissance tool
 net-analyzer/nethogs 0.8.5-r1 0.8.6: A small 'net top' tool, grouping bandwidth by process
 net-analyzer/neti 2.0-r1: NETI@Home research project from GATech
-net-analyzer/netio 1.32-r1: measures net throughput with NetBIOS and TCP/IP protocols
+net-analyzer/netio 1.32-r1 1.33: Network benchmark using TCP and UDP protocols
 net-analyzer/netperf 2.7.0-r2: Network performance benchmark
 net-analyzer/netpipe 3.7.2: network protocol independent performance evaluator
 net-analyzer/netselect 0.4-r1 9999: Ultrafast implementation of ping

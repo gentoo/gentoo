@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=app-arch/unzip >=sys-apps/sed-4
+DESCRIPTION=Network benchmark using TCP and UDP protocols
+EAPI=7
+HOMEPAGE=https://web.ars.de/netio/
+KEYWORDS=~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=free-noncomm
+RESTRICT=mirror
+SLOT=0
+SRC_URI=https://www.ars.de/netio133.zip
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=f6fa129364ae917223268a13e31cce60
