@@ -66,7 +66,7 @@ app-crypt/pinentry fltk gnome-keyring
 app-doc/doxygen latex dot
 app-editors/emacs alsa json lcms mailutils
 app-misc/pax-utils python
-app-text/asciidoc graphviz test
+app-text/asciidoc test
 app-text/po4a test
 app-text/xmlto text
 dev-lang/python tk
@@ -92,7 +92,7 @@ dev-python/pypiserver test
 dev-python/pygments doc test
 dev-python/setuptools test
 dev-python/snakeoil test
-dev-python/sphinx latext doc test
+dev-python/sphinx doc test
 dev-python/sphinxcontrib-spelling test
 dev-python/twisted test
 dev-python/urllib3 test

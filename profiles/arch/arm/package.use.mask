@@ -1,10 +1,6 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Adam Feldman <NP-Hardass@gentoo.org> (2020-09-05)
-# dev-util/dogtail is not keyworded for arm
-app-text/atril test
-
 # Sam James <sam@gentoo.org> (2020-09-05)
 # nvidia-texture-tools not useful here
 media-libs/devil nvtt
