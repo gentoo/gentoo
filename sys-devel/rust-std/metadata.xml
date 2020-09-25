@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>rust@gentoo.org</email>
+		<name>Rust Project</name>
+	</maintainer>
+	<longdescription>
+		The Rust Standard Library is the foundation of portable Rust software,
+		a set of minimal and battle-tested shared abstractions for the broader Rust ecosystem.
+		It offers core types, like Vec&lt;T&gt; and Option&lt;T&gt;, library-defined operations on language primitives,
+		standard macros, I/O and multithreading, among many other things.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">rust-lang/rust</remote-id>
+	</upstream>
+</pkgmetadata>
