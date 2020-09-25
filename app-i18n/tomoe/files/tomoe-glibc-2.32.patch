@@ -1,0 +1,11 @@
+--- /lib/tomoe-xml-parser.c
++++ /lib/tomoe-xml-parser.c
+@@ -441,7 +441,7 @@
+     f = fopen (filename, "rb");
+     if (!f) {
+         g_warning ("failed to open dictionary file %s: %s", filename,
+-                   sys_errlist[errno]);
++                   strerror(errno));
+     }
+     g_return_val_if_fail (f, FALSE);
+ 
