@@ -5212,7 +5212,7 @@ dev-libs/bemenu 0.4.1 0.5.0 9999: dmenu clone for wayland
 dev-libs/bglibs 2.04-r1 2.04-r2: Bruce Guenter's Libraries Collection
 dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
 dev-libs/boehm-gc 8.0.4: The Boehm-Demers-Weiser conservative garbage collector
-dev-libs/boost 1.72.0-r1 1.73.0 1.74.0: Boost Libraries for C++
+dev-libs/boost 1.72.0-r2 1.73.0-r1 1.74.0-r1: Boost Libraries for C++
 dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL library
 dev-libs/botan 2.14.0-r1 2.15.0: C++ crypto library
 dev-libs/boxfort 0.0.1_pre20200110 0.0.1_pre20200902: Convenient & cross-platform sandboxing C library
@@ -8607,7 +8607,7 @@ dev-python/plotly 1.9.6: Browser-based graphing library for Python
 dev-python/pluggy 0.13.1-r1: plugin and hook calling mechanisms for python
 dev-python/pluginbase 1.0.0: Support library for building plugins sytems in Python
 dev-python/plumbum 1.6.8: A library for shell script-like programs in python
-dev-python/ply 3.11: Python Lex-Yacc library
+dev-python/ply 3.11-r1: Python Lex-Yacc library
 dev-python/plyr 1.0.6: A python wrapper for Glyr
 dev-python/plyvel 1.2.0: Python interface to LevelDB
 dev-python/pmw 2.0.1-r2: Toolkit for building high-level compound Python widgets using the Tkinter module
@@ -8665,7 +8665,7 @@ dev-python/pybind11 2.5.0: AST-based Python refactoring library
 dev-python/pybluez 0.23: Python bindings for Bluez Bluetooth Stack
 dev-python/pybtex 0.22.2: BibTeX-compatible bibliography processor
 dev-python/pycadf 2.9.0-r1: python implementation of DMTF Cloud Audit (CADF) data model
-dev-python/pycairo 1.18.2 1.19.1: Python bindings for the cairo library
+dev-python/pycairo 1.19.1: Python bindings for the cairo library
 dev-python/pycapnp 0.6.4: Python wrapping of the Cap'n Proto library
 dev-python/pycares 3.1.1: Python interface for c-ares
 dev-python/pycdio 2.1.0: Python OO interface to libcdio (CD Input and Control library)
@@ -8676,7 +8676,7 @@ dev-python/pyclipper 1.2.0: Cython wrapper for the C++ translation of the Angus 
 dev-python/pycodestyle 2.6.0: Python style guide checker (fka pep8)
 dev-python/pycollada 0.7.1: Python library for reading and writing COLLADA documents
 dev-python/pycountry 19.8.18 20.7.3: Database of countries, subdivisions, languages, currencies and script
-dev-python/pycparser 2.20: C parser and AST generator written in Python
+dev-python/pycparser 2.20-r1: C parser and AST generator written in Python
 dev-python/pycryptodome 3.9.8-r1: A self-contained cryptographic library for Python
 dev-python/pycryptodomex 3.9.8: A self-contained cryptographic library for Python
 dev-python/pycson 0.7 0.8: A python parser for the Coffeescript Object Notation (CSON)
@@ -8744,7 +8744,7 @@ dev-python/pynvim 0.4.1: Python client for Neovim
 dev-python/pyocr 0.7.2: An optical character recognition (OCR) tool wrapper for python
 dev-python/pyogg 1.3-r2: Python bindings for the ogg library
 dev-python/pyopencl 2020.2 2020.2.2: Python wrapper for OpenCL
-dev-python/pyopengl 3.1.0 3.1.5: Python OpenGL bindings
+dev-python/pyopengl 3.1.0-r1 3.1.5: Python OpenGL bindings
 dev-python/pyopengl_accelerate 3.1.5: Accelerate module for PyOpenGL
 dev-python/pyopenssl 19.1.0-r1: Python interface to the OpenSSL library
 dev-python/pyotherside 1.5.9: Asynchronous Python 3 Bindings for Qt 5
@@ -9269,7 +9269,7 @@ dev-python/wstools 0.4.8: WSDL parsing services package for Web Services for Pyt
 dev-python/wtforms 2.3.3: Flexible forms validation and rendering library for python web development
 dev-python/wurlitzer 2.0.1: Capture C-level stdout/stderr in Python
 dev-python/www-authenticate 0.9.2: WWW-Authenticate header parser
-dev-python/wxpython 3.0.2.0 4.0.7: A blending of the wxWindows C++ class library with Python
+dev-python/wxpython 4.0.7: A blending of the wxWindows C++ class library with Python
 dev-python/xapp 2.0.1: Python bindings for x11-libs/xapps
 dev-python/xarray 0.12.1 0.16.0 0.16.1: N-D labeled arrays and datasets in Python
 dev-python/xcffib 0.10.1: A drop in replacement for xpyb, an XCB python binding
@@ -16024,7 +16024,7 @@ sci-electronics/gtkwave 3.3.68 3.3.73 3.3.87 3.3.99: A wave viewer for LXT, LXT2
 sci-electronics/gwave 20190116: Analog waveform viewer for SPICE-like simulations
 sci-electronics/irsim 9.7.93: IRSIM is a "switch-level" simulator
 sci-electronics/iverilog 10.3 10.3-r1 10.3-r2 9999: A Verilog simulation and synthesis tool
-sci-electronics/kicad 4.0.7-r1 5.1.5-r2 5.1.6: Electronic Schematic and PCB design tools
+sci-electronics/kicad 5.1.5-r2 5.1.6: Electronic Schematic and PCB design tools
 sci-electronics/kicad-footprints 5.1.5 5.1.6: Electronic Schematic and PCB design tools footprint libraries
 sci-electronics/kicad-i18n 5.1.5 5.1.6: Electronic Schematic and PCB design tools GUI translations
 sci-electronics/kicad-meta 5.1.5 5.1.6: Electronic Schematic and PCB design tools (meta package)
@@ -17557,7 +17557,7 @@ sys-fs/xfsprogs 5.4.0-r1 5.6.0 5.7.0 5.8.0: xfs filesystem utilities
 sys-fs/xwmfs 0.86: FUSE-based X11 Window-Manager file system
 sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.0.4 1.1.1: Zeroes out all free space on a filesystem
-sys-fs/zfs 0.8.4-r2 2.0.0_rc2 9999: Userland utilities for ZFS Linux kernel module
+sys-fs/zfs 0.8.4-r2 2.0.0_rc2-r1 9999: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-auto-snapshot 1.2.4 9999: ZFS Automatic Snapshot Service for Linux
 sys-fs/zfs-kmod 0.8.4-r1 2.0.0_rc2 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.14.138 4.14.143 4.14.144 4.14.145 4.14.146 4.14.147 4.14.148 4.14.149 4.14.150 4.19.66 4.19.72 4.19.73 4.19.74 4.19.75 4.19.76 4.19.77 4.19.78 4.19.79 4.19.80 5.2.13 5.2.14 5.2.15 5.2.16 5.2.17 5.2.18 5.2.19 5.2.20 5.3.0 5.3.1 5.3.2 5.3.4 5.3.5 5.3.6-r1 5.3.7: Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs5 support

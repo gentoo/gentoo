@@ -2619,7 +2619,6 @@ dev-python/twisted:serial - include serial port support
 dev-python/urllib3:brotli - Enable support for brotli compression
 dev-python/ws4py:client - Install client modules
 dev-python/ws4py:server - Install server modules
-dev-python/wxpython:examples - Install interactive demo module browser and sample applets.
 dev-python/zeep:async - Add async support
 dev-python/zeep:tornado - Add tornado support
 dev-qt/designer:declarative - Build the qdeclarativeview plugin
@@ -7181,8 +7180,6 @@ sci-electronics/gtkwave:fatlines - Renders lines as double width in gtkwave.
 sci-electronics/gtkwave:judy - Enables Judy array support.
 sci-electronics/gtkwave:packed - Enables '#pragma pack' for data arrays (saves memory, costs time).
 sci-electronics/kicad:github - Add github support into PCB editor
-sci-electronics/kicad:i18n - Allow GUI internationalization through l10n_* use flags
-sci-electronics/kicad:minimal - Build only binaries without parts library and examples
 sci-electronics/kicad:ngspice - Enable circuit simulation
 sci-electronics/kicad:occ - Enable viewing 3D rendering of designs via opencascade
 sci-electronics/kicad:oce - Enable viewing 3D rendering of designs via OCE
