@@ -7,7 +7,7 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
-    <remote-id type="bitbucket">pytest-dev/pytest-xprocess</remote-id>
+    <remote-id type="github">pytest-dev/pytest-xprocess</remote-id>
     <remote-id type="pypi">pytest-xprocess</remote-id>
   </upstream>
 </pkgmetadata>
