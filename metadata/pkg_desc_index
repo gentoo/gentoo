@@ -13077,6 +13077,7 @@ media-libs/libao 1.2.2-r1: The Audio Output library
 media-libs/libaom 1.0.0-r2 2.0.0 9999: Alliance for Open Media AV1 Codec SDK
 media-libs/libart_lgpl 2.3.21-r3: A LGPL version of libart
 media-libs/libass 0.14.0: Library for SSA/ASS subtitles rendering
+media-libs/libavif 0.8.1: Library for encoding and decoding .avif files
 media-libs/libbdplus 0.1.2 9999: Blu-ray library for BD+ decryption
 media-libs/libbluray 1.1.2 1.2.0 9999: Blu-ray playback libraries
 media-libs/libbs2b 3.1.0-r2: Bauer stereophonic-to-binaural DSP library
@@ -13839,7 +13840,7 @@ media-sound/mp3val 0.1.8: Validate and fix MPEG audio files
 media-sound/mp3wrap 0.5: Command-line utility that wraps multiple mp3 files into one large playable mp3
 media-sound/mpc 0.30 0.31-r1 0.32 0.33: Commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpck 0.15: Checks MP3s for errors
-media-sound/mpd 0.21.22 0.21.24 0.21.25: The Music Player Daemon (mpd)
+media-sound/mpd 0.21.25 0.21.26: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.2: AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.8.1-r2: Music Player For Console
@@ -17702,7 +17703,7 @@ sys-power/powernowd 1.00-r4 1.00-r5: Daemon to control the speed and voltage of 
 sys-power/powerstat 0.02.21 0.02.22 9999: Laptop power measuring tool
 sys-power/powertop 2.13-r1 9999: tool to diagnose issues with power consumption and power management
 sys-power/sispmctl 4.0 4.1: GEMBIRD SiS-PM control utility
-sys-power/suspend 1.0_p20190605: Userspace Software Suspend and S2Ram
+sys-power/suspend 1.0_p20190605 1.0_p20200924: Userspace Software Suspend and S2Ram
 sys-power/thermald 2.2 2.3-r1: Thermal daemon for Intel architectures
 sys-power/tuxedo-cc-wmi 0.1.4-r1: Kernel Module for Tuxedo WMI
 sys-power/uhubctl 1.8-r1: USB hub per-port power control
@@ -18631,7 +18632,7 @@ x11-misc/xkblayout-state 0_p20180118 9999: A small program to get/set the curren
 x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.30 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2 2.47_p7: GUI frontend to xmodmap
-x11-misc/xlockmore 5.50 5.62 5.63 5.64 5.65 5.66_alpha00 5.66_alpha04 5.66_alpha05: Just another screensaver application for X
+x11-misc/xlockmore 5.50 5.65 5.66_alpha05 5.66_alpha06: Just another screensaver application for X
 x11-misc/xmobar 0.36: A Minimalistic Text Based Status Bar
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
 x11-misc/xnee 3.19-r2: Program suite to record, replay and distribute user actions
@@ -18961,7 +18962,7 @@ x11-themes/nuovo-icon-theme 0.5: A scalable icon theme called Nuovo
 x11-themes/nuvox 07.1-r1: NuvoX SVG icon theme
 x11-themes/obsidian-xcursors 1.0: A shiny and clean xcursor theme
 x11-themes/oxygen-gtk 1.4.1-r1 1.4.6-r1: Official GTK+:2 port of KDE's Oxygen widget style
-x11-themes/papirus-icon-theme 20191009 20191101 20191201 20200102 20200201 20200301 20200405 20200430 20200602 20200702 20200801: icon theme for Linux
+x11-themes/papirus-icon-theme 20191009 20191101 20191201 20200102 20200201 20200301 20200405 20200430 20200602 20200702 20200801 20200901: icon theme for Linux
 x11-themes/pearlgrey-xcursors 1.0: A simple crispy white-grey xcursor theme
 x11-themes/pidgin-penguins-smileys 1.0: Penguins pidgin smiley theme
 x11-themes/pulse-glass 20100616: The Pulse Glass x11 mouse cursor theme

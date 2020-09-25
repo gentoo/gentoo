@@ -1,0 +1,14 @@
+BDEPEND=>=dev-lang/perl-5.10 virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=dev-libs/libx86 >=sys-apps/pciutils-2.2.4 crypt? ( >=dev-libs/libgcrypt-1.6.3:0[static-libs] dev-libs/libgpg-error[static-libs] ) lzo? ( >=dev-libs/lzo-2[static-libs] )
+DESCRIPTION=Userspace Software Suspend and S2Ram
+EAPI=7
+HOMEPAGE=http://suspend.sourceforge.net https://github.com/bircoph/suspend
+IUSE=crypt +lzo threads
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libx86 >=sys-apps/pciutils-2.2.4 crypt? ( >=dev-libs/libgcrypt-1.6.3:0[static-libs] dev-libs/libgpg-error[static-libs] ) lzo? ( >=dev-libs/lzo-2[static-libs] )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~bircoph/distfiles/suspend-1.0_p20120915.tar.xz https://dev.gentoo.org/~bircoph/patches/suspend-1.0_p20200924.patch.xz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=3bdb87609cbc39864e2dfed8092fdab8
