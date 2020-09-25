@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_{6..9} )
 
-inherit eutils udev multilib distutils-r1 scons-utils toolchain-funcs
+inherit distutils-r1 scons-utils toolchain-funcs udev
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://gitlab.com/gpsd/gpsd.git"
@@ -94,9 +94,9 @@ src_prepare() {
 		-e 's:\<STAGING_PREFIX\>:SYSROOT:g' \
 		SConstruct || die
 
-	#Fix systemd binary paths
-	sed -i -e 's/local\///' 'systemd/gpsd.service'
-	sed -i -e 's/local\///' 'systemd/gpsdctl@.service.in'
+	# Fix systemd binary paths
+	sed -i -e 's/local\///' 'systemd/gpsd.service' || die
+	sed -i -e 's/local\///' 'systemd/gpsdctl@.service.in' || die
 
 	default
 
@@ -190,8 +190,11 @@ src_install() {
 	newinitd "${FILESDIR}"/gpsd.init-2 gpsd
 
 	# Cleanup bad alt copy due to Scons
-	rm -rf  "${D}"/python-discard/gps*
-	find "${D}"/python-discard/ -type d -delete
+	if use python ; then
+		rm -rf "${ED}"/python-discard/gps* || die
+		find "${ED}"/python-discard/ -type d -delete || die
+	fi
+
 	# Install correct multi-python copy
 	use python && distutils-r1_src_install
 }
