@@ -197,6 +197,8 @@ src_configure() {
 
 	if use elogind || use systemd; then
 		emesonargs+=( -D systemd=true )
+	else
+		emesonargs+=( -D systemd=false )
 	fi
 
 	if use opengl; then
