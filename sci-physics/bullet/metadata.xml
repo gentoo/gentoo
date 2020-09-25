@@ -19,10 +19,10 @@
   for games and animation.
 </longdescription>
   <use>
-    <flag name="bullet3">Build Bullet 3</flag>
-    <flag name="double-precision">Build libraries in double precision</flag>
-    <flag name="extras">Build additional libraries</flag>
-    <flag restrict="&gt;=sci-physics/bullet-2.89" name="tbb">Enable multithreading with the Intel Threads Building Block dev-cpp/tbb</flag>
+    <flag restrict="&lt;=sci-physics/bullet-2.89" name="bullet3">Build Bullet 3</flag>
+    <flag restrict="&lt;=sci-physics/bullet-2.89" name="double-precision">Build libraries in double precision</flag>
+    <flag restrict="&lt;=sci-physics/bullet-2.89" name="extras">Build additional libraries</flag>
+    <flag restrict="=sci-physics/bullet-2.89" name="tbb">Enable multithreading with the Intel Threads Building Block dev-cpp/tbb</flag>
   </use>
   <upstream>
     <remote-id type="google-code">bullet</remote-id>
