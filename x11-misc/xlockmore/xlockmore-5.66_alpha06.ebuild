@@ -50,11 +50,20 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.46-freetype261.patch
 	"${FILESDIR}"/${PN}-5.47-CXX.patch
 	"${FILESDIR}"/${PN}-5.47-strip.patch
+	"${FILESDIR}"/${PN}-5.64_alpha0-LDFLAGS.patch
+	"${FILESDIR}"/${PN}-5.66_alpha06-rotator.patch
 )
 S=${WORKDIR}/${P/_alpha/ALPHA}
 
 src_prepare() {
 	default
+
+	sed -i \
+		-e '/XLOCKLIBPATHS="-L/d' \
+		-e '/XMLOCKLIBPATHS="-L/d' \
+		-e 's|/lib|'"${EPREFIX}/$(get_libdir)"'|g' \
+		configure.ac || die
+
 	eautoreconf
 }
 
