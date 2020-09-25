@@ -7,11 +7,10 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 )
 inherit check-reqs pax-utils python-any-r1 toolchain-funcs
 
-PYPY_PV=${PV%_p37}
-MY_P=pypy3.7-v${PYPY_PV/_/}
+MY_P=pypy3.6-v${PV/_/}
 DESCRIPTION="PyPy3 executable (build from source)"
 HOMEPAGE="https://pypy.org/"
-SRC_URI="https://downloads.python.org/pypy/${MY_P}-src.tar.bz2"
+SRC_URI="https://buildbot.pypy.org/pypy/${MY_P}-src.tar.bz2"
 S="${WORKDIR}/${MY_P}-src"
 
 LICENSE="MIT"
@@ -143,10 +142,10 @@ src_compile() {
 }
 
 src_install() {
-	local dest=/usr/lib/pypy3.7
+	local dest=/usr/lib/pypy3.6
 	exeinto "${dest}"
-	newexe "${T}"/usession*-0/testing_1/pypy3-c pypy3-c-${PYPY_PV}
-	insinto "${dest}"/include/${PYPY_PV}
+	newexe "${T}"/usession*-0/testing_1/pypy3-c pypy3-c-${PV}
+	insinto "${dest}"/include/${PV}
 	doins include/pypy_*
-	pax-mark m "${ED}${dest}/pypy3-c-${PYPY_PV}"
+	pax-mark m "${ED}${dest}/pypy3-c-${PV}"
 }
