@@ -29,7 +29,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	eapply_user
+	default
 
 	tc-export CC
 	sed \
@@ -38,8 +38,6 @@ src_prepare() {
 		-i Makefile || die
 
 	append-lfs-flags
-
-	eapply "${PATCHES[@]}"
 }
 
 src_install() {
