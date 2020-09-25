@@ -15135,7 +15135,7 @@ net-misc/ices 2.0.2: Icecast OGG streaming client, supports on the fly re-encodi
 net-misc/ifenslave 1.1.0-r6: Attach and detach slave interfaces to a bonding device
 net-misc/igmpproxy 0.2.1_p20200508: A multicast routing daemon which uses IGMP forwarding
 net-misc/ip-sentinel 0.12 0.12-r1: Prevent unauthorized usage of IP addresses
-net-misc/ipcalc 0.41: IP Calculator prints broadcast/network/etc for an IP address and netmask
+net-misc/ipcalc 0.41 0.42_p2: IP Calculator prints broadcast/network/etc for an IP address and netmask
 net-misc/iperf 2.0.13 2.0.14a 2.99999.99999 3.6 3.7 3.8.1 3.9 3.99999.99999: A TCP, UDP, and SCTP network bandwidth measurement tool
 net-misc/ipmiview 2.15.0.190109 2.17.0.200505: A GUI application that allows to manage multiple target systems through BMC
 net-misc/iprange 1.0.4: A tool capable of managing sets of IPs
