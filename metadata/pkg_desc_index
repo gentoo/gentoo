@@ -3429,7 +3429,7 @@ dev-ada/libadalang-tools 2019-r1: Libadalang-based tools: gnatpp, gnatmetric and
 dev-ada/libgpr 2019-r1 2020: Ada library to handle GPRbuild project files
 dev-ada/xmlada 2019-r1 2020: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/ETL 0.04.15-r1: Multi-platform class and template library
-dev-cpp/abseil-cpp 20200225.2: Abseil Common Libraries (C++), LTS Branch
+dev-cpp/abseil-cpp 20200225.2 20200923: Abseil Common Libraries (C++), LTS Branch
 dev-cpp/aixlog 1.2.1 9999: Header-only C++ logging library
 dev-cpp/antlr-cpp 2.7.7-r1 4.7.2: The ANTLR 4 C++ Runtime
 dev-cpp/asio 1.10.8 1.17.0 1.18.0: Asynchronous Network Library
@@ -5155,7 +5155,7 @@ dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.3 5.30.3-r1 5.30.3-r2 5.32.0 5.32.0-r1: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 7.2.33 7.3.21 7.3.22 7.4.9 7.4.10: The PHP language runtime engine
 dev-lang/polyml 5.6 5.8: Poly/ML is a full implementation of Standard ML
-dev-lang/python 2.7.18-r1 2.7.18-r2 2.7.18-r3 3.6.11-r2 3.6.12 3.7.8-r2 3.7.9 3.8.4-r1 3.8.5 3.9.0_rc1 3.9.0_rc2: An interpreted, interactive, object-oriented programming language
+dev-lang/python 2.7.18-r1 2.7.18-r2 2.7.18-r3 3.6.11-r2 3.6.12 3.7.8-r2 3.7.9 3.8.4-r1 3.8.5 3.8.6 3.9.0_rc1 3.9.0_rc2: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r1 9999: Python script wrapper
 dev-lang/qu-prolog 10.4 10.5 10.6: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2020.05.1 2020.06 2020.07 2020.08.1 9999: A compiler for the Perl 6 programming language
