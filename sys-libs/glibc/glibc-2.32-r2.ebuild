@@ -16,7 +16,7 @@ SLOT="2.2"
 EMULTILIB_PKG="true"
 
 # Gentoo patchset (ignored for live ebuilds)
-PATCH_VER=1
+PATCH_VER=2
 PATCH_DEV=dilfridge
 
 if [[ ${PV} == 9999* ]]; then
@@ -25,6 +25,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	SRC_URI="mirror://gnu/glibc/${P}.tar.xz"
 	SRC_URI+=" https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
+	SRC_URI+=" riscv? ( https://dev.gentoo.org/~dilfridge/distfiles/backport-rv32.txz )"
 fi
 
 RELEASE_VER=${PV}
@@ -748,6 +749,7 @@ src_unpack() {
 
 	cd "${WORKDIR}" || die
 	unpack locale-gen-${LOCALE_GEN_VER}.tar.gz
+	use riscv && unpack backport-rv32.txz
 }
 
 src_prepare() {
@@ -761,6 +763,12 @@ src_prepare() {
 		elog "Applying Gentoo Glibc Patchset ${patchsetname}"
 		eapply "${WORKDIR}"/patches
 		einfo "Done."
+
+		if use riscv ; then
+			elog "Adding rv32 backport patchset for glibc-2.32 (experimental)"
+			eapply "${WORKDIR}"/backport-rv32
+			einfo "Done."
+		fi
 	fi
 
 	default
@@ -1243,6 +1251,8 @@ glibc_do_src_install() {
 		ppc     /lib/ld.so.1
 		ppc64   /lib64/ld64.so.1
 		# riscv
+		ilp32d  /lib/ld-linux-riscv32-ilp32d.so.1
+		ilp32   /lib/ld-linux-riscv32-ilp32.so.1
 		lp64d   /lib/ld-linux-riscv64-lp64d.so.1
 		lp64    /lib/ld-linux-riscv64-lp64.so.1
 		# s390
