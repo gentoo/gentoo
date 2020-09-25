@@ -70,12 +70,6 @@ x11-libs/gtkglext
 # bug #699796.
 virtual/libffi
 
-# Michał Górny <mgorny@gentoo.org> (2019-12-30)
-# PyPy packages have been restructured, and the virtual is no longer
-# necessary.  Depend on dev-python/pypy{,3} instead.
-virtual/pypy
-virtual/pypy3
-
 # Michał Górny <mgorny@gentoo.org> (2019-12-09)
 # Test coverage reporting is not useful for Gentoo ebuilds.  The deps
 # against coverage plugins are either entirely spurious, or the build
