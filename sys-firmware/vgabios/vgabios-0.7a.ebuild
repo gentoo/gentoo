@@ -1,13 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 # Can't really call them backports when they're fixes that upstream
 # won't carry
 FIXES=1
-
-inherit eutils
 
 DESCRIPTION="VGA BIOS implementation"
 HOMEPAGE="http://www.nongnu.org/vgabios/"
@@ -19,16 +17,15 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="debug"
 
-DEPEND="amd64? ( sys-devel/dev86 )
+BDEPEND="amd64? ( sys-devel/dev86 )
 	x86? ( sys-devel/dev86 )"
-RDEPEND=""
 
 src_prepare() {
-	[[ -n ${FIXES} ]] && \
-		EPATCH_FORCE=yes EPATCH_SUFFIX="patch" EPATCH_SOURCE="${S}/patches" \
-			epatch
+	if [[ -n ${FIXES} ]] ; then
+		eapply patches/*.patch
+	fi
 
-	epatch_user
+	default
 }
 
 src_compile() {
