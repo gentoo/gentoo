@@ -13,11 +13,11 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~sparc ~x86"
 
 RDEPEND="
+	net-libs/libnet:1.1
 	net-libs/libpcap
 "
 DEPEND="
 	${RDEPEND}
-	=net-libs/libnet-1.0*
 "
 DOCS="ChangeLog.md docs/CONTRIBUTING.md docs/CREDITS README.md"
 PATCHES=(
