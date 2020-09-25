@@ -27,6 +27,8 @@ DEPEND=""
 RDEPEND="${DEPEND}"
 BDEPEND="${PYTHON_DEPS}"
 
+RESTRICT="!test? ( test )"
+
 src_prepare() {
 	cmake_src_prepare
 
