@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils flag-o-matic
+inherit eutils
 
 if [[ ${PV} =~ 99999999$ ]]; then
 	inherit git-r3
@@ -14,6 +14,9 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
+TEST_FILES_COMMIT=8629adab700a75c54e8e28bf05ad092503a98f75
+SRC_URI+=" test? ( https://github.com/${PN}/neomutt-test-files/archive/${TEST_FILES_COMMIT}.tar.gz -> neomutt-test-files-${TEST_FILES_COMMIT}.tar.gz )"
+
 DESCRIPTION="A small but very powerful text-based mail client"
 HOMEPAGE="https://neomutt.org/"
 
@@ -21,7 +24,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="berkdb doc gdbm gnutls gpgme idn kerberos kyotocabinet libressl
 	lmdb nls notmuch pgp-classic qdbm sasl selinux slang smime-classic
-	ssl tokyocabinet"
+	ssl tokyocabinet test"
 
 CDEPEND="
 	app-misc/mime-types
@@ -33,39 +36,44 @@ CDEPEND="
 		)
 		<sys-libs/db-6.3:=
 	)
-	gdbm? ( sys-libs/gdbm )
+	gdbm? ( sys-libs/gdbm:= )
 	kyotocabinet? ( dev-db/kyotocabinet )
-	lmdb? ( dev-db/lmdb )
+	lmdb? ( dev-db/lmdb:= )
 	nls? ( virtual/libintl )
 	qdbm? ( dev-db/qdbm )
 	tokyocabinet? ( dev-db/tokyocabinet )
-	gnutls? ( >=net-libs/gnutls-1.0.17 )
-	gpgme? ( >=app-crypt/gpgme-0.9.0 )
+	gnutls? ( >=net-libs/gnutls-1.0.17:= )
+	gpgme? ( >=app-crypt/gpgme-0.9.0:= )
 	idn? ( net-dns/libidn:= )
 	kerberos? ( virtual/krb5 )
-	notmuch? ( net-mail/notmuch )
+	notmuch? ( net-mail/notmuch:= )
 	sasl? ( >=dev-libs/cyrus-sasl-2 )
-	!slang? ( sys-libs/ncurses:0 )
+	!slang? ( sys-libs/ncurses:0= )
 	slang? ( sys-libs/slang )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-0.9.6:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( >=dev-libs/openssl-1.0.2u:0= )
+		libressl? ( dev-libs/libressl:= )
 	)
 "
 DEPEND="${CDEPEND}
-	dev-lang/tcl
+	dev-lang/tcl:=
 	net-mail/mailbase
 	doc? (
 		dev-libs/libxml2
 		dev-libs/libxslt
 		app-text/docbook-xsl-stylesheets
-		|| ( www-client/lynx www-client/w3m www-client/elinks )
-	)"
+		|| (
+			www-client/lynx
+			www-client/w3m
+			www-client/elinks
+		)
+	)
+"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-mutt )
 "
 
-S="${WORKDIR}/${PN}-${P}"
+RESTRICT="!test? ( test )"
 
 src_configure() {
 	local myconf=(
@@ -92,29 +100,40 @@ src_configure() {
 		"--sysconfdir=${EPREFIX}/etc/${PN}"
 		"$(use_enable ssl)"
 		"$(use_enable gnutls)"
+
+		"$(usex test --testing --disable-testing)"
 	)
 
 	econf CCACHE=none "${myconf[@]}"
 }
 
+src_test() {
+	local test_dir="$(readlink --canonicalize ${S}/../neomutt-test-files-${TEST_FILES_COMMIT})"
+	pushd ${test_dir} || die "Could not cd into test_dir"
+	NEOMUTT_TEST_DIR="${test_dir}" ./setup.sh \
+		|| die "Failed to run the setup.sh script"
+	popd || die "Could not cd back"
+	NEOMUTT_TEST_DIR="${test_dir}" emake test
+}
+
 src_install() {
 	emake DESTDIR="${D}" install
 
-	# A man-page is always handy, so fake one – here neomuttrc.5
-	# (neomutt.1 already exists)
+	# A man-page is always handy, so fake one - here neomuttrc.5 (neomutt.1
+	# already exists)
 	if use !doc; then
 		sed -n \
 			-e '/^\(CC_FOR_BUILD\|CFLAGS_FOR_BUILD\)\s*=/p' \
 			-e '/^\(EXTRA_CFLAGS_FOR_BUILD\|LDFLAGS_FOR_BUILD\)\s*=/p' \
 			-e '/^\(EXEEXT\|SRCDIR\)\s*=/p' \
-			Makefile > doc/Makefile.fakedoc || die
+			Makefile > docs/Makefile.fakedoc || die
 		sed -n \
 			-e '/^MAKEDOC_CPP\s*=/,/^\s*$/p' \
-			-e '/^doc\/\(makedoc$(EXEEXT)\|neomutt\.1\|neomuttrc\.5\)\s*:/,/^\s*$/p' \
-			doc/Makefile.autosetup >> doc/Makefile.fakedoc || die
-		emake -f doc/Makefile.fakedoc doc/neomutt.1
-		emake -f doc/Makefile.fakedoc doc/neomuttrc.5
-		doman doc/neomutt.1 doc/neomuttrc.5
+			-e '/^docs\/\(makedoc$(EXEEXT)\|neomutt\.1\|neomuttrc\.5\)\s*:/,/^\s*$/p' \
+			docs/Makefile.autosetup >> docs/Makefile.fakedoc || die
+		emake -f docs/Makefile.fakedoc docs/neomutt.1
+		emake -f docs/Makefile.fakedoc docs/neomuttrc.5
+		doman docs/neomutt.1 docs/neomuttrc.5
 	fi
 
 	dodoc LICENSE* ChangeLog* README*

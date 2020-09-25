@@ -142,7 +142,6 @@
 
 # Robert Buchholz <rbu@gentoo.org> (2007-06-03)
 # Unmask as it works on x86
--lcd_devices_svga
 -lcd_devices_luise
 
 # fdk-aac is already keyworded here
