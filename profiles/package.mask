@@ -461,12 +461,9 @@ x11-misc/dsx
 #
 # net-analyzer/mk-livestatus: py3 bug #735394, build failure bug #705430
 # sci-biology/vienna-rna: py3 bug #735438, build failure bug #707158
-# sys-cluster/ganglia: py3 bug #735496, build failure bug #631270
 # sys-fs/owfs: py3 bug #735502, build failure bug #707438
 net-analyzer/mk-livestatus
 sci-biology/vienna-rna
-sys-cluster/ganglia
-sys-cluster/ganglia-web
 sys-fs/owfs
 
 # Louis Sautier <sbraz@gentoo.org> (2020-09-09)
