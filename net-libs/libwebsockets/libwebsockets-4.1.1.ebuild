@@ -21,6 +21,7 @@ REQUIRED_USE="
 	generic-sessions? ( smtp sqlite3 )
 	http-proxy? ( client )
 	smtp? ( libuv )
+	socks5? ( client http-proxy )
 	ssl? ( ?? ( libressl mbedtls ) )
 	mbedtls? ( ssl )
 	?? ( libev libevent )
