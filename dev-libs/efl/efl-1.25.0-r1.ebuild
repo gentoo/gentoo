@@ -21,6 +21,7 @@ IUSE="+X avif bmp connman cpu_flags_arm_neon dds debug doc drm +eet efl-one elog
 REQUIRED_USE="
 	?? ( elogind systemd )
 	?? ( gles2-only opengl )
+	?? ( fbcon tslib )
 	^^ ( lua luajit )
 	ssl
 	drm? ( gles2-only )
