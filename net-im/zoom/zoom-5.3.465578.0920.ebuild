@@ -71,8 +71,7 @@ src_install() {
 	dosym {"../../usr/$(get_libdir)",/opt/zoom}/libmpg123.so
 
 	if use bundled-libjpeg-turbo; then
-		doexe libturbojpeg.so.0.1.0
-		dosym libturbojpeg.so.0.1.0 /opt/zoom/libturbojpeg.so
+		doexe libturbojpeg.so
 	else
 		dosym {"../../usr/$(get_libdir)",/opt/zoom}/libturbojpeg.so #715106
 	fi
