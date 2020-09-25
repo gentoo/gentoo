@@ -3,17 +3,18 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit cmake python-any-r1
 
 # yes, it needs SOURCE, not just installed one
-GTEST_COMMIT="fe4d5f10840c5f62b984364a4d41719f1bc079a2"
+GTEST_COMMIT="aee0f9d9b5b87796ee8a0ab26b7587ec30e8858e"
+GTEST_FILE="gtest-1.10.0_p20200702.tar.gz"
 
 DESCRIPTION="Abseil Common Libraries (C++), LTS Branch"
 HOMEPAGE="https://abseil.io"
 SRC_URI="https://github.com/abseil/abseil-cpp/archive/${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/google/googletest/archive/${GTEST_COMMIT}.tar.gz -> gtest-${GTEST_COMMIT}.tar.gz"
+	https://github.com/google/googletest/archive/${GTEST_COMMIT}.tar.gz -> ${GTEST_FILE}"
 
 LICENSE="
 	Apache-2.0
@@ -25,7 +26,11 @@ IUSE="test"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
-BDEPEND="${PYTHON_DEPS}"
+
+BDEPEND="
+	${PYTHON_DEPS}
+	test? ( sys-libs/timezone-data )
+"
 
 RESTRICT="!test? ( test )"
 
@@ -42,6 +47,9 @@ src_prepare() {
 
 	# now generate cmake files
 	absl/copts/generate_copts.py || die
+
+	sed -i 's/-Werror//g' \
+		"${WORKDIR}/googletest-${GTEST_COMMIT}"/googletest/cmake/internal_utils.cmake || die
 }
 
 src_configure() {
