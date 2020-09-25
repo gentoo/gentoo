@@ -24,7 +24,7 @@ SRC_URI=" https://github.com/openjdk/jfx/archive/${MY_PV}.tar.gz -> ${P}.tar.gz
 "
 
 LICENSE="GPL-2-with-classpath-exception"
-KEYWORDS="-* ~amd64 ~ppc64"
+KEYWORDS="-* ~amd64"
 
 IUSE="cpu_flags_x86_sse2 debug doc source +media"
 
