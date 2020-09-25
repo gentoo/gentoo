@@ -21,8 +21,7 @@ DEPEND="media-libs/libpng
 	dav1d? ( media-libs/dav1d )
 	rav1e? ( media-video/rav1e )"
 RDEPEND="${DEPEND}"
-BDEPEND="dev-lang/nasm
-	virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig"
 
 REQUIRED_USE="|| ( aom dav1d rav1e )"
 
