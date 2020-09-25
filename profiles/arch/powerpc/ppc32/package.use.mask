@@ -126,11 +126,6 @@ app-text/tesseract scrollview
 # Java is no longer supported on ppc.
 app-text/texlive pdfannotextractor
 dev-lang/logtalk fop
-gnome-extra/libgda reports
-
-# Ben de Groot <yngwin@gentoo.org> (2015-07-20)
-# missing keyword
-media-sound/audacity midi soundtouch
 
 # Pacho Ramos <pacho@gentoo.org> (2015-06-02)
 # Missing keywords (2015-06-02)

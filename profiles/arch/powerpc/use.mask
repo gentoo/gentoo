@@ -73,8 +73,6 @@ xvmc
 cg
 # dmi depends on PC BIOSes, we don't have those
 dmi
-# 2006-10-11 - corsair - bug #150925
-lcd_devices_graphlcd
 # Masked vaapi for PowerPC until it works on hardware available to PowerPC users (cell, etc.)
 vaapi
 

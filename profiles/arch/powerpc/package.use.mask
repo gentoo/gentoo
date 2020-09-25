@@ -350,10 +350,6 @@ media-libs/opencv cuda
 # sys-apps/usbredir
 app-emulation/qemu     spice xen rbd usbredir
 
-# Kacper Kowalik <xarthisius@gentoo.org> (2011-01-16)
-# bug 350513, app-pda/jpilot is not keyworded
-mail-client/claws-mail pda
-
 # Sebastian Pipping <sping@gentoo.org> (2011-02-22)
 # No media-sound/lilypond here, yet (bug #356069)
 app-text/asciidoc test

@@ -115,10 +115,6 @@ dev-java/ant-apache-bsf python
 # Mask until >sys-cluster/ceph-0.94 goes stable
 net-analyzer/rrdtool rados
 
-# Ben de Groot <yngwin@gentoo.org> (2015-07-20)
-# missing keywords
-media-sound/audacity midi soundtouch
-
 # Matthias Maier <tamiko@gentoo.org> (2014-12-24)
 # sys-devel/clang is not keyworded
 app-doc/doxygen clang

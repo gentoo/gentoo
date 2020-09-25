@@ -280,10 +280,6 @@ media-sound/pulseaudio ofono-headset
 # sys-boot/gnu-efi is not supported on all archs.
 sys-apps/systemd -gnuefi
 
-# James Le Cuirot <chewi@gentoo.org> (2015-07-11)
-# Requires dev-java/fop but we don't support java on ia64.
-gnome-extra/libgda reports
-
 # Pacho Ramos <pacho@gentoo.org> (2015-06-13)
 # Missing keywords, bug #513108
 net-misc/spice-gtk smartcard webdav

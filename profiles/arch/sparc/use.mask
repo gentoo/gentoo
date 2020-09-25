@@ -100,7 +100,6 @@ mono
 d
 # LCDproc masks see bug #148072
 lcd_devices_g15
-lcd_devices_graphlcd
 lcd_devices_ula200
 # Masking hardened, it isn't really supported, see bugs #144126 #78951
 hardened

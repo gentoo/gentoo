@@ -20,10 +20,6 @@ dev-libs/efl avif
 # caution!
 dev-libs/efl efl-one
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-21)
-# The respective dependencies are masked for removal.
-gnome-base/libgnome-keyring test
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-20)
 # The respective dependencies are masked for removal.
 net-nntp/pan gnome-keyring
@@ -36,7 +32,6 @@ app-office/lyx docbook
 # The respective dependencies are masked for removal.
 media-plugins/mythplugins mythnetvision
 sci-physics/thepeg rivet
-sys-apps/dstat wifi
 sys-cluster/drbd-utils heartbeat
 sys-cluster/pacemaker heartbeat
 
@@ -83,30 +78,17 @@ www-apps/nikola websocket
 # These packages require Python 2 support in dev-python/sphinx.
 # They are generally fixable by adding py3 support and using
 # distutils_enable_sphinx to build docs.
-<dev-libs/mongo-c-driver-1 doc
 dev-python/backports-functools-lru-cache doc
-<dev-python/click-7.1.2 doc
-<=dev-python/dulwich-0.19.15 doc
 <=dev-python/futures-3.2.0 doc
-<dev-python/gevent-20 doc
-<dev-python/inflect-4 doc
-<dev-python/jaraco-itertools-5 doc
 <=dev-python/lockfile-0.12.2-r2 doc
 <=dev-python/mysql-python-1.2.5-r3 doc
-<=dev-python/mysqlclient-1.4.6 doc
 <dev-python/pep8-1.7.1-r1 doc
 <dev-python/psycopg-2.8.4 doc
-<dev-python/requests-cache-0.4.12-r1 doc
-<=sci-biology/seqan-2.4.0 doc
 
 # Michał Górny <mgorny@gentoo.org> (2020-07-27)
 # Requires Python 2 support in xapian-bindings which in turn require
 # Python 2 in dev-python/sphinx.
 <www-apps/roundup-3 xapian
-
-# Michał Górny <mgorny@gentoo.org> (2020-07-25)
-# Requires dev-python/beautifulsoup with py2 support.
-<=sys-cluster/charm-6.8.2 doc
 
 # Brian Dolbec <dolsen@gentoo.org> (2020-07-20)
 # Required dependencies are not yet in the Gentoo ebuild tree
@@ -174,24 +156,9 @@ dev-vcs/cvs2svn bazaar
 <=dev-util/wstool-0.1.18 test
 <=dev-python/vcstools-0.1.42 test
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-03-27)
-# Depends on vulnerable old version of icedtea-web #711392
-# new version is not packaged yet
-# package/useflag is not going away anytime soon,
-# just masked. unmask as needed.
-dev-java/icedtea nsplugin webstart
-dev-java/icedtea-bin nsplugin webstart
-dev-java/openjdk nsplugin webstart
-dev-java/openjdk-bin nsplugin webstart
-dev-java/openjdk-jre-bin nsplugin webstart
-
 # Michał Górny <mgorny@gentoo.org> (2020-03-27)
 # Requires old version of dev-python/docutils.
 dev-util/buildbot doc
-
-# Lars Wendler <polynomial-c@gentoo.org> (2020-03-26)
-# Requires deprecated python2 and pygtk
-mail-client/claws-mail python
 
 # Guilherme Amadio <amadio@gentoo.org> (2020-03-16)
 # Requires dev-libs/cudnn which is only available on amd64
@@ -213,10 +180,6 @@ dev-python/zeep tornado
 # Michał Górny <mgorny@gentoo.org> (2020-01-29)
 # Require Python 2 support in numpydoc.
 <=dev-python/pywavelets-0.5.2-r1 doc
-
-# Michał Górny <mgorny@gentoo.org> (2020-01-29)
-# Require dev-python/epydoc which is being removed.
-<=dev-python/suds-0.6-r1 doc
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-27)
 # Requires old split dev-python/twisted-*.
@@ -273,7 +236,6 @@ sys-block/open-isns slp
 # Brian Evans <grknight@gentoo.org> (2019-10-01)
 # PHP support is broken with current version
 # Mask USE until they are fixed
-=dev-libs/xapian-bindings-1.2.25 php
 media-gfx/exact-image php
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-28)
@@ -504,11 +466,6 @@ net-irc/hexchat theme-manager
 app-editors/emacs:25 cairo
 app-editors/emacs:26 cairo
 
-# Michał Górny <mgorny@gentoo.org> (2016-07-05)
-# Mask system-clang support as it requires llvm-3.4 that is subject
-# to security bug cleanup, #585102.
-dev-util/intel-ocl-sdk system-clang
-
 # Matthew Brewer <tomboy64@sina.cn> (2016-06-02)
 # Acked-by: Amy Winston <amynka@gentoo.org>
 # Currently broken upstream.
@@ -529,10 +486,6 @@ dev-lang/moarvm asan
 # any non-HotSpot platforms. Don't unmask these unless you know what
 # you're doing. This has upstream's approval.
 dev-java/icedtea cacao jamvm
-
-# Patrice Clement <monsieurp@gentoo.org> (2015-11-27)
-# Unsastified dependencies are upsetting repoman. Needs investigation.
-app-arch/cfv bittorrent
 
 # Rick Farina <zerochaos@gentoo.org> (2015-10-06)
 # forward porting this patch is non-trivial, mask for now
