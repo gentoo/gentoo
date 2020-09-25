@@ -12408,7 +12408,7 @@ mail-client/mailx 8.1.2.20160123 8.1.2.20180807: The $ mail program, which is us
 mail-client/mailx-support 20060102-r2: Provides lockspool utility
 mail-client/mutt 1.14.4-r1 1.14.5 1.14.7: A small but very powerful text-based mail client
 mail-client/mutt-wizard 0_pre20200808 9999: A system for automatically configuring neomutt and isync
-mail-client/neomutt 20200626 20200626-r1 20200821 99999999: A small but very powerful text-based mail client
+mail-client/neomutt 20200626 20200626-r1 20200821 20200925 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
 mail-client/roundcube 1.4.8: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.16 14.9.19: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
