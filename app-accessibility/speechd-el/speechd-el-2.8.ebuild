@@ -11,7 +11,7 @@ SRC_URI="http://www.freebsoft.org/pub/projects/speechd-el/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 RDEPEND=">=app-accessibility/speech-dispatcher-0.7"
 
