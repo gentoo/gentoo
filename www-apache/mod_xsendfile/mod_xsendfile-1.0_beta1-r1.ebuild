@@ -15,13 +15,16 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~sparc ~x86 ~amd64-linux"
 
-APACHE2_MOD_CONF="50_${PN}"
-APACHE2_MOD_DEFINE="XSENDFILE"
-DOCFILES="docs/Readme.html"
-
 need_apache2
 
-pkg_setup() {
-	_init_apache2
-	_init_apache2_late
+src_install() {
+	APACHE2_MOD_CONF="50_${PN}"
+	APACHE2_MOD_DEFINE="XSENDFILE"
+	# Triggers unfortunate QA warning in the eclass
+	# See bug #515414, seems to be an apache-module.eclasss issue
+	DOCFILES="docs/Readme.html"
+
+	APACHE_MODULESDIR="/usr/$(get_libdir)/apache2/modules"
+
+	apache-module_src_install
 }
