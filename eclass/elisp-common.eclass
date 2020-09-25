@@ -407,9 +407,12 @@ elisp-site-file-install() {
 	sf="${T}/${sf}"
 	ebegin "Installing site initialisation file for GNU Emacs"
 	[[ $1 = "${sf}" ]] || cp "$1" "${sf}"
-	[[ ${EAPI} == [45] ]] && grep -q "@EMACSMODULES@" "${sf}" \
-		&& die "${ECLASS}: Dynamic modules not supported in EAPI ${EAPI}"
-	modules=${EMACSMODULES//@libdir@/$(get_libdir)}
+	if [[ ${EAPI} == [45] ]]; then
+		grep -q "@EMACSMODULES@" "${sf}" \
+			&& die "${ECLASS}: Dynamic modules not supported in EAPI ${EAPI}"
+	else
+		modules=${EMACSMODULES//@libdir@/$(get_libdir)}
+	fi
 	sed -i -e "1{:x;/^\$/{n;bx;};/^;.*${PN}/I!s:^:${header}\n\n:;1s:^:\n:;}" \
 		-e "s:@SITELISP@:${EPREFIX}${SITELISP}/${my_pn}:g" \
 		-e "s:@SITEETC@:${EPREFIX}${SITEETC}/${my_pn}:g" \
