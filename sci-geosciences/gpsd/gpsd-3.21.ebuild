@@ -100,7 +100,12 @@ src_prepare() {
 
 	default
 
-	use python && distutils-r1_src_prepare
+	if use python ; then
+		distutils-r1_src_prepare
+	else
+		# We're using escons, bug #734352
+		python_setup
+	fi
 }
 
 python_prepare_all() {
