@@ -19,12 +19,22 @@ DEPEND="
 	sys-libs/libcap
 	acl? ( sys-apps/acl )
 	test? ( app-arch/sharutils )"
+BDEPEND="app-text/po4a"
 
 DOCS="AUTHORS BUGS DEBUG README doc/README.saving"
 
 src_prepare() {
 	default
 	eautoreconf
+}
+
+src_compile() {
+	# Create tranlated man pages
+	pushd doc &>/dev/null || die
+	po4a -v -k 0 --variable "srcdir=${S}/doc/" po4a/po4a.cfg || die
+	popd &>/dev/null || die
+
+	default
 }
 
 src_configure() {
