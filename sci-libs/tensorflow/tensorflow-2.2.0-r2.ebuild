@@ -165,7 +165,7 @@ pkg_setup() {
 src_unpack() {
 	# Only unpack the main distfile
 	unpack "${P}.tar.gz"
-	unpack tensorflow-patches-${PVR}.tar.bz2
+	unpack tensorflow-patches-${PV}-r1.tar.bz2
 	bazel_load_distfiles "${bazel_external_uris}"
 }
 
