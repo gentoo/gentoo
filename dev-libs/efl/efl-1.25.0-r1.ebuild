@@ -154,7 +154,6 @@ src_configure() {
 		-D cocoa=false
 		-D drm-deprecated=false
 		-D g-mainloop=false
-		-D install-eo-files=true
 		-D mono-beta=false
 		-D dotnet=false
 		-D pixman=false
@@ -163,6 +162,7 @@ src_configure() {
 
 		-D edje-sound-and-video=true
 		-D eeze=true
+		-D install-eo-files=true
 		-D libmount=true
 		-D native-arch-optimization=true
 		-D xinput2=true
@@ -171,7 +171,6 @@ src_configure() {
 		$(meson_use X x11)
 		$(meson_use debug debug-threads)
 		$(meson_use drm)
-		$(meson_use elogind systemd)
 		$(meson_use examples build-examples)
 		$(meson_use fbcon fb)
 		$(meson_use fontconfig)
@@ -186,7 +185,6 @@ src_configure() {
 		$(meson_use pulseaudio)
 		$(meson_use sdl)
 		$(meson_use sound audio)
-		$(meson_use systemd)
 		$(meson_use tslib)
 		$(meson_use v4l v4l2)
 		$(meson_use vnc vnc-server)
@@ -196,6 +194,12 @@ src_configure() {
 
 		$(meson_use !system-lz4 embedded-lz4)
 	)
+
+	if use elogind || use systemd; then
+		emesonargs+=( -D systemd=true )
+	else
+		emesonargs+=( -D systemd=false )
+	fi
 
 	if use opengl; then
 		emesonargs+=( -D opengl=full )
