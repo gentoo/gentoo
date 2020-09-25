@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake-utils toolchain-funcs user
+inherit cmake-utils user
 
 DESCRIPTION="Yet another caching HTTP proxy for Debian/Ubuntu software packages"
 HOMEPAGE="
@@ -32,7 +32,6 @@ COMMON_DEPEND="
 BDEPEND="
 	${COMMON_DEPEND}
 	dev-util/cmake
-	>sys-devel/gcc-4.8
 	virtual/pkgconfig
 "
 RDEPEND="
@@ -47,14 +46,6 @@ PATCHES=(
 	"${WORKDIR}"/debian/patches/debian-changes
 )
 S=${WORKDIR}/${P/_*}
-
-pkg_pretend() {
-	if [[ $(gcc-major-version) -lt 4 ]]; then
-		die "GCC 4.8 or greater is required but you have $(gcc-major-version).$(gcc-minor-version)"
-	elif [[ $(gcc-major-version) = 4 ]] && [[ $(gcc-minor-version) -lt 8 ]]; then
-		die "GCC 4.8 or greater is required but you have $(gcc-major-version).$(gcc-minor-version)"
-	fi
-}
 
 pkg_setup() {
 	# add new user & group for daemon
