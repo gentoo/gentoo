@@ -35,6 +35,7 @@ DOCS="
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.0-CFLAGS.patch
+	"${FILESDIR}"/${PN}-1.3.0-gtk.patch
 )
 
 src_prepare() {
