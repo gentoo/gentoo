@@ -26,8 +26,8 @@ python_test() {
 
 python_install_all() {
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins examples/*
+		rm examples/notify2.py || die
+		dodoc -r examples
 	fi
 	distutils-r1_python_install_all
 }
