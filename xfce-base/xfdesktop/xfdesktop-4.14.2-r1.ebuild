@@ -31,6 +31,10 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-memleak.patch
+)
+
 src_configure() {
 	local myconf=(
 		$(use_enable thunar file-icons)
