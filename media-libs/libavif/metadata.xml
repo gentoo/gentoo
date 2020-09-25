@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+  <email>juippis@gentoo.org</email>
+  <name>Joonas Niilola</name>
+  </maintainer>
+  <use>
+    <flag name="aom">Enable support for the AOM codec encoding and decoding</flag>
+    <flag name="dav1d">Enable support for the dav1d codec encoding and decoding</flag>
+    <flag name="extras">Build extra apps and test files</flag>
+    <flag name="rav1e">Enable support for the rav1e codec encoding and decoding</flag>
+  </use>
+</pkgmetadata>
