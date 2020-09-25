@@ -1,0 +1,11 @@
+BDEPEND=dev-lang/perl
+DEFINED_PHASES=compile install
+DESCRIPTION=Determines where a given nameserver gets its information from
+EAPI=7
+HOMEPAGE=https://www.mavetju.org/unix/general.php
+KEYWORDS=~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux
+LICENSE=BSD-2
+SLOT=0
+SRC_URI=https://www.mavetju.org/download/dnstracer-1.10.tar.bz2 -> dnstracer-1.10.tar.gz
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=2766dca52f8df9ea0e7701acf087f298
