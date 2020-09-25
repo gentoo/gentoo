@@ -2769,7 +2769,7 @@ app-shells/pdmenu 1.3.4-r1: A simple console menu program
 app-shells/pdsh 2.26-r1: A high-performance, parallel remote shell utility
 app-shells/peco 0.5.7: Simplistic interactive filtering tool
 app-shells/posh 0.14.1: Reimplementation of Bourne shell based on pdksh
-app-shells/powerline 2.7-r1 9999: The ultimate statusline/prompt utility.
+app-shells/powerline 2.7-r1 2.7-r2 9999: The ultimate statusline/prompt utility.
 app-shells/psh 1.8.1-r3: Combines the interactive nature of a Unix shell with the power of Perl
 app-shells/push 2.0-r1 3.4: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 3.0_p2-r1 4.2: Quote arguments or standard input for usage in POSIX shell by eval
@@ -16267,7 +16267,7 @@ sci-libs/libsc 2.0 2.2 9999: Support for parallel scientific applications
 sci-libs/libsigrok 0.5.2 9999: Basic hardware drivers for logic analyzers and input/output file format support
 sci-libs/libsigrokdecode 0.5.3 9999: Provide (streaming) protocol decoding functionality
 sci-libs/libspatialindex 1.8.5-r1 1.9.3: C++ implementation of R*-tree, an MVR-tree and a TPR-tree with C API
-sci-libs/libsvm 3.22 3.24: Library for Support Vector Machines
+sci-libs/libsvm 3.24: Library for Support Vector Machines
 sci-libs/libticables2 1.3.5: Library to handle different link cables for TI calculators
 sci-libs/libticalcs2 1.1.8 1.1.9: Library for communication with TI calculators
 sci-libs/libticonv 1.1.4 1.1.5: Charset conversion library for TI calculators
@@ -17258,7 +17258,7 @@ sys-cluster/csync2 2.0 2.0-r2: Cluster synchronization tool
 sys-cluster/drbd-utils 8.9.3 8.9.6 8.9.6-r1: mirror/replicate block-devices across a network-connection
 sys-cluster/fake 1.1.10: Switch in backup servers on a LAN
 sys-cluster/galera 25.3.25 25.3.26 25.3.28 25.3.28-r1 26.4.2 26.4.3 26.4.4 26.4.5: Synchronous multi-master replication engine that provides the wsrep API
-sys-cluster/ganglia 3.7.1-r1: A scalable distributed monitoring system for clusters and grids
+sys-cluster/ganglia 3.7.1-r1 3.7.1-r2: A scalable distributed monitoring system for clusters and grids
 sys-cluster/ganglia-web 3.7.3-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2 1.30.0: Networking middleware for partitioned global address space (PGAS) language
 sys-cluster/glusterfs 6.8 6.9 7.5 7.6 7.7 9999: GlusterFS is a powerful network/cluster filesystem
