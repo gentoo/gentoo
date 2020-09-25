@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{6,7,8}} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit flag-o-matic multiprocessing python-r1 toolchain-funcs multilib-minimal
 
@@ -16,7 +16,7 @@ SRC_URI="https://dl.bintray.com/boostorg/release/${PV}/source/boost_${MY_PV}.tar
 
 LICENSE="Boost-1.0"
 SLOT="0/${PV}" # ${PV} instead ${MAJOR_V} due to bug 486122
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris ~x86-winnt"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris ~x86-winnt"
 IUSE="bzip2 context debug doc icu lzma +nls mpi numpy python static-libs +threads tools zlib zstd"
 REQUIRED_USE="
 	mpi? ( threads )
@@ -32,6 +32,7 @@ RESTRICT="test"
 RDEPEND="
 	!app-admin/eselect-boost
 	!dev-libs/boost-numpy
+	!<dev-libs/leatherman-1.12.0-r1
 	bzip2? ( app-arch/bzip2:=[${MULTILIB_USEDEP}] )
 	icu? ( >=dev-libs/icu-3.6:=[${MULTILIB_USEDEP}] )
 	!icu? ( virtual/libiconv[${MULTILIB_USEDEP}] )
@@ -52,12 +53,15 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.71.0-disable_icu_rpath.patch
 	"${FILESDIR}"/${PN}-1.71.0-context-x32.patch
 	"${FILESDIR}"/${PN}-1.71.0-build-auto_index-tool.patch
-	# Bug 703294, incomplete Boost.Serialization refactoring
-	"${FILESDIR}"/${PN}-1.72.0-missing-serialization-split_member-include.patch
-	# Bug 703036, per python-impl Boost.MPI
-	"${FILESDIR}"/${PN}-1.72.0-boost-mpi-python.patch
-	# Bug 704128, missing include on Boost.Ranges
-	"${FILESDIR}"/${PN}-1.72.0-revert-cease-dependence-on-range.patch
+	# upstream unresponsive to pull request
+	# https://github.com/boostorg/python/pull/286
+	"${FILESDIR}"/${PN}-1.73-boost-python-cleanup.patch
+	# Boost.MPI's __init__.py doesn't work on Py3
+	"${FILESDIR}"/${PN}-1.73-boost-mpi-python-PEP-328.patch
+	# Remove annoying #pragma message
+	"${FILESDIR}"/${PN}-1.73-property-tree-include.patch
+	# https://github.com/boostorg/geometry/issues/721
+	"${FILESDIR}"/${PN}-1.73-geometry-private-inheritance.patch
 )
 
 python_bindings_needed() {
@@ -222,14 +226,12 @@ multilib_src_install_all() {
 	if use python; then
 		if use mpi; then
 			move_mpi_py_into_sitedir() {
-				local pyver="${EPYTHON#python}"
 				python_moduleinto boost
-				python_domodule "${ED}"/usr/$(get_libdir)/mpi${pyver/./}.so
-				rm "${ED}"/usr/$(get_libdir)/mpi${pyver/./}* || die
-				dosym mpi${pyver/./}.so $(python_get_sitedir)/boost/mpi.so
+				python_domodule "${S}"/libs/mpi/build/__init__.py
 
-				# create a proper python package
-				touch "${D}"/$(python_get_sitedir)/boost/__init__.py || die
+				python_domodule "${ED}"/usr/$(get_libdir)/boost-${EPYTHON}/mpi.so
+				rm -r "${ED}"/usr/$(get_libdir)/boost-${EPYTHON} || die
+
 				python_optimize
 			}
 			python_foreach_impl move_mpi_py_into_sitedir
