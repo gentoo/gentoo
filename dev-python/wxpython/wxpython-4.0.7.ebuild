@@ -11,7 +11,7 @@ MY_PN="wxPython"
 MY_PV="${PV}.post2"
 
 DESCRIPTION="A blending of the wxWindows C++ class library with Python"
-HOMEPAGE="http://www.wxpython.org/"
+HOMEPAGE="https://www.wxpython.org/"
 SRC_URI="mirror://pypi/${P:0:1}/${MY_PN}/${MY_PN}-${MY_PV}.tar.gz"
 
 LICENSE="wxWinLL-3"
