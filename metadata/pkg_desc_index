@@ -6018,14 +6018,14 @@ dev-perl/Bit-Vector 7.400.0 7.400.0-r2: Efficient bit vector, set of integers an
 dev-perl/Bit-Vector-Minimal 1.300.0-r1 1.300.0-r2: Object-oriented wrapper around vec()
 dev-perl/Boulder 1.300.0-r2: An API for hierarchical tag/value structures
 dev-perl/Browser-Open 0.40.0: Open a browser at a given URL
-dev-perl/Business-FedEx-DirectConnect 1.10.0-r1 1.10.0-r2: Interface to FedEx Ship Manager Direct
-dev-perl/Business-Hours 0.120.0-r1 0.130.0: Calculate business hours in a time period
-dev-perl/Business-ISBN 3.4.0 3.5.0: Work with ISBN as objects
-dev-perl/Business-ISBN-Data 20140910.3.0 20191107.0.0: Data pack for Business::ISBN
-dev-perl/Business-ISMN 1.132.0 1.201.0: International Standard Music Numbers
-dev-perl/Business-ISSN 1.3.0 1.4.0: Object and functions to work with International Standard Serial Numbers
+dev-perl/Business-FedEx-DirectConnect 1.10.0-r2: Interface to FedEx Ship Manager Direct
+dev-perl/Business-Hours 0.130.0: Calculate business hours in a time period
+dev-perl/Business-ISBN 3.5.0: Work with ISBN as objects
+dev-perl/Business-ISBN-Data 20191107.0.0: Data pack for Business::ISBN
+dev-perl/Business-ISMN 1.201.0: International Standard Music Numbers
+dev-perl/Business-ISSN 1.4.0: Object and functions to work with International Standard Serial Numbers
 dev-perl/Business-Tax-VAT-Validation 1.120.0: A class for european VAT numbers validation
-dev-perl/Business-UPS 2.10.0-r1 2.10.0-r2: A UPS Interface Module
+dev-perl/Business-UPS 2.10.0-r2: A UPS Interface Module
 dev-perl/Bytes-Random-Secure 0.290.0: extension to generate cryptographically-secure random bytes
 dev-perl/CBOR-XS 1.710.0-r1: Concise Binary Object Representation (CBOR, RFC7049)
 dev-perl/CDB_File 1.20.0-r1: Tie to CDB (Bernstein's constant DB) files
