@@ -1,0 +1,274 @@
+diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/CMakeLists.txt osg-my/CMakeLists.txt
+--- OpenSceneGraph-OpenSceneGraph-3.6.5/CMakeLists.txt	2020-01-31 12:03:07.000000000 +0100
++++ osg-my/CMakeLists.txt	2020-09-26 18:45:41.191099844 +0200
+@@ -764,7 +764,7 @@
+     FIND_PACKAGE(DirectInput)
+     FIND_PACKAGE(NVTT)
+     IF (NOT WIN32)
+-        FIND_PACKAGE(Asio)
++        FIND_PACKAGE(Boost)
+     ENDIF()
+     FIND_PACKAGE(ZeroConf)
+ 
+diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/CMakeModules/FindAsio.cmake osg-my/CMakeModules/FindAsio.cmake
+--- OpenSceneGraph-OpenSceneGraph-3.6.5/CMakeModules/FindAsio.cmake	2020-01-31 12:03:07.000000000 +0100
++++ osg-my/CMakeModules/FindAsio.cmake	1970-01-01 01:00:00.000000000 +0100
+@@ -1,22 +0,0 @@
+-# Locate ASIO-headers (http://think-async.com/Asio)
+-# This module defines
+-# ASIO_FOUND, if false, do not try to link to gdal
+-# ASIO_INCLUDE_DIR, where to find the headers
+-#
+-# Created by Stephan Maximilian Huber
+-
+-FIND_PATH(ASIO_INCLUDE_DIR
+-  NAMES
+-    asio.hpp
+-  PATHS
+-    /usr/include
+-    /usr/local/include
+-)
+-
+-SET(ASIO_FOUND "NO")
+-IF(ASIO_INCLUDE_DIR)
+-    FIND_PACKAGE( Boost 1.37 )
+-    IF(Boost_FOUND)
+-        SET(ASIO_FOUND "YES")
+-    ENDIF()
+-ENDIF()
+diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/CMakeLists.txt osg-my/src/osgPlugins/CMakeLists.txt
+--- OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/CMakeLists.txt	2020-01-31 12:03:07.000000000 +0100
++++ osg-my/src/osgPlugins/CMakeLists.txt	2020-09-26 20:04:59.345449848 +0200
+@@ -299,13 +299,13 @@
+ #
+ # Device integration plugins
+ #
+-IF   (SDL_FOUND)
++IF(SDL_FOUND)
+     ADD_PLUGIN_DIRECTORY(sdl)
+-ENDIF(SDL_FOUND)
++ENDIF()
+ 
+-IF(ASIO_FOUND)
++IF(Boost_FOUND)
+     ADD_PLUGIN_DIRECTORY(RestHttpDevice)
+-ENDIF(ASIO_FOUND)
++ENDIF()
+ 
+ 
+ IF(ZEROCONF_FOUND)
+diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/CMakeLists.txt osg-my/src/osgPlugins/RestHttpDevice/CMakeLists.txt
+--- OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/CMakeLists.txt	2020-01-31 12:03:07.000000000 +0100
++++ osg-my/src/osgPlugins/RestHttpDevice/CMakeLists.txt	2020-09-26 18:46:57.096859301 +0200
+@@ -1,6 +1,5 @@
+ INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
+-INCLUDE_DIRECTORIES(${ASIO_INCLUDE_DIR})
+-    
++
+ SET(TARGET_SRC
+     connection.cpp
+     io_service_pool.cpp
+@@ -26,7 +25,7 @@
+     RestHttpDevice.hpp
+ )
+ 
+-SET(TARGET_ADDED_LIBRARIES osgPresentation )
++SET(TARGET_ADDED_LIBRARIES osgPresentation)
+ 
+ #### end var setup  ###
+ SETUP_PLUGIN(resthttp)
+diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/connection.cpp osg-my/src/osgPlugins/RestHttpDevice/connection.cpp
+--- OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/connection.cpp	2020-01-31 12:03:07.000000000 +0100
++++ osg-my/src/osgPlugins/RestHttpDevice/connection.cpp	2020-09-26 18:32:19.690576603 +0200
+@@ -37,14 +37,14 @@
+ void connection::start()
+ {
+   OSG_DEBUG << "RestHttpDevice :: connection::start" << std::endl;
+-  
++
+   socket_.async_read_some(asio::buffer(buffer_),
+       boost::bind(&connection::handle_read, shared_from_this(),
+         asio::placeholders::error,
+         asio::placeholders::bytes_transferred));
+ }
+ 
+-void connection::handle_read(const asio::error_code& e,
++void connection::handle_read(const boost::system::error_code& e,
+     std::size_t bytes_transferred)
+ {
+   if (!e)
+@@ -82,12 +82,12 @@
+   // handler returns. The connection class's destructor closes the socket.
+ }
+ 
+-void connection::handle_write(const asio::error_code& e)
++void connection::handle_write(const boost::system::error_code& e)
+ {
+   if (!e)
+   {
+     // Initiate graceful connection closure.
+-    asio::error_code ignored_ec;
++    boost::system::error_code ignored_ec;
+     socket_.shutdown(asio::ip::tcp::socket::shutdown_both, ignored_ec);
+   }
+ 
+diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/connection.hpp osg-my/src/osgPlugins/RestHttpDevice/connection.hpp
+--- OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/connection.hpp	2020-01-31 12:03:07.000000000 +0100
++++ osg-my/src/osgPlugins/RestHttpDevice/connection.hpp	2020-09-26 19:56:49.410701890 +0200
+@@ -11,7 +11,7 @@
+ #ifndef HTTP_SERVER_CONNECTION_HPP
+ #define HTTP_SERVER_CONNECTION_HPP
+ 
+-#include <asio.hpp>
++#include <boost/asio.hpp>
+ #include <boost/array.hpp>
+ #include <boost/noncopyable.hpp>
+ #include <boost/shared_ptr.hpp>
+@@ -21,6 +21,8 @@
+ #include "request_handler.hpp"
+ #include "request_parser.hpp"
+ 
++using namespace boost;
++
+ namespace http {
+ namespace server {
+ 
+@@ -42,11 +44,11 @@
+   ~connection();
+ private:
+   /// Handle completion of a read operation.
+-  void handle_read(const asio::error_code& e,
++  void handle_read(const boost::system::error_code& e,
+       std::size_t bytes_transferred);
+ 
+   /// Handle completion of a write operation.
+-  void handle_write(const asio::error_code& e);
++  void handle_write(const boost::system::error_code& e);
+ 
+   /// Socket for the connection.
+   asio::ip::tcp::socket socket_;
+diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/io_service_pool.cpp osg-my/src/osgPlugins/RestHttpDevice/io_service_pool.cpp
+--- OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/io_service_pool.cpp	2020-01-31 12:03:07.000000000 +0100
++++ osg-my/src/osgPlugins/RestHttpDevice/io_service_pool.cpp	2020-09-26 19:56:12.353279737 +0200
+@@ -11,7 +11,7 @@
+ #include "server.hpp"
+ #include <stdexcept>
+ #include <boost/bind.hpp>
+-#include <boost/shared_ptr.hpp>
++#include <boost/thread.hpp>
+ 
+ namespace http {
+ namespace server {
+@@ -36,17 +36,14 @@
+ void io_service_pool::run()
+ {
+   // Create a pool of threads to run all of the io_services.
+-  std::vector<boost::shared_ptr<asio::thread> > threads;
++  std::vector<thread> threads;
+   for (std::size_t i = 0; i < io_services_.size(); ++i)
+-  {
+-    boost::shared_ptr<asio::thread> thread(new asio::thread(
+-          boost::bind(&asio::io_service::run, io_services_[i])));
+-    threads.push_back(thread);
+-  }
++    threads.emplace_back(thread(boost::bind(&asio::io_service::run,
++                                            io_services_[i])));
+ 
+   // Wait for all threads in the pool to exit.
+   for (std::size_t i = 0; i < threads.size(); ++i)
+-    threads[i]->join();
++    threads[i].join();
+ }
+ 
+ void io_service_pool::stop()
+diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/io_service_pool.hpp osg-my/src/osgPlugins/RestHttpDevice/io_service_pool.hpp
+--- OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/io_service_pool.hpp	2020-01-31 12:03:07.000000000 +0100
++++ osg-my/src/osgPlugins/RestHttpDevice/io_service_pool.hpp	2020-09-26 18:37:02.119722575 +0200
+@@ -11,11 +11,13 @@
+ #ifndef HTTP_SERVER_IO_SERVICE_POOL_HPP
+ #define HTTP_SERVER_IO_SERVICE_POOL_HPP
+ 
+-#include <asio.hpp>
++#include <boost/asio.hpp>
+ #include <vector>
+ #include <boost/noncopyable.hpp>
+ #include <boost/shared_ptr.hpp>
+ 
++using namespace boost;
++
+ namespace http {
+ namespace server {
+ 
+diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/reply.hpp osg-my/src/osgPlugins/RestHttpDevice/reply.hpp
+--- OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/reply.hpp	2020-01-31 12:03:07.000000000 +0100
++++ osg-my/src/osgPlugins/RestHttpDevice/reply.hpp	2020-09-26 18:28:42.741206569 +0200
+@@ -13,9 +13,11 @@
+ 
+ #include <string>
+ #include <vector>
+-#include <asio.hpp>
++#include <boost/asio.hpp>
+ #include "header.hpp"
+ 
++using namespace boost;
++
+ namespace http {
+ namespace server {
+ 
+diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/server.cpp osg-my/src/osgPlugins/RestHttpDevice/server.cpp
+--- OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/server.cpp	2020-01-31 12:03:07.000000000 +0100
++++ osg-my/src/osgPlugins/RestHttpDevice/server.cpp	2020-09-26 19:53:17.692061347 +0200
+@@ -23,7 +23,7 @@
+     request_handler_(doc_root)
+ {
+   // Open the acceptor with the option to reuse the address (i.e. SO_REUSEADDR).
+-  asio::ip::tcp::resolver resolver(acceptor_.get_io_service());
++  asio::ip::tcp::resolver resolver(io_service_pool_.get_io_service());
+   asio::ip::tcp::resolver::query query(address, port);
+   asio::ip::tcp::endpoint endpoint = *resolver.resolve(query);
+   acceptor_.open(endpoint.protocol());
+@@ -47,7 +47,7 @@
+   io_service_pool_.stop();
+ }
+ 
+-void server::handle_accept(const asio::error_code& e)
++void server::handle_accept(const boost::system::error_code& e)
+ {
+   if (!e)
+   {
+diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/server.hpp osg-my/src/osgPlugins/RestHttpDevice/server.hpp
+--- OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/server.hpp	2020-01-31 12:03:07.000000000 +0100
++++ osg-my/src/osgPlugins/RestHttpDevice/server.hpp	2020-09-26 18:29:38.894046375 +0200
+@@ -11,7 +11,7 @@
+ #ifndef HTTP_SERVER_SERVER_HPP
+ #define HTTP_SERVER_SERVER_HPP
+ 
+-#include <asio.hpp>
++#include <boost/asio.hpp>
+ #include <string>
+ #include <vector>
+ #include <boost/noncopyable.hpp>
+@@ -20,6 +20,8 @@
+ #include "io_service_pool.hpp"
+ #include "request_handler.hpp"
+ 
++using namespace boost;
++
+ namespace http {
+ namespace server {
+ 
+@@ -38,12 +40,12 @@
+ 
+   /// Stop the server.
+   void stop();
+-  
++
+   void setCallback(request_handler::Callback* cb) { request_handler_.setCallback(cb); }
+ 
+ private:
+   /// Handle completion of an asynchronous accept operation.
+-  void handle_accept(const asio::error_code& e);
++  void handle_accept(const boost::system::error_code& e);
+ 
+   /// The pool of io_service objects used to perform asynchronous operations.
+   io_service_pool io_service_pool_;
