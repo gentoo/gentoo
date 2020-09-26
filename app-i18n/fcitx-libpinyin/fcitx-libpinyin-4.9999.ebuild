@@ -1,7 +1,7 @@
 # Copyright 2012-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit cmake-utils xdg-utils
 
@@ -24,7 +24,14 @@ SLOT="4"
 KEYWORDS=""
 IUSE="dictionary-manager"
 
-RDEPEND=">=app-i18n/fcitx-4.2.9:4
+BDEPEND=">=app-i18n/fcitx-4.2.9:4
+	>=app-i18n/libpinyin-2.1.0
+	virtual/pkgconfig
+	dictionary-manager? (
+		>=dev-qt/qtcore-5.7:5
+		>=dev-qt/qtwidgets-5.7:5
+	)"
+DEPEND=">=app-i18n/fcitx-4.2.9:4
 	>=app-i18n/libpinyin-2.1.0:=
 	dev-libs/glib:2
 	sys-apps/dbus
@@ -38,8 +45,7 @@ RDEPEND=">=app-i18n/fcitx-4.2.9:4
 		>=dev-qt/qtwebengine-5.7:5[widgets]
 		>=dev-qt/qtwidgets-5.7:5
 	)"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+RDEPEND="${DEPEND}"
 
 DOCS=(AUTHORS)
 
