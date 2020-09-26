@@ -1912,7 +1912,7 @@ app-emulation/docker-registry 2.7.1: Docker Registry 2.0
 app-emulation/docker-swarm 1.2.9: Swarm Classic: a container clustering system
 app-emulation/dosemu 1.4.1_pre20130107-r5: DOS Emulator
 app-emulation/dynamips 0.2.18 0.2.21: Cisco 7200/3600 Simulator
-app-emulation/edumips64 1.1 1.2: A visual and cross-platform MIPS64 CPU Simulator
+app-emulation/edumips64 1.2: A visual and cross-platform MIPS64 CPU Simulator
 app-emulation/faudio 19.06 19.09 20.02 20.09 9999: FAudio - Accuracy-focused XAudio reimplementation for open platforms
 app-emulation/firecracker 0.21.1-r1: Secure and fast microVMs for serverless computing
 app-emulation/firecracker-bin 0.22.0: Secure and fast microVMs for serverless computing (static build)
@@ -1936,7 +1936,7 @@ app-emulation/kompose 1.16.0 1.19.0: Tool to move from docker-compose to Kuberne
 app-emulation/libcacard 2.6.0: virtual Common Access Card (CAC) library emulator
 app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc image files
 app-emulation/libguestfs 1.36.13 1.36.15 1.38.6: Tools for accessing, inspect and modifying virtual machine (VM) disk images
-app-emulation/libguestfs-appliance 1.36.1 1.38.0: VM appliance disk image used in libguestfs package
+app-emulation/libguestfs-appliance 1.38.0: VM appliance disk image used in libguestfs package
 app-emulation/libpod 2.1.0: Library and podman tool for running OCI-based containers in Pods
 app-emulation/libspectrum 1.4.4: Spectrum emulation library
 app-emulation/libvirt 6.2.0-r2 6.5.0-r1 9999: C toolkit to manipulate virtual machines
@@ -1954,7 +1954,7 @@ app-emulation/punes 0.106: Nintendo Entertainment System (NES) emulator
 app-emulation/q4wine 1.3.12: Qt GUI configuration tool for Wine
 app-emulation/qemu 5.1.0 5.1.0-r1 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 3.1.0 4.0.0 4.2.0-r1 5.0.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
-app-emulation/qemu-init-scripts 0.3.0 0.3.0-r1: Kvm and qemu init scripts
+app-emulation/qemu-init-scripts 0.3.0-r1: Kvm and qemu init scripts
 app-emulation/qemu-riscv64-bin 3.1.0-r4 5.0.0: Statically linked x86-64 binary of app-emulation/qemu, riscv64 emulator
 app-emulation/qt-virt-manager 9999: A GUI application for managing virtual machines
 app-emulation/reg 0.16.1: Docker registry v2 command line client
@@ -1975,7 +1975,7 @@ app-emulation/spice-html5 0.2.1 0.2.2: Spice Javascript client
 app-emulation/spice-protocol 0.14.1 9999: Headers defining the SPICE protocol
 app-emulation/spice-vdagent 0.19.0-r1 0.20.0: SPICE VD Linux Guest Agent
 app-emulation/spim 8.0-r3: MIPS Simulator
-app-emulation/uade 2.13 2.13-r1: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
+app-emulation/uade 2.13-r1: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
 app-emulation/umoci 0.2.1: Manipulation tool for OCI images
 app-emulation/vagrant 2.2.7-r1 2.2.9-r1: A tool for building and distributing development environments
 app-emulation/vice 3.4_p37498 3.4_p38553: The Versatile Commodore Emulator
@@ -1997,7 +1997,7 @@ app-emulation/wine-vanilla 4.0.3 5.0.1 5.0.2 5.14 5.15 5.16 5.17 9999: Free impl
 app-emulation/winetricks 20190912 20191224 20200412 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
-app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
+app-emulation/xe-guest-utilities 6.2.0_p1120: XenServer Virtual Machine Tools
 app-emulation/xen 4.13.1-r3 4.14.0-r1: The Xen virtual machine monitor
 app-emulation/xen-pvgrub 4.13.1 4.14.0: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
 app-emulation/xen-tools 4.13.1-r3 4.14.0-r1: Xen tools including QEMU and xl
@@ -2205,7 +2205,7 @@ app-laptop/radeontool 1.6.3: Manage the backlight, external video output and reg
 app-laptop/spicctrl 1.9-r1: tool for the sonypi-Device (found in Sony Vaio Notebooks)
 app-laptop/thinkfan 0.9.3 1.0.2: simple fan control program for thinkpads
 app-laptop/tp_smapi 0.43-r1: IBM ThinkPad SMAPI BIOS driver
-app-laptop/tpacpi-bat 1.1-r1 2.1 3.0 3.0-r1 3.1 9999: Control battery thresholds of recent ThinkPads, not supported by tp_smapi
+app-laptop/tpacpi-bat 3.0-r1 3.1 9999: Control battery thresholds of recent ThinkPads, not supported by tp_smapi
 app-laptop/tpb 0.6.4-r1: IBM ThinkPad buttons utility
 app-laptop/tuxedo-control-center-bin 1.0.4: Tool to control performance, energy, fan and comfort settings on TUXEDO laptops
 app-laptop/tuxedo-keyboard 2.0.5-r1: Kernel Module for Tuxedo Keyboard
@@ -2311,7 +2311,7 @@ app-metrics/snmp_exporter 0.15.0: Prometheus exporter for snmp metrics
 app-metrics/uwsgi_exporter 0.7.0 0.8.0: uWSGI metrics exporter for prometheus.io
 app-metrics/vault_exporter 0.1.2: Vault exporter for Prometheus
 app-misc/OpenRGB 0.3-r3 0.4 9999: Open source RGB lighting control that doesn't depend on manufacturer software
-app-misc/abduco 0.5 0.6: lightweight session manager with {de,at}tach support
+app-misc/abduco 0.6: lightweight session manager with {de,at}tach support
 app-misc/abook 0.6.1-r2: Abook is a text-based addressbook program designed to use with mutt mail client
 app-misc/acdctl 1.1-r1: Apple Cinema Display Control
 app-misc/actkbd 0.2.8-r2: A keyboard shortcut daemon
@@ -2327,7 +2327,7 @@ app-misc/bb 1.3.0_rc1-r5: Demonstration program for visual effects of aalib
 app-misc/beancounter 0.8.10-r1: Finance performance calculation engine with full data acquisition, SQL support
 app-misc/beanstalkd 1.10 1.11: A simple, fast work queue
 app-misc/beep 1.4.9: Advanced PC speaker beeper
-app-misc/bfr 1.6-r2 1.6-r3: General-purpose command-line pipe buffer
+app-misc/bfr 1.6-r3: General-purpose command-line pipe buffer
 app-misc/bgrep 0_p20110121-r1: Grep-like tool to search for binary strings
 app-misc/bijiben 3.34.2 3.36.3: Note editor designed to remain simple to use
 app-misc/binclock 1.5: Displays a binary clock in your terminal
@@ -2335,11 +2335,11 @@ app-misc/binwalk 2.2.0 9999: A tool for identifying files embedded inside firmwa
 app-misc/birthday 1.6.2-r1: Displays a list of events happening in the near future
 app-misc/blink1 1.98: blink(1) USB RGB LED status light control suite
 app-misc/bottlerocket 0.04c-r2: CLI interface to the X-10 Firecracker Kit
-app-misc/boxes 1.1.2-r1 1.1.2-r2 1.1.2-r3: Draw any kind of boxes around your text
+app-misc/boxes 1.1.2-r3: Draw any kind of boxes around your text
 app-misc/brewtarget 2.3.1-r1: Application to create and manage beer recipes
 app-misc/btail 0.3-r1: Bayesian logfile filter
 app-misc/byobu 5.130-r1: A set of profiles for the GNU Screen console window manager (app-misc/screen)
-app-misc/c_rehash 1.0.2g_p8 1.7-r1: c_rehash script from OpenSSL
+app-misc/c_rehash 1.7-r1: c_rehash script from OpenSSL
 app-misc/ca-certificates 20200601.3.53: Common CA Certificates PEM files
 app-misc/cadubi 1.3: An application that allows you to draw ASCII-Art images
 app-misc/calendar 0.9.1-r1: Standard unix calendar program for Linux, ported from OpenBSD
@@ -2369,7 +2369,7 @@ app-misc/datefudge 1.22 1.24: A program (and preload library) to fake system dat
 app-misc/dateutils 0.4.6 0.4.7 9999: command line date and time utilities
 app-misc/datovka 4.15.0 4.15.1: GUI to access the Czech data box e-government system
 app-misc/ddate 0.2.2_p20160627: Perpetual date converter from gregorian to poee calendar
-app-misc/ddccontrol 0.4.2_p20140105-r2 0.4.4 0.4.4_p20180123 0.4.4_p20200630: DDCControl allows control of monitor parameters via DDC
+app-misc/ddccontrol 0.4.4_p20200630: DDCControl allows control of monitor parameters via DDC
 app-misc/ddccontrol-db 20061014_p20121105 20190826 20190826_p20200613: DDCControl monitor database
 app-misc/ddcutil 0.9.1 0.9.5 0.9.9: Program for querying and changing monitor settings
 app-misc/delay 1.6-r2: Sleeplike program that counts down the number of seconds specified
@@ -2381,17 +2381,17 @@ app-misc/digitemp 3.7.1: Temperature logging and reporting using Maxim's iButton
 app-misc/dtach 0.9: Emulates the detach feature of screen
 app-misc/dvorak7min 1.6.1-r1: Simple ncurses-based typing tutor for learning the Dvorak keyboard layout
 app-misc/dvorakng 0.6.0: Dvorak typing tutor
-app-misc/dvtm 0.14-r1 0.15-r2 0.15-r3 9999: Dynamic virtual terminal manager
+app-misc/dvtm 0.15-r2 0.15-r3 9999: Dynamic virtual terminal manager
 app-misc/editor-wrapper 4-r1: Wrapper scripts that will execute EDITOR or PAGER
 app-misc/egads 0.9.5-r1: Entropy Gathering And Distribution System
 app-misc/elasticsearch 6.8.11 6.8.12 7.6.2 7.7.0 7.8.1 7.9.1: Open Source, Distributed, RESTful, Search Engine
-app-misc/emelfm2 0.9.1-r1 0.9.1-r2 0.9.1-r3: A file manager that implements the popular two-pane design
+app-misc/emelfm2 0.9.1-r1 0.9.1-r3: A file manager that implements the popular two-pane design
 app-misc/empty 0.6.20b: Small shell utility, similar to expect(1)
 app-misc/enum 1.1-r1: Replacement for GNU seq and BSD jot
 app-misc/esekeyd 1.2.7: Multimedia key daemon that uses the Linux event interface
 app-misc/evtest 1.33 1.34: test program for capturing input device events
 app-misc/faq 0.0.6: Format agnostic jQ
-app-misc/fdupes 1.5.1 1.6.1 1.6.1-r1 9999: Identify/delete duplicate files residing within specified directories
+app-misc/fdupes 1.5.1 1.6.1-r1 9999: Identify/delete duplicate files residing within specified directories
 app-misc/fdutils 5.5.20060227 5.5.20060227-r1: utilities for configuring and debugging the Linux floppy driver
 app-misc/fhem 6.0: A GPL'd perl server for house automation
 app-misc/figlet 2.2.5 2.2.5-r1 9999: program for making large letters out of ordinary text
@@ -2444,12 +2444,12 @@ app-misc/imgurbash2 3.1 3.2 9999: Bash script that uploads/deletes images to/fro
 app-misc/inputlircd 0.0.1_pre15-r2: Inputlirc daemon to utilize /dev/input/event*
 app-misc/interceptty 0.6-r1: a program that can sit between a serial port and an application
 app-misc/irtrans-irclient 6.01.05-r1: ASCII Client for the IRTrans Server
-app-misc/irtrans-irserver 6.09.04 6.09.04-r1: Server software for IRTrans
+app-misc/irtrans-irserver 6.09.04-r1: Server software for IRTrans
 app-misc/jail 2.0-r4: Builds a chroot and configures all the required files, directories and libraries
 app-misc/jitac 0.3.0: An image to ASCII converter written in Java
 app-misc/jot 9.0-r1: Print out increasing, decreasing, random, or redundant data
 app-misc/joy2key 1.6.3-r1: An application that translates joystick events to keyboard events
-app-misc/joymouse 0.5 0.5-r1: An application that translates joystick events to mouse events
+app-misc/joymouse 0.5-r1: An application that translates joystick events to mouse events
 app-misc/jq 1.6-r3: A lightweight and flexible command-line JSON processor
 app-misc/kanatest 0.4.8: Visual flashcard tool for memorizing the Japanese Hiragana and Katakana alphabet
 app-misc/khal 0.10.1-r1: A CalDAV based calendar
@@ -2479,7 +2479,7 @@ app-misc/mencal 3.0: Calendar to track menstruation cycles
 app-misc/mepl 0.45-r1: Self-employed-mode software for 3COM/USR message modems
 app-misc/mime-types 9: Provides /etc/mime.types file
 app-misc/mkcert 1.4.1: A zero-config tool to make locally trusted development certificates
-app-misc/mmv 1.01b_p18 1.01b_p18-r1: Move/copy/append/link multiple files according to a set of wildcard patterns
+app-misc/mmv 1.01b_p18-r1: Move/copy/append/link multiple files according to a set of wildcard patterns
 app-misc/mosquitto 1.6.8 1.6.9 1.6.10 1.6.12: An Open Source MQTT v3 Broker
 app-misc/mouseremote 0.90-r2: X10 MouseRemote
 app-misc/mswinurl_launcher 1.0: Launcher and desktop association for MS Windows *.URL (text/x-uri) files
@@ -2529,7 +2529,7 @@ app-misc/rox-filer 2.11: ROX-Filer a drag and drop spatial file manager
 app-misc/rpick 0.6.1 0.7.0: Helps you pick items from a list by various algorithms
 app-misc/rtlamr 0.9.1: software defined radio receiver for utility smart meters
 app-misc/rundeck-bin 2.6.8: Job Scheduler and Runbook Automation
-app-misc/rundeck-cli-bin 0.1.8 0.1.11: Command line tool for rundeck
+app-misc/rundeck-cli-bin 0.1.11: Command line tool for rundeck
 app-misc/screen 4.8.0 9999: screen manager with VT100/ANSI terminal emulation
 app-misc/screenfetch 3.9.1 9999: Bash Screenshot Information Tool
 app-misc/screenie 20120406: A small and lightweight screen wrapper
@@ -2607,7 +2607,7 @@ app-mobilephone/heimdall 1.4.2 9999: Tool suite used to flash firmware onto Sams
 app-mobilephone/qtadb 0.8.1-r1: Android phone manager via ADB
 app-mobilephone/scmxx 0.9.0: Exchange data with Siemens phones
 app-mobilephone/smsclient 2.0.9a-r1: Utility to send SMS messages to mobile phones and pagers
-app-mobilephone/smstools 3.1.15-r2 3.1.21-r1: Send and receive short messages through GSM modems
+app-mobilephone/smstools 3.1.21-r1: Send and receive short messages through GSM modems
 app-mobilephone/sobexsrv 1.0.1-r2 1.0.1-r3: Scripting/Secure OBEX Server (for BlueZ Linux)
 app-mobilephone/vmoconv 1.0-r1: A tool that converts Siemens phones VMO and VMI audio files to gsm and wav
 app-office/abiword 3.0.4: Fully featured yet light and fast cross platform word processor
@@ -2681,7 +2681,7 @@ app-pda/libimobiledevice 1.2.0-r1 1.2.1_pre20200220 1.3.0-r1: Support library to
 app-pda/libplist 2.1.0 2.2.0-r1 2.2.0-r2: Support library to deal with Apple Property Lists (Binary & XML)
 app-pda/libusbmuxd 1.0.10-r1 2.0.1 2.0.2-r1: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-pda/pilot-link 0.12.5-r3: Suite of tools for moving data between a Palm device and a desktop
-app-pda/usbmuxd 1.1.0 1.1.1_pre20200121 1.1.1: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
+app-pda/usbmuxd 1.1.1_pre20200121 1.1.1: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-portage/cfg-update 1.8.9: Easy to use GUI & CLI alternative for etc-update
 app-portage/conf-update 1.0.3-r1: conf-update is a ncurses-based config management utility
 app-portage/cpuid2cpuflags 11 9999: Tool to guess CPU_FLAGS_* flags for the host
@@ -2881,8 +2881,8 @@ app-text/gnome-doc-utils 0.20.10-r2: A collection of documentation utilities for
 app-text/gocr 0.50: An OCR (Optical Character Recognition) reader
 app-text/goldendict 1.5.0_rc2-r2: Feature-rich dictionary lookup program
 app-text/grip 4.5.2: Preview GitHub Markdown files like Readme locally before committing them
-app-text/groonga 5.0.3 5.0.9 6.1.2 8.0.2: An Embeddable Fulltext Search Engine
-app-text/groonga-normalizer-mysql 1.0.6 1.0.9 1.1.0 1.1.1: Groonga plugin that provides MySQL compatible normalizers
+app-text/groonga 6.1.2 8.0.2: An Embeddable Fulltext Search Engine
+app-text/groonga-normalizer-mysql 1.1.1: Groonga plugin that provides MySQL compatible normalizers
 app-text/grutatxt 2.0.16-r1: A converter from plain text to HTML and other markup languages
 app-text/gspell 1.6.1 1.8.3: Spell check library for GTK+ applications
 app-text/gtkspell 2.0.16-r1 3.0.10: Spell checking widget for GTK
@@ -2901,12 +2901,12 @@ app-text/htmlinc 1.0_beta1-r2: HTML Include System by Ulli Meybohm
 app-text/htmlmin 0.1.12: A configurable HTML Minifier with safety features
 app-text/htmlrecode 1.3.1-r1: Recodes HTML file using a new character set
 app-text/htmltidy 20090325-r2: Tidy the layout and correct errors in HTML and XML documents
-app-text/htp 1.16-r1 1.19: An HTML preprocessor
+app-text/htp 1.19: An HTML preprocessor
 app-text/hunspell 1.7.0-r2: Spell checker, morphological analyzer library and command-line tool
 app-text/hyperestraier 1.4.13: a full-text search system for communities
 app-text/iso-codes 4.4: ISO language, territory, currency, script codes and their translations
 app-text/itex2mml 1.5.6: A LaTeX into XHTML/MathML converter
-app-text/jabref 2.10-r2 2.10-r4: Java GUI for managing BibTeX and other bibliographies
+app-text/jabref 2.10-r4: Java GUI for managing BibTeX and other bibliographies
 app-text/jabref-bin 3.7 3.8 3.8.1 3.8.2 4.0 4.1 4.3.1 4.9999: Java GUI manages bibliographies in a BibTeX database
 app-text/jo 1.4 99999: JSON output from a shell
 app-text/kbibtex 0.9.2: BibTeX editor to edit bibliographies used with LaTeX
@@ -2914,7 +2914,7 @@ app-text/kchmviewer 7.7-r1: Feature rich chm file viewer, based on Qt
 app-text/kjots 5.0.2-r1 5.0.2-r2: Note taking utility by KDE
 app-text/krop 0.5.1-r1 9999: A tool to crop PDF files
 app-text/languagetool 4.5 4.6: A proof-reading tool for many languages
-app-text/lcdf-typetools 2.106 2.107 2.108: Font utilities for eg manipulating OTF
+app-text/lcdf-typetools 2.106 2.108: Font utilities for eg manipulating OTF
 app-text/lesspipe 1.83 1.83-r1 1.84 1.85: a preprocessor for less
 app-text/letterize 1.4: Generate English-plausible alphabetic mnemonics for a phone number
 app-text/libabw 0.1.3: Library parsing abiword documents
@@ -2949,7 +2949,7 @@ app-text/mathtex 1.04: Lets you easily embed LaTeX math in your own html pages, 
 app-text/mecab 0.996-r1: Yet Another Part-of-Speech and Morphological Analyzer
 app-text/mpage 2.5.6-r1: Many to one page printing utility
 app-text/msort 8.53: A program for sorting files in sophisticated ways
-app-text/multitail 6.4.1 6.4.2: Tail with multiple windows
+app-text/multitail 6.4.2: Tail with multiple windows
 app-text/mupdf 1.16.1 1.17.0: a lightweight PDF viewer and toolkit written in portable C
 app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21 2.0.22_pre7: Namazu is a full-text search engine
@@ -2971,10 +2971,10 @@ app-text/pdf2djvu 0.9.8 0.9.11 0.9.12 0.9.15: A tool to create DjVu files from P
 app-text/pdf2html 1.4: Converts pdf files to html files
 app-text/pdf2oo 20090715-r1: Converts pdf files to odf
 app-text/pdfarranger 1.3.1 1.5.3-r1 1.6.2: Merge or split pdfs; rearrange, rotate, crop pages.
-app-text/pdfgrep 1.4.1-r1 2.0.1 2.1.2: A tool similar to grep which searches text in PDFs
+app-text/pdfgrep 2.0.1 2.1.2: A tool similar to grep which searches text in PDFs
 app-text/pdfjam 2.08-r1: pdfnup, pdfjoin and pdf90
 app-text/pdfminer 20191020: Python tool for extracting information from PDF documents
-app-text/pdfsandwich 0.1.4-r1 0.1.7: generator of sandwich OCR pdf files
+app-text/pdfsandwich 0.1.7: generator of sandwich OCR pdf files
 app-text/pdftk 3.0.0 3.0.8 9999: gcj-free version of pdftk written in Java
 app-text/peg-markdown 0.4.14: Implementation of markdown in C, using a PEG grammar
 app-text/pelican 3.7.1 4.0.0 4.0.1 4.1.2 4.2.0 9999: A tool to generate a static blog, with restructured text or markdown input files
@@ -3037,7 +3037,7 @@ app-text/texlive-core 2020-r12: A complete TeX distribution
 app-text/tidy-html5 5.6.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
-app-text/tofrodos 1.7.12a 1.7.13: Utility that converts ASCII files between the MSDOS and the Unix format
+app-text/tofrodos 1.7.13: Utility that converts ASCII files between the MSDOS and the Unix format
 app-text/tokyodystopia 0.9.15: A fulltext search engine for Tokyo Cabinet
 app-text/trang 20151127: Multi-format schema converter based on RELAX NG
 app-text/tree 1.7.0 1.7.0-r1 1.8.0: Lists directories recursively, and produces an indented listing of files
@@ -3049,20 +3049,20 @@ app-text/txt2tags 3.3: Generate marked up documents (HTML, etc.)from a plain tex
 app-text/u2ps 0.8.4 1.1: A text to PostScript converter like a2ps, but supports UTF-8
 app-text/unac 1.8.0: Library and command-line tool for removing accents from characters
 app-text/unpaper 6.1-r1 9999: Post-processor for scanned and photocopied book pages
-app-text/unrtf 0.21.9 0.21.10: Converts RTF files to various formats
+app-text/unrtf 0.21.10: Converts RTF files to various formats
 app-text/uudeview 0.5.20-r2: uu, xx, base64, binhex decoder
 app-text/vgrep 2.3.1 2.3.3 2.4.0: A pager for grep, git-grep and similar grep implementations
 app-text/vilistextum 2.6.9-r1 2.8.0.20191023-r1: HTML to ASCII converter programmed to handle incorrect html
 app-text/wdiff 1.2.2 1.2.2-r1: Create a diff disregarding formatting
 app-text/webgen 1.7.1: A template-based static website generator
 app-text/wgetpaste 2.29-r1: Command-line interface to various pastebins
-app-text/wiki2beamer 0.9.5-r1 0.10.0: Tool to produce LaTeX Beamer code from wiki-like input
+app-text/wiki2beamer 0.10.0: Tool to produce LaTeX Beamer code from wiki-like input
 app-text/writerperfect 0.9.6: Various formats to Open document format converter
-app-text/wscr 1.2-r1 1.2-r2: A Lightweight and Fast Anagram Solver
+app-text/wscr 1.2-r2: A Lightweight and Fast Anagram Solver
 app-text/wv 1.2.9-r2: Tool for conversion of MSWord doc and rtf files to something readable
 app-text/wv2 0.4.2-r2: Excellent MS Word filter lib, used in most Office suites
 app-text/xapers 0.9.0: Personal document indexing system
-app-text/xapian-omega 1.2.25 1.4.14 1.4.15 1.4.16 1.4.17: An application built on Xapian, consisting of indexers and a CGI search frontend
+app-text/xapian-omega 1.4.14 1.4.15 1.4.16 1.4.17: An application built on Xapian, consisting of indexers and a CGI search frontend
 app-text/xchm 1.23-r1 1.29 1.30 1.31 9999: Utility for viewing Compiled HTML Help (CHM) files
 app-text/xdvik 22.87.03-r2: DVI previewer for X Window System
 app-text/xhtml1 20020801-r6: DTDs for the eXtensible HyperText Markup Language 1.0
@@ -5207,7 +5207,7 @@ dev-libs/aws-c-event-stream 0.1.3: C99 implementation of the vnd.amazon.eventstr
 dev-libs/aws-checksums 0.1.3: Cross-Platform HW accelerated CRC32c and CRC32 with software fallbacks
 dev-libs/aws-sdk-cpp 1.8.46: AWS SDK for C++
 dev-libs/bareos-fastlzlib 0_pre20140912 0_pre20150524: Fork of zlib-like interface to fast block compression (LZ4 or FastLZ) libraries
-dev-libs/bcm2835 1.52 1.57: Provides access to GPIO and other IO functions on the Broadcom BCM2835
+dev-libs/bcm2835 1.57 1.68: Provides access to GPIO and other IO functions on the Broadcom BCM2835
 dev-libs/bemenu 0.4.1 0.5.0 9999: dmenu clone for wayland
 dev-libs/bglibs 2.04-r1 2.04-r2: Bruce Guenter's Libraries Collection
 dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
