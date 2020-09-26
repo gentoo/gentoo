@@ -18021,7 +18021,7 @@ www-apps/kibana-bin 6.8.11 6.8.12 7.8.1 7.9.1: Analytics and search dashboard fo
 www-apps/klaus 1.5.1 1.5.2: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.6 3.0.4: Internet platforms for proposition development and decision making
 www-apps/liquid_feedback_frontend 2.2.7 3.0.6: Internet platforms for proposition development and decision making
-www-apps/mediawiki 1.34.2 1.34.4: The MediaWiki wiki web application (as used on wikipedia.org)
+www-apps/mediawiki 1.34.2 1.34.4 1.35.0: The MediaWiki wiki web application (as used on wikipedia.org)
 www-apps/mirmon 2.11-r2: Simple webapp to monitor the status of mirrors
 www-apps/moodle 3.5.14 3.7.8 3.8.5 3.9.2: The Moodle Course Management System
 www-apps/mythweb 0.28.1: PHP scripts intended to manage MythTV from a web browser
