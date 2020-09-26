@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 SS_CONFIG="/etc/shadowsocks-libev/shadowsocks.json"
@@ -49,13 +49,16 @@ start() {
 
     ebegin "Starting Shadowsocks: ${SS_SVCNAME} mode"
     start-stop-daemon --start --exec ${SS_COMMAND} \
-    -- -c ${SS_CONFIG} -f ${SS_PIDFILE} >/dev/null 2>&1 &
+	--user nobody --group nobody \
+	-- -c ${SS_CONFIG} -f ${SS_PIDFILE} >/dev/null 2>&1 &
     eend $?
 }
 
 stop() {
     ebegin "Stopping Shadowsocks"
-    start-stop-daemon --stop --pidfile ${SS_PIDFILE}
+    start-stop-daemon --stop \
+	--user nobody --group nobody \
+	--pidfile ${SS_PIDFILE}
     eend $?
 }
 
