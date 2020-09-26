@@ -17955,7 +17955,7 @@ www-apache/mod_authz_unixgroup 1.1.0 9999: An Apache2 authorization DSO using un
 www-apache/mod_backtrace 2.01: Debug segmentation faults in Apache threads
 www-apache/mod_bw 0.9.2-r1: Bandwidth Management Module for Apache2
 www-apache/mod_caucho 4.0.47: mod_caucho connects Resin and Apache2
-www-apache/mod_common_redirect 0.1.1 0.1.1-r1: mod_common_redirect implements common redirects without mod_rewrite overhead
+www-apache/mod_common_redirect 0.1.1-r1: mod_common_redirect implements common redirects without mod_rewrite overhead
 www-apache/mod_dnssd 0.6-r1: mod_dnssd is an Apache module which adds Zeroconf support via DNS-SD using Avahi
 www-apache/mod_evasive 1.10.1-r1: Evasive maneuvers module for the event of an HTTP DoS
 www-apache/mod_extract_forwarded 2.0.3_pre2015052015: Rewrites X-Forwarded-For to REMOTE_ADDR for reverse proxy configurations
@@ -17979,7 +17979,7 @@ www-apache/mod_vdbh 1.0.3-r2: An Apache2 module for mass virtual hosting using a
 www-apache/mod_vhost_ldap 2.4.0-r1: Store and configure Apache virtual hosts using LDAP
 www-apache/mod_whatkilledus 2.01: Debug segmentation faults in Apache threads
 www-apache/mod_wsgi 4.7.0 4.7.1: An Apache2 module for running Python WSGI applications
-www-apache/mod_xsendfile 1.0_beta1 1.0_beta1-r1: Apache module that processes X-SENDFILE headers registered by the output handler
+www-apache/mod_xsendfile 1.0_beta1-r1: Apache module that processes X-SENDFILE headers registered by the output handler
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
 www-apache/modsecurity-crs 3.0.2 3.1.0: Core Rule Set for ModSecurity
 www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
