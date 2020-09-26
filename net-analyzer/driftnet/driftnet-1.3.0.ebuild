@@ -30,6 +30,7 @@ DEPEND="
 	${RDEPEND}
 	test? ( dev-util/cmocka )
 "
+RESTRICT="!test? ( test )"
 DOCS="
 	Changelog CREDITS README.md TODO
 "
