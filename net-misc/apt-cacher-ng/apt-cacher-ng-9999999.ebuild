@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake-utils git-r3 user
+inherit cmake git-r3 user
 
 DESCRIPTION="Yet another caching HTTP proxy for Debian/Ubuntu software packages"
 HOMEPAGE="
@@ -29,7 +29,6 @@ COMMON_DEPEND="
 "
 BDEPEND="
 	${COMMON_DEPEND}
-	dev-util/cmake
 	virtual/pkgconfig
 "
 RDEPEND="
@@ -65,7 +64,7 @@ src_configure() {
 		mycmakeargs+=( "-DHAVE_LIBWRAP=no" )
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 
 	sed -i -e '/LogDir/s|/var/tmp|/var/log/'"${PN}"'|g' "${BUILD_DIR}"/conf/acng.conf || die
 }
