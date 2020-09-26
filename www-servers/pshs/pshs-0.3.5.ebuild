@@ -1,19 +1,15 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-EGIT_REPO_URI="https://github.com/mgorny/${PN}.git"
-
-inherit autotools git-r3
+EAPI=7
 
 DESCRIPTION="Pretty small HTTP server -- a command-line tool to share files"
 HOMEPAGE="https://github.com/mgorny/pshs/"
-SRC_URI=""
+SRC_URI="https://github.com/mgorny/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="libressl +magic qrcode ssl upnp"
 
 RDEPEND=">=dev-libs/libevent-2:0=
@@ -25,11 +21,6 @@ RDEPEND=">=dev-libs/libevent-2:0=
 	)
 	upnp? ( net-libs/miniupnpc:0= )"
 DEPEND="${RDEPEND}"
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 src_configure() {
 	local myconf=(
