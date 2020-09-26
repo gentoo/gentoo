@@ -1,0 +1,26 @@
+diff --git a/src/security/apparmor/libvirt-qemu b/src/security/apparmor/libvirt-qemu
+index 80986ae..d550d8c 100644
+--- a/src/security/apparmor/libvirt-qemu
++++ b/src/security/apparmor/libvirt-qemu
+@@ -88,6 +88,7 @@
+   /usr/share/sgabios/** r,
+   /usr/share/slof/** r,
+   /usr/share/vgabios/** r,
++  /usr/share/seavgabios/** r,
+ 
+   # pki for libvirt-vnc and libvirt-spice (LP: #901272, #1690140)
+   /etc/pki/CA/ r,
+diff --git a/src/security/apparmor/usr.lib.libvirt.virt-aa-helper.in b/src/security/apparmor/usr.libexec.virt-aa-helper.in
+similarity index 97%
+rename from src/security/apparmor/usr.lib.libvirt.virt-aa-helper.in
+rename to src/security/apparmor/usr.libexec.virt-aa-helper.in
+index dd18c8a..d06f9cb 100644
+--- a/src/security/apparmor/usr.lib.libvirt.virt-aa-helper.in
++++ b/src/security/apparmor/usr.libexec.virt-aa-helper.in
+@@ -69,5 +69,5 @@ profile virt-aa-helper @libexecdir@/virt-aa-helper {
+   /**.[iI][sS][oO] r,
+   /**/disk{,.*} r,
+ 
+-  #include <local/usr.lib.libvirt.virt-aa-helper>
++  #include <local/usr.libexec.virt-aa-helper>
+ }
