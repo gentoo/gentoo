@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2020-09-26)
+# The respective dependencies are masked for removal.
+sci-geosciences/viking mapnik
+
 # Ulrich Müller <ulm@gentoo.org> (2020-09-25)
 # Python 2 only. Bug #735496.
 sys-cluster/ganglia python
