@@ -32,6 +32,11 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-99999999-fno-common.patch
 	"${FILESDIR}"/${PN}-99999999-strncat.patch
 )
+DOCS=(
+	README
+	scripts/keybind_help.sh
+	scripts/status.sh
+)
 
 src_configure() {
 	tc-export CC
@@ -46,10 +51,4 @@ src_configure() {
 			--xdg-config-dir /etc/xdg \
 			|| die
 	done
-}
-
-src_install() {
-	default
-	rm -r "${D}"/usr/share/${PN}
-	dodoc README
 }
