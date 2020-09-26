@@ -654,11 +654,6 @@ app-admin/passook
 # Does not compile against ghc-8.8. Removal in 30 days.
 dev-haskell/process-conduit
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-29)
-# Abandoned upstream.
-# Does not compile against ghc-8.8. Removal in 30 days.
-dev-haskell/citeproc-hs
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2020-08-29)
 # Upstream has version 1.1.2, but only for Windows,
 # sources are gone. Removal in 30 days.
