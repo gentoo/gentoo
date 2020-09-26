@@ -458,7 +458,7 @@ app-accessibility/eflite 0.4.1-r3: A speech server that allows screen readers to
 app-accessibility/emacspeak 39.0-r2 9999: the emacspeak audio desktop
 app-accessibility/emacspeak-ss 1.9.1: adds support for several speech synthesizers to emacspeak
 app-accessibility/epos 2.5.37-r3: language independent text-to-speech system
-app-accessibility/espeak 1.47.11-r1 1.48.04 1.48.04-r1: Speech synthesizer for English and other languages
+app-accessibility/espeak 1.48.04-r1: Speech synthesizer for English and other languages
 app-accessibility/espeakup 0.71-r1 0.80 9999: espeakup is a small lightweight connector for espeak and speakup
 app-accessibility/flite 1.4-r4 2.1: Flite text to speech engine
 app-accessibility/freetts 1.2.2: A speech synthesis system written entirely in Java
@@ -476,7 +476,7 @@ app-accessibility/speechd-el 2.8: Emacs speech support
 app-accessibility/sphinx2 0.6: CMU Speech Recognition-engine
 app-accessibility/yasr 0.6.9-r1: General-purpose console screen reader
 app-admin/abrt 2.14.0 2.14.1 2.14.2: Automatic bug detection and reporting tool
-app-admin/aerospike-amc-community 3.6.13-r2 4.0.19-r1: Web UI based monitoring tool for Aerospike Community Edition Server
+app-admin/aerospike-amc-community 4.0.19-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0.13: A webserver log analyzer
 app-admin/ansible 2.9.12 2.9.13 9999: Model-driven deployment, config management, and command execution framework
@@ -489,7 +489,7 @@ app-admin/apg 2.3.0b-r7: Another Password Generator
 app-admin/augeas 1.11.0 1.11.0-r1 1.12.0: A library for changing configuration files
 app-admin/authbind 2.1.1: Bind sockets to privileged ports without root
 app-admin/aws-elb-tools 1.0.15.1-r1: Serves as the client interface to the Elastic Load Balancing web service
-app-admin/bastille 3.0.9-r1 3.0.9-r2: Bastille-Linux is a security hardening tool
+app-admin/bastille 3.0.9-r2: Bastille-Linux is a security hardening tool
 app-admin/calamares 3.2.28.3: Distribution-independent installer framework
 app-admin/cancd 0.1.0-r4: CA NetConsole Daemon receives output from the Linux netconsole driver
 app-admin/ccze 0.2.1-r4: A flexible and fast logfile colorizer
@@ -670,7 +670,7 @@ app-antivirus/clamtk 6.05 6.06: A graphical front-end for ClamAV
 app-antivirus/fangfrisch 1.2.0-r1: Update and verify unofficial Clam Anti-Virus signatures
 app-arch/advancecomp 2.2_pre20190301: Recompress ZIP, PNG and MNG, considerably improving compression
 app-arch/afio 2.5.1-r2: Afio creates cpio-format archives.
-app-arch/alien 8.95 8.95-r1: Converts between the rpm, dpkg, stampede slp, and slackware tgz file formats
+app-arch/alien 8.95-r1: Converts between the rpm, dpkg, stampede slp, and slackware tgz file formats
 app-arch/arc 5.21p: Create & extract files from DOS .ARC files
 app-arch/arj 3.10.22-r7: Utility for opening arj archives
 app-arch/atool 0.39.0-r1: Script for managing file archives of various types
@@ -684,7 +684,7 @@ app-arch/cpio 2.12-r1 2.13: A file archival tool which can also read and write t
 app-arch/deb2targz 1-r3: Convert a .deb file to a .tar.gz archive
 app-arch/dpkg 1.19.0.5 1.19.6 1.19.7 1.20.0 1.20.2 1.20.3 1.20.5: Package maintenance system for Debian
 app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a given set of files
-app-arch/dump 0.4.46 0.4.46-r1: Dump/restore ext2fs backup utilities
+app-arch/dump 0.4.46-r1: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.24.0-r1 1.24.1: Engrampa archive manager for MATE
 app-arch/fastjar 0.98-r3: A jar program written in C
 app-arch/file-roller 3.32.4 3.36.3: Archive manager for GNOME
@@ -717,7 +717,7 @@ app-arch/p7zip 16.02-r4 16.02-r5 16.02-r6: Port of 7-Zip archiver for Unix
 app-arch/par2cmdline 0.7.3 0.7.4 0.8.0: A PAR-2.0 file verification and repair tool
 app-arch/patool 1.12: Portable archive file manager
 app-arch/pax 20161104: pax (Portable Archive eXchange) is the POSIX standard archive tool
-app-arch/pbzip2 1.1.12 1.1.12-r1 1.1.13: Parallel bzip2 (de)compressor using libbz2
+app-arch/pbzip2 1.1.12 1.1.13: Parallel bzip2 (de)compressor using libbz2
 app-arch/pdlzip 1.10: Public-domain version of lzip compressor
 app-arch/pdv 1.5.1-r3: build a self-extracting and self-installing binary package
 app-arch/pet2tgz 0.3-r1: Puppy Linux .pet to .tar.gz converter
@@ -810,7 +810,7 @@ app-backup/simplebackup 1.8.1-r1: Cross-platform backup program
 app-backup/snapper 0.5.6-r1 0.8.6 0.8.7 0.8.9-r1: Command-line program for btrfs and lvm snapshot management
 app-backup/spideroak-bin 7.5.0-r1: Secure free online backup, storage, and sharing system
 app-backup/synology-cloud-station-backup 4469: Back up your files from multiple client computers to a centralized Synology NAS
-app-backup/tarsnap 1.0.35 1.0.37 1.0.39: Online backups for the truly paranoid
+app-backup/tarsnap 1.0.37 1.0.39: Online backups for the truly paranoid
 app-backup/tsm 7.1.8.0-r1 8.1.6.0: IBM Spectrum Protect (former Tivoli Storage Manager) Backup/Archive Client, API
 app-backup/untangle-https-backup 0.0.10-r1: Back up Untangle configurations via the web admin UI
 app-backup/vzdump 1.2: A utility to make consistent snapshots of running OpenVZ containers
@@ -923,7 +923,7 @@ app-crypt/debian-archive-keyring 2018.1 2019.1 2019.1-r1: GnuPG archive keys of 
 app-crypt/dehydrated 0.6.5: a client for signing certificates with an ACME-server
 app-crypt/dieharder 3.31.1-r3: An advanced suite for testing the randomness of RNG's
 app-crypt/easy-rsa 3.0.4 3.0.5 3.0.6 3.0.7: Small RSA key management package, based on OpenSSL
-app-crypt/efitools 1.7.0 1.8.1 1.9.2: Tools for manipulating UEFI secure boot platforms
+app-crypt/efitools 1.8.1 1.9.2: Tools for manipulating UEFI secure boot platforms
 app-crypt/eid-mw 4.4.27 9999: Electronic Identity Card middleware supplied by the Belgian Federal Government
 app-crypt/ekeyd 1.1.5-r1: Entropy Key userspace daemon
 app-crypt/elettra 1.0: Plausible deniable file cryptography
@@ -947,7 +947,7 @@ app-crypt/heimdal 7.6.0 7.7.0-r1: Kerberos 5 implementation from KTH
 app-crypt/hmaccalc 0.9.14: Tools for computing and checking HMAC values for files
 app-crypt/ima-evm-utils 1.1-r1 9999: Supporting tools for IMA and EVM
 app-crypt/jacksum 1.7.0: Java utility for computing and verifying checksums: CRC*, MD*, etc.
-app-crypt/jetring 0.25 0.27: GPG keyring maintenance using changesets
+app-crypt/jetring 0.27: GPG keyring maintenance using changesets
 app-crypt/jitterentropy 2.1.2 2.2.0: Hardware RNG based on CPU timing jitter
 app-crypt/jitterentropy-rngd 1.1.0: Jitter RNG daemon
 app-crypt/johntheripper 1.8.0: fast password cracker
@@ -1001,16 +1001,16 @@ app-crypt/qca 2.3.1: Qt Cryptographic Architecture (QCA)
 app-crypt/quickcrypt 0.9.2b-r1: gives you a quick MD5 Password from any string
 app-crypt/rainbowcrack 1.7: Hash cracker that precomputes plaintext - ciphertext pairs in advance
 app-crypt/rhash 1.3.6-r1 1.4.0: Console utility and library for computing and verifying file hash sums
-app-crypt/rotix 0.83 0.83-r1: Rotix allows you to generate rotational obfuscations
-app-crypt/sbsigntools 0.6-r2 0.9.1-r1 0.9.2: Utilities for signing and verifying files for UEFI Secure Boot
+app-crypt/rotix 0.83-r1: Rotix allows you to generate rotational obfuscations
+app-crypt/sbsigntools 0.9.1-r1 0.9.2: Utilities for signing and verifying files for UEFI Secure Boot
 app-crypt/scdrand 0.3.5: Feed kernel entropy pool from smartcard's TRNG
 app-crypt/scrypt 1.3.0 1.3.1: A simple password-based encryption utility using scrypt key derivation function
 app-crypt/scute 1.5.0 1.6.0: A PKCS #11 module for OpenPGP smartcards
 app-crypt/seahorse 3.34.1 3.36.2: Manage your passwords and encryption keys
 app-crypt/seahorse-sharing 3.8.0_p20181216: Daemon for PGP public key sharing using DNS-SD and HKP
-app-crypt/shash 0.2.6-r2 0.2.6-r3: Generate or check digests or MACs of files
+app-crypt/shash 0.2.6-r3: Generate or check digests or MACs of files
 app-crypt/sign 1.0.7: File signing and signature verification utility
-app-crypt/signify 20 23 24 29: OpenBSD tool to sign and verify signatures on files
+app-crypt/signify 23 24 29: OpenBSD tool to sign and verify signatures on files
 app-crypt/signing-party 2.10-r1 2.11: A collection of several tools related to OpenPGP
 app-crypt/simple-tpm-pk11 0.06: Simple PKCS11 provider for TPM chips
 app-crypt/ssdeep 2.14.1: Computes context triggered piecewise hashes (fuzzy hashes)
@@ -1573,7 +1573,7 @@ app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5 25.3 26.
 app-doc/geant-docs 4.10.05 4.10.5_p2 4.10.6: User documentation for Geant4 physics simulation toolkit
 app-doc/gimp-help 2.10.0-r1: GNU Image Manipulation Program help files
 app-doc/gnucash-docs 3.8b 4.0 4.1: Documentation package for GnuCash
-app-doc/halibut 1.1 1.2: yet another free document preparation system
+app-doc/halibut 1.2: yet another free document preparation system
 app-doc/jargon 4.4.7-r1: A compendium of hacker slang illuminating many aspects of hackish tradition
 app-doc/kicad-doc 4.0.7 4.0.7-r1 5.1.5 5.1.6: Electronic Schematic and PCB design tools manuals
 app-doc/lapack-docs 3.1.1: Documentation reference and man pages for lapack implementations
@@ -1636,7 +1636,7 @@ app-editors/juffed 0.10_p20160323-r1: QScintilla-based tabbed text editor with s
 app-editors/jupp 3.1_p30 3.1_p38: Portable version of Joe's Own Editor
 app-editors/kakoune 2020.01.16-r1 2020.01.16_p20200601: Modal editor inspired by vim
 app-editors/kile 2.9.93: Latex Editor and TeX shell based on KDE Frameworks
-app-editors/le 1.14.3 1.16.1 1.16.3 1.16.5: Terminal text editor
+app-editors/le 1.16.1 1.16.3 1.16.5: Terminal text editor
 app-editors/leafpad 0.8.18.1-r1: Simple GTK2 text editor
 app-editors/levee 3.5a: Really tiny vi clone, for things like rescue disks
 app-editors/lpe 1.2.6.13: a lightweight programmers editor
@@ -1657,7 +1657,7 @@ app-editors/qemacs 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX e
 app-editors/qhexedit2 0.8.6_p20190316: Hex editor library, Qt application written in C++ with Python bindings
 app-editors/qxmledit 0.9.12: Simple Qt-based XML editor
 app-editors/retext 7.1.0 9999: Simple editor for Markdown and reStructuredText
-app-editors/sandy 0.4 0.4-r1: an ncurses text editor with an easy-to-read, hackable C source
+app-editors/sandy 0.4-r1: an ncurses text editor with an easy-to-read, hackable C source
 app-editors/scite 4.2.1 4.3.3 4.4.4: A very powerful, highly configurable, small editor with syntax coloring
 app-editors/shed 1.15: Simple Hex EDitor
 app-editors/sublime-text 3_p3211-r1: Sophisticated text editor for code, markup and prose
@@ -1672,7 +1672,7 @@ app-editors/vim-core 8.2.0360 8.2.0508 8.2.0638 8.2.0814 9999: vim and gvim shar
 app-editors/vis 0.5 0.6 9999: modern, legacy free, simple yet efficient vim-like editor
 app-editors/wily 1.0-r2: An emulation of ACME, Plan9's hybrid window system, shell and editor
 app-editors/wxhexeditor 0.24: A cross-platform hex editor designed specially for large files
-app-editors/xemacs 21.4.24 21.4.24-r1 21.4.24-r2 21.5.34-r4 21.5.34-r5: highly customizable open source text editor and application development system
+app-editors/xemacs 21.4.24-r2 21.5.34-r4 21.5.34-r5: highly customizable open source text editor and application development system
 app-editors/xmlcopyeditor 1.2.1.3-r1: XML Copy Editor is a fast, free, validating XML editor
 app-editors/xvile 9.8t: VI Like Emacs -- yet another full-featured vi clone
 app-editors/yudit 2.9.6: Free (Y)unicode text editor for all unices
