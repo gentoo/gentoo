@@ -72,6 +72,7 @@ BDEPEND="
 	virtual/pkgconfig
 	virtual/yacc
 	doc? ( virtual/texi2dvi )
+	gtk? ( x11-misc/xdg-utils )
 "
 
 S="${WORKDIR}/${MY_P}"
