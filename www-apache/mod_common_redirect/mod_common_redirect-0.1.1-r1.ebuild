@@ -17,9 +17,6 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-APACHE2_MOD_CONF="20_${PN}"
-APACHE2_MOD_DEFINE="COMMON_REDIRECT"
-
 need_apache2
 
 src_install() {
