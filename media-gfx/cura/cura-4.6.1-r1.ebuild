@@ -20,11 +20,11 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="sys-devel/gettext"
 RDEPEND="${PYTHON_DEPS}
-	>=dev-libs/libcharon-${PV:0:3}[${PYTHON_SINGLE_USEDEP}]
-	>=dev-libs/libsavitar-${PV:0:3}:=[python,${PYTHON_SINGLE_USEDEP}]
-	>=dev-python/uranium-${PV:0:3}[${PYTHON_SINGLE_USEDEP}]
-	>=media-gfx/curaengine-${PV:0:3}
-	>=media-gfx/fdm-materials-${PV:0:3}
+	~dev-libs/libcharon-${PV}[${PYTHON_SINGLE_USEDEP}]
+	~dev-libs/libsavitar-${PV}:=[python,${PYTHON_SINGLE_USEDEP}]
+	~dev-python/uranium-${PV}[${PYTHON_SINGLE_USEDEP}]
+	~media-gfx/curaengine-${PV}
+	~media-gfx/fdm-materials-${PV}
 	$(python_gen_cond_dep '
 		dev-python/requests[${PYTHON_MULTI_USEDEP}]
 		dev-python/sentry-sdk[${PYTHON_MULTI_USEDEP}]
