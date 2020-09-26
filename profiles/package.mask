@@ -54,6 +54,7 @@ sys-apps/lcdtest
 # matures more.
 =dev-python/pypy3-7.3.2_p37*
 =dev-python/pypy3-exe-7.3.2_p37*
+=dev-python/pypy3-exe-bin-7.3.2_p37*
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-25)
 # Effectively unmaintained.  Not ported to py3.7.  Multiple unresolved
