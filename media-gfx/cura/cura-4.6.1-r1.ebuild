@@ -20,6 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="sys-devel/gettext"
 RDEPEND="${PYTHON_DEPS}
+	~dev-libs/libarcus-${PV}:=[python,${PYTHON_SINGLE_USEDEP}]
 	~dev-libs/libcharon-${PV}[${PYTHON_SINGLE_USEDEP}]
 	~dev-libs/libsavitar-${PV}:=[python,${PYTHON_SINGLE_USEDEP}]
 	~dev-python/uranium-${PV}[${PYTHON_SINGLE_USEDEP}]
