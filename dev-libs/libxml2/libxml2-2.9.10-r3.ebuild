@@ -55,7 +55,7 @@ src_unpack() {
 	# ${A} isn't used to avoid unpacking of test tarballs into $WORKDIR,
 	# as they are needed as tarballs in ${S}/xstc instead and not unpacked
 	unpack ${P/_rc/-rc}.tar.gz
-	unpack ${PF}-patchset.tar.xz
+	unpack ${P}-r1-patchset.tar.xz
 	cd "${S}" || die
 
 	if use test; then
