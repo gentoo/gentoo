@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A squid redirector used for blocking unwanted content"
 HOMEPAGE="https://rejik.ru/"
@@ -23,6 +23,9 @@ RDEPEND="${DEPEND}
 	net-proxy/squid"
 
 src_prepare() {
+	# Workaround for GCC 10 failure, bug #706766
+	append-cflags -fcommon
+
 	sed -i -e "s:INSTALL_PATH=/usr/local/rejik3:INSTALL_PATH=${ED}/opt/rejik:g" Makefile || die
 	sed -i -e "s:/usr/local/rejik3:/opt/rejik:g" vars.h || die
 	sed -i -e "s:SQUID_USER=nobody:SQUID_USER=squid:g" Makefile || die
