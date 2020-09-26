@@ -5108,7 +5108,7 @@ dev-lang/gdl 0.9.6-r3: GNU Data Language
 dev-lang/gforth 0.7.3-r1: GNU Forth is a fast and portable implementation of the ANSI Forth language
 dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5 8.8.1 8.8.2 8.8.3 8.8.4 8.10.1: The Glasgow Haskell Compiler
 dev-lang/gnat-gpl 2016-r4 2017-r1 2018-r3 2019-r2: GNAT Ada Compiler - GPL version
-dev-lang/gnuprologjava 0.2.6 0.2.6-r1: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
+dev-lang/gnuprologjava 0.2.6-r1: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
 dev-lang/go 1.14.7 1.14.8 1.14.9 1.15.2 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/go-bootstrap 1.13.6: Bootstrap package for dev-lang/go
 dev-lang/gprolog 1.4.5: A native Prolog compiler with constraint solving over finite domains (FD)
@@ -6043,24 +6043,24 @@ dev-perl/CGI-Compile 0.220.0 0.240.0 0.250.0: Compile .cgi scripts to a code ref
 dev-perl/CGI-Emulate-PSGI 0.230.0: PSGI adapter for CGI
 dev-perl/CGI-Fast 2.130.0 2.150.0: CGI Interface for Fast CGI
 dev-perl/CGI-FastTemplate 1.90.0-r2: High Performance Templates and Variable Interpolation
-dev-perl/CGI-FormBuilder 3.100.0 3.100.0-r1: Extremely fast, reliable form generation and processing module
-dev-perl/CGI-PSGI 0.150.0-r1 0.150.0-r2: Adapt CGI.pm to the PSGI protocol
-dev-perl/CGI-Session 4.480.0-r2 4.480.0-r3: persistent session data in CGI applications
+dev-perl/CGI-FormBuilder 3.100.0-r1: Extremely fast, reliable form generation and processing module
+dev-perl/CGI-PSGI 0.150.0-r2: Adapt CGI.pm to the PSGI protocol
+dev-perl/CGI-Session 4.480.0-r3: persistent session data in CGI applications
 dev-perl/CGI-Simple 1.115.0 1.250.0: A Simple totally OO CGI interface that is CGI.pm compliant
 dev-perl/CHI 0.600.0-r1: Unified cache handling interface
-dev-perl/CPAN-Changes 0.400.2 0.400.2-r1: Read and write Changes files
+dev-perl/CPAN-Changes 0.400.2-r1: Read and write Changes files
 dev-perl/CPAN-Checksums 2.120.0: Write a CHECKSUMS file for a directory as on CPAN
 dev-perl/CPAN-DistnameInfo 0.120.0-r2: Extract distribution name and version from a distribution filename
 dev-perl/CPAN-Meta-Check 0.14.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.16: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.350.0: Inject modules into a CPAN::Mini mirror
-dev-perl/CPAN-Perl-Releases 3.760.0 5.202.4.280 5.202.7.170 5.202.8.200 5.202.9.200: Mapping Perl releases on CPAN to the location of the tarballs
-dev-perl/CPAN-Uploader 0.103.14 0.103.15: upload things to the CPAN
+dev-perl/CPAN-Perl-Releases 5.202.4.280 5.202.8.200 5.202.9.200: Mapping Perl releases on CPAN to the location of the tarballs
+dev-perl/CPAN-Uploader 0.103.15: upload things to the CPAN
 dev-perl/CQL-Parser 1.130.0-r1: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r2: Perl extension for minifying CSS
-dev-perl/CSS-Minifier-XS 0.90.0-r1 0.90.0-r2: XS based CSS minifier
+dev-perl/CSS-Minifier-XS 0.90.0-r2: XS based CSS minifier
 dev-perl/CSS-Packer 2.70.0: Another CSS minifier
-dev-perl/CSS-Squish 0.100.0-r1 0.100.0-r2: Compact many CSS files into one big file
+dev-perl/CSS-Squish 0.100.0-r2: Compact many CSS files into one big file
 dev-perl/CSS-Tiny 1.200.0: Read/Write .css files with as little code as possible
 dev-perl/Cache 2.110.0: the Cache interface
 dev-perl/Cache-Cache 1.80.0: Generic cache interface and implementations
@@ -6070,20 +6070,20 @@ dev-perl/Cache-Memcached-Fast 0.260.0-r1: Perl client for memcached, in C langua
 dev-perl/Cache-Simple-TimedExpiry 0.270.0-r1 0.270.0-r2: A lightweight cache with timed expiration
 dev-perl/Cairo 1.106.0 1.107.0-r1: Perl interface to the cairo library
 dev-perl/Cairo-GObject 1.4.0-r1 1.5.0-r1: Integrate Cairo into the Glib type system
-dev-perl/Calendar-Simple 1.230.0 2.0.0: Perl extension to create simple calendars
+dev-perl/Calendar-Simple 2.0.0: Perl extension to create simple calendars
 dev-perl/Canary-Stability 2012.0.0 2013.0.0: Canary to check perl compatibility for schmorp's modules
 dev-perl/Capture-Tiny 0.480.0: Capture STDOUT and STDERR from Perl, XS or external programs
 dev-perl/Carp-Always 0.130.0 0.160.0: Warns and dies noisily with stack backtraces
-dev-perl/Carp-Assert 0.210.0 0.210.0-r1: Executable comments in carp
-dev-perl/Carp-Assert-More 1.160.0 1.200.0: convenience wrappers around Carp::Assert
+dev-perl/Carp-Assert 0.210.0-r1: Executable comments in carp
+dev-perl/Carp-Assert-More 1.200.0: convenience wrappers around Carp::Assert
 dev-perl/Carp-Clan 6.60.0 6.80.0: Report errors from perspective of caller of a clan of modules
 dev-perl/Chart 2.4.10-r1: The Perl Chart Module
-dev-perl/Chart-Math-Axis 1.60.0-r2 1.60.0-r3: Implements an algorithm to find good values for chart axis
+dev-perl/Chart-Math-Axis 1.60.0-r3: Implements an algorithm to find good values for chart axis
 dev-perl/Chatbot-Eliza 1.80.0: A clone of the classic Eliza program
 dev-perl/Cisco-IPPhone 0.50.0-r2: Cisco IP Phone interface using XML Objects
 dev-perl/Cisco-Reconfig 0.912.0: Parse and generate Cisco configuration files
 dev-perl/Class-Accessor 0.340.0-r1 0.510.0: Automated accessor generation
-dev-perl/Class-Accessor-Chained 0.10.0-r1 0.10.0-r2: Perl module to make chained class accessors
+dev-perl/Class-Accessor-Chained 0.10.0-r2: Perl module to make chained class accessors
 dev-perl/Class-Accessor-Grouped 0.100.120 0.100.140: Lets you build groups of accessors
 dev-perl/Class-Accessor-Lite 0.80.0 0.80.0-r1: A minimalistic variant of Class::Accessor
 dev-perl/Class-Adapter 1.90.0: Implementation of the 'Adapter' Design Pattern
