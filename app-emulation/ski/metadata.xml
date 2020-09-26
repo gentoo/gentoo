@@ -5,10 +5,6 @@
 		<email>slyfox@gentoo.org</email>
 		<name>Sergei Trofimovich</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>ia64@gentoo.org</email>
-		<name>Gentoo Linux IA-64 Development</name>
-	</maintainer>
 	<use>
 		<flag name='debug'>enable extra binary emulation debugging via <pkg>sys-libs/binutils-libs</pkg></flag>
 	</use>
