@@ -1,0 +1,42 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,9 +1,7 @@
+-CC=			gcc
+ #CC=			clang --analyze
+-CFLAGS=		-g -Wall -Wno-unused-function -O2
++CFLAGS+=		-Wall -Wno-unused-function
+ WRAP_MALLOC=-DUSE_MALLOC_WRAPPERS
+-AR=			ar
+-DFLAGS=		-DHAVE_PTHREAD $(WRAP_MALLOC)
++CPPFLAGS+=		-DHAVE_PTHREAD $(WRAP_MALLOC)
+ LOBJS=		utils.o kthread.o kstring.o ksw.o bwt.o bntseq.o bwa.o bwamem.o bwamem_pair.o bwamem_extra.o malloc_wrap.o \
+ 			QSufSort.o bwt_gen.o rope.o rle.o is.o bwtindex.o
+ AOBJS=		bwashm.o bwase.o bwaseqio.o bwtgap.o bwtaln.o bamlite.o \
+@@ -21,16 +19,13 @@
+ 
+ .SUFFIXES:.c .o .cc
+ 
+-.c.o:
+-		$(CC) -c $(CFLAGS) $(DFLAGS) $(INCLUDES) $< -o $@
+-
+ all:$(PROG)
+ 
+ bwa:libbwa.a $(AOBJS) main.o
+-		$(CC) $(CFLAGS) $(DFLAGS) $(AOBJS) main.o -o $@ -L. -lbwa $(LIBS)
++		$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(AOBJS) main.o -o $@ -L. -lbwa $(LIBS)
+ 
+ bwamem-lite:libbwa.a example.o
+-		$(CC) $(CFLAGS) $(DFLAGS) example.o -o $@ -L. -lbwa $(LIBS)
++		$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) example.o -o $@ -L. -lbwa $(LIBS)
+ 
+ libbwa.a:$(LOBJS)
+ 		$(AR) -csru $@ $(LOBJS)
+@@ -39,7 +34,7 @@
+ 		rm -f gmon.out *.o a.out $(PROG) *~ *.a
+ 
+ depend:
+-	( LC_ALL=C ; export LC_ALL; makedepend -Y -- $(CFLAGS) $(DFLAGS) -- *.c )
++	( LC_ALL=C ; export LC_ALL; makedepend -Y -- $(CFLAGS) $(CPPFLAGS) -- *.c )
+ 
+ # DO NOT DELETE THIS LINE -- make depend depends on it.
+ 
