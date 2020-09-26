@@ -2,4 +2,20 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <!-- maintainer-needed -->
-  </pkgmetadata>
+  <maintainer type="person">
+    <email>annulen@yandex.ru</email>
+    <name>Konstantin Tokarev</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+    Luakit  is  a highly configurable, browser framework based on the WebKit web
+    content engine and the GTK+ toolkit. It is very fast, extensible by Lua and
+    licensed under the GNU GPLv3 license. It is primarily targeted at power
+    users, developers and any people with too much time on their hands who
+    want  to  have fine-grained control over their web browsers behaviour and
+    interface.
+  </longdescription>
+</pkgmetadata>
