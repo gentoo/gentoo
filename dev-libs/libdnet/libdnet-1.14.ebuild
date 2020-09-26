@@ -26,6 +26,9 @@ RESTRICT="test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 DOCS=( README.md THANKS TODO )
 S=${WORKDIR}/${PN}-${P}
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.14-strlcpy.patch
+)
 
 src_prepare() {
 	default
