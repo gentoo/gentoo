@@ -40,7 +40,6 @@ src_prepare() {
 }
 
 src_install() {
-	dodir /opt/rejik
 	exeinto /opt/rejik
 	insinto /opt/rejik
 
@@ -48,7 +47,6 @@ src_install() {
 	doexe redirector
 	doins redirector.conf.dist
 
-	dodir /opt/rejik/tools
 	insinto /opt/rejik/tools
 	exeinto /opt/rejik/tools
 
