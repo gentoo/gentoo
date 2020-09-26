@@ -51,6 +51,12 @@ src_prepare() {
 		$(grep -rl '\.\./\.\./media' examples) \
 		|| die 'sed failed'
 
+	# Fix line endings so ${P}-remove-sys-sysctl.h.patch applies
+	sed -i \
+		-e 's/\r$//' \
+		source/Irrlicht/COSOperator.cpp \
+		|| die 'sed failed'
+
 	default
 }
 
