@@ -1,7 +1,7 @@
 # Copyright 2012-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit cmake-utils xdg-utils
 
@@ -24,12 +24,13 @@ SLOT="4"
 KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
-RDEPEND=">=app-i18n/fcitx-4.2.9:4
-	>=app-i18n/librime-1.0.0:=
-	app-i18n/rime-data
-	virtual/libintl"
-DEPEND="${RDEPEND}
+BDEPEND=">=app-i18n/fcitx-4.2.9:4
 	virtual/pkgconfig"
+DEPEND=">=app-i18n/fcitx-4.2.9:4
+	>=app-i18n/librime-1.0.0:=
+	virtual/libintl"
+RDEPEND="${DEPEND}
+	app-i18n/rime-data"
 
 DOCS=()
 
