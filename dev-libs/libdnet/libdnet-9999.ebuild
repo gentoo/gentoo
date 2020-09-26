@@ -10,6 +10,7 @@ inherit autotools distutils-r1 git-r3
 DESCRIPTION="simplified, portable interface to several low-level networking routines"
 HOMEPAGE="https://github.com/ofalk/libdnet"
 EGIT_REPO_URI="https://github.com/ofalk/libdnet"
+EGIT_BRANCH="devel"
 LICENSE="LGPL-2"
 
 SLOT="0"
@@ -25,6 +26,9 @@ RDEPEND="
 RESTRICT="test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 DOCS=( README.md THANKS TODO )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.14-strlcpy.patch
+)
 
 src_prepare() {
 	default
