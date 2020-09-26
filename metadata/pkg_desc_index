@@ -2876,7 +2876,7 @@ app-text/fbreader 0.99.4-r5: E-Book Reader. Supports many e-book formats
 app-text/fictionup 0.1 0.2.1: A command-line markdown to fb2 convertor
 app-text/flpsed 0.7.3: Pseudo PostScript editor
 app-text/foliate 2.4.2-r1: gtk ebook reader built with gjs
-app-text/ghostscript-gpl 9.52-r1 9.53.0 9.53.1: Interpreter for the PostScript language and PDF
+app-text/ghostscript-gpl 9.52-r1 9.53.0 9.53.1 9.53.2: Interpreter for the PostScript language and PDF
 app-text/gnome-doc-utils 0.20.10-r2: A collection of documentation utilities for the Gnome project
 app-text/gocr 0.50: An OCR (Optical Character Recognition) reader
 app-text/goldendict 1.5.0_rc2-r2: Feature-rich dictionary lookup program
@@ -5178,10 +5178,10 @@ dev-lang/tcc 0.9.27 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9-r1: Tool Command Language
 dev-lang/teyjus 2.1 2.1-r1: Higher-order logic programming language Lambda Prolog
 dev-lang/tk 8.5.17-r1 8.6.8 8.6.9 8.6.9.1: Tk Widget Set
-dev-lang/tuprolog 2.9.2 3.0.1 3.1.0 3.1.0-r1 3.2.0: tuProlog is a light-weight Prolog for Internet applications and infrastructures
+dev-lang/tuprolog 3.1.0-r1 3.2.0: tuProlog is a light-weight Prolog for Internet applications and infrastructures
 dev-lang/vala 0.36.20 0.40.20 0.40.23 0.44.11 0.46.7 0.46.10 0.46.11 0.46.12 0.46.13 0.48.6 0.48.7 0.48.8 0.48.9 0.49.91: Compiler for the GObject type system
 dev-lang/whitespace 0.4: Whitespace, an esoteric programming language
-dev-lang/xsb 3.6.0 3.6.0-r1 3.7.0-r1 3.8.0: XSB is a logic programming and deductive database system
+dev-lang/xsb 3.8.0: XSB is a logic programming and deductive database system
 dev-lang/yap 6.3.3-r1 6.3.4: YAP is a high-performance Prolog compiler
 dev-lang/yasm 1.3.0-r1: An assembler for x86 and x86_64 instruction sets
 dev-lang/zig 0.5.0 9999: A robust, optimal, and maintainable programming language
@@ -6100,7 +6100,7 @@ dev-perl/Class-DBI-Plugin-DeepAbstractSearch 0.80.0-r1: deep_search_where() meth
 dev-perl/Class-DBI-mysql 1.0.0-r2 1.0.0-r3: Extensions to Class::DBI for MySQL
 dev-perl/Class-Data-Accessor 0.40.40-r2: Inheritable, overridable class and instance data accessor creation
 dev-perl/Class-Data-Inheritable 0.80.0-r2 0.80.0-r3: Inheritable, overridable class data
-dev-perl/Class-Default 1.510.0-r1 1.510.0-r2: Static calls apply to a default instantiation
+dev-perl/Class-Default 1.510.0-r2: Static calls apply to a default instantiation
 dev-perl/Class-ErrorHandler 0.40.0: Automated accessor generation
 dev-perl/Class-Factory-Util 1.700.0-r2: Provide utility methods for factory classes
 dev-perl/Class-ISA 0.360.0: Report the search path thru an ISA tree
@@ -6108,12 +6108,12 @@ dev-perl/Class-InsideOut 1.140.0: A safe, simple inside-out object construction 
 dev-perl/Class-Inspector 1.320.0 1.360.0: Provides information about Classes
 dev-perl/Class-Load 0.240.0 0.250.0: A working (require q{Class::Name}) and more
 dev-perl/Class-Load-XS 0.100.0 0.100.0-r1: XS implementation of parts of Class::Load
-dev-perl/Class-Loader 2.30.0-r1 2.30.0-r2: Load modules and create objects on demand
+dev-perl/Class-Loader 2.30.0-r2: Load modules and create objects on demand
 dev-perl/Class-MakeMethods 1.10.0-r1 1.10.0-r2: Automated method creation module for Perl
 dev-perl/Class-Member 1.600.0-r2: A set of modules to make the module developement easier
 dev-perl/Class-Method-Modifiers 2.120.0 2.130.0: provides Moose-like method modifiers
 dev-perl/Class-MethodMaker 2.240.0 2.240.0-r2: Create generic methods for OO Perl
-dev-perl/Class-Mix 0.6.0 0.6.0-r1: dynamic class mixing
+dev-perl/Class-Mix 0.6.0-r1: dynamic class mixing
 dev-perl/Class-ReturnValue 0.550.0-r1 0.550.0-r2: A return-value object that lets you treat it as as a boolean, array or object
 dev-perl/Class-Singleton 1.500.0 1.500.0-r1: Implementation of a Singleton class
 dev-perl/Class-Spiffy 0.150.0-r2: Spiffy Perl Interface Framework For You
@@ -6123,8 +6123,8 @@ dev-perl/Class-Tiny 1.6.0 1.8.0: Minimalist class construction
 dev-perl/Class-Trigger 0.140.0-r1 0.150.0: Mixin to add / call inheritable triggers
 dev-perl/Class-Unload 0.110.0: Unload a class
 dev-perl/Class-Virtual 0.80.0: Base class for virtual base classes
-dev-perl/Class-WhiteHole 0.40.0-r1 0.40.0-r2: base class to treat unhandled method calls as errors
-dev-perl/Class-XPath 1.400.0-r1 1.400.0-r2: adds xpath matching to object trees
+dev-perl/Class-WhiteHole 0.40.0-r2: base class to treat unhandled method calls as errors
+dev-perl/Class-XPath 1.400.0-r2: adds xpath matching to object trees
 dev-perl/Class-XSAccessor 1.190.0 1.190.0-r1: Generate fast XS accessors without runtime compilation
 dev-perl/Clipboard 0.130.0-r3 0.260.0: Copy and paste with any OS
 dev-perl/Clone 0.390.0 0.450.0: Recursively copy Perl datatypes
@@ -6133,7 +6133,7 @@ dev-perl/Color-Calc 1.74.0: Simple calculations with RGB colors
 dev-perl/Color-Library 0.21.0-r1 0.21.0-r2: An easy-to-use and comprehensive named-color library
 dev-perl/Compress-Bzip2 2.260.0 2.280.0: Interface to Bzip2 compression library
 dev-perl/Compress-LZF 3.800.0-r1: extremely light-weight Lempel-Ziv-Free compression
-dev-perl/Conf-Libconfig 0.100.0 0.100.0-r1: Perl extension for libconfig
+dev-perl/Conf-Libconfig 0.100.0-r1: Perl extension for libconfig
 dev-perl/Config-Any 0.320.0: Load configuration from different file formats, transparently
 dev-perl/Config-ApacheFormat 1.200.0-r1 1.200.0-r2: use Apache format config files
 dev-perl/Config-Auto 0.440.0-r1: Magical config file parser
