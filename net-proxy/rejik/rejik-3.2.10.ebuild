@@ -1,14 +1,15 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="A squid redirector used for blocking unwanted content"
 HOMEPAGE="https://rejik.ru/"
 SRC_URI="https://rejik.ru/download/redirector-${PV}.tgz
 	banlists? ( http://rejik.ru/download/banlists-2.x.x.tgz )"
+S="${WORKDIR}/redirector-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -21,21 +22,21 @@ RDEPEND="${DEPEND}
 	dev-perl/XML-Parser
 	net-proxy/squid"
 
-S=${WORKDIR}/redirector-${PV}
-
 src_prepare() {
-	sed -i -e "s:INSTALL_PATH=/usr/local/rejik3:INSTALL_PATH=${D}/opt/rejik:g" Makefile
-	sed -i -e "s:/usr/local/rejik3:/opt/rejik:g" vars.h
-	sed -i -e "s:SQUID_USER=nobody:SQUID_USER=squid:g" Makefile
-	sed -i -e "s:SQUID_GROUP=nogroup:SQUID_GROUP=squid:g" Makefile
+	sed -i -e "s:INSTALL_PATH=/usr/local/rejik3:INSTALL_PATH=${ED}/opt/rejik:g" Makefile || die
+	sed -i -e "s:/usr/local/rejik3:/opt/rejik:g" vars.h || die
+	sed -i -e "s:SQUID_USER=nobody:SQUID_USER=squid:g" Makefile || die
+	sed -i -e "s:SQUID_GROUP=nogroup:SQUID_GROUP=squid:g" Makefile || die
 	# Respect CFLAGS
-	sed -i -e "s:CC=gcc -Wall:CC=$(tc-getCC) $CFLAGS:" Makefile
+	sed -i -e "s;CC=gcc -Wall;CC=$(tc-getCC) $CFLAGS;" Makefile || die
 	# Respect LDFLAGS
-	sed -i -e "s:LIBS=-L/lib \`pcre-config --libs\`:LIBS=-L/lib \`pcre-config --libs\` $LDFLAGS:" Makefile
+	sed -i -e "s:LIBS=-L/lib \`pcre-config --libs\`:LIBS=-L/lib \`pcre-config --libs\` $LDFLAGS:" Makefile || die
 	#
-	sed -i -e "s:error_log /usr/local/rejik3:error_log /var/log/rejik:g" redirector.conf.dist
-	sed -i -e "s:change_log /usr/local/rejik3:change_log /var/log/rejik:g" redirector.conf.dist
-	sed -i -e "s:/usr/local/rejik3:/opt/rejik:g" redirector.conf.dist
+	sed -i -e "s:error_log /usr/local/rejik3:error_log /var/log/rejik:g" redirector.conf.dist || die
+	sed -i -e "s:change_log /usr/local/rejik3:change_log /var/log/rejik:g" redirector.conf.dist || die
+	sed -i -e "s:/usr/local/rejik3:/opt/rejik:g" redirector.conf.dist || die
+
+	default
 }
 
 src_install() {
@@ -50,9 +51,6 @@ src_install() {
 	dodir /opt/rejik/tools
 	insinto /opt/rejik/tools
 	exeinto /opt/rejik/tools
-
-	fperms +x tools/kill-cache
-	fperms +x tools/benchmark
 
 	doexe tools/kill-cache
 	doexe tools/benchmark
@@ -79,6 +77,6 @@ pkg_postinst() {
 	einfo "redirect_program /opt/rejik/redirector /opt/rejik/redirector.conf"
 	einfo "to /etc/squid/squid.conf"
 	einfo ""
-	einfo "Dont forget to edit /opt/rejik/redirector.conf"
+	einfo "Don't forget to edit /opt/rejik/redirector.conf"
 	einfo "Be sure redirector.conf has right permissions"
 }
