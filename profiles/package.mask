@@ -33,6 +33,16 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-26)
+# Dead Python 2-only package.  No significant revdeps left.
+# Removal in 30 days.  Bug #710024.
+dev-python/mysql-python
+
+# Michał Górny <mgorny@gentoo.org> (2020-09-26)
+# Python 2.7 backport with no revdeps left.
+# Removal in 30 days.  Bug #734636.
+dev-python/singledispatch
+
+# Michał Górny <mgorny@gentoo.org> (2020-09-26)
 # These packages either use obsolete scons-utils.eclass API that
 # does not support Python 3, or do not support Python 3 at all.
 # Their maintainers are unresponsive.  Please do not remove any packages
@@ -54,6 +64,7 @@ sys-apps/lcdtest
 # matures more.
 =dev-python/pypy3-7.3.2_p37*
 =dev-python/pypy3-exe-7.3.2_p37*
+=dev-python/pypy3-exe-bin-7.3.2_p37*
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-25)
 # Effectively unmaintained.  Not ported to py3.7.  Multiple unresolved
