@@ -6,18 +6,21 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Burrows-Wheeler Alignment Tool, a fast short genomic sequence aligner"
-HOMEPAGE="https://bio-bwa.sourceforge.net/"
-SRC_URI="mirror://sourceforge/bio-bwa/${P}.tar.bz2"
+HOMEPAGE="https://github.com/lh3/bwa/"
+SRC_URI="https://github.com/lh3/bwa/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x64-macos"
 
-RDEPEND="dev-lang/perl"
+DEPEND="sys-libs/zlib"
+RDEPEND="
+	${DEPEND}
+	dev-lang/perl"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.7.15-Makefile.patch
-	"${FILESDIR}"/${PN}-0.7.16a-gcc-10.patch
+	"${FILESDIR}"/${PN}-0.7.17-Makefile.patch
+	"${FILESDIR}"/${PN}-0.7.17-gcc-10.patch
 )
 DOCS=( NEWS.md README-alt.md README.md )
 
