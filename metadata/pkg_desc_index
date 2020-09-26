@@ -3783,7 +3783,7 @@ dev-haskell/arithmoi 0.11.0.1: Efficient basic number-theoretic functions. Prime
 dev-haskell/arrows 0.4.4.2: Arrow classes and transformers
 dev-haskell/ascii-progress 0.2.1.2: A simple progress bar for the console
 dev-haskell/asn1-encoding 0.9.6: ASN1 data reader and writer in RAW, BER and DER forms
-dev-haskell/asn1-parse 0.9.4: Simple monadic parser for ASN1 stream types
+dev-haskell/asn1-parse 0.9.5: Simple monadic parser for ASN1 stream types
 dev-haskell/asn1-types 0.3.3: ASN.1 types
 dev-haskell/async 2.2.2: Run IO operations asynchronously and wait for their results
 dev-haskell/atomic-primops 0.8.3: A safe approach to CAS and other atomic ops in Haskell
