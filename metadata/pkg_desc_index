@@ -5633,7 +5633,7 @@ dev-libs/rocclr 3.8.0: Radeon Open Compute Common Language Runtime
 dev-libs/rocm-comgr 3.7.0 3.8.0: Radeon Open Compute Code Object Manager
 dev-libs/rocm-device-libs 3.7.0 3.8.0 9999: Radeon Open Compute Device Libraries
 dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
-dev-libs/rocm-opencl-runtime 3.7.0: Radeon Open Compute OpenCL Compatible Runtime
+dev-libs/rocm-opencl-runtime 3.8.0: Radeon Open Compute OpenCL Compatible Runtime
 dev-libs/rocr-runtime 3.8.0 9999: Radeon Open Compute Runtime
 dev-libs/roct-thunk-interface 3.7.0 3.8.0 9999: Radeon Open Compute Thunk Interface
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
@@ -9062,7 +9062,7 @@ dev-python/simplespectral 1.0.0 9999: Heavily simplified scipy.signal.spectral m
 dev-python/simpy 3.0.13: Object-oriented, process-based discrete-event simulation language
 dev-python/singledispatch 3.4.0.3: A library to bring functools.singledispatch from Python 3.4 to Python 2.6-3.3
 dev-python/sip 4.19.22-r1 4.19.24: Python extension module generator for C and C++ libraries
-dev-python/six 1.15.0: Python 2 and 3 compatibility library
+dev-python/six 1.15.0-r1: Python 2 and 3 compatibility library
 dev-python/slackclient 2.5.0: Client for Slack supporting the Slack Web and Real Time Messaging API
 dev-python/slimit 0.8.1-r1: A JavaScript minifier written in Python
 dev-python/slixmpp 1.4.2 1.5.2: Python 3 library for XMPP
