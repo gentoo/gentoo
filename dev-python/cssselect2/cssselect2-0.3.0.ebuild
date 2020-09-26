@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="Parses CSS3 Selectors and translates them to XPath 1.0"
-HOMEPAGE="https://cssselect.readthedocs.io/en/latest/
-	https://pypi.org/project/cssselect/
+HOMEPAGE="https://cssselect2.readthedocs.io/en/latest/
+	https://pypi.org/project/cssselect2/
 	https://github.com/Kozea/cssselect2"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
