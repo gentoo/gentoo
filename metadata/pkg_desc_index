@@ -770,7 +770,7 @@ app-backup/backintime 1.2.1 9999: Backup system inspired by TimeVault and FlyBac
 app-backup/backup-manager 0.7.14 0.7.14-r1: Backup Manager is a command line backup tool for GNU/Linux
 app-backup/backupninja 1.0.1-r1 1.1.0: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
-app-backup/bacula 9.6.5: Featureful client/server network backup suite
+app-backup/bacula 9.6.5 9.6.6: Featureful client/server network backup suite
 app-backup/bareos 17.2.10 18.2.9 19.2.8: Featureful client/server network backup suite
 app-backup/borgbackup 1.1.11-r2 1.1.13 9999: Deduplicating backup program with compression and authenticated encryption
 app-backup/borgmatic 1.5.9 1.5.10: Automatically create, prune and verify backups with borgbackup
@@ -8766,10 +8766,10 @@ dev-python/pyproject2setuppy 7 8: Cheap setup.py hack to install flit & poetry-b
 dev-python/pypugjs 5.9.4-r1: Pug (Jade) syntax adapter for Django, Jinja2 and Mako templates
 dev-python/pypy 7.3.1-r3 7.3.2: A fast, compliant alternative implementation of the Python language
 dev-python/pypy-exe 7.3.1 7.3.2: PyPy executable (build from source)
-dev-python/pypy-exe-bin 7.3.1_p1: PyPy executable (pre-built version)
+dev-python/pypy-exe-bin 7.3.1_p1 7.3.2: PyPy executable (pre-built version)
 dev-python/pypy3 7.3.1-r3 7.3.2 7.3.2_p37: A fast, compliant alternative implementation of the Python (3.7) language
 dev-python/pypy3-exe 7.3.1 7.3.2 7.3.2_p37: PyPy3 executable (build from source)
-dev-python/pypy3-exe-bin 7.3.1_p1: PyPy3 executable (pre-built version)
+dev-python/pypy3-exe-bin 7.3.1_p1 7.3.2 7.3.2_p37: PyPy3 executable (pre-built version)
 dev-python/pyqrcode 1.2.1-r1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqt-distutils 0.7.3: distutils extension to work with PyQt applications and UI files
 dev-python/pyqtgraph 0.11.0_rc0: A pure-python graphics and GUI library built on PyQt and numpy
