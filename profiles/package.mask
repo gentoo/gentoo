@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-26)
+# Python 2.7 backport with no revdeps left.
+# Removal in 30 days.  Bug #734636.
+dev-python/singledispatch
+
+# Michał Górny <mgorny@gentoo.org> (2020-09-26)
 # These packages either use obsolete scons-utils.eclass API that
 # does not support Python 3, or do not support Python 3 at all.
 # Their maintainers are unresponsive.  Please do not remove any packages
