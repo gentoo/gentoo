@@ -5,8 +5,6 @@
 		<email>mschiff@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name="auditor">Enables auditing capabilities for OpenDNSSEC</flag>
-		<flag name="eppclient">Enables support for automatic submission of DNSSEC keys to an upstream epp server</flag>
 		<flag name="signer">Enables signing capabilities for OpenDNSSEC</flag>
 		<flag name="opensc">Enables support for storing DNSSEC keys through a <pkg>dev-libs/opensc</pkg> PKCS#11 interface</flag>
 		<flag name="softhsm">Enables support for storing DNSSEC keys in a <pkg>dev-libs/softhsm</pkg> PKCS#11 object</flag>
