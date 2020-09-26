@@ -10,7 +10,7 @@ SRC_URI="https://dev.gentoo.org/~jer/${P}.tar.gz"
 LICENSE="public-domain"
 SLOT="0"
 
-KEYWORDS="~amd64 ~mips ~ppc ~x86"
+KEYWORDS="amd64 ~mips ppc x86"
 RDEPEND="sys-apps/miscfiles"
 
 src_prepare() {
