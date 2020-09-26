@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI=""
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="libressl +magic +netlink qrcode ssl upnp"
+IUSE="libressl +magic qrcode ssl upnp"
 
 RDEPEND=">=dev-libs/libevent-2:0=
 	magic? ( sys-apps/file:0= )
@@ -24,10 +24,7 @@ RDEPEND=">=dev-libs/libevent-2:0=
 		libressl? ( dev-libs/libressl:= )
 	)
 	upnp? ( net-libs/miniupnpc:0= )"
-DEPEND="${RDEPEND}
-	netlink? ( sys-apps/iproute2
-		>=sys-kernel/linux-headers-2.6.27 )"
-# libnetlink is static only ATM
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
@@ -37,7 +34,6 @@ src_prepare() {
 src_configure() {
 	local myconf=(
 		$(use_enable magic libmagic)
-		$(use_enable netlink)
 		$(use_enable qrcode qrencode)
 		$(use_enable ssl)
 		$(use_enable upnp)
