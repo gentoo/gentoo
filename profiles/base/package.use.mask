@@ -8,6 +8,7 @@
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-26)
 # The respective dependencies are masked for removal.
+~dev-db/percona-server-5.7.27.30 test
 sci-geosciences/viking mapnik
 
 # Ulrich Müller <ulm@gentoo.org> (2020-09-25)
