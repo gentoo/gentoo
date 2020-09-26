@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE="xml"
 
 inherit libtool flag-o-matic python-r1 autotools prefix multilib-minimal
@@ -26,7 +26,7 @@ XSTS_TARBALL_2="xsts-2004-01-14.tar.gz"
 XMLCONF_TARBALL="xmlts20080827.tar.gz"
 
 SRC_URI="ftp://xmlsoft.org/${PN}/${PN}-${PV/_rc/-rc}.tar.gz
-	https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-r1-patchset.tar.xz
 	test? (
 		${XSTS_HOME}/${XSTS_NAME_1}/${XSTS_TARBALL_1}
 		${XSTS_HOME}/${XSTS_NAME_2}/${XSTS_TARBALL_2}
@@ -39,10 +39,10 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:= )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/gtk-doc-am
 	virtual/pkgconfig
-	hppa? ( >=sys-devel/binutils-2.15.92.0.2 )
 "
 
 S="${WORKDIR}/${PN}-${PV%_rc*}"
@@ -55,7 +55,7 @@ src_unpack() {
 	# ${A} isn't used to avoid unpacking of test tarballs into $WORKDIR,
 	# as they are needed as tarballs in ${S}/xstc instead and not unpacked
 	unpack ${P/_rc/-rc}.tar.gz
-	unpack ${P}-patchset.tar.xz
+	unpack ${PF}-patchset.tar.xz
 	cd "${S}" || die
 
 	if use test; then
@@ -90,9 +90,6 @@ src_prepare() {
 
 	# Fix python tests when building out of tree #565576
 	eapply "${FILESDIR}"/${PN}-2.9.8-out-of-tree-test.patch
-
-	# Workaround python3 itstool potential problems, bug 701020
-	eapply "${FILESDIR}"/${PV}-python3-unicode-errors.patch
 
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# Avoid final linking arguments for python modules
@@ -207,13 +204,13 @@ pkg_postinst() {
 		elog "Skipping XML catalog creation for stage building (bug #208887)."
 	else
 		# need an XML catalog, so no-one writes to a non-existent one
-		CATALOG="${EROOT}etc/xml/catalog"
+		CATALOG="${EROOT}/etc/xml/catalog"
 
 		# we dont want to clobber an existing catalog though,
 		# only ensure that one is there
 		# <obz@gentoo.org>
 		if [[ ! -e ${CATALOG} ]]; then
-			[[ -d "${EROOT}etc/xml" ]] || mkdir -p "${EROOT}etc/xml"
+			[[ -d "${EROOT}/etc/xml" ]] || mkdir -p "${EROOT}/etc/xml"
 			"${EPREFIX}"/usr/bin/xmlcatalog --create > "${CATALOG}"
 			einfo "Created XML catalog in ${CATALOG}"
 		fi
