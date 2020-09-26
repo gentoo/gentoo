@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="xml"
 
 inherit libtool flag-o-matic python-r1 autotools prefix multilib-minimal
@@ -13,7 +13,7 @@ HOMEPAGE="http://www.xmlsoft.org/"
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="debug examples icu ipv6 lzma +python readline static-libs test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
@@ -26,7 +26,7 @@ XSTS_TARBALL_2="xsts-2004-01-14.tar.gz"
 XMLCONF_TARBALL="xmlts20080827.tar.gz"
 
 SRC_URI="ftp://xmlsoft.org/${PN}/${PN}-${PV/_rc/-rc}.tar.gz
-	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-patchset.tar.xz
+	https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz
 	test? (
 		${XSTS_HOME}/${XSTS_NAME_1}/${XSTS_TARBALL_1}
 		${XSTS_HOME}/${XSTS_NAME_2}/${XSTS_TARBALL_2}
@@ -39,10 +39,10 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:= )
 "
-DEPEND="${RDEPEND}"
-BDEPEND="
+DEPEND="${RDEPEND}
 	dev-util/gtk-doc-am
 	virtual/pkgconfig
+	hppa? ( >=sys-devel/binutils-2.15.92.0.2 )
 "
 
 S="${WORKDIR}/${PN}-${PV%_rc*}"
@@ -90,6 +90,9 @@ src_prepare() {
 
 	# Fix python tests when building out of tree #565576
 	eapply "${FILESDIR}"/${PN}-2.9.8-out-of-tree-test.patch
+
+	# Workaround python3 itstool potential problems, bug 701020
+	eapply "${FILESDIR}"/${PV}-python3-unicode-errors.patch
 
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# Avoid final linking arguments for python modules
@@ -204,13 +207,13 @@ pkg_postinst() {
 		elog "Skipping XML catalog creation for stage building (bug #208887)."
 	else
 		# need an XML catalog, so no-one writes to a non-existent one
-		CATALOG="${EROOT}/etc/xml/catalog"
+		CATALOG="${EROOT}etc/xml/catalog"
 
 		# we dont want to clobber an existing catalog though,
 		# only ensure that one is there
 		# <obz@gentoo.org>
 		if [[ ! -e ${CATALOG} ]]; then
-			[[ -d "${EROOT}/etc/xml" ]] || mkdir -p "${EROOT}/etc/xml"
+			[[ -d "${EROOT}etc/xml" ]] || mkdir -p "${EROOT}etc/xml"
 			"${EPREFIX}"/usr/bin/xmlcatalog --create > "${CATALOG}"
 			einfo "Created XML catalog in ${CATALOG}"
 		fi
