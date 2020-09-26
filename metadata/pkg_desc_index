@@ -9845,7 +9845,7 @@ dev-ruby/compass-import-once 1.0.5: Speed up your Sass compilation by making @im
 dev-ruby/concurrent-ruby 1.0.5 1.1.7: Modern concurrency tools including agents, futures, promises, thread pools, more
 dev-ruby/connection_pool 2.2.2 2.2.3: Generic connection pooling for Ruby
 dev-ruby/contracts 0.16.0: provides contracts for Ruby
-dev-ruby/coolio 1.6.0: A high performance event framework for Ruby which uses the libev C library
+dev-ruby/coolio 1.6.0 1.7.0: A high performance event framework for Ruby which uses the libev C library
 dev-ruby/countdownlatch 1.0.0-r1: Synchronization aid to allow threads to wait for operations in other threads
 dev-ruby/crack 0.4.3-r2 0.4.4: Really simple JSON and XML parsing, ripped from Merb and Rails
 dev-ruby/crass 1.0.6: Ruby CSS parser that's fully compliant with the CSS Syntax Level 3 specification
@@ -10312,7 +10312,7 @@ dev-ruby/spreadsheet 1.2.6: Ruby library to read and write spreadsheet documents
 dev-ruby/spring 2.1.0 2.1.1: Rails application preloader
 dev-ruby/sprockets 3.7.2 4.0.2: Ruby library for compiling and serving web assets
 dev-ruby/sprockets-rails 3.2.1 3.2.2: Sprockets implementation for Rails 4.x (and beyond) Asset Pipeline
-dev-ruby/spy 1.0.0: A simple opinionated mocking framework
+dev-ruby/spy 1.0.0 1.0.1: A simple opinionated mocking framework
 dev-ruby/sqlite3 1.3.13 1.4.1 1.4.2: An extension library to access a SQLite database from Ruby
 dev-ruby/sshkey 2.0.0: SSH private and public key generator in pure Ruby
 dev-ruby/sshkit 1.20.0 1.21.0: SSHKit makes it easy to write structured, testable SSH commands in Ruby
@@ -10320,7 +10320,7 @@ dev-ruby/stamp 0.6.0: Date and time formatting for humans
 dev-ruby/state_machine 1.2.0: Adds support for creating state machines for attributes on any Ruby class
 dev-ruby/stomp 1.4.9 1.4.10: Ruby bindings for the stomp messaging protocol
 dev-ruby/stringex 2.8.5: Extensions for Ruby's String class
-dev-ruby/strptime 0.2.3 0.2.4: A fast strptime/strftime engine which uses VM
+dev-ruby/strptime 0.2.3 0.2.4 0.2.5: A fast strptime/strftime engine which uses VM
 dev-ruby/subexec 0.2.3-r1: Subexec spawns an external command with a timeout
 dev-ruby/sync 0.5.0: A module that provides a two-phase lock with a counter
 dev-ruby/syntax 1.2.2: Syntax highlighting for sourcecode and HTML
