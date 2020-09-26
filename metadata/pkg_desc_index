@@ -5542,7 +5542,7 @@ dev-libs/libx86emu 1.1: A library for emulating x86
 dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories Specification paths
 dev-libs/libxdiff 0.23-r2: Library for creating diff files
 dev-libs/libxls 1.5.3 1.6.1: A library which can read Excel (xls) files
-dev-libs/libxml2 2.9.9-r3 2.9.10 2.9.10-r1: XML C parser and toolkit
+dev-libs/libxml2 2.9.9-r4 2.9.10-r2 2.9.10-r3: XML C parser and toolkit
 dev-libs/libxmlb 0.1.15 0.2.0 0.2.1: Library to help create and query binary XML blobs
 dev-libs/libxslt 1.1.33-r1 1.1.34 1.1.34-r1: XSLT libraries and tools
 dev-libs/libyaml 0.2.2 0.2.5: YAML 1.1 parser and emitter written in C
@@ -8026,7 +8026,7 @@ dev-python/crcmod 1.7-r4: Python CRC Generator module
 dev-python/croniter 0.3.30: Python module to provide iteration for datetime object
 dev-python/cryptography 3.0-r1 3.1-r1: Library providing cryptographic recipes and primitives
 dev-python/css-parser 1.0.4-r1: A CSS Cascading Style Sheets library (fork of cssutils)
-dev-python/cssselect 1.1.0: parses CSS3 Selectors and translates them to XPath 1.0
+dev-python/cssselect 1.1.0-r1: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssselect2 0.3.0: Parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssutils 1.0.2-r2: A CSS Cascading Style Sheets library
 dev-python/csv23 0.3.2-r1: Python 2/3 unicode CSV compatibility layer
@@ -8391,7 +8391,7 @@ dev-python/loguru 0.5.2 0.5.3: Python logging made (stupidly) simple
 dev-python/logutils 0.3.5: The logutils package provides a set of handlers for the Python standard
 dev-python/loky 2.8.0-r1: Robust and reusable Executor for joblib
 dev-python/lunr 0.5.6: A Python implementation of Lunr.js
-dev-python/lxml 4.5.2: A Pythonic binding for the libxml2 and libxslt libraries
+dev-python/lxml 4.5.2-r1: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 3.0.2: LZ4 Bindings for Python
 dev-python/m2crypto 0.35.2-r1 0.36.0-r1: A Python crypto and SSL toolkit
 dev-python/m2r 0.2.1: Markdown to reStructuredText converter
