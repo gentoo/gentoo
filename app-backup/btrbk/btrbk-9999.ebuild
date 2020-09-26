@@ -18,7 +18,7 @@ DESCRIPTION="Tool for creating snapshots and remote backups of btrfs subvolumes"
 HOMEPAGE="https://digint.ch/btrbk/"
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="+mbuffer +doc"
+IUSE="+mbuffer +doc +lsbtr"
 
 DEPEND="doc? ( >=dev-ruby/asciidoctor-1.5.7 )"
 
@@ -34,6 +34,7 @@ src_compile() {
 src_install() {
 	local targets="install-bin install-etc install-share install-systemd"
 	use doc && targets="${targets} install-man install-doc"
+	use lsbtr && targets="${targets} install-bin-links"
 	emake \
 		DESTDIR="${D}" \
 		DOCDIR="/usr/share/doc/${PF}" \
