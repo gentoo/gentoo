@@ -92,10 +92,6 @@ app-doc/doxygen clang doxysearch doc
 # sci-libs/mpir fails tests, bug 640424
 dev-python/gmpy mpir
 
-# Michał Górny <mgorny@gentoo.org> (2018-05-01)
-# More non-stable dependencies.
-dev-python/urllib3 test
-
 # Michał Górny <mgorny@gentoo.org> (2018-04-15)
 # Non-stable dependencies.
 app-admin/syslog-ng spoof-source
@@ -115,6 +111,4 @@ net-fs/samba ads
 # Michał Górny <mgorny@gentoo.org> (2018-02-19)
 # Masked due to unstable deps.
 dev-db/redis tcmalloc
-dev-python/hgdistver test
-dev-python/sphinx latex test
 net-analyzer/netcat crypt
