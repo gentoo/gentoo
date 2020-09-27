@@ -22,9 +22,12 @@ REQUIRED_USE="
 "
 
 DEPEND="
+	x11-libs/pango
 	dev-libs/appstream-glib
 	>=dev-libs/glib-2.48:2
 	introspection? (
+		>=x11-wm/mutter-3.36[introspection]
+		dev-libs/gjs
 		>=dev-libs/gobject-introspection-1.48.0
 	)
 	sys-apps/dbus
@@ -33,8 +36,7 @@ DEPEND="
 	x11-libs/libX11
 	x11-libs/libXi
 	gnome? (
-		media-libs/clutter
-		x11-libs/pango
+		>=x11-wm/mutter-3.36
 	)
 "
 BDEPEND="
