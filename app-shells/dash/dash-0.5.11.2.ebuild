@@ -32,9 +32,10 @@ src_prepare() {
 }
 
 src_configure() {
-	# don't redefine stat on Solaris
 	if [[ ${CHOST} == *-solaris* ]] ; then
+		# don't redefine stat, open, dirent, etc. on Solaris
 		export ac_cv_func_stat64=yes
+		export ac_cv_func_open64=yes
 
 		# if your headers strictly adhere to POSIX, you'll need this too
 		[[ ${CHOST##*solaris2.} -le 10 ]] && append-cppflags -DNAME_MAX=255
