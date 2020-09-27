@@ -215,10 +215,6 @@ sys-apps/systemd gnuefi
 # Mask bdplus support and unmask on arches where libbdplus is keyworded.
 media-libs/libbluray bdplus
 
-# Michał Górny <mgorny@gentoo.org> (2015-03-01)
-# pidgin-opensteamworks is only available for amd64, ppc32 and x86
-net-im/telepathy-connection-managers steam
-
 # Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (2014-04-24)
 # It's only supported on amd64
 dev-db/mariadb tokudb

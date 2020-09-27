@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2020-09-27)
+# The respective dependencies are masked for removal.
+net-im/telepathy-connection-managers gadu icq meanwhile steam yahoo
+
 # Michał Górny <mgorny@gentoo.org> (2020-09-26)
 # Removed in 1.1.34-r1, mask in older to unblock libxml2 cleanup.
 <dev-libs/libxslt-1.1.34-r1 python
