@@ -3,8 +3,6 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_6 )
-
 inherit cmake-utils
 
 DESCRIPTION="Soapy SDR remote module"
