@@ -39,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-prototypes.patch
 	"${FILESDIR}"/${P}-glibc-2.28.patch
 	"${FILESDIR}"/${P}-gcc-10.patch #707144
+	"${FILESDIR}"/${P}-lex-deps.patch #744676
 )
 
 src_prepare() {

@@ -1,0 +1,17 @@
+escan.l depends on generated eparse.h.
+If eparse.h is not present yet escan.o
+could be built before ${YACC) is ran.
+
+https://bugs.gentoo.org/744676
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -113,7 +113,8 @@ BUILT_SOURCES= \
+ 	$(DAS_INSTR_DERIVED) \
+ 	$(ASM_HASH_DERIVED) \
+ 	$(ICNT_DERIVED) \
+-	instr.c
++	instr.c \
++	eparse.h
+ 
+ ski_SOURCES= \
+ 	main.c
