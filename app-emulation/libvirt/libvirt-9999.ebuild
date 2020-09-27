@@ -115,7 +115,7 @@ RDEPEND="
 		app-emulation/xen-tools:=
 	)
 	udev? (
-		virtual/udev
+		virtual/libudev
 		>=x11-libs/libpciaccess-0.10.9
 	)
 	zfs? ( sys-fs/zfs )"
