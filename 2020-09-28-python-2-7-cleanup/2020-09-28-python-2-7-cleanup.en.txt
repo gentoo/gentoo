@@ -1,0 +1,59 @@
+Title: Python 2.7 cleanup is progressing
+Author: Michał Górny <mgorny@gentoo.org>
+Posted: 2020-09-28
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: dev-lang/python:2.7
+
+Python 2.7 has reached its end-of-life by 2019-12-31, and many projects
+have removed Python 2 support since.  During the last few months we have
+been working hard to migrate Gentoo to Python 3, and we have finally
+reached the point making it possible for the vast majority of our users
+to run a system free of Python 2.7 packages (except for the interpreter
+itself).
+
+The few remaining high profile packages (e.g. dev-python/cython)
+are preserving Python 2.7 only for a very few uncommon packages.
+For this reason, we have decided to create new revisions of them having
+Python 2.7 removed.  If you do not need Python 2.7 there, your package
+manager should upgrade these packages to the new revisions.
+
+Please note that you may need to manually uninstall any Python 2.7
+packages installed from third-party repositories and/or run `emerge
+--depclean` first to remove orphan packages.  The recommended process
+for Portage users is:
+
+    emerge --depclean
+    emerge -vDuU @world
+    emerge --depclean
+
+Please note that the Python 2.7 interpreter (without additional Python
+packages) remains necessary to build a few high profile packages,
+in particular Chromium, Mozilla software and PyPy.  If you build either
+of these packages from source, you will not be able to permanently
+remove Python 2.7 from your system.
+
+We are going to preserve CPython 2.7 (and PyPy2.7) for as long
+as necessary and provide security fixes to the best of our ability.
+However, please note that we are not able to dedicate resources to
+auditing Python 2.7's code and with little community interest in that,
+it should be considered potentially vulnerable.
+
+If your projects still rely on Python 2.7, we would like to once again
+encourage you to migrate them to Python 3.  However, if you really need
+to run them, we suggest using a virtualenv.  To create a new Python 2.7
+environment, install dev-python/virtualenv and use the following option:
+
+    virtualenv -p /usr/bin/python2.7 ...
+
+To create a PyPy2.7 environment:
+
+    virtualenv -p /usr/bin/pypy ...
+
+Modern versions of pip should be able to automatically select older
+versions of packages that still support Python 2.7.  Please note that
+these versions are generally no longer supported.  They can be buggy,
+vulnerable or simply incompatible with one another.
+
+Please do not forget to add dev-lang/python:2.7 to your @world set
+or it may get depcleaned once all package dependencies are gone.
