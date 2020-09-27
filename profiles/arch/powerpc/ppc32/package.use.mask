@@ -131,10 +131,6 @@ dev-lang/logtalk fop
 # Missing keywords (2015-06-02)
 net-misc/connman openconnect
 
-# Michał Górny <mgorny@gentoo.org> (2015-03-01)
-# pidgin-opensteamworks is only available for amd64, ppc32 and x86
-net-im/telepathy-connection-managers -steam
-
 # Julian Ospald <hasufell@gentoo.org> (2013-11-23)
 # FIXME: app-arch/innoextract not available under ppc yet
 games-fps/duke3d-data gog
