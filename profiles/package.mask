@@ -863,12 +863,6 @@ net-misc/gnome-remote-desktop
 =dev-lang/lua-5.2.4-r2
 =dev-lang/lua-5.3.5-r2
 
-# Michał Górny <mgorny@gentoo.org> (2020-01-16)
-# The new version loses Python 2 support but does not introduce any real
-# changes.  Let's mask it to reduce the noise, and hopefully try to get
-# python2_7 out of default PYTHON_TARGETS first.
->=dev-python/setuptools-47
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-11-14)
 # Breaks archives containing relative paths
 # when being called with --no-absolute-filenames
