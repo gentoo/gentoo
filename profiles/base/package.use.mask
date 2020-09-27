@@ -72,7 +72,7 @@ dev-db/mariadb columnstore
 # Michał Górny <mgorny@gentoo.org> (2020-08-01)
 # Require dev-python/twisted with py2.7.
 net-voip/telepathy-haze test
-net-voip/telepathy-salut test
+<net-voip/telepathy-salut-0.8.1-r3 test
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-01)
 # dev-python/distributed is going to be last rited.
