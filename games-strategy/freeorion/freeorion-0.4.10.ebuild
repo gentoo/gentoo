@@ -13,14 +13,15 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/freeorion/freeorion.git"
 else
-	KEYWORDS="~amd64"
 	if [[ ${PV} = *_p* ]]; then
+		KEYWORDS="~amd64"
 		COMMIT="1570afb475763b13f5d2f434037ec907da812bb4"
 		SRC_URI="https://github.com/${PN}/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 		S="${WORKDIR}/${PN}-${COMMIT}"
 	else
-		SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
-		S="${WORKDIR}/${PN}-${PV/_/-}"
+		inherit git-r3
+		EGIT_REPO_URI="https://github.com/freeorion/freeorion.git"
+		EGIT_BRANCH="release-v${PV}"
 	fi
 fi
 
@@ -35,7 +36,7 @@ BDEPEND="
 "
 RDEPEND="
 	$(python_gen_cond_dep '
-		>=dev-libs/boost-1.67:=[python,threads,${PYTHON_MULTI_USEDEP}]
+		>=dev-libs/boost-1.67:=[nls,python,threads,${PYTHON_MULTI_USEDEP}]
 	')
 	!dedicated? (
 		media-libs/freealut
