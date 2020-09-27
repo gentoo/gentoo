@@ -210,7 +210,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	touch "${S}/.mailmap"
+	touch "${S}/.mailmap" || die
 
 	default
 
@@ -296,9 +296,9 @@ src_install() {
 
 	# Remove bogus, empty directories. They are either not used, or
 	# libvirtd is able to create them on demand
-	rm -rf "${D}"/etc/sysconfig
-	rm -rf "${D}"/var
-	rm -rf "${D}"/run
+	rm -rf "${D}"/etc/sysconfig || die
+	rm -rf "${D}"/var || die
+	rm -rf "${D}"/run || die
 
 	newbashcomp "${S}/tools/bash-completion/vsh" virsh
 	bashcomp_alias virsh virt-admin
@@ -324,13 +324,13 @@ src_install() {
 pkg_preinst() {
 	# we only ever want to generate this once
 	if [[ -e "${ROOT}"/etc/libvirt/qemu/networks/default.xml ]]; then
-		rm -rf "${D}"/etc/libvirt/qemu/networks/default.xml
+		rm -rf "${D}"/etc/libvirt/qemu/networks/default.xml || die
 	fi
 }
 
 pkg_postinst() {
 	if [[ -e "${ROOT}"/etc/libvirt/qemu/networks/default.xml ]]; then
-		touch "${ROOT}"/etc/libvirt/qemu/networks/default.xml
+		touch "${ROOT}"/etc/libvirt/qemu/networks/default.xml || die
 	fi
 
 	use libvirtd || return 0
