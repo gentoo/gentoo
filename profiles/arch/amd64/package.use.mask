@@ -230,10 +230,6 @@ sys-apps/systemd -gnuefi
 # media-libs/libbdplus is keyworded on amd64, so unmask the useflag
 media-libs/libbluray -bdplus
 
-# Michał Górny <mgorny@gentoo.org> (2015-03-01)
-# pidgin-opensteamworks is only available for amd64, ppc32 and x86
-net-im/telepathy-connection-managers -steam
-
 # Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (2014-04-24)
 # It's only supported on amd64
 dev-db/mariadb -tokudb
