@@ -46,6 +46,35 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # }
 # @CODE
 
+# @ECLASS-VARIABLE: ECARGO_REGISTRY_DIR
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Storage directory for cargo registry.
+# Used by cargo_live_src_unpack to cache downloads.
+# This is intended to be set by users.
+# Ebuilds must not set it.
+#
+# Defaults to "${DISTDIR}/cargo-registry" it not set.
+
+# @ECLASS-VARIABLE: ECARGO_OFFLINE
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If non-empty, this variable prevents online operations in
+# cargo_live_src_unpack.
+# Inherits value of EVCS_OFFLINE if not set explicitly.
+
+# @ECLASS-VARIABLE: EVCS_UMASK
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Set this variable to a custom umask. This is intended to be set by
+# users. By setting this to something like 002, it can make life easier
+# for people who use cargo in a home directory, but are in the portage
+# group, and then switch over to building with FEATURES=userpriv.
+# Or vice-versa.
+
 # @FUNCTION: cargo_crate_uris
 # @DESCRIPTION:
 # Generates the URIs to put in SRC_URI to help fetch dependencies.
@@ -122,13 +151,82 @@ cargo_live_src_unpack() {
 	[[ "${EBUILD_PHASE}" == unpack ]] || die "${FUNCNAME} only allowed in src_unpack"
 
 	mkdir -p "${S}" || die
+	mkdir -p "${ECARGO_VENDOR}" || die
+	mkdir -p "${ECARGO_HOME}" || die
+
+	local distdir=${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}
+	: ${ECARGO_REGISTRY_DIR:=${distdir}/cargo-registry}
+
+	local offline="${ECARGO_OFFLINE:-${EVCS_OFFLINE}}"
+
+	if [[ ! -d ${ECARGO_REGISTRY_DIR} && ! ${offline} ]]; then
+		(
+			addwrite "${ECARGO_REGISTRY_DIR}"
+			mkdir -p "${ECARGO_REGISTRY_DIR}"
+		) || die "Unable to create ${ECARGO_REGISTRY_DIR}"
+	fi
+
+	if [[ ${offline} ]]; then
+		local subdir
+		for subdir in cache index src; do
+			if [[ ! -d ${ECARGO_REGISTRY_DIR}/registry/${subdir} ]]; then
+				eerror "Networking activity has been disabled via ECARGO_OFFLINE or EVCS_OFFLINE"
+				eerror "However, no valid cargo registry available at ${ECARGO_REGISTRY_DIR}"
+				die "Unable to proceed with ECARGO_OFFLINE/EVCS_OFFLINE."
+			fi
+		done
+	fi
+
+	if [[ ${EVCS_UMASK} ]]; then
+		local saved_umask=$(umask)
+		umask "${EVCS_UMASK}" || die "Bad options to umask: ${EVCS_UMASK}"
+	fi
 
 	pushd "${S}" > /dev/null || die
-	# need to specify CARGO_HOME before cargo_gen_config fired
-	CARGO_HOME="${ECARGO_HOME}" cargo fetch || die
-	CARGO_HOME="${ECARGO_HOME}" cargo vendor "${ECARGO_VENDOR}" || die
+
+	# Respect user settings befire cargo_gen_config is called.
+	if [[ ! ${CARGO_TERM_COLOR} ]]; then
+		[[ "${NOCOLOR}" = true || "${NOCOLOR}" = yes ]] && export CARGO_TERM_COLOR=never
+		local unset_color=true
+	fi
+	if [[ ! ${CARGO_TERM_VERBOSE} ]]; then
+		export CARGO_TERM_VERBOSE=true
+		local unset_verbose=true
+	fi
+
+	# Let cargo fetch to system-wide location.
+	# It will keep directory organized by itself.
+	addwrite "${ECARGO_REGISTRY_DIR}"
+	export CARGO_HOME="${ECARGO_REGISTRY_DIR}"
+
+	# Absence of quotes around offline arg is intentional, as cargo bails out if it encounters ''
+	einfo "cargo fetch ${offline:+--offline}"
+	cargo fetch ${offline:+--offline} || die #nowarn
+
+	# Let cargo copy all required crates to "${WORKDIR}" for offline use in later phases.
+	einfo "cargo vendor ${offline:+--offline} ${ECARGO_VENDOR}"
+	cargo vendor ${offline:+--offline} "${ECARGO_VENDOR}" || die #nowarn
+
+	# Users may have git checkouts made by cargo.
+	# While cargo vendors the sources, it still needs git checkout to be present.
+	# Copying full dir is an overkill, so just symlink it.
+	if [[ -d ${ECARGO_REGISTRY_DIR}/git ]]; then
+		ln -sv "${ECARGO_REGISTRY_DIR}/git" "${ECARGO_HOME}/git" || die
+	fi
+
 	popd > /dev/null || die
 
+	# Restore settings if needed.
+	[[ ${unset_color} ]] && unset CARGO_TERM_COLOR
+	[[ ${unset_verbose} ]] && unset CARGO_TERM_VERBOSE
+	if [[ ${saved_umask} ]]; then
+		umask "${saved_umask}" || die
+	fi
+
+	# After following calls, cargo will no longer use ${ECARGO_REGISTRY_DIR} as CARGO_HOME
+	# It will be forced into offline mode to prevent network access.
+	# But since we already vendored crates and symlinked git, it has all it needs to build.
+	unset CARGO_HOME
 	cargo_gen_config
 }
 
@@ -145,7 +243,9 @@ cargo_live_src_unpack() {
 cargo_gen_config() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	cat <<- EOF > "${ECARGO_HOME}/config"
+	mkdir -p "${ECARGO_HOME}" || die
+
+	cat > "${ECARGO_HOME}/config" <<- _EOF_ || die "Failed to create cargo config"
 	[source.gentoo]
 	directory = "${ECARGO_VENDOR}"
 
@@ -161,9 +261,8 @@ cargo_gen_config() {
 
 	[term]
 	verbose = true
-	EOF
-	# honor NOCOLOR setting
-	[[ "${NOCOLOR}" = true || "${NOCOLOR}" = yes ]] && echo "color = 'never'" >> "${ECARGO_HOME}/config"
+	$([[ "${NOCOLOR}" = true || "${NOCOLOR}" = yes ]] && echo "color = 'never'")
+	_EOF_
 
 	export CARGO_HOME="${ECARGO_HOME}"
 }
