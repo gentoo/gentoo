@@ -18,6 +18,10 @@ RDEPEND="app-arch/xz-utils
 	lz4? ( app-arch/lz4 )"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-uclibc-ng.patch" #741972
+	)
+
 src_prepare() {
 	default
 	multilib_copy_sources
