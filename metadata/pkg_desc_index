@@ -8936,7 +8936,7 @@ dev-python/pyu2f 0.1.4-r1: Python based U2F host library
 dev-python/pyudev 0.22.0: Python binding to libudev
 dev-python/pyusb 1.0.2-r1: USB support for Python
 dev-python/pyvirtualdisplay 1.3.2: Python wrapper for Xvfb, Xephyr and Xvnc
-dev-python/pywavelets 0.5.2-r1: Discrete Wavelet Transforms in Python
+dev-python/pywavelets 0.5.2-r1 1.1.1: Discrete Wavelet Transforms in Python
 dev-python/pywinrm 0.4.1: Windows Remote Management through Python
 dev-python/pyx 0.15: Python package for the generation of encapsulated PostScript figures
 dev-python/pyxattr 0.7.1: Python interface to xattr
