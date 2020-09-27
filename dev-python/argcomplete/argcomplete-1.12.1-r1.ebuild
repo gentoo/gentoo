@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		<dev-python/importlib_metadata-2[${PYTHON_USEDEP}]
+		<dev-python/importlib_metadata-3[${PYTHON_USEDEP}]
 	' -2 python3_{5,6,7} pypy3)"
 # pip is called as an external tool
 BDEPEND="
