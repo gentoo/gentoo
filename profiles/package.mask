@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-09-27)
+# Obsolete package blocking unmasking of >=x11-libs/pango-1.44, dead upstream.
+# No reverse dependencies, bug #698922. Removal in 30 days.
+x11-libs/pangox-compat
+
 # Michał Górny <mgorny@gentoo.org> (2020-09-27)
 # Discontinued upstream.  Not ported to Python 3, and no patches seem
 # readily available.
@@ -862,12 +867,6 @@ net-misc/gnome-remote-desktop
 =dev-lang/lua-5.1.5-r103
 =dev-lang/lua-5.2.4-r2
 =dev-lang/lua-5.3.5-r2
-
-# Michał Górny <mgorny@gentoo.org> (2020-01-16)
-# The new version loses Python 2 support but does not introduce any real
-# changes.  Let's mask it to reduce the noise, and hopefully try to get
-# python2_7 out of default PYTHON_TARGETS first.
->=dev-python/setuptools-47
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-11-14)
 # Breaks archives containing relative paths
