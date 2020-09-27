@@ -8183,7 +8183,7 @@ dev-python/flit 2.1.0: Simplified packaging of Python modules
 dev-python/flit_core 2.1.0: Simplified packaging of Python modules (core module)
 dev-python/flufl-bounce 3.0.1: Email bounce detectors.
 dev-python/flufl-i18n 2.0.2: A high level API for Python internationalization.
-dev-python/flufl-lock 3.2: NFS-safe file locking with timeouts for POSIX systems.
+dev-python/flufl-lock 3.2 5.0.1: NFS-safe file locking with timeouts for POSIX systems.
 dev-python/fonttools 4.1.0: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
 dev-python/fqdn 1.2.0 1.4.0: RFC-compliant FQDN validation and manipulation for Python
 dev-python/freezegun 0.3.15-r1 1.0.0-r1: Let your Python tests travel through time
