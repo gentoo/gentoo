@@ -20,6 +20,7 @@ RESTRICT="mirror bindist strip"
 RDEPEND="!games-engines/zoom
 	dev-libs/glib:2
 	dev-libs/icu
+	dev-libs/quazip
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	amd64? ( dev-qt/qtdeclarative:5[widgets] )
@@ -69,6 +70,7 @@ src_install() {
 	doins *.pcm *.pem *.sh Embedded.properties version.txt
 	doexe zoom zoom.sh zopen ZoomLauncher
 	dosym {"../../usr/$(get_libdir)",/opt/zoom}/libmpg123.so
+	dosym {"../../usr/$(get_libdir)",/opt/zoom}/libquazip.so
 
 	if use bundled-libjpeg-turbo; then
 		doexe libturbojpeg.so
