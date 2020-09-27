@@ -9138,7 +9138,7 @@ dev-python/subunit 1.4.0: A streaming protocol for test results
 dev-python/subvertpy 0.10.1: Alternative Python bindings for Subversion
 dev-python/suds 0.6-r1 0.8.4: Lightweight SOAP client
 dev-python/sure 1.4.11: idiomatic assertion toolkit with human-friendly failure messages
-dev-python/svg-path 3.0: SVG path objects and parser
+dev-python/svg-path 3.0 4.0.2: SVG path objects and parser
 dev-python/svgwrite 1.4: Python Package to write SVG files
 dev-python/swagger-spec-validator 2.5.0: validate Swagger specs against Swagger 1.1 or 2.0 specification
 dev-python/sybil 1.4.0: Automated testing for the examples in your documentation
