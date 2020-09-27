@@ -14193,7 +14193,7 @@ net-analyzer/arp-scan 1.9.6 1.9.7 99999: ARP scanning and fingerprinting tool
 net-analyzer/arp-sk 0.0.16-r2: A swiss knife tool for ARP
 net-analyzer/arping 2.17 2.20 2.21 9999: A utility to see if a specific IP address is taken and what MAC address owns it
 net-analyzer/arpoison 0.6-r2 0.7: A utility to poison ARP caches
-net-analyzer/arpon 2.7.2 2.7.2-r1: ArpON (Arp handler inspectiON) is a portable Arp handler
+net-analyzer/arpon 2.7.2 2.7.2-r1 3.0: ArpON (Arp handler inspectiON) is a portable Arp handler
 net-analyzer/arptools 1.0.2: a collection of libnet and libpcap based ARP utilities
 net-analyzer/arpwatch 2.1.15-r11 3.1: An ethernet monitor program that keeps track of ethernet/IP address pairings
 net-analyzer/authforce 0.9.9-r2 0.9.9-r3: An HTTP authentication brute forcer
