@@ -5,7 +5,7 @@ EAPI=6
 inherit git-r3 toolchain-funcs
 
 DESCRIPTION="Small 802.11 wireless LAN analyzer"
-HOMEPAGE="http://br1.einfach.org/tech/horst/"
+HOMEPAGE="https://github.com/br101/horst/"
 EGIT_REPO_URI="https://github.com/br101/${PN}/"
 
 LICENSE="GPL-2"
