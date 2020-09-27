@@ -9005,7 +9005,7 @@ dev-python/ropemode 0.5: A helper for using rope refactoring library in IDEs
 dev-python/rosdistro 0.8.2 9999: Tools to work with catkinized rosdistro files
 dev-python/rospkg 1.2.8 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.4.1-r1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
-dev-python/rply 0.7.7: Pure python parser generator that also works with RPython
+dev-python/rply 0.7.7-r1: Pure python parser generator that also works with RPython
 dev-python/rpy 2.9.0: Python interface to the R Programming Language
 dev-python/rpyc 4.1.4: Remote Python Call (RPyC), a transparent and symmetric RPC library
 dev-python/rq 1.5.0 1.5.2: simple, lightweight library for creating and processing background jobs
@@ -15108,7 +15108,7 @@ net-misc/gns3-gui 2.2.11: Graphical Network Simulator
 net-misc/gns3-server 2.2.11: GNS3 server to asynchronously manage emulators
 net-misc/gofish 1.2: Gofish gopher server
 net-misc/grdesktop 0.23-r2: Gtk3 frontend for rdesktop
-net-misc/grive 0.5.1_pre20171005 0.5.1 0.5.1-r1: An open source Linux client for Google Drive
+net-misc/grive 0.5.1_pre20171005 0.5.1 0.5.1-r1 0.5.2_pre20200205: An open source Linux client for Google Drive
 net-misc/gsasl 1.8.0-r1 1.8.1: The GNU SASL client, server, and library
 net-misc/gsutil 4.41 4.45 4.47 4.50: command line tool for interacting with cloud storage services
 net-misc/gupnp-tools 0.10.0: Collection of developer-oriented UPnP tools
