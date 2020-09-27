@@ -79,20 +79,24 @@ src_prepare() {
 
 src_configure() {
 	local CONFIG=config/config.in
+
 	sed -i -e 's/@COMPILERTYPE@/gcc42/' ${CONFIG} || die
+
 	if use nas; then
 		sed -i -e "s/#.*\(INCLUDE_MODULES += NAS_AUDIO\)/\1/" \
 			${CONFIG} || die
 	fi
+
 	if ! use X; then
 		sed -i -e "s/-lX11 -lXt//" config/modules/esd_audio.mak || die
 	fi
+
 	econf
 }
 
 src_compile() {
 	emake -j1 CC="$(tc-getCC)" CXX="$(tc-getCXX)" CXX_OTHER_FLAGS="${CXXFLAGS}" CC_OTHER_FLAGS="${CFLAGS}" \
-		LDFLAGS="${LDFLAGS}"
+		AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
