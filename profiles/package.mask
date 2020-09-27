@@ -45,14 +45,10 @@ net-voip/telepathy-haze
 # unresponsive.  Please do not remove any packages from this list unless
 # you actually port them to Python 3.
 # Removal in 30 days.  Please find relevant bugs on tracker bug #694800.
-app-misc/klavaro
-dev-util/gtk-builder-convert
 games-arcade/diameter
 games-board/gnome-hearts
 net-analyzer/sguil-server
 net-analyzer/tcpflow
-sci-chemistry/rasmol
-sys-apps/gsmartcontrol
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-26)
 # Dead Python 2-only package.  No significant revdeps left.
