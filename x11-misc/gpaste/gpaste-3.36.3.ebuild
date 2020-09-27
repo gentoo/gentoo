@@ -15,39 +15,39 @@ SRC_URI="https://github.com/Keruspe/GPaste/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+introspection +gnome vala systemd"
+IUSE="+gnome +introspection systemd vala"
 REQUIRED_USE="
-	vala? ( introspection )
 	gnome? ( introspection )
+	vala? ( introspection )
 "
 
 DEPEND="
-	x11-libs/pango
 	dev-libs/appstream-glib
 	>=dev-libs/glib-2.48:2
-	introspection? (
-		>=x11-wm/mutter-3.36[introspection]
-		dev-libs/gjs
-		>=dev-libs/gobject-introspection-1.48.0
-	)
 	sys-apps/dbus
 	>=x11-libs/gdk-pixbuf-2.34:2
 	>=x11-libs/gtk+-3.20:3
 	x11-libs/libX11
 	x11-libs/libXi
+	x11-libs/pango
 	gnome? (
 		>=x11-wm/mutter-3.36
 	)
+	introspection? (
+		dev-libs/gjs
+		>=dev-libs/gobject-introspection-1.48.0
+		>=x11-wm/mutter-3.36[introspection]
+	)
 "
 BDEPEND="
-	vala? ( $(vala_depend) )
+	virtual/pkgconfig
 	gnome? (
 		gnome-base/gnome-control-center:2
 	)
-	virtual/pkgconfig
 	systemd? (
 		sys-apps/systemd
 	)
+	vala? ( $(vala_depend) )
 "
 RDEPEND="${DEPEND}
 	gnome? (
@@ -59,7 +59,7 @@ RDEPEND="${DEPEND}
 	)
 "
 
-S=${WORKDIR}/GPaste-${PV}
+S="${WORKDIR}/GPaste-${PV}"
 
 src_prepare() {
 	use vala && vala_src_prepare
