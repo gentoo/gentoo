@@ -290,6 +290,13 @@ src_configure() {
 	use static && append-ldflags -static
 	use xmss && append-cflags -DWITH_XMSS
 
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# Solaris' glob.h doesn't have things like GLOB_TILDE, configure
+		# doesn't check for this, so force the replacement to be put in
+		# place
+		append-cppflags -DBROKEN_GLOB
+	fi
+
 	local myconf=(
 		--with-ldflags="${LDFLAGS}"
 		--disable-strip
