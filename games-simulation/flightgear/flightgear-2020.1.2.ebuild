@@ -65,6 +65,7 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2020.1.2-cmake.patch"
+	"${FILESDIR}/${P}-boost.patch"
 )
 
 DOCS=(AUTHORS ChangeLog NEWS README Thanks)
