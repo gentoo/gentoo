@@ -60,10 +60,7 @@ RDEPEND="
 		')
 	)
 	perl? ( >=dev-lang/perl-5.16:= )
-	gadu? ( || (
-		>=net-libs/libgadu-1.11.0[ssl,gnutls(+)]
-		>=net-libs/libgadu-1.11.0[-ssl]
-	) )
+	gadu? ( >=net-libs/libgadu-1.11.0 )
 	gnutls? ( net-libs/gnutls:= )
 	!gnutls? (
 		dev-libs/nspr
