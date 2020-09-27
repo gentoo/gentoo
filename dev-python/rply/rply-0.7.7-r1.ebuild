@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -14,16 +14,11 @@ SRC_URI="https://github.com/alex/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-python/appdirs[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		dev-python/py[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}] )"
+		dev-python/py[${PYTHON_USEDEP}] )"
 
-python_test() {
-	pytest -vv || die "Tests fail with ${EPYTHON}"
-}
+distutils_enable_tests pytest
