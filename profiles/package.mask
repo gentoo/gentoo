@@ -849,7 +849,7 @@ net-misc/gnome-remote-desktop
 >=virtual/libcrypt-2
 
 # Mart Raudsepp <leio@gentoo.org> (2020-02-03)
-# Known breakages that need to be handled first, bug 698922
+# Needs news item, known breakages that need to be handled first, bug 698922
 >=x11-libs/pango-1.43
 
 # Robin H. Johnson <robbat2@gentoo.org> (2020-01-26)
