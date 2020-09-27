@@ -14282,7 +14282,7 @@ net-analyzer/jmx2munin 1.0_p20120811-r1: JMX Monitoring plugin for Munin
 net-analyzer/jnettop 0.13.0-r1: A top like console network traffic visualiser
 net-analyzer/kapacitor 1.4.1-r1 1.5.1 1.5.5: Monitoring, processing and alerting on time series data
 net-analyzer/knocker 0.7.1-r3: Knocker is an easy to use security port scanner written in C
-net-analyzer/labrea 2.5-r2 2.5-r3: 'Sticky' Honeypot and IDS
+net-analyzer/labrea 2.5-r2 2.5-r3 2.5_p1: 'Sticky' Honeypot and IDS
 net-analyzer/lft 3.77 3.79 3.80 3.90 3.91-r1: Layer Four Traceroute (LFT) and WhoB
 net-analyzer/lilac 1.0.3: Web-based configuration tool written to configure Nagios
 net-analyzer/linkchecker 10.0.0_pre20200729 9999: Check websites for broken links
@@ -14389,7 +14389,7 @@ net-analyzer/rain 1.2.9_beta1 1.2.9_beta1-r1: powerful tool for testing stabilit
 net-analyzer/rrdcollect 0.2.9 0.2.10: Read system statistical data and feed it to RRDtool
 net-analyzer/rrdtool 1.7.2 1.7.2-r1: A system to store and display time-series data
 net-analyzer/rtpbreak 1.3a-r1: Analyze any RTP session through heuristics over UDP network traffic
-net-analyzer/sancp 1.6.1-r4 1.6.1-r5: collect network traffic statistics and store them in pcap format
+net-analyzer/sancp 1.6.1-r5: collect network traffic statistics and store them in pcap format
 net-analyzer/sarg 2.4.0: Squid Analysis Report Generator
 net-analyzer/sbd 1.37-r1: Netcat-clone, designed to be portable and offer strong encryption
 net-analyzer/scanlogd 2.2.7: a port scan detection tool
@@ -14570,7 +14570,7 @@ net-firewall/pglinux 2.3.1_p20171006: Privacy oriented firewall application
 net-firewall/psad 2.2.5 2.4.5 2.4.6: Port Scanning Attack Detection daemon
 net-firewall/rtsp-conntrack 3.7-r2 4.18-r1: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r3: iptables firewall generator (fork of firehol)
-net-firewall/shorewall 5.2.7: A high-level tool for configuring Netfilter
+net-firewall/shorewall 5.2.7 5.2.8: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.36: A program used to manage a netfilter firewall
 net-firewall/xtables-addons 2.13-r1 3.7-r1 3.8-r1 3.9: iptables extensions not yet accepted in the main kernel
 net-fs/autofs 5.1.6 5.1.6-r1: Kernel based automounter
