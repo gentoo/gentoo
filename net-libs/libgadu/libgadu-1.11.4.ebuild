@@ -17,17 +17,11 @@ RESTRICT="test"
 LICENSE="LGPL-2.1"
 KEYWORDS="~alpha amd64 arm ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 SLOT="0"
-IUSE="doc gnutls ssl static-libs threads"
+IUSE="doc ssl static-libs threads"
 
-REQUIRED_USE="
-	gnutls? ( ssl )
-"
 COMMON_DEPEND="
 	sys-libs/zlib
-	ssl? (
-		gnutls? ( net-libs/gnutls )
-		!gnutls? ( >=dev-libs/openssl-0.9.6m:0 )
-	)
+	ssl? ( net-libs/gnutls:= )
 "
 DEPEND="${COMMON_DEPEND}
 	doc? ( app-doc/doxygen )
@@ -43,20 +37,10 @@ DOCS=(AUTHORS ChangeLog NEWS README)
 
 src_configure() {
 	local myeconfargs=(
+		--without-openssl
 		$(use_with threads pthread)
+		$(use_with ssl gnutls)
 	)
-
-	if use ssl; then
-		myeconfargs+=(
-			$(use_with gnutls gnutls)
-			$(use_with !gnutls openssl)
-		)
-	else
-		myeconfargs+=(
-			--without-gnutls
-			--without-openssl
-		)
-	fi
 
 	autotools-utils_src_configure
 }
