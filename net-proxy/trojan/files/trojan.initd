@@ -20,6 +20,7 @@ depend() {
 start() {
 	ebegin "Starting Trojan, Log File: ${TJ_LOG}"
 	start-stop-daemon --start -b \
+		--user nobody --group nobody \
 		-1 "${TJ_LOG}" -2 "${TJ_LOG}" \
 		-m -p "${TJ_PIDFILE}" \
 		--exec /usr/bin/trojan  -- "${TJ_CONFIG}"
@@ -28,6 +29,8 @@ start() {
 
 stop() {
 	ebegin "Stopping Trojan"
-	start-stop-daemon --stop -p "${TJ_PIDFILE}"
+	start-stop-daemon --stop \
+		--user nobody --group nobody \
+		-p "${TJ_PIDFILE}"
 	eend $?
 }
