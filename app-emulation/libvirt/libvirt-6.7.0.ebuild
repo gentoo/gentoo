@@ -108,7 +108,6 @@ RDEPEND="
 		net-misc/radvd
 		sys-apps/iproute2[-minimal]
 	)
-	virtualbox? ( || ( app-emulation/virtualbox >=app-emulation/virtualbox-bin-2.2.0 ) )
 	wireshark-plugins? ( net-analyzer/wireshark:= )
 	xen? (
 		>=app-emulation/xen-4.6.0
