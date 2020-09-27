@@ -5,7 +5,7 @@ EAPI=6
 inherit toolchain-funcs vcs-snapshot
 
 DESCRIPTION="Small 802.11 wireless LAN analyzer"
-HOMEPAGE="http://br1.einfach.org/tech/horst/"
+HOMEPAGE="https://github.com/br101/horst/"
 SRC_URI="https://github.com/br101/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
