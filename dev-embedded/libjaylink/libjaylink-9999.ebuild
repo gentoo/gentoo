@@ -17,6 +17,7 @@ IUSE="static-libs"
 
 DEPEND="virtual/libusb:1[${MULTILIB_USEDEP}]"
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	sed -i -e "/^JAYLINK_CFLAGS=/ s/ -Werror / /" configure.ac || die
