@@ -40,14 +40,22 @@ REQUIRED_USE="
 	virtualbox? ( libvirtd )
 	xen? ( libvirtd )"
 
+BDEPEND="
+	acct-user/qemu
+	policykit? ( acct-group/libvirt )
+	app-text/xhtml1
+	dev-lang/perl
+	dev-libs/libxslt
+	dev-perl/XML-XPath
+	dev-python/docutils
+	virtual/pkgconfig"
+
 # gettext.sh command is used by the libvirt command wrappers, and it's
 # non-optional, so put it into RDEPEND.
 # We can use both libnl:1.1 and libnl:3, but if you have both installed, the
 # package will use 3 by default. Since we don't have slot pinning in an API,
 # we must go with the most recent
 RDEPEND="
-	acct-user/qemu
-	policykit? ( acct-group/libvirt )
 	app-misc/scrub
 	>=dev-libs/glib-2.48.0
 	dev-libs/libgcrypt:0
@@ -113,14 +121,9 @@ RDEPEND="
 	)
 	zfs? ( sys-fs/zfs )"
 
-DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
-	app-text/xhtml1
-	dev-lang/perl
-	dev-libs/libxslt
-	dev-perl/XML-XPath
-	dev-python/docutils
-	virtual/pkgconfig"
+DEPEND="${BDEPEND}
+	${RDEPEND}
+	${PYTHON_DEPS}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.0-fix_paths_in_libvirt-guests_sh.patch
