@@ -73,6 +73,10 @@ src_prepare() {
 	default
 	#CVE-2019-16275 bug #696032
 	eapply "${FILESDIR}/hostapd-2.9-AP-Silently-ignore-management-frame-from-unexpected.patch"
+	# CVE-2020-12695 bug #727542
+	eapply "${FILESDIR}/${P}-0001-WPS-UPnP-Do-not-allow-event-subscriptions-with-URLs-.patch"
+	eapply "${FILESDIR}/${P}-0002-WPS-UPnP-Fix-event-message-generation-using-a-long-U.patch"
+	eapply "${FILESDIR}/${P}-0003-WPS-UPnP-Handle-HTTP-initiation-failures-for-events-.patch"
 	popd >/dev/null || die
 
 	sed -i -e "s:/etc/hostapd:/etc/hostapd/hostapd:g" \
