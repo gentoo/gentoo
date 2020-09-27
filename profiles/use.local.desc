@@ -3028,9 +3028,7 @@ dev-vcs/kdesvn:man - Build and install man pages
 dev-vcs/mercurial:chg - Support Mercurial command server client
 dev-vcs/mercurial:gpg - Support signing with GnuPG.
 dev-vcs/mercurial:tk - Install dev-lang/tk for hgk script.
-dev-vcs/subversion:dso - Enable runtime module search
 dev-vcs/subversion:extras - Install extra scripts (examples, tools, hooks)
-dev-vcs/subversion:http - Enable http support using net-libs/serf
 dev-vcs/subversion:kwallet - Enable encrypted storage of passwords with kde-frameworks/kwallet
 games-action/beathazardultra:bundled-libs - Use the upstream provided bundled libraries.
 games-action/chromium-bsu:mixer - Enables media-libs/sdl-mixer sound backend instead of media-libs/openal one.

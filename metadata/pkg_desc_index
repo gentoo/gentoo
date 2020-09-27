@@ -7873,7 +7873,7 @@ dev-python/apipkg 1.5-r1: Namespace control and lazy-import mechanism
 dev-python/apispec 3.3.0: A pluggable API specification generator.
 dev-python/appdirs 1.4.4-r1: Module for determining appropriate platform-specific dirs
 dev-python/apsw 3.32.2_p1: APSW - Another Python SQLite Wrapper
-dev-python/argcomplete 1.12.0-r1: Bash tab completion for argparse
+dev-python/argcomplete 1.12.0-r1 1.12.1: Bash tab completion for argparse
 dev-python/argh 0.26.2-r2: A simple argparse wrapper
 dev-python/argon2-cffi 20.1.0: CFFI bindings to the Argon2 password hashing library
 dev-python/argparse-manpage 1.4: Automatically build man-pages for your Python project
@@ -9281,7 +9281,7 @@ dev-python/yapf 0.30.0: A formatter for Python files
 dev-python/yappi 1.2.5-r1: Yet Another Python Profiler
 dev-python/yapsy 1.12.2: A fat-free DIY Python plugin management toolkit
 dev-python/yaql 1.1.3: YAQL: Yet Another Query Language
-dev-python/yarl 1.4.2 1.5.1 1.6.0: Yet another URL library
+dev-python/yarl 1.5.1 1.6.0: Yet another URL library
 dev-python/yaswfp 0.9.3-r1: Yet Another SWF Parser
 dev-python/zVMCloudConnector 1.4.1: a development sdk for managing z/VM
 dev-python/zc-lockfile 2.0: Basic inter-process locks
@@ -9852,7 +9852,7 @@ dev-ruby/curses 1.3.2: Ruby binding for curses, ncurses, and PDCurses
 dev-ruby/d3_rails 4.1.1: Ruby on Rails integration for the Javascript Data Visualization Framework, D3
 dev-ruby/daemon_controller 1.2.0-r1: Library to start and stop specific daemons programmatically in a robust manner
 dev-ruby/daemons 1.3.1: Wrap existing ruby scripts to be run as a daemon
-dev-ruby/dalli 2.7.10 2.7.10-r1: A high performance pure Ruby client for accessing memcached servers
+dev-ruby/dalli 2.7.10 2.7.10-r1 2.7.11: A high performance pure Ruby client for accessing memcached servers
 dev-ruby/database_cleaner 1.7.0: Strategies for cleaning databases
 dev-ruby/date_validator 0.10.0: Simple, ORM agnostic, Ruby 1.9 compatible date validator for Rails 3
 dev-ruby/dbf 4.1.2 4.1.3: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
@@ -10292,7 +10292,7 @@ dev-ruby/sigdump 0.2.4: Setup signal handler which dumps backtrace of threads an
 dev-ruby/simple-rss 1.3.3: A simple, flexible, extensible, and liberal RSS and Atom reader for Ruby
 dev-ruby/simple_oauth 0.3.1: Simply builds and verifies OAuth headers
 dev-ruby/simplecov 0.18.5 0.19.0: Code coverage with a configuration library and merging across test suites
-dev-ruby/simplecov-html 0.10.2 0.11.0 0.12.0 0.12.1 0.12.2: Generates a HTML report of your SimpleCov ruby code coverage results
+dev-ruby/simplecov-html 0.10.2 0.11.0 0.12.0 0.12.1 0.12.2 0.12.3: Generates a HTML report of your SimpleCov ruby code coverage results
 dev-ruby/sinatra 2.0.8.1 2.0.8.1-r1 2.1.0: A DSL for quickly creating web applications in Ruby with minimal effort
 dev-ruby/sinatra-partial 1.0.1: Just the partials helper in a gem
 dev-ruby/six 0.2.0: An ultra lite authorization library
@@ -10974,7 +10974,7 @@ dev-vcs/rcsi 0.5: A program to give information about RCS files
 dev-vcs/repo 2.5 2.8: Google tool for managing git, particularly multiple repos
 dev-vcs/rsvndump 0.6 0.6-r1: Dump a remote Subversion repository
 dev-vcs/stgit 0.21 0.22 0.23: Manage a stack of patches using GIT as a backend
-dev-vcs/subversion 1.13.0-r2 1.14.0-r1: Advanced version control system
+dev-vcs/subversion 1.14.0-r1: Advanced version control system
 dev-vcs/svn2cl 0.12 0.14: Create a GNU-style ChangeLog from subversion's svn log --xml output
 dev-vcs/svn2git 1.0.16 1.0.17 1.0.18 9999: Tool for one-time conversion from svn to git
 dev-vcs/svneverever 1.3.2 1.4.2 1.5.0: Tool collecting path entries across SVN history
@@ -15487,8 +15487,8 @@ net-proxy/wwwoffle 2.9i-r1: Web caching proxy suitable for non-permanent Interne
 net-proxy/ziproxy 3.3.1-r1: A forwarding, non-caching, compressing web proxy server
 net-voip/telepathy-gabble 0.18.4-r2: A XMPP connection manager, handles single and multi user chats and voice calls
 net-voip/telepathy-haze 0.8.0-r2: Telepathy connection manager providing libpurple supported protocols
-net-voip/telepathy-rakia 0.8.0: A SIP connection manager for Telepathy based around the Sofia-SIP library
-net-voip/telepathy-salut 0.8.1-r2: A link-local XMPP connection manager for Telepathy
+net-voip/telepathy-rakia 0.8.0-r1: A SIP connection manager for Telepathy based around the Sofia-SIP library
+net-voip/telepathy-salut 0.8.1-r3: A link-local XMPP connection manager for Telepathy
 net-voip/yate 6.0.0 6.1.0 9999: The Yate AV Suite
 net-vpn/6tunnel 0.12 0.13: TCP proxy for applications that don't speak IPv6
 net-vpn/badvpn 1.999.127 1.999.129 1.999.130: Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
@@ -17563,8 +17563,8 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.60 5.4.61 5.4.62 5.4.63 5.4.64 5.4.65 5.4.66 5.4.67 5.7.17 5.7.18 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6 5.8.7 5.8.8 5.8.9 5.8.10 5.8.11: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.60 5.4.61 5.4.62 5.4.62-r1 5.4.63 5.4.63-r1 5.4.64 5.4.64-r1 5.4.65 5.4.65-r1 5.4.66 5.4.66-r1 5.4.67 5.4.67-r1 5.7.17 5.7.18 5.7.19 5.7.19-r1 5.8.3 5.8.4 5.8.5 5.8.5-r1 5.8.6 5.8.6-r1 5.8.7 5.8.7-r1 5.8.8 5.8.8-r1 5.8.9 5.8.9-r1 5.8.10 5.8.10-r1 5.8.11 5.8.11-r1: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.60 5.4.61 5.4.62 5.4.63 5.4.64 5.4.65 5.4.66 5.4.67 5.4.68 5.7.17 5.7.18 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6 5.8.7 5.8.8 5.8.9 5.8.10 5.8.11 5.8.12: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.60 5.4.61 5.4.62 5.4.62-r1 5.4.63 5.4.63-r1 5.4.64 5.4.64-r1 5.4.65 5.4.65-r1 5.4.66 5.4.66-r1 5.4.67 5.4.67-r1 5.4.68 5.7.17 5.7.18 5.7.19 5.7.19-r1 5.8.3 5.8.4 5.8.5 5.8.5-r1 5.8.6 5.8.6-r1 5.8.7 5.8.7-r1 5.8.8 5.8.8-r1 5.8.9 5.8.9-r1 5.8.10 5.8.10-r1 5.8.11 5.8.11-r1 5.8.12: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.233 4.4.234 4.4.235 4.4.236 4.4.237 4.9.233 4.9.234 4.9.235 4.9.236 4.9.237 4.14.194 4.14.195 4.14.196 4.14.197 4.14.198 4.14.199 4.19.141 4.19.142 4.19.143 4.19.144 4.19.145 4.19.146 4.19.147 4.19.148 5.4.60 5.4.61 5.4.62 5.4.63 5.4.64 5.4.65 5.4.66 5.4.67 5.4.68 5.7.19 5.8.8 5.8.9 5.8.10 5.8.11 5.8.12: Full sources including the Gentoo patchset for the 5.8 kernel tree
 sys-kernel/git-sources 5.9_rc1 5.9_rc2 5.9_rc3 5.9_rc4 5.9_rc5 5.9_rc6: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17579,7 +17579,7 @@ sys-kernel/pf-sources 5.6_p8 5.7_p5 5.7_p7 5.8_p1 5.8_p2 5.8_p3 5.8_p4 5.8_p5: L
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p20190925 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.225_p198 4.4.231_p202 4.9.227_p146 4.9.232_p150 4.14.184_p84 4.14.192_p91 4.19.127_p54 4.19.135_p60 5.4.44_p27 5.4.54_p33 5.6.17_p10 5.6.19_p11: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.60 5.4.61 5.4.62 5.4.63 5.4.64 5.4.65 5.4.66 5.4.67 5.7.17 5.7.18 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6 5.8.7 5.8.8 5.8.9 5.8.10 5.8.11: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.60 5.4.61 5.4.62 5.4.63 5.4.64 5.4.65 5.4.66 5.4.67 5.4.68 5.7.17 5.7.18 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6 5.8.7 5.8.8 5.8.9 5.8.10 5.8.11 5.8.12: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.237 4.9.237 4.14.199 4.19.147 5.4.67 5.7.18 5.8.11: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
