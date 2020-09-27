@@ -5,7 +5,7 @@ EAPI="7"
 
 EGIT_REPO_URI="https://gitlab.zapb.de/libjaylink/libjaylink.git"
 
-inherit git-r3 autotools
+inherit git-r3 autotools multilib-minimal
 
 DESCRIPTION="Library to access J-Link devices"
 HOMEPAGE="https://gitlab.zapb.de/libjaylink/libjaylink"
@@ -15,19 +15,19 @@ SLOT="0"
 KEYWORDS=""
 IUSE="static-libs"
 
-DEPEND="virtual/libusb:1"
+DEPEND="virtual/libusb:1[${MULTILIB_USEDEP}]"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
 	eapply_user
 	eautoreconf
+	multilib_copy_sources
 }
 
-src_configure() {
+multilib_src_configure() {
 	econf $(use_enable static-libs static)
 }
 
-src_install() {
-	default
+multilib_src_install_all() {
 	use static-libs || find "${D}" -name '*.la' -delete || die
 }
