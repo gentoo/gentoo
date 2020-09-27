@@ -134,7 +134,8 @@ src_compile() {
 
 # FEATURES="test -usersandbox" emerge dev-db/mongodb
 src_test() {
-	"${EPYTHON}" ./buildscripts/resmoke.py --dbpathPrefix=test --suites core --jobs=$(makeopts_jobs) || die "Tests failed"
+	ewarn "Tests may hang with FEATURES=usersandbox"
+	"${EPYTHON}" ./buildscripts/resmoke.py run --dbpathPrefix=test --suites core --jobs=$(makeopts_jobs) || die "Tests failed with ${EPYTHON}"
 }
 
 src_install() {
