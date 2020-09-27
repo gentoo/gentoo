@@ -265,6 +265,7 @@ cargo_gen_config() {
 	_EOF_
 
 	export CARGO_HOME="${ECARGO_HOME}"
+	_CARGO_GEN_CONFIG_HAS_RUN=1
 }
 
 # @FUNCTION: cargo_src_configure
@@ -321,6 +322,9 @@ cargo_src_configure() {
 cargo_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	[[ ${_CARGO_GEN_CONFIG_HAS_RUN} ]] || \
+		die "FATAL: please call cargo_gen_config before using ${FUNCNAME}"
+
 	tc-export AR CC CXX
 
 	set -- cargo build $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
@@ -337,6 +341,9 @@ cargo_src_compile() {
 
 cargo_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	[[ ${_CARGO_GEN_CONFIG_HAS_RUN} ]] || \
+		die "FATAL: please call cargo_gen_config before using ${FUNCNAME}"
 
 	set -- cargo install $(has --path ${@} || echo --path ./) \
 		--root "${ED}/usr" \
@@ -356,6 +363,9 @@ cargo_src_install() {
 # Test the package using cargo test
 cargo_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	[[ ${_CARGO_GEN_CONFIG_HAS_RUN} ]] || \
+		die "FATAL: please call cargo_gen_config before using ${FUNCNAME}"
 
 	set -- cargo test $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
