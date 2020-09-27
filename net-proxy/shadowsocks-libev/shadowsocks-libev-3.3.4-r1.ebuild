@@ -40,8 +40,10 @@ PATCHES=(
 	"${FILESDIR}/${P}-gcc10.patch"
 )
 src_prepare() {
-	sed -i 's|AC_CONFIG_FILES(\[libbloom/Makefile libcork/Makefile libipset/Makefile\])||' \
+	sed -i -e 's|AC_CONFIG_FILES(\[libbloom/Makefile libcork/Makefile libipset/Makefile\])||' \
 		configure.ac || die
+	sed -i -e "/\[Service\]/a\\User=nobody" \
+		debian/shadowsocks-libev*.service || die
 	default
 	eautoreconf
 }
@@ -71,10 +73,9 @@ src_install() {
 
 	dodoc -r acl
 
-	systemd_newunit "${FILESDIR}/${PN}-local_at.service" "${PN}-local@.service"
-	systemd_newunit "${FILESDIR}/${PN}-server_at.service" "${PN}-server@.service"
-	systemd_newunit "${FILESDIR}/${PN}-redir_at.service" "${PN}-redir@.service"
-	systemd_newunit "${FILESDIR}/${PN}-tunnel_at.service" "${PN}-tunnel@.service"
+	for i in debian/${PN}*.service; do
+		systemd_newunit $i $(basename $i)
+	done
 }
 
 pkg_setup() {
