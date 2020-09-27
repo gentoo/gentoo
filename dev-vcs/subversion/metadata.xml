@@ -10,9 +10,7 @@
 		<name>Mikle Kolyada</name>
 	</maintainer>
 	<use>
-		<flag name="dso">Enable runtime module search</flag>
 		<flag name="extras">Install extra scripts (examples, tools, hooks)</flag>
-		<flag name="http">Enable http support using <pkg>net-libs/serf</pkg></flag>
 		<flag name="kwallet">Enable encrypted storage of passwords with <pkg>kde-frameworks/kwallet</pkg></flag>
 	</use>
 </pkgmetadata>
