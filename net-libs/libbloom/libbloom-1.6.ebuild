@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -15,10 +15,13 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND="${DEPEND}"
+RDEPEND=""
+
+PATCHES=("${FILESDIR}"/${PN}-1.5-AR.patch)
 
 src_compile() {
-	emake CC=$(tc-getCC) BITS=default OPT=
+	tc-export AR CC
+	emake BITS=default OPT=
 }
 
 src_install() {
