@@ -1,0 +1,94 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -206,10 +206,6 @@
+ # mpi
+ check_include_file(mpi.h HAVE_MPI_H)
+ 
+-# SA: whithout it compilation of antlr fails if there's a conflicting 
+-#     version of antlr in system-wide directories
+-include_directories(src)
+-
+ if (NOT WIN32)
+     # Ncurses MANDATORY for readline on POSIX
+     # -DNCURSESDIR=DIR
+@@ -399,8 +395,10 @@
+ 
+ # PLplot MANDATORY
+ # -DPLPLOTDIR=DIR
+-set(CMAKE_PREFIX_PATH ${PLPLOTDIR})
+-find_package(Plplot QUIET)
++
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(PLPLOT REQUIRED plplot plplot-c++)
++
+ set(HAVE_LIBPLPLOTCXXD ${PLPLOT_FOUND})
+ if(PLPLOT_FOUND)
+     set(LIBRARIES ${LIBRARIES} ${PLPLOT_LIBRARIES})
+@@ -490,33 +488,16 @@
+ # -DMAGICK=ON|OFF
+ # -DMAGICKDIR=DIR
+ if(MAGICK)
+-  set(CMAKE_PREFIX_PATH ${MAGICKDIR})
+-  find_package(ImageMagick QUIET COMPONENTS Magick++ MagickWand MagickCore)
+-  mark_as_advanced(ImageMagick_EXECUTABLE_DIR ImageMagick_Magick++_INCLUDE_DIR ImageMagick_Magick++_LIBRARY
+-    ImageMagick_MagickCore_INCLUDE_DIR ImageMagick_MagickCore_LIBRARY ImageMagick_MagickWand_INCLUDE_DIR ImageMagick_MagickWand_LIBRARY)
+-  set(USE_MAGICK ${ImageMagick_FOUND})
+-  if(ImageMagick_FOUND)
+-    find_program(MAGICKXXCONFIG Magick++-config)
+-    if(MAGICKXXCONFIG)
+-      execute_process(COMMAND ${MAGICKXXCONFIG} "--libs" OUTPUT_VARIABLE MAGICKXXCONFIGLIBS OUTPUT_STRIP_TRAILING_WHITESPACE)
+-      set(LIBRARIES ${LIBRARIES} ${MAGICKXXCONFIGLIBS})     
+-    else(MAGICKXXCONFIG)
+-      message(FATAL_ERROR "ImageMagick is required but was not found (Magick++-config).\n"
+-    "Use -DMAGICKDIR=DIR to specify the ImageMagick directory.\n"
+-    "Use -DMAGICK=OFF to not use it.\n"
+-        "(suitable Debian/Ubuntu package: libmagick++-dev)\n"
+-        "(suitable Fedora/CentOS package: ImageMagick-c++-devel)")
+-    endif(MAGICKXXCONFIG)
+-    set(LIBRARIES ${LIBRARIES} ${ImageMagick_LIBRARIES})
+-    include_directories(${ImageMagick_INCLUDE_DIRS})
+-    set(MAGICK_LIBRARIES ${ImageMagick_LIBRARIES})
+-  else(ImageMagick_FOUND)
+-    message(FATAL_ERROR "ImageMagick is required but was not found.\n"
+-      "Use -DMAGICKDIR=DIR to specify the ImageMagick directory.\n"
+-      "Use -DMAGICK=OFF to not use it.\n"
+-      "(suitable Debian/Ubuntu package: libmagick++-dev)\n"
+-      "(suitable Fedora/CentOS package: ImageMagick-c++-devel)")
+-  endif(ImageMagick_FOUND)
++  find_package(PkgConfig REQUIRED)
++  pkg_check_modules(Magick++ REQUIRED Magick++)
++  pkg_check_modules(MagickWand REQUIRED MagickWand)
++  pkg_check_modules(MagickCore REQUIRED MagickCore)
++
++  set(MAGICK_LIBRARIES ${Magick++_LIBRARIES} ${MagickWand_LIBRARIES} ${MagickCore_LIBRARIES})
++  set(LIBRARIES ${LIBRARIES} ${MAGICK_LIBRARIES})
++  include_directories(${Magick++_INCLUDE_DIRS})
++  include_directories(${MagickWand_INCLUDE_DIRS})
++  include_directories(${MagickCore_INCLUDE_DIRS})
+ endif(MAGICK)
+ 
+ # if GM or IM activated, we check whether Plplot is OK for that
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -186,9 +186,9 @@
+ )
+ endif(USE_EXPAT)
+ 
+-add_subdirectory(antlr)
++find_library(ANTLR_LIBRARY NAMES antlr)
+ 
+-include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_SOURCE_DIR}/src ${CMAKE_SOURCE_DIR}/src/antlr ${CMAKE_BINARY_DIR})
++include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR})
+ link_directories(${LINK_DIRECTORIES})
+ 
+ if(PYTHON_MODULE) #GDL.so
+@@ -203,8 +203,7 @@
+ 	add_executable(gdl ${SOURCES})
+ endif(PYTHON_MODULE)
+ 
+-add_dependencies(gdl antlr) # be sure that antlr is built before gdl
+-target_link_libraries(gdl antlr) # link antlr against gdl
++target_link_libraries(gdl ${ANTLR_LIBRARY}) # link antlr against gdl
+ if (MINGW)
+ target_link_libraries(gdl ws2_32)
+ endif (MINGW)
