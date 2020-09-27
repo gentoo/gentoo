@@ -4215,9 +4215,10 @@ media-libs/libafterimage:shaping - Use MIT shaped X windows extention.
 media-libs/libafterimage:shm - Use MIT shared memory extention for X image transfer.
 media-libs/libass:harfbuzz - Enables OpenType shaping via media-libs/harfbuzz.
 media-libs/libavif:aom - Enable support for the AOM codec encoding and decoding
-media-libs/libavif:dav1d - Enable support for the dav1d codec encoding and decoding
-media-libs/libavif:extras - Build extra apps and test files
-media-libs/libavif:rav1e - Enable support for the rav1e codec encoding and decoding
+media-libs/libavif:dav1d - Enable support for the dav1d codec decoding
+media-libs/libavif:extras - Build extra apps (avifenc, avifdec) and test files
+media-libs/libavif:gdk-pixbuf - Build a gdk-pixbuf loader
+media-libs/libavif:rav1e - Enable support for the rav1e codec encoding
 media-libs/libbdplus:aacs - Add support for decryption of AACS
 media-libs/libbluray:aacs - Add support for decryption of AACS
 media-libs/libbluray:bdplus - Use media-libs/libbdplus for BD+ decryption
