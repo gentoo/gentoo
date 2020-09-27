@@ -64,6 +64,8 @@ RDEPEND="${DEPEND}"
 # bug 588320
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}/${P}-gpsd-3.21.patch" ) # bug 744823
+
 src_prepare() {
 	ecm_src_prepare
 
