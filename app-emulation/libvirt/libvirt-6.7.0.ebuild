@@ -68,7 +68,6 @@ RDEPEND="
 	net-libs/rpcsvc-proto
 	>=net-misc/curl-7.18.0
 	sys-apps/dmidecode
-	>=sys-apps/util-linux-2.17
 	sys-devel/gettext
 	sys-libs/ncurses:0=
 	sys-libs/readline:=
