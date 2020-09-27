@@ -3628,7 +3628,7 @@ dev-embedded/kobs-ng 3.0.35.4.1.0: Utility to write u-boot images to NAND on Fre
 dev-embedded/libdisasm 0.23: Provides basic disassembly of Intel x86 instructions from a binary stream
 dev-embedded/libftd2xx 1.1.12-r1: Library that allows a direct access to a USB device
 dev-embedded/libftdi 0.20-r1 1.4 9999: Userspace access to FTDI USB interface chips
-dev-embedded/libjaylink 0.1.0 9999: Library to access J-Link devices
+dev-embedded/libjaylink 0.1.0 0.2.0 9999: Library to access J-Link devices
 dev-embedded/lpc21isp 1.85: In-circuit programming (ISP) tool for the NXP microcontrollers
 dev-embedded/mcu8051ide 1.4.10: Graphical IDE for microcontrollers based on 8051.
 dev-embedded/mspdebug 0.24 0.25: A free debugger for use with MSP430 MCUs
