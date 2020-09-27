@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib-minimal
+inherit multilib-minimal toolchain-funcs
 
 DESCRIPTION="An audio time-stretching and pitch-shifting library and utility program"
 HOMEPAGE="https://www.breakfastquay.com/rubberband/"
@@ -27,6 +27,10 @@ CDEPEND="
 RDEPEND="${CDEPEND}"
 DEPEND="${CDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-makefile.patch"
+)
+
 src_prepare() {
 	default
 	if ! use static-libs ; then
@@ -45,6 +49,10 @@ multilib_src_configure() {
 		$(use_enable programs ) \
 		$(use_enable ladspa ) \
 		$(use_enable vamp )
+}
+
+multilib_src_compile() {
+	emake AR="$(tc-getAR)"
 }
 
 multilib_src_install() {
