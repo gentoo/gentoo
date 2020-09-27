@@ -43,6 +43,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.3.12-tinfo.patch"
 	"${FILESDIR}/${PN}-3.3.12-gcc9.patch"
 	"${FILESDIR}/${PN}-3.3.12-parallel.patch"
+	"${FILESDIR}/${PN}-3.3.12-clang.patch"
 )
 
 DOCS=(
