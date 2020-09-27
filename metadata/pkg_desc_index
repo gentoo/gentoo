@@ -8065,7 +8065,7 @@ dev-python/django-auth-ldap 2.1.0: Django LDAP authentication backend
 dev-python/django-cacheops 4.2: ORM cache with automatic granular event-driven invalidation for Django
 dev-python/django-compressor 2.4: Compresses linked and inline JavaScript or CSS into single cached files.
 dev-python/django-cors-headers 3.2.1: Django App that adds CORS (Cross-Origin Resource Sharing) headers to responses
-dev-python/django-debug-toolbar 2.2: A configurable set of panels that display debug information
+dev-python/django-debug-toolbar 2.2 3.1: A configurable set of panels that display debug information
 dev-python/django-extensions 3.0.9: A collection of custom extensions for the Django Framework
 dev-python/django-filter 2.2.0: Django app allowing declarative dynamic QuerySet filtering from URL parameters
 dev-python/django-gravatar2 1.4.4: Essential Gravatar support for Django
