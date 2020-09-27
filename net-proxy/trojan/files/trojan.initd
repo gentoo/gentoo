@@ -2,6 +2,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+TJ_USER=nobody
+TJ_GROUP=nobody
+
 TJ_NAME=${SVCNAME##*.}
 if [ -n "${TJ_NAME}" -a "${SVCNAME}" != "trojan" ]; then
 	TJ_PIDFILE="/run/trojan.${TJ_NAME}.pid"
@@ -19,10 +22,11 @@ depend() {
 
 start() {
 	ebegin "Starting Trojan, Log File: ${TJ_LOG}"
-	start-stop-daemon --start -b \
-		--user nobody --group nobody \
-		-1 "${TJ_LOG}" -2 "${TJ_LOG}" \
-		-m -p "${TJ_PIDFILE}" \
+	checkpath -f -m 0600 -o ${TJ_USER}:${TJ_GROUP} "${TJ_LOG}"
+	start-stop-daemon --start --background \
+		--user ${TJ_USER} --group ${TJ_GROUP} \
+		--stdout "${TJ_LOG}" --stderr "${TJ_LOG}" \
+		--make-pidfile --pidfile "${TJ_PIDFILE}" \
 		--exec /usr/bin/trojan  -- "${TJ_CONFIG}"
 	eend $?
 }
@@ -30,7 +34,7 @@ start() {
 stop() {
 	ebegin "Stopping Trojan"
 	start-stop-daemon --stop \
-		--user nobody --group nobody \
-		-p "${TJ_PIDFILE}"
+		--user ${TJ_USER} --group ${TJ_GROUP} \
+		--pidfile "${TJ_PIDFILE}"
 	eend $?
 }
