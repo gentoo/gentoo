@@ -29,5 +29,6 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
+	einstalldocs
 	use static-libs || find "${D}" -name '*.la' -delete || die
 }
