@@ -3,15 +3,15 @@
 
 EAPI=7
 
-inherit cmake gnome2-utils
+inherit cmake git-r3 gnome2-utils
 
 DESCRIPTION="Library for encoding and decoding .avif files"
 HOMEPAGE="https://github.com/AOMediaCodec/libavif"
-SRC_URI="https://github.com/AOMediaCodec/libavif/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/AOMediaCodec/libavif.git"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="+aom dav1d examples extras gdk-pixbuf rav1e"
 
 DEPEND="media-libs/libpng
