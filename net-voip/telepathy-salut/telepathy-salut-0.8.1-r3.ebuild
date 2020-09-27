@@ -1,14 +1,15 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6..9} )
 inherit python-any-r1
 
 DESCRIPTION="A link-local XMPP connection manager for Telepathy"
 HOMEPAGE="https://telepathy.freedesktop.org/"
-SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
+SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz
+	https://src.fedoraproject.org/rpms/telepathy-salut/raw/master/f/${P}-python3.patch"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -36,7 +37,6 @@ DEPEND="${RDEPEND}
 	test? (
 		>=dev-libs/check-0.9.4
 		net-libs/libgsasl
-		$(python_gen_any_dep 'dev-python/twisted[${PYTHON_USEDEP}]')
 	)
 "
 # FIXME: needs xmppstream python module
@@ -45,13 +45,8 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.5.0-uninitialized.patch # upstream bug #37701
 	"${FILESDIR}"/${P}-openssl-1.1.patch # bug #663994
+	"${DISTDIR}"/${P}-python3.patch
 )
-
-python_check_deps() {
-	if use test ; then
-		 has_version "dev-python/twisted[${PYTHON_USEDEP}]"
-	fi
-}
 
 pkg_setup() {
 	python-any-r1_pkg_setup
