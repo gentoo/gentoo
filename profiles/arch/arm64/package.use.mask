@@ -266,10 +266,6 @@ media-libs/opencv vtk
 dev-libs/libpeas lua
 
 # Michał Górny <mgorny@gentoo.org> (2018-01-23)
-# Requires dev-libs/efl that is not keyworded.
-dev-libs/dbus-c++ ecore
-
-# Michał Górny <mgorny@gentoo.org> (2018-01-23)
 # USE=eds requires USE=gnome that is masked here.
 # USE=postgres requires dev-db/postgresql[kerberos] (USE masked).
 # NeddySeagoon <neddysegoon@gentoo.org> (2017-08-21)
