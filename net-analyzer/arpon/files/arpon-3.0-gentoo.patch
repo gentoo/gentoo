@@ -1,0 +1,146 @@
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -31,7 +31,7 @@
+ 
+ set(arpon_doc_src "${CMAKE_SOURCE_DIR}/doc/arpon")
+ 
+-if(${CMAKE_INSTALL_PREFIX} STREQUAL "/")
++if(${CMAKE_INSTALL_PREFIX} STREQUAL "/usr")
+     install(DIRECTORY ${arpon_doc_src}
+         DESTINATION /usr/share/doc
+         FILE_PERMISSIONS OWNER_READ GROUP_READ WORLD_READ
+@@ -41,7 +41,7 @@
+         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/doc
+         FILE_PERMISSIONS OWNER_READ GROUP_READ WORLD_READ
+         COMPONENT Doc)
+-endif(${CMAKE_INSTALL_PREFIX} STREQUAL "/")
++endif(${CMAKE_INSTALL_PREFIX} STREQUAL "/usr")
+ 
+ #
+ # EOF
+--- a/log/CMakeLists.txt
++++ b/log/CMakeLists.txt
+@@ -31,7 +31,7 @@
+ 
+ set(arpon_log_src "${CMAKE_SOURCE_DIR}/log/arpon.log")
+ 
+-if(${CMAKE_INSTALL_PREFIX} STREQUAL "/")
++if(${CMAKE_INSTALL_PREFIX} STREQUAL "/usr")
+     install(FILES ${arpon_log_src}
+         DESTINATION /var/log
+         PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ
+@@ -41,7 +41,7 @@
+         DESTINATION ${CMAKE_INSTALL_PREFIX}/log
+         PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ
+         COMPONENT Log)
+-endif(${CMAKE_INSTALL_PREFIX} STREQUAL "/")
++endif(${CMAKE_INSTALL_PREFIX} STREQUAL "/usr")
+ 
+ #
+ # EOF
+--- a/etc/CMakeLists.txt
++++ b/etc/CMakeLists.txt
+@@ -31,7 +31,7 @@
+ 
+ set(arpon_etc_src "${CMAKE_SOURCE_DIR}/etc/arpon.conf")
+ 
+-if(${CMAKE_INSTALL_PREFIX} STREQUAL "/")
++if(${CMAKE_INSTALL_PREFIX} STREQUAL "/usr")
+     install(FILES ${arpon_etc_src}
+         DESTINATION /etc
+         PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ
+@@ -41,7 +41,7 @@
+         DESTINATION ${CMAKE_INSTALL_PREFIX}/etc
+         PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ
+         COMPONENT Etc)
+-endif(${CMAKE_INSTALL_PREFIX} STREQUAL "/")
++endif(${CMAKE_INSTALL_PREFIX} STREQUAL "/usr")
+ 
+ #
+ # EOF
+--- a/run/CMakeLists.txt
++++ b/run/CMakeLists.txt
+@@ -31,7 +31,7 @@
+ 
+ set(arpon_run_src "${CMAKE_SOURCE_DIR}/run/arpon.pid")
+ 
+-if(${CMAKE_INSTALL_PREFIX} STREQUAL "/")
++if(${CMAKE_INSTALL_PREFIX} STREQUAL "/usr")
+     install(FILES ${arpon_run_src}
+         DESTINATION /var/run
+         PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ
+@@ -41,7 +41,7 @@
+         DESTINATION ${CMAKE_INSTALL_PREFIX}/run
+         PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ
+         COMPONENT Run)
+-endif(${CMAKE_INSTALL_PREFIX} STREQUAL "/")
++endif(${CMAKE_INSTALL_PREFIX} STREQUAL "/usr")
+ 
+ #
+ # EOF
+--- a/man8/CMakeLists.txt
++++ b/man8/CMakeLists.txt
+@@ -31,7 +31,7 @@
+ 
+ set(arpon_man_src "${CMAKE_SOURCE_DIR}/man8/arpon.8")
+ 
+-if(${CMAKE_INSTALL_PREFIX} STREQUAL "/")
++if(${CMAKE_INSTALL_PREFIX} STREQUAL "/usr")
+     set(ARPON_DOC_FILE
+         "/usr/share/doc/arpon/index.html")
+     set(ARPON_ETC_FILE
+@@ -49,7 +49,7 @@
+         "${CMAKE_INSTALL_PREFIX}/log/arpon.log")
+     set(ARPON_PID_FILE
+         "${CMAKE_INSTALL_PREFIX}/run/arpon.pid")
+-endif(${CMAKE_INSTALL_PREFIX} STREQUAL "/")
++endif(${CMAKE_INSTALL_PREFIX} STREQUAL "/usr")
+ 
+ file(READ ${arpon_man_src} FILE_CONTENT)
+ string(REGEX REPLACE "ARPON_DOC" "${ARPON_DOC_FILE}"
+@@ -65,7 +65,7 @@
+     MODIFIED_FILE_CONTENT4 "${MODIFIED_FILE_CONTENT3}")
+ file(WRITE ${PROJECT_BINARY_DIR}/man8/arpon.8 "${MODIFIED_FILE_CONTENT4}")
+ 
+-if(${CMAKE_INSTALL_PREFIX} STREQUAL "/")
++if(${CMAKE_INSTALL_PREFIX} STREQUAL "/usr")
+     install(FILES
+         ${PROJECT_BINARY_DIR}/man8/arpon.8 DESTINATION /usr/share/man/man8
+         PERMISSIONS OWNER_READ GROUP_READ WORLD_READ
+@@ -76,7 +76,7 @@
+         ${CMAKE_INSTALL_PREFIX}/share/man/man8
+         PERMISSIONS OWNER_READ GROUP_READ WORLD_READ
+         COMPONENT Man)
+-endif(${CMAKE_INSTALL_PREFIX} STREQUAL "/")
++endif(${CMAKE_INSTALL_PREFIX} STREQUAL "/usr")
+ 
+ #
+ # EOF
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -29,13 +29,13 @@
+ # $ArpON: CMakeLists.txt,v 3.0-ng 01/29/2016 03:07:40 spikey Exp $
+ #
+ 
+-if(${CMAKE_INSTALL_PREFIX} STREQUAL "/")
+-    set(ARPON_SBIN /sbin/arpon)
++if(${CMAKE_INSTALL_PREFIX} STREQUAL "/usr")
++    set(ARPON_SBIN /usr/sbin/arpon)
+     set(ARPON_DOC /usr/share/doc/arpon/index.html)
+     set(ARPON_ETC /etc/arpon.conf)
+     set(ARPON_LOG /var/log/arpon.log)
+     set(ARPON_PID /var/run/arpon.pid)
+-    set(install_prefix /sbin)
++    set(install_prefix /usr/sbin)
+ else(${CMAKE_INSTALL_PREFIX} STREQUAL "/")
+     set(ARPON_SBIN ${CMAKE_INSTALL_PREFIX}/sbin/arpon)
+     set(ARPON_DOC ${CMAKE_INSTALL_PREFIX}/share/doc/arpon/index.html)
+@@ -43,7 +43,7 @@
+     set(ARPON_LOG ${CMAKE_INSTALL_PREFIX}/log/arpon.log)
+     set(ARPON_PID ${CMAKE_INSTALL_PREFIX}/run/arpon.pid)
+     set(install_prefix ${CMAKE_INSTALL_PREFIX}/sbin)
+-endif(${CMAKE_INSTALL_PREFIX} STREQUAL "/")
++endif(${CMAKE_INSTALL_PREFIX} STREQUAL "/usr")
+ 
+ configure_file(
+     "${PROJECT_SOURCE_DIR}/src/config.h.in"
