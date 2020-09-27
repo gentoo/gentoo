@@ -21,6 +21,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}/${P}-pkgconfig_libdir.patch" #700780
 	"${FILESDIR}/${P}-make43.patch" #708110
+	"${FILESDIR}/${PN}-1.4.5-fix-uclibc-ng.patch" #741972
 )
 
 src_prepare() {
