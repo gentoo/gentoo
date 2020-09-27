@@ -70,7 +70,7 @@ src_configure() {
 
 src_compile() {
 	# most machines don't have enough ram for parallel builds
-	python_foreach_impl run_in_build_dir emake -j1
+	python_foreach_impl run_in_build_dir default
 }
 
 src_install() {
