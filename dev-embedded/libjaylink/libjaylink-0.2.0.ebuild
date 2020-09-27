@@ -19,6 +19,7 @@ DEPEND="virtual/libusb:1[${MULTILIB_USEDEP}]"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	sed -i -e "/^JAYLINK_CFLAGS=/ s/ -Werror / /" configure.ac || die
 	eapply_user
 	eautoreconf
 	multilib_copy_sources
