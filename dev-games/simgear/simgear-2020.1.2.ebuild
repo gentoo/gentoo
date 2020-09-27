@@ -35,6 +35,7 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2019.1.1-gdal3.patch"
+	"${FILESDIR}/${P}-boost.patch"
 )
 
 pkg_pretend() {
