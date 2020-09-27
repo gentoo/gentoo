@@ -15574,7 +15574,7 @@ net-wireless/hackrf-tools 2018.01.1-r2 9999: tools for communicating with HackRF
 net-wireless/hidclient 20120728: Use your machine as a bluetooh keyboard/mouse
 net-wireless/horst 5.1 9999: Small 802.11 wireless LAN analyzer
 net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products
-net-wireless/hostapd 2.9-r1 2.9-r2 9999: IEEE 802.11 wireless LAN Host AP daemon
+net-wireless/hostapd 2.9-r1 2.9-r3 9999: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/inspectrum 0.2.2 9999: Tool for analysing captured signals from software-defined radio receivers
 net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 5.4: nl80211 configuration utility for wireless devices using the mac80211 stack
@@ -17564,7 +17564,7 @@ sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs genera
 sys-kernel/dracut-crypt-ssh 1.0.6-r1 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.60 5.4.61 5.4.62 5.4.63 5.4.64 5.4.65 5.4.66 5.4.67 5.4.68 5.7.17 5.7.18 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6 5.8.7 5.8.8 5.8.9 5.8.10 5.8.11 5.8.12: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.60 5.4.61 5.4.62 5.4.62-r1 5.4.63 5.4.63-r1 5.4.64 5.4.64-r1 5.4.65 5.4.65-r1 5.4.66 5.4.66-r1 5.4.67 5.4.67-r1 5.4.68 5.7.17 5.7.18 5.7.19 5.7.19-r1 5.8.3 5.8.4 5.8.5 5.8.5-r1 5.8.6 5.8.6-r1 5.8.7 5.8.7-r1 5.8.8 5.8.8-r1 5.8.9 5.8.9-r1 5.8.10 5.8.10-r1 5.8.11 5.8.11-r1 5.8.12: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel-bin 5.4.60 5.4.61 5.4.62 5.4.62-r1 5.4.63 5.4.63-r1 5.4.64 5.4.64-r1 5.4.65 5.4.65-r1 5.4.66 5.4.66-r1 5.4.67 5.4.67-r1 5.4.68 5.4.68-r1 5.7.17 5.7.18 5.7.19 5.7.19-r1 5.8.3 5.8.4 5.8.5 5.8.5-r1 5.8.6 5.8.6-r1 5.8.7 5.8.7-r1 5.8.8 5.8.8-r1 5.8.9 5.8.9-r1 5.8.10 5.8.10-r1 5.8.11 5.8.11-r1 5.8.12 5.8.12-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.233 4.4.234 4.4.235 4.4.236 4.4.237 4.9.233 4.9.234 4.9.235 4.9.236 4.9.237 4.14.194 4.14.195 4.14.196 4.14.197 4.14.198 4.14.199 4.19.141 4.19.142 4.19.143 4.19.144 4.19.145 4.19.146 4.19.147 4.19.148 5.4.60 5.4.61 5.4.62 5.4.63 5.4.64 5.4.65 5.4.66 5.4.67 5.4.68 5.7.19 5.8.8 5.8.9 5.8.10 5.8.11 5.8.12: Full sources including the Gentoo patchset for the 5.8 kernel tree
 sys-kernel/git-sources 5.9_rc1 5.9_rc2 5.9_rc3 5.9_rc4 5.9_rc5 5.9_rc6: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
