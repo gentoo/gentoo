@@ -2635,7 +2635,7 @@ app-office/kraft 0.90: Software to manage quotes and invoices in small enterpris
 app-office/ktimetracker 5.0.1: Todo management and time tracker
 app-office/ledger 3.2.0: Double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 8.0.3: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 6.4.3.2 6.4.6.2-r1 6.4.6.2-r2 6.4.9999 9999: A full office productivity suite
+app-office/libreoffice 6.4.3.2 6.4.6.2-r2 6.4.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 6.4.3.2 6.4.6.2-r1: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 6.4.3.2 6.4.6.2-r1: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 6.4.3.2 6.4.6.2: Translations for the Libreoffice suite
@@ -3520,7 +3520,7 @@ dev-db/m17n-db 1.7.0 1.8.0: Database for the m17n library
 dev-db/mariadb 5.5.68-r1 10.1.38-r2 10.1.45-r1 10.1.46 10.2.22-r2 10.2.32-r2 10.2.33 10.3.23-r2 10.3.24 10.4.13-r2 10.4.14 10.5.5: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-connector-c 3.1.9 3.1.10 9999: C client library for MariaDB/MySQL
 dev-db/mariadb-connector-odbc 3.1.6: MariaDB Connector/ODBC
-dev-db/mongodb 3.6.13 3.6.17 4.0.12 4.0.16-r1 4.0.19 4.2.3-r1 4.2.6 4.2.8: A high-performance, open source, schema-free document-oriented database
+dev-db/mongodb 3.6.13 3.6.17 4.0.12 4.0.16-r1 4.0.19 4.2.3-r1 4.2.8: A high-performance, open source, schema-free document-oriented database
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.20.1 1.21.1-r1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.9.3-r1 0.9.5 0.9.5-r1: A high-performance multi-threaded backup (and restore) toolset for MySQL
@@ -5642,7 +5642,7 @@ dev-libs/skalibs 2.3.2.0 2.6.1.0 2.6.3.0 2.6.4.0 2.7.0.0 2.8.1.0 2.9.1.0: Genera
 dev-libs/smack 0.5.0: low-level IO storage which packs data into sorted compressed blobs
 dev-libs/snowball-stemmer 0.20140325: All you need to include the snowball stemming algorithms into a C project
 dev-libs/softhsm 2.5.0 2.6.1: A software PKCS#11 implementation
-dev-libs/sord 0.16.4_p20200803 9999: Library for storing RDF data in memory
+dev-libs/sord 0.16.4_p20200803 0.16.6 9999: Library for storing RDF data in memory
 dev-libs/spdlog 1.5.0-r1 1.6.1 1.6.1-r1 1.7.0 9999: Very fast, header only, C++ logging library
 dev-libs/spsdeclib 5.1-r1: Kryoflux SPS Decoder Library
 dev-libs/squareball 0.2.0 9999: A general-purpose library for C99
@@ -8745,7 +8745,7 @@ dev-python/pyopenssl 19.1.0-r1: Python interface to the OpenSSL library
 dev-python/pyotherside 1.5.9: Asynchronous Python 3 Bindings for Qt 5
 dev-python/pyotp 2.4.0: PyOTP is a Python library for generating and verifying one-time passwords.
 dev-python/pypam 0.5.0-r6: Python Bindings for PAM (Pluggable Authentication Modules)
-dev-python/pyparsing 2.4.7: Easy-to-use Python module for text parsing
+dev-python/pyparsing 2.4.7-r1: Easy-to-use Python module for text parsing
 dev-python/pyparted 3.11.6 999999: Python bindings for sys-block/parted
 dev-python/pypax 0.9.5 9999: Python module to get or set either PT_PAX and/or XATTR_PAX flags
 dev-python/pypcap 1.2.3: Simplified object-oriented Python extension module for libpcap
@@ -9050,7 +9050,7 @@ dev-python/shutilwhich 1.1.0: A copy & paste backport of Python 3.3's shutil.whi
 dev-python/simplebayes 1.5.7: memory-based, optional-persistence naive bayesian text classifier
 dev-python/simpleeval 0.9.10: A simple, safe single expression evaluator library
 dev-python/simplegeneric 0.8.1-r1: Simple generic functions for Python
-dev-python/simplejson 3.17.2: Simple, fast, extensible JSON encoder/decoder for Python
+dev-python/simplejson 3.17.2-r1: Simple, fast, extensible JSON encoder/decoder for Python
 dev-python/simplekml 1.3.1: enables you to generate KML with as little effort as possible
 dev-python/simplesoapy 1.5.1-r1 9999: Simple pythonic wrapper for SoapySDR library
 dev-python/simplespectral 1.0.0 9999: Heavily simplified scipy.signal.spectral module
@@ -18275,7 +18275,7 @@ x11-libs/gtk+ 2.24.32-r1 3.24.16 3.24.18 3.24.20 3.24.21 3.24.22: Gimp ToolKit +
 x11-libs/gtk+extra 3.3.4: Useful Additional GTK+ widgets
 x11-libs/gtk-mac-integration 2.0.5: Menubar, doc and app bundle integration for GTK+
 x11-libs/gtkdatabox 0.9.3.0: Gtk+ Widgets for live display of large amounts of fluctuating numerical data
-x11-libs/gtkglext 1.2.0-r4: GL extensions for Gtk+ 2.0
+x11-libs/gtkglext 1.2.0-r5: GL extensions for Gtk+ 2.0
 x11-libs/gtkmathview 0.8.0-r4: Rendering engine for MathML documents
 x11-libs/gtksourceview 2.10.5-r3 3.24.11 4.4.0 4.6.1 4.6.1-r1: A text widget implementing syntax highlighting and other features
 x11-libs/libFS 1.0.8: X.Org FS library
@@ -18363,7 +18363,7 @@ x11-libs/snorenotify 0.7.0-r1: Multi platform Qt notification framework
 x11-libs/spread-sheet-widget 0.3-r1: GNU Spread Sheet Widget
 x11-libs/startup-notification 0.12-r1: Application startup notification and feedback library
 x11-libs/tslib 1.21: Touchscreen Access Library
-x11-libs/vte 0.28.2-r208 0.58.3 0.60.3: Library providing a virtual terminal emulator widget
+x11-libs/vte 0.28.2-r209 0.58.3 0.60.3: Library providing a virtual terminal emulator widget
 x11-libs/wxGTK 3.0.4-r2 3.0.4-r302: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
 x11-libs/xapps 1.8.4 1.8.9: Cross-desktop libraries and common resources
 x11-libs/xbae 4.60.4: Motif-based widget to display a grid of cells as a spreadsheet
