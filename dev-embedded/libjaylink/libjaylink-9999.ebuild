@@ -1,11 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="7"
 
 EGIT_REPO_URI="https://gitlab.zapb.de/libjaylink/libjaylink.git"
 
-inherit git-r3 autotools eutils ltprune
+inherit git-r3 autotools
 
 DESCRIPTION="Library to access J-Link devices"
 HOMEPAGE="https://gitlab.zapb.de/libjaylink/libjaylink"
@@ -19,7 +19,8 @@ DEPEND="virtual/libusb:1"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	eautoreconf || die
+	eapply_user
+	eautoreconf
 }
 
 src_configure() {
@@ -28,5 +29,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	use static-libs || find "${D}" -name '*.la' -delete || die
 }
