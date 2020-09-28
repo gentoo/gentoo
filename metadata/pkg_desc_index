@@ -5975,7 +5975,7 @@ dev-perl/AtExit 2.30.0: atexit() function to register exit-callbacks
 dev-perl/Audio-CD-disc-cover 0.05-r2 0.05-r3: Perl Module needed for app-cdr/disc-cover
 dev-perl/Audio-DSP 0.20.0-r3: Perl interface to *NIX digital audio device
 dev-perl/Audio-FLAC-Header 2.400.0-r1 2.400.0-r3: Access to FLAC audio metadata
-dev-perl/Audio-Mixer 0.700.0-r2 0.700.0-r4: Perl extension for Sound Mixer control
+dev-perl/Audio-Mixer 0.700.0-r4: Perl extension for Sound Mixer control
 dev-perl/Audio-Musepack 1.0.1-r1: An OO interface to Musepack file information and APE tag fields
 dev-perl/Audio-Scan 1.10.0-r1: Fast C metadata and tag reader for all common audio file formats
 dev-perl/Audio-WMA 1.300.0-r1: extension for reading WMA/ASF metadata
