@@ -27,5 +27,6 @@
 			support for managing device controllers.
 		</flag>
 		<flag name="man">Build and install man pages</flag>
+		<flag name="criu">Enable CRIU based checkpoint/restore support</flag>
 	</use>
 </pkgmetadata>
