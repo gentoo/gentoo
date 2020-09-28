@@ -57,8 +57,6 @@ src_install() {
 		rm -rfv "${ED}/etc" || die
 		eend "$?"
 	fi
-
-	pkg_postinst
 }
 
 pkg_postinst() {
