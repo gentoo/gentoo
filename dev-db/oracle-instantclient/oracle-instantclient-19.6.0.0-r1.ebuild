@@ -101,13 +101,13 @@ set_my_abivars() {
 	[[ ${abi} == 'default' ]] && abi=${ARCH}
 	MY_PLAT=MY_PLAT_${abi}          ; MY_PLAT=${!MY_PLAT}         # platform name
 	MY_BITS=MY_BITS_${abi}          ; MY_BITS=${!MY_BITS}         # platform bitwidth
-	MY_A=MY_A_${abi}                ; MY_A=${!MY_A}               # runtime distfile
-	MY_A_jdbc=MY_A_${abi}_jdbc      ; MY_A_jdbc=${!MY_A_jdbc}       # jdbc distfile
-	MY_A_odbc=MY_A_${abi}_odbc      ; MY_A_odbc=${!MY_A_odbc}       # odbc distfile
-	MY_A_precomp=MY_A_${abi}_precomp; MY_A_precomp=${!MY_A_precomp} # precomp distfile
-	MY_A_sdk=MY_A_${abi}_sdk        ; MY_A_sdk=${!MY_A_sdk}         # sdk distfile
-	MY_A_sqlplus=MY_A_${abi}_sqlplus; MY_A_sqlplus=${!MY_A_sqlplus} # sqlplus distfile
-	MY_A_tools=MY_A_${abi}_tools    ; MY_A_tools=${!MY_A_tools}     # tools distfile
+	MY_A=MY_A_${abi}                ; MY_A=${!MY_A##*/}               # runtime distfile
+	MY_A_jdbc=MY_A_${abi}_jdbc      ; MY_A_jdbc=${!MY_A_jdbc##*/}       # jdbc distfile
+	MY_A_odbc=MY_A_${abi}_odbc      ; MY_A_odbc=${!MY_A_odbc##*/}       # odbc distfile
+	MY_A_precomp=MY_A_${abi}_precomp; MY_A_precomp=${!MY_A_precomp##*/} # precomp distfile
+	MY_A_sdk=MY_A_${abi}_sdk        ; MY_A_sdk=${!MY_A_sdk##*/}         # sdk distfile
+	MY_A_sqlplus=MY_A_${abi}_sqlplus; MY_A_sqlplus=${!MY_A_sqlplus##*/} # sqlplus distfile
+	MY_A_tools=MY_A_${abi}_tools    ; MY_A_tools=${!MY_A_tools##*/}     # tools distfile
 
 	[[ -n ${MY_PLAT} ]]
 }
