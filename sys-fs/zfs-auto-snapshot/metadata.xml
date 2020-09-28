@@ -15,7 +15,7 @@
 		snapshots if it is installed.
 	</longdescription>
 	<use>
-		<flag name="cron">Install /etc/cron.* files and pull in <pkg>vritual/cron</pkg></flag>
+		<flag name="cron">Install /etc/cron.* files</flag>
 		<flag name="default-exclude">Only take snapshots of datasets with com.sun:auto-snapshot=true property set</flag>
 	</use>
 

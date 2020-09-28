@@ -43,7 +43,7 @@ src_install() {
 	exclude="$(usev default-exclude)"
 	for unit in "${PN}"{-daily,-frequent,-hourly,-monthly,-weekly}.service; do
 		cp "${FILESDIR}/${unit}" "${T}/${unit}" || die
-		eprefixify "${T}/${unit}" 
+		eprefixify "${T}/${unit}"
 		sed -i "s/@DEFAULT_EXCLUDE@/${exclude:+--default-exclude}/g" "${T}/${unit}" || die
 		systemd_dounit "${T}/${unit}"
 	done
