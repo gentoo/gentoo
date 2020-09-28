@@ -32,6 +32,8 @@ ERROR_SCOM_DEBUGFS="CONFIG_SCOM_DEBUGFS is required to use xscom-utils"
 
 S="${WORKDIR}/skiboot-${PV}"
 
+PATCHES=( "${FILESDIR}/flags.patch" )
+
 python_check_deps() {
 	has_version "dev-python/recommonmark[${PYTHON_USEDEP}]" &&
 	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
@@ -40,11 +42,6 @@ python_check_deps() {
 pkg_setup() {
 	linux-info_pkg_setup
 	use doc && python-any-r1_pkg_setup
-}
-
-src_prepare() {
-	default
-	sed -i '/^CFLAGS +=/ s/-g2 -ggdb//' external/opal-prd/Makefile || die
 }
 
 src_configure() {

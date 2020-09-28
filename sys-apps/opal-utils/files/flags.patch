@@ -1,0 +1,35 @@
+From 828c1c28c314c62cf90b9b989f92af7ea96c100d Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Sun, 27 Sep 2020 18:48:38 -0700
+Subject: [PATCH] respect user flags
+
+---
+ external/ffspart/rules.mk  | 2 +-
+ external/opal-prd/Makefile | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/external/ffspart/rules.mk b/external/ffspart/rules.mk
+index 40972c6..09a025f 100644
+--- a/external/ffspart/rules.mk
++++ b/external/ffspart/rules.mk
+@@ -30,5 +30,5 @@ $(LIBFLASH_OBJS): libflash-%.o : libflash/%.c
+ 	$(Q_CC)$(CC) $(CFLAGS) -c $< -o $@
+ 
+ $(EXE): $(OBJS)
+-	$(Q_CC)$(CC) $(CFLAGS) $^ -lrt -o $@
++	$(Q_CC)$(CC) $(CFLAGS) $^ -lrt $(LDFLAGS) -o $@
+ 
+diff --git a/external/opal-prd/Makefile b/external/opal-prd/Makefile
+index fb9402f..52f10d9 100644
+--- a/external/opal-prd/Makefile
++++ b/external/opal-prd/Makefile
+@@ -1,5 +1,5 @@
+ # SPDX-License-Identifier: Apache-2.0
+-CFLAGS += -m64 -Werror -Wall -g2 -ggdb
++CFLAGS += -m64 -Wall
+ LDFLAGS += -m64
+ ASFLAGS = -m64
+ CPPFLAGS += -I. -I../../include -I../../
+-- 
+2.28.0
+
