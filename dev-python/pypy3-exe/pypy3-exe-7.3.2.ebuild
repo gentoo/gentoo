@@ -31,10 +31,7 @@ BDEPEND="
 	!low-memory? (
 		|| (
 			dev-python/pypy
-			(
-				dev-lang/python:2.7
-				dev-python/pycparser[python_targets_python2_7(-),python_single_target_python2_7(+)]
-			)
+			dev-lang/python:2.7
 		)
 	)"
 
@@ -129,8 +126,16 @@ src_configure() {
 			"${EPYTHON}" --jit loop_longevity=300 )
 	fi
 
+	if [[ ${EPYTHON} != pypy ]]; then
+		# reuse bundled pycparser to avoid external dep
+		mkdir -p "${T}"/pymod/cffi || die
+		: > "${T}"/pymod/cffi/__init__.py || die
+		cp -r lib_pypy/cffi/_pycparser "${T}"/pymod/cffi/ || die
+		local -x PYTHONPATH=${T}/pymod:${PYTHONPATH}
+	fi
+
 	# translate into the C sources
-	# we're going to make them ourselves since otherwise pypy does not
+	# we're going to build them ourselves since otherwise pypy does not
 	# free up the unneeded memory before spawning the compiler
 	set -- "${interp[@]}" rpython/bin/rpython --batch --source "${args[@]}"
 	echo -e "\033[1m${@}\033[0m"
