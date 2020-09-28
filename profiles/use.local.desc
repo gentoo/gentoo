@@ -1981,9 +1981,9 @@ dev-libs/aws-sdk-cpp:ec2 - Amazon Elastic Compute Cloud (EC2) is a web service t
 dev-libs/aws-sdk-cpp:ecr - Amazon Elastic Container Registry (ECR) is a fully managed Docker container registry.
 dev-libs/aws-sdk-cpp:ecs - Amazon Elastic Container Service (ECS) is a highly scalable, fast, container management service.
 dev-libs/aws-sdk-cpp:eks - Amazon Elastic Kubernetes Service (EKS) is a managed service to run Kubernetes on AWS without own Kubernetes clusters.
+dev-libs/aws-sdk-cpp:elastic-inference - Amazon Elastic Inference is a service that allows you to attach low-cost GPU-powered acceleration to many Amazon machine instances in order to reduce the cost of running deep learning inference by up to 75%. Amazon Elastic Inference supports TensorFlow, Apache MXNet, and ONNX models through MXNet.
 dev-libs/aws-sdk-cpp:elasticache - Set up, manage, and scale distributed in-memory cache environments in the AWS Cloud
 dev-libs/aws-sdk-cpp:elasticbeanstalk - Quickly deploy and manage applications in the AWS Cloud.
-dev-libs/aws-sdk-cpp:elasticinference - Amazon Elastic Inference is a service that allows you to attach low-cost GPU-powered acceleration to many Amazon machine instances in order to reduce the cost of running deep learning inference by up to 75%. Amazon Elastic Inference supports TensorFlow, Apache MXNet, and ONNX models through MXNet.
 dev-libs/aws-sdk-cpp:elasticloadbalancing - Automatically distribute incoming application traffic across multiple targets, such as EC2 instances. Also enables elasticloadbalancingv2.
 dev-libs/aws-sdk-cpp:elasticmapreduce - Amazon Elastic MapReduce (EMR) processes large amounts of data efficiently using Hadoop processing combined with several AWS products.
 dev-libs/aws-sdk-cpp:email - Amazon Simple Email Service (Amazon SES): An email platform to send and receive email using ones own email addresses and domains. See: https://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html Also enables sesv2
