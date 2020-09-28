@@ -1,0 +1,11 @@
+[Unit]
+Description=Automatically create, rotate, and destroy periodic ZFS snapshots.
+Documentation=man:zfs-auto-snapshot(8)
+Requires=zfs-auto-snapshot-frequent.timer
+Requires=zfs-auto-snapshot-daily.timer
+Requires=zfs-auto-snapshot-hourly.timer
+Requires=zfs-auto-snapshot-weekly.timer
+Requires=zfs-auto-snapshot-monthly.timer
+
+[Install]
+WantedBy=timers.target
