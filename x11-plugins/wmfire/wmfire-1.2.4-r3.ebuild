@@ -12,7 +12,7 @@ SRC_URI="http://www.improbability.net/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE="session"
+IUSE="+session"
 
 RDEPEND="x11-libs/gtk+:2
 	gnome-base/libgtop:2
@@ -35,5 +35,5 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable session)
+	econf $(usex session --enable-session '')
 }
