@@ -17,7 +17,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}/${PV}-cmake-prefix.patch"
+	"${FILESDIR}/${P}-cmake-prefix.patch"
 )
 
 src_configure() {
