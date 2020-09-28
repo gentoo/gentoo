@@ -1,0 +1,337 @@
+From 9e0d67dcb254ce5434fc376c3decc7b7ab80d40d Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 23 Jul 2020 16:39:29 +0200
+Subject: [PATCH 1/4] Modules/Platform: Add new PlatformDetect.cmake module
+
+Central place for paths we use to detect various platforms, so far these are:
+- CMAKE_PLATFORM_DEBIAN_PATH ("/etc/debian_version")
+- CMAKE_PLATFORM_ARCHLINUX_PATH ("/etc/arch-release")
+
+Provides option CMAKE_PLATFORM_DISABLE_DETECTION to disable this detection
+altogether.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ Modules/Platform/PlatformDetect.cmake | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+ create mode 100644 Modules/Platform/PlatformDetect.cmake
+
+diff --git a/Modules/Platform/PlatformDetect.cmake b/Modules/Platform/PlatformDetect.cmake
+new file mode 100644
+index 0000000000..2ff734b525
+--- /dev/null
++++ b/Modules/Platform/PlatformDetect.cmake
+@@ -0,0 +1,21 @@
++set(CMAKE_PLATFORM_DEBIAN_PATH "/etc/debian_version")
++set(CMAKE_PLATFORM_ARCHLINUX_PATH "/etc/arch-release")
++
++option (CMAKE_PLATFORM_DISABLE_DETECTION "Do not check for platform." OFF)
++
++if(CMAKE_PLATFORM_DISABLE_DETECTION)
++    set(CMAKE_PLATFORM_DEBIAN_FOUND 0 CACHE INTERNAL
++      "Debian platform detected via ${CMAKE_PLATFORM_DEBIAN_PATH}")
++    set(CMAKE_PLATFORM_ARCHLINUX_FOUND 0 CACHE INTERNAL
++      "Arch Linux platform detected via ${CMAKE_PLATFORM_ARCHLINUX_PATH}")
++else()
++  if(EXISTS "${CMAKE_PLATFORM_DEBIAN_PATH}")
++    set(CMAKE_PLATFORM_DEBIAN_FOUND 1 CACHE INTERNAL
++      "Debian platform detected via ${CMAKE_PLATFORM_DEBIAN_PATH}")
++  endif()
++
++  if(EXISTS "${CMAKE_PLATFORM_ARCHLINUX_PATH}")
++    set(CMAKE_PLATFORM_ARCHLINUX_FOUND 1 CACHE INTERNAL
++      "Arch Linux platform detected via ${CMAKE_PLATFORM_ARCHLINUX_PATH}")
++  endif()
++endif()
+-- 
+2.27.0
+
+
+From 82b2622126ba5754a81054b57c1b2f17df7d123a Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 22 Jul 2020 15:50:52 +0200
+Subject: [PATCH 2/4] Modules/Platform: Add new Platform.cmake module
+
+Deduplicates code from GNU.cmake and Linux.cmake to define
+CMAKE_INSTALL_SO_NO_EXE.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ Modules/Platform/Platform.cmake | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
+ create mode 100644 Modules/Platform/Platform.cmake
+
+diff --git a/Modules/Platform/Platform.cmake b/Modules/Platform/Platform.cmake
+new file mode 100644
+index 0000000000..1a28662ba5
+--- /dev/null
++++ b/Modules/Platform/Platform.cmake
+@@ -0,0 +1,28 @@
++include(Platform/PlatformDetect)
++
++# Debian policy requires that shared libraries be installed without
++# executable permission.  Fedora policy requires that shared libraries
++# be installed with the executable permission.  Since the native tools
++# create shared libraries with execute permission in the first place a
++# reasonable policy seems to be to install with execute permission by
++# default.  In order to support debian packages we provide an option
++# here.  The option default is based on the current distribution, but
++# packagers can set it explicitly on the command line.
++if(DEFINED CMAKE_INSTALL_SO_NO_EXE)
++  # Store the decision variable in the cache.  This preserves any
++  # setting the user provides on the command line.
++  set(CMAKE_INSTALL_SO_NO_EXE "${CMAKE_INSTALL_SO_NO_EXE}" CACHE INTERNAL
++    "Install .so files without execute permission.")
++else()
++  # Store the decision variable as an internal cache entry to avoid
++  # checking the platform every time.  This option is advanced enough
++  # that only package maintainers should need to adjust it.  They are
++  # capable of providing a setting on the command line.
++  if(CMAKE_PLATFORM_DEBIAN_FOUND)
++    set(CMAKE_INSTALL_SO_NO_EXE 1 CACHE INTERNAL
++      "Install .so files without execute permission.")
++  else()
++    set(CMAKE_INSTALL_SO_NO_EXE 0 CACHE INTERNAL
++      "Install .so files without execute permission.")
++  endif()
++endif()
+-- 
+2.27.0
+
+
+From 82ed8b884f8c817086af63fccaa63fcca67d7bca Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 22 Jul 2020 15:57:07 +0200
+Subject: [PATCH 3/4] GNU.cmake, Linux.cmake: Deduplicate code via
+ Platform.cmake
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ Modules/Platform/GNU.cmake   | 28 +---------------------------
+ Modules/Platform/Linux.cmake | 28 +---------------------------
+ 2 files changed, 2 insertions(+), 54 deletions(-)
+
+diff --git a/Modules/Platform/GNU.cmake b/Modules/Platform/GNU.cmake
+index fac29a8fa4..33a2498385 100644
+--- a/Modules/Platform/GNU.cmake
++++ b/Modules/Platform/GNU.cmake
+@@ -8,33 +8,7 @@ set(CMAKE_SHARED_LIBRARY_RPATH_LINK_C_FLAG "-Wl,-rpath-link,")
+ set(CMAKE_SHARED_LIBRARY_SONAME_C_FLAG "-Wl,-soname,")
+ set(CMAKE_EXE_EXPORTS_C_FLAG "-Wl,--export-dynamic")
+ 
+-# Debian policy requires that shared libraries be installed without
+-# executable permission.  Fedora policy requires that shared libraries
+-# be installed with the executable permission.  Since the native tools
+-# create shared libraries with execute permission in the first place a
+-# reasonable policy seems to be to install with execute permission by
+-# default.  In order to support debian packages we provide an option
+-# here.  The option default is based on the current distribution, but
+-# packagers can set it explicitly on the command line.
+-if(DEFINED CMAKE_INSTALL_SO_NO_EXE)
+-  # Store the decision variable in the cache.  This preserves any
+-  # setting the user provides on the command line.
+-  set(CMAKE_INSTALL_SO_NO_EXE "${CMAKE_INSTALL_SO_NO_EXE}" CACHE INTERNAL
+-    "Install .so files without execute permission.")
+-else()
+-  # Store the decision variable as an internal cache entry to avoid
+-  # checking the platform every time.  This option is advanced enough
+-  # that only package maintainers should need to adjust it.  They are
+-  # capable of providing a setting on the command line.
+-  if(EXISTS "/etc/debian_version")
+-    set(CMAKE_INSTALL_SO_NO_EXE 1 CACHE INTERNAL
+-      "Install .so files without execute permission.")
+-  else()
+-    set(CMAKE_INSTALL_SO_NO_EXE 0 CACHE INTERNAL
+-      "Install .so files without execute permission.")
+-  endif()
+-endif()
+-
+ set(CMAKE_LIBRARY_ARCHITECTURE_REGEX "[a-z0-9_]+(-[a-z0-9_]+)?-gnu[a-z0-9_]*")
+ 
++include(Platform/Platform)
+ include(Platform/UnixPaths)
+diff --git a/Modules/Platform/Linux.cmake b/Modules/Platform/Linux.cmake
+index b5d5464eae..6c938a6369 100644
+--- a/Modules/Platform/Linux.cmake
++++ b/Modules/Platform/Linux.cmake
+@@ -19,36 +19,10 @@ foreach(type SHARED_LIBRARY SHARED_MODULE EXE)
+   set(CMAKE_${type}_LINK_DYNAMIC_C_FLAGS "-Wl,-Bdynamic")
+ endforeach()
+ 
+-# Debian policy requires that shared libraries be installed without
+-# executable permission.  Fedora policy requires that shared libraries
+-# be installed with the executable permission.  Since the native tools
+-# create shared libraries with execute permission in the first place a
+-# reasonable policy seems to be to install with execute permission by
+-# default.  In order to support debian packages we provide an option
+-# here.  The option default is based on the current distribution, but
+-# packagers can set it explicitly on the command line.
+-if(DEFINED CMAKE_INSTALL_SO_NO_EXE)
+-  # Store the decision variable in the cache.  This preserves any
+-  # setting the user provides on the command line.
+-  set(CMAKE_INSTALL_SO_NO_EXE "${CMAKE_INSTALL_SO_NO_EXE}" CACHE INTERNAL
+-    "Install .so files without execute permission.")
+-else()
+-  # Store the decision variable as an internal cache entry to avoid
+-  # checking the platform every time.  This option is advanced enough
+-  # that only package maintainers should need to adjust it.  They are
+-  # capable of providing a setting on the command line.
+-  if(EXISTS "/etc/debian_version")
+-    set(CMAKE_INSTALL_SO_NO_EXE 1 CACHE INTERNAL
+-      "Install .so files without execute permission.")
+-  else()
+-    set(CMAKE_INSTALL_SO_NO_EXE 0 CACHE INTERNAL
+-      "Install .so files without execute permission.")
+-  endif()
+-endif()
+-
+ # Match multiarch library directory names.
+ set(CMAKE_LIBRARY_ARCHITECTURE_REGEX "[a-z0-9_]+(-[a-z0-9_]+)?-linux-gnu[a-z0-9_]*")
+ 
++include(Platform/Platform) # PlatformDetect provides CMAKE_PLATFORM_DEBIAN_FOUND
+ include(Platform/UnixPaths)
+ 
+ # Debian has lib32 and lib64 paths only for compatibility so they should not be
+-- 
+2.27.0
+
+
+From 166e06cbe67ff3f4b62ce046b5ec1221b24f09dc Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 22 Jul 2020 15:59:07 +0200
+Subject: [PATCH 4/4] Modules, Tests: Replace manual platform checks with
+ PlatformDetect.cmake
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ Modules/CMakeFindPackageMode.cmake                          | 3 ++-
+ Modules/FindPkgConfig.cmake                                 | 4 +++-
+ Modules/GNUInstallDirs.cmake                                | 6 ++++--
+ Modules/Platform/Linux.cmake                                | 2 +-
+ .../FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH.cmake        | 2 +-
+ ...PkgConfig_PKGCONFIG_PATH_NO_CMAKE_ENVIRONMENT_PATH.cmake | 2 +-
+ .../FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_PATH.cmake        | 2 +-
+ 7 files changed, 13 insertions(+), 8 deletions(-)
+
+diff --git a/Modules/CMakeFindPackageMode.cmake b/Modules/CMakeFindPackageMode.cmake
+index 815dfc90d8..2f161cf948 100644
+--- a/Modules/CMakeFindPackageMode.cmake
++++ b/Modules/CMakeFindPackageMode.cmake
+@@ -73,6 +73,7 @@ include(CMakeSystemSpecificInitialize)
+ include(CMakeSystemSpecificInformation)
+ 
+ if(UNIX)
++  include(Platform/PlatformDetect)
+ 
+   # try to guess whether we have a 64bit system, if it has not been set
+   # from the outside
+@@ -94,7 +95,7 @@ if(UNIX)
+   endif()
+ 
+   # guess Debian multiarch if it has not been set:
+-  if(EXISTS /etc/debian_version)
++  if(CMAKE_PLATFORM_DEBIAN_FOUND)
+     if(NOT CMAKE_${LANGUAGE}_LIBRARY_ARCHITECTURE )
+       file(GLOB filesInLib RELATIVE /lib /lib/*-linux-gnu* )
+       foreach(file ${filesInLib})
+diff --git a/Modules/FindPkgConfig.cmake b/Modules/FindPkgConfig.cmake
+index 93827d8bec..a6a01b5518 100644
+--- a/Modules/FindPkgConfig.cmake
++++ b/Modules/FindPkgConfig.cmake
+@@ -55,6 +55,8 @@ if (PKG_CONFIG_EXECUTABLE)
+   unset(_PKG_CONFIG_VERSION_RESULT)
+ endif ()
+ 
++include(Platform/PlatformDetect)
++
+ include(${CMAKE_CURRENT_LIST_DIR}/FindPackageHandleStandardArgs.cmake)
+ find_package_handle_standard_args(PkgConfig
+                                   REQUIRED_VARS PKG_CONFIG_EXECUTABLE
+@@ -323,7 +325,7 @@ macro(_pkg_set_path_internal)
+     if(NOT DEFINED CMAKE_SYSTEM_NAME
+         OR (CMAKE_SYSTEM_NAME MATCHES "^(Linux|kFreeBSD|GNU)$"
+             AND NOT CMAKE_CROSSCOMPILING))
+-      if(EXISTS "/etc/debian_version") # is this a debian system ?
++      if(CMAKE_PLATFORM_DEBIAN_FOUND) # is this a debian system ?
+         if(CMAKE_LIBRARY_ARCHITECTURE)
+           list(APPEND _lib_dirs "lib/${CMAKE_LIBRARY_ARCHITECTURE}/pkgconfig")
+         endif()
+diff --git a/Modules/GNUInstallDirs.cmake b/Modules/GNUInstallDirs.cmake
+index 9ef22b9360..5383646b19 100644
+--- a/Modules/GNUInstallDirs.cmake
++++ b/Modules/GNUInstallDirs.cmake
+@@ -127,6 +127,8 @@ Macros
+ cmake_policy(PUSH)
+ cmake_policy(SET CMP0054 NEW) # if() quoted variables not dereferenced
+ 
++include(Platform/PlatformDetect)
++
+ # Convert a cache variable to PATH type
+ 
+ macro(_GNUInstallDirs_cache_convert_to_path var description)
+@@ -228,8 +230,8 @@ if(NOT DEFINED CMAKE_INSTALL_LIBDIR OR (_libdir_set
+   endif()
+   if(CMAKE_SYSTEM_NAME MATCHES "^(Linux|kFreeBSD|GNU)$"
+       AND NOT CMAKE_CROSSCOMPILING
+-      AND NOT EXISTS "/etc/arch-release")
+-    if (EXISTS "/etc/debian_version") # is this a debian system ?
++      AND NOT CMAKE_PLATFORM_ARCHLINUX_FOUND)
++    if (CMAKE_PLATFORM_DEBIAN_FOUND) # is this a debian system ?
+       if(CMAKE_LIBRARY_ARCHITECTURE)
+         if("${CMAKE_INSTALL_PREFIX}" MATCHES "^/usr/?$")
+           set(_LIBDIR_DEFAULT "lib/${CMAKE_LIBRARY_ARCHITECTURE}")
+diff --git a/Modules/Platform/Linux.cmake b/Modules/Platform/Linux.cmake
+index 6c938a6369..477f5ec501 100644
+--- a/Modules/Platform/Linux.cmake
++++ b/Modules/Platform/Linux.cmake
+@@ -27,7 +27,7 @@ include(Platform/UnixPaths)
+ 
+ # Debian has lib32 and lib64 paths only for compatibility so they should not be
+ # searched.
+-if(NOT CMAKE_CROSSCOMPILING AND EXISTS "/etc/debian_version")
++if(NOT CMAKE_CROSSCOMPILING AND CMAKE_PLATFORM_DEBIAN_FOUND)
+   set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIB32_PATHS FALSE)
+   set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS FALSE)
+ endif()
+diff --git a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH.cmake b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH.cmake
+index d1d538512f..a192224caf 100644
+--- a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH.cmake
++++ b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH.cmake
+@@ -21,7 +21,7 @@ find_package(PkgConfig)
+ if(NOT DEFINED CMAKE_SYSTEM_NAME
+     OR (CMAKE_SYSTEM_NAME MATCHES "^(Linux|kFreeBSD|GNU)$"
+     AND NOT CMAKE_CROSSCOMPILING))
+-  if(EXISTS "/etc/debian_version") # is this a debian system ?
++  if(CMAKE_PLATFORM_DEBIAN_FOUND) # is this a debian system ?
+     if(CMAKE_LIBRARY_ARCHITECTURE MATCHES "^(i386-linux-gnu|x86_64-linux-gnu)$")
+       # Cannot create directories for all the existing architectures...
+       set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/${CMAKE_LIBRARY_ARCHITECTURE}/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/${CMAKE_LIBRARY_ARCHITECTURE}/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
+diff --git a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_ENVIRONMENT_PATH.cmake b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_ENVIRONMENT_PATH.cmake
+index 166a617dfd..4f15260757 100644
+--- a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_ENVIRONMENT_PATH.cmake
++++ b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_ENVIRONMENT_PATH.cmake
+@@ -21,7 +21,7 @@ find_package(PkgConfig)
+ if(NOT DEFINED CMAKE_SYSTEM_NAME
+     OR (CMAKE_SYSTEM_NAME MATCHES "^(Linux|kFreeBSD|GNU)$"
+     AND NOT CMAKE_CROSSCOMPILING))
+-  if(EXISTS "/etc/debian_version") # is this a debian system ?
++  if(CMAKE_PLATFORM_DEBIAN_FOUND) # is this a debian system ?
+     if(CMAKE_LIBRARY_ARCHITECTURE MATCHES "^(i386-linux-gnu|x86_64-linux-gnu)$")
+       # Cannot create directories for all the existing architectures...
+       set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/${CMAKE_LIBRARY_ARCHITECTURE}/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig")
+diff --git a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_PATH.cmake b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_PATH.cmake
+index e4673b3c18..87f62aa5d3 100644
+--- a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_PATH.cmake
++++ b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_PATH.cmake
+@@ -21,7 +21,7 @@ find_package(PkgConfig)
+ if(NOT DEFINED CMAKE_SYSTEM_NAME
+     OR (CMAKE_SYSTEM_NAME MATCHES "^(Linux|kFreeBSD|GNU)$"
+     AND NOT CMAKE_CROSSCOMPILING))
+-  if(EXISTS "/etc/debian_version") # is this a debian system ?
++  if(CMAKE_PLATFORM_DEBIAN_FOUND) # is this a debian system ?
+     if(CMAKE_LIBRARY_ARCHITECTURE MATCHES "^(i386-linux-gnu|x86_64-linux-gnu)$")
+       # Cannot create directories for all the existing architectures...
+       set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/${CMAKE_LIBRARY_ARCHITECTURE}/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
+-- 
+2.27.0
+
