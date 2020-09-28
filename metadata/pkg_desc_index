@@ -3536,7 +3536,7 @@ dev-db/mysqltuner 1.6.18 1.7.13 1.7.15 1.7.17: MySQLTuner is a high-performance 
 dev-db/mytop 1.6-r4 1.9.1: mytop - a top clone for mysql
 dev-db/ocp 0.2 0.3 9999: Oracle copy tool
 dev-db/opendbx 1.4.5-r1 1.4.6-r2 1.4.6-r3 1.5.0-r2: OpenDBX - A database abstraction layer
-dev-db/oracle-instantclient 18.3.0.0-r2 18.5.0.0 19.3.0.0-r1 19.5.0.0 19.6.0.0: Oracle 18c Instant Client with SDK
+dev-db/oracle-instantclient 18.3.0.0-r2 18.5.0.0 19.3.0.0-r1 19.5.0.0 19.6.0.0 19.6.0.0-r1: Oracle 18c Instant Client with SDK
 dev-db/oracle-instantclient-basic 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-jdbc 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-odbc 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
