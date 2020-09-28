@@ -9,7 +9,7 @@ if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 VIRTUALX_REQUIRED=manual
 
 inherit ${GIT_ECLASS} meson multilib-minimal python-any-r1 virtualx
@@ -32,7 +32,10 @@ RESTRICT="!test? ( test )"
 BDEPEND="${PYTHON_DEPS}
 	test? ( X? ( ${VIRTUALX_DEPEND} ) )"
 RDEPEND="
-	!media-libs/mesa[-libglvnd(-)]
+	|| (
+		>=media-libs/mesa-20.3
+		<media-libs/mesa-20.3[libglvnd(-)]
+	)
 	!<media-libs/mesa-19.2.2
 	X? (
 		x11-libs/libX11[${MULTILIB_USEDEP}]

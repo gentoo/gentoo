@@ -26,4 +26,5 @@ BDEPEND="
 		dev-python/pillow[${PYTHON_USEDEP},tiff,jpeg]
 	)"
 
+distutils_enable_sphinx doc
 distutils_enable_tests pytest
