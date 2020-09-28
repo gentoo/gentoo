@@ -16,7 +16,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
 			-> ${P}.gh.tar.gz
 	)"
 
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 LICENSE="Apache-2.0"
 SLOT="0"
 
