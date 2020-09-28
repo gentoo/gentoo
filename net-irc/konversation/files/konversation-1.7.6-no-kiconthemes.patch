@@ -1,0 +1,347 @@
+From 2104a776203d32b49512b303506f94085e0e4d89 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sat, 19 Sep 2020 22:50:48 +0200
+Subject: [PATCH] Port away from KIconthemes
+
+Use appropriate QIcon/QStyle API instead
+
+Incorporates:
+
+commit 5cd6c690e005a040e5fd3ccfca7ae23593c6dfe6
+Author: Nicolas Fella <nicolas.fella@gmx.de>
+Date:   Sat Sep 19 22:50:48 2020 +0200
+Subject: Remove unneeded system tray icon update
+
+  The system tray icon is specified by name.
+  We don't need to do anything when the theme changes.
+
+commit d1bce09605c255f7b96fa677ece363b3053d085e
+Author: Peter Simonsson <peter.simonsson@gmail.com>
+Date:   Tue Oct 22 21:35:25 2019 +0200
+Subject: Don't use deprecated SmallIcon
+
+---
+ CMakeLists.txt                |  1 -
+ src/CMakeLists.txt            |  1 -
+ src/dcc/recipientdialog.cpp   |  5 ++---
+ src/dcc/transferlistmodel.cpp | 25 ++++---------------------
+ src/dcc/transferlistmodel.h   |  3 +--
+ src/irc/channel.cpp           |  4 ++--
+ src/irc/nicksonline.cpp       |  1 -
+ src/irc/query.cpp             |  4 ++--
+ src/mainwindow.cpp            |  2 --
+ src/statusbar.cpp             |  4 ++--
+ src/viewer/ircview.cpp        |  5 ++---
+ src/viewer/ircviewbox.cpp     |  1 -
+ src/viewer/topiclabel.cpp     |  6 ++----
+ src/viewer/viewcontainer.cpp  |  4 +---
+ 14 files changed, 18 insertions(+), 48 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f0cd4b4f..3a1f5274 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -37,7 +37,6 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED
+     DBusAddons
+     Notifications
+     WindowSystem
+-    IconThemes
+     ItemViews
+ )
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 04f28971..36de36b0 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -238,7 +238,6 @@ target_link_libraries(konversation
+     KF5::CoreAddons
+     KF5::Notifications
+     KF5::WindowSystem
+-    KF5::IconThemes
+     KF5::ItemViews
+     Phonon::phonon4qt5)
+ 
+diff --git a/src/dcc/recipientdialog.cpp b/src/dcc/recipientdialog.cpp
+index 3e6eeae7..e81e91ea 100644
+--- a/src/dcc/recipientdialog.cpp
++++ b/src/dcc/recipientdialog.cpp
+@@ -28,7 +28,6 @@
+ #include <KLineEdit>
+ #include <KSharedConfig>
+ #include <KWindowConfig>
+-#include <KIconLoader>
+ 
+ namespace Konversation
+ {
+@@ -64,12 +63,12 @@ namespace Konversation
+             dialogLayout->addWidget(buttonBox);
+             QPushButton* button = buttonBox->addButton(QDialogButtonBox::Ok);
+             button->setToolTip(i18n("Select nickname and close the window"));
+-            button->setIcon(SmallIcon("dialog-ok"));
++            button->setIcon(QIcon::fromTheme("dialog-ok"));
+             button->setShortcut(Qt::CTRL | Qt::Key_Return);
+             button->setDefault(true);
+             button = buttonBox->addButton(QDialogButtonBox::Cancel);
+             button->setToolTip(i18n("Close the window without changes"));
+-            button->setIcon(SmallIcon("dialog-cancel"));
++            button->setIcon(QIcon::fromTheme("dialog-cancel"));
+ 
+             KWindowConfig::restoreWindowSize(windowHandle(), KConfigGroup(KSharedConfig::openConfig(), "DCCRecipientDialog"));
+ 
+diff --git a/src/dcc/transferlistmodel.cpp b/src/dcc/transferlistmodel.cpp
+index cc1763f9..2a7e3b15 100644
+--- a/src/dcc/transferlistmodel.cpp
++++ b/src/dcc/transferlistmodel.cpp
+@@ -21,7 +21,6 @@
+ #include <KCategorizedSortFilterProxyModel>
+ #include <KLocalizedString>
+ #include <KCategoryDrawer>
+-#include <KIconLoader>
+ 
+ namespace Konversation
+ {
+@@ -313,15 +312,11 @@ namespace Konversation
+                     {
+                         case TransferHeaderData::Status:
+                         {
+-                            QVariant decoration(QVariant::Pixmap);
+-                            decoration.setValue<QPixmap>(getStatusIcon(transfer->getStatus()));
+-                            return decoration;
++                            return getStatusIcon(transfer->getStatus());
+                         }
+                         case TransferHeaderData::TypeIcon:
+                         {
+-                            QVariant decoration(QVariant::Pixmap);
+-                            decoration.setValue<QPixmap>(getTypeIcon(transfer->getType()));
+-                            return decoration;
++                            return transfer->getType() == Transfer::Send ? QIcon::fromTheme("arrow-up") : QIcon::fromTheme("arrow-down");
+                         }
+                         default:
+                             return QVariant();
+@@ -384,19 +379,7 @@ namespace Konversation
+             }
+         }
+ 
+-        QPixmap TransferListModel::getTypeIcon(Transfer::Type type) const
+-        {
+-            if (type == Transfer::Send)
+-            {
+-                return KIconLoader::global()->loadIcon("arrow-up", KIconLoader::Small);
+-            }
+-            else
+-            {
+-                return KIconLoader::global()->loadIcon("arrow-down", KIconLoader::Small);
+-            }
+-        }
+-
+-        QPixmap TransferListModel::getStatusIcon(Transfer::Status status) const
++        QIcon TransferListModel::getStatusIcon(Transfer::Status status) const
+         {
+             QString icon;
+             switch (status)
+@@ -422,7 +405,7 @@ namespace Konversation
+                 default:
+                 break;
+             }
+-            return KIconLoader::global()->loadIcon(icon, KIconLoader::Small);
++            return QIcon::fromTheme(icon);
+         }
+ 
+         QString TransferListModel::getSpeedPrettyText (transferspeed_t speed)
+diff --git a/src/dcc/transferlistmodel.h b/src/dcc/transferlistmodel.h
+index 3a8a945c..b8bc0d25 100644
+--- a/src/dcc/transferlistmodel.h
++++ b/src/dcc/transferlistmodel.h
+@@ -164,8 +164,7 @@ namespace Konversation
+             inline QString getPositionPrettyText(KIO::fileoffset_t position,
+                                                  KIO::filesize_t filesize) const;
+             inline QString getSenderAddressPrettyText(Transfer *transfer) const;
+-            inline QPixmap getStatusIcon(Transfer::Status status) const;
+-            inline QPixmap getTypeIcon(Transfer::Type type) const;
++            inline QIcon getStatusIcon(Transfer::Status status) const;
+             inline QString getStatusDescription(Transfer::Status status, Transfer::Type type, const QString& errorMessage = QString()) const;
+ 
+             QList<TransferItemData> m_transferList;
+diff --git a/src/irc/channel.cpp b/src/irc/channel.cpp
+index 6488a0c1..595d0adc 100644
+--- a/src/irc/channel.cpp
++++ b/src/irc/channel.cpp
+@@ -38,7 +38,6 @@
+ #include <KLineEdit>
+ #include <KPasswordDialog>
+ #include <KMessageBox>
+-#include <KIconLoader>
+ #include <KComboBox>
+ 
+ #define DELAYED_SORT_TRIGGER    10
+@@ -237,7 +236,8 @@ Channel::Channel(QWidget* parent, const QString& _name) : ChatWindow(parent)
+     awayLabel->hide();
+     cipherLabel = new QLabel(commandLineBox);
+     cipherLabel->hide();
+-    cipherLabel->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("document-encrypt"), KIconLoader::Toolbar));
++    const int toolBarIconSize = cipherLabel->style()->pixelMetric(QStyle::PixelMetric::PM_ToolBarIconSize);
++    cipherLabel->setPixmap(QIcon::fromTheme(QStringLiteral("document-encrypt")).pixmap(toolBarIconSize));
+     m_inputBar = new IRCInput(commandLineBox);
+ 
+     commandLineLayout->addWidget(nicknameCombobox);
+diff --git a/src/irc/nicksonline.cpp b/src/irc/nicksonline.cpp
+index e23deab4..bb4cf00e 100644
+--- a/src/irc/nicksonline.cpp
++++ b/src/irc/nicksonline.cpp
+@@ -31,7 +31,6 @@
+ #include <QToolTip>
+ #include <QTreeWidget>
+ 
+-#include <KIconLoader>
+ #include <KToolBar>
+ 
+ 
+diff --git a/src/irc/query.cpp b/src/irc/query.cpp
+index 8c1845e6..56310642 100644
+--- a/src/irc/query.cpp
++++ b/src/irc/query.cpp
+@@ -25,7 +25,6 @@
+ 
+ #include <QSplitter>
+ 
+-#include <KIconLoader>
+ #include <KMessageBox>
+ #include <KSqueezedTextLabel>
+ 
+@@ -75,7 +74,8 @@ Query::Query(QWidget* parent, const QString& _name) : ChatWindow(parent)
+     blowfishLabel = new QLabel(inputBox);
+     inputBoxLayout->addWidget(blowfishLabel);
+     blowfishLabel->hide();
+-    blowfishLabel->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("document-encrypt"), KIconLoader::Toolbar));
++    const int toolBarIconSize = blowfishLabel->style()->pixelMetric(QStyle::PixelMetric::PM_ToolBarIconSize);
++    blowfishLabel->setPixmap(QIcon::fromTheme(QStringLiteral("document-encrypt")).pixmap(toolBarIconSize));
+     m_inputBar=new IRCInput(inputBox);
+     inputBoxLayout->addWidget(m_inputBar);
+ 
+diff --git a/src/mainwindow.cpp b/src/mainwindow.cpp
+index 40423d29..a876de30 100644
+--- a/src/mainwindow.cpp
++++ b/src/mainwindow.cpp
+@@ -49,7 +49,6 @@
+ #include <KActionMenu>
+ #include <KNotifyConfigWidget>
+ #include <KGlobalAccel>
+-#include <KIconLoader>
+ 
+ MainWindow::MainWindow() : KXmlGuiWindow(0)
+ {
+@@ -743,7 +742,6 @@ void MainWindow::updateTrayIcon()
+             // set up system tray
+             m_trayIcon = new Konversation::TrayIcon(this);
+             connect(this, SIGNAL(endNotification()), m_trayIcon, SLOT(endNotification()));
+-            connect(KIconLoader::global(), SIGNAL(iconChanged(int)), m_trayIcon, SLOT(updateAppearance()));
+             QMenu *trayMenu = qobject_cast<QMenu*>(m_trayIcon->contextMenu());
+             trayMenu->addAction(actionCollection()->action(QLatin1String(KStandardAction::name(KStandardAction::Preferences))));
+             trayMenu->addAction(actionCollection()->action(QLatin1String(KStandardAction::name(KStandardAction::ConfigureNotifications))));
+diff --git a/src/statusbar.cpp b/src/statusbar.cpp
+index 07a22fc6..e0efb02f 100644
+--- a/src/statusbar.cpp
++++ b/src/statusbar.cpp
+@@ -19,7 +19,6 @@
+ #include <KLocalizedString>
+ #include <QStatusBar>
+ #include <KSqueezedTextLabel>
+-#include <KIconLoader>
+ 
+ namespace Konversation
+ {
+@@ -52,7 +51,8 @@ namespace Konversation
+ 
+         m_sslLabel = new SSLLabel(m_window->statusBar());
+         m_sslLabel->setObjectName(QStringLiteral("sslLabel"));
+-        m_sslLabel->setPixmap(SmallIcon(QStringLiteral("security-high")));
++        const int smallIconSize = m_sslLabel->style()->pixelMetric(QStyle::PixelMetric::PM_SmallIconSize);
++        m_sslLabel->setPixmap(QIcon::fromTheme(QStringLiteral("security-high")).pixmap(smallIconSize));
+         m_sslLabel->hide();
+         m_sslLabel->setWhatsThis(i18n("All communication with the server is encrypted.  This makes it harder for someone to listen in on your communications."));
+ 
+diff --git a/src/viewer/ircview.cpp b/src/viewer/ircview.cpp
+index 73f5305f..86bbc3ae 100644
+--- a/src/viewer/ircview.cpp
++++ b/src/viewer/ircview.cpp
+@@ -30,9 +30,7 @@
+ #include <QTextDocumentFragment>
+ #include <QMimeData>
+ 
+-#include <KIconLoader>
+ #include <KStandardShortcut>
+-#include <kio/pixmaploader.h>
+ #include <KUrlMimeData>
+ #include <QLocale>
+ 
+@@ -2000,7 +1998,8 @@ void IRCView::mouseMoveEvent(QMouseEvent* ev)
+ 
+         drag->setMimeData(mimeData);
+ 
+-        QPixmap pixmap = KIO::pixmapForUrl(url, 0, KIconLoader::Desktop, KIconLoader::SizeMedium);
++        const QString iconName = KIO::iconNameForUrl(url);
++        const QPixmap pixmap = QIcon::fromTheme(iconName).pixmap(32);
+         drag->setPixmap(pixmap);
+ 
+         drag->exec();
+diff --git a/src/viewer/ircviewbox.cpp b/src/viewer/ircviewbox.cpp
+index 463c9fd3..6c10d976 100644
+--- a/src/viewer/ircviewbox.cpp
++++ b/src/viewer/ircviewbox.cpp
+@@ -14,7 +14,6 @@
+ #include "ircview.h"
+ #include "searchbar.h"
+ 
+-#include <KIconLoader>
+ #include <QPixmap>
+ #include <QVBoxLayout>
+ 
+diff --git a/src/viewer/topiclabel.cpp b/src/viewer/topiclabel.cpp
+index 6a8b4331..c96edc6e 100644
+--- a/src/viewer/topiclabel.cpp
++++ b/src/viewer/topiclabel.cpp
+@@ -20,9 +20,6 @@
+ #include <QTextDocument>
+ #include <QMimeData>
+ 
+-#include <KIconLoader>
+-#include <kio/pixmaploader.h>
+-
+ namespace Konversation
+ {
+     TopicLabel::TopicLabel(QWidget *parent, const char *name)
+@@ -181,7 +178,8 @@ namespace Konversation
+ 
+             drag->setMimeData(mimeData);
+ 
+-            QPixmap pixmap = KIO::pixmapForUrl(url, 0, KIconLoader::Desktop, KIconLoader::SizeMedium);
++            const QString iconName = KIO::iconNameForUrl(url);
++            const QPixmap pixmap = QIcon::fromTheme(iconName).pixmap(32);
+             drag->setPixmap(pixmap);
+ 
+             drag->exec();
+diff --git a/src/viewer/viewcontainer.cpp b/src/viewer/viewcontainer.cpp
+index 94d498ea..fd7be5bc 100644
+--- a/src/viewer/viewcontainer.cpp
++++ b/src/viewer/viewcontainer.cpp
+@@ -52,8 +52,6 @@
+ #include <KToggleAction>
+ #include <KSelectAction>
+ #include <KWindowSystem>
+-#include <KIconLoader>
+-
+ 
+ using namespace Konversation;
+ 
+@@ -241,7 +239,7 @@ void ViewContainer::setupTabWidget()
+     m_vbox->hide();
+ 
+     QToolButton* closeBtn = new QToolButton(m_tabWidget);
+-    closeBtn->setIcon(SmallIcon("tab-close"));
++    closeBtn->setIcon(QIcon::fromTheme("tab-close"));
+     closeBtn->adjustSize();
+     m_tabWidget->setCornerWidget(closeBtn, Qt::BottomRightCorner);
+     connect(closeBtn, SIGNAL(clicked()), this, SLOT(closeCurrentView()));
+-- 
+2.28.0
+
