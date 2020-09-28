@@ -1063,9 +1063,9 @@ app-office/orage:clock-panel-plugin - Build the clock plugin for the XFCE panel
 app-office/scribus:boost - Enable support for Boost based enhancement
 app-office/scribus:hunspell - Enable support for spell checking with app-text/hunspell
 app-office/scribus:minimal - Don't install headers (only required for e.g. plug-in developers)
-app-office/scribus:osg - 3D redering via dev-games/openscenegraph
+app-office/scribus:osg - 3D rendering via dev-games/openscenegraph
 app-office/scribus:scripts - Install the scripts
-app-office/scribus:templates - Document tamplates
+app-office/scribus:templates - Document templates
 app-office/scribus:tk - Install tk based scripts e.g. FontSample.py
 app-office/skrooge:activities - Enable kactivities support
 app-office/skrooge:designer - Build plugins for dev-qt/designer
