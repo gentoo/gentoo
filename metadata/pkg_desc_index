@@ -14575,7 +14575,7 @@ net-firewall/ufw 0.36: A program used to manage a netfilter firewall
 net-firewall/xtables-addons 2.13-r1 3.7-r1 3.8-r1 3.9: iptables extensions not yet accepted in the main kernel
 net-fs/autofs 5.1.6 5.1.6-r1: Kernel based automounter
 net-fs/btfs 2.19 2.20: a bittorrent filesystem based on FUSE
-net-fs/cifs-utils 6.9-r1 6.10-r1 6.11: Tools for Managing Linux CIFS Client Filesystems
+net-fs/cifs-utils 6.11: Tools for Managing Linux CIFS Client Filesystems
 net-fs/curlftpfs 0.9.2-r4: File system for accessing ftp hosts based on FUSE
 net-fs/cvmfs 2.7.2-r1 2.7.3: HTTP read-only file system for distributing software
 net-fs/davfs2 1.5.4 1.5.5 1.5.6-r1: Linux FUSE (or coda) driver that allows you to mount a WebDAV resource
@@ -16875,7 +16875,7 @@ sys-apps/gnome-disk-utility 3.34.5 3.36.1 3.36.3: Disk Utility for GNOME using u
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
 sys-apps/gptfdisk 1.0.4 1.0.5: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201603152148 3.1.201607172312 3.1.201608131257 3.1.201708012022 3.1.201903191516: Administrative interface for the grsecurity Role Based Access Control system
-sys-apps/grep 3.3-r1 3.4: GNU regular expression matcher
+sys-apps/grep 3.3-r1 3.4 3.5: GNU regular expression matcher
 sys-apps/grepcidr 2.0: Filter IPv4 and IPv6 addresses matching CIDR patterns
 sys-apps/groff 1.22.4: Text formatter used for man pages
 sys-apps/gscanbus 0.8: Bus scanning, testing and topology visualizing tool for Linux IEEE1394 subsystem
