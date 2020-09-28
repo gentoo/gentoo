@@ -19,6 +19,11 @@ RDEPEND=""
 
 src_prepare() {
 	default
+
+	# Remove -Werror from CFLAGS (#745069)
+	find -name "Makefile.am" -print0 \
+		| xargs --null sed 's@ -Werror@@' -i || die
+
 	eautoreconf
 }
 
