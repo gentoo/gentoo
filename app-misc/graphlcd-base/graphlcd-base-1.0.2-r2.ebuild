@@ -20,7 +20,7 @@ RDEPEND="
 	net-libs/libvncserver
 	freetype? ( media-libs/freetype:2= )
 	fontconfig? ( media-libs/fontconfig:1.0= )
-	graphicsmagick? ( media-gfx/graphicsmagick:0/1.3 )
+	graphicsmagick? ( media-gfx/graphicsmagick:0/1.3[cxx] )
 	imagemagick? ( <media-gfx/imagemagick-7 )
 	lcd_devices_ax206dpf? ( virtual/libusb:0 )
 	lcd_devices_picolcd_256x64? ( virtual/libusb:0 )
