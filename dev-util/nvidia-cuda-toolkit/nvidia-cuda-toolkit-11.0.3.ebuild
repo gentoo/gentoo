@@ -184,8 +184,8 @@ src_install() {
 	fi
 
 	# Add include and lib symlinks
-	dosym "targets/x86_64-linux/include" ${ecudadir}/include
-	dosym "targets/x86_64-linux/lib" ${ecudadir}/lib64
+	dosym "targets/x86_64-linux/include" ${cudadir}/include
+	dosym "targets/x86_64-linux/lib" ${cudadir}/lib64
 
 	newenvd - 99cuda <<-EOF
 		PATH=${ecudadir}/bin$(usex vis-profiler ":${ecudadir}/libnvvp" "")
@@ -203,7 +203,7 @@ src_install() {
 }
 
 pkg_postinst_check() {
-	local a="$(${EROOT}/opt/cuda/bin/cuda-config -s)"
+	local a="$(${EROOT%/}/opt/cuda/bin/cuda-config -s)"
 	local b="0.0"
 	local v
 	for v in ${a}; do
