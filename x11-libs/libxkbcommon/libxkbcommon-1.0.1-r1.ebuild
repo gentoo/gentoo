@@ -23,7 +23,10 @@ SLOT="0"
 BDEPEND="
 	sys-devel/bison
 	doc? ( app-doc/doxygen )"
-RDEPEND="X? ( >=x11-libs/libxcb-1.10:=[${MULTILIB_USEDEP},xkb] )"
+RDEPEND="
+	X? ( >=x11-libs/libxcb-1.10:=[${MULTILIB_USEDEP},xkb] )
+	dev-libs/libxml2[${MULTILIB_USEDEP}]
+"
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
 
