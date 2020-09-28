@@ -8141,7 +8141,7 @@ dev-python/fakeredis 1.4.3: Fake implementation of redis API for testing purpose
 dev-python/falcon 2.0.0: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.15: Python package that provides useful locks
 dev-python/fcl 0.0.12: Python bindings for the Flexible Collision Library
-dev-python/feedgenerator 1.9.1: Standalone version of django.utils.feedgenerator
+dev-python/feedgenerator 1.9.1 1.9.1-r1: Standalone version of django.utils.feedgenerator
 dev-python/feedparser 5.2.1 6.0.0_beta1 6.0.1: Parse RSS and Atom feeds in Python
 dev-python/fido2 0.7.3 0.8.1: Python based FIDO 2.0 library
 dev-python/fields 5.0.0-r2: Container class boilerplate killer
