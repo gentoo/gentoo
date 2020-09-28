@@ -63,6 +63,10 @@ esac
 
 if [[ ! ${_LUA_R0} ]]; then
 
+if [[ ${_LUA_SINGLE_R0} ]]; then
+	die 'lua.eclass cannot be used with lua-single.eclass.'
+fi
+
 inherit multibuild lua-utils
 
 fi
