@@ -28,7 +28,7 @@ REQUIRED_USE="
 	examples? ( eet svg )
 	gles2-only? ( || ( wayland X ) )
 	pulseaudio? ( sound )
-	wayland? ( gles2-only !opengl )
+	wayland? ( gles2-only !opengl || ( elogind systemd ) )
 	xim? ( X )
 	xpresent? ( X )
 "
