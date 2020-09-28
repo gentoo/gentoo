@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="OpenSource 2D MMORPG client for Evol Online and The Mana World"
-HOMEPAGE="http://manaplus.evolonline.org"
+HOMEPAGE="https://manaplus.org"
 if [[ ${PV} == 9999 ]] ; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/ManaPlus/ManaPlus.git"
