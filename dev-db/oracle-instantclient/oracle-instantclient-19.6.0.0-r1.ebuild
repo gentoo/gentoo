@@ -73,7 +73,7 @@ SRC_URI="
 LICENSE="OTN"
 SLOT="0/${MY_SOVER}"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="mirror splitdebug"
+RESTRICT="mirror splitdebug test"
 
 DEPEND="app-arch/unzip"
 RDEPEND="
