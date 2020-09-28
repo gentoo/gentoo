@@ -12368,7 +12368,7 @@ lxde-base/lxpanel 0.9.2 0.9.3 0.9.3-r1 0.10.0: Lightweight X11 desktop panel for
 lxde-base/lxrandr 0.3.1 0.3.1-r1 0.3.2: LXDE GUI interface to RandR extention
 lxde-base/lxsession 0.5.4-r1: LXDE session manager
 lxde-base/lxtask 0.1.8 0.1.8-r1 0.1.9: LXDE Task manager
-lxde-base/lxterminal 0.3.1 0.3.2: Lightweight vte-based tabbed terminal emulator for LXDE
+lxde-base/lxterminal 0.3.1 0.3.2 0.3.2-r1: Lightweight vte-based tabbed terminal emulator for LXDE
 lxde-base/menu-cache 1.1.0: Library to create and utilize caches to speed up freedesktop application menus
 lxqt-base/liblxqt 0.15.1: Common base library for the LXQt desktop environment
 lxqt-base/libsysstat 0.4.3: Qt GUI for System Statistics
