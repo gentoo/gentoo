@@ -3,7 +3,6 @@
 
 EAPI=7
 
-ECM_HANDBOOK="forceoptional"
 inherit ecm
 
 DESCRIPTION="Software to manage quotes and invoices in small enterprises"
@@ -17,26 +16,29 @@ IUSE="pim"
 
 DEPEND="
 	dev-cpp/ctemplate
+	dev-libs/grantlee:5
 	dev-qt/qtgui:5
 	dev-qt/qtsql:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	kde-frameworks/kconfig:5
-	kde-frameworks/kconfigwidgets:5
 	kde-frameworks/kcontacts:5
-	kde-frameworks/kcoreaddons:5
 	kde-frameworks/ki18n:5
 	pim? (
-		kde-apps/akonadi:5
-		kde-apps/akonadi-contacts:5
+		>=kde-apps/akonadi-19.04.3:5
+		>=kde-apps/akonadi-contacts-19.04.3:5
+		kde-frameworks/kcoreaddons:5
 	)
 "
 RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS Changes.txt README.md Releasenotes.txt TODO )
 
+PATCHES=( "${FILESDIR}/${P}-i18n-warning.patch" )
+
 src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_DISABLE_FIND_PACKAGE_Asciidoctor=ON
 		$(cmake_use_find_package pim KF5Akonadi)
 		$(cmake_use_find_package pim KF5AkonadiContact)
 	)

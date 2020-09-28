@@ -5,7 +5,7 @@ EAPI=7
 
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="optional"
-KFMIN=5.72.0
+KFMIN=5.70.0
 QTMIN=5.14.2
 VIRTUALX_REQUIRED="test"
 inherit ecm kde.org optfeature
@@ -49,6 +49,11 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=dev-qt/qtconcurrent-${QTMIN}:5
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-CVE-2020-16116.patch"
+	"${FILESDIR}/${P}-CVE-2020-24654.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
