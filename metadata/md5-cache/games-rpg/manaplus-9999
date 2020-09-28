@@ -3,7 +3,7 @@ DEFINED_PHASES=configure install prepare test unpack
 DEPEND=>=dev-games/physfs-1.0.0 media-fonts/dejavu media-fonts/liberation-fonts media-fonts/mplus-outline-fonts media-fonts/wqy-microhei media-libs/libpng:0= net-misc/curl sys-libs/zlib x11-apps/xmessage x11-libs/libX11 x11-misc/xdg-utils mumble? ( media-sound/mumble ) nls? ( virtual/libintl ) opengl? ( virtual/opengl ) pugixml? ( dev-libs/pugixml ) !pugixml? ( dev-libs/libxml2 ) sdl2? ( media-libs/libsdl2[X,opengl?,video] media-libs/sdl2-gfx media-libs/sdl2-image[png] media-libs/sdl2-mixer[vorbis] media-libs/sdl2-net media-libs/sdl2-ttf ) !sdl2? ( media-libs/libsdl[X,opengl?,video] media-libs/sdl-gfx media-libs/sdl-image[png] media-libs/sdl-mixer[vorbis] media-libs/sdl-net media-libs/sdl-ttf ) virtual/pkgconfig nls? ( sys-devel/gettext )
 DESCRIPTION=OpenSource 2D MMORPG client for Evol Online and The Mana World
 EAPI=7
-HOMEPAGE=http://manaplus.evolonline.org
+HOMEPAGE=https://manaplus.org
 IUSE=mumble nls opengl pugixml +sdl2 test
 LICENSE=GPL-2+
 PROPERTIES=live
@@ -11,4 +11,4 @@ RDEPEND=>=dev-games/physfs-1.0.0 media-fonts/dejavu media-fonts/liberation-fonts
 RESTRICT=!test? ( test )
 SLOT=0
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=279033b238057c603338d092dd40418d
+_md5_=b4e0b622afb004e8f0d7222bcfb7ab4c
