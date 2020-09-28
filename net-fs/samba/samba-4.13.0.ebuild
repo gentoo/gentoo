@@ -119,6 +119,7 @@ REQUIRED_USE="
 	cluster? ( ads )
 	gpg? ( addc )
 	test? ( python )
+	!ads? ( !addc )
 	?? ( system-heimdal system-mitkrb5 )
 	${PYTHON_REQUIRED_USE}
 "
