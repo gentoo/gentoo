@@ -24,6 +24,8 @@ BDEPEND="
 	test? (
 		dev-python/capturer[${PYTHON_USEDEP}]
 		dev-python/coloredlogs[${PYTHON_USEDEP}]
+		dev-python/docutils[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
 	)
 "
 
