@@ -8,10 +8,10 @@ ECM_TEST="optional"
 KFMIN=5.72.0
 QTMIN=5.14.2
 VIRTUALX_REQUIRED="test"
-inherit ecm kde.org
+inherit ecm kde.org optfeature
 
-DESCRIPTION="KDE Archiving tool"
-HOMEPAGE="https://kde.org/applications/utilities/org.kde.ark
+DESCRIPTION="File archiver by KDE"
+HOMEPAGE="https://kde.org/applications/en/ark
 https://utils.kde.org/projects/ark/"
 
 LICENSE="GPL-2" # TODO: CHECK
@@ -50,9 +50,6 @@ DEPEND="${RDEPEND}
 	>=dev-qt/qtconcurrent-${QTMIN}:5
 "
 
-# bug #560548, last checked with 16.04.1
-RESTRICT+=" test"
-
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package zip LibZip)
@@ -61,28 +58,22 @@ src_configure() {
 	ecm_src_configure
 }
 
+src_test() {
+	local myctestargs=(
+		-E "(plugins-clirartest)"
+	)
+
+	ecm_src_test
+}
+
 pkg_postinst() {
-	ecm_pkg_postinst
-
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		if ! has_version app-arch/rar; then
-			elog "For creating/extracting rar archives, installing app-arch/rar is required."
-			if ! has_version app-arch/unar && ! has_version app-arch/unrar; then
-				elog "Alternatively, for only extracting rar archives, install app-arch/unar (free) or app-arch/unrar (non-free)."
-			fi
-		fi
-
-		has_version app-arch/p7zip || \
-			elog "For handling 7-Zip archives, install app-arch/p7zip."
-
-		has_version app-arch/lrzip || \
-			elog "For handling lrz archives, install app-arch/lrzip."
-
-		if ! has_version kde-misc/markdownpart:${SLOT} ||
-				! has_version kde-misc/kmarkdownwebview:${SLOT} ; then
-			elog "For markdown support in text previews, install one of:"
-			elog "   kde-misc/markdownpart:${SLOT}"
-			elog "   kde-misc/kmarkdownwebview:${SLOT}"
-		fi
+		elog "Optional dependencies:"
+		optfeature "rar archive creation/extraction" app-arch/rar
+		optfeature "rar archive extraction only" app-arch/unar app-arch/unrar
+		optfeature "7-Zip archive support" app-arch/p7zip
+		optfeature "lrz archive support" app-arch/lrzip
+		optfeature "markdown support in text previews" kde-misc/markdownpart:${SLOT} kde-misc/kmarkdownwebview:${SLOT}
 	fi
+	ecm_pkg_postinst
 }
