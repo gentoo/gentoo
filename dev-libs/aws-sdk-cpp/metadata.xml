@@ -206,7 +206,7 @@
 			Set up, manage, and scale distributed in-memory cache environments in the AWS Cloud
 		</flag>
 		<flag name="elasticbeanstalk">Quickly deploy and manage applications in the AWS Cloud.</flag>
-		<flag name="elasticinference">
+		<flag name="elastic-inference">
 			Amazon Elastic Inference is a service that allows you to attach low-cost GPU-powered
 			acceleration to many Amazon machine instances in order to reduce the cost of running deep
 			learning inference by up to 75%. Amazon Elastic Inference supports TensorFlow, Apache MXNet, and

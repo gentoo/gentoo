@@ -5,8 +5,8 @@ EAPI=7
 
 inherit cmake
 
-DESCRIPTION="Core c99 package for AWS SDK for C"
-HOMEPAGE="https://github.com/awslabs/aws-c-common"
+DESCRIPTION="Cross-Platform HW accelerated CRC32c and CRC32 with software fallbacks"
+HOMEPAGE="https://github.com/awslabs/aws-checksums"
 SRC_URI="https://github.com/awslabs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
@@ -15,6 +15,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RESTRICT="!test? ( test )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-cmake-prefix.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(

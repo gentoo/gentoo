@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>sven.eden@prydeworx.com</email>
-		<name>Sven Eden</name>
+		<email>gentoo@retornaz.com</email>
+		<name>Quentin Retornaz</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
