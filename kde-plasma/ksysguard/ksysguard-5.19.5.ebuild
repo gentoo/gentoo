@@ -16,6 +16,8 @@ SLOT="5"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="lm-sensors pcap"
 
+RESTRICT+=" test" # bug 727848
+
 DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
