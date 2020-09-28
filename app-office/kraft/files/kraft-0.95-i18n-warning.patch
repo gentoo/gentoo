@@ -1,0 +1,35 @@
+From 1e8f15a6c54c0c29cb463deacefd1fe8b32ad41d Mon Sep 17 00:00:00 2001
+From: Klaas Freitag <kraft@freisturz.de>
+Date: Wed, 2 Sep 2020 18:32:14 +0200
+Subject: [PATCH] Fix call to i18n - same problem as before....
+
+Fixes #85
+---
+ src/prefsdialog.cpp | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/prefsdialog.cpp b/src/prefsdialog.cpp
+index 13b4bcb..ddce27d 100644
+--- a/src/prefsdialog.cpp
++++ b/src/prefsdialog.cpp
+@@ -335,15 +335,15 @@ QWidget* PrefsDialog::docTab()
+   const QDate d = QDate::currentDate();
+   mCbDateFormats->setToolTip( i18n( "The default date format for documents." ) );
+   QString formattedDate = d.toString(Qt::ISODate);
+-  mCbDateFormats->insertItem( 0, i18n("ISO-Format: %1").arg(formattedDate));
++  mCbDateFormats->insertItem( 0, i18n("ISO-Format: %1", formattedDate));
+   formattedDate = d.toString(Qt::DefaultLocaleShortDate);
+-  mCbDateFormats->insertItem( 1, i18n("Short-Date: %1").arg(formattedDate));
++  mCbDateFormats->insertItem( 1, i18n("Short-Date: %1", formattedDate));
+   formattedDate = d.toString(Qt::DefaultLocaleLongDate);
+-  mCbDateFormats->insertItem( 2, i18n("Long-Date: %1").arg(formattedDate));
++  mCbDateFormats->insertItem( 2, i18n("Long-Date: %1", formattedDate));
+   formattedDate = d.toString(Qt::RFC2822Date);
+-  mCbDateFormats->insertItem( 3, i18n("RFC 2822-Format: %1").arg(formattedDate));
++  mCbDateFormats->insertItem( 3, i18n("RFC 2822-Format: %1", formattedDate));
+   formattedDate = d.toString("dd.MM.yyyy");
+-  mCbDateFormats->insertItem( 4, i18n("\"German Format\": %1").arg(formattedDate));
++  mCbDateFormats->insertItem( 4, i18n("\"German Format\": %1", formattedDate));
+   mCbDateFormats->insertItem( 5, i18n("Custom Setting in Settingsfile"));
+   vboxLay->addLayout( butLay );
+ 
