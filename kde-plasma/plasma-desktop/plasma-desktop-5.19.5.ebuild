@@ -18,7 +18,7 @@ SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${XORGHDRS}.tar.xz"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="+fontconfig ibus scim +semantic-desktop"
+IUSE="emoji +fontconfig ibus scim +semantic-desktop"
 
 COMMON_DEPEND="
 	>=dev-qt/qtconcurrent-${QTMIN}:5
@@ -80,6 +80,11 @@ COMMON_DEPEND="
 	x11-libs/libXi
 	x11-libs/libxcb[xkb]
 	x11-libs/libxkbfile
+	emoji? (
+		app-i18n/ibus[emoji]
+		dev-libs/glib:2
+		media-fonts/noto-emoji
+	)
 	fontconfig? (
 		media-libs/fontconfig
 		media-libs/freetype
@@ -116,6 +121,7 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${WORKDIR}/${XORGHDRS}/override-include-dirs.patch" # downstream patch
+	"${FILESDIR}/${P}-force-emojier-use-color-emoji-font.patch"
 )
 
 src_prepare() {
@@ -137,7 +143,7 @@ src_configure() {
 		$(cmake_use_find_package scim SCIM)
 		$(cmake_use_find_package semantic-desktop KF5Baloo)
 	)
-	if ! use ibus; then
+	if ! use emoji && ! use ibus; then
 		mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_IBus=ON )
 	fi
 
