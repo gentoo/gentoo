@@ -21,7 +21,7 @@ IUSE="gles2-only ieee1394 +opengl +pci wayland"
 REQUIRED_USE="wayland? ( || ( opengl gles2-only ) )"
 
 BDEPEND=">=dev-util/cmake-3.14.3"
-COMMON_DEPEND="
+DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtdeclarative-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5[gles2-only=]
@@ -55,10 +55,7 @@ COMMON_DEPEND="
 		media-libs/mesa[egl]
 	)
 "
-DEPEND="${COMMON_DEPEND}
-	>=kde-frameworks/plasma-${KFMIN}:5
-"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	>=dev-qt/qtquickcontrols2-${QTMIN}:5
 	>=kde-frameworks/kirigami-${KFMIN}:5
 	>=kde-plasma/kde-cli-tools-${PVCUT}:5
