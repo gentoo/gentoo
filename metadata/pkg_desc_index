@@ -8170,7 +8170,7 @@ dev-python/flask-mail 0.9.1-r1: Flask extension for sending email
 dev-python/flask-migrate 2.5.2: SQLAlchemy database migrations for Flask applications using Alembic
 dev-python/flask-mongoengine 0.9.5: Flask support for MongoDB and with WTF model forms
 dev-python/flask-nav 0.6-r2: Easily create navigation for Flask applications.
-dev-python/flask-paginate 0.5.3-r1: Pagination support for flask
+dev-python/flask-paginate 0.7.0: Pagination support for flask
 dev-python/flask-paranoid 0.2.0-r1: Simple user session protection extension for Flask
 dev-python/flask-principal 0.4.0-r1: Identity management for flask
 dev-python/flask-restful 0.3.8: Simple framework for creating REST APIs
