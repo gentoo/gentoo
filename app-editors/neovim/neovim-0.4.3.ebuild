@@ -26,7 +26,6 @@ BDEPEND="
 	virtual/libintl
 	virtual/pkgconfig
 "
-
 DEPEND="
 	dev-libs/libuv:0=
 	>=dev-libs/libvterm-0.1.2
@@ -45,15 +44,12 @@ DEPEND="
 		>=dev-libs/unibilium-2.0.0:0=
 	)
 "
-
 RDEPEND="
 	${DEPEND}
 	app-eselect/eselect-vi
 "
 
 CMAKE_BUILD_TYPE=Release
-
-PATCHES=( "${FILESDIR}"/${P}-gcc-10-fix.patch )
 
 src_prepare() {
 	# use our system vim dir

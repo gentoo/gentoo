@@ -33,7 +33,6 @@ BDEPEND="
 # Once dev-lua/busted has luajit support, we can add tests.
 # bug #584694
 DEPEND="
-	dev-libs/libutf8proc:=
 	dev-libs/libuv:0=
 	>=dev-libs/libvterm-0.1.2
 	dev-libs/msgpack:0=
