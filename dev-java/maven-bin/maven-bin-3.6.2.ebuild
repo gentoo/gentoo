@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,6 +30,11 @@ S="${WORKDIR}/${MY_P}"
 MAVEN="${PN}-${SLOT}"
 MAVEN_SHARE="/usr/share/${MAVEN}"
 
+QA_FLAGS_IGNORED=(
+	"${MAVEN_SHARE}/lib/jansi-native/linux32/libjansi.so"
+	"${MAVEN_SHARE}/lib/jansi-native/linux64/libjansi.so"
+)
+
 # TODO:
 # We should use jars from packages, instead of what is bundled.
 src_install() {
@@ -48,6 +53,9 @@ src_install() {
 	# See bug #342901.
 	echo "CONFIG_PROTECT=\"${MAVEN_SHARE}/conf\"" > "${T}/25${MAVEN}" || die
 	doenvd "${T}/25${MAVEN}"
+
+	# remove broken useless files (bug #734906 and #704618)
+	rm -r "${ED}"/${MAVEN_SHARE}/lib/jansi-native/freebsd* || die "Failed to remove FreeBSD files"
 }
 
 pkg_postinst() {
