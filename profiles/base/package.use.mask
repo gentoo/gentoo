@@ -643,3 +643,8 @@ net-proxy/squid ipf-transparent pf-transparent
 # Alexis Ballier <aballier@gentoo.org> (2011-02-16)
 # Win32 specific useflag for vlc. Can be used for cross-compiling.
 media-video/vlc directx
+
+# Ross Charles Campbell <rossbridger.cc@gmail.com> (2020-09-21)
+# Since >=dev-games/ogre-1.11.2 is masked, mask contribovis USE to
+# make repoman happy
+media-libs/opencv contribovis
