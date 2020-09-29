@@ -16,6 +16,6 @@ index 4195b076..af8a80af 100644
  Icon=subtitlecomposer
  Exec=subtitlecomposer %f
 -MimeType=text/x-ssa;text/x-ass;text/x-microdvd;text/x-mpsub;application/x-subrip;text/x-subviewer;text/x-mplsub;text/x-tmplayer;text/x-tmplayer+;application/x-vobsub;subpicture/x-pgs;video/mp2t;application/x-vobsub;video/x-matroska;video/mp4;
-+MimeType=text/x-ssa;text/x-ass;text/x-microdvd;text/x-mpsub;application/x-subrip;text/x-subviewer;text/x-mplsub;text/x-tmplayer;text/x-tmplayer+;application/x-vobsub;video/mp2t;application/x-vobsub;video/x-matroska;video/mp4;
++MimeType=text/x-ssa;text/x-ass;text/x-microdvd;text/x-mpsub;application/x-subrip;text/x-subviewer;text/x-mplsub;text/x-tmplayer;text/x-tmplayer+;video/mp2t;application/x-vobsub;video/x-matroska;video/mp4;
  Terminal=false
  Categories=Qt;KDE;AudioVideo;
