@@ -37,8 +37,8 @@ DEPEND="
 		libressl? ( dev-libs/libressl:0= )
 	)
 	>=dev-libs/aws-c-common-0.4.26:=[static-libs=]
-	dev-libs/aws-checksums
 	>=dev-libs/aws-c-event-stream-0.1.6:=[static-libs=]
+	>=dev-libs/aws-checksums-0.1.9:=[static-libs=]
 	sys-libs/zlib
 "
 RDEPEND="
@@ -62,6 +62,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-upgrade_scripts_generate_sdks_py-3.9.patch
 	"${FILESDIR}"/${PN}-upgrade_scripts_renew_license_py-3.9.patch
 	"${FILESDIR}"/${PN}-upgrade_scripts_run_integration_tests_py-3.9.patch
+	"${FILESDIR}"/${P}-remove_Werror_from_FLAGS.patch
 )
 
 src_configure() {
