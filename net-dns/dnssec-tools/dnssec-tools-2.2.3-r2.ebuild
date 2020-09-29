@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit readme.gentoo-r1 systemd
+inherit perl-module readme.gentoo-r1 systemd
 
 DESCRIPTION="Tools to ease the deployment of DNSSEC related technologies"
 HOMEPAGE="https://dnssec-tools.org/"
@@ -13,6 +13,9 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="static-libs"
+
+# There is no test case to be generated.
+RESTRICT="test"
 
 RDEPEND="
 	dev-lang/perl:=
