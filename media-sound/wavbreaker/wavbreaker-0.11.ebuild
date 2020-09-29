@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools
+inherit autotools xdg
 
 DESCRIPTION="wavbreaker/wavmerge GTK+ utility to break or merge WAV files"
 HOMEPAGE="http://wavbreaker.sourceforge.net"
