@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit desktop eutils multilib gnome2-utils
+inherit desktop eutils multilib gnome2-utils xdg
 
 MY_PN="${PN}-portable"
 MY_P="${MY_PN}-${PV}"
@@ -81,9 +81,11 @@ pkg_preinst() {
 
 pkg_postinst() {
 	gnome2_icon_cache_update
+	xdg_pkg_postinst
 	elog "For audio notes support, install media-sound/lame"
 }
 
 pkg_postrm() {
 	gnome2_icon_cache_update
+	xdg_pkg_postrm
 }

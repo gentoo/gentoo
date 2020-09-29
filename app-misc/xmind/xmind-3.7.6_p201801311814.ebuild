@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit desktop font gnome2-utils
+inherit desktop font gnome2-utils xdg
 
 MY_PV="8-update7"
 MY_P="${PN}-${MY_PV}-linux"
@@ -85,9 +85,11 @@ pkg_preinst() {
 pkg_postinst() {
 	gnome2_icon_cache_update
 	font_pkg_postinst
+	xdg_pkg_postinst
 	elog "For audio notes support, install media-sound/lame"
 }
 
 pkg_postrm() {
 	gnome2_icon_cache_update
+	xdg_pkg_postrm
 }
