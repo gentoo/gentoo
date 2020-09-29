@@ -3080,7 +3080,7 @@ app-text/xmlformat 1.04: Reformat XML documents to your custom style
 app-text/xmlstarlet 1.6.1: A set of tools to transform, query, validate, and edit XML documents
 app-text/xmlto 0.0.28-r3: script for converting XML and DocBook documents to a variety of output formats
 app-text/xournal 0.4.8.2016 9999: An application for notetaking, sketching, and keeping a journal using a stylus
-app-text/xournalpp 1.0.17 1.0.18 9999: Handwriting notetaking software with PDF annotation support
+app-text/xournalpp 1.0.18-r1 9999: Handwriting notetaking software with PDF annotation support
 app-text/xpdf 4.02-r4: The PDF viewer and tools
 app-text/yelp-tools 3.32.2: Collection of tools for building and converting documentation
 app-text/yodl 4.02.01 4.02.02-r1: Your Own Document Language: a pre-document language and tools to process it
