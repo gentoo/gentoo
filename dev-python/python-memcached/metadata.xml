@@ -10,10 +10,12 @@
 		<name>Python</name>
 	</maintainer>
 	<longdescription lang="en">
-This is a Python based API (implemented in 100% python) for communicating with
-the memcached distributed memory object cache daemon.
-</longdescription>
+		This is a Python based API (implemented in 100% python) for communicating with
+		the memcached distributed memory object cache daemon.
+	</longdescription>
 	<upstream>
 		<remote-id type="pypi">python-memcached</remote-id>
+		<remote-id type="github">linsomniac/python-memcached</remote-id>
+		<bugs-to>https://github.com/linsomniac/python-memcached/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
