@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit qmake-utils readme.gentoo-r1
+inherit qmake-utils readme.gentoo-r1 xdg
 
 DESCRIPTION="A nice LaTeX-IDE"
 HOMEPAGE="https://xm1math.net/texmaker/"
