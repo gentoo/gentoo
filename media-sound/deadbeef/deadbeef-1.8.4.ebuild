@@ -21,6 +21,7 @@ REQUIRED_USE="
 DEPEND="
 	x11-libs/gtk+:3
 	net-misc/curl:0=
+	dev-libs/jansson
 	aac? ( media-libs/faad2 )
 	alsa? ( media-libs/alsa-lib )
 	cdda? (
@@ -57,7 +58,7 @@ PATCHES=(
 src_prepare() {
 	default
 
-	drop_from_lingaus() {
+	drop_from_linguas() {
 		sed "/${1}/d" -i "${S}/po/LINGUAS" || die
 	}
 
@@ -71,7 +72,7 @@ src_prepare() {
 		EOF
 	}
 
-	l10n_for_each_disabled_locale_do drop_from_lingaus || die
+	l10n_for_each_disabled_locale_do drop_from_linguas || die
 
 	eautopoint --force
 	eautoreconf
@@ -80,7 +81,7 @@ src_prepare() {
 	drop_and_stub "${S}/intl"
 
 	# Plugins that are undesired for whatever reason, candidates for unbundling and such.
-	for	i in adplug alac dumb ffap mms gme lfs mono2stereo psf sc60 shn sid soundtouch wma; do
+	for i in adplug alac dumb ffap mms gme lfs mono2stereo psf sc60 shn sid soundtouch wma; do
 		drop_and_stub "${S}/plugins/${i}"
 	done
 
