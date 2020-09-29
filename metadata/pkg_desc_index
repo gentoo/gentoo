@@ -8343,7 +8343,7 @@ dev-python/jupyter 1.0.0-r3: Jupyter metapackage. Install all the Jupyter compon
 dev-python/jupyter_client 6.1.5 6.1.6-r1 6.1.6-r2: Jupyter protocol implementation and client libraries
 dev-python/jupyter_console 6.1.0-r2: A terminal-based console frontend for Jupyter kernels
 dev-python/jupyter_core 4.6.3 4.6.3-r1: Core common functionality of Jupyter projects
-dev-python/jupyterlab_pygments 0.1.1: Pygments theme making use of JupyterLab CSS variables
+dev-python/jupyterlab_pygments 0.1.1 0.1.2: Pygments theme making use of JupyterLab CSS variables
 dev-python/jwcrypto 0.7.0 0.8.0: Implements JWK,JWS,JWE specifications using python-cryptography
 dev-python/kafka-python 1.4.7: Kafka protocol support in Python
 dev-python/kaitaistruct 0.8: Kaitai Struct runtime for Python
@@ -8588,7 +8588,7 @@ dev-python/pep8 1.7.1: Python style guide checker
 dev-python/pew 1.1.1: tool to manage multiple virtualenvs written in pure python
 dev-python/pexpect 4.8.0-r1: Python module for spawning child apps and responding to expected patterns
 dev-python/pgspecial 1.11.9: Python implementation of postgres meta commands
-dev-python/phonenumbers 8.12.8 8.12.9: Python port of Google's libphonenumber
+dev-python/phonenumbers 8.12.8 8.12.9 8.12.10: Python port of Google's libphonenumber
 dev-python/picklemagic 0.0_pre20160415: A library for analysing python pickles safely
 dev-python/pickleshare 0.7.5: A small 'shelve' like datastore with concurrency support
 dev-python/pid 2.2.5: Pidfile featuring stale detection and file-locking
@@ -17567,8 +17567,8 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.60 5.4.61 5.4.62 5.4.63 5.4.64 5.4.65 5.4.66 5.4.67 5.4.68 5.7.17 5.7.18 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6 5.8.7 5.8.8 5.8.9 5.8.10 5.8.11 5.8.12: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.60 5.4.61 5.4.62 5.4.62-r1 5.4.63 5.4.63-r1 5.4.64 5.4.64-r1 5.4.65 5.4.65-r1 5.4.66 5.4.66-r1 5.4.67 5.4.67-r1 5.4.68 5.4.68-r1 5.7.17 5.7.18 5.7.19 5.7.19-r1 5.8.3 5.8.4 5.8.5 5.8.5-r1 5.8.6 5.8.6-r1 5.8.7 5.8.7-r1 5.8.8 5.8.8-r1 5.8.9 5.8.9-r1 5.8.10 5.8.10-r1 5.8.11 5.8.11-r1 5.8.12 5.8.12-r1: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.64 5.4.66 5.4.68 5.8.12: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.64 5.4.64-r1 5.4.66 5.4.66-r1 5.4.68 5.4.68-r1 5.8.12 5.8.12-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.233 4.4.236 4.4.237 4.9.233 4.9.236 4.9.237 4.14.194 4.14.198 4.14.199 4.19.141 4.19.146 4.19.147 4.19.148 5.4.60 5.4.66 5.4.67 5.4.68 5.8.8 5.8.9 5.8.10 5.8.11 5.8.12: Full sources including the Gentoo patchset for the 5.8 kernel tree
 sys-kernel/git-sources 5.9_rc1 5.9_rc2 5.9_rc3 5.9_rc4 5.9_rc5 5.9_rc6 5.9_rc7: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17583,7 +17583,7 @@ sys-kernel/pf-sources 5.6_p8 5.7_p5 5.7_p7 5.8_p1 5.8_p2 5.8_p3 5.8_p4 5.8_p5 5.
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p20190925 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.225_p198 4.4.231_p202 4.9.227_p146 4.9.232_p150 4.14.184_p84 4.14.192_p91 4.19.127_p54 4.19.135_p60 5.4.44_p27 5.4.54_p33 5.6.17_p10 5.6.19_p11: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.60 5.4.61 5.4.62 5.4.63 5.4.64 5.4.65 5.4.66 5.4.67 5.4.68 5.7.17 5.7.18 5.7.19 5.8.3 5.8.4 5.8.5 5.8.6 5.8.7 5.8.8 5.8.9 5.8.10 5.8.11 5.8.12: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.64 5.4.66 5.4.68 5.8.12: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.237 4.9.237 4.14.199 4.19.148 5.4.68 5.7.18 5.8.12: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
