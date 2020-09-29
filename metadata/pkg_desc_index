@@ -8888,7 +8888,7 @@ dev-python/python-magic 0.4.18: Access the libmagic file type identification lib
 dev-python/python-magnumclient 2.12.0: A client for the OpenStack Magnum API
 dev-python/python-manilaclient 1.27.0: A client for the OpenStack Manila API
 dev-python/python-markdown-math 0.7: Math extension for Python-Markdown
-dev-python/python-memcached 1.59: Pure python memcached client
+dev-python/python-memcached 1.59 1.59-r1: Pure python memcached client
 dev-python/python-mimeparse 1.6.0-r3: Basic functions for handling mime-types in python
 dev-python/python-mistralclient 3.8.1: A client for the OpenStack Mistral API
 dev-python/python-monascaclient 1.15.0: A client for the OpenStack Monasca API
