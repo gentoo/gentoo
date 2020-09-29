@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,6 +6,7 @@ EAPI=7
 DISTUTILS_SINGLE_IMPL=1
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="sqlite"
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1 bash-completion-r1
 
@@ -21,36 +22,23 @@ else
 fi
 
 DESCRIPTION="Media library management system for obsessive-compulsive music geeks"
-HOMEPAGE="http://beets.io/ https://pypi.org/project/beets/"
+HOMEPAGE="https://beets.io/ https://pypi.org/project/beets/"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="badfiles chromaprint discogs doc ffmpeg gstreamer icu lastfm mpd replaygain test thumbnail webserver"
+IUSE="badfiles chromaprint cors discogs doc ffmpeg gstreamer icu lastfm mpd replaygain test thumbnail webserver"
 
-RDEPEND="${DEPEND}"
-DEPEND="
+RDEPEND="
 	$(python_gen_cond_dep '
-		test? (
-			dev-python/wheel[${PYTHON_MULTI_USEDEP}]
-			dev-python/beautifulsoup[${PYTHON_MULTI_USEDEP}]
-			dev-python/flask[${PYTHON_MULTI_USEDEP}]
-			dev-python/mock[${PYTHON_MULTI_USEDEP}]
-			dev-python/rarfile[${PYTHON_MULTI_USEDEP}]
-			dev-python/responses[${PYTHON_MULTI_USEDEP}]
-			dev-python/pyxdg[${PYTHON_MULTI_USEDEP}]
-			dev-python/requests-oauthlib[${PYTHON_MULTI_USEDEP}]
-		)
 		>=dev-python/jellyfish-0.7.1[${PYTHON_MULTI_USEDEP}]
 		dev-python/munkres[${PYTHON_MULTI_USEDEP}]
+		>=media-libs/mutagen-1.33[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/python-musicbrainz-ngs-0.4[${PYTHON_MULTI_USEDEP}]
 		dev-python/pyyaml[${PYTHON_MULTI_USEDEP}]
-		dev-python/requests[${PYTHON_MULTI_USEDEP}]
 		dev-python/requests-oauthlib[${PYTHON_MULTI_USEDEP}]
+		dev-python/requests[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/six-1.9[${PYTHON_MULTI_USEDEP}]
 		dev-python/unidecode[${PYTHON_MULTI_USEDEP}]
-		>=media-libs/mutagen-1.33[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/confuse-1.0.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/mediafile-0.2.0[${PYTHON_MULTI_USEDEP}]
 		badfiles? (
 			media-libs/flac
 			media-sound/mp3val
@@ -59,14 +47,22 @@ DEPEND="
 			dev-python/pyacoustid[${PYTHON_MULTI_USEDEP}]
 			media-libs/chromaprint[tools]
 		)
-		discogs? ( dev-python/discogs-client[${PYTHON_MULTI_USEDEP}] )
-		ffmpeg? ( media-video/ffmpeg:0[encode] )
-		gstreamer? (
-			media-libs/gst-plugins-good:1.0
-			media-libs/gst-plugins-bad:1.0
+		discogs? (
+			dev-python/discogs-client[${PYTHON_MULTI_USEDEP}]
 		)
-		icu? ( dev-db/sqlite[icu] )
-		lastfm? ( dev-python/pylast[${PYTHON_MULTI_USEDEP}] )
+		ffmpeg? (
+			media-video/ffmpeg:0[encode]
+		)
+		gstreamer? (
+			media-libs/gst-plugins-bad:1.0
+			media-libs/gst-plugins-good:1.0
+		)
+		icu? (
+			dev-db/sqlite[icu]
+		)
+		lastfm? (
+			dev-python/pylast[${PYTHON_MULTI_USEDEP}]
+		)
 		mpd? (
 			dev-python/bluelet[${PYTHON_MULTI_USEDEP}]
 			dev-python/python-mpd[${PYTHON_MULTI_USEDEP}]
@@ -87,13 +83,32 @@ DEPEND="
 		)
 		webserver? (
 			dev-python/flask[${PYTHON_MULTI_USEDEP}]
-			dev-python/flask-cors[${PYTHON_MULTI_USEDEP}]
+			cors? (
+				dev-python/flask-cors[${PYTHON_MULTI_USEDEP}]
+			)
 		)
 	')"
+DEPEND="
+	${RDEPEND}
+"
 BDEPEND="
+	dev-python/sphinx
 	$(python_gen_cond_dep '
-		dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
+		test? (
+			dev-python/beautifulsoup[${PYTHON_MULTI_USEDEP}]
+			dev-python/flask[${PYTHON_MULTI_USEDEP}]
+			dev-python/mock[${PYTHON_MULTI_USEDEP}]
+			dev-python/pyxdg[${PYTHON_MULTI_USEDEP}]
+			dev-python/rarfile[${PYTHON_MULTI_USEDEP}]
+			dev-python/responses[${PYTHON_MULTI_USEDEP}]
+			dev-python/wheel[${PYTHON_MULTI_USEDEP}]
+		)
 	')"
+
+PATCHES=(
+	"${FILESDIR}/${PV}-0001-compatibility-with-breaking-changes-to-the-ast-modul.patch"
+	"${FILESDIR}/${PV}-0002-Disable-test_completion.patch"
+)
 
 DOCS=( README.rst docs/changelog.rst )
 
@@ -102,59 +117,28 @@ distutils_enable_tests pytest
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
-	rm_use_plugins() {
-		[[ -n "${1}" ]] || die "rm_use_plugins: No use option given"
-		local use=${1}
-		local plugins=${use}
-		use ${use} && return
-		einfo "no ${use}:"
-		[[ $# -gt 1 ]] && plugins="${@:2}"
-		for arg in ${plugins[@]}; do
-			einfo "  removing ${arg}"
-			if [[ -e "beetsplug/${arg}.py" ]]; then
-				rm beetsplug/${arg}.py || die "Unable to remove ${arg} plugin"
-			fi
-			if [[ -d "beetsplug/${arg}" ]]; then
-				rm -r beetsplug/${arg} || die "Unable to remove ${arg} plugin"
-			fi
-			sed -e "s:'beetsplug.${arg}',::" -i setup.py || \
-				die "Unable to disable ${arg} plugin "
-		done
-	}
-
-	rm_use_plugins chromaprint chroma
-	rm_use_plugins ffmpeg convert
-	rm_use_plugins icu loadext
-	rm_use_plugins lastfm lastgenre lastimport
-	rm_use_plugins mpd bpd mpdstats
-	rm_use_plugins webserver web
-	rm_use_plugins thumbnail thumbnails
-
-	# remove plugins that do not have appropriate dependencies installed
-	for flag in badfiles discogs replaygain; do
-		rm_use_plugins ${flag}
-	done
-
+	rm test/test_art.py || die "Failed to remove test_art.py"
+	rm test/test_discogs.py || die "Failed to remove test_discogs.py"
+	rm test/test_embyupdate.py || die "Failed to remove test_embyupdate.py"
+	rm test/test_lastgenre.py || die "Failed to remove test_lastgenre.py"
+	rm test/test_spotify.py || die "Failed to remove test_spotify.py"
+	# Not working and dropped in master
+	rm test/test_mediafile.py || die "Failed to remove test_mediafile.py"
+	if ! use ffmpeg; then
+		rm test/test_convert.py || die "Failed to remove test_convert.py"
+	fi
 	if ! use mpd; then
-		rm test/test_player.py || die
-		rm test/test_mpdstats.py || die
+		rm test/test_player.py || die "Failed to remove test_player.py"
+		rm test/test_mpdstats.py || die "Failed to remove test_mpdstats.py"
+	fi
+	if ! use replaygain; then
+		rm test/test_replaygain.py || die "Failed to remove test_replaygain.py"
+	fi
+	if ! use thumbnail; then
+		rm test/test_thumbnails.py || die "Failed to remove test_thumbnails.py"
 	fi
 	if ! use webserver; then
 		rm test/test_web.py || die "Failed to remove test_web.py"
-	fi
-	if use test; then
-		# Those test need network
-		rm test/test_art.py || die
-		rm test/test_discogs.py || die
-		rm test/test_embyupdate.py || die
-		rm test/test_lastgenre.py || die
-		rm test/test_spotify.py || die
-		# rm test/test_plexupdate.py
-		rm test/test_thumbnails.py || die
-		# Not working
-		rm test/test_replaygain.py || die
-		# Not working
-		rm test/test_convert.py || die
 	fi
 }
 
@@ -170,6 +154,8 @@ python_install_all() {
 	use doc && local HTML_DOCS=( docs/build/html/. )
 	einstalldocs
 
-	"${D}$(python_get_scriptdir)/beet" completion > "${T}/beet.bashcomp"
-	newbashcomp "${T}/beet.bashcomp" beet
+	${PYTHON} "${ED}/usr/bin/beet" completion > "${T}/beet.bash" || die
+	newbashcomp "${T}/beet.bash" beet
+	insinto /usr/share/zsh/site-functions
+	newins "${WORKDIR}/${P}/extra/_beet" _beet
 }
