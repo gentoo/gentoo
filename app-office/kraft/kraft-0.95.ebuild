@@ -3,6 +3,7 @@
 
 EAPI=7
 
+VIRTUALX_REQUIRED="test"
 inherit ecm
 
 DESCRIPTION="Software to manage quotes and invoices in small enterprises"

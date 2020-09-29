@@ -9,8 +9,9 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="Style for QtQuickControls 2 that uses QWidget's QStyle for painting"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+
 LICENSE="|| ( GPL-2+ LGPL-3+ )"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE=""
 
 DEPEND="
@@ -25,3 +26,5 @@ RDEPEND="${DEPEND}
 	>=dev-qt/qtgraphicaleffects-${QTMIN}:5
 	>=dev-qt/qtquickcontrols2-${QTMIN}:5
 "
+
+PATCHES=( "${FILESDIR}"/${P}-move-dbus-connection-in-singleton.patch )

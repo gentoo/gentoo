@@ -71,6 +71,11 @@ PDEPEND="
 # tests hang
 RESTRICT+=" test"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-kio_trash-too-strict-perms-check.patch
+	"${FILESDIR}"/${P}-handle-shell-scripts-consistenty.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package acl ACL)

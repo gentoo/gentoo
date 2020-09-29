@@ -37,6 +37,11 @@ RDEPEND="${DEPEND}
 # requires package to already be installed
 RESTRICT+=" test"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-revert-fix-avatar-loading.patch
+	"${FILESDIR}"/${P}-remove-actions-from-ToolBarLayout-when-destroyed.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_EXAMPLES=$(usex examples)

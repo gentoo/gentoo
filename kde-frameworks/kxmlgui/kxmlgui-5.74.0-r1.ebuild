@@ -35,6 +35,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-fix-multiple-tabs-popup-on-logout.patch )
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_KF5Attica=ON

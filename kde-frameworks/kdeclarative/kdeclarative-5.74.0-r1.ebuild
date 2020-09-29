@@ -33,3 +33,7 @@ DEPEND="
 	media-libs/libepoxy
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-block-shortcuts-when-recording-key-sequences.patch
+)

@@ -61,6 +61,8 @@ DEPEND="${RDEPEND}
 
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}"/${P}-fix-pc3-button-icons-color-set.patch )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package !gles2-only OpenGL)

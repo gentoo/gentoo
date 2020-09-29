@@ -46,3 +46,5 @@ RDEPEND="${DEPEND}
 
 # requires running kde environment
 RESTRICT+=" test"
+
+PATCHES=( "${FILESDIR}"/${P}-use-standard-kde-shortcut-for-move-to-trash.patch )
