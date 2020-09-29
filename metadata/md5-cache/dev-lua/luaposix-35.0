@@ -1,5 +1,5 @@
 BDEPEND=virtual/pkgconfig
-DEFINED_PHASES=compile install
+DEFINED_PHASES=compile install prepare
 DEPEND=dev-lang/lua:0= dev-lua/lua-bit32
 DESCRIPTION=Bindings for POSIX APIs
 EAPI=7
@@ -10,4 +10,4 @@ RDEPEND=dev-lang/lua:0= dev-lua/lua-bit32
 SLOT=0
 SRC_URI=https://github.com/luaposix/luaposix/archive/v35.0.tar.gz -> luaposix-35.0.tar.gz
 _eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=95bc6cb35324790f0ed1a3f142cd0635
+_md5_=220605325496d4d999e1670a7340f217

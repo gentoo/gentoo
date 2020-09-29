@@ -10773,7 +10773,7 @@ dev-util/kernelshark 1.0 9999: Graphical reader for trace-cmd output
 dev-util/kubebuilder 2.3.1: SDK for building Kubernetes APIs using CRDs
 dev-util/kup 0.3.4-r1 0.3.6: kernel.org uploader tool
 dev-util/kyua 0.13-r2: Testing framework for infrastructure software
-dev-util/lcov 1.13-r2 1.14 1.14_p2 9999: A graphical front-end for GCC's coverage testing tool gcov
+dev-util/lcov 1.13-r2 1.14 1.14_p2 1.15 9999: A graphical front-end for GCC's coverage testing tool gcov
 dev-util/leaktracer 2.4-r3: trace and analyze memory leaks in C++ programs
 dev-util/libabigail 1.6: Suite of tools for checking ABI differences between ELF objects
 dev-util/linklint 2.3.5: A Perl program that checks links on web sites
@@ -11949,7 +11949,7 @@ gui-libs/wf-config 0.4.1 0.5.0 9999: library for managing wayfire configuration 
 gui-libs/wlroots 0.10.0 0.10.1 0.11.0 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
 gui-libs/wpebackend-fdo 1.4.0: WPE backend designed for Linux desktop systems
 gui-libs/xdg-desktop-portal-wlr 9999: xdg-desktop-portal backend for wlroots
-gui-wm/hikari 1.2.0 2.0.2 2.1.1: Wayland compositor inspired by CWM
+gui-wm/hikari 2.1.1 2.1.2: Wayland compositor inspired by CWM
 gui-wm/sway 1.5 9999: i3-compatible Wayland window manager
 gui-wm/wayfire 0.4.0-r2 0.5.0 9999: compiz like 3D wayland compositor
 java-virtuals/ejb-api 0: Virtual for Enterprise JavaBeans API (javax.ejb)
@@ -12902,7 +12902,7 @@ media-gfx/propaganda 1.0-r1: Propaganda Volume 1-14 + E. Tiling images for your 
 media-gfx/psftools 1.0.10: Utilities for manipulation of console fonts in PSF format
 media-gfx/pstoedit 3.70-r1: Translate PostScript and PDF graphics into other vector formats
 media-gfx/qimgv 0.9.1: A cross-platform image viewer with webm support, written in qt5
-media-gfx/qiv 2.3.2: Quick Image Viewer
+media-gfx/qiv 2.3.2-r1: Quick Image Viewer
 media-gfx/qrencode 4.0.2 4.1.0 4.1.1: C library for encoding data in a QR Code symbol
 media-gfx/quat 1.20-r1: A 3D quaternionic fractal generator
 media-gfx/qvv 4.04.2: Qt-based compact image viewer and browser
@@ -15036,7 +15036,7 @@ net-misc/autoupnp 0.4.7 9999: Automatic open port forwarder using UPnP
 net-misc/axel 2.17.8 2.17.9: Light Unix download accelerator
 net-misc/babeld 1.8.2 1.9.1: a loop-free distance-vector routing protocol
 net-misc/balance 3.57: TCP Load Balancing Port Forwarder
-net-misc/batctl 2020.1 2020.2: BATMAN advanced control and management tool
+net-misc/batctl 2020.2 2020.3: BATMAN advanced control and management tool
 net-misc/bfgminer 5.4.2 5.5.0: Modular Bitcoin ASIC/FPGA/GPU/CPU miner in C
 net-misc/bgpq3 0.1.33 0.1.35: Generate access-lists for Cisco/Juniper routers, successor of bgpq
 net-misc/bird 2.0.7: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6

@@ -3454,7 +3454,6 @@ gui-libs/wlroots:x11-backend - Enable support for handling input/output devices 
 gui-libs/xdg-desktop-portal-wlr:elogind - Enable support for rootless session via elogind
 gui-wm/hikari:gamma - add gamma control for redshift
 gui-wm/hikari:layershell - add support for wayland apps using layer shell
-gui-wm/hikari:man - build and install man pages
 gui-wm/hikari:screencopy - add support for screen grabbing
 gui-wm/hikari:virtual-io - enable virtual input/output support, needed for remote I/O in VNC
 gui-wm/sway:X - Enable support for X11 applications (XWayland)
