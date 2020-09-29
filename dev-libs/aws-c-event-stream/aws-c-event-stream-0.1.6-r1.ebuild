@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-libs/aws-c-common-0.4.26:=[static-libs=]
-	dev-libs/aws-checksums
+	>=dev-libs/aws-checksums-0.1.9:=[static-libs=]
 "
 
 PATCHES=(
