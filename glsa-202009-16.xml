@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202009-16">
+  <title>LinuxCIFS: Shell injection</title>
+  <synopsis>A vulnerability in LinuxCIFS may allow a remote code execution via
+    a command line option.
+  </synopsis>
+  <product type="ebuild">LinuxCIFS</product>
+  <announced>2020-09-29</announced>
+  <revised count="1">2020-09-29</revised>
+  <bug>743211</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-fs/cifs-utils" auto="yes" arch="*">
+      <unaffected range="ge">6.11</unaffected>
+      <vulnerable range="lt">6.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The LinuxCIFS utils are a collection of tools for managing Linux CIFS
+      Client Filesystems.
+    </p>
+  </background>
+  <description>
+    <p>The mount.cifs utility had a shell injection issue where one can embed
+      shell commands via the username mount option. Those commands will be run
+      via popen() in the context of the user calling mount.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to use a specially crafted
+      argument using mount.cifs, possibly resulting in execution of arbitrary
+      code with the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All LinuxCIFS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-fs/cifs-utils-6.11"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14342">CVE-2020-14342</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-09-20T13:02:21Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-09-29T18:06:06Z">sam_c</metadata>
+</glsa>
