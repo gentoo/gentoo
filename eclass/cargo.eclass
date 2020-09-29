@@ -91,6 +91,44 @@ cargo_crate_uris() {
 	done
 }
 
+# @FUNCTION: cargo_gen_config
+# @DESCRIPTION:
+# Generate the $CARGO_HOME/config necessary to use our local registry and settings.
+# Cargo can also be configured through environment variables in addition to the TOML syntax below.
+# For each configuration key below of the form foo.bar the environment variable CARGO_FOO_BAR
+# can also be used to define the value.
+# Environment variables will take precedent over TOML configuration,
+# and currently only integer, boolean, and string keys are supported.
+# For example the build.jobs key can also be defined by CARGO_BUILD_JOBS.
+# Or setting CARGO_TERM_VERBOSE=false in make.conf will make build quieter.
+cargo_gen_config() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	mkdir -p "${ECARGO_HOME}" || die
+
+	cat > "${ECARGO_HOME}/config" <<- _EOF_ || die "Failed to create cargo config"
+	[source.gentoo]
+	directory = "${ECARGO_VENDOR}"
+
+	[source.crates-io]
+	replace-with = "gentoo"
+	local-registry = "/nonexistant"
+
+	[net]
+	offline = true
+
+	[build]
+	jobs = $(makeopts_jobs)
+
+	[term]
+	verbose = true
+	$([[ "${NOCOLOR}" = true || "${NOCOLOR}" = yes ]] && echo "color = 'never'")
+	_EOF_
+
+	export CARGO_HOME="${ECARGO_HOME}"
+	_CARGO_GEN_CONFIG_HAS_RUN=1
+}
+
 # @FUNCTION: cargo_src_unpack
 # @DESCRIPTION:
 # Unpacks the package and the cargo registry
@@ -228,44 +266,6 @@ cargo_live_src_unpack() {
 	# But since we already vendored crates and symlinked git, it has all it needs to build.
 	unset CARGO_HOME
 	cargo_gen_config
-}
-
-# @FUNCTION: cargo_gen_config
-# @DESCRIPTION:
-# Generate the $CARGO_HOME/config necessary to use our local registry and settings.
-# Cargo can also be configured through environment variables in addition to the TOML syntax below.
-# For each configuration key below of the form foo.bar the environment variable CARGO_FOO_BAR
-# can also be used to define the value.
-# Environment variables will take precedent over TOML configuration,
-# and currently only integer, boolean, and string keys are supported.
-# For example the build.jobs key can also be defined by CARGO_BUILD_JOBS.
-# Or setting CARGO_TERM_VERBOSE=false in make.conf will make build quieter.
-cargo_gen_config() {
-	debug-print-function ${FUNCNAME} "$@"
-
-	mkdir -p "${ECARGO_HOME}" || die
-
-	cat > "${ECARGO_HOME}/config" <<- _EOF_ || die "Failed to create cargo config"
-	[source.gentoo]
-	directory = "${ECARGO_VENDOR}"
-
-	[source.crates-io]
-	replace-with = "gentoo"
-	local-registry = "/nonexistant"
-
-	[net]
-	offline = true
-
-	[build]
-	jobs = $(makeopts_jobs)
-
-	[term]
-	verbose = true
-	$([[ "${NOCOLOR}" = true || "${NOCOLOR}" = yes ]] && echo "color = 'never'")
-	_EOF_
-
-	export CARGO_HOME="${ECARGO_HOME}"
-	_CARGO_GEN_CONFIG_HAS_RUN=1
 }
 
 # @FUNCTION: cargo_src_configure
