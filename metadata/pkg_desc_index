@@ -14957,7 +14957,7 @@ net-mail/mailbox-count 0.0.5: Count mailboxes in a SQL database
 net-mail/maildirtree 0.6-r1: A utility that prints trees of Courier-style Maildirs
 net-mail/mailfront 2.22: Mail server network protocol front-ends
 net-mail/mailgraph 1.14-r2: A mail statistics RRDtool frontend for Postfix
-net-mail/mailman 3.3.0 3.3.1: Mailman -- the GNU mailing list manager
+net-mail/mailman 3.3.0 3.3.1 3.3.1-r1: Mailman -- the GNU mailing list manager
 net-mail/mailmanclient 3.3.1: Python bindings for the GNU Mailman 3 REST API
 net-mail/mailshears 0.0.4: Mangle your mail garden
 net-mail/mailutils 3.8 3.9 3.10: A useful collection of mail servers, clients, and filters
