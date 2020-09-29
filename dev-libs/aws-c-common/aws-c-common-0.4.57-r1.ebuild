@@ -16,6 +16,10 @@ IUSE="static-libs test"
 
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-remove-Werror-CFLAG.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=$(usex !static-libs)
