@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202009-14">
+  <title>Xen: Buffer overflow</title>
+  <synopsis>A buffer overflow in Xen might allow remote attacker(s) to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">xen</product>
+  <announced>2020-09-29</announced>
+  <revised count="1">2020-09-29</revised>
+  <bug>738040</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-emulation/xen" auto="yes" arch="*">
+      <unaffected range="ge">4.13.1-r3</unaffected>
+      <vulnerable range="lt">4.13.1-r3</vulnerable>
+    </package>
+    <package name="app-emulation/xen-tools" auto="yes" arch="*">
+      <unaffected range="ge">4.13.1-r3</unaffected>
+      <vulnerable range="lt">4.13.1-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Xen is a bare-metal hypervisor.</p>
+  </background>
+  <description>
+    <p>An out-of-bounds read/write access issue was found in the USB emulator
+      when using QEMU.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Xen users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-4.13.1-r3"
+    </code>
+    
+    <p>All Xen tools users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulation/xen-tools-4.13.1-r3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14364">CVE-2020-14364</uri>
+    <uri link="https://xenbits.xen.org/xsa/advisory-335.html">XSA-335</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-09-23T03:24:25Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-09-29T18:05:39Z">sam_c</metadata>
+</glsa>

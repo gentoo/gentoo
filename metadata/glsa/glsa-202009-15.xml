@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202009-15">
+  <title>libuv: Buffer overflow</title>
+  <synopsis>A buffer overflow in libuv might allow remote attacker(s) to
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">libuv</product>
+  <announced>2020-09-29</announced>
+  <revised count="1">2020-09-29</revised>
+  <bug>742890</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libuv" auto="yes" arch="*">
+      <unaffected range="ge">1.39.0</unaffected>
+      <vulnerable range="lt">1.39.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libuv is a multi-platform support library with a focus on asynchronous
+      I/O.
+    </p>
+  </background>
+  <description>
+    <p>libuv used an incorrect buffer size for paths, causing a buffer
+      overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libuv users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libuv-1.39.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8252">CVE-2020-8252</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-09-23T13:49:20Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-09-29T18:05:50Z">sam_c</metadata>
+</glsa>
