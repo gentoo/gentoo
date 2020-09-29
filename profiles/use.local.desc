@@ -4583,6 +4583,13 @@ media-sound/csound:utils - Build stand-alone executables for utilities that can 
 media-sound/csound:websocket - Build the websocket opcode
 media-sound/darkice:aacplus - AAC+ encoding via media-libs/libaacplus
 media-sound/darkice:twolame - Build with twolame support
+media-sound/deadbeef:converter - File format converter
+media-sound/deadbeef:cover - Support for cover art
+media-sound/deadbeef:hotkeys - Keyboard shortcuts support
+media-sound/deadbeef:notify - Desktop notifications support
+media-sound/deadbeef:nullout - Dummy output driver
+media-sound/deadbeef:shellexec - Define custom shell commands that can be called on tracks
+media-sound/deadbeef:supereq - Enable equalizer
 media-sound/deinvert:liquid - improve sound quality using net-libs/liquid-dsp
 media-sound/deinvert:wav - wav file support using media-libs/libsndfile
 media-sound/denemo:alsa - Enable alsa support through media-libs/alsa-lib
