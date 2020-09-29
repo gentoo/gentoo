@@ -43,17 +43,17 @@ pkg_setup() {
 
 src_compile() {
 	${MAKE} -j$(makeopts_jobs) VERSION="{PV}" \
-		  -DWITH_POSIX_C_SOURCE \
-		  $(usex gamma -DWITH_GAMMACONTROL "") \
-		  $(usex layershell -DWITH_LAYERSHELL "") \
-		  $(usex screencopy -DWITH_SCREENCOPY "") \
-		  $(usex suid -DWITH_SUID "") \
-		  $(usex virtual-io WITH_VIRTUAL_INPUT "") \
-		  $(usex X -DWITH_XWAYLAND "") \
-		  all
+		-DWITH_POSIX_C_SOURCE \
+		$(usex gamma -DWITH_GAMMACONTROL "") \
+		$(usex layershell -DWITH_LAYERSHELL "") \
+		$(usex screencopy -DWITH_SCREENCOPY "") \
+		$(usex suid -DWITH_SUID "") \
+		$(usex virtual-io -DWITH_VIRTUAL_INPUT "") \
+		$(usex X -DWITH_XWAYLAND "") \
+		all || die
 }
 
 src_install() {
-	${MAKE} DESTDIR="${D}" PREFIX=/usr ETC_PREFIX=/ install
+	${MAKE} DESTDIR="${D}" PREFIX=/usr ETC_PREFIX=/ install || die
 	doman share/man/man1/hikari.1
 }
