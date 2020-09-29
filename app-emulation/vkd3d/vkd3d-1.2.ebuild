@@ -33,6 +33,7 @@ SLOT="0"
 multilib_src_configure() {
 	local myconf=(
 		$(use_with spirv-tools)
+		--disable-doxygen-pdf
 	)
 
 	ECONF_SOURCE=${S} econf "${myconf[@]}"
