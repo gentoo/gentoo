@@ -1,13 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop toolchain-funcs vcs-snapshot xdg
+inherit desktop toolchain-funcs xdg
 
 DESCRIPTION="Quick Image Viewer"
-HOMEPAGE="http://spiegl.de/qiv/ https://bitbucket.org/ciberandy/qiv"
-SRC_URI="https://bitbucket.org/ciberandy/qiv/get/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://spiegl.de/qiv/ https://codeberg.org/ciberandy/qiv"
+SRC_URI="https://spiegl.de/qiv/download/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,8 +24,8 @@ RDEPEND="
 		virtual/jpeg:0
 	)
 	magic? ( sys-apps/file )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}"/${P}-optional-tiff.patch )
 
