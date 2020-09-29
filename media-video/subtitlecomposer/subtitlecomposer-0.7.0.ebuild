@@ -54,7 +54,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-tests-optional.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-tests-optional.patch"
+	"${FILESDIR}/${P}-valid-desktop-file.patch" # bug 745429
+)
 
 S="${WORKDIR}/SubtitleComposer-${PV}"
 
