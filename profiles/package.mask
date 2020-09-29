@@ -656,11 +656,6 @@ app-cdr/pburn
 # /usr/dict/words for generation. Removal in 30 days.
 app-admin/passook
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2020-08-29)
-# Upstream has version 1.1.2, but only for Windows,
-# sources are gone. Removal in 30 days.
-media-sound/traverso
-
 # Aaron Bauman <bman@gentoo.org> (2020-08-28)
 # EAPI=4 and fails to compile
 # Dead upstream. Removal in 30 days
