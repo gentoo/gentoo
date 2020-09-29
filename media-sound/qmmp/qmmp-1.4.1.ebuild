@@ -58,10 +58,10 @@ RDEPEND="
 		virtual/jack
 	)
 	ladspa? ( media-plugins/cmt-plugins )
-	mad? ( || (
-		media-libs/libmad
-		media-sound/mpg123
-	) )
+	mad? (
+		media-libs/libmad:=
+		media-sound/mpg123:=
+	)
 	midi? ( media-sound/wildmidi )
 	mms? ( media-libs/libmms )
 	modplug? ( >=media-libs/libmodplug-0.8.4 )
