@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-DISTUTILS_USE_SETUPTOOLS=no
+# Set to 'manual' to avoid triggering install QA check
+DISTUTILS_USE_SETUPTOOLS=manual
 PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 PYTHON_REQ_USE="xml(+)"
 
