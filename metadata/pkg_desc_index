@@ -9251,7 +9251,7 @@ dev-python/webencodings 0.5.1-r1: Character encoding aliases for legacy web cont
 dev-python/webob 1.8.6: WSGI request and response object
 dev-python/websocket-client 0.57.0: WebSocket client for python with hybi13 support
 dev-python/websockets 8.1: Library for building WebSocket servers and clients in Python
-dev-python/websockify 0.9.0: WebSockets support for any application/server
+dev-python/websockify 0.9.0 0.9.0-r1: WebSockets support for any application/server
 dev-python/webtest 2.0.35: Helper to test WSGI applications
 dev-python/werkzeug 1.0.1-r1: Collection of various utilities for WSGI applications
 dev-python/wheel 0.35.1-r1: A built-package format for Python
