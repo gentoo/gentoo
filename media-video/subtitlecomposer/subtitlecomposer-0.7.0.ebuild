@@ -10,7 +10,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm
 
 DESCRIPTION="Text-based subtitles editor"
-HOMEPAGE="https://github.com/maxrd2/subtitlecomposer"
+HOMEPAGE="https://subtitlecomposer.kde.org/"
 SRC_URI="https://github.com/maxrd2/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
