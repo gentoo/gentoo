@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="libedit lzma ncurses +python test"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
-RESTRICT="!test? ( test )"
+RESTRICT="test"
 
 RDEPEND="
 	libedit? ( dev-libs/libedit:0= )
