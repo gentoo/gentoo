@@ -19,22 +19,14 @@ DESCRIPTION="A tool that helps control neovim processes"
 HOMEPAGE="https://github.com/mhinz/neovim-remote"
 LICENSE="MIT"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/pynvim[${PYTHON_USEDEP}]
 	dev-python/psutil[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 
-DEPEND="${RDEPEND}
-	test? (
-		app-editors/neovim
-		dev-python/pytest[${PYTHON_USEDEP}]
-	)
-"
+distutils_enable_tests pytest
 
-python_test() {
-	pytest -vv || die
-}
+BDEPEND+="
+	test? ( app-editors/neovim )
+"
