@@ -31,10 +31,6 @@ RDEPEND="${DEPEND}
 # encoding/env issues
 RESTRICT="test"
 
-PATCHES=(
-	"${FILESDIR}/tig-2.5.1-bash-completion-qa-warning.patch"
-)
-
 src_prepare() {
 	default
 	[[ ${PV} == "9999" ]] && eautoreconf
