@@ -1,0 +1,32 @@
+diff -urN opendnssec-1.3.0rc2.old/Makefile.am opendnssec-1.3.0rc2/Makefile.am
+--- opendnssec-1.3.0rc2.old/Makefile.am	2011-06-02 13:48:56.000000000 +0200
++++ opendnssec-1.3.0rc2/Makefile.am	2011-06-02 13:49:19.000000000 +0200
+@@ -31,11 +31,11 @@
+ 
+ install-data-hook:
+ 	$(INSTALL) -d $(DESTDIR)$(localstatedir)
+-	$(INSTALL) -d $(DESTDIR)$(localstatedir)/opendnssec
+-	$(INSTALL) -d $(DESTDIR)$(localstatedir)/opendnssec/tmp
+-	$(INSTALL) -d $(DESTDIR)$(localstatedir)/opendnssec/signconf
+-	$(INSTALL) -d $(DESTDIR)$(localstatedir)/opendnssec/unsigned
+-	$(INSTALL) -d $(DESTDIR)$(localstatedir)/opendnssec/signed
++	$(INSTALL) -d $(DESTDIR)$(localstatedir)/lib/opendnssec
++	$(INSTALL) -d $(DESTDIR)$(localstatedir)/lib/opendnssec/tmp
++	$(INSTALL) -d $(DESTDIR)$(localstatedir)/lib/opendnssec/signconf
++	$(INSTALL) -d $(DESTDIR)$(localstatedir)/lib/opendnssec/unsigned
++	$(INSTALL) -d $(DESTDIR)$(localstatedir)/lib/opendnssec/signed
+ 	$(INSTALL) -d $(DESTDIR)$(localstatedir)/run
+ 	$(INSTALL) -d $(DESTDIR)$(localstatedir)/run/opendnssec
+ 
+diff -urN opendnssec-1.3.0rc2.old/m4/opendnssec_common.m4 opendnssec-1.3.0rc2/m4/opendnssec_common.m4
+--- opendnssec-1.3.0rc2.old/m4/opendnssec_common.m4	2011-06-02 13:48:56.000000000 +0200
++++ opendnssec-1.3.0rc2/m4/opendnssec_common.m4	2011-06-02 13:49:36.000000000 +0200
+@@ -18,7 +18,7 @@
+ OPENDNSSEC_LIBEXEC_DIR=$full_libexecdir/opendnssec
+ OPENDNSSEC_DATA_DIR=$full_datadir/opendnssec
+ OPENDNSSEC_SYSCONF_DIR=$full_sysconfdir/opendnssec
+-OPENDNSSEC_LOCALSTATE_DIR="$full_localstatedir/opendnssec"
++OPENDNSSEC_LOCALSTATE_DIR="$full_localstatedir/lib/opendnssec"
+ OPENDNSSEC_PID_DIR="$full_localstatedir/run/opendnssec"
+ 
+ AC_SUBST([OPENDNSSEC_BIN_DIR])

@@ -1,0 +1,21 @@
+diff -urN opendnssec-1.3.0rc3.old/conf/Makefile.am opendnssec-1.3.0rc3/conf/Makefile.am
+--- opendnssec-1.3.0rc3.old/conf/Makefile.am	2011-07-01 21:15:25.000000000 +0200
++++ opendnssec-1.3.0rc3/conf/Makefile.am	2011-07-01 21:17:00.000000000 +0200
+@@ -7,7 +7,7 @@
+ XML =	conf.xml kasp.xml zonelist.xml signconf.xml zonefetch.xml
+ XSL=	kasp2html.xsl
+ 
+-TRANG=	$(srcdir)/trang/trang.jar
++TRANG=	/usr/bin/trang
+ 
+ sysconfdir = @sysconfdir@/opendnssec
+ datadir = @datadir@/opendnssec
+@@ -25,7 +25,7 @@
+ .rnc.rng:
+ 	@test -x "${JAVA}" || \
+ 		(echo "java is required for converting RelaxNG Compact to RelaxNG"; false)
+-	${JAVA} -jar ${TRANG} $< $@
++	${TRANG} $< $@
+ 
+ regress: $(RNG)
+ 	@test -x "${XMLLINT}" || \
