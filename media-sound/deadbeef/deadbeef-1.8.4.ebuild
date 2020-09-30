@@ -12,7 +12,7 @@ SRC_URI="https://github.com/DeaDBeeF-Player/${PN}/archive/${PV}.tar.gz -> ${P}.t
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="aac alsa cdda converter cover dts ffmpeg flac +hotkeys mp3 musepack nls notify nullout opus oss pulseaudio shellexec +supereq threads vorbis"
+IUSE="aac alsa cdda converter cover dts ffmpeg flac +hotkeys lastfm mp3 musepack nls notify nullout opus oss pulseaudio shellexec +supereq threads vorbis"
 
 REQUIRED_USE="
 	|| ( alsa oss pulseaudio nullout )
@@ -51,7 +51,7 @@ BDEPEND="
 	sys-devel/gettext
 "
 
-PATCHES=( 
+PATCHES=(
 	"${FILESDIR}/deadbeef-use-ffmpeg-plugin-for-ape-by-default.patch"
 )
 
@@ -81,7 +81,7 @@ src_prepare() {
 	drop_and_stub "${S}/intl"
 
 	# Plugins that are undesired for whatever reason, candidates for unbundling and such.
-	for i in adplug alac dumb ffap mms gme lfs mono2stereo psf sc60 shn sid soundtouch wma; do
+	for i in adplug alac dumb ffap mms gme mono2stereo psf sc60 shn sid soundtouch wma; do
 		drop_and_stub "${S}/plugins/${i}"
 	done
 
@@ -103,7 +103,6 @@ src_configure () {
 		"--disable-alac"
 		"--disable-ffap"
 		"--disable-gme"
-		"--disable-lfm"
 		"--disable-mms"
 		"--disable-mono2stereo"
 		"--disable-psf"
@@ -147,6 +146,7 @@ src_configure () {
 		"$(use_enable pulseaudio pulse)"
 		"$(use_enable shellexec)"
 		"$(use_enable shellexec shellexecui)"
+		"$(use_enable lastfm lfm)"
 
 		"--enable-gtk3"
 		"--enable-vfs-curl"
