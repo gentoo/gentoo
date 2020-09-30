@@ -614,52 +614,9 @@ sys-cluster/pbs-python
 app-text/fbless
 
 # Sam James <sam@gentoo.org> (2020-08-30)
-# Serious security bug, unmaintained.
-# Stuck on long-obsolete EAPI 4.
-# Several open bugs.
-# bug 720732, bug 729714, bug 722644,
-# bug 724184.
-dev-db/sqliteodbc
-
-# Sam James <sam@gentoo.org> (2020-08-30)
 # Serious security vulns, outdated.
 # bug 699834. Removal in 30 days.
 www-apps/ampache
-
-# Sam James <sam@gentoo.org> (2020-08-30)
-# Collection of quite dead net-irc/* pkgs
-# Please speak up if you use any of these
-# and a modern alternative doesn't work for you.
-# None of these have alive upstreams, and we're
-# the only distro packaging them in many cases.
-# Unmaintained. Removal in 30 days.
-# bug 724940, bug 708408, bug 716264, bug 633346
-# bug 706898, bug 731188
-net-irc/ptlink-ircd
-net-irc/ptlink-opm
-net-irc/irc-server
-net-irc/xaric
-net-irc/nebula
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-29)
-# EAPI=4, use dev-embedded/libftd[tools] instead
-# Removal in 30 days
-dev-embedded/ftdi_eeprom
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-29)
-# EAPI=4, latest release 4.3.19 in 2019.
-# Unmaintained. Removal in 30 days.
-app-cdr/pburn
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-29)
-# EAPI=4, simple script, relies on hardcoded
-# /usr/dict/words for generation. Removal in 30 days.
-app-admin/passook
-
-# Aaron Bauman <bman@gentoo.org> (2020-08-28)
-# EAPI=4 and fails to compile
-# Dead upstream. Removal in 30 days
-net-mail/maildirtree
 
 # Piotr Karbowski <slashbeast@gentoo.org> (2020-08-28)
 # Temporary mask due to multiple reports of segfaults at startup, bug #739056
@@ -692,12 +649,6 @@ dev-ada/gnatcoll-db
 # works for existing packages
 >=dev-libs/vala-common-0.49
 dev-lang/vala:0.50
-
-# Jonas Stein <jstein@gentoo.org> (2020-08-13)
-# One of many password generators, but with dead upstream in this case.
-# Masked for removal after 2020-10-01.
-# Bug #629272
-app-admin/apg
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
 # consolekit is abandoned upstream.
