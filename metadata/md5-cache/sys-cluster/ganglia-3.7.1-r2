@@ -5,11 +5,11 @@ DESCRIPTION=A scalable distributed monitoring system for clusters and grids
 EAPI=7
 HOMEPAGE=http://ganglia.sourceforge.net/
 IUSE=minimal pcre python examples python_targets_python2_7
-KEYWORDS=~amd64 ~arm ~ppc ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~x86
 LICENSE=BSD
 RDEPEND=dev-libs/confuse dev-libs/expat >=dev-libs/apr-1.0 net-libs/libnsl:0= net-libs/libtirpc:0= !dev-db/firebird pcre? ( dev-libs/libpcre ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) !minimal? ( net-analyzer/rrdtool )
 REQUIRED_USE=python? ( || ( python_targets_python2_7 ) )
 SLOT=0
 SRC_URI=mirror://sourceforge/ganglia/ganglia-3.7.1.tar.gz
 _eclasses_=distutils-r1	409cd1220f9f980d21980293a50e2a8e	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multibuild	b2c915190b051f55a23b9354b9849847	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8d03325e7e3cf3e1465d9c32031e2517	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=18f71cfad54a142bc542e3e0b62b4a7c
+_md5_=8d0c687db03dba3573fdab0c59ee2eed
