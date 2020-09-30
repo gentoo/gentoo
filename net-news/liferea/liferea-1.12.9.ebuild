@@ -42,6 +42,10 @@ src_prepare() {
 	eautoreconf
 }
 
+src_configure() {
+	econf --disable-static
+}
+
 src_compile() {
 	# Workaround crash in libwebkit2gtk-4.0.so
 	# https://bugs.gentoo.org/704594
@@ -49,9 +53,9 @@ src_compile() {
 		default
 }
 
-pkg_preinst() {
-	xdg_pkg_preinst
-	gnome2_schemas_savelist
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
