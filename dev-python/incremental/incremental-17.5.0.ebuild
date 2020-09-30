@@ -3,7 +3,9 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{6..9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
+# TODO: revert to rdepend once this has been merged:
+# https://github.com/twisted/incremental/pull/59
+DISTUTILS_USE_SETUPTOOLS=manual
 
 inherit distutils-r1
 
@@ -16,4 +18,5 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
-#S=${WORKDIR}/${P}
+RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
