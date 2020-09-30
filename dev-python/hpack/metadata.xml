@@ -17,4 +17,5 @@
 		also contains a compatibility layer that automatically enables the use
 		of nghttp2 if it’s available.
 	</longdescription>
+	<stabilize-allarches/>
 </pkgmetadata>
