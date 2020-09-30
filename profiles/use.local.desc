@@ -4587,6 +4587,7 @@ media-sound/darkice:twolame - Build with twolame support
 media-sound/deadbeef:converter - File format converter
 media-sound/deadbeef:cover - Support for cover art
 media-sound/deadbeef:hotkeys - Keyboard shortcuts support
+media-sound/deadbeef:lastfm - last.fm/AudioScrobbler protocol support
 media-sound/deadbeef:notify - Desktop notifications support
 media-sound/deadbeef:nullout - Dummy output driver
 media-sound/deadbeef:shellexec - Define custom shell commands that can be called on tracks

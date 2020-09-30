@@ -7737,7 +7737,7 @@ dev-php/pecl-crack 0.4-r7: PHP interface to the cracklib libraries
 dev-php/pecl-dbase 7.0.1: dBase database file access functions
 dev-php/pecl-dio 0.1.0-r1 0.2.0: Direct I/O functions for PHP
 dev-php/pecl-eio 2.0.4: PHP wrapper for libeio library
-dev-php/pecl-event 2.5.3 2.5.3-r1: PHP wrapper for libevent2
+dev-php/pecl-event 2.5.3 2.5.3-r1 2.5.7: PHP wrapper for libevent2
 dev-php/pecl-geoip 1.1.1-r4: PHP extension to map IP address to geographic places
 dev-php/pecl-gnupg 1.4.0-r2: PHP wrapper around the gpgme library
 dev-php/pecl-http 3.2.1 3.2.3: Extended HTTP Support for PHP
@@ -8587,7 +8587,7 @@ dev-python/pelican-minify 0.9: An HTML minification plugin for Pelican, the stat
 dev-python/pep8 1.7.1: Python style guide checker
 dev-python/pew 1.1.1: tool to manage multiple virtualenvs written in pure python
 dev-python/pexpect 4.8.0-r1: Python module for spawning child apps and responding to expected patterns
-dev-python/pgspecial 1.11.9: Python implementation of postgres meta commands
+dev-python/pgspecial 1.11.9 1.11.10: Python implementation of PostgreSQL meta commands
 dev-python/phonenumbers 8.12.8 8.12.9 8.12.10: Python port of Google's libphonenumber
 dev-python/picklemagic 0.0_pre20160415: A library for analysing python pickles safely
 dev-python/pickleshare 0.7.5: A small 'shelve' like datastore with concurrency support
@@ -10664,7 +10664,7 @@ dev-util/cucumber-wire 0.0.1-r1: Executable feature scenarios
 dev-util/cunit 2.1_p3: C Unit Test Framework
 dev-util/cutils 1.6-r4: C language utilities
 dev-util/cutter 1.11.0 1.12.0: A Qt and C++ GUI for radare2 reverse engineering framework
-dev-util/cvise 1.6.0 1.7.0: Super-parallel Python port of the C-Reduce
+dev-util/cvise 1.6.0 1.7.0-r1: Super-parallel Python port of the C-Reduce
 dev-util/cwdiff 0.4.0 9999: A script that wraps wdiff to support directories and colorize the output
 dev-util/d-feet 0.3.14-r1: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 19.04.0-r1: Run executables under a new DBus session for testing
@@ -15361,7 +15361,7 @@ net-nds/yp-tools 4.2.3: Network Information Service tools
 net-news/amphetadesk 0.93.1-r1: AmphetaDesk is a free syndicated news aggregator
 net-news/canto-curses 0.9.9: The ncurses client for canto-daemon
 net-news/canto-daemon 0.9.7: Daemon part of Canto-NG RSS reader
-net-news/liferea 1.12.7-r1 1.12.8: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
+net-news/liferea 1.12.7-r1 1.12.9: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsboat 2.13 2.19-r1 2.20.1: An RSS/Atom feed reader for text terminals
 net-news/quiterss 0.19.3 0.19.4 9999: Qt-based RSS/Atom feed reader
 net-news/rssguard 3.5.9-r1: Tiny RSS and Atom feed reader
