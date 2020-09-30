@@ -868,7 +868,7 @@ app-cdr/cuetools 1.4.1: Utilities to manipulate and convert cue and toc files
 app-cdr/daa2iso 0.1.7e: Program for converting the DAA and GBI files to ISO
 app-cdr/disc-cover 1.5.6-r1: Creates CD-Covers via LaTeX by fetching cd-info from freedb.org or local file
 app-cdr/dolphin-plugins-mountiso 20.08.1: Dolphin plugin for ISO loopback device mounting
-app-cdr/dumpet 2.1_p20140601-r1 2.1_p20140601-r2 2.1_p20140601-r3: A tool to dump and debug bootable CD-like images
+app-cdr/dumpet 2.1_p20140601-r2: A tool to dump and debug bootable CD-like images
 app-cdr/dvd+rw-tools 7.1-r3: A set of tools for DVD+RW/-RW drives
 app-cdr/dvdisaster 0.79.5: Tool for creating error correction data (ecc) for optical media (DVD, CD, BD)
 app-cdr/dvdshrink 2.6.1_p10: Scriptable DVD copy software
@@ -9395,16 +9395,16 @@ dev-ros/ament_cmake_test 0.9.6 1.0.0 1.0.1 9999: The ability to add tests in the
 dev-ros/ament_cmake_uncrustify 0.9.5 0.10.0 9999: The CMake API for ament_uncrustify to check code against styleconventions
 dev-ros/ament_cmake_version 0.9.6 1.0.0 1.0.1 9999: Override the exported package version in the ament buildsystem
 dev-ros/ament_cmake_xmllint 0.9.5 0.10.0 9999: he CMake API for ament_xmllint to check XML file using xmmlint
-dev-ros/ament_copyright 0.9.5 0.10.0 9999: The ability to check source files for copyright and license information.
-dev-ros/ament_cppcheck 0.9.5 0.10.0 9999: The ability to perform static code analysis on C/C++ code using Cppcheck
-dev-ros/ament_cpplint 0.9.5 0.10.0 9999: The ability to check code against the Google style conventions using cpplint
-dev-ros/ament_flake8 0.9.5 0.10.0 9999: The ability to check code for style and syntax conventions with flake8
+dev-ros/ament_copyright 0.10.0 9999: The ability to check source files for copyright and license information.
+dev-ros/ament_cppcheck 0.10.0 9999: The ability to perform static code analysis on C/C++ code using Cppcheck
+dev-ros/ament_cpplint 0.10.0 9999: The ability to check code against the Google style conventions using cpplint
+dev-ros/ament_flake8 0.10.0 9999: The ability to check code for style and syntax conventions with flake8
 dev-ros/ament_lint 0.9.5 0.10.0 9999: Common API for ament linter packages
 dev-ros/ament_lint_auto 0.9.5 0.10.0 9999: The auto-magic functions for ease to use of the ament linters
-dev-ros/ament_lint_cmake 0.9.5 0.10.0 9999: Lint CMake code using cmakelint and generate xUnit test result files
-dev-ros/ament_pep257 0.9.5 0.10.0 9999: Checks code against style conventions in PEP 8 and generate test result files
-dev-ros/ament_uncrustify 0.9.5 0.10.0 9999: The ability to check code against style conventions using uncrustify
-dev-ros/ament_xmllint 0.9.5 0.10.0 9999: Checks XML files like the package manifest using xmllint
+dev-ros/ament_lint_cmake 0.10.0 9999: Lint CMake code using cmakelint and generate xUnit test result files
+dev-ros/ament_pep257 0.10.0 9999: Checks code against style conventions in PEP 8 and generate test result files
+dev-ros/ament_uncrustify 0.10.0 9999: The ability to check code against style conventions using uncrustify
+dev-ros/ament_xmllint 0.10.0 9999: Checks XML files like the package manifest using xmllint
 dev-ros/angles 1.9.13 9999: Set of simple math utilities to work with angles
 dev-ros/audio_capture 0.3.6 0.3.7 9999: Transports audio from a source to a destination
 dev-ros/audio_common_msgs 0.3.6 0.3.7 9999: Messages for transmitting audio via ROS
