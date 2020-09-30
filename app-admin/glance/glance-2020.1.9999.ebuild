@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_7 )
-DISTUTILS_USE_SETUPTOOLS=bdepend
+DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
 DESCRIPTION="Services for discovering, registering, and retrieving VM images"
