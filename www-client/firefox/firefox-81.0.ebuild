@@ -64,7 +64,7 @@ BDEPEND="${PYTHON_DEPS}
 	|| (
 		(
 			sys-devel/clang:10
-			sys-devel/llvm
+			sys-devel/llvm:10
 			clang? (
 				=sys-devel/lld-10*
 				pgo? ( =sys-libs/compiler-rt-sanitizers-10*[profile] )
