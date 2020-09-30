@@ -4,7 +4,8 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6..9} )
-# pkg_resources is used even though the QA check doesn't detect it
+# TODO: revert to rdepend once this is merged
+# https://github.com/openstack/cliff/pull/3
 DISTUTILS_USE_SETUPTOOLS=manual
 
 inherit distutils-r1
