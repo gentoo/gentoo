@@ -2926,7 +2926,6 @@ dev-util/massif-visualizer:callgraph - Enable detailed snapshot analysis using m
 dev-util/mdds:valgrind - Add support for memory debugging using dev-util/valgrind
 dev-util/mingw64-runtime:idl - Install idl files.
 dev-util/mingw64-runtime:libraries - Build extra libraries: mangle, pseh, winpthreads.
-dev-util/mingw64-runtime:secure-api - Expose secure API (*_s function) by default.
 dev-util/mingw64-runtime:tools - Build extra tools: gendef, genidl.
 dev-util/nemiver:memoryview - Enable the optional hexadecimal memory inspection with app-editors/ghex
 dev-util/nvidia-cuda-sdk:cuda - Build CUDA binaries
@@ -3791,6 +3790,7 @@ mail-client/thunderbird:eme-free - Disable EME (DRM plugin) cabability at build 
 mail-client/thunderbird:gmp-autoupdate - Allow Gecko Media Plugins (binary blobs) to be automatically downloaded and kept up-to-date in user profiles
 mail-client/thunderbird:lightning - Enable app-global calendar support (note 38.0 and above bundles calendar support when this flag is off)
 mail-client/thunderbird:lto - Enable Link Time Optimization (LTO). Requires Gold linker when using GCC or LDD linker when using Clang
+mail-client/thunderbird:openh264 - Use media-libs/openh264 for H.264 support instead of downloading binary blob from Mozilla at runtime
 mail-client/thunderbird:pgo - Add support for profile-guided optimization using gcc-4.5, for faster binaries. This option will double the compile time.
 mail-client/thunderbird:system-av1 - Use the system-wide media-libs/dav1d and media-libs/libaom library instead of bundled.
 mail-client/thunderbird:system-harfbuzz - Use the system-wide media-libs/harfbuzz and media-gfx/graphite2 instead of bundled.

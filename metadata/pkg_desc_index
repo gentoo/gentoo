@@ -5479,7 +5479,7 @@ dev-libs/libpwquality 1.4.2: Library for password quality checking and generatin
 dev-libs/libqtxdg 3.5.0: Qt Implementation of XDG Standards
 dev-libs/libratbag 0.9: Library to configure gaming mice
 dev-libs/librdkafka 1.4.4 1.5.0: Apache Kafka C/C++ client library
-dev-libs/librelp 1.6.0 1.7.0: An easy to use library for the RELP protocol
+dev-libs/librelp 1.6.0 1.7.0 1.8.0: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.6 0.92.7: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.10.0 2.12.0 2.13.0 2.13.1: Generic library for reporting software bugs
 dev-libs/libressl 2.9.2 3.0.2 3.1.3 3.1.4 3.2.0 3.2.1: Free version of the SSL/TLS protocol forked from OpenSSL
@@ -5572,8 +5572,8 @@ dev-libs/newt 0.52.21-r1: Redhat's Newt windowing toolkit development files
 dev-libs/nmeap 0.3-r1: Extensible NMEA-0183 (GPS) data parser in standard C
 dev-libs/npth 1.3 1.4 1.5 1.6 1.6-r1: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.6-r2 0.7-r1 0.8-r1: Generate Javascript-to-DOM bindings from w3c webidl files
-dev-libs/nspr 4.26 4.27 4.28: Netscape Portable Runtime
-dev-libs/nss 3.55 3.56: Mozilla's Network Security Services library that implements PKI support
+dev-libs/nspr 4.26 4.27 4.28 4.29: Netscape Portable Runtime
+dev-libs/nss 3.55 3.56 3.57: Mozilla's Network Security Services library that implements PKI support
 dev-libs/nss-pem 1.0.5 1.0.6: PEM file reader for Network Security Services (NSS)
 dev-libs/nsync 1.20.1: A C library that exports various synchronization primitives, such as mutexes
 dev-libs/ntl 11.4.3: High-performance and portable C++ number theory library
@@ -7594,7 +7594,7 @@ dev-perl/syntax 0.4.0-r1: Activate syntax extensions
 dev-perl/tkispell 0.180.0-r1: Perl/Tk user interface for ispell
 dev-perl/txt2html 2.53 2.520.100: Convert a plain text file to HTML
 dev-php/File_Iterator 1.3.4 1.4.2 1.4.3 2.0.2 2.0.2-r1: FilterIterator implementation that filters files based on criteria
-dev-php/PEAR-Archive_Tar 1.4.5 1.4.7 1.4.8 1.4.9: Tar file management class
+dev-php/PEAR-Archive_Tar 1.4.10: Tar file management class
 dev-php/PEAR-Auth_SASL 1.1.0: Abstraction of various SASL mechanism responses
 dev-php/PEAR-Cache 1.5.6-r2: Framework for caching of arbitrary data
 dev-php/PEAR-Cache_Lite 1.8.2 1.8.3: Fast and safe little cache system
@@ -7622,14 +7622,14 @@ dev-php/PEAR-HTML_CSS 1.5.4-r2: Provides a simple interface for generating a sty
 dev-php/PEAR-HTML_Common 1.2.5-r1: Base class for other HTML classes
 dev-php/PEAR-HTML_Common2 2.1.1 2.1.2: Abstract base class for HTML classes (PHP5 port of PEAR-HTML_Common package)
 dev-php/PEAR-HTML_Javascript 1.1.2-r1: Provides an interface for creating simple JS scripts within PHP
-dev-php/PEAR-HTML_QuickForm2 2.0.2-r1 2.1.0: Creating, validating, processing HTML forms methods (PHP5 optimize)
+dev-php/PEAR-HTML_QuickForm2 2.0.2-r1 2.1.0 2.2.0: Creating, validating, processing HTML forms methods (PHP5 optimize)
 dev-php/PEAR-HTML_Table 1.8.4-r1: Makes the design of HTML tables easy, flexible, reusable and efficient
 dev-php/PEAR-HTML_Table_Matrix 1.0.10-r1: Autofill a table with data
 dev-php/PEAR-HTML_Template_Flexy 1.3.13: An extremely powerful Tokenizer driven Template engine
 dev-php/PEAR-HTML_Template_Sigma 1.3.0-r1: An implementation of Integrated Templates API with template 'compilation' added
 dev-php/PEAR-HTTP 1.4.1-r3: Miscellaneous HTTP utilities
 dev-php/PEAR-HTTP_Header 1.2.1-r2: Handle and modify HTTP headers and status codes in PHP
-dev-php/PEAR-HTTP_Request2 2.3.0-r1 2.4.1: Provides an easy way to perform HTTP requests
+dev-php/PEAR-HTTP_Request2 2.3.0-r1 2.4.1 2.4.2: Provides an easy way to perform HTTP requests
 dev-php/PEAR-HTTP_Session2 0.7.3-r2: Wraps PHP's session functions providing extras like db storage for session data
 dev-php/PEAR-Image_Color2 0.1.5-r1: Color conversion and mixing for PHP5
 dev-php/PEAR-Image_GraphViz 1.3.0_p20151104: PHP interface to AT&T's GraphViz tools
@@ -7739,13 +7739,13 @@ dev-php/pecl-gnupg 1.4.0-r2: PHP wrapper around the gpgme library
 dev-php/pecl-http 3.2.1 3.2.3: Extended HTTP Support for PHP
 dev-php/pecl-imagick 3.4.4: PHP wrapper for the ImageMagick library
 dev-php/pecl-lzf 1.6.7 1.6.8: This package handles LZF de/compression
-dev-php/pecl-mailparse 3.0.4 3.1.0: PHP extension for parsing and working with RFC822 and MIME compliant messages
+dev-php/pecl-mailparse 3.0.4 3.1.0 3.1.1: PHP extension for parsing and working with RFC822 and MIME compliant messages
 dev-php/pecl-mcrypt 1.0.1 1.0.2 1.0.3: Bindings for the libmcrypt library
 dev-php/pecl-memcache 4.0.5.2: PHP extension for using memcached
 dev-php/pecl-memcached 3.1.3-r1 3.1.5-r1: Interface PHP with memcached via libmemcached library
 dev-php/pecl-mongodb 1.5.3 1.5.3-r1 1.5.5 1.6.0 1.7.4 1.7.5 1.8.0: MongoDB database driver for PHP
 dev-php/pecl-ncurses 1.0.2-r5: Terminal screen handling and optimization package
-dev-php/pecl-oauth 2.0.5: OAuth is an authorization protocol built on top of HTTP
+dev-php/pecl-oauth 2.0.7: OAuth is an authorization protocol built on top of HTTP
 dev-php/pecl-pam 1.0.3-r3: This extension provides PAM (Pluggable Authentication Modules) integration
 dev-php/pecl-propro 2.1.0: A reusable property proxy API for PHP
 dev-php/pecl-ps 1.4.1: PHP extension for creating PostScript files
@@ -7816,8 +7816,8 @@ dev-php/tcpdf 6.2.25 6.2.26: TCPDF is a FLOSS PHP class for generating PDF docum
 dev-php/theseer-tokenizer 1.1.0 1.1.3: Convert tokenized PHP source code into XML and other formats
 dev-php/twig 1.40.1-r1 1.42.3 1.42.3-r1: PHP templating engine with syntax similar to Django
 dev-php/webmozart-assert 1.2.0 1.4.0: Assertions to validate method input/output with nice error messages
-dev-php/xdebug 2.9.4 2.9.5 2.9.6 2.9.7: A PHP debugging and profiling extension
-dev-php/xdebug-client 2.9.4 2.9.5 2.9.6 2.9.7: Xdebug client for the Common Debugger Protocol (DBGP)
+dev-php/xdebug 2.9.4 2.9.5 2.9.6 2.9.7 2.9.8: A PHP debugging and profiling extension
+dev-php/xdebug-client 2.9.4 2.9.5 2.9.6 2.9.7 2.9.8: Xdebug client for the Common Debugger Protocol (DBGP)
 dev-php/xdebug-handler 1.3.0 1.3.1 1.4.1 1.4.3: Restart a CLI process without loading the xdebug extension
 dev-php/xhprof 0.9.10 2.1.4: A Hierarchical Profiler for PHP
 dev-python/3to2 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x syntax
@@ -8086,7 +8086,7 @@ dev-python/django-taggit 1.2.0: simple tagging for django
 dev-python/django-taggit-serializer 0.1.7: the django taggit serializer for the django rest framework
 dev-python/django-timezone-field 4.0: A Django app providing database and form fields for pytz timezone objects
 dev-python/django_polymorphic 3.0.0: Seamless Polymorphic Inheritance for Django Models
-dev-python/djangorestframework 3.11.0: Web APIs with django made easy
+dev-python/djangorestframework 3.11.0 3.11.1: Web APIs with django made easy
 dev-python/dkimpy 1.0.5: DKIM and ARC email signing and verification library
 dev-python/dns-lexicon 3.3.4: Manipulate DNS records on various DNS providers in a standardized/agnostic way
 dev-python/dnspython 1.16.0-r1 2.0.0: DNS toolkit for Python
@@ -10789,7 +10789,7 @@ dev-util/meld 3.20.2-r1: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
 dev-util/meson 0.54.3 0.55.3 9999: Open source build system
 dev-util/min-cscope 16.1.0: Interactively examine a C program
-dev-util/mingw64-runtime 6.0.0-r3 7.0.0 7.0.0-r1: Free Win64 runtime and import library definitions
+dev-util/mingw64-runtime 7.0.0-r1 8.0.0: Free Win64 runtime and import library definitions
 dev-util/mpatch 0.8-r1: Patch-like tool which can resolve common causes of patch rejects when applying
 dev-util/mutrace 0.2-r1: A mutex tracer/profiler
 dev-util/nemiver 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
@@ -12408,7 +12408,7 @@ mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for 
 mail-client/roundcube 1.4.8: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.16 14.9.19: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.7.0-r1: A lightweight email client and newsreader
-mail-client/thunderbird 68.12.0: Thunderbird Mail Client
+mail-client/thunderbird 68.12.0 78.3.1: Thunderbird Mail Client
 mail-client/thunderbird-bin 68.12.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r5 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
@@ -15622,7 +15622,7 @@ net-wireless/suwidgets 0.1.0: graphical library containing all SigDigger's custo
 net-wireless/tempestsdr 0.0_p20200221 9999: Remote video eavesdropping using a software-defined radio platform
 net-wireless/ubertooth 2018.12.1 9999: open source wireless development platform suitable for Bluetooth experimentation
 net-wireless/uhd 3.15.0.0-r100 4.0.0.0: Universal Software Radio Peripheral (USRP) Hardware Driver
-net-wireless/unifi 5.6.42-r1 6.0.23 6.0.24: A Management Controller for Ubiquiti Networks UniFi APs
+net-wireless/unifi 5.6.42-r1 6.0.23 6.0.24 6.1.16: A Management Controller for Ubiquiti Networks UniFi APs
 net-wireless/urh 2.8.8 9999: Universal Radio Hacker: investigate wireless protocols like a boss
 net-wireless/wavemon 0.7.6 0.8.0: Ncurses based monitor for IEEE 802.11 wireless LAN cards
 net-wireless/wepattack 0.1.3-r5: WLAN tool for breaking 802.11 WEP keys
@@ -18114,7 +18114,7 @@ www-servers/h2o 2.2.6 9999: H2O - the optimized HTTP/1, HTTP/2 server
 www-servers/lighttpd 1.4.55: Lightweight high-performance web server
 www-servers/mongrel2 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
-www-servers/nginx 1.18.0-r2 1.19.2-r1: Robust, small and high performance http and reverse proxy server
+www-servers/nginx 1.18.0-r2 1.19.2-r1 1.19.3: Robust, small and high performance http and reverse proxy server
 www-servers/nginx-unit 1.17.0 1.18.0: Dynamic web and application server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
@@ -18673,7 +18673,7 @@ x11-plugins/bubblemon 1.46-r3: A fun monitoring applet for your desktop, complet
 x11-plugins/cputnik 0.2.0-r1: cputnik is a simple cpu monitor dockapp
 x11-plugins/docker 1.5-r1 1.5-r2: Openbox app which acts as a system tray for KDE and GNOME2
 x11-plugins/e16-epplets 0.16: Enlightenment DR16 epplets
-x11-plugins/enigmail 2.0.12-r1 2.1.7 9999: Mozilla extension to provide GPG support in mail clients
+x11-plugins/enigmail 2.0.12-r1 2.1.7 2.1.8 9999: Mozilla extension to provide GPG support in mail clients
 x11-plugins/gkrellaclock 0.3.4-r1: Nice analog clock for GKrellM2
 x11-plugins/gkrellfire 0.4.2-r1: CPU load flames for GKrellM 2
 x11-plugins/gkrellkam 2.0.0: an Image-Watcher-Plugin for GKrellM2
