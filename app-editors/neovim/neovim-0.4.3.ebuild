@@ -51,6 +51,8 @@ RDEPEND="
 
 CMAKE_BUILD_TYPE=Release
 
+PATCHES=( "${FILESDIR}"/${P}-gcc-10-fix.patch )
+
 src_prepare() {
 	# use our system vim dir
 	sed -e "/^# define SYS_VIMRC_FILE/s|\$VIM|${EPREFIX}/etc/vim|" \
