@@ -40,7 +40,7 @@ BDEPEND="
 COMMON_DEPEND="
 	dev-libs/glib
 	dev-libs/gmime:3.0[crypt]
-	dev-libs/xapian:=
+	>=dev-libs/xapian-1.4.0:=
 	sys-libs/talloc
 	sys-libs/zlib
 	emacs? ( >=app-editors/emacs-${NEED_EMACS}:* )
