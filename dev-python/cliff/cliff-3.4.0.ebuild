@@ -4,7 +4,8 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6..9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
+# pkg_resources is used even though the QA check doesn't detect it
+DISTUTILS_USE_SETUPTOOLS=manual
 
 inherit distutils-r1
 
@@ -20,12 +21,15 @@ RDEPEND="
 	>=dev-python/cmd2-0.8.0[${PYTHON_USEDEP}]
 	<dev-python/prettytable-0.8[${PYTHON_USEDEP}]
 	>=dev-python/pyparsing-2.1.0[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-2.0.1[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.12.0[${PYTHON_USEDEP}]
 "
-BDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
+BDEPEND="
+	>=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
 	!~dev-python/pbr-2.1.0
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
