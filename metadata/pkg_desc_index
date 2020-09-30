@@ -8257,7 +8257,7 @@ dev-python/httplib2 0.18.1-r1: A comprehensive HTTP client library
 dev-python/httpretty 0.9.6 1.0.2-r1: HTTP client mock for Python
 dev-python/httpstat 1.2.1-r1: httpstat visualizes cURL statistics in a way of beauty and clarity
 dev-python/humanfriendly 4.18 8.2: Human friendly output for text interfaces using Python
-dev-python/humanize 2.6.0: Common humanization utilities
+dev-python/humanize 2.6.0 3.0.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1: A featureful, correct URL for Python
@@ -13116,7 +13116,7 @@ media-libs/libggimisc 2.2.2-r1: Adds support for some special graphical target f
 media-libs/libggiwmh 0.3.2-r1: Window manager hints extensions for libggi
 media-libs/libgig 4.2.0 9999: C++ library for loading Gigasampler and DLS level 1/2 files
 media-libs/libgii 1.0.2-r2: Easy to use, but yet powerful, API for all possible input sources
-media-libs/libglvnd 1.3.2 9999: The GL Vendor-Neutral Dispatch library
+media-libs/libglvnd 1.3.2-r1 9999: The GL Vendor-Neutral Dispatch library
 media-libs/libgphoto2 2.5.22: Library that implements support for numerous digital cameras
 media-libs/libgpod 0.8.3-r3: Shared library to access the contents of an iPod
 media-libs/libgroove 4.3.0-r1: Streaming audio processing library.
@@ -13228,7 +13228,7 @@ media-libs/lsp-plugins 1.1.5-r2 1.1.7-r1 1.1.10 1.1.22 1.1.24 9999: Linux Studio
 media-libs/lv2 1.18.0: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0-r1: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 20.1.7 20.1.8 20.2.0_rc4 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 20.1.8 20.2.0 9999: OpenGL-like graphic library for Linux
 media-libs/mlt 6.20.0-r2 6.22.1: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
@@ -13836,7 +13836,7 @@ media-sound/mp3val 0.1.8: Validate and fix MPEG audio files
 media-sound/mp3wrap 0.5: Command-line utility that wraps multiple mp3 files into one large playable mp3
 media-sound/mpc 0.30 0.31-r1 0.32 0.33: Commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpck 0.15: Checks MP3s for errors
-media-sound/mpd 0.21.25 0.21.26: The Music Player Daemon (mpd)
+media-sound/mpd 0.21.25 0.21.26 0.22: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.2: AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.8.1-r2: Music Player For Console
@@ -15436,7 +15436,7 @@ net-print/foomatic-db-engine 4.0.12: Generates ppds out of xml foomatic printer 
 net-print/foomatic-db-ppds 4.0.20170331 4.0.20180126 4.0.20190226: linuxprinting.org PPD files for postscript printers
 net-print/gtklp 1.3.1: A GUI for cupsd
 net-print/gutenprint 5.3.3: Ghostscript and cups printer drivers
-net-print/hplip 3.19.12-r1 3.20.6-r1 3.20.6-r2: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
+net-print/hplip 3.19.12-r1 3.20.6-r1 3.20.6-r3: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
 net-print/hplip-plugin 3.19.12 3.20.6-r1: Proprietary plugins and firmware for HPLIP
 net-print/ink 0.5.1 0.5.2: A command line utility to display the ink level of your printer
 net-print/kyocera-1x2x-mfp-driver 1.1203-r1: Printer descriptions (PPDs) and filters for Kyocera 1x2x MFP
