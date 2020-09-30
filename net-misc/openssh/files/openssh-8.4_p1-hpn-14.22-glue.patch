@@ -1,0 +1,94 @@
+diff -ur a/openssh-8_3_P1-hpn-DynWinNoneSwitch-14.22.diff b/openssh-8_3_P1-hpn-DynWinNoneSwitch-14.22.diff
+--- a/openssh-8_3_P1-hpn-DynWinNoneSwitch-14.22.diff	2020-09-28 13:15:17.780747192 -0700
++++ b/openssh-8_3_P1-hpn-DynWinNoneSwitch-14.22.diff	2020-09-28 13:34:03.576552219 -0700
+@@ -409,18 +409,10 @@
+ index e7abb341..c23276d4 100644
+ --- a/packet.c
+ +++ b/packet.c
+-@@ -961,6 +961,24 @@ ssh_set_newkeys(struct ssh *ssh, int mode)
++@@ -961,6 +961,16 @@ ssh_set_newkeys(struct ssh *ssh, int mode)
+  	return 0;
+  }
+  
+-+/* this supports the forced rekeying required for the NONE cipher */
+-+int rekey_requested = 0;
+-+void
+-+packet_request_rekeying(void)
+-+{
+-+	rekey_requested = 1;
+-+}
+-+
+ +/* used to determine if pre or post auth when rekeying for aes-ctr
+ + * and none cipher switch */
+ +int
+@@ -434,20 +426,6 @@
+  #define MAX_PACKETS	(1U<<31)
+  static int
+  ssh_packet_need_rekeying(struct ssh *ssh, u_int outbound_packet_len)
+-@@ -987,6 +1005,13 @@ ssh_packet_need_rekeying(struct ssh *ssh, u_int outbound_packet_len)
+- 	if (state->p_send.packets == 0 && state->p_read.packets == 0)
+- 		return 0;
+- 
+-+	/* used to force rekeying when called for by the none
+-+         * cipher switch methods -cjr */
+-+        if (rekey_requested == 1) {
+-+                rekey_requested = 0;
+-+                return 1;
+-+        }
+-+
+- 	/* Time-based rekeying */
+- 	if (state->rekey_interval != 0 &&
+- 	    (int64_t)state->rekey_time + state->rekey_interval <= monotime())
+ diff --git a/packet.h b/packet.h
+ index c2544bd9..ebd85c88 100644
+ --- a/packet.h
+@@ -481,9 +459,9 @@
+  	oLocalCommand, oPermitLocalCommand, oRemoteCommand,
+ +	oTcpRcvBufPoll, oTcpRcvBuf, oHPNDisabled, oHPNBufferSize,
+ +	oNoneEnabled, oNoneSwitch,
++ 	oDisableMTAES,
+  	oVisualHostKey,
+  	oKexAlgorithms, oIPQoS, oRequestTTY, oIgnoreUnknown, oProxyUseFdpass,
+- 	oCanonicalDomains, oCanonicalizeHostname, oCanonicalizeMaxDots,
+ @@ -294,6 +297,8 @@ static struct {
+  	{ "kexalgorithms", oKexAlgorithms },
+  	{ "ipqos", oIPQoS },
+@@ -615,9 +593,9 @@
+  	int	ip_qos_bulk;		/* IP ToS/DSCP/class for bulk traffic */
+  	SyslogFacility log_facility;	/* Facility for system logging. */
+ @@ -114,7 +118,10 @@ typedef struct {
+- 
+  	int	enable_ssh_keysign;
+  	int64_t rekey_limit;
++ 	int     disable_multithreaded; /*disable multithreaded aes-ctr*/
+ +	int     none_switch;    /* Use none cipher */
+ +	int     none_enabled;   /* Allow none to be used */
+  	int	rekey_interval;
+@@ -700,9 +678,9 @@
+ +			options->hpn_buffer_size = CHAN_TCP_WINDOW_DEFAULT;
+ +	}
+ +
++ 	if (options->disable_multithreaded == -1)
++ 		options->disable_multithreaded = 0;
+  	if (options->ip_qos_interactive == -1)
+- 		options->ip_qos_interactive = IPTOS_DSCP_AF21;
+- 	if (options->ip_qos_bulk == -1)
+ @@ -519,6 +565,8 @@ typedef enum {
+  	sPasswordAuthentication, sKbdInteractiveAuthentication,
+  	sListenAddress, sAddressFamily,
+@@ -1081,11 +1059,11 @@
+  	xxx_host = host;
+  	xxx_hostaddr = hostaddr;
+  
+-@@ -435,6 +446,28 @@ ssh_userauth2(struct ssh *ssh, const char *local_user,
++@@ -435,7 +446,28 @@ ssh_userauth2(struct ssh *ssh, const char *local_user,
++ 		}
++ 	}
++ #endif
+  
+- 	if (!authctxt.success)
+- 		fatal("Authentication failed.");
+-+
+ +	/*
+ +	 * If the user wants to use the none cipher, do it post authentication
+ +	 * and only if the right conditions are met -- both of the NONE commands
