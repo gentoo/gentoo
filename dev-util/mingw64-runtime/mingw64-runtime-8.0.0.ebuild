@@ -26,6 +26,10 @@ RESTRICT="strip"
 
 S="${WORKDIR}/mingw-w64-v${PV}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-7.0.0-fortify-only-ssp.patch
+)
+
 is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
 }

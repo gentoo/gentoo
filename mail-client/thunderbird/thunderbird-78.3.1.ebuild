@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-FIREFOX_PATCHSET="firefox-81-patches-01.tar.xz"
+FIREFOX_PATCHSET="firefox-esr-78-patches-02.tar.xz"
 
 LLVM_MAX_SLOT=10
 
@@ -43,19 +43,17 @@ PATCH_URIS=(
 SRC_URI="${MOZ_SRC_BASE_URI}/source/${PN}-${MOZ_PV}.source.tar.xz
 	${PATCH_URIS[@]}"
 
-DESCRIPTION="Firefox Web Browser"
-HOMEPAGE="https://www.mozilla.com/firefox"
+DESCRIPTION="Thunderbird Mail Client"
+HOMEPAGE="https://www.mozilla.org/thunderbird"
 
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
 SLOT="0/$(ver_cut 1)"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="clang cpu_flags_arm_neon dbus debug eme-free geckodriver +gmp-autoupdate
-	hardened hwaccel jack lto +openh264 pgo pulseaudio screencast selinux
+IUSE="clang cpu_flags_arm_neon dbus debug eme-free +gmp-autoupdate
+	hardened jack lto +openh264 pgo pulseaudio selinux
 	+system-av1 +system-harfbuzz +system-icu +system-jpeg +system-libevent
 	+system-libvpx +system-webp wayland wifi"
-
-REQUIRED_USE="screencast? ( wayland )"
 
 BDEPEND="${PYTHON_DEPS}
 	app-arch/unzip
@@ -92,8 +90,8 @@ BDEPEND="${PYTHON_DEPS}
 	)"
 
 CDEPEND="
-	>=dev-libs/nss-3.56
-	>=dev-libs/nspr-4.28
+	>=dev-libs/nss-3.53.1
+	>=dev-libs/nspr-4.25
 	dev-libs/atk
 	dev-libs/expat
 	>=x11-libs/cairo-1.10[X]
@@ -123,7 +121,6 @@ CDEPEND="
 		sys-apps/dbus
 		dev-libs/dbus-glib
 	)
-	screencast? ( media-video/pipewire:0/0.3 )
 	system-av1? (
 		>=media-libs/dav1d-0.3.0:=
 		>=media-libs/libaom-1.0.0:=
@@ -201,13 +198,10 @@ llvm_check_deps() {
 }
 
 MOZ_LANGS=(
-	ach af an ar ast az be bg bn br bs ca-valencia ca cak cs cy
-	da de dsb el en-CA en-GB en-US eo es-AR es-CL es-ES es-MX et eu
-	fa ff fi fr fy-NL ga-IE gd gl gn gu-IN he hi-IN hr hsb hu hy-AM
-	ia id is it ja ka kab kk km kn ko lij lt lv mk mr ms my
-	nb-NO ne-NP nl nn-NO oc pa-IN pl pt-BR pt-PT rm ro ru
-	si sk sl son sq sr sv-SE ta te th tl tr trs uk ur uz vi
-	xh zh-CN zh-TW
+	af ar ast be bg br ca cak cs cy	da de dsb el en-CA en-GB en-US
+	es-AR es-ES et eu fa fi fr fy-NL ga-IE gd gl he hr hsb hu hy-AM
+	id is it ja ka kab kk ko lt ms nb-NO nl nn-NO pa-IN pl pt-BR
+	pt-PT rm ro ru si sk sl sq sr sv-SE th tr uz vi zh-CN zh-TW
 )
 
 mozilla_set_globals() {
@@ -355,7 +349,7 @@ pkg_pretend() {
 		if use pgo || use lto || use debug ; then
 			CHECKREQS_DISK_BUILD="13G"
 		else
-			CHECKREQS_DISK_BUILD="5G"
+			CHECKREQS_DISK_BUILD="5400M"
 		fi
 
 		check-reqs_pkg_pretend
@@ -374,7 +368,7 @@ pkg_setup() {
 		if use pgo || use lto || use debug ; then
 			CHECKREQS_DISK_BUILD="13G"
 		else
-			CHECKREQS_DISK_BUILD="5G"
+			CHECKREQS_DISK_BUILD="5400M"
 		fi
 
 		check-reqs_pkg_setup
@@ -512,7 +506,8 @@ src_configure() {
 	export MOZCONFIG="${S}/.mozconfig"
 
 	# Initialize MOZCONFIG
-	mozconfig_add_options_ac '' --enable-application=browser
+	mozconfig_add_options_ac '' --enable-application=comm/mail
+	mozconfig_add_options_ac '' --enable-calendar
 
 	if use lto ; then
 		if use clang ; then
@@ -645,8 +640,6 @@ src_configure() {
 
 	use eme-free && mozconfig_annotate '+eme-free' --disable-eme
 
-	mozconfig_use_enable geckodriver
-
 	if use hardened ; then
 		mozconfig_add_options_ac "+hardened" --enable-hardening
 		append-ldflags "-Wl,-z,relro -Wl,-z,now"
@@ -659,8 +652,6 @@ src_configure() {
 	if use kernel_linux && ! use pulseaudio ; then
 		mozconfig_add_options_ac '-pulseaudio' --enable-alsa
 	fi
-
-	mozconfig_use_enable screencast pipewire
 
 	mozconfig_use_enable wifi necko-wifi
 
@@ -811,7 +802,7 @@ src_install() {
 	newins "${FILESDIR}"/disable-auto-update.policy.json policies.json
 
 	# Install system-wide preferences
-	local PREFS_DIR="${MOZILLA_FIVE_HOME}/browser/defaults/preferences"
+	local PREFS_DIR="${MOZILLA_FIVE_HOME}/defaults/pref"
 	insinto "${PREFS_DIR}"
 	newins "${FILESDIR}"/gentoo-default-prefs.js all-gentoo.js
 
@@ -821,13 +812,6 @@ src_install() {
 	cat >>"${GENTOO_PREFS}" <<-EOF || die "failed to set spellchecker.dictionary_path pref"
 	pref("spellchecker.dictionary_path",       "${EPREFIX}/usr/share/myspell");
 	EOF
-
-	# Force hwaccel prefs if USE=hwaccel is enabled
-	if use hwaccel ; then
-		cat "${FILESDIR}"/gentoo-hwaccel-prefs.js-1 \
-		>>"${GENTOO_PREFS}" \
-		|| die "failed to add prefs to force hardware-accelerated rendering to all-gentoo.js"
-	fi
 
 	if ! use gmp-autoupdate ; then
 		local plugin
@@ -852,19 +836,9 @@ src_install() {
 		moz_install_xpi "${MOZILLA_FIVE_HOME}/distribution/extensions" "${langpacks[@]}"
 	fi
 
-	# Install geckodriver
-	if use geckodriver ; then
-		einfo "Installing geckodriver into ${ED}${MOZILLA_FIVE_HOME} ..."
-		pax-mark m "${BUILD_DIR}"/dist/bin/geckodriver
-		exeinto "${MOZILLA_FIVE_HOME}"
-		doexe "${BUILD_DIR}"/dist/bin/geckodriver
-
-		dosym ${MOZILLA_FIVE_HOME}/geckodriver /usr/bin/geckodriver
-	fi
-
 	# Install icons
-	local icon_srcdir="${S}/browser/branding/official"
-	local icon_symbolic_file="${FILESDIR}/icon/firefox-symbolic.svg"
+	local icon_srcdir="${S}/comm/mail/branding/thunderbird"
+	local icon_symbolic_file="${icon_srcdir}/TB-symbolic.svg"
 
 	insinto /usr/share/icons/hicolor/symbolic/apps
 	newins "${icon_symbolic_file}" ${PN}-symbolic.svg
@@ -997,25 +971,11 @@ pkg_postinst() {
 		elog
 	fi
 
-	local show_doh_information show_normandy_information
+	local show_doh_information
 
 	if [[ -z "${REPLACING_VERSIONS}" ]] ; then
 		# New install; Tell user that DoH is disabled by default
 		show_doh_information=yes
-		show_normandy_information=yes
-	else
-		local replacing_version
-		for replacing_version in ${REPLACING_VERSIONS} ; do
-			if ver_test "${replacing_version}" -lt 70 ; then
-				# Tell user only once about our DoH default
-				show_doh_information=yes
-			fi
-
-			if ver_test "${replacing_version}" -lt 74.0-r2 ; then
-				# Tell user only once about our Normandy default
-				show_normandy_information=yes
-			fi
-		done
 	fi
 
 	if [[ -n "${show_doh_information}" ]] ; then
@@ -1026,22 +986,5 @@ pkg_postinst() {
 		elog "should respect OS configured settings), \"network.trr.mode\" was set to 5"
 		elog "(\"Off by choice\") by default."
 		elog "You can enable DNS-over-HTTPS in ${PN^}'s preferences."
-	fi
-
-	# bug 713782
-	if [[ -n "${show_normandy_information}" ]] ; then
-		elog
-		elog "Upstream operates a service named Normandy which allows Mozilla to"
-		elog "push changes for default settings or even install new add-ons remotely."
-		elog "While this can be useful to address problems like 'Armagadd-on 2.0' or"
-		elog "revert previous decisions to disable TLS 1.0/1.1, privacy and security"
-		elog "concerns prevail, which is why we have switched off the use of this"
-		elog "service by default."
-		elog
-		elog "To re-enable this service set"
-		elog
-		elog "    app.normandy.enabled=true"
-		elog
-		elog "in about:config."
 	fi
 }
