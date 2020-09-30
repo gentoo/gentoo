@@ -26,7 +26,7 @@ SRC_URI="
 EMULTILIB_PKG="true"
 KEYWORDS="-* ~amd64 ~x86"
 LICENSE="GPL-2 NVIDIA-r2"
-SLOT="0/${PV%.*}"
+SLOT="0/${PV%%.*}"
 
 IUSE="compat +driver gtk3 kernel_FreeBSD kernel_linux +kms +libglvnd multilib static-libs +tools uvm wayland +X"
 REQUIRED_USE="
