@@ -633,11 +633,6 @@ app-cdr/pburn
 # /usr/dict/words for generation. Removal in 30 days.
 app-admin/passook
 
-# Aaron Bauman <bman@gentoo.org> (2020-08-28)
-# EAPI=4 and fails to compile
-# Dead upstream. Removal in 30 days
-net-mail/maildirtree
-
 # Piotr Karbowski <slashbeast@gentoo.org> (2020-08-28)
 # Temporary mask due to multiple reports of segfaults at startup, bug #739056
 =x11-base/xorg-server-1.20.9
