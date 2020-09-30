@@ -637,7 +637,6 @@ www-apps/ampache
 # bug 706898, bug 731188
 net-irc/ptlink-ircd
 net-irc/ptlink-opm
-net-irc/irc-server
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-29)
 # EAPI=4, use dev-embedded/libftd[tools] instead
