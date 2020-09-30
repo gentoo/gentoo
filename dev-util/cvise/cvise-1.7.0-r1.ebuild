@@ -31,6 +31,7 @@ RDEPEND="${DEPEND}
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/pebble[${PYTHON_USEDEP}]
+		dev-python/psutil[${PYTHON_USEDEP}]
 	')
 	dev-util/unifdef
 	sys-devel/flex"
