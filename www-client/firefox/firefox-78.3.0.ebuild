@@ -14,14 +14,14 @@ WANT_AUTOCONF="2.1"
 
 VIRTUALX_REQUIRED="pgo"
 
-MOZ_ESR="1"
+MOZ_ESR=yes
 
 # Convert the ebuild version to the upstream mozilla version, used by mozlinguas
 MOZ_PV="${PV/_alpha/a}"    # Handle alpha for SRC_URI
 MOZ_PV="${MOZ_PV/_beta/b}" # Handle beta for SRC_URI
 MOZ_PV="${MOZ_PV%%_rc*}"   # Handle rc for SRC_URI
 
-if [[ ${MOZ_ESR} == 1 ]] ; then
+if [[ -n ${MOZ_ESR} ]] ; then
 	# ESR releases have slightly different version numbers
 	MOZ_PV="${MOZ_PV}esr"
 fi
@@ -169,7 +169,7 @@ DEPEND="${CDEPEND}
 	amd64? ( virtual/opengl )
 	x86? ( virtual/opengl )"
 
-S="${WORKDIR}/firefox-${PV%_*}"
+S="${WORKDIR}/${PN}-${PV%_*}"
 
 # Allow MOZ_GMP_PLUGIN_LIST to be set in an eclass or
 # overridden in the enviromnent (advanced hackers only)
@@ -231,7 +231,7 @@ mozilla_set_globals() {
 		fi
 
 		SRC_URI+=" l10n_${xflag/[_@]/-}? ("
-		SRC_URI+=" ${MOZ_SRC_BASE_URI}/linux-i686/xpi/${lang}.xpi -> ${PN}-${MOZ_PV}-${lang}.xpi"
+		SRC_URI+=" ${MOZ_SRC_BASE_URI}/linux-x86_64/xpi/${lang}.xpi -> ${PN}-${MOZ_PV}-${lang}.xpi"
 		SRC_URI+=" )"
 		IUSE+=" l10n_${xflag/[_@]/-}"
 	done
@@ -430,7 +430,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	use pgo && rm -v "${WORKDIR}"/firefox-patches/0033-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
+	use pgo && rm -v "${WORKDIR}"/firefox-patches/*-LTO-Only-enable-LTO-*.patch
 	eapply "${WORKDIR}/firefox-patches"
 
 	# Allow user to apply any additional patches without modifing ebuild
@@ -472,9 +472,6 @@ src_prepare() {
 	# Write API keys to disk
 	echo -n "${MOZ_API_KEY_GOOGLE//gGaPi/}" > "${S}"/api-google.key || die
 
-	# Initialize .mozconfig
-	cp browser/config/mozconfig .mozconfig || die
-
 	xdg_src_prepare
 }
 
@@ -508,14 +505,14 @@ src_configure() {
 	# Set MOZILLA_FIVE_HOME
 	export MOZILLA_FIVE_HOME="/usr/$(get_libdir)/${PN}"
 
-	# Use the MOZILLA_FIVE_HOME for the rpath
-	#append-ldflags -Wl,-rpath="${MOZILLA_FIVE_HOME}",--enable-new-dtags
-
 	# python/mach/mach/mixin/process.py fails to detect SHELL
 	export SHELL="${EPREFIX}/bin/bash"
 
 	# Set MOZCONFIG
 	export MOZCONFIG="${S}/.mozconfig"
+
+	# Initialize MOZCONFIG
+	mozconfig_add_options_ac '' --enable-application=browser
 
 	if use lto ; then
 		if use clang ; then
@@ -615,7 +612,7 @@ src_configure() {
 
 	# Set update channel
 	local update_channel=release
-	[[ ${MOZ_ESR} == 1 ]] && update_channel=esr
+	[[ -n ${MOZ_ESR} ]] && update_channel=esr
 	mozconfig_add_options_ac '' --update-channel=${update_channel}
 
 	if ! use x86 && [[ ${CHOST} != armv*h* ]] ; then
@@ -693,6 +690,24 @@ src_configure() {
 				-e "s|softfp|hard|" \
 				"${S}"/media/libvpx/moz.build \
 				|| die
+		fi
+	fi
+
+	if use clang ; then
+		# https://bugzilla.mozilla.org/show_bug.cgi?id=1482204
+		# https://bugzilla.mozilla.org/show_bug.cgi?id=1483822
+		# toolkit/moz.configure Elfhack section: target.cpu in ('arm', 'x86', 'x86_64')
+		local disable_elf_hack=
+		if use amd64 ; then
+			disable_elf_hack=yes
+		elif use x86 ; then
+			disable_elf_hack=yes
+		elif use arm ; then
+			disable_elf_hack=yes
+		fi
+
+		if [[ -n ${disable_elf_hack} ]] ; then
+			mozconfig_add_options_ac 'elf-hack is broken when using Clang' --disable-elf-hack
 		fi
 	fi
 
@@ -783,8 +798,8 @@ src_install() {
 	DESTDIR="${D}" ./mach install || die
 
 	# Upstream cannot ship symlink but we can (bmo#658850)
-	rm "${ED}${MOZILLA_FIVE_HOME}/firefox-bin" || die
-	dosym firefox ${MOZILLA_FIVE_HOME}/firefox-bin
+	rm "${ED}${MOZILLA_FIVE_HOME}/${PN}-bin" || die
+	dosym ${PN} ${MOZILLA_FIVE_HOME}/${PN}-bin
 
 	# Don't install llvm-symbolizer from sys-devel/llvm package
 	if [[ -f "${ED}${MOZILLA_FIVE_HOME}/llvm-symbolizer" ]] ; then
@@ -824,15 +839,6 @@ src_install() {
 		done
 	fi
 
-	# Skia should be working by now ...
-	## Force cairo as the canvas renderer on platforms without skia support
-	#if [[ $(tc-endian) == "big" ]] ; then
-	#	cat >>"${GENTOO_PREFS}" <<-EOF || die "failed to force cairo for platform without skia support"
-	#	sticky_pref("gfx.canvas.azure.backends",           "cairo");
-	#	sticky_pref("gfx.content.azure.backends",          "cairo");
-	#	EOF
-	#fi
-
 	# Force the graphite pref if USE=system-harfbuzz is enabled, since the pref cannot disable it
 	if use system-harfbuzz ; then
 		cat >>"${GENTOO_PREFS}" <<-EOF || die "failed to set gfx.font_rendering.graphite.enabled pref"
@@ -857,11 +863,14 @@ src_install() {
 	fi
 
 	# Install icons
+	local icon_srcdir="${S}/browser/branding/official"
+	local icon_symbolic_file="${FILESDIR}/icon/firefox-symbolic.svg"
+
 	insinto /usr/share/icons/hicolor/symbolic/apps
-	newins "${FILESDIR}/icon/firefox-symbolic.svg" ${PN}-symbolic.png
+	newins "${icon_symbolic_file}" ${PN}-symbolic.svg
 
 	local icon size
-	for icon in "${S}"/browser/branding/official/default*.png ; do
+	for icon in "${icon_srcdir}"/default*.png ; do
 		size=${icon%.png}
 		size=${size##*/default}
 
@@ -873,6 +882,9 @@ src_install() {
 	done
 
 	# Install menus
+	local wrapper_wayland="${PN}-wayland.sh"
+	local wrapper_x11="${PN}-x11.sh"
+	local desktop_file="${FILESDIR}/icon/${PN}-r2.desktop"
 	local display_protocols="auto X11"
 	local icon="${PN}"
 	local name="Mozilla ${PN^}"
@@ -890,8 +902,8 @@ src_install() {
 
 		case ${display_protocol} in
 			Wayland)
-				exec_command='firefox-wayland --name firefox-wayland'
-				newbin "${FILESDIR}"/firefox-wayland.sh firefox-wayland
+				exec_command="${PN}-wayland --name ${PN}-wayland"
+				newbin "${FILESDIR}/${wrapper_wayland}" ${PN}-wayland
 				;;
 			X11)
 				if ! use wayland ; then
@@ -900,17 +912,17 @@ src_install() {
 					continue
 				fi
 
-				exec_command='firefox-x11 --name firefox-x11'
-				newbin "${FILESDIR}"/firefox-x11.sh firefox-x11
+				exec_command="${PN}-x11 --name ${PN}-x11"
+				newbin "${FILESDIR}/${wrapper_x11}" ${PN}-x11
 				;;
 			*)
 				app_name="${name}"
 				desktop_filename="${PN}.desktop"
-				exec_command='firefox'
+				exec_command="${PN}"
 				;;
 		esac
 
-		cp "${FILESDIR}/icon/${PN}-r2.desktop" "${WORKDIR}/${PN}.desktop-template" || die
+		cp "${desktop_file}" "${WORKDIR}/${PN}.desktop-template" || die
 
 		sed -i \
 			-e "s:@NAME@:${app_name}:" \
@@ -926,14 +938,14 @@ src_install() {
 
 	# Install generic wrapper script
 	rm "${ED}/usr/bin/${PN}" || die
-	newbin "${FILESDIR}/firefox.sh" ${PN}
+	newbin "${FILESDIR}/${PN}.sh" ${PN}
 
 	# Update wrapper
 	local wrapper
 	for wrapper in \
-		"${ED}/usr/bin/firefox" \
-		"${ED}/usr/bin/firefox-x11" \
-		"${ED}/usr/bin/firefox-wayland" \
+		"${ED}/usr/bin/${PN}" \
+		"${ED}/usr/bin/${PN}-x11" \
+		"${ED}/usr/bin/${PN}-wayland" \
 	; do
 		[[ ! -f "${wrapper}" ]] && continue
 
