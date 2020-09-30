@@ -6,6 +6,6 @@
 		<name>Gentoo TeX Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="launchpad">rubber</remote-id>
+		<remote-id type="gitlab">latex-rubber/rubber</remote-id>
 	</upstream>
 </pkgmetadata>
