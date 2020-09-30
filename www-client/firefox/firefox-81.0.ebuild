@@ -64,22 +64,23 @@ BDEPEND="${PYTHON_DEPS}
 	|| (
 		(
 			sys-devel/clang:10
-			!clang? ( sys-devel/llvm:10 )
+			sys-devel/llvm
 			clang? (
 				=sys-devel/lld-10*
-				sys-devel/llvm:10[gold]
 				pgo? ( =sys-libs/compiler-rt-sanitizers-10*[profile] )
 			)
 		)
 		(
 			sys-devel/clang:9
-			!clang? ( sys-devel/llvm:9 )
+			sys-devel/llvm:9
 			clang? (
 				=sys-devel/lld-9*
-				sys-devel/llvm:9[gold]
 				pgo? ( =sys-libs/compiler-rt-sanitizers-9*[profile] )
 			)
 		)
+	)
+	lto? (
+		!clang? ( sys-devel/binutils[gold] )
 	)
 	amd64? ( >=dev-lang/yasm-1.1 )
 	x86? ( >=dev-lang/yasm-1.1 )
