@@ -601,7 +601,6 @@ src_configure() {
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \
 		--prefix="${EPREFIX}/usr" \
 		--target="${CHOST}" \
-		--update-channel=release \
 		--without-ccache \
 		--with-intl-api \
 		--with-libclang-path="$(llvm-config --libdir)" \
@@ -613,6 +612,11 @@ src_configure() {
 		--with-unsigned-addon-scopes=app,system \
 		--x-includes="${SYSROOT}${EPREFIX}/usr/include" \
 		--x-libraries="${SYSROOT}${EPREFIX}/usr/$(get_libdir)"
+
+	# Set update channel
+	local update_channel=release
+	[[ ${MOZ_ESR} == 1 ]] && update_channel=esr
+	mozconfig_add_options_ac '' --update-channel=${update_channel}
 
 	if ! use x86 && [[ ${CHOST} != armv*h* ]] ; then
 		mozconfig_add_options_ac '' --enable-rust-simd
