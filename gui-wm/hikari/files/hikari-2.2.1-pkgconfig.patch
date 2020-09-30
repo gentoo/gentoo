@@ -1,0 +1,78 @@
+diff --git a/Makefile b/Makefile
+index 555b770..01025b9 100644
+--- a/Makefile
++++ b/Makefile
+@@ -13,6 +13,7 @@ WITH_VIRTUAL_INPUT = YES
+ OS != uname
+ VERSION ?= "CURRENT"
+ PREFIX ?= /usr/local
++PKG_CONFIG ?= pkg-config
+ ETC_PREFIX ?= ${PREFIX}
+ 
+ OBJS = \
+@@ -78,7 +79,7 @@ OBJS += \
+ 	xwayland_view.o
+ .endif
+ 
+-WAYLAND_PROTOCOLS != pkg-config --variable pkgdatadir wayland-protocols
++WAYLAND_PROTOCOLS != ${PKG_CONFIG} --variable pkgdatadir wayland-protocols
+ 
+ .PHONY: distclean clean clean-doc doc dist install uninstall
+ .PATH: src
+@@ -125,31 +126,31 @@ CFLAGS += -DHAVE_VIRTUAL_INPUT=1
+ 
+ CFLAGS += -Wall -I. -Iinclude -DHIKARI_ETC_PREFIX=${ETC_PREFIX}
+ 
+-WLROOTS_CFLAGS != pkg-config --cflags wlroots
+-WLROOTS_LIBS != pkg-config --libs wlroots
++WLROOTS_CFLAGS != ${PKG_CONFIG} --cflags wlroots
++WLROOTS_LIBS != ${PKG_CONFIG} --libs wlroots
+ 
+ WLROOTS_CFLAGS += -DWLR_USE_UNSTABLE=1
+ 
+-PANGO_CFLAGS != pkg-config --cflags pangocairo
+-PANGO_LIBS != pkg-config --libs pangocairo
++PANGO_CFLAGS != ${PKG_CONFIG} --cflags pangocairo
++PANGO_LIBS != ${PKG_CONFIG} --libs pangocairo
+ 
+-CAIRO_CFLAGS != pkg-config --cflags cairo
+-CAIRO_LIBS != pkg-config --libs cairo
++CAIRO_CFLAGS != ${PKG_CONFIG} --cflags cairo
++CAIRO_LIBS != ${PKG_CONFIG} --libs cairo
+ 
+-PIXMAN_CFLAGS != pkg-config --cflags pixman-1
+-PIXMAN_LIBS != pkg-config --libs pixman-1
++PIXMAN_CFLAGS != ${PKG_CONFIG} --cflags pixman-1
++PIXMAN_LIBS != ${PKG_CONFIG} --libs pixman-1
+ 
+-XKBCOMMON_CFLAGS != pkg-config --cflags xkbcommon
+-XKBCOMMON_LIBS != pkg-config --libs xkbcommon
++XKBCOMMON_CFLAGS != ${PKG_CONFIG} --cflags xkbcommon
++XKBCOMMON_LIBS != ${PKG_CONFIG} --libs xkbcommon
+ 
+-WAYLAND_CFLAGS != pkg-config --cflags wayland-server
+-WAYLAND_LIBS != pkg-config --libs wayland-server
++WAYLAND_CFLAGS != ${PKG_CONFIG} --cflags wayland-server
++WAYLAND_LIBS != ${PKG_CONFIG} --libs wayland-server
+ 
+-LIBINPUT_CFLAGS != pkg-config --cflags libinput
+-LIBINPUT_LIBS != pkg-config --libs libinput
++LIBINPUT_CFLAGS != ${PKG_CONFIG} --cflags libinput
++LIBINPUT_LIBS != ${PKG_CONFIG} --libs libinput
+ 
+-UCL_CFLAGS != pkg-config --cflags libucl
+-UCL_LIBS != pkg-config --libs libucl
++UCL_CFLAGS != ${PKG_CONFIG} --cflags libucl
++UCL_LIBS != ${PKG_CONFIG} --libs libucl
+ 
+ CFLAGS += \
+ 	${WLROOTS_CFLAGS} \
+@@ -192,7 +193,7 @@ wlr-layer-shell-unstable-v1-protocol.h:
+ 	wayland-scanner server-header protocol/wlr-layer-shell-unstable-v1.xml ${.TARGET}
+ 
+ hikari-unlocker: hikari_unlocker.c
+-	${CC} ${CFLAGS_EXTRA} ${LDFLAGS_EXTRA} -o hikari-unlocker hikari_unlocker.c -lpam
++	${CC} ${LDFLAGS} ${CFLAGS} ${INCLUDES} -o hikari-unlocker hikari_unlocker.c -lpam
+ 
+ clean-doc:
+ 	@test -e _darcs && echo "cleaning manpage" ||:
