@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{6..9} )
 inherit distutils-r1
 
 DESCRIPTION="CLI for Postgres with auto-completion and syntax highlighting"
@@ -13,11 +14,10 @@ SRC_URI="https://github.com/dbcli/pgcli/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
-	>=dev-python/prompt_toolkit-2.0.6[${PYTHON_USEDEP}]
-	<dev-python/prompt_toolkit-3.0.0[${PYTHON_USEDEP}]
+	>=dev-python/prompt_toolkit-3.0.0[${PYTHON_USEDEP}]
+	<dev-python/prompt_toolkit-4.0.0[${PYTHON_USEDEP}]
 	>=dev-python/psycopg-2.8.0[${PYTHON_USEDEP}]
 	>=dev-python/sqlparse-0.3.0[${PYTHON_USEDEP}]
 	<dev-python/sqlparse-0.4.0[${PYTHON_USEDEP}]
@@ -37,8 +37,5 @@ BDEPEND="
 		dev-python/mock[${PYTHON_USEDEP}]
 	)
 "
-
-# there is a flaky test, so no tests for now
-RESTRICT="test"
 
 distutils_enable_tests pytest
