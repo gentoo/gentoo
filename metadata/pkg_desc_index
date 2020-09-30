@@ -1649,7 +1649,7 @@ app-editors/mousepad 0.4.2: GTK+-based editor for the Xfce Desktop Environment
 app-editors/nano 4.9.3 5.0-r1 5.1 5.2 9999: GNU GPL'd Pico clone with more functionality
 app-editors/ne 3.1.1 3.3.0: the nice editor, easy to use for the beginner and powerful for the wizard
 app-editors/nedit 5.6-r1 5.6-r2 5.7: Multi-purpose text editor for the X Window System
-app-editors/neovim 0.4.3 9999: Vim-fork focused on extensibility and agility.
+app-editors/neovim 0.4.3 0.4.4 9999: Vim-fork focused on extensibility and agility.
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
 app-editors/notepadqq 2.0.0_beta 9999: Notepad++-like editor for Linux
 app-editors/okteta 0.26.4: Hex editor by KDE
@@ -5666,7 +5666,7 @@ dev-libs/tvmet 1.7.2-r2: Tiny Vector Matrix library using Expression Templates
 dev-libs/ucl 1.03-r1: the UCL Compression Library
 dev-libs/ucommon 6.0.3 6.5.7 7.0.0: Portable C++ runtime for threads and sockets
 dev-libs/udis86 1.7-r2 1.7.2: Disassembler library for the x86/-64 architecture sets
-dev-libs/unibilium 2.0.0: A very basic terminfo library
+dev-libs/unibilium 2.0.0 2.1.0: A very basic terminfo library
 dev-libs/unittest++ 2.0.0 2.0.0-r1: A lightweight unit testing framework for C++
 dev-libs/univalue 1.0.5 9999: C++ universal value object and JSON library
 dev-libs/urdfdom 1.0.4 9999: URDF (U-Robot Description Format) library

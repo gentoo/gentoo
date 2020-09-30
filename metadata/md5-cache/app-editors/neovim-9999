@@ -1,13 +1,13 @@
 BDEPEND=dev-util/gperf virtual/libiconv virtual/libintl virtual/pkgconfig dev-util/ninja dev-util/cmake >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare test unpack
-DEPEND=dev-libs/libutf8proc:= dev-libs/libuv:0= >=dev-libs/libvterm-0.1 dev-libs/msgpack:0= dev-lua/lpeg[luajit=] dev-lua/luv[luajit=] dev-lua/mpack[luajit=] net-libs/libnsl luajit? ( dev-lang/luajit:2 ) !luajit? ( dev-lang/lua:= dev-lua/LuaBitOp ) tui? ( dev-libs/libtermkey >=dev-libs/unibilium-2.0.0:0= ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+DEPEND=dev-libs/libutf8proc:= dev-libs/libuv:0= >=dev-libs/libvterm-0.1.2 dev-libs/msgpack:0= dev-lua/lpeg[luajit=] dev-lua/luv[luajit=] dev-lua/mpack[luajit=] net-libs/libnsl luajit? ( dev-lang/luajit:2 ) !luajit? ( dev-lang/lua:= dev-lua/LuaBitOp ) tui? ( dev-libs/libtermkey >=dev-libs/unibilium-2.0.0:0= ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Vim-fork focused on extensibility and agility.
 EAPI=7
 HOMEPAGE=https://neovim.io
-IUSE=+luajit +nvimpager +tui
+IUSE=+lto +luajit +nvimpager +tui
 LICENSE=Apache-2.0 vim
 PROPERTIES=live
-RDEPEND=dev-libs/libutf8proc:= dev-libs/libuv:0= >=dev-libs/libvterm-0.1 dev-libs/msgpack:0= dev-lua/lpeg[luajit=] dev-lua/luv[luajit=] dev-lua/mpack[luajit=] net-libs/libnsl luajit? ( dev-lang/luajit:2 ) !luajit? ( dev-lang/lua:= dev-lua/LuaBitOp ) tui? ( dev-libs/libtermkey >=dev-libs/unibilium-2.0.0:0= ) app-eselect/eselect-vi
+RDEPEND=dev-libs/libutf8proc:= dev-libs/libuv:0= >=dev-libs/libvterm-0.1.2 dev-libs/msgpack:0= dev-lua/lpeg[luajit=] dev-lua/luv[luajit=] dev-lua/mpack[luajit=] net-libs/libnsl luajit? ( dev-lang/luajit:2 ) !luajit? ( dev-lang/lua:= dev-lua/LuaBitOp ) tui? ( dev-libs/libtermkey >=dev-libs/unibilium-2.0.0:0= ) app-eselect/eselect-vi
 SLOT=0
 _eclasses_=cmake	ac7cb516f6a288b6a82bc0649ce49878	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	optfeature	6c9aa35fc16df43d7142ef2660e00e25	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=8291f19453dea3941b52101d04afcd23
+_md5_=72dc826bcdb59b98409582d9e4600005
