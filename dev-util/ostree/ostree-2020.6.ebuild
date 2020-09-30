@@ -69,7 +69,6 @@ src_configure() {
 		$(use_with curl)
 		$(use_with dracut)
 		$(use_enable doc gtk-doc)
-		$(use_enable introspection)
 		$(use_enable http2)
 		$(use_enable httpd trivial-httpd-cmdline)
 		$(use_with selinux )
