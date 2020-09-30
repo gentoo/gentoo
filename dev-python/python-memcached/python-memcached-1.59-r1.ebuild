@@ -20,7 +20,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
-BDEPEND="test? ( net-misc/memcached )"
+BDEPEND="
+	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
+		net-misc/memcached
+	)
+"
 
 distutils_enable_tests nose
 
