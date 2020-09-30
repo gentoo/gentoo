@@ -148,7 +148,6 @@ src_configure() {
 		-D cocoa=false
 		-D drm-deprecated=false
 		-D g-mainloop=false
-		-D install-eo-files=true
 		-D mono-beta=false
 		-D dotnet=false
 		-D pixman=false
@@ -157,6 +156,7 @@ src_configure() {
 
 		-D edje-sound-and-video=true
 		-D eeze=true
+		-D install-eo-files=true
 		-D libmount=true
 		-D native-arch-optimization=true
 		-D xinput2=true
