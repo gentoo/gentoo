@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare unpack
+DESCRIPTION=A utility to attach a running program to a new terminal
+EAPI=7
+HOMEPAGE=https://github.com/nelhage/reptyr
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=MIT
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/nelhage/reptyr/archive/reptyr-0.8.0.tar.gz
+_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=9b6c30cfeba567955bae39a0dba6b14b

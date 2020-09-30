@@ -2523,7 +2523,7 @@ app-misc/recoll 1.25.19: A personal full text search package
 app-misc/regex-markup 0.10.0-r1: A tool to color syslog files as well
 app-misc/regionset 0.2: Sets the region on DVD drives
 app-misc/remind 03.01.15 03.02.00 03.03.00 03.03.01: Ridiculously functional reminder program
-app-misc/reptyr 0.6.2 0.7.0: A utility to attach a running program to a new terminal
+app-misc/reptyr 0.6.2 0.7.0 0.8.0: A utility to attach a running program to a new terminal
 app-misc/resolve-march-native 0.9.4: Resolve GCC flag -march=native
 app-misc/rioutil 1.5.4: A utility for accessing various Rio media players
 app-misc/rl 0.2.7-r1: Randomize lines from text files or stdin
@@ -9017,8 +9017,8 @@ dev-python/rsa 4.2: Pure-Python RSA implementation
 dev-python/rst-linker 2.0.0: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rtimulib 7.2.1-r1: Python Binding for RTIMULib, a versatile IMU library
 dev-python/rtslib-fb 2.1.73: A Python object API for managing the Linux LIO kernel target
-dev-python/ruamel-yaml 0.16.10 0.16.12: YAML parser/emitter that supports roundtrip comment preservation
-dev-python/ruamel-yaml-clib 0.2.0 0.2.2: C-based reader/scanner and emitter for dev-python/ruamel-yaml
+dev-python/ruamel-yaml 0.16.10 0.16.12-r1: YAML parser/emitter that supports roundtrip comment preservation
+dev-python/ruamel-yaml-clib 0.2.0 0.2.2-r1: C-based reader/scanner and emitter for dev-python/ruamel-yaml
 dev-python/ryu 4.26-r1: Component-based Software-defined Networking Framework
 dev-python/s3fs 0.4.2: Pythonic file interface to S3
 dev-python/s3transfer 0.3.3: An Amazon S3 Transfer Manager
