@@ -628,11 +628,6 @@ dev-embedded/ftdi_eeprom
 # Unmaintained. Removal in 30 days.
 app-cdr/pburn
 
-# Aaron Bauman <bman@gentoo.org> (2020-08-29)
-# EAPI=4, simple script, relies on hardcoded
-# /usr/dict/words for generation. Removal in 30 days.
-app-admin/passook
-
 # Piotr Karbowski <slashbeast@gentoo.org> (2020-08-28)
 # Temporary mask due to multiple reports of segfaults at startup, bug #739056
 =x11-base/xorg-server-1.20.9
