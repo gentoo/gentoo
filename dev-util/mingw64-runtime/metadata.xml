@@ -10,6 +10,7 @@
     <flag name="libraries">Build extra libraries: mangle, pseh, winpthreads.</flag>
     <flag name="secure-api">Expose secure API (*_s function) by default.</flag>
     <flag name="tools">Build extra tools: gendef, genidl.</flag>
+    <flag name="multilib">Also compile 32-bit libraries when building for 64-bit CPU.</flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">mingw-w64</remote-id>
