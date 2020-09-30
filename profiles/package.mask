@@ -650,12 +650,6 @@ dev-ada/gnatcoll-db
 >=dev-libs/vala-common-0.49
 dev-lang/vala:0.50
 
-# Jonas Stein <jstein@gentoo.org> (2020-08-13)
-# One of many password generators, but with dead upstream in this case.
-# Masked for removal after 2020-10-01.
-# Bug #629272
-app-admin/apg
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
 # consolekit is abandoned upstream.
 # People are encouraged to switch to any logind
