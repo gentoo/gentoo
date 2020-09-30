@@ -30,6 +30,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-3.9.0-build-tests.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DCBLAS=ON
