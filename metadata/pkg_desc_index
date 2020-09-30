@@ -9348,6 +9348,7 @@ dev-qt/qtserialport 5.14.2 5.15.1: Serial port abstraction library for the Qt5 f
 dev-qt/qtsingleapplication 2.6.1_p20171024: Qt library to start applications only once per user
 dev-qt/qtspeech 5.14.2 5.15.1: Text-to-speech library for the Qt5 framework
 dev-qt/qtsql 5.14.2 5.15.1: SQL abstraction library for the Qt5 framework
+dev-qt/qtstyleplugins 5.0.0_p20170311: Additional style plugins for Qt5 (gtk2, cleanlook, plastic, motif)
 dev-qt/qtsvg 5.14.2 5.15.1: SVG rendering library for the Qt5 framework
 dev-qt/qttest 5.14.2 5.15.1: Unit testing library for the Qt5 framework
 dev-qt/qttranslations 5.14.2 5.15.1: Translation files for the Qt5 framework
