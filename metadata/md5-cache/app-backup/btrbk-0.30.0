@@ -4,11 +4,11 @@ DEPEND=doc? ( >=dev-ruby/asciidoctor-1.5.7 )
 DESCRIPTION=Tool for creating snapshots and remote backups of btrfs subvolumes
 EAPI=7
 HOMEPAGE=https://digint.ch/btrbk/
-IUSE=+mbuffer +doc
+IUSE=+mbuffer +doc +lsbtr
 KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=GPL-3+
 RDEPEND=dev-lang/perl net-misc/openssh mbuffer? ( >=sys-block/mbuffer-20180505 ) >=sys-fs/btrfs-progs-4.12
 SLOT=0
 SRC_URI=https://digint.ch/download/btrbk/releases/btrbk-0.30.0.tar.xz
 _eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=111215d7573695620416371a13f46355
+_md5_=4d971ba3275087b8d02b7585a47cafd6
