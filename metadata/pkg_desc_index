@@ -14439,7 +14439,7 @@ net-analyzer/tcpreen 1.4.4: TCP network re-engineering tool
 net-analyzer/tcpreplay 4.3.3 999999: utilities for editing and replaying previously captured network traffic
 net-analyzer/tcpslice 1.2a_p3-r1 1.2a_p3_p4: Extract and concatenate portions of pcap files
 net-analyzer/tcpstat 1.5-r3 1.5_p8: Reports network interface statistics
-net-analyzer/tcptrace 6.6.7_p4_p1 6.6.7_p5: A Tool for analyzing network packet dumps
+net-analyzer/tcptrace 6.6.7_p4_p1 6.6.7_p5 6.6.7_p6: A Tool for analyzing network packet dumps
 net-analyzer/tcptraceroute 1.5_beta7-r2 1.5_beta7-r3: tcptraceroute is a traceroute implementation using TCP packets
 net-analyzer/tcptrack 1.4.2: Passive per-connection tcp bandwidth monitor
 net-analyzer/telegraf 1.10.4 1.11.5 1.12.1 1.13.3 1.14.5 1.15.2: The plugin-driven server agent for collecting & reporting metrics.
