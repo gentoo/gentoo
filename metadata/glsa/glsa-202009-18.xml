@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202009-18">
+  <title>Bitcoin: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Bitcoin, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">bitcoin</product>
+  <announced>2020-09-30</announced>
+  <revised count="1">2020-09-30</revised>
+  <bug>711198</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-p2p/bitcoind" auto="yes" arch="*">
+      <unaffected range="ge">0.20.1</unaffected>
+      <vulnerable range="lt">0.20.1</vulnerable>
+    </package>
+    <package name="net-p2p/bitcoin-qt" auto="yes" arch="*">
+      <unaffected range="ge">0.20.1</unaffected>
+      <vulnerable range="lt">0.20.1</vulnerable>
+    </package>
+    <package name="net-p2p/bitcoin-cli" auto="yes" arch="*">
+      <unaffected range="ge">0.20.1</unaffected>
+      <vulnerable range="lt">0.20.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Bitcoin Core consists of both “full-node” software for fully
+      validating the blockchain as well as a bitcoin wallet.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Bitcoin. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All bitcoind users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-p2p/bitcoind-0.20.1"
+    </code>
+    
+    <p>All bitcoin-qt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-p2p/bitcoin-qt-0.20.1"
+    </code>
+    
+    <p>All bitcoin-cli users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-p2p/bitcoin-cli-0.20.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-15947">CVE-2019-15947</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14198">CVE-2020-14198</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-09-18T00:17:00Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-09-30T00:20:42Z">sam_c</metadata>
+</glsa>
