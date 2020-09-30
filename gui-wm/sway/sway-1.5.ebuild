@@ -33,7 +33,7 @@ DEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/pango
 	x11-libs/pixman
-	media-libs/mesa[gles2,libglvnd]
+	media-libs/mesa[gles2,libglvnd(+)]
 	elogind? ( >=sys-auth/elogind-239 )
 	swaybar? ( x11-libs/gdk-pixbuf:2 )
 	swaybg? ( gui-apps/swaybg )
