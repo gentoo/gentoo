@@ -9371,40 +9371,40 @@ dev-ros/actionlib_msgs 1.13.0 9999: Common messages to interact with an action s
 dev-ros/actionlib_tools 1.13.2 9999: Tools for dealing with actionlib
 dev-ros/actionlib_tutorials 0.1.12 0.2.0 9999: Actionlib tutorials
 dev-ros/amcl 1.17.0 9999: Probabilistic localization system for a robot moving in 2D
-dev-ros/ament_cmake_copyright 0.9.5 9999: The auto-magic functions for ease to use of the ament linters
-dev-ros/ament_cmake_core 0.9.6 1.0.0 9999: The core of the ament buildsystem in CMake
-dev-ros/ament_cmake_cppcheck 0.9.5 9999: CMake API for ament_cppcheck to perform static code analysis on C/C++
-dev-ros/ament_cmake_cpplint 0.9.5 9999: CMake API for ament_cpplint to lint C / C++ code using cpplint
-dev-ros/ament_cmake_export_definitions 0.9.6 1.0.0 9999: Export definitions to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_export_dependencies 0.9.6 1.0.0 9999: Export dependencies to downstream packages in the ament buildsystem in CMake
-dev-ros/ament_cmake_export_include_directories 0.9.6 1.0.0 9999: Export include directories to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_export_interfaces 0.9.6 1.0.0 9999: Export interfaces to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_export_libraries 0.9.6 1.0.0 9999: Export libraries to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_export_link_flags 0.9.6 1.0.0 9999: Export link flags to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_export_targets 0.9.6 1.0.0 9999: Export targets to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_gmock 1.0.0 9999: The ability to add Google mock-based tests in the ament buildsystem
-dev-ros/ament_cmake_gtest 0.9.6 1.0.0 9999: The ability to add gtest-based tests in the ament buildsystem
-dev-ros/ament_cmake_include_directories 0.9.6 1.0.0 9999: Export include directories to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_libraries 0.9.6 1.0.0 9999: The functionality to deduplicate libraries in the ament buildsystem
-dev-ros/ament_cmake_lint_cmake 0.9.5 9999: The CMake API for ament_lint_cmake to lint CMake code using cmakelint
-dev-ros/ament_cmake_pytest 1.0.0 9999: The ability to run Python tests using pytest in the ament buildsystem
-dev-ros/ament_cmake_python 0.9.6 1.0.0 9999: The ability to use Python in the ament buildsystem
+dev-ros/ament_cmake_copyright 0.9.5 0.10.0 9999: The auto-magic functions for ease to use of the ament linters
+dev-ros/ament_cmake_core 0.9.6 1.0.0 1.0.1 9999: The core of the ament buildsystem in CMake
+dev-ros/ament_cmake_cppcheck 0.9.5 0.10.0 9999: CMake API for ament_cppcheck to perform static code analysis on C/C++
+dev-ros/ament_cmake_cpplint 0.9.5 0.10.0 9999: CMake API for ament_cpplint to lint C / C++ code using cpplint
+dev-ros/ament_cmake_export_definitions 0.9.6 1.0.0 1.0.1 9999: Export definitions to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_dependencies 0.9.6 1.0.0 1.0.1 9999: Export dependencies to downstream packages in the ament buildsystem in CMake
+dev-ros/ament_cmake_export_include_directories 0.9.6 1.0.0 1.0.1 9999: Export include directories to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_interfaces 0.9.6 1.0.0 1.0.1 9999: Export interfaces to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_libraries 0.9.6 1.0.0 1.0.1 9999: Export libraries to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_link_flags 0.9.6 1.0.0 1.0.1 9999: Export link flags to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_targets 0.9.6 1.0.0 1.0.1 9999: Export targets to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_gmock 1.0.0 1.0.1 9999: The ability to add Google mock-based tests in the ament buildsystem
+dev-ros/ament_cmake_gtest 0.9.6 1.0.0 1.0.1 9999: The ability to add gtest-based tests in the ament buildsystem
+dev-ros/ament_cmake_include_directories 0.9.6 1.0.0 1.0.1 9999: Export include directories to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_libraries 0.9.6 1.0.0 1.0.1 9999: The functionality to deduplicate libraries in the ament buildsystem
+dev-ros/ament_cmake_lint_cmake 0.9.5 0.10.0 9999: The CMake API for ament_lint_cmake to lint CMake code using cmakelint
+dev-ros/ament_cmake_pytest 1.0.0 1.0.1 9999: The ability to run Python tests using pytest in the ament buildsystem
+dev-ros/ament_cmake_python 0.9.6 1.0.0 1.0.1 9999: The ability to use Python in the ament buildsystem
 dev-ros/ament_cmake_ros 0.9.0 9999: ROS specific CMake bits in the ament buildsystem
-dev-ros/ament_cmake_target_dependencies 0.9.6 1.0.0 9999: Add defs, include dirs and libs to a target in the ament buildsystem
-dev-ros/ament_cmake_test 0.9.6 1.0.0 9999: The ability to add tests in the ament buildsystem
-dev-ros/ament_cmake_uncrustify 0.9.5 9999: The CMake API for ament_uncrustify to check code against styleconventions
-dev-ros/ament_cmake_version 0.9.6 1.0.0 9999: Override the exported package version in the ament buildsystem
-dev-ros/ament_cmake_xmllint 0.9.5 9999: he CMake API for ament_xmllint to check XML file using xmmlint
-dev-ros/ament_copyright 0.9.5 9999: The ability to check source files for copyright and license information.
-dev-ros/ament_cppcheck 0.9.5 9999: The ability to perform static code analysis on C/C++ code using Cppcheck
-dev-ros/ament_cpplint 0.9.5 9999: The ability to check code against the Google style conventions using cpplint
-dev-ros/ament_flake8 0.9.5 9999: The ability to check code for style and syntax conventions with flake8
-dev-ros/ament_lint 0.9.5 9999: Common API for ament linter packages
-dev-ros/ament_lint_auto 0.9.5 9999: The auto-magic functions for ease to use of the ament linters
-dev-ros/ament_lint_cmake 0.9.5 9999: Lint CMake code using cmakelint and generate xUnit test result files
-dev-ros/ament_pep257 0.9.5 9999: Checks code against style conventions in PEP 8 and generate test result files
-dev-ros/ament_uncrustify 0.9.5 9999: The ability to check code against style conventions using uncrustify
-dev-ros/ament_xmllint 0.9.5 9999: Checks XML files like the package manifest using xmllint
+dev-ros/ament_cmake_target_dependencies 0.9.6 1.0.0 1.0.1 9999: Add defs, include dirs and libs to a target in the ament buildsystem
+dev-ros/ament_cmake_test 0.9.6 1.0.0 1.0.1 9999: The ability to add tests in the ament buildsystem
+dev-ros/ament_cmake_uncrustify 0.9.5 0.10.0 9999: The CMake API for ament_uncrustify to check code against styleconventions
+dev-ros/ament_cmake_version 0.9.6 1.0.0 1.0.1 9999: Override the exported package version in the ament buildsystem
+dev-ros/ament_cmake_xmllint 0.9.5 0.10.0 9999: he CMake API for ament_xmllint to check XML file using xmmlint
+dev-ros/ament_copyright 0.9.5 0.10.0 9999: The ability to check source files for copyright and license information.
+dev-ros/ament_cppcheck 0.9.5 0.10.0 9999: The ability to perform static code analysis on C/C++ code using Cppcheck
+dev-ros/ament_cpplint 0.9.5 0.10.0 9999: The ability to check code against the Google style conventions using cpplint
+dev-ros/ament_flake8 0.9.5 0.10.0 9999: The ability to check code for style and syntax conventions with flake8
+dev-ros/ament_lint 0.9.5 0.10.0 9999: Common API for ament linter packages
+dev-ros/ament_lint_auto 0.9.5 0.10.0 9999: The auto-magic functions for ease to use of the ament linters
+dev-ros/ament_lint_cmake 0.9.5 0.10.0 9999: Lint CMake code using cmakelint and generate xUnit test result files
+dev-ros/ament_pep257 0.9.5 0.10.0 9999: Checks code against style conventions in PEP 8 and generate test result files
+dev-ros/ament_uncrustify 0.9.5 0.10.0 9999: The ability to check code against style conventions using uncrustify
+dev-ros/ament_xmllint 0.9.5 0.10.0 9999: Checks XML files like the package manifest using xmllint
 dev-ros/angles 1.9.13 9999: Set of simple math utilities to work with angles
 dev-ros/audio_capture 0.3.6 0.3.7 9999: Transports audio from a source to a destination
 dev-ros/audio_common_msgs 0.3.6 0.3.7 9999: Messages for transmitting audio via ROS
@@ -15687,7 +15687,7 @@ perl-core/libnet 1.270.0: A URI Perl Module
 perl-core/parent 0.228-r1: Establish an ISA relationship with base classes at compile time
 perl-core/podlators 2.5.3: Format POD source into various output formats
 perl-core/version 0.990.800: Perl extension for Version Objects
-ros-meta/ament_cmake 0.9.6 1.0.0 9999: The entry point package for the ament buildsystem
+ros-meta/ament_cmake 0.9.6 1.0.0 1.0.1 9999: The entry point package for the ament buildsystem
 ros-meta/audio_common 0.3.6 0.3.7 9999: Common code for working with audio in ROS
 ros-meta/bond_core 1.8.5 1.8.6 9999: A bond allows two processes, A and B, to know when the other has terminated
 ros-meta/calibration 0.10.14 9999: Provides a toolchain running through the robot calibration process
