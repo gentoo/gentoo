@@ -39,7 +39,10 @@ CDEPEND="acct-group/clamav
 	milter? ( || ( mail-filter/libmilter mail-mta/sendmail ) )
 	xml? ( dev-libs/libxml2 )"
 
-BDEPEND="virtual/pkgconfig"
+# We need at least autoconf-2.69-r5 because that's the first (patched)
+# version of it in Gentoo that supports ./configure --runstatedir.
+BDEPEND=">=sys-devel/autoconf-2.69-r5
+	virtual/pkgconfig"
 
 DEPEND="${CDEPEND}
 	metadata-analysis-api? ( dev-libs/json-c:* )
