@@ -23,6 +23,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
+	>=app-arch/brotli-1.0.7
 	>=dev-libs/libuv-1.39.0:=
 	>=net-dns/c-ares-1.16.0
 	>=net-libs/http-parser-2.9.3:=
@@ -96,6 +97,7 @@ src_configure() {
 	xdg_environment_reset
 
 	local myconf=(
+		--shared-brotli
 		--shared-cares
 		--shared-http-parser
 		--shared-libuv

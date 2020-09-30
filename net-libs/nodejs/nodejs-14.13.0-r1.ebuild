@@ -23,6 +23,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
+	>=app-arch/brotli-1.0.9
 	>=dev-libs/libuv-1.40.0:=
 	>=net-dns/c-ares-1.16.1
 	>=net-libs/nghttp2-1.41.0
@@ -98,7 +99,11 @@ src_configure() {
 	xdg_environment_reset
 
 	local myconf=(
-		--shared-cares --shared-libuv --shared-nghttp2 --shared-zlib
+		--shared-brotli
+		--shared-cares
+		--shared-libuv
+		--shared-nghttp2
+		--shared-zlib
 	)
 	use debug && myconf+=( --debug )
 	use icu && myconf+=( --with-intl=system-icu ) || myconf+=( --with-intl=none )
