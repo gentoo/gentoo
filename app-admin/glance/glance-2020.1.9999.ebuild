@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_7 )
+DISTUTILS_USE_SETUPTOOLS=bdepend
 inherit distutils-r1
 
 DESCRIPTION="Services for discovering, registering, and retrieving VM images"
@@ -25,9 +26,7 @@ REQUIRED_USE="|| ( mysql postgres sqlite )"
 
 CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
 	!~dev-python/pbr-2.1.0"
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	${CDEPEND}"
+DEPEND="${CDEPEND}"
 
 #note to self, wsgiref is a python builtin, no need to package it
 #>=dev-python/wsgiref-0.1.2[${PYTHON_USEDEP}]
