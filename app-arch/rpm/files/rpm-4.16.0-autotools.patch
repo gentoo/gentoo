@@ -1,0 +1,13 @@
+diff -uNr rpm-4.16.0.ORIG/configure.ac rpm-4.16.0/configure.ac
+--- rpm-4.16.0.ORIG/configure.ac	2020-10-01 11:02:21.605485875 +0100
++++ rpm-4.16.0/configure.ac	2020-10-01 11:05:34.077157904 +0100
+@@ -552,9 +552,6 @@
+ 
+ AM_CONDITIONAL([BDB], [test "x$have_bdb" != "xno"])
+ AM_CONDITIONAL([WITH_INTERNAL_DB],[test "x$have_bdb" = "xinternal"])
+-if test "x$have_bdb" = "xinternal"; then
+-    AC_CONFIG_SUBDIRS(db3)
+-fi
+ 
+ 
+ #=================
