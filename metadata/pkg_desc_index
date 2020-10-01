@@ -6132,7 +6132,7 @@ dev-perl/Conf-Libconfig 0.100.0-r1: Perl extension for libconfig
 dev-perl/Config-Any 0.320.0: Load configuration from different file formats, transparently
 dev-perl/Config-ApacheFormat 1.200.0-r1 1.200.0-r2: use Apache format config files
 dev-perl/Config-Auto 0.440.0-r1: Magical config file parser
-dev-perl/Config-AutoConf 0.315.0 0.318.0: A module to implement some of AutoConf macros in pure perl
+dev-perl/Config-AutoConf 0.315.0 0.318.0 0.319.0: A module to implement some of AutoConf macros in pure perl
 dev-perl/Config-Crontab 1.450.0: Read/Write Vixie compatible crontab(5) files
 dev-perl/Config-General 2.630.0: Config file parser module
 dev-perl/Config-Grammar 1.120.0 1.130.0: A grammar-based, user-friendly config parser
@@ -6288,7 +6288,7 @@ dev-perl/DateTime-Format-Human-Duration 0.640.0: Get a locale specific string de
 dev-perl/DateTime-Format-ICal 0.90.0-r1: Parse and format iCal datetime and duration strings
 dev-perl/DateTime-Format-ISO8601 0.80.0-r1 0.80.0-r2 0.140.0: Parses ISO8601 formats
 dev-perl/DateTime-Format-Mail 0.403.0: Convert between DateTime and RFC2822/822 formats
-dev-perl/DateTime-Format-Natural 1.50.0 1.100.0: Parse informal natural language date/time strings
+dev-perl/DateTime-Format-Natural 1.50.0 1.100.0 1.110.0: Parse informal natural language date/time strings
 dev-perl/DateTime-Format-SQLite 0.110.0-r1: Parse and format SQLite dates and times
 dev-perl/DateTime-Format-Strptime 1.700.0 1.740.0 1.770.0: Parse and Format DateTimes using Strptime
 dev-perl/DateTime-Format-W3CDTF 0.70.0: Parse and format W3CDTF datetime strings
@@ -6461,7 +6461,7 @@ dev-perl/File-Find-Rule-Perl 1.150.0: Common rules for searching for Perl things
 dev-perl/File-Flat 1.40.0-r1 1.70.0: Implements a flat filesystem
 dev-perl/File-Flock 2014.10.0 2014.10.0-r1: flock() wrapper. Auto-create locks
 dev-perl/File-Grep 0.20.0-r2: Find matches to a pattern in a series of files and related functions
-dev-perl/File-HomeDir 1.2.0 1.4.0: Get home directory for self or other user
+dev-perl/File-HomeDir 1.2.0 1.4.0 1.6.0: Get home directory for self or other user
 dev-perl/File-KeePass 2.30.0-r1: Interface to KeePass V1 and V2 database files
 dev-perl/File-LibMagic 1.150.0 1.220.0 1.220.0-r1 1.230.0: Perl wrapper for libmagic
 dev-perl/File-Listing 6.40.0-r1 6.40.0-r2: Parse directory listings
@@ -15922,7 +15922,7 @@ sci-calculators/speedcrunch 0.12.0: Fast and usable calculator for power users
 sci-calculators/tiemu 3.03-r1: Texas Instruments hand-helds emulator
 sci-calculators/tilp2 1.18: Communication program for Texas Instruments calculators
 sci-calculators/transcalc 0.14-r2: Microwave and RF transmission line calculator
-sci-calculators/units 2.16-r1 2.18 2.19-r1: Unit conversion program
+sci-calculators/units 2.16-r1 2.18 2.19-r1 2.20: Unit conversion program
 sci-calculators/wcalc 2.5: A flexible command-line scientific calculator
 sci-chemistry/GromacsWrapper 0.8.0: Python framework for Gromacs
 sci-chemistry/MDAnalysis 0.18.0-r1: A python library to analyze and manipulate molecular dynamics trajectories
