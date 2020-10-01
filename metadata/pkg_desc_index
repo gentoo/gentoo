@@ -15296,7 +15296,7 @@ net-misc/teamviewer 15.0.8397 15.1.3937 15.2.2756 15.3.2682 15.4.4445 15.5.3: Al
 net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 support
 net-misc/throttle 1.2-r1: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
-net-misc/tigervnc 1.9.0-r1 1.11.0: Remote desktop viewer display system
+net-misc/tigervnc 1.9.0-r1 1.11.0-r1: Remote desktop viewer display system
 net-misc/tipcutils 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
 net-misc/ttytter 2.1.00: A multi-functional, console-based Twitter client
 net-misc/ubridge 0.9.18: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces
