@@ -606,13 +606,6 @@ net-fs/nfstest
 sys-boot/udk
 sys-cluster/pbs-python
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-01)
-# The GitHub repository is gone and upstream's homepage lists only old
-# versions.  Python 2 only.  Debian has a py3 patch but it is incomplete
-# and fbless crashes when opening a file.
-# Removal in 30 days.  Bug #734578.
-app-text/fbless
-
 # Sam James <sam@gentoo.org> (2020-08-30)
 # Serious security vulns, outdated.
 # bug 699834. Removal in 30 days.
