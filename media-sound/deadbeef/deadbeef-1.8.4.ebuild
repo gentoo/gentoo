@@ -9,10 +9,14 @@ DESCRIPTION="DeaDBeeF is a modular audio player similar to foobar2000"
 HOMEPAGE="https://deadbeef.sourceforge.io/"
 SRC_URI="https://github.com/DeaDBeeF-Player/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2 LGPL-2.1"
+LICENSE="
+	GPL-2
+	LGPL-2.1
+	wavpack? ( BSD )
+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="aac alsa cdda converter cover dts ffmpeg flac +hotkeys lastfm mp3 musepack nls notify nullout opus oss pulseaudio shellexec +supereq threads vorbis"
+IUSE="aac alsa cdda converter cover dts ffmpeg flac +hotkeys lastfm mp3 musepack nls notify nullout opus oss pulseaudio shellexec +supereq threads vorbis wavpack"
 
 REQUIRED_USE="
 	|| ( alsa oss pulseaudio nullout )
@@ -43,6 +47,7 @@ DEPEND="
 	opus? ( media-libs/opusfile	)
 	pulseaudio? ( media-sound/pulseaudio )
 	vorbis? ( media-libs/libvorbis )
+	wavpack? ( media-sound/wavpack )
 "
 
 RDEPEND="${DEPEND}"
@@ -116,7 +121,6 @@ src_configure () {
 		"--disable-tta"
 		"--disable-vfs-zip"
 		"--disable-vtx"
-		"--disable-wavpack"
 		"--disable-wildmidi"
 		"--disable-wma"
 
@@ -147,6 +151,7 @@ src_configure () {
 		"$(use_enable shellexec)"
 		"$(use_enable shellexec shellexecui)"
 		"$(use_enable lastfm lfm)"
+		"$(use_enable wavpack)"
 
 		"--enable-gtk3"
 		"--enable-vfs-curl"
