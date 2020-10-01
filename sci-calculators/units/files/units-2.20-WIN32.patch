@@ -1,0 +1,24 @@
+--- a/units.c
++++ b/units.c
+@@ -4087,7 +4087,9 @@
+ checkcwd (char *file)
+ {
+   FILE *fp;
++#ifdef _WIN32
+   char *p;
++#endif
+ 
+   fp = fopen(file, "r");
+   if (fp){
+@@ -4630,7 +4630,10 @@
+ printversion()
+ {
+   int exists;
+-  char *unitsfile, *localemap;
++  char *unitsfile;
++#ifdef _WIN32
++  char *localemap;
++#endif
+ 
+   if (flags.verbose == 0) {
+     printf("GNU Units version %s\n", VERSION);
