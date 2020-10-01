@@ -730,7 +730,7 @@ app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par 
 app-arch/pxz 5.0_pre20151029 9999: parallel LZMA compressor (no parallel decompression!)
 app-arch/qpress 1.1: A portable file archiver using QuickLZ algorithm
 app-arch/rar 5.9.1_p20200625: RAR compressor/uncompressor
-app-arch/rpm 4.14.2.1-r1: Red Hat Package Management Utils
+app-arch/rpm 4.14.2.1-r1 4.16.0: Red Hat Package Management Utils
 app-arch/rpm2targz 9.0.0.5g-r2: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r3: Compression program for large files
 app-arch/sharutils 4.15.2-r1 4.15.2-r2: Tools to deal with shar archives
@@ -11613,7 +11613,7 @@ games-rpg/hatoful-boyfriend 0-r1: Japanese visual novel and dating simulator whe
 games-rpg/hatoful-boyfriend-holiday-star 20151218: Holiday-themed sequel to the Japanese visual novel and dating sim about birds
 games-rpg/kqlives 0.99-r2: A console-style role playing game
 games-rpg/lure 1.1-r1: Lure of the Temptress
-games-rpg/manaplus 1.9.3.23 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
+games-rpg/manaplus 1.9.3.23-r1 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
 games-rpg/openglad 0.98-r1: An SDL clone of Gladiator, a classic RPG game
 games-rpg/pcgen 6.04.01-r1: D&D character generator
 games-rpg/queen 1-r1: Flight of the Amazon Queen - 2D point-and-click adventure game set in the 1940s
