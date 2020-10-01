@@ -6464,7 +6464,7 @@ dev-perl/File-Grep 0.20.0-r2: Find matches to a pattern in a series of files and
 dev-perl/File-HomeDir 1.2.0 1.4.0 1.6.0: Get home directory for self or other user
 dev-perl/File-KeePass 2.30.0-r1: Interface to KeePass V1 and V2 database files
 dev-perl/File-LibMagic 1.150.0 1.220.0 1.220.0-r1 1.230.0: Perl wrapper for libmagic
-dev-perl/File-Listing 6.40.0-r1 6.40.0-r2: Parse directory listings
+dev-perl/File-Listing 6.40.0-r1 6.40.0-r2 6.70.0: Parse directory listings
 dev-perl/File-MMagic 1.300.0-r1 1.300.0-r2: The Perl Image-Info Module
 dev-perl/File-Map 0.640.0 0.670.0: Memory mapping made simple and safe
 dev-perl/File-MimeInfo 0.280.0 0.290.0: Determine file type
@@ -6474,7 +6474,7 @@ dev-perl/File-Next 1.160.0 1.180.0 1.180.0-r1: An iterator-based module for find
 dev-perl/File-Path-Expand 1.20.0-r1 1.20.0-r2: Expand filenames
 dev-perl/File-ReadBackwards 1.50.0-r1 1.50.0-r2: Read a file backwards by lines
 dev-perl/File-Remove 1.570.0 1.580.0: Remove files and directories
-dev-perl/File-RsyncP 0.740.0 0.740.0-r1: An rsync perl module
+dev-perl/File-RsyncP 0.740.0 0.740.0-r1 0.760.0: An rsync perl module
 dev-perl/File-Scan-ClamAV 1.950.0: Connect to a local Clam Anti-Virus clamd service and send commands
 dev-perl/File-SearchPath 0.70.0 0.70.0-r1: Search for a file in an environment variable path
 dev-perl/File-Share 0.250.0: Extend File::ShareDir to local libraries
@@ -13760,7 +13760,7 @@ media-sound/gnome-sound-recorder 3.34.0: Simple sound recorder
 media-sound/gnump3d 3.0-r2: A streaming server for MP3, OGG vorbis and other streamable files
 media-sound/gogglesmm 1.2.1-r1: Fast and light music player
 media-sound/gom 0.29.103-r1: Console Mixer Program for OSS
-media-sound/gpodder 3.10.5-r1 3.10.16-r1: A free cross-platform podcast aggregator
+media-sound/gpodder 3.10.16-r1: A free cross-platform podcast aggregator
 media-sound/gqradio 1.9.2: An FM radio tuner app from the people who brought you GQmpeg
 media-sound/gramofile 1.6_p9: Transfer sound from gramophone records to CD
 media-sound/grip 4.2.0: GTK+ based Audio CD Player/Ripper
