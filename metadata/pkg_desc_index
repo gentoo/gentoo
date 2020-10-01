@@ -10608,7 +10608,7 @@ dev-util/cargo-license 0.3.0: Cargo subcommand to see license of dependencies
 dev-util/catalyst 3.0.9 3.0.12 3.0.13 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.4.13: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.8.3-r1 0.8.8-r1 9999: Cmake macros and associated python code used to build some parts of ROS
-dev-util/cbindgen 0.14.4: A tool for generating C bindings to Rust code
+dev-util/cbindgen 0.14.4 0.14.6: A tool for generating C bindings to Rust code
 dev-util/ccache 3.7.11: fast compiler cache
 dev-util/cccc 3.1.5-r1: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccls 0.20190823.5 0.20190823.6 9999: C/C++/ObjC language server
@@ -18049,7 +18049,7 @@ www-client/elinks 0.13.4-r1 9999: Advanced and well-established text-mode web br
 www-client/epiphany 3.30.5 3.32.6 3.34.4 3.36.3 3.36.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 68.12.0 78.3.0 80.0 80.0.1 80.0.1-r1 81.0: Firefox Web Browser
+www-client/firefox 68.12.0 78.3.0 78.3.1 80.0 80.0.1 80.0.1-r1 81.0 81.0.1: Firefox Web Browser
 www-client/firefox-bin 68.12.0 80.0 80.0.1: Firefox Web Browser
 www-client/google-chrome 85.0.4183.121: The web browser from Google
 www-client/google-chrome-beta 86.0.4240.68: The web browser from Google
