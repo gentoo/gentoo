@@ -28,10 +28,6 @@ case $(ver_cut 1-2) in
 		CDEPEND=">=dev-libs/apr-1.5.1:=
 			!www-apache/mod_macro" #492578 #477702
 	;;
-	2.2)
-		DEFAULT_MPM_THREADED="worker"
-		CDEPEND=">=dev-libs/apr-1.4.5:=" #368651
-	;;
 	*)
 		die "Unknown MAJOR.MINOR apache version."
 	;;
@@ -120,9 +116,7 @@ _apache2_set_mpms() {
 		REQUIRED_USE+=" )"
 	done
 
-	if [[ "$(ver_cut 1-2)" != 2.2 ]] ; then
-		REQUIRED_USE+=" apache2_mpms_prefork? ( !apache2_modules_http2 )"
-	fi
+	REQUIRED_USE+=" apache2_mpms_prefork? ( !apache2_modules_http2 )"
 }
 _apache2_set_mpms
 unset -f _apache2_set_mpms
