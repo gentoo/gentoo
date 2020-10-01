@@ -168,8 +168,6 @@ if [[ ${FONT} == yes ]]; then
 	FONT_DIR=${FONT_DIR/otf/OTF}
 	FONT_DIR=${FONT_DIR/type1/Type1}
 	FONT_DIR=${FONT_DIR/speedo/Speedo}
-
-	[[ ${PN} = font-misc-misc || ${PN} = font-schumacher-misc || ${PN##*-} = 75dpi || ${PN##*-} = 100dpi || ${PN##*-} = cyrillic ]] && IUSE+=" nls"
 fi
 
 # @ECLASS-VARIABLE: XORG_STATIC
