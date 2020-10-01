@@ -436,12 +436,14 @@ apache-2_src_prepare() {
 		;;
 		*-darwin*)
 			sed -i -e 's/-Wl,-z,now/-Wl,-bind_at_load/g' \
-				"${GENTOO_PATCHDIR}"/patches/03_all_gentoo_apache-tools.patch
+				"${GENTOO_PATCHDIR}"/patches/03_all_gentoo_apache-tools.patch \
+				|| die
 		;;
 		*)
 			# patch it out to be like upstream
 			sed -i -e 's/-Wl,-z,now//g' \
-				"${GENTOO_PATCHDIR}"/patches/03_all_gentoo_apache-tools.patch
+				"${GENTOO_PATCHDIR}"/patches/03_all_gentoo_apache-tools.patch \
+				|| die
 		;;
 	esac
 
@@ -479,18 +481,18 @@ apache-2_src_prepare() {
 	# setup the filesystem layout config
 	cat "${GENTOO_PATCHDIR}"/patches/config.layout >> "${S}"/config.layout || \
 		die "Failed preparing config.layout!"
-	sed -i -e "s:version:${PF}:g" "${S}"/config.layout
+	sed -i -e "s:version:${PF}:g" "${S}"/config.layout || die
 
 	# apache2.8 instead of httpd.8 (bug #194828)
-	mv docs/man/{httpd,apache2}.8
-	sed -i -e 's/httpd\.8/apache2.8/g' Makefile.in
+	mv docs/man/{httpd,apache2}.8 || die
+	sed -i -e 's/httpd\.8/apache2.8/g' Makefile.in || die
 
 	# patched-in MPMs need the build environment rebuilt
-	sed -i -e '/sinclude/d' configure.ac
+	sed -i -e '/sinclude/d' configure.ac || die
 	AT_M4DIR=build eautoreconf
 
 	# ${T} must be not group-writable, else grsec TPE will block it
-	chmod g-w "${T}"
+	chmod g-w "${T}" || die
 
 	# This package really should upgrade to using pcre's .pc file.
 	cat <<-\EOF >"${T}"/pcre-config
@@ -505,7 +507,7 @@ apache-2_src_prepare() {
 	done
 	exec ${PKG_CONFIG} libpcre "${flags[@]}"
 	EOF
-	chmod a+x "${T}"/pcre-config
+	chmod a+x "${T}"/pcre-config || die
 }
 
 # @FUNCTION: apache-2_src_configure
@@ -605,19 +607,24 @@ apache-2_src_install() {
 
 	# drop in a convenient link to the manual
 	if use doc ; then
-		sed -i -e "s:VERSION:${PVR}:" "${ED%/}/etc/apache2/modules.d/00_apache_manual.conf"
+		sed -i -e "s:VERSION:${PVR}:" \
+			"${ED%/}/etc/apache2/modules.d/00_apache_manual.conf" \
+			|| die
 		docompress -x /usr/share/doc/${PF}/manual # 503640
 	else
-		rm -f "${ED%/}/etc/apache2/modules.d/00_apache_manual.conf"
-		rm -Rf "${ED%/}/usr/share/doc/${PF}/manual"
+		rm -f "${ED%/}/etc/apache2/modules.d/00_apache_manual.conf" \
+			|| die
+		rm -Rf "${ED%/}/usr/share/doc/${PF}/manual" || die
 	fi
 
 	# the default icons and error pages get stored in
 	# /usr/share/apache2/{error,icons}
 	dodir /usr/share/apache2
-	mv -f "${ED%/}/var/www/localhost/error" "${ED%/}/usr/share/apache2/error"
-	mv -f "${ED%/}/var/www/localhost/icons" "${ED%/}/usr/share/apache2/icons"
-	rm -rf "${ED%/}/var/www/localhost/"
+	mv -f "${ED%/}/var/www/localhost/error" \
+		"${ED%/}/usr/share/apache2/error" || die
+	mv -f "${ED%/}/var/www/localhost/icons" \
+		"${ED%/}/usr/share/apache2/icons" || die
+	rm -rf "${ED%/}/var/www/localhost/" || die
 	eend $?
 
 	# set some sane permissions for suexec
