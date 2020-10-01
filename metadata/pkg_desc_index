@@ -2004,7 +2004,7 @@ app-emulation/xen-pvgrub 4.13.1 4.14.0: allows to boot Xen domU kernels from a m
 app-emulation/xen-tools 4.13.1-r3 4.13.1-r4 4.14.0-r2: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r5: Radio Shack TRS-80 emulator
 app-eselect/eselect-audicle 1.0.1-r1: Manages the /usr/bin/audicle symlink
-app-eselect/eselect-awk 0.2 0.3: Manages the {,/usr}/bin/awk symlink
+app-eselect/eselect-awk 0.3: Manages the {,/usr}/bin/awk symlink
 app-eselect/eselect-blas 0.1 0.2: BLAS/CBLAS module for eselect
 app-eselect/eselect-cblas 0.1: C-language BLAS module for eselect
 app-eselect/eselect-cdparanoia 0.1: Manage /usr/bin/cdparanoia symlink
