@@ -188,6 +188,7 @@ src_prepare() {
 	done
 
 	use system-libvpx && eapply "${WORKDIR}/${PN}-2.53.3-system_libvpx-1.8.patch"
+	eapply "${FILESDIR}/${PN}-2.53.2-sysctl.patch" #736892
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
