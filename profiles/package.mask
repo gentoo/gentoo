@@ -601,7 +601,6 @@ dev-go/siphash
 # Please do not remove the mask unless you port the package to py3.7+.
 # Removal in 30 days.  Package bugs found blocking tracker bug #694800.
 dev-cpp/icnc
-dev-db/tokumx
 
 # Piotr Karbowski <slashbeast@gentoo.org> (2020-08-28)
 # Temporary mask due to multiple reports of segfaults at startup, bug #739056
