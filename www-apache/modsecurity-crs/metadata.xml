@@ -3,6 +3,6 @@
 <pkgmetadata>
   <!--maintainer-needed-->
   <upstream>
-    <remote-id type="github">SpiderLabs/owasp-modsecurity-crs</remote-id>
+    <remote-id type="github">coreruleset/coreruleset</remote-id>
   </upstream>
 </pkgmetadata>
