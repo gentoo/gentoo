@@ -606,11 +606,6 @@ net-fs/nfstest
 sys-boot/udk
 sys-cluster/pbs-python
 
-# Sam James <sam@gentoo.org> (2020-08-30)
-# Serious security vulns, outdated.
-# bug 699834. Removal in 30 days.
-www-apps/ampache
-
 # Piotr Karbowski <slashbeast@gentoo.org> (2020-08-28)
 # Temporary mask due to multiple reports of segfaults at startup, bug #739056
 =x11-base/xorg-server-1.20.9
