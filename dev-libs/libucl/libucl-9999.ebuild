@@ -35,6 +35,8 @@ DOCS=( README.md doc/api.md )
 
 src_prepare() {
 	default
+	rm tests/schema/{definitions,ref{,Remote}}.json || die
+
 	eautoreconf
 }
 
