@@ -3,6 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=(python{3_6,3_7,3_8})
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/certbot/certbot.git"
@@ -46,7 +47,6 @@ DEPEND="
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 	)
-	>=dev-python/setuptools-1.0[${PYTHON_USEDEP}]
 "
 
 src_compile() {
