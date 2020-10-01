@@ -3,6 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=(python{3_6,3_7,3_8})
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/certbot/certbot.git"
@@ -23,11 +24,9 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 
-CDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="${CDEPEND}
+RDEPEND="
 	>=app-crypt/acme-1.4.0[${PYTHON_USEDEP}]
 	>=app-crypt/certbot-1.6.0[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
 	>=dev-python/pyparsing-1.5.5[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]"
-DEPEND="${CDEPEND}"
