@@ -3,23 +3,19 @@
 
 EAPI=7
 
-inherit autotools git-r3 python-utils-r1
+inherit python-utils-r1
 
 DESCRIPTION="Python script wrapper"
 HOMEPAGE="https://github.com/mgorny/python-exec/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/mgorny/python-exec.git"
+SRC_URI="https://github.com/mgorny/python-exec/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="2"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # Internal Python project hack.  Do not copy it.  Ever.
 IUSE="${_PYTHON_ALL_IMPLS[@]/#/python_targets_}"
 
-src_prepare() {
-	default
-	eautoreconf
-}
+RDEPEND="!<=dev-lang/python-2.7.18-r3:2.7"
 
 src_configure() {
 	local pyimpls=() i EPYTHON
@@ -46,21 +42,8 @@ src_install() {
 	newins - python-exec.conf \
 		< <(sed -n -e '/^#/p' config/python-exec.conf.example)
 
-	local programs=( python )
-	local scripts=( python-config 2to3 idle pydoc pyvenv )
-	local i
-	for i in "${_PYTHON_ALL_IMPLS[@]}"; do
-		if use "python_targets_${i}"; then
-			# NB: duplicate entries are harmless
-			if python_is_python3 "${i}"; then
-				programs+=( python3 )
-				scripts+=( python3-config )
-			else
-				programs+=( python2 )
-				scripts+=( python2-config )
-			fi
-		fi
-	done
+	local programs=( python python3 )
+	local scripts=( python-config python3-config 2to3 idle pydoc pyvenv )
 
 	local f
 	for f in "${programs[@]}"; do

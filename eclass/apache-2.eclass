@@ -4,7 +4,7 @@
 # @ECLASS: apache-2.eclass
 # @MAINTAINER:
 # polynomial-c@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Provides a common set of functions for apache-2.x ebuilds
 # @DESCRIPTION:
 # This eclass handles apache-2.x ebuild functions such as LoadModule generation
@@ -16,8 +16,8 @@ inherit autotools flag-o-matic multilib ssl-cert user toolchain-funcs eapi7-ver
 	&& die "Do not use this eclass with anything else than www-servers/apache ebuilds!"
 
 case ${EAPI:-0} in
-	0|1|2|3|4)
-		die "This eclass is banned for EAPI<5"
+	0|1|2|3|4|5)
+		die "This eclass is banned for EAPI<6"
 	;;
 esac
 
@@ -27,10 +27,6 @@ case $(ver_cut 1-2) in
 		DEFAULT_MPM_THREADED="event" #509922
 		CDEPEND=">=dev-libs/apr-1.5.1:=
 			!www-apache/mod_macro" #492578 #477702
-	;;
-	2.2)
-		DEFAULT_MPM_THREADED="worker"
-		CDEPEND=">=dev-libs/apr-1.4.5:=" #368651
 	;;
 	*)
 		die "Unknown MAJOR.MINOR apache version."
@@ -120,9 +116,7 @@ _apache2_set_mpms() {
 		REQUIRED_USE+=" )"
 	done
 
-	if [[ "$(ver_cut 1-2)" != 2.2 ]] ; then
-		REQUIRED_USE+=" apache2_mpms_prefork? ( !apache2_modules_http2 )"
-	fi
+	REQUIRED_USE+=" apache2_mpms_prefork? ( !apache2_modules_http2 )"
 }
 _apache2_set_mpms
 unset -f _apache2_set_mpms
@@ -248,7 +242,7 @@ check_module_critical() {
 # This internal function selects all built-in modules based on USE flags and
 # APACHE2_MODULES USE_EXPAND flags
 setup_modules() {
-	local mod_type=
+	local mod_type= x=
 
 	if use static ; then
 		mod_type="static"
@@ -278,7 +272,7 @@ setup_modules() {
 		elog "through the following environment variables:"
 		elog
 		elog " SUEXEC_SAFEPATH: Default PATH for suexec (default: '${EPREFIX}/usr/local/bin:${EPREFIX}/usr/bin:${EPREFIX}/bin')"
-		if { ver_test ${PV} -ge 2.4.34 && ! use suexec-syslog ; } || ver_test ${PV} -lt 2.4.34 ; then
+		if ! use suexec-syslog ; then
 			elog "  SUEXEC_LOGFILE: Path to the suexec logfile (default: '${EPREFIX}/var/log/apache2/suexec_log')"
 		fi
 		elog "   SUEXEC_CALLER: Name of the user Apache is running as (default: apache)"
@@ -290,14 +284,10 @@ setup_modules() {
 		elog
 
 		MY_CONF+=( --with-suexec-safepath="${SUEXEC_SAFEPATH:-${EPREFIX}/usr/local/bin:${EPREFIX}/usr/bin:${EPREFIX}/bin}" )
-		if ver_test ${PV} -ge 2.4.34 ; then
-			MY_CONF+=( $(use_with !suexec-syslog suexec-logfile "${SUEXEC_LOGFILE:-${EPREFIX}/var/log/apache2/suexec_log}") )
-			MY_CONF+=( $(use_with suexec-syslog) )
-			if use suexec-syslog && use suexec-caps ; then
-				MY_CONF+=( --enable-suexec-capabilities )
-			fi
-		else
-			MY_CONF+=( --with-suexec-logfile="${SUEXEC_LOGFILE:-${EPREFIX}/var/log/apache2/suexec_log}" )
+		MY_CONF+=( $(use_with !suexec-syslog suexec-logfile "${SUEXEC_LOGFILE:-${EPREFIX}/var/log/apache2/suexec_log}") )
+		MY_CONF+=( $(use_with suexec-syslog) )
+		if use suexec-syslog && use suexec-caps ; then
+			MY_CONF+=( --enable-suexec-capabilities )
 		fi
 		MY_CONF+=( --with-suexec-bin="${EPREFIX}/usr/sbin/suexec" )
 		MY_CONF+=( --with-suexec-userdir=${SUEXEC_USERDIR:-public_html} )
@@ -338,7 +328,7 @@ setup_modules() {
 # This internal function generates the LoadModule lines for httpd.conf based on
 # the current module selection and MODULE_DEFINES
 generate_load_module() {
-	local endit=0 mod_lines= mod_dir="${ED%/}/usr/$(get_libdir)/apache2/modules"
+	local def= endit=0 m= mod_lines= mod_dir="${ED%/}/usr/$(get_libdir)/apache2/modules"
 
 	if use static; then
 		sed -i -e "/%%LOAD_MODULE%%/d" \
@@ -446,12 +436,14 @@ apache-2_src_prepare() {
 		;;
 		*-darwin*)
 			sed -i -e 's/-Wl,-z,now/-Wl,-bind_at_load/g' \
-				"${GENTOO_PATCHDIR}"/patches/03_all_gentoo_apache-tools.patch
+				"${GENTOO_PATCHDIR}"/patches/03_all_gentoo_apache-tools.patch \
+				|| die
 		;;
 		*)
 			# patch it out to be like upstream
 			sed -i -e 's/-Wl,-z,now//g' \
-				"${GENTOO_PATCHDIR}"/patches/03_all_gentoo_apache-tools.patch
+				"${GENTOO_PATCHDIR}"/patches/03_all_gentoo_apache-tools.patch \
+				|| die
 		;;
 	esac
 
@@ -460,47 +452,30 @@ apache-2_src_prepare() {
 		"${GENTOO_PATCHDIR}"/{conf/httpd.conf,init/*,patches/config.layout} \
 		|| die "libdir sed failed"
 
-	if [[ "${EAPI}" -ge 6 ]] ; then
-		default
-		eapply "${GENTOO_PATCHDIR}"/patches/*.patch
-	else
-		epatch "${GENTOO_PATCHDIR}"/patches/*.patch
-	fi
-
-	if [[ ${EAPI} = 5 ]] ; then
-		# Handle patches from ebuild's PATCHES array if one is given
-		if [[ -n "${PATCHES}" ]] ; then
-			local patchestype=$(declare -p PATCHES 2>&-)
-			if [[ "${patchestype}" != "declare -a PATCHES="* ]] ; then
-				die "Declaring PATCHES as a variable is forbidden. Please use an array instead."
-			fi
-			epatch "${PATCHES[@]}"
-		fi
-
-		# Handle user patches
-		epatch_user
-	fi
+	eapply "${GENTOO_PATCHDIR}"/patches/*.patch
+	default
 
 	# Don't rename configure.in _before_ any possible user patches!
 	if [[ -f "configure.in" ]] ; then
+		elog "Renaming configure.in to configure.ac"
 		mv configure.{in,ac} || die
 	fi
 
 	# setup the filesystem layout config
 	cat "${GENTOO_PATCHDIR}"/patches/config.layout >> "${S}"/config.layout || \
 		die "Failed preparing config.layout!"
-	sed -i -e "s:version:${PF}:g" "${S}"/config.layout
+	sed -i -e "s:version:${PF}:g" "${S}"/config.layout || die
 
 	# apache2.8 instead of httpd.8 (bug #194828)
-	mv docs/man/{httpd,apache2}.8
-	sed -i -e 's/httpd\.8/apache2.8/g' Makefile.in
+	mv docs/man/{httpd,apache2}.8 || die
+	sed -i -e 's/httpd\.8/apache2.8/g' Makefile.in || die
 
 	# patched-in MPMs need the build environment rebuilt
-	sed -i -e '/sinclude/d' configure.ac
+	sed -i -e '/sinclude/d' configure.ac || die
 	AT_M4DIR=build eautoreconf
 
 	# ${T} must be not group-writable, else grsec TPE will block it
-	chmod g-w "${T}"
+	chmod g-w "${T}" || die
 
 	# This package really should upgrade to using pcre's .pc file.
 	cat <<-\EOF >"${T}"/pcre-config
@@ -515,7 +490,7 @@ apache-2_src_prepare() {
 	done
 	exec ${PKG_CONFIG} libpcre "${flags[@]}"
 	EOF
-	chmod a+x "${T}"/pcre-config
+	chmod a+x "${T}"/pcre-config || die
 }
 
 # @FUNCTION: apache-2_src_configure
@@ -615,25 +590,29 @@ apache-2_src_install() {
 
 	# drop in a convenient link to the manual
 	if use doc ; then
-		sed -i -e "s:VERSION:${PVR}:" "${ED%/}/etc/apache2/modules.d/00_apache_manual.conf"
+		sed -i -e "s:VERSION:${PVR}:" \
+			"${ED%/}/etc/apache2/modules.d/00_apache_manual.conf" \
+			|| die
 		docompress -x /usr/share/doc/${PF}/manual # 503640
 	else
-		rm -f "${ED%/}/etc/apache2/modules.d/00_apache_manual.conf"
-		rm -Rf "${ED%/}/usr/share/doc/${PF}/manual"
+		rm -f "${ED%/}/etc/apache2/modules.d/00_apache_manual.conf" \
+			|| die
+		rm -Rf "${ED%/}/usr/share/doc/${PF}/manual" || die
 	fi
 
 	# the default icons and error pages get stored in
 	# /usr/share/apache2/{error,icons}
 	dodir /usr/share/apache2
-	mv -f "${ED%/}/var/www/localhost/error" "${ED%/}/usr/share/apache2/error"
-	mv -f "${ED%/}/var/www/localhost/icons" "${ED%/}/usr/share/apache2/icons"
-	rm -rf "${ED%/}/var/www/localhost/"
+	mv -f "${ED%/}/var/www/localhost/error" \
+		"${ED%/}/usr/share/apache2/error" || die
+	mv -f "${ED%/}/var/www/localhost/icons" \
+		"${ED%/}/usr/share/apache2/icons" || die
+	rm -rf "${ED%/}/var/www/localhost/" || die
 	eend $?
 
 	# set some sane permissions for suexec
 	if use suexec ; then
-		local needs_adjustment="$(ver_test ${PV} -ge 2.4.34 && { { ! use suexec-syslog || ! use suexec-caps ; } && echo true || echo false ; } || echo true)"
-		if ${needs_adjustment} ; then
+		if ! use suexec-syslog || ! use suexec-caps ; then
 			fowners 0:${SUEXEC_CALLER:-apache} /usr/sbin/suexec
 			fperms 4710 /usr/sbin/suexec
 			# provide legacy symlink for suexec, bug 177697
@@ -642,6 +621,7 @@ apache-2_src_install() {
 	fi
 
 	# empty dirs
+	local i
 	for i in /var/lib/dav /var/log/apache2 /var/cache/apache2 ; do
 		keepdir ${i}
 		fowners apache:apache ${i}
