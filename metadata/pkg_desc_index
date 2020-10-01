@@ -7985,8 +7985,8 @@ dev-python/click-threading 0.4.4: Multithreaded Click apps made easy.
 dev-python/cliff 3.4.0: Command Line Interface Formulation Framework
 dev-python/clint 0.5.1-r2 0.5.1-r3: Python Command-line Application Tools
 dev-python/cloudpickle 1.5.0 1.6.0: Extended pickling support for Python objects
-dev-python/cmd2 1.3.8 1.3.10: Extra features for standard library's cmd module
-dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
+dev-python/cmd2 1.3.8 1.3.10 1.3.11: Extra features for standard library's cmd module
+dev-python/collective-checkdocs 0.2 0.2-r1: Distutils command to view/validate packages's rst text long_descriptions.
 dev-python/colorama 0.4.3-r1: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/colorclass 2.2.0-r1: Colorful worry-free console applications for multiple platforms
 dev-python/coloredlogs 10.0 14.0: Colored stream handler for the logging module
@@ -10841,7 +10841,7 @@ dev-util/rosdep 0.19.0 9999: Command-line tool for installing ROS system depende
 dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
 dev-util/rosinstall_generator 0.1.22 9999: Generates rosinstall metadata about repositories with ROS packages/stacks
 dev-util/rpmdevtools 8.10-r2: Collection of rpm packaging related utilities
-dev-util/rr 5.3.0-r1: Record and Replay Framework
+dev-util/rr 5.3.0-r2: Record and Replay Framework
 dev-util/rt-tests 1.8: A collection of latency testing tools for the linux(-rt) kernel
 dev-util/rustup 1.22.1-r1 9999: Rust toolchain installer
 dev-util/sasm 2.2-r1 3.10.1: Simple crossplatform IDE for NASM assembly language
@@ -17552,8 +17552,8 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.64 5.4.66 5.4.68 5.4.69 5.8.12: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.64 5.4.64-r1 5.4.66 5.4.66-r1 5.4.68 5.4.68-r1 5.4.69 5.8.12 5.8.12-r1: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.64 5.4.66 5.4.68 5.4.69 5.8.12 5.8.13: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.64 5.4.64-r1 5.4.66 5.4.66-r1 5.4.68 5.4.68-r1 5.4.69 5.8.12 5.8.12-r1 5.8.13: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.233 4.4.236 4.4.237 4.4.238 4.9.233 4.9.236 4.9.237 4.9.238 4.14.194 4.14.198 4.14.199 4.14.200 4.19.141 4.19.146 4.19.147 4.19.148 4.19.149 5.4.60 5.4.66 5.4.67 5.4.68 5.4.69 5.8.8 5.8.9 5.8.10 5.8.11 5.8.12 5.8.13: Full sources including the Gentoo patchset for the 5.8 kernel tree
 sys-kernel/git-sources 5.9_rc1 5.9_rc2 5.9_rc3 5.9_rc4 5.9_rc5 5.9_rc6 5.9_rc7: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17568,7 +17568,7 @@ sys-kernel/pf-sources 5.6_p8 5.7_p5 5.7_p7 5.8_p1 5.8_p2 5.8_p3 5.8_p4 5.8_p5 5.
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p20190925 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.225_p198 4.4.231_p202 4.9.227_p146 4.9.232_p150 4.14.184_p84 4.14.192_p91 4.19.127_p54 4.19.135_p60 5.4.44_p27 5.4.54_p33 5.6.17_p10 5.6.19_p11: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.64 5.4.66 5.4.68 5.4.69 5.8.12: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.64 5.4.66 5.4.68 5.4.69 5.8.12 5.8.13: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.238 4.9.237 4.14.200 4.19.149 5.4.69 5.8.12: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
