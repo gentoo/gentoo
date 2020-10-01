@@ -57,6 +57,7 @@ IUSE="clang cpu_flags_arm_neon dbus debug eme-free +gmp-autoupdate
 
 BDEPEND="${PYTHON_DEPS}
 	app-arch/unzip
+	app-arch/zip
 	>=dev-util/cbindgen-0.14.3
 	>=net-libs/nodejs-10.19.0
 	virtual/pkgconfig
@@ -646,7 +647,7 @@ src_configure() {
 
 	mozconfig_use_enable dbus
 
-	use eme-free && mozconfig_annotate '+eme-free' --disable-eme
+	use eme-free && mozconfig_add_options_ac '+eme-free' --disable-eme
 
 	if use hardened ; then
 		mozconfig_add_options_ac "+hardened" --enable-hardening
