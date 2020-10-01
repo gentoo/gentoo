@@ -29,7 +29,7 @@ IUSE=""
 
 DEPEND="
 	dev-libs/pugixml
-	~media-tv/kodi-9999
+	=media-tv/kodi-19*
 	sys-libs/zlib
 	"
 
