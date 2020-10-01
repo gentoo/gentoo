@@ -12,7 +12,7 @@ SRC_URI="https://code.launchpad.net/${PN}/$(ver_cut 1-2)-series/$(ver_cut 1-3)/+
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="s3 test"
 
 CDEPEND="
