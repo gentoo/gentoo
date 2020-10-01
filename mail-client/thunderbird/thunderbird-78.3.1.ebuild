@@ -57,6 +57,7 @@ IUSE="clang cpu_flags_arm_neon dbus debug eme-free +gmp-autoupdate
 
 BDEPEND="${PYTHON_DEPS}
 	app-arch/unzip
+	app-arch/zip
 	>=dev-util/cbindgen-0.14.3
 	>=net-libs/nodejs-10.19.0
 	virtual/pkgconfig
