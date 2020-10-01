@@ -4,7 +4,7 @@ DESCRIPTION=An easy-to-use client library for making requests from Ruby
 EAPI=6
 HOMEPAGE=https://github.com/tarcieri/http
 IUSE=test ruby_targets_ruby25 ruby_targets_ruby26 doc test test
-KEYWORDS=amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86
 LICENSE=MIT
 RDEPEND=ruby_targets_ruby25? ( >=dev-ruby/addressable-2.3:0[ruby_targets_ruby25(-)] >=dev-ruby/http-cookie-1.0:0[ruby_targets_ruby25(-)] dev-ruby/http-form_data:2[ruby_targets_ruby25(-)] >=dev-ruby/http_parser_rb-0.6.0[ruby_targets_ruby25(-)] =dev-ruby/http_parser_rb-0.6*[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( >=dev-ruby/addressable-2.3:0[ruby_targets_ruby26(-)] >=dev-ruby/http-cookie-1.0:0[ruby_targets_ruby26(-)] dev-ruby/http-form_data:2[ruby_targets_ruby26(-)] >=dev-ruby/http_parser_rb-0.6.0[ruby_targets_ruby26(-)] =dev-ruby/http_parser_rb-0.6*[ruby_targets_ruby26(-)] ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( virtual/rubygems[ruby_targets_ruby26(-)] )
 REQUIRED_USE=|| ( ruby_targets_ruby25 ruby_targets_ruby26 )
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test ) !test? ( test ) !test? ( test )
 SLOT=4
 SRC_URI=https://rubygems.org/gems/http-4.1.1.gem
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	98584e405e2b0264d37e8f728327fed1	ruby-fakegem	6ee14a23a169409059ed36d4dddc3197	ruby-ng	676004cfb6cdf3dedf1c778d56346624	ruby-utils	9991225e034c8185d67fbc7a8816559f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=99224a8165fbdb816a1369fee194cab9
+_md5_=ca1207ca6dea6cfd88ee2045e832ff81
