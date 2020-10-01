@@ -7,7 +7,7 @@ MY_PN="devscripts"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Perl script to check for commonly used bash features not defined by POSIX"
-HOMEPAGE="https://packages.debian.org/devscripts https://anonscm.debian.org/cgit/collab-maint/devscripts.git"
+HOMEPAGE="https://packages.debian.org/devscripts https://salsa.debian.org/debian/devscripts"
 SRC_URI="mirror://debian/pool/main/d/${MY_PN}/${MY_P/-/_}.tar.xz"
 
 LICENSE="GPL-2"
