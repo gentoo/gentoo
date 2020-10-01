@@ -593,15 +593,6 @@ app-i18n/scim-wijesekera
 # Removal in 30 days. Bug #732130.
 dev-go/siphash
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-01)
-# The following packages are Python 2 only.  All but sys-boot/udk have
-# no reverse dependencies; sys-boot/udk's only revdep is sys-boot/refind
-# and it removed support for udk in its newest version.  Their
-# maintainers have either not replied or requested removing the package.
-# Please do not remove the mask unless you port the package to py3.7+.
-# Removal in 30 days.  Package bugs found blocking tracker bug #694800.
-dev-cpp/icnc
-
 # Piotr Karbowski <slashbeast@gentoo.org> (2020-08-28)
 # Temporary mask due to multiple reports of segfaults at startup, bug #739056
 =x11-base/xorg-server-1.20.9
