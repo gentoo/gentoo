@@ -19,8 +19,8 @@ IUSE="multilib test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
-	sys-libs/zlib
-	dev-libs/capnproto
+	sys-libs/zlib:=
+	dev-libs/capnproto:=
 	${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
 	sys-devel/gdb[xml]"
