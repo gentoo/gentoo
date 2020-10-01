@@ -4,7 +4,7 @@
 # @ECLASS: apache-2.eclass
 # @MAINTAINER:
 # polynomial-c@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Provides a common set of functions for apache-2.x ebuilds
 # @DESCRIPTION:
 # This eclass handles apache-2.x ebuild functions such as LoadModule generation
@@ -16,8 +16,8 @@ inherit autotools flag-o-matic multilib ssl-cert user toolchain-funcs eapi7-ver
 	&& die "Do not use this eclass with anything else than www-servers/apache ebuilds!"
 
 case ${EAPI:-0} in
-	0|1|2|3|4)
-		die "This eclass is banned for EAPI<5"
+	0|1|2|3|4|5)
+		die "This eclass is banned for EAPI<6"
 	;;
 esac
 
@@ -452,29 +452,12 @@ apache-2_src_prepare() {
 		"${GENTOO_PATCHDIR}"/{conf/httpd.conf,init/*,patches/config.layout} \
 		|| die "libdir sed failed"
 
-	if [[ "${EAPI}" -ge 6 ]] ; then
-		default
-		eapply "${GENTOO_PATCHDIR}"/patches/*.patch
-	else
-		epatch "${GENTOO_PATCHDIR}"/patches/*.patch
-	fi
-
-	if [[ ${EAPI} = 5 ]] ; then
-		# Handle patches from ebuild's PATCHES array if one is given
-		if [[ -n "${PATCHES}" ]] ; then
-			local patchestype=$(declare -p PATCHES 2>&-)
-			if [[ "${patchestype}" != "declare -a PATCHES="* ]] ; then
-				die "Declaring PATCHES as a variable is forbidden. Please use an array instead."
-			fi
-			epatch "${PATCHES[@]}"
-		fi
-
-		# Handle user patches
-		epatch_user
-	fi
+	eapply "${GENTOO_PATCHDIR}"/patches/*.patch
+	default
 
 	# Don't rename configure.in _before_ any possible user patches!
 	if [[ -f "configure.in" ]] ; then
+		elog "Renaming configure.in to configure.ac"
 		mv configure.{in,ac} || die
 	fi
 
