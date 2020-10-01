@@ -604,7 +604,6 @@ dev-cpp/icnc
 dev-db/tokumx
 net-fs/nfstest
 sys-boot/udk
-sys-cluster/pbs-python
 
 # Piotr Karbowski <slashbeast@gentoo.org> (2020-08-28)
 # Temporary mask due to multiple reports of segfaults at startup, bug #739056
