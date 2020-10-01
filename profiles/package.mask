@@ -587,12 +587,6 @@ app-i18n/scim-wijesekera
 ~app-i18n/scim-sunpinyin-3.0.0_rc1
 ~app-i18n/xsunpinyin-3.0.0_rc1
 
-# Marek Szuba <marecki@gentoo.org> (2020-09-01)
-# Uses golang-* eclasses, only a library, all former reverse
-# dependencies have long since switched to vendoring.
-# Removal in 30 days. Bug #732130.
-dev-go/siphash
-
 # Piotr Karbowski <slashbeast@gentoo.org> (2020-08-28)
 # Temporary mask due to multiple reports of segfaults at startup, bug #739056
 =x11-base/xorg-server-1.20.9
