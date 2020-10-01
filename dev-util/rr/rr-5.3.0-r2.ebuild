@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 CMAKE_BUILD_TYPE=Release
 
-inherit cmake-utils linux-info python-single-r1
+inherit cmake linux-info python-single-r1
 
 DESCRIPTION="Record and Replay Framework"
 HOMEPAGE="https://rr-project.org/"
@@ -19,8 +19,8 @@ IUSE="multilib test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
-	sys-libs/zlib
-	dev-libs/capnproto
+	sys-libs/zlib:=
+	dev-libs/capnproto:=
 	${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
 	sys-devel/gdb[xml]"
@@ -44,7 +44,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -i 's:-Werror::' CMakeLists.txt || die #609192
 }
@@ -55,7 +55,7 @@ src_test() {
 		return 0
 	fi
 
-	cmake-utils_src_test
+	cmake_src_test
 }
 
 src_configure() {
@@ -64,5 +64,5 @@ src_configure() {
 		-Ddisable32bit=$(usex !multilib) #636786
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

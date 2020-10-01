@@ -3,6 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=(python{3_6,3_7,3_8})
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/certbot/certbot.git"
@@ -30,8 +31,7 @@ RDEPEND=">=app-crypt/acme-0.29.0[${PYTHON_USEDEP}]
 	dev-python/zope-component[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]"
 DEPEND="test? ( ${RDEPEND}
-	dev-python/pytest[${PYTHON_USEDEP}] )
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+	dev-python/pytest[${PYTHON_USEDEP}] )"
 
 python_test() {
 	esetup.py test || die
