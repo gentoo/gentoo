@@ -5,21 +5,21 @@ EAPI=7
 
 inherit cmake kodi-addon
 
-DESCRIPTION="Kodi's IPTVSimple client addon"
-HOMEPAGE="https://github.com/kodi-pvr/pvr.iptvsimple"
+DESCRIPTION="Kodi's VuPlus client addon"
+HOMEPAGE="https://github.com/kodi-pvr/pvr.vuplus"
 SRC_URI=""
 
 case ${PV} in
 9999)
 	SRC_URI=""
-	EGIT_REPO_URI="https://github.com/kodi-pvr/pvr.iptvsimple.git"
+	EGIT_REPO_URI="https://github.com/kodi-pvr/pvr.vuplus.git"
 	inherit git-r3
 	;;
 *)
 	CODENAME="Matrix"
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/kodi-pvr/pvr.iptvsimple/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/pvr.iptvsimple-${PV}-${CODENAME}"
+	SRC_URI="https://github.com/kodi-pvr/pvr.vuplus/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/pvr.vuplus-${PV}-${CODENAME}"
 	;;
 esac
 
@@ -28,9 +28,10 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	dev-libs/pugixml
-	~media-tv/kodi-9999
-	sys-libs/zlib
+	=media-tv/kodi-19*
+	=dev-libs/libplatform-2*
+	dev-libs/tinyxml
+	dev-cpp/nlohmann_json
 	"
 
 RDEPEND="
