@@ -602,7 +602,6 @@ dev-go/siphash
 # Removal in 30 days.  Package bugs found blocking tracker bug #694800.
 dev-cpp/icnc
 dev-db/tokumx
-net-fs/nfstest
 
 # Piotr Karbowski <slashbeast@gentoo.org> (2020-08-28)
 # Temporary mask due to multiple reports of segfaults at startup, bug #739056
