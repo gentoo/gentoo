@@ -13,7 +13,7 @@ SRC_URI="https://github.com/rhboot/dumpet/archive/${COMMIT}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 #Restrict tests since required test file is unavailable
 RESTRICT="test"
@@ -31,6 +31,7 @@ src_prepare() {
 		-e "s/^install : all$/install :/" \
 		-e "s/^CFLAGS:=/CFLAGS?=/" \
 		-e "s/^CC:=/CC?=/" \
+		-e '/^LFLAGS/ s/$/$(LDFLAGS)/' \
 		|| die
 	default
 }
