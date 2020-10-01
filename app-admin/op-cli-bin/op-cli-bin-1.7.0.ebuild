@@ -8,14 +8,14 @@ HOMEPAGE="https://1password.com/downloads/command-line"
 SITE="https://cache.agilebits.com/dist/1P/op/pkg/v${PV}/"
 SRC_URI="${SITE}/op_linux_amd64_v${PV}.zip"
 
-LICENSE="1PASSWORD"
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64"
 
 BDEPEND="app-arch/unzip"
 
 QA_PREBUILT="usr/bin/op"
-RESTRICT="mirror"
+RESTRICT="bindist mirror"
 S="${WORKDIR}"
 
 src_install() {
