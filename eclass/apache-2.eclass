@@ -272,7 +272,7 @@ setup_modules() {
 		elog "through the following environment variables:"
 		elog
 		elog " SUEXEC_SAFEPATH: Default PATH for suexec (default: '${EPREFIX}/usr/local/bin:${EPREFIX}/usr/bin:${EPREFIX}/bin')"
-		if { ver_test ${PV} -ge 2.4.34 && ! use suexec-syslog ; } || ver_test ${PV} -lt 2.4.34 ; then
+		if ! use suexec-syslog ; then
 			elog "  SUEXEC_LOGFILE: Path to the suexec logfile (default: '${EPREFIX}/var/log/apache2/suexec_log')"
 		fi
 		elog "   SUEXEC_CALLER: Name of the user Apache is running as (default: apache)"
@@ -284,14 +284,10 @@ setup_modules() {
 		elog
 
 		MY_CONF+=( --with-suexec-safepath="${SUEXEC_SAFEPATH:-${EPREFIX}/usr/local/bin:${EPREFIX}/usr/bin:${EPREFIX}/bin}" )
-		if ver_test ${PV} -ge 2.4.34 ; then
-			MY_CONF+=( $(use_with !suexec-syslog suexec-logfile "${SUEXEC_LOGFILE:-${EPREFIX}/var/log/apache2/suexec_log}") )
-			MY_CONF+=( $(use_with suexec-syslog) )
-			if use suexec-syslog && use suexec-caps ; then
-				MY_CONF+=( --enable-suexec-capabilities )
-			fi
-		else
-			MY_CONF+=( --with-suexec-logfile="${SUEXEC_LOGFILE:-${EPREFIX}/var/log/apache2/suexec_log}" )
+		MY_CONF+=( $(use_with !suexec-syslog suexec-logfile "${SUEXEC_LOGFILE:-${EPREFIX}/var/log/apache2/suexec_log}") )
+		MY_CONF+=( $(use_with suexec-syslog) )
+		if use suexec-syslog && use suexec-caps ; then
+			MY_CONF+=( --enable-suexec-capabilities )
 		fi
 		MY_CONF+=( --with-suexec-bin="${EPREFIX}/usr/sbin/suexec" )
 		MY_CONF+=( --with-suexec-userdir=${SUEXEC_USERDIR:-public_html} )
@@ -626,8 +622,7 @@ apache-2_src_install() {
 
 	# set some sane permissions for suexec
 	if use suexec ; then
-		local needs_adjustment="$(ver_test ${PV} -ge 2.4.34 && { { ! use suexec-syslog || ! use suexec-caps ; } && echo true || echo false ; } || echo true)"
-		if ${needs_adjustment} ; then
+		if ! use suexec-syslog || ! use suexec-caps ; then
 			fowners 0:${SUEXEC_CALLER:-apache} /usr/sbin/suexec
 			fperms 4710 /usr/sbin/suexec
 			# provide legacy symlink for suexec, bug 177697
