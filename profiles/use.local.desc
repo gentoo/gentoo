@@ -4427,7 +4427,7 @@ media-libs/zmusic:mpg123 - Enable support for MPEG audio playback via media-soun
 media-plugins/alsa-plugins:arcam_av - Enables Arcam AV control plugin
 media-plugins/alsa-plugins:mix - Enables upmix and vdownmix plugin
 media-plugins/alsa-plugins:usb_stream - Enables usb_stream plugin
-media-plugins/audacious-plugins:ampache - Support controlling audacious via www-apps/ampache
+media-plugins/audacious-plugins:ampache - Support controlling audacious via ampache
 media-plugins/audacious-plugins:bs2b - Enable Bauer Bauer stereophonic-to-binaural headphone filter
 media-plugins/audacious-plugins:cue - Support CUE sheets using the libcue library
 media-plugins/audacious-plugins:fluidsynth - Support FluidSynth as MIDI synth backend
