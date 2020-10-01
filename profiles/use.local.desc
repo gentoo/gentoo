@@ -1402,7 +1402,6 @@ dev-db/sqldeveloper:sybase - Add support for the Sybase SQL Database Server
 dev-db/sqlite:secure-delete - Enable overwriting of deleted content with zeros by default (http://sqlite.org/pragma.html#pragma_secure_delete), causing some performance penalty
 dev-db/sqlite:tools - Install additional tools
 dev-db/sqlitestudio:cli - Build CLI interface
-dev-db/tokumx:pax_kernel - Apply patch needed for hardened kernels
 dev-db/unixODBC:minimal - Disable bundled drivers and extra libraries (most users don't need these)
 dev-db/unixODBC:odbcmanual - Administrator, Internal Structure, Programmer and User documentation
 dev-embedded/avrdude:ftdi - Enable support for USB FTDI chips via dev-embedded/libftdi
@@ -2109,7 +2108,6 @@ dev-libs/gmp:asm - Enable use of hand optimized assembly routines (faster execut
 dev-libs/gmp:pic - Force static libraries to be built as PIC to avoid TEXTRELs.
 dev-libs/gobject-introspection:doctool - Install g-ir-doc-tool for generating documentation from introspected data
 dev-libs/hidapi:fox - Build a x11-libs/fox GUI
-dev-libs/hsa-ext-rocr:deprecated - Install the deprecated debug/trace/profiling library
 dev-libs/input-pad:eekboard - Enable support for dev-libs/eekboard
 dev-libs/input-pad:xtest - Enable support for x11-libs/libXtst
 dev-libs/intel-neo:l0 - Install the oneAPI Level Zero driver alongside the OpenCL one
@@ -8612,7 +8610,6 @@ www-apache/mod_security:mlogc - Build and install the ModSecurity Audit Log Coll
 www-apache/pwauth:domain-aware - Ignore leading domain names in username (Windows compat)
 www-apache/pwauth:faillog - Log failed login attempts
 www-apache/pwauth:ignore-case - Ignore string case in username (mostly Windows compat)
-www-apps/ampache:transcode - Install optional dependencies for transcoding support
 www-apps/blohg:git - Enable Git support
 www-apps/blohg:mercurial - Enable Mercurial support
 www-apps/cgit:highlight - Enable source code highlighting

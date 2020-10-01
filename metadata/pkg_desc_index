@@ -2167,7 +2167,6 @@ app-i18n/scim-sunpinyin 3.0.0_rc1: SunPinyin IMEngine for SCIM
 app-i18n/scim-tables 0.5.13: Smart Common Input Method (SCIM) Generic Table Input Method Server
 app-i18n/scim-tomoe 0.6.0-r3: Japanese input method Tomoe IMEngine for SCIM
 app-i18n/scim-uim 0.2.0-r2: An input module for Smart Common Input Method (SCIM) which uses uim as backend
-app-i18n/scim-wijesekera 0.3.3-r1: Wijesekara keyboard for Sinhala input using scim
 app-i18n/skk-jisyo 201905 202005 999999: Jisyo (dictionary) files for the SKK Japanese-input software
 app-i18n/skkfep 0.87-r1: A SKK-like Japanese input method for console
 app-i18n/skkserv 9.6-r3: Dictionary server for the SKK Japanese-input software
@@ -3452,7 +3451,6 @@ dev-cpp/gtest 1.9.0_pre20190607 1.10.0_p20200702 9999: Google C++ Testing Framew
 dev-cpp/gtkmm 2.24.5 3.24.2: C++ interface for GTK+
 dev-cpp/gtksourceviewmm 2.10.3-r1 3.18.0: C++ bindings for gtksourceview
 dev-cpp/htmlcxx 0.87: A simple non-validating CSS 1 and HTML parser for C++
-dev-cpp/icnc 1.0.100: Intel Concurrent Collections for C++ - Parallelism without the Pain
 dev-cpp/kokkos 3.0.00 3.1.00 3.1.01: Kokkos C++ Performance Portability Programming EcoSystem
 dev-cpp/libcmis 0.5.2-r1 9999: C++ client library for the CMIS interface
 dev-cpp/libcutl 1.10.0: A collection of C++ libraries (successor of libcult)
@@ -3583,7 +3581,6 @@ dev-db/sqliteman 1.2.2-r4: Powerful GUI manager for the Sqlite3 database
 dev-db/sqlitestudio 3.2.1-r1: Powerful cross-platform SQLite database manager
 dev-db/textsearch_ja 9.0.0: Integrated Full-Text-Search for Japanese language using morphological analyze
 dev-db/tinycdb 0.77-r2 0.78: A very fast and simple package for creating and reading constant data bases
-dev-db/tokumx 1.5.0-r2 2.0.2-r2: An open source, high-performance distribution of MongoDB
 dev-db/tokyocabinet 1.4.48-r1: A library of routines for managing a database
 dev-db/tora 3.2-r1 9999: SQL IDE for Oracle, MySQL and PostgreSQL dbs
 dev-db/unixODBC 2.3.7 2.3.9: A complete ODBC driver manager
@@ -3755,7 +3752,6 @@ dev-go/gox 1.0.1: A dead simple, no frills Go cross compile tool
 dev-go/licenseclassifier 0_pre20200402 9999: A set of tools that analyzes text to determine type of license
 dev-go/qr 0_p20161121: Basic QR code library for Go
 dev-go/sanitized-anchor-name 0_pre20150822 0_pre20151027 9999: A Go function to provide sanitized anchor names
-dev-go/siphash 1.0.0 1.2.1: Go implementation of SipHash-2.4
 dev-go/twofactor 0_p20180418: Two-factor authentication library for Go
 dev-haskell/abstract-deque 0.3: Abstract, parameterized interface to mutable Deques
 dev-haskell/abstract-deque-tests 0.3: A test-suite for any queue or double-ended queue satisfying an interface
@@ -5146,7 +5142,7 @@ dev-lang/orc 0.4.28-r1 0.4.29 0.4.31: The Oil Runtime Compiler, a just-in-time c
 dev-lang/parrot 7.1.0-r1 7.5.0-r1 7.11.0-r1 8.1.0-r1 8.1.0-r2: Virtual machine designed to compile and execute bytecode for dynamic languages
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.3 5.30.3-r1 5.30.3-r2 5.32.0 5.32.0-r1: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 7.2.33 7.3.21 7.3.22 7.4.9 7.4.10: The PHP language runtime engine
+dev-lang/php 7.2.33 7.2.34 7.3.21 7.3.22 7.3.23 7.4.9 7.4.10 7.4.11: The PHP language runtime engine
 dev-lang/polyml 5.6 5.8: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.18-r1 2.7.18-r2 2.7.18-r3 2.7.18-r4 3.6.11-r2 3.6.12 3.7.8-r2 3.7.9 3.8.4-r1 3.8.5 3.8.6 3.9.0_rc1 3.9.0_rc2: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r1 2.4.6-r2: Python script wrapper
@@ -5292,7 +5288,6 @@ dev-libs/gtx 0.2.2: Small collection of functions intended to enhance the GLib t
 dev-libs/gumbo 0.10.1: The HTML5 parsing algorithm implemented as a pure C99 library
 dev-libs/hidapi 0.8.0_rc1_p20140719: A multi-platform library for USB and Bluetooth HID-Class devices
 dev-libs/hiredis 0.14.1: Minimalistic C client library for the Redis database
-dev-libs/hsa-ext-rocr 1.1.30500.0: Proprietary image-support library for Radeon Open Compute
 dev-libs/http-fetcher 1.1.0-r1: Library for downloading files via HTTP using the GET method
 dev-libs/hyperleveldb 1.2.2-r1: Hyperdex fork/extension of leveldb
 dev-libs/hyperscan 5.2.1-r1 5.3.0: High-performance regular expression matching library
@@ -14587,7 +14582,6 @@ net-fs/minio 2020.06.22.03.12.50: An Amazon S3 compatible object storage server
 net-fs/netatalk 3.1.12: Open Source AFP server
 net-fs/nfs-utils 2.4.1-r4 2.4.3 2.5.1: NFS client and server daemons
 net-fs/nfs4-acl-tools 0.3.5 0.3.7: Commandline and GUI tools that deal directly with NFSv4 ACLs
-net-fs/nfstest 1.0.2 2.1.2: Tools for testing either the NFS client or the NFS server
 net-fs/openafs 1.6.22.1 1.6.22.2 1.8.6: The OpenAFS distributed file system
 net-fs/openafs-kernel 1.6.22.1-r1 1.6.22.2-r1: The OpenAFS distributed file system kernel module
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
@@ -17227,7 +17221,6 @@ sys-boot/silo 1.4.14_p20120819-r1 1.4.14_p20170829 1.4.14_p20200602: SPARC/Ultra
 sys-boot/syslinux 6.04_pre1 6.04_pre1-r2: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
 sys-boot/systemd-boot 245: UEFI boot manager from systemd (formerly gummiboot)
 sys-boot/tboot 1.9.11: Performs a measured and verified boot using Intel Trusted Execution Technology
-sys-boot/udk 2015-r1 2018-r1: Tianocore UEFI Development kit
 sys-boot/unetbootin 661 675 677-r1 681: UNetbootin installs Linux/BSD distributions to a partition or USB drive
 sys-boot/vboot-utils 72_p20181229-r1 80_p20200108: Chrome OS verified boot tools
 sys-boot/woeusb 3.3.1: Creates windows installer on usb media from an iso image
@@ -17290,7 +17283,6 @@ sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/openmpi 1.4.5 1.6.5-r1 1.7.5-r1 1.8.8 1.10.7 2.0.4 2.1.6 3.0.4 3.1.4 4.0.2 4.0.3 4.0.4: A high-performance message passing library (MPI)
 sys-cluster/openstack-meta 2020.1.0 2020.1.9999: A openstack meta-package for installing the various openstack pieces
 sys-cluster/pacemaker 1.1.16 1.1.19 1.1.19-r1: Pacemaker CRM
-sys-cluster/pbs-python 4.3.3-r1: Python bindings to the Torque C API
 sys-cluster/pconsole 1.0-r4: Tool for managing multiple xterms simultaneously
 sys-cluster/placement 3.0.0 2020.1.9999: A HTTP service for managing, selecting, and claiming cloud resources.
 sys-cluster/ploop 1.14.1: openvz tool and a library to control ploop block devices
@@ -17558,7 +17550,7 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.64 5.4.66 5.4.68 5.8.12: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel 5.4.64 5.4.66 5.4.68 5.4.69 5.8.12: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.64 5.4.64-r1 5.4.66 5.4.66-r1 5.4.68 5.4.68-r1 5.8.12 5.8.12-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.233 4.4.236 4.4.237 4.4.238 4.9.233 4.9.236 4.9.237 4.14.194 4.14.198 4.14.199 4.14.200 4.19.141 4.19.146 4.19.147 4.19.148 4.19.149 5.4.60 5.4.66 5.4.67 5.4.68 5.4.69 5.8.8 5.8.9 5.8.10 5.8.11 5.8.12: Full sources including the Gentoo patchset for the 5.8 kernel tree
 sys-kernel/git-sources 5.9_rc1 5.9_rc2 5.9_rc3 5.9_rc4 5.9_rc5 5.9_rc6 5.9_rc7: The very latest -git version of the Linux kernel
@@ -17574,7 +17566,7 @@ sys-kernel/pf-sources 5.6_p8 5.7_p5 5.7_p7 5.8_p1 5.8_p2 5.8_p3 5.8_p4 5.8_p5 5.
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p20190925 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.225_p198 4.4.231_p202 4.9.227_p146 4.9.232_p150 4.14.184_p84 4.14.192_p91 4.19.127_p54 4.19.135_p60 5.4.44_p27 5.4.54_p33 5.6.17_p10 5.6.19_p11: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.64 5.4.66 5.4.68 5.8.12: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.64 5.4.66 5.4.68 5.4.69 5.8.12: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.238 4.9.237 4.14.200 4.19.149 5.4.69 5.8.12: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
@@ -17978,7 +17970,6 @@ www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/agendav 2.2.0: multilanguage CalDAV web client
 www-apps/airdcpp-webui 2.6.1 2.8.1: Web interface for airdcpp-webclient
-www-apps/ampache 3.8.3-r1 3.8.8-r1: PHP-based tool for managing,updating and playing audio files via a web interface
 www-apps/baikal 0.6.0 0.6.1 0.7.1: Lightweight CalDAV+CardDAV server
 www-apps/blazeblogger 1.2.0-r1: Simple, capable content management system for producing static content
 www-apps/blohg 0.13-r4 9999: A Mercurial (or Git) based blogging engine
