@@ -216,7 +216,7 @@ src_install() {
 	# Then apache2.4.service can be used and systemd support controlled
 	# through --enable-systemd
 	systemd_newunit "${FILESDIR}/apache2.2-hardened.service" "apache2.service"
-	systemd_dotmpfilesd "${FILESDIR}/apache.conf"
+	dotmpfiles "${FILESDIR}/apache.conf"
 	#insinto /etc/apache2/modules.d
 	#doins "${FILESDIR}/00_systemd.conf"
 
