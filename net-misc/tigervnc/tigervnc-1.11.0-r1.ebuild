@@ -27,6 +27,7 @@ CDEPEND="
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXrender
+	x11-libs/pixman
 	server? (
 		x11-libs/libXau
 		x11-libs/libXdamage
