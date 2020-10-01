@@ -646,7 +646,7 @@ src_configure() {
 
 	mozconfig_use_enable dbus
 
-	use eme-free && mozconfig_annotate '+eme-free' --disable-eme
+	use eme-free && mozconfig_add_options_ac '+eme-free' --disable-eme
 
 	if use hardened ; then
 		mozconfig_add_options_ac "+hardened" --enable-hardening
