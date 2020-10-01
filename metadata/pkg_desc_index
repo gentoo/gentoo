@@ -663,7 +663,7 @@ app-admin/watchfolder 0.3.3-r1: watches directories and processes files
 app-admin/webalizer 2.23.08: Webserver log file analyzer
 app-admin/webapp-config 1.55-r1 9999: Gentoo's installer for web-based applications
 app-admin/whowatch 1.8.5 1.8.6 99999: Displays information about users currently logged on in real time
-app-admin/xkcdpass 1.17.3: Password generator inspired by XKCD 936
+app-admin/xkcdpass 1.17.3-r1: Password generator inspired by XKCD 936
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yadm 2.4.0: A dotfile manager for the config files in your home folder
@@ -867,7 +867,7 @@ app-cdr/cuetools 1.4.1: Utilities to manipulate and convert cue and toc files
 app-cdr/daa2iso 0.1.7e: Program for converting the DAA and GBI files to ISO
 app-cdr/disc-cover 1.5.6-r1: Creates CD-Covers via LaTeX by fetching cd-info from freedb.org or local file
 app-cdr/dolphin-plugins-mountiso 20.08.1: Dolphin plugin for ISO loopback device mounting
-app-cdr/dumpet 2.1_p20140601-r2: A tool to dump and debug bootable CD-like images
+app-cdr/dumpet 2.1_p20140601-r3: A tool to dump and debug bootable CD-like images
 app-cdr/dvd+rw-tools 7.1-r3: A set of tools for DVD+RW/-RW drives
 app-cdr/dvdisaster 0.79.5: Tool for creating error correction data (ecc) for optical media (DVD, CD, BD)
 app-cdr/dvdshrink 2.6.1_p10: Scriptable DVD copy software
@@ -2876,7 +2876,7 @@ app-text/fbreader 0.99.4-r5: E-Book Reader. Supports many e-book formats
 app-text/fictionup 0.1 0.2.1: A command-line markdown to fb2 convertor
 app-text/flpsed 0.7.3: Pseudo PostScript editor
 app-text/foliate 2.4.2-r1: gtk ebook reader built with gjs
-app-text/ghostscript-gpl 9.52-r1 9.53.0 9.53.1 9.53.2: Interpreter for the PostScript language and PDF
+app-text/ghostscript-gpl 9.52-r1 9.53.0 9.53.1 9.53.2 9.53.3: Interpreter for the PostScript language and PDF
 app-text/gnome-doc-utils 0.20.10-r2: A collection of documentation utilities for the Gnome project
 app-text/gocr 0.50: An OCR (Optical Character Recognition) reader
 app-text/goldendict 1.5.0_rc2-r2: Feature-rich dictionary lookup program
@@ -15296,7 +15296,7 @@ net-misc/teamviewer 15.0.8397 15.1.3937 15.2.2756 15.3.2682 15.4.4445 15.5.3: Al
 net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 support
 net-misc/throttle 1.2-r1: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
-net-misc/tigervnc 1.9.0-r1: Remote desktop viewer display system
+net-misc/tigervnc 1.9.0-r1 1.11.0: Remote desktop viewer display system
 net-misc/tipcutils 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
 net-misc/ttytter 2.1.00: A multi-functional, console-based Twitter client
 net-misc/ubridge 0.9.18: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces
@@ -18042,13 +18042,13 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.5.1: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 85.0.4183.121 86.0.4240.53 87.0.4270.0: Open-source version of Google Chrome web browser
+www-client/chromium 85.0.4183.121 86.0.4240.68 87.0.4270.0: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.4-r1 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6 3.34.4 3.36.3 3.36.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 68.12.0 78.3.0 78.3.1 80.0 80.0.1 80.0.1-r1 81.0 81.0.1: Firefox Web Browser
+www-client/firefox 68.12.0 78.3.1 80.0 80.0.1 80.0.1-r1 81.0.1: Firefox Web Browser
 www-client/firefox-bin 68.12.0 80.0 80.0.1: Firefox Web Browser
 www-client/google-chrome 85.0.4183.121: The web browser from Google
 www-client/google-chrome-beta 86.0.4240.68: The web browser from Google
