@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit python-single-r1
+inherit python-r1
 
 DESCRIPTION="Unit conversion program"
 HOMEPAGE="https://www.gnu.org/software/units/units.html"
@@ -20,8 +20,8 @@ RDEPEND="
 	units--cur? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/future[${PYTHON_MULTI_USEDEP}]
-			dev-python/requests[${PYTHON_MULTI_USEDEP}]
+			dev-python/future[${PYTHON_USEDEP}]
+			dev-python/requests[${PYTHON_USEDEP}]
 		')
 	)
 "
@@ -37,10 +37,6 @@ DOCS=(
 	ChangeLog NEWS README
 )
 
-pkg_setup() {
-	use units--cur && python-single-r1_pkg_setup
-}
-
 src_configure() {
 	econf \
 		--sharedstatedir="${EROOT}/var/lib" \
@@ -54,15 +50,11 @@ src_compile() {
 src_install() {
 	default
 
-	# we're intentionally delaying this since 'make install' would
-	# get confused if we shove 'units_cur' there, and there is no real
-	# need to add more complexity for it
 	if use units--cur; then
 		sed \
 			-e "/^outfile/s|'.*'|'/usr/share/units/currency.units'|g" \
 			-e 's|^#!|&/usr/bin/python|g' \
 			units_cur_inst > units_cur || die
-		python_fix_shebang units_cur
-		python_doscript units_cur
+		python_foreach_impl python_doscript units_cur
 	fi
 }
