@@ -3,10 +3,12 @@
 
 EAPI=7
 
+inherit autotools
+
 DESCRIPTION="OpenSource 2D MMORPG client for Evol Online and The Mana World"
 HOMEPAGE="https://manaplus.org"
 if [[ ${PV} == 9999 ]] ; then
-	inherit autotools git-r3
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/ManaPlus/ManaPlus.git"
 else
 	SRC_URI="http://download.evolonline.org/manaplus/download/${PV}/${P}.tar.xz"
@@ -56,11 +58,13 @@ BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-metainfo.patch"
+)
+
 src_prepare() {
 	default
-	if [[ ${PV} == 9999 ]] ; then
-		eautoreconf
-	fi
+	eautoreconf
 }
 
 src_configure() {
