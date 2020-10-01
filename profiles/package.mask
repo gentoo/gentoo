@@ -569,16 +569,6 @@ net-wireless/kismet-ubertooth
 dev-python/pyinsane
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-09-01)
-# Abandoned long time ago. Last release in 2008. Not ported to GTK+ 3.
-# Masked for deletion in 30 days.
-# Replacement: Sinhala Wijesekera input method is also provided by M17N library
-# which can be used through:
-# - app-i18n/fcitx-m17n
-# - app-i18n/ibus-m17n
-# - app-i18n/scim-m17n
-app-i18n/scim-wijesekera
-
-# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-09-01)
 # Mismatched version (bug #695022). Masked to force upgrade to 2.0.4_pre20200306162733.
 # (Mask should remain after ebuilds are deleted, until 2021-03-01 or
 # until new upstream release with proper versioning.)
@@ -587,40 +577,9 @@ app-i18n/scim-wijesekera
 ~app-i18n/scim-sunpinyin-3.0.0_rc1
 ~app-i18n/xsunpinyin-3.0.0_rc1
 
-# Marek Szuba <marecki@gentoo.org> (2020-09-01)
-# Uses golang-* eclasses, only a library, all former reverse
-# dependencies have long since switched to vendoring.
-# Removal in 30 days. Bug #732130.
-dev-go/siphash
-
-# Michał Górny <mgorny@gentoo.org> (2020-09-01)
-# The following packages are Python 2 only.  All but sys-boot/udk have
-# no reverse dependencies; sys-boot/udk's only revdep is sys-boot/refind
-# and it removed support for udk in its newest version.  Their
-# maintainers have either not replied or requested removing the package.
-# Please do not remove the mask unless you port the package to py3.7+.
-# Removal in 30 days.  Package bugs found blocking tracker bug #694800.
-dev-cpp/icnc
-dev-db/tokumx
-net-fs/nfstest
-sys-boot/udk
-sys-cluster/pbs-python
-
-# Sam James <sam@gentoo.org> (2020-08-30)
-# Serious security vulns, outdated.
-# bug 699834. Removal in 30 days.
-www-apps/ampache
-
 # Piotr Karbowski <slashbeast@gentoo.org> (2020-08-28)
 # Temporary mask due to multiple reports of segfaults at startup, bug #739056
 =x11-base/xorg-server-1.20.9
-
-# Marek Szuba <marecki@gentoo.org> (2020-08-26)
-# ROCm has had open-source OpenCL image support since 3.3, and since 3.7
-# it no longer attempts to use the proprietary library even when it is
-# present. Last but not least, upstream no longer publishes this.
-# Removal in 30 days. Bug #739066.
-dev-libs/hsa-ext-rocr
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-23)
 # Ported to py3 but not yet released
