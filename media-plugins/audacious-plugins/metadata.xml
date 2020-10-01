@@ -10,7 +10,7 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<use>
-		<flag name="ampache">Support controlling audacious via <pkg>www-apps/ampache</pkg></flag>
+		<flag name="ampache">Support controlling audacious via ampache</flag>
 		<flag name="bs2b">Enable Bauer Bauer stereophonic-to-binaural headphone filter</flag>
 		<flag name="cue">Support CUE sheets using the libcue library</flag>
 		<flag name="fluidsynth">Support FluidSynth as MIDI synth backend</flag>
