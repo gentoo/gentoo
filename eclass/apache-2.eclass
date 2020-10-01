@@ -242,7 +242,7 @@ check_module_critical() {
 # This internal function selects all built-in modules based on USE flags and
 # APACHE2_MODULES USE_EXPAND flags
 setup_modules() {
-	local mod_type=
+	local mod_type= x=
 
 	if use static ; then
 		mod_type="static"
@@ -328,7 +328,7 @@ setup_modules() {
 # This internal function generates the LoadModule lines for httpd.conf based on
 # the current module selection and MODULE_DEFINES
 generate_load_module() {
-	local endit=0 mod_lines= mod_dir="${ED%/}/usr/$(get_libdir)/apache2/modules"
+	local def= endit=0 m= mod_lines= mod_dir="${ED%/}/usr/$(get_libdir)/apache2/modules"
 
 	if use static; then
 		sed -i -e "/%%LOAD_MODULE%%/d" \
@@ -631,6 +631,7 @@ apache-2_src_install() {
 	fi
 
 	# empty dirs
+	local i
 	for i in /var/lib/dav /var/log/apache2 /var/cache/apache2 ; do
 		keepdir ${i}
 		fowners apache:apache ${i}
