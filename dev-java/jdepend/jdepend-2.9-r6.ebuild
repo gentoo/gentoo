@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,9 +16,9 @@ SLOT="0"
 KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
-DEPEND=">=virtual/jdk-1.4
+DEPEND=">=virtual/jdk-1.8
 	>=app-arch/unzip-5.50-r1"
-RDEPEND=">=virtual/jre-1.4"
+RDEPEND=">=virtual/jre-1.8"
 
 java_prepare() {
 	rm -v "${S}"/lib/*.jar || die
