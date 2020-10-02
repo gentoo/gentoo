@@ -4,6 +4,11 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Thomas Deutschmann <whissi@gentoo.org> (2020-10-02)
+# media-video/pipewire not yet stabilized and without
+# sys-apps/xdg-desktop-portal-gtk not useable at all
+www-client/firefox screencast
+
 # Michał Górny <mgorny@gentoo.org> (2020-09-20)
 # Always build python-exec with all the targets.
 dev-lang/python-exec -python_targets_python3_9
