@@ -39,8 +39,6 @@ LIB_DEPEND="
 "
 
 RDEPEND="
-	arping? ( !net-misc/arping )
-	rarpd? ( !net-misc/rarpd )
 	traceroute6? ( !net-analyzer/traceroute )
 	!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 "
