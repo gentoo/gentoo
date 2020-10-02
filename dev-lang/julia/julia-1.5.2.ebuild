@@ -3,19 +3,19 @@
 
 EAPI=7
 
-RESTRICT="splitdebug"
-
 inherit llvm pax-utils toolchain-funcs
 
+# correct versions for stdlibs are in deps/checksums
+# for everything else, run with network-sandbox and wait for the crash
+
 MY_PV="${PV//_rc/-rc}"
-MY_CACERT_V="2020-01-01"
 MY_DSFMT_V="2.2.3"
-MY_LIBGIT2_V="b3e1a56ebb2b9291e82dc027ba9cbcfc3ead54d3"
 MY_LIBUV_V="35b1504507a7a4168caae3d78db54d1121b121e1"
 MY_LIBWHICH_V="81e9723c0273d78493dc8c8ed570f68d9ce7e89e"
-MY_LLVM_V="8.0.1"
+MY_LLVM_V="9.0.1"
 MY_PKG_V="49908bffe83790bc7cf3c5d46faf3667f8902ad4"
-MY_UTF8PROC_V="5c632c57426f2e4246e3b64dd2fd088d3920f9e5"
+MY_UNICODE_V="13.0.0"
+MY_UTF8PROC_V="0890a538bf8238cded9be0c81171f57e43f2c755"
 
 DESCRIPTION="High-performance programming language for technical computing"
 HOMEPAGE="https://julialang.org/"
@@ -23,12 +23,11 @@ SRC_URI="
 	https://github.com/JuliaLang/${PN}/releases/download/v${MY_PV}/${PN}-${MY_PV}.tar.gz
 	https://api.github.com/repos/JuliaLang/libuv/tarball/${MY_LIBUV_V} -> ${PN}-libuv-${MY_LIBUV_V}.tar.gz
 	https://api.github.com/repos/JuliaLang/utf8proc/tarball/${MY_UTF8PROC_V} -> ${PN}-utf8proc-${MY_UTF8PROC_V}.tar.gz
-	https://api.github.com/repos/libgit2/libgit2/tarball/${MY_LIBGIT2_V} -> ${PN}-libgit2-${MY_LIBGIT2_V}.tar.gz
 	https://api.github.com/repos/vtjnash/libwhich/tarball/${MY_LIBWHICH_V} -> ${PN}-libwhich-${MY_LIBWHICH_V}.tar.gz
-	https://curl.haxx.se/ca/cacert-${MY_CACERT_V}.pem -> ${PN}-cacert-${MY_CACERT_V}.pem
 	http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/SFMT/dSFMT-src-${MY_DSFMT_V}.tar.gz -> ${PN}-dsfmt-${MY_DSFMT_V}.tar.gz
+	http://www.unicode.org/Public/${MY_UNICODE_V}/ucd/UnicodeData.txt -> ${PN}-UnicodeData-${MY_UNICODE_V}.txt
 	https://dev.gentoo.org/~tamiko/distfiles/Pkg-${MY_PKG_V}.tar.gz -> ${PN}-Pkg-${MY_PKG_V}.tar.gz
-	!system-llvm? ( http://releases.llvm.org/${MY_LLVM_V}/llvm-${MY_LLVM_V}.src.tar.xz )
+	!system-llvm? ( https://github.com/llvm/llvm-project/releases/download/llvmorg-${MY_LLVM_V}/llvm-${MY_LLVM_V}.src.tar.xz )
 "
 
 LICENSE="MIT"
@@ -38,12 +37,14 @@ IUSE="system-llvm"
 
 RDEPEND="
 	system-llvm? ( sys-devel/llvm:9=[llvm_targets_NVPTX(-)] )
+	!system-llvm? ( dev-util/cmake )
 "
 LLVM_MAX_SLOT=9
 
 RDEPEND+="
 	dev-libs/double-conversion:0=
 	dev-libs/gmp:0=
+	dev-libs/libgit2:0/28
 	>=dev-libs/libpcre2-10.23:0=[jit,unicode]
 	dev-libs/mpfr:0=
 	dev-libs/openspecfun
@@ -113,7 +114,6 @@ src_prepare() {
 	# - respect EPREFIX and Gentoo specific paths
 
 	sed -i \
-		-e "s|git submodule|${EPREFIX}/bin/true|g" \
 		-e "s|GENTOOCFLAGS|${CFLAGS}|g" \
 		-e "s|/usr/include|${EPREFIX}/usr/include|g" \
 		deps/Makefile || die
@@ -161,6 +161,7 @@ src_configure() {
 		USE_SYSTEM_MBEDTLS:=1
 		USE_SYSTEM_LIBSSH2:=1
 		USE_SYSTEM_CURL:=1
+		USE_SYSTEM_LIBGIT2:=1
 		USE_SYSTEM_PATCHELF:=1
 		USE_SYSTEM_ZLIB:=1
 		USE_SYSTEM_P7ZIP:=1
@@ -181,10 +182,6 @@ src_compile() {
 	emake
 }
 
-src_test() {
-	emake test
-}
-
 src_install() {
 	emake install \
 		prefix="${EPREFIX}/usr" DESTDIR="${D}" \
@@ -198,7 +195,7 @@ src_install() {
 
 	mv "${ED}"/usr/etc/julia "${ED}"/etc || die
 	rmdir "${ED}"/usr/etc || die
-	mv "${ED}"/usr/share/doc/julia/html "${ED}"/usr/share/doc/${PF} || die
+	mv "${ED}"/usr/share/doc/julia/html "${ED}"/usr/share/doc/"${PF}" || die
 	rmdir "${ED}"/usr/share/doc/julia || die
 }
 
