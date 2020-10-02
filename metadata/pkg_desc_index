@@ -1941,7 +1941,7 @@ app-emulation/libguestfs 1.36.13 1.36.15 1.38.6: Tools for accessing, inspect an
 app-emulation/libguestfs-appliance 1.38.0: VM appliance disk image used in libguestfs package
 app-emulation/libpod 2.1.0: Library and podman tool for running OCI-based containers in Pods
 app-emulation/libspectrum 1.4.4: Spectrum emulation library
-app-emulation/libvirt 6.2.0-r2 6.5.0-r1 9999: C toolkit to manipulate virtual machines
+app-emulation/libvirt 6.2.0-r2 6.5.0-r1 6.7.0 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
 app-emulation/lxc 4.0.4: LinuX Containers userspace utilities
@@ -8364,7 +8364,7 @@ dev-python/libnacl 1.6.1: Python ctypes wrapper for libsodium
 dev-python/libpillowfight 0.3.0: Small library containing various image processing algorithms
 dev-python/libsass 0.20.0: A straightforward binding of libsass for Python
 dev-python/libtmux 0.8.2-r2 0.8.3: python api for tmux
-dev-python/libvirt-python 6.2.0 6.5.0 9999: libvirt Python bindings
+dev-python/libvirt-python 6.2.0 6.5.0 6.7.0 9999: libvirt Python bindings
 dev-python/line_profiler 3.0.2: Line-by-line profiler
 dev-python/linecache2 1.0.0-r1: Backports of the linecache module
 dev-python/lit 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0.9999 12.0.0.9999: A stand-alone install of the LLVM suite testing tool
