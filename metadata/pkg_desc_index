@@ -16136,7 +16136,7 @@ sci-libs/ceres-solver 1.14.0: Nonlinear least-squares minimizer
 sci-libs/cfitsio 3.360 3.410: C and Fortran library for manipulating FITS files
 sci-libs/cgcode 1.0-r2: Conjugate gradient Codes for large sparse linear systems
 sci-libs/cgnslib 3.3.0 3.4.0: CFD General Notation System standard library
-sci-libs/cholmod 2.1.2 3.0.13: Sparse Cholesky factorization and update/downdate library
+sci-libs/cholmod 2.1.2 3.0.13 3.0.14: Sparse Cholesky factorization and update/downdate library
 sci-libs/cifparse-obj 7.025-r1 7.105: Provides an object-oriented application interface to information in mmCIF format
 sci-libs/clapack 3.2.1-r8: f2c'ed version of LAPACK
 sci-libs/clashscore-db 3.17: Clashscore-db for clashlist
