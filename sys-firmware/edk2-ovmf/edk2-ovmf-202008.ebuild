@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
 inherit eutils python-any-r1 readme.gentoo-r1
 
@@ -26,17 +26,23 @@ if [[ ${PV} == "999999" ]] ; then
 		${NON_BINARY_DEPEND}
 	"
 else
+	BUNDLED_OPENSSL_SUBMODULE_SHA="e2e09d9fba1187f8d6aafaa34d4172f56f1ffb72"
+	BUNDLED_BROTLI_SUBMODULE_SHA="666c3280cc11dc433c303d79a83d4ffbdd12cc8d"
 	# Binary versions taken from fedora:
-	# http://download.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/s/
-	#   edk2-ovmf-20190501stable-2.fc31.noarch.rpm
+	# http://download.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/e/
+	#   edk2-ovmf-20200801stable-1.fc34.noarch.rpm
+
+	# TODO: talk with tamiko about unbundling
 	SRC_URI="
 		!binary? (
 			https://github.com/tianocore/edk2/archive/edk2-stable${PV}.tar.gz -> ${P}.tar.gz
-			https://dev.gentoo.org/~tamiko/distfiles/${P}-bundled.tar.xz
+			https://github.com/openssl/openssl/archive/${BUNDLED_OPENSSL_SUBMODULE_SHA}.tar.gz -> openssl-${BUNDLED_OPENSSL_SUBMODULE_SHA}.tar.gz
+			https://github.com/google/brotli/archive/${BUNDLED_BROTLI_SUBMODULE_SHA}.tar.gz -> brotli-${BUNDLED_BROTLI_SUBMODULE_SHA}.tar.gz
+			https://dev.gentoo.org/~mva/distfiles/${P}-qemu-firmware.tar.xz
 		)
-		binary? ( https://dev.gentoo.org/~tamiko/distfiles/${P}-bin.tar.xz )
-		"
-	KEYWORDS="amd64 arm64 ~ppc ~ppc64 x86"
+		binary? ( https://dev.gentoo.org/~mva/distfiles/${P}-bin.tar.xz )
+	"
+	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 	IUSE="+binary"
 	REQUIRED_USE+="
 		!amd64? ( binary )
@@ -99,9 +105,16 @@ src_prepare() {
 	sed -i -r \
 		-e "/function SetupPython3/,/\}/{s,\\\$\(whereis python3\),${EPYTHON},g}" \
 		"${S}"/edksetup.sh || die "Fixing for correct Python3 support failed"
-	if  [[ ${PV} != "999999" ]] && use binary; then
-		eapply_user
-		return
+	if  [[ ${PV} != "999999" ]]; then
+		if use binary; then
+			eapply_user
+			return
+		else
+			# Bundled submodules
+			cp -rl "${WORKDIR}/openssl-${BUNDLED_OPENSSL_SUBMODULE_SHA}"/* "CryptoPkg/Library/OpensslLib/openssl/"
+			cp -rl "${WORKDIR}/brotli-${BUNDLED_BROTLI_SUBMODULE_SHA}"/* "BaseTools/Source/C/BrotliCompress/brotli/"
+			cp -rl "${WORKDIR}/brotli-${BUNDLED_BROTLI_SUBMODULE_SHA}"/* "MdeModulePkg/Library/BrotliCustomDecompressLib/brotli/"
+		fi
 	fi
 	default
 }
@@ -159,6 +172,9 @@ src_compile() {
 src_install() {
 	insinto /usr/share/${PN}
 	doins ovmf/*
+
+	insinto /usr/share/qemu/firmware
+	doins qemu/*
 
 	readme.gentoo_create_doc
 }
