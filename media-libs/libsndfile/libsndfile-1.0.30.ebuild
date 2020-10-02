@@ -42,6 +42,10 @@ if [[ ${PV} == *9999 ]]; then
 	"
 fi
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.0.30-fix-nl.patch"
+)
+
 pkg_setup() {
 	if use test || [[ ${PV} == *9999 ]]; then
 		python-any-r1_pkg_setup
