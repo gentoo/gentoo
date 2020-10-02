@@ -1,15 +1,3 @@
-diff -Naur makemkv-oss-1.9.10.orig/libabi/src/httplinux.cpp makemkv-oss-1.9.10/libabi/src/httplinux.cpp
---- makemkv-oss-1.9.10.orig/libabi/src/httplinux.cpp	2016-04-15 21:35:36.000000000 +0100
-+++ makemkv-oss-1.9.10/libabi/src/httplinux.cpp	2016-05-08 10:52:42.481501963 +0100
-@@ -45,7 +45,7 @@
-     lurl = (char*)alloca(strlen(Url)+1);
-     strcpy(lurl,Url);
- 
--    strcpy(argv0,"/usr/bin/wget"); argv[0]=argv0;
-+    strcpy(argv0,"wget"); argv[0]=argv0;
-     strcpy(argv1,"-q"); argv[1]=argv1;
-     strcpy(argv2,"-O"); argv[2]=argv2;
-     strcpy(argv3,"-"); argv[3]=argv3;
 diff -Naur makemkv-oss-1.9.10.orig/makemkvgui/src/api_posix.cpp makemkv-oss-1.9.10/makemkvgui/src/api_posix.cpp
 --- makemkv-oss-1.9.10.orig/makemkvgui/src/api_posix.cpp	2016-04-15 21:35:36.000000000 +0100
 +++ makemkv-oss-1.9.10/makemkvgui/src/api_posix.cpp	2016-05-08 13:51:48.761885862 +0100
