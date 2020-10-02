@@ -17392,7 +17392,7 @@ sys-firmware/b43-firmware 5.100.138 6.30.163.46: broadcom firmware for b43 LP PH
 sys-firmware/b43legacy-firmware 3.130.20.0: broadcom firmware for b43legacy/bcm43xx
 sys-firmware/bluez-firmware 1.2: Firmware for Broadcom BCM203x and STLC2300 Bluetooth chips
 sys-firmware/broadcom-bt-firmware 12.0.1.1011_p1: Broadcom Bluetooth firmware
-sys-firmware/edk2-ovmf 201905 999999: UEFI firmware for 64-bit x86 virtual machines
+sys-firmware/edk2-ovmf 201905 202008 999999: UEFI firmware for 64-bit x86 virtual machines
 sys-firmware/firmware-imx 5.4: NXP i.MX firmware
 sys-firmware/intel-microcode 20200616_p20200617 20200616_p20200921: Intel IA32/IA64 microcode update data
 sys-firmware/ipw2100-firmware 1.3: Firmware for the Intel PRO/Wireless 2100 3B miniPCI adapter
