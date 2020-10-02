@@ -1,12 +1,13 @@
+BDEPEND=>=app-i18n/fcitx-4.2.9:4 virtual/pkgconfig configuration_tool? ( dev-qt/qtcore:5 dev-qt/qtwidgets:5 ) dev-util/ninja dev-util/cmake >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
-DEPEND=>=app-i18n/fcitx-4.2.9:4 >=app-i18n/librime-1.0.0:= app-i18n/rime-data virtual/libintl configuration_tool? ( >=app-i18n/fcitx-qt5-1.1:4 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) virtual/pkgconfig configuration_tool? ( dev-qt/qtconcurrent:5 ) sys-devel/make >=dev-util/cmake-3.9.6 >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=>=app-i18n/fcitx-4.2.9:4 >=app-i18n/librime-1.0.0:= virtual/libintl configuration_tool? ( >=app-i18n/fcitx-qt5-1.1:4 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) configuration_tool? ( dev-qt/qtconcurrent:5 )
 DESCRIPTION=Chinese RIME input methods for Fcitx
-EAPI=6
+EAPI=7
 HOMEPAGE=https://fcitx-im.org/ https://github.com/fcitx/fcitx-rime
 IUSE=+configuration_tool
 LICENSE=GPL-2
 PROPERTIES=live
-RDEPEND=>=app-i18n/fcitx-4.2.9:4 >=app-i18n/librime-1.0.0:= app-i18n/rime-data virtual/libintl configuration_tool? ( >=app-i18n/fcitx-qt5-1.1:4 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 )
+RDEPEND=>=app-i18n/fcitx-4.2.9:4 >=app-i18n/librime-1.0.0:= virtual/libintl configuration_tool? ( >=app-i18n/fcitx-qt5-1.1:4 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) app-i18n/rime-data
 SLOT=4
-_eclasses_=cmake-utils	77cd39e6009811bf97a59d91ffd5b54f	desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	ltprune	db8b7ce9d0e663594bcb4a4e72131a79	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=1e002fde3bec4afb4389da944a133a64
+_eclasses_=cmake	ac7cb516f6a288b6a82bc0649ce49878	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=ca5cd2ff52252737619fbd6900dbc898
