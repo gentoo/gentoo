@@ -63,7 +63,7 @@ BDEPEND="${PYTHON_DEPS}
 	>=dev-util/cbindgen-0.14.3
 	>=net-libs/nodejs-10.19.0
 	virtual/pkgconfig
-	>=virtual/rust-1.43.0
+	>=virtual/rust-1.41.0
 	|| (
 		(
 			sys-devel/clang:11
