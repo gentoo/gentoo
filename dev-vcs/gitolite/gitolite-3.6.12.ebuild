@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit perl-module user versionator
+inherit perl-module user
 
 DESCRIPTION="Highly flexible server for git directory version tracker"
 HOMEPAGE="https://github.com/sitaramc/gitolite"
@@ -86,7 +86,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ "$(get_major_version $REPLACING_VERSIONS)" == "2" ]]; then
+	if [[ -n ${REPLACING_VERSIONS} ]] && ver_test ${REPLACING_VERSIONS} -lt 3.0 ; then
 		ewarn
 		elog "***NOTE*** This is a major upgrade and will likely break your existing gitolite-2.x setup!"
 		elog "Please read http://gitolite.com/gitolite/migr/index.html first!"
