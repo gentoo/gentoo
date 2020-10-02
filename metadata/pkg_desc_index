@@ -1026,7 +1026,7 @@ app-crypt/tpm-tools 1.3.9.1-r1: TrouSerS' support tools for the Trusted Platform
 app-crypt/tpm2-abrmd 2.3.3: TPM2 Access Broker & Resource Manager
 app-crypt/tpm2-pkcs11 1.3.2 1.4.0: A PKCS#11 interface for TPM2 hardware
 app-crypt/tpm2-tools 4.2.1-r1: Tools for the TPM 2.0 TSS
-app-crypt/tpm2-totp 0.2.1-r1: Attest the trustworthiness of a device against a human using time-based OTP
+app-crypt/tpm2-totp 0.3.0: Attest the trustworthiness of a device against a human using time-based OTP
 app-crypt/tpm2-tss 2.4.1 2.4.2 3.0.0: TCG Trusted Platform Module 2.0 Software Stack
 app-crypt/tpm2-tss-engine 1.1.0_rc1: OpenSSL Engine for TPM2 devices
 app-crypt/trousers 0.3.14-r3: An open-source TCG Software Stack (TSS) v1.1 implementation
@@ -2944,7 +2944,7 @@ app-text/lout 3.40: High-level language for document formatting
 app-text/lv 4.51-r4: Powerful Multilingual File Viewer
 app-text/mandoc 1.14.4 1.14.5: Suite of tools compiling mdoc and man
 app-text/manpager 1: Enable colorization of man pages
-app-text/master-pdf-editor 5.2.20 5.3.22 5.4.38-r1: A complete solution for viewing and editing PDF files
+app-text/master-pdf-editor 5.2.20 5.3.22 5.4.38-r1 5.6.42: A complete solution for viewing and editing PDF files
 app-text/mathtex 1.04: Lets you easily embed LaTeX math in your own html pages, blogs, wikis, etc
 app-text/mecab 0.996-r1: Yet Another Part-of-Speech and Morphological Analyzer
 app-text/mpage 2.5.6-r1: Many to one page printing utility
@@ -5083,7 +5083,7 @@ dev-lang/cilk 5.4.6-r1 5.4.6-r2: Language for multithreaded parallel programming
 dev-lang/cll1h 0.6-r1: C<<1 programming language system
 dev-lang/clojure 1.8.0 1.9.0-r1 1.10.0: General-purpose programming language with an emphasis on functional programming
 dev-lang/closure-compiler-bin 20170218: JavaScript optimizing compiler
-dev-lang/coffee-script 1.9.3-r1 1.12.5 2.3.2: A little language that compiles into javascript
+dev-lang/coffee-script 1.9.3-r1 1.12.5 2.3.2 2.5.1: A little language that compiles into javascript
 dev-lang/crystal 0.35.1: The Crystal Programming Language
 dev-lang/cxprolog 0.98.2: A WAM based Prolog system
 dev-lang/duktape 2.4.0 2.5.0-r1: Embeddable Javascript engine
@@ -5629,7 +5629,7 @@ dev-libs/roct-thunk-interface 3.7.0 3.8.0 9999: Radeon Open Compute Thunk Interf
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
 dev-libs/satyr 0.27 0.30 0.31: Satyr is a collection of low-level algorithms for program failure processing
 dev-libs/sdformat 6.2.0 9.2.0: Simulation Description Format (SDF) parser
-dev-libs/serd 0.30.2 0.30.4: Library for RDF syntax which supports reading and writing Turtle and NTriples
+dev-libs/serd 0.30.2 0.30.4 0.30.6: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 2.02: Library to drive several displays with built-in controllers or display modules
 dev-libs/shhopt 1.1.7-r3: library for parsing command line options
 dev-libs/sink 0.8.0-r2: Data access layer handling synchronization, caching and indexing
@@ -13300,11 +13300,11 @@ media-libs/soxr 0.1.3-r1: SoX Resampler library
 media-libs/spandsp 0.0.6: SpanDSP is a library of DSP functions for telephony
 media-libs/speex 1.2.0-r1: Audio compression format designed for speech
 media-libs/speexdsp 1.2_rc3-r2: Audio compression format designed for speech -- DSP
-media-libs/sratom 0.6.4: Library for serialising LV2 atoms to/from RDF, particularly the Turtle syntax
+media-libs/sratom 0.6.4 0.6.6: Library for serialising LV2 atoms to/from RDF, particularly the Turtle syntax
 media-libs/stimg 0.1.0: Simple and tiny image loading library
 media-libs/stk 4.6.1: Synthesis ToolKit in C++
 media-libs/stops 0.3.0-r1: Organ stops for aeolus by Fons Adriaensen <fons.adriaensen@skynet.be>
-media-libs/suil 0.10.6: Lightweight C library for loading and wrapping LV2 plugin UIs
+media-libs/suil 0.10.6 0.10.8: Lightweight C library for loading and wrapping LV2 plugin UIs
 media-libs/svgalib 1.9.25-r7 1.9.25-r8: A library for running svga graphics on the console
 media-libs/t1lib 5.1.2-r2: A Type 1 Font Rasterizer Library for UNIX/X11
 media-libs/taglib 1.11.1_p20190920-r1: Library for reading and editing audio meta data
@@ -14544,7 +14544,7 @@ net-dns/totd 1.5.1: Trick Or Treat Daemon, a DNS proxy for 6to4
 net-dns/unbound 1.10.1-r1 1.11.0: A validating, recursive and caching DNS resolver
 net-dns/updatedd 2.6-r5: Dynamic DNS client with plugins for several dynamic dns services
 net-dns/valtz 0.7-r3: Validation tool for tinydns-data zone files
-net-firewall/arno-iptables-firewall 2.0.3 2.1.0: Arno's iptables firewall script
+net-firewall/arno-iptables-firewall 2.0.3 2.1.0 2.1.1: Arno's iptables firewall script
 net-firewall/arptables 0.0.4 0.0.5 0.0.5-r1: set up, maintain, and inspect the tables of ARP rules in the Linux kernel
 net-firewall/conntrack-tools 1.4.5 1.4.6: Connection tracking userspace tools
 net-firewall/ebtables 2.0.11-r2: Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting

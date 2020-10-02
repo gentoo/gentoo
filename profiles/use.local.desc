@@ -347,6 +347,7 @@ app-crypt/tpm-emulator:mtm-emulator - Build the MTM emulator
 app-crypt/tpm-tools:pkcs11 - Build Token data management utilities based on OpenCryptoki's (dev-libs/opencryptoki) PKCS#11 implementation.
 app-crypt/tpm2-pkcs11:fapi - Enable feature API backend
 app-crypt/tpm2-tools:fapi - Enable feature API tools
+app-crypt/tpm2-totp:plymouth - Add sys-boot/plymouth support
 app-crypt/tpm2-tss:fapi - Enable feature API (requires openssl as crypto backend)
 app-crypt/tpm2-tss:gcrypt - Use dev-libs/libgcrypt as crypto engine
 app-crypt/tpm2-tss:mbedtls - Use net-libs/mbedtls as crypto engine
