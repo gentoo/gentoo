@@ -2,11 +2,11 @@ DEFINED_PHASES=configure install postinst
 DEPEND=dev-qt/qtcore:5= dev-qt/qtgui:5= dev-qt/qtwidgets:5= x11-libs/gtk+:2 x11-libs/libX11 x11-libs/pango
 DESCRIPTION=Additional style plugins for Qt5 (gtk2, cleanlook, plastic, motif)
 EAPI=7
-HOMEPAGE=https://github.com/qt/qtstyleplugins
+HOMEPAGE=https://code.qt.io/cgit/qt/qtstyleplugins.git/
 KEYWORDS=~amd64
 LICENSE=LGPL-2.1
 RDEPEND=dev-qt/qtcore:5= dev-qt/qtgui:5= dev-qt/qtwidgets:5= x11-libs/gtk+:2 x11-libs/libX11 x11-libs/pango
 SLOT=5
 SRC_URI=https://github.com/qt/qtstyleplugins/archive/335dbece103e2cbf6c7cf819ab6672c2956b17b3.tar.gz -> qtstyleplugins-5.0.0_p20170311.tar.gz
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	98584e405e2b0264d37e8f728327fed1	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=ea6869c95db14fccf80c9c81eeb63437
+_md5_=be1f0eea23ef24a351906e3e34f5ea17

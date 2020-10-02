@@ -11889,7 +11889,7 @@ gnustep-apps/pikopixel 1.0_beta9-r1 1.0_beta9-r2 1.0_beta9-r3 1.0_beta9-r4: a fr
 gnustep-apps/preview 0.9: Simple image viewer
 gnustep-apps/price 1.2.0 1.3.0: Precision Raster Image Convolution Engine
 gnustep-apps/projectcenter 0.6.2: An IDE for GNUstep
-gnustep-apps/simpleagenda 0.43 0.44: a simple calendar and agenda application
+gnustep-apps/simpleagenda 0.44: a simple calendar and agenda application
 gnustep-apps/sogo 4.1.1 4.1.1-r1 4.3.2: Groupware server built around OpenGroupware.org and the SOPE application server
 gnustep-apps/systempreferences 1.2.0: System Preferences is a clone of Apple OS X' System Preferences
 gnustep-apps/talksoup 1.1: IRC client for GNUstep
