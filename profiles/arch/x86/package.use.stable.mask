@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (2020-10-02)
+# media-video/pipewire not yet stabilized and without
+# sys-apps/xdg-desktop-portal-gtk not useable at all
+www-client/firefox screencast
+
 # Thomas Deutschmann <whissi@gentoo.org> (2020-08-05)
 # sys-cluster/slurm has no stable keywords
 app-metrics/collectd collectd_plugins_slurm
