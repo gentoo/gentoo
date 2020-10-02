@@ -12,11 +12,25 @@ SRC_URI="https://github.com/tpm2-software/${PN}/releases/download/v${PV}/${P}.ta
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="plymouth test"
 
-RDEPEND=">=app-crypt/tpm2-tss-2.0
-	media-gfx/qrencode:="
-DEPEND="${RDEPEND}"
+REQUIRED_USE="test? ( plymouth )"
+
+RDEPEND="app-crypt/tpm2-tss
+	media-gfx/qrencode
+	plymouth? ( sys-boot/plymouth )"
+DEPEND="${RDEPEND}
+	test? (
+		app-crypt/swtpm
+		app-crypt/tpm2-tools
+		>=app-crypt/tpm2-tss-3.0.0
+		sys-apps/fakeroot
+		sys-auth/oath-toolkit
+	)"
+
 BDEPEND="virtual/pkgconfig"
+
+RESTRICT="!test? ( test )"
 
 src_prepare() {
 	default
@@ -26,7 +40,9 @@ src_prepare() {
 src_configure() {
 	econf \
 		--disable-static \
-		--disable-defaultflags
+		--disable-defaultflags \
+		$(use_enable plymouth) \
+		$(use_enable test integration)
 }
 
 src_install() {
