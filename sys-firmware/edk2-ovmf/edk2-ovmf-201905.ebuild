@@ -96,9 +96,11 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -i -r \
-		-e "/function SetupPython3/,/\}/{s,\\\$\(whereis python3\),${EPYTHON},g}" \
-		"${S}"/edksetup.sh || die "Fixing for correct Python3 support failed"
+	if ! use binary; then
+		sed -i -r \
+			-e "/function SetupPython3/,/\}/{s,\\\$\(whereis python3\),${EPYTHON},g}" \
+			"${S}"/edksetup.sh || die "Fixing for correct Python3 support failed"
+	fi
 	if  [[ ${PV} != "999999" ]] && use binary; then
 		eapply_user
 		return
