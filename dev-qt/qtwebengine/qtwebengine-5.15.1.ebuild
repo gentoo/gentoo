@@ -40,7 +40,7 @@ RDEPEND="
 	media-libs/lcms:2
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
-	>=media-libs/libvpx-1.5:=[svc]
+	>=media-libs/libvpx-1.5:=[svc(+)]
 	media-libs/libwebp:=
 	media-libs/mesa[egl,X(+)]
 	media-libs/opus
