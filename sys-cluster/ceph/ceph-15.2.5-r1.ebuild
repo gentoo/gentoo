@@ -201,6 +201,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-15.2.4-system-uring.patch"
 	"${FILESDIR}/ceph-15.2.5-missing-includes.patch"
 	"${FILESDIR}/ceph-15.2.5-systemd-unit-fix.patch"
+	"${FILESDIR}/ceph-15.2.5-glibc-2.32.patch"
 )
 
 check-reqs_export_vars() {
