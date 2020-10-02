@@ -28,7 +28,7 @@ HOMEPAGE="https://wiki.linuxfoundation.org/networking/iputils"
 
 LICENSE="BSD GPL-2+ rdisc"
 SLOT="0"
-IUSE="+arping caps clockdiff doc gcrypt idn ipv6 libressl nettle nls rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute6"
+IUSE="+arping caps clockdiff doc gcrypt idn ipv6 libressl nettle nls rarpd rdisc ssl static tftpd tracepath traceroute6"
 
 BDEPEND="virtual/pkgconfig"
 
@@ -66,8 +66,6 @@ fi
 PATCHES=()
 
 src_prepare() {
-	use SECURITY_HAZARD && PATCHES+=( "${FILESDIR}"/${PN}-20150815-nonroot-floodping.patch )
-
 	default
 
 	l10n_get_locales > po/LINGUAS || die
