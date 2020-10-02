@@ -17152,7 +17152,7 @@ sys-block/hpssacli 2.40.13.0-r1 3.10.3.0: HPE Smart Storage Administrator (HPE S
 sys-block/io-scheduler-udev-rules 1: Udev rules to allow easier customization of kernel I/O schedulers
 sys-block/libzbc 5.5.1: A library and tools for working with ZBC and ZAC disks
 sys-block/lsiutil 1.62-r1 1.62-r2: LSI Logic Fusion MPT Command Line Interface management tool
-sys-block/mbuffer 20200505: M(easuring)buffer is a replacement for buffer with additional functionality
+sys-block/mbuffer 20200505 20200929: M(easuring)buffer is a replacement for buffer with additional functionality
 sys-block/megacli 8.07.14-r2 8.07.14-r3: LSI Logic MegaRAID Command Line Interface management tool
 sys-block/megactl 0.4.1-r3: LSI MegaRAID control utility
 sys-block/megamgr 5.20-r2: LSI Logic MegaRAID Text User Interface management tool
