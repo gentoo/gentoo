@@ -38,9 +38,9 @@ else
 			https://github.com/tianocore/edk2/archive/edk2-stable${PV}.tar.gz -> ${P}.tar.gz
 			https://github.com/openssl/openssl/archive/${BUNDLED_OPENSSL_SUBMODULE_SHA}.tar.gz -> openssl-${BUNDLED_OPENSSL_SUBMODULE_SHA}.tar.gz
 			https://github.com/google/brotli/archive/${BUNDLED_BROTLI_SUBMODULE_SHA}.tar.gz -> brotli-${BUNDLED_BROTLI_SUBMODULE_SHA}.tar.gz
-			https://dev.gentoo.org/~mva/distfiles/${P}-qemu-firmware.tar.xz
 		)
 		binary? ( https://dev.gentoo.org/~mva/distfiles/${P}-bin.tar.xz )
+		https://dev.gentoo.org/~mva/distfiles/${P}-qemu-firmware.tar.xz
 	"
 	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 	IUSE="+binary"
