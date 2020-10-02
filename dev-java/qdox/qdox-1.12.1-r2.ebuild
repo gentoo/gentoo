@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 JAVA_PKG_IUSE="doc source test"
 
@@ -19,7 +19,7 @@ S="${WORKDIR}/${PN}-${PN}-${PV}"
 
 CDEPEND="dev-java/ant-core:0"
 
-DEPEND=">=virtual/jdk-1.4
+DEPEND=">=virtual/jdk-1.8
 	app-arch/unzip:0
 	dev-java/byaccj:0
 	>=dev-java/jflex-1.6.1:0
@@ -27,11 +27,15 @@ DEPEND=">=virtual/jdk-1.4
 	test? ( dev-java/junit:0 )
 	${CDEPEND}"
 
-RDEPEND=">=virtual/jre-1.4
+RDEPEND=">=virtual/jre-1.8
 	${CDEPEND}"
 
-java_prepare() {
-	epatch "${FILESDIR}"/jflex-1.6.1.patch
+PATCHES=(
+	"${FILESDIR}/jflex-1.6.1.patch"
+)
+
+src_prepare() {
+	default
 
 	if ! use test ; then
 		rm src/java/com/thoughtworks/qdox/tools/QDoxTester.java
