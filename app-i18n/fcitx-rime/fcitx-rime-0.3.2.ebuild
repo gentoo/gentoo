@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
@@ -39,7 +39,7 @@ src_configure() {
 		-DRIME_DATA_DIR="${EPREFIX}/usr/share/rime-data"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {
