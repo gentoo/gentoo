@@ -7,7 +7,7 @@ inherit fcaps flag-o-matic git-r3 multilib python-any-r1 qmake-utils user xdg-ut
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
-EGIT_REPO_URI="https://code.wireshark.org/review/wireshark"
+EGIT_REPO_URI="https://gitlab.com/wireshark/wireshark"
 LICENSE="GPL-2"
 
 SLOT="0/${PV}"
