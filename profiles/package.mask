@@ -486,8 +486,6 @@ dev-util/doxy-coverage
 dev-util/mpatch
 dev-vcs/cvs2svn
 dev-vcs/gitstats
-games-rpg/adonthell
-games-rpg/wastesedge
 games-strategy/0ad
 media-sound/codecgraph
 net-misc/pssh
