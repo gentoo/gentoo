@@ -3,19 +3,17 @@
 
 EAPI=7
 
-[[ ${PV} == *9999 ]] && SCM="git-2"
-EGIT_REPO_URI="https://github.com/sitaramc/${PN}.git"
-EGIT_MASTER=master
-
-inherit perl-module ${SCM}
+inherit perl-module
 
 DESCRIPTION="Highly flexible server for git directory version tracker"
 HOMEPAGE="https://github.com/sitaramc/gitolite"
-if [[ ${PV} != *9999 ]]; then
+
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/sitaramc/${PN}.git"
+else
 	SRC_URI="https://github.com/sitaramc/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~x86"
-else
-	SRC_URI=""
 fi
 
 LICENSE="GPL-2"
