@@ -17,7 +17,6 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x64-macos"
 IUSE="doc test"
 RESTRICT="test"
 
-BDEPEND="!<app-admin/ansible-2.10.0[${PYTHON_USEDEP}]"
 RDEPEND="
 	dev-python/paramiko[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
@@ -50,6 +49,8 @@ DEPEND="
 		dev-python/unittest2[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)"
+
+ANSIBLE_SKIP_CONFLICT_CHECK=1
 
 python_compile_all() {
 	if use doc; then
