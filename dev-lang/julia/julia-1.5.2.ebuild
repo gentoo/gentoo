@@ -44,7 +44,7 @@ LLVM_MAX_SLOT=9
 RDEPEND+="
 	dev-libs/double-conversion:0=
 	dev-libs/gmp:0=
-	dev-libs/libgit2:0/28
+	dev-libs/libgit2:0
 	>=dev-libs/libpcre2-10.23:0=[jit,unicode]
 	dev-libs/mpfr:0=
 	dev-libs/openspecfun
