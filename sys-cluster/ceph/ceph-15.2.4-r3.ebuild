@@ -199,6 +199,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-15.2.3-spdk-compile.patch"
 	"${FILESDIR}/ceph-14.2.10-python-warnings.patch"
 	"${FILESDIR}/ceph-15.2.4-system-uring.patch"
+	"${FILESDIR}/ceph-15.2.5-glibc-2.32.patch"
 )
 
 check-reqs_export_vars() {
