@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit autotools python-single-r1
+inherit autotools python-single-r1 xdg
 
 DESCRIPTION="Role playing game to showcase the adonthell engine"
 HOMEPAGE="http://adonthell.nongnu.org/download/"
