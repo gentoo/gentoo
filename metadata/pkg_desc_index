@@ -8727,7 +8727,7 @@ dev-python/pymongo 3.10.1 3.11.0 3.11.0-r1: Python driver for MongoDB
 dev-python/pymountboot 0.2.3 9999: Python extension module to (re)mount /boot
 dev-python/pympler 0.6: Memory profiling for Python applications
 dev-python/pymssql 2.1.3: Simple MSSQL python extension module
-dev-python/pymysql 0.9.3 0.10.0: Pure-Python MySQL Driver
+dev-python/pymysql 0.9.3 0.10.0 0.10.1: Pure-Python MySQL Driver
 dev-python/pynacl 1.4.0: Python binding to the Networking and Cryptography (NaCl) library
 dev-python/pynput 1.6.8 9999: Sends virtual input commands
 dev-python/pynvim 0.4.1: Python client for Neovim
