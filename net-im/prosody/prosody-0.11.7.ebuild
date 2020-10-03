@@ -46,7 +46,7 @@ RDEPEND="
 PATCHES=( "${FILESDIR}/${PN}-0.11.2-r1-gentoo.patch" )
 
 src_configure() {
-	local myconfargs=(
+	local myeconfargs=(
 		--c-compiler="$(tc-getCC)"
 		--datadir="${EPREFIX}/var/spool/jabber"
 		--libdir="${EPREFIX}/usr/$(get_libdir)"
@@ -59,7 +59,9 @@ src_configure() {
 		--with-lua-lib="${EPREFIX}/usr/$(get_libdir)/lua"
 	)
 
-	./configure ${myconfargs[@]} --cflags="${CFLAGS} -Wall -fPIC" --ldflags="${LDFLAGS} -shared" || die
+	# Since the configure script is handcrafted,
+	# and yells at unknown options, do not use 'econf'.
+	./configure ${myeconfargs[@]} --cflags="${CFLAGS} -Wall -fPIC" --ldflags="${LDFLAGS} -shared" || die
 
 	rm makefile || die
 	mv GNUmakefile Makefile || die
@@ -74,6 +76,4 @@ src_install() {
 
 	systemd_dounit "${FILESDIR}"/prosody.service
 	systemd_newtmpfilesd "${FILESDIR}"/prosody.tmpfilesd prosody.conf
-
-	newinitd "${FILESDIR}"/prosody.initd-r3 prosody
 }
