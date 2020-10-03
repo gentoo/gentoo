@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools toolchain-funcs
 
 DESCRIPTION="network Audit Record Generation and Utilization System"
 HOMEPAGE="https://openargus.org/"
@@ -64,7 +64,10 @@ src_configure() {
 }
 
 src_compile() {
-	emake CCOPT="${CFLAGS} ${LDFLAGS}"
+	emake \
+		CCOPT="${CFLAGS} ${LDFLAGS}" \
+		AR="$(tc-getAR)" \
+		RANLIB="$(tc-getRANLIB)"
 }
 
 src_install() {
