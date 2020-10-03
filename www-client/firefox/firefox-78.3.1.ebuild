@@ -418,6 +418,9 @@ pkg_setup() {
 		if [[ -z "${MOZ_API_KEY_GOOGLE+set}" ]] ; then
 			MOZ_API_KEY_GOOGLE="AIzaSyDEAOvatFogGaPi0eTgsV_ZlEzx0ObmepsMzfAc"
 		fi
+
+		# Ensure we use C locale when building, bug #746215
+		export LC_ALL=C
 	fi
 }
 
