@@ -5,6 +5,10 @@
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
+<longdescription>
+  wgrep allows you to edit a grep buffer and apply those changes to
+  the file buffer like sed interactively.
+</longdescription>
 <stabilize-allarches/>
 <upstream>
   <remote-id type="github">mhayashi1120/Emacs-wgrep</remote-id>
