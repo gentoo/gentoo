@@ -1,11 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 WX_GTK_VER=3.0
 
-inherit fdo-mime wxwidgets
+inherit wxwidgets xdg
 
 DESCRIPTION="General-purpose nonlinear curve fitting and data analysis"
 HOMEPAGE="http://fityk.nieto.pl/"
@@ -14,51 +14,34 @@ SRC_URI="https://github.com/wojdyr/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="gnuplot nlopt readline static-libs wxwidgets"
+IUSE="gnuplot nlopt readline wxwidgets"
 
-CDEPEND="
+DEPEND="
 	>=dev-lang/lua-5.1:0
 	dev-libs/boost:=
 	>=sci-libs/xylib-1
 	nlopt? ( sci-libs/nlopt )
 	readline? ( sys-libs/readline:0= )
 	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER} )"
-DEPEND="${CDEPEND}
-	dev-lang/swig"
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	gnuplot? ( sci-visualization/gnuplot )"
-
-pkg_setup() {
-	use wxwidgets && setup-wxwidgets
-}
+BDEPEND="dev-lang/swig"
 
 src_configure() {
-	common_confargs=(
-		--with-wx-config=wx-config-${WX_GTK_VER}
-	)
+	use wxwidgets && setup-wxwidgets
 
 	econf \
-		"${common_confargs[@]}" \
 		--disable-python \
+		--disable-static \
 		$(use_enable nlopt) \
 		$(use_enable wxwidgets GUI) \
 		$(use_with readline) \
-		$(use_enable static-libs static)
+		--with-wx-config="${WX_CONFIG}"
 }
 
 src_install() {
 	default
 
-	# No .pc file / libfityk.a has dependencies -> need .la file
-	if ! use static-libs; then
-		find "${D}" -name '*.la' -delete || die
-	fi
-}
-
-pkg_postinst() {
-	fdo-mime_desktop_database_update
-}
-
-pkg_postrm() {
-	fdo-mime_desktop_database_update
+	# no static archives
+	find "${ED}" -name '*.la' -delete || die
 }
