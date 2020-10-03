@@ -27,7 +27,7 @@ DEPEND="${BASE_DEPEND}
 		test? ( dev-lua/busted )"
 
 RDEPEND="${BASE_DEPEND}
-		>=dev-lua/luaexpat-1.3.0
+		~dev-lua/luaexpat-1.3.0
 		dev-lua/luafilesystem
 		!ipv6? ( dev-lua/luasocket )
 		ipv6? ( >=dev-lua/luasocket-3 )
