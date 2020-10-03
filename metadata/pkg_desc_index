@@ -8040,7 +8040,7 @@ dev-python/debtcollector 1.21.0: Python deprecation patterns and strategies that
 dev-python/decorator 4.4.2-r1: Simplifies the usage of decorators for the average programmer
 dev-python/defcon 0.6.0-r1: A set of UFO based objects for use in font editing applications
 dev-python/defusedxml 0.6.0 0.7.0_rc1: XML bomb protection for Python stdlib modules, an xml serialiser
-dev-python/denonavr 0.9.4: Automation Library for Denon AVR receivers
+dev-python/denonavr 0.9.4 0.9.5: Automation Library for Denon AVR receivers
 dev-python/deprecated 1.2.10: Python @deprecated decorator to deprecate old API
 dev-python/deprecation 2.1.0: A library to handle automated deprecations
 dev-python/dicttoxml 1.7.4-r1: Converts a Python dictionary or other data type to a valid XML string
