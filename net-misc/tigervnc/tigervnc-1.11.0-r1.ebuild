@@ -3,7 +3,8 @@
 
 EAPI=7
 CMAKE_IN_SOURCE_BUILD=1
-inherit autotools cmake eutils flag-o-matic java-pkg-opt-2 systemd xdg
+
+inherit autotools cmake flag-o-matic java-pkg-opt-2 systemd xdg
 
 XSERVER_VERSION="1.20.0"
 
