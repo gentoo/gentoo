@@ -3,9 +3,9 @@
 ##
 ## Usage:
 ##
-## $ firefox-bin
+## $ thunderbird-bin
 ##
-## This script is meant to run Mozilla Firefox in Gentoo.
+## This script is meant to run Mozilla Thunderbird (bin) in Gentoo.
 
 cmdname=$(basename "$0")
 
@@ -24,23 +24,23 @@ case ${MOZ_ARCH} in
 		;;
 esac
 
-MOZ_FIREFOX_FILE="firefox-bin"
+MOZ_THUNDERBIRD_FILE="thunderbird-bin"
 MOZILLA_FIVE_HOME="@MOZ_FIVE_HOME@"
-MOZ_EXTENSIONS_PROFILE_DIR="${HOME}/.mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
-MOZ_PROGRAM="${MOZILLA_FIVE_HOME}/${MOZ_FIREFOX_FILE}"
+MOZ_EXTENSIONS_PROFILE_DIR="${HOME}/.mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}"
+MOZ_PROGRAM="${MOZILLA_FIVE_HOME}/${MOZ_THUNDERBIRD_FILE}"
 APULSELIB_DIR="@APULSELIB_DIR@"
-DESKTOP_FILE="firefox-bin"
+DESKTOP_FILE="thunderbird-bin"
 
 ##
 ## Enable Wayland backend?
 ##
 if @DEFAULT_WAYLAND@ && [[ -z ${MOZ_DISABLE_WAYLAND} ]]; then
 	if [[ -n "$WAYLAND_DISPLAY" ]]; then
-		DESKTOP_FILE="firefox-bin-wayland"
+		DESKTOP_FILE="thunderbird-bin-wayland"
 		export MOZ_ENABLE_WAYLAND=1
 	fi
 elif [[ -n ${MOZ_DISABLE_WAYLAND} ]]; then
-	DESKTOP_FILE="firefox-bin-x11"
+	DESKTOP_FILE="thunderbird-bin-x11"
 fi
 
 ##
@@ -119,5 +119,5 @@ if [[ $@ != *"--name "* ]]; then
 	set -- --name "${DESKTOP_FILE}" "$@"
 fi
 
-# Run the browser
+# Run the mail client
 exec ${MOZ_PROGRAM} "$@"
