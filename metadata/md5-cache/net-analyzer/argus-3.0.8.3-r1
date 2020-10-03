@@ -11,4 +11,4 @@ RDEPEND=acct-group/argus acct-user/argus net-libs/libnsl:= net-libs/libpcap net-
 SLOT=0
 SRC_URI=https://www.qosient.com/argus/dev/argus-3.0.8.3.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=f391f66fb832448b46041ce8b82b3855
+_md5_=6d1c6969a7d62ea0c8fc6f61e7919e1f

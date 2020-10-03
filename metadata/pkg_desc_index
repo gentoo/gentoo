@@ -10609,7 +10609,7 @@ dev-util/byacc 20200330 20200910: the best variant of the Yacc parser generator
 dev-util/cargo-c 0.6.2: Helper program to build and install c-like libraries
 dev-util/cargo-ebuild 0.2.0 0.3.0 0.3.1: Generates an ebuild for a package using the in-tree eclasses.
 dev-util/cargo-license 0.3.0: Cargo subcommand to see license of dependencies
-dev-util/catalyst 3.0.9 3.0.12 3.0.13 9999: Release metatool used for creating releases based on Gentoo Linux
+dev-util/catalyst 3.0.9 3.0.12 3.0.13 3.0.14 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.4.13: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.8.3-r1 0.8.8-r1 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/cbindgen 0.14.4 0.14.6: A tool for generating C bindings to Rust code
@@ -16015,7 +16015,7 @@ sci-electronics/gnucap 0.35.20091207-r1: GNUCap is the GNU Circuit Analysis Pack
 sci-electronics/gsmc 1.1-r2: A GTK program for doing Smith Chart calculations
 sci-electronics/gspeakers 0.11-r2: GTK based loudspeaker enclosure and crossovernetwork designer
 sci-electronics/gspiceui 1.1.0: GUI frontend for Ngspice and Gnucap
-sci-electronics/gtkwave 3.3.68 3.3.73 3.3.87 3.3.99: A wave viewer for LXT, LXT2, VZT, GHW and standard Verilog VCD/EVCD files
+sci-electronics/gtkwave 3.3.106: A wave viewer for LXT, LXT2, VZT, GHW and standard Verilog VCD/EVCD files
 sci-electronics/gwave 20190116: Analog waveform viewer for SPICE-like simulations
 sci-electronics/irsim 9.7.93: IRSIM is a "switch-level" simulator
 sci-electronics/iverilog 10.3 10.3-r1 10.3-r2 9999: A Verilog simulation and synthesis tool
