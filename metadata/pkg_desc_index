@@ -1990,7 +1990,7 @@ app-emulation/uade 2.13-r1: Unix Amiga Delitracker Emulator - plays old Amiga tu
 app-emulation/umoci 0.2.1: Manipulation tool for OCI images
 app-emulation/vagrant 2.2.7-r1 2.2.9-r1: A tool for building and distributing development environments
 app-emulation/vice 3.4_p37498 3.4_p38553: The Versatile Commodore Emulator
-app-emulation/virt-manager 2.2.1-r3 9999: A graphical tool for administering virtual machines
+app-emulation/virt-manager 2.2.1-r3 3.1.0 9999: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 7.0 8.0 9.0: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.18 1.19 1.20: Detects if the current machine is running in a virtual machine
 app-emulation/virtio-win 0.1.173.9 0.1.185.1 0.1.187.1: VirtIO drivers for Windows virtual machines running on KVM
@@ -7923,7 +7923,7 @@ dev-python/bashate 0.6.0: A pep8 equivalent for bash scripts
 dev-python/basho-erlastic 2.1.1: Erlang binary term codec and port interface
 dev-python/bcrypt 3.1.7-r2 3.2.0: Modern password hashing for software and servers
 dev-python/beagle 0.3.0: Command line client for Hound, the code search tool.
-dev-python/beautifulsoup 4.9.1 4.9.2: Pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
+dev-python/beautifulsoup 4.9.1 4.9.2 4.9.3: Pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
 dev-python/bert 2.2.0: BERT Serialization Library
 dev-python/betamax 0.8.1: python-requests HTTP exchanges recorder
 dev-python/betamax-matchers 0.4.0: A group of experimental matchers for Betamax
@@ -8388,7 +8388,7 @@ dev-python/logbook 1.5.3: A logging replacement for Python
 dev-python/logfury 0.1.2-r1: Boilerplate library for logging method calls
 dev-python/loguru 0.5.2 0.5.3: Python logging made (stupidly) simple
 dev-python/logutils 0.3.5: The logutils package provides a set of handlers for the Python standard
-dev-python/loky 2.8.0-r1: Robust and reusable Executor for joblib
+dev-python/loky 2.8.0-r1 2.9.0: Robust and reusable Executor for joblib
 dev-python/lunr 0.5.6: A Python implementation of Lunr.js
 dev-python/lxml 4.5.2-r1: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 3.0.2: LZ4 Bindings for Python
@@ -8461,7 +8461,7 @@ dev-python/namespace-zope 1-r1: Namespace package declaration for zope
 dev-python/natsort 7.0.1: Natural sorting for Python
 dev-python/nautilus-python 1.2.3-r1: Python bindings for the Nautilus file manager
 dev-python/nbclient 0.5.0: A client library for executing Jupyter notebooks
-dev-python/nbconvert 5.6.1 5.6.1-r1 6.0.3 6.0.4 6.0.5 6.0.6: Converting Jupyter Notebooks
+dev-python/nbconvert 5.6.1 5.6.1-r1 6.0.3 6.0.4 6.0.5 6.0.6 6.0.7: Converting Jupyter Notebooks
 dev-python/nbdime 2.0.0-r1: Diff and merge of Jupyter Notebooks
 dev-python/nbformat 5.0.7: Reference implementation of the Jupyter Notebook format
 dev-python/nbsphinx 0.7.1-r1: Jupyter Notebook Tools for Sphinx
@@ -8796,7 +8796,7 @@ dev-python/pysvg 0.2.2_p3: Python SVG document creation library
 dev-python/pysvn 1.9.11: Object-oriented python bindings for subversion
 dev-python/pytables 3.6.1: Hierarchical datasets for Python
 dev-python/pyte 0.8.0-r1: Simple VTXXX-compatible terminal emulator
-dev-python/pytest 4.6.11-r1 5.4.3 6.0.1 6.0.2 6.1.0: Simple powerful testing with Python
+dev-python/pytest 4.6.11-r1 5.4.3 6.0.1 6.0.2 6.1.0 6.1.1: Simple powerful testing with Python
 dev-python/pytest-aiohttp 0.3.0-r1: pytest plugin for aiohttp support
 dev-python/pytest-asyncio 0.14.0: Library for testing asyncio code with pytest
 dev-python/pytest-cache 1.0-r2: mechanisms for caching across test runs
@@ -14353,7 +14353,7 @@ net-analyzer/ngrep 1.45-r3 1.47: A grep for network layers
 net-analyzer/nikto 2.1.6_p20200901: Web server vulnerability scanner
 net-analyzer/nipper 0.12.0: Router configuration security analysis tool
 net-analyzer/nload 0.7.4-r1: Real time network traffic monitor for the command line interface
-net-analyzer/nmap 7.80-r1 9999: A utility for network discovery and security auditing
+net-analyzer/nmap 7.80-r1 7.90 9999: A utility for network discovery and security auditing
 net-analyzer/nmapsi 0.5_alpha2: Qt frontend to nmap
 net-analyzer/nmbscan 1.2.5-r1: Scans the shares of a SMB/NetBIOS network
 net-analyzer/nrpe 4.0.0 4.0.2: Nagios Remote Plugin Executor
