@@ -18,9 +18,5 @@
 			Allow Gecko Media Plugins (binary blobs) to be automatically
 			downloaded and kept up-to-date in user profiles
 		</flag>
-		<flag name="openh264">
-			Use <pkg>media-libs/openh264</pkg> for H.264 support
-			instead of downloading binary blob from Mozilla at runtime
-		</flag>
 	</use>
 </pkgmetadata>
