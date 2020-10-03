@@ -14,7 +14,6 @@ throw triangles to the screen as Extrusions, IndexedFaceSets, TriangleSets, Circ
 Cubes; the list goes on and on.  With royalty free open standards, your models will continue to render, year after year. 
 </longdescription>
 	<use>
-		<flag name="glew">Enable glew extensions</flag>
 		<flag name="libeai">Build EAI C library</flag>
 		<flag name="opencl">Enable OpenCL support</flag>
 		<flag name="osc">Allows for OSC-based control and communication between multiple freewrl instances</flag>
