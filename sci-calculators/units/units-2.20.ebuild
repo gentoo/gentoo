@@ -39,7 +39,7 @@ DOCS=(
 
 src_configure() {
 	econf \
-		--sharedstatedir="${EROOT}/var/lib" \
+		--sharedstatedir="${EPREFIX}"/var/lib \
 		ac_cv_path_PYTHON=no
 }
 
