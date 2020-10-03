@@ -1,0 +1,12 @@
+diff -r 4e0421547ae0 configure
+--- a/configure	Sat Oct 03 14:28:50 2020 +0000
++++ b/configure	Sat Oct 03 14:41:42 2020 +0000
+@@ -58,7 +58,7 @@
+ }
+ EOF
+ 
+-	if ! gcc `sdl-config --cflags` test_sdl_mixer.c -o test_sdl_mixer; then
++	if ! $CC `sdl-config --cflags` test_sdl_mixer.c -o test_sdl_mixer; then
+ 		echo "SDL_mixer not found =/"
+ 		rm -f test_sdl_mixer*
+ 		exit
