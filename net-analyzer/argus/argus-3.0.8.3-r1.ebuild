@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools user
+
+inherit autotools
 
 DESCRIPTION="network Audit Record Generation and Utilization System"
 HOMEPAGE="https://openargus.org/"
@@ -14,6 +15,8 @@ KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="debug sasl tcpd"
 
 RDEPEND="
+	acct-group/argus
+	acct-user/argus
 	net-libs/libnsl:=
 	net-libs/libpcap
 	net-libs/libtirpc
@@ -21,9 +24,8 @@ RDEPEND="
 	sasl? ( dev-libs/cyrus-sasl )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 "
-
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	>=sys-devel/bison-1.28
 	>=sys-devel/flex-2.4.6
 "
@@ -35,11 +37,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.8.3-as-needed.patch
 )
 S=${WORKDIR}/${P/_rc/.rc.}
-
-pkg_setup() {
-	enewgroup argus
-	enewuser argus -1 -1 /var/lib/argus argus
-}
 
 src_prepare() {
 	find . -type f -execdir chmod +w {} \; #561360
@@ -82,11 +79,6 @@ src_install() {
 
 	newinitd "${FILESDIR}/argus.initd" argus
 	keepdir /var/lib/argus
-}
-
-pkg_preinst() {
-	enewgroup argus
-	enewuser argus -1 -1 /var/lib/argus argus
 }
 
 pkg_postinst() {

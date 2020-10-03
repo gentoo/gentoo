@@ -1,19 +1,22 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils user
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="network Audit Record Generation and Utilization System"
-HOMEPAGE="https://www.qosient.com/argus/"
+HOMEPAGE="https://openargus.org/"
 SRC_URI="https://www.qosient.com/argus/dev/${P/_rc/.rc.}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="debug +libtirpc sasl tcpd"
 
 RDEPEND="
+	acct-group/argus
+	acct-user/argus
 	net-libs/libnsl:=
 	net-libs/libpcap
 	sys-libs/zlib
@@ -22,13 +25,18 @@ RDEPEND="
 	sasl? ( dev-libs/cyrus-sasl )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 "
-
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	>=sys-devel/bison-1.28
 	>=sys-devel/flex-2.4.6
 "
-
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.0.8.1-disable-tcp-wrappers-automagic.patch
+	"${FILESDIR}"/${PN}-3.0.5-Makefile.patch
+	"${FILESDIR}"/${PN}-3.0.7.3-DLT_IPNET.patch
+	"${FILESDIR}"/${PN}-3.0.8.2-rpc.patch
+	"${FILESDIR}"/${PN}-3.0.8.2-fno-common.patch
+)
 S=${WORKDIR}/${P/_rc/.rc.}
 
 src_prepare() {
@@ -43,13 +51,8 @@ src_prepare() {
 		-e 's:#\(ARGUS_SETGROUP_ID=\).*:\1argus:' \
 		-e 's:\(#ARGUS_CHROOT_DIR=\).*:\1/var/lib/argus:' \
 			-i support/Config/argus.conf || die
-	epatch \
-		"${FILESDIR}"/${PN}-3.0.8.1-disable-tcp-wrappers-automagic.patch \
-		"${FILESDIR}"/${PN}-3.0.5-Makefile.patch \
-		"${FILESDIR}"/${PN}-3.0.7.3-DLT_IPNET.patch \
-		"${FILESDIR}"/${PN}-3.0.8.2-rpc.patch
 
-	epatch_user
+	default
 	eautoreconf
 }
 
@@ -74,11 +77,6 @@ src_install() {
 
 	newinitd "${FILESDIR}/argus.initd" argus
 	keepdir /var/lib/argus
-}
-
-pkg_preinst() {
-	enewgroup argus
-	enewuser argus -1 -1 /var/lib/argus argus
 }
 
 pkg_postinst() {
