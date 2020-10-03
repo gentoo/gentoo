@@ -30,12 +30,13 @@ RDEPEND="dev-python/django[${PYTHON_USEDEP}]
 	dev-python/django-haystack[${PYTHON_USEDEP}]
 	dev-python/django-extensions[${PYTHON_USEDEP}]
 	dev-python/flufl-lock[${PYTHON_USEDEP}]
-	dev-python/django-q[${PYTHON_USEDEP}]"
+	dev-python/django-q[${PYTHON_USEDEP}]
+	dev-python/whoosh[${PYTHON_USEDEP}]
+	dev-lang/sassc"
 
 BDEPEND="dev-python/isort[${PYTHON_USEDEP}]
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/whoosh[${PYTHON_USEDEP}]
 		dev-python/beautifulsoup[${PYTHON_USEDEP}]
 		dev-python/django-debug-toolbar[${PYTHON_USEDEP}]
 	)"
