@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit toolchain-funcs user
+
+inherit toolchain-funcs
 
 DESCRIPTION="collect network traffic statistics and store them in pcap format"
 HOMEPAGE="https://sourceforge.net/projects/sancp/"
@@ -19,13 +20,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="sguil"
 
-RDEPEND="net-libs/libpcap"
+RDEPEND="
+	acct-group/sancp
+	acct-user/sancp
+	net-libs/libpcap"
 DEPEND="${RDEPEND}"
 
-pkg_setup() {
-	enewgroup sancp
-	enewuser sancp -1 -1 /dev/null sancp
-}
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.1-compiler.patch
 	"${FILESDIR}"/${PN}-1.6.1-gcc6.patch
