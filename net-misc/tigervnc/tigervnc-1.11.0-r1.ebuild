@@ -3,7 +3,8 @@
 
 EAPI=7
 CMAKE_IN_SOURCE_BUILD=1
-inherit autotools cmake eutils flag-o-matic java-pkg-opt-2 systemd xdg
+
+inherit autotools cmake flag-o-matic java-pkg-opt-2 systemd xdg
 
 XSERVER_VERSION="1.20.0"
 
@@ -171,7 +172,7 @@ src_install() {
 	else
 		local f
 		cd "${ED}" || die
-		for f in vncserver x0vncserver vncconfig; do
+		for f in x0vncserver vncconfig; do
 			rm usr/bin/$f || die
 			rm usr/share/man/man1/$f.1 || die
 		done
