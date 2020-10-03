@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools eutils flag-o-matic user systemd
+inherit autotools systemd
 
 MY_PV=${PV/_pre/-r}
 MY_P=${PN}-${PV/_pre/-testing-r}
@@ -18,7 +18,8 @@ KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="debug gnutls ncurses +parcheck ssl test zlib"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-libs/libxml2:=
+DEPEND="
+	dev-libs/libxml2:=
 	ncurses? ( sys-libs/ncurses:0= )
 	ssl? (
 		gnutls? (
@@ -28,34 +29,23 @@ RDEPEND="dev-libs/libxml2:=
 		!gnutls? ( dev-libs/openssl:0=[-bindist] )
 	)
 	zlib? ( sys-libs/zlib:= )"
-DEPEND="${RDEPEND}
+RDEPEND="
+	${DEPEND}
+	acct-user/nzbget
+	acct-group/nzbget
+"
+BDEPEND="
 	test? (
 		|| (
 			=app-arch/rar-5*
 			=app-arch/unrar-5*
 		)
 	)
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 DOCS=( ChangeLog README nzbget.conf )
 
 S=${WORKDIR}/${PN}-${PV/_pre*/-testing}
-
-check_compiler() {
-	if [[ ${MERGE_TYPE} != binary ]] && ! test-flag-CXX -std=c++14; then
-		eerror "${P} requires a C++14-capable compiler. Your current compiler"
-		eerror "does not seem to support the -std=c++14 option. Please"
-		eerror "upgrade to gcc-4.9 or an equivalent version supporting C++14."
-		die "The currently active compiler does not support -std=c++14"
-	fi
-}
-
-pkg_pretend() {
-	check_compiler
-}
-
-pkg_setup() {
-	check_compiler
-}
 
 src_prepare() {
 	default
@@ -96,7 +86,6 @@ src_install() {
 	doins nzbget.conf
 	doins nzbgetd.conf
 
-	keepdir /var/lib/nzbget/{dst,nzb,queue,tmp}
 	keepdir /var/log/nzbget
 
 	newinitd "${FILESDIR}"/nzbget.initd-r1 nzbget
@@ -105,13 +94,6 @@ src_install() {
 }
 
 pkg_preinst() {
-	enewgroup nzbget
-	enewuser nzbget -1 -1 /var/lib/nzbget nzbget
-
-	fowners nzbget:nzbget /var/lib/nzbget/{dst,nzb,queue,tmp}
-	fperms 750 /var/lib/nzbget/{queue,tmp}
-	fperms 770 /var/lib/nzbget/{dst,nzb}
-
 	fowners nzbget:nzbget /var/log/nzbget
 	fperms 750 /var/log/nzbget
 
