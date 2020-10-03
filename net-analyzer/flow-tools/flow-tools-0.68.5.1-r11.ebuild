@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit user
 
 DESCRIPTION="library and programs to process reports from NetFlow data"
 HOMEPAGE="https://code.google.com/p/flow-tools/"
@@ -13,7 +12,10 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="debug libressl mysql postgres ssl static-libs"
 
-RDEPEND="sys-apps/tcp-wrappers
+RDEPEND="
+	acct-group/flows
+	acct-user/flows
+	sys-apps/tcp-wrappers
 	sys-libs/zlib
 	mysql? ( dev-db/mysql-connector-c:0= )
 	postgres? ( dev-db/postgresql:* )
@@ -21,8 +23,8 @@ RDEPEND="sys-apps/tcp-wrappers
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)"
-
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-devel/flex
 	sys-devel/bison"
 
@@ -34,10 +36,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-openssl11.patch
 	"${FILESDIR}"/${P}-fno-common.patch
 )
-
-pkg_setup() {
-	pkg_douser
-}
 
 src_configure() {
 	econf \
@@ -67,13 +65,4 @@ src_install() {
 
 	fperms 0755 /var/lib/flows
 	fperms 0755 /var/lib/flows/bin
-}
-
-pkg_preinst() {
-	pkg_douser
-}
-
-pkg_douser() {
-	enewgroup flows
-	enewuser flows -1 -1 /var/lib/flows flows
 }
