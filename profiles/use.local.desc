@@ -4118,7 +4118,6 @@ media-gfx/ufraw:fits - Enable support for the FITS image format through sci-libs
 media-gfx/ufraw:timezone - enable DST correction for file timestamps
 media-gfx/xpaint:pgf - Support for loading PGF images
 media-gfx/xsane:ocr - Enable support for Optical Character Recognition reader
-media-gfx/yafaray:blender - Install addon for media-gfx/blender
 media-gfx/yafaray:fastmath - Enable mathematic approximations to make code faster
 media-gfx/yafaray:fasttrig - Enable trigonometric approximations to make code faster
 media-gfx/yafaray:opencv - Use media-libs/opencv
@@ -5813,7 +5812,6 @@ net-im/profanity:omemo - Enable OMEMO encryption
 net-im/profanity:otr - Enable encrypted conversations using Off-The-Records messaging
 net-im/prosody:jit - Use LuaJIT instead of vanilla Lua
 net-im/prosody:libevent - Use libevent for event handling
-net-im/prosody:zlib - Support for compressing XMPP streams with mod_compression
 net-im/psi:aspell - Enable spellchecking using app-text/aspell
 net-im/psi:enchant - Enable spellchecking using app-text/enchant
 net-im/psi:extras - Enable Psi+ patchset
