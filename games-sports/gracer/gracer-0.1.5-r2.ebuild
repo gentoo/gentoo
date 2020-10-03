@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="3D motor sports simulator"
 HOMEPAGE="http://gracer.sourceforge.net/"
@@ -13,18 +13,19 @@ KEYWORDS="~amd64 ~x86"
 IUSE="joystick"
 
 DEPEND="
-	dev-lang/tcl:0
+	dev-lang/tcl:0=
 	media-libs/freeglut
-	media-libs/giflib
-	media-libs/libpng:0
+	media-libs/giflib:=
+	media-libs/libpng:0=
 	media-libs/plib
-	x11-libs/libXi
-	x11-libs/libXmu
 	virtual/glu
 	virtual/jpeg:0
-	virtual/opengl"
+	virtual/opengl
+	x11-libs/libXi
+	x11-libs/libXmu
+"
 
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 		"${FILESDIR}"/${PV}-gldefs.patch
@@ -35,6 +36,7 @@ PATCHES=(
 		"${FILESDIR}"/${P}-png15.patch
 		"${FILESDIR}"/${P}-giflib.patch
 		"${FILESDIR}"/${P}-warnings.patch
+		"${FILESDIR}"/${P}-gcc10.patch
 )
 
 src_configure() {
