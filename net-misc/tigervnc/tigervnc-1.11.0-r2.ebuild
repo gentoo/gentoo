@@ -160,9 +160,9 @@ src_install() {
 	if use server; then
 		emake -C unix/xserver/hw/vnc DESTDIR="${D}" install
 		if ! use xorgmodule; then
-			rm -rv "${ED%/}"/usr/$(get_libdir)/xorg || die
+			rm -rv "${ED}"/usr/$(get_libdir)/xorg || die
 		else
-			rm -v "${ED%/}"/usr/$(get_libdir)/xorg/modules/extensions/libvnc.la || die
+			rm -v "${ED}"/usr/$(get_libdir)/xorg/modules/extensions/libvnc.la || die
 		fi
 
 		newconfd "${FILESDIR}"/${PN}.confd ${PN}
@@ -171,10 +171,11 @@ src_install() {
 		systemd_douserunit unix/vncserver/vncserver@.service
 	else
 		local f
-		cd "${ED}" || die
 		for f in x0vncserver vncconfig; do
-			rm usr/bin/$f || die
-			rm usr/share/man/man1/$f.1 || die
+			rm "${ED}"/usr/bin/${f} || die
+			rm "${ED}"/usr/share/man/man1/${f}.1 || die
 		done
+		rm -r "${ED}"/usr/{sbin,libexec} || die
+		rm -r "${ED}"/usr/share/man/man8 || die
 	fi
 }
