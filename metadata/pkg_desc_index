@@ -2531,7 +2531,7 @@ app-misc/regex-markup 0.10.0-r1: A tool to color syslog files as well
 app-misc/regionset 0.2: Sets the region on DVD drives
 app-misc/remind 03.01.15 03.02.00 03.03.00 03.03.01: Ridiculously functional reminder program
 app-misc/reptyr 0.6.2 0.7.0 0.8.0: A utility to attach a running program to a new terminal
-app-misc/resolve-march-native 0.9.4: Resolve GCC flag -march=native
+app-misc/resolve-march-native 0.9.4 1.0.0: Resolve GCC flag -march=native
 app-misc/rioutil 1.5.4: A utility for accessing various Rio media players
 app-misc/rl 0.2.7-r1: Randomize lines from text files or stdin
 app-misc/rlwrap 0.42 0.42-r1 0.43: GNU readline wrapper
@@ -7943,8 +7943,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.14.46 1.14.59 1.14.63 1.15.0 1.15.1 1.15.2 1.15.3 1.15.4 1.15.5 1.15.6 1.15.7 1.15.8 1.15.9 9999: The AWS SDK for Python
-dev-python/botocore 1.17.46 1.17.59 1.17.63 1.18.0 1.18.1 1.18.2 1.18.3 1.18.4 1.18.5 1.18.6 1.18.7 1.18.8 1.18.9 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.14.46 1.14.59 1.14.63 1.15.0 1.15.1 1.15.2 1.15.3 1.15.4 1.15.5 1.15.6 1.15.7 1.15.8 1.15.9 1.15.10 1.15.11 9999: The AWS SDK for Python
+dev-python/botocore 1.17.46 1.17.59 1.17.63 1.18.0 1.18.1 1.18.2 1.18.3 1.18.4 1.18.5 1.18.6 1.18.7 1.18.8 1.18.9 1.18.10 1.18.11 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.18-r1: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.19: Syntax highlighting and autocompletion for the Python interpreter
@@ -8039,7 +8039,7 @@ dev-python/cycler 0.10.0-r1: Composable style cycles
 dev-python/cython 0.29.15 0.29.20-r2 0.29.21 0.29.21-r1: A Python to C compiler
 dev-python/cytoolz 0.10.0: Cython implementation of Toolz: High performance functional utilities
 dev-python/daemonize 2.5.0: Library for writing system daemons in Python
-dev-python/dask 2.23.0 2.25.0 2.26.0 2.27.0 2.28.0: Task scheduling and blocked algorithms for parallel processing
+dev-python/dask 2.23.0 2.25.0 2.26.0 2.27.0 2.28.0 2.29.0: Task scheduling and blocked algorithms for parallel processing
 dev-python/dataclasses 0.7: A backport of the dataclasses module for Python 3.6
 dev-python/dbus-python 1.2.16-r1: Python bindings for the D-Bus messagebus
 dev-python/dbusmock 0.19: Easily create mock objects on D-Bus for software testing
@@ -8265,7 +8265,7 @@ dev-python/humanize 2.6.0 3.0.0 3.0.1: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1: A featureful, correct URL for Python
-dev-python/hypothesis 5.24.4 5.29.4 5.35.3 5.35.4 5.36.0 5.36.1: A library for property based testing
+dev-python/hypothesis 5.24.4 5.29.4 5.35.3 5.35.4 5.36.0 5.36.1 5.36.2 5.37.0: A library for property based testing
 dev-python/icalendar 4.0.6 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -9231,7 +9231,7 @@ dev-python/vecrec 0.3.0: 2D vector and rectangle classes
 dev-python/verboselogs 1.7: Verbose logging for Python's logging module
 dev-python/versioneer 0.18-r1: Easy VCS-based management of project version strings
 dev-python/vine 1.3.0: Python Promises
-dev-python/virtualenv 16.7.10-r1 20.0.31-r1: Virtual Python Environment builder
+dev-python/virtualenv 16.7.10-r1 20.0.31-r1 20.0.32: Virtual Python Environment builder
 dev-python/virtualenv-clone 0.5.3: A script for cloning a non-relocatable virtualenv
 dev-python/virtualenvwrapper 4.8.4-r1: Set of extensions to Ian Bicking's virtualenv tool
 dev-python/visitor 0.1.3-r1: A tiny pythonic visitor implementation
@@ -9300,7 +9300,7 @@ dev-python/zope-deprecation 4.4.0: Zope Deprecation Infrastructure
 dev-python/zope-event 4.4-r1 4.5.0-r1: Event publishing / dispatch, used by Zope Component Architecture
 dev-python/zope-exceptions 4.4: General purpose exceptions for Zope packages
 dev-python/zope-i18nmessageid 5.0.1: Zope support for i18nmessageid (tagging source of i18n strings)
-dev-python/zope-interface 5.1.0-r1 5.1.1: Interfaces for Python
+dev-python/zope-interface 5.1.0-r1 5.1.1 5.1.2: Interfaces for Python
 dev-python/zope-schema 6.0.0: Zope schema Architecture
 dev-python/zope-testing 4.7-r2: Zope testing helpers
 dev-python/zope-testrunner 5.2: Zope testrunner script
@@ -10886,8 +10886,8 @@ dev-util/strace 5.4 5.8 5.9 9999: A useful diagnostic, instructional, and debugg
 dev-util/stressapptest 1.0.9: Stressful Application Test
 dev-util/stripe-mock 0.79.0 0.88.0: Mock HTTP server that responds like the real Stripe API
 dev-util/stubgen 2.08: A member function stub generator for C++
-dev-util/sysdig 0.27.0: A system exploration and troubleshooting tool
-dev-util/sysdig-kmod 0.27.0: Kernel module for dev-util/sysdig
+dev-util/sysdig 0.27.0 0.27.1: A system exploration and troubleshooting tool
+dev-util/sysdig-kmod 0.27.0 0.27.1: Kernel module for dev-util/sysdig
 dev-util/sysprof 3.34.1-r1 3.36.0: System-wide Linux Profiler
 dev-util/sysprof-capture 3.34.1-r1 3.36.0: Static library for sysprof capture data generation
 dev-util/systemtap 4.0-r1: A linux trace/probe tool
@@ -15301,7 +15301,7 @@ net-misc/teamviewer 15.0.8397 15.1.3937 15.2.2756 15.3.2682 15.4.4445 15.5.3: Al
 net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 support
 net-misc/throttle 1.2-r1: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
-net-misc/tigervnc 1.9.0-r1 1.11.0-r1: Remote desktop viewer display system
+net-misc/tigervnc 1.9.0-r1 1.11.0-r2: Remote desktop viewer display system
 net-misc/tipcutils 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
 net-misc/ttytter 2.1.00: A multi-functional, console-based Twitter client
 net-misc/ubridge 0.9.18: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces
