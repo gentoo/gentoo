@@ -26,21 +26,24 @@ if [[ -n ${MOZ_ESR} ]] ; then
 	MOZ_PV="${MOZ_PV}esr"
 fi
 
+MOZ_PN="${PN%-bin}"
+MOZ_P="${MOZ_PN}-${MOZ_PV}"
+
 inherit autotools check-reqs desktop flag-o-matic gnome2-utils llvm \
 	multiprocessing pax-utils python-any-r1 toolchain-funcs \
 	virtualx xdg
 
-MOZ_SRC_BASE_URI="https://archive.mozilla.org/pub/${PN}/releases/${MOZ_PV}"
+MOZ_SRC_BASE_URI="https://archive.mozilla.org/pub/${MOZ_PN}/releases/${MOZ_PV}"
 
 if [[ ${PV} == *_rc* ]] ; then
-	MOZ_SRC_BASE_URI="https://archive.mozilla.org/pub/${PN}/candidates/${MOZ_PV}-candidates/build${PV##*_rc}"
+	MOZ_SRC_BASE_URI="https://archive.mozilla.org/pub/${MOZ_PN}/candidates/${MOZ_PV}-candidates/build${PV##*_rc}"
 fi
 
 PATCH_URIS=(
 	https://dev.gentoo.org/~{axs,polynomial-c,whissi}/mozilla/patchsets/${FIREFOX_PATCHSET}
 )
 
-SRC_URI="${MOZ_SRC_BASE_URI}/source/${PN}-${MOZ_PV}.source.tar.xz
+SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz
 	${PATCH_URIS[@]}"
 
 DESCRIPTION="Firefox Web Browser"
@@ -240,7 +243,7 @@ mozilla_set_globals() {
 		fi
 
 		SRC_URI+=" l10n_${xflag/[_@]/-}? ("
-		SRC_URI+=" ${MOZ_SRC_BASE_URI}/linux-x86_64/xpi/${lang}.xpi -> ${PN}-${MOZ_PV}-${lang}.xpi"
+		SRC_URI+=" ${MOZ_SRC_BASE_URI}/linux-x86_64/xpi/${lang}.xpi -> ${MOZ_P}-${lang}.xpi"
 		SRC_URI+=" )"
 		IUSE+=" l10n_${xflag/[_@]/-}"
 	done
@@ -893,7 +896,7 @@ src_install() {
 	local desktop_file="${FILESDIR}/icon/${PN}-r2.desktop"
 	local display_protocols="auto X11"
 	local icon="${PN}"
-	local name="Mozilla ${PN^}"
+	local name="Mozilla ${MOZ_PN^}"
 	local use_wayland="false"
 
 	if use wayland ; then
@@ -943,7 +946,7 @@ src_install() {
 	done
 
 	# Install generic wrapper script
-	rm "${ED}/usr/bin/${PN}" || die
+	[[ -f "${ED}/usr/bin/${PN}" ]] && rm "${ED}/usr/bin/${PN}"
 	newbin "${FILESDIR}/${PN}.sh" ${PN}
 
 	# Update wrapper
@@ -957,6 +960,8 @@ src_install() {
 
 		sed -i \
 			-e "s:@PREFIX@:${EPREFIX}/usr:" \
+			-e "s:@MOZ_FIVE_HOME@:${MOZILLA_FIVE_HOME}:" \
+			-e "s:@APULSELIB_DIR@:${apulselib}:" \
 			-e "s:@DEFAULT_WAYLAND@:${use_wayland}:" \
 			"${wrapper}" \
 			|| die
