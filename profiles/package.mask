@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2020-10-03)
+# Broken for over 2 years, declared EOL by upstream,
+# the only revdep is media-gfx/pinta, which is also
+# broken. Bug #612592, #644232, #659436, #688722,
+# Removal in 30 days.
+dev-dotnet/mono-addins
+media-gfx/pinta
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-09-27)
 # Obsolete package blocking unmasking of >=x11-libs/pango-1.44, dead upstream.
 # No reverse dependencies, bug #698922. Removal in 30 days.
