@@ -73,7 +73,7 @@ export MOZ_PLUGIN_PATH
 export MOZ_APP_LAUNCHER="@PREFIX@/bin/${cmdname}"
 
 ##
-## Disable the GNOME crash dialog, Moz has it's own
+## Disable the GNOME crash dialog, Mozilla has its own
 ##
 if [[ "$XDG_CURRENT_DESKTOP" == "GNOME" ]]; then
 	GNOME_DISABLE_CRASH_DIALOG=1
