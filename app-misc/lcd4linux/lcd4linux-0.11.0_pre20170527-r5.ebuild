@@ -24,7 +24,7 @@ REQUIRED_USE="
 # Some drivers were removed from this list:
 # - lcdlinux: It's an ancient driver, which needs app-misc/lcd-linux, that made it never to the portage tree.
 # - lcdlinux: Besides, app-misc/lcd-linux won't compile on a modern linux kernel.
-# - st2205: It's needs dev-libs/libst2205,  which made it never to the portage tree and is quite outdated.
+# - st2205: It's needs dev-libs/libst2205, which made it never to the portage tree and is quite outdated.
 IUSE_LCD_DEVICES=(
 	ASTUSB BeckmannEgle BWCT CrystalFontz Curses Cwlinux D4D DPF EA232graphic EFN FutabaVFD
 	FW8888 G15 GLCD2USB HD44780 HD44780-I2C IRLCD LCD2USB LCDTerm LEDMatrix LPH7508 LUIse LW_ABP M50530
@@ -142,7 +142,11 @@ src_prepare() {
 		rm ax_python_devel.m4
 
 		# Use correct python version.
-		append-libs "-lpython${EPYTHON#python}m"
+		if use python_single_target_python3_6 || use python_single_target_python3_7; then
+			append-libs "-lpython${EPYTHON#python}m"
+		else
+			append-libs "-lpython${EPYTHON#python}"
+		fi
 	fi
 
 	eautoreconf
