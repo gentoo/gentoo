@@ -168,8 +168,6 @@ if [[ ${FONT} == yes ]]; then
 	FONT_DIR=${FONT_DIR/otf/OTF}
 	FONT_DIR=${FONT_DIR/type1/Type1}
 	FONT_DIR=${FONT_DIR/speedo/Speedo}
-
-	[[ ${PN} = font-misc-misc || ${PN} = font-schumacher-misc || ${PN##*-} = 75dpi || ${PN##*-} = 100dpi || ${PN##*-} = cyrillic ]] && IUSE+=" nls"
 fi
 
 # @ECLASS-VARIABLE: XORG_STATIC
@@ -332,30 +330,12 @@ xorg-3_font_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	if has nls ${IUSE//+} && ! use nls; then
-		if grep -q -s "disable-all-encodings" ${ECONF_SOURCE:-.}/configure; then
-			FONT_OPTIONS+="
-				--disable-all-encodings
-				--enable-iso8859-1"
-		else
-			FONT_OPTIONS+="
-				--disable-iso8859-2
-				--disable-iso8859-3
-				--disable-iso8859-4
-				--disable-iso8859-5
-				--disable-iso8859-6
-				--disable-iso8859-7
-				--disable-iso8859-8
-				--disable-iso8859-9
-				--disable-iso8859-10
-				--disable-iso8859-11
-				--disable-iso8859-12
-				--disable-iso8859-13
-				--disable-iso8859-14
-				--disable-iso8859-15
-				--disable-iso8859-16
-				--disable-jisx0201
-				--disable-koi8-r"
+		if ! grep -q -s "disable-all-encodings" ${ECONF_SOURCE:-.}/configure; then
+			die "--disable-all-encodings option not available in configure"
 		fi
+		FONT_OPTIONS+="
+			--disable-all-encodings
+			--enable-iso8859-1"
 	fi
 }
 
