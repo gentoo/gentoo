@@ -16130,7 +16130,7 @@ sci-libs/blas-reference 20070226-r4 20151113-r1 20161223: Basic Linear Algebra S
 sci-libs/blis 0.5.2 0.6.0: BLAS-like Library Instantiation Software Framework
 sci-libs/bliss 0.73-r1 0.73-r2: Compute Automorphism Groups and Canonical Labelings of Graphs
 sci-libs/bmrblib 1.0.3 1.0.4: API abstracting the BioMagResBank (BMRB) NMR-STAR format
-sci-libs/brial 1.2.8 1.2.9: A C++ library for polynomials over boolean rings
+sci-libs/brial 1.2.8 1.2.10: A C++ library for polynomials over boolean rings
 sci-libs/btf 1.2.6: Algorithm for matrix permutation into block triangular form
 sci-libs/buddy 2.4-r1: Binary Decision Diagram Package
 sci-libs/camd 2.4.6: Library to order a sparse matrix prior to Cholesky factorization
@@ -17061,7 +17061,7 @@ sys-apps/ucspi-ssl 0.94-r1 0.97 0.98b 0.99 0.99e: Command-line tools for buildin
 sys-apps/ucspi-tcp 0.88-r18: Collection of tools for managing UNIX services
 sys-apps/ucspi-unix 1.0: A UCSPI implementation for Unix domain sockets
 sys-apps/udevil 0.4.4-r3: mount and unmount removable devices without a password
-sys-apps/unscd 0.53: simple & stable nscd replacement
+sys-apps/unscd 0.53 0.54: simple & stable nscd replacement
 sys-apps/usb_modeswitch 2.5.2: A tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
 sys-apps/usbguard 0.7.6-r1 0.7.8: Daemon protecting your computer against BadUSB
 sys-apps/usbmon 6-r1 6.1: Userland for USB monitoring framework
