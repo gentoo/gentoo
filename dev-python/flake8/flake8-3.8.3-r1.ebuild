@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{6..8} )
+PYTHON_COMPAT=( pypy3 python3_{6..9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
@@ -22,7 +22,7 @@ RDEPEND="
 	<dev-python/pyflakes-2.3.0[${PYTHON_USEDEP}]
 	>=dev-python/pycodestyle-2.6.0[${PYTHON_USEDEP}]
 	<dev-python/pycodestyle-2.7.0[${PYTHON_USEDEP}]
-	dev-python/importlib_metadata[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/importlib_metadata[${PYTHON_USEDEP}]' pypy3 python3_{6,7})
 "
 PDEPEND="
 	>=dev-python/mccabe-0.6.0[${PYTHON_USEDEP}]
