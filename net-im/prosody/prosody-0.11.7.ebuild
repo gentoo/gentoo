@@ -43,7 +43,7 @@ RDEPEND="
 	zlib? ( dev-lua/lua-zlib )
 "
 
-PATCHES=( "${FILESDIR}/prosody_cfg-0.11.2-r1.patch" )
+PATCHES=( "${FILESDIR}/${PN}-0.11.2-r1-gentoo.patch" )
 
 src_configure() {
 	local myconfargs=(
