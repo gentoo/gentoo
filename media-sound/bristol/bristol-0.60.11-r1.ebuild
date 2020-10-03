@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,7 +23,7 @@ BDEPEND="
 RDEPEND="
 	virtual/jack
 	x11-libs/libX11
-	alsa? ( >=media-libs/alsa-lib-1.0.0 )
+	alsa? ( media-libs/alsa-lib )
 "
 # osc? ( >=media-libs/liblo-0.22 )
 DEPEND="${RDEPEND}
@@ -50,6 +50,10 @@ src_configure() {
 		$(use_enable alsa) \
 		$(use_enable oss) \
 		$(use_enable static-libs static)
+}
+
+src_compile() {
+	emake LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
