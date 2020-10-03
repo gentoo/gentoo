@@ -12,7 +12,7 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
-PATCHSET="4"
+PATCHSET="5"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://files.pythonhosted.org/packages/ed/7b/bbf89ca71e722b7f9464ebffe4b5ee20a9e5c9a555a56e2d3914bb9119a6/setuptools-44.1.0.zip
@@ -177,6 +177,7 @@ in /etc/chromium/default.
 
 PATCHES=(
 	"${FILESDIR}/chromium-87-ozone-deps.patch"
+	"${FILESDIR}/chromium-87-webcodecs-deps.patch"
 )
 
 pre_build_checks() {
@@ -233,7 +234,6 @@ src_prepare() {
 	eapply "${WORKDIR}/patches"
 	if use vaapi; then
 		eapply "${FILESDIR}/chromium-86-fix-vaapi-on-intel.patch"
-		eapply "${FILESDIR}/chromium-87-fix-vaapi-build.patch"
 	fi
 
 	default
@@ -404,6 +404,7 @@ src_prepare() {
 		third_party/s2cellid
 		third_party/schema_org
 		third_party/securemessage
+		third_party/shaka-player
 		third_party/shell-encryption
 		third_party/simplejson
 		third_party/skia
@@ -881,4 +882,11 @@ pkg_postinst() {
 	xdg_icon_cache_update
 	xdg_desktop_database_update
 	readme.gentoo_print_elog
+
+	if use vaapi; then
+		elog "VA-API is disabled by default at runtime. Either enable it"
+		elog "by navigating to chrome://flags/#enable-accelerated-video-decode"
+		elog "inside Chromium or add --enable-accelerated-video-decode"
+		elog "to CHROMIUM_FLAGS in /etc/chromium/default."
+	fi
 }
