@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils readme.gentoo systemd user
+
+inherit epatch readme.gentoo systemd
 
 DESCRIPTION="Dictionary Client/Server for the DICT protocol"
 HOMEPAGE="http://www.dict.org/ https://sourceforge.net/projects/dict/"
@@ -17,6 +18,8 @@ RESTRICT="!test? ( test )"
 
 # <gawk-3.1.6 makes tests fail.
 RDEPEND="
+	acct-group/dictd
+	acct-user/dictd
 	sys-libs/zlib
 	dev-libs/libmaa
 	dbi? ( dev-db/libdbi )
@@ -37,11 +40,6 @@ DOC_CONTENTS="
 	\nIf you are running systemd, you will need to review the instructions
 	explained in /etc/dict/dictd.conf comments.
 "
-
-pkg_setup() {
-	enewgroup dictd # used in src_test()
-	enewuser dictd -1 -1 -1 dictd
-}
 
 src_prepare() {
 	epatch "${FILESDIR}"/dictd-1.10.11-colorit-nopp-fix.patch

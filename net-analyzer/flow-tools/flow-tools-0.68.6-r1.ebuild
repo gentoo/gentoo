@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools user
+
+inherit autotools
 
 DESCRIPTION="library and programs to process reports from NetFlow data"
 HOMEPAGE="https://github.com/5u623l20/flow-tools/"
@@ -14,6 +15,8 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="debug libressl mysql postgres ssl static-libs"
 
 RDEPEND="
+	acct-group/flows
+	acct-user/flows
 	sys-apps/tcp-wrappers
 	sys-libs/zlib
 	mysql? ( dev-db/mysql-connector-c:0= )
@@ -38,15 +41,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.68.5.1-fno-common.patch
 	"${FILESDIR}"/${PN}-0.68.6-mysql.patch
 )
-
-pkg_douser() {
-	enewgroup flows
-	enewuser flows -1 -1 /var/lib/flows flows
-}
-
-pkg_setup() {
-	pkg_douser
-}
 
 src_prepare() {
 	default
@@ -82,8 +76,4 @@ src_install() {
 	fperms 0755 /var/lib/flows/bin
 
 	find "${ED}" -name '*.la' -delete || die
-}
-
-pkg_preinst() {
-	pkg_douser
 }
