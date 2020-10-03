@@ -2761,7 +2761,7 @@ app-shells/hstr 2.0 2.1 2.2: Shell history suggest box
 app-shells/ksh 2020.0.0-r1 9999: The Original Korn Shell, 1993 revision (ksh93)
 app-shells/kshdb 1.1.0: Korn Shell Debugger
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
-app-shells/loksh 6.7.2: Linux port of OpenBSD's ksh
+app-shells/loksh 6.7.2 6.7.4: Linux port of OpenBSD's ksh
 app-shells/mcfly 0.3.6: Context-aware bash history search replacement (crtl-r)
 app-shells/mksh 57-r2 58 59 9999: MirBSD Korn Shell
 app-shells/mpibash 1.3-r1 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
@@ -10635,7 +10635,7 @@ dev-util/cppcheck 1.86 1.87 1.88 9999: Static analyzer of C/C++ code
 dev-util/cppi 1.18: a cpp directive indenter
 dev-util/cpptest 2.0.0-r1: Simple but powerful unit testing framework for C++
 dev-util/cppunit 1.14.0 9999: C++ port of the famous JUnit framework for unit testing
-dev-util/cpputest 3.8: unit testing and mocking framework for C/C++
+dev-util/cpputest 3.8 4.0: Unit testing and mocking framework for C/C++
 dev-util/cproto 4.7o: Generate C function prototypes from C source code
 dev-util/cpuinfo-collection 20101114: huge collection of /proc/cpuinfo files
 dev-util/cram 0.7 0.7-r1: Functional testing framework for command line applications
