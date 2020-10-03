@@ -5988,13 +5988,13 @@ dev-perl/B-COW 0.4.0-r1: additional B helpers to check COW status
 dev-perl/B-Debug 1.260.0: Walk Perl syntax tree, printing debug info about ops
 dev-perl/B-Flags 0.170.0-r1: Friendlier flags for B
 dev-perl/B-Hooks-EndOfScope 0.240.0: Execute code after a scope finished compilation
-dev-perl/B-Hooks-OP-Check 0.220.0 0.220.0-r1: Wrap OP check callbacks
+dev-perl/B-Hooks-OP-Check 0.220.0-r1: Wrap OP check callbacks
 dev-perl/B-Hooks-Parser 0.210.0-r1: Interface to perls parser variables
-dev-perl/B-Keywords 1.190.0 1.210.0: Lists of reserved barewords and symbol names
+dev-perl/B-Keywords 1.210.0: Lists of reserved barewords and symbol names
 dev-perl/B-OPCheck 0.320.0-r1: PL_check hacks using Perl callbacks
-dev-perl/B-Utils 0.270.0 0.270.0-r2: Helper functions for op tree manipulation
+dev-perl/B-Utils 0.270.0-r2: Helper functions for op tree manipulation
 dev-perl/BDB 1.920.0-r1: Asynchronous Berkeley DB access
-dev-perl/BSD-Resource 1.291.100 1.291.100-r2: Perl module for BSD process resource limit and priority functions
+dev-perl/BSD-Resource 1.291.100-r2: Perl module for BSD process resource limit and priority functions
 dev-perl/BSON 1.12.2: BSON serialization and deserialization (EOL)
 dev-perl/BZ-Client 4.400.200 4.400.300: A client for the Bugzilla web services API.
 dev-perl/Benchmark-Timer 0.711.200: Perl code benchmarking tool
@@ -6004,8 +6004,8 @@ dev-perl/Bio-DB-HTS 3.10.0-r1: Perl bindings for sci-libs/htslib
 dev-perl/Bio-Das 1.170.0-r2: Interface to Distributed Annotation System
 dev-perl/Bio-Graphics 2.390.0 2.400.0: Generate images from Bio::Seq objects for visualization purposes
 dev-perl/Bio-SamTools 1.430.0-r2: Read SAM/BAM database files
-dev-perl/Bit-Vector 7.400.0 7.400.0-r2: Efficient bit vector, set of integers and big int math library
-dev-perl/Bit-Vector-Minimal 1.300.0-r1 1.300.0-r2: Object-oriented wrapper around vec()
+dev-perl/Bit-Vector 7.400.0-r2: Efficient bit vector, set of integers and big int math library
+dev-perl/Bit-Vector-Minimal 1.300.0-r2: Object-oriented wrapper around vec()
 dev-perl/Boulder 1.300.0-r2: An API for hierarchical tag/value structures
 dev-perl/Browser-Open 0.40.0: Open a browser at a given URL
 dev-perl/Business-FedEx-DirectConnect 1.10.0-r2: Interface to FedEx Ship Manager Direct
@@ -7548,7 +7548,7 @@ dev-perl/aliased 0.340.0-r1: Use shorter versions of class names
 dev-perl/asa 1.40.0: Lets your class/object say it works like something else
 dev-perl/autobox 3.0.1-r1: Call methods on native types
 dev-perl/autovivification 0.180.0-r1: Lexically disable autovivification
-dev-perl/bareword-filehandles 0.6.0 0.7.0-r1: Disables bareword filehandles
+dev-perl/bareword-filehandles 0.7.0-r1: Disables bareword filehandles
 dev-perl/boolean 0.460.0: Boolean support for Perl
 dev-perl/capitalization 0.30.0-r1 0.30.0-r2: no capitalization on method names
 dev-perl/common-sense 3.740.0-r1 3.750.0: Save a tree AND a kitten, use common::sense!
@@ -17200,7 +17200,7 @@ sys-boot/cromwell 2.40-r3: Xbox boot loader
 sys-boot/cromwell-bin 2.40-r1: Xbox boot loader precompiled binaries from xbox-linux.org
 sys-boot/dvhtool 1.0.1-r2: Tool to copy kernel(s) into the volume header on SGI MIPS-based workstations
 sys-boot/efibootmgr 14 15 16: User-space application to modify the EFI boot manager
-sys-boot/elilo 3.16-r3 3.16-r4: Linux boot loader for EFI-based systems such as IA-64
+sys-boot/elilo 3.16-r4: Linux boot loader for EFI-based systems such as IA-64
 sys-boot/gnu-efi 3.0.11 3.0.12: Library for build EFI Applications
 sys-boot/grub 2.04-r1 2.05_alpha20200310 9999: GNU GRUB boot loader
 sys-boot/lilo 24.0-r1 24.1 24.2: Standard Linux boot loader
