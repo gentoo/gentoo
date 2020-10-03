@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  Libecpint is a C++ library for the efficient evaluation of integrals over ab
+  initio effective core potentials, using a mixture of generated, recursive
+  code and Gauss-Chebyshev quadrature. It is designed to be standalone and
+  generic.
+</longdescription>
+  <upstream>
+    <remote-id type="github">robashaw/libecpint</remote-id>
+  </upstream>
+</pkgmetadata>
