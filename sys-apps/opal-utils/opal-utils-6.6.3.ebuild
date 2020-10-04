@@ -90,3 +90,14 @@ src_test() {
 	emake V=1 -C external/pflash check
 	emake V=1 -C external/ffspart check
 }
+
+pkg_postinst() {
+	if systemd_is_booted || has_version sys-apps/systemd; then
+		echo
+		ewarn "With systemd opal-prd.service will fail to start"
+		ewarn "with 'mmap failed: Operation not permitted' error"
+		ewarn "if /dev filesystem is mounted with 'noexec' option"
+		ewarn "see https://github.com/open-power/skiboot/issues/258"
+		echo
+	fi
+}
