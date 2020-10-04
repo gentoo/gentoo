@@ -559,11 +559,6 @@ www-plugins/freshplayerplugin
 # Upstream dead, fork available, bug #684678. Masked for removal in 30 days.
 app-text/cutemarked
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-09-04)
-# Depends on deprecated dev-qt/qtwebkit, no more revdeps; bug #737928
-# Masked for removal in 30 days.
-kde-apps/libkgeomap
-
 # Louis Sautier <sbraz@gentoo.org> (2020-09-04)
 # Masked for removal in 30 days, no revdeps. Dependency of
 # previously removed dev-python/flask-bootstrap
