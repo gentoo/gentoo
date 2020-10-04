@@ -4,17 +4,25 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
+DISTUTILS_USE_SETUPTOOLS=bdepend
 
 inherit distutils-r1 eutils
 
 DESCRIPTION="Model-driven deployment, config management, and command execution framework"
 HOMEPAGE="https://ansible.com/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/ansible/ansible.git"
+	EGIT_BRANCH="devel"
+	KEYWORDS=""
+else
+	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x64-macos"
+fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x64-macos"
 IUSE="doc test"
 RESTRICT="test"
 
@@ -49,7 +57,10 @@ DEPEND="
 		dev-vcs/git
 	)"
 
-ANSIBLE_SKIP_CONFLICT_CHECK=1
+python_compile() {
+	export ANSIBLE_SKIP_CONFLICT_CHECK=1
+	distutils-r1_python_compile
+}
 
 python_compile_all() {
 	if use doc; then
