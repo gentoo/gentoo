@@ -75,4 +75,5 @@ pkg_postinst() {
 		rm "${EROOT}"/etc/plasma/startup/05-ksshaskpass.sh || die
 		elog "Removed obsolete ${EPREFIX}/etc/plasma/startup/05-ksshaskpass.sh"
 	fi
+	rmdir -v "${EROOT}"/etc/plasma{/startup,} 2> /dev/null
 }
