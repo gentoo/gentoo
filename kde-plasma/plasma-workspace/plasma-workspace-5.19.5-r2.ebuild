@@ -217,6 +217,7 @@ pkg_postinst () {
 		rm "${EROOT}"/etc/plasma/shutdown/10-agent-shutdown.sh || die
 		elog "Removed obsolete ${EPREFIX}/etc/plasma/shutdown/10-agent-shutdown.sh"
 	fi
+	rmdir -v "${EROOT}"/etc/plasma{/startup,/shutdown,} 2> /dev/null
 
 	elog "To enable gpg-agent and/or ssh-agent in Plasma sessions,"
 	elog "edit ${EPREFIX}/etc/xdg/plasma-workspace/env/10-agent-startup.sh"
