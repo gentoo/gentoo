@@ -1,15 +1,16 @@
+BDEPEND=>=app-portage/elt-patches-20170815
 DEFINED_PHASES=configure install postinst prepare
-DEPEND=!games-misc/sex modelfit? ( sci-libs/atlas[lapack,threads=] sci-libs/fftw:3.0 ) modelfit? ( || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ) >=app-portage/elt-patches-20170815
+DEPEND=!games-misc/sex modelfit? ( sci-libs/atlas[lapack,threads=] sci-libs/fftw:3.0= ) modelfit? ( || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 )
 DESCRIPTION=Extract catalogs of sources from astronomical FITS images
-EAPI=6
+EAPI=7
 HOMEPAGE=http://www.astromatic.net/software/sextractor
 IUSE=doc modelfit test threads
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-3
-RDEPEND=!games-misc/sex modelfit? ( sci-libs/atlas[lapack,threads=] sci-libs/fftw:3.0 )
+RDEPEND=!games-misc/sex modelfit? ( sci-libs/atlas[lapack,threads=] sci-libs/fftw:3.0= )
 REQUIRED_USE=test? ( modelfit )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://www.astromatic.net/download/sextractor/sextractor-2.19.5.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=a8056fb4b35a109ad89b03000226ce07
+_md5_=7e61435c66745bc26956a37e7a267d4e

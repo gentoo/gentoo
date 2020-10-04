@@ -1,10 +1,11 @@
-DEFINED_PHASES=install
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=install prepare
 DESCRIPTION=Performs basic maintenance and packaging tasks on FITS files
-EAPI=6
+EAPI=7
 HOMEPAGE=http://www.astromatic.net/software/missfits/
-IUSE=doc
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-3
 SLOT=0
 SRC_URI=http://www.astromatic.net/download/missfits/missfits-2.8.0.tar.gz
-_md5_=72460e02d380a05b6d8d4f86c43cc2e6
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=3ea8af3c3425b7c7d9a629ada15624cb
