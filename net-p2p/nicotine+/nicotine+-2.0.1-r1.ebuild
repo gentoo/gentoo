@@ -20,6 +20,7 @@ DEPEND="${PYTHON_DEPS}"
 RDEPEND="
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	media-libs/mutagen[${PYTHON_USEDEP}]
+	x11-libs/gtk+:3[introspection]
 	${DEPEND}
 "
 
