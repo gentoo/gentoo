@@ -7936,11 +7936,6 @@ sys-apps/util-linux:tty-helpers - install the mesg/wall/write tools for talking 
 sys-apps/watchdog:nfs - enable support for checking nfs mounts
 sys-apps/xdg-desktop-portal:screencast - Enable screencast portal using media-video/pipewire
 sys-apps/xinetd:rpc - support RPC services
-sys-auth/consolekit:cgroups - Use the kernel to track processes instead of the session cookie.
-sys-auth/consolekit:evdev - For handling VT switching with a session controller.
-sys-auth/consolekit:pm-utils - Adds support for suspend/resume using sys-power/pm-utils
-sys-auth/consolekit:policykit - Use the PolicyKit framework (sys-auth/polkit) to get authorization for suspend/shutdown.
-sys-auth/consolekit:systemd-units - Install systemd unit files to replace the modern functionality of logind in sys-apps/systemd. Not recommended.
 sys-auth/fingerprint-gui:upekbsapi - Add UPEK BSAPI drivers for identify functions on some readers
 sys-auth/google-authenticator-libpam-hardened:qrcode - Display QRcode after setup to accomodate automatic setup of OTP client apps.
 sys-auth/keystone:memcached - Installs dependencies needed for using memcached as a backend
@@ -8878,7 +8873,6 @@ x11-libs/wxGTK:gstreamer - Enable the wxMediaCtrl class for playing audio and vi
 x11-libs/wxGTK:sdl - Use Simple Directmedia Layer (media-libs/libsdl) for audio.
 x11-misc/alock:doc - Build and install manpage with app-text/asciidoc.
 x11-misc/bumblebee:bbswitch - Add dependency on sys-power/bbswitch for PM feature
-x11-misc/cdm:consolekit - Enable native consolekit support
 x11-misc/colord:argyllcms - Enable ArgyllCMS sensor
 x11-misc/colord:extra-print-profiles - Generate extra print profiles. Warning: significant build time and memory requirements.
 x11-misc/colord:gusb - Enable dev-libs/libgusb support, needed for colorimeter drivers
