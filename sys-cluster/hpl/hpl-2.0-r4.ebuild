@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils multilib toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Portable Implementation of the Linpack Benchmark for Distributed-Memory Clusters"
 HOMEPAGE="http://www.netlib.org/benchmark/hpl/"
@@ -14,12 +14,12 @@ LICENSE="HPL"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
+BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	virtual/blas
 	virtual/lapack
 	virtual/mpi"
-DEPEND="${DEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	local a=""
@@ -38,28 +38,34 @@ src_prepare() {
 		-e '/^CC\>/s,= .*,= mpicc,' \
 		-e '/^CCFLAGS\>/s|= .*|= $(HPL_DEFS) ${CFLAGS}|' \
 		-e "/^LINKFLAGS\>/s|= .*|= ${LDFLAGS}|" \
+		-e "/^ARCHIVER\>/s|= .*|= $(tc-getAR)|" \
 		Make.gentoo_hpl_fblas_x86 || die
+
+	default
 }
 
 src_compile() {
 	# parallel make failure bug #321539
-	HOME=${WORKDIR} emake -j1 arch=gentoo_hpl_fblas_x86
+	HOME="${WORKDIR}" emake -j1 arch=gentoo_hpl_fblas_x86
 }
 
 src_install() {
 	dobin bin/gentoo_hpl_fblas_x86/xhpl
-	dolib lib/gentoo_hpl_fblas_x86/libhpl.a
+	dolib.a lib/gentoo_hpl_fblas_x86/libhpl.a
+
 	dodoc INSTALL BUGS COPYRIGHT HISTORY README TUNING \
 		bin/gentoo_hpl_fblas_x86/HPL.dat
 	doman man/man3/*.3
+
 	if use doc; then
-		dohtml -r www/*
+		docinto html
+		dodoc -r www/*
 	fi
 }
 
 pkg_postinst() {
-	einfo "Remember to copy /usr/share/hpl/HPL.dat to your working directory"
+	einfo "Remember to copy ${EROOT}/usr/share/hpl/HPL.dat to your working directory"
 	einfo "before running xhpl.  Typically one may run hpl by executing:"
-	einfo "\"mpiexec -np 4 /usr/bin/xhpl\""
+	einfo "\"mpiexec -np 4 ${EROOT}/usr/bin/xhpl\""
 	einfo "where -np specifies the number of processes."
 }
