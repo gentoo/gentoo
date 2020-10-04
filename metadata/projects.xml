@@ -1977,6 +1977,10 @@
     <name>m68k Development</name>
     <url>https://wiki.gentoo.org/wiki/Project:M68k</url>
     <description>The m68k Development Project is devoted to keeping Gentoo in good shape on the m68k architecture.</description>
+    <member>
+      <email>chewi@gentoo.org</email>
+      <name>James Le Cuirot</name>
+    </member>
     <member is-lead="1">
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
