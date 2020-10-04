@@ -131,6 +131,13 @@ src_install() {
 	fi
 }
 
+src_test() {
+	# Test cannot find library in Portage's sandbox. Let's create a link so test can run.
+	ln -s "${S}_build/eeschema/_eeschema.kiface" "${S}_build/qa/eeschema/_eeschema.kiface"
+
+	default
+}
+
 pkg_postinst() {
 	optfeature "Component symbols library" sci-electronics/kicad-symbols
 	optfeature "Component footprints library" sci-electronics/kicad-footprints
