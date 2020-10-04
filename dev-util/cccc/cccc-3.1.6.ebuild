@@ -9,21 +9,22 @@ DESCRIPTION="Source metrics (line counts, complexity, etc) for Java and C++"
 HOMEPAGE="http://sarnold.github.io/cccc/"
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/sarnold/cccc.git"
-	EGIT_BRANCH="master"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/sarnold/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="apidoc debug doc mfc"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
 	apidoc? ( app-doc/doxygen[dot] )
 	"
+
+PATCHES=( "${FILESDIR}/${PN}-fix-tests-for-name-swap.patch" )
 
 src_prepare() {
 	is-flagq -flto* && filter-flags -flto* -fuse-linker-plugin
