@@ -33,7 +33,7 @@ BDEPEND="
 	)
 "
 
-distutils_enable_sphinx docs/source --no-autodoc
+# The doc can only be built from a git repository
 distutils_enable_tests pytest
 
 RDEPEND+="
