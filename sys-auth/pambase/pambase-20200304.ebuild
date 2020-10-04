@@ -12,17 +12,16 @@ SRC_URI="https://github.com/gentoo/pambase/archive/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="caps consolekit +cracklib debug elogind minimal mktemp +nullok pam_krb5 pam_ssh passwdqc securetty selinux +sha512 systemd"
+IUSE="caps +cracklib debug elogind minimal mktemp +nullok pam_krb5 pam_ssh passwdqc securetty selinux +sha512 systemd"
 
 RESTRICT="binchecks"
 
-REQUIRED_USE="?? ( consolekit elogind systemd )"
+REQUIRED_USE="?? ( elogind systemd )"
 
 MIN_PAM_REQ=1.1.3
 
 RDEPEND="
 	>=sys-libs/pam-${MIN_PAM_REQ}
-	consolekit? ( sys-auth/consolekit[pam] )
 	cracklib? ( sys-libs/pam[cracklib(+)] )
 	elogind? ( sys-auth/elogind[pam] )
 	mktemp? ( sys-auth/pam_mktemp )
@@ -65,7 +64,6 @@ src_compile() {
 		$(use_var LIBCAP caps) \
 		$(use_var cracklib) \
 		$(use_var passwdqc) \
-		$(use_var consolekit) \
 		$(use_var elogind) \
 		$(use_var systemd) \
 		$(use_var selinux) \
