@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://github.com/traviscross/mtr"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="+gtk +ipinfo +ipv6 +jansson +ncurses"
+IUSE="gtk +ipinfo +ipv6 jansson ncurses"
 
 RDEPEND="
 	gtk? (
