@@ -12416,7 +12416,7 @@ mail-client/roundcube 1.4.8: A browser-based multilingual IMAP client with an ap
 mail-client/s-nail 14.9.16 14.9.19: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.7.0-r1: A lightweight email client and newsreader
 mail-client/thunderbird 68.12.0 78.3.1: Thunderbird Mail Client
-mail-client/thunderbird-bin 68.12.0 78.3.1: Firefox Web Browser
+mail-client/thunderbird-bin 68.12.0 78.3.1: Thunderbird Mail Client
 mail-client/trojita 0.7-r5 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 3.0.0 3.0.1: Initial tagging script for Notmuch
@@ -14355,7 +14355,7 @@ net-analyzer/ngrep 1.45-r3 1.47: A grep for network layers
 net-analyzer/nikto 2.1.6_p20200901: Web server vulnerability scanner
 net-analyzer/nipper 0.12.0: Router configuration security analysis tool
 net-analyzer/nload 0.7.4-r1: Real time network traffic monitor for the command line interface
-net-analyzer/nmap 7.80-r1 7.90 9999: A utility for network discovery and security auditing
+net-analyzer/nmap 7.80-r1 9999: A utility for network discovery and security auditing
 net-analyzer/nmapsi 0.5_alpha2: Qt frontend to nmap
 net-analyzer/nmbscan 1.2.5-r1: Scans the shares of a SMB/NetBIOS network
 net-analyzer/nrpe 4.0.0 4.0.2: Nagios Remote Plugin Executor
