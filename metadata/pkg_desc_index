@@ -16432,7 +16432,7 @@ sci-mathematics/polymake 3.0_p2: research tool for polyhedral geometry and combi
 sci-mathematics/prng 3.0.2-r2: Pseudo-Random Number Generator library
 sci-mathematics/prover9 2009.11a: Automated theorem prover for first-order and equational logic
 sci-mathematics/psmt2-frontend 0.2: Library to parse and type-check an extension of the SMT-LIB 2 standard
-sci-mathematics/pspp 1.2.0: Program for statistical analysis of sampled data
+sci-mathematics/pspp 1.2.0 1.2.0-r1: Program for statistical analysis of sampled data
 sci-mathematics/relational 2.5-r2: Educational tool for relational algebra
 sci-mathematics/rkward 0.7.1b: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
