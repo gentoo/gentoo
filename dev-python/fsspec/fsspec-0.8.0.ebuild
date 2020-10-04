@@ -24,6 +24,7 @@ BDEPEND="
 	dev-python/versioneer[${PYTHON_USEDEP}]
 	test? (
 		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)"
 
