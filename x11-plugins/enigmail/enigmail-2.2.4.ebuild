@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit python-any-r1
 
@@ -33,7 +33,7 @@ RDEPEND="
 			app-crypt/pinentry[qt5(-)]
 		)
 	)
-	!<mail-client/thunderbird-52.5.0
+	!<mail-client/thunderbird-78
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
@@ -43,12 +43,10 @@ DEPEND="${RDEPEND}
 
 PATCHES=( "${FILESDIR}/enigmail-no_pEp_auto_download.patch" )
 
-src_compile() {
-	# Required or parallel make fails
-	emake -C stdlib createlib
+src_prepare() {
+	default
 
-	emake ipc public ui package lang stdlib
-	emake xpi
+	export MAKEOPTS=-j1
 }
 
 src_install() {
@@ -60,10 +58,6 @@ src_install() {
 
 	# thunderbird
 	insinto "/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}"
-	doins ${build_dir}/"${emid}.xpi"
-
-	# seamonkey
-	insinto "/usr/share/mozilla/extensions/{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}"
 	doins ${build_dir}/"${emid}.xpi"
 }
 
@@ -78,7 +72,7 @@ pkg_postinst() {
 	esac
 	if [[ -n ${REPLACING_VERSIONS} ]]; then
 		elog
-		elog "Please restart thunderbird and/or seamonkey in order for them to use"
+		elog "Please restart thunderbird in order for them to use"
 		elog "the newly installed version of enigmail."
 	fi
 }
