@@ -128,6 +128,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.19.2-use-PlasmaExtras.PlaceholderMessage.patch" # KDE-Bug #422684
 	"${FILESDIR}/${P}-gpsd-3.21.patch" # bug 742392
 	"${FILESDIR}/${P}-login-button-size.patch"
+	"${FILESDIR}/${P}-guard-against-no-virtual-desktops.patch" # KDE-Bug #427106
 )
 
 RESTRICT+=" test"
@@ -216,6 +217,7 @@ pkg_postinst () {
 		rm "${EROOT}"/etc/plasma/shutdown/10-agent-shutdown.sh || die
 		elog "Removed obsolete ${EPREFIX}/etc/plasma/shutdown/10-agent-shutdown.sh"
 	fi
+	rmdir -v "${EROOT}"/etc/plasma{/startup,/shutdown,} 2> /dev/null
 
 	elog "To enable gpg-agent and/or ssh-agent in Plasma sessions,"
 	elog "edit ${EPREFIX}/etc/xdg/plasma-workspace/env/10-agent-startup.sh"

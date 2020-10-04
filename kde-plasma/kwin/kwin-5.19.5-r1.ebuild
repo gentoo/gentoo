@@ -95,6 +95,10 @@ PDEPEND="
 
 RESTRICT+=" test"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-safe-removal-of-X11-event-filters.patch # KDE-Bug 423319
+)
+
 src_prepare() {
 	ecm_src_prepare
 	use multimedia || eapply "${FILESDIR}/${PN}-5.16.80-gstreamer-optional.patch"
