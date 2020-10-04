@@ -5,14 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Public Key cryptography
-		
-		Supports RSA PKCS15, RSA OAEP, RSA PSS, DSA, ElGamal signature.
-		
-		Also have primitive support for Diffie Hellman, and ElGamal encryption
-	</longdescription>
-	<upstream>
-		<remote-id type="github">vincenthz/hs-crypto-pubkey</remote-id>
-	</upstream>
 </pkgmetadata>
