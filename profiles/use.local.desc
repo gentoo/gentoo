@@ -8729,7 +8729,6 @@ www-misc/vdradmin-am:vdr - Support for media-video/vdr. Disable this if the VDR 
 www-misc/xxv:themes - Enable more themes via x11-themes/xxv-skins
 www-plugins/adobe-flash:nsplugin - Install the Netscape Flash API plugin (for Firefox and similar browsers)
 www-plugins/adobe-flash:ppapi - Install the Pepper Flash API plugin (for Chrome and similar browsers)
-www-plugins/freshplayerplugin:v4l - Use libv4l2 for colorspace conversion
 www-plugins/lightspark:ppapi - Install the PPAPI plugin (for Chromium)
 www-plugins/lightspark:rtmp - Enable Real Time Messaging Protocol using librtmp
 www-plugins/passff-host:chrome - Install plugin for chrome (which also includes opera)

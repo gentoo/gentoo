@@ -2845,7 +2845,6 @@ app-text/crf++ 0.58: Yet Another CRF toolkit for segmenting/labelling sequential
 app-text/crm114 20100106-r1: A powerful text processing tool, mainly used for spam filtering
 app-text/csvfix 1.6: A stream editor for manipulating CSV files
 app-text/cuneiform 1.1.0-r3: An enterprise quality OCR engine by Cognitive Technologies
-app-text/cutemarked 0.11.3-r1: Qt5 markdown editor
 app-text/cwtext 0.96-r1: Text to Morse Code converter
 app-text/dbacl 1.14 1.14.1: Digramic Bayesian text classifier
 app-text/dblatex 0.3.11 0.3.11-r1: Transform DocBook using TeX macros
@@ -10811,7 +10810,7 @@ dev-util/omake 0.9.8.6.0_rc1 0.10.2 0.10.3: Make replacement
 dev-util/open-vcdiff 0.8.4-r1: An encoder/decoder for the VCDIFF (RFC3284) format
 dev-util/opencl-headers 2020.03.13-r1 2020.06.16: Unified C language headers for the OpenCL API
 dev-util/oprofile 1.3.0 1.4.0: A transparent low-overhead system-wide profiler
-dev-util/ostree 2018.9 2018.9-r1 2019.5: Operating system and container binary deployment and upgrades
+dev-util/ostree 2019.5: Operating system and container binary deployment and upgrades
 dev-util/packer 1.4.0 1.4.5 1.5.6 1.6.1: A tool to create identical machine images for multiple platforms
 dev-util/patchbin 20160208 99999999: Apply binary patches without git
 dev-util/patchelf 0.10 0.11 0.12: Small utility to modify the dynamic linker and RPATH of ELF executables
@@ -12162,7 +12161,6 @@ kde-apps/libkdepim 20.04.3 20.08.1: Common PIM libraries
 kde-apps/libkeduvocdocument 20.04.3 20.08.1: Library for reading/writing KVTML
 kde-apps/libkexiv2 20.04.3 20.08.1: Wrapper around exiv2 library
 kde-apps/libkgapi 20.04.3 20.08.1: Library for accessing Google calendar and contact resources
-kde-apps/libkgeomap 20.04.3: Wrapper library for world map components as marble, openstreetmap and googlemap
 kde-apps/libkipi 20.04.3 20.08.1: A library for image plugins accross KDE applications
 kde-apps/libkleo 20.04.3 20.08.1: Library for encryption handling
 kde-apps/libkmahjongg 20.04.3 20.08.1: Mahjongg library based on Qt/KDE Frameworks
@@ -18099,7 +18097,6 @@ www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/adobe-flash 32.0.0.433: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
 www-plugins/chrome-binary-plugins 85.0.4183.121 86.0.4240.68_beta 87.0.4278.0_alpha: Binary plugins from Google Chrome for use in Chromium
-www-plugins/freshplayerplugin 0.3.9-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
