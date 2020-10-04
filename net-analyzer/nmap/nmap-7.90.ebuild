@@ -13,7 +13,7 @@ SRC_URI="
 	https://dev.gentoo.org/~jer/nmap-logo-64.png
 "
 
-LICENSE="GPL-2"
+LICENSE="NPSL"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="ipv6 libressl libssh2 ncat nping +nse ssl system-lua"
