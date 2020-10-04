@@ -614,7 +614,6 @@ app-emulation/runv:xen - Enable support for the Xen Hypervisor
 app-emulation/ski:debug - enable extra binary emulation debugging via sys-libs/binutils-libs
 app-emulation/skopeo:btrfs - Enables dependencies for the "btrfs" graph driver.
 app-emulation/spice:smartcard - Enable smartcard remoting using app-emulation/libcacard
-app-emulation/spice-vdagent:consolekit - Use sys-auth/consolekit to determine the master vdagentd in case of multiple running vdagentds (highly recommended)
 app-emulation/vagrant:virtualbox - Use VirtualBox provider.
 app-emulation/vice:ethernet - Enable ethernet emulation
 app-emulation/vice:headless - Include the headless variant of the emulator
@@ -7211,6 +7210,9 @@ sci-geosciences/gpsd:latency-timing - support latency timing information
 sci-geosciences/gpsd:ntp - Enable net-misc/ntp shared memory interface and PPS kernel support for GPS time
 sci-geosciences/gpsd:shm - export gpsd over shared memory
 sci-geosciences/gpsd:sockets - export gpsd over unix sockets
+sci-geosciences/grass:geos - Use sci-libs/geos for v.buffer and adds extended options to the v.select module
+sci-geosciences/grass:liblas - Include support for LAS and LAZ encoded LiDAR files through sci-geosciences/liblas
+sci-geosciences/grass:opencl - Enable OpenCL support
 sci-geosciences/gshhs:data - Add earth data with sci-geosciences/gshhs-data
 sci-geosciences/liblas:gdal - Add support for the sci-libs/gdal geospatial raster library
 sci-geosciences/mapnik:gdal - Enable sci-libs/gdal library support
