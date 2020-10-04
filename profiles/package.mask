@@ -554,11 +554,6 @@ dev-python/mini-amf
 # Masked for removal in 30 days.
 www-plugins/freshplayerplugin
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-09-04)
-# Depends on deprecated dev-qt/qtwebkit, maintainer unresponsive for 1.5 yr.;
-# Upstream dead, fork available, bug #684678. Masked for removal in 30 days.
-app-text/cutemarked
-
 # Louis Sautier <sbraz@gentoo.org> (2020-09-04)
 # Masked for removal in 30 days, no revdeps. Dependency of
 # previously removed dev-python/flask-bootstrap
