@@ -12,12 +12,12 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 LICENSE="FDL-1.3 GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="+units--cur"
-REQUIRED_USE="units--cur? ( ${PYTHON_REQUIRED_USE} )"
+IUSE="+units-cur"
+REQUIRED_USE="units-cur? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	sys-libs/readline:=
-	units--cur? (
+	units-cur? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
 			dev-python/future[${PYTHON_USEDEP}]
@@ -50,7 +50,7 @@ src_compile() {
 src_install() {
 	default
 
-	if use units--cur; then
+	if use units-cur; then
 		sed \
 			-e "/^outfile/s|'.*'|'/usr/share/units/currency.units'|g" \
 			-e 's|^#!|&/usr/bin/python|g' \
