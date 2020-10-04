@@ -5,6 +5,7 @@ EAPI="5"
 
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="xml"
+DISTUTILS_USE_SETUPTOOLS=no
 
 inherit eutils distutils-r1 prefix
 
