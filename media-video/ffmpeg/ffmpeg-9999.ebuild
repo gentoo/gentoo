@@ -98,7 +98,7 @@ FFMPEG_ENCODER_FLAG_MAP=(
 	amrenc:libvo-amrwbenc mp3:libmp3lame
 	kvazaar:libkvazaar libaom
 	openh264:libopenh264 rav1e:librav1e snappy:libsnappy theora:libtheora twolame:libtwolame
-	wavpack:libwavpack webp:libwebp x264:libx264 x265:libx265 xvid:libxvid
+	webp:libwebp x264:libx264 x265:libx265 xvid:libxvid
 )
 
 IUSE="
@@ -192,7 +192,6 @@ RDEPEND="
 			>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
 		)
 		twolame? ( >=media-sound/twolame-0.3.13-r1[${MULTILIB_USEDEP}] )
-		wavpack? ( >=media-sound/wavpack-4.60.1-r1[${MULTILIB_USEDEP}] )
 		webp? ( >=media-libs/libwebp-0.3.0:=[${MULTILIB_USEDEP}] )
 		x264? ( >=media-libs/x264-0.0.20130506:=[${MULTILIB_USEDEP}] )
 		x265? ( >=media-libs/x265-1.6:=[${MULTILIB_USEDEP}] )
