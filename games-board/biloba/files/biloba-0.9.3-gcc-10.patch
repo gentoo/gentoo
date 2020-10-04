@@ -1,0 +1,30 @@
+Description: Fix FTBFS with gcc 10
+Author: Ricardo Mones <mones@debian.org>
+Bug-Debian: https://bugs.debian.org/957039
+Last-Update: 2020-08-29
+
+diff --git a/src/utils.c b/src/utils.c
+index 73bbd05..c51365d 100644
+--- a/src/utils.c
++++ b/src/utils.c
+@@ -53,6 +53,7 @@
+ 
+ char *progpath = NULL;
+ char *langpath = NULL;
++SDL_Surface * screen;
+ 
+ /**
+  * Get an object's X coordinate as pixels
+diff --git a/src/utils.h b/src/utils.h
+index 9b0b155..2018969 100644
+--- a/src/utils.h
++++ b/src/utils.h
+@@ -87,7 +87,7 @@
+ extern char *progpath;
+ extern char *langpath;
+ 
+-SDL_Surface * screen;
++extern SDL_Surface * screen;
+ 
+ int get_x(int x);
+ int get_y(int y);
