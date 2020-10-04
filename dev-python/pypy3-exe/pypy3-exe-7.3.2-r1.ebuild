@@ -35,6 +35,10 @@ BDEPEND="
 		)
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/pypy3-7.3.2-sethostname-bytes.patch
+)
+
 check_env() {
 	if use low-memory; then
 		CHECKREQS_MEMORY="1750M"
