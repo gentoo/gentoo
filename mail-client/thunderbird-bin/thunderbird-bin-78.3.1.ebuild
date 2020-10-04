@@ -31,7 +31,7 @@ HOMEPAGE="https://www.thunderbird.net/"
 KEYWORDS="-* amd64 x86"
 SLOT="0/$(ver_cut 1)"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="+alsa +ffmpeg +gmp-autoupdate +pulseaudio selinux startup-notification wayland"
+IUSE="+alsa +ffmpeg +pulseaudio selinux startup-notification wayland"
 
 RESTRICT="strip"
 
@@ -76,12 +76,6 @@ RDEPEND="${CDEPEND}
 "
 
 QA_PREBUILT="opt/${MOZ_PN}/*"
-
-# Allow MOZ_GMP_PLUGIN_LIST to be set in an eclass or
-# overridden in the enviromnent (advanced hackers only)
-if [[ -z "${MOZ_GMP_PLUGIN_LIST+set}" ]] ; then
-	MOZ_GMP_PLUGIN_LIST=( gmp-gmpopenh264 gmp-widevinecdm )
-fi
 
 MOZ_LANGS=(
 	af ar ast be bg br ca cak cs cy	da de dsb el en-CA en-GB en-US
@@ -198,16 +192,6 @@ src_install() {
 
 	local GENTOO_PREFS="${ED}${PREFS_DIR}/all-gentoo.js"
 
-	if ! use gmp-autoupdate ; then
-		local plugin
-		for plugin in "${MOZ_GMP_PLUGIN_LIST[@]}" ; do
-			einfo "Disabling auto-update for ${plugin} plugin ..."
-			cat >>"${GENTOO_PREFS}" <<-EOF || die "failed to disable autoupdate for ${plugin} media plugin"
-			pref("media.${plugin}.autoupdate",   false);
-			EOF
-		done
-	fi
-
 	# Install language packs
 	local langpacks=( $(find "${WORKDIR}/language_packs" -type f -name '*.xpi') )
 	if [[ -n "${langpacks}" ]] ; then
@@ -309,16 +293,6 @@ src_install() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
-
-	if ! use gmp-autoupdate ; then
-		elog "USE='-gmp-autoupdate' has disabled the following plugins from updating or"
-		elog "installing into new profiles:"
-		local plugin
-		for plugin in "${MOZ_GMP_PLUGIN_LIST[@]}" ; do
-			elog "\t ${plugin}"
-		done
-		elog
-	fi
 
 	if ! has_version 'gnome-base/gconf' || ! has_version 'gnome-base/orbit' \
 		|| ! has_version 'net-misc/curl'; then
