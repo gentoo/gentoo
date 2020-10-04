@@ -1,0 +1,38 @@
+diff -Naur powARman-v4l-dvb-saa716x-83f3bfd93a95.orig/linux/drivers/media/common/saa716x/saa716x_ff_phi.c powARman-v4l-dvb-saa716x-83f3bfd93a95/linux/drivers/media/common/saa716x/saa716x_ff_phi.c
+--- powARman-v4l-dvb-saa716x-83f3bfd93a95.orig/linux/drivers/media/common/saa716x/saa716x_ff_phi.c	2015-12-29 19:40:55.000000000 +0100
++++ powARman-v4l-dvb-saa716x-83f3bfd93a95/linux/drivers/media/common/saa716x/saa716x_ff_phi.c	2020-10-04 11:40:59.830329660 +0200
+@@ -41,7 +41,7 @@
+ 	}
+ 
+ 	/* skip first PHI window as it is already mapped */
+-	sti7109->mmio_uc = ioremap_nocache(phi1_start + 0x10000, 0x30000);
++	sti7109->mmio_uc = ioremap(phi1_start + 0x10000, 0x30000);
+ 	if (!sti7109->mmio_uc) {
+ 		dprintk(SAA716x_ERROR, 1, "Mem PHI1 remap failed");
+ 		err = -ENODEV;
+diff -Naur powARman-v4l-dvb-saa716x-83f3bfd93a95.orig/linux/drivers/media/common/saa716x/saa716x_pci.c powARman-v4l-dvb-saa716x-83f3bfd93a95/linux/drivers/media/common/saa716x/saa716x_pci.c
+--- powARman-v4l-dvb-saa716x-83f3bfd93a95.orig/linux/drivers/media/common/saa716x/saa716x_pci.c	2020-10-04 11:38:55.811653278 +0200
++++ powARman-v4l-dvb-saa716x-83f3bfd93a95/linux/drivers/media/common/saa716x/saa716x_pci.c	2020-10-04 11:40:34.557784199 +0200
+@@ -185,7 +185,7 @@
+ 		goto fail2;
+ 	}
+ 
+-	saa716x->mmio = ioremap_nocache(pci_resource_start(pdev, 0), 0x30000);
++	saa716x->mmio = ioremap(pci_resource_start(pdev, 0), 0x30000);
+ 	if (!saa716x->mmio) {
+ 		dprintk(SAA716x_ERROR, 1, "Mem 0 remap failed");
+ 		ret = -ENODEV;
+diff -Naur powARman-v4l-dvb-saa716x-83f3bfd93a95.orig/v4l/compat.h powARman-v4l-dvb-saa716x-83f3bfd93a95/v4l/compat.h
+--- powARman-v4l-dvb-saa716x-83f3bfd93a95.orig/v4l/compat.h	2015-12-29 19:40:55.000000000 +0100
++++ powARman-v4l-dvb-saa716x-83f3bfd93a95/v4l/compat.h	2020-10-04 11:41:58.379593434 +0200
+@@ -571,8 +571,8 @@
+ 
+ #ifdef NEED_PCI_IOREMAP_BAR
+ #define pci_ioremap_bar(pdev, bar) \
+-	 ioremap_nocache(pci_resource_start(pdev, bar),	\
+-			 pci_resource_len(pdev, bar))
++	 ioremap(pci_resource_start(pdev, bar),	\
++		 pci_resource_len(pdev, bar))
+ #endif
+ 
+ #ifdef NEED_POLL_SCHEDULE
