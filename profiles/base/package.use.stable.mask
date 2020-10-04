@@ -168,10 +168,6 @@ kde-apps/cantor julia
 # This is stable masked as g-sorcery is being not actively developed.
 app-portage/layman g-sorcery
 
-# Michael Palimaka <kensington@gentoo.org (2017-01-26)
-# Requires testing version of media-libs/opencv
-media-libs/mlt opencv
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2017-01-15)
 # Has no stable reverse deps requiring this useflag
 # Stable-masking it so Boost 1.62 stabilization can go ahead
