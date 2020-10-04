@@ -566,7 +566,11 @@ src_configure() {
 		mozconfig_add_options_ac '+debug' --disable-optimize
 	else
 		if is-flag '-g*' ; then
-			mozconfig_add_options_ac 'from CFLAGS' --enable-debug-symbols=$(get-flag '-g*')
+			if use clang ; then
+				mozconfig_add_options_ac 'from CFLAGS' --enable-debug-symbols=$(get-flag '-g*')
+			else
+				mozconfig_add_options_ac 'from CFLAGS' --enable-debug-symbols
+			fi
 		else
 			mozconfig_add_options_ac 'Gentoo default' --disable-debug-symbols
 		fi
