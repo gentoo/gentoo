@@ -35,12 +35,7 @@ IUSE="+alsa +ffmpeg +pulseaudio selinux startup-notification wayland"
 
 RESTRICT="strip"
 
-BDEPEND="app-arch/unzip
-	alsa? (
-		!pulseaudio? (
-			dev-util/patchelf
-		)
-	)"
+BDEPEND="app-arch/unzip"
 
 CDEPEND="alsa? (
 		!pulseaudio? (
