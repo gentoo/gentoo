@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2020-10-04)
+# Version 1.11 introduced different startup conventions for the server
+# which breaks the OpenRC init script. Bug #746227.
+>=net-misc/tigervnc-1.11.0
+
 # David Seifert <soap@gentoo.org> (2020-10-03)
 # Broken for over 2 years, declared EOL by upstream,
 # the only revdep is media-gfx/pinta, which is also
