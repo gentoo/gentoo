@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=virtual/blas virtual/lapack virtual/mpi
+DESCRIPTION=Portable Implementation of the Linpack Benchmark for Distributed-Memory Clusters
+EAPI=7
+HOMEPAGE=http://www.netlib.org/benchmark/hpl/
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=HPL
+RDEPEND=virtual/blas virtual/lapack virtual/mpi
+SLOT=0
+SRC_URI=http://www.netlib.org/benchmark/hpl/hpl-2.0.tar.gz
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=809e545bfc5c60ff5dbb4b6f69ef08a1
