@@ -10614,7 +10614,7 @@ dev-util/cargo-license 0.3.0: Cargo subcommand to see license of dependencies
 dev-util/catalyst 3.0.9 3.0.12 3.0.13 3.0.14 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.4.13: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.8.3-r1 0.8.8-r1 9999: Cmake macros and associated python code used to build some parts of ROS
-dev-util/cbindgen 0.14.4 0.14.6: A tool for generating C bindings to Rust code
+dev-util/cbindgen 0.14.6: A tool for generating C bindings to Rust code
 dev-util/ccache 3.7.11 3.7.12: fast compiler cache
 dev-util/cccc 3.1.5-r1 3.1.6: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccls 0.20190823.5 0.20190823.6 9999: C/C++/ObjC language server
@@ -12416,7 +12416,7 @@ mail-client/roundcube 1.4.8: A browser-based multilingual IMAP client with an ap
 mail-client/s-nail 14.9.16 14.9.19: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.7.0-r1: A lightweight email client and newsreader
 mail-client/thunderbird 68.12.0 78.3.1: Thunderbird Mail Client
-mail-client/thunderbird-bin 68.12.0 78.3.1: Thunderbird Mail Client
+mail-client/thunderbird-bin 68.12.0 78.3.1-r1: Thunderbird Mail Client
 mail-client/trojita 0.7-r5 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 3.0.0 3.0.1: Initial tagging script for Notmuch
@@ -13138,7 +13138,7 @@ media-libs/libilbc 2.0.2 9999: Packaged version of iLBC codec from the WebRTC pr
 media-libs/libinsane 1.0.4 1.0.7: Crossplatform access to image scanners
 media-libs/libiptcdata 1.0.5: Library for International Press Telecommunications Council (IPTC) metadata
 media-libs/libirman 0.4.5: library for Irman control of Unix software
-media-libs/libjpeg-turbo 1.5.3-r3 2.0.3 2.0.4-r1 2.0.5-r1: MMX, SSE, and SSE2 SIMD accelerated JPEG library
+media-libs/libjpeg-turbo 1.5.3-r3 2.0.5-r1: MMX, SSE, and SSE2 SIMD accelerated JPEG library
 media-libs/libjsw 1.5.8: provide a uniform API and user configuration for joysticks and game controllers
 media-libs/libkate 0.4.1-r4: Codec for karaoke and text encapsulation for Ogg
 media-libs/liblastfm 1.1.0_pre20150206: Collection of libraries to integrate Last.fm services
@@ -18677,7 +18677,7 @@ x11-plugins/bubblemon 1.46-r3: A fun monitoring applet for your desktop, complet
 x11-plugins/cputnik 0.2.0-r1: cputnik is a simple cpu monitor dockapp
 x11-plugins/docker 1.5-r1 1.5-r2: Openbox app which acts as a system tray for KDE and GNOME2
 x11-plugins/e16-epplets 0.16: Enlightenment DR16 epplets
-x11-plugins/enigmail 2.0.12-r1 2.1.7 2.1.8 9999: Mozilla extension to provide GPG support in mail clients
+x11-plugins/enigmail 2.0.12-r1 2.1.8 2.2.4 9999: Mozilla extension to provide GPG support in mail clients
 x11-plugins/gkrellaclock 0.3.4-r1: Nice analog clock for GKrellM2
 x11-plugins/gkrellfire 0.4.2-r1: CPU load flames for GKrellM 2
 x11-plugins/gkrellkam 2.0.0: an Image-Watcher-Plugin for GKrellM2

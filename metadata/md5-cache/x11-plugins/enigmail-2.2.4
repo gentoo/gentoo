@@ -1,12 +1,12 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=install postinst prepare setup unpack
+DEFINED_PHASES=install postinst prepare setup
 DEPEND=( >=app-crypt/gnupg-2.0 || ( app-crypt/pinentry[gtk(-)] app-crypt/pinentry[qt5(-)] ) ) !<mail-client/thunderbird-78 || ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 ) app-arch/zip dev-lang/perl
 DESCRIPTION=Mozilla extension to provide GPG support in mail clients
 EAPI=7
 HOMEPAGE=https://www.enigmail.net/
+KEYWORDS=~alpha amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux
 LICENSE=MPL-2.0 GPL-3
-PROPERTIES=live
 RDEPEND=( >=app-crypt/gnupg-2.0 || ( app-crypt/pinentry[gtk(-)] app-crypt/pinentry[qt5(-)] ) ) !<mail-client/thunderbird-78
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	98584e405e2b0264d37e8f728327fed1	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=1e4b84abe4c136e8522543f4a9564608
+SRC_URI=https://www.enigmail.net/download/source/enigmail-2.2.4.tar.gz
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=432c202286cde3202b764519ff46f5a0
