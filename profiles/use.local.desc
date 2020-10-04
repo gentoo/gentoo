@@ -7137,7 +7137,7 @@ sci-biology/yass:dmalloc - Enable debugging with the dmalloc library
 sci-biology/yass:lowmem - Build for environments with low amounts of memory
 sci-calculators/datamash:linux-crypto - Use Linux kernel cryptographic API
 sci-calculators/datamash:openssl - Use dev-libs/openssl for hash routines instead of internal gnulib
-sci-calculators/units:units--cur - Install the units_cur python script that updates currencies
+sci-calculators/units:units-cur - Install the units_cur python script that updates currencies
 sci-chemistry/avogadro2:rpc - Enable RPC server
 sci-chemistry/avogadro2:vtk - include vtk support
 sci-chemistry/chemtool:emf - EMF export support
