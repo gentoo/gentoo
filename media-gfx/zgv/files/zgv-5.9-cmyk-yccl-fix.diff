@@ -1,5 +1,5 @@
---- zgv-5.9/src/readjpeg.c	Sun Oct 31 14:54:26 2004
-+++ zgv/src/readjpeg.c	Wed Sep 21 21:03:22 2005
+--- a/src/readjpeg.c	Sun Oct 31 14:54:26 2004
++++ b/src/readjpeg.c	Wed Sep 21 21:03:22 2005
 @@ -92,11 +92,13 @@
  	int *real_width,int *real_height)
  {
