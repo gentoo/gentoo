@@ -1,0 +1,32 @@
+Upstream: https://git.savannah.gnu.org/cgit/pspp.git/commit/?id=be42ce976006feed2a7ba7599ee417c28887af52
+
+From be42ce976006feed2a7ba7599ee417c28887af52 Mon Sep 17 00:00:00 2001
+From: Ben Pfaff <blp@cs.stanford.edu>
+Date: Fri, 22 Feb 2019 17:16:40 -0800
+Subject: pspp-dump-sav; Fix write past end of buffer in corner case.
+
+If count == 0 and size > 0, then n_bytes is 0, buffer is a 1-byte
+allocation, and the assignment to buffer[size] would write to buffer[1]
+(or past it), which is past the end of the allocation.
+
+Found by Address Sanitizer.
+---
+ utilities/pspp-dump-sav.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/utilities/pspp-dump-sav.c b/utilities/pspp-dump-sav.c
+index 1d8d78c87..70687ebc8 100644
+--- a/utilities/pspp-dump-sav.c
++++ b/utilities/pspp-dump-sav.c
+@@ -1403,7 +1403,7 @@ open_text_record (struct sfm_reader *r, size_t size, size_t count)
+   size_t n_bytes = size * count;
+   char *buffer = xmalloc (n_bytes + 1);
+   read_bytes (r, buffer, n_bytes);
+-  buffer[size] = '\0';
++  buffer[n_bytes] = '\0';
+   text->reader = r;
+   text->buffer = buffer;
+   text->size = n_bytes;
+-- 
+cgit v1.2.1
+
