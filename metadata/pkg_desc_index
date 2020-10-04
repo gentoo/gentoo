@@ -6031,18 +6031,18 @@ dev-perl/Bytes-Random-Secure 0.290.0: extension to generate cryptographically-se
 dev-perl/CBOR-XS 1.710.0-r1: Concise Binary Object Representation (CBOR, RFC7049)
 dev-perl/CDB_File 1.20.0-r1: Tie to CDB (Bernstein's constant DB) files
 dev-perl/CDDB 1.222.0-r2: high-level interface to cddb/freedb protocol
-dev-perl/CDDB-File 1.50.0-r1 1.50.0-r2: Parse a CDDB/freedb data file
-dev-perl/CDDB_get 2.280.0-r1 2.280.0-r2: Read the CDDB entry for an audio CD in your drive
-dev-perl/CGI 4.400.0 4.470.0 4.500.0: Simple Common Gateway Interface Class
+dev-perl/CDDB-File 1.50.0-r2: Parse a CDDB/freedb data file
+dev-perl/CDDB_get 2.280.0-r2: Read the CDDB entry for an audio CD in your drive
+dev-perl/CGI 4.470.0 4.500.0: Simple Common Gateway Interface Class
 dev-perl/CGI-Ajax 0.707.0-r1: a perl-specific system for writing Asynchronous web applications
 dev-perl/CGI-Application 4.610.0: Framework for building reusable web-applications
 dev-perl/CGI-Application-Dispatch 3.120.0-r2: Dispatch requests to CGI::Application based objects
 dev-perl/CGI-Application-Plugin-Redirect 1.0.0-r1: Easy external redirects in CGI::Application
 dev-perl/CGI-Application-Server 0.63.0: a simple HTTP server for developing with CGI::Application
 dev-perl/CGI-Builder 1.360.0-r2: Framework to build simple or complex web-apps
-dev-perl/CGI-Compile 0.220.0 0.240.0 0.250.0: Compile .cgi scripts to a code reference like ModPerl::Registry
+dev-perl/CGI-Compile 0.240.0 0.250.0: Compile .cgi scripts to a code reference like ModPerl::Registry
 dev-perl/CGI-Emulate-PSGI 0.230.0: PSGI adapter for CGI
-dev-perl/CGI-Fast 2.130.0 2.150.0: CGI Interface for Fast CGI
+dev-perl/CGI-Fast 2.150.0: CGI Interface for Fast CGI
 dev-perl/CGI-FastTemplate 1.90.0-r2: High Performance Templates and Variable Interpolation
 dev-perl/CGI-FormBuilder 3.100.0-r1: Extremely fast, reliable form generation and processing module
 dev-perl/CGI-PSGI 0.150.0-r2: Adapt CGI.pm to the PSGI protocol
